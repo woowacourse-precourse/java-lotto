@@ -1,7 +1,7 @@
 package lotto.validator;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Stack;
 
 public class ValueValidator {
 
@@ -31,12 +31,10 @@ public class ValueValidator {
     }
 
     public static void validateLottoNumbersOverlap(List<Integer> numbers) {
-        List<Integer> collect = numbers.stream()
-                .distinct()
-                .collect(Collectors.toList());
-        int temp = numbers.get(0);
-        for (int numberIndex = 1; numberIndex < numbers.size(); numberIndex++) {
-            if (numbers.get(numberIndex).equals(temp)) {
+        Stack<Integer> stack = new Stack<>();
+        for (int numberIndex = 0; numberIndex < numbers.size() - 1; numberIndex++) {
+            stack.push(numbers.get(numberIndex));
+            if (stack.contains(numbers.get(numberIndex + 1))) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 중복될 수 없습니다.");
             }
         }
