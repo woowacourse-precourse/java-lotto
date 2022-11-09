@@ -17,4 +17,7 @@ public class LottoViewer {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
+    public static void showYield(double yield) {
+        System.out.println("총 수익률은 " + yield + "%입니다.");
+    }
 }
