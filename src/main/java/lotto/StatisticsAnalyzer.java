@@ -4,7 +4,6 @@ import java.util.List;
 
 public class StatisticsAnalyzer {
 
-
     private List<Integer> winNumbers;
     private int bonusNumber;
 
