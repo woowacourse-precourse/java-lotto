@@ -16,7 +16,6 @@ public class Shop {
     public static final Integer LOTTO_PRICE = 1000;
     private Integer money;
 
-
     public Integer inputMoney() {
         String money = Console.readLine();
         validateMoney(money);
@@ -57,6 +56,4 @@ public class Shop {
             System.out.println(l);
         }
     }
-
-
 }
