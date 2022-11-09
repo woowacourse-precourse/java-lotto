@@ -9,9 +9,7 @@ public class Money {
 
   //예외 발생은 어디서 시켜야 할까..
   // 두 예외를 한번에 검사하는 곳에서 하는게 맞지 않을까
-  public boolean checkMoneyIsDigit() {
-    String userMoney = inputMoney();
-
+  public boolean checkMoneyIsDigit(String userMoney) {
     for (int i = 0; i < userMoney.length(); i++)
     {
       if (!Character.isDigit(userMoney.charAt(i)))
@@ -20,8 +18,7 @@ public class Money {
     return true;
   }
 
-  public boolean checkDividableMoney() {
-    String userMoney = inputMoney();
+  public boolean checkDividableMoney(String userMoney) {
     int money = Integer.parseInt(userMoney);
 
     if (money % 1000 != 0)
@@ -29,8 +26,8 @@ public class Money {
     return true;
   }
 
-  public boolean isValidMoney() {
-    if (checkDividableMoney() && checkMoneyIsDigit())
+  public boolean isValidMoney(String userMoney) {
+    if (checkDividableMoney(userMoney) && checkMoneyIsDigit(userMoney))
       return true;
     throw new IllegalArgumentException();
   }
