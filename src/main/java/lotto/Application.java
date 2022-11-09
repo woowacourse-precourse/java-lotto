@@ -14,7 +14,9 @@ public class Application {
         System.out.println(lottoCount + "개를 구매했습니다.");
         List<List<Integer>> lottoNumbers = pickLottoNumbers(lottoCount);
         System.out.println("당첨 번호를 입력해 주세요.");
-        Lotto lotto = new Lotto(inputWinNumbers(Console.readLine()));
+        List<Integer> winNumbers = inputWinNumbers(Console.readLine());
+        Lotto lotto = new Lotto(winNumbers);
+        int bonusNum = lotto.inputBonusNumber();
 
     }
 
