@@ -5,6 +5,9 @@ import java.util.List;
 
 public class Lotto {
 
+
+    private static final String ERROR_SIZE_MESSAGE = "[ERROR] 입력 크기가 초과했습니다.";
+    private static final String ERROR_DUPLICATE_MESSAGE = "[ERROR] 중복된 숫자가 있습니다.";
     private static final int LOTTO_SIZE = 6;
     private final List<Integer> numbers;
 
@@ -16,7 +19,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
-            System.out.println("[ERROR] 입력 크기가 초과했습니다.");
+            System.out.println(ERROR_SIZE_MESSAGE);
             throw new IllegalArgumentException();
         }
     }
@@ -31,7 +34,7 @@ public class Lotto {
             int current = numbers.get(i);
 
             if (visitedNumbers.contains(current)) {
-                System.out.println("[ERROR] 중복된 숫자가 있습니다.");
+                System.out.println(ERROR_DUPLICATE_MESSAGE);
                 throw new IllegalArgumentException();
             }
 
