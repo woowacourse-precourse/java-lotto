@@ -136,4 +136,75 @@ class ApplicationTest extends NsTest {
         assertThat(output()).contains("8개");
         assertThat(buyLotteries.size()).isEqualTo(8);
     }
+
+    @Test
+    void createWinningNumberTest() {
+        List<Integer> winningNumber = Lotto.sliceWinningNumber("1,2,3,4,5,6");
+        Lotto lotto = new Lotto(winningNumber);
+        assertThat(lotto.getNumbers()).isEqualTo(winningNumber);
+    }
+
+    @Test
+    void validateWinningNumberSize() {
+        List<Integer> winningNumber = Lotto.sliceWinningNumber("1,2,3,4,5,6,7");
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> new Lotto(winningNumber))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertThat(output()).contains(ERROR_MESSAGE);
+        assertThat(output()).contains("6자리여야");
+     }
+
+    @Test
+    void validateWinningNumberRangeCase1() {
+        List<Integer> winningNumber = Lotto.sliceWinningNumber("0,2,3,4,5,6");
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> new Lotto(winningNumber))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertThat(output()).contains(ERROR_MESSAGE);
+        assertThat(output()).contains("1부터 45 사이");
+    }
+
+    @Test
+    void validateWinningNumberRangeCase2() {
+        List<Integer> winningNumber = Lotto.sliceWinningNumber("1,2,3,4,5,46");
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> new Lotto(winningNumber))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertThat(output()).contains(ERROR_MESSAGE);
+        assertThat(output()).contains("1부터 45 사이");
+    }
+
+    @Test
+    void validateWinningNumberDuplicate() {
+        List<Integer> winningNumber = Lotto.sliceWinningNumber("1,2,3,4,5,1");
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> new Lotto(winningNumber))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertThat(output()).contains(ERROR_MESSAGE);
+        assertThat(output()).contains("중복된");
+    }
+
+    @Test
+    void validateInputValueTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> Lotto.sliceWinningNumber("a1, 2,A3,!4,@5,1`"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertThat(output()).contains(ERROR_MESSAGE);
+        assertThat(output()).contains("숫자와 쉼표(,)만 입력 가능합니다.");
+     }
+
+    @Test
+    void validateConsecutiveCommas() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> Lotto.sliceWinningNumber("1,,2,3,4,5,6"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertThat(output()).contains(ERROR_MESSAGE);
+        assertThat(output()).contains("쉼표(,) 하나로만 나눠야 합니다.");
+    }
 }
