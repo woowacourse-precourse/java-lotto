@@ -49,7 +49,8 @@
   - IllegalArgumentException, "[ERROR] 로또 구입금액은 1000원단위의 금액만 입력가능합니다." 
 - [ ] 그 외 숫자가 아닌 문자가 섞여있는경우(EXC-A-2)
   - IllegalArgumentException, "[ERROR] 숫자만 입력가능합니다.(ex - 14000)" 
-
+- [ ] 1000원이상이 아닌경우(EXC-A-3)
+  - - IllegalArgumentException, "[ERROR] 구매금액은 1000원이상이어야합니다."
 
 #### 당첨번호 입력시 예외처리(EXC-B)
 - [ ] 1~45 사이의 숫자가 아닌경우(EXC-B-1)
