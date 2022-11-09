@@ -16,7 +16,9 @@ public class LottoController {
         Integer ticket = insertMoney();
 
         //로또 구입
-        purchaseLotto(ticket);
+        List<Lotto> lottos = purchaseLotto(ticket);
+
+        //당첨 번호 입력
     }
 
     public Integer insertMoney() {
@@ -24,9 +26,10 @@ public class LottoController {
         return lottoService.insertMoney(inputMoney);
     }
 
-    public void purchaseLotto(Integer ticket) {
+    public List<Lotto> purchaseLotto(Integer ticket) {
         Output.purchaseLotto(ticket);
         List<Lotto> lottos = lottoService.purchaseLottos(ticket);
         Output.printPurchaseLottos(lottos);
+        return lottos;
     }
 }
