@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Validation {
 
-    public void validateInputMoneyInput(String input) {
+    public void validateMoneyInput(String input) {
         validateStringIsNumeric(input);
         validateDivideThousand(Integer.parseInt(input));
     }
@@ -25,11 +25,19 @@ public class Validation {
         }
     }
 
-    public void validateBonusNumberInput(List<Integer> winNumbers, int bonusNumber) {
-        if (winNumbers.contains(bonusNumber)) {
+    public void validateBonusNumberInput(List<Integer> winNumbers, String bonusNumber) {
+        validateStringIsNumeric(bonusNumber);
+        int bonus = Integer.parseInt(bonusNumber);
+        checkBonusNumberAlreadyPicked(winNumbers, bonus);
+        validateNumberInBound(1, 45, bonus);
+    }
+
+    private void checkBonusNumberAlreadyPicked(List<Integer> winNumbers, int bonus) {
+        if (winNumbers.contains(bonus)) {
             throw new IllegalArgumentException();
         }
     }
+
 
     private void validateStringIsNumeric(String string) {
         try {
