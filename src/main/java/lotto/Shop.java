@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 
@@ -29,4 +30,9 @@ public class Shop {
             LottoError.illegalArgumentException(INVALID_STRING_INPUT);
         }
     }
+
+    private List<Integer> createLottoNumbers() {
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    }
+
 }
