@@ -1,11 +1,11 @@
 package lotto.tool;
 
 public enum Prize {
-  First(1,6,false,2_000_000_000),
-  Second(2,5,true,30_000_000),
-  Third(3,5,false,1_500_000),
-  Forth(4,4,false,50_000),
-  FIfth(5,3,false,5_000);
+  FIRST(1,6,false,2_000_000_000),
+  SECOND(2,5,true,30_000_000),
+  THIRD(3,5,false,1_500_000),
+  FORTH(4,4,false,50_000),
+  FIFTH(5,3,false,5_000);
   private final int ranking;
   private final int match;
   private final boolean isIncludeBonnus;
