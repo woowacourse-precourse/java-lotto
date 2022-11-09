@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Lotto {
 
-    private static final String INVALID_RANGE_INPUT =
+    public static final String INVALID_RANGE_INPUT =
             "로또 번호는 1부터 45 사이의 숫자여야 합니다.";
-    private static final String INVALID_SIZE_INPUT =
+    public static final String INVALID_SIZE_INPUT =
             "로또 번호는 6개의 숫자여야 합니다.";
-    private static final String DUPLICATED_INPUT =
+    public static final String DUPLICATED_INPUT =
             "로또 번호는 중복되지 않습니다.";
     public static final int SIZE = 6;
     public static final int MIN_NUMBER = 1;
