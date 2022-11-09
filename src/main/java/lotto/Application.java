@@ -32,6 +32,9 @@ public class Application {
         int flag = 0;
 
         List<String> answer = List.of(answerN.split(","));
+        if(answer.size() != 6)
+            throw new IllegalArgumentException("[ERROR] 입력 받은 번호 수 오류");
+
         for (int i = 0; i<6; i++){
             for(int j = 1; j<6;j++) {
                 if (answer.get(i) == answer.get(j)) flag = 1;
@@ -39,7 +42,8 @@ public class Application {
             }
         }
 
-        if(flag == 1) createAnswer();
+        if(flag == 1)
+            throw new IllegalArgumentException("[ERROR] 겹치는 번호 입력");
         else createBonus(answer);
     }
 
