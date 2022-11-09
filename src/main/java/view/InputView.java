@@ -15,7 +15,8 @@ public enum InputView {
 
     public int inputPrice(){
         System.out.println(INPUT_PRICE);
-        int price = Integer.parseInt(Console.readLine());
+        int price = InputValidator.validateInt(Console.readLine());
+        InputValidator.validatePrice(price);
         return price;
     }
 
