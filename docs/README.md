@@ -15,7 +15,7 @@
 
     - Lotto (Class)
         => 로또 입력
-
+ 
     - LottoTickets (Class)
         => 구입한 모든 로또 
 
