@@ -1,15 +1,16 @@
 ## 도메인 기능 목록
 
-- [x] 금액에 해당하는 로또의 개수를 계산한다. -Amount#calculateNumberOfPurchases()
+- [x] 금액에 해당하는 구매할 로또 개수를 계산한다. -Amount#calculateNumberOfPurchases()
     - 예외상황
         - [x] 1,000원으로 나누어 떨어지지 않는 경우
-- [x] 1부터 45까지의 서로 다른 임의의 수 6개를 추출할 수 있다 -NumberGenerate#createRandom()
+- [x] 1부터 45까지의 서로 다른 임의의 수 6개를 추출할 수 있다. -NumberGenerate#createRandom()
+- [x] 구매할 로또 개수만큼 서로 다른 임의의 수 6개를 추출한다.
 - [ ] 당첨 번호(6자리)와 구매한 로또 번호(6자리)를 비교해 등수를 알 수 있다. -Rank#determine()
     - [x] 몇 개의 숫자가 같은지 확인한다. - Lotto#checkNumbers()
         - 예외상황
             - [x] 6개 이상일 때
             - [x] 중복 포함일 때
-    - [x] 보너스 번호를 포함하는지 판단한다. Rank#checkBonus()
+    - [x] 보너스 번호를 포함하는지 판단한다. Bonus#checkBonus()
         - 예외상황
             - [x] 이미 로또번호에 있는 수
             - [x] 범위를 벗어난 수

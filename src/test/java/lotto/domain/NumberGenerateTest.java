@@ -14,23 +14,40 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class NumberGenerateTest {
 
     private NumberGenerate numberGenerate;
+    int numberOfPurchases = 3;
 
     @BeforeEach
     void setUp() {
-        numberGenerate = new NumberGenerate();
+        numberGenerate = new NumberGenerate(numberOfPurchases);
     }
 
     @DisplayName("로또 번호의 개수가 6개다")
     @Test
     void create6RandomNumbers() {
-        assertThat(numberGenerate.createRandom().size()).isEqualTo(6);
+        List<List<Integer>> userAllLotto = numberGenerate.getUserAllLotto();
+        List<Integer> userLotto = new ArrayList<>();
+        userLotto.addAll(userAllLotto.get(0));
+
+        assertThat(userLotto.size()).isEqualTo(6);
     }
 
     @DisplayName("로또 번호에 중복된 숫자가 없다")
     @Test
     void createUniqueNumbers() {
-        List<Integer> randomList = new ArrayList<>(numberGenerate.createRandom());
-        Set<Integer> randomSet = new HashSet<>(randomList);
-        assertThat(randomList.size()).isEqualTo(randomSet.size());
+        List<List<Integer>> userAllLotto = numberGenerate.getUserAllLotto();
+        List<Integer> userLotto = new ArrayList<>();
+        userLotto.addAll(userAllLotto.get(0));
+        Set<Integer> randomSet = new HashSet<>(userLotto);
+
+        assertThat(userLotto.size()).isEqualTo(randomSet.size());
+    }
+
+    @DisplayName("구매할 개수만큼 로또를 발급받는다.")
+    @Test
+    void purchasesThreeLotto() {
+
+        List<List<Integer>> userAllLotto = numberGenerate.getUserAllLotto();
+
+        assertThat(userAllLotto.size()).isEqualTo(numberOfPurchases);
     }
 }

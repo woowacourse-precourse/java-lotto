@@ -5,11 +5,11 @@ public class Amount {
     private final static int lottoAmount = 1000;
 
     public int calculateNumberOfPurchases(int inputMoney) {
-        int NumberOfPurchases = inputMoney / lottoAmount;
+        int numberOfPurchases = inputMoney / lottoAmount;
         if (inputMoney % lottoAmount != 0) {
             throw new IllegalArgumentException();
         }
-        return NumberOfPurchases;
+        return numberOfPurchases;
     }
 
     public double calculateEarningRate() {

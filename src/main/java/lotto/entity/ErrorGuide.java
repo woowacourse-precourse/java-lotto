@@ -1,4 +1,4 @@
-package lotto.repository;
+package lotto.entity;
 
 public class ErrorGuide {
 }

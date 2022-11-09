@@ -1,4 +1,4 @@
-package lotto.repository;
+package lotto.entity;
 
 public enum Place {
     FIRST("6개 일치", 2_000_000_000),
