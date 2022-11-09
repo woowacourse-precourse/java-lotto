@@ -1,4 +1,4 @@
-package lotto.domain.lotto;
+package lotto.domain;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import lotto.domain.lotto_numbers.Lotto;
 
 public class LottoStore {
 

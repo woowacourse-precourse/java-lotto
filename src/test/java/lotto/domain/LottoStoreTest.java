@@ -1,10 +1,11 @@
-package lotto.domain.lotto;
+package lotto.domain;
 
-import static lotto.domain.lotto.LottoStore.*;
+import static lotto.domain.LottoStore.INVALID_VALUE_OF_MONEY;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
+import lotto.domain.lotto_numbers.Lotto;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
