@@ -29,5 +29,11 @@ public class Lotto {
         return correctNumbers;
     }
 
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+
+
+
 
 }
