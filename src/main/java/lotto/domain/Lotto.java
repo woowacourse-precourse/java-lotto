@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.List;
 
@@ -16,5 +16,12 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public int checkNumbers(List<Integer> winningNumbers) {
+        return 0;
+    }
+
+    public boolean checkBonus(int bonusNumber) {
+        return false;
+    }
+
 }
