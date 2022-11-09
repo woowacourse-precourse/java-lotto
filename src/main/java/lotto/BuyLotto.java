@@ -21,4 +21,8 @@ public class BuyLotto {
             throw new IllegalArgumentException("[ERROR] 구매금액은 1000원 단위여야 합니다.");
         }
     }
+
+    public int numberOfLottoCount(String price) {
+        return Integer.parseInt(price) / INPUT_UNIT;
+    }
 }
