@@ -20,7 +20,7 @@ public class InputVerifier {
 
     public static boolean isLottoPrice(String input) {
         int number = Integer.parseInt(input);
-        return number / Constant.LOTTO_PRICE == 0;
+        return number % Constant.LOTTO_PRICE == 0;
     }
 
     // TODO: 쉼표로 구분했는지 검증하는 기능 구현 필요
