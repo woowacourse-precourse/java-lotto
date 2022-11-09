@@ -1,4 +1,4 @@
-package lotto;
+package lotto.view;
 
 public class Message {
     public static final String PURCHASE_PRICE = "구입금액을 입력해 주세요.";
