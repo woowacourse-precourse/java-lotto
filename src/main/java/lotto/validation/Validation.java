@@ -11,6 +11,11 @@ public class Validation {
         for (String s : token) {
             validateStringIsNumeric(s);
         }
+
+        for (String s : token) {
+            int num = Integer.parseInt(s);
+            validateNumberInBound(1, 45, num);
+        }
     }
 
     private void validateNumberInput(String s) {
@@ -24,14 +29,13 @@ public class Validation {
         }
     }
 
-    private boolean validateNumberInBound(int min, int max, int input) {
+    private void validateNumberInBound(int min, int max, int input) {
         if (input < min) {
-            return false;
+            throw new IllegalArgumentException();
         }
         if (input > max) {
-            return false;
+            throw new IllegalArgumentException();
         }
-        return true;
     }
 
     public void validateBonusNumberInput() {
