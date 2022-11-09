@@ -21,6 +21,8 @@ public class LottoStore {
 
             lottoNumbers.add(lotto);
         }
+
+        printLottoNumbers(lottoPurchaseCount);
     }
 
     private void validate(int price) {
@@ -33,5 +35,17 @@ public class LottoStore {
             System.out.println(ERROR_MSG);
             throw new IllegalArgumentException();
         }
+    }
+
+    private void printLottoNumbers(int lottoPurchaseCount) {
+        StringBuilder message = new StringBuilder();
+
+        message.append(lottoPurchaseCount + BUY_MSG);
+
+        for (int i = 0; i < lottoPurchaseCount; i++) {
+            message.append(lottoNumbers.get(i));
+        }
+
+        System.out.println(message);
     }
 }
