@@ -128,4 +128,12 @@ class ApplicationTest extends NsTest {
         assertThat(lotto).isEqualTo(10);
         assertThat(output()).doesNotContain(ERROR_MESSAGE);
     }
+
+    @Test
+    void buyLotteriesTest() {
+        BuyLotto buyLotto = new BuyLotto();
+        List<List<Integer>> buyLotteries = buyLotto.buyLotteries("8000");
+        assertThat(output()).contains("8개");
+        assertThat(buyLotteries.size()).isEqualTo(8);
+    }
 }
