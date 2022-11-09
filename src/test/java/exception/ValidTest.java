@@ -3,11 +3,25 @@ package exception;
 
 import static org.assertj.core.api.Assertions.*;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import util.exception.Valid;
 
 class ValidTest {
+
+    @Test
+    @DisplayName("[Valid]로또구매시 잘못된 값 입력에 대한 예외발생 테스트")
+    void purchaseMoney() {
+        //given
+        int moneyNotUnits=1023;
+        int moneyUnderThousand=900;
+        //when
+        //then
+        assertThatThrownBy(() -> Valid.purchaseMoney(moneyNotUnits))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Valid.purchaseMoney(moneyUnderThousand))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Test
     @DisplayName("[Valid]구매 금액이 1000단위가아닌경우 false")
