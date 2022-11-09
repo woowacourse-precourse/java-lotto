@@ -36,7 +36,6 @@ public class NumberGenerator {
 
     public void operationLotto(int purchaseQuantity) {
         lottos = new ArrayList<>(purchaseQuantity);
-
         createLottoNumbers(purchaseQuantity);
         printLottoNumbers();
     }
