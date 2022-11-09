@@ -15,6 +15,7 @@ public class LottoResultController {
     private RankingMachine rankingMachine = new RankingMachine();
     private LottoResult lottoResult = new LottoResult();
     private List<LottoGrade> lottoGrades;
+    private double yield;
 
     public LottoResultController(LottoAnswer lottoAnswer, List<Lotto> lottos) {
         this.lottoAnswer = lottoAnswer;
@@ -43,4 +44,11 @@ public class LottoResultController {
         return lottoResult;
     }
 
+    public double getYield() {
+        return yield;
+    }
+
+    public void setYield(double yield) {
+        this.yield = yield;
+    }
 }

@@ -22,7 +22,8 @@ public class LottoController {
         lottoResultController = new LottoResultController(lottoAnswer, lottos);
         lottoResultController.run();
         LottoResult lottoResult = lottoResultController.getLottoResult();
-        OutputView.printResult(lottoResult);
+        double yield = lottoResultController.getYield();
+        OutputView.printResult(lottoResult, yield);
     }
 
 
