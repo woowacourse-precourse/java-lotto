@@ -21,6 +21,19 @@ public class NumberGenerator {
         return Integer.parseInt(purchasePrice);
     }
 
+    public List<Integer> enterLottoNumbers() {
+        String[] lottoNumbers = Console.readLine().split(",");
+        return convertedLottoNumbers(lottoNumbers);
+    }
+
+    private List<Integer> convertedLottoNumbers(String[] lottoNumbers) {
+        List<Integer> convertedLottoNumbers = new ArrayList<Integer>();
+        for (String number : lottoNumbers) {
+            convertedLottoNumbers.add(Integer.parseInt(number.trim()));
+        }
+        return convertedLottoNumbers;
+    }
+
     public void operationLotto(int purchaseQuantity) {
         lottos = new ArrayList<>(purchaseQuantity);
 
