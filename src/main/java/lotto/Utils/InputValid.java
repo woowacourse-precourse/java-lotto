@@ -6,13 +6,12 @@ public class InputValid {
     public InputValid() {
     }
 
-    public static boolean checkPriceUnit(int userPrice){
+    public static void checkPriceUnit(int userPrice){
         int isValidUserGameChance=userPrice%EXCEPTED_UNIT_OF_PRICE;
 
         if(isValidUserGameChance!=0){
             throw new IllegalArgumentException("1000 단위만 입력 가능합니다");
         }
 
-        return true;
     }
 }
