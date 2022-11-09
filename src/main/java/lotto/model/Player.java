@@ -7,8 +7,8 @@ import java.util.List;
 
 public class Player {
 
-    public int getInput() {
-        return Integer.parseInt(input());
+    public String getInput() {
+        return input();
     }
 
     public List<String> guessLottoNumbers() {

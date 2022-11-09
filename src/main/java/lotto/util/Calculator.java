@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Calculator {
 
-    public static int countLottoAmount(int purchaseAmount) {
-        return purchaseAmount / 1000;
+    public static int countLottoAmount(String purchaseAmount) {
+        return Integer.parseInt(purchaseAmount) / 1000;
     }
 
     public static int countMatchingNumbers(List<Integer> winningNumbers, List<Integer> playerNumbers) {
