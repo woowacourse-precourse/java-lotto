@@ -29,5 +29,12 @@ public class Lotto {
         }
     }
 
+    private void checkNumbersAreDuplicate(int number1, int number2) {
+        if (number1 == number2) {
+            printErrorAboutDuplicate();
+            throw new IllegalArgumentException();
+        }
+    }
+
     // TODO: 추가 기능 구현
 }
