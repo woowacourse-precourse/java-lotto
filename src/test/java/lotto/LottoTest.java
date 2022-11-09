@@ -40,5 +40,10 @@ class LottoTest {
     void createLottoRandomly() {
         System.out.println(Application.generateLotto());
     }
+    @DisplayName("응모번호에 문자가 있으면 예외 발생.")
+    @Test
+    void createWinningNum() {
+        System.out.println(Application.getWinningNum("1,2,3,4,5,6"));
+    }
 
 }

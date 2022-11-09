@@ -44,12 +44,14 @@ public class Application {
         System.out.println(lotto);
     }
 
-    public static int getWinningNum(){
-        String inputNum = Console.readLine();
-        int winningNum = Integer.parseInt(inputNum);
-        return winningNum;
+    public static ArrayList<Integer> getWinningNum(String inputNum) {
+        String[] inputNums = inputNum.split(",");
+        ArrayList<Integer> winningNums = new ArrayList<>();
+        for(String num:inputNums){
+            winningNums.add(Integer.parseInt(num.trim()));
+        }
+        return winningNums;
     }
-
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
