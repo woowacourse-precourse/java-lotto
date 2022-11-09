@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class Lotto {
 
     private static final int CORRECT_NUMBERS_SIZE = 6;
-    private static final String ERROR_MESSAGE_PREFIX = "[ERROR] : ";
+    private static final String ERROR_MESSAGE_PREFIX = "[ERROR] ";
     private static final String NUMBERS_SIZE_NOT_SIX_EXCEPTION_MESSAGE = "발행 로또 번호의 개수는 6개여야합니다.";
     private static final String NUMBERS_DUPLICATE_EXCEPTION_MESSAGE = "발행 로또 번호는 중복될 수 없습니다.";
     private static final String NUMBERS_WRONG_RANGE_EXCEPTION_MESSAGE = "발행 로또 번호는 1~45의 범위여야합니다.";
