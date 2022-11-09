@@ -26,15 +26,19 @@ class LottoTest {
     @DisplayName("응모번호에 문자가 있으면 예외 발생.")
     @Test
     void createInputMoneyByNotNumber() {
-        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> Application.isInteger("a1234"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @DisplayName("응모번호에 문자가 있으면 예외 발생.")
     @Test
     void createInputMoneyByDuplicatedNumber() {
-        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> Application.isSplit(11223))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+    @DisplayName("응모번호에 문자가 있으면 예외 발생.")
+    @Test
+    void createLottoRandomly() {
+        System.out.println(Application.generateLotto());
+    }
+
 }

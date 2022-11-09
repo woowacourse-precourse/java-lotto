@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 
 public class Application {
-    public int getMoney(){
+    public static int getMoney(){
         String inputMoney = Console.readLine();
         isInteger(inputMoney);
 
@@ -29,7 +29,7 @@ public class Application {
             }
         }
     }
-    public ArrayList<Integer> GenerateLotto(){ // 숫자 생성
+    public static ArrayList<Integer> generateLotto(){ // 숫자 생성
         ArrayList<Integer> lotto = new ArrayList<>();
         while (lotto.size() < 8) {
             int randomNumber = Randoms.pickNumberInRange(1, 45);
@@ -38,6 +38,10 @@ public class Application {
             }
         }
         return lotto;
+    }
+
+    public static void printLotto(ArrayList<Integer> lotto){
+        System.out.println(lotto);
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
