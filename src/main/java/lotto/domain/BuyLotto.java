@@ -32,5 +32,7 @@ public class BuyLotto {
         }
     }
 
-    
+    public int getLottoQuantity() {
+        return money / 1000;
+    }
 }
