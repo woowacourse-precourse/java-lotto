@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -20,7 +21,7 @@ public class Lotto {
     }
 
     private void validateSame(List<Integer> numbers) {
-        List<Integer> temp = numbers;
+        List<Integer> temp = new ArrayList<>(numbers);
         while (!temp.isEmpty()) {
             int num = temp.get(0);
             temp.remove(0);
