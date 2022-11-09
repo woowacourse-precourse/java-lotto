@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class LottoTest {
+class LottoValidationUtilsTest {
 
     @DisplayName("로또 번호의 개수가 6개가 아니면 예외 발생")
     @Test
@@ -40,4 +40,5 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 로또 번호는 1~45 사이의 숫자 이어야 합니다.");
     }
+
 }
