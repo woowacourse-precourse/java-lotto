@@ -12,6 +12,10 @@ public class OutputView {
 
     }
 
+    public void announceInputWinNumber() {
+
+    }
+
     public void announceInputBonusNumber() {
 
     }
@@ -33,6 +37,10 @@ public class OutputView {
         System.out.print("[");
         System.out.print(joiner);
         System.out.println("]");
+    }
+
+    public void printProfitRatio(float ratio) {
+
     }
 
     public void printDivider() {
