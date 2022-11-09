@@ -14,8 +14,15 @@
 - [ ] validateLottoPurchaseMoney
   - 유저가 구매한 로또 금액이 Integer Type 의 범위를 벗어나면 IllegalArgumentException를 발생시키기
 
-- [ ] validateInputLottoNumber 
-  - 로또 당첨번호 입력값이 1 ~ 45 사이의 숫자가 아니라면 IllegalArgumentException를 발생시키기
+- [ ] validateInputLottoNumber
+  - [ ] validateLottoNumberRange 
+    - 로또 당첨번호 입력값이 1 ~ 45 사이의 숫자가 아니라면 IllegalArgumentException를 발생시키기
+  - [ ] validateLottoWinNumberOverlap
+    - 로또 당첨번호 입력값이 중복된 수 일때 IllegalArgumentException를 발생시키기
+  - [ ] validateLottoWinNumberLength
+    - 보너스 번호를 포함하지 않은 로또 당첨번호 입력값이 6보다 크다면 IllegalArgumentException를 발생시키기
+  - [ ] validateLottoWinNumberLengthContainBonusNumber
+    - 보너스 번호를 포함한 로또 당첨번호 입력값이 7보다 크다면 IllegalArgumentException를 발생시키기
 
 ### 로또 번호 생성
 - [ ] generateLottoNumber
