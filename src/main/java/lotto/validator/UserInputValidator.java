@@ -16,4 +16,12 @@ public class UserInputValidator {
             }
         }
     }
+    public static void validateLottoWinNumberOverlap(String[] winNumber) {
+        String temp = winNumber[0];
+        for (int numberIndex = 1; numberIndex < winNumber.length; numberIndex++) {
+            if (winNumber[numberIndex].equals(temp)) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 중복될 수 없습니다.");
+            }
+        }
+    }
 }
