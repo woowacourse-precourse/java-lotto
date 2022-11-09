@@ -43,6 +43,14 @@ public class Application {
     public static void printLotto(ArrayList<Integer> lotto){
         System.out.println(lotto);
     }
+
+    public static int getWinningNum(){
+        String inputNum = Console.readLine();
+        int winningNum = Integer.parseInt(inputNum);
+        return winningNum;
+    }
+
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
