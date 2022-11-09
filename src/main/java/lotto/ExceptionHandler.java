@@ -7,10 +7,13 @@ public class ExceptionHandler extends IllegalArgumentException{
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위로 입력해야 합니다.");
         }
         if (options.equals("lottoLength")) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호의 개수는 6개입니다.");
+            throw new IllegalArgumentException("[ERROR] 번호의 개수는 6개입니다.");
         }
         if (options.equals("lottoDuplicate")) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 있습니다.");
+            throw new IllegalArgumentException("[ERROR] 번호에 중복된 숫자가 있습니다.");
+        }
+        if (options.equals("lottoCondition")) {
+            throw new IllegalArgumentException("[ERROR] 번호는 1~45 사이의 수로 이루어져 있습니다.");
         }
     }
 }
