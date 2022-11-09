@@ -1,9 +1,11 @@
 package lotto.user;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -22,5 +24,21 @@ public class UserTest {
         assertThatThrownBy(User::buyLotto)
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining(ERROR);
+    }
+
+    @DisplayName("로또 번호를 입력 후 리스트로 반환한다.")
+    @Test
+    void inputLottoNumbers() {
+        //given
+        String userInput = "1,2,3,4,5,6";
+        List<Integer> numbers = List.of(1,2,3,4,5,6);
+        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(in);
+
+        // when
+        List<Integer> userNumbers = User.inputLottoNumbers();
+
+        // then
+        assertThat(numbers).isEqualTo(userNumbers);
     }
 }
