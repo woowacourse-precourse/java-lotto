@@ -28,7 +28,10 @@ public class LottoResultController {
     }
 
     public void createLottoResult() {
-
+        for (LottoGrade lottoGrade : lottoGrades) {
+            int ranking = rankingMachine.getRank(lottoGrade);
+            lottoResult.putRanking(ranking);
+        }
     }
 
 
