@@ -1,14 +1,21 @@
 # 미션 - 로또
 
 ## 기능 구현 목록
+
+1. 로또를 구매한다.(Purchase) -> 로또가 자동으로 생성된다.(LottoGenerator)
+2. 당첨번호를 입력한다. 
+3. 구매한 로또와 당첨번호를 비교한다.(Lotto)
+4. 당첨결과 출력(WinningResult)
+
+
 - [ ] 로또를 구매한다. - Purchase
-  - [ ] 1000원 단위로 로또를 구매한다. #lottoPurchaseAmount()
+  - [ ] 1000원 단위로 로또를 구매한다. #lottoPurchase()
+  - [ ] 로또 한장당 중복 없이 6개의 번호 뽑는다. - LottoGenerator#createLotto  
   - [ ] 구매된 로또를 표시해준다. #printPurchasedLotto()
-- [ ] 로또 한장당 중복 없이 6개의 번호 뽑는다. - LottoGenerator#createLotto
 - [ ] 당첨 번호를 입력받는다. - Lotto
   - [ ] 입력이 유효한지 검사한다. #validate
-  - [ ] 당첨 번호 6자리를 입력받는다. #getWinningNumber
-  - [ ] 보너스 번호 1자리를 입력받는다. #getBonusNumber
+- [ ] 당첨 번호 6자리를 입력받는다. #getWinningNumber
+- [ ] 보너스 번호 1자리를 입력받는다. #getBonusNumber
 - [ ] 당첨 여부를 판별한다. - WinningResult
   - [ ] 당첨 기준과 금액을 사용자에게 알려준다. #winningHistory
   - [ ] 수익률 계산한다. => (당첨된 금액 / 투자한 금액) * 100 #winningRate
