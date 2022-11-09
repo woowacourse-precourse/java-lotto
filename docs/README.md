@@ -1,27 +1,27 @@
 # 기능 목록 
 
-- [ ] 로또 구입 금액을 입력한다.    ``` Input#buyLotto ```
-    - [ ] 로또 수량을 확인한다.     ```Controller#checkQuantityOfLotto```
-        - [ ] 로또 번호를 수량만큼 발행한다. ```Controller#publishLotto```
-          - [ ] 각 로또의 번호 6개를 뽑는다. ```Controller#pickLottoNumbers```
-            - [ ] 1 ~ 45 범위에서 뽑아야 한다. ```ExceptionHandler#checkNumbersRange```
-            - [ ] 동일한 숫자가 없어야 한다. ```ExceptionHandler#checkDuplicationNumbers```
-            - [ ] 오름차순으로 정렬한다. ```Controller#sortNumbers```
-    - [ ] 예외 1)  1000원 단위가 아닐 경우 ```ExceptionHandler#checkMoney```
-- [ ] 당첨 번호를 입력받는다. ```Input#pickWinningNumbers```
+- [x] 로또 구입 금액을 입력한다.    ``` Input#buyLotto ```
+    - [x] 로또 수량을 확인한다.     ```Controller#checkQuantityOfLotto```
+        - [x] 로또 번호를 수량만큼 발행한다. ```Controller#publishLotto```
+          - [x] 각 로또의 번호 6개를 뽑는다. ```Controller#pickLottoNumbers```
+            - [x] 1 ~ 45 범위에서 뽑아야 한다. ```ExceptionHandler#checkNumbersRange```
+            - [x] 동일한 숫자가 없어야 한다. ```ExceptionHandler#checkDuplicationNumbers```
+            - [x] 오름차순으로 정렬한다. ```Controller#sortNumbers```
+    - [x] 예외 1)  1000원 단위가 아닐 경우 ```ExceptionHandler#checkMoney```
+- [x] 당첨 번호를 입력받는다. ```Input#pickWinningNumbers```
     - [ ] length = 6이다. 
-- [ ] 보너스 번호를 입력받는다. ```Input#pickBonusNumbers ```
-    - [ ] 1개를 뽑는다.
-- [ ] 당첨 번호와 발행한 로또를 비교한다. ```Controller#compareNumbers```
-  - [ ] 당첨된 개수를 확인한다. ```Controller#countWinningLotto```
-    - [ ] 3개 일치 
-    - [ ] 4개 일치
-    - [ ] 5개 일치
-    - [ ] 5개 일치 , 보너스 볼 일치 
-    - [ ] 6개 일치 
-  - [ ] 수익률을 계산한다. ```Controller#calculateProfit```
+- [x] 보너스 번호를 입력받는다. ```Input#pickBonusNumbers ```
+    - [x] 1개를 뽑는다.
+- [x] 당첨 번호와 발행한 로또를 비교한다. ```Controller#compareNumbers```
+  - [x] 당첨된 개수를 확인한다. ```Controller#countWinningLotto```
+    - [x] 3개 일치 
+    - [x] 4개 일치
+    - [x] 5개 일치
+    - [x] 5개 일치 , 보너스 볼 일치 
+    - [x] 6개 일치 
+  - [x] 수익률을 계산한다. ```Controller#calculateProfit```
     - [ ] 소수점 둘째자리에서 반올림한다. 
-- [ ] 결과를 출력한다. ```Output#printResult```
+- [x] 결과를 출력한다. ```Output#printResult```
 -----------------------------------------------
 ### 예외 사항
 1. 에러 문구를 출력한다. 
@@ -39,6 +39,7 @@
        - [ ] 예외 4) 6개 초과 또는 미만으로 뽑았을 경우
    - 보너스 번호
         - [ ] 예외 1) 1개 초과 또는 미만으로 뽑았을 경우
+        - [ ] 예외 2) 당첨번호와 같은 값이 있을 경우
         - [ ] 이하 예외는 당첨번호의 예외 2,3과 동일하다.
 
 ## 기능 요구사항
