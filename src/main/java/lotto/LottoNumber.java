@@ -13,4 +13,8 @@ public class LottoNumber {
 
         return money / LOTTO_SELLING_PRICE;
     }
+
+    public int getLottoNumber() {
+        return this.number;
+    }
 }
