@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputImpl implements Input {
 
-    private final int MIN_PAYMENT_AMOUNT = 1000;
+    private static final int MIN_PAYMENT_AMOUNT = 1000;
 
     @Override
     public int paymentAmountInput() {
