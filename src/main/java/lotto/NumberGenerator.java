@@ -21,13 +21,21 @@ public class NumberGenerator {
         return Integer.parseInt(purchasePrice);
     }
 
-    public void printLottoNumbers(int purchaseQuantity) {
+    public void operationLotto(int purchaseQuantity) {
         lottos = new ArrayList<>(purchaseQuantity);
 
+        createLottoNumbers(purchaseQuantity);
+        printLottoNumbers();
+    }
+
+    private void createLottoNumbers(int purchaseQuantity) {
         for (int i = 0; i < purchaseQuantity; i++) {
             List<Integer> integers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             lottos.add(integers);
         }
+    }
+
+    private void printLottoNumbers() {
         for (List<Integer> lotto : lottos) {
             System.out.println(lotto);
         }
