@@ -6,41 +6,39 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 public class View {
+    static int money;
+    static int bonusNumber;
+    List<Integer> lottoNumber = new ArrayList<>();
+
     public void ui () {
         inputMoney();
-        Lotto lotto = new Lotto(inputLottoNumber());
+        inputLottoNumber();
     }
 
-    private int inputMoney () {
-        String money;
+    private void inputMoney () {
+        String tempMoney;
 
         System.out.println("구입 금액을 입력해주세요.");
-        money = Console.readLine();
-        isRealNumber(money);
+        tempMoney = Console.readLine();
+        isRealNumber(tempMoney);
 
-        return Integer.parseInt(money);
+        money =  Integer.parseInt(tempMoney);
     }
 
-    private List<Integer> inputLottoNumber () {
+    private void inputLottoNumber () {
         String tempLottoNumber;
-        List<Integer> lottoNumber;
 
         System.out.println("당첨 번호를 입력해주세요.");
         tempLottoNumber = Console.readLine();
         isRealLottoNumber(tempLottoNumber);
-        lottoNumber = splitLottoNumber(tempLottoNumber);
-
-        return lottoNumber;
+        splitLottoNumber(tempLottoNumber);
     }
 
-    private List<Integer> splitLottoNumber (String tempLottoNumber) {
-        List<Integer> lottoNumber = new ArrayList<>();
+    private void splitLottoNumber (String tempLottoNumber) {
 
         for(String element: tempLottoNumber.split(",")) {
             lottoNumber.add(Integer.parseInt(element));
         }
-
-        return lottoNumber;
     }
 
     private void isRealNumber (String inputStatement) {
