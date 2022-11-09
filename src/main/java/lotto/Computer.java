@@ -37,4 +37,12 @@ public class Computer {
             throw new IllegalArgumentException(ERROR_LOTTO_SIZE);
         }
     }
+
+    static void validateLottoRange() {
+        for (Integer i : autoNumbers) {
+            if (i > 45 || i < 1 ) {
+                    throw new IllegalArgumentException(ERROR_LOTTO_RANGE);
+            }
+        }
+    }
 }
