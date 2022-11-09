@@ -25,4 +25,8 @@ public class Count {
         }
         throw new IllegalArgumentException("[ERROR] 1,000원 단위로 입력해주세요.");
     }
+
+    public int getNumOfLotto() {
+        return numOfLotto;
+    }
 }
