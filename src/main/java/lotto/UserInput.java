@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.global.Message;
 
 public class UserInput {
 
@@ -15,6 +16,22 @@ public class UserInput {
     }
 
     private void userInputToUserMoney() {
-        userMoney = Integer.parseInt(userInput);
+        try {
+            userMoney = Integer.parseInt(userInput);
+        } catch (NumberFormatException e) {
+            inputError();
+        }
+        validate();
+    }
+
+    private void validate() {
+        if (userMoney % 1000 != 0) {
+            inputError();
+        }
+    }
+
+    private void inputError() {
+        Message.ERROR_INPUT.print();
+        throw new IllegalArgumentException();
     }
 }
