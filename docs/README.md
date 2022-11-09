@@ -49,7 +49,7 @@
   - 보너스 번호 입력 전 보너스 번호 입력이 이루어져야함을 알리는 함수
 
 
-- void printStats(List<Lotto>, List<Integer>, Integer)
+- void printStats(List<Lotto>, int[], int)
   - 당첨 내역을 출력하는 함수
 
 
@@ -74,7 +74,7 @@
 
 
 - List<Integer> issueLottoNumbers()
-  - 로또 번호를 발행하는 함스
+  - 로또 번호를 발행하는 함수
 
 
 - void validateCashIsInteger(String)
