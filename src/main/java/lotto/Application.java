@@ -21,6 +21,8 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Application {
+    private static final String ERROR_MESSAGE = "[ERROR]";
+
     public enum WINNINGS{
         FIRST(2000000000),
         SECOND(30000000),
@@ -49,10 +51,20 @@ public class Application {
 
             validateLottoAmount(purchaseLottoAmount);
 
-            while(purchaseLottoAmount-- > 0)
+            for(int i = 0; i < purchaseLottoAmount; i++)
                 userLotto.add(createRandomLottoList());
+
+            printUserLottoList(userLotto, purchaseLottoAmount);
         } catch(IllegalArgumentException e){
-            
+            System.out.println(ERROR_MESSAGE + " " + e.getMessage());
+        }
+    }
+
+    private static void printUserLottoList(List<Lotto> userLotto, int purchaseLottoAmount) {
+        System.out.println(purchaseLottoAmount + "개를 구매했습니다.");
+
+        for (Lotto lotto : userLotto) {
+            lotto.printLottoNumbers();
         }
     }
 
