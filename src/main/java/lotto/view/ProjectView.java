@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.IssuedLotto;
 
 public class ProjectView {
     public static String askPurchaseMoney(){
@@ -8,7 +9,8 @@ public class ProjectView {
         return Console.readLine();
     }
 
-    public static void sell(int sellCount){
-        System.out.println("\n" + sellCount + "개를 구매했습니다.");
+    public static void sell(IssuedLotto issuedLotto){
+        System.out.println("\n" + issuedLotto.getTotalCount() + "개를 구매했습니다.");
+        System.out.println(issuedLotto);
     }
 }
