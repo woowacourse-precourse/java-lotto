@@ -84,4 +84,8 @@ public class MatchLogic {
         return yields / (double) budget * 100;
     }
 
+    public List<Integer> getMatchNums() {
+        return this.matchNums;
+    }
+
 }
