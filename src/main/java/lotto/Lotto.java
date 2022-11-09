@@ -22,6 +22,38 @@ public class Lotto {
         return numbers;
     }
 
+    public void inputBonusNumber(String number) {
+        for (int seq = 0; seq < number.length(); seq++) {
+            validateCharacter(number.charAt(seq));
+        }
+        int bonusNumber = Integer.parseInt(number);
+        validateContainsBonusNumber(bonusNumber);
+        validateRangeBonusNumber(bonusNumber);
+        numbers.add(bonusNumber);
+    }
+
+    private void validateRangeBonusNumber(int bonusNumber) {
+        if (bonusNumber > 45 || bonusNumber < 1) {
+            System.out.println("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateContainsBonusNumber(int bonusNumber) {
+        List<Integer> winningNumber = getNumbers();
+        if (winningNumber.contains(bonusNumber)) {
+            System.out.println("[ERROR] 당첨 번호에 있는 번호는 보너스 번호로 입력할 수 없습니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateCharacter(char inputSequence) {
+        if (47 >= inputSequence || 58 <= inputSequence) {
+            System.out.println("[ERROR] 보너스 번호는 숫자만 입력할 수 있습니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             System.out.println("[ERROR] 당첨 번호는 6자리여야 합니다.");

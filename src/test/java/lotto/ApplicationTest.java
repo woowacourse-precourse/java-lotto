@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -60,6 +61,7 @@ class ApplicationTest extends NsTest {
         Application.main(new String[]{});
     }
 
+    @DisplayName("입력 값이 천원으로 딱 나눠 나머지가 있으면 에러가 발생한다. 1")
     @Test
     void validateInputValueForMoneyCase1() {
         String input = "1001";
@@ -70,6 +72,8 @@ class ApplicationTest extends NsTest {
         );
         assertThat(output()).contains(ERROR_MESSAGE);
     }
+
+    @DisplayName("입력 값이 천원으로 딱 나눠 나머지가 있으면 에러가 발생한다. 2")
     @Test
     void validateInputValueForMoneyCase2() {
         String input = "100";
@@ -80,6 +84,8 @@ class ApplicationTest extends NsTest {
         );
         assertThat(output()).contains(ERROR_MESSAGE);
     }
+
+    @DisplayName("입력 값이 0으로 시작하면 에러가 발생한다.")
     @Test
     void validateInputValueForMoneyCase3() {
         String input = "03000";
@@ -90,6 +96,8 @@ class ApplicationTest extends NsTest {
         );
         assertThat(output()).contains(ERROR_MESSAGE);
     }
+
+    @DisplayName("입력 값에 문자가 들어가면 에러가 발생한다. 1")
     @Test
     void validateInputValueForCharacterCase1() {
         String input = "/001";
@@ -100,6 +108,8 @@ class ApplicationTest extends NsTest {
         );
         assertThat(output()).contains(ERROR_MESSAGE);
     }
+
+    @DisplayName("입력 값에 문자가 들어가면 에러가 발생한다. 2")
     @Test
     void validateInputValueForCharacterCase2() {
         String input = " 10000";
@@ -110,6 +120,8 @@ class ApplicationTest extends NsTest {
         );
         assertThat(output()).contains(ERROR_MESSAGE);
     }
+
+    @DisplayName("입력 값에 문자가 들어가면 에러가 발생한다. 3")
     @Test
     void validateInputValueForCharacterCase3() {
         String input = "10,000";
@@ -120,6 +132,8 @@ class ApplicationTest extends NsTest {
         );
         assertThat(output()).contains(ERROR_MESSAGE);
     }
+
+    @DisplayName("조건에 맞게 입력하면 정상적으로 구매할 로또의 수를 반환한다.")
     @Test
     void validateInputValueForBuyLotto() {
         String input = "10000";
@@ -129,6 +143,7 @@ class ApplicationTest extends NsTest {
         assertThat(output()).doesNotContain(ERROR_MESSAGE);
     }
 
+    @DisplayName("조건에 맞게 입력하면 정상적으로 로또를 구매하여 번호가 담긴 리스트를 반환한다.")
     @Test
     void buyLotteriesTest() {
         BuyLotto buyLotto = new BuyLotto();
@@ -137,6 +152,7 @@ class ApplicationTest extends NsTest {
         assertThat(buyLotteries.size()).isEqualTo(8);
     }
 
+    @DisplayName("조건에 맞게 입력하면 정상적으로 당첨 번호를 반환한다.")
     @Test
     void createWinningNumberTest() {
         List<Integer> winningNumber = Lotto.sliceWinningNumber("1,2,3,4,5,6");
@@ -144,6 +160,7 @@ class ApplicationTest extends NsTest {
         assertThat(lotto.getNumbers()).isEqualTo(winningNumber);
     }
 
+    @DisplayName("당첨 번호를 6개 초과로 입력하면 에러가 발생한다.")
     @Test
     void validateWinningNumberSize() {
         List<Integer> winningNumber = Lotto.sliceWinningNumber("1,2,3,4,5,6,7");
@@ -155,6 +172,7 @@ class ApplicationTest extends NsTest {
         assertThat(output()).contains("6자리여야");
      }
 
+    @DisplayName("당첨 번호가 1 ~ 45가 아니면 에러가 발생한다.(0 입력)")
     @Test
     void validateWinningNumberRangeCase1() {
         List<Integer> winningNumber = Lotto.sliceWinningNumber("0,2,3,4,5,6");
@@ -166,6 +184,7 @@ class ApplicationTest extends NsTest {
         assertThat(output()).contains("1부터 45 사이");
     }
 
+    @DisplayName("당첨 번호가 1 ~ 45가 아니면 에러가 발생한다. (46 입력)")
     @Test
     void validateWinningNumberRangeCase2() {
         List<Integer> winningNumber = Lotto.sliceWinningNumber("1,2,3,4,5,46");
@@ -177,6 +196,7 @@ class ApplicationTest extends NsTest {
         assertThat(output()).contains("1부터 45 사이");
     }
 
+    @DisplayName("중복된 당첨 번호를 입력하면 에러가 발생한다.")
     @Test
     void validateWinningNumberDuplicate() {
         List<Integer> winningNumber = Lotto.sliceWinningNumber("1,2,3,4,5,1");
@@ -188,6 +208,7 @@ class ApplicationTest extends NsTest {
         assertThat(output()).contains("중복된");
     }
 
+    @DisplayName("숫자와 쉼표(,) 외에 다른 값을 입력하면 예외가 발생한다.")
     @Test
     void validateInputValueTest() {
         assertSimpleTest(() ->
@@ -198,6 +219,7 @@ class ApplicationTest extends NsTest {
         assertThat(output()).contains("숫자와 쉼표(,)만 입력 가능합니다.");
      }
 
+    @DisplayName("쉼표(,)를 중복으로 입력하면 예외가 발생한다.")
     @Test
     void validateConsecutiveCommas() {
         assertSimpleTest(() ->
@@ -206,5 +228,90 @@ class ApplicationTest extends NsTest {
         );
         assertThat(output()).contains(ERROR_MESSAGE);
         assertThat(output()).contains("쉼표(,) 하나로만 나눠야 합니다.");
+    }
+
+    @DisplayName("정상적인 보너스 번호를 입력한다.")
+    @Test
+    void createBonusNumberTest() {
+        List<Integer> winningNumber = Lotto.sliceWinningNumber("1,2,3,4,5,6");
+        Lotto lotto = new Lotto(winningNumber);
+        lotto.inputBonusNumber("7");
+        List<Integer> allNumbers = lotto.getNumbers();
+        assertThat(allNumbers).isEqualTo(List.of(1, 2, 3, 4, 5, 6, 7));
+    }
+
+    @DisplayName("당첨 번호에 있는 보너스 번호를 입력한다.")
+    @Test
+    void validateContainsBonusNumberTest() {
+        List<Integer> winningNumber = Lotto.sliceWinningNumber("1,2,3,4,5,6");
+        Lotto lotto = new Lotto(winningNumber);
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> lotto.inputBonusNumber("6"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertThat(output()).contains(ERROR_MESSAGE);
+        assertThat(output()).contains("당첨 번호에 있는 번호는 보너스 번호로 입력할 수 없습니다.");
+    }
+
+    @DisplayName("보너스 번호가 1 ~ 45가 아니면 에러가 발생한다. (46 입력)")
+    @Test
+    void validateRangeBonusNumberTestCase1() {
+        List<Integer> winningNumber = Lotto.sliceWinningNumber("1,2,3,4,5,6");
+        Lotto lotto = new Lotto(winningNumber);
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> lotto.inputBonusNumber("46"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertThat(output()).contains(ERROR_MESSAGE);
+        assertThat(output()).contains("1부터 45 사이의 숫자여야 합니다.");
+    }
+
+    @DisplayName("보너스 번호가 1 ~ 45가 아니면 에러가 발생한다. (0 입력)")
+    @Test
+    void validateRangeBonusNumberTestCase2() {
+        List<Integer> winningNumber = Lotto.sliceWinningNumber("1,2,3,4,5,6");
+        Lotto lotto = new Lotto(winningNumber);
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> lotto.inputBonusNumber("0"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertThat(output()).contains(ERROR_MESSAGE);
+        assertThat(output()).contains("1부터 45 사이의 숫자여야 합니다.");
+    }
+
+    @DisplayName("경계값 테스트 : 보너스 번호로 45를 입력한다.")
+    @Test
+    void validateRangeBonusNumberTestCase3() {
+        List<Integer> winningNumber = Lotto.sliceWinningNumber("2,3,4,5,6,7");
+        Lotto lotto = new Lotto(winningNumber);
+        lotto.inputBonusNumber("45");
+        List<Integer> allNumbers = lotto.getNumbers();
+
+        assertThat(allNumbers).isEqualTo(List.of(2, 3, 4, 5, 6, 7, 45));
+    }
+
+    @DisplayName("경계값 테스트 : 보너스 번호로 1을 입력한다.")
+    @Test
+    void validateRangeBonusNumberTestCase4() {
+        List<Integer> winningNumber = Lotto.sliceWinningNumber("2,3,4,5,6,7");
+        Lotto lotto = new Lotto(winningNumber);
+        lotto.inputBonusNumber("1");
+        List<Integer> allNumbers = lotto.getNumbers();
+
+        assertThat(allNumbers).isEqualTo(List.of(2, 3, 4, 5, 6, 7, 1));
+    }
+
+    @DisplayName("정상적인 보너스 번호를 입력한다.")
+    @Test
+    void validateCharacter() {
+        List<Integer> winningNumber = Lotto.sliceWinningNumber("1,2,3,4,5,6");
+        Lotto lotto = new Lotto(winningNumber);
+        String number = "7";
+        lotto.inputBonusNumber(number);
+        List<Integer> allNumbers = lotto.getNumbers();
+        assertThat(allNumbers).isEqualTo(List.of(1, 2, 3, 4, 5, 6, 7));
     }
 }
