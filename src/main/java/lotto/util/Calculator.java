@@ -5,6 +5,10 @@ import java.util.List;
 
 public class Calculator {
 
+    public static int countLottoAmount(int purchaseAmount) {
+        return purchaseAmount / 1000;
+    }
+
     public static int countMatchingNumbers(List<Integer> winningNumbers, List<Integer> playerNumbers) {
         List<Integer> intersection = new ArrayList<>(winningNumbers);
         intersection.removeAll(playerNumbers);
