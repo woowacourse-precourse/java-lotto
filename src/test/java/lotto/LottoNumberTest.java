@@ -21,9 +21,7 @@ class LottoNumberTest {
     @Test
     void 로또번호_중복_확인() {
         List<Integer> lottoNumbers = lottoNumber.create();
-        int lottoSize = lottoNumbers.stream()
-                .distinct()
-                .collect(Collectors.toList()).size();
+        long lottoSize = lottoNumbers.stream().count();
 
         assertThat(lottoNumbers.size()).isEqualTo(lottoSize);
     }
