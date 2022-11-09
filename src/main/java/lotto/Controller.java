@@ -12,8 +12,7 @@ public class Controller {
     Player player = new Player();
     Service service = new Service();
 
-    private void getPurchaseAmount() {
-        View.printInputPurchaseAmount();
+    public String getPurchaseAmount() {
         String purchaseAmount = player.getInput();
 
         if (!InputVerifier.isInteger(purchaseAmount)) {
@@ -25,11 +24,16 @@ public class Controller {
             View.printNotLottoPrice();
             throw new IllegalArgumentException();
         }
+
+        return player.getInput();
     }
 
-    private void buyLotto() {
+    public int getLottoAmount(String purchaseAmount) {
+        return service.getLottoAmount(purchaseAmount);
+    }
+
+    private void buyLotto(int lottoAmount) {
         String purchaseAmount = player.getInput();
-        int lottoAmount = service.getLottoAmount(purchaseAmount);
 
         for (int i = 0; i < lottoAmount; i++) {
             LottoGenerator.getWinningNumbers();
@@ -38,8 +42,7 @@ public class Controller {
 
     // TODO: 구매 정보를 출력하는 기능 구현
 
-    private void guessLottoNumbers() {
-        View.printInputLottoNumber();
+    public List<String> guessLottoNumbers() {
         List<String> lottoNumbers = player.guessLottoNumbers();
 
         for (String lottoNumber : lottoNumbers) {
@@ -63,6 +66,7 @@ public class Controller {
             View.printNotLottoPrice();
             throw new IllegalArgumentException();
         }
+        return lottoNumbers;
     }
 
 }
