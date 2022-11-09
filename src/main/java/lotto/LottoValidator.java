@@ -20,19 +20,25 @@ public class LottoValidator {
     public static void validate(List<Integer> numbers){
         checkSize(numbers);
         checkDuplication(numbers);
+        checkRange(numbers);
     }
 
     private static void checkSize(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != COUNT) {
-            throw new IllegalArgumentException(COMMON_MESSAGE + LOTTE_SIZE_INVALID.getMessage() + numbers.size());
+            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + LOTTE_SIZE_INVALID.getMessage() + numbers.size());
         }
     }
 
     private static void checkDuplication(List<Integer> numbers) {
         if (new HashSet<>(numbers).size() != numbers.size()) {
-            throw new IllegalArgumentException(COMMON_MESSAGE + LOTTE_NUMBER_DUPLICATION.getMessage());
+            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + LOTTE_NUMBER_DUPLICATION.getMessage());
         }
     }
 
+    private static void checkRange(List<Integer> numbers) {
+        numbers.stream().filter(number -> !STANDARD_LOTTO_NUMBER.contains(number)).forEach(number -> {
+            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + LOTTE_NUMBER_OUT_BOUND.getMessage());
+        });
+    }
 
 }
