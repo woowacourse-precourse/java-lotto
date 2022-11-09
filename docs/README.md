@@ -3,8 +3,10 @@
 ## ✨ 기능 구현 목록
 
 - [ ] 구입금액을 입력받는 기능 구현.
-    - [ ] 입력받은 금액이 숫자가 아닐시 `IllegalArgumentException` 발생 시키는 기능
-    - [ ] 입력 받은 금액이 1000의 배수가 아닐시 `IllegalArgumentException` 발생 시키는 기능
+    - [x] 입력받은 금액이 숫자가 아닐시 `IllegalArgumentException` 발생 시키는 기능
+    - [x] 입력 받은 금액이 1000의 배수가 아닐시 `IllegalArgumentException` 발생 시키는 기능
+    - [ ] 공백을 입력했을 경우 `IllegalArgumentException` 발생 시키는 기능
+    - [ ] 0을 입력 했을 경우 `IllegalArgumentException` 발생 시키는 기능
 
 
 - [ ] 입력받는 금액에 따라 겹치지 않는 1 ~ 45 사이의 랜덤한 숫자 6개를 생성하는 기능
