@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.view.Input;
+
 /**
  * 구매한 금액의 유효성과 관련 기능을 책임지는 클래스
  */
@@ -11,10 +13,11 @@ public class PurchaseAmount {
     private final String ERROR_MIN_PRICE = "[ERROR] " + UNIT_PRICE + "원 이상의 금액만 입력해주십시오.";
 
     private final int purchaseAmount;
+    private final int inputPurchaseAmount = Input.getInputPurchaseAmount();
 
-    public PurchaseAmount(int purchaseAmount) {
-        isValidate(purchaseAmount);
-        this.purchaseAmount = purchaseAmount;
+    public PurchaseAmount(int inputPurchaseAmount) {
+        isValidate(inputPurchaseAmount);
+        this.purchaseAmount = inputPurchaseAmount;
     }
 
     private void isValidate(int purchaseAmount){
