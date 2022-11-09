@@ -8,6 +8,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -57,5 +58,64 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    void validateInputValueForMoneyCase1() {
+        String input = "1001";
+        BuyLotto buyLotto = new BuyLotto();
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> buyLotto.buyLotto(input))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertThat(output()).contains(ERROR_MESSAGE);
+    }
+    @Test
+    void validateInputValueForMoneyCase2() {
+        String input = "100";
+        BuyLotto buyLotto = new BuyLotto();
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> buyLotto.buyLotto(input))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertThat(output()).contains(ERROR_MESSAGE);
+    }
+    @Test
+    void validateInputValueForCharacterCase1() {
+        String input = "/001";
+        BuyLotto buyLotto = new BuyLotto();
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> buyLotto.buyLotto(input))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertThat(output()).contains(ERROR_MESSAGE);
+    }
+    @Test
+    void validateInputValueForCharacterCase2() {
+        String input = " 10000";
+        BuyLotto buyLotto = new BuyLotto();
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> buyLotto.buyLotto(input))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertThat(output()).contains(ERROR_MESSAGE);
+    }
+    @Test
+    void validateInputValueForCharacterCase3() {
+        String input = "10,000";
+        BuyLotto buyLotto = new BuyLotto();
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> buyLotto.buyLotto(input))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertThat(output()).contains(ERROR_MESSAGE);
+    }
+    @Test
+    void validateInputValueForBuyLotto() {
+        String input = "10000";
+        BuyLotto buyLotto = new BuyLotto();
+        int lotto = buyLotto.buyLotto(input);
+        assertThat(lotto).isEqualTo(10);
+        assertThat(output()).doesNotContain(ERROR_MESSAGE);
     }
 }
