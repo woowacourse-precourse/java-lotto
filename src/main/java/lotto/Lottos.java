@@ -18,9 +18,16 @@ public class Lottos {
         }
 
         this.lottos = lottos;
+        printLottos();
     }
 
     private List<Integer> setLotto() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    }
+
+    private void printLottos() {
+        for (Lotto lotto : this.lottos) {
+            System.out.println(lotto.getNumbers().toString());
+        }
     }
 }
