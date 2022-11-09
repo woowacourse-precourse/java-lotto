@@ -25,7 +25,6 @@ public class Input {
         System.out.println(inputCoinString);
         coin = Integer.parseInt(Console.readLine());
         // 입력받은 금액이 1000원 단위가 아닐 때 예외 처리
-
     }
 
     public static void inputNumber() {
@@ -34,6 +33,5 @@ public class Input {
         for(String item : Console.readLine().split(",")){
             lottoNumber.add(item);
         }
-        if
     }
 }
