@@ -16,5 +16,21 @@ public class Lotto {
         }
     }
 
+    public int compare(List<Integer> winNumber) {
+        int count = 0;
+
+        for (Integer num : numbers) {
+            if (winNumber.contains(num)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public boolean contains(int number){
+        return numbers.contains(number);
+    }
+
     // TODO: 추가 기능 구현
 }
