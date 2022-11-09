@@ -17,4 +17,8 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+
+    public int decideRank(List<Integer> lotto, int bonusNumber) {
+        return 0;
+    }
 }
