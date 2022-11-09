@@ -46,5 +46,12 @@ class LottoTest {
         Assertions.assertThat(set.size()).isNotEqualTo(overlapList.size());
     }
 
+    @Test
+    void 부동소수점() {
+        int cost = 8000;
+        int prize = 5000;
+        Assertions.assertThat(Math.round(prize * 100.0 / cost)).isEqualTo(62.5);
+    }
+
     // 아래에 추가 테스트 작성 가능
 }
