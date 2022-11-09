@@ -47,4 +47,41 @@ public class LottoIO {
         return bonus;
     }
 
+    // 올바르지 않은 당첨 번호 확인
+    public boolean checkInvalidNumbers(String input) {
+        if (input == null) {
+            return true;
+        }
+
+        String[] nums = input.split(",");
+        if (nums.length != 6) {
+            return true;
+        }
+        for (String num : nums) {
+            if (isNotNumericRange(num)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // 올바르지 않은 보너스 번호 확인
+    public boolean checkInvalidBonus(String input) {
+        if (input == null) {
+            return true;
+        }
+        if (isNotNumericRange(input)) {
+            return true;
+        }
+        return false;
+    }
+
+    // 1~45 사이의 숫자 값인지 확인
+    public boolean isNotNumericRange(String num) {
+        if (!num.matches("[1-45]")) {
+            return true;
+        }
+        return false;
+    }
+
 }
