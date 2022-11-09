@@ -65,7 +65,7 @@ class ApplicationTest extends NsTest {
         String input = "1001";
         BuyLotto buyLotto = new BuyLotto();
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> buyLotto.buyLotto(input))
+                assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
                         .isInstanceOf(IllegalArgumentException.class)
         );
         assertThat(output()).contains(ERROR_MESSAGE);
@@ -75,7 +75,17 @@ class ApplicationTest extends NsTest {
         String input = "100";
         BuyLotto buyLotto = new BuyLotto();
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> buyLotto.buyLotto(input))
+                assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertThat(output()).contains(ERROR_MESSAGE);
+    }
+    @Test
+    void validateInputValueForMoneyCase3() {
+        String input = "03000";
+        BuyLotto buyLotto = new BuyLotto();
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
                         .isInstanceOf(IllegalArgumentException.class)
         );
         assertThat(output()).contains(ERROR_MESSAGE);
@@ -85,7 +95,7 @@ class ApplicationTest extends NsTest {
         String input = "/001";
         BuyLotto buyLotto = new BuyLotto();
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> buyLotto.buyLotto(input))
+                assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
                         .isInstanceOf(IllegalArgumentException.class)
         );
         assertThat(output()).contains(ERROR_MESSAGE);
@@ -95,7 +105,7 @@ class ApplicationTest extends NsTest {
         String input = " 10000";
         BuyLotto buyLotto = new BuyLotto();
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> buyLotto.buyLotto(input))
+                assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
                         .isInstanceOf(IllegalArgumentException.class)
         );
         assertThat(output()).contains(ERROR_MESSAGE);
@@ -105,7 +115,7 @@ class ApplicationTest extends NsTest {
         String input = "10,000";
         BuyLotto buyLotto = new BuyLotto();
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> buyLotto.buyLotto(input))
+                assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
                         .isInstanceOf(IllegalArgumentException.class)
         );
         assertThat(output()).contains(ERROR_MESSAGE);
@@ -114,7 +124,7 @@ class ApplicationTest extends NsTest {
     void validateInputValueForBuyLotto() {
         String input = "10000";
         BuyLotto buyLotto = new BuyLotto();
-        int lotto = buyLotto.buyLotto(input);
+        int lotto = buyLotto.getLottoPieces(input);
         assertThat(lotto).isEqualTo(10);
         assertThat(output()).doesNotContain(ERROR_MESSAGE);
     }
