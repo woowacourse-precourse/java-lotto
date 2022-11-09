@@ -11,60 +11,48 @@ import util.message.ErrorMessage;
 class ValidTest {
 
     @Test
-    @DisplayName("[Valid]로또구매시 잘못된 값 입력에 대한 예외발생 테스트")
+    @DisplayName("[Valid]로또구매시 정상적인 값 테스트")
     void purchaseMoney() {
         //given
-        int moneyNotUnits=1023;
-        int moneyUnderThousand=900;
+        String purchaseMoney="7000";
+        //when
+        boolean result = Valid.purchaseMoney(purchaseMoney);
+        //then
+        assertThat(result).isTrue();
+    }
+
+    @Test
+    @DisplayName("[Valid]구매 금액이 1000단위가아닌경우 예외발생 테스트")
+    void MoneyNotThousandUnit() {
+        //given
+        String moneyNotUnits="1001";
         //when
         //then
         assertThatThrownBy(() -> Valid.purchaseMoney(moneyNotUnits))
                 .isInstanceOf(IllegalArgumentException.class).hasMessage(ErrorMessage.UNIT_THOUSAND_MONEY);
+    }
+
+    @Test
+    @DisplayName("[Valid]구매금액이 1000원 미만인 경우 예외발생 테스트")
+    void MoneyUnderThousand() {
+        //given
+        String moneyUnderThousand="800";
+        //when
+        //then
         assertThatThrownBy(() -> Valid.purchaseMoney(moneyUnderThousand))
                 .isInstanceOf(IllegalArgumentException.class).hasMessage(ErrorMessage.OVER_THOUSAND_MONEY);
     }
 
     @Test
-    @DisplayName("[Valid]구매 금액이 1000단위가아닌경우 false")
-    void MoneyNotThousandUnit() {
+    @DisplayName("[Valid]구매금액이 1000원 미만인 경우 예외발생 테스트")
+    void moneyIsDigit() {
         //given
-        int money=1001;
+        String moneyNotDigit="8000원";
         //when
-        boolean result = Valid.isMoneyThousandUnit(money);
         //then
-        assertThat(result).isFalse();
+        assertThatThrownBy(() -> Valid.purchaseMoney(moneyNotDigit))
+                .isInstanceOf(IllegalArgumentException.class).hasMessage(ErrorMessage.NOT_STRING_MONEY);
     }
 
-    @Test
-    @DisplayName("[Valid]구매 금액이 1000단위가 맞는경우 true")
-    void MoneyThousandUnit() {
-        //given
-        int money=10000;
-        //when
-        boolean result = Valid.isMoneyThousandUnit(money);
-        //then
-        assertThat(result).isTrue();
-    }
 
-    @Test
-    @DisplayName("[Valid]구매금액이 1000원 미만인 경우 false 리턴")
-    void MoneyUnderThousand() {
-        //given
-        int money = 823;
-        //when
-        boolean result = Valid.isMoneyOverThousand(money);
-        //then
-        assertThat(result).isFalse();
-    }
-
-    @Test
-    @DisplayName("[Valid]구매금액이 1000원 이상인경우 true 리턴")
-    void MoneyOverThousand() {
-        //given
-        int money = 1000;
-        //when
-        boolean result = Valid.isMoneyOverThousand(money);
-        //then
-        assertThat(result).isTrue();
-    }
 }
