@@ -16,11 +16,10 @@ public class Application {
         int publishNum = getPublishNum();
         System.out.println(publishNum+Print.ANSWER_BUY);
         
-        List<Lotto> lotto = getLotto(publishNum);
+        List<Lotto> lottos = getLotto(publishNum);
 
-        System.out.println("lotto 목록");
-        for (Lotto value : lotto) {
-            System.out.println(Arrays.toString(value.getNumbers().toArray(new Integer[0])));
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto);
         }
     }
 
@@ -29,8 +28,6 @@ public class Application {
         String input = Console.readLine();
 
         validateInputBudget(input);
-
-        System.out.println("inputBudget: "+input);
 
         return input;
     }
