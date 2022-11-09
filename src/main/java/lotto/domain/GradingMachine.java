@@ -20,7 +20,16 @@ public class GradingMachine {
     }
 
     private LottoGrade grade(Lotto lotto) {
-        return null;
+        LottoGrade lottoGrade = new LottoGrade();
+        for (int number : lotto.getLotto()) {
+            if (lottoAnswer.isNumberInAnswer(number)) {
+                lottoGrade.increaseCorrectNumberCount();
+            }
+            if (lottoAnswer.isNumberEqaulToBonus(number)) {
+                lottoGrade.makeBonusCorrect();
+            }
+        }
+        return lottoGrade;
     }
 
     public List<LottoGrade> getLottoGrades() {
