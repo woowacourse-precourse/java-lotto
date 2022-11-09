@@ -11,24 +11,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
 
-
-    @ParameterizedTest
-    @ValueSource(strings = {"qwer","1234","222222","2v4f"})
-    void moneyCheck(String s){
-        assertThatThrownBy(()->{
-            new User(s);
-        }).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void userMoney(){
-        User user = new User("1000");
-        assertThat(user.getMoney()).isEqualTo(1000);
-    }
-
     @Test
     void userLottoNumbers(){
-        User user = new User("5000");
+        User user = new User(5000);
         assertThat(user.getMyLottoNumbers().size()).isEqualTo(5);
+    }
+    @Test
+    void userMoney(){
+        User user = new User(1000);
+        assertThat(user.getMoney()).isEqualTo(1000);
     }
 }
