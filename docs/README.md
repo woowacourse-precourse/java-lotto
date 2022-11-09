@@ -63,3 +63,9 @@
 
 - [x]  Lotto 번호를 표현하는 LottoNumber 래퍼 클래스 추가
 - [x]  로또를 표현하는 Lotto 클래스 추가
+- [x]  로또를 판매하는 LottoSeller 클래스 추가
+    - [x] 자동으로 생성하는 로또의 경우 정렬된 순서로 반환한다.
+- [ ]  자동으로 발급된 로또를 가지고 있는 User 클래스 추가
+- [ ]  로또 등수 및 상금에 대한 정보를 가지고 있는 LottoReward Enum 추가
+- [ ]  로또 결과에 정보를 가지고 있는 LottoResult 추가 EnumMap<LottoReward, Integer>의 일급 컬렉션
+- [ ]  당첨 로또 번호를 가지고 있고, 로또를 검증하는 LottoMachine 클래스 추가
