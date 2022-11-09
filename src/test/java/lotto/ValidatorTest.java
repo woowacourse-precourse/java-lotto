@@ -12,7 +12,7 @@ public class ValidatorTest {
     Validator validator = new Validator();
 
     @DisplayName("입력 받은 값이 숫자가 아닐경우 예외가 발생한다")
-    @ParameterizedTest
+    @ParameterizedTest(name ="{index} {displayName} input={0} ")
     @ValueSource(strings = {"123k", "k123", "adsdf", "12_3", "123 4"})
     void validateNumber(String input) {
         assertThatThrownBy(() -> validator.isNumberOrNot(input))
@@ -20,7 +20,7 @@ public class ValidatorTest {
     }
 
     @DisplayName("입력 받은 값이 1000의 배수가 아닐 경우 예외가 발생한다")
-    @ParameterizedTest
+    @ParameterizedTest(name ="{index} {displayName} input={0} ")
     @ValueSource(strings = {"1001", "1002", "800", "2100"})
     void validateMultipleOfThousand(String input) {
         assertThatThrownBy(()-> validator.isMultiplesOfThousand(input))
