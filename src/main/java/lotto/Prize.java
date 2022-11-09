@@ -1,5 +1,8 @@
 package lotto;
 
+
+import static lotto.Company.*;
+
 public enum Prize {
     ONE(2000000000),
     TWO(30000000),
@@ -16,5 +19,20 @@ public enum Prize {
 
     public Integer getPrizeMoney() {
         return prizeMoney;
+    }
+    public static Prize getPrize(Integer count) {
+        if (count.equals(PRIZE_ONE)) {
+            return ONE;
+        }
+        if (count.equals(PRIZE_THREE)) {
+            return THREE;
+        }
+        if (count.equals(PRIZE_FOUR)) {
+            return FOUR;
+        }
+        if (count.equals(PRIZE_FIVE)) {
+            return FIVE;
+        }
+        return BANG;
     }
 }
