@@ -25,8 +25,15 @@ public class Validator {
     }
 
     public void isZero(String input) {
-        if(Objects.equals(input, "0")) {
+        if (Objects.equals(input, "0")) {
             throw new IllegalArgumentException("[ERROR] 하나 이상의 복권을 구매해야 합니다.");
+        }
+    }
+
+    public void isInRange(String input) {
+        int inputNumber = Integer.parseInt(input);
+        if (1 > inputNumber || inputNumber > 45) {
+            throw new IllegalArgumentException("[ERROR] 1과 45 사이의 정수만 입력 가능합니다.");
         }
     }
 }
