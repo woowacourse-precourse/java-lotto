@@ -4,11 +4,13 @@ import static lotto.LottoGenerator.COUNT;
 import static lotto.LottoGenerator.END_INCLUSIVE;
 import static lotto.LottoGenerator.START_INCLUSIVE;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -36,7 +38,8 @@ class LottoGeneratorTest {
         assertThat(new HashSet<>(lottoNumber).size()).isEqualTo(lottoNumber.size());
     }
 
-
-
-
+    @Test
+    void 랜덤_번호_범위_확인() {
+        lottoNumber.stream().map(STANDARD_LOTTO_NUMBER::contains).forEach(Assertions::assertTrue);
+    }
 }
