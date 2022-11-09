@@ -25,7 +25,7 @@ public class Buyer {
         System.out.println(PURCHASE_PRICE);
         String purchasePrice = readLine();
         purchaseLottoCount = Integer.parseInt(purchasePrice);
-        System.out.println(purchaseLottoCount/1000 + PURCHASE_COUNT);
+        System.out.println(purchaseLottoCount / 1000 + PURCHASE_COUNT);
     }
 
     void winningNumberInput() {
@@ -39,7 +39,7 @@ public class Buyer {
     }
 
     void validateDivideNumber() {
-        if (purchaseLottoCount%1000 != 0) {
+        if (purchaseLottoCount % 1000 != 0) {
             throw new IllegalArgumentException(ERROR_PRICE);
         }
     }
@@ -68,9 +68,9 @@ public class Buyer {
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .toArray(Integer[]::new);
-            if (bonusNumberArr[0] < 1 || bonusNumberArr[0] > 45) {
-                throw new IllegalArgumentException(ERROR_BONUS_NUMBER);
-            }
+        if (bonusNumberArr[0] < 1 || bonusNumberArr[0] > 45) {
+            throw new IllegalArgumentException(ERROR_BONUS_NUMBER);
+        }
     }
 
     void validateInputSeparator(String winningNumber) {
