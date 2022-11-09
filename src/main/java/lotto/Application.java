@@ -1,8 +1,9 @@
 package lotto;
 import camp.nextstep.edu.missionutils.Console;
-
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Application {
     static final int LOTTO_PRICE = 1000;
@@ -12,7 +13,7 @@ public class Application {
     static final String BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
     public static void main(String[] args) {
 //        validateGivenNumbers();
-        initializeBonusNumber();
+//        initializeBonusNumber();
     }
 
     public static int enterTheAmount(){
@@ -53,5 +54,10 @@ public class Application {
         do{
             BONUS_NUMBER = Integer.parseInt(Console.readLine());
         } while(!printTheErrorMessageIfNotInTheRange(List.of(BONUS_NUMBER)));
+    }
+
+    public static Lotto generateRandomSixNumbers(){
+        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return new Lotto(lottoNumbers);
     }
 }
