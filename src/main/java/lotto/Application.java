@@ -12,7 +12,6 @@ public class Application {
     public static void main(String[] args) {
         User user = new User();
         NumberGenerator numberGenerator = new NumberGenerator();
-        StatisticsAnalyzer statisticsAnalyzer = new StatisticsAnalyzer();
         List<Integer> winNumbers = new ArrayList<>();
         int bonusNumber;
 
@@ -36,6 +35,7 @@ public class Application {
         System.out.println("\n보너스 번호를 입력해 주세요.");
         bonusNumber = Integer.parseInt(Console.readLine());
 
+        StatisticsAnalyzer statisticsAnalyzer = new StatisticsAnalyzer(winNumbers, bonusNumber);
         System.out.println("당첨 통계\n---\n");
         statisticsAnalyzer.showWinResult();
 
