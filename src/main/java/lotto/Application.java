@@ -52,4 +52,9 @@ public class Application {
 
         System.out.println("[ERROR] 중복된 번호가 존재합니다.");
     }
+
+    public static void printErrorAboutForm() {
+
+        System.out.println("[ERROR] 올바른 형식으로 입력해야 합니다.");
+    }
 }
