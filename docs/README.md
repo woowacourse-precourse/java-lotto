@@ -46,14 +46,29 @@
 - void printStats(List<Lotto>, List<Integer>, Integer)
   - 당첨 내역을 출력하는 함수
 
+
+### 🚀 입력
+
+- void inputUserCash(int)
+  - 사용자로부터 구입금액을 입력받아 저장하는 함수
+
+
+- void inputWinningNumbers(int[])
+  - 사용자로부터 당첨 번호를 입력받아 저장하는 함수
+
+
+- void inputBonusNumber(Integer)
+  - 사용자로부터 보너스 번호를 입력받아 저장하는 함수
+
+  
 ### 🚀 핵심 로직
 
 - void playLottoGame()
   - 로또 게임을 시작하는 함수
 
 
-- void inputUserCash(int)
-  - 사용자로부터 구입금액을 입력받아 저장하는 함수
+- List<Integer> issueLottoNumbers()
+  - 로또 번호를 발행하는 함수
 
 
 - void validateCashIsInteger(String)
@@ -62,11 +77,7 @@
 
 - void validateCashIsDividedThousand(String)
   - 입력받은 구입금액이 1,000원으로 나누어지는지 검사하는 함수
-
-
-- void inputWinningNumbers(int[])
-  - 사용자로부터 당첨 번호를 입력받아 저장하는 함수
-
+  
 
 - void validateWinningNumbersSize(String)
   - 당첨 번호르 입력한 문자열의 길이가 11(숫자 6개+쉼표 5개)인지 검사하는 함수
@@ -86,11 +97,7 @@
 
 - void validateWinningNumbersAreInRange(String)
   - 입력받은 당첨 번호가 모두 1~45 사이의 숫자인지 검사하는 함수
-
-
-- void inputBonusNumber(Integer)
-  - 사용자로부터 보너스 번호를 입력받아 저장하는 함수
-
+  
 
 - void validateBonusNumberIsInteger(String)
   - 보너스 번호가 숫자로 이루어져있는지 검사하는 함수
