@@ -31,4 +31,10 @@ public class Computer {
             System.out.println(ERROR_DUPLICATE);
         }
     }
+
+    static void validateLottoSize() {
+        if (autoNumbers.size() != 6) {
+            throw new IllegalArgumentException(ERROR_LOTTO_SIZE);
+        }
+    }
 }
