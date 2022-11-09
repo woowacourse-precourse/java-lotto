@@ -14,6 +14,8 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        // 당첨 결과가 유효하면 구매한 로또와 당첨결과를 비교
+        // 당첨결과 출력
     }
 
     // TODO: 추가 기능 구현
