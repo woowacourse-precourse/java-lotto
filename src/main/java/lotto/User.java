@@ -20,7 +20,7 @@ public class User {
     public void showWholeLotto() {
     }
 
-    public Lotto getWholeLotto() {
+    public List<Lotto> getWholeLotto() {
         return null;
     }
 }

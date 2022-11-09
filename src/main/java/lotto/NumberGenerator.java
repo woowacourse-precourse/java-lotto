@@ -1,8 +1,10 @@
 package lotto;
 
+import java.util.List;
+
 public class NumberGenerator {
-    public int generateSixRandomNumbers(){
-        return 0;
+    public List<Integer> generateSixRandomNumbers(){
+        return null;
     }
 
     public int generateRandomNumber(){
