@@ -36,7 +36,9 @@ public class LottoManager {
         List<LottoResult> lottoResults = calculateWins(boughtLottos, winNumbers, bonusNumber);
         out.announceResult();
         out.printDivider();
-        int prizeMoney = getPrizeMoney(lottoResults);
+        WinCount winCount = getWinCount(lottoResults);
+        out.printWinCount(winCount);
+        int prizeMoney = getPrizeMoney(winCount);
         String profitRatio = calculateRatio(money, prizeMoney);
         out.printProfitRatio(profitRatio);
     }
@@ -105,29 +107,17 @@ public class LottoManager {
         return LottoResult.none;
     }
 
-    private int getPrizeMoney(List<LottoResult> results) {
-        int prizeMoney = 0;
-        for (LottoResult result : results) {
-            if (result == LottoResult.first) {
-                prizeMoney += firstPrize;
-            }
-            if (result == LottoResult.second) {
-                prizeMoney += secondPrize;
-            }
-            if (result == LottoResult.third) {
-                prizeMoney += thirdPrize;
-            }
-            if (result == LottoResult.fourth) {
-                prizeMoney += fourthPrize;
-            }
-            if (result == LottoResult.fifth) {
-                prizeMoney += fifthPrize;
-            }
-        }
-        return prizeMoney;
+    private int getPrizeMoney(WinCount winCount) {
+        int result = 0;
+        result += winCount.getFirst() * firstPrize;
+        result += winCount.getSecond() * secondPrize;
+        result += winCount.getThird() * thirdPrize;
+        result += winCount.getFourth() * fourthPrize;
+        result += winCount.getFifth() * fifthPrize;
+        return result;
     }
 
     private String calculateRatio(int cost, int prize) {
-        return String.format(".1f", prize * 100.0 / cost);
+        return String.format("%.1f", (prize * 100.0 / cost));
     }
 }
