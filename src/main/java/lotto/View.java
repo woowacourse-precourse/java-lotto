@@ -6,39 +6,51 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 public class View {
-    static int money;
-    static int bonusNumber;
-    List<Integer> lottoNumber = new ArrayList<>();
 
-    public void ui () {
-        inputMoney();
-        inputLottoNumber();
+    public void printUncheckedLotto (List<List<Integer>> uncheckedLottos) {
+        for (List<Integer> lotto: uncheckedLottos) {
+            System.out.println(lotto);
+        }
     }
 
-    private void inputMoney () {
+    public int inputBonusNumber () {
+        String tempBonusNumber;
+
+        System.out.println("보너스 번호를 입력해주세요.");
+        tempBonusNumber = Console.readLine();
+        isRealNumber(tempBonusNumber);
+
+        return Integer.parseInt(tempBonusNumber);
+    }
+
+    public int inputMoney () {
         String tempMoney;
 
         System.out.println("구입 금액을 입력해주세요.");
         tempMoney = Console.readLine();
         isRealNumber(tempMoney);
 
-        money =  Integer.parseInt(tempMoney);
+        return Integer.parseInt(tempMoney);
     }
 
-    private void inputLottoNumber () {
+    public  List<Integer> inputLottoNumber () {
         String tempLottoNumber;
 
         System.out.println("당첨 번호를 입력해주세요.");
         tempLottoNumber = Console.readLine();
         isRealLottoNumber(tempLottoNumber);
-        splitLottoNumber(tempLottoNumber);
+
+        return splitLottoNumber(tempLottoNumber);
     }
 
-    private void splitLottoNumber (String tempLottoNumber) {
+    private List<Integer> splitLottoNumber (String tempLottoNumber) {
+        List<Integer> lottoNumber = new ArrayList<>();
 
         for(String element: tempLottoNumber.split(",")) {
             lottoNumber.add(Integer.parseInt(element));
         }
+
+        return lottoNumber;
     }
 
     private void isRealNumber (String inputStatement) {
