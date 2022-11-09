@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.domain.LottoResult;
 import lotto.util.RandomUtil;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -18,8 +19,17 @@ public class LottoManager {
         int money = in.inputNumber();
         int lottoCount = buyLotto(money);
         List<List<Integer>> boughtLottos = pickNumbers(lottoCount);
+        out.announceBuyResult(lottoCount);
         out.printBoughtLotto(boughtLottos);
+        out.announceInputWinNumber();
+        List<Integer> winNumbers = in.inputNumbers();
+        out.announceInputBonusNumber();
+        int bonusNumber = in.inputNumber();
 
+        calculateWins(boughtLottos, winNumbers, bonusNumber);
+        out.announceResult();
+        float profitRatio = calculateRatio();
+        out.printProfitRatio(profitRatio);
     }
 
     private int buyLotto(int money) {
@@ -36,11 +46,16 @@ public class LottoManager {
         return result;
     }
 
-    private void calculateWins() {
-
+    private List<LottoResult> calculateWins(List<List<Integer>> boughtLottos, List<Integer> winNumbers, int bonusNumber) {
+        List<LottoResult> result = new ArrayList<>();
+        return result;
     }
 
-    private void calculateRatio() {
+    private LottoResult getGrade(List<Integer> winNumbers, int bonus, List<Integer> bought) {
+        return LottoResult.fifth;
+    }
 
+    private float calculateRatio() {
+        return 0f;
     }
 }
