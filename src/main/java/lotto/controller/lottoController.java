@@ -18,6 +18,7 @@ public class lottoController {
 
 		return quantity;
 	}
+	
 	private static void publishLotto(int quantity) {
 		List<List<Integer>> candidateLotto = new ArrayList<>();
 
@@ -25,4 +26,14 @@ public class lottoController {
 			candidateLotto.add(pickLottoNumbers());
 		}
 	}
+
+	private static List<Integer> pickLottoNumbers() {
+		List<Integer> lottoNumbers = new ArrayList<>();
+
+		for (int i = 0; i < 6; i++) {
+			lottoNumbers.add(pickRandomNumber(lottoNumbers));
+		}
+		return lottoNumbers;
+	}
+
 }
