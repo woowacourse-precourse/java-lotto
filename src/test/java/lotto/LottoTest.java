@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.lotteryshop.Lotto;
+import lotto.validator.UserInputValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,5 +25,11 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 당첨번호 예외 1 ~ 45 사이의 수가 아닌 경우")
+    @Test
+    void 로또당첨번호입력받기_실패1() {
+        String[] inputValue = {"1", "2", "0", "4", "5", "6"};
+        assertThatThrownBy(() -> UserInputValidator.validateInputLottoNumber(inputValue))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
