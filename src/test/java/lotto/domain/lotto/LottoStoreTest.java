@@ -1,0 +1,39 @@
+package lotto.domain.lotto;
+
+import static lotto.domain.lotto.LottoStore.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import java.util.List;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+class LottoStoreTest {
+
+    private final LottoStore lottoStore = new LottoStore();
+
+    @Nested
+    class success {
+
+        @ParameterizedTest(name = "지불 금액 정보를 전달 받고, 금액에 따라 로또를 여러개 발행한다.")
+        @CsvSource({"12000,12", "1000,1", "120000,120"})
+        void test(String money, String result) {
+            List<Lotto> lottos = lottoStore.lottos(money);
+            assertThat(lottos).hasSize(Integer.parseInt(result));
+        }
+    }
+
+    @Nested
+    class fail {
+
+        @ParameterizedTest(name = "1,000원 단위로 나누어 떨어지지 않는 금액이 입력되면 예외를 던진다.")
+        @ValueSource(strings = {"1100", "25555", "500"})
+        void test(String money) {
+            assertThatThrownBy(() -> lottoStore.lottos(money))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(INVALID_VALUE_OF_MONEY);
+        }
+    }
+}
