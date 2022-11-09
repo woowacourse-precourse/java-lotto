@@ -76,9 +76,13 @@ public class Shop {
     }
 
     public void inputBonusNumber() {
-        Integer input = Integer.parseInt(Console.readLine());
-        validateBonusNumber(input);
-        this.bonusNumber = input;
+        try {
+            Integer input = Integer.parseInt(Console.readLine());
+            validateBonusNumber(input);
+            this.bonusNumber = input;
+        } catch (NumberFormatException ignored) {
+            LottoError.illegalArgumentException(INVALID_STRING_INPUT);
+        }
     }
 
     private void validateBonusNumber(Integer number) {
