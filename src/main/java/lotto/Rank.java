@@ -10,8 +10,22 @@ public enum Rank {
 
     private final int numberOfRight;
     private final int prizeMoney;
+
+    private static int MINIMAL_RIGHT = 3;
     private Rank(int numberOfRight, int prizeMoney) {
         this.numberOfRight = numberOfRight;
         this.prizeMoney = prizeMoney;
+    }
+
+    public static Rank valueOf(int numberOfRight, boolean matchBonus){
+        if(numberOfRight < MINIMAL_RIGHT) return NOTHING;
+
+        if(SECOND.numberOfRight == numberOfRight && matchBonus) return SECOND;
+
+        for (Rank rank : values()) {
+            if (rank.numberOfRight == numberOfRight && rank != SECOND) return rank;
+        }
+
+        throw new IllegalArgumentException(numberOfRight + "은 유효하지 않습니다.");
     }
 }
