@@ -6,7 +6,7 @@ import java.util.function.Function;
 
 public enum InputValidation {
     IS_BLANK(
-            "아무 것도 입력 하지 않으셨습니다.",
+            "아무것도 입력하지 않았습니다.",
             String::isBlank,
             List.of("enterPurchaseAmount", "enterWinningNumber", "enterBonusNumber")
     ),

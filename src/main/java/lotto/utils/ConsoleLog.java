@@ -1,6 +1,7 @@
 package lotto.utils;
 
 import camp.nextstep.edu.missionutils.Console;
+import static lotto.validation.InputValidation.IS_BLANK;
 
 public class ConsoleLog {
     private ConsoleLog() {
@@ -22,7 +23,7 @@ public class ConsoleLog {
         try {
             return Console.readLine();
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(IS_BLANK.errorMessage());
         }
     }
 }

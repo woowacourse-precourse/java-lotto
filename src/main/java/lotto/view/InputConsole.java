@@ -14,21 +14,21 @@ public class InputConsole {
         consolelog.println(LINE + "당첨 번호를 입력해 주세요.");
         String input = consolelog.input();
         checkValidation(input, "enterWinningNumber");
-        return consolelog.input();
+        return input;
     }
 
     public static String enterBonusNumber() {
         consolelog.println(LINE + "보너스 번호를 입력해 주세요.");
         String input = consolelog.input();
         checkValidation(input, "enterBonusNumber");
-        return consolelog.input();
+        return input;
     }
 
     public static String enterPurchaseAmount() {
         consolelog.println("구입금액을 입력해 주세요.");
         String input = consolelog.input();
         checkValidation(input, "enterPurchaseAmount");
-        return consolelog.input();
+        return input;
     }
 
     private static void checkValidation(String input, String validationGroup) {
