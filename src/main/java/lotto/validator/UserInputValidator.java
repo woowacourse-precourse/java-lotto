@@ -24,4 +24,10 @@ public class UserInputValidator {
             }
         }
     }
+    public static void validateLottoWinNumberLength(String[] winNumber) {
+        if (winNumber.length > 6) {
+            throw new IllegalArgumentException("[ERROR] 보너스 숫자를 포함하지 않은 로또 번호 갯수는 최대 6개입니다.");
+        }
+    }
+
 }
