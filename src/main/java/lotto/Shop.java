@@ -47,7 +47,6 @@ public class Shop {
         for (int i = 0; i < money / LOTTO_PRICE; i++) {
             lotto.add(createLotto());
         }
-        printSellLotto(lotto);
         return lotto;
     }
 
