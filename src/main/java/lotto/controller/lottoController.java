@@ -37,7 +37,7 @@ public class lottoController {
 
 		return lottoNumbers;
 	}
-	
+
 	public static List<Integer> pickWinningNumbers() {
 		System.out.println("당첨 번호를 입력해 주세요");
 		String winningNumbers = Input.pickWinningNumbers();
@@ -95,8 +95,8 @@ public class lottoController {
 		return winningCount;
 	}
 
-	public static double calculateProfit(List<Integer> winningCount, int money) {
-		int prizeMoney = sumPrizeMoney(winningCount);
+	public static double calculateProfit(List<Integer> winningCount, double money) {
+		double prizeMoney = sumPrizeMoney(winningCount);
 
 		double profit = (prizeMoney/money) * 100;
 
