@@ -4,7 +4,6 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import lotto.Lotto;
-import lotto.tool.LottoTool;
 import lotto.tool.Rank;
 
 public class TextPrinter {
@@ -48,7 +47,6 @@ public class TextPrinter {
   }
 
   public static void printReturnRate(double rate) {
-    String format = String.format("%.1f", rate);
     System.out.println("총 수익률은 " + String.format("%.1f", rate) + "%입니다.");
   }
 
