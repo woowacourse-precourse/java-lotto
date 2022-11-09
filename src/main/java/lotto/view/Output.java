@@ -16,6 +16,7 @@ public class Output {
         for (Lotto lotto : lottos) {
             System.out.println(lotto.toString());
         }
+        System.out.println();
     }
 
     public static void printErrorMessage(String message) {

@@ -6,6 +6,8 @@ import lotto.service.LottoService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -41,6 +43,22 @@ class LottoTest {
     @Test
     void creatLottosSizeCheck(){
         LottoService lottoService = new LottoService();
-        assertThat(lottoService.purchaseLottos(5).size()).isEqualTo(5);
+        List<Lotto> lottos = lottoService.purchaseLottos(5);
+        assertThat(lottos.size())
+                .isEqualTo(5);
+    }
+
+    @DisplayName("당첨 번호 입력시 당첨 로또 생성")
+    @Test
+    void creatWinningLotto(){
+        InputStream in = new ByteArrayInputStream("1,2,3,4,5,6".getBytes());
+        System.setIn(in);
+
+        LottoService lottoService = new LottoService();
+        Lotto winningLotto = lottoService.getWinningLotto();
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        assertThat(winningLotto.toString())
+                .isEqualTo(lotto.toString());
     }
 }

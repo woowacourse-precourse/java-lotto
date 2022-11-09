@@ -16,5 +16,7 @@ public class LottoController {
         //로또 구입
         List<Lotto> lottos = lottoService.purchaseLottos(ticket);
 
+        //당첨 번호 입력
+        Lotto winningLotto = lottoService.getWinningLotto();
     }
 }

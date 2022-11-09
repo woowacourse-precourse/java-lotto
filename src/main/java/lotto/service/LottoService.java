@@ -4,6 +4,7 @@ package lotto.service;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
+import lotto.domain.WinningNumber;
 import lotto.view.Input;
 import lotto.view.Output;
 
@@ -38,5 +39,11 @@ public class LottoService {
         }
         Output.printPurchaseLottos(lottos);
         return lottos;
+    }
+
+    public Lotto getWinningLotto(){
+        String inputWinningNumber = Input.inputWinningNumber();
+        Lotto winningLotto = WinningNumber.getWinningLotto(inputWinningNumber);
+        return winningLotto;
     }
 }
