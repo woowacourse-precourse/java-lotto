@@ -14,6 +14,7 @@ public class LottoResultController {
     private GradingMachine gradingMachine;
     private RankingMachine rankingMachine = new RankingMachine();
     private LottoResult lottoResult = new LottoResult();
+    private List<LottoGrade> lottoGrades;
 
     public LottoResultController(LottoAnswer lottoAnswer, List<Lotto> lottos) {
         this.lottoAnswer = lottoAnswer;
@@ -21,7 +22,14 @@ public class LottoResultController {
         this.gradingMachine = new GradingMachine(lottoAnswer, lottos);
     }
 
-    List<LottoGrade> lottoGrades = gradingMachine.getLottoGrades();
+    public void createLottoGrades() {
+        gradingMachine.run();
+        lottoGrades = gradingMachine.getLottoGrades();
+    }
+
+    public void createLottoResult() {
+
+    }
 
 
 }

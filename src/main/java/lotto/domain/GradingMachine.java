@@ -10,7 +10,6 @@ public class GradingMachine {
     public GradingMachine(LottoAnswer lottoAnswer, List<Lotto> lottos) {
         this.lottoAnswer = lottoAnswer;
         this.lottos = lottos;
-        this.run();
     }
 
     public void run() {
