@@ -26,6 +26,11 @@ public class Buyer {
         winningNumber = readLine();
     }
 
+    void bonusNumberInput() {
+        System.out.println(BONUS_NUMBER_INPUT);
+        bonusNumber = readLine();
+    }
+
     void validateDivideNumber() {
         if (purchaseLottoCount%1000 != 0) {
             throw new IllegalArgumentException(ERROR_PRICE);
