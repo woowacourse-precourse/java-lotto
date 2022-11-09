@@ -4,7 +4,7 @@
 - [x] inputUserMoney 
   - Integer Type 으로 사용자에게 **금액을 입력받기**
 
-- [x] inputWinNumber 
+- [x] inputLottoNumber 
   - Integer Type 으로 사용자에게 **당첨 번호를 입력받기**
 
 - [x] inputBonusNumber
@@ -26,8 +26,8 @@
     - 보너스 번호를 포함한 로또 당첨번호 입력값이 7보다 크다면 IllegalArgumentException를 발생시키기
 
 ### 로또 번호 생성
-- [ ] generateLottoNumber
-  - List<Integer> 타입의 로또번호를 생성한다.
+- [x] generateLottoNumber
+  - List<List<Integer>> 타입의 로또번호를 생성한다. (구매한 로또 갯수에 따라 각 로또 번호를 담는 리스트를 반환 하도록한다.)
 
 ### 수익률 계산
 - [ ] calculateYield
@@ -35,10 +35,10 @@
 
 ### 출력
 
-- [ ] getPurchaseNumberOfLotto
+- [x] getPurchaseNumberOfLotto
   - 구매한 로또 갯수 출력
 
-- [ ] getPublishedLottoNumber
+- [x] getPublishedLottoNumber
   - 발행된 로또 번호를 출력하기
 
 - [ ] getWinCountThree
