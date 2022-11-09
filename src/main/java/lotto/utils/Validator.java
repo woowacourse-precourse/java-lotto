@@ -23,4 +23,10 @@ public class Validator {
             throw new IllegalArgumentException("[ERROR] 구매하실 금액을 입력해주세요.");
         }
     }
+
+    public void isZero(String input) {
+        if(Objects.equals(input, "0")) {
+            throw new IllegalArgumentException("[ERROR] 하나 이상의 복권을 구매해야 합니다.");
+        }
+    }
 }
