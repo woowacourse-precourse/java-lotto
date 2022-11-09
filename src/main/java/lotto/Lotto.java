@@ -4,6 +4,16 @@ import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
+    private static final int price = 1000;
+    private static final ExceptionHandler exceptionHandler = new ExceptionHandler();
+
+    public static Long numberOfLottosQuantity(Long amountPaid) {
+        Long lottoQuantity = amountPaid/price;
+        if (amountPaid%price != 0) {
+            exceptionHandler.foolExceaption("amount");
+        }
+        return lottoQuantity;
+    }
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
