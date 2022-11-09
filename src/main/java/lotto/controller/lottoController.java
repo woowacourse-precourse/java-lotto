@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.ExceptionHandler;
-import lotto.View.Input;
+import lotto.view.Input;
 
 public class lottoController {
 	public static int checkQuantityOfLotto() {
@@ -30,28 +30,14 @@ public class lottoController {
 	public static List<Integer> pickLottoNumbers() {
 		List<Integer> lottoNumbers = new ArrayList<>();
 
-		for (int i = 0; i < 6; i++) {
-			lottoNumbers.add(pickRandomNumber(lottoNumbers));
-		}
+		lottoNumbers = Randoms.pickUniqueNumbersInRange(1,45,6);
 
-		lottoNumbers.sort(Comparator.naturalOrder());
+		lottoNumbers.stream()
+				.sorted();
 
 		return lottoNumbers;
 	}
-
-	private static int pickRandomNumber(List<Integer> lottoNumbers) {
-		int number = Randoms.pickNumberInRange(1, 45);
-
-		if (lottoNumbers.size() == 0) {
-			return number;
-		}
-		while (lottoNumbers.contains(number)) {
-			number = Randoms.pickNumberInRange(1, 45);
-		}
-
-		return number;
-	}
-
+	
 	public static List<Integer> pickWinningNumbers() {
 		System.out.println("당첨 번호를 입력해 주세요");
 		String winningNumbers = Input.pickWinningNumbers();
