@@ -7,7 +7,7 @@ public class PurchaseAmount {
 
     private final int UNIT_PRICE = 1000;
 
-    private final String ERROR_INDIVISIBLE = "[ERROR] 1000원으로 나누어떨어지는 금액만 입력해주십시오.";
+    private final String ERROR_INDIVISIBLE = "[ERROR] " + UNIT_PRICE + "원으로 나누어떨어지는 금액만 입력해주십시오.";
 
     public PurchaseAmount() {
     }
@@ -17,4 +17,6 @@ public class PurchaseAmount {
             throw new IllegalArgumentException(ERROR_INDIVISIBLE);
         }
     }
+
+
 }
