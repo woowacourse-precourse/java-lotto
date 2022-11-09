@@ -105,4 +105,12 @@ public class LottoIO {
         System.out.println("총 수익률은 " + yields + "%입니다.");
     }
 
+    public List<Integer> getLottoAnswer() {
+        return this.lottoAnswer;
+    }
+
+    public int getBonus() {
+        return this.bonus;
+    }
+
 }
