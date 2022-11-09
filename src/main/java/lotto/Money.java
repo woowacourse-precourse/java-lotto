@@ -8,11 +8,17 @@ public class Money {
     private final Integer money;
 
     public Money() {
+        printGuideMessage();
         String money = getMoney();
         validate(money);
         this.money = stringToInt(money);
     }
 
+    private void printGuideMessage() {
+        final String GUIDE_MESSAGE = "구입금액을 입력해 주세요.";
+
+        System.out.println(GUIDE_MESSAGE);
+    }
     private String getMoney() {
         return Console.readLine();
     }
