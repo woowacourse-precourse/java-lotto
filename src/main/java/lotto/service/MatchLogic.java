@@ -54,4 +54,23 @@ public class MatchLogic {
         }
     }
 
+    // 특정 로또와 정답 로또 비교
+    private int answerMatch(List<Integer> userLotto, List<Integer> answerLotto) {
+        int count = 0;
+        for (Integer ans : answerLotto) {
+            if (userLotto.contains(ans)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    // 특정 로또와 보너스 번호 비교
+    private boolean bonusMatch(List<Integer> userLotto, int bonus) {
+        if (userLotto.contains(bonus)) {
+            return true;
+        }
+        return false;
+    }
+
 }
