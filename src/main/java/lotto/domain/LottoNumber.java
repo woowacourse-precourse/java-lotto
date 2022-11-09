@@ -7,6 +7,7 @@ public class LottoNumber {
     public static final int LOTTO_NUMBER_LOWER_BOUND = 1;
     public static final int LOTTO_NUMBER_UPPER_BOUND = 45;
     private static final Map<Integer, LottoNumber> CACHE = new HashMap<>();
+    private static final String INVALID_RANGE_MESSAGE = "[ERROR] 로또 번호의 허용된 범위를 벗어났습니다.";
 
     static {
         for (int i = LOTTO_NUMBER_LOWER_BOUND; i <= LOTTO_NUMBER_UPPER_BOUND; i++) {
@@ -33,7 +34,7 @@ public class LottoNumber {
 
     private static void validate(Integer number) {
         if (number < LOTTO_NUMBER_LOWER_BOUND || LOTTO_NUMBER_UPPER_BOUND < number) {
-            throw new LottoException();
+            throw new IllegalArgumentException(INVALID_RANGE_MESSAGE);
         }
     }
 }
