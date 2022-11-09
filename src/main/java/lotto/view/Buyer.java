@@ -2,6 +2,7 @@ package lotto.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static lotto.view.ErrorMessage.ERROR_BLANK;
+import static lotto.view.ErrorMessage.ERROR_BONUS_NUMBER;
 import static lotto.view.ErrorMessage.ERROR_LOTTO_LENGTH;
 import static lotto.view.ErrorMessage.ERROR_NUMBER_RANGE;
 import static lotto.view.ErrorMessage.ERROR_PRICE;
@@ -45,7 +46,7 @@ public class Buyer {
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .toArray(Integer[]::new);
-        for (int i = 0; i < winningNumber.length(); i++) {
+        for (int i = 0; i < WinningNumberArr.length; i++) {
             if (WinningNumberArr[i] < 1 || WinningNumberArr[i] > 45) {
                 throw new IllegalArgumentException(ERROR_NUMBER_RANGE);
             }
@@ -57,6 +58,20 @@ public class Buyer {
         if (winningNumber.length() != 6) {
             throw new IllegalArgumentException(ERROR_LOTTO_LENGTH);
         }
+    }
+
+    void validateInputBonusNumber(String bonusNumber) {
+        Integer[] bonusNumberArr = Stream.of(bonusNumber)
+                .mapToInt(Integer::parseInt)
+                .boxed()
+                .toArray(Integer[]::new);
+            if (bonusNumberArr[0] < 1 || bonusNumberArr[0] > 45) {
+                throw new IllegalArgumentException(ERROR_BONUS_NUMBER);
+            }
+    }
+
+    void validateInputSeparator(String winningNumber) {
+
     }
 
     void validateInputBlank(String winningNumber) {
