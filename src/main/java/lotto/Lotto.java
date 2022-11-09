@@ -17,7 +17,8 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validateCntNumber(numbers);
-        validateCheckDuplicate(numbers);
+        validateDuplicate(numbers);
+        validateNumberCondition(numbers);
         this.numbers = numbers;
     }
 
@@ -28,10 +29,18 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    private void validateCheckDuplicate(List<Integer> numbers) {
+    private void validateDuplicate(List<Integer> numbers) {
         for (int i = 1; i < numbers.size(); i++) {
             if (numbers.get(i-1).equals(numbers.get(i))) {
                 exceptionHandler.foolExceaption("lottoDuplicate");
+            }
+        }
+    }
+
+    private void validateNumberCondition(List<Integer> numbers) {
+        for (int i = 1; i < numbers.size(); i++) {
+            if (numbers.get(i-1) < 1 || numbers.get(i-1) > 45) {
+                exceptionHandler.foolExceaption("lottoCondition");
             }
         }
     }
