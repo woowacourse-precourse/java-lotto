@@ -1,14 +1,32 @@
 package lotto;
 
+import static lotto.LottoGenerator.LOTTO_NUMBER_LENGTH;
+import static lotto.LottoGenerator.LOTTO_NUMBER_MAX_VALUE;
+import static lotto.LottoGenerator.LOTTO_NUMBER_MIN_VALUE;
+
+import java.util.Arrays;
+import java.util.List;
+
 public class Validator {
 
     public static final String NEED_TO_INPUT_NUMBER = "[ERROR] 숫자를 입력해주세요";
-    public static final String NEED_TO_INPUT_NUMBER_CAN_DIVIDE_BY_ONE_THOUSAND
-            = "[ERROR] 1000으로 나누어 떨어지는 숫자를 입력해주세요";
+    public static final String NEED_TO_INPUT_NUMBER_CAN_DIVIDE_BY_ONE_THOUSAND =
+            "[ERROR] 1000으로 나누어 떨어지는 숫자를 입력해주세요";
+    public static final String NEED_TO_INPUT_SIX_NUMBER = "[ERROR] 로또 번호는 6자리를 입력하여야 합니다.";
+    public static final String NEED_TO_INPUT_RIGHT_NUMBER_RANGE =
+            "[ERROR] 1 이상 45 이하의 숫자를 입력하여야 합니다.";
+    public static final String NEED_TO_USE_COMMA = "[ERROR] 콤마(,)를 통해 숫자를 구분해주세요";
 
     public void validateMoney(String money) {
         valueIsNumber(money);
         valueCanDivideByOneThousand(money);
+    }
+
+    public void validateWinningNumbers(String input) {
+        checkUsingComma(input);
+        valueIsNumber(input.replaceAll(",", ""));
+        validateValueLength(input);
+        validateValueRange(input);
     }
 
     private void valueIsNumber(String money) {
@@ -20,6 +38,35 @@ public class Validator {
     private void valueCanDivideByOneThousand(String money) {
         if (Integer.parseInt(money) / 1000 != 0) {
             throw new IllegalArgumentException(NEED_TO_INPUT_NUMBER_CAN_DIVIDE_BY_ONE_THOUSAND);
+        }
+    }
+
+    private void checkUsingComma(String input) {
+        if (!input.contains(",")) {
+            throw new IllegalArgumentException(NEED_TO_USE_COMMA);
+        }
+    }
+
+    private void validateValueRange(String input) {
+        List<String> inputValues = Arrays.asList(input.split(","));
+        if (isNotRightRangeNumber(inputValues)) {
+            throw new IllegalArgumentException(NEED_TO_INPUT_RIGHT_NUMBER_RANGE);
+        }
+    }
+
+    private boolean isNotRightRangeNumber(List<String> inputValues) {
+        return inputValues.stream()
+                .map(Integer::parseInt)
+                .anyMatch(number ->
+                        number < LOTTO_NUMBER_MIN_VALUE ||
+                        number > LOTTO_NUMBER_MAX_VALUE
+                );
+    }
+
+    private void validateValueLength(String input) {
+        List<String> inputValues = Arrays.asList(input.split(","));
+        if (inputValues.size() != LOTTO_NUMBER_LENGTH) {
+            throw new IllegalArgumentException(NEED_TO_INPUT_SIX_NUMBER);
         }
     }
 }

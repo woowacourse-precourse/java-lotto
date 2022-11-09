@@ -17,6 +17,7 @@ public class InputDevice {
 
     public List<Integer> sendWinningNumbers() {
         String input = Console.readLine();
+        validator.validateWinningNumbers(input);
         return Arrays.stream(input.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
