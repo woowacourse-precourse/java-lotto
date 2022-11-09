@@ -37,4 +37,9 @@ public class Application {
 
         System.out.println("구입 금액을 입력해 주세요.");
     }
+
+    public static void printErrorAboutRange() {
+
+        System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다");
+    }
 }
