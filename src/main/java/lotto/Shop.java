@@ -11,8 +11,7 @@ public class Shop {
     private static final int LOTTO_PRICE = 1000;
     private static Shop shop;
 
-    private Shop() {
-    }
+    private Shop() {}
 
     public static Shop getInstance() {
         if(shop == null) {
@@ -47,7 +46,7 @@ public class Shop {
     }
 
     private void validate(int money) {
-        if (money % 1000 > 0) {
+        if (money % LOTTO_PRICE > 0) {
             throw new IllegalArgumentException("[ERROR] 1,000원 단위로 나뉘지 않습니다");
         }
     }
@@ -57,7 +56,7 @@ public class Shop {
 
         while(money > 0) {
             lotteryTickets.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
-            money -= 1000;
+            money -= LOTTO_PRICE;
         }
 
         return lotteryTickets;
