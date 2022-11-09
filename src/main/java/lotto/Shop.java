@@ -1,35 +1,46 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Shop {
+    
+    private static int money;
+    private static final int LOTTO_PRICE = 1000;
 
-    public static void purchase() {
+    public static List<Lotto> purchase() {
+        List<Lotto> lotteryTickets = new ArrayList<>();
+        
         System.out.println("구입금액을 입력해 주세요.");
         getMoney();
+        while(money > 0) {
+            lotteryTickets.add(publishLotteryTicket());
+            money -= LOTTO_PRICE;
+        }
+
+        return lotteryTickets;
     }
 
-    private static String getInput() {
-        return Console.readLine();
-    }
-
-    private static int getMoney() {
-        int money;
-
+    private static void getMoney() {
         try {
-            money = Integer.parseInt(getInput());
+            money = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 숫자가 아닙니다");
         }
 
-        validate(money);
-
-        return money;
+        validate();
     }
 
-    private static void validate(int money) {
+    private static void validate() {
         if (money % 1000 > 0) {
             throw new IllegalArgumentException("[ERROR] 1,000원 단위로 나뉘지 않습니다");
         }
+    }
+
+    private static Lotto publishLotteryTicket() {
+        return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
 }
