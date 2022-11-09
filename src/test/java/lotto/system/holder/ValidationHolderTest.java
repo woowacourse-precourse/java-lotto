@@ -19,6 +19,7 @@ class ValidationHolderTest {
 	}
 
 	@Test
+	@SuppressWarnings("unchecked") // validators 필드가 ThreadLocal<List<Validator>> 임이 보장되므로 무점검 경고를 해제한다.
 	@DisplayName("ValidationHolder 에 저장할 Validator 리스트를 초기화할 수 있다.")
 	void givenValidatorHolder_whenInitializingList_thenSavesLists() {
 	    //given
@@ -63,6 +64,7 @@ class ValidationHolderTest {
 	}
 
 	@Test
+	@SuppressWarnings("unchecked") // validators 필드가 ThreadLocal<List<Validator>> 임이 보장되므로 무점검 경고를 해제한다.
 	@DisplayName("clearHolder() 를 호출하여 ValidatorHolder 의 리스트를 비울 수 있다.")
 	void givenAlreadyInitializedValidatorHolder_whenClearingHolder_thenClearsHolder() {
 	    //given
