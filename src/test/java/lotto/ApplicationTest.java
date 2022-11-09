@@ -59,7 +59,7 @@ class ApplicationTest extends NsTest {
         });
     }
 
-    @DisplayName("구입 금액이 로또 금액인 100으로 나누어지지 않으면 예외 발생.")
+    @DisplayName("구입 금액이 로또 금액인 1000으로 나누어지지 않으면 예외 발생.")
     @Test
     void validateTheEnteredAmount(){
         final String INVALID_NUMBER = "1234";
