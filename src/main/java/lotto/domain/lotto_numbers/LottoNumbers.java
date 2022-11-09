@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public interface LottoNumbers {  // 검증 로직 중복을 제거하기 위함.
+interface LottoNumbers {  // 검증 로직 중복을 제거하기 위함.
 
     default void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
