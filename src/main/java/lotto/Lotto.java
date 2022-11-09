@@ -10,6 +10,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validateNumbersSize(numbers);
         validateNumbersAreInRange(numbers);
+        validateNumbersAreDuplicate(numbers);
         this.numbers = numbers;
     }
 
@@ -25,6 +26,14 @@ public class Lotto {
             if (numbers.get(i) < 1 || numbers.get(i) > 45) {
                 printErrorAboutRange();
                 throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    private void validateNumbersAreDuplicate(List<Integer> numbers) {
+        for (int i = 0; i < numbers.size() - 1; i++) {
+            for (int j = i + 1; j < numbers.size(); j++) {
+                checkNumbersAreDuplicate(numbers.get(i), numbers.get(j));
             }
         }
     }
