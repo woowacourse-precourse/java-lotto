@@ -1,11 +1,9 @@
 package lotto;
 
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Lotto {
-    private static final String ERROR_MSG = "로또 번호는 1~45 사이의 중복되지 않은 6개의 숫자입니다";
+    private static final String ERROR_MSG = "[ERROR] 로또 번호는 1~45 사이의 중복되지 않은 6개의 숫자입니다";
     private static final int LOTTO_SIZE = 6;
 
     private final List<Integer> numbers;
@@ -36,5 +34,18 @@ public class Lotto {
         return false;
     }
 
+    @Override
+    public String toString() {
+        String str = "";
 
+        str += "[";
+        for (int i = 0; i < LOTTO_SIZE; i++) {
+            str += numbers.get(i);
+            if (LOTTO_SIZE - 1 != i)
+                str += ", ";
+        }
+        str += "]";
+
+        return str;
+    }
 }
