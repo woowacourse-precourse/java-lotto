@@ -15,7 +15,7 @@ class SellerTest {
     }
 
     @Test
-    @DisplayName("사용자 금액 입력 성공")
+    @DisplayName("사용자 금액 입력 성공_로또 발행")
     void sellLotto_Success() {
         Seller seller = Seller.getInstance();
         String money = "3000";
