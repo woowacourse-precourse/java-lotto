@@ -13,6 +13,7 @@ public class PurchaseAmount {
     private void validate(String amount){
         validator.checkInteger(amount);
         validator.checkUnit(amount);
+        validator.checkBelow(amount);
     }
     public Integer getAmount(){
         return amount;
