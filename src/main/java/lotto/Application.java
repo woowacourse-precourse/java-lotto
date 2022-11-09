@@ -22,4 +22,9 @@ public class Application {
 
         System.out.println(lottoNumberList.get(lottoNumberList.size() - 1) + "]");
     }
+
+    public static void printWinningNumbersInputBox() {
+
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
 }
