@@ -7,10 +7,6 @@
   -  입력된 로또 번호들이 총 6개인지 검사하는 함수
 
 
-- void validateNumbersAreInteger(List<Integer>)
-    - 입력된 로또 번호들이 각각 정수인지 검사하는 함수
-
-
 - void validateNumbersAreInRange(List<Integer>)
   - 입력된 로또 번호들이 각각 1~45 사이의 수인지 검사하는 함수
 
