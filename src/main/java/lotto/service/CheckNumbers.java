@@ -3,7 +3,7 @@ package lotto.service;
 import java.util.List;
 
 public class CheckNumbers {
-    private static int count = 0;
+    private int count = 0;
     /**
      * 1등: 6개 번호 일치 / 2,000,000,000원
      * 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원
@@ -18,8 +18,12 @@ public class CheckNumbers {
                 count++;
             }
         }
-        if (count == 5)
+        if (count == 6) {
+            count++;
+        }
+        if (count == 5) {
             secondGrade(myNumbers, bonusNumber);
+        }
 
         return count;
     }
