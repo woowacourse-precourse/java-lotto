@@ -40,4 +40,8 @@ public class UserInterface {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+second+"개");
         System.out.println("6개 일치 (2,000,000,000원) - "+first+"개");
     }
+
+    void printRateReturn(double rateOfReturn){
+        System.out.println("총 수익률은 "+rateOfReturn+"입니다.");
+    }
 }
