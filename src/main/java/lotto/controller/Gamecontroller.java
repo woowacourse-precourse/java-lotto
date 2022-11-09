@@ -1,7 +1,8 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 import lotto.Lotto;
 import lotto.common.Msg;
