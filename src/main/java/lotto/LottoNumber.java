@@ -1,8 +1,11 @@
 package lotto;
 
 public class LottoNumber {
+    private final int number;
+
     public LottoNumber() {
         Money money = new Money();
+        this.number = computeLottoNumber(money.getMoney());
     }
 
     private int computeLottoNumber(int money) {
