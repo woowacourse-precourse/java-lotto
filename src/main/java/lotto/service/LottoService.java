@@ -35,6 +35,9 @@ public class LottoService {
         } catch (Exception e) {
             throw new IllegalArgumentException(Error.NUMBER.getMsg());
         }
+        if (i < 1000) {
+            throw new IllegalArgumentException(Error.MINUS.getMsg());
+        }
         if (i % 1000 != 0) {
             throw new IllegalArgumentException(Error.THOUSAND.getMsg());
         }
