@@ -4,13 +4,16 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Application {
     static Scanner sc = new Scanner(System.in);
+    static List<List<Integer>> Lottos = new ArrayList<>();
     public static void main(String[] args) {
-
+        createAnswer();
+        for (int i = 0; i<takeCost(); i++)
+            Lottos.add(getLotto());
+        printMyLotto(Lottos,takeCost());
     }
 
     public static Integer takeCost() {
@@ -52,6 +55,38 @@ public class Application {
         if(!answer.contains(bonus)) answer.add(bonus);
         return answer;
     }
+
+    public static List<Integer> getLotto(){
+        List<Integer> MyLotto = new ArrayList<>();
+
+        while (MyLotto.size() < 7){
+            int rndNum = Randoms.pickNumberInRange(1,45);
+            if(!MyLotto.contains(rndNum)) MyLotto.add(rndNum);
+        }
+
+        return MyLotto;
+    }
+
+    public static void printMyLotto(List Lottos, int count){
+        System.out.println(count+"개를 구매했습니다.");
+
+        seperateBonus(Lottos);
+
+        for(int i = 0; i < count; i++)
+            System.out.println(Lottos.get(i));
+    }
+
+    public static List<Integer> seperateBonus(List<List> Lottos){
+        List<Integer> Bonuses = new ArrayList<>();
+
+        for(int i = 0; i < Lottos.size(); i++){
+            Bonuses.add((Integer) Lottos.get(i).get(6));
+            Bonuses.remove(Lottos.get(i).get(6));
+        }
+
+        return Bonuses;
+    }
+
 
 
 }
