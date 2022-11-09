@@ -29,6 +29,15 @@ class LottoGameServiceTest {
     @ValueSource(strings = {"500", "1500", "1750", "10002"})
     void 로또_구입_금액이_1000으로_나누어_떨어지지_않으면_예외_발생(String lottoPurchaseAmount) {
         assertThatThrownBy(() -> lottoGameService.getLottoIssueCount(lottoPurchaseAmount))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("로또 구입 금액은 1,000원으로 나누어 떨어져야합니다.");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"a", "", "abc", "a123", "AAA"})
+    void 로또_구입_금액이_숫자가_아니면_예외_발생(String lottoPurchaseAmount) {
+        assertThatThrownBy(() -> lottoGameService.getLottoIssueCount(lottoPurchaseAmount))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("로또 구입 금액은 숫자여야합니다.");
     }
 }
