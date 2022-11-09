@@ -1,18 +1,33 @@
 package lotto;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 public class Application {
     public static void main(String[] args) {
 
-        inputPay();
+        int pay = inputPay();
+        int lottoCount = pay/1_000;
+        List<List<Integer>> lottoNumbers = new ArrayList<>();
+        System.out.println(lottoCount + "개를 구매했습니다.");
+        for (int i = 0; i < lottoCount; i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(numbers);
+            System.out.println(numbers);
+            lottoNumbers.add(numbers);
+        }
 
         // TODO: 프로그램 구현
     }
 
     public static int inputPay() {
         System.out.println("구입금액을 입력해 주세요.");
-        return checkPay(readLine());
+        return checkPay(Console.readLine());
     }
 
     public static int checkPay(String str) {
