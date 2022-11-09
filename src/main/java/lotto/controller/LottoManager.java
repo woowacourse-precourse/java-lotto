@@ -51,9 +51,37 @@ public class LottoManager {
         return result;
     }
 
-    private LottoResult getGrade(List<Integer> winNumbers, int bonus, List<Integer> bought) {
-        return LottoResult.fifth;
+    private LottoResult getGrade(List<Integer> winNumbers, int bonus, List<Integer> pickNumbers) {
+        int count = 0;
+
+        for (int number : pickNumbers) {
+            if (winNumbers.contains(number)) {
+                count++;
+            }
+        }
+
+        return gradeByHitCount(bonus, pickNumbers, count);
     }
+
+    private LottoResult gradeByHitCount(int bonus, List<Integer> pickNumbers, int count) {
+        if (count == 6) {
+            return LottoResult.first;
+        }
+        if (count == 5 && pickNumbers.contains(bonus)) {
+            return LottoResult.second;
+        }
+        if (count == 5 && !pickNumbers.contains(bonus)) {
+            return LottoResult.third;
+        }
+        if (count == 4) {
+            return LottoResult.fourth;
+        }
+        if (count == 3) {
+            return LottoResult.fifth;
+        }
+        return LottoResult.none;
+    }
+
 
     private float calculateRatio() {
         return 0f;
