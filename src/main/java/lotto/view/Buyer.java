@@ -42,4 +42,12 @@ public class Buyer {
             throw new IllegalArgumentException(ERROR_LOTTO_LENGTH);
         }
     }
+
+    void validateInputBlank(String winningNumber) {
+        for (int i = 0; i < winningNumber.length(); i++) {
+            if (winningNumber.charAt(i) == ' ') {
+                throw new IllegalArgumentException(ERROR_BLANK);
+            }
+        }
+    }
 }
