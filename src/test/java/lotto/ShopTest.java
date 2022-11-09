@@ -4,7 +4,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ShopTest {
@@ -31,5 +34,19 @@ class ShopTest {
             Application.main(new String[]{});
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]");
+    }
+
+    @DisplayName("구매한 로또 출력")
+    @Test
+    void printLotteryTickets() {
+        System.setOut(new PrintStream(new ByteArrayOutputStream()));
+
+        ByteArrayOutputStream stdOut = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(stdOut));
+
+        System.setIn(new ByteArrayInputStream("4000".getBytes()));
+        Application.main(new String[]{});
+
+        assertThat(stdOut.toString()).contains("4개");
     }
 }
