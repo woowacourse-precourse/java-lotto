@@ -13,6 +13,12 @@ public class LottoManager {
     OutputView out = new OutputView();
 
     private final int lottoPrice = 1000;
+    private final int firstPrize = 2000000000;
+    private final int secondPrize = 30000000;
+    private final int thirdPrize = 1500000;
+    private final int fourthPrize = 50000;
+    private final int fifthPrize = 5000;
+
 
     public void run() {
         out.announceInputMoney();
@@ -87,8 +93,29 @@ public class LottoManager {
         return LottoResult.none;
     }
 
+    private int getPrizeMoney(List<LottoResult> results) {
+        int prizeMoney = 0;
+        for (LottoResult result : results) {
+            if (result == LottoResult.first) {
+                prizeMoney += firstPrize;
+            }
+            if (result == LottoResult.second) {
+                prizeMoney += secondPrize;
+            }
+            if (result == LottoResult.third) {
+                prizeMoney += thirdPrize;
+            }
+            if (result == LottoResult.fourth) {
+                prizeMoney += fourthPrize;
+            }
+            if (result == LottoResult.fifth) {
+                prizeMoney += fifthPrize;
+            }
+        }
+        return prizeMoney;
+    }
 
-    private float calculateRatio() {
+    private float calculateRatio(int cost, int prize) {
         return 0f;
     }
 }
