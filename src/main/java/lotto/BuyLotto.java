@@ -16,7 +16,7 @@ public class BuyLotto {
         return price;
     }
 
-    public void inputPriceException(String price) {
+    private void inputPriceException(String price) {
         if((Integer.parseInt(price) % INPUT_UNIT) != 0) {
             throw new IllegalArgumentException("[ERROR] 구매금액은 1000원 단위여야 합니다.");
         }
