@@ -47,10 +47,18 @@ public class Shop {
 
     public List<Lotto> sellLotto() {
         List<Lotto> lotto = new ArrayList<>();
-        for (int i = 0; i < money; i++) {
+        for (int i = 0; i < money / LOTTO_PRICE; i++) {
             lotto.add(createLotto());
         }
+        printSellLotto(lotto);
         return lotto;
+    }
+
+    private void printSellLotto(List<Lotto> lotto) {
+        System.out.println(lotto.size() + "개를 구매했습니다.");
+        for (Lotto l : lotto) {
+            System.out.println(l);
+        }
     }
 
     public void inputWinNumbers() {
