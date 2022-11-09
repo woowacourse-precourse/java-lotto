@@ -9,6 +9,7 @@ public class NumberGenerator {
 
     public int enterPurchasePrice() {
         String purchasePrice = Console.readLine();
+
         return Integer.parseInt(purchasePrice);
     }
 }
