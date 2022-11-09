@@ -5,18 +5,20 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.*;
 
 public class Application {
+    private static List<Integer> winning_lottery_number;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
 
     private static int purchaseAmountInput() {
         String user_input = Console.readLine();
-        int result;
+        int purchase_amount;
 
         purchaseAmount_exceptionHandling(user_input);
-        result = Integer.parseInt(user_input);
+        purchase_amount = Integer.parseInt(user_input);
 
-        return result;
+        return purchase_amount;
     }
 
     private static void purchaseAmount_exceptionHandling(String user_input) {
@@ -34,41 +36,64 @@ public class Application {
     }
 
     private static List<Integer> winningLotteryNumber(String user_input) {
-        List<String> token_String;
-        List<Integer> token_int;
+        List<String> winning_lottery_number_String;
+        List<Integer> winning_lottery_number_int;
 
-        token_String = restTokenizer(user_input);
-        isNumExceptionHandling(token_String);
-        token_int = tokenParseInt(token_String);
-        isRangeExceptionHandling(token_int);
-        isOverlapExceptionHandling(token_int);
-        return token_int;
+        winning_lottery_number_String = restTokenizer(user_input);
+        tokenIsNumExceptionHandling(winning_lottery_number_String);
+        winning_lottery_number_int = tokenParseInt(winning_lottery_number_String);
+        toeknIsRangeExceptionHandling(winning_lottery_number_int);
+        tokenIsOverlapExceptionHandling(winning_lottery_number_int);
+        return winning_lottery_number_int;
     }
 
-    private static void isNumExceptionHandling(List<String> token_String) {
+    private static int bonusNumberInput() {
+        int bonus_number;
+        String user_input = Console.readLine();
+
+        bonusNumberIsNumberExceptionHandling(user_input);
+        bonus_number=Integer.parseInt(user_input);
+        bonusNumberOverlapExceptionHandling(bonus_number);
+        return bonus_number;
+    }
+
+    private static void bonusNumberIsNumberExceptionHandling(String user_input){
+        if(!isNumber(user_input))
+            throw new IllegalArgumentException();
+    }
+
+    private static void bonusNumberOverlapExceptionHandling(int bonus_number){
+        for(int i=0;i<winning_lottery_number.size();i++){
+            if(winning_lottery_number.get(i)==bonus_number){
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    private static void tokenIsNumExceptionHandling(List<String> token_String) {
         if (tokenIsNumException(token_String)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void isRangeExceptionHandling(List<Integer> token_int) {
+    private static void toeknIsRangeExceptionHandling(List<Integer> token_int) {
         if (tokenRangeException(token_int)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static void isOverlapExceptionHandling(List<Integer> token_int){
-        if(isOverlap(token_int)){
+    private static void tokenIsOverlapExceptionHandling(List<Integer> token_int) {
+        if (isOverlap(token_int)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private static boolean isOverlap(List<Integer> token_int){
-        Set<Integer> overlapCheck=new HashSet<>();
-        for(int i=0;i<token_int.size();i++){
+    private static boolean isOverlap(List<Integer> token_int) {
+        Set<Integer> overlapCheck = new HashSet<>();
+        for (int i = 0; i < token_int.size(); i++) {
             overlapCheck.add(token_int.get((i)));
         }
-        if(overlapCheck.size()!=token_int.size()){
+        if (overlapCheck.size() != token_int.size()) {
             return true;
         }
         return false;
