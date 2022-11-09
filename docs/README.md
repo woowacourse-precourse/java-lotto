@@ -1,5 +1,5 @@
 # 기능목록
-## 도메인
+## 도메인 모델
 ### Lotto
 1. validate
    1. isNotRightLength : 리스트의 길이가 6이 아니면 참을 반환
