@@ -32,7 +32,7 @@ public class ValidatorTest {
     @ParameterizedTest(name = "{displayName}")
     @EmptySource
     void validateEmptyString(String input) {
-        assertThatThrownBy(()->validator.isfilledString(input))
+        assertThatThrownBy(()->validator.isFilledString(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
