@@ -30,4 +30,15 @@ public class UserIO {
         return money;
     }
 
+    // 로또 구입내역
+    public List<Lotto> purchaseLotto(int amount) {
+        for (int i = 0; i < amount; i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(numbers);
+            Lotto lotto = new Lotto(numbers);
+            this.userLottoList.add(lotto);
+        }
+        return this.userLottoList;
+    }
+
 }
