@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import lotto.utils.Validator;
@@ -24,6 +25,14 @@ public class ValidatorTest {
     @ValueSource(strings = {"1001", "1002", "800", "2100"})
     void validateMultipleOfThousand(String input) {
         assertThatThrownBy(()-> validator.isMultiplesOfThousand(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력 받은 값이 공백의 문자열일 경우")
+    @ParameterizedTest(name = "{displayName}")
+    @EmptySource
+    void validateEmptyString(String input) {
+        assertThatThrownBy(()->validator.isfilledString(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
