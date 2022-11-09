@@ -26,4 +26,10 @@ public class Buyer {
             throw new IllegalArgumentException(ERROR_PRICE);
         }
     }
+
+    void validateInputNumberSize(String purchasePrice) {
+        if (purchasePrice.length() != 11) {
+            throw new IllegalArgumentException(ERROR_LOTTO_LENGTH);
+        }
+    }
 }
