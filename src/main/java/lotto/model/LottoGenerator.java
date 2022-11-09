@@ -1,6 +1,7 @@
 package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Collections;
 import java.util.List;
 import lotto.constant.Constant;
 
@@ -9,7 +10,7 @@ public class LottoGenerator {
     public static List<Integer> getWinningNumbers() {
         List<Integer> winningNumbers = generateNumbers();
         winningNumbers.addAll(generateBonusNumber());
-        
+
         return winningNumbers;
     }
 
@@ -19,8 +20,11 @@ public class LottoGenerator {
     }
 
     private static List<Integer> generateNumbers() {
-        return Randoms.pickUniqueNumbersInRange(Constant.LOTTO_START_NUMBER, Constant.LOTTO_END_NUMBER,
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(Constant.LOTTO_START_NUMBER, Constant.LOTTO_END_NUMBER,
                 Constant.LOTTO_SIZE);
+        Collections.sort(numbers);
+
+        return numbers;
     }
 
 }
