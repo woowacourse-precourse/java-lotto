@@ -1,0 +1,6 @@
+package lotto;
+
+
+class LottoWinningNumbersGeneratorTest {
+
+}
