@@ -5,6 +5,8 @@ import java.util.List;
 
 public class LottoValidator {
     private static final int NUMBER_OF_LOTTO_NUMBERS = 6;
+    private static final int MIN_NUMBER = 0;
+    private static final int MAX_NUMBER = 46;
 
     public static void validate(List<Integer> numbers) {
         if (!isExactSize(numbers)) {
@@ -19,7 +21,7 @@ public class LottoValidator {
     }
 
     private static boolean isCorrectRange(List<Integer> numbers) {
-        return numbers.stream().allMatch(lottoNumbers -> lottoNumbers > 0 && lottoNumbers < 46);
+        return numbers.stream().allMatch(lottoNumber -> lottoNumber > MIN_NUMBER && lottoNumber < MAX_NUMBER);
     }
 
     private static boolean isExactSize(List<Integer> numbers) {
