@@ -2,6 +2,9 @@ package lotto;
 
 import java.util.List;
 
+/**
+ * 로또 번호의 유효성을 확인하는 클래스
+ */
 public class Lotto {
     private final List<Integer> numbers;
 
