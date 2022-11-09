@@ -2,6 +2,7 @@ package lotto.system;
 
 import java.util.List;
 
+import lotto.system.holder.ConverterHolder;
 import lotto.system.holder.ValidationHolder;
 
 public class LottoApplication {
@@ -16,6 +17,7 @@ public class LottoApplication {
 
 	private void initializeValidators() {
 		ValidationHolder.initializeValidators(List.of());
+		ConverterHolder.initializeConverters(List.of());
 	}
 
 	private void doAfter() {
