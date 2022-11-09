@@ -37,4 +37,8 @@ public class Money {
     private int stringToInt(String money) {
         return Integer.parseInt(money);
     }
+
+    public int getMoney() {
+        return this.money;
+    }
 }
