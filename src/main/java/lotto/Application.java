@@ -8,7 +8,7 @@ public class Application {
         // TODO: 프로그램 구현
         Purchase purchase = new Purchase();
         List<List<Integer>> purchasedLotto = purchase.lottoPurchase();
-        Lotto lotto = new Lotto(getWinningNumber());
+//        Lotto lotto = new Lotto(getWinningNumber());
     }
 
     private static List<Integer> getWinningNumber() {
