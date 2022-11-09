@@ -33,10 +33,10 @@ public class Lotto {
             if (number < MIN_NUMBER || number > MAX_NUMBER) {
                 LottoError.illegalArgumentException(INVALID_RANGE_INPUT);
             }
-            if (isUnique[number - 1]) {
+            if (isUnique[numbers.indexOf(number)]) {
                 LottoError.illegalArgumentException(DUPLICATED_INPUT);
             }
-            isUnique[number - 1] = true;
+            isUnique[numbers.indexOf(number)] = true;
         }
     }
 
@@ -46,7 +46,7 @@ public class Lotto {
 
     @Override
     public String toString() {
-        return "[" + numbers.stream().map(integer -> toString())
-                .collect(Collectors.joining(",")) + "]";
+        return "[" + numbers.stream().sorted().map(Object::toString)
+                .collect(Collectors.joining(", ")) + "]";
     }
 }
