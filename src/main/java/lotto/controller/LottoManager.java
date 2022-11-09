@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.domain.LottoResult;
+import lotto.domain.WinCount;
 import lotto.util.RandomUtil;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -32,9 +33,11 @@ public class LottoManager {
         out.announceInputBonusNumber();
         int bonusNumber = in.inputNumber();
 
-        calculateWins(boughtLottos, winNumbers, bonusNumber);
+        List<LottoResult> lottoResults = calculateWins(boughtLottos, winNumbers, bonusNumber);
         out.announceResult();
-        float profitRatio = calculateRatio();
+        out.printDivider();
+        int prizeMoney = getPrizeMoney(lottoResults);
+        String profitRatio = calculateRatio(money, prizeMoney);
         out.printProfitRatio(profitRatio);
     }
 
@@ -72,6 +75,15 @@ public class LottoManager {
         }
 
         return gradeByHitCount(bonus, pickNumbers, count);
+    }
+
+    public WinCount getWinCount(List<LottoResult> lottoResults) {
+        int firstPlaceCount = (int) lottoResults.stream().filter(e -> e == LottoResult.first).count();
+        int secondPlaceCount = (int) lottoResults.stream().filter(e -> e == LottoResult.second).count();
+        int thirdPlaceCount = (int) lottoResults.stream().filter(e -> e == LottoResult.third).count();
+        int fourthPlaceCount = (int) lottoResults.stream().filter(e -> e == LottoResult.fourth).count();
+        int fifthPlaceCount = (int) lottoResults.stream().filter(e -> e == LottoResult.fifth).count();
+        return new WinCount(firstPlaceCount, secondPlaceCount, thirdPlaceCount, fourthPlaceCount, fifthPlaceCount);
     }
 
     private LottoResult gradeByHitCount(int bonus, List<Integer> pickNumbers, int count) {
@@ -115,7 +127,7 @@ public class LottoManager {
         return prizeMoney;
     }
 
-    private float calculateRatio(int cost, int prize) {
-        return 0f;
+    private String calculateRatio(int cost, int prize) {
+        return String.format(".1f", prize * 100.0 / cost);
     }
 }
