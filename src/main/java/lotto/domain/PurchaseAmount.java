@@ -13,7 +13,6 @@ public class PurchaseAmount {
     private final String ERROR_MIN_PRICE = "[ERROR] " + UNIT_PRICE + "원 이상의 금액만 입력해주십시오.";
 
     private final int purchaseAmount;
-    private final int inputPurchaseAmount = Input.getInputPurchaseAmount();
 
     public PurchaseAmount(int inputPurchaseAmount) {
         isValidate(inputPurchaseAmount);
