@@ -25,4 +25,10 @@ class BuyLottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("1000의 배수가 아니면 예외가 발생한다.")
+    void canBuyLotto_NotMultipleOf1000_ExceptionThrown() {
+        assertThatThrownBy(() -> new BuyLotto("5100"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
