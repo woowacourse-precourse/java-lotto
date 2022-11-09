@@ -6,9 +6,9 @@ import java.util.List;
 
 public class LottoGenerator {
 
-    private final static int LOTTO_NUMBER_LENGTH = 6;
-    private final static int LOTTO_NUMBER_MIN_VALUE = 1;
-    private final static int LOTTO_NUMBER_MAX_VALUE = 45;
+    public final static int LOTTO_NUMBER_LENGTH = 6;
+    public final static int LOTTO_NUMBER_MIN_VALUE = 1;
+    public final static int LOTTO_NUMBER_MAX_VALUE = 45;
 
     public List<Lotto> createLottoTickets(int money) {
         List<Lotto> lottoTickets = new ArrayList<>();
