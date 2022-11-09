@@ -68,9 +68,8 @@ public class Application {
     private static void printUserLottoList(List<Lotto> userLotto, int purchaseLottoAmount) {
         System.out.println(purchaseLottoAmount + "개를 구매했습니다.");
 
-        for (Lotto lotto : userLotto) {
+        for (Lotto lotto : userLotto)
             lotto.printLottoNumbers();
-        }
     }
 
     private static void validateLottoPrice(int purchaseLottoPrice) {
@@ -81,10 +80,8 @@ public class Application {
     }
 
     private static Lotto createRandomLottoList() {
-        Lotto newLotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6).stream().sorted().collect(Collectors.toList()));
-
-        // System.out.println(numbers.toString());
-
-        return newLotto;
+        return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)
+                .stream().sorted()
+                .collect(Collectors.toList()));
     }
 }
