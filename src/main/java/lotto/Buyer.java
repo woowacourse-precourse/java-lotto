@@ -1,2 +1,6 @@
-package lotto;public class Buyer {
+package lotto;
+
+public class Buyer {
+
+
 }
