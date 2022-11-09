@@ -5,7 +5,8 @@ public enum Prize {
     TWO(30000000),
     THREE(1500000),
     FOUR(50000),
-    FIVE(5000);
+    FIVE(5000),
+    BANG(0);
 
     private final Integer prizeMoney;
 
