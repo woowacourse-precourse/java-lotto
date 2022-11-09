@@ -8,7 +8,7 @@ public class Application {
     static final int LOTTO_PRICE = 1000;
     static final String ENTER_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
     public static void main(String[] args) {
-        generateSixNumbers();
+        validateGivenNumbers();
     }
 
     public static int enterTheAmount(){
@@ -37,4 +37,12 @@ public class Application {
         }
         return true;
     }
+
+    public static void validateGivenNumbers(){
+        Lotto lotto;
+        do{
+           lotto = generateSixNumbers();
+        } while(!printTheErrorMessageIfNotInTheRange(lotto.getNumbers()));
+    }
+
 }
