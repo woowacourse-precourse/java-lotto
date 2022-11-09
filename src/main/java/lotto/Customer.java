@@ -4,12 +4,13 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Customer {
     public int wantBuyAmountInput() {
+        validWantByAmountInput(Integer.parseInt(readLine()));
         return Integer.parseInt(readLine());
     }
 
-    public void validWnatByAmountInput(int wantBuyAmount) {
+    private void validWantByAmountInput(int wantBuyAmount) {
         if (wantBuyAmount % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 1000 이하의 단위는 입력 불가능 합니다.");
+            throw new IllegalArgumentException();
         }
     }
 }
