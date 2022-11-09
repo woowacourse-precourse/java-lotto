@@ -3,26 +3,19 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
 
         int pay = inputPay();
         int lottoCount = pay/1_000;
-        List<List<Integer>> lottoNumbers = new ArrayList<>();
         System.out.println(lottoCount + "개를 구매했습니다.");
-        for (int i = 0; i < lottoCount; i++) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(numbers);
-            System.out.println(numbers);
-            lottoNumbers.add(numbers);
-        }
+        List<List<Integer>> lottoNumbers = pickLottoNumbers(lottoCount);
+        System.out.println("당첨 번호를 입력해 주세요.");
+        Lotto lotto = new Lotto(inputWinNumbers(Console.readLine()));
 
-        // TODO: 프로그램 구현
     }
 
     public static int inputPay() {
@@ -44,5 +37,28 @@ public class Application {
             throw new IllegalArgumentException();
         }
         return pay;
+    }
+
+    public static List<List<Integer>> pickLottoNumbers(int count) {
+        List<List<Integer>> lottoNumbers = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(numbers);
+            System.out.println(numbers);
+            lottoNumbers.add(numbers);
+        }
+        return lottoNumbers;
+    }
+
+    public static List<Integer> inputWinNumbers(String str) {
+
+        List<Integer> winNumbers = new ArrayList<>();
+        try {
+            winNumbers = Arrays.stream(str.split(",")).map(s -> Integer.parseInt(s.trim())).collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 당첨 번호는 숫자만 입력하실 수 있습니다.");
+            throw new IllegalArgumentException();
+        }
+        return winNumbers;
     }
 }
