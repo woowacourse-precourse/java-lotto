@@ -1,4 +1,4 @@
-package lotto.View;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -11,14 +11,8 @@ public class Input {
 	}
 
 	public static String pickWinningNumbers() {
-		final String winningNumbers = Console.readLine();
+		final String lottoNumbers = Console.readLine();
 
-		return winningNumbers;
-	}
-
-	public static String pickBonusNumbers() {
-		final String bonusNumbers = Console.readLine();
-
-		return bonusNumbers;
+		return lottoNumbers;
 	}
 }
