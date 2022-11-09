@@ -57,4 +57,9 @@ public class Application {
 
         System.out.println("[ERROR] 올바른 형식으로 입력해야 합니다.");
     }
+
+    public static void printErrorAboutSize() {
+
+        System.out.println("[ERROR] 알맞은 개수의 숫자를 입력해야 합니다.");
+    }
 }
