@@ -3,6 +3,7 @@ package lotto;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -33,6 +34,14 @@ public class ValidatorTest {
     @EmptySource
     void validateEmptyString(String input) {
         assertThatThrownBy(()->validator.isFilledString(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력 받은 값이 0일 경우")
+    @Test
+    void validateIsZero () {
+        String input = "0";
+        assertThatThrownBy(()-> validator.isZero(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
