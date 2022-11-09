@@ -1,9 +1,15 @@
 package view;
 
+import util.message.ConsoleMessage;
+import util.message.ErrorMessage;
+
 public class PrintView {
-    private static final String MESSAGE_PURCHASE_MONEY = "구입금액을 입력해 주세요.";
 
     public static void purchaseMoney() {
-        System.out.println(MESSAGE_PURCHASE_MONEY);
+        System.out.println(ConsoleMessage.MESSAGE_PURCHASE_MONEY);
+    }
+
+    public static void error(String message){
+        System.out.println(ErrorMessage.PREFIX_ERROR + message);
     }
 }
