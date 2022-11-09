@@ -18,4 +18,11 @@ class BuyLottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("1000원 보다 적으면 예외가 발생한다.")
+    void canBuyLotto_Under1000_ExceptionThrown() {
+        assertThatThrownBy(() -> new BuyLotto("900"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
