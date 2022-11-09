@@ -6,11 +6,9 @@ import java.util.Collections;
 import java.util.List;
 import view.PrintLotto;
 
-public class AutoPicker {
+public class BuyLottoList {
 
     PrintLotto printLotto = new PrintLotto();
-    public AutoPicker() {
-    }
 
 
     public void putLottoNumberList(int money){
