@@ -7,8 +7,8 @@ public class Lotto {
     private static final int price = 1000;
     private static final ExceptionHandler exceptionHandler = new ExceptionHandler();
 
-    public static Long numberOfLottosQuantity(Long amountPaid) {
-        Long lottoQuantity = amountPaid/price;
+    public static int numberOfLottosQuantity(int amountPaid) {
+        int lottoQuantity = amountPaid/price;
         if (amountPaid%price != 0) {
             exceptionHandler.foolExceaption("amount");
         }
