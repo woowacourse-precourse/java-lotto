@@ -4,9 +4,11 @@ import static lotto.Validator.NEED_TO_INPUT_NUMBER_CAN_DIVIDE_BY_ONE_THOUSAND;
 import static lotto.Validator.NEED_TO_INPUT_NUMBER;
 import static lotto.Validator.NEED_TO_INPUT_RIGHT_NUMBER_RANGE;
 import static lotto.Validator.NEED_TO_INPUT_SIX_NUMBER;
+import static lotto.Validator.NEED_TO_NOT_DUPLICATE;
 import static lotto.Validator.NEED_TO_USE_COMMA;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -19,11 +21,15 @@ class ValidatorTest {
     static final String VALUE_IS_NOT_USE_COMMA = "1 2 3";
     static final String VALUE_IS_NOT_NUMBER_USE_COMMA = "가,나,다";
     static final String VALUE_SIZE_IS_NOT_SIX = "1,2,3";
-    static final String VALUE_RANGE_IS_NOT_RIGHT = "1,2,3,4,5,46";
+    static final String VALUE_RANGE_IS_NOT_RIGHT_USE_COMMA = "1,2,3,4,5,46";
+
+    static final String VALUE_IS_DUPLICATE = "1";
+    static final String VALUE_RANGE_IS_NOT_RIGHT = "47";
+
+    static final List<Integer> WINNING_NUMBERS = List.of(1, 2, 3, 4, 5, 6);
 
     private Validator validator = new Validator();
-
-
+    
     @Nested
     @DisplayName("validateMoney method")
     class Class1 {
@@ -43,7 +49,7 @@ class ValidatorTest {
                     .hasMessage(NEED_TO_INPUT_NUMBER_CAN_DIVIDE_BY_ONE_THOUSAND);
         }
     }
-    
+
     @Nested
     @DisplayName("validateWinningNumbers method")
     class Class2 {
@@ -74,9 +80,39 @@ class ValidatorTest {
         @DisplayName("범위가 벗어나는 숫자가 있다면 예외를 반환한다.")
         @Test
         void test4() {
-            assertThatThrownBy(() -> validator.validateWinningNumbers(VALUE_RANGE_IS_NOT_RIGHT))
+            assertThatThrownBy(() -> validator.validateWinningNumbers(VALUE_RANGE_IS_NOT_RIGHT_USE_COMMA))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(NEED_TO_INPUT_RIGHT_NUMBER_RANGE);
+        }
+    }
+
+    @Nested
+    @DisplayName("validateBonusNumber method")
+    class Class3 {
+
+
+        @DisplayName("숫자가 아니면 예외를 반환한다")
+        @Test
+        void test1() {
+            assertThatThrownBy(() -> validator.validateBonusNumber(VALUE_IS_NOT_NUMBER,WINNING_NUMBERS))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(NEED_TO_INPUT_NUMBER);
+        }
+
+        @DisplayName("범위에 벗어나는 숫자가 있다면 예외를 반환한다.")
+        @Test
+        void test2() {
+            assertThatThrownBy(() -> validator.validateBonusNumber(VALUE_RANGE_IS_NOT_RIGHT,WINNING_NUMBERS))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(NEED_TO_INPUT_RIGHT_NUMBER_RANGE);
+        }
+
+        @DisplayName("보너스 번호가 당첨 번호와 중복된다면 예외를 반환한다.")
+        @Test
+        void test3() {
+            assertThatThrownBy(() -> validator.validateBonusNumber(VALUE_IS_DUPLICATE,WINNING_NUMBERS))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(NEED_TO_NOT_DUPLICATE);
         }
     }
 }
