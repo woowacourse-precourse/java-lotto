@@ -34,3 +34,11 @@
 ## 기타
 
 - [ ] 입력값이 글자인지 숫자인지 확인하기(예외처리 - 숫자를 입력해주시기 바랍니다)
+
+## 참고사항
+
+### FLOW CHART
+![lotto_flowchart](https://user-images.githubusercontent.com/92911823/200890179-f1eb78eb-3577-49cb-ad04-0fd688ae037c.jpg)
+
+### CLASS DIAGRAM
+![lotto_class_diagram](https://user-images.githubusercontent.com/92911823/200890196-07895d35-7afc-4d00-9075-ca3d816d31d2.jpg)
