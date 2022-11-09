@@ -17,10 +17,11 @@ public class Shop {
     private Integer money;
 
 
-    public void inputMoney() {
+    public Integer inputMoney() {
         String money = Console.readLine();
         validateMoney(money);
         this.money = Integer.parseInt(money);
+        return this.money;
     }
 
     private void validateMoney(String money) {
@@ -50,8 +51,8 @@ public class Shop {
         return lotto;
     }
 
-    private void printSellLotto(List<Lotto> lotto) {
-        System.out.println(lotto.size() + "개를 구매했습니다.");
+    public void printSellLotto(List<Lotto> lotto) {
+        System.out.println("\n" + lotto.size() + "개를 구매했습니다.");
         for (Lotto l : lotto) {
             System.out.println(l);
         }
