@@ -1,6 +1,6 @@
-package lotto.domain;
+package lotto.domain.draw;
 
-import static lotto.domain.LottoMachine.NOT_ALLOW_DUPLICATED_LOTTO_NUMBER;
+import static lotto.domain.draw.LottoMachine.NOT_ALLOW_DUPLICATED_LOTTO_NUMBER;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;

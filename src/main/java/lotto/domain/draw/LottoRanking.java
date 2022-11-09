@@ -1,4 +1,6 @@
-package lotto.domain;
+package lotto.domain.draw;
+
+import java.text.NumberFormat;
 
 public enum LottoRanking {
 
@@ -52,7 +54,7 @@ public enum LottoRanking {
 
         stringBuilder
                 .append(" (")
-                .append(winnings)
+                .append(NumberFormat.getNumberInstance().format(winnings))
                 .append("원)");
 
         return stringBuilder.toString();
