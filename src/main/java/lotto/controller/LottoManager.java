@@ -23,15 +23,15 @@ public class LottoManager {
 
     public void run() {
         out.announceInputMoney();
-        int money = in.inputNumber();
+        int money = in.inputMoney();
         int lottoCount = buyLotto(money);
         List<List<Integer>> boughtLottos = pickNumbers(lottoCount);
         out.announceBuyResult(lottoCount);
         out.printBoughtLotto(boughtLottos);
         out.announceInputWinNumber();
-        List<Integer> winNumbers = in.inputNumbers();
+        List<Integer> winNumbers = in.inputWinNumbers();
         out.announceInputBonusNumber();
-        int bonusNumber = in.inputNumber();
+        int bonusNumber = in.inputBonusNumber();
 
         List<LottoResult> lottoResults = calculateWins(boughtLottos, winNumbers, bonusNumber);
         out.announceResult();
