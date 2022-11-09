@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GenerateNumbers {
-    private List<Integer> generateNumbers = new ArrayList<>();
     private int bonusNumbers;
+    private List<Integer> generateNumbers = new ArrayList<>();
 
     public GenerateNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 7);
