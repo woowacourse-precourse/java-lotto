@@ -25,4 +25,10 @@ public class Computer {
         Collections.sort(autoNumbers);
         return autoNumbers;
     }
+
+    static void validateDuplicate() {
+        if(autoNumbers.size() != autoNumbers.stream().distinct().count()){
+            System.out.println(ERROR_DUPLICATE);
+        }
+    }
 }
