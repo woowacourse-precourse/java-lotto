@@ -37,8 +37,9 @@ public class Buyer {
         }
     }
 
-    void validateInputNumberSize(String winningNumber) {
-        if (winningNumber.length() != 11) {
+    void validateWinningNumberSize(String winningNumber) {
+        winningNumber.split(",");
+        if (winningNumber.length() != 6) {
             throw new IllegalArgumentException(ERROR_LOTTO_LENGTH);
         }
     }
