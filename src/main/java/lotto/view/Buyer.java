@@ -1,11 +1,14 @@
 package lotto.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import static lotto.view.ErrorMessage.ERROR_BLANK;
 import static lotto.view.ErrorMessage.ERROR_BONUS_NUMBER;
 import static lotto.view.ErrorMessage.ERROR_LOTTO_LENGTH;
 import static lotto.view.ErrorMessage.ERROR_NUMBER_RANGE;
 import static lotto.view.ErrorMessage.ERROR_PRICE;
+import static lotto.view.ErrorMessage.ERROR_SEPARATOR;
+
 import static lotto.view.Message.BONUS_NUMBER_INPUT;
 import static lotto.view.Message.PURCHASE_COUNT;
 import static lotto.view.Message.PURCHASE_PRICE;
@@ -71,7 +74,10 @@ public class Buyer {
     }
 
     void validateInputSeparator(String winningNumber) {
-
+        String[] checkSeparator = winningNumber.split(",");
+        if (checkSeparator.length != 6) {
+            throw new IllegalArgumentException(ERROR_SEPARATOR);
+        }
     }
 
     void validateInputBlank(String winningNumber) {
