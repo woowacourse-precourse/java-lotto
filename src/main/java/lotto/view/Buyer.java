@@ -20,4 +20,10 @@ public class Buyer {
         purchaseLottoCount = Integer.parseInt(purchasePrice);
         System.out.println(purchaseLottoCount/1000 + PURCHASE_COUNT);
     }
+
+    void validateDivideNumber() {
+        if (purchaseLottoCount%1000 != 0) {
+            throw new IllegalArgumentException(ERROR_PRICE);
+        }
+    }
 }
