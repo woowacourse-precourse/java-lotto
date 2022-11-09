@@ -106,3 +106,9 @@
 
 - void calculateSurplus(int, int, int, int, int, int)
   - 수익률을 계산하는 함수
+
+
+## ✏️ GRADE enum
+
+
+- First(2,000,000,000), Second(30,000,000), Third(1,500,000), Forth(50,000), Fifth(5,000)
