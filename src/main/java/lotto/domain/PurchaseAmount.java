@@ -10,7 +10,11 @@ public class PurchaseAmount {
     private final String ERROR_INDIVISIBLE = "[ERROR] " + UNIT_PRICE + "원으로 나누어떨어지는 금액만 입력해주십시오.";
     private final String ERROR_MIN_PRICE = "[ERROR] " + UNIT_PRICE + "원 이상의 금액만 입력해주십시오.";
 
-    public PurchaseAmount() {
+    private final int purchaseAmount;
+
+    public PurchaseAmount(int purchaseAmount) {
+        isValidate(purchaseAmount);
+        this.purchaseAmount = purchaseAmount;
     }
 
     private void isValidate(int purchaseAmount){
