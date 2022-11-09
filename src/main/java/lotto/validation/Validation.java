@@ -1,6 +1,13 @@
 package lotto.validation;
 
+import java.util.List;
+
 public class Validation {
+
+    public void validateInputMoneyInput(String input) {
+        validateStringIsNumeric(input);
+        validateDivideThousand(Integer.parseInt(input));
+    }
 
     public void validateWinNumberInput(String input) {
         String[] token = input.split(",");
@@ -18,7 +25,10 @@ public class Validation {
         }
     }
 
-    private void validateNumberInput(String s) {
+    public void validateBonusNumberInput(List<Integer> winNumbers, int bonusNumber) {
+        if (winNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void validateStringIsNumeric(String string) {
@@ -38,7 +48,12 @@ public class Validation {
         }
     }
 
-    public void validateBonusNumberInput() {
-
+    private void validateDivideThousand(int money) {
+        if (money < 1000) {
+            throw new IllegalArgumentException();
+        }
+        if (money % 1000 != 0) {
+            throw new IllegalArgumentException();
+        }
     }
 }
