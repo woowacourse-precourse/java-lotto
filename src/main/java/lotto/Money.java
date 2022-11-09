@@ -9,7 +9,7 @@ public class Money {
 
     public Money() {
         printGuideMessage();
-        String money = getMoney();
+        String money = setMoney();
         validate(money);
         this.money = stringToInt(money);
     }
@@ -19,7 +19,7 @@ public class Money {
 
         System.out.println(GUIDE_MESSAGE);
     }
-    private String getMoney() {
+    private String setMoney() {
         return Console.readLine();
     }
 
