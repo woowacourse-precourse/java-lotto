@@ -12,4 +12,8 @@ public class WinningNumbers implements LottoNumbers {
         validateRangeOfNumbers(winningNumbers);
         this.winningNumbers = winningNumbers;
     }
+
+    public boolean contains(int bonusNumber) {
+        return winningNumbers.contains(bonusNumber);
+    }
 }

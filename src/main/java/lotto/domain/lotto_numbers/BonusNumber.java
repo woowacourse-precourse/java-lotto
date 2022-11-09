@@ -19,4 +19,8 @@ public class BonusNumber {
             throw new IllegalArgumentException(INVALID_RANGE_OF_LOTTO_NUMBER);
         }
     }
+
+    public boolean isIn(WinningNumbers winningNumbers) {
+        return winningNumbers.contains(bonusNumber);
+    }
 }
