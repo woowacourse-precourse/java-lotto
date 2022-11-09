@@ -48,4 +48,14 @@ public class UserIO {
         return amount;
     }
 
+    // 사용자가 구입한 로또번호 출력
+    public void printLotto() {
+        for (Lotto lotto : userLottoList) {
+            lotto.printNumbers();
+        }
+    }
+
+    public List<Lotto> getUserLottoList() {
+        return this.userLottoList;
+    }
 }
