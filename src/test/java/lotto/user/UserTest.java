@@ -41,4 +41,18 @@ public class UserTest {
         // then
         assertThat(numbers).isEqualTo(userNumbers);
     }
+
+    @DisplayName("로또 번호가 1~45가 아니면 예외가 발생한다.")
+    @Test
+    void inputLottoNumbersByWrongRangeNumber() {
+        //given
+        String userInput = "1,2,3,4,55,6";
+        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(in);
+
+        // when, then
+        assertThatThrownBy(User::inputLottoNumbers)
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(ERROR);
+    }
 }
