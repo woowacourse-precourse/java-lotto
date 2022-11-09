@@ -19,6 +19,10 @@ public class PurchaseAmount {
         this.purchaseAmount = inputPurchaseAmount;
     }
 
+    public int getPurchaseAmount() {
+        return purchaseAmount;
+    }
+
     private void isValidate(int purchaseAmount){
         isValidateDivisible(purchaseAmount);
         isValidateMinPrice(purchaseAmount);
