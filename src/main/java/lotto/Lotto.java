@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
 
@@ -37,5 +38,11 @@ public class Lotto {
             }
             isUnique[number - 1] = true;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "[" + numbers.stream().map(integer -> toString())
+                .collect(Collectors.joining(",")) + "]";
     }
 }
