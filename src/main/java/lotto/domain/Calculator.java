@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * packageName : lotto.domain
- * fileName : NumberGenerator
+ * fileName : Calculator
  * author : gim-yeong-geun
  * date : 2022/11/09
  * description :
@@ -13,11 +13,15 @@ import java.util.List;
  * -----------------------------------------------------------
  * 2022/11/09         gim-yeong-geun          최초 생성
  */
-public class NumberGenerator {
-    public NumberGenerator() {
+public class Calculator {
+    public Calculator() {
     }
 
-    public static List<Integer> createRandomNumber(int lottoCreateCount) {
-        return null;
+    public static int revenue(List<Integer> compare) {
+        return 0;
+    }
+
+    public static double yield(int revenue) {
+        return 0;
     }
 }

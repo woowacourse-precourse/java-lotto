@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.List;
+
 /**
  * packageName : lotto.domain
  * fileName : Output
@@ -15,4 +17,10 @@ public class Output {
     public Output() {
     }
 
+    public static void outputRandomNumber(List<Integer> createRandomNumber){
+
+    }
+    public static List<Integer> outputLottoRank(int inputNumbers) {
+        return null;
+    }
 }

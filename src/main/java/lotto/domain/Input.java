@@ -18,6 +18,7 @@ public class Input {
     public static void inputCoin() {
 
     }
+
     public static void inputNumber() {
 
     }
