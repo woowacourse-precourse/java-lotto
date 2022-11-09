@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 import lotto.model.LottoGenerator;
 import lotto.model.Player;
@@ -11,6 +12,7 @@ public class Controller {
 
     Player player = new Player();
     Service service = new Service();
+    StringBuilder stringBuilder = new StringBuilder();
 
     public String getPurchaseAmount() {
         String purchaseAmount = player.getInput();
@@ -36,7 +38,8 @@ public class Controller {
         String purchaseAmount = player.getInput();
 
         for (int i = 0; i < lottoAmount; i++) {
-            LottoGenerator.getWinningNumbers();
+            List<Integer> lottoNumbers = new ArrayList<>(LottoGenerator.getWinningNumbers());
+            stringBuilder.append(lottoNumbers).append("\n");
         }
     }
 
