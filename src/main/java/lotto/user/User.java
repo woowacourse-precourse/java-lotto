@@ -13,6 +13,7 @@ public class User {
 
     public static List<Integer> inputLottoNumbers() {
         String userNumbers = Console.readLine();
+        UserValidation.validateNumbers(userNumbers);
         return UserUtil.convertUserInputToNumbers(userNumbers);
     }
 }
