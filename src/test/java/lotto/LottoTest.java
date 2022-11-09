@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.Lotto;
+import lotto.presentation.dto.PurchaseAmount;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -25,4 +26,14 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+
+    @DisplayName("로또 구매 금액 입력값이 숫자일 경우 예외가 발생한다.")
+    @Test
+    void inputPurchaseAmountNotInteger() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        assertThatThrownBy(() -> new PurchaseAmount("12q"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new PurchaseAmount("@!#qq"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
