@@ -1,13 +1,18 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -53,6 +58,17 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+
+//    @DisplayName("구입 금액이 로또 금액인 100으로 나누어지지 않으면 예외 발생.")
+//    @Test
+//    void validateTheEnteredAmount(){
+//        final String INVALID_NUMBER = "1234";
+//        InputStream in = new ByteArrayInputStream(INVALID_NUMBER.getBytes());
+//        System.setIn(in);
+//        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+//            Application.enterTheAmount();
+//        });
+//    }
 
     @Override
     public void runMain() {
