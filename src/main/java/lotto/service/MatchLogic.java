@@ -73,4 +73,15 @@ public class MatchLogic {
         return false;
     }
 
+    // 총 수익률 계산
+    public double computeYields(int budget) {
+        Long yields = 0L;
+        for (int i = 0; i < this.matchNums.size(); i++) {
+            int cnt = matchNums.get(i);
+            Long value = cnt * priceList.get(i);
+            yields += value;
+        }
+        return yields / (double) budget * 100;
+    }
+
 }
