@@ -58,16 +58,17 @@ public class Company {
         }
     }
 
-    public void check(List<Lotto> lotto, Integer payment) {
+    public List<Prize> check(List<Lotto> lotto) {
         List<Prize> prizes = new ArrayList<>();
         for (Lotto l : lotto) {
             prizes.add(compare(l));
         }
-        printResult(prizes, payment);
+        return prizes;
     }
 
-    private void printResult(List<Prize> prizes, Integer payment) {
+    public void printResult(List<Prize> prizes, Integer payment) {
         Integer[] countPrizes = countPrize(prizes);
+        System.out.println("\n당첨 통계\n---");
         System.out.println("3개 일치 (5,000원) - " +
                 countPrizes[Prize.FIVE.ordinal()] + "개");
         System.out.println("4개 일치 (50,000원) - " +
@@ -80,7 +81,7 @@ public class Company {
                 countPrizes[Prize.ONE.ordinal()] + "개");
         System.out.println("총 수익률은 " +
                 calculateRateOfReturn(calculatePrizeMoney(prizes), payment) +
-                "%%입니다.");
+                "%입니다.");
     }
 
     private static Integer[] countPrize(List<Prize> prizes) {
@@ -118,6 +119,6 @@ public class Company {
     private Float calculateRateOfReturn(Integer prizeMoney,
                                         Integer payment) {
         return (float) Math.round(
-                (float) prizeMoney * 10 / payment) / 10;
+                (float) prizeMoney * 1000 / payment) / 10;
     }
 }
