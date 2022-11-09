@@ -11,7 +11,7 @@ public class Player {
         return Integer.parseInt(input());
     }
 
-    public List<String> getLottoNumbers() {
+    public List<String> guessLottoNumbers() {
         String numbers = input();
 
         return new ArrayList<>(Arrays.asList(numbers.split("\\s*,\\s*")));
