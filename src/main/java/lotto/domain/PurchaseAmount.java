@@ -23,11 +23,14 @@ public class PurchaseAmount {
         return purchaseAmount;
     }
 
-    private void isValidate(int purchaseAmount){
+    public int getUNIT_PRICE() {
+        return UNIT_PRICE;
+    }
+
+    private void isValidate(int purchaseAmount) {
         isValidateDivisible(purchaseAmount);
         isValidateMinPrice(purchaseAmount);
     }
-
 
     private void isValidateDivisible(int purchaseAmount) {
         if (purchaseAmount % UNIT_PRICE != 0) {
