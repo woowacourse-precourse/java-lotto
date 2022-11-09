@@ -1,13 +1,26 @@
 package lotto.domain;
 
+import java.util.List;
+import java.util.ArrayList;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoMachine {
-    public void buy() throws IllegalArgumentException {
+
+    public List<Lotto> buy() throws IllegalArgumentException {
         String money = Console.readLine().trim();
         validateType(money);
 
         int count = lottoCount(Integer.parseInt(money));
+        return getRandomLottoBundle(count);
+    }
+
+    private List<Lotto> getRandomLottoBundle(int count) {
+        List<Lotto> bundle = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            bundle.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
+        }
+        return bundle;
     }
 
     private void validateType(String input) {
@@ -18,7 +31,7 @@ public class LottoMachine {
         }
     }
 
-    private int lottoCount(int money) throws IllegalArgumentException{
+    private int lottoCount(int money) throws IllegalArgumentException {
         validateDivisible(money);
         return money / 2;
     }
