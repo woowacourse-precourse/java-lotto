@@ -1,16 +1,31 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import domain.UserMoney;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
+
+
+
+    @DisplayName("사용자 금액 입력 예외")
+    @ParameterizedTest
+    @CsvSource(value = {"1000j", "1200"})
+    void 로또금액_예외의경우_입력(String money){
+      Assertions.assertThatThrownBy(()-> UserMoney.checkMoney(money)).isInstanceOf(IllegalArgumentException.class);
+    }
 
     @Test
     void 기능_테스트() {
@@ -46,8 +61,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
-    @Test
+
+    @Test // 이건 좀 의도를 모르겠음. 예외를 출력하는데도 결과값이 간단하게 처리가 되지 않는 부분이 전혀 이해가 안됨.
     void 예외_테스트() {
+   /*     assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("1000j")).hasMessageContaining(ERROR_MESSAGE);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });*/
+
+
         assertSimpleTest(() -> {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
