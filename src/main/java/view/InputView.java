@@ -23,6 +23,7 @@ public enum InputView {
     public List<Integer> inputLottoNumbers(){
         System.out.println(INPUT_LOTTO_NUMBERS);
         String lottoNumbers = Console.readLine();
+        InputValidator.validateLottoNumbers(lottoNumbers);
         return splitNumbers(lottoNumbers);
     }
 
