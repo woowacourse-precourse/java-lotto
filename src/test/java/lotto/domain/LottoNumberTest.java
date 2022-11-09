@@ -23,7 +23,7 @@ public class LottoNumberTest {
 
     @ParameterizedTest
     @ValueSource(ints = {LOTTO_NUMBER_LOWER_BOUND - 1, LOTTO_NUMBER_UPPER_BOUND + 1})
-    void valueOf_메서드는_범위밖의_값을_입력하면_LottoException을_던진다(int number) {
+    void valueOf_메서드는_범위밖의_값을_입력하면_IllegalArgumentException을_던진다(int number) {
         assertThatThrownBy(() -> LottoNumber.valueOf(number))
                 .isInstanceOf(IllegalArgumentException.class);
     }
