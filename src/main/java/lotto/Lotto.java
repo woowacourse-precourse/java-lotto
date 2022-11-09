@@ -34,9 +34,14 @@ public class Lotto {
     private void validateRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (number < 1 || number > 45) {
-                System.out.println("[ERROR] 로또 번호의 범위는 1에서 45입니다.");
+                System.out.println("[ERROR] 로또 번호의 범위는 1 ~ 45입니다.");
                 throw new IllegalArgumentException();
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
     }
 }
