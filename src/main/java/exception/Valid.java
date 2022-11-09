@@ -8,4 +8,11 @@ public class Valid {
         }
         return true;
     }
+
+    public static boolean isMoneyOverThousand(int money){
+        if (money < 1000) {
+            return false;
+        }
+        return true;
+    }
 }
