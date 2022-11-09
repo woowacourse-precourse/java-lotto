@@ -59,3 +59,24 @@
 - [ ] 그 외 숫자가 아닌 문자가 섞여있는경우(EXC-A-2 재사용)
 - [ ] 구분자 "," 형식에 맞지 않는경우
   - IllegalArgumentException, "[ERROR] 다음예제와 같이 입력하여 주십시오.(ex - 1,2,3,4,5,6)"
+
+
+## 프로그래밍 요구사항
+
+1. 클래스(객체)를 분리하는 연습
+2. 도메인 로직에 대한 단위 테스트를 작성하는 연습
+
+- indent depth는 2까지 허용
+- 3항연산자 사용 X
+- 함수는 하나의 일만 하도록 구성
+- 함수는 15라인이 넘어가서는 안됨
+- else, switch/case 사용 X
+- Enum 사용
+- 도메인 로직에 단위테스트구현
+  - UI(System.out, System.in, Scanner) 로직은 제외한다.
+- camp.nextstep.edu.missionutils에서 제공하는 Randoms 및 Console API를 사용하여 구현해야 한다.
+- 제공된 Lotto class 사용
+  - Lotto에 매개 변수가 없는 생성자를 추가할 수 없다.
+  - numbers의 접근 제어자인 private을 변경할 수 없다.
+  - Lotto에 필드(인스턴스 변수)를 추가할 수 없다.
+  - Lotto의 패키지 변경은 가능하다.
