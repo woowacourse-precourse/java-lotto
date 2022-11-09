@@ -7,14 +7,17 @@ import java.util.stream.Collectors;
 
 public class InputDevice {
 
+    private Validator validator = new Validator();
+
     public int sendMoneyToBuyLotto() {
         String money = Console.readLine();
+        validator.validateMoney(money);
         return Integer.parseInt(money);
     }
 
     public List<Integer> sendWinningNumbers() {
         String input = Console.readLine();
-        return Arrays.stream(input.split(""))
+        return Arrays.stream(input.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
