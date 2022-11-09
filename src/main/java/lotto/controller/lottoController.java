@@ -2,6 +2,7 @@ package lotto.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,8 +11,7 @@ import lotto.ExceptionHandler;
 import lotto.View.Input;
 
 public class lottoController {
-
-	private static int checkQuantityOfLotto() {
+	public static int checkQuantityOfLotto() {
 		int quantity;
 		int money = Integer.parseInt(Input.buyLotto());
 
@@ -21,21 +21,21 @@ public class lottoController {
 		return quantity;
 	}
 
-	public static List<List<Integer>> publishLotto(int quantity) {
-		List<List<Integer>> candidateLotto = new ArrayList<>();
+	public static List<List<Integer>> publishLotto(List<List<Integer>> candidateLotto, List<Integer> candidate) {
+		candidateLotto.add(candidate);
 
-		for (int i = 0; i < quantity; i++) {
-			candidateLotto.add(pickLottoNumbers());
-		}
 		return candidateLotto;
 	}
 
-	private static List<Integer> pickLottoNumbers() {
+	public static List<Integer> pickLottoNumbers() {
 		List<Integer> lottoNumbers = new ArrayList<>();
 
 		for (int i = 0; i < 6; i++) {
 			lottoNumbers.add(pickRandomNumber(lottoNumbers));
 		}
+
+		lottoNumbers.sort(Comparator.naturalOrder());
+
 		return lottoNumbers;
 	}
 
@@ -45,13 +45,15 @@ public class lottoController {
 		if (lottoNumbers.size() == 0) {
 			return number;
 		}
-		while (lottoNumbers.contains(number))
+		while (lottoNumbers.contains(number)) {
 			number = Randoms.pickNumberInRange(1, 45);
+		}
 
 		return number;
 	}
 
 	public static List<Integer> pickWinningNumbers() {
+		System.out.println("당첨 번호를 입력해 주세요");
 		String winningNumbers = Input.pickWinningNumbers();
 		List<String> lotto = Arrays.asList(winningNumbers.split(","));
 
@@ -63,16 +65,17 @@ public class lottoController {
 	}
 
 	public static int pickBonusNumbers() {
+		System.out.println("보너스 번호를 입력해 주세요");
 		String bonusNumber = Input.pickWinningNumbers();
 
 		return Integer.parseInt(bonusNumber);
 	}
 
-	private static int compareNumbers(List<Integer> candidateNumbers, List<Integer> winningNumbers) {
+	public static int compareNumbers(List<Integer> candidateNumbers, List<Integer> winningNumbers) {
 		int count = 0;
 
 		for (int i = 0; i < candidateNumbers.size(); i++) {
-			if (checkSameNumber(candidateNumbers.get(i), winningNumbers.get(i))) {
+			if (candidateNumbers.contains(winningNumbers.get(i))) {
 				count++;
 			}
 		}
@@ -86,24 +89,34 @@ public class lottoController {
 		return false;
 	}
 
-	private static List<Integer> countWinningLotto() {
-		List<Integer> winningCount = new ArrayList<>();
+	public static List<Integer> countWinningLotto(List<List<Integer>> lotto, List<Integer> winningNumbers, int bonusNumbers, int quantity) {
+		List<Integer> winningCount = Arrays.asList(0,0,0,0,0);
 
-		List<List<Integer>> lotto = publishLotto(Integer.parseInt(Input.buyLotto()));
 		for (int i = 0; i < lotto.size(); i++) {
-			winningCount.add(compareNumbers(lotto.get(i), pickWinningNumbers()));
+			int count = compareNumbers(lotto.get(i), winningNumbers);
+			if (count == 3)
+				winningCount.set(0, winningCount.get(0) + 1);
+			if (count == 4)
+				winningCount.set(1, winningCount.get(1) + 1);
+			if (count == 5)
+				winningCount.set(2, winningCount.get(2) + 1);
+			if (count == 5 && lotto.get(i).contains(bonusNumbers))
+				winningCount.set(3, winningCount.get(3) + 1);
+			if (count == 6)
+				winningCount.set(4, winningCount.get(4) + 1);
 		}
 
 		return winningCount;
 	}
 
-	private static double calculateProfit(List<Integer> winningCount, int money) {
+	public static double calculateProfit(List<Integer> winningCount, int money) {
 		int prizeMoney = sumPrizeMoney(winningCount);
 
 		double profit = (prizeMoney/money) * 100;
 
+
 		//반올림
-		profit = Math.round(profit*100)/100.0;
+		//profit = Math.round(profit*100)/100.0;
 
 		return profit;
 	}
