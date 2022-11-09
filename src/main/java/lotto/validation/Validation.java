@@ -9,20 +9,29 @@ public class Validation {
         }
 
         for (String s : token) {
-            validateNumberInput(s);
+            validateStringIsNumeric(s);
         }
     }
 
     private void validateNumberInput(String s) {
+    }
+
+    private void validateStringIsNumeric(String string) {
         try {
-            Integer.parseInt(s);
+            Integer.parseInt(string);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateStringIsNumeric(String str) {
-
+    private boolean validateNumberInBound(int min, int max, int input) {
+        if (input < min) {
+            return false;
+        }
+        if (input > max) {
+            return false;
+        }
+        return true;
     }
 
     public void validateBonusNumberInput() {
