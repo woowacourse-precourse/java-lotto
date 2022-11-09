@@ -18,6 +18,7 @@ public class LottoResultController {
     private double yield;
 
     private final int price;
+    private int totalWinning;
 
     public LottoResultController(LottoAnswer lottoAnswer, List<Lotto> lottos, int price) {
         this.lottoAnswer = lottoAnswer;
@@ -29,7 +30,7 @@ public class LottoResultController {
     public void run() {
         createLottoGrades();
         createLottoResult();
-        calculateYield();
+        totalWinning = rankingMachine.getTotalWinning();
     }
 
     public void createLottoGrades() {
@@ -49,10 +50,11 @@ public class LottoResultController {
     }
 
     public double getYield() {
-        return yield;
+        return calculateYield();
     }
 
-    public void calculateYield() {
-
+    private double calculateYield() {
+        return (totalWinning * 100) / price;
     }
+
 }

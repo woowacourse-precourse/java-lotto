@@ -24,4 +24,8 @@ public class RankingMachine {
         }
         throw new VerifyError(); // 이 단계까지 오는 경우 Rank의 조건을 잘못 설정한 것이므로 수정 필요
     }
+
+    public int getTotalWinning() {
+        return totalWinning;
+    }
 }
