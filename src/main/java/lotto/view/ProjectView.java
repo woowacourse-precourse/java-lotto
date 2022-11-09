@@ -13,4 +13,14 @@ public class ProjectView {
         System.out.println("\n" + issuedLotto.getTotalCount() + "개를 구매했습니다.");
         System.out.println(issuedLotto);
     }
+
+    public static String getWinningNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        return Console.readLine();
+    }
+
+    public static String getBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        return Console.readLine();
+    }
 }
