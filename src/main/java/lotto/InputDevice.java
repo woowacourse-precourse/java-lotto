@@ -22,4 +22,9 @@ public class InputDevice {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
+
+    public int sendBonusNumber(List<Integer> winningNumbers) {
+        String input = Console.readLine();
+        return Integer.parseInt(input);
+    }
 }
