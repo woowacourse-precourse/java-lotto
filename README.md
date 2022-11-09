@@ -262,3 +262,10 @@ public class Lotto {
     - "총 수익률은 XX.X % 입니다" 식으로 출력하기. 
     - 수익률은 소수점 둘째 자리에서 반올림한다. 
     
+#### 3. 컴퓨터의 로또 번호 만들기 관련 기능
+
+1. 컴퓨터는, __중복되지 않는 6개의 숫자__ 를 뽑아야 한다.
+    - 중복되는지 여부도 당연히 체크하면서 뽑아야 한다. 
+    - Lotto Class 의 생성자는 List<Integer> 가 들어가므로, List<Integer> 에 넣어서 번호를 만들어야 한다.
+    - 이때, 지정된 라이브러리(camp.nextstep.edu.missionutils) 의 Random 을 사용해서 번호를 뽑아야 한다. 
+        - Randoms.pickUniqueNumbersInRange() 를 활용해야 한다.(프로그래밍 요구사항)
