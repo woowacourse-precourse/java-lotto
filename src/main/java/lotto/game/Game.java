@@ -17,7 +17,7 @@ public class Game {
     }
 
     public void start() {
-        int money = lottoService.convertInputToMoney(receiveInput(MESSAGE_PURCHASE_MONEY));
+        Money money = lottoService.convertInputToMoney(receiveInput(MESSAGE_PURCHASE_MONEY));
         printPurchasedLottos(List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6))));
         receiveInput(MESSAGE_WINNING_NUMBER);
         receiveInput(MESSAGE_BONUS_NUMBER);
