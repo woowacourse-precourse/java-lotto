@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ public class Application {
         createAnswer();
         for (int i = 0; i<takeCost(); i++)
             Lottos.add(getLotto());
-        printMyLotto(Lottos,takeCost());
+        printMyLotto(Collections.singletonList(Lottos),takeCost());
     }
 
     public static Integer takeCost() {
@@ -67,13 +68,17 @@ public class Application {
         return MyLotto;
     }
 
-    public static void printMyLotto(List Lottos, int count){
+
+
+    public static void printMyLotto(List<List> Lottos, int count){
         System.out.println(count+"개를 구매했습니다.");
 
         seperateBonus(Lottos);
 
-        for(int i = 0; i < count; i++)
+        for(int i = 0; i < count; i++) {
+            Collections.sort(Lottos.get(i));
             System.out.println(Lottos.get(i));
+        }
     }
 
     public static List<Integer> seperateBonus(List<List> Lottos){
