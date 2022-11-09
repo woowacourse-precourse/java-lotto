@@ -8,8 +8,8 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println(Print.ASK_BUY);
-        int budget = getBudget();
-        System.out.println("budget: "+budget);
+        int publishNum = getPublishNum();
+        System.out.println("publishNum: "+publishNum);
 
     }
 
@@ -18,6 +18,8 @@ public class Application {
         String input = Console.readLine();
 
         validateInputBudget(input);
+
+        System.out.println("inputBudget: "+input);
 
         return input;
     }
@@ -30,5 +32,9 @@ public class Application {
 
     private static int getBudget() {
         return Integer.parseInt(inputBudget());
+    }
+
+    private static int getPublishNum() {
+        return getBudget()/1000;
     }
 }
