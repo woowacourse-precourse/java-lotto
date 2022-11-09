@@ -8,4 +8,9 @@ public class LottoViewer {
     public static void showLottoPurchaseCount(int count) {
         System.out.println(count + "개를 구매했습니다.");
     }
+
+    public static void showEnterLottoNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
+
 }
