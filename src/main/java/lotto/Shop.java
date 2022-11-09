@@ -12,12 +12,13 @@ public class Shop {
             "구매 금액은 1,000 단위로 나누어 떨어져야 합니다.";
     private static final String INVALID_STRING_INPUT =
             "숫자만 입력할 수 있습니다.";
-    private static final String INVALID_SIZE_INPUT =
-            "6개의 숫자를 입력해야 합니다.";
+    private static final String INVALID_BONUS_INPUT =
+            "보너스 번호는 당첨 번호와 중복될 수 없습니다.";
     private static final String NUMBER_DELIMETER = ",";
     private static final Integer LOTTO_PRICE = 1000;
     private Integer money;
     private List<Integer> winNumbers;
+    private Integer bonusNumber;
 
     public void inputMoney() {
         String money = Console.readLine();
@@ -55,6 +56,10 @@ public class Shop {
     public void inputWinNumbers() {
         String input = Console.readLine();
         validateWinNumbers(input);
+        winNumbers = new ArrayList<>();
+        for (String number : input.split(NUMBER_DELIMETER)) {
+            winNumbers.add(Integer.parseInt(number));
+        }
     }
 
     private void validateWinNumbers(String winNumbers) {
@@ -70,4 +75,18 @@ public class Shop {
         }
     }
 
+    public void inputBonusNumber() {
+        Integer input = Integer.parseInt(Console.readLine());
+        validateBonusNumber(input);
+        this.bonusNumber = input;
+    }
+
+    private void validateBonusNumber(Integer number) {
+        if (winNumbers.contains(number)) {
+            LottoError.illegalArgumentException(INVALID_BONUS_INPUT);
+        }
+        if (number < Lotto.MIN_NUMBER || number > Lotto.MAX_NUMBER) {
+            LottoError.illegalArgumentException(Lotto.INVALID_RANGE_INPUT);
+        }
+    }
 }
