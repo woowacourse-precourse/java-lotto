@@ -1,6 +1,6 @@
 package lotto;
 
-public enum PrizeMoney {
+public enum Prize {
     ONE(2000000000),
     TWO(30000000),
     THREE(1500000),
@@ -9,7 +9,7 @@ public enum PrizeMoney {
 
     private final Integer prizeMoney;
 
-    PrizeMoney(Integer prizeMoney) {
+    Prize(Integer prizeMoney) {
         this.prizeMoney = prizeMoney;
     }
 
