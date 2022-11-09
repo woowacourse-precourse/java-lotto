@@ -1,24 +1,25 @@
 package lotto.presentation;
 
 import lotto.application.LottoService;
-import lotto.application.MessageService;
+import lotto.application.ViewService;
 import lotto.presentation.dto.PurchaseAmount;
 
 public class LottoController {
     private static final LottoController instance=new LottoController();
     private final LottoService lottoService;
-    private final MessageService messageService;
+    private final ViewService viewService;
     private LottoController(){
         lottoService=LottoService.getInstance();
-        messageService=MessageService.getInstance();
+        viewService = ViewService.getInstance();
     }
     public static LottoController getInstance(){
         return instance;
     }
     public void run(){
-        messageService.inputPurchaseAmountInformationMessage();
+        viewService.printInputPurchaseAmountInformation();
     }
     public void buyLotto(PurchaseAmount purchaseAmount){
+        viewService.printCountLotto(lottoService.countingLotto(purchaseAmount));
 
     }
 }
