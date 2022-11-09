@@ -31,7 +31,7 @@ public class LottoManager {
         out.announceInputWinNumber();
         List<Integer> winNumbers = in.inputWinNumbers();
         out.announceInputBonusNumber();
-        int bonusNumber = in.inputBonusNumber();
+        int bonusNumber = in.inputBonusNumber(winNumbers);
 
         List<LottoResult> lottoResults = calculateWins(boughtLottos, winNumbers, bonusNumber);
         out.announceResult();
