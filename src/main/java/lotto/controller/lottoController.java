@@ -72,11 +72,17 @@ public class lottoController {
 		int count = 0;
 
 		for (int i = 0; i < candidateNumbers.size(); i++) {
-			if (checkDuplication(candidateNumbers.get(i), winningNumbers.get(i))) {
+			if (checkSameNumber(candidateNumbers.get(i), winningNumbers.get(i))) {
 				count+=;
 			}
 		}
-		
+
 		return count;
+	}
+
+	private static boolean checkSameNumber(int a, int b) {
+		if (a == b)
+			return true;
+		return false;
 	}
 }
