@@ -21,6 +21,7 @@ public class LottoApplication {
 	}
 
 	private void doAfter() {
-
+		ValidationHolder.clearHolder();
+		ConverterHolder.clearHolder();
 	}
 }
