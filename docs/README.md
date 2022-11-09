@@ -14,7 +14,7 @@
     - canBuyAmount()
 
 - 구매 가능한 복권 수량만큼의 1~45 까지의 중복되지 않은 6개의 숫자를 뽑는다.
-    - makeUserLottoNumbers()
+    - makeUserRandomLottoNumbers()
 - 당첨번호와 보너스 번호를 입력받는다.
     - makeWinningNumbers()
 - 당첨번호와 사용자가 구매한 로또 번호를 비교한다.
