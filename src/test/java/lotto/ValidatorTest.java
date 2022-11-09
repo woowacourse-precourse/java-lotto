@@ -14,7 +14,7 @@ public class ValidatorTest {
     Validator validator = new Validator();
 
     @DisplayName("입력 받은 값이 숫자가 아닐경우 예외가 발생한다")
-    @ParameterizedTest(name ="{index} {displayName} input={0} ")
+    @ParameterizedTest(name = "{index} {displayName} input={0} ")
     @ValueSource(strings = {"123k", "k123", "adsdf", "12_3", "123 4"})
     void validateNumber(String input) {
         assertThatThrownBy(() -> validator.isNumberOrNot(input))
@@ -22,10 +22,10 @@ public class ValidatorTest {
     }
 
     @DisplayName("입력 받은 값이 1000의 배수가 아닐 경우 예외가 발생한다")
-    @ParameterizedTest(name ="{index} {displayName} input={0} ")
+    @ParameterizedTest(name = "{index} {displayName} input={0} ")
     @ValueSource(strings = {"1001", "1002", "800", "2100"})
     void validateMultipleOfThousand(String input) {
-        assertThatThrownBy(()-> validator.isMultiplesOfThousand(input))
+        assertThatThrownBy(() -> validator.isMultiplesOfThousand(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -33,15 +33,23 @@ public class ValidatorTest {
     @ParameterizedTest(name = "{displayName}")
     @EmptySource
     void validateEmptyString(String input) {
-        assertThatThrownBy(()->validator.isFilledString(input))
+        assertThatThrownBy(() -> validator.isFilledString(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("입력 받은 값이 0일 경우")
     @Test
-    void validateIsZero () {
+    void validateIsZero() {
         String input = "0";
-        assertThatThrownBy(()-> validator.isZero(input))
+        assertThatThrownBy(() -> validator.isZero(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력 받은 값이 1과 45사이의 정수가 아닌 경우")
+    @ParameterizedTest(name = "{index} {displayName} input={0}")
+    @ValueSource(strings = {"0", "46"})
+    void validateIsinRange(String input) {
+        assertThatThrownBy(() -> validator.isInRange(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
