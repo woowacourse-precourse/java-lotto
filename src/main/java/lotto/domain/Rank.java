@@ -24,17 +24,17 @@ public enum Rank {
         return winning;
     }
 
-    public boolean isCurrentRank(int correctNumberCount, boolean isBonusCorrect) {
+    public Integer getWinning(int correctNumberCount, boolean isBonusCorrect) {
         if (minMatchNum != null && correctNumberCount < minMatchNum) {
-            return false;
+            return null;
         }
         if (maxMatchNum != null && correctNumberCount > maxMatchNum) {
-            return false;
+            return null;
         }
         if (isBonusRequired != null && isBonusCorrect != isBonusRequired) {
-            return false;
+            return null;
         }
-        return true;
+        return winning;
     }
 
 }

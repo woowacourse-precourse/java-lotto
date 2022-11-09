@@ -1,11 +1,10 @@
 package lotto.domain;
 
 import java.util.List;
-import lotto.domain.LottoGrade;
-import lotto.domain.Rank;
 
 public class RankingMachine {
     private final List<Rank> ranks;
+    public static int totalWinning = 0;
 
     public RankingMachine() {
         this.ranks = List.of(Rank.values());
@@ -17,7 +16,8 @@ public class RankingMachine {
         int rankNumber = 1;
 
         for (Rank rank : ranks) {
-            if (rank.isCurrentRank(correctNumberCount, isBonusCorrect)) {
+            if (rank.getWinning(correctNumberCount, isBonusCorrect) != null) {
+                totalWinning += rank.getWinning(correctNumberCount, isBonusCorrect);
                 return rankNumber;
             }
             rankNumber += 1;
