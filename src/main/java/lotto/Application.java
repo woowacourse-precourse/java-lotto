@@ -27,9 +27,8 @@ public class Application {
             throw new IllegalArgumentException("[ERROR] 입력 금액 오류");
     }
 
-    public static List<String> createAnswer(){
-        String answerN;
-        answerN = sc.nextLine();
+    public static void createAnswer(){
+        String answerN = sc.nextLine();
         int flag = 0;
 
         List<String> answer = List.of(answerN.split(","));
@@ -41,7 +40,12 @@ public class Application {
         }
 
         if(flag == 1) createAnswer();
+        else createBonus(answer);
+    }
 
+    public static List<String> createBonus(List answer){
+        String bonus = sc.nextLine();
+        if(!answer.contains(bonus)) answer.add(bonus);
         return answer;
     }
 
