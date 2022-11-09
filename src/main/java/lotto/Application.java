@@ -92,6 +92,12 @@ public class Application {
         return Bonuses;
     }
 
-
+    public static List<Integer> winALottery(List answer, List<List> MyLotto){
+        List<Integer> winnig = new ArrayList<>();
+        for(int i = 0; i < MyLotto.size(); i++){
+            int Howmany = 0;
+            if(answer.get(i))
+        }
+    }
 
 }
