@@ -7,14 +7,17 @@ package lotto;
  * [X] 당첨 로또 번호 입력
  * [X] 당첨 통계 계산
  * [X] 총 수익률 계산
- * [X] 입력 예외 처리
+ * [O/X] 입력 예외 처리(로또 구매 갯수 / 당첨 로또번호 입력)
  * [X] 단위 테스트 생성
  * [X] 테스트 확인
  */
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -39,8 +42,24 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
+        List<Lotto> userLotto = new ArrayList<>();
 
-        createRandomLottoList();
+        try {
+            int purchaseLottoAmount = Integer.parseInt(Console.readLine());
+
+            validateLottoAmount(purchaseLottoAmount);
+
+            while(purchaseLottoAmount-- > 0)
+                userLotto.add(createRandomLottoList());
+        } catch(IllegalArgumentException e){
+            
+        }
+    }
+
+    private static int validateLottoAmount(int purchaseLottoAmount) {
+        if(purchaseLottoAmount <= 0)
+            throw new IllegalArgumentException("1개 이상 구매해야 합니다.");
+        return purchaseLottoAmount;
     }
 
     private static Lotto createRandomLottoList() {
