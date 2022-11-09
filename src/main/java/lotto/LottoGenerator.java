@@ -17,9 +17,12 @@ public class LottoGenerator {
             addNum(numbers, randomNumber);
         }
 
-        numbers.sort(Comparator.naturalOrder());
-
+        sortByNaturalOrder(numbers);
         return numbers;
+    }
+
+    private void sortByNaturalOrder(List<Integer> numbers) {
+        numbers.sort(Comparator.naturalOrder());
     }
 
     private void addNum(List<Integer> numbers, int randomNumber) {
