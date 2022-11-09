@@ -10,4 +10,11 @@ public class LottoAnswer {
         this.lottoAnswer = lottoAnswer;
         this.bonusNumber = bonusNumber;
     }
+
+    public boolean isNumberInAnswer(int number) {
+        if (lottoAnswer.contains(number)) {
+            return true;
+        }
+        return false;
+    }
 }
