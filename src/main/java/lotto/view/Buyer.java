@@ -21,14 +21,19 @@ public class Buyer {
         System.out.println(purchaseLottoCount/1000 + PURCHASE_COUNT);
     }
 
+    void winningNumberInput() {
+        System.out.println(WINNING_NUMBER_INPUT);
+        winningNumber = readLine();
+    }
+
     void validateDivideNumber() {
         if (purchaseLottoCount%1000 != 0) {
             throw new IllegalArgumentException(ERROR_PRICE);
         }
     }
 
-    void validateInputNumberSize(String purchasePrice) {
-        if (purchasePrice.length() != 11) {
+    void validateInputNumberSize(String winningNumber) {
+        if (winningNumber.length() != 11) {
             throw new IllegalArgumentException(ERROR_LOTTO_LENGTH);
         }
     }
