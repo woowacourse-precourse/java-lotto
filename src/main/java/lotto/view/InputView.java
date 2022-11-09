@@ -12,16 +12,20 @@ public class InputView {
 
     public int inputMoney() {
         String input = Console.readLine();
+        validation.validateMoneyInput(input);
         return Integer.parseInt(input);
     }
 
     public List<Integer> inputWinNumbers() {
-        String[] numbers = Console.readLine().split(",");
+        String input = Console.readLine();
+        validation.validateWinNumberInput(input);
+        String[] numbers = input.split(",");
         return Arrays.stream(numbers).map(Integer::valueOf).collect(Collectors.toList());
     }
 
-    public int inputBonusNumber() {
+    public int inputBonusNumber(List<Integer> winNumbers) {
         String bonusNumber = Console.readLine();
+        validation.validateBonusNumberInput(winNumbers, bonusNumber);
         return Integer.parseInt(bonusNumber);
     }
 }
