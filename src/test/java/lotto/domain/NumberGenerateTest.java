@@ -26,7 +26,7 @@ public class NumberGenerateTest {
         assertThat(numberGenerate.createRandom().size()).isEqualTo(6);
     }
 
-    @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
+    @DisplayName("로또 번호에 중복된 숫자가 없다")
     @Test
     void createUniqueNumbers() {
         List<Integer> randomList = new ArrayList<>(numberGenerate.createRandom());

@@ -16,8 +16,10 @@ public class Lotto {
         }
     }
 
-    public int checkNumbers(List<Integer> winningNumbers) {
-        return 0;
+    public int checkNumbers(List<Integer> chosenNumbers) {
+        chosenNumbers.removeAll(numbers);
+        int correctNumbers = numbers.size() - chosenNumbers.size();
+        return correctNumbers;
     }
 
     public boolean checkBonus(int bonusNumber) {
