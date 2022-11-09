@@ -1,10 +1,11 @@
 ## 🚀 기능 목록 구현 
 
-- [X] 로또 구입 금액 입력 - inputMoney()
-    - [X] 입력값이 올바른지 확인(금액이 나눠떨어지는지, 입력에 문자가 오지 않았는지 - checkMoney()
-- [ ] 구입 금액만큼 당첨 번호 리스트를 출력한다. - printLottoList()
-    - [ ] 금액 / 1000 갯수
-    - [ ] 로또 번호는 오름차순 출력 - setLottoList()
+- [ ] 로또 구입 금액 입력 - inputMoney()
+    - [ ] (예외)입력값이 올바른지 확인(금액이 나눠떨어지는지, 입력에 문자가 오지 않았는지 - validateMoney()
+- [ ] 구입 금액만큼 로또 번호 리스트를 생성하고 출력한다. - putLottoNumberList()
+    - [ ] 금액 / 1000 갯수만큼
+    - [ ] 로또 번호는 오름차순 출력 - setLottoNumberList()
+    - [ ] 출력은 담당 출력클래스에서 출력 - view package 에서
 - [ ] 당첨 번호 입력(쉼표로 구분) - inputCorrectNumber()
     - [ ] 입력시 범위에 맞는지 확인(넘어가면 예외) - checkBoundary()
 - [ ] 보너스 번호 입력 - inputBonusNumber()
