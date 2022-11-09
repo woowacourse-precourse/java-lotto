@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 
 public class Application {
     private static final String ERROR_MESSAGE = "[ERROR]";
+    private static final int LOTTO_PRICE = 1000;
 
     public enum WINNINGS{
         FIRST(2000000000),
@@ -48,16 +49,19 @@ public class Application {
 
         try {
             int purchaseLottoAmount = Integer.parseInt(Console.readLine());
+            int purchaseLottoPrice= purchaseLottoAmount * LOTTO_PRICE;
 
             validateLottoAmount(purchaseLottoAmount);
-
-            for(int i = 0; i < purchaseLottoAmount; i++)
-                userLotto.add(createRandomLottoList());
-
+            purchaseLotto(userLotto, purchaseLottoAmount);
             printUserLottoList(userLotto, purchaseLottoAmount);
         } catch(IllegalArgumentException e){
             System.out.println(ERROR_MESSAGE + " " + e.getMessage());
         }
+    }
+
+    private static void purchaseLotto(List<Lotto> userLotto, int purchaseLottoAmount) {
+        for(int i = 0; i < purchaseLottoAmount; i++)
+            userLotto.add(createRandomLottoList());
     }
 
     private static void printUserLottoList(List<Lotto> userLotto, int purchaseLottoAmount) {
