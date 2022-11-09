@@ -97,8 +97,15 @@ public class lottoController {
 		return winningCount;
 	}
 
-	private static void calculateProfit(List<Integer> winningCount) {
+	private static double calculateProfit(List<Integer> winningCount, int money) {
+		int prizeMoney = sumPrizeMoney(winningCount);
 
+		double profit = (prizeMoney/money) * 100;
+
+		//반올림
+		profit = Math.round(profit*100)/100.0;
+
+		return profit;
 	}
 
 	private static int sumPrizeMoney(List<Integer> winningCount) {
