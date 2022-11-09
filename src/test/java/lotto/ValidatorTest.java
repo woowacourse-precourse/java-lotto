@@ -2,6 +2,8 @@ package lotto;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -50,6 +52,14 @@ public class ValidatorTest {
     @ValueSource(strings = {"0", "46"})
     void validateIsinRange(String input) {
         assertThatThrownBy(() -> validator.isInRange(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("중복된 값이 있는 리스트일 경우")
+    @Test
+    void validateContainDuplicate() {
+        List<String> inputs = List.of("1", "1", "2", "3", "4", "5");
+        assertThatThrownBy(() -> validator.containDuplicate(inputs))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
