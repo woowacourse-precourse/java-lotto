@@ -17,4 +17,9 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    static int amountToLottoCount(){
+        Amount amount = new Amount(InputView.receiveAmount());
+        if(!amount.isValidateAmount()) ResultView.exit("1000원 단위로 입력해주세요.");
+        return amount.getLottoCount();
+    }
 }
