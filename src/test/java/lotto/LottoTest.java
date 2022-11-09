@@ -33,6 +33,14 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("로또 당첨번호 예외 1 ~ 45 사이의 수가 아닌 경우")
+    @Test
+    void 로또당첨번호입력받기_실패1_2() {
+        String[] inputValue = {"1", "2", "3", "46", "5", "6"};
+        assertThatThrownBy(() -> UserInputValidator.validateInputLottoNumber(inputValue))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("로또 당첨번호 예외 중복된 수가 입력된 경우")
     @Test
     void 로또당첨번호입력받기_실패2() {
