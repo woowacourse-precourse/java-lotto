@@ -24,4 +24,10 @@ public class Check {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되지 않은 6개 숫자여야 합니다.");
         return true;
     }
+
+    public static boolean isBonusInLotto(List<Integer> numbers, int bonus) throws IllegalArgumentException {
+        if (numbers.contains(bonus))
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 번호에 없는 번호여야 합니다.");
+        return true;
+    }
 }
