@@ -33,4 +33,18 @@ public class LottoIO {
         return this.lottoAnswer;
     }
 
+    // 보너스 번호 입력
+    public int inputBonusAnswer() {
+        System.out.println("보너스 번호를 입력 주세요.");
+        String input = Console.readLine();
+        if (checkInvalidBonus(input)) {
+            System.out.println("[ERROR] 보너스 번호는 1부터 45 사이의 숫자를 한 개만 입력해 주세요.");
+            throw new IllegalArgumentException();
+        }
+        Integer result = Integer.valueOf(input);
+
+        this.bonus = result;
+        return bonus;
+    }
+
 }
