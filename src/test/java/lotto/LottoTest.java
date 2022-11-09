@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,4 +25,20 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호의 개수가 6개가 안되면 예외가 발생한다.")
+    @Test
+    void createLottoByUnderSize() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("생성된 로또가 오름차순으로 정렬이 되어있는지 확인")
+    @Test
+    void isSorted() {
+        List<Integer> unSorted = List.of(5, 3, 2, 1, 4, 6);
+
+        Lotto lotto = new Lotto(unSorted);
+
+        assertThat(List.of(1, 2, 3, 4, 5, 6)).isEqualTo(lotto.getNumbers());
+    }
 }
