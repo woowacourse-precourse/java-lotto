@@ -48,7 +48,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 잘못된_타입_로또개수_입력_예외_테스트() {
+    void 잘못된_타입_로또금액_입력_예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
@@ -56,17 +56,25 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 자연수__로또_구매개수_테스트(){
+    void 자연수__로또_구매금액_테스트(){
         assertSimpleTest(() -> {
-            runException("1");
-            assertThat(output()).contains("1");
+            runException("3000");
+            assertThat(output()).contains("3");
         });
     }
 
     @Test
-    void 자연수_아닌_로또_구매개수_예외_테스트(){
+    void 자연수_아닌_로또_구매금액_예외_테스트(){
         assertSimpleTest(() -> {
-            runException("-5");
+            runException("-5000");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 나누어지지_않는_로또_구매금액_예외_테스트(){
+        assertSimpleTest(() -> {
+            runException("3200");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }

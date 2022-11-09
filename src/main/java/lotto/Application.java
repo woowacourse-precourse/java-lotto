@@ -48,12 +48,13 @@ public class Application {
         List<Lotto> userLotto = new ArrayList<>();
 
         try {
-            int purchaseLottoAmount = Integer.parseInt(Console.readLine());
-            int purchaseLottoPrice= purchaseLottoAmount * LOTTO_PRICE;
+            int purchaseLottoPrice= Integer.parseInt(Console.readLine());
+            int purchaseLottoAmount = purchaseLottoPrice / LOTTO_PRICE;
 
-            validateLottoAmount(purchaseLottoAmount);
+            validateLottoPrice(purchaseLottoPrice);
             purchaseLotto(userLotto, purchaseLottoAmount);
             printUserLottoList(userLotto, purchaseLottoAmount);
+
         } catch(IllegalArgumentException e){
             System.out.println(ERROR_MESSAGE + " " + e.getMessage());
         }
@@ -72,10 +73,11 @@ public class Application {
         }
     }
 
-    private static int validateLottoAmount(int purchaseLottoAmount) {
-        if(purchaseLottoAmount <= 0)
+    private static void validateLottoPrice(int purchaseLottoPrice) {
+        if(purchaseLottoPrice < LOTTO_PRICE)
             throw new IllegalArgumentException("1개 이상 구매해야 합니다.");
-        return purchaseLottoAmount;
+        if(purchaseLottoPrice % LOTTO_PRICE != 0)
+            throw new IllegalArgumentException(LOTTO_PRICE + "단위로 입력하여야 합니다.");
     }
 
     private static Lotto createRandomLottoList() {
