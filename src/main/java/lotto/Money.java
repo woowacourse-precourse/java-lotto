@@ -5,6 +5,14 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
 
 public class Money {
+    private final Integer money;
+
+    public Money() {
+        String money = getMoney();
+        validate(money);
+        this.money = stringToInt(money);
+    }
+
     private String getMoney() {
         return Console.readLine();
     }
