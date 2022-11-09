@@ -266,6 +266,9 @@ public class Lotto {
 
 1. 컴퓨터는, __중복되지 않는 6개의 숫자__ 를 뽑아야 한다.
     - 중복되는지 여부도 당연히 체크하면서 뽑아야 한다. 
+    - 컴퓨터가 한 세트의 숫자를 뽑을 때는, 1~45 사이의 숫자를 뽑아야 한다.
     - Lotto Class 의 생성자는 List<Integer> 가 들어가므로, List<Integer> 에 넣어서 번호를 만들어야 한다.
     - 이때, 지정된 라이브러리(camp.nextstep.edu.missionutils) 의 Random 을 사용해서 번호를 뽑아야 한다. 
         - Randoms.pickUniqueNumbersInRange() 를 활용해야 한다.(프로그래밍 요구사항)
+
+2. 유저가 몇 개의 숫자를 뽑을지 전달해 주면, 컴퓨터는 그에 맞는 수량의 로또 번호 List<Integer> 를 출력해야 한다.        
