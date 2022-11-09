@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import util.exception.Valid;
+import util.message.ErrorMessage;
 
 class ValidTest {
 
@@ -18,9 +19,9 @@ class ValidTest {
         //when
         //then
         assertThatThrownBy(() -> Valid.purchaseMoney(moneyNotUnits))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class).hasMessage(ErrorMessage.UNIT_THOUSAND_MONEY);
         assertThatThrownBy(() -> Valid.purchaseMoney(moneyUnderThousand))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class).hasMessage(ErrorMessage.OVER_THOUSAND_MONEY);
     }
 
     @Test
