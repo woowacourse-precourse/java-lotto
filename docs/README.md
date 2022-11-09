@@ -62,4 +62,4 @@
 ### 추가 요구사항
 
 - [x]  비지니스 로직 예외인 LottoException 클래스 추가
-- [ ]  Lotto 번호를 표현하는 LottoNumbers 래퍼 클래스 추가
+- [x]  Lotto 번호를 표현하는 LottoNumber 래퍼 클래스 추가
