@@ -13,6 +13,13 @@ public class LottoValidator {
         if (isOverlap(numbers)) {
             throw new IllegalArgumentException();
         }
+        if (!isCorrectRange(numbers)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static boolean isCorrectRange(List<Integer> numbers) {
+        return numbers.stream().allMatch(lottoNumbers -> lottoNumbers > 0 && lottoNumbers < 46);
     }
 
     private static boolean isExactSize(List<Integer> numbers) {
