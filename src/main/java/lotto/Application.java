@@ -6,9 +6,13 @@ import java.util.List;
 
 public class Application {
     static final int LOTTO_PRICE = 1000;
+    static int BONUS_NUMBER;
     static final String ENTER_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
+    static final String ERROR_MESSAGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
+    static final String BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
     public static void main(String[] args) {
-        validateGivenNumbers();
+//        validateGivenNumbers();
+        initializeBonusNumber();
     }
 
     public static int enterTheAmount(){
@@ -28,7 +32,6 @@ public class Application {
     }
 
     public static boolean printTheErrorMessageIfNotInTheRange(List<Integer> numbers){
-        final String ERROR_MESSAGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
         for(int number: numbers){
             if(number<1 || number>45){
                 System.out.println(ERROR_MESSAGE);
@@ -38,11 +41,17 @@ public class Application {
         return true;
     }
 
-    public static void validateGivenNumbers(){
+    public static Lotto validateGivenNumbers(){
         Lotto lotto;
         do{
            lotto = generateSixNumbers();
         } while(!printTheErrorMessageIfNotInTheRange(lotto.getNumbers()));
+        return lotto;
     }
-
+    public static void initializeBonusNumber(){
+        System.out.println(BONUS_NUMBER_MESSAGE);
+        do{
+            BONUS_NUMBER = Integer.parseInt(Console.readLine());
+        } while(!printTheErrorMessageIfNotInTheRange(List.of(BONUS_NUMBER)));
+    }
 }
