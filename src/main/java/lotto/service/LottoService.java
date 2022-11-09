@@ -4,6 +4,8 @@ package lotto.service;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
+import lotto.view.Input;
+import lotto.view.Output;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,7 +19,8 @@ public class LottoService {
 
     Money money = new Money();
 
-    public int insertMoney(int inputMoney) {
+    public int insertMoney() {
+        int inputMoney = Input.inputMoney();
         return money.insertMoney(inputMoney);
     }
 
@@ -28,10 +31,12 @@ public class LottoService {
     }
 
     public List<Lotto> purchaseLottos(Integer ticket) {
+        Output.purchaseLotto(ticket);
         List<Lotto> lottos = new ArrayList<>();
         for (int count = 0; count < ticket; count++) {
             lottos.add((createLotto()));
         }
+        Output.printPurchaseLottos(lottos);
         return lottos;
     }
 }
