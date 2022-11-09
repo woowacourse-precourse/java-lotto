@@ -4,8 +4,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Customer {
     public int wantBuyAmountInput() {
-        validWantByAmountInput(Integer.parseInt(readLine()));
-        return Integer.parseInt(readLine());
+        int wantBuyAmountInput = Integer.parseInt(readLine());
+        validWantByAmountInput(wantBuyAmountInput);
+        return wantBuyAmountInput;
     }
 
     private void validWantByAmountInput(int wantBuyAmount) {
