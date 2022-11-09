@@ -30,7 +30,7 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    private void numberRepeatError(List<String> numbers){
+    private void duplicatedValidate(List<String> numbers){
         for(String item : numbers){
             if(Pattern.matches(patten, item)){
                 System.out.println(numberRepeatErrorMessage);
@@ -38,7 +38,7 @@ public class Lotto {
             }
         }
     }
-    private void numberRangeError(List<String> numbers){
+    private void rangeValidate(List<String> numbers){
 
     }
     static List<Integer> compare(List<Integer> numbers) {
