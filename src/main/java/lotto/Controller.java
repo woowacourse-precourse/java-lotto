@@ -25,7 +25,7 @@ public class Controller {
             throw new IllegalArgumentException();
         }
 
-        return player.getInput();
+        return purchaseAmount;
     }
 
     public int getLottoAmount(String purchaseAmount) {
