@@ -1,6 +1,7 @@
 package lotto.user;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 import lotto.user.validation.UserValidation;
 
 public class User {
@@ -8,5 +9,10 @@ public class User {
         String userAmount = Console.readLine();
         UserValidation.validate(userAmount);
         return Integer.parseInt(userAmount);
+    }
+
+    public static List<Integer> inputLottoNumbers() {
+        String userNumbers = Console.readLine();
+        return UserUtil.convertUserInputToNumbers(userNumbers);
     }
 }
