@@ -1,11 +1,14 @@
 package lotto;
 
+import lotto.domain.Lotto;
 import lotto.domain.Money;
+import lotto.service.LottoService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -32,5 +35,12 @@ class LottoTest {
         assertThatThrownBy(() -> new Money().insertMoney(100))
                 .isInstanceOf(IllegalArgumentException.class);
 
+    }
+
+    @DisplayName("입력 금액의 단위에 맞는 개수의 로또 생성")
+    @Test
+    void creatLottosSizeCheck(){
+        LottoService lottoService = new LottoService();
+        assertThat(lottoService.purchaseLottos(5).size()).isEqualTo(5);
     }
 }
