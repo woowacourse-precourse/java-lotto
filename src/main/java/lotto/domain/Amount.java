@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.Map;
 
 public class Amount {
     private final static int lottoAmount = 1000;
