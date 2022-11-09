@@ -48,4 +48,28 @@ class LottoTest {
         assertThatThrownBy(() -> UserInputValidator.validateInputLottoNumber(inputValue))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("사용자가 구매한 값을 0으로 입력했을 때")
+    @Test
+    void 로또구매금액_실패_1() {
+        String lottoPurchaseMoney = "0";
+        assertThatThrownBy(() -> UserInputValidator.validateLottoPurchaseMoney(lottoPurchaseMoney))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("사용자가 구매한 값을 0으로 입력했을 때")
+    @Test
+    void 로또구매금액_실패_1_2() {
+        String lottoPurchaseMoney = "1001";
+        assertThatThrownBy(() -> UserInputValidator.validateLottoPurchaseMoney(lottoPurchaseMoney))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 구매 금액을 Integer 범위를 초과한 입력을 했을 때")
+    @Test
+    void 로또구매금액_실패_2() {
+        String lottoPurchaseMoney = "2147483648";
+        assertThatThrownBy(() -> UserInputValidator.validateLottoPurchaseMoney(lottoPurchaseMoney))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
