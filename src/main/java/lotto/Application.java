@@ -45,12 +45,31 @@ public class Application {
     }
 
     public static ArrayList<Integer> getWinningNum(String inputNum) {
+        validateNum(inputNum);
         String[] inputNums = inputNum.split(",");
         ArrayList<Integer> winningNums = new ArrayList<>();
         for(String num:inputNums){
             winningNums.add(Integer.parseInt(num.trim()));
         }
+        validateNumCnt(winningNums);
         return winningNums;
+    }
+
+    public static void validateNum(String inputNum){
+        for (int i = 0; i < inputNum.length(); i++){
+            if(inputNum.charAt(i) == ','){
+                continue;
+            }
+            if (inputNum.charAt(i) < '0' || inputNum.charAt(i) > '9' ){
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    public static void validateNumCnt(ArrayList<Integer> winningNums){
+        if (winningNums.size() != 6){
+            throw new IllegalArgumentException();
+        }
     }
 
     public static void main(String[] args) {
