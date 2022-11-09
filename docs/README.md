@@ -1,24 +1,24 @@
 # [미션- 로또] 기능 목록
 
 ### 사용자 입력
-- [ ] InputUserMoney 
+- [ ] inputUserMoney 
   - Integer Type 으로 사용자에게 **금액을 입력받기**
 
-- [ ] InputWinNumber 
+- [ ] inputWinNumber 
   - Integer Type 으로 사용자에게 **당첨 번호를 입력받기**
 
-- [ ] InputBonusNumber
+- [ ] inputBonusNumber
   - Integer Type 으로 사용자에게 **보너스 번호를 입력받기**
 
 ### 사용자 입력 검증
-- [ ] HowMuchIsLottoValidator 
+- [ ] validateLottoPurchaseMoney
   - 유저가 구매한 로또 금액이 Integer Type 의 범위를 벗어나면 IllegalArgumentException를 발생시키기
 
-- [ ] LottoNumberInputValidator 
-  - 로또 입력값이 1 ~ 45 사이의 숫자가 아니라면 IllegalArgumentException를 발생시키기
+- [ ] validateInputLottoNumber 
+  - 로또 당첨번호 입력값이 1 ~ 45 사이의 숫자가 아니라면 IllegalArgumentException를 발생시키기
 
 ### 로또 번호 생성
-- [ ] GenerateLottoNumber
+- [ ] generateLottoNumber
   - List<Integer> 타입의 로또번호를 생성한다.
 
 ### 수익률 계산
