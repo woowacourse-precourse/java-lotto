@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 import java.util.ArrayList;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -12,6 +13,12 @@ public class LottoMachine {
         validateType(money);
 
         int count = lottoCount(Integer.parseInt(money));
+        return getRandomLottoBundle(count);
+    }
+
+    public List<Lotto> buy(String input) throws IllegalArgumentException {
+        validateType(input);
+        int count = lottoCount(Integer.parseInt(input));
         return getRandomLottoBundle(count);
     }
 
