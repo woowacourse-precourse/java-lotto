@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Lotto {
@@ -17,4 +18,9 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+
+    @Override
+    public String toString() {
+        return Arrays.toString(numbers.toArray());
+    }
 }
