@@ -24,4 +24,11 @@ class LottoGameServiceTest {
 
         assertThat(lottoIssueCount).isEqualTo(lottoPurchaseAmount / 1000);
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {500, 1500, 1750, 10002})
+    void 로또_구입_금액이_1000으로_나누어_떨어지지_않으면_예외_발생(int lottoPurchaseAmount) {
+        assertThatThrownBy(() -> lottoGameService.getLottoIssueCount(lottoPurchaseAmount))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
