@@ -17,10 +17,19 @@ public class Application {
 
     private static int setAccount() {
         int account = Integer.parseInt(Console.readLine());
+        // 입력 받은 금액 검증
+        if(validAccount(account)){
+            throw new IllegalArgumentException(ERROR_MESSAGE + " 구입 금액은 1,000원 단위로 입력해주세요.");
+        }
         return account;
     }
 
-
+    private static boolean validAccount(int account) {
+        if (account % 1000 == 0) {
+            return false;
+        }
+        return true;
+    }
 
 
 }
