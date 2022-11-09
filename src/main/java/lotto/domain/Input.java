@@ -35,8 +35,10 @@ public class Input {
 
     public static void inputNumber() {
         System.out.println(inputNumberString);
+        // 당첨 번호를 입력 받음. (,)를 기준으로 구분 후 lottoNumber add
         for(String item : Console.readLine().split(",")){
             lottoNumber.add(item);
         }
+        if
     }
 }
