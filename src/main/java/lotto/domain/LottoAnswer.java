@@ -17,4 +17,11 @@ public class LottoAnswer {
         }
         return false;
     }
+
+    public boolean isNumberEqaulToBonus(int number) {
+        if (bonusNumber == number) {
+            return true;
+        }
+        return false;
+    }
 }
