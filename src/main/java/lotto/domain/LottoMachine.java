@@ -3,7 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 
 public class LottoMachine {
-    public void buy() {
+    public void buy() throws IllegalArgumentException {
         String money = Console.readLine().trim();
         validateType(money);
     }
