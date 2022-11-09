@@ -96,4 +96,19 @@ public class lottoController {
 
 		return winningCount;
 	}
+
+	private static void calculateProfit(List<Integer> winningCount) {
+
+	}
+
+	private static int sumPrizeMoney(List<Integer> winningCount) {
+		int sum = 0;
+		List<Integer> prizeMoney = Arrays.asList(5_000, 50_000, 1_500_000, 30_000_000, 2_000_000_000);
+
+		for (int i = 0; i < winningCount.size(); i++) {
+			sum += winningCount.get(i) * prizeMoney.get(i);
+		}
+
+		return sum;
+	}
 }
