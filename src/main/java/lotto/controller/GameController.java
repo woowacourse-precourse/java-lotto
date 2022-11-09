@@ -1,55 +1,55 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.Lotto;
 import lotto.common.Msg;
 import lotto.service.LottoService;
 
-public class Gamecontroller {
+public class GameController {
 
     private final LottoService service = new LottoService();
+    private List<Lotto> lottos = new ArrayList<>();
+    private String input = "";
 
     public void start() {
         welcome();
-        String in = input();
-        List<Lotto> lottos = buyLottos(in);
-        if (isEmpty(lottos)) {
+        input();
+        buyLottos();
+        if (isEmptyLottos()) {
             return;
         }
-        printNumberOfLotto(lottos.size());
-        printLottos(lottos);
+        printNumberOfLotto();
+        printLottos();
     }
 
     private void welcome() {
         System.out.println(Msg.WELCOME.getMsg());
     }
 
-    private String input() {
-        return Console.readLine();
+    private void input() {
+        input = Console.readLine();
     }
 
-    private List<Lotto> buyLottos(String in) {
+    private void buyLottos() {
         try {
-            List<Lotto> lottos = service.buy(in);
-            return lottos;
+            lottos = service.buy(input);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        return Collections.EMPTY_LIST;
     }
 
-    private boolean isEmpty(List<Lotto> lottos) {
+    private boolean isEmptyLottos() {
         return lottos.isEmpty();
     }
 
-    private void printNumberOfLotto(int i) {
-        System.out.println(i + "개를 구매했습니다.");
+    private void printNumberOfLotto() {
+        System.out.println(lottos.size() + "개를 구매했습니다.");
     }
 
-    private void printLottos(List<Lotto> lottos) {
+    private void printLottos() {
         lottos.forEach(i -> {
             List<Integer> numbers = i.getNumbers().stream().sorted().collect(Collectors.toList());
             System.out.print("[");
