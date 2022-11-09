@@ -5,7 +5,7 @@ import java.util.List;
 
 public class LottoGame {
 
-    private final List<List<Integer>> userLottos = new ArrayList<>();
+    private final List<Lotto> userLottos = new ArrayList<>();
 
     private int countLotto(int price) {
         return price / 1000;
@@ -18,7 +18,7 @@ public class LottoGame {
         lottoNum = countLotto(price);
         for (int count = 0; count < lottoNum; count++){
             List<Integer> lotto = lottoGenerator.createRandomLotto();
-            userLottos.add(lotto);
+            userLottos.add(new Lotto(lotto));
         }
     }
 }
