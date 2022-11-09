@@ -9,14 +9,17 @@
         - 예외상황
             - [x] 6개 이상일 때
             - [x] 중복 포함일 때
-    - [ ] 보너스 번호를 포함하는지 판단한다. Rank#checkBonus()
+    - [x] 보너스 번호를 포함하는지 판단한다. Rank#checkBonus()
+        - 예외상황
+            - [x] 이미 로또번호에 있는 수
+            - [x] 범위를 벗어난 수
 - [ ] 당첨 등수 당 개수를 확인한다. -Rank#countWinCards()
 - [ ] 수익률을 계산한다. - Amount#calculateEarningRate()
     - 구입 금액 / 총 당첨 금액 * 100
 
 ## enum 목록
 
-- [ ] 등수와 당첨 금액 -Place#FIRST,SECOND, THIRD, FOURTH, FIFTH
+- [x] 등수와 당첨 금액 -Place#FIRST,SECOND, THIRD, FOURTH, FIFTH
     - n개 일치(금액)
 - [ ] 안내 문자열 -InputGuide#PURCHASING_AMOUNT, WINNING_NUMBER, BONUS_NUMBER
 - [ ] 에러 문구 -ErrorGuide#

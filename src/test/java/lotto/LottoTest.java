@@ -31,7 +31,7 @@ class LottoTest {
     @Test
     void checkReturnCorrectNumber() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        List<Integer> drawnNumbers = new ArrayList<>(Arrays.asList(7,8,9,10,11,12));
+        List<Integer> drawnNumbers = new ArrayList<>(Arrays.asList(7, 8, 9, 10, 11, 12));
 
         assertThat(lotto.checkNumbers(drawnNumbers)).isEqualTo(0);
     }

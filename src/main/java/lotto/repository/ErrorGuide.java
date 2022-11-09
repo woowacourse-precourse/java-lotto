@@ -1,4 +1,4 @@
 package lotto.repository;
 
-public enum ErrorGuide {
+public class ErrorGuide {
 }

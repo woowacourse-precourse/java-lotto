@@ -17,6 +17,7 @@ public enum Place {
     public String getRank() {
         return this.rank;
     }
+
     public long getPrizeMoney() {
         return this.prizeMoney;
     }

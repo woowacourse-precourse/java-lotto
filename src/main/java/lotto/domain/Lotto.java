@@ -23,14 +23,11 @@ public class Lotto {
         }
     }
 
-    public int checkNumbers(List<Integer> drawnNumbers) {
-        drawnNumbers.removeAll(numbers);
-        int correctNumbers = numbers.size() - drawnNumbers.size();
+    public int checkNumbers(List<Integer> userLottoNumbers) {
+        userLottoNumbers.removeAll(numbers);
+        int correctNumbers = numbers.size() - userLottoNumbers.size();
         return correctNumbers;
     }
 
-    public boolean checkBonus(int bonusNumber) {
-        return false;
-    }
 
 }
