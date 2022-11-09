@@ -43,11 +43,11 @@ public class Application {
         createRandomLottoList();
     }
 
-    private static List<Integer> createRandomLottoList() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6).stream().sorted().collect(Collectors.toList());
+    private static Lotto createRandomLottoList() {
+        Lotto newLotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6).stream().sorted().collect(Collectors.toList()));
 
         // System.out.println(numbers.toString());
 
-        return numbers;
+        return newLotto;
     }
 }
