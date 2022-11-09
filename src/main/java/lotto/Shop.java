@@ -16,10 +16,15 @@ public class Shop {
         
         System.out.println("구입금액을 입력해 주세요.");
         getMoney();
+
+        System.out.println();
+
         while(money > 0) {
             lotteryTickets.add(publishLotteryTicket());
             money -= LOTTO_PRICE;
         }
+
+        printLotteryTickets(lotteryTickets);
 
         return lotteryTickets;
     }
@@ -42,5 +47,12 @@ public class Shop {
 
     private static Lotto publishLotteryTicket() {
         return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+    }
+
+    private static void printLotteryTickets(List<Lotto> lotteryTickets) {
+        System.out.println(lotteryTickets.size() + "개를 구매했습니다.");
+        for(Lotto lotto : lotteryTickets) {
+            System.out.println(lotto.getNumbers());
+        }
     }
 }
