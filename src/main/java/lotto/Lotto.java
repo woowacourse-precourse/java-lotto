@@ -17,7 +17,8 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        lottoNumberException.lottoNumberValidate(numbers);
+        lottoNumberException.lottoNumberSize(numbers);
+        lottoNumberException.lottoNumberDuplicated(numbers);
     }
     // TODO: 추가 기능 구현
 
