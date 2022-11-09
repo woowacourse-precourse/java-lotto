@@ -12,7 +12,7 @@ public class Message {
     public static final String FIVE_MATCHES = "5개 일치 (1,500,000원) - ";
     public static final String FIVE_BONUS_MATCHES = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
     public static final String ALL_MATCHES = "6개 일치 (2,000,000,000원) - ";
-    public static final String YIELDS= "총 수익률은 %입니다.";
+    public static final String TOTAL_YIELDS= "총 수익률은 %입니다.";
     public static final String ERROR = "[ERROR] ";
 
     static void printWinningHistroy() {
@@ -23,6 +23,6 @@ public class Message {
         System.out.println(FIVE_MATCHES + "" + "개");
         System.out.println(FIVE_BONUS_MATCHES + "" + "개");
         System.out.println(ALL_MATCHES + "" + "개");
-        System.out.println(YIELDS);
+        System.out.println(TOTAL_YIELDS);
     }
 }
