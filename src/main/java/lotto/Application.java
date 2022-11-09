@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
@@ -24,14 +25,28 @@ public class Application {
             lottoNumbers = pickUniqueNumbersInRange(1, 45 ,6);
             System.out.println(lottoNumbers);
         }
+
         //당첨 번호, 보너스 번호 입력 받기
-        String winningNumber;
-        String bonusNumber;
         System.out.println("당첨 번호를 입력해 주세요.");
-        winningNumber = readLine();
+        List<Integer> winningNumber = stringToList(readLine());
 
         System.out.println("보너스 번호를 입력해 주세요.");
-        bonusNumber = readLine();
+        int bonusNumber = Integer.parseInt(readLine());
+
+        System.out.println(winningNumber);
+        System.out.println(bonusNumber);
+    }
+
+    private static List<Integer> stringToList(String winningNumber) {
+        List<String> numbers = Arrays.asList(winningNumber.split(","));
+        return convertTypeStringToInteger(numbers);
+    }
+
+    private static List<Integer> convertTypeStringToInteger(List<String> numbers) {
+        return numbers.stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
     }
 
 }
