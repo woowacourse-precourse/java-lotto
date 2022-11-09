@@ -2,11 +2,14 @@ package lotto.validator;
 
 public class UserInputValidator {
 
-    public void validateLottoPurchaseMoney(String lottoPurchaseMoney) {
+    public static void validateLottoPurchaseMoney(String lottoPurchaseMoney) {
         try {
             Integer.parseInt(lottoPurchaseMoney);
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 구매 금액은 최대 2,147,483,647 까지 입니다.");
+        }
+        if (Integer.parseInt(lottoPurchaseMoney) % 1000 != 0 || Integer.parseInt(lottoPurchaseMoney) == 0) {
+            throw new IllegalArgumentException("[ERROR] 구매 금액은 1000으로 나누어 떨어지는 단위만 가능합니다.");
         }
     }
 
