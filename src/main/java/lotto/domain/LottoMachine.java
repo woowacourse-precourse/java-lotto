@@ -32,7 +32,7 @@ public class LottoMachine {
     private List<Integer> generateLottoNumbers() {
         Set<Integer> lotto = new HashSet<>();
         while (lotto.size() < Lotto.LOTTO_SIZE) {
-            lotto.add(Randoms.pickNumberInRange(1, 45));
+            lotto.add(Randoms.pickNumberInRange(Lotto.MIN_NUMBER, Lotto.MAX_NUMBER));
         }
         return new ArrayList<>(lotto);
     }
