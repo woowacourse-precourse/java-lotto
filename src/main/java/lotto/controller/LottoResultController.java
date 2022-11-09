@@ -22,6 +22,11 @@ public class LottoResultController {
         this.gradingMachine = new GradingMachine(lottoAnswer, lottos);
     }
 
+    public void run() {
+        createLottoGrades();
+        createLottoResult();
+    }
+
     public void createLottoGrades() {
         gradingMachine.run();
         lottoGrades = gradingMachine.getLottoGrades();
@@ -34,5 +39,8 @@ public class LottoResultController {
         }
     }
 
+    public LottoResult getLottoResult() {
+        return lottoResult;
+    }
 
 }
