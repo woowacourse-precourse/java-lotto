@@ -28,4 +28,14 @@ class InputViewTest {
 
         assertThat(lottoPurchaseAmount).isEqualTo(input);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"20000"})
+    void 로또_당첨_번호_입력_받기(String input) {
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        String lottoWinningNumbers = inputView.inputLottoWinningNumbers();
+
+        assertThat(lottoWinningNumbers).isEqualTo(input);
+    }
 }
