@@ -17,6 +17,8 @@ class MoneyTest {
   @DisplayName("입력한 값이 1000원단위로 끊어지지 않는다면 예외가 발생한다")
   @Test
   void checkDividableMoney() {
+    assertThatThrownBy(() -> new Money().checkDividableMoney("1234"))
+            .isInstanceOf(IllegalArgumentException.class);
   }
 
   @Test
