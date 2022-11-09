@@ -1,7 +1,7 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.common.Error;
+import lotto.common.Msg;
 import lotto.service.LottoService;
 
 public class Gamecontroller {
@@ -9,11 +9,20 @@ public class Gamecontroller {
     public void start() {
         welcome();
         String in = input();
-        service.buy(in);
+        buyLotto(in);
+
+    }
+
+    private void buyLotto(String in) {
+        try {
+            service.buy(in);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private void welcome() {
-        System.out.println(Error.WELCOME.getMsg());
+        System.out.println(Msg.WELCOME.getMsg());
     }
     private String input() {
         return Console.readLine();
