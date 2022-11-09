@@ -9,4 +9,11 @@ public class Validator {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
         }
     }
+
+    public void isMultiplesOfThousand(String input) {
+        int inputNumber = Integer.parseInt(input);
+        if(inputNumber % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 1000의 배수만 입력 가능합니다.");
+        }
+    }
 }
