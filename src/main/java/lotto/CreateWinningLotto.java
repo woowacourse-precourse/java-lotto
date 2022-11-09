@@ -8,6 +8,7 @@ public class CreateWinningLotto {
     private final List<Integer> winningNumbers;
 
     public CreateWinningLotto(List<Integer> winningNumbers) {
+        validate(winningNumbers);
         this.winningNumbers = winningNumbers;
     }
 
