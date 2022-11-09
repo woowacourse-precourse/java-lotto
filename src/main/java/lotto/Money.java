@@ -19,4 +19,8 @@ public class Money {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE);
         }
     }
+
+    private int stringToInt(String money) {
+        return Integer.parseInt(money);
+    }
 }
