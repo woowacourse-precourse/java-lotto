@@ -13,6 +13,7 @@ public class Application {
         User user = new User();
         NumberGenerator numberGenerator = new NumberGenerator();
         List<Integer> winNumbers = new ArrayList<>();
+        InputHandler inputHandler = new InputHandler();
         int bonusNumber;
 
         System.out.println("구입금액을 입력해 주세요.");
