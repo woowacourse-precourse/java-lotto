@@ -2,7 +2,6 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Application {
@@ -28,4 +27,14 @@ public class Application {
         return new Lotto(winningNumbers);
     }
 
+    public static boolean printTheErrorMessageIfNotInTheRange(List<Integer> numbers){
+        final String ERROR_MESSAGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
+        for(int number: numbers){
+            if(number<1 || number>45){
+                System.out.println(ERROR_MESSAGE);
+                return false;
+            }
+        }
+        return true;
+    }
 }
