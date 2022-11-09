@@ -46,8 +46,13 @@ public class LottoManager {
         return result;
     }
 
-    private List<LottoResult> calculateWins(List<List<Integer>> boughtLottos, List<Integer> winNumbers, int bonusNumber) {
+    private List<LottoResult> calculateWins(List<List<Integer>> pickNumberList, List<Integer> winNumbers, int bonusNumber) {
         List<LottoResult> result = new ArrayList<>();
+
+        for (List<Integer> pickNumbers : pickNumberList) {
+            result.add(getGrade(winNumbers, bonusNumber, pickNumbers));
+        }
+
         return result;
     }
 
