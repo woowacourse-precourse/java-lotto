@@ -41,4 +41,11 @@ public class UserIO {
         return this.userLottoList;
     }
 
+    // 구입한 로또의 수량
+    public int purchasedAmount(int budget) {
+        int amount = budget / 1000;
+        System.out.println(amount + "개를 구매했습니다.");
+        return amount;
+    }
+
 }
