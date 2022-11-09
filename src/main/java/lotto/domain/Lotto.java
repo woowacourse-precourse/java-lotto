@@ -1,6 +1,8 @@
 package lotto.domain;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -11,14 +13,19 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+
         if (numbers.size() != 6) {
+            throw new IllegalArgumentException();
+        }
+        if (numbers.size() != uniqueNumbers.size()) {
             throw new IllegalArgumentException();
         }
     }
 
-    public int checkNumbers(List<Integer> chosenNumbers) {
-        chosenNumbers.removeAll(numbers);
-        int correctNumbers = numbers.size() - chosenNumbers.size();
+    public int checkNumbers(List<Integer> drawnNumbers) {
+        drawnNumbers.removeAll(numbers);
+        int correctNumbers = numbers.size() - drawnNumbers.size();
         return correctNumbers;
     }
 
