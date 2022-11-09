@@ -4,7 +4,7 @@
     - 예외상황
         - 1,000원으로 나누어 떨어지지 않는 경우
         - 1,000원 이하의 금액(0원)
-- [ ] 1부터 45까지의 서로 다른 임의의 수 6개를 추출할 수 있다 -NumberGenerate#createRandomNumbers()
+- [ ] 1부터 45까지의 서로 다른 임의의 수 6개를 추출할 수 있다 -NumberGenerate#createRandom()
 - [ ] 당첨 번호(6자리)와 구매한 로또 번호(6자리)를 비교해 등수를 알 수 있다. -Rank#determine()
     - [ ] 몇 개의 숫자가 같은지 확인한다. - Lotto#checkNumbers()
     - [ ] 보너스 번호를 포함하는지 판단한다. Lotto#checkBonus()
