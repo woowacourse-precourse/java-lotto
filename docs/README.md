@@ -1,27 +1,28 @@
 # [미션- 로또] 기능 목록
 
 ### 사용자 입력
-- [ ] inputUserMoney 
+- [x] inputUserMoney 
   - Integer Type 으로 사용자에게 **금액을 입력받기**
 
-- [ ] inputWinNumber 
+- [x] inputWinNumber 
   - Integer Type 으로 사용자에게 **당첨 번호를 입력받기**
 
-- [ ] inputBonusNumber
+- [x] inputBonusNumber
   - Integer Type 으로 사용자에게 **보너스 번호를 입력받기**
 
 ### 사용자 입력 검증
-- [ ] validateLottoPurchaseMoney
+- [x] validateLottoPurchaseMoney
   - 유저가 구매한 로또 금액이 Integer Type 의 범위를 벗어나면 IllegalArgumentException를 발생시키기
+  - 유저가 구매한 로또 금액이 1000 으로 나누어 떨어지지 않으면 IllegalArgumentException를 발생시키기
 
-- [ ] validateInputLottoNumber
-  - [ ] validateLottoNumberRange 
+- [x] validateInputLottoNumber
+  - [x] validateLottoNumberRange 
     - 로또 당첨번호 입력값이 1 ~ 45 사이의 숫자가 아니라면 IllegalArgumentException를 발생시키기
-  - [ ] validateLottoWinNumberOverlap
+  - [x] validateLottoWinNumberOverlap
     - 로또 당첨번호 입력값이 중복된 수 일때 IllegalArgumentException를 발생시키기
-  - [ ] validateLottoWinNumberLength
+  - [x] validateLottoWinNumberLength
     - 보너스 번호를 포함하지 않은 로또 당첨번호 입력값이 6보다 크다면 IllegalArgumentException를 발생시키기
-  - [ ] validateLottoWinNumberLengthContainBonusNumber
+  - [x] validateLottoWinNumberLengthContainBonusNumber
     - 보너스 번호를 포함한 로또 당첨번호 입력값이 7보다 크다면 IllegalArgumentException를 발생시키기
 
 ### 로또 번호 생성
