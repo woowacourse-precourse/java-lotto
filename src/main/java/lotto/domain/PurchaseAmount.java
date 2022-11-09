@@ -13,6 +13,12 @@ public class PurchaseAmount {
     public PurchaseAmount() {
     }
 
+    private void isValidate(int purchaseAmount){
+        isValidateDivisible(purchaseAmount);
+        isValidateMinPrice(purchaseAmount);
+    }
+
+
     private void isValidateDivisible(int purchaseAmount) {
         if (purchaseAmount % UNIT_PRICE != 0) {
             throw new IllegalArgumentException(ERROR_INDIVISIBLE);
