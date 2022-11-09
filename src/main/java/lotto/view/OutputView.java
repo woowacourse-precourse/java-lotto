@@ -1,5 +1,7 @@
 package lotto.view;
 
+import lotto.domain.WinCount;
+
 import java.util.List;
 import java.util.StringJoiner;
 
@@ -13,6 +15,13 @@ public class OutputView {
     private final String MSG_DIVIDER = "---";
     private final String MSG_TOTAL_PREFIX = "총 수익률은 ";
     private final String MSG_TOTAL_SUFFIX = "입니다.";
+
+    private final String threeHit = "3개 일치 (5,000원) - ";
+    private final String fourHit = "4개 일치 (50,000원) - ";
+    private final String fiveHit = "5개 일치 (1,500,000원) - ";
+    private final String fiveHitAndBonus = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
+    private final String sixHit = "6개 일치 (2,000,000,000원) - ";
+    private final String hitSuffix = "개";
 
     public void announceInputMoney() {
         System.out.println(MSG_INPUT_MONEY);
@@ -45,6 +54,14 @@ public class OutputView {
         StringJoiner joiner = new StringJoiner(delimiter);
         numbers.forEach(item -> joiner.add(String.valueOf(item)));
         System.out.println("[" + joiner + "]");
+    }
+
+    public void printWinCount(WinCount winCount) {
+        System.out.println(threeHit + winCount.getFifth() + hitSuffix);
+        System.out.println(fourHit + winCount.getFourth() + hitSuffix);
+        System.out.println(fiveHit + winCount.getThird() + hitSuffix);
+        System.out.println(fiveHitAndBonus + winCount.getSecond() + hitSuffix);
+        System.out.println(sixHit + winCount.getFirst() + hitSuffix);
     }
 
     public void printProfitRatio(String ratio) {
