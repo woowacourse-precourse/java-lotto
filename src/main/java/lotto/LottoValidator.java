@@ -1,6 +1,7 @@
 package lotto;
 
 import static lotto.ErrorMessage.*;
+import static lotto.LottoGenerator.COUNT;
 import static lotto.LottoGenerator.END_INCLUSIVE;
 import static lotto.LottoGenerator.START_INCLUSIVE;
 
@@ -20,7 +21,7 @@ public class LottoValidator {
     }
 
     private static void checkSize(List<Integer> numbers) throws IllegalArgumentException {
-        if (numbers.size() != 6) {
+        if (numbers.size() != COUNT) {
             throw new IllegalArgumentException(COMMON_MESSAGE + LOTTE_SIZE_ERROR.getMessage() + numbers.size());
         }
     }
