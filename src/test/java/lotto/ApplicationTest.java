@@ -8,6 +8,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -47,9 +48,25 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 잘못된_타입_로또개수_입력_예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 자연수__로또_구매개수_테스트(){
+        assertSimpleTest(() -> {
+            runException("1");
+            assertThat(output()).contains("1");
+        });
+    }
+
+    @Test
+    void 자연수_아닌_로또_구매개수_예외_테스트(){
+        assertSimpleTest(() -> {
+            runException("-5");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
