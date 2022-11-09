@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.model.User;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -51,6 +52,14 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() -> {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 입력금액_테스트() {
+        assertSimpleTest(() -> {
+            run("4000");
+            assertThat(output()).contains("구입금액을 입력해 주세요.");
         });
     }
 
