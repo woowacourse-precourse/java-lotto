@@ -26,6 +26,9 @@
 
 ### 🚀 UI
 
+- void printCashInputBox()수
+  - "구입금액을 입력해 주세요."를 출력하는 함수
+
 
 - void printLottoQuantity(int)
   - 발행한 로또 수량을 출력하는 함수
@@ -68,7 +71,7 @@
 
 
 - List<Integer> issueLottoNumbers()
-  - 로또 번호를 발행하는 함수
+  - 로또 번호를 발행하는 함스
 
 
 - void validateCashIsInteger(String)
