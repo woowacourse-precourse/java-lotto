@@ -14,4 +14,12 @@ class LottoMachineTest {
         assertThatThrownBy(() -> machine.buy("1000k"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("구입 금액이 1000원으로 나누어 떨어지지 않으면 예외 발생")
+    @Test
+    void InputNonDivisibleNumber() {
+        LottoMachine machine = new LottoMachine();
+        assertThatThrownBy(() -> machine.buy("1001"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
