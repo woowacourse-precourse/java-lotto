@@ -37,7 +37,7 @@ public class Shop {
     }
 
     private List<Integer> createLottoNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return Randoms.pickUniqueNumbersInRange(Lotto.MIN_NUMBER, Lotto.MAX_NUMBER, Lotto.SIZE);
     }
 
     private Lotto createLotto() {
@@ -59,13 +59,12 @@ public class Shop {
 
     private void validateWinNumbers(String winNumbers) {
         String[] numbers = winNumbers.split(NUMBER_DELIMETER);
-        if (numbers.length != 6) {
-            LottoError.illegalArgumentException(INVALID_SIZE_INPUT);
-        }
         try {
+            List<Integer> lotto = new ArrayList<>();
             for (String number : numbers) {
-                Integer.parseInt(number);
+                lotto.add(Integer.parseInt(number));
             }
+            new Lotto(lotto);
         } catch (NumberFormatException ignored) {
             LottoError.illegalArgumentException(INVALID_STRING_INPUT);
         }
