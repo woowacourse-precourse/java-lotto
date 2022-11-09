@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.input.InputAgent;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Store {
@@ -22,5 +23,11 @@ public class Store {
             this.generatedLottoPaper.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         }
         return this.generatedLottoPaper;
+    }
+
+    public void getPublishedLottoNumber() {
+        for (List<Integer> eachLottoPaper : this.generatedLottoPaper) {
+            System.out.println(Arrays.toString(eachLottoPaper.toArray()));
+        }
     }
 }
