@@ -14,9 +14,6 @@ import java.util.List;
  * 2022/11/09         gim-yeong-geun          최초 생성
  */
 public class Calculator {
-    public Calculator() {
-    }
-
     public static int revenue(List<Integer> compare) {
         return 0;
     }

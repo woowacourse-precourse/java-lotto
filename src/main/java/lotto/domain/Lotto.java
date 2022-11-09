@@ -5,6 +5,7 @@ import java.util.List;
 enum Rank {
     ONE(2000000000), TWO(30000000), THREE(1500000), FOUR(50000), FIVE(5000);
     private int money;
+
     Rank(int money) {
         this.money = money;
     }
