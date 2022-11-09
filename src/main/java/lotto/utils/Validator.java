@@ -1,6 +1,9 @@
 package lotto.utils;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Validator {
@@ -34,6 +37,13 @@ public class Validator {
         int inputNumber = Integer.parseInt(input);
         if (1 > inputNumber || inputNumber > 45) {
             throw new IllegalArgumentException("[ERROR] 1과 45 사이의 정수만 입력 가능합니다.");
+        }
+    }
+
+    public void containDuplicate(List<String> inputs) {
+        Set<String> inputSet = new HashSet<>(inputs);
+        if (inputSet.size() != inputs.size()) {
+            throw new IllegalArgumentException("[ERROR] 중복되지 않은 값만 입력 가능합니다.");
         }
     }
 }
