@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
 
 public class Money {
-    private final Integer money;
+    private final int money;
 
     public Money() {
         printGuideMessage();
