@@ -1,9 +1,5 @@
 package lotto.service;
 
-import lotto.domain.MyLottoNumbers;
-import lotto.domain.WinningLottoNumbers;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,17 +12,12 @@ public class WinningMoney {
     private final static int FIFTH = 5000;
     private final static List<Integer> MONEYS =
             Arrays.asList(NONE, NONE, NONE, FIFTH, FOURTH, THIRD, SECOND, FIRST);
+    private int myGrade;
 
-    MyLottoNumbers myLottoNumbers = new MyLottoNumbers();
-    WinningLottoNumbers winningLottoNumbers = new WinningLottoNumbers();
     CheckNumbers checkNumbers = new CheckNumbers();
 
-    List<Integer> winningNumbers = winningLottoNumbers.getWinningNumbers();
-    int bonusNumber = winningLottoNumbers.getBonusNumber();
-    List<Integer> myNumbers = myLottoNumbers.getMyNumbers();
-    int myGrade;
 
-    public int getMyGrade() {
+    public int getMyMoney(List<Integer> winningNumbers, List<Integer> myNumbers, int bonusNumber) {
         myGrade = checkNumbers.getCorrect(winningNumbers, myNumbers, bonusNumber);
         return MONEYS.get(myGrade);
     }
