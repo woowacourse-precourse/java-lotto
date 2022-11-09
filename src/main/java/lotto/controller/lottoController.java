@@ -73,7 +73,7 @@ public class lottoController {
 
 		for (int i = 0; i < candidateNumbers.size(); i++) {
 			if (checkSameNumber(candidateNumbers.get(i), winningNumbers.get(i))) {
-				count+=;
+				count++;
 			}
 		}
 
@@ -84,5 +84,16 @@ public class lottoController {
 		if (a == b)
 			return true;
 		return false;
+	}
+
+	private static List<Integer> countWinningLotto() {
+		List<Integer> winningCount = new ArrayList<>();
+
+		List<List<Integer>> lotto = publishLotto(Integer.parseInt(Input.buyLotto()));
+		for (int i = 0; i < lotto.size(); i++) {
+			winningCount.add(compareNumbers(lotto.get(i), pickWinningNumbers()));
+		}
+
+		return winningCount;
 	}
 }
