@@ -26,8 +26,9 @@
 
 ### 🚀 UI
 
-- void printCashInputBox()수
+- void printCashInputBox()
   - "구입금액을 입력해 주세요."를 출력하는 함수
+  - 구입금액 입력 전 구입금액 입력이 이루어져야함을 알리는 함수
 
 
 - void printLottoQuantity(int)
@@ -40,10 +41,12 @@
 
 - void printWinningNumbersInputBox()
   - "당첨 번호를 입력해 주세요."를 출력하는 함수
+  - 당첨 번호 입력 전 당첨 번호 입력이 이루어져야함을 알리는 함수
 
 
 - void printBonusNumberInputBox()
   - "보너스 번호를 입력해 주세요."를 출력하는 함수
+  - 보너스 번호 입력 전 보너스 번호 입력이 이루어져야함을 알리는 함수
 
 
 - void printStats(List<Lotto>, List<Integer>, Integer)
