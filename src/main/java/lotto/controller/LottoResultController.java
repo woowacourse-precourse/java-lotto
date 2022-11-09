@@ -17,15 +17,19 @@ public class LottoResultController {
     private List<LottoGrade> lottoGrades;
     private double yield;
 
-    public LottoResultController(LottoAnswer lottoAnswer, List<Lotto> lottos) {
+    private final int price;
+
+    public LottoResultController(LottoAnswer lottoAnswer, List<Lotto> lottos, int price) {
         this.lottoAnswer = lottoAnswer;
         this.lottos = lottos;
         this.gradingMachine = new GradingMachine(lottoAnswer, lottos);
+        this.price = price;
     }
 
     public void run() {
         createLottoGrades();
         createLottoResult();
+        calculateYield();
     }
 
     public void createLottoGrades() {
@@ -48,7 +52,7 @@ public class LottoResultController {
         return yield;
     }
 
-    public void setYield(double yield) {
-        this.yield = yield;
+    public void calculateYield() {
+
     }
 }

@@ -3,7 +3,7 @@ package lotto.controller;
 import lotto.domain.LottoAnswer;
 
 public class InputController {
-    public int getLottoCount() {
+    public int getPrice() {
         return 0;
     }
 

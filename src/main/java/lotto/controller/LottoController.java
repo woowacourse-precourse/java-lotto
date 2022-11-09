@@ -9,17 +9,22 @@ import lotto.domain.LottoResult;
 import lotto.view.OutputView;
 
 public class LottoController {
+    private static final int PRICE_PER_LOTTO = 1000;
     private List<Lotto> lottos;
     private LottoAnswer lottoAnswer;
     private LottoResult lottoResult;
     private LottoResultController lottoResultController;
     private final InputController inputController = new InputController();
+    private int price;
+    private int lottoCount;
+
 
     public void run() {
-        int lottoCount = inputController.getLottoCount();
+        int price = inputController.getPrice();
+        int lottoCount = price / PRICE_PER_LOTTO;
         generateLottos(lottoCount);
         LottoAnswer lottoAnswer = inputController.getLottoAnswer();
-        lottoResultController = new LottoResultController(lottoAnswer, lottos);
+        lottoResultController = new LottoResultController(lottoAnswer, lottos, price);
         lottoResultController.run();
         LottoResult lottoResult = lottoResultController.getLottoResult();
         double yield = lottoResultController.getYield();
