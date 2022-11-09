@@ -1,6 +1,7 @@
 package lotto.view.input;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.NoSuchElementException;
 
 public class LottoScanner {
 
@@ -9,7 +10,7 @@ public class LottoScanner {
 
     // 로또 구입 금액을 입력 받는 로직
     public String money() {
-        String money = Console.readLine();
+        String money = readLine();
         validateItContainsOnlyNumber(money);
 
         return money;
@@ -17,7 +18,7 @@ public class LottoScanner {
 
     // 당첨 번호를 입력받는 로직
     public String winningNumber() {
-        String winningNumber = Console.readLine();
+        String winningNumber = readLine();
         validateWinningNumberFormat(winningNumber);
 
         return winningNumber;
@@ -25,10 +26,19 @@ public class LottoScanner {
 
     // 보너스 번호를 입력받는 로직
     public String bonusNumber() {
-        String bonusNumber = Console.readLine();
+        String bonusNumber = readLine();
         validateItContainsOnlyNumber(bonusNumber);
 
         return bonusNumber;
+    }
+
+    // NoSuchElementException 방지
+    private String readLine() {
+        try {
+            return Console.readLine();
+        } catch (NoSuchElementException e) {
+            return "";
+        }
     }
 
     void validateItContainsOnlyNumber(String money) {
