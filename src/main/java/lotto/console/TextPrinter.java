@@ -1,12 +1,15 @@
 package lotto.console;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import lotto.Lotto;
 import lotto.tool.LottoTool;
-import lotto.tool.Prize;
+import lotto.tool.Rank;
 
 public class TextPrinter {
+
+  private static final DecimalFormat formatter = new DecimalFormat("#,##0");
 
   public static void printGetPrice() {
     System.out.println("구입금액을 입력해 주세요.");
@@ -27,25 +30,26 @@ public class TextPrinter {
     System.out.println("보너스 번호를 입력해 주세요.");
   }
 
-  public static void printResult(HashMap<Prize, Integer> result) {
+  public static void printTotalResult(HashMap<Rank, Integer> result) {
     System.out.println("당첨 통계");
     System.out.println("---");
-    for (Prize i : result.keySet()) {
-      printReturnRate(i, result.get(i));
+    for (Rank i : result.keySet()) {
+      printRankResult(i, result.get(i));
     }
-    printReturnRate(LottoTool.calcReturnRate(result));
   }
 
-  private static void printReturnRate(Prize prize, int num) {
-    System.out.println(prize.getMatch() + "개 일치");
-    if (prize.isIncludeBonnus()) {
+  private static void printRankResult(Rank rank, int num) {
+
+    System.out.print(rank.getMatch() + "개 일치");
+    if (rank.isIncludeBonnus()) {
       System.out.print(", 보너스 볼 일치");
     }
-    System.out.println(" (" + prize.getPrizeMoney() + "원) - " + num + "개");
+    System.out.println(" (" + formatter.format(rank.getPrizeMoney()) + "원) - " + num + "개");
   }
 
-  private static void printReturnRate(float rate) {
-    System.out.println("총 수익률은 " + rate + "%입니다.");
+  public static void printReturnRate(double rate) {
+    String format = String.format("%.1f", rate);
+    System.out.println("총 수익률은 " + String.format("%.1f", rate) + "%입니다.");
   }
 
   public static void printErrorMessage(Exception e) {
