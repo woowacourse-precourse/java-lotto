@@ -3,7 +3,7 @@
 ## 기능 목록
 
 - 구입하려는 금액을 입력하라는 메세지를 출력하는 메서드
-    - wantBuyAmountInput()
+    - requestWantBuyAmountInputMessage()
 - 구입하려는 금액을 입력받는다.
     - wantBuyAmountInput()
 - 로또 구입 금액을 입력 받는다. 구입 금액은 1,000원 단위로 입력 받으며 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다. <br>
