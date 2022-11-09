@@ -12,17 +12,20 @@ public class Shop {
             "구매 금액은 1,000 단위로 나누어 떨어져야 합니다.";
     private static final String INVALID_STRING_INPUT =
             "숫자만 입력할 수 있습니다.";
+    private static final String INVALID_SIZE_INPUT =
+            "6개의 숫자를 입력해야 합니다.";
+    private static final String NUMBER_DELIMETER = ",";
     private static final Integer LOTTO_PRICE = 1000;
     private Integer money;
-    private List<Lotto> lotto;
+    private List<Integer> winNumbers;
 
     public void inputMoney() {
         String money = Console.readLine();
-        validate(money);
+        validateMoney(money);
         this.money = Integer.parseInt(money);
     }
 
-    private void validate(String money) {
+    private void validateMoney(String money) {
         try {
             Integer nMoney = Integer.parseInt(money);
             if (nMoney % LOTTO_PRICE != 0) {
@@ -47,6 +50,25 @@ public class Shop {
             lotto.add(createLotto());
         }
         return lotto;
+    }
+
+    public void inputWinNumbers() {
+        String input = Console.readLine();
+        validateWinNumbers(input);
+    }
+
+    private void validateWinNumbers(String winNumbers) {
+        String[] numbers = winNumbers.split(NUMBER_DELIMETER);
+        if (numbers.length != 6) {
+            LottoError.illegalArgumentException(INVALID_SIZE_INPUT);
+        }
+        try {
+            for (String number : numbers) {
+                Integer.parseInt(number);
+            }
+        } catch (NumberFormatException ignored) {
+            LottoError.illegalArgumentException(INVALID_STRING_INPUT);
+        }
     }
 
 }
