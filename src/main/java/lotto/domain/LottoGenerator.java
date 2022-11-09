@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -11,6 +12,14 @@ public class LottoGenerator {
 
     public LottoGenerator(int quantity) {
         this.quantity = quantity;
+    }
+
+    public void generateLottos() {
+        lottos = new ArrayList<>();
+        for (int i = 0; i < quantity; i++) {
+            lottoNumbers = generateLottoNumbers();
+            lottos.add(sortLottoNumbers(lottoNumbers));
+        }
     }
 
     public List<Integer> generateLottoNumbers() {
