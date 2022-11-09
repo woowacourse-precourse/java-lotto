@@ -16,6 +16,7 @@ public class Validator {
     public static final String NEED_TO_INPUT_RIGHT_NUMBER_RANGE =
             "[ERROR] 1 이상 45 이하의 숫자를 입력하여야 합니다.";
     public static final String NEED_TO_USE_COMMA = "[ERROR] 콤마(,)를 통해 숫자를 구분해주세요";
+    public static final String NEED_TO_NOT_DUPLICATE = "[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.";
 
     public void validateMoney(String money) {
         valueIsNumber(money);
@@ -27,6 +28,19 @@ public class Validator {
         valueIsNumber(input.replaceAll(",", ""));
         validateValueLength(input);
         validateValueRange(input);
+    }
+
+    public void validateBonusNumber(String input,
+                                    List<Integer> winningNumbers) {
+        valueIsNumber(input);
+        validateValueRange(input);
+        validateForDuplication(input, winningNumbers);
+    }
+
+    private void validateForDuplication(String input, List<Integer> winningNumbers) {
+        if (winningNumbers.contains(Integer.parseInt(input))) {
+            throw new IllegalArgumentException(NEED_TO_NOT_DUPLICATE);
+        }
     }
 
     private void valueIsNumber(String money) {

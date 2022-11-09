@@ -25,6 +25,7 @@ public class InputDevice {
 
     public int sendBonusNumber(List<Integer> winningNumbers) {
         String input = Console.readLine();
+        validator.validateBonusNumber(input, winningNumbers);
         return Integer.parseInt(input);
     }
 }
