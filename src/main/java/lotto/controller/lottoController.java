@@ -68,7 +68,15 @@ public class lottoController {
 		return Integer.parseInt(bonusNumber);
 	}
 
-	private static void compareNumbers() {
+	private static int compareNumbers(List<Integer> candidateNumbers, List<Integer> winningNumbers) {
+		int count = 0;
 
+		for (int i = 0; i < candidateNumbers.size(); i++) {
+			if (checkDuplication(candidateNumbers.get(i), winningNumbers.get(i))) {
+				count+=;
+			}
+		}
+		
+		return count;
 	}
 }
