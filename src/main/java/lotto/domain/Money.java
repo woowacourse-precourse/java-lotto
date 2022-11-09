@@ -19,4 +19,12 @@ public class Money {
         }
         throw new IllegalArgumentException(UNIT_OF_AMOUNT_ERROR);
     }
+
+    public boolean hasMoney() {
+        return money != 0;
+    }
+
+    public void buyLotto(int price) {
+        this.money -= price;
+    }
 }
