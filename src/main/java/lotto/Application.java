@@ -18,7 +18,9 @@ public class Application {
         List<Lotto> lottos = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
-            lottos.add(Lotto.create());
+            Lotto lotto = Lotto.create();
+            lottos.add(lotto);
+            lotto.printNumbers();
         }
 
 

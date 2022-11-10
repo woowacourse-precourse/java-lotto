@@ -11,9 +11,11 @@ public class Util {
     public static final int MIN_NUMBER = 1;
     public static final int MAX_NUMBER = 45;
     public static final int LOTTO_COUNT = 6;
+    public static final int STANDARD = 1000;
 
-    public static void isValidInput(String str) {
-        if (!str.matches("[0-9]|,") || Integer.parseInt(str) % 1000 != 0) {
+    public static void isValidInput(String input) {
+        String str = input.trim();
+        if (!str.matches("[0-9]*") || Integer.parseInt(str) % STANDARD != 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getValue());
         }
     }
