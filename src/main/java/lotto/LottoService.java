@@ -12,4 +12,13 @@ public class LottoService {
                 .map(lotto -> lotto.result(winningNumbers, bonusNumber))
                 .collect(Collectors.toList());
     }
+
+    public double calculateYield(List<LottoResult> lottoResults) {
+        int revenue = lottoResults.stream()
+                .mapToInt(LottoResult::getPayout)
+                .sum();
+        int investment = lottoResults.size() * 1000;
+
+        return (double) revenue / investment * 100;
+    }
 }

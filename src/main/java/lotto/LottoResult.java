@@ -27,4 +27,8 @@ public enum LottoResult {
                 " - " + lottoResultToCount.getOrDefault(this, 0L) + "개";
         System.out.println(message);
     }
+
+    public int getPayout() {
+        return payout;
+    }
 }
