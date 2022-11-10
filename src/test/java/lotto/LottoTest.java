@@ -3,6 +3,7 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -33,4 +34,26 @@ class LottoTest {
 
         assertThat(buyAmount.buyLotto).isEqualTo(14);
     }
+
+    @DisplayName("당첨 번호를 리스트에 저장, 예외 발생 테스트")
+    @Test
+    void winningNumbersTest() {
+        WinningNumberToList winningNumberToList = new WinningNumberToList();
+        winningNumberToList.setWinNumbers("1,2,3,4,5,6");
+        List<Integer> lst = new ArrayList<>() {
+            {
+                add(1);
+                add(2);
+                add(3);
+                add(4);
+                add(5);
+                add(6);
+            }
+        };
+
+        assertThat(winningNumberToList.winNumbers).isEqualTo(lst);
+    }
+
+
+
 }
