@@ -44,13 +44,14 @@ public class InputOutputView {
         return Integer.parseInt(readLine());
     }
 
-    public void saveResult() {
+    public void saveResult(List<Integer> grades) {
         MoneyEnumClass moneyEnumClass = new MoneyEnumClass();
         moneyEnumClass.setResult(MoneyEnumClass.MoneyEnum.FIFTH, "3개 일치 (5,000원) - ");
         moneyEnumClass.setResult(MoneyEnumClass.MoneyEnum.FOURTH, "4개 일치 (50,000원) - ");
         moneyEnumClass.setResult(MoneyEnumClass.MoneyEnum.THIRD, "5개 일치 (1,500,000원) - ");
         moneyEnumClass.setResult(MoneyEnumClass.MoneyEnum.SECOND, "5개 일치, 보너스 볼 일치 (30,000,000원) - ");
         moneyEnumClass.setResult(MoneyEnumClass.MoneyEnum.FIRST, "6개 일치 (20,000,000,000원) - ");
+        printResult(grades, moneyEnumClass);
     }
     public void setNum(List<Integer> grades) {
         fifth = Collections.frequency(grades, 3);
@@ -60,18 +61,17 @@ public class InputOutputView {
         first = Collections.frequency(grades, 7);
     }
 
-    public void printResult(List<Integer> grades) {
-        saveResult();
+    public void printResult(List<Integer> grades, MoneyEnumClass moneyEnumClass) {
         setNum(grades);
-        System.out.print(MoneyEnumClass.MoneyEnum.FIFTH);
+        System.out.print(moneyEnumClass.getResult(MoneyEnumClass.MoneyEnum.FIFTH));
         System.out.println(fifth + "개");
-        System.out.print(MoneyEnumClass.MoneyEnum.FOURTH);
+        System.out.print(moneyEnumClass.getResult(MoneyEnumClass.MoneyEnum.FOURTH));
         System.out.println(fourth + "개");
-        System.out.print(MoneyEnumClass.MoneyEnum.THIRD);
+        System.out.print(moneyEnumClass.getResult(MoneyEnumClass.MoneyEnum.THIRD));
         System.out.println(third + "개");
-        System.out.print(MoneyEnumClass.MoneyEnum.SECOND);
+        System.out.print(moneyEnumClass.getResult(MoneyEnumClass.MoneyEnum.SECOND));
         System.out.println(second + "개");
-        System.out.print(MoneyEnumClass.MoneyEnum.FIRST);
+        System.out.print(moneyEnumClass.getResult(MoneyEnumClass.MoneyEnum.FIRST));
         System.out.println(first + "개");
     }
 
