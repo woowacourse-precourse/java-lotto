@@ -1,7 +1,7 @@
 package lotto.utils;
 
 import static lotto.domain.ErrorMessage.COMMON_MESSAGE;
-import static lotto.domain.ErrorMessage.DIVIDE_COMMAS_NOT_EXIST;
+import static lotto.domain.ErrorMessage.NOT_DIVIDE_COMMAS;
 import static lotto.domain.ErrorMessage.LOTTE_NUMBER_DUPLICATION;
 import static lotto.domain.ErrorMessage.LOTTE_NUMBER_NOT_ASC;
 import static lotto.domain.ErrorMessage.LOTTE_NUMBER_OUT_BOUND;
@@ -64,14 +64,14 @@ public class LottoValidator {
     private static void checkConsistOfOnlyCommas(String firstPlace) {
         Set<String> commasCheck = Arrays.stream(firstPlace.split("")).collect(Collectors.toSet());
         if (!commasCheck.remove(DIVIDE_POINT)) {
-            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + DIVIDE_COMMAS_NOT_EXIST.getMessage());
+            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + NOT_DIVIDE_COMMAS.getMessage());
         }
         checkOnlyCommas(commasCheck);
     }
 
     private static void checkOnlyCommas(Set<String> commasCheck) {
         commasCheck.stream().filter(number -> !number.matches(NUMBER_REG_EXP)).forEach(number -> {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + NOT_DIVIDE_COMMAS.getMessage());
         });
     }
 
