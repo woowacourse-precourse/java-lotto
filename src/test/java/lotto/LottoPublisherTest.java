@@ -11,6 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class LottoPublisherTest {
 
     @Test
+    @DisplayName("발행된 로또의 개수는 (비용 / 1000)개가 되어야 한다.")
     void publishLottosAccordingToPayment() {
         // given
         LottoPublisher publisher = new LottoPublisher();
