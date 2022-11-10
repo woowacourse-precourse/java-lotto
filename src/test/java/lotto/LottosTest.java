@@ -14,16 +14,23 @@ public class LottosTest {
 
     @BeforeEach
     void lottosInit() {
-        lottos = new Lottos(3);
+        lottos = new Lottos(3, Application.userIputStringToLotto("1,2,3,4,5,6"), 7);
     }
 
     @Test
-    public void lottosValidTest() {
+    public void createdLottosValidTest() {
         for(Lotto lotto : lottos.getLottos()) {
             List<Integer> numbers = lotto.getNumbers();
             assertThat(Lotto.isValidSize(numbers)).isTrue();
             assertThat(Lotto.isDuplicated(numbers)).isFalse();
             assertThat(Lotto.isNotValidRange(numbers)).isFalse();
         }
+    }
+
+    @Test
+    public  void createdWinningLottoTest() {
+        assertThatThrownBy(() -> Application.userIputStringToLotto("1, 2, 3, 4, 5, 6"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThat(lottos.getBonusNum()).isEqualTo(7);
     }
 }
