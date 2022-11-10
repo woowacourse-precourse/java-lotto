@@ -19,7 +19,7 @@ public class LottoMachine {
         return lottoMachine;
     }
 
-    public List<Integer> extractRandomNumbers() {
+    private List<Integer> extractRandomNumbers() {
         return camp.nextstep.edu.missionutils.Randoms
                 .pickUniqueNumbersInRange(START_LOTTO_NUMBER_RANGE, END_LOTTO_NUMBER_RANGE, LOTTO_NUMBERS);
     }

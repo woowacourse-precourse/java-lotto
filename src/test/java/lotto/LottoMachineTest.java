@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import store.LottoMachine;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.*;
@@ -18,7 +19,10 @@ public class LottoMachineTest extends NsTest {
         assertRandomUniqueNumbersInRangeTest(() -> {
             List<Integer> result = List.of(1, 2, 3, 4, 5, 6);
             LottoMachine lottoMachine = LottoMachine.getInstance();
-            assertThat(lottoMachine.extractRandomNumbers()).isEqualTo(result);
+            Method method = LottoMachine.class.getDeclaredMethod("extractRandomNumbers");
+            method.setAccessible(true);
+
+            assertThat(method.invoke(lottoMachine)).isEqualTo(result);
         }, List.of(1, 2, 3, 4, 5, 6));
     }
 
