@@ -19,6 +19,7 @@ public class LottoGameService {
     private static final int CORRECT_LOTTO_WINNING_NUMBERS_SIZE = 6;
     private static final String LOTTO_WINNING_NUMBERS_SIZE_EXCEPTION_MESSAGE = "로또 당첨 번호의 개수는 6개여야합니다.";
     private static final String LOTTO_WINNING_NUMBERS_DUPLICATE_EXCEPTION_MESSAGE = "로또 당첨 번호는 중복될 수 없습니다.";
+    private static final String LOTTO_WINNING_NUMBERS_RANGE_EXCEPTION_MESSAGE = "로또 당첨 번호의 범위는 1~45여야합니다.";
 
     private Lotto lotto;
 
@@ -46,6 +47,9 @@ public class LottoGameService {
         }
         if (isLottoWinningNumbersDuplicate(lottoWinningNumbers)) {
             throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + LOTTO_WINNING_NUMBERS_DUPLICATE_EXCEPTION_MESSAGE);
+        }
+        if (isLottoWinningNumbersWrongRange(lottoWinningNumbers)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + LOTTO_WINNING_NUMBERS_RANGE_EXCEPTION_MESSAGE);
         }
     }
 
@@ -75,6 +79,13 @@ public class LottoGameService {
         long numbersDistinctSize = lottoWinningNumbers.stream()
                 .distinct().count();
         return numbersDistinctSize != CORRECT_LOTTO_WINNING_NUMBERS_SIZE;
+    }
+
+    private boolean isLottoWinningNumbersWrongRange(List<Integer> lottoWinningNumbers) {
+        long correctNumbersRangeCount = lottoWinningNumbers.stream()
+                .filter(number -> number >= 1 && number <= 45)
+                .count();
+        return correctNumbersRangeCount != CORRECT_LOTTO_WINNING_NUMBERS_SIZE;
     }
 
     public List<Integer> inputWinningNumberConvertToCollection(String lottoWinningNumber) {
