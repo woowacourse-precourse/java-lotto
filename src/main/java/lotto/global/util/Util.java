@@ -33,6 +33,10 @@ public class Util {
     private static List<Integer> splitByComma(String inputPrizeNumbers) {
         StringTokenizer st = new StringTokenizer(inputPrizeNumbers, ",");
         int cnt = st.countTokens();
+        return addListByTokens(st, cnt);
+    }
+
+    private static List<Integer> addListByTokens(StringTokenizer st, int cnt) {
         List<Integer> inputNumbers = new ArrayList<>();
         for (int i = 0; i < cnt; i++) {
             inputNumbers.add(Integer.valueOf(st.nextToken()));
