@@ -6,6 +6,7 @@ import static lotto.Validator.NEED_TO_INPUT_RIGHT_NUMBER_RANGE;
 import static lotto.Validator.NEED_TO_INPUT_SIX_NUMBER;
 import static lotto.Validator.NEED_TO_NOT_DUPLICATE;
 import static lotto.Validator.NEED_TO_USE_COMMA;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
@@ -28,8 +29,13 @@ class ValidatorTest {
 
     static final List<Integer> WINNING_NUMBERS = List.of(1, 2, 3, 4, 5, 6);
 
+    static final String INPUT_MONEY_RIGHT_VALUE = "3000";
+    static final String INPUT_WINNING_NUMBERS_RIGHT_VALUE = "1,2,3,4,5,6";
+    static final String INPUT_BONUS_MONEY_RIGHT_VALUE = "7";
+
+
     private Validator validator = new Validator();
-    
+
     @Nested
     @DisplayName("validateMoney method")
     class Class1 {
@@ -47,6 +53,13 @@ class ValidatorTest {
             assertThatThrownBy(() -> validator.validateMoney(NUMBER_NOT_DIVISIBLE_BY_ONE_THOUSAND))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(NEED_TO_INPUT_NUMBER_CAN_DIVIDE_BY_ONE_THOUSAND);
+        }
+
+        @DisplayName("1000의 배수를 입력하면 정상통과한다.")
+        @Test
+        void test3() {
+            assertThatNoException()
+                    .isThrownBy(() -> validator.validateMoney(INPUT_MONEY_RIGHT_VALUE));
         }
     }
 
@@ -77,12 +90,21 @@ class ValidatorTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(NEED_TO_INPUT_SIX_NUMBER);
         }
+
         @DisplayName("범위가 벗어나는 숫자가 있다면 예외를 반환한다.")
         @Test
         void test4() {
             assertThatThrownBy(() -> validator.validateWinningNumbers(VALUE_RANGE_IS_NOT_RIGHT_USE_COMMA))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(NEED_TO_INPUT_RIGHT_NUMBER_RANGE);
+        }
+
+        @DisplayName("정상로직")
+        @Test
+        void test5() {
+            assertThatNoException()
+                    .isThrownBy(() -> validator
+                            .validateWinningNumbers(INPUT_WINNING_NUMBERS_RIGHT_VALUE));
         }
     }
 
@@ -94,7 +116,7 @@ class ValidatorTest {
         @DisplayName("숫자가 아니면 예외를 반환한다")
         @Test
         void test1() {
-            assertThatThrownBy(() -> validator.validateBonusNumber(VALUE_IS_NOT_NUMBER,WINNING_NUMBERS))
+            assertThatThrownBy(() -> validator.validateBonusNumber(VALUE_IS_NOT_NUMBER, WINNING_NUMBERS))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(NEED_TO_INPUT_NUMBER);
         }
@@ -102,7 +124,7 @@ class ValidatorTest {
         @DisplayName("범위에 벗어나는 숫자가 있다면 예외를 반환한다.")
         @Test
         void test2() {
-            assertThatThrownBy(() -> validator.validateBonusNumber(VALUE_RANGE_IS_NOT_RIGHT,WINNING_NUMBERS))
+            assertThatThrownBy(() -> validator.validateBonusNumber(VALUE_RANGE_IS_NOT_RIGHT, WINNING_NUMBERS))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(NEED_TO_INPUT_RIGHT_NUMBER_RANGE);
         }
@@ -110,9 +132,17 @@ class ValidatorTest {
         @DisplayName("보너스 번호가 당첨 번호와 중복된다면 예외를 반환한다.")
         @Test
         void test3() {
-            assertThatThrownBy(() -> validator.validateBonusNumber(VALUE_IS_DUPLICATE,WINNING_NUMBERS))
+            assertThatThrownBy(() -> validator.validateBonusNumber(VALUE_IS_DUPLICATE, WINNING_NUMBERS))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(NEED_TO_NOT_DUPLICATE);
+        }
+
+        @DisplayName("정상 로직")
+        @Test
+        void test4() {
+            assertThatNoException()
+                    .isThrownBy(() -> validator
+                            .validateBonusNumber(INPUT_BONUS_MONEY_RIGHT_VALUE, WINNING_NUMBERS));
         }
     }
 }
