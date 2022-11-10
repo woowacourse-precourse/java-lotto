@@ -6,21 +6,21 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class LottoCountTest {
+class LottoPurchaseCountTest {
 
-    LottoCount lottoCount = new LottoCount();
+    LottoPurchaseCount lottoPurchaseCount = new LottoPurchaseCount();
 
     @DisplayName("로또 개수 확인 테스트")
     @Test
     void lottoCountComparison() {
-        int count = lottoCount.getLottoCount(5000);
+        int count = lottoPurchaseCount.getLottoCount(5000);
         Assertions.assertThat(count).isSameAs(5);
     }
 
     @DisplayName("로또 금액 입력 예외 테스트")
     @Test
     void inputLottoMoneyException() {
-        assertThatThrownBy(() -> lottoCount.getLottoCount(5500))
+        assertThatThrownBy(() -> lottoPurchaseCount.getLottoCount(5500))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
