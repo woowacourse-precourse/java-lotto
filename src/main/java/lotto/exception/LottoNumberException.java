@@ -14,6 +14,19 @@ public class LottoNumberException {
         }
     }
 
+    public void lottoNumberMaxMin(List<Integer> numbers) {
+        try {
+            for (Integer num : numbers) {
+                if (num > 45 || num < 1) {
+                    throw new IllegalArgumentException("로또의 최대 최소 값이 맞지 않습니다.");
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
     public void lottoNumberDuplicated(List<Integer> numbers) {
         try {
             for (Integer num : numbers) {
@@ -21,6 +34,16 @@ public class LottoNumberException {
                     throw new IllegalArgumentException("중복된 값이 있습니다.");
                 }
             }
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public void bonusNumber(List<Integer> winningNumbers, int bonusNumber) {
+        try {
+            if (winningNumbers.contains(bonusNumber))
+                throw new IllegalArgumentException("보너스 숫자가 이미 있는 번호입니다.");
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
             throw e;
