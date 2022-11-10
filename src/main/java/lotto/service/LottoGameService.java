@@ -14,7 +14,11 @@ public class LottoGameService {
     private static final String LOTTO_PURCHASE_AMOUNT_NOT_DIGIT_EXCEPTION_MESSAGE = "로또 구입 금액은 숫자여야합니다.";
     private static final String DIGIT_REGEX = "^[0-9]+$";
 
-    Lotto lotto = new Lotto(LottoNumbersGenerator.generateLottoNumbers());
+    private Lotto lotto;
+
+    public void generateLotto() {
+        this.lotto = new Lotto(LottoNumbersGenerator.generateLottoNumbers());
+    }
 
     public int getLottoIssueCount(String lottoPurchaseAmount) {
         validateLottoIssueCount(lottoPurchaseAmount);
