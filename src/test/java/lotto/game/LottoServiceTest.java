@@ -124,4 +124,18 @@ class LottoServiceTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 보너스 번호와 중복이 있습니다.");
     }
+
+    @Test
+    @DisplayName("로또 구매가 정상적으로 되야한다")
+    void buyLotto() {
+        // given
+        Money money = Money.of(10000);
+
+        // then
+        List<Lotto> lottos = lottoService.buyLotto(money);
+
+        // when
+        assertThat(lottos.size())
+                .isEqualTo(10);
+    }
 }
