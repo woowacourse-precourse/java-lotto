@@ -55,6 +55,17 @@ class WinnerTest {
                 .hasMessageContaining(ERROR_OF_DUPLICATE);
     }
 
+    @DisplayName("보너스 번호 입력 시 숫자를 올바르게 쓰지 않으면 예외가 발생한다.")
+    @Test
+    void inValidBonusNumber() {
+        String winningNumbers = "1,2,3,4,5,6";
+        String bonusNumber = "seven";
+
+        assertThatThrownBy(() -> new Winner(winningNumbers, bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_OF_INVALID_INPUT);
+    }
+
     @DisplayName("보너스 번호 입력 시 1에서 45 사이의 숫자를 입력하지 않으면 예외가 발생한다.")
     @Test
     void bonusNumberOutOfRange() {
