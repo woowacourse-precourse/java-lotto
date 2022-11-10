@@ -132,5 +132,21 @@ public class FeatureTest {
                 .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 구매금액이 1000의 배수가 아닙니다.");
     }
 
+//    @Test
+//    void 출력테스트() {
+//        View view = new View();
+//        List<List<Integer>> user = List.of(
+//                List.of(1, 2, 3, 4, 5, 6),
+//                List.of(1, 2, 3, 4, 5, 7),
+//                List.of(1, 2, 3, 4, 5, 8),
+//                List.of(1, 2, 3, 4, 8, 9),
+//                List.of(1, 2, 3, 10, 11, 12),
+//                List.of(1, 2, 11, 12, 13, 14),
+//                List.of(1, 11, 12, 13, 14, 15),
+//                List.of(11, 12, 13, 14, 15, 16)
+//        );
+//        as
+//    }
+
 
 }
