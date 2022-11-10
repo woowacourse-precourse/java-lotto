@@ -17,9 +17,9 @@ public class LottoProgram {
 		Checker.checkUserInput(userInput);
 
 		int lottoCount = Integer.parseInt(userInput) / PRICE;
-		View.showLottoPurchasedGuideMessage(lottoCount);
-
 		createLotto(lottoCount);
+
+		View.showLottoPurchasedGuideMessage(lottoCount);
 	}
 
 	public void createLotto(int lottoCount) {
