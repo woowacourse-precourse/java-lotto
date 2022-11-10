@@ -13,7 +13,7 @@ class LottoMoneyValidationTest {
     @Test
     void notIntegerInputException() {
         LottoMoneyValidation lottoMoneyValidation = new LottoMoneyValidation();
-        assertThrows(IllegalArgumentException.class, () -> lottoMoneyValidation.isValidateMoney("12.3"));
+        assertThrows(IllegalArgumentException.class, () -> lottoMoneyValidation.isValidate("12.3"));
     }
 
     @DisplayName("로또 1개 가격으로 나누어 떨어지지 않으면 IllegalArgumentException 을 발생시킨다.")
@@ -22,7 +22,7 @@ class LottoMoneyValidationTest {
         LottoMoneyValidation lottoMoneyValidation = new LottoMoneyValidation();
         int money = IntConstant.LOTTO_MONEY_PER_ONE.getValue();
         int userMoney = money / 10;
-        assertThrows(IllegalArgumentException.class, () -> lottoMoneyValidation.isValidateMoney(String.valueOf(userMoney)));
+        assertThrows(IllegalArgumentException.class, () -> lottoMoneyValidation.isValidate(String.valueOf(userMoney)));
     }
 
     @DisplayName("모두 통과하면 어떠한 상황도 발생하지 않는다.")
@@ -31,7 +31,7 @@ class LottoMoneyValidationTest {
         LottoMoneyValidation lottoMoneyValidation = new LottoMoneyValidation();
         int money = IntConstant.LOTTO_MONEY_PER_ONE.getValue();
         int userMoney = money * 10;
-        assertDoesNotThrow(() -> lottoMoneyValidation.isValidateMoney(String.valueOf(userMoney)));
+        assertDoesNotThrow(() -> lottoMoneyValidation.isValidate(String.valueOf(userMoney)));
     }
 
 }
