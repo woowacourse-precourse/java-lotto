@@ -20,4 +20,9 @@ public class Output {
             System.out.println(lotto);
         }
     }
+
+    public static void askPrizeNum() {
+        System.out.println(Print.ASK_PRIZE);
+        PrizeNum.setPrizeNum();
+    }
 }
