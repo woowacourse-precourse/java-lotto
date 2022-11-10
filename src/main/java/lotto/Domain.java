@@ -8,6 +8,13 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class Domain {
+
+    List<Lotto> userLottos;
+    Lotto winningNumber;
+
+    public Domain() {
+        userLottos = new ArrayList<>();
+    }
     public boolean isValidPriceInput(String input) {
         if (!input.matches("^[0-9]+$")) {
             return false;
@@ -20,9 +27,16 @@ public class Domain {
         return true;
     }
 
-    public Lotto createRandomLottoNumber() {
-        return new Lotto(pickUniqueNumbersInRange(1, 45, 6));
+    public void createRandomLottoNumber() {
+        userLottos.add(new Lotto(pickUniqueNumbersInRange(1, 45, 6)));
     }
 
+//    public static void main(String[] args) {
+//        Domain domain = new Domain();
+//        for (int i = 0; i < 50; i++) {
+//            System.out.println(domain.createRandomLottoNumber().getNumbers());
+//
+//        }
+//    }
 
 }
