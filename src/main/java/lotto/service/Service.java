@@ -52,4 +52,11 @@ public class Service {
 
         return jackpotArr;
     }
+
+    public static int getBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int bonusNum = Integer.parseInt(Console.readLine());
+
+        return bonusNum;
+    }
 }
