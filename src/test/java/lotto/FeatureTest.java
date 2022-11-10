@@ -90,5 +90,9 @@ public class FeatureTest {
         assertThat(lotto.getWinningArray(user, input)).isEqualTo(answer);
     }
 
-
+    @Test
+    void 수익_계산() {
+        Calculator calculator = new Calculator();
+        assertThat(calculator.getProfit(new int[]{0, 0, 0, 0, 1})).isEqualTo(30000000);
+    }
 }
