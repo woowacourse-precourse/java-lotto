@@ -86,15 +86,15 @@
 ### 🚀 입력
 
 - String inputUserCash()
-  - 사용자로부터 구입금액을 입력받아 저장하는 함수
+  - 사용자로부터 구입금액을 입력받는 함수
   
 
-- void inputWinningNumbers(int[])
-  - 사용자로부터 당첨 번호를 입력받아 저장하는 함수
+- String inputWinningNumbers()
+  - 사용자로부터 당첨 번호를 입력받는 함수
 
 
-- void inputBonusNumber(Integer)
-  - 사용자로부터 보너스 번호를 입력받아 저장하는 함수
+- String inputBonusNumber()
+  - 사용자로부터 보너스 번호를 입력받는 함수
 
   
 ### 🚀 핵심 로직
@@ -120,7 +120,15 @@
 
 
 - Integer getUserCash(String)
-  - 입력받은 구입금액에 대한 검사 함수가 진행되고 구입금액을 Integer형으로 반환해주는 함수
+  - 입력받은 구입금액에 대한 검사 함수가 수행되고 구입금액을 Integer 자료형으로 반환해주는 함수
+
+
+- List<Integer> getWinningNumbers(String)
+  - 입력받은 당첨 번호 문자열에 대한 검사 함수가 수행되고 당첨 번호를 담은 리스트를 반환해주는 함수
+
+
+- Integer getBonusNumber(String)
+  - 입력받은 보너스 번호 문자열에 대한 검사 함수가 수행되고 이를 Integer 자료형으로 반환해주는 함수
   
 
 - void validateWinningNumbersSize(String)
