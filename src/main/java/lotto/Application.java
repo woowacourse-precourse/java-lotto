@@ -6,10 +6,14 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        System.out.println("당첨 번호를 입력해주세요");
+        System.out.println("당첨 번호를 입력해 주세요.");
         String numbers = Console.readLine();
         NumberGenerator numberGenerator = new NumberGenerator();
         List<Integer> winningNumbers = numberGenerator.createWinningNumbers(numbers);
-        System.out.println(winningNumbers);
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonus = Console.readLine();
+        int bonusNumber = numberGenerator.createBonusNumbers(bonus);
+
     }
 }

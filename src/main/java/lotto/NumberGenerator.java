@@ -13,4 +13,8 @@ public class NumberGenerator {
         }
         return winningNumbers;
     }
+
+    public int createBonusNumbers(String inputNumber) {
+        return Integer.parseInt(inputNumber);
+    }
 }
