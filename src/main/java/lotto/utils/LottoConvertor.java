@@ -19,7 +19,7 @@ public class LottoConvertor {
                 .collect(Collectors.toList());
     }
 
-    private static int mapToInt(String lottoNumber) {
+    public static int mapToInt(String lottoNumber) {
         UserInputValidator.validateLottoNumber(lottoNumber);
         return Integer.parseInt(lottoNumber);
     }

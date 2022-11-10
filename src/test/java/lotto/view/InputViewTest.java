@@ -90,4 +90,43 @@ class InputViewTest {
         System.setIn(in);
         assertDoesNotThrow(InputView::inputWinningNumber);
     }
+
+    @DisplayName("보너스 번호 - 숫자만 입력 가능")
+    @ParameterizedTest
+    @ValueSource(strings = {"a", "b"})
+    void 보너스_번호_숫자만_입력_가능(String userInput) {
+        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(InputView::inputBonusNumber)
+                .hasMessage(UserInputValidator.ERROR_MESSAGE_NOT_DIGIT);
+    }
+
+    @DisplayName("보너스 번호 - 1 ~ 45사이의 숫자만 가능")
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "46"})
+    void 보너스_번호_1부터_45사이의_숫자만_가능(String userInput) {
+        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(InputView::inputBonusNumber)
+                .hasMessage(UserInputValidator.ERROR_MESSAGE_NOT_VALID_LOTTO_NUMBER);
+    }
+
+    @DisplayName("보너스 번호 - 1개의 숫자만 입력 가능")
+    @ParameterizedTest
+    @ValueSource(strings = {"1 2", "1, 2"})
+    void 보너스_번호_1개의_숫자만_입력가능(String userInput) {
+        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(InputView::inputBonusNumber)
+                .hasMessage(UserInputValidator.ERROR_MESSAGE_NOT_DIGIT);
+    }
+
+    @DisplayName("보너스 번호 - 정상 입력")
+    @ParameterizedTest
+    @ValueSource(strings = {"6", "12"})
+    void 보너스_번호_정상입력(String userInput) {
+        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(in);
+        assertDoesNotThrow(InputView::inputBonusNumber);
+    }
 }
