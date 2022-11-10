@@ -9,7 +9,9 @@ public class InputView {
 
     public static int inputPurchaseAmount() {
         System.out.println(PURCHASE_AMOUNT_MESSAGE);
-        return toInteger(Console.readLine());
+        int money = toInteger(Console.readLine());
+        System.out.println();
+        return money;
     }
 
     private static int toInteger(String input) {
