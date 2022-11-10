@@ -15,6 +15,21 @@ public class Application {
     static final String ERROR_MESSAGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     static final String BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
     static final String LOTTO_PURCHASE_MESSAGE = "개를 구매했습니다.";
+    enum places{
+        FIRST_PLACE(2000000000, "6개 일치"),
+        SECOND_PLACE(30000000, "5개 일치, 보너스 볼 일치"),
+        THIRD_PLACE(1500000, "5개 일치"),
+        FOURTH_PLACE(50000, "4개 일치"),
+        FIFTH_PLACE(5000, "3개 일치");
+
+        final long price;
+        final String message;
+
+        places(long price, String numberMatch){
+            this.price = price;
+            this.message = numberMatch;
+        }
+    }
     public static void main(String[] args) {
 //        validateGivenNumbers();
 //        initializeBonusNumber();
