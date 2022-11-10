@@ -45,4 +45,13 @@ public class LottoServiceTest {
                 .as("[ERROR] 실패하는 입력값이 존재합니다.")
                 .isThrownBy(() -> lottoService.validateMoney(input));
     }
+
+    @ParameterizedTest
+    @DisplayName("구입 금액 입력값이 숫자가 아니기 때문에 IllegalArgumentException테스트")
+    @ValueSource(strings = {"10000a", "!avb10", "zxcffs", "5000!", "a", "1000."})
+    void 로또구입금액_숫자가아니기때문에_예외발생_테스트(String input) {
+        assertThatIllegalArgumentException()
+                .as("[ERROR] 실패하는 입력값이 존재합니다.")
+                .isThrownBy(() -> lottoService.validateConsistOfNumbers(input));
+    }
 }
