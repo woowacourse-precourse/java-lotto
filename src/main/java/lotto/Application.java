@@ -14,4 +14,8 @@ public class Application {
             return false;
         }
     }
+
+    private static boolean isPositiveNumber(int number) {
+        return number > 0;
+    }
 }
