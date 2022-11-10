@@ -4,15 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PrizeNum {
-    private final List<Integer> prizeNum;
+    private static List<Integer> prize = new ArrayList<>();
 
-    public PrizeNum(List<Integer> prizeNum) {
-        this.prizeNum = prizeNum;
+    private PrizeNum() {
+
     }
 
     public static List<Integer> getPrize() {
-        List<Integer> prize = new ArrayList<>();
-
         return prize;
     }
 
@@ -20,17 +18,15 @@ public class PrizeNum {
         return Input.inputPrize().split(",");
     }
 
-    private static List<Integer> setPrizeNum() throws IllegalArgumentException {
+    public static void setPrizeNum() throws IllegalArgumentException {
         String[] splitInput = splitInputPrize();
-        List<Integer> prizeNum = new ArrayList<>();
+        prize = new ArrayList<>();
 
         for(String input : splitInput) {
-            prizeNum.add(Integer.parseInt(input));
+            prize.add(Integer.parseInt(input));
         }
 
-        validatePrizeNum(prizeNum);
-
-        return prizeNum;
+        validatePrizeNum(prize);
     }
 
     private static void validatePrizeNum(List<Integer> prizeNum) throws IllegalArgumentException {
