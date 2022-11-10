@@ -5,10 +5,10 @@ import java.util.stream.Collectors;
 
 public class LottoService {
 
-    public List<LottoResult> compareLottoNumbers(List<Lotto> lottoTickets,
+    public List<LottoResult> compareLottoNumbers(List<Lotto> lottoBundle,
                                                  List<Integer> winningNumbers,
                                                  int bonusNumber) {
-        return lottoTickets.stream()
+        return lottoBundle.stream()
                 .map(lotto -> lotto.result(winningNumbers, bonusNumber))
                 .collect(Collectors.toList());
     }

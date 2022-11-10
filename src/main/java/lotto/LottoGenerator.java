@@ -10,13 +10,13 @@ public class LottoGenerator {
     public final static int LOTTO_NUMBER_MIN_VALUE = 1;
     public final static int LOTTO_NUMBER_MAX_VALUE = 45;
 
-    public List<Lotto> createLottoTickets(int money) {
-        List<Lotto> lottoTickets = new ArrayList<>();
+    public List<Lotto> createLottoBundle(int money) {
+        List<Lotto> lottoBundle = new ArrayList<>();
         int createLottoNumber = money / 1000;
         for (int i = 0; i < createLottoNumber; i++) {
-            lottoTickets.add(createLotto());
+            lottoBundle.add(createLotto());
         }
-        return lottoTickets;
+        return lottoBundle;
     }
 
     private Lotto createLotto() {
