@@ -17,6 +17,44 @@ public class Application {
         List<Integer> winNumbers = inputWinNumbers(Console.readLine());
         Lotto lotto = new Lotto(winNumbers);
         int bonusNum = lotto.inputBonusNumber();
+        Map<List<Integer>, Integer> lottoResult = new HashMap<>();
+        for (List<Integer> num : lottoNumbers) {
+            int correctCount = 0;
+            for (int i : num) {
+                if (winNumbers.contains(i)) {
+                    correctCount++;
+                }
+                if (correctCount == 5 && num.contains(bonusNum)) {
+                    correctCount += 2;
+                }
+            }
+            lottoResult.put(num, correctCount);
+        }
+        int first = 0, second = 0, third = 0, fourth = 0, fifth = 0;
+        for (int i : lottoResult.values()) {
+            if (i == 7)
+                second++;
+            if (i == 6)
+                first++;
+            if (i == 5)
+                third++;
+            if (i == 4)
+                fourth++;
+            if (i == 3)
+                fifth++;
+        }
+        int resultMoney = 2_000_000_000*first + 30_000_000*second + 1_500_000*third + 50_000*fourth + 5_000*fifth;
+        double percent = Math.round(((double) resultMoney/(double) pay) * 10000);
+        float percent2 = (float) percent/100;
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - " + fifth + "개");
+        System.out.println("4개 일치 (50,000원) - " + fourth + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + third + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + second + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + first + "개");
+        System.out.println("총 수익률은 " + percent2 + "%입니다.");
+
 
     }
 
@@ -26,13 +64,13 @@ public class Application {
     }
 
     public static int checkPay(String str) {
-        int pay;
+        int pay = 0;
         try {
             pay = Integer.parseInt(str);
 
         } catch (NumberFormatException e) {
             System.out.println("[ERROR] 구입 금액은 숫자만 입력하실 수 있습니다.");
-            throw new IllegalArgumentException();
+            //throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자만 입력하실 수 있습니다.");
         }
         if (pay % 1_000 != 0) {
             System.out.println("[ERROR] 구입 금액은 1,000원 단위로 이루어져야 합니다.");
@@ -45,7 +83,7 @@ public class Application {
         List<List<Integer>> lottoNumbers = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(numbers);
+            numbers.sort(Comparator.naturalOrder());
             System.out.println(numbers);
             lottoNumbers.add(numbers);
         }
@@ -63,4 +101,5 @@ public class Application {
         }
         return winNumbers;
     }
+
 }
