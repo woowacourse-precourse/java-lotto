@@ -27,4 +27,6 @@ public class FeatureTest {
         long count = answer.stream().distinct().count();
         assertThat(count).isEqualTo(6L);
     }
+
+
 }
