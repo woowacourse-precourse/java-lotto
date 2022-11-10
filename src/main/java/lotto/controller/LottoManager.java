@@ -12,6 +12,8 @@ import java.util.List;
 public class LottoManager {
     InputView in = new InputView();
     OutputView out = new OutputView();
+    List<Integer> winNumbers = new ArrayList<>();
+    int bonusNumber = 0;
 
     private final int lottoPrice = 1000;
     private final int firstPrize = 2000000000;
@@ -25,13 +27,7 @@ public class LottoManager {
 
     public void run() {
         buyLotto();
-
-        out.printSpacer();
-        out.announceInputWinNumber();
-        List<Integer> winNumbers = in.inputWinNumbers();
-        out.printSpacer();
-        out.announceInputBonusNumber();
-        int bonusNumber = in.inputBonusNumber(winNumbers);
+        getWinNumberInput();
 
         List<LottoResult> lottoResults = calculateWins(boughtLottos, winNumbers, bonusNumber);
         out.printSpacer();
@@ -52,6 +48,15 @@ public class LottoManager {
         out.printSpacer();
         out.announceBuyResult(lottoCount);
         out.printBoughtLotto(boughtLottos);
+        out.printSpacer();
+    }
+
+    private void getWinNumberInput() {
+        out.announceInputWinNumber();
+        winNumbers = in.inputWinNumbers();
+        out.printSpacer();
+        out.announceInputBonusNumber();
+        bonusNumber = in.inputBonusNumber(winNumbers);
     }
 
     private int getAffordableLottoCount(int money) {
