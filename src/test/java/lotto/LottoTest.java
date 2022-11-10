@@ -202,6 +202,16 @@ class LottoTest extends NsTest {
         assertThat(output()).contains("쉼표(,)는 5개 여야만 합니다.");
     }
 
+    @DisplayName("마지막 인덱스가 쉼표면 예외가 발생한다.")
+    @Test
+    void validateLastIndexIsComma() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> Lotto.sliceWinningNumber("1,2,3,4,5,6,"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertThat(output()).contains(ERROR_MESSAGE);
+        assertThat(output()).contains("쉼표(,)는 5개 여야만 합니다.");
+     }
 
     @DisplayName("정상적인 보너스 번호를 입력한다.")
     @Test
