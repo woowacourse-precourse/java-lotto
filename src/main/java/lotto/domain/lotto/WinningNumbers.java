@@ -7,12 +7,12 @@ import java.util.List;
 import static lotto.domain.lotto.Lotto.MAX_NUMBER;
 import static lotto.domain.lotto.Lotto.MIN_NUMBER;
 
-public class CorrectLotto {
+public class WinningNumbers {
 
     private final List<Integer> numbers;
     private final int bonusNumber;
 
-    public CorrectLotto(List<Integer> numbers, int bonusNumber) {
+    public WinningNumbers(List<Integer> numbers, int bonusNumber) {
         validateNumbers(numbers);
         validateBonusNumber(bonusNumber);
 
