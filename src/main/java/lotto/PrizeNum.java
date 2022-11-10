@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class PrizeNum {
@@ -50,5 +51,10 @@ public class PrizeNum {
         if(prize.contains(bonus)) {
             throw new IllegalArgumentException(ErrMsg.VALIDATE_BONUS_NUM_UNIQUE);
         }
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(prize.toArray());
     }
 }
