@@ -9,16 +9,15 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputView {
 	static final String NUMBER_DELIMITER = ",";
 
-	public static String[] getLottoNumbers(){
+	public static String[] getLottoNumbers() {
 		String[] pickNumbers = Console.readLine().split(NUMBER_DELIMITER);
 		return pickNumbers;
 	}
 
-	public static List<Integer> convertIntoIntegerList(String[] strings){
+	public static List<Integer> convertIntoIntegerList(String[] strings) {
 		return Arrays.stream(strings).
 			map(string -> Integer.parseInt(string)).
 			collect(Collectors.toList());
 	}
-
 
 }
