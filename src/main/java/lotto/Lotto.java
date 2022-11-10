@@ -10,6 +10,20 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public Lotto(String input) {
+        List<String> splitedInput = Arrays.asList(input.split(","));
+
+        if(InputValidator.isInvalidSeparator(splitedInput)) {
+            throw new IllegalArgumentException();
+        }
+
+        this.numbers = splitedInput.stream()
+                .map(eachInput -> Integer.parseInt(eachInput))
+                .sorted()
+                .collect((Collectors.toList()));
+    }
+
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
