@@ -21,7 +21,6 @@ public class Validation {
         HashSet<Integer> set = new HashSet<>(numbers);
         if (set.size() != 6)
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되지 않은 6개 숫자여야 합니다.");
-//        return true;
     }
 
     public static boolean isBonusInLotto(List<Integer> numbers, int bonus) throws IllegalArgumentException {
