@@ -20,12 +20,31 @@ public class InputImpl implements Input {
     @Override
     public List<String> inputWinningNumbers() {
         List<String> winningNumbers = new ArrayList<>(List.of(Console.readLine().split(",")));
-        return winningNumbers;
+        if (isAllowedWinningNumbers(winningNumbers)) {
+            return winningNumbers;
+        }
+        return null;
     }
 
     private boolean isAllowedPaymentAmount(int paymentAmount) {
         if (paymentAmount < MIN_PAYMENT_AMOUNT) {
             throw new IllegalArgumentException("[ERROR] 최소 로또 구매 금액은 1000원입니다.");
+        }
+        return true;
+    }
+
+    private boolean isAllowedWinningNumbers(List<String> winningNumbers) {
+        if (winningNumbers.size() != 6 || isDuplicatedNumber(winningNumbers)) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 서로다른 6개 숫자를 입력해야합니다.");
+        }
+        return true;
+    }
+
+    private boolean isDuplicatedNumber(List<String> winningNumbers) {
+        int winningNumberSize = (int) winningNumbers.stream()
+                .distinct().count();
+        if (winningNumberSize == 6) {
+            return false;
         }
         return true;
     }
