@@ -9,6 +9,11 @@ public class InputUtil {
         String money = readLine();
         return money;
     }
+
+    public int conversionMoney() {
+        return Integer.parseInt(inputMoney());
+    }
+
     public String inputLottoNumber() {
         String inputNumbers = readLine();
         return inputNumbers;
