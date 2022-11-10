@@ -7,6 +7,11 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 public class Validator {
+
+    public static void validateLottoPrice(int inputNumber) {
+        isMultiplesOfThousand(inputNumber);
+        isZero(inputNumber);
+    }
     public static void isNumberOrNot(String input) {
         boolean isNumber = Pattern.matches("^[0-9]*$", input);
         if (!isNumber) {
@@ -26,8 +31,8 @@ public class Validator {
         }
     }
 
-    public static void isZero(String input) {
-        if (Objects.equals(input, "0")) {
+    public static void isZero(int input) {
+        if (input == 0) {
             throw new IllegalArgumentException("[ERROR] 하나 이상의 복권을 구매해야 합니다.");
         }
     }
