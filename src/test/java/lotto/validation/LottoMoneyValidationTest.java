@@ -27,7 +27,7 @@ class LottoMoneyValidationTest {
     @Test
     void minusValueException() {
         LottoMoneyValidation lottoMoneyValidation = new LottoMoneyValidation();
-        assertThrows(IllegalArgumentException.class, () -> lottoMoneyValidation.isValidate("12.3"));
+        assertThrows(IllegalArgumentException.class, () -> lottoMoneyValidation.isValidate("-200"));
     }
 
     @DisplayName("로또 1개 가격으로 나누어 떨어지지 않으면 IllegalArgumentException 을 발생시킨다.")
