@@ -2,11 +2,27 @@ package lotto;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.Collections;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Model {
     private final int LOTTO_NUMBERS = 6;
+
+    public List<Integer> checkLottoNumber (List<Integer> lottoNumbers, List<List<Integer>> uncheckedLottos) {
+        List<Integer> duplicatedNumber = new ArrayList<>();
+
+        for (List<Integer> lotto: uncheckedLottos){
+            List<Integer> comparingNumbers = lotto.stream()
+                    .filter(number -> lottoNumbers.contains(number))
+                    .collect(Collectors.toList());
+
+            duplicatedNumber.add(comparingNumbers.size());
+        }
+
+        return duplicatedNumber;
+    }
 
     public List<List<Integer>> repeatGetLottoNumber(int BONUS_NUMBER) {
         List<List<Integer>> uncheckedLottos = new ArrayList<>();
@@ -28,7 +44,7 @@ public class Model {
                 lottoNumbers.add(randomNumber);
             }
         }
+        Collections.sort(lottoNumbers);
         return lottoNumbers;
     }
-
 }
