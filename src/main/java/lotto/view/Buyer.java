@@ -25,7 +25,7 @@ public class Buyer {
         System.out.println(PURCHASE_PRICE);
         String purchasePrice = readLine();
         purchaseLottoCount = Integer.parseInt(purchasePrice);
-        System.out.println(purchaseLottoCount / 1000 + PURCHASE_COUNT);
+        System.out.println(purchaseLottoCount / 1000 + Message.PURCHASE_PRICE.getMessage());
     }
 
     void winningNumberInput() {
@@ -40,7 +40,7 @@ public class Buyer {
 
     void validateDivideNumber() {
         if (purchaseLottoCount % 1000 != 0) {
-            throw new IllegalArgumentException(ERROR_PRICE);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_PRICE.getErrorMessage());
         }
     }
 
@@ -51,7 +51,7 @@ public class Buyer {
                 .toArray(Integer[]::new);
         for (int i = 0; i < WinningNumberArr.length; i++) {
             if (WinningNumberArr[i] < 1 || WinningNumberArr[i] > 45) {
-                throw new IllegalArgumentException(ERROR_NUMBER_RANGE);
+                throw new IllegalArgumentException(ErrorMessage.ERROR_NUMBER_RANGE.getErrorMessage());
             }
         }
     }
@@ -59,7 +59,7 @@ public class Buyer {
     void validateWinningNumberSize(String winningNumber) {
         winningNumber.split(",");
         if (winningNumber.length() != 6) {
-            throw new IllegalArgumentException(ERROR_LOTTO_LENGTH);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_LOTTO_LENGTH.getErrorMessage());
         }
     }
 
@@ -69,21 +69,21 @@ public class Buyer {
                 .boxed()
                 .toArray(Integer[]::new);
         if (bonusNumberArr[0] < 1 || bonusNumberArr[0] > 45) {
-            throw new IllegalArgumentException(ERROR_BONUS_NUMBER);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_BONUS_NUMBER.getErrorMessage());
         }
     }
 
     void validateInputSeparator(String winningNumber) {
         String[] checkSeparator = winningNumber.split(",");
         if (checkSeparator.length != 6) {
-            throw new IllegalArgumentException(ERROR_SEPARATOR);
+            throw new IllegalArgumentException(ErrorMessage.ERROR_SEPARATOR.getErrorMessage());
         }
     }
 
     void validateInputBlank(String winningNumber) {
         for (int i = 0; i < winningNumber.length(); i++) {
             if (winningNumber.charAt(i) == ' ') {
-                throw new IllegalArgumentException(ERROR_BLANK);
+                throw new IllegalArgumentException(ErrorMessage.ERROR_BLANK.getErrorMessage());
             }
         }
     }
