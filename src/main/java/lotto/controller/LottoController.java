@@ -1,5 +1,10 @@
 package lotto.controller;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import lotto.constant.StringConstant;
+import lotto.validation.LotteryWinningNumberValidation;
 import lotto.validation.LottoMoneyValidation;
 import lotto.validation.Validation;
 import lotto.view.LotteryWinningNumberView;
@@ -10,7 +15,8 @@ public class LottoController {
 
     public void lottoProcedure() {
         int userMoney = userMoney();
-        String userInput = inputUserLottoWinningNumbers();
+        List<Integer> lotteryNumber = lotteryNumber();
+
     }
 
     private static int userMoney() {
@@ -30,10 +36,28 @@ public class LottoController {
         lottoMoneyValidation.isValidate(userLottoBuyMoney);
     }
 
+    private static List<Integer> lotteryNumber() {
+        String userInput = inputUserLottoWinningNumbers();
+        lotteryNumberValidation(userInput);
+        return createLottoNumber(userInput);
+    }
+
     private static String inputUserLottoWinningNumbers() {
         View lotteryWinningNumberView = new LotteryWinningNumberView();
         lotteryWinningNumberView.show();
         return lotteryWinningNumberView.getResponse();
+    }
+
+    private static void lotteryNumberValidation(String userInput) {
+        Validation validation = new LotteryWinningNumberValidation();
+        validation.isValidate(userInput);
+    }
+
+    private static List<Integer> createLottoNumber(String userInput) {
+        String[] userWinningLottoInput = userInput.split(",");
+        return Arrays.stream(userWinningLottoInput)
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
 }
