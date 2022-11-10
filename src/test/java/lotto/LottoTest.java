@@ -59,4 +59,14 @@ public class LottoTest {
         assertThat(gameResult.isFifth()).isTrue();
     }
 
+    @DisplayName("1개의 로또와 당첨 번호를 비교하여 이외의 결과를 반환하는 기능")
+    @Test
+    void calculateAnswerElse() {
+        Lotto lotto = new Lotto(List.of(7, 8, 9, 10, 11, 12));
+        Answer answer = new Answer(List.of(6, 5, 4, 3, 2, 1), 7);
+
+        GameResult gameResult = answer.play(lotto);
+        assertThat(gameResult.isElse()).isTrue();
+    }
+
 }
