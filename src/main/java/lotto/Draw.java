@@ -50,4 +50,12 @@ public class Draw {
         }
     }
 
+    public void savePrizeMoney() {
+        WinnersCase.FIFTH.totalPrizeMoney(WinnersCase.FIFTH.getPrizeMoney(), WinnersCase.FIFTH.getCount());
+        WinnersCase.FOURTH.totalPrizeMoney(WinnersCase.FOURTH.getPrizeMoney(), WinnersCase.FOURTH.getCount());
+        WinnersCase.THIRD.totalPrizeMoney(WinnersCase.THIRD.getPrizeMoney(), WinnersCase.THIRD.getCount());
+        WinnersCase.SECOND.totalPrizeMoney(WinnersCase.SECOND.getPrizeMoney(), WinnersCase.SECOND.getCount());
+        WinnersCase.FIRST.totalPrizeMoney(WinnersCase.FIRST.getPrizeMoney(), WinnersCase.FIRST.getCount());
+    }
+
 }
