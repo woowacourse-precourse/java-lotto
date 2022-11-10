@@ -2,12 +2,10 @@
 ## 기능 목록
 ###1. 입력 처리
 #### 입력은 모두 주어진 API로 한 줄씩 입력받아 처리한다.
-    1) 입력금액 처리 
-        / int getInputCost(String readLine)
+    1) 입력을 int로 변환
+        / int getInputToInt(String readLine)
     2) 당첨 번호 처리 
         / List<Interger> getWinnigNumber(String readLine)
-    3) 보너스 번호 처리 
-        / int getBonusNumber(String readLine)
 ###2. 로또 발행
     1) 로또 1개 숫자 발행 
         / List<Integer> getLottoNumbers()
