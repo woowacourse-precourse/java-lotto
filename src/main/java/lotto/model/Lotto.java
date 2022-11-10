@@ -1,7 +1,9 @@
 package lotto.model;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Lotto {
 
@@ -15,7 +17,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = ascendingSortNumbers(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -45,5 +47,13 @@ public class Lotto {
                 .filter(number -> number >= 1 && number <= 45)
                 .count();
         return correntNumbersRangeCount != CORRECT_NUMBERS_SIZE;
+    }
+
+    private List<Integer> ascendingSortNumbers(List<Integer> numbers) {
+        return numbers.stream().sorted().collect(Collectors.toList());
+    }
+
+    public List<Integer> getNumbers() {
+        return Collections.unmodifiableList(numbers);
     }
 }
