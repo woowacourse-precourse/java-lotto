@@ -1,6 +1,5 @@
 package lotto;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -24,14 +23,14 @@ public class FeatureTest {
 
     @Test
     void 로또_발행() {
-        List<Integer> answer = Lotto.getLottoNumbers();
+        List<Integer> answer = User.getLottoNumbers();
         long count = answer.stream().distinct().count();
         assertThat(count).isEqualTo(6L);
     }
 
     @Test
     void 사용자의_구매횟수만큼_로또숫자_발행() {
-        List<List<Integer>> result = Lotto.getPurchaseLottoList(5);
+        List<List<Integer>> result = User.getPurchaseLottoList(5);
         assertThat(result.size()).isEqualTo(5);
     }
 
@@ -122,8 +121,6 @@ public class FeatureTest {
         int bonus =6;
         assertThatThrownBy(() -> Input.bonusNotIncludeWinningNumbers(bonus, Input.getWinningNumber(s4)))
                 .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 보너스 번호가 이미 로또번호에 포함되어 있습니다.");
-
-
 
     }
 

@@ -64,18 +64,6 @@ public class Lotto {
         return result-3;
     }
 
-    public static List<Integer> getLottoNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
-    }
-
-    public static List<List<Integer>> getPurchaseLottoList(int purchaseNumber) {
-        List<List<Integer>> result = new ArrayList<>();
-        for (int i = 0; i < purchaseNumber; i++) {
-            result.add(getLottoNumbers());
-        }
-        return result;
-    }
-
     // TODO: 추가 기능 구현
 }
 
