@@ -42,6 +42,6 @@ public class Application {
     }
 
     private static boolean isDividedBy1000(int number) {
-        return number / 1000 == 0;
+        return number % 1000 == 0;
     }
 }
