@@ -38,14 +38,26 @@ public class Lotto {
 
         return result;
     }
-//
+
 //    public int[] getWinningArray(List<List<Integer>> getPurchaseLottoList, int bonus) {
 //        int[] result = new int[]{0, 0, 0, 0, 0};
 //        for (List<Integer> lotto : getPurchaseLottoList) {
-//            int temp = getMatchingNumber(lotto);
-//
+//            int index = getWinningIndex(lotto, bonus);
 //        }
 //    }
+
+    private int getWinningIndex(List<Integer> lotto, int bonus) {
+        int result = getMatchingNumber(lotto);
+        if (result == 5) {
+            ContainStatus status = isContainNumber(bonus);
+            result += status.getContain1Value()*2;
+        }
+        if (result < 3) {
+            return -1;
+        }
+
+        return result-3;
+    }
 
     public static List<Integer> getLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
