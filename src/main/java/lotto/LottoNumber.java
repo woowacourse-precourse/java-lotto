@@ -14,6 +14,14 @@ public class LottoNumber {
 
     }
 
+    private int validLottoNumber(String num) {
+        try {
+            return validNumberRange(Integer.parseInt(num));
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
+        }
+    }
+
     private int validNumberRange(int num) {
         if (num < LOTTO_NUMBER_MIN || num > LOTTO_NUMBER_MAX) {
             throw new IllegalArgumentException("[ERROR] 1에서 45사이의 숫자를 입력해주세요.");
