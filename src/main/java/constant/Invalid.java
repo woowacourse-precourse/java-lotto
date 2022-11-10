@@ -17,6 +17,6 @@ public enum Invalid {
     }
 
     public void throwException() {
-        throw new IllegalArgumentException(this.content);
+        throw new IllegalArgumentException("[ERROR] " + this.content);
     }
 }
