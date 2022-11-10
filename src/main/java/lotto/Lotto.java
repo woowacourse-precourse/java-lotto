@@ -11,5 +11,4 @@ public class Lotto {
         Check.numberSize(numbers);
         this.numbers = numbers;
     }
-
 }
