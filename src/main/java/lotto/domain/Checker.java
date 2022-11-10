@@ -47,7 +47,7 @@ public class Checker {
     }
 
     public float calculateRateOfReturn() {
-
+        return returnRate;
     }
 
 
