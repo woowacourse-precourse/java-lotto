@@ -5,6 +5,7 @@ import java.util.List;
 public class LottoGameConsole {
 
     private final Emcee emcee = new Emcee();
+    private final Player player = new Player();
 
     public void startLottoGame() {
         emcee.guideGame();
