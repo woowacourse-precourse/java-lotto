@@ -41,14 +41,31 @@ public class Lotto {
         return new Lotto(winningLottoNumbers);
     }
 
+    public static WINNINGS checkUserLottoWinning(Lotto winningLotto, Lotto userLotto, int bonusNumber){
+        int correctCount = 0;
+        boolean bonusNumberCorrect = false;
+
+        for(int i = 0; i < winningLotto.numbers.size(); i++){
+            int winningNumber = winningLotto.numbers.get(i);
+            int userNumber = userLotto.numbers.get(i);
+
+            if(winningNumber == userNumber)
+                correctCount++;
+
+            if(userNumber == bonusNumber)
+                bonusNumberCorrect = true;
+        }
+
+        return WINNINGS.fromInteger(correctCount, bonusNumberCorrect);
+    }
+
     private static List<Integer> convertStringToIntegerList(String userInputWinningLottoNumbers) {
         return Arrays.stream(
-                        Stream.of(userInputWinningLottoNumbers
-                                        .split(","))
-                                .mapToInt(Integer::parseInt)
-                                .toArray())
-                .boxed()
-                .collect(Collectors.toList());
+                        Stream.of(userInputWinningLottoNumbers.split(","))
+                                    .mapToInt(Integer::parseInt)
+                                    .toArray())
+                        .boxed()
+                        .collect(Collectors.toList());
     }
 
     public static int inputBonusNumber() {
