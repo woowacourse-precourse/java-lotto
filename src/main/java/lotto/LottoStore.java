@@ -22,7 +22,7 @@ public class LottoStore {
             lottoNumbers.add(lotto);
         }
 
-        printLottoNumbers(lottoPurchaseCount);
+        printLottoNumbers();
     }
 
     private void validate(int price) {
@@ -37,8 +37,9 @@ public class LottoStore {
         }
     }
 
-    private void printLottoNumbers(int lottoPurchaseCount) {
+    private void printLottoNumbers() {
         StringBuilder message = new StringBuilder();
+        int lottoPurchaseCount = lottoNumbers.size();
 
         message.append(lottoPurchaseCount + BUY_MSG + "\n");
 
