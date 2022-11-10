@@ -11,10 +11,10 @@ public class LottoGenerator {
         this.lottoAmount = purchasedAmount / 1000;
     }
 
-    public List<List<Integer>> generateLotto() {
-        List<List<Integer>> result = new ArrayList<>(lottoAmount);
+    public List<Lotto> generateLotto() {
+        List<Lotto> result = new ArrayList<>(lottoAmount);
         for (int i = 0; i < lottoAmount; i++){
-            result.add(i, Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            result.add(i, (Lotto) Randoms.pickUniqueNumbersInRange(1, 45, 6));
         }
         return result;
     }

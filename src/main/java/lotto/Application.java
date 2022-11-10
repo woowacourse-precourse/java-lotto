@@ -9,6 +9,8 @@ public class Application {
         Purchase purchase = new Purchase();
         WinningNumber winningNumber = new WinningNumber();
         List<List<Integer>> purchasedLotto = purchase.lottoPurchase();
-        Lotto lotto = new Lotto(winningNumber.getWinningNumber());
+        winningNumber.getWinningNumber();
+        WinningResult winningResult = new WinningResult(winningNumber);
+        winningResult.winningHistory(purchasedLotto);
     }
 }

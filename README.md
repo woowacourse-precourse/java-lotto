@@ -7,9 +7,9 @@
 3. 구매한 로또와 당첨번호를 비교한다.(Lotto)
 4. 당첨결과 출력(WinningResult)
 
-- [ ] 로또를 구매한다. - Purchase
-  - [ ] 1000원 단위로 로또를 구매한다. #lottoPurchase()
-  - [ ] 로또 한장당 중복 없이 6개의 번호 뽑는다. - LottoGenerator#createLotto  
+- [x] 로또를 구매한다. - Purchase
+  - [x] 1000원 단위로 로또를 구매한다. #lottoPurchase()
+  - [x] 로또 한장당 중복 없이 6개의 번호 뽑는다. - LottoGenerator#createLotto  
   - [ ] 구매된 로또를 표시해준다. #printPurchasedLotto()
 - [ ] 당첨 번호를 검사한다. - Lotto
   - [ ] 입력이 유효한지 검사한다. #validate
