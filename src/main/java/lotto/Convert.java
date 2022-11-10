@@ -1,14 +1,14 @@
 package lotto;
 
+import constant.Amount;
 import constant.LottoText;
 
 public class Convert {
     private final Validate validate = new Validate();
 
-    public int toPurchasePrice(String input) {
-        int purchasePrice = toInt(input);
+    public int toLottoCount(int purchasePrice) {
         validate.validDivisible(purchasePrice);
-        return purchasePrice;
+        return purchasePrice / Amount.UNIT.getPrice();
     }
 
     public int toInt(String input) {
