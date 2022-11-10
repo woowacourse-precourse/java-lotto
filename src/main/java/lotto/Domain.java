@@ -23,11 +23,9 @@ public class Domain {
 
     Long checkWinningMoney(int[] list) {
         long result = 0;
-        result += list[7] * 2000000000L;
-        result += list[6] * 30000000L;
-        result += list[5] * 1500000L;
-        result += list[4] * 50000L;
-        result += list[3] * 5000L;
+        int index = 7;
+        for (Money money : Money.values())
+            result += (long) list[index--] * money.getMoney();
         return result;
     }
 }
