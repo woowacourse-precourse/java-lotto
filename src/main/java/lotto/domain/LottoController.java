@@ -2,6 +2,8 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.LottoInterface;
+import lotto.WinningLotto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,12 +13,12 @@ public class LottoController {
     private int price;
     private int lottoNumber;
     private static final int oneLottoPrice = 1000;
-    private static final int start_Range = 1;
-    private static final int end_Range = 45;
+    private static final int startRange = 1;
+    private static final int endRange = 45;
     private static final int count = 6;
     private List<Integer> winningLotto;
     public List<Integer> generateLotto(){
-        return Randoms.pickUniqueNumbersInRange(start_Range,end_Range, count);
+        return Randoms.pickUniqueNumbersInRange(startRange,endRange, count);
     }
 
     public int calculateLottoNumber(int price){
@@ -26,15 +28,14 @@ public class LottoController {
         return price / oneLottoPrice;
     }
 
-    public List<Integer> inputWinningLotto(){
-        List<Integer> winningLotto = new ArrayList<>();
+    public WinningLotto inputWinningLotto(){
+        List<Integer> winningLottoNumbers = new ArrayList<>();
         System.out.println("당첨 번호를 입력해 주세요.");
-        inputWinningNumbers(winningLotto);
+        inputWinningNumbers(winningLottoNumbers);
         System.out.println("보너스 번호를 입력해 주세요.");
-        inputBonusNumber(winningLotto);
+        inputBonusNumber(winningLottoNumbers);
 
-        validateWinningLotto(winningLotto);
-        return winningLotto;
+        return new WinningLotto(winningLottoNumbers);
     }
 
     public void inputWinningNumbers(List<Integer> winningLotto){
@@ -50,28 +51,4 @@ public class LottoController {
         winningLotto.add(Integer.parseInt(bonusNumber));
     }
 
-    public void validateWinningLotto(List<Integer> winningLotto){
-        validateWinningLottoSize(winningLotto);
-        validateWinningLottoNumberRange(winningLotto);
-        validateWinningLottoNumberDuplicated(winningLotto);
-    }
-    public void validateWinningLottoSize(List<Integer> winningLotto){
-        if(winningLotto.size() != 7){
-            throw new IllegalArgumentException("[ERROR] 당첨 로또는 당첨 번호 6개와 보너스 번호 1개로 이루어져야 합니다.");
-        }
-    }
-
-    public void validateWinningLottoNumberRange(List<Integer> winningLotto){
-        for(int number : winningLotto){
-            if(number < 1 || number > 45){
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-            }
-        }
-    }
-
-    public void validateWinningLottoNumberDuplicated(List<Integer> winningLotto){
-        if(winningLotto.size() != winningLotto.stream().distinct().count()){
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되서는 안됩니다");
-        }
-    }
 }
