@@ -17,7 +17,8 @@ import java.util.List;
 public class WinningNumber {
 
     private Lotto lotto;
-    private int bonus;
+    private Integer bonus;
+
     public List<Integer> getWinningNumber() {
         List<Integer> result = new ArrayList<>();
 
@@ -28,8 +29,27 @@ public class WinningNumber {
         }
 
         lotto = new Lotto(result);
-        bonus = Integer.parseInt(Console.readLine();
+        bonus = Integer.parseInt(Console.readLine());
+
+        validateLotto();
 
         return result;
+    }
+
+    private void validateLotto() {
+        validateDuplication();
+        validateRange();
+    }
+
+    private void validateDuplication() {
+        if (lotto.hasBonus(bonus)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateRange() {
+        if (bonus < 1 || bonus > 45) {
+            throw new IllegalArgumentException();
+        }
     }
 }
