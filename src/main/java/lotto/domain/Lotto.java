@@ -1,8 +1,7 @@
 package lotto.domain;
 
-import lotto.utils.UserInputValidator;
+import lotto.utils.LottoValidator;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,28 +14,21 @@ public class Lotto {
     private static final String OPEN_BRACKET = "[";
     private static final String CLOSED_BRACKET = "]";
 
-    private final List<Integer> numbers;
+    private final List<LottoNumber> lottoNumbers;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
-//        Collections.sort(numbers);
-        this.numbers = numbers;
+    public Lotto(List<LottoNumber> lottoNumbers) {
+        LottoValidator.validateLotto(lottoNumbers);
+        this.lottoNumbers = lottoNumbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (new HashSet<>(numbers).size() != LOTTO_SIZE) {
-            throw new IllegalArgumentException(UserInputValidator.ERROR_MESSAGE_DUPLICATE_NUMBER);
-        }
-    }
-
-    public List<Integer> getNumbers() {
-        return numbers;
+    public List<LottoNumber> getLottoNumbers() {
+        return lottoNumbers;
     }
 
     @Override
     public String toString() {
-        return OPEN_BRACKET + numbers.stream()
-                .map(Object::toString)
+        return OPEN_BRACKET + lottoNumbers.stream()
+                .map(LottoNumber::toString)
                 .collect(Collectors.joining(COMMA)) + CLOSED_BRACKET;
     }
 }

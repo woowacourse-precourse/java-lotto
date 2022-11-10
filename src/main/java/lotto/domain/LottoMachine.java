@@ -33,10 +33,11 @@ public class LottoMachine {
         return new Lotto(generateLottoNumbers());
     }
 
-    private List<Integer> generateLottoNumbers() {
-        Set<Integer> lotto = new HashSet<>();
+    private List<LottoNumber> generateLottoNumbers() {
+        Set<LottoNumber> lotto = new HashSet<>();
         while (lotto.size() < Lotto.LOTTO_SIZE) {
-            lotto.add(Randoms.pickNumberInRange(Lotto.MIN_NUMBER, Lotto.MAX_NUMBER));
+            LottoNumber lottoNumber = new LottoNumber(Randoms.pickNumberInRange(Lotto.MIN_NUMBER, Lotto.MAX_NUMBER));
+            lotto.add(lottoNumber);
         }
         return new ArrayList<>(lotto);
     }

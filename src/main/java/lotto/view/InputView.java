@@ -2,6 +2,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
+import lotto.domain.LottoNumber;
 import lotto.utils.LottoConvertor;
 import lotto.utils.UserInputValidator;
 
@@ -24,9 +25,9 @@ public class InputView {
         return LottoConvertor.mapToLotto(userInput);
     }
 
-    public static int inputBonusNumber() {
+    public static LottoNumber inputBonusNumber() {
         System.out.println(INPUT_MESSAGE_BONUS_NUMBER);
         String userInput = Console.readLine();
-        return LottoConvertor.mapToInt(userInput);
+        return LottoConvertor.mapToLottoNumber(userInput);
     }
 }

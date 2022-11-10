@@ -26,7 +26,7 @@ class LottoMachineTest {
         LottoMachine lottoMachine = new LottoMachine(purchaseMoney);
         List<Lotto> lottos = lottoMachine.getLottos();
 
-        assertThat(lottos.get(0).getNumbers().size()).isEqualTo(Lotto.LOTTO_SIZE);
+        assertThat(lottos.get(0).getLottoNumbers().size()).isEqualTo(Lotto.LOTTO_SIZE);
     }
 
     @Test
