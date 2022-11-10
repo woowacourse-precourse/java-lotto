@@ -33,6 +33,10 @@ public enum MatchAndReward {
         return null;
     }
 
+    public int getMatch() {
+        return match;
+    }
+
     public int getReward() {
         return reward;
     }
