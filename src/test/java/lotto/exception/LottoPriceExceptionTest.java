@@ -44,4 +44,43 @@ class LottoPriceExceptionTest {
         assertThatThrownBy(() -> LottoPriceException.checkThousandUnits(2220))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 로또금액_잘못된_입력() {
+
+        assertThatThrownBy(() -> LottoPriceException.checkLottoPrice(""))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> LottoPriceException.checkLottoPrice(" "))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> LottoPriceException.checkLottoPrice("900"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> LottoPriceException.checkLottoPrice(" 1000"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> LottoPriceException.checkLottoPrice("1000 "))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> LottoPriceException.checkLottoPrice("1000.23"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> LottoPriceException.checkLottoPrice("가나"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> LottoPriceException.checkLottoPrice("가1"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> LottoPriceException.checkLottoPrice("12345"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 로또금액_올바른_입력() {
+        LottoPriceException.checkLottoPrice("9000");
+        LottoPriceException.checkLottoPrice("1000");
+        LottoPriceException.checkLottoPrice("10000");
+        LottoPriceException.checkLottoPrice("101000");
+    }
 }
