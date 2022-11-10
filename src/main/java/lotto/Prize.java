@@ -63,7 +63,7 @@ public enum Prize
             return Second;
         }
 
-        return PRIZE_VALUES.get(correctCount);
+        return PRIZE_VALUES.getOrDefault(correctCount,null);
     }
 
     @Override
