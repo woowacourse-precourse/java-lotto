@@ -21,6 +21,11 @@ public class UserInputHandler {
         return convertToLottoNumbers(usersInput);
     }
 
+    public int getBonusNumbers(){
+        String userInput = Console.readLine();
+        return validateLottoNumbers(userInput);
+    }
+
     private List<Integer> convertToLottoNumbers(String input){
         List<Integer> lottoNumbers = new ArrayList<>();
         String[] lottoNumbersBeforeValidate = input.split(",");
@@ -44,5 +49,4 @@ public class UserInputHandler {
             throw new IllegalArgumentException("[ERROR] 콤마(,) 와 숫자 이외의 다른 값을 당첨 값 입력할 수 없습니다.\n");
         }
     }
-
 }
