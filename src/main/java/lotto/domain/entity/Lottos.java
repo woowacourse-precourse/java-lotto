@@ -2,6 +2,7 @@ package lotto.domain.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.domain.util.RandomNumberGenerator;
 
 public class Lottos {
 
@@ -9,8 +10,12 @@ public class Lottos {
 
     private Lottos(int amountOfLotto) {
         lottos = new ArrayList<>();
-        for (int i = 0; i < amountOfLotto; i++) {
+        settingLottos(amountOfLotto);
+    }
 
+    private void settingLottos(int amountOfLotto) {
+        for (int i = 0; i < amountOfLotto; i++) {
+            lottos.add(new Lotto(RandomNumberGenerator.generate()));
         }
     }
 
