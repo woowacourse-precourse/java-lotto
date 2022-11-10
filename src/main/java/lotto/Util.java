@@ -10,4 +10,25 @@ public class Util {
             return false;
         }
     }
+
+    public static boolean isDividedBuyThousand(String input){
+        long longInput = Long.valueOf(input);
+
+        if (longInput % 1000 == 0){
+            return true;
+        }
+        return false;
+    }
+
+    /*public static long dividedBuy1000(final String input){
+        final long longInput = Long.valueOf(input);
+        final int thousand = 1000;
+        long quotient = 0;
+
+        if (longInput % thousand == 0 && longInput == 0) {
+            quotient = (long)(longInput / thousand);
+            return longInput / thousand;
+        }
+        return quotient;
+    }*/
 }
