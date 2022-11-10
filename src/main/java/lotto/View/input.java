@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class input {
     final static String NoticeInputMoney = "구입금액을 입력해 주세요.";
-    final static String NoticeBuyLotto = "개를 구매했습니다.";
     final static String NoticeInputWin = "당첨 번호를 입력해 주세요.";
     final static String NoticeInputBonus = "보너스 번호를 입력해 주세요.";
     final static String NoticeWinStats = "당첨 통계";
