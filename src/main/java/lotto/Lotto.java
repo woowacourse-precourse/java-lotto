@@ -43,5 +43,20 @@ public class Lotto{
                 }
             }
         }
+        System.out.println(Constant.THREE_MATCHING + " - " + matchingPair.get(3) + "개");
+        System.out.println(Constant.FOUR_MATCHING + " - " + matchingPair.get(4) + "개");
+        System.out.println(Constant.FIVE_MATCHING + " - " + matchingPair.get(5) + "개");
+        System.out.println(Constant.FIVE_MATCHING_WITH_BONUS_NUM + " - " + matchingPair.get(7) + "개");
+        System.out.println(Constant.SIX_MATCHING + " - " + matchingPair.get(6) + "개");
+
+        //System.out.println(Constant.TOTAL_YIELD + " " + + "%입니다.");
     }
 }
+/**
+ * 3개 일치 (5,000원) - 1개
+ * 4개 일치 (50,000원) - 0개
+ * 5개 일치 (1,500,000원) - 0개
+ * 5개 일치, 보너스 볼 일치 (30,000,000원) - 0개
+ * 6개 일치 (2,000,000,000원) - 0개
+ * 총 수익률은 62.5%입니다.
+ */
