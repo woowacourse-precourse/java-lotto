@@ -30,9 +30,26 @@ public class Application {
 
         // 당첨 번호 , 보너스 번호 입력 받기
         Set<Integer> winnerNumber = setWinnerNumber();
-        System.out.println(winnerNumber);
+        System.out.println("winnerNumber = " + winnerNumber);
+        int bonusNumber = setBonusNumber();
+        System.out.println("bonusNumber = " + bonusNumber);
 
 
+    }
+
+    private static int setBonusNumber() {
+        String input = Console.readLine();
+        if(validBonusNumber(input)){
+            return Integer.parseInt(input);
+        }
+        throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_VALUE.message());
+    }
+
+    private static boolean validBonusNumber(String input) {
+        if(Pattern.matches("\\d", input)){
+            return true;
+        }
+        throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_VALUE.message());
     }
 
 
