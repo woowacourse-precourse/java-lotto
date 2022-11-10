@@ -68,7 +68,12 @@ public class Lotto {
         String[] numberList = inputNumbers.split(",");
 
         for (int i = 0; i < LOTTO_LENGTH; i++) {
-            winnerNumber.add(Integer.parseInt(numberList[i]));
+            if (Integer.parseInt(numberList[i]) > 0 && Integer.parseInt(numberList[i]) < 46) {
+                winnerNumber.add(Integer.parseInt(numberList[i]));
+            }
+            if (Integer.parseInt(numberList[i]) <= 0 && Integer.parseInt(numberList[i]) > 45) {
+                throw new IllegalArgumentException("[ERROR] 로또 번혼ㄴ 1부터 45 사이의 숫자여야 합니다.");
+            }
         }
         Collections.sort(winnerNumber);
 
