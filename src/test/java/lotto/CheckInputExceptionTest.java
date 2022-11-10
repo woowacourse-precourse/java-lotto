@@ -15,10 +15,18 @@ class CheckInputExceptionTest {
     @Test
     @DisplayName("사용자의 입력이 음수이면 예외처리 되는지 확인")
     void 구매자_음수_입력시_예외_테스트(){
-        String number = "-123";
 
+        String number = "-123";
         assertThatThrownBy(() -> CheckInputException.checkBuyerInputIsMinus(number))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("사용자의 입력이 숫자열이 아니면 예외 처리 되는지 확인")
+    void 구매자_문자열_입력시_예외_테스트(){
+
+        String string = "123a";
+        assertThatThrownBy(() -> CheckInputException.checkBuyerInputIsNotNumber(string))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
