@@ -24,6 +24,8 @@ public class InputUtil {
 
     public static long inputLottoPurchaseAmount() {
 
+        PrintUtil.printInsertMoney();
+
         long purchasePrice = Long.parseLong(Console.readLine());
 
         if (!InputValidator.isAllNumber(purchasePrice)) {
@@ -42,6 +44,8 @@ public class InputUtil {
     }
 
     public static Lotto inputWinningLottoNumber() {
+
+        PrintUtil.printInsertLottoNumber();
 
         winningNumbers = Stream.of(Console.readLine().split(WINNING_NUMBER_DELIM))
                                .map(Integer::parseInt)
@@ -67,6 +71,8 @@ public class InputUtil {
     }
 
     public static Integer inputBounsLottoNumber() {
+
+        PrintUtil.printInsertBounsNumber();
 
         int bounsNumber = Integer.parseInt(Console.readLine());
 
