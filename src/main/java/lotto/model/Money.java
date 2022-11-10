@@ -32,4 +32,8 @@ public class Money {
             throw new IllegalArgumentException(MONEY_MUST_MULTIPLE_OF_THOUSAND);
         }
     }
+
+    public int calculateLottoCount(Money unit) {
+        return this.money / unit.money;
+    }
 }
