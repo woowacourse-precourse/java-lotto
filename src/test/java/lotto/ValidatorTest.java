@@ -40,8 +40,13 @@ class ValidatorTest {
     }
 
     @Test
+    @DisplayName("구입 금액이 0으로 시작하면 예외를 던진다.")
     void paymentStartsWithZero() {
+        // given
+        Validator validator = new Validator();
 
+        // throws
+        assertThatThrownBy(() -> validator.validatePayment("01000")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
