@@ -22,7 +22,7 @@ class LottoPublisherTest {
     }
 
     @Test
-    void eachLottoShouldHave6Numbers() {
+    void eachLottoShouldHave6UniqueNumbers() {
 
     }
 
