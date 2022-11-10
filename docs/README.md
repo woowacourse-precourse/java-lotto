@@ -35,13 +35,15 @@ public class Lotto {
 	1,2,3,4,5,6
 
 + **validate 에러항목 검증**
+
+#####2-1. bonusNum (보너스 번호)
++ 숫자 6개 지정 후 보너스 번호 입력 
  <br/><br/>
-+ 숫자 6개 지정 후 보너스 번호 입력 -> **보너스 번호 메서드 따로 지정할지 고민**
- <br/><br/>
+ 
 + _"보너스 번호를 입력해 주세요."_
 
 	7
-
+ 
 #####3. validate ( [ERROR] 예외발생 문구 출력)
 
 + 잘못된 값 입력 시 에러 문구 출력
@@ -110,9 +112,9 @@ public class Lotto {
 
 ---------------------------------------------------------------------
 
-#####10. buyLottoPrint (구매한 로또 lottoRandomNum 리스트 출력)
+#####10. buyLottoPrint (구매한 로또 myLottoNum 리스트 출력)
 
-+ 발행한 로또 수량(buyLotto) 및 번호(lottoRandomNum)를 출력한다.<br/> 
++ 발행한 로또 수량(buyLotto) 및 번호(myLottoNum)를 출력한다.<br/> 
 로또 번호는 오름차순으로 정렬하여 보여준다.
 <br/><br/>
 + _"n개를 구입했습니다."_  ->buyLotto값 전달받음
