@@ -11,4 +11,8 @@ public class Input {
     public static String[] inputLottoNumbers() {
         return Console.readLine().split(",");
     }
+
+    public static int inputBonusNumber() {
+        return Integer.parseInt(Console.readLine());
+    }
 }
