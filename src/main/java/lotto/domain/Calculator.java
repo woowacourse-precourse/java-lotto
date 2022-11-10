@@ -61,7 +61,7 @@ public class Calculator {
     public int calculateProfit(List<Integer> matchResults) {
         int profit = 0;
         List<Integer> prizeMoneys = List.of(5000, 50000, 1500000, 30000000, 2000000000);
-        for (int index = 0; index< matchResults.size(); index++) {
+        for (int index = 0; index < matchResults.size(); index++) {
             if (matchResults.get(index) > 0) {
                 profit += (matchResults.get(index) * prizeMoneys.get(index));
             }
@@ -69,8 +69,8 @@ public class Calculator {
         return profit;
     }
 
-    public double calculateEarningsRate() {
-        // TODO: 총 수익률 반환
-        return 0.0;
+    public double calculateEarningsRate(int purchaseCost, int profit) {
+        double earningsRate = ((double) profit / purchaseCost) * 100;
+        return (double) Math.round(earningsRate * 10) / 10;
     }
 }
