@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -18,13 +19,10 @@ public class Lotto {
     }
 
     private void checkOverlap(List<Integer> numbers) {
-        int prev = 0;
-        for (int i = 0; i < 6; i++) {
-            if (prev == numbers.get(i)) {
-                throw new IllegalArgumentException();
-            }
-            prev = numbers.get(i);
-        }
+        List<Integer> distinctNumbers = numbers.stream()
+                .distinct()
+                .collect(Collectors.toList());
+        validate(distinctNumbers);
     }
 
     public void printLotto() {
