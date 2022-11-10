@@ -4,16 +4,17 @@
 
 Money
 - [x] 요구사항에 맞는 머니 인지 확인한다. validate(int money)
-  - [x] 음수와 0 그리고 천의 단위로 나눠떨어지지 않는경우 예외 처리. llegalArgumentException(`[[ERROR]] msg`)
+  - [x] 음수와 0 그리고 천의 단위로 나눠떨어지지 않는경우 예외 처리. IllegalMoneyException()
 - [x] Lotto를 살수 있는 숫자를 반환한다 getPayLottos()
 - [] 수익률을 알려준다. getBenefit(int earningMoney)
 
 
 Lotto
-- [] 요구사항에 맞는 Lotto 인지 확인한다. validate(List<Integer> numbers)
-  - [] 숫자가 중복인 경우 예외처리. llegalArgumentException(`[[ERROR]] msg`)
-  - [] 숫자들의 사이즈가 6개 가 아닌경우, 예외처리. llegalArgumentException(`[[ERROR]] msg`)
-- [] 정렬되어있는 numbers String를 반환한다. toString()
+- [x] 요구사항에 맞는 Lotto 인지 확인한다. validate(List<Integer> numbers)
+  - [x] 숫자가 중복인 경우 예외처리. llegalLottoException()
+  - [x] 숫자들의 사이즈가 6개 가 아닌경우, 예외처리. llegalLottoException()
+  - [x] 숫자 범위가 1-45가 아닌경우, 예외처리. NotLottoValueException()
+- [x] 정렬되어있는 numbers String를 반환한다. toString()
 - [] 당첨이 되는지 확인하는 메소드 compare(Lotto result)
 
 
