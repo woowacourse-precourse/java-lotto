@@ -1,6 +1,6 @@
-package lotto.domain;
+package lotto.domain.model;
 
-import static lotto.utils.BonusValidator.validateBonusNumber;
+import static lotto.utils.Advice.BonusValidator.validateBonusNumber;
 
 public class Bonus {
 

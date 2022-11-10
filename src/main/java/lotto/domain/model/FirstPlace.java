@@ -1,8 +1,10 @@
-package lotto.domain;
+package lotto.domain.model;
 
-import static lotto.domain.ErrorMessage.BONUS_NUMBER_DUPLICATION;
-import static lotto.domain.ErrorMessage.COMMON_MESSAGE;
-import static lotto.utils.LottoValidator.validateFirstPlace;
+import static lotto.domain.model.ErrorMessage.BONUS_NUMBER_DUPLICATION;
+import static lotto.domain.model.ErrorMessage.COMMON_MESSAGE;
+import static lotto.utils.Advice.LottoValidator.checkConsistOfOnlyCommas;
+import static lotto.utils.Advice.LottoValidator.checkDuplication;
+import static lotto.utils.Advice.LottoValidator.checkRange;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,13 +13,21 @@ import java.util.stream.Collectors;
 
 
 public class FirstPlace {
-    public static final String DIVIDE_POINT = ",";
+    private static final String DIVIDE_POINT = ",";
     private final List<Integer> firstPlace;
 
     public FirstPlace(String firstPlace) {
         validateFirstPlace(firstPlace);
         this.firstPlace = Arrays.stream(firstPlace.split(DIVIDE_POINT)).map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    public static void validateFirstPlace(String firstPlace) {
+        checkConsistOfOnlyCommas(firstPlace);
+        List<Integer> firstPlaceNumbers = Arrays.stream(firstPlace.split(DIVIDE_POINT)).map(Integer::parseInt)
+                .collect(Collectors.toList());
+        checkRange(firstPlaceNumbers);
+        checkDuplication(firstPlaceNumbers);
     }
 
     public void duplicateCheckBonusNumber(String bonus) {

@@ -1,6 +1,6 @@
-package lotto.domain;
+package lotto.domain.model;
 
-import static lotto.utils.PurchaseValidator.*;
+import static lotto.utils.Advice.PurchaseValidator.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
