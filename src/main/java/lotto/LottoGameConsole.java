@@ -20,7 +20,7 @@ public class LottoGameConsole {
         emcee.guideAmountOfPurchaseMoney();
         String paymentOfPurchase = player.paymentOfPurchase();
         validator.validatePayment(paymentOfPurchase);
-        return 0;
+        return Integer.parseInt(paymentOfPurchase);
     }
 
     private List<Lotto> publishLottos(int amountOfPurchaseMoney) {
