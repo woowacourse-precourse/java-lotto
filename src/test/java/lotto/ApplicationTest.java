@@ -80,6 +80,12 @@ class ApplicationTest extends NsTest {
         assertThat(getUserCash("11000")).isEqualTo(11000);
     }
 
+    @Test
+    void validateNumbersBetweenCommaTest() {
+        assertThatThrownBy(() -> validateNumbersBetweenComma('1', ','))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         main(new String[]{});
