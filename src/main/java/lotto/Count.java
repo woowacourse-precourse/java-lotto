@@ -6,9 +6,9 @@ public class Count {
 
     private final int numOfLotto;
 
-    public Count(String price) {
-        validPriceOfLotto(price);
-        numOfLotto = calculateNumOfLotto(Integer.parseInt(price));
+    public Count(String userInput) {
+        int price = validPriceOfLotto(userInput);
+        numOfLotto = calculateNumOfLotto(price);
     }
 
     private int validPriceOfLotto(String priceOfLotto) {
