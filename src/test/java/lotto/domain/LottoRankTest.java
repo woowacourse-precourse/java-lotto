@@ -10,6 +10,12 @@ class LottoRankTest {
     @Test
     @DisplayName("1등인지 확인")
     void firstRank() {
-        assertThat(LottoRank.parseRank(6)).isEqualTo(LottoRank.FIRST);
+        assertThat(LottoRank.parseRank(6, false)).isEqualTo(LottoRank.FIRST);
+    }
+    
+    @Test
+    @DisplayName("2등인지 확인")
+    void secondRank() {
+        assertThat(LottoRank.parseRank(5, true)).isEqualTo(LottoRank.SECOND);
     }
 }

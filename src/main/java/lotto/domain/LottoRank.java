@@ -16,14 +16,26 @@ public enum LottoRank {
         this.countOfSameLottoNumber = countOfSameLottoNumber;
     }
     
-    public static LottoRank parseRank(final int countOfSameLottoNumber) {
+    public static LottoRank parseRank(final int countOfSameLottoNumber, final boolean existBonusLottoNumber) {
+        if (isSecondRank(countOfSameLottoNumber, existBonusLottoNumber)) {
+            return SECOND;
+        }
+        
         return Arrays.stream(values())
-                .filter(lottoRank -> isCountOfSameLottoNumberSame(countOfSameLottoNumber, lottoRank))
+                .filter(lottoRank -> isCountOfSameLottoNumberSame(lottoRank, countOfSameLottoNumber))
                 .findAny()
                 .orElse(MISS);
     }
     
-    private static boolean isCountOfSameLottoNumberSame(final int countOfSameLottoNumber, final LottoRank lottoRank) {
-        return lottoRank.countOfSameLottoNumber == countOfSameLottoNumber;
+    private static boolean isSecondRank(final int countOfSameLottoNumber, final boolean existBonusLottoNumber) {
+        return isCountOfMatchingLottoNumberSame(SECOND, countOfSameLottoNumber) && existBonusLottoNumber;
+    }
+    
+    private static boolean isCountOfSameLottoNumberSame(final LottoRank lottoRank, final int countOfSameLottoNumber) {
+        return isCountOfMatchingLottoNumberSame(lottoRank, countOfSameLottoNumber);
+    }
+    
+    private static boolean isCountOfMatchingLottoNumberSame(final LottoRank second, final int countOfSameLottoNumber) {
+        return second.countOfSameLottoNumber == countOfSameLottoNumber;
     }
 }
