@@ -7,6 +7,8 @@ import lotto.domain.Lotto;
 import lotto.domain.Result;
 import lotto.domain.User;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.*;
 
 public class LottoController {
@@ -14,11 +16,15 @@ public class LottoController {
     private Lotto lotto;
     private Integer bonus;
     private Result result;
+    private View view;
     public LottoController() {
+        view = new View();
         try {
             read();
-            result = new Result(user.getMyLottoNumbers(), lotto, bonus);
-            result.calc();
+            result = new Result();
+            result.getCount(user.getMyLottoNumbers(), lotto, bonus);
+            result.calc(user);
+            view.printResult(result);
         }catch (IllegalArgumentException e){
             System.out.println("[ERROR] "+e.getMessage());
         }
@@ -30,9 +36,9 @@ public class LottoController {
         BonusCheck bonusCheck = new BonusCheck();
         String moneyInput = readLine();
         user = new User(moneyInputChecker.check(moneyInput));
-        String winningNumber = readLine();
-        lotto = new Lotto(winningNumberInputChecker.check(winningNumber));
-        String bonusNumber = readLine();
-        bonus = bonusCheck.check(bonusNumber,lotto);
+        view.printUserLottos(user);
+        List<String> numbers = view.printLottos();
+        lotto = new Lotto(winningNumberInputChecker.check(numbers.get(0)));
+        bonus = bonusCheck.check(numbers.get(1),lotto);
     }
 }
