@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 
-    static String numberReg = "/^[0-9]+$/";
+    static String NUMBER_REG = "/^[0-9]+$/";
     public static void main(String[] args) {
         // TODO: Java Enum 만들기
         /*- 1. 로또 구입 금액을 입력 받는다.
@@ -30,8 +30,10 @@ public class Application {
     }
 
     private static int validateUserInput(String userInput) {
-        if (userInput.matches(numberReg) || Integer.parseInt(userInput) % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 정상적인 입력이 아닙니다.");
+        if (!userInput.matches(NUMBER_REG)) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
+        } else if (Integer.parseInt(userInput) % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 1000원 단위만 입력할 수 있습니다.");
         }
         return Integer.parseInt(userInput);
     }
