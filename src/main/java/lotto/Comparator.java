@@ -5,15 +5,15 @@ import java.util.List;
 import static lotto.User.*;
 
 public class Comparator {
-    List<Integer> answerCount;
-    boolean bonus = false;
+    private int answerCount = 0;
+    private boolean bonus = false;
 
     public void clearCount(){
-        answerCount = List.of(0, 0, 0, 0, 0, 0);
+        answerCount = 0;
         bonus = false;
     }
 
-    public void compareWin(Lotto userLotto, Lotto answerLotto){
+    public void checkCount(Lotto userLotto, Lotto answerLotto){
         compareLottoNumber(userLotto, answerLotto);
         compareBonusNumber(userLotto, answerLotto);
     }
@@ -27,9 +27,16 @@ public class Comparator {
     private void compareLottoNumber(Lotto userLotto, Lotto answerLotto) {
         for(int i=0; i<LOTTO_LEN; i++){
             if(userLotto.getNumbers().get(i).equals(answerLotto.getNumbers().get(0))){
-                answerCount.set(i, 1);
+                answerCount += 1;
             }
         }
     }
 
+    public int getAnswerCount() {
+        return answerCount;
+    }
+
+    public boolean isBonus() {
+        return bonus;
+    }
 }
