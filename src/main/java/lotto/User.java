@@ -11,9 +11,19 @@ public class User {
     public void setMoney(int money) {
         this.money = money;
     }
-    
+
     public int getMoney() {
         return this.money;
     }
 
+    public void setBonusNumber(String userInput) {
+        String[] validatedInput = userInput.split(","); // TODO : change to exception check method output
+        for (String inputI : validatedInput) {
+            winningNumbers.add(Integer.parseInt(inputI));
+        }
+    }
+
+    public List<Integer> getWinningNumbers() {
+        return this.winningNumbers;
+    }
 }
