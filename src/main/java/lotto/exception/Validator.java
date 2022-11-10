@@ -17,45 +17,45 @@ public class Validator {
             "[ERROR] 1 이상 45 이하의 숫자를 입력하여야 합니다.";
     public static final String NEED_TO_USE_COMMA = "[ERROR] 콤마(,)를 통해 숫자를 구분해주세요";
     public static final String NEED_TO_NOT_DUPLICATE = "[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.";
-
+    
     public void validateMoney(String money) {
-        valueIsNumber(money);
-        valueCanDivideByOneThousand(money);
+        validateValueIsNumber(money);
+        validateValueCanDivideOneThousand(money);
     }
 
     public void validateWinningNumbers(String input) {
-        valueIsNumber(input.replaceAll(",", ""));
-        checkUsingComma(input);
+        validateValueIsNumber(input.replaceAll(",", ""));
+        validateValueUseComma(input);
         validateValueLength(input);
         validateValueRange(input);
     }
 
     public void validateBonusNumber(String input,
                                     List<Integer> winningNumbers) {
-        valueIsNumber(input);
+        validateValueIsNumber(input);
         validateValueRange(input);
-        validateForDuplication(input, winningNumbers);
+        validateValueIsDuplicate(input, winningNumbers);
     }
 
-    private void validateForDuplication(String input, List<Integer> winningNumbers) {
+    private void validateValueIsDuplicate(String input, List<Integer> winningNumbers) {
         if (winningNumbers.contains(Integer.parseInt(input))) {
             throw new IllegalArgumentException(NEED_TO_NOT_DUPLICATE);
         }
     }
 
-    private void valueIsNumber(String money) {
+    private void validateValueIsNumber(String money) {
         if (!money.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException(NEED_TO_INPUT_NUMBER);
         }
     }
 
-    private void valueCanDivideByOneThousand(String money) {
+    private void validateValueCanDivideOneThousand(String money) {
         if (Integer.parseInt(money) % 1000 != 0) {
             throw new IllegalArgumentException(NEED_TO_INPUT_NUMBER_CAN_DIVIDE_BY_ONE_THOUSAND);
         }
     }
 
-    private void checkUsingComma(String input) {
+    private void validateValueUseComma(String input) {
         if (!input.contains(",")) {
             throw new IllegalArgumentException(NEED_TO_USE_COMMA);
         }
