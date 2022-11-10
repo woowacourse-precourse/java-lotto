@@ -19,24 +19,33 @@ public class Lotto {
         }
     }
 
-    public boolean isContainNumber(int LottoNumber) {
-        return numbers.contains(LottoNumber);
+    public ContainStatus isContainNumber(int LottoNumber) {
+        if(numbers.contains(LottoNumber))
+        {
+            return ContainStatus.Contain;
+        }
+
+        return ContainStatus.NotContain;
     }
 
     public int getMatchingNumber(List<Integer> LottoNumbers) {
         int result = 0;
 
         for (Integer lottoNumber : LottoNumbers) {
-            ContainStatus status = ContainStatus.NotContain;
-            if (isContainNumber(lottoNumber))
-            {
-                status = ContainStatus.Contain;
-            }
+            ContainStatus status = isContainNumber(lottoNumber);
             result += status.getContain1Value();
         }
+
         return result;
     }
-
+//
+//    public int[] getWinningArray(List<List<Integer>> getPurchaseLottoList, int bonus) {
+//        int[] result = new int[]{0, 0, 0, 0, 0};
+//        for (List<Integer> lotto : getPurchaseLottoList) {
+//            int temp = getMatchingNumber(lotto);
+//
+//        }
+//    }
 
     public static List<Integer> getLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);

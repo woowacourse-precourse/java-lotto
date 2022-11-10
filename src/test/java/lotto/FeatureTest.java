@@ -39,8 +39,8 @@ public class FeatureTest {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int n = 1;
         int k = 7;
-        assertThat(lotto.isContainNumber(n)).isTrue();
-        assertThat(lotto.isContainNumber(k)).isFalse();
+        assertThat(lotto.isContainNumber(n)).isEqualTo(ContainStatus.Contain);
+        assertThat(lotto.isContainNumber(k)).isEqualTo(ContainStatus.NotContain);
     }
 
     @Test
@@ -49,6 +49,5 @@ public class FeatureTest {
         List<Integer> user = List.of(1, 2, 3, 4, 5, 6);
         assertThat(lotto.getMatchingNumber(user)).isEqualTo(6);
     }
-
 
 }

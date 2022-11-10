@@ -20,5 +20,6 @@ public enum ContainStatus {
         return contain2Value;
     }
 
+
 }
 

@@ -16,10 +16,8 @@
         / boolean isContainNumber(int LottoNumber)
     2) 당첨갯수 확인
         / int getMatchingNumber(List<Integer> LottoNumbers)
-    3) 당첨갯수가 5개일 경우 보너스 확인
-        / boolean isBonusMatching(int bonus)
-    4) 당첨배열 생성 [3개, 4개, 5개, 6개, 5개+보너스]
-        / int[] getWinningArray(List<List<Integer>> getPuchasesLottoList)
+    3)  2)를 가지고 당첨배열 생성 [3개, 4개, 5개, 6개, 5개+보너스] 
+        / int[] getWinningArray(List<List<Integer>> getPurchaseLottoList)
 
 ###4. 수익률 계산
     1) 수익 계산 // 추후 enum으로 리팩토링
