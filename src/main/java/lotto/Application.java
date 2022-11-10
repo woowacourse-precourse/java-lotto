@@ -5,20 +5,21 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
-    public static Winning getWinning(Lotto userLotto, Lotto winningLotto) {
+    public static Winning getWinning(Lotto userLotto, WinningLotto winningLotto) {
         List<Integer> userNumbers = userLotto.getNumbers();
         List<Integer> winningNumbers = winningLotto.getNumbers();
-        boolean bonusHit = false;
-        int hitCount = 0;
+        int bonusNumber = winningLotto.getBonusNumber();
 
+        
         winningNumbers.retainAll(userNumbers);
-        hitCount = winningNumbers.size();
 
+        int hitCount = winningNumbers.size();
         if (hitCount < 3) {
             return null;
         }
 
-        if (userNumbers.contains(Lotto.getBonusNumber())) {
+        boolean bonusHit = false;
+        if(userNumbers.contains(bonusNumber)) {
             bonusHit = true;
         }
 
