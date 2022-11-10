@@ -29,7 +29,7 @@ public class LotteryMachine {
 
     public void setWinningLottery() {
         System.out.println();
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println("당첨 번호를 입력해 주세요.");
 
         setWinningLottery(Console.readLine().trim());
     }
@@ -37,7 +37,24 @@ public class LotteryMachine {
     private void setWinningLottery(String winningStr) {
         winningLottery = new Lotto(convert(winningStr));
 
-        validate();
+        validateWinningNumbers();
+    }
+
+    public int getBonus() {
+        return bonus;
+    }
+
+    public void setBonus() {
+        System.out.println();
+        System.out.println("보너스 번호를 입력해 주세요.");
+
+        try {
+            bonus = Integer.parseInt(Console.readLine());
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자가 아닙니다");
+        }
+
+        validateBonus();
     }
 
     private List<Integer> convert(String winningStr) {
@@ -53,7 +70,7 @@ public class LotteryMachine {
                 .collect(Collectors.toList());
     }
 
-    private void validate() {
+    private void validateWinningNumbers() {
         List<Integer> winningNumbers = winningLottery.getNumbers();
 
         if(winningNumbers.size() != 6) {
@@ -61,6 +78,22 @@ public class LotteryMachine {
         }
 
         if(new HashSet<Integer>(winningNumbers).size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 중복된 값이 존재합니다");
+        }
+
+        for(Integer number : winningNumbers) {
+            if(number < 1 || 45 < number) {
+                throw new IllegalArgumentException("[ERROR] 숫자 범위를 벗어납니다");
+            }
+        }
+    }
+
+    private void validateBonus() {
+        if(bonus < 1 || 45 < bonus) {
+            throw new IllegalArgumentException("[ERROR] 숫자 범위를 벗어납니다");
+        }
+
+        if(winningLottery.getNumbers().contains(bonus)) {
             throw new IllegalArgumentException("[ERROR] 중복된 값이 존재합니다");
         }
     }

@@ -8,5 +8,6 @@ public class Application {
 
         shop.purchaseLottery();
         lotteryMachine.setWinningLottery();
+        lotteryMachine.setBonus();
     }
 }
