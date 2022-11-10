@@ -4,13 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class UserInput {
 
-    public Count inputPrice() {
+    public static Count inputPrice() {
         System.out.println("구입 금액을 입력해주세요.");
         String userInput = Console.readLine();
         return new Count(userInput);
     }
 
-    public LottoNumber inputWinningNumbers() {
+    public static LottoNumber inputWinningNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String winningNumbers = Console.readLine();
 
