@@ -29,7 +29,7 @@ public class UserMoneyValidate {
 
     public void notNumber(String input){
         for (int i = 0; i < input.length(); i++) {
-            int num = input.length();
+            int num = input.charAt(i);
             if(num < 48 || num > 57){
                 throw new IllegalArgumentException(MoneyExceptionType.NO_NUMBER_MONEY.getErrorMessage());
             }
