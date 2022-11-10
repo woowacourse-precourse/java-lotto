@@ -3,11 +3,10 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LottoStore {
-    private static final String PRICE_ERROR_MSG = "[ERROR] 1000원 단위로 입력해주세요";
-    private static final String BUY_MSG = "개를 구매했습니다.";
-    private static final int LOTTO_PRICE = 1000;
+import static lotto.LottoErrorMessage.*;
+import static lotto.LottoConstant.*;
 
+public class LottoStore {
     private List<Lotto> lottoNumbers = new ArrayList<>();
 
     public void buyLottoNumber(int price) {

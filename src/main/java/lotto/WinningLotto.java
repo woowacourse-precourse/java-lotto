@@ -2,9 +2,9 @@ package lotto;
 
 import java.util.List;
 
-public class WinningLotto {
-    private static final String DUPLICATE_NUM_ERROR_MSG = "[ERROR] 보너스 번호와 로또 번호가 중복되었습니다.";
+import static lotto.LottoErrorMessage.*;
 
+public class WinningLotto {
     private Lotto winningLotto;
     private int bonusNumber;
 
