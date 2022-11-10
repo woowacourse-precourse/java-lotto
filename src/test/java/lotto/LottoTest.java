@@ -1,17 +1,14 @@
 package lotto;
 
-import java.util.Arrays;
-import javax.swing.JApplet;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertNull;
+
+import java.util.Arrays;
+import java.util.List;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -70,7 +67,7 @@ class LottoTest {
             Lotto userLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             Winning winning = Application.getWinning(userLotto, winningLotto);
 
-            assertThat("FIRST".equals(winning.name())).isTrue();
+            assertThat(winning.name()).isEqualTo("FIRST");
         }
 
         @Test
@@ -78,7 +75,7 @@ class LottoTest {
             Lotto userLotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
             Winning winning = Application.getWinning(userLotto, winningLotto);
 
-            assertThat("SECOND".equals(winning.name())).isTrue();
+            assertThat(winning.name()).isEqualTo("SECOND");
         }
 
         @Test
@@ -87,15 +84,15 @@ class LottoTest {
             Winning winning = Application.getWinning(userLotto, winningLotto);
 
 
-            assertThat("THIRD".equals(winning.name())).isTrue();
+            assertThat(winning.name()).isEqualTo("THIRD");
         }
 
         @Test
-        void winForthPlace() {
+        void winFourthPlace() {
             Lotto userLotto = new Lotto(List.of(1, 2, 3, 4, 10, 11));
             Winning winning = Application.getWinning(userLotto, winningLotto);
 
-            assertThat("FOURTH".equals(winning.name())).isTrue();
+            assertThat(winning.name()).isEqualTo("FOURTH");
         }
 
         @Test
@@ -103,7 +100,7 @@ class LottoTest {
             Lotto userLotto = new Lotto(List.of(1, 2, 3, 10, 11, 12));
             Winning winning = Application.getWinning(userLotto, winningLotto);
 
-            assertThat("FIFTH".equals(winning.name())).isTrue();
+            assertThat(winning.name()).isEqualTo("FIFTH");
         }
 
         @Test
@@ -111,7 +108,7 @@ class LottoTest {
             Lotto userLotto = new Lotto(List.of(10, 11, 12, 13, 14, 15));
             Winning winning = Application.getWinning(userLotto, winningLotto);
 
-            assertNull(winning);
+            assertThat(winning.name()).isEqualTo("DEFAULT");
         }
     }
 }
