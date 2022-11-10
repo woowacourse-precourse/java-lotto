@@ -1,15 +1,15 @@
 package lotto.domain.vo;
 
-public class Result {
+public class MatchReport {
 
-    private int result = 0;
+    private int hitCount = 0;
     private boolean bonus = false;
 
-    public Result() {
+    public MatchReport() {
     }
 
-    public void resultPlus() {
-        result += 1;
+    public void countPlus() {
+        hitCount += 1;
     }
 
     public void bonusTurnTrue() {
