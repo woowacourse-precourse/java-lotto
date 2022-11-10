@@ -17,7 +17,7 @@ public class OutputView {
 
     private BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    public void printPurchaseCount(int count) {
+    void printPurchaseCount(int count) {
         try {
             String formatted = String.format(YOU_PURCHASED_MESSAGE, count);
             bw.write(formatted);
@@ -27,7 +27,7 @@ public class OutputView {
         }
     }
 
-    public void printTotalProfitPercent(float profit) {
+    void printTotalProfitPercent(float profit) {
         try {
             String formatted = String.format(PROFIT_MESSAGE, profit);
             bw.write(formatted);
@@ -37,7 +37,7 @@ public class OutputView {
 
     }
 
-    public void printStatisticsByRank(Winner winner, int winCount) {
+    void printStatisticsByRank(Winner winner, int winCount) {
         try {
             String raw = RANK_MESSAGE;
             if(winner.equals(Winner.SECOND)) {
@@ -51,7 +51,7 @@ public class OutputView {
         }
     }
 
-    public void printStatisticStart() {
+    void printStatisticStart() {
         try {
             bw.write(PRIZE_STATISTICS_MESSAGE);
             bw.newLine();
@@ -60,7 +60,7 @@ public class OutputView {
         }
     }
 
-    public void printAllLotto(List<Lotto> lottoList) {
+    void printAllLotto(List<Lotto> lottoList) {
         try {
             for (Lotto lotto : lottoList) {
                 bw.write(lotto.toString());
@@ -79,7 +79,7 @@ public class OutputView {
         }
     }
 
-    public void flush() {
+    void flush() {
         try {
             bw.flush();
         } catch (IOException e) {

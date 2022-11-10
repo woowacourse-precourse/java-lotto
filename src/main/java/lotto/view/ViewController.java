@@ -1,4 +1,4 @@
-package lotto.controller;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.config.InputConfig;
@@ -6,8 +6,6 @@ import lotto.domain.Lotto;
 import lotto.domain.Winner;
 import lotto.mapper.InputMapper;
 import lotto.service.LottoComparator;
-import lotto.view.InputView;
-import lotto.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;

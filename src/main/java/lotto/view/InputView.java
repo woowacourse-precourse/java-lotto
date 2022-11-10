@@ -11,7 +11,7 @@ public class InputView {
 
     private final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-    public void printInputPurchaseAmount() {
+    void printInputPurchaseAmount() {
         try {
             bw.write(INPUT_PURCHASE_AMOUNT);
             bw.newLine();
@@ -21,7 +21,7 @@ public class InputView {
         }
     }
 
-    public void printInputPrizeLottoNumber() {
+    void printInputPrizeLottoNumber() {
         try {
             bw.write(INPUT_LOTTO_NUMBER);
             bw.newLine();
@@ -31,7 +31,7 @@ public class InputView {
         }
     }
 
-    public void printInputBonusNumber() {
+    void printInputBonusNumber() {
         try {
             bw.write(INPUT_BONUS_NUMBER);
             bw.newLine();
