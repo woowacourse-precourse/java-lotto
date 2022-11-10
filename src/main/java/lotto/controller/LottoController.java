@@ -8,12 +8,12 @@ import java.util.regex.Pattern;
 public class LottoController {
     public void showIntroduce() {
         View view = new IntroduceView();
-        view.Show();
+        view.show();
     }
 
     public void showMoneyInput() {
         View view = new MoneyInputView();
-        view.Show();
+        view.show();
 
         String response = view.getResponse();
         validateInput("^(\\d+[0][0][0])$", response);

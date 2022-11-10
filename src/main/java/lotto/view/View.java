@@ -3,7 +3,7 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 
 public abstract class View {
-    public abstract void Show();
+    public abstract void show();
 
     public String getResponse() {
         return "";
@@ -18,10 +18,8 @@ public abstract class View {
     }
 
     public static String readLine(String message) {
-        printLine(message + " : ");
-        String readLine = Console.readLine();
-        //printLine("");
+        printLine(message);
 
-        return readLine;
+        return Console.readLine();
     }
 }

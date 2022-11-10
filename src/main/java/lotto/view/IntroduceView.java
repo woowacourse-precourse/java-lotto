@@ -2,7 +2,7 @@ package lotto.view;
 
 public class IntroduceView extends View {
     @Override
-    public void Show() {
+    public void show() {
         printLine("┏━━━━━━━━━━┓");
         printLine("   로또 게임");
         printLine("┗━━━━━━━━━━┛");
