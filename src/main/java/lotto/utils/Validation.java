@@ -6,6 +6,7 @@ public class Validation {
     private static final int LOTTO_NUMBERS_SIZE = 6;
     private static final int LOTTO_FIRST_NUMBER = 1;
     private static final int LOTTO_LAST_NUMBER = 45;
+
     public static void validate(List<Integer> numbers) {
         validateSize(numbers);
         validateDuplication(numbers);
@@ -28,6 +29,12 @@ public class Validation {
 
     private static void validateSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBERS_SIZE) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void validateMoney(int money) {
+        if (money < 1000) {
             throw new IllegalArgumentException();
         }
     }

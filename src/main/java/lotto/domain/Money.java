@@ -1,10 +1,13 @@
 package lotto.domain;
 
+import lotto.utils.Validation;
+
 public class Money {
     public static final int LOTTO_PRICE = 1000;
     private int money;
 
     public Money(int money) {
+        Validation.validateMoney(money);
         this.money = money;
     }
 
