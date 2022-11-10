@@ -1,6 +1,7 @@
 package lotto.model;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -25,5 +26,15 @@ class PurchasePriceTest {
     void createPurchasePriceByZero() {
         assertThatThrownBy(() -> new PurchasePrice("0"))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("1000원 단위 숫자는 성공한다.")
+    @Test
+    void createPurchasePrice() {
+        assertDoesNotThrow(() -> new PurchasePrice("1000"));
+        assertDoesNotThrow(() -> new PurchasePrice("2000"));
+        assertDoesNotThrow(() -> new PurchasePrice("10000"));
+        assertDoesNotThrow(() -> new PurchasePrice("30000"));
+        assertDoesNotThrow(() -> new PurchasePrice("55000"));
     }
 }
