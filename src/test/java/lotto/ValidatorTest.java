@@ -1,15 +1,16 @@
 package lotto;
 
-import static lotto.Validator.NEED_TO_INPUT_NUMBER_CAN_DIVIDE_BY_ONE_THOUSAND;
-import static lotto.Validator.NEED_TO_INPUT_NUMBER;
-import static lotto.Validator.NEED_TO_INPUT_RIGHT_NUMBER_RANGE;
-import static lotto.Validator.NEED_TO_INPUT_SIX_NUMBER;
-import static lotto.Validator.NEED_TO_NOT_DUPLICATE;
-import static lotto.Validator.NEED_TO_USE_COMMA;
+import static lotto.exception.Validator.NEED_TO_INPUT_NUMBER_CAN_DIVIDE_BY_ONE_THOUSAND;
+import static lotto.exception.Validator.NEED_TO_INPUT_NUMBER;
+import static lotto.exception.Validator.NEED_TO_INPUT_RIGHT_NUMBER_RANGE;
+import static lotto.exception.Validator.NEED_TO_INPUT_SIX_NUMBER;
+import static lotto.exception.Validator.NEED_TO_NOT_DUPLICATE;
+import static lotto.exception.Validator.NEED_TO_USE_COMMA;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
+import lotto.exception.Validator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

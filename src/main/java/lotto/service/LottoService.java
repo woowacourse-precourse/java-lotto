@@ -1,7 +1,10 @@
-package lotto;
+package lotto.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.domain.Lotto;
+import lotto.domain.LottoGenerator;
+import lotto.domain.LottoResult;
 
 public class LottoService {
 

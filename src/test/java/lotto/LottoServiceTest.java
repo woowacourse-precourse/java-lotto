@@ -4,6 +4,9 @@ import static lotto.ValidatorTest.WINNING_NUMBERS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import lotto.domain.Lotto;
+import lotto.domain.LottoResult;
+import lotto.service.LottoService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

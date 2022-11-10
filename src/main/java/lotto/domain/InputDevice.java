@@ -1,9 +1,10 @@
-package lotto;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.exception.Validator;
 
 public class InputDevice {
 
