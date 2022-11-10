@@ -22,7 +22,8 @@ public class InputExceptionTest {
         })
         void case1(String inputData) {
             Assertions.assertThatThrownBy(() -> inputException.notDigitException(inputData))
-                    .isInstanceOf(IllegalArgumentException.class);
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("[ERROR] 구매 금액과 로또 번호는 숫자만 입력이 가능합니다.");
         }
     }
 
