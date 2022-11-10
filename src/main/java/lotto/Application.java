@@ -48,7 +48,7 @@ public class Application {
     public static List<List<Integer>> pickLottoNumbers(int count) {
         List<List<Integer>> lottoNumbers = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> numbers = new ArrayList<>(Collections.unmodifiableList(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
             numbers.sort(Comparator.naturalOrder());
             System.out.println(numbers);
             lottoNumbers.add(numbers);
@@ -72,6 +72,7 @@ public class Application {
         int result = 0;
         for (List<Integer> num : lottoNumbers) {
             int correctCount = 0;
+
             correctCount = findCorrectNum(num, winNumbers, bonusNum, correctCount);
             Rank rank = Rank.getRank(correctCount);
             result += rank.getPrize();
