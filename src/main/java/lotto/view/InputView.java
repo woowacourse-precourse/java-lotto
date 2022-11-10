@@ -15,4 +15,16 @@ public class InputView {
         System.out.println(PURCHASE_AMOUNT_MESSAGE);
         return Integer.parseInt(Console.readLine());
     }
+
+    public List<Integer> getLottoNumber() {
+        System.out.println(LOTTO_NUMBER_MESSAGE);
+        return Arrays.stream(Console.readLine().split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
+
+    public int getLottoBonusNumber() {
+        System.out.println(LOTTO_BONUS_NUMBER_MESSAGE);
+        return Integer.parseInt(Console.readLine());
+    }
 }
