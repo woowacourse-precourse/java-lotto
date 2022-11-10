@@ -62,4 +62,32 @@ class JudgmentTest {
         }
     }
 
+    @DisplayName("hasBonusNumber 메소드 테스트")
+    @Nested
+    class hasBonusNumberTest {
+        @BeforeEach
+        void setup() {
+            judgment = new Judgment();
+        }
+
+        @DisplayName("매치하는 경우")
+        @Test
+        void case1() {
+            int bonusNumber = 6;
+            boolean result = true;
+            boolean actual = judgment.hasBonusNumber(winningNumber, bonusNumber);
+
+            assertThat(actual).isEqualTo(result);
+        }
+
+        @DisplayName("매치하지 않는 경우")
+        @Test
+        void case2() {
+            int bonusNumber = 7;
+            boolean result = false;
+            boolean actual = judgment.hasBonusNumber(winningNumber, bonusNumber);
+
+            assertThat(actual).isEqualTo(result);
+        }
+    }
 }
