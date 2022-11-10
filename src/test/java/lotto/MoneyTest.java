@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class MoneyTest {
     String errorTag = "[ERROR]";
-    String erroMsg = "올바르지 못한 돈입니다.";
+    String erroMsg = "입력한 돈은 천단위의 자연수가아닙니다.";
 
     @DisplayName("복권 살돈이 정확히 나온다.")
     @Test
