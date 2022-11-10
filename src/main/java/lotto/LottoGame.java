@@ -17,5 +17,6 @@ public class LottoGame {
             Collections.sort(random);
             lottos.add(new Lotto(random));
         }
+        Print.lottos(lottos);
     }
 }
