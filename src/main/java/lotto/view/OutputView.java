@@ -15,6 +15,7 @@ public class OutputView {
     public static void printLottoCount(LottoCount lottoCount) {
         System.out.print(NEW_LINE);
         System.out.printf(NUMBER_OF_PURCHASED_LOTTOS, lottoCount.getLottoCount());
+        System.out.print(NEW_LINE);
     }
 
     public static void printPurchasedLottoNumbers(Lottos lottos) {
@@ -27,5 +28,6 @@ public class OutputView {
                     + CLOSE_BRACKET;
             System.out.println(lottoNumbers);
         }
+        System.out.print(NEW_LINE);
     }
 }
