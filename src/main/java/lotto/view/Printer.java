@@ -1,8 +1,10 @@
 package lotto.view;
 
 import lotto.Lotto;
+import lotto.domain.WinningStandard;
 
 import java.util.List;
+import java.util.Map;
 
 public class Printer {
 
@@ -20,7 +22,7 @@ public class Printer {
             for(int lottoNumber : lotto.getNumbers()){
                 message += (lottoNumber + ", ");
             }
-            message = message.substring(0, message.length() - 1); // 마지막 공백 제거
+            message = message.substring(0, message.length() - 2); // 마지막 공백 제거
             message += "]";
             System.out.println(message);
         }
@@ -33,4 +35,6 @@ public class Printer {
     public void printInputWinningBonusNumber(){
         System.out.println("보너스 번호를 입력해 주세요.");
     }
+
+
 }
