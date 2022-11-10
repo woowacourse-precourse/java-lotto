@@ -21,9 +21,9 @@ public class UserInputHandler {
         return convertToLottoNumbers(usersInput);
     }
 
-    public int getBonusNumbers(){
+    public int getBonusNumbers(Lotto winningNumbers){
         String userInput = Console.readLine();
-        return validateLottoNumbers(userInput);
+        return validateBonusNumbers(winningNumbers,userInput);
     }
 
     private List<Integer> convertToLottoNumbers(String input){
@@ -48,5 +48,14 @@ public class UserInputHandler {
         }catch(NumberFormatException ex){
             throw new IllegalArgumentException("[ERROR] 콤마(,) 와 정수 이외의 다른 값을 당첨 값 입력할 수 없습니다.\n");
         }
+    }
+    private int validateBonusNumbers(Lotto winningLotto, String bonusNumberInput){
+        int bonusNumber = validateLottoNumbers(bonusNumberInput);
+        boolean isBonusNumberDuplicate = winningLotto.getNumbers().contains(bonusNumber);
+        if(isBonusNumberDuplicate){
+            throw new IllegalArgumentException("[ERROR] 보너스 숫자는, 당첨 번호와 중복된 숫자일 수 없습니다.\n");
+        }
+
+        return bonusNumber;
     }
 }
