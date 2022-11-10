@@ -17,7 +17,7 @@ public class Validator {
     public Integer getNotPassConditionIndex(List<Condition> conditions, String input) {
         for (int index = 0; index < conditions.size(); index++) {
             Condition condition = conditions.get(index);
-            if (condition.isSatisfied(input)) {
+            if (!condition.isSatisfied(input)) {
                 return index;
             }
         }
