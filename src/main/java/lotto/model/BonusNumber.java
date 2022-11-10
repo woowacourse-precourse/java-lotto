@@ -14,7 +14,7 @@ public class BonusNumber {
     private static int validateBonusNumber(int number) {
         verifyRangeOfLottoNumber(number);
         if (WinningNumber.winningNumbers.contains(number)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.");
         }
         return number;
     }

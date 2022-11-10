@@ -21,13 +21,13 @@ public class WinningNumber {
 
     private static List<Integer> validateWinningNumbers(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 6개의 당첨번호를 입력해 주세요.");
         }
         for (Integer winningNumber : numbers) {
             verifyRangeOfLottoNumber(winningNumber);
         }
         if (numbers.size() != numbers.stream().distinct().count()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 입력하신 당첨번호 내에 중복되는 숫자가 존재합니다.");
         }
         return numbers;
     }
