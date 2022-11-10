@@ -35,6 +35,16 @@ public class Lotto {
         return new Lotto(numbers);
     }
 
+    public static int compareNumbers(List<Integer> winningNumbers, Lotto lotto) {
+        int count = 0;
+        for (Integer number : winningNumbers) {
+            if (lotto.numbers.contains(number)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     @Override
     public  String toString() {
         return numbers.toString();
