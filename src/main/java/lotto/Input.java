@@ -25,6 +25,7 @@ public class Input {
     public static List<Integer> getWinningNumber(String readLine) {
         String[] tempNumberList = readLine.split(",");
         List<Integer> result = new ArrayList<>();
+        validNumberCount(tempNumberList.length);
         for (int i = 0; i <6 ; i++) {
             validNum(tempNumberList[i]);
             int num = Integer.parseInt(tempNumberList[i]);
@@ -32,6 +33,11 @@ public class Input {
             result.add(num);
         }
         return result;
+    }
+    private static void validNumberCount(int n) {
+        if (n != 6) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호의 숫자가 6개가 아닙니다.");
+        }
     }
 
     private static void validNum(String s) {
