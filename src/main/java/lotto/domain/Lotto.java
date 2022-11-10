@@ -9,14 +9,18 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 enum Rank {
-    ONE(2000000000), TWO(30000000), THREE(1500000), FOUR(50000), FIVE(5000), LOSE(0);
-    private int money;
+    ONE("6개 일치 (2,000,000,000원) - "),
+    TWO("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
+    THREE("5개 일치 (1,500,000원) - "),
+    FOUR("4개 일치 (50,000원) - "),
+    FIVE("3개 일치 (5,000원) - "),
+    LOSE("");
+    private String message;
 
-    Rank(int money) {
-        this.money = money;
+    Rank(String message) {
+        this.message = message;
     }
 }
-
 public class Lotto {
     private final List<Integer> numbers;
     private static String validateMessage = "[ERROR] 6자리를 초과하였습니다.";

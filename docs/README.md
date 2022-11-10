@@ -9,7 +9,7 @@
 - [x] 당첨 번호를 입력받는 기능((,)를 기준으로 구분) - Input#inputNumber()
   - [x] 입력받은 숫자에 반복되는 숫자가 있을 시 에러처리 - Error#numberRepeatError()
   - [x] 입력받은 숫자에 1~45 사이의 숫자가 아닐 시 에러처리 - Error#numberRangeError()
-- [ ] 몇 개의 숫자가 일치하는지 확인 기능 - NumberCompare#compare()
+- [x] 몇 개의 숫자가 일치하는지 확인 기능 - NumberCompare#compare()
 - [ ] 등수 마다 일치 여부 개수 출력하는 기능 - Output#outputLottoRank()
 - [ ] 로또 당첨 수익 구하는 기능 - Calculator#revenue()
 - [ ] 로또 당첨 수익률 구하는 기능(소수 둘째자리 반올림) - Calculator#yield()

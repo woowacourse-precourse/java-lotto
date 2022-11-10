@@ -14,6 +14,7 @@ import java.util.List;
  * 2022/11/09         gim-yeong-geun          최초 생성
  */
 public class Output {
+
     public static void outputRandomNumber(List<Integer> createRandomNumber) {
 
     }

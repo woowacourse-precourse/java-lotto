@@ -14,7 +14,7 @@ import java.util.List;
  * 2022/11/10         gim-yeong-geun          최초 생성
  */
 public class NumberCompare {
-    //TODO: 몇 개의 숫자가 일치하는지 확인 기능
+    // 몇 개의 숫자가 일치하는지 확인 기능
     static Rank compare(List<Integer> numbers, List<Integer> randomNumbers, int bonusNumber) {
         int count = 0;
         int bonusCount = 0;
