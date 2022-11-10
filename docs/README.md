@@ -1,7 +1,7 @@
 # 로또 게임
 ## 🚀 기능 목록
 
-- [] 구입금액 입력 메세지를 출력한다. - View#PURCHASE_INPUT_GUIDE_MESSAGE
+- [x] 구입금액 입력 메세지를 출력한다. - View#PURCHASE_INPUT_GUIDE_MESSAGE
 - [] 로또 구입 금액을 입력한다. - Input#userInput()
 
 - [] 구입금액에 해당하는 만큼 로또를 발행해야한다. - LottoList#createLotto()
