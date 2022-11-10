@@ -23,6 +23,9 @@ public class WinningNumber {
     private Set<Integer> createNumberSet(String input) {
         Set<Integer> set = new HashSet<>();
         String[] num = input.split(",");
+        if (num.length != 6) {
+            throw new IllegalArgumentException("[ERROR] 입력이 올바르지 않습니다.");
+        }
         for (String s : num) {
             set.add(Integer.valueOf(s));
         }
