@@ -5,7 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -86,5 +89,44 @@ class LottoTest {
 
         assertThatNoException()
                 .isThrownBy(() -> method.invoke(lottoGame, "2000"));
+    }
+
+    @DisplayName("로또 번호를 생성하면 리스트로 로또 번호가 나온다")
+    @Test
+    void generateLottoNumberByList() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        LottoMachine lottoMachine = new LottoMachine();
+
+        Method method = lottoMachine.getClass().getDeclaredMethod("generateLottoNumber");
+        method.setAccessible(true);
+        Object lottoNumber = method.invoke(lottoMachine);
+
+        assertThat(lottoNumber).isInstanceOf(List.class);
+    }
+
+    @DisplayName("로또 번호를 생성하면 6개의 번호가 나온다")
+    @Test
+    void generateLottoNumberBySixLength() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        LottoMachine lottoMachine = new LottoMachine();
+        int result = 6;
+
+        Method method = lottoMachine.getClass().getDeclaredMethod("generateLottoNumber");
+        method.setAccessible(true);
+        List<Integer> lottoNumber = (List<Integer>) method.invoke(lottoMachine);
+
+        assertThat(lottoNumber.size()).isEqualTo(result);
+    }
+
+    @DisplayName("로또 번호를 생성하면 중복없이 6개의 번호가 나온다")
+    @Test
+    void generateLottoNumberByNotDuplicated() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        LottoMachine lottoMachine = new LottoMachine();
+        int result = 6;
+
+        Method method = lottoMachine.getClass().getDeclaredMethod("generateLottoNumber");
+        method.setAccessible(true);
+        List<Integer> lottoNumber = (List<Integer>) method.invoke(lottoMachine);
+        int lottoNumberSize = new HashSet<>(lottoNumber).size();
+
+        assertThat(lottoNumberSize).isEqualTo(result);
     }
 }
