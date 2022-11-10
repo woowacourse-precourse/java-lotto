@@ -17,7 +17,7 @@ public class Lotto {
 
         this.numbers = numbers.stream()
                 .sorted()
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 
     public int get(int index) {
