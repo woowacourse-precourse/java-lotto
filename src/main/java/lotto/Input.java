@@ -32,8 +32,16 @@ public class Input {
 
             result.add(num);
         }
+        duplicateCheck(result);
         return result;
     }
+
+    private static void duplicateCheck(List<Integer> result) {
+        if(result.stream().distinct().count()!=6){
+            throw new IllegalArgumentException("[ERROR] 입력 숫자가 중복되었습니다.");
+        };
+    }
+
     private static void validNumberCount(int n) {
         if (n != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호의 숫자가 6개가 아닙니다.");
@@ -46,8 +54,9 @@ public class Input {
         }
         if(!isValidNumber(s)){
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-        };
+        }
     }
+
 
     private static boolean isValidNumber(String s) {
         int n = Integer.parseInt(s);
