@@ -18,6 +18,7 @@ public class LottoGameService {
     private static final String DIGIT_REGEX = "^[0-9]+$";
     private static final int CORRECT_LOTTO_WINNING_NUMBERS_SIZE = 6;
     private static final String LOTTO_WINNING_NUMBERS_SIZE_EXCEPTION_MESSAGE = "로또 당첨 번호의 개수는 6개여야합니다.";
+    private static final String LOTTO_WINNING_NUMBERS_DUPLICATE_EXCEPTION_MESSAGE = "로또 당첨 번호는 중복될 수 없습니다.";
 
     private Lotto lotto;
 
@@ -43,6 +44,9 @@ public class LottoGameService {
         if (isLottoWinningNumbersSizeNotSix(lottoWinningNumbers)) {
             throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + LOTTO_WINNING_NUMBERS_SIZE_EXCEPTION_MESSAGE);
         }
+        if (isLottoWinningNumbersDuplicate(lottoWinningNumbers)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + LOTTO_WINNING_NUMBERS_DUPLICATE_EXCEPTION_MESSAGE);
+        }
     }
 
     private boolean isRestOfLottoPurchaseAmountDivideBy1000NotZero(String lottoPurchaseAmount) {
@@ -65,6 +69,12 @@ public class LottoGameService {
 
     public boolean isLottoWinningNumbersSizeNotSix(List<String> lottoWinningNumbers) {
         return lottoWinningNumbers.size() != CORRECT_LOTTO_WINNING_NUMBERS_SIZE;
+    }
+
+    private boolean isLottoWinningNumbersDuplicate(List<String> lottoWinningNumbers) {
+        long numbersDistinctSize = lottoWinningNumbers.stream()
+                .distinct().count();
+        return numbersDistinctSize != CORRECT_LOTTO_WINNING_NUMBERS_SIZE;
     }
 
     public List<String> inputWinningNumberConvertToCollection(String lottoWinningNumber) {
