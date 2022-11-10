@@ -2,7 +2,7 @@
 
 ## 기능 목록
 - [x] 1개의 로또를 발행할 때 1부터 45까지 중복되지 않는 6개의 숫자를 뽑는다. - NumberGenerator#createLottoNumber()
-- [ ] 당첨번호를 입력받고 검증 과정 필요 - WinningNumber#validateWinningNumber()
+- [x] 당첨번호를 입력받고 검증 과정 필요 - WinningNumber#validateWinningNumber()
 - [ ] 당첨은 1등부터 5등까지 존재하며 로또 번호와 당첨 번호를 비교해야 한다. - Lotto#compare()
   - [ ] 각 번호를 비교하고 몇 개의 번호가 일치하는지 반환해야 한다. - Lotto#count()
   - [ ] 보너스 번호와 비교 - Lotto#compareBonusNumber()
