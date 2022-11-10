@@ -13,7 +13,6 @@ import static lotto.global.ExceptionConstants.CANNOT_INPUT_ZERO;
 import static lotto.global.ExceptionConstants.CANNOT_SATISFY_NUMBER_RANGE;
 import static lotto.global.ExceptionConstants.CAN_ONLY_INPUT_NUMBER;
 import static lotto.global.ExceptionConstants.CAN_ONLY_MULTIPLY_1000;
-import static lotto.global.ExceptionConstants.CAN_ONLY_SIX_COUNT;
 import static lotto.global.LottoConstants.LOTTO_PRICE;
 
 public class InputUtil {
@@ -50,22 +49,6 @@ public class InputUtil {
         winningNumbers = Stream.of(Console.readLine().split(WINNING_NUMBER_DELIM))
                                .map(Integer::parseInt)
                                .collect(Collectors.toList());
-
-        if (!InputValidator.isAllNumber(winningNumbers)) {
-            throw new IllegalArgumentException(CAN_ONLY_INPUT_NUMBER);
-        }
-
-        if (!InputValidator.hasSixNumbers(winningNumbers)) {
-            throw new IllegalArgumentException(CAN_ONLY_SIX_COUNT);
-        }
-
-        if (!InputValidator.hasDuplicatedNumber(winningNumbers)) {
-            throw new IllegalArgumentException(CANNOT_DUPLICATED_NUMBER);
-        }
-
-        if (!InputValidator.satisfyLottoNumberRange(winningNumbers)) {
-            throw new IllegalArgumentException(CANNOT_SATISFY_NUMBER_RANGE);
-        }
 
         return new Lotto(winningNumbers);
     }
