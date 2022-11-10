@@ -7,6 +7,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        validateRange(numbers);
         this.numbers = numbers;
     }
 
@@ -17,4 +18,11 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    private void validateRange(List<Integer> numbers) {
+        boolean anyMatch = numbers.stream()
+                .anyMatch(number -> (number < 1 || number > 45));
+        if (anyMatch) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
