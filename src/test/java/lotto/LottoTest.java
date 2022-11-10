@@ -34,4 +34,13 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또 번호 생성기가 올바른 번호를 생성한다.")
+    @Test
+    void createLottoWithLottoNumbersGenerator() {
+        List<Integer> lottoNumbers = lottoNumbersGenerator.create();
+
+        assertThatCode(() -> new Lotto(lottoNumbers))
+                .doesNotThrowAnyException();
+    }
 }
