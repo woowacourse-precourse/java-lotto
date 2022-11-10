@@ -13,6 +13,7 @@ public enum Messages {
             + "5개 일치, 보너스 볼 일치 (30,000,000원) - {3}개\n"
             + "6개 일치 (2,000,000,000원) - {4}개"),
     RATE_OF_RETURN_MESSAGE("총 수익률은 {0}%입니다."),
+    WINNING_NUMBER_SEPARATOR(","),
     ERROR_MESSAGE_PREFIX("[ERROR] "),
     RANGE_ERROR_MESSAGE("번호는 1부터 45 사이의 숫자여야 합니다."),
     PRICE_ERROR_MESSAGE("금액은 1000원 단위여야 합니다."),
