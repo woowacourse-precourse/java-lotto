@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class Application {
 
@@ -9,5 +10,6 @@ public class Application {
         System.out.println(amount);
         AmountValidator.validate(amount);
         Tickets tickets = new Tickets(amount);
+        OutputView.printTickets(tickets);
     }
 }
