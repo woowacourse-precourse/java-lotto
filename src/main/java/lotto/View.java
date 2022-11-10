@@ -24,9 +24,12 @@ public class View {
     public List<Integer> askWinningNumber() {
         List<Integer> winningLotto = new ArrayList<>();
         System.out.println("당첨 번호를 입력해 주세요.");
-        for (int count = 0; count < 6; count++) {
-            String number = Console.readLine();
-            winningLotto.add(Integer.parseInt(number));
+        String number = Console.readLine();
+        number = number.replaceAll(" ","");
+        String[] winningNumbers = number.split(",");
+
+        for (String winningNumber : winningNumbers) {
+            winningLotto.add(Integer.parseInt(winningNumber));
         }
         return winningLotto;
     }
