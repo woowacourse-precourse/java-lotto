@@ -15,6 +15,6 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-
     // TODO: 추가 기능 구현
+
 }
