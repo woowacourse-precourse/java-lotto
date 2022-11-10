@@ -2,6 +2,7 @@ package lotto.mytest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.HashSet;
 import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
@@ -14,7 +15,7 @@ public class GeneratorTest {
 	@Test
 	void hasSixNumber() {
 		Generator generator = new Generator();
-		List<String> randomLottoNumber = generator.lottery();
+		HashSet<Integer> randomLottoNumber = generator.lottery();
 		assertEquals(6, randomLottoNumber.size());
 	}
 }
