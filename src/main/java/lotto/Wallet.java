@@ -3,7 +3,7 @@ package lotto;
 import java.util.List;
 
 public class Wallet {
-    List<Lotto> myLottos;
+    private List<Lotto> myLottos;
     private final int money;
     private int profit;
 
@@ -18,5 +18,11 @@ public class Wallet {
 
     public void getLottos(List<Lotto> boughtLottos) {
         myLottos = boughtLottos;
+    }
+
+    public void showMyLottos() {
+        for(Lotto l : myLottos) {
+            System.out.println(l);
+        }
     }
 }
