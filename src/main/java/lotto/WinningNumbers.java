@@ -17,4 +17,8 @@ public class WinningNumbers {
     private String setNumber() {
         return Console.readLine();
     }
+
+    private void printGuideMessage(String message) {
+        System.out.println(message);
+    }
 }
