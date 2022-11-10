@@ -1,4 +1,4 @@
-package lotto.domain.draw;
+package lotto.domain.winning;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

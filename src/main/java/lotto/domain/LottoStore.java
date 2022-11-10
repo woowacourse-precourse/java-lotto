@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import lotto.domain.lotto_numbers.Lotto;
+import lotto.domain.winning.Purchaser;
 
 public class LottoStore {
 
@@ -17,15 +18,17 @@ public class LottoStore {
     private static final int MAX_NUMBER_OF_LOTTO = 45;
     private static final int COUNT_OF_LOTTO_NUMBERS = 6;
 
-    public List<Lotto> lottos(String strMoney) {
+    // 구매자로 반환해도 될것같음.
+    public Purchaser lottos(String strMoney) {
         int money = Integer.parseInt(strMoney);  // 아무래도 사용하는 쪽에서 알맞게 변경하는게..
         validateMoney(money);
 
         int quantityToBuy = money / PRICE_OF_LOTTO;
-
-        return IntStream.range(0, quantityToBuy)
-                .mapToObj(i -> newLotto())  // 좀 더 나은 방법은 없을까 생각해보자.
-                .collect(Collectors.toList());
+        return new Purchaser(
+                IntStream.range(0, quantityToBuy)
+                        .mapToObj(i -> newLotto())  // 좀 더 나은 방법은 없을까 생각해보자.
+                        .collect(Collectors.toList())
+        );
     }
 
     private Lotto newLotto() {

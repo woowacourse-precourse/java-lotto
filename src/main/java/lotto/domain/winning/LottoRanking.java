@@ -1,4 +1,4 @@
-package lotto.domain.draw;
+package lotto.domain.winning;
 
 import java.text.NumberFormat;
 
@@ -32,13 +32,17 @@ public enum LottoRanking {
     ;
 
     private final int matchNumberCount;
-    private final boolean matchBonusNumber;
+    private final boolean isMatchedBonusNumber;
     private final int winnings;
 
-    LottoRanking(int matchNumberCount, boolean matchBonusNumber, int winnings) {
+    LottoRanking(int matchNumberCount, boolean isMatchedBonusNumber, int winnings) {
         this.matchNumberCount = matchNumberCount;
-        this.matchBonusNumber = matchBonusNumber;
+        this.isMatchedBonusNumber = isMatchedBonusNumber;
         this.winnings = winnings;
+    }
+
+    public boolean isMatchedNumberCount(int count) {
+        return matchNumberCount == count && !isMatchedBonusNumber;
     }
 
     public String stringFormat() {
@@ -47,7 +51,7 @@ public enum LottoRanking {
                 .append(matchNumberCount)
                 .append("개 일치");
 
-        if (matchBonusNumber) {
+        if (isMatchedBonusNumber) {
             stringBuilder
                     .append(", 보너스 볼 일치");
         }

@@ -2,11 +2,11 @@ package lotto.domain.lotto_numbers;
 
 import java.util.List;
 
-public class WinningNumbers implements LottoNumbers {
+public class WinningNumber implements LottoNumbers {
 
     private final List<Integer> winningNumbers;
 
-    public WinningNumbers(List<Integer> winningNumbers) {
+    public WinningNumber(List<Integer> winningNumbers) {
         validate(winningNumbers);
         validateDuplication(winningNumbers);
         validateRangeOfNumbers(winningNumbers);
@@ -15,5 +15,9 @@ public class WinningNumbers implements LottoNumbers {
 
     public boolean contains(int bonusNumber) {
         return winningNumbers.contains(bonusNumber);
+    }
+
+    public int matchCounts(Lotto purchasedLotto) {
+        return purchasedLotto.matchNumberCounts(winningNumbers);
     }
 }

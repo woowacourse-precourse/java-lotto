@@ -20,7 +20,14 @@ public class BonusNumber {
         }
     }
 
-    public boolean isIn(WinningNumbers winningNumbers) {
-        return winningNumbers.contains(bonusNumber);
+    public boolean isIn(WinningNumber winningNumber) {
+        return winningNumber.contains(bonusNumber);
+    }
+
+    public int matchCount(Lotto lotto) {
+        if (lotto.contains(bonusNumber)) {
+            return 1;
+        }
+        return 0;
     }
 }
