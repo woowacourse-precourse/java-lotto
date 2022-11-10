@@ -5,7 +5,7 @@ import lotto.domain.Lotto;
 
 public class LottoRepository {
 
-	public static Lotto makeAutoLotto() {
+	public Lotto makeAutoLotto() {
 		return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
 	}
 

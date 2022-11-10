@@ -11,6 +11,7 @@ import lotto.domain.Lotto;
 
 public class LottoRepositoryTest {
 
+	private final LottoRepository lottoRepository = new LottoRepository();
 
 	@DisplayName("로또 숫자들이 중복되지 않는지 검사")
 	@Test
@@ -18,7 +19,7 @@ public class LottoRepositoryTest {
 	    //given
 
 	    //when
-		Lotto lotto = LottoRepository.makeAutoLotto();
+		Lotto lotto = lottoRepository.makeAutoLotto();
 		Set<Integer> lottoNumbers = new HashSet<>(lotto.getNumbers());
 
 		//then
