@@ -19,7 +19,10 @@ public class Application {
         Buyer buyer=new Buyer();
         // 구입 금액을 입력하여, 로또를 구입한다.
         System.out.println("구입금액을 입력해 주세요.");
-        int purchaseMoney=Integer.parseInt(Console.readLine());
+
+        int purchaseMoney= Integer.parseInt(Console.readLine());
+
+        System.out.println(purchaseMoney);
         buyer.purchase(lottoVendor,purchaseMoney);//특정가게에서 금액/1000개의 로또를 구입한다.
 
         System.out.println("\n"+buyer.getLottoTicketAmount()+"개를 구매했습니다.");
@@ -46,7 +49,7 @@ public class Application {
             System.out.println(prize.ofDescription() + " - " + result.get(prize) + "개");
         }
         // 수익률 확인
-        System.out.printf("총 수익률은 %.1f%%입니다.",(float)lottoReferee.sumPrizes()/buyer.countHoldingLotto()*1000*100);
+        System.out.printf("총 수익률은 %.1f%%입니다.",(float)lottoReferee.sumPrizes()/(buyer.countHoldingLotto()*1000)*100);
 
     }
 }
