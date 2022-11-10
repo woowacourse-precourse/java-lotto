@@ -95,7 +95,7 @@ class CalculatorTest {
             int totalPrize = 5000;
             int investmentCash = 8000;
 
-            double actual = calculator.calculateProfit(totalPrize, investmentCash);
+            double actual = calculator.getProfit(totalPrize, investmentCash);
             double result = 62.5;
             assertThat(actual).isEqualTo(result);
         }
@@ -105,7 +105,7 @@ class CalculatorTest {
             int totalPrize = 10000;
             int investmentCash = 30000;
 
-            double actual = calculator.calculateProfit(totalPrize, investmentCash);
+            double actual = calculator.getProfit(totalPrize, investmentCash);
             double result = 33.3;
             assertThat(actual).isEqualTo(result);
         }
