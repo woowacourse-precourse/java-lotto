@@ -28,5 +28,14 @@ public class Lotto {
         }
     }
 
+    private void validateNumbersInRange(List<Integer> numbers){
+        for(int i = 0; i < 6; i++){
+            int oneLottoNumber = numbers.get(i);
+            if(!(1 <= oneLottoNumber && oneLottoNumber <= 45)){
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1에서 45 사이의 정수여야 합니다.\n");
+            }
+        }
+    }
+
     // TODO: 추가 기능 구현
 }
