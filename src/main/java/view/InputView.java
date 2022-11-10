@@ -24,6 +24,7 @@ public enum InputView {
         System.out.println(INPUT_LOTTO_NUMBERS);
         String lottoNumbers = Console.readLine();
         InputValidator.validateLottoNumbers(lottoNumbers);
+        InputValidator.validateDifferentLottoNumbers(splitNumbers(lottoNumbers));
         return splitNumbers(lottoNumbers);
     }
 
