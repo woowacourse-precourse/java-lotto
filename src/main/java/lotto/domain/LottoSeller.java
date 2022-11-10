@@ -15,19 +15,21 @@ public class LottoSeller {
 
     public List<Lotto> sell(Integer amount) {
         validate(amount);
-        List<List<Integer>> quickPickNumbers = new ArrayList<>();
-
-        while (quickPickNumbers.size() < amount / LOTTO_PRICE) {
-            quickPickNumbers.add(quickPick());
-        }
-
-        return toLottos(quickPickNumbers);
+        return toLottos(generateQuickPickNumbers(amount / LOTTO_PRICE));
     }
 
     private void validate(Integer amount) {
         if (amount < LOTTO_PRICE || amount % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(INVALID_AMOUNT_MESSAGE);
         }
+    }
+
+    private List<List<Integer>> generateQuickPickNumbers(Integer count) {
+        List<List<Integer>> quickPickNumbers = new ArrayList<>();
+        while (quickPickNumbers.size() < count) {
+            quickPickNumbers.add(quickPick());
+        }
+        return quickPickNumbers;
     }
 
     private List<Integer> quickPick() {
