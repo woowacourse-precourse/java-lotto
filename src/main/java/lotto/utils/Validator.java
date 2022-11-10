@@ -11,14 +11,6 @@ public class Validator {
         isZero(inputNumber);
     }
 
-    public static void validateWinningNumber(List<Integer> inputNumbers) {
-        containDuplicate(inputNumbers);
-        listLengthCheck(inputNumbers,6);
-        for (int inputNumber : inputNumbers) {
-            isInRange(inputNumber);
-        }
-    }
-
     public static void isMultiplesOfThousand(int inputNumber) {
         if (inputNumber % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 1000의 배수만 입력 가능합니다.");
