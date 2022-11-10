@@ -1,8 +1,5 @@
 package lotto.exception;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import lotto.exception.LottoNumberException;
-
 import java.util.List;
 
 public class Lotto {
