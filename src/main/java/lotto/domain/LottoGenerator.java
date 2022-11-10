@@ -21,9 +21,13 @@ public class LottoGenerator {
         int lottoCounts = money / LOTTO_PRICE;
 
         for (int count = 0; count < lottoCounts; count++) {
-            Lotto newLotto = new Lotto(Randoms.pickUniqueNumbersInRange(START_LOTTO_NUMBER, END_LOTTO_NUMBER, LOTTO_COUNT));
-            lottoBundle.add(newLotto);
+            generateLotto(lottoBundle);
         }
         return lottoBundle;
+    }
+
+    private void generateLotto(List<Lotto> lottoBundle) {
+        Lotto newLotto = new Lotto(Randoms.pickUniqueNumbersInRange(START_LOTTO_NUMBER, END_LOTTO_NUMBER, LOTTO_COUNT));
+        lottoBundle.add(newLotto);
     }
 }
