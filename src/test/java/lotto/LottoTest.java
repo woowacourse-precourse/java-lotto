@@ -130,7 +130,7 @@ class LottoTest {
         assertThat(lottoNumberSize).isEqualTo(result);
     }
 
-    @DisplayName("로또 번호를 입력하면 오름차순으로 정렬한다.")
+    @DisplayName("로또 번호를 입력하면 오름차순으로 정렬한다")
     @Test
     void sortLottoNumber() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         LottoGame lottoGame = new LottoGame();
@@ -142,5 +142,17 @@ class LottoTest {
         List<Integer> sortedLotto = (List<Integer>) method.invoke(lottoGame, lotto);
 
         assertThat(sortedLotto).isEqualTo(result);
+    }
+
+    @DisplayName("금액을 입력하면 로또 개수를 반환한다")
+    @Test
+    void getLottoCountByMoney() {
+        LottoMachine lottoMachine = new LottoMachine();
+        int money = 8000;
+        int result = 8;
+
+        int lottoCount = lottoMachine.getLottoCount(money);
+
+        assertThat(lottoCount).isEqualTo(result);
     }
 }
