@@ -6,7 +6,7 @@ package lotto;
  * [O] 당첨금 enum class 생성
  * [O] 당첨 로또 번호 입력
  * [O] 당첨 확인 로직
- * [X] 당첨 통계 계산
+ * [O] 당첨 통계 계산
  * [X] 총 수익률 계산
  * [O/O] 입력 예외 처리(로또 구매 갯수 / 당첨 로또번호 입력)
  * [X] 단위 테스트 생성
@@ -16,9 +16,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -38,8 +36,41 @@ public class Application {
 
             Lotto winningLotto = Lotto.inputWinningLottoNumber();
             int bonusNumber = Lotto.inputBonusNumber();
+
+            Map<WINNINGS, Integer> result = initResultMap();
+            checkUserLottoWinning(result, userLotto, winningLotto, bonusNumber);
+            printUserAllWinningInfo(result);
         } catch(IllegalArgumentException e){
             System.out.println(ERROR_MESSAGE + " " + e.getMessage());
+        }
+    }
+
+    private static Map<WINNINGS, Integer> initResultMap(){
+        Map<WINNINGS, Integer> result = new TreeMap<>(Comparator.comparingInt(WINNINGS::getSortOrder));
+
+        for(WINNINGS winnings : WINNINGS.values())
+            result.put(winnings, 0);
+
+        return result;
+    }
+
+    private static void checkUserLottoWinning(Map<WINNINGS, Integer> result, List<Lotto> userLotto, Lotto winningLotto, int bonusNumber) {
+        for (Lotto lotto : userLotto) {
+            WINNINGS curWinning = Lotto.checkUserLottoWinning(winningLotto, lotto, bonusNumber);
+
+            if(curWinning == null)
+                continue;
+
+            int winningCount = result.get(curWinning);
+            result.put(curWinning, winningCount + 1);
+        }
+    }
+
+    private static void printUserAllWinningInfo(Map<WINNINGS, Integer> result) {
+        for (WINNINGS winnings : result.keySet()) {
+            int winningCount = result.get(winnings);
+
+            WINNINGS.printWinningInfo(winnings, winningCount);
         }
     }
 

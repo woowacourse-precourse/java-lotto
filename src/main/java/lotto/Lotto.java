@@ -45,11 +45,9 @@ public class Lotto {
         int correctCount = 0;
         boolean bonusNumberCorrect = false;
 
-        for(int i = 0; i < winningLotto.numbers.size(); i++){
-            int winningNumber = winningLotto.numbers.get(i);
+        for(int i = 0; i < userLotto.numbers.size(); i++){
             int userNumber = userLotto.numbers.get(i);
-
-            if(winningNumber == userNumber)
+            if(Arrays.binarySearch(winningLotto.numbers.toArray(), userNumber) >= 0)
                 correctCount++;
 
             if(userNumber == bonusNumber)
