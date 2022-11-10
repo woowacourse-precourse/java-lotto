@@ -1,6 +1,6 @@
 package lotto;
 
-import org.junit.jupiter.api.Assertions;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class GeneratorTest {
 
@@ -33,6 +33,18 @@ class GeneratorTest {
         InputStream in = getPlayerInput(input);
         System.setIn(in);
 
-        assertThat(generator.userInput()).isEqualTo(input);
+        assertThat(Generator.purchasePrice()).isEqualTo(6000);
+    }
+
+    @Test
+    @DisplayName("1,000원 단위 체크")
+    void 천원단위_o() {
+        assertThat(Generator.calculateLottoNum(22000)).isEqualTo(22);
+    }
+
+    @Test
+    @DisplayName("1,000원 단위가 아닐 시 에러 발생")
+    void 천원단위_x() {
+        assertThrows(IllegalArgumentException.class, () -> Generator.calculateLottoNum(12345));
     }
 }
