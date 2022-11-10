@@ -15,16 +15,18 @@ import java.util.List;
  */
 public class Calculator {
     private static int revenue = 0;
-    public static int revenue(int rankOne, int rankTwo, int rankThree, int rankFour, int rankFive) {
+    private static double yield = 0.0;
+    private static String yieldMessage = "총 수익률은 " + yield + "%입니다.";
+    public static void revenue(int rankOne, int rankTwo, int rankThree, int rankFour, int rankFive) {
         revenue += rankOne * Rank.ONE.getMoney();
         revenue += rankTwo * Rank.TWO.getMoney();
         revenue += rankThree * Rank.THREE.getMoney();
         revenue += rankFour * Rank.FOUR.getMoney();
         revenue += rankFive * Rank.FIVE.getMoney();
-        return revenue;
     }
 
-    public static double yield(int revenue) {
-        return 0;
+    public static void yield(int revenue, int coin) {
+        yield = ((revenue - coin)/coin*100);
+        System.out.println(yieldMessage);
     }
 }
