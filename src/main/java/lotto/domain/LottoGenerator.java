@@ -18,10 +18,7 @@ public class LottoGenerator {
     }
 
     public List<Lotto> generateLottoBundle(int money) {
-        if(money % LOTTO_PRICE != 0) {
-            System.out.println();
-            throw new IllegalArgumentException(Error.WRONG_MONEY.getMessage());
-        }
+        validate(money);
         List<Lotto> lottoBundle = new ArrayList<>();
         int lottoCounts = money / LOTTO_PRICE;
 
@@ -29,6 +26,13 @@ public class LottoGenerator {
             generateLotto(lottoBundle);
         }
         return lottoBundle;
+    }
+
+    private void validate(int money) {
+        if(money % LOTTO_PRICE != 0) {
+            System.out.println();
+            throw new IllegalArgumentException(Error.WRONG_MONEY.getMessage());
+        }
     }
 
     private void generateLotto(List<Lotto> lottoBundle) {
