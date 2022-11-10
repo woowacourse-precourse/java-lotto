@@ -27,7 +27,7 @@ public class LottoGame {
         generateStatistics();
     }
 
-    public void purchaseLottos() {
+    protected void purchaseLottos() {
         lottoView.printPurchaseMoneyInputCommand();
         int purchaseMoney = Integer.parseInt(Console.readLine()); //TODO: 구입금액 입력 !예외처리
 
@@ -35,7 +35,7 @@ public class LottoGame {
         lottoView.printIssuedLottoDetails(issuingMachine);
     }
 
-    public void drawLotto() {
+    protected void drawLotto() {
         lottoView.printWinningNumbersInputCommand();
         //TODO: 당첨 번호 문자열 입력 !예외처리, List<Integer> winningNumbers = inputWinningNumbers();
         //TODO: 당첨 번호 확정 !예외처리, drawingMachine.setWinningNumbers(winningNumbers);
@@ -45,7 +45,7 @@ public class LottoGame {
         //TODO: 보너스 번호 확정 !예외처리, drawingMachine.setBonusNumber(bonusNumber);
     }
 
-    public void generateStatistics() {
+    protected void generateStatistics() {
         //TODO: 로또 당첨 통계 내기, winningStatistics.generate(issuingMachine.getLottos(), drawingMachine.getWinningNumbers(), drawingMachine.getBonusNumber());
         lottoView.printWinningStatistics(winningStatistics);
     }
