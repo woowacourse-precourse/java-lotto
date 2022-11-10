@@ -1,10 +1,13 @@
 package lotto;
 
+import lotto.domain.Lotto;
+import lotto.exception.Exceptions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -21,6 +24,11 @@ class LottoTest {
         // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+    @Test
+    void 중복_체크(){
+        boolean overlap = Exceptions.isOverLapNumber("1,2,3,3,5,6");
+        assertThat(overlap).isFalse();
     }
 
     // 아래에 추가 테스트 작성 가능
