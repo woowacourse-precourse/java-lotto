@@ -1,10 +1,12 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -29,5 +31,22 @@ class LottoTest {
     void createLottoByOverRange() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("서로 다른 임의의 수가 6개 있는 로또 번호가 생성된다.")
+    @Test
+    void createLotto() {
+        // given
+        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+
+        // when
+        Lotto lotto = new Lotto(randomNumbers);
+        List<Integer> lottoNumbers = lotto.getNumbers();
+
+        // then
+        assertThat(lottoNumbers.size()).isEqualTo(6);
+        assertThat(lottoNumbers.stream().distinct().count()).isEqualTo(6);
+        assertThat(lottoNumbers.stream().allMatch(number -> 1 <= number && number <= 45)).isTrue();
+
     }
 }
