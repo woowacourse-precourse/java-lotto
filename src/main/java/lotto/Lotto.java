@@ -1,8 +1,8 @@
 package lotto;
 
-import java.util.Arrays;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 
 
@@ -28,6 +28,13 @@ public class Lotto {
         if (LottoNumberValidator.isOutOfRange(numbers)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public static Lotto generateLotto() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Lotto lotto = new Lotto(numbers);
+
+        return lotto;
     }
 
     public List<Integer> getNumbers() {
