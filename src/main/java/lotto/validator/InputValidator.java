@@ -32,7 +32,7 @@ public class InputValidator {
         return true;
     }
 
-    private static boolean isRangeTrue(int number) {
+    public static boolean isRangeTrue(int number) {
         return number >= MIN_LOTTO_NUMBER && number <= MAX_LOTTO_NUMBER;
     }
 
