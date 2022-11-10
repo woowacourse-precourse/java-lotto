@@ -20,16 +20,10 @@ public class WinNumbers {
             validateOnlyNumber(winNumber);
             winNumbersSet.add(Integer.parseInt(winNumber));
         }
-        validateDuplicateNumber();
     }
     private void validateOnlyNumber (String winNumber) {
         String REGEX = "^[0-9]*[1-9]+$";
         if (!Pattern.matches(REGEX, winNumber)) {
-            throw new IllegalArgumentException();
-        }
-    }
-    private void validateDuplicateNumber () {
-        if (winNumbersSet.size() != 6) {
             throw new IllegalArgumentException();
         }
     }
