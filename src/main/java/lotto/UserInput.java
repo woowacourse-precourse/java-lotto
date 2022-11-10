@@ -9,4 +9,10 @@ public class UserInput {
 
         return Integer.parseInt(Console.readLine());
     }
+
+    public static String inputWinNumber() {
+        System.out.println("당첨 번호를 입력해주세요:");
+
+        return Console.readLine();
+    }
 }
