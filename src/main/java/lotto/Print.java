@@ -6,6 +6,6 @@ public class Print {
     public static final String ASK_PRIZE = "당첨 번호를 입력해 주세요.";
     public static final String ASK_BONUS = "보너스 번호를 입력해 주세요.";
     public static final String ANALYSE_PRIZE = "당첨 통계";
-    public static final String RATE_BEFORE = "총 수익률은";
+    public static final String RATE_BEFORE = "총 수익률은 ";
     public static final String RATE_AFTER = "%입니다.";
 }
