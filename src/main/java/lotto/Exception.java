@@ -17,6 +17,13 @@ public class Exception {
         }
         return true;
     }
+    public void validUserInputStringNumber(String inputMoney){
+        char [] checkNumber = inputMoney.toCharArray();
+        for(int i = 1; i < inputMoney.length(); i += 2){
+            if(checkNumber[i] != ',')
+                throw new IllegalArgumentException("");
+        }
+    }
     public boolean validUserWinningNumber(List<Integer> winningNumber)throws IllegalArgumentException{
         if(winningNumber.size() != 6)
             throw new IllegalArgumentException("[ERROR] 번호 6개를 입력하세요.");
