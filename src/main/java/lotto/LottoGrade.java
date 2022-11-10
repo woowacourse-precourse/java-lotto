@@ -1,11 +1,6 @@
 package lotto;
 
-import java.text.DecimalFormat;
-import java.text.Format;
 import java.util.Arrays;
-import java.util.Formatter;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * 가능한 로또 등수 정보를 관리하는 Enum
@@ -21,17 +16,17 @@ public enum LottoGrade {
     private final int grade;
     private final int matchNumberCount;
     private final int prize;
-    private final boolean matchBonus;
+    private final boolean hasBonusNumber;
 
-    LottoGrade(int grade, int matchNumberCount, int prize, boolean matchBonus) {
+    LottoGrade(int grade, int matchNumberCount, int prize, boolean hasBonusNumber) {
         this.grade = grade;
         this.matchNumberCount = matchNumberCount;
         this.prize = prize;
-        this.matchBonus = matchBonus;
+        this.hasBonusNumber = hasBonusNumber;
     }
 
-    public static LottoGrade getMatchGrade(int matchNumberCount, boolean matchBonus) {
-        return Arrays.stream(LottoGrade.values()).filter((grade) -> grade.matchBonus == matchBonus)
+    public static LottoGrade getMatchGrade(int matchNumberCount, boolean hasBonusNumber) {
+        return Arrays.stream(LottoGrade.values()).filter((grade) -> grade.hasBonusNumber == hasBonusNumber)
                 .filter((grade) -> grade.matchNumberCount == matchNumberCount).findFirst().orElse(FAIL);
     }
 }
