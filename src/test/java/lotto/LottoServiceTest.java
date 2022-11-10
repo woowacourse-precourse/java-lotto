@@ -37,9 +37,17 @@ public class LottoServiceTest {
         assertThat(set.size()).isEqualTo(6);
     }
 
+    @Test
+    @DisplayName("구입금액 0 입력시 IllegalArgumentException테스트")
+    void 로또구입금액_0으로인해_예외발생_테스트() {
+        assertThatIllegalArgumentException()
+                .as("[ERROR] 실패하는 입력값이 존재합니다.")
+                .isThrownBy(() -> lottoService.validateMoneyZero(0));
+    }
+
     @ParameterizedTest
     @DisplayName("구입 금액이 1000원으로 나누어 떨어지지 않기 때문에 IllegalArgumentException테스트")
-    @ValueSource(ints = {1005, 20001, 500, 2, 200, 0})
+    @ValueSource(ints = {1005, 20001, 500, 2, 200})
     void 로또구입금액으로인해_예외발생_테스트(int input) {
         assertThatIllegalArgumentException()
                 .as("[ERROR] 실패하는 입력값이 존재합니다.")
