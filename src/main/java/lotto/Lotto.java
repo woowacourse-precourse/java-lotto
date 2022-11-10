@@ -13,6 +13,7 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         validateLengthOfNumbers(numbers);
         validateDuplicationOfNumbers(numbers);
+        validateRangeOfNumbers(numbers);
     }
 
     private void validateLengthOfNumbers(List<Integer> numbers) {
@@ -28,6 +29,14 @@ public class Lotto {
                 throw new IllegalArgumentException();
             }
             checkDuplication[number] = 1;
+        }
+    }
+
+    private void validateRangeOfNumbers(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 }
