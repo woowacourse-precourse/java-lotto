@@ -52,6 +52,7 @@ public class LottoController {
     public void validateWinningLotto(List<Integer> winningLotto){
         validateWinningLottoSize(winningLotto);
         validateWinningLottoNumberRange(winningLotto);
+        validateWinningLottoNumberDuplicated(winningLotto);
     }
     public void validateWinningLottoSize(List<Integer> winningLotto){
         if(winningLotto.size() != 7){
@@ -64,6 +65,12 @@ public class LottoController {
             if(number < 1 || number > 45){
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
+        }
+    }
+
+    public void validateWinningLottoNumberDuplicated(List<Integer> winningLotto){
+        if(winningLotto.size() != winningLotto.stream().distinct().count()){
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되서는 안됩니다");
         }
     }
 }
