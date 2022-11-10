@@ -13,9 +13,13 @@ import lotto.view.View;
 
 public class LottoController {
 
+    /**
+     * 사용자에게 money 를 입력받고 validation 후 돈을 기억해둔다.
+     * 사용자에게 LotteryWinningNumber 를 입력받고 validation 후 기억해둔다.
+     */
     public void lottoProcedure() {
         int userMoney = userMoney();
-        List<Integer> lotteryNumber = lotteryNumber();
+        List<Integer> lotteryWinningNumber = lotteryNumber();
 
     }
 
