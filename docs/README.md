@@ -8,6 +8,7 @@
      - validation
        - duplicatedNumberValidation : 같은 수가 있을 경우 검증 Method
        - lottoNumberSize : 사이즈가 6 이상일 경우 검증 Method
+       - lottoNumberRangeCheck : 로또 숫자 범위 검증 Method
    - Money : 사용자의 돈 Entity
    - User : 사용자 Entity
    - WinningNumbers : 당첨 Entity
