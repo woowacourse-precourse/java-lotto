@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.text.NumberFormat;
+
 public enum Rank {
     _1등(2000000000, 6, null, null),
     _2등(30000000, 5, 5, true),
@@ -24,6 +26,20 @@ public enum Rank {
         return winning;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        if (minMatchNum >= 0) {
+            sb.append(String.format("%d개 일치", minMatchNum));
+        }
+        if (isBonusRequired == true) {
+            sb.append(", 보너스 볼 일치");
+        }
+        String commaWinning = NumberFormat.getInstance().format(winning);
+        sb.append(String.format(" (%s원) - %%d개\n", commaWinning));
+        return sb.toString();
+    }
+
     public Integer getWinning(int correctNumberCount, boolean isBonusCorrect) {
         if (minMatchNum != null && correctNumberCount < minMatchNum) {
             return null;
@@ -36,5 +52,6 @@ public enum Rank {
         }
         return winning;
     }
+
 
 }
