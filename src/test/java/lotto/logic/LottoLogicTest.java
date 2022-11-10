@@ -1,14 +1,26 @@
 package lotto.logic;
 
 import lotto.domain.Lotto;
+import lotto.domain.Result;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
 
 class LottoLogicTest {
-
     LottoLogic lottoLogic = new LottoLogic();
+
+    List<List<Integer>> lottos = List.of(   // 일치하는 번호 개수 | 보너스 일치
+            List.of(8, 21, 23, 41, 42, 43), // 0                아니요
+            List.of(1, 3, 5, 14, 22, 45),   // 3                아니요
+            List.of(1, 3, 5, 2, 22, 45),    // 4                아니요
+            List.of(1, 3, 5, 14, 4, 6),     // 5                아니요
+            List.of(1, 3, 5, 7, 6, 2),      // 5                예
+            List.of(1, 3, 5, 4, 6, 2),      // 6                아니요
+            List.of(1, 33, 5, 4, 6, 7));    // 4                예
+
+    List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+    Integer bonusNumber = 7;
 
     @Test
     void 여섯개의_임의의_중복없는_숫자조합으로_된_로또_생성() {
@@ -16,5 +28,32 @@ class LottoLogicTest {
             Lotto lotto = lottoLogic.makeLotto();
             Assertions.assertThat(lotto.getNumbers().size()).isEqualTo(6);
         }
+    }
+
+    @Test
+    void 일치하는_번호_개수_세기() {
+        List<Result> results = List.of(
+                new Result(0, false),
+                new Result(3, false),
+                new Result(4, false),
+                new Result(5, false),
+                new Result(5, true),
+                new Result(6, false),
+                new Result(4, true)
+        );
+
+        for (int i = 0; i < results.size(); i++) {
+            assertResult(results, i);
+        }
+    }
+
+    private void assertResult(List<Result> results, int i) {
+        Result result = lottoLogic.compareNumbers(lottos.get(i), winningNumbers, bonusNumber);
+
+        Assertions.assertThat(result.getMatchCount())
+                .isEqualTo(results.get(i).getMatchCount());
+
+        Assertions.assertThat(result.isMatchBonus())
+                .isEqualTo(results.get(i).isMatchBonus());
     }
 }
