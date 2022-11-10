@@ -17,7 +17,16 @@ public class Application {
         }
         int amount = price / 1000;
         List<Lotto> lottos = new ArrayList<>();
-
+        while(lottos.size() < amount) {
+            List<Integer> nums = pickUniqueNumbersInRange(1, 45, 6);
+            Lotto lotto;
+            try {
+                lotto = new Lotto(nums);
+            } catch (IllegalArgumentException e) {
+                continue;
+            }
+            lottos.add(lotto);
+        }
         return lottos;
     }
 
