@@ -8,8 +8,18 @@ public class UserMoney {
     private String input;
     private int money;
 
-    public int getMoney() {
-        return money;
+    public int validateGetMoney() {
+        notNumber(input);
+        int user_money = convertStringToInt(input);
+        negativeNumber(user_money);
+        isDivideThousand(user_money);
+
+        return user_money;
+    }
+
+    public int convertStringToInt(String input){
+        int convert_num = Integer.parseInt(input);
+        return convert_num;
     }
 
     public void isDivideThousand(int money){
