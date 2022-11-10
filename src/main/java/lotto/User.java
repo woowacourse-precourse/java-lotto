@@ -18,6 +18,7 @@ public class User {
     private List<Lotto> lottos = new ArrayList<>();
 
     public void readMoney(){
+        System.out.println("구입금액을 입력해 주세요.");
         int inputMoney = Integer.parseInt(readLine());
         validDataInputNumber(inputMoney);
         userMoney = inputMoney;
@@ -30,9 +31,8 @@ public class User {
         }
     }
 
-    public void addLotto(List<Integer> lottoNumber, int bonusNumber){
+    public void addLotto(List<Integer> lottoNumber){
         Lotto lotto = new Lotto(lottoNumber);
-        lotto.setBonusNumber(bonusNumber);
         lottos.add(lotto);
     }
 
@@ -46,5 +46,9 @@ public class User {
         if(userMoney != 0){
             numOfLotto = userMoney/UNIT;
         }
+    }
+
+    public int getNumOfLotto() {
+        return numOfLotto;
     }
 }
