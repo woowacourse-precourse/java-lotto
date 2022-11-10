@@ -13,10 +13,10 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        validateExistDuplicateNumber(numbers);
+        validateOutOfLength(numbers);
     }
     
-    private void validateExistDuplicateNumber(final List<Integer> numbers) {
+    private void validateOutOfLength(final List<Integer> numbers) {
         if (isOutOfLength(numbers)) {
             throw new IllegalArgumentException();
         }
