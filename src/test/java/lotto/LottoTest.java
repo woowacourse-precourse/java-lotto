@@ -65,11 +65,22 @@ class LottoTest {
 
     @DisplayName("구매한 로또 번호에 보너스 번호가 포함되어 있는지 확인")
     @Test
-    void checkLottoRank() {
+    void checkLottoNumber() {
         List<Integer> lotto = List.of(1,2,3,4,5,7);
         String[] jackpotArr = new String[]{"1","2","3","4","5","6"};
         int bonusNum = 7;
         Service.checkLotto(lotto, jackpotArr, bonusNum);
         assertThat(Rank.getBonus()).isTrue();
+    }
+
+    @DisplayName("당첨번호와 맞는 숫자가 5개, 보너스번호를 맞췄을 때 2등 횟수 1카운트")
+    @Test
+    void checkRank() {
+        List<Integer> lotto = List.of(1,2,3,4,5,7);
+        String[] jackpotArr = new String[]{"1","2","3","4","5","6"};
+        int bonusNum = 7;
+        Service.checkLotto(lotto, jackpotArr, bonusNum);
+        Service.checkRank();
+        assertThat(Rank.getSecond()).isEqualTo(1);
     }
 }

@@ -72,4 +72,25 @@ public class Service {
             }
         }
     }
+    public static void checkRank() {
+        int count = Rank.getCount();
+        boolean bonus = Rank.getBonus();
+        if(count == 3) {
+            Rank.addFifth();
+        }
+        if(count == 4) {
+            Rank.addFourth();
+        }
+        if(count == 5) {
+            if(bonus) {
+                Rank.addSecond();
+            }
+            if(!bonus) {
+                Rank.addThird();
+            }
+        }
+        if(count == 6) {
+            Rank.addFirst();
+        }
+    }
 }
