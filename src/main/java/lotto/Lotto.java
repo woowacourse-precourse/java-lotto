@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.CheckInputException;
+
 import java.util.List;
 
 public class Lotto {
