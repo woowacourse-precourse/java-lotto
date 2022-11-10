@@ -11,7 +11,10 @@ public class LottoNumber {
     private int bonusNumber;
 
     public LottoNumber(String lottoNumbers, String bonusNumber) {
-
+        for (String num : lottoNumbers.split(",")) {
+            this.lottoNumbers.add(validLottoNumber(num));
+        }
+        this.bonusNumber = validLottoNumber(bonusNumber);
     }
 
     private int validLottoNumber(String num) {
