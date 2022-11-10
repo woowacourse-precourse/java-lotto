@@ -1,5 +1,6 @@
 package lotto.user.validation;
 
+import java.util.HashSet;
 import java.util.List;
 import lotto.domain.LottoEnum;
 import lotto.user.UserUtil;
@@ -16,6 +17,7 @@ public class UserValidation {
     public static void validateNumbers(String userInput) {
         validateInputFormat(userInput);
         validateNumberRange(userInput);
+        validateNoDuplicateNumbers(userInput);
     }
 
     private static void validateInputFormat(String uerInput) {
@@ -36,5 +38,20 @@ public class UserValidation {
         if ((Integer.parseInt(userAmount) % AMOUNT_UNITS) != REMAINDER_ZERO) {
             throw new IllegalArgumentException(ExceptionMessage.UNITS.toString());
         }
+    }
+
+    private static void validateNoDuplicateNumbers(String userInput) {
+        List<Integer> userNumbers = UserUtil.convertUserInputToNumbers(userInput);
+        HashSet<Integer> numberAppeared = new HashSet<>();
+        for (Integer number : userNumbers) {
+            checkDuplicateNumber(number, numberAppeared);
+        }
+    }
+
+    private static void checkDuplicateNumber(Integer number, HashSet<Integer> numberAppeared) {
+        if (numberAppeared.contains(number)) {
+            throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_NUMBER.toString());
+        }
+        numberAppeared.add(number);
     }
 }
