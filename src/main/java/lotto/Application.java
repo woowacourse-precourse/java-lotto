@@ -186,4 +186,9 @@ public class Application {
 
         return winningNumberList;
     }
+
+    public static String inputBonusNumber() {
+
+        return Console.readLine();
+    }
 }
