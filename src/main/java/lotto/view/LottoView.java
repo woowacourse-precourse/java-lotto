@@ -25,6 +25,14 @@ public class LottoView {
         System.out.println(START_MESSAGE);
     }
 
+    public void printWinningNumbersSettingMessage() {
+        System.out.println(WINNINGS_NUMBERS_SETTING_MESSAGE);
+    }
+
+    public void printBonusNumberSettingMessage() {
+        System.out.println(BONUS_NUMBER_SETTING_MESSAGE);
+    }
+
     public void printLottoBundleInfo(List<Lotto> lottoBundle) {
         System.out.println(lottoBundle.size() + LOTTO_NUMBER_MESSAGE);
         for (Lotto lotto : lottoBundle) {
@@ -47,13 +55,5 @@ public class LottoView {
     public void printYield(double yield) {
         String yieldFormat = String.format("%.1f", yield);
         System.out.println(PREFIX_YIELD_MESSAGE + yieldFormat + SUFFIX_YIELD_MESSAGE);
-    }
-
-    public void printWinningNumbersSettingMessage() {
-        System.out.println(WINNINGS_NUMBERS_SETTING_MESSAGE);
-    }
-
-    public void printBonusNumberSettingMessage() {
-        System.out.println(BONUS_NUMBER_SETTING_MESSAGE);
     }
 }
