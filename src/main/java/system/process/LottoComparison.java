@@ -30,7 +30,42 @@ public class LottoComparison {
         this.purchasedOneLottoNumbers = new ArrayList<>(purchasedOneLotto.getNumbers());
     }
 
-    
+    public int startComparison() {
+
+        purchasedOneLottoNumbers.forEach(number -> {
+            if (winningLottoNumbers.contains(number)) {
+                sameNumberCount++;
+            }
+        });
+
+        if (winningLottoNumbers.contains(bonusNumber)) {
+            bonusCount++;
+        }
+
+        return rank();
+
+    }
+
+    int rank() {
+
+        if (sameNumberCount == 6) {
+            return 1;
+        }
+        if (sameNumberCount == 5 && bonusCount == 1) {
+            return 2;
+        }
+        if (sameNumberCount == 5) {
+            return 3;
+        }
+        if (sameNumberCount == 4) {
+            return 4;
+        }
+        if (sameNumberCount == 3) {
+            return 5;
+        }
+
+        return -1;
+    }
 
 
 }
