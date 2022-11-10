@@ -52,17 +52,18 @@ validate
 ## 뷰
 ### PlayerView
 1. inquirePrice : '구입금액을 입력해 주세요.' 를 출력시킨다. 
-2. scanPrice : 가격을 입력받아 문자열로 리턴시킨다. 
-3. showTicketCount
-   1. calculateTicketCount : 가격 / 1000으로 티켓 개수를 리턴한다. 
-   2. showCount : '가격/1000개를 구매했습니다' 를 출력한다. 
-4. showPlayersTickets : StringBuilder에 정수형 리스트 티켓을 한개당 한줄씩 출력해준다.
+2. scanPrice : 가격을 입력받아 문자열로 리턴시킨다.
+
 ### LottoView
 1. inquireNumbers : '당첨 번호를 입력해 주세요.'를 출력한다. 
 2. scanNumbers : ','로 구분되는 숫자의 문자열을 반환한다. 
 3. inquireBonusNumber : '보너스 번호를 입력해 주세요.'를 출력한다. 
 4. scanBonusNumber : 보내스 숫자를 문자열로 반환한다.
+
 ### WinningView
+1. startWinningStatistics : '당첨 통계\n---'를 출력한다. 
+2. showPriceToPlayer : 'n개 일 (금액) - m개'를 금액이 낮은 것부터 순서대로 출력해준다.
+3. showProfit : 실수형 입력변수를 '총 수익률은 x%입니다.' 를 출력한다. 
 
 ## Controller
 ### LotteryController
