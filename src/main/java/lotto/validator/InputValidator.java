@@ -19,7 +19,7 @@ public class InputValidator {
     }
 
     public static boolean hasSixNumbers(List<Integer> numbers) {
-        return numbers.size() == 6;
+        return numbers.size() == MAX_LOTTO_NUMBER_COUNT;
     }
 
     public static boolean satisfyLottoNumberRange(List<Integer> numbers) {
