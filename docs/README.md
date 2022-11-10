@@ -17,7 +17,7 @@
   - [x] 잘못된 당첨 번호값 입력시 예외 발생 - Checker#checkUserInput()
 
 - [x] 보너스 번호 메세지를 출력한다. - View#BONUS_NUMBER_GUIDE_MESSAGE
-- [] 보너스 번호를 입력 받는다. - Input#userInput()
+- [x] 보너스 번호를 입력 받는다. - Input#userInput()
   - [] 잘못된 값 입력시 예외 발생 - Checker#checkUserInput()
 
 - [] 사용자의 로또 번호와 당첨 번호를 비교한다. - Checker#compareNumbers()
