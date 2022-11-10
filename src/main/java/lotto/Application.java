@@ -7,7 +7,7 @@ package lotto;
  * [O] 당첨 로또 번호 입력
  * [O] 당첨 확인 로직
  * [O] 당첨 통계 계산
- * [X] 총 수익률 계산
+ * [O] 총 수익률 계산
  * [O/O] 입력 예외 처리(로또 구매 갯수 / 당첨 로또번호 입력)
  * [X] 단위 테스트 생성
  * [X] 테스트 확인
@@ -39,7 +39,7 @@ public class Application {
 
             Map<WINNING, Integer> result = initResultMap();
             checkUserLottoWinning(result, userLotto, winningLotto, bonusNumber);
-            printUserAllWinningInfo(result);
+            printUserAllWinningInfo(result, purchaseLottoPrice);
         } catch(IllegalArgumentException e){
             System.out.println(ERROR_MESSAGE + " " + e.getMessage());
         }
@@ -66,12 +66,19 @@ public class Application {
         }
     }
 
-    private static void printUserAllWinningInfo(Map<WINNING, Integer> result) {
+    private static void printUserAllWinningInfo(Map<WINNING, Integer> result, int purchaseLottoPrice) {
+        double totalSumOfWinning = 0;
+
         for (WINNING WINNING : result.keySet()) {
             int winningCount = result.get(WINNING);
 
+            int curWinning = Integer.parseInt(WINNING.getValue().replace(",", "")) * winningCount;
+            totalSumOfWinning += curWinning;
+
             WINNING.printWinningInfo(WINNING, winningCount);
         }
+
+        System.out.println("총 수익률은 " + totalSumOfWinning / purchaseLottoPrice * 100 + "%입니다.");
     }
 
     private static int getTotalPurchaseLottoPrice() {
