@@ -1,5 +1,6 @@
-package lotto;
+package lotto.data.dto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -7,7 +8,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = Collections.unmodifiableList(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -16,5 +17,7 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
 }
