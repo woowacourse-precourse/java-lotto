@@ -1,0 +1,25 @@
+{
+  "name": "java-lotto",
+  "version": "1.0.0",
+  "description": "## 🔍 진행 방식",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shoeone96/java-lotto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shoeone96/java-lotto/issues"
+  },
+  "homepage": "https://github.com/shoeone96/java-lotto#readme",
+  "dependencies": {},
+  "devDependencies": {}
+}
