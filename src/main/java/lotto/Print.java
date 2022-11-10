@@ -6,6 +6,11 @@ public class Print {
     }
 
     public static void purchaseLotto(int lottoTickets) {
+        newLine();
         System.out.println(lottoTickets + "개를 구매했습니다.");
+    }
+
+    private static void newLine() {
+        System.out.println();
     }
 }
