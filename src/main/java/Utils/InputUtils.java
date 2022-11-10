@@ -25,6 +25,4 @@ public class InputUtils {
         // 숫자가 1~45 사이의 범위에 존재하는지 확인
         return false;
     }
-    }
-
 }
