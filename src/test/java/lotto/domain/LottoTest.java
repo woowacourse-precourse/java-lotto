@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,6 +12,12 @@ import static org.assertj.core.api.Assertions.*;
 
 class LottoTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
+    private Lotto lotto;
+    
+    @BeforeEach
+    void setUp() {
+        lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+    }
     
     @Test
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -47,7 +54,12 @@ class LottoTest {
     @Test
     @DisplayName("매칭되는 로또 번호 개수 구하기")
     void countOfSameNumber() {
-        final Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         assertThat(lotto.countOfMatchingNumber(new Lotto(List.of(1, 2, 3, 4, 5, 7)))).isEqualTo(5);
+    }
+    
+    @Test
+    @DisplayName("번호가 포함되어 있는지 확인")
+    void isContainsNumber() {
+        assertThat(lotto.isNumberContains(3)).isTrue();
     }
 }
