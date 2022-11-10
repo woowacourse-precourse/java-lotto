@@ -29,7 +29,7 @@ public class LottoResult {
         }
     }
 
-    public int inputBonusNumber(List<Integer> numbers){
+    public int inputBonusNumber(List<Integer> numbers) {
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonus = readLine();
         int bonusNumber = Integer.valueOf(bonus);
@@ -39,8 +39,8 @@ public class LottoResult {
 
     public void bonusNumberCheck(List<Integer> numbers, int bonusNumber) {
         if (bonusNumber < 1 || bonusNumber > 45 || numbers.contains(bonusNumber)) {
-                throw new IllegalArgumentException("[ERROR] 보너스 번호를 확인 하세요.");
-            }
+            throw new IllegalArgumentException("[ERROR] 보너스 번호를 확인 하세요.");
         }
     }
 }
+
