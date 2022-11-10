@@ -1,11 +1,7 @@
 package lotto;
 
-import java.util.Arrays;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
-import lotto.data.Lotto;
 import lotto.data.Rank;
 import lotto.player.House;
 import lotto.player.User;
