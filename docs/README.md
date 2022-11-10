@@ -8,14 +8,21 @@
 1. 생성자 : 정수형 입력변수를 저장한다. 컴퓨터 엔티티에서 로또번호에 포함되어있을 경우 예외처리
 2. getBonusNumber : 저장한 정수형 변수를 리턴한다. 
 
-### Winning
-1. 생성자 : 개수와 등수 리스트를 입력받아 저장한다. 
-2. getRankings : '3개 일치'부터 '6개 일치까지'를 리스트로 리턴한다. 
-3. sumPrice : 리스트의 등수에 따라 금액을 합해 리턴한다. 
-
 ### Profit
 1. checkPayment : 플레이어가 구매한 로또의 금액을 전역변수에 저장한다. 
 2. getProfit : 입력변수로 당첨금액의 총합을 구해 로또 구매금액으로 백분율을 리턴한다. 
+
+### Winning
+정수형 전역변수 price와 전역변수 List<Ranking>를 가진다. 
+1. addRankingOfPlayer
+   1. addEachRanking : 입력변수 Ranking을 List<Ranking>에 add한다. 
+   2. sumPrice : price에 Ranking에 따른 값을 합해 저장한다. 
+2. getPrice : price를 리턴한다. 
+3. figureSameRanking : List<Ranking>을 HashMap으로 바꾸어 리턴한다. 
+
+## enum
+### Ranking
+THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_MATCH_WITH_BONUM, SIX_MATCH를 가진다.
 
 ## 엔티티
 ### Player
@@ -25,7 +32,8 @@ List<Lotto>, Profit, Winning을 참조한다.
    2. countTickets : 금액을 1,000으로 나눈 값을 리턴한다. 
    3. makeTickets : 입력변수로 받은 티켓의 개수만큼 로또를 만들어 List<Lotto>에 저장한다. 
 2. showWinningStatistic : Winning.getRankings를 리턴한다. 
-3. getPlayersProfit : Winning.sumPrice의 값을 Profit.getProfit을 해 소수점 첫째 자리까지 리턴한다. 
+3. getPlayersProfit : Winning.getPrice의 값을 Profit.getProfit을 해 소수점 첫째 자리까지 리턴한다. 
+4. addLottoRanking :  Ranking타입의 입력변수를 Winning에 addRankingOfPlayer해준다. 
 
 ### Computer
 Lotto, BonusNumber를 참조한다. 
@@ -43,11 +51,8 @@ validate
 4. sameNumbersException : 같은 숫자를 가짐에 예외처리
 
 ## 서비스
-### LottoService
+### MatchLotteryService
 
-### PlayerService
-
-### WinningService
 
 ## 뷰
 ### PlayerView
@@ -60,7 +65,7 @@ validate
 3. inquireBonusNumber : '보너스 번호를 입력해 주세요.'를 출력한다. 
 4. scanBonusNumber : 보내스 숫자를 문자열로 반환한다.
 
-### WinningView
+### RankingView
 1. startWinningStatistics : '당첨 통계\n---'를 출력한다. 
 2. showPriceToPlayer : 'n개 일 (금액) - m개'를 금액이 낮은 것부터 순서대로 출력해준다.
 3. showProfit : 실수형 입력변수를 '총 수익률은 x%입니다.' 를 출력한다. 
