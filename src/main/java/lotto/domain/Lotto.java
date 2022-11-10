@@ -4,22 +4,25 @@ import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
-    private final List<Integer> numbers;
+	private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        this.numbers = numbers;
-    }
+	public Lotto(List<Integer> numbers) {
+		validate(numbers);
+		this.numbers = numbers;
+	}
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
-    }
+	private void validate(List<Integer> numbers) {
+		if (numbers.size() != 6) {
+			throw new IllegalArgumentException();
+		}
+	}
 
-    public List<Integer> getNumbers() {
-        return Collections.unmodifiableList(numbers);
-    }
+	public List<Integer> getNumbers() {
+		return Collections.unmodifiableList(this.numbers);
+	}
 
-    // TODO: 추가 기능 구현
+	public void lottoPrint() {
+		System.out.println(getNumbers());
+	}
+
 }
