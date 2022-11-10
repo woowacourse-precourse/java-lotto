@@ -6,7 +6,7 @@ public class MessageConstant {
     public static final String INPUT_LOTTO_NUMBERS = "당첨 번호를 입력해 주세요.";
     public static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 
-    public static final String OUTPUT_PURCHASE = "%d개를 구매했습니다.";
+    public static final String OUTPUT_PURCHASE = System.lineSeparator() + "%d개를 구매했습니다." + System.lineSeparator();
     public static final String OUTPUT_EARNING = "총 수익률은 %.1f입니다.";
 
     public static final String STATISTICS_MESSAGE = "당첨 통계" + System.lineSeparator() + "---";
