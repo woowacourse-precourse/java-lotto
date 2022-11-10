@@ -3,25 +3,29 @@ package lotto.config;
 import java.util.Set;
 
 public class InputConfig {
-    private static final String ERROR_MESSAGE = "[ERROR]";
+    public static final String ERROR_MESSAGE = "[ERROR]";
     public static final int START_INCLUSIVE = 1;
     public static final int END_INCLUSIVE = 45;
     public static final int LOTTO_NUMBER_COUNT = 6;
     public static final long LOTTO_PRICE = 1000;
 
 
-    //
-//    private void checkCorrectInput() {
-//
-//    }
-//
-    void isBonusNumberInLotto(Set<Integer> lotto, int bonus) {
-        if (lotto.contains(bonus)) {
-            throw new IllegalArgumentException();
+    public static void checkPrizeLotto(Set<Integer> lotto, int bonus) {
+        hasCorrectSize(lotto);
+        isBonusNumberInLotto(lotto, bonus);
+        for (int i : lotto) {
+            isInRange(i);
         }
     }
 
-    private void hasCorrectSize(Set<Integer> set) {
+    public static void isBonusNumberInLotto(Set<Integer> lotto, int bonus) {
+        isInRange(bonus);
+        if (lotto.contains(bonus)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
+    }
+
+    private static void hasCorrectSize(Set<Integer> set) {
         if (set.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
