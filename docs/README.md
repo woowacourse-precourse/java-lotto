@@ -85,7 +85,7 @@
 
 ### 🚀 입력
 
-- void inputUserCash(int)
+- Integer inputUserCash()
   - 사용자로부터 구입금액을 입력받아 저장하는 함수
 
 
