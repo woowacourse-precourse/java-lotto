@@ -22,11 +22,12 @@ public class Lotto {
     private static String validateMessage = "[ERROR] 6자리를 초과하였습니다.";
     private static String numberRepeatErrorMessage = "[ERROR] 반복되는 번호가 있습니다.";
     private static String numberRangeErrorMessage = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
-    private static String patten = "^[1-45]";
+    private static String pattern = "^[1-45]";
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         duplicatedValidate(numbers);
+        rangeValidate(numbers);
         this.numbers = numbers;
     }
 
@@ -42,14 +43,14 @@ public class Lotto {
         Set<Integer> set = new HashSet<>(numbers);
         List<Integer> newNumbers = new ArrayList<Integer>(set);
         if(newNumbers.size() < 6){
-//            System.out.println(numberRepeatErrorMessage);
+            System.out.println(numberRepeatErrorMessage);
             throw new IllegalArgumentException();
         }
     }
     private void rangeValidate(List<Integer> numbers){
         for(int item : numbers){
-            if(Pattern.matches(patten, Integer.toString(item))){
-//                System.out.println(numberRangeErrorMessage);
+            if(Pattern.matches(pattern, Integer.toString(item))){
+                System.out.println(numberRangeErrorMessage);
                 throw new IllegalArgumentException();
             }
         }
