@@ -25,10 +25,9 @@ public class LottoGameConsole {
     }
 
     private List<Lotto> publishLottos(int payment) {
-        // 발행 개수 계산
-        // 발행
-        // 발행 lotto 출력
-        return null;
+        List<Lotto> lottos = publisher.publishLottos(payment);
+        emcee.showPublishedLottos(lottos);
+        return lottos;
     }
 
     private void createWinningLotto() {
