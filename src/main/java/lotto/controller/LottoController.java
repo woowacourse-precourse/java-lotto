@@ -10,7 +10,7 @@ import lotto.view.OutputView;
 
 public class LottoController {
     private static final int PRICE_PER_LOTTO = 1000;
-    private List<Lotto> lottos;
+    private List<Lotto> lottos = new ArrayList<Lotto>();
     private LottoAnswer lottoAnswer;
     private LottoResult lottoResult;
     private LottoResultController lottoResultController;
@@ -23,6 +23,8 @@ public class LottoController {
         int price = inputController.getPrice();
         int lottoCount = price / PRICE_PER_LOTTO;
         generateLottos(lottoCount);
+        OutputView.printLottos(lottoCount, lottos);
+
         LottoAnswer lottoAnswer = inputController.getLottoAnswer();
         lottoResultController = new LottoResultController(lottoAnswer, lottos, price);
         lottoResultController.run();

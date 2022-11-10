@@ -1,11 +1,12 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GradingMachine {
     private LottoAnswer lottoAnswer;
     private List<Lotto> lottos;
-    private List<LottoGrade> lottoGrades;
+    private List<LottoGrade> lottoGrades = new ArrayList<>();
 
     public GradingMachine(LottoAnswer lottoAnswer, List<Lotto> lottos) {
         this.lottoAnswer = lottoAnswer;

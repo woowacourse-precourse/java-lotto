@@ -15,7 +15,10 @@ public class OutputView {
         sb = new StringBuilder();
         sb.append("당첨 통계\n---\n");
         for (Rank value : Rank.values()) {
-            sb.insert(0, String.format(value.getOutputMessage(), lottoResult.getRankCounts(value.ordinal() + 1)));
+            String rankOutputFormat = value.getOutputMessage();
+            if (rankOutputFormat != null) {
+                sb.insert(0, String.format(rankOutputFormat, lottoResult.getRankCounts(value.ordinal() + 1)));
+            }
         }
         df = new DecimalFormat(YIELD_PATTERN);
         sb.append(String.format("총 수익률은 %s%%입니다.", df.format(yield)));
