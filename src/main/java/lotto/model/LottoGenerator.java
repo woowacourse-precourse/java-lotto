@@ -15,9 +15,11 @@ public class LottoGenerator {
 //        return winningNumbers;
 //    }
 
-    public static List<Integer> generateBonusNumber() {
-        return Randoms.pickUniqueNumbersInRange(
+    public static int generateBonusNumber() {
+        List<Integer> randomNumber = Randoms.pickUniqueNumbersInRange(
                 Constant.LOTTO_START_NUMBER, Constant.LOTTO_END_NUMBER, Constant.BONUS_NUMBER_SIZE);
+
+        return randomNumber.get(0); // TODO: get(0) 안했을 때 왜 size 6이 리턴되는지?
     }
 
     public static List<Integer> generateLottoNumbers() {
