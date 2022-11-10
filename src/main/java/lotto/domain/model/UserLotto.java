@@ -21,7 +21,7 @@ public class UserLotto {
                 .mapToObj(count -> new Lotto(LottoGenerator.makeLotto())).collect(Collectors.toList());
     }
 
-    public static void validate(String pay) {
+    private static void validate(String pay) {
         checkConsistNumber(pay);
         checkReminder(pay);
     }

@@ -22,7 +22,7 @@ public class FirstPlace {
                 .collect(Collectors.toList());
     }
 
-    public static void validate(String firstPlace) {
+    private static void validate(String firstPlace) {
         checkConsistOfOnlyCommas(firstPlace);
         List<Integer> firstPlaceNumbers = Arrays.stream(firstPlace.split(DIVIDE_POINT)).map(Integer::parseInt)
                 .collect(Collectors.toList());

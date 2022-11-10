@@ -13,7 +13,7 @@ public class Bonus {
         this.bonus = Integer.parseInt(bonus);
     }
 
-    public static void validate(String bonus) {
+    private static void validate(String bonus) {
         checkBonusSizeAndConsistNumber(bonus);
     }
 }
