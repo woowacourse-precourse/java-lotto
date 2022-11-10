@@ -3,7 +3,9 @@ package lotto;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -80,7 +82,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 중복된_당첨로또_입력_테스트(){
+    void 중복된_당첨로또_입력_오류_테스트(){
         assertSimpleTest(() -> {
             runException("3000","1,2,3,4,5,5");
             assertThat(output()).contains(ERROR_MESSAGE);
@@ -88,7 +90,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 길이_다른_당첨로또_입력_테스트() {
+    void 길이_다른_당첨로또_입력_오류_테스트() {
         assertSimpleTest(() -> {
             runException("3000","1,2,3,4,5,6,7");
             assertThat(output()).contains(ERROR_MESSAGE);
@@ -99,7 +101,6 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
-
 
     @Override
     public void runMain() {

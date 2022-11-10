@@ -45,7 +45,7 @@ public class Application {
         }
     }
 
-    private static Map<WINNING, Integer> initResultMap(){
+    public static Map<WINNING, Integer> initResultMap(){
         Map<WINNING, Integer> result = new TreeMap<>(Comparator.comparingInt(WINNING::getSortOrder));
 
         for(WINNING WINNING : WINNING.values())
@@ -54,7 +54,7 @@ public class Application {
         return result;
     }
 
-    private static void checkUserLottoWinning(Map<WINNING, Integer> result, List<Lotto> userLotto, Lotto winningLotto, int bonusNumber) {
+    public static void checkUserLottoWinning(Map<WINNING, Integer> result, List<Lotto> userLotto, Lotto winningLotto, int bonusNumber) {
         for (Lotto lotto : userLotto) {
             WINNING curWinning = Lotto.checkUserLottoWinning(winningLotto, lotto, bonusNumber);
 
@@ -86,7 +86,7 @@ public class Application {
         return Integer.parseInt(Console.readLine());
     }
 
-    private static void purchaseLotto(List<Lotto> userLotto, int purchaseLottoAmount) {
+    public static void purchaseLotto(List<Lotto> userLotto, int purchaseLottoAmount) {
         for(int i = 0; i < purchaseLottoAmount; i++)
             userLotto.add(createRandomLottoList());
     }
