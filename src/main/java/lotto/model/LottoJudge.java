@@ -1,6 +1,7 @@
 package lotto.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,26 @@ public class LottoJudge {
         1, LottoRank.SECOND,
         6, LottoRank.FIRST
     );
+
+    private static Map<LottoRank, Double> profit = Map.of(
+        LottoRank.FIFTH, 5000.0,
+        LottoRank.FOURTH, 50000.0,
+        LottoRank.THIRD, 1500000.0,
+        LottoRank.SECOND, 30000000.0,
+        LottoRank.FIRST, 2000000000.0
+    );
+
+    public String profitLotto(List<LottoRank> rankCount, int money) {
+        double totalProfit = 0.0;
+        String profitPercent;
+
+        for (LottoRank lottoRank : LottoRank.values()) {
+            totalProfit += Collections.frequency(rankCount, lottoRank) * profit.get(lottoRank);
+        }
+
+        profitPercent = String.format("%.1f", (money / totalProfit) * 100);
+        return profitPercent;
+    }
 
     public Map<LottoRank, Integer> judgeLotto(ArrayList<List<Integer>> lotteries,
         List<Integer> winningNumbers,
