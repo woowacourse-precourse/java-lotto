@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class BuyLottoTest {
-    @ParameterizedTest
+    @ParameterizedTest(name = "구입금액=={0}일 때")
     @ValueSource(strings = {"english", "한글", "--", "12ㅋz!"})
     @NullAndEmptySource
     @DisplayName("구입 금액이 숫자가 아니면 예외가 발생한다.")
