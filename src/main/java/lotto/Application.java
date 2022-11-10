@@ -7,10 +7,10 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
-    final static int lottoPrice = 1000;
-    final static String lottoPriceString = addComma(lottoPrice);
-    final static String errorMsg1 = "[ERROR] 숫자를 입력해 주세요.";
-    final static String errorMsg2 =
+    private static final int lottoPrice = 1000;
+    private static final String lottoPriceString = addComma(lottoPrice);
+    private static final String errorMsg1 = "[ERROR] 숫자를 입력해 주세요.";
+    private static final String errorMsg2 =
             "[ERROR] 구입 금액은 " + lottoPriceString + "원으로 나누어 떨어지는 자연수여야 합니다.";
 
     public static void main(String[] args) {
