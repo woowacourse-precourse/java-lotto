@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.exception.LottoException;
 import lotto.model.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,5 +33,18 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("구입 금액이 숫자가 아니면 예외가 발생한다.")
+    @Test
+    void createMoneyByNotNumber(){
+        assertThatThrownBy(() -> new LottoException().checkMoneyInput("1456dwas"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("구입 금액이 숫자가 천원 단위가 아니면 예외가 발생한다.")
+    @Test
+    void createMoneyByNotThousand(){
+        assertThatThrownBy(() -> new LottoException().checkMoneyInput("14500"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 }

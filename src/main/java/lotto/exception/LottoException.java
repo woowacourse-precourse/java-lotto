@@ -8,24 +8,24 @@ import static lotto.constValue.Constants.ExceptionMessage.*;
 public class LottoException {
 
 
-    public void checkBuyInput(String buyInput){
-        checkBuyInputNumber(buyInput);
-        checkBuyInputThousand(buyInput);
+    public void checkMoneyInput(String moneyInput){
+        checkMoneyInputNumber(moneyInput);
+        checkMoneyInputThousand(moneyInput);
     }
 
-    public void checkBuyInputNumber(String buyInput){
-        if(isBuyInputNumberCheck(buyInput)){
+    private static void checkMoneyInputNumber(String moneyInput){
+        if(isMoneyInputNumberCheck(moneyInput)){
             return;
         }
         throw new IllegalArgumentException(Buy_Input_Number_ERROR_MESSAGE);
     }
 
-    public boolean isBuyInputNumberCheck(String buyInput){
+    private static boolean isMoneyInputNumberCheck(String moneyInput){
         boolean found=false;
 
         String regex="^[0-9]*$";
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(buyInput);
+        Matcher matcher = pattern.matcher(moneyInput);
 
         if(matcher.matches()){
             found=true;
@@ -33,15 +33,15 @@ public class LottoException {
         return found;
     }
 
-    public void checkBuyInputThousand(String buyInput){
-        if(isBuyInputThousand(buyInput)){
+    private static void checkMoneyInputThousand(String moneyInput){
+        if(isMoneyInputThousand(moneyInput)){
             return;
         }
         throw new IllegalArgumentException(Buy_Input_THOUSAND_ERROR_MESSAGE);
     }
 
-    public boolean isBuyInputThousand(String buyInput){
-        String thousand = buyInput.substring(buyInput.length()-3,buyInput.length());
+    private static boolean isMoneyInputThousand(String moneyInput){
+        String thousand = moneyInput.substring(moneyInput.length()-3,moneyInput.length());
         if(thousand.equals("000")){
             return true;
         }

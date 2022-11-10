@@ -4,11 +4,11 @@ public class LottoCount {
 
 //    private int lottoAmount;
 
-//    public LottoCount(String buyInput){
-//        this.lottoAmount = countLotto(buyInput);
+//    public LottoCount(String moneyInput){
+//        this.lottoAmount = countLotto(moneyInput);
 //    }
-    public int countLotto(String buyInput){
-        String buyInputExceptThousand=buyInput.substring(0,buyInput.length()-3);
-        return Integer.parseInt(buyInputExceptThousand);
+    public int countLotto(String moneyInput){
+        String moneyInputExceptThousand=moneyInput.substring(0,moneyInput.length()-3);
+        return Integer.parseInt(moneyInputExceptThousand);
     }
 }
