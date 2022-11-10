@@ -1,6 +1,8 @@
 package lotto.domain;
 
-import java.util.Collections;
+import lotto.utils.UserInputValidator;
+
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,13 +19,13 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        Collections.sort(numbers);
+//        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        if (new HashSet<>(numbers).size() != LOTTO_SIZE) {
+            throw new IllegalArgumentException(UserInputValidator.ERROR_MESSAGE_DUPLICATE_NUMBER);
         }
     }
 
