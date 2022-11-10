@@ -1,51 +1,86 @@
 package lotto.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import lotto.check.WinningNumberCheck;
+
+import java.util.*;
 
 public class Result {
 
-    private List<Lotto> userLottos;
-    private Lotto winningNumbers;
-    private Integer bonus;
     private List<Integer> counts;
-    private List<Integer> bonuses;
 
-    private Integer profit;
+    private Map<Money, Integer> counting;
 
-    public Result(List<Lotto> userLottos, Lotto winningNumbers, Integer bonus) {
-        this.userLottos = userLottos;
-        this.winningNumbers = winningNumbers;
-        this.bonus = bonus;
-    }
+    private float profit;
+
 
     public List<Integer> getCounts() {
         return counts;
     }
 
-    public List<Integer> getBonuses() {
-        return bonuses;
-    }
 
-    public void calc() {
-        getCount();
-
-    }
-
-    private void getCount() {
-        List<Integer> numbers = winningNumbers.getNumbers();
+    public Result() {
         init();
+    }
+
+    public float getProfit() {
+        return profit;
+    }
+
+    public void calc(User user) {
+        organize();
+        Integer money = getMoney();
+        profit =  ((float)money / (float)user.getMoney()) * 100;
+    }
+
+    private Integer getMoney() {
+        Integer totalMoney = 0;
+        for (Map.Entry<Money, Integer> moneyEntry : counting.entrySet()) {
+            totalMoney += moneyEntry.getKey().getDescription() * moneyEntry.getValue();
+        }
+        return totalMoney;
+    }
+
+    private void organize() {
+        for (Integer count : counts) {
+            if (count < 3) continue;
+            Money enumString = toEnumString(count);
+            Integer c = counting.get(enumString);
+            counting.put(enumString, c + 1);
+        }
+    }
+
+    private Money toEnumString(Integer count){
+        if (count == 3) return Money.FIFTH;
+        if (count == 4) return Money.FOURTH;
+        if (count == 5) return Money.THIRD;
+        if (count == 6) return Money.FIRST;
+        if (count == 7) return Money.SECOND;
+        return null;
+    }
+
+    public void getCount(List<Lotto> userLottos, Lotto winningNumbers, Integer bonus) {
+        List<Integer> numbers = winningNumbers.getNumbers();
         for (Lotto userLotto : userLottos) {
             List<Integer> userNumbers = userLotto.getNumbers();
             Integer countRes = hasNumber(userNumbers, numbers);
+            countRes = getBonusRes(bonus, userNumbers,countRes);
             counts.add(countRes);
-            hasBonus(userNumbers);
         }
+    }
+
+    private Integer getBonusRes(Integer bonus, List<Integer> userNumbers,Integer countRes) {
+        if (countRes == 5 && hasBonus(userNumbers, bonus)) {
+            countRes = 7;
+        }
+        return countRes;
     }
 
     private void init() {
         counts = new ArrayList<>();
-        bonuses = new ArrayList<>();
+        counting = new EnumMap<>(Money.class);
+        for (Money value : Money.values()) {
+            counting.put(value,0);
+        }
     }
 
     private Integer hasNumber(List<Integer> userNumbers, List<Integer> numbers) {
@@ -56,11 +91,10 @@ public class Result {
         return count;
     }
 
-    private void hasBonus(List<Integer> userNumbers) {
+    private boolean hasBonus(List<Integer> userNumbers, Integer bonus) {
         if (userNumbers.contains(bonus)) {
-            bonuses.add(1);
-            return;
+            return true;
         }
-        bonuses.add(0);
+        return false;
     }
 }
