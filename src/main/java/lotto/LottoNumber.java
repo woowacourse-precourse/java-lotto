@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoNumber {
+    static final int INITIAL_NUMBER = 0;
+    static final int LOTTO_SIZE = 6;
     static final int LOTTO_NUMBER_MIN = 1;
     static final int LOTTO_NUMBER_MAX = 45;
 
@@ -30,5 +32,19 @@ public class LottoNumber {
             throw new IllegalArgumentException("[ERROR] 1에서 45사이의 숫자를 입력해주세요.");
         }
         return num;
+    }
+
+    public static MatchCount getMatchResult(Lotto lotto) {
+        int match = 0;
+        int bonusMatch = 0;
+        for (int idx=INITIAL_NUMBER; idx<LOTTO_SIZE; idx++) {
+            if (lotto.getNumbers().contains(lottoNumbers.get(idx))) {
+                match++;
+            }
+        }
+        if (lotto.getNumbers().contains(bonusNumber)) {
+            bonusMatch++;
+        }
+        return new MatchCount(match, bonusMatch);
     }
 }
