@@ -45,4 +45,7 @@ public class Application {
         return purchaseAmount / 1000;
     }
 
+
+
+
 }
