@@ -1,6 +1,8 @@
 package lotto;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class LottoNumberValidator {
     private static final int NUMBER_EA = 6;
@@ -30,10 +32,14 @@ public class LottoNumberValidator {
     }
 
     public static boolean isOutOfRange(List<Integer> numbers) {
-        IntStream range = IntStream.rangeClosed(MIN_RANGE, MAX_RANGE);
-        if (numbers.contains(range)) {
-            return true;
+        List<Integer> range = IntStream.rangeClosed(MIN_RANGE, MAX_RANGE)
+                .boxed()
+                .collect(Collectors.toList());
+
+        if (range.containsAll(numbers)) {
+            return false;
         }
-        return false;
+
+        return true;
     }
 }
