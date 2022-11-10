@@ -16,22 +16,24 @@ public enum Rank {
     Rank(int numberCount, int prize) {
         this.numberCount = numberCount;
         this.prize = prize;
+
+
     }
 
-    public static Rank getRank(final int numberCount) {
+    public static Rank getPrize(final int numberCount) {
         if (numberCount < 3) {
             return fail;
         }
-        return Arrays.stream(values()).filter(prize -> prize.numberCount == numberCount).findAny().orElseThrow(IllegalArgumentException::new);
+
+        return Arrays.stream(values()).filter(rank -> rank.numberCount == numberCount).findAny().orElseThrow(IllegalArgumentException::new);
     }
 
     public int getNumberCount() {
         return numberCount;
     }
 
-    public int getRank() {
+    public int getPrize() {
         return prize;
     }
-
 
 }
