@@ -168,7 +168,7 @@ public class Application {
     }
 
     public static void analyseLotto(List<Lotto> lottos, List<Integer> prize) {
-        HashMap<Prize, Integer> stats = setStats();
+        TreeMap<Prize, Integer> stats = setStats();
 
         for (Lotto lotto : lottos) {
             countSameNum(lotto, prize, stats);
@@ -176,13 +176,18 @@ public class Application {
 
         System.out.println("로또 분석");
         stats.remove(Prize.ZERO);
-        for (Prize p : stats.keySet()) {
+        for (Prize p : stats.descendingKeySet()) {
             System.out.println(p.getPrizePrint() + " - " + stats.get(p) + "개");
         }
     }
 
-    private static HashMap<Prize, Integer> setStats() {
-        HashMap<Prize, Integer> stats = new HashMap<>();
+    private static void printLottoStat(HashMap<Prize, Integer> stats) {
+        System.out.println(Print.ANALYSE_PRIZE);
+
+    }
+
+    private static TreeMap<Prize, Integer> setStats() {
+        TreeMap<Prize, Integer> stats = new TreeMap<>();
 
         stats.put(Prize.FIRST, 0);
         stats.put(Prize.SECOND, 0);
@@ -194,7 +199,7 @@ public class Application {
         return stats;
     }
 
-    private static void countSameNum(Lotto lotto, List<Integer> prize, HashMap<Prize, Integer> stats) {
+    private static void countSameNum(Lotto lotto, List<Integer> prize, TreeMap<Prize, Integer> stats) {
         int count = 0;
         List<Integer> lottoNum = lotto.getNumbers();
 
