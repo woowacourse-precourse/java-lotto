@@ -18,11 +18,11 @@ public class Lotto {
     
     public int countOfSameNumber(final Lotto lotto) {
         return (int) numbers.stream()
-                .filter(lotto::containsNumber)
+                .filter(lotto::isContainsNumber)
                 .count();
     }
     
-    public boolean containsNumber(final int bonusNumber) {
+    public boolean isContainsNumber(final int bonusNumber) {
         return numbers.contains(bonusNumber);
     }
 }

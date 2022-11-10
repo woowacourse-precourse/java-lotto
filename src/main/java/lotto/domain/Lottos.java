@@ -22,6 +22,6 @@ public class Lottos {
         final Lotto winningLotto = winningLottoNumbersDTO.getWinningLotto();
         final int bonusNumber = winningLottoNumbersDTO.getBonusNumber();
         
-        return LottoRank.parseRank(lotto.countOfSameNumber(winningLotto), lotto.containsNumber(bonusNumber));
+        return LottoRank.parseRank(lotto.countOfSameNumber(winningLotto), lotto.isContainsNumber(bonusNumber));
     }
 }
