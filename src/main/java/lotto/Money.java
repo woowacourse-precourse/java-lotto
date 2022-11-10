@@ -28,4 +28,8 @@ public class Money {
 	private static boolean isUnitOfThousand (String input) {
 		return Integer.parseInt(input) % 1000 == 0;
 	}
+
+	public static int calculateMaximumLottoCount(String input) {
+		return Integer.parseInt(input) / 1000;
+	}
 }
