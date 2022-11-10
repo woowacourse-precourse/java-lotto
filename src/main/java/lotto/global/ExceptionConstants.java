@@ -1,4 +1,4 @@
-package lotto.exception;
+package lotto.global;
 
 public abstract class ExceptionConstants {
 

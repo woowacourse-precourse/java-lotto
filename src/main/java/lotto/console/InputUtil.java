@@ -1,4 +1,4 @@
-package lotto.utils;
+package lotto.console;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.Lotto;
@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static lotto.exception.ExceptionConstants.CANNOT_DUPLICATED_NUMBER;
-import static lotto.exception.ExceptionConstants.CANNOT_INPUT_ZERO;
-import static lotto.exception.ExceptionConstants.CANNOT_SATISFY_NUMBER_RANGE;
-import static lotto.exception.ExceptionConstants.CAN_ONLY_MULTIPLY_1000;
-import static lotto.exception.ExceptionConstants.CAN_ONLY_SIX_COUNT;
+import static lotto.global.ExceptionConstants.CANNOT_DUPLICATED_NUMBER;
+import static lotto.global.ExceptionConstants.CANNOT_INPUT_ZERO;
+import static lotto.global.ExceptionConstants.CANNOT_SATISFY_NUMBER_RANGE;
+import static lotto.global.ExceptionConstants.CAN_ONLY_MULTIPLY_1000;
+import static lotto.global.ExceptionConstants.CAN_ONLY_SIX_COUNT;
 
 public class InputUtil {
 
