@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -17,8 +18,8 @@ public class WinningNumberToList {
             int num = Integer.parseInt(st.nextToken());
             if(num<1 || num >45)
                 throw new IllegalArgumentException("[ERROR] 당첨 번호는 1부터 45 사이의 숫자여야 합니다.");
-
             winNumbers.add(num);
         }
+        Collections.sort(winNumbers);
     }
 }
