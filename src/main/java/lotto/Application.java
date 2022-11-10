@@ -4,10 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class Application {
@@ -25,6 +22,9 @@ public class Application {
 
         System.out.println(Print.ASK_PRIZE);
         List<Integer> prize = getPrize();
+
+        System.out.println(Print.ANALYSE_PRIZE);
+        analyseLotto(lottos, prize);
 
 
     }
@@ -166,4 +166,51 @@ public class Application {
 
         prize.add(bonusNum);
     }
+
+    public static void analyseLotto(List<Lotto> lottos, List<Integer> prize) {
+        HashMap<Prize, Integer> stats = setStats();
+
+        for (Lotto lotto : lottos) {
+            countSameNum(lotto, prize, stats);
+        }
+
+        System.out.println("로또 분석");
+        stats.remove(Prize.ZERO);
+        for (Prize p : stats.keySet()) {
+            System.out.println(p.getPrizePrint() + " - " + stats.get(p) + "개");
+        }
+    }
+
+    private static HashMap<Prize, Integer> setStats() {
+        HashMap<Prize, Integer> stats = new HashMap<>();
+
+        stats.put(Prize.FIRST, 0);
+        stats.put(Prize.SECOND, 0);
+        stats.put(Prize.THIRD, 0);
+        stats.put(Prize.FOURTH, 0);
+        stats.put(Prize.FIFTH, 0);
+        stats.put(Prize.ZERO, 0);
+
+        return stats;
+    }
+
+    private static void countSameNum(Lotto lotto, List<Integer> prize, HashMap<Prize, Integer> stats) {
+        int count = 0;
+        List<Integer> lottoNum = lotto.getNumbers();
+
+        for(int i=0; i<prize.size()-1; i++) {
+            if(lottoNum.contains(prize.get(i))) {
+                count++;
+            }
+        }
+
+        if(count==5 && lottoNum.contains(prize.get(6))) {
+            stats.replace(Prize.SECOND, stats.get(Prize.SECOND)+1);
+            return;
+        }
+
+        Prize prizeName = Prize.findPrize(count);
+        stats.replace(prizeName, stats.get(prizeName)+1);
+    }
+
 }
