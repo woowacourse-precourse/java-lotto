@@ -21,6 +21,6 @@ public class Validator {
     }
 
     private boolean isAvailablePayment(String payment) {
-        return false;
+        return Integer.parseInt(payment) % 1000 == 0;
     }
 }
