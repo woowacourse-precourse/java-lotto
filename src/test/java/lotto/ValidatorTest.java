@@ -19,8 +19,13 @@ class ValidatorTest {
     }
 
     @Test
+    @DisplayName("구입 금액이 0이면 예외를 던진다.")
     void paymentIsZero() {
+        // given
+        Validator validator = new Validator();
 
+        // throws
+        assertThatThrownBy(() -> validator.validatePayment("0")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
