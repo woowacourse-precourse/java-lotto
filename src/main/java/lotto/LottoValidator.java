@@ -4,6 +4,7 @@ import static lotto.ErrorMessage.*;
 import static lotto.LottoGenerator.COUNT;
 import static lotto.LottoGenerator.END_INCLUSIVE;
 import static lotto.LottoGenerator.START_INCLUSIVE;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashSet;
 import java.util.List;
@@ -21,6 +22,7 @@ public class LottoValidator {
         checkSize(numbers);
         checkDuplication(numbers);
         checkRange(numbers);
+        checkSortedAsc(numbers);
     }
 
     private static void checkSize(List<Integer> numbers) throws IllegalArgumentException {
@@ -39,6 +41,13 @@ public class LottoValidator {
         numbers.stream().filter(number -> !STANDARD_LOTTO_NUMBER.contains(number)).forEach(number -> {
             throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + LOTTE_NUMBER_OUT_BOUND.getMessage());
         });
+    }
+
+    private static void checkSortedAsc(List<Integer> numbers) {
+        IntStream.range(0, numbers.size() - 1).filter(i -> numbers.get(i) > numbers.get(i + 1)).forEachOrdered(i -> {
+            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + LOTTE_NUMBER_NOT_ASC.getMessage());
+        });
+
     }
 
 }
