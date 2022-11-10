@@ -37,6 +37,10 @@ class LottoTest {
     @Test
     void outPutTest(){
         assertThatThrownBy(() -> Output.outputLottoRank(1, 1, 1, 1, 1))
-                .isEqualTo("3개 일치(5000원")
+                .hasMessageContaining(
+                        "3개 일치 (5,000원) - 1개",
+                        "4개 일치 (50,000원) - 1개",
+                        "5개 일치 (1,500,000원) - 1개"
+                );
     }
 }

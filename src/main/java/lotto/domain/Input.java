@@ -32,6 +32,8 @@ public class Input {
         coinError(coin);
         // 입력받은 금액이 로또를 몇번 살 수 있는지 리턴
         buyCount = coin / 1000;
+        // 구입한 로또의 개수 출력
+        System.out.println(buyCount + "개를 구입했습니다.");
     }
 
     public static void coinError(int coin) {
