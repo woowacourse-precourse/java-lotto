@@ -17,7 +17,7 @@ import java.util.stream.IntStream;
 
 public class LottoValidator {
 
-    private static final List<Integer> STANDARD_LOTTO_NUMBER = IntStream.rangeClosed(START_INCLUSIVE, END_INCLUSIVE)
+    public static final List<Integer> STANDARD_LOTTO_NUMBER = IntStream.rangeClosed(START_INCLUSIVE, END_INCLUSIVE)
             .boxed().collect(Collectors.toList());
     private static final String FIRST_PLACE_REG_EXP =
             "([0-9]{1,2})\\,([0-9]{1,2})\\,([0-9]{1,2})\\,([0-9]{1,2})\\,([0-9]{1,2})\\,([0-9]{1,2})";
