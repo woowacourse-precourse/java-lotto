@@ -1,14 +1,16 @@
 package lotto.ui;
 
 
-import java.io.Console;
+import java.util.Scanner;
 
 public class InputData {
-    private static Console console = System.console();
+    private static Scanner scanner;
 
     public String readInput() {
-        String userInput = console.readLine();
+        scanner = new Scanner(System.in);
+        String userInput = scanner.nextLine();
 
         return userInput;
     }
+
 }
