@@ -8,6 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -48,5 +49,28 @@ class LottoTest {
         // when && then
         assertThatThrownBy(() -> Lotto.moneyOfQuantity(pay))
                 .isInstanceOf(PayMoneyException.class);
+    }
+
+    @Test
+    @DisplayName("수량에 대한 로또 생성 기능 테스트")
+    void createLottoNumbers() {
+        // given
+        int quantity = 8;
+        int expectedSize = 8;
+
+        // when
+        List<Lotto> lottos = Lotto.createLottoNumbers(quantity);
+
+        // then
+        assertAll(
+                () -> assertThat(lottos.size()).isEqualTo(expectedSize),
+                () -> assertThat(lottos).allMatch(lotto -> lotto.getNumbers().size() == 6),
+                () -> assertThat(lottos.stream()
+                        .allMatch(lotto -> lotto.getNumbers().stream()
+                                .allMatch(number -> number >= 1 && number <= 45)))
+                        .isTrue()
+        );
+
+
     }
 }
