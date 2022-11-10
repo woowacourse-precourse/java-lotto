@@ -4,7 +4,7 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         LottoMachine lottoMachine = new LottoMachine();
-        Customer customer = new Customer();
+        User customer = new User();
 
         lottoMachine.requestWantBuyAmountInputMessage();
 
@@ -18,5 +18,6 @@ public class Application {
 
         int canBuyAmount = lottoMachine.canBuyAmount(wantBuyAmountInput);
 
+        lottoMachine.canBuyAmountMessage(canBuyAmount);
     }
 }

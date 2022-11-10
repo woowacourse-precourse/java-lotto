@@ -2,7 +2,7 @@ package lotto;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-public class Customer {
+public class User {
     public int wantBuyAmountInput() {
         int wantBuyAmountInput = Integer.parseInt(readLine());
         validWantByAmountInput(wantBuyAmountInput);
