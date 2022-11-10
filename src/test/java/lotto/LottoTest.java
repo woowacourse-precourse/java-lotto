@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.Lotto;
+import lotto.domain.Money;
 import lotto.exception.Exceptions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -43,5 +44,21 @@ class LottoTest {
     void 로또_크기_체크(){
         boolean correctSize = Exceptions.isCorrectSize("1,2,3,4,5");
         assertThat(correctSize).isFalse();
+    }
+    @Test
+    void 숫자가_아닌_입력_체크(){
+        assertThatThrownBy(() -> new Money("ㅁㄴㅇ"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @Test
+    void 나누어_지지_않는_금액_체크(){
+        assertThatThrownBy(() -> new Money("999"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 금액_음수_체크(){
+        assertThatThrownBy(() -> new Money("-1"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
