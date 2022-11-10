@@ -12,6 +12,15 @@ public class Validator {
         isMultiplesOfThousand(inputNumber);
         isZero(inputNumber);
     }
+
+    public static void validateWinningNumber(List<Integer> inputNumbers) {
+        containDuplicate(inputNumbers);
+        listLengthCheck(inputNumbers,6);
+        for (int inputNumber : inputNumbers) {
+            isInRange(inputNumber);
+        }
+    }
+
     public static void isNumberOrNot(String input) {
         boolean isNumber = Pattern.matches("^[0-9]*$", input);
         if (!isNumber) {
@@ -37,9 +46,8 @@ public class Validator {
         }
     }
 
-    public static void isInRange(String input) {
-        int inputNumber = Integer.parseInt(input);
-        if (1 > inputNumber || inputNumber > 45) {
+    public static void isInRange(int input) {
+        if (1 > input || input > 45) {
             throw new IllegalArgumentException("[ERROR] 1과 45 사이의 정수만 입력 가능합니다.");
         }
     }
