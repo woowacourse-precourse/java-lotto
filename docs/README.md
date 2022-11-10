@@ -13,7 +13,7 @@
    - User : 사용자 Entity, Money와 lottos를 갖고 있다.
    - WinningNumbers : 당첨 Entity
    - Ball : 당첨 공 Entity
-   - ResultMachine : 게임 결과 담당 Entity
+   - LottoMachine : Lotto 번호 구성 담당 Entity. Money를 갖고 있습니다.
 
    util
    - NumbersSeparator : 문자열을 쉽표 기준으로 나눠 Sting[] array를 return 해주는 method
