@@ -4,6 +4,7 @@ class LottoSystem {
 
 
     private final LottoNumbers lottoNumbers;
+    private int usedMoney;
 
     LottoSystem() {
         this.lottoNumbers = new LottoNumbers();
@@ -17,4 +18,11 @@ class LottoSystem {
         return lottoNumbers.getLottoQuantity();
     }
 
+    public void setUsedMoney(int usedMoney) {
+        this.usedMoney = usedMoney;
+    }
+
+    public String getProfitRage(int profit) {
+        return String.format("%.1f%%", ((float) profit * 100) / usedMoney);
+    }
 }

@@ -15,5 +15,12 @@ class LottoSystemTest {
         assertThat(lottoSystem.getLottoQuantity()).isEqualTo(5);
     }
 
-
+    @DisplayName("수익율 계산")
+    @Test
+    void get_profit_rage(){
+        LottoSystem lottoSystem = new LottoSystem();
+        lottoSystem.setUsedMoney(10000);
+        assertThat(lottoSystem.getProfitRage(20000)).isEqualTo("200.0%");
+        assertThat(lottoSystem.getProfitRage(56)).isEqualTo("0.6%");
+    }
 }
