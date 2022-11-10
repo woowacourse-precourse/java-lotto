@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.LottoNumberRange.*;
+
 import java.util.List;
 
 public class Lotto {
@@ -20,9 +22,12 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
     private void validateRange(List<Integer> numbers) {
-        boolean anyMatch = numbers.stream()
-                .anyMatch(number -> (number < 1 || number > 45));
-        if (anyMatch) {
+        int minRange = MIN.getValue();
+        int maxRange = MAX.getValue();
+
+        boolean isOverRange = numbers.stream()
+                .anyMatch(number -> !(minRange <= number && number <= maxRange));
+        if (isOverRange) {
             throw new IllegalArgumentException();
         }
     }
