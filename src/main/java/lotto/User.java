@@ -4,7 +4,12 @@ import java.util.List;
 
 public class User {
     private List<Lotto> userLotto;
-    private int bonusNumber;
 
+    public User(List<Lotto> userLotto) {
+        this.userLotto = userLotto;
+    }
 
+    public List<Lotto> getUserLotto() {
+        return userLotto;
+    }
 }
