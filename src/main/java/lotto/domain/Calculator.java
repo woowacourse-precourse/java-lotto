@@ -26,4 +26,8 @@ public class Calculator {
 
         return profit / 10;
     }
+
+    public int countPublicationLotto(int investmentCash){
+        return investmentCash / 1000;
+    }
 }
