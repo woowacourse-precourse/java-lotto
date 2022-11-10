@@ -4,7 +4,7 @@ import static lotto.domain.LottoStore.INVALID_VALUE_OF_MONEY;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import lotto.domain.winning.Purchaser;
+import lotto.domain.winning.LottoPurchaser;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -20,7 +20,7 @@ class LottoStoreTest {
         @ParameterizedTest(name = "지불 금액 정보를 전달 받고, 금액에 따라 로또를 여러개 발행한다.")
         @CsvSource({"12000,12", "1000,1", "120000,120"})
         void test(String money, String result) {
-            Purchaser lottos = lottoStore.lottos(money);
+            LottoPurchaser lottos = lottoStore.lottos(money);
             assertThat(lottos.numberOfPurchasedLottos()).isEqualTo(Integer.parseInt(result));
         }
     }

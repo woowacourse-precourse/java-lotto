@@ -3,7 +3,7 @@ package lotto.service;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoStore;
 import lotto.domain.winning.LottoResults;
-import lotto.domain.winning.Purchaser;
+import lotto.domain.winning.LottoPurchaser;
 import lotto.domain.winning.WinningNumbers;
 import lotto.view.input.LottoScanner;
 import lotto.view.output.LottoPrinter;
@@ -28,26 +28,46 @@ public class LottoService {
 
     public void lottery() {
         try {
-            lottoPrinter.printGuideMessageForPurchase();
-            String money = lottoScanner.number();
+            String money = money();
+            LottoPurchaser lottoPurchaser = lottoPurchaser(money);
 
-            Purchaser purchaser = lottoStore.lottos(money);
-            lottoPrinter.printTheNumberOfLottos(purchaser.numberOfPurchasedLottos());
-            lottoPrinter.printLottoNumbers(purchaser.purchasedLottosFormat());
+            WinningNumbers winningNumbers = lottoMachine.winningNumbers(
+                    winningNumber(),
+                    bonusNumber()
+            );
 
-            lottoPrinter.printGuideMessageForWinningNumber();
-            String winningNumber = lottoScanner.formattedNumber();
+            winningResults(lottoPurchaser, winningNumbers);
 
-            lottoPrinter.printGuideMessageForBonusNumber();
-            String bonusNumber = lottoScanner.number();
-
-            WinningNumbers winningNumbers = lottoMachine.winningNumbers(winningNumber, bonusNumber);
-            LottoResults lottoResults = purchaser.lottoResults(winningNumbers);
-            double rateOfReturn = purchaser.rateOfReturn(lottoResults);
-
-            lottoPrinter.printWinningStatistics(lottoResults.resultFormat(), rateOfReturn);
         } catch (IllegalArgumentException e) {
             lottoPrinter.printError(e.getMessage());
         }
+    }
+
+    private String money() {
+        lottoPrinter.printGuideMessageForPurchase();
+        return lottoScanner.number();
+    }
+
+    private void winningResults(LottoPurchaser lottoPurchaser, WinningNumbers winningNumbers) {
+        LottoResults lottoResults = lottoPurchaser.lottoResults(winningNumbers);
+        double rateOfReturn = lottoPurchaser.rateOfReturn(lottoResults);
+        lottoPrinter.printWinningStatistics(lottoResults.resultFormat(), rateOfReturn);
+    }
+
+    private String bonusNumber() {
+        lottoPrinter.printGuideMessageForBonusNumber();
+        return lottoScanner.number();
+    }
+
+    private String winningNumber() {
+        lottoPrinter.printGuideMessageForWinningNumber();
+        return lottoScanner.formattedNumber();
+    }
+
+    private LottoPurchaser lottoPurchaser(String money) {
+        LottoPurchaser lottoPurchaser = lottoStore.lottos(money);
+        lottoPrinter.printTheNumberOfLottos(lottoPurchaser.numberOfPurchasedLottos());
+        lottoPrinter.printLottoNumbers(lottoPurchaser.purchasedLottosFormat());
+        return lottoPurchaser;
     }
 }

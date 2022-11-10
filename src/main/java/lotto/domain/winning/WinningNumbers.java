@@ -31,6 +31,12 @@ public class WinningNumbers {
         Map<LottoRanking, Integer> results = new LinkedHashMap<>();
         EnumSet.allOf(LottoRanking.class).forEach(lottoRanking -> results.put(lottoRanking, 0));
 
+        judgeWinning(purchasedLottos, results);
+
+        return new LottoResults(results);
+    }
+
+    private void judgeWinning(List<Lotto> purchasedLottos, Map<LottoRanking, Integer> results) {
         for (Lotto purchasedLotto : purchasedLottos) {
             int matchCountsOfWinningNumber = winningNumber.matchCounts(purchasedLotto);
             int matchCountOfBonusNumber = 0;
@@ -41,8 +47,6 @@ public class WinningNumbers {
 
             addResults(matchCountsOfWinningNumber, matchCountOfBonusNumber, results);
         }
-
-        return new LottoResults(results);
     }
 
     private void addResults(int matchNumberCounts, int bonusNumberMatch,

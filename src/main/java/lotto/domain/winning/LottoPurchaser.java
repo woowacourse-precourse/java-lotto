@@ -3,13 +3,13 @@ package lotto.domain.winning;
 import java.util.List;
 import lotto.domain.lotto_numbers.Lotto;
 
-public class Purchaser {
+public class LottoPurchaser {
 
     public static final int PRICE_OF_LOTTO = 1_000;
 
     private final List<Lotto> purchasedLottos;
 
-    public Purchaser(List<Lotto> purchasedLottos) {
+    public LottoPurchaser(List<Lotto> purchasedLottos) {
         this.purchasedLottos = purchasedLottos;
     }
 
