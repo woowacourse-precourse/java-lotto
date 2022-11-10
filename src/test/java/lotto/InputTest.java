@@ -24,6 +24,20 @@ class InputTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @ParameterizedTest
+    @DisplayName("구매 금액 문자 입력했을 때 예외")
+    @ValueSource(strings = {
+            "1000j",
+            "abcde"
+    })
+    void validateNumber(String input) {
+        InputStream in = generateInput(input);
+        System.setIn(in);
+
+        assertThatThrownBy(Input::purchaseAmount)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     private InputStream generateInput(String input) {
         return new ByteArrayInputStream(input.getBytes());
     }
