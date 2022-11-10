@@ -8,30 +8,26 @@ import lotto.domain.Rank;
 
 public class OutputView {
     static StringBuilder sb;
-    static String YIELD_PATTERN = "#,###.##";
+    static String YIELD_PATTERN = "#,###.#";
     static DecimalFormat df;
 
     public static void printResult(LottoResult lottoResult, double yield) {
-        sb = new StringBuilder();
-        sb.append("당첨 통계\n---\n");
-        for (Rank value : Rank.values()) {
+        System.out.println(("당첨 통계\n---"));
+        Rank[] ranks = Rank.values();
+        for (int rankIndex = ranks.length - 2; rankIndex >= 0; rankIndex--) {
+            Rank value = ranks[rankIndex];
             String rankOutputFormat = value.getOutputMessage();
-            if (rankOutputFormat != null) {
-                sb.insert(0, String.format(rankOutputFormat, lottoResult.getRankCounts(value.ordinal() + 1)));
-            }
+            System.out.println(String.format(rankOutputFormat, lottoResult.getRankCounts(rankIndex + 1)));
         }
         df = new DecimalFormat(YIELD_PATTERN);
-        sb.append(String.format("총 수익률은 %s%%입니다.", df.format(yield)));
-        System.out.println(sb.toString());
+        System.out.println(String.format("총 수익률은 %s%%입니다.", df.format(yield)));
     }
 
 
     public static void printLottos(int count, List<Lotto> lottos) {
         System.out.println((String.format("%d개를 구매했습니다.", count)));
-        sb = new StringBuilder();
         for (Lotto lotto : lottos) {
-            sb.append(lotto.getLotto());
-            sb.append("\n");
+            System.out.println(lotto.getLotto());
         }
     }
 }

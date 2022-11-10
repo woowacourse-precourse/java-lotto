@@ -17,7 +17,7 @@ public class LottoResultController {
     private List<LottoGrade> lottoGrades;
     private double yield;
 
-    private final int price;
+    private final double price;
     private int totalWinning;
 
     public LottoResultController(LottoAnswer lottoAnswer, List<Lotto> lottos, int price) {

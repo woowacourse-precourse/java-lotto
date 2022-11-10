@@ -38,7 +38,7 @@ public enum Rank {
             sb.append(", 보너스 볼 일치");
         }
         String commaWinning = NumberFormat.getInstance().format(winning);
-        sb.append(String.format(" (%s원) - %%d개\n", commaWinning));
+        sb.append(String.format(" (%s원) - %%d개", commaWinning));
         return sb.toString();
     }
 
