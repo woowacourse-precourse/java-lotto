@@ -21,9 +21,6 @@ public class NumberCompare {
         int i = 0;
         // numbers 와 randomNumbers 의 일치 개수 확인
         while(true){
-            if(randomNumbers.contains(bonusNumber)){
-                bonusCount += 1;
-            }
             if(randomNumbers.contains(numbers.get(i))){
                 count += 1;
             }
@@ -32,14 +29,18 @@ public class NumberCompare {
                 break;
             }
         }
+        if(randomNumbers.contains(bonusNumber)){
+            bonusCount += 1;
+        }
+        // 등수 입력
         if(count == 6){
             return Rank.ONE;
         }
-        if(count == 5){
-            return Rank.THREE;
-        }
         if(count == 5 && bonusCount == 1){
             return Rank.TWO;
+        }
+        if(count == 5){
+            return Rank.THREE;
         }
         if(count == 4){
             return Rank.FOUR;
