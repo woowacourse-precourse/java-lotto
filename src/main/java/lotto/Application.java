@@ -135,6 +135,7 @@ public class Application {
 
         if ((character1 < 48 || character1 > 57) || (character2 < 48 || character2 > 57)) {
 
+            printErrorAboutForm();
             throw new IllegalArgumentException();
         }
 
