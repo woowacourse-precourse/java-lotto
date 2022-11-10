@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -44,6 +45,52 @@ class InputImplTest {
             assertThat(paymentAmount).isEqualTo(Integer.parseInt(paymentAmountInput));
         }
 
+    }
+    @Nested
+    @DisplayName("당첨 번호는")
+    class isAllowedWinningNumberTest{
+
+        @Test
+        @DisplayName("6개 이상의 숫자를 입력하면 예외가 발생한다.")
+        void case1() {
+            //given
+            String winningNumberInput = "1,2,3,4,5,6,7";
+            InputStream in = new ByteArrayInputStream(winningNumberInput.getBytes());
+            System.setIn(in);
+
+            //when //then
+            assertThatThrownBy(input::inputWinningNumbers).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        @DisplayName("같은 숫자를 입력하면 예외가 발생한다.")
+        void case2() {
+            //given
+            String winningNumberInput = "1,2,2,3,4,4";
+            InputStream in = new ByteArrayInputStream(winningNumberInput.getBytes());
+            System.setIn(in);
+
+            //when //then
+            assertThatThrownBy(input::inputWinningNumbers).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        @DisplayName("서로 다른 6개의 숫자를 입력해야 한다.")
+        void case3() {
+            //given
+            String winningNumberInput = "1,2,3,4,5,6";
+            InputStream in = new ByteArrayInputStream(winningNumberInput.getBytes());
+            System.setIn(in);
+
+            //when
+            List<String> winningNumbers = input.inputWinningNumbers();
+
+            // then
+            String[] inputWinningNumbers = winningNumberInput.split(",");
+            for (String inputWinningNumber : inputWinningNumbers) {
+                assertThat(winningNumbers).contains(inputWinningNumber);
+            }
+        }
     }
 
 
