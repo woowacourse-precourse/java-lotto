@@ -110,4 +110,31 @@ class CalculatorTest {
             assertThat(actual).isEqualTo(result);
         }
     }
+
+    @DisplayName("countPublicationLotto 메소드 테스트")
+    @Nested
+    class countPublicationLottoTest {
+        @BeforeEach
+        void setup() {
+            calculator = new Calculator();
+        }
+
+        @Test
+        void case1() {
+            int investmentCash = 8000;
+
+            int actual = calculator.countPublicationLotto(investmentCash);
+            int result = 8;
+            assertThat(actual).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            int investmentCash = 14000;
+
+            int actual = calculator.countPublicationLotto(investmentCash);
+            int result = 14;
+            assertThat(actual).isEqualTo(result);
+        }
+    }
 }
