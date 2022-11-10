@@ -9,13 +9,13 @@ public enum Prize {
     FIVE_BONUS_MATCH(5, 1, 30000000, "5개 일치, 보너스 볼 일치 (30,000,000원)"),
     SIX_MATCH(6, 0, 2000000000, "6개 일치 (2,000,000,000원)");
 
-    private final int matchCount;
+    private final int winningCount;
     private final int bonusCount;
     private final int prizeMoney;
     private final String message;
 
-    Prize(int matchCount, int bonusCount, int prizeMoney, String message) {
-        this.matchCount = matchCount;
+    Prize(int winningCount, int bonusCount, int prizeMoney, String message) {
+        this.winningCount = winningCount;
         this.bonusCount = bonusCount;
         this.prizeMoney = prizeMoney;
         this.message = message;
@@ -25,8 +25,8 @@ public enum Prize {
         return List.of(Prize.values());
     }
 
-    public int getMatchCount() {
-        return matchCount;
+    public int getWinningCount() {
+        return winningCount;
     }
 
     public int getBonusCount() {
