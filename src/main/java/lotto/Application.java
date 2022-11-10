@@ -17,6 +17,8 @@ public class Application {
     	String stringprice;
     	stringprice = Console.readLine();
     	int price = Integer.parseInt(stringprice);
+    	LottoCount lottocount = new LottoCount(price);
+    	
     }
     
     public static int askNumbers() {
