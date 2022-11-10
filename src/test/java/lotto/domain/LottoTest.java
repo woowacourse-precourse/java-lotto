@@ -28,4 +28,10 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1,2,3,4,5,46)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+    @DisplayName("WinningNumber")
+    @Test
+    void createWinningNumberByOverNumber() {
+        assertThatThrownBy(() -> new WinningNumber(List.of(1,2,3,4,5,6), 6))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

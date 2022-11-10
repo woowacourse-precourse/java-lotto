@@ -15,6 +15,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public static Lotto from(List<Integer> lotto) {
+        return new Lotto(lotto);
+    }
+
     private void validateOverSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException("6개의 숫자를 입력해주세요.");
@@ -32,7 +36,7 @@ public class Lotto {
         }
     }
 
-    private boolean outOfRange(int number) {
+    boolean outOfRange(int number) {
         return number>MAXIMUM_NUMBER || number<MINIMUM_NUMBER;
     }
 }
