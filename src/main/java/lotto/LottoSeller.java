@@ -51,6 +51,20 @@ public class LottoSeller {
         }
     }
 
+    public int receiveBonusNumber() {
+        System.out.println(BONUS_NUM_MSG);
+        String userInput = receiveUserInput();
+        validateBonusNumber(userInput);
+
+        return Integer.parseInt(userInput);
+    }
+
+    private void validateBonusNumber(String input) {
+        validateNumber(input);
+        int number = Integer.parseInt(input);
+        validateNumberRange(number);
+    }
+
     private void validateNumberRange(int number) {
         if (number < MIN_LOTTO_NUM || number > MAX_LOTTO_NUM) {
             System.out.println(RANGE_ERROR_MSG);

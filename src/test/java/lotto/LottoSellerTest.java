@@ -80,4 +80,38 @@ class LottoSellerTest {
         Assertions.assertThat(winningNumbers)
                 .isEqualTo(Arrays.asList(15, 16, 20, 45, 11, 9));
     }
+
+    @DisplayName("숫자가 아닌 보너스 번호를 입력하면 예외가 발생한다.")
+    @Test
+    void inputStringForBonusNumber() {
+        String input = "a";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        Assertions.assertThatThrownBy(() -> lottoSeller.receiveBonusNumber())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("범위를 벗어난 보너스 번호를 입력하면 예외가 발생한다.")
+    @Test
+    void inputBonusNumberOverRange() {
+        String input = "47";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        Assertions.assertThatThrownBy(() -> lottoSeller.receiveBonusNumber())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("정상적인 보너스 번호를 입력하면 정상적으로 동작한다.")
+    @Test
+    void inputValidBonusNumber() {
+        String input = "30";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        int number = lottoSeller.receiveBonusNumber();
+
+        Assertions.assertThat(number).isEqualTo(30);
+    }
 }
