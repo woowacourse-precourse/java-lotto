@@ -7,18 +7,26 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
+    	int price = 0;                  
+        price = askTotalPrice();               // 사용자 입력으로 금액 입력받기
+        
+        LottoCount lottocount = new LottoCount(price);
+        int lottonum = lottocount.lottonum;         // 사용자 입력으로 받은 금액 / 1000을 해서 로또 개수 구하기
+        
         NumberGenerator numbergenerator = new NumberGenerator();
-        List<ArrayList<Integer>> lottonumbersall = new ArrayList<ArrayList<Integer>>();
-        lottonumbersall = numbergenerator.createRandomLotto(lottocount);
+        List<List<Integer>> lottonumbersall; 
+        lottonumbersall = numbergenerator.createRandomLotto(lottonum);  // 로또 개수만큼 랜덤 로또 숫자 6개씩 추출해서 리스트에 넣기
     }
     
-    public static void askTotalPrice() {
-    	System.out.println("구입금액을 입력해 주세요.");
-    	String stringprice;
-    	stringprice = Console.readLine();
-    	int price = Integer.parseInt(stringprice);
-    	LottoCount lottocount = new LottoCount(price);
+    public static int askTotalPrice() {
+    	String stringprice = "";
+    	int price = 0;
     	
+    	System.out.println("구입금액을 입력해 주세요.");
+    	stringprice = Console.readLine();
+    	price = Integer.parseInt(stringprice);
+    	
+    	return price;
     }
     
     public static int askNumbers() {
