@@ -5,7 +5,7 @@
     1) 입력을 int로 변환
         / int getInputToInt(String readLine)
     2) 당첨 번호 처리 
-        / List<Interger> getWinnigNumber(String readLine)
+        / List<Interger> getWinningNumber(String readLine)
 ###2. 로또 발행
     1) 로또 1개 숫자 발행 
         / List<Integer> getLottoNumbers()
