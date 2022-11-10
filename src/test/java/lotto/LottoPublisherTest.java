@@ -43,11 +43,6 @@ class LottoPublisherTest {
         }
 
         @Test
-        void eachLottoShouldHaveUniqueNumbers() {
-
-        }
-
-        @Test
         void eachLottoShouldBeSortedInAscendingOrder() {
 
         }
