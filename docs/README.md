@@ -7,10 +7,10 @@
 - [x] 사용자가 구매한 로또 번호와 당첨 번호(중복되지 않는 수 6개 + 보너스 번호 1개)를 비교한다.
   - [x] 로또 번호와 당첨 번호를 비교해 일치하는 번호의 개수를 반환한다. - Comparator#getMatchCount()
   - [x] 로또 번호와 보너스 번호를 비교한다. - Comparator#hasBonusNumber()
-- [ ] 계산한다.
-  - [ ] 당첨 결과를 계산한다. - Calculator#calculateMatchResults()
-  - [ ] 총 수익을 계산한다. - Calculator#calculateProfit()
-  - [ ] 수익률을 계산한다. - Calculator#calculateEarningsRate()
+- [x] 계산한다.
+  - [x] 당첨 결과를 계산한다. - Calculator#calculateMatchResults()
+  - [x] 총 수익을 계산한다. - Calculator#calculateProfit()
+  - [x] 수익률을 계산한다. - Calculator#calculateEarningsRate()
     - 수익률은 소수점 둘째 자리에서 반올림한다. (ex. 100.0%, 51.5%, 1,000,000.0%)
 
 ### 예외 상황
