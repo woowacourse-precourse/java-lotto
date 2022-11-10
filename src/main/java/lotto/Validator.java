@@ -17,7 +17,7 @@ public class Validator {
     }
 
     private boolean isNumberNotZeroOrLess(String string) {
-        return false;
+        return string.matches("[1-9][0-9]+");
     }
 
     private boolean isAvailablePayment(String payment) {
