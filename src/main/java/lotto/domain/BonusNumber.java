@@ -6,7 +6,11 @@ public class BonusNumber {
     private final int bonusNumber;
 
     public BonusNumber(int bonusNumber) {
-        Validator.validateBonusNumber(bonusNumber);
+        validate(bonusNumber);
         this.bonusNumber = bonusNumber;
+    }
+
+    private void validate(int bonusNumber) {
+        Validator.isInRange(bonusNumber);
     }
 }
