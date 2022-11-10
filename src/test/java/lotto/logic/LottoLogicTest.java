@@ -10,14 +10,23 @@ import java.util.List;
 class LottoLogicTest {
     LottoLogic lottoLogic = new LottoLogic();
 
-    List<List<Integer>> lottos = List.of(   // 일치하는 번호 개수 | 보너스 일치
-            List.of(8, 21, 23, 41, 42, 43), // 0                아니요
-            List.of(1, 3, 5, 14, 22, 45),   // 3                아니요
-            List.of(1, 3, 5, 2, 22, 45),    // 4                아니요
-            List.of(1, 3, 5, 14, 4, 6),     // 5                아니요
-            List.of(1, 3, 5, 7, 6, 2),      // 5                예
-            List.of(1, 3, 5, 4, 6, 2),      // 6                아니요
-            List.of(1, 33, 5, 4, 6, 7));    // 4                예
+    List<List<Integer>> lottos = List.of(   // 일치하는 번호 개수 | 보너스 일치  |   상금
+            List.of(8, 21, 23, 41, 42, 43), // 0                아니요         0
+            List.of(1, 3, 5, 14, 22, 45),   // 3                아니요         5'000
+            List.of(1, 3, 5, 2, 22, 45),    // 4                아니요         50'000
+            List.of(1, 3, 5, 14, 4, 6),     // 5                아니요         1'500'000
+            List.of(1, 3, 5, 7, 6, 2),      // 5                예            30'000'000
+            List.of(1, 3, 5, 4, 6, 2),      // 6                아니요         2'000'000'000
+            List.of(1, 33, 5, 4, 6, 7));    // 4                예            50'000
+
+    List<Result> results = List.of(
+            new Result(0, false),
+            new Result(3, false),
+            new Result(4, false),
+            new Result(5, false),
+            new Result(5, true),
+            new Result(6, false),
+            new Result(4, true));
 
     List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
     Integer bonusNumber = 7;
@@ -32,18 +41,18 @@ class LottoLogicTest {
 
     @Test
     void 일치하는_번호_개수_세기() {
-        List<Result> results = List.of(
-                new Result(0, false),
-                new Result(3, false),
-                new Result(4, false),
-                new Result(5, false),
-                new Result(5, true),
-                new Result(6, false),
-                new Result(4, true)
-        );
-
         for (int i = 0; i < results.size(); i++) {
             assertResult(results, i);
+        }
+    }
+
+    @Test
+    void 상금_테스트(){
+        List<Integer> prizes = List.of(0, 5_000, 50_000, 1_500_000, 30_000_000, 2_000_000_000, 50_000);
+
+        for (int i = 0; i < prizes.size(); i++) {
+            Assertions.assertThat(lottoLogic.getPrize(results.get(i)))
+                    .isEqualTo(prizes.get(i));
         }
     }
 
