@@ -2,10 +2,8 @@ package lotto.global.util;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.domain.lotto.verifier.InputMoneyVerifier;
 import lotto.domain.view.OutputView;
 
-import javax.swing.*;
 import java.util.*;
 
 public class Util {
@@ -30,7 +28,7 @@ public class Util {
     public static List<Integer> inputNumbersInList() {
         String inputPrizeNumbers = OutputView.printInputPrizeNumbers();
         List<Integer> prizeLottoNumbers = splitByComma(inputPrizeNumbers);
-        InputMoneyVerifier.prizeNumberVerifier(prizeLottoNumbers);
+        InputNumberVerifier.prizeNumberVerifier(prizeLottoNumbers);
         return prizeLottoNumbers;
     }
 
@@ -46,5 +44,10 @@ public class Util {
             inputNumbers.add(Integer.valueOf(st.nextToken()));
         }
         return inputNumbers;
+    }
+
+    public static int inputBonusNumber() {
+        String bonusNumber = Console.readLine();
+        InputNumberVerifier.bonusNumberVerifier(bonusNumber);
     }
 }

@@ -24,7 +24,7 @@ public class LottoController {
         return lottoService.prizeLotto();
     }
 
-    public void getBonusNumber() {
-        lottoService.bonusNumber();
+    public int getBonusNumber() {
+        return lottoService.bonusNumber();
     }
 }

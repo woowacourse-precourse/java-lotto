@@ -18,7 +18,7 @@ public class LottoService {
         return new Lotto(Util.inputNumbersInList());
     }
 
-    public void bonusNumber() {
-        InputView.getInputBonusNumber();
+    public int bonusNumber() {
+        return InputView.getInputBonusNumber();
     }
 }

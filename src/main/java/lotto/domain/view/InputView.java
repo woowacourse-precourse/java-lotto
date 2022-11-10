@@ -11,7 +11,8 @@ public class InputView {
         return Util.input();
     }
 
-    public static void getInputBonusNumber() {
+    public static int getInputBonusNumber() {
         System.out.println(INPUT_BONUS_NUMBER);
+        return Util.inputBonusNumber();
     }
 }
