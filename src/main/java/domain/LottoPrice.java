@@ -1,5 +1,7 @@
 package domain;
 
+import static constant.NumberConstant.LOTTO_MIN_PRICE;
+
 public class LottoPrice {
     private final int lottoPrice;
 
@@ -8,7 +10,7 @@ public class LottoPrice {
     }
 
     public int lottoTicketCount(){
-        return lottoPrice/1000;
+        return lottoPrice/LOTTO_MIN_PRICE;
     }
 
 }

@@ -3,6 +3,8 @@ package view;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import static constant.NumberConstant.LOTTO_LENGTH;
+
 public class InputValidator {
 
     private static Pattern PATTERN = Pattern.compile("^[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+$");
@@ -29,7 +31,7 @@ public class InputValidator {
 
     public static void validateDifferentLottoNumbers(List<Integer> lottoNumberList){
         Integer userNumberLen = Math.toIntExact(lottoNumberList.stream().distinct().count());
-        if (userNumberLen!=6){
+        if (userNumberLen!=LOTTO_LENGTH){
             throw new IllegalArgumentException("[ERROR] 중복없는 6가지 수로 입력해야 합니다.");
         }
     }
