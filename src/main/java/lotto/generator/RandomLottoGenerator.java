@@ -11,14 +11,8 @@ import static lotto.global.LottoConstants.*;
 public class RandomLottoGenerator {
 
     public static Lotto makeLotto() {
-        List<Integer> numbers = new ArrayList<>();
-
-        while (numbers.size() < 6) {
-            int randomNumber = Randoms.pickNumberInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
-        }
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER,
+                                                                 MAX_LOTTO_NUMBER_COUNT);
 
         return new Lotto(numbers);
     }
