@@ -32,6 +32,11 @@ public class Input {
                 throw new IllegalArgumentException("[Error] 구매 금액을 잘못 입력 하셨습니다.");
         }
 
+        int tempMoney = Integer.parseInt(userInput);
+
+        if((tempMoney % 1000) != 0)
+            throw new IllegalArgumentException("[Error] 구매 금액이 천 원으로 나누어 떨어지지 않는 금액입니다.");
+
         return true;
     }
 }
