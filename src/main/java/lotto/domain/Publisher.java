@@ -33,11 +33,11 @@ public class Publisher {
     }
 
     private List<Integer> getLottoNumber() {
-        return Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, COUNT_LOTTO_NUMBER);
+        List<Integer> randomNumber = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, COUNT_LOTTO_NUMBER);
+        return randomNumber.stream().sorted().collect(Collectors.toList());
     }
 
     private int getLottoCount(int money) {
-        // TODO : validate
         return money / LOTTO_PRICE;
     }
 
