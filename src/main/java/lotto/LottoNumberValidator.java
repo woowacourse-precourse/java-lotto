@@ -9,7 +9,7 @@ public class LottoNumberValidator {
 
 
     public static boolean existDuplicate(List<Integer> numbers) {
-        long numbersTypeCount = numbers
+        int numbersTypeCount = (int)numbers
                 .stream()
                 .distinct()
                 .count();
