@@ -5,33 +5,21 @@ import java.util.List;
 import lotto.model.LottoGenerator;
 import lotto.model.Player;
 import lotto.model.Service;
-import lotto.util.Calculator;
 import lotto.util.InputVerifier;
-import lotto.view.View;
 
 public class Controller {
 
     Player player = new Player();
-    Service service = new Service();
 
-    public String getPurchaseAmount() {
-        String purchaseAmount = player.getInput();
+    private String getMoney() {
+        String money = player.getInput();
+        InputVerifier.checkMoney(money);
 
-        if (!InputVerifier.isInteger(purchaseAmount)) {
-            View.printNotInteger();
-            throw new IllegalArgumentException();
-        }
-
-        if (!InputVerifier.isLottoPrice(purchaseAmount)) {
-            View.printNotLottoPrice();
-            throw new IllegalArgumentException();
-        }
-
-        return purchaseAmount;
+        return money;
     }
 
-    public int getLottoAmount(String purchaseAmount) {
-        return Calculator.countLottoAmount(purchaseAmount);
+    private int getLottoAmount(String money) {
+        return Service.countLottoAmount(money);
     }
 
     private List<List<Integer>> getLottoNumbers(int lottoAmount) {
@@ -43,34 +31,20 @@ public class Controller {
         return lottoNumbers;
     }
 
+    // TODO: 당첨 결과 저장하는 기능
+
     private List<Integer> getBonusNumbers(int lottoAmount) {
-        return new ArrayList<>(LottoGenerator.generateBonusNumber());
+        List<Integer> bonusNumbers = new ArrayList<>();
+
+        for (int i = 0; i < lottoAmount; i++) {
+            bonusNumbers.add(LottoGenerator.generateBonusNumber());
+        }
+        return bonusNumbers;
     }
 
-    public List<String> guessLottoNumbers() {
+    private List<String> guessLottoNumbers() {
         List<String> lottoNumbers = player.guessLottoNumbers();
-
-        for (String lottoNumber : lottoNumbers) {
-            if (!InputVerifier.isInteger(lottoNumber)) {
-                View.printNotInteger();
-                throw new IllegalArgumentException();
-            }
-        }
-
-        if (!InputVerifier.isValidSize(lottoNumbers)) {
-            View.printNotLottoSize();
-            throw new IllegalArgumentException();
-        }
-
-        if (!InputVerifier.isUniqueNumber(lottoNumbers)) {
-            View.printNotUniqueNumber();
-            throw new IllegalArgumentException();
-        }
-
-        if (!InputVerifier.isValidNumber(lottoNumbers)) {
-            View.printNotLottoPrice();
-            throw new IllegalArgumentException();
-        }
+        InputVerifier.checkLottoNumber(lottoNumbers);
         return lottoNumbers;
     }
 
