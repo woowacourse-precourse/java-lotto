@@ -49,8 +49,17 @@ public class CheckerTest extends NsTest {
 
 	@Test
 	void checkNumberRangeException_메서드로_당첨_번호_범위_넘어가면_예외처리() {
+
 		assertSimpleTest(() ->
 			assertThatThrownBy(() -> runException("5000","1,2,3,4,5,99"))
+				.isInstanceOf(IllegalArgumentException.class)
+		);
+	}
+
+	@Test
+	void checkSameNumberInWinningNumberException_메서드로_당첨_번호와_보너스_번호가_같으면_예외처리() {
+		assertSimpleTest(() ->
+			assertThatThrownBy(() -> runException("5000","1,2,3,4,5,6","6"))
 				.isInstanceOf(IllegalArgumentException.class)
 		);
 	}

@@ -14,11 +14,11 @@
 
 - [x] 당첨 번호 입력 메세지를 출력한다. - View#WINNING_NUMBER_INPUT_GUIDE_MESSAGE
 - [x] 당첨 번호 입력 받는다. - Input#userInput()
-  - [x] 잘못된 당첨 번호값 입력시 예외 발생 - Checker#checkUserInput()
+  - [x] 잘못된 당첨 번호값 입력시 예외 발생 - Checker#checkWinningNumberInput()
 
 - [x] 보너스 번호 메세지를 출력한다. - View#BONUS_NUMBER_GUIDE_MESSAGE
 - [x] 보너스 번호를 입력 받는다. - Input#userInput()
-  - [] 잘못된 값 입력시 예외 발생 - Checker#checkUserInput()
+  - [x] 잘못된 보너스 번호 입력시 예외 발생 - Checker#checkBonusNumberInput()
 
 - [] 사용자의 로또 번호와 당첨 번호를 비교한다. - Checker#compareNumbers()
   - [] 1등: 6개 번호 일치 / 2,000,000,000원 - Checker#FIRST

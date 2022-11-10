@@ -24,10 +24,11 @@ public class LottoProgram {
 
 		View.showWinningNumberInputGuideMessage();
 		userInput = Input.userInput();
-		Checker.checkWinningNumber(userInput);
+		Checker.checkWinningNumberInput(userInput);
 
 		View.showBonusNumberInputGuideMessage();
 		userInput = Input.userInput();
+		Checker.checkBonusNumberInput(userInput);
 	}
 
 	public void createLotto(int lottoCount) {

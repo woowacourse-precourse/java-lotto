@@ -6,7 +6,8 @@ import java.util.List;
 public class Checker {
 	private static final int MAX_PRICE = 100000;
 	private static final int MAX_WINNING_NUMBER_LENGTH = 6;
-	private static final int MAX_NUMBER =45;
+	private static final int MAX_BONUS_NUMBER_LENGTH = 1;
+	private static final int MAX_NUMBER = 45;
 	private static final int MIN_NUMBER = 1;
 	private static final String WINNING_NUMBER_DELIMITER = ",";
 	private static final String JOIN_DELIMITER = "";
@@ -15,10 +16,7 @@ public class Checker {
 	private static int THIRD;
 	private static int FOURTH;
 	private static int FIFTH;
-
-	private void checkSameNumber() {
-
-	}
+	private static List<String> winningNumber;
 
 	public static void checkUserInput(String userInput) {
 		//숫자, ','만 입력 받아야함
@@ -32,18 +30,33 @@ public class Checker {
 		return super.toString();
 	}
 
-	public static void checkWinningNumber(String userInput) {
-		List<String> winningNumber = Arrays.asList(userInput.split(WINNING_NUMBER_DELIMITER));
+	public static void checkWinningNumberInput(String userInput) {
+		winningNumber = Arrays.asList(userInput.split(WINNING_NUMBER_DELIMITER));
 		userInput = String.join(JOIN_DELIMITER, userInput.split(WINNING_NUMBER_DELIMITER));
 
 		checkNumberOnlyException(userInput);
-		checkLength(winningNumber);
+		checkLengthException(winningNumber, MAX_WINNING_NUMBER_LENGTH);
 		checkSameNumberException(winningNumber);
 		checkNumberRangeException(winningNumber);
 	}
 
-	public static void checkNumberRangeException(List<String> winningNumber) {
-		for (String number : winningNumber) {
+	public static void checkBonusNumberInput(String userInput) {
+		List<String> bonusNumber = Arrays.asList(userInput.split(""));
+
+		checkNumberOnlyException(userInput);
+		checkLengthException(bonusNumber, MAX_BONUS_NUMBER_LENGTH);
+		checkSameNumberInWinningNumberException(userInput);
+		checkNumberRangeException(bonusNumber);
+	}
+
+	private static void checkSameNumberInWinningNumberException(String bonusNumber) {
+		if(winningNumber.contains(bonusNumber)){
+			Exception.sameNumberException();
+		}
+	}
+
+	public static void checkNumberRangeException(List<String> numbers) {
+		for (String number : numbers) {
 			if (Integer.parseInt(number) > MAX_NUMBER || Integer.parseInt(number) < MIN_NUMBER) {
 				Exception.numberRangeException();
 			}
@@ -66,8 +79,8 @@ public class Checker {
 
 	}
 
-	public static void checkLength(List<String> winningNumber) {
-		if (winningNumber.size() > MAX_WINNING_NUMBER_LENGTH) {
+	public static void checkLengthException(List<String> winningNumber, int maxLength) {
+		if (winningNumber.size() > maxLength) {
 			Exception.winningNumberLengthException();
 		}
 	}
