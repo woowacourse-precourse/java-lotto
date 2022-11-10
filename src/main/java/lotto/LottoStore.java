@@ -28,6 +28,14 @@ public class LottoStore {
     }
 
     public void setWinNumbers(List<Integer> winNumbers) {
+        validateWinNumbers(winNumbers);
         this.winNumbers = winNumbers;
+    }
+
+    private void validateWinNumbers(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            System.out.println("[ERROR] 잘못된 당첨번호 입니다.");
+            throw new IllegalArgumentException();
+        }
     }
 }
