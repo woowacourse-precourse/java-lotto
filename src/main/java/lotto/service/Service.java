@@ -31,7 +31,7 @@ public class Service {
         List<Lotto> lottoList = new ArrayList<>();
         for(int i = 0; i < volume; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
-            Collections.sort(numbers);
+//            Collections.sort(numbers);
             Lotto lotto = new Lotto(numbers);
             lottoList.add(lotto);
             System.out.println(numbers);
@@ -61,6 +61,16 @@ public class Service {
         return bonusNum;
     }
 
+    public static List<List<Integer>> getLottoList(List<Lotto> lottoList) {
+        List<List<Integer>> temp = new ArrayList<>();
+        for(int i = 0; i < lottoList.size(); i++) {
+            List<Integer> lotto = lottoList.get(i).getNumbers();
+            temp.add(lotto);
+        }
+
+        return temp;
+    }
+
     public static void checkLotto(List<Integer> lotto, String[] jackpotNum, int bonusNum) {
         for(int i = 0; i < jackpotNum.length; i++) {
             int number = Integer.parseInt(jackpotNum[i]);
@@ -72,6 +82,7 @@ public class Service {
             }
         }
     }
+
     public static void checkRank() {
         int count = Rank.getCount();
         boolean bonus = Rank.getBonus();
@@ -92,6 +103,7 @@ public class Service {
         if(count == 6) {
             Rank.addFirst();
         }
+        Rank.initCount();
     }
 
     public static int getWinningPrice() {
@@ -102,6 +114,7 @@ public class Service {
         int first = Rank.getFirst();
         int winningPrice = (fifth * 5000) + (fourth * 50000) + (third * 1500000)
                 + (second * 30000000) + (first * 2000000000);
+        Rank.initParam();
 
         System.out.println("당첨 통계");
         System.out.println("---");

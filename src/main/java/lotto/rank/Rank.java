@@ -11,9 +11,6 @@ public class Rank {
 
     public static void initCount() {
         count = 0;
-    }
-
-    public static void initBonus() {
         bonus = false;
     }
 
