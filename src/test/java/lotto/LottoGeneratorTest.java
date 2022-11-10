@@ -18,14 +18,12 @@ class LottoGeneratorTest {
 
     private static final List<Integer> STANDARD_LOTTO_NUMBER = IntStream.rangeClosed(START_INCLUSIVE, END_INCLUSIVE)
             .boxed().collect(Collectors.toList());
-    LottoGenerator lottoGenerator;
     List<Integer> lottoNumber;
 
 
     @BeforeEach
     void setUp() {
-        lottoGenerator = LottoGenerator.getInstance();
-        lottoNumber = lottoGenerator.makeLotto();
+        lottoNumber = LottoGenerator.makeLotto();
     }
 
     @Test

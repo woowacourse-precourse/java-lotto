@@ -12,15 +12,7 @@ public class LottoGenerator {
 
     private LottoGenerator(){}
 
-    private static class LottoHolder{
-        private static final LottoGenerator INSTANCE = new LottoGenerator();
-    }
-
-    public static LottoGenerator getInstance() {
-        return LottoHolder.INSTANCE;
-    }
-
-    public List<Integer> makeLotto() {
+    public static List<Integer> makeLotto() {
         List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, COUNT);
         Collections.sort(lottoNumber);
         return lottoNumber;
