@@ -18,6 +18,6 @@ public class LottoService {
     }
 
     public Lotto randomLottoNumbers() {
-        return new Lotto(Util.getRandomNumbers());
+        return new Lotto(Util.orderByDescForList(Util.getRandomNumbers()));
     }
 }
