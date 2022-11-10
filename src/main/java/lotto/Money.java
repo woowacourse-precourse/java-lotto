@@ -37,4 +37,8 @@ public class Money {
         int numbers = Integer.parseInt(money);
         return Math.floorDiv(numbers,1000);
      }
+
+     public Integer getLottoCount() {
+        return this.lottoCount;
+     }
 }
