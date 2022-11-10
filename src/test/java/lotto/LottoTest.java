@@ -36,7 +36,7 @@ class LottoTest {
         illegalArgumentExceptionOccurrenceCheck(List.of(1, 2, 3, 4, 5, 46));
         illegalArgumentExceptionOccurrenceCheck(List.of(0, 2, 3, 4, 5, 6));
     }
-    void illegalArgumentExceptionOccurrenceCheck(List<Integer> errorCase){
+    void illegalArgumentExceptionOccurrenceCheck(List<Integer> errorCase) {
         assertThatThrownBy(() -> new Lotto(errorCase))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -68,5 +68,32 @@ class LottoTest {
         System.setOut(new PrintStream(out));
         illegalArgumentExceptionOccurrenceCheck(errorCase);
         assertThat(out.toString()).isEqualTo(expectMessage);
+    }
+
+    @DisplayName("입력받은 로또 번호가 변하지 않고 반환된다.")
+    @Test
+    void unChangingReturn() {
+        List<Integer> input = new java.util.ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+        Lotto lotto = new Lotto(input);
+        assertThat(lotto.getNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+    }
+    @DisplayName("입력받은 로또 번호가 input이 변했을 때 변하지 않고 반환된다.")
+    @Test
+    void unChangingReturnAfterInputChanged() {
+        List<Integer> input = new java.util.ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+        Lotto lotto = new Lotto(input);
+        assertThat(lotto.getNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+        input.add(7);
+        assertThat(lotto.getNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+        lotto.getNumbers().add(8);
+        assertThat(lotto.getNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+    }
+    @DisplayName("입력받은 로또 번호가 getNumbers()로 생성된 변수가 변해도 변하지않고 반환된다.")
+    @Test
+    void unChangingReturnAfterGetInstanceChanged() {
+        List<Integer> input = new java.util.ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+        Lotto lotto = new Lotto(input);
+        lotto.getNumbers().add(8);
+        assertThat(lotto.getNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
 }
