@@ -1,8 +1,8 @@
 package lotto;
 
 import static lotto.ErrorMessage.COMMON_MESSAGE;
-import static lotto.ErrorMessage.PURCHASE_QTY_CONSISTENCE;
-import static lotto.ErrorMessage.PURCHASE_QTY_REMINDER;
+import static lotto.ErrorMessage.PURCHASE_PAY_CONSISTENCE;
+import static lotto.ErrorMessage.PURCHASE_PAY_REMINDER;
 
 public class InputValidator {
 
@@ -12,20 +12,20 @@ public class InputValidator {
 
     private InputValidator(){}
 
-    public static void validateQuantity(String quantity) {
-        checkConsistNumber(quantity);
-        checkReminder(quantity);
+    public static void validatePay(String pay) {
+        checkConsistNumber(pay);
+        checkReminder(pay);
     }
 
-    private static void checkConsistNumber(String quantity) {
-        if (!quantity.matches(NUMBER_REG_EXP)) {
-            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + PURCHASE_QTY_CONSISTENCE.getMessage());
+    private static void checkConsistNumber(String pay) {
+        if (!pay.matches(NUMBER_REG_EXP)) {
+            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + PURCHASE_PAY_CONSISTENCE.getMessage());
         }
     }
 
-    private static void checkReminder(String quantity) {
-        if (STANDARD_REMINDER != Integer.parseInt(quantity) % MINIMUM_ORDER) {
-            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + PURCHASE_QTY_REMINDER.getMessage());
+    private static void checkReminder(String pay) {
+        if (STANDARD_REMINDER != Integer.parseInt(pay) % MINIMUM_ORDER) {
+            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + PURCHASE_PAY_REMINDER.getMessage());
         }
     }
 }

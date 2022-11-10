@@ -15,7 +15,7 @@ class UserLottoTest {
         String input = "1,000";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> new UserLotto(input));
-        assertThat(exception.getMessage()).isEqualTo("[ERROR] Purchase Quantity Isn't Consist Of Number.");
+        assertThat(exception.getMessage()).isEqualTo("[ERROR] Purchase Pay Isn't Consist Of Number.");
 
     }
 
@@ -25,6 +25,6 @@ class UserLottoTest {
         String input = "150300";
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
                 () -> new UserLotto(input));
-        assertThat(exception.getMessage()).isEqualTo("[ERROR] Purchase Quantity Reminder Isn't Zero.");
+        assertThat(exception.getMessage()).isEqualTo("[ERROR] Purchase Pay Reminder Isn't Zero.");
     }
 }
