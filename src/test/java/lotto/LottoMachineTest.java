@@ -1,6 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import store.Lotto;
@@ -9,17 +8,19 @@ import store.LottoMachine;
 import java.lang.reflect.Method;
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.*;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class LottoMachineTest extends NsTest {
+public class LottoMachineTest {
+
+    LottoMachine lottoMachine = LottoMachine.getInstance();
 
     @DisplayName("중복되지 않은 1~45 범위의 숫자 6개 생성")
     @Test
     void case1_pick_random_unique_numbers() {
         assertRandomUniqueNumbersInRangeTest(() -> {
             List<Integer> result = List.of(1, 2, 3, 4, 5, 6);
-            LottoMachine lottoMachine = LottoMachine.getInstance();
             Method method = LottoMachine.class.getDeclaredMethod("extractRandomNumbers");
             method.setAccessible(true);
 
@@ -32,16 +33,27 @@ public class LottoMachineTest extends NsTest {
     void case2_convert_numbers_to_lotto() {
         try {
             Class<Lotto> result = Lotto.class;
-            LottoMachine lottoMachine = LottoMachine.getInstance();
             Method method = LottoMachine.class.getDeclaredMethod("convertLotto", List.class);
             method.setAccessible(true);
 
-            assertThat(method.invoke(lottoMachine,List.of(1,2,3,4,5,6))).isInstanceOf(result);
-        }catch (Exception ignored){
+            assertThat(method.invoke(lottoMachine, List.of(1, 2, 3, 4, 5, 6))).isInstanceOf(result);
+        } catch (Exception ignored) {
         }
     }
 
-    @Override
-    protected void runMain() {
+    @DisplayName("구입 금액이 천원 단위인 경우 금액에 맞게 로또 번호 뽑기")
+    @Test
+    void case3_pick_lotteries() {
+        List<Lotto> input = lottoMachine.pickLotteries(5000);
+        int result = 5;
+        assertThat(input.size()).isEqualTo(result);
     }
+
+    @DisplayName("구입 금액이 천원 단위가 아닌 경우 예외 발생")
+    @Test
+    void case4_validate_unit() {
+        assertThatThrownBy(() -> lottoMachine.pickLotteries(5005))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
