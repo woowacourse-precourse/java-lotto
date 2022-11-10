@@ -16,9 +16,10 @@ public class UserInputHandler {
         return money / moneyOfOneTicket;
     }
 
-    public List<Integer> getWinningNumbers(){
+    public Lotto getWinningNumbers(){
         String usersInput = Console.readLine();
-        return convertToLottoNumbers(usersInput);
+        List<Integer> processedInput = convertToLottoNumbers(usersInput);
+        return new Lotto(processedInput);
     }
 
     public int getBonusNumbers(Lotto winningNumbers){
