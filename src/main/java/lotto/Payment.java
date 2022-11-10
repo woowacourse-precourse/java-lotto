@@ -16,4 +16,7 @@ public class Payment {
     public int purchase() {
         return pay / 1000;
     }
+    public int getPay() {
+        return pay;
+    }
 }
