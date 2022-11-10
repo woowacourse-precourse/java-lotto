@@ -10,4 +10,14 @@ public class Error {
             throw new IllegalArgumentException("[ERROR] The unit of the purchase amount is not 1,000.");
         return true;
     }
+
+    // TODO : 입력 값에 문자가 포함되어 있는 경우 예외 처리 한다.
+    public boolean isContainCharacter(String purchaseAmount) throws IllegalArgumentException{
+        try {
+            int temp = Integer.parseInt(purchaseAmount);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException("[ERROR] Characters exist in the input value.");
+        }
+        return true;
+    }
 }
