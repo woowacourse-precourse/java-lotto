@@ -1,24 +1,20 @@
 package lotto;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import lotto.domain.User;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
 
+    @DisplayName("사용자가 입력한 돈만큼 로또 생성 기능 테스트")
     @Test
     void userLottoNumbers(){
         User user = new User(5000);
-        assertThat(user.getMyLottoNumbers().size()).isEqualTo(5);
-    }
-    @Test
-    void userMoney(){
-        User user = new User(1000);
-        assertThat(user.getMoney()).isEqualTo(1000);
+
+        int size = user.getMyLottoNumbers().size();
+
+        assertThat(size).isEqualTo(5);
     }
 }
