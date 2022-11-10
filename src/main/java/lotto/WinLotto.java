@@ -14,4 +14,8 @@ public class WinLotto extends Lotto {
     private void validate(List<Integer> numbers, int bonusNumber) {
         Util.isValidBonusNumber(numbers, bonusNumber);
     }
+
+    public Result getResult(Lotto generatedLotto) {
+        return new Result(this, generatedLotto);
+    }
 }

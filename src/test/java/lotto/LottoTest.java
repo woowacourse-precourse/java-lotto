@@ -1,6 +1,8 @@
 package lotto;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
@@ -42,6 +44,7 @@ class LottoTest {
                 .hasMessage(ErrorMessage.INVALID_BONUS_NUMBER.getValue());
     }
 
+    @DisplayName("자동으로 로또 번호를 생성한다.")
     @RepeatedTest(10)
     void createLotto() {
         Lotto generatedLotto = Lotto.create();
@@ -51,4 +54,18 @@ class LottoTest {
             assertThat(number).isGreaterThan(0).isLessThan(46);
         }
     }
+
+    @Nested
+    class getSingleResult {
+
+        @DisplayName("하나의 로또 번호에 대한 당첨 내역을 출력한다.")
+        @Test
+        void match6() {
+            WinLotto winLotto = new WinLotto(List.of(1, 2, 4, 3, 5, 6), 7);
+            Lotto generatedLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+            Result result = winLotto.getResult(generatedLotto);
+            assertThat(result).isEqualTo(new Result(6, false));
+        }
+    }
+
 }
