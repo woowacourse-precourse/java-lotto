@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Arrays;
+
 import model.Lotto;
 
 import org.assertj.core.api.Assertions;
@@ -8,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -30,20 +33,31 @@ class LottoTest {
     @DisplayName("[Lotto] 로또 번호가 1~45 이상만을 생성하는지 검사한다 1000번을 검사해 정확도 100%를 테스트한다.")
     void generateLottoInRange() {
         //given
-        int testCount=1000;
-        int errorCount=0;
+        int testCount = 1000;
+        int errorCount = 0;
         //when
         List<Integer> generateNumbers = Lotto.generateLotto();
         for (int test = 0; test < testCount; test++) {
-            try{
+            try {
                 new Lotto(generateNumbers);
-            }catch (IllegalArgumentException exception){
+            } catch (IllegalArgumentException exception) {
                 errorCount++;
             }
         }
-        int accurate = Math.abs(testCount - errorCount) / testCount*100;
+        int accurate = Math.abs(testCount - errorCount) / testCount * 100;
         //then
-        Assertions.assertThat(accurate).isEqualTo(100);
+        assertThat(accurate).isEqualTo(100);
     }
 
+    @Test
+    @DisplayName("[Lotto] 오름차순 정렬 테스트")
+    void sortAscendNumbers(){
+        //given
+        List<Integer> notSortNumbers= Arrays.asList(43,21,3,2,23,1);
+        //when
+        Lotto lotto = new Lotto(notSortNumbers);
+        //then
+        List<Integer> lottoNumbers = lotto.getNumbers();
+        assertThat(lottoNumbers).isEqualTo(Arrays.asList(1, 2, 3, 21, 23, 43));
+    }
 }
