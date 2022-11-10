@@ -10,8 +10,11 @@ public class UserNumbersValidation {
 
     public static void validate(String userInput) {
         validateInputFormat(userInput);
-        validateNumberRange(userInput);
-        validateNoDuplicateNumbers(userInput);
+
+        List<Integer> userNumbers = UserUtil.convertUserInputToNumbers(userInput);
+
+        validateNumberRange(userNumbers);
+        validateNoDuplicateNumbers(userNumbers);
     }
 
     private static void validateInputFormat(String uerInput) {
@@ -20,16 +23,14 @@ public class UserNumbersValidation {
         }
     }
 
-    private static void validateNumberRange(String userInput) {
-        List<Integer> userNumbers = UserUtil.convertUserInputToNumbers(userInput);
+    private static void validateNumberRange(List<Integer> userNumbers) {
         boolean correctNumber = userNumbers.stream().allMatch(LottoEnum::isNumberInRange);
         if (!correctNumber) {
             throw new IllegalArgumentException(ExceptionMessage.NUMBER_RANGE.toString());
         }
     }
 
-    private static void validateNoDuplicateNumbers(String userInput) {
-        List<Integer> userNumbers = UserUtil.convertUserInputToNumbers(userInput);
+    private static void validateNoDuplicateNumbers(List<Integer> userNumbers) {
         HashSet<Integer> numberAppeared = new HashSet<>();
         for (Integer number : userNumbers) {
             checkDuplicateNumber(number, numberAppeared);
