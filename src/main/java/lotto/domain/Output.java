@@ -2,6 +2,8 @@ package lotto.domain;
 
 import java.util.List;
 
+import static java.lang.String.valueOf;
+
 /**
  * packageName : lotto.domain
  * fileName : Output
@@ -19,7 +21,7 @@ public class Output {
 
     }
 
-    public static List<Integer> outputLottoRank(int inputNumbers) {
-        return null;
+    public static void outputLottoRank(int RankOne, int RankTwo, int RankThree, int RankFour, int RankFive) {
+        System.out.println(Rank.valueOf(Rank.ONE.toString()));
     }
 }
