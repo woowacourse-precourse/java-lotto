@@ -1,6 +1,9 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.List;
 import lotto.global.Message;
+import lotto.util.RandomNumberGenerator;
 
 public class LottoController {
 
@@ -10,6 +13,19 @@ public class LottoController {
         Message.GAME_INPUT.print();
         Integer userMoney = userInput.getUserInput();
         return userMoney / 1000;
+    }
+
+    public List<Lotto> issueLotto(Integer lottoCount) {
+        RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+
+        List<Lotto> issuedLotto = new ArrayList<>();
+        for (int i = 0; i < lottoCount; i++) {
+            List<Integer> lottoNumbers = randomNumberGenerator.generateRandomNumber();
+            Lotto lotto = new Lotto(lottoNumbers);
+            issuedLotto.add(lotto);
+        }
+
+        return issuedLotto;
     }
 
 }
