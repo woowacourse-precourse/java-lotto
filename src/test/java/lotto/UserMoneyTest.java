@@ -40,4 +40,19 @@ public class UserMoneyTest {
         //then
         assertThrows(IllegalArgumentException.class, () -> userMoneyValidate.negativeNumber(testMoney));
     }
+
+    @Test
+    public void 유저입력돈이1000원으로나누어떨어지나요() throws Exception{
+        //given
+        String testInput = "10001";
+        int testMoney = userMoneyValidate.convertStringToInt(testInput);
+        //when
+        try{
+            userMoneyValidate.isDivideThousand(testMoney);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        //then
+        assertThrows(IllegalArgumentException.class, () -> userMoneyValidate.isDivideThousand(testMoney));
+    }
 }
