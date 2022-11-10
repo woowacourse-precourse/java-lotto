@@ -10,6 +10,16 @@ public class ConsumerResult {
             System.out.println(purchaseLotto.myLottoNumber());
         }
     }
+    public int compareLotto(List<Integer> myLotto, List<Integer> lottoNumber, int bonusNumber){
+        int count=0;
+        for (int index=0; index< lottoNumber.size();index++){
+            if (lottoNumber.contains(myLotto.get(index))){
+                count++;
+            }
+        }
+        return 0;
+    }
+
     public float profit(){
         return 0;
     }
