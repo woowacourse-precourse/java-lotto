@@ -1,5 +1,8 @@
-package lotto;
+package model;
 
+import model.Lotto;
+
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,5 +26,24 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @Test
+    @DisplayName("[Lotto] 로또 번호가 1~45 이상만을 생성하는지 검사한다 1000번을 검사해 정확도 100%를 테스트한다.")
+    void generateLottoInRange() {
+        //given
+        int testCount=1000;
+        int errorCount=0;
+        //when
+        List<Integer> generateNumbers = Lotto.generateLotto();
+        for (int test = 0; test < testCount; test++) {
+            try{
+                new Lotto(generateNumbers);
+            }catch (IllegalArgumentException exception){
+                errorCount++;
+            }
+        }
+        int accurate = Math.abs(testCount - errorCount) / testCount*100;
+        //then
+        Assertions.assertThat(accurate).isEqualTo(100);
+    }
+
 }
