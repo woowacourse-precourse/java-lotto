@@ -17,8 +17,8 @@ public class UserInputHandler {
     }
 
     public List<Integer> getWinningNumbers(){
-        String input = Console.readLine();
-        return convertToLottoNumbers(input);
+        String usersInput = Console.readLine();
+        return convertToLottoNumbers(usersInput);
     }
 
     private List<Integer> convertToLottoNumbers(String input){
