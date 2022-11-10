@@ -32,4 +32,15 @@ class WinnerTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
+
+    @DisplayName("보너스 번호 입력 시 당첨 번호와 겹치면 예외가 발생한다.")
+    @Test
+    void bonusNumberIncludedInWinningNumbers() {
+        String winningNumbers = "1,2,3,4,5,6";
+        String bonusNumber = "6";
+
+        assertThatThrownBy(() -> new Winner(winningNumbers, bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
 }
