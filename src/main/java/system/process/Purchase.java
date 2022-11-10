@@ -16,17 +16,12 @@ public class Purchase {
 
     private PurchasedLottosData proceedPurchase() {
 
-        printAmountPaidText();
-
         int amount = calculateAvailableAmount(inputAmountPaid());
         return purchaseLottos(amount);
     }
 
-    void printAmountPaidText() {
-        System.out.println("구입금액을 입력해 주세요.");
-    }
-
     int inputAmountPaid() throws IllegalArgumentException {
+        printInputAmountPaidText();
         String moneyInput = Input.input();
 
         if (moneyInput.contains(",")) {
@@ -34,6 +29,10 @@ public class Purchase {
         }
 
         return Integer.parseInt(moneyInput);
+    }
+
+    void printInputAmountPaidText() {
+        System.out.println("구입금액을 입력해 주세요.");
     }
 
     int calculateAvailableAmount (int amountPaid) throws IllegalArgumentException {
@@ -52,5 +51,5 @@ public class Purchase {
     private void printPurchasedLottoList(){
         purchasedLottos.printLottoList();
     }
-    
+
 }
