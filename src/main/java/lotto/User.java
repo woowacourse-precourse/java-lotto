@@ -30,10 +30,10 @@ public class User {
         }
     }
 
-    public void readLotto(){
+    public List<Integer> readLotto(){
         String inputLottoNumber = readLine();
         validateInputLottoNumber(inputLottoNumber);
-        lottos.add(new Lotto(convertLottoNumber(inputLottoNumber)));
+        return convertLottoNumber(inputLottoNumber);
     }
 
     public List<Integer> convertLottoNumber(String inputLottoNumber) {
