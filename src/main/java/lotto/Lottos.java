@@ -12,13 +12,14 @@ public class Lottos {
     private static final int MIN_VALUE = 1;
     private static final int MAX_VALUE = 45;
     private static final int COUNT = 6;
+    LottoResult lottoResult;
+    int totalWinningAmount;
     // com Lottos
     private int lottoCount;
     private List<Lotto> lottosNumbers;
     // user Lottos
     private Lotto winningLotto;
     private int bonusNum;
-
 
     public Lottos(int lottoCount, Lotto winningLotto, int bonusNum) {
         this.lottoCount = lottoCount;
@@ -39,6 +40,11 @@ public class Lottos {
         this.bonusNum = bonusNum;
     }
 
+    public void countResult() {
+    }
+
+    public void calcAmount() {
+    }
 
     public int getLottoCount() {
         return this.lottoCount;
@@ -46,10 +52,6 @@ public class Lottos {
 
     public List<Lotto> getLottos() {
         return this.lottosNumbers;
-    }
-
-    public Lotto getWinningLotto() {
-        return winningLotto;
     }
 
     public int getBonusNum() {
