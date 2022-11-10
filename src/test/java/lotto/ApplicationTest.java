@@ -18,15 +18,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
-
-
-    @DisplayName("사용자 금액 입력 예외")
-    @ParameterizedTest
-    @CsvSource(value = {"1000j", "1200"})
-    void 로또금액_예외의경우_입력(String money){
-      Assertions.assertThatThrownBy(()-> UserMoney.checkMoney(money)).isInstanceOf(IllegalArgumentException.class);
-    }
-
     @Test
     void 기능_테스트() {
         assertRandomUniqueNumbersInRangeTest(
@@ -62,18 +53,24 @@ class ApplicationTest extends NsTest {
     }
 
 
-    @Test // 이건 좀 의도를 모르겠음. 예외를 출력하는데도 결과값이 간단하게 처리가 되지 않는 부분이 전혀 이해가 안됨.
-    void 예외_테스트() {
-   /*     assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException("1000j")).hasMessageContaining(ERROR_MESSAGE);
-            assertThat(output()).contains(ERROR_MESSAGE);
-        });*/
-
-
+    @Test
+    @DisplayName("사용자 금액입력에 숫자가 아닌 것이 올 경우")
+    void 입력에숫자가아닌_예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
+
+    }
+
+    @Test
+    @DisplayName("사용자 금액숫자가 잘못된 경우")
+    void 금액숫자_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("1200");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+
     }
 
     @Override
