@@ -11,11 +11,6 @@ public class Checker {
 	private static final int MIN_NUMBER = 1;
 	private static final String WINNING_NUMBER_DELIMITER = ",";
 	private static final String JOIN_DELIMITER = "";
-	private static int FIRST;
-	private static int SECOND;
-	private static int THIRD;
-	private static int FOURTH;
-	private static int FIFTH;
 	private static List<String> winningNumber;
 
 	public static void checkUserInput(String userInput) {

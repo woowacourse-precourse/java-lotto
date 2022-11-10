@@ -20,12 +20,13 @@
 - [x] 보너스 번호를 입력 받는다. - Input#userInput()
   - [x] 잘못된 보너스 번호 입력시 예외 발생 - Checker#checkBonusNumberInput()
 
-- [] 사용자의 로또 번호와 당첨 번호를 비교한다. - Checker#compareNumbers()
-  - [] 1등: 6개 번호 일치 / 2,000,000,000원 - Checker#FIRST
-  - [] 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원 - Checker#SECOND
-  - [] 3등: 5개 번호 일치 / 1,500,000원 - Checker#THIRD
-  - [] 4등: 4개 번호 일치 / 50,000원 - Checker#FOURTH
-  - [] 5등: 3개 번호 일치 / 5,000원 - Checker#FIFTH
+- [] 사용자의 로또 번호와 당첨 번호를 비교한다. - makeWinner#compareNumbers()
+  - [x] List에 n등에 대한 맞춰야하는 번호, 보너스 번호 맞춤여부, 상금을 담음 - makeWinner#initWinnerPrize()
+    - [x] 1등: 6개 번호 일치 / 2,000,000,000원 - MakeWinner#initWinnerPrize()
+    - [x] 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원 - MakeWinner#initWinnerPrize()
+    - [x] 3등: 5개 번호 일치 / 1,500,000원 - MakeWinner#initWinnerPrize()
+    - [x] 4등: 4개 번호 일치 / 50,000원 - MakeWinner#initWinnerPrize()
+    - [x] 5등: 3개 번호 일치 / 5,000원 - MakeWinner#initWinnerPrize()
 
 - [] 당첨 통계 메세지를 출력한다. - View#WINNING_MESSAGE_GUIDE_MESSAGE
   - [] 각 등수가 몇 개인지 출력한다. - View#showWinnings()
