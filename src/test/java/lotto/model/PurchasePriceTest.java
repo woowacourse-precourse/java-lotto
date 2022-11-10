@@ -8,8 +8,15 @@ import org.junit.jupiter.api.Test;
 class PurchasePriceTest {
     @DisplayName("숫자가 아닌 경우 예외가 발생한다.")
     @Test
-    void purchasePriceByString() {
+    void createPurchasePriceByString() {
         assertThatThrownBy(() -> new PurchasePrice("abcd"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("1000원 단위가 아닐 경우 예외가 발생한다.")
+    @Test
+    void createPurchasePriceByUnit() {
+        assertThatThrownBy(() -> new PurchasePrice("1500"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
