@@ -4,10 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
-public class BuyLotto {
+public class AutomaticLottery {
     public int getLottoPieces(String amount) {
         validateInputType(amount);
         validateFirstSequence(amount);
@@ -16,9 +15,9 @@ public class BuyLotto {
     }
 
     public List<List<Integer>> buyLotteries(String amount) {
+        int lottoPieces = getLottoPieces(amount);
         List<List<Integer>> lotteries = new ArrayList<>();
 
-        int lottoPieces = getLottoPieces(amount);
         System.out.println(lottoPieces + "개를 구매했습니다.");
 
         for (int seq = 0; seq < lottoPieces; seq++) {

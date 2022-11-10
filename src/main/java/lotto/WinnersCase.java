@@ -1,6 +1,6 @@
 package lotto;
 
-public enum Winners {
+public enum WinnersCase {
     FIFTH("3개 일치 (5,000원) - ", 5000L, 3.0, 0),
     FOURTH("4개 일치 (50,000원) - ", 50000L, 4.0, 0),
     THIRD("5개 일치 (1,500,000원) - ", 1500000L, 5.0, 0),
@@ -12,14 +12,12 @@ public enum Winners {
     private Double rightNumber;
     private Integer count;
 
-    Winners(String ranking, Long prizeMoney, Double rightNumber, Integer count) {
+    WinnersCase(String ranking, Long prizeMoney, Double rightNumber, Integer count) {
         this.ranking = ranking;
         this.prizeMoney = prizeMoney;
         this.rightNumber = rightNumber;
         this.count = count;
     }
-
-
 
     public String getRanking() {
         return ranking;

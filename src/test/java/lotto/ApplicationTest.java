@@ -65,7 +65,7 @@ class ApplicationTest extends NsTest {
     @Test
     void validateInputValueForMoneyCase1() {
         String input = "1001";
-        BuyLotto buyLotto = new BuyLotto();
+        AutomaticLottery buyLotto = new AutomaticLottery();
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -77,7 +77,7 @@ class ApplicationTest extends NsTest {
     @Test
     void validateInputValueForMoneyCase2() {
         String input = "100";
-        BuyLotto buyLotto = new BuyLotto();
+        AutomaticLottery buyLotto = new AutomaticLottery();
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -89,7 +89,7 @@ class ApplicationTest extends NsTest {
     @Test
     void validateInputValueForMoneyCase3() {
         String input = "03000";
-        BuyLotto buyLotto = new BuyLotto();
+        AutomaticLottery buyLotto = new AutomaticLottery();
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -101,7 +101,7 @@ class ApplicationTest extends NsTest {
     @Test
     void validateInputValueForCharacterCase1() {
         String input = "/001";
-        BuyLotto buyLotto = new BuyLotto();
+        AutomaticLottery buyLotto = new AutomaticLottery();
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -113,7 +113,7 @@ class ApplicationTest extends NsTest {
     @Test
     void validateInputValueForCharacterCase2() {
         String input = " 10000";
-        BuyLotto buyLotto = new BuyLotto();
+        AutomaticLottery buyLotto = new AutomaticLottery();
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -125,7 +125,7 @@ class ApplicationTest extends NsTest {
     @Test
     void validateInputValueForCharacterCase3() {
         String input = "10,000";
-        BuyLotto buyLotto = new BuyLotto();
+        AutomaticLottery buyLotto = new AutomaticLottery();
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
                         .isInstanceOf(IllegalArgumentException.class)
@@ -137,7 +137,7 @@ class ApplicationTest extends NsTest {
     @Test
     void validateInputValueForBuyLotto() {
         String input = "10000";
-        BuyLotto buyLotto = new BuyLotto();
+        AutomaticLottery buyLotto = new AutomaticLottery();
         int lotto = buyLotto.getLottoPieces(input);
         assertThat(lotto).isEqualTo(10);
         assertThat(output()).doesNotContain(ERROR_MESSAGE);
@@ -146,7 +146,7 @@ class ApplicationTest extends NsTest {
     @DisplayName("조건에 맞게 입력하면 정상적으로 로또를 구매하여 번호가 담긴 리스트를 반환한다.")
     @Test
     void buyLotteriesTest() {
-        BuyLotto buyLotto = new BuyLotto();
+        AutomaticLottery buyLotto = new AutomaticLottery();
         List<List<Integer>> buyLotteries = buyLotto.buyLotteries("8000");
         assertThat(output()).contains("8개");
         assertThat(buyLotteries.size()).isEqualTo(8);
@@ -320,14 +320,14 @@ class ApplicationTest extends NsTest {
     void enumPrintTest() {
         double rightNumber = 3; // 3개 맞춤(5등)
         for (int seq = 0; seq < 3; seq++) { // 세번 맞춤(5등 세번)
-            if (rightNumber == Winners.FIFTH.getRightNumber()) {
-                Winners.FIFTH.addCount();
+            if (rightNumber == WinnersCase.FIFTH.getRightNumber()) {
+                WinnersCase.FIFTH.addCount();
             }
         }
-        Integer count = Winners.FIFTH.getCount(); // 몇번 맞췄는지
-        Winners.FIFTH.totalPrizeMoney(5000L, count); // 총 당첨 금액 저장
-        String ranking = Winners.FIFTH.getRanking(); // 출력을 위한
-        Long prizeMoney = Winners.FIFTH.getPrizeMoney(); // 총 당첨 금액 get
+        Integer count = WinnersCase.FIFTH.getCount(); // 몇번 맞췄는지
+        WinnersCase.FIFTH.totalPrizeMoney(5000L, count); // 총 당첨 금액 저장
+        String ranking = WinnersCase.FIFTH.getRanking(); // 출력을 위한
+        Long prizeMoney = WinnersCase.FIFTH.getPrizeMoney(); // 총 당첨 금액 get
         System.out.println(ranking + count + "개"); // 출력
 
         assertThat(output()).contains("3개 일치");
