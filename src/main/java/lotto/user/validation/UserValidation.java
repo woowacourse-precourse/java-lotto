@@ -7,12 +7,21 @@ import lotto.user.UserUtil;
 public class UserValidation {
     private static final int AMOUNT_UNITS = 1000;
     private static final int REMAINDER_ZERO = 0;
+    private static final String INPUT_NUMBERS_REGEXP = "^([1-9]+,)+[1-9]+$";
 
     public static void validate(String userAmount) {
         validateUnits(userAmount);
     }
+
     public static void validateNumbers(String userInput) {
+        validateInputFormat(userInput);
         validateNumberRange(userInput);
+    }
+
+    private static void validateInputFormat(String uerInput) {
+        if (!uerInput.matches(INPUT_NUMBERS_REGEXP)) {
+            throw new IllegalArgumentException(ExceptionMessage.WRONG_FORMAT.toString());
+        }
     }
 
     private static void validateNumberRange(String userInput) {
