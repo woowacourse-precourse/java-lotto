@@ -1,7 +1,6 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.regex.Pattern;
 
 public class LottoGame {
