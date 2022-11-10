@@ -17,4 +17,9 @@ public class User {
         UserNumbersValidation.validate(userNumbers);
         return UserUtil.convertUserInputToNumbers(userNumbers);
     }
+
+    public static Integer inputBonusNumber() {
+        String userNumbers = Console.readLine();
+        return Integer.valueOf(userNumbers);
+    }
 }
