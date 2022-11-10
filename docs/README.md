@@ -8,7 +8,7 @@
 - [x] 당첨 번호(6자리)와 구매한 로또 번호(6자리)를 비교할 수 있다. -Rank#setMatchingNumbers()
     - [x] 몇 개의 숫자와 일치하는지 확인한다. - Lotto#checkNumbers()
         - 예외상황
-            - [x] 6개 이상일 때
+            - [x] 6개가 아닐 때
             - [x] 중복 포함일 때
             - [ ] 범위를 벗어난 수가 존재할 때
     - [x] 보너스 번호와 일치하는지 판단한다. Bonus#checkNumber()
@@ -17,15 +17,15 @@
             - [x] 범위를 벗어난 수
 - [x] 일치하는 번호로 당첨 등수를 알 수 있다 Rank#determine()
 - [x] 당첨 등수 당 개수를 확인한다. -Rank#countWinCards()
-- [ ] 수익률을 계산한다. - Amount#calculateEarningRate()
+- [x] 수익률을 계산한다. - Amount#calculateEarningRate()
     - 구입 금액 / 총 당첨 금액 * 100
 
 ## enum 목록
 
 - [x] 등수와 당첨 금액 -Place#FIRST,SECOND, THIRD, FOURTH, FIFTH
     - n개 일치(금액)
-- [ ] 안내 문자열 -InputGuide#PURCHASING_AMOUNT, WINNING_NUMBER, BONUS_NUMBER
-- [ ] 에러 문구 -ErrorGuide#
+- [x] 안내 문자열 -InputGuide#PURCHASING_AMOUNT, WINNING_NUMBER, BONUS_NUMBER
+- [x] 에러 문구 -Bug#AMOUNT,LOTTO,BONUS
 
 ## UI 기능 목록
 
