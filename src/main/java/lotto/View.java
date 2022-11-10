@@ -7,7 +7,7 @@ public class View {
 	private static String BONUS_NUMBER_GUIDE_MESSAGE;
 	private static String WINNING_MESSAGE_GUIDE_MESSAGE;
 
-	public static void showPurchaseInputGuideMessage(){
+	public static void showPurchaseInputGuideMessage() {
 		System.out.println(PURCHASE_INPUT_GUIDE_MESSAGE);
 	}
 
