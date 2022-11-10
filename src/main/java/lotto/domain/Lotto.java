@@ -16,7 +16,8 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-
+        isValidateDuplicated(numbers);
+        isValidateNumbersLength(numbers);
     }
 
     private void isValidateDuplicated(List<Integer> numbers) {
