@@ -41,6 +41,7 @@ class LottoTest {
     @ValueSource(ints = {0, 46})
     void outOfRangeException(int lottoNumber) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, lottoNumber)));
+                .isThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, lottoNumber)))
+                .withMessageStartingWith(ERROR_MESSAGE);
     }
 }
