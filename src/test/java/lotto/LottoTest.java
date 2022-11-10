@@ -24,4 +24,10 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("구매자가 지불한 돈이 1,000원 단위가 아니라면 예외가 발생한다.")
+    @Test
+    void validatePayment() {
+        assertThatThrownBy(() -> LottoGenerator.validatePayment(10200))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
