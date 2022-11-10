@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Generator {
 
-    public static String userInput() {
+    public String userInput() {
         String userMoney;
 
         System.out.println("구입 금액을 입력하세요 : ");
