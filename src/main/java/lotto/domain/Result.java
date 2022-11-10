@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +9,9 @@ public class Result {
     private Lotto winningNumbers;
     private Integer bonus;
     private List<Integer> counts;
-
     private List<Integer> bonuses;
+
+    private Integer profit;
 
     public Result(List<Lotto> userLottos, Lotto winningNumbers, Integer bonus) {
         this.userLottos = userLottos;
@@ -26,7 +27,7 @@ public class Result {
         return bonuses;
     }
 
-    public void calc(){
+    public void calc() {
         getCount();
 
     }
@@ -42,7 +43,7 @@ public class Result {
         }
     }
 
-    private void init(){
+    private void init() {
         counts = new ArrayList<>();
         bonuses = new ArrayList<>();
     }
@@ -55,8 +56,8 @@ public class Result {
         return count;
     }
 
-    private void hasBonus(List<Integer> userNumbers){
-        if (userNumbers.contains(bonus)){
+    private void hasBonus(List<Integer> userNumbers) {
+        if (userNumbers.contains(bonus)) {
             bonuses.add(1);
             return;
         }

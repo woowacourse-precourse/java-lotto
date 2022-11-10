@@ -6,6 +6,7 @@ import java.util.List;
 
 public class WinningNumberCheck {
 
+    private final String rangeErrMsg = "1~45사이의 숫자를 입력해 주세요.";
     private final int startNum = 1;
     private final int endNum = 45;
 
@@ -14,7 +15,7 @@ public class WinningNumberCheck {
         String[] split = winningNumber.split(",");
         List<String> numbers = Arrays.asList(split);
         if (!checkNumber(numbers)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(rangeErrMsg);
         }
         return toIntegerList(numbers);
     }

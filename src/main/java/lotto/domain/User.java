@@ -1,9 +1,8 @@
-package lotto;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class User {
@@ -12,7 +11,7 @@ public class User {
     private final int endNumber = 45;
     private final int count = 6;
     private Integer money;
-    private List<List<Integer>> myLottoNumbers;
+    private List<Lotto> myLottoNumbers;
 
     public User(Integer money) {
         this.money = money;
@@ -23,7 +22,7 @@ public class User {
         return money;
     }
 
-    public List<List<Integer>> getMyLottoNumbers() {
+    public List<Lotto> getMyLottoNumbers() {
         return myLottoNumbers;
     }
 
@@ -32,8 +31,7 @@ public class User {
         int times = this.money / 1000;
         for (int i = 0; i < times; i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(startNumber, endNumber, count);
-            Collections.sort(numbers);
-            myLottoNumbers.add(numbers);
+            myLottoNumbers.add(new Lotto(numbers));
         }
     }
 }
