@@ -22,7 +22,7 @@ public class Lotto {
         }
     }
 
-    public static int moneyOfQuantity(int pay) {
+    public static int moneyOfQuantity(int pay) throws PayMoneyException {
         if (pay % PRICE != 0) {
             throw new PayMoneyException("지불한 돈이 0으로 나누어 떨어지지 않습니다.");
         }
@@ -46,5 +46,16 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    public WinningNumberCount winningLottoNumberCount(WinningLottoNumber winningLottoNumber) {
+        int winningCount = (int) numbers.stream()
+                .filter(number -> winningLottoNumber.getWinningNumbers().contains(number))
+                .count();
+
+        boolean isMatchBonusNumber = numbers.stream()
+                .anyMatch(number -> number == winningLottoNumber.getBonusNumber());
+
+        return WinningNumberCount.of(winningCount, isMatchBonusNumber);
     }
 }
