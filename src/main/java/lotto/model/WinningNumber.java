@@ -10,12 +10,13 @@ import lotto.view.InputView;
 
 public class WinningNumber {
 
-    private List<Integer> winningNumbers;
+    public static List<Integer> winningNumbers;
 
     public WinningNumber() {
         String input = removeSpace(InputView.inputWinningNumbers());
         List<Integer> numbers = convertStringListToIntList(separateStringByComma(input));
         this.winningNumbers = validateWinningNumbers(numbers);
+        System.out.println(numbers);
     }
 
     private static List<Integer> validateWinningNumbers(List<Integer> numbers) {
@@ -30,8 +31,6 @@ public class WinningNumber {
         }
         return numbers;
     }
-
-
 
     private static List<String> separateStringByComma(String input) {
         return Arrays.asList(input.split(","));
