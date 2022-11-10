@@ -10,7 +10,7 @@ public class User {
     private List<Lotto> lottos;
     private int lottoNum;
     private int money;
-    private double earn;
+    private int earn;
 
 
     public User(int money) {
@@ -19,7 +19,7 @@ public class User {
         this.money = money;
         this.lottoNum = money / 1000;
         generateLottos();
-        this.earn = 0.0;
+        this.earn = 0;
     }
 
 
