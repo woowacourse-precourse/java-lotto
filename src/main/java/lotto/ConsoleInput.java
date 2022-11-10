@@ -1,8 +1,13 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class ConsoleInput {
 
     public static void purchaseLotto() {
+        String purchaseAmount = Console.readLine();
+
+        validatePurchaseInput(purchaseAmount);
 
     }
 
@@ -10,12 +15,7 @@ public class ConsoleInput {
 
     }
 
-    private static boolean validatePurchaseInput(String input) {
+    private static void validatePurchaseInput(String purchaseAmount) {
 
-        return false;
-    }
-
-    public static boolean validatePurchaseInputForTest(String input) {
-        return validatePurchaseInput(input);
     }
 }
