@@ -16,9 +16,9 @@ public class Money {
 
     public void validate(String money) {
         if (!validateIsDigit(money))
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         if (!validateIsDivide(money))
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException("로또 번호는 1000으로 나누어지는 숫자여야 합니다.");
     }
 
     public boolean validateIsDigit(String money) {
