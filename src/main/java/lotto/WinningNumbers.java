@@ -17,7 +17,7 @@ public class WinningNumbers {
             this.message = message;
         }
     }
-    
+
     private String setNumber() {
         return Console.readLine();
     }
@@ -36,5 +36,9 @@ public class WinningNumbers {
 
     private List<Integer> stringToInt(List<String> numbers) {
         return numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
+    }
+
+    private List<Integer> convertNumbers(String numbers) {
+        return stringToInt(arrayToList(splitNumbers(numbers)));
     }
 }
