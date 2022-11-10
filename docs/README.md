@@ -6,7 +6,7 @@
 - [X] 중복되지 않은 1~45 범위의 숫자 6개의 번호 생성 - LottoMachine.extractRandomNumbers()
 - [X] 번호를 로또 객체로 만들기 - LottoMachine.convertLotto(List<Integer>)
 - [X] 위 과정을 구입금액/1,000 만큼 생성 - LottoMachine.pickLotteries(int)
-- [ ] 몇 개 구매했는지와 로또 번호들을 출력할 문구 만들기
+- [X] 몇 개 구매했는지와 로또 번호들을 출력할 문구 만들기 - Customer.toLottoString()
 
 ## 당첨 번호 추첨
 
@@ -33,7 +33,7 @@
 
 ## 기타 및 추가사항
 
-- [ ] 입력값이 글자인지 숫자인지 확인하기(예외처리 - 숫자를 입력해주시기 바랍니다)
+- [X] 입력값이 글자인지 숫자인지 확인하기(예외처리 - 숫자를 입력해주시기 바랍니다) - Customer.validateNumeric(String)
 
 ## 참고사항
 
