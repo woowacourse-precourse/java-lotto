@@ -60,6 +60,4 @@ class NumbersValidatorTest {
         assertThatThrownBy(() -> isValidSize(numbers)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NUMBERS_SIZE_ERROR);
     }
-
-
 }
