@@ -15,6 +15,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (isWrongSize(numbers)) {
+            System.out.print("[ERROR] 로또 번호는 6개입니다.");
             throw new IllegalArgumentException();
         }
         if (isDuplicate(numbers)) {
