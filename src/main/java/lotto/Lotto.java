@@ -13,6 +13,8 @@ public class Lotto {
 
     private final List<Integer> numbers; // 기존 코드
     private static final int LOTTO_LENGTH = 6;
+    private static int ABC;
+
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public Lotto(List<Integer> numbers) throws IOException { // 생성자, 기존 코드
@@ -27,7 +29,10 @@ public class Lotto {
         if (nullCheck == null){
             throw new IllegalArgumentException("[ERROR] 값을 입력해주세요");
         }
+
         int inputMoney = Integer.parseInt(nullCheck);
+        ABC = inputMoney;
+
         if (inputMoney % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1,000원 단위입니다.");
         }
@@ -44,10 +49,8 @@ public class Lotto {
 
     // 로또 개수
     public static int theNumberOfLotto() throws IOException {
-        int inputMoney = inputMoney() / 1000;
-        if (inputMoney % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1,000원 단위입니다.");
-        }
+        int inputMoney = ABC / 1000;
+
         return inputMoney;
     }
 
@@ -60,18 +63,19 @@ public class Lotto {
 
     public static List<Integer> winnerNumber() throws IOException {
         List<Integer> winnerNumber = new ArrayList<>();
-        String a = br.readLine();
+        System.out.println("당첨 번호를 입력해주세요.");
+        String inputNumbers = br.readLine();
+        String[] numberList = inputNumbers.split(",");
 
-        String[] numberList = a.split(",");
-        for (int i = 0; i < numberList.length; i = i + 2) {
-            winnerNumber.add(i);
+        for (int i = 0; i < LOTTO_LENGTH; i++) {
+            winnerNumber.add(Integer.parseInt(numberList[i]));
         }
         Collections.sort(winnerNumber);
 
-        if (a.length() == 11) {
+        if (numberList.length == 6) {
             return winnerNumber;
         }
-        if (a.length() != 11) {
+        if (numberList.length != 6) {
             throw new IllegalArgumentException("[ERROR] 로또는 여섯 자리의 수 입니다. ");
         }
 
