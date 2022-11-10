@@ -10,7 +10,7 @@
        - lottoNumberSize : 사이즈가 6 이상일 경우 검증 Method
        - lottoNumberRangeCheck : 로또 숫자 범위 검증 Method
    - Money : 사용자의 돈 Entity
-   - User : 사용자 Entity
+   - User : 사용자 Entity, Money와 lottos를 갖고 있다.
    - WinningNumbers : 당첨 Entity
    - Ball : 당첨 공 Entity
    - ResultMachine : 게임 결과 담당 Entity
