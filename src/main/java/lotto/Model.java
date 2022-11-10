@@ -86,21 +86,4 @@ public class Model {
         Collections.sort(lottoNumbers);
         return lottoNumbers;
     }
-
-    public enum Ranking{
-        FIRST(0),
-        SECOND(0),
-        THIRD(0),
-        FORTH(0),
-        FIFTH(0);
-
-        final private int ranking;
-        private int getRanking() {
-            return ranking;
-        }
-        Ranking(int ranking) {
-            this.ranking = ranking;
-        }
-
-    }
 }
