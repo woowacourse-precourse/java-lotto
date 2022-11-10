@@ -12,9 +12,9 @@ public class Util {
     }
 
     public static boolean isDividedBuyThousand(String input){
-        long longInput = Long.valueOf(input);
+        long convertInput = Long.valueOf(input);
 
-        if (longInput % 1000 == 0){
+        if (convertInput % 1000 == 0){
             return true;
         }
         return false;
