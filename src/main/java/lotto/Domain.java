@@ -4,20 +4,20 @@ import java.util.List;
 import java.util.Objects;
 
 public class Domain {
-    void checkWinning(Computer[] computers, int[] list, int[] numbers) {
+    void checkWinning(Computer[] computers, int[] list, Lotto lotto) {
         for (Computer computer : computers) {
-            int index = checkWinningCount(computer.getNumbers(), numbers);
+            int index = checkWinningCount(computer.getNumbers(), lotto.getNumbers());
             list[index]++;
         }
     }
 
-    int checkWinningCount(List<Integer> computers, int[] numbers) {
+    int checkWinningCount(List<Integer> computers, List<Integer> lottoList) {
         int count = 0;
-        for (int number : numbers) {
-            if (computers.contains(number)) count++;
+        for (int i = 0 ; i < lottoList.size() -1 ; i++) {
+            if (computers.contains(lottoList.get(i))) count++;
         }
         if (Objects.equals(count, 6)) return 7;
-        if (Objects.equals(count, 5) && computers.contains(numbers[6])) return 6;
+        if (Objects.equals(count, 5) && computers.contains(lottoList.get(6))) return 6;
         return count;
     }
 
