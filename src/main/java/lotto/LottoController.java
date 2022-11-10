@@ -10,13 +10,19 @@ public class LottoController {
 
     public void run() {
         lottoView.printStartMessage();
+
         List<Lotto> lottoTickets =  lottoService.buy(inputDevice.sendMoneyToBuyLotto());
         lottoView.printLottoInfo(lottoTickets);
+
         lottoView.printWinningNumbersSettingMessage();
         List<Integer> winningNumbers = inputDevice.sendWinningNumbers();
+
+        lottoView.printBonusNumberSettingMessage();
         int bonusNumber = inputDevice.sendBonusNumber(winningNumbers);
+
         List<LottoResult> lottoResults = lottoService.compareLottoNumbers(lottoTickets, winningNumbers, bonusNumber);
         lottoView.printLottoResult(lottoResults);
+
         double yield = lottoService.calculateYield(lottoResults);
         lottoView.printYield(yield);
     }
