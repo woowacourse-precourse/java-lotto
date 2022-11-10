@@ -112,9 +112,9 @@ public class Lotto {
 
 ---------------------------------------------------------------------
 
-#####10. buyLottoPrint (구매한 로또 myLottoNum 리스트 출력)
+#####10. buyLottoPrint (구매한 로또 lottoRandomNum 리스트 출력)
 
-+ 발행한 로또 수량(buyLotto) 및 번호(myLottoNum)를 출력한다.<br/> 
++ 발행한 로또 수량(buyLotto) 및 번호(lottoRandomNum)를 출력한다.<br/> 
 로또 번호는 오름차순으로 정렬하여 보여준다.
 <br/><br/>
 + _"n개를 구입했습니다."_  ->buyLotto값 전달받음
