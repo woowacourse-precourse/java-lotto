@@ -2,6 +2,8 @@ package lotto;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.junit.jupiter.api.Assertions.*;
@@ -47,5 +49,19 @@ class ValidateTest {
                 assertThrows(IllegalArgumentException.class, () ->
                         validate.validLottoNumber(48));
         assertThat(exception.getMessage()).contains("로또 번호의 범위를 넘어갔습니다.");
+    }
+
+    @Test
+    public void 로또_번호_중복되지_않음() {
+        assertThatCode(() -> validate.validDuplicate(List.of(1, 4, 7, 14, 36, 44)))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    public void 로또_번호_중복() {
+        Throwable exception =
+                assertThrows(IllegalArgumentException.class, () ->
+                        validate.validDuplicate(List.of(1, 4, 7, 14, 4, 44)));
+        assertThat(exception.getMessage()).contains("중복된 로또 번호가 존재합니다.");
     }
 }
