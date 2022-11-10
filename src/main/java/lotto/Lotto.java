@@ -11,4 +11,14 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public int countContainsNumber(Lotto otherLotto) {
+        return (int) numbers.stream()
+                .mapToInt(number -> number)
+                .filter(otherLotto::isContains)
+                .count();
+    }
+
+    private boolean isContains(int otherNumber) {
+        return numbers.contains(otherNumber);
+    }
 }
