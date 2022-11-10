@@ -24,4 +24,12 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+    
+    @DisplayName("예외 처리 : 6개의 숫자 중, 1~45 범위를 벗어난 숫자가 존재하는 경우")
+    @ParameterizedTest
+    @ValueSource(ints = {0, 46})
+    void outOfRangeException(int lottoNumber) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, lottoNumber)));
+    }
 }

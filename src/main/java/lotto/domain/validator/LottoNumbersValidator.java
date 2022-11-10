@@ -13,6 +13,7 @@ public class LottoNumbersValidator {
     public static void validate(List<Integer> numbers) {
         validateOutOfLength(numbers);
         validateExistDuplicateNumber(numbers);
+        validateOutOfRange(numbers);
     }
     
     private static void validateOutOfLength(final List<Integer> numbers) {
@@ -39,5 +40,20 @@ public class LottoNumbersValidator {
         return (int) numbers.stream()
                 .distinct()
                 .count();
+    }
+    
+    private static void validateOutOfRange(final List<Integer> numbers) {
+        if (isExistAnythingOutOfRange(numbers)) {
+            throw new IllegalArgumentException();
+        }
+    }
+    
+    private static boolean isExistAnythingOutOfRange(final List<Integer> numbers) {
+        return numbers.stream()
+                .anyMatch(LottoNumbersValidator::isOutOfRange);
+    }
+    
+    private static boolean isOutOfRange(final Integer lottoNumber) {
+        return lottoNumber < 1 || lottoNumber > 45;
     }
 }
