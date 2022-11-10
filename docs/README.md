@@ -4,7 +4,12 @@
 
 ### 랜덤 숫자를 추출하는 클래스 Name : NumberGenerator
 
-- [ ] 중복되지 않는 6개의 숫자 뽑기 - #getUniqueRandomNumbers()
+- [x] 중복되지 않는 6개의 숫자 뽑기 - #getUniqueRandomNumbers()
+
+### String 형태의 입력을 int 형태로 변환해주는 클래스 Name : InputConverter
+- [ ] 금액의 입력값을 바꿔주는 기능 - #convertMoneyInput()
+- [ ] 6개의 당첨 번호 입력값을 바꿔주는 기능 - #convertWinningNumber()
+- [ ] 보너스 당첨 번호 입력값을 바꿔주는 기능 - #convertBonusNumber()
 
 ### 발행된 로또의 번호 List 를 wrapping 하는 클래스 Name : Lotto
 
