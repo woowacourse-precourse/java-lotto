@@ -5,32 +5,32 @@ import org.junit.jupiter.api.Test;
 class ValidatorTest {
 
     @Test
-    void validateAmountOfPurchaseMoney_isNotInteger() {
+    void paymentIsNotInteger() {
 
     }
 
     @Test
-    void validateAmountOfPurchaseMoney_isZero() {
+    void paymentIsZero() {
 
     }
 
     @Test
-    void validateAmountOfPurchaseMoney_isNegative() {
+    void paymentIsNegative() {
 
     }
 
     @Test
-    void validateAmountOfPurchaseMoney_startingWithZero() {
+    void paymentStartsWithZero() {
 
     }
 
     @Test
-    void validateAmountOfPurchaseMoney_wrongUnit() {
+    void paymentWithWrongUnit() {
 
     }
 
     @Test
-    void validateAmountOfPurchaseMoney_success() {
+    void goodPayment() {
 
     }
 }
