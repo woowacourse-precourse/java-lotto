@@ -16,13 +16,13 @@ public class WinningNumbersException {
         checkEachWinningNumber(winningNumbers);
     }
 
-    private static void checkRightWinningNumbersSize(List<String> winningNumbers) {
+    public static void checkRightWinningNumbersSize(List<String> winningNumbers) {
         if (winningNumbers.size() != WINNING_NUMBERS_SIZE) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개의 숫자를 입력해주세요.");
         }
     }
 
-    private static void checkEachWinningNumber(List<String> winningNumbers) {
+    public static void checkEachWinningNumber(List<String> winningNumbers) {
         for (String winningNumber : winningNumbers) {
             CommonInputException.checkHasBlankInInput(winningNumber, "당첨 번호를");
             checkWinningNumberDigit(winningNumber);
@@ -30,13 +30,13 @@ public class WinningNumbersException {
         }
     }
 
-    private static void checkWinningNumberDigit(String winningNumber) {
+    public static void checkWinningNumberDigit(String winningNumber) {
         if (!winningNumber.matches(NUMBER_REGEX)) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자를 입력해주세요.");
         }
     }
 
-    private static void checkWinningNumberRange(Integer winningNumber) {
+    public static void checkWinningNumberRange(Integer winningNumber) {
         if (winningNumber < MIN_WINNING_NUMBER || winningNumber > MAX_WINNING_NUMBER) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 1~45 사이의 숫자를 입력해주세요.");
         }
