@@ -10,11 +10,12 @@ public class Tickets {
 
     private final List<Lotto> tickets;
 
-    public Tickets() {
+    public Tickets(int amount) {
         tickets = new ArrayList<>();
+        createTickets(amount);
     }
 
-    public void create(int amount) {
+    private void createTickets(int amount) {
         int count = amount / PRICE;
         for (int number = 0; number < count; number++) {
             Lotto lotto = new Lotto(LottoNumberGenerator.generateNumbers());

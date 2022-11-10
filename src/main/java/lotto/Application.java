@@ -8,7 +8,6 @@ public class Application {
         int amount = InputView.askAmount();
         System.out.println(amount);
         AmountValidator.validate(amount);
-        Tickets tickets = new Tickets();
-        tickets.create(amount);
+        Tickets tickets = new Tickets(amount);
     }
 }
