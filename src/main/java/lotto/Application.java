@@ -81,9 +81,16 @@ public class Application {
         return true;
     }
 
+    public static void validateBonusNumber(int bonusNumber, List<Integer> winningNumbers) {
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 중복된 수가 존재합니다.");
+        }
+    }
+
     public static int inputBonusNumber(List<Integer> winningNumbers) {
         String number = Console.readLine();
         int bonusNumber = Integer.parseInt(number);
+        validateBonusNumber(bonusNumber, winningNumbers);
         return bonusNumber;
     }
 }
