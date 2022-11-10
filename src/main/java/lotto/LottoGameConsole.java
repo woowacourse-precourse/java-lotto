@@ -6,6 +6,7 @@ public class LottoGameConsole {
 
     private final Emcee emcee = new Emcee();
     private final Player player = new Player();
+    private final LottoPublisher publisher = new LottoPublisher();
     private final Validator validator = new Validator();
 
     public void startLottoGame() {
