@@ -28,4 +28,12 @@ class CalculatorTest {
                 .isEqualTo(answer);
     }
 
+    @Test
+    void 총_수익을_계산합니다() {
+        Calculator calculator = new Calculator();
+        List<Integer> matchResults = List.of(1, 0, 1, 0, 0);
+
+        assertThat(calculator.calculateProfit(matchResults))
+                .isEqualTo(1505000);
+    }
 }
