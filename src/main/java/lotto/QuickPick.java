@@ -1,10 +1,13 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class QuickPick {
 
     public static List<Integer> create() {
-        return List.of(1, 2, 3, 4, 5, 6);
+        return Randoms.pickUniqueNumbersInRange(
+                LottoState.START.number(), LottoState.END.number(), LottoState.LENGTH.number()
+        );
     }
 }
