@@ -10,6 +10,8 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        checkDuplicatedLottoNumber(numbers);
+        checkLottoNumberRange(numbers);
         this.numbers = numbers.stream().sorted().collect(Collectors.toList());;
     }
 
