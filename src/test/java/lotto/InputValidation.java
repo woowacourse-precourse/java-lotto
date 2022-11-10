@@ -7,21 +7,35 @@ import static org.assertj.core.api.Assertions.*;
 public class InputValidation {
 
     @Test
-    void inputValidation() {
-        assertThatThrownBy(() -> Util.isValidInput("1234"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.INVALID_INPUT.getValue());
+    void inputAmountTest() {
 
-        assertThatThrownBy(() -> Util.isValidInput("1401"))
+        assertThatThrownBy(() -> Util.isValidAmount("1234"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.INVALID_INPUT.getValue());
+                .hasMessage(ErrorMessage.INVALID_AMOUNT_INPUT.getValue());
 
-        assertThatThrownBy(() -> Util.isValidInput("안녕"))
+        assertThatThrownBy(() -> Util.isValidAmount("1401"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.INVALID_INPUT.getValue());
+                .hasMessage(ErrorMessage.INVALID_AMOUNT_INPUT.getValue());
 
-        assertThatThrownBy(() -> Util.isValidInput(""))
+        assertThatThrownBy(() -> Util.isValidAmount("안녕"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(ErrorMessage.INVALID_INPUT.getValue());
+                .hasMessage(ErrorMessage.INVALID_AMOUNT_INPUT.getValue());
+
+        assertThatThrownBy(() -> Util.isValidAmount(""))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.INVALID_AMOUNT_INPUT.getValue());
+    }
+
+    @Test
+    void inputWinNumberTest() {
+        Util.isValidWinNumbers("1,2,3,4,5,6");
+
+        assertThatThrownBy(() -> Util.isValidWinNumbers("1,2,3,4,#"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.INVALID_WIN_NUMBERS_INPUT.getValue());
+
+        assertThatThrownBy(() -> Util.isValidWinNumbers("1,2,3,4,-1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.INVALID_WIN_NUMBERS_INPUT.getValue());
     }
 }

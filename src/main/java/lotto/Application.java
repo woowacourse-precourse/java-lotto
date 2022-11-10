@@ -10,9 +10,9 @@ public class Application {
         // TODO: 프로그램 구현
         System.out.println("구입금액을 입력해 주세요.");
 
-        String str = Console.readLine();
-        Util.isValidInput(str);
-        int count = Integer.parseInt(str);
+        String amount = Console.readLine();
+        Util.isValidAmount(amount);
+        int count = Integer.parseInt(amount) / 1000;
         System.out.println(count + "개를 구매했습니다.");
 
         List<Lotto> lottos = new ArrayList<>();
@@ -20,8 +20,12 @@ public class Application {
         for (int i = 0; i < count; i++) {
             Lotto lotto = Lotto.create();
             lottos.add(lotto);
-            lotto.printNumbers();
+            System.out.println(lotto.printNumbers());
         }
+
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String winNumbers = Console.readLine();
+        Util.isValidWinNumbers(winNumbers);
 
 
     }

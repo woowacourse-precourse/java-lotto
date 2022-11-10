@@ -2,10 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 public class Util {
     public static final int MIN_NUMBER = 1;
@@ -13,11 +10,30 @@ public class Util {
     public static final int LOTTO_COUNT = 6;
     public static final int STANDARD = 1000;
 
-    public static void isValidInput(String input) {
+    public static void isValidAmount(String input) {
         String str = input.trim();
         if (!str.matches("[0-9]*") || Integer.parseInt(str) % STANDARD != 0) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getValue());
+            throw new IllegalArgumentException(ErrorMessage.INVALID_AMOUNT_INPUT.getValue());
         }
+    }
+
+    public static void isValidWinNumbers(String input) {
+        String str = input.trim();
+        String[] splits = str.split(",");
+        List<Integer> numbers = new ArrayList<>();
+        for (String split : splits) {
+            makeNumbers(numbers, split);
+        }
+        isValidNumber(numbers);
+        isValidCount(numbers);
+        hasDistinctNumbers(numbers);
+    }
+
+    private static void makeNumbers(List<Integer> numbers, String str) {
+        if (!str.matches("[0-9]*")) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_WIN_NUMBERS_INPUT.getValue());
+        }
+        numbers.add(Integer.parseInt(str));
     }
 
     public static void isValidNumber(List<Integer> numbers) {
