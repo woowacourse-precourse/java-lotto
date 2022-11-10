@@ -29,9 +29,4 @@ public class PurchaseValidator {
         }
     }
 
-    public static void validateBonusNumber(String bonus) {
-
-    }
-
-
 }
