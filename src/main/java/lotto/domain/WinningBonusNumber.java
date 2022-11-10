@@ -47,4 +47,10 @@ public class WinningBonusNumber {
             throw new IllegalArgumentException();
         }
     }
+
+    private void validateBonusNumberRange(int bonusNumber) {
+        if(bonusNumber < Number.LOTTO_NUMBER_MIN || bonusNumber > Number.LOTTO_NUMBER_MAX) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
