@@ -26,7 +26,17 @@ public class Application {
         return Winning.getWinning(hitCount, bonusHit);
     }
 
+    public static void addWinnings(User user, WinningLotto winningLotto) {
+        for(Lotto userLotto : user.getLottos()) {
+            Winning winning = getWinning(userLotto, winningLotto);
 
+            if(winning == null) {
+                continue;
+            }
+
+            user.addWinning((winning));
+        }
+    }
 
     public static void main(String[] args) {
         int money;
@@ -43,14 +53,8 @@ public class Application {
         bonusNumber = Converter.convertBonusNumberInput(readLine());
         winningLotto = new WinningLotto(winningNumbers, bonusNumber);
 
-        for (Lotto userLotto : user.getLottos()) {
-            Winning winning = getWinning(userLotto, winningLotto);
+        addWinnings(user, winningLotto);
 
-            if (winning.equals(null)) {
-                continue;
-            }
-
-            user.addWinning(winning);
-        }
+        user.printWinnings();
     }
 }
