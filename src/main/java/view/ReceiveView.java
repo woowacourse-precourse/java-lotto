@@ -1,13 +1,13 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
-import util.exception.Valid;
+import model.Purchase;
 
 public class ReceiveView {
 
-    public static int purchaseAmount() {
+    public static int purchaseLotto() {
         String money = Console.readLine();
-        Valid.purchaseMoney(money);
+        Purchase.validate(money);
         return Integer.parseInt(money);
     }
 }

@@ -6,10 +6,10 @@ import util.message.ErrorMessage;
 public class Purchase {
     private static final int PURCHASE_MONEY_UNIT = 1000;
 
-    private int purchaseMoney;
+    private int money;
 
-    public Purchase(int purchaseMoney) {
-        this.purchaseMoney = purchaseMoney;
+    public Purchase(int money) {
+        this.money = money;
     }
 
     public static boolean validate(String money){
