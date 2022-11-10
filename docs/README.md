@@ -1,9 +1,9 @@
 # 로또
 
 ## 기능목록
-- [ ] User Class 작성한다. - User
-  - [ ] User의 구입금액을 입력 받는다. - User#Constructor()
-  - [ ] User의 구입 로또 리스트를 저장한다. - User#buyLotto()\
+- [x] User Class 작성한다. - User
+  - [x] User의 구입금액을 입력 받는다. - User#Constructor()
+  - [x] User의 구입 로또 리스트를 저장한다. - User#buyLotto()
 - [ ] Lotto Class 추가 기능 구현한다. - Lotto
   - [ ] 당첨 번호와 비교하여 당첨 번호 개수 구한다. - Lotto#countWinningNumber()
   - [ ] 당첨 번호와 비교하여 보너스 번호 유무를 구한다. - Lotto#hasBonusNumber()
@@ -15,4 +15,4 @@
   - [ ] User와 당첨 번호를 이용해 등수를 구한다.
 - [ ] 메시지 Package 작성한다. - Message
   - [x] 정상메시지 Class 작성한다. - Message#NormalMessage
-  - [ ] 에러메시지 Class 작성한다. - Message#ErrorMessage
+  - [x] 에러메시지 Class 작성한다. - Message#ErrorMessage

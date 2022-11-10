@@ -9,26 +9,26 @@ public class NormalMessage {
     public static final String BONUS_NUMBER_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
     public static final String BASE_RESULT_MESSAGE = "당첨통계" + "\n" + "---";
 
-    public void printMoneyInputMessage() {
+    public static void printMoneyInputMessage() {
         System.out.println(MONEY_INPUT_MESSAGE);
     }
 
-    public void printBuyMessage(Integer number) {
+    public static void printBuyMessage(Integer number) {
         System.out.println();
         System.out.println(number.toString() + BUY_MESSAGE);
     }
 
-    public void printWinningNumberInputMessage() {
+    public static void printWinningNumberInputMessage() {
         System.out.println();
         System.out.println(WINNING_NUMBER_INPUT_MESSAGE);
     }
 
-    public void printBonusNumberInputMessage() {
+    public static void printBonusNumberInputMessage() {
         System.out.println();
         System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
     }
 
-    public void printResultMessage(List<Integer> lottoResult, double yield) {
+    public static void printResultMessage(List<Integer> lottoResult, double yield) {
         System.out.println();
         System.out.println(BASE_RESULT_MESSAGE);
 
