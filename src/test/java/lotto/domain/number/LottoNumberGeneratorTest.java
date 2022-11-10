@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Test;
 
 public class LottoNumberGeneratorTest {
     
-    
     @Test
     void randomLottoNumberList_메소드는_NUMBER_COUNT_만큼의_size를_가진_리스트를_반환() {
-        assertThat(LottoNumberGenerator.randomLottoNumberList().size()).isEqualTo(LottoNumberConstant.NUMBER_COUNT);
+        assertThat(LottoNumberGenerator.randomLottoNumberList().size()).isEqualTo(
+                LottoNumberEnum.NUMBER_COUNT.getValue());
     }
     
     @Test
     void randomLottoNumberList_메소드는_START_NUMBER보다_크고_END_NUMBER보다_작은_원소만_가진_리스트를_반환() {
         for (Integer number : LottoNumberGenerator.randomLottoNumberList()) {
-            assertThat(number).isGreaterThanOrEqualTo(LottoNumberConstant.START_NUMBER);
-            assertThat(number).isLessThanOrEqualTo(LottoNumberConstant.END_NUMBER);
+            assertThat(number).isGreaterThanOrEqualTo(LottoNumberEnum.START_NUMBER.getValue());
+            assertThat(number).isLessThanOrEqualTo(LottoNumberEnum.END_NUMBER.getValue());
         }
     }
     

@@ -6,7 +6,8 @@ import java.util.List;
 public class LottoNumberGenerator {
     
     public static List<Integer> randomLottoNumberList() {
-        return Randoms.pickUniqueNumbersInRange(LottoNumberConstant.START_NUMBER, LottoNumberConstant.END_NUMBER,
-                LottoNumberConstant.NUMBER_COUNT);
+        return Randoms.pickUniqueNumbersInRange(LottoNumberEnum.START_NUMBER.getValue(),
+                LottoNumberEnum.END_NUMBER.getValue(),
+                LottoNumberEnum.NUMBER_COUNT.getValue());
     }
 }
