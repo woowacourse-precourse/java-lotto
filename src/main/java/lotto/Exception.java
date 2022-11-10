@@ -1,19 +1,29 @@
 package lotto;
 
+import java.util.List;
+
 public class Exception {
-    public boolean validMoney(int money) {
+    public boolean validMoney(int money)throws IllegalArgumentException{
         if(money < 1000)
             throw new IllegalArgumentException("[ERROR] 1000원 이상의 금액을 입력하세요.");
         if(money % 1000 != 0)
             throw new IllegalArgumentException("[ERROR] 유효한 값을 입력하세요.");
         return true;
     }
-    public boolean validUserInputMoney(String userInputMoney){
-        for(int i = 0; i < userInputMoney.length(); i++){
-            if(!Character.isDigit(userInputMoney.charAt(i)))
-                throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요.")
+    public boolean validUserInputMoney(String inputMoney)throws IllegalArgumentException{
+        for(int i = 0; i < inputMoney.length(); i++){
+            if(!Character.isDigit(inputMoney.charAt(i)))
+                throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요.");
         }
         return true;
     }
-
+    public boolean validUserWinningNumber(List<Integer> winningNumber)throws IllegalArgumentException{
+        if(winningNumber.size() != 6)
+            throw new IllegalArgumentException("[ERROR] 번호 6개를 입력하세요.");
+        for (Integer lottoNumber : winningNumber) {
+            if (lottoNumber < 1 || lottoNumber > 45)
+                throw new IllegalArgumentException("[ERROR] 1~45 사이의 숫자를 입력하세요.");
+        }
+        return true;
+    }
 }
