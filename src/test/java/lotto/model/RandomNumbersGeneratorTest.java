@@ -52,4 +52,9 @@ class RandomNumbersGeneratorTest {
         assertThatThrownBy(() -> isValidRange(numbers)).isInstanceOf(
                 IllegalArgumentException.class).hasMessage(NUMBER_RANGE_ERROR);
     }
+
+    @Test
+    void 숫자_서로_다른_6개_생성() {
+        assertThatCode(RandomNumbersGenerator::creatSixDifferentNumbers).doesNotThrowAnyException();
+    }
 }

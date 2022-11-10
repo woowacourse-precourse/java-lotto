@@ -8,7 +8,6 @@ class RandomNumbersGenerator {
     public static final int NUMBER_REQUIRED_SIZE = 6;
     public static final int NUMBER_MIN_VALUE = 1;
     public static final int NUMBER_MAX_VALUE = 45;
-    public static final int NUMBER_MAX_VALUE_ADD_ONE = NUMBER_MAX_VALUE + 1;
     public static final String NUMBER_REPEAT_ERROR = "[ERROR] 중복된 숫자가 있습니다.";
     public static final String NUMBERS_SIZE_ERROR = "[ERROR] 숫자가 " + NUMBER_REQUIRED_SIZE + "개이여야 합니다.";
     public static final String NUMBER_RANGE_ERROR =
@@ -16,10 +15,16 @@ class RandomNumbersGenerator {
 
 
     public static List<Integer> creatSixDifferentNumbers() {
-        List<Integer> result = pickUniqueNumbersInRange(NUMBER_MIN_VALUE, NUMBER_MAX_VALUE_ADD_ONE,
+        List<Integer> result = pickUniqueNumbersInRange(NUMBER_MIN_VALUE, NUMBER_MAX_VALUE,
                 NUMBER_REQUIRED_SIZE);
-        isValidSize(result);
+        isValid(result);
         return result;
+    }
+
+    private static void isValid(List<Integer> result) {
+        isValidSize(result);
+        isValidRepeat(result);
+        isValidRange(result);
     }
 
     public static void isValidSize(List<Integer> numbers) {
