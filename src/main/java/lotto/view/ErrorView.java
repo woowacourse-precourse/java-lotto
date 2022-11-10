@@ -24,7 +24,7 @@ public class ErrorView {
 	}
 
 	public static String isNotLottoNumberList() {
-		System.out.println(ERROR + IS_EXIST_REST);
+		System.out.println(ERROR + IS_NOT_LOTTO_NUMBER);
 		return ERROR + IS_NOT_LOTTO_NUMBER;
 	}
 }
