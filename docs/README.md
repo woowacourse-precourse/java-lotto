@@ -22,11 +22,11 @@
 
 ## 🚀 기능 목록
 
-- [ ] 1부터 45까지의 서로 다른 임의의 수 6개를 생성한다. - createDifferentRandomNumbers()
-- [ ] 컴퓨터의 수(6자리)와 플레이어의 수(6자리)를 비교할 수 있다. - compare()
-  - [ ] 몇 개의 숫자가 일치하는 지 알 수 있다. - correctCount()
-  - [ ] 특정 자리에 특정 숫자가 있는지 알 수 있다. - hasPlace()
-- [ ] 1부터 45까지의 수 1개를 생성한다. - createRandomNumber()
+- [X] 1부터 45까지의 서로 다른 임의의 수 6개를 생성한다. - NumberGenerator#createDifferentRandomNumbers()
+- [ ] 컴퓨터의 수(6자리)와 플레이어의 수(6자리)를 비교할 수 있다. - compareLotto()
+  - [X] 몇 개의 숫자가 일치하는 지 알 수 있다. - Judgment#getCorrectCount()
+  - [X] 특정 자리에 특정 숫자가 있는지 알 수 있다. - Judgment#hasPlace()
+- [X] 1부터 45까지의 임의의 수 1개를 생성한다. - createRandomNumber()
 - [ ] 컴퓨터의 수(1자리)와 플레이어의 수(1자리)를 비교할 수 있다. 
 - [ ] 당첨 내역을 출력할 수 있다.
   - [ ] [1~5]등이 $개인지 알 수 있다.
