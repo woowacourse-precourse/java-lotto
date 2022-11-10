@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.exception.Exception;
+import lotto.service.Service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -39,6 +40,15 @@ class LottoTest {
         assertThatThrownBy(() -> Exception.verifyMoney("0"))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> Exception.verifyMoney("10001"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("구입 개수와 로또 구매 개수가 같아야 합니다.")
+    @Test
+    void verifyLottoListLength() {
+        int volume = 5;
+        List<Lotto> lottoList = Service.getLotto(volume);
+        assertThatThrownBy(() -> Exception.verifyLottoListVolume(lottoList, 3))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
