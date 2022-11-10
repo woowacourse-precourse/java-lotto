@@ -1,4 +1,4 @@
-package lotto.ui;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.exception.InputException;
@@ -6,10 +6,9 @@ import lotto.exception.InputException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
-public class InputLogic {
+public class InputView {
     private static int lottoIssueCount = 0;
     public static int getLottoIssueCount() {
         return lottoIssueCount;

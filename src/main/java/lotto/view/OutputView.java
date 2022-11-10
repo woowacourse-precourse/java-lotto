@@ -1,12 +1,12 @@
-package lotto.ui;
+package lotto.view;
 
 import lotto.domain.Lotto;
 
 import java.util.List;
 
-public class OutputLogic {
+public class OutputView {
     public static void printLottoPurchaseInformation(List<Lotto> myLotto) {
-        int lottoIssueCount = InputLogic.getLottoIssueCount();
+        int lottoIssueCount = InputView.getLottoIssueCount();
         System.out.println(lottoIssueCount + "개를 구매했습니다.");
 
         for (int count = 0; count < lottoIssueCount; count++) {
