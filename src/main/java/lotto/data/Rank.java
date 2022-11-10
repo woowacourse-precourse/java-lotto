@@ -1,20 +1,20 @@
 package lotto.data;
 
 public enum Rank {
-    RANK1("6개 일치 (2,000,000,000원)", 1),
-    RANK2("5개 일치, 보너스 볼 일치 (30,000,000원)", 2),
-    RANK3("5개 일치 (1,500,000원)", 3),
-    RANK4("4개 일치 (50,000원)", 4),
-    RANK5("3개 일치 (5,000원)", 5),
-    RANK_NONE("꽝", 6),
+    RANK1(1, 2_000_000_000),
+    RANK2( 2, 30_000_000),
+    RANK3( 3, 1_500_000),
+    RANK4( 4, 50_000),
+    RANK5( 5, 5_000),
+    RANK_NONE( 6,0),
     ;
 
-    private final String label;
     private final int rank;
+    private final int money;
 
-    Rank(String label, int rank) {
-        this.label = label;
+    Rank(int rank, int money) {
         this.rank = rank;
+        this.money = money;
     }
 
     public static Rank getRank(int match, boolean bonusMatch) {
@@ -26,8 +26,8 @@ public enum Rank {
         return RANK_NONE;
     }
 
-    public String getLabel() {
-        return label;
+    public int getMoney() {
+        return money;
     }
     public int getRank() {
         return rank;
