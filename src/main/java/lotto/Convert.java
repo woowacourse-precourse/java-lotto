@@ -3,7 +3,8 @@ package lotto;
 import constant.LottoText;
 
 public class Convert {
-    Validate validate = new Validate();
+    private final Validate validate = new Validate();
+
     public int toPurchasePrice(String input) {
         int purchasePrice = toInt(input);
         validate.validDivisible(purchasePrice);
