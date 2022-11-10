@@ -85,9 +85,9 @@
 
 ### 🚀 입력
 
-- Integer inputUserCash()
+- String inputUserCash()
   - 사용자로부터 구입금액을 입력받아 저장하는 함수
-
+  
 
 - void inputWinningNumbers(int[])
   - 사용자로부터 당첨 번호를 입력받아 저장하는 함수
@@ -117,6 +117,10 @@
 
 - Integer inputCashStringToInteger(String)
   - 구입금액으로 입력받은 문자열을 숫자로 바꾸어주는 함수
+
+
+- Integer getUserCash(String)
+  - 입력받은 구입금액에 대한 검사 함수가 진행되고 구입금액을 Integer형으로 반환해주는 함수
   
 
 - void validateWinningNumbersSize(String)
