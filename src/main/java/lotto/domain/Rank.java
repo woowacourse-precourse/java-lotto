@@ -26,13 +26,15 @@ public enum Rank {
         return winning;
     }
 
-    @Override
-    public String toString() {
+    public String getOutputMessage() {
         StringBuilder sb = new StringBuilder();
+        if (minMatchNum == null) {
+            return null;
+        }
         if (minMatchNum >= 0) {
             sb.append(String.format("%d개 일치", minMatchNum));
         }
-        if (isBonusRequired == true) {
+        if (isBonusRequired != null && isBonusRequired == true) {
             sb.append(", 보너스 볼 일치");
         }
         String commaWinning = NumberFormat.getInstance().format(winning);
