@@ -81,4 +81,33 @@ class CalculatorTest {
             assertThat(actual).isEqualTo(result);
         }
     }
+
+    @DisplayName("calculatorProfit 메소드 테스트")
+    @Nested
+    class calculatorProfitTest {
+        @BeforeEach
+        void setup() {
+            calculator = new Calculator();
+        }
+
+        @Test
+        void case1() {
+            int totalPrize = 5000;
+            int investmentCash = 8000;
+
+            double actual = calculator.calculateProfit(totalPrize, investmentCash);
+            double result = 62.5;
+            assertThat(actual).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            int totalPrize = 10000;
+            int investmentCash = 30000;
+
+            double actual = calculator.calculateProfit(totalPrize, investmentCash);
+            double result = 33.3;
+            assertThat(actual).isEqualTo(result);
+        }
+    }
 }
