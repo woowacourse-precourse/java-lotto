@@ -4,6 +4,7 @@ import domain.NumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,4 +27,16 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
     // 아래에 추가 테스트 작성 가능
+
+    @DisplayName("로또의 번호 리스트를 수정하면 예외가 발생한다.")
+    @Test
+    void checkLottoNumbersIsUnmodifiable() {
+        NumberGenerator numberGenerator = new NumberGenerator();
+        List<Integer> uniqueRandomNumbers = numberGenerator.createUniqueRandomNumbers();
+
+        Lotto lotto = new Lotto(uniqueRandomNumbers);
+
+        assertThatThrownBy(() -> lotto.getUserLottoNumbers().add(7))
+                .isInstanceOf(UnsupportedOperationException.class);
+    }
 }
