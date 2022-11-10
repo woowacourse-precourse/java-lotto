@@ -48,4 +48,13 @@ public class LottoController {
         String bonusNumber = Console.readLine();
         winningLotto.add(Integer.parseInt(bonusNumber));
     }
+
+    public void validateWinningLotto(List<Integer> winningLotto){
+        validateWinningLottoSize(winningLotto);
+    }
+    public void validateWinningLottoSize(List<Integer> winningLotto){
+        if(winningLotto.size() != 7){
+            throw new IllegalArgumentException("[ERROR] 당첨 로또는 당첨 번호 6개와 보너스 번호 1개로 이루어져야 합니다.");
+        }
+    }
 }
