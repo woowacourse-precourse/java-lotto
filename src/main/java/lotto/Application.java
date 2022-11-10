@@ -16,11 +16,10 @@ public class Application {
         showLottoTickets();
     }
 
-    private static List<Lotto> createLottoTickets(int numOfLotto) {
+    private static void createLottoTickets(int numOfLotto) {
         for (int i=INITIAL_NUMBER; i<numOfLotto; i++) {
             lottoTickets.add(createLotto());
         }
-        return lottoTickets;
     }
 
     private static Lotto createLotto() {
