@@ -3,8 +3,10 @@ package lotto.system;
 import java.util.List;
 
 import lotto.controller.LottoController;
+import lotto.system.converter.StringToLottoAmountConverter;
 import lotto.system.holder.ConverterHolder;
 import lotto.system.holder.ValidationHolder;
+import lotto.system.validator.StringToLottoAmountValidator;
 import lotto.view.InputView;
 import lotto.view.InputViewImpl;
 
@@ -25,8 +27,8 @@ public class LottoApplication {
 	}
 
 	private void initializeValidators() {
-		ValidationHolder.initializeValidators(List.of());
-		ConverterHolder.initializeConverters(List.of());
+		ValidationHolder.initializeValidators(List.of(new StringToLottoAmountValidator()));
+		ConverterHolder.initializeConverters(List.of(new StringToLottoAmountConverter()));
 	}
 
 	private void doAfter() {

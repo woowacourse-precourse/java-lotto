@@ -95,7 +95,7 @@ class ValidationHolderTest {
 	private static Validator getMockValidator() {
 		return new Validator() {
 			@Override
-			public boolean supports(Object target) {
+			public boolean supports(Object target, Class<?> to) {
 				return false;
 			}
 

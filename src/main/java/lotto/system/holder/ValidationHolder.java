@@ -17,9 +17,9 @@ public class ValidationHolder {
 		throw new IllegalStateException(ILLEGAL_ACCESSING_TO_INITIALIZED_MESSAGE);
 	}
 
-	public static void validate(Object target) {
+	public static void validate(Object target, Class<?> to) {
 		validators.get()
-			.stream().filter(validator -> validator.supports(target))
+			.stream().filter(validator -> validator.supports(target, to))
 			.findAny()
 			.orElseThrow(ValidatorNotFoundException::new)
 			.validate(target);
