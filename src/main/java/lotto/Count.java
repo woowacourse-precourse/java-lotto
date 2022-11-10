@@ -6,22 +6,21 @@ public class Count {
 
     private final int numOfLotto;
 
-    public Count(String userInput) {
-        int price = validPriceOfLotto(userInput);
-        numOfLotto = calculateNumOfLotto(price);
+    public Count(String price) {
+        numOfLotto = calculateNumOfLotto(validPriceOfLotto(price));
     }
 
-    private int validPriceOfLotto(String priceOfLotto) {
+    private int validPriceOfLotto(String price) {
         try {
-            return Integer.parseInt(priceOfLotto);
+            return Integer.parseInt(price);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
         }
     }
 
-    private int calculateNumOfLotto(int priceOfLotto) {
-        if (priceOfLotto%MONEY_UNIT==REMAINDER_ZERO) {
-            return priceOfLotto/MONEY_UNIT;
+    private int calculateNumOfLotto(int price) {
+        if (price%MONEY_UNIT==REMAINDER_ZERO) {
+            return price/MONEY_UNIT;
         }
         throw new IllegalArgumentException("[ERROR] 1,000원 단위로 입력해주세요.");
     }
