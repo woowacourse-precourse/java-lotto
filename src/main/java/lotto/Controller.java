@@ -5,6 +5,7 @@ import java.util.List;
 import lotto.model.LottoGenerator;
 import lotto.model.Player;
 import lotto.model.Service;
+import lotto.util.Calculator;
 import lotto.util.InputVerifier;
 import lotto.view.View;
 
@@ -12,7 +13,6 @@ public class Controller {
 
     Player player = new Player();
     Service service = new Service();
-    StringBuilder stringBuilder = new StringBuilder();
 
     public String getPurchaseAmount() {
         String purchaseAmount = player.getInput();
@@ -31,19 +31,17 @@ public class Controller {
     }
 
     public int getLottoAmount(String purchaseAmount) {
-        return service.getLottoAmount(purchaseAmount);
+        return Calculator.countLottoAmount(purchaseAmount);
     }
 
-    private void buyLotto(int lottoAmount) {
-        String purchaseAmount = player.getInput();
+    private List<List<Integer>> getLottoNumbers(int lottoAmount) {
+        List<List<Integer>> lottoNumbers = new ArrayList<>();
 
         for (int i = 0; i < lottoAmount; i++) {
-            List<Integer> lottoNumbers = new ArrayList<>(LottoGenerator.getWinningNumbers());
-            stringBuilder.append(lottoNumbers).append("\n");
+            lottoNumbers.add(LottoGenerator.getWinningNumbers());
         }
+        return lottoNumbers;
     }
-
-    // TODO: 구매 정보를 출력하는 기능 구현
 
     public List<String> guessLottoNumbers() {
         List<String> lottoNumbers = player.guessLottoNumbers();
