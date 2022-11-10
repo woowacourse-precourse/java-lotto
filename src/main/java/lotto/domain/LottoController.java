@@ -32,6 +32,12 @@ public class LottoController {
         return price / oneLottoPrice;
     }
 
+    public int inputMoney(){
+        printer.printInputMoney();
+        String money = Console.readLine();
+        return Integer.parseInt(money);
+    }
+
     public WinningLotto inputWinningLotto(){
         List<Integer> winningLottoNumbers = new ArrayList<>();
         printer.printInputWinningNumbers();
