@@ -13,4 +13,8 @@ public class Judgment {
 
         return matchNumber;
     }
+
+    public boolean hasBonusNumber(List<Integer> winningNumber, int bonusNumber){
+        return winningNumber.contains(bonusNumber);
+    }
 }
