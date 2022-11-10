@@ -12,19 +12,35 @@ public class InputView {
 
     public int inputPurchaseAmount() {
         System.out.println(REQUEST_PURCHASE_AMOUNT);
-        return Integer.parseInt(Console.readLine());
+        int purchaseAmount;
+        try {
+            purchaseAmount = Integer.parseInt(Console.readLine());
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해야 합니다.");
+        }
+        return purchaseAmount;
     }
 
     public List<Integer> inputWinningNumber() {
         System.out.println(REQUEST_WINNING_NUMBER);
-        List<Integer> winningNumber = Arrays.stream(Console.readLine().split(","))
-                .mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
+        List<Integer> winningNumber ;
+        try {
+            winningNumber = Arrays.stream(Console.readLine().split(","))
+                    .mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
+        }catch (Exception e){
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해야 합니다.");
+        }
         return winningNumber;
     }
 
     public int inputBonusNumber() {
         System.out.println(REQUEST_BONUS_NUMBER);
-        int bonusNumber = Integer.parseInt(Console.readLine());
+        int bonusNumber ;
+        try {
+            bonusNumber = Integer.parseInt(Console.readLine());
+        }catch (Exception e){
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해야 합니다.");
+        }
         return bonusNumber;
     }
 
