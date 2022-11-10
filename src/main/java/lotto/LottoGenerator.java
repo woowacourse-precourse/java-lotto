@@ -34,5 +34,6 @@ public class LottoGenerator {
         for (int i = 0; i < this.lottoCount; i++) {
             System.out.println(lottos.get(i));
         }
+        System.out.println();
     }
 }
