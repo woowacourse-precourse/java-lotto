@@ -3,8 +3,10 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.TreeMap;
 import java.util.regex.Pattern;
 
 public class Application {
@@ -23,7 +25,6 @@ public class Application {
         System.out.println(Print.ASK_PRIZE);
         List<Integer> prize = getPrize();
 
-        System.out.println(Print.ANALYSE_PRIZE);
         analyseLotto(lottos, prize);
 
 
@@ -174,16 +175,16 @@ public class Application {
             countSameNum(lotto, prize, stats);
         }
 
-        System.out.println("로또 분석");
         stats.remove(Prize.ZERO);
+        printLottoStat(stats);
+
+    }
+
+    private static void printLottoStat(TreeMap<Prize, Integer> stats) {
+        System.out.println(Print.ANALYSE_PRIZE);
         for (Prize p : stats.descendingKeySet()) {
             System.out.println(p.getPrizePrint() + " - " + stats.get(p) + "개");
         }
-    }
-
-    private static void printLottoStat(HashMap<Prize, Integer> stats) {
-        System.out.println(Print.ANALYSE_PRIZE);
-
     }
 
     private static TreeMap<Prize, Integer> setStats() {
