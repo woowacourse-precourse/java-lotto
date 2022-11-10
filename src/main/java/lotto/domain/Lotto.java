@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 enum Rank {
-    ONE(2000000000), TWO(30000000), THREE(1500000), FOUR(50000), FIVE(5000);
+    ONE(2000000000), TWO(30000000), THREE(1500000), FOUR(50000), FIVE(5000), LOSE(0);
     private int money;
 
     Rank(int money) {

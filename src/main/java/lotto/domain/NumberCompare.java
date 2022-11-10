@@ -15,10 +15,38 @@ import java.util.List;
  */
 public class NumberCompare {
     //TODO: 몇 개의 숫자가 일치하는지 확인 기능
-    static List<Integer> compare(List<Integer> numbers, List<List<Integer>> randomNumbers) {
-        for(int number : numbers){
-
+    static Rank compare(List<Integer> numbers, List<Integer> randomNumbers, int bonusNumber) {
+        int count = 0;
+        int bonusCount = 0;
+        int i = 0;
+        // numbers 와 randomNumbers 의 일치 개수 확인
+        while(true){
+            if(randomNumbers.contains(numbers.get(i))){
+                count += 1;
+            }
+            if(randomNumbers.contains(bonusNumber)){
+                bonusCount += 1;
+            }
+            i++;
+            if(i == 5){
+                break;
+            }
         }
-        return null;
+        if(count == 6){
+            return Rank.ONE;
+        }
+        if(count == 5 && bonusCount == 1){
+            return Rank.TWO;
+        }
+        if(count == 5){
+            return Rank.THREE;
+        }
+        if(count == 4){
+            return Rank.FOUR;
+        }
+        if(count == 3){
+            return Rank.FIVE;
+        }
+        return Rank.LOSE;
     }
 }
