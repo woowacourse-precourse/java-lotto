@@ -24,14 +24,14 @@ public class Model {
         return duplicatedNumbers;
     }
 
-    public List<Integer> checkPrizeLotto (List<Integer> duplicatedNumbers) {
-        List<Integer> prizeRanking = new ArrayList<>();
+    public List<Integer> checkPrizeLotto (List<Integer> duplicatedNumbers, List<List<Integer>> uncheckedLottos, int bonusNumber) {
+        List<Integer> prizeRankings = new ArrayList<>();
 
         for (int number: duplicatedNumbers) {
-            prizeRanking.add(addPrizeRanking(number));
+            prizeRankings.add(addPrizeRanking(number));
         }
 
-        return prizeRanking;
+        return checkBonusNumber(prizeRankings, uncheckedLottos, bonusNumber);
     }
 
     private int addPrizeRanking(int duplicatedNumber) {
@@ -50,6 +50,27 @@ public class Model {
         }
 
         return uncheckedLottos;
+    }
+
+    public List<Integer> checkBonusNumber(List<Integer> prizeRankings, List<List<Integer>> uncheckedLottos, int bonusNumber){
+        int changedRanking;
+
+        for (int rank: prizeRankings) {
+
+            if (rank == 3) {
+                changedRanking = upRanking(uncheckedLottos.get(prizeRankings.indexOf(rank)), bonusNumber);
+                prizeRankings.set(prizeRankings.indexOf(rank), changedRanking);
+            }
+        }
+
+        return prizeRankings;
+    }
+
+    private int upRanking (List<Integer> lotto, int bonusNumber) {
+        if (lotto.contains(bonusNumber)) {
+            return 2;
+        }
+        return 3;
     }
 
     private List<Integer> getLottoNumber() {
