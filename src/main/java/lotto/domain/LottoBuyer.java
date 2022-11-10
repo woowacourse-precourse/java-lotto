@@ -3,13 +3,12 @@ package lotto.domain;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import lotto.view.ErrorMessage;
 import lotto.view.Message;
 
-public class BuyerLotto {
+public class LottoBuyer {
     public static int purchaseLottoCount;
 
     public static List<Lotto> purchaseLotto() {
