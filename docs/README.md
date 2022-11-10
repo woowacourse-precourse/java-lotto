@@ -3,7 +3,7 @@
 
 ### 1. 사용자의 입력
 **`camp.nextstep.edu.missionutils.Console`의 `readLine()` 사용**
-- [ ] 사용자 입력 유효성 검사
+- [X] 사용자 입력 유효성 검사
   * 구매금액
     * 숫자 외의 입력인 경우
     * 1000원보다 작은 금액인 경우
@@ -17,7 +17,7 @@
     * 보너스 번호
       * 숫자가 1개가 아닌 경우
     
-- [ ] 쉼표(,)를 기준으로 입력 구분
+- [X] 쉼표(,)를 기준으로 입력 구분
 
 ### 2. 로또 번호 발행
 **`camp.nextstep.edu.missionutils`에서 제공하는 `Randoms`의 `pickNumbersInRange()` 사용**
