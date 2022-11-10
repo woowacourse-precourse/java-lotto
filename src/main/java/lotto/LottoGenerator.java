@@ -15,4 +15,8 @@ public class LottoGenerator {
         this.endNumber = endNumber;
         this.numberCount = numberCount;
     }
+
+    private List<Integer> createLottoNumbers() {
+        return Randoms.pickUniqueNumbersInRange(startNumber, endNumber, numberCount);
+    }
 }
