@@ -20,4 +20,14 @@ public class LottoNumberValidator {
 
         return false;
     }
+
+    public static boolean isNotSameSize(List<Integer> numbers) {
+        if (numbers.size() != NUMBER_EA) {
+            return true;
+        }
+
+        return false;
+    }
+
+
 }
