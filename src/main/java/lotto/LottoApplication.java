@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.lotto.Lottos;
 import lotto.ui.InputView;
 import lotto.ui.ResultView;
 import lotto.ui.dto.LottoPurchasedAmount;
@@ -16,5 +17,10 @@ public class LottoApplication {
 
 	public void run() {
 		LottoPurchasedAmount lottoPurchasedAmount = inputView.getLottoPurchasedAmount();
+		Lottos lottos = generateLottos(lottoPurchasedAmount.getLotteryPurchasedAmount());
+	}
+
+	private Lottos generateLottos(int purchasedAmount) {
+		return Lottos.from(purchasedAmount);
 	}
 }
