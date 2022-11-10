@@ -23,4 +23,9 @@ public class Lotto {
                 .filter(otherNumbers::contains)
                 .count();
     }
+
+    public boolean containsNumber(int number) {
+        return numbers.contains(number);
+    }
+
 }

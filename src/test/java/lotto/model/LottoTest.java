@@ -46,4 +46,13 @@ class LottoTest {
         Lotto threeMatchLotto = new Lotto(List.of(4, 6, 11, 12, 13, 5));
         assertThat(lotto.countMathNumbers(threeMatchLotto)).isEqualTo(3);
     }
+
+    @DisplayName("번호 포함 여부")
+    @Test
+    void contains_number() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(lotto.containsNumber(7)).isFalse();
+
+        assertThat(lotto.containsNumber(1)).isTrue();
+    }
 }
