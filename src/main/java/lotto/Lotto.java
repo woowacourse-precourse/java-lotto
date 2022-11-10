@@ -10,6 +10,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         duplicate(numbers);
+        range(numbers);
         this.numbers = numbers;
     }
     public Lotto(List<Integer> numbers, int bonus) {
@@ -17,6 +18,7 @@ public class Lotto {
         validate(numbers);
         numbers.add(bonus);
         duplicate(numbers);
+        range(numbers);
         this.numbers = numbers;
     }
 
@@ -34,6 +36,14 @@ public class Lotto {
             if (!check[num])
                 check[num] = true;
             else
+                throw new IllegalArgumentException();
+        }
+    }
+
+    //로또번호 범위 검사
+    private void range(List<Integer> numbers){
+        for (int num : numbers) {
+            if (num < 1 || num > 45)
                 throw new IllegalArgumentException();
         }
     }
