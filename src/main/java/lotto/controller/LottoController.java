@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.domain.Lotto;
+import lotto.domain.WinningLotto;
 import lotto.service.LottoService;
 
 import java.util.List;
@@ -17,6 +18,9 @@ public class LottoController {
         List<Lotto> lottos = lottoService.purchaseLottos(ticket);
 
         //당첨 번호 입력
-        Lotto winningLotto = lottoService.getWinningLotto();
+        List<Integer> winningLottoNumber = lottoService.inputWinningLottoNumber();
+
+        //보너스 번호 입력
+        WinningLotto winningLotto = lottoService.makeWinningLotto(winningLottoNumber);
     }
 }

@@ -8,8 +8,14 @@ public class Money {
     private static final Integer MONEY_UNIT = 1000;
     private static final String MONEY_UNIT_ERROR_MESSAGE = "금액은 1000원 단위이어야 합니다.";
 
-    public Integer insertMoney(Integer money) {
+    private final Integer money;
+
+    public Money(Integer money) {
         validate(money);
+        this.money = money;
+    }
+
+    public Integer getTicket() {
         return money / MONEY_UNIT;
     }
 
