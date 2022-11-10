@@ -167,4 +167,68 @@ class LottoTest {
 
         assertThat(lottos.size()).isEqualTo(result);
     }
+
+    @DisplayName("1과 45사이의 값이 아니면 예외가 발생한다")
+    @Test
+    void createNumberByOutOfRange() throws NoSuchMethodException {
+        LottoGame lottoGame = new LottoGame();
+
+        Method method = lottoGame.getClass().getDeclaredMethod("validateNumberRange", int.class);
+        method.setAccessible(true);
+
+        assertThatThrownBy(() -> method.invoke(lottoGame, 46))
+                .getCause()
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("1과 45사이의 값이면 예외가 발생하지 않는다")
+    @Test
+    void createNumberByWithinRange() throws NoSuchMethodException {
+        LottoGame lottoGame = new LottoGame();
+
+        Method method = lottoGame.getClass().getDeclaredMethod("validateNumberRange", int.class);
+        method.setAccessible(true);
+
+        assertThatNoException()
+                .isThrownBy(() -> method.invoke(lottoGame, 44));
+    }
+
+    @DisplayName("값이 숫자가 아니면 예외가 발생한다")
+    @Test
+    void createNumberByNotIntegerType() throws NoSuchMethodException {
+        LottoGame lottoGame = new LottoGame();
+
+        Method method = lottoGame.getClass().getDeclaredMethod("validateNumberType", String.class);
+        method.setAccessible(true);
+
+        assertThatThrownBy(() -> method.invoke(lottoGame, "a1"))
+                .getCause()
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("값이 숫자면 예외가 발생하지 않는다")
+    @Test
+    void createNumberByIntegerType() throws NoSuchMethodException {
+        LottoGame lottoGame = new LottoGame();
+
+        Method method = lottoGame.getClass().getDeclaredMethod("validateNumberType", String.class);
+        method.setAccessible(true);
+
+        assertThatNoException()
+                .isThrownBy(() -> method.invoke(lottoGame, "11"));
+    }
+
+    @DisplayName("5개의 콤마로 구분된 숫자들이 입력되면 6개의 숫자 리스트가 나온다")
+    @Test
+    void createSixNumber() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        LottoGame lottoGame = new LottoGame();
+        String winningNumbers = "1,7,10,24,37,45";
+        List<Integer> result = List.of(1, 7, 10, 24, 37, 45);
+
+        Method method = lottoGame.getClass().getDeclaredMethod("getNumbers", String.class);
+        method.setAccessible(true);
+        List<Integer> numbers = (List<Integer>) method.invoke(lottoGame, winningNumbers);
+
+        assertThat(numbers).isEqualTo(result);
+    }
 }
