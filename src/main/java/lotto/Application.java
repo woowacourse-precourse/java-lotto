@@ -100,7 +100,7 @@ public class Application {
 
     private static boolean validWinnerNumber(String input) {
         // 정규표현식 1 ~ 45 의 수 확인하기 -> 숫자 검증 로직을 별도 생성
-        if(Pattern.matches("(\\d,){5}\\d", input)){
+        if(Pattern.matches("(\\d?\\d,){5}\\d", input)){
             return true;
         }
         throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_VALUE.message());
