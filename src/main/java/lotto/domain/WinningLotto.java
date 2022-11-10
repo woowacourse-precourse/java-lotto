@@ -9,6 +9,7 @@ public class WinningLotto {
     private static final String WINNING_NUMBERS_ARE_BETWEEN_ONE_AND_FORTY_FIVE = "[ERROR] 당첨 번호는 1부터 45 사이의 숫자여야 합니다.";
     private static final String WINNING_NUMBERS_MUST_BE_SIX_DIFFERENT_NUMBERS = "[ERROR] 당첨 번호는 서로 다른 6개의 수여야 합니다.";
     private static final String BONUS_NUMBER_IS_BETWEEN_ONE_AND_FORTY_FIVE = "[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.";
+    private static final String WINNING_NUMBERS_CONTAIN_BONUS_NUMBER = "[ERROR] 당첨 번호와 보너스 번호가 중복됩니다.";
 
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
@@ -16,6 +17,7 @@ public class WinningLotto {
     public WinningLotto(List<Integer> winningNumbers, int bonusNumber) {
         validateWinningNumbers(winningNumbers);
         validateBonusNumber(bonusNumber);
+        validateDuplicate(winningNumbers, bonusNumber);
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
     }
@@ -51,6 +53,12 @@ public class WinningLotto {
 
     private boolean isBetweenOneAndFortyFive(int bonusNumber) {
         return bonusNumber >= 1 && bonusNumber <= 45;
+    }
+
+    private void validateDuplicate(List<Integer> winningNumbers, int bonusNumber) {
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(WINNING_NUMBERS_CONTAIN_BONUS_NUMBER);
+        }
     }
 
     public List<Integer> getWinningNumbers() {
