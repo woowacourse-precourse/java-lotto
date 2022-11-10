@@ -1,9 +1,7 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class User {
@@ -52,10 +50,32 @@ public class User {
         winnings.add(winning);
     }
 
+    public void printWinnings() {
+        winnings.stream()
+                .forEach(winning -> System.out.println(winning.name()));
+        System.out.println("3개 일치 (5,000원) - " + Collections.frequency(this.winnings, Winning.FIFTH) + "개");
+        System.out.println("4개 일치 (50,000원) - " + Collections.frequency(this.winnings, Winning.FOURTH) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + Collections.frequency(this.winnings, Winning.THIRD) + "개");
+        System.out.println(
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - " + Collections.frequency(this.winnings, Winning.SECOND) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + Collections.frequency(this.winnings, Winning.FIRST) + "개");
+    }
+
+    public double getYield() {
+        int earn = winnings.stream()
+                .mapToInt(Winning::getPrizeMoney)
+                .sum();
+
+        System.out.println(earn);
+        double yield = (double)earn / money * 100;
+
+
+        return Math.round(yield * 10) / 10.0;
+    }
+
     public List<Lotto> getLottos() {
         return this.lottos;
     }
-
 
 
 }
