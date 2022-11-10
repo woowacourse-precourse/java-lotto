@@ -16,7 +16,6 @@ public class LottoController {
     private static final int startRange = 1;
     private static final int endRange = 45;
     private static final int count = 6;
-    private List<Integer> winningLotto;
     public List<Integer> generateLotto(){
         return Randoms.pickUniqueNumbersInRange(startRange,endRange, count);
     }
