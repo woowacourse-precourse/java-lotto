@@ -19,6 +19,7 @@ public class UserService {
 
         buyValidate(money);
         int count = money / 1000;
+        System.out.println(count + "개를 구매했습니다.");
 
         return count;
     }
