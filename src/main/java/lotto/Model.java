@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 import java.util.Collections;
+import java.util.HashMap;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -24,14 +25,36 @@ public class Model {
         return duplicatedNumbers;
     }
 
-    public List<Integer> checkPrizeLotto (List<Integer> duplicatedNumbers, List<List<Integer>> uncheckedLottos, int bonusNumber) {
+    public HashMap<Integer, Integer> checkPrizeLotto (List<Integer> duplicatedNumbers, List<List<Integer>> uncheckedLottos, int bonusNumber) {
         List<Integer> prizeRankings = new ArrayList<>();
 
         for (int number: duplicatedNumbers) {
             prizeRankings.add(addPrizeRanking(number));
         }
 
-        return checkBonusNumber(prizeRankings, uncheckedLottos, bonusNumber);
+        checkBonusNumber(prizeRankings, uncheckedLottos, bonusNumber);
+
+        return makeNumberByRanking(prizeRankings);
+    }
+
+    private HashMap<Integer, Integer> makeNumberByRanking (List<Integer> prizeRankings) {
+        HashMap<Integer, Integer> numberByRanking = new HashMap<>();
+
+        for (int temp = 1; temp <= 5; temp++) {
+            numberByRanking.put(temp, 0);
+        }
+
+        inputNumberByRanking(prizeRankings, numberByRanking);
+        return numberByRanking;
+    }
+
+    private void inputNumberByRanking (List<Integer> prizeRankings, HashMap<Integer, Integer> numberByRanking) {
+
+        for (int ranking: prizeRankings) {
+            if (ranking > 0) {
+                numberByRanking.put(ranking, numberByRanking.get(ranking) + 1);
+            }
+        }
     }
 
     private int addPrizeRanking(int duplicatedNumber) {
