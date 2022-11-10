@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        DataProcessing dataProcessing = new DataProcessing();
-        dataProcessing.sortLottoNumbers();
+        InputUtil inputUtil = new InputUtil();
+        inputUtil.inputMoney();
     }
 }
