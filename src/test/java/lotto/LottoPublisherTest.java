@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -43,8 +45,21 @@ class LottoPublisherTest {
         }
 
         @Test
-        void eachLottoShouldBeSortedInAscendingOrder() {
+        @DisplayName("로또 수들은 오름차순으로 정렬되어 있어야 한다.")
+        void lottoShouldBeSortedInAscendingOrder() {
+            // given
+            LottoPublisher publisher = new LottoPublisher();
 
+            // when
+            List<Lotto> lottos = publisher.publishLottos(10000);
+
+            // then
+            lottos.forEach(lotto -> {
+                List<Integer> numbers = lotto.getNumbers();
+                List<Integer> copiedNumbers = List.copyOf(numbers);
+                numbers.sort(Comparator.comparingInt(o -> o));
+                assertThat(copiedNumbers.equals(numbers)).isTrue();
+            });
         }
     }
 }
