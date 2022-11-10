@@ -11,4 +11,8 @@ public class Service {
 
         return Integer.parseInt(money);
     }
+
+    public static int getVolume(int money) {
+        return money / 1000;
+    }
 }
