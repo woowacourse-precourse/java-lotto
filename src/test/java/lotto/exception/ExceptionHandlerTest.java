@@ -54,7 +54,7 @@ public class ExceptionHandlerTest {
     @Test
     @DisplayName("숫자로만 이루어진 문자열을 입력하지 않으면 에러 메시지를 출력하고 예외가 발생한다.")
     void throwExceptionForNotNumericInput() {
-        assertThatThrownBy(() -> ExceptionHandler.isNumeric("12331ab333333"))
+        assertThatThrownBy(() -> ExceptionHandler.isStringNumeric("12331ab333333"))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThat(output()).isEqualTo("[ERROR] 숫자를 입력해야 합니다.");
     }

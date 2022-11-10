@@ -6,7 +6,6 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 import lotto.constant.ErrorMessage;
-import lotto.constant.LottoStatistic;
 import lotto.userinterface.Output;
 
 public class ExceptionHandler {
@@ -28,7 +27,7 @@ public class ExceptionHandler {
         }
     }
 
-    public static void isNumeric(String input) {
+    public static void isStringNumeric(String input) {
         String pattern = "^[0-9]*$";
         if (input == null) {
             Output.printMessage(ErrorMessage.NOT_NUMERIC_ERROR.getMessage());
