@@ -25,7 +25,13 @@ public class Controller {
         List<String> playerLottoNumbers = guessLottoNumbers();
 
         View.printInputBonusNumber();
-        int playerBonusNumbers = guessBonusNumbers();
+        int playerBonusNumber = guessBonusNumbers();
+
+        int[] lottoResult = Service.getLottoResult(lottoAmount, lottoNumbers, playerLottoNumbers, playerBonusNumber);
+        View.printResult(lottoResult);
+
+        double profitRates = Service.getProfitRates(money, lottoResult);
+        View.printProfitRate(profitRates);
     }
 
     private String getMoney() {
@@ -47,8 +53,6 @@ public class Controller {
         }
         return lottoNumbers;
     }
-
-    // TODO: 당첨 결과 저장하는 기능
 
     private List<Integer> getBonusNumbers(int lottoAmount) {
         List<Integer> bonusNumbers = new ArrayList<>();
