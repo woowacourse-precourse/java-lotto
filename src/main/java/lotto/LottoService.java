@@ -5,6 +5,8 @@ import java.util.stream.Collectors;
 
 public class LottoService {
 
+    private LottoGenerator lottoGenerator = new LottoGenerator();
+
     public List<LottoResult> compareLottoNumbers(List<Lotto> lottoBundle,
                                                  List<Integer> winningNumbers,
                                                  int bonusNumber) {
@@ -20,5 +22,9 @@ public class LottoService {
         int investment = lottoResults.size() * 1000;
 
         return (double) revenue / investment * 100;
+    }
+
+    public List<Lotto> buy(int money) {
+        return lottoGenerator.createLottoBundle(money);
     }
 }
