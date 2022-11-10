@@ -314,4 +314,23 @@ class ApplicationTest extends NsTest {
         List<Integer> allNumbers = lotto.getNumbers();
         assertThat(allNumbers).isEqualTo(List.of(1, 2, 3, 4, 5, 6, 7));
     }
+
+    @DisplayName("Enum 출력 테스트")
+    @Test
+    void enumPrintTest() {
+        double rightNumber = 3; // 3개 맞춤(5등)
+        for (int seq = 0; seq < 3; seq++) { // 세번 맞춤(5등 세번)
+            if (rightNumber == Winners.FIFTH.getRightNumber()) {
+                Winners.FIFTH.addCount();
+            }
+        }
+        Integer count = Winners.FIFTH.getCount(); // 몇번 맞췄는지
+        Winners.FIFTH.totalPrizeMoney(5000L, count); // 총 당첨 금액 저장
+        String ranking = Winners.FIFTH.getRanking(); // 출력을 위한
+        Long prizeMoney = Winners.FIFTH.getPrizeMoney(); // 총 당첨 금액 get
+        System.out.println(ranking + count + "개"); // 출력
+
+        assertThat(output()).contains("3개 일치");
+        assertThat(prizeMoney).isEqualTo(15000L);
+     }
 }
