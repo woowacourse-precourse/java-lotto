@@ -9,13 +9,13 @@ public enum WinnersCase {
 
     private String ranking;
     private Long prizeMoney;
-    private Double rightNumber;
+    private Double matchingNumber;
     private Integer count;
 
-    WinnersCase(String ranking, Long prizeMoney, Double rightNumber, Integer count) {
+    WinnersCase(String ranking, Long prizeMoney, Double matchingNumber, Integer count) {
         this.ranking = ranking;
         this.prizeMoney = prizeMoney;
-        this.rightNumber = rightNumber;
+        this.matchingNumber = matchingNumber;
         this.count = count;
     }
 
@@ -27,8 +27,8 @@ public enum WinnersCase {
         return prizeMoney;
     }
 
-    public Double getRightNumber() {
-        return rightNumber;
+    public Double getMatchingNumber() {
+        return matchingNumber;
     }
 
     public Integer getCount() {

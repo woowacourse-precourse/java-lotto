@@ -1,12 +1,8 @@
 package lotto;
 
 import static java.util.stream.Collectors.toList;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;

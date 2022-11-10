@@ -340,9 +340,9 @@ class ApplicationTest extends NsTest {
     @DisplayName("Enum 출력 테스트")
     @Test
     void enumPrintTest() {
-        double rightNumber = 3; // 3개 맞춤(5등)
+        double matchingNumber = 3; // 3개 맞춤(5등)
         for (int seq = 0; seq < 3; seq++) { // 세번 맞춤(5등 세번)
-            if (rightNumber == WinnersCase.FIFTH.getRightNumber()) {
+            if (matchingNumber == WinnersCase.FIFTH.getMatchingNumber()) {
                 WinnersCase.FIFTH.addCount();
             }
         }
@@ -354,5 +354,45 @@ class ApplicationTest extends NsTest {
 
         assertThat(output()).contains("3개 일치");
         assertThat(prizeMoney).isEqualTo(15000L);
+     }
+
+     @Test
+     void matchingTest() {
+        List<List<Integer>> lotteries = List.of(
+                List.of(8, 21, 23, 41, 42, 43),
+                List.of(3, 5, 11, 16, 32, 38),
+                List.of(7, 11, 16, 35, 36, 44),
+                List.of(1, 8, 11, 31, 41, 42),
+                List.of(13, 14, 16, 38, 42, 45),
+                List.of(7, 11, 30, 40, 42, 43),
+                List.of(2, 13, 22, 32, 38, 45),
+                List.of(1, 3, 5, 14, 22, 45),
+                List.of(1, 2, 3, 4, 5, 10),
+                List.of(1, 2, 3, 4, 5, 7)
+        );
+
+         List<Integer> winningNumber = List.of(1, 2, 3, 4, 5, 6);
+         Integer bonusNumber = 10;
+
+         Draw draw = new Draw();
+         draw.saveWinningCase(lotteries, winningNumber, bonusNumber);
+
+         WinnersCase.FIFTH.totalPrizeMoney(WinnersCase.FIFTH.getPrizeMoney(), WinnersCase.FIFTH.getCount());
+         WinnersCase.FOURTH.totalPrizeMoney(WinnersCase.FOURTH.getPrizeMoney(), WinnersCase.FOURTH.getCount());
+         WinnersCase.THIRD.totalPrizeMoney(WinnersCase.THIRD.getPrizeMoney(), WinnersCase.THIRD.getCount());
+         WinnersCase.SECOND.totalPrizeMoney(WinnersCase.SECOND.getPrizeMoney(), WinnersCase.SECOND.getCount());
+         WinnersCase.FIRST.totalPrizeMoney(WinnersCase.FIRST.getPrizeMoney(), WinnersCase.FIRST.getCount());
+
+         System.out.println(WinnersCase.FIFTH.getRanking() + WinnersCase.FIFTH.getCount() + "개");
+         System.out.println(WinnersCase.FOURTH.getRanking() + WinnersCase.FOURTH.getCount() + "개");
+         System.out.println(WinnersCase.THIRD.getRanking() + WinnersCase.THIRD.getCount() + "개");
+         System.out.println(WinnersCase.SECOND.getRanking() + WinnersCase.SECOND.getCount() + "개");
+         System.out.println(WinnersCase.FIRST.getRanking() + WinnersCase.FIRST.getCount() + "개");
+
+         assertThat(WinnersCase.FIFTH.getPrizeMoney()).isEqualTo(5000L);
+         assertThat(WinnersCase.FOURTH.getPrizeMoney()).isEqualTo(0L);
+         assertThat(WinnersCase.THIRD.getPrizeMoney()).isEqualTo(1500000L);
+         assertThat(WinnersCase.SECOND.getPrizeMoney()).isEqualTo(30000000L);
+         assertThat(WinnersCase.FIRST.getPrizeMoney()).isEqualTo(0L);
      }
 }
