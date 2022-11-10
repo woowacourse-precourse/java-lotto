@@ -42,7 +42,13 @@ public class LotteryMachine {
 
     private List<Integer> convert(String winningStr) {
         return Arrays.stream(winningStr.split(","))
-                .map(Integer::parseInt)
+                .map(number -> {
+                    try{
+                        return Integer.parseInt(number);
+                    } catch(NumberFormatException e) {
+                        throw new IllegalArgumentException("[ERROR] 숫자가 아닙니다");
+                    }
+                })
                 .sorted()
                 .collect(Collectors.toList());
     }
