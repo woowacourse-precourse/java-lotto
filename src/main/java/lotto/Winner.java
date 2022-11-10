@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Winner {
-    private final static String VALID_NUMBER = "^[1-45]$";
+    private final static String ONLY_NUMBER = "^\\d+$";
     private final Integer bonusNumber;
     private final List<Integer> winningNumbers;
 
@@ -12,9 +12,9 @@ public class Winner {
         String[] winningNumbersSplited = winningNumbers.split(",");
         validateFormat(winningNumbersSplited);
         for (String number : winningNumbersSplited) {
-            validateNumber(number);
+            validateIfNumeric(number);
         }
-        validateNumber(bonusNumber);
+        validateIfNumeric(bonusNumber);
 
         this.winningNumbers = new ArrayList<>();
         updateWinningNumbers(winningNumbersSplited);
@@ -28,9 +28,10 @@ public class Winner {
         }
     }
 
-    private void validateNumber(String input) {
-        if (!input.matches(VALID_NUMBER)) {
-            throw new IllegalArgumentException("[ERROR] 번호는 1 ~ 45 사이의 숫자만 입력할 수 있습니다.");
+    private void validateIfNumeric(String input) {
+        boolean isNumber = input.matches(ONLY_NUMBER);
+        if (!isNumber) {
+            throw new IllegalArgumentException("[ERROR] 띄어쓰기 없이 숫자를 입력해주세요.");
         }
     }
 
