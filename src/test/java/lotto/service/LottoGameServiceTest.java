@@ -151,9 +151,17 @@ class LottoGameServiceTest {
 
     @Test
     void 당첨_번호의_범위가_1부터_45가_아니면_예외_발생() {
-        String inputLottoWinningNumber = "1,2,2,4,55,0";
+        String inputLottoWinningNumber = "1,2,3,4,55,0";
         assertThatThrownBy(() -> lottoGameService.validateLottoWinningNumbers(inputLottoWinningNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("로또 당첨 번호의 범위는 1~45여야합니다.");
+    }
+
+    @Test
+    void 당첨_번호가_올바른_형식이_아니면_예외_발생() {
+        String inputLottoWinningNumber = "1, A,3,4,5,6";
+        assertThatThrownBy(() -> lottoGameService.validateLottoWinningNumbers(inputLottoWinningNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("로또 당첨 번호는 공백 없이 쉼표로 구분된 숫자여야합니다.");
     }
 }
