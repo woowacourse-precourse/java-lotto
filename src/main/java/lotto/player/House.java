@@ -50,4 +50,15 @@ public class House {
 
         return statistic;
     }
+
+    public double getRevenueOf(User user){
+        int payment = user.getTicketNum() * 1000;
+        int amount = 0;
+        for(Lotto ticket:user.tickets){
+            Rank result = win.checkRankOf(ticket);
+            if(result == RANK_NONE) continue;
+            amount += result.getMoney();
+        }
+        return amount / (double)payment * 100;
+    }
 }
