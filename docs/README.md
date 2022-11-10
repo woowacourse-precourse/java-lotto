@@ -131,7 +131,7 @@
   - 입력받은 보너스 번호 문자열에 대한 검사 함수가 수행되고 이를 Integer 자료형으로 반환해주는 함수
   
 
-- void validateWinningNumbers(String)
+- void validateWinningNumbersForm(String)
   - 입력받은 당첨 번호 문자열이 형식에 맞게 담겨있는지 검사하는 함수
   
 
