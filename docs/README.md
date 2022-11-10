@@ -6,6 +6,7 @@
 - [ ] 로또 구입 금액에 맞게 로또 발행 - Lotto#buyHowManyLotto()
 - [ ] 당첨 번호 6개 입력 ( , 로 구분 ), 중복 x - Manager#inputWinNumbers()
   - [ ] 보너스 번호 1개 입력 - Manager#inputBonusNumber()
+- [ ] 로또 숫자 중, 중복된 숫자 있으면 예외 발생 - Lotto#hasNumber()
 
 
 

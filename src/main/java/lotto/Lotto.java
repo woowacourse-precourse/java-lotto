@@ -24,6 +24,7 @@ public class Lotto {
         }
     }
 
+    /* 중복검사 */
     private boolean hasNumber(int indexNumber, int number, List<Integer> numbers) {
         for (int j = indexNumber + 1; j < numbers.size(); j++) {
             if (numbers.get(j) == number) {
