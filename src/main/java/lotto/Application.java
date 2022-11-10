@@ -40,8 +40,8 @@ public class Application {
         System.out.println("구입 금액을 입력해 주세요.");
         Integer money = readNumber();
         validateMoney(money);
-        Integer numberOfLotto =  Integer.valueOf(money/1000);
-        return numberOfLotto;
+        return Integer.valueOf(money/lottoPrice);
     }
+
 
 }
