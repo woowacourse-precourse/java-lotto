@@ -27,8 +27,7 @@ public class Application {
         try {
             return Integer.parseInt(string);
         } catch (Exception e) {
-            IllegalArgumentException err = new IllegalArgumentException("올바른 형태로 입력해주세요. ex) 1,2,3,4,5,6");
-            ResultView.exit(err);
+            ResultView.exit(new IllegalArgumentException("올바른 형태로 입력해주세요. ex) 1,2,3,4,5,6"));
             return null;
         }
     }
@@ -36,22 +35,32 @@ public class Application {
     static Lottos makeLottos(int lottoCount) throws IllegalArgumentException {
         String winningNumbers = InputView.receiveWinningNumbers();
         Lotto winningLotto = userIputStringToLotto(winningNumbers);
-        int bonusNum = InputView.receiveBonusNum();
+        int bonusNum = checkStringIsInt(InputView.receiveBonusNum());
         Lottos lottos = new Lottos(lottoCount, winningLotto, bonusNum);
         return lottos;
     }
 
-    static void checkLottoValidation(int lottoCount) {
+    static Lottos checkAndMakeLottos(int lottoCount) {
         try {
-            makeLottos(lottoCount);
+            return makeLottos(lottoCount);
         } catch (Exception e) {
             ResultView.exit(e);
+            return null;
+        }
+    }
+
+    static int checkStringIsInt(String inputString) {
+        try {
+            return Integer.parseInt(inputString);
+        } catch (Exception e) {
+            ResultView.exit(new IllegalArgumentException("숫자를 입력해주세요."));
+            return 0;
         }
     }
 
     public static void main(String[] args) {
-        int lottoCount = amountToLottoCount(InputView.receiveAmount());
-        Lottos lottos = makeLottos(lottoCount);
+        int lottoCount = amountToLottoCount(checkStringIsInt(InputView.receiveAmount()));
+        Lottos lottos = checkAndMakeLottos(lottoCount);
         ResultView.printLottos(lottos);
     }
 }
