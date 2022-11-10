@@ -2,10 +2,8 @@ package lotto;
 
 import static lotto.ValidatorTest.WINNING_NUMBERS;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +23,8 @@ class LottoServiceTest {
             new Lotto(List.of(40, 41, 42, 43, 44, 45))
     );
 
-    @DisplayName("반환 갯수 테스트")
+
+    @DisplayName("compareLottoNumbers - 반환 갯수 테스트")
     @Test
     void test1() {
         List<LottoResult> lottoResults = lottoService
@@ -61,6 +60,19 @@ class LottoServiceTest {
                 .filter(LottoResult.ELSE::equals)
                 .count()
         ).isEqualTo(3);
+    }
+
+    @DisplayName("calculateYield - 반환값 테스트")
+    @Test
+    void test2() {
+        List<LottoResult> results = List.of(
+                LottoResult.ELSE,
+                LottoResult.ELSE,
+                LottoResult.ELSE,
+                LottoResult.THREE
+        );
+        double yield = lottoService.calculateYield(results);
+        assertThat(yield).isEqualTo(125.0);
     }
 
 }
