@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -21,9 +22,10 @@ public class LottoProgram {
 		createLotto(lottoCount);
 	}
 
-	private void createLotto(int lottoCount) {
+	public void createLotto(int lottoCount) {
 		while (lottoCount > 0) {
-			List lottoNumbers = createLottoNumbers();
+			List<Integer> lottoNumbers = createLottoNumbers();
+			Collections.sort(lottoNumbers);
 
 			if (!lottoList.contains(lottoNumbers)) {
 				lottoList.add(new Lotto(lottoNumbers));

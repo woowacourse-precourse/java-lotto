@@ -5,8 +5,9 @@
 - [x] 로또 구입 금액을 입력한다. - Input#userInput()
   - [x] 잘못된 값 입력시 예외 발생 - Checker#checkUserInput()
 
-- [x] 구입금액에 해당하는 만큼 로또를 산다. - LottoList#createLotto()
-  - [x] 1~45까지의 6개의 숫자를 뽑는다 - Lotto#createLottoNumbers()
+- [x] 구입금액에 해당하는 만큼 로또를 산다. - LottoProgram#createLotto()
+  - [x] 1~45까지의 6개의 숫자를 뽑는다 - LottoProgram#createLottoNumbers()
+  - [x] 로또를 오름차순으로 정렬한다 - LottoProgram#createLotto()
 
 - [] 구매 메세지를 출력한다. - View#LOTTO_PURCHASED_GUIDE_MESSAGE
   - [] 구매한 만큼 6개의 번호를 출력한다. - View#showLottoNumbers()

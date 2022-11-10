@@ -12,14 +12,22 @@ import lotto.domain.Lotto;
 
 public class LottoProgramTest extends NsTest {
 	List<Lotto> lottoList;
+	LottoProgram lottoProgram;
 
 	@BeforeEach
 	void setUp() {
+		lottoProgram = new LottoProgram();
 		lottoList = LottoProgram.getLottoList();
 	}
 
 	@Test
-	void 똑같은_수의_로또_존재_여부_테스트() {
+	void 로또_사이즈_테스트() {
+		lottoProgram.createLotto(6);
+		assertThat(lottoList.size()).isEqualTo(6);
+	}
+
+	@Test
+	void createLotto_메서드로_다른_수를_가진_로또_생성() {
 		boolean isSameLottoNumberExist = lottoList.stream()
 			.distinct()
 			.count() != lottoList.size();
