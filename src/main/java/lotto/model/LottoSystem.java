@@ -9,8 +9,8 @@ class LottoSystem {
         this.lottoNumbers = new LottoNumbers();
     }
 
-    public void addLotto(int n) {
-        lottoNumbers.addLotto(n);
+    public void addRandomLotto(int n) {
+        lottoNumbers.addRandomLotto(n);
     }
 
     public int getLottoQuantity() {

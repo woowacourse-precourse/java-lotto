@@ -19,9 +19,13 @@ class LottoNumbers {
                 .reduce(Integer::sum).orElse(0);
     }
 
-    void addLotto(int n) {
+    void addLotto(Lotto lotto) {
+        lottoNumbers.add(lotto);
+    }
+
+    void addRandomLotto(int n) {
         while (n > 0) {
-            lottoNumbers.add(Lotto.CreatRandomLotto());
+            addLotto(Lotto.CreatRandomLotto());
             --n;
         }
     }
@@ -41,5 +45,9 @@ class LottoNumbers {
     }
 
     public void addAllStatus() {
+    }
+
+    public boolean contains(Lotto lotto) {
+        return lottoNumbers.contains(lotto);
     }
 }

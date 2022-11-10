@@ -11,7 +11,7 @@ class LottoSystemTest {
     @Test
     void add_lotto() {
         LottoSystem lottoSystem = new LottoSystem();
-        lottoSystem.addLotto(5);
+        lottoSystem.addRandomLotto(5);
         assertThat(lottoSystem.getLottoQuantity()).isEqualTo(5);
     }
 
