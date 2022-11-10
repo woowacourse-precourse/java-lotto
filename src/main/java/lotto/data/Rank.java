@@ -29,7 +29,7 @@ public enum Rank {
     public String getLabel() {
         return label;
     }
-    public String getRank() {
+    public int getRank() {
         return rank;
     }
 }

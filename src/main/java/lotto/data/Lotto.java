@@ -47,18 +47,18 @@ public class Lotto {
     }
 
     //로또 랭크 반환
-    public Rank checkRank(Lotto winLotto) {
-        int lastIndex = winLotto.numbers.size()-1;
-        int bonus = winLotto.numbers.get(lastIndex);
-        HashSet<Integer> win = new HashSet<>(winLotto.numbers.subList(0,lastIndex));
+    public Rank checkRankOf(Lotto userLotto) {
+        int lastIndex = this.numbers.size()-1;
+        int bonus = this.numbers.get(lastIndex);
+        HashSet<Integer> win = new HashSet<>(this.numbers.subList(0, lastIndex));
 
         int match = 0;
-        for(int num:this.numbers){
+        for(int num:userLotto.numbers){
             if(win.contains(num))
                 match++;
         }
 
-        boolean bonusMatch = this.numbers.contains(bonus);
+        boolean bonusMatch = userLotto.numbers.contains(bonus);
 
         return Rank.getRank(match, bonusMatch);
     }

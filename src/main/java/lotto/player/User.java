@@ -6,7 +6,7 @@ import lotto.data.Lotto;
 
 public class User {
 
-    private final Lotto[] tickets;
+    public final Lotto[] tickets;
 
     public User(int payment){
         validate(payment);

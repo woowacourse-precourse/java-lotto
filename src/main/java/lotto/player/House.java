@@ -1,10 +1,14 @@
 package lotto.player;
 
 import java.util.Arrays;
+import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import lotto.data.Lotto;
+import lotto.data.Rank;
 
 public class House {
     private final Lotto win;
@@ -24,5 +28,15 @@ public class House {
         }
     }
 
-
+    private void printResultOf(User user){
+        Map<Rank, Integer> statistic = new EnumMap<>(Rank.class);
+        for(Lotto ticket:user.tickets){
+            Rank result = win.checkRankOf(ticket);
+            if(statistic.containsKey(result)){
+                statistic.put(result, statistic.get(result)+1);
+                continue;
+            }
+            statistic.put(result, 1);
+        }
+    }
 }
