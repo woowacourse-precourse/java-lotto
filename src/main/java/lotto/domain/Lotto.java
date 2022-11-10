@@ -29,6 +29,16 @@ public class Lotto {
         throw new IllegalArgumentException(DUPLICATION_NUMBER_EXCEPTION_MESSAGE);
     }
 
+    public int getHitCount(Lotto buyingLotto) {
+        return (int) this.numbers.stream()
+                .filter(number -> buyingLotto.numbers.contains(number))
+                .count();
+    }
+
+    public boolean hasBonusNumber(int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
+
     public List<Integer> getLotto() {
         return Collections.unmodifiableList(this.numbers);
     }
