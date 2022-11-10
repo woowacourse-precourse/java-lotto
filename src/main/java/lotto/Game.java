@@ -27,23 +27,7 @@ public class Game {
 
         PrintUtil.printWinningLottoStatus();
 
-        Map<LottoRank, Integer> lottoScore = new HashMap<>();
-
-        lottoScore.put(LottoRank.FIFTH, 0);
-        lottoScore.put(LottoRank.FOURTH, 0);
-        lottoScore.put(LottoRank.THIRD, 0);
-        lottoScore.put(LottoRank.SECOND, 0);
-        lottoScore.put(LottoRank.FIRST, 0);
-        lottoScore.put(LottoRank.NONE, 0);
-
-        for (Lotto lotto : lottos) {
-            LottoRank lottoRank = lotto.getCorrectLottoCount(winningLotto.getLotto(),
-                                                             winningLotto.getBounsNumber());
-
-            lottoScore.put(lottoRank, lottoScore.get(lottoRank) + 1);
-        }
-
-        LottoResult lottoResult = new LottoResult(lottoScore);
+        LottoResult lottoResult = makeLottoResult(lottos, winningLotto);
 
         PrintUtil.printLottoResult(lottoResult, lottoInfo);
     }
@@ -62,5 +46,24 @@ public class Game {
     private WinningLotto makeWinningLotto() {
         return new WinningLotto(InputUtil.inputWinningLottoNumber(),
                                 InputUtil.inputBounsLottoNumber());
+    }
+
+    private LottoResult makeLottoResult(List<Lotto> lottos, WinningLotto winningLotto) {
+        Map<LottoRank, Integer> lottoScore = new HashMap<>();
+
+        lottoScore.put(LottoRank.FIFTH, 0);
+        lottoScore.put(LottoRank.FOURTH, 0);
+        lottoScore.put(LottoRank.THIRD, 0);
+        lottoScore.put(LottoRank.SECOND, 0);
+        lottoScore.put(LottoRank.FIRST, 0);
+
+        for (Lotto lotto : lottos) {
+            LottoRank lottoRank = lotto.getCorrectLottoCount(winningLotto.getLotto(),
+                                                             winningLotto.getBounsNumber());
+
+            lottoScore.put(lottoRank, lottoScore.get(lottoRank) + 1);
+        }
+
+        return new LottoResult(lottoScore);
     }
 }
