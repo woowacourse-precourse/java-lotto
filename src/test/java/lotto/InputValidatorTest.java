@@ -13,7 +13,7 @@ class InputValidatorTest {
     void inputNumbersByInvalidSeparator() {
         String input = "1, 3, 2, 5, 4- 5";
 
-        assertThatThrownBy(() -> new Lotto(input))
+        assertThatThrownBy(() -> Application.convertNumbersInput(input))
                 .isInstanceOf(IllegalArgumentException.class);
        }
 
@@ -22,7 +22,7 @@ class InputValidatorTest {
     void inputMoneyByInvalidForm() {
         String input = "1,000";
 
-        assertThatThrownBy(() -> new User(input))
+        assertThatThrownBy(() -> Application.convertMoneyInput(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
