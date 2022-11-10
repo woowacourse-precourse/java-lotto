@@ -11,13 +11,15 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class NumbersValidatorTest {
 
 
     @Test
-    void 중복_수가_있으면_예외() {
+    @DisplayName("중복 숫자가 있으면 예외가 발생한다.")
+    void repeat_error() {
         List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 5));
         assertThatThrownBy(() -> isValidRepeat(numbers)).isInstanceOf(
                 IllegalArgumentException.class).hasMessage(NUMBER_REPEAT_ERROR);
@@ -28,7 +30,8 @@ class NumbersValidatorTest {
     }
 
     @Test
-    void 숫자_범위_예외() {
+    @DisplayName("숫자가 범위에 넘어가면 예외가 발생한다.")
+    void range_error() {
         List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 46));
         assertThatThrownBy(() -> isValidRange(numbers)).isInstanceOf(
                 IllegalArgumentException.class).hasMessage(NUMBER_RANGE_ERROR);
@@ -44,7 +47,8 @@ class NumbersValidatorTest {
     }
 
     @Test
-    void 번호가_6개아니면_예외() {
+    @DisplayName("숫자의 개수가 6개 넘어가면 예외가 발생한다.")
+    void size_error() {
         List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5));
         assertThatThrownBy(() -> isValidSize(numbers)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NUMBERS_SIZE_ERROR);

@@ -9,7 +9,7 @@ import static lotto.model.NumbersValidator.isValid;
 import java.util.List;
 
 class RandomNumbersGenerator {
-    
+
     public static List<Integer> creatSixDifferentNumbers() {
         List<Integer> result = pickUniqueNumbersInRange(NUMBER_MIN_VALUE, NUMBER_MAX_VALUE,
                 NUMBER_REQUIRED_SIZE);
