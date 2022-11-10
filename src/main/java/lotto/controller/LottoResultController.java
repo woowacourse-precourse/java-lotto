@@ -54,7 +54,7 @@ public class LottoResultController {
     }
 
     private double calculateYield() {
-        return (totalWinning * 100) / price;
+        return (totalWinning / price) * 100;
     }
 
 }
