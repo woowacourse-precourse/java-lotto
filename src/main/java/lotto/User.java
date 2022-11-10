@@ -45,4 +45,11 @@ public class User {
             System.out.println(lotto.getNumbers());
         }
     }
+
+    public List<Lotto> getLottos() {
+        return this.lottos;
+    }
+
+
+
 }
