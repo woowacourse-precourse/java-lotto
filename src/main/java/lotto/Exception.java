@@ -7,5 +7,5 @@ public class Exception {
         if(money % 1000 != 0)
             throw new IllegalArgumentException("[ERROR] 유효한 값을 입력하세요.");
     }
-
+    public void
 }
