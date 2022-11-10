@@ -1,7 +1,6 @@
 package system.process;
 
 import models.Lotto;
-import models.PurchasedLottosData;
 import models.WinningLottoData;
 
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class LottoComparison {
 
     public LottoComparison(WinningLottoData winningLottoData) {
         this.winningLottoNumbers = new HashSet<>(winningLottoData.getLotto().getNumbers());
-        this.bonusCount = winningLottoData.getBonusNumber();
+        this.bonusNumber = winningLottoData.getBonusNumber();
     }
 
     public void setPurchasedOneLotto(Lotto purchasedOneLotto) {
@@ -38,9 +37,11 @@ public class LottoComparison {
             }
         });
 
-        if (winningLottoNumbers.contains(bonusNumber)) {
+        if (purchasedOneLottoNumbers.contains(bonusNumber)) {
             bonusCount++;
         }
+
+        //System.out.println(sameNumberCount + " " + bonusCount);
 
         return rank();
 
