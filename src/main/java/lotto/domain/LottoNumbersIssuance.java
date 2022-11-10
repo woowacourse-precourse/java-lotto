@@ -9,12 +9,7 @@ public class LottoNumbersIssuance {
 
     public LottoNumbersIssuance() {
         this.numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        sortLottoNumbers();
         printLotto();
-    }
-
-    public void sortLottoNumbers() {
-        this.numbers.sort(Integer::compareTo);
     }
 
     public void printLotto() {

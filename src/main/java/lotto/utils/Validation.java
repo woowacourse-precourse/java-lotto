@@ -3,7 +3,6 @@ package lotto.utils;
 import lotto.domain.ErrorStatus;
 import lotto.domain.InputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Validation {
@@ -48,7 +47,7 @@ public class Validation {
             Integer.parseInt(inputMoney);
         } catch (IllegalArgumentException error) {
             System.out.println(ErrorStatus.NOT_NUMBER.printError());
-            InputView.inputMoney = 0;
+            InputView.inputPurchasePrice();
         }
     }
 
@@ -59,7 +58,7 @@ public class Validation {
             }
         } catch (IllegalArgumentException error) {
             System.out.println(ErrorStatus.NOT_NUMBER.printError());
-            throw new IllegalArgumentException();
+            InputView.inputWinningNumbers();
         }
     }
 }

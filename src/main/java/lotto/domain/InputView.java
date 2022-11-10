@@ -26,7 +26,6 @@ public class InputView {
         showWinningNumbersInputMessage();
         String[] inputWinningNumbers = Console.readLine().split(",");
         Validation.validateWinningNumbers(inputWinningNumbers);
-
     }
 
     private static void showWinningNumbersInputMessage() {
