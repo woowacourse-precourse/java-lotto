@@ -15,10 +15,10 @@ public class LottoController {
 
     public void run() {
         start();
-        List<Lotto> lottoTickets = buyLotto();
+        List<Lotto> lottoBundle = buyLotto();
         List<Integer> winningNumbers = getWinningNumbers();
         int bonusNumber = getBonusNumber(winningNumbers);
-        List<LottoResult> lottoResults = getLottoResult(lottoTickets, winningNumbers, bonusNumber);
+        List<LottoResult> lottoResults = getLottoResult(lottoBundle, winningNumbers, bonusNumber);
         printYield(lottoResults);
     }
 
