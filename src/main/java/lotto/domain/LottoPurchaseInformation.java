@@ -6,13 +6,13 @@ import java.util.List;
 public class LottoPurchaseInformation {
     private static final int THOUSAND = 1000;
     private final int NUMBER_OF_TICKETS;
-    private ValidationInDomain valueValidator = new ValidationInDomain();
+    private ValidationInDomain validator = new ValidationInDomain();
     private List<Lotto> lottoTickets = new ArrayList<>();
     private LottoGenerator lottoGenerator = new LottoGenerator();
 
 
     public LottoPurchaseInformation(int purchaseAmount){
-        valueValidator.checkDividedByThousand(purchaseAmount);
+        validator.checkDividedByThousand(purchaseAmount);
         NUMBER_OF_TICKETS = purchaseAmount/THOUSAND;
     }
     public List<Lotto> getLottoTickets(){
