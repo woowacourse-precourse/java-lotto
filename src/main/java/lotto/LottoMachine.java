@@ -7,7 +7,10 @@ public class LottoMachine {
 
     private int money;
 
-    public LottoMachine(int money) {
+    public LottoMachine() {
+    }
+
+    public void inputMoney(int money) {
         validate(money);
         this.money = money;
     }
