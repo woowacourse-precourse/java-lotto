@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.global.Constant.MAX_LOTTO_SIZE;
+
 import java.util.ArrayList;
 import java.util.List;
 import lotto.global.Message;
@@ -8,6 +10,7 @@ import lotto.util.RandomNumberGenerator;
 public class LottoController {
 
     private LottoInput lottoInput = new LottoInput();
+    private int[] lottoResult = new int[MAX_LOTTO_SIZE + 2];
 
     public Integer getUserLottoCount() {
         UserInput userInput = new UserInput();
@@ -50,6 +53,17 @@ public class LottoController {
         Integer bonus = lottoInput.getBonusInput();
         System.out.println();
         return bonus;
+    }
+
+    public void computeResult(List<Lotto> issuedLotto, Lotto lotto, Integer bonus) {
+        for (int i = 0; i < issuedLotto.size(); i++) {
+            int idx = issuedLotto.get(i).countEqual(lotto);
+            if (idx == 5 && issuedLotto.get(i).checkBonus(bonus)) {
+                idx += 2;
+            }
+
+            lottoResult[idx]++;
+        }
     }
 
 }

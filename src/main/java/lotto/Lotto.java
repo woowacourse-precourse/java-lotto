@@ -38,4 +38,18 @@ public class Lotto {
         }
         System.out.printf("%d]\n", numbers.get(5));
     }
+
+    public int countEqual(Lotto lotto) {
+        int count = 0;
+        for (int i = 0; i < MAX_LOTTO_SIZE; i++) {
+            if (this.numbers.contains(lotto.numbers.get(i))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public boolean checkBonus(Integer bonus) {
+        return this.numbers.contains(bonus);
+    }
 }
