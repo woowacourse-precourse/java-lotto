@@ -1,13 +1,15 @@
 package lotto.model;
 
-import lotto.util.Calculator;
-
 public class Service {
 
     Player player = new Player();
 
-    public int getLottoAmount(String purchaseAmount) {
-        return Calculator.countLottoAmount(purchaseAmount);
+    public static int countLottoAmount(String purchaseAmount) {
+        return Integer.parseInt(purchaseAmount) / 1000;
+    }
+
+    public static long getProfitRates(int purchaseAmount, int winningAmount) {
+        return winningAmount / purchaseAmount;
     }
 
 }
