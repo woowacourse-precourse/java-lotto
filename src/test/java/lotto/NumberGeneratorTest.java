@@ -12,4 +12,5 @@ package lotto;
  * 2022/11/10         gim-yeong-geun          최초 생성
  */
 public class NumberGeneratorTest {
+
 }
