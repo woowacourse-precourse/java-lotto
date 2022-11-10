@@ -42,7 +42,7 @@ public class WinningNumber {
     }
 
     private void validateDuplication() {
-        if (lotto.hasBonus(bonus)) {
+        if (lotto.hasNumber(bonus)) {
             throw new IllegalArgumentException();
         }
     }
@@ -51,5 +51,32 @@ public class WinningNumber {
         if (bonus < 1 || bonus > 45) {
             throw new IllegalArgumentException();
         }
+    }
+
+    int match(Lotto userLotto) {
+        int countMatched = userLotto.countMatchedNumber(lotto);
+        boolean bonusMatched = userLotto.hasNumber(bonus);
+
+        return rank(countMatched, bonusMatched);
+    }
+
+    private int rank(int countMatched, boolean bonusMatched) {
+        if (countMatched == 6) {
+            return 1;
+        } else if (countMatched == 5) {
+            return isSecondThird(bonusMatched);
+        } else if (countMatched == 4) {
+            return 4;
+        } else if (countMatched == 3) {
+            return 3;
+        }
+        return 0;
+    }
+
+    private int isSecondThird(boolean bonusMatched){
+        if (bonusMatched) {
+            return 2;
+        }
+        return 3;
     }
 }
