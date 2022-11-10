@@ -7,13 +7,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-class Input {
+public class Input {
 
     private String readLine() {
         return Console.readLine().trim();
     }
 
-    int readInt() {
+    public int readInt() {
         return Integer.parseInt(readLine());
     }
 

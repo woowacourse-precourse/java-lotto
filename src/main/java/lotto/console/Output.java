@@ -1,8 +1,6 @@
 package lotto.console;
 
-import lotto.domain.lotto.Lotto;
-
-class Output {
+public class Output {
 
     public void writeLine(String line, Object ...args) {
         System.out.printf(line+"\n", args);
@@ -20,7 +18,7 @@ class Output {
         writeLine("%d개를 구매했습니다.", buyCount);
     }
 
-    public void writeEnterCorrectNumbers() {
+    public void writeEnterWinningNumbers() {
         writeLine("당첨 번호를 입력해 주세요.");
     }
 
