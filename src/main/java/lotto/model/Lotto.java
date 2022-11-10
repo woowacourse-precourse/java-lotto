@@ -11,6 +11,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public static Lotto CreatRandomLotto(){
+        return new Lotto(RandomNumbersGenerator.creatSixDifferentNumbers());
+    }
+
     private void validate(List<Integer> numbers) {
         NumbersValidator.isValid(numbers);
     }
