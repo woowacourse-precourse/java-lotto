@@ -20,15 +20,11 @@ public class LottoManager {
     private final int fourthPrize = 50000;
     private final int fifthPrize = 5000;
 
+    List<List<Integer>> boughtLottos = new ArrayList<>();
+    int money = 0;
 
     public void run() {
-        out.announceInputMoney();
-        int money = in.inputMoney();
-        int lottoCount = getAffordableLottoCount(money);
-        List<List<Integer>> boughtLottos = pickNumbers(lottoCount);
-        out.printSpacer();
-        out.announceBuyResult(lottoCount);
-        out.printBoughtLotto(boughtLottos);
+        buyLotto();
 
         out.printSpacer();
         out.announceInputWinNumber();
@@ -46,6 +42,16 @@ public class LottoManager {
         int prizeMoney = getPrizeMoney(winCount);
         String profitRatio = calculateRatio(money, prizeMoney);
         out.printProfitRatio(profitRatio);
+    }
+
+    private void buyLotto() {
+        out.announceInputMoney();
+        money = in.inputMoney();
+        int lottoCount = getAffordableLottoCount(money);
+        boughtLottos = pickNumbers(lottoCount);
+        out.printSpacer();
+        out.announceBuyResult(lottoCount);
+        out.printBoughtLotto(boughtLottos);
     }
 
     private int getAffordableLottoCount(int money) {
