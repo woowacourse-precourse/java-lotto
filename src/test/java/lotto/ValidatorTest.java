@@ -60,7 +60,12 @@ class ValidatorTest {
     }
 
     @Test
+    @DisplayName("올바른 구입 금액이면 예외를 던지지 않는다.")
     void goodPayment() {
+        // given
+        Validator validator = new Validator();
 
+        // throws
+        assertThatNoException().isThrownBy(() -> validator.validatePayment("1000"));
     }
 }
