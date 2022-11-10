@@ -2,7 +2,8 @@
 ## 🚀 기능 목록
 
 - [x] 구입금액 입력 메세지를 출력한다. - View#PURCHASE_INPUT_GUIDE_MESSAGE
-- [] 로또 구입 금액을 입력한다. - Input#userInput()
+- [x] 로또 구입 금액을 입력한다. - Input#userInput()
+  - [] 잘못된 값 입력시 예외 발생 - Checker#checkUserInput()
 
 - [] 구입금액에 해당하는 만큼 로또를 발행해야한다. - LottoList#createLotto()
   - [] 로또 1장의 가격은 1,000원이다. - Lotto#PRICE
