@@ -3,9 +3,9 @@ package lotto.model;
 import java.util.List;
 
 public class Lotto {
-    private static final int MAX_LOTTO_NUMBER = 45;
-    private static final int MIN_LOTTO_NUMBER = 1;
-    private static final int LOTTO_NUMBERS_SIZE = 6;
+    protected static final int MAX_LOTTO_NUMBER = 45;
+    protected static final int MIN_LOTTO_NUMBER = 1;
+    protected static final int LOTTO_NUMBERS_SIZE = 6;
     private static final String LOTTO_NUMBER_SIZE_ERROR = "[ERROR] 로또 숫자의 개수가 6개가 아닙니다.";
     private static final String LOTTO_NUMBER_RANGE_ERROR = "[ERROR] 로또 숫자의 범위가 1~45사이가 아닙니다.";
     private static final String LOTTO_NUMBER_DUPLICATE_ERROR = "[ERROR] 로또 숫자가 모두 다른 값을 가지지 않습니다.";
