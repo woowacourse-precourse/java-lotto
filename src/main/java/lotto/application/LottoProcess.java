@@ -1,6 +1,9 @@
 package lotto.application;
 
 import static lotto.common.message.ConsoleOut.*;
+
+import camp.nextstep.edu.missionutils.Console;
+import java.util.Scanner;
 import lotto.domain.Generator;
 import lotto.domain.entity.LottoMachine;
 import lotto.domain.entity.User;
@@ -12,10 +15,9 @@ public class LottoProcess {
 
     public static void run() {
         System.out.println(INPUT_COST_MASSAGE);
-        int money = generator.generateMoney();//
+        int money = generator.generateMoney();
 
         User user = User.of(money, generator);
-
         System.out.println(user.printCurrentTime() + AMOUNT_OF_LOTTOS_MESSAGE);
         user.printUserLottosNumbers();
 
