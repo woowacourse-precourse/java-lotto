@@ -6,25 +6,27 @@ import java.util.stream.Collectors;
 
 import lotto.domain.Buyer;
 import lotto.domain.WinningLotto;
+import lotto.service.MachineSystem;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class LottoMachine {
 
-	private Buyer buyer;
-	private WinningLotto winningLotto;
+	private MachineSystem machineSystem;
 
 	public void run() {
 		setting();
+		winningStats();
 	}
 
 	private void setting() {
-		buyer = new Buyer(InputView.inputAmount());
+		Buyer buyer = new Buyer(InputView.inputAmount());
 		OutputView.printAllLottoNumber(buyer.getLotto());
 
 		String winningNumbers = InputView.inputWinningNumber();
-		winningLotto = new WinningLotto(convertNumber(winningNumbers));
+		WinningLotto winningLotto = new WinningLotto(convertNumber(winningNumbers));
 		winningLotto.setBonusNumber(InputView.inputBonusNumber());
+		machineSystem = new MachineSystem(buyer, winningLotto);
 	}
 
 	private List<Integer> convertNumber(String numbers) {
@@ -33,4 +35,7 @@ public class LottoMachine {
 			.collect(Collectors.toList());
 	}
 
+	private void winningStats() {
+		machineSystem.checkTotalReward();
+	}
 }
