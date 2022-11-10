@@ -1,10 +1,15 @@
 package lotto;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class FeatureTest {
@@ -67,11 +72,12 @@ public class FeatureTest {
         );
         List<Integer> answer = List.of(3, 4, 2, 1, 0, -1, -1, -1);
 
-        for (int i = 0; i <user.size() ; i++) {
+        for (int i = 0; i < user.size(); i++) {
             assertThat(lotto.getWinningIndex(user.get(i), input)).isEqualTo(answer.get(i));
         }
 
     }
+
     @Test
     void 당첨_배열_생성() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
@@ -96,12 +102,13 @@ public class FeatureTest {
         Calculator calculator = new Calculator();
         assertThat(calculator.getProfit(new int[]{0, 0, 0, 0, 1})).isEqualTo(30000000);
     }
+
     @Test
     void 수익률_계산() {
         Calculator calculator = new Calculator();
-        assertThat(calculator.getEarningsRate(8000,new int[]{1, 0, 0, 0, 0})).isEqualTo(62.5);
-        assertThat(calculator.getEarningsRate(10000,new int[]{1, 0, 0, 0, 0})).isEqualTo(50.0);
-        assertThat(calculator.getEarningsRate(8000000,new int[]{1, 0, 0, 0, 0})).isEqualTo(0.1);
+        assertThat(calculator.getEarningsRate(8000, new int[]{1, 0, 0, 0, 0})).isEqualTo(62.5);
+        assertThat(calculator.getEarningsRate(10000, new int[]{1, 0, 0, 0, 0})).isEqualTo(50.0);
+        assertThat(calculator.getEarningsRate(8000000, new int[]{1, 0, 0, 0, 0})).isEqualTo(0.1);
     }
 
     @Test
@@ -119,7 +126,7 @@ public class FeatureTest {
         assertThatThrownBy(() -> Input.getWinningNumber(s3))
                 .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 입력 숫자가 중복되었습니다.");
         String s4 = "1,2,3,4,5,6";
-        int bonus =6;
+        int bonus = 6;
         assertThatThrownBy(() -> Input.bonusNotIncludeWinningNumbers(bonus, Input.getWinningNumber(s4)))
                 .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 보너스 번호가 이미 로또번호에 포함되어 있습니다.");
 
@@ -132,21 +139,36 @@ public class FeatureTest {
                 .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 구매금액이 1000의 배수가 아닙니다.");
     }
 
-//    @Test
-//    void 출력테스트() {
-//        View view = new View();
-//        List<List<Integer>> user = List.of(
-//                List.of(1, 2, 3, 4, 5, 6),
-//                List.of(1, 2, 3, 4, 5, 7),
-//                List.of(1, 2, 3, 4, 5, 8),
-//                List.of(1, 2, 3, 4, 8, 9),
-//                List.of(1, 2, 3, 10, 11, 12),
-//                List.of(1, 2, 11, 12, 13, 14),
-//                List.of(1, 11, 12, 13, 14, 15),
-//                List.of(11, 12, 13, 14, 15, 16)
-//        );
-//        as
-//    }
+    @Test
+    void 출력테스트() {
+        View view = new View();
+        List<List<Integer>> user = List.of(
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 8),
+                List.of(1, 2, 3, 4, 8, 9),
+                List.of(1, 2, 3, 10, 11, 12),
+                List.of(1, 2, 11, 12, 13, 14),
+                List.of(1, 11, 12, 13, 14, 15),
+                List.of(11, 12, 13, 14, 15, 16)
+        );
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        view.printPurchaseList(user);
+        String output = out.toString();
+        assertThat(output).contains(
+                "8개를 구매했습니다.",
+                "[1, 2, 3, 4, 5, 6]",
+                "[1, 2, 3, 4, 5, 7]",
+                "[1, 2, 3, 4, 5, 8]",
+                "[1, 2, 3, 4, 8, 9]",
+                "[1, 2, 3, 10, 11, 12]",
+                "[1, 2, 11, 12, 13, 14]",
+                "[1, 11, 12, 13, 14, 15]",
+                "[11, 12, 13, 14, 15, 16]"
+        );
+
+    }
 
 
 }
