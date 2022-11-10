@@ -40,7 +40,7 @@ public class LottoGameService {
         }
     }
 
-    public void validateLottoWinningNumbers(List<String> lottoWinningNumbers) {
+    public void validateLottoWinningNumbers(List<Integer> lottoWinningNumbers) {
         if (isLottoWinningNumbersSizeNotSix(lottoWinningNumbers)) {
             throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + LOTTO_WINNING_NUMBERS_SIZE_EXCEPTION_MESSAGE);
         }
@@ -67,19 +67,24 @@ public class LottoGameService {
         return purchaseLottoNumbers.contains(bonusNumber);
     }
 
-    public boolean isLottoWinningNumbersSizeNotSix(List<String> lottoWinningNumbers) {
+    public boolean isLottoWinningNumbersSizeNotSix(List<Integer> lottoWinningNumbers) {
         return lottoWinningNumbers.size() != CORRECT_LOTTO_WINNING_NUMBERS_SIZE;
     }
 
-    private boolean isLottoWinningNumbersDuplicate(List<String> lottoWinningNumbers) {
+    private boolean isLottoWinningNumbersDuplicate(List<Integer> lottoWinningNumbers) {
         long numbersDistinctSize = lottoWinningNumbers.stream()
                 .distinct().count();
         return numbersDistinctSize != CORRECT_LOTTO_WINNING_NUMBERS_SIZE;
     }
 
-    public List<String> inputWinningNumberConvertToCollection(String lottoWinningNumber) {
-        return Stream.of(lottoWinningNumber.split(","))
+    public List<Integer> inputWinningNumberConvertToCollection(String lottoWinningNumber) {
+        List<String> strLottoWinningNumbers = Stream.of(lottoWinningNumber.split(","))
                 .collect(Collectors.toList());
+
+        return strLottoWinningNumbers.stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
     }
 
     public LottoWinningRank decideWinningRank(List<Integer> purchaseLottoNumbers,
