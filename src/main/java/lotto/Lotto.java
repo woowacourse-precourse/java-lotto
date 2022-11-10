@@ -19,13 +19,9 @@ public class Lotto {
         }
     }
 
-//    public int containNumber(int LottoNumber) {
-//        if(numbers.contains(LottoNumber))
-//        {
-//            return 1;
-//        }
-//        return 0;
-//    }
+    public boolean isContainNumber(int LottoNumber) {
+        return numbers.contains(LottoNumber);
+    }
 
     public static List<Integer> getLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
