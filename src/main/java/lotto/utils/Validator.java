@@ -6,8 +6,12 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+/*
+TODO: 기냥 메세지 출력하고 에러 던지는 방식으로 바꾸기
+ 안쓰는 method 지우기
+ TEST CODE 다시 작성하기
+ */
 public class Validator {
-
     public static void validateLottoPrice(int inputNumber) {
         isMultiplesOfThousand(inputNumber);
         isZero(inputNumber);
