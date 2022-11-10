@@ -3,15 +3,15 @@ package lotto.view;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.constant.Constant;
+import lotto.util.WinnerInfo;
 
 public class View {
-    // TODO: 숫자가 들어간 메시지는 printf로 리팩토링하는 것 고려
     private static final String GET_PURCHASE_AMOUNT_MESSAGE = "구입 금액을 입력해 주세요.";
     private static final String PURCHASE_INFORMATION_MESSAGE = "%d개를 구매했습니다.%n";
     private static final String GET_LOTTO_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String GET_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
     private static final String RESULT_TITLE = "당첨 통계" + "\n" + "---";
-    private static final String GET_RESULT_MESSAGE = "%d개 일치 (%d원) - %d개";
+    private static final String GET_RESULT_MESSAGE = "%s (%s) - %d개%n";
     private static final String GET_PROFIT_RATES_MESSAGE = "총 수익률은 입니다.";
 
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -51,8 +51,16 @@ public class View {
         System.out.println(GET_BONUS_NUMBER_MESSAGE);
     }
 
-    public static void printResult() {
-        System.out.println(GET_RESULT_MESSAGE);
+    public static void printResult(List<Integer> lottoResult) {
+        System.out.println(RESULT_TITLE);
+
+        for (int i = 0; i < lottoResult.size(); i++) {
+            String winningCondition = WinnerInfo.values()[i].getWinningCondition();
+            String prize = WinnerInfo.values()[i].getPrizeInformation();
+            int count = lottoResult.get(i);
+
+            System.out.printf(GET_RESULT_MESSAGE, winningCondition, prize, count);
+        }
     }
 
     public static void printProfitRate() {
