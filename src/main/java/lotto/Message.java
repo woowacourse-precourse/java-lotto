@@ -22,6 +22,11 @@ public enum Message {
         this.msg = msg;
     }
 
+    @Override
+    public String toString() {
+        return msg;
+    }
+
     void printError() {
         System.out.println(Message.ERROR +" "+this.msg);
     }
