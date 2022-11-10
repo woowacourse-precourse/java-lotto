@@ -43,6 +43,8 @@ Lotto, BonusNumber를 참조한다.
    1. splitTicket : ','로 문자열을 나누어 문자열의 배열로 리턴한다. 
    2. createTicket : 정수형 리스트로 바꾸어 Lotto의 생성자에 입력변수로 사용해 저장한다. 
 2. saveBonusNumber : BonusNumber에 입력변수값을 정수형 변수로 저장한다. 
+3. getComputerNumber : 컴퓨터의 당첨번호를 Lotto타입으로 반환한다. 
+4. getBonusNumber : 보너스 넘버를 정수형으로 반환한다. 
 
 ## 예외처리
 ### LottoException
