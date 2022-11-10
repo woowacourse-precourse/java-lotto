@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.Arrays;
+import java.util.List;
 
 public enum GameResult {
 
@@ -60,4 +61,15 @@ public enum GameResult {
     public boolean isElse() {
         return this == ELSE;
     }
+
+    public static int sumWinnerPrice(List<GameResult> gameResults) {
+        return gameResults.stream()
+                .mapToInt(GameResult::getWinnerPrice)
+                .sum();
+    }
+
+    private static int getWinnerPrice(GameResult gameResult) {
+        return gameResult.winnerPrice;
+    }
+
 }
