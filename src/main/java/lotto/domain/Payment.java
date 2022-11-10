@@ -2,6 +2,8 @@ package lotto.domain;
 
 import lotto.domain.validator.PaymentValidator;
 
+import java.util.List;
+
 public class Payment {
     private static final int LOTTO_PRICE = 1000;
     
@@ -18,5 +20,15 @@ public class Payment {
     
     public int countOfPurchasedLotto() {
         return payment / LOTTO_PRICE;
+    }
+    
+    public double calculateYield(final List<LottoRank> lottoRanks) {
+        return (int) Math.round((double) totalPrizeMoney(lottoRanks) / payment * 1000) / 10.0;
+    }
+    
+    private int totalPrizeMoney(final List<LottoRank> lottoRanks) {
+        return lottoRanks.stream()
+                .mapToInt(LottoRank::prizeMoney)
+                .sum();
     }
 }
