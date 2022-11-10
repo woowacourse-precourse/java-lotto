@@ -15,6 +15,7 @@ public class InputView {
         try {
             bw.write(INPUT_PURCHASE_AMOUNT);
             bw.newLine();
+            bw.flush();
         } catch (IOException e) {
 
         }
@@ -24,6 +25,7 @@ public class InputView {
         try {
             bw.write(INPUT_LOTTO_NUMBER);
             bw.newLine();
+            bw.flush();
         } catch (IOException e) {
 
         }
@@ -33,6 +35,7 @@ public class InputView {
         try {
             bw.write(INPUT_BONUS_NUMBER);
             bw.newLine();
+            bw.flush();
         } catch (IOException e) {
 
         }
