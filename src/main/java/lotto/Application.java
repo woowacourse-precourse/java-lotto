@@ -16,5 +16,9 @@ public class Application {
         Machine lottoMachine = new Machine();
         player.buyLottoTickets(lottoMachine);
         player.displayLottoTickets();
+
+        String winningNumberInput = Input.getInputWithMessage(GameMessage.ASK_FOR_WINNING_NUMBERS.getMessage());
+        //String bonusNumberInput =
+        Organizer organizer = new Organizer(winningNumberInput, "");
     }
 }
