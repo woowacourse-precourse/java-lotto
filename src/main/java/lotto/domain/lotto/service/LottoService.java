@@ -12,4 +12,8 @@ public class LottoService {
     public Lotto randomLottoNumbers() {
         return new Lotto(Util.orderByDescForList(Util.getRandomNumbers()));
     }
+
+    public Lotto prizeLotto() {
+        return new Lotto(Util.inputNumbersInList());
+    }
 }

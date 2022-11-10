@@ -1,16 +1,27 @@
 package lotto.domain.view;
 
 import lotto.domain.lotto.domain.Lotto;
+import lotto.global.util.Util;
 
-import java.util.List;
 
 public class OutputView {
     private static final String BUY_LOTTO = "%d개를 구매했습니다.";
+    private static final String INPUT_PRIZE_NUMBERS = "당첨 번호를 입력해 주세요.";
+
     public static void printCountByBuyLotto(int lottoCount) {
         System.out.printf((BUY_LOTTO) + "%n", lottoCount);
     }
 
     public static void printLottoNumbers(Lotto lotto) {
         System.out.println(lotto.getNumbers());
+    }
+
+    public static void enter() {
+        System.out.println();
+    }
+
+    public static String printInputPrizeNumbers() {
+        System.out.println(INPUT_PRIZE_NUMBERS);
+        return Util.input();
     }
 }

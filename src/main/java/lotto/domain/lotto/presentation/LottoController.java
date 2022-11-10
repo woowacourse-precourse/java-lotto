@@ -6,7 +6,7 @@ import lotto.domain.view.OutputView;
 
 public class LottoController {
 
-    LottoService lottoService = new LottoService();
+    private final LottoService lottoService = new LottoService();
 
     public int getLottoCount(int inputMoney) {
         int lottoCount = lottoService.lottoCount(inputMoney);
@@ -18,5 +18,9 @@ public class LottoController {
         Lotto lotto = lottoService.randomLottoNumbers();
         OutputView.printLottoNumbers(lotto);
         return lotto;
+    }
+
+    public Lotto getPrizeLotto() {
+        return lottoService.prizeLotto();
     }
 }
