@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserMoneyTest {
+    private UserMoneyValidate userMoneyValidate = new UserMoneyValidate();
 
     @Test
     public void 유저입력돈이숫자인가요() throws Exception{
@@ -23,5 +24,20 @@ public class UserMoneyTest {
         }
         //then
         assertThrows(IllegalArgumentException.class,  ()-> userMoneyValidate.notNumber(testInput));
+    }
+
+    @Test
+    public void 유저입력돈이양수인가요() throws Exception{
+        //given
+        String testInput = "-10000";
+        int testMoney = userMoneyValidate.convertStringToInt(testInput);
+        //when
+        try{
+            userMoneyValidate.negativeNumber(testMoney);
+        }catch (Exception e){
+            System.out.println(e);
+        }
+        //then
+        assertThrows(IllegalArgumentException.class, () -> userMoneyValidate.negativeNumber(testMoney));
     }
 }
