@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Lotto {
@@ -7,6 +9,14 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        duplicate(numbers);
+        this.numbers = numbers;
+    }
+    public Lotto(List<Integer> numbers, int bonus) {
+        numbers = new ArrayList<>(numbers);
+        validate(numbers);
+        numbers.add(bonus);
+        duplicate(numbers);
         this.numbers = numbers;
     }
 
@@ -17,6 +27,17 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    //로또번호 중복 검사
+    private void duplicate(List<Integer> numbers){
+        boolean[] check = new boolean[45];
+        for (int num : numbers) {
+            if (!check[num])
+                check[num] = true;
+            else
+                throw new IllegalArgumentException();
+        }
+    }
+
     @Override
     public String toString() {
         return numbers.toString();
