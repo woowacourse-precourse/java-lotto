@@ -16,9 +16,10 @@ import java.util.List;
  * 2022/11/09         gim-yeong-geun          최초 생성
  */
 public class NumberGenerator {
-    public List<Integer> createRandomNumber() {
+    private static List<List<Integer>> randomNumbers;
+    public static void createRandomNumber() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         System.out.println(numbers);
-        return numbers;
+        randomNumbers.add(numbers);
     }
 }
