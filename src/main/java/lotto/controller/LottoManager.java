@@ -54,33 +54,27 @@ public class LottoManager {
 
     private List<List<Integer>> pickNumbers(int lottoCount) {
         List<List<Integer>> result = new ArrayList<>();
-
         for (int i = 0; i < lottoCount; i++) {
             result.add(RandomUtil.pickLottoNumbers());
         }
-
         return result;
     }
 
     private List<LottoResult> calculateWins(List<List<Integer>> pickNumberList, List<Integer> winNumbers, int bonusNumber) {
         List<LottoResult> result = new ArrayList<>();
-
         for (List<Integer> pickNumbers : pickNumberList) {
             result.add(getGrade(winNumbers, bonusNumber, pickNumbers));
         }
-
         return result;
     }
 
     private LottoResult getGrade(List<Integer> winNumbers, int bonus, List<Integer> pickNumbers) {
         int count = 0;
-
         for (int number : pickNumbers) {
             if (winNumbers.contains(number)) {
                 count++;
             }
         }
-
         return gradeByHitCount(bonus, pickNumbers, count);
     }
 
