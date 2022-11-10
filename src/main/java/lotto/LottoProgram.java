@@ -36,7 +36,7 @@ public class LottoProgram {
 	}
 
 	private List<Integer> createLottoNumbers() {
-		return Randoms.pickUniqueNumbersInRange(1, 9, 6);
+		return Randoms.pickUniqueNumbersInRange(1, 45, 6);
 	}
 
 	public static List<Lotto> getLottoList() {
