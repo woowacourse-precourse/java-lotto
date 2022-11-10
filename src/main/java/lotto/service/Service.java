@@ -8,6 +8,7 @@ public class Service {
     public static int getMoney() {
         String money = Console.readLine();
         Exception.verifyMoney(money);
+
         return Integer.parseInt(money);
     }
 }
