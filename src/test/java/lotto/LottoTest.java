@@ -77,18 +77,15 @@ class LottoTest {
         Lotto lotto = new Lotto(input);
         assertThat(lotto.getNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
-    @DisplayName("입력받은 로또 번호가 input이 변했을 때 변하지 않고 반환된다.")
+    @DisplayName("입력받은 로또 번호가 생성자에 사용된 입력 객체를 변경하더라도 변하지 않고 반환된다.")
     @Test
     void unChangingReturnAfterInputChanged() {
         List<Integer> input = new java.util.ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
         Lotto lotto = new Lotto(input);
-        assertThat(lotto.getNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
         input.add(7);
         assertThat(lotto.getNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
-        lotto.getNumbers().add(8);
-        assertThat(lotto.getNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
-    @DisplayName("입력받은 로또 번호가 getNumbers()로 생성된 변수가 변해도 변하지않고 반환된다.")
+    @DisplayName("입력받은 로또 번호가 getNumbers()로 반환된 객체를 변경하더라도 변하지않고 반환된다.")
     @Test
     void unChangingReturnAfterGetInstanceChanged() {
         List<Integer> input = new java.util.ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
