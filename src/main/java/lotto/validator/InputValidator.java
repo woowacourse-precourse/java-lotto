@@ -24,7 +24,9 @@ public class InputValidator {
 
     public static boolean satisfyLottoNumberRange(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if(!isRangeTrue(number)) return false;
+            if (!isRangeTrue(number)) {
+                return false;
+            }
         }
 
         return true;
