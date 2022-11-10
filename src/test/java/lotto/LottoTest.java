@@ -1,6 +1,5 @@
 package lotto;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
@@ -84,6 +83,24 @@ class LottoTest {
             Lotto generatedLotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
             Result result = winLotto.getResult(generatedLotto);
             assertThat(result).isEqualTo(new Result(5, true));
+        }
+
+        @DisplayName("4개 일치")
+        @Test
+        void match4() {
+            WinLotto winLotto = new WinLotto(List.of(1, 2, 3, 4, 5, 6), 7);
+            Lotto generatedLotto = new Lotto(List.of(1, 2, 3, 4, 40, 41));
+            Result result = winLotto.getResult(generatedLotto);
+            assertThat(result).isEqualTo(new Result(4, false));
+        }
+
+        @DisplayName("3개 일치")
+        @Test
+        void match3() {
+            WinLotto winLotto = new WinLotto(List.of(1, 2, 3, 4, 5, 6), 7);
+            Lotto generatedLotto = new Lotto(List.of(1, 2, 3, 40, 41, 45));
+            Result result = winLotto.getResult(generatedLotto);
+            assertThat(result).isEqualTo(new Result(3, false));
         }
     }
 
