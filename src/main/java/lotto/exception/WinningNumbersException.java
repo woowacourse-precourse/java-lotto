@@ -1,6 +1,8 @@
 package lotto.exception;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class WinningNumbersException {
 
@@ -14,11 +16,18 @@ public class WinningNumbersException {
         List<String> winningNumbers = List.of(winningNumbersInput.split(","));
         checkRightWinningNumbersSize(winningNumbers);
         checkEachWinningNumber(winningNumbers);
+        checkUniqueWinningNumbers(new HashSet<>(winningNumbers));
     }
 
     public static void checkRightWinningNumbersSize(List<String> winningNumbers) {
         if (winningNumbers.size() != WINNING_NUMBERS_SIZE) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개의 숫자를 입력해주세요.");
+        }
+    }
+
+    public static void checkUniqueWinningNumbers(Set<String> winningNumbers) {
+        if (winningNumbers.size() != WINNING_NUMBERS_SIZE) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호에 중복된 숫자가 있습니다. 확인 후 중복되지 않은 번호를 입력해주세요.");
         }
     }
 
