@@ -26,6 +26,10 @@ public class LottoGenerator {
         return lottosList;
     }
 
+    public List<List<Integer>> getLottoList() {
+        return this.lottos;
+    }
+
     public void printLottos() {
         for (int i = 0; i < this.lottoCount; i++) {
             System.out.println(lottos.get(i));
