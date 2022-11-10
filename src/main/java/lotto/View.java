@@ -23,7 +23,7 @@ public class View {
         System.out.println("당첨 통계");
         System.out.println("---");
         for (Money value : Money.values()) {
-            System.out.println(value.getMoney() + list[index--] + "개");
+            System.out.println(value.getMoneyString() + list[index--] + "개");
         }
     }
 
