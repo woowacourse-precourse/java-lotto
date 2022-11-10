@@ -30,6 +30,7 @@ public class WinningMoney {
         for (int idx = 0; idx < myLottos.size(); idx++) {
             grade = checkNumbers.getCorrect(winningNumbers, myLottos.get(idx), bonusNumber);
             grades.add(grade);
+            checkNumbers.setCount(0);
         }
 
         return grades;
