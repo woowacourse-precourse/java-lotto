@@ -1,7 +1,6 @@
 package lotto;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 public enum Winning {
     FIRST(6, false, 2_000_000_000),
@@ -21,6 +20,10 @@ public enum Winning {
         this.prizeMoney = prizeMoney;
     }
 
+
+    public int getPrizeMoney() {
+        return this.prizeMoney;
+    }
 
     public static Winning getWinning(int hitCount, boolean bonusHit) {
         return Arrays.stream(Winning.values())
