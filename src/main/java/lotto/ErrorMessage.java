@@ -8,7 +8,7 @@ public enum ErrorMessage {
     LOTTE_NUMBER_OUT_BOUND("Lotto Number Have Out Bound Number."),
     LOTTE_NUMBER_NOT_ASC("Lotto Number Not Sorted by ASC."),
     PURCHASE_QTY_CONSISTENCE("Purchase Quantity Isn't Consist Of Number."),
-    PURCHASE_QTY_REMINDER("Purchase Quantity Reminder Not 0.");
+    PURCHASE_QTY_REMINDER("Purchase Quantity Reminder Isn't Zero.");
 
 
     private final String message;
