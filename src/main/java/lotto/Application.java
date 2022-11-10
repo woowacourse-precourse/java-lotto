@@ -106,7 +106,6 @@ public class Application {
         String regexGroup = "([1-9]|[1-3][0-9]|4[0-5])";
         String pattern = "^("+regexGroup+",){5}"+regexGroup;
         //String pattern = "^(([1-9]|[1-3][0-9]|4[0-5]),){5}([1-9]|[1-3][0-9]|4[0-5])";
-        System.out.println("pattern: "+pattern);
 
         if(!Pattern.matches(pattern, prizeNum)) {
             throw new IllegalArgumentException(ErrMsg.VALIDATE_INPUT_PRIZE_NUM);
@@ -178,6 +177,12 @@ public class Application {
         stats.remove(Prize.ZERO);
         printLottoStat(stats);
 
+        long total = getTotalPrizeWon(stats);
+        int budget = lottos.size() * 1000;
+
+        double rate = (double) total/budget;
+        rate = Math.round(rate*10)/10.0;
+        System.out.println(Print.RATE_BEFORE + rate + Print.RATE_AFTER);
     }
 
     private static void printLottoStat(TreeMap<Prize, Integer> stats) {
@@ -185,6 +190,16 @@ public class Application {
         for (Prize p : stats.descendingKeySet()) {
             System.out.println(p.getPrizePrint() + " - " + stats.get(p) + "개");
         }
+    }
+
+    private static long getTotalPrizeWon(TreeMap<Prize, Integer> stats) {
+        long prizeWon = 0L;
+
+        for(Prize p : stats.descendingKeySet()) {
+            prizeWon += p.getPrizeWon() * stats.get(p);
+        }
+
+        return prizeWon;
     }
 
     private static TreeMap<Prize, Integer> setStats() {
