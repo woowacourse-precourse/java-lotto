@@ -30,7 +30,7 @@ public class Input {
         coin = Integer.parseInt(Console.readLine());
         // 입력받은 금액이 1000원 단위가 아닐 때 예외 처리
         coinError(coin);
-        // 입력받은 금액이 로또를 몇번 살 수 있는지 리턴
+        // 입력받은 금액이 로또를 몇번 살 수 있는지 저장
         buyCount = coin / 1000;
         // 구입한 로또의 개수 출력
         System.out.println(buyCount + "개를 구입했습니다.");

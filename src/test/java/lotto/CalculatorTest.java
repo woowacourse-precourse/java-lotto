@@ -32,4 +32,5 @@ public class CalculatorTest {
         double result = Calculator.yield(20000, 11000);
         assertThat(result).isEqualTo(81.8);
     }
+
 }
