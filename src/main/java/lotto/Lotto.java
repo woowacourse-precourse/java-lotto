@@ -12,14 +12,10 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[Error] 당첨 번호의 개수가 맞지 않습니다.");
-        }
+        if (numbers.size() != 6) throw new IllegalArgumentException("[Error] 당첨 번호의 개수가 맞지 않습니다.");
 
-        for(int n : numbers) {
-            if (Collections.frequency(numbers, n) != 1) {
-                throw new IllegalArgumentException("[Error] 중복되는 값이 존재합니다.");
-            }
+        for (int n : numbers) {
+            if (Collections.frequency(numbers, n) != 1) throw new IllegalArgumentException("[Error] 중복되는 값이 존재합니다.");
         }
     }
 }
