@@ -1,11 +1,13 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class ValidationUtil {
+public class Util {
     public static final int MIN_NUMBER = 1;
     public static final int MAX_NUMBER = 45;
     public static final int LOTTO_COUNT = 6;
@@ -43,5 +45,9 @@ public class ValidationUtil {
         if (numbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_BONUS_NUMBER.getValue());
         }
+    }
+
+    public static List<Integer> createRandomNumbers() {
+        return Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_COUNT);
     }
 }

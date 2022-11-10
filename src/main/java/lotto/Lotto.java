@@ -12,8 +12,12 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        ValidationUtil.isValidCount(numbers);
-        ValidationUtil.isValidNumber(numbers);
-        ValidationUtil.hasDistinctNumbers(numbers);
+        Util.isValidCount(numbers);
+        Util.isValidNumber(numbers);
+        Util.hasDistinctNumbers(numbers);
+    }
+
+    private static Lotto create() {
+        return new Lotto(Util.createRandomNumbers());
     }
 }
