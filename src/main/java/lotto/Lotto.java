@@ -39,12 +39,17 @@ public class Lotto {
         return result;
     }
 
-//    public int[] getWinningArray(List<List<Integer>> getPurchaseLottoList, int bonus) {
-//        int[] result = new int[]{0, 0, 0, 0, 0};
-//        for (List<Integer> lotto : getPurchaseLottoList) {
-//            int index = getWinningIndex(lotto, bonus);
-//        }
-//    }
+    public int[] getWinningArray(List<List<Integer>> getPurchaseLottoList, int bonus) {
+        int[] result = new int[]{0, 0, 0, 0, 0};
+        for (List<Integer> lotto : getPurchaseLottoList) {
+            int index = getWinningIndex(lotto, bonus);
+            if (index < 0) {
+                continue;
+            }
+            result[index]++;
+        }
+        return result;
+    }
 
     public int getWinningIndex(List<Integer> lotto, int bonus) {
         int result = getMatchingNumber(lotto);
