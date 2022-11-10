@@ -17,9 +17,26 @@ public class LottoProgram {
 
 		int lottoCount = Integer.parseInt(userInput) / PRICE;
 		View.showLottoPurchasedGuideMessage(lottoCount);
+
+		createLotto(lottoCount);
+	}
+
+	private void createLotto(int lottoCount) {
+		while (lottoCount > 0) {
+			List lottoNumbers = createLottoNumbers();
+
+			if (!lottoList.contains(lottoNumbers)) {
+				lottoList.add(new Lotto(lottoNumbers));
+				lottoCount--;
+			}
+		}
 	}
 
 	private List<Integer> createLottoNumbers() {
 		return Randoms.pickUniqueNumbersInRange(1, 9, 6);
+	}
+
+	public static List<Lotto> getLottoList() {
+		return lottoList;
 	}
 }
