@@ -20,7 +20,7 @@ public class Manager {
         Collections.sort(winningNumbers);
         Collections.sort(userLotto);
 
-        for(int i = 0; i < Constant.LOTTO_SIZE; i++) {
+        for (int i = 0; i < Constant.LOTTO_SIZE; i++) {
             if(winningNumbers.get(i) == userLotto.get(i)) {
                 correctCount++;
             }
@@ -31,5 +31,24 @@ public class Manager {
 
     public boolean isCorrectBonus(List<Integer> userLotto) {
         return userLotto.contains(this.bonusNumber);
+    }
+
+    public int judgeRank(int correctCount, boolean isCorrectBonus) {
+        if (correctCount == Constant.THREE) {
+            return Constant.FIVE;
+        }
+        if (correctCount == Constant.FOUR) {
+            return Constant.FOUR;
+        }
+        if (correctCount == Constant.FIVE) {
+            return Constant.THREE;
+        }
+        if (correctCount == Constant.FIVE && isCorrectBonus) {
+            return Constant.TWO;
+        }
+        if (correctCount == Constant.SIX) {
+            return Constant.ONE;
+        }
+        return Constant.ZERO;
     }
 }
