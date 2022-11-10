@@ -25,4 +25,16 @@ class InputValidatorTest {
         assertThatThrownBy(() -> Application.convertMoneyInput(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("사용자가 숫자가 아닌 보너스 숫자를 넣을 시 예외를 던진다")
+    @Test
+    void inputBonusNumberByInvalidForm() {
+        String input = "일";
+
+        assertThatThrownBy(() -> Application.convertBonusNumberInput(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
+
 }
