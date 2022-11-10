@@ -26,7 +26,7 @@ public class Shop {
     private void validateMoney(String money) {
         try {
             Integer nMoney = Integer.parseInt(money);
-            if (nMoney % LOTTO_PRICE != 0) {
+            if (nMoney < 1000 || nMoney % LOTTO_PRICE != 0) {
                 LottoError.illegalArgumentException(INVALID_MONEY_INPUT);
             }
         } catch (NumberFormatException ignored) {

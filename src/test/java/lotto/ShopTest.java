@@ -35,6 +35,17 @@ class ShopTest {
     }
 
     @Test
+    @DisplayName("구입 금액이 1000보다 낮으면 예외가 발생한다.")
+    void createInputByZero() {
+        String testMoney = "0";
+        System.setIn(new ByteArrayInputStream(testMoney.getBytes()));
+        Shop shop = new Shop();
+
+        assertThatThrownBy(shop::inputMoney)
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     @DisplayName("구매한 금액만큼 로또를 생성해서 로또 리스트로 반환한다.")
     void sellLotto() {
         String testMoney = "8000";
