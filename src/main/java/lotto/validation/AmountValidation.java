@@ -1,11 +1,20 @@
 package lotto.validation;
 
-public class AmountValidation {
+public class AmountValidation extends IllegalArgumentException {
+    private ErrorMessage message;
+
     public AmountValidation() {
     }
 
-    public void isNull(String amount) {
+    public void throwError(String msg) {
+        throw new IllegalArgumentException(msg);
+    }
 
+    public void isNull(String amount) {
+        if (amount.isEmpty()) {
+            message = ErrorMessage.valueOf("BLANK_EXCEPTION");
+            throwError(message.getMessage());
+        }
     }
 
     public void isNumber(String amount) {
