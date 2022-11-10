@@ -13,7 +13,7 @@ public class Exceptions {
     static List<String> numbers;
 
     public static boolean isOverLapNumber(String request){
-        numbers = new ArrayList<String>(Arrays.asList(request.split(",")));
+        numbers = Arrays.asList(request.split(","));
         for(int i=0; i<numbers.size(); i++){
             int numberCount = Collections.frequency(numbers, numbers.get(i));
             if(numberCount > COUNT_NUMBER){
@@ -34,7 +34,7 @@ public class Exceptions {
     }
 
     public static boolean isCorrectSize(String request){
-        numbers = new ArrayList<String>(Arrays.asList(request.split(",")));
+        numbers = Arrays.asList(request.split(","));
         if(numbers.size() != LOTTO_SIZE){
             return false;
         }
