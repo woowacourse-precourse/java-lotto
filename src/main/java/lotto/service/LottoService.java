@@ -8,11 +8,12 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import lotto.Lotto;
-import lotto.common.Error;
+import lotto.validator.Validator;
 
 public class LottoService {
 
     private static final Map<Integer, Integer> placeMap = new HashMap<>();
+    private final Validator validator = new Validator();
 
     void init() {
         placeMap.put(60, 0);
@@ -23,9 +24,7 @@ public class LottoService {
     }
 
     public List<Lotto> buy(String in) {
-        isNumber(in, Error.NUMBER);
-        require(Integer.parseInt(in) < 1000, Error.MINUS);
-        require(Integer.parseInt(in) % 1000 != 0, Error.THOUSAND);
+        validator.isValidPrice(in);
         int money = getMoney(in);
         return getLottos(money);
     }
@@ -39,20 +38,6 @@ public class LottoService {
         return IntStream.range(0, numberOfLotto)
             .mapToObj(i -> Randoms.pickUniqueNumbersInRange(1, 45, 6)).map(Lotto::new)
             .collect(Collectors.toList());
-    }
-
-    private void require(final boolean condition, final Error error) {
-        if (condition) {
-            throw new IllegalArgumentException(error.getMsg());
-        }
-    }
-
-    private void isNumber(String in, Error error) {
-        try {
-            Integer.parseInt(in);
-        } catch (Exception e) {
-            throw new IllegalArgumentException(error.getMsg());
-        }
     }
 
     public List<Integer> getResult(List<Lotto> lottos, List<Integer> winns, int bonus) {
