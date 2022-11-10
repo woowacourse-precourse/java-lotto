@@ -37,6 +37,6 @@ class LottoTest {
     @Test
     void outPutTest(){
         assertThatThrownBy(() -> Output.outputLottoRank(1, 1, 1, 1, 1))
-                .hasMessageContaining("6개");
+                .isEqualTo("3개 일치(5000원")
     }
 }

@@ -21,7 +21,11 @@ public class Output {
 
     }
 
-    public static void outputLottoRank(int RankOne, int RankTwo, int RankThree, int RankFour, int RankFive) {
-        System.out.println(Rank.valueOf(Rank.ONE.toString()));
+    public static void outputLottoRank(int rankOne, int rankTwo, int rankThree, int rankFour, int rankFive) {
+        System.out.println(Rank.FIVE.getCompare() + "개 일치 " + "(" + Rank.FIVE.getMoney() + "원)" + " - " + rankFive + "개");
+        System.out.println(Rank.FOUR.getCompare() + "개 일치 " + "(" + Rank.FOUR.getMoney() + "원)" + " - " + rankFour + "개");
+        System.out.println(Rank.THREE.getCompare() + "개 일치 " + "(" + Rank.THREE.getMoney() + "원)" + " - " + rankThree + "개");
+        System.out.println(Rank.TWO.getCompare() + "개 일치 " + "(" + Rank.TWO.getMoney() + "원)" + " - " + rankTwo + "개");
+        System.out.println(Rank.ONE.getCompare() + "개 일치 " + "(" + Rank.ONE.getMoney() + "원)" + " - " + rankOne + "개");
     }
 }
