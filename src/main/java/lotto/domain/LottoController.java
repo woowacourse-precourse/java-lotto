@@ -20,7 +20,13 @@ public class LottoController {
 
     private Printer printer = new Printer();
 
-
+    public List<List<Integer>> generatePurchasedLottos(int lottoNumber){
+        List<List<Integer>> purchasedLottos = new ArrayList<>();
+        for(int number = 0; number < lottoNumber; number++){
+            purchasedLottos.add(generateLotto());
+        }
+        return purchasedLottos;
+    }
     public List<Integer> generateLotto(){
         return Randoms.pickUniqueNumbersInRange(startRange,endRange, count);
     }
