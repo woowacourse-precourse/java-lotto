@@ -1,8 +1,5 @@
 package input;
 
-import camp.nextstep.edu.missionutils.Console;
-import input.NumberGenerator;
-
 public class CashReader {
 
     private NumberGenerator numberGenerator = new NumberGenerator();
