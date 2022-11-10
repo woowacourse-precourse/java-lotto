@@ -7,8 +7,8 @@ public class LottoNumber {
     static final int LOTTO_NUMBER_MIN = 1;
     static final int LOTTO_NUMBER_MAX = 45;
 
-    private List<Integer> lottoNumbers = new ArrayList<>();
-    private int bonusNumber;
+    private static List<Integer> lottoNumbers = new ArrayList<>();
+    private static int bonusNumber;
 
     public LottoNumber(String lottoNumbers, String bonusNumber) {
         for (String num : lottoNumbers.split(",")) {
