@@ -29,7 +29,13 @@ class ValidatorTest {
     }
 
     @Test
+    @DisplayName("구입 금액이 음수이면 예외를 던진다.")
     void paymentIsNegative() {
+        // given
+        Validator validator = new Validator();
+
+        // throws
+        assertThatThrownBy(() -> validator.validatePayment("-1000")).isInstanceOf(IllegalArgumentException.class);
 
     }
 
