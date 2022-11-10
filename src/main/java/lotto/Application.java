@@ -1,11 +1,19 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
         int money = Integer.parseInt(Console.readLine());
         moneyInputError(money);
+        List<Lotto> lotto = new ArrayList<>();
+        buyLotto(money, lotto);
+
+
     }
 
     public static void moneyInputError(int money) {
@@ -14,4 +22,13 @@ public class Application {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void buyLotto(int money, List<Lotto> lotto) {
+        int lottoQTY = money / 1000;
+        for (int i = 0; i < lottoQTY; i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lotto.add(new Lotto(numbers));
+        }
+    }
+
 }
