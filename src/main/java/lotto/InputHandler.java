@@ -20,6 +20,12 @@ public class InputHandler {
                 .collect(Collectors.toList()));
     }
 
+    public static Bonus readBonusNumber() {
+        String input = readLine();
+        int amount = parseInt(input);
+        return new Bonus(amount);
+    }
+
     private static String readLine() {
         return Console.readLine();
     }
