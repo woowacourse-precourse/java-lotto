@@ -3,7 +3,7 @@
 
 - [ ] 사용자의 입력을 검사함 - Class InputException
   - [x] 사용자가 입력한 돈이 마이너스일 경우 IllegalArgumentException 예외 처리 구현 - checkBuyerInputIsMinus()
-  - [ ] 사용자가 입력한 돈이 숫자가 아닐 경우 IllegalArgumentException 예외 처리 구현
+  - [x] 사용자가 입력한 돈이 숫자가 아닐 경우 IllegalArgumentException 예외 처리 구현 - checkBuyerInputIsNotNumber()
   - [ ] 사용자가 입력한 돈이 1000원 단위로 나누어 떨어지지 않을 경우 IllegalArgumentException 예외 처리 구현
   - [ ] 사용자가 입력한 돈이 Long형 보다 더 큰 입력이 들어왔을 경우 IllegalArgumentException 예외 처리 구현
   - [ ] 사용자가 입력한 당첨 번호가 1~45가 아닐 경우 IllegalArguemntException 예외 처리 구현
@@ -30,4 +30,4 @@
   - [ ] 총 수익률 출력 구현
 
 -[ ] 유틸 - Class Util
-  - [ ] 문자열이 숫자열인지 아닌지 판별 여부 구현 - isNumberic()
+  - [x] 문자열이 숫자열인지 아닌지 판별 여부 구현 - isNumberic()
