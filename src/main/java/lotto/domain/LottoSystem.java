@@ -6,10 +6,11 @@ import java.util.List;
 
 public class LottoSystem {
     LottoMachine lottoMachine;
-    Lotto winningNumber;
+    WinningLotto winningLotto;
 
     public LottoSystem() {
         lottoMachine = new LottoMachine();
+        winningLotto = new WinningLotto();
     }
 
     public List<Lotto> buy() throws IllegalArgumentException {
@@ -24,8 +25,9 @@ public class LottoSystem {
         }
     }
 
-    public void setWinningNumber() {
+    private void setWinningNumber() {
         System.out.println(Message.INPUT_WINNING_NUMBER);
         String input = Console.readLine().trim();
+        winningLotto.setWinningNumbers(input);
     }
 }
