@@ -6,8 +6,8 @@ public class UserInput {
 
     public static Count inputPrice() {
         System.out.println("구입 금액을 입력해주세요.");
-        String userInput = Console.readLine();
-        return new Count(userInput);
+        String price = Console.readLine();
+        return new Count(price);
     }
 
     public static LottoNumber inputWinningNumbers() {
@@ -18,5 +18,4 @@ public class UserInput {
         String bonusNumber = Console.readLine();
         return new LottoNumber(winningNumbers, bonusNumber);
     }
-
 }
