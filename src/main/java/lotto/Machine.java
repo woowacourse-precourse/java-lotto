@@ -13,6 +13,7 @@ public class Machine {
         for (int count = 0; count < lottoCount; count++) {
             lottoList.add(createLotto());
         }
+        print(lottoList);
 
         return lottoList;
     }
@@ -23,6 +24,11 @@ public class Machine {
 
     private Lotto createLotto() {
         return new Lotto(createLottoNumbers());
+    }
+
+    private void print(List<Lotto> lottoList) {
+        System.out.println(lottoList.size() + "개를 구매했습니다.");
+        lottoList.forEach(lotto -> System.out.println(lotto.getNumbers()));
     }
 
     private List<Integer> createLottoNumbers() {
