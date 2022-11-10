@@ -19,97 +19,18 @@ public class Application {
 
             Output.printLotto();
 
-            System.out.println(Print.ASK_PRIZE);
-            List<Integer> prize = getPrize();
+            Output.askPrizeNum();
 
-            analyseLotto(Output.lottos, prize);
+            Output.askBonusNum();
+
+//            System.out.println(Print.ASK_PRIZE);
+//            List<Integer> prize = getPrize();
+//
+//            analyseLotto(Output.lottos, prize);
         } catch(IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
 
-    }
-
-    //로또 당첨
-    private static List<Integer> getPrize() {
-        List<Integer> prize = setPrizeNum();
-
-        System.out.println(Print.ASK_BONUS);
-        inputBonus(prize);
-
-        return prize;
-    }
-
-    private static String inputPrizeNum() {
-        String prizeNum = Console.readLine();
-
-        validateInputPrizeNum(prizeNum);
-
-        return prizeNum;
-    }
-
-    private static void validateInputPrizeNum(String prizeNum) {
-        String regexGroup = "([1-9]|[1-3][0-9]|4[0-5])";
-        String pattern = "^("+regexGroup+",){5}"+regexGroup;
-        //String pattern = "^(([1-9]|[1-3][0-9]|4[0-5]),){5}([1-9]|[1-3][0-9]|4[0-5])";
-
-        if(!Pattern.matches(pattern, prizeNum)) {
-            throw new IllegalArgumentException(ErrMsg.VALIDATE_INPUT_PRIZE_NUM);
-        }
-    }
-
-    private static String[] splitInputPrizeNum() {
-        return inputPrizeNum().split(",");
-    }
-
-    private static List<Integer> setPrizeNum() {
-        String[] splitInput = splitInputPrizeNum();
-        List<Integer> prizeNum = new ArrayList<>();
-
-        for(String input : splitInput) {
-            prizeNum.add(Integer.parseInt(input));
-        }
-
-        validatePrizeNum(prizeNum);
-
-        return prizeNum;
-    }
-
-    private static void validatePrizeNum(List<Integer> prizeNum) {
-        if(prizeNum.size()!=6) {
-            throw new IllegalArgumentException(ErrMsg.VALIDATE_PRIZE_NUM_SIX);
-        }
-        for(int i=0; i<prizeNum.size(); i++) {
-            int num = prizeNum.get(0);
-            prizeNum.remove(0);
-
-            if(prizeNum.contains(num)) {
-                throw new IllegalArgumentException(ErrMsg.VALIDATE_PRIZE_NUM_UNIQUE);
-            }
-
-            prizeNum.add(num);
-        }
-    }
-
-    private static void inputBonus(List<Integer> prize) {
-        String bonus = Console.readLine();
-
-        validateInputBonus(bonus, prize);
-    }
-
-    private static void validateInputBonus(String bonus, List<Integer> prize) {
-        String pattern = "^([1-9]|[1-3][0-9]|4[0-5])";
-
-        if(!Pattern.matches(pattern, bonus)) {
-            throw new IllegalArgumentException(ErrMsg.VALIDATE_BONUS_NUM_ONE);
-        }
-
-        int bonusNum = Integer.parseInt(bonus);
-
-        if(prize.contains(bonusNum)) {
-            throw new IllegalArgumentException(ErrMsg.VALIDATE_BONUS_NUM_UNIQUE);
-        }
-
-        prize.add(bonusNum);
     }
 
     public static void analyseLotto(List<Lotto> lottos, List<Integer> prize) {
