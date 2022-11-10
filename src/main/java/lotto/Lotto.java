@@ -39,10 +39,10 @@ public class Lotto {
         return result;
     }
 
-    public int[] getWinningArray(List<List<Integer>> getPurchaseLottoList, int bonus) {
+    public int[] getWinningArray(List<List<Integer>> getPurchaseLottoList, Input input) {
         int[] result = new int[]{0, 0, 0, 0, 0};
         for (List<Integer> lotto : getPurchaseLottoList) {
-            int index = getWinningIndex(lotto, bonus);
+            int index = getWinningIndex(lotto,input);
             if (index < 0) {
                 continue;
             }
@@ -51,10 +51,10 @@ public class Lotto {
         return result;
     }
 
-    public int getWinningIndex(List<Integer> lotto, int bonus) {
+    public int getWinningIndex(List<Integer> lotto, Input input) {
         int result = getMatchingNumber(lotto);
         if (result == 5) {
-            ContainStatus status = isContainNumber(bonus);
+            ContainStatus status = input.isBonus(lotto);
             result += status.getContain1Value()*2;
         }
         if (result < 3) {
