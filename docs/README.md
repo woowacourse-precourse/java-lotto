@@ -1,6 +1,7 @@
 ## 🛠 기능 목록
 - [ ] Computer
   - [ ] 1~45의 서로다른 임의의 수 6개를 생성한다. -createLottoNumbers()
+    - [ ] camp.nextstep.edu.missionutils에서 제공하는 Randoms API를 사용하여 구현한다.
     - [ ] 오름차순으로 정렬하여 출력한다.
   - [ ] 구입 금액을 1000으로 나눈 몫 만큼 리스트를 생성한다. - createLottos()
 
