@@ -1,5 +1,6 @@
 package lotto.view;
 
+import lotto.domain.Lotto;
 import lotto.domain.WinCount;
 
 import java.util.List;
@@ -43,9 +44,9 @@ public class OutputView {
         System.out.println(MSG_STATUS);
     }
 
-    public void printBoughtLotto(List<List<Integer>> boughtLottos) {
-        for (List<Integer> lotto : boughtLottos) {
-            printLottoNumbersInFormat(lotto);
+    public void printBoughtLotto(List<Lotto> boughtLottos) {
+        for (Lotto lotto : boughtLottos) {
+            printLottoNumbersInFormat(lotto.getNumbers());
         }
     }
 
