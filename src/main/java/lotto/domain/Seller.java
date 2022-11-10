@@ -3,6 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static lotto.resources.ValidationPattern.PATTERN;
@@ -43,7 +44,9 @@ public class Seller {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < sellCount; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, NUMBER_COUNT);
-            lottos.add(new Lotto(numbers));
+            List<Integer> lottoNumber = new ArrayList<>(numbers);
+            Collections.sort(lottoNumber);
+            lottos.add(new Lotto(lottoNumber));
         }
         return new IssuedLotto(lottos);
     }
