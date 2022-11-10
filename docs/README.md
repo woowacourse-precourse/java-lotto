@@ -1,7 +1,7 @@
 ## 기능 구현 목록
 
-- [ ] 로또 구입 금액을 입력받는 기능 - Input#inputCoin()
-  - [ ] 1,000원 단위가 아닐시 예외 처리 - Error#coinError()
+- [x] 로또 구입 금액을 입력받는 기능 - Input#inputCoin()
+  - [x] 1,000원 단위가 아닐시 예외 처리 - Input#coinError()
 - [ ] 구입 개수만큼 랜덤 번호를 부여(1~45) - NumberGenerator#createRandomNumber()
   - [ ] 6자리 번호를 입력 받음
   - [ ] 1자리 보너스 번호를 입력 받음
