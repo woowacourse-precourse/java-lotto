@@ -7,7 +7,11 @@
     - [X] 로또 번호는 오름차순 출력 - setLottoNumberList()
     - [X] 출력은 담당 출력클래스에서 출력 - view PrintLotto()
 - [X] 당첨 번호 입력(쉼표로 구분) - inputLottoNumber()
-    - [ ] 입력시 범위에 맞는지 확인(넘어가면 예외) - checkBoundary()
+    - [ ] (예외) 사용자 입력시 숫자와 쉼표가 아닌 이상한 값이 들어간 경우 - validateNotNumber
+    - [ ] (예외)입력시 범위에 맞는지 확인(1<=  n <= 45) - isOverRange
+    - [ ] (예외)입력시 입력된 숫자가 6개인지 - isOuntIndex
+    - [ ] (예외)입력시 중복되 숫자가 있는지 - isDuplicated
+    
 - [ ] 보너스 번호 입력 - inputBonusNumber()
 
 - [ ] 당첨번호와 각 로또 번호 리스트 당 같은 번호 몇개씩인지 확인 및 저장 - lottogameStart()
