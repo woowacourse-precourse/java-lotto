@@ -52,9 +52,10 @@ public class Lotto {
     }
 
 
-    public Boolean hasNumber(Integer number){
-        return null;
+    public boolean hasNumber(Integer number){
+        return numbers.contains(number);
     }
+
 
     public String toString(){
         return null;
