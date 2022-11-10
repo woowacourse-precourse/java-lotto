@@ -1,5 +1,6 @@
 package lotto;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -101,6 +102,20 @@ public class FeatureTest {
         assertThat(calculator.getEarningsRate(8000,new int[]{1, 0, 0, 0, 0})).isEqualTo(62.5);
         assertThat(calculator.getEarningsRate(10000,new int[]{1, 0, 0, 0, 0})).isEqualTo(50.0);
         assertThat(calculator.getEarningsRate(8000000,new int[]{1, 0, 0, 0, 0})).isEqualTo(0.1);
+    }
+
+    @Test
+    void 입력_숫자_예외_처리_테스트() {
+        String s = "1,2,3,4,5,z";
+        assertThatThrownBy(() -> Input.getWinningNumber(s))
+                .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 로또 번호 문자열에 숫자가 아닌 문자가 있습니다.");
+        String s1 = "123,1,2,3,4,5";
+        assertThatThrownBy(() -> Input.getWinningNumber(s1))
+                .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        String s2 = "1,2,3,4,5";
+        assertThatThrownBy(() -> Input.getWinningNumber(s2))
+                .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 로또 번호의 숫자가 6개가 아닙니다.");
+
     }
 
 
