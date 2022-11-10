@@ -53,5 +53,11 @@ class LottoTest {
         Assertions.assertThat(Math.round(prize * 100.0 / cost)).isEqualTo(62.5);
     }
 
+    @Test
+    void 형변환실패하면_무슨예외발생하더라() {
+        String brokenNumber = "a12";
+        Integer.parseInt(brokenNumber);
+    }
+
     // 아래에 추가 테스트 작성 가능
 }
