@@ -10,24 +10,24 @@ public class LottoNumbersValidator {
         throw new IllegalStateException(UTILITY_CLASS_CREATE_EXCEPTION_MESSAGE);
     }
     
-    public static void validate(List<Integer> numbers) {
-        validateOutOfLength(numbers);
-        validateExistDuplicateNumber(numbers);
-        validateOutOfRange(numbers);
+    public static void validate(List<Integer> lottoNumbers) {
+        validateOutOfLength(lottoNumbers);
+        validateExistDuplicateNumber(lottoNumbers);
+        validateOutOfRange(lottoNumbers);
     }
     
-    private static void validateOutOfLength(final List<Integer> numbers) {
-        if (isOutOfLength(numbers)) {
+    private static void validateOutOfLength(final List<Integer> lottoNumbers) {
+        if (isOutOfLength(lottoNumbers)) {
             throw new IllegalArgumentException();
         }
     }
     
-    private static boolean isOutOfLength(final List<Integer> numbers) {
-        return isSameLength(numbers.size(), LENGTH_OF_LOTTO_NUMBERS);
+    private static boolean isOutOfLength(final List<Integer> lottoNumbers) {
+        return isSameLength(lottoNumbers.size(), LENGTH_OF_LOTTO_NUMBERS);
     }
     
-    private static void validateExistDuplicateNumber(final List<Integer> numbers) {
-        if (isSameLength(numbers.size(), lengthAfterDeduplication(numbers))) {
+    private static void validateExistDuplicateNumber(final List<Integer> lottoNumbers) {
+        if (isSameLength(lottoNumbers.size(), lengthAfterDeduplication(lottoNumbers))) {
             throw new IllegalArgumentException();
         }
     }
@@ -36,20 +36,20 @@ public class LottoNumbersValidator {
         return lottoNumbersLength != lengthToCompare;
     }
     
-    private static int lengthAfterDeduplication(final List<Integer> numbers) {
-        return (int) numbers.stream()
+    private static int lengthAfterDeduplication(final List<Integer> lottoNumbers) {
+        return (int) lottoNumbers.stream()
                 .distinct()
                 .count();
     }
     
-    private static void validateOutOfRange(final List<Integer> numbers) {
-        if (isExistAnythingOutOfRange(numbers)) {
+    private static void validateOutOfRange(final List<Integer> lottoNumbers) {
+        if (isExistAnythingOutOfRange(lottoNumbers)) {
             throw new IllegalArgumentException();
         }
     }
     
-    private static boolean isExistAnythingOutOfRange(final List<Integer> numbers) {
-        return numbers.stream()
+    private static boolean isExistAnythingOutOfRange(final List<Integer> lottoNumbers) {
+        return lottoNumbers.stream()
                 .anyMatch(LottoNumbersValidator::isOutOfRange);
     }
     
