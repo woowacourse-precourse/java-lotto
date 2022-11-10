@@ -191,4 +191,15 @@ public class Application {
 
         return Console.readLine();
     }
+
+    public static void validateBonusNumberIsInteger(String input) {
+
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) < 48 || input.charAt(i) > 57) {
+
+                printErrorAboutInteger();
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }
