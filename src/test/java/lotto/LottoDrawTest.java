@@ -60,4 +60,22 @@ public class LottoDrawTest {
         assertThatThrownBy(() -> lottoDraw.pickBonusNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("보너스 번호가 숫자가 아닌 경우 예외가 발생한다.")
+    @Test
+    void case7_validate_Numeric() {
+        String input = "w";
+        assertThatThrownBy(() -> lottoDraw.pickBonusNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 1~45 범위 외인 경우 예외가 발생한다.")
+    @Test
+    void case8_validate_range() {
+        String input = "0";
+        assertThatThrownBy(() -> lottoDraw.pickBonusNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 }
