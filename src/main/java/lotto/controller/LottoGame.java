@@ -21,6 +21,12 @@ public class LottoGame {
         this.lottoView = lottoView;
     }
 
+    public void play() {
+        purchaseLottos();
+        drawLotto();
+        generateStatistics();
+    }
+
     public void purchaseLottos() {
         lottoView.printPurchaseMoneyInputCommand();
         int purchaseMoney = Integer.parseInt(Console.readLine()); //TODO: 구입금액 입력 !예외처리
