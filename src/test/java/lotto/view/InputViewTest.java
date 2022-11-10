@@ -29,7 +29,7 @@ class InputViewTest {
 		inputView.getMoney();
 
 		//then
-		assertThat(out.toString().trim()).isEqualTo("구입금액을 입력해 주세요.");
+		assertThat(out.toString()).isEqualTo("구입금액을 입력해 주세요.\n\n");
 	}
 
 	@Test

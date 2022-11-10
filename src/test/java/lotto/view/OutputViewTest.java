@@ -42,8 +42,8 @@ class OutputViewTest {
         outputView.printLottoAmount(lottoAmount);
 
         //then
-        assertThat(out.toString().trim())
-                .isEqualTo(String.format(OutputViewImpl.BUYED_LOTTO_AMOUNT_MESSAGE_FORMAT, 10));
+        assertThat(out.toString())
+                .isEqualTo(String.format("%s\n", String.format(OutputViewImpl.BUYED_LOTTO_AMOUNT_MESSAGE_FORMAT, 10)));
     }
 
     @Test

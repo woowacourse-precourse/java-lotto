@@ -12,7 +12,7 @@ public class OutputViewImpl implements OutputView {
 
 	@Override
 	public void printLottoAmount(LottoAmount lottoAmount) {
-		System.out.printf(BUYED_LOTTO_AMOUNT_MESSAGE_FORMAT, lottoAmount.getAmount());
+		System.out.printf((BUYED_LOTTO_AMOUNT_MESSAGE_FORMAT) + "%n", lottoAmount.getAmount());
 	}
 
 	@Override
@@ -25,6 +25,6 @@ public class OutputViewImpl implements OutputView {
 
 	@Override
 	public void printErrorMessage(Exception e) {
-		System.out.println(String.format(ERROR_MESSAGE_FORMAT, e.getMessage()));
+		System.out.printf((ERROR_MESSAGE_FORMAT) + "%n", e.getMessage());
 	}
 }
