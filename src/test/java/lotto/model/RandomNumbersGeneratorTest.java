@@ -1,5 +1,6 @@
 package lotto.model;
 
+import static lotto.model.RandomNumbersGenerator.*;
 import static lotto.model.RandomNumbersGenerator.NUMBERS_SIZE_ERROR;
 import static lotto.model.RandomNumbersGenerator.isValidSize;
 import static org.assertj.core.api.Assertions.assertThatCode;
@@ -26,13 +27,29 @@ class RandomNumbersGeneratorTest {
     }
 
     @Test
-    void 중복_수가_있으면_예외(){
+    void 중복_수가_있으면_예외() {
         List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 5));
-        assertThatThrownBy(() -> RandomNumbersGenerator.isValidRepeat(numbers)).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("중복된 숫자가 있습니다.");
+        assertThatThrownBy(() -> isValidRepeat(numbers)).isInstanceOf(
+                IllegalArgumentException.class).hasMessage(NUMBER_REPEAT_ERROR);
 
         numbers.remove(numbers.size() - 1);
         numbers.add(6);
-        assertThatCode(() -> RandomNumbersGenerator.isValidRepeat(numbers)).doesNotThrowAnyException();
+        assertThatCode(() -> isValidRepeat(numbers)).doesNotThrowAnyException();
+    }
+
+    @Test
+    void 숫자_범위_예외() {
+        List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 46));
+        assertThatThrownBy(() -> isValidRange(numbers)).isInstanceOf(
+                IllegalArgumentException.class).hasMessage(NUMBER_RANGE_ERROR);
+
+        numbers.remove(numbers.size() - 1);
+        numbers.add(6);
+        assertThatCode(() -> isValidRange(numbers)).doesNotThrowAnyException();
+
+        numbers.remove(numbers.size() - 1);
+        numbers.add(0);
+        assertThatThrownBy(() -> isValidRange(numbers)).isInstanceOf(
+                IllegalArgumentException.class).hasMessage(NUMBER_RANGE_ERROR);
     }
 }
