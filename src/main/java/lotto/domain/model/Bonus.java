@@ -1,6 +1,7 @@
 package lotto.domain.model;
 
-import static lotto.utils.Advice.BonusValidator.checkBonusSizeAndConsistNumber;
+import static lotto.utils.Advice.BonusValidator.checkRange;
+import static lotto.utils.Advice.BonusValidator.checkSizeAndNumber;
 
 
 public class Bonus {
@@ -14,6 +15,7 @@ public class Bonus {
     }
 
     private static void validate(String bonus) {
-        checkBonusSizeAndConsistNumber(bonus);
+        checkSizeAndNumber(bonus);
+        checkRange(bonus);
     }
 }
