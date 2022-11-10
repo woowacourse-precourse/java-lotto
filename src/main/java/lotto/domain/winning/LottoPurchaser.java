@@ -1,11 +1,11 @@
 package lotto.domain.winning;
 
+import static lotto.domain.policy.LottoPolicy.PRICE_OF_LOTTO;
+
 import java.util.List;
 import lotto.domain.lotto_numbers.Lotto;
 
 public class LottoPurchaser {
-
-    public static final int PRICE_OF_LOTTO = 1_000;
 
     private final List<Lotto> purchasedLottos;
 
@@ -32,9 +32,11 @@ public class LottoPurchaser {
     public String purchasedLottosFormat() {
         StringBuilder stringBuilder = new StringBuilder();
         for (Lotto purchasedLotto : purchasedLottos) {
-            stringBuilder.append(purchasedLotto.numbers()).append("\n");
+            stringBuilder
+                    .append(purchasedLotto.numbers())
+                    .append("\n");
         }
-        // 오름차순으로 정렬된 값을 보여줘야 함.
+
         return stringBuilder.toString();
     }
 }

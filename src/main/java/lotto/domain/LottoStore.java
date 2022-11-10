@@ -1,6 +1,10 @@
 package lotto.domain;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+import static lotto.domain.policy.LottoPolicy.COUNT_OF_LOTTO_NUMBERS;
+import static lotto.domain.policy.LottoPolicy.MAX_NUMBER_OF_LOTTO;
+import static lotto.domain.policy.LottoPolicy.MIN_NUMBER_OF_LOTTO;
+import static lotto.domain.policy.LottoPolicy.PRICE_OF_LOTTO;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,11 +15,6 @@ import lotto.domain.winning.LottoPurchaser;
 public class LottoStore {
 
     static final String INVALID_VALUE_OF_MONEY = "1_000원 단위로만 입력해 주세요.";
-
-    private static final int PRICE_OF_LOTTO = 1_000;
-    private static final int MIN_NUMBER_OF_LOTTO = 1;
-    private static final int MAX_NUMBER_OF_LOTTO = 45;
-    private static final int COUNT_OF_LOTTO_NUMBERS = 6;
 
     // 구매자로 반환해도 될것같음.
     public LottoPurchaser lottos(String strMoney) {
