@@ -31,6 +31,9 @@ public class Customer {
         if (paidMoney % 1000 != 0) {
             throw new IllegalArgumentException(NOT_DIVISIBLE_BY_THOUSAND);
         }
+        if (paidMoney == 0) {
+            throw new IllegalArgumentException(BOUGHT_NOTHING);
+        }
     }
 
     private void purchaseLottery() {
