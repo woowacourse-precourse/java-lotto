@@ -11,10 +11,26 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        validateLength(numbers);
+        validateDuplicate(numbers);
+        validateRange(numbers);
+    }
+
+    private void validateLength(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
     }
 
-    // TODO: 추가 기능 구현
+    private static void validateDuplicate(List<Integer> numbers) {
+        if (numbers.stream().distinct().count() != 6) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void validateRange(List<Integer> numbers) {
+        if (!numbers.stream().allMatch(number -> 1 <= number && number <= 45)) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
