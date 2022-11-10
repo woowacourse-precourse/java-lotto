@@ -1,5 +1,8 @@
 package lotto;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Player {
 
     public static final int LOTTO_PRICE = 1000;
@@ -19,6 +22,13 @@ public class Player {
 
     private boolean isDivided(int price) {
         return ((price % LOTTO_PRICE) == CRITERION_ZERO);
+    }
+
+    public List<Lotto> buyLottos(int price, List<List<Integer>> lottoNumbers) {
+        canBuyLottoCount(price);
+        return lottoNumbers.stream()
+                .map(Lotto::new)
+                .collect(Collectors.toList());
     }
 
 }
