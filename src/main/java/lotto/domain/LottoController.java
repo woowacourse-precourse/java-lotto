@@ -42,6 +42,9 @@ public class LottoController {
     public int inputMoney(){
         printer.printInputMoney();
         String money = Console.readLine();
+        if(!money.chars().allMatch(Character::isDigit)){
+            throw new IllegalArgumentException("[ERROR] 숫자 형식으로 입력해주세요.");
+        }
         return Integer.parseInt(money);
     }
 
