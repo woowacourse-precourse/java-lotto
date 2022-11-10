@@ -1,7 +1,7 @@
 
 ## 기능 목록
 ###1. 입력 처리
-#### 입력은 모두 버퍼드리더로 한 줄씩 입력받아 처리한다.
+#### 입력은 모두 주어진 API로 한 줄씩 입력받아 처리한다.
     1) 입력금액 처리 
         / int getInputCost(String readLine)
     2) 당첨 번호 처리 
@@ -12,7 +12,7 @@
     1) 로또 1개 숫자 발행 
         / List<Integer> getLottoNumbers()
     2) 사용자의 구매횟수만큼 getLottoList를 호출해서 리스트에 넣음
-        / List<List<Integer>> getPuchasesLottoList(int purchaseNumber)
+        / List<List<Integer>> getPurchaseLottoList(int purchaseNumber)
 ###3. 당첨 확인
     1) 숫자 포함 여부 확인
         / int containNumber(int LottoNumber, List<Integer> winningNumber)
@@ -24,7 +24,7 @@
     1) 수익 계산 // 추후 enum으로 리팩토링
         / int getProfit(int[] WinningArray)
     2) 수익율 계산
-        / int getEarningsRate(int Profit, int puchaseNumber)
+        / float getEarningsRate(int Profit, int puchaseNumber)
 ###5. 예외 처리
     1) 구입금액에 숫자가 아닌 문자열이 입력되었을 때
     2) 구입금액이 1000의 배수가 아닐 때
