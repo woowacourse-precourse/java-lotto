@@ -11,6 +11,7 @@ public class Money {
         validate(money);
         this.money = Integer.parseInt(money);
         this.lottoCount = countLottoCount(money);
+        printLottoCount();
     }
 
     public void validate(String money) {
@@ -41,4 +42,8 @@ public class Money {
      public Integer getLottoCount() {
         return this.lottoCount;
      }
+
+    public void printLottoCount() {
+        System.out.println("\n"+getLottoCount()+"개를 구매했습니다.");
+    }
 }
