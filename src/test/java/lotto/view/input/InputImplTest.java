@@ -31,10 +31,22 @@ class InputImplTest {
         }
 
         @Test
-        @DisplayName("1000원보다 커야한다.")
+        @DisplayName("1000원 단위의 금액이 아니면 예외가 발생한다.")
         void case2() {
             //given
             String paymentAmountInput = "2222";
+            InputStream in = new ByteArrayInputStream(paymentAmountInput.getBytes());
+            System.setIn(in);
+
+            //when //then
+            assertThatThrownBy(input::inputPaymentAmount).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        @DisplayName("1000원 이상의 1000원 단위의 금액이어야 한다.")
+        void case3() {
+            //given
+            String paymentAmountInput = "17000";
             InputStream in = new ByteArrayInputStream(paymentAmountInput.getBytes());
             System.setIn(in);
 
@@ -44,7 +56,6 @@ class InputImplTest {
             // then
             assertThat(paymentAmount).isEqualTo(Integer.parseInt(paymentAmountInput));
         }
-
     }
     @Nested
     @DisplayName("당첨 번호는")
