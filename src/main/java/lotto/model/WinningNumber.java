@@ -1,6 +1,7 @@
 package lotto.model;
 
 import static lotto.Util.removeSpace;
+import static lotto.Util.verifyRangeOfLottoNumber;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,15 +23,15 @@ public class WinningNumber {
             throw new IllegalArgumentException();
         }
         for (Integer winningNumber : numbers) {
-            if (winningNumber < 1 || winningNumber > 45) {
-                throw new IllegalArgumentException();
-            }
+            verifyRangeOfLottoNumber(winningNumber);
         }
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException();
         }
         return numbers;
     }
+
+
 
     private static List<String> separateStringByComma(String input) {
         return Arrays.asList(input.split(","));
