@@ -1,5 +1,12 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+
 public class Domain {
     public boolean isValidPriceInput(String input) {
         if (!input.matches("^[0-9]+$")) {
@@ -13,5 +20,9 @@ public class Domain {
         return true;
     }
 
-    
+    public Lotto createRandomLottoNumber() {
+        return new Lotto(pickUniqueNumbersInRange(1, 45, 6));
+    }
+
+
 }
