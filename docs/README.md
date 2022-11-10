@@ -14,5 +14,5 @@
   - [ ] User와 당첨 번호를 입력받는다. LottoResult#Constructor()
   - [ ] User와 당첨 번호를 이용해 등수를 구한다.
 - [ ] 메시지 Package 작성한다. - Message
-  - [ ] 정상메시지 Class 작성한다. - Message#NormalMessage
+  - [x] 정상메시지 Class 작성한다. - Message#NormalMessage
   - [ ] 에러메시지 Class 작성한다. - Message#ErrorMessage
