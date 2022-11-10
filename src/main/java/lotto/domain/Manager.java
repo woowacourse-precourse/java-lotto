@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.domain.enums.Number;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -42,40 +44,40 @@ public class Manager {
     }
 
     public int judgeRank(int correctCount, boolean isCorrectBonus) {
-        if (correctCount == Constant.THREE) {
-            return Constant.FIVE;
+        if (correctCount == Number.THREE.ordinal()) {
+            return Number.FIVE.ordinal();
         }
-        if (correctCount == Constant.FOUR) {
-            return Constant.FOUR;
+        if (correctCount == Number.FOUR.ordinal()) {
+            return Number.FOUR.ordinal();
         }
-        if (correctCount == Constant.FIVE) {
-            return Constant.THREE;
+        if (correctCount == Number.FIVE.ordinal()) {
+            return Number.THREE.ordinal();
         }
-        if (correctCount == Constant.FIVE && isCorrectBonus) {
-            return Constant.TWO;
+        if (correctCount == Number.FIVE.ordinal() && isCorrectBonus) {
+            return Number.TWO.ordinal();
         }
-        if (correctCount == Constant.SIX) {
-            return Constant.ONE;
+        if (correctCount == Number.SIX.ordinal()) {
+            return Number.ONE.ordinal();
         }
-        return Constant.ZERO;
+        return Number.ZERO.ordinal();
     }
 
     public int getWinningAmount(int rank) {
-        if(rank == Constant.FIVE) {
+        if(rank == Number.FIVE.ordinal()) {
             return Constant.FIFTH_WINNING_AMOUNT;
         }
-        if(rank == Constant.FOUR) {
+        if(rank == Number.FOUR.ordinal()) {
             return Constant.FOURTH_WINNING_AMOUNT;
         }
-        if(rank == Constant.THREE) {
+        if(rank == Number.THREE.ordinal()) {
             return Constant.THIRD_WINNING_AMOUNT;
         }
-        if(rank == Constant.TWO) {
+        if(rank == Number.TWO.ordinal()) {
             return Constant.SECOND_WINNING_AMOUNT;
         }
-        if(rank == Constant.ONE) {
+        if(rank == Number.ONE.ordinal()) {
             return Constant.FIRST_WINNING_AMOUNT;
         }
-        return Constant.ZERO;
+        return Number.ZERO.ordinal();
     }
 }
