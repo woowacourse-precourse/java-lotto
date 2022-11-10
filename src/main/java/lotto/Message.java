@@ -28,6 +28,10 @@ public enum Message {
     }
 
     void printError() {
-        System.out.println(Message.ERROR +" "+this.msg);
+        System.out.println(Message.ERROR + " " + this.msg);
+    }
+
+    void printResult(long count) {
+        System.out.println(msg + count + "개");
     }
 }
