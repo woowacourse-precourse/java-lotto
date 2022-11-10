@@ -13,7 +13,7 @@ public enum ErrorStatus {
         ERROR_MESSAGE = errorMessage;
     }
 
-    public String printError(){
+    public String printError() {
         return "[ERROR] " + ERROR_MESSAGE;
-    };
+    }
 }

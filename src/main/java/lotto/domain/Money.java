@@ -12,6 +12,7 @@ public class Money {
     }
 
     public int purchase() {
+        InputView.showNumberOfLottos(this.money, LOTTO_PRICE);
         return this.money / LOTTO_PRICE;
     }
 }
