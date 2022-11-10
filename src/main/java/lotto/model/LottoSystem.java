@@ -1,10 +1,10 @@
 package lotto.model;
 
-class LottoSystem {
+public class LottoSystem {
 
     private final LottoNumbers lottoNumbers;
     private int usedMoney;
-    LottoSystem() {
+    public LottoSystem() {
         this.lottoNumbers = new LottoNumbers();
     }
 
@@ -20,7 +20,15 @@ class LottoSystem {
         this.usedMoney = usedMoney;
     }
 
-    public String getProfitRage(int profit) {
-        return String.format("%.1f%%", ((float) profit * 100) / usedMoney);
+    public String getProfitRage() {
+        return String.format("%.1f%%", ((float) lottoNumbers.getProfitSum() * 100) / usedMoney);
+    }
+
+    public String getPurchaseDetails() {
+        return lottoNumbers.getPurchaseDetails();
+    }
+
+    public String getResult(Lotto targetLotto,int bonusNumber) {
+        return lottoNumbers.getResult(targetLotto,bonusNumber);
     }
 }

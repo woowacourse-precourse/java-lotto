@@ -18,6 +18,6 @@ class ChangerTest {
     @DisplayName("문자를 숫자리스트로 전환")
     @Test
     void change_string_to_Integers() {
-        assertThat(Changer.StringToIntegers("1,2,3,4,5,6")).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(Changer.stringToIntegers("1,2,3,4,5,6")).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
 }
