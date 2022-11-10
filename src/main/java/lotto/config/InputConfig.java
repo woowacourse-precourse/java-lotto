@@ -4,6 +4,10 @@ import java.util.Set;
 
 public class InputConfig {
     private static final String ERROR_MESSAGE = "[ERROR]";
+    public static final int START_INCLUSIVE = 1;
+    public static final int END_INCLUSIVE = 45;
+    public static final int LOTTO_NUMBER_COUNT = 6;
+    public static final long LOTTO_PRICE = 1000;
 
 
     //
@@ -12,19 +16,19 @@ public class InputConfig {
 //    }
 //
     void isBonusNumberInLotto(Set<Integer> lotto, int bonus) {
-        if(lotto.contains(bonus)) {
+        if (lotto.contains(bonus)) {
             throw new IllegalArgumentException();
         }
     }
 
     private void hasCorrectSize(Set<Integer> set) {
-        if(set.size()!=6) {
+        if (set.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
 
-    private static void isInCorrectRange(int value) {
-        if (!(1 <= value && value <= 45)) {
+    private static void isInRange(int value) {
+        if (!(START_INCLUSIVE <= value && value <= END_INCLUSIVE)) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
@@ -33,7 +37,7 @@ public class InputConfig {
     public static void checkPurchaseInput(String input) {
         long value = isLongType(input);
         isMoreThanZero(value);
-        isDividedByThousand(value);
+        isDividedByPrice(value);
     }
 
     private static long isLongType(String input) {
@@ -50,8 +54,8 @@ public class InputConfig {
         }
     }
 
-    private static void isDividedByThousand(long value) {
-        if (value % 1000 != 0) {
+    private static void isDividedByPrice(long value) {
+        if (value % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }

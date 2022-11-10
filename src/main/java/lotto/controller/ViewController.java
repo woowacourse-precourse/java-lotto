@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 public class ViewController {
-    private final long LOTTO_PRICE = 1000;
+    private final long LOTTO_PRICE = InputConfig.LOTTO_PRICE;
 
     private final InputView inputView;
     private final OutputView outputView;

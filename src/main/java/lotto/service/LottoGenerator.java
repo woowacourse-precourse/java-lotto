@@ -1,6 +1,7 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.config.InputConfig;
 import lotto.controller.ViewController;
 import lotto.domain.Lotto;
 
@@ -9,9 +10,9 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoGenerator {
-    private final int START_INCLUSIVE = 1;
-    private final int END_INCLUSIVE = 45;
-    private final int LOTTO_NUMBER_COUNT = 6;
+    private final int START_INCLUSIVE = InputConfig.START_INCLUSIVE;
+    private final int END_INCLUSIVE = InputConfig.END_INCLUSIVE;
+    private final int LOTTO_NUMBER_COUNT = InputConfig.LOTTO_NUMBER_COUNT;
     private final ViewController viewController;
 
     public LottoGenerator() {
