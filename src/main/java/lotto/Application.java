@@ -10,18 +10,35 @@ import java.util.Objects;
 
 public class Application {
 
-    static int get_comsumption() {
+    static int get_consumption() {
+        int consumption;
         System.out.println("구입금액을 입력해 주세요.");
-        int consumption = Integer.parseInt(Console.readLine());
-        if (consumption % 1000 != 0) throw new IllegalArgumentException();
+        try{
+            consumption = Integer.parseInt(Console.readLine());
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR] 올바른 입력 값이 아닙니다.");
+        }
+        if (consumption % 1000 != 0) throw new IllegalArgumentException("[ERROR] 입력 값이 1000으로 나눠떨어지지 않습니다.");
         return consumption;
+    }
+
+    static List<Integer> sort_ticket_num(List<Integer> numbers) {
+        // Sort numbers.
+        int[] sort_vehicle = new int[46];
+        List<Integer> sort_result = new ArrayList<Integer>();
+        for (int i = 0; i < numbers.size(); i++)
+            sort_vehicle[numbers.get(i)] += 1;
+        for (int i = 0; i < numbers.size(); i++)
+            if (sort_vehicle[i] != 0)
+                sort_result.add(i);
+        return sort_result;
     }
 
     static List<Lotto> get_user_tickets(int count) {
         List<Lotto> ticket_list = new ArrayList<Lotto>();
         for (int i = 0; i < count; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(numbers);
+            numbers = sort_ticket_num(numbers);
             System.out.println(numbers.toString());
             ticket_list.add(new Lotto(numbers));
         }
@@ -44,7 +61,7 @@ public class Application {
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonus_num = Integer.parseInt(Console.readLine());
         if (bonus_num > 45 || bonus_num < 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
         return bonus_num;
     }
@@ -84,10 +101,24 @@ public class Application {
 
 
     public static void main(String[] args) {
-        // check result of get_winning_number and get_bonus_number
-//        int[] ranks = new int[6];
-//        for (int i = 0; i < user_tickets.size(); i++) {
-//            ranks[get_rank(user_tickets.get(i).getNumbers(), winning_number.getNumbers(), bonus_number)] += 1;
-//        }
+        try {
+            int consumption = get_consumption();
+
+            List<Lotto> user_tickets = get_user_tickets(consumption / 1000);
+
+            Lotto winning_number = get_winning_number();
+
+            int bonus_number = get_bonus_number();
+
+//         check result of get_winning_number and get_bonus_number
+            int[] ranks = new int[6];
+            for (int i = 0; i < user_tickets.size(); i++) {
+                ranks[get_rank(user_tickets.get(i).getNumbers(), winning_number.getNumbers(), bonus_number)] += 1;
+            }
+
+            print_statistics(ranks, consumption);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
+        }
     }
 }
