@@ -1,11 +1,10 @@
 package lotto.domain.entity;
 
-import static lotto.domain.message.ExceptionMessage.*;
+import static lotto.common.message.ExceptionMessage.*;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import lotto.domain.message.ExceptionMessage;
 
 public class Lotto {
     private final List<Integer> numbers;

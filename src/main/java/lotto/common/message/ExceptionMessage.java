@@ -1,4 +1,4 @@
-package lotto.domain.message;
+package lotto.common.message;
 
 public class ExceptionMessage {
 

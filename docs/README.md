@@ -25,4 +25,4 @@
    - RandomNumberGenerator : camp.nextstep.edu.missionutils.Randoms 에서 사용되는 Random method를
    통해 난수 생성
    - RandomNumberConversion : String type to List<Integer> type Numbers Method
-   - NumbersSeperator : 문자열을 쉽표 기준으로 나눠 Sting[] array를 return 해주는 method
+   - NumbersSeparator : 문자열을 쉽표 기준으로 나눠 Sting[] array를 return 해주는 method
