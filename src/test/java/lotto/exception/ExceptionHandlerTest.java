@@ -35,7 +35,15 @@ public class ExceptionHandlerTest {
     }
 
     @Test
-    @DisplayName("구매 금액이 1000으로 나누어 떨어지지 않으면 에러 메시지를 출력하고 예외 처리 한다.")
+    @DisplayName("숫자로만 이루어진 문자열을 입력하지 않으면 에러 메시지를 출력하고 예외가 발생한다.")
+    void throwExceptionForNotNumericInput() {
+        assertThatThrownBy(() -> ExceptionHandler.isNumeric("12331ab333333"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThat(output()).isEqualTo("[ERROR] 숫자를 입력해야 합니다.");
+    }
+
+    @Test
+    @DisplayName("구매 금액이 1000으로 나누어 떨어지지 않으면 에러 메시지를 출력하고 예외가 발생한다.")
     void throwExceptionForNotMultipleOf1000() {
         assertThatThrownBy(() -> ExceptionHandler.isMultipleOf(1300, LottoStatistic.LOTTO_PRICE.getValue()))
                 .isInstanceOf(IllegalArgumentException.class);
