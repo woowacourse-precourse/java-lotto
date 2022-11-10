@@ -14,13 +14,15 @@ public class LottoService {
     public LottoService() { }
 
     public void validateMoney(int money) {
-        if(money == ZERO_WON) { throw new IllegalArgumentException(REJECT_ZERO); }
-
         if(Math.floorMod(Math.round(money), STANDARD_WON) != 0) { throw new IllegalArgumentException(NOT_MOD_ZERO_MESSAGE); }
     }
 
     public void validateConsistOfNumbers(String input) {
         boolean result = Pattern.matches("^[0-9]*$", input);
         if(!result) { throw new IllegalArgumentException(REJECT_NOT_NUMBERS); }
+    }
+
+    public void validateMoneyZero(int money) {
+        if(money == ZERO_WON) { throw new IllegalArgumentException(REJECT_ZERO); }
     }
 }
