@@ -34,7 +34,7 @@ public class Winner {
     private void validateIfNumeric(String input) {
         boolean isNumber = input.matches(ONLY_NUMBER);
         if (!isNumber) {
-            throw new IllegalArgumentException("[ERROR] [ERROR] 숫자가 아닌 값이 포함되어 있습니다. 공백이나 문자가 들어갔는지 확인해주세요.");
+            throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값이 포함되어 있습니다. 공백이나 문자가 들어갔는지 확인해주세요.");
         }
     }
 
@@ -63,7 +63,7 @@ public class Winner {
 
     private void validateIfBonusNumberIncludedInWinningNumbers() {
         if (winningNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호가 이미 당첨 번호에 포함되어 있습니다.");
+            throw new IllegalArgumentException("[ERROR] 겹치는 번호가 존재합니다.");
         }
     }
 }
