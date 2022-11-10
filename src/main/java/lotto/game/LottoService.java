@@ -3,9 +3,9 @@ package lotto.game;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import lotto.Lotto;
@@ -66,6 +66,17 @@ public class LottoService {
         return lottos;
     }
 
+    public List<LottoGrade> confirmAllLottos(WinningLotto winningLotto, List<Lotto> lottos) {
+        List<LottoGrade> winnings = new ArrayList<>();
+        for (Lotto lotto : lottos) {
+            LottoGrade lottoGrade = winningConfirm(winningLotto, lotto);
+            if (lottoGrade != LottoGrade.NOTHING) {
+                winnings.add(lottoGrade);
+            }
+        }
+        return winnings;
+    }
+
     public LottoGrade winningConfirm(WinningLotto winningLotto, Lotto lotto) {
         boolean bonusMatch = lotto.getNumbers().contains(winningLotto.getBonusNumber());
         int matchCount = 0;
@@ -76,5 +87,21 @@ public class LottoService {
             }
         }
         return LottoGrade.confirmWinning(matchCount, bonusMatch);
+    }
+
+    public Map<LottoGrade, Integer> getTotalWinning(List<LottoGrade> grades) {
+        Map<LottoGrade, Integer> totalWinnings = new HashMap<>();
+        for (LottoGrade grade : grades) {
+            addWinning(totalWinnings, grade);
+        }
+        return totalWinnings;
+    }
+
+    private void addWinning(Map<LottoGrade, Integer> totalWinnings, LottoGrade grade) {
+        if (totalWinnings.containsKey(grade)) {
+            totalWinnings.put(grade, totalWinnings.get(grade) + 1);
+            return;
+        }
+        totalWinnings.put(grade, 1);
     }
 }
