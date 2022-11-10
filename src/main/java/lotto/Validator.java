@@ -50,7 +50,7 @@ public class Validator {
     }
 
     private void valueCanDivideByOneThousand(String money) {
-        if (Integer.parseInt(money) / 1000 != 0) {
+        if (Integer.parseInt(money) % 1000 != 0) {
             throw new IllegalArgumentException(NEED_TO_INPUT_NUMBER_CAN_DIVIDE_BY_ONE_THOUSAND);
         }
     }
