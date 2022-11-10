@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-public class EnumTest {
+public class MessagesTest {
 
     @Test
     void 구매_메세지_Enum이_잘_적용되는지_확인합니다() {
