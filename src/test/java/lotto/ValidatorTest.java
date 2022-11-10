@@ -25,7 +25,7 @@ public class ValidatorTest {
     @DisplayName("입력 받은 값이 1000의 배수가 아닐 경우 예외가 발생한다")
     @ParameterizedTest(name = "{index} {displayName} input={0} ")
     @ValueSource(strings = {"1001", "1002", "800", "2100"})
-    void validateMultipleOfThousand(String input) {
+    void validateMultipleOfThousand(int input) {
         assertThatThrownBy(() -> Validator.isMultiplesOfThousand(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
