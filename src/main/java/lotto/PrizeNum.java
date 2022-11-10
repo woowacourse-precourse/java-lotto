@@ -37,4 +37,18 @@ public class PrizeNum {
             throw new IllegalArgumentException(ErrMsg.VALIDATE_PRIZE_NUM_UNIQUE);
         }
     }
+
+    public static void setBonusNum() throws IllegalArgumentException {
+        int bonus = Integer.parseInt(Input.inputBonus());
+
+        validateBonusNum(bonus);
+
+        prize.add(bonus);
+    }
+
+    private static void validateBonusNum(int bonus) throws IllegalArgumentException {
+        if(prize.contains(bonus)) {
+            throw new IllegalArgumentException(ErrMsg.VALIDATE_BONUS_NUM_UNIQUE);
+        }
+    }
 }
