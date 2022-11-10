@@ -24,10 +24,15 @@ public class Result {
         for (Prize prize : allPrize) {
             int countPrize = getPrizeCount(prize.getWinningCount(), prize.getBonusCount());
             System.out.println(prize.getMessage()+ " - " + countPrize+"개");
+            sumPrizeMoney(prize.getPrizeMoney(), countPrize);
         }
     }
 
     private int getPrizeCount(int winningCount, int bonusCount) {
         return totalMatchResult.getOrDefault(new MatchCount(winningCount, bonusCount), 0);
+    }
+
+    public void sumPrizeMoney(int prizeMoney, int countPrize) {
+        totalPrizeMoney += prizeMoney*countPrize;
     }
 }
