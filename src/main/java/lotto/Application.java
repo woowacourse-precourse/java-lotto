@@ -46,5 +46,11 @@ public class Application {
         for (Lotto userLotto : user.getLottos()) {
             Winning winning = getWinning(userLotto, winningLotto);
 
+            if (winning.equals(null)) {
+                continue;
+            }
+
+            user.addWinning(winning);
+        }
     }
 }
