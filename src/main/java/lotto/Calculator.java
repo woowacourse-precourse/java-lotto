@@ -9,4 +9,7 @@ public class Calculator {
         }
         return result;
     }
+    public double getEarningsRate(int purchaseCost, int [] winningArray) {
+        return Math.round((getProfit(winningArray) / purchaseCost) * 10000) /100.0;
+    }
 }

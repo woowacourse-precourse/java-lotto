@@ -25,7 +25,7 @@
     1) 수익 계산 // 추후 enum으로 리팩토링
         / int getProfit(int[] WinningArray)
     2) 수익율 계산
-        / float getEarningsRate(int Profit, int puchaseNumber)
+        / float getEarningsRate(int profit, int purchaseNumber)
 ###5. 예외 처리
     1) 구입금액에 숫자가 아닌 문자열이 입력되었을 때
     2) 구입금액이 1000의 배수가 아닐 때
