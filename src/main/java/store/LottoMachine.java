@@ -23,4 +23,8 @@ public class LottoMachine {
         return camp.nextstep.edu.missionutils.Randoms
                 .pickUniqueNumbersInRange(START_LOTTO_NUMBER_RANGE, END_LOTTO_NUMBER_RANGE, LOTTO_NUMBERS);
     }
+
+    private Lotto convertLotto(List<Integer> numbers) {
+        return new Lotto(extractRandomNumbers());
+    }
 }
