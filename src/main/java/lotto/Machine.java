@@ -2,14 +2,19 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Machine {
-    public void buy(int amount) {
+    private final List<Lotto> lottoList = new ArrayList<>();
+
+    public List<Lotto> buy(int amount) {
         int lottoCount = getCount(amount);
         for (int count = 0; count < lottoCount; count++) {
-            createLotto();
+            lottoList.add(createLotto());
         }
+
+        return lottoList;
     }
 
     public int getCount(int amount) {
