@@ -19,6 +19,11 @@ public class Lotto {
         NumbersValidator.isValid(numbers);
     }
 
+    public LottoStatus matchLotto(Lotto targetLotto) {
+        int count = countMathNumbers(targetLotto);
+        return LottoStatus.checkValue(count);
+    }
+
     public int countMathNumbers(Lotto targetLotto) {
         return targetLotto.countMathNumbers(numbers);
     }
