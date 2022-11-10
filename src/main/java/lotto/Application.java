@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.InputView;
 import lotto.domain.LottoStore;
 
 public class Application {

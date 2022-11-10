@@ -3,8 +3,12 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.utils.Validation;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class InputView {
     public static int inputMoney;
+    public static List<Integer> winningNumbers;
 
     public static void inputPurchasePrice() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -16,5 +20,16 @@ public class InputView {
 
     public static void showNumberOfLottos(int money, int lottoPrice) {
         System.out.println(money / lottoPrice + "개를 구매했습니다.");
+    }
+
+    public static void inputWinningNumbers() {
+        showWinningNumbersInputMessage();
+        String[] inputWinningNumbers = Console.readLine().split(",");
+        Validation.validateWinningNumbers(inputWinningNumbers);
+
+    }
+
+    private static void showWinningNumbersInputMessage() {
+        System.out.println("당첨 번호를 입력해 주세요.");
     }
 }
