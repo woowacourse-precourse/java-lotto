@@ -1,8 +1,9 @@
 package lotto;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     public static Winning getWinning(Lotto userLotto, WinningLotto winningLotto) {
@@ -10,10 +11,10 @@ public class Application {
         List<Integer> winningNumbers = winningLotto.getNumbers();
         int bonusNumber = winningLotto.getBonusNumber();
 
-        
-        winningNumbers.retainAll(userNumbers);
+        int hitCount = ((int) userNumbers.stream()
+                .filter(userNumber -> winningNumbers.contains(userNumber))
+                .count());
 
-        int hitCount = winningNumbers.size();
         if (hitCount < 3) {
             return null;
         }
