@@ -67,6 +67,6 @@
     - [x] 자동으로 생성하는 로또의 경우 정렬된 순서로 반환한다.
 - [ ]  자동으로 발급된 로또를 가지고 있는 User 클래스 추가
 - [x]  로또 등수 및 상금에 대한 정보를 가지고 있는 LottoPrize Enum 추가
-- [ ]  로또 결과에 정보를 가지고 있는 LottoResult 추가 EnumMap<LottoReward, Integer>의 일급 컬렉션
+- [x]  로또 결과에 대한 정보를 가지고 있는 LottoResult 클래스 추가 EnumMap<LottoPrize, Integer>의 일급 컬렉션
 - [x]  당첨 로또 번호를 가지고 있고, 로또를 검증하는 LottoMachine 클래스 추가
     - [ ] 로또 결과 확인하는 메서드 추가 
