@@ -9,6 +9,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class InputConsoleTest extends NsTest{
 
+    InputConsole inputConsole;
+
+    public InputConsoleTest() {
+        this.inputConsole = new InputConsole();
+    }
+
     @Test
     @DisplayName("view가 출력되고, 구입금액을 입력하면 입력값이 return되어야 한다.")
     void test1() {
@@ -16,7 +22,7 @@ class InputConsoleTest extends NsTest{
         run("8000");
 
         // when
-        String input = InputConsole.enterPurchaseAmount();
+        String input = inputConsole.enterPurchaseAmount();
 
         // then
         assertEquals("구입금액을 입력해 주세요.", output());
@@ -30,7 +36,7 @@ class InputConsoleTest extends NsTest{
         run("");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, InputConsole::enterPurchaseAmount);
+        Exception exception = assertThrows(IllegalArgumentException.class, inputConsole::enterPurchaseAmount);
         assertEquals("[ERROR] 아무것도 입력하지 않았습니다.", exception.getMessage());
     }
 
@@ -41,7 +47,7 @@ class InputConsoleTest extends NsTest{
         run(" ");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, InputConsole::enterPurchaseAmount);
+        Exception exception = assertThrows(IllegalArgumentException.class, inputConsole::enterPurchaseAmount);
         assertEquals("[ERROR] 아무것도 입력하지 않았습니다.", exception.getMessage());
     }
 
@@ -52,7 +58,7 @@ class InputConsoleTest extends NsTest{
         run("숫자아님");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, InputConsole::enterPurchaseAmount);
+        Exception exception = assertThrows(IllegalArgumentException.class, inputConsole::enterPurchaseAmount);
         assertEquals("[ERROR] 숫자를 입력 하세요.", exception.getMessage());
     }
 
@@ -63,7 +69,7 @@ class InputConsoleTest extends NsTest{
         run("12345");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, InputConsole::enterPurchaseAmount);
+        Exception exception = assertThrows(IllegalArgumentException.class, inputConsole::enterPurchaseAmount);
         assertEquals("[ERROR] 1,000원 단위로 입력 하세요.", exception.getMessage());
     }
 
@@ -74,7 +80,7 @@ class InputConsoleTest extends NsTest{
         run("");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, InputConsole::enterWinningNumber);
+        Exception exception = assertThrows(IllegalArgumentException.class, inputConsole::enterWinningNumber);
         assertEquals("[ERROR] 아무것도 입력하지 않았습니다.", exception.getMessage());
     }
 
@@ -85,7 +91,7 @@ class InputConsoleTest extends NsTest{
         run(" ");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, InputConsole::enterWinningNumber);
+        Exception exception = assertThrows(IllegalArgumentException.class, inputConsole::enterWinningNumber);
         assertEquals("[ERROR] 아무것도 입력하지 않았습니다.", exception.getMessage());
     }
 
@@ -96,7 +102,7 @@ class InputConsoleTest extends NsTest{
         run("1,2,3,사,five,6");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, InputConsole::enterWinningNumber);
+        Exception exception = assertThrows(IllegalArgumentException.class, inputConsole::enterWinningNumber);
         assertEquals("[ERROR] 숫자나 쉼표만 입력 해야 합니다.", exception.getMessage());
     }
 
@@ -107,7 +113,7 @@ class InputConsoleTest extends NsTest{
         run("1,2,3,4,5");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, InputConsole::enterWinningNumber);
+        Exception exception = assertThrows(IllegalArgumentException.class, inputConsole::enterWinningNumber);
         assertEquals("[ERROR] 6개의 숫자를 입력해 주세요.", exception.getMessage());
     }
 
@@ -118,7 +124,7 @@ class InputConsoleTest extends NsTest{
         run("1,2,3,4,5,6,7");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, InputConsole::enterWinningNumber);
+        Exception exception = assertThrows(IllegalArgumentException.class, inputConsole::enterWinningNumber);
         assertEquals("[ERROR] 6개의 숫자를 입력해 주세요.", exception.getMessage());
     }
 
@@ -129,7 +135,7 @@ class InputConsoleTest extends NsTest{
         run("1,2,3,4,5,50");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, InputConsole::enterWinningNumber);
+        Exception exception = assertThrows(IllegalArgumentException.class, inputConsole::enterWinningNumber);
         assertEquals("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.", exception.getMessage());
     }
 
@@ -140,7 +146,7 @@ class InputConsoleTest extends NsTest{
         run("");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, InputConsole::enterBonusNumber);
+        Exception exception = assertThrows(IllegalArgumentException.class, inputConsole::enterBonusNumber);
         assertEquals("[ERROR] 아무것도 입력하지 않았습니다.", exception.getMessage());
     }
 
@@ -151,7 +157,7 @@ class InputConsoleTest extends NsTest{
         run(" ");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, InputConsole::enterBonusNumber);
+        Exception exception = assertThrows(IllegalArgumentException.class, inputConsole::enterBonusNumber);
         assertEquals("[ERROR] 아무것도 입력하지 않았습니다.", exception.getMessage());
     }
 
@@ -162,7 +168,7 @@ class InputConsoleTest extends NsTest{
         run("한글");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, InputConsole::enterBonusNumber);
+        Exception exception = assertThrows(IllegalArgumentException.class, inputConsole::enterBonusNumber);
         assertEquals("[ERROR] 숫자를 입력 하세요.", exception.getMessage());
     }
 
@@ -173,7 +179,7 @@ class InputConsoleTest extends NsTest{
         run("50");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, InputConsole::enterBonusNumber);
+        Exception exception = assertThrows(IllegalArgumentException.class, inputConsole::enterBonusNumber);
         assertEquals("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.", exception.getMessage());
     }
 
@@ -184,7 +190,7 @@ class InputConsoleTest extends NsTest{
         run("1,2,3,4,5,6");
 
         // when
-        String input = InputConsole.enterWinningNumber();
+        String input = inputConsole.enterWinningNumber();
 
         // then
         assertEquals("당첨 번호를 입력해 주세요.", output());
@@ -198,7 +204,7 @@ class InputConsoleTest extends NsTest{
         run("1");
 
         // when
-        String input = InputConsole.enterBonusNumber();
+        String input = inputConsole.enterBonusNumber();
 
         // then
         assertEquals("보너스 번호를 입력해 주세요.", output());
@@ -212,7 +218,7 @@ class InputConsoleTest extends NsTest{
         run("1,2,3,4,5,5");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, InputConsole::enterWinningNumber);
+        Exception exception = assertThrows(IllegalArgumentException.class, inputConsole::enterWinningNumber);
         assertEquals("[ERROR] 중복 된 숫자가 포함되어있습니다.", exception.getMessage());
     }
 
