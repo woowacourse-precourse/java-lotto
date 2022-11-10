@@ -22,7 +22,7 @@ public enum Message {
         this.msg = msg;
     }
 
-    void printError(Message message) {
-        System.out.println(Message.ERROR +" "+message.msg);
+    void printError() {
+        System.out.println(Message.ERROR +" "+this.msg);
     }
 }
