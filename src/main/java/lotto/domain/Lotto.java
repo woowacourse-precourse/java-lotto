@@ -1,9 +1,6 @@
 package lotto.domain;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 로또 번호의 유효성을 확인하는 클래스
@@ -41,9 +38,16 @@ public class Lotto {
     }
 
     private void isValidateNumbersRange(List<Integer> numbers) {
-        Collections.sort(numbers);
-        if (numbers.get(0) < Number.LOTTO_NUMBER_MIN || numbers.get(Number.LOTTO_NUMBER_LENGTH - 1) > Number.LOTTO_NUMBER_MAX) {
+        int min = numbers.stream().sorted().findFirst().get();
+        int max = numbers.stream().sorted(Comparator.reverseOrder()).findFirst().get();
+
+        if(min < Number.LOTTO_NUMBER_MIN || max > Number.LOTTO_NUMBER_MAX) {
             throw new IllegalArgumentException();
         }
+
+//        Collections.sort(numbers);
+//        if (numbers.get(0) < Number.LOTTO_NUMBER_MIN || numbers.get(Number.LOTTO_NUMBER_LENGTH - 1) > Number.LOTTO_NUMBER_MAX) {
+//            throw new IllegalArgumentException();
+//        }
     }
 }
