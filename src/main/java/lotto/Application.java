@@ -17,13 +17,15 @@ public class Application {
     private static boolean amountValidation(int amount) {
 
         try {
-            if (amount % 1000 != 0) {
+            if (amount % 1000 != 0 || amount == -1) {
                 throw new IllegalArgumentException("[ERROR] 천 원단위로 입력해 주세요.");
             }
 
             return true;
+
         } catch (IllegalArgumentException e) {
-            System.out.println( e.getMessage());
+            System.out.println(e.getMessage());
+
             return false;
         }
     }

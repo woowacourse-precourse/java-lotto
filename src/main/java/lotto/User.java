@@ -6,7 +6,10 @@ public class User {
 
     public int purchaseAmount() {
 
-        return Integer.parseInt(readLine());
-
+        try {
+            return Integer.parseInt(readLine());
+        } catch (NumberFormatException e) {
+            return -1;
+        }
     }
 }
