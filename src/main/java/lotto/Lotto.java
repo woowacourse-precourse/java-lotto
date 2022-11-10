@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -24,7 +25,5 @@ public class Lotto {
             if(numbers.get(i) < 1 || numbers.get(i) > 45)
                 throw new IllegalArgumentException();
     }
-
-    
     // TODO: 추가 기능 구현
 }

@@ -22,6 +22,7 @@ public class Application {
         for (int i = 0; i < count; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Collections.sort(numbers);
+            System.out.println(numbers.toString());
             ticket_list.add(new Lotto(numbers));
         }
         return ticket_list;
