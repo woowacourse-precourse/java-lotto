@@ -8,16 +8,19 @@ public class Lotto {
 
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
+    private Lotto(List<Integer> numbers) {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private static void validate(List<Integer> numbers) {
         if (numbers.size() != SIZE) {
             throw new IllegalArgumentException();
         }
     }
 
-    // TODO: 추가 기능 구현
+    public static Lotto numberOf(List<Integer> numbers) {
+        validate(numbers);
+
+        return new Lotto(numbers);
+    }
 }
