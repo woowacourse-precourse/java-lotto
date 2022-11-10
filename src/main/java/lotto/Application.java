@@ -12,6 +12,8 @@ public class Application {
     public static void main(String[] args) {
         Count count = UserInput.inputPrice();
         createLottoTickets(count.getNumOfLotto());
+        System.out.println(count.getNumOfLotto()+"개를 구매했습니다.");
+        showLottoTickets();
     }
 
     private static List<Lotto> createLottoTickets(int numOfLotto) {
@@ -23,5 +25,11 @@ public class Application {
 
     private static Lotto createLotto() {
         return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+    }
+
+    public static void showLottoTickets() {
+        for (Lotto lottoTicket : lottoTickets) {
+            System.out.println(lottoTicket);
+        }
     }
 }
