@@ -23,8 +23,7 @@ public class Game {
 
         PrintUtil.printPurchaseLottoStatus(lottos);
 
-        WinningLotto winningLotto = new WinningLotto(InputUtil.inputWinningLottoNumber(),
-                                                     InputUtil.inputBounsLottoNumber());
+        WinningLotto winningLotto = makeWinningLotto();
 
         PrintUtil.printWinningLottoStatus();
 
@@ -58,5 +57,10 @@ public class Game {
         }
 
         return lottos;
+    }
+
+    private WinningLotto makeWinningLotto() {
+        return new WinningLotto(InputUtil.inputWinningLottoNumber(),
+                                InputUtil.inputBounsLottoNumber());
     }
 }
