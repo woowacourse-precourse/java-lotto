@@ -169,6 +169,35 @@ public class FeatureTest {
         );
 
     }
+    @Test
+    void 당첨통계_출력() {
+        View view = new View();
+
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        int[] answer = new int[]{1, 1, 1, 1, 1};
+        view.printWinningStatistics(answer);
+        String output = out.toString();
+        assertThat(output).contains(
+                "당첨 통계",
+                "---",
+                "3개 일치 (5,000원) - 1개",
+                "4개 일치 (50,000원) - 1개",
+                "5개 일치 (1,500,000원) - 1개",
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개",
+                "6개 일치 (2,000,000,000원) - 1개"
+        );
+    }
+
+    @Test
+    void 수익률_출력() {
+        View view = new View();
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        view.printEarningsRate(62.5);
+        String output = out.toString();
+        assertThat(output).contains("총 수익률은 62.5%입니다.");
+    }
 
 
 }
