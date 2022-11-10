@@ -84,4 +84,18 @@ public class UserTest {
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining(ExceptionMessage.WRONG_FORMAT.toString());
     }
+
+    @DisplayName("중복된 숫자로 로또 번호를 입력하면 예외가 발생한다.")
+    @Test
+    void inputLottoNumbersByDuplicateNumber() {
+        //given
+        String userInput = "1,2,3,4,5,5";
+        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(in);
+
+        // when, then
+        assertThatThrownBy(User::inputLottoNumbers)
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(ExceptionMessage.DUPLICATE_NUMBER.toString());
+    }
 }
