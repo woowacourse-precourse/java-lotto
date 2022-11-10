@@ -28,4 +28,8 @@ public class Manager {
 
         return correctCount;
     }
+
+    public boolean isCorrectBonus(List<Integer> userLotto) {
+        return userLotto.contains(this.bonusNumber);
+    }
 }
