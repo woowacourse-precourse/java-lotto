@@ -30,6 +30,7 @@ class LottoServiceTest {
     void createMoneyByNotDivisible1000() {
         // given
         String input = "12345";
+        // expect
         assertThatThrownBy(() -> lottoService.convertInputToMoney(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 1000으로 나눠 떨어지는 금액만 입력해주세요.");
