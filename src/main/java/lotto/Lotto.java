@@ -11,14 +11,22 @@ public class Lotto {
 
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    public Lotto(List<Integer> numbers) { // 생성자, 기존 코드
+    public Lotto(List<Integer> numbers) throws IOException { // 생성자, 기존 코드
         validate(numbers);
         this.numbers = numbers;
     }
 
-    public int inputMoney() throws IOException {
+    public int inputMoney() throws IOException { // 로또 구입 금액
         System.out.println("구입금액을 입력해 주세요.");
         int inputMoney = Integer.parseInt(br.readLine());
+        if(inputMoney % 1000 != 0){
+            throw new IllegalArgumentException("로또 구입 금액은 1,000원 단위입니다.");
+        }
+        return inputMoney;
+    }
+
+    public int theNumberOfLotto() throws IOException { // 로또 개수
+        int inputMoney = inputMoney() / 1000;
         return inputMoney;
     }
 
