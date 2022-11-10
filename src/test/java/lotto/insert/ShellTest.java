@@ -1,6 +1,8 @@
 package lotto.insert;
 
 
+import static java.lang.Character.getNumericValue;
+import static java.lang.Integer.valueOf;
 import static org.assertj.core.api.Assertions.*;
 
 
@@ -27,8 +29,10 @@ class ShellTest {
         for (int index = 1; index <= 6; index++) {
             assertList.add(index);
         }
+
+
         for (char character : separate) {
-            result.add((int) character);
+            result.add(getNumericValue(character));
         }
 
         //then
