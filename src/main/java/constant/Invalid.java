@@ -17,6 +17,11 @@ public enum Invalid {
     }
 
     public void throwException() {
-        throw new IllegalArgumentException("[ERROR] " + this.content);
+        throw new IllegalArgumentException("[ERROR] " + this);
+    }
+
+    @Override
+    public String toString() {
+        return this.content;
     }
 }
