@@ -1,7 +1,11 @@
 package lotto;
 
+import lotto.input.LottoTickets;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        LottoTickets lottoTickets = new LottoTickets();
+        int paid = lottoTickets.getPaid();
+        System.out.println(paid);
     }
 }
