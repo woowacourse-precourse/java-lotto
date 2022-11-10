@@ -17,4 +17,14 @@ class LottoSystemTest {
         lottoSystem.addStatus(LottoStatus.MATCH_FIVE);
         assertThat(lottoSystem.getStatusCount(LottoStatus.MATCH_FIVE)).isEqualTo(2);
     }
+
+    @DisplayName("수량 만큼 로또 생성 및 추가")
+    @Test
+    void add_lotto() {
+        LottoSystem lottoSystem = new LottoSystem();
+        lottoSystem.addLotto(5);
+        assertThat(lottoSystem.getLottoQuantity()).isEqualTo(5);
+    }
+
+
 }
