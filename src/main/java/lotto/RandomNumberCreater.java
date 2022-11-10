@@ -8,8 +8,9 @@ import java.util.Map;
 
 public class RandomNumberCreater {
   Money money = new Money();
+  UserNumberScan scanner = new UserNumberScan();
   public Map<Integer, List<Integer>> generateLottoNumber() {
-    int count = money.countLotto(money.inputMoney());
+    int count = money.countLotto(scanner.requestMoney());
 
     Map<Integer, List<Integer>> lottoMap = new HashMap<>();
     for (int i = 0; i < count; i++)

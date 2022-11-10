@@ -12,7 +12,7 @@ public class PrintOut {
   }
 
   public void lottoPrint(List<Integer> numbers){
-    Lotto lotto = new Lotto();
-    System.out.println(lotto.generateLottoNumber());
+//    Lotto lotto = new Lotto();
+//    System.out.println(lotto.generateLottoNumber());
   }
 }

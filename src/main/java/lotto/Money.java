@@ -3,12 +3,6 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Money {
-  public String inputMoney() {
-    return Console.readLine();
-  }
-
-  //예외 발생은 어디서 시켜야 할까..
-  // 두 예외를 한번에 검사하는 곳에서 하는게 맞지 않을까
   public boolean checkMoneyIsDigit(String userMoney) {
     for (int i = 0; i < userMoney.length(); i++)
     {
