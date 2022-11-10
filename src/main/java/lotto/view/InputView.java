@@ -15,7 +15,7 @@ public class InputView {
         return validateMoney(money);
     }
 
-    public int validateMoney(String money) {
+    private int validateMoney(String money) {
         int purchaseMoney;
 
         try {

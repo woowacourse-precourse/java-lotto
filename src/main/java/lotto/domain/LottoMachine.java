@@ -23,7 +23,7 @@ public class LottoMachine {
         return lottos;
     }
 
-    public List<Integer> createLottoNumbers() {
+    private List<Integer> createLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, COUNT_LOTTO_NUMBER);
     }
 }
