@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -10,6 +11,7 @@ import java.util.stream.Collectors;
 public class LottoGame {
     private static final String INVALID_NUMBER_TYPE_REGEX = "\\D";
     private static final int UNIT_OF_MONEY = 1000;
+    private static final int LOTTO_NUMBER_COUNT = 6;
 
     public String inputMoney() {
         String money = Console.readLine();
@@ -42,5 +44,37 @@ public class LottoGame {
         return lotto.stream()
                 .sorted(Comparator.comparing(Integer::valueOf))
                 .collect(Collectors.toList());
+    }
+
+    public List<Integer> inputWinningNumbers() {
+        String winningNumbers = Console.readLine();
+        return getNumbers(winningNumbers);
+    }
+
+    private List<Integer> getNumbers(String winningNumbers) {
+        validateNumberCount(winningNumbers);
+        return Arrays.stream(winningNumbers.split(","))
+                .peek(this::validateNumberType)
+                .map(Integer::parseInt)
+                .peek(this::validateNumberRange)
+                .collect(Collectors.toList());
+    }
+
+    private void validateNumberCount(String numbers) {
+        if (numbers.split(",").length != LOTTO_NUMBER_COUNT) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_NUMBER_COUNT.getMessage());
+        }
+    }
+
+    private void validateNumberType(String number) {
+        if (Pattern.compile(INVALID_NUMBER_TYPE_REGEX).matcher(number).find()) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_WINNING_NUMBER_TYPE.getMessage());
+        }
+    }
+
+    private void validateNumberRange(int number) {
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_NUMBER_RANGE.getMessage());
+        }
     }
 }
