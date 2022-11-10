@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,6 +19,7 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         isValidateDuplicated(numbers);
         isValidateNumbersLength(numbers);
+        isValidateNumbersRange(numbers);
     }
 
     private void isValidateDuplicated(List<Integer> numbers) {
@@ -38,4 +40,10 @@ public class Lotto {
         }
     }
 
+    private void isValidateNumbersRange(List<Integer> numbers) {
+        Collections.sort(numbers);
+        if (numbers.get(0) < Number.LOTTO_NUMBER_MIN || numbers.get(Number.LOTTO_NUMBER_LENGTH - 1) > Number.LOTTO_NUMBER_MAX) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
