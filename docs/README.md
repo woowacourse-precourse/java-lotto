@@ -118,20 +118,20 @@
 ---
 
 ## 📜기능목록
-- [ ] lotto 번호 생성자 - Lotto#Lotto()
-- [ ] 로또번호 길이 검사 - Lotto#validate()
-- [ ] 로또번호 반환 - Lotto#getnumbers()
+- [x] lotto 번호 생성자 - Lotto#Lotto()
+- [x] 로또번호 길이 검사 - Lotto#validate()
+- [x] 로또번호 반환 - Lotto#getnumbers()
 
 
-- [ ] 길이 6의 로또번호 생성 (범위는 1 ~ 45) - NumberGenerate#makeNumber()
-  - [ ] 로또번호 중복 검사 - NumberGenerate#validate()
+- [x] 길이 6의 로또 번호 생성 (범위는 1 ~ 45) - NumberGenerator#makeNumber()
 
-- [ ] 사용자 금액 입력 받기 - User#readMoney()
-  - [ ] 잘못된 값 입력 검사 - User#validateInputNumber()
-- [ ] 사용자 로또 입력 받기 - User#readLotto()
-  - [ ] 잘못된 값 입력 검사 - User#validateInputLottoNumber()
-- [ ] 사용자 로또번호 출력 - User#showLottos()
-
+- [x] 사용자 금액 입력 받기 - User#readMoney()
+  - [x] 사용자 금액 잘못된 값 입력 검사 - User#validateInputNumber()
+- [x] 사용자 로또 입력 받기 - User#readLotto()
+  - [x] 잘못된 값 입력 검사 - User#validateInputLottoNumber()
+- [x] 사용자 입력 값을 List<Integer>로 변경 - User#convertLottoNumber()
+- [x] 사용자 로또 번호 출력 - User#showLottos()
+- [x] 사용자의 로또 개수 설정 - User#setnumOfLotto()
 
 - [ ] 당첨 확인 - Comparator#compareWin()
   - [ ] 로또 번호 비교 Comparator#compareLottoNumber()
