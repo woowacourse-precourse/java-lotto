@@ -15,7 +15,7 @@ public class InputAgent {
         return Integer.parseInt(lottoPurchaseMoney);
     }
 
-    public List<Integer> inputLottoNumbers() {
+    public List<Integer> inputWinningNumbers() {
         String[] lottoNumbers = Console.readLine().split(",");
         List<Integer> convertedLottoNumbers = new ArrayList<>();
         for (String value : lottoNumbers) {
@@ -25,7 +25,7 @@ public class InputAgent {
         return convertedLottoNumbers;
     }
 
-    public int inputBonusNumber() {
+    public int inputWinningBonusNumber() {
         List<Integer> bonusNumber = Collections.singletonList(Integer.parseInt(Console.readLine()));
         ValueValidator.validateInputLottoNumber(bonusNumber);
         return bonusNumber.get(0);
