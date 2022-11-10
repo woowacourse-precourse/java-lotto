@@ -35,12 +35,12 @@ public class Lotto {
         return amount;
     }
 
-    private void initNumbers(List<String> winningNumbers) {
+    //ui에서 예외 검사하고 넘어올거여서 굳이 예외사항을 검사해야할까?
+    private void initNumbers(List<Integer> winningNumbers) {
         int length = winningNumbers.size();
 
-        for (int place = 0; place < length; place++) {
-            int number = stringToInt(winningNumbers);
-            numbers.add(place, winningNumbers.get(place));
+        for(int number : winningNumbers) {
+            numbers.add(number);
         }
     }
 
