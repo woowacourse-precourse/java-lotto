@@ -3,9 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -31,19 +29,32 @@ public class Application {
         System.out.println(lottos.size() + "개를 구매했습니다.");
 
         // 당첨 번호 , 보너스 번호 입력 받기
-        List<Integer> winnerNumber = setWinnerNumber();
+        Set<Integer> winnerNumber = setWinnerNumber();
+        System.out.println(winnerNumber);
 
 
     }
 
 
-    private static List<Integer> setWinnerNumber() {
+    private static Set<Integer> setWinnerNumber() {
         String input = Console.readLine();
-
-        return null;
+        Set<Integer> winnerNumber = new HashSet<>();
+        // 입력 받은 당첨 번호 검증
+        if(validWinnerNumber(input)){
+            winnerNumber = Stream.of(input.split(",")).map(Integer::parseInt).collect(Collectors.toSet());
+        }
+        if(winnerNumber.size() == 6){
+            return winnerNumber;
+        }
+        throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_VALUE.message());
     }
 
-
+    private static boolean validWinnerNumber(String input) {
+        if(Pattern.matches("(\\d,){5}\\d" , input)){
+            return true;
+        }
+        throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_VALUE.message());
+    }
 
     private static List<List<Integer>> buyLotto(int account) {
         List<List<Integer>> lottos = new ArrayList<>();
