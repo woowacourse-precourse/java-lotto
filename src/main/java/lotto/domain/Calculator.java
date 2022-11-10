@@ -20,7 +20,7 @@ public class Calculator {
         return Prize.LAST;
     }
 
-    public double calculateProfit(int totalPrize, int investmentCash){
+    public double getProfit(int totalPrize, int investmentCash){
         double profit = ((double)totalPrize / investmentCash) * 100 * 10;
         profit = Math.round(profit);
 
