@@ -6,10 +6,27 @@ import lotto.model.LottoGenerator;
 import lotto.model.Player;
 import lotto.model.Service;
 import lotto.util.InputVerifier;
+import lotto.view.View;
 
 public class Controller {
 
     Player player = new Player();
+
+    public void setGame() {
+        View.printInputPurchaseAmount();
+        String money = getMoney();
+
+        int lottoAmount = getLottoAmount(money);
+        List<List<Integer>> lottoNumbers = getLottoNumbers(lottoAmount);
+        List<Integer> bonusNumbers = getBonusNumbers(lottoAmount);
+        View.printPurchaseInformation(lottoAmount, lottoNumbers);
+
+        View.printInputLottoNumber();
+        List<String> playerLottoNumbers = guessLottoNumbers();
+
+        View.printInputBonusNumber();
+        int playerBonusNumbers = guessBonusNumbers();
+    }
 
     private String getMoney() {
         String money = player.getInput();
@@ -46,6 +63,12 @@ public class Controller {
         List<String> lottoNumbers = player.guessLottoNumbers();
         InputVerifier.checkLottoNumber(lottoNumbers);
         return lottoNumbers;
+    }
+
+    private int guessBonusNumbers() {
+        String bonusNumbers = player.getInput();
+        InputVerifier.checkBonusNumber(bonusNumbers);
+        return Integer.parseInt(bonusNumbers);
     }
 
 }
