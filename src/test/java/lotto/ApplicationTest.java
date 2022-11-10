@@ -92,6 +92,12 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void getWinningNumbersTest() {
+
+        assertThat(List.of(1, 2, 3, 4, 5, 6)).isEqualTo(getWinningNumbers("1,2,3,4,5,6"));
+    }
+
     @Override
     public void runMain() {
         main(new String[]{});
