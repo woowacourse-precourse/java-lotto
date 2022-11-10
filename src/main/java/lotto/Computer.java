@@ -2,14 +2,15 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Computer {
-    private List<Integer> numbers;
+    private List<Integer> numbers = new ArrayList<>();
 
     Computer() {
-        numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        numbers.addAll(Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
 
     List<Integer> getNumbers() {
