@@ -1,7 +1,24 @@
 package lotto;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
 public class Application {
-    public static void main(String[] args) {
-        // TODO: 프로그램 구현
+    public static void main(String[] args){
+
+
+        // [] 잘못된 입력 받을 시에 IllegalArgumentException을 발생시키고 "[ERROR]"로 시작하는 에러 메시지 출력 후 종료한다.
+        // [] 로또 구입 금액 입력 받기  (1000원 단위로, 나누어떨어지지 않는다면 예외 처리)
+        // [] 중복되지 않는 숫자를 입력 받아야 한다.
+        // [] 당첨 번호 입력 받기 (ex - 1,2,3,4,5,6)
+        // [] 보너스 번호를 입력 받기 ( ex - 7)
+
+
+        // [] 발행한 로또 수량 및 번호를 출력한다. 로또 번호는 오름 차순으로 정렬
+        // [] 당첨 내역 출력
+        // [] 수익률은 소수점 둘째 자리에서 반올림
+        // [] 예외 상황 시 에러 문구 출력
     }
 }
