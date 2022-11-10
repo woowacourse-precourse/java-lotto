@@ -18,6 +18,14 @@ public class WinningLotto {
         }
     }
 
+    public Lotto getLotto() {
+        return lotto;
+    }
+
+    public Integer getBonusNumber() {
+        return bonusNumber;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
