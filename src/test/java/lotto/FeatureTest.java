@@ -43,12 +43,12 @@ public class FeatureTest {
         assertThat(lotto.isContainNumber(k)).isFalse();
     }
 
-//    @Test
-//    void dd() {
-//        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-//        List<Integer> user = List.of(1, 2, 3, 4, 5, 6);
-//        lotto.getMatchingNumber(user);
-//    }
+    @Test
+    void 당첨갯수_확인() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<Integer> user = List.of(1, 2, 3, 4, 5, 6);
+        assertThat(lotto.getMatchingNumber(user)).isEqualTo(6);
+    }
 
 
 }
