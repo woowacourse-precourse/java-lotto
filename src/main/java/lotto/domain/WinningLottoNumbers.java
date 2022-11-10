@@ -15,8 +15,7 @@ public class WinningLottoNumbers {
     /**
      * 당첨 번호를 입력 받으며 쉼표(,)를 기준으로 구분
      */
-    public List<Integer> getWinningLottoNumbers() {
-        String inputNumbers = readLine();
+    public List<Integer> getWinningLottoNumbers(String inputNumbers) {
         String[] splitInputNumbers = (inputNumbers.split(","));
         List<Integer> winningNumbers = new ArrayList<>();
 
@@ -30,8 +29,7 @@ public class WinningLottoNumbers {
         return winningNumbers;
     }
 
-    public int getBonusNumber(List<Integer> winningNumbers) {
-        int bonusNumber = Integer.parseInt(readLine());
+    public int getBonusNumber(List<Integer> winningNumbers, int bonusNumber) {
         lottoNumberException.bonusNumber(winningNumbers, bonusNumber);
         return bonusNumber;
     }
