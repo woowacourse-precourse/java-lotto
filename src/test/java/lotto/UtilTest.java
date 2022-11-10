@@ -25,5 +25,16 @@ class UtilTest {
         assertThat(Util.isNumberic(string)).isFalse();
     }
 
+    @Test
+    @DisplayName("1000으로 딱 나누어 떨어지는지 확인")
+    void 나누어_떨어지는지_테스트(){
+        final String canDividedBuyThousand = "3000";
+        assertThat(Util.isDividedBuyThousand(canDividedBuyThousand))
+                .isTrue();
+
+        final String cantDividedBuyThousand = "4321";
+        assertThat(Util.isDividedBuyThousand(cantDividedBuyThousand))
+                .isFalse();
+    }
 
 }
