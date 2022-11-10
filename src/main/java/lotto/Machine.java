@@ -9,4 +9,8 @@ public class Machine {
     public void buy(int amount) {
 
     }
+
+    private List<Integer> createLottoNumbers() {
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    }
 }
