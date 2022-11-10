@@ -10,7 +10,7 @@ public class BuyLotto {
     }
     
     public int inputPrice() {
-        int price = Integer.valueOf(Console.readLine());
+        int price = Integer.parseInt(Console.readLine());
         inputPriceException(price);
 
         return price;
