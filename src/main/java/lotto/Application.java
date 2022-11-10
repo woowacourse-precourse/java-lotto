@@ -1,45 +1,44 @@
 package lotto;
 
-import static lotto.controller.lottoController.*;
+import static lotto.controller.LottoController.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+import lotto.domain.Company;
+import lotto.domain.Lotto;
+import lotto.domain.LottoSeller;
+import lotto.domain.PrizeMoney;
+import lotto.domain.User;
+import lotto.view.Input;
 import lotto.view.Output;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-
         Output.printNotice(Notice.start.getNoticeMessage());
-        // 로또 얼마나 발행할 건지
-        int quantity = checkQuantityOfLotto();
 
-        Output.printResult(quantity, Notice.purchase.getNoticeMessage());
+        User user = new User(Integer.parseInt(Input.buyLotto()));
 
-        List<List<Integer>> candidate = new ArrayList<>();
+        LottoSeller seller = new LottoSeller(User.getMoney());
 
-        for (int i = 0; i < quantity; i++) {
-            Lotto lotto = new Lotto(pickLottoNumbers());
-            publishLotto(candidate, lotto.getNumbers());
-            System.out.println(candidate.get(i));
-        }
+        Output.printResult(seller.getQuantity(), Notice.purchase.getNoticeMessage());
+
+        user.userLottoeris(seller.getLotto());
+
 
         //당첨 번호 입력
+        Output.printNotice(Notice.winningNumbers.getNoticeMessage());
         Lotto lotto = new Lotto(pickWinningNumbers());
-        int bonusNumber = pickBonusNumbers();
+        Output.printNotice(Notice.bonusNumber.getNoticeMessage());
+        Company lottoCompany = new Company(lotto.getNumbers(), pickBonusNumbers());
 
         Output.printNotice(Notice.statistics.getNoticeMessage());
 
-        List<String> msg = Arrays.asList("3개 일치 (5,000원)", "4개 일치 (50,000원)", "5개 일치 (1,500,000원)", "5개 일치, 보너스 볼 일치 (30,000,000원)",
-                "6개 일치 (2,000,000,000원)");
 
-        List<Integer> count = countWinningLotto(candidate, lotto.getNumbers(), bonusNumber, quantity);
+        PrizeMoney prizeMoney = new PrizeMoney();
+        prizeMoney.setCount(countWinningLotto(user.getLottoeris(), lottoCompany.getWinningLotto(), lottoCompany.getBonus(), LottoSeller.getQuantity()));
 
-        for (int i = 0; i < count.size(); i++) {
-            System.out.println(msg.get(i) + " - " + count.get(i) + "개");
-        }
-        System.out.println("총 수익률은 " + calculateProfit(count, quantity * 1000) + "%입니다.");
+        Output.printCount(prizeMoney.getCount());
+
+        user.setRateOfReturn(calculateProfit(prizeMoney.getCount(), user.getMoney()));
+
+        Output.printRateOfReturn(user.getRateOfReturn());
     }
 }

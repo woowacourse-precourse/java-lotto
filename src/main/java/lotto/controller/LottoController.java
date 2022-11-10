@@ -2,25 +2,25 @@ package lotto.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.ExceptionHandler;
+import lotto.domain.Lotto;
 import lotto.view.Input;
 
-public class lottoController {
-	public static int checkQuantityOfLotto() {
-		int quantity;
-		int money = Integer.parseInt(Input.buyLotto());
+public class LottoController {
+	public static List<List<Integer>> publishLotteries(int quantity) {
+		List<List<Integer>> candidate = new ArrayList<>();
 
-		ExceptionHandler.checkMoney(money);
-		quantity = money / 1000;
+		for (int i = 0; i < quantity; i++) {
+			Lotto lotto = new Lotto(pickLottoNumbers());
+			publishLotto(candidate, lotto.getNumbers());
+			System.out.println(candidate.get(i));
+		}
 
-		return quantity;
+		return candidate;
 	}
-
 	public static List<List<Integer>> publishLotto(List<List<Integer>> candidateLotto, List<Integer> candidate) {
 		candidateLotto.add(candidate);
 
@@ -39,7 +39,6 @@ public class lottoController {
 	}
 
 	public static List<Integer> pickWinningNumbers() {
-		System.out.println("당첨 번호를 입력해 주세요");
 		String winningNumbers = Input.pickWinningNumbers();
 		List<String> lotto = Arrays.asList(winningNumbers.split(","));
 
@@ -51,7 +50,6 @@ public class lottoController {
 	}
 
 	public static int pickBonusNumbers() {
-		System.out.println("보너스 번호를 입력해 주세요");
 		String bonusNumber = Input.pickWinningNumbers();
 
 		return Integer.parseInt(bonusNumber);
@@ -67,12 +65,6 @@ public class lottoController {
 		}
 
 		return count;
-	}
-
-	private static boolean checkSameNumber(int a, int b) {
-		if (a == b)
-			return true;
-		return false;
 	}
 
 	public static List<Integer> countWinningLotto(List<List<Integer>> lotto, List<Integer> winningNumbers, int bonusNumbers, int quantity) {
