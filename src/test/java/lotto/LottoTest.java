@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.Lotto;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -25,4 +26,9 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @Test
+    void 오름차순으로_번호_출력(){
+        Lotto lotto = new Lotto(List.of(12, 17, 33, 43, 5, 20));
+        Assertions.assertThat(lotto.toString()).isEqualTo("[5, 12, 17, 20, 33, 43]");
+    }
 }
