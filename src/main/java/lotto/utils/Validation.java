@@ -40,4 +40,12 @@ public class Validation {
             throw new IllegalArgumentException(ErrorStatus.MONEY_RANGE.printError());
         }
     }
+
+    public static void validateInputMoney(String inputMoney) {
+        try {
+            Integer.parseInt(inputMoney);
+        } catch (IllegalArgumentException error) {
+            System.out.println(ErrorStatus.NOT_NUMBER.printError());
+        }
+    }
 }
