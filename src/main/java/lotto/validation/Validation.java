@@ -6,18 +6,18 @@ public abstract class Validation {
 
     public abstract void isValidate(String userInput);
 
-    public void createError(String errorMessage) {
+    protected void createError(String errorMessage) {
         printErrorMessage(errorMessage);
         throwError(errorMessage);
     }
 
-    public void printErrorMessage(String errorMessage) {
+    private void printErrorMessage(String errorMessage) {
         ErrorView errorView = new ErrorView();
         errorView.setErrorMessage(errorMessage);
         errorView.show();
     }
 
-    public void throwError(String errorMessage) {
+    private void throwError(String errorMessage) {
         throw new IllegalArgumentException(errorMessage);
     }
 
