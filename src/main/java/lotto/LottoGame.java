@@ -12,5 +12,7 @@ public class LottoGame {
 
         List<Lotto> lottos = generator.makeLottos(lottoTickets);
         Print.lottos(lottos);
+
+        Print.winningNumber();
     }
 }
