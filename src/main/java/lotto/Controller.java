@@ -7,10 +7,10 @@ public class Controller {
     Service service = new Service();
 
     public void run() {
-        generateLotto();
+        purchaseLotto();
     }
 
-    private void generateLotto() {
+    private void purchaseLotto() {
         String lottoPrice = InputView.getLottoPrice();
         service.generateLottoList(lottoPrice);
     }
