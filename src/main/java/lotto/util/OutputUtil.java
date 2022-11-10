@@ -32,4 +32,8 @@ public class OutputUtil {
         System.out.println(RESULT_SECOND + ranks.get(Number.TWO) + "개");
         System.out.println(RESULT_FIRST + ranks.get(Number.ONE) + "개");
     }
+
+    public void printYield(double yield) {
+        System.out.printf("총 수익률은 %.1d%입니다.\n", yield);
+    }
 }
