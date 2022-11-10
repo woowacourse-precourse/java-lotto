@@ -26,4 +26,10 @@ class LottoValidateTest {
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
+    @Test
+    public void numberRangeTest() throws Exception{
+        assertThatThrownBy(() -> lottoValidate.validate(List.of(46, 1, 3, 4, 5, 6)))
+                .isInstanceOf(IllegalArgumentException.class);
+
+    }
 }
