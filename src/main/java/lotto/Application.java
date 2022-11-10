@@ -14,6 +14,7 @@ public class Application {
         List<Lotto> lotto = new ArrayList<>();
         buyLotto(money, lotto);
         printLotto(lotto);
+        winNumInput();
     }
 
     public static void moneyInputError(int money) {
@@ -21,6 +22,14 @@ public class Application {
             System.out.println("금액 입력 오류입니다.");
             throw new IllegalArgumentException();
         }
+    }
+
+    public static void winNumInput() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        List<Integer> winNums = new ArrayList<>();
+        String[] tmpNums = Console.readLine().split(",");
+        for (String e : tmpNums)
+            winNums.add(Integer.parseInt(e));
     }
 
     public static void buyLotto(int money, List<Lotto> lotto) {
@@ -32,7 +41,7 @@ public class Application {
     }
 
     public static void printLotto(List<Lotto> lotto) {
-        System.out.println(lotto.size()+"개를 구매했습니다.");
+        System.out.println(lotto.size() + "개를 구매했습니다.");
         for (Lotto e : lotto)
             e.printNumbers();
     }

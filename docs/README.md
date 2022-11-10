@@ -7,7 +7,7 @@
   - [x] 오름 차순으로 정렬한다. - Lotto.java -> Lotto.numSort()
   - [x] 발행한 로또 수량을 출력한다.
   - [x] 로또 번호를 출력한다. - Lotto.java -> Lotto.printNumbers()
-- [ ] 당첨 번호를 입력 한다. (쉼표 기준)
+- [x] 당첨 번호를 입력 한다. (쉼표 기준) - winNumInput()
   - [ ] 예외 시 처리
 - [ ] 보너스 번호를 입력 한다.
   - [ ] 예외 시 처리
