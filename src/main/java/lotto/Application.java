@@ -90,7 +90,7 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
-        for (int i = input.length() - 4; i < input.length(); i++) {
+        for (int i = input.length() - 3; i < input.length(); i++) {
 
             if (input.charAt(i) != 48) {
 
