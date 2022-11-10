@@ -4,7 +4,7 @@
 
 Money
 - [] 요구사항에 맞는 머니 인지 확인한다. validate(int money)
-  - [] 천의 단위로 나눠떨어지지 않는경우 예외 처리. llegalArgumentException(`[[ERROR]] msg`)
+  - [] 음수와 0 그리고 천의 단위로 나눠떨어지지 않는경우 예외 처리. llegalArgumentException(`[[ERROR]] msg`)
 - [] Lotto를 살수 있는 숫자를 반환한다 getPayLottos()
 - [] 수익률을 알려준다. getBenefit(int earningMoney)
 
