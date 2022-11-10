@@ -41,14 +41,14 @@ public class LottoMachine {
         lotteries.add(lotto);
     }
 
-    //+pickLotteries(pay: int): List<Lotto>
     public List<Lotto> pickLotteries(int pay) {
         validatePayUnit(pay);
-        int lottoCount = pay / LOTTO_PRICE;
+        int startIndex = 0;
         List<Lotto> lotteries = new ArrayList<>();
-        while (lottoCount > 0) {
+
+        while (startIndex < pay / LOTTO_PRICE) {
             putLotteries(lotteries, convertLotto(extractRandomNumbers()));
-            lottoCount--;
+            startIndex++;
         }
         return lotteries;
     }
