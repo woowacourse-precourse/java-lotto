@@ -42,4 +42,14 @@ public class InputTest {
         List<Integer> result = Input.inputWinningNumber();
         assertThat(result).contains(1,2,3,4,5,6);
     }
+
+    @DisplayName("보너스 번호 입력 여부 테스트")
+    @Test
+    void inputBonusNumberInputTest(){
+        String input_num = "1";
+        InputStream in = new ByteArrayInputStream(input_num.getBytes());
+        System.setIn(in);
+        int result = Input.inputBonusNumber();
+        assertThat(result).isEqualTo(1);
+    }
 }
