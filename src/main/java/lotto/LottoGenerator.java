@@ -23,4 +23,11 @@ public class LottoGenerator {
     private void sortLottoNumbers(List<Integer> lottoNumbers) {
         Collections.sort(lottoNumbers);
     }
+
+    public List<Integer> getLottoNumbers() {
+        List<Integer> numbers = createLottoNumbers();
+        sortLottoNumbers(numbers);
+
+        return numbers;
+    }
 }
