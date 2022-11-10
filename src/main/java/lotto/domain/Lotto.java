@@ -8,7 +8,6 @@ package lotto.domain;
  * 5. Lotto의 패키지 변경은 가능하다.
  */
 
-
 import java.util.List;
 
 public class Lotto {
@@ -25,4 +24,8 @@ public class Lotto {
         }
     }
     // TODO: 추가 기능 구현
+
+    public List<Integer> getNumbers(){
+        return this.numbers;
+    }
 }
