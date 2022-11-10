@@ -12,9 +12,7 @@ public class LottoGameSystem {
         Purchase purchase = new Purchase();
         WinningLotto winningLotto = new WinningLotto();
 
-        LottoComparison lottoComparison = new LottoComparison(purchase,winningLotto);
-
-        Statistics statistics = new Statistics(lottoComparison);
+        Statistics statistics = new Statistics(purchase,winningLotto);
 
     }
 
