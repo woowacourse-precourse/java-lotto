@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.stream.Stream;
+
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -70,8 +72,21 @@ public class ValidationTest {
 	@DisplayName("유저가 입력한 당첨번호에 중복이 존재하는지를 검증한다")
 	@Test
 	void VerifyIsDuplicateExists(){
-		assertTrue(Validation.isDuplicateExists("1,1,3,4,5,45"));
-		assertFalse(Validation.isDuplicateExists("1,2,3,4,5,45"));
+		assertTrue(Validation.isLottoNumberDuplicateExists("1,1,3,4,5,45"));
+		assertFalse(Validation.isLottoNumberDuplicateExists("1,2,3,4,5,45"));
 	}
 
+	@DisplayName("유저가 입력한 보너스 번호와 당첨번호간 중복이 존재하는지를 검증한다")
+	@Test
+	void verifyIsBonusNumberDuplicateExistsReturningTrue(){
+		Stream testNumbers = Stream.of("1","2","3","4","5","6");
+		assertTrue(Validation.isBonusNumberDuplicateExists("3",testNumbers));
+	}
+
+	@DisplayName("유저가 입력한 보너스 번호와 당첨번호간 중복이 존재하는지를 검증한다")
+	@Test
+	void verifyIsBonusNumberDuplicateExistsReturningFalse(){
+		Stream testNumbers = Stream.of("1","2","3","4","5","6");
+		assertFalse(Validation.isBonusNumberDuplicateExists("30",testNumbers));
+	}
 }
