@@ -29,7 +29,11 @@ public class AmountValidation extends IllegalArgumentException {
     }
 
     public void isZero(String amount) {
-
+        regEx = RegEx.valueOf("ZERO_REG_EX");
+        if (Pattern.matches(regEx.getRegEx(), amount)) {
+            message = ErrorMessage.valueOf("ZERO_EXCEPTION");
+            throwError(message.getMessage());
+        }
     }
 
     public void hasChanges(String amount) {

@@ -1,7 +1,8 @@
 package lotto.validation;
 
 public enum RegEx {
-    NUMBER_REG_EX("^[0-9]*$");
+    NUMBER_REG_EX("^[0-9]*$"),
+    ZERO_REG_EX("^0$");
 
     private final String regEx;
 
