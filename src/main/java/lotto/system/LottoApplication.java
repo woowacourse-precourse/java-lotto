@@ -34,7 +34,7 @@ public class LottoApplication {
 		inputView = new InputViewImpl();
 		outputView = new OutputViewImpl();
 		lottoService = new LottoService();
-		lottoController = new LottoController(inputView, lottoService);
+		lottoController = new LottoController(inputView, outputView, lottoService);
 		initializeValidators();
 	}
 
