@@ -9,9 +9,12 @@ import java.util.List;
 
 class InputValidator {
 
-    public static final String INPUT_BONUS_NUMBER_ERROR = "정확한 보너스 번호가 아닙니다.";
-    public static final String INPUT_MONEY_ERROR = "정확한 금액을 입력해주세요.";
+    public static final String INPUT_BONUS_NUMBER_ERROR = "[ERROR] 정확한 보너스 번호가 아닙니다.";
+    public static final String INPUT_MONEY_ERROR = "[ERROR] 정확한 금액을 입력해주세요.";
     public static final int MONEY_REST = 0;
+
+    private InputValidator() {
+    }
 
     public static void isValid(String input) {
         List<Integer> list = StringToIntegers(input);

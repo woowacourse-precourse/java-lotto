@@ -11,6 +11,10 @@ class NumbersValidator {
     public static final String NUMBER_RANGE_ERROR =
             "[ERROR] 모든 수가 범위(" + NUMBER_MIN_VALUE + "~" + NUMBER_MAX_VALUE + ")안에 있어야 합니다.";
 
+
+    private NumbersValidator() {
+    }
+
     static void isValid(List<Integer> result) {
         isValidSize(result);
         isValidRepeat(result);
