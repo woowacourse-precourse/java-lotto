@@ -13,22 +13,22 @@ import static org.assertj.core.api.Assertions.*;
 
 public class UnitTest { // TODO : 클래스 이름 변경
 
-	@Test
-	void 랜덤_숫자_추출_테스트(){
-		int randomNum = Util.getRandomNum(1, 45);
-		assertThat(randomNum)
-				.isGreaterThanOrEqualTo(1)
-				.isLessThanOrEqualTo(45);
-	}
-
-	@Test
-	void 로또_발행_테스트(){
-		List<Integer> randomNums = Util.getDistinctRandomNums(6);
-		List<Integer> filtered = randomNums.stream()
-				.distinct()
-				.collect(Collectors.toList());
-		assertThat(filtered.size()).isEqualTo(6);
-	}
+//	@Test
+//	void 랜덤_숫자_추출_테스트(){
+//		int randomNum = Util.getRandomNum(1, 45);
+//		assertThat(randomNum)
+//				.isGreaterThanOrEqualTo(1)
+//				.isLessThanOrEqualTo(45);
+//	}
+//
+//	@Test
+//	void 로또_발행_테스트(){
+//		List<Integer> randomNums = Util.getDistinctRandomNums(6);
+//		List<Integer> filtered = randomNums.stream()
+//				.distinct()
+//				.collect(Collectors.toList());
+//		assertThat(filtered.size()).isEqualTo(6);
+//	}
 
 	@DisplayName("당첨 번호 입력 테스트")
 	@Nested
