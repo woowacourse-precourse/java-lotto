@@ -5,7 +5,8 @@ public enum ResultStatus {
     MATCH5_WITH_BONUS_BALL(5, 30000000, true),
     MATCH5(5, 1500000),
     MATCH4(4, 50000),
-    MATCH3(3, 5000);
+    MATCH3(3, 5000),
+    NONE(0, 0);
 
     private final int count;
     private final int value;

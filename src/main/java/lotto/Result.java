@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Result {
     private int matchCount = 0;
     private boolean hasBonusNumber = false;
-    private ResultStatus resultStatus = null;
+    private ResultStatus resultStatus;
 
     protected Result(int matchCount, boolean hasBonusNumber) {
         this.matchCount = matchCount;
@@ -23,41 +23,43 @@ public class Result {
 
     private void setMatchCount(WinLotto winLotto, Integer number) {
         if (winLotto.getNumbers().contains(number)) {
-            matchCount++;
+            this.matchCount++;
         }
     }
 
     private void setHasBonusNumber(WinLotto winLotto, Lotto generatedLotto) {
         if (generatedLotto.getNumbers().contains(winLotto.bonusNumber)) {
-            hasBonusNumber = true;
+            this.hasBonusNumber = true;
         }
     }
 
     private void setResultStatus() {
         if (matchCount == ResultStatus.MATCH6.getCount()) {
-            resultStatus = ResultStatus.MATCH6;
+            this.resultStatus = ResultStatus.MATCH6;
             return;
         }
         if (matchCount == ResultStatus.MATCH5_WITH_BONUS_BALL.getCount() &&
                 hasBonusNumber == ResultStatus.MATCH5_WITH_BONUS_BALL.isHasBonusBall()) {
-            resultStatus = ResultStatus.MATCH5_WITH_BONUS_BALL;
+            this.resultStatus = ResultStatus.MATCH5_WITH_BONUS_BALL;
             return;
         }
         if (matchCount == ResultStatus.MATCH5.getCount()) {
-            resultStatus = ResultStatus.MATCH5;
+            this.resultStatus = ResultStatus.MATCH5;
             return;
         }
         if (matchCount == ResultStatus.MATCH4.getCount()) {
-            resultStatus = ResultStatus.MATCH4;
+            this.resultStatus = ResultStatus.MATCH4;
             return;
         }
         if (matchCount == ResultStatus.MATCH3.getCount()) {
-            resultStatus = ResultStatus.MATCH3;
+            this.resultStatus = ResultStatus.MATCH3;
+            return;
         }
+        this.resultStatus = ResultStatus.NONE;
     }
 
     public ResultStatus getResultStatus() {
-        return resultStatus;
+        return this.resultStatus;
     }
 
     @Override

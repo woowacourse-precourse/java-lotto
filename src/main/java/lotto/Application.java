@@ -35,6 +35,11 @@ public class Application {
         System.out.println("당첨 통계");
         System.out.println("---");
 
+        List<Result> results = new ArrayList<>();
 
+        for (Lotto lotto : lottos) {
+            Result result = winLotto.getResult(lotto);
+            results.add(result);
+        }
     }
 }
