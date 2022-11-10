@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoSystem {
+    public static final int MIN_RANGE = 1;
+    public static final int MAX_RANGE = 45;
     List<Integer> winningNumbers;
 
     public LottoSystem() {
@@ -25,6 +27,7 @@ public class LottoSystem {
         String[] numbers = input.split(",");
         validateCount(numbers);
         validateType(numbers);
+        validateRange(numbers);
     }
 
     private void validateCount(String[] numbers) {
@@ -37,6 +40,15 @@ public class LottoSystem {
         for (String number : numbers) {
             if (!isNumeric(number)) {
                 throw new IllegalArgumentException("숫자만 입력하세요.");
+            }
+        }
+    }
+
+    private void validateRange(String[] numbers) {
+        for (String number : numbers) {
+            int currentNumber = Integer.parseInt(number);
+            if (currentNumber > MAX_RANGE || currentNumber < MIN_RANGE) {
+                throw new IllegalArgumentException("1부터 45까지의 숫자만 입력하세요");
             }
         }
     }
