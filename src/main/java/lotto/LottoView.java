@@ -8,10 +8,15 @@ import java.util.stream.Collectors;
 
 public class LottoView {
 
+    private static final String START_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String LOTTO_NUMBER_MESSAGE = "개를 구매했습니다.";
     private static final int SKIP_RESULT_ELSE_CASE = 1;
     private static final String PREFIX_YIELD_MESSAGE = "총 수익률은 ";
     private static final String SUFFIX_YIELD_MESSAGE = "%입니다.";
+
+    public void printStartMessage() {
+        System.out.println(START_MESSAGE);
+    }
 
     public void printLottoInfo(List<Lotto> lottoBundle) {
         System.out.println(lottoBundle.size() + LOTTO_NUMBER_MESSAGE);

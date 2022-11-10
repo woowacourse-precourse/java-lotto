@@ -9,6 +9,7 @@ public class LottoController {
     private InputDevice inputDevice = new InputDevice();
 
     public void run() {
+        lottoView.printStartMessage();
         List<Lotto> lottoTickets =  lottoService.buy(inputDevice.sendMoneyToBuyLotto());
         lottoView.printLottoInfo(lottoTickets);
         List<Integer> winningNumbers = inputDevice.sendWinningNumbers();
