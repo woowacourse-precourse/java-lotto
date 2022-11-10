@@ -18,4 +18,17 @@ class BonusNumberExceptionTest {
         assertThatThrownBy(() -> BonusNumberException.checkBonusNumberDigit("테스트"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 보너스숫자_1과_45_사이인지_확인() {
+
+        assertThatThrownBy(() -> BonusNumberException.checkBonusNumberRange(-1))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> BonusNumberException.checkBonusNumberRange(0))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> BonusNumberException.checkBonusNumberRange(46))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
