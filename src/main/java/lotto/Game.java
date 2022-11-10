@@ -1,7 +1,9 @@
 package lotto;
 
 public class Game {
-    public void play(){
+    private final LottoStore lottoStore = new LottoStore();
 
+    public void play() {
+        lottoStore.payLotto();
     }
 }
