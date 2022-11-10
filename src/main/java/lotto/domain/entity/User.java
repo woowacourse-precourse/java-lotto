@@ -7,14 +7,14 @@ public class User {
     private Lottos lottos;
     private Money money;
 
-    private User(int money, Generator generator) {
-        this.money = Money.from(money);
+    private User(int money, Lottos lottos) {
         int time = this.money.currentTime();
-        this.lottos = Lottos.of(time, generator);
+        this.money = Money.from(money);
+        this.lottos = lottos;
     }
 
-    public static User of(int money, Generator generator) {
-        return new User(money, generator);
+    public static User of(int money, Lottos lottos) {
+        return new User(money, lottos);
     }
 
     public String printCurrentTime() {
