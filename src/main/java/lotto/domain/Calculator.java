@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.regex.Matcher;
 
 /**
  * packageName : lotto.domain
@@ -15,8 +16,7 @@ import java.util.List;
  */
 public class Calculator {
     private static int revenue = 0;
-    private static double yield = 0.0;
-    private static String yieldMessage = "총 수익률은 " + yield + "%입니다.";
+    private static double yield = 0;
     public static void revenue(int rankOne, int rankTwo, int rankThree, int rankFour, int rankFive) {
         revenue += rankOne * Rank.ONE.getMoney();
         revenue += rankTwo * Rank.TWO.getMoney();
@@ -25,8 +25,9 @@ public class Calculator {
         revenue += rankFive * Rank.FIVE.getMoney();
     }
 
-    public static void yield(int revenue, int coin) {
-        yield = ((revenue - coin)/coin*100);
-        System.out.println(yieldMessage);
+    public static void yield(double revenue, double coin) {
+        double result = (((revenue - coin)/coin) * 100);
+        yield = Math.round(result * 10)/10.0;
+        System.out.println(yield);
     }
 }
