@@ -34,4 +34,18 @@ class ValidateTest {
                         validate.validWinLottoForm(new String[] {"1", "4", "7", "14", "28"}));
         assertThat(exception.getMessage()).contains("입력값을 로또 형태로 전환할 수 없습니다.");
     }
+
+    @Test
+    public void 로또_번호_범위내() {
+        assertThatCode(() -> validate.validLottoNumber(39))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    public void 로또_번호_범위밖() {
+        Throwable exception =
+                assertThrows(IllegalArgumentException.class, () ->
+                        validate.validLottoNumber(48));
+        assertThat(exception.getMessage()).contains("로또 번호의 범위를 넘어갔습니다.");
+    }
 }
