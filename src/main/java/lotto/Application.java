@@ -22,6 +22,7 @@ public class Application {
         }
 
         User user = new User(userMoney, lottos);
-        System.out.println("당첨 번호 : " + lottoController.getPrizeLotto().getNumbers());
+        Lotto prizeLotto = lottoController.getPrizeLotto();
+        lottoController.getBonusNumber();
     }
 }
