@@ -59,9 +59,5 @@ public class Application {
         if (winning.contains(bouns))
             Err.DUPLICATE_ERROR.invalid();
     }
-
-    private static void invalid(String msg) {
-        throw new IllegalArgumentException(msg);
-    }
 }
 
