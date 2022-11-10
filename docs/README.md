@@ -3,14 +3,13 @@
 ## 기능 목록
 - [ ] 사용자가 입력한 로또 구입 금액에 따라 번호를 생성한다. - LotteryDrawMachine#drawLotteryNumbers()
   - 번호는 1부터 45까지의 서로 다른 임의의 수 6개로 이루어져 있다.
-- [ ] 사용자가 구매한 로또 번호와 당첨 번호(중복되지 않는 수 6개 + 보너스 번호 1개)를 비교한다. - Comparator#compare()
-  - [ ] 당첨 통계를 계산한다. - Calculator#winningStatistics()
-    - 1등: 6개 번호 일치 / 2,000,000,000원
-    - 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원
-    - 3등: 5개 번호 일치 / 1,500,000원
-    - 4등: 4개 번호 일치 / 50,000원
-    - 5등: 3개 번호 일치 / 5,000원
-  - [ ] 총 수익률을 계산한다. - Calculator#earningsRate()
+- [ ] 사용자가 구매한 로또 번호와 당첨 번호(중복되지 않는 수 6개 + 보너스 번호 1개)를 비교한다.
+  - 로또 번호와 당첨 번호를 비교한다. - Comparator#compare()
+  - 로또 번호와 보너스 번호를 비교한다. - Comparator#hasBonusNumber()
+- [ ] 계산한다.
+  - [ ] 당첨 결과를 계산한다. - Calculator#calculateMatchResults()
+  - [ ] 총 수익을 계산한다. - Calculator#calculateProfit()
+  - [ ] 수익률을 계산한다. - Calculator#calculateEarningsRate()
     - 수익률은 소수점 둘째 자리에서 반올림한다. (ex. 100.0%, 51.5%, 1,000,000.0%)
 
 ### 예외 상황
