@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -26,5 +27,14 @@ public class Application {
         for (Lotto lotto : lottoList) {
             System.out.println(lotto);
         }
+    }
+
+    public static List<Integer> inputWinningNumbers() {
+        String numbers = Console.readLine();
+        List<Integer> winningNumbers = new ArrayList<>();
+        for (String number : numbers.split(",")) {
+            winningNumbers.add(Integer.parseInt(number));
+        }
+        return winningNumbers;
     }
 }
