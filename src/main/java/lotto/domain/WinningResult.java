@@ -3,7 +3,8 @@ package lotto.domain;
 import java.util.HashMap;
 import java.util.Map;
 
-import static lotto.domain.LottoRank.*;
+import static lotto.domain.LottoRank.getRank;
+import static lotto.domain.LottoRank.getWinLottoRank;
 
 public class WinningResult {
     private final Map<LottoRank, Integer> result;
@@ -29,5 +30,17 @@ public class WinningResult {
             reward += lottoRank.calculateSubReturn(result.get(lottoRank));
         }
         return String.format("%.1f", (double) reward / money * 100.0);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sentence = new StringBuilder();
+        for (LottoRank lottoRank : getWinLottoRank()) {
+            sentence.append(lottoRank)
+                    .append(" - ")
+                    .append(result.getOrDefault(lottoRank, 0))
+                    .append("개\n");
+        }
+        return sentence.toString();
     }
 }

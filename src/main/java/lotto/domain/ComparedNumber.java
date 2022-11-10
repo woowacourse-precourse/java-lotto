@@ -12,6 +12,15 @@ public class ComparedNumber {
     }
 
     @Override
+    public String toString() {
+        String sentence = sameCount + "개 일치";
+        if (hasBonus) {
+            sentence += ", 보너스 볼 일치";
+        }
+        return sentence;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
