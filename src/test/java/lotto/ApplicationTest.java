@@ -56,6 +56,22 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @DisplayName("구매 금액을 잘못 입력한 경우에는 예외가 발생한다.")
+    @Test
+    void enterPurchaseMoneyExcept() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("08000"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("[Error] 구매 금액을 잘못 입력 하셨습니다.");
+        });
+
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("1abc"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("[Error] 구매 금액을 잘못 입력 하셨습니다.");
+        });
+    }
+
     @DisplayName("로또 번호를 쉼표로 구분할 수 없는 경우에는 예외가 발생한다")
     @Test
     void enterLottoByNotIdentify(){
