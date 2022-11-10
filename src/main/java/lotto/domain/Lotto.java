@@ -27,4 +27,8 @@ public class Lotto {
         return numbers.stream()
                 .anyMatch(lottoNumber -> lottoNumber == lottoNumberToCompare);
     }
+    
+    public boolean containsBonusNumber(final int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
 }
