@@ -24,24 +24,6 @@ public class Application {
     private static final String ERROR_MESSAGE = "[ERROR]";
     private static final int LOTTO_PRICE = 1000;
 
-    public enum WINNINGS{
-        FIRST(2000000000),
-        SECOND(30000000),
-        THIRD(1500000),
-        FOURTH(50000),
-        FIFTH(5000);
-
-        int value;
-
-        private WINNINGS(int value){
-            this.value = value;
-        }
-
-        public int getValue(){
-            return value;
-        }
-    }
-
     public static void main(String[] args) {
         List<Lotto> userLotto = new ArrayList<>();
 
@@ -55,7 +37,6 @@ public class Application {
 
             Lotto winningLotto = Lotto.inputWinningLottoNumber();
             int bonusNumber = Lotto.inputBonusNumber();
-
         } catch(IllegalArgumentException e){
             System.out.println(ERROR_MESSAGE + " " + e.getMessage());
         }
