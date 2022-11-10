@@ -44,40 +44,40 @@ public class Manager {
     }
 
     public int judgeRank(int correctCount, boolean isCorrectBonus) {
-        if (correctCount == Number.THREE.ordinal()) {
-            return Number.FIVE.ordinal();
+        if (correctCount == Number.THREE.getValue()) {
+            return Number.FIVE.getValue();
         }
-        if (correctCount == Number.FOUR.ordinal()) {
-            return Number.FOUR.ordinal();
+        if (correctCount == Number.FOUR.getValue()) {
+            return Number.FOUR.getValue();
         }
-        if (correctCount == Number.FIVE.ordinal()) {
-            return Number.THREE.ordinal();
+        if (correctCount == Number.FIVE.getValue()) {
+            return Number.THREE.getValue();
         }
-        if (correctCount == Number.FIVE.ordinal() && isCorrectBonus) {
-            return Number.TWO.ordinal();
+        if (correctCount == Number.FIVE.getValue() && isCorrectBonus) {
+            return Number.TWO.getValue();
         }
-        if (correctCount == Number.SIX.ordinal()) {
-            return Number.ONE.ordinal();
+        if (correctCount == Number.SIX.getValue()) {
+            return Number.ONE.getValue();
         }
-        return Number.ZERO.ordinal();
+        return Number.ZERO.getValue();
     }
 
     public int getWinningAmount(int rank) {
-        if(rank == Number.FIVE.ordinal()) {
+        if(rank == Number.FIVE.getValue()) {
             return Constant.FIFTH_WINNING_AMOUNT;
         }
-        if(rank == Number.FOUR.ordinal()) {
+        if(rank == Number.FOUR.getValue()) {
             return Constant.FOURTH_WINNING_AMOUNT;
         }
-        if(rank == Number.THREE.ordinal()) {
+        if(rank == Number.THREE.getValue()) {
             return Constant.THIRD_WINNING_AMOUNT;
         }
-        if(rank == Number.TWO.ordinal()) {
+        if(rank == Number.TWO.getValue()) {
             return Constant.SECOND_WINNING_AMOUNT;
         }
-        if(rank == Number.ONE.ordinal()) {
+        if(rank == Number.ONE.getValue()) {
             return Constant.FIRST_WINNING_AMOUNT;
         }
-        return Number.ZERO.ordinal();
+        return Number.ZERO.getValue();
     }
 }
