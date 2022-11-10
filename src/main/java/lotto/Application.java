@@ -113,12 +113,8 @@ public class Application {
 
     }
 
-    public static Integer inputUserCash() {
+    public static String inputUserCash() {
 
-        String input = Console.readLine();
-        validateCashIsInteger(input);
-        validateCashIsDividedThousand(input);
-
-        return inputCashStringToInteger(input);
+        return Console.readLine();
     }
 }
