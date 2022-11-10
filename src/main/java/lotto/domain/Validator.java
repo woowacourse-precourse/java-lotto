@@ -1,9 +1,11 @@
-package lotto;
+package lotto.domain;
 
 import java.util.HashSet;
 import java.util.List;
 
 public class Validator {
+    private Validator() {
+    }
 
     public static void validate(List<Integer> numbers) {
         isProperSize(numbers);
