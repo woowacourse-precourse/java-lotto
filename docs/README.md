@@ -120,14 +120,6 @@
 
 - void validateWinningNumbersUseComma(String)
   - 당첨 번호 입력 시에 숫자 간의 구분을 위해 쉼표를 이용했는지 검사하는 함수
-
-
-- void validateWinningNumbersAreDuplicate(String)
-  - 입력받은 당첨 번호에서 중복되는 숫자가 있는지 검사하는 함수
-
-
-- void validateWinningNumbersAreInRange(String)
-  - 입력받은 당첨 번호가 모두 1~45 사이의 숫자인지 검사하는 함수
   
 
 - void validateBonusNumberIsInteger(String)
