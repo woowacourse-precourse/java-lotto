@@ -36,6 +36,11 @@ public class FirstPlace {
         }
     }
 
+    public LottoRank calculateMatch(List<Integer> numbers) {
+        int matchPoint = (int) numbers.stream().filter(firstPlace::contains).count();
+        return LottoRank.find(String.valueOf(matchPoint));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -52,6 +57,5 @@ public class FirstPlace {
     public int hashCode() {
         return Objects.hash(firstPlace);
     }
-
 
 }
