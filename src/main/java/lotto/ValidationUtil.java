@@ -16,7 +16,6 @@ public class ValidationUtil {
         }
     }
 
-
     public static void isValidNumber(List<Integer> numbers) {
         Optional<Integer> result = numbers.stream()
                 .filter(number -> number < MIN_NUMBER || number > MAX_NUMBER)
@@ -37,6 +36,12 @@ public class ValidationUtil {
         Set<Integer> set = new HashSet<>(numbers);
         if (set.size() != numbers.size()) {
             throw new IllegalArgumentException(ErrorMessage.HAVE_DUPLICATED_NUMBER.getValue());
+        }
+    }
+
+    public static void isValidBonusNumber(List<Integer> numbers, int bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_BONUS_NUMBER.getValue());
         }
     }
 }
