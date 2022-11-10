@@ -1,5 +1,8 @@
 package lotto;
 
+import static lotto.global.Constant.MAX_LOTTO_SIZE;
+
+import java.util.Collections;
 import java.util.List;
 import lotto.global.Message;
 
@@ -30,7 +33,12 @@ public class Lotto {
     }
 
     public void print() {
-        System.out.printf("[%d, %d, %d, %d, %d, %d]\n", numbers.get(0), numbers.get(1), numbers.get(2), numbers.get(5),
-                numbers.get(4), numbers.get(5));
+        Collections.sort(numbers);
+
+        System.out.print("[");
+        for (int i = 0; i < MAX_LOTTO_SIZE - 1; i++) {
+            System.out.print(numbers.get(i) + ", ");
+        }
+        System.out.printf("%d]\n", numbers.get(5));
     }
 }
