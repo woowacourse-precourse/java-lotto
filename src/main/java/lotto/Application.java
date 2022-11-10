@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.constant.GameMessage;
+import lotto.domain.Machine;
 import lotto.domain.Player;
 import lotto.exception.ExceptionHandler;
 import lotto.userinterface.Input;
@@ -11,5 +12,7 @@ public class Application {
         ExceptionHandler.isNumeric(initialMoneyInput);
 
         Player player = new Player(Long.parseLong(initialMoneyInput));
+        Machine lottoMachine = new Machine();
+        player.buyLottoTickets(lottoMachine);
     }
 }
