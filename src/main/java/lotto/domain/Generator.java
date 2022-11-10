@@ -7,4 +7,10 @@ public interface Generator {
     String[] numberSeparator(String str);
 
     List<Integer> lottoNumbersGenerator();
+
+    int generateMoney();
+
+    String generateLotto();
+
+
 }

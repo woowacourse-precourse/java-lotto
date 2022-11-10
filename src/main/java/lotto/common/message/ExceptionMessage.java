@@ -17,4 +17,6 @@ public class ExceptionMessage {
     public static final String LOTTO_NUMBERS_DUPLICATE_MESSAGE = "로또 번호는 중복되면 안됩니다.";
 
     public static final String AMOUNT_OF_MONEY_REMAINDER_NOT_ZERO_MESSAGE = "돈은 1000원 단위로 입력해야 합니다.";
+    public static final String BONUS_NUMBER_DUPLICATION_MESSAGE = "보너스 숫자는 중복될 수 없습니다.";
+
 }
