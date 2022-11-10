@@ -20,8 +20,7 @@ public class Converter {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (NumberFormatException exception) {
-            System.out.println("[ERROR] 숫자만 입력 가능합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
         }
     }
 }
