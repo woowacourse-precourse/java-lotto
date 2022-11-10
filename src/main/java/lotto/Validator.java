@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Validator {
 
-    public void validateAmountOfPurchaseMoney(int amountOfPurchaseMoney) {
+    public void validateAmountOfPurchaseMoney(String amountOfPurchaseMoney) {
 
     }
 
