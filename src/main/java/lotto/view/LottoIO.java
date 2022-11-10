@@ -78,7 +78,7 @@ public class LottoIO {
 
     // 1~45 사이의 숫자 값인지 확인
     public boolean isNotNumericRange(String num) {
-        if (!num.matches("[1-45]")) {
+        if (!num.matches("[1-9]|1[0-9]|2[0-9]|3[0-9]|4[0-5]")) {
             return true;
         }
         return false;
