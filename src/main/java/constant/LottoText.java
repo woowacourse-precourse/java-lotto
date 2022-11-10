@@ -1,6 +1,6 @@
 package constant;
 
-public enum Text {
+public enum LottoText {
     REQUEST_PURCHASE_PRICE("구입금액을 입력해 주세요."),
     PURCHASE_COUNT("%d개를 구매했습니다."),
     REQUEST_LOTTO_NUMBER("당첨 번호를 입력해 주세요."),
@@ -12,7 +12,7 @@ public enum Text {
 
     final String content;
 
-    Text(String content) {
+    LottoText(String content) {
         this.content = content;
     }
 
