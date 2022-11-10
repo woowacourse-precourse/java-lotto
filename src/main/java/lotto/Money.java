@@ -4,7 +4,7 @@ public class Money {
 
     private final Integer money;
 
-    public Money(Integer money) {
-        this.money = money;
+    public Money(String money) {
+        this.money = Integer.parseInt(money);
     }
 }
