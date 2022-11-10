@@ -33,6 +33,7 @@ public class LottoController {
         System.out.println("보너스 번호를 입력해 주세요.");
         inputBonusNumber(winningLotto);
 
+        validateWinningLotto(winningLotto);
         return winningLotto;
     }
 
