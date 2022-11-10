@@ -17,7 +17,10 @@ public class OutputViewImpl implements OutputView {
 
 	@Override
 	public void printLottos(List<Lotto> lottos) {
-
+		for (Lotto lotto : lottos) {
+			System.out.println(lotto.toString());
+		}
+		System.out.println();
 	}
 
 	@Override

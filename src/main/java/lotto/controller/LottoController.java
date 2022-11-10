@@ -27,5 +27,6 @@ public class LottoController {
 		outputView.printLottoAmount(lottoAmount);
 
 		List<Lotto> lottos = lottoService.createLottos(lottoAmount);
+		outputView.printLottos(lottos);
 	}
 }
