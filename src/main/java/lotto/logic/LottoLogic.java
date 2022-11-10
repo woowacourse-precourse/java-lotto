@@ -3,6 +3,7 @@ package lotto.logic;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 import lotto.domain.Result;
+import lotto.domain.Win;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,5 +31,9 @@ public class LottoLogic {
 
         return new Result((int) Arrays.stream(numbers).filter(numberCount -> numberCount == 2).count(),
                 lottoNumbers.contains(bonusNumber));
+    }
+
+    public Integer getPrize(Result result) {
+        return Win.getPRIZE(result.getMatchCount(), result.isMatchBonus());
     }
 }
