@@ -9,12 +9,17 @@ import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class Domain {
 
-    List<Lotto> userLottos;
-    Lotto winningNumber;
+    private List<Lotto> userLottos;
+    private Lotto winningNumber;
 
     public Domain() {
         userLottos = new ArrayList<>();
     }
+
+    public void setWinningNumber(Lotto winningNumber) {
+        this.winningNumber = winningNumber;
+    }
+
     public boolean isValidPriceInput(String input) {
         if (!input.matches("^[0-9]+$")) {
             return false;
@@ -30,6 +35,8 @@ public class Domain {
     public void createRandomLottoNumber() {
         userLottos.add(new Lotto(pickUniqueNumbersInRange(1, 45, 6)));
     }
+
+
 
 //    public static void main(String[] args) {
 //        Domain domain = new Domain();
