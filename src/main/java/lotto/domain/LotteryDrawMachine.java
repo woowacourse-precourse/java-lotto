@@ -5,8 +5,8 @@ import static lotto.constant.SystemValue.MAXIMUM_LOTTERY_NUMBER;
 import static lotto.constant.SystemValue.MINIMUM_LOTTERY_NUMBER;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LotteryDrawMachine {
 
@@ -17,7 +17,8 @@ public class LotteryDrawMachine {
     }
 
     private List<Integer> getSortedNumbers(List<Integer> lotteryNumbers) {
-        Collections.sort(lotteryNumbers);
-        return lotteryNumbers;
+        return lotteryNumbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 }
