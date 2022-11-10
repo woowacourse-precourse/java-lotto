@@ -1,8 +1,7 @@
-package lotto.checker;
+package lotto.check;
 
-public class MoneyChecker implements Checker<Integer> {
+public class MoneyCheck {
 
-    @Override
     public Integer check(String money) {
         if (!isMoney(money)) {
             throw new IllegalArgumentException();
@@ -16,17 +15,13 @@ public class MoneyChecker implements Checker<Integer> {
     private boolean isMoney(String money) {
         char[] chars = money.toCharArray();
         for (char c : chars) {
-            if (!isDigit(c)) {
-                return false;
-            }
+            if (!isDigit(c)) return false;
         }
         return true;
     }
 
     private boolean isDigit(char c) {
-        if (c < '0' && c > '9') {
-            return false;
-        }
+        if (c < '0' && c > '9') return false;
         return true;
     }
 }
