@@ -1,14 +1,13 @@
 package lotto;
 
-import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 
 public class RankCount {
-    private HashMap<Integer, Integer> rankCounter;
+    private final HashMap<Integer, Integer> rankCounter;
 
     public RankCount() {
-        rankCounter = new HashMap<Integer, Integer>();
+        rankCounter = new HashMap<>();
         for (Rank rank : Rank.values()) {
             rankCounter.put(rank.getNumberCount(), 0);
         }
