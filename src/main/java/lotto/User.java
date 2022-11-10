@@ -31,15 +31,20 @@ public class User {
         lottos.add(new Lotto(convertLottoNumber(inputLottoNumber)));
     }
 
+    private List<Integer> convertLottoNumber(String inputLottoNumber) {
+        ArrayList<String> split = new ArrayList<>(List.of(inputLottoNumber.split(", ")));
+        return split.stream()
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList());
+    }
+
     private void validateInputLottoNumber(String inputLottoNumber) {
         ArrayList<String> split = new ArrayList<>(List.of(inputLottoNumber.split(", ")));
         if(split.size() != 6){
             System.out.println("[ERROR] 숫자 입력이 잘못 되었습니다.");
             throw new IllegalArgumentException();
         }
-        List<Integer> lottoNumber = split.stream()
-                .map(s -> Integer.parseInt(s))
-                .collect(Collectors.toList());
+        List<Integer> lottoNumber = convertLottoNumber(inputLottoNumber);
 
         for (Integer integer : lottoNumber) {
             if(integer > 45 || integer < 1){
