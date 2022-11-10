@@ -6,6 +6,8 @@ import lotto.domain.Money;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
+import java.util.List;
+
 public class LottoApplication {
 
     public void run() {
@@ -14,6 +16,8 @@ public class LottoApplication {
 
             LottoTickets lottoTickets = LottoGenerator.generateTickets(money);
             OutputView.printLottoTickets(lottoTickets);
+
+            List<Integer> winningNumbers = InputView.inputWinningNumbers();
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e.getMessage());
             throw e;
