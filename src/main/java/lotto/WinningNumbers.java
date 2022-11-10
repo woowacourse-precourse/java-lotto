@@ -38,7 +38,7 @@ public class WinningNumbers {
         return numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
-    private List<Integer> convertNumbers(String numbers) {
-        return stringToInt(arrayToList(splitNumbers(numbers)));
+    private List<Integer> convertNumbers() {
+        return stringToInt(arrayToList(splitNumbers(setNumber())));
     }
 }
