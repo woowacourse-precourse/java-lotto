@@ -56,6 +56,11 @@ validate
 5. containsNumberOutOfRange : 리스트의 숫자가 1부터 45사이가 아닌게 있으면 참을 반환
 6. numberOutOfRangeException : 범위를 벗어난 숫자를 가짐에 예외처리
 
+### PaymentException
+1. validate
+   1. isNotDividedByThousand : 1000으로 나누었을때 나머지가 0이 아니면 참을 반환
+   2. paymentNotAcceptableException : 예외처리한다. 
+
 ## 서비스
 ### MatchLotteryService
 1. matchPlayerWithComputer : 컴퓨터와 플레이어를 비교해 등수를 만들어준다. 
