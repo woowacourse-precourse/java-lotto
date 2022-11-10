@@ -8,6 +8,7 @@ public enum LottoText {
     WINNING_STATISTICS("당첨 통계\n---\n"),
     MATCHES("%d개 일치 (%s원) - %d개"),
     YIELD("총 수익률은 %d%%입니다."),
+    ERROR("[ERROR] ")
     ;
 
     final String content;
