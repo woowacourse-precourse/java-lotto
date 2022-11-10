@@ -19,7 +19,7 @@ public class Draw {
         return matchingNumber;
     }
 
-    public void winningCount(Double matchingNumber) {
+    public void saveWinningCount(Double matchingNumber) {
         if (matchingNumber == 3.0) {
             WinnersCase.FIFTH.addCount();
             return;
@@ -46,7 +46,7 @@ public class Draw {
         Double matchingNumber = 0.0;
         for (List<Integer> lottery : lotteries) {
             matchingNumber = getMatchingCount(lottery, winningNumber, bonusNumber);
-            winningCount(matchingNumber);
+            saveWinningCount(matchingNumber);
         }
     }
 
