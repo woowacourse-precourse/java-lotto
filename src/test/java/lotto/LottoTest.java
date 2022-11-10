@@ -39,4 +39,15 @@ public class LottoTest {
         assertThat(gameResult.isThird()).isTrue();
     }
 
+    @DisplayName("1개의 로또와 당첨 번호를 비교하여 4등 결과를 반환하는 기능")
+    @Test
+    void calculateAnswerFourth() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 7, 8));
+        Answer answer = new Answer(List.of(6, 5, 4, 3, 2, 1), 7);
+
+        GameResult gameResult = answer.play(lotto);
+        System.out.println(gameResult.name());
+        assertThat(gameResult.isFourth()).isTrue();
+    }
+
 }

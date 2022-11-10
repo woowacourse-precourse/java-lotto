@@ -48,4 +48,8 @@ public enum GameResult {
     public boolean isThird() {
         return this == THIRD;
     }
+
+    public boolean isFourth() {
+        return this == FOURTH;
+    }
 }
