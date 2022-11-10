@@ -1,5 +1,6 @@
 package lotto;
 
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,5 +24,23 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+
+
     // 아래에 추가 테스트 작성 가능
 }
+
+/*class RefereeTest{
+    private static final List<Integer> ANSWER = Arrays.asList(1, 2, 3);
+    private Referee referee;
+
+    @BeforeEach
+    void SetUp(){
+        referee = new Referee();
+    }
+    @ParameterizedTest
+    @CsvSource({"1,2,3,0 볼 3 스트라이크", "7,8,9,아웃", "2,3,1,3 볼 0 스트라이크"})
+    public void compare(int number1, int number2, int number3, String expected) {
+        String actual = referee.compare(ANSWER, Arrays.asList(number1, number2, number3));
+        assertThat(actual).isEqualTo(expected);
+    }
+}*/
