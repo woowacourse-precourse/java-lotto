@@ -11,8 +11,8 @@ public class PrintOut {
     System.out.println(count + "개를 구매했습니다.");
   }
 
-  public static void lottoPrint(List<Integer> numbers) {
+  public void lottoPrint(List<Integer> numbers){
     Lotto lotto = new Lotto();
-
+    System.out.println(lotto.generateLottoNumber());
   }
 }
