@@ -45,6 +45,9 @@ public class LottoController {
 
     private void inputLottoNumbers(){
         inputView.inputLottoNumbers();
+    }
+
+    private void inputBonusNumber(){
         inputView.inputBonusNumber();
     }
 
