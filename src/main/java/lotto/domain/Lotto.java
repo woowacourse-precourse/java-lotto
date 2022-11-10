@@ -16,20 +16,25 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+
     }
 
     private void isValidateDuplicated(List<Integer> numbers) {
         Set<Integer> checkDuplicated = new HashSet<>();
 
-        for(int number : numbers) {
+        for (int number : numbers) {
             checkDuplicated.add(number);
         }
 
-        if(checkDuplicated.size() != Number.LOTTO_NUMBER_LENGTH) {
+        if (checkDuplicated.size() != Number.LOTTO_NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
+
+    private void isValidateNumbersLength(List<Integer> numbers) {
+        if (numbers.size() != Number.LOTTO_NUMBER_LENGTH) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
