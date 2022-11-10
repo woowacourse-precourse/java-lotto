@@ -12,16 +12,16 @@ public class LottoBuyer {
     public static int purchaseLottoCount;
 
     public static List<Lotto> purchaseLotto() {
-        List<Lotto> lottoLists = new ArrayList<>();
+        List<Lotto> lottos = new ArrayList<>();
         System.out.println(Message.PURCHASE_PRICE.getMessage());
         String purchasePrice = readLine();
         purchaseLottoCount = Integer.parseInt(purchasePrice) / 1000;
         validateDivideNumber(purchasePrice);
         System.out.println(purchaseLottoCount + Message.PURCHASE_COUNT.getMessage());
         for (int i = 0; i < purchaseLottoCount; i++) {
-            lottoLists.add(Lotto.createLotto());
+            lottos.add(Lotto.createLotto());
         }
-        return lottoLists;
+        return lottos;
     }
 
     private static void validateDivideNumber(String purchasePrice) {

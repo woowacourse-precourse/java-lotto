@@ -15,9 +15,9 @@ import java.util.List;
 public class LottoGame {
 
     public void start() {
-        List<Lotto> lottoList;
-        lottoList = purchaseLotto();
-        System.out.println(lottoList);
+        List<Lotto> lottos;
+        lottos = purchaseLotto();
+        System.out.println(lottos);
         winningNumberInput();
         bonusNumberInput();
         System.out.println(Arrays.toString(winningNumber.split(",")));
