@@ -1,8 +1,8 @@
-package lotto.utils;
+package lotto.utils.Advice;
 
-import static lotto.domain.ErrorMessage.COMMON_MESSAGE;
-import static lotto.domain.ErrorMessage.PURCHASE_PAY_CONSISTENCE;
-import static lotto.domain.ErrorMessage.PURCHASE_PAY_REMINDER;
+import static lotto.domain.model.ErrorMessage.COMMON_MESSAGE;
+import static lotto.domain.model.ErrorMessage.PURCHASE_PAY_CONSISTENCE;
+import static lotto.domain.model.ErrorMessage.PURCHASE_PAY_REMINDER;
 
 public class PurchaseValidator {
 

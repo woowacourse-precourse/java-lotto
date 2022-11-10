@@ -1,4 +1,4 @@
-package lotto.utils;
+package lotto.utils.Advice;
 
 public class BonusValidator {
 
