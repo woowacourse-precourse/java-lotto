@@ -7,16 +7,13 @@ import static lotto.domain.ErrorMessage.LOTTE_NUMBER_NOT_ASC;
 import static lotto.domain.ErrorMessage.LOTTE_NUMBER_OUT_BOUND;
 import static lotto.domain.ErrorMessage.LOTTE_SIZE_INVALID;
 import static lotto.domain.FirstPlace.DIVIDE_POINT;
-import static lotto.utils.InputValidator.NUMBER_REG_EXP;
 import static lotto.utils.LottoGenerator.COUNT;
 import static lotto.utils.LottoGenerator.END_INCLUSIVE;
 import static lotto.utils.LottoGenerator.START_INCLUSIVE;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -35,6 +32,15 @@ public class LottoValidator {
         checkDuplication(numbers);
         checkRange(numbers);
         checkSortedAsc(numbers);
+    }
+
+    public static void validateFirstPlace(String firstPlace) {
+        checkConsistOfOnlyCommas(firstPlace);
+
+        List<Integer> firstPlaceNumbers = Arrays.stream(firstPlace.split(DIVIDE_POINT)).map(Integer::parseInt)
+                .collect(Collectors.toList());
+        checkRange(firstPlaceNumbers);
+        checkDuplication(firstPlaceNumbers);
     }
 
     private static void checkSize(List<Integer> numbers){
@@ -61,16 +67,6 @@ public class LottoValidator {
             throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + LOTTE_NUMBER_NOT_ASC.getMessage());
         });
     }
-
-    public static void validateFirstPlace(String firstPlace) {
-        checkConsistOfOnlyCommas(firstPlace);
-
-        List<Integer> firstPlaceNumbers = Arrays.stream(firstPlace.split(DIVIDE_POINT)).map(Integer::parseInt)
-                .collect(Collectors.toList());
-        checkRange(firstPlaceNumbers);
-        checkDuplication(firstPlaceNumbers);
-    }
-
 
     private static void checkConsistOfOnlyCommas(String firstPlace) {
         if (!firstPlace.matches(FIRST_PLACE_REG_EXP))
