@@ -44,9 +44,13 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
 
-    public Integer getCountOfMatchNumber(Lotto otherLotto){
-        return null;
+    public int getCountOfMatchNumber(Lotto otherLotto){
+        List<Integer> copiedNumber = new ArrayList<>(numbers);
+        copiedNumber.retainAll(otherLotto.numbers);
+
+        return copiedNumber.size();
     }
+
 
     public Boolean hasNumber(Integer number){
         return null;
