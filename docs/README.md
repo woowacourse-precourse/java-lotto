@@ -4,7 +4,7 @@
 - [] 구입금액 입력 메세지를 출력한다. - View#PURCHASE_INPUT_GUIDE_MESSAGE
 - [] 로또 구입 금액을 입력한다. - Input#userInput()
 
-- [] 구입금액에 해당하는 만큼 로또를 발행해야한다. - Lotto#createLotto()
+- [] 구입금액에 해당하는 만큼 로또를 발행해야한다. - LottoList#createLotto()
   - [] 로또 1장의 가격은 1,000원이다. - Lotto#PRICE
   - [] 1개의 로또를 발행할 때 1~45까지의 6개의 숫자를 뽑는다 - Lotto#createNumbers()
     - [] 이 때, 6개의 숫자는 중복되지 않아야한다. - Checker#checkSameNumber()
@@ -20,12 +20,12 @@
 - [] 보너스 번호를 입력 받는다. - Input#userInput()
   - [] 잘못된 값 입력시 예외 발생 - Checker#checkUserInput()
 
-- [] 사용자의 로또 번호와 당첨 번호를 비교한다. - CompareNumbers#compareNumbers()
-  - [] 1등: 6개 번호 일치 / 2,000,000,000원 - CompareNumbers#FIRST
-  - [] 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원 - CompareNumbers#SECOND
-  - [] 3등: 5개 번호 일치 / 1,500,000원 - CompareNumbers#THIRD
-  - [] 4등: 4개 번호 일치 / 50,000원 - CompareNumbers#FOURTH
-  - [] 5등: 3개 번호 일치 / 5,000원 - CompareNumbers#FIFTH
+- [] 사용자의 로또 번호와 당첨 번호를 비교한다. - Checker#compareNumbers()
+  - [] 1등: 6개 번호 일치 / 2,000,000,000원 - Checker#FIRST
+  - [] 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원 - Checker#SECOND
+  - [] 3등: 5개 번호 일치 / 1,500,000원 - Checker#THIRD
+  - [] 4등: 4개 번호 일치 / 50,000원 - Checker#FOURTH
+  - [] 5등: 3개 번호 일치 / 5,000원 - Checker#FIFTH
 
 - [] 당첨 통계 메세지를 출력한다. - View#WINNING_MESSAGE_GUIDE_MESSAGE
   - [] 각 등수가 몇 개인지 출력한다. - View#showWinnings()
