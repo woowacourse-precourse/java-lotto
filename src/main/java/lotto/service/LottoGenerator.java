@@ -39,4 +39,8 @@ public class LottoGenerator {
         Collections.sort(lottoNum);
         return lottoNum;
     }
+
+    public Lotto forTest_getLotto() {
+        return getLotto();
+    }
 }
