@@ -15,8 +15,8 @@ class CustomerTest {
     void buy_메서드는_가지고_있는_금액을_모두_소비하여_로또를_구매한다() {
         Customer customer = new Customer(2000);
 
-        customer.buy(new LottoSeller());
+        customer.buyLottoTicketTo(new LottoSeller());
 
-        assertThat(customer.getLottos().size()).isEqualTo(2);
+        assertThat(customer.getLottoTicket().size()).isEqualTo(2);
     }
 }

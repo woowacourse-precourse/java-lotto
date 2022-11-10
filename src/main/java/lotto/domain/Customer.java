@@ -5,19 +5,19 @@ import java.util.List;
 public class Customer {
 
     private Integer amount;
-    private List<Lotto> lottos;
+    private List<Lotto> lottoTicket;
 
     public Customer(Integer amount) {
         this.amount = amount;
     }
 
-    public void buy(LottoSeller lottoSeller) {
-        lottos = lottoSeller.sell(amount);
+    public void buyLottoTicketTo(LottoSeller lottoSeller) {
+        lottoTicket = lottoSeller.sell(amount);
         spendAll();
     }
 
-    public List<Lotto> getLottos() {
-        return lottos;
+    public List<Lotto> getLottoTicket() {
+        return lottoTicket;
     }
 
     private void spendAll() {
