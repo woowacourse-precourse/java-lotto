@@ -1,9 +1,6 @@
 package lotto.domain;
 
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Lotto {
 
@@ -21,9 +18,12 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        numbers.sort(Comparator.naturalOrder());
-        validate(numbers);
-        this.numbers = numbers;
+        List<Integer> tempNumbers = new ArrayList<>(numbers);
+        tempNumbers.sort(Comparator.naturalOrder());
+        List<Integer> sortedNumbers = Collections.unmodifiableList(tempNumbers);
+
+        validate(sortedNumbers);
+        this.numbers = sortedNumbers;
     }
 
     private void validate(List<Integer> numbers) {
