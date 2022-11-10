@@ -2,6 +2,9 @@ package lotto.domain;
 
 import lotto.ui.ConsoleInput;
 
+import java.util.regex.Pattern;
+import java.util.stream.Stream;
+
 import static java.lang.Integer.*;
 import static lotto.ui.ConsoleOutput.*;
 
@@ -13,18 +16,23 @@ public class Player {
 		return (long) valueOf(amountInput);
 	}
 
-	public int receiveLottoNumber(){
+	public Stream<Integer> receiveLottoNumber() {
 		PrintRequestMessage(REQUEST_LOTTO_NUMBER);
-		String lotteryNumber = ConsoleInput.readLine();
-		validateLottoNumber(lotteryNumber);
-		return parseInt(lotteryNumber);
+		String lottoNumber = ConsoleInput.readLine();
+		validateLottoNumber(lottoNumber);
+		return getNumbers(lottoNumber);
 	}
 
-	private void validateAmount(String amountInput) {
-		if (amountInput.isEmpty()) {
-			PrintErrorMessage(EMPTY);
-		}
+	public int receiveBonusNumber(Stream lottoNumbers) {
+		PrintRequestMessage(REQUEST_BONUS_NUMBER);
+		String BonusNumber = ConsoleInput.readLine();
+		validateBonusNumber(BonusNumber, lottoNumbers);
 
+		return parseInt(BonusNumber);
+	}
+
+
+	private void validateAmount(String amountInput) {
 		if (Validation.isNotANumber(amountInput)) {
 			PrintErrorMessage(AMOUNT_NOT_A_NUMBER);
 		}
@@ -37,26 +45,42 @@ public class Player {
 			PrintErrorMessage(AMOUNT_NOT_ASSIGNED_CURRENCY_UNIT);
 		}
 	}
+
 	private void validateLottoNumber(String numberInput) {
-		if (numberInput.isEmpty()){
-			PrintErrorMessage(EMPTY);
+		if (!Validation.isLottoNumberCorrectlyFormatted(numberInput)) {
+			PrintErrorMessage(LOTTO_NUMBER_NOT_CORRECTLY_FORMATTED);
 		}
 
-		if(!Validation.isCorrectlyFormatted(numberInput)){
-			PrintErrorMessage(NUMBER_NOT_CORRECTLY_FORMATTED);
+		if (!Validation.isLottoNumberCountCorrectlyProvided(numberInput)) {
+			PrintErrorMessage(LOTTO_NUMBER_NOT_CORRECTLY_COUNTED);
 		}
 
-		if(!Validation.isCountCorrectlyProvided(numberInput)){
-			PrintErrorMessage(NUMBER_NOT_CORRECTLY_COUNTED);
+		if (!Validation.isLottoNumberCorrectlyRanged(numberInput)) {
+			PrintErrorMessage(LOTTO_NUMBER_NOT_IN_BETWEEN_1_45);
 		}
 
-		if(!Validation.isCorrectlyRanged(numberInput)){
-			PrintErrorMessage(NUMBER_NOT_IN_BETWEEN_1_45);
-		}
-
-		if(Validation.isDuplicateExists(numberInput)){
-			PrintErrorMessage(NUMBER_DETECTED_DUPLICATE);
+		if (Validation.isLottoNumberDuplicateExists(numberInput)) {
+			PrintErrorMessage(LOTTO_NUMBER_DUPLICATED);
 		}
 	}
 
+	private void validateBonusNumber(String numberInput, Stream lottoNumbers) {
+		if (!Validation.isBonusNumberCorrectlyRanged(numberInput)) {
+			PrintErrorMessage(BONUS_NUMBER_NOT_IN_BETWEEN_1_45);
+		}
+
+		if (!Validation.isBonusNumberCountCorrectlyProvided(numberInput)) {
+			PrintErrorMessage(BONUS_NUMBER_NOT_CORRECTLY_COUNTED);
+		}
+
+		if (Validation.isBonusNumberDuplicateExists(numberInput, lottoNumbers)) {
+			PrintErrorMessage(BONUS_NUMBER_DUPLICATED);
+		}
+	}
+
+	public static Stream<Integer> getNumbers(String input) {
+		return Pattern.compile(",").
+				splitAsStream(input).
+				map(Integer::parseInt);
+	}
 }

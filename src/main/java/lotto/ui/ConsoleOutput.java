@@ -15,10 +15,14 @@ public class ConsoleOutput {
 	public static final String AMOUNT_LESS_THAN_1000 = "구입금액은 1000원 이상부터 가능합니다. 프로그램을 종료합니다.";
 	public static final String AMOUNT_NOT_ASSIGNED_CURRENCY_UNIT = String.format("구입금액은 %d원 단위로 입력이 가능합니다. 프로그램을 종료합니다.", Setup.LOTTO_PRICE.getValue());
 
-	public static final String NUMBER_NOT_CORRECTLY_FORMATTED = "로또 번호는 1,2,3,4,5,6 형식으로 입력해야 합니다. 프로그램을 종료합니다.";
-	public static final String NUMBER_NOT_CORRECTLY_COUNTED = "로또 번호는 6개의 숫자를 입력해야 합니다. 프로그램을 종료합니다.";
-	public static final String NUMBER_NOT_IN_BETWEEN_1_45 = "로또 번호는 1부터 45 사이의 숫자여야 합니다. 프로그램을 종료합니다.";
-	public static final String NUMBER_DETECTED_DUPLICATE = "로또 번호는 중복이 없어야 합니다. 프로그램을 종료합니다.";
+	public static final String LOTTO_NUMBER_NOT_CORRECTLY_FORMATTED = "로또 번호는 1,2,3,4,5,6 형식으로 입력해야 합니다. 프로그램을 종료합니다.";
+	public static final String LOTTO_NUMBER_NOT_CORRECTLY_COUNTED = "로또 번호는 6개의 숫자를 입력해야 합니다. 프로그램을 종료합니다.";
+	public static final String LOTTO_NUMBER_NOT_IN_BETWEEN_1_45 = "로또 번호는 1부터 45 사이의 숫자여야 합니다. 프로그램을 종료합니다.";
+	public static final String LOTTO_NUMBER_DUPLICATED = "로또 번호는 중복이 없어야 합니다. 프로그램을 종료합니다.";
+
+	public static final String BONUS_NUMBER_NOT_IN_BETWEEN_1_45 = "보너스 번호는 1부터 45 사이의 숫자여야 합니다. 프로그램을 종료합니다.";
+	public static final String BONUS_NUMBER_NOT_CORRECTLY_COUNTED = "보너스 번호는 1개의 숫자를 입력해야 합니다. 프로그램을 종료합니다.";
+	public static final String BONUS_NUMBER_DUPLICATED = "보너스 번호는 로또 번호와 중복이 없어야 합니다. 프로그램을 종료합니다.";
 
 
 	public static void PrintErrorMessage(String message) {
