@@ -29,7 +29,7 @@ public class InputUtil {
             throw new IllegalArgumentException(CANNOT_INPUT_ZERO);
         }
 
-        if (InputValidator.restEqualZero(purchasePrice, LOTTO_PRICE)) {
+        if (!InputValidator.restEqualZero(purchasePrice, LOTTO_PRICE)) {
             throw new IllegalArgumentException(CAN_ONLY_MULTIPLY_1000);
         }
 
