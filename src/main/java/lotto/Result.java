@@ -49,6 +49,10 @@ public class Result {
         System.out.println("5개 일치 (1,500,000원) - " + third + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + second + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + first + "개");
-        System.out.println("총 수익률은 " + earningsRate + "입니다.");
+        System.out.println("총 수익률은 " + Math.round(earningsRate*10)/10.0 + "%입니다.");
+    }
+
+    public void calcEarningRate(int userMoney, int resultMoney){
+        earningsRate = ((double)resultMoney/(double)userMoney) * 100;
     }
 }
