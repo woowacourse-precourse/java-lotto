@@ -4,15 +4,16 @@ import static lotto.domain.LottoTickets.*;
 import static lotto.utils.Integer.*;
 
 public class LottoTicketsValidator {
+	private static final String ERROR = "[ERROR] ";
 	public static void checkValidityAndThrowException(String purchasingAmount) {
 		if (!isConsistValidCharacters(purchasingAmount)) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(ERROR + "올바른 금액을 입력해 주세요.");
 		}
 		if (!isPositiveNumber(purchasingAmount)) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(ERROR + "올바른 금액을 입력해 주세요.");
 		}
 		if (!isValidUnit(purchasingAmount)) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(ERROR + "1000원 단위의 금액이어야 합니다.");
 		}
 	}
 

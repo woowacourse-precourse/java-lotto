@@ -11,7 +11,7 @@
             - [x]  1000원 단위로 받지 않았을때 `IllegalArgumentException`를 발생시키고 `[ERROR] 1000원 단위의 금액이어야 합니다.` 출력 후 종료
             - [x]  음수일때 `IllegalArgumentException`를 발생시키고 `[ERROR] 올바른 금액을 입력해 주세요.` 출력 후 종료
             - [x]  숫자 외의 다른 문자가 들어왔을 때 `IllegalArgumentException`를 발생시키고 `[ERROR] 올바른 금액을 입력해 주세요.` 출력 후 종료
-            - [ ]  사용자가 아무런 문자를 입력하지 않았을 때 `IllegalArgumentException`를 발생시키고 `[ERROR] 올바른 금액을 입력해 주세요.` 출력 후 종료
+            - [x]  사용자가 아무런 문자를 입력하지 않았을 때 `IllegalArgumentException`를 발생시키고 `[ERROR] 올바른 금액을 입력해 주세요.` 출력 후 종료
     - [ ]  1~45까지의 중복되지 않는 6개의 숫자 입력받기
         - [ ]  예외 사항
             - [ ]  6개의 숫자가 아닐때 `IllegalArgumentException`를 발생시키고 `[ERROR] 6개의 숫자를 입력해 주세요.`출력 후 종료
