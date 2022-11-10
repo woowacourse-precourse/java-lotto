@@ -2,7 +2,7 @@ package domain;
 
 import exception.MoneyExceptionType;
 
-public class UserMoney {
+public class UserMoneyValidate {
 
     private final int THOUSAND = 1000;
     private String input;
