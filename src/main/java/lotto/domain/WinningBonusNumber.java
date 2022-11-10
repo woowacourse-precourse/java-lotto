@@ -15,6 +15,12 @@ public class WinningBonusNumber {
         this.bonusNumber = bonusNumber;
     }
 
+    private void validateWinningNumbers(List<Integer> winningNumbers) {
+        validateDuplicated(winningNumbers);
+        validateNumbersLength(winningNumbers);
+        validateNumbersRange(winningNumbers);
+    }
+
     private void validateDuplicated(List<Integer> winningNumbers) {
         Set<Integer> checkDuplicated = new HashSet<>();
 
@@ -37,7 +43,7 @@ public class WinningBonusNumber {
         int min = winningNumbers.stream().sorted().findFirst().get();
         int max = winningNumbers.stream().sorted(Comparator.reverseOrder()).findFirst().get();
 
-        if(min < Number.LOTTO_NUMBER_MIN || max > Number.LOTTO_NUMBER_MAX) {
+        if (min < Number.LOTTO_NUMBER_MIN || max > Number.LOTTO_NUMBER_MAX) {
             throw new IllegalArgumentException();
         }
     }
