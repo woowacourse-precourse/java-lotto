@@ -1,14 +1,17 @@
-package lotto.verfier;
+package lotto.verifier;
 
 import lotto.util.Constant;
 import lotto.util.ExceptionMessage;
 
 import java.math.BigInteger;
 
-public class MoneyVerifier implements Verifer {
+public class MoneyVerifier implements Verifier {
     @Override
     public void check(String input) {
-
+        checkNumeric(input);
+        checkOutOfRange(input);
+        checkDivisible(input);
+        checkPositive(input);
     }
 
     private void checkNumeric(String input) {
@@ -30,6 +33,12 @@ public class MoneyVerifier implements Verifer {
     private void checkDivisible(String input) {
         if (Integer.parseInt(input) % Constant.MONEY_UNIT != 0) {
             throw new IllegalArgumentException(ExceptionMessage.IS_NOT_DIVISIBLE);
+        }
+    }
+
+    private void checkPositive(String input) {
+        if (Integer.parseInt(input) < 0) {
+            throw new IllegalArgumentException(ExceptionMessage.IS_NOT_POSITIVE);
         }
     }
 }

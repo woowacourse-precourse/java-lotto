@@ -8,4 +8,5 @@ public final class ExceptionMessage {
     public static final String IS_NOT_NUMERIC = "[ERROR] 입력된 값은 숫자가 아닙니다.";
     public static final String IS_NOT_DIVISIBLE = "[ERROR] " + Constant.MONEY_UNIT +
             "원으로 나누어 떨어지지 않는 값입니다.";
+    public static final String IS_NOT_POSITIVE = "[ERROR] 입력된 값은 양수가 아닙니다.";
 }
