@@ -2,17 +2,18 @@ package lotto;
 
 class CheckInputException {
 
-    public static void checkBuyerInputIsMinus(String input) throws IllegalArgumentException{
+    public static void checkBuyerInputIsMinus(final String input) throws IllegalArgumentException{
 
-        Long money = Long.valueOf(input);
+        final Long money = Long.valueOf(input);
 
         if (money < 0) {
             throw new IllegalArgumentException("[ERROR] 입력하신 돈이 음수입니다.");
         }
     }
 
-    public static void checkBuyerInputIsNotNumber(String input) throws IllegalArgumentException{
-        input.chars().allMatch(Character::isDigit);
+    public static void checkBuyerInputIsNotNumber(final String input) throws IllegalArgumentException{
+        if (Util.isNumberic(input) == false)
+            throw new IllegalArgumentException("[ERROR] 입력하신 문자열은 숫자열이 아닙니다.");
     }
 
 
