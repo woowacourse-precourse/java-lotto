@@ -20,6 +20,8 @@ public class LottoGameService {
     private static final String LOTTO_WINNING_NUMBERS_SIZE_EXCEPTION_MESSAGE = "로또 당첨 번호의 개수는 6개여야합니다.";
     private static final String LOTTO_WINNING_NUMBERS_DUPLICATE_EXCEPTION_MESSAGE = "로또 당첨 번호는 중복될 수 없습니다.";
     private static final String LOTTO_WINNING_NUMBERS_RANGE_EXCEPTION_MESSAGE = "로또 당첨 번호의 범위는 1~45여야합니다.";
+    private static final String LOTTO_WINNING_NUMBERS_REGEX = "^[0-9,]+$";
+    private static final String LOTTO_WINNING_NUMBERS_TYPE_EXCEPTION_MESSAGE = "로또 당첨 번호는 공백 없이 쉼표로 구분된 숫자여야합니다.";
 
     private Lotto lotto;
 
@@ -42,6 +44,10 @@ public class LottoGameService {
     }
 
     public void validateLottoWinningNumbers(String inputLottoWinningNumber) {
+        if (isLottoWinningNumbersWrongType(inputLottoWinningNumber)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + LOTTO_WINNING_NUMBERS_TYPE_EXCEPTION_MESSAGE);
+        }
+
         List<Integer> convertedLottoWinningNumbers = inputWinningNumberConvertToCollection(inputLottoWinningNumber);
         if (isLottoWinningNumbersSizeNotSix(convertedLottoWinningNumbers)) {
             throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + LOTTO_WINNING_NUMBERS_SIZE_EXCEPTION_MESSAGE);
@@ -87,6 +93,10 @@ public class LottoGameService {
                 .filter(number -> number >= 1 && number <= 45)
                 .count();
         return correctNumbersRangeCount != CORRECT_LOTTO_WINNING_NUMBERS_SIZE;
+    }
+
+    private boolean isLottoWinningNumbersWrongType(String inputLottoWinningNumber) {
+        return !Pattern.compile(LOTTO_WINNING_NUMBERS_REGEX).matcher(inputLottoWinningNumber).matches();
     }
 
     public List<Integer> inputWinningNumberConvertToCollection(String lottoWinningNumber) {
