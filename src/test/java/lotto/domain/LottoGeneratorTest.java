@@ -17,5 +17,12 @@ class LottoGeneratorTest {
         assertThat(lottoBundle.size()).isEqualTo(3);
     }
 
+    @Test
+    void 잘못된_금액_테스트() {
+        LottoGenerator lottoGenerator = new LottoGenerator();
+        assertThatThrownBy(() -> lottoGenerator.generateLottoBundle(1300))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 }
