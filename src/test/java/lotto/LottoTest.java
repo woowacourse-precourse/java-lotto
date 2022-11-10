@@ -23,5 +23,19 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    Error error = new Error();
+
+    @DisplayName("로또 구매 금액이 1,000으로 나누어 떨어지지 않으면 예외가 발생한다.")
+    @Test
+    void enterPurchaseAmountNot1000Units(){
+        assertThatThrownBy(() -> new Error().isDividedByTicketPrice(1234))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 구매 금액 입력 값에 문자가 포함되어 있는 경우 예외가 발생한다.")
+    @Test
+    void enterCharacterContainingValue(){
+        assertThatThrownBy(() -> new Error().isContainCharacter("300d0"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
