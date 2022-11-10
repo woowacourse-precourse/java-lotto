@@ -1,6 +1,6 @@
-package lotto.domain.lotto;
+package lotto.domain.match;
 
-import lotto.domain.MatchAndReward;
+import lotto.domain.lotto.Lotto;
 
 import java.util.List;
 
