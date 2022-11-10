@@ -179,14 +179,15 @@ BUILD SUCCESSFUL in 0s
 
 ### 라이브러리
 
-- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
+- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console`
+  API를 사용하여 구현해야 한다.
     - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
     - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 #### 사용 예시
 
 ```java
-List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+List<Integer> numbers=Randoms.pickUniqueNumbersInRange(1,45,6);
 ```
 
 ### Lotto 클래스
@@ -199,20 +200,20 @@ List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 
 ```java
 public class Lotto {
-    private final List<Integer> numbers;
+	private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        this.numbers = numbers;
-    }
+	public Lotto(List<Integer> numbers) {
+		validate(numbers);
+		this.numbers = numbers;
+	}
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
-    }
+	private void validate(List<Integer> numbers) {
+		if (numbers.size() != 6) {
+			throw new IllegalArgumentException();
+		}
+	}
 
-    // TODO: 추가 기능 구현
+	// TODO: 추가 기능 구현
 }
 ```
 
@@ -225,3 +226,58 @@ public class Lotto {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+***
+
+## ✨ 구현 기능 목록
+
+### [ 진행 ]
+
+- [x] 입력값 유효성 검사 진행
+- [x] 로또 발행 진행
+- [x] 당첨 여부 판별 진행
+
+### [ 로또 ]
+
+- [x] 당첨번호 발행
+- [x] 로또번호 발행
+    - 로또 숫자 생성
+        * 조건
+            * 숫자범위 지키기
+            * 중복하지 않기
+            * 6개 뽑기
+
+- [x] 로또 종이 발행
+    * 조건
+        * 1장 가격 1000원 단위
+        * 돈 받은 만큼만 발행
+        * 1000으로 나눠떨어져야함함
+
+#### 로또 당첨 판별
+
+- [x] 당첨여부 계산
+- [x] 수익률 계산
+
+### [ UI ]
+
+#### 진행문구 출력
+
+- [x] 진행문구 출력
+
+#### 에러문구 출력
+
+- [x] 에러 문구 출력
+
+#### 로또 출력
+
+- [x] 로또 출력
+    * 조건
+        * 발행한 로또 수 만큼 출력
+        * 오름순 정렬로 수 출력력
+
+#### 당첨내역 출력
+
+- [x] 당첨통계 출력
+    * 3~6까지 몇개 일치하는 지 출력
+    * 보너스 볼 일치 여부 출력
+- [x] 수익률 출력
