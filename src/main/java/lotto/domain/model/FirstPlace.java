@@ -17,12 +17,12 @@ public class FirstPlace {
     private final List<Integer> firstPlace;
 
     public FirstPlace(String firstPlace) {
-        validateFirstPlace(firstPlace);
+        validate(firstPlace);
         this.firstPlace = Arrays.stream(firstPlace.split(DIVIDE_POINT)).map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 
-    public static void validateFirstPlace(String firstPlace) {
+    public static void validate(String firstPlace) {
         checkConsistOfOnlyCommas(firstPlace);
         List<Integer> firstPlaceNumbers = Arrays.stream(firstPlace.split(DIVIDE_POINT)).map(Integer::parseInt)
                 .collect(Collectors.toList());

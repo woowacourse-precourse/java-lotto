@@ -16,9 +16,14 @@ public class UserLotto {
     }
 
     public UserLotto(String pay) {
-        validatePay(pay);
+        validate(pay);
         this.userLotto = IntStream.rangeClosed(1, Integer.parseInt(pay) / MINIMUM_ORDER)
                 .mapToObj(count -> new Lotto(LottoGenerator.makeLotto())).collect(Collectors.toList());
+    }
+
+    public static void validate(String pay) {
+        checkConsistNumber(pay);
+        checkReminder(pay);
     }
 
     public List<Lotto> getUserLotto() {

@@ -1,16 +1,15 @@
 package lotto.utils.Advice;
 
 import static lotto.domain.model.ErrorMessage.COMMON_MESSAGE;
-import static lotto.domain.model.ErrorMessage.NOT_DIVIDE_COMMAS;
 import static lotto.domain.model.ErrorMessage.LOTTE_NUMBER_DUPLICATION;
 import static lotto.domain.model.ErrorMessage.LOTTE_NUMBER_NOT_ASC;
 import static lotto.domain.model.ErrorMessage.LOTTE_NUMBER_OUT_BOUND;
 import static lotto.domain.model.ErrorMessage.LOTTE_SIZE_INVALID;
+import static lotto.domain.model.ErrorMessage.NOT_DIVIDE_COMMAS;
 import static lotto.utils.LottoGenerator.COUNT;
 import static lotto.utils.LottoGenerator.END_INCLUSIVE;
 import static lotto.utils.LottoGenerator.START_INCLUSIVE;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;

@@ -6,11 +6,8 @@ public class BonusValidator {
 
     private BonusValidator(){}
 
-    public static void validateBonusNumber(String bonus) {
-        checkBonusSizeAndConsistNumber(bonus);
-    }
 
-    private static void checkBonusSizeAndConsistNumber(String bonus) {
+    public static void checkBonusSizeAndConsistNumber(String bonus) {
         if (!bonus.matches(BONUS_REG_EXP)) {
             throw new IllegalArgumentException();
         }
