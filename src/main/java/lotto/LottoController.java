@@ -11,6 +11,7 @@ public class LottoController {
 
     private LottoInput lottoInput = new LottoInput();
     private int[] lottoResult = new int[MAX_LOTTO_SIZE + 2];
+    private int[] lottoReward = new int[]{0, 0, 0, 5000, 50000, 1500000, 2000000000, 30000000};
 
     public Integer getUserLottoCount() {
         UserInput userInput = new UserInput();
@@ -73,5 +74,14 @@ public class LottoController {
         System.out.printf("5개 일치 (1,500,000원) - %d개\n", lottoResult[5]);
         System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", lottoResult[7]);
         System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", lottoResult[6]);
+    }
+
+    public void printYield(Integer lottoCount) {
+        double yield = 0;
+        for (int i = 0; i < MAX_LOTTO_SIZE + 2; i++) {
+            yield += lottoResult[i] * lottoReward[i];
+        }
+        yield = Math.round(yield) / 10.0;
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", yield / lottoCount);
     }
 }

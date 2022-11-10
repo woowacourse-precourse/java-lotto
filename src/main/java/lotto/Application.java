@@ -16,6 +16,7 @@ public class Application {
 
         lottoController.computeResult(issuedLotto, lotto, bonus);
         lottoController.printResult();
-        
+        lottoController.printYield(lottoCount);
+
     }
 }
