@@ -1,9 +1,9 @@
-package lotto.domain.lottoissuancestrategy;
+package lotto.domain.strategy.lottoissuancestrategy;
 
+import lotto.domain.Lotto;
+import lotto.domain.LottoTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,10 +13,10 @@ class RandomLottoIssuanceStrategyTest {
     void issueLotto() {
         LottoIssuanceStrategy lottoIssuanceStrategy = new RandomLottoIssuanceStrategy() {
             @Override
-            public List<Integer> issueLotto() {
-                return List.of(1, 20, 31, 35, 40, 45);
+            public Lotto issueLotto() {
+                return LottoTest.FROM_ONE_TO_SIX;
             }
         };
-        assertThat(lottoIssuanceStrategy.issueLotto()).isEqualTo(List.of(1, 20, 31, 35, 40, 45));
+        assertThat(lottoIssuanceStrategy.issueLotto()).isEqualTo(LottoTest.FROM_ONE_TO_SIX);
     }
 }
