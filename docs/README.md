@@ -2,10 +2,10 @@
 
 ## 로또 구매
 
-- [X] 구입 금액이 1,000원 단위인지 확인(예외처리 - 올바른 단위가 아님) - Customer.validatePayUnit(pay)
+- [X] 구입 금액이 1,000원 단위인지 확인(예외처리 - 올바른 단위가 아님) - Customer.validatePayUnit(int)
 - [X] 중복되지 않은 1~45 범위의 숫자 6개의 번호 생성 - LottoMachine.extractRandomNumbers()
-- [ ] 번호를 로또 객체로 만들기
-- [ ] 위 과정을 구입금액/1,000 만큼 생성
+- [X] 번호를 로또 객체로 만들기 - LottoMachine.convertLotto(List<Integer>)
+- [X] 위 과정을 구입금액/1,000 만큼 생성 - LottoMachine.pickLotteries(int)
 - [ ] 몇 개 구매했는지와 로또 번호들을 출력할 문구 만들기
 
 ## 당첨 번호 추첨
@@ -31,7 +31,7 @@
 - [ ] 수익률 계산하기
 - [ ] 등수와 수익률을 출력할 문구 만들기
 
-## 기타
+## 기타 및 추가사항
 
 - [ ] 입력값이 글자인지 숫자인지 확인하기(예외처리 - 숫자를 입력해주시기 바랍니다)
 
