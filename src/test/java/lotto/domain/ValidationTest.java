@@ -51,22 +51,22 @@ public class ValidationTest {
 	@DisplayName("유저가 입력한 당첨번호가 형식에 맞게 입력되었는지를 검증한다")
 	@Test
 	void VerifyIsCorrectlyFormatted(){
-		assertTrue(Validation.isCorrectlyFormatted("1,2"));
-		assertTrue(Validation.isCorrectlyFormatted("1,2,30,a,b,c"));
+		assertTrue(Validation.isLottoNumberCorrectlyFormatted("1,2"));
+		assertTrue(Validation.isLottoNumberCorrectlyFormatted("1,2,30,a,b,c"));
 	}
 
 	@DisplayName("유저가 입력한 당첨번호가 6개인지를 검증한다")
 	@Test
 	void VerifyIsCountCorrectlyProvided(){
-		assertTrue(Validation.isCountCorrectlyProvided("1,2,5,10,20,30"));
+		assertTrue(Validation.isLottoNumberCountCorrectlyProvided("1,2,5,10,20,30"));
 	}
 
 	@DisplayName("유저가 입력한 당첨번호가 1이상 45이하의 자연수인지를 검증한다")
 	@Test
 	void VerifyIsCorrectlyRanged(){
-		assertTrue(Validation.isCorrectlyRanged("1,2,3,4,5,45"));
-		assertFalse(Validation.isCorrectlyRanged("1,2,3,4,5,46"));
-		assertFalse(Validation.isCorrectlyRanged("0,2,3,4,5,45"));
+		assertTrue(Validation.isLottoNumberCorrectlyRanged("1,2,3,4,5,45"));
+		assertFalse(Validation.isLottoNumberCorrectlyRanged("1,2,3,4,5,46"));
+		assertFalse(Validation.isLottoNumberCorrectlyRanged("0,2,3,4,5,45"));
 	}
 
 	@DisplayName("유저가 입력한 당첨번호에 중복이 존재하는지를 검증한다")
@@ -76,17 +76,29 @@ public class ValidationTest {
 		assertFalse(Validation.isLottoNumberDuplicateExists("1,2,3,4,5,45"));
 	}
 
+	@DisplayName("유저가 입력한 보너스 번호가 1 이상 45 이하의 자연수인지를 검증한다")
+	@Test
+	void verifyIsBonusNumberCorrectlyRanged(){
+		assertTrue(Validation.isBonusNumberCorrectlyRanged("10"));
+	}
+
+	@DisplayName("유저가 입력한 보너스 번호의 개수가 1개인지를 검증한다")
+	@Test
+	void verifyIsBonusNumberCountCorrectlyProvided(){
+		assertTrue(Validation.isBonusNumberCountCorrectlyProvided("40"));
+	}
+
 	@DisplayName("유저가 입력한 보너스 번호와 당첨번호간 중복이 존재하는지를 검증한다")
 	@Test
 	void verifyIsBonusNumberDuplicateExistsReturningTrue(){
-		Stream testNumbers = Stream.of("1","2","3","4","5","6");
-		assertTrue(Validation.isBonusNumberDuplicateExists("3",testNumbers));
+		Stream testNumbers = Stream.of(1,2,3,4,10,15);
+		assertTrue(Validation.isBonusNumberDuplicateExists("10",testNumbers));
 	}
 
 	@DisplayName("유저가 입력한 보너스 번호와 당첨번호간 중복이 존재하는지를 검증한다")
 	@Test
 	void verifyIsBonusNumberDuplicateExistsReturningFalse(){
-		Stream testNumbers = Stream.of("1","2","3","4","5","6");
+		Stream testNumbers = Stream.of(1,2,3,4,5,6);
 		assertFalse(Validation.isBonusNumberDuplicateExists("30",testNumbers));
 	}
 }
