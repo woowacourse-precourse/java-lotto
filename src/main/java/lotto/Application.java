@@ -18,4 +18,8 @@ public class Application {
     private static boolean isPositiveNumber(int number) {
         return number > 0;
     }
+
+    private static boolean isDividedBy1000(int number) {
+        return number / 1000 == 0;
+    }
 }
