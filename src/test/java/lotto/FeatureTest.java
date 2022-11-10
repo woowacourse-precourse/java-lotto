@@ -88,6 +88,7 @@ public class FeatureTest {
         List<Integer> bonus = List.of(10, 6, 23, 11, 10, 10, 15, 15);
         int[] answer = new int[]{1, 1, 1, 1, 1};
         assertThat(lotto.getWinningArray(user, input)).isEqualTo(answer);
-
     }
+
+
 }
