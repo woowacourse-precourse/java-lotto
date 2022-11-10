@@ -3,12 +3,11 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputHandler {
-    public static int readMoney() {
-        int money;
+
+    public static Money readMoney() {
         String input = readLine();
-        money = parseInt(input);
-        validateMoney(money);
-        return money;
+        int amount = parseInt(input);
+        return new Money(amount);
     }
 
     private static String readLine() {
@@ -23,11 +22,5 @@ public class InputHandler {
             throw new IllegalArgumentException();
         }
         return result;
-    }
-
-    private static void validateMoney(int money) {
-        if (money % 1_000 != 0) {
-            throw new IllegalArgumentException();
-        }
     }
 }
