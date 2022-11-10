@@ -2,6 +2,8 @@ package lotto;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -12,5 +14,12 @@ public class FeatureTest {
     void 입력을_숫자로_변환() {
         String input = "1400";
         assertThat(Input.getInputToInt(input)).isEqualTo(1400);
+    }
+
+    @Test
+    void 입력_로또문자열을_리스트로_변환() {
+        String input = "1,2,3,4,5,6";
+        List<Integer> answer = List.of(1, 2, 3, 4, 5, 6);
+        assertThat(Input.getWinningNumber(input)).isEqualTo(answer);
     }
 }
