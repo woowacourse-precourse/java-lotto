@@ -16,4 +16,28 @@ public class MoneyTest {
 			money.checkMoneyInput("abc");
 		});
 	}
+
+	@DisplayName("금액 입력 시 정수가 아니라면 예외 발생")
+	@Test
+	void notInteger() {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			money.checkMoneyInput("1.5");
+		});
+	}
+
+	@DisplayName("금액 입력 시 음수라면 예외 발생")
+	@Test
+	void notPositive() {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			money.checkMoneyInput("-1");
+		});
+	}
+
+	@DisplayName("금액 입력 시 1000원 단위가 아니라면 예외 발생")
+	@Test
+	void notUnitOfThousand() {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			money.checkMoneyInput("1500");
+		});
+	}
 }

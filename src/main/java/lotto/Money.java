@@ -3,6 +3,9 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Money {
+
+	public static final String NUMBER_SERIES = "[0-9]+";
+
 	public Money() {
 	}
 
@@ -13,7 +16,7 @@ public class Money {
 	}
 
 	public static void checkMoneyInput(String input) {
-		if (!input.matches("[0-9]+")) {
+		if (!input.matches(NUMBER_SERIES)) {
 			throw new IllegalArgumentException("숫자가 아닙니다.");
 		}
 	}
