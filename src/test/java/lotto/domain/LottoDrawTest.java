@@ -18,5 +18,13 @@ class LottoDrawTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    
+    @ParameterizedTest(name = "당첨 번호가 1~6이고 보너스 번호가 {0}일 때 ")
+    @ValueSource(strings = {"0", "46", "a", "1"})
+    @NullAndEmptySource
+    @DisplayName("보너스 번호가 1~45 사이의 숫자가 아니거나 당첨 번호와 중복되면 예외가 발생한다.")
+    void validateBonusNumber_InvalidNumber_ExceptionThrown(String bonusNumber) {
+        String winningNumbers = "1,2,3,4,5,6";
+        assertThatThrownBy(() -> new DrawLotto(winningNumbers, bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
