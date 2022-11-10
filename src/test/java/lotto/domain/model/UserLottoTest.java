@@ -1,11 +1,10 @@
 package lotto.domain.model;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
-import lotto.domain.model.Lotto;
-import lotto.domain.model.UserLotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,19 +14,14 @@ class UserLottoTest {
     @Test
     void purchaseLottoQtyCheckInput() {
         String input = "1,000";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new UserLotto(input));
-        assertThat(exception.getMessage()).isEqualTo("[ERROR] Purchase Pay Isn't Consist Of Number.");
-
+        assertThatThrownBy(() -> new UserLotto(input)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("구매수량 입력 시 1000원 단위로 입력하지 않을 시 예외가 발생한다.")
     @Test
     void purchaseLottoQtyCheckReminder() {
         String input = "150300";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new UserLotto(input));
-        assertThat(exception.getMessage()).isEqualTo("[ERROR] Purchase Pay Reminder Isn't Zero.");
+        assertThatThrownBy(() -> new UserLotto(input)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

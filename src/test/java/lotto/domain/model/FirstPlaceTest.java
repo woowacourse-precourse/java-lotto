@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import lotto.domain.model.FirstPlace;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class FirstPlaceTest {
 
@@ -28,54 +30,48 @@ class FirstPlaceTest {
     @Test
     void createFirstPlaceByNotDivideCommas1(){
         String firstPlace = "1,2,3,4,5,6,,,";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new FirstPlace(firstPlace));
-        assertThat(exception.getMessage()).isEqualTo("[ERROR] Please DIVIDE Number With Commas");
+        assertThatThrownBy(() -> new FirstPlace(firstPlace))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("쉼표로 숫자를 구분하지 않으면 예외가 발생한다. : 쉼표랑 다른 구분자 있을 때")
     @Test
     void createFirstPlaceByNotDivideCommas2() {
         String firstPlace = "1,2,3,4/5/6";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new FirstPlace(firstPlace));
-        assertThat(exception.getMessage()).isEqualTo("[ERROR] Please DIVIDE Number With Commas");
+        assertThatThrownBy(() -> new FirstPlace(firstPlace))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("쉼표로 숫자를 구분하지 않으면 예외가 발생한다. : 쉼표가 없을 때")
     @Test
     void createFirstPlaceByNotExistCommas() {
         String firstPlace = "1/2/3/4/5/6";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new FirstPlace(firstPlace));
-        assertThat(exception.getMessage()).isEqualTo("[ERROR] Please DIVIDE Number With Commas");
+        assertThatThrownBy(() -> new FirstPlace(firstPlace))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("유요 숫자 범위 내 숫자를 입력하지 않으면 예외가 발생한다. 0 포함")
     @Test
     void createFirstPlaceByOutBoundNumber1() {
         String firstPlace = "0,1,2,3,4,5";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new FirstPlace(firstPlace));
-        assertThat(exception.getMessage()).isEqualTo("[ERROR] Lotto Number Have Out Bound Number.");
+        assertThatThrownBy(() -> new FirstPlace(firstPlace))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("유요 숫자 범위 내 숫자를 입력하지 않으면 예외가 발생한다. 46이상 포함")
     @Test
     void createFirstPlaceByOutBoundNumber2() {
         String firstPlace = "3,1,46,7,4,5";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new FirstPlace(firstPlace));
-        assertThat(exception.getMessage()).isEqualTo("[ERROR] Lotto Number Have Out Bound Number.");
+        assertThatThrownBy(() -> new FirstPlace(firstPlace))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("중복된 숫자를 입력하면 예외가 발생한다.")
     @Test
     void createFirstPlaceByDuplicateNumber() {
         String firstPlace = "1,2,3,4,4,5";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new FirstPlace(firstPlace));
-        assertThat(exception.getMessage()).isEqualTo("[ERROR] Lotto Number Have Duplicate Number.");
+        assertThatThrownBy(() -> new FirstPlace(firstPlace))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("로또번호 보너스번호 중복 확인")
@@ -83,9 +79,7 @@ class FirstPlaceTest {
     void createFirstPlaceAndBonusNumberDuplicate(){
         String firstPlace = "1,2,3,4,5,6";
         String bonus = "3";
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new FirstPlace(firstPlace).duplicateCheckBonusNumber(bonus));
-
-        assertThat(exception.getMessage()).isEqualTo("[ERROR] Lotte Has A Duplicate Value With The Bonus Number.");
+        assertThatThrownBy(() -> new FirstPlace(firstPlace).duplicateCheckBonusNumber(bonus))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
