@@ -8,6 +8,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         validateRange(numbers);
+        validateDuplication(numbers);
         this.numbers = numbers;
     }
 
@@ -22,6 +23,12 @@ public class Lotto {
         boolean anyMatch = numbers.stream()
                 .anyMatch(number -> (number < 1 || number > 45));
         if (anyMatch) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateDuplication(List<Integer> numbers) {
+        if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException();
         }
     }
