@@ -4,10 +4,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 import lotto.util.input.Money;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BuyLotto {
-    List<Lotto> lottos;
+    List<Lotto> lottos = new ArrayList<>();
     Money money;
 
     public BuyLotto(Money money) {
