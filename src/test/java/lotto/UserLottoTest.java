@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class UserLottoTest {
 
-    @DisplayName("구매수량 입력시 숫자를 이외 다른 것을 입력하면 예외가 발생한다.")
+    @DisplayName("구매수량 입력시 숫자 이외 다른 것을 입력하면 예외가 발생한다.")
     @Test
     void purchaseLottoQtyCheckInput() {
         String input = "1,000";
@@ -17,5 +17,14 @@ class UserLottoTest {
                 () -> new UserLotto(input));
         assertThat(exception.getMessage()).isEqualTo("[ERROR] Purchase Quantity Isn't Consist Of Number.");
 
+    }
+
+    @DisplayName("구매수량 입력 시 1000원 단위로 입력하지 않을 시 예외가 발생한다.")
+    @Test
+    void purchaseLottoQtyCheckReminder() {
+        String input = "150300";
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> new UserLotto(input));
+        assertThat(exception.getMessage()).isEqualTo("[ERROR] Purchase Quantity Reminder Isn't Zero.");
     }
 }
