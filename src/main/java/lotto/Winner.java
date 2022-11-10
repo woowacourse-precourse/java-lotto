@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Winner {
-    private final static String ONLY_NUMBER = "^\\d+$";
+    private final static String VALID_BONUS_NUMBER = "^[1-45]$";
     private final Integer bonusNumber;
     private final List<Integer> winningNumbers;
 
@@ -16,6 +16,7 @@ public class Winner {
         this.winningNumbers = new ArrayList<>();
         updateWinningNumbers(winningNumbersSplited);
         this.bonusNumber = Integer.valueOf(bonusNumber);
+        validateIfBonusNumberIncludedInWinningNumbers();
     }
 
     private void validateFormat(String[] numbers) {
@@ -25,8 +26,8 @@ public class Winner {
     }
 
     private void validateBonusNumber(String bonusNumber) {
-        if (!bonusNumber.matches(ONLY_NUMBER)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자만 입력할 수 있습니다.");
+        if (!bonusNumber.matches(VALID_BONUS_NUMBER)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1 ~ 45 사이의 숫자만 입력할 수 있습니다.");
         }
     }
 
@@ -34,6 +35,12 @@ public class Winner {
         for (String number : numbers) {
             Integer numericValue = Integer.valueOf(number);
             winningNumbers.add(numericValue);
+        }
+    }
+
+    private void validateIfBonusNumberIncludedInWinningNumbers() {
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호가 이미 당첨 번호에 포함되어 있습니다.");
         }
     }
 }
