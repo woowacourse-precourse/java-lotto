@@ -82,4 +82,18 @@ public class UserNumbersTest {
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining(ExceptionMessage.DUPLICATE_NUMBER.toString());
     }
+
+    @DisplayName("로또 번호는 6개의 숫자로 구성되지 않으면 예외가 발생한다.")
+    @Test
+    void inputLottoNumbersByWrongLength() {
+        //given
+        String userInput = "1,2,3,4,5";
+        InputStream in = new ByteArrayInputStream(userInput.getBytes());
+        System.setIn(in);
+
+        // when, then
+        assertThatThrownBy(User::inputLottoNumbers)
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(ExceptionMessage.NUMBERS_LENGTH.toString());
+    }
 }
