@@ -11,7 +11,7 @@ class UserTest {
     @Test
     void setMoneyTest() {
         User testUser = new User();
-        testUser.setMoney(10000);
+        testUser.setMoney("10000");
         assertThat(testUser.getMoney()).isEqualTo(10000);
     }
     @Test
@@ -19,5 +19,12 @@ class UserTest {
         User testUser = new User();
         testUser.setWinningNumbers("1,2,3,4,5,6");
         assertThat(testUser.getWinningNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+    }
+
+    @Test
+    void setBonusNumberTest() {
+        User testUser = new User();
+        testUser.setBonusNumber("15");
+        assertThat(testUser.getBonusNumber()).isEqualTo(15);
     }
 }
