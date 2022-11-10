@@ -15,11 +15,15 @@ import java.util.List;
 
 public class Output {
 
-    public void printWinningStatistics(List<Integer> matchResults) {
+    public static void printWinningStatistics(List<Integer> matchResults) {
         System.out.printf(THREE_MATCHES.getMessage(), matchResults.get(THREE_MATCHES_INDEX));
         System.out.printf(FOUR_MATCHES.getMessage(), matchResults.get(FOUR_MATCHES_INDEX));
         System.out.printf(FIVE_MATCHES_WITHOUT_BONUS.getMessage(), matchResults.get(FIVE_MATCHES_WITHOUT_BONUS_INDEX));
         System.out.printf(FIVE_MATCHES_WITH_BONUS.getMessage(), matchResults.get(FIVE_MATCHES_WITH_BONUS_INDEX));
         System.out.printf(SIX_MATCHES.getMessage(), matchResults.get(SIX_MATCHES_INDEX));
+    }
+
+    public static void printLotteryNumbers(List<Integer> lotteryNumbers) {
+        System.out.println(lotteryNumbers.toString());
     }
 }
