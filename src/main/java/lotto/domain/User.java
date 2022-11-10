@@ -18,18 +18,29 @@ public class User {
         makeMyLottoNumbers();
     }
 
+    public User() {
+    }
+
     public int getMoney() {
         return money;
+    }
+
+    public void setMoney(Integer money) {
+        this.money = money;
+    }
+
+    public void setMyLottoNumbers(List<Lotto> myLottoNumbers) {
+        this.myLottoNumbers = myLottoNumbers;
     }
 
     public List<Lotto> getMyLottoNumbers() {
         return myLottoNumbers;
     }
 
-    private void makeMyLottoNumbers(){
+    private void makeMyLottoNumbers() {
         myLottoNumbers = new ArrayList<>();
         int times = this.money / 1000;
-        for (int i = 0; i < times; i++){
+        for (int i = 0; i < times; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(startNumber, endNumber, count);
             myLottoNumbers.add(new Lotto(numbers));
         }
