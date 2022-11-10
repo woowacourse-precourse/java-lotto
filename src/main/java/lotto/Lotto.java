@@ -2,7 +2,9 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -16,6 +18,16 @@ public class Lotto {
         if (numbers.size() != 6) {
             System.out.println("[ERROR] 당첨 번호는 6개만 입력해주세요.");
             throw new IllegalArgumentException();
+        }
+        Set<Integer> checkNumber = new HashSet<>(numbers);
+        if (numbers.size() != checkNumber.size()) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 서로 다른 숫자를 입력해주세요.");
+        }
+        for (int i : numbers) {
+            if (i < 1 || i > 45) {
+                System.out.println("[ERROR] 당첨 번호는 1부터 45까지의 숫자여야 합니다.");
+                throw new IllegalArgumentException();
+            }
         }
     }
 
@@ -34,6 +46,4 @@ public class Lotto {
         }
         return bonusNum;
     }
-
-    // TODO: 추가 기능 구현
 }
