@@ -14,9 +14,17 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        validateSize(numbers);
+        validateDuplication(numbers);
+    }
+
+    private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호들은 6개의 숫자로 구성되어야 합니다..");
         }
+    }
+
+    private void validateDuplication(List<Integer> numbers) {
         if (new HashSet<>(numbers).size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호들은 서러 다른 수이어야 합니다.");
         }
