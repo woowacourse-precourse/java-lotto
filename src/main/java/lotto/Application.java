@@ -57,5 +57,6 @@ public class Application {
         addWinnings(user, winningLotto);
 
         user.printWinnings();
+        System.out.println("총 수익률은 " + user.getYield() +"%입니다.");
     }
 }
