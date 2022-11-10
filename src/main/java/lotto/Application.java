@@ -31,10 +31,31 @@ public class Application {
 
     }
 
+    public static int convertBonusNumberInput(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (Exception exception) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static void main(String[] args) {
-        String money;
-        String numbers;
+        int money;
+        List<Integer> winningNumbers;
+        int bonusNumber;
+        Lotto winningLotto;
         User user;
+
+        money = convertMoneyInput(readLine());
+        user = new User(money);
+
+        winningNumbers = convertNumbersInput(readLine());
+        winningLotto = new Lotto(winningNumbers);
+
+        bonusNumber = convertBonusNumberInput(readLine());
+        Lotto.setBonusNumber(bonusNumber);
+
+
 
     }
 }
