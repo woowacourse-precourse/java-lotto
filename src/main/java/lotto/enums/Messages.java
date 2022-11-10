@@ -16,7 +16,7 @@ public enum Messages {
     WINNING_NUMBER_SEPARATOR(","),
     ERROR_MESSAGE_PREFIX("[ERROR] "),
     RANGE_ERROR_MESSAGE("번호는 1부터 45 사이의 숫자여야 합니다."),
-    PRICE_ERROR_MESSAGE("금액은 1000원 단위여야 합니다."),
+    PRICE_ERROR_MESSAGE("금액은 1000원 단위 숫자여야 합니다."),
     WINNING_NUMBER_COUNT_ERROR_MESSAGE("당첨 번호는 6개의 숫자여야 합니다."),
     WINNING_NUMBER_SEPARATOR_ERROR_MESSAGE("번호는 쉼표(,)로 구분되어야 합니다."),
     BONUS_NUMBER_COUNT_ERROR_MESSAGE("보너스 번호는 1개의 숫자여야 합니다.");
