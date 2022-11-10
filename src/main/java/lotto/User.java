@@ -28,10 +28,17 @@ public class User {
     }
 
     private void generateLottos() {
-        for(int i = 0; i < this.lottoNum; i++) {
+        for (int i = 0; i < this.lottoNum; i++) {
             Lotto lotto = Lotto.generate();
 
             lottos.add(lotto);
+        }
+    }
+
+    public void printLottos() {
+        System.out.println(lottoNum + "개를 구매했습니다.");
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.getNumbers());
         }
     }
 }
