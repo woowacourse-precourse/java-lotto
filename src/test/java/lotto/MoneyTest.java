@@ -15,5 +15,12 @@ class MoneyTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("입력된 금액이 1000으로 나누어지지 않으면 예외가 발생한다.")
+    @Test
+    void createMoneyByDivide1000() {
+        assertThatThrownBy(() -> new Money("12345"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     // 아래에 추가 테스트 작성 가능
 }
