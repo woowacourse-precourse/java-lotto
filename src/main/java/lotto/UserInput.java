@@ -11,8 +11,14 @@ public class UserInput {
     }
 
     public static String inputWinNumber() {
-        System.out.println("당첨 번호를 입력해주세요:");
+        System.out.println("당첨 번호를 입력해주세요.");
 
         return Console.readLine();
+    }
+
+    public static int inputBonusNumber() {
+        System.out.println("보너스 번호를 입력해주세요.");
+
+        return Integer.parseInt(Console.readLine());
     }
 }
