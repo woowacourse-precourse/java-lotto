@@ -19,7 +19,7 @@ public class Lotto {
         if (numbers.size() != set.size()) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자를 입력하였습니다.");
         }
-        if (!luckyNumber.numberRange(numbers)) {
+        if (!luckyNumber.numberRangeCheck(numbers)) {
             throw new IllegalArgumentException("[ERROR] 1 ~ 45 사이의 숫자를 입력해주세요.");
         }
     }

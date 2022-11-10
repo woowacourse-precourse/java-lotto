@@ -28,7 +28,7 @@ class LottoTest {
     @DisplayName("1 ~ 45 사이의 숫자가 아니며 예외가 발생한다.")
     @Test
     void overRangeNumber() {
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
+        assertThatThrownBy(() -> new Lotto(List.of(1552, 2, 3, 4, 5, 9)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
