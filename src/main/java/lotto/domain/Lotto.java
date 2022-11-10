@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.domain.LottoGenerator.LOTTO_NUMBER_LENGTH;
+
 import java.util.HashSet;
 import java.util.List;
 
@@ -16,14 +18,14 @@ public class Lotto {
     }
 
     public LottoResult result(List<Integer> winningNumbers, int bonusNumber) {
-        long count = numbers.stream()
+        long matchCount = numbers.stream()
                 .filter(winningNumbers::contains)
                 .count();
-        return changeToLottoResult(bonusNumber, count);
+        return changeToLottoResult(bonusNumber, matchCount);
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_NUMBER_LENGTH) {
             throw new IllegalArgumentException();
         }
         if (isDuplicate(numbers)) {
@@ -35,23 +37,23 @@ public class Lotto {
         return new HashSet<>(numbers).size() != 6;
     }
 
-    private LottoResult changeToLottoResult(int bonusNumber, long count) {
-        if (count == 3) {
+    private LottoResult changeToLottoResult(int bonusNumber, long matchCount) {
+        if (matchCount == 3) {
             return LottoResult.THREE;
         }
 
-        if (count == 4) {
+        if (matchCount == 4) {
             return LottoResult.FOUR;
         }
 
-        if (count == 5) {
+        if (matchCount == 5) {
             if (numbers.contains(bonusNumber)) {
                 return LottoResult.FIVE_WITH_BONUS;
             }
             return LottoResult.FIVE;
         }
 
-        if (count == 6) {
+        if (matchCount == 6) {
             return LottoResult.SIX;
         }
         return LottoResult.ELSE;
