@@ -4,8 +4,10 @@ import constant.Amount;
 import constant.LottoRule;
 import constant.LottoText;
 
+import java.util.HashSet;
+import java.util.List;
+
 public class Validate {
-//    DUPLICATE_LOTTO("중복된 값이 있습니다."),
 //    DUPLICATE_BONUS("보너스 번호가 당첨 번호와 중복되었습니다."),
     public void validDivisible(int purchasePrice) {
         if (purchasePrice % Amount.UNIT.getPrice() != 0) {
@@ -26,6 +28,13 @@ public class Validate {
             throw new IllegalArgumentException(
                     LottoText.ERROR + "로또 번호의 범위를 넘어갔습니다. 로또 번호는 " +
                             LottoRule.START_NUMBER + "부터 " + LottoRule.END_NUMBER + "까지 입니다.");
+        }
+    }
+
+    public void validDuplicate(List<Integer> winLottoNumbers) {
+        if (new HashSet<>(winLottoNumbers).size() != LottoRule.COUNT.getValue()) {
+            throw new IllegalArgumentException(
+                    LottoText.ERROR + "중복된 로또 번호가 존재합니다.");
         }
     }
 }
