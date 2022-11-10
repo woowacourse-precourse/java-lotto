@@ -49,4 +49,42 @@ class LottoTest {
         assertThatNoException()
                 .isThrownBy(() -> method.invoke(lottoGame, "1000"));
     }
+
+    @DisplayName("숫자 예외가 발생 시 메시지에 접두어로 [ERROR]가 들어간다")
+    @Test
+    void errorMessageByNotNumber() throws NoSuchMethodException {
+        LottoGame lottoGame = new LottoGame();
+
+        Method method = lottoGame.getClass().getDeclaredMethod("validateMoneyType", String.class);
+        method.setAccessible(true);
+
+        assertThatThrownBy(() -> method.invoke(lottoGame, "a1000"))
+                .getCause()
+                .hasMessageStartingWith("[ERROR]");
+    }
+
+    @DisplayName("1000원 단위가 아닌 돈이 입력됐을 때 예외가 발생한다")
+    @Test
+    void createMoneyByNotUnitOf1000() throws NoSuchMethodException {
+        LottoGame lottoGame = new LottoGame();
+
+        Method method = lottoGame.getClass().getDeclaredMethod("validateUnitOf1000", String.class);
+        method.setAccessible(true);
+
+        assertThatThrownBy(() -> method.invoke(lottoGame, "1200"))
+                .getCause()
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("1000원 단위인 돈이 입력됐을 때 예외가 발생하지 않는다")
+    @Test
+    void createMoneyByUnitOf1000() throws NoSuchMethodException {
+        LottoGame lottoGame = new LottoGame();
+
+        Method method = lottoGame.getClass().getDeclaredMethod("validateUnitOf1000", String.class);
+        method.setAccessible(true);
+
+        assertThatNoException()
+                .isThrownBy(() -> method.invoke(lottoGame, "2000"));
+    }
 }
