@@ -5,17 +5,21 @@
 - [ ] O 로또 구입 금액 입력 -PurchaseLotto#inputMoney() 
   - [ ] O 1000원단위로 입력
   - [ ] O 1000원 단위가 아니면 예외처리
-- [ ] 당첨번호 입력 (번호는 쉼표를 기준으로 구분) -LottoResult#inputResult()
-  - [ ] 로또 숫자 범위 1~45.
-  - [ ] 중복되지않은 6개의 숫자를 뽑는다.
-- [ ] 보너스 번호 입력
+- [ ] O 당첨번호 입력 (번호는 쉼표를 기준으로 구분) -LottoResult#inputLottoNumber()
+  - [ ] O 로또 숫자 범위 1~45.
+  - [ ] O 중복되지않은 6개의 숫자를 뽑는다. -Lotto#duplication()
+- [ ] O 보너스 번호 입력 -LottoResult#inputBonusNumber()
 
 
 - 출력
-- [ ] O 발행한 로또 수량 및 번호 출력 -PurchaseLotto#countLotto() & PurchaseLotto#lottoNumber()
+- [ ] O 발행한 로또 수량 및 번호 출력 -PurchaseLotto#countLotto() & PurchaseLotto#myLottoNumber()
   - [ ] O 오름차순 정렬
+- [ ] O 내가 구매한 로토 내역 출력 -ConsumerResult#myLotto()
 - [ ] 당첨 내역 출력 -ConsumerResult#winLotto()
+  - [ ] O 당첨 번호와 나의 로또 비교 -ConsumerResult#compareLotto()
+  - [ ] 보너스 번호와 나의 로또 비교 -ConsumerResult#compareBonus()
 - [ ] 수익률 출력 -ConsumerResult#profit()
+  - [ ] 수익 -ConsumerResult#myIncome()
   - [ ] 소수점 둘째 자리에서 반올림
 
 
