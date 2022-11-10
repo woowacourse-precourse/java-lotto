@@ -16,7 +16,9 @@
         / boolean isContainNumber(int LottoNumber)
     2) 당첨갯수 확인
         / int getMatchingNumber(List<Integer> LottoNumbers)
-    3)  2)를 가지고 당첨배열 생성 [3개, 4개, 5개, 6개, 5개+보너스] 
+    3) 당첨갯수를 통해 당첨배열 인덱스 정하는 메소드
+        / getWinningIndex(List<Integer> lotto, int bonus)
+    4)  3)를 가지고 당첨배열 생성 [3개, 4개, 5개, 6개, 5개+보너스] 
         / int[] getWinningArray(List<List<Integer>> getPurchaseLottoList)
 
 ###4. 수익률 계산

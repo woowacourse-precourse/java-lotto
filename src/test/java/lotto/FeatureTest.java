@@ -23,13 +23,14 @@ public class FeatureTest {
     }
 
     @Test
-    void 로또_발행(){
+    void 로또_발행() {
         List<Integer> answer = Lotto.getLottoNumbers();
         long count = answer.stream().distinct().count();
         assertThat(count).isEqualTo(6L);
     }
+
     @Test
-    void 사용자의_구매횟수만큼_로또숫자_발행(){
+    void 사용자의_구매횟수만큼_로또숫자_발행() {
         List<List<Integer>> result = Lotto.getPurchaseLottoList(5);
         assertThat(result.size()).isEqualTo(5);
     }
@@ -50,4 +51,25 @@ public class FeatureTest {
         assertThat(lotto.getMatchingNumber(user)).isEqualTo(6);
     }
 
+    @Test
+    void 당첨배열_인덱스_생성() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<List<Integer>> user = List.of(
+                List.of(1, 2, 3, 4, 5, 6),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 8, 9),
+                List.of(1, 2, 3, 10, 11, 12),
+                List.of(1, 2, 11, 12, 13, 14),
+                List.of(1, 11, 12, 13, 14, 15),
+                List.of(11, 12, 13, 14, 15, 16)
+        );
+        List<Integer> bonus = List.of(10, 6, 23, 11, 10, 10, 15, 15);
+        List<Integer> answer = List.of(3, 4, 2, 1, 0, -1, -1, -1);
+
+        for (int i = 0; i <user.size() ; i++) {
+            assertThat(lotto.getWinningIndex(user.get(i), bonus.get(i))).isEqualTo(answer.get(i));
+        }
+
+    }
 }

@@ -46,7 +46,7 @@ public class Lotto {
 //        }
 //    }
 
-    private int getWinningIndex(List<Integer> lotto, int bonus) {
+    public int getWinningIndex(List<Integer> lotto, int bonus) {
         int result = getMatchingNumber(lotto);
         if (result == 5) {
             ContainStatus status = isContainNumber(bonus);
