@@ -1,6 +1,7 @@
 ## 구현해야할 기능 목록
 * [ ] 사용자로부터 구매할 로또 금액 입력받기 - inputCostForLotto()
     * [ ] 1000으로 나누어 떨어지는지 확인하기 떨어지지 않을 시 에러 - validateForDividedBy1000()
+    * [ ] 숫자가 아닌 문자 입력인지 확인 - validateForIllegalInput()
 * [ ] 로또 구매 - buyLotto()
 * [ ] 리스트 전체 출력 - printLottoNumber()
 * [ ] 당첨번호 입력  - inputWinningNumber()
