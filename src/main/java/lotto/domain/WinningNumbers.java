@@ -3,13 +3,13 @@ package lotto;
 import java.util.List;
 
 public class WinningNumbers {
-    private final Lotto mainDraw;
+    private final List<Integer> mainDraw;
     private final int bonus;
 
     public WinningNumbers(List<Integer> mainDrawNumbers, int bonus) {
         Validator.validate(mainDrawNumbers);
         validateBonusNumber(mainDrawNumbers, bonus);
-        this.mainDraw = new Lotto(mainDrawNumbers);
+        this.mainDraw = mainDrawNumbers;
         this.bonus = bonus;
     }
 
@@ -30,5 +30,12 @@ public class WinningNumbers {
         }
     }
 
+    public boolean contains(int number) {
+        return mainDraw.contains(number);
+    }
+
+    public boolean isEqualToBonusNumbers(int number) {
+        return number == bonus;
+    }
 
 }
