@@ -12,22 +12,25 @@ public class Exception {
             throw new IllegalArgumentException("[ERROR] 유효한 값을 입력하세요.");
         return true;
     }
-    public boolean validUserInputMoney(String inputMoney)throws IllegalArgumentException{
-        for(int i = 0; i < inputMoney.length(); i++){
-            if(!Character.isDigit(inputMoney.charAt(i)))
+    public boolean isContainOthers(String input)throws IllegalArgumentException{
+        for(int i = 0; i < input.length(); i++){
+            if(!Character.isDigit(input.charAt(i)))
                 throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요.");
         }
         return true;
     }
-    public void validUserInputStringNumber(String inputMoney){
-        char [] checkNumber = inputMoney.toCharArray();
-        for(int i = 1; i < inputMoney.length(); i += 2){
+    public boolean isProperComma(String input)throws IllegalArgumentException{
+        char [] checkNumber = input.toCharArray();
+        for(int i = 1; i < input.length(); i += 2){
             if(checkNumber[i] != ',')
-                throw new IllegalArgumentException("");
+                throw new IllegalArgumentException("[ERROR] 입력을 올바르게 하세요.");
         }
+        return true;
     }
     public boolean validUserWinningNumber(List<Integer> winningNumber) {
         Set<Integer> overlapCheck = new HashSet<>(winningNumber);
+        if(winningNumber.size() != 6)
+            return false;
         if (overlapCheck.size() != winningNumber.size())
             return false;
         for (Integer lottoNumber : winningNumber) {

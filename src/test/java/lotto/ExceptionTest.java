@@ -17,7 +17,7 @@ class ExceptionTest {
     void validUserInputStringNumber() {
         String testcase = "1,2,3,45";
         Exception exception = new Exception();
-        assertThatThrownBy(() -> exception.validUserInputStringNumber(testcase))
+        assertThatThrownBy(() -> exception.isProperComma(testcase))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
