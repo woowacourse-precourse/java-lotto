@@ -36,7 +36,7 @@ public class Lotto {
         int bonusNumber = Integer.parseInt(number);
         validateContainsBonusNumber(bonusNumber);
         validateRangeBonusNumber(bonusNumber);
-        return Integer.valueOf(number);
+        return bonusNumber;
     }
 
     private void validateInputEmpty(String number) {

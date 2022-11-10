@@ -39,6 +39,14 @@ public enum WinnersCase {
         this.count += 1;
     }
 
+    public void initializationCount(Integer count) {
+        this.count = count;
+    }
+
+    public void initializationPrizeMoney(Long prizeMoney) {
+        this.prizeMoney = prizeMoney;
+    }
+
     public void totalPrizeMoney(Long prizeMoney, Integer count) {
         this.prizeMoney = prizeMoney * count;
     }

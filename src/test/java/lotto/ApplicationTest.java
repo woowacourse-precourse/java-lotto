@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +15,20 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
+    @BeforeEach
+    void clearWinnersCase() {
+        WinnersCase.FIFTH.initializationCount(0);
+        WinnersCase.FOURTH.initializationCount(0);
+        WinnersCase.THIRD.initializationCount(0);
+        WinnersCase.SECOND.initializationCount(0);
+        WinnersCase.FIRST.initializationCount(0);
+
+        WinnersCase.FIFTH.initializationPrizeMoney(5000L);
+        WinnersCase.FOURTH.initializationPrizeMoney(50000L);
+        WinnersCase.THIRD.initializationPrizeMoney(1500000L);
+        WinnersCase.SECOND.initializationPrizeMoney(30000000L);
+        WinnersCase.FIRST.initializationPrizeMoney(2000000000L);
+    }
     @Test
     void 기능_테스트() {
         assertRandomUniqueNumbersInRangeTest(
@@ -356,6 +371,7 @@ class ApplicationTest extends NsTest {
         assertThat(prizeMoney).isEqualTo(15000L);
      }
 
+     @DisplayName("당첨 금액 확인 테스트")
      @Test
      void matchingTest() {
         List<List<Integer>> lotteries = List.of(
@@ -396,6 +412,7 @@ class ApplicationTest extends NsTest {
          assertThat(WinnersCase.FIRST.getPrizeMoney()).isEqualTo(0L);
      }
 
+     @DisplayName("수익률 계산 테스트")
      @Test
      void calculationEarningsRateTest() {
          List<List<Integer>> lotteries = List.of(
