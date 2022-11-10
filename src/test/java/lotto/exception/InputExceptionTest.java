@@ -18,10 +18,10 @@ public class InputExceptionTest {
                 "looo", "ㅇㅇㅇㅇ",
                 "일공공공", "100o",
                 "100공", "100ㅇ",
-                "100 ", "10,0"
+                "10!0", "1 00"
         })
         void case1(String inputData) {
-            Assertions.assertThatThrownBy(() -> inputException.notDigitExcept(inputData))
+            Assertions.assertThatThrownBy(() -> inputException.notDigitException(inputData))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
@@ -34,7 +34,7 @@ public class InputExceptionTest {
                 "1000", "2000", "10000"
         })
         void case1(String inputData) {
-            Assertions.assertThatCode(() -> inputException.notDigitExcept(inputData))
+            Assertions.assertThatCode(() -> inputException.notDigitException(inputData))
                     .doesNotThrowAnyException();
         }
     }

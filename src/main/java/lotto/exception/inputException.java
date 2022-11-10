@@ -2,12 +2,10 @@ package lotto.exception;
 
 public class inputException extends IllegalArgumentException {
 
-    public boolean notDigitExcept(String inputString) {
-        for (char inputChar : inputString.toCharArray()) {
-            if (!Character.isDigit(inputChar)) {
-                throw new IllegalArgumentException();
-            }
+    public boolean notDigitException(String inputString) {
+        if(inputString.chars().allMatch(Character::isDigit)) {
+            return true;
         }
-        return false;
+        throw new IllegalArgumentException();
     }
 }
