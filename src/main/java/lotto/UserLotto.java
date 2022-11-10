@@ -2,7 +2,11 @@ package lotto;
 
 import static lotto.InputValidator.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class UserLotto {
 
@@ -14,12 +18,11 @@ public class UserLotto {
 
     public UserLotto(String pay) {
         validatePay(pay);
-        this.userLotto = purchaseLotto(pay);
+        this.userLotto = IntStream.rangeClosed(1, Integer.parseInt(pay) / MINIMUM_ORDER)
+                .mapToObj(count -> new Lotto(LottoGenerator.makeLotto())).collect(Collectors.toList());
     }
 
-    private List<Lotto> purchaseLotto(String pay) {
-
-
-        return null;
+    public List<Lotto> getUserLotto() {
+        return userLotto;
     }
 }
