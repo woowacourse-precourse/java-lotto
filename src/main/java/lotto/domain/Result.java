@@ -22,6 +22,10 @@ public class Result {
         init();
     }
 
+    public Map<Money, Integer> getCounting() {
+        return counting;
+    }
+
     public float getProfit() {
         return profit;
     }
