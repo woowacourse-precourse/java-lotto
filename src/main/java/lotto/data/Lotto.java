@@ -60,7 +60,7 @@ public class Lotto {
 
         boolean bonusMatch = userLotto.numbers.contains(bonus);
 
-        return Rank.getRank(match, bonusMatch);
+        return Rank.getPrize(match, bonusMatch);
     }
 
     @Override
