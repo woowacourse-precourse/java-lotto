@@ -5,7 +5,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.IntStream;
 import lotto.Computer;
 import lotto.Lotto;
 import lotto.validator.Validator;
