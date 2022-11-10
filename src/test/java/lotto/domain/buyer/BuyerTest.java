@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BuyerTest {
-    @DisplayName("제시한 액수가 1000원으로 나눠지지 않으면 에러 발생")
+    @DisplayName("제시한 액수가 로또 개당 구매비용으로 나눠지지 않으면 에러 발생")
     @Test
     void givenNotDivisibleMoney_whenValidate_thenThrowError() {
         //given
@@ -28,7 +28,7 @@ class BuyerTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("제시한 액수가 1000원으로 나눠지면 인스턴스 반환")
+    @DisplayName("제시한 액수가 로또 개당 구매비용으로 나눠지면 인스턴스 반환")
     @Test
     void givenDivisibleMoney_whenValidate_thenGiveInstance() {
         //given
