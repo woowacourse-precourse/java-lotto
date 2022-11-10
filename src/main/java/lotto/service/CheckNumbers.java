@@ -4,6 +4,11 @@ import java.util.List;
 
 public class CheckNumbers {
     private int count = 0;
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     /**
      * 1등: 6개 번호 일치 / 2,000,000,000원
      * 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원
@@ -12,6 +17,7 @@ public class CheckNumbers {
      * 5등: 3개 번호 일치 / 5,000원
      * 메소드 15줄 이내로
      */
+
     public int getCorrect(List<Integer> winningNumbers, List<Integer> myNumbers, int bonusNumber) {
         for (int idx = 0; idx < winningNumbers.size(); idx++) {
             if (winningNumbers.contains(myNumbers.get(idx))) {
