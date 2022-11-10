@@ -1,7 +1,7 @@
-package lotto;
+package lotto.exception;
 
-import static lotto.exception.Validator.NEED_TO_INPUT_NUMBER_CAN_DIVIDE_BY_ONE_THOUSAND;
 import static lotto.exception.Validator.NEED_TO_INPUT_NUMBER;
+import static lotto.exception.Validator.NEED_TO_INPUT_NUMBER_CAN_DIVIDE_BY_ONE_THOUSAND;
 import static lotto.exception.Validator.NEED_TO_INPUT_RIGHT_NUMBER_RANGE;
 import static lotto.exception.Validator.NEED_TO_INPUT_SIX_NUMBER;
 import static lotto.exception.Validator.NEED_TO_NOT_DUPLICATE;
@@ -10,29 +10,28 @@ import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
-import lotto.exception.Validator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-class ValidatorTest {
+public class ValidatorTest {
 
-    static final String VALUE_IS_NOT_NUMBER = "가나다";
-    static final String NUMBER_NOT_DIVISIBLE_BY_ONE_THOUSAND = "2500";
+    public static final String VALUE_IS_NOT_NUMBER = "가나다";
+    public static final String NUMBER_NOT_DIVISIBLE_BY_ONE_THOUSAND = "2500";
 
-    static final String VALUE_IS_NOT_USE_COMMA = "123";
-    static final String VALUE_IS_NOT_NUMBER_USE_COMMA = "가,나,다";
-    static final String VALUE_SIZE_IS_NOT_SIX = "1,2,3";
-    static final String VALUE_RANGE_IS_NOT_RIGHT_USE_COMMA = "1,2,3,4,5,46";
+    public static final String VALUE_IS_NOT_USE_COMMA = "123";
+    public static final String VALUE_IS_NOT_NUMBER_USE_COMMA = "가,나,다";
+    public static final String VALUE_SIZE_IS_NOT_SIX = "1,2,3";
+    public static final String VALUE_RANGE_IS_NOT_RIGHT_USE_COMMA = "1,2,3,4,5,46";
 
-    static final String VALUE_IS_DUPLICATE = "1";
-    static final String VALUE_RANGE_IS_NOT_RIGHT = "47";
+    public static final String VALUE_IS_DUPLICATE = "1";
+    public static final String VALUE_RANGE_IS_NOT_RIGHT = "47";
 
-    static final List<Integer> WINNING_NUMBERS = List.of(1, 2, 3, 4, 5, 6);
+    public static final List<Integer> WINNING_NUMBERS = List.of(1, 2, 3, 4, 5, 6);
 
-    static final String INPUT_MONEY_RIGHT_VALUE = "3000";
-    static final String INPUT_WINNING_NUMBERS_RIGHT_VALUE = "1,2,3,4,5,6";
-    static final String INPUT_BONUS_MONEY_RIGHT_VALUE = "7";
+    public static final String INPUT_MONEY_RIGHT_VALUE = "3000";
+    public static final String INPUT_WINNING_NUMBERS_RIGHT_VALUE = "1,2,3,4,5,6";
+    public static final String INPUT_BONUS_MONEY_RIGHT_VALUE = "7";
 
 
     private Validator validator = new Validator();
@@ -117,7 +116,8 @@ class ValidatorTest {
         @DisplayName("숫자가 아니면 예외를 반환한다")
         @Test
         void test1() {
-            assertThatThrownBy(() -> validator.validateBonusNumber(VALUE_IS_NOT_NUMBER, WINNING_NUMBERS))
+            assertThatThrownBy(() ->
+                    validator.validateBonusNumber(VALUE_IS_NOT_NUMBER, WINNING_NUMBERS))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(NEED_TO_INPUT_NUMBER);
         }
@@ -142,8 +142,7 @@ class ValidatorTest {
         @Test
         void test4() {
             assertThatNoException()
-                    .isThrownBy(() -> validator
-                            .validateBonusNumber(INPUT_BONUS_MONEY_RIGHT_VALUE, WINNING_NUMBERS));
+                    .isThrownBy(() -> validator.validateBonusNumber(INPUT_BONUS_MONEY_RIGHT_VALUE, WINNING_NUMBERS));
         }
     }
 }
