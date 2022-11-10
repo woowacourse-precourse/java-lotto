@@ -43,4 +43,9 @@ public class Input {
         }
         return luckyNumber;
     }
+
+    public int getBonusNumber() throws IOException {
+        int bonusNumber = Integer.parseInt(br.readLine());
+        return bonusNumber;
+    }
 }
