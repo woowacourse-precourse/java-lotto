@@ -7,6 +7,8 @@ import java.util.List;
 
 
 public class Lotto {
+    private static int bonusNumber;
+
     private final List<Integer> numbers;
 
 

@@ -42,4 +42,15 @@ public class LottoNumberValidator {
 
         return true;
     }
+
+    public static boolean isOutOfRange(int bonusNumber) {
+        List<Integer> range = IntStream.rangeClosed(MIN_RANGE, MAX_RANGE)
+                .boxed()
+                .collect(Collectors.toList());
+        if (range.contains(bonusNumber)) {
+            return false;
+        }
+
+        return true;
+    }
 }
