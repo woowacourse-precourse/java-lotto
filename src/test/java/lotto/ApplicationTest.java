@@ -79,6 +79,28 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 중복된_당첨로또_입력_테스트(){
+        assertSimpleTest(() -> {
+            runException("3000","1,2,3,4,5,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 길이_다른_당첨로또_입력_테스트() {
+        assertSimpleTest(() -> {
+            runException("3000","1,2,3,4,5,6,7");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+
+        assertSimpleTest(() -> {
+            runException("3000","1,2,3,4,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
