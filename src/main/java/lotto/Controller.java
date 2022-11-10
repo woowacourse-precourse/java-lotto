@@ -38,9 +38,13 @@ public class Controller {
         List<List<Integer>> lottoNumbers = new ArrayList<>();
 
         for (int i = 0; i < lottoAmount; i++) {
-            lottoNumbers.add(LottoGenerator.getWinningNumbers());
+            lottoNumbers.add(LottoGenerator.generateLottoNumbers());
         }
         return lottoNumbers;
+    }
+
+    private List<Integer> getBonusNumbers(int lottoAmount) {
+        return new ArrayList<>(LottoGenerator.generateBonusNumber());
     }
 
     public List<String> guessLottoNumbers() {

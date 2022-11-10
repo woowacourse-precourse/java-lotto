@@ -8,19 +8,19 @@ import lotto.constant.Constant;
 
 public class LottoGenerator {
 
-    public static List<Integer> getWinningNumbers() {
-        List<Integer> winningNumbers = new ArrayList<>(generateNumbers());
-        winningNumbers.addAll(generateBonusNumber());
+//    public static List<Integer> getWinningNumbers() {
+//        List<Integer> winningNumbers = new ArrayList<>(generateNumbers());
+//        winningNumbers.addAll(generateBonusNumber());
+//
+//        return winningNumbers;
+//    }
 
-        return winningNumbers;
-    }
-
-    private static List<Integer> generateBonusNumber() {
+    public static List<Integer> generateBonusNumber() {
         return Randoms.pickUniqueNumbersInRange(
                 Constant.LOTTO_START_NUMBER, Constant.LOTTO_END_NUMBER, Constant.BONUS_NUMBER_SIZE);
     }
 
-    private static List<Integer> generateNumbers() {
+    public static List<Integer> generateLottoNumbers() {
         List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(
                 Constant.LOTTO_START_NUMBER, Constant.LOTTO_END_NUMBER, Constant.LOTTO_SIZE)
         );
