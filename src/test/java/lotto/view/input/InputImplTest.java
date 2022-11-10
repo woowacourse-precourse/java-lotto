@@ -91,6 +91,36 @@ class InputImplTest {
                 assertThat(winningNumbers).contains(inputWinningNumber);
             }
         }
+
+        @Test
+        @DisplayName("1~45를 벗어난 숫자를 입력하면 예외가 발생한다.")
+        void case4() {
+            //given
+            String winningNumberInput = "1,3,23,29,45,47";
+            InputStream in = new ByteArrayInputStream(winningNumberInput.getBytes());
+            System.setIn(in);
+
+            //when //then
+            assertThatThrownBy(input::inputWinningNumbers).isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        @DisplayName("1~45의 숫자를 입력해야 한다.")
+        void case5() {
+            //given
+            String winningNumberInput = "1,4,19,30,41,43";
+            InputStream in = new ByteArrayInputStream(winningNumberInput.getBytes());
+            System.setIn(in);
+
+            //when
+            List<String> winningNumbers = input.inputWinningNumbers();
+
+            // then
+            String[] inputWinningNumbers = winningNumberInput.split(",");
+            for (String inputWinningNumber : inputWinningNumbers) {
+                assertThat(winningNumbers).contains(inputWinningNumber);
+            }
+        }
     }
 
 
