@@ -23,6 +23,8 @@ public class LottoProgram {
 		View.showLottoNumbers(lottoList);
 
 		View.showWinningNumberInputGuideMessage();
+		userInput = Input.userInput();
+		Checker.checkUserInput(userInput);
 	}
 
 	public void createLotto(int lottoCount) {
