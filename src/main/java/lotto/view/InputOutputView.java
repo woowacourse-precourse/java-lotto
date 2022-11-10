@@ -14,6 +14,7 @@ public class InputOutputView {
     }
 
     public void buyFin(int quantity) {
+        System.out.println();
         System.out.println(quantity + "개를 구매했습니다.");
     }
 
@@ -21,6 +22,7 @@ public class InputOutputView {
         for (int idx = 0; idx < lottos.size(); idx++) {
             System.out.println(lottos.get(idx).toString());
         }
+        System.out.println();
     }
 
     public String getWinningNumbers() {
@@ -29,7 +31,12 @@ public class InputOutputView {
     }
 
     public int getBonusNumber() {
+        System.out.println();
         System.out.println("보너스 번호를 입력해 주세요");
         return Integer.parseInt(readLine());
+    }
+
+    public void totalYield(double yeild) {
+        System.out.println("총 수익률은 " + yeild + "%입니다.");
     }
 }
