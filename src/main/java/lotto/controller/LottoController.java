@@ -20,4 +20,8 @@ public class LottoController {
     private PurchaseAmount inputPurchaseAmount() {
         return new PurchaseAmount(Input.getInputPurchaseAmount());
     }
+
+    private int calculateTicketNumber(PurchaseAmount purchaseAmount) {
+        return purchaseAmount.getPurchaseAmount() / purchaseAmount.getUNIT_PRICE();
+    }
 }
