@@ -2,10 +2,8 @@ package lotto;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import store.LottoMachine;
 import user.Customer;
 
-import java.lang.reflect.Method;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
@@ -33,7 +31,7 @@ public class CustomerTest {
     void case3_print_out_lotto_list() {
         assertRandomUniqueNumbersInRangeTest(() -> {
             Customer input = new Customer("1000");
-            String result = "1개를 구매했습니다.\n"+List.of(1, 2, 3, 4, 5, 6)+"\n";
+            String result = "1개를 구매했습니다.\n" + List.of(1, 2, 3, 4, 5, 6) + "\n";
 
             assertThat(input.toLottoString()).isEqualTo(result);
         }, List.of(1, 2, 3, 4, 5, 6));
