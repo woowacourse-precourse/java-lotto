@@ -1,6 +1,6 @@
 package lotto.domain;
 
-public enum Prize{
+public enum Prize {
     FIFTH("5등", 5_000),
     FOURTH("4등", 50_000),
     THIRD("3등", 1_500_000),
@@ -11,15 +11,16 @@ public enum Prize{
     private final int prize;
     private final String place;
 
-    private Prize(String place, int prize){
+    private Prize(String place, int prize) {
         this.place = place;
         this.prize = prize;
     }
 
-    public int getPrize(){
+    public int getPrize() {
         return this.prize;
     }
-    public String getPlace(){
+
+    public String getPlace() {
         return this.place;
     }
 }

@@ -13,21 +13,21 @@ public class Calculator {
             return Prize.THIRD;
         } else if (matchNumber == 4) {
             return Prize.FOURTH;
-        } else if (matchNumber == 3){
+        } else if (matchNumber == 3) {
             return Prize.FIFTH;
         }
 
         return Prize.LAST;
     }
 
-    public double getProfit(int totalPrize, int investmentCash){
-        double profit = ((double)totalPrize / investmentCash) * 100 * 10;
+    public double getProfit(int totalPrize, int investmentCash) {
+        double profit = ((double) totalPrize / investmentCash) * 100 * 10;
         profit = Math.round(profit);
 
         return profit / 10;
     }
 
-    public int countPublicationLotto(int investmentCash){
+    public int countPublicationLotto(int investmentCash) {
         return investmentCash / 1000;
     }
 }

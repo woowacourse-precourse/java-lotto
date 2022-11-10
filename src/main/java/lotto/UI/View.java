@@ -10,42 +10,42 @@ import java.util.List;
 import java.util.Set;
 
 public class View {
-    public int getInvestmentCash(){
+    public int getInvestmentCash() {
         System.out.println("구입 금액을 입력해주세요.");
         String input = Console.readLine();
 
         return Integer.parseInt(input);
     }
 
-    public List<Integer> getWinningNumber(){
+    public List<Integer> getWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         String[] numbers = input.split(",");
 
         List<Integer> winningNumber = new ArrayList<>();
-        for(String number: numbers){
+        for (String number : numbers) {
             winningNumber.add(Integer.parseInt(number));
         }
 
         return winningNumber;
     }
 
-    public int getBonusNumber(){
+    public int getBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
 
         return Integer.parseInt(input);
     }
 
-    public void printMyLottoInfo(List<Lotto> myLottos){
+    public void printMyLottoInfo(List<Lotto> myLottos) {
         int quantity = myLottos.size();
         System.out.println(quantity + "개를 구매했습니다.");
-        for(Lotto lotto: myLottos){
+        for (Lotto lotto : myLottos) {
             System.out.println(lotto.getNumbers());
         }
     }
 
-    public void printResult(HashMap<Prize, Integer> state, double profit){
+    public void printResult(HashMap<Prize, Integer> state, double profit) {
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println(String.format("3개 일치 (5,000원) - %d개", state.get(Prize.FIFTH)));
