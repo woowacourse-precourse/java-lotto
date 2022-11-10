@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 public class LottoView {
 
     private static final String START_MESSAGE = "구입금액을 입력해 주세요.";
+    private static final String WINNINGS_NUMBERS_SETTING_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String LOTTO_NUMBER_MESSAGE = "개를 구매했습니다.";
     private static final int SKIP_RESULT_ELSE_CASE = 1;
     private static final String PREFIX_YIELD_MESSAGE = "총 수익률은 ";
@@ -37,5 +38,9 @@ public class LottoView {
     public void printYield(double yield) {
         String yieldFormat = String.format("%.1f", yield);
         System.out.println(PREFIX_YIELD_MESSAGE + yieldFormat + SUFFIX_YIELD_MESSAGE);
+    }
+
+    public void printWinningNumbersSettingMessage() {
+        System.out.println(WINNINGS_NUMBERS_SETTING_MESSAGE);
     }
 }

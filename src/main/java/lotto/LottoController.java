@@ -12,6 +12,7 @@ public class LottoController {
         lottoView.printStartMessage();
         List<Lotto> lottoTickets =  lottoService.buy(inputDevice.sendMoneyToBuyLotto());
         lottoView.printLottoInfo(lottoTickets);
+        lottoView.printWinningNumbersSettingMessage();
         List<Integer> winningNumbers = inputDevice.sendWinningNumbers();
         int bonusNumber = inputDevice.sendBonusNumber(winningNumbers);
         List<LottoResult> lottoResults = lottoService.compareLottoNumbers(lottoTickets, winningNumbers, bonusNumber);
