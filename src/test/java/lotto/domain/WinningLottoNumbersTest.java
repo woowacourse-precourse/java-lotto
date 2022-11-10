@@ -22,7 +22,7 @@ class WinningLottoNumbersTest {
     @DisplayName("올바른 당첨 번호 및 보너스 번호 입력 시")
     void correctWinningLotto() {
         assertThatNoException()
-                .isThrownBy(() -> new WinningLottoNumbers(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7));
+                .isThrownBy(() -> new WinningLottoNumbers(LottoTest.FROM_ONE_TO_SIX, 7));
     }
     
     @Test
