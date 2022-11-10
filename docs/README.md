@@ -21,7 +21,7 @@ public class Lotto {
 }
 ```
 	
-#####1. lottoRandomNum (Lotto 랜덤 당첨 숫자뽑기)
+#####1. lottoRandomNum (Lotto 랜덤 숫자뽑기)
 	   
 + 숫자 1 ~ 45 Random, 중복되지 않는 숫자 6개 저장
 	
@@ -84,13 +84,13 @@ public class Lotto {
 <br/>( 1장에 1,000원. 소숫점 예외처리 )
 	
 	< 중 간 점 검 >
-	-로또 구입 숫자 n번만큼 myLottoNum도 n번 실행됬는가?
-	-myLottoNum List n개를 차례대로 lottoRandomNum 당첨숫자와 대조했는가?
+	-로또 구입 숫자 n번만큼 lottoRandomNum도 n번 실행됬는가?
+	-lottoRandomNum  List n개를 차례대로 myLottoNum 당첨숫자와 대조했는가?
 	-당첨 내역 n개 값, 등수, 당첨금이 원하는 메서드에 전달 됬는가?
 
 #####7. prizeList (당첨 내역 저장)
 
-+ lottoStart 숫자 대조 List값 저장.
++ myLottoNum, lottoRandomNum 숫자 대조 List값 저장.
 <br/><br/>
 + 당첨 내역 List n개의 등수, 당첨금 출력
 
@@ -110,9 +110,9 @@ public class Lotto {
 
 ---------------------------------------------------------------------
 
-#####10. buyLottoPrint (구매한 로또 myLottoNum 리스트 출력)
+#####10. buyLottoPrint (구매한 로또 lottoRandomNum 리스트 출력)
 
-+ 발행한 로또 수량(buyLotto) 및 번호(myLottoNum)를 출력한다.<br/> 
++ 발행한 로또 수량(buyLotto) 및 번호(lottoRandomNum)를 출력한다.<br/> 
 로또 번호는 오름차순으로 정렬하여 보여준다.
 <br/><br/>
 + _"n개를 구입했습니다."_  ->buyLotto값 전달받음
