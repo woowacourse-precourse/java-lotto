@@ -77,4 +77,15 @@ class FirstPlaceTest {
                 () -> new FirstPlace(firstPlace));
         assertThat(exception.getMessage()).isEqualTo("[ERROR] Lotto Number Have Duplicate Number.");
     }
+
+    @DisplayName("로또번호 보너스번호 중복 확인")
+    @Test
+    void createFirstPlaceAndBonusNumberDuplicate(){
+        String firstPlace = "1,2,3,4,5,6";
+        String bonus = "3";
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> new FirstPlace(firstPlace).duplicateCheckBonusNumber(bonus));
+
+        assertThat(exception.getMessage()).isEqualTo("[ERROR] Lotte Has A Duplicate Value With The Bonus Number.");
+    }
 }
