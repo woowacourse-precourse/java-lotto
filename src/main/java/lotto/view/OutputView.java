@@ -14,7 +14,7 @@ public class OutputView {
     private final String MSG_STATUS = "당첨 통계";
     private final String MSG_DIVIDER = "---";
     private final String MSG_TOTAL_PREFIX = "총 수익률은 ";
-    private final String MSG_TOTAL_SUFFIX = "입니다.";
+    private final String MSG_TOTAL_SUFFIX = "%입니다.";
 
     private final String threeHit = "3개 일치 (5,000원) - ";
     private final String fourHit = "4개 일치 (50,000원) - ";
