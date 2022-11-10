@@ -1,6 +1,7 @@
 package lotto;
 
 import jdk.jshell.execution.Util;
+import lotto.model.LottoNumsValidator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
