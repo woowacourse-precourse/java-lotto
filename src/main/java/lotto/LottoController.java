@@ -1,8 +1,9 @@
 package lotto;
 
 import computer.Computer;
-import ui.InputUtils;
+import utils.InputUtils;
 import user.PurchaseAmount;
+import utils.Validator;
 
 public class LottoController {
 
@@ -20,7 +21,10 @@ public class LottoController {
 
     private void getLottoPurchaseAmountFromUser() {
         String userInput = InputUtils.getMoneyFromUser();
-        purchaseAmount = new PurchaseAmount(userInput);
+
+        Validator.checkLottoPurchaseAmountIsValid(userInput);
+
+        purchaseAmount = new PurchaseAmount(Integer.parseInt(userInput));
     }
 
     public void start() {
