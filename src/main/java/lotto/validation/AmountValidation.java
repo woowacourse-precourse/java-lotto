@@ -3,6 +3,8 @@ package lotto.validation;
 import java.util.regex.Pattern;
 
 public class AmountValidation extends IllegalArgumentException {
+    private static final int PRICE = 1000;
+
     private ErrorMessage message;
     private RegEx regEx;
 
@@ -37,6 +39,9 @@ public class AmountValidation extends IllegalArgumentException {
     }
 
     public void hasChanges(String amount) {
-
+        if (Integer.parseInt(amount) % PRICE != 0) {
+            message = ErrorMessage.valueOf("CHANGES_EXCEPTION");
+            throwError(message.getMessage());
+        }
     }
 }
