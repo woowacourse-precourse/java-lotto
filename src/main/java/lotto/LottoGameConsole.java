@@ -15,7 +15,7 @@ public class LottoGameConsole {
     }
 
     private int handleAmountOfPurchaseMoney() {
-        // 구입 금액 입력 안내
+        emcee.guideAmountOfPurchaseMoney();
         // 구입 금액 입력
         // 구입 금액 입력값 검증
         return 0;
