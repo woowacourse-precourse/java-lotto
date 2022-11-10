@@ -1,9 +1,9 @@
 package lotto;
 
-import lotto.domain.Lotto;
 import lotto.domain.LottoGenerator;
 import lotto.domain.LottoTickets;
 import lotto.domain.Money;
+import lotto.domain.WinningLotto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -16,7 +16,7 @@ public class LottoApplication {
             LottoTickets lottoTickets = LottoGenerator.generateTickets(money);
             OutputView.printLottoTickets(lottoTickets);
 
-            Lotto winningLotto = new Lotto(InputView.inputWinningNumbers());
+            WinningLotto winningLotto = new WinningLotto(InputView.inputWinningNumbers());
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e.getMessage());
             throw e;
