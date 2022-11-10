@@ -87,19 +87,19 @@ public class Model {
         return lottoNumbers;
     }
 
-    public enum Prize {
-        FIRST("2,000,000,000원"),
-        SECOND("30,000,000원"),
-        THIRD("1,500,000원"),
-        FORTH("50,000원"),
-        FIFTH("5,000원");
+    public enum Ranking{
+        FIRST(0),
+        SECOND(0),
+        THIRD(0),
+        FORTH(0),
+        FIFTH(0);
 
-        final private String prize;
-        private String getPrize() {
-            return prize;
+        final private int ranking;
+        private int getRanking() {
+            return ranking;
         }
-        Prize(String prize) {
-            this.prize = prize;
+        Ranking(int ranking) {
+            this.ranking = ranking;
         }
 
     }
