@@ -13,12 +13,13 @@ class CalculatorTest {
         List<List<Integer>> groupOfUserLotteryNumbers = List.of(
                 List.of(1, 2, 3, 4, 5, 6),
                 List.of(4, 6, 8, 14, 25, 36),
+                List.of(4, 6, 10, 14, 25, 36),
                 List.of(3, 6, 14, 25, 27, 44),
                 List.of(4, 6, 14, 25, 36, 41)
         );
         List<Integer> winningNumbers = List.of(4, 6, 14, 25, 36, 41);
         int bonusNumber = 8;
-        List<Integer> answer = List.of(1, 0, 0, 1, 1);
+        List<Integer> answer = List.of(1, 0, 1, 1, 1);
 
         List<Integer> matchResults = calculator.calculateMatchResults(groupOfUserLotteryNumbers, winningNumbers,
                 bonusNumber);
