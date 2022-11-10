@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -10,6 +11,7 @@ public class Lotto {
         validate(numbers);
         validator.checkDuplicatedNumber(numbers);
         this.numbers = numbers;
+        sortInAscendingOrder();
     }
 
     private void validate(List<Integer> numbers) {
@@ -21,5 +23,9 @@ public class Lotto {
     // TODO: 추가 기능 구현
     public List<Integer> getNumbers(){
         return numbers;
+    }
+
+    private void sortInAscendingOrder(){
+        Collections.sort(numbers);
     }
 }
