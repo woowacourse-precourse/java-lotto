@@ -27,6 +27,8 @@ public class LottoSimulate {
     private List<Lotto> buyLottos(int purchasePrice) {
         int lottoCount = convert.toLottoCount(purchasePrice);
         print.out(LottoText.PURCHASE_COUNT, lottoCount);
-        return lottoShop.buy(lottoCount);
+        List<Lotto> lottos = lottoShop.buy(lottoCount);
+        print.out(lottos);
+        return lottos;
     }
 }
