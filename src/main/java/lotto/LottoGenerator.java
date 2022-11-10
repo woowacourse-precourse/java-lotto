@@ -17,6 +17,10 @@ public class LottoGenerator {
         return lottos;
     }
 
+    public Lotto makeLotto(List<Integer> winningNumber) {
+        return new Lotto(winningNumber);
+    }
+
     private void checkPositive(int lottoTickets) {
         if (lottoTickets < 1) {
             throw new IllegalArgumentException("[ERROR] 로또 개수가 1미만일 수는 없습니다.");
