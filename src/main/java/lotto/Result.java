@@ -35,4 +35,8 @@ public class Result {
     public void sumPrizeMoney(int prizeMoney, int countPrize) {
         totalPrizeMoney += prizeMoney*countPrize;
     }
+
+    public double calculateReturnOfRate(int price) {
+        return Math.round((double) totalPrizeMoney/price);
+    }
 }
