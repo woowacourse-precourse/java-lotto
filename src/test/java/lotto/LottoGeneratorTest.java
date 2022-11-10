@@ -3,8 +3,10 @@ package lotto;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -37,5 +39,13 @@ class LottoGeneratorTest {
     })
     void makeLottos(int lottoTicket, int lottoSize) {
         assertThat(generator.makeLottos(lottoTicket).size()).isEqualTo(lottoSize);
+    }
+
+    @Test
+    @DisplayName("당첨 번호 로또 생성 확인")
+    void makeWinningLotto() {
+        Lotto lotto = generator.makeLotto(List.of(1, 2, 3, 4, 5, 6));
+
+        assertThat(lotto).isEqualTo(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
     }
 }
