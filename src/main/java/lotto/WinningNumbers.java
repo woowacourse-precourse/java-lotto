@@ -2,6 +2,9 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class WinningNumbers {
     private enum GuideMessageType {
         WINNING_NUMBERS("당첨 번호를 입력해 주세요."),
@@ -24,5 +27,9 @@ public class WinningNumbers {
 
     private String[] splitNumbers(String numbers) {
         return numbers.split(",");
+    }
+
+    private List<String> arrayToList(String[] numbers) {
+        return Arrays.asList(numbers);
     }
 }
