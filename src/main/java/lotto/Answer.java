@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Answer {
 
@@ -26,4 +27,11 @@ public class Answer {
     private boolean canHasBonus(int countResult) {
         return countResult == CRITERION_CAN_HAS_BONUS;
     }
+
+    public List<GameResult> play(List<Lotto> lottos) {
+        return lottos.stream()
+                .map(this::play)
+                .collect(Collectors.toList());
+    }
+
 }
