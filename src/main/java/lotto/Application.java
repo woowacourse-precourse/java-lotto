@@ -45,7 +45,7 @@ public class Application {
         String read_answer = Console.readLine();
 
         String[] split_answer = read_answer.split(",");
-        if(checkValidLottoLength(split_answer))
+        if(!checkValidLottoLength(split_answer))
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자를 입력해주시기 바랍니다.");
         for(String s : split_answer){
             if(!checkValidLottoRange(Integer.parseInt(s)))
