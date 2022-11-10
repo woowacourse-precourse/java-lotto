@@ -3,6 +3,7 @@ package lotto;
 public class LottoGame {
     public void start() {
         Print.money();
-        int lottoAmount = Input.purchaseAmount();
+        int lottoTickets = Input.purchaseAmount();
+        Print.purchaseLotto(lottoTickets);
     }
 }
