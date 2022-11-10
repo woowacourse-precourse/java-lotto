@@ -11,7 +11,7 @@ public enum IOMessage {
         this.message = message;
     }
 
-    public void printMessage() {
-        System.out.println(this.message);
+    public String getMessage() {
+        return this.message;
     }
 }

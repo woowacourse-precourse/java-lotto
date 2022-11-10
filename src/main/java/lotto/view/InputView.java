@@ -12,14 +12,14 @@ public final class InputView {
     }
 
     public static int readAmount() {
-        IOMessage.READ_AMOUNT_MESSAGE.printMessage();
+        printMessage(IOMessage.READ_AMOUNT_MESSAGE);
         String line = Console.readLine();
         // verify(line);
         return Integer.parseInt(line);
     }
 
     public static List<Integer> readWinningNumber() {
-        IOMessage.READ_WINNING_NUM_MESSAGE.printMessage();
+        printMessage(IOMessage.READ_WINNING_NUM_MESSAGE);
         String line = Console.readLine();
         // verify(line);
         return Arrays.stream(line.split(","))
@@ -28,9 +28,13 @@ public final class InputView {
     }
 
     public static int readBonusNumber() {
-        IOMessage.READ_BONUS_NUM_MESSAGE.printMessage();
+        printMessage(IOMessage.READ_BONUS_NUM_MESSAGE);
         String line = Console.readLine();
         // verify(line);
         return Integer.parseInt(line);
+    }
+
+    private static void printMessage(IOMessage message) {
+        System.out.println(message.getMessage());
     }
 }
