@@ -55,16 +55,35 @@ class LottoTest {
         }
     }
 
+    @DisplayName("하나의 로또 번호에 대한 당첨 내역을 출력한다.")
     @Nested
     class getSingleResult {
 
-        @DisplayName("하나의 로또 번호에 대한 당첨 내역을 출력한다.")
+        @DisplayName("6개 일치")
         @Test
         void match6() {
             WinLotto winLotto = new WinLotto(List.of(1, 2, 4, 3, 5, 6), 7);
             Lotto generatedLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             Result result = winLotto.getResult(generatedLotto);
             assertThat(result).isEqualTo(new Result(6, false));
+        }
+
+        @DisplayName("5개 일치")
+        @Test
+        void match5() {
+            WinLotto winLotto = new WinLotto(List.of(1, 2, 4, 3, 5, 6), 7);
+            Lotto generatedLotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
+            Result result = winLotto.getResult(generatedLotto);
+            assertThat(result).isEqualTo(new Result(5, false));
+        }
+
+        @DisplayName("5개 일치 & 보너스볼 일치")
+        @Test
+        void match5AndMatchBonusBall() {
+            WinLotto winLotto = new WinLotto(List.of(1, 2, 4, 3, 5, 6), 7);
+            Lotto generatedLotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+            Result result = winLotto.getResult(generatedLotto);
+            assertThat(result).isEqualTo(new Result(5, true));
         }
     }
 
