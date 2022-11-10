@@ -1,5 +1,7 @@
 package lotto.utils;
 
+import lotto.domain.ErrorStatus;
+
 import java.util.List;
 
 public class Validation {
@@ -16,26 +18,26 @@ public class Validation {
     private static void validateNumber(List<Integer> numbers) {
         for (int number : numbers) {
             if (number < LOTTO_FIRST_NUMBER || number > LOTTO_LAST_NUMBER) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorStatus.OUT_OF_RANGE_NUMBER.printError());
             }
         }
     }
 
     private static void validateDuplication(List<Integer> numbers) {
         if (numbers.stream().distinct().count() != LOTTO_NUMBERS_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorStatus.NUMBER_DUPLICATION.printError());
         }
     }
 
     private static void validateSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBERS_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorStatus.NUMBERS_SIZE.printError());
         }
     }
 
     public static void validateMoney(int money) {
         if (money < 1000) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorStatus.MONEY_RANGE.printError());
         }
     }
 }
