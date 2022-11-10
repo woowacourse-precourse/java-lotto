@@ -13,85 +13,20 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         try {
-            System.out.println(Print.ASK_BUY);
-            String budget = Input.inputBudget();
-            System.out.println("budget: "+budget);
-            int publishNum = getPublishNum();
-            System.out.println(publishNum+Print.ANSWER_BUY);
+            Output.askBuy();
 
-            List<Lotto> lottos = getLotto(publishNum);
+            Output.answerBuy();
 
-            for (Lotto lotto : lottos) {
-                System.out.println(lotto);
-            }
+            Output.printLotto();
 
             System.out.println(Print.ASK_PRIZE);
             List<Integer> prize = getPrize();
 
-            analyseLotto(lottos, prize);
+            analyseLotto(Output.lottos, prize);
         } catch(IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
 
-    }
-
-    //로또 구입
-    private static String inputBudget() {
-        return validateInputBudget(Console.readLine());
-
-//        String input = Console.readLine();
-//
-//        validateInputBudget(input);
-//
-//        return input;
-    }
-
-    private static String validateInputBudget(String input) {
-        if(!Pattern.matches("^[0-9]*000$", input)) {
-            System.out.println(ErrMsg.VALIDATE_INPUT_BUDGET);
-            throw new IllegalArgumentException(ErrMsg.VALIDATE_INPUT_BUDGET);
-        }
-
-        return input;
-    }
-
-    private static int getBudget() {
-        return Integer.parseInt(inputBudget());
-    }
-
-    private static int getPublishNum() {
-        return getBudget()/1000;
-    }
-    
-    //로또 발행
-    private static List<Lotto> getLotto(int publishNum) {
-        List<Lotto> lotto = new ArrayList<>();
-
-        while(lotto.size() < publishNum) {
-            lotto.add(new Lotto(getLottoNum()));
-        }
-
-        validateLotto(lotto, publishNum);
-
-        return lotto;
-    }
-
-    private static void validateLotto(List<Lotto> lotto, int publishNum) {
-        if(lotto.size()!=publishNum) {
-            throw new IllegalArgumentException(ErrMsg.VALIDATE_LOTTO_SIZE);
-        }
-    }
-
-    private static List<Integer> getLottoNum() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-
-        sortNumbers(numbers);
-
-        return numbers;
-    }
-
-    private static void sortNumbers(List<Integer> numbers) {
-        numbers.sort(Comparator.naturalOrder());
     }
 
     //로또 당첨
@@ -188,10 +123,13 @@ public class Application {
         printLottoStat(stats);
 
         long total = getTotalPrizeWon(stats);
+        System.out.println("total: "+total);
         int budget = lottos.size() * 1000;
+        System.out.println("budget: "+budget);
 
         double rate = (double) total/budget;
-        rate = Math.round(rate*10)/10.0;
+        System.out.println("rate: "+rate);
+        rate = Math.round(rate*1000)/10.0;
         System.out.println(Print.RATE_BEFORE + rate + Print.RATE_AFTER);
     }
 
