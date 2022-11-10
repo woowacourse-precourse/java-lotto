@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class User {
     private ArrayList<Lotto> lotties;
-    private int totalNumberOflotties;
+    private ArrayList<Integer> totalNumberOflotties;
     private int purchaseMoney;
     private int prizeMoney;
     private ArrayList<Integer> winningNumbers;
@@ -21,11 +21,11 @@ public class User {
         this.lotties = lotties;
     }
 
-    public int getTotalNumberOflotties() {
+    public ArrayList<Integer> getTotalNumberOflotties() {
         return totalNumberOflotties;
     }
 
-    public void setTotalNumberOflotties(int totalNumberOflotties) {
+    public void setTotalNumberOflotties(ArrayList<Integer> totalNumberOflotties) {
         this.totalNumberOflotties = totalNumberOflotties;
     }
 
