@@ -3,7 +3,6 @@ package lotto.domain;
 import lotto.domain.validator.LottoNumbersValidator;
 
 import java.util.List;
-import java.util.Objects;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -19,16 +18,11 @@ public class Lotto {
     
     public int countOfSameNumber(final Lotto lotto) {
         return (int) numbers.stream()
-                .filter(lotto::isExistSameLottoNumber)
+                .filter(lotto::containsNumber)
                 .count();
     }
     
-    private boolean isExistSameLottoNumber(final Integer lottoNumberToCompare) {
-        return numbers.stream()
-                .anyMatch(lottoNumber -> lottoNumber == lottoNumberToCompare);
-    }
-    
-    public boolean containsBonusNumber(final int bonusNumber) {
+    public boolean containsNumber(final int bonusNumber) {
         return numbers.contains(bonusNumber);
     }
 }
