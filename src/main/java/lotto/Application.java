@@ -97,4 +97,17 @@ public class Application {
             }
         }
     }
+
+    public static Integer inputCashStringToInteger(String input) {
+        int inputCash = 0;
+
+        for (int i = 0; i < input.length(); i++) {
+
+            int number = input.length() - i;
+            inputCash += Math.pow(10, number - 1) * (input.charAt(i) - 48);
+        }
+
+        return inputCash;
+
+    }
 }
