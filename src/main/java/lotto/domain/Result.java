@@ -33,8 +33,9 @@ public class Result {
     public void calc(User user) {
         organize();
         Integer money = getMoney();
-        profit =  ((float)money / (float)user.getMoney()) * 100;
+        profit = ((float) money / (float) user.getMoney()) * 100;
     }
+
 
     private Integer getMoney() {
         Integer totalMoney = 0;
@@ -53,7 +54,7 @@ public class Result {
         }
     }
 
-    private Money toEnumString(Integer count){
+    private Money toEnumString(Integer count) {
         if (count == 3) return Money.FIFTH;
         if (count == 4) return Money.FOURTH;
         if (count == 5) return Money.THIRD;
@@ -67,12 +68,12 @@ public class Result {
         for (Lotto userLotto : userLottos) {
             List<Integer> userNumbers = userLotto.getNumbers();
             Integer countRes = hasNumber(userNumbers, numbers);
-            countRes = getBonusRes(bonus, userNumbers,countRes);
+            countRes = getBonusRes(bonus, userNumbers, countRes);
             counts.add(countRes);
         }
     }
 
-    private Integer getBonusRes(Integer bonus, List<Integer> userNumbers,Integer countRes) {
+    private Integer getBonusRes(Integer bonus, List<Integer> userNumbers, Integer countRes) {
         if (countRes == 5 && hasBonus(userNumbers, bonus)) {
             countRes = 7;
         }
@@ -83,7 +84,7 @@ public class Result {
         counts = new ArrayList<>();
         counting = new EnumMap<>(Money.class);
         for (Money value : Money.values()) {
-            counting.put(value,0);
+            counting.put(value, 0);
         }
     }
 
