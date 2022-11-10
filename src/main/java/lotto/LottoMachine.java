@@ -2,9 +2,17 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class LottoMachine {
     private static final int LOTTO_PRICE = 1000;
+
+    public List<Lotto> generateLottos(int money) {
+        return IntStream.range(0, getLottoCount(money))
+                .mapToObj(index -> new Lotto(generateLottoNumber()))
+                .collect(Collectors.toList());
+    }
 
     public int getLottoCount(int money) {
         return money / LOTTO_PRICE;
