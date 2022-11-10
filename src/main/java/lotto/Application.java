@@ -7,5 +7,7 @@ public class Application {
         User user = new User();
         user.lottoRandomNumber(3);
 
+
+
     }
 }
