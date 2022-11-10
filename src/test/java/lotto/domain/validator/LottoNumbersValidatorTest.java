@@ -11,6 +11,8 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
 class LottoNumbersValidatorTest {
+    private static final String ERROR_MESSAGE = "[ERROR]";
+    
     @Test
     @DisplayName("올바른 로또 번호 입력 시")
     void correctLottoNumbers() {
@@ -22,7 +24,8 @@ class LottoNumbersValidatorTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     void createLottoByOverSize() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> LottoNumbersValidator.validate(List.of(1, 2, 3, 4, 5, 6, 7)));
+                .isThrownBy(() -> LottoNumbersValidator.validate(List.of(1, 2, 3, 4, 5, 6, 7)))
+                .withMessageStartingWith(ERROR_MESSAGE);
     }
     
     @Test

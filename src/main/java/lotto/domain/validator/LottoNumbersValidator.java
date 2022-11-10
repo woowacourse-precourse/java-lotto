@@ -3,6 +3,7 @@ package lotto.domain.validator;
 import java.util.List;
 
 public class LottoNumbersValidator {
+    private static final String OUT_OF_RANGE_EXCEPTION_MESSAGE = "[ERROR] 로또 번호의 개수는 6개여야 합니다.";
     private static final String UTILITY_CLASS_CREATE_EXCEPTION_MESSAGE = "생성할 수 없는 유틸 클래스입니다.";
     private static final int LENGTH_OF_LOTTO_NUMBERS = 6;
     
@@ -18,7 +19,7 @@ public class LottoNumbersValidator {
     
     private static void validateOutOfLength(final List<Integer> lottoNumbers) {
         if (isOutOfLength(lottoNumbers)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(OUT_OF_RANGE_EXCEPTION_MESSAGE);
         }
     }
     
