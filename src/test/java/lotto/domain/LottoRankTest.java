@@ -27,4 +27,13 @@ class LottoRankTest {
     void thirdRank() {
         assertThat(LottoRank.parseRank(5, false)).isEqualTo(LottoRank.THIRD);
     }
+    
+    @Test
+    @DisplayName("4등인지 확인")
+    void fourthRank() {
+        assertAll(
+                () -> assertThat(LottoRank.parseRank(4, false)).isEqualTo(LottoRank.FOURTH),
+                () -> assertThat(LottoRank.parseRank(4, true)).isEqualTo(LottoRank.FOURTH)
+        );
+    }
 }
