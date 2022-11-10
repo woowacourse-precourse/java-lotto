@@ -50,5 +50,6 @@ public class Util {
     public static int inputBonusNumber(Lotto prizeLotto) {
         String bonusNumber = Console.readLine();
         InputNumberVerifier.bonusNumberVerifier(prizeLotto, bonusNumber);
+        return Util.stringToInt(bonusNumber);
     }
 }

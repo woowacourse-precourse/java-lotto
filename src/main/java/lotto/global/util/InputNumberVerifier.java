@@ -3,6 +3,7 @@ package lotto.global.util;
 import lotto.domain.lotto.domain.Lotto;
 
 import java.util.List;
+import java.util.StringTokenizer;
 
 public class InputNumberVerifier {
 
@@ -51,7 +52,8 @@ public class InputNumberVerifier {
     }
 
     private static void isInputBonusNumberOnly1(String bonusNumber) {
-        if (bonusNumber.length() != 1) {
+        StringTokenizer st = new StringTokenizer(bonusNumber, ",");
+        if (st.countTokens() != 1) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1개의 숫자만 입력할 수 있습니다.");
         }
     }

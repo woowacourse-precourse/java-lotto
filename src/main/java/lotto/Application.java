@@ -23,6 +23,7 @@ public class Application {
 
         User user = new User(userMoney, lottos);
         Lotto prizeLotto = lottoController.getPrizeLotto();
-        lottoController.getBonusNumber(prizeLotto);
+        int bonusNumber = lottoController.getBonusNumber(prizeLotto);
+        System.out.println("bonusNumber = " + bonusNumber);
     }
 }
