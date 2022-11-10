@@ -21,4 +21,16 @@ class LottoPriceExceptionTest {
         assertThatThrownBy(() -> LottoPriceException.changePriceToInteger("test1000"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 로또금액_천_이하_확인() {
+        assertThatThrownBy(() -> LottoPriceException.checkLessThanOneThousand(900))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> LottoPriceException.checkLessThanOneThousand(10))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> LottoPriceException.checkLessThanOneThousand(999))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
