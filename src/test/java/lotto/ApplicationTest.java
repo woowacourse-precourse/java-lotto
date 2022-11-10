@@ -47,7 +47,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 기능_테스트2() {
+    void 로또_1등_테스트() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     run("10000", "1,2,3,4,5,6", "7");
@@ -85,7 +85,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 기능_테스트3() {
+    void 로또_2등_테스트() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     run("10000", "1,2,3,4,5,6", "7");
@@ -123,7 +123,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 기능_테스트4() {
+    void 로또_3등_테스트() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     run("10000", "1,2,3,4,5,6", "7");
@@ -161,7 +161,7 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 기능_테스트5() {
+    void 로또_4등_테스트() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     run("10000", "1,2,3,4,5,6", "7");
@@ -197,6 +197,7 @@ class ApplicationTest extends NsTest {
                 List.of(10, 11, 12, 13, 14, 15)
         );
     }
+
 
     @Test
     void 예외_테스트() {
