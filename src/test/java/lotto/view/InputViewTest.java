@@ -59,4 +59,25 @@ class InputViewTest {
 	    //when & then
 		assertThat(inputView.getWinning()).isEqualTo(MockInputView.MOCK_VALUE);
 	}
+
+	@Test
+	@DisplayName("보너스 번호 입력을 유도하는 메시지가 출력된다.")
+	void givenNothing_whenRunningInputView_thenPrintsInputBonusMessage() {
+	    //given
+		OutputStream out = new ByteArrayOutputStream();
+		System.setOut(new PrintStream(out));
+
+	    //when
+		inputView.getBonus();
+
+	    //then
+		assertThat(out.toString()).isEqualTo(InputViewImpl.INPUT_BONUS_MESSAGE + "\n");
+	}
+
+	@Test
+	@DisplayName("사용자로부터 보너스 번호를 입력받을 수 있다.")
+	void givenNothing_whenRunningInputView_thenReturnsBonus() {
+		//when & then
+		assertThat(inputView.getBonus()).isEqualTo(MockInputView.MOCK_VALUE);
+	}
 }

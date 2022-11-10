@@ -6,6 +6,7 @@ public class InputViewImpl implements InputView {
 
 	public static final String INPUT_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
 	public static final String INPUT_WINNING_MESSAGE = "당첨 번호를 입력해 주세요.";
+	public static final String INPUT_BONUS_MESSAGE = "보너스 번호를 입력해 주세요.";
 
 	public String getMoney() {
 		System.out.println(INPUT_MONEY_MESSAGE);
@@ -17,6 +18,12 @@ public class InputViewImpl implements InputView {
 	@Override
 	public String getWinning() {
 		System.out.println(INPUT_WINNING_MESSAGE);
+		return readInput();
+	}
+
+	@Override
+	public String getBonus() {
+		System.out.println(INPUT_BONUS_MESSAGE);
 		return readInput();
 	}
 
