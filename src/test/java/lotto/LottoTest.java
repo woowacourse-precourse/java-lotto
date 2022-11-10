@@ -125,4 +125,11 @@ class LottoTest {
         int rank = my.checkRank(win);
         assertThat(rank).isEqualTo(-1);
     }
+
+    @DisplayName("로또번호 정렬확인")
+    @Test
+    void LottoOrderCheck() {
+        String test = new Lotto(List.of(1, 2, 10, 9, 8, 7)).toString();
+        assertThat(test).isEqualTo("[1, 2, 7, 8, 9, 10]");
+    }
 }
