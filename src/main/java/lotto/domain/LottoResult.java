@@ -35,4 +35,11 @@ public class LottoResult {
         int bonusNumber = Integer.valueOf(bonus);
         return bonusNumber;
     }
+
+    public void bonusNumberCheck(List<Integer> numbers, int bonusNumber) {
+        if (bonusNumber < 1 || bonusNumber > 45 || numbers.contains(bonusNumber)) {
+                throw new IllegalArgumentException("[ERROR] 보너스 번호를 확인 하세요.");
+            }
+        }
+    }
 }
