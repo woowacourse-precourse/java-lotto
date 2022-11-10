@@ -9,20 +9,20 @@ public class BuyLotto {
         System.out.println("구입금액을 입력해 주세요.");
     }
     
-    public String inputPrice() {
-        String price = Console.readLine();
+    public int inputPrice() {
+        int price = Integer.valueOf(Console.readLine());
         inputPriceException(price);
 
         return price;
     }
 
-    private void inputPriceException(String price) {
-        if((Integer.parseInt(price) % INPUT_UNIT) != 0) {
+    private void inputPriceException(int price) {
+        if((price % INPUT_UNIT) != 0) {
             throw new IllegalArgumentException("[ERROR] 구매금액은 1000원 단위여야 합니다.");
         }
     }
 
-    public int numberOfLottoCount(String price) {
-        return Integer.parseInt(price) / INPUT_UNIT;
+    public int numberOfLottoCount(int price) {
+        return price / INPUT_UNIT;
     }
 }
