@@ -1,4 +1,4 @@
-package lotto;
+package lotto.exception;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.exception.LottoNumberException;
@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
-    private int bonusNumber;
 
     LottoNumberException lottoNumberException = new LottoNumberException();
 
