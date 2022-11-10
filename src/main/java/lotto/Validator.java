@@ -24,8 +24,8 @@ public class Validator {
     }
 
     public void validateWinningNumbers(String input) {
-        checkUsingComma(input);
         valueIsNumber(input.replaceAll(",", ""));
+        checkUsingComma(input);
         validateValueLength(input);
         validateValueRange(input);
     }
