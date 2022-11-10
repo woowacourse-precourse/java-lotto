@@ -20,6 +20,14 @@ public class WinningResult {
     }
 
     public int getWinningCount(LottoRank lottoRank) {
-        return result.get(lottoRank);
+        return result.getOrDefault(lottoRank, 0);
+    }
+
+    public String getRateOfReturn(int money) {
+        int reward = 0;
+        for (LottoRank lottoRank : result.keySet()) {
+            reward += lottoRank.calculateSubReturn(result.get(lottoRank));
+        }
+        return String.format("%.1f", (double) reward / money * 100.0);
     }
 }

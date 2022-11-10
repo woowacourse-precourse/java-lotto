@@ -25,12 +25,11 @@ public class Application {
             String bonusNumber = ProjectView.getBonusNumber();
 
             LottoWinningNumber lottoWinningNumber = new LottoWinningNumber(winningNumbers, bonusNumber);
-            System.out.println(lottoWinningNumber);
 
             WinningResult result = lottoWinningNumber.getResult(issuedLotto);
-            System.out.println(result);
+            ProjectView.printResult(result, Integer.parseInt(money));
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            ProjectView.printErrorMessage(e.getMessage());
         }
     }
 
