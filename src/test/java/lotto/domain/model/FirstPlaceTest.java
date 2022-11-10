@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -21,6 +22,45 @@ class FirstPlaceTest {
     void createFirstPlace2() {
         String firstPlace = "10,21,31,45,15,36";
         assertThat(new FirstPlace(firstPlace)).isEqualTo(new FirstPlace("10,21,31,45,15,36"));
+    }
+
+    @DisplayName("구매한 로또번호와 1등번호가 일치한 만큼의 LottoRank Enum 값이 리턴이 된다.(6개 일치)")
+    @Test
+    void calculateFirstPlaceByUserLottoMatchSix(){
+        String firstPlace = "10,21,31,45,15,36";
+        List<Integer> userLotto = List.of(10, 15, 21, 31, 36, 45);
+        assertThat(new FirstPlace(firstPlace).calculateMatch(userLotto)).isEqualTo(LottoRank.SIX_MATCHES);
+    }
+    @DisplayName("구매한 로또번호와 1등번호가 일치한 만큼의 LottoRank Enum 값이 리턴이 된다.(5개 일치)")
+    @Test
+    void calculateFirstPlaceByUserLottoMatchFive(){
+        String firstPlace = "10,21,31,45,15,36";
+        List<Integer> userLotto = List.of(9, 15, 21, 31, 36, 45);
+        assertThat(new FirstPlace(firstPlace).calculateMatch(userLotto)).isEqualTo(LottoRank.FIVE_MATCHES);
+    }
+
+    @DisplayName("구매한 로또번호와 1등번호가 일치한 만큼의 LottoRank Enum 값이 리턴이 된다.(4개 일치)")
+    @Test
+    void calculateFirstPlaceByUserLottoMatchFour(){
+        String firstPlace = "10,21,31,45,15,36";
+        List<Integer> userLotto = List.of(9, 15, 23, 31, 36, 45);
+        assertThat(new FirstPlace(firstPlace).calculateMatch(userLotto)).isEqualTo(LottoRank.FOUR_MATCHES);
+    }
+
+    @DisplayName("구매한 로또번호와 1등번호가 일치한 만큼의 LottoRank Enum 값이 리턴이 된다.(3개 일치)")
+    @Test
+    void calculateFirstPlaceByUserLottoMatchThree(){
+        String firstPlace = "10,21,31,45,15,36";
+        List<Integer> userLotto = List.of(9, 15, 23, 31, 32, 45);
+        assertThat(new FirstPlace(firstPlace).calculateMatch(userLotto)).isEqualTo(LottoRank.THREE_MATCHES);
+    }
+
+    @DisplayName("구매한 로또번호와 1등번호가 일치한 만큼의 LottoRank Enum 값이 리턴이 된다.(3개 이하 일치)")
+    @Test
+    void calculateFirstPlaceByUserLottoMatchUnderThree(){
+        String firstPlace = "10,21,31,45,15,36";
+        List<Integer> userLotto = List.of(9, 14, 23, 31, 32, 45);
+        assertThat(new FirstPlace(firstPlace).calculateMatch(userLotto)).isEqualTo(LottoRank.NONE);
     }
 
 
