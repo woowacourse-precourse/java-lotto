@@ -14,4 +14,26 @@ public enum LottoGrade {
     LottoGrade(long prize) {
         this.prize = prize;
     }
+
+    public static LottoGrade confirmWinning(int winningCount, boolean bonusMatch) {
+        if (winningCount == 6) {
+            return FIRST;
+        }
+        if (bonusMatch) {
+            winningCount++;
+        }
+        if (winningCount == 6) {
+            return SECOND;
+        }
+        if (winningCount == 5) {
+            return THIRD;
+        }
+        if (winningCount == 4) {
+            return FOURTH;
+        }
+        if (winningCount == 3) {
+            return FIFTH;
+        }
+        return NOTHING;
+    }
 }
