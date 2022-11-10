@@ -7,9 +7,6 @@ public class InputValidator {
 
     private static Pattern PATTERN = Pattern.compile("^[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+$");
 
-    private InputValidator(){
-    }
-
     public static int validateInt(String str){
         try {
             int stringToInt = Integer.parseInt(str);
