@@ -8,14 +8,35 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class User {
-    int money = 0;
-    int lottoQuantity = 0;
-    List<Lotto> lotto;
+    private Integer money;
+    private Integer lottoQuantity;
+    private List<Lotto> lotto;
+
+    public Integer getMoney() {
+        return money;
+    }
+
+    public Integer getLottoQuantity() {
+        return lottoQuantity;
+    }
+
+    public List<Lotto> getLotto() {
+        return lotto;
+    }
+
+    public String getLottoNumbers() {
+        String lottoNumbers = "";
+        for (int index = 0; index < lottoQuantity; index++) {
+            lottoNumbers += lotto.get(index).getNumbers();
+            lottoNumbers += "\n";
+        }
+        return lottoNumbers;
+    }
 
     public User(String money) {
         validate(money);
         this.money = Integer.valueOf(money);
-        this.lottoQuantity = Integer.valueOf(money) % 1000;
+        this.lottoQuantity = Integer.valueOf(money) / 1000;
         this.lotto = new ArrayList<>();
     }
 
@@ -42,7 +63,10 @@ public class User {
 
     public void buyLotto() {
         for (int quantity = 0; quantity < this.lottoQuantity; quantity++) {
-            Lotto lotto = new Lotto(pickUniqueNumbersInRange(1, 45, 6));
+            Lotto lottoNumbers = new Lotto(pickUniqueNumbersInRange(1, 45, 6));
+            this.lotto.add(lottoNumbers);
         }
     }
+
+
 }

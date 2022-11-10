@@ -1,5 +1,7 @@
 package lotto.Message;
 
+import lotto.User;
+
 import java.util.List;
 
 public class NormalMessage {
@@ -13,13 +15,13 @@ public class NormalMessage {
         System.out.println(MONEY_INPUT_MESSAGE);
     }
 
-    public static void printBuyMessage(Integer number) {
+    public static void printBuyMessage(User user) {
         System.out.println();
-        System.out.println(number.toString() + BUY_MESSAGE);
+        System.out.println(user.getLottoQuantity().toString() + BUY_MESSAGE);
+        System.out.println(user.getLottoNumbers());
     }
 
     public static void printWinningNumberInputMessage() {
-        System.out.println();
         System.out.println(WINNING_NUMBER_INPUT_MESSAGE);
     }
 
