@@ -13,7 +13,6 @@ public class Comparator {
     }
 
     public boolean hasBonusNumber(List<Integer> userLotteryNumbers, int bonusNumber) {
-        // TODO: 보너스 번호를 포함하는지 포함하지 않는지 반환
-        return false;
+        return userLotteryNumbers.contains(bonusNumber);
     }
 }
