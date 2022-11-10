@@ -14,10 +14,10 @@ public class LottoStore {
         validate(price);
 
         int lottoPurchaseCount = price / LOTTO_PRICE;
-        LottoNumber lottoNumber = new LottoNumber();
+        LottoMachine lottoMachine = new LottoMachine();
 
         for (int i = 0; i < lottoPurchaseCount; i++) {
-            Lotto lotto = new Lotto(lottoNumber.create());
+            Lotto lotto = new Lotto(lottoMachine.create());
 
             lottoNumbers.add(lotto);
         }

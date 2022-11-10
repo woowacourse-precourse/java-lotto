@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Collections;
 import java.util.List;
 
-public class LottoNumber {
+public class LottoMachine {
     private final static int MIN_LOTTO_NUM = 1;
     private final static int MAX_LOTTO_NUM = 45;
     public final static int LOTTO_SIZE = 6;
