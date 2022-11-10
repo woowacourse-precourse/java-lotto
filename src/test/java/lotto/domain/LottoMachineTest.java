@@ -11,7 +11,7 @@ class LottoMachineTest {
     @Test
     void InputNonNumericValue() {
         LottoMachine machine = new LottoMachine();
-        assertThatThrownBy(() -> machine.buy("1000k"))
+        assertThatThrownBy(() -> machine.printLottoBundle("1000k"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -19,7 +19,7 @@ class LottoMachineTest {
     @Test
     void InputNonDivisibleNumber() {
         LottoMachine machine = new LottoMachine();
-        assertThatThrownBy(() -> machine.buy("1001"))
+        assertThatThrownBy(() -> machine.printLottoBundle("1001"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
