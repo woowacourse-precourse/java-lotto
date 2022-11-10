@@ -2,10 +2,10 @@ package lotto;
 
 import java.util.List;
 
-public class Lotto {
+public class Lotto {  
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    public Lotto(List<Integer> numbers) { // 사용자 입력 숫자 6개를 받아서 numbers 인스턴스 final 변수에 저장
         validate(numbers);
         this.numbers = numbers;
     }
@@ -16,5 +16,7 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public void numbersNoRepeat() {
+    	
+    }
 }
