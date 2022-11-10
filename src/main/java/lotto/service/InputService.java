@@ -16,4 +16,8 @@ public class InputService {
     public void setMoneyToUser(String inputMoney) {
         user = new User(inputMoneyToInteger(inputMoney));
     }
+
+    public User getUser() {
+        return user;
+    }
 }
