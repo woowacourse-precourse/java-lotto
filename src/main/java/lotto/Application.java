@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -24,6 +25,8 @@ public class Application {
 
         System.out.println(Print.ASK_PRIZE);
         List<Integer> prize = getPrize();
+
+
     }
 
     //로또 구입
@@ -37,7 +40,7 @@ public class Application {
 
     private static void validateInputBudget(String input) {
         if(!Pattern.matches("^[0-9]*000$", input)) {
-            throw new IllegalArgumentException("[ERROR] 1,000 단위의 숫자만 입력해 주세요.");
+            throw new IllegalArgumentException(ErrMsg.VALIDATE_INPUT_BUDGET);
         }
     }
 
@@ -64,7 +67,7 @@ public class Application {
 
     private static void validateLotto(List<Lotto> lotto, int publishNum) {
         if(lotto.size()!=publishNum) {
-            throw new IllegalArgumentException("[ERROR] 로또의 발행 횟수와 로또 발행 리스트의 크기는 같아야 합니다.");
+            throw new IllegalArgumentException(ErrMsg.VALIDATE_LOTTO_SIZE);
         }
     }
 
@@ -84,6 +87,9 @@ public class Application {
     private static List<Integer> getPrize() {
         List<Integer> prize = setPrizeNum();
 
+        System.out.println(Print.ASK_BONUS);
+        inputBonus(prize);
+
         return prize;
     }
 
@@ -102,7 +108,7 @@ public class Application {
         System.out.println("pattern: "+pattern);
 
         if(!Pattern.matches(pattern, prizeNum)) {
-            throw new IllegalArgumentException("[ERROR] 1부터 45까지의 숫자를 콤마(,)를 이용해서 6개 적어주세요.");
+            throw new IllegalArgumentException(ErrMsg.VALIDATE_INPUT_PRIZE_NUM);
         }
     }
 
@@ -118,27 +124,46 @@ public class Application {
             prizeNum.add(Integer.parseInt(input));
         }
 
-        //System.out.println("prizeNum: "+Arrays.toString(prizeNum.toArray()));
         validatePrizeNum(prizeNum);
-        //System.out.println("prizeNum: "+Arrays.toString(prizeNum.toArray()));
 
         return prizeNum;
     }
 
     private static void validatePrizeNum(List<Integer> prizeNum) {
         if(prizeNum.size()!=6) {
-            throw new IllegalArgumentException("[ERROR] 로또 당첨 번호는 6개여야 합니다.");
+            throw new IllegalArgumentException(ErrMsg.VALIDATE_PRIZE_NUM_SIX);
         }
         for(int i=0; i<prizeNum.size(); i++) {
             int num = prizeNum.get(0);
             prizeNum.remove(0);
-            //System.out.println("removed prizeNum: "+prizeNum);
 
             if(prizeNum.contains(num)) {
-                throw new IllegalArgumentException("[ERROR] 로또 당첨 번호는 서로 달라야 합니다.");
+                throw new IllegalArgumentException(ErrMsg.VALIDATE_PRIZE_NUM_UNIQUE);
             }
 
             prizeNum.add(num);
         }
+    }
+
+    private static void inputBonus(List<Integer> prize) {
+        String bonus = Console.readLine();
+
+        validateInputBonus(bonus, prize);
+    }
+
+    private static void validateInputBonus(String bonus, List<Integer> prize) {
+        String pattern = "^([1-9]|[1-3][0-9]|4[0-5])";
+
+        if(!Pattern.matches(pattern, bonus)) {
+            throw new IllegalArgumentException(ErrMsg.VALIDATE_BONUS_NUM_ONE);
+        }
+
+        int bonusNum = Integer.parseInt(bonus);
+
+        if(prize.contains(bonusNum)) {
+            throw new IllegalArgumentException(ErrMsg.VALIDATE_BONUS_NUM_UNIQUE);
+        }
+
+        prize.add(bonusNum);
     }
 }
