@@ -4,7 +4,6 @@ import lotto.exception.ErrorMessage;
 
 public class Money {
 
-	public static final int LOTTO_COST = 1000;
 	private final int amount;
 
 	public Money(String amount) {
@@ -39,5 +38,9 @@ public class Money {
 			System.out.println(ErrorMessage.NOT_DIVISIBLE_MONEY_ERROR.getMessage());
 			throw new IllegalArgumentException();
 		}
+	}
+
+	public int getAmount() {
+		return amount;
 	}
 }
