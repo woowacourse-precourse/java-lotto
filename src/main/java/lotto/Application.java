@@ -16,14 +16,6 @@ public class Application {
         InputView inputView = new InputView();
         LottoException exception = new LottoException();
         OutputView outputView = new OutputView();
-//        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-//        for (Integer number : numbers) {
-//            System.out.println("number = " + number);
-//        }
 
-        LottoGenerator lottoGenerator = new LottoGenerator();
-        List<Lotto> lottos = lottoGenerator.createLottoNumbers(14);
-        outputView.printLottoAmount(14);
-        outputView.printLottoNumbers(lottos);
     }
 }
