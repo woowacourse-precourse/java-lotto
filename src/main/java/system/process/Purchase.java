@@ -1,16 +1,15 @@
 package system.process;
 
 import models.PurchasedLottosData;
-import net.bytebuddy.implementation.bytecode.Throw;
 import utils.Input;
 
 public class Purchase {
 
     //TODO : 헷갈리는 이름 수정할 것. ex) purchasedLottos 와 purchaseLottos
-    private PurchasedLottosData purchasedLottos;
+    private PurchasedLottosData purchasedLottosData;
 
     public Purchase() {
-        purchasedLottos = proceedPurchase();
+        purchasedLottosData = proceedPurchase();
         printPurchasedLottoList();
     }
 
@@ -49,7 +48,10 @@ public class Purchase {
     }
 
     private void printPurchasedLottoList(){
-        purchasedLottos.printLottoList();
+        purchasedLottosData.printLottoList();
     }
 
+    public PurchasedLottosData getPurchasedLottosData() {
+        return purchasedLottosData;
+    }
 }
