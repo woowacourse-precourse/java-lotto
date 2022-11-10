@@ -13,7 +13,7 @@ class InputValidatorTest {
     void inputNumbersByInvalidSeparator() {
         String input = "1, 3, 2, 5, 4- 5";
 
-        assertThatThrownBy(() -> Application.convertNumbersInput(input))
+        assertThatThrownBy(() -> Converter.convertNumbersInput(input))
                 .isInstanceOf(IllegalArgumentException.class);
        }
 
@@ -22,7 +22,7 @@ class InputValidatorTest {
     void inputMoneyByInvalidForm() {
         String input = "1,000";
 
-        assertThatThrownBy(() -> Application.convertMoneyInput(input))
+        assertThatThrownBy(() -> Converter.convertMoneyInput(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -31,7 +31,7 @@ class InputValidatorTest {
     void inputBonusNumberByInvalidForm() {
         String input = "일";
 
-        assertThatThrownBy(() -> Application.convertBonusNumberInput(input))
+        assertThatThrownBy(() -> Converter.convertBonusNumberInput(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
