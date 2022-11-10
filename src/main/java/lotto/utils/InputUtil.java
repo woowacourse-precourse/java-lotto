@@ -1,6 +1,7 @@
 package lotto.utils;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.Lotto;
 import lotto.validator.InputValidator;
 
 import java.util.List;
@@ -35,7 +36,7 @@ public class InputUtil {
         return purchasePrice;
     }
 
-    public static List<Integer> inputWinningLottoNumber() {
+    public static Lotto inputWinningLottoNumber() {
 
         winningNumbers = Stream.of(Console.readLine().split(WINNING_NUMBER_DELIM))
                                .map(Integer::parseInt)
@@ -53,7 +54,7 @@ public class InputUtil {
             throw new IllegalArgumentException(CANNOT_SATISFY_NUMBER_RANGE);
         }
 
-        return winningNumbers;
+        return new Lotto(winningNumbers);
     }
 
     public static Integer inputBounsLottoNumber() {
