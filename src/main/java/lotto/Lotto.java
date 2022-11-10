@@ -8,6 +8,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
@@ -19,7 +20,6 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
     public void printAscending() {
-        Collections.sort(numbers);
         System.out.println(numbers.toString());
     }
 }
