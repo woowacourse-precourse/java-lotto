@@ -39,6 +39,7 @@ public class InputNumberVerifier {
     public static void bonusNumberVerifier(Lotto prizeLotto, String bonusNumber) {
         isInputBonusNumberOnly1(bonusNumber);
         isDuplicatedAlreadyExistsLottoNumber(prizeLotto, bonusNumber);
+        isNumberFrom1To45(List.of(Integer.parseInt(bonusNumber)));
     }
 
     private static void isDuplicatedAlreadyExistsLottoNumber(Lotto prizeLotto, String bonusNumber) {
