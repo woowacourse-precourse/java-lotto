@@ -1,16 +1,16 @@
-package lotto;
+package lotto.model;
 
-import java.util.List;
+import java.util.Set;
 
 public class Lotto {
-    private final List<Integer> numbers;
+    private final Set<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    public Lotto(Set<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validate(Set<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
