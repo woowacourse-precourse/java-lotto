@@ -1,7 +1,11 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+
 public class GameManager {
-    //input입력받아 lottogame생성하는 클래스
 
     public GameManager() {
     }
@@ -9,6 +13,18 @@ public class GameManager {
     public void run() {
     }
 
-    //public Lotto publishRandomLotto() {}
+    private Lotto publishRandomLotto() {
+        Lotto lotto;
+        List<Integer> lottoNumbers = new ArrayList<>();
 
+        while (lottoNumbers.size() < 6) {
+            Integer lottoNumber = pickNumberInRange(1, 45);
+            if (!lottoNumbers.contains(lottoNumber)) {
+                lottoNumbers.add(lottoNumber);
+            }
+        }
+        lotto = new Lotto(lottoNumbers);
+
+        return lotto;
+    }
 }
