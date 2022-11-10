@@ -26,4 +26,13 @@ public class InputException {
             }
         }
     }
+
+    public static void validateBonusNumber(int bonusNumber, List<Integer> winningNumber) {
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalArgumentException("[ERROR] 입력 숫자 범위를 벗어났습니다.");
+        }
+        if (winningNumber.contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 이미 당첨 번호에 있는 숫자 입니다.");
+        }
+    }
 }
