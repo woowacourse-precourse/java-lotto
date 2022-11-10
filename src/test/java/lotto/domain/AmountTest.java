@@ -1,8 +1,11 @@
 package lotto.domain;
 
-import org.junit.jupiter.api.BeforeEach;
+import lotto.entity.Place;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -26,5 +29,19 @@ public class AmountTest {
         amount = new Amount(10000);
 
         assertThat(amount.getPurchasesQuantity()).isEqualTo(10);
+    }
+
+    @Test
+    void doCalculateEarningRate() {
+        amount = new Amount(8000);
+
+        Map<Place, Integer> provide = new HashMap<>();
+        provide.put(Place.FIRST, 0);
+        provide.put(Place.SECOND, 0);
+        provide.put(Place.THIRD, 0);
+        provide.put(Place.FOURTH, 0);
+        provide.put(Place.FIFTH, 1);
+
+        assertThat(amount.getEarningRate(provide)).isEqualTo(62.5);
     }
 }
