@@ -2,6 +2,8 @@ package lotto.domain;
 
 import lotto.ui.ConsoleInput;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
@@ -9,6 +11,10 @@ import static java.lang.Integer.*;
 import static lotto.ui.ConsoleOutput.*;
 
 public class Player {
+
+	public static List<String> winningNumbers;
+	public static List<String> bonusNumber;
+
 	public long receiveTotalAmount() {
 		PrintRequestMessage(REQUEST_TOTAL_AMOUNT);
 		String amountInput = ConsoleInput.readLine();
@@ -20,15 +26,16 @@ public class Player {
 		PrintRequestMessage(REQUEST_LOTTO_NUMBER);
 		String lottoNumber = ConsoleInput.readLine();
 		validateLottoNumber(lottoNumber);
+		storeWinningNumbers(lottoNumber);
 		return getNumbers(lottoNumber);
 	}
 
 	public int receiveBonusNumber(Stream lottoNumbers) {
 		PrintRequestMessage(REQUEST_BONUS_NUMBER);
-		String BonusNumber = ConsoleInput.readLine();
-		validateBonusNumber(BonusNumber, lottoNumbers);
-
-		return parseInt(BonusNumber);
+		String bonusNumber = ConsoleInput.readLine();
+		validateBonusNumber(bonusNumber, lottoNumbers);
+		storeBonusNumber(bonusNumber);
+		return parseInt(bonusNumber);
 	}
 
 
@@ -83,4 +90,13 @@ public class Player {
 				splitAsStream(input).
 				map(Integer::parseInt);
 	}
+
+	public static void storeWinningNumbers(String input){
+		winningNumbers = Arrays.asList(input.split(","));
+	}
+
+	public static void storeBonusNumber(String input){
+		bonusNumber = Arrays.asList(input.split(","));
+	}
+
 }
