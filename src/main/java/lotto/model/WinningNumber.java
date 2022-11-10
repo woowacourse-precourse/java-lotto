@@ -7,11 +7,14 @@ import java.util.List;
 public class WinningNumber {
 
     public WinningNumber() {
-        List<Integer> winningNumbers;
+        List<String> winningNumbers;
         // 당첨번호 입력
-        String input = Console.readLine();
-        String[] split = input.split(",");
-        System.out.println(Arrays.toString(split));
+        String input = removeSpace(Console.readLine());
+        winningNumbers = Arrays.asList(input.split(","));
+        System.out.println(winningNumbers);
+    }
 
+    private String removeSpace(String input) {
+        return input.replaceAll("\\s" , "");
     }
 }
