@@ -1,12 +1,12 @@
-package lotto.domain.buyer;
+package lotto.domain.money;
 
 import lotto.constant.ErrorMessage;
 import lotto.constant.LottoRule;
 
-public class Buyer {
+public class Money {
     private final int money;
 
-    public Buyer(int money) {
+    public Money(int money) {
         validate(money);
         this.money = money;
     }
@@ -21,7 +21,7 @@ public class Buyer {
         }
     }
 
-    public static Buyer of(int money) {
-        return new Buyer(money);
+    public static Money of(int money) {
+        return new Money(money);
     }
 }
