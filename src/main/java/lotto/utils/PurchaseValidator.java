@@ -4,13 +4,13 @@ import static lotto.domain.ErrorMessage.COMMON_MESSAGE;
 import static lotto.domain.ErrorMessage.PURCHASE_PAY_CONSISTENCE;
 import static lotto.domain.ErrorMessage.PURCHASE_PAY_REMINDER;
 
-public class InputValidator {
+public class PurchaseValidator {
 
     public static final int MINIMUM_ORDER = 1000;
     public static final int STANDARD_REMINDER = 0;
     public static final String NUMBER_REG_EXP = "^[0-9]+$";
 
-    private InputValidator(){}
+    private PurchaseValidator(){}
 
     public static void validatePay(String pay) {
         checkConsistNumber(pay);
@@ -28,4 +28,10 @@ public class InputValidator {
             throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + PURCHASE_PAY_REMINDER.getMessage());
         }
     }
+
+    public static void validateBonusNumber(String bonus) {
+
+    }
+
+
 }
