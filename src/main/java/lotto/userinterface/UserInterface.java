@@ -17,6 +17,21 @@ public class UserInterface {
     private UserInterface() {
     }
 
+    public static List<Integer> getLottoNumbers() {
+        String input = getInput();
+
+        List<Condition> conditions = List.of();
+
+        Integer notPassConditionIndex = validator.getNotPassConditionIndex(conditions, input);
+
+        if (notPassConditionIndex != -1) {
+            Condition notPassCondition = conditions.get(notPassConditionIndex);
+            throw new IllegalArgumentException();
+        }
+
+        return getParsedNumbers(input);
+    }
+
     private static List<Integer> getParsedNumbers(String input) {
         return Arrays.stream(input.split(",")).map(((String s) -> Integer.parseInt(s))).collect(Collectors.toList());
     }
