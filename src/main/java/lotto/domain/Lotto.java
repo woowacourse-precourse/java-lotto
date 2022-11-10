@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,6 +12,20 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public int compare(List<Integer> basicLottoNumbers) {
+        return (int) numbers.stream()
+                .filter(basicLottoNumbers::contains)
+                .count();
+    }
+
+    public boolean hasBonusNumber(int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
+
+    protected List<Integer> getNumbers(){
+        return this.numbers;
+    }
+
     private void validate(List<Integer> numbers) {
         Set<Integer> checkNumbers = new HashSet<>(numbers);
         if (checkNumbers.size() != 6) {
@@ -22,7 +35,6 @@ public class Lotto {
 
     @Override
     public String toString() {
-        numbers.sort(Comparator.naturalOrder());
         return numbers.toString();
     }
 }

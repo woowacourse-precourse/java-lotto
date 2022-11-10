@@ -11,7 +11,7 @@ public class LottoWinningNumber extends Lotto {
         this.bonusNumber = validateDuplicate(bonusNumber);
     }
 
-    public Result getResult(IssuedLotto issuedLotto) {
+    public WinningResult getResult(IssuedLotto issuedLotto) {
         return issuedLotto.compare(super.getNumbers(), bonusNumber);
     }
 
