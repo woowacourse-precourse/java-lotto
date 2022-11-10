@@ -1,7 +1,7 @@
 package domain;
 
 public class LottoPurAmount {
-    Integer lottopuramount;
+    private Integer lottopuramount;
 
     public LottoPurAmount(Integer lottopuramount) {
         this.lottopuramount = lottopuramount;
