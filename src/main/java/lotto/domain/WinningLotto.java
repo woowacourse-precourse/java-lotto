@@ -5,18 +5,18 @@ import java.util.List;
 public class WinningLotto {
 
     private final List<Integer> winningNumbers;
-    private final int bounsNumber;
+    private final int bonusNumber;
 
-    public WinningLotto(List<Integer> winningNumbers, int bounsNumber) {
+    public WinningLotto(List<Integer> winningNumbers, int bonusNumber) {
         this.winningNumbers = winningNumbers;
-        this.bounsNumber = bounsNumber;
+        this.bonusNumber = bonusNumber;
     }
 
     public List<Integer> getWinningNumbers() {
         return winningNumbers;
     }
 
-    public int getBounsNumber() {
-        return bounsNumber;
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 }
