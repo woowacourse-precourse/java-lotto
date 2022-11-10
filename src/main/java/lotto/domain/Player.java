@@ -2,8 +2,10 @@ package lotto.domain;
 
 import java.util.List;
 
+import lotto.constant.GameMessage;
 import lotto.constant.LottoStatistic;
 import lotto.exception.ExceptionHandler;
+import lotto.userinterface.Output;
 
 public class Player {
     private final long money;
@@ -19,6 +21,14 @@ public class Player {
     }
 
     public void buyLottoTickets(Machine lottoMachine) {
-        this.lottoTickets = lottoMachine.issueLottoTickets(this.money);
+        this.lottoTickets = lottoMachine.issueLottoTickets(money);
+    }
+
+    public void displayLottoTickets() {
+        int numberOfTickets = lottoTickets.size();
+        Output.printMessage(GameMessage.LOTTO_PURCHASE.getMessage(numberOfTickets));
+        for (Lotto lotto : lottoTickets) {
+            Output.printMessage(lotto.getNumbersAsString());
+        }
     }
 }
