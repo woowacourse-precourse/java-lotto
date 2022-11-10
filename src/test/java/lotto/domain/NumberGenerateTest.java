@@ -13,18 +13,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class NumberGenerateTest {
 
-    private NumberGenerate numberGenerate;
+    private LottoGenerator numberGenerate;
     int numberOfPurchases = 3;
 
     @BeforeEach
     void setUp() {
-        numberGenerate = new NumberGenerate(numberOfPurchases);
+        numberGenerate = new LottoGenerator(numberOfPurchases);
     }
 
     @DisplayName("로또 번호의 개수가 6개다")
     @Test
     void create6RandomNumbers() {
-        List<List<Integer>> userAllLotto = numberGenerate.getUserAllLotto();
+        List<List<Integer>> userAllLotto = numberGenerate.getUserLottoTickets();
         List<Integer> userLotto = new ArrayList<>();
         userLotto.addAll(userAllLotto.get(0));
 
@@ -34,7 +34,7 @@ public class NumberGenerateTest {
     @DisplayName("로또 번호에 중복된 숫자가 없다")
     @Test
     void createUniqueNumbers() {
-        List<List<Integer>> userAllLotto = numberGenerate.getUserAllLotto();
+        List<List<Integer>> userAllLotto = numberGenerate.getUserLottoTickets();
         List<Integer> userLotto = new ArrayList<>();
         userLotto.addAll(userAllLotto.get(0));
         Set<Integer> randomSet = new HashSet<>(userLotto);
@@ -46,7 +46,7 @@ public class NumberGenerateTest {
     @Test
     void purchasesThreeLotto() {
 
-        List<List<Integer>> userAllLotto = numberGenerate.getUserAllLotto();
+        List<List<Integer>> userAllLotto = numberGenerate.getUserLottoTickets();
 
         assertThat(userAllLotto.size()).isEqualTo(numberOfPurchases);
     }

@@ -5,17 +5,17 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NumberGenerate {
+public class LottoGenerator {
 
-    private final List<List<Integer>> userAllLotto;
+    private final List<List<Integer>> userLottoTickets;
 
-    public NumberGenerate(int numberOfPurchases) {
+    public LottoGenerator(int purchasesQuantity) {
 
         List<List<Integer>> userLottoNumbers = new ArrayList<>();
-        for (int purchases = 0; purchases < numberOfPurchases; purchases++) {
+        for (int purchases = 0; purchases < purchasesQuantity; purchases++) {
             userLottoNumbers.add(createRandom());
         }
-        this.userAllLotto = userLottoNumbers;
+        this.userLottoTickets = userLottoNumbers;
     }
 
     private static List<Integer> createRandom() {
@@ -23,7 +23,7 @@ public class NumberGenerate {
         return userLottoNumbers;
     }
 
-    public List<List<Integer>> getUserAllLotto() {
-        return this.userAllLotto;
+    public List<List<Integer>> getUserLottoTickets() {
+        return this.userLottoTickets;
     }
 }

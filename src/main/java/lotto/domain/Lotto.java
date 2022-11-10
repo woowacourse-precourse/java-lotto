@@ -25,15 +25,13 @@ public class Lotto {
 
     public int checkNumbers(List<Integer> userLottoNumbers) {
         userLottoNumbers.removeAll(numbers);
-        int correctNumbers = numbers.size() - userLottoNumbers.size();
-        return correctNumbers;
+        int matchingNumber = numbers.size() - userLottoNumbers.size();
+        return matchingNumber;
     }
 
     public List<Integer> getNumbers() {
         return this.numbers;
     }
-
-
 
 
 }

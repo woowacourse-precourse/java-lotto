@@ -37,6 +37,6 @@ public class BonusTest {
     void isUserNumberIncludeBonusNumber() {
         Bonus bonus = new Bonus(List.of(1, 2, 3, 4, 5, 6), 7);
 
-        assertThat(bonus.checkBonus(Arrays.asList(7, 8, 9, 10, 11, 12))).isTrue();
+        assertThat(bonus.checkNumber(Arrays.asList(7, 8, 9, 10, 11, 12))).isTrue();
     }
 }

@@ -1,24 +1,29 @@
 package lotto.entity;
 
 public enum Place {
-    FIRST("6개 일치", 2_000_000_000),
-    SECOND("5개 일치, 보너스 볼 일치", 30_000_000),
-    THIRD("5개 일치", 1_500_000),
-    FOURTH("4개 일치", 50_000),
-    FIFTH("3개 일치", 5_000);
-    private final String rank;
+    FIRST(2_000_000_000, 6, "6개 일치"),
+    SECOND(30_000_000, 5, "5개 일치, 보너스 볼 일치" ),
+    THIRD(1_500_000, 5, "5개 일치"),
+    FOURTH(50_000, 4, "4개 일치"),
+    FIFTH(5_000, 3, "3개 일치");
+
     private final long prizeMoney;
+    private final int matchingNumber;
+    private final String words; //ui?
 
-    private Place(String rank, long prizeMoney) {
-        this.rank = rank;
+    private Place(long prizeMoney, int matchingNumber, String words) {
         this.prizeMoney = prizeMoney;
-    }
-
-    public String getRank() {
-        return this.rank;
+        this.matchingNumber = matchingNumber;
+        this.words = words;
     }
 
     public long getPrizeMoney() {
         return this.prizeMoney;
+    }
+    public int getMatchingNumber() {
+        return this.matchingNumber;
+    }
+    public String getWords() {
+        return this.words;
     }
 }

@@ -19,13 +19,13 @@ public class AmountTest {
     @DisplayName("1000원으로 나누어 떨어지지 않으면 예외가 발생한다")
     @Test
     void inputNumberDividedBy1000RemainingNumber() {
-        assertThatThrownBy(() -> amount.calculateNumberOfPurchases(12344))
+        assertThatThrownBy(() -> amount.calculatePurchasesQuantity(12344))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("만 원 입력 시 10개를 반환한다")
     @Test
     void returnPurchasesNumber() {
-        assertThat(amount.calculateNumberOfPurchases(10000)).isEqualTo(10);
+        assertThat(amount.calculatePurchasesQuantity(10000)).isEqualTo(10);
     }
 }

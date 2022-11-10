@@ -3,17 +3,17 @@ package lotto.domain;
 import java.util.List;
 
 public class Bonus {
-    private final int bonusNumber;
+    private final int number;
     private final List<Integer> lottoNumbers;
 
     public Bonus(List<Integer> lottoNumbers, int bonusNumber) {
         validate(lottoNumbers, bonusNumber);
-        this.bonusNumber = bonusNumber;
+        this.number = bonusNumber;
         this.lottoNumbers = lottoNumbers;
     }
 
-    private void validate(List<Integer> numbers, int bonusNumber) {
-        if (numbers.contains(bonusNumber)) {
+    private void validate(List<Integer> lottoNumbers, int bonusNumber) {
+        if (lottoNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException();
         }
         if (bonusNumber < 1 || 45 < bonusNumber) {
@@ -21,8 +21,8 @@ public class Bonus {
         }
     }
 
-    public boolean checkBonus(List<Integer> userNumbers) {
-        if (userNumbers.contains(bonusNumber)) {
+    public boolean checkNumber(List<Integer> userLottoNumbers) {
+        if (userLottoNumbers.contains(number)) {
             return true;
         }
         return false;
