@@ -1,8 +1,5 @@
 package lotto.domain;
 
-import java.util.List;
-import java.util.regex.Matcher;
-
 /**
  * packageName : lotto.domain
  * fileName : Calculator
@@ -17,17 +14,21 @@ import java.util.regex.Matcher;
 public class Calculator {
     private static int revenue = 0;
     private static double yield = 0;
-    public static void revenue(int rankOne, int rankTwo, int rankThree, int rankFour, int rankFive) {
-        revenue += rankOne * Rank.ONE.getMoney();
-        revenue += rankTwo * Rank.TWO.getMoney();
-        revenue += rankThree * Rank.THREE.getMoney();
-        revenue += rankFour * Rank.FOUR.getMoney();
-        revenue += rankFive * Rank.FIVE.getMoney();
+
+    public static int revenue(int rankOne, int rankTwo, int rankThree, int rankFour, int rankFive) {
+        int result = 0;
+        result += rankOne * Rank.ONE.getMoney();
+        result += rankTwo * Rank.TWO.getMoney();
+        result += rankThree * Rank.THREE.getMoney();
+        result += rankFour * Rank.FOUR.getMoney();
+        result += rankFive * Rank.FIVE.getMoney();
+        return result;
     }
 
-    public static void yield(double revenue, double coin) {
+    public static double yield(double revenue, double coin) {
         double result = (((revenue - coin)/coin) * 100);
         yield = Math.round(result * 10)/10.0;
         System.out.println(yield);
+        return result;
     }
 }
