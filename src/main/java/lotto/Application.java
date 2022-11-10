@@ -48,14 +48,13 @@ public class Application {
 
         money = convertMoneyInput(readLine());
         user = new User(money);
+        user.printLottos();
 
         winningNumbers = convertNumbersInput(readLine());
         winningLotto = new Lotto(winningNumbers);
 
         bonusNumber = convertBonusNumberInput(readLine());
         Lotto.setBonusNumber(bonusNumber);
-
-
 
     }
 }

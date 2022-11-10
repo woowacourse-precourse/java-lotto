@@ -47,6 +47,35 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 생성_올바른_로또() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    User user = new User(8000);
+                    user.printLottos();
+                    assertThat(output()).contains(
+                            "8개를 구매했습니다.",
+                            "[8, 21, 23, 41, 42, 43]",
+                            "[3, 5, 11, 16, 32, 38]",
+                            "[7, 11, 16, 35, 36, 44]",
+                            "[1, 8, 11, 31, 41, 42]",
+                            "[13, 14, 16, 38, 42, 45]",
+                            "[7, 11, 30, 40, 42, 43]",
+                            "[2, 13, 22, 32, 38, 45]",
+                            "[1, 3, 5, 14, 22, 45]"
+                    );
+                },
+                List.of(8, 21, 23, 41, 42, 43),
+                List.of(3, 5, 11, 16, 32, 38),
+                List.of(7, 11, 16, 35, 36, 44),
+                List.of(1, 8, 11, 31, 41, 42),
+                List.of(13, 14, 16, 38, 42, 45),
+                List.of(7, 11, 30, 40, 42, 43),
+                List.of(2, 13, 22, 32, 38, 45),
+                List.of(1, 3, 5, 14, 22, 45)
+        );
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
