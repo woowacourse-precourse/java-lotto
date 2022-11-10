@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.*;
 public class MachineTest {
     @Test
     @DisplayName("랜덤 숫자 6개를 가진 로또를 생성한다.")
-    void generateSingleLotto_generate_lotto() {
+    void generateOneLottoWithoutException() {
         Machine machine = new Machine();
         assertThatCode(() -> machine.generateSingleLotto())
                 .doesNotThrowAnyException();
