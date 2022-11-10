@@ -29,4 +29,9 @@ public class Lotto {
         if (numberSet.size() != 6)
             throw new IllegalLottoException();
     }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }
