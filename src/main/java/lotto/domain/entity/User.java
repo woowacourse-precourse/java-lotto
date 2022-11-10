@@ -7,13 +7,12 @@ public class User {
     private Lottos lottos;
     private Money money;
 
-    private User(int money, Lottos lottos) {
-        int time = this.money.currentTime();
-        this.money = Money.from(money);
+    private User(Money money, Lottos lottos) {
+        this.money = money;
         this.lottos = lottos;
     }
 
-    public static User of(int money, Lottos lottos) {
+    public static User of(Money money, Lottos lottos) {
         return new User(money, lottos);
     }
 

@@ -4,6 +4,8 @@ import static lotto.common.message.ConsoleOut.*;
 
 import lotto.domain.Generator;
 import lotto.domain.entity.LottoMachine;
+import lotto.domain.entity.Lottos;
+import lotto.domain.entity.Money;
 import lotto.domain.entity.Report;
 import lotto.domain.entity.User;
 import lotto.infrastructure.GeneratorImpl;
@@ -14,9 +16,12 @@ public class LottoProcess {
 
     public static void run() {
         System.out.println(INPUT_COST_MASSAGE);
-        int money = generator.generateMoney();
+        int generateMoney = generator.generateMoney();
+        Money money = Money.from(generateMoney);
+        Lottos lottos = Lottos.from(money.currentTime());
 
-        User user = User.of(money, generator);
+
+        User user = User.of(money, lottos);
         System.out.println(user.printCurrentTime() + AMOUNT_OF_LOTTOS_MESSAGE);
         user.printUserLottosNumbers();
 

@@ -19,11 +19,6 @@ public class GeneratorImpl implements Generator {
     }
 
     @Override
-    public List<Integer> lottoNumbersGenerator() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
-    }
-
-    @Override
     public int generateMoney() {
         String moneyUnChangedType = Console.readLine();
 
