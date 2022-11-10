@@ -1,6 +1,7 @@
 package lotto.model;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -28,4 +29,15 @@ public class Lotto {
         return numbers.contains(number);
     }
 
+    private List<Integer> sortedLottoNumber() {
+        return numbers.stream()
+                .sorted(Integer::compare)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public String toString() {
+        List<Integer> result = sortedLottoNumber();
+        return result.toString();
+    }
 }

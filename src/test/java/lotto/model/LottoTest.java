@@ -35,7 +35,7 @@ class LottoTest {
 
     @DisplayName("두 로또를 비교하여 일치 한 숫자개수를 반환한다.")
     @Test
-    void count_match_numbers_two_lotto(){
+    void count_match_numbers_two_lotto() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Lotto zeroMatchLotto = new Lotto(List.of(7, 8, 9, 10, 11, 12));
         assertThat(lotto.countMathNumbers(zeroMatchLotto)).isEqualTo(0);
@@ -54,5 +54,12 @@ class LottoTest {
         assertThat(lotto.containsNumber(7)).isFalse();
 
         assertThat(lotto.containsNumber(1)).isTrue();
+    }
+
+    @DisplayName("로또 번호 오름차순으로 출력")
+    @Test
+    void print_sorted_lotto() {
+        Lotto lotto = new Lotto(List.of(6, 3, 5, 1, 2, 8));
+        assertThat(lotto.toString()).isEqualTo(List.of(1,2,3,5,6,8).toString());
     }
 }
