@@ -7,17 +7,6 @@ import org.junit.jupiter.api.Test;
 
 class LottoNumbersTest {
 
-    @DisplayName("로또 당첨상태 추가")
-    @Test
-    void add_lotto_status() {
-        LottoNumbers lottoNumbers = new LottoNumbers();
-        lottoNumbers.addStatus(LottoStatus.MATCH_FIVE);
-        assertThat(lottoNumbers.getStatusCount(LottoStatus.MATCH_FIVE)).isEqualTo(1);
-
-        lottoNumbers.addStatus(LottoStatus.MATCH_FIVE);
-        assertThat(lottoNumbers.getStatusCount(LottoStatus.MATCH_FIVE)).isEqualTo(2);
-    }
-
     @DisplayName("로또를 수량만큼 추가")
     @Test
     void add_lotto() {
