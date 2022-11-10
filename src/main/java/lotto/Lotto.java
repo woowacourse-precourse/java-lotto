@@ -15,16 +15,13 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (isWrongSize(numbers)) {
-            System.out.print("[ERROR] 로또 번호는 6개입니다.");
-            throw new IllegalArgumentException();
+            createError(LottoError.WRONG_SIZE);
         }
         if (isDuplicate(numbers)) {
-            System.out.print("[ERROR] 로또 번호는 중복되지 않아야 합니다.");
-            throw new IllegalArgumentException();
+            createError(LottoError.DUPLICATION);
         }
         if (isOutOfBound(numbers)) {
-            System.out.print("[ERROR] 로또 번호는 1부터 45사이의 숫자여야 합니다.");
-            throw new IllegalArgumentException();
+            createError(LottoError.OUT_OF_BOUND);
         }
     }
     private boolean isWrongSize(List<Integer> numbers) {
@@ -41,5 +38,9 @@ public class Lotto {
             hasWrongBoundaryNumber |= number > LottoState.END.number();
         }
         return hasWrongBoundaryNumber;
+    }
+    private void createError(LottoError error) {
+        error.printMessage();
+        throw new IllegalArgumentException();
     }
 }
