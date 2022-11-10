@@ -8,7 +8,8 @@ public enum GameResult {
     SECOND(5, 30000000, true),
     THIRD(5, 1500000, false),
     FOURTH(4, 50000, false),
-    FIFTH(3, 5000, false);
+    FIFTH(3, 5000, false),
+    ELSE(0, 0, false);
 
     private final int sameNumberCount;
     private final int winnerPrice;
@@ -20,15 +21,20 @@ public enum GameResult {
         this.isSameBonus = isSameBonus;
     }
 
-    public static GameResult of(int sameNumberCount) {
+    public static GameResult of(int sameNumberCount, boolean isSameBonus) {
         return Arrays.stream(GameResult.values())
-                .filter(gameResult -> gameResult.isEqualSameCount(sameNumberCount))
+                .filter(gameResult -> gameResult.isEqualSameNumberCount(sameNumberCount))
+                .filter(gameResult -> gameResult.isEqualSameBonus(isSameBonus))
                 .findFirst()
-                .orElseThrow();
+                .orElse(ELSE);
     }
 
-    private boolean isEqualSameCount(int sameCount) {
+    private boolean isEqualSameNumberCount(int sameCount) {
         return this.sameNumberCount == sameCount;
+    }
+
+    private boolean isEqualSameBonus(boolean isSameBonus) {
+        return this.isSameBonus == isSameBonus;
     }
 
     public boolean isFirst() {
@@ -37,5 +43,9 @@ public enum GameResult {
 
     public boolean isSecond() {
         return this == SECOND;
+    }
+
+    public boolean isThird() {
+        return this == THIRD;
     }
 }

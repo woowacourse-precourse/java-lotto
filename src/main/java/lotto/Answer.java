@@ -13,7 +13,8 @@ public class Answer {
     }
 
     public GameResult play(Lotto lotto) {
-        int countResult = answer.countContainsNumber(lotto);
-        return GameResult.of(countResult);
+        int count = answer.countContainsNumber(lotto);
+        boolean hasBonus = lotto.isContains(bonusNumber);
+        return GameResult.of(count, hasBonus);
     }
 }

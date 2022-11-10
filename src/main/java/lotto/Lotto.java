@@ -18,7 +18,7 @@ public class Lotto {
                 .count();
     }
 
-    private boolean isContains(int otherNumber) {
+    public boolean isContains(int otherNumber) {
         return numbers.contains(otherNumber);
     }
 }
