@@ -62,4 +62,16 @@ public class Application {
 
         System.out.println("[ERROR] 알맞은 개수의 숫자를 입력해야 합니다.");
     }
+
+    public static void validateCashIsInteger(String input) {
+
+        for (int i = 0; i < input.length(); i++) {
+
+            if (input.charAt(i) < 48 || input.charAt(i) > 57) {
+
+                printErrorAboutInteger();
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }
