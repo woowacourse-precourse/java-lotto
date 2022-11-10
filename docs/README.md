@@ -2,7 +2,7 @@
 
 ## ✨ 기능 구현 목록
 
-- [ ] 구입금액을 입력받는 기능 구현.
+- [x] 구입금액을 입력받는 기능 구현.
     - [x] 입력받은 금액이 숫자가 아닐시 `IllegalArgumentException` 발생 시키는 기능
     - [x] 입력 받은 금액이 1000의 배수가 아닐시 `IllegalArgumentException` 발생 시키는 기능
     - [x] 공백을 입력했을 경우 `IllegalArgumentException` 발생 시키는 기능
