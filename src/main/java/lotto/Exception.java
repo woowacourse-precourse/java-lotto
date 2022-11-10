@@ -1,12 +1,11 @@
 package lotto;
 
 public class Exception {
-    public int initialInput(String input) {
+    public void initialInput(String input) {
         onlyNumber(input);
         int inMoney = Integer.parseInt(input);
         onlyOneThousand(inMoney);
         System.out.println();
-        return inMoney;
     }
 
     private void onlyOneThousand(int inMoney) {
@@ -16,21 +15,21 @@ public class Exception {
         }
     }
 
-    private static void onlyNumber(String temp) {
+    private void onlyNumber(String temp) {
         for (int i = 0; i < temp.length(); i++) {
-            if (temp.charAt(i) < '0' || temp.charAt(i) > '9') {
-                System.out.println("[ERROR] 숫자만 입력해주세요");
-                throw new IllegalArgumentException();
+            try {
+                if (temp.charAt(i) < '0' || temp.charAt(i) > '9') getMS();
+            }catch (IllegalArgumentException e){
+                System.out.println(e.getMessage());
             }
         }
     }
 
-    public int inputWinningBonus(String input) {
+    public void inputWinningBonus(String input) {
         onlyNumberBonus(input);
         int bonus = Integer.parseInt(input);
         onlyRangeBonus(bonus);
         System.out.println();
-        return bonus;
     }
 
     private void onlyRangeBonus(int bonus) {
@@ -42,10 +41,14 @@ public class Exception {
 
     private void onlyNumberBonus(String input) {
         for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) < '0' || input.charAt(i) > '9') {
-                System.out.println("[ERROR] 숫자만 입력해주세요.");
-                throw new IllegalArgumentException();
+            try {
+                if (input.charAt(i) < '0' || input.charAt(i) > '9') getMS();
+            }catch (IllegalArgumentException e){
+                System.out.println(e.getMessage());
             }
         }
+    }
+    private void getMS(){
+        throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
     }
 }
