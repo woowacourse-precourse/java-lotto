@@ -32,7 +32,7 @@ public class LottoMachine {
 
     private int lottoCount(int money) throws IllegalArgumentException {
         validateDivisible(money);
-        return money / 2;
+        return money / 1000;
     }
 
     private void validateDivisible(int money) {
