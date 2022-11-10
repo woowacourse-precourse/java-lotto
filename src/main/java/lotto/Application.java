@@ -2,6 +2,7 @@ package lotto;
 
 import constant.ExceptionNumber;
 import domain.BuyLottoList;
+import view.InputLottoNumber;
 import view.InputUserMoney;
 
 public class Application {
@@ -13,6 +14,7 @@ public class Application {
             return;
         }
         buyLottoList.putLottoNumberList(money);
+        InputLottoNumber.inputLottoNumber();
 
 
     }
