@@ -45,8 +45,6 @@
     - [ ] 특수 문자가 존재하는 경우
     - [ ] 공백이 포함된 경우
 
-- [ ] 예외 처리 후엔 종료되도록 놔두기
-
 ## 입력 (Console.readLine())
 - [ ] 구입 금액 입력 ([^\d])
   - [ ] 예외 처리 (IllegalArgumentException)
