@@ -33,4 +33,16 @@ class ValidateTest {
     public void 정수_테스트_숫자() {
         assertThatCode(() -> validate.validInt("123")).doesNotThrowAnyException();
     }
+
+    @Test
+    public void 나누어떨어지는_값() {
+        assertThatCode(() -> validate.validDivisible(51_000)).doesNotThrowAnyException();
+    }
+
+    @Test
+    public void 나누어떨어지지_않는_값() {
+        Throwable exception =
+                assertThrows(IllegalArgumentException.class, () -> validate.validDivisible(51_001));
+        assertThat(exception.getMessage()).contains(Invalid.NOT_DIVISIBLE.toString());
+    }
 }
