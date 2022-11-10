@@ -12,7 +12,11 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR]");
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }

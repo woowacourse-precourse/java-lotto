@@ -1,20 +1,20 @@
 package lotto.view;
 
+import lotto.domain.Lotto;
 import lotto.utils.ConsoleLog;
 
 import java.util.List;
-import java.util.Map;
 
 public class OutputConsole {
     private static final ConsoleLog consolelog = ConsoleLog.getInstance();
     private static final String LINE = "\r\n";
 
-    public static void checkPurchaseLotto(List<List<Integer>> purchaseLotto) {
+    public void checkPurchaseLotto(List<Lotto> purchaseLotto) {
         consolelog.println(LINE + purchaseLotto.size() + "개를 구매했습니다.");
-        purchaseLotto.forEach(lotto -> consolelog.println(String.valueOf(lotto)));
+        purchaseLotto.forEach(lotto -> consolelog.println(String.valueOf(lotto.getNumbers())));
     }
 
-    public static void showWinningStatistics() {
+    public void showWinningStatistics() {
         consolelog.println(LINE + "당첨 통계");
         consolelog.println("---");
         consolelog.println("3개 일치 (5,000원) - ");
