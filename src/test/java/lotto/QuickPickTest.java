@@ -47,4 +47,11 @@ public class QuickPickTest {
                             (1 + ERROR_RANGE) / LottoState.RANGE.number());
         }
     }
+    @DisplayName("번호가 오름차순이다.")
+    @Test
+    void isAscendingOrder() {
+        for (int i = 0; i < quickPickNumbers.size() - 1; i++) {
+            assertThat(quickPickNumbers.get(i)).isLessThan(quickPickNumbers.get(i + 1));
+        }
+    }
 }
