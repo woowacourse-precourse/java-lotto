@@ -100,7 +100,7 @@ public class Application {
         }
     }
 
-    public static Integer inputCashStringToInteger(String input) {
+    public static Integer changeCashStringToInteger(String input) {
         int inputCash = 0;
 
         for (int i = 0; i < input.length(); i++) {
@@ -123,6 +123,6 @@ public class Application {
         validateCashIsInteger(input);
         validateCashIsDividedThousand(input);
 
-        return inputCashStringToInteger(input);
+        return changeCashStringToInteger(input);
     }
 }

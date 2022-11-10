@@ -71,7 +71,7 @@ class ApplicationTest extends NsTest {
     @Test
     void inputCashStringToIntegerTest() {
 
-        assertThat(inputCashStringToInteger("12345")).isEqualTo(12345);
+        assertThat(changeCashStringToInteger("12345")).isEqualTo(12345);
     }
 
     @Override
