@@ -14,6 +14,14 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+
+        if (isDuplicate(numbers)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private boolean isDuplicate(List<Integer> numbers) {
+        return numbers.size() != numbers.stream().distinct().count();
     }
 
     // TODO: 추가 기능 구현
