@@ -47,10 +47,10 @@ class LottoTest {
         LottoRank lottoRank5 = lotto5.getCorrectLottoCount(winningLotto, bounsNumber);
 
         //then
-        assertThat(lottoRank1.toString()).isEqualTo("FIRST");
-        assertThat(lottoRank2.toString()).isEqualTo("SECOND");
-        assertThat(lottoRank3.toString()).isEqualTo("THIRD");
-        assertThat(lottoRank4.toString()).isEqualTo("FOURTH");
-        assertThat(lottoRank5.toString()).isEqualTo("FIFTH");
+        assertThat(lottoRank1.name()).isEqualTo("FIRST");
+        assertThat(lottoRank2.name()).isEqualTo("SECOND");
+        assertThat(lottoRank3.name()).isEqualTo("THIRD");
+        assertThat(lottoRank4.name()).isEqualTo("FOURTH");
+        assertThat(lottoRank5.name()).isEqualTo("FIFTH");
     }
 }
