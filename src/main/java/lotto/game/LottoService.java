@@ -3,7 +3,9 @@ package lotto.game;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import lotto.Lotto;
@@ -62,5 +64,12 @@ public class LottoService {
             lottos.add(new Lotto(numbers));
         }
         return lottos;
+    }
+
+    public LottoGrade winningConfirm(WinningLotto winningLotto, Lotto lotto) {
+        boolean bonusMatch = lotto.getNumbers().contains(winningLotto.getBonusNumber());
+        Set<Integer> winningNumbers = new HashSet<>(lotto.getNumbers());
+        winningNumbers.retainAll(winningLotto.getLotto().getNumbers());
+        return LottoGrade.confirmWinning(winningNumbers.size(), bonusMatch);
     }
 }
