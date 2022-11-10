@@ -1,7 +1,10 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LottoController {
@@ -21,5 +24,28 @@ public class LottoController {
             throw new IllegalArgumentException("[ERROR] 가격은 천원 단위로 입력해주세요.");
         }
         return price / oneLottoPrice;
+    }
+
+    public List<Integer> inputWinningLotto(){
+        List<Integer> winningLotto = new ArrayList<>();
+        System.out.println("당첨 번호를 입력해 주세요.");
+        inputWinningNumbers(winningLotto);
+        System.out.println("보너스 번호를 입력해 주세요.");
+        inputBonusNumber(winningLotto);
+
+        return winningLotto;
+    }
+
+    public void inputWinningNumbers(List<Integer> winningLotto){
+        String inputWinnerNumbers = Console.readLine();
+        String[] winningNumbers = inputWinnerNumbers.split(",");
+        for (String winningNumber : winningNumbers) {
+            winningLotto.add(Integer.parseInt(winningNumber));
+        }
+    }
+
+    public void inputBonusNumber(List<Integer> winningLotto){
+        String bonusNumber = Console.readLine();
+        winningLotto.add(Integer.parseInt(bonusNumber));
     }
 }
