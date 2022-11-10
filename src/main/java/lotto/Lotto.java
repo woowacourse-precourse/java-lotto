@@ -32,6 +32,19 @@ public class Lotto {
         }
     }
 
+
+    public static void setBonusNumber(int bonusNumber) {
+        if (LottoNumberValidator.isOutOfRange(bonusNumber)) {
+            throw new IllegalArgumentException();
+        }
+
+        Lotto.bonusNumber = bonusNumber;
+    }
+
+    public static int getBonusNumber() {
+        return Lotto.bonusNumber;
+    }
+
     public static Lotto generate() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         Lotto lotto = new Lotto(numbers);
