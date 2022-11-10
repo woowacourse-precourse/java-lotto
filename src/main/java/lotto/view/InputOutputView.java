@@ -38,10 +38,10 @@ public class InputOutputView {
         return readLine();
     }
 
-    public int getBonusNumber() {
+    public String getBonusNumber() {
         System.out.println();
         System.out.println("보너스 번호를 입력해 주세요");
-        return Integer.parseInt(readLine());
+        return readLine();
     }
 
     public void saveResult(List<Integer> grades) {
@@ -50,7 +50,7 @@ public class InputOutputView {
         moneyEnumClass.setResult(MoneyEnumClass.MoneyEnum.FOURTH, "4개 일치 (50,000원) - ");
         moneyEnumClass.setResult(MoneyEnumClass.MoneyEnum.THIRD, "5개 일치 (1,500,000원) - ");
         moneyEnumClass.setResult(MoneyEnumClass.MoneyEnum.SECOND, "5개 일치, 보너스 볼 일치 (30,000,000원) - ");
-        moneyEnumClass.setResult(MoneyEnumClass.MoneyEnum.FIRST, "6개 일치 (20,000,000,000원) - ");
+        moneyEnumClass.setResult(MoneyEnumClass.MoneyEnum.FIRST, "6개 일치 (2,000,000,000원) - ");
         printResult(grades, moneyEnumClass);
     }
     public void setNum(List<Integer> grades) {
