@@ -41,6 +41,10 @@ public enum LottoRanking {
         this.winnings = winnings;
     }
 
+    public int sumOfWinnings(int count) {
+        return winnings * count;
+    }
+
     public boolean isMatchedNumberCount(int count) {
         return matchNumberCount == count && !isMatchedBonusNumber;
     }

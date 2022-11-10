@@ -19,6 +19,12 @@ public class LottoResults {
         return stringBuilder.toString();
     }
 
+    public int totalWinnings() {
+        return results.entrySet().stream()
+                .mapToInt(entry -> entry.getKey().sumOfWinnings(entry.getValue()))
+                .sum();
+    }
+
     // 테스트용 메서드
     Map<LottoRanking, Integer> results() {
         return Map.copyOf(results);
