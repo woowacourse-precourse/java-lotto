@@ -40,14 +40,14 @@ public class Validator {
         }
     }
 
-    public void containDuplicate(List<String> inputs) {
-        Set<String> inputSet = new HashSet<>(inputs);
+    public void containDuplicate(List<Integer> inputs) {
+        Set<Integer> inputSet = new HashSet<>(inputs);
         if (inputSet.size() != inputs.size()) {
             throw new IllegalArgumentException("[ERROR] 중복되지 않은 값만 입력 가능합니다.");
         }
     }
 
-    public void listLengthCheck(List<String> inputs, int length) {
+    public void listLengthCheck(List<Integer> inputs, int length) {
         if(inputs.size() != length) {
             throw new IllegalArgumentException("[ERROR] 6개의 번호를 입력해주세요.");
         }

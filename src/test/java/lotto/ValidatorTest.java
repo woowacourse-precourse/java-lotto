@@ -58,7 +58,7 @@ public class ValidatorTest {
     @DisplayName("중복된 값이 있는 리스트일 경우")
     @Test
     void validateContainDuplicate() {
-        List<String> inputs = List.of("1", "1", "2", "3", "4", "5");
+        List<Integer> inputs = List.of(1, 1, 2, 3, 4, 5);
         assertThatThrownBy(() -> validator.containDuplicate(inputs))
                 .isInstanceOf(IllegalArgumentException.class);
     }
