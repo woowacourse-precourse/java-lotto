@@ -1,14 +1,17 @@
 package lotto;
 
+import java.math.BigInteger;
+
 class CheckInputException {
 
     private static final String ERROR_MESSAGE = "[ERROR]";
     public static void checkBuyerInputIsMinus(final String input) throws IllegalArgumentException{
 
-        final Long money = Long.valueOf(input);
+        final BigInteger money = new BigInteger(input);
+        final BigInteger zero = BigInteger.ZERO;
 
-        if (money < 0) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + " 입력하신 돈이 음수입니다.");
+        if (money.compareTo(zero) == -1 || money.compareTo(zero) == 0) {
+            throw new IllegalArgumentException(ERROR_MESSAGE + " 입력하신 돈이 음수이거나 0입니다.");
         }
     }
 
