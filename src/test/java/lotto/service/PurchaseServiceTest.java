@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PurchaseServiceTest extends NsTest {
 
@@ -18,11 +19,17 @@ class PurchaseServiceTest extends NsTest {
     }
 
     @Test
-    @DisplayName("로또 사기")
+    @DisplayName("로또 8개 사기")
     void test1() {
+        // given
         run("8000");
 
-        List<Lotto> purchase = purchaseService.purchase();
+        // when
+        List<Lotto> lottos = purchaseService.purchase();
+
+        // then
+        assertEquals(8, lottos.size());
+        assertThat(output()).contains("8개를 구매했습니다.");
     }
 
     @Override
