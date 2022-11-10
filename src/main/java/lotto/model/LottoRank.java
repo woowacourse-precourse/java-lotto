@@ -1,5 +1,6 @@
 package lotto.model;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public enum LottoRank {
@@ -42,10 +43,12 @@ public enum LottoRank {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
+        DecimalFormat formatter = new DecimalFormat("###,###");
 
         return stringBuilder.append(description)
                             .append(" (")
-                            .append(reward)
+                            .append(formatter.format(reward))
+                            .append("원")
                             .append(") ")
                             .append("- ")
                             .toString();
