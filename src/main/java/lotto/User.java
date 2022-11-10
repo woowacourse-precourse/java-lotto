@@ -5,7 +5,9 @@ import java.util.List;
 public class User {
     private List<Lotto> userLottos;
 
-    public User(int inputMoney) {
+    public User() {}
 
+    public int insertMoney() {
+        return 0;
     }
 }

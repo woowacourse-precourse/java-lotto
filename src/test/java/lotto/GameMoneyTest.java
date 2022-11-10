@@ -1,24 +1,24 @@
 package lotto;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class InsertMoneyTest {
+class GameMoneyTest {
 
+    @DisplayName(value = "1000단위에 대한 게임머니 예외 테스트")
     @ParameterizedTest
     @CsvSource({"1000,true", "12000,true", "100,false", "12001,false"})
-    void 입력_금액_예외_테스트(int money, boolean expectedException) {
+    void createGameMoneyExceptionTest(int money, boolean expectedException) {
         if (expectedException) {
-            InsertMoney insertMoney = new InsertMoney(money);
-            assertThat(insertMoney).isInstanceOf(InsertMoney.class);
+            GameMoney gameMoney = new GameMoney(money);
+            assertThat(gameMoney).isInstanceOf(GameMoney.class);
         }
         if (!expectedException) {
-            assertThatThrownBy(() -> new InsertMoney(money))
+            assertThatThrownBy(() -> new GameMoney(money))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
