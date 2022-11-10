@@ -24,7 +24,7 @@ public class LottoMachine {
 
 		String winningNumbers = InputView.inputWinningNumber();
 		winningLotto = new WinningLotto(convertNumber(winningNumbers));
-
+		winningLotto.setBonusNumber(InputView.inputBonusNumber());
 	}
 
 	private List<Integer> convertNumber(String numbers) {
@@ -32,4 +32,5 @@ public class LottoMachine {
 			.map(Integer::parseInt)
 			.collect(Collectors.toList());
 	}
+
 }

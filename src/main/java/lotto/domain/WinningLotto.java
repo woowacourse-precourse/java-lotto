@@ -9,7 +9,7 @@ public class WinningLotto extends Lotto {
 		super(numbers);
 	}
 
-	public void setBonusNumber(int bonusNumber) {
-		this.bonusNumber = bonusNumber;
+	public void setBonusNumber(String bonusNumber) {
+		this.bonusNumber = Integer.parseInt(bonusNumber);
 	}
 }
