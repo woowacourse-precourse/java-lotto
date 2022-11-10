@@ -24,7 +24,7 @@ public class MemberWriteService {
     }
 
     // 당첨 로또 입력 기능
-    public WinningLottoNumber winningLottoNumbers(String writeLottoNumber, String writeBonusNumber) {
+    public WinningLottoNumber writeWinningLottoNumbers(String writeLottoNumber, String writeBonusNumber) {
         List<Integer> winningNumbers = Arrays.stream(writeLottoNumber.split(","))
                 .map(Integer::valueOf)
                 .collect(Collectors.toList());
@@ -39,6 +39,8 @@ public class MemberWriteService {
         if (!isNumberCount(winningNumbers) && !isNumberRange(winningNumbers)) {
             throw new IllegalArgumentException("This Lotto Number is Exception !!");
         }
+
+        validDuplicate(winningNumbers);
     }
 
     private boolean isNumberCount(List<Integer> winningNumbers) {
@@ -47,6 +49,15 @@ public class MemberWriteService {
 
     private boolean isNumberRange(List<Integer> winningNumbers) {
         return winningNumbers.stream().allMatch(number -> number >= 1 && number <= 45);
+    }
+
+    private void validDuplicate(List<Integer> winningNumbers) {
+        int currentSize = winningNumbers.size();
+        int distinctSize = (int) winningNumbers.stream().distinct().count();
+
+        if (currentSize != distinctSize) {
+            throw new IllegalArgumentException("This Lotto Number is Duplicated Exception !!");
+        }
     }
 
     private int getValidBonusNumber(String writeBonusNumber) {
