@@ -46,7 +46,7 @@ public class UserInputHandler {
         try{
             return Integer.parseInt(lottoNumberInput);
         }catch(NumberFormatException ex){
-            throw new IllegalArgumentException("[ERROR] 콤마(,) 와 숫자 이외의 다른 값을 당첨 값 입력할 수 없습니다.\n");
+            throw new IllegalArgumentException("[ERROR] 콤마(,) 와 정수 이외의 다른 값을 당첨 값 입력할 수 없습니다.\n");
         }
     }
 }
