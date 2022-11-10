@@ -5,7 +5,6 @@ import lotto.domain.*;
 import java.util.*;
 
 public class LottoService {
-    private UserService userService;
     private final List<LottoRanking> rankingList = new ArrayList<>(Arrays.asList(LottoRanking.values()));
 
     public List<GenerateNumbers> generateLotteries(int count) {
@@ -20,23 +19,45 @@ public class LottoService {
         return generateLotteries;
     }
 
-    public List<Integer> sortList(List<Integer> numbers) {
-        Collections.sort(numbers);
+    public void printLotteries(List<GenerateNumbers> generateLotteries) {
+        List<String> lotteries = generateLotteriesToString(generateLotteries);
 
-        return numbers;
+        for (String lotto : lotteries) {
+            System.out.println("[" + lotto + "]");
+        }
+        System.out.println();
     }
 
-    public void calculatorProfit(List<LottoRanking> lottoRankings) {
+    private List<String> generateLotteriesToString(List<GenerateNumbers> generateLotteries) {
+        List<String> lotteries = new ArrayList<>();
+
+        for (GenerateNumbers numbers : generateLotteries) {
+            StringBuffer stringBuffer = new StringBuffer(sortList(numbers).toString());
+            for (int i = stringBuffer.length() - 1; i > 0; i++) {
+                stringBuffer.insert(i, ",");
+            }
+            stringBuffer.insert(numbers.getBonusNumber(), stringBuffer.length() - 1);
+            lotteries.add(stringBuffer.toString());
+        }
+
+        return lotteries;
+    }
+
+    private List<Integer> sortList(GenerateNumbers generateNumbers) {
+        List<Integer> sortNum = generateNumbers.getGenerateNumbers();
+        Collections.sort(sortNum);
+
+        return sortNum;
+    }
+
+    public int calculatorProfit(List<LottoRanking> lottoRankings) {
         int profit = 0;
-        float profitPercent = 0L;
 
         for (int i = 0; i < lottoRankings.size(); i++) {
             profit += lottoRankings.get(i).getReward();
         }
 
-        profitPercent = profit / userService.getMoney();
-
-        System.out.printf("총 수익률은 .1f%입니다.\n", profitPercent);
+        return profit;
     }
 
     public void printPlace(List<LottoRanking> lottoRankings) {
@@ -44,14 +65,12 @@ public class LottoService {
 
         System.out.println("당첨 통계");
         System.out.println("---");
-        for (int i = rankingList.size() - 2; i <= 0; i--) {
+        for (int i = rankingList.size() - 2; i >= 0; i--) {
             LottoRanking lottoRank = rankingList.get(i);
             if (lottoRank != LottoRanking.SECOND_PLACE && lottoRank != LottoRanking.LOSING) {
-                System.out.println(lottoRank.getMatches() + "개 일치 (" + placePrize.get(i) + "원) - "
-                        + Collections.frequency(lottoRankings, lottoRank) + "개");
+                System.out.println(lottoRank.getMatches() + "개 일치 (" + placePrize.get(i) + "원) - " + Collections.frequency(lottoRankings, lottoRank) + "개");
             }
-            System.out.println(lottoRank.getMatches() + "개 일치, 보너스 볼 일치 (" + placePrize.get(i) + "원) - "
-                    + Collections.frequency(lottoRankings, lottoRank) + "개");
+            System.out.println(lottoRank.getMatches() + "개 일치, 보너스 볼 일치 (" + placePrize.get(i) + "원) - " + Collections.frequency(lottoRankings, lottoRank) + "개");
         }
     }
 
@@ -78,6 +97,5 @@ public class LottoService {
 
         return lottoRankings;
     }
-
 
 }
