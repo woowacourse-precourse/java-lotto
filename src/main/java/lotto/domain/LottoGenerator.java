@@ -11,12 +11,20 @@ public class LottoGenerator {
     private static final int LOTTO_NUMBER_LOWER_LIMIT = 1;
     private static final int LOTTO_NUMBER_UPPER_LIMIT = 45;
     private static final int LOTTO_NUMBER_QUANTITY = 6;
+    private static final String MONEY_SHOULD_BE_DIVIDED_BY_ONE_THOUSAND = "[ERROR] 구입금액은 1,000원으로 나누어 떨어져야 합니다.";
 
     private List<Lotto> lottos = new ArrayList<>();
     private int lottoQuantity;
 
     public LottoGenerator(int money) {
+        validateMoney(money);
         lottoQuantity = money / LOTTO_PRICE;
+    }
+
+    private void validateMoney(int money) {
+        if (money % 1000 != 0) {
+            throw new IllegalArgumentException(MONEY_SHOULD_BE_DIVIDED_BY_ONE_THOUSAND);
+        }
     }
 
     public List<Lotto> generateLottos() {
