@@ -13,6 +13,7 @@ public class InputView {
     }
 
     public static int getInputBonusNumber(Lotto prizeLotto) {
+        OutputView.enter();
         System.out.println(INPUT_BONUS_NUMBER);
         return Util.inputBonusNumber(prizeLotto);
     }

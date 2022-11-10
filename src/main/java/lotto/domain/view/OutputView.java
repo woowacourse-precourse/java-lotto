@@ -21,7 +21,14 @@ public class OutputView {
     }
 
     public static String printInputPrizeNumbers() {
+        enter();
         System.out.println(INPUT_PRIZE_NUMBERS);
         return Util.input();
+    }
+
+    public static void printDividingLine() {
+        enter();
+        System.out.println("당첨 통계");
+        System.out.println("---");
     }
 }

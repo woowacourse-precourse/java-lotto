@@ -4,6 +4,7 @@ import lotto.domain.lotto.domain.Lotto;
 import lotto.domain.lotto.presentation.LottoController;
 import lotto.domain.user.domain.User;
 import lotto.domain.user.presentation.UserController;
+import lotto.domain.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ public class Application {
         User user = new User(userMoney, lottos);
         Lotto prizeLotto = lottoController.getPrizeLotto();
         int bonusNumber = lottoController.getBonusNumber(prizeLotto);
-        System.out.println("bonusNumber = " + bonusNumber);
+
+        OutputView.printDividingLine();
     }
 }
