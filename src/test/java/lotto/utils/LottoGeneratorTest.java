@@ -1,4 +1,4 @@
-package lotto;
+package lotto.utils;
 
 import static lotto.utils.LottoGenerator.COUNT;
 import static lotto.utils.LottoGenerator.END_INCLUSIVE;
