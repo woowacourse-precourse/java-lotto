@@ -9,18 +9,18 @@ public class MemberWriteService {
     // 금액 입력 기능
     public int writePay(String writePay) {
         // 사용자가 잘못 입력한 시 IllegalArgumentException 발생
-        validWritePay(writePay);
+        validWrite(writePay);
         return Integer.parseInt(writePay);
     }
 
-    private void validWritePay(String writePay) {
+    private void validWrite(String writePay) {
         if (!isDigit(writePay)) {
             throw new IllegalArgumentException("This Lotto Number is Exception !!");
         }
     }
 
-    private boolean isDigit(String writePay) {
-        return writePay.chars().allMatch(Character::isDigit);
+    private boolean isDigit(String write) {
+        return write.chars().allMatch(Character::isDigit);
     }
 
     // 당첨 로또 입력 기능
@@ -61,21 +61,14 @@ public class MemberWriteService {
     }
 
     private int getValidBonusNumber(String writeBonusNumber) {
-        int bonusNumber;
-        try {
-            bonusNumber = Integer.parseInt(writeBonusNumber);
-            rangeValidBonusNumber(bonusNumber);
-
-        } catch (NumberFormatException e) {
-            System.err.println(e.getMessage());
-            return 0;
-        }
-
+        validWrite(writeBonusNumber);
+        int bonusNumber = Integer.parseInt(writeBonusNumber);
+        validRangeNumber(bonusNumber);
         return bonusNumber;
     }
 
-    private void rangeValidBonusNumber(int bonusNumber) {
-        if (!(bonusNumber >=1 && bonusNumber <= 45)) {
+    private void validRangeNumber(int bonusNumber) {
+        if (!(bonusNumber >= 1 && bonusNumber <= 45)) {
             throw new IllegalArgumentException("This Lotto Number is Exception !!");
         }
     }
