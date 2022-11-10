@@ -1,5 +1,7 @@
 package util.exception;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.regex.Pattern;
 import util.message.ErrorMessage;
 
@@ -11,5 +13,16 @@ public class Valid {
             return false;
         }
         return true;
+    }
+
+    public static boolean hasDuplicateNum(List<Integer> numbers) {
+        HashSet hashSet = new HashSet();
+        for (Integer number : numbers) {
+            if (hashSet.contains(number)) {
+                return true;
+            }
+            hashSet.add(number);
+        }
+        return false;
     }
 }
