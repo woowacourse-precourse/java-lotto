@@ -1,5 +1,6 @@
 package lotto.Lotto;
 
+import lotto.LottoNumberValidator;
 import lotto.Message;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class WinningLotto extends Lotto{
 
     private void specialNumberInBoundValidation(Integer specialNumber)
     {
-        if(isOutOfBound(specialNumber)) {
+        if(LottoNumberValidator.isOutOfBound(specialNumber)) {
             throw new IllegalArgumentException(
                     Message.getLottoNumberOutOfBoundErrorMessageBody());
         }
@@ -29,5 +30,13 @@ public class WinningLotto extends Lotto{
         {
             throw new IllegalArgumentException(Message.getLottoNumberDuplicationErrorMessage());
         }
+    }
+
+    @Override
+    public boolean isContain(Integer lottoNumber)
+    {
+        if(lottoNumber == specialNumber) return true;
+
+        return super.isContain(lottoNumber);
     }
 }

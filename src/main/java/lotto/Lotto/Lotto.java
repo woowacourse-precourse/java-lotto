@@ -1,5 +1,6 @@
 package lotto.Lotto;
 
+import lotto.LottoNumberValidator;
 import lotto.Message;
 
 import java.util.*;
@@ -11,55 +12,18 @@ public class Lotto {
     public static final Integer END_LOTTO_NUMBER = 45;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        LottoNumberValidator.validate(numbers);
         this.lottoNumbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        lottoSizeValidation(numbers);
-        lottoNumberInBoundValidation(numbers);
-        duplicationValidation(numbers);
+    public boolean isContain(Integer lottoNumber)
+    {
+        return lottoNumbers.contains(lottoNumber);
     }
 
-    private void lottoSizeValidation(List<Integer> numbers)
+    public Integer get(int index)
     {
-        if (numbers.size() != LOTTO_SIZE)
-        {
-            throw new IllegalArgumentException(Message.getLottoSizeErrorMessage());
-        }
-    }
-
-    private void lottoNumberInBoundValidation(List<Integer> numbers)
-    {
-        for(int lottoNumber : numbers)
-        {
-            if(isOutOfBound(lottoNumber))
-            {
-                throw new IllegalArgumentException(
-                        Message.getLottoNumberOutOfBoundErrorMessageBody());
-            }
-        }
-    }
-
-    protected boolean isOutOfBound(Integer lottoNumber)
-    {
-        if(lottoNumber < START_LOTTO_NUMBER || END_LOTTO_NUMBER < lottoNumber)
-        {
-            return true;
-        }
-
-        return false;
-    }
-
-    private void duplicationValidation(List<Integer> numbers)
-    {
-        Set<Integer> lottoNumberGroup = new HashSet<>(numbers);
-
-        if(lottoNumberGroup.size() != numbers.size())
-        {
-            throw new IllegalArgumentException(
-                    Message.getLottoNumberDuplicationErrorMessage());
-        }
+        return lottoNumbers.get(index);
     }
 
     @Override
