@@ -31,9 +31,17 @@ public class User {
     }
 
     public List<Integer> readLotto(){
+        System.out.println("당첨 번호를 입력해 주세요.");
         String inputLottoNumber = readLine();
         validateInputLottoNumber(inputLottoNumber);
         return convertLottoNumber(inputLottoNumber);
+    }
+
+    public int readBonus(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonus = readLine();
+        validateBonusNumber(bonus);
+        return Integer.parseInt(bonus);
     }
 
     public void addLotto(List<Integer> lottoNumber, int bonusNumber){
