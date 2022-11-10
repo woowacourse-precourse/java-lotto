@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Validator {
 
-    public void validatePayment(String amountOfPurchaseMoney) {
-        if (!isPositiveInteger(amountOfPurchaseMoney) || !isAvailablePayment(amountOfPurchaseMoney))
+    public void validatePayment(String payment) {
+        if (!isPositiveInteger(payment) || !isAvailablePayment(payment))
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위의 수이어야 합니다.");
     }
 
