@@ -2,7 +2,10 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -22,16 +25,30 @@ public class Lotto {
         }
     }
 
-    public int purchaseAmount() {
-        System.out.println("구입 금액을 입력해 주세요.");
-        int amount = Integer.parseInt(Console.readLine());
-        if (amount <= 0) {
-            throw new IllegalArgumentException("0보다 같거나 작은 수는 허용되지 않습니다.");
-        } else if (amount%1000 != 0) {
-            throw new IllegalArgumentException("구매 금액은 1000 배수여야 합니다.");
+    public int bonus() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int bonusNumber = Integer.parseInt(Console.readLine());
+        if (bonusNumber>45 || bonusNumber<1) {
+            throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
-        return amount;
+
+        return bonusNumber;
     }
 
-    // TODO: 추가 기능 구현
+    public Map<Integer, Integer> rankCount(List<List<Integer>> userLottoNumbers, int bonus) {
+        Map<Integer, Integer> rankNumbers = Map.of(
+                3,0,
+                4,0,
+                5,0,
+                50,0,
+                6,0
+        );
+//        for (List<Integer> lottoNumber : userLottoNumbers) {
+//            long commonNumbers = numbers.stream().filter(lottoNumber::contains).count();
+//            if () {
+//
+//            }
+//        }
+        return rankNumbers;
+    }
 }
