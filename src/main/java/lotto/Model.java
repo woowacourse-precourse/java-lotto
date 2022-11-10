@@ -52,7 +52,7 @@ public class Model {
         return uncheckedLottos;
     }
 
-    public List<Integer> checkBonusNumber(List<Integer> prizeRankings, List<List<Integer>> uncheckedLottos, int bonusNumber){
+    private List<Integer> checkBonusNumber(List<Integer> prizeRankings, List<List<Integer>> uncheckedLottos, int bonusNumber){
         int changedRanking;
 
         for (int rank: prizeRankings) {
@@ -85,5 +85,22 @@ public class Model {
         }
         Collections.sort(lottoNumbers);
         return lottoNumbers;
+    }
+
+    public enum Prize {
+        FIRST("2,000,000,000원"),
+        SECOND("30,000,000원"),
+        THIRD("1,500,000원"),
+        FORTH("50,000원"),
+        FIFTH("5,000원");
+
+        final private String prize;
+        private String getPrize() {
+            return prize;
+        }
+        Prize(String prize) {
+            this.prize = prize;
+        }
+
     }
 }
