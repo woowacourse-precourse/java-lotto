@@ -9,41 +9,49 @@ import java.io.OutputStreamWriter;
 import java.util.List;
 
 public class OutputView {
-    private final String YOU_PURCHASED_MESSAGE = "개를 구매했습니다.";
+    private final String YOU_PURCHASED_MESSAGE = "%d개를 구매했습니다.";
     private final String PRIZE_STATISTICS_MESSAGE = "당첨통계\n---";
-    private final String WINNER_MESSAGE = "개 일치";
-    private final String BONUSBALL_MESSAGE = "보너스 볼 일치";
-    private final String OUTPUT_PRIZE_MESSAGE = WINNER_MESSAGE + "()" + BONUSBALL_MESSAGE + " - " + " 개";
-    private final String PROFIT_MESSAGE = "총 수익률은 입니다.";
+    private final String PROFIT_MESSAGE = "총 수익률은 %.1f%%입니다.";
+    private final String RANK_MESSAGE = "%d개 일치 (%s원) - %d개";
+    private final String SECOND_RANK_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
 
     private BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
     public void printPurchaseCount(int count) {
         try {
-            bw.write(String.valueOf(count));
-            bw.write(YOU_PURCHASED_MESSAGE);
+            String formatted = String.format(YOU_PURCHASED_MESSAGE, count);
+            bw.write(formatted);
             bw.newLine();
-            bw.flush();
         } catch (IOException e) {
 
         }
     }
 
-    void printStatisticsByRank(Winner winner, int winCount) {
+    public void printTotalProfitPercent(float profit) {
         try {
-            bw.write(winner.getCorrectnessCount());
-            bw.write(WINNER_MESSAGE);
-            bw.write(" (");
-            bw.write(winner.getPrizeMoney());
-            bw.write("원) - ");
-            bw.write(winCount);
-            bw.write("개");
+            String formatted = String.format(PROFIT_MESSAGE, profit);
+            bw.write(formatted);
+        } catch (IOException e) {
+
+        }
+
+    }
+
+    public void printStatisticsByRank(Winner winner, int winCount) {
+        try {
+            String raw = RANK_MESSAGE;
+            if(winner.equals(Winner.SECOND)) {
+                raw = SECOND_RANK_MESSAGE;
+            }
+            String formatted = String.format(raw, winner.getCorrectnessCount(), winner.getPrizeMoney(), winCount);
+            bw.write(formatted);
+            bw.newLine();
         } catch (IOException e) {
 
         }
     }
 
-    void printStatisticStart() {
+    public void printStatisticStart() {
         try {
             bw.write(PRIZE_STATISTICS_MESSAGE);
             bw.newLine();
@@ -57,7 +65,6 @@ public class OutputView {
             for (Lotto lotto : lottoList) {
                 bw.write(lotto.toString());
                 bw.newLine();
-                bw.flush();
             }
         } catch (IOException e) {
 
@@ -67,6 +74,14 @@ public class OutputView {
     private void printNewLine() {
         try {
             bw.newLine();
+        } catch (IOException e) {
+
+        }
+    }
+
+    public void flush() {
+        try {
+            bw.flush();
         } catch (IOException e) {
 
         }
