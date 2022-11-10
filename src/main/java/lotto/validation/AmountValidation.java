@@ -1,7 +1,10 @@
 package lotto.validation;
 
+import java.util.regex.Pattern;
+
 public class AmountValidation extends IllegalArgumentException {
     private ErrorMessage message;
+    private RegEx regEx;
 
     public AmountValidation() {
     }
@@ -18,7 +21,11 @@ public class AmountValidation extends IllegalArgumentException {
     }
 
     public void isNumber(String amount) {
-
+        regEx = RegEx.valueOf("NUMBER_REG_EX");
+        if (!Pattern.matches(regEx.getRegEx(), amount)) {
+            message = ErrorMessage.valueOf("NUMBER_EXCEPTION");
+            throwError(message.getMessage());
+        }
     }
 
     public void isZero(String amount) {
