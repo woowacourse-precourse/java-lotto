@@ -1,5 +1,7 @@
 package lotto.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class LottoResult {
@@ -26,7 +28,31 @@ public class LottoResult {
         return sum;
     }
 
-    public double getRateOfReturn(int purchaseAmount) {
+    public double getRateOfReturn(long purchaseAmount) {
         return Math.round((getTotalReward() / (double) purchaseAmount) * 100 / 10.0);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        List<LottoRank> lottoRanks = new ArrayList<>(lottoScore.keySet());
+
+        lottoRanks.sort((lottoRank1, lottoRank2) -> {
+            return (int) (lottoRank1.getCount() - lottoRank2.getCount());
+        });
+
+        for (LottoRank lottoRank : lottoRanks) {
+            if (lottoRank.equals(LottoRank.NONE)) {
+                continue;
+            }
+
+            stringBuilder.append(lottoRank)
+                         .append(lottoScore.get(lottoRank))
+                         .append("개")
+                         .append("\n");
+        }
+
+        return stringBuilder.toString();
     }
 }

@@ -40,6 +40,10 @@ public enum LottoRank {
         return reward;
     }
 
+    public long getCount() {
+        return count;
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
