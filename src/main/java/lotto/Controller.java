@@ -12,7 +12,11 @@ public class Controller {
 
     Player player = new Player();
 
-    public void setGame() {
+    public void run() {
+        setGame();
+    }
+
+    private void setGame() {
         View.printInputPurchaseAmount();
         String money = getMoney();
 
