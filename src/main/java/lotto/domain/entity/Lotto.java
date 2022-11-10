@@ -48,4 +48,15 @@ public class Lotto {
     public void printLottoNumbers() {
         System.out.println(numbers);
     }
+
+    public int matchNumbers(Lotto lottoNumbers) {
+        List<Integer> givenLottoNumbers = lottoNumbers.currentLottoNumbers();
+        int result = 0;
+        for (Integer number : numbers) {
+            if (givenLottoNumbers.contains(number)) {
+                result += 1;
+            }
+        }
+        return result;
+    }
 }

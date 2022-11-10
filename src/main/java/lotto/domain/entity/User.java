@@ -24,4 +24,8 @@ public class User {
     public void printUserLottosNumbers() {
         lottos.printWholeLottoNumbers();
     }
+
+    public Lottos currentUserLottos() {
+        return lottos;
+    }
 }

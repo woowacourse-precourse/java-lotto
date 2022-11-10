@@ -7,4 +7,7 @@ public class ConsoleOut {
     public static final String INPUT_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
 
     public static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
+
+    public static final String WINNING_RESULT_MESSAGE = "당첨 통계";
+    public static final String THREE_DASHES_AFTER_WINNING_RESULT_MESSAGE = "---";
 }

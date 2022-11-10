@@ -2,10 +2,9 @@ package lotto.application;
 
 import static lotto.common.message.ConsoleOut.*;
 
-import camp.nextstep.edu.missionutils.Console;
-import java.util.Scanner;
 import lotto.domain.Generator;
 import lotto.domain.entity.LottoMachine;
+import lotto.domain.entity.Report;
 import lotto.domain.entity.User;
 import lotto.infrastructure.GeneratorImpl;
 
@@ -27,6 +26,12 @@ public class LottoProcess {
 
         System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
         String bonusLottoNumber = generator.generateBonusLottoNumber();
-        LottoMachine.of(numberSeparator, Integer.valueOf(bonusLottoNumber));
+        LottoMachine lottoMachine = LottoMachine.of(numberSeparator, Integer.valueOf(bonusLottoNumber));
+
+        System.out.println(WINNING_RESULT_MESSAGE);
+        System.out.println(THREE_DASHES_AFTER_WINNING_RESULT_MESSAGE);
+
+        Report.of(user, lottoMachine);
+
     }
 }

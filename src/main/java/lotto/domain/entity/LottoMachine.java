@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.common.message.ExceptionMessage;
 
 public class LottoMachine {
 
@@ -28,6 +27,14 @@ public class LottoMachine {
         this.bonusNumber = bonusNumber;
     }
 
+    public int currentBonusNumber() {
+        return bonusNumber;
+    }
+
+    public List<Integer> currentMachineNumbers() {
+        return lottoNumbers.currentLottoNumbers();
+    }
+
     private List<Integer> ArrayToLottoNumbers(String[] lottoNumbersArray) {
         return Arrays.asList(lottoNumbersArray).stream().map(s -> Integer.parseInt(s)).collect(
             Collectors.toList());
@@ -42,7 +49,7 @@ public class LottoMachine {
 
     private void eachLottoNumberValidation(char[] chars) {
         for (char aChar : chars) {
-            if (Character.isDigit(aChar)) {
+            if (!Character.isDigit(aChar)) {
                 throw new IllegalArgumentException(LOTTO_NUMBER_NOT_IS_DIGIT);
             }
         }
