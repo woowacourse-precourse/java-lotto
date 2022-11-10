@@ -5,10 +5,10 @@
 - [x] 당첨번호를 입력받고 검증 과정 필요 - WinningNumber#validateWinningNumber()
   - [x] 당첨번호에 중복된 번호가 존재하면 안된다. (보너스 번호 포함)
   - [x] 입력 숫자는 6개가 되어야 한다.
-- [ ] 당첨은 1등부터 5등까지 존재하며 로또 번호와 당첨 번호를 비교해야 한다. - Lotto#compare()
+- [x] 당첨은 1등부터 5등까지 존재하며 로또 번호와 당첨 번호를 비교해야 한다. - Lotto#compare()
   - [x] 각 번호를 비교하고 몇 개의 번호가 일치하는지 반환해야 한다. - Lotto#count()
   - [x] 보너스 번호와 비교 - Lotto#compareBonusNumber()
-  - [ ] 로또 번호의 Lotto#toString() 구현
+  - [x] 로또 번호의 Lotto#toString() 구현
 - [x] 열거형 타입 필요 (일치하는 번호의 개수에 따른 당첨금) - Winnings
 - [ ] 수익률 계산 - Buyer#calculateReturnRate()
 

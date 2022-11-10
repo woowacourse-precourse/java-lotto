@@ -11,6 +11,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
@@ -20,9 +24,26 @@ public class Lotto {
             throw new IllegalArgumentException("중복된 숫자는 존재할 수 없습니다.");
         }
     }
-
-    public List<Integer> getNumbers() {
-        return numbers;
+    
+    public Winnings compare(WinningNumber winningNumber) {
+        int cnt = count(winningNumber);
+        boolean matchBonusNumber = compareBonusNumber(winningNumber);
+        if (cnt == 6) {
+            return Winnings.FIRST;
+        }
+        if (cnt == 5 && matchBonusNumber) {
+            return Winnings.SECOND;
+        }
+        if (cnt == 5) {
+            return Winnings.THIRD;
+        }
+        if (cnt == 4) {
+            return Winnings.FOURTH;
+        }
+        if (cnt == 3) {
+            return Winnings.FIFTH;
+        }
+        return Winnings.NONE;
     }
 
     public int count(WinningNumber winningNumber) {

@@ -3,6 +3,7 @@ package lotto;
 import domain.Lotto;
 import domain.NumberGenerator;
 import domain.WinningNumber;
+import domain.Winnings;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -73,5 +74,23 @@ class LottoTest {
         assertThat(lotto.toString()).isEqualTo("[1, 2, 3, 4, 5, 7]");
         lotto = new Lotto(List.of(31, 33, 35, 37, 39, 41));
         assertThat(lotto.toString()).isEqualTo("[31, 33, 35, 37, 39, 41]");
+    }
+
+    @DisplayName("compare() 테스트")
+    @Test
+    void compareTest() {
+        WinningNumber winningNumber = new WinningNumber("1,2,3,4,5,6", 7);
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(lotto.compare(winningNumber)).isEqualTo(Winnings.FIRST);
+        lotto = new Lotto(List.of(1, 2, 3, 4, 6, 7));
+        assertThat(lotto.compare(winningNumber)).isEqualTo(Winnings.SECOND);
+        lotto = new Lotto(List.of(1, 2, 3, 4, 5, 41));
+        assertThat(lotto.compare(winningNumber)).isEqualTo(Winnings.THIRD);
+        lotto = new Lotto(List.of(1, 2, 3, 4, 31, 33));
+        assertThat(lotto.compare(winningNumber)).isEqualTo(Winnings.FOURTH);
+        lotto = new Lotto(List.of(1, 31, 36, 21, 5, 6));
+        assertThat(lotto.compare(winningNumber)).isEqualTo(Winnings.FIFTH);
+        lotto = new Lotto(List.of(1, 31, 32, 33, 34, 35));
+        assertThat(lotto.compare(winningNumber)).isEqualTo(Winnings.NONE);
     }
 }
