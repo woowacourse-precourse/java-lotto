@@ -3,11 +3,11 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LottoDraw {
+public class DrawLotto {
     private final Lotto winningNumbers;
     private final Integer bonusNumber;
 
-    public LottoDraw(String numbers, String number) {
+    public DrawLotto(String numbers, String number) {
         winningNumbers = drawWinningNumbers(numbers);
         bonusNumber = stringToInteger(number);
         validateBonusNumber();
