@@ -30,6 +30,16 @@ public class Validation {
     class ValidateMultipleDigits {
 
         @Test
+        void invalidInput() {
+            assertThatThrownBy(() -> ValidationUtil.isValid("1,2,3,4,5,6!7"))
+                    .isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> ValidationUtil.isValid("1, 2, 3, 4, 5, 6, 7"))
+                    .isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> ValidationUtil.isValid("!,*,3,4,5,6,7"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
         void invalidCount() {
             assertThatThrownBy(() -> ValidationUtil.isValid("1,2,3,4,5,6,7"))
                     .isInstanceOf(IllegalArgumentException.class);

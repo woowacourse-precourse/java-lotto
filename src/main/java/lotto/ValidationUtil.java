@@ -10,6 +10,12 @@ public class ValidationUtil {
     public static final int MAX_NUMBER = 45;
     public static final int LOTTO_COUNT = 6;
 
+    private static void isValidInput(String str) {
+        if (!str.matches("[0-9]|,")) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getValue());
+        }
+    }
+
     public static void isValidNumber(String str) {
         int number = Integer.parseInt(str);
         if (number < MIN_NUMBER || number > MAX_NUMBER) {
@@ -31,6 +37,8 @@ public class ValidationUtil {
     }
 
     public static boolean isValid(String str) {
+        isValidInput(str);
+
         String[] split = str.split(",");
         isValidCount(split);
         for (String s : split) {
