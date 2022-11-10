@@ -11,7 +11,8 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+
+        if (numbers.stream().distinct().count() != 6) {
             throw new IllegalArgumentException();
         }
     }
