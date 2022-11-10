@@ -36,12 +36,4 @@ public class WinningLotto extends Lotto {
     {
         return specialNumber;
     }
-
-    @Override
-    public boolean isContain(Integer lottoNumber)
-    {
-        if(lottoNumber == specialNumber) return true;
-
-        return super.isContain(lottoNumber);
-    }
 }
