@@ -23,17 +23,34 @@ public class UserTest {
     }
     
     @Test
-    @DisplayName("사용자 로또 입력이 제대로 되었는지 검사한다.")
+    @DisplayName("사용자 금액 입력 검사")
     void validateInputNumberTest(){
         assertThatThrownBy(() -> user.validateInputNumber(1001))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    @DisplayName("String이 List<Integer>로 잘 변환되는지 검사")
+    @DisplayName("String -> List<Integer> 검사")
     void convertLottoNumberTest(){
         List<Integer> testNumber = List.of(1, 2, 3, 4, 5, 6);
         String testValue = "1, 2, 3, 4, 5, 6";
         assertThat(testNumber).isEqualTo(user.convertLottoNumber(testValue));
+    }
+
+    @Test
+    @DisplayName("사용자 로또 입력 검사")
+    void validateInputLottoNumber(){
+        assertThatThrownBy(() -> user.validateInputLottoNumber("ababba1324"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> user.validateInputLottoNumber("1, 2, 3, 4, 5"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> user.validateInputLottoNumber("2, 2, 6, 8, 10, 46"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> user.validateInputLottoNumber("1, 2, 6, 8, 10, 46"))
+                .isInstanceOf(IllegalArgumentException.class);
+
     }
 }
