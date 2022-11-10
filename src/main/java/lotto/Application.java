@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
+import lotto.domain.Money;
 import lotto.domain.NumberGenerator;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
+        Money money = new Money();
         int count = 8;
         List<Lotto> lottos = generateLottos(count);
     }
