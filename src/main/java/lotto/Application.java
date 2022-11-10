@@ -103,7 +103,11 @@ public class Application {
         for(int number: winning_number_lotto.getNumbers()){
             if(lotto.containsTheNumber(number)) count++;
         }
-        if(lotto.containsTheNumber(BONUS_NUMBER)) count++;
+
         return count;
+    }
+
+    public static boolean containsBonusNumber(Lotto lotto){
+        return lotto.containsTheNumber(BONUS_NUMBER);
     }
 }
