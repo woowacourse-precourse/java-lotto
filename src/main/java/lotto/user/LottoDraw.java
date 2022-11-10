@@ -36,7 +36,10 @@ public class LottoDraw {
 
     public int pickBonusNumber(String readline) {
         validateSeparator(readline);
-        return 1;
+        validateNumeric(new String[]{readline});
+        int bonusNumber = Integer.parseInt(readline);
+        validateRange(List.of(bonusNumber));
+        return bonusNumber;
     }
 
     private List<Integer> changeStringToInt(String readline) {
