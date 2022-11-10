@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoStore {
+    private List<Integer> winNumbers;
 
     private Lotto getNewLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -24,5 +25,9 @@ public class LottoStore {
         }
 
         return lottos;
+    }
+
+    public void setWinNumbers(List<Integer> winNumbers) {
+        this.winNumbers = winNumbers;
     }
 }
