@@ -26,5 +26,12 @@ public class LottoMachine {
         return lottos;
     }
 
+    public void printLottosInfo(List<Lotto> lottos) {
+
+        int amount = lottos.size();
+        System.out.println(amount+"개를 구매했습니다.");
+
+    }
+
 
 }
