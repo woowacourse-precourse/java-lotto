@@ -4,18 +4,23 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.LottoInterface;
 import lotto.WinningLotto;
+import lotto.view.Printer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class LottoController {
-    private int price;
-    private int lottoNumber;
+    private static int price;
+    private static int lottoNumber;
     private static final int oneLottoPrice = 1000;
     private static final int startRange = 1;
     private static final int endRange = 45;
     private static final int count = 6;
+
+    private Printer printer = new Printer();
+
+
     public List<Integer> generateLotto(){
         return Randoms.pickUniqueNumbersInRange(startRange,endRange, count);
     }
@@ -29,9 +34,9 @@ public class LottoController {
 
     public WinningLotto inputWinningLotto(){
         List<Integer> winningLottoNumbers = new ArrayList<>();
-        System.out.println("당첨 번호를 입력해 주세요.");
+        printer.printInputWinningNumbers();
         inputWinningNumbers(winningLottoNumbers);
-        System.out.println("보너스 번호를 입력해 주세요.");
+        printer.printInputWinningBonusNumber();
         inputBonusNumber(winningLottoNumbers);
 
         return new WinningLotto(winningLottoNumbers);
