@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -31,13 +32,9 @@ public class Lotto {
     // TODO: 추가 기능 구현
     //로또번호 중복 검사
     private void duplicate(List<Integer> numbers){
-        boolean[] check = new boolean[45];
-        for (int num : numbers) {
-            if (!check[num])
-                check[num] = true;
-            else
-                throw new IllegalArgumentException();
-        }
+        HashSet<Integer> check = new HashSet<>(numbers);
+        if(check.size() != numbers.size())
+            throw new IllegalArgumentException();
     }
 
     //로또번호 범위 검사
