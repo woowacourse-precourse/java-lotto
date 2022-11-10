@@ -24,7 +24,7 @@ public class LottoManager {
     public void run() {
         out.announceInputMoney();
         int money = in.inputMoney();
-        int lottoCount = buyLotto(money);
+        int lottoCount = getAffordableLottoCount(money);
         List<List<Integer>> boughtLottos = pickNumbers(lottoCount);
         out.printSpacer();
         out.announceBuyResult(lottoCount);
@@ -48,7 +48,7 @@ public class LottoManager {
         out.printProfitRatio(profitRatio);
     }
 
-    private int buyLotto(int money) {
+    private int getAffordableLottoCount(int money) {
         return money / lottoPrice;
     }
 
