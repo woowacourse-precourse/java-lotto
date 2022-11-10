@@ -27,19 +27,17 @@ public class Application {
         List<Lotto> userLotto = new ArrayList<>();
 
         try {
-            int purchaseLottoPrice= getTotalPurchaseLottoPrice();
+            int purchaseLottoPrice= inputTotalPurchaseLottoPrice();
             int purchaseLottoAmount = purchaseLottoPrice / LOTTO_PRICE;
 
             validateLottoPrice(purchaseLottoPrice);
             purchaseLotto(userLotto, purchaseLottoAmount);
-            printUserLottoList(userLotto, purchaseLottoAmount);
 
             Lotto winningLotto = Lotto.inputWinningLottoNumber();
             int bonusNumber = Lotto.inputBonusNumber();
 
             Map<WINNING, Integer> result = initResultMap();
-            checkUserLottoWinning(result, userLotto, winningLotto, bonusNumber);
-            printUserAllWinningInfo(result, purchaseLottoPrice);
+            checkUserLottoWinning(result, userLotto, winningLotto, bonusNumber, purchaseLottoPrice);
         } catch(IllegalArgumentException e){
             System.out.println(ERROR_MESSAGE + " " + e.getMessage());
         }
@@ -54,7 +52,7 @@ public class Application {
         return result;
     }
 
-    public static void checkUserLottoWinning(Map<WINNING, Integer> result, List<Lotto> userLotto, Lotto winningLotto, int bonusNumber) {
+    public static void checkUserLottoWinning(Map<WINNING, Integer> result, List<Lotto> userLotto, Lotto winningLotto, int bonusNumber, int purchaseLottoPrice) {
         for (Lotto lotto : userLotto) {
             WINNING curWinning = Lotto.checkUserLottoWinning(winningLotto, lotto, bonusNumber);
 
@@ -64,6 +62,8 @@ public class Application {
             int winningCount = result.get(curWinning);
             result.put(curWinning, winningCount + 1);
         }
+
+        printUserAllWinningInfo(result, purchaseLottoPrice);
     }
 
     private static void printUserAllWinningInfo(Map<WINNING, Integer> result, int purchaseLottoPrice) {
@@ -81,7 +81,7 @@ public class Application {
         System.out.println("총 수익률은 " + totalSumOfWinning / purchaseLottoPrice * 100 + "%입니다.");
     }
 
-    private static int getTotalPurchaseLottoPrice() {
+    private static int inputTotalPurchaseLottoPrice() {
         System.out.println("구입금액을 입력해주세요.");
         return Integer.parseInt(Console.readLine());
     }
@@ -89,6 +89,7 @@ public class Application {
     public static void purchaseLotto(List<Lotto> userLotto, int purchaseLottoAmount) {
         for(int i = 0; i < purchaseLottoAmount; i++)
             userLotto.add(createRandomLottoList());
+        printUserLottoList(userLotto, purchaseLottoAmount);
     }
 
     private static void printUserLottoList(List<Lotto> userLotto, int purchaseLottoAmount) {
