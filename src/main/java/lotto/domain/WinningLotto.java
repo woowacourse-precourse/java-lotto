@@ -4,8 +4,10 @@ import java.util.List;
 
 public class WinningLotto {
     private List<Integer> numbers;
+    private int bonusNumber;
 
-    public WinningLotto(List<Integer> numbers) {
+    public WinningLotto(List<Integer> numbers, int bonusNumber) {
         this.numbers = numbers;
+        this.bonusNumber = bonusNumber;
     }
 }
