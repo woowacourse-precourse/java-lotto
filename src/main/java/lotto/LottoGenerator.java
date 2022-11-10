@@ -4,34 +4,38 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoGenerator {
-    static final int AVAILABLE_MONEY_UNIT = 1000;
+    static final int PRICE_PER_LOTTO = 1000;
 
-    public static void generate(String payment) {
+    public static List<Lotto> generate(String payment) {
         validatePayment(Integer.valueOf(payment));
         List<Lotto> lottos = new ArrayList<>();
         for (int lottoNumber = 0; lottoNumber < countNumberOfLotto(Integer.valueOf(payment)); lottoNumber++) {
-            lottos.add(new Lotto(pickLottoNumbers()));
+            List<Integer> lottoNumbers = pickLottoNumbers();
+            lottos.add(new Lotto(orderNumbers(lottoNumbers)));
         }
+        return lottos;
     }
 
     public static void validatePayment(int amount) {
-        if (amount % AVAILABLE_MONEY_UNIT != 0) {
+        if (amount % PRICE_PER_LOTTO != 0) {
             throw new IllegalArgumentException();
         }
     }
 
     public static int countNumberOfLotto(int amount) {
-        return amount / 1000;
+        return amount / PRICE_PER_LOTTO;
     }
 
     public static List<Integer> pickLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
-    public static void orderNumbers(Lotto lotto) {
-
+    public static List<Integer> orderNumbers(List<Integer> numbers) {
+        Collections.sort(numbers);
+        return numbers;
     }
 }
