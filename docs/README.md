@@ -35,11 +35,14 @@
 
 ### 출력
 
-- [x] getPurchaseNumberOfLotto
-  - 구매한 로또 갯수 출력
+- [x] buyLotto
+  - [x] getPurchaseMoney
+    - 구매할 로또 갯수 입력 
+    - 구매한 로또 갯수 출력
 
-- [x] getPublishedLottoNumber
-  - 발행된 로또 번호를 출력하기
+- [x] getLottoPaper
+  - [x] getPublishedLottoNumber
+    - 발행된 로또 번호를 출력하기
 
 - [ ] getWinCountThree
   - 3개 일치한 로또 갯수 출력하기
