@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Tickets {
 
-    private static final int PRICE = 1000;
+    public static final int PRICE = 1000;
 
     private final List<Lotto> tickets;
 
