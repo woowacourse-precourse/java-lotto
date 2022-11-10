@@ -18,7 +18,7 @@ public class BonusValidator {
     }
 
     public static void checkRange(String bonus) {
-        if (!STANDARD_LOTTO_NUMBER.contains(bonus)) {
+        if (!STANDARD_LOTTO_NUMBER.contains(Integer.parseInt(bonus))) {
             throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + BONUS_NUMBER_OUT_BOUND.getMessage());
         }
     }
