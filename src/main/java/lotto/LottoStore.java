@@ -12,9 +12,10 @@ public class LottoStore {
 
     private Lotto getNewLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(numbers);
+        ArrayList<Integer> sortedNumbers = new ArrayList<>(numbers);
+        Collections.sort(sortedNumbers);
 
-        return new Lotto(numbers);
+        return new Lotto(sortedNumbers);
     }
 
     public List<Lotto> sellLottos(int money) {
