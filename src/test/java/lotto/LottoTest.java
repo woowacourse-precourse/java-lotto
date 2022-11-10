@@ -1,13 +1,17 @@
 package lotto;
 
 import domain.Lotto;
+import domain.Lottos;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import view.Input;
 
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -27,6 +31,7 @@ class LottoTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR] 로또 구입 금액을 1000으로 나누어 떨어져야 합니다.");
         }
+
         @DisplayName("입력받은 금액이 1000원으로 나누어지면 로또 개수가 출력된다.")
         @Test
         void isMultipleOf_1000() {
@@ -37,6 +42,40 @@ class LottoTest {
             assertThat(input.getNumber()).isEqualTo(6);
         }
     }
+
+    @Nested
+    class GenerateLotto {
+        //given
+        int numberOfLotto = 6;
+        domain.Lottos lottos = new Lottos(numberOfLotto);
+        List<Integer> lottoNumber = lottos.getNumberGenerator().getLotto().getNumbers();
+        @DisplayName("로또 안의 숫자가 6개인지 확인")
+        @Test
+        void checkLottoNumber() {
+            //then
+            assertThat(lottoNumber.size())
+                    .isEqualTo(6);
+        }
+
+        @DisplayName("로또에 중복된 숫자가 들어가진 않았는지 확인")
+        @Test
+        void checkLottoRepeatNumber() {
+            //when
+            Set<Integer> LottoSet = new HashSet<>(lottoNumber);
+            //then
+            assertThat(LottoSet.size()).isEqualTo(lottoNumber.size());
+        }
+
+        @DisplayName("저장된 로또의 개수가 주어진 값과 맞는지 확인")
+        @Test
+        void checkNumberOfLotto() {
+            //when
+            lottos.generateLottos();
+            //then
+            assertThat(lottos.getLottos().size()).isEqualTo(numberOfLotto);
+        }
+    }
+
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
