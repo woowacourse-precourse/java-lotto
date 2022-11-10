@@ -1,8 +1,8 @@
 package lotto;
 
-import static lotto.LottoGenerator.COUNT;
-import static lotto.LottoGenerator.END_INCLUSIVE;
-import static lotto.LottoGenerator.START_INCLUSIVE;
+import static lotto.utils.LottoGenerator.COUNT;
+import static lotto.utils.LottoGenerator.END_INCLUSIVE;
+import static lotto.utils.LottoGenerator.START_INCLUSIVE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import lotto.utils.LottoGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

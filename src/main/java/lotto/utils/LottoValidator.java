@@ -1,9 +1,9 @@
-package lotto;
+package lotto.utils;
 
-import static lotto.ErrorMessage.*;
-import static lotto.LottoGenerator.COUNT;
-import static lotto.LottoGenerator.END_INCLUSIVE;
-import static lotto.LottoGenerator.START_INCLUSIVE;
+import static lotto.domain.ErrorMessage.*;
+import static lotto.utils.LottoGenerator.COUNT;
+import static lotto.utils.LottoGenerator.END_INCLUSIVE;
+import static lotto.utils.LottoGenerator.START_INCLUSIVE;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashSet;

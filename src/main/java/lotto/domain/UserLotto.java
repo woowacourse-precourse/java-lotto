@@ -1,12 +1,11 @@
-package lotto;
+package lotto.domain;
 
-import static lotto.InputValidator.*;
+import static lotto.utils.InputValidator.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import lotto.utils.LottoGenerator;
 
 public class UserLotto {
 
