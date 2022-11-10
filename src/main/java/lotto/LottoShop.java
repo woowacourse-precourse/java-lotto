@@ -1,20 +1,29 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-import constant.LottoText;
+import camp.nextstep.edu.missionutils.Randoms;
+import constant.LottoRule;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class LottoShop {
-    private final Print print = new Print();
 
-    private final Convert convert = new Convert();
+    public List<Lotto> buy(int lottoCount) {
+        List<Lotto> lottos = new ArrayList<>();
 
-    public void simulate() {
-        int purchasePrice = inputPurchasePrice();
+        for (int cnt = 0; cnt < lottoCount; cnt++) {
+            lottos.add(issueLotto());
+        }
+
+        return lottos;
     }
 
-    public int inputPurchasePrice() {
-        print.out(LottoText.REQUEST_PURCHASE_PRICE);
-        String input = Console.readLine();
-        return convert.toPurchasePrice(input);
+    private Lotto issueLotto() {
+        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(
+                LottoRule.START_NUMBER.getValue(), LottoRule.END_NUMBER.getValue(), LottoRule.COUNT.getValue());
+        lottoNumbers.sort(Comparator.naturalOrder());
+        return new Lotto(lottoNumbers);
     }
+
 }
