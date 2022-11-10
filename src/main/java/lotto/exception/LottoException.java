@@ -18,7 +18,13 @@ public class LottoException {
         return true;
     }
 
+    private boolean containsNumberOutOfRange(List<Integer> numbers){
+        return true;
+    }
+
     private void notRightLengthException(){}
 
     private void sameNumbersException(){}
+
+    private void numberOutOfRangeException(){}
 }

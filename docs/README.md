@@ -50,6 +50,8 @@ validate
 2. notRightLengthException : 맞지 않은 길이에 대한 예외처리
 3. containsSameNumber : 리스트의 숫자를 셋에 담았을 때, 둘의 사이즈가 다르면 참을 반환
 4. sameNumbersException : 같은 숫자를 가짐에 예외처리
+5. containsNumberOutOfRange : 리스트의 숫자가 1부터 45사이가 아닌게 있으면 참을 반환
+6. numberOutOfRangeException : 범위를 벗어난 숫자를 가짐에 예외처리
 
 ## 서비스
 ### MatchLotteryService
