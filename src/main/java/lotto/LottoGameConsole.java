@@ -16,7 +16,7 @@ public class LottoGameConsole {
         // 당첨 결과 처리, 출력
     }
 
-    private int handleAmountOfPurchaseMoney() {
+    private int handlePayment() {
         emcee.guideAmountOfPurchaseMoney();
         String amountOfPurchaseMoney = player.payAmountOfPurchaseMoney();
         // 구입 금액 입력값 검증
