@@ -19,4 +19,11 @@ class PurchasePriceTest {
         assertThatThrownBy(() -> new PurchasePrice("1500"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("0원일 경우 예외가 발생한다.")
+    @Test
+    void createPurchasePriceByZero() {
+        assertThatThrownBy(() -> new PurchasePrice("0"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
