@@ -1,9 +1,12 @@
 package lotto.ui;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -19,6 +22,18 @@ public class InputLogicTest {
         }
         assertThatThrownBy(() -> InputLogic.validatePurchaseAmount(money))
                 .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageStartingWith("[ERROR]")
                 .hasMessageContaining(errorMessage);
+    }
+    @DisplayName("입력된 당첨 번호 예외 발생 테스트 1")
+    @ParameterizedTest
+    @ValueSource(strings = {"0,2,3,4,5,46", "1,2,3,4", "1,2,3,4,5,6,7,8,9", "1,1,2,2,3,4"})
+    void validateWinningNumberTest_1(String numbers) {
+        List<Integer> winningNumber = Arrays.stream(numbers.split(","))
+                .map(number -> Integer.valueOf(number))
+                .collect(Collectors.toList());
+        assertThatThrownBy(() -> InputLogic.validateWinningNumber(winningNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageStartingWith("[ERROR]");
     }
 }
