@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,6 +16,7 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
+        Collections.sort(numbers);
         return numbers;
     }
 
@@ -48,10 +50,8 @@ public class Lotto {
     }
 
     private static boolean tokenRangeException(List<Integer> token) {
-        final int LOTTERY_NUMBER_MIN = 1;
-        final int LOTTERY_NUMBER_MAX = 45;
         for (int i = 0; i < token.size(); i++) {
-            if (token.get(i) < LOTTERY_NUMBER_MIN || token.get(i) > LOTTERY_NUMBER_MAX) {
+            if (token.get(i) < LottoRange.NUMBER_MIN.getValue() || token.get(i) > LottoRange.NUMBER_MAX.getValue()) {
                 return true;
             }
         }

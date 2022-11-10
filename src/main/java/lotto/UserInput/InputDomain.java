@@ -1,23 +1,22 @@
 package lotto.UserInput;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.LottoRange;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Input_domain {
+public class InputDomain {
     public static int purchaseAmountInput() {
         String user_input;
         int purchase_amount;
-        int lottery_count;
 
         System.out.println("구입금액을 입력해 주세요.");
         user_input = Console.readLine();
         purchaseAmount_exceptionHandling(user_input);
         purchase_amount = Integer.parseInt(user_input);
-        lottery_count = purchase_amount / 1000;
 
-        return lottery_count;
+        return purchase_amount;
     }
 
     public static List<Integer> winningLotteryInput() {
@@ -39,11 +38,17 @@ public class Input_domain {
         bonusNumberIsNumberExceptionHandling(user_input, winning_lottery_number);
         bonus_number = Integer.parseInt(user_input);
         bonusNumberOverlapExceptionHandling(bonus_number, winning_lottery_number);
+        bonusNumberIsRangeExceptionHandling(bonus_number);
         return bonus_number;
     }
 
     private static void bonusNumberIsNumberExceptionHandling(String user_input, List<Integer> winning_lottery_number) {
         if (!isNumber(user_input))
+            throw new IllegalArgumentException();
+    }
+
+    private static void bonusNumberIsRangeExceptionHandling(int bonus_number){
+        if(bonus_number< LottoRange.NUMBER_MIN.getValue()||bonus_number>LottoRange.NUMBER_MAX.getValue())
             throw new IllegalArgumentException();
     }
 
