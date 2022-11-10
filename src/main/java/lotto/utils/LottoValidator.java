@@ -1,6 +1,7 @@
 package lotto.utils;
 
 import static lotto.domain.ErrorMessage.COMMON_MESSAGE;
+import static lotto.domain.ErrorMessage.DIVIDE_COMMAS_NOT_EXIST;
 import static lotto.domain.ErrorMessage.LOTTE_NUMBER_DUPLICATION;
 import static lotto.domain.ErrorMessage.LOTTE_NUMBER_NOT_ASC;
 import static lotto.domain.ErrorMessage.LOTTE_NUMBER_OUT_BOUND;
@@ -57,19 +58,19 @@ public class LottoValidator {
     }
 
     public static void validateFirstPlace(String firstPlace) {
-
+        checkConsistOfOnlyCommas(firstPlace);
     }
 
-    private static void checkConsistOfOnlyRest(String firstPlace) {
-        Set<String> restCheck = Arrays.stream(firstPlace.split("")).collect(Collectors.toSet());
-        if (!restCheck.remove(DIVIDE_POINT)) {
-            throw new IllegalArgumentException();
+    private static void checkConsistOfOnlyCommas(String firstPlace) {
+        Set<String> commasCheck = Arrays.stream(firstPlace.split("")).collect(Collectors.toSet());
+        if (!commasCheck.remove(DIVIDE_POINT)) {
+            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + DIVIDE_COMMAS_NOT_EXIST.getMessage());
         }
-        checkOnlyRest(restCheck);
+        checkOnlyCommas(commasCheck);
     }
 
-    private static void checkOnlyRest(Set<String> restCheck) {
-        restCheck.stream().filter(number -> !number.matches(NUMBER_REG_EXP)).forEach(number -> {
+    private static void checkOnlyCommas(Set<String> commasCheck) {
+        commasCheck.stream().filter(number -> !number.matches(NUMBER_REG_EXP)).forEach(number -> {
             throw new IllegalArgumentException();
         });
     }

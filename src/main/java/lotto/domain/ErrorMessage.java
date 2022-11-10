@@ -8,7 +8,8 @@ public enum ErrorMessage {
     LOTTE_NUMBER_OUT_BOUND("Lotto Number Have Out Bound Number."),
     LOTTE_NUMBER_NOT_ASC("Lotto Number Not Sorted by ASC."),
     PURCHASE_PAY_CONSISTENCE("Purchase Pay Isn't Consist Of Number."),
-    PURCHASE_PAY_REMINDER("Purchase Pay Reminder Isn't Zero.");
+    PURCHASE_PAY_REMINDER("Purchase Pay Reminder Isn't Zero."),
+    DIVIDE_COMMAS_NOT_EXIST("Please DIVIDE Number WITH Commas");
 
 
     private final String message;
