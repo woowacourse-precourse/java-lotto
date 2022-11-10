@@ -12,14 +12,7 @@ class LotteryWinningNumberValidationTest {
     @Test
     void notCorrectCountLotteryNumberWithOverCount() {
         LotteryWinningNumberValidation lotteryWinningNumberValidation = new LotteryWinningNumberValidation();
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 1; i < IntConstant.LOTTO_NUMBER_COUNT.getValue() + 2; i++) {
-            stringBuilder.append(i);
-            if (i + 1 < IntConstant.LOTTO_NUMBER_COUNT.getValue() + 2) {
-                stringBuilder.append(',');
-            }
-        }
-        String userInput = stringBuilder.toString();
+        String userInput = createUserInputWithLength(1, IntConstant.LOTTO_NUMBER_COUNT.getValue() + 1);
         assertThrows(IllegalArgumentException.class, () -> lotteryWinningNumberValidation.isValidate(userInput));
     }
 
@@ -28,14 +21,15 @@ class LotteryWinningNumberValidationTest {
     @Test
     void notCorrectCountLotteryNumberWithLessCount() {
         LotteryWinningNumberValidation lotteryWinningNumberValidation = new LotteryWinningNumberValidation();
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 1; i < IntConstant.LOTTO_NUMBER_COUNT.getValue(); i++) {
-            stringBuilder.append(i);
-            if (i + 1 < IntConstant.LOTTO_NUMBER_COUNT.getValue()) {
-                stringBuilder.append(',');
-            }
-        }
-        String userInput = stringBuilder.toString();
+        String userInput = createUserInputWithLength(1, IntConstant.LOTTO_NUMBER_COUNT.getValue() - 1);
+        assertThrows(IllegalArgumentException.class, () -> lotteryWinningNumberValidation.isValidate(userInput));
+    }
+
+    @DisplayName("당첨번호가 Numeric 형태가 아니면 IllegalArgumentException 을 발생시킨다.")
+    @Test
+    void notCorrectForm() {
+        LotteryWinningNumberValidation lotteryWinningNumberValidation = new LotteryWinningNumberValidation();
+        String userInput = createUserInputWithLength(-1, IntConstant.LOTTO_NUMBER_COUNT.getValue());
         assertThrows(IllegalArgumentException.class, () -> lotteryWinningNumberValidation.isValidate(userInput));
     }
 
@@ -43,15 +37,27 @@ class LotteryWinningNumberValidationTest {
     @Test
     void lotteryWinningNumberNumeric() {
         LotteryWinningNumberValidation lotteryWinningNumberValidation = new LotteryWinningNumberValidation();
+        String userInput = createUserInputWithLength(IntConstant.LOTTO_NUMBER_SMALLER_THAN.getValue(),
+                IntConstant.LOTTO_NUMBER_COUNT.getValue());
+        assertThrows(IllegalArgumentException.class, () -> lotteryWinningNumberValidation.isValidate(userInput));
+    }
+
+    /**
+     * String consists of String starts with(start with number) ascending with length (length number)
+     * ex) (1,2) -> 1,2
+     * ex) (2,3) -> 2,3,4
+     * first parameter : start with
+     * second parameter : length
+     */
+    private static String createUserInputWithLength(int start, int length) {
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 1; i < IntConstant.LOTTO_NUMBER_COUNT.getValue(); i++) {
+        for (int i = start; i < start + length; i++) {
             stringBuilder.append(i);
-            if (i + 1 < IntConstant.LOTTO_NUMBER_COUNT.getValue()) {
+            if (i + 1 < start + length) {
                 stringBuilder.append(',');
             }
         }
-        String userInput = stringBuilder.toString();
-        assertThrows(IllegalArgumentException.class, () -> lotteryWinningNumberValidation.isValidate(userInput));
+        return stringBuilder.toString();
     }
 
 }
