@@ -21,4 +21,8 @@ public class WinningNumbers {
     private void printGuideMessage(String message) {
         System.out.println(message);
     }
+
+    private String[] splitNumbers(String numbers) {
+        return numbers.split(",");
+    }
 }
