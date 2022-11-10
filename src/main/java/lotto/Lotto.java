@@ -19,6 +19,10 @@ public class Lotto {
         if(inputMoney % 1000 != 0){
             throw new IllegalArgumentException("로또 구입 금액은 1,000원 단위입니다.");
         }
+
+        if(Lotto 중복) {
+            throw new IllegalArgumentException("로또는 서로 다른 여섯자리 숫자로 구입해야 합니다.");
+        }
     }
 
     // TODO: 추가 기능 구현
