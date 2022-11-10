@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.domain.enums.Constant;
 import lotto.domain.enums.Number;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class Manager {
         Collections.sort(winningNumbers);
         Collections.sort(userLotto);
 
-        for (int i = 0; i < Constant.LOTTO_SIZE; i++) {
+        for (int i = 0; i < Constant.LOTTO_SIZE.getValue(); i++) {
             if(winningNumbers.get(i) == userLotto.get(i)) {
                 correctCount++;
             }
@@ -64,19 +65,19 @@ public class Manager {
 
     public int getWinningAmount(int rank) {
         if(rank == Number.FIVE.getValue()) {
-            return Constant.FIFTH_WINNING_AMOUNT;
+            return Constant.FIFTH_WINNING_AMOUNT.getValue();
         }
         if(rank == Number.FOUR.getValue()) {
-            return Constant.FOURTH_WINNING_AMOUNT;
+            return Constant.FOURTH_WINNING_AMOUNT.getValue();
         }
         if(rank == Number.THREE.getValue()) {
-            return Constant.THIRD_WINNING_AMOUNT;
+            return Constant.THIRD_WINNING_AMOUNT.getValue();
         }
         if(rank == Number.TWO.getValue()) {
-            return Constant.SECOND_WINNING_AMOUNT;
+            return Constant.SECOND_WINNING_AMOUNT.getValue();
         }
         if(rank == Number.ONE.getValue()) {
-            return Constant.FIRST_WINNING_AMOUNT;
+            return Constant.FIRST_WINNING_AMOUNT.getValue();
         }
         return Number.ZERO.getValue();
     }
