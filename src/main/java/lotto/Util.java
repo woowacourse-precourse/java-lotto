@@ -17,7 +17,7 @@ public class Util {
         }
     }
 
-    public static void isValidWinNumbers(String input) {
+    public static List<Integer> isValidWinNumbers(String input) {
         String str = input.trim();
         String[] splits = str.split(",");
         List<Integer> numbers = new ArrayList<>();
@@ -27,6 +27,8 @@ public class Util {
         isValidNumber(numbers);
         isValidCount(numbers);
         hasDistinctNumbers(numbers);
+
+        return numbers;
     }
 
     private static void makeNumbers(List<Integer> numbers, String str) {
