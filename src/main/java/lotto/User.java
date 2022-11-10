@@ -19,11 +19,11 @@ public class User {
 
     public void readMoney(){
         int inputMoney = Integer.parseInt(readLine());
-        validataInputNumber(inputMoney);
+        validDataInputNumber(inputMoney);
         userMoney = inputMoney;
     }
 
-    public void validataInputNumber(int inputMoney) {
+    public void validDataInputNumber(int inputMoney) {
         if(inputMoney%UNIT != 0){
             System.out.println("[ERROR] 금액은 1000원 단위로 나뉘어 떨어져야 합니다.");
             throw new IllegalArgumentException();
@@ -33,18 +33,18 @@ public class User {
     public List<Integer> readLotto(){
         System.out.println("당첨 번호를 입력해 주세요.");
         String inputLottoNumber = readLine();
-        validataInputLottoNumber(inputLottoNumber);
+        validDataInputLottoNumber(inputLottoNumber);
         return convertLottoNumber(inputLottoNumber);
     }
 
     public int readBonus(){
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonus = readLine();
-        validataBonusNumber(bonus);
+        validDataBonusNumber(bonus);
         return Integer.parseInt(bonus);
     }
 
-    public int validataBonusNumber(String bonus) {
+    public int validDataBonusNumber(String bonus) {
         // 포맷이 잘못된 경우 or 범위가 초과하는 경우
         int bonusNum = 0;
         try{
@@ -73,7 +73,7 @@ public class User {
                 .collect(Collectors.toList());
     }
 
-    public void validataInputLottoNumber(String inputLottoNumber) {
+    public void validDataInputLottoNumber(String inputLottoNumber) {
         ArrayList<String> split = new ArrayList<>(List.of(inputLottoNumber.split(", ")));
         unValidShape(split);
 
