@@ -16,13 +16,13 @@ public class Lotto {
         LottoNumbersValidator.validate(numbers);
     }
     
-    public int countOfSameNumber(final Lotto lotto) {
+    public int countOfMatchingNumber(final Lotto lotto) {
         return (int) numbers.stream()
-                .filter(lotto::isContainsNumber)
+                .filter(lotto::isNumberContains)
                 .count();
     }
     
-    public boolean isContainsNumber(final int bonusNumber) {
+    public boolean isNumberContains(final int bonusNumber) {
         return numbers.contains(bonusNumber);
     }
 }

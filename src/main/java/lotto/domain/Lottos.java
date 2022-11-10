@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import lotto.dto.WinningLottoNumbersDTO;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,16 +10,16 @@ public class Lottos {
         this.lottos = lottos;
     }
     
-    public List<LottoRank> parseRanks(final WinningLottoNumbersDTO winningLottoNumbersDTO) {
+    public List<LottoRank> parseRanks(final WinningLottoNumbers winningLottoNumbers) {
         return lottos.stream()
-                .map(lotto -> parseRank(winningLottoNumbersDTO, lotto))
+                .map(lotto -> parseRank(winningLottoNumbers, lotto))
                 .collect(Collectors.toList());
     }
     
-    private LottoRank parseRank(final WinningLottoNumbersDTO winningLottoNumbersDTO, final Lotto lotto) {
-        final Lotto winningLotto = winningLottoNumbersDTO.getWinningLotto();
-        final int bonusNumber = winningLottoNumbersDTO.getBonusNumber();
+    private LottoRank parseRank(final WinningLottoNumbers winningLottoNumbers, final Lotto lotto) {
+        int countOfSameLottoNumber = winningLottoNumbers.countOfMatchingNumber(lotto);
+        boolean existBonusLottoNumber = winningLottoNumbers.isBonusNumberExist(lotto);
         
-        return LottoRank.parseRank(lotto.countOfSameNumber(winningLotto), lotto.isContainsNumber(bonusNumber));
+        return LottoRank.parseRank(countOfSameLottoNumber, existBonusLottoNumber);
     }
 }
