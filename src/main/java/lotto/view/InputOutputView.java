@@ -1,12 +1,20 @@
 package lotto.view;
 
+import lotto.domain.MoneyEnumClass;
 import lotto.service.BuyLotto;
+import lotto.service.WinningMoney;
 
+import java.util.Collections;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.*;
 
 public class InputOutputView {
+    private int fifth;
+    private int fourth;
+    private int third;
+    private int second;
+    private int first;
 
     public int buyMoney() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -34,6 +42,37 @@ public class InputOutputView {
         System.out.println();
         System.out.println("보너스 번호를 입력해 주세요");
         return Integer.parseInt(readLine());
+    }
+
+    public void saveResult() {
+        MoneyEnumClass moneyEnumClass = new MoneyEnumClass();
+        moneyEnumClass.setResult(MoneyEnumClass.MoneyEnum.FIFTH, "3개 일치 (5,000원) - ");
+        moneyEnumClass.setResult(MoneyEnumClass.MoneyEnum.FOURTH, "4개 일치 (50,000원) - ");
+        moneyEnumClass.setResult(MoneyEnumClass.MoneyEnum.THIRD, "5개 일치 (1,500,000원) - ");
+        moneyEnumClass.setResult(MoneyEnumClass.MoneyEnum.SECOND, "5개 일치, 보너스 볼 일치 (30,000,000원) - ");
+        moneyEnumClass.setResult(MoneyEnumClass.MoneyEnum.FIRST, "6개 일치 (20,000,000,000원) - ");
+    }
+    public void setNum(List<Integer> grades) {
+        fifth = Collections.frequency(grades, 3);
+        fourth = Collections.frequency(grades, 4);
+        third = Collections.frequency(grades, 5);
+        second = Collections.frequency(grades, 6);
+        first = Collections.frequency(grades, 7);
+    }
+
+    public void printResult(List<Integer> grades) {
+        saveResult();
+        setNum(grades);
+        System.out.print(MoneyEnumClass.MoneyEnum.FIFTH);
+        System.out.println(fifth + "개");
+        System.out.print(MoneyEnumClass.MoneyEnum.FOURTH);
+        System.out.println(fourth + "개");
+        System.out.print(MoneyEnumClass.MoneyEnum.THIRD);
+        System.out.println(third + "개");
+        System.out.print(MoneyEnumClass.MoneyEnum.SECOND);
+        System.out.println(second + "개");
+        System.out.print(MoneyEnumClass.MoneyEnum.FIRST);
+        System.out.println(first + "개");
     }
 
     public void totalYield(double yeild) {
