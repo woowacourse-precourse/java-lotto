@@ -19,9 +19,11 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
         if (isDuplicate(numbers)) {
+            System.out.print("[ERROR] 로또 번호는 중복되지 않아야 합니다.");
             throw new IllegalArgumentException();
         }
         if (isOutOfBound(numbers)) {
+            System.out.print("[ERROR] 로또 번호는 1부터 45사이의 숫자여야 합니다.");
             throw new IllegalArgumentException();
         }
     }
