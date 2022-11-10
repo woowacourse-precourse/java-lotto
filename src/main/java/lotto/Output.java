@@ -1,5 +1,6 @@
 package lotto;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.TreeMap;
@@ -47,6 +48,6 @@ public class Output {
 
     public static void printLottoRate() {
         double rate = Analyse.rateLotto(lottos.size()*1000);
-        System.out.println(Print.RATE_BEFORE + rate + Print.RATE_AFTER);
+        System.out.println(Print.RATE_BEFORE + String.format("%,.1f", Double.parseDouble(new BigDecimal(rate).toPlainString())) + Print.RATE_AFTER);
     }
 }
