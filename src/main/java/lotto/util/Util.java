@@ -1,6 +1,7 @@
-package lotto;
+package lotto.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.enums.ErrorMessage;
 
 import java.util.*;
 
@@ -12,7 +13,7 @@ public class Util {
 
     public static void isValidAmount(String input) {
         String str = input.trim();
-        if (!str.matches("[0-9]*") || Integer.parseInt(str) % STANDARD != 0) {
+        if (str.isEmpty() || !str.matches("[0-9]*") || Integer.parseInt(str) % STANDARD != 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_AMOUNT_INPUT.getValue());
         }
     }

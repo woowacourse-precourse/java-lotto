@@ -1,4 +1,7 @@
-package lotto;
+package lotto.domain;
+
+import lotto.enums.ResultMessage;
+import lotto.enums.ResultStatus;
 
 import java.text.MessageFormat;
 import java.util.HashMap;

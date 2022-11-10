@@ -1,5 +1,9 @@
 package lotto;
 
+import lotto.domain.Lotto;
+import lotto.domain.Result;
+import lotto.domain.WinLotto;
+import lotto.enums.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;

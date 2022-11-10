@@ -1,4 +1,6 @@
-package lotto;
+package lotto.domain;
+
+import lotto.enums.ResultStatus;
 
 import java.util.Objects;
 
@@ -7,7 +9,7 @@ public class Result {
     private boolean hasBonusNumber = false;
     private ResultStatus resultStatus;
 
-    protected Result(int matchCount, boolean hasBonusNumber) {
+    public Result(int matchCount, boolean hasBonusNumber) {
         this.matchCount = matchCount;
         this.hasBonusNumber = hasBonusNumber;
         setResultStatus();

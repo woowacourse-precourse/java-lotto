@@ -1,4 +1,4 @@
-package lotto;
+package lotto.enums;
 
 public enum ErrorMessage {
     INVALID_AMOUNT_INPUT("[ERROR] 1000원 단위로 입력해야 합니다."),

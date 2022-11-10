@@ -1,4 +1,4 @@
-package lotto;
+package lotto.enums;
 
 public enum ResultStatus {
     MATCH6(6, 2000000000),
