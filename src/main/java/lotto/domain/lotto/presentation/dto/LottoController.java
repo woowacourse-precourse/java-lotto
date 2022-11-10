@@ -11,7 +11,13 @@ public class LottoController {
         return lottoService.inputMoney();
     }
 
-    public void getLottoCount(int inputMoney) {
-        OutputView.printCountByBuyLotto(lottoService.lottoCount(inputMoney));
+    public int getLottoCount(int inputMoney) {
+        int lottoCount = lottoService.lottoCount(inputMoney);
+        OutputView.printCountByBuyLotto(lottoCount);
+        return lottoCount;
+    }
+
+    public void getLottoNumbers() {
+        OutputView.printLottoNumbers(lottoService.randomLottoNumbers());
     }
 }
