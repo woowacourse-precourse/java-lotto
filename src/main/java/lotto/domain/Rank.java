@@ -2,7 +2,9 @@ package lotto.domain;
 
 import lotto.entity.Place;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Rank {
     public Map<Place, Integer> winningRanks = new HashMap<>();
@@ -22,8 +24,9 @@ public class Rank {
             if (lotto.checkNumbers(userLottoNumbers) < 3) {
                 continue;
             }
-            Place place = determine((lotto.checkNumbers(userLottoNumbers)), bonus.checkNumber(userLottoNumbers));
-            winningRanks.put(place, winningRanks.get(place)+1);
+            Place place = determine((lotto.checkNumbers(userLottoNumbers)),
+                    bonus.checkNumber(userLottoNumbers));
+            winningRanks.put(place, winningRanks.get(place) + 1);
         }
     }
 

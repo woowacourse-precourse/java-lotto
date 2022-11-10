@@ -16,10 +16,12 @@ public class Bonus {
 
     private void validate(List<Integer> lottoNumbers, int bonusNumber) {
         if (lottoNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(Bug.ERROR.getMessage() + Bug.BONUS_NO_CONTAIN_NUMBERS);
+            throw new IllegalArgumentException(Bug.ERROR.getMessage()
+                    + Bug.BONUS_NO_CONTAIN_NUMBERS);
         }
         if (bonusNumber < 1 || 45 < bonusNumber) {
-            throw new IllegalArgumentException(Bug.ERROR.getMessage()+Bug.BONUS_MUST_BETWEEN_ONE_AND_FORTY_FIVE);
+            throw new IllegalArgumentException(Bug.ERROR.getMessage()
+                    + Bug.BONUS_MUST_BETWEEN_ONE_AND_FORTY_FIVE);
         }
     }
 

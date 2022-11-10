@@ -21,13 +21,16 @@ public class Lotto {
         outOfRangeNumbers.removeAll(Bug.ERROR.getRangeOfNumber());
 
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(Bug.ERROR.getMessage() + Bug.LOTTO_MUST_RANGE_SIX.getMessage());
+            throw new IllegalArgumentException(Bug.ERROR.getMessage()
+                    + Bug.LOTTO_MUST_RANGE_SIX.getMessage());
         }
         if (numbers.size() != uniqueNumbers.size()) {
-            throw new IllegalArgumentException(Bug.ERROR.getMessage() + Bug.LOTTO_MUST_EACH_UNIQUE.getMessage());
+            throw new IllegalArgumentException(Bug.ERROR.getMessage()
+                    + Bug.LOTTO_MUST_EACH_UNIQUE.getMessage());
         }
         if (outOfRangeNumbers.size() != 0) {
-            throw new IllegalArgumentException(Bug.ERROR.getMessage() + Bug.LOTTO_MUST_BETWEEN_ONE_AND_FORTY_FIVE.getMessage());
+            throw new IllegalArgumentException(Bug.ERROR.getMessage()
+                    + Bug.LOTTO_MUST_BETWEEN_ONE_AND_FORTY_FIVE.getMessage());
         }
     }
 

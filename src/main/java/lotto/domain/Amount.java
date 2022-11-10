@@ -25,7 +25,8 @@ public class Amount {
     private void calculatePurchasesQuantity() {
         int purchasesQuantity = inputAmount / lottoPrice;
         if (inputAmount % lottoPrice != 0) {
-            throw new IllegalArgumentException(Bug.ERROR.getMessage() + Bug.AMOUNT_DIVIDED_NO_REMAINING.getMessage());
+            throw new IllegalArgumentException(Bug.ERROR.getMessage()
+                    + Bug.AMOUNT_DIVIDED_NO_REMAINING.getMessage());
         }
         this.purchasesQuantity = purchasesQuantity;
     }
