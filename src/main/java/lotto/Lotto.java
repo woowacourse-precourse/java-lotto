@@ -19,6 +19,7 @@ public class Lotto {
     private static final int MAX_VALUE = 45;
     private static int userInputMoney;
     private static int howManyLotto = 0;
+    private static List<ArrayList> myLottoList = new ArrayList<>();
     private static List<Integer> winnerNumberList = new ArrayList<>();
     private static List<Integer> bonusNumberList = new ArrayList<>();
 
@@ -87,12 +88,14 @@ public class Lotto {
 
 
     // 내 로또 생성
-    public static List<ArrayList> myLottoNumber(int num) throws IOException { // 랜덤 로또 생성
-        num = theNumberOfLotto();
+    public static List<ArrayList> myLottoNumber() throws IOException { // 랜덤 로또 생성
+
         List<ArrayList> lottoList = new ArrayList<>();
 
-        for (int i = 0; i < num; i++){
-            lottoList.add(oneLotto());
+        for (int i = 0; i < getHowManyLotto(); i++){
+            ArrayList<Integer> exampleLotto = oneLotto();
+            myLottoList.add(exampleLotto);
+            System.out.println(exampleLotto);
         }
 
         return lottoList;
