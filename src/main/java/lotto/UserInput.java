@@ -1,14 +1,10 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class UserInput {
 
     private UserInput() {}
 
-    static public long inputMoney() {
-        System.out.println(Message.INPUT_MONEY);
-        String input = Console.readLine();
+    static public long inputMoney(String input) {
         validateMoney(input);
         return Long.parseLong(input);
     }
