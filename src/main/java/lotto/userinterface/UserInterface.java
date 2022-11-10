@@ -6,13 +6,19 @@ import lotto.userinterface.condition.MinimumMoneyCond;
 import lotto.userinterface.condition.MoneyDivisionCond;
 import lotto.userinterface.validator.Validator;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserInterface {
 
     private static final Validator validator = Validator.getInstance();
 
     private UserInterface() {
+    }
+
+    private static List<Integer> getParsedNumbers(String input) {
+        return Arrays.stream(input.split(",")).map(((String s) -> Integer.parseInt(s))).collect(Collectors.toList());
     }
 
     public static Integer getMoney() {
