@@ -10,7 +10,8 @@ public enum ErrorMessage {
     ERROR_OVERRANGE("[ERROR] 입력 범위 초과!"),
 
     ERROR_BONUS_OVERRANGE("[ERROR] 보너스 번호 입력 범위 초과!"),
-    ERROR_BONUS_NOTNUMBER("[ERROR] 보너스 번호에는 숫자가 와야 합니다.");
+    ERROR_BONUS_NOTNUMBER("[ERROR] 보너스 번호에는 숫자가 와야 합니다."),
+    ERROR_BONUS_DUPLICATE_WINNING("[ERROR] 보너스 번호는 당첨번호와 겹쳐질 수 없습니다.");
 
 
 
