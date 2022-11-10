@@ -12,6 +12,11 @@ public class WinningNumber {
     public WinningNumber() {
         String input = removeSpace(InputView.inputWinningNumbers());
         List<Integer> numbers = convertStringListToIntList(separateStringByComma(input));
+        validateWinningNumbers(numbers);
+        this.winningNumbers = numbers;
+    }
+
+    private static void validateWinningNumbers(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
@@ -20,7 +25,10 @@ public class WinningNumber {
                 throw new IllegalArgumentException();
             }
         }
-        this.winningNumbers = numbers;
+        if(numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException();
+        }
+
     }
 
     private static List<String> separateStringByComma(String input) {
