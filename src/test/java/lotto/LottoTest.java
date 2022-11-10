@@ -83,4 +83,16 @@ class LottoTest {
         Service.checkRank();
         assertThat(Rank.getSecond()).isEqualTo(1);
     }
+
+    @DisplayName("당첨금액의 총액이 일치하는지 테스트")
+    @Test
+    void checkWinningPrice() {
+        List<Integer> lotto = List.of(1,2,3,4,5,7);
+        String[] jackpotArr = new String[]{"1","2","3","4","5","6"};
+        int bonusNum = 7;
+        Service.checkLotto(lotto, jackpotArr, bonusNum);
+        Service.checkRank();
+        int winning = Service.getWinningPrice();
+        assertThat(winning).isEqualTo(30000000);
+    }
 }

@@ -93,4 +93,24 @@ public class Service {
             Rank.addFirst();
         }
     }
+
+    public static int getWinningPrice() {
+        int fifth = Rank.getFifth();
+        int fourth = Rank.getFourth();
+        int third = Rank.getThird();
+        int second = Rank.getSecond();
+        int first = Rank.getFirst();
+        int winningPrice = (fifth * 5000) + (fourth * 50000) + (third * 1500000)
+                + (second * 30000000) + (first * 2000000000);
+
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - "+ fifth + "개");
+        System.out.println("4개 일치 (50,000원) - " + fourth + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + third + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + second + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + first + "개");
+
+        return winningPrice;
+    }
 }
