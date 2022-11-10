@@ -1,16 +1,18 @@
 package lotto.domain;
 
+import static lotto.domain.LottoTicketsValidator.*;
+import static lotto.utils.Integer.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class LottoTickets {
+	public final static int MONEY_UNIT = 1000;
 	private List<LottoTicket> lottoTickets = new ArrayList<>();
-	public LottoTickets(String purchasingAmount) {
-		if (!isValidPurchasingAmount(purchasingAmount)) {
-			throw new IllegalArgumentException();
-		}
-		purchaseLottoTickets(toInt(purchasingAmount));
 
+	public LottoTickets(String purchasingAmount) {
+		checkValidityAndThrowException(purchasingAmount);
+		purchaseLottoTickets(toInt(purchasingAmount));
 	}
 
 	public List<LottoTicket> getLottoTickets() {
@@ -20,15 +22,7 @@ public class LottoTickets {
 	private void purchaseLottoTickets(int purchasingAmount) {
 		while (purchasingAmount != 0) {
 			lottoTickets.add(new LottoTicket(LottoNumberGenerator.generate()));
-			purchasingAmount -= 1000;
+			purchasingAmount -= MONEY_UNIT;
 		}
-	}
-
-	private boolean isValidPurchasingAmount(String purchasingAmount) {
-		return true;
-	}
-
-	private int toInt(String str) {
-		return Integer.valueOf(str);
 	}
 }
