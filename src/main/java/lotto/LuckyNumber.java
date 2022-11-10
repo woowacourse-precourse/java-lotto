@@ -12,4 +12,13 @@ public class LuckyNumber {
     }
     return validNumber;
   }
+
+  public boolean numberRange(List<Integer> userNumber) {
+    for (Integer integer : userNumber) {
+      if (integer < 1 || integer > 45) {
+        return false;
+      }
+    }
+    return true;
+  }
 }
