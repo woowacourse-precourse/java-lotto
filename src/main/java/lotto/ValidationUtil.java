@@ -18,4 +18,12 @@ public class ValidationUtil {
         }
         throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
+
+    public static boolean isValidCount(String str) {
+        String[] split = str.split(",");
+        if (split.length != 6) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 총 6개의 숫자여야 합니다.");
+        }
+        return true;
+    }
 }

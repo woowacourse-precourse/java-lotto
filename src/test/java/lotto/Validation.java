@@ -1,6 +1,5 @@
 package lotto;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -34,4 +33,19 @@ public class Validation {
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
+
+    @Nested
+    class ValidateMultipleDigits {
+
+        @Test
+        void hasSixDigits() {
+            assertThat(ValidationUtil.isValidCount("1,2,3,4,5,6")).isTrue();
+
+            assertThatThrownBy(() -> ValidationUtil.isValidCount("1,2,3,4,5,6,7"))
+                    .isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> ValidationUtil.isValidCount("1,2,3,4,5"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+    
 }
