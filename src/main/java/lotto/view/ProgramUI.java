@@ -7,6 +7,7 @@ import static lotto.view.Constants.*;
 
 public class ProgramUI {
     public String moneyInput;
+    public String numbersInput;
 
     public void inputMoney() {
         System.out.println(INPUT_MONEY);
@@ -20,5 +21,10 @@ public class ProgramUI {
         for (List<Integer> ticket: purchasedTickets) {
             System.out.println(ticket);
         }
+    }
+
+    public void inputWinningNumbers() {
+        System.out.println(INPUT_WINNING_NUMBERS);
+        this.numbersInput = readLine();
     }
 }
