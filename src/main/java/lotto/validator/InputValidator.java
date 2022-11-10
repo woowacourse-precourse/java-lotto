@@ -27,7 +27,7 @@ public class InputValidator {
         char[] digits = String.valueOf(number).toCharArray();
 
         for (char digit : digits) {
-            if (!Character.isAlphabetic(digit)) {
+            if (!Character.isDigit(digit)) {
                 return false;
             }
         }
