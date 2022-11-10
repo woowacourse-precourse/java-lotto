@@ -4,17 +4,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import lotto.utils.InputValidator;
 
 
 public class FirstPlace {
     public static final String DIVIDE_POINT = ",";
     private final List<Integer> firstPlace;
-    private final Integer bonus;
 
-    public FirstPlace(String firstPlace, String bonus) {
+    public FirstPlace(String firstPlace) {
+        InputValidator.validateFirstPlace(firstPlace);
         this.firstPlace = Arrays.stream(firstPlace.split(DIVIDE_POINT)).map(Integer::parseInt)
                 .collect(Collectors.toList());
-        this.bonus = Integer.parseInt(bonus);
     }
 
     @Override
@@ -26,11 +26,11 @@ public class FirstPlace {
             return false;
         }
         FirstPlace that = (FirstPlace) o;
-        return Objects.equals(firstPlace, that.firstPlace) && Objects.equals(bonus, that.bonus);
+        return Objects.equals(firstPlace, that.firstPlace);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstPlace, bonus);
+        return Objects.hash(firstPlace);
     }
 }
