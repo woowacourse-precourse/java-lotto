@@ -9,7 +9,16 @@ import lotto.repository.LottoRepository;
 
 public class LottoService {
 
-	private final LottoRepository lottoRepository = new LottoRepository();
+	private static final LottoService instance = new LottoService();
+
+	private LottoService() {
+	}
+
+	public static LottoService getInstance() {
+		return instance;
+	}
+
+	private final LottoRepository lottoRepository = LottoRepository.getInstance();
 
 	public LottoGroup makeLottoGroup(int purchaseQuantity) {
 		List<Lotto> lottos = new ArrayList<>();

@@ -11,14 +11,14 @@ import lotto.domain.Lotto;
 
 public class LottoRepositoryTest {
 
-	private final LottoRepository lottoRepository = new LottoRepository();
+	private final LottoRepository lottoRepository = LottoRepository.getInstance();
 
 	@DisplayName("로또 숫자들이 중복되지 않는지 검사")
 	@Test
-	void givenNone_whenMakeAutoLotto_thenReturnLottoNumbers(){
-	    //given
+	void givenNone_whenMakeAutoLotto_thenReturnLottoNumbers() {
+		//given
 
-	    //when
+		//when
 		Lotto lotto = lottoRepository.makeAutoLotto();
 		Set<Integer> lottoNumbers = new HashSet<>(lotto.getNumbers());
 

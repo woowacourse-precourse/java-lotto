@@ -8,7 +8,7 @@ import lotto.domain.LottoGroup;
 
 public class LottoServiceTest {
 
-	private final LottoService lottoService = new LottoService();
+	private final LottoService lottoService = LottoService.getInstance();
 
 	@DisplayName("로또 구매 수량 입력시 원하는만큼 구매가 되었는지 확인하는 테스트")
 	@Test
