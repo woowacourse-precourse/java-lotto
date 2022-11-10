@@ -7,10 +7,10 @@ import java.util.stream.Collectors;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
-    static final int UNIT = 1000;
-    static final int LOTTO_LEN = 6;
-    static final int LOTTO_MAX_SIZE = 45;
-    static final int LOTTO_MIN_SIZE = 1;
+    public static final int UNIT = 1000;
+    public static final int LOTTO_LEN = 6;
+    public static final int LOTTO_MAX_SIZE = 45;
+    public static final int LOTTO_MIN_SIZE = 1;
 
     private int userMoney = 0;
     private int resultMoney = 0;
