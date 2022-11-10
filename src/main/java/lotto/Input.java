@@ -15,11 +15,11 @@ public class Input {
         return input;
     }
 
-    public static final String[] winningNumbers() {
+    public static final String winningNumbers() {
         System.out.println(ENTER_WINNING_NUMBERS_MESSAGE);
         String input = Console.readLine();
         System.out.println();
-        return input.split(COMMA);
+        return input;
     }
 
     public static final String bonusNumber() {
