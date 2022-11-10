@@ -7,6 +7,8 @@ import lotto.util.RandomNumberGenerator;
 
 public class LottoController {
 
+    private LottoInput lottoInput = new LottoInput();
+
     public Integer getUserLottoCount() {
         UserInput userInput = new UserInput();
 
@@ -32,6 +34,22 @@ public class LottoController {
         System.out.print("\n" + issuedLotto.size());
         Message.GAME_ISSUE.print();
         issuedLotto.stream().forEach(lotto -> lotto.print());
+        System.out.println();
+    }
+
+    public Lotto getLottoInput() {
+        Message.LOTTO_INPUT.print();
+        List<Integer> lottoNumbers = lottoInput.getLottoInput();
+        Lotto lotto = new Lotto(lottoNumbers);
+        System.out.println();
+        return lotto;
+    }
+
+    public Integer getBonusInput() {
+        Message.BONUS_INPUT.print();
+        Integer bonus = lottoInput.getBonusInput();
+        System.out.println();
+        return bonus;
     }
 
 }

@@ -5,6 +5,7 @@ import static lotto.global.Constant.MAX_LOTTO_SIZE;
 import java.util.Collections;
 import java.util.List;
 import lotto.global.Message;
+import lotto.util.LottoParser;
 
 public class Lotto {
 
@@ -16,20 +17,16 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        LottoParser lottoParser = new LottoParser();
+
         if (numbers.size() != 6 || numbers.size() != numbers.stream().distinct().count()) {
-            lottoError();
+            lottoParser.lottoError(Message.ERROR_LOTTO);
         }
         numbers.forEach(number -> {
             if (number < 1 || number > 45) {
-                lottoError();
+                lottoParser.lottoError(Message.ERROR_LOTTO);
             }
         });
-    }
-
-    // TODO: 추가 기능 구현
-    private void lottoError() {
-        Message.ERROR_LOTTO.print();
-        throw new IllegalArgumentException();
     }
 
     public void print() {
