@@ -17,7 +17,7 @@ public class LottoPublisher {
     }
 
     private int numberOfLottos(int payment) {
-        return payment % 1000;
+        return payment / 1000;
     }
 
     private Lotto publishLotto() {
