@@ -1,8 +1,7 @@
 package lotto.domain;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Set;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 import static lotto.LottoExceptions.createLottoException;
@@ -52,10 +51,20 @@ public class Lotto {
     }
 
     public MatchAndReward match(Lotto other) {
-        int matchCount = (int)numbers.stream()
+        int matchCount = (int) numbers.stream()
                 .filter(other.numbers::contains)
                 .count();
 
         return MatchAndReward.getByMatch(matchCount);
+    }
+
+    @Override
+    public String toString() {
+        StringJoiner joiner = new StringJoiner(", ", "[", "]");
+        numbers.stream()
+                .map(number -> number + "")
+                .forEach(joiner::add);
+
+        return joiner.toString();
     }
 }
