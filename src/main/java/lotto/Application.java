@@ -2,6 +2,7 @@ package lotto;
 
 import static lotto.CompareLotto.compareLotto;
 import static lotto.CompareLotto.printCompareLotto;
+import static lotto.CompareLotto.printRateOfReturn;
 import static lotto.Lotto.inputMoney;
 import static lotto.Lotto.oneLotto;
 import static lotto.Lotto.theNumberOfLotto;
@@ -18,14 +19,12 @@ public class Application {
         System.out.println(Lotto.getHowManyLotto() + "개를 구입했습니다. ");
 
         Lotto.myLottoNumber();
-
         Lotto.winnerNumber();
-
         Lotto.winnerNumberBonus();
 
         compareLotto();
-
         printCompareLotto();
+        printRateOfReturn();
     }
 
 }
