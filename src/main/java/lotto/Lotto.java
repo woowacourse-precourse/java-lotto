@@ -9,7 +9,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        create(numbers);
+//        create(numbers);
         this.numbers = numbers;
     }
 
@@ -18,11 +18,12 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-    private void create(List<Integer> numbers) {
-        numbers =Randoms.pickUniqueNumbersInRange(1, 45, 6);
-    }
+//    private void create(List<Integer> numbers) {
+//    numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+//    }
 
     public List<Integer> getNumbers() {
+        System.out.println(numbers);
         return numbers;
     }
 
