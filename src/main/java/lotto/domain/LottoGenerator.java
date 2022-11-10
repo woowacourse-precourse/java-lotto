@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.Error;
 import lotto.Lotto;
 
 import java.util.ArrayList;
@@ -17,6 +18,10 @@ public class LottoGenerator {
     }
 
     public List<Lotto> generateLottoBundle(int money) {
+        if(money % LOTTO_PRICE != 0) {
+            System.out.println();
+            throw new IllegalArgumentException(Error.WRONG_MONEY.getMessage());
+        }
         List<Lotto> lottoBundle = new ArrayList<>();
         int lottoCounts = money / LOTTO_PRICE;
 
