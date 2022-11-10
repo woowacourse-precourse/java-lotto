@@ -1,11 +1,12 @@
-package user;
+package lotto.user;
 
-import store.Lotto;
-import store.LottoMachine;
+import lotto.store.Lotto;
+import lotto.store.LottoMachine;
 
 import java.util.List;
 import java.util.StringJoiner;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Customer {
     private static final String NUMERIC_ERROR = "[ERROR] 숫자를 입력해 주시기 바랍니다.";
@@ -37,4 +38,10 @@ public class Customer {
         lotteries.forEach(lotto -> currentLotteries.add(lotto.toString()));
         return currentLotteries.toString();
     }
+
+    public List<Integer> determineRanking(List<Integer> winNumbers) {
+        return lotteries.stream().map(lottoNumbers -> lottoNumbers.compareWinNumbers(winNumbers))
+                .collect(Collectors.toList());
+    }
+
 }
