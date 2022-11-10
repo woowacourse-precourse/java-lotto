@@ -6,21 +6,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private int InputCost;
-    private List<List<Integer>> purchaseLottoList;
-    private int[] WinningArray;
+    public int inputCost;
+    public List<List<Integer>> purchaseLottoList;
+    private int[] winningArray;
     private int getProfit;
-    private float EarningsRate;
+    private float earningsRate;
 
+    User(int inputConst) {
+        this.inputCost = inputConst;
+    }
     public static List<Integer> getLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
-    public static List<List<Integer>> getPurchaseLottoList(int purchaseNumber) {
+    public void getPurchaseLottoList() {
         List<List<Integer>> result = new ArrayList<>();
-        for (int i = 0; i < purchaseNumber; i++) {
+        for (int i = 0; i < inputCost/1000; i++) {
             result.add(getLottoNumbers());
         }
-        return result;
+        this.purchaseLottoList = result;
     }
 }

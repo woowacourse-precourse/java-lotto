@@ -30,8 +30,9 @@ public class FeatureTest {
 
     @Test
     void 사용자의_구매횟수만큼_로또숫자_발행() {
-        List<List<Integer>> result = User.getPurchaseLottoList(5);
-        assertThat(result.size()).isEqualTo(5);
+        User user = new User(5000);
+        user.getPurchaseLottoList();
+        assertThat(user.purchaseLottoList.size()).isEqualTo(5);
     }
 
     @Test
