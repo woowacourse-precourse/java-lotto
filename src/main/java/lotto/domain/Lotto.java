@@ -17,11 +17,24 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        validateDuplicate(numbers);
+        validateLottoRange(numbers);
         this.numbers = numbers;
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    static List<Integer> createRandomNumbers() {
+        return pickUniqueNumbersInRange(START_NUM, END_NUM, LOTTO_SIZE);
+    }
+
+    public static Lotto createLotto() {
+        Set<Integer> duplicate = new HashSet<>();
+        while (duplicate.size() != LOTTO_SIZE) {
+            duplicate.addAll(createRandomNumbers());
+        }
+        List<Integer> lotto = new ArrayList<>(duplicate);
+        Collections.sort(lotto);
+        System.out.println(lotto);
+        return new Lotto(lotto);
     }
 
     private void validate(List<Integer> numbers) {
@@ -30,17 +43,17 @@ public class Lotto {
         }
     }
 
-    List<Integer> createRandomNumbers() {
-        return pickUniqueNumbersInRange(START_NUM, END_NUM, LOTTO_SIZE);
+    private void validateDuplicate(List<Integer> numbers) {
+        if (numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException(ErrorMessage.ERROR_DUPLICATE.getErrorMessage());
+        }
     }
 
-    public void createLottoNumber() {
-        Set<Integer> duplicate = new HashSet<>();
-        while (duplicate.size() != LOTTO_SIZE) {
-            duplicate.addAll(createRandomNumbers());
+    private void validateLottoRange(List<Integer> numbers) {
+        for (Integer i : numbers) {
+            if (i > 45 || i < 1) {
+                throw new IllegalArgumentException(ErrorMessage.ERROR_LOTTO_RANGE.getErrorMessage());
+            }
         }
-        numbers.addAll(duplicate);
-        Collections.sort(numbers);
-        System.out.println(numbers);
     }
 }
