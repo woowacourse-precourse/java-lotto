@@ -9,13 +9,13 @@ public class ValidationUtil {
     public static void isValidNum(String str) {
         int number = Integer.parseInt(str);
         if (number < MIN_NUMBER || number > MAX_NUMBER) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER.getValue());
         }
     }
 
     public static void isValidCount(String[] array) {
         if (array.length != LOTTO_COUNT) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 총 6개의 숫자여야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.INVALID_COUNT.getValue());
         }
     }
 
