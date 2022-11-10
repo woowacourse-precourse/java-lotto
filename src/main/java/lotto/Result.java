@@ -5,24 +5,54 @@ import java.util.Objects;
 public class Result {
     int matchCount = 0;
     boolean hasBonusNumber = false;
+    ResultStatus resultStatus = null;
 
-    public Result(int matchCount, boolean hasBonusNumber) {
+    protected Result(int matchCount, boolean hasBonusNumber) {
         this.matchCount = matchCount;
         this.hasBonusNumber = hasBonusNumber;
+        setResultStatus();
     }
 
     public Result(WinLotto winLotto, Lotto generatedLotto) {
         for (Integer number : generatedLotto.getNumbers()) {
-            hasMatchNumber(winLotto, number);
+            setMatchCount(winLotto, number);
         }
+        setHasBonusNumber(winLotto, generatedLotto);
+        setResultStatus();
+    }
+
+    private void setMatchCount(WinLotto winLotto, Integer number) {
+        if (winLotto.getNumbers().contains(number)) {
+            matchCount++;
+        }
+    }
+
+    private void setHasBonusNumber(WinLotto winLotto, Lotto generatedLotto) {
         if (generatedLotto.getNumbers().contains(winLotto.bonusNumber)) {
             hasBonusNumber = true;
         }
     }
 
-    private void hasMatchNumber(WinLotto winLotto, Integer number) {
-        if (winLotto.getNumbers().contains(number)) {
-            matchCount++;
+    private void setResultStatus() {
+        if (matchCount == ResultStatus.MATCH6.getCount()) {
+            resultStatus = ResultStatus.MATCH6;
+            return;
+        }
+        if (matchCount == ResultStatus.MATCH5_WITH_BONUS_BALL.getCount() &&
+                hasBonusNumber == ResultStatus.MATCH5_WITH_BONUS_BALL.isHasBonusBall()) {
+            resultStatus = ResultStatus.MATCH5_WITH_BONUS_BALL;
+            return;
+        }
+        if (matchCount == ResultStatus.MATCH5.getCount()) {
+            resultStatus = ResultStatus.MATCH5;
+            return;
+        }
+        if (matchCount == ResultStatus.MATCH4.getCount()) {
+            resultStatus = ResultStatus.MATCH4;
+            return;
+        }
+        if (matchCount == ResultStatus.MATCH3.getCount()) {
+            resultStatus = ResultStatus.MATCH3;
         }
     }
 
