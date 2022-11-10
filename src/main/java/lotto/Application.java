@@ -35,10 +35,14 @@ public class Application {
             lotto_list.add(numbers);
         }
         List<Integer> lotto_answer = getLottoAnswer();
+
+
     }
 
      public static List<Integer> getLottoAnswer(){
         String read_answer = Console.readLine();
-        return Arrays.stream(read_answer.split(",")).map(s -> Integer.parseInt(s.trim())).collect(Collectors.toList());
-     }
+        List<Integer> lotto_answer = Arrays.stream(read_answer.split(",")).map(s -> Integer.parseInt(s.trim())).collect(Collectors.toList());
+        Collections.sort(lotto_answer);
+        return lotto_answer;
+    }
 }
