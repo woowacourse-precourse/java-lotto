@@ -30,17 +30,18 @@ public class Lotto {
         }
     }
 
-    private Boolean validateEachNumberInRange(List<Integer> numbers){
-        return null;
+    private boolean validateEachNumberInRange(List<Integer> numbers){
+        return numbers.stream().allMatch((number) -> 1 <= number && number <= 45);
     }
 
-    private Boolean validateConsistOfSixNumber(List<Integer> numbers){
-        return null;
+    private boolean validateConsistOfSixNumber(List<Integer> numbers){
+        return numbers.size() == 6;
     }
 
-    private Boolean validateEachNumberIsDistinct(List<Integer> numbers){
-        return null;
+    private boolean validateEachNumberIsDistinct(List<Integer> numbers){
+        return numbers.stream().distinct().count() == 6;
     }
+
     // TODO: 추가 기능 구현
 
     public Integer getCountOfMatchNumber(Lotto otherLotto){
