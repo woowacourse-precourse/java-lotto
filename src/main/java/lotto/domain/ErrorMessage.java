@@ -9,7 +9,8 @@ public enum ErrorMessage {
     LOTTE_NUMBER_NOT_ASC("Lotto Number Not Sorted by ASC."),
     PURCHASE_PAY_CONSISTENCE("Purchase Pay Isn't Consist Of Number."),
     PURCHASE_PAY_REMINDER("Purchase Pay Reminder Isn't Zero."),
-    NOT_DIVIDE_COMMAS("Please DIVIDE Number With Commas");
+    NOT_DIVIDE_COMMAS("Please DIVIDE Number With Commas"),
+    BONUS_NUMBER_DUPLICATION("Lotte Has A Duplicate Value With The Bonus Number.");
 
 
     private final String message;

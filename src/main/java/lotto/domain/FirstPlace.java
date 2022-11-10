@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.domain.ErrorMessage.BONUS_NUMBER_DUPLICATION;
+import static lotto.domain.ErrorMessage.COMMON_MESSAGE;
 import static lotto.utils.LottoValidator.validateFirstPlace;
 
 import java.util.Arrays;
@@ -18,6 +20,12 @@ public class FirstPlace {
                 .collect(Collectors.toList());
     }
 
+    public void duplicateCheckBonusNumber(String bonus) {
+        if (this.firstPlace.contains(Integer.parseInt(bonus))) {
+            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + BONUS_NUMBER_DUPLICATION.getMessage());
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -34,4 +42,6 @@ public class FirstPlace {
     public int hashCode() {
         return Objects.hash(firstPlace);
     }
+
+
 }
