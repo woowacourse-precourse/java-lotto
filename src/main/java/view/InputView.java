@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import static constant.MessageConstant.INPUT_LOTTO_NUMBERS;
 import static constant.MessageConstant.INPUT_PRICE;
 import static constant.MessageConstant.INPUT_BONUS_NUMBER;
+import static constant.UtilConstant.REGEX;
 
 public enum InputView {
     INSTANCE;
@@ -35,7 +36,7 @@ public enum InputView {
     }
 
     private List<Integer> splitNumbers(final String numbersText) {
-        return Arrays.stream(numbersText.split(","))
+        return Arrays.stream(numbersText.split(REGEX))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }

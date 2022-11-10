@@ -6,6 +6,10 @@ import domain.LottoTicket;
 import view.InputView;
 import view.OutputView;
 
+import static constant.UtilConstant.LOTTO_OPEN;
+import static constant.UtilConstant.LOTTO_CLOSE;
+import static constant.UtilConstant.COMMA_AND_SPACE;
+
 public class LottoController {
     private static final InputView inputView = InputView.INSTANCE;
     private static final OutputView outputView = OutputView.INSTANCE;
@@ -31,11 +35,11 @@ public class LottoController {
     }
 
     private void printLottoNumbers(Lotto lotto) {
-        StringBuilder result = new StringBuilder("[");
+        StringBuilder result = new StringBuilder(LOTTO_OPEN);
         for (int lottoNumber : lotto.get()) {
-            result.append(lottoNumber).append(", ");
+            result.append(lottoNumber).append(COMMA_AND_SPACE);
         }
-        result.delete(result.length() - 2, result.length()).append("]");
+        result.delete(result.length() - 2, result.length()).append(LOTTO_CLOSE);
         System.out.println(result);
     }
 
