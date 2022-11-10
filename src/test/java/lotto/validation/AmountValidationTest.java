@@ -21,12 +21,12 @@ class AmountValidationTest {
 
     @DisplayName("아무것도 입력하지 않은 경우")
     @Test
-    void isNullTest() {
+    void isBlankTest() {
         // given
         amount = "";
 
         // when, then
-        assertThatThrownBy(() -> validation.isNull(amount))
+        assertThatThrownBy(() -> validation.isBlank(amount))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
@@ -69,7 +69,7 @@ class AmountValidationTest {
 
     @DisplayName("로또 구입 금액 입력 전체 유효성 검사")
     @ParameterizedTest
-    @ValueSource(strings = {"0", "백만원", "100만원", "Million", "", "15100", "1000won", "10000l"})
+    @ValueSource(strings = {"0", "백만원", "100만원", "Million", "", "  ", "15100", "1000won", "10000l"})
     void isValidTest(String amount) {
         assertThatThrownBy(() -> validation.isValid(amount))
                 .isInstanceOf(IllegalArgumentException.class)

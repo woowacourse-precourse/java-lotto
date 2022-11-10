@@ -12,7 +12,7 @@ public class AmountValidation extends IllegalArgumentException {
     }
 
     public void isValid(String amount) {
-        isNull(amount);
+        isBlank(amount);
         isNumber(amount);
         isZero(amount);
         hasChanges(amount);
@@ -22,8 +22,8 @@ public class AmountValidation extends IllegalArgumentException {
         throw new IllegalArgumentException(msg);
     }
 
-    public void isNull(String amount) {
-        if (amount.isEmpty()) {
+    public void isBlank(String amount) {
+        if (amount.isBlank()) {
             message = ErrorMessage.valueOf("BLANK_EXCEPTION");
             throwError(message.getMessage());
         }
