@@ -4,14 +4,15 @@ import store.Lotto;
 import store.LottoMachine;
 
 import java.util.List;
+import java.util.StringJoiner;
 import java.util.regex.Pattern;
 
 public class Customer {
     private static final String NUMERIC_ERROR = "[ERROR] 숫자를 입력해 주시기 바랍니다.";
-    private static final String NUMBER_OF_PURCHASES_PHRASE = "개를 구매했습니다.\n";
+    private static final String NUMBER_OF_PURCHASES_PHRASE = "개를 구매했습니다.";
 
-    private List<Lotto> lotteries;
-    private int pay;
+    private final List<Lotto> lotteries;
+    private final int pay;
 
     public Customer(String readline) {
         validateNumeric(readline);
@@ -30,14 +31,10 @@ public class Customer {
     }
 
     public String toLottoString() {
-        int startIndex = 0;
-        int numberOfPurchases = lotteries.size();
-        StringBuilder currentLotteries = new StringBuilder(numberOfPurchases + NUMBER_OF_PURCHASES_PHRASE);
+        StringJoiner currentLotteries = new StringJoiner("\n");
 
-        while (startIndex < numberOfPurchases) {
-            currentLotteries.append(lotteries.get(startIndex)).append("\n");
-            startIndex++;
-        }
+        currentLotteries.add(lotteries.size() + NUMBER_OF_PURCHASES_PHRASE);
+        lotteries.forEach(lotto -> currentLotteries.add(lotto.toString()));
         return currentLotteries.toString();
     }
 }
