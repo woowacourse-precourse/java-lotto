@@ -11,6 +11,13 @@ public class AmountValidation extends IllegalArgumentException {
     public AmountValidation() {
     }
 
+    public void isValid(String amount) {
+        isNull(amount);
+        isNumber(amount);
+        isZero(amount);
+        hasChanges(amount);
+    }
+
     public void throwError(String msg) {
         throw new IllegalArgumentException(msg);
     }
