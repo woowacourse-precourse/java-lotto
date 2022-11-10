@@ -1,11 +1,10 @@
-package lotto.domain.lottery.lotterystore;
+package lotto.domain.lotterystore;
 
 public class ErrorChecker {
-	public boolean isValidMoneyFromBuyer(String money) {
+	public void validateMoneyFromBuyer(String money) {
 		if (isNotNumber(money) || isNotPositiveNumber(money) || isNotZeroRemainder(money)) {
-			throw new IllegalArgumentException("[ERROR] 지불하실 금액을 1000원 단위로 입력해주세요!\n");
+			throw new IllegalArgumentException("[ERROR] 올바른 금액을 입력해주세요!\n");
 		}
-		return true;
 	}
 
 	private boolean isNotNumber(String money) {
