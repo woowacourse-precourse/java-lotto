@@ -3,17 +3,23 @@ package lotto.model;
 import static lotto.Util.removeSpace;
 import static lotto.Util.verifyRangeOfLottoNumber;
 
-import lotto.view.InputView;
 
 public class BonusNumber {
     private static int bonusNumber;
 
-    public BonusNumber() {
-        int input = Integer.parseInt(removeSpace(InputView.inputBonusNumber()));
-        verifyRangeOfLottoNumber(input);
-        if(WinningNumber.winningNumbers.contains(input)) {
+    public BonusNumber(String input) {
+        this.bonusNumber = validateBonusNumber(formatInput(input));
+    }
+
+    private static int validateBonusNumber(int number) {
+        verifyRangeOfLottoNumber(number);
+        if (WinningNumber.winningNumbers.contains(number)) {
             throw new IllegalArgumentException();
         }
-        this.bonusNumber = input;
+        return number;
+    }
+
+    private static int formatInput(String input) {
+        return Integer.parseInt(removeSpace(input));
     }
 }
