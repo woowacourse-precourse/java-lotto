@@ -14,11 +14,6 @@ class LottoNumbers {
         this.lottoStatusQuantity = new EnumMap<>(LottoStatus.class);
     }
 
-    public int getAllStatusCount() {
-        return lottoStatusQuantity.values().stream()
-                .reduce(Integer::sum).orElse(0);
-    }
-
     void addLotto(Lotto lotto) {
         lottoNumbers.add(lotto);
     }
@@ -52,5 +47,11 @@ class LottoNumbers {
 
     public boolean contains(Lotto lotto) {
         return lottoNumbers.contains(lotto);
+    }
+
+    public int getProfitSum() {
+        return lottoStatusQuantity.entrySet().stream()
+                .map(entry -> entry.getKey().getProfit() * entry.getValue())
+                .reduce(Integer::sum).orElse(0);
     }
 }
