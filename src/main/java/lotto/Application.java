@@ -41,5 +41,8 @@ public class Application {
             Result result = winLotto.getResult(lotto);
             results.add(result);
         }
+
+        ResultStatistics statistics = new ResultStatistics(results);
+        System.out.println(statistics.printResultStatistics());
     }
 }
