@@ -13,6 +13,8 @@ public class Money {
 	}
 
 	public static void checkMoneyInput(String input) {
-		throw new IllegalArgumentException();
+		if (!input.matches("[0-9]+")) {
+			throw new IllegalArgumentException("숫자가 아닙니다.");
+		}
 	}
 }
