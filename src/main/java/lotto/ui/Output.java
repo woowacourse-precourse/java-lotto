@@ -9,7 +9,7 @@ import java.util.Map;
 public class Output {
 
     public void guideInputAmount() {
-        System.out.println(Guide.PURCHASING_AMOUNT.getMessage());
+        System.out.println(Guide.INPUT_AMOUNT.getMessage());
     }
 
     public void guideInputWinningNumbers() {
@@ -18,6 +18,11 @@ public class Output {
 
     public void guideInputBonusNumber() {
         System.out.println(Guide.BONUS_NUMBER.getMessage());
+    }
+
+    public void showPurchasesQuantity(int purchasesQuantity) {
+        System.out.println(String.format(Guide.PURCHASING_QUANTITY.getMessage(),
+                purchasesQuantity));
     }
 
     public void showBoughtLotto(List<List<Integer>> userLottoTickets) {

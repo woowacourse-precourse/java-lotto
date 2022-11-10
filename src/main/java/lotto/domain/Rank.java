@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Rank {
-    public Map<Place, Integer> winningRanks = new HashMap<>();
+    public static Map<Place, Integer> winningRanks = new HashMap<>();
     private Bonus bonus;
-    Lotto lotto;
+    private Lotto lotto;
 
     public Rank(List<Integer> numbers) {
         for (Place rank : Place.values()) {

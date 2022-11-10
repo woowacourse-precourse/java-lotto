@@ -13,33 +13,35 @@ public class Input {
     public List<Integer> winningNumbers = new ArrayList<>();
     public int bonusNumber;
 
-    public void getInputAmount() {
+    public int getAmount() {
         try {
             this.inputAmount = Integer.parseInt(Console.readLine());
+            return this.inputAmount;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException
-                    (Bug.ERROR.getMessage() + Bug.AMOUNT_MUST_NUMBER.getMessage());
+            System.out.println(Bug.ERROR.getMessage() + Bug.AMOUNT_MUST_NUMBER.getMessage());
+            throw new IllegalArgumentException(Bug.ERROR.getMessage() + Bug.AMOUNT_MUST_NUMBER.getMessage());
         }
     }
 
-    public void getWinningNumbers() {
+    public List<Integer> getWinningNumbers() {
         List<String> beforeConversion = Arrays.asList(Console.readLine().split(","));
         try {
             this.winningNumbers = beforeConversion.stream()
                     .map(s -> Integer.parseInt(s))
                     .collect(Collectors.toList());
+            return this.winningNumbers;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException
-                    (Bug.ERROR.getMessage() + Bug.LOTTO_NO_OTHER_INPUT.getMessage());
+            System.out.println(Bug.ERROR.getMessage() + Bug.LOTTO_NO_OTHER_INPUT.getMessage());
+            throw new IllegalArgumentException();
         }
     }
 
-    public void getBonusNumber() {
+    public int getBonusNumber() {
         try {
             this.bonusNumber = Integer.parseInt(Console.readLine());
+            return this.bonusNumber;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException
-                    (Bug.ERROR.getMessage() + Bug.BONUS_NO_OTHER_INPUT);
+            throw new IllegalArgumentException(Bug.ERROR.getMessage() + Bug.BONUS_NO_OTHER_INPUT);
         }
     }
 

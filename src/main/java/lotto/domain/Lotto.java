@@ -37,7 +37,7 @@ public class Lotto {
     public int checkNumbers(List<Integer> userLottoNumbers) {
         List<Integer> lottoNumbers = new ArrayList<>(userLottoNumbers);
         lottoNumbers.removeAll(numbers);
-        int matchingNumber = numbers.size() - userLottoNumbers.size();
+        int matchingNumber = numbers.size() - lottoNumbers.size();
         return matchingNumber;
     }
 

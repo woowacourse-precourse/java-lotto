@@ -1,6 +1,5 @@
 package lotto.domain;
 
-
 import lotto.entity.Bug;
 import lotto.entity.Place;
 

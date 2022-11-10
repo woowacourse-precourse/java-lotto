@@ -21,8 +21,9 @@ public class LottoGenerator {
 
     private static List<Integer> createRandom() {
         List<Integer> userLottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(userLottoNumbers);
-        return userLottoNumbers;
+        List<Integer> sortedUserLottoNumbers = new ArrayList<>(userLottoNumbers);
+        Collections.sort(sortedUserLottoNumbers);
+        return sortedUserLottoNumbers;
     }
 
     public List<List<Integer>> getUserLottoTickets() {
