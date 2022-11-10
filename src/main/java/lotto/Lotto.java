@@ -18,6 +18,7 @@ public class Lotto {
     private static final int MIN_VALUE = 1;
     private static final int MAX_VALUE = 45;
     private static int userInputMoney;
+    private static int howManyLotto = 0;
     private static List<Integer> winnerNumberList = new ArrayList<>();
     private static List<Integer> bonusNumberList = new ArrayList<>();
 
@@ -55,10 +56,13 @@ public class Lotto {
 
     // 로또 개수 (완성)
     public static int theNumberOfLotto() throws IOException {
-        int inputMoney = userInputMoney / 1000;
+        howManyLotto = userInputMoney / 1000;
 
-        System.out.println(inputMoney + "개를 구입했습니다.");
-        return inputMoney;
+        return howManyLotto;
+    }
+
+    public static int getHowManyLotto(){
+        return howManyLotto;
     }
 
     //한 개의 로또 번호 생성 (완성)
@@ -83,16 +87,15 @@ public class Lotto {
 
 
     // 내 로또 생성
-    public static ArrayList<Integer> myLottoNumber(int num) throws IOException { // 랜덤 로또 생성
+    public static List<ArrayList> myLottoNumber(int num) throws IOException { // 랜덤 로또 생성
         num = theNumberOfLotto();
-        List<Array> lottoList = new ArrayList<>();
+        List<ArrayList> lottoList = new ArrayList<>();
 
-//        for (int i = 0; i < num; i++){
-//            lottoList.add(oneLotto());
-//        }
+        for (int i = 0; i < num; i++){
+            lottoList.add(oneLotto());
+        }
 
-        Collections.sort(myLottoNumber(num)); // 로또 번호 정렬
-        return null;
+        return lottoList;
     }
 
     //당첨 로또 입력 (완성)
@@ -124,7 +127,7 @@ public class Lotto {
 
     //보너스 번호 (완성)
     public static int winnerNumberBonus() throws IOException {
-        System.out.println("보너스 번호를 입력해 주세가");
+        System.out.println("보너스 번호를 입력해 주세요");
         int bonusNumber = Integer.parseInt(br.readLine());
         if(bonusNumber <= 0 || bonusNumber > 45){
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
