@@ -60,8 +60,69 @@ class LottoTest {
 
     @DisplayName("로또 번호 출력")
     @Test
-    void create() {
+    void LottoToStringCheck() {
         String test = new Lotto(List.of(1, 2, 3, 4, 5, 6)).toString();
         assertThat(test).isEqualTo("[1, 2, 3, 4, 5, 6]");
+    }
+
+    @DisplayName("당첨 1등 랭크 확인")
+    @Test
+    void LottorankCheck() {
+        Lotto win = new Lotto(List.of(1, 2, 3, 4, 5, 6),7);
+        Lotto my = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        int rank = my.checkRank(win);
+        assertThat(rank).isEqualTo(1);
+    }
+
+    @DisplayName("당첨 2등 랭크 확인")
+    @Test
+    void LottoRank2Check() {
+        Lotto win = new Lotto(List.of(1, 2, 3, 4, 5, 6),7);
+        Lotto my = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+
+        int rank = my.checkRank(win);
+        assertThat(rank).isEqualTo(2);
+    }
+
+    @DisplayName("당첨 3등 랭크 확인")
+    @Test
+    void LottoRank3Check() {
+        Lotto win = new Lotto(List.of(1, 2, 3, 4, 5, 6),7);
+        Lotto my = new Lotto(List.of(1, 2, 3, 4, 5, 8));
+
+        int rank = my.checkRank(win);
+        assertThat(rank).isEqualTo(3);
+    }
+
+
+    @DisplayName("당첨 4등 랭크 확인")
+    @Test
+    void LottoRank4Check() {
+        Lotto win = new Lotto(List.of(1, 2, 3, 4, 5, 6),7);
+        Lotto my = new Lotto(List.of(1, 2, 3, 4, 8, 7));
+
+        int rank = my.checkRank(win);
+        assertThat(rank).isEqualTo(4);
+    }
+
+    @DisplayName("당첨 5등 랭크 확인")
+    @Test
+    void LottoRank5Check() {
+        Lotto win = new Lotto(List.of(1, 2, 3, 4, 5, 6),7);
+        Lotto my = new Lotto(List.of(1, 2, 3, 9, 8, 7));
+
+        int rank = my.checkRank(win);
+        assertThat(rank).isEqualTo(5);
+    }
+
+    @DisplayName("미당첨 랭크 확인")
+    @Test
+    void LottoRankNoneCheck() {
+        Lotto win = new Lotto(List.of(1, 2, 3, 4, 5, 6),7);
+        Lotto my = new Lotto(List.of(1, 2, 10, 9, 8, 7));
+
+        int rank = my.checkRank(win);
+        assertThat(rank).isEqualTo(-1);
     }
 }
