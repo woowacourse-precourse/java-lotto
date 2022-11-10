@@ -2,19 +2,19 @@
 
 ## 기능 목록
 - 입력
-- [ ] 로또 구입 금액 입력 -PurchaseLotto#inputMoney()
-  - [ ] 1000원단위로 입력
-  - [ ] 1000원 단위가 아니면 예외처리
-- [ ] 당첨번호 입력 (번호는 쉼표를 기준으로 구분) -
+- [ ] O 로또 구입 금액 입력 -PurchaseLotto#inputMoney() 
+  - [ ] O 1000원단위로 입력
+  - [ ] O 1000원 단위가 아니면 예외처리
+- [ ] 당첨번호 입력 (번호는 쉼표를 기준으로 구분) -LottoResult#inputResult()
   - [ ] 로또 숫자 범위 1~45.
   - [ ] 중복되지않은 6개의 숫자를 뽑는다.
 - [ ] 보너스 번호 입력
 
 
 - 출력
-- [ ] 발행한 로또 수량 및 번호 출력 -PurchaseLotto#countLotto() & PurchaseLotto#lottoNumber()
-  - [ ] 오름차순 정렬
-- [ ] 당첨 내역 출력 -LottoResult#winLotto()
+- [ ] O 발행한 로또 수량 및 번호 출력 -PurchaseLotto#countLotto() & PurchaseLotto#lottoNumber()
+  - [ ] O 오름차순 정렬
+- [ ] 당첨 내역 출력 -ConsumerResult#winLotto()
 - [ ] 수익률 출력 -ConsumerResult#profit()
   - [ ] 소수점 둘째 자리에서 반올림
 
@@ -25,8 +25,8 @@
 
 # 프로그래밍 요구 사항
 1. 함수 길이는 최대 15라인
-2. else쓰지않기
-3. Java Enum을 적용
+2. else 쓰지않기
+3. Java Enum을 적용 -->어디에...?
 4. 도메인 로직에 단위 테스트 구현
 5. 3항 연산자 사용 금지
 6. 들여쓰기 깊이 3미만
