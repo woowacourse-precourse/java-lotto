@@ -22,4 +22,14 @@ public class InputOutputView {
             System.out.println(lottos.get(idx).toString());
         }
     }
+
+    public String getWinningNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        return readLine();
+    }
+
+    public int getBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요");
+        return Integer.parseInt(readLine());
+    }
 }
