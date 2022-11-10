@@ -13,7 +13,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
     private static final int lottoPrice = 1000;
     private static final String lottoPriceString = addComma(lottoPrice);
-    private static final String errorMsg1 = "[ERROR] 숫자를 입력해 주세요.";
+    private static final String errorMsg1 = "[ERROR] 구입금액은 숫자를 입력해야 합니다.";
     private static final String errorMsg2 =
             "[ERROR] 구입 금액은 " + lottoPriceString + "원으로 나누어 떨어지는 자연수여야 합니다.";
     private static final String errorMsg3 =
@@ -79,7 +79,25 @@ public class Application {
     }
 
     public static void getBonusNumber() throws IllegalArgumentException {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String userInput = Console.readLine();
 
+        try {
+            bonusNumber = Integer.parseInt(userInput);
+        } catch (Exception e){
+            throw new IllegalArgumentException(errorMsg4);
+        }
+        validateBonus();
+    }
+
+    public static void validateBonus(){
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalArgumentException(errorMsg4);
+        }
+
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(errorMsg4);
+        }
     }
 
     public static Integer howManyLotto() {
