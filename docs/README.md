@@ -7,7 +7,7 @@
     2) 당첨 번호 처리 
         / List<Interger> getWinnigNumber(String readLine)
     3) 보너스 번호 처리 
-        / Integer getBonusNumber(String readLine)
+        / int getBonusNumber(String readLine)
 ###2. 로또 발행
     1) 로또 1개 숫자 발행 
         / List<Integer> getLottoNumbers()
