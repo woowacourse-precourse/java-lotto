@@ -12,6 +12,7 @@ public class Application {
         moneyInputError(money);
         List<Lotto> lotto = new ArrayList<>();
         buyLotto(money, lotto);
+        printLotto(lotto);
 
 
     }
@@ -29,6 +30,11 @@ public class Application {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             lotto.add(new Lotto(numbers));
         }
+    }
+
+    public static void printLotto(List<Lotto> lotto) {
+        for (int i = 0; i < lotto.size(); i++)
+            lotto.get(i).printNumbers();
     }
 
 }
