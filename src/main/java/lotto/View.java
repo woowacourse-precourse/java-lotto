@@ -2,6 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import java.util.Map;
+import lotto.Rank.Grade;
 
 public class View {
 
@@ -28,5 +30,19 @@ public class View {
         System.out.println(Messages.INPUT_BONUS_NUMBER_MESSAGE);
         String bonusNumber = Console.readLine();
         return Integer.parseInt(bonusNumber);
+    }
+
+    public static void printResult(Map<Integer, Integer> result) {
+        System.out.println(Messages.OUTPUT_WINNING_MESSAGE);
+        for (Grade grade : Grade.values()) {
+            if (grade.isCheck()) {
+                System.out.printf(Messages.OUTPUT_BONUS_MESSAGE, grade.getMatchCount(), grade.getPrize(),
+                        result.get(7));
+            }
+            if (!grade.isCheck()) {
+                System.out.printf(Messages.OUTPUT_RESULT_MESSAGE, grade.getMatchCount(), grade.getPrize(),
+                        result.get(grade.getMatchCount()));
+            }
+        }
     }
 }
