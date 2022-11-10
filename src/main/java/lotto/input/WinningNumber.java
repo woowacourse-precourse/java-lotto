@@ -8,11 +8,11 @@ import java.util.List;
 
 public class WinningNumber {
 
-    public void answer() {
+    public void getAnswer() {
         List<Integer> answerNumbers = new ArrayList<>();
-        String strInput = Console.readLine();
+        String input = Console.readLine();
 
-        for (String number : strInput.split(",")) {
+        for (String number : input.split(",")) {
             int integer = Integer.parseInt(number);
             answerNumbers.add(integer);
         }
