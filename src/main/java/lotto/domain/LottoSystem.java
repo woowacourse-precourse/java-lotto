@@ -14,7 +14,7 @@ public class LottoSystem {
         winningNumbers = new ArrayList<>();
     }
 
-    public void setWinningNumbers(String numbers) {
+    public void setWinningNumbers(String numbers) throws IllegalArgumentException {
         validateWinningNumbers(numbers);
         winningNumbers = Arrays.stream(numbers.split(","))
                 .map(Integer::parseInt)
@@ -22,12 +22,31 @@ public class LottoSystem {
     }
 
     private void validateWinningNumbers(String input) {
-        validateCount(input);
+        String[] numbers = input.split(",");
+        validateCount(numbers);
+        validateType(numbers);
     }
 
-    private void validateCount(String input) {
-        if (input.split(",").length != 6) {
+    private void validateCount(String[] numbers) {
+        if (numbers.length != 6) {
             throw new IllegalArgumentException("6개의 숫자를 쉼표(,)로 구분하여 입력하세요.");
         }
+    }
+
+    private void validateType(String[] numbers) {
+        for (String number : numbers) {
+            if (!isNumeric(number)) {
+                throw new IllegalArgumentException("숫자만 입력하세요.");
+            }
+        }
+    }
+
+    private boolean isNumeric(String number) {
+        try {
+            Integer.parseInt(number);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
     }
 }
