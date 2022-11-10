@@ -3,7 +3,8 @@ package lotto.domain;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.io.InputStream;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 
 public class PurchaseLotto {
@@ -20,8 +21,9 @@ public class PurchaseLotto {
         return money/1000;
     }
     public List<Integer> lottoNumber(){
-
-        return null;
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        numbers.sort(Comparator.naturalOrder());
+        return numbers;
     }
 
 }
