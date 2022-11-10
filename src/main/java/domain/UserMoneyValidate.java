@@ -6,9 +6,8 @@ public class UserMoneyValidate {
 
     private final int THOUSAND = 1000;
     private String input;
-    private int money;
 
-    public int validateGetMoney() {
+    public int validateGetMoney(String input) {
         notNumber(input);
         int user_money = convertStringToInt(input);
         negativeNumber(user_money);
