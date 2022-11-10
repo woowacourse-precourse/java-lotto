@@ -38,7 +38,7 @@ public class Application {
         }
     }
 
-    public static Integer buyLotto() {
+    public static Integer howManyLotto() {
         System.out.println("구입 금액을 입력해 주세요.");
         Integer money = readNumber();
         validateMoney(money);
@@ -49,11 +49,17 @@ public class Application {
         List<Integer> numbers;
         List<Lotto> lottos = new ArrayList<>();
 
+        System.out.println(n + "개를 구매했습니다.");
+
         for (int i=0;i<n;i++) {
             numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            lottos.add(new Lotto(numbers));
+            Lotto newLotto = new Lotto(numbers);
+            newLotto.printAscending();
+            lottos.add(newLotto);
         }
-
         return lottos;
     }
+
+
+
 }
