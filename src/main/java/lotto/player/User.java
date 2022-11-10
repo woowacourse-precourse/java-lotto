@@ -9,7 +9,7 @@ public class User {
     private final Lotto[] tickets;
 
     public User(int payment){
-        validatePayment(payment);
+        validate(payment);
 
         int ticketNum = payment/1000;
         Lotto[] tickets = new Lotto[ticketNum];
@@ -22,7 +22,7 @@ public class User {
         this.tickets = tickets;
     }
 
-    private void validatePayment(int payment){
+    private void validate(int payment){
         if(payment <= 0 || payment%1000 != 0)
             throw new IllegalArgumentException();
     }
