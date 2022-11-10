@@ -34,4 +34,8 @@ public enum GameResult {
     public boolean isFirst() {
         return this == FIRST;
     }
+
+    public boolean isSecond() {
+        return this == SECOND;
+    }
 }
