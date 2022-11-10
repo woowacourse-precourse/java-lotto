@@ -32,4 +32,9 @@ public class Lotto {
 
         return LottoRank.getRank(matchingCount, bounsFlag);
     }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }
