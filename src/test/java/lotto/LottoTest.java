@@ -129,4 +129,18 @@ class LottoTest {
 
         assertThat(lottoNumberSize).isEqualTo(result);
     }
+
+    @DisplayName("로또 번호를 입력하면 오름차순으로 정렬한다.")
+    @Test
+    void sortLottoNumber() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        LottoGame lottoGame = new LottoGame();
+        List<Integer> lotto = List.of(34, 24, 40, 41, 10, 7);
+        List<Integer> result = List.of(7, 10, 24, 34, 40, 41);
+
+        Method method = lottoGame.getClass().getDeclaredMethod("getSortedByAscend", List.class);
+        method.setAccessible(true);
+        List<Integer> sortedLotto = (List<Integer>) method.invoke(lottoGame, lotto);
+
+        assertThat(sortedLotto).isEqualTo(result);
+    }
 }
