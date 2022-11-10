@@ -19,5 +19,9 @@ public class Money {
 		if (!input.matches(NUMBER_SERIES)) {
 			throw new IllegalArgumentException("숫자가 아닙니다.");
 		}
+
+		if (Integer.parseInt(input) % 1000 != 0) {
+			throw new IllegalArgumentException("1000원 단위로 입력해주세요.");
+		}
 	}
 }
