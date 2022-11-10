@@ -27,9 +27,9 @@ public class Lottos {
     }
 
     private void createLottos(int lottoCount){
-        Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(MIN_VALUE, MAX_VALUE, COUNT));
         this.lottosNumbers = new ArrayList<Lotto>();
         for(int i = 0; i < lottoCount; i++) {
+            Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(MIN_VALUE, MAX_VALUE, COUNT));
             lottosNumbers.add(lotto);
         }
     }
