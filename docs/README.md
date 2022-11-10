@@ -18,6 +18,10 @@
  
     - LottoTickets (Class)
         => 구입한 모든 로또 
+        => 결과, 수익률 반환
+
+    - ReferenceValue  (Class)
+        => 클래스 변수
 
     - Rule  (Class)
         => 범위, 중복, 당첨기준 & 금액
