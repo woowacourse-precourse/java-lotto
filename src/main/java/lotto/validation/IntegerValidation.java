@@ -5,19 +5,17 @@ import lotto.constant.StringConstant;
 
 public class IntegerValidation {
     public boolean isNumeric(String userInput, int greaterThan, int smallerThan) {
-        if (userInput.length() != userInput.chars()
+        return userInput.length() == userInput.chars()
                 .filter(inputChar -> isNumber(inputChar, greaterThan, smallerThan))
-                .count()) {
-            return false;
-        }
-        return true;
+                .count();
     }
 
     public boolean isDivideByInteger(int money, int divisor) {
-        if ((money % divisor) != 0) {
-            return false;
-        }
-        return true;
+        return (money % divisor) == 0;
+    }
+
+    public boolean isBetween(String userInput, int greaterThan, int smallerThan) {
+        return greaterThan <= Integer.parseInt(userInput) && Integer.parseInt(userInput) <= smallerThan;
     }
 
     private boolean isNumber(int inputChar, int greaterThan, int smallerThan) {
