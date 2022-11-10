@@ -44,4 +44,10 @@ class LottoTicketsTest {
 		assertThatThrownBy(() -> new LottoTickets("10a0a0"))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@Test
+	void 입력이_들어오지_않았을_때() {
+		assertThatThrownBy(() -> new LottoTickets(""))
+			.isInstanceOf(IllegalArgumentException.class);
+	}
 }
