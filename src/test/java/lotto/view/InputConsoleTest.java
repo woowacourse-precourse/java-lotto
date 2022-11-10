@@ -205,6 +205,17 @@ class InputConsoleTest extends NsTest{
         assertEquals("1", input);
     }
 
+    @Test
+    @DisplayName("당첨번호를 중복 숫자 입력시 IllegalArgumentException과 에러메세지가 출력되어야 한다.")
+    void test18() {
+        // given
+        run("1,2,3,4,5,5");
+
+        // expected
+        Exception exception = assertThrows(IllegalArgumentException.class, InputConsole::enterWinningNumber);
+        assertEquals("[ERROR] 중복 된 숫자가 포함되어있습니다.", exception.getMessage());
+    }
+
     @Override
     protected void runMain() {
 
