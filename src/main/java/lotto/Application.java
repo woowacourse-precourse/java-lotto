@@ -1,10 +1,12 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        int money = inputMoney();
+        printLottoList(money);
     }
 
     public static int inputMoney() {
@@ -16,6 +18,13 @@ public class Application {
     public static void validateMoney(String inputMoney) {
         if (Integer.parseInt(inputMoney) % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 1,000원 단위로 입력해야 합니다.");
+        }
+    }
+
+    public static void printLottoList(int money) {
+        List<Lotto> lottoList = Lotto.getLottoList(money);
+        for (Lotto lotto : lottoList) {
+            System.out.println(lotto);
         }
     }
 }
