@@ -6,9 +6,7 @@
   - [x] 잘못된 값 입력시 예외 발생 - Checker#checkUserInput()
 
 - [] 구입금액에 해당하는 만큼 로또를 발행해야한다. - LottoList#createLotto()
-  - [] 로또 1장의 가격은 1,000원이다. - Lotto#PRICE
-  - [] 1개의 로또를 발행할 때 1~45까지의 6개의 숫자를 뽑는다 - Lotto#createNumbers()
-    - [] 이 때, 6개의 숫자는 중복되지 않아야한다. - Checker#checkSameNumber()
+  - [x] 1~45까지의 6개의 숫자를 뽑는다 - Lotto#createNumbers()
 
 - [] 구매 메세지를 출력한다. - View#LOTTO_PURCHASED_GUIDE_MESSAGE
   - [] 구매한 만큼 6개의 번호를 출력한다. - View#showLottoNumbers()

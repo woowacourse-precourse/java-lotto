@@ -15,7 +15,6 @@ public class Checker {
 	public static void checkUserInput(String userInput) {
 		checkNumberOnlyException(userInput);
 		checkMaxPrice(userInput);
-
 	}
 
 	private static void checkMaxPrice(String userInput) {
@@ -30,7 +29,7 @@ public class Checker {
 
 	private static void checkNumberOnlyException(String userInput) {
 		try {
-			int money = Integer.parseInt(userInput);
+			Integer.parseInt(userInput);
 		} catch (IllegalArgumentException e) {
 			Exception.numberOnlyException();
 		}
