@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.domain.Lotto;
 import lotto.domain.LottoGroup;
 import lotto.handler.CheckHandler;
 import lotto.handler.InputHandler;
@@ -10,14 +11,19 @@ public class LottoController {
 	private final LottoService lottoService = LottoService.getInstance();
 
 	public void run() {
-		makeLotto();
+		LottoGroup lottoGroup = makeLottoGroup();
+		Lotto winnerLotto = makeWinnerLotto();
 	}
 
-	private void makeLotto() {
+	private Lotto makeWinnerLotto() {
+		return lottoService.makeWinnerLotto();
+	}
+
+	private LottoGroup makeLottoGroup() {
 		String purchaseQuantity = InputHandler.inputPurchaseQuantity();
 		possiblePurchase(purchaseQuantity);
 		System.out.println();
-		LottoGroup lottoGroup = lottoService.makeLottoGroup(Integer.parseInt(purchaseQuantity)/1000);
+		return lottoService.makeLottoGroup(Integer.parseInt(purchaseQuantity) / 1000);
 	}
 
 	private void possiblePurchase(String purchaseQuantity) {

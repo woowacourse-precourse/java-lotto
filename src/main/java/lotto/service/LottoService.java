@@ -5,6 +5,8 @@ import java.util.List;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoGroup;
+import lotto.handler.CheckHandler;
+import lotto.handler.InputHandler;
 import lotto.repository.LottoRepository;
 
 public class LottoService {
@@ -26,6 +28,16 @@ public class LottoService {
 			lottos.add(lottoRepository.makeAutoLotto());
 		}
 		return new LottoGroup(lottos);
+	}
+
+	public Lotto makeWinnerLotto() {
+		String inputLottoWinningNumber = InputHandler.inputLottoWinningNumber();
+		CheckHandler.isLotto(inputLottoWinningNumber);
+		String bonusNumber = InputHandler.inputLottoWinningBonusNumber();
+		CheckHandler.isNumber(bonusNumber);
+		CheckHandler.isLottoNumber(bonusNumber);
+		List<Integer> lottoNumbers = lottoRepository.makeWinnerLotto(inputLottoWinningNumber, bonusNumber);
+		return new Lotto(lottoNumbers);
 	}
 
 }

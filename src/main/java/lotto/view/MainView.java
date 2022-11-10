@@ -24,7 +24,7 @@ public class MainView {
 	}
 
 	public static void purchaseLottoGroup(int lottoSize) {
-		System.out.println(lottoSize +PURCHASE_LOTTO_GROUP_SIZE);
+		System.out.println(lottoSize + PURCHASE_LOTTO_GROUP_SIZE);
 	}
 
 	public static void printAllLotto(List<Lotto> lottos) {
