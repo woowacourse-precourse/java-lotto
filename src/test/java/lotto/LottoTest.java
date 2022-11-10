@@ -65,15 +65,9 @@ class LottoTest {
             Lotto generatedLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             Result result = winLotto.getResult(generatedLotto);
             assertThat(result).isEqualTo(new Result(6, false));
-        }
 
-        @DisplayName("5개 일치")
-        @Test
-        void match5() {
-            WinLotto winLotto = new WinLotto(List.of(1, 2, 4, 3, 5, 6), 7);
-            Lotto generatedLotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
-            Result result = winLotto.getResult(generatedLotto);
-            assertThat(result).isEqualTo(new Result(5, false));
+            assertThat(result.getResultStatus().getCount()).isEqualTo(6);
+            assertThat(result.getResultStatus().getValue()).isEqualTo(2000000000);
         }
 
         @DisplayName("5개 일치 & 보너스볼 일치")
@@ -83,6 +77,23 @@ class LottoTest {
             Lotto generatedLotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
             Result result = winLotto.getResult(generatedLotto);
             assertThat(result).isEqualTo(new Result(5, true));
+
+            assertThat(result.getResultStatus().getCount()).isEqualTo(5);
+            assertThat(result.getResultStatus().isHasBonusBall()).isTrue();
+            assertThat(result.getResultStatus().getValue()).isEqualTo(30000000);
+        }
+
+        @DisplayName("5개 일치")
+        @Test
+        void match5() {
+            WinLotto winLotto = new WinLotto(List.of(1, 2, 4, 3, 5, 6), 7);
+            Lotto generatedLotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
+            Result result = winLotto.getResult(generatedLotto);
+            assertThat(result).isEqualTo(new Result(5, false));
+
+            assertThat(result.getResultStatus().getCount()).isEqualTo(5);
+            assertThat(result.getResultStatus().isHasBonusBall()).isFalse();
+            assertThat(result.getResultStatus().getValue()).isEqualTo(1500000);
         }
 
         @DisplayName("4개 일치")
@@ -92,6 +103,9 @@ class LottoTest {
             Lotto generatedLotto = new Lotto(List.of(1, 2, 3, 4, 40, 41));
             Result result = winLotto.getResult(generatedLotto);
             assertThat(result).isEqualTo(new Result(4, false));
+
+            assertThat(result.getResultStatus().getCount()).isEqualTo(4);
+            assertThat(result.getResultStatus().getValue()).isEqualTo(50000);
         }
 
         @DisplayName("3개 일치")
@@ -101,6 +115,9 @@ class LottoTest {
             Lotto generatedLotto = new Lotto(List.of(1, 2, 3, 40, 41, 45));
             Result result = winLotto.getResult(generatedLotto);
             assertThat(result).isEqualTo(new Result(3, false));
+
+            assertThat(result.getResultStatus().getCount()).isEqualTo(3);
+            assertThat(result.getResultStatus().getValue()).isEqualTo(5000);
         }
     }
 

@@ -3,9 +3,9 @@ package lotto;
 import java.util.Objects;
 
 public class Result {
-    int matchCount = 0;
-    boolean hasBonusNumber = false;
-    ResultStatus resultStatus = null;
+    private int matchCount = 0;
+    private boolean hasBonusNumber = false;
+    private ResultStatus resultStatus = null;
 
     protected Result(int matchCount, boolean hasBonusNumber) {
         this.matchCount = matchCount;
@@ -54,6 +54,10 @@ public class Result {
         if (matchCount == ResultStatus.MATCH3.getCount()) {
             resultStatus = ResultStatus.MATCH3;
         }
+    }
+
+    public ResultStatus getResultStatus() {
+        return resultStatus;
     }
 
     @Override
