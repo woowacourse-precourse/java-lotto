@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static lotto.LottoExceptions.createLottoException;
@@ -10,6 +11,7 @@ public class Lotto {
     public static final int NUMBER_COUNT = 6;
     static final int MIN_NUMBER = 1;
     static final int MAX_NUMBER = 45;
+    static final int PRICE = 1000;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -49,5 +51,11 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public MatchAndReward match(Lotto other) {
+        int matchCount = (int)numbers.stream()
+                .filter(other.numbers::contains)
+                .count();
+
+        return MatchAndReward.getByMatch(matchCount);
+    }
 }

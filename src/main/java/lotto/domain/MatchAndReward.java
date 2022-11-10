@@ -16,4 +16,13 @@ public enum MatchAndReward {
         this.match = match;
         this.bonusMatch = bonusMatch;
     }
+
+    public static MatchAndReward getByMatch(int match) {
+        for (MatchAndReward matchAndReward : MatchAndReward.values()) {
+            if (matchAndReward.match == match)
+                return matchAndReward;
+        }
+
+        return null;
+    }
 }
