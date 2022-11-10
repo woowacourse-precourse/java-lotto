@@ -44,5 +44,8 @@ public class Application {
         return Integer.valueOf(money/lottoPrice);
     }
 
-
+    public static Lotto getRandomLotto() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return new Lotto(numbers);
+    }
 }
