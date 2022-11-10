@@ -9,11 +9,11 @@ public class User {
     private int earn;
 
 
-    public User(String moneyInput) {
-        if (InputValidator.isInvalidMoneyForm(moneyInput)) {
+    public User(int money) {
+        if (InputValidator.isInvalidMoneyUnit(money)) {
             throw new IllegalArgumentException();
         }
 
-        this.money = Integer.parseInt(moneyInput);
+        this.money = money;
     }
 }
