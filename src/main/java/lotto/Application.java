@@ -7,10 +7,15 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Purchase purchase = new Purchase();
+        Print print = new Print();
         WinningNumber winningNumber = new WinningNumber();
-        List<List<Integer>> purchasedLotto = purchase.lottoPurchase();
+        List<Lotto> purchasedLotto = purchase.lottoPurchase();
+
+        print.printPurchasedLotto(purchasedLotto);
+
         winningNumber.getWinningNumber();
         WinningResult winningResult = new WinningResult(winningNumber);
         winningResult.winningHistory(purchasedLotto);
+//        winningResult.winningRate(purchase.purchase());
     }
 }
