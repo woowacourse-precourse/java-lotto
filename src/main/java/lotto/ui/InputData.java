@@ -1,8 +1,12 @@
 package lotto.ui;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class InputData {
     private static Scanner scanner = new Scanner(System.in);
@@ -13,28 +17,30 @@ public class InputData {
         return userInput;
     }
 
-    private String readPurchaseAmount() {
+    private int readPurchaseAmount() {
         System.out.println(Messages.INPUT_MONEY.getMessage());
         String amount = scanner.nextLine();
 
-        return amount;
+        return Integer.parseInt(amount);
     }
 
     //예외사항 검사
-    private List<String> readWinningNumber() {
+    private List<Integer> readWinningNumber() {
         System.out.println(Messages.INPUT_LOTTE_NUMBER.getMessage());
         String userInput = readInput();
 
-        List<String> winningNumber = List.of(userInput.split(","));
+        List<Integer> numbers = Arrays.stream(userInput.split(","))
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList());
 
-        return winningNumber;
+        return numbers;
     }
 
     //예외사항 검사
-    private String readBonusNumber() {
+    private int readBonusNumber() {
         System.out.println(Messages.INPUT_BONUS_NUMBER);
         String userInput = readInput();
 
-        return userInput;
+        return Integer.parseInt(userInput);
     }
 }

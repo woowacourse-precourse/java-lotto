@@ -3,6 +3,7 @@ package lotto.domain;
 import lotto.ui.Messages;
 
 import java.util.List;
+import java.util.Map;
 
 /*
 * 제공된 Lotto 클래스를 활용해 구현해야 한다.
@@ -32,6 +33,15 @@ public class Lotto {
         int amount = money/1000;
 
         return amount;
+    }
+
+    private void initNumbers(List<String> winningNumbers) {
+        int length = winningNumbers.size();
+
+        for (int place = 0; place < length; place++) {
+            int number = stringToInt(winningNumbers);
+            numbers.add(place, winningNumbers.get(place));
+        }
     }
 
     private int stringToInt(String userInput) {
