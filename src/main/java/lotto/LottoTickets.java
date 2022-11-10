@@ -5,8 +5,9 @@ import java.util.List;
 
 public class LottoTickets {
 
+    private static int size;
     private static List<Lotto> lottoTickets = new ArrayList<>();
-    public static List<Integer> lottoResults = new ArrayList<>();
+    private static List<Integer> lottoResults = new ArrayList<>();
 
     public LottoTickets(List<Lotto> lottoTickets) {
         this.lottoTickets = lottoTickets;
@@ -16,8 +17,8 @@ public class LottoTickets {
         LottoTickets.lottoResults = lottoResults;
     }
 
-    public static int getLottoTicketsSize() {
-        return lottoTickets.size();
+    public int getLottoTicketsSize() {
+        return size;
     }
 
     public static List<Lotto> getLottoTickets() {
@@ -29,7 +30,7 @@ public class LottoTickets {
     }
 
     public static int getPurchaseAmount() {
-        return getLottoTicketsSize() * ReferenceValue.LOTTO_PRICE;
+        return size * ReferenceValue.LOTTO_PRICE;
     }
 
     public static double getTotalReturn() {

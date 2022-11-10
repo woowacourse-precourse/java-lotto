@@ -26,9 +26,11 @@ public class Record {
     public static void printWinningNumbers() {
         System.out.print(ENTER_WINNING_NUMBER_MESSAGE);
     }
-    public static void printBuyLotto() {
-        int size = LottoTickets.getLottoTicketsSize();
-        System.out.print(size + BUY_MESSAGE);
+    public static void printBuyCounts(int counts) {
+        System.out.print(counts + BUY_MESSAGE);
+    }
+    public static void printLotto(List<Integer> lottoNumbers) {
+        System.out.print(lottoNumbers);
     }
     public static void printEnterMoney() {
         System.out.print(ENTER_MONEY_MESSAGE);

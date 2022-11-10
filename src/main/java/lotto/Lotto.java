@@ -41,7 +41,17 @@ public class Lotto {
             visitedNumbers.add(current);
         }
     }
+    public static List<Integer> getLottoNumbers(String input) {
+        List<Integer> lottoNumbers = new ArrayList<>();
+        String[] numbers = input.split(",");
 
+        for (int i = 0; i < ReferenceValue.LOTTO_SIZE; i++) {
+            int number = Integer.valueOf(numbers[i]);
+            lottoNumbers.add(number);
+        }
+
+        return lottoNumbers;
+    }
     public Integer getLottoNumber(int LottoIndex) {
         return numbers.get(LottoIndex);
     }
