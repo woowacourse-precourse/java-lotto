@@ -5,10 +5,13 @@ import lotto.constants.ErrorMessage;
 
 public class Lotto {
 
+    private static final int LOTTO_NUMBER_START = 1;
+    private static final int LOTTO_NUMBER_END = 45;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validateSixDigits(numbers);
+        validateRange(numbers);
         validateDuplicate(numbers);
         this.numbers = numbers;
     }
@@ -19,6 +22,13 @@ public class Lotto {
         }
     }
 
+    private void validateRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < LOTTO_NUMBER_START || number > LOTTO_NUMBER_END) {
+                throw new IllegalArgumentException(ErrorMessage.NOT_IN_RANGE);
+            }
+        }
+    }
 
     private void validateDuplicate(List<Integer> numbers) {
         for (int index = 0; index < numbers.size(); index++) {

@@ -45,4 +45,18 @@ class LottoTest {
         });
         assertEquals(ErrorMessage.NOT_DUPLICATE, exception.getMessage());
     }
+
+    @Test
+    @DisplayName("로또 번호의 숫자 범위 예외 메세지 확인.")
+    public void outOfRangeNumber_exception_message_test() {
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+            new Lotto(List.of(0, 2, 3, 4, 5, 45));
+        });
+        assertEquals(ErrorMessage.NOT_IN_RANGE, exception.getMessage());
+
+        exception = assertThrows(IllegalArgumentException.class, () -> {
+            new Lotto(List.of(1, 2, 3, 4, 5, 46));
+        });
+        assertEquals(ErrorMessage.NOT_IN_RANGE, exception.getMessage());
+    }
 }
