@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import lotto.Money;
 
 public class MoneyTest {
-
 	@DisplayName("금액 입력 예외처리 모음")
 	@ParameterizedTest
 	@ValueSource(strings = {"abc", "1.5", "-1", "1q2w3e4r", " ", "-", "!@#", ""})
