@@ -26,12 +26,20 @@ public class Domain {
         for (String charNumber : lottoNumberInput.split(",")) {
             result.add(Integer.parseInt(charNumber));
         }
-
         return result;
     }
 
     public Lotto createRandomLottoNumber() {
         return new Lotto(pickUniqueNumbersInRange(1, 45, 6));
+    }
+
+    public float getYield(List<Integer> ranks, int countOfLotto) {
+        float sumWinnings = 0;
+        for (int rank : ranks) {
+            sumWinnings += getreward(rank);
+        }
+
+        return sumWinnings / countOfLotto;
     }
 
 
