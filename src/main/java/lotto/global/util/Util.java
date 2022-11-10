@@ -30,9 +30,7 @@ public class Util {
     public static List<Integer> inputNumbersInList() {
         String inputPrizeNumbers = OutputView.printInputPrizeNumbers();
         List<Integer> prizeLottoNumbers = splitByComma(inputPrizeNumbers);
-        InputMoneyVerifier.isList6Size(prizeLottoNumbers);
-        InputMoneyVerifier.isDuplicatedNumberInList(prizeLottoNumbers);
-        InputMoneyVerifier.isNumberFrom1To45(prizeLottoNumbers);
+        InputMoneyVerifier.prizeNumberVerifier(prizeLottoNumbers);
         return prizeLottoNumbers;
     }
 

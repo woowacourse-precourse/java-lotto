@@ -10,13 +10,19 @@ public class InputMoneyVerifier {
         }
     }
 
-    public static void isList6Size(List<Integer> inputPrizeNumbers) {
+    public static void prizeNumberVerifier(List<Integer> inputPrizeNumbers) {
+        isList6Size(inputPrizeNumbers);
+        isDuplicatedNumberInList(inputPrizeNumbers);
+        isNumberFrom1To45(inputPrizeNumbers);
+    }
+
+    private static void isList6Size(List<Integer> inputPrizeNumbers) {
         if (inputPrizeNumbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 6개의 숫자만 입력할 수 있습니다.");
         }
     }
 
-    public static void isDuplicatedNumberInList(List<Integer> inputPrizeNumbers) {
+    private static void isDuplicatedNumberInList(List<Integer> inputPrizeNumbers) {
         boolean duplicated = inputPrizeNumbers.stream()
                 .distinct()
                 .count() != inputPrizeNumbers.size();
@@ -26,7 +32,7 @@ public class InputMoneyVerifier {
         }
     }
 
-    public static void isNumberFrom1To45(List<Integer> prizeLottoNumbers) {
+    private static void isNumberFrom1To45(List<Integer> prizeLottoNumbers) {
         for (Integer prizeLottoNumber : prizeLottoNumbers) {
             if (prizeLottoNumber < 1 || prizeLottoNumber > 45) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
