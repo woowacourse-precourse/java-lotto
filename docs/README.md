@@ -27,7 +27,7 @@ THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_MATCH_WITH_BONUS, SIX_MATCH를 가진�
 ### Player
 List<Lotto>, Profit, Winning을 참조한다. 
 1. buyTickets
-   1. Profit.checkPayment로 금액을 저장한다. 
+   1. payTickets : Profit.checkPayment로 금액을 저장한다. 
    2. countTickets : 금액을 1,000으로 나눈 값을 리턴한다. 
    3. makeTickets : 입력변수로 받은 티켓의 개수만큼 로또를 만들어 List<Lotto>에 저장한다. 
 2. showWinningStatistic : Winning.figureSameRanking를 리턴한다. 
