@@ -3,11 +3,21 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputViewImpl implements InputView {
+
+	public static final String INPUT_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
+	public static final String INPUT_WINNING_MESSAGE = "당첨 번호를 입력해 주세요.";
+
 	public String getMoney() {
-		System.out.println("구입금액을 입력해 주세요.");
+		System.out.println(INPUT_MONEY_MESSAGE);
 		String input = readInput();
 		System.out.println();
 		return input;
+	}
+
+	@Override
+	public String getWinning() {
+		System.out.println(INPUT_WINNING_MESSAGE);
+		return readInput();
 	}
 
 	protected String readInput() {
