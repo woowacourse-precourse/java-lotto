@@ -1,6 +1,9 @@
 package lotto.service;
 
+import java.util.List;
+
 import lotto.domain.Lotteries;
+import lotto.domain.Lotto;
 import lotto.utils.Converter;
 import lotto.utils.Validator;
 
@@ -18,7 +21,12 @@ public class Service {
         }
     }
 
+    public List<List<Integer>> getPurchaseResult() {
+        return lotteries.getLotteries();
+    }
+
     private void generateLotteries(int lottoPrice) {
         lotteries = Lotteries.generateLotteriesByPrice(lottoPrice);
     }
+
 }

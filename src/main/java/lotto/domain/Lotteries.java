@@ -23,7 +23,11 @@ public class Lotteries {
         return new Lotteries(lotteries);
     }
 
-    public List<Lotto> getLotteries() {
-        return lotteries;
+    public List<List<Integer>> getLotteries() {
+        List<List<Integer>> lottoNumbers = new ArrayList<>();
+        for (Lotto lotto : lotteries) {
+            lottoNumbers.add(lotto.getNumbers());
+        }
+        return lottoNumbers;
     }
 }
