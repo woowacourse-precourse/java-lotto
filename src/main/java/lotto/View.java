@@ -19,15 +19,15 @@ public class View {
     }
 
     void printResult(int[] list) {
-        int index = 0;
+        int index = 7;
         System.out.println("당첨 통계");
         System.out.println("---");
         for (Money value : Money.values()) {
-            System.out.println(value.getMoney() + list[index++] + "개");
+            System.out.println(value.getMoney() + list[index--] + "개");
         }
     }
 
-    void printBenfit(int input, int result) {
+    void printBenfit(int input, long result) {
         double db = (double) result / input * 100;
         String answer = String.format("%.1f", db);
         System.out.println("총 수익률은 " + answer + "%입니다.");
