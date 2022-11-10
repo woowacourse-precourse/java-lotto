@@ -6,13 +6,7 @@ import java.util.List;
 
 public class LottoIssueMachine {//로또 번호 발행 기계
     public Lotto autoGenerate(){
-        List<Integer> numbers=new ArrayList<>();
-        while(numbers.size()<6){
-            int randomNumber = Randoms.pickNumberInRange(1, 45);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
-        }
+        List<Integer> numbers=new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45,6));
         return new Lotto(numbers);
     }
     public Lotto manualGenerate(List<Integer> numbers){
