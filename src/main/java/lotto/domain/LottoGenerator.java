@@ -29,7 +29,7 @@ public class LottoGenerator {
     }
 
     private void validate(int money) {
-        if(money % LOTTO_PRICE != 0) {
+        if(money % LOTTO_PRICE != 0 || money <= 0) {
             System.out.println();
             throw new IllegalArgumentException(Error.WRONG_MONEY.getMessage());
         }
