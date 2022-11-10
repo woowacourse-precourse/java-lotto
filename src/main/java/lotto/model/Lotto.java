@@ -16,5 +16,20 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public LottoRank getCorrectLottoCount(Lotto winningLotto, int bounsNumber) {
+        int matchingCount = 0;
+        boolean bounsFlag = false;
+
+        for (Integer number : winningLotto.numbers) {
+            if (numbers.contains(number)) {
+                matchingCount++;
+            }
+        }
+
+        if (matchingCount == 5 && numbers.contains(bounsNumber)) {
+            bounsFlag = true;
+        }
+
+        return LottoRank.getRank(matchingCount, bounsFlag);
+    }
 }
