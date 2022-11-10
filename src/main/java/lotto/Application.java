@@ -7,6 +7,8 @@ public class Application {
         startMessage();
         try {
             Money money = new Money(Console.readLine());
+
+            LottoGenerator lottoList = new LottoGenerator(money.getLottoCount());
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] "+e.getMessage());
         }
