@@ -8,6 +8,7 @@ import java.util.List;
 
 public class User {
     private List<Lotto> lottos;
+    private List<Winning> winnings;
     private int lottoNum;
     private int money;
     private int earn;
@@ -19,6 +20,7 @@ public class User {
         this.money = money;
         this.lottoNum = money / 1000;
         generateLottos();
+        this.winnings = new ArrayList<>();
         this.earn = 0;
     }
 
