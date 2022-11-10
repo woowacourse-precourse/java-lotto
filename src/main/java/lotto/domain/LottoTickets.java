@@ -1,15 +1,20 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoTickets {
-	private List<LottoTicket> lottoTickets;
+	private List<LottoTicket> lottoTickets = new ArrayList<>();
 	public LottoTickets(String purchasingAmount) {
 		if (!isValidPurchasingAmount(purchasingAmount)) {
 			throw new IllegalArgumentException();
 		}
 		purchaseLottoTickets(toInt(purchasingAmount));
 
+	}
+
+	public List<LottoTicket> getLottoTickets() {
+		return lottoTickets;
 	}
 
 	private void purchaseLottoTickets(int purchasingAmount) {
