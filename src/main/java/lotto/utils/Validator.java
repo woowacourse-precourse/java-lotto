@@ -12,9 +12,9 @@ public class Validator {
         }
     }
 
-    public static void isZero(int input) {
-        if (input == 0) {
-            throw new IllegalArgumentException("[ERROR] 하나 이상의 복권을 구매해야 합니다.");
+    public static void isUnderZero(int input) {
+        if (input <= 0) {
+            throw new IllegalArgumentException("[ERROR] 0 보다 큰 숫자를 입력해주세요.");
         }
     }
 

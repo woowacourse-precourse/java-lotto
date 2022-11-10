@@ -25,7 +25,7 @@ public class ValidatorTest {
     @DisplayName("입력 받은 값이 0일 경우")
     @Test
     void validateIsZero() {
-        assertThatThrownBy(() -> Validator.isZero(0))
+        assertThatThrownBy(() -> Validator.isUnderZero(0))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

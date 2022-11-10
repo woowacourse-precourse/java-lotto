@@ -29,7 +29,7 @@ public class Lotteries {
 
     private static void validate (int totalPrice) {
         Validator.isMultiplesOfThousand(totalPrice);
-        Validator.isZero(totalPrice);
+        Validator.isUnderZero(totalPrice);
     }
 
     public List<List<Integer>> getLotteries() {
