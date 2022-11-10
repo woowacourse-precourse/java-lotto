@@ -1,6 +1,7 @@
-package lotto;
+package lotto.controller;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+
 import static lotto.view.ErrorMessage.ERROR_DUPLICATE;
 import static lotto.view.ErrorMessage.ERROR_LOTTO_RANGE;
 import static lotto.view.ErrorMessage.ERROR_LOTTO_SIZE;
@@ -18,17 +19,11 @@ public class Computer {
 
     static List<Integer> autoNumbers;
 
-    static List<Integer> createAutoNumbers() {
-        autoNumbers = pickUniqueNumbersInRange(START_NUM, END_NUM, LOTTO_SIZE);
-        Set<Integer> duplicates = new HashSet<>(autoNumbers);
-        autoNumbers = new ArrayList<>(duplicates);
-        Collections.sort(autoNumbers);
-        return autoNumbers;
-    }
+
 
     static void validateDuplicate() {
-        if(autoNumbers.size() != autoNumbers.stream().distinct().count()){
-            System.out.println(ERROR_DUPLICATE);
+        if (autoNumbers.size() != autoNumbers.stream().distinct().count()) {
+            throw new IllegalArgumentException(ERROR_DUPLICATE);
         }
     }
 
@@ -40,8 +35,8 @@ public class Computer {
 
     static void validateLottoRange() {
         for (Integer i : autoNumbers) {
-            if (i > 45 || i < 1 ) {
-                    throw new IllegalArgumentException(ERROR_LOTTO_RANGE);
+            if (i > 45 || i < 1) {
+                throw new IllegalArgumentException(ERROR_LOTTO_RANGE);
             }
         }
     }
