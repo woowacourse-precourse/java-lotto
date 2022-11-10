@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 import lotto.exception.Exception;
+import lotto.rank.Rank;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -58,5 +59,17 @@ public class Service {
         int bonusNum = Integer.parseInt(Console.readLine());
 
         return bonusNum;
+    }
+
+    public static void checkLotto(List<Integer> lotto, String[] jackpotNum, int bonusNum) {
+        for(int i = 0; i < jackpotNum.length; i++) {
+            int number = Integer.parseInt(jackpotNum[i]);
+            if(lotto.contains(number)) {
+                Rank.addCount();
+            }
+            if(lotto.contains(bonusNum)) {
+                Rank.addBonus();
+            }
+        }
     }
 }

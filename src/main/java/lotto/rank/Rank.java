@@ -1,16 +1,20 @@
 package lotto.rank;
 
 public class Rank {
-
-    static int count;
-    static int fifth;
-    static int fourth;
-    static int third;
-    static int second;
-    static int first;
+    private static int count;
+    private static int fifth;
+    private static int fourth;
+    private static int third;
+    private static int second;
+    private static int first;
+    private static boolean bonus;
 
     public static void initCount() {
         count = 0;
+    }
+
+    public static void initBonus() {
+        bonus = false;
     }
 
     public static void initParam() {
@@ -23,6 +27,10 @@ public class Rank {
 
     public static int getCount() {
         return count;
+    }
+
+    public static boolean getBonus() {
+        return bonus;
     }
 
     public static int getFifth() {
@@ -47,6 +55,10 @@ public class Rank {
 
     public static void addCount() {
         count++;
+    }
+
+    public static void addBonus() {
+        bonus = true;
     }
 
     public static void addFifth() {

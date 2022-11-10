@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.exception.Exception;
+import lotto.rank.Rank;
 import lotto.service.Service;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -60,5 +61,15 @@ class LottoTest {
         String[] jackpotArr = Service.getJackpotNumberToArr(jackpot);
         assertThat(jackpotArr).isEqualTo(new String[]{"1","2","3","4","5","6"});
         assertThat(jackpotArr).hasSize(6);
+    }
+
+    @DisplayName("구매한 로또 번호에 보너스 번호가 포함되어 있는지 확인")
+    @Test
+    void checkLottoRank() {
+        List<Integer> lotto = List.of(1,2,3,4,5,7);
+        String[] jackpotArr = new String[]{"1","2","3","4","5","6"};
+        int bonusNum = 7;
+        Service.checkLotto(lotto, jackpotArr, bonusNum);
+        assertThat(Rank.getBonus()).isTrue();
     }
 }
