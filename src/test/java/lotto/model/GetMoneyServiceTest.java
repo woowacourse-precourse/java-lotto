@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class GetMoneyServiceTest {
-    @DisplayName("구입금액의 예외처리 테스트")
+    @DisplayName("GetMoneyService 생성자 예외처리 테스트")
     @Test
     void getMoneyTest() {
         assertThatThrownBy(() -> new GetMoneyService("-1000"))

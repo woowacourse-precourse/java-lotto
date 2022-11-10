@@ -5,5 +5,9 @@ public class Constants {
     public static final String PRINT_INPUT_MONEY = "구입금액을 입력해 주세요.";
 
     // 에러 메시지 관련 상수
-    public static final String ERROR_INPUT_MONEY = "[ERROR] 구입금액은 1000단위 양수여야 합니다.";
+    public static final String ERROR = "[ERROR] ";
+
+    public static final String ERROR_MONEY_NUMBER = ERROR + "구입금액은 숫자만 입력 받아야 합니다.";
+    public static final String ERROR_MONEY_THOUSAND = ERROR + "구입금액은 1000단위 양수여야 합니다.";
+    public static final String ERROR_MONEY_POSITIVE = ERROR + "구입금액은 양수여야 합니다.";
 }
