@@ -23,4 +23,10 @@ public class View {
 
         return winningNumber;
     }
+
+    public int getBonusNumber(){
+        String input = Console.readLine();
+
+        return Integer.parseInt(input);
+    }
 }
