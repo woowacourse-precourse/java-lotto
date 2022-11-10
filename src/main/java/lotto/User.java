@@ -43,6 +43,7 @@ public class User {
     public void validate(String money) {
         validateNumeric(money);
         validateDivided(money);
+        validatePositive(money);
     }
 
     public void validateNumeric(String money) {
