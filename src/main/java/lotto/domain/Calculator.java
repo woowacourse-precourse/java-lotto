@@ -27,8 +27,8 @@ public class Calculator {
 
     public static double yield(double revenue, double coin) {
         double result = (((revenue - coin)/coin) * 100);
-        yield = Math.round(result * 10)/10.0;
-        System.out.println(yield);
+        result = Math.round(result * 10)/10.0;
+        yield = result;
         return result;
     }
 }
