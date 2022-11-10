@@ -1,20 +1,26 @@
 package lotto.domain;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
-import static lotto.view.Message.WINNING_NUMBER_INPUT;
 
 import java.util.stream.Stream;
 import lotto.view.ErrorMessage;
+import lotto.view.Message;
 
 public class WinningLotto {
 
     public void winningNumberInput() {
-        System.out.println(WINNING_NUMBER_INPUT.getMessage());
+        System.out.println(Message.WINNING_NUMBER_INPUT.getMessage());
         String winningNumber = readLine();
         validateWinningNumber(winningNumber);
         validateWinningNumberSize(winningNumber);
         validateInputBlank(winningNumber);
         validateInputSeparator(winningNumber);
+    }
+
+    public void bonusNumberInput() {
+        System.out.println(Message.BONUS_NUMBER_INPUT.getMessage());
+        String bonusNumber = readLine();
+        validateInputBonusNumber(bonusNumber);
     }
 
     void validateWinningNumber(String winningNumber) {
@@ -48,6 +54,16 @@ public class WinningLotto {
         String[] separatorCheck = winningNumber.split(",");
         if (separatorCheck.length != 6) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_SEPARATOR.getErrorMessage());
+        }
+    }
+
+    void validateInputBonusNumber(String bonusNumber) {
+        Integer[] bonusNumberArr = Stream.of(bonusNumber)
+                .mapToInt(Integer::parseInt)
+                .boxed()
+                .toArray(Integer[]::new);
+        if (bonusNumberArr[0] < 1 || bonusNumberArr[0] > 45) {
+            throw new IllegalArgumentException(ErrorMessage.ERROR_BONUS_NUMBER.getErrorMessage());
         }
     }
 }
