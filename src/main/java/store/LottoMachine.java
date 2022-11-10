@@ -1,11 +1,14 @@
 package store;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoMachine {
+    private static final String UNIT_ERROR = "[ERROR] 올바른 단위가 아닙니다.";
     private static final int START_LOTTO_NUMBER_RANGE = 1;
     private static final int END_LOTTO_NUMBER_RANGE = 45;
     private static final int LOTTO_NUMBERS = 6;
+    private static final int LOTTO_PRICE = 1000;
 
     private static LottoMachine lottoMachine;
 
@@ -19,12 +22,35 @@ public class LottoMachine {
         return lottoMachine;
     }
 
+    private void validatePayUnit(int pay) {
+        if (pay % 1000 != 0) {
+            throw new IllegalArgumentException(UNIT_ERROR);
+        }
+    }
+
     private List<Integer> extractRandomNumbers() {
         return camp.nextstep.edu.missionutils.Randoms
                 .pickUniqueNumbersInRange(START_LOTTO_NUMBER_RANGE, END_LOTTO_NUMBER_RANGE, LOTTO_NUMBERS);
     }
 
     private Lotto convertLotto(List<Integer> numbers) {
-        return new Lotto(extractRandomNumbers());
+        return new Lotto(numbers);
     }
+
+    private void putLotteries(List<Lotto> lotteries, Lotto lotto) {
+        lotteries.add(lotto);
+    }
+
+    //+pickLotteries(pay: int): List<Lotto>
+    public List<Lotto> pickLotteries(int pay) {
+        validatePayUnit(pay);
+        int lottoCount = pay / LOTTO_PRICE;
+        List<Lotto> lotteries = new ArrayList<>();
+        while (lottoCount > 0) {
+            putLotteries(lotteries, convertLotto(extractRandomNumbers()));
+            lottoCount--;
+        }
+        return lotteries;
+    }
+
 }
