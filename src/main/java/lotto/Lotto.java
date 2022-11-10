@@ -13,6 +13,8 @@ public class Lotto {
         Collections.sort(numbers);
         this.numbers = numbers;
     }
+
+
     public List<Integer> getNumbers() {
         return numbers;
     }

@@ -13,4 +13,14 @@ public class Buyer {
         int lottoTicketAmount=purchaseMoney/1000;
         holdingLottoTickets=lottoVendor.sale(lottoTicketAmount);
     }
+    public int getLottoTicketAmount(){
+        return holdingLottoTickets.size();
+    }
+
+    public List<Lotto> getHoldingLottoTickets() {
+        return holdingLottoTickets;
+    }
+    public int countHoldingLotto(){
+        return holdingLottoTickets.size();
+    }
 }

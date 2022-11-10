@@ -19,7 +19,9 @@ public enum LottoPrize {
         this.condition = condition;
         this.prize = prize;
     }
-
+    public int ofPrize(){
+        return prize;
+    }
     public String ofDescription() {
         return condition + " (" + decimalFormat.format(prize) + "원)";
     }
