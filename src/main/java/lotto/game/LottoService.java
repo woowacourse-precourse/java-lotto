@@ -68,8 +68,13 @@ public class LottoService {
 
     public LottoGrade winningConfirm(WinningLotto winningLotto, Lotto lotto) {
         boolean bonusMatch = lotto.getNumbers().contains(winningLotto.getBonusNumber());
-        Set<Integer> winningNumbers = new HashSet<>(lotto.getNumbers());
-        winningNumbers.retainAll(winningLotto.getLotto().getNumbers());
-        return LottoGrade.confirmWinning(winningNumbers.size(), bonusMatch);
+        int matchCount = 0;
+        List<Integer> winningNumbers = winningLotto.getLotto().getNumbers();
+        for (Integer number : lotto.getNumbers()) {
+            if (winningNumbers.contains(number)) {
+                matchCount++;
+            }
+        }
+        return LottoGrade.confirmWinning(matchCount, bonusMatch);
     }
 }
