@@ -37,7 +37,13 @@ public class Lotto {
         if (LottoNumberValidator.existDuplicate(numbers)) {
             throw new IllegalArgumentException();
         }
+
+        if (LottoNumberValidator.isOutOfRange(numbers)) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    // TODO: 추가 기능 구현
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
 }
