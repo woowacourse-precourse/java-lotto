@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 public class InputExceptionTest {
 
-    private final inputException inputException = new inputException();
+    private final InputException inputException = new InputException();
 
     @Nested
     @DisplayName("숫자가 아니여서 예외 처리")
