@@ -1,5 +1,7 @@
 package lotto.global.util;
 
+import lotto.domain.lotto.domain.Lotto;
+
 import java.util.List;
 
 public class InputNumberVerifier {
@@ -34,8 +36,17 @@ public class InputNumberVerifier {
         }
     }
 
-    public static void bonusNumberVerifier(String bonusNumber) {
+    public static void bonusNumberVerifier(Lotto prizeLotto, String bonusNumber) {
         isInputBonusNumberOnly1(bonusNumber);
+        isDuplicatedAlreadyExistsLottoNumber(prizeLotto, bonusNumber);
+    }
+
+    private static void isDuplicatedAlreadyExistsLottoNumber(Lotto prizeLotto, String bonusNumber) {
+        for (int number : prizeLotto.getNumbers()) {
+            if (number == Integer.parseInt(bonusNumber)) {
+                throw new IllegalArgumentException("[ERROR] 당첨 번호와 보너스 번호는 중복될 수 없습니다.");
+            }
+        }
     }
 
     private static void isInputBonusNumberOnly1(String bonusNumber) {

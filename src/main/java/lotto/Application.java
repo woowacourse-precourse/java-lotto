@@ -23,6 +23,6 @@ public class Application {
 
         User user = new User(userMoney, lottos);
         Lotto prizeLotto = lottoController.getPrizeLotto();
-        lottoController.getBonusNumber();
+        lottoController.getBonusNumber(prizeLotto);
     }
 }

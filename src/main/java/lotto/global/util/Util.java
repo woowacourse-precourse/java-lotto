@@ -2,6 +2,7 @@ package lotto.global.util;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.lotto.domain.Lotto;
 import lotto.domain.view.OutputView;
 
 import java.util.*;
@@ -46,8 +47,8 @@ public class Util {
         return inputNumbers;
     }
 
-    public static int inputBonusNumber() {
+    public static int inputBonusNumber(Lotto prizeLotto) {
         String bonusNumber = Console.readLine();
-        InputNumberVerifier.bonusNumberVerifier(bonusNumber);
+        InputNumberVerifier.bonusNumberVerifier(prizeLotto, bonusNumber);
     }
 }

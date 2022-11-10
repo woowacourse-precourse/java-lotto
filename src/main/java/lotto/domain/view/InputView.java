@@ -1,5 +1,6 @@
 package lotto.domain.view;
 
+import lotto.domain.lotto.domain.Lotto;
 import lotto.global.util.Util;
 
 public class InputView {
@@ -11,8 +12,8 @@ public class InputView {
         return Util.input();
     }
 
-    public static int getInputBonusNumber() {
+    public static int getInputBonusNumber(Lotto prizeLotto) {
         System.out.println(INPUT_BONUS_NUMBER);
-        return Util.inputBonusNumber();
+        return Util.inputBonusNumber(prizeLotto);
     }
 }
