@@ -21,6 +21,11 @@ public class WinningBonusNumber {
         validateNumbersRange(winningNumbers);
     }
 
+    private void validateBonusNumber(int bonusNumber) {
+        validateBonusNumberRange(bonusNumber);
+        validateDuplicatedBonusNumber(bonusNumber);
+    }
+
     private void validateDuplicated(List<Integer> winningNumbers) {
         Set<Integer> checkDuplicated = new HashSet<>();
 
