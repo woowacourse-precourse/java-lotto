@@ -21,4 +21,8 @@ public class Lotto {
     private void sort(List<Integer> numbers) {
         numbers.sort(Comparator.comparingInt(o -> o));
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
