@@ -3,7 +3,8 @@
 ##기능 목록
 - 1부터 45까지 서로 다른 수로 이루어진 6개의 로또번호 생성 - NumberGenerator#createLottoNumber
   - 사이즈 확인 - Lotto#validate
-  - 중복 검사 - Lotto#duplicate
+  - 중복 검사 - Lotto#checkOverlap
+  - 로또번호 출력 - Lotto#printLotto
 - 1부터 45까지 서로 다른 수로 이루어진 6개의 번호와 1개의 서비스 번호를 입력한다.
   - 당첨 번호 입력 - NumberGenerator#makeWinningNumber
   - 보너스 번호 입력 - NumberGenerator#makeBonusNumber
