@@ -33,5 +33,14 @@ public class FeatureTest {
         assertThat(result.size()).isEqualTo(5);
     }
 
+    @Test
+    void 숫자_포함_여부_확인() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int n = 1;
+        int k = 7;
+        assertThat(lotto.isContainNumber(n)).isTrue();
+        assertThat(lotto.isContainNumber(k)).isFalse();
+    }
+
 
 }

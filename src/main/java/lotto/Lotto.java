@@ -23,6 +23,7 @@ public class Lotto {
         return numbers.contains(LottoNumber);
     }
 
+
     public static List<Integer> getLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
