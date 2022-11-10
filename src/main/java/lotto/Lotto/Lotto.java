@@ -2,15 +2,13 @@ package lotto.Lotto;
 
 import lotto.Message;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> lottoNumbers;
-    private static final Integer LOTTO_SIZE = 6;
-    private static final Integer START_LOTTO_NUMBER = 1;
-    private static final Integer END_LOTTO_NUMBER = 45;
+    public static final Integer LOTTO_SIZE = 6;
+    public static final Integer START_LOTTO_NUMBER = 1;
+    public static final Integer END_LOTTO_NUMBER = 45;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -62,6 +60,12 @@ public class Lotto {
             throw new IllegalArgumentException(
                     Message.getLottoNumberDuplicationErrorMessage());
         }
+    }
+
+    @Override
+    public String toString()
+    {
+        return lottoNumbers.toString();
     }
 
 }
