@@ -3,6 +3,9 @@ package lotto.UI;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class Input {
@@ -24,5 +27,20 @@ public class Input {
         }
         int count = money / 1000;
         return count;
+    }
+
+    public List<Integer> getLuckyNumber() throws IOException {
+        List<Integer> luckyNumber = new ArrayList<>();
+        st = new StringTokenizer(br.readLine());
+        for(int i = 0; i < st.countTokens(); i++){
+            String str = st.nextToken();
+            if(luckyNumber.contains(Integer.parseInt(str))){
+                throw new IllegalArgumentException();
+            }
+            if(!str.equals(",")){
+                luckyNumber.add(Integer.parseInt(str));
+            }
+        }
+        return luckyNumber;
     }
 }
