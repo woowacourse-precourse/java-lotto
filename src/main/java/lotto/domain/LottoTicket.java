@@ -11,6 +11,7 @@ public class LottoTicket {
 
     public LottoTicket(int ticketNumber) {
         // 티켓 갯수만큼 티켓 생성함
+        generateTickets(ticketNumber);
     }
 
     private void generateTickets(int ticketNumber) {
