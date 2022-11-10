@@ -36,7 +36,7 @@
 3. 계산 관련
    - ticketHowManyLotto : 로또를 몇 개 구입할 것인지 확인한다.
    - ticketLotto : 로또 객체를 만든다.
-   - containsNumber : 몇 개의 당첨 번호가 로또에 해당되는지 확인한다.
+   - checkWinningNumber : 몇 개의 당첨 번호가 로또에 해당되는지 확인한다.
    - calculateEarningRate : 수익률을 계산한다.
 4. 예외처리 관련
    - checkLottoNumberRange : 입력받은 로또 번호의 숫자 범위를 체크한다.
