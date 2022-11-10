@@ -1,5 +1,6 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -18,6 +19,15 @@ public class Domain {
             return false;
         }
         return true;
+    }
+
+    public List<Integer> trimLottoNumberInput(String lottoNumberInput) {
+        List<Integer> result = new ArrayList<>();
+        for (String charNumber : lottoNumberInput.split(",")) {
+            result.add(Integer.parseInt(charNumber));
+        }
+
+        return result;
     }
 
     public Lotto createRandomLottoNumber() {
