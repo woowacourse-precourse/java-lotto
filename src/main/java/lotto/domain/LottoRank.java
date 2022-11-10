@@ -1,5 +1,10 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public enum LottoRank {
     FIRST(new ComparedNumber(6,false),2_000_000_000),
     SECOND(new ComparedNumber(5,true),30_000_000),
@@ -16,6 +21,10 @@ public enum LottoRank {
         this.reward = reward;
     }
 
+    protected int getReward() {
+        return reward;
+    }
+
     public static LottoRank getRank(ComparedNumber comparedNumber){
         for (LottoRank lottoResult : LottoRank.values()) {
             if (lottoResult.comparedNumber.equals(comparedNumber)) {
@@ -25,11 +34,24 @@ public enum LottoRank {
         return NONE;
     }
 
+    public static List<LottoRank> getWinLottoRank(){
+        return Arrays.stream(values())
+                .filter(LottoRank::isWin)
+                .sorted(new LottoRankComparator())
+                .collect(Collectors.toList());
+    }
+
     public boolean isWin() {
         return this != NONE;
     }
 
     public int calculateSubReturn(int count) {
         return this.reward * count;
+    }
+
+    @Override
+    public String toString() {
+        DecimalFormat formatter = new DecimalFormat("###,###");
+        return comparedNumber + "(" + formatter.format(reward) + "원)";
     }
 }
