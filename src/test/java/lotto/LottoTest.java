@@ -30,6 +30,13 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호가 범위를 벗어날 시 예외가 발생한다.")
+    @Test
+    void createBonusNumberByOutOfRange() {
+        assertThatThrownBy(() -> Lotto.setBonusNumber(55))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("예외 없이 로또 번호가 생성되는지 확인한다.")
     @Test
     void createLottosWithNoExcpetion() {
