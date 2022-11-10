@@ -49,4 +49,11 @@ class LottoRankTest {
     void fifthRank(final int countOfSameLottoNumber, final boolean existBonusLottoNumber) {
         assertThat(LottoRank.parseRank(countOfSameLottoNumber, existBonusLottoNumber)).isEqualTo(LottoRank.MISS);
     }
+    
+    @DisplayName("상금 확인")
+    @ParameterizedTest(name = "{displayName} : 순위 => {0}, 상금 => {1}")
+    @CsvSource(value = {"FIRST, 2000000000", "SECOND, 30000000", "THIRD, 1500000", "FOURTH, 50000", "FIFTH, 5000", "MISS, 0"})
+    void matchingPrizeMoney(final LottoRank lottoRank, final int prizeMoney) {
+        assertThat(lottoRank.prizeMoney()).isEqualTo(prizeMoney);
+    }
 }

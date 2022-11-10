@@ -4,17 +4,19 @@ import java.util.Arrays;
 import java.util.function.Predicate;
 
 public enum LottoRank {
-    FIRST(6),
-    SECOND(5),
-    THIRD(5),
-    FOURTH(4),
-    FIFTH(3),
-    MISS(0),;
+    FIRST(6, 2_000_000_000),
+    SECOND(5, 30_000_000),
+    THIRD(5, 1_500_000),
+    FOURTH(4, 50_000),
+    FIFTH(3, 5_000),
+    MISS(0, 0),;
     
     private final int countOfSameLottoNumber;
+    private final int prizeMoney;
     
-    LottoRank(final int countOfSameLottoNumber) {
+    LottoRank(final int countOfSameLottoNumber, final int prizeMoney) {
         this.countOfSameLottoNumber = countOfSameLottoNumber;
+        this.prizeMoney = prizeMoney;
     }
     
     public static LottoRank parseRank(final int countOfSameLottoNumber, final boolean existBonusLottoNumber) {
@@ -43,5 +45,9 @@ public enum LottoRank {
     
     private static boolean isCountOfMatchingLottoNumberSame(final LottoRank second, final int countOfSameLottoNumber) {
         return second.countOfSameLottoNumber == countOfSameLottoNumber;
+    }
+    
+    public int prizeMoney() {
+        return prizeMoney;
     }
 }
