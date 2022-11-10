@@ -6,17 +6,17 @@ import lotto.view.MainView;
 public class InputHandler {
 
 	public static String inputPurchaseQuantity() {
-		MainView.INPUT_PURCHASE_QUANTITY();
+		MainView.inputPurchaseQuantity();
 		return Console.readLine();
 	}
 
 	public static String inputLottoWinningNumber() {
-		MainView.INPUT_WINNING_NUMBER();
+		MainView.inputWinningNumber();
 		return Console.readLine();
 	}
 
 	public static String inputLottoWinningBonusNumber() {
-		MainView.INPUT_WINNING_BONUS_NUMBER();
+		MainView.inputWinningBonusNumber();
 		return Console.readLine();
 	}
 
