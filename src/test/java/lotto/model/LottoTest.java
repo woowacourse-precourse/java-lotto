@@ -1,37 +1,13 @@
 package lotto.model;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
-import static lotto.model.NumbersValidator.NUMBERS_SIZE_ERROR;
-import static lotto.model.NumbersValidator.NUMBER_RANGE_ERROR;
-import static lotto.model.NumbersValidator.NUMBER_REPEAT_ERROR;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
 class LottoTest {
-    @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
-    @Test
-    void createLottoByOverSize() {
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
-                .isInstanceOf(IllegalArgumentException.class).hasMessage(NUMBERS_SIZE_ERROR);
-    }
 
-    @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
-    @Test
-    void createLottoByDuplicatedNumber() {
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
-                .isInstanceOf(IllegalArgumentException.class).hasMessage(NUMBER_REPEAT_ERROR);
-    }
-
-    @DisplayName("로또 번호가 숫자가 범위를 초과하면 예외가 발생한다.")
-    @Test
-    void createLottoByOverRange() {
-        assertThatThrownBy(() -> new Lotto(List.of(0, 1, 2, 3, 4, 5)))
-                .isInstanceOf(IllegalArgumentException.class).hasMessage(NUMBER_RANGE_ERROR);
-    }
 
     @DisplayName("두 로또를 비교하여 일치 한 숫자개수를 반환한다.")
     @Test
@@ -66,15 +42,16 @@ class LottoTest {
 
     @DisplayName("당첨 번호와 비교하여 로또 상태 반환")
     @Test
-    void match_target_lotto(){
+    void match_target_lotto() {
         Lotto targetLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Lotto fiveMatchLotto = new Lotto(List.of(6, 3, 5, 1, 2, 8));
         int notMatchBonusNumber = 9;
-        assertThat(fiveMatchLotto.matchLotto(targetLotto,notMatchBonusNumber)).isEqualTo(LottoStatus.MATCH_FIVE);
+        assertThat(fiveMatchLotto.matchLotto(targetLotto, notMatchBonusNumber)).isEqualTo(LottoStatus.MATCH_FIVE);
         int MatchBonusNumber = 8;
-        assertThat(fiveMatchLotto.matchLotto(targetLotto,MatchBonusNumber)).isEqualTo(LottoStatus.MATCH_FIVE_ADD_BONUS);
+        assertThat(fiveMatchLotto.matchLotto(targetLotto, MatchBonusNumber)).isEqualTo(
+                LottoStatus.MATCH_FIVE_ADD_BONUS);
 
         Lotto twoMathLotto = new Lotto(List.of(1, 2, 7, 8, 11, 10));
-        assertThat(twoMathLotto.matchLotto(targetLotto,notMatchBonusNumber)).isEqualTo(LottoStatus.MATCH_UNSATISFIED);
+        assertThat(twoMathLotto.matchLotto(targetLotto, notMatchBonusNumber)).isEqualTo(LottoStatus.MATCH_UNSATISFIED);
     }
 }

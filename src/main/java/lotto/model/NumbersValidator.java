@@ -15,26 +15,33 @@ class NumbersValidator {
     private NumbersValidator() {
     }
 
-    static void isValid(List<Integer> result) {
-        isValidSize(result);
-        isValidRepeat(result);
-        isValidRange(result);
+    static boolean isValid(List<Integer> result) {
+        try {
+            isValidSize(result);
+            isValidRepeat(result);
+            isValidRange(result);
+            return true;
+        } catch (IllegalArgumentException illegalArgumentException) {
+            System.out.println(illegalArgumentException.getMessage());
+            return false;
+        }
+
     }
 
-    public static void isValidSize(List<Integer> numbers) {
+    public static void isValidSize(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != NUMBER_REQUIRED_SIZE) {
             throw new IllegalArgumentException(NUMBERS_SIZE_ERROR);
         }
     }
 
-    public static void isValidRepeat(List<Integer> numbers) {
+    public static void isValidRepeat(List<Integer> numbers) throws IllegalArgumentException {
         long numbersSize = numbers.stream().distinct().count();
         if (numbersSize != NUMBER_REQUIRED_SIZE) {
             throw new IllegalArgumentException(NUMBER_REPEAT_ERROR);
         }
     }
 
-    public static void isValidRange(List<Integer> numbers) {
+    public static void isValidRange(List<Integer> numbers) throws IllegalArgumentException {
         boolean anyMatch = numbers.stream()
                 .anyMatch(number -> number < NUMBER_MIN_VALUE || number > NUMBER_MAX_VALUE);
         if (anyMatch) {
