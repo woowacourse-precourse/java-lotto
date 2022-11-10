@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Store {
 
-    public int getPurchaseNumberOfLotto() {
+    public int getPurchaseMoney() {
         System.out.println("구매금액을 입력해 주세요.");
         InputAgent inputAgent = new InputAgent();
         int inputValue = inputAgent.inputUserMoney();
@@ -30,6 +30,6 @@ public class Store {
         for (List<Integer> eachLottoPaper : generatedLottoPaper) {
             System.out.println(Arrays.toString(eachLottoPaper.toArray()));
         }
-        System.out.println("");
+        System.out.println();
     }
 }
