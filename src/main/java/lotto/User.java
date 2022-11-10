@@ -14,8 +14,8 @@ public class User {
         this.winningNumbers = new ArrayList<>();
     }
 
-    public void setMoney(int money) {
-        this.money = money;
+    public void setMoney(String money) {
+        this.money = Integer.parseInt(money); // TODO : add exception check
     }
 
     public int getMoney() {
@@ -31,5 +31,13 @@ public class User {
 
     public List<Integer> getWinningNumbers() {
         return this.winningNumbers;
+    }
+
+    public void setBonusNumber(String bonusNumber) {
+        this.bonusNumber = Integer.parseInt(bonusNumber); // TODO : add exception check
+    }
+
+    public int getBonusNumber() {
+        return this.bonusNumber;
     }
 }
