@@ -30,6 +30,10 @@ public class LottoGame {
         }
     }
 
+    public void printLottos(List<Lotto> lottos) {
+        lottos.forEach(lotto -> printSortedLotto(lotto.getNumbers()));
+    }
+
     public void printSortedLotto(List<Integer> lotto) {
         System.out.println(getSortedByAscend(lotto));
     }
