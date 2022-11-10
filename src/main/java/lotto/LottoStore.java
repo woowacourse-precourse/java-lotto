@@ -27,9 +27,9 @@ public class LottoStore {
         return lottos;
     }
 
-    public void setWinNumbers(List<Integer> winNumbers) {
-        validateWinNumbers(winNumbers);
-        this.winNumbers = winNumbers;
+    public void setWinNumbers(List<Integer> numbers) {
+        validateWinNumbers(numbers);
+        this.winNumbers = numbers;
     }
 
     private void validateWinNumbers(List<Integer> numbers) {
