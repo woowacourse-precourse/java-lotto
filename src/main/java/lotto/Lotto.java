@@ -9,6 +9,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validateSize(numbers);
         validateUniqueness(numbers);
+        validateRange(numbers);
         this.numbers = numbers;
     }
 
@@ -23,6 +24,13 @@ public class Lotto {
                 .distinct()
                 .collect(Collectors.toList());
         if (numbersToBeValidated.size() != 6) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateRange(List<Integer> numbers) {
+        boolean isOutOfRange = numbers.stream().allMatch(number -> number < 1 && number > 45 );
+        if (isOutOfRange) {
             throw new IllegalArgumentException();
         }
     }
