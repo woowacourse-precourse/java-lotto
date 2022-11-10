@@ -5,7 +5,22 @@ import org.junit.jupiter.api.Test;
 class LottoPublisherTest {
 
     @Test
-    void goodLottosPublished() {
+    void publishLottosAccordingToPayment() {
+
+    }
+
+    @Test
+    void eachLottoShouldHave6Numbers() {
+
+    }
+
+    @Test
+    void eachLottoShouldHaveUniqueNumbers() {
+
+    }
+
+    @Test
+    void eachLottoShouldBeSortedInAscendingOrder() {
 
     }
 }
