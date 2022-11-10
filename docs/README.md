@@ -28,6 +28,7 @@
    - inputBonusNumber : 사용자로부터 보너스 넘버를 입력받는다.
 2. 메시지 출력 관련
    - printInputMoneyMessage : 구입 금액 입력 안내 메시지를 출력한다.
+   - printPurchaseConfirmMessage : 구입 완료 안내 메시지를 출력한다.
    - printInputWinningNumberMessage : 당첨 번호 입력 안내 메시지를 출력한다.
    - printInputBonusNumberMessage : 서비스 번호 입력 안내 메시지를 출력한다.
    - printWinningResult : 당첨 결과를 출력한다.
