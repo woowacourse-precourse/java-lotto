@@ -17,7 +17,7 @@ public class LottoException {
         if(isMoneyInputNumberCheck(moneyInput)){
             return;
         }
-        throw new IllegalArgumentException(Buy_Input_Number_ERROR_MESSAGE);
+        throw new IllegalArgumentException(MONEY_Input_Number_ERROR_MESSAGE);
     }
 
     private static boolean isMoneyInputNumberCheck(String moneyInput){
@@ -37,7 +37,7 @@ public class LottoException {
         if(isMoneyInputThousand(moneyInput)){
             return;
         }
-        throw new IllegalArgumentException(Buy_Input_THOUSAND_ERROR_MESSAGE);
+        throw new IllegalArgumentException(MONEY_Input_THOUSAND_ERROR_MESSAGE);
     }
 
     private static boolean isMoneyInputThousand(String moneyInput){

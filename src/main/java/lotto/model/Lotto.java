@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static lotto.constValue.Constants.ExceptionMessage.*;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -25,7 +27,7 @@ public class Lotto {
     private void checkLottoNumberRange(List<Integer> numbers){
         for (Integer number : numbers) {
             if(number<1 || number>45){
-                throw new IllegalArgumentException("[ERROR] : 로또 번호의 범위를 벗어났습니다.");
+                throw new IllegalArgumentException(LOTTO_NUMBER_RANGE_ERROR_MESSAGE);
             }
         }
     }
@@ -35,7 +37,7 @@ public class Lotto {
         if(numbers.size()==notDuplicatedNumber.size()){
             return;
         }
-        throw new IllegalArgumentException("[ERROR] : 로또 번호에 중복 숫자가 없어야 합니다.");
+        throw new IllegalArgumentException(LOTTO_NUMBER_DUPLICATE_ERROR_MESSAGE);
     }
 
     private static Set<Integer> getNotDuplicatedNumber(List<Integer> numbers) {
