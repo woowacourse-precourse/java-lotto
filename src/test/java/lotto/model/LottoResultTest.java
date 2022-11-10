@@ -50,6 +50,6 @@ class LottoResultTest {
         double rateOfReturn = lottoResult.getRateOfReturn(10000);
 
         //then
-        assertThat(rateOfReturn).isEqualTo(50.0);
+        assertThat(rateOfReturn).isEqualTo(500.0);
     }
 }
