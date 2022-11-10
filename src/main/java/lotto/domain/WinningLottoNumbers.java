@@ -1,13 +1,11 @@
 package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Lotto;
+import lotto.exception.BonusNumberException;
+import lotto.exception.Lotto;
 import lotto.exception.LottoNumberException;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static camp.nextstep.edu.missionutils.Console.*;
 
 public class WinningLottoNumbers {
     LottoNumberException lottoNumberException = new LottoNumberException();
