@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Application {
+    public static List<Integer> answer = new ArrayList<>();
     public static void main(String[] args) {
 
         List<List<Integer>> lotto_list = new ArrayList<>();
@@ -36,19 +37,43 @@ public class Application {
         }
         List<Integer> lotto_answer = getLottoAnswer();
         int bonus_number = getLottoAnswerBonus();
-
-
+        compareLotto(lotto_list, lotto_answer, bonus_number);
     }
 
      public static List<Integer> getLottoAnswer(){
         System.out.println("당첨 번호를 입력해 주세요.");
         String read_answer = Console.readLine();
-         return Arrays.stream(read_answer.split(",")).map(s -> Integer.parseInt(s.trim())).sorted().collect(Collectors.toList());
+
+        String[] split_answer = read_answer.split(",");
+        if(checkValidLottoLength(split_answer))
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자를 입력해주시기 바랍니다.");
+        for(String s : split_answer){
+            if(!checkValidLottoRange(Integer.parseInt(s)))
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45사이의 숫자여야 합니다.");
+        }
+        return answer;
+     }
+
+    private static Boolean checkValidLottoLength(String[] split_answer) {
+        return split_answer.length == 6;
+    }
+
+    private static Boolean checkValidLottoRange(int number){
+        return number >= 1 && number <= 45;
     }
 
     public static Integer getLottoAnswerBonus(){
         System.out.println("보너스 번호를 입력해 주세요.");
-        return Integer.parseInt(Console.readLine());
+        int bonus_number = Integer.parseInt(Console.readLine());
+        if(!checkValidLottoRange(bonus_number))
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45사이의 숫자여야 합니다.");
+        return bonus_number;
+    }
+
+    public static void compareLotto(List<List<Integer>> lotto_list, List<Integer> lotto_answer, Integer bonus_number){
+        System.out.println(lotto_list);
+        System.out.println(lotto_answer);
+        System.out.println(bonus_number);
     }
 
 }
