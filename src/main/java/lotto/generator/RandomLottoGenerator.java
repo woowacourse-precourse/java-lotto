@@ -1,8 +1,7 @@
 package lotto.generator;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Lotto;
-import lotto.global.LottoConstants;
+import lotto.model.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
