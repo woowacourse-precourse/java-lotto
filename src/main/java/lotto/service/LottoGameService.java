@@ -1,5 +1,9 @@
 package lotto.service;
 
+import lotto.LottoNumbersGenerator;
+import lotto.model.Lotto;
+
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class LottoGameService {
@@ -9,6 +13,8 @@ public class LottoGameService {
     private static final String LOTTO_PURCHASE_AMOUNT_DIVIDE_REST_EXCEPTION_MESSAGE = "로또 구입 금액은 1,000원으로 나누어 떨어져야합니다.";
     private static final String LOTTO_PURCHASE_AMOUNT_NOT_DIGIT_EXCEPTION_MESSAGE = "로또 구입 금액은 숫자여야합니다.";
     private static final String DIGIT_REGEX = "^[0-9]+$";
+
+    Lotto lotto = new Lotto(LottoNumbersGenerator.generateLottoNumbers());
 
     public int getLottoIssueCount(String lottoPurchaseAmount) {
         validateLottoIssueCount(lottoPurchaseAmount);
@@ -30,5 +36,11 @@ public class LottoGameService {
 
     private boolean isLottoPurchaseAmountNotDigit(String lottoPurchaseAmount) {
         return !Pattern.compile(DIGIT_REGEX).matcher(String.valueOf(lottoPurchaseAmount)).matches();
+    }
+
+    public long getPurchaseNumbersMatchWinningNumbersCount(List<Integer> purchaseLottoNumbers, List<Integer> lottoWinningNumbers) {
+        return lottoWinningNumbers.stream()
+                .filter(purchaseLottoNumbers::contains)
+                .count();
     }
 }
