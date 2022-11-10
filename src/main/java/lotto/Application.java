@@ -11,6 +11,9 @@ public class Application {
     static int BONUS_NUMBER;
     static int numberOfPurchasedLotto;
     static List<Lotto> purchasedLotto =  new ArrayList<>();
+    static List<Integer> trackEachPlace;
+    static Lotto winning_number_lotto;
+    static final String ENTER_THE_AMOUNT = "구입금액을 입력해 주세요.";
     static final String ENTER_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
     static final String ERROR_MESSAGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     static final String BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
@@ -37,7 +40,7 @@ public class Application {
     }
 
     public static void enterTheAmount(){
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(ENTER_THE_AMOUNT);
         int amount = Integer.parseInt(Console.readLine());
         if(amount%LOTTO_PRICE!=0) throw new IllegalArgumentException();
         numberOfPurchasedLotto = amount/LOTTO_PRICE;
@@ -61,13 +64,10 @@ public class Application {
         }
         return true;
     }
-
-    public static Lotto validateGivenNumbers(){
-        Lotto lotto;
+    public static void validateGivenNumbers(){
         do{
-           lotto = generateSixNumbers();
-        } while(!printTheErrorMessageIfNotInTheRange(lotto.getNumbers()));
-        return lotto;
+            winning_number_lotto = generateSixNumbers();
+        } while(!printTheErrorMessageIfNotInTheRange(winning_number_lotto.getNumbers()));
     }
     public static void initializeBonusNumber(){
         System.out.println(BONUS_NUMBER_MESSAGE);
