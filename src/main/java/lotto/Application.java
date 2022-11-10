@@ -6,7 +6,7 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
-    private boolean isNumber(String string) {
+    private static boolean isNumber(String string) {
         try {
             Integer.parseInt(string);
             return true;
