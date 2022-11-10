@@ -10,31 +10,48 @@ import java.util.List;
 import java.util.Set;
 
 public class View {
-    public int getInvestmentCash() {
+    public int getInvestmentCash() throws IllegalArgumentException{
         System.out.println("구입 금액을 입력해주세요.");
         String input = Console.readLine();
+        int investmentCash;
+        try{
+            investmentCash = Integer.parseInt(input);
+        }catch (NumberFormatException exception){
+            throw new IllegalArgumentException("[ERROR] 입력 값이 올바르지 않습니다.");
+        }
 
-        return Integer.parseInt(input);
+        return investmentCash;
     }
 
-    public List<Integer> getWinningNumber() {
+    public List<Integer> getWinningNumber() throws IllegalArgumentException{
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         String[] numbers = input.split(",");
 
         List<Integer> winningNumber = new ArrayList<>();
         for (String number : numbers) {
-            winningNumber.add(Integer.parseInt(number));
+            try {
+                winningNumber.add(Integer.parseInt(number));
+            } catch(NumberFormatException exception){
+                throw new IllegalArgumentException("입력 값이 올바르지 않습니다.");
+            }
         }
 
         return winningNumber;
     }
 
-    public int getBonusNumber() {
+    public int getBonusNumber() throws IllegalArgumentException{
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
 
-        return Integer.parseInt(input);
+        int bonusNumber;
+        try {
+            bonusNumber = Integer.parseInt(input);
+        } catch(NumberFormatException exception){
+            throw new IllegalArgumentException("입력 값이 올바르지 않습니다.");
+        }
+
+        return bonusNumber;
     }
 
     public void printMyLottoInfo(List<Lotto> myLottos) {
