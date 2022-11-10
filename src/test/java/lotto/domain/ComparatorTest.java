@@ -13,12 +13,14 @@ class ComparatorTest {
     private Comparator comparator;
     private List<Integer> userLotteryNumbers;
     private List<Integer> winningNumbers;
+    private int bonusNumber;
 
     @BeforeEach
     void initialize() {
         comparator = new Comparator();
         userLotteryNumbers = new ArrayList<>(Arrays.asList(1, 3, 7, 12, 23, 40));
         winningNumbers = new ArrayList<>(Arrays.asList(10, 11, 13, 16, 23, 26));
+        bonusNumber = 7;
     }
 
     @Test
@@ -27,5 +29,13 @@ class ComparatorTest {
 
         assertThat(matchCount)
                 .isEqualTo(1);
+    }
+
+    @Test
+    void 로또_번호와_보너스_번호를_비교합니다() {
+        boolean hasBonusNumber = comparator.hasBonusNumber(userLotteryNumbers, bonusNumber);
+
+        assertThat(hasBonusNumber)
+                .isEqualTo(true);
     }
 }
