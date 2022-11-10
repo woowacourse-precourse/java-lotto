@@ -14,6 +14,8 @@ public class LottoNumber {
     private static final int END_TO = 45;
     private static final int NUMBER_OF = 6;
 
+    private static final String BOUGHT_HOW_MANY = "개를 구매했습니다.";
+
     public List<List<Integer>> getLottoNumberList(int lottoCount){
         List<List<Integer>> lottoNumberList = new ArrayList<>();
         for(int i=0; i<lottoCount; i++){
@@ -22,6 +24,15 @@ public class LottoNumber {
         return lottoNumberList;
     }
 
+    public String outputLottoNumberList(int lottoCount, List<List<Integer>> lottoNumberList){
+        StringBuilder sb = new StringBuilder();
+        sb.append(lottoCount);
+        sb.append(BOUGHT_HOW_MANY + "\n");
+        for(int i=0; i<lottoCount; i++){
+            sb.append(lottoNumberList.get(i) + "\n");
+        }
+        return sb.toString();
+    }
     private List<Integer> getLottoNumbers(){
         List<Integer> lottoNumbers =
                 sortLottoNumbers(Randoms.pickUniqueNumbersInRange(START_FROM, END_TO, NUMBER_OF));
