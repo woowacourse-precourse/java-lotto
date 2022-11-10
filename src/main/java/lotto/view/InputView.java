@@ -19,8 +19,15 @@ public final class InputView {
 
     public static List<Integer> readWinningNumber() {
         String line = Console.readLine();
+        // verify(line);
         return Arrays.stream(line.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    public static int readBonusNumber() {
+        String line = Console.readLine();
+        // verify(line);
+        return Integer.parseInt(line);
     }
 }
