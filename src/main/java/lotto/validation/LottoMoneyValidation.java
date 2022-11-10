@@ -8,8 +8,7 @@ public class LottoMoneyValidation extends Validation{
     @Override
     public void isValidate(String userInput) {
         isNumericFormat(userInput);
-        int money = Integer.parseInt(userInput);
-        isDivideByInteger(money);
+        isDivideByInteger(userInput);
     }
 
     private void isNumericFormat(String userInput) {
@@ -20,9 +19,9 @@ public class LottoMoneyValidation extends Validation{
         }
     }
 
-    private void isDivideByInteger(int money) {
+    private void isDivideByInteger(String userInput) {
         IntegerValidation integerValidation = new IntegerValidation();
-        if (!(integerValidation.isDivideByInteger(money, IntConstant.LOTTO_MONEY_PER_ONE.getValue()))) {
+        if (!(integerValidation.isDivideByInteger(userInput, IntConstant.LOTTO_MONEY_PER_ONE.getValue()))) {
             createError(StringConstant.MONEY_INPUT_NOT_DIVIDE_BY_LOTTO_MONEY_PER_ONE_MESSAGE.getMessage());
         }
     }

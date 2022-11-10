@@ -10,8 +10,8 @@ public class IntegerValidation {
                 .count();
     }
 
-    public boolean isDivideByInteger(int money, int divisor) {
-        return (money % divisor) == 0;
+    public boolean isDivideByInteger(String money, int divisor) {
+        return (Integer.parseInt(money) % divisor) == 0;
     }
 
     public boolean isBetween(String userInput, int greaterThan, int smallerThan) {
