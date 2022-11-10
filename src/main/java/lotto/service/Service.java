@@ -113,4 +113,11 @@ public class Service {
 
         return winningPrice;
     }
+
+    public static double getEarningsRate(int winningPrice, int money) {
+        double earningRate = ((double) winningPrice / money) * 100;
+        System.out.println("총 수익률은 " + earningRate + "%입니다.");
+
+        return earningRate;
+    }
 }

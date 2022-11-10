@@ -95,4 +95,12 @@ class LottoTest {
         int winning = Service.getWinningPrice();
         assertThat(winning).isEqualTo(30000000);
     }
+
+    @DisplayName("수익률은 소수점 둘째자리에서 반올림한다")
+    @Test
+    void checkEarningRate() {
+        int winningPrice = 30000000;
+        int money = 1000;
+        assertThat(Service.getEarningsRate(winningPrice, money)).isEqualTo(3000000.0);
+    }
 }
