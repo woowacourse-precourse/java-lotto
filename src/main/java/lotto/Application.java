@@ -12,8 +12,7 @@ public class Application {
     static int get_comsumption() {
         System.out.println("구입금액을 입력해 주세요.");
         int consumption = Integer.parseInt(Console.readLine());
-        if (consumption % 1000 != 0)
-            throw new IllegalArgumentException();
+        if (consumption % 1000 != 0) throw new IllegalArgumentException();
         return consumption;
     }
 
@@ -27,6 +26,19 @@ public class Application {
         }
         return ticket_list;
     }
+
+    static Lotto get_winning_number() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String[] win_num_input = Console.readLine().split(",");
+        List<Integer> inputs = new ArrayList<Integer>();
+        for (int i = 0; i < win_num_input.length; i++) {
+            inputs.add(Integer.parseInt(win_num_input[i]));
+        }
+        Lotto win_numbers = new Lotto(inputs);
+
+        return win_numbers;
+    }
+
     public static void main(String[] args) {
 
 
