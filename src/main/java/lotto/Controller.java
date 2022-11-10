@@ -21,12 +21,14 @@ public class Controller {
     void start() {
         view.startMention();
         input = Console.readLine();
-        inMoney = ex.initialInput(input);
+        ex.initialInput(input);
+        inMoney = Integer.parseInt(input);
         Computer[] computers = getComputers();
         inputWinningNumber();
         view.inputBonus();
         input = Console.readLine();
-        bonus = ex.inputWinningBonus(input);
+        ex.inputWinningBonus(input);
+        bonus = Integer.parseInt(input);
         lotto.getNumbers().add(bonus);
         domain.checkWinning(computers, list, lotto);
         view.printResult(list);
