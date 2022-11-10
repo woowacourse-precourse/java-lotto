@@ -5,13 +5,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.Computer;
 import lotto.Lotto;
 import lotto.common.Msg;
 import lotto.service.LottoService;
+import lotto.validator.Validator;
 
 public class GameController {
 
-    private final LottoService service = new LottoService();
+    private final LottoService service = new LottoService(new Validator(), new Computer());
     private List<Lotto> lottos = new ArrayList<>();
     private String input = "";
     private List<Integer> winns = new ArrayList<>();
