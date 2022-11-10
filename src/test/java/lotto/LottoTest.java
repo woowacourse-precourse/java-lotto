@@ -1,5 +1,6 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -7,9 +8,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static lotto.constant.Constants.DUPLICATED_NUMBER_ERROR_MESSAGE;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static lotto.constant.Constants.*;
+import static org.assertj.core.api.Assertions.*;
 
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -42,11 +42,42 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("로또 번호 랜덤 생성 100개 테스트 - 로또 생성 오류 없는 경우")
+    @Test
+    void testForCreateLottoNumber1() {
+        Throwable t = catchThrowable(() -> {
+            for (int i = 0; i < 100; i++) {
+                Lotto lotto = new Lotto(createLottoNumber());
+            }
+        });
+        assertThat(t).doesNotThrowAnyException();
+    }
+
+    @DisplayName("로또 번호 랜덤 생성 100개 테스트 - 로또 생성 오류 있는 경우")
+    @Test
+    void testForCreateLottoNumber2() {
+        Throwable t = catchThrowable(() -> {
+            for (int i = 0; i < 100; i++) {
+                Lotto lotto = new Lotto(createLottoNumber());
+                if (i == 99) {
+                    lotto = new Lotto(List.of(1, 2, 3, 4, 5, 5));
+                }
+            }
+        });
+        assertThat(t)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(DUPLICATED_NUMBER_ERROR_MESSAGE);
+    }
+
     private void validateForDuplicatedNumber(List<Integer> lotto) {
         Set<Integer> lottoSet = new HashSet<>(lotto);
         if (lottoSet.size() != 6) {
             throw new IllegalArgumentException(DUPLICATED_NUMBER_ERROR_MESSAGE);
         }
+    }
+
+    private List<Integer> createLottoNumber() {
+        return Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_COUNT);
     }
 
 }

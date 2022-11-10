@@ -3,7 +3,7 @@
     * [x] 1000으로 나누어 떨어지는지 확인하기 떨어지지 않을 시 에러 - validateForDividedBy1000()
     * [x] 숫자가 아닌 문자 입력인지 확인 - validateForIllegalInput()
 * [ ] 로또 구매 - buyLotto()
-* [ ] 로또 번호 랜덤 생성 - createLottoNumber()
+* [x] 로또 번호 랜덤 생성 - createLottoNumber()
 * [ ] 리스트 전체 출력 - printLottoNumber()
 * [ ] 당첨번호 입력  - inputWinningNumber()
     * [x] 입력한 번호가 6개가 맞는지 - validate()

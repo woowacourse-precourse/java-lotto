@@ -1,11 +1,12 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static lotto.constant.Constants.DUPLICATED_NUMBER_ERROR_MESSAGE;
-import static lotto.constant.Constants.INVALID_LENGTH_ERROR_MESSAGE;
+import static lotto.constant.Constants.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -25,6 +26,9 @@ public class Lotto {
             throw new IllegalArgumentException(DUPLICATED_NUMBER_ERROR_MESSAGE);
         }
     }
-    // TODO: 추가 기능 구현
+
+    private List<Integer> createLottoNumber() {
+        return Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_COUNT);
+    }
 
 }
