@@ -1,5 +1,6 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,6 +14,8 @@ public class Lotto {
 
     private final List<Integer> numbers; // 기존 코드
     private static final int LOTTO_LENGTH = 6;
+    private static final int MIN_VALUE = 1;
+    private static final int MAX_VALUE = 45;
     private static int userInputMoney;
     private static List<Integer> winnerNumberList = new ArrayList<>();
     private static List<Integer> bonusNumberList = new ArrayList<>();
@@ -57,10 +60,32 @@ public class Lotto {
         return inputMoney;
     }
 
+    //한 개의 로또 번호 생성 (완성)
+    public static int[] oneLotto(){
+        int[] oneLotto = new int[LOTTO_LENGTH];
+        for (int i = 0; i < LOTTO_LENGTH; i++){
+            int num = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
+            oneLotto[i] = num;
+            for(int j = 0; j < i; j++){
+                if(oneLotto[i] == oneLotto[j]){
+                    i--;
+                    break;
+                }
+            }
+        }
+
+        return oneLotto;
+    }
+
+
+
+
     // 내 로또 생성
     public static ArrayList<Integer> myLottoNumber(int num) throws IOException { // 랜덤 로또 생성
         num = theNumberOfLotto();
-//        for
+        for (int i = 0; i < theNumberOfLotto(); i++){
+            Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
+        }
         Collections.sort(myLottoNumber(num)); // 로또 번호 정렬
         return null;
     }
