@@ -11,7 +11,7 @@ public class TicketMachine {
 
     private void validatePayment(int payment) {
         if (payment % TICKET_PRICE != 0) {
-            throw new IllegalArgumentException("[ERROR] : ");
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
 }
