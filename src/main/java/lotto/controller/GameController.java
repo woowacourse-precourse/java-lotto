@@ -18,7 +18,7 @@ public class GameController {
 		lottoTickets.print();
 	}
 
-	public List<Lotto> buyTickets(Money money) {
+	private List<Lotto> buyTickets(Money money) {
 		int count = money.getAmount() / LottoMachine.LOTTO_COST;
 
 		List<Lotto> lottos = new ArrayList<>();
