@@ -10,7 +10,7 @@
   - [x] 로또의 숫자를 오름차순으로 정렬한다 - LottoProgram#createLotto()
 
 - [x] 구매 메세지를 출력한다. - View#LOTTO_PURCHASED_GUIDE_MESSAGE
-  - [] 로또들의 숫자들을 출력한다. - View#showLottoNumbers()
+  - [x] 로또들의 숫자들을 출력한다. - View#showLottoNumbers()
 
 - [] 당첨 번호 입력 메세지를 출력한다. - View#WINNING_NUMBER_INPUT_GUIDE_MESSAGE
 - [] 당첨 번호 입력 받는다. - Input#userInput()

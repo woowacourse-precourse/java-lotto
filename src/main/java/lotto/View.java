@@ -1,5 +1,9 @@
 package lotto;
 
+import java.util.List;
+
+import lotto.domain.Lotto;
+
 public class View {
 	private static final String PURCHASE_INPUT_GUIDE_MESSAGE = "구입금액을 입력해 주세요.";
 	private static String LOTTO_PURCHASED_GUIDE_MESSAGE = "개를 구매했습니다.";
@@ -15,7 +19,11 @@ public class View {
 		System.out.println(lottoCount + LOTTO_PURCHASED_GUIDE_MESSAGE);
 	}
 
-	public static void showLottoNumbers() {
+	public static void showLottoNumbers(List<Lotto> lottoList) {
+
+		for (Lotto lotto : lottoList) {
+			System.out.println(lotto.getNumbers());
+		}
 
 	}
 

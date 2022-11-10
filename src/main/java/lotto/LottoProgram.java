@@ -20,6 +20,7 @@ public class LottoProgram {
 		createLotto(lottoCount);
 
 		View.showLottoPurchasedGuideMessage(lottoCount);
+		View.showLottoNumbers(lottoList);
 	}
 
 	public void createLotto(int lottoCount) {

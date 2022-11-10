@@ -19,4 +19,7 @@ public class Lotto {
 	private void createLotto() {
 	}
 
+	public List<Integer> getNumbers() {
+		return numbers;
+	}
 }
