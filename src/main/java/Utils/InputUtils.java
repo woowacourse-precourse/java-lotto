@@ -1,5 +1,8 @@
 package Utils;
 
+import java.util.Collections;
+import java.util.List;
+
 public class InputUtils {
     public static boolean isMultipleOfOneThousand() {
         // 1000원 단위로 떨어지는지 검증
@@ -24,5 +27,17 @@ public class InputUtils {
     public static boolean isNumberInLottoRange() {
         // 숫자가 1~45 사이의 범위에 존재하는지 확인
         return false;
+    }
+
+    public static String listToString() {
+        return "";
+    }
+
+    public static int stringToInteger() {
+        return 0;
+    }
+
+    public static List<Integer>  stringToIntegerList() {
+        return Collections.emptyList(); 
     }
 }
