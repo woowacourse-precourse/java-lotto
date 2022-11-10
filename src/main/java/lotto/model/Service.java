@@ -13,8 +13,13 @@ public class Service {
         return Integer.parseInt(purchaseAmount) / 1000;
     }
 
-    public static long getProfitRates(int purchaseAmount, int winningAmount) {
-        return winningAmount / purchaseAmount;
+    public static double getProfitRates(String money, int[] lottoResult) {
+        double winningAmount = 0;
+
+        for (int i = 0; i < lottoResult.length; i++) {
+            winningAmount = lottoResult[i] * WinnerInfo.values()[i].getPrizeInformation();
+        }
+        return (winningAmount / Integer.parseInt(money)) * 100;
     }
 
     // TODO: 리팩토링 필요
@@ -31,7 +36,7 @@ public class Service {
             List<Integer> lotto = Convertor.ExtractList(lottoNumbers, i);
             int index = getOneLottoResult(lotto, playerLotteryNumbers, playerBonusNumber);
 
-            if (index == 0) {
+            if (index == 0 || index == -1) {
                 continue;
             }
             result[index - 1]++;
@@ -43,7 +48,6 @@ public class Service {
     private static int getOneLottoResult(
             List<Integer> lottoNumbers, List<Integer> playerLottoNumbers, int playerBonusNumber) {
 
-        int 을count = 0;
         List<Integer> intersection = new ArrayList<>(playerLottoNumbers);
         intersection.retainAll(lottoNumbers);
 
@@ -67,7 +71,10 @@ public class Service {
         if (intersection.size() == WinnerInfo.RANK4.getWinningCondition()) {
             return WinnerInfo.RANK4.getRank();
         }
-        return WinnerInfo.RANK5.getRank();
-    }
 
+        if (intersection.size() == WinnerInfo.RANK5.getWinningCondition()) {
+            return WinnerInfo.RANK5.getRank();
+        }
+        return -1;
+    }
 }
