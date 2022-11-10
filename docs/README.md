@@ -79,7 +79,7 @@ validate
    1. showPlayersLottoCount : 'n개를 구매했습니다.'를 출력한다. 
    2. showLottoNumbers : Lotto리스트를 한개씩 문자열로 출력한다. 
 
-### LottoView
+### ComputerView
 1. inquireNumbers : '당첨 번호를 입력해 주세요.'를 출력한다. 
 2. scanNumbers : ','로 구분되는 숫자의 문자열을 반환한다. 
 3. inquireBonusNumber : '보너스 번호를 입력해 주세요.'를 출력한다. 
