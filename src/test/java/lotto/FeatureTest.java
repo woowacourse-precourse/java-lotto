@@ -27,6 +27,11 @@ public class FeatureTest {
         long count = answer.stream().distinct().count();
         assertThat(count).isEqualTo(6L);
     }
+    @Test
+    void 사용자의_구매횟수만큼_로또숫자_발행(){
+        List<List<Integer>> result = Lotto.getPurchaseLottoList(5);
+        assertThat(result.size()).isEqualTo(5);
+    }
 
 
 }
