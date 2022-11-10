@@ -12,16 +12,16 @@ public class Validation {
 
         @Test
         void isInRange_string() {
-            ValidationUtil.isValidNum("1");
-            ValidationUtil.isValidNum("45");
+            ValidationUtil.isValidNumber("1");
+            ValidationUtil.isValidNumber("45");
 
-            assertThatThrownBy(() -> ValidationUtil.isValidNum("0"))
+            assertThatThrownBy(() -> ValidationUtil.isValidNumber("0"))
                     .isInstanceOf(IllegalArgumentException.class);
 
-            assertThatThrownBy(() -> ValidationUtil.isValidNum("46"))
+            assertThatThrownBy(() -> ValidationUtil.isValidNumber("46"))
                     .isInstanceOf(IllegalArgumentException.class);
 
-            assertThatThrownBy(() -> ValidationUtil.isValidNum("-1"))
+            assertThatThrownBy(() -> ValidationUtil.isValidNumber("-1"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
@@ -30,12 +30,19 @@ public class Validation {
     class ValidateMultipleDigits {
 
         @Test
-        void hasSixDigits() {
-            assertThat(ValidationUtil.isValid("1,2,3,4,5,6")).isTrue();
-
+        void invalidCount() {
             assertThatThrownBy(() -> ValidationUtil.isValid("1,2,3,4,5,6,7"))
                     .isInstanceOf(IllegalArgumentException.class);
             assertThatThrownBy(() -> ValidationUtil.isValid("1,2,3,4,5"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void distinctDigits() {
+            assertThat(ValidationUtil.isValid("1,2,3,4,5,6")).isTrue();
+            assertThatThrownBy(() -> ValidationUtil.isValid("1,2,3,4,6,6"))
+                    .isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> ValidationUtil.isValid("1,2,3,2,6,6"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
