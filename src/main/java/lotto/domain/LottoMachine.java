@@ -11,6 +11,10 @@ import java.util.stream.IntStream;
 
 public class LottoMachine {
 
+    private static final String OUTPUT_MESSAGE_TICKET_QUANTITY = "개를 구매했습니다.";
+
+    private static final String LF = "\n";
+
     private final int purchaseMoney;
     private final List<Lotto> lottos;
 
@@ -39,5 +43,13 @@ public class LottoMachine {
 
     public List<Lotto> getLottos() {
         return lottos;
+    }
+
+    @Override
+    public String toString() {
+        return purchaseMoney / Lotto.LOTTO_TICKET_PRICE + OUTPUT_MESSAGE_TICKET_QUANTITY + LF +
+                lottos.stream()
+                        .map(Lotto::toString)
+                        .collect(Collectors.joining(LF));
     }
 }

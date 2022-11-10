@@ -28,4 +28,13 @@ class LottoMachineTest {
 
         assertThat(lottos.get(0).getNumbers().size()).isEqualTo(Lotto.LOTTO_SIZE);
     }
+
+    @Test
+    @DisplayName("로또 기계는 구입 개수와 보유 로또 번호를 출력할 수 있다.")
+    void 로또_출력() {
+        int purchaseMoney = 1000;
+        LottoMachine lottoMachine = new LottoMachine(purchaseMoney);
+        assertThat(lottoMachine.toString())
+                .isEqualTo("1개를 구매했습니다.\n" + lottoMachine.getLottos().get(0).toString());
+    }
 }
