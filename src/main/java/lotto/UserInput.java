@@ -5,14 +5,14 @@ import camp.nextstep.edu.missionutils.Console;
 public class UserInput {
 
     private static final String money = Console.readLine();
+    private static final String number = Console.readLine();
+
     public static String getUserInputMoney(){
 
         return money;
     }
 
     public static String[] getUserInputLottoNumber(){
-
-        String number = Console.readLine();
 
         return number.split(",");
     }
