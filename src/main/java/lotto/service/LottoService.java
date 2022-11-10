@@ -23,7 +23,9 @@ public class LottoService {
     }
 
     public List<Lotto> buy(String in) {
-        isValid(in);
+        isNumber(in, Error.NUMBER);
+        require(Integer.parseInt(in) < 1000, Error.MINUS);
+        require(Integer.parseInt(in) % 1000 != 0, Error.THOUSAND);
         int money = getMoney(in);
         return getLottos(money);
     }
@@ -39,18 +41,17 @@ public class LottoService {
             .collect(Collectors.toList());
     }
 
-    private void isValid(String in) {
-        int i = 0;
+    private void require(final boolean condition, final Error error) {
+        if (condition) {
+            throw new IllegalArgumentException(error.getMsg());
+        }
+    }
+
+    private void isNumber(String in, Error error) {
         try {
-            i = Integer.parseInt(in);
+            Integer.parseInt(in);
         } catch (Exception e) {
-            throw new IllegalArgumentException(Error.NUMBER.getMsg());
-        }
-        if (i < 1000) {
-            throw new IllegalArgumentException(Error.MINUS.getMsg());
-        }
-        if (i % 1000 != 0) {
-            throw new IllegalArgumentException(Error.THOUSAND.getMsg());
+            throw new IllegalArgumentException(error.getMsg());
         }
     }
 
