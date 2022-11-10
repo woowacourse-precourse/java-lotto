@@ -10,8 +10,8 @@ public enum Rank {
     fifth(3, 5_000),
     fail(0,0);
 
-    private int numberCount;
-    private int prize;
+    private final int numberCount;
+    private final int prize;
 
     Rank(int numberCount, int prize) {
         this.numberCount = numberCount;
@@ -20,7 +20,7 @@ public enum Rank {
 
     }
 
-    public static Rank getPrize(final int numberCount) {
+    public static Rank getRank(final int numberCount) {
         if (numberCount < 3) {
             return fail;
         }
