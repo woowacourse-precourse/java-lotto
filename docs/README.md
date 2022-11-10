@@ -82,7 +82,7 @@
 
 - [ ] (구입 금액 / 1000) 장 만큼 로또 발행
 
-- [ ] 자동으로 서로 다른 6개 숫자의 로또 발행 (Randoms.pickUniqueNumbersInRange())
+- [x] 자동으로 서로 다른 6개 숫자의 로또 발행 (Randoms.pickUniqueNumbersInRange())
 
 - [ ] 로또 번호 예외 처리
   - [ ] 6개의 숫자 중, 1~45 범위를 벗어난 숫자가 존재하는 경우
