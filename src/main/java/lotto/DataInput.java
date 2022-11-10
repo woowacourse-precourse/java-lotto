@@ -2,6 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+
 public class DataInput {
     private static final String VALID_INPUT_PATTERN = "[^0-9]";
     private static final String VALID_UNIT_PATTERN = "0{3}$";
@@ -11,6 +13,7 @@ public class DataInput {
     private static final int MAXIMUM_NUMBER_OF_LOTTO = 45;
     private static final int MINIMUM_NUMBER_OF_LOTTO = 1;
     private static final String MESSAGE_TO_INPUT_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
+    private static final String MESSAGE_TO_INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 
     public static int PurchaseAmount() {
         String input = UserInput(MESSAGE_TO_INPUT_PURCHASE_AMOUNT);
@@ -18,6 +21,13 @@ public class DataInput {
         ValidateAmountUnit(input);
 
         return Integer.parseInt(input);
+    }
+
+    public static int BonusNumber() {
+        String input = UserInput(MESSAGE_TO_INPUT_BONUS_NUMBER);
+        ValidateNumber(input);
+
+        return ValidateRange(input);
     }
 
     public static String UserInput(String Message) {
@@ -41,11 +51,12 @@ public class DataInput {
         }
     }
 
-    private static void ValidateRange(String input) {
+    private static int ValidateRange(String input) {
         int bonusNumber = Integer.parseInt(input);
         if (bonusNumber >= MINIMUM_NUMBER_OF_LOTTO && bonusNumber <= MAXIMUM_NUMBER_OF_LOTTO) {
             System.out.println(ERROR_MESSAGE_RANGE);
             throw new IllegalArgumentException();
         }
+        return bonusNumber;
     }
 }
