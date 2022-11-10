@@ -44,7 +44,7 @@ class LottoTest {
     @DisplayName("보너스 번호가 범위를 벗어날 시 예외가 발생한다.")
     @Test
     void createBonusNumberByOutOfRange() {
-        assertThatThrownBy(() -> Lotto.setBonusNumber(55))
+        assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 100))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -52,8 +52,7 @@ class LottoTest {
     @Test
     void createLottosWithNoExcpetion() {
         assertDoesNotThrow(() -> {
-            Lotto lotto = Lotto.generate();
-            List<Integer> numbers = lotto.getNumbers();
+            Lotto.generate();
         });
     }
 
