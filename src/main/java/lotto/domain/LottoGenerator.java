@@ -18,6 +18,14 @@ public class LottoGenerator {
         lottoQuantity = money / 1000;
     }
 
+    public List<Lotto> generateLottos() {
+        for (int i = 0; i < lottoQuantity; i++) {
+            Lotto lotto = generateLotto();
+            lottos.add(lotto);
+        }
+        return lottos;
+    }
+
     private Lotto generateLotto() {
         List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_LOWER_LIMIT, LOTTO_NUMBER_UPPER_LIMIT, LOTTO_NUMBER_QUANTITY);
         randomNumbers.sort(Comparator.naturalOrder());
