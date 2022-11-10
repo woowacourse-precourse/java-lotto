@@ -10,23 +10,7 @@ import lotto.user.validation.ExceptionMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class UserTest {
-    private static final String ERROR = "[ERROR]";
-
-    @DisplayName("로또구입 금액이 1,000원 단위가 아니면 예외가 발생한다.")
-    @Test
-    void buyLottoByWrongUnits() {
-        // given
-        String userAmount = "1200";
-        InputStream in = new ByteArrayInputStream(userAmount.getBytes());
-        System.setIn(in);
-
-        // when then
-        assertThatThrownBy(User::buyLotto)
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessageContaining(ERROR);
-    }
-
+public class UserNumbersTest {
     @DisplayName("로또 번호를 입력 후 리스트로 반환한다.")
     @Test
     void inputLottoNumbers() {
@@ -54,7 +38,7 @@ public class UserTest {
         // when, then
         assertThatThrownBy(User::inputLottoNumbers)
             .isInstanceOf(IllegalArgumentException.class)
-            .hasMessageContaining(ERROR);
+            .hasMessageContaining(ExceptionMessage.NUMBER_RANGE.toString());
     }
 
     @DisplayName("로또 번호를 ,로 구별하지 않으면 예외가 발생한다.")

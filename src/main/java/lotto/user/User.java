@@ -2,18 +2,19 @@ package lotto.user;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import lotto.user.validation.UserValidation;
+import lotto.user.validation.UserNumbersValidation;
+import lotto.user.validation.UserMoneyValidation;
 
 public class User {
     public static int buyLotto() {
         String userAmount = Console.readLine();
-        UserValidation.validate(userAmount);
+        UserMoneyValidation.validate(userAmount);
         return Integer.parseInt(userAmount);
     }
 
     public static List<Integer> inputLottoNumbers() {
         String userNumbers = Console.readLine();
-        UserValidation.validateNumbers(userNumbers);
+        UserNumbersValidation.validate(userNumbers);
         return UserUtil.convertUserInputToNumbers(userNumbers);
     }
 }
