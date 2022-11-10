@@ -8,6 +8,9 @@ public class Payment {
         if (money % 1000 != 0) {
             throw new IllegalArgumentException();
         }
+        if (money == 0) {
+            throw new IllegalArgumentException();
+        }
         pay = money;
     }
     public int purchase() {
