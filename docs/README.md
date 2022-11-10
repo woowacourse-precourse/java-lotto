@@ -6,7 +6,7 @@
 - [X] 구입 금액만큼 로또 번호 리스트를 생성하고 출력한다. - putLottoNumberList()
     - [X] 로또 번호는 오름차순 출력 - setLottoNumberList()
     - [X] 출력은 담당 출력클래스에서 출력 - view PrintLotto()
-- [ ] 당첨 번호 입력(쉼표로 구분) - inputLottoNumber()
+- [X] 당첨 번호 입력(쉼표로 구분) - inputLottoNumber()
     - [ ] 입력시 범위에 맞는지 확인(넘어가면 예외) - checkBoundary()
 - [ ] 보너스 번호 입력 - inputBonusNumber()
 
