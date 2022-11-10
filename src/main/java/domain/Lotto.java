@@ -1,7 +1,6 @@
 package domain;
 
 import constant.ErrorMessage;
-import constant.ExceptionNumber;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -15,18 +14,18 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         Stream<Integer> stream = numbers.stream();
-        if (isOutIndex(numbers)) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_LOTTO_OUTINDEX.getMessage());
+        if (isInCorrectSize(numbers)) {
+            throw new IllegalArgumentException(ErrorMessage.ERROR_INCORRECT_SIZE.getMessage());
         }
         if(isDuplicated(numbers, stream)){
-            throw new IllegalArgumentException(ErrorMessage.ERROR_LOTTO_DUPLICATE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERROR_DUPLICATE.getMessage());
         }
         if(isOverRange(stream)){
-            throw new IllegalArgumentException(ErrorMessage.ERROR_LOTTO_OVERRANGE.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERROR_OVERRANGE.getMessage());
         }
     }
 
-    private boolean isOutIndex(List<Integer> numbers) {
+    private boolean isInCorrectSize(List<Integer> numbers) {
         return numbers.size() != 6;
     }
 

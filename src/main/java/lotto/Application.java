@@ -3,7 +3,7 @@ package lotto;
 import constant.ExceptionNumber;
 import domain.BuyLottoList;
 import view.InputBonusNumber;
-import view.InputLottoNumber;
+import view.InputWinningLottoNumber;
 import view.InputUserMoney;
 
 public class Application {
@@ -15,11 +15,14 @@ public class Application {
         if(money== ExceptionNumber.EXCEPTION_CODE.getCode()){
             return;
         }
+        inputValues(buyLottoList, money);
+
+    }
+
+    private static void inputValues(BuyLottoList buyLottoList, int money) {
         buyLottoList.putLottoNumberList(money);
-        InputLottoNumber.inputLottoNumber();
+        InputWinningLottoNumber.inputLottoNumber();
         InputBonusNumber.inputBonusNumber();
-
-
     }
 
 
