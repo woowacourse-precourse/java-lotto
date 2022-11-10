@@ -11,13 +11,12 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+        Validation.isLottoDuplicate(numbers);
+        Validation.isLottoBetween1And45(numbers);
     }
 
     // TODO: 추가 기능 구현
-    public List<Integer> getLotto(){
+    public List<Integer> getLotto() {
         return numbers;
     }
 }
