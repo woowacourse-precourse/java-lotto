@@ -1,17 +1,18 @@
 package lotto.repository;
 
+import lotto.Lotto;
+
 import java.util.List;
 
 public class LottoRepository {
-    private List<List<Integer>> purchasedLotto;
+    private List<Lotto> purchasedLotto;
     private List<Integer> winNumbers;
 
-    public LottoRepository(List<List<Integer>> purchasedLotto) {
-
+    public LottoRepository(List<Lotto> purchasedLotto) {
         this.purchasedLotto = purchasedLotto;
     }
 
-    public List<List<Integer>> getPurchasedLotto() {
+    public List<Lotto> getPurchasedLotto() {
         return purchasedLotto;
     }
 }
