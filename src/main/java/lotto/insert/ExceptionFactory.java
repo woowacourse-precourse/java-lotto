@@ -1,23 +1,20 @@
 package lotto.insert;
 
-public class Exception {
+public class ExceptionFactory {
 
 
 
-    public Exception exception() {
-        return new Exception();
-    }
-
-
-
+    // 1,000원으로 나누어 떨어지지 않는 경우 예외 처리
     public static void amountException() {
 
-        throw new IllegalArgumentException("[ERROR] 잘못된 값을 입력했습니다. '로또 구입 금액은 1000원 단위여야 합니다.");
+        throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1000원 단위여야 합니다.");
 
     }
-    public static Exception InvalidException() {
 
-        throw new IllegalArgumentException("[ERROR] 잘못된 값을 입력했습니다. 입력할 '로또 구입 금액, 당첨 번호, 보너스 번호'는 숫자여야 합니다.");
+    // 잘못된 값 입력 예외처리
+    public static void invalidException() {
+
+        throw new IllegalArgumentException("[ERROR] '로또 구입 금액, 당첨 번호, 보너스 번호'는 숫자여야 합니다.");
 
     }
 }
