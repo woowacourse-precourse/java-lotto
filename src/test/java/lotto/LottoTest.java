@@ -5,8 +5,13 @@ import lotto.domain.Output;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -35,12 +40,14 @@ class LottoTest {
     }
 
     @Test
-    void outPutTest(){
-        assertThatThrownBy(() -> Output.outputLottoRank(1, 1, 1, 1, 1))
-                .hasMessageContaining(
-                        "3개 일치 (5,000원) - 1개",
-                        "4개 일치 (50,000원) - 1개",
-                        "5개 일치 (1,500,000원) - 1개"
-                );
+    void outPutTest() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        Output.outputLottoRank(1, 1, 1, 1, 1);
+        assertThat("3개 일치 (5,000원) - 1개\n" +
+                "4개 일치 (50,000원) - 1개\n" +
+                "5개 일치 (1,500,000원) - 1개\n" +
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개\n" +
+                "6개 일치 (2,000,000,000원) - 1개\n").isEqualTo(out.toString());
     }
 }

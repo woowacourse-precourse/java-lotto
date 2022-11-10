@@ -24,7 +24,7 @@ public class Output {
         System.out.println(Rank.FIVE.getCompare() + "개 일치 " + "(" + Rank.FIVE.getMoneyWon() + ")" + " - " + rankFive + "개");
         System.out.println(Rank.FOUR.getCompare() + "개 일치 " + "(" + Rank.FOUR.getMoneyWon() + ")" + " - " + rankFour + "개");
         System.out.println(Rank.THREE.getCompare() + "개 일치 " + "(" + Rank.THREE.getMoneyWon() + ")" + " - " + rankThree + "개");
-        System.out.println(Rank.TWO.getCompare() + "개 일치 " + "(" + Rank.TWO.getMoneyWon() + ")" + " - " + rankTwo + "개");
+        System.out.println(Rank.TWO.getCompare() + "개 일치, 보너스 볼 일치 " + "(" + Rank.TWO.getMoneyWon() + ")" + " - " + rankTwo + "개");
         System.out.println(Rank.ONE.getCompare() + "개 일치 " + "(" + Rank.ONE.getMoneyWon() + ")" + " - " + rankOne + "개");
     }
 }
