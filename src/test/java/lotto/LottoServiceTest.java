@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
@@ -61,5 +62,14 @@ public class LottoServiceTest {
         assertThatIllegalArgumentException()
                 .as("[ERROR] 실패하는 입력값이 존재합니다.")
                 .isThrownBy(() -> lottoService.validateConsistOfNumbers(input));
+    }
+
+    @ParameterizedTest
+    @DisplayName("구입 금액에 따라 로또 개수는 금액의 % 1000 과 같아야 한다.")
+    @CsvSource(value = {"5000:5", "1000:1", "10000:10", "20000:20"}, delimiter = ':')
+    void 로또구입금액_5000원일때_로또개수5개_테스트(int input, int expected) {
+        assertThat(lottoService.publishLotto(Math.floorDiv(input, 1000)).size())
+                .as("잘못된 예상 개수입니다.")
+                .isEqualTo(expected);
     }
 }
