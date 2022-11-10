@@ -15,7 +15,9 @@ public class LottoGame {
         List<List<Integer>> lists = randomLotto.randomGenerator(paid);
 
         WinningNumber winningNumber = new WinningNumber();
-        winningNumber.answer();
+        winningNumber.getAnswer();
+
+
 
         for (List<Integer> list : lists) {
             System.out.println(list);
