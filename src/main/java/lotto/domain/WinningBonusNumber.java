@@ -25,4 +25,10 @@ public class WinningBonusNumber {
             throw new IllegalArgumentException();
         }
     }
+
+    private void validateNumbersLength(List<Integer> winningNumbers) {
+        if (winningNumbers.size() != Number.LOTTO_NUMBER_LENGTH) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
