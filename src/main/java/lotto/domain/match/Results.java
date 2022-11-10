@@ -27,7 +27,7 @@ public class Results {
         int totalReward = 0;
 
         for (MatchAndReward matchAndReward : MatchAndReward.values()) {
-            int count = counts.get(matchAndReward);
+            int count = counts.getOrDefault(matchAndReward, 0);
             totalReward += matchAndReward.getReward() * count;
         }
 
@@ -35,6 +35,6 @@ public class Results {
     }
 
     public int getCount(MatchAndReward matchAndReward) {
-        return counts.get(matchAndReward);
+        return counts.getOrDefault(matchAndReward, 0);
     }
 }
