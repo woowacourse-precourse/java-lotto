@@ -16,7 +16,8 @@ public enum Text {
         this.content = content;
     }
 
-    public void print() {
-        System.out.println(content);
+    @Override
+    public String toString() {
+        return this.content;
     }
 }
