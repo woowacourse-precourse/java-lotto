@@ -35,13 +35,13 @@ class LottoTest {
         String inputWinningNumber = "1,40,27,10,3,33";
         String inputBonusNumber = "12";
 
-        int[] testWinningNumber = {1, 3, 10, 27, 33, 40};
+        List<Integer> testWinningNumber = List.of(1, 3, 10, 27, 33, 40);
         int testBonusNumber = 12;
 
         winningNumber.setWinningNumbers(inputWinningNumber);
         winningNumber.setBonusNumber(inputBonusNumber);
 
-        assertArrayEquals(winningNumber.getWinningNumbers(), testWinningNumber);
+        assertEquals(winningNumber.getWinningNumbers(), testWinningNumber);
         assertEquals(winningNumber.getBonusNumber(),testBonusNumber);
 
     }

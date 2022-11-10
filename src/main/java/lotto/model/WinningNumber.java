@@ -3,11 +3,13 @@ package lotto.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class WinningNumber {
 
     private int[] inputWinningNumbers;
+    private List<Integer> winningNumbers;
     private int bonusNumber;
 
     public int getBonusNumber() {
@@ -18,13 +20,13 @@ public class WinningNumber {
         this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
-    public int[] getWinningNumbers() {
-        return inputWinningNumbers;
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
     }
 
     public void setWinningNumbers(String winningNumber) {
-        this.inputWinningNumbers = Arrays.stream(winningNumber.split(","))
+        this.winningNumbers = Arrays.stream(Arrays.stream(winningNumber.split(","))
             .mapToInt(Integer::parseInt).sorted()
-            .toArray();
+            .toArray()).boxed().collect(Collectors.toList());
     }
 }
