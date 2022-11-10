@@ -38,4 +38,8 @@ public class Lotto implements LottoInterface {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되서는 안됩니다");
         }
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
