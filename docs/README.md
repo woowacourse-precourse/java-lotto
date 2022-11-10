@@ -132,7 +132,11 @@
   
 
 - void validateWinningNumbersForm(String)
-  - 입력받은 당첨 번호 문자열이 형식에 맞게 담겨있는지 검사하는 함수
+  - 입력받은 당첨 번호 문자열이 형식에 맞게 담겨있수지 검사하는 함수
+
+
+- void validateNumbersBetweenComma(char, char, char)
+  - 당첨 번호가 쉼표로 구분되어 입력되었는지 검사하는 함수
   
 
 - void validateBonusNumberIsInteger(String)
