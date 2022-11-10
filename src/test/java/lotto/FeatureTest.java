@@ -125,5 +125,12 @@ public class FeatureTest {
 
     }
 
+    @Test
+    void 구매_금액_예외_처리() {
+
+        assertThatThrownBy(() -> new User(5555))
+                .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 구매금액이 1000의 배수가 아닙니다.");
+    }
+
 
 }
