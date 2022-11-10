@@ -54,16 +54,11 @@ public class Application {
             printUserLottoList(userLotto, purchaseLottoAmount);
 
             Lotto winningLotto = Lotto.inputWinningLottoNumber();
-            int bonusNumber = getBonusNumber();
+            int bonusNumber = Lotto.inputBonusNumber();
 
         } catch(IllegalArgumentException e){
             System.out.println(ERROR_MESSAGE + " " + e.getMessage());
         }
-    }
-
-    private static int getBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
-        return Integer.parseInt(Console.readLine());
     }
 
     private static int getTotalPurchaseLottoPrice() {
