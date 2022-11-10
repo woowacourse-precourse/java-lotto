@@ -62,8 +62,9 @@ public class User {
     }
 
     public void addLotto(List<Integer> lottoNumber, int bonusNumber){
-        lottoNumber.add(bonusNumber);
-        lottos.add(new Lotto(lottoNumber));
+        Lotto lotto = new Lotto(lottoNumber);
+        lotto.setBonusNumber(bonusNumber);
+        lottos.add(lotto);
     }
 
     public List<Integer> convertLottoNumber(String inputLottoNumber) {
