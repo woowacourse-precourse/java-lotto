@@ -3,7 +3,6 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import constant.LottoText;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class LottoSimulate {
@@ -16,6 +15,7 @@ public class LottoSimulate {
     public void start() {
         int purchasePrice = inputPurchasePrice();
         List<Lotto> lottos = buyLottos(purchasePrice);
+        List<Integer> winLottoNumber = inputWinLottoNumber();
     }
 
     private int inputPurchasePrice() {
@@ -26,9 +26,17 @@ public class LottoSimulate {
 
     private List<Lotto> buyLottos(int purchasePrice) {
         int lottoCount = convert.toLottoCount(purchasePrice);
-        print.out(LottoText.PURCHASE_COUNT, lottoCount);
         List<Lotto> lottos = lottoShop.buy(lottoCount);
+
+        print.out(LottoText.PURCHASE_COUNT, lottoCount);
         print.out(lottos);
+
         return lottos;
+    }
+
+    private List<Integer> inputWinLottoNumber() {
+        print.out(LottoText.REQUEST_WIN_LOTTO_NUMBER);
+        String input = Console.readLine();
+        return convert.toWinLottoNumber(input);
     }
 }
