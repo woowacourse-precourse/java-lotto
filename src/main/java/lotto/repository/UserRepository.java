@@ -25,11 +25,11 @@ public class UserRepository {
         this.user.setPurchaseMoney(money);
     }
 
-    public void setPrizeMoney(int prizeMoney){
+    public void setUserPrizeMoney(int prizeMoney){
         this.user.setPrizeMoney(prizeMoney);
     }
 
-    public void setWinningNumbers(ArrayList<Integer> winningNumbers){
+    public void setUserWinningNumbers(ArrayList<Integer> winningNumbers){
         this.user.setWinningNumbers(winningNumbers);
     }
 
