@@ -20,6 +20,16 @@ public class Record {
     private static final String COUNT_MESSAGE = "개";
     private static final String PERCENT_MESSAGE = "%입니다.";
 
+
+    private static final String ERROR_SIZE_MESSAGE = "[ERROR] 입력 크기가 초과했습니다.";
+    private static final String ERROR_DUPLICATE_MESSAGE = "[ERROR] 중복된 숫자가 있습니다.";
+
+    public static void printSizeError() {
+        System.out.print(ERROR_SIZE_MESSAGE);
+    }
+    public static void printDuplicateError() {
+        System.out.print(ERROR_DUPLICATE_MESSAGE);
+    }
     public static void printBonusNumber() {
         System.out.print(ENTER_BONUS_NUMBER_MESSAGE);
     }
