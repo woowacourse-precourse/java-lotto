@@ -18,4 +18,10 @@ class LottoRankTest {
     void secondRank() {
         assertThat(LottoRank.parseRank(5, true)).isEqualTo(LottoRank.SECOND);
     }
+    
+    @Test
+    @DisplayName("3등인지 확인")
+    void thirdRank() {
+        assertThat(LottoRank.parseRank(5, false)).isEqualTo(LottoRank.THIRD);
+    }
 }

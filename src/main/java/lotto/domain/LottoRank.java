@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.Arrays;
+import java.util.function.Predicate;
 
 public enum LottoRank {
     FIRST(6),
@@ -22,6 +23,7 @@ public enum LottoRank {
         }
         
         return Arrays.stream(values())
+                .filter(Predicate.not(LottoRank::isSecond))
                 .filter(lottoRank -> isCountOfSameLottoNumberSame(lottoRank, countOfSameLottoNumber))
                 .findAny()
                 .orElse(MISS);
@@ -29,6 +31,10 @@ public enum LottoRank {
     
     private static boolean isSecondRank(final int countOfSameLottoNumber, final boolean existBonusLottoNumber) {
         return isCountOfMatchingLottoNumberSame(SECOND, countOfSameLottoNumber) && existBonusLottoNumber;
+    }
+    
+    private boolean isSecond() {
+        return this == SECOND;
     }
     
     private static boolean isCountOfSameLottoNumberSame(final LottoRank lottoRank, final int countOfSameLottoNumber) {
