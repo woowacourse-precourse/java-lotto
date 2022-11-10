@@ -68,6 +68,12 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void inputCashStringToIntegerTest() {
+
+        assertThat(inputCashStringToInteger("12345")).isEqualTo(12345);
+    }
+
     @Override
     public void runMain() {
         main(new String[]{});
