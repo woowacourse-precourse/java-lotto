@@ -14,6 +14,7 @@ public class Application {
         createLottoTickets(count.getNumOfLotto());
         System.out.println(count.getNumOfLotto()+"개를 구매했습니다.");
         showLottoTickets();
+        UserInput.inputWinningNumbers();
     }
 
     private static void createLottoTickets(int numOfLotto) {
