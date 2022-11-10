@@ -3,6 +3,10 @@ package lotto.input;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.validator.ValueValidator;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class InputAgent {
 
     public int inputUserMoney() {
@@ -11,11 +15,19 @@ public class InputAgent {
         return Integer.parseInt(lottoPurchaseMoney);
     }
 
-    public String[] inputLottoNumbers() {
-        return Console.readLine().split(",");
+    public List<Integer> inputLottoNumbers() {
+        String[] lottoNumbers = Console.readLine().split(",");
+        List<Integer> convertedLottoNumbers = new ArrayList<>();
+        for (String value : lottoNumbers) {
+            convertedLottoNumbers.add(Integer.parseInt(value));
+        }
+        ValueValidator.validateInputLottoNumber(convertedLottoNumbers);
+        return convertedLottoNumbers;
     }
 
     public int inputBonusNumber() {
-        return Integer.parseInt(Console.readLine());
+        List<Integer> bonusNumber = Collections.singletonList(Integer.parseInt(Console.readLine()));
+        ValueValidator.validateInputLottoNumber(bonusNumber);
+        return bonusNumber.get(0);
     }
 }
