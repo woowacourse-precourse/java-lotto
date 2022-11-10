@@ -14,27 +14,11 @@ import lotto.utils.Validator;
 
 public class ValidatorTest {
 
-    @DisplayName("입력 받은 값이 숫자가 아닐경우 예외가 발생한다")
-    @ParameterizedTest(name = "{index} {displayName} input={0} ")
-    @ValueSource(strings = {"123k", "k123", "adsdf", "12_3", "123 4"})
-    void validateNumber(String input) {
-        assertThatThrownBy(() -> Validator.isNumberOrNot(input))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
     @DisplayName("입력 받은 값이 1000의 배수가 아닐 경우 예외가 발생한다")
     @ParameterizedTest(name = "{index} {displayName} input={0} ")
     @ValueSource(strings = {"1001", "1002", "800", "2100"})
     void validateMultipleOfThousand(int input) {
         assertThatThrownBy(() -> Validator.isMultiplesOfThousand(input))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("입력 받은 값이 공백의 문자열일 경우")
-    @ParameterizedTest(name = "{displayName}")
-    @EmptySource
-    void validateEmptyString(String input) {
-        assertThatThrownBy(() -> Validator.isFilledString(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
