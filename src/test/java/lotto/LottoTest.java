@@ -71,7 +71,7 @@ class LottoTest {
         Lotto win = new Lotto(List.of(1, 2, 3, 4, 5, 6),7);
         Lotto my = new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
-        int rank = my.checkRank(win);
+        Rank rank = my.checkRank(win);
         assertThat(rank).isEqualTo(1);
     }
 
@@ -81,7 +81,7 @@ class LottoTest {
         Lotto win = new Lotto(List.of(1, 2, 3, 4, 5, 6),7);
         Lotto my = new Lotto(List.of(1, 2, 3, 4, 5, 7));
 
-        int rank = my.checkRank(win);
+        Rank rank = my.checkRank(win);
         assertThat(rank).isEqualTo(2);
     }
 
@@ -91,7 +91,7 @@ class LottoTest {
         Lotto win = new Lotto(List.of(1, 2, 3, 4, 5, 6),7);
         Lotto my = new Lotto(List.of(1, 2, 3, 4, 5, 8));
 
-        int rank = my.checkRank(win);
+        Rank rank = my.checkRank(win);
         assertThat(rank).isEqualTo(3);
     }
 
@@ -102,7 +102,7 @@ class LottoTest {
         Lotto win = new Lotto(List.of(1, 2, 3, 4, 5, 6),7);
         Lotto my = new Lotto(List.of(1, 2, 3, 4, 8, 7));
 
-        int rank = my.checkRank(win);
+        Rank rank = my.checkRank(win);
         assertThat(rank).isEqualTo(4);
     }
 
@@ -112,7 +112,7 @@ class LottoTest {
         Lotto win = new Lotto(List.of(1, 2, 3, 4, 5, 6),7);
         Lotto my = new Lotto(List.of(1, 2, 3, 9, 8, 7));
 
-        int rank = my.checkRank(win);
+        Rank rank = my.checkRank(win);
         assertThat(rank).isEqualTo(5);
     }
 
@@ -122,7 +122,7 @@ class LottoTest {
         Lotto win = new Lotto(List.of(1, 2, 3, 4, 5, 6),7);
         Lotto my = new Lotto(List.of(1, 2, 10, 9, 8, 7));
 
-        int rank = my.checkRank(win);
+        Rank rank = my.checkRank(win);
         assertThat(rank).isEqualTo(-1);
     }
 

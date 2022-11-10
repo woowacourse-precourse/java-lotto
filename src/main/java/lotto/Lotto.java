@@ -47,7 +47,7 @@ public class Lotto {
     }
 
     //로또 랭크 반환
-    public int checkRank(Lotto winLotto) {
+    public Rank checkRank(Lotto winLotto) {
         int lastIndex = winLotto.numbers.size()-1;
         int bonus = winLotto.numbers.get(lastIndex);
         HashSet<Integer> win = new HashSet<>(winLotto.numbers.subList(0,lastIndex));
@@ -60,12 +60,7 @@ public class Lotto {
 
         boolean bonusMatch = this.numbers.contains(bonus);
 
-        if(match == 6) return 1;
-        else if(match == 5 && bonusMatch) return 2;
-        else if(match == 5) return 3;
-        else if(match == 4) return 4;
-        else if(match == 3) return 5;
-        return -1;
+        return Rank.getRank(match, bonusMatch);
     }
 
     @Override
