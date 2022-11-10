@@ -43,9 +43,7 @@ public class Application {
      public static List<Integer> getLottoAnswer(){
         System.out.println("당첨 번호를 입력해 주세요.");
         String read_answer = Console.readLine();
-        List<Integer> lotto_answer = Arrays.stream(read_answer.split(",")).map(s -> Integer.parseInt(s.trim())).collect(Collectors.toList());
-        Collections.sort(lotto_answer);
-        return lotto_answer;
+         return Arrays.stream(read_answer.split(",")).map(s -> Integer.parseInt(s.trim())).sorted().collect(Collectors.toList());
     }
 
     public static Integer getLottoAnswerBonus(){
