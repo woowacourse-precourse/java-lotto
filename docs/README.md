@@ -2,10 +2,10 @@
 
 ## 기능 목록
 
-- [ ] 1~45까지 랜덤 숫자를 중복없이 생성
-- [ ] 로또 구입 금액에 맞게 로또 발행
-- [ ] 당첨 번호 6개 입력 ( , 로 구분 ), 중복 x
-  - [ ] 보너스 번호 1개 입력
+- [ ] 1~45까지 랜덤 숫자를 중복없이 생성 - Lotto#createRandomNumbers()
+- [ ] 로또 구입 금액에 맞게 로또 발행 - Lotto#buyHowManyLotto()
+- [ ] 당첨 번호 6개 입력 ( , 로 구분 ), 중복 x - Manager#inputWinNumbers()
+  - [ ] 보너스 번호 1개 입력 - Manager#inputBonusNumber()
 
 
 
