@@ -14,7 +14,9 @@ public class Emcee {
     }
 
     public void guideAmountOfPurchaseMoney() {
-
+        String guide = "구입 금액을 입력해주세요.\n" +
+                "구입 금액은 1,000원 단위로 입력이 가능합니다.";
+        System.out.println(guide);
     }
 
     public void showPublishedLottos(List<Lotto> lottos) {
