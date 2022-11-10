@@ -41,14 +41,15 @@ public class LottoGameService {
         }
     }
 
-    public void validateLottoWinningNumbers(List<Integer> lottoWinningNumbers) {
-        if (isLottoWinningNumbersSizeNotSix(lottoWinningNumbers)) {
+    public void validateLottoWinningNumbers(String inputLottoWinningNumber) {
+        List<Integer> convertedLottoWinningNumbers = inputWinningNumberConvertToCollection(inputLottoWinningNumber);
+        if (isLottoWinningNumbersSizeNotSix(convertedLottoWinningNumbers)) {
             throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + LOTTO_WINNING_NUMBERS_SIZE_EXCEPTION_MESSAGE);
         }
-        if (isLottoWinningNumbersDuplicate(lottoWinningNumbers)) {
+        if (isLottoWinningNumbersDuplicate(convertedLottoWinningNumbers)) {
             throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + LOTTO_WINNING_NUMBERS_DUPLICATE_EXCEPTION_MESSAGE);
         }
-        if (isLottoWinningNumbersWrongRange(lottoWinningNumbers)) {
+        if (isLottoWinningNumbersWrongRange(convertedLottoWinningNumbers)) {
             throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + LOTTO_WINNING_NUMBERS_RANGE_EXCEPTION_MESSAGE);
         }
     }

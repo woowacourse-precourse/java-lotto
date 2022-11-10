@@ -135,24 +135,24 @@ class LottoGameServiceTest {
 
     @Test
     void 당첨_번호의_개수가_6개가_아니면_예외_발생() {
-        List<Integer> lottoWinningNumbers = List.of(1, 2, 3, 4, 5, 6, 7);
-        assertThatThrownBy(() -> lottoGameService.validateLottoWinningNumbers(lottoWinningNumbers))
+        String inputLottoWinningNumber = "1,2,3,4,5,6,7";
+        assertThatThrownBy(() -> lottoGameService.validateLottoWinningNumbers(inputLottoWinningNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("로또 당첨 번호의 개수는 6개여야합니다.");
     }
 
     @Test
     void 당첨_번호에_중복된_숫자가_있으면_예외_발생() {
-        List<Integer> lottoWinningNumbers = List.of(1, 2, 2, 4, 5, 6);
-        assertThatThrownBy(() -> lottoGameService.validateLottoWinningNumbers(lottoWinningNumbers))
+        String inputLottoWinningNumber = "1,2,2,4,5,6";
+        assertThatThrownBy(() -> lottoGameService.validateLottoWinningNumbers(inputLottoWinningNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("로또 당첨 번호는 중복될 수 없습니다.");
     }
 
     @Test
     void 당첨_번호의_범위가_1부터_45가_아니면_예외_발생() {
-        List<Integer> lottoWinningNumbers = List.of(1, 2, 3, 4, 55, 0);
-        assertThatThrownBy(() -> lottoGameService.validateLottoWinningNumbers(lottoWinningNumbers))
+        String inputLottoWinningNumber = "1,2,2,4,55,0";
+        assertThatThrownBy(() -> lottoGameService.validateLottoWinningNumbers(inputLottoWinningNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("로또 당첨 번호의 범위는 1~45여야합니다.");
     }
