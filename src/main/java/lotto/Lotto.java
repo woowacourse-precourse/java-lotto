@@ -6,9 +6,6 @@ import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
-    private int bonus_number;
-    private static int LOTTERY_NUMBER_MIN = 1;
-    private static int LOTTERY_NUMBER_MAX = 45;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -17,8 +14,8 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public void setBounusNumber(int bonus_number){
-        this.bonus_number=bonus_number;
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     private void validate(List<Integer> numbers) {
@@ -51,6 +48,8 @@ public class Lotto {
     }
 
     private static boolean tokenRangeException(List<Integer> token) {
+        final int LOTTERY_NUMBER_MIN = 1;
+        final int LOTTERY_NUMBER_MAX = 45;
         for (int i = 0; i < token.size(); i++) {
             if (token.get(i) < LOTTERY_NUMBER_MIN || token.get(i) > LOTTERY_NUMBER_MAX) {
                 return true;
@@ -58,6 +57,4 @@ public class Lotto {
         }
         return false;
     }
-
-    // TODO: 추가 기능 구현
 }
