@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.domain.Lotto;
 import lotto.domain.LottoResult;
 import lotto.domain.WinCount;
 import lotto.util.RandomUtil;
@@ -22,22 +23,13 @@ public class LottoManager {
     private final int fourthPrize = 50000;
     private final int fifthPrize = 5000;
 
-    List<List<Integer>> boughtLottos = new ArrayList<>();
+    List<Lotto> boughtLottos = new ArrayList<>();
     int money = 0;
 
     public void run() {
         buyLotto();
         getWinNumberInput();
-
-        List<LottoResult> lottoResults = calculateWins(boughtLottos, winNumbers, bonusNumber);
-        out.printSpacer();
-        out.announceResult();
-        out.printDivider();
-        WinCount winCount = getWinCount(lottoResults);
-        out.printWinCount(winCount);
-        int prizeMoney = getPrizeMoney(winCount);
-        String profitRatio = calculateRatio(money, prizeMoney);
-        out.printProfitRatio(profitRatio);
+        winStatus();
     }
 
     private void buyLotto() {
@@ -59,22 +51,33 @@ public class LottoManager {
         bonusNumber = in.inputBonusNumber(winNumbers);
     }
 
+    private void winStatus() {
+        List<LottoResult> lottoResults = calculateWins(boughtLottos, winNumbers, bonusNumber);
+        out.printSpacer();
+        out.announceResult();
+        out.printDivider();
+        WinCount winCount = getWinCount(lottoResults);
+        out.printWinCount(winCount);
+        String profitRatio = calculateRatio(money, getPrizeMoney(winCount));
+        out.printProfitRatio(profitRatio);
+    }
+
     private int getAffordableLottoCount(int money) {
         return money / lottoPrice;
     }
 
-    private List<List<Integer>> pickNumbers(int lottoCount) {
-        List<List<Integer>> result = new ArrayList<>();
+    private List<Lotto> pickNumbers(int lottoCount) {
+        List<Lotto> result = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
-            result.add(RandomUtil.pickLottoNumbers());
+            result.add(new Lotto(RandomUtil.pickLottoNumbers()));
         }
         return result;
     }
 
-    private List<LottoResult> calculateWins(List<List<Integer>> pickNumberList, List<Integer> winNumbers, int bonusNumber) {
+    private List<LottoResult> calculateWins(List<Lotto> lottos, List<Integer> winNumbers, int bonusNumber) {
         List<LottoResult> result = new ArrayList<>();
-        for (List<Integer> pickNumbers : pickNumberList) {
-            result.add(getGrade(winNumbers, bonusNumber, pickNumbers));
+        for (Lotto lotto : lottos) {
+            result.add(getGrade(winNumbers, bonusNumber, lotto.getNumbers()));
         }
         return result;
     }
