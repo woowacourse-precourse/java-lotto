@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Player {
 
-    public String payAmountOfPurchaseMoney() {
+    public String paymentOfPurchase() {
         return Console.readLine();
     }
 
