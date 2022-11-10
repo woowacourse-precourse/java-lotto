@@ -14,10 +14,10 @@ public class WinningMoney {
             Arrays.asList(NONE, NONE, NONE, FIFTH, FOURTH, THIRD, SECOND, FIRST);
     private int myGrade;
 
-    CheckNumbers checkNumbers = new CheckNumbers();
-
+    private CheckNumbers checkNumbers;
 
     public int getMyMoney(List<Integer> winningNumbers, List<Integer> myNumbers, int bonusNumber) {
+        checkNumbers = new CheckNumbers();
         myGrade = checkNumbers.getCorrect(winningNumbers, myNumbers, bonusNumber);
         return MONEYS.get(myGrade);
     }
