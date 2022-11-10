@@ -56,10 +56,17 @@ public class LottoGame {
 
         output.writePrefixMatchStatistics();
         for (MatchAndReward matchAndReward : MatchAndReward.values()) {
-            output.writeMatchStatistic(
-                    matchAndReward.getMatch(),
-                    matchAndReward.getReward(),
-                    results.getCount(matchAndReward));
+            if (!matchAndReward.isRequireBonus())
+                output.writeMatchStatistic(
+                        matchAndReward.getMatch(),
+                        matchAndReward.getReward(),
+                        results.getCount(matchAndReward));
+
+            if (matchAndReward.isRequireBonus())
+                output.writeMatchStatisticWithBonus(
+                        matchAndReward.getMatch(),
+                        matchAndReward.getReward(),
+                        results.getCount(matchAndReward));
         }
         output.writeYield(results.getYield(money));
     }

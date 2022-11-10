@@ -40,4 +40,8 @@ public enum MatchAndReward {
     public int getReward() {
         return reward;
     }
+
+    public boolean isRequireBonus() {
+        return requireBonus;
+    }
 }
