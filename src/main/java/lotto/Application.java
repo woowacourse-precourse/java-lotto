@@ -117,4 +117,12 @@ public class Application {
 
         return Console.readLine();
     }
+
+    public static Integer getUserCash(String input) {
+
+        validateCashIsInteger(input);
+        validateCashIsDividedThousand(input);
+
+        return inputCashStringToInteger(input);
+    }
 }
