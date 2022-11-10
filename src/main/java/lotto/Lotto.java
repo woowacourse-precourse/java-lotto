@@ -39,4 +39,12 @@ public class Lotto {
 
         return cnt;
     }
+
+    public boolean isValidBonus(int bonus) {
+        if(numbers.contains(bonus)) {
+            return true;
+        }
+
+        return false;
+    }
 }
