@@ -5,7 +5,7 @@ import lotto.domain.InputValidator;
 
 public class InputUi {
 
-    public static int readPurchaseAmount() {
+    public static int readPurchaseAmount() throws IllegalArgumentException {
         String amountInput = Console.readLine();
         InputValidator.validateIsNumber(amountInput);
 

@@ -9,14 +9,14 @@ public class InputValidator {
     private static final String NUMBER_REGEX = "^\\d+$";
 
 
-    public static void validateIsNumber(String input) {
+    public static void validateIsNumber(String input) throws IllegalArgumentException {
         if (input.matches(NUMBER_REGEX)) {
             return;
         }
         throw new IllegalArgumentException(NOT_NUMBER_ERROR_MESSAGE);
     }
 
-    public static void validateLottoPurchaseNumber(int purchaseAmount) {
+    public static void validateLottoPurchaseNumber(int purchaseAmount) throws IllegalArgumentException {
         if (purchaseAmount < Lotto.PRICE) {
             throw new IllegalArgumentException(NOT_ENOUGH_MONEY_ERROR_MESSAGE);
         }
