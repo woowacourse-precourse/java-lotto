@@ -15,18 +15,20 @@ public class BuyLotto {
 
     InputOutputView inputOutputView = new InputOutputView();
 
-    public List<List<Integer>> buyLotto(int money) {
-        MyLottoNumbers myLottoNumbers = new MyLottoNumbers();
-        List<List<Integer>> myLottos = new ArrayList<>();
-        int quantity = money/DIVIDE_VALUE;
-
+    public int buyLotto(int money) {
+        int quantity = money / DIVIDE_VALUE;
         inputOutputView.buyFin(quantity);
+        return quantity;
+    }
+    public List<List<Integer>> getMyLottoNumbers(int quantity) {
+        List<List<Integer>> myLottos = new ArrayList<>();
+        MyLottoNumbers myLottoNumbers = new MyLottoNumbers();
 
         for (int i = 0; i < quantity; i++) {
             myLottos.add(myLottoNumbers.getMyLottoNumbers());
         }
-        inputOutputView.myLottos(myLottos);
 
+        inputOutputView.myLottos(myLottos);
         return myLottos;
     }
 }
