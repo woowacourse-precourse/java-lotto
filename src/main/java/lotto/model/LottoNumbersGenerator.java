@@ -8,6 +8,7 @@ import java.util.List;
 public class LottoNumbersGenerator {
     public List<Integer> create() {
         List<Integer> numbers = createLottoNumbers();
+        Collections.sort(numbers);
         return numbers;
     }
 
