@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Output {
@@ -24,5 +25,10 @@ public class Output {
     public static void askPrizeNum() {
         System.out.println(Print.ASK_PRIZE);
         PrizeNum.setPrizeNum();
+    }
+
+    public static void askBonusNum() {
+        System.out.println(Print.ASK_BONUS);
+        PrizeNum.setBonusNum();
     }
 }
