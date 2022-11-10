@@ -1,20 +1,20 @@
 package lotto;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import java.lang.instrument.UnmodifiableClassException;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class TicketsTest {
+
     @Test
     @DisplayName("구입 금액에 맞게 로또가 생성되었는지 확인")
     void testTicketSize() {
         int amount = 10_000;
         Tickets tickets = new Tickets(amount);
-        assertThat(tickets.getTickets())
+        assertThat(tickets.getLottoTickets())
                 .size()
                 .isEqualTo(10);
     }
@@ -24,7 +24,7 @@ class TicketsTest {
     void testZeroAmount() {
         int amount = 0;
         Tickets tickets = new Tickets(amount);
-        assertThat(tickets.getTickets())
+        assertThat(tickets.getLottoTickets())
                 .isNotNull()
                 .isEmpty();
     }
@@ -34,8 +34,8 @@ class TicketsTest {
     void throwExcpetionWhenTryToChangeTicket() {
         int amount = 10_000;
         Tickets tickets = new Tickets(amount);
-        assertThatThrownBy(
-                () -> tickets.getTickets().clear())
+        List<Lotto> lottoTickets = tickets.getLottoTickets();
+        assertThatThrownBy(lottoTickets::clear)
                 .isInstanceOf(UnsupportedOperationException.class);
     }
 }

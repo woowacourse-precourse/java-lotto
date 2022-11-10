@@ -8,10 +8,10 @@ public class Tickets {
 
     public static final int PRICE = 1000;
 
-    private final List<Lotto> tickets;
+    private final List<Lotto> lottoTickets;
 
     public Tickets(int amount) {
-        tickets = new ArrayList<>();
+        lottoTickets = new ArrayList<>();
         createTickets(amount);
     }
 
@@ -19,11 +19,11 @@ public class Tickets {
         int count = amount / PRICE;
         for (int number = 0; number < count; number++) {
             Lotto lotto = new Lotto(LottoNumberGenerator.generateNumbers());
-            tickets.add(lotto);
+            lottoTickets.add(lotto);
         }
     }
 
-    public List<Lotto> getTickets() {
-        return Collections.unmodifiableList(tickets);
+    public List<Lotto> getLottoTickets() {
+        return Collections.unmodifiableList(lottoTickets);
     }
 }
