@@ -35,6 +35,7 @@ List<Lotto>, Profit, Winning을 참조한다.
 4. addLottoRanking
    1. addPlayersTicketRank : Winning.addRankingOfPlayer해준다. 
    2. addProfitOfTicket : 당첨 등급에 따른 금액을 Profit.addPrice해준다. 
+5. getPlayerLotto : 플레이어의 로또 리스트를 반환한다. 
 
 ### Computer
 Lotto, BonusNumber를 참조한다. 
