@@ -1,9 +1,6 @@
 package lotto;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
-import static lotto.utils.ConstantUtil.LOTTO_NUMBER_SIZE;
-import static lotto.utils.ConstantUtil.MAX_LOTTO_NUMBER;
-import static lotto.utils.ConstantUtil.MIN_LOTTO_NUMBER;
+import static lotto.utils.RandomUtil.createRandomNumbers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,10 +33,6 @@ public class LottoMachine {
 
     private void spendMoney() {
         money -= MIN_MONEY;
-    }
-
-    private List<Integer> createRandomNumbers() {
-        return pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_NUMBER_SIZE);
     }
 
     private void validate(int money) {
