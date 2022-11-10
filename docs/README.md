@@ -9,9 +9,8 @@
       - StepType: 로또 구매의 진행 단계
       - CommandType: 입력 명령어 종류
       - RegExType: 로또 게임 진행에 필요한 정규표현식
-      - LottoSelectType: 로또 숫자 선택 방법
-      - LottoResultType: 로또 당첨 등급
-      - LottoAmountType: 로또 당첨 금액
+      - NumberSelectType: 로또 숫자 선택 방법
+      - LottoResultType: 로또 당첨 등급과 금액
       - LottoNumberType: 로또 숫자 갯수, 최소, 최대값 등의 상수
     - dto
       - Lotto: 로또 1매에 포함된 숫자들
@@ -44,7 +43,7 @@
 * '한 단계에서 처리하고 싶은 명령어 종류가 하나가 아니면 어떡하지?'
   * 각 StepType 에 사용 가능한 CommandType을 매핑하고, CommandType에선 특정 인풋이 해당 명령어인지 확인하는 과정을 넣는다.
 * '숫자 임의 선택도 있지만, 본인 스스로 선택 하는 방법도 있지 않나?'
-  * LottoSelectType 사용으로 확장 가능성 수립
+  * NumberSelectType 사용으로 확장 가능성 수립
 
 ## ✏ 과제를 진행하며 배운 점
 
