@@ -52,6 +52,11 @@ public class User {
                 throw new IllegalArgumentException();
             }
         }
+    }
 
+    public void showLottos(){
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.getNumbers());
+        }
     }
 }
