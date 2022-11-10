@@ -112,4 +112,24 @@ class LottoGameServiceTest {
 
         assertThat(purchaseNumbersMatchWinningNumbersCount).isEqualTo(6);
     }
+
+    @Test
+    void 구매한_로또_번호와_보너스_번호_일치() {
+        List<Integer> purchaseLottoNumbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 1;
+        boolean isPurchaseNumbersMatchBonusNumber
+                = lottoGameService.isPurchaseNumbersMatchBonusNumber(purchaseLottoNumbers, bonusNumber);
+
+        assertThat(isPurchaseNumbersMatchBonusNumber).isTrue();
+    }
+
+    @Test
+    void 구매한_로또_번호와_보너스_번호_불일치() {
+        List<Integer> purchaseLottoNumbers = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+        boolean isPurchaseNumbersMatchBonusNumber
+                = lottoGameService.isPurchaseNumbersMatchBonusNumber(purchaseLottoNumbers, bonusNumber);
+
+        assertThat(isPurchaseNumbersMatchBonusNumber).isFalse();
+    }
 }
