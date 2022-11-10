@@ -14,14 +14,11 @@ public class BuyLotto {
     private final static int DIVIDE_VALUE = 1000;
 
     InputOutputView inputOutputView = new InputOutputView();
-    private int howMany(int money) {
-        return money/DIVIDE_VALUE;
-    }
 
     public List<List<Integer>> buyLotto(int money) {
         MyLottoNumbers myLottoNumbers = new MyLottoNumbers();
         List<List<Integer>> myLottos = new ArrayList<>();
-        int quantity = howMany(money);
+        int quantity = money/DIVIDE_VALUE;
 
         inputOutputView.buyFin(quantity);
 
