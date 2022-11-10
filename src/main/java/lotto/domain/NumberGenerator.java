@@ -19,7 +19,8 @@ public class NumberGenerator {
     private static List<List<Integer>> randomNumbers;
     public static void createRandomNumber() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        System.out.println(numbers);
         randomNumbers.add(numbers);
+        // 번호가 부여될 때마다 numbers 출력
+        System.out.println(numbers);
     }
 }

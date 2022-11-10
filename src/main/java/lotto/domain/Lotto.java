@@ -55,8 +55,4 @@ public class Lotto {
             }
         }
     }
-    //TODO: 몇 개의 숫자가 일치하는지 확인 기능
-    static List<Integer> compare(List<List<Integer>> numbers) {
-        return null;
-    }
 }
