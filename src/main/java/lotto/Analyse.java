@@ -52,4 +52,21 @@ public class Analyse {
         stats.replace(prizeName, stats.get(prizeName)+1);
     }
 
+    //로또 수익률
+    public static double rateLotto(int budget) {
+        long total = getTotalPrizeWon();
+
+        return Math.round(((double)total/budget)*1000)/10.0;
+    }
+
+    private static long getTotalPrizeWon() {
+        long prizeWon = 0L;
+
+        for(Prize p : stats.keySet()) {
+            prizeWon += p.getPrizeWon() * stats.get(p);
+        }
+
+        return prizeWon;
+    }
+
 }
