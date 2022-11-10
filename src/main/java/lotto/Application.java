@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.CompareLotto.compareLotto;
+import static lotto.CompareLotto.printCompareLotto;
 import static lotto.Lotto.inputMoney;
 import static lotto.Lotto.oneLotto;
 import static lotto.Lotto.theNumberOfLotto;
@@ -17,9 +19,13 @@ public class Application {
 
         Lotto.myLottoNumber();
 
-        System.out.println(Lotto.winnerNumber());
+        Lotto.winnerNumber();
 
         Lotto.winnerNumberBonus();
+
+        compareLotto();
+
+        printCompareLotto();
     }
 
 }
