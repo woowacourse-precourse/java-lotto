@@ -1,8 +1,11 @@
 package lotto.controller;
 
 import lotto.view.IntroduceView;
+import lotto.view.LottoPurchaseNumberView;
 import lotto.view.View;
+import lotto.vo.Lotto;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class LottoController {
@@ -19,6 +22,14 @@ public class LottoController {
         validateInput("^(\\d+[0][0][0])$", response);
 
         //TODO - 로또 번호 생성 service 호출
+    }
+
+    public void showLottoPurchaseNumbers() {
+        //TODO - 구입한 로또 번호 리스트업 Service 호출
+        List<Lotto> purchaseNumbers = List.of(new Lotto()); // mockup
+
+        View view = new LottoPurchaseNumberView(purchaseNumbers);
+        view.show();
     }
 
     public static void validateInput(String regex, String input) {
