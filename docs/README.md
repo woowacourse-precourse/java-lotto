@@ -18,7 +18,14 @@
 - 당첨번호를 입력하라는 지시 메세지 출력.
   - requestWinningNumbersMessage()
 - 당첨번호와 보너스 번호를 입력받는다.
-    - makeWinningNumbers()
+    - 당첨번호를 입력 받는다.
+      - winningNumbersInput() 
+    - 보너스 번호를 입력 받는다.
+      - bonusNumberInput()
+- 당첨번호를 검증한다.
+  - validWinningNumbersInput() 
+- 보너스 번호를 검증한다.
+  - validBonusNumberInput()
 - 당첨번호와 사용자가 구매한 로또 번호를 비교한다.
     - compareUserLottoNumbersAndWinningNumbers()
 - 당첨내역과 수익률을 출력한다.
