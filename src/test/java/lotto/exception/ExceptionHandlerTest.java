@@ -36,13 +36,21 @@ public class ExceptionHandlerTest {
     }
 
     @Test
-    @DisplayName("주어진 사이즈랑 다른 개수의 숫자를 입력하면 에러 메시지를 출력하고 예외가 발생한다.")
+    @DisplayName("슷지 리스트가 주어진 사이즈랑 다른 개수의 숫자를 포함하면 에러 메시지를 출력하고 예외가 발생한다.")
     void throwExceptionForNotCorrectSize() {
         assertThatThrownBy(() -> ExceptionHandler.isListCorrectSize(List.of(1,2,3,4), 6))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThat(output()).isEqualTo("[ERROR] 6개의 숫자를 입력해야 합니다.");
     }
 
+    @Test
+    @DisplayName("숫자 리스트에 중복되는 숫자가 있으면 에러 메시지를 출력하고 예외가 발생한다.")
+    void throwExceptionForContainingDuplicate() {
+        assertThatThrownBy(() -> ExceptionHandler.doesContainDuplicate(List.of(1,2,3,4,5,5)))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThat(output()).isEqualTo("[ERROR] 중복되지 않는 숫자를 입력해야 합니다.");
+    }
+    
     @Test
     @DisplayName("숫자로만 이루어진 문자열을 입력하지 않으면 에러 메시지를 출력하고 예외가 발생한다.")
     void throwExceptionForNotNumericInput() {
