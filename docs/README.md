@@ -62,6 +62,11 @@
   - IllegalArgumentException, "[ERROR] 다음예제와 같이 입력하여 주십시오.(ex - 1,2,3,4,5,6)"
 
 
+## 리팩토링 목록
+- [ ] Valid class내의 함수는 공통으로 사용될 수 있는 함수만 사용한다.(RF-1)
+  - [ ] Valid class내 공통 유호성 함수 외 제거(RF-1-1)
+  - [ ] Purchase class내 유효성 함수 로직 추가(Valid에 있는것 이동)(RF-1-2)
+
 ## 프로그래밍 요구사항
 
 1. 클래스(객체)를 분리하는 연습
