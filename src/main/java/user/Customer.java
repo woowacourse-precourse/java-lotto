@@ -15,9 +15,8 @@ public class Customer {
 
     public Customer(String readline) {
         validateNumeric(readline);
-        int pay = Integer.parseInt(readline);
+        this.pay = Integer.parseInt(readline);
         lotteries = buyLotteries(pay);
-        this.pay = pay;
     }
 
     private List<Lotto> buyLotteries(int pay) {
@@ -31,11 +30,13 @@ public class Customer {
     }
 
     public String toLottoString() {
+        int startIndex = 0;
         int numberOfPurchases = lotteries.size();
         StringBuilder currentLotteries = new StringBuilder(numberOfPurchases + NUMBER_OF_PURCHASES_PHRASE);
-        while (numberOfPurchases > 0) {
-            currentLotteries.append(lotteries.get(numberOfPurchases - 1)).append("\n");
-            numberOfPurchases--;
+
+        while (startIndex < numberOfPurchases) {
+            currentLotteries.append(lotteries.get(startIndex)).append("\n");
+            startIndex++;
         }
         return currentLotteries.toString();
     }
