@@ -1,6 +1,7 @@
 package lotto.service;
 
 import lotto.LottoNumbersGenerator;
+import lotto.LottoWinningRank;
 import lotto.model.Lotto;
 
 import java.util.List;
@@ -50,5 +51,14 @@ public class LottoGameService {
 
     public boolean isPurchaseNumbersMatchBonusNumber(List<Integer> purchaseLottoNumbers, int bonusNumber) {
         return purchaseLottoNumbers.contains(bonusNumber);
+    }
+
+    public LottoWinningRank decideWinningRank(List<Integer> purchaseLottoNumbers,
+                                              List<Integer> lottoWinningNumbers,
+                                              int bonusNumber) {
+        long purchaseNumbersMatchWinningNumbersCount =
+                getPurchaseNumbersMatchWinningNumbersCount(purchaseLottoNumbers, lottoWinningNumbers);
+        return LottoWinningRank.decideLottoWinningRank(purchaseNumbersMatchWinningNumbersCount,
+                isPurchaseNumbersMatchBonusNumber(purchaseLottoNumbers, bonusNumber));
     }
 }
