@@ -14,6 +14,7 @@ public class Lotto {
         checkLength(numbers);
         checkDuplicate(numbers);
         checkOrder(numbers);
+        checkRange(numbers);
     }
 
     // TODO: 추가 기능 구현
@@ -38,6 +39,14 @@ public class Lotto {
                 throw new IllegalArgumentException();
             }
             previousNumber = number;
+        }
+    }
+
+    private void checkRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 }
