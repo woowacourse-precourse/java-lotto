@@ -1,5 +1,6 @@
 package lotto;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,29 +16,40 @@ public class WinningNumber {
     }
 
     public List<Integer> input() {
+        printInputWinningNumberMessage();
+
+        List<Integer> winningNumbers = new ArrayList<>();
         String inputNumber = Console.readLine();
-        List<Integer> inputNumbers = new ArrayList<>();
         String[] inputNumberArr = inputNumber.split(",");
 
         for (String number : inputNumberArr) {
-            inputException(Integer.parseInt(number));
-            inputNumbers.add(Integer.valueOf(number));
+            inputRangeException(Integer.parseInt(number));
+            inputDuplicationException(winningNumbers, Integer.parseInt(number));
+            winningNumbers.add(Integer.parseInt(number));
         }
 
-        return inputNumbers;
+        return winningNumbers;
     }
 
     public int inputBonusNumber() {
-       int bonusNumber = Integer.parseInt(Console.readLine());
+        printInputBonusNumberMessage();
 
-       inputRangeException(bonusNumber);
+        int bonusNumber = Integer.parseInt(Console.readLine());
 
-       return bonusNumber;
+        inputRangeException(bonusNumber);
+
+        return bonusNumber;
     }
 
     private void inputRangeException(int number) {
         if(number < 1 || number > 45) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+    }
+
+    public void inputDuplicationException(List<Integer> winning, int number) {
+        if (winning.contains(number)) {
+            throw new IllegalArgumentException("[ERROR] 중복되는 수를 입력할 수 없습니다.");
         }
     }
 }
