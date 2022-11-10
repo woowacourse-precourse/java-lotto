@@ -4,7 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class Application {
@@ -14,13 +17,31 @@ public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
+        System.out.println("구입 금액을 입력 해주세요.");
         // 구입 금액 입력 받기
         int account = setAccount();
+        System.out.println("account = " + account);
 
         // 로또 생성
         List<List<Integer>> lottos = buyLotto(account);
 
+        // 당첨 번호 , 보너스 번호 입력 받기
+        setWinnerNumber();
 
+
+    }
+
+    private static List<Integer> setWinnerNumber() {
+
+        List<Integer> wins = new ArrayList<>();
+
+        String input = Console.readLine();
+        String[] split = input.split(",");
+
+        List<Integer> list = Stream.of(split).map(Integer::parseInt).collect(Collectors.toList());
+        System.out.println("list = " + list);
+
+        return list;
     }
 
     private static List<List<Integer>> buyLotto(int account) {
