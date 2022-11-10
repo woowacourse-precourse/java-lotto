@@ -1,6 +1,6 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
+import lotto.UserInput.Input_domain;
 
 import java.util.*;
 
@@ -9,146 +9,11 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-    }
-
-    private static int purchaseAmountInput() {
-        String user_input = Console.readLine();
-        int purchase_amount;
-
-        purchaseAmount_exceptionHandling(user_input);
-        purchase_amount = Integer.parseInt(user_input);
-
-        return purchase_amount;
-    }
-
-    private static void purchaseAmount_exceptionHandling(String user_input) {
-        if (!isNumber(user_input) && !isDevidedThousand(user_input)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static List<Integer> winningLotteryInput() {
-        String user_input = Console.readLine();
-        List<Integer> lottery_num;
-
-        lottery_num = winningLotteryNumber(user_input);
-        return lottery_num;
-    }
-
-    private static List<Integer> winningLotteryNumber(String user_input) {
-        List<String> winning_lottery_number_String;
-        List<Integer> winning_lottery_number_int;
-
-        winning_lottery_number_String = restTokenizer(user_input);
-        tokenIsNumExceptionHandling(winning_lottery_number_String);
-        winning_lottery_number_int = tokenParseInt(winning_lottery_number_String);
-        toeknIsRangeExceptionHandling(winning_lottery_number_int);
-        tokenIsOverlapExceptionHandling(winning_lottery_number_int);
-        return winning_lottery_number_int;
-    }
-
-    private static int bonusNumberInput() {
         int bonus_number;
-        String user_input = Console.readLine();
-
-        bonusNumberIsNumberExceptionHandling(user_input);
-        bonus_number=Integer.parseInt(user_input);
-        bonusNumberOverlapExceptionHandling(bonus_number);
-        return bonus_number;
-    }
-
-    private static void bonusNumberIsNumberExceptionHandling(String user_input){
-        if(!isNumber(user_input))
-            throw new IllegalArgumentException();
-    }
-
-    private static void bonusNumberOverlapExceptionHandling(int bonus_number){
-        for(int i=0;i<winning_lottery_number.size();i++){
-            if(winning_lottery_number.get(i)==bonus_number){
-                throw new IllegalArgumentException();
-            }
-        }
-    }
-
-    private static void tokenIsNumExceptionHandling(List<String> token_String) {
-        if (tokenIsNumException(token_String)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static void toeknIsRangeExceptionHandling(List<Integer> token_int) {
-        if (tokenRangeException(token_int)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static void tokenIsOverlapExceptionHandling(List<Integer> token_int) {
-        if (isOverlap(token_int)) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private static boolean isOverlap(List<Integer> token_int) {
-        Set<Integer> overlapCheck = new HashSet<>();
-        for (int i = 0; i < token_int.size(); i++) {
-            overlapCheck.add(token_int.get((i)));
-        }
-        if (overlapCheck.size() != token_int.size()) {
-            return true;
-        }
-        return false;
-    }
-
-    private static List<String> restTokenizer(String user_input) {
-        List<String> token_Stirng = new ArrayList<>();
-        String[] tokens = user_input.split(",");
-
-        for (int i = 0; i < tokens.length; i++) {
-            token_Stirng.add(tokens[i]);
-        }
-        return token_Stirng;
-    }
-
-    private static List<Integer> tokenParseInt(List<String> token_String) {
-        List<Integer> token_int = new ArrayList<>();
-        for (int i = 0; i < token_String.size(); i++) {
-            token_int.add(Integer.parseInt(token_String.get(i)));
-        }
-        return token_int;
-    }
-
-    private static boolean tokenIsNumException(List<String> token) {
-        for (int i = 0; i < token.size(); i++) {
-            if (!isNumber(token.get(i))) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static boolean tokenRangeException(List<Integer> token) {
-        for (int i = 0; i < token.size(); i++) {
-            if (token.get(i) < '0' || token.get(i) > '9') {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static boolean isNumber(String user_input) {
-        try {
-            Integer.parseInt(user_input);
-        } catch (NumberFormatException e) {
-            return false;
-        }
-        return true;
-    }
-
-    private static boolean isDevidedThousand(String user_input_String) {
-        int user_input_int = Integer.parseInt(user_input_String);
-        if (user_input_int % 1000 != 0) {
-            return false;
-        }
-        return true;
+        Input_domain.purchaseAmountInput();
+        winning_lottery_number = Input_domain.winningLotteryInput();
+        bonus_number = Input_domain.bonusNumberInput(winning_lottery_number);
+        Lotto lotto = new Lotto(winning_lottery_number);
+        lotto.setBounusNumber(bonus_number);
     }
 }
