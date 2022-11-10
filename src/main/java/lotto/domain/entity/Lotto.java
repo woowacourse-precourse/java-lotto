@@ -2,6 +2,7 @@ package lotto.domain.entity;
 
 import static lotto.common.message.ExceptionMessage.*;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -36,5 +37,10 @@ public class Lotto {
                 throw new IllegalArgumentException(ERROR_CODE + LOTTO_NUMBERS_OUT_OF_VALUE_MESSAGE);
             }
         }
+    }
+
+    public List<Integer> currentLottoNumbers() {
+        Collections.sort(numbers);
+        return numbers;
     }
 }

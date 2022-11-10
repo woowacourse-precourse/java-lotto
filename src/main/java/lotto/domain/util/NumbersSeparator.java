@@ -1,4 +1,4 @@
-package lotto.infrastructure.util;
+package lotto.domain.util;
 
 public class NumbersSeparator {
 

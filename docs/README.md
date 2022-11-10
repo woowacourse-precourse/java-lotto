@@ -15,14 +15,20 @@
    - Ball : 당첨 공 Entity
    - ResultMachine : 게임 결과 담당 Entity
 
-   ConsoleOut
-    - message 정의
+   util
+   - NumbersSeparator : 문자열을 쉽표 기준으로 나눠 Sting[] array를 return 해주는 method
+   - RandomNumberGenerator : camp.nextstep.edu.missionutils.Randoms 에서 사용되는 Random method를
+     통해 난수 생성
+   - 
 
 2. Presentation layer
    - LottoProcess : lotto application 에서 사용자의 입력과 명령을 해석하는 Method
 
 3. Infrastructure layer
-   - RandomNumberGenerator : camp.nextstep.edu.missionutils.Randoms 에서 사용되는 Random method를
-   통해 난수 생성
+   
    - RandomNumberConversion : String type to List<Integer> type Numbers Method
-   - NumbersSeparator : 문자열을 쉽표 기준으로 나눠 Sting[] array를 return 해주는 method
+
+4. Common
+   - Common Package has Lotto Process Whole Message Definition
+   ConsoleOut
+     - message 정의
