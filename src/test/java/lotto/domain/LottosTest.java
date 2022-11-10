@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.dto.WinningLottoNumbersDTO;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,8 +15,11 @@ class LottosTest {
         Lotto firstLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Lotto secondLotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
         Lotto thirdLotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
-        
         Lottos lottos = new Lottos(List.of(firstLotto, secondLotto, thirdLotto));
-        assertThat(lottos.parseRanks(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7)).isEqualTo(List.of(LottoRank.FIRST, LottoRank.SECOND, LottoRank.THIRD));
+        
+        final WinningLottoNumbersDTO winningLottoNumbersDTO = new WinningLottoNumbersDTO(firstLotto, 7);
+        final List<LottoRank> expectedRanks = List.of(LottoRank.FIRST, LottoRank.SECOND, LottoRank.THIRD);
+        
+        assertThat(lottos.parseRanks(winningLottoNumbersDTO)).isEqualTo(expectedRanks);
     }
 }
