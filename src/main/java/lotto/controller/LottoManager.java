@@ -26,14 +26,19 @@ public class LottoManager {
         int money = in.inputMoney();
         int lottoCount = buyLotto(money);
         List<List<Integer>> boughtLottos = pickNumbers(lottoCount);
+        out.printSpacer();
         out.announceBuyResult(lottoCount);
         out.printBoughtLotto(boughtLottos);
+
+        out.printSpacer();
         out.announceInputWinNumber();
         List<Integer> winNumbers = in.inputWinNumbers();
+        out.printSpacer();
         out.announceInputBonusNumber();
         int bonusNumber = in.inputBonusNumber(winNumbers);
 
         List<LottoResult> lottoResults = calculateWins(boughtLottos, winNumbers, bonusNumber);
+        out.printSpacer();
         out.announceResult();
         out.printDivider();
         WinCount winCount = getWinCount(lottoResults);
