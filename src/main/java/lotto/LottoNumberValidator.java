@@ -29,5 +29,11 @@ public class LottoNumberValidator {
         return false;
     }
 
-
+    public static boolean isOutOfRange(List<Integer> numbers) {
+        IntStream range = IntStream.rangeClosed(MIN_RANGE, MAX_RANGE);
+        if (numbers.contains(range)) {
+            return true;
+        }
+        return false;
+    }
 }
