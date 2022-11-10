@@ -7,7 +7,7 @@ public class Application {
         // TODO: 프로그램 구현
 
         //구입 금액 입력 로직
-        String LottoMoneyAmount = Console.readLine();
+        User user = new User();
         //구입금액에 대한 validation 후, 숫자로 변환.
 
     }

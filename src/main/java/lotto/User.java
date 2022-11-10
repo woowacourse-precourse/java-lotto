@@ -5,18 +5,19 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class User {
-    List<Lotto> userLottoes;
+    private Integer lottoMoney;
+    UserLotto userLottoes;
 
     public User(){
-        System.out.print("구입금액을 입력해 주세요.");
+        Print.PrintUserPurchaseAmount();
 
         String stringLottoMoney = Console.readLine();
         Exception.UserContainExceptNumber(stringLottoMoney);
 
-        Integer lottoMoney = Integer.parseInt(stringLottoMoney);
+        this.lottoMoney = Integer.parseInt(stringLottoMoney);
         Exception.UserMoneyDivide1000(lottoMoney);
-        lottoMoney /= 1000;
+        this.lottoMoney /= 1000;
 
-
+        Print.PrintUserPurchaseLottoAmount(this.lottoMoney);
     }
 }

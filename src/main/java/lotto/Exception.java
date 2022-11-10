@@ -15,7 +15,7 @@ public class Exception {
     public static void UserMoneyDivide1000(Integer lottoMoney) throws IllegalArgumentException{
 
         if (lottoMoney%1000 != 0){
-            throw new IllegalArgumentException("[ERROR] 입력받은 구입금액이 천원 단위가 아닙니다.");
+            throw new IllegalArgumentException("[ERROR] 입력받은 구입금액은 천원 단위만 가능합니다.");
         }
     }
 
