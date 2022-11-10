@@ -14,10 +14,8 @@ public class WinningNumber {
         this.bonusNumber = bonusNumber;
     }
 
-    private void validateBonusNumber(int bonusNumber) {
-        if (numbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.");
-        }
+    public boolean containNumberSet(int num) {
+        return numbers.contains(num);
     }
 
     private Set<Integer> createNumberSet(String input) {
@@ -33,5 +31,12 @@ public class WinningNumber {
             throw new IllegalArgumentException("[ERROR] 당첨 번호에 중복된 숫자가 존재할 수 없습니다.");
         }
         return set;
+    }
+
+
+    private void validateBonusNumber(int bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.");
+        }
     }
 }

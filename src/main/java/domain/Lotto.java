@@ -24,4 +24,15 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    public int count(WinningNumber winningNumber) {
+        int cnt = 0;
+        for (Integer number : numbers) {
+            if (winningNumber.containNumberSet(number)) {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
 }
