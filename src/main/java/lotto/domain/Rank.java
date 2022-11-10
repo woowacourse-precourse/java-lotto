@@ -25,7 +25,6 @@ public class Rank {
             Place place = determine((lotto.checkNumbers(userLottoNumbers)), bonus.checkNumber(userLottoNumbers));
             winningRanks.put(place, winningRanks.get(place)+1);
         }
-
     }
 
     //15줄 넘음
@@ -48,9 +47,7 @@ public class Rank {
         return null;
     }
 
-
     private void setBonus(int bonusNumber) {
         this.bonus = new Bonus(lotto.getNumbers(), bonusNumber);
     }
-
 }

@@ -1,6 +1,7 @@
 package lotto.domain;
 
 
+import lotto.entity.Bug;
 import lotto.entity.Place;
 
 import java.util.Map;
@@ -24,7 +25,7 @@ public class Amount {
     private void calculatePurchasesQuantity() {
         int purchasesQuantity = inputAmount / lottoPrice;
         if (inputAmount % lottoPrice != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Bug.ERROR.getMessage() + Bug.AMOUNT_DIVIDED_NO_REMAINING.getMessage());
         }
         this.purchasesQuantity = purchasesQuantity;
     }

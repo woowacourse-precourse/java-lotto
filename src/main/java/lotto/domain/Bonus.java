@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.entity.Bug;
+
 import java.util.List;
 
 public class Bonus {
@@ -14,10 +16,10 @@ public class Bonus {
 
     private void validate(List<Integer> lottoNumbers, int bonusNumber) {
         if (lottoNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Bug.ERROR.getMessage() + Bug.BONUS_NO_CONTAIN_NUMBERS);
         }
         if (bonusNumber < 1 || 45 < bonusNumber) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Bug.ERROR.getMessage()+Bug.BONUS_MUST_BETWEEN_ONE_AND_FORTY_FIVE);
         }
     }
 
