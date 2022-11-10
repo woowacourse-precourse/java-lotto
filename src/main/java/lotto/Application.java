@@ -1,15 +1,12 @@
 package lotto;
 
-import lotto.domain.Price;
+import lotto.domain.Game;
 
 public class Application {
     public static void main(String[] args) {
-        Price price = new Price();
-        askPrice();
-        price.purchaseAmount();
-    }
-
-    public static void askPrice() {
-        System.out.println("수입금액을 입력해 주세요.");
+        Game game = new Game();
+        game.start();
     }
 }
+
+

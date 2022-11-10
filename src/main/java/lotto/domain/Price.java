@@ -3,9 +3,11 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Price {
+    private static final int DIVIDE_MONEY = 1000;
+    static String input;
 
-    public int purchaseAmount() {
-        String input = Console.readLine();
+    public int inputPurchaseAmount() {
+        input = Console.readLine();
         validateNumbers(input);
         validateDivide1000Won(Integer.parseInt(input));
         return Integer.parseInt(input);
@@ -23,5 +25,10 @@ public class Price {
                 throw new IllegalArgumentException("[ERROR] 금액이 숫자가 아닙니다.");
             }
         }
+    }
+
+    public int divideAmountTo1000Won() {
+        int count = Integer.parseInt(input);
+        return count / DIVIDE_MONEY;
     }
 }
