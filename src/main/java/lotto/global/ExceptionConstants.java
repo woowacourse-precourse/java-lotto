@@ -7,7 +7,7 @@ public abstract class ExceptionConstants {
     public static final String CAN_ONLY_SIX_COUNT = "[ERROR] 로또 번호는 6개이어야 합니다.";
     public static final String CANNOT_DUPLICATED_NUMBER = "[ERROR] 로또 번호는 중복되지 않아야합니다.";
     public static final String CANNOT_SATISFY_NUMBER_RANGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
-    public static final String LESS_THAN_THREE_MATCHING_NUMBER = "[ERROR] 일차하는 번호의 개수가 3개 미만입니다.";
+    public static final String CAN_ONLY_INPUT_NUMBER = "[ERROR] 숫자만 입력 가능합니다.";
 
 
 }
