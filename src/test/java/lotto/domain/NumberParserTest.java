@@ -1,10 +1,13 @@
 package lotto.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class NumberParserTest {
 
@@ -13,5 +16,18 @@ class NumberParserTest {
     void formattedNumberToIntegerList() {
         List<Integer> numbers = NumberParser.numbers("1,2,3,4,5,6");
         assertThat(numbers).hasSize(6);
+    }
+
+    @ParameterizedTest(name = "양식을 지키지 않으면 예외를 던진다.")
+    @ValueSource(strings = {
+            "1,2,3,",
+            "123456",
+            "1,2,3,4,5,6,",
+            "1,2,3,4,5,6,7,8"})
+    void fail(String inputValue) {
+        assertThatThrownBy(
+                () -> NumberParser.numbers(inputValue))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("올바른 당첨 번호 포맷이 아닙니다.");
     }
 }

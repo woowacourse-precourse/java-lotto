@@ -28,27 +28,4 @@ class LottoScannerTest {
                     .hasMessageContaining("숫자만 입력해 주세요");
         }
     }
-
-    @Nested
-    class validateWinningNumberFormat {
-
-        @ParameterizedTest(name = "양식을 지키면 예외를 던지지 않는다.")
-        @ValueSource(strings = {"1,2,3,4,5,6", "10,14,200,1000,4,5000000"})
-        void success(String inputValue) {
-            lottoScanner.validateWinningNumberFormat(inputValue);
-        }
-
-        @ParameterizedTest(name = "양식을 지키지 않으면 예외를 던진다.")
-        @ValueSource(strings = {
-                "1,2,3,",
-                "123456",
-                "1,2,3,4,5,6,",
-                "1,2,3,4,5,6,7,8"})
-        void fail(String inputValue) {
-            assertThatThrownBy(
-                    () -> lottoScanner.validateWinningNumberFormat(inputValue))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("올바른 당첨 번호 포맷이 아닙니다.");
-        }
-    }
 }

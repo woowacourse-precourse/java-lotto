@@ -18,9 +18,10 @@ public class Purchaser {
 
     public double rateOfReturn(LottoResults results) {
         int totalWinnings = results.totalWinnings();
-        double totalPrices = PRICE_OF_LOTTO * purchasedLottos.size();
+        double totalPricesOfPurchase = PRICE_OF_LOTTO * purchasedLottos.size();
+        double rateOfReturn = totalWinnings / totalPricesOfPurchase * 100;
 
-        return totalWinnings / totalPrices * 100;
+        return (double) Math.round(rateOfReturn * 10) / 10;
     }
 
     // 테스트용 메서드

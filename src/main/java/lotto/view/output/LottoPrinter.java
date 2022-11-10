@@ -4,6 +4,10 @@ import java.util.List;
 
 public class LottoPrinter {
 
+    public void printGuideMessageForPurchase() {
+        System.out.println("구입금액을 입력해 주세요.");
+    }
+
     // 발행한 로또 수량을 출력한다.
     public void printTheNumberOfLottos(int number) {
         System.out.println(number + "개를 구매했습니다.");
@@ -14,13 +18,20 @@ public class LottoPrinter {
         System.out.println(lottoNumbers);
     }
 
-    // 당첨 내역을 출력한다. (나중에 구현 후 변경)
-//    public void printResults(Result result) {
-//        System.out.println(result);
-//    }
+    public void printGuideMessageForWinningNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
 
-    // 수익률을 출력한다.
-    public void printRateOfReturn(int rateOfReturn) {
+    public void printGuideMessageForBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
+
+    // 당첨 통계를 출력한다.
+    public void printWinningStatistics(String resultsFormat, int rateOfReturn) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println(resultsFormat);
         System.out.println("총 수익률은 " + rateOfReturn + "%입니다.");
     }
 
@@ -28,5 +39,4 @@ public class LottoPrinter {
     public void printError(String errorMessage) {
         System.out.println("[ERROR]" + errorMessage);
     }
-
 }
