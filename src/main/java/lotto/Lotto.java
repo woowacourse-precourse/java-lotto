@@ -23,6 +23,11 @@ public class Lotto {
 
         if(numSet.size() != 6)
             throw new IllegalArgumentException("로또는 중복되지 않은 숫자 6개가 필요합니다.");
+
+        for (Integer integer : numSet) {
+            if(integer < 1 || integer > 45)
+                throw new IllegalArgumentException("1~45 사이의 숫자를 입력해주세요.");
+        }
     }
 
     // TODO: 추가 기능 구현
@@ -71,6 +76,11 @@ public class Lotto {
 
     public static int inputBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        return Integer.parseInt(Console.readLine());
+        int userInputBonusNumber = Integer.parseInt(Console.readLine());
+
+        if(userInputBonusNumber < 1 || userInputBonusNumber > 45)
+            throw new IllegalArgumentException("1~45 사이의 숫자를 입력해주세요.");
+
+        return userInputBonusNumber;
     }
 }
