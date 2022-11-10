@@ -12,6 +12,9 @@ public class LotteryMachine {//로또 추첨기계
         if(winningLotto.getNumbers().contains(bonusNumber)){
             throw new IllegalArgumentException("[ERROR] 보너스번호는 6개의 로또 번호와 다른 숫자여야 합니다.");
         }
+        if(bonusNumber<1 || bonusNumber>45){
+            throw new IllegalArgumentException("[ERROR] 보너스번호는 1-45사이의 숫자여야 합니다.");
+        }
     }
 
     public Lotto getWinningLotto() {
