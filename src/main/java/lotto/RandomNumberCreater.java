@@ -10,7 +10,7 @@ public class RandomNumberCreater {
   Money money = new Money();
   UserNumberScan scanner = new UserNumberScan();
   public Map<Integer, List<Integer>> generateLottoNumber() {
-    int count = money.countLotto(scanner.requestMoney());
+    int count = money.countLotto(scanner.requestValue());
 
     Map<Integer, List<Integer>> lottoMap = new HashMap<>();
     for (int i = 0; i < count; i++)

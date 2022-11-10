@@ -22,7 +22,7 @@ public class Lotto {
     // 당첨 번호를 new Lotto(번호) 이런 식으로 검사 해보는것도 좋을듯
     // TODO: 추가 기능 구현
 
-    public void luckyNumberValidator(String userNumber) {
+    public void luckyNumberIsNotDuplicate(String userNumber) {
         Set<Character> set = new HashSet<>();
         for (int i = 0; i < userNumber.length(); i++) {
             set.add(userNumber.charAt(i));
