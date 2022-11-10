@@ -6,6 +6,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoNumbersGenerator {
+    private LottoNumbersGenerator() {
+    }
+
+    public static LottoNumbersGenerator getInstance() {
+        return new LottoNumbersGenerator();
+    }
+
     public List<Integer> create() {
         List<Integer> numbers = createLottoNumbers();
         Collections.sort(numbers);
