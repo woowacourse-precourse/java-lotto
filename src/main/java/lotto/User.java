@@ -2,6 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -28,6 +30,8 @@ public class User {
     }
 
     private void generateLottos() {
+        this.lottos = new ArrayList<Lotto>();
+
         for (int i = 0; i < this.lottoNum; i++) {
             Lotto lotto = Lotto.generate();
 
