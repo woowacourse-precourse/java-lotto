@@ -12,6 +12,7 @@ public class Controller {
     public void run() {
         purchaseLotto();
         printPurchaseResult();
+        setWinningNumber();
     }
 
     private void purchaseLotto() {
@@ -22,5 +23,10 @@ public class Controller {
     private void printPurchaseResult() {
         List<List<Integer>> purchaseResult = service.getPurchaseResult();
         OutputView.printPurchaseResult(purchaseResult);
+    }
+
+    private void setWinningNumber() {
+        String winningNumber = InputView.getWinningNumber();
+        service.setWinningNumber(winningNumber);
     }
 }
