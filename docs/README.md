@@ -5,7 +5,6 @@
   - [x] 사용자가 입력한 돈이 마이너스일 경우 IllegalArgumentException 예외 처리 구현 - checkBuyerInputIsMinus()
   - [x] 사용자가 입력한 돈이 숫자가 아닐 경우 IllegalArgumentException 예외 처리 구현 - checkBuyerInputIsNotNumber()
   - [x] 사용자가 입력한 돈이 1000원 단위로 나누어 떨어지지 않을 경우 IllegalArgumentException 예외 처리 구현 - checkBuyerInputIsNotDivided()
-  - [ ] 사용자가 입력한 돈이 Long형 보다 더 큰 입력이 들어왔을 경우 IllegalArgumentException 예외 처리 구현
   - [ ] 사용자가 입력한 당첨 번호가 1~45가 아닐 경우 IllegalArguemntException 예외 처리 구현
   - [ ] 사용자가 입력한 당첨 번호에 ','의 5개가 아닐 경우 IllegalArguemntException 예외 처리 구현
   - [ ] 사용자가 입력한 당첨 번호가 6개가 아닐 경우 IllegalArguemntException 예외 처리 구현
