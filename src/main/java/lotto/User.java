@@ -12,9 +12,17 @@ public class User {
     private int getProfit;
     private float earningsRate;
 
-    User(int inputConst) {
-        this.inputCost = inputConst;
+    User(int inputCost) {
+        valid(inputCost);
+        this.inputCost = inputCost;
     }
+
+    private void valid(int inputCost) {
+        if (inputCost / 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 구매금액이 1000의 배수가 아닙니다.");
+        }
+    }
+
     public static List<Integer> getLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
