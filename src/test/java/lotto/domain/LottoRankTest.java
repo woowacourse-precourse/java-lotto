@@ -2,18 +2,18 @@ package lotto.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LottoRankTest {
-    @Test
     @DisplayName("1등인지 확인")
-    void firstRank() {
-        assertAll(
-                () -> assertThat(LottoRank.parseRank(6, false)).isEqualTo(LottoRank.FIRST),
-                () -> assertThat(LottoRank.parseRank(6, true)).isEqualTo(LottoRank.FIRST)
-        );
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(booleans = {true, false})
+    void firstRank(final boolean existBonusLottoNumber) {
+        assertThat(LottoRank.parseRank(6, existBonusLottoNumber)).isEqualTo(LottoRank.FIRST);
     }
     
     @Test
@@ -28,12 +28,10 @@ class LottoRankTest {
         assertThat(LottoRank.parseRank(5, false)).isEqualTo(LottoRank.THIRD);
     }
     
-    @Test
     @DisplayName("4등인지 확인")
-    void fourthRank() {
-        assertAll(
-                () -> assertThat(LottoRank.parseRank(4, false)).isEqualTo(LottoRank.FOURTH),
-                () -> assertThat(LottoRank.parseRank(4, true)).isEqualTo(LottoRank.FOURTH)
-        );
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(booleans = {true, false})
+    void fourthRank(final boolean existBonusLottoNumber) {
+        assertThat(LottoRank.parseRank(4, existBonusLottoNumber)).isEqualTo(LottoRank.FOURTH);
     }
 }
