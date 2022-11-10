@@ -1,4 +1,4 @@
-package user;
+package lotto.user;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -11,7 +11,6 @@ public class LottoDraw {
     private static final String DUPLICATION_ERROR = "[ERROR] 입력된 숫자에 중복이 있습니다.";
     private static final String RANGE_ERROR = "[ERROR] 1~45 사이의 수를 입력해 주시기 바랍니다.";
     private static final String NUMERIC_ERROR = "[ERROR] 숫자를 입력해 주시기 바랍니다.";
-
 
     private static LottoDraw lottoDraw;
 
@@ -52,22 +51,15 @@ public class LottoDraw {
     }
 
     private void validateDuplication(List<Integer> winNumbers) {
-        if (duplicateNumbers(winNumbers)) {
+        if (new HashSet<>(winNumbers).size() != winNumbers.size()) {
             throw new IllegalArgumentException(DUPLICATION_ERROR);
         }
     }
 
-    private boolean duplicateNumbers(List<Integer> winNumbers) {
-        return new HashSet<>(winNumbers).size() != winNumbers.size();
-    }
-
     private void validateRange(List<Integer> winNumbers) {
-        if (overRange(winNumbers)) {
+        if (winNumbers.stream().anyMatch(winNumber -> winNumber < 1 || winNumber > 45)) {
             throw new IllegalArgumentException(RANGE_ERROR);
         }
     }
 
-    private boolean overRange(List<Integer> winNumbers) {
-        return winNumbers.stream().anyMatch(winNumber -> winNumber < 1 || winNumber > 45);
-    }
 }

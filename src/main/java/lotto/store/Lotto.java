@@ -1,4 +1,4 @@
-package store;
+package lotto.store;
 
 import java.util.ArrayList;
 import java.util.Collections;
