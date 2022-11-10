@@ -5,7 +5,7 @@
         - [x] 1,000원으로 나누어 떨어지지 않는 경우
 - [x] 1부터 45까지의 서로 다른 임의의 수 6개를 추출할 수 있다. -LottoGenerator#createRandom()
 - [x] 구매할 로또 개수만큼 서로 다른 임의의 수 6개를 추출한다. -LottoGenerator#LottoGenerator()
-- [ ] 당첨 번호(6자리)와 구매한 로또 번호(6자리)를 비교해 등수를 알 수 있다. -Rank#determine()
+- [x] 당첨 번호(6자리)와 구매한 로또 번호(6자리)를 비교할 수 있다. -Rank#setMatchingNumbers()
     - [x] 몇 개의 숫자와 일치하는지 확인한다. - Lotto#checkNumbers()
         - 예외상황
             - [x] 6개 이상일 때
@@ -15,7 +15,8 @@
         - 예외상황
             - [x] 이미 로또번호에 있는 수
             - [x] 범위를 벗어난 수
-- [ ] 당첨 등수 당 개수를 확인한다. -Rank#countWinCards()
+- [x] 일치하는 번호로 당첨 등수를 알 수 있다 Rank#determine()
+- [x] 당첨 등수 당 개수를 확인한다. -Rank#countWinCards()
 - [ ] 수익률을 계산한다. - Amount#calculateEarningRate()
     - 구입 금액 / 총 당첨 금액 * 100
 
