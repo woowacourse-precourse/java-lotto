@@ -7,4 +7,8 @@ public class PrintMessenger {
     public static void volumeBuying(int volume){
         System.out.println(volume + "개를 구매했습니다.");
     }
+    public static void askWinningNumber()
+    {
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
 }
