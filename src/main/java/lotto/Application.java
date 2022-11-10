@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -21,6 +20,7 @@ public class Application {
         int bonusNum = lotto.inputBonusNumber();
         Map<List<Integer>, Integer> lottoResult = new HashMap<>();
         int result = 0;
+        RankCount rankCount = new RankCount();
         for (List<Integer> num : lottoNumbers) {
             int correctCount = 0;
             for (int i : num) {
@@ -33,32 +33,23 @@ public class Application {
             }
             Rank rank = Rank.getRank(correctCount);
             System.out.println(rank);
-            result += rank.getRank();
+            result += rank.getPrize();
+
+            if (correctCount == 0 || correctCount > 2 && correctCount < 8) {
+                rankCount.rankCounting(correctCount);
+            }
             lottoResult.put(num, correctCount);
         }
-        int first = 0, second = 0, third = 0, fourth = 0, fifth = 0;
-        for (int i : lottoResult.values()) {
-            if (i == 7)
-                second++;
-            if (i == 6)
-                first++;
-            if (i == 5)
-                third++;
-            if (i == 4)
-                fourth++;
-            if (i == 3)
-                fifth++;
-        }
-        int resultMoney = 2_000_000_000*first + 30_000_000*second + 1_500_000*third + 50_000*fourth + 5_000*fifth;
-        double profit = Math.round(((double) resultMoney/(double) pay) * 10000);
+        Map<Integer, Integer> rankCounter = rankCount.getCount();
+        double profit = Math.round(((double) result/(double) pay) * 10000);
         BigDecimal profitPercent = new BigDecimal(String.valueOf(Double.parseDouble(String.valueOf(profit/100))));
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + fifth + "개");
-        System.out.println("4개 일치 (50,000원) - " + fourth + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + third + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + second + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + first + "개");
+        System.out.println("3개 일치 (5,000원) - " + rankCounter.get(3) + "개");
+        System.out.println("4개 일치 (50,000원) - " + rankCounter.get(4) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + rankCounter.get(5) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + rankCounter.get(7) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + rankCounter.get(6) + "개");
         System.out.println("총 수익률은 " + profitPercent.toPlainString() + "%입니다.");
 
     }
