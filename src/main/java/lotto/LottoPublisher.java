@@ -1,5 +1,8 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoPublisher {
@@ -21,7 +24,6 @@ public class LottoPublisher {
     }
 
     private List<Integer> publishLottoNumbers() {
-        // 서로 다른 6개의 숫자 set 생성
-        return null;
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 }
