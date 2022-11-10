@@ -33,7 +33,12 @@ public class IoManager {
     }
 
     public static Integer getNumberFromUser() {
-        return null;
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (Exception e) {
+            System.out.println("[ERROR] 형식에 알맞지 않은 입력입니다. 입력은 숫자로 주어져야 합니다.");
+            throw new IllegalArgumentException("입력은 숫자형태여야 합니다.");
+        }
     }
 
     private static boolean validateFitInPattern(String string, String patternString) {
