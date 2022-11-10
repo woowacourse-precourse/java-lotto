@@ -33,6 +33,8 @@ public class UserRepository {
         this.user.setWinningNumbers(winningNumbers);
     }
 
-
+    public void setUserBonusNumber(int bonusNumber){
+        this.user.setBonusNumber(bonusNumber);
+    }
 
 }
