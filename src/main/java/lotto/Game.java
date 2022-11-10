@@ -69,6 +69,7 @@ public class Game {
         lottoScore.put(LottoRank.THIRD, 0);
         lottoScore.put(LottoRank.SECOND, 0);
         lottoScore.put(LottoRank.FIRST, 0);
+        lottoScore.put(LottoRank.NONE, 0);
 
         return lottoScore;
     }
