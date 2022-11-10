@@ -17,7 +17,7 @@ public class LottoGenerator {
         return instance;
     }
 
-    public List<Lotto> generatLottos(int money) {
+    public Lottos generateLottos(int money) {
         if (isNotDivisible(money)) {
             throw new IllegalArgumentException("[ERROR]isNotDivisibleBy1000");
         }
@@ -27,7 +27,7 @@ public class LottoGenerator {
         for (int count = 1; count <= issueCount; count++) {
             lottos.add(generateLotto());
         }
-        return lottos;
+        return new Lottos(lottos);
     }
 
     private boolean isNotDivisible(int money) {
