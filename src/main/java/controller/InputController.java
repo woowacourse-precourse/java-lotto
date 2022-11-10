@@ -9,4 +9,15 @@ public class InputController {
         Integer lottopuramount = Integer.parseInt(stringpuramount);
         return lottopuramount;
     }
+
+    public boolean checkDigitPrice(String lottopuramount) {
+        boolean result = true;
+        for(int i=0; i<lottopuramount.length(); i++) {
+            if(!Character.isDigit(lottopuramount.charAt(i))) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
 }
