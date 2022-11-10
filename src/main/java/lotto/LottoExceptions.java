@@ -7,6 +7,6 @@ public final class LottoExceptions {
     }
 
     public static Exception createLottoException(String message) {
-        return new IllegalArgumentException(message);
+        return new IllegalArgumentException("[ERROR]" + message);
     }
 }
