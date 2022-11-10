@@ -29,4 +29,14 @@ public class ValidationInDomain {
         }
     }
 
+    public void checkBonusNumberDuplication(List<Integer> numbers, int bonusNumber){
+        Set<Integer> validator = new HashSet<>();
+        for(int i = 0; i < numbers.size(); i++){
+            validator.add(numbers.get(i));
+        }
+        if(validator.contains(bonusNumber)){
+            throw new IllegalArgumentException();
+        }
+    }
+
 }

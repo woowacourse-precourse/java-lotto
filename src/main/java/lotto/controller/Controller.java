@@ -1,13 +1,38 @@
 package lotto.controller;
 
+import lotto.domain.LottoPurchaseInformation;
+import lotto.domain.WinningInformation;
 import lotto.view.InputView;
+import lotto.view.OutputView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
-    private final InputView inputView = new InputView();
-    private final TypeValidation typeValidator = new TypeValidation();
-    public void execute(){
-        String purchaseAmount = inputView.getPurchaseAmount();
-        typeValidator.checkNumericValue(purchaseAmount);
+    private InputView inputView = new InputView();
+    private OutputView outputView = new OutputView();
+    private ValidationInController validator = new ValidationInController();
+    private WinningInformation winningInformation = new WinningInformation();
+    private LottoPurchaseInformation lottoPurchaseInformation;
+
+    public void execute() {
+        String purchaseAmountInput = inputView.getPurchaseAmount();
+        validator.checkNumericValue(purchaseAmountInput);
+        lottoPurchaseInformation = new LottoPurchaseInformation(Integer.parseInt(purchaseAmountInput));
+        lottoPurchaseInformation.generateLottoTickets();
+        outputView.printPurchaseDetails(lottoPurchaseInformation.getLottoTickets());
+        List<String> winningNumbersInput = inputView.getWinningNumbers();
+        validator.checkNumericValueList(winningNumbersInput);
+        List<Integer> winningNumbers = new ArrayList<>();
+        for(int i = 0; i < winningNumbersInput.size(); i++){
+            winningNumbers.add(Integer.parseInt(winningNumbersInput.get(i)));
+        }
+        winningInformation.setWinningNumbers(winningNumbers);
+        String bonusNumberInput = inputView.getBonusNumber();
+        validator.checkNumericValue(bonusNumberInput);
+        winningInformation.setBonusNumber(Integer.parseInt(bonusNumberInput));
+        //당첨계산
+        //당첨통계 출력
     }
 
 }

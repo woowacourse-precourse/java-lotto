@@ -24,6 +24,7 @@ public class WinningInformation {
 
     public void setBonusNumber(int bonusNumber) {
         validator.checkNumberRange(bonusNumber);
+        validator.checkBonusNumberDuplication(winningNumbers, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 }
