@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
+
 @DisplayName("[TEST] UserServiceTest")
 class UserServiceTest {
     @Test
@@ -12,10 +13,9 @@ class UserServiceTest {
         int prizeMoney = 5000;
         int purchaseMoney = 8000;
         UserService userService = new UserService();
-        assertThat(userService.calculateTheRateOfReturn(prizeMoney,purchaseMoney))
-                .isNotNaN()
-                .isPositive()
-                .isEqualTo(62.5);
+        assertThat(userService.calculateTheRateOfReturn(prizeMoney, purchaseMoney))
+                .isNotEmpty()
+                .isEqualTo("62.5");
     }
 
 }

@@ -2,7 +2,8 @@ package lotto.service;
 
 public class UserService {
 
-    public double calculateTheRateOfReturn(int prizeMoney,int purchaseMoney) {
-        return 62.5;
+    public String calculateTheRateOfReturn(int prizeMoney, int purchaseMoney) {
+        float rateOfReturn = ((float) prizeMoney / (float) purchaseMoney) * 100;
+        return String.format("%.1f", rateOfReturn);
     }
 }
