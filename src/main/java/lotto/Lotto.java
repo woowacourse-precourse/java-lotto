@@ -17,7 +17,11 @@ public class Lotto {
         Util.hasDistinctNumbers(numbers);
     }
 
-    private static Lotto create() {
+    public static Lotto create() {
         return new Lotto(Util.createRandomNumbers());
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }

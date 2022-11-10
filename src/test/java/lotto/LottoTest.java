@@ -1,10 +1,12 @@
 package lotto;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -38,5 +40,15 @@ class LottoTest {
         assertThatThrownBy(() -> new WinLotto(List.of(1, 2, 3, 4, 5, 6), 3))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.INVALID_BONUS_NUMBER.getValue());
+    }
+
+    @RepeatedTest(10)
+    void createLotto() {
+        Lotto generatedLotto = Lotto.create();
+        List<Integer> numbers = generatedLotto.getNumbers();
+        assertThat(numbers.size()).isEqualTo(6);
+        for (Integer number : numbers) {
+            assertThat(number).isGreaterThan(0).isLessThan(46);
+        }
     }
 }
