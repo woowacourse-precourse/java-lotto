@@ -31,6 +31,9 @@ public class LottoView {
     }
 
     public void printLottoResult(List<LottoResult> lottoResults) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+
         Map<LottoResult, Long> lottoResultToCount = lottoResults.stream()
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
