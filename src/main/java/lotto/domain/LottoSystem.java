@@ -6,6 +6,7 @@ import java.util.List;
 
 public class LottoSystem {
     LottoMachine lottoMachine;
+    Lotto winningNumber;
 
     public LottoSystem() {
         lottoMachine = new LottoMachine();
@@ -21,5 +22,10 @@ public class LottoSystem {
         for (Lotto lotto : lottoBundle) {
             System.out.println(lotto.toString());
         }
+    }
+
+    public void setWinningNumber() {
+        System.out.println(Message.INPUT_WINNING_NUMBER);
+        String input = Console.readLine().trim();
     }
 }
