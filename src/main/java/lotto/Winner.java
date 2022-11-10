@@ -4,14 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Winner {
-    private final static String VALID_BONUS_NUMBER = "^\\d+$";
-    private final Integer bonusNumber = null;
-    private final List<Integer> winningNumbers = new ArrayList<>();
+    private final static String ONLY_NUMBER = "^\\d+$";
+    private final Integer bonusNumber;
+    private final List<Integer> winningNumbers;
 
     public Winner(String winningNumbers, String bonusNumber) {
         String[] winningNumbersSplited = winningNumbers.split(",");
         validateFormat(winningNumbersSplited);
         validateBonusNumber(bonusNumber);
+
+        this.winningNumbers = new ArrayList<>();
+        updateWinningNumbers(winningNumbersSplited);
+        this.bonusNumber = Integer.valueOf(bonusNumber);
     }
 
     private void validateFormat(String[] numbers) {
@@ -21,8 +25,15 @@ public class Winner {
     }
 
     private void validateBonusNumber(String bonusNumber) {
-        if (!bonusNumber.matches(VALID_BONUS_NUMBER)) {
+        if (!bonusNumber.matches(ONLY_NUMBER)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자만 입력할 수 있습니다.");
+        }
+    }
+
+    private void updateWinningNumbers(String[] numbers) {
+        for (String number : numbers) {
+            Integer numericValue = Integer.valueOf(number);
+            winningNumbers.add(numericValue);
         }
     }
 }
