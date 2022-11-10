@@ -14,7 +14,6 @@ public class DataProcessing {
     public List<Integer> sortLottoNumbers() {
         List<Integer> sortNumber = lottoNumbers();
         Collections.sort(sortNumber);
-        System.out.println(sortNumber);
         return sortNumber;
     }
 }
