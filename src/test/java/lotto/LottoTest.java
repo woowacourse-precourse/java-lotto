@@ -1,17 +1,23 @@
 package lotto;
 
+import java.util.ArrayList;
+import lotto.model.LottoGenerator;
 import lotto.model.WinningNumber;
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-class LottoTest {
+class LottoTest{
+
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -42,7 +48,29 @@ class LottoTest {
         winningNumber.setBonusNumber(inputBonusNumber);
 
         assertEquals(winningNumber.getWinningNumbers(), testWinningNumber);
-        assertEquals(winningNumber.getBonusNumber(),testBonusNumber);
+        assertEquals(winningNumber.getBonusNumber(), testBonusNumber);
 
+    }
+
+    @DisplayName("6개의 랜덤 로또 번호 생성 및 저장")
+    @Test
+    void generateLotto() {
+        String money = "4000";
+        LottoGenerator lottoGenerator = new LottoGenerator();
+        ArrayList<List<Integer>> lotteries;
+
+        lottoGenerator.generateLotto(money);
+        lotteries = lottoGenerator.getLotteries();
+
+        assertEquals(lotteries.size(),4);
+
+        for(int i=0; i<lotteries.size(); i++) {
+            assertEquals(lotteries.get(i).size(), 6);
+            assertThat(lotteries.get(i).stream().allMatch(v -> v >= 1 && v <= 45));
+        }
+
+        for(int i=1; i<lotteries.size(); i++) {
+            assertNotEquals(lotteries.get(i), lotteries.get(i-1));
+        }
     }
 }
