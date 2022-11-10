@@ -2,19 +2,18 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
-
-
+import java.util.stream.Collectors;
 
 
 public class Lotto {
-    private static int bonusNumber;
-
     private final List<Integer> numbers;
 
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
 
@@ -32,18 +31,6 @@ public class Lotto {
         }
     }
 
-
-    public static void setBonusNumber(int bonusNumber) {
-        if (LottoNumberValidator.isOutOfRange(bonusNumber)) {
-            throw new IllegalArgumentException();
-        }
-
-        Lotto.bonusNumber = bonusNumber;
-    }
-
-    public static int getBonusNumber() {
-        return Lotto.bonusNumber;
-    }
 
     public static Lotto generate() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
