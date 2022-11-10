@@ -1,4 +1,4 @@
-package lotto;
+package lotto.data;
 
 public enum Rank {
     RANK1("6개 일치 (2,000,000,000원)"),

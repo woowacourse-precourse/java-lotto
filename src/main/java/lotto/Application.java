@@ -1,11 +1,11 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
+import lotto.data.Lotto;
+import lotto.player.User;
 
 public class Application {
     static Scanner sc = new Scanner(System.in);

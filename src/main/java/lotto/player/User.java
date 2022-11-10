@@ -1,13 +1,14 @@
-package lotto;
+package lotto.player;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import lotto.data.Lotto;
 
 public class User {
 
     private final Lotto[] tickets;
 
-    User(int payment){
+    public User(int payment){
         validatePayment(payment);
 
         int ticketNum = payment/1000;
