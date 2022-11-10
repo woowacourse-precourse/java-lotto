@@ -10,8 +10,23 @@ public class TicketMachine {
     }
 
     private void validatePayment(int payment) {
-        if (payment % TICKET_PRICE != 0) {
-            throw new IllegalArgumentException(ERROR_MESSAGE);
+        if (validatePositive(payment) && validatePrice(payment)) {
+            return;
         }
+        throw new IllegalArgumentException(ERROR_MESSAGE);
+    }
+
+    private boolean validatePositive(int payment) {
+        if (payment > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean validatePrice(int payment) {
+        if (payment%TICKET_PRICE==0){
+            return true;
+        }
+        return false;
     }
 }
