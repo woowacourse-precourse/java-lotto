@@ -1,5 +1,7 @@
 package lotto.mytest;
 
+import static org.assertj.core.api.Assertions.*;
+
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
@@ -15,5 +17,12 @@ public class LottoTest {
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			new Lotto(List.of(1, 2, 3, 4, 5));
 		});
+	}
+
+	@DisplayName("중복된 로또 번호가 있는 경우 예외가 발생")
+	@Test
+	void duplicatedNumbers() {
+		assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
+			.isInstanceOf(IllegalArgumentException.class);
 	}
 }
