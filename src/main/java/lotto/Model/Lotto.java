@@ -1,4 +1,4 @@
-package lotto;
+package lotto.Model;
 
 import java.util.List;
 
@@ -12,7 +12,11 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 숫자는 6개여야 합니다.");
+        }
+
+        if(numbers.stream().anyMatch(num -> num < 1 || num > 45)){
+            throw new IllegalArgumentException("[ERROR] 로또 숫자는 1부터 45사이 숫자이어야 합니다.");
         }
     }
 
