@@ -1,13 +1,14 @@
 ## 구현 기능 목록
 - [ ] 로또를 구입 기능 
-  - [ ] 구입 급액 입력 기능 
+  - [ ] 구입 급액 입력 기능 Customer#payMoney()
     - 로또는 1개당 1000원 
-- [ ] 구매한 로또 번호 발행 기능
-    - [ ] 랜덤으로 당첨 번호(6개)와 보너스 번호(1개) 발행
-      - 당첨 번호는 중복 X
-      - 번호는 오름차순
+- [ ] 구매한 로또 번호 발행 기능 Store#drawLottoNumber()
+    - 랜덤으로 당첨 번호(6개)와 보너스 번호(1개) 발행
+    - 당첨 번호는 중복 X
+    - 번호는 오름차순
 - [ ] 로또 번호 비교 후 상금 및 수익률 계산 
-  - [ ] 추첨된 로또 번호 입력 기능
-  - [ ] 자신의 로또 번호와 비교 기능
-  - [ ] 상금 출력 기능
-  - [ ] 수익률 계산 기능
+  - [ ] 추첨된 로또 번호 입력 기능 Checker#insertWinningNumbers()
+  - [ ] 보너스 로또 번호 입력 기능 Checker#insertBonusNumbers()
+  - [ ] 자신의 로또 번호와 비교 기능 Checker#checkMyLotto()
+  - [ ] 상금 출력 기능 Checker#showWinningStats()
+  - [ ] 수익률 계산 기능 Checker#calculateRateOfReturn()

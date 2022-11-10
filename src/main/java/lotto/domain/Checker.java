@@ -20,6 +20,7 @@ public class Checker {
     private List<Integer> winningStats = new ArrayList<>();
     private int bonusNumber;
     private int count;
+    private float returnRate;
 
     public void insertWinningNumbers() {
 
@@ -37,7 +38,7 @@ public class Checker {
         return bonusNumber;
     }
 
-    public void checkLotto(List<List<Integer>> lottos) {
+    public void checkMyLotto(List<List<Integer>> lottos) {
 
     }
 
@@ -45,7 +46,7 @@ public class Checker {
 
     }
 
-    public void calculateRateOfReturn() {
+    public float calculateRateOfReturn() {
 
     }
 
