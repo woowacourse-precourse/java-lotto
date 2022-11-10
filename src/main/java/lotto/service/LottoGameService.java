@@ -16,9 +16,11 @@ public class LottoGameService {
     private static final String LOTTO_PURCHASE_AMOUNT_DIVIDE_REST_EXCEPTION_MESSAGE = "로또 구입 금액은 1,000원으로 나누어 떨어져야합니다.";
     private static final String LOTTO_PURCHASE_AMOUNT_NOT_DIGIT_EXCEPTION_MESSAGE = "로또 구입 금액은 숫자여야합니다.";
     private static final String DIGIT_REGEX = "^[0-9]+$";
+    private static final int CORRECT_LOTTO_WINNING_NUMBERS_SIZE = 6;
+    private static final String LOTTO_WINNING_NUMBERS_SIZE_EXCEPTION_MESSAGE = "로또 당첨 번호의 개수는 6개여야합니다.";
 
     private Lotto lotto;
-           
+
     public void generateLotto() {
         this.lotto = new Lotto(LottoNumbersGenerator.generateLottoNumbers());
     }
@@ -34,6 +36,12 @@ public class LottoGameService {
         }
         if (isRestOfLottoPurchaseAmountDivideBy1000NotZero(lottoPurchaseAmount)) {
             throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + LOTTO_PURCHASE_AMOUNT_DIVIDE_REST_EXCEPTION_MESSAGE);
+        }
+    }
+
+    public void validateLottoWinningNumbers(List<String> lottoWinningNumbers) {
+        if (isLottoWinningNumbersSizeNotSix(lottoWinningNumbers)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + LOTTO_WINNING_NUMBERS_SIZE_EXCEPTION_MESSAGE);
         }
     }
 
@@ -53,6 +61,10 @@ public class LottoGameService {
 
     public boolean isPurchaseNumbersMatchBonusNumber(List<Integer> purchaseLottoNumbers, int bonusNumber) {
         return purchaseLottoNumbers.contains(bonusNumber);
+    }
+
+    public boolean isLottoWinningNumbersSizeNotSix(List<String> lottoWinningNumbers) {
+        return lottoWinningNumbers.size() != CORRECT_LOTTO_WINNING_NUMBERS_SIZE;
     }
 
     public List<String> inputWinningNumberConvertToCollection(String lottoWinningNumber) {
