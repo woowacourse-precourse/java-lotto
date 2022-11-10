@@ -42,4 +42,20 @@ class CheckInputExceptionTest {
                 .hasMessageContaining(ERROR_MESSAGE);
     }
 
+    @Test
+    @DisplayName("숫자열이 1~45 사이가 아닌지 확인")
+    void 구매자_입력시_1_45사이_아니면_예외_테스트(){
+        final String numberFortyFive = "46";
+
+        assertThatThrownBy(() -> CheckInputException.checkBuyerInputIsNotNumberRange(numberFortyFive))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+
+        final String numberZero = "0";
+
+        assertThatThrownBy(() -> CheckInputException.checkBuyerInputIsNotNumberRange(numberZero))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
+
 }
