@@ -35,8 +35,8 @@ public class UnitTest { // TODO : 클래스 이름 변경
 	class AnswerNumTest{
 		@Test
 		void 당첨_번호_입력_테스트_정상_케이스(){
-			assertThatThrownBy(() -> new LottoNumsValidator("1,2,3,4,5,6"))
-					.isInstanceOf(IllegalArgumentException.class);
+			assertThatCode(() -> new LottoNumsValidator("1,2,3,4,5,6"))
+					.doesNotThrowAnyException();
 		}
 
 		@Test
