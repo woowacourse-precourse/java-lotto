@@ -5,17 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoGenerator {
-    private LottoGenerator instance;
+    private static LottoGenerator instance;
 
     private LottoGenerator() {
     }
 
-    public LottoGenerator getInstance() {
+    public static LottoGenerator getInstance() {
         if (instance == null) {
-            this.instance = new LottoGenerator();
+            instance = new LottoGenerator();
         }
-        return this.instance;
-
+        return instance;
     }
 
     public List<Lotto> generatLottos(int money) {
@@ -32,16 +31,16 @@ public class LottoGenerator {
     }
 
     private boolean isNotDivisible(int money) {
-        return money <= 0 || money % 1000 != 0;
+        return money <= 0 || money % LottoRule.TICKET_COST != 0;
     }
 
     private int getIssueCount(int money) {
-        return money / 1000;
+        return money / LottoRule.TICKET_COST;
     }
 
     private Lotto generateLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange
-                (LottoNumber.MIN, LottoNumber.MAX, LottoNumber.TOTAL_COUNT);
+                (LottoRule.MIN_NUMBER, LottoRule.MAX_NUMBER, LottoRule.TOTAL_COUNT);
         return new Lotto(numbers);
     }
 
