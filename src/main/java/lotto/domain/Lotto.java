@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
-    private ValueValidation valueValidator = new ValueValidation();
+    private ValidationInDomain valueValidator = new ValidationInDomain();
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);

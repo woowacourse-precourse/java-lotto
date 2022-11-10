@@ -6,7 +6,7 @@ import java.util.List;
 public class LottoPurchaseInformation {
     private static final int THOUSAND = 1000;
     private final int NUMBER_OF_TICKETS;
-    private ValueValidation valueValidator = new ValueValidation();
+    private ValidationInDomain valueValidator = new ValidationInDomain();
     private List<Lotto> lottoTickets = new ArrayList<>();
     private LottoGenerator lottoGenerator = new LottoGenerator();
 

@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ValueValidation {
+public class ValidationInDomain {
 
     public void checkDividedByThousand(int value){
         if(value % 1000 != 0){
@@ -20,6 +20,12 @@ public class ValueValidation {
                 throw new IllegalArgumentException();
             }
             validator.add(number);
+        }
+    }
+
+    public void checkNumberRange(int number){
+        if(number < 1 || number > 45){
+            throw new IllegalArgumentException();
         }
     }
 
