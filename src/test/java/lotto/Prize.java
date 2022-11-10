@@ -1,19 +1,37 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Prize {
     private Ranks myRank;
-    private int reward;
+    private final int reward;
+    private final List<Integer> statistics;
 
     Prize(int winningNumberCount, int bonusNumberCount) {
         myRank = getRankByMatchingNumberCount(winningNumberCount, bonusNumberCount);
+        int index = myRank.ordinal();
+        List<Integer> initialStatistics = createStatistics();
+        initialStatistics.set(index, 1);
+        statistics = initialStatistics;
         reward = myRank.getPrizeMoney();
     }
 
     public int getReward() {
         return reward;
+    }
+
+    public List<Integer> getStatistics() {
+        return statistics;
+    }
+
+    private List<Integer> createStatistics() {
+        List<Integer> statistics = new ArrayList<>();
+        for (int index = 0; index < Ranks.values().length; index++) {
+            statistics.add(0);
+        }
+        return statistics;
     }
 
     public Ranks getRankByMatchingNumberCount(int winningNumberCount, int bonusNumberCount) {
