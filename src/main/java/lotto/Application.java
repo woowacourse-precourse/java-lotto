@@ -58,7 +58,7 @@ public class Application {
 
     public static List<Integer> inputWinNumbers(String str) {
 
-        List<Integer> winNumbers = new ArrayList<>();
+        List<Integer> winNumbers;
         try {
             winNumbers = Arrays.stream(str.split(",")).map(s -> Integer.parseInt(s.trim())).collect(Collectors.toList());
         } catch (NumberFormatException e) {
