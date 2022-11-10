@@ -2,6 +2,8 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,7 +20,7 @@ import java.util.List;
 public class Input {
     private static int coin;
     private static int buyCount;
-    private static List<Integer> lottoNumber;
+    private static List<Integer> lottoNumber = new ArrayList<>();
     private static int lottoBonusNumber;
     private final static String inputCoinString = "구입금액을 입력해 주세요.";
     private final static String coinErrorMessage = "[ERROR] 구입금액은 천원단위만 가능합니다.";
@@ -43,17 +45,20 @@ public class Input {
         }
     }
 
-    public static void inputWinningNumber() {
+    public static List<Integer> inputWinningNumber() {
         System.out.println(inputNumberString);
         // 당첨 번호를 입력 받음. (,)를 기준으로 구분 후 lottoNumber add
-        for (String item : Console.readLine().split(",")) {
+        String inputString = Console.readLine();
+        for (String item : inputString.split(",")) {
             lottoNumber.add(Integer.parseInt(item));
         }
+        return lottoNumber;
     }
 
-    public static void inputBonusNumber() {
+    public static int inputBonusNumber() {
         System.out.println(inputBonusNumberString);
         // 보너스 번호를 입력 받음
         lottoBonusNumber = Integer.parseInt(Console.readLine());
+        return lottoBonusNumber;
     }
 }

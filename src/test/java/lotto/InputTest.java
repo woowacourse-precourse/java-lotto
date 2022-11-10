@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -27,5 +31,15 @@ public class InputTest {
     void inputCoinTest(){
         assertThatThrownBy(() -> Input.coinError(11100))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호를 입력시 배열로 변환한다")
+    @Test
+    void inputWinningNumberToArrayTest(){
+        String input_num = "1,2,3,4,5,6";
+        InputStream in = new ByteArrayInputStream(input_num.getBytes());
+        System.setIn(in);
+        List<Integer> result = Input.inputWinningNumber();
+        assertThat(result).contains(1,2,3,4,5,6);
     }
 }
