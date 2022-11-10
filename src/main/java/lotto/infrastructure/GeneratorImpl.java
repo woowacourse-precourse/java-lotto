@@ -27,4 +27,9 @@ public class GeneratorImpl implements Generator {
     public String generateLotto() {
         return Console.readLine();
     }
+
+    @Override
+    public String generateBonusLottoNumber() {
+        return Console.readLine();
+    }
 }

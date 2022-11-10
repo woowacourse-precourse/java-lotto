@@ -12,5 +12,5 @@ public interface Generator {
 
     String generateLotto();
 
-
+    String generateBonusLottoNumber();
 }

@@ -1,6 +1,6 @@
 package lotto.application;
 
-import lotto.common.message.ConsoleOut;
+import static lotto.common.message.ConsoleOut.*;
 import lotto.domain.Generator;
 import lotto.domain.entity.LottoMachine;
 import lotto.domain.entity.User;
@@ -11,17 +11,20 @@ public class LottoProcess {
     private static Generator generator = new GeneratorImpl();
 
     public static void run() {
-        System.out.println(ConsoleOut.INPUT_COST_MASSAGE);
+        System.out.println(INPUT_COST_MASSAGE);
         int money = generator.generateMoney();//
 
         User user = User.of(money, generator);
 
-        System.out.println(user.printCurrentTime() + ConsoleOut.AMOUNT_OF_LOTTOS_MESSAGE);
+        System.out.println(user.printCurrentTime() + AMOUNT_OF_LOTTOS_MESSAGE);
         user.printUserLottosNumbers();
 
-        System.out.println(ConsoleOut.INPUT_WINNING_NUMBER_MESSAGE);
+        System.out.println(INPUT_WINNING_NUMBER_MESSAGE);
         String lottoNumber = generator.generateLotto();
-        generator.numberSeparator(lottoNumber);
+        String[] numberSeparator = generator.numberSeparator(lottoNumber);
 
+        System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
+        String bonusLottoNumber = generator.generateBonusLottoNumber();
+        LottoMachine.of(numberSeparator, Integer.valueOf(bonusLottoNumber));
     }
 }
