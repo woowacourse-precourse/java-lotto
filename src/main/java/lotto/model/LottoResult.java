@@ -29,7 +29,7 @@ public class LottoResult {
     }
 
     public double getRateOfReturn(long purchaseAmount) {
-        return Math.round((getTotalReward() / (double) purchaseAmount) * 100 / 10.0);
+        return (getTotalReward() / (double) purchaseAmount) * 100;
     }
 
     @Override

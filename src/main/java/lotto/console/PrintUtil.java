@@ -35,7 +35,7 @@ public class PrintUtil {
 
     public static void printLottoResult(LottoResult lottoResult, LottoInfo lottoInfo) {
         System.out.println(lottoResult);
-        System.out.printf("총 수익률은 %f%%입니다.", lottoResult.getRateOfReturn
+        System.out.printf("총 수익률은 %.1f%%입니다.", lottoResult.getRateOfReturn
                                                                 (lottoInfo.getPurchaseAmount()));
     }
 }
