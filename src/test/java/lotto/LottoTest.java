@@ -65,4 +65,13 @@ class LottoTest {
         lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         assertThat(lotto.compareBonusNumber(winningNumber)).isEqualTo(false);
     }
+
+    @DisplayName("toString() 테스트")
+    @Test
+    void toStringTest() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+        assertThat(lotto.toString()).isEqualTo("[1, 2, 3, 4, 5, 7]");
+        lotto = new Lotto(List.of(31, 33, 35, 37, 39, 41));
+        assertThat(lotto.toString()).isEqualTo("[31, 33, 35, 37, 39, 41]");
+    }
 }

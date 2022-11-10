@@ -44,4 +44,16 @@ public class Lotto {
         return false;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 0; i < numbers.size()-1; ++i) {
+            sb.append(numbers.get(i));
+            sb.append(", ");
+        }
+        sb.append(numbers.get(numbers.size()-1));
+        sb.append("]");
+        return sb.toString();
+    }
 }
