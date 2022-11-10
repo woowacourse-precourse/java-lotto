@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 class LottoGameServiceTest {
@@ -39,5 +41,75 @@ class LottoGameServiceTest {
         assertThatThrownBy(() -> lottoGameService.getLottoIssueCount(lottoPurchaseAmount))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("로또 구입 금액은 숫자여야합니다.");
+    }
+
+    @Test
+    void 구매한_로또_번호와_당첨_번호_0개_일치() {
+        List<Integer> lottoWinningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> purchaseLottoNumbers = List.of(7, 8, 9, 10, 11, 12);
+        long purchaseNumbersMatchWinningNumbersCount
+                = lottoGameService.getPurchaseNumbersMatchWinningNumbersCount(purchaseLottoNumbers, lottoWinningNumbers);
+
+        assertThat(purchaseNumbersMatchWinningNumbersCount).isEqualTo(0);
+    }
+
+    @Test
+    void 구매한_로또_번호와_당첨_번호_1개_일치() {
+        List<Integer> lottoWinningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> purchaseLottoNumbers = List.of(1, 8, 9, 10, 11, 12);
+        long purchaseNumbersMatchWinningNumbersCount
+                = lottoGameService.getPurchaseNumbersMatchWinningNumbersCount(purchaseLottoNumbers, lottoWinningNumbers);
+
+        assertThat(purchaseNumbersMatchWinningNumbersCount).isEqualTo(1);
+    }
+
+    @Test
+    void 구매한_로또_번호와_당첨_번호_2개_일치() {
+        List<Integer> lottoWinningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> purchaseLottoNumbers = List.of(1, 2, 9, 10, 11, 12);
+        long purchaseNumbersMatchWinningNumbersCount
+                = lottoGameService.getPurchaseNumbersMatchWinningNumbersCount(purchaseLottoNumbers, lottoWinningNumbers);
+
+        assertThat(purchaseNumbersMatchWinningNumbersCount).isEqualTo(2);
+    }
+
+    @Test
+    void 구매한_로또_번호와_당첨_번호_3개_일치() {
+        List<Integer> lottoWinningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> purchaseLottoNumbers = List.of(1, 2, 3, 10, 11, 12);
+        long purchaseNumbersMatchWinningNumbersCount
+                = lottoGameService.getPurchaseNumbersMatchWinningNumbersCount(purchaseLottoNumbers, lottoWinningNumbers);
+
+        assertThat(purchaseNumbersMatchWinningNumbersCount).isEqualTo(3);
+    }
+
+    @Test
+    void 구매한_로또_번호와_당첨_번호_4개_일치() {
+        List<Integer> lottoWinningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> purchaseLottoNumbers = List.of(1, 2, 3, 4, 11, 12);
+        long purchaseNumbersMatchWinningNumbersCount
+                = lottoGameService.getPurchaseNumbersMatchWinningNumbersCount(purchaseLottoNumbers, lottoWinningNumbers);
+
+        assertThat(purchaseNumbersMatchWinningNumbersCount).isEqualTo(4);
+    }
+
+    @Test
+    void 구매한_로또_번호와_당첨_번호_5개_일치() {
+        List<Integer> lottoWinningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> purchaseLottoNumbers = List.of(1, 2, 3, 4, 5, 12);
+        long purchaseNumbersMatchWinningNumbersCount
+                = lottoGameService.getPurchaseNumbersMatchWinningNumbersCount(purchaseLottoNumbers, lottoWinningNumbers);
+
+        assertThat(purchaseNumbersMatchWinningNumbersCount).isEqualTo(5);
+    }
+
+    @Test
+    void 구매한_로또_번호와_당첨_번호_6개_일치() {
+        List<Integer> lottoWinningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> purchaseLottoNumbers = List.of(1, 2, 3, 4, 5, 6);
+        long purchaseNumbersMatchWinningNumbersCount
+                = lottoGameService.getPurchaseNumbersMatchWinningNumbersCount(purchaseLottoNumbers, lottoWinningNumbers);
+
+        assertThat(purchaseNumbersMatchWinningNumbersCount).isEqualTo(6);
     }
 }
