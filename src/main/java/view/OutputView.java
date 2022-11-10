@@ -16,13 +16,13 @@ public enum OutputView {
         System.out.printf(OUTPUT_PURCHASE,lottoCount);
     }
 
-    public void printStatistics(){
+    public void printStatistics(int three, int four, int five, int fiveAndBonus, int six){
         System.out.println(STATISTICS_MESSAGE);
-        System.out.println(STATISTICS_THREE_MATCH);
-        System.out.println(STATISTICS_FOUR_MATCH);
-        System.out.println(STATISTICS_FIVE_MATCH);
-        System.out.println(STATISTICS_FIVE_MATCH_ONE_BONUS);
-        System.out.println(STATISTICS_SIX_MATCH);
+        System.out.printf(STATISTICS_THREE_MATCH, three);
+        System.out.printf(STATISTICS_FOUR_MATCH, four);
+        System.out.printf(STATISTICS_FIVE_MATCH, five);
+        System.out.printf(STATISTICS_FIVE_MATCH_ONE_BONUS, fiveAndBonus);
+        System.out.printf(STATISTICS_SIX_MATCH, six);
     }
 
     public void printEarning(float earning){
