@@ -4,10 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class UserInput {
 
-    private static final String money = new String(Console.readLine());
+    private static final String money = Console.readLine();
     public static String getUserInputMoney(){
 
-        return Console.readLine();
+        return money;
     }
 
     public static String[] getUserInputLottoNumber(){
