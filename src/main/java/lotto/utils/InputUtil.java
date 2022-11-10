@@ -1,20 +1,24 @@
 package lotto.utils;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.exception.ExceptionConstants;
 import lotto.validator.InputValidator;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static lotto.exception.ExceptionConstants.*;
+import static lotto.exception.ExceptionConstants.CANNOT_DUPLICATED_NUMBER;
+import static lotto.exception.ExceptionConstants.CANNOT_INPUT_ZERO;
+import static lotto.exception.ExceptionConstants.CANNOT_SATISFY_NUMBER_RANGE;
+import static lotto.exception.ExceptionConstants.CAN_ONLY_MULTIPLY_1000;
+import static lotto.exception.ExceptionConstants.CAN_ONLY_SIX_COUNT;
 
 public class InputUtil {
 
     public static final int LOTTO_PRICE = 1000;
     public static final String WINNING_NUMBER_DELIM = ",";
+
+    private static List<Integer> winningNumbers;
 
     public static long inputLottoPurchaseAmount() {
 
@@ -33,9 +37,9 @@ public class InputUtil {
 
     public static List<Integer> inputWinningLottoNumber() {
 
-        List<Integer> winningNumbers = Stream.of(Console.readLine().split(WINNING_NUMBER_DELIM))
-                                             .map(Integer::parseInt)
-                                             .collect(Collectors.toList());
+        winningNumbers = Stream.of(Console.readLine().split(WINNING_NUMBER_DELIM))
+                               .map(Integer::parseInt)
+                               .collect(Collectors.toList());
 
         if (!InputValidator.hasSixNumbers(winningNumbers)) {
             throw new IllegalArgumentException(CAN_ONLY_SIX_COUNT);
@@ -50,5 +54,20 @@ public class InputUtil {
         }
 
         return winningNumbers;
+    }
+
+    public static Integer inputBounsLottoNumber() {
+
+        int bounsNumber = Integer.parseInt(Console.readLine());
+
+        if (winningNumbers.contains(bounsNumber)) {
+            throw new IllegalArgumentException(CANNOT_DUPLICATED_NUMBER);
+        }
+
+        if (!InputValidator.isRangeTrue(bounsNumber)) {
+            throw new IllegalArgumentException(CANNOT_SATISFY_NUMBER_RANGE);
+        }
+
+        return bounsNumber;
     }
 }
