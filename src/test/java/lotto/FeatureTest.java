@@ -95,4 +95,11 @@ public class FeatureTest {
         Calculator calculator = new Calculator();
         assertThat(calculator.getProfit(new int[]{0, 0, 0, 0, 1})).isEqualTo(30000000);
     }
+    @Test
+    void 수익률_계산() {
+        Calculator calculator = new Calculator();
+        assertThat(calculator.getEarningsRate(8000,new int[]{1, 0, 0, 0, 0})).isEqualTo(62.5);
+        assertThat(calculator.getEarningsRate(10000,new int[]{1, 0, 0, 0, 0})).isEqualTo(50.0);
+        assertThat(calculator.getEarningsRate(8000000,new int[]{1, 0, 0, 0, 0})).isEqualTo(0.1);
+    }
 }
