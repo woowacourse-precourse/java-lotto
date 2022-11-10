@@ -1,7 +1,8 @@
 ## 🚀 기능 목록
 
-- [x] 금액에 따른 로또 개수 발행 기능(오름차순 정렬) - LottoGenerator#createRandomNumbers()
+- [x] 로또 발행 기능(오름차순 정렬) - LottoGenerator#createRandomNumbers()
 - [ ] 구입 금액 입력 기능 - Console#inputMoney()
+- [ ] 금액에 따른 로또 개수 계산 기능 - Calculrator#getLottoCount() 
 - [ ] 구매한 로또 출력 기능 - Console#outputMyLottos()
 - [ ] 당첨 번호 입력 기능 - Console#inputWinningNumbers()
 - [ ] 보너스 번호 입력 기능 - Console#inputBonusNumber()
