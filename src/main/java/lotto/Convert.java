@@ -40,7 +40,7 @@ public class Convert {
 
     public int toWinLottoBonusNumber(String input) {
         int bonusNumber = toInt(input);
-        validate.validBonusNumber(bonusNumber);
+        validate.validLottoNumber(bonusNumber);
         return bonusNumber;
     }
 }
