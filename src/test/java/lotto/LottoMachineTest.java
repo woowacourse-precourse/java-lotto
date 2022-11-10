@@ -12,4 +12,11 @@ class LottoMachineTest {
         assertThatThrownBy(() -> new LottoMachine(100))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또 구입금액이 1000원 단위가 아닐 경우 예외가 발생한다.")
+    @Test
+    void createWrongMoneyUnit() {
+        assertThatThrownBy(() -> new LottoMachine(1100))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
