@@ -73,6 +73,7 @@
 - [x]  입력값을 검증하는 InputValidator 클래스 추가
     - [x] 구매할 로또 금액에 대한 입력값 검증 메서드 추가
 - [x]  입력을 처리하는 InputView 추가
+- [x]  요청을 처리하는 LottoController 클래스 추가
 
 ### dto
 
