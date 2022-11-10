@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 public class AutomaticLottery {
     public int getLottoPieces(String amount) {
         validateInputType(amount);
-        validateFirstSequence(amount);
         int money = validateAmount(amount);
         return money / 1000;
     }
@@ -48,13 +47,6 @@ public class AutomaticLottery {
     private void validateCharacter(char inputSequence) {
         if (47 >= inputSequence || 58 <= inputSequence) {
             System.out.println("[ERROR] 금액은 숫자로만 입력할 수 있습니다.");
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void validateFirstSequence(String amount) {
-        if (amount.charAt(0) == 48) {
-            System.out.println("[ERROR] 입력 하시는 금액은 0부터 시작할 수 없습니다.");
             throw new IllegalArgumentException();
         }
     }

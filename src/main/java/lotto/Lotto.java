@@ -18,6 +18,7 @@ public class Lotto {
     public static List<Integer> sliceWinningNumber(String winningNumber) {
         validateInputValue(winningNumber);
         validateCommaCount(winningNumber);
+        validateLastIndexIsComma(winningNumber);
         return new ArrayList<>(List.of(winningNumber.split(",")))
                 .stream()
                 .map(Integer::parseInt)
@@ -102,10 +103,23 @@ public class Lotto {
     }
 
     private static void validateCommaCount(String winningNumber) {
-        long commaCount = winningNumber.chars()
-                .filter(w -> w == ',')
-                .count();
-        if (commaCount != 5L) {
+        for (int seq = 0; seq < winningNumber.length(); seq++) {
+            if (seq == winningNumber.length() - 1) {
+                break;
+            }
+            validateDuplicateComma(winningNumber.charAt(seq), winningNumber.charAt(seq+1));
+        }
+    }
+
+    private static void validateDuplicateComma(char sequence1, char sequence2) {
+        if (sequence1 == ',' && sequence2 == ',') {
+            System.out.println("[ERROR] 쉼표(,)는 5개 여야만 합니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void validateLastIndexIsComma(String winningNumber) {
+        if (winningNumber.charAt(winningNumber.length() - 1) == ',') {
             System.out.println("[ERROR] 쉼표(,)는 5개 여야만 합니다.");
             throw new IllegalArgumentException();
         }
