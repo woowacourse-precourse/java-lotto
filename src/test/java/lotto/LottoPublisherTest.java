@@ -1,7 +1,9 @@
 package lotto;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,8 +24,16 @@ class LottoPublisherTest {
     }
 
     @Test
-    void eachLottoShouldHave6UniqueNumbers() {
+    @DisplayName("로또는 6개의 서로 다른 수로 이루어져 있어야 한다.")
+    void lottoShouldHave6UniqueNumbers() {
+        // given
+        LottoPublisher publisher = new LottoPublisher();
 
+        // when
+        List<Lotto> lottos = publisher.publishLottos(10000);
+
+        // then
+        lottos.forEach(lotto -> assertThat(new HashSet<>(lotto.getNumbers()).size()).isEqualTo(6));
     }
 
     @Test
