@@ -17,7 +17,6 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         Set<Integer> uniqueNumbers = new HashSet<>(numbers);
-
         List<Integer> outOfRangeNumbers = new ArrayList<>(numbers);
         outOfRangeNumbers.removeAll(Bug.ERROR.getRangeOfNumber());
 
@@ -33,7 +32,8 @@ public class Lotto {
     }
 
     public int checkNumbers(List<Integer> userLottoNumbers) {
-        userLottoNumbers.removeAll(numbers);
+        List<Integer> lottoNumbers = new ArrayList<>(userLottoNumbers);
+        lottoNumbers.removeAll(numbers);
         int matchingNumber = numbers.size() - userLottoNumbers.size();
         return matchingNumber;
     }
