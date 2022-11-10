@@ -18,4 +18,8 @@ public class WinningLotto extends Lotto{
 
         this.bonusNumber = bonusNumber;
     }
+
+    public int getBonusNumber() {
+        return this.bonusNumber;
+    }
 }
