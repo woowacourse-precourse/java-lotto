@@ -41,4 +41,15 @@ class LottoTest {
 
         assertThat(List.of(1, 2, 3, 4, 5, 6)).isEqualTo(lotto.getNumbers());
     }
+
+    @DisplayName("두 개의 로또를 비교하여 일치하는 번호 개수를 반환하는지 확인")
+    @Test
+    void compare() {
+        Lotto buy = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto equalFour = new Lotto(List.of(1, 2, 3, 4, 7, 8));
+        Lotto equalSix = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        assertThat(buy.compare(equalFour)).isEqualTo(4);
+        assertThat(buy.compare(equalSix)).isEqualTo(6);
+    }
 }
