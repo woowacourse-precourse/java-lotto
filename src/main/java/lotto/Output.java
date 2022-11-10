@@ -44,4 +44,9 @@ public class Output {
             System.out.println(p.getPrizePrint() + " - " + stats.get(p) + "개");
         }
     }
+
+    public static void printLottoRate() {
+        double rate = Analyse.rateLotto(lottos.size()*1000);
+        System.out.println(Print.RATE_BEFORE + rate + Print.RATE_AFTER);
+    }
 }
