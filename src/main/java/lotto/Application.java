@@ -23,7 +23,7 @@ public class Application {
         return decimalFormat.format(number);
     }
 
-    public static Integer readNumber() throws IllegalArgumentException{
+    public static Integer readMoney() throws IllegalArgumentException{
         String userInput = Console.readLine();
         try {
             return Integer.valueOf(userInput);
@@ -40,7 +40,7 @@ public class Application {
 
     public static Integer howManyLotto() {
         System.out.println("구입 금액을 입력해 주세요.");
-        Integer money = readNumber();
+        Integer money = readMoney();
         validateMoney(money);
         return Integer.valueOf(money/lottoPrice);
     }
