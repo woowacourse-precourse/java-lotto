@@ -73,4 +73,28 @@ class LottoTest {
         assertThatThrownBy(()->validatePurchaseAmountInput(input)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 구입금액을 입력해 주세요.");
     }
+
+    @DisplayName("당첨번호 입력 검증")
+    @Test
+    void 당첨번호_입력기능_검증() {
+        Winning winning = new Winning();
+
+        String input1 = "1,2,3,4,5,6";
+        assertThatThrownBy(()->winning.validateWinningNumberInput(input1)).doesNotThrowAnyException();
+
+        String input2 = "1,1,3,4,9,7";
+        assertThatThrownBy(()->winning.validateWinningNumberInput(input2)).isInstanceOf(IllegalArgumentException.class);
+
+        String input3 = "1,0,3,4,9,7";
+        assertThatThrownBy(()->winning.validateWinningNumberInput(input3)).isInstanceOf(IllegalArgumentException.class);
+
+        String input4 = "1,,3,4,9,7";
+        assertThatThrownBy(()->winning.validateWinningNumberInput(input4)).isInstanceOf(IllegalArgumentException.class);
+
+        String input5 = "1,1,3,a,9,7";
+        assertThatThrownBy(()->winning.validateWinningNumberInput(input5)).isInstanceOf(IllegalArgumentException.class);
+
+        String input6 = "1,1,3,4,9,7,0";
+        assertThatThrownBy(()->winning.validateWinningNumberInput(input6)).isInstanceOf(IllegalArgumentException.class);
+    }
 }
