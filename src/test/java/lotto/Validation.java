@@ -46,6 +46,17 @@ public class Validation {
             assertThatThrownBy(() -> ValidationUtil.isValidCount("1,2,3,4,5"))
                     .isInstanceOf(IllegalArgumentException.class);
         }
+
+        @Test
+        void isValid() {
+            assertThat(ValidationUtil.isValidCount("1,2,3,4,5,6")).isTrue();
+            assertThat(ValidationUtil.isValidCount("1,2,3,4,5,45")).isTrue();
+
+            assertThatThrownBy(() -> ValidationUtil.isValidCount("1,2,3,4,5,46"))
+                    .isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(() -> ValidationUtil.isValidCount("1,2,3,4"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
     }
     
 }

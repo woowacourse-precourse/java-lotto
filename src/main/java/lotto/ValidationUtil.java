@@ -24,6 +24,9 @@ public class ValidationUtil {
         if (split.length != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 총 6개의 숫자여야 합니다.");
         }
+        for (String s : split) {
+            isInRange(s);
+        }
         return true;
     }
 }
