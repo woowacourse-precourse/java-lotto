@@ -25,4 +25,12 @@ public class InputMoneyVerifier {
             throw new IllegalArgumentException("[ERROR] 중복되는 수는 입력할 수 없습니다.");
         }
     }
+
+    public static void isNumberFrom1To45(List<Integer> prizeLottoNumbers) {
+        for (Integer prizeLottoNumber : prizeLottoNumbers) {
+            if (prizeLottoNumber < 1 || prizeLottoNumber > 45) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            }
+        }
+    }
 }

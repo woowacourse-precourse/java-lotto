@@ -32,6 +32,7 @@ public class Util {
         List<Integer> prizeLottoNumbers = splitByComma(inputPrizeNumbers);
         InputMoneyVerifier.isList6Size(prizeLottoNumbers);
         InputMoneyVerifier.isDuplicatedNumberInList(prizeLottoNumbers);
+        InputMoneyVerifier.isNumberFrom1To45(prizeLottoNumbers);
         return prizeLottoNumbers;
     }
 
