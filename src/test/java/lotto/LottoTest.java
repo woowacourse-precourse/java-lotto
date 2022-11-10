@@ -70,7 +70,23 @@ class LottoTest {
                                 .allMatch(number -> number >= 1 && number <= 45)))
                         .isTrue()
         );
+    }
 
+    @Test
+    @DisplayName("구매한 로또 번호와 당첨 로또 번호를 비교하여 당첨된 횟수를 반환하는 테스트")
+    void winningLottoNumberCount() {
+        // given
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        WinningLottoNumber winningLottoNumber = WinningLottoNumber
+                .createWinningLottoNumber(List.of(1, 2, 3, 4, 5, 6), 7);
 
+        int expectedWinningNumberCount = 6;
+
+        // when
+        WinningNumberCount winningNumberCount = lotto.winningLottoNumberCount(winningLottoNumber);
+
+        // then
+        assertThat(winningNumberCount).isNotNull();
+        assertThat(winningNumberCount.getWinningCount()).isEqualTo(expectedWinningNumberCount);
     }
 }
