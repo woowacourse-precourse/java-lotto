@@ -19,7 +19,7 @@ public class CheckHandler {
 	}
 
 	public static void isLotto(String input) {
-		if (!input.matches("^[0-9]+|,$")) {
+		if (!input.matches("^[0-9,]+$")) {
 			ExceptionHandler.raisingException(ErrorView.isNotLotto());
 		}
 	}

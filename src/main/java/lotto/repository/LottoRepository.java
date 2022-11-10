@@ -28,14 +28,13 @@ public class LottoRepository {
 		return new Lotto(lotto);
 	}
 
-	public List<Integer> makeWinnerLotto(String inputLottoWinningNumber, String bonusNumber) {
+	public List<Integer> makeWinnerLotto(String inputLottoWinningNumber) {
 		StringTokenizer st = new StringTokenizer(inputLottoWinningNumber, ",");
 		Set<Integer> lottoNumber = new TreeSet<>();
 		while (st.hasMoreTokens()) {
 			int numbers = Integer.parseInt(st.nextToken());
 			lottoNumber.add(numbers);
 		}
-		lottoNumber.add(Integer.parseInt(bonusNumber));
 		CheckHandler.isNotLotto(lottoNumber);
 		return new ArrayList<>(lottoNumber);
 	}

@@ -33,11 +33,15 @@ public class LottoService {
 	public Lotto makeWinnerLotto() {
 		String inputLottoWinningNumber = InputHandler.inputLottoWinningNumber();
 		CheckHandler.isLotto(inputLottoWinningNumber);
+		List<Integer> lottoNumbers = lottoRepository.makeWinnerLotto(inputLottoWinningNumber);
+		return new Lotto(lottoNumbers);
+	}
+
+	public int makeWinnerBonusNumber() {
 		String bonusNumber = InputHandler.inputLottoWinningBonusNumber();
 		CheckHandler.isNumber(bonusNumber);
 		CheckHandler.isLottoNumber(bonusNumber);
-		List<Integer> lottoNumbers = lottoRepository.makeWinnerLotto(inputLottoWinningNumber, bonusNumber);
-		return new Lotto(lottoNumbers);
+		return Integer.parseInt(bonusNumber);
 	}
 
 }

@@ -12,7 +12,9 @@ public class LottoController {
 
 	public void run() {
 		LottoGroup lottoGroup = makeLottoGroup();
+		System.out.println();
 		Lotto winnerLotto = makeWinnerLotto();
+		int bonusNumber = lottoService.makeWinnerBonusNumber();
 	}
 
 	private Lotto makeWinnerLotto() {
