@@ -13,7 +13,7 @@
         / List<List<Integer>> getPurchaseLottoList(int purchaseNumber)
 ###3. 당첨 확인
     1) 숫자 포함 여부 확인
-        / int containNumber(int LottoNumber, List<Integer> winningNumber)
+        / boolean isContainNumber(int LottoNumber, List<Integer> winningNumber)
     2) 당첨갯수 확인
         / int getMacthingNumber(List<Integer> winningNumber, List<Integer> LottoNumbers)   
     3) 당첨배열 생성 [3개, 4개, 5개, 5개+보너스, 6개]
