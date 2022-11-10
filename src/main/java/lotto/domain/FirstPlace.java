@@ -1,10 +1,11 @@
 package lotto.domain;
 
+import static lotto.utils.LottoValidator.validateFirstPlace;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import lotto.utils.InputValidator;
 
 
 public class FirstPlace {
@@ -12,7 +13,7 @@ public class FirstPlace {
     private final List<Integer> firstPlace;
 
     public FirstPlace(String firstPlace) {
-        InputValidator.validateFirstPlace(firstPlace);
+        validateFirstPlace(firstPlace);
         this.firstPlace = Arrays.stream(firstPlace.split(DIVIDE_POINT)).map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
