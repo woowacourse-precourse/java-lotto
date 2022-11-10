@@ -34,4 +34,11 @@ class LottoRankTest {
     void fourthRank(final boolean existBonusLottoNumber) {
         assertThat(LottoRank.parseRank(4, existBonusLottoNumber)).isEqualTo(LottoRank.FOURTH);
     }
+    
+    @DisplayName("5등인지 확인")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(booleans = {true, false})
+    void fifthRank(final boolean existBonusLottoNumber) {
+        assertThat(LottoRank.parseRank(3, existBonusLottoNumber)).isEqualTo(LottoRank.FIFTH);
+    }
 }
