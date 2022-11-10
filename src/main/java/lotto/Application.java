@@ -5,6 +5,6 @@ import lotto.domain.lotto.presentation.dto.LottoController;
 public class Application {
     public static void main(String[] args) {
         LottoController lottoController = new LottoController();
-        System.out.println(lottoController.inputMoney());
+        lottoController.getLottoCount(lottoController.getInputMoney());
     }
 }

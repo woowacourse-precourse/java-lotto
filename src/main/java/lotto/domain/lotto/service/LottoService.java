@@ -6,9 +6,13 @@ import lotto.global.util.Util;
 
 public class LottoService {
 
-    public int getInputMoney() {
+    public int inputMoney() {
         int inputMoney = Util.stringToInt(InputView.getInputMoney());
         InputMoneyVerifier.isMoneyDividedBy1000(inputMoney);
         return inputMoney;
+    }
+
+    public int lottoCount(int inputMoney) {
+        return inputMoney / 1000;
     }
 }
