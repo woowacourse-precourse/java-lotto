@@ -50,8 +50,13 @@ class ValidatorTest {
     }
 
     @Test
+    @DisplayName("구입 금액이 1,000원 단위가 아니면 예외를 던진다.")
     void paymentWithWrongUnit() {
+        // given
+        Validator validator = new Validator();
 
+        // throws
+        assertThatThrownBy(() -> validator.validatePayment("1001")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
