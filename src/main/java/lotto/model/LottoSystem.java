@@ -1,6 +1,7 @@
 package lotto.model;
 
 class LottoSystem {
+
     private final LottoNumbers lottoNumbers;
     private int usedMoney;
     LottoSystem() {
