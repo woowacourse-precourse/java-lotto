@@ -27,12 +27,16 @@ public class LottoMachine {
         this.bonusNumber = bonusNumber;
     }
 
+    public static LottoMachine of(String[] lottoNumbersArray, int bonusNumber) {
+        return new LottoMachine(lottoNumbersArray, bonusNumber);
+    }
+
     public int currentBonusNumber() {
         return bonusNumber;
     }
 
-    public List<Integer> currentMachineNumbers() {
-        return lottoNumbers.currentLottoNumbers();
+    public Lotto currentMachineNumbers() {
+        return lottoNumbers;
     }
 
     private List<Integer> ArrayToLottoNumbers(String[] lottoNumbersArray) {
@@ -60,9 +64,5 @@ public class LottoMachine {
             throw new IllegalArgumentException(
                 ERROR_CODE + BONUS_NUMBER_DUPLICATION_MESSAGE);
         }
-    }
-
-    public static LottoMachine of(String[] lottoNumbersArray, int bonusNumber) {
-        return new LottoMachine(lottoNumbersArray, bonusNumber);
     }
 }

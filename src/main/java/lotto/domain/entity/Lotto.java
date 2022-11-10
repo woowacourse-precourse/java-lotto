@@ -2,10 +2,10 @@ package lotto.domain.entity;
 
 import static lotto.common.message.ExceptionMessage.*;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import lotto.domain.vo.MatchReport;
 
 public class Lotto {
 
@@ -49,14 +49,25 @@ public class Lotto {
         System.out.println(numbers);
     }
 
-    public int matchNumbers(Lotto lottoNumbers) {
+    public MatchReport matchNumbers(Lotto lottoNumbers, int bonusNumber) {
+
+        MatchReport matchReport = new MatchReport();
         List<Integer> givenLottoNumbers = lottoNumbers.currentLottoNumbers();
-        int result = 0;
-        for (Integer number : numbers) {
-            if (givenLottoNumbers.contains(number)) {
-                result += 1;
-            }
+
+        if (numbers.contains(bonusNumber)) {
+            matchReport.bonusTurnTrue();
         }
-        return result;
+
+        for (Integer number : numbers) {
+            hasNumber(matchReport, givenLottoNumbers, number);
+        }
+        return matchReport;
+    }
+
+    private void hasNumber(MatchReport matchReport, List<Integer> givenLottoNumbers,
+        Integer number) {
+        if (givenLottoNumbers.contains(number)) {
+            matchReport.countPlus();
+        }
     }
 }
