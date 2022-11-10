@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -12,6 +13,7 @@ public class Lotto {
         validateDuplicateNumberExist(numbers);
         validateNumbersInRange(numbers);
         this.numbers = numbers;
+        numbers.sort(Comparator.naturalOrder());
     }
 
     private void validateLottoSize(List<Integer> numbers) {
