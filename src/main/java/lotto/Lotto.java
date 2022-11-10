@@ -17,4 +17,13 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public int compareNumbers(List<Integer> issuedNumbers) {
+        int count = 0;
+        for (Integer issuedNumber : issuedNumbers) {
+            if (numbers.contains(issuedNumber)) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
