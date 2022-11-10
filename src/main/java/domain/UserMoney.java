@@ -3,6 +3,7 @@ package domain;
 import static view.ExceptionInfo.EXCEPTION_DETECT;
 
 import camp.nextstep.edu.missionutils.Console;
+import constant.ErrorMessage;
 import java.util.stream.IntStream;
 import view.ExceptionInfo;
 
@@ -10,6 +11,7 @@ public class UserMoney {
 
     public static int inputMoney(){
         String input_money = Console.readLine();
+
         if(!validateMoney(input_money)){
             return EXCEPTION_DETECT;
         }
@@ -27,38 +29,38 @@ public class UserMoney {
         return true;
     }
 
-    private static boolean checkProcessIsCorrectMoney(String input_money) {
+    private static boolean checkProcessIsCorrectMoney(String input_money){
         try{
             isCorrectMoney(Integer.parseInt(input_money));
         }
         catch (IllegalArgumentException e){
-            ExceptionInfo.printInCorrectMoney();
+            ExceptionInfo.printException(e);
             return true;
         }
         return false;
     }
 
-    private static boolean checkProcessIsNumber(String input_money) {
+    private static boolean checkProcessIsNumber(String input_money){
         try {
            isNumber(input_money);
         }
         catch(IllegalArgumentException e){
-            ExceptionInfo.printNotNumber();
+            ExceptionInfo.printException(e);
             return true;
         }
         return false;
     }
 
-    private static void isCorrectMoney(int money) {
+    private static void isCorrectMoney(int money){
         if(money %1000>0){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.ERROR_INCORRECT_MONEY.getMessage());
         }
     }
 
     private static void isNumber(String input_money){
         IntStream chars = input_money.chars();
-        if(chars.anyMatch(c -> c<'0' && c>'9')){
-            throw new IllegalArgumentException();
+        if(chars.anyMatch(c ->  (c<'0' || c>'9'))){
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_NUMBER.getMessage());
         }
     }
 
