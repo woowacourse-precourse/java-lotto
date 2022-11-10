@@ -4,6 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Result {
+    public static final int PERCENT = 100;
+    public static final int ROUND_TWO = 100;
+    public static final double TWO_DECIMAL = 100.0;
+
     private static HashMap<MatchCount, Integer> totalMatchResult = new HashMap<>();
     private int totalPrizeMoney = 0;
 
@@ -37,6 +41,6 @@ public class Result {
     }
 
     public double calculateReturnOfRate(int price) {
-        return Math.round((double) totalPrizeMoney/price);
+        return Math.round(((double)totalPrizeMoney/price)*PERCENT*ROUND_TWO)/TWO_DECIMAL;
     }
 }
