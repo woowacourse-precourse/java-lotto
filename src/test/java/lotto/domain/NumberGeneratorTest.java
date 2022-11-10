@@ -19,8 +19,14 @@ class NumberGeneratorTest {
     @DisplayName("생성한 임의의 수 개수가 6개인지 확인한다.")
     @Test
     void checkNumbersSize() {
-        assertThat(numbers)
-                .hasSize(6);
+        assertThat(numbers).hasSize(6);
+    }
+
+
+    @DisplayName("생성한 임의의 수 범위가 1부터 45까지인지 확인한다.")
+    @Test
+    void checkNumbersRange() {
+        numbers.forEach(number -> assertThat(number).isBetween(1, 45 + 1));
     }
 
 }
