@@ -30,4 +30,10 @@ public class View {
         }
         return winningLotto;
     }
+
+    public int askBonusNumber(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonusNumber = Console.readLine();
+        return Integer.parseInt(bonusNumber);
+    }
 }
