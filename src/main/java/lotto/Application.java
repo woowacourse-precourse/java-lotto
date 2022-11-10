@@ -11,7 +11,7 @@ public class Application {
     static int BONUS_NUMBER;
     static int numberOfPurchasedLotto;
     static List<Lotto> purchasedLotto =  new ArrayList<>();
-    static List<Integer> trackEachPlace;
+    static List<Integer> trackEachPlace = List.of(0,0,0,0,0);
     static Lotto winning_number_lotto;
     static final String ENTER_THE_AMOUNT = "구입금액을 입력해 주세요.";
     static final String ENTER_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
@@ -34,9 +34,10 @@ public class Application {
         }
     }
     public static void main(String[] args) {
-//        validateGivenNumbers();
-//        initializeBonusNumber();
         printLottoNumbers();
+        validateGivenNumbers();
+        initializeBonusNumber();
+        countMatchingNumber();
     }
 
     public static void enterTheAmount(){
@@ -89,5 +90,20 @@ public class Application {
             Collections.sort(purchasedLotto.get(index).getNumbers());
             System.out.println(purchasedLotto.get(index).getNumbers().toString());
         }
+    }
+    public static void countMatchingNumber(){
+        for(Lotto lotto: purchasedLotto){
+            int matchedNumber = returnMatchedNumber(lotto);
+            System.out.println("Matching number--> " + matchedNumber);
+        }
+    }
+
+    public static int returnMatchedNumber(Lotto lotto){
+        int count = 0;
+        for(int number: winning_number_lotto.getNumbers()){
+            if(lotto.containsTheNumber(number)) count++;
+        }
+        if(lotto.containsTheNumber(BONUS_NUMBER)) count++;
+        return count;
     }
 }
