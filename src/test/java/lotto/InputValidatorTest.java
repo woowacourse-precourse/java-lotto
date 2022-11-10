@@ -16,4 +16,13 @@ class InputValidatorTest {
         assertThatThrownBy(() -> new Lotto(input))
                 .isInstanceOf(IllegalArgumentException.class);
        }
+
+    @DisplayName("사용자가 올바르지 않은 money를 넣을 시 예외를 던진다")
+    @Test
+    void inputMoneyByInvalidForm() {
+        String input = "1,000";
+
+        assertThatThrownBy(() -> new User(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
