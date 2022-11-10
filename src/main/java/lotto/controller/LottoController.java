@@ -15,6 +15,7 @@ public class LottoController {
     public void startLotto(){
         inIt();
 
+        OutputView.printGameCount(user.getUserGameCnt());
     }
 
     private void inIt(){
