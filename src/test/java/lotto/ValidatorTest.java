@@ -31,8 +31,8 @@ public class ValidatorTest {
 
     @DisplayName("입력 받은 값이 1과 45사이의 정수가 아닌 경우")
     @ParameterizedTest(name = "{index} {displayName} input={0}")
-    @ValueSource(strings = {"0", "46"})
-    void validateIsinRange(String input) {
+    @ValueSource(ints = {0, 46})
+    void validateIsinRange(int input) {
         assertThatThrownBy(() -> Validator.isInRange(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
