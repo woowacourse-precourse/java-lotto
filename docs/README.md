@@ -3,9 +3,9 @@
 - [x] 로또 구입 금액을 입력받는 기능 - Input#inputCoin()
   - [x] 1,000원 단위가 아닐시 예외 처리 - Input#coinError()
 - [x] 구입 개수만큼 랜덤 번호를 부여(1~45) - NumberGenerator#createRandomNumber()
-  - [x] 6자리 번호를 입력 받음
-  - [x] 1자리 보너스 번호를 입력 받음
-  - [ ] 랜덤 번호를 부여한 로또 출력 - Output#outputRandomNumber()
+  - [ ] 랜덤 번호를 부여한 로또 출력
+- [x] 6자리 번호를 입력 받음 - Input#inputWinningNumber()
+- [x] 1자리 보너스 번호를 입력 받음 - Input#inputBonusNumber()
 - [x] 당첨 번호를 입력받는 기능((,)를 기준으로 구분) - Input#inputNumber()
   - [x] 입력받은 숫자에 반복되는 숫자가 있을 시 에러처리 - Error#numberRepeatError()
   - [x] 입력받은 숫자에 1~45 사이의 숫자가 아닐 시 에러처리 - Error#numberRangeError()
