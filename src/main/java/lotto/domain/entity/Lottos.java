@@ -3,6 +3,7 @@ package lotto.domain.entity;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 import lotto.domain.Generator;
 
 public class Lottos {
@@ -27,11 +28,15 @@ public class Lottos {
         }
     }
 
-    public static Lottos from(int amountOfLotto, Generator generator) {
+    public static Lottos of(int amountOfLotto, Generator generator) {
         return new Lottos(amountOfLotto, generator);
     }
 
     public List<Lotto> currentLottos() {
         return lottos;
+    }
+
+    public void printWholeLottoNumbers() {
+        lottos.stream().forEach(lotto -> lotto.printLottoNumbers());
     }
 }

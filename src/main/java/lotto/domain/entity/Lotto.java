@@ -44,4 +44,8 @@ public class Lotto {
     public List<Integer> currentLottoNumbers() {
         return numbers;
     }
+
+    public void printLottoNumbers() {
+        System.out.println(numbers);
+    }
 }

@@ -25,7 +25,7 @@ public class Money {
         }
     }
 
-    public int currentMoney() {
-        return money;
+    public int currentTime() {
+        return money / 1000;
     }
 }
