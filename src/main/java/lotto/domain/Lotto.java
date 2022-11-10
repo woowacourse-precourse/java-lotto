@@ -27,6 +27,13 @@ public class Lotto {
     //보너스 번호를 제외하고 validate 를 만든거보니까 보너스 번호는 enum 으로 만들던가 해야겠다.
     // TODO: 추가 기능 구현
 
+    //예외사항(입력단위가 1000원이 아니면)
+    private int getLottoAmount(int money) {
+        int amount = money/1000;
+
+        return amount;
+    }
+
     private int stringToInt(String userInput) {
         return Integer.parseInt(userInput);
     }
