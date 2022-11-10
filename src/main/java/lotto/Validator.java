@@ -5,7 +5,8 @@ import java.util.List;
 public class Validator {
 
     public void validateAmountOfPurchaseMoney(String amountOfPurchaseMoney) {
-
+        if (!isPositiveInteger(amountOfPurchaseMoney) || !isAvailablePayment(amountOfPurchaseMoney))
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위의 수이어야 합니다.");
     }
 
     public void validateWinningNumbers(List<Integer> winningNumbers) {
