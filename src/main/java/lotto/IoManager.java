@@ -27,8 +27,7 @@ public class IoManager {
                     .collect(Collectors.toList());
 
         } catch (Exception e) {
-            System.out.println("[ERROR] 형식에 알맞지 않은 입력입니다. 입력은 숫자[,숫자] 형태로 주어져야 합니다.");
-            throw new IllegalArgumentException("입력은 숫자[,숫자]형태여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 형식에 알맞지 않은 입력입니다. 입력은 숫자[,숫자] 형태로 주어져야 합니다.");
         }
     }
 
@@ -36,8 +35,7 @@ public class IoManager {
         try {
             return Integer.parseInt(Console.readLine());
         } catch (Exception e) {
-            System.out.println("[ERROR] 형식에 알맞지 않은 입력입니다. 입력은 숫자로 주어져야 합니다.");
-            throw new IllegalArgumentException("입력은 숫자형태여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 형식에 알맞지 않은 입력입니다. 입력은 숫자로 주어져야 합니다.");
         }
     }
 
