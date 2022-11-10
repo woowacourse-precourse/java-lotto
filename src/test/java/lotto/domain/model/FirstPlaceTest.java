@@ -1,13 +1,11 @@
 package lotto.domain.model;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import lotto.domain.model.FirstPlace;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 class FirstPlaceTest {
 
@@ -79,7 +77,10 @@ class FirstPlaceTest {
     void createFirstPlaceAndBonusNumberDuplicate(){
         String firstPlace = "1,2,3,4,5,6";
         String bonus = "3";
-        assertThatThrownBy(() -> new FirstPlace(firstPlace).duplicateCheckBonusNumber(bonus))
-                .isInstanceOf(IllegalArgumentException.class);
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
+                () -> new FirstPlace(firstPlace).duplicateCheckBonusNumber(bonus));
+        assertThat(exception.getMessage())
+                .isEqualTo("[ERROR] Lotte Has A Duplicate Value With The Bonus Number.");
+
     }
 }
