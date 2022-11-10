@@ -1,4 +1,51 @@
  
+## 🚀 기능 목록
+
+- ### lotto 패키지
+  - #### data
+    - type
+      - MessageType: 로또 게임 진행시 콘솔 출력 메시지
+      - ErrorType: 에러 발생 종류
+      - StepType: 로또 구매의 진행 단계
+      - CommandType: 입력 명령어 종류
+      - RegExType: 로또 게임 진행에 필요한 정규표현식
+      - LottoSelectType: 로또 숫자 선택 방법
+      - LottoResultType: 로또 당첨 등급
+      - LottoAmountType: 로또 당첨 금액
+      - LottoNumberType: 로또 숫자 갯수, 최소, 최대값 등의 상수
+    - dto
+      - Lotto: 로또 1매에 포함된 숫자들
+        - .validate(): 숫자 개수를 검증한다
+      - LottoBoughtDto: 한 회에 구매한 모든 로또 
+      - LottoWinnerDto: 당첨 로또 숫자 
+  - #### controller
+    - LottoController
+      - .run(): 로또 게임을 실행합니다.
+  - #### service
+    - LottoService
+      - .buy(): 로또를 구매합니다.
+      - .decideWinner(): 당첨 번호를 정합니다.
+      - .decideBonus(): 보너스 번호를 정합니다.
+  - #### view
+    - LottoView
+      - .resolveLottoBought(): 구매한 로또의 번호를 알려줍니다.
+      - .resolveLottoResult(): 로또 당첨 내역을 알려줍니다.
+  - #### utils
+    - RandomNumberGenerator
+      - .generateNumbersInRange(): 범위 내의 임의의 숫자를 지정된 갯수만큼 줍니다.
+    - Validator
+      - .isDivisibleBy(): 한 숫자가 다른 숫자로 나누어 떨어지는지 알려줍니다.
+      - .isInBetween(): 한 숫자가 다른 두 숫자 사이의 값인지 알려줍니다.
+      - .isPatternOf(): 특정 문자열이 정규식과 일치하는지 알려줍니다.
+      - .hasSizeOf(): 배열의 원소 개수를 확인한다.
+      - .hasUniqueElements(): 배열에 중복된 원소가 있는지 확인한다.
+
+## 🔍 설계시 고려 사항
+* '한 단계에서 처리하고 싶은 명령어 종류가 하나가 아니면 어떡하지?'
+  * 각 StepType 에 사용 가능한 CommandType을 매핑하고, CommandType에선 특정 인풋이 해당 명령어인지 확인하는 과정을 넣는다.
+* '숫자 임의 선택도 있지만, 본인 스스로 선택 하는 방법도 있지 않나?'
+  * LottoSelectType 사용으로 확장 가능성 수립
+
 ## ✏ 과제를 진행하며 배운 점
 
 * ### MVC 패턴이란?[[참조](https://murphymoon.tistory.com/entry/%EC%9A%B0%EC%95%84%ED%95%9C-%ED%85%8C%ED%81%AC-MVC-%EB%A6%AC%EB%B7%B0-%EB%A0%88%EC%9D%B4%EC%96%B4-MVC-%ED%8C%A8%ED%84%B4-5%EB%A0%88%EC%9D%B4%EC%96%B4)]
