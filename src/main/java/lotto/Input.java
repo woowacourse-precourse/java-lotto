@@ -18,7 +18,7 @@ public class Input {
     }
 
     public static int getInputToInt(String readLine) {
-        //예외 처리 추가 필요
+        validNum(readLine);
         return Integer.parseInt(readLine);
     }
 
@@ -26,9 +26,36 @@ public class Input {
         String[] tempNumberList = readLine.split(",");
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i <6 ; i++) {
-            result.add(Integer.parseInt(tempNumberList[i]));
+            validNum(tempNumberList[i]);
+            int num = Integer.parseInt(tempNumberList[i]);
+
+            result.add(num);
         }
         return result;
+    }
+
+    private static void validNum(String s) {
+        if(!isNum(s)){
+            throw new IllegalArgumentException("[ERROR] 로또 번호 문자열에 숫자가 아닌 문자가 있습니다.");
+        }
+        if(!isValidNumber(s)){
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        };
+    }
+
+    private static boolean isValidNumber(String s) {
+        int n = Integer.parseInt(s);
+        return n >= 1 && n <= 45;
+    }
+
+    private static boolean isNum(String s) {
+        for (int i = 0; i <s.length() ; i++) {
+            char inspection = s.charAt(i);
+            if (!(inspection >= '1' && inspection <= '9')) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }

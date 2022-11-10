@@ -102,4 +102,6 @@ public class FeatureTest {
         assertThat(calculator.getEarningsRate(10000,new int[]{1, 0, 0, 0, 0})).isEqualTo(50.0);
         assertThat(calculator.getEarningsRate(8000000,new int[]{1, 0, 0, 0, 0})).isEqualTo(0.1);
     }
+
+
 }
