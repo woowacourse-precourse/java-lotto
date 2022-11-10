@@ -41,11 +41,11 @@ public class User {
     }
 
     public void validate(String money) {
-        numericValidate(money);
-        rangeValidate(money);
+        validateNumeric(money);
+        validateDivided(money);
     }
 
-    public void numericValidate(String money) {
+    public void validateNumeric(String money) {
         try {
             Integer inputMoney = Integer.valueOf(money);
         } catch (NumberFormatException e) {
@@ -54,7 +54,14 @@ public class User {
         }
     }
 
-    public void rangeValidate(String money) {
+    public void validatePositive(String money) {
+        if (Integer.valueOf(money) < 0) {
+            ErrorMessage.printNegativeNumberErrorMessage();
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void validateDivided(String money) {
         if (Integer.valueOf(money) % 1000 != 0) {
             ErrorMessage.printMoneyInputErrorMessage();
             throw new IllegalArgumentException();
