@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -61,19 +62,20 @@ public class Lotto {
     }
 
     //한 개의 로또 번호 생성 (완성)
-    public static int[] oneLotto(){
-        int[] oneLotto = new int[LOTTO_LENGTH];
-        for (int i = 0; i < LOTTO_LENGTH; i++){
+    public static ArrayList<Integer> oneLotto(){
+        ArrayList<Integer> oneLotto = new ArrayList<>();
+        for (int i = 0; i < 6; i++){
             int num = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
-            oneLotto[i] = num;
+            oneLotto.add(num);
             for(int j = 0; j < i; j++){
-                if(oneLotto[i] == oneLotto[j]){
+                if(oneLotto.get(i) == oneLotto.get(j)){
+                    oneLotto.remove(i);
                     i--;
                     break;
                 }
             }
         }
-
+        Collections.sort(oneLotto);
         return oneLotto;
     }
 
@@ -83,9 +85,12 @@ public class Lotto {
     // 내 로또 생성
     public static ArrayList<Integer> myLottoNumber(int num) throws IOException { // 랜덤 로또 생성
         num = theNumberOfLotto();
-        for (int i = 0; i < theNumberOfLotto(); i++){
-            Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
-        }
+        List<Array> lottoList = new ArrayList<>();
+
+//        for (int i = 0; i < num; i++){
+//            lottoList.add(oneLotto());
+//        }
+
         Collections.sort(myLottoNumber(num)); // 로또 번호 정렬
         return null;
     }
