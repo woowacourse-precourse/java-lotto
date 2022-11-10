@@ -35,5 +35,8 @@ public class LottoDraw {
         if (winningNumbers.get().contains(bonusNumber)) {
             throw new IllegalArgumentException("[Error] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
         }
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalArgumentException("[Error] 보너스 번호는 1~45 사이의 숫자입니다.");
+        }
     }
 }
