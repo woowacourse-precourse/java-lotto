@@ -38,6 +38,10 @@ enum Rank {
     public int getMoney() {
         return money;
     }
+
+    public String getMoneyWon() {
+        return moneyWon;
+    }
 }
 public class Lotto {
     private final List<Integer> numbers;
