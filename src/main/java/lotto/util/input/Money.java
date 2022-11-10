@@ -2,10 +2,10 @@ package lotto.util.input;
 
 import java.util.regex.Pattern;
 
-public class MoneyInput {
+public class Money {
     private int money;
 
-    public MoneyInput(String money) {
+    public Money(String money) {
         validate(money);
         this.money = Integer.parseInt(money);
     }
