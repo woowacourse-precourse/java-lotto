@@ -17,7 +17,7 @@ public class Lotto {
         }
     }
 
-    public void checkOverlap(List<Integer> numbers) {
+    private void checkOverlap(List<Integer> numbers) {
         int prev = 0;
         for (int i = 0; i < 6; i++) {
             if (prev == numbers.get(i)) {
@@ -25,5 +25,9 @@ public class Lotto {
             }
             prev = numbers.get(i);
         }
+    }
+
+    public void printLotto() {
+        System.out.println(numbers);
     }
 }
