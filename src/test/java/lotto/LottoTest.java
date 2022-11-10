@@ -55,4 +55,14 @@ class LottoTest {
         lotto = new Lotto(List.of(11, 12, 13, 14, 15, 16));
         assertThat(lotto.count(winningNumber)).isEqualTo(0);
     }
+
+    @DisplayName("compareBonusNumber() 테스트")
+    @Test
+    void compareBonusNumberTest() {
+        WinningNumber winningNumber = new WinningNumber("1,2,3,4,5,6", 7);
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+        assertThat(lotto.compareBonusNumber(winningNumber)).isEqualTo(true);
+        lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(lotto.compareBonusNumber(winningNumber)).isEqualTo(false);
+    }
 }

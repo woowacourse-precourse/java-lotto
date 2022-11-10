@@ -7,7 +7,7 @@
   - [x] 입력 숫자는 6개가 되어야 한다.
 - [ ] 당첨은 1등부터 5등까지 존재하며 로또 번호와 당첨 번호를 비교해야 한다. - Lotto#compare()
   - [x] 각 번호를 비교하고 몇 개의 번호가 일치하는지 반환해야 한다. - Lotto#count()
-  - [ ] 보너스 번호와 비교 - Lotto#compareBonusNumber()
+  - [x] 보너스 번호와 비교 - Lotto#compareBonusNumber()
   - [ ] 로또 번호의 Lotto#toString() 구현
 - [x] 열거형 타입 필요 (일치하는 번호의 개수에 따른 당첨금) - Winnings
 - [ ] 수익률 계산 - Buyer#calculateReturnRate()

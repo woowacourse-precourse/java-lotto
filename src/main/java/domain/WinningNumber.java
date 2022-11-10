@@ -18,6 +18,10 @@ public class WinningNumber {
         return numbers.contains(num);
     }
 
+    public boolean equalBonusNumber(int num) {
+        return num == bonusNumber;
+    }
+
     private Set<Integer> createNumberSet(String input) {
         Set<Integer> set = new HashSet<>();
         String[] num = input.split(",");

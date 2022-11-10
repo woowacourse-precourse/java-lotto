@@ -35,4 +35,13 @@ public class Lotto {
         return cnt;
     }
 
+    public boolean compareBonusNumber(WinningNumber winningNumber) {
+        for (Integer number : numbers) {
+            if (winningNumber.equalBonusNumber(number)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
