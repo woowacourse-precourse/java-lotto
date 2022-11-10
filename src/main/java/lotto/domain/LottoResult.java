@@ -16,8 +16,8 @@ public class LottoResult {
         for (String s : numbers) {
             lottoNumber.add(Integer.parseInt(s));
         }
-        Lotto lotto = new Lotto(lottoNumber);
-        numberCheck(lottoNumber);
+        Lotto lotto = new Lotto(lottoNumber); //중복X, 길이6 인지 확인
+        numberCheck(lottoNumber); //1~45수인지
         return lottoNumber;
     }
 
@@ -29,10 +29,11 @@ public class LottoResult {
         }
     }
 
-    public int inputBonusNumber(){
+    public int inputBonusNumber(List<Integer> numbers){
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonus = readLine();
         int bonusNumber = Integer.valueOf(bonus);
+        bonusNumberCheck(numbers, bonusNumber); //오류
         return bonusNumber;
     }
 
