@@ -1,7 +1,6 @@
 package lotto.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,20 +20,20 @@ public class LottoJudge {
     public Map<LottoRank, Integer> judgeLotto(ArrayList<List<Integer>> lotteries,
         List<Integer> winningNumbers,
         int bonusNumber) {
-
         Map<LottoRank, Integer> rankCount = new HashMap<>();
         ArrayList<List<Integer>> lottoResults = countLotto(lotteries, winningNumbers, bonusNumber);
         LottoRank lottoRank;
 
         for (int i = 0; i < lottoResults.size(); i++) {
+
             if (lottoResults.get(i).get(0) == SECOND_THIRD_VALUE) {
                 lottoRank = ranks.get(lottoResults.get(i).get(1));
             } else if (!ranks.containsKey(lottoResults.get(i).get(0))) {
-              continue;
+                continue;
             } else {
                 lottoRank = ranks.get(lottoResults.get(i).get(0));
             }
-            rankCount.put(ranks.get(lottoRank), rankCount.getOrDefault(lottoRank, 0) + 1);
+            rankCount.put(lottoRank, rankCount.getOrDefault(lottoRank, 0) + 1);
         }
         return rankCount;
     }
