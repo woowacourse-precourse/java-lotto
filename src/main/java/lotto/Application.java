@@ -12,37 +12,47 @@ import java.util.regex.Pattern;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        System.out.println(Print.ASK_BUY);
-        int publishNum = getPublishNum();
-        System.out.println(publishNum+Print.ANSWER_BUY);
-        
-        List<Lotto> lottos = getLotto(publishNum);
+        try {
+            System.out.println(Print.ASK_BUY);
+            String budget = Input.inputBudget();
+            System.out.println("budget: "+budget);
+            int publishNum = getPublishNum();
+            System.out.println(publishNum+Print.ANSWER_BUY);
 
-        for (Lotto lotto : lottos) {
-            System.out.println(lotto);
+            List<Lotto> lottos = getLotto(publishNum);
+
+            for (Lotto lotto : lottos) {
+                System.out.println(lotto);
+            }
+
+            System.out.println(Print.ASK_PRIZE);
+            List<Integer> prize = getPrize();
+
+            analyseLotto(lottos, prize);
+        } catch(IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
-
-        System.out.println(Print.ASK_PRIZE);
-        List<Integer> prize = getPrize();
-
-        analyseLotto(lottos, prize);
-
 
     }
 
     //로또 구입
     private static String inputBudget() {
-        String input = Console.readLine();
+        return validateInputBudget(Console.readLine());
 
-        validateInputBudget(input);
-
-        return input;
+//        String input = Console.readLine();
+//
+//        validateInputBudget(input);
+//
+//        return input;
     }
 
-    private static void validateInputBudget(String input) {
+    private static String validateInputBudget(String input) {
         if(!Pattern.matches("^[0-9]*000$", input)) {
+            System.out.println(ErrMsg.VALIDATE_INPUT_BUDGET);
             throw new IllegalArgumentException(ErrMsg.VALIDATE_INPUT_BUDGET);
         }
+
+        return input;
     }
 
     private static int getBudget() {
