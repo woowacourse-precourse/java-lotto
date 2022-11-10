@@ -62,6 +62,12 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void validateCashIsDividedThousandTest() {
+        assertThatThrownBy(() -> validateCashIsDividedThousand("1234"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         main(new String[]{});
