@@ -6,7 +6,7 @@
 - 중복 숫자가 있을 시 예외처리
 
 ## 2. WinningNumber
-- Lotto의 자식클래스로 보너스 값을 가진다.
+- Lotto를 포함하고 보너스 값을 가진다.
 
 ## 3. Buyer
 - buyLotto : Lotto 혹은 List를 입력받는다.
