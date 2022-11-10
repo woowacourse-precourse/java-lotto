@@ -15,5 +15,7 @@ public class Application {
         Integer bonus = lottoController.getBonusInput();
 
         lottoController.computeResult(issuedLotto, lotto, bonus);
+        lottoController.printResult();
+        
     }
 }
