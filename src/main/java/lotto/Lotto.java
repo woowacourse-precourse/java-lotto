@@ -58,6 +58,10 @@ public class Lotto {
 
 
     public String toString(){
-        return null;
+        List<Integer> copiedNumbers = new ArrayList<>(numbers);
+        Collections.sort(copiedNumbers);
+
+        return copiedNumbers.toString();
     }
+
 }

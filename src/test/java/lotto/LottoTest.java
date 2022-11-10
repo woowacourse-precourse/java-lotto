@@ -119,4 +119,17 @@ class LottoTest {
             }
         }
     }
+
+    @Nested
+    @DisplayName("toString 메서드는")
+    class describe_toString {
+
+        @Test
+        @DisplayName("로또 번호의 숫자 정보를 반환한다")
+        void returnWhetherItHasRandomNumber() {
+            Lotto lottoA = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+            Assertions.assertThat(lottoA.toString()).isEqualTo("[1, 2, 3, 4, 5, 6]");
+        }
+    }
 }
