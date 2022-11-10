@@ -1,12 +1,21 @@
 package lotto.exception;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 import lotto.constant.ErrorMessage;
+import lotto.constant.LottoStatistic;
 import lotto.userinterface.Output;
 
 public class ExceptionHandler {
     public ExceptionHandler() {
+    }
+
+    public static void isListCorrectSize(List<Integer> numbers, int size) {
+        if (numbers.size() != size) {
+            Output.printMessage(ErrorMessage.NOT_CORRECT_SIZE_ERROR.getMessage(size));
+            throw new IllegalArgumentException();
+        }
     }
 
     public static void isNumeric(String input) {

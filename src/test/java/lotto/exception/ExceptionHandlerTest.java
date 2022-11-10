@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
+import java.util.List;
 import lotto.constant.LottoStatistic;
 
 import static org.assertj.core.api.Assertions.*;
@@ -32,6 +33,14 @@ public class ExceptionHandlerTest {
 
     protected final String output() {
         return captor.toString().trim();
+    }
+
+    @Test
+    @DisplayName("주어진 사이즈랑 다른 개수의 숫자를 입력하면 에러 메시지를 출력하고 예외가 발생한다.")
+    void throwExceptionForNotCorrectSize() {
+        assertThatThrownBy(() -> ExceptionHandler.isListCorrectSize(List.of(1,2,3,4), 6))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThat(output()).isEqualTo("[ERROR] 6개의 숫자를 입력해야 합니다.");
     }
 
     @Test
