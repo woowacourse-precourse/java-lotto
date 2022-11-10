@@ -131,17 +131,8 @@
   - 입력받은 보너스 번호 문자열에 대한 검사 함수가 수행되고 이를 Integer 자료형으로 반환해주는 함수
   
 
-- void validateWinningNumbersSize(String)
-  - 당첨 번호르 입력한 문자열의 길이가 11(숫자 6개+쉼표 5개)인지 검사하는 함수
-  
-
-- void validateWinningNumbersAreInteger(String)
-  - 당첨 번호 입력 시에 숫자와 쉼표만 사용했는지 검사하는 함수
-  - 숫자에 대한 검사만 이루어진다
-
-
-- void validateWinningNumbersUseComma(String)
-  - 당첨 번호 입력 시에 숫자 간의 구분을 위해 쉼표를 이용했는지 검사하는 함수
+- void validateWinningNumbers(String)
+  - 입력받은 당첨 번호 문자열이 형식에 맞게 담겨있는지 검사하는 함수
   
 
 - void validateBonusNumberIsInteger(String)
