@@ -23,23 +23,44 @@ public class MemberWriteService {
                 .map(Integer::valueOf)
                 .collect(Collectors.toList());
 
-        if (winningNumbers.size() != 6) {
-            throw new IllegalArgumentException("This Lotto Number is Exception !!");
-        }
-
-        if (!winningNumbers.stream().allMatch(number -> number >= 1 && number <= 45)) {
-            throw new IllegalArgumentException("This Lotto Number is Exception !!");
-        }
+        validWinningNumbers(winningNumbers);
 
         int bonusNumber = 0;
-        try {
-            bonusNumber = Integer.parseInt(writeBonusNumber);
-        } catch (NumberFormatException e) {
-            System.err.println(e.getMessage());
-        }
+        bonusNumber = getValidBonusNumber(writeBonusNumber, bonusNumber);
 
         return WinningLottoNumber.createWinningLottoNumber(winningNumbers, bonusNumber);
     }
 
+    private void validWinningNumbers(List<Integer> winningNumbers) {
+        if (!(isNumberCount(winningNumbers) && isNumberRange(winningNumbers))) {
+            throw new IllegalArgumentException("This Lotto Number is Exception !!");
+        }
+    }
 
+    private boolean isNumberCount(List<Integer> winningNumbers) {
+        return winningNumbers.size() == 6;
+    }
+
+    private boolean isNumberRange(List<Integer> winningNumbers) {
+        return winningNumbers.stream().allMatch(number -> number >= 1 && number <= 45);
+    }
+
+    private int getValidBonusNumber(String writeBonusNumber, int bonusNumber) {
+        try {
+            bonusNumber = Integer.parseInt(writeBonusNumber);
+            rangeValidBonusNumber(bonusNumber);
+
+        } catch (NumberFormatException e) {
+            System.err.println(e.getMessage());
+            return 0;
+        }
+
+        return bonusNumber;
+    }
+
+    private void rangeValidBonusNumber(int bonusNumber) {
+        if (bonusNumber >=1 && bonusNumber <= 45) {
+            throw new IllegalArgumentException("This Lotto Number is Exception !!");
+        }
+    }
 }
