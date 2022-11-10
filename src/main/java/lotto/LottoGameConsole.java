@@ -4,6 +4,8 @@ import java.util.List;
 
 public class LottoGameConsole {
 
+    private final Emcee emcee = new Emcee();
+
     public void startLottoGame() {
         startingGuide();
         // 구입 금액 안내, 입력, 검증
