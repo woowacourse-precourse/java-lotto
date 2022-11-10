@@ -115,7 +115,7 @@
   - 입력받은 구입금액이 1,000원으로 나누어지는지 검사하는 함수
 
 
-- void inputCashStringToInteger(String)
+- Integer inputCashStringToInteger(String)
   - 구입금액으로 입력받은 문자열을 숫자로 바꾸어주는 함수
   
 
