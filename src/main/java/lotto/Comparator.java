@@ -6,9 +6,11 @@ import static lotto.User.*;
 
 public class Comparator {
     List<Integer> answerCount;
+    boolean bonus = false;
 
     public void clearCount(){
         answerCount = List.of(0, 0, 0, 0, 0, 0);
+        bonus = false;
     }
 
     public void compareWin(Lotto userLotto, Lotto answerLotto){
@@ -18,8 +20,7 @@ public class Comparator {
 
     private void compareBonusNumber(Lotto userLotto, Lotto answerLotto) {
         if(userLotto.getNumbers().contains(answerLotto.getBonusNumber())){
-            int index = userLotto.getNumbers().indexOf(answerLotto.getBonusNumber());
-            answerCount.set(index, 1);
+            bonus = true;
         }
     }
 
