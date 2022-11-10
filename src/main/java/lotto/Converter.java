@@ -19,7 +19,6 @@ public class Converter {
         try {
             List<Integer> numbers = splitedInput.stream()
                     .map(Integer::parseInt)
-                    .sorted()
                     .collect(Collectors.toList());
 
             return numbers;
