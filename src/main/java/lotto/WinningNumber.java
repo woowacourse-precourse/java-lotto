@@ -19,23 +19,23 @@ public class WinningNumber {
         List<Integer> inputNumbers = new ArrayList<>();
         String[] inputNumberArr = inputNumber.split(",");
 
-        for(int i = 0; i < inputNumberArr.length; i++) {
-            inputException(Integer.valueOf(inputNumberArr[i]));
-            inputNumbers.add(Integer.valueOf(inputNumberArr[i]));
+        for (String number : inputNumberArr) {
+            inputException(Integer.parseInt(number));
+            inputNumbers.add(Integer.valueOf(number));
         }
 
         return inputNumbers;
     }
 
     public int inputBonusNumber() {
-       int bonusNumber = Integer.valueOf(Console.readLine());
+       int bonusNumber = Integer.parseInt(Console.readLine());
 
-       inputException(bonusNumber);
+       inputRangeException(bonusNumber);
 
        return bonusNumber;
     }
 
-    private void inputException(int number) {
+    private void inputRangeException(int number) {
         if(number < 1 || number > 45) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
