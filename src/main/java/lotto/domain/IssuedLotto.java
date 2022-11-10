@@ -3,6 +3,7 @@ package lotto.domain;
 import java.util.List;
 
 public class IssuedLotto {
+    private static final int BONUS_CHECK_COUNT = 5;
     private final List<Lotto> lottos;
 
     public IssuedLotto(List<Lotto> lottos) {
@@ -24,6 +25,13 @@ public class IssuedLotto {
         return result;
     }
 
+    private boolean compareBonusNumber(Lotto lotto, int correctCount, int bonusNumber) {
+        if (correctCount == BONUS_CHECK_COUNT) {
+            return lotto.hasBonusNumber(bonusNumber);
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -32,12 +40,5 @@ public class IssuedLotto {
             sb.append("\n");
         }
         return sb.toString();
-    }
-
-    private boolean compareBonusNumber(Lotto lotto, int correctCount, int bonusNumber) {
-        if (correctCount == 5) {
-            return lotto.hasBonusNumber(bonusNumber);
-        }
-        return false;
     }
 }
