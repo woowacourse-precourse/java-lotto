@@ -14,5 +14,6 @@ public class LottoGame {
         Print.lottos(lottos);
 
         Print.winningNumber();
+        List<Integer> winningNumber = Input.winningNumber();
     }
 }
