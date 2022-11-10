@@ -115,6 +115,15 @@ public class FeatureTest {
         String s2 = "1,2,3,4,5";
         assertThatThrownBy(() -> Input.getWinningNumber(s2))
                 .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 로또 번호의 숫자가 6개가 아닙니다.");
+        String s3 = "1,2,3,4,5,5";
+        assertThatThrownBy(() -> Input.getWinningNumber(s3))
+                .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 입력 숫자가 중복되었습니다.");
+        String s4 = "1,2,3,4,5,6";
+        int bonus =6;
+        assertThatThrownBy(() -> Input.bonusNotIncludeWinningNumbers(bonus, Input.getWinningNumber(s4)))
+                .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 보너스 번호가 이미 로또번호에 포함되어 있습니다.");
+
+
 
     }
 

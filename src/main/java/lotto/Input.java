@@ -22,14 +22,18 @@ public class Input {
         return Integer.parseInt(readLine);
     }
 
+    public static void bonusNotIncludeWinningNumbers(int bonus, List<Integer> winningNumbers) {
+        if (winningNumbers.contains(bonus)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호가 이미 로또번호에 포함되어 있습니다.");
+        }
+    }
+
     public static List<Integer> getWinningNumber(String readLine) {
         String[] tempNumberList = readLine.split(",");
         List<Integer> result = new ArrayList<>();
         validNumberCount(tempNumberList.length);
         for (int i = 0; i <6 ; i++) {
-            validNum(tempNumberList[i]);
-            int num = Integer.parseInt(tempNumberList[i]);
-
+            int num = getInputToInt(tempNumberList[i]);
             result.add(num);
         }
         duplicateCheck(result);
