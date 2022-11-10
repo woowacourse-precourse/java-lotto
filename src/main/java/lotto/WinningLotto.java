@@ -8,7 +8,11 @@ public class WinningLotto extends Lotto{
     public WinningLotto(List<Integer> numbers, int bonusNumber) {
         super(numbers);
 
-        if(numbers.contains(bonusNumber)) {
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (LottoNumberValidator.isOutOfRange(bonusNumber)) {
             throw new IllegalArgumentException();
         }
 
