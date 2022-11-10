@@ -3,6 +3,8 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import lotto.utils.Validator;
+
 public class Lotteries {
     private static final int LOTTO_PRICE = 1000;
     private final List<Lotto> lotteries;
@@ -12,6 +14,8 @@ public class Lotteries {
     }
 
     public static Lotteries generateLotteriesByPrice(int totalPrice) {
+        validate(totalPrice);
+
         List<Lotto> lotteries = new ArrayList<>();
         int count = totalPrice / LOTTO_PRICE;
 
@@ -23,6 +27,11 @@ public class Lotteries {
         return new Lotteries(lotteries);
     }
 
+    private static void validate (int totalPrice) {
+        Validator.isMultiplesOfThousand(totalPrice);
+        Validator.isZero(totalPrice);
+    }
+
     public List<List<Integer>> getLotteries() {
         List<List<Integer>> lottoNumbers = new ArrayList<>();
         for (Lotto lotto : lotteries) {
@@ -30,4 +39,5 @@ public class Lotteries {
         }
         return lottoNumbers;
     }
+
 }

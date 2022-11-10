@@ -6,11 +6,6 @@ import java.util.Set;
 
 
 public class Validator {
-    public static void validateLottoPrice(int inputNumber) {
-        isMultiplesOfThousand(inputNumber);
-        isZero(inputNumber);
-    }
-
     public static void isMultiplesOfThousand(int inputNumber) {
         if (inputNumber % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 1000의 배수만 입력 가능합니다.");

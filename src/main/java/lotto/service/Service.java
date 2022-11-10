@@ -17,7 +17,6 @@ public class Service {
     public void generateLottoList(String lottoPrice) {
         try {
             int lottoPriceNumber = Converter.toIntFromString(lottoPrice);
-            Validator.validateLottoPrice(lottoPriceNumber);
             generateLotteries(lottoPriceNumber);
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
@@ -30,8 +29,13 @@ public class Service {
     }
 
     public void setWinningNumber(String winningNumberInput) {
-        List<Integer> winningNumberInputs = Converter.toIntList(winningNumberInput);
-        winningNumbers = new WinningNumbers(winningNumberInputs);
+        try {
+            List<Integer> winningNumberInputs = Converter.toIntList(winningNumberInput);
+            winningNumbers = new WinningNumbers(winningNumberInputs);
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+            throw new IllegalArgumentException();
+        }
     }
 
     public void setBonusNumber(String bonusInput) {
