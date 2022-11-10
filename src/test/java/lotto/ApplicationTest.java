@@ -46,10 +46,11 @@ class ApplicationTest extends NsTest {
         );
     }
 
+
     @Test
-    void 예외_테스트() {
+    void 천원단위가아닐때() {
         assertSimpleTest(() -> {
-            runException("1000j");
+            runException("10014");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }

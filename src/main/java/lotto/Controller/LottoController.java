@@ -9,7 +9,7 @@ import lotto.View.OutputView;
 
 public class LottoController {
     public void lottoStart() {
-        InputView.printMoneyInput();
+        InputView.inputAmount();
         RandomLotto.BuyNewLotto();
         InputView.printWinningNumberInput();
         InputView.printBonusNumberInput();

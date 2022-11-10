@@ -8,17 +8,19 @@ import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class RandomLotto {
 
-    public static ArrayList<List> getLottoNumberList() {
+    static ArrayList<List<Integer>> lottoNumberList = new ArrayList<>();
+
+    static int money = Money.getInputMoney();
+    static int lottoCount = money/1000;
+    private static final String BUY_SENTENCE = lottoCount + "개를 구매했습니다.";
+
+    public static ArrayList<List<Integer>> getLottoNumberList() {
         return lottoNumberList;
     }
 
-    static ArrayList<List> lottoNumberList = new ArrayList<>();
-
-    static int money = Money.getInputMoney();
-    static int countLotto = money/1000;
-
     public static void BuyNewLotto() {
-        for(int i = 0; i < countLotto; i++) {
+        System.out.println(BUY_SENTENCE);
+        for(int i = 0; i < lottoCount; i++) {
             List<Integer> lottoNumbers;
             lottoNumbers = pickUniqueNumbersInRange(1, 45 ,6);
             System.out.println(lottoNumbers);

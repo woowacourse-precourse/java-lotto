@@ -3,9 +3,10 @@ package lotto.Model;
 public class Money {
 
     private static int inputMoney;
+    private static final String ERROR_MESSAGE = "[ERROR]";
 
     public static void setInputMoney(int inputMoney) {
-        checkValidationMoney(inputMoney);
+        checkUnit(inputMoney);
         Money.inputMoney = inputMoney;
     }
 
@@ -13,9 +14,11 @@ public class Money {
         return inputMoney;
     }
 
-    private static void checkValidationMoney(int money) {
-        if(money%1000 != 0) {
-            throw new IllegalArgumentException();
+    private static void checkUnit(int money) {
+        try {
+            if(money % 1000 != 0) throw new IllegalArgumentException(ERROR_MESSAGE + "천원 단위만 입력 가능합니다.");
+        }catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -32,4 +35,6 @@ public class Money {
         sum *= 100;
         System.out.println("총 수익률은 " + String.format("%.1f", sum) + "%입니다.");
     }
+
+
 }

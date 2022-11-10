@@ -6,24 +6,23 @@ import java.util.List;
 
 public class LottoSystem {
 
+    private static final List<Integer> winningStatics = new ArrayList<>(8);
+
     public static List<Integer> getWinningStatics() {
         return winningStatics;
     }
 
-    static List<Integer> winningStatics = new ArrayList<>(8);
-
     public static void lottoSystem(List<Integer> winningNumber, int bonusNumber) {
-
-        for (List i : RandomLotto.getLottoNumberList()) {
-            int score = calcScore(winningNumber, bonusNumber, i);
-            winningStatics.add(score);
-        }
+        var temp = RandomLotto.getLottoNumberList();
+        temp.stream()
+                .mapToInt(i -> calcScore(winningNumber, bonusNumber, i))
+                .forEach(winningStatics::add);
     }
 
-    private static int calcScore(List<Integer> winningNumber, int bonusNumber, List i) {
+    private static int calcScore(List<Integer> winningNumber, int bonusNumber, List<Integer> i) {
         int score = 0;
         for (int j : winningNumber) {
-            if (i.contains(j)) score++;
+            if (i.contains(j)) score += 1;
         }
         if (score == 5 && i.contains(bonusNumber)) {
             score += 2;
