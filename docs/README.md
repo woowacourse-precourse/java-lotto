@@ -74,6 +74,10 @@ validate
 ### PlayerView
 1. inquirePrice : '구입금액을 입력해 주세요.' 를 출력시킨다. 
 2. scanPrice : 가격을 입력받아 문자열로 리턴시킨다.
+3. validate : PaymentException을 통해 예외처리한다. 
+4. showPlayersLotto : 플레이어 로또 구매 결과를 보여준다. 
+   1. showPlayersLottoCount : 'n개를 구매했습니다.'를 출력한다. 
+   2. showLottoNumbers : Lotto리스트를 한개씩 문자열로 출력한다. 
 
 ### LottoView
 1. inquireNumbers : '당첨 번호를 입력해 주세요.'를 출력한다. 
