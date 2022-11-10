@@ -27,7 +27,8 @@ public class MessagesTest {
         for (int i = 0; i < 5; i++) {
             arguments.add(i);
         }
-        String format = MessageFormat.format(WINNING_STATISTICS_MESSAGE.toString(), arguments.toArray());
+        String format = MessageFormat.format(WINNING_STATISTICS_MESSAGE.toString(),
+                arguments.toArray());
 
         assertThat(format).isEqualTo("당첨 통계\n"
                 + "---\n"
