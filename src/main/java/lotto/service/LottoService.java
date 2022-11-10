@@ -16,6 +16,7 @@ public class LottoService {
     private final Validator validator = new Validator();
 
     void init() {
+        placeMap.clear();
         placeMap.put(60, 0);
         placeMap.put(51, 0);
         placeMap.put(50, 0);
@@ -41,22 +42,34 @@ public class LottoService {
     }
 
     public List<Integer> getResult(List<Lotto> lottos, List<Integer> winns, int bonus) {
+        updatePlaceMap(lottos, winns, bonus);
+        return getStatistics();
+    }
+
+    private void updatePlaceMap(List<Lotto> lottos, List<Integer> winns, int bonus) {
         for (Lotto lotto : lottos) {
             List<Integer> numbers = lotto.getNumbers();
             int ranking = lotto.getRanking(winns, bonus);
             Integer integer = placeMap.get(ranking);
-            if (integer == null) continue;
-            placeMap.put(ranking, integer+1);
+            if (isNull(integer)) continue;
+            placeMap.put(ranking, integer + 1);
         }
+    }
+
+    private List<Integer> getStatistics() {
         List<Integer> result = new ArrayList<>();
-        for (int i = 60; i >= 30; i-=10) {
-            if (i==50) {
-                Integer integer2 = placeMap.get(i+1);
+        for (int i = 60; i >= 30; i -= 10) {
+            if (i == 50) {
+                Integer integer2 = placeMap.get(i + 1);
                 result.add(integer2);
             }
             Integer integer = placeMap.get(i);
             result.add(integer);
         }
         return result;
+    }
+
+    private static boolean isNull(Integer integer) {
+        return integer == null;
     }
 }

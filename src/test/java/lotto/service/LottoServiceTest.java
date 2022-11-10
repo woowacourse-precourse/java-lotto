@@ -95,6 +95,13 @@ class LottoServiceTest {
             Arguments.of("보너스 한개와 당첨 숫자 2개를 맞춘건 노카운팅",
                 Arrays.asList(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)),
                     new Lotto(Arrays.asList(21, 22, 23, 4, 5, 7))),
+                Arrays.asList(1, 2, 3, 4, 5, 6), 7, Arrays.asList(1, 0, 0, 0, 0)),
+            Arguments.of("보너스 한개와 당첨 숫자 2개를 맞춘건 노카운팅, 여러개 존재",
+                Arrays.asList(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)),
+                    new Lotto(Arrays.asList(21, 22, 23, 4, 5, 7)),
+                    new Lotto(Arrays.asList(21, 22, 23, 4, 5, 7)),
+                    new Lotto(Arrays.asList(21, 22, 23, 4, 5, 7))
+                ),
                 Arrays.asList(1, 2, 3, 4, 5, 6), 7, Arrays.asList(1, 0, 0, 0, 0))
         );
     }
