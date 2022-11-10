@@ -10,4 +10,8 @@ public class LottoGroup {
 		this.lottos = lottos;
 	}
 
+	public int getLottosSize() {
+		return lottos.size();
+	}
+
 }
