@@ -7,17 +7,22 @@ public class InputController {
     public Integer insertLottoAmount() {
         String stringpuramount = Console.readLine();
         Integer lottopuramount = Integer.parseInt(stringpuramount);
+        checkDigitPrice(stringpuramount);
+        checkDevidePrice(lottopuramount);
         return lottopuramount;
     }
 
-    public boolean checkDigitPrice(String lottopuramount) {
-        boolean result = true;
+    public void checkDigitPrice(String lottopuramount) {
         for(int i=0; i<lottopuramount.length(); i++) {
             if(!Character.isDigit(lottopuramount.charAt(i))) {
-                result = false;
-                break;
+                throw new IllegalArgumentException();
             }
         }
-        return result;
+    }
+
+    public void checkDevidePrice(Integer lottopuramount) {
+        if(lottopuramount % 1000 != 0) {
+            throw new IllegalArgumentException();
+        }
     }
 }
