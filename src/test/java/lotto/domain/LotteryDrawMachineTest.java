@@ -38,4 +38,12 @@ class LotteryDrawMachineTest {
         assertThat(lotteryNumbers)
                 .doesNotHaveDuplicates();
     }
+
+    @Test
+    void 로또_번호는_오름차순이어야_합니다() {
+        List<Integer> lotteryNumbers = lotteryDrawMachine.drawLotteryNumbers();
+
+        assertThat(lotteryNumbers)
+                .isSorted();
+    }
 }
