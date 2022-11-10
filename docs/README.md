@@ -12,4 +12,4 @@
 - [x] 몇 개의 숫자가 일치하는지 확인 기능 - NumberCompare#compare()
 - [x] 등수 마다 일치 여부 개수 출력하는 기능 - Output#outputLottoRank()
 - [x] 로또 당첨 수익 구하는 기능 - Calculator#revenue()
-- [ ] 로또 당첨 수익률 구하는 기능(소수 둘째자리 반올림) - Calculator#yield()
+- [x] 로또 당첨 수익률 구하는 기능(소수 둘째자리 반올림) - Calculator#yield()

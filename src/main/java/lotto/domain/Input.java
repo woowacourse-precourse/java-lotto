@@ -20,10 +20,10 @@ public class Input {
     private static int buyCount;
     private static List<Integer> lottoNumber;
     private static int lottoBonusNumber;
-    private static String inputCoinString = "구입금액을 입력해 주세요.";
-    private static String coinErrorMessage = "[ERROR] 구입금액은 천원단위만 가능합니다.";
-    private static String inputNumberString = "당첨 번호를 입력해 주세요.";
-    private static String inputBonusNumberString = "보너스 번호를 입력해 주세요.";
+    private final static String inputCoinString = "구입금액을 입력해 주세요.";
+    private final static String coinErrorMessage = "[ERROR] 구입금액은 천원단위만 가능합니다.";
+    private final static String inputNumberString = "당첨 번호를 입력해 주세요.";
+    private final static String inputBonusNumberString = "보너스 번호를 입력해 주세요.";
 
     public static void inputCoin() {
         System.out.println(inputCoinString);
