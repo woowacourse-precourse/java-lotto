@@ -2,13 +2,13 @@
 
 ### 사용자 입력
 - [x] inputUserMoney 
-  - Integer Type 으로 사용자에게 **금액을 입력받기**
+  - 사용자에게 금액을 입력받기
 
-- [x] inputLottoNumber 
-  - Integer Type 으로 사용자에게 **당첨 번호를 입력받기**
+- [x] publishWinningLottoNumbers 
+  - 사용자에게 로또 당첨 번호를 입력받기
 
-- [x] inputBonusNumber
-  - Integer Type 으로 사용자에게 **보너스 번호를 입력받기**
+- [x] publishWinningBonusNumber
+  - 사용자에게 보너스 번호를 입력받기
 
 ### 사용자 입력 검증
 - [x] validateLottoPurchaseMoney
