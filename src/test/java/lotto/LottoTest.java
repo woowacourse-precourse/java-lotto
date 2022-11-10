@@ -1,11 +1,15 @@
 package lotto;
 
+import lotto.model.WinningNumber;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -24,4 +28,21 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("당첨 번호 및 보너스 번호를 저장한다.")
+    @Test
+    void saveWinningNumber() {
+        WinningNumber winningNumber = new WinningNumber();
+        String inputWinningNumber = "1,40,27,10,3,33";
+        String inputBonusNumber = "12";
+
+        int[] testWinningNumber = {1, 3, 10, 27, 33, 40};
+        int testBonusNumber = 12;
+
+        winningNumber.setWinningNumbers(inputWinningNumber);
+        winningNumber.setBonusNumber(inputBonusNumber);
+
+        assertArrayEquals(winningNumber.getWinningNumbers(), testWinningNumber);
+        assertEquals(winningNumber.getBonusNumber(),testBonusNumber);
+
+    }
 }
