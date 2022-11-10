@@ -18,18 +18,36 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    // TODO: 추가 기능 구현
+    public static List<Integer> sliceWinningNumber(String winningNumber) {
+        validateInputValue(winningNumber);
+        validateCommaCount(winningNumber);
+        return new ArrayList<>(List.of(winningNumber.split(",")))
+                .stream()
+                .map(Integer::parseInt)
+                .collect(toList());
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
     }
 
-    public void inputBonusNumber(String number) {
+    public Integer inputBonusNumber(String number) {
         for (int seq = 0; seq < number.length(); seq++) {
             validateCharacter(number.charAt(seq));
         }
+        validateInputEmpty(number);
         int bonusNumber = Integer.parseInt(number);
         validateContainsBonusNumber(bonusNumber);
         validateRangeBonusNumber(bonusNumber);
-        numbers.add(bonusNumber);
+        return Integer.valueOf(number);
+    }
+
+    private void validateInputEmpty(String number) {
+        if (number.equals("")) {
+            System.out.println("[ERROR] 보너스 번호는 공백을 입력하실 수 없습니다.");
+            throw new IllegalArgumentException();
+        }
     }
 
     private void validateRangeBonusNumber(int bonusNumber) {
@@ -87,29 +105,14 @@ public class Lotto {
         }
     }
 
-    private static void validateConsecutiveCommas(String winningNumber) {
-        for (int seq = 0; seq < winningNumber.charAt(seq); seq++) {
-            if (seq == winningNumber.length() - 1) {
-                break;
-            }
-            validateConsecutive(winningNumber.charAt(seq), winningNumber.charAt(seq+1));
-        }
-    }
-
-    private static void validateConsecutive(char sequence, char sequence2) {
-        if (sequence == ',' && sequence2 == ',') {
-            System.out.println("[ERROR] 당첨 번호는 쉼표(,) 하나로만 나눠야 합니다.");
+    private static void validateCommaCount(String winningNumber) {
+        long commaCount = winningNumber.chars()
+                .filter(w -> w == ',')
+                .count();
+        if (commaCount != 5L) {
+            System.out.println("[ERROR] 쉼표(,)는 5개 여야만 합니다.");
             throw new IllegalArgumentException();
         }
     }
 
-    // TODO: 추가 기능 구현
-    public static List<Integer> sliceWinningNumber(String winningNumber) {
-        validateInputValue(winningNumber);
-        validateConsecutiveCommas(winningNumber);
-        return new ArrayList<>(List.of(winningNumber.split(",")))
-                .stream()
-                .map(Integer::parseInt)
-                .collect(toList());
-    }
 }

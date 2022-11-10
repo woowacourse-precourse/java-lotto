@@ -163,13 +163,11 @@ class ApplicationTest extends NsTest {
     @DisplayName("당첨 번호를 6개 초과로 입력하면 에러가 발생한다.")
     @Test
     void validateWinningNumberSize() {
-        List<Integer> winningNumber = Lotto.sliceWinningNumber("1,2,3,4,5,6,7");
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> new Lotto(winningNumber))
+                assertThatThrownBy(() -> new Lotto(List.of(1,2,3,4,5,6,7)))
                         .isInstanceOf(IllegalArgumentException.class)
         );
         assertThat(output()).contains(ERROR_MESSAGE);
-        assertThat(output()).contains("6자리여야");
      }
 
     @DisplayName("당첨 번호가 1 ~ 45가 아니면 에러가 발생한다.(0 입력)")
@@ -219,15 +217,15 @@ class ApplicationTest extends NsTest {
         assertThat(output()).contains("숫자와 쉼표(,)만 입력 가능합니다.");
      }
 
-    @DisplayName("쉼표(,)를 중복으로 입력하면 예외가 발생한다.")
+    @DisplayName("쉼표(,)가 5개가 아니면 예외가 발생한다.")
     @Test
     void validateConsecutiveCommas() {
         assertSimpleTest(() ->
-                assertThatThrownBy(() -> Lotto.sliceWinningNumber("1,,2,3,4,5,6"))
+                assertThatThrownBy(() -> Lotto.sliceWinningNumber("1,2,3,4,5,,6"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
         assertThat(output()).contains(ERROR_MESSAGE);
-        assertThat(output()).contains("쉼표(,) 하나로만 나눠야 합니다.");
+        assertThat(output()).contains("쉼표(,)는 5개 여야만 합니다.");
     }
 
     @DisplayName("정상적인 보너스 번호를 입력한다.")
@@ -235,9 +233,10 @@ class ApplicationTest extends NsTest {
     void createBonusNumberTest() {
         List<Integer> winningNumber = Lotto.sliceWinningNumber("1,2,3,4,5,6");
         Lotto lotto = new Lotto(winningNumber);
-        lotto.inputBonusNumber("7");
+        Integer bonusNumber = lotto.inputBonusNumber("7");
         List<Integer> allNumbers = lotto.getNumbers();
-        assertThat(allNumbers).isEqualTo(List.of(1, 2, 3, 4, 5, 6, 7));
+        assertThat(allNumbers).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(bonusNumber).isEqualTo(7);
     }
 
     @DisplayName("당첨 번호에 있는 보너스 번호를 입력한다.")
@@ -287,10 +286,11 @@ class ApplicationTest extends NsTest {
     void validateRangeBonusNumberTestCase3() {
         List<Integer> winningNumber = Lotto.sliceWinningNumber("2,3,4,5,6,7");
         Lotto lotto = new Lotto(winningNumber);
-        lotto.inputBonusNumber("45");
+        Integer bonusNumber = lotto.inputBonusNumber("45");
         List<Integer> allNumbers = lotto.getNumbers();
 
-        assertThat(allNumbers).isEqualTo(List.of(2, 3, 4, 5, 6, 7, 45));
+        assertThat(allNumbers).isEqualTo(List.of(2, 3, 4, 5, 6, 7));
+        assertThat(bonusNumber).isEqualTo(45);
     }
 
     @DisplayName("경계값 테스트 : 보너스 번호로 1을 입력한다.")
@@ -298,21 +298,43 @@ class ApplicationTest extends NsTest {
     void validateRangeBonusNumberTestCase4() {
         List<Integer> winningNumber = Lotto.sliceWinningNumber("2,3,4,5,6,7");
         Lotto lotto = new Lotto(winningNumber);
-        lotto.inputBonusNumber("1");
+        Integer bonusNumber = lotto.inputBonusNumber("1");
         List<Integer> allNumbers = lotto.getNumbers();
 
-        assertThat(allNumbers).isEqualTo(List.of(2, 3, 4, 5, 6, 7, 1));
+        assertThat(allNumbers).isEqualTo(List.of(2, 3, 4, 5, 6, 7));
+        assertThat(bonusNumber).isEqualTo(1);
     }
 
-    @DisplayName("정상적인 보너스 번호를 입력한다.")
+    @DisplayName("문자열을 입력한다.")
     @Test
     void validateCharacter() {
         List<Integer> winningNumber = Lotto.sliceWinningNumber("1,2,3,4,5,6");
         Lotto lotto = new Lotto(winningNumber);
-        String number = "7";
-        lotto.inputBonusNumber(number);
         List<Integer> allNumbers = lotto.getNumbers();
-        assertThat(allNumbers).isEqualTo(List.of(1, 2, 3, 4, 5, 6, 7));
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> lotto.inputBonusNumber("a"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertThat(output()).contains(ERROR_MESSAGE);
+        assertThat(output()).contains("숫자만 입력할 수 있습니다.");
+        assertThat(allNumbers).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+    }
+
+    @DisplayName("공백을 입력한다.")
+    @Test
+    void validateEmpty() {
+        List<Integer> winningNumber = Lotto.sliceWinningNumber("1,2,3,4,5,6");
+        Lotto lotto = new Lotto(winningNumber);
+        List<Integer> allNumbers = lotto.getNumbers();
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> lotto.inputBonusNumber(""))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertThat(output()).contains(ERROR_MESSAGE);
+        assertThat(output()).contains("공백을 입력하실 수 없습니다.");
+        assertThat(allNumbers).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
 
     @DisplayName("Enum 출력 테스트")
