@@ -3,7 +3,7 @@ package lotto;
 import java.util.HashSet;
 import java.util.List;
 
-public class Check {
+public class Validation {
     public static boolean isMultipleOf1000(int number) throws IllegalArgumentException {
         if (number % 1000 != 0)
             throw new IllegalArgumentException("[ERROR] 로또 구매 금액은 1000원 단위여야 합니다.");
