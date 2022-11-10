@@ -10,7 +10,8 @@
   - [x] 보너스 번호와 비교 - Lotto#compareBonusNumber()
   - [x] 로또 번호의 Lotto#toString() 구현
 - [x] 열거형 타입 필요 (일치하는 번호의 개수에 따른 당첨금) - Winnings
-- [ ] 수익률 계산 - Buyer#calculateReturnRate()
+- [x] 수익률 계산 - Buyer#calculateReturnRate()
+  - [x] 당첨 금액에 따른 로또 개수를 HashMap으로 저장 - putWinningStatistics()
 
 ## 입출력 요구사항
 ### 입력
