@@ -18,7 +18,7 @@ class GenerateNumbersTest {
         GenerateNumbers generateNumbers = new GenerateNumbers();
         List<Integer> checkNumbers = generateNumbers.getGenerateNumbers();
         int checkBonusNumber = 0;
-        checkBonusNumber = generateNumbers.getBonusNumbers();
+        checkBonusNumber = generateNumbers.getBonusNumber();
 
         assertThat(checkNumbers.size()).isEqualTo(6);
         assertThat(checkBonusNumber).isNotZero();

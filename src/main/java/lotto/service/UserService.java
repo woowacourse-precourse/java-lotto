@@ -10,11 +10,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserService {
+    private int money;
     private Lotto lotto;
 
     public int buyLotto(String input) {
 
-        int money = Integer.valueOf(input);
+        money = Integer.valueOf(input);
 
         buyValidate(money);
         int count = money / 1000;
@@ -40,9 +41,7 @@ public class UserService {
 
         validateInput(validateNums);
 
-        List<Integer> numbers = validateNums.stream()
-                .map(s -> Integer.parseInt(s))
-                .collect(Collectors.toList());
+        List<Integer> numbers = validateNums.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
 
         return numbers;
     }
@@ -56,5 +55,9 @@ public class UserService {
 
     public Lotto getLotto() {
         return lotto;
+    }
+
+    public int getMoney() {
+        return money;
     }
 }

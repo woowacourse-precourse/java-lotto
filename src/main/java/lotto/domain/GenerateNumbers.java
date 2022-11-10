@@ -22,7 +22,7 @@ public class GenerateNumbers {
         return generateNumbers;
     }
 
-    public int getBonusNumbers() {
+    public int getBonusNumber() {
         return bonusNumbers;
     }
 }
