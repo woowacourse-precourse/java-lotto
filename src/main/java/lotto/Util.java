@@ -1,5 +1,7 @@
 package lotto;
 
+import java.math.BigInteger;
+
 public class Util {
 
     public static boolean isNumberic(final String str){
@@ -11,10 +13,12 @@ public class Util {
         }
     }
 
-    public static boolean isDividedBuyThousand(String input){
-        long convertInput = Long.valueOf(input);
+    public static boolean isDividedBuyThousand(final String input){
+        final BigInteger convertInput = new BigInteger(input);
+        final BigInteger thousand = BigInteger.valueOf(1000);
+        final BigInteger remainderInput = convertInput.remainder(thousand);
 
-        if (convertInput % 1000 == 0){
+        if (remainderInput.compareTo(BigInteger.ZERO) == 0){
             return true;
         }
         return false;
