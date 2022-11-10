@@ -1,4 +1,4 @@
-package lotto.global.util;
+package lotto.domain.lotto.verifier;
 
 import lotto.domain.lotto.domain.Lotto;
 

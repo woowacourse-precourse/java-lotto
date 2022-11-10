@@ -27,5 +27,6 @@ public class Application {
         int bonusNumber = lottoController.getBonusNumber(prizeLotto);
 
         OutputView.printDividingLine();
+        lottoController.compareNumbers(user.getLottos(), prizeLotto, bonusNumber);
     }
 }

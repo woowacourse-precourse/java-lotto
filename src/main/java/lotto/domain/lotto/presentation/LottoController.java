@@ -4,6 +4,8 @@ import lotto.domain.lotto.domain.Lotto;
 import lotto.domain.lotto.service.LottoService;
 import lotto.domain.view.OutputView;
 
+import java.util.List;
+
 public class LottoController {
 
     private final LottoService lottoService = new LottoService();
@@ -26,5 +28,9 @@ public class LottoController {
 
     public int getBonusNumber(Lotto prizeLotto) {
         return lottoService.bonusNumber(prizeLotto);
+    }
+
+    public void compareNumbers(List<Lotto> lottos, Lotto prizeLotto, int bonusNumber) {
+        lottoService.compareNumbers(lottos, prizeLotto, bonusNumber);
     }
 }

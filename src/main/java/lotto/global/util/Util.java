@@ -3,6 +3,7 @@ package lotto.global.util;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.lotto.domain.Lotto;
+import lotto.domain.lotto.verifier.InputNumberVerifier;
 import lotto.domain.view.OutputView;
 
 import java.util.*;
@@ -51,5 +52,10 @@ public class Util {
         String bonusNumber = Console.readLine();
         InputNumberVerifier.bonusNumberVerifier(prizeLotto, bonusNumber);
         return Util.stringToInt(bonusNumber);
+    }
+
+    public static void emptyTo0(Map<String, Integer> result) {
+        for (int value : result.values()) {
+        }
     }
 }
