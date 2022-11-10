@@ -1,5 +1,6 @@
 package lotto;
 
+import computer.Computer;
 import ui.InputUtils;
 import user.PurchaseAmount;
 

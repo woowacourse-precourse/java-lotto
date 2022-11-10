@@ -1,4 +1,4 @@
-package lotto;
+package computer;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import constants.LottoConstants;
