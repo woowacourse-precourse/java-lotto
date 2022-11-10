@@ -7,8 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class WinningNumber {
-
-    private int[] inputWinningNumbers;
+    
     private List<Integer> winningNumbers;
     private int bonusNumber;
 
