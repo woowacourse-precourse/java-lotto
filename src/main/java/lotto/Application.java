@@ -9,7 +9,6 @@ import java.util.List;
 
 public class Application {
 
-    public static String ERROR_MESSAGE = "[ERROR]";
     public static int LOTTO_PRICE = 1000;
 
     public static void main(String[] args) {
@@ -18,9 +17,21 @@ public class Application {
         // 구입 금액 입력 받기
         int account = setAccount();
 
+        // 로또 생성
+        List<List<Integer>> lottos = buyLotto(account);
+
 
     }
 
+    private static List<List<Integer>> buyLotto(int account) {
+        List<List<Integer>> lottos = new ArrayList<>();
+        while (account > 0) {
+            List<Integer> list = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lottos.add(list);
+            account -= LOTTO_PRICE;
+        }
+        return lottos;
+    }
 
     private static int setAccount() {
         int account = Integer.parseInt(Console.readLine());
