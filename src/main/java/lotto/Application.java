@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.List;
 import lotto.domain.LottoSystem;
 import lotto.domain.Lotto;
@@ -11,6 +12,7 @@ public class Application {
 
         try {
             List<Lotto> lottoBundle = lottoSystem.buy();
+            lottoSystem.printPurchasedLotto(lottoBundle);
         } catch (IllegalArgumentException exception) {
             System.out.println(Message.ERROR_MESSAGE + exception.getMessage());
         }

@@ -16,4 +16,10 @@ public class LottoSystem {
         String input = Console.readLine().trim();
         return lottoMachine.printLottoBundle(input);
     }
+
+    public void printPurchasedLotto(List<Lotto> lottoBundle) {
+        for (Lotto lotto : lottoBundle) {
+            System.out.println(lotto.toString());
+        }
+    }
 }
