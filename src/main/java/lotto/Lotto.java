@@ -16,7 +16,15 @@ public class Lotto {
         return numbers;
     }
 
-
+    public int getNumberOfOverlapping(List<Integer> numbers) {
+        int overlapCounter = 0;
+        for (int number : numbers) {
+            if(this.numbers.contains(number)) {
+                overlapCounter++;
+            }
+        }
+        return overlapCounter;
+    }
     public int getRank(List<Integer> numbers, int bonus) {
         int overlapCounter = getNumberOfOverlapping(numbers);
 
