@@ -19,9 +19,9 @@ public class Lotto {
     private static final int MAX_VALUE = 45;
     private static int userInputMoney;
     private static int howManyLotto = 0;
-    private static List<ArrayList> myLottoList = new ArrayList<>();
-    private static List<Integer> winnerNumberList = new ArrayList<>();
-    private static List<Integer> bonusNumberList = new ArrayList<>();
+    public static List<ArrayList> myLottoList = new ArrayList<>();
+    public static List<Integer> winnerNumberList = new ArrayList<>();
+    public static List<Integer> bonusNumberList = new ArrayList<>();
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -87,7 +87,7 @@ public class Lotto {
 
 
 
-    // 내 로또 생성
+    // 내 로또 생성 (완성)
     public static List<ArrayList> myLottoNumber() throws IOException { // 랜덤 로또 생성
 
         List<ArrayList> lottoList = new ArrayList<>();
@@ -99,6 +99,10 @@ public class Lotto {
         }
 
         return lottoList;
+    }
+
+    public static List<ArrayList> getMyLottoList(){
+        return myLottoList;
     }
 
     //당첨 로또 입력 (완성)
