@@ -18,7 +18,6 @@ public enum Amount {
         return price;
     }
 
-
     @Override
     public String toString() {
         return Integer.toString(price);
