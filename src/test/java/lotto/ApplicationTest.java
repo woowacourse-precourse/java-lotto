@@ -98,6 +98,12 @@ class ApplicationTest extends NsTest {
         assertThat(List.of(1, 2, 3, 4, 5, 6)).isEqualTo(getWinningNumbers("1,2,3,4,5,6"));
     }
 
+    @Test
+    void validateBonusNumberIsIntegerTest() {
+        assertThatThrownBy(() -> validateBonusNumberIsInteger("!"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         main(new String[]{});
