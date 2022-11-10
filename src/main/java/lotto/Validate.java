@@ -24,4 +24,10 @@ public class Validate {
             Invalid.NOT_DIVISIBLE.throwException();
         }
     }
+
+    public void ValidOverMatchAllAmount(int purchasePrice) {
+        if (purchasePrice > Amount.MATCH_ALL.getPrice()) {
+            Invalid.OVER_MATCH_ALL_AMOUNT.throwException();
+        }
+    }
 }
