@@ -9,7 +9,7 @@ public class InputDevice {
 
     private Validator validator = new Validator();
 
-    public int sendMoneyToBuyLotto() {
+    public int sendMoney() {
         String money = Console.readLine();
         validator.validateMoney(money);
         return Integer.parseInt(money);

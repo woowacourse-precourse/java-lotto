@@ -22,7 +22,7 @@ public class LottoController {
     }
 
     private List<Lotto> buyLotto() {
-        List<Lotto> lottoTickets =  lottoService.buy(inputDevice.sendMoneyToBuyLotto());
+        List<Lotto> lottoTickets =  lottoService.buy(inputDevice.sendMoney());
         lottoView.printLottoInfo(lottoTickets);
         return lottoTickets;
     }
