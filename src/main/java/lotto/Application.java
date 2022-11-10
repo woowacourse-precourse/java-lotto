@@ -80,4 +80,10 @@ public class Application {
         }
         return true;
     }
+
+    public static int inputBonusNumber(List<Integer> winningNumbers) {
+        String number = Console.readLine();
+        int bonusNumber = Integer.parseInt(number);
+        return bonusNumber;
+    }
 }
