@@ -28,4 +28,10 @@ public class LottoController {
         return issuedLotto;
     }
 
+    public void showIssueResult(List<Lotto> issuedLotto) {
+        System.out.print("\n" + issuedLotto.size());
+        Message.GAME_ISSUE.print();
+        issuedLotto.stream().forEach(lotto -> lotto.print());
+    }
+
 }

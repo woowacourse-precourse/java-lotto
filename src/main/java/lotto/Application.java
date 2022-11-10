@@ -9,5 +9,6 @@ public class Application {
 
         Integer lottoCount = lottoController.getUserLottoCount();
         List<Lotto> issuedLotto = lottoController.issueLotto(lottoCount);
+        lottoController.showIssueResult(issuedLotto);
     }
 }
