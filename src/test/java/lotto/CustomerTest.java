@@ -13,4 +13,11 @@ public class CustomerTest {
         assertThatThrownBy(() -> new Customer(1001))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("구입 금액이 0이면 예외가 발생한다.")
+    @Test
+    void createCustomerByNoMoney() {
+        assertThatThrownBy(() -> new Customer(0))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
