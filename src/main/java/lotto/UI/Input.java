@@ -6,11 +6,13 @@ import java.io.InputStreamReader;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class Input {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
+    Scanner sc = new Scanner(System.in);
 
     public Input() {
     }
@@ -31,15 +33,13 @@ public class Input {
 
     public List<Integer> getLuckyNumber() throws IOException {
         List<Integer> luckyNumber = new ArrayList<>();
-        st = new StringTokenizer(br.readLine());
-        for(int i = 0; i < st.countTokens(); i++){
-            String str = st.nextToken();
-            if(luckyNumber.contains(Integer.parseInt(str))){
+        String line = sc.nextLine();
+        String[] str = line.split(",");
+        for(int i = 0; i < str.length; i++){
+            if(luckyNumber.contains(Integer.parseInt(str[i]))) {
                 throw new IllegalArgumentException();
             }
-            if(!str.equals(",")){
-                luckyNumber.add(Integer.parseInt(str));
-            }
+            luckyNumber.add(Integer.parseInt(str[i].trim()));
         }
         return luckyNumber;
     }
