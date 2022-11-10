@@ -1,6 +1,7 @@
 package lotto.UI;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,5 +29,13 @@ public class View {
         String input = Console.readLine();
 
         return Integer.parseInt(input);
+    }
+
+    public void printMyLottoInfo(List<Lotto> myLottos){
+        int quantity = myLottos.size();
+        System.out.println(quantity + "개를 구매했습니다.");
+        for(Lotto lotto: myLottos){
+            System.out.println(lotto);
+        }
     }
 }
