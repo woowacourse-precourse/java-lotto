@@ -25,4 +25,7 @@ public class PrintMessenger {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) -"+ lottoResult.get(3) +"0개");
         System.out.println("6개 일치 (2,000,000,000원) -"+ lottoResult.get(4) +"0개");
     }
+    public static void yieldOfLotto(int value){
+        System.out.println("총 수익률은"+ value +"%입니다.");
+    }
 }
