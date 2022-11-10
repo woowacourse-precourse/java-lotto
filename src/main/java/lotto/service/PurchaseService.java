@@ -12,6 +12,7 @@ public class PurchaseService {
     private final InputConsole inputConsole;
     private final OutputConsole outputConsole;
     private final LottoNumberGenerator lottoNumberGenerator;
+    private static final int ONE_LOTTO_AMOUNT = 1000;
 
     public PurchaseService() {
         this.inputConsole = new InputConsole();
@@ -20,9 +21,12 @@ public class PurchaseService {
     }
 
     public List<Lotto> purchase() {
-        String amount = inputConsole.enterPurchaseAmount();
-        int lottoCount = Integer.parseInt(amount) / 1000;
-        return createLotto(lottoCount);
+        String purchaseAmount = inputConsole.enterPurchaseAmount();
+        int lottoCount = Integer.parseInt(purchaseAmount) / ONE_LOTTO_AMOUNT;
+
+        List<Lotto> lottos = createLotto(lottoCount);
+        outputConsole.checkPurchaseLotto(lottos);
+        return lottos;
     }
 
     private List<Lotto> createLotto(int lottoCount) {
@@ -31,7 +35,6 @@ public class PurchaseService {
             Lotto lotto = new Lotto(lottoNumberGenerator.generateNumbers());
             lottos.add(lotto);
         }
-        outputConsole.checkPurchaseLotto(lottos);
         return lottos;
     }
 }
