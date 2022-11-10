@@ -11,23 +11,41 @@ public class Model {
     private final int LOTTO_NUMBERS = 6;
 
     public List<Integer> checkLottoNumber (List<Integer> lottoNumbers, List<List<Integer>> uncheckedLottos) {
-        List<Integer> duplicatedNumber = new ArrayList<>();
+        List<Integer> duplicatedNumbers = new ArrayList<>();
 
         for (List<Integer> lotto: uncheckedLottos){
             List<Integer> comparingNumbers = lotto.stream()
                     .filter(number -> lottoNumbers.contains(number))
                     .collect(Collectors.toList());
 
-            duplicatedNumber.add(comparingNumbers.size());
-        }
+                duplicatedNumbers.add(comparingNumbers.size());
+            }
 
-        return duplicatedNumber;
+        return duplicatedNumbers;
     }
 
-    public List<List<Integer>> repeatGetLottoNumber(int BONUS_NUMBER) {
+    public List<Integer> checkPrizeLotto (List<Integer> duplicatedNumbers) {
+        List<Integer> prizeRanking = new ArrayList<>();
+
+        for (int number: duplicatedNumbers) {
+            prizeRanking.add(addPrizeRanking(number));
+        }
+
+        return prizeRanking;
+    }
+
+    private int addPrizeRanking(int duplicatedNumber) {
+        if (duplicatedNumber == 3) return 5;
+        if (duplicatedNumber == 4) return 4;
+        if (duplicatedNumber == 5) return 3;
+        if (duplicatedNumber == 6) return 1;
+        return 0;
+    }
+
+    public List<List<Integer>> repeatGetLottoNumber(int moneyNumber) {
         List<List<Integer>> uncheckedLottos = new ArrayList<>();
 
-        for (int temp = 0; temp < BONUS_NUMBER; temp++) {
+        for (int temp = 0; temp < moneyNumber; temp++) {
             uncheckedLottos.add(getLottoNumber());
         }
 
