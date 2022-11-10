@@ -24,19 +24,23 @@ public class LottoValidator {
 
     private static final List<Integer> STANDARD_LOTTO_NUMBER = IntStream.rangeClosed(START_INCLUSIVE, END_INCLUSIVE)
             .boxed().collect(Collectors.toList());
+    private static final String FIRST_PLACE_REG_EXP =
+            "([0-9]{1,2})\\,([0-9]{1,2})\\,([0-9]{1,2})\\,([0-9]{1,2})\\,([0-9]{1,2})\\,([0-9]{1,2})";
 
-    private LottoValidator(){}
+    private LottoValidator() {
+    }
 
-    public static void validateLotto(List<Integer> numbers){
+    public static void validateLotto(List<Integer> numbers) {
         checkSize(numbers);
         checkDuplication(numbers);
         checkRange(numbers);
         checkSortedAsc(numbers);
     }
 
-    private static void checkSize(List<Integer> numbers) throws IllegalArgumentException {
+    private static void checkSize(List<Integer> numbers){
         if (COUNT != numbers.size()) {
-            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + LOTTE_SIZE_INVALID.getMessage() + numbers.size());
+            throw new IllegalArgumentException(
+                    COMMON_MESSAGE.getMessage() + LOTTE_SIZE_INVALID.getMessage() + numbers.size());
         }
     }
 
@@ -60,29 +64,16 @@ public class LottoValidator {
 
     public static void validateFirstPlace(String firstPlace) {
         checkConsistOfOnlyCommas(firstPlace);
+
         List<Integer> firstPlaceNumbers = Arrays.stream(firstPlace.split(DIVIDE_POINT)).map(Integer::parseInt)
                 .collect(Collectors.toList());
-        checkSize(firstPlaceNumbers);
         checkRange(firstPlaceNumbers);
         checkDuplication(firstPlaceNumbers);
-        checkOnlyNumbers(firstPlaceNumbers);
     }
+
 
     private static void checkConsistOfOnlyCommas(String firstPlace) {
-        Set<Integer> commasCheck = Arrays.stream(firstPlace.split("")).map(Integer::parseInt)
-                .collect(Collectors.toSet());
-        if (!commasCheck.remove(DIVIDE_POINT)) {
+        if (!firstPlace.matches(FIRST_PLACE_REG_EXP))
             throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + NOT_DIVIDE_COMMAS.getMessage());
-        }
-        checkOnlyNumbers(new ArrayList<>(commasCheck));
     }
-
-    private static void checkOnlyNumbers(List<Integer> commasCheck) {
-        commasCheck.stream().filter(number -> !number.toString().matches(NUMBER_REG_EXP)).forEach(number -> {
-            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + NOT_DIVIDE_COMMAS.getMessage());
-        });
-    }
-
-
-
 }
