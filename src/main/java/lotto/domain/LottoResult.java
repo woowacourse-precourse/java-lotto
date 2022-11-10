@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 public class LottoResult {
     public List<Integer> inputLottoNumber() {
-        System.out.println("당첨번호를 입력해 주세요.");
+        System.out.println("당첨 번호를 입력해 주세요.");
         String lottoNumberInput = readLine();
         List<String> numbers = Stream.of(lottoNumberInput.split(",")).collect(Collectors.toList());
         List<Integer> lottoNumber = new ArrayList<>();
@@ -27,5 +27,12 @@ public class LottoResult {
                 throw new IllegalArgumentException("[ERROR] 로또 숫자를 확인 하세요.");
             }
         }
+    }
+
+    public int inputBonusNumber(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonus = readLine();
+        int bonusNumber = Integer.valueOf(bonus);
+        return bonusNumber;
     }
 }
