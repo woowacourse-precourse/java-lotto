@@ -46,6 +46,6 @@ public class Printer {
             }
             System.out.println(key.getNumber() + "개 일치 (" + key.getWon() + "원) - " + winningResultMap.get(key) + "개");
         }
-        System.out.println("총 수익률은 " + String.format("%.2f", profitRate * 100) + "%입니다.");
+        System.out.println("총 수익률은 " + String.format("%.1f", profitRate * 100) + "%입니다.");
     }
 }
