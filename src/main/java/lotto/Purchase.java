@@ -1,13 +1,18 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Purchase {
 
-    public static void lotto() {
+    public static List<Lotto> lotto() {
         String userInput = Console.readLine();
 
         int numberOfLotto = getNumberOfLotto(userInput);
+        return getLotto(numberOfLotto);
     }
 
     private static int getNumberOfLotto(String userInput) {
@@ -24,5 +29,30 @@ public class Purchase {
         }
 
         return amount / 1000;
+    }
+
+    private static List<Lotto> getLotto(int numberOfLotto) {
+        List<Lotto> lottery = new ArrayList<>(numberOfLotto);
+
+        for (int index = 0; index < numberOfLotto; index++) {
+            Lotto lotto = new Lotto(pickLottoNumber());
+            lottery.add(lotto);
+        }
+
+        return lottery;
+    }
+
+    private static List<Integer> pickLottoNumber() {
+        List<Integer> randomNumber = new ArrayList<>();
+
+        while (randomNumber.size() < 6) {
+            int pickNumber = Randoms.pickNumberInRange(1, 45);
+
+            if (!randomNumber.contains(pickNumber)) {
+                randomNumber.add(pickNumber);
+            }
+        }
+
+        return randomNumber;
     }
 }

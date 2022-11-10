@@ -12,9 +12,11 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.NUMBER_OUT_OF_RANGE);
         }
     }
 
-    // TODO: 추가 기능 구현
+    public void print() {
+        System.out.println(numbers);
+    }
 }
