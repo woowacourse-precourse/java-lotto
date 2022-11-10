@@ -2,9 +2,12 @@
 
 ## 로또 번호 추첨
 
-### 발행된 로또의 번호 List 를 wrapping 하는 클래스 Name : Lotto
+### 랜덤 숫자를 추출하는 클래스 Name : NumberGenerator
 
 - [ ] 중복되지 않는 6개의 숫자 뽑기 - #getUniqueRandomNumbers()
+
+### 발행된 로또의 번호 List 를 wrapping 하는 클래스 Name : Lotto
+
 - [ ] ~~뽑은 6개의 숫자를 Lotto 클래스 내부의 로또의 번호 List 에 할당~~ - 생성자를 통해 할당
 - [ ] 발행된 번호를 반환 - #getUserLottoNumbers()
 
