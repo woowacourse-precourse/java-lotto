@@ -1,7 +1,11 @@
 package lotto;
 
+import lotto.console.Input;
+import lotto.console.Output;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        LottoGame lottoGame = new LottoGame(new Input(), new Output());
+        lottoGame.play();
     }
 }
