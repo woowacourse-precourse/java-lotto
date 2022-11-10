@@ -23,7 +23,7 @@ public class LottoGameConsole {
         return Integer.parseInt(paymentOfPurchase);
     }
 
-    private List<Lotto> publishLottos(int amountOfPurchaseMoney) {
+    private List<Lotto> publishLottos(int payment) {
         // 발행 개수 계산
         // 발행
         // 발행 lotto 출력
