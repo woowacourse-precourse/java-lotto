@@ -11,6 +11,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
+
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -53,6 +54,14 @@ class LottoTest {
             assertThat(number).isGreaterThan(0).isLessThan(46);
         }
     }
+
+    @DisplayName("자동으로 생성된 로또 번호를 형식에 맞게 출력한다.")
+    @RepeatedTest(10)
+    void createLottoAndPrintNumbers() {
+        Lotto generatedLotto = Lotto.create();
+        System.out.println(generatedLotto.printNumbers());
+    }
+
 
     @DisplayName("하나의 로또 번호에 대한 당첨 내역을 출력한다.")
     @Nested

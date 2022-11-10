@@ -24,4 +24,13 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    public String printNumbers() {
+        List<Integer> numbers = getNumbers();
+        StringJoiner stringJoiner = new StringJoiner(", ", "[", "]");
+        for (Integer number : numbers) {
+            stringJoiner.add(String.valueOf(number));
+        }
+        return stringJoiner.toString();
+    }
 }
