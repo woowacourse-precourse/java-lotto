@@ -15,8 +15,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 class LottoServiceTest {
 
-    private final LottoService service = new LottoService();
-
     private static Collection<Arguments> param1() {
         return Arrays.asList(
             Arguments.of("1000원으로 1개 구매", "1000", 1),
@@ -30,6 +28,7 @@ class LottoServiceTest {
     @MethodSource("param1")
     @DisplayName("정상적인 금액이 입력되면 전부 로또를 구매 해야한다.")
     void test1(String description, String money, int size) {
+        LottoService service = new LottoService();
         List<Lotto> lottos = service.buy(money);
         Assertions.assertEquals(size, lottos.size());
     }
@@ -48,6 +47,7 @@ class LottoServiceTest {
     @MethodSource("param2")
     @DisplayName("비정상적인 금액이 입력되면 익셉션을 던진다")
     void test2(String description, String money) {
+        LottoService service = new LottoService();
         IllegalArgumentException e = Assertions.assertThrows(IllegalArgumentException.class,
             () -> service.buy(money));
         assertThat(e.getMessage()).contains("[ERROR]");
@@ -104,6 +104,8 @@ class LottoServiceTest {
     @DisplayName("구매한 로또 목록, 당첨 번호, 보너스 번호를 받아 결과를 리턴하는지 테스트")
     void test3(String description, List<Lotto> lottos, List<Integer> win, int bonus,
         List<Integer> result) {
+        LottoService service = new LottoService();
+        service.init();
         List<Integer> a = service.getResult(lottos, win, bonus);
         IntStream.range(0, 5).forEach(i -> Assertions.assertEquals(result.get(i), a.get(i)));
     }
