@@ -31,7 +31,7 @@ public class Lotto {
         if (nonDuplicatedNumbers.size() != 6) {
             throw new IllegalArgumentException(NUMBER_INPUT_COUNT_ERROR_MESSAGE);
         }
-        if (numbers.get(1) < MIN_NUMBER || numbers.get(NUMBER_COUNT - 1) > MAX_NUMBER) {
+        if (numbers.get(0) < MIN_NUMBER || numbers.get(NUMBER_COUNT - 1) > MAX_NUMBER) {
             throw new IllegalArgumentException(NUMBER_INPUT_RANGE_ERROR_MESSAGE);
         }
     }
