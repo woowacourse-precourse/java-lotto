@@ -19,11 +19,7 @@ public class Game {
     public void start() {
         LottoInfo lottoInfo = new LottoInfo(InputUtil.inputLottoPurchaseAmount());
 
-        List<Lotto> lottos = new ArrayList<>();
-
-        for (int i = 0; i < lottoInfo.getBuyingLottoCount(); i++) {
-            lottos.add(RandomLottoGenerator.makeLotto());
-        }
+        List<Lotto> lottos = makeLottoList(lottoInfo);
 
         PrintUtil.printPurchaseLottoStatus(lottos);
 
@@ -51,5 +47,16 @@ public class Game {
         LottoResult lottoResult = new LottoResult(lottoScore);
 
         PrintUtil.printLottoResult(lottoResult, lottoInfo);
+    }
+
+    private List<Lotto> makeLottoList(LottoInfo lottoInfo) {
+
+        List<Lotto> lottos = new ArrayList<>();
+
+        for (int i = 0; i < lottoInfo.getBuyingLottoCount(); i++) {
+            lottos.add(RandomLottoGenerator.makeLotto());
+        }
+
+        return lottos;
     }
 }
