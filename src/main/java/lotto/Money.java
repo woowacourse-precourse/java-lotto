@@ -5,10 +5,12 @@ import java.lang.IllegalArgumentException;
 public class Money {
 
     private final Integer money;
+    private final Integer lottoCount;
 
     public Money(String money) {
         validate(money);
         this.money = Integer.parseInt(money);
+        this.lottoCount = countLottoCount(money);
     }
 
     public void validate(String money) {
@@ -30,4 +32,9 @@ public class Money {
             return false;
         return true;
     }
+
+     public Integer countLottoCount(String money) {
+        int numbers = Integer.parseInt(money);
+        return Math.floorDiv(numbers,1000);
+     }
 }
