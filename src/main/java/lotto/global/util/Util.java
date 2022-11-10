@@ -2,8 +2,10 @@ package lotto.global.util;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.lotto.verifier.InputMoneyVerifier;
 import lotto.domain.view.OutputView;
 
+import javax.swing.*;
 import java.util.*;
 
 public class Util {
@@ -27,7 +29,9 @@ public class Util {
 
     public static List<Integer> inputNumbersInList() {
         String inputPrizeNumbers = OutputView.printInputPrizeNumbers();
-        return splitByComma(inputPrizeNumbers);
+        List<Integer> prizeLottoNumbers = splitByComma(inputPrizeNumbers);
+        InputMoneyVerifier.isList6Size(prizeLottoNumbers);
+        return prizeLottoNumbers;
     }
 
     private static List<Integer> splitByComma(String inputPrizeNumbers) {
