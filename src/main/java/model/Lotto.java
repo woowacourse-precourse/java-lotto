@@ -1,6 +1,7 @@
 package model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import util.exception.Valid;
@@ -11,6 +12,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        sortAscend(numbers);
         this.numbers = numbers;
     }
 
@@ -26,6 +28,10 @@ public class Lotto {
         }
     }
 
+    private void sortAscend(List<Integer> numbers){
+        Collections.sort(numbers);
+    }
+
 
     public static List<Integer> generateLotto() {
         List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -33,4 +39,7 @@ public class Lotto {
     }
 
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
