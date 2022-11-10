@@ -52,22 +52,20 @@ public class Model {
         return uncheckedLottos;
     }
 
-    private List<Integer> checkBonusNumber(List<Integer> prizeRankings, List<List<Integer>> uncheckedLottos, int bonusNumber){
+    public void checkBonusNumber(List<Integer> prizeRankings, List<List<Integer>> uncheckedLottos, int bonusNumber){
         int changedRanking;
 
-        for (int rank: prizeRankings) {
+        for (int temp = 0; temp < prizeRankings.size(); temp++) {
 
-            if (rank == 3) {
-                changedRanking = upRanking(uncheckedLottos.get(prizeRankings.indexOf(rank)), bonusNumber);
-                prizeRankings.set(prizeRankings.indexOf(rank), changedRanking);
+            if (prizeRankings.get(temp) == 3) {
+                changedRanking = upRanking(uncheckedLottos.get(temp), bonusNumber);
+                prizeRankings.set(temp, changedRanking);
             }
         }
-
-        return prizeRankings;
     }
 
-    private int upRanking (List<Integer> lotto, int bonusNumber) {
-        if (lotto.contains(bonusNumber)) {
+    private int upRanking (List<Integer> unCheckedLotto, int bonusNumber) {
+        if (unCheckedLotto.contains(bonusNumber)) {
             return 2;
         }
         return 3;
