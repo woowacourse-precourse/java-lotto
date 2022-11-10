@@ -8,8 +8,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class FeatureTest {
-    Input input;
-
     @Test
     void 입력을_숫자로_변환() {
         String input = "1400";
@@ -21,5 +19,12 @@ public class FeatureTest {
         String input = "1,2,3,4,5,6";
         List<Integer> answer = List.of(1, 2, 3, 4, 5, 6);
         assertThat(Input.getWinningNumber(input)).isEqualTo(answer);
+    }
+
+    @Test
+    void 로또_발행(){
+        List<Integer> answer = Lotto.getLottoNumbers();
+        long count = answer.stream().distinct().count();
+        assertThat(count).isEqualTo(6L);
     }
 }
