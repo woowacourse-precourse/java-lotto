@@ -1,6 +1,7 @@
 package lotto;
 
 import static lotto.ErrorMessage.*;
+import static lotto.InputValidator.*;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class UserLotto {
     }
 
     public UserLotto(String quantity) {
+        validateQuantity(quantity);
         this.userLotto = purchaseLotto(quantity);
     }
 
