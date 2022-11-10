@@ -4,12 +4,17 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class NumberGenerator {
 
-    List<List<Integer>> lottos;
+    List<List<Integer>> userLottos;
+    List<Integer> computerLotto;
+
     public NumberGenerator() {
+        computerLotto = new ArrayList<>();
     }
 
     public int calculatorLottoNumber(int purchasePrice) {
@@ -21,21 +26,25 @@ public class NumberGenerator {
         return Integer.parseInt(purchasePrice);
     }
 
-    public List<Integer> enterLottoNumbers() {
+    public void enterLottoNumbers() {
         String[] lottoNumbers = Console.readLine().split(",");
-        return convertedLottoNumbers(lottoNumbers);
+        computerLotto = addComputerNumber(new ArrayList<>(Arrays.asList(lottoNumbers)));
     }
 
-    private List<Integer> convertedLottoNumbers(String[] lottoNumbers) {
-        List<Integer> convertedLottoNumbers = new ArrayList<Integer>();
-        for (String number : lottoNumbers) {
-            convertedLottoNumbers.add(Integer.parseInt(number.trim()));
-        }
-        return convertedLottoNumbers;
+    public int enterBonusNumber() {
+        return Integer.parseInt(Console.readLine());
+    }
+
+    private List<Integer> addComputerNumber(List<String> computerLottoString) {
+        return convertedLottoNumbers(computerLottoString);
+    }
+
+    private List<Integer> convertedLottoNumbers(List<String> computerLottoString) {
+        return computerLottoString.stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
     public void operationLotto(int purchaseQuantity) {
-        lottos = new ArrayList<>(purchaseQuantity);
+        userLottos = new ArrayList<>(purchaseQuantity);
         createLottoNumbers(purchaseQuantity);
         printLottoNumbers();
     }
@@ -43,12 +52,12 @@ public class NumberGenerator {
     private void createLottoNumbers(int purchaseQuantity) {
         for (int i = 0; i < purchaseQuantity; i++) {
             List<Integer> integers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            lottos.add(integers);
+            userLottos.add(integers);
         }
     }
 
     private void printLottoNumbers() {
-        for (List<Integer> lotto : lottos) {
+        for (List<Integer> lotto : userLottos) {
             System.out.println(lotto);
         }
     }
