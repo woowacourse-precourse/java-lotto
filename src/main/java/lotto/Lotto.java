@@ -14,19 +14,30 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != MAX_SIZE) {
+        if (!isValidSize(numbers)) {
             throw new IllegalArgumentException();
         }
-        if(numbers.size() != numbers.stream().distinct().count()) {
+        if(isDuplicated(numbers)) {
             throw new IllegalArgumentException();
         }
-
-        if(numbers.stream().filter(n -> n < 1 || n > 45).findFirst() != null) {
+        if(isNotValidRange(numbers)) {
             throw new IllegalArgumentException();
         }
     }
 
+    static boolean isValidSize(List<Integer> numbers) {
+        return numbers.size() == MAX_SIZE;
+    }
 
+    static boolean isDuplicated(List<Integer> numbers) {
+        return numbers.size() != numbers.stream().distinct().count();
+    }
 
-    // TODO: 추가 기능 구현
+    static boolean isNotValidRange(List<Integer> numbers) {
+        return numbers.stream().filter(n -> n < 1 || n > 45).findFirst().isPresent();
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
