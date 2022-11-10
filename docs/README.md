@@ -36,6 +36,7 @@
 - [X] 입력값이 글자인지 숫자인지 확인하기(예외처리 - 숫자를 입력해주시기 바랍니다) - Customer.validateNumeric(String)
 - [ ] 예외들 인터페이스로 리팩토링 하기
 - [ ] 에러 출력하는 테스트 코드 예시 양식으로 리팩토링 하기
+- [ ] enum 사용하기
 
 ## 참고사항
 
@@ -43,4 +44,4 @@
 ![lotto_flowchart](https://user-images.githubusercontent.com/92911823/200890179-f1eb78eb-3577-49cb-ad04-0fd688ae037c.jpg)
 
 ### CLASS DIAGRAM
-![lotto_class_diagram_2](https://user-images.githubusercontent.com/92911823/201035970-50ca5be6-8194-48a8-82e9-485e03ffc89a.jpg)
+![lotto_class_diagram_3](https://user-images.githubusercontent.com/92911823/201154082-69b73c38-522c-4377-a4fa-7ffd043a0f8f.jpg)
