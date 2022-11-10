@@ -1,8 +1,8 @@
 package lotto.console;
 
-public class PriceFormatter {
+class OutputFormatter {
 
-    public static String formatMoney(int money) {
+    static String formatMoney(int money) {
         return String.format(String.valueOf(money), "%,.2f", money);
     }
 }
