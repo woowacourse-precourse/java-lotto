@@ -3,6 +3,7 @@ package lotto.exception;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 class WinningNumbersExceptionTest {
@@ -21,6 +22,21 @@ class WinningNumbersExceptionTest {
 
         assertThatThrownBy(() ->
                 WinningNumbersException.checkRightWinningNumbersSize(List.of("1", "45", "22", "1", "21", "38", "34")))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 당첨숫자_중복된_숫자_확인() {
+        assertThatThrownBy(
+                () -> WinningNumbersException.checkUniqueWinningNumbers(Set.of("23", "23", "21", "14", "6", "34")))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(
+                () -> WinningNumbersException.checkUniqueWinningNumbers(Set.of("11", "34", "21", "11", "9", "37")))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(
+                () -> WinningNumbersException.checkUniqueWinningNumbers(Set.of("1", "39", "8", "28", "8", "41")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
