@@ -37,4 +37,10 @@ public class Convert {
         validate.validDuplicate(winLottoNumbers);
         return winLottoNumbers;
     }
+
+    public int toWinLottoBonusNumber(String input) {
+        int bonusNumber = toInt(input);
+        validate.validBonusNumber(bonusNumber);
+        return bonusNumber;
+    }
 }
