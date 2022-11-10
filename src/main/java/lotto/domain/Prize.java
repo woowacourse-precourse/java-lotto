@@ -1,6 +1,6 @@
 package lotto.domain;
 
-enum Prize{
+public enum Prize{
     FIRST(2_000_000_000),
     SECOND(30_000_000),
     THIRD(1_500_000),
