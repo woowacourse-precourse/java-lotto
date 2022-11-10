@@ -5,7 +5,7 @@ import java.util.List;
 public class LottoGameConsole {
 
     public void startLottoGame() {
-        // 게임 시작 안내
+        startingGuide();
         // 구입 금액 안내, 입력, 검증
         // Lotto 발행
         // 당첨 lotto 생성
