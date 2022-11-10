@@ -7,9 +7,9 @@ import java.util.stream.Collectors;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
-    private int userMoney;
-    private int resultMoney;
-    private int numOfLotto;
+    private int userMoney = 0;
+    private int resultMoney = 0;
+    private int numOfLotto = 0;
     private List<Lotto> lottos = new ArrayList<>();
 
     public void readMoney(){
@@ -57,6 +57,12 @@ public class User {
     public void showLottos(){
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
+        }
+    }
+
+    public void setNumOfLotto(){
+        if(userMoney != 0){
+            numOfLotto = userMoney/1000;
         }
     }
 }
