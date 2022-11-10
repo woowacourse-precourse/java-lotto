@@ -1,20 +1,26 @@
 package domain;
 
 public enum Winnings {
-    FIRST(2000000000),
-    SECOND(30000000),
-    THIRD(1500000),
-    FOURTH(50000),
-    FIFTH(5000),
-    NONE(0);
+    FIRST("6개 일치", 2000000000),
+    SECOND("5개 일치, 보너스 볼 일치", 30000000),
+    THIRD("5개 일치", 1500000),
+    FOURTH("4개 일치", 50000),
+    FIFTH("3개 일치", 5000),
+    NONE("2개 이하", 0);
 
-    private final int value;
+    private final String expression;
+    private final int price;
 
-    Winnings(int value) {
-        this.value = value;
+    Winnings(String expression, int price) {
+        this.expression = expression;
+        this.price = price;
     }
 
-    public int getValue() {
-        return value;
+    public String getExpression() {
+        return expression;
+    }
+
+    public int getPrice() {
+        return price;
     }
 }

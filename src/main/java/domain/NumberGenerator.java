@@ -9,7 +9,6 @@ public class NumberGenerator {
 
     public static Lotto createLottoNumber() {
         List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(lottoNumber);
         return new Lotto(lottoNumber);
     }
 }

@@ -21,10 +21,10 @@ public class Buyer {
     public String calculateReturnRate() {
         double returnRate = 0.0;
         for (Winnings winnings : winningStatistics.keySet()) {
-            returnRate += winnings.getValue() * winningStatistics.get(winnings);
+            returnRate += winnings.getPrice() * winningStatistics.get(winnings);
         }
         returnRate /= purchaseAmount;
-        return String.format("%.1f", returnRate);
+        return String.format("%.1f", returnRate*100);
     }
 
     public Map<Winnings, Integer> putWinningStatistics(WinningNumber winningNumber) {
