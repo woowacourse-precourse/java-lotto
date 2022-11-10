@@ -12,7 +12,7 @@ public class Lotto {
     static final int MAX_NUMBER = 45;
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) throws Exception {
+    public Lotto(List<Integer> numbers) {
         validate(numbers);
 
         this.numbers = numbers.stream()
@@ -24,25 +24,25 @@ public class Lotto {
         return numbers.get(index);
     }
 
-    private void validate(List<Integer> numbers) throws Exception {
+    private void validate(List<Integer> numbers) {
         validateSize(numbers);
         validateDistinct(numbers);
         validateNumberRange(numbers);
     }
 
-    private void validateSize(List<Integer> numbers) throws Exception {
+    private void validateSize(List<Integer> numbers) {
         if (numbers.size() != NUMBER_COUNT) {
             throw createLottoException("로또번호는 6개여야 합니다.");
         }
     }
 
-    private void validateDistinct(List<Integer> numbers) throws Exception {
+    private void validateDistinct(List<Integer> numbers) {
         if (numbers.stream().distinct().count() != numbers.size()) {
             throw createLottoException("로또번호는 중복되면 안됩니다.");
         }
     }
 
-    private void validateNumberRange(List<Integer> numbers) throws Exception {
+    private void validateNumberRange(List<Integer> numbers) {
         if (!numbers.stream().allMatch(
                 number -> MIN_NUMBER <= number && number <= MAX_NUMBER)) {
             throw createLottoException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");

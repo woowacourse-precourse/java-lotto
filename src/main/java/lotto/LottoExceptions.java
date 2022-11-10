@@ -6,7 +6,7 @@ public final class LottoExceptions {
         throw new IllegalAccessException("Access Denied: Should not create a util instance");
     }
 
-    public static Exception createLottoException(String message) {
+    public static RuntimeException createLottoException(String message) {
         return new IllegalArgumentException("[ERROR]" + message);
     }
 }
