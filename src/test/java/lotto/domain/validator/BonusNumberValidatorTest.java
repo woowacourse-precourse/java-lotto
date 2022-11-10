@@ -10,8 +10,6 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
 class BonusNumberValidatorTest {
-    private static final String ERROR_MESSAGE = "[ERROR]";
-    
     @Test
     @DisplayName("올바른 보너스 번호 입력 시")
     void correctBonusNumber() {
@@ -25,7 +23,7 @@ class BonusNumberValidatorTest {
     void outOfRangeException(final int bonusNumber) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> BonusNumberValidator.validate(LottoTest.FROM_ONE_TO_SIX, bonusNumber))
-                .withMessageStartingWith(ERROR_MESSAGE);
+                .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
     
     @DisplayName("예외 처리 : 중복되는 번호가 있는 경우")
@@ -34,6 +32,6 @@ class BonusNumberValidatorTest {
     void duplicateLottoNumberException(final int bonusNumber) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> BonusNumberValidator.validate(LottoTest.FROM_ONE_TO_SIX, bonusNumber))
-                .withMessageStartingWith(ERROR_MESSAGE);
+                .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
 }

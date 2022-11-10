@@ -11,8 +11,6 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
 class LottoNumbersValidatorTest {
-    private static final String ERROR_MESSAGE = "[ERROR]";
-    
     @Test
     @DisplayName("올바른 로또 번호 입력 시")
     void correctLottoNumbers() {
@@ -25,7 +23,7 @@ class LottoNumbersValidatorTest {
     void createLottoByOverSize() {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> LottoNumbersValidator.validate(List.of(1, 2, 3, 4, 5, 6, 7)))
-                .withMessageStartingWith(ERROR_MESSAGE);
+                .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
     
     @Test
@@ -33,7 +31,7 @@ class LottoNumbersValidatorTest {
     void createLottoByDuplicatedNumber() {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> LottoNumbersValidator.validate(List.of(1, 2, 3, 4, 5, 5)))
-                .withMessageStartingWith(ERROR_MESSAGE);
+                .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
     
     @DisplayName("예외 처리 : 6개의 숫자 중, 1~45 범위를 벗어난 숫자가 존재하는 경우")
@@ -42,6 +40,6 @@ class LottoNumbersValidatorTest {
     void outOfRangeException(final int lottoNumber) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> LottoNumbersValidator.validate(List.of(1, 2, 3, 4, 5, lottoNumber)))
-                .withMessageStartingWith(ERROR_MESSAGE);
+                .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
 }
