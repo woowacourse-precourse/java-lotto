@@ -9,4 +9,6 @@ public class Constants {
         public static final int MATCH_FIVE_ADD_BONUS_PROFIT = 30_000_000;
         public static final int MATH_SIX_PROFIT = 2_000_000_000;
     }
+
+    public static final int MONEY_MIN_UNIT = 1000;
 }

@@ -19,7 +19,7 @@
 
 ### Model
 1. MoneyToQuantityChanger
-   1. [ ] 구입금액을 수량으로 변경
+   1. [X] 구입금액을 수량으로 변경
 2. RandomNumbersGenerator
    1. [X] 1~45사이의 서로 다른 6개 번호 생성
 3. Lotto
@@ -37,7 +37,7 @@
    4. [X] 당첨 번호와 비교와 하여 모든 로또상태를 저장
    5. [X] 수익 계산
 5. LottoSystem
-   1. [ ] 수익률 계산
+   1. [X] 수익률 계산
    2. [X] random 로또를 수량만큼 추가
 6. LottoStatus
    1. [X] 상태에서 해당 금액을 받는 기능
