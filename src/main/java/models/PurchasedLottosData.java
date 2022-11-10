@@ -1,27 +1,41 @@
 package models;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class PurchasedLottosData {
+    public class PurchasedLottosData {
 
     private List<Lotto> purchasedLottos;
 
     public PurchasedLottosData(int amount){
-        lottos = createLottos(amount);
+        purchasedLottos = createLottos(amount);
     }
 
-    private createLottos(int amount){
+    private List<Lotto> createLottos(int amount){
 
-        List<Lotto> Lottos = new ArrayList<>();
+        List<Lotto> lottos = new ArrayList<>();
 
-        for(;Lottos.size() < amount;){
-            Lottos.add(createLottoNumbers());
+        for(;lottos.size() < amount;){
+            lottos.add(createLottoNumbers());
         }
-        return Lottos;
+        return lottos;
 
     }
 
+    private Lotto createLottoNumbers(){
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Lotto lotto = new Lotto(numbers);
+        return lotto;
 
+    }
+
+     void printLottoList(){
+         //System.out.println(String.format("%d개를 구매했습니다.",purchasedLottos.size()));
+         purchasedLottos.forEach((lotto) -> System.out.println(Arrays.asList(lotto.getNumbers())));
+
+     }
 
 }
