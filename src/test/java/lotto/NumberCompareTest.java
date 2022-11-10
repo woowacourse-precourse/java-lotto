@@ -38,6 +38,5 @@ public class NumberCompareTest {
         int bonusNumber = 11;
         assertThat(NumberCompare.compare(numbers,randomNumbers,bonusNumber))
                 .isEqualTo(Rank.TWO);
-
     }
 }
