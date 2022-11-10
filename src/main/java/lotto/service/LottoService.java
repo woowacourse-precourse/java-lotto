@@ -1,5 +1,7 @@
 package lotto.service;
 
+import static lotto.domain.LottoGenerator.LOTTO_PRICE;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.domain.Lotto;
@@ -7,6 +9,8 @@ import lotto.domain.LottoGenerator;
 import lotto.domain.LottoResult;
 
 public class LottoService {
+
+    public static final int MAKE_PERCENTAGE_SCALE = 100;
 
     private LottoGenerator lottoGenerator = new LottoGenerator();
 
@@ -22,9 +26,9 @@ public class LottoService {
         int revenue = lottoResults.stream()
                 .mapToInt(LottoResult::getPayout)
                 .sum();
-        int investment = lottoResults.size() * 1000;
+        int investment = lottoResults.size() * LOTTO_PRICE;
 
-        return (double) revenue / investment * 100;
+        return (double) revenue / investment * MAKE_PERCENTAGE_SCALE;
     }
 
     public List<Lotto> buy(int money) {

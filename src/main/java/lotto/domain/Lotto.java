@@ -34,7 +34,7 @@ public class Lotto {
     }
 
     private boolean isDuplicate(List<Integer> numbers) {
-        return new HashSet<>(numbers).size() != 6;
+        return new HashSet<>(numbers).size() != LOTTO_NUMBER_LENGTH;
     }
 
     private LottoResult changeToLottoResult(int bonusNumber, long matchCount) {
