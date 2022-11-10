@@ -19,4 +19,8 @@ public class LottoGenerator {
     private List<Integer> createLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(startNumber, endNumber, numberCount);
     }
+
+    private void sortLottoNumbers(List<Integer> lottoNumbers) {
+        Collections.sort(lottoNumbers);
+    }
 }
