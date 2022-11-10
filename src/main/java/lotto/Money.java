@@ -20,8 +20,12 @@ public class Money {
 			throw new IllegalArgumentException("숫자가 아닙니다.");
 		}
 
-		if (Integer.parseInt(input) % 1000 != 0) {
+		if (!isUnitOfThousand(input)) {
 			throw new IllegalArgumentException("1000원 단위로 입력해주세요.");
 		}
+	}
+
+	private static boolean isUnitOfThousand (String input) {
+		return Integer.parseInt(input) % 1000 == 0;
 	}
 }
