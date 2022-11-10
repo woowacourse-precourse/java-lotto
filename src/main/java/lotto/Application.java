@@ -6,6 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -25,24 +26,24 @@ public class Application {
         // 로또 생성
         List<List<Integer>> lottos = buyLotto(account);
 
+        // 로또 출력
+        lottos.stream().forEach(System.out::println);
+        System.out.println(lottos.size() + "개를 구매했습니다.");
+
         // 당첨 번호 , 보너스 번호 입력 받기
-        setWinnerNumber();
+        List<Integer> winnerNumber = setWinnerNumber();
 
 
     }
+
 
     private static List<Integer> setWinnerNumber() {
-
-        List<Integer> wins = new ArrayList<>();
-
         String input = Console.readLine();
-        String[] split = input.split(",");
 
-        List<Integer> list = Stream.of(split).map(Integer::parseInt).collect(Collectors.toList());
-        System.out.println("list = " + list);
-
-        return list;
+        return null;
     }
+
+
 
     private static List<List<Integer>> buyLotto(int account) {
         List<List<Integer>> lottos = new ArrayList<>();
