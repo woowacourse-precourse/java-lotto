@@ -1,46 +1,49 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.config.InputConfig;
+import lotto.domain.Lotto;
+import lotto.mapper.InputMapper;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Set;
 
 public class ViewController {
     private final InputView inputView;
     private final OutputView outputView;
+    private final InputMapper inputMapper;
 
     public ViewController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
+        this.inputMapper = new InputMapper();
     }
 
     public long inputPurchaseAmount() {
         inputView.printInputPurchaseAmount();
         String amount = Console.readLine();
-        //TODO config 구현
+        InputConfig.checkPurchaseInput(amount);
         return Long.parseLong(amount);
     }
 
-    public void dsf(List<List<Integer>> lottoList){
-        // TODO n개를 구매했습니다 출력
+    public void printPurchasedLotto(List<Lotto> lottoList) {
+        outputView.printPurchaseCount(lottoList.size());
         outputView.printAllLotto(lottoList);
     }
 
-    public List<Integer> inputPrizeLottoNumber() {
+    public Set<Integer> inputPrizeLottoNumber() {
         inputView.printInputPrizeLottoNumber();
         String input = Console.readLine();
-        // TODO mapper, config 구현
-        List<Integer> prize = Arrays.stream(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        Set<Integer> prize = inputMapper.stringToSetSplitBy(input, ",");
+        //InputConfig
         return prize;
     }
 
     public int inputBonusNumber() {
         inputView.printInputBonusNumber();
         String input = Console.readLine();
-        // TODO config 구현
         return Integer.parseInt(input);
     }
 }
