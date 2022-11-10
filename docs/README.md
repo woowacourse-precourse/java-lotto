@@ -13,11 +13,11 @@
         / List<List<Integer>> getPurchaseLottoList(int purchaseNumber)
 ###3. 당첨 확인
     1) 숫자 포함 여부 확인
-        / boolean isContainNumber(int LottoNumber, List<Integer> winningNumber)
+        / boolean isContainNumber(int LottoNumber)
     2) 당첨갯수 확인
-        / int getMacthingNumber(List<Integer> winningNumber, List<Integer> LottoNumbers)   
+        / int getMatchingNumber(List<Integer> LottoNumbers)   
     3) 당첨배열 생성 [3개, 4개, 5개, 5개+보너스, 6개]
-        / int[] getWinningArray(List<Integer> winningNumber, List<List<Integer>> getPuchasesLottoList)
+        / int[] getWinningArray(List<List<Integer>> getPuchasesLottoList)
 ###4. 수익률 계산
     1) 수익 계산 // 추후 enum으로 리팩토링
         / int getProfit(int[] WinningArray)
