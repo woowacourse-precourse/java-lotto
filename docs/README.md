@@ -21,7 +21,7 @@ List<Ranking>를 가진다.
 
 ## enum
 ### Ranking
-THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_MATCH_WITH_BONUM, SIX_MATCH를 가진다.
+THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_MATCH_WITH_BONUS, SIX_MATCH를 가진다.
 
 ## 엔티티
 ### Player
