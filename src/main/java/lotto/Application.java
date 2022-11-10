@@ -4,10 +4,10 @@ package lotto;
  * [필요 기능 명세]
  * [O] 랜덤 로또 번호 생성
  * [O] 당첨금 enum class 생성
- * [X] 당첨 로또 번호 입력
+ * [O] 당첨 로또 번호 입력
  * [X] 당첨 통계 계산
  * [X] 총 수익률 계산
- * [O/X] 입력 예외 처리(로또 구매 갯수 / 당첨 로또번호 입력)
+ * [O/O] 입력 예외 처리(로또 구매 갯수 / 당첨 로또번호 입력)
  * [X] 단위 테스트 생성
  * [X] 테스트 확인
  */
@@ -43,21 +43,32 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-
         List<Lotto> userLotto = new ArrayList<>();
 
-        try {
-            int purchaseLottoPrice= Integer.parseInt(Console.readLine());
-            int purchaseLottoAmount = purchaseLottoPrice / LOTTO_PRICE;
+        int purchaseLottoPrice= getTotalPurchaseLottoPrice();
+        int purchaseLottoAmount = purchaseLottoPrice / LOTTO_PRICE;
 
+        try {
             validateLottoPrice(purchaseLottoPrice);
             purchaseLotto(userLotto, purchaseLottoAmount);
             printUserLottoList(userLotto, purchaseLottoAmount);
 
+            Lotto winningLotto = Lotto.inputWinningLottoNumber();
+            int bonusNumber = getBonusNumber();
+
         } catch(IllegalArgumentException e){
             System.out.println(ERROR_MESSAGE + " " + e.getMessage());
         }
+    }
+
+    private static int getBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        return Integer.parseInt(Console.readLine());
+    }
+
+    private static int getTotalPurchaseLottoPrice() {
+        System.out.println("구입금액을 입력해주세요.");
+        return Integer.parseInt(Console.readLine());
     }
 
     private static void purchaseLotto(List<Lotto> userLotto, int purchaseLottoAmount) {
