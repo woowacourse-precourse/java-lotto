@@ -1,9 +1,10 @@
 package lotto;
 
+import java.text.DecimalFormat;
+import java.util.List;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-
-import java.text.DecimalFormat;
 
 public class Application {
     final static int lottoPrice = 1000;
