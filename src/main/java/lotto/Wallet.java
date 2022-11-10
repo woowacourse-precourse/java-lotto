@@ -12,6 +12,10 @@ public class Wallet {
         profit = 0;
     }
 
+    public int getMoney() {
+        return money;
+    }
+
     public void getLottos(List<Lotto> boughtLottos) {
         myLottos = boughtLottos;
     }
