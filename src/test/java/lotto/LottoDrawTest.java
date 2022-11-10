@@ -19,14 +19,27 @@ public class LottoDrawTest {
         try {
             Method method = LottoDraw.class.getDeclaredMethod("validateComma", String.class);
             method.setAccessible(true);
-            assertThat(method.invoke(lottoDraw, "1,2,3,4,5")).isInstanceOf(IllegalArgumentException.class);
+            assertThat(method.invoke(lottoDraw, "1,2,3,4,5"))
+                    .isInstanceOf(IllegalArgumentException.class);
         } catch (Exception ignored) {
         }
     }
 
-    @DisplayName("쉼표로 구분한 6개의 숫자가 아닌 경우 예외 발생")
+    @DisplayName("6개의 숫자에 중복이 있는 경우 예외 발생")
     @Test
-    void case2_split_comma() {
+    void case2_duplication_in_numbers() {
+        try {
+            Method method = LottoDraw.class.getDeclaredMethod("validateDuplication", List.class);
+            method.setAccessible(true);
+            assertThat(method.invoke(lottoDraw, List.of(1,2,3,4,5,5)))
+                    .isInstanceOf(IllegalArgumentException.class);
+        } catch (Exception ignored) {
+        }
+    }
+
+    @DisplayName("쉼표로 구분한 중복이 없는 6개의 숫자가 맞는 경우 리스트 반환")
+    @Test
+    void case3_correct_data_result() {
             assertThat(lottoDraw.pickWinNumbers("1,2,3,4,5,6")).isEqualTo(List.of(1,2,3,4,5,6));
     }
 }
