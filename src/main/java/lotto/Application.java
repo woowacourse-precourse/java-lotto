@@ -18,39 +18,10 @@ public class Application {
         List<Integer> winNumbers = inputWinNumbers(Console.readLine());
         Lotto lotto = new Lotto(winNumbers);
         int bonusNum = lotto.inputBonusNumber();
-        Map<List<Integer>, Integer> lottoResult = new HashMap<>();
-        int result = 0;
         RankCount rankCount = new RankCount();
-        for (List<Integer> num : lottoNumbers) {
-            int correctCount = 0;
-            for (int i : num) {
-                if (winNumbers.contains(i)) {
-                    correctCount++;
-                }
-                if (correctCount == 5 && num.contains(bonusNum)) {
-                    correctCount += 2;
-                }
-            }
-            Rank rank = Rank.getRank(correctCount);
-            System.out.println(rank);
-            result += rank.getPrize();
-
-            if (correctCount == 0 || correctCount > 2 && correctCount < 8) {
-                rankCount.rankCounting(correctCount);
-            }
-            lottoResult.put(num, correctCount);
-        }
+        int result = getPrizeResult(lottoNumbers, winNumbers, bonusNum, rankCount);
         Map<Integer, Integer> rankCounter = rankCount.getCount();
-        double profit = Math.round(((double) result/(double) pay) * 10000);
-        BigDecimal profitPercent = new BigDecimal(String.valueOf(Double.parseDouble(String.valueOf(profit/100))));
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + rankCounter.get(3) + "개");
-        System.out.println("4개 일치 (50,000원) - " + rankCounter.get(4) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + rankCounter.get(5) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + rankCounter.get(7) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + rankCounter.get(6) + "개");
-        System.out.println("총 수익률은 " + profitPercent.toPlainString() + "%입니다.");
+        printOutResult(result, pay, rankCounter);
 
     }
 
@@ -95,6 +66,42 @@ public class Application {
             throw new IllegalArgumentException();
         }
         return winNumbers;
+    }
+
+    public static int getPrizeResult(List<List<Integer>> lottoNumbers, List<Integer> winNumbers, int bonusNum, RankCount rankCount) {
+        int result = 0;
+        for (List<Integer> num : lottoNumbers) {
+            int correctCount = 0;
+            correctCount = findCorrectNum(num, winNumbers, bonusNum, correctCount);
+            Rank rank = Rank.getRank(correctCount);
+            result += rank.getPrize();
+            if (correctCount == 0 || correctCount > 2 && correctCount < 8)
+                rankCount.rankCounting(correctCount);
+        }
+        return result;
+    }
+
+    public static int findCorrectNum(List<Integer> num, List<Integer> winNumbers, int bonusNum, int correctCount) {
+        for (int i : num) {
+            if (winNumbers.contains(i))
+                correctCount++;
+            if (correctCount == 5 && num.contains(bonusNum))
+                correctCount += 2;
+        }
+        return correctCount;
+    }
+
+    public static void printOutResult(int result, int pay, Map<Integer, Integer> rankCounter) {
+        double profit = Math.round(((double) result/(double) pay) * 10000);
+        BigDecimal profitPercent = new BigDecimal(String.valueOf(Double.parseDouble(String.valueOf(profit/100))));
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - " + rankCounter.get(3) + "개");
+        System.out.println("4개 일치 (50,000원) - " + rankCounter.get(4) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + rankCounter.get(5) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + rankCounter.get(7) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + rankCounter.get(6) + "개");
+        System.out.println("총 수익률은 " + profitPercent.toPlainString() + "%입니다.");
     }
 
 }
