@@ -14,7 +14,7 @@ public class WinningLottoNumbers {
     }
     
     private void validateBonusNumber(final int bonusNumber) {
-        BonusNumberValidator.validate(bonusNumber);
+        BonusNumberValidator.validate(winningLotto, bonusNumber);
     }
     
     public int countOfMatchingNumber(final Lotto lotto) {
