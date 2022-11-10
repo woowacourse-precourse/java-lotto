@@ -119,19 +119,22 @@
 
 ## 📜기능목록
 - [x] lotto 번호 생성자 - Lotto#Lotto()
-- [x] 로또번호 길이 검사 - Lotto#validate()
+- [x] 로또번호 길이 검사 - Lotto#validata()
 - [x] 로또번호 반환 - Lotto#getnumbers()
 
 
 - [x] 길이 6의 로또 번호 생성 (범위는 1 ~ 45) - NumberGenerator#makeNumber()
 
 - [x] 사용자 금액 입력 받기 - User#readMoney()
-  - [x] 사용자 금액 잘못된 값 입력 검사 - User#validateInputNumber()
+  - [x] 사용자 금액 잘못된 값 입력 검사 - User#validataInputNumber()
 - [x] 사용자 로또 입력 받기 - User#readLotto()
-  - [x] 잘못된 값 입력 검사 - User#validateInputLottoNumber()
-    - [ ] 입력형태가 잘못된 경우 - User#unvalidShape()
-    - [ ] 숫자가 중복되는 경우 - User#duplicatedNumber()
-    - [ ] 숫자 범위에 속하지 않는 경우 - User#checkNumberArea()
+  - [x] 잘못된 값 입력 검사 - User#validataInputLottoNumber()
+    - [x] 입력형태가 잘못된 경우 - User#unValidShape()
+    - [x] 숫자가 중복되는 경우 - User#duplicatedNumber()
+    - [x] 숫자 범위에 속하지 않는 경우 - User#checkNumberArea()
+- [x] 사용자에게 보너스 번호 입력 받기 - User#readBonus()
+  - [x] 보너스 번호 검증 - User#validataBonusNumber()
+- [x] 로또 목록에 로또 추가하기 - User#addLotto()
 - [x] 사용자 입력 값을 List<Integer>로 변경 - User#convertLottoNumber()
 - [x] 사용자 로또 번호 출력 - User#showLottos()
 - [x] 사용자의 로또 개수 설정 - User#setnumOfLotto()
