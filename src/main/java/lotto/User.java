@@ -29,7 +29,7 @@ public class User {
 
     private void generateLottos() {
         for(int i = 0; i < this.lottoNum; i++) {
-            Lotto lotto = Lotto.generateLotto();
+            Lotto lotto = Lotto.generate();
 
             lottos.add(lotto);
         }

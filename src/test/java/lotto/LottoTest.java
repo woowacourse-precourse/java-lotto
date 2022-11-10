@@ -34,7 +34,7 @@ class LottoTest {
     @Test
     void createLottosWithNoExcpetion() {
         assertDoesNotThrow(() -> {
-            Lotto lotto = Lotto.generateLotto();
+            Lotto lotto = Lotto.generate();
             List<Integer> numbers = lotto.getNumbers();
         });
     }
