@@ -10,9 +10,14 @@ public class InputConfig {
     public static final long LOTTO_PRICE = 1000;
 
 
-    public static void checkPrizeLotto(Set<Integer> lotto, int bonus) {
-        hasCorrectSize(lotto);
+    public static void checkPrizeLottoWithBonus(Set<Integer> lotto, int bonus) {
+        checkPrizeLotto(lotto);
         isBonusNumberInLotto(lotto, bonus);
+
+    }
+
+    public static void checkPrizeLotto(Set<Integer> lotto) {
+        hasCorrectSize(lotto);
         for (int i : lotto) {
             isInRange(i);
         }

@@ -60,7 +60,7 @@ class InputConfigTest {
     void prize_lotto_test_overlap() {
         Set<Integer> set = Set.of(1, 2, 3, 4, 5);       // 중복됐다 가정
         int bonus = 10;
-        assertThatThrownBy(() -> InputConfig.checkPrizeLotto(set, bonus))
+        assertThatThrownBy(() -> InputConfig.checkPrizeLottoWithBonus(set, bonus))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageStartingWith(errorStartMsg);
     }
@@ -70,7 +70,7 @@ class InputConfigTest {
     void prize_lotto_test_over_size() {
         Set<Integer> set = Set.of(1, 2, 3, 4, 5, 6, 7);
         int bonus = 10;
-        assertThatThrownBy(() -> InputConfig.checkPrizeLotto(set, bonus))
+        assertThatThrownBy(() -> InputConfig.checkPrizeLottoWithBonus(set, bonus))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageStartingWith(errorStartMsg);
     }
@@ -80,7 +80,7 @@ class InputConfigTest {
     void prize_lotto_test_bonus_overlap() {
         Set<Integer> set = Set.of(1, 2, 3, 4, 5, 6);
         int bonus = 1;
-        assertThatThrownBy(() -> InputConfig.checkPrizeLotto(set, bonus))
+        assertThatThrownBy(() -> InputConfig.checkPrizeLottoWithBonus(set, bonus))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageStartingWith(errorStartMsg);
     }
@@ -91,7 +91,7 @@ class InputConfigTest {
         int rangeOverNum = InputConfig.END_INCLUSIVE + 1;
         Set<Integer> set = Set.of(1, 2, 3, 4, 5, rangeOverNum);
         int bonus = 10;
-        assertThatThrownBy(() -> InputConfig.checkPrizeLotto(set, bonus))
+        assertThatThrownBy(() -> InputConfig.checkPrizeLottoWithBonus(set, bonus))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageStartingWith(errorStartMsg);
     }
@@ -102,6 +102,6 @@ class InputConfigTest {
         Set<Integer> set = Set.of(1, 2, 3, 4, 5, 6);
         int bonus = 10;
 
-        assertDoesNotThrow(() -> InputConfig.checkPrizeLotto(set, bonus));
+        assertDoesNotThrow(() -> InputConfig.checkPrizeLottoWithBonus(set, bonus));
     }
 }
