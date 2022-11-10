@@ -43,4 +43,8 @@ public class Lotto {
 			throw new IllegalArgumentException(INVALID_NUMBER_BOUNDARY);
 		}
 	}
+
+	public List<Integer> getNumbers() {
+		return this.numbers;
+	}
 }
