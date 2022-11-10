@@ -6,15 +6,15 @@ import lotto.model.LottoIssuingMachine;
 import lotto.model.LottoWinningStatistics;
 import lotto.view.LottoView;
 
-public class LottoController {
+public class LottoGame {
 
     private final LottoIssuingMachine issuingMachine;
     private final LottoDrawingMachine drawingMachine;
     private final LottoWinningStatistics winningStatistics;
     private final LottoView lottoView;
 
-    public LottoController(LottoIssuingMachine issuingMachine, LottoDrawingMachine drawingMachine,
-                           LottoWinningStatistics winningStatistics, LottoView lottoView) {
+    public LottoGame(LottoIssuingMachine issuingMachine, LottoDrawingMachine drawingMachine,
+                     LottoWinningStatistics winningStatistics, LottoView lottoView) {
         this.issuingMachine = issuingMachine;
         this.drawingMachine = drawingMachine;
         this.winningStatistics = winningStatistics;
