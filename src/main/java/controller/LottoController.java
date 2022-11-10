@@ -18,7 +18,9 @@ public class LottoController {
         printTicketCount(lottoPrice);
         for(int i=0 ; i<lottoPrice.lottoTicketCount() ;i++)
             printLottoNumbers(LottoTicket.generate());
-
+        inputLottoNumbers();
+        printStatistics();
+        printEarning();
     }
     private LottoPrice buyLottoTicket(){
         return new LottoPrice(inputView.inputPrice());
@@ -28,13 +30,26 @@ public class LottoController {
         outputView.printPurchaseCount(price.lottoTicketCount());
     }
 
-    private static void printLottoNumbers(final Lotto lotto) {
+    private void printLottoNumbers(Lotto lotto) {
         StringBuilder result = new StringBuilder("[");
         for (int lottoNumber : lotto.get()) {
             result.append(lottoNumber).append(", ");
         }
         result.delete(result.length() - 2, result.length()).append("]");
         System.out.println(result);
+    }
+
+    private void inputLottoNumbers(){
+        inputView.inputLottoNumbers();
+        inputView.inputBonusNumber();
+    }
+
+    private void printStatistics(){
+        outputView.printStatistics(1,0,0,0,0);
+    }
+
+    private void printEarning(){
+        outputView.printEarning(62.5F);
     }
 
 }
