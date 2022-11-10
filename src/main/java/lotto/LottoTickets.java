@@ -6,10 +6,14 @@ import java.util.List;
 public class LottoTickets {
 
     private static List<Lotto> lottoTickets = new ArrayList<>();
-    private static List<Integer> lottoResults = new ArrayList<>();
+    public static List<Integer> lottoResults = new ArrayList<>();
 
     public LottoTickets(List<Lotto> lottoTickets) {
         this.lottoTickets = lottoTickets;
+    }
+
+    public static void setLottoResults(List<Integer> lottoResults) {
+        LottoTickets.lottoResults = lottoResults;
     }
 
     public static int getLottoTicketsSize() {
@@ -18,10 +22,6 @@ public class LottoTickets {
 
     public static List<Lotto> getLottoTickets() {
         return lottoTickets;
-    }
-
-    public static void setLottoResults(List<Integer> lottoResults) {
-        LottoTickets.lottoResults = lottoResults;
     }
 
     public static List<Integer> getLottoResults() {
