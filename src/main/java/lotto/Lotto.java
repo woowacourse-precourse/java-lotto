@@ -35,7 +35,6 @@ public class Lotto {
             result += status.getContain1Value();
         }
         return result;
-
     }
 
 
