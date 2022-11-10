@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Lotto {
@@ -41,7 +40,7 @@ public class Lotto {
         return new Lotto(winningLottoNumbers);
     }
 
-    public static WINNINGS checkUserLottoWinning(Lotto winningLotto, Lotto userLotto, int bonusNumber){
+    public static WINNING checkUserLottoWinning(Lotto winningLotto, Lotto userLotto, int bonusNumber){
         int correctCount = 0;
         boolean bonusNumberCorrect = false;
 
@@ -54,7 +53,7 @@ public class Lotto {
                 bonusNumberCorrect = true;
         }
 
-        return WINNINGS.fromInteger(correctCount, bonusNumberCorrect);
+        return WINNING.fromInteger(correctCount, bonusNumberCorrect);
     }
 
     private static List<Integer> convertStringToIntegerList(String userInputWinningLottoNumbers) {

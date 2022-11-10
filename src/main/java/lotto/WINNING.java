@@ -1,9 +1,6 @@
 package lotto;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public enum WINNINGS{
+public enum WINNING {
     FIRST("2,000,000,000", 6, 5),
     SECOND("30,000,000", 5, 4),
     THIRD("1,500,000", 5, 3),
@@ -14,7 +11,7 @@ public enum WINNINGS{
     int correctCount;
     int sortOrder;
 
-    private WINNINGS(String value, int correctCount, int sortOrder)
+    private WINNING(String value, int correctCount, int sortOrder)
     {
         this.value = value;
         this.correctCount = correctCount;
@@ -29,26 +26,26 @@ public enum WINNINGS{
     }
     public int getSortOrder(){return sortOrder; }
 
-    public static WINNINGS fromInteger(int correctCount, boolean isBonusCorrect){
+    public static WINNING fromInteger(int correctCount, boolean isBonusCorrect){
         if(correctCount == 3)
-            return WINNINGS.FIFTH;
+            return WINNING.FIFTH;
 
         if(correctCount == 4)
-            return WINNINGS.FOURTH;
+            return WINNING.FOURTH;
         if(correctCount == 5) {
             if (isBonusCorrect)
-                return WINNINGS.SECOND;
-            return WINNINGS.THIRD;
+                return WINNING.SECOND;
+            return WINNING.THIRD;
         }
 
         if(correctCount == 6)
-            return WINNINGS.FIRST;
+            return WINNING.FIRST;
 
         return null;
     }
 
-    public static void printWinningInfo(WINNINGS winning, int winningCount){
-        if(winning == WINNINGS.SECOND){
+    public static void printWinningInfo(WINNING winning, int winningCount){
+        if(winning == WINNING.SECOND){
             System.out.println(winning.getCorrectCount() + "개 일치, 보너스 볼 일치 ("
                     + winning.getValue() + "원) - "
                     + winningCount + "개");

@@ -37,7 +37,7 @@ public class Application {
             Lotto winningLotto = Lotto.inputWinningLottoNumber();
             int bonusNumber = Lotto.inputBonusNumber();
 
-            Map<WINNINGS, Integer> result = initResultMap();
+            Map<WINNING, Integer> result = initResultMap();
             checkUserLottoWinning(result, userLotto, winningLotto, bonusNumber);
             printUserAllWinningInfo(result);
         } catch(IllegalArgumentException e){
@@ -45,18 +45,18 @@ public class Application {
         }
     }
 
-    private static Map<WINNINGS, Integer> initResultMap(){
-        Map<WINNINGS, Integer> result = new TreeMap<>(Comparator.comparingInt(WINNINGS::getSortOrder));
+    private static Map<WINNING, Integer> initResultMap(){
+        Map<WINNING, Integer> result = new TreeMap<>(Comparator.comparingInt(WINNING::getSortOrder));
 
-        for(WINNINGS winnings : WINNINGS.values())
-            result.put(winnings, 0);
+        for(WINNING WINNING : WINNING.values())
+            result.put(WINNING, 0);
 
         return result;
     }
 
-    private static void checkUserLottoWinning(Map<WINNINGS, Integer> result, List<Lotto> userLotto, Lotto winningLotto, int bonusNumber) {
+    private static void checkUserLottoWinning(Map<WINNING, Integer> result, List<Lotto> userLotto, Lotto winningLotto, int bonusNumber) {
         for (Lotto lotto : userLotto) {
-            WINNINGS curWinning = Lotto.checkUserLottoWinning(winningLotto, lotto, bonusNumber);
+            WINNING curWinning = Lotto.checkUserLottoWinning(winningLotto, lotto, bonusNumber);
 
             if(curWinning == null)
                 continue;
@@ -66,11 +66,11 @@ public class Application {
         }
     }
 
-    private static void printUserAllWinningInfo(Map<WINNINGS, Integer> result) {
-        for (WINNINGS winnings : result.keySet()) {
-            int winningCount = result.get(winnings);
+    private static void printUserAllWinningInfo(Map<WINNING, Integer> result) {
+        for (WINNING WINNING : result.keySet()) {
+            int winningCount = result.get(WINNING);
 
-            WINNINGS.printWinningInfo(winnings, winningCount);
+            WINNING.printWinningInfo(WINNING, winningCount);
         }
     }
 
