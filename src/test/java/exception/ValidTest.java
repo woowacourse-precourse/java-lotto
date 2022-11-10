@@ -55,4 +55,15 @@ class ValidTest {
         //then
         assertThat(result).isFalse();
     }
+
+    @Test
+    @DisplayName("[Valid-isNumRangeLotto]Inpt List<Integer>가 1~45번호 외의 값을 가지면 false 리턴한다.")
+    public void isNumRangeLotto() {
+        //given
+        List<Integer> notRangeNumbers = Arrays.asList(1, 2, 3, 90, -1);
+        //when
+        boolean result = Valid.isNumRangeLotto(notRangeNumbers);
+        //then
+        assertThat(result).isFalse();
+    }
 }
