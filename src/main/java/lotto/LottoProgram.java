@@ -25,6 +25,8 @@ public class LottoProgram {
 		View.showWinningNumberInputGuideMessage();
 		userInput = Input.userInput();
 		Checker.checkWinningNumber(userInput);
+
+		View.showBonusNumberInputGuideMessage();
 	}
 
 	public void createLotto(int lottoCount) {
