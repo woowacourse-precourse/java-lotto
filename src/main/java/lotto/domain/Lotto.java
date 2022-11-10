@@ -1,6 +1,8 @@
 package lotto.domain;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static lotto.LottoExceptions.createLottoException;
 
@@ -12,7 +14,14 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) throws Exception {
         validate(numbers);
-        this.numbers = numbers;
+
+        this.numbers = numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+    public int get(int index) {
+        return numbers.get(index);
     }
 
     private void validate(List<Integer> numbers) throws Exception {
