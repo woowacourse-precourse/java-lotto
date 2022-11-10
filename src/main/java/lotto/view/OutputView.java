@@ -16,6 +16,7 @@ public class OutputView {
         System.out.println(String.format(LOTTO_TICKET_COUNT, lottoTicketList.size()));
         lottoTicketList.forEach(lottoTicket ->
                         System.out.println(String.format(LOTTO_TICKET_NUMBERS, lottoTicket)));
+        System.out.println();
     }
 
     public static void printErrorMessage(String errorMessage) {
