@@ -19,7 +19,7 @@ public class Application {
     private static final String errorMsg3 =
             "[ERROR] 로또 번호는 1 ~ 45 사이의 중복되지 않는 6자리 자연수여야 합니다.";
     private static final String errorMsg4 =
-            "[ERROR] 보너스 번호는 1 ~ 45 사이의 로또 번호와 중복되지 않는 자연수여야 합니다.";
+            "[ERROR] 보너스 번호는 1 ~ 45 사이의 로또 번호와 중복되지 않는 1자리 자연수여야 합니다.";
 
     private static List<Integer> winningNumbers;
     private static Integer bonusNumber;
@@ -49,6 +49,7 @@ public class Application {
     }
 
     public static void getWinningNumbers() throws IllegalArgumentException {
+        System.out.println("당첨 번호를 입력해 주세요.");
         String userInput = Console.readLine();
         winningNumbers = new ArrayList<>();
         String[] inputs = userInput.split(",");
@@ -61,10 +62,10 @@ public class Application {
                 throw new IllegalArgumentException(errorMsg3);
             }
         }
-        validateNumber();
+        validateWinning();
     }
 
-    public static void validateNumber(){
+    public static void validateWinning(){
         Set<Integer> winnings = new HashSet<>(winningNumbers);
 
         if (winningNumbers.size() != 6 || winnings.size() != 6) {
@@ -75,6 +76,10 @@ public class Application {
                 throw new IllegalArgumentException(errorMsg3);
             }
         }
+    }
+
+    public static void getBonusNumber() throws IllegalArgumentException {
+
     }
 
     public static Integer howManyLotto() {
