@@ -11,7 +11,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         Money money = new Money();
-        int count = 8;
+        Integer count = money.getLottoCount();
         List<Lotto> lottos = generateLottos(count);
     }
 

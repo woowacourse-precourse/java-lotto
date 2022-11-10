@@ -5,8 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Money {
-    private Integer money;
-    private Integer lottoCount;
+    private final Integer money;
+    private final Integer lottoCount;
 
     public Money(){
         Integer temp = askMoney();
