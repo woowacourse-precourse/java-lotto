@@ -77,6 +77,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 출력_오름차순_번호() {
+        Lotto lotto = new Lotto(List.of(21, 8, 41, 23, 43, 42));
+        System.out.println(lotto.getNumbers());
+
+        assertThat(output()).isEqualTo("[8, 21, 23, 41, 42, 43]");
+    }
+
+    @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
