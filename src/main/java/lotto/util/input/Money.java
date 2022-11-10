@@ -18,14 +18,14 @@ public class Money {
         validateRemainder(money);
     }
     private void validateOnlyNumber (String money) {
-        String REGEX = "^[0-9]$";
-        if (!Pattern.matches(money, REGEX)) {
-            throw new IllegalArgumentException();
+        String REGEX = "^[0-9]+$";
+        if (!Pattern.matches(REGEX, money)) {
+            throw new IllegalArgumentException("REGEX ERROR");
         }
     }
     private void validateRemainder (String money) {
         if (Integer.parseInt(money) % 1000 != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("REMAINDER ERROR");
         }
     }
 }
