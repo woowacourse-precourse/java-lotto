@@ -27,11 +27,12 @@ public class Lotto {
         for (int i = 0; i < numbers.size(); i++) {
             int number = numbers.get(i);
             if (i == numbers.size() - 1) {
-                System.out.println(number);
+                System.out.print(number);
+                continue;
             }
             System.out.print(number + ", ");
         }
-        System.out.print("]");
+        System.out.println("]");
     }
 
     public List<Integer> getNumbers() {
