@@ -7,4 +7,16 @@ public class Rank {
     public int setEarningRate() {
         return 0;
     }
+
+    public int getRank() {
+        return 0;
+    }
+
+    public void setRank() {
+        return;
+    }
+
+    public int countWinningNumber() {
+        return 0;
+    }
 }
