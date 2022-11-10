@@ -1,6 +1,5 @@
 package lotto.lotteryshop;
 
-import lotto.input.InputAgent;
 import lotto.validator.ValueValidator;
 
 import java.util.List;
