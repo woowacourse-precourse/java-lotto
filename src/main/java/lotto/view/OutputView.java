@@ -1,6 +1,6 @@
 package lotto.view;
 
-import lotto.domain.LottoTicket;
+import lotto.domain.Lotto;
 import lotto.domain.LottoTickets;
 
 import java.util.List;
@@ -12,7 +12,7 @@ public class OutputView {
     private static final String ERROR_MESSAGE = "[ERROR] %s";
 
     public static void printLottoTickets(LottoTickets lottoTickets) {
-        List<LottoTicket> lottoTicketList = lottoTickets.getLottoTickets();
+        List<Lotto> lottoTicketList = lottoTickets.getLottos();
         System.out.println(String.format(LOTTO_TICKET_COUNT, lottoTicketList.size()));
         lottoTicketList.forEach(lottoTicket ->
                         System.out.println(String.format(LOTTO_TICKET_NUMBERS, lottoTicket)));

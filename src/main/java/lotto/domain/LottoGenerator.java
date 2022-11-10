@@ -13,10 +13,10 @@ public class LottoGenerator {
 
 
     public static LottoTickets generateTickets(Money money) {
-        List<LottoTicket> lottoTickets = new ArrayList<>();
+        List<Lotto> lottoTickets = new ArrayList<>();
         for (int i = 0; i < money.getTicketCount(); i++) {
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(MINIMUM_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_NUMBER_COUNT);
-            lottoTickets.add(new LottoTicket(lottoNumbers));
+            lottoTickets.add(new Lotto(lottoNumbers));
         }
         return new LottoTickets(lottoTickets);
     }

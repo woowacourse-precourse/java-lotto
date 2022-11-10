@@ -7,8 +7,6 @@ import lotto.domain.Money;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
-import java.util.List;
-
 public class LottoApplication {
 
     public void run() {

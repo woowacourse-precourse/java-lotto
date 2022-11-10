@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static lotto.domain.LottoGenerator.LOTTO_NUMBER_COUNT;
 
@@ -30,5 +31,19 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    @Override
+    public String toString() {
+        return String.join(", ", getSortedNumbers());
+    }
+
+    private List<String> getSortedNumbers() {
+        return numbers.stream()
+                .sorted()
+                .map(String::valueOf)
+                .collect(Collectors.toList());
+    }
 }

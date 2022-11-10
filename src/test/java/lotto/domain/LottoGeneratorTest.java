@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class LottoGeneratorTest {
 
@@ -22,12 +21,12 @@ class LottoGeneratorTest {
 
         //when
         LottoTickets lottoTickets = LottoGenerator.generateTickets(money);
-        List<LottoTicket> res = lottoTickets.getLottoTickets();
+        List<Lotto> res = lottoTickets.getLottos();
 
         //then
         assertThat(res.size()).isEqualTo(money.getTicketCount());
 
-        for (LottoTicket lottoTicket : res) {
+        for (Lotto lottoTicket : res) {
             List<Integer> numbers = lottoTicket.getNumbers();
 
             assertThat(numbers.size()).isEqualTo(expectSize);

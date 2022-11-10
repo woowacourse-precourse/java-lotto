@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -34,5 +35,18 @@ class LottoTest {
         //when then
         assertThatNoException()
                 .isThrownBy(() -> new Lotto(numbers));
+    }
+
+    @Test
+    void 오름차순_된_문자열을_리턴한다() {
+        //given
+        Lotto lottoTicket = new Lotto(List.of(4, 2, 31, 35, 14, 23));
+        String expect = "2, 4, 14, 23, 31, 35";
+
+        //when
+        String res = lottoTicket.toString();
+
+        //then
+        assertThat(res).isEqualTo(expect);
     }
 }
