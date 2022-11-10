@@ -25,6 +25,30 @@ class WinningNumbersExceptionTest {
     }
 
     @Test
+    void 당첨숫자_1개씩_확인() {
+
+        assertThatThrownBy(
+                () -> WinningNumbersException.checkEachWinningNumber(List.of("1", "56", "34", "21", "34", "12")))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(
+                () -> WinningNumbersException.checkEachWinningNumber(List.of("1", "45", " 34", "27", "34", "17")))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(
+                () -> WinningNumbersException.checkEachWinningNumber(List.of("1", "45", "34", "21", "test", "13")))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(
+                () -> WinningNumbersException.checkEachWinningNumber(List.of("1", "45", " ", "21", "31", "13")))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(
+                () -> WinningNumbersException.checkEachWinningNumber(List.of("1", "45", "19", "21", "31", "")))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void 당첨번호_숫자인지_확인() {
 
         assertThatThrownBy(() -> WinningNumbersException.checkWinningNumberDigit("test"))
