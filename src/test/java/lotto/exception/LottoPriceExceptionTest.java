@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
-
 class LottoPriceExceptionTest {
 
     @Test
@@ -31,6 +30,18 @@ class LottoPriceExceptionTest {
                 .isInstanceOf(IllegalArgumentException.class);
 
         assertThatThrownBy(() -> LottoPriceException.checkLessThanOneThousand(999))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 로또금액_천단위_확인() {
+        assertThatThrownBy(() -> LottoPriceException.checkThousandUnits(1001))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> LottoPriceException.checkThousandUnits(101010))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> LottoPriceException.checkThousandUnits(2220))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
