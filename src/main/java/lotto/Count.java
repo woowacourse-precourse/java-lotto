@@ -5,9 +5,11 @@ public class Count {
     static final int REMAINDER_ZERO = 0;
 
     private final int numOfLotto;
+    private final int purchase;
 
     public Count(String price) {
         numOfLotto = calculateNumOfLotto(validPriceOfLotto(price));
+        this.purchase = Integer.valueOf(price);
     }
 
     private int validPriceOfLotto(String price) {
@@ -27,5 +29,9 @@ public class Count {
 
     public int getNumOfLotto() {
         return numOfLotto;
+    }
+
+    public int getPurchase() {
+        return purchase;
     }
 }
