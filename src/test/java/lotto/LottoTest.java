@@ -7,6 +7,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static lotto.data.Rank.RANK1;
+import static lotto.data.Rank.RANK2;
+import static lotto.data.Rank.RANK3;
+import static lotto.data.Rank.RANK4;
+import static lotto.data.Rank.RANK5;
+import static lotto.data.Rank.RANK_NONE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -73,8 +79,8 @@ class LottoTest {
         Lotto win = new Lotto(List.of(1, 2, 3, 4, 5, 6),7);
         Lotto my = new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
-        Rank rank = my.checkRank(win);
-        assertThat(rank).isEqualTo(1);
+        Rank rank = win.checkRankOf(my);
+        assertThat(rank).isEqualTo(RANK1);
     }
 
     @DisplayName("당첨 2등 랭크 확인")
@@ -83,8 +89,8 @@ class LottoTest {
         Lotto win = new Lotto(List.of(1, 2, 3, 4, 5, 6),7);
         Lotto my = new Lotto(List.of(1, 2, 3, 4, 5, 7));
 
-        Rank rank = my.checkRank(win);
-        assertThat(rank).isEqualTo(2);
+        Rank rank = win.checkRankOf(my);
+        assertThat(rank).isEqualTo(RANK2);
     }
 
     @DisplayName("당첨 3등 랭크 확인")
@@ -93,8 +99,8 @@ class LottoTest {
         Lotto win = new Lotto(List.of(1, 2, 3, 4, 5, 6),7);
         Lotto my = new Lotto(List.of(1, 2, 3, 4, 5, 8));
 
-        Rank rank = my.checkRank(win);
-        assertThat(rank).isEqualTo(3);
+        Rank rank = win.checkRankOf(my);
+        assertThat(rank).isEqualTo(RANK3);
     }
 
 
@@ -104,8 +110,8 @@ class LottoTest {
         Lotto win = new Lotto(List.of(1, 2, 3, 4, 5, 6),7);
         Lotto my = new Lotto(List.of(1, 2, 3, 4, 8, 7));
 
-        Rank rank = my.checkRank(win);
-        assertThat(rank).isEqualTo(4);
+        Rank rank = win.checkRankOf(my);
+        assertThat(rank).isEqualTo(RANK4);
     }
 
     @DisplayName("당첨 5등 랭크 확인")
@@ -114,8 +120,8 @@ class LottoTest {
         Lotto win = new Lotto(List.of(1, 2, 3, 4, 5, 6),7);
         Lotto my = new Lotto(List.of(1, 2, 3, 9, 8, 7));
 
-        Rank rank = my.checkRank(win);
-        assertThat(rank).isEqualTo(5);
+        Rank rank = win.checkRankOf(my);
+        assertThat(rank).isEqualTo(RANK5);
     }
 
     @DisplayName("미당첨 랭크 확인")
@@ -124,8 +130,8 @@ class LottoTest {
         Lotto win = new Lotto(List.of(1, 2, 3, 4, 5, 6),7);
         Lotto my = new Lotto(List.of(1, 2, 10, 9, 8, 7));
 
-        Rank rank = my.checkRank(win);
-        assertThat(rank).isEqualTo(-1);
+        Rank rank = win.checkRankOf(my);
+        assertThat(rank).isEqualTo(RANK_NONE);
     }
 
     @DisplayName("로또번호 정렬확인")

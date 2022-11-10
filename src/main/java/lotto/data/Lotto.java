@@ -27,7 +27,10 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6)
+        {
+            System.out.println("[ERROR] 로또 번호의 최대 길이는 6입니다.");
             throw new IllegalArgumentException();
+        }
     }
 
     // TODO: 추가 기능 구현
@@ -35,14 +38,20 @@ public class Lotto {
     private void duplicate(List<Integer> numbers){
         HashSet<Integer> check = new HashSet<>(numbers);
         if(check.size() != numbers.size())
+        {
+            System.out.println("[ERROR] 중복된 로또 번호가 존재합니다.");
             throw new IllegalArgumentException();
+        }
     }
 
     //로또번호 범위 검사
     private void range(List<Integer> numbers){
         for (int num : numbers) {
             if (num < 1 || num > 45)
+            {
+                System.out.println("[ERROR] 로또 번호는 1~45사이의 숫자여만 합니다.");
                 throw new IllegalArgumentException();
+            }
         }
     }
 

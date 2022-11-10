@@ -29,6 +29,7 @@ public class House {
             Stream<Integer> streamOfInt = streamOfStr.map(Integer::parseInt);
             return streamOfInt.collect(Collectors.toList());
         }catch (Error e){
+            System.out.println("[ERROR] 유효하지 않은 House 입력입니다.");
             throw new IllegalArgumentException();
         }
     }
