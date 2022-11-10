@@ -1,6 +1,7 @@
-package lotto;
+package lotto.domain;
 
 import java.util.List;
+import lotto.view.Output;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -8,6 +9,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
+        Output.printLotteryNumbers(numbers);
     }
 
     private void validate(List<Integer> numbers) {
