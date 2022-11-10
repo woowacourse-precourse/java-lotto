@@ -22,6 +22,7 @@ public class WinningNumbersException {
 
     private static void checkEachWinningNumber(List<String> winningNumbers) {
         for (String winningNumber : winningNumbers) {
+            CommonInputException.checkHasBlankInInput(winningNumber, "당첨 번호를");
             checkWinningNumberDigit(winningNumber);
         }
     }
