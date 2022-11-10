@@ -9,9 +9,18 @@ public class InputUtil {
         String inputNumbers = readLine();
         return inputNumbers;
     }
+
     public String[] splitNumber() {
         String numbers = inputNumber();
         String[] arrayNumbers = numbers.split(",");
         return arrayNumbers;
+    }
+    
+    public List<Integer> listNumber() {
+        String[] arrayNumbers = splitNumber();
+        List<Integer> numbers = new ArrayList<>();
+        for (int i=0;i<arrayNumbers.length;++i)
+            numbers.add(i);
+        return numbers;
     }
 }
