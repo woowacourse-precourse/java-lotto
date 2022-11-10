@@ -12,5 +12,4 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-
 }
