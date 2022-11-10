@@ -51,4 +51,23 @@ public class Manager {
         }
         return Constant.ZERO;
     }
+
+    public int getWinningAmount(int rank) {
+        if(rank == Constant.FIVE) {
+            return Constant.FIFTH_WINNING_AMOUNT;
+        }
+        if(rank == Constant.FOUR) {
+            return Constant.FOURTH_WINNING_AMOUNT;
+        }
+        if(rank == Constant.THREE) {
+            return Constant.THIRD_WINNING_AMOUNT;
+        }
+        if(rank == Constant.TWO) {
+            return Constant.SECOND_WINNING_AMOUNT;
+        }
+        if(rank == Constant.ONE) {
+            return Constant.FIRST_WINNING_AMOUNT;
+        }
+        return Constant.ZERO;
+    }
 }
