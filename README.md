@@ -225,3 +225,19 @@ public class Lotto {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+
+## 구현할 기능 목록
+- LottoBuyer 클래스
+  - 구매할 로또 번호를 입력하고, 오름차순 정렬 후 Lotto 클래스 생성
+  - 지불할 돈 입력받기
+  - 지불할 돈만큼 로또를 구매하여 Lotto 인스턴스들을 보관
+  - 보너스 번호 입력하기
+- LottoDraw 클래스
+  - 로또 당첨 기준 생성
+  - 로또 당첨 금액, 당첨 횟수를 0으로 초기설정
+  - 로또 당첨 번호 입력
+  - LottoBuyer 가 가진 Lotto 인스턴스들의 로또 번호와 로또 당첨 번호를 비교하여 맞춘 개수 반환
+  - 일치하는 번호 개수가 5인 경우, 보너스볼 번호도 일치하는지 확인
+  - 번호를 맞춘 개수가 당첨 기준에 부합할 경우 해당 기준의 당첨 횟수를 올리고, 로또 당첨 금액에 추가
+  - LottoBuyer 의 수익률 계산
