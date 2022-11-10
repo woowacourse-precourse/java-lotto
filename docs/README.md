@@ -1,9 +1,9 @@
 # 로또 게임
 
 ## 기능 목록
-- [ ] 로또 번호를 생성한다.
+- [x] 로또 번호를 생성한다.
   - [x] 1부터 45까지의 서로 다른 임의의 수 6개를 생성한다. - LotteryDrawMachine#drawLotteryNumbers()
-  - [ ] 로또 번호를 정렬하여 반환한다. - LotteryDrawMachine#sortLotteryNumbers()
+  - [x] 로또 번호를 정렬하여 반환한다. - LotteryDrawMachine#getSortedNumbers()
 - [ ] 사용자가 구매한 로또 번호와 당첨 번호(중복되지 않는 수 6개 + 보너스 번호 1개)를 비교한다.
   - [x] 로또 번호와 당첨 번호를 비교해 일치하는 번호의 개수를 반환한다. - Comparator#getMatchCount()
   - [ ] 로또 번호와 보너스 번호를 비교한다. - Comparator#hasBonusNumber()

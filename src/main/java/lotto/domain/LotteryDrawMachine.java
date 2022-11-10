@@ -5,11 +5,19 @@ import static lotto.constant.SystemValue.MAXIMUM_LOTTERY_NUMBER;
 import static lotto.constant.SystemValue.MINIMUM_LOTTERY_NUMBER;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Collections;
 import java.util.List;
 
 public class LotteryDrawMachine {
 
     public List<Integer> drawLotteryNumbers() {
-        return Randoms.pickUniqueNumbersInRange(MINIMUM_LOTTERY_NUMBER, MAXIMUM_LOTTERY_NUMBER, LOTTERY_NUMBERS_SIZE);
+        List<Integer> lotteryNumbers = Randoms.pickUniqueNumbersInRange(MINIMUM_LOTTERY_NUMBER, MAXIMUM_LOTTERY_NUMBER,
+                LOTTERY_NUMBERS_SIZE);
+        return getSortedNumbers(lotteryNumbers);
+    }
+
+    private List<Integer> getSortedNumbers(List<Integer> lotteryNumbers) {
+        Collections.sort(lotteryNumbers);
+        return lotteryNumbers;
     }
 }
