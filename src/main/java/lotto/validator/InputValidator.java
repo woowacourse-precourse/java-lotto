@@ -4,11 +4,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static lotto.global.LottoConstants.MAX_LOTTO_NUMBER;
+import static lotto.global.LottoConstants.MAX_LOTTO_NUMBER_COUNT;
+import static lotto.global.LottoConstants.MIN_LOTTO_NUMBER;
+
 public class InputValidator {
 
-    public static final int MIN_LOTTO_NUMBER = 1;
-    public static final int MAX_LOTTO_NUMBER = 45;
-    public static final int MAX_LOTTO_NUMBER_COUNT = 6;
+
 
     public static boolean restEqualZero(long dividend, long divisor) {
         return dividend % divisor == 0;

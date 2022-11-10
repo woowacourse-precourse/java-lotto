@@ -13,10 +13,10 @@ import static lotto.global.ExceptionConstants.CANNOT_INPUT_ZERO;
 import static lotto.global.ExceptionConstants.CANNOT_SATISFY_NUMBER_RANGE;
 import static lotto.global.ExceptionConstants.CAN_ONLY_MULTIPLY_1000;
 import static lotto.global.ExceptionConstants.CAN_ONLY_SIX_COUNT;
+import static lotto.global.LottoConstants.LOTTO_PRICE;
 
 public class InputUtil {
 
-    public static final int LOTTO_PRICE = 1000;
     public static final String WINNING_NUMBER_DELIM = ",";
 
     private static List<Integer> winningNumbers;
