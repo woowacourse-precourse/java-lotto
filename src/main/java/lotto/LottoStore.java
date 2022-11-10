@@ -14,16 +14,26 @@ public class LottoStore {
     }
 
     public List<Lotto> buy(int money) {
-        if (money % 1000 != 0) {
-            throw new IllegalArgumentException();
-        }
+        validateMoney(money);
 
         List<Lotto> lottos = new ArrayList<>();
-        for(int i = 0; i < money / 1000; i++) {
+        int lottoCount = money / 1000;
+        for(int i = 0; i < lottoCount; i++) {
             lottos.add(buyOne());
         }
 
+        System.out.println(lottoCount + "개를 구매했습니다.");
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.toString());
+        }
+
         return lottos;
+    }
+
+    private void validateMoney(int money) {
+        if (money % 1000 != 0) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private Lotto buyOne() {
