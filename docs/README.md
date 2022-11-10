@@ -15,8 +15,9 @@
   - [] 보너스 번호를 입력받는다. - Input.inputBonusNumber()
 
 - [] 출력 - View
+  - [] 입력을 요청하는 안내메시지를 출력한다. - 구입금액/당첨번호/보너스번호
   - [] 발행한 로또 수량과 번호를 출력한다. - View.publishedLotto() 
-  - [] 당첨내역을 출력한다. View.printLottoResult()
+  - [] 당첨내역을 출력한다. - View.printLottoResult()
 
 - [] validation
   - [] 로또 발행 시 중복되지 않는 6개 숫자인지 검증한다. - Lotto.validate()
