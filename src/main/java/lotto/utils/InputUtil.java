@@ -1,6 +1,7 @@
 package lotto.utils;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.exception.ExceptionConstants;
 import lotto.validator.InputValidator;
 
 public class InputUtil {
@@ -9,13 +10,16 @@ public class InputUtil {
 
     public static long inputLottoPurchaseAmount() {
 
-        while (true) {
-            long purchasePrice = Long.parseLong(Console.readLine());
+        long purchasePrice = Long.parseLong(Console.readLine());
 
-            if (!InputValidator.isZero(purchasePrice) &&
-                    InputValidator.restEqualZero(purchasePrice, LOTTO_PRICE)) {
-                return purchasePrice;
-            }
+        if (InputValidator.isZero(purchasePrice)) {
+            throw new IllegalArgumentException(ExceptionConstants.CANNOT_INPUT_ZERO);
         }
+
+        if (InputValidator.restEqualZero(purchasePrice, LOTTO_PRICE)) {
+            throw new IllegalArgumentException(ExceptionConstants.CAN_ONLY_MULTIPLY_1000);
+        }
+
+        return purchasePrice;
     }
 }
