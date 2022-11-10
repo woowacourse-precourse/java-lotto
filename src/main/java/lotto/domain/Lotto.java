@@ -8,19 +8,19 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = deDuplicationAndSort(numbers);
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
-        if (deleteDuplicated(numbers).size() != 6) {
-            throw new IllegalArgumentException();
-        }
     }
 
-    private List<Integer> deleteDuplicated(List<Integer> numbers) {
+    private List<Integer> deDuplicationAndSort(List<Integer> numbers) {
+        if (deDuplicationAndSort(numbers).size() != 6) {
+            throw new IllegalArgumentException();
+        }
         return List.copyOf(new TreeSet<Integer>(numbers));
     }
 
