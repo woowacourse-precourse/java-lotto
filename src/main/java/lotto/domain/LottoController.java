@@ -2,12 +2,11 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.LottoInterface;
+import lotto.Lotto;
 import lotto.WinningLotto;
 import lotto.view.Printer;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class LottoController {
@@ -20,15 +19,15 @@ public class LottoController {
 
     private Printer printer = new Printer();
 
-    public List<List<Integer>> generatePurchasedLottos(int lottoNumber){
-        List<List<Integer>> purchasedLottos = new ArrayList<>();
+    public List<Lotto> generatePurchasedLottos(int lottoNumber){
+        List<Lotto> purchasedLottos = new ArrayList<>();
         for(int number = 0; number < lottoNumber; number++){
             purchasedLottos.add(generateLotto());
         }
         return purchasedLottos;
     }
-    public List<Integer> generateLotto(){
-        return Randoms.pickUniqueNumbersInRange(startRange,endRange, count);
+    public Lotto generateLotto(){
+        return new Lotto(Randoms.pickUniqueNumbersInRange(startRange,endRange, count));
     }
 
     public int calculateLottoNumber(int price){
