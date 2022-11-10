@@ -15,4 +15,12 @@ class MoneyTest {
         });
         assertEquals(ErrorMessage.NOT_NUMBER, exception.getMessage());
     }
+
+    @Test
+    public void validBill_exception_message_test() {
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+            new Money("21002");
+        });
+        assertEquals(ErrorMessage.NOT_BILL, exception.getMessage());
+    }
 }
