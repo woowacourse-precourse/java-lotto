@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.match;
 
 public enum MatchAndReward {
     FIRST(6, 2_000_000_000, false),
