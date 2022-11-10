@@ -1,12 +1,8 @@
 package lotto.infrastructure;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import lotto.domain.Generator;
-import lotto.domain.util.NumbersSeparator;
-import lotto.domain.util.RandomNumberGenerator;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -27,6 +23,6 @@ class GeneratorImplTest {
 
     @Test
     public void randomNumberGeneratorSizeTest() throws Exception {
-        assertThat(RandomNumberGenerator.generate().size()).isEqualTo(6);
+        assertThat(generator.lottoNumbersGenerator().size()).isEqualTo(6);
     }
 }

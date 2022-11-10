@@ -1,4 +1,4 @@
-package lotto;
+package lotto.presentation;
 
 public class LottoProcess {
 

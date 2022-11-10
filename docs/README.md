@@ -15,18 +15,17 @@
    - Ball : 당첨 공 Entity
    - LottoMachine : Lotto 번호 구성 담당 Entity. Money를 갖고 있습니다.
 
-   util
-   - NumbersSeparator : 문자열을 쉽표 기준으로 나눠 Sting[] array를 return 해주는 method
-   - RandomNumberGenerator : camp.nextstep.edu.missionutils.Randoms 에서 사용되는 Random method를
-     통해 난수 생성
-   - 
+   Generator <<Interface>>
+   - project 구동을 위해 필요한 것들을 명세해 놓은 Interface 
 
 2. Presentation layer
    - LottoProcess : lotto application 에서 사용자의 입력과 명령을 해석하는 Method
 
 3. Infrastructure layer
    
-   - RandomNumberConversion : String type to List<Integer> type Numbers Method
+   - GeneratorImpl : 명세에 대한 구현체
+     - numberSeparator : 숫자 분리 Method
+     - lottoNumbersGenerator : 난수 6자리 생성 Method
 
 4. Common
    - Common Package has Lotto Process Whole Message Definition
