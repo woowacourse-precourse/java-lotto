@@ -10,5 +10,5 @@
   - [ ] 추첨된 로또 번호 입력 기능 Checker#insertWinningNumbers()
   - [ ] 보너스 로또 번호 입력 기능 Checker#insertBonusNumbers()
   - [ ] 자신의 로또 번호와 비교 기능 Checker#checkMyLotto()
-  - [ ] 상금 출력 기능 Checker#showWinningStats()
+  - [ ] 상금 출력 g기능 Checker#showWinningStats()
   - [ ] 수익률 계산 기능 Checker#calculateRateOfReturn()
