@@ -12,4 +12,8 @@ public class Judgement {
         }
         return count;
     }
+
+    public boolean hasBonusNumbers(int bonusNumber, List<Integer> winningNumbers) {
+        return winningNumbers.contains(bonusNumber);
+    }
 }
