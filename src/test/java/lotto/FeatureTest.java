@@ -140,7 +140,7 @@ public class FeatureTest {
     }
 
     @Test
-    void 출력테스트() {
+    void 구매목록_출력테스트() {
         View view = new View();
         List<List<Integer>> user = List.of(
                 List.of(1, 2, 3, 4, 5, 6),
