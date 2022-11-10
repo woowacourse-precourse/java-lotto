@@ -29,4 +29,10 @@ public class UserRepository {
         this.user.setPrizeMoney(prizeMoney);
     }
 
+    public void setWinningNumbers(ArrayList<Integer> winningNumbers){
+        this.user.setWinningNumbers(winningNumbers);
+    }
+
+
+
 }
