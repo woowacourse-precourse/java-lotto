@@ -13,13 +13,12 @@ import org.junit.jupiter.params.provider.ValueSource;
 import lotto.utils.Validator;
 
 public class ValidatorTest {
-    Validator validator = new Validator();
 
     @DisplayName("입력 받은 값이 숫자가 아닐경우 예외가 발생한다")
     @ParameterizedTest(name = "{index} {displayName} input={0} ")
     @ValueSource(strings = {"123k", "k123", "adsdf", "12_3", "123 4"})
     void validateNumber(String input) {
-        assertThatThrownBy(() -> validator.isNumberOrNot(input))
+        assertThatThrownBy(() -> Validator.isNumberOrNot(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -27,7 +26,7 @@ public class ValidatorTest {
     @ParameterizedTest(name = "{index} {displayName} input={0} ")
     @ValueSource(strings = {"1001", "1002", "800", "2100"})
     void validateMultipleOfThousand(String input) {
-        assertThatThrownBy(() -> validator.isMultiplesOfThousand(input))
+        assertThatThrownBy(() -> Validator.isMultiplesOfThousand(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -35,7 +34,7 @@ public class ValidatorTest {
     @ParameterizedTest(name = "{displayName}")
     @EmptySource
     void validateEmptyString(String input) {
-        assertThatThrownBy(() -> validator.isFilledString(input))
+        assertThatThrownBy(() -> Validator.isFilledString(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -43,7 +42,7 @@ public class ValidatorTest {
     @Test
     void validateIsZero() {
         String input = "0";
-        assertThatThrownBy(() -> validator.isZero(input))
+        assertThatThrownBy(() -> Validator.isZero(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -51,7 +50,7 @@ public class ValidatorTest {
     @ParameterizedTest(name = "{index} {displayName} input={0}")
     @ValueSource(strings = {"0", "46"})
     void validateIsinRange(String input) {
-        assertThatThrownBy(() -> validator.isInRange(input))
+        assertThatThrownBy(() -> Validator.isInRange(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -59,7 +58,7 @@ public class ValidatorTest {
     @Test
     void validateContainDuplicate() {
         List<Integer> inputs = List.of(1, 1, 2, 3, 4, 5);
-        assertThatThrownBy(() -> validator.containDuplicate(inputs))
+        assertThatThrownBy(() -> Validator.containDuplicate(inputs))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
