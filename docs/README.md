@@ -14,6 +14,9 @@
    - Ball : 당첨 공 Entity
    - ResultMachine : 게임 결과 담당 Entity
 
+   ConsoleOut
+    - message 정의
+
 2. Presentation layer
    - LottoProcess : lotto application 에서 사용자의 입력과 명령을 해석하는 Method
 

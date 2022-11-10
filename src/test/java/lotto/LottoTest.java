@@ -24,5 +24,10 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @Test
+    public void lottoByOverSizeExceptionMessageTest() throws Exception {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining("[ERROR] " + "로또 번호는 반드시 6자리 숫자여야 합니다.");
+    }
 }
