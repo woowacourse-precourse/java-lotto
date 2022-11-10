@@ -24,7 +24,7 @@ public class DrawLotto {
     private Integer stringToInteger(String s) {
         Integer number = null;
         try {
-            Integer.parseInt(s);
+            number = Integer.parseInt(s);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[Error] 각 로또 번호는 숫자이어야 합니다.");
         }
@@ -38,5 +38,13 @@ public class DrawLotto {
         if (bonusNumber < 1 || bonusNumber > 45) {
             throw new IllegalArgumentException("[Error] 보너스 번호는 1~45 사이의 숫자입니다.");
         }
+    }
+
+    public Lotto getWinningNumbers() {
+        return winningNumbers;
+    }
+
+    public Integer getBonusNumber() {
+        return bonusNumber;
     }
 }
