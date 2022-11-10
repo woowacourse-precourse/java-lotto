@@ -26,8 +26,8 @@ public class Money {
 
     public boolean validateIsDivide(String money) {
         int cash = Integer.parseInt(money);
-        if (cash%1000 == 0)
-            return true;
-        return false;
+        if (cash%1000 != 0 | cash == 0)
+            return false;
+        return true;
     }
 }
