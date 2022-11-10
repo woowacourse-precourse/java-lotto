@@ -13,10 +13,14 @@ public class BonusNumber {
 
     private static int validateBonusNumber(int number) {
         verifyRangeOfLottoNumber(number);
+        verifyDuplicateNumber(number);
+        return number;
+    }
+
+    private static void verifyDuplicateNumber(int number) {
         if (WinningNumber.winningNumbers.contains(number)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.");
         }
-        return number;
     }
 
     private static int formatInput(String input) {
