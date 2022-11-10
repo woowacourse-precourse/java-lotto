@@ -13,7 +13,7 @@ public class InputImpl implements Input {
     @Override
     public int inputPaymentAmount() {
         int paymentAmount = Integer.parseInt(Console.readLine());
-        if (isAllowedPaymentAmount(paymentAmount)) {
+        if (isOverMinimumPaymentAmount(paymentAmount) && isAllowedPaymentAmount(paymentAmount)) {
             return paymentAmount;
         }
         return 0;
@@ -28,9 +28,16 @@ public class InputImpl implements Input {
         return null;
     }
 
-    private boolean isAllowedPaymentAmount(int paymentAmount) {
+    private boolean isOverMinimumPaymentAmount(int paymentAmount) {
         if (paymentAmount < MIN_PAYMENT_AMOUNT) {
             throw new IllegalArgumentException("[ERROR] 최소 로또 구매 금액은 1000원입니다.");
+        }
+        return true;
+    }
+
+    private boolean isAllowedPaymentAmount(int paymentAmount) {
+        if (paymentAmount % MIN_PAYMENT_AMOUNT != 0) {
+            throw new IllegalArgumentException("[ERROR] 로또 구매 금액은 1000원 단위의 금액이어야 합니다.");
         }
         return true;
     }
