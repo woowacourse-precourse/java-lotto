@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.exception.LottoException;
+import lotto.model.LottoCount;
 import lotto.view.InputView;
 
 public class Application {
@@ -8,6 +9,5 @@ public class Application {
         // TODO: 프로그램 구현
         InputView inputView = new InputView();
         LottoException exception = new LottoException();
-        exception.checkBuyInput(inputView.buyInput());
     }
 }
