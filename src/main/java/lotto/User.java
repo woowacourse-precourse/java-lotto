@@ -27,4 +27,15 @@ public class User {
         lottoList = readLine();
     }
 
+    public List<Integer> lottoToList(String UserIn){
+
+        String lottoList = new String();
+        List<Integer> lottoToList = new ArrayList<>();
+
+        if(!lottoList.equals(UserIn)){
+            lottoToList.contains(lottoList);
+        }
+        return lottoToList;
+    }
+
 }
