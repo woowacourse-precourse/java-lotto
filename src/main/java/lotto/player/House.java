@@ -1,6 +1,14 @@
 package lotto.player;
 
+import static lotto.data.Rank.RANK1;
+import static lotto.data.Rank.RANK2;
+import static lotto.data.Rank.RANK3;
+import static lotto.data.Rank.RANK4;
+import static lotto.data.Rank.RANK5;
+import static lotto.data.Rank.RANK_NONE;
+
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -25,17 +33,21 @@ public class House {
         }
     }
 
-    private void printResultOf(User user){
-        int[] statistic = new int[Rank.values().length];
-        int amount = 0;
+    public LinkedHashMap<Rank,Integer> getResultOf(User user){
+        LinkedHashMap<Rank,Integer> statistic = new LinkedHashMap<>(){{
+            put(RANK5, 0);
+            put(RANK4, 0);
+            put(RANK3, 0);
+            put(RANK2, 0);
+            put(RANK1, 0);
+        }};
+
         for(Lotto ticket:user.tickets){
             Rank result = win.checkRankOf(ticket);
-            amount += result.getMoney();
-            statistic[result.getRank()-1]++;
+            if(result == RANK_NONE) continue;
+            statistic.put(result, statistic.get(result)+1);
         }
 
-        for(int i = 0; i < statistic.length; i++){
-
-        }
+        return statistic;
     }
 }

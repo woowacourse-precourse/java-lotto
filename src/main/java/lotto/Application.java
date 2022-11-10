@@ -1,10 +1,12 @@
 package lotto;
 
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 import lotto.data.Lotto;
+import lotto.data.Rank;
 import lotto.player.House;
 import lotto.player.User;
 
@@ -25,6 +27,11 @@ public class Application {
         System.out.println("보너스 번호를 입력해 주세요");
         int bonus = sc.nextInt();
         House house = new House(winInput, bonus);
+
+        //결과 통계 출력
+        LinkedHashMap<Rank, Integer> statistics = house.getResultOf(user);
+        for( Rank key : statistics.keySet() )
+            System.out.println(key.getLabel()+" - " + statistics.get(key)+"개");
 
         //당첨통계
     }
