@@ -23,10 +23,10 @@ public class UserInputHandler {
 
     private List<Integer> convertToLottoNumbers(String input){
         List<Integer> lottoNumbers = new ArrayList<>();
-        String[] inputList = input.split(",");
+        String[] lottoNumbersBeforeValidate = input.split(",");
 
-        for(int i = 0; i < numbersOfLotto; i++){
-            lottoNumbers.add(validateLottoNumbers(inputList[i]));
+        for(int lottoIndex = 0; lottoIndex < numbersOfLotto; lottoIndex++){
+            lottoNumbers.add(validateLottoNumbers(lottoNumbersBeforeValidate[lottoIndex]));
         }
         return lottoNumbers;
     }
