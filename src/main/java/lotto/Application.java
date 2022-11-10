@@ -15,6 +15,9 @@ public class Application {
         System.out.println(count.getNumOfLotto()+"개를 구매했습니다.");
         showLottoTickets();
         UserInput.inputWinningNumbers();
+        Result result = new Result(lottoTickets);
+        double returnOfRate = result.calculateReturnOfRate(count.getPurchase());
+        System.out.println("총 수익률은 "+returnOfRate+"%입니다.");
     }
 
     private static void createLottoTickets(int numOfLotto) {
