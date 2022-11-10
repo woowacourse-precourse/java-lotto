@@ -114,8 +114,9 @@
   - 당첨 번호르 입력한 문자열의 길이가 11(숫자 6개+쉼표 5개)인지 검사하는 함수
   
 
-- void validateWinningNumbersAreIntegerAndComma(String)
+- void validateWinningNumbersAreInteger(String)
   - 당첨 번호 입력 시에 숫자와 쉼표만 사용했는지 검사하는 함수
+  - 숫자에 대한 검사만 이루어진다
 
 
 - void validateWinningNumbersUseComma(String)
