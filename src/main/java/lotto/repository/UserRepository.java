@@ -25,4 +25,8 @@ public class UserRepository {
         this.user.setPurchaseMoney(money);
     }
 
+    public void setPrizeMoney(int prizeMoney){
+        this.user.setPrizeMoney(prizeMoney);
+    }
+
 }
