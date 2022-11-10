@@ -1,7 +1,11 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+
+import java.util.Comparator;
+import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class LottoGame {
     private static final String INVALID_MONEY_TYPE_REGEX = "\\D";
@@ -24,5 +28,15 @@ public class LottoGame {
         if (Integer.parseInt(money) % UNIT_OF_MONEY != 0) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public void printSortedLotto(List<Integer> lotto) {
+        System.out.println(getSortedByAscend(lotto));
+    }
+
+    private List<Integer> getSortedByAscend(List<Integer> lotto) {
+        return lotto.stream()
+                .sorted(Comparator.comparing(Integer::valueOf))
+                .collect(Collectors.toList());
     }
 }
