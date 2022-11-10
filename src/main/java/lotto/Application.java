@@ -1,10 +1,18 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Application {
     public static final String INVALID_AMOUNT_ERROR_MESSAGE = "[ERROR] 올바른 금액을 입력해주세요.";
     public static final String NOT_NUMBER_ERROR_MESSAGE = "[ERROR] 숫자만 입력해주세요.";
 
     public static void main(String[] args) {
+        enterAmount();
+    }
+
+    private static void enterAmount() {
+        System.out.println("구입금액을 입력해 주세요.");
+        isValidAmount(Console.readLine());
     }
 
     public static void isValidAmount(String enterValue) {
