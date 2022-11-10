@@ -21,4 +21,8 @@ public enum Message {
     Message(String msg) {
         this.msg = msg;
     }
+
+    void printError(Message message) {
+        System.out.println(Message.ERROR +" "+message.msg);
+    }
 }
