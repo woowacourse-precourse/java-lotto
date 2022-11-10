@@ -10,4 +10,9 @@ class InputValidator {
         NumbersValidator.isValid(list);
     }
 
+    public static boolean isValidBonusNumber(String targetLotto, String bonusNumber) {
+        List<Integer> lottoNumbers = StringToIntegers(targetLotto);
+        Integer bonusNum = Integer.valueOf(bonusNumber);
+        return lottoNumbers.contains(bonusNum);
+    }
 }
