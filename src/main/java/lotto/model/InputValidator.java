@@ -12,18 +12,34 @@ public class InputValidator {
     public static final String INPUT_MONEY_ERROR = "[ERROR] 정확한 금액을 입력해주세요.";
     public static final int MONEY_REST = 0;
     public static final String NUMBER = "^[1-9][0-9]*$";
+    public static final String LOTTO_TYPE = "^([1-9][0-9]*)(,[1-9][0-9]*){5}$";
 
     private InputValidator() {
     }
 
-    public static boolean isValidTargetLottoNumbers(List<Integer> targetLottoNumbers){
-         return NumbersValidator.isValid(targetLottoNumbers);
+    public static boolean isValidTargetLottoNumbers(String inputTargetLottoNumbers) {
+        try {
+            isValidTargetLottoType(inputTargetLottoNumbers);
+            List<Integer> targetLottoNumbers = Changer.stringToIntegers(inputTargetLottoNumbers);
+            return NumbersValidator.isValid(targetLottoNumbers);
+        } catch (IllegalArgumentException illegalArgumentException) {
+            System.out.println(illegalArgumentException.getMessage());
+            return false;
+        }
+
     }
 
-    public static boolean isValidBonusNumber(Lotto targetLotto, String bonusNumberStr) {
+    private static void isValidTargetLottoType(String inputTargetLottoNumbers) throws IllegalArgumentException {
+        if (inputTargetLottoNumbers == null || inputTargetLottoNumbers.isBlank() ||
+                !inputTargetLottoNumbers.matches(LOTTO_TYPE)) {
+            throw new IllegalArgumentException(INPUT_MONEY_ERROR);
+        }
+    }
+
+    public static boolean isValidBonusNumber(Lotto targetLotto, String inputBonusNumberStr) {
         try {
-            isValidDigit(bonusNumberStr);
-            int bonusNumber = Integer.parseInt(bonusNumberStr);
+            isValidDigit(inputBonusNumberStr);
+            int bonusNumber = Integer.parseInt(inputBonusNumberStr);
             isValidBonusNumberRange(bonusNumber);
             isContainsBonusNumber(targetLotto, bonusNumber);
             return true;
@@ -39,16 +55,16 @@ public class InputValidator {
         }
     }
 
-    static void isValidBonusNumberRange(int bonusNumber)  throws  IllegalArgumentException{
+    static void isValidBonusNumberRange(int bonusNumber) throws IllegalArgumentException {
         if (bonusNumber < NUMBER_MIN_VALUE || bonusNumber > NUMBER_MAX_VALUE) {
             throw new IllegalArgumentException(INPUT_BONUS_NUMBER_ERROR);
         }
     }
 
-    public static boolean isValidMoney(String moneyStr) {
+    public static boolean isValidMoney(String inputMoney) {
         try {
-            isValidDigit(moneyStr);
-            int money = Integer.parseInt(moneyStr);
+            isValidDigit(inputMoney);
+            int money = Integer.parseInt(inputMoney);
             isValidMoneyRange(money);
             return true;
         } catch (IllegalArgumentException illegalArgumentException) {
@@ -57,14 +73,14 @@ public class InputValidator {
         }
     }
 
-    static void isValidMoneyRange(int money) throws IllegalArgumentException{
+    static void isValidMoneyRange(int money) throws IllegalArgumentException {
         if (money < MONEY_MIN_UNIT || (money % MONEY_MIN_UNIT) != MONEY_REST) {
             throw new IllegalArgumentException(INPUT_MONEY_ERROR);
         }
     }
 
-    static void isValidDigit(String moneyStr) throws IllegalArgumentException{
-        if (moneyStr == null || moneyStr.isBlank() || !moneyStr.matches(NUMBER)) {
+    static void isValidDigit(String input) throws IllegalArgumentException {
+        if (input == null || input.isBlank() || !input.matches(NUMBER)) {
             throw new IllegalArgumentException(INPUT_MONEY_ERROR);
         }
     }
