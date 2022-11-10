@@ -59,8 +59,14 @@ public class Calculator {
     }
 
     public int calculateProfit(List<Integer> matchResults) {
-        // TODO: 총 수익 반환
-        return 0;
+        int profit = 0;
+        List<Integer> prizeMoneys = List.of(5000, 50000, 1500000, 30000000, 2000000000);
+        for (int index = 0; index< matchResults.size(); index++) {
+            if (matchResults.get(index) > 0) {
+                profit += (matchResults.get(index) * prizeMoneys.get(index));
+            }
+        }
+        return profit;
     }
 
     public double calculateEarningsRate() {
