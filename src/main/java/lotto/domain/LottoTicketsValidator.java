@@ -17,7 +17,7 @@ public class LottoTicketsValidator {
 	}
 
 	private static boolean isConsistValidCharacters(String purchasingAmount) {
-		return purchasingAmount.matches("^[0-9]*$");
+		return purchasingAmount.matches("^[0-9]+$");
 	}
 
 	private static boolean isPositiveNumber(String purchasingAmount) {
