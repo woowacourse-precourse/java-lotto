@@ -6,6 +6,7 @@ public class LottoPriceException {
         checkEmptyLottoPrice(priceInput);
         checkHasBlankInLottoPrice(priceInput);
         Integer price = changePriceToInteger(priceInput);
+        checkLessThanOneThousand(price);
     }
 
     public static void checkEmptyLottoPrice(String price) {
@@ -25,5 +26,11 @@ public class LottoPriceException {
             throw new IllegalArgumentException("[ERROR] 로또 금액을 숫자로 입력해주세요.");
         }
         return Integer.parseInt(price);
+    }
+
+    public static void checkLessThanOneThousand(Integer price) {
+        if (price < 1000) {
+            throw new IllegalArgumentException("[ERROR] 로또 1장은 1000원입니다. 1000원 보다 더 높은 금액을 입력해주세요.");
+        }
     }
 }
