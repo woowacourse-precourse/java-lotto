@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Exception {
     public boolean validMoney(int money)throws IllegalArgumentException{
@@ -24,12 +26,13 @@ public class Exception {
                 throw new IllegalArgumentException("");
         }
     }
-    public boolean validUserWinningNumber(List<Integer> winningNumber)throws IllegalArgumentException{
-        if(winningNumber.size() != 6)
-            throw new IllegalArgumentException("[ERROR] 번호 6개를 입력하세요.");
+    public boolean validUserWinningNumber(List<Integer> winningNumber) {
+        Set<Integer> overlapCheck = new HashSet<>(winningNumber);
+        if (overlapCheck.size() != winningNumber.size())
+            return false;
         for (Integer lottoNumber : winningNumber) {
             if (lottoNumber < 1 || lottoNumber > 45)
-                throw new IllegalArgumentException("[ERROR] 1~45 사이의 숫자를 입력하세요.");
+                return false;
         }
         return true;
     }
