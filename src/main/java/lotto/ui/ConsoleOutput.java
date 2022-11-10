@@ -6,7 +6,9 @@ public class ConsoleOutput {
 	private static final String ERROR_SYMBOL = "[ERROR]";
 	private static final String SPACE = " ";
 
-	private static final String REQUEST_TOTAL_AMOUNT = "구입금액을 입력해 주세요.";
+	public static final String REQUEST_TOTAL_AMOUNT = "구입금액을 입력해 주세요.";
+	public static final String REQUEST_LOTTO_NUMBER = "당첨 번호를 입력해 주세요.";
+	public static final String REQUEST_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 
 	public static final String AMOUNT_EMPTY = "입력하지 않으셨습니다. 프로그램을 종료합니다.";
 	public static final String AMOUNT_NOT_A_NUMBER = "구입금액은 숫자만 입력이 가능합니다. 프로그램을 종료합니다.";
@@ -18,8 +20,8 @@ public class ConsoleOutput {
 		throw new IllegalArgumentException();
 	}
 
-	public static void PrintRequestMessage() {
-		System.out.println(REQUEST_TOTAL_AMOUNT);
+	public static void PrintRequestMessage(String message) {
+		System.out.println(message);
 	}
 
 }
