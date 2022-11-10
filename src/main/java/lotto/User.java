@@ -19,11 +19,11 @@ public class User {
 
     public void readMoney(){
         int inputMoney = Integer.parseInt(readLine());
-        validateInputNumber(inputMoney);
+        validataInputNumber(inputMoney);
         userMoney = inputMoney;
     }
 
-    public void validateInputNumber(int inputMoney) {
+    public void validataInputNumber(int inputMoney) {
         if(inputMoney%UNIT != 0){
             System.out.println("[ERROR] 금액은 1000원 단위로 나뉘어 떨어져야 합니다.");
             throw new IllegalArgumentException();
@@ -33,15 +33,32 @@ public class User {
     public List<Integer> readLotto(){
         System.out.println("당첨 번호를 입력해 주세요.");
         String inputLottoNumber = readLine();
-        validateInputLottoNumber(inputLottoNumber);
+        validataInputLottoNumber(inputLottoNumber);
         return convertLottoNumber(inputLottoNumber);
     }
 
     public int readBonus(){
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonus = readLine();
-        validateBonusNumber(bonus);
+        validataBonusNumber(bonus);
         return Integer.parseInt(bonus);
+    }
+
+    public int validataBonusNumber(String bonus) {
+        // 포맷이 잘못된 경우 or 범위가 초과하는 경우
+        int bonusNum = 0;
+        try{
+            bonusNum = Integer.parseInt(bonus);
+        }catch (NumberFormatException e){
+            System.out.println("[ERROR] 보너스 번호 입력이 잘못 되었습니다.");
+            throw new IllegalArgumentException();
+        }
+
+        if(bonusNum > LOTTO_MAX_SIZE || bonusNum < LOTTO_MIN_SIZE){
+            System.out.println("[ERROR] 숫자는 1이상 45 이하의 숫자로 구성되어야 합니다.");
+            throw new IllegalArgumentException();
+        }
+        return bonusNum;
     }
 
     public void addLotto(List<Integer> lottoNumber, int bonusNumber){
@@ -56,7 +73,7 @@ public class User {
                 .collect(Collectors.toList());
     }
 
-    public void validateInputLottoNumber(String inputLottoNumber) {
+    public void validataInputLottoNumber(String inputLottoNumber) {
         ArrayList<String> split = new ArrayList<>(List.of(inputLottoNumber.split(", ")));
         unValidShape(split);
 
