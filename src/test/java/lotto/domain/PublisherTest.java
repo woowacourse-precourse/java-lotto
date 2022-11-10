@@ -4,7 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,5 +28,16 @@ class PublisherTest {
     void getLottoCount(int money, int count) {
         List<List<Integer>> lottoGroup = publisher.getLottoGroup(money);
         assertEquals(lottoGroup.size(), count);
+    }
+
+    @ParameterizedTest(name = "로또는 오름차순으로 정렬되어있다.")
+    @CsvSource(value = {"1000", "2000", "12000", "30000"})
+    void getSortedLotto(int money) {
+        List<List<Integer>> lottoGroup = publisher.getLottoGroup(money);
+        for (List<Integer> lotto : lottoGroup) {
+            System.out.println(Arrays.toString(lotto.toArray()));
+            List<Integer> sorted = lotto.stream().sorted().collect(Collectors.toList());
+            assertEquals(lotto, sorted);
+        }
     }
 }
