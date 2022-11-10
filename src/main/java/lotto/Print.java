@@ -1,9 +1,9 @@
 package lotto;
 
-import constant.Text;
+import constant.LottoText;
 
 public class Print {
-    public void out(Text text) {
+    public void out(LottoText text) {
         System.out.println(text);
     }
 }
