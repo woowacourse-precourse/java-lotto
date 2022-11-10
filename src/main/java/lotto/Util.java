@@ -13,7 +13,7 @@ public class Util {
     public static final int LOTTO_COUNT = 6;
 
     public static void isValidInput(String str) {
-        if (!str.matches("[0-9]|,")) {
+        if (!str.matches("[0-9]|,") || Integer.parseInt(str) % 1000 != 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getValue());
         }
     }
