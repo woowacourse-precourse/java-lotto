@@ -8,6 +8,7 @@ import java.util.List;
 
 public class LottoStore {
     private List<Integer> winNumbers;
+    private int bonusNumber;
 
     private Lotto getNewLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -35,6 +36,17 @@ public class LottoStore {
     private void validateWinNumbers(List<Integer> numbers) {
         if (numbers.size() != 6) {
             System.out.println("[ERROR] 잘못된 당첨번호 입니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void setBonusNumber(int number) {
+        this.bonusNumber = number;
+    }
+
+    private void validateBonusNumber(int number) {
+        if (winNumbers.contains(number)) {
+            System.out.println("[ERROR] 잘못된 보너스번호 입니다.");
             throw new IllegalArgumentException();
         }
     }
