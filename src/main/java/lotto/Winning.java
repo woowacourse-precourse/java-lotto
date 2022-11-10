@@ -7,7 +7,8 @@ public enum Winning {
     SECOND(5, true, 30_000_000),
     THIRD(5, false, 1_500_000),
     FOURTH(4, false, 50_000),
-    FIFTH(3, false, 5_000);
+    FIFTH(3, false, 5_000),
+    DEFAULT(0, false, 0);
 
 
     private int hitCount;
@@ -30,6 +31,6 @@ public enum Winning {
                 .filter(lottoResult -> lottoResult.hitCount == hitCount
                                 && lottoResult.bonusHit == bonusHit)
                 .findAny()
-                .get();
+                .orElse(DEFAULT);
     }
 }

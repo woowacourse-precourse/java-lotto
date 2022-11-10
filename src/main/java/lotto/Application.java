@@ -15,10 +15,6 @@ public class Application {
                 .filter(userNumber -> winningNumbers.contains(userNumber))
                 .count());
 
-        if (hitCount < 3) {
-            return null;
-        }
-
         boolean bonusHit = false;
         if(userNumbers.contains(bonusNumber)) {
             bonusHit = true;
