@@ -14,4 +14,12 @@ public enum LottoPlace {
         this.matchNumbers = matchNumbers;
         this.winMoney = winMoney;
     }
+
+    public int getMatchNumbers() {
+        return matchNumbers;
+    }
+
+    public int getWinMoney() {
+        return winMoney;
+    }
 }

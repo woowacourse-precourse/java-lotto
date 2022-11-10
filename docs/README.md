@@ -10,8 +10,8 @@
 - [x] 당첨 번호 Class 작성한다. - WinningNumber
   - [x] 당첨번호를 입력받는다. - WinningNumber#readWinningNumbers()
   - [x] 보너스번호를 입력받는다. - WinningNumber#readBonusNumber()
-- [ ] 당첨 결과 Class 작성한다. - LottoResult
-  - [ ] User와 당첨 번호를 입력받는다. LottoResult#Constructor()
+- [ ] 당첨 결과 Class 작성한다. - WinningResult
+  - [ ] User와 당첨 번호를 입력받는다. WinningResult#Constructor()
   - [ ] User와 당첨 번호를 이용해 등수를 구한다.
 - [x] 메시지 Package 작성한다. - Message
   - [x] 정상메시지 Class 작성한다. - Message#NormalMessage
