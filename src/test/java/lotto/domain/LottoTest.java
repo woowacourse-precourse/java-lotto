@@ -44,4 +44,11 @@ class LottoTest {
                 .isThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, lottoNumber)))
                 .withMessageStartingWith(ERROR_MESSAGE);
     }
+    
+    @Test
+    @DisplayName("매칭되는 로또 번호 개수 구하기")
+    void countOfSameNumber() {
+        final Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(lotto.countOfSameNumber(new Lotto(List.of(1, 2, 3, 4, 5, 7)))).isEqualTo(5);
+    }
 }
