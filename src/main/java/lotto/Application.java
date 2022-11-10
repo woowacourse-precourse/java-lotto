@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Application {
@@ -34,6 +35,9 @@ public class Application {
         // 2.
         List<Lotto> lottos = createLottos(money);
 
+        // 3.
+        printLottos(money, lottos);
+
 
 
     }
@@ -56,5 +60,12 @@ public class Application {
             lottos.add(new Lotto(numbers));
         }
         return lottos;
+    }
+
+    private static void printLottos(int money, List<Lotto> lottos) {
+        System.out.printf("%d개를 구매했습니다.\n", money / 1000);
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.getNumbers());
+        }
     }
 }
