@@ -13,24 +13,27 @@ public class Money {
     for (int i = 0; i < userMoney.length(); i++)
     {
       if (!Character.isDigit(userMoney.charAt(i))) {
-        PrintOut.isNotDigitMessage();
-        throw new IllegalArgumentException();
-      }// 추후 에러 내용을 출력하는 메세지 추가
+        throw new IllegalArgumentException("[ERROR] 숫자만 입력할 수 있습니다.");
+      }
     }
     return true;
   }
 
-  public boolean checkDividableMoney(String userMoney) throws IllegalArgumentException{
+  public boolean checkDividableMoney(String userMoney) {
     int money = Integer.parseInt(userMoney);
 
     if (money % 1000 != 0) {
-      PrintOut.isNotValuableMoneyMessage();
-      throw new IllegalArgumentException();
-    } // 추후 에러 내용을 출력하는 메세지 추가
+      throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해 주세요.");
+    }
     return true;
   }
 
-  public boolean isValidMoney(String userMoney) {
-    return checkDividableMoney(userMoney) && checkMoneyIsDigit(userMoney);
+  public int countLotto(String userMoney) {
+    int money = Integer.parseInt(userMoney);
+
+    if (checkDividableMoney(userMoney) && checkMoneyIsDigit(userMoney)) {
+      return (money / 1000);
+    }
+    return -1;
   }
 }

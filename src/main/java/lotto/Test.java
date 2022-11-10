@@ -6,7 +6,7 @@ public class Test {
 
     PrintOut.requestInputMessage();
     String userMoney = money.inputMoney();
-    money.isValidMoney(userMoney);
+    money.countLotto(userMoney);
   }
   public static void main(String[] args){
     test1();

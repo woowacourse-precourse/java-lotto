@@ -23,10 +23,10 @@ class MoneyTest {
 
   @DisplayName("1000원 단위로 끊어지지 않거나, 숫자가 아닌 경우 예외가 발생한다")
   @Test
-  void isValidMoney() {
-    assertThatThrownBy(() -> new Money().isValidMoney("1a00"))
+  void countLotto() {
+    assertThatThrownBy(() -> new Money().countLotto("1a00"))
             .isInstanceOf(IllegalArgumentException.class);
-    assertThatThrownBy(() -> new Money().isValidMoney("1340"))
+    assertThatThrownBy(() -> new Money().countLotto("1340"))
             .isInstanceOf(IllegalArgumentException.class);
   }
 }
