@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@DisplayName("LottoRank Unit Test")
 class LottoRankTest {
 
     @Test
@@ -32,8 +33,6 @@ class LottoRankTest {
         boolean bounsFlag = false;
 
         //when & then
-
-        assertThrows(IllegalArgumentException.class,
-                     () -> LottoRank.getRank(correctCount, bounsFlag));
+        assertThat(LottoRank.getRank(correctCount, bounsFlag)).isEqualTo(LottoRank.NONE);
     }
 }
