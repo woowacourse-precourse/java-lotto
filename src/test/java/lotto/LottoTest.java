@@ -38,16 +38,4 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-    @Test
-    void outPutTest() {
-        OutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
-        Output.outputLottoRank(1, 1, 1, 1, 1);
-        assertThat("3개 일치 (5,000원) - 1개\n" +
-                "4개 일치 (50,000원) - 1개\n" +
-                "5개 일치 (1,500,000원) - 1개\n" +
-                "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개\n" +
-                "6개 일치 (2,000,000,000원) - 1개\n").isEqualTo(out.toString());
-    }
 }
