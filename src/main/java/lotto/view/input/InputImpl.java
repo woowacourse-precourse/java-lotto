@@ -1,6 +1,8 @@
 package lotto.view.input;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InputImpl implements Input {
 
@@ -13,6 +15,12 @@ public class InputImpl implements Input {
             return paymentAmount;
         }
         return 0;
+    }
+
+    @Override
+    public List<String> inputWinningNumbers() {
+        List<String> winningNumbers = new ArrayList<>(List.of(Console.readLine().split(",")));
+        return winningNumbers;
     }
 
     private boolean isAllowedPaymentAmount(int paymentAmount) {
