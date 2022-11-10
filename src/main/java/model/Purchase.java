@@ -38,4 +38,8 @@ public class Purchase {
         }
         return true;
     }
+
+    public int getMoney() {
+        return money;
+    }
 }
