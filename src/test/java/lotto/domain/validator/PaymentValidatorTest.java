@@ -21,4 +21,12 @@ class PaymentValidatorTest {
                 .isThrownBy(() -> PaymentValidator.validate(14500))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
+    
+    @Test
+    @DisplayName("예외 처리 : 0인 경우")
+    void isPaymentZero() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> PaymentValidator.validate(0))
+                .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
+    }
 }
