@@ -2,13 +2,15 @@ package lotto.ui;
 
 import lotto.Setup;
 
+import java.util.List;
+
 public class ConsoleOutput {
 	private static final String ERROR_SYMBOL = "[ERROR]";
 	private static final String SPACE = " ";
 
 	public static final String REQUEST_TOTAL_AMOUNT = "구입금액을 입력해 주세요.";
-	public static final String REQUEST_LOTTO_NUMBER = "당첨 번호를 입력해 주세요.";
-	public static final String REQUEST_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+	public static final String REQUEST_LOTTO_NUMBER = "\n당첨 번호를 입력해 주세요.";
+	public static final String REQUEST_BONUS_NUMBER = "\n보너스 번호를 입력해 주세요.";
 
 	public static final String EMPTY = "입력하지 않으셨습니다. 프로그램을 종료합니다.";
 	public static final String AMOUNT_NOT_A_NUMBER = "구입금액은 숫자만 입력이 가능합니다. 프로그램을 종료합니다.";
@@ -24,6 +26,8 @@ public class ConsoleOutput {
 	public static final String BONUS_NUMBER_NOT_CORRECTLY_COUNTED = "보너스 번호는 1개의 숫자를 입력해야 합니다. 프로그램을 종료합니다.";
 	public static final String BONUS_NUMBER_DUPLICATED = "보너스 번호는 로또 번호와 중복이 없어야 합니다. 프로그램을 종료합니다.";
 
+	public static final String PURCHASED_LOTTO_NUMBERS = "\n%d개를 구매했습니다.\n";
+
 
 	public static void PrintErrorMessage(String message) {
 		System.out.println(ERROR_SYMBOL + SPACE + message);
@@ -33,4 +37,14 @@ public class ConsoleOutput {
 	public static void PrintRequestMessage(String message) {
 		System.out.println(message);
 	}
+
+	public static void PrintNotificationMessage(int purchasedLotto) {
+		System.out.printf(PURCHASED_LOTTO_NUMBERS,purchasedLotto);
+	}
+
+	public static void PrintIssuedLotto(List<Integer> numbers) {
+		System.out.println(numbers);
+	}
+
+
 }
