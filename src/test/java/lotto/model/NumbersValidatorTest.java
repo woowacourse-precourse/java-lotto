@@ -16,9 +16,8 @@ import org.junit.jupiter.api.Test;
 
 class NumbersValidatorTest {
 
-
-    @Test
     @DisplayName("중복 숫자가 있으면 예외가 발생한다.")
+    @Test
     void repeat_error() {
         List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 5));
         assertThatThrownBy(() -> isValidRepeat(numbers)).isInstanceOf(
@@ -29,8 +28,8 @@ class NumbersValidatorTest {
         assertThatCode(() -> isValidRepeat(numbers)).doesNotThrowAnyException();
     }
 
-    @Test
     @DisplayName("숫자가 범위에 넘어가면 예외가 발생한다.")
+    @Test
     void range_error() {
         List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5, 46));
         assertThatThrownBy(() -> isValidRange(numbers)).isInstanceOf(
@@ -46,8 +45,8 @@ class NumbersValidatorTest {
                 IllegalArgumentException.class).hasMessage(NUMBER_RANGE_ERROR);
     }
 
-    @Test
     @DisplayName("숫자의 개수가 6개 넘어가면 예외가 발생한다.")
+    @Test
     void size_error() {
         List<Integer> numbers = new ArrayList<>(List.of(1, 2, 3, 4, 5));
         assertThatThrownBy(() -> isValidSize(numbers)).isInstanceOf(IllegalArgumentException.class)
