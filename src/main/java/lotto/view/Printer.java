@@ -1,5 +1,7 @@
 package lotto.view;
 
+import lotto.Lotto;
+
 import java.util.List;
 
 public class Printer {
@@ -12,10 +14,10 @@ public class Printer {
         System.out.println(lottoNumber +"개를 구매했습니다.");
     }
 
-    public void printPurchasedLotto(List<List<Integer>> purchasedLotto){
-        for(List<Integer> lotto : purchasedLotto){
+    public void printPurchasedLotto(List<Lotto> purchasedLotto){
+        for(Lotto lotto : purchasedLotto){
             String message = "[";
-            for(int lottoNumber : lotto){
+            for(int lottoNumber : lotto.getNumbers()){
                 message += (lottoNumber + ", ");
             }
             message = message.substring(0, message.length() - 1); // 마지막 공백 제거
