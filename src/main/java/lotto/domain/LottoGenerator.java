@@ -7,6 +7,7 @@ import java.util.List;
 
 public class LottoGenerator {
 
+    private static final int LOTTO_PRICE = 1_000;
     private static final int LOTTO_NUMBER_LOWER_LIMIT = 1;
     private static final int LOTTO_NUMBER_UPPER_LIMIT = 45;
     private static final int LOTTO_NUMBER_QUANTITY = 6;
@@ -15,7 +16,7 @@ public class LottoGenerator {
     private int lottoQuantity;
 
     public LottoGenerator(int money) {
-        lottoQuantity = money / 1000;
+        lottoQuantity = money / LOTTO_PRICE;
     }
 
     public List<Lotto> generateLottos() {
