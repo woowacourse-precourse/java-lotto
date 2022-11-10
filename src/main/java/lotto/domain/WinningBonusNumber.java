@@ -49,7 +49,13 @@ public class WinningBonusNumber {
     }
 
     private void validateBonusNumberRange(int bonusNumber) {
-        if(bonusNumber < Number.LOTTO_NUMBER_MIN || bonusNumber > Number.LOTTO_NUMBER_MAX) {
+        if (bonusNumber < Number.LOTTO_NUMBER_MIN || bonusNumber > Number.LOTTO_NUMBER_MAX) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateDuplicatedBonusNumber(int bonusNumber) {
+        if (winningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException();
         }
     }
