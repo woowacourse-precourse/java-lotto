@@ -26,4 +26,12 @@ public class MoneyTest {
 			Money.checkMoneyInput(money);
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@DisplayName("입력한 금액으로 구매 가능한 로또의 개수를 반환")
+	@ParameterizedTest
+	@ValueSource(strings = {"1000", "2000", "3000", "4000"})
+	void countLottoNumber(String money) {
+		assertThat(Money.calculateMaximumLottoCount(money))
+			.isEqualTo(Integer.parseInt(money) / 1000);
+	}
 }
