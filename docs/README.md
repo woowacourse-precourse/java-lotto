@@ -29,6 +29,9 @@
 - [x] generateLottoNumber
   - List<List<Integer>> 타입의 로또번호를 생성한다. (구매한 로또 갯수에 따라 각 로또 번호를 담는 리스트를 반환 하도록한다.)
 
+### 로또 번호 매칭하기
+- [ ] matchClientLottoWithWinningLotto
+
 ### 수익률 계산
 - [ ] getYield
   - 수익률을 계산하기
@@ -43,18 +46,6 @@
 - [x] getLottoPaper
   - [x] getPublishedLottoNumber
     - 발행된 로또 번호를 출력하기
-
-- [ ] getWinCountThree
-  - 3개 일치한 로또 갯수 출력하기
-
-- [ ] getWinCountFour
-  - 3개 일치한 로또 갯수 출력하기
-
-- [ ] getWinCountFive
-  - 3개 일치한 로또 갯수 출력하기
-
-- [ ] getWinCountSix
-  - 3개 일치한 로또 갯수 출력하기
 
 - [ ] getCalculatedYield
   - 수익률 출력하기
