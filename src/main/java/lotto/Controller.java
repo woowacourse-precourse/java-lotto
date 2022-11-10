@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import lotto.Rank.Grade;
 
 public class Controller {
 
@@ -16,6 +18,10 @@ public class Controller {
         List<Integer> winningNumbers = getWinningNumberds();
         int bonusNumber = View.inputBonusNumber();
         validateBonusNumber(bonusNumber, winningNumbers);
+        Map<Integer, Integer> result = Rank.getResult(winningNumbers, lottoList, bonusNumber);
+        View.printResult(result);
+        double yield = getYield(money, result);
+        View.printYield(yield);
     }
 
     public static void validateMoney(int money) {
@@ -77,5 +83,18 @@ public class Controller {
         if (winningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 중복된 수가 존재합니다.");
         }
+    }
+
+    public static double getYield(int money, Map<Integer, Integer> result) {
+        double sum = 0;
+        for (Grade grade : Grade.values()) {
+            if (grade.isCheck())
+                sum += grade.getPrize() * result.get(7);
+            if (!grade.isCheck()) {
+                sum += grade.getPrize() * result.get(grade.getMatchCount());
+            }
+        }
+        System.out.println((sum / money) * 100);
+        return (sum / money) * 100;
     }
 }
