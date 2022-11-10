@@ -1,5 +1,11 @@
 # 미션 - 로또
 
+### [요구 사항 정리](https://github.com/jeong-yeji/java-lotto/blob/jeong-yeji/requirement.md)
+
+### [기능 구현 목록](https://github.com/jeong-yeji/java-lotto/blob/jeong-yeji/feature.md)
+
+---
+
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
@@ -179,14 +185,15 @@ BUILD SUCCESSFUL in 0s
 
 ### 라이브러리
 
-- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
+- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console`
+  API를 사용하여 구현해야 한다.
     - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
     - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 #### 사용 예시
 
 ```java
-List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+List<Integer> numbers=Randoms.pickUniqueNumbersInRange(1,45,6);
 ```
 
 ### Lotto 클래스
