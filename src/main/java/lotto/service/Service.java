@@ -22,6 +22,7 @@ public class Service {
     public static int getVolume(int money) {
         int volume = money / 1000;
         System.out.println(volume + "개를 구매했습니다.");
+
         return volume;
     }
 
@@ -37,5 +38,18 @@ public class Service {
         Exception.verifyLottoListVolume(lottoList, volume);
 
         return lottoList;
+    }
+
+    public static String getJackpotNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String jackpot = Console.readLine();
+
+        return jackpot;
+    }
+
+    public static String[] getJackpotNumberToArr(String jackpotNumber) {
+        String[] jackpotArr = jackpotNumber.split(",");
+
+        return jackpotArr;
     }
 }

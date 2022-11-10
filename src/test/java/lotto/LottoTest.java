@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -50,5 +51,14 @@ class LottoTest {
         List<Lotto> lottoList = Service.getLotto(volume);
         assertThatThrownBy(() -> Exception.verifyLottoListVolume(lottoList, 3))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호를 배열로 바꿨을 때의 길이가 6이고, 구성된 배열의 값이 당첨번호와 일치해야 합니다.")
+    @Test
+    void verifyJackpotToArr() {
+        String jackpot = "1,2,3,4,5,6";
+        String[] jackpotArr = Service.getJackpotNumberToArr(jackpot);
+        assertThat(jackpotArr).isEqualTo(new String[]{"1","2","3","4","5","6"});
+        assertThat(jackpotArr).hasSize(6);
     }
 }
