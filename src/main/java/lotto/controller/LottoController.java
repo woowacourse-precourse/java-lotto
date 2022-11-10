@@ -28,7 +28,7 @@ public class LottoController {
 
     private List<Lotto> buyLotto() {
         List<Lotto> lottoBundle =  lottoService.buy(inputDevice.sendMoney());
-        lottoView.printLottoInfo(lottoBundle);
+        lottoView.printLottoBundleInfo(lottoBundle);
         return lottoBundle;
     }
 

@@ -25,7 +25,7 @@ public class LottoView {
         System.out.println(START_MESSAGE);
     }
 
-    public void printLottoInfo(List<Lotto> lottoBundle) {
+    public void printLottoBundleInfo(List<Lotto> lottoBundle) {
         System.out.println(lottoBundle.size() + LOTTO_NUMBER_MESSAGE);
         for (Lotto lotto : lottoBundle) {
             lotto.printNumbers();
