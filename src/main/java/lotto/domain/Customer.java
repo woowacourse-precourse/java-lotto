@@ -19,6 +19,14 @@ public class Customer {
         purchaseLottery();
     }
 
+    public int getNumOfTicket() {
+        return this.numOfTicket;
+    }
+
+    public List<List<Integer>> getPurchasedTickets() {
+        return this.purchasedTickets;
+    }
+
     private void validateProperMoney(int paidMoney) {
         if (paidMoney % 1000 != 0) {
             throw new IllegalArgumentException(NOT_DIVISIBLE_BY_THOUSAND);
