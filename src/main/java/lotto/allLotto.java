@@ -8,8 +8,9 @@ public class allLotto {
     public allLotto(){
         this.lottos = new ArrayList<>();
     }
-    public void addLotto(List<Integer> lotto){
-        this.lottos.add(lotto);
+    public void addLotto(Lotto lotto){
+
+        this.lottos.add(lotto.getLottoNumber());
     }
     public int sizeLotto(){
         return this.lottos.size();

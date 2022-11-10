@@ -18,8 +18,9 @@ class allLottoTest {
     void addLotto(){
         allLotto alllotto= new allLotto();
         List<Integer> number=new ArrayList<>();
-        number=makeNumber.randomLotto(number);
-        alllotto.addLotto(number);
+        number=makeNumber.randomLotto();
+        Lotto lotto=new Lotto(number);
+        alllotto.addLotto(lotto);
         assertThat(alllotto.sizeLotto()==1);
     }
     @DisplayName("로또번호목록 출력 테스트")
@@ -27,8 +28,10 @@ class allLottoTest {
     void printAllLotto(){
         allLotto alllotto= new allLotto();
         List<Integer> number=new ArrayList<>();
-        number=makeNumber.randomLotto(number);
-        alllotto.addLotto(number);
+
+        number=makeNumber.randomLotto();
+        Lotto lotto=new Lotto(number);
+        alllotto.addLotto(lotto);
         alllotto.printAllLotto();
     }
 

@@ -15,6 +15,9 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+    public List<Integer> getLottoNumber(){
+        return this.numbers;
+    }
 
 
     // TODO: 추가 기능 구현

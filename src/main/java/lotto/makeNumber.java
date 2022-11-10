@@ -23,7 +23,7 @@ public class makeNumber {
     }
     public static String getBonusNumber() {
         String bonusNumber;
-        System.out.println("당첨 번호를 입력해주세요.");
+        System.out.println("보너스 번호를 입력해주세요.");
         return bonusNumber = Console.readLine();
     }
     public static Set<Integer> makeWinningNumber(String winningNumber,String bonusNumber){
@@ -42,7 +42,8 @@ public class makeNumber {
         System.out.println(lotto+"개를 구매했습니다.");
         return lotto;
     }
-    public static List<Integer> randomLotto(List<Integer> number){
+    public static List<Integer> randomLotto(){
+        List<Integer> number=new ArrayList<>();
     return number= Randoms.pickUniqueNumbersInRange(1,45,6);
     }
 

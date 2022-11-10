@@ -26,6 +26,7 @@ class calculatorMoneyTest {
         calculatorMoney cal=new calculatorMoney("8000",result);
         cal.sumWinningMoney();
        double profitrate= cal.profitRate();
+       cal.printProfitRate();
        assertThat(profitrate==193.8);
     }
 

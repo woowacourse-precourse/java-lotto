@@ -52,7 +52,7 @@ public class makeNumberTest {
     @Test
     void randomLottoTest(){
         List<Integer> number = new ArrayList<>();
-        number= makeNumber.randomLotto(number);
+        number= makeNumber.randomLotto();
         assertThat(number.size()==6);
         assertThat(number).doesNotHaveDuplicates();
     }
