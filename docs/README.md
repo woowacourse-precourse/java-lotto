@@ -149,6 +149,6 @@
 - [x] 값 초기화 - Comparator#clearCount()
 
 ### Result Class
-- [ ] 총 당첨결과를 저장함
-- [ ] 총 당첨 결과 출력
-- [ ] 수익률 검증
+- [ ] 총 당첨결과를 계산함 - Result#checkRanks()
+- [ ] 총 당첨 결과 출력 - Result#showResult()
+- [ ] 수익률 계산 - Result#calcEarningRate()
