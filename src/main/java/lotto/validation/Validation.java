@@ -12,7 +12,7 @@ public class Validation {
     public void validateWinNumberInput(String input) {
         String[] token = input.split(",");
         if (token.length != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 6개의 숫자를 입력해주세요");
         }
 
         for (String s : token) {
@@ -34,7 +34,7 @@ public class Validation {
 
     private void checkBonusNumberAlreadyPicked(List<Integer> winNumbers, int bonus) {
         if (winNumbers.contains(bonus)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 당첨번호에 이미 보너스 번호가 있습니다.");
         }
     }
 
@@ -43,25 +43,25 @@ public class Validation {
         try {
             Integer.parseInt(string);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 입력은 숫자여야 합니다.");
         }
     }
 
     private void validateNumberInBound(int min, int max, int input) {
         if (input < min) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR]" + min + "이상의 수를 입력해야 합니다.");
         }
         if (input > max) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] " + max + " 이하의 수를 입력해야 합니다.");
         }
     }
 
     private void validateDivideThousand(int money) {
         if (money < 1000) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 1,000 이상의 금액을 입력해야 합니다.");
         }
         if (money % 1000 != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 금액을 1,000으로 나눌 수 있어야 합니다.");
         }
     }
 }
