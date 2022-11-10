@@ -125,4 +125,9 @@ public class Application {
 
         return changeCashStringToInteger(input);
     }
+
+    public static String inputWinningNumbers() {
+
+        return Console.readLine();
+    }
 }
