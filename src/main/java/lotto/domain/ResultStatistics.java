@@ -10,12 +10,11 @@ import java.util.Map;
 
 public class ResultStatistics {
     private final List<Result> results;
-    private final Map<ResultStatus, Integer> map;
+    private final Map<ResultStatus, Integer> map = new HashMap<>();
     private int totalProfit = 0;
 
     public ResultStatistics(List<Result> results) {
         this.results = results;
-        this.map = new HashMap<>();
         initMap(map);
         makeMapAndTotalProfit(results);
     }
