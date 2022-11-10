@@ -5,7 +5,7 @@ import lotto.Message;
 
 import java.util.List;
 
-public class WinningLotto extends Lotto{
+public class WinningLotto extends Lotto {
     private final Integer specialNumber;
 
     public WinningLotto(List<Integer> numbers,Integer specialNumber)
@@ -30,6 +30,11 @@ public class WinningLotto extends Lotto{
         {
             throw new IllegalArgumentException(Message.getLottoNumberDuplicationErrorMessage());
         }
+    }
+
+    public Integer getSpecialNumber()
+    {
+        return specialNumber;
     }
 
     @Override
