@@ -1,13 +1,14 @@
 ## 🛠 기능 목록
 - [ ] Computer
   - [ ] 1~45의 서로다른 임의의 수 6개를 생성한다. -createLottoNumbers()
-    - [ ] camp.nextstep.edu.missionutils에서 제공하는 Randoms API를 사용하여 구현한다.
+    - [ ] camp.nextstep.edu.missionutils.Randoms의 pickUniqueNumbersInRange()를 활용한다.
     - [ ] 오름차순으로 정렬하여 출력한다.
   - [ ] 구입 금액을 1000으로 나눈 몫 만큼 리스트를 생성한다. - createLottos()
 
 
 - [ ] User
   - [ ] 구입 금액을 입력한다. - inputMoney()
+    - [ ] 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
     - [ ] 1000단위 입력해야한다.
   - [ ] 당첨 번호를 입력한다. - inputWinningNumbers()
     - [ ] 서로다른 6자리 수를 입력한다.
