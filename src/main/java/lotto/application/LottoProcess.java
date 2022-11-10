@@ -22,6 +22,6 @@ public class LottoProcess {
         System.out.println(ConsoleOut.INPUT_WINNING_NUMBER_MESSAGE);
         String lottoNumber = generator.generateLotto();
         generator.numberSeparator(lottoNumber);
-        
+
     }
 }
