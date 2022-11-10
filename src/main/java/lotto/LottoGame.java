@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class LottoGame {
-    private static final String INVALID_MONEY_TYPE_REGEX = "\\D";
+    private static final String INVALID_NUMBER_TYPE_REGEX = "\\D";
     private static final int UNIT_OF_MONEY = 1000;
 
     public String inputMoney() {
@@ -19,7 +19,7 @@ public class LottoGame {
     }
 
     private void validateMoneyType(String money) {
-        if (Pattern.compile(INVALID_MONEY_TYPE_REGEX).matcher(money).find()) {
+        if (Pattern.compile(INVALID_NUMBER_TYPE_REGEX).matcher(money).find()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_MONEY_TYPE.getMessage());
         }
     }
