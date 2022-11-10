@@ -14,7 +14,7 @@ public class Application {
         List<Lotto> lotto = new ArrayList<>();
         buyLotto(money, lotto);
         printLotto(lotto);
-        winNumInput();
+        List<Integer> winNums = winNumInput();
     }
 
     public static void moneyInputError(int money) {
@@ -24,12 +24,13 @@ public class Application {
         }
     }
 
-    public static void winNumInput() {
+    public static List<Integer> winNumInput() {
         System.out.println("당첨 번호를 입력해 주세요.");
         List<Integer> winNums = new ArrayList<>();
         String[] tmpNums = Console.readLine().split(",");
         for (String e : tmpNums)
             winNums.add(Integer.parseInt(e));
+        return winNums;
     }
 
     public static void buyLotto(int money, List<Lotto> lotto) {
