@@ -46,4 +46,10 @@ public class Validator {
             throw new IllegalArgumentException("[ERROR] 중복되지 않은 값만 입력 가능합니다.");
         }
     }
+
+    public void listLengthCheck(List<String> inputs, int length) {
+        if(inputs.size() != length) {
+            throw new IllegalArgumentException("[ERROR] 6개의 번호를 입력해주세요.");
+        }
+    }
 }
