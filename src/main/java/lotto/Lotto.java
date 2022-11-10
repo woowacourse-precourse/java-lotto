@@ -13,7 +13,10 @@ public class Lotto {
 
     private final List<Integer> numbers; // 기존 코드
     private static final int LOTTO_LENGTH = 6;
-    private static int ABC;
+    private static int userInputMoney;
+    private List<Integer userNumberList = new ArrayList<>();
+    private List<Integer> bonusNumberList = new ArrayList<>();
+
 
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -31,7 +34,7 @@ public class Lotto {
         }
 
         int inputMoney = Integer.parseInt(nullCheck);
-        ABC = inputMoney;
+        userInputMoney = inputMoney;
 
         if (inputMoney % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1,000원 단위입니다.");
@@ -49,7 +52,7 @@ public class Lotto {
 
     // 로또 개수
     public static int theNumberOfLotto() throws IOException {
-        int inputMoney = ABC / 1000;
+        int inputMoney = userInputMoney / 1000;
 
         return inputMoney;
     }
@@ -86,6 +89,16 @@ public class Lotto {
 
         return winnerNumber;
     }
+
+    public int winnerNumberBonus() throws IOException {
+        int bonusNumber = Integer.parseInt(br.readLine());
+        if(bonusNumber <= 0 || bonusNumber > 45){
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+        bonusNumberList.add(bonusNumber);
+        return bonusNumber;
+    }
+
 
 
     // 예외사항
