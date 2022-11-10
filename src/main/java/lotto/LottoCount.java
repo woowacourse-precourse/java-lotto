@@ -8,9 +8,9 @@ public class LottoCount {
 	
 	public LottoCount(int price) {
 		this.price = price;
-		this.lottocount = price / 1000;
 		validateNumber(price);
 		validateDivideRight(price);
+		this.lottocount = price / 1000;
 	}
 	
 	public void validateNumber(int price) {
@@ -25,6 +25,4 @@ public class LottoCount {
 			throw new IllegalArgumentException("[ERROR] 로또 1장당 1000원 입니다.");
 		}
 	}
-	
-	
 }
