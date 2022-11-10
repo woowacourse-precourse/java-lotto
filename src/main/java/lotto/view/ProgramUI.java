@@ -6,12 +6,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import static lotto.view.Constants.*;
 
 public class ProgramUI {
-    public String moneyInput;
-    public String numbersInput;
-
-    public void inputMoney() {
+    public String inputMoney() {
         System.out.println(INPUT_MONEY);
-        this.moneyInput = readLine();
+        return readLine();
     }
 
     public void printTickets(int numOfTickets, List<List<Integer>> purchasedTickets) {
@@ -23,8 +20,8 @@ public class ProgramUI {
         }
     }
 
-    public void inputWinningNumbers() {
+    public String inputWinningNumbers() {
         System.out.println(INPUT_WINNING_NUMBERS);
-        this.numbersInput = readLine();
+        return readLine();
     }
 }
