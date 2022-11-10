@@ -1,0 +1,13 @@
+- 도메인 로직(클래스[객체]별 구분)
+  - 가격 입력시 로또 발행 개수, 1000원으로 나눠떨어지지 않을시 예외처리 : QuantityCalculator
+  - 로또 발행 : IssuingMachine
+  - 입력받은 당첨넘버와 발행된 로또 비교하여 당첨내역 만들기 : PrizeListGenerator
+  - 수익률 계산하기 : YieldCalculator
+
+- UI 로직
+  - 입력
+    - 가격입력받기 : PriceGetter
+    - 당첨번호 입력 + 보너스 번호 입력 : WinnerNumberGetter
+  - 출력
+    - 로또 내역 출력 : LotteryListPrinter
+    - 당첨통계(내역 + 수익률) 출력 : PrizeListPrinter
