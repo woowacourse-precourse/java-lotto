@@ -11,7 +11,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 	private static final String INPUT_USER_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
-	private static final String INPUT_WINNING_NUMBER_MESSAGE = "구입금액을 입력해 주세요.";
+	private static final String INPUT_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
+	private static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해주세요";
 
 	public String inputUserMoney() {
 		System.out.println(INPUT_USER_MONEY_MESSAGE);
@@ -23,9 +24,25 @@ public class InputView {
 		return Console.readLine();
 	}
 
+	public String inputBonusNumber() {
+		System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
+		return Console.readLine();
+	}
+
+	public void validBonusNumber(String str) {
+		if (isNotNumber(str) || isWrongRangeBonusNumber(str)) {
+			throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45의 범위를 가지는 1개의 숫자여야 합니다.");
+		}
+	}
+
+	private boolean isWrongRangeBonusNumber(String str) {
+		int bonusNumber = Integer.parseInt(str);
+		return !(1 <= bonusNumber && bonusNumber <= 45);
+	}
+
 	public void validWinningNumber(String str) {
-		if (notExistInputValue(str) || isWrongRangeNumber(str) || isWrongSize(str) || isDuplicateNumber(str) ) {
-			throw new IllegalArgumentException("[ERROR] 당첨 번호는 1~45범위를 가지는 6개의 숫자여야 합니다.");
+		if (notExistInputValue(str) || isWrongRangeWinningNumber(str) || isWrongSize(str) || isDuplicateNumber(str) ) {
+			throw new IllegalArgumentException("[ERROR] 당첨 번호는 1~45의 범위를 가지는 6개의 숫자여야 합니다.");
 		}
 	}
 
@@ -34,7 +51,7 @@ public class InputView {
 		return notDuplicateNumbers.size() != 6;
 	}
 
-	private boolean isWrongRangeNumber(String str) {
+	private boolean isWrongRangeWinningNumber(String str) {
 		return Arrays.stream(str.split(",")).map(Integer::parseInt).allMatch(num -> 1 <= num && num <= 9);
 	}
 

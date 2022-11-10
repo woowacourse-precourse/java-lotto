@@ -72,7 +72,21 @@ class InputViewTest {
 	@DisplayName("당첨 번호의 범위가 1~45가 아닐 때")
 	@Test
 	void numberRangeTest() {
-		String input = "100,25,32,18,26,90";
+		String input = "100,25,30,18,26,90";
 		assertThrows(IllegalArgumentException.class, () -> inputView.validWinningNumber(input));
+	}
+
+	@DisplayName("보너스 번호의 범위가 1~45가 아닐 때")
+	@Test
+	void BonusNumberRangeTest() {
+		String input = "100";
+		assertThrows(IllegalArgumentException.class, () -> inputView.validBonusNumber(input));
+	}
+
+	@DisplayName("보너스 번호가 숫자가 아닐 때")
+	@Test
+	void BonusNumberNotNumberTest() {
+		String input = "~~d";
+		assertThrows(IllegalArgumentException.class, () -> inputView.validBonusNumber(input));
 	}
 }

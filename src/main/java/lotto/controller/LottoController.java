@@ -30,4 +30,9 @@ public class LottoController {
 		String userInput = inputView.inputWinningNumber();
 		inputView.validWinningNumber(userInput);
 	}
+
+	public void receiveBonusNumber() {
+		String userInput = inputView.inputBonusNumber();
+		inputView.validBonusNumber(userInput);
+	}
 }
