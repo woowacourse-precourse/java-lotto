@@ -5,7 +5,7 @@
 - [x] 금액에 따른 로또 개수 계산 기능 - Calculator#getLottoCount() 
 - [x] 구매한 로또 출력 기능 - Console#outputMyLottos()
 - [x] 당첨 번호 입력 기능 - Console#inputWinningNumbers()
-- [ ] 보너스 번호 입력 기능 - Console#inputBonusNumber()
+- [x] 보너스 번호 입력 기능 - Console#inputBonusNumber()
 - [ ] 당첨 번호와 로또/보너스 번호 비교 기능 - Lotto#compareNumbers()
 - [ ] 수익률 계산 기능 - Calculator#calculrateYield()
 - [ ] 당첨 통계 출력 기능 - Console#outputWinningResult()

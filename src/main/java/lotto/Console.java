@@ -19,6 +19,10 @@ public class Console {
         }
         return new Lotto(numbers);
     }
+    public int inputBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        return Integer.parseInt(readLine());
+    }
     public void outputMyLottos(List<Integer>[] numbers) {
         int count = numbers.length;
         System.out.println(count + "개를 구매했습니다.");
