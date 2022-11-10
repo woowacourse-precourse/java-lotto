@@ -130,4 +130,13 @@ public class Application {
 
         return Console.readLine();
     }
+
+    public static void validateNumbersBetweenComma(char character1, char character2) {
+
+        if ((character1 < 48 || character1 > 57) || (character2 < 48 || character2 > 57)) {
+
+            throw new IllegalArgumentException();
+        }
+
+    }
 }
