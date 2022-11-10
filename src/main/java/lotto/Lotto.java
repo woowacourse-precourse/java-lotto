@@ -45,6 +45,10 @@ public class Lotto {
         return count;
     }
 
+    public static boolean isBonusNumber(int bonusNumber, Lotto lotto) {
+        return lotto.numbers.contains(bonusNumber);
+    }
+
     @Override
     public  String toString() {
         return numbers.toString();
