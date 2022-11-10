@@ -36,7 +36,7 @@
 ## 클래스 분리
 ### Buyer : 로또 구입자
 - [X] `LotteryVendor`에 요청하여 로또를 구입한다. 
-- [ ] `LotteryOperator`에게 당첨번호 확인을 요청한다.
+- [ ] `LottoReferee`에게 당첨번호 확인을 요청한다.
 
 ### LotteryVendor : 로또 판매처
 - [X] 로또 구입 금액에 따른 발행할 로또 개수를 구하여, 개수만큼 `LottoIssueMachine`에 발행을 요청한다.
@@ -48,5 +48,5 @@
 ### LotteryMachine : 로또 추첨기계
 - 로또 번호 규칙에 따른 당첨 번호와 보너스번호를 추첨한다. (입력받는다)
 
-### LotteryOperator : 로또 사업자
+### LottoReferee : 로또 사업자
 - `LotteryMachine`이 지닌 당첨 번호와 보너스번호를 `Buyer`의 로또 번호와 비교하여 당첨을 판단한다.
