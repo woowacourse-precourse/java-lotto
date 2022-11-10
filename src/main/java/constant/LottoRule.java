@@ -1,12 +1,14 @@
 package constant;
 
-public enum LottoNumber {
-    SIZE(6),
+public enum LottoRule {
+    COUNT(6),
+    START_NUMBER(1),
+    END_NUMBER(45),
     ;
 
     private final int value;
 
-    LottoNumber(int value) {
+    LottoRule(int value) {
         this.value = value;
     }
 
