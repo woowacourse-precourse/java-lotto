@@ -11,6 +11,16 @@ public class WinningController {
     static final int BonusNumberIndex = 7;
     private Map<WinningStandard, Integer> lottoWinningResultMap = new HashMap<>();
 
+    public int getWinMoney(Map<WinningStandard, Integer> winningResultMap){
+        int winMoney = 0;
+        for(WinningStandard winningStandard : winningResultMap.keySet()){
+            Integer number = winningResultMap.get(winningStandard);
+            int money = winningStandard.getWon() * number;
+            winMoney += money;
+        }
+        return winMoney;
+    }
+
     public Map<WinningStandard, Integer> calculateWinningLottos(List<Lotto> purchasedLottos, WinningLotto winningLotto){
         for(Lotto lotto : purchasedLottos){
             compare(lotto, winningLotto);
