@@ -8,11 +8,12 @@ public class Exception {
             throw new IllegalArgumentException("[ERROR] 유효한 값을 입력하세요.");
         return true;
     }
-    public boolean validUserInput(String userInputMoney){
+    public boolean validUserInputMoney(String userInputMoney){
         for(int i = 0; i < userInputMoney.length(); i++){
             if(!Character.isDigit(userInputMoney.charAt(i)))
                 throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요.")
         }
         return true;
     }
+
 }
