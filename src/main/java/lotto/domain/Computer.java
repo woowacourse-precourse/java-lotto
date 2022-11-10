@@ -20,4 +20,18 @@ public class Computer {
 
         return numbers;
     }
+
+    public List<List<Integer>> createLottos(int money){
+        int times = money / 1000;
+
+        List<List<Integer>> lottos = new ArrayList<>();
+
+        while(times>0){
+            List<Integer> lotto = new Lotto(createLottoNumbers()).getNumbers();
+            lottos.add(lotto);
+            times -= 1;
+        }
+
+        return lottos;
+    }
 }
