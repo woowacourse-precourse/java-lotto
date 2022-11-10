@@ -31,7 +31,23 @@ public class ConsumerResult {
         return 0;
     }
 
-    public List<Integer> winLotto(){
-        return null;
+    public int myIncome(int lottoCount, int bonusCount){
+        int income = 0;
+        if(lottoCount==3){
+            income+=5000;
+        }if(lottoCount==4){
+            income+=50000;
+        }if(lottoCount==5){
+            income+=1500000;
+        }if(lottoCount==5 && bonusCount==1){
+            income+=30000000;
+        }if(lottoCount==6){
+            income+=2000000000;
+        }
+        return income;
+    }
+
+    public void winLotto(){
+        
     }
 }
