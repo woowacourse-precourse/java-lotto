@@ -15,16 +15,16 @@
 - [x] 위의 결과를 출력하는 기능
 
 
-- [ ] 당첨번호를 입력 받는 기능
-    - [ ] 입력 받은 값을 `,` 단위로 `split` 하여, `List<String>` 으로 변환하는 기능
-    - [ ] 입력 받은 값이 숫자가 아닌 값을 포함하고 있을 시 `IllegalArgumentException` 발생 시키는 기능
-    - [ ] 입력 받은 값이 1~45 사이의 정수가 아닌 수를 포함하고 있을 시 `IllegalArgumentException` 발생 시키는 기능
-    - [ ] 입력 받은 값이 중복된 수를 포함하고 있을 시 `IllegalArgumentException` 발생 시키는 기능
+- [x] 당첨번호를 입력 받는 기능
+    - [x] 입력 받은 값을 `,` 단위로 `split` 하여, `List<String>` 으로 변환하는 기능
+    - [x] 입력 받은 값이 숫자가 아닌 값을 포함하고 있을 시 `IllegalArgumentException` 발생 시키는 기능
+    - [x] 입력 받은 값이 1~45 사이의 정수가 아닌 수를 포함하고 있을 시 `IllegalArgumentException` 발생 시키는 기능
+    - [x] 입력 받은 값이 중복된 수를 포함하고 있을 시 `IllegalArgumentException` 발생 시키는 기능
 
 
--[ ] 보너스 번호를 입력 받는 기능
-    - [ ] 입력 받은 값이 숫자가 아닌 값인 경우 `IllegalArgumentException` 발생 시키는 기능
-    - [ ] 입력 받은 값이 1~45 사이의 정수가 아닌 수일 경우 `IllegalArgumentException` 발생 시키는 기능
+-[x] 보너스 번호를 입력 받는 기능
+    - [x] 입력 받은 값이 숫자가 아닌 값인 경우 `IllegalArgumentException` 발생 시키는 기능
+    - [x] 입력 받은 값이 1~45 사이의 정수가 아닌 수일 경우 `IllegalArgumentException` 발생 시키는 기능
 
 
 - [ ] 당첨 번호와 랜덤넘버를 비교하는 기능
@@ -39,7 +39,7 @@
 - [ ] 입금 금액과 당첨금액을 토대로 수익률을 계산하는 기능
     - [ ] 위의 결과를 출력하는 기능
    
-- [ ] `IllegalArgumentException` 예외 발생 시 Error Message 출ㅌ
+- [ ] `IllegalArgumentException` 예외 발생 시 Error Message 출력
 ---
    
 
