@@ -21,7 +21,12 @@ public class Lotto {
         if (removedNumbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자가 존재하면 안됩니다.");
         }
-    }
 
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i) < 1 || numbers.get(i) > 45) {
+                throw new IllegalArgumentException("[ERROR] 1에서 45 사이의 숫자를 입력해야 합니다.");
+            }
+        }
+    }
     // TODO: 추가 기능 구현
 }
