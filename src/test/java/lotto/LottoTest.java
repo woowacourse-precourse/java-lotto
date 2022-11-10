@@ -1,6 +1,8 @@
 package lotto;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -17,10 +19,19 @@ class LottoTest {
     }
 
     @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
-    @Test
-    void createLottoByDuplicatedNumber() {
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
-                .isInstanceOf(IllegalArgumentException.class);
+    @Nested
+    class duplicateNumberTest {
+        @Test
+        void createLottoByDuplicatedNumber() {
+            assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void createWinningLottoByDuplicatedNumber() {
+            assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 2))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
     }
 
     @DisplayName("범위를 벗어난 번호가 있으면 예외가 발생한다.")
@@ -44,5 +55,19 @@ class LottoTest {
             Lotto lotto = Lotto.generate();
             List<Integer> numbers = lotto.getNumbers();
         });
+    }
+
+    @DisplayName("올바른 당첨 내역을 반환하는지 확인한다.")
+    @Nested
+    class checkWinningCTest {
+        @BeforeEach
+        void initWinningLotto() {
+            Lotto winningLotto = new Lotto(List.of(6, 5, 4, 3, 2, 1));
+        }
+
+        @Test
+        void winFirstPlace() {
+            Lotto userLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        }
     }
 }
