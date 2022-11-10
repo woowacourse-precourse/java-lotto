@@ -16,6 +16,20 @@ public class Lotto {
         return numbers;
     }
 
+
+    public int getRank(List<Integer> numbers, int bonus) {
+        int overlapCounter = getNumberOfOverlapping(numbers);
+
+        if (overlapCounter == 6) {
+            return 1;
+        }
+        if (overlapCounter == 5) {
+            if (this.numbers.contains(bonus)) return 2;
+            return 3;
+        }
+        return 8 - overlapCounter;
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
