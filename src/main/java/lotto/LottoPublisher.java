@@ -2,14 +2,18 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoPublisher {
 
     public List<Lotto> publishLottos(int payment) {
-        // 구입 금액에 따른 로또 개수 계산
-        // 개수 만큼 로또 발행
-        return null;
+        int numberOfLottos = numberOfLottos(payment);
+        List<Lotto> lottos = new ArrayList<>();
+        while (lottos.size() != numberOfLottos) {
+            lottos.add(publishLotto());
+        }
+        return lottos;
     }
 
     private int numberOfLottos(int payment) {
