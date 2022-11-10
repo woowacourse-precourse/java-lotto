@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WinningNumbers {
+    private final List<Integer> winningNumbers;
+    private final int bonusNumber;
     private enum GuideMessageType {
         WINNING_NUMBERS("당첨 번호를 입력해 주세요."),
         BONUS_NUMBER("보너스 번호를 입력해 주세요.");
@@ -16,6 +18,16 @@ public class WinningNumbers {
         GuideMessageType(String message) {
             this.message = message;
         }
+    }
+
+    public WinningNumbers() {
+        printGuideMessage(GuideMessageType.WINNING_NUMBERS.message);
+        List<Integer> winningNumbers = convertNumbers();
+        this.winningNumbers = winningNumbers;
+
+        printGuideMessage(GuideMessageType.BONUS_NUMBER.message);
+        int bonusNumber = Integer.parseInt(setNumber());
+        this.bonusNumber = bonusNumber;
     }
 
     private String setNumber() {
