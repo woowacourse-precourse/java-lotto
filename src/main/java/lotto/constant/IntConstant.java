@@ -3,7 +3,8 @@ package lotto.constant;
 public enum IntConstant {
     LOTTO_MONEY_PER_ONE(1000),
     ZERO_ASCII_CODE('0'),
-    NINE_ASCII_CODE('9');
+    NINE_ASCII_CODE('9'),
+    LOTTO_NUMBER_COUNT(6);
 
     private final int value;
 
