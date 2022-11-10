@@ -18,10 +18,22 @@ class LottoTest {
     @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
     @Test
     void createLottoByDuplicatedNumber() {
-        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("요구사항 범위보다 큰 테스트")
+    @Test
+    void maxOverFlowNumber() {
+        List<Integer>expect=List.of(1, 2, 3, 4, 46, 5);
+        assertThatThrownBy(() -> new Lotto(expect))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("요구사항 범위보다 적은 테스트")
+    @Test
+    void minOverFlowNumber() {
+        List<Integer>expect=List.of(0, 2, 3, 4, 6, 5);
+        assertThatThrownBy(() -> new Lotto(expect))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
