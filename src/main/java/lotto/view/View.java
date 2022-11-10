@@ -11,8 +11,8 @@ public class View {
     private static final String GET_LOTTO_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String GET_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
     private static final String RESULT_TITLE = "당첨 통계" + "\n" + "---";
-    private static final String GET_RESULT_MESSAGE = "%s (%s) - %d개%n";
-    private static final String GET_PROFIT_RATES_MESSAGE = "총 수익률은 입니다.";
+    private static final String GET_RESULT_MESSAGE = "%s - %d개%n";
+    private static final String GET_PROFIT_RATES_MESSAGE = "총 수익률은 %.1f%%입니다.";
 
     private static final String ERROR_MESSAGE = "[ERROR]";
     private static final String NOT_INTEGER_MESSAGE = ERROR_MESSAGE + " 정수만 입력 가능합니다. 게임이 종료됩니다.";
@@ -29,17 +29,15 @@ public class View {
         StringBuilder stringBuilder = new StringBuilder();
 
         System.out.printf(PURCHASE_INFORMATION_MESSAGE, lottoAmount);
-
         for (int i = 0; i < lottoAmount; i++) {
             List<Integer> lotto = new ArrayList<>();
 
-            for (int j = 0; j < lottoNumbers.size() - 2; j++) {
+            for (int j = 0; j < Constant.LOTTO_SIZE; j++) {
                 lotto.add(lottoNumbers.get(i).get(j));
             }
 
             stringBuilder.append(lotto).append("\n");
         }
-
         System.out.println(stringBuilder);
     }
 
@@ -51,20 +49,18 @@ public class View {
         System.out.println(GET_BONUS_NUMBER_MESSAGE);
     }
 
-    public static void printResult(List<Integer> lottoResult) {
+    public static void printResult(int[] lottoResult) {
         System.out.println(RESULT_TITLE);
 
-        for (int i = 0; i < lottoResult.size(); i++) {
-            String winningCondition = WinnerInfo.values()[i].getWinningCondition();
-            String prize = WinnerInfo.values()[i].getPrizeInformation();
-            int count = lottoResult.get(i);
-
-            System.out.printf(GET_RESULT_MESSAGE, winningCondition, prize, count);
+        for (int i = 0; i < lottoResult.length; i++) {
+            String winningMessage = WinnerInfo.values()[i].getWinningMessage();
+            int count = lottoResult[i];
+            System.out.printf(GET_RESULT_MESSAGE, winningMessage, count);
         }
     }
 
-    public static void printProfitRate() {
-        System.out.println(GET_PROFIT_RATES_MESSAGE);
+    public static void printProfitRate(double profitRates) {
+        System.out.printf(GET_PROFIT_RATES_MESSAGE, profitRates);
     }
 
     public static void printNotInteger() {
