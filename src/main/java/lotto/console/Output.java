@@ -32,10 +32,10 @@ public class Output {
     }
 
     public void writeMatchStatistic(int match, int reward, int count) {
-        writeLine("%d개 일치 (%s원) - %d개", match, PriceFormatter.formatMoney(reward), count);
+        writeLine("%d개 일치 (%s원) - %d개", match, OutputFormatter.formatMoney(reward), count);
     }
 
     public void writeYield(float yield) {
-        writeLine("총 수익률은 %f.1%입니다.", yield);
+        writeLine("총 수익률은 %s입니다.", OutputFormatter.formatPercent(yield));
     }
 }
