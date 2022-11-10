@@ -15,6 +15,12 @@ public class PaymentTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
+    @DisplayName("0원 입력시 구매할 수 없기에 예외가 발생한다.")
+    void createPaymentByZero() {
+        assertThatThrownBy(() -> new Payment(0))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @Test
     @DisplayName("로또 구매수")
     void lottoPurchase(){
         Payment payment = new Payment(8000);
