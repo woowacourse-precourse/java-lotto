@@ -1,6 +1,7 @@
 package lotto.model;
 
 import java.util.List;
+import lotto.constants.ErrorMessage;
 
 public class Lotto {
 
@@ -13,7 +14,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.NOT_SIX_DIGITS);
         }
     }
 
