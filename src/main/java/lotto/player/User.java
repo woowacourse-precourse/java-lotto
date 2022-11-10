@@ -33,9 +33,9 @@ public class User {
 
     @Override
     public String toString() {
-        String tickets = "";
+        StringBuilder tickets = new StringBuilder();
         for(int i = 0; i < getTicketNum(); i++)
-            tickets = tickets + this.tickets[i].toString() + System.lineSeparator();
-        return tickets;
+            tickets.append(this.tickets[i].toString()).append(System.lineSeparator());
+        return tickets.toString();
     }
 }
