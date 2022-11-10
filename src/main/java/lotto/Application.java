@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Application {
     public static void main(String[] args) {
         System.out.println("구매금액을 입력해 주세요.");
-        String input_price = Console.readLine();
+        String input_price = Console.readLine().trim();
         int price = Integer.parseInt(input_price);
         // 입력값 검수
         int buy_payper = price/1000;
