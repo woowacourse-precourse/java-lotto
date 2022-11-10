@@ -14,4 +14,5 @@ public class LottoTickets {
     private int toLottosSize(int money) {
         return money / PRICE;
     }
+
 }
