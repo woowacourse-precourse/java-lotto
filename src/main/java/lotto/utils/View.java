@@ -1,5 +1,8 @@
 package lotto.utils;
 
+import lotto.Lotto;
+import java.util.List;
+
 public class View {
     private static final String REQUEST_PRICE_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String REQUEST_WINNING_LOTTO_MESSAGE = "당첨 번호를 입력해주세요.";
@@ -17,5 +20,12 @@ public class View {
 
     public static void printBonusNumberMessage() {
         System.out.println("\n"+REQUEST_BONUS_NUMBER);
+    }
+
+    public static void printPublishedLottos(List<Lotto> playerLottos) {
+        System.out.printf("\n%d"+PUBLISH_LOTTO_MESSAGE+"\n", playerLottos.size());
+        for (Lotto lotto : playerLottos) {
+            System.out.println(lotto);
+        }
     }
 }
