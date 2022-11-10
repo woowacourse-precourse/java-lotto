@@ -1,9 +1,8 @@
 package domain;
 
-import static view.ExceptionInfo.EXCEPTION_DETECT;
-
 import camp.nextstep.edu.missionutils.Console;
 import constant.ErrorMessage;
+import constant.ExceptionNumber;
 import java.util.stream.IntStream;
 import view.ExceptionInfo;
 
@@ -13,7 +12,7 @@ public class UserMoney {
         String input_money = Console.readLine();
 
         if(!validateMoney(input_money)){
-            return EXCEPTION_DETECT;
+            return ExceptionNumber.EXCEPTION_CODE.getCode();
         }
 
         return Integer.parseInt(input_money);
