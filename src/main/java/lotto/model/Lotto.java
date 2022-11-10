@@ -8,15 +8,33 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateSixDigits(numbers);
+        validateDuplicate(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validateSixDigits(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorMessage.NOT_SIX_DIGITS);
         }
     }
 
-    // TODO: 추가 기능 구현
+
+    private void validateDuplicate(List<Integer> numbers) {
+        for (int index = 0; index < numbers.size(); index++) {
+            if (isDuplicate(numbers, index)) {
+                throw new IllegalArgumentException(ErrorMessage.NOT_DUPLICATE);
+            }
+        }
+    }
+
+    private static boolean isDuplicate(List<Integer> numbers, int index) {
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(index) == numbers.get(i)) {
+                continue;
+            }
+            return true;
+        }
+        return false;
+    }
 }
