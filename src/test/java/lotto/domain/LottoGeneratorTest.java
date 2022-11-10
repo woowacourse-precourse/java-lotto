@@ -18,9 +18,19 @@ class LottoGeneratorTest {
     }
 
     @Test
-    void 잘못된_금액_테스트() {
+    void 천원단위_오류_테스트() {
         LottoGenerator lottoGenerator = new LottoGenerator();
         assertThatThrownBy(() -> lottoGenerator.generateLottoBundle(1300))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 영원이하_오류_테스트(){
+        LottoGenerator lottoGenerator = new LottoGenerator();
+        assertThatThrownBy(() -> lottoGenerator.generateLottoBundle(0))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> lottoGenerator.generateLottoBundle(-1000))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
