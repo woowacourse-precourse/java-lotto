@@ -39,4 +39,16 @@ public enum LottoRank {
     public long getReward() {
         return reward;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        return stringBuilder.append(description)
+                            .append(" (")
+                            .append(reward)
+                            .append(") ")
+                            .append("- ")
+                            .toString();
+    }
 }
