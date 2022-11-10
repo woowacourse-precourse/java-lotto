@@ -1,10 +1,20 @@
 package lotto.model;
 
-import java.util.List;
+import lotto.constants.ErrorMessage;
 
-public class Money extends Lotto{
+public class Money{
 
-    public Money(List<Integer> numbers) {
-        super(numbers);
+    private int money;
+    public Money(String input) {
+        validateNumber(input);
+        this.money = money;
+    }
+
+    private void validateNumber(String input) {
+        try {
+            money = Integer.valueOf(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_NUMBER);
+        }
     }
 }
