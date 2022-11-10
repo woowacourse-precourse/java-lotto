@@ -19,13 +19,7 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         lottoNumberException.lottoNumberSize(numbers);
         lottoNumberException.lottoNumberDuplicated(numbers);
+        lottoNumberException.lottoNumberMaxMin(numbers);
     }
     // TODO: 추가 기능 구현
-
-    public int getBonusNumber() {
-        do {
-            bonusNumber = Randoms.pickNumberInRange(1, 45);
-        } while (numbers.contains(bonusNumber));
-        return bonusNumber;
-    }
 }
