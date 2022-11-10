@@ -49,4 +49,7 @@ public class ResultStatistics {
         return result.toString();
     }
 
+    public int getTotalProfit() {
+        return totalProfit;
+    }
 }

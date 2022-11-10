@@ -50,8 +50,13 @@ public class Application {
 
             ResultStatistics statistics = new ResultStatistics(results);
             System.out.println(statistics.printResultStatistics());
+            float totalProfitRate = Math.round((float) (statistics.getTotalProfit()) / (count * 1000) * 1000) / 10f;
+            System.out.println("statistics.getTotalProfit() = " + statistics.getTotalProfit());
+            System.out.println("(count * 1000) = " + (count * 1000));
+
+            System.out.println("총 수익률은 " + totalProfitRate + "%입니다.");
         } catch (IllegalArgumentException e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
 
     }
