@@ -31,7 +31,7 @@ public class Application {
         int money;
         List<Integer> winningNumbers;
         int bonusNumber;
-        Lotto winningLotto;
+        WinningLotto winningLotto;
         User user;
 
         money = Converter.convertMoneyInput(readLine());
@@ -39,10 +39,11 @@ public class Application {
         user.printLottos();
 
         winningNumbers = Converter.convertNumbersInput(readLine());
-        winningLotto = new Lotto(winningNumbers);
-
         bonusNumber = Converter.convertBonusNumberInput(readLine());
-        Lotto.setBonusNumber(bonusNumber);
+        winningLotto = new WinningLotto(winningNumbers, bonusNumber);
+
+        for (Lotto userLotto : user.getLottos()) {
+            Winning winning = getWinning(userLotto, winningLotto);
 
     }
 }
