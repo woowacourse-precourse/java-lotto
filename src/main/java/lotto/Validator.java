@@ -16,7 +16,7 @@ public class Validator {
 
     }
 
-    private boolean isNumberNotZeroOrLess(String string) {
+    private boolean isPositiveInteger(String string) {
         return string.matches("[1-9][0-9]+");
     }
 
