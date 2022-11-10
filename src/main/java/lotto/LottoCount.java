@@ -10,18 +10,20 @@ public class LottoCount {
 		this.price = price;
 		this.lottocount = price / 1000;
 		validateNumber(price);
+		validateDivideRight(price);
 	}
 	
-	public boolean validateNumber(int price) {
-		String pattern = "^[0-9]+$";
-		if (Pattern.matches(pattern, String.valueOf(price)) && price >= 1000) {
-			return true;
+	public void validateNumber(int price) {
+		String pattern = "^[0-9]{4,}$";
+		if (!Pattern.matches(pattern, String.valueOf(price)) || price < 1000) {
+			throw new IllegalArgumentException("[ERROR] 1000원 이상의 금액만 입력하세요.");
 		} 
-		throw new IllegalArgumentException("[ERROR] 1000원 이상의 금액만 입력하세요.");
 	}
 	
-	public boolean validateDivideRight() {
-		
+	public void validateDivideRight(int price) {
+		if (price % 1000 != 0) {
+			throw new IllegalArgumentException("[ERROR] 로또 1장당 1000원 입니다.");
+		}
 	}
 	
 	
