@@ -27,5 +27,15 @@ class CheckInputException {
         }
     }
 
+    public static void checkBuyerInputIsNotNumberRange(final String input) throws IllegalArgumentException{
+        final BigInteger convertInput = new BigInteger(input);
+        final BigInteger numberFortyFive = BigInteger.valueOf(45);
+        final BigInteger numberOne = BigInteger.ONE;
+
+        //if (input < 0 || input > 45)와 조건이 같음
+        if (convertInput.compareTo(numberOne) == -1 || convertInput.compareTo(numberFortyFive) == 1){
+            throw new IllegalArgumentException(ERROR_MESSAGE + " 1~45범위의 숫자가 아닙니다.");
+        }
+    }
 
 }
