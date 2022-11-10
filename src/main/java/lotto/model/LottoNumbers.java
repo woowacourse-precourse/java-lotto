@@ -44,7 +44,10 @@ class LottoNumbers {
         return lottoStatusQuantity.getOrDefault(lottoStatus, 0);
     }
 
-    public void addAllStatus() {
+    public void addAllStatus(Lotto targetLotto) {
+        lottoNumbers.stream()
+                .map(lotto -> lotto.matchLotto(targetLotto))
+                .forEach(this::addStatus);
     }
 
     public boolean contains(Lotto lotto) {

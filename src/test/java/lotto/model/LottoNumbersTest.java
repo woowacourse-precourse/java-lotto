@@ -47,7 +47,14 @@ class LottoNumbersTest {
     @Test
     void add_all_lotto_status(){
         LottoNumbers lottoNumbers = new LottoNumbers();
-        lottoNumbers.addLotto(new Lotto(List.of(1,2,3,4,5,6)));
+        lottoNumbers.addLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        lottoNumbers.addLotto(new Lotto(List.of(2, 3, 4, 5, 8, 9)));
+
+        Lotto targetLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        lottoNumbers.addAllStatus(targetLotto);
+        assertThat(lottoNumbers.getStatusCount(LottoStatus.MATCH_SIX)).isEqualTo(1);
+        assertThat(lottoNumbers.getStatusCount(LottoStatus.MATCH_FIVE)).isEqualTo(0);
+        assertThat(lottoNumbers.getStatusCount(LottoStatus.MATCH_FOUR)).isEqualTo(1);
 
     }
 }
