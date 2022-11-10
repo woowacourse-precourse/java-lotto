@@ -1,11 +1,11 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class LotteryDrawMachine {
 
     public List<Integer> drawLotteryNumbers() {
-        // TODO: 랜덤으로 로또 번호 추첨
-        return null;
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 }

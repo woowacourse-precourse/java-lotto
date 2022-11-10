@@ -1,7 +1,7 @@
 # 로또 게임
 
 ## 기능 목록
-- [ ] 사용자가 입력한 로또 구입 금액에 따라 번호를 생성한다. - LotteryDrawMachine#drawLotteryNumbers()
+- [x] 사용자가 입력한 로또 구입 금액에 따라 번호를 생성한다. - LotteryDrawMachine#drawLotteryNumbers()
   - 번호는 1부터 45까지의 서로 다른 임의의 수 6개로 이루어져 있다.
 - [ ] 사용자가 구매한 로또 번호와 당첨 번호(중복되지 않는 수 6개 + 보너스 번호 1개)를 비교한다.
   - 로또 번호와 당첨 번호를 비교한다. - Comparator#compare()
