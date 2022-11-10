@@ -11,47 +11,25 @@ import util.message.ErrorMessage;
 class ValidTest {
 
     @Test
-    @DisplayName("[Valid]로또구매시 정상적인 값 테스트")
-    void purchaseMoney() {
+    @DisplayName("[Valid-isDigit]Input이 숫자가 아님을 유효성 테스트")
+    public void isNotDigit() {
         //given
-        String purchaseMoney="7000";
+        String notDigit = "193in23put";
         //when
-        boolean result = Valid.purchaseMoney(purchaseMoney);
+        boolean result = Valid.isDigit(notDigit);
+        //then
+        assertThat(result).isFalse();
+    }
+
+    @Test
+    @DisplayName("[Valid-isDigit]Input이 숫자가 맞음을 유효성 테스트")
+    public void isDigit() {
+        //given
+        String digit = "1932";
+        //when
+        boolean result = Valid.isDigit(digit);
         //then
         assertThat(result).isTrue();
-    }
-
-    @Test
-    @DisplayName("[Valid]구매 금액이 1000단위가아닌경우 예외발생 테스트")
-    void MoneyNotThousandUnit() {
-        //given
-        String moneyNotUnits="1001";
-        //when
-        //then
-        assertThatThrownBy(() -> Valid.purchaseMoney(moneyNotUnits))
-                .isInstanceOf(IllegalArgumentException.class).hasMessage(ErrorMessage.UNIT_THOUSAND_MONEY);
-    }
-
-    @Test
-    @DisplayName("[Valid]구매금액이 1000원 미만인 경우 예외발생 테스트")
-    void MoneyUnderThousand() {
-        //given
-        String moneyUnderThousand="800";
-        //when
-        //then
-        assertThatThrownBy(() -> Valid.purchaseMoney(moneyUnderThousand))
-                .isInstanceOf(IllegalArgumentException.class).hasMessage(ErrorMessage.OVER_THOUSAND_MONEY);
-    }
-
-    @Test
-    @DisplayName("[Valid]구매금액이 1000원 미만인 경우 예외발생 테스트")
-    void moneyIsDigit() {
-        //given
-        String moneyNotDigit="8000원";
-        //when
-        //then
-        assertThatThrownBy(() -> Valid.purchaseMoney(moneyNotDigit))
-                .isInstanceOf(IllegalArgumentException.class).hasMessage(ErrorMessage.NOT_STRING_MONEY);
     }
 
 
