@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static lotto.constant.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
@@ -36,7 +37,7 @@ class ValidatorTest {
         //Then
         assertThat(t)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 1000원 단위로 입력해야합니다.");
+                .hasMessage(INVALID_COST_ERROR_MESSAGE);
     }
 
     @DisplayName("숫자로 구성되어 있는 정상적인 입력")
@@ -65,20 +66,20 @@ class ValidatorTest {
         //Then
         assertThat(t)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 올바르지 않은 입력입니다.");
+                .hasMessage(INVALID_INPUT_ERROR_MESSAGE);
     }
 
     private void validateForIllegalInput(String input) {
         Pattern pattern = Pattern.compile("^[0-9]*$");
         Matcher matcher = pattern.matcher(input);
         if (!matcher.find()) {
-            throw new IllegalArgumentException("[ERROR] 올바르지 않은 입력입니다.");
+            throw new IllegalArgumentException(INVALID_INPUT_ERROR_MESSAGE);
         }
     }
 
     private void validateForDividedBy1000(int cost) {
         if (cost % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해야합니다.");
+            throw new IllegalArgumentException(INVALID_COST_ERROR_MESSAGE);
         }
     }
 }

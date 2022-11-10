@@ -3,6 +3,7 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static lotto.constant.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
@@ -16,7 +17,7 @@ class PlayerTest {
 
         assertThat(t)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(Validator.INVALID_INPUT_ERROR_MESSAGE);
+                .hasMessage(INVALID_INPUT_ERROR_MESSAGE);
     }
 
     @DisplayName("올바르지 않은 금액 입력 - 1000으로 안나눠짐")
@@ -27,7 +28,7 @@ class PlayerTest {
 
         assertThat(t)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(Validator.INVALID_COST_ERROR_MESSAGE);
+                .hasMessage(INVALID_COST_ERROR_MESSAGE);
     }
 
     @DisplayName("올바른 금액 입력")
@@ -45,6 +46,6 @@ class PlayerTest {
         int cost = Integer.parseInt(input);
         Validator.validateForDividedBy1000(cost);
 
-        return cost / 1000;
+        return cost / LOTTO_PRICE;
     }
 }
