@@ -1,5 +1,7 @@
 package lotto.game;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -48,5 +50,17 @@ public class LottoService {
         int number = Integer.parseInt(bonusNumber);
         validateLottoNumber(number);
         return number;
+    }
+
+    public List<Lotto> buyLotto(Money money) {
+        List<Lotto> lottos = new ArrayList<>();
+        long lottoCount = money.getValue() / 1000;
+
+        for (int i = 0; i < lottoCount; i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            numbers.sort(Integer::compareTo);
+            lottos.add(new Lotto(numbers));
+        }
+        return lottos;
     }
 }
