@@ -21,6 +21,8 @@ public class UserRepository {
         this.user.setWinningNumbers(numbers);
     }
 
-
+    public void setUserPurchaseMoney(int money){
+        this.user.setPurchaseMoney(money);
+    }
 
 }
