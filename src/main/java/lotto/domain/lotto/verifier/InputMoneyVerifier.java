@@ -15,4 +15,14 @@ public class InputMoneyVerifier {
             throw new IllegalArgumentException("[ERROR] 6개의 숫자만 입력할 수 있습니다.");
         }
     }
+
+    public static void isDuplicatedNumberInList(List<Integer> inputPrizeNumbers) {
+        boolean duplicated = inputPrizeNumbers.stream()
+                .distinct()
+                .count() != inputPrizeNumbers.size();
+
+        if (duplicated) {
+            throw new IllegalArgumentException("[ERROR] 중복되는 수는 입력할 수 없습니다.");
+        }
+    }
 }

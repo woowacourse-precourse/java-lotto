@@ -31,6 +31,7 @@ public class Util {
         String inputPrizeNumbers = OutputView.printInputPrizeNumbers();
         List<Integer> prizeLottoNumbers = splitByComma(inputPrizeNumbers);
         InputMoneyVerifier.isList6Size(prizeLottoNumbers);
+        InputMoneyVerifier.isDuplicatedNumberInList(prizeLottoNumbers);
         return prizeLottoNumbers;
     }
 
