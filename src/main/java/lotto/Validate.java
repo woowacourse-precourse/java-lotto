@@ -20,4 +20,12 @@ public class Validate {
                     LottoText.ERROR + "입력값을 로또 형태로 전환할 수 없습니다.");
         }
     }
+
+    public void validLottoNumber(int number) {
+        if (number < LottoRule.START_NUMBER.getValue() || LottoRule.END_NUMBER.getValue() < number) {
+            throw new IllegalArgumentException(
+                    LottoText.ERROR + "로또 번호의 범위를 넘어갔습니다. 로또 번호는 " +
+                            LottoRule.START_NUMBER + "부터 " + LottoRule.END_NUMBER + "까지 입니다.");
+        }
+    }
 }
