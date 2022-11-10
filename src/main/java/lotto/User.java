@@ -36,6 +36,11 @@ public class User {
         return convertLottoNumber(inputLottoNumber);
     }
 
+    public void addLotto(List<Integer> lottoNumber, int bonusNumber){
+        lottoNumber.add(bonusNumber);
+        lottos.add(new Lotto(lottoNumber));
+    }
+
     public List<Integer> convertLottoNumber(String inputLottoNumber) {
         ArrayList<String> split = new ArrayList<>(List.of(inputLottoNumber.split(", ")));
         return split.stream()
