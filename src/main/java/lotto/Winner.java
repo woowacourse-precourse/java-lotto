@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Winner {
     private final static String ONLY_NUMBER = "^\\d+$";
@@ -18,6 +19,7 @@ public class Winner {
 
         this.winningNumbers = new ArrayList<>();
         updateWinningNumbers(winningNumbersSplited);
+        validateUniqueness(this.winningNumbers);
         this.bonusNumber = Integer.valueOf(bonusNumber);
         validateRange(this.bonusNumber);
         validateIfBonusNumberIncludedInWinningNumbers();
@@ -47,6 +49,15 @@ public class Winner {
             Integer numericValue = Integer.valueOf(number);
             validateRange(numericValue);
             winningNumbers.add(numericValue);
+        }
+    }
+
+    private void validateUniqueness(List<Integer> numbers) {
+        List<Integer> numbersToBeValidated = numbers.stream()
+                .distinct()
+                .collect(Collectors.toList());
+        if (numbersToBeValidated.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 겹치는 번호가 존재합니다.");
         }
     }
 
