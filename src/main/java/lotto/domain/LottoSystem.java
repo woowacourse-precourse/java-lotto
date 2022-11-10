@@ -2,32 +2,32 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoSystem {
-    LottoMachine lottoMachine;
-    WinningLotto winningLotto;
+    List<Integer> winningNumbers;
 
     public LottoSystem() {
-        lottoMachine = new LottoMachine();
-        winningLotto = new WinningLotto();
+        winningNumbers = new ArrayList<>();
     }
 
-    public List<Lotto> buy() throws IllegalArgumentException {
-        System.out.println(Message.INPUT_PURCHASE_AMOUNT);
-        String input = Console.readLine().trim();
-        return lottoMachine.printLottoBundle(input);
+    public void setWinningNumbers(String numbers) {
+        validateWinningNumbers(numbers);
+        winningNumbers = Arrays.stream(numbers.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
-    public void printPurchasedLotto(List<Lotto> lottoBundle) {
-        for (Lotto lotto : lottoBundle) {
-            System.out.println(lotto.toString());
+    private void validateWinningNumbers(String input) {
+        validateCount(input);
+    }
+
+    private void validateCount(String input) {
+        if (input.split(",").length != 6) {
+            throw new IllegalArgumentException("6개의 숫자를 쉼표(,)로 구분하여 입력하세요.");
         }
-    }
-
-    private void setWinningNumber() {
-        System.out.println(Message.INPUT_WINNING_NUMBER);
-        String input = Console.readLine().trim();
-        winningLotto.setWinningNumbers(input);
     }
 }
