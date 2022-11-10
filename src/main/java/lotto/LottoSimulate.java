@@ -15,7 +15,7 @@ public class LottoSimulate {
     public void start() {
         int purchasePrice = inputPurchasePrice();
         List<Lotto> lottos = buyLottos(purchasePrice);
-        List<Integer> winLottoNumber = inputWinLottoNumber();
+        List<Integer> winLottoNumber = inputWinLottoNumbers();
     }
 
     private int inputPurchasePrice() {
@@ -34,9 +34,9 @@ public class LottoSimulate {
         return lottos;
     }
 
-    private List<Integer> inputWinLottoNumber() {
+    private List<Integer> inputWinLottoNumbers() {
         print.out(LottoText.REQUEST_WIN_LOTTO_NUMBER);
         String input = Console.readLine();
-        return convert.toWinLottoNumber(input);
+        return convert.toWinLottoNumbers(input);
     }
 }
