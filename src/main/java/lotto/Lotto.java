@@ -77,7 +77,7 @@ public class Lotto {
                 winnerNumber.add(Integer.parseInt(numberList[i]));
             }
             if (Integer.parseInt(numberList[i]) <= 0 && Integer.parseInt(numberList[i]) > 45) {
-                throw new IllegalArgumentException("[ERROR] 로또 번혼ㄴ 1부터 45 사이의 숫자여야 합니다.");
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }
         Collections.sort(winnerNumber);
@@ -94,7 +94,7 @@ public class Lotto {
 
     //보너스 번호 (완성)
     public static int winnerNumberBonus() throws IOException {
-        System.out.println("보너스 번호를 입력해 주세요");
+        System.out.println("보너스 번호를 입력해 주세가");
         int bonusNumber = Integer.parseInt(br.readLine());
         if(bonusNumber <= 0 || bonusNumber > 45){
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
