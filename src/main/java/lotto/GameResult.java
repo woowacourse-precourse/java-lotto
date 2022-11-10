@@ -52,4 +52,12 @@ public enum GameResult {
     public boolean isFourth() {
         return this == FOURTH;
     }
+
+    public boolean isFifth() {
+        return this == FIFTH;
+    }
+
+    public boolean isElse() {
+        return this == ELSE;
+    }
 }
