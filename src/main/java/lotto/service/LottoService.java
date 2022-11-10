@@ -2,9 +2,9 @@ package lotto.service;
 
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoStore;
-import lotto.domain.winning.LottoResults;
 import lotto.domain.winning.LottoPurchaser;
-import lotto.domain.winning.WinningNumbers;
+import lotto.domain.winning.LottoResults;
+import lotto.domain.winning.WinningLotto;
 import lotto.view.input.LottoScanner;
 import lotto.view.output.LottoPrinter;
 
@@ -31,12 +31,12 @@ public class LottoService {
             String money = money();
             LottoPurchaser lottoPurchaser = lottoPurchaser(money);
 
-            WinningNumbers winningNumbers = lottoMachine.winningNumbers(
+            WinningLotto winningLotto = lottoMachine.winningNumbers(
                     winningNumber(),
                     bonusNumber()
             );
 
-            winningResults(lottoPurchaser, winningNumbers);
+            winningResults(lottoPurchaser, winningLotto);
 
         } catch (IllegalArgumentException e) {
             lottoPrinter.printError(e.getMessage());
@@ -48,8 +48,8 @@ public class LottoService {
         return lottoScanner.number();
     }
 
-    private void winningResults(LottoPurchaser lottoPurchaser, WinningNumbers winningNumbers) {
-        LottoResults lottoResults = lottoPurchaser.lottoResults(winningNumbers);
+    private void winningResults(LottoPurchaser lottoPurchaser, WinningLotto winningLotto) {
+        LottoResults lottoResults = lottoPurchaser.lottoResults(winningLotto);
         double rateOfReturn = lottoPurchaser.rateOfReturn(lottoResults);
         lottoPrinter.printWinningStatistics(lottoResults.resultFormat(), rateOfReturn);
     }

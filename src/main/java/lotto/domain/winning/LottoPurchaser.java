@@ -13,8 +13,8 @@ public class LottoPurchaser {
         this.purchasedLottos = purchasedLottos;
     }
 
-    public LottoResults lottoResults(WinningNumbers winningNumbers) {
-        return winningNumbers.lottoResults(purchasedLottos);
+    public LottoResults lottoResults(WinningLotto winningLotto) {
+        return winningLotto.lottoResults(purchasedLottos);
     }
 
     public double rateOfReturn(LottoResults results) {

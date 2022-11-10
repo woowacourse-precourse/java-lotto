@@ -1,11 +1,10 @@
 package lotto.domain.lotto_numbers;
 
 import static lotto.domain.lotto_numbers.LottoNumbersErrorMessages.INVALID_RANGE_OF_LOTTO_NUMBER;
+import static lotto.domain.lotto_numbers.LottoNumbersPolicy.MAX_NUMBER_OF_LOTTO;
+import static lotto.domain.lotto_numbers.LottoNumbersPolicy.MIN_NUMBER_OF_LOTTO;
 
 public class BonusNumber {
-
-    private static final int MIN_NUMBER_OF_LOTTO = 1;
-    private static final int MAX_NUMBER_OF_LOTTO = 45;
 
     private final int bonusNumber;
 
@@ -20,12 +19,12 @@ public class BonusNumber {
         }
     }
 
-    public boolean isIn(WinningNumber winningNumber) {
+    public boolean isIn(Lotto winningNumber) {
         return winningNumber.contains(bonusNumber);
     }
 
     public int matchCount(Lotto lotto) {
-        if (lotto.contains(bonusNumber)) {
+        if (isIn(lotto)) {
             return 1;
         }
         return 0;

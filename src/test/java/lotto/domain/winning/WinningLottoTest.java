@@ -9,7 +9,7 @@ import lotto.domain.lotto_numbers.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class WinningNumbersTest {
+class WinningLottoTest {
 
     private final LottoMachine lottoMachine = new LottoMachine();
 
@@ -23,10 +23,10 @@ class WinningNumbersTest {
                 new Lotto(List.of(30, 32, 33, 34, 35, 40))
         );
 
-        WinningNumbers winningNumbers = lottoMachine
+        WinningLotto winningLotto = lottoMachine
                 .winningNumbers("1,2,3,4,5,6", "7");
 
-        LottoResults lottoResults = winningNumbers.lottoResults(purchasedLottos);
+        LottoResults lottoResults = winningLotto.lottoResults(purchasedLottos);
         Map<LottoRanking, Integer> actual = lottoResults.results();
 
         Map<LottoRanking, Integer> expected = Map.of(

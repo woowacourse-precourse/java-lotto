@@ -45,19 +45,16 @@ public enum LottoRanking {
         return winnings * count;
     }
 
-    public boolean isMatchedNumberCount(int count) {
+    public boolean isMatchedOnlyNumberCount(int count) {
         return matchNumberCount == count && !isMatchedBonusNumber;
     }
 
     public String stringFormat() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder
-                .append(matchNumberCount)
-                .append("개 일치");
+        stringBuilder.append(matchNumberCount).append("개 일치");
 
         if (isMatchedBonusNumber) {
-            stringBuilder
-                    .append(", 보너스 볼 일치");
+            stringBuilder.append(", 보너스 볼 일치");
         }
 
         stringBuilder
@@ -67,5 +64,4 @@ public enum LottoRanking {
 
         return stringBuilder.toString();
     }
-
 }
