@@ -12,7 +12,7 @@
 - [x] 구매 메세지를 출력한다. - View#LOTTO_PURCHASED_GUIDE_MESSAGE
   - [x] 로또들의 숫자들을 출력한다. - View#showLottoNumbers()
 
-- [] 당첨 번호 입력 메세지를 출력한다. - View#WINNING_NUMBER_INPUT_GUIDE_MESSAGE
+- [x] 당첨 번호 입력 메세지를 출력한다. - View#WINNING_NUMBER_INPUT_GUIDE_MESSAGE
 - [] 당첨 번호 입력 받는다. - Input#userInput()
   - [] 잘못된 값 입력시 예외 발생 - Checker#checkUserInput()
 

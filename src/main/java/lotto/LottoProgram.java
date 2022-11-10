@@ -21,6 +21,8 @@ public class LottoProgram {
 
 		View.showLottoPurchasedGuideMessage(lottoCount);
 		View.showLottoNumbers(lottoList);
+
+		View.showWinningNumberInputGuideMessage();
 	}
 
 	public void createLotto(int lottoCount) {
