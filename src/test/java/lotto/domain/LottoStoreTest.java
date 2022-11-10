@@ -21,7 +21,7 @@ class LottoStoreTest {
         @CsvSource({"12000,12", "1000,1", "120000,120"})
         void test(String money, String result) {
             Purchaser lottos = lottoStore.lottos(money);
-            assertThat(lottos.lottoListSize()).isEqualTo(Integer.parseInt(result));
+            assertThat(lottos.numberOfPurchasedLottos()).isEqualTo(Integer.parseInt(result));
         }
     }
 

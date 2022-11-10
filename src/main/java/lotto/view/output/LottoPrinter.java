@@ -1,7 +1,5 @@
 package lotto.view.output;
 
-import java.util.List;
-
 public class LottoPrinter {
 
     public void printGuideMessageForPurchase() {
@@ -14,7 +12,7 @@ public class LottoPrinter {
     }
 
     // 발행한 로또 번호를 출력한다.
-    public void printLottoNumbers(List<Integer> lottoNumbers) {
+    public void printLottoNumbers(String lottoNumbers) {
         System.out.println(lottoNumbers);
     }
 
@@ -28,15 +26,15 @@ public class LottoPrinter {
 
 
     // 당첨 통계를 출력한다.
-    public void printWinningStatistics(String resultsFormat, int rateOfReturn) {
+    public void printWinningStatistics(String resultsFormat, double rateOfReturn) {
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println(resultsFormat);
         System.out.println("총 수익률은 " + rateOfReturn + "%입니다.");
     }
 
-    // 예외 메세지를 출력한다.
-    public void printError(String errorMessage) {
-        System.out.println("[ERROR]" + errorMessage);
+    // 예외 출력
+    public void printError(String message) {
+        System.out.println("[ERROR]" + message);
     }
 }

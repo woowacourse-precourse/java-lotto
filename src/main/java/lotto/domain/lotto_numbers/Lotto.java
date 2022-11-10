@@ -1,7 +1,8 @@
 package lotto.domain.lotto_numbers;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class Lotto implements LottoNumbers {
 
@@ -15,13 +16,18 @@ public class Lotto implements LottoNumbers {
     }
 
     public int matchNumberCounts(List<Integer> winningNumbers) {
-        // 정렬이 되어있으니까 순차적으로 비교하면 됨.
-        return (int) IntStream.range(0, 6)
-                .filter(i -> numbers.get(i).equals(winningNumbers.get(i)))
+        return (int) numbers.stream()  // 포함된 애들만 셈
+                .filter(winningNumbers::contains)
                 .count();
     }
 
     public boolean contains(int bonusNumber) {
         return numbers.contains(bonusNumber);
+    }
+
+    public List<Integer> numbers() {
+        List<Integer> copied = new ArrayList<>(Collections.unmodifiableList(numbers));
+        Collections.sort(copied);
+        return copied;
     }
 }

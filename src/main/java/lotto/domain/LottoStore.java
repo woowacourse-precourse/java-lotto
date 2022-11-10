@@ -2,7 +2,6 @@ package lotto.domain;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -37,8 +36,7 @@ public class LottoStore {
                 MAX_NUMBER_OF_LOTTO,
                 COUNT_OF_LOTTO_NUMBERS
         );
-
-        Collections.sort(lottoNumbers);
+        
         return new Lotto(lottoNumbers);
     }
 

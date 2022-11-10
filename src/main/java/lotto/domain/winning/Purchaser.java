@@ -6,6 +6,7 @@ import lotto.domain.lotto_numbers.Lotto;
 public class Purchaser {
 
     public static final int PRICE_OF_LOTTO = 1_000;
+
     private final List<Lotto> purchasedLottos;
 
     public Purchaser(List<Lotto> purchasedLottos) {
@@ -24,8 +25,16 @@ public class Purchaser {
         return (double) Math.round(rateOfReturn * 10) / 10;
     }
 
-    // 테스트용 메서드
-    public int lottoListSize() {
+    public int numberOfPurchasedLottos() {
         return purchasedLottos.size();
+    }
+
+    public String purchasedLottosFormat() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Lotto purchasedLotto : purchasedLottos) {
+            stringBuilder.append(purchasedLotto.numbers()).append("\n");
+        }
+        // 오름차순으로 정렬된 값을 보여줘야 함.
+        return stringBuilder.toString();
     }
 }
