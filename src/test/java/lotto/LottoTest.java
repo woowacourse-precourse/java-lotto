@@ -34,12 +34,14 @@ class LottoTest {
     @DisplayName("특정 번호가 로또 번호 안에 있는지 확인한다.")
     @Test
     void hasLottoNumber() {
-        assertThat(new Lotto(List.of(10,9,5,1,2,3)).hasNumber(3)).isEqualTo(true);
+        assertThat(new Lotto(List.of(10,9,5,1,2,3))
+                .hasNumber(3)).isEqualTo(true);
     }
 
     @DisplayName("특정 번호가 로또 번호 안에 있는지 확인한다.")
     @Test
     void hasNoLottoNumber() {
-        assertThat(new Lotto(List.of(10,9,5,1,2,3)).hasNumber(14)).isEqualTo(false);
+        assertThat(new Lotto(List.of(10,9,5,1,2,3))
+                .hasNumber(14)).isEqualTo(false);
     }
 }

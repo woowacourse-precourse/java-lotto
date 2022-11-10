@@ -7,10 +7,8 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class LottoStoreSellerTest {
-    final LottoStoreSeller lottoStoreSeller = new LottoStoreSeller();
+class LottoSellerTest {
+    final LottoSeller lottoSeller = new LottoSeller();
 
     @DisplayName("숫자가 아닌 금액을 입력할 경우 예외가 발생한다.")
     @Test
@@ -19,7 +17,7 @@ class LottoStoreSellerTest {
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
 
-        Assertions.assertThatThrownBy(()->lottoStoreSeller.receivePurchasePrice())
+        Assertions.assertThatThrownBy(()-> lottoSeller.receivePurchasePrice())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -30,7 +28,7 @@ class LottoStoreSellerTest {
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
 
-        int price = lottoStoreSeller.receivePurchasePrice();
+        int price = lottoSeller.receivePurchasePrice();
 
         Assertions.assertThat(price).isEqualTo(20000);
     }
