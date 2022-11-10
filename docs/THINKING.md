@@ -54,5 +54,12 @@ Enum 클래스 형을 기반으로 한 클래스형 선언
 **InputOutPutView** 이는 단순히 입력과 출력을 위한 클래스이다.
 
 
+각 등수당 몇개인지 알기 위해서는 WinningMoney 객체의 getGrade 메소드를 통해 리스트를 반환받아야 한다.
+그리고 그 리스트를 InputOutputView클래스로 넘겨줘서 출력하게 할 것이다.
+그니까 그 이전에 위 과정을 완료해야 함
+
+InputOutputView 클래스의 printResult가 결국 모두 출력하게 되는데
+getGrade 메소드를 통해 리스트를 반환받아 여기로 넘겨줘야 한다.
+
 
 추후 추가 및 수정 가능**
