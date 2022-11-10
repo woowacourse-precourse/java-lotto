@@ -19,9 +19,17 @@ public class Lotto {
         NumbersValidator.isValid(numbers);
     }
 
-    public LottoStatus matchLotto(Lotto targetLotto) {
+    public LottoStatus matchLotto(Lotto targetLotto,int bonusNumber) {
         int count = countMathNumbers(targetLotto);
+        count = checkMatchFiveAddBonus(bonusNumber, count);
         return LottoStatus.checkValue(count);
+    }
+
+    private int checkMatchFiveAddBonus(int bonusNumber, int count) {
+        if (count == 5 && numbers.contains(bonusNumber)) {
+            count = 7;
+        }
+        return count;
     }
 
     public int countMathNumbers(Lotto targetLotto) {

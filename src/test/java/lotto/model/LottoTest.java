@@ -60,7 +60,8 @@ class LottoTest {
     @Test
     void print_sorted_lotto() {
         Lotto lotto = new Lotto(List.of(6, 3, 5, 1, 2, 8));
-        assertThat(lotto.toString()).isEqualTo(List.of(1, 2, 3, 5, 6, 8).toString());
+        List<Integer> sortedList = List.of(1, 2, 3, 5, 6, 8);
+        assertThat(lotto.toString()).isEqualTo(sortedList.toString());
     }
 
     @DisplayName("당첨 번호와 비교하여 로또 상태 반환")
@@ -68,9 +69,12 @@ class LottoTest {
     void match_target_lotto(){
         Lotto targetLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Lotto fiveMatchLotto = new Lotto(List.of(6, 3, 5, 1, 2, 8));
-        assertThat(fiveMatchLotto.matchLotto(targetLotto)).isEqualTo(LottoStatus.MATCH_FIVE);
+        int notMatchBonusNumber = 9;
+        assertThat(fiveMatchLotto.matchLotto(targetLotto,notMatchBonusNumber)).isEqualTo(LottoStatus.MATCH_FIVE);
+        int MatchBonusNumber = 8;
+        assertThat(fiveMatchLotto.matchLotto(targetLotto,MatchBonusNumber)).isEqualTo(LottoStatus.MATCH_FIVE_ADD_BONUS);
 
-        Lotto twoMathLotto = new Lotto(List.of(1, 2, 7, 8, 9, 10));
-        assertThat(twoMathLotto.matchLotto(targetLotto)).isEqualTo(LottoStatus.MATCH_UNSATISFIED);
+        Lotto twoMathLotto = new Lotto(List.of(1, 2, 7, 8, 11, 10));
+        assertThat(twoMathLotto.matchLotto(targetLotto,notMatchBonusNumber)).isEqualTo(LottoStatus.MATCH_UNSATISFIED);
     }
 }

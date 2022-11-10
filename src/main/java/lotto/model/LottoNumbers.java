@@ -39,9 +39,9 @@ class LottoNumbers {
         return lottoStatusQuantity.getOrDefault(lottoStatus, 0);
     }
 
-    public void addAllStatus(Lotto targetLotto) {
+    public void addAllStatus(Lotto targetLotto,int bonusNumber) {
         lottoNumbers.stream()
-                .map(lotto -> lotto.matchLotto(targetLotto))
+                .map(lotto -> lotto.matchLotto(targetLotto,bonusNumber))
                 .forEach(this::addStatus);
     }
 
