@@ -4,27 +4,28 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.ArrayList;
 
+import java.util.List;
+
 import lotto.view.ErrorMessage;
 import lotto.view.Message;
 
 public class BuyerLotto {
-    public void purchaseLotto() {
+    public static int purchaseLottoCount;
+
+    public static List<Lotto> purchaseLotto() {
+        List<Lotto> lottoLists = new ArrayList<>();
         System.out.println(Message.PURCHASE_PRICE.getMessage());
         String purchasePrice = readLine();
-        int purchaseLottoCount = Integer.parseInt(purchasePrice) / 1000;
+        purchaseLottoCount = Integer.parseInt(purchasePrice) / 1000;
         validateDivideNumber(purchasePrice);
         System.out.println(purchaseLottoCount + Message.PURCHASE_COUNT.getMessage());
-        printLottos(purchaseLottoCount);
-    }
-
-    public void printLottos(int purchaseLottoCount) {
         for (int i = 0; i < purchaseLottoCount; i++) {
-            Lotto lotto = new Lotto(new ArrayList<>());
-            lotto.createLottoNumber();
+            lottoLists.add(Lotto.createLotto());
         }
+        return lottoLists;
     }
 
-    private void validateDivideNumber(String purchasePrice) {
+    private static void validateDivideNumber(String purchasePrice) {
         if (Integer.parseInt(purchasePrice) % 1000 != 0) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_PRICE.getErrorMessage());
         }
