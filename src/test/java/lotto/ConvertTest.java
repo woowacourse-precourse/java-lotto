@@ -32,4 +32,33 @@ class ConvertTest {
                 assertThrows(IllegalArgumentException.class, () -> convert.toLottoCount(50_001));
         assertThat(exception.getMessage()).contains("나누어떨어지지");
     }
+
+    @Test
+    public void 로또_당첨_번호() {
+        assertThatCode(() -> convert.toWinLottoNumbers("1,4,7,14,28,36")).doesNotThrowAnyException();
+    }
+
+    @Test
+    public void 로또_당첨_번호_갯수초과() {
+        Throwable exception =
+                assertThrows(IllegalArgumentException.class, () ->
+                        convert.toWinLottoNumbers("1,4,7,14,28,36,44"));
+        assertThat(exception.getMessage()).contains("입력값을 로또 형태로 전환할 수 없습니다.");
+    }
+
+    @Test
+    public void 로또_당첨_번호_범위초과() {
+        Throwable exception =
+                assertThrows(IllegalArgumentException.class, () ->
+                        convert.toWinLottoNumbers("1,4,7,14,28,46"));
+        assertThat(exception.getMessage()).contains("로또 번호의 범위를 넘어갔습니다.");
+    }
+
+    @Test
+    public void 로또_당첨_번호_중복() {
+        Throwable exception =
+                assertThrows(IllegalArgumentException.class, () ->
+                        convert.toWinLottoNumbers("1,4,7,14,28,7"));
+        assertThat(exception.getMessage()).contains("중복된 로또 번호가 존재합니다.");
+    }
 }
