@@ -7,6 +7,7 @@ import lotto.WinningLotto;
 import lotto.view.Printer;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoController {
@@ -27,7 +28,9 @@ public class LottoController {
         return purchasedLottos;
     }
     public Lotto generateLotto(){
-        return new Lotto(Randoms.pickUniqueNumbersInRange(startRange,endRange, count));
+        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(startRange, endRange, count);
+        Collections.sort(lottoNumbers);
+        return new Lotto(lottoNumbers);
     }
 
     public int calculateLottoNumber(int price){
