@@ -36,5 +36,16 @@ public class Printer {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-
+    public void printWinningStatistics(Map<WinningStandard, Integer> winningResultMap, double profitRate){
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for(WinningStandard key : winningResultMap.keySet()){
+            if(key == WinningStandard.SECOND){
+                System.out.println(key.getNumber() + "개 일치, 보너스 볼 일치 (" + key.getWon() + "원) - " + winningResultMap.get(key) + "개");
+                continue;
+            }
+            System.out.println(key.getNumber() + "개 일치 (" + key.getWon() + "원) - " + winningResultMap.get(key) + "개");
+        }
+        System.out.println("총 수익률은 " + String.format("%.2f", profitRate * 100) + "%입니다.");
+    }
 }
