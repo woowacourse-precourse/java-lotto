@@ -17,4 +17,8 @@ public class Money {
             throw new IllegalArgumentException(MONEY_ERROR_MESSAGE);
         }
     }
+
+    public int getTicketCount() {
+        return money / LOTTO_PRICE;
+    }
 }
