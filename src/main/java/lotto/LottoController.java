@@ -22,9 +22,9 @@ public class LottoController {
     }
 
     private List<Lotto> buyLotto() {
-        List<Lotto> lottoTickets =  lottoService.buy(inputDevice.sendMoney());
-        lottoView.printLottoInfo(lottoTickets);
-        return lottoTickets;
+        List<Lotto> lottoBundle =  lottoService.buy(inputDevice.sendMoney());
+        lottoView.printLottoInfo(lottoBundle);
+        return lottoBundle;
     }
 
     private List<Integer> getWinningNumbers() {
