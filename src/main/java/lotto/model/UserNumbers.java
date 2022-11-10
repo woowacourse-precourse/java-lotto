@@ -36,4 +36,9 @@ public class UserNumbers {
         return stringlist;
     }
 
+    public List<Integer> getNUMBERS() {
+        return NUMBERS;
+    }
+
+
 }
