@@ -36,4 +36,14 @@ class CalculatorTest {
         assertThat(calculator.calculateProfit(matchResults))
                 .isEqualTo(1505000);
     }
+
+    @Test
+    void 수익률을_계산합니다() {
+        Calculator calculator = new Calculator();
+        int purchaseCost = 8000;
+        int profit = 5000;
+
+        assertThat(calculator.calculateEarningsRate(purchaseCost, profit))
+                .isEqualTo(62.5);
+    }
 }
