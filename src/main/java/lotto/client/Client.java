@@ -17,7 +17,7 @@ public class Client {
 
     public void getLottoPaper() {
         LottoHost lottoHost = new LottoHost();
-        List<Integer> lottoNumbers = lottoHost.inputLottoNumbers(new ArrayList<>());
-        lottoHost.inputBonusNumber(lottoNumbers);
+        List<Integer> lottoNumbers = lottoHost.publishWinningLottoNumbers(new ArrayList<>());
+        lottoHost.publishWinningBonusNumber(lottoNumbers);
     }
 }
