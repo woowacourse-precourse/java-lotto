@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.exception.BonusNumberException;
+import lotto.service.ProduceWinningNumbers;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -8,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 public class WinningLottoNumbersTest {
     WinningLottoNumbers winningLottoNumbers;
     List<Integer> expected = Arrays.asList(1,2,3,4,5,6);
@@ -15,6 +19,14 @@ public class WinningLottoNumbersTest {
     @BeforeEach
     void setUp() {
         winningLottoNumbers = new WinningLottoNumbers();
+    }
+
+
+    @Test
+    @DisplayName("보너스 번호 숫자외의 값")
+    public void bonusNumberNotNumber() {
+        assertThatThrownBy(() -> new BonusNumberException().fullException("12a"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
