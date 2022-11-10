@@ -25,7 +25,7 @@ public class Lotto {
         boolean result = numbers.stream().allMatch(number -> number >= 1 && number <= 45);
 
         if (!result) {
-            throw new IllegalArgumentException("[ERROR] 6개의 숫자가 아닙니다.");
+            throw new IllegalArgumentException("[ERROR] 숫자의 범위가 1~45가 아닙니다.");
         }
 
     }

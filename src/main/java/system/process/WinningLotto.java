@@ -26,6 +26,9 @@ public class WinningLotto {
 
     //TODO : 수정할 것. 예외처리 추가하고 코드 간소화 진행
     private List<Integer> inputSixLottoNumbers() {
+
+        System.out.println("당첨 번호를 입력해 주세요.");
+
         String numbersInput = Input.input();
 
         String[] strNumbers = numbersInput.split(",");
@@ -39,6 +42,9 @@ public class WinningLotto {
 
     //TODO : 수정할 것. 코드 간소화 진행.
     private  int inputBonusNumber(){
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+
         String numberInput = Input.input();
 
         if(numberInput.length() > 2 || numberInput.length() < 0){
@@ -58,6 +64,7 @@ public class WinningLotto {
         return number;
     }
 
-
-
+    public WinningLottoData getWinningLottoData() {
+        return winningLottoData;
+    }
 }

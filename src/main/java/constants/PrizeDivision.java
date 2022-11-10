@@ -1,7 +1,7 @@
 package constants;
 
 public enum PrizeDivision {
-
+    EMPTY("invalid","invalid"),
     FIRST("6개 일치","2,000,000,000"),
     SECOND("5개 일치, 보너스 볼 일치","30,000,000"),
     THIRD("5개 일치","1,500,000"),

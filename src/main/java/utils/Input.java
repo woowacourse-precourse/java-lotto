@@ -10,7 +10,7 @@ public class Input {
         boolean result = textInput.chars().allMatch(ch -> ( Character.isDigit(ch) || ch == ','));
 
         if(!result){
-            throw new IllegalArgumentException("입력이 잘못 되었습니다.");
+            throw new IllegalArgumentException("[ERROR] 입력이 잘못 되었습니다.");
         }
 
         return textInput;
