@@ -5,11 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LottoStore {
-    private static final LottoStore instance = new LottoStore();
+public class LotteryStore {
+    private static final LotteryStore instance = new LotteryStore();
 
-    private LottoStore() {}
-    public static LottoStore getInstance() {
+    private LotteryStore() {}
+    public static LotteryStore getInstance() {
         return instance;
     }
 
