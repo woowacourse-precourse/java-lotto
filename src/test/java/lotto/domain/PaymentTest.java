@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import lotto.domain.validator.ErrorMessageConstant;
-import lotto.domain.validator.PaymentValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +25,7 @@ class PaymentTest {
     
     @Test
     @DisplayName("예외 처리 : 0인 경우")
-    void isPaymentZero() {
+    void paymentZeroException() {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Payment(0))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
