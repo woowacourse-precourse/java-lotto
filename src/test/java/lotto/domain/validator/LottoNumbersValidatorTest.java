@@ -8,9 +8,16 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 
 class LottoNumbersValidatorTest {
+    @Test
+    @DisplayName("올바른 로또 번호 입력 시")
+    void correctLottoNumbers() {
+        assertThatNoException()
+                .isThrownBy(() -> LottoNumbersValidator.validate(List.of(1, 10, 30, 35, 40, 45)));
+    }
+    
     @Test
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     void createLottoByOverSize() {
