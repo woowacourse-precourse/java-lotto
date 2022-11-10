@@ -22,13 +22,14 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    public Map<Integer, List<Integer>> generateLottoNumber(List<Integer> numbers) {
+    public Map<Integer, List<Integer>> generateLottoNumber() {
         int count = money.countLotto(money.inputMoney());
 
         Map<Integer, List<Integer>> lottoMap = new HashMap<>();
         for (int i = 0; i < count; i++)
         {
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            new Lotto(lottoNumbers); // validate 검사
             lottoMap.put(i, lottoNumbers);
         }
         return lottoMap;

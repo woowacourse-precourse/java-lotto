@@ -12,6 +12,7 @@ public class PrintOut {
   }
 
   public static void lottoPrint(List<Integer> numbers) {
-    //money의 카운트를 받아서 그 횟수만큼 돌도록..
+    Lotto lotto = new Lotto();
+
   }
 }
