@@ -48,6 +48,10 @@ public class User {
         }
     }
 
+    public void addWinning(Winning winning) {
+        winnings.add(winning);
+    }
+
     public List<Lotto> getLottos() {
         return this.lottos;
     }
