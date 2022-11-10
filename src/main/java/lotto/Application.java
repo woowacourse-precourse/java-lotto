@@ -26,10 +26,10 @@ public class Application {
     public static void main(String[] args) {
         List<Lotto> userLotto = new ArrayList<>();
 
-        int purchaseLottoPrice= getTotalPurchaseLottoPrice();
-        int purchaseLottoAmount = purchaseLottoPrice / LOTTO_PRICE;
-
         try {
+            int purchaseLottoPrice= getTotalPurchaseLottoPrice();
+            int purchaseLottoAmount = purchaseLottoPrice / LOTTO_PRICE;
+
             validateLottoPrice(purchaseLottoPrice);
             purchaseLotto(userLotto, purchaseLottoAmount);
             printUserLottoList(userLotto, purchaseLottoAmount);
