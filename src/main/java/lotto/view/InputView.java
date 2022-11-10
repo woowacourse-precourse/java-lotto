@@ -8,4 +8,9 @@ public class InputView {
 		OutputView.printAmountMessage();
 		return Console.readLine();
 	}
+
+	public static String inputWinningNumber() {
+		OutputView.printWinningNumberMessage();
+		return Console.readLine();
+	}
 }

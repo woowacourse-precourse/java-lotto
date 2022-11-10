@@ -40,4 +40,8 @@ public class Buyer {
 	private int lottoCount() {
 		return amount / ConstValue.LOTTO_PRICE;
 	}
+
+	public List<Lotto> getLotto() {
+		return lottos;
+	}
 }
