@@ -7,7 +7,7 @@ public class InputImpl implements Input {
     private static final int MIN_PAYMENT_AMOUNT = 1000;
 
     @Override
-    public int paymentAmountInput() {
+    public int inputPaymentAmount() {
         int paymentAmount = Integer.parseInt(Console.readLine());
         if (isAllowedPaymentAmount(paymentAmount)) {
             return paymentAmount;

@@ -26,7 +26,7 @@ class InputImplTest {
             System.setIn(in);
 
             //when //then
-            assertThatThrownBy(input::paymentAmountInput).isInstanceOf(IllegalArgumentException.class);
+            assertThatThrownBy(input::inputPaymentAmount).isInstanceOf(IllegalArgumentException.class);
         }
 
         @Test
@@ -38,7 +38,7 @@ class InputImplTest {
             System.setIn(in);
 
             //when
-            int paymentAmount = input.paymentAmountInput();
+            int paymentAmount = input.inputPaymentAmount();
 
             // then
             assertThat(paymentAmount).isEqualTo(Integer.parseInt(paymentAmountInput));
