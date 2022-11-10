@@ -140,4 +140,12 @@ class LottoGameServiceTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("로또 당첨 번호의 개수는 6개여야합니다.");
     }
+
+    @Test
+    void 당첨_번호에_중복된_숫자가_있으면_예외_발생() {
+        List<String> lottoWinningNumbers = List.of("1", "2", "2", "4", "5", "6");
+        assertThatThrownBy(() -> lottoGameService.validateLottoWinningNumbers(lottoWinningNumbers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("로또 당첨 번호는 중복될 수 없습니다.");
+    }
 }
