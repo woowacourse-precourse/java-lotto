@@ -6,7 +6,7 @@ import java.util.List;
 
 public class NumberGenerator {
     public List<Integer> createRandomNumbers(){
-        List<Integer> numbers = new ArrayList<>();
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return numbers;
     }
 }
