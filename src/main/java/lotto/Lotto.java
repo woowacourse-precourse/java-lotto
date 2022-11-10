@@ -29,11 +29,10 @@ public class Lotto {
     }
 
     private void validateRange(List<Integer> numbers) {
-        boolean isOutOfRange = numbers.stream().allMatch(number -> number < 1 && number > 45 );
+        boolean isOutOfRange = numbers.stream()
+                .anyMatch(number -> number < 1 || number > 45 );
         if (isOutOfRange) {
             throw new IllegalArgumentException();
         }
     }
-
-    // TODO: 추가 기능 구현
 }
