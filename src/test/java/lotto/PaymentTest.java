@@ -28,4 +28,10 @@ public class PaymentTest {
         payment = new Payment(19000);
         assertThat(payment.purchase()).isEqualTo(19);
     }
+    @Test
+    @DisplayName("로또 구매 금액")
+    void lottoPurchasePrice() {
+        Payment payment = new Payment(8000);
+        assertThat(payment.getPay()).isEqualTo(8000);
+    }
 }
