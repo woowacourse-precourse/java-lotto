@@ -29,4 +29,10 @@ public class Validation {
         }
         return true;
     }
+
+    public boolean isThousandUnit(int money){
+        if(money % 1000 != 0)
+            return false;
+        return true;
+    }
 }
