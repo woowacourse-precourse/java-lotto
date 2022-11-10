@@ -4,9 +4,11 @@ import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
+    private ValueValidation valueValidator = new ValueValidation();
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        valueValidator.checkDuplicatedNumber(numbers);
         this.numbers = numbers;
     }
 
