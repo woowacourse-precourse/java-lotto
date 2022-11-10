@@ -57,7 +57,7 @@ class LottoServiceTest {
         // given
         String numbers = "1,2,3,4,5,6";
         String bonusNumber = "7";
-        WinningLotto lotto = new WinningLotto(new Lotto(List.of(1,2,3,4,5,6)), 7);
+        WinningLotto lotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
 
         // expect
         assertThat(lottoService.convertInputToWinningLotto(numbers, bonusNumber))
@@ -137,5 +137,77 @@ class LottoServiceTest {
         // when
         assertThat(lottos.size())
                 .isEqualTo(10);
+    }
+
+    @Test
+    @DisplayName("로또 번호가 3개 같으면 5등이어야 한다")
+    void winningConfirmBy3NumberMatch() {
+        // given
+        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 8, 9, 10));
+
+        // expect
+        assertThat(lottoService.winningConfirm(winningLotto, lotto))
+                .isEqualTo(LottoGrade.FIFTH);
+    }
+
+    @Test
+    @DisplayName("로또 번호가 3개 같고 보너스 번호가 맞으면 4등이어야 한다")
+    void winningConfirmBy3NumberMatchAndBonusMatch() {
+        // given
+        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 7, 8, 9));
+
+        // expect
+        assertThat(lottoService.winningConfirm(winningLotto, lotto))
+                .isEqualTo(LottoGrade.FOURTH);
+    }
+
+    @Test
+    @DisplayName("로또 번호가 4개 같으면 4등이어야 한다")
+    void winningConfirmBy4NumberMatch() {
+        // given
+        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 9, 10));
+
+        // expect
+        assertThat(lottoService.winningConfirm(winningLotto, lotto))
+                .isEqualTo(LottoGrade.FOURTH);
+    }
+
+    @Test
+    @DisplayName("로또 번호가 5개 같으면 3등이어야 한다")
+    void winningConfirmBy5NumberMatch() {
+        // given
+        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 10));
+
+        // expect
+        assertThat(lottoService.winningConfirm(winningLotto, lotto))
+                .isEqualTo(LottoGrade.THIRD);
+    }
+
+    @Test
+    @DisplayName("로또 번호가 6개 같으면 1등이어야 한다")
+    void winningConfirmBy6NumberMatch() {
+        // given
+        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        // expect
+        assertThat(lottoService.winningConfirm(winningLotto, lotto))
+                .isEqualTo(LottoGrade.FIRST);
+    }
+
+    @Test
+    @DisplayName("로또 번호가 5개 같고 보너스 번호가 맞으면 2등이어야 한다")
+    void winningConfirmBy5NumberMatchAndBonusMatch() {
+        // given
+        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+
+        // expect
+        assertThat(lottoService.winningConfirm(winningLotto, lotto))
+                .isEqualTo(LottoGrade.SECOND);
     }
 }
