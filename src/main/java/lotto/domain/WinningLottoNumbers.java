@@ -7,13 +7,13 @@ public class WinningLottoNumbers {
     private final int bonusNumber;
     
     public WinningLottoNumbers(final Lotto winningLotto, final int bonusNumber) {
-        validateBonusNumber(bonusNumber);
+        validateBonusNumber(winningLotto, bonusNumber);
         
         this.winningLotto = winningLotto;
         this.bonusNumber = bonusNumber;
     }
     
-    private void validateBonusNumber(final int bonusNumber) {
+    private void validateBonusNumber(final Lotto winningLotto, final int bonusNumber) {
         BonusNumberValidator.validate(winningLotto, bonusNumber);
     }
     
