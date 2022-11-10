@@ -155,4 +155,16 @@ class LottoTest {
 
         assertThat(lottoCount).isEqualTo(result);
     }
+
+    @DisplayName("돈을 입력하면 금액만큼 로또를 생성한다")
+    @Test
+    void generateLottosByMoney() {
+        LottoMachine lottoMachine = new LottoMachine();
+        int money = 6000;
+        int result = 6;
+
+        List<Lotto> lottos = lottoMachine.generateLottos(money);
+
+        assertThat(lottos.size()).isEqualTo(result);
+    }
 }
