@@ -10,12 +10,19 @@ public class ConsumerResult {
             System.out.println(purchaseLotto.myLottoNumber());
         }
     }
-    public int compareLotto(List<Integer> myLotto, List<Integer> lottoNumber, int bonusNumber){
+    public int compareLotto(List<Integer> myLotto, List<Integer> lottoNumber){
         int count=0;
         for (int index=0; index< lottoNumber.size();index++){
             if (lottoNumber.contains(myLotto.get(index))){
                 count++;
             }
+        }
+        return 0;
+    }
+
+    public int compareBonus(List<Integer> myLotto, int bonusNumber){
+        if(myLotto.contains(bonusNumber)){
+            return 1;
         }
         return 0;
     }
