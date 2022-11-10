@@ -86,6 +86,12 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void validateWinningNumbersFormTest() {
+        assertThatThrownBy(() -> validateWinningNumbersForm("1,2,3!,4,5"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         main(new String[]{});
