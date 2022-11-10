@@ -1,5 +1,7 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class Application {
@@ -109,5 +111,14 @@ public class Application {
 
         return inputCash;
 
+    }
+
+    public static Integer inputUserCash() {
+
+        String input = Console.readLine();
+        validateCashIsInteger(input);
+        validateCashIsDividedThousand(input);
+
+        return inputCashStringToInteger(input);
     }
 }
