@@ -31,18 +31,26 @@ public class InputConfig {
 
     // 구입 금액 입력
     public static void checkPurchaseInput(String input) {
-        int value = Integer.valueOf(input);
+        long value = isLongType(input);
         isMoreThanZero(value);
         isDividedByThousand(value);
     }
 
-    private static void isMoreThanZero(int value) {
+    private static long isLongType(String input) {
+        try {
+            return Long.parseLong(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
+    }
+
+    private static void isMoreThanZero(long value) {
         if (value < 0) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
     }
 
-    private static void isDividedByThousand(int value) {
+    private static void isDividedByThousand(long value) {
         if (value % 1000 != 0) {
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }

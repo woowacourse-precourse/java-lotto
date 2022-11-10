@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Set;
 
 public class ViewController {
+    private final long LOTTO_PRICE = 1000;
+
     private final InputView inputView;
     private final OutputView outputView;
     private final InputMapper inputMapper;
@@ -25,7 +27,7 @@ public class ViewController {
         inputView.printInputPurchaseAmount();
         String amount = Console.readLine();
         InputConfig.checkPurchaseInput(amount);
-        return Long.parseLong(amount);
+        return Long.parseLong(amount) / LOTTO_PRICE;
     }
 
     public void printPurchasedLotto(List<Lotto> lottoList) {
