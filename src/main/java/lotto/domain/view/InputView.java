@@ -1,12 +1,12 @@
 package lotto.domain.view;
 
-import lotto.domain.view.util.Util;
+import lotto.global.util.Util;
 
 public class InputView {
-    private static final String INPUT_PRICE = "구입금액을 입력해 주세요.";
+    private static final String INPUT_MONEY = "구입금액을 입력해 주세요.";
 
-    public static String getInputPrice() {
-        System.out.println(INPUT_PRICE);
+    public static String getInputMoney() {
+        System.out.println(INPUT_MONEY);
         return Util.input();
     }
 
