@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -157,5 +158,32 @@ public class Application {
             }
         }
 
+    }
+
+    public static List<Integer> getWinningNumbers(String input) {
+
+        validateWinningNumbersForm(input);
+
+        List<Integer> winningNumberList = new ArrayList<>();
+
+        int number = 0;
+
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == ',') {
+
+                winningNumberList.add(number);
+                number = 0;
+                continue;
+            }
+
+            number = number * 10 + input.charAt(i) - 48;
+
+            if (i == input.length() - 1) {
+
+                winningNumberList.add(number);
+            }
+        }
+
+        return winningNumberList;
     }
 }
