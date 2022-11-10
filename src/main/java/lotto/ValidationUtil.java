@@ -4,28 +4,26 @@ public class ValidationUtil {
 
     public static final int MIN_NUMBER = 1;
     public static final int MAX_NUMBER = 45;
+    public static final int LOTTO_COUNT = 6;
 
-    public static boolean isInRange(int number) {
-        return number >= MIN_NUMBER && number <= MAX_NUMBER;
+    public static void isValidNum(String str) {
+        int number = Integer.parseInt(str);
+        if (number < MIN_NUMBER || number > MAX_NUMBER) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
     }
 
-    public static boolean isInRange(String str) {
-        if (!str.matches("[1-9]{1,2}")) {
-            throw new IllegalArgumentException("[ERROR] 0 이상의 숫자만 입력하실 수 있습니다.");
-        }
-        if (isInRange(Integer.parseInt(str))) {
-            return true;
-        }
-        throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-    }
-
-    public static boolean isValidCount(String str) {
-        String[] split = str.split(",");
-        if (split.length != 6) {
+    public static void isValidCount(String[] array) {
+        if (array.length != LOTTO_COUNT) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 총 6개의 숫자여야 합니다.");
         }
+    }
+
+    public static boolean isValid(String str) {
+        String[] split = str.split(",");
+        isValidCount(split);
         for (String s : split) {
-            isInRange(s);
+            isValidNum(s);
         }
         return true;
     }
