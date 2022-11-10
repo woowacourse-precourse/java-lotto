@@ -29,7 +29,6 @@ public class LottoController {
     }
     public Lotto generateLotto(){
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(startRange, endRange, count);
-        Collections.sort(lottoNumbers);
         return new Lotto(lottoNumbers);
     }
 
