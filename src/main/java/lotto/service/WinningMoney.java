@@ -1,5 +1,6 @@
 package lotto.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,5 +21,17 @@ public class WinningMoney {
         checkNumbers = new CheckNumbers();
         myGrade = checkNumbers.getCorrect(winningNumbers, myNumbers, bonusNumber);
         return MONEYS.get(myGrade);
+    }
+
+    public List<Integer> getGrade(List<Integer> winningNumbers, List<List<Integer>> myLottos, int bonusNumber) {
+        checkNumbers = new CheckNumbers();
+        int grade;
+        List<Integer> grades = new ArrayList<>();
+        for (int idx = 0; idx < myLottos.size(); idx++) {
+            grade = checkNumbers.getCorrect(winningNumbers, myLottos.get(idx), bonusNumber);
+            grades.add(grade);
+        }
+
+        return grades;
     }
 }
