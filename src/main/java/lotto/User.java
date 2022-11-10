@@ -29,4 +29,12 @@ public class User {
     public int getTicketNum(){
         return this.tickets.length;
     }
+
+    @Override
+    public String toString() {
+        String tickets = "";
+        for(int i = 0; i < getTicketNum(); i++)
+            tickets = tickets + this.tickets[i].toString() + System.lineSeparator();
+        return tickets;
+    }
 }
