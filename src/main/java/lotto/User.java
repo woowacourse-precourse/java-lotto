@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class User {
     String money;
-
+    String lottoQuantity;
     void inputMoney(){
         this.money= Console.readLine();
         validate();
@@ -21,5 +21,13 @@ public class User {
             return true;
         }
         return false;
+    }
+
+    void setLottoQuantity(){
+        this.lottoQuantity=calculateQuantity();
+    }
+
+    private String calculateQuantity(){
+        return money.substring(0,money.length()-3);
     }
 }

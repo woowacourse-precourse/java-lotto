@@ -9,8 +9,9 @@ public class Problem {
     void printInputGuide(){
         System.out.println("구입금액을 입력해 주세요.");
     }
-
     void startProblem(){
         User input=new User();
+        input.inputMoney();
+        input.setLottoQuantity();
     }
 }
