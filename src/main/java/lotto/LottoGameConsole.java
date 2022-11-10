@@ -10,7 +10,7 @@ public class LottoGameConsole {
 
     public void startLottoGame() {
         emcee.guideGame();
-        // 구입 금액 안내, 입력, 검증
+        int payment = handlePayment();
         // Lotto 발행
         // 당첨 lotto 생성
         // 당첨 결과 처리, 출력
