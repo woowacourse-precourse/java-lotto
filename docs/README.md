@@ -1,0 +1,12 @@
+## 구현해야할 기능 목록
+* [ ] 사용자로부터 구매할 로또 금액 입력받기 - inputCostForLotto()
+    * [ ] 1000으로 나누어 떨어지는지 확인하기 떨어지지 않을 시 에러 - validateForDividedBy1000()
+* [ ] 로또 구매 - buyLotto()
+* [ ] 리스트 전체 출력 - printLottoNumber()
+* [ ] 당첨번호 입력  - inputWinningNumber()
+    * [ ] 입력한 번호가 6개가 맞는지 - validate()
+    * [ ] 중복되지 않는지 - validateForDuplicatedNumber()
+* [ ] 보너스 번호 입력  - inputBonusNumber()
+    * [ ] 당첨번호 중 하나와 중복되지 않는지 - validateForDuplicatedNumber()
+* [ ] 당첨 통계 - printWinningStatistics()
+* [ ] 수익률 계산하기 - calculateProfit()gg
