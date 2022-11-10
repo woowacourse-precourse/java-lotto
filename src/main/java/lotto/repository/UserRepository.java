@@ -17,4 +17,10 @@ public class UserRepository {
         this.user.setLotties(OriginalLotties);
     }
 
+    public void setUserNumberOfLotties(ArrayList<Integer> numbers) {
+        this.user.setWinningNumbers(numbers);
+    }
+
+
+
 }
