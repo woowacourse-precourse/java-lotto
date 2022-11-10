@@ -17,11 +17,12 @@ class JudgmentTest {
 
     private static final List<Integer> ANSWER = List.of(8, 21, 23, 41, 42, 43);
 
+    @DisplayName("특정 자리에 특정 숫자가 있는지 알 수 있다")
     @ParameterizedTest
     @CsvSource({"0, 8, true", "0, 4, false", "1, 21, true"})
-    @DisplayName("특정 자리에 특정 숫자가 있는지 알 수 있다")
-    void hasPlace(int index, int number, boolean expected) {
+    void isEqualPlace(int index, int number, boolean expected) {
         boolean actual = Judgment.hasPlace(ANSWER, index, number);
         assertThat(actual).isEqualTo(expected);
     }
+
 }
