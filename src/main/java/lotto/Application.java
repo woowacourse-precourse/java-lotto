@@ -1,6 +1,7 @@
 package lotto;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -44,8 +45,15 @@ public class Application {
         return Integer.valueOf(money/lottoPrice);
     }
 
-    public static Lotto getRandomLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return new Lotto(numbers);
+    public static List<Lotto> getRandomNLotto(int n) {
+        List<Integer> numbers;
+        List<Lotto> lottos = new ArrayList<>();
+
+        for (int i=0;i<n;i++) {
+            numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            lottos.add(new Lotto(numbers));
+        }
+
+        return lottos;
     }
 }
