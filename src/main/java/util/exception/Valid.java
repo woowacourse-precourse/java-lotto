@@ -25,4 +25,13 @@ public class Valid {
         }
         return false;
     }
+
+    public static boolean isNumRangeLotto(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number < 1 || number > 45) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
