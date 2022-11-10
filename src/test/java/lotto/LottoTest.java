@@ -46,6 +46,24 @@ class LottoTest extends NsTest {
         );
     }
 
+    @DisplayName("당첨 번호 입력시 숫자, 쉼표 및 다른 문자가 오는 경우 예외가 발생한다.")
+    @Test
+    void winningLotteryIsNumberOrRest(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("8000","1,2A,3,4,5,6"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @DisplayName("당첨 번호 입력시 숫자, 쉼표 및 다른 문자가 오는 경우 예외가 발생한다.")
+    @Test
+    void winningLotteryIsRange(){
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("8000","1,0,3,4,47,6"))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});

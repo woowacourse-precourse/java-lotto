@@ -10,7 +10,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         tokenIsOverlapExceptionHandling(numbers);
-        toeknIsRangeExceptionHandling(numbers);
+        toeknInRangeExceptionHandling(numbers);
         this.numbers = numbers;
     }
 
@@ -41,7 +41,7 @@ public class Lotto {
         return false;
     }
 
-    private void toeknIsRangeExceptionHandling(List<Integer> token_int) {
+    private void toeknInRangeExceptionHandling(List<Integer> token_int) {
         if (tokenRangeException(token_int)) {
             throw new IllegalArgumentException();
         }

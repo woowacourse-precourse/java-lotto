@@ -7,32 +7,35 @@ import java.util.List;
 
 public class Input_domain {
     public static int purchaseAmountInput() {
-        String user_input = Console.readLine();
+        String user_input;
         int purchase_amount;
         int lottery_count;
 
         System.out.println("구입금액을 입력해 주세요.");
+        user_input = Console.readLine();
         purchaseAmount_exceptionHandling(user_input);
         purchase_amount = Integer.parseInt(user_input);
-        lottery_count=purchase_amount/1000;
+        lottery_count = purchase_amount / 1000;
 
         return lottery_count;
     }
 
     public static List<Integer> winningLotteryInput() {
-        String user_input = Console.readLine();
+        String user_input;
         List<Integer> lottery_num;
 
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println("\n당첨 번호를 입력해 주세요.");
+        user_input = Console.readLine();
         lottery_num = winningLotteryNumber(user_input);
         return lottery_num;
     }
 
     public static int bonusNumberInput(List<Integer> winning_lottery_number) {
         int bonus_number;
-        String user_input = Console.readLine();
+        String user_input;
 
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        user_input = Console.readLine();
         bonusNumberIsNumberExceptionHandling(user_input, winning_lottery_number);
         bonus_number = Integer.parseInt(user_input);
         bonusNumberOverlapExceptionHandling(bonus_number, winning_lottery_number);

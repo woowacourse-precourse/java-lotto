@@ -17,7 +17,7 @@ public class Application {
         purchase_lottery_count=Input_domain.purchaseAmountInput();
         user_lotto=new UserLottery(purchase_lottery_count);
         winning_lottery_number = Input_domain.winningLotteryInput();
-        bonus_number = Input_domain.bonusNumberInput(winning_lottery_number);
         winning_lotto = new Lotto(winning_lottery_number);
+        bonus_number = Input_domain.bonusNumberInput(winning_lottery_number);
     }
 }
