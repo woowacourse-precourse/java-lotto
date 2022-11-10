@@ -3,6 +3,7 @@ package lotto.domain.model;
 import static lotto.utils.Advice.BonusValidator.checkRange;
 import static lotto.utils.Advice.BonusValidator.checkSizeAndNumber;
 
+import java.util.List;
 import java.util.Objects;
 
 
@@ -23,6 +24,10 @@ public class Bonus {
     private static void validate(String bonus) {
         checkSizeAndNumber(bonus);
         checkRange(bonus);
+    }
+
+    public Boolean calculateMatch(List<Integer> numbers) {
+        return numbers.contains(this.bonus);
     }
 
     @Override
