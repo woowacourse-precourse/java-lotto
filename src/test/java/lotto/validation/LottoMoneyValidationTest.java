@@ -9,9 +9,23 @@ import org.junit.jupiter.api.Test;
 
 class LottoMoneyValidationTest {
 
+    @DisplayName("숫자가 아니면 IllegalArgumentException 을 발생시킨다.")
+    @Test
+    void notNumberException() {
+        LottoMoneyValidation lottoMoneyValidation = new LottoMoneyValidation();
+        assertThrows(IllegalArgumentException.class, () -> lottoMoneyValidation.isValidate("j"));
+    }
+
     @DisplayName("정수형이 아니면 IllegalArgumentException 을 발생시킨다.")
     @Test
     void notIntegerInputException() {
+        LottoMoneyValidation lottoMoneyValidation = new LottoMoneyValidation();
+        assertThrows(IllegalArgumentException.class, () -> lottoMoneyValidation.isValidate("12.3"));
+    }
+
+    @DisplayName("음수 값이면 IllegalArgumentException 을 발생시킨다.")
+    @Test
+    void minusValueException() {
         LottoMoneyValidation lottoMoneyValidation = new LottoMoneyValidation();
         assertThrows(IllegalArgumentException.class, () -> lottoMoneyValidation.isValidate("12.3"));
     }
