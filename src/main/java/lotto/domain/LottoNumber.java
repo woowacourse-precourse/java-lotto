@@ -17,9 +17,17 @@ public class LottoNumber {
         return value;
     }
 
+    public static int getMinNumber() {
+        return MIN_NUMBER;
+    }
+
+    public static int getMaxNumber() {
+        return MAX_NUMBER;
+    }
+
     private void validateValue(int value) {
         if (value < MIN_NUMBER || value > MAX_NUMBER) {
-            throw new IllegalArgumentException(String.format(ERROR_MESSAGE,MIN_NUMBER,MAX_NUMBER));
+            throw new IllegalArgumentException(String.format(ERROR_MESSAGE, MIN_NUMBER, MAX_NUMBER));
         }
     }
 }
