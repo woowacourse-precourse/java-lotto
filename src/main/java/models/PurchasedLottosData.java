@@ -32,10 +32,9 @@ import java.util.List;
 
     }
 
-     void printLottoList(){
-         //System.out.println(String.format("%d개를 구매했습니다.",purchasedLottos.size()));
+     public void printLottoList(){
+         System.out.println(String.format("%d개를 구매했습니다.",purchasedLottos.size()));
          purchasedLottos.forEach((lotto) -> System.out.println(Arrays.asList(lotto.getNumbers())));
-
      }
 
 }

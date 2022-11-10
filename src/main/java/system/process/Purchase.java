@@ -49,5 +49,8 @@ public class Purchase {
         return new PurchasedLottosData(amount);
     }
 
-
+    private void printPurchasedLottoList(){
+        purchasedLottos.printLottoList();
+    }
+    
 }
