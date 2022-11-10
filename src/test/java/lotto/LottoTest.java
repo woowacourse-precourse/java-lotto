@@ -52,4 +52,15 @@ class LottoTest {
         assertThat(buy.compare(equalFour)).isEqualTo(4);
         assertThat(buy.compare(equalSix)).isEqualTo(6);
     }
+
+    @DisplayName("보너스 번호 확인이 제대로 되는지 검증")
+    @Test
+    void compareBonus() {
+        int containedBonus = 3;
+        int unContainedBonus = 6;
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 45));
+
+        assertThat(lotto.isValidBonus(containedBonus)).isTrue();
+        assertThat(lotto.isValidBonus(unContainedBonus)).isFalse();
+    }
 }
