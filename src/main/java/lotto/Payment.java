@@ -6,9 +6,7 @@ public class Payment {
 
     public Payment(int money) {
         if (money % 1000 != 0) {
-            throw new IllegalArgumentException();
-        }
-        if (money == 0) {
+            System.out.print("[ERROR] 1,000원으로 나누어 떨어지는 값을 입력해야합니다.");
             throw new IllegalArgumentException();
         }
         pay = money;
