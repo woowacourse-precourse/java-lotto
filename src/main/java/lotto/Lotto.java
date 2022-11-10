@@ -59,7 +59,7 @@ public class Lotto {
         return numbers;
     }
 
-    private static void validateLotto(List<Lotto> lotto, int publishNum) {
+    public static void validateLotto(List<Lotto> lotto, int publishNum) {
         if(lotto.size()!=publishNum) {
             throw new IllegalArgumentException(ErrMsg.VALIDATE_LOTTO_SIZE);
         }
