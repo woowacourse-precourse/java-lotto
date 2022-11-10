@@ -1,6 +1,6 @@
-package lotto;
+package lotto.domain;
 
-import lotto.domain.RandomLotto;
+import lotto.input.AdditionalNumber;
 import lotto.input.LottoTickets;
 import lotto.input.WinningNumber;
 
@@ -17,13 +17,7 @@ public class LottoGame {
         WinningNumber winningNumber = new WinningNumber();
         winningNumber.getAnswer();
 
-
-
-        for (List<Integer> list : lists) {
-            System.out.println(list);
-        }
-
-
-
+        AdditionalNumber additionalNumber = new AdditionalNumber();
+        int bonus = additionalNumber.getBonus();
     }
 }

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RandomLotto {
-
     public List<List<Integer>> randomGenerator(int tickets) {
         List<List<Integer>> randomLotto = new ArrayList<>();
         List<Integer> oneTicket = new ArrayList<>();

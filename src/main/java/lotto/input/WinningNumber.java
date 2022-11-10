@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WinningNumber {
-
     public void getAnswer() {
         List<Integer> answerNumbers = new ArrayList<>();
         String input = Console.readLine();
