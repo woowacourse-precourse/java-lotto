@@ -1,26 +1,26 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.util.IOMessage;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public final class InputView {
-    private InputView() {}
+    private InputView() {
+    }
 
     public static int readAmount() {
-        printMessage(READ_AMOUNT_MESSAGE);
+        IOMessage.READ_AMOUNT_MESSAGE.printMessage();
         String line = Console.readLine();
         // verify(line);
         return Integer.parseInt(line);
     }
 
     public static List<Integer> readWinningNumber() {
+        IOMessage.READ_WINNING_NUM_MESSAGE.printMessage();
         String line = Console.readLine();
-        printMessage(READ_WINNING_NUM_MESSAGE);
         // verify(line);
         return Arrays.stream(line.split(","))
                 .map(Integer::parseInt)
@@ -28,13 +28,9 @@ public final class InputView {
     }
 
     public static int readBonusNumber() {
-        printMessage(READ_BONUS_NUM_MESSAGE);
+        IOMessage.READ_BONUS_NUM_MESSAGE.printMessage();
         String line = Console.readLine();
         // verify(line);
         return Integer.parseInt(line);
-    }
-
-    private static void printMessage(IOMessage message) {
-        System.out.println(message.getMessage());
     }
 }
