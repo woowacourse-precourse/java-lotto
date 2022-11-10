@@ -9,20 +9,41 @@ public class LottoController {
     private InputDevice inputDevice = new InputDevice();
 
     public void run() {
-        lottoView.printStartMessage();
+        start();
+        List<Lotto> lottoTickets = buyLotto();
+        List<Integer> winningNumbers = getWinningNumbers();
+        int bonusNumber = getBonusNumber(winningNumbers);
+        List<LottoResult> lottoResults = getLottoResult(lottoTickets, winningNumbers, bonusNumber);
+        printYield(lottoResults);
+    }
 
+    private void start() {
+        lottoView.printStartMessage();
+    }
+
+    private List<Lotto> buyLotto() {
         List<Lotto> lottoTickets =  lottoService.buy(inputDevice.sendMoneyToBuyLotto());
         lottoView.printLottoInfo(lottoTickets);
+        return lottoTickets;
+    }
 
+    private List<Integer> getWinningNumbers() {
         lottoView.printWinningNumbersSettingMessage();
-        List<Integer> winningNumbers = inputDevice.sendWinningNumbers();
+        return inputDevice.sendWinningNumbers();
+    }
 
+    private int getBonusNumber(List<Integer> winningNumbers) {
         lottoView.printBonusNumberSettingMessage();
-        int bonusNumber = inputDevice.sendBonusNumber(winningNumbers);
+        return inputDevice.sendBonusNumber(winningNumbers);
+    }
 
+    private List<LottoResult> getLottoResult(List<Lotto> lottoTickets, List<Integer> winningNumbers, int bonusNumber) {
         List<LottoResult> lottoResults = lottoService.compareLottoNumbers(lottoTickets, winningNumbers, bonusNumber);
         lottoView.printLottoResult(lottoResults);
+        return lottoResults;
+    }
 
+    private void printYield(List<LottoResult> lottoResults) {
         double yield = lottoService.calculateYield(lottoResults);
         lottoView.printYield(yield);
     }
