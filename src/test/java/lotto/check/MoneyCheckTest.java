@@ -1,4 +1,4 @@
-package lotto;
+package lotto.check;
 
 import lotto.check.MoneyCheck;
 import org.junit.jupiter.api.BeforeEach;
