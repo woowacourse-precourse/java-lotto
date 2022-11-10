@@ -15,4 +15,12 @@ public class Validator {
     public void validateBonusNumber(int bonusNumber) {
 
     }
+
+    private boolean isNumberNotZeroOrLess(String string) {
+        return false;
+    }
+
+    private boolean isAvailablePayment(String payment) {
+        return false;
+    }
 }
