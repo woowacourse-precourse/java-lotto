@@ -10,7 +10,9 @@ public class RandomUtils {
 //    - 1~45까지 랜덤 숫자 생성
 
     public static List<Integer> getRandomLottoNumber() {
-        return Collections.emptyList();
+        List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Collections.sort(lotto);
+        return lotto;
     }
 
     public static boolean isUniqueNumber(List<Integer> LottoNumbers) {
