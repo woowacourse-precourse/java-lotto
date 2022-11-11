@@ -43,6 +43,12 @@ public class LottoNumberException {
         }
     }
 
+    public void fullException(List<Integer> numbers) {
+        lottoNumberSize(numbers);
+        lottoNumberDuplicated(numbers);
+        lottoNumberMaxMin(numbers);
+    }
+
     public void bonusNumber(List<Integer> winningNumbers, int bonusNumber) {
         try {
             if (winningNumbers.contains(bonusNumber))
