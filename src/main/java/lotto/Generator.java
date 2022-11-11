@@ -7,7 +7,7 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Generator {
-	public HashSet<Integer> lottery() {
+	public HashSet<Integer> createLottery() {
 		HashSet<Integer> lotteryTicket = new HashSet<>();
 		while (lotteryTicket.size() < 6) {
 			int randomNum = Randoms.pickNumberInRange(1, 45);
