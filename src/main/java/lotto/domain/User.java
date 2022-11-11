@@ -14,4 +14,8 @@ public class User {
     public void setUserLottoNumber(List<List<Integer>> userLottoNumber){
         this.userLottoNumber = userLottoNumber;
     }
+
+    public List<List<Integer>> getUserLottoNumber(){
+        return this.userLottoNumber;
+    }
 }

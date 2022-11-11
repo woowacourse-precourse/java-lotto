@@ -24,8 +24,8 @@
 
 **User**
 >- [x] 구입 금액을 입력받는 기능 ( User가 LottoSystem에게 지불할 금액 ) ( User 생성자 )
->- [ ] 구매한 랜덤 로또 번호를 기억하는 기능 ( User가 지불한 금액에 따른 랜덤 로또 번호 ) ( setUserLottoNumber )
->- [ ] 구매한 랜덤 로또 번호를 조회하는 기능 ( getUserLottoNumber )
+>- [x] 구매한 랜덤 로또 번호를 기억하는 기능 ( User가 지불한 금액에 따른 랜덤 로또 번호 ) ( setUserLottoNumber )
+>- [x] 구매한 랜덤 로또 번호를 조회하는 기능 ( getUserLottoNumber )
 
 **LottoSystem**
 >- [ ] User에게 입력받은 금액이 1000원 단위로 나누어 떨어지는지 확인하는 기능 떨어지지 않으면 에러를 발생시킴 ( setDivisible ) (에러는 "[ERROR]" 로 시작하는 문구)
