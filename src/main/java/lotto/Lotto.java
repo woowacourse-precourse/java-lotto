@@ -16,6 +16,12 @@ public class Lotto {
         return numbers.contains(bonus);
     }
 
+    public int count(Lotto other) {
+        return (int) other.numbers.stream()
+                .filter(this::checkBonus)
+                .count();
+    }
+
     private void validate(List<Integer> numbers) {
         checkLottoSize(numbers);
         List<Integer> copyNumbers = new ArrayList<>(numbers);

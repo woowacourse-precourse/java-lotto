@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lottos {
@@ -8,6 +9,14 @@ public class Lottos {
     public Lottos(List<Lotto> lottos) {
         checkSize(lottos);
         this.lottos = lottos;
+    }
+
+    public List<Integer> result(BonusLotto bonusLotto) {
+        List<Integer> counts = new ArrayList<>();
+        for (Lotto lotto : lottos) {
+            counts.add(bonusLotto.match(lotto));
+        }
+        return counts;
     }
 
     private void checkSize(List<Lotto> lottos) {

@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 public class LottoGame {
     private final LottoGenerator generator = new LottoGenerator();
 
@@ -15,5 +17,6 @@ public class LottoGame {
         int bonus = Input.bonus();
 
         BonusLotto bonusLotto = new BonusLotto(winningLotto, bonus);
+        List<Integer> matchCount = lottos.result(bonusLotto);
     }
 }
