@@ -46,5 +46,6 @@ class LottoStatusTest {
         assertThat(checkValue(4)).isEqualTo(MATCH_FOUR);
         assertThat(checkValue(5)).isEqualTo(MATCH_FIVE);
         assertThat(checkValue(6)).isEqualTo(MATCH_SIX);
+        assertThat(checkValue(7)).isEqualTo(MATCH_FIVE_ADD_BONUS);
     }
 }

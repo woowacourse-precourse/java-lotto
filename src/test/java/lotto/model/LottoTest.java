@@ -1,6 +1,7 @@
 package lotto.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -53,5 +54,12 @@ class LottoTest {
 
         Lotto twoMathLotto = new Lotto(List.of(1, 2, 7, 8, 11, 10));
         assertThat(twoMathLotto.matchLotto(targetLotto, notMatchBonusNumber)).isEqualTo(LottoStatus.MATCH_UNSATISFIED);
+    }
+
+
+    @DisplayName("유효하지 않는 로또 번호 예외처리")
+    @Test
+    void is_valid_number() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5))).isInstanceOf(IllegalArgumentException.class);
     }
 }

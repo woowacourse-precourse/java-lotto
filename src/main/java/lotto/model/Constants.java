@@ -20,8 +20,14 @@ public class Constants {
         public static final int MATCH_FIVE_VALUE = 5;
         public static final int MATCH_FIVE_ADD_BONUS_VALUE = 7;
         public static final int MATCH_SIX_VALUE = 6;
+
+        private LottoStatus() {
+        }
     }
 
     public static final int MONEY_MIN_UNIT = 1000;
     public static final String NUMBER = "^[1-9][0-9]*$";
+
+    private Constants() {
+    }
 }

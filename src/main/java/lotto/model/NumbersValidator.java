@@ -15,11 +15,11 @@ class NumbersValidator {
     private NumbersValidator() {
     }
 
-    static boolean isValid(List<Integer> result) {
+    static boolean isValid(List<Integer> numbers) {
         try {
-            isValidSize(result);
-            isValidRepeat(result);
-            isValidRange(result);
+            isValidSize(numbers);
+            isValidRepeat(numbers);
+            isValidRange(numbers);
             return true;
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());
@@ -28,7 +28,7 @@ class NumbersValidator {
     }
 
     public static void isValidSize(List<Integer> numbers) throws IllegalArgumentException {
-        if (numbers.size() != NUMBER_REQUIRED_SIZE) {
+        if ( numbers.size() != NUMBER_REQUIRED_SIZE) {
             throw new IllegalArgumentException(NUMBERS_SIZE_ERROR);
         }
     }
