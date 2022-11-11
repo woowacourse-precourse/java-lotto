@@ -7,9 +7,9 @@ import java.util.Comparator;
 import java.util.List;
 
 public class User {
-    public List<List<Integer>> numbers = new ArrayList<>();;
+    public static List<List<Integer>> numbers = new ArrayList<>();;
 
-    public List<List<Integer>> randomLotto(int price) {
+    public static List<List<Integer>> randomLotto(int price) {
         int number = price / 1000;
 
         for (int i=0; i<number; i++) {
