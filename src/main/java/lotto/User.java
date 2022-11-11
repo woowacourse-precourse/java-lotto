@@ -15,8 +15,11 @@ public class User {
             userLotto.add(new Lotto(numbers));
         }
     }
-    public void printUserLotto(){
-
+    public void printUserLotto(int price){
+        int lottoCount = price/1000;
+        for(int i=0; i<lottoCount; i++){
+            System.out.println(userLotto.get(i).printLottoNumber());
+        }
     }
     public void printWinningResult(){
 

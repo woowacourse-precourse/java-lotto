@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -28,5 +29,10 @@ public class Lotto {
             }
             throw new IllegalArgumentException("[ERROR] 잘못된 입력 값 숫자로만 입력");
         }
+    }
+
+    public List<Integer> printLottoNumber(){
+        Collections.sort(numbers);
+        return numbers;
     }
 }

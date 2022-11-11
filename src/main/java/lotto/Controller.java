@@ -27,6 +27,7 @@ public class Controller {
     public void publishLotto(){
         User user = new User();
         user.getUserLotto(purchase.price);
+        user.printUserLotto(purchase.price);
     }
 
     public void resultLotto(){
