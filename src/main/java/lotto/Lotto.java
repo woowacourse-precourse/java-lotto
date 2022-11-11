@@ -18,6 +18,10 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public void printLottoNumbers() {
+        System.out.println(this.numbers);
+    }
+
     private void checkDuplicate(List<Integer> numbers) {
         for (int numberIndex = 0; numberIndex < numbers.size(); numberIndex++) {
             if (numbers.lastIndexOf(numbers.get(numberIndex)) != numberIndex) {
