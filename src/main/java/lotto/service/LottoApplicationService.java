@@ -1,15 +1,14 @@
 package lotto.service;
 
-import lotto.domain.money.Money;
-import lotto.lotto.LottoAutoGenerator;
-import lotto.lotto.LottoCollection;
-import lotto.lotto.WinningLotto;
-import lotto.lotto.WinningLottoGenerator;
+import lotto.domain.Money;
+import lotto.domain.LottoAutoGenerator;
+import lotto.domain.LottoCollection;
+import lotto.domain.WinningLotto;
+import lotto.domain.WinningLottoGenerator;
 import lotto.utils.InputParser;
 import lotto.view.consoleinput.ConsoleInput;
 import lotto.view.consoleoutput.ConsoleOutput;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class LottoApplicationService {

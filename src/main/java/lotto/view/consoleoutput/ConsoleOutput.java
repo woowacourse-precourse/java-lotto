@@ -3,7 +3,7 @@ package lotto.view.consoleoutput;
 import lotto.constant.Directive;
 import lotto.constant.Information;
 import lotto.constant.LottoRule;
-import lotto.lotto.LottoCollection;
+import lotto.domain.LottoCollection;
 
 public class ConsoleOutput {
     public void printDirectiveAboutInputMoney() {
