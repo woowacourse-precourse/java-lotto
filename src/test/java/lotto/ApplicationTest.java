@@ -9,8 +9,11 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+
+
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
+
 
     @Test
     void 기능_테스트() {
@@ -46,10 +49,6 @@ class ApplicationTest extends NsTest {
         );
     }
 
-
-
-
-
     @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
@@ -57,8 +56,6 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
-
-
 
     @DisplayName("올바른 당첨 내역을 출력하는지 확인한다.")
     @Test
@@ -82,6 +79,7 @@ class ApplicationTest extends NsTest {
                 List.of(1, 2, 3, 4, 5, 6)
         );
     }
+
 
     @Override
     public void runMain() {

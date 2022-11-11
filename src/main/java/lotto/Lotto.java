@@ -18,6 +18,13 @@ public class Lotto {
     }
 
 
+    public static Lotto generate() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Lotto lotto = new Lotto(numbers);
+
+        return lotto;
+    }
+
     private void validate(List<Integer> numbers) {
         if (LottoNumberValidator.isNotSameSize(numbers)) {
             System.out.println(ErrorMessage.WRONG_SIZE);
@@ -33,14 +40,6 @@ public class Lotto {
             System.out.println(ErrorMessage.WRONG_RANGE);
             throw new IllegalArgumentException();
         }
-    }
-
-
-    public static Lotto generate() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Lotto lotto = new Lotto(numbers);
-
-        return lotto;
     }
 
     public List<Integer> getNumbers() {

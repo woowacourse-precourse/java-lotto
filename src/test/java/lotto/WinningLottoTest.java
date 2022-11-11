@@ -8,6 +8,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+
+
 public class WinningLottoTest {
     @DisplayName("올바른 당첨 내역을 반환하는지 확인한다.")
     @Nested
@@ -35,7 +37,6 @@ public class WinningLottoTest {
         void winThirdPlace() {
             Lotto userLotto = new Lotto(List.of(1, 2, 3, 4, 5, 9));
             Winning winning = Application.getWinning(userLotto, winningLotto);
-
 
             assertThat(winning.name()).isEqualTo("THIRD");
         }

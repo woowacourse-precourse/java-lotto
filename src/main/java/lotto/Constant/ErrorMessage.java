@@ -1,5 +1,7 @@
 package lotto.Constant;
 
+
+
 public class ErrorMessage {
     public static final String ERROR = "[ERROR]";
     public static final String WRONG_INPUT = ERROR + " 올바르지 않은 입력입니다.";

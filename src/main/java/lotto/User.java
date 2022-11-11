@@ -5,6 +5,8 @@ import java.util.List;
 import lotto.Constant.ErrorMessage;
 import lotto.Constant.LottoValue;
 
+
+
 public class User {
     private List<Lotto> lottos;
     private List<Winning> winnings;
@@ -60,8 +62,7 @@ public class User {
                 .sum();
 
         System.out.println(earn);
-        double yield = (double)earn / money * 100;
-
+        double yield = (double) earn / money * 100;
 
         return Math.round(yield * 10) / 10.0;
     }

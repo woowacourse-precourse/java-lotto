@@ -15,6 +15,7 @@ public enum Winning {
     private boolean bonusHit;
     private int prizeMoney;
 
+
     Winning(int hitCount, boolean bonusHit, int prizeMoney) {
         this.hitCount = hitCount;
         this.bonusHit = bonusHit;
@@ -22,15 +23,15 @@ public enum Winning {
     }
 
 
-    public int getPrizeMoney() {
-        return this.prizeMoney;
-    }
-
     public static Winning getWinning(int hitCount, boolean bonusHit) {
         return Arrays.stream(Winning.values())
                 .filter(lottoResult -> lottoResult.hitCount == hitCount
-                                && lottoResult.bonusHit == bonusHit)
+                        && lottoResult.bonusHit == bonusHit)
                 .findAny()
                 .orElse(DEFAULT);
+    }
+
+    public int getPrizeMoney() {
+        return this.prizeMoney;
     }
 }

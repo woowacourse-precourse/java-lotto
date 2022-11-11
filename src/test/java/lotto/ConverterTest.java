@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
+
 class ConverterTest {
     @DisplayName("입력한 당첨번호에 ','와 숫자가 아닌 문자가 존재하면 예외를 던진다.")
     @ParameterizedTest
@@ -14,7 +15,7 @@ class ConverterTest {
     void inputNumbersByInvalidSeparator(String input) {
         assertThatThrownBy(() -> Converter.convertNumbersInput(input))
                 .isInstanceOf(IllegalArgumentException.class);
-       }
+    }
 
     @DisplayName("사용자가 올바르지 않은 money를 넣을 시 예외를 던진다")
     @ParameterizedTest
@@ -26,7 +27,7 @@ class ConverterTest {
 
     @DisplayName("사용자가 숫자가 아닌 보너스 숫자를 넣을 시 예외를 던진다")
     @ParameterizedTest
-    @ValueSource(strings = {"일", "삼", "육", "seven"} )
+    @ValueSource(strings = {"일", "삼", "육", "seven"})
     void inputBonusNumberByInvalidForm(String input) {
         assertThatThrownBy(() -> Converter.convertBonusNumberInput(input))
                 .isInstanceOf(IllegalArgumentException.class);

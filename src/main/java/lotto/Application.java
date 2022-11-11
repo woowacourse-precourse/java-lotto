@@ -5,6 +5,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import java.util.List;
 
 
+
 public class Application {
     public static Winning getWinning(Lotto userLotto, WinningLotto winningLotto) {
         List<Integer> userNumbers = userLotto.getNumbers();
@@ -16,7 +17,7 @@ public class Application {
                 .count());
 
         boolean bonusHit = false;
-        if(userNumbers.contains(bonusNumber)) {
+        if (userNumbers.contains(bonusNumber)) {
             bonusHit = true;
         }
 
@@ -24,7 +25,7 @@ public class Application {
     }
 
     public static void addWinnings(User user, WinningLotto winningLotto) {
-        for(Lotto userLotto : user.getLottos()) {
+        for (Lotto userLotto : user.getLottos()) {
             Winning winning = getWinning(userLotto, winningLotto);
 
             user.addWinning(winning);
@@ -32,23 +33,19 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        int money;
-        List<Integer> winningNumbers;
-        int bonusNumber;
-        WinningLotto winningLotto;
-        User user;
+        int money = Converter.convertMoneyInput(readLine());
 
-        money = Converter.convertMoneyInput(readLine());
-        user = new User(money);
+        User user = new User(money);
         user.showLottos();
 
-        winningNumbers = Converter.convertNumbersInput(readLine());
-        bonusNumber = Converter.convertBonusNumberInput(readLine());
-        winningLotto = new WinningLotto(winningNumbers, bonusNumber);
+        List<Integer> winningNumbers = Converter.convertNumbersInput(readLine());;
+        int bonusNumber = Converter.convertBonusNumberInput(readLine());
+
+        WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
 
         addWinnings(user, winningLotto);
         user.showWinnings();
 
-        System.out.println("총 수익률은 " + user.getYield() +"%입니다.");
+        System.out.println("총 수익률은 " + user.getYield() + "%입니다.");
     }
 }

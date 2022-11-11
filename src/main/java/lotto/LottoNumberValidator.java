@@ -5,11 +5,14 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import lotto.Constant.LottoValue;
 
+
+
 public class LottoNumberValidator {
     private static final List<Integer> range = IntStream
             .rangeClosed(LottoValue.MIN_RANGE, LottoValue.MAX_RANGE)
             .boxed()
             .collect(Collectors.toList());
+
 
     public static boolean existDuplicate(List<Integer> numbers) {
         int numbersTypeCount = (int)numbers

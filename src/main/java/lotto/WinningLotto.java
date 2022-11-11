@@ -3,8 +3,11 @@ package lotto;
 import java.util.List;
 import lotto.Constant.ErrorMessage;
 
-public class WinningLotto extends Lotto{
-    private int bonusNumber;
+
+
+public class WinningLotto extends Lotto {
+    private final int bonusNumber;
+
 
     public WinningLotto(List<Integer> numbers, int bonusNumber) {
         super(numbers);
@@ -21,6 +24,7 @@ public class WinningLotto extends Lotto{
 
         this.bonusNumber = bonusNumber;
     }
+
 
     public int getBonusNumber() {
         return this.bonusNumber;

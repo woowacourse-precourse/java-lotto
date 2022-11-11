@@ -4,11 +4,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lotto.Constant.ErrorMessage;
 
+
+
+
 public class Converter {
     public static int convertMoneyInput(String input) {
         try {
             return Integer.parseInt(input);
-        } catch(Exception exception) {
+        } catch (Exception exception) {
             System.out.println(ErrorMessage.WRONG_INPUT);
             throw new IllegalArgumentException();
         }
@@ -16,7 +19,6 @@ public class Converter {
 
     public static List<Integer> convertNumbersInput(String input) {
         List<String> splitedInput = List.of(input.split(","));
-
 
         try {
             List<Integer> numbers = splitedInput.stream()
