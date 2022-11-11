@@ -21,7 +21,12 @@ public class Lotto {
         return inputMoney;
     }
 
+    // 로또 구입 갯수
+    public int theNumberOfLotto(){
+        int howManyLotto = inputMoney() / 1000;
 
+        return howManyLotto;
+    }
 
 
 
