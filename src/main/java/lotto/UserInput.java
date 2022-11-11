@@ -23,12 +23,10 @@ public class UserInput {
         try {
             long money = Long.parseLong(input);
             if (money % 1000 != 0 || money == 0) {
-                Message.ERROR_INPUT_1000.printError();
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(Message.ERROR_INPUT_1000.printError());
             }
         } catch (NumberFormatException e) {
-            Message.ERROR_INPUT_NUMBER.printError();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Message.ERROR_INPUT_NUMBER.printError());
         }
     }
 
@@ -67,8 +65,7 @@ public class UserInput {
                 result.add(Integer.parseInt(splitInput[i]));
             }
         } catch (NumberFormatException e) {
-            Message.ERROR_INPUT_NUMBER.printError();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Message.ERROR_INPUT_NUMBER.printError());
         }
     }
 
@@ -83,12 +80,10 @@ public class UserInput {
         try {
             result = Integer.parseInt(bonus);
         } catch (NumberFormatException e) {
-            Message.ERROR_INPUT_NUMBER.printError();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Message.ERROR_INPUT_NUMBER.printError(););
         }
         if (result > 45 || result < 1) {
-            Message.ERROR_INPUT_RANGE.printError();
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Message.ERROR_INPUT_RANGE.printError(););
         }
         return result;
     }
