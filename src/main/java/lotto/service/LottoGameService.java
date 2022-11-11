@@ -157,7 +157,7 @@ public class LottoGameService {
 
     public void updateWinningRankMap(LottoWinningRank lottoWinningRank) {
         if (lottoWinningRank != LottoWinningRank.NO_RANK) {
-            lottoWinningRankMap.put(lottoWinningRank,  lottoWinningRankMap.get(lottoWinningRank) + 1);
+            lottoWinningRankMap.put(lottoWinningRank, lottoWinningRankMap.get(lottoWinningRank) + 1);
         }
     }
 
@@ -172,6 +172,10 @@ public class LottoGameService {
 
     public String getEarningsRatio(String lottoPurchaseAmount) {
         double sumLottoWinningMoney = 0;
+        List<LottoWinningRank> lottoWinningRanks = lottoWinningRankMap.entrySet().stream()
+                .filter(lottoWinningRank -> lottoWinningRank.getValue() != 0)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
         for (LottoWinningRank lottoWinningRank : lottoWinningRanks) {
             String commaRemovedWinningMoney = removeWinningMoneyComma(lottoWinningRank);
             int convertedWinningMoney = Integer.parseInt(commaRemovedWinningMoney);
