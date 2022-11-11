@@ -13,6 +13,7 @@ public class User {
 
     private int money;
     private List<Integer> winningNumbers;
+    private int bonusNum;
 
     public void inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -32,10 +33,10 @@ public class User {
         this.winningNumbers=convertToList(winningNumbers);
     }
 
-    public int convertToInt(String money) {
-        validateMoney(money);
+    public int convertToInt(String userInput) {
+        validateToConvertToInt(userInput);
 
-        return Integer.parseInt(money);
+        return Integer.parseInt(userInput);
     }
 
     public List<Integer> convertToList(String winningNumbers){
@@ -56,9 +57,9 @@ public class User {
         }
     }
 
-    public void validateMoney(String money) {
+    public void validateToConvertToInt(String userInput) {
         try {
-            Integer.parseInt(money);
+            Integer.parseInt(userInput);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요!");
         }
