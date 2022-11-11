@@ -13,6 +13,7 @@ import java.util.Set;
 
 public class ViewController {
     private final long LOTTO_PRICE = InputConfig.LOTTO_PRICE;
+    private final String SPLIT_REGEX = ",";
 
     private final InputView inputView;
     private final OutputView outputView;
@@ -58,7 +59,7 @@ public class ViewController {
     private Set<Integer> inputPrizeLottoNumber() {
         inputView.printInputPrizeLottoNumber();
         String input = Console.readLine();
-        Set<Integer> prize = inputMapper.stringToSetSplitBy(input, ",");
+        List<Integer> prize = inputMapper.splitBy(input, SPLIT_REGEX);
         return prize;
     }
 
