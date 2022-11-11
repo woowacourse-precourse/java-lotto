@@ -62,4 +62,13 @@ class InputWinningLottoValidatorTest {
                 .isThrownBy(() -> InputWinningLottoValidator.validate(input))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
+    
+    @DisplayName("예외 처리 : 구분 기호가 쉼표가 아닌 경우")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {"1,2,3.4,5,6", "1,2,3 4,5,6", "1,10,20:30,40,45"})
+    void delimiterException(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> InputWinningLottoValidator.validate(input))
+                .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
+    }
 }
