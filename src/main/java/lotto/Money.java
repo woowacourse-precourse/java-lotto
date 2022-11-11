@@ -1,7 +1,7 @@
 package lotto;
 
 public class Money {
-    public final int number;
+    private final int number;
 
     public Money(String inputMoney){
         int money = convertNumber(inputMoney);
