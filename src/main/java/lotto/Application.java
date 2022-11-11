@@ -305,4 +305,21 @@ public class Application {
 
         return number;
     }
+
+    public static Integer calculateThird(List<Lotto> lottoList, List<Integer> winningNumberList, int bonusNumber) {
+
+        int number = 0;
+
+        for (Lotto lotto : lottoList) {
+
+            if (lotto.checkWinningNumberIsInLottoNumbers(bonusNumber)) {
+
+                continue;
+            }
+
+            number += compareLottoNumbersAndWinningNumbers(lotto, winningNumberList, 5);
+        }
+
+        return number;
+    }
 }
