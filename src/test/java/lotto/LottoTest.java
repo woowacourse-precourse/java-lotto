@@ -2,8 +2,13 @@ package lotto;
 
 import lotto.exception.LottoException;
 import lotto.model.Lotto;
+import lotto.model.Winner;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -47,4 +52,32 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+
+    @Nested
+    class LottoWinningNumber {
+
+        private Winner winner;
+
+        @BeforeEach
+        void setUp() {
+            winner = new Winner();
+        }
+
+        @DisplayName("로또 당첨 번호의 형식을 벗어나면 예외가 발생한다.")
+        @ParameterizedTest
+        @ValueSource(strings = {"1,2,a,3,4,5","","1,02,01,3,4,5","1,2,3,4,5"})
+        void createLottoWinningNumberByBadFormat(String situation) {
+            assertThatThrownBy(() -> winner.checkLottoWinningNumber(situation))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @DisplayName("로또 당첨 번호가 1~45 사이가 아니면 예외가 발생한다.")
+        @ParameterizedTest
+        @ValueSource(strings = {"1,2,0,3,4,5","1,46,2,3,4,5","1,2,3,4,5,500"})
+        void createLottoWinningNumberByOverRange(String situation) {
+            assertThatThrownBy(() -> winner.checkLottoWinningNumber(situation))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+    }
 }

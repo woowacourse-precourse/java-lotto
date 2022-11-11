@@ -12,7 +12,7 @@ public class Winner {
     }
 
 
-    public void checkLottoWinningNumberRange(String lottoNumber){
+    private static void checkLottoWinningNumberRange(String lottoNumber){
         String[] lottoNumbersOnly = lottoNumber.split(",");
         for (String lottoNumberOnly : lottoNumbersOnly) {
             int lottoNumberParsing = Integer.parseInt(lottoNumberOnly);
