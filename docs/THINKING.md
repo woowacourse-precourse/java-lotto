@@ -63,6 +63,10 @@ Enum 클래스 형을 기반으로 한 클래스형 선언
 
 **TotalYield** 는 수익률을 계산하는 클래스이다.
 
+**RelativeLottoService** 는 로또 번호와 관련된 모든 서비스를 여기서 호출하고 해결하도록 하여 컨트롤러 단축
+
+**RelativeResultService** 는 결과와 관련된 모든 서비스를 여기서 호출하고 해결하도록 하여 컨트롤러 단축
+
 ### view 패키지
 **InputOutPutView** 이는 단순히 입력과 출력을 위한 클래스이다.
 
