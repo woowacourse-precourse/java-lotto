@@ -23,6 +23,29 @@ public class Comparator {
         }
     }
 
-
+    private void countSameNumber(int same, boolean bonus) {
+        if (same == 3 && !bonus) {
+            int count = winningTickets.get(Prize.FIFTH);
+            this.winningTickets.put(Prize.FIFTH, count + 1);
+            return;
+        }
+        if (same == 4 && !bonus) {
+            int count = winningTickets.get(Prize.FOURTH);
+            this.winningTickets.put(Prize.FOURTH, count + 1);
+            return;
+        }
+        if (same == 5 && !bonus) {
+            int count = winningTickets.get(Prize.THIRD);
+            this.winningTickets.put(Prize.THIRD, count + 1);
+            return;
+        }
+        if (same == 5) {
+            int count = winningTickets.get(Prize.SECOND);
+            this.winningTickets.put(Prize.SECOND, count + 1);
+            return;
+        }
+        int count = winningTickets.get(Prize.FIRST);
+        this.winningTickets.put(Prize.FIRST, count + 1);
+    }
 
 }
