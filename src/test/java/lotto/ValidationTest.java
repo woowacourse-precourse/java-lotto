@@ -3,6 +3,9 @@ package lotto;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 public class ValidationTest {
@@ -64,6 +67,19 @@ public class ValidationTest {
                 () -> assertThatThrownBy(() -> Input.validateSplitByCommaInputSize(inputWithFourCommasSplitByComma))
                         .isInstanceOf(IllegalArgumentException.class),
                 () -> assertThatThrownBy(() -> Input.validateSplitByCommaInputSize(inputWithSixCommasSplitByComma))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void validateNonDuplicatedLottoNumbers_메서드_사용시_Set의_사이즈가_6이_아닐_경우_예외_발생() {
+        Set<Integer> setWithFiveNumbers = new HashSet<>(List.of(1, 2, 3, 4, 5));
+        Set<Integer> setWithSevenNumbers = new HashSet<>(List.of(1, 2, 3, 4, 5, 6, 7));
+
+        assertAll(
+                () -> assertThatThrownBy(() -> Input.validateNonDuplicatedLottoNumbers(setWithFiveNumbers))
+                        .isInstanceOf(IllegalArgumentException.class),
+                () -> assertThatThrownBy(() -> Input.validateNonDuplicatedLottoNumbers(setWithSevenNumbers))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
