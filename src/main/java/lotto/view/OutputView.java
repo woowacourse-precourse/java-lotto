@@ -43,7 +43,7 @@ public class OutputView {
             if(winner.equals(Winner.SECOND)) {
                 raw = SECOND_RANK_MESSAGE;
             }
-            String formatted = String.format(raw, winner.getCorrectnessCount(), winner.getPrizeMoney(), winCount);
+            String formatted = String.format(raw, winner.getCorrectnessCount(), winner.getPrizeMoneyToString(), winCount);
             bw.write(formatted);
             bw.newLine();
         } catch (IOException e) {

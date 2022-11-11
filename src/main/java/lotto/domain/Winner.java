@@ -3,20 +3,18 @@ package lotto.domain;
 import lotto.config.InputConfig;
 
 public enum Winner {
-    FIRST(InputConfig.LOTTO_NUMBER_COUNT, false, 2000000000),
-    SECOND(InputConfig.LOTTO_NUMBER_COUNT-1, true, 30000000),
-    THIRD(InputConfig.LOTTO_NUMBER_COUNT-1, false, 1500000),
-    FOURTH(InputConfig.LOTTO_NUMBER_COUNT-2, false, 50000),
-    FIFTH(InputConfig.LOTTO_NUMBER_COUNT-3, false, 5000),
-    NONE(0, false, 0);
+    FIRST(InputConfig.LOTTO_NUMBER_COUNT,  2000000000),
+    SECOND(InputConfig.LOTTO_NUMBER_COUNT-1,  30000000),
+    THIRD(InputConfig.LOTTO_NUMBER_COUNT-1,  1500000),
+    FOURTH(InputConfig.LOTTO_NUMBER_COUNT-2, 50000),
+    FIFTH(InputConfig.LOTTO_NUMBER_COUNT-3,  5000),
+    NONE(0, 0);
 
     private int correctness;
-    private boolean value;
     private int prizeMoney;
 
-    Winner(int correctness, boolean value, int prizeMoney) {
+    Winner(int correctness, int prizeMoney) {
         this.correctness = correctness;
-        this.value = value;
         this.prizeMoney = prizeMoney;
     }
 
@@ -24,7 +22,11 @@ public enum Winner {
         return correctness;
     }
 
-    public String getPrizeMoney() {
+    public int getPrizeMoney() {
+        return this.prizeMoney;
+    }
+
+    public String getPrizeMoneyToString() {
         String formatted = String.format("%,d",prizeMoney);
         return formatted;
     }
