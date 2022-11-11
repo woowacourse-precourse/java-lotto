@@ -1,4 +1,4 @@
-package lotto.entity_test;
+package lotto.model_test;
 
 import lotto.domain.Lotto;
 import lotto.model.Computer;
@@ -31,5 +31,21 @@ public class ComputerTest {
     void saveBonusNumberTest(){
         computer.saveBonusNumber("7");
         assertThat(computer.getBonusNumber()).isEqualTo(7);
+    }
+
+    @Test
+    @DisplayName("보너스 넘버가 이미 리스트에 존재하면 예외처리한다. ")
+    void bonusNumberAlreadyExistTest(){
+        computer.saveWinningTicket("1,2,3,4,5,6");
+        assertThatThrownBy(()->computer.saveBonusNumber("6"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("보너스 넘버가 범위를 벗어나면 예외처리한다. ")
+    void bonusNumberOutOfRangeTest(){
+        computer.saveWinningTicket("1,2,3,4,5,6");
+        assertThatThrownBy(()->computer.saveBonusNumber("50"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

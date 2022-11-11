@@ -26,6 +26,14 @@ public class Computer {
 
     public void saveBonusNumber(String bonusNumber){}
 
+    private void validateBonusNumber(){
+
+    }
+
+    private void addBonusNumber(){
+
+    }
+
     public int getBonusNumber(){
         return 1;
     }

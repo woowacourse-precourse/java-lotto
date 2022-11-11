@@ -1,4 +1,4 @@
-package lotto.entity_test;
+package lotto.model_test;
 
 import lotto.Ranking;
 import lotto.model.Player;
