@@ -43,7 +43,7 @@ public class Application {
 
         List<List<Integer>> test = lottoNumbers.getNumbers();
         for (List<Integer> integers : test) {
-            System.out.println("integers = " + integers);
+            System.out.println(integers);
         }
 
 

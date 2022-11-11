@@ -44,7 +44,7 @@ public class test {
         }
 
         for (List<Integer> integers : tt) {
-            System.out.println("integers = " + integers);
+            System.out.println(integers);
         }
 
 
