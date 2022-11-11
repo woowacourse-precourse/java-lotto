@@ -115,8 +115,15 @@ class ValidatorTest {
         }
 
         @Test
-        void moreThanSixNumbers() {
+        @DisplayName("숫자가 6개가 아니면 예외를 던진다.")
+        void numbersAreMoreOrLessThan6() {
+            // given
+            Validator validator = new Validator();
 
+            // throws
+            assertThatThrownBy(() -> validator.validateWinningNumbers("45,36,1,23,5"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR] 당첨 번호들의 형태가 잘못되었습니다.");
         }
 
         @Test
