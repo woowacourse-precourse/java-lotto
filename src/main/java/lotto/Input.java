@@ -12,6 +12,7 @@ public class Input {
     private final static int LOTTO_NUMBER_MAX = 45;
     private final static int LOTTO_PRICE_UNIT = 1000;
     private final static int LOTTO_NUMBERS_INPUT_SIZE = 6;
+    private final static String LOTTO_NUMBER_DELIMITER = ",";
 
     public static void validateNumber(String input) {
         try {
@@ -51,7 +52,7 @@ public class Input {
     public static List<Integer> lottoNumbers() {
         Set<Integer> lottoNumbers = new HashSet<>();
         String input = Console.readLine();
-        String[] splitByCommaInput = input.split(",");
+        String[] splitByCommaInput = input.split(LOTTO_NUMBER_DELIMITER);
         validateSplitByCommaInputSize(splitByCommaInput);
         for (String lottoNumber : splitByCommaInput) {
             validateLottoNumber(lottoNumber);
