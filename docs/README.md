@@ -90,7 +90,17 @@
 
 <br>
 
-##  [F] lotto.common.validator 패키지
+##  [F] lotto.user.output패키지
+
+### [1] ComputerOutput 클래스
+
+#### 1. 사용자 로또 번호 출력 메소드 구현
+
+- [ ] 예시로 `[8, 21, 23, 41, 42, 43] `처럼 사용자 로또 번호를 출력 횟수만큼 출력하는 메소드를 구현합니다.
+
+<br>
+
+##  [G] lotto.common.validator 패키지
 
 ### [1] NumberValidator 클래스
 
@@ -100,7 +110,7 @@
 
 <br>
 
-##  [G] lotto.common.sort 패키지
+##  [H] lotto.common.sort 패키지
 
 ### [1] NumberSort 클래스
 
@@ -110,7 +120,7 @@
 
 <br>
 
-##  [H] lotto.user.exception 패키지
+##  [I] lotto.user.exception 패키지
 
 ### [1] UserExceptionHandler 클래스
 
@@ -128,7 +138,7 @@
 
 <br>
 
-##  [I] lotto.global.exception 패키지
+##  [J] lotto.global.exception 패키지
 
 ### [1] GlobalExceptionHandler 클래스
 
