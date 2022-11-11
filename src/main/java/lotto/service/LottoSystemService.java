@@ -67,4 +67,9 @@ public class LottoSystemService {
     public void saveLottoNumbers(){
         lotto = new Lotto(numbers);
     }
+
+    public List<Integer> getLottoNumbers(){
+        return lotto.getLottoNumber();
+    }
+
 }
