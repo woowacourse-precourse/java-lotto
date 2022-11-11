@@ -21,6 +21,10 @@ public class Lotto {
         this.numbers = convertStringListToIntegerList(convertStringToList(numbers));
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     private void validate(List<Integer> numbers) {
         if (!isSixNumbers(numbers)) {
             throw new IllegalArgumentException(ExceptionMessage.LOTTO_WRONG_NUMBER_OF_VALUE.getMessage());
