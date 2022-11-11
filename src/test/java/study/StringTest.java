@@ -3,9 +3,6 @@ package study;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 class StringTest {
@@ -25,5 +22,11 @@ class StringTest {
     @DisplayName("\"(1,2)\" 값이 주어졌을 때 String의 substring() 메소드를 활용해 () 을 제거하고 \"1,2\"를 반환")
     void substring() {
         assertThat("(1,2)".substring(1, 4)).isEqualTo("1,2");
+    }
+    
+    @Test
+    @DisplayName("\"abc\" 값이 주어졌을 때 String의 charAt() 메소드를 활용해 특정 위치의 문자를 가져오기")
+    void charAt() {
+        assertThat("abc".charAt(1)).isEqualTo('b');
     }
 }
