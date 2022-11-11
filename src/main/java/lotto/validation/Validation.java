@@ -53,4 +53,10 @@ public final class Validation {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void validateDuplicatedNumberInList(List<Integer> list, int number){
+        if(list.contains(number)){
+            throw new IllegalArgumentException();
+        }
+    }
 }
