@@ -1,5 +1,4 @@
 package lotto;
-
 import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.Test;
 
