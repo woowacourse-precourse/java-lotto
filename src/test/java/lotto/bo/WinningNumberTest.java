@@ -25,7 +25,14 @@ class WinningNumberTest {
     @DisplayName("당첨 번호가 6개의 숫자가 아니면 에러가 발생한다.")
     @Test
     void createWinningNumberByInvalidSize() {
-        assertThatThrownBy(() -> new WinningNumber("1,2,324,12,3","2"))
+        assertThatThrownBy(() -> new WinningNumber("1,2,32,12,3","2"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 6개의 숫자가 아니면 에러가 발생한다.")
+    @Test
+    void createWinningNumberByInvalidSizeBonus() {
+        assertThatThrownBy(() -> new WinningNumber("1,2,44,12,3,6","2,3"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
