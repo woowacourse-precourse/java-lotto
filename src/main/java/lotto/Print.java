@@ -9,6 +9,7 @@ public class Print {
 		for (int i = 0; i < lottonum; i++) {
 			System.out.println(lottonumbersall.get(i));
 		}
+		System.out.println();
 	}
 	
 	public void printWin() {

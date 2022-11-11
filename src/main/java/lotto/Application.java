@@ -32,6 +32,7 @@ public class Application {
     	System.out.println("구입금액을 입력해 주세요.");
     	stringprice = Console.readLine();
     	price = Integer.parseInt(stringprice);
+    	System.out.println();
     	
     	return price;
     }
@@ -50,6 +51,7 @@ public class Application {
     	}
     	
     	Lotto lotto = new Lotto(numbers);
+    	System.out.println();
     }
     
     public static void lottoValidateNumber(String stringnumbers) {
