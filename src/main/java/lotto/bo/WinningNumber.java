@@ -38,7 +38,7 @@ public class WinningNumber {
             try {
                 Integer.valueOf(tmpNumber);
             } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("당첨번호와 보너스 번호가 숫자가 아닙니다");
+                throw new IllegalArgumentException("[ERROR] 당첨번호와 보너스 번호가 숫자가 아닙니다");
             }
         }
     }
@@ -46,14 +46,14 @@ public class WinningNumber {
     private void validateRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (number < Lotto.LOTTO_MIN_NUMBER || number > Lotto.LOTTO_MAX_NUMBER) {
-                throw new IllegalArgumentException("당첨 번호와 보너스 번호가 1~ 45 사이의 숫자가 아닙니다.");
+                throw new IllegalArgumentException("[ERROR] 당첨 번호와 보너스 번호가 1~ 45 사이의 숫자가 아닙니다.");
             }
         }
     }
 
     private void validateNumberSize(List<Integer> numbers, int size) {
         if (numbers.size() != size) {
-            throw new IllegalArgumentException("당첨 번호는 6개, 보너스 번호는 1개의 숫자가 아닙니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개, 보너스 번호는 1개의 숫자가 아닙니다.");
         }
     }
 

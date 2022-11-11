@@ -18,7 +18,7 @@ public class LottoService {
         validateMoney(money);
         int numberOfLottos = Integer.parseInt(money) / LOTTO_PRICE;
 
-        System.out.printf("\n%d개를 구매했습니다.", numberOfLottos);
+        System.out.printf("\n%d개를 구매했습니다.\n", numberOfLottos);
         for (int i = 0; i < numberOfLottos; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(Lotto.LOTTO_MIN_NUMBER,
                     Lotto.LOTTO_MAX_NUMBER,
@@ -46,13 +46,13 @@ public class LottoService {
         try {
             tempMoney = Integer.parseInt(money);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR]구입 금액은 숫자여야합니다.");
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자여야합니다.");
         }
         if (tempMoney % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException("[ERROR]구입 금액은 1000으로 나누어 떨어져야합니다.");
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000으로 나누어 떨어져야합니다.");
         }
         if (tempMoney < LOTTO_PRICE) {
-            throw new IllegalArgumentException("[ERROR]구입 금액은 로또 한장의 가격을 넘어야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 로또 한장의 가격을 넘어야 합니다.");
         }
     }
 
