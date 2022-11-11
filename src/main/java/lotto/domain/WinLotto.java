@@ -38,4 +38,8 @@ public class WinLotto {
     public int getBonus() {
         return bonus;
     }
+
+    public boolean contains(Integer number) {
+        return lotto.contains(number);
+    }
 }

@@ -42,6 +42,10 @@ public class Lotto {
         }
     }
 
+    public int getEqualCount(WinLotto winLotto) {
+        return (int) lotto.stream().filter(winLotto::contains).count();
+    }
+
     public List<Integer> get() {
         return lotto;
     }
