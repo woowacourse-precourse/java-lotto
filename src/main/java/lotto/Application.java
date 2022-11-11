@@ -45,9 +45,25 @@ public class Application {
 
         // 로또 당첨 내역 통계
         List<int[]> sumResult = calResult(result);
-        
+
+        // 로또 당첨 내역 출력
+        announceResult(sumResult);
 
 
+
+    }
+
+    private static void announceResult(List<int[]> sumResult) {
+        int[] rightNumber = sumResult.get(0);
+        int[] bonusNumber = sumResult.get(1);
+        for (int i = 3; i <= 6; i++) {
+            if(rightNumber[i] > 0){
+                System.out.println(i+"개 일치 (5,000원) - "+ rightNumber[i] + "개");
+            }
+            if (bonusNumber[i] > 0) {
+                System.out.println(i+"개 일치, 보너스 볼 일치 (5,000원) - "+ bonusNumber[i] + "개");
+            }
+        }
     }
 
     private static List<int[]> calResult(List<List<Integer>> result) {
