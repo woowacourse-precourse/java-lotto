@@ -35,9 +35,10 @@ public class InputView {
         return winningNumber;
     }
 
-    public static int enterBonusNumber() {
+    public static int enterBonusNumber(List<Integer> winningNumber) {
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = Integer.valueOf(Console.readLine());
+        InputException.validateBonusNumber(bonusNumber, winningNumber);
         System.out.println();
         return bonusNumber;
     }
