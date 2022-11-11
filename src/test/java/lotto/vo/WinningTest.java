@@ -1,9 +1,7 @@
 package lotto.vo;
 
 import lotto.dto.WinningDto;
-import lotto.system.converter.WinningDtoToWinningConverter;
-import lotto.system.holder.ConverterHolder;
-import lotto.system.holder.ValidationHolder;
+import lotto.system.LottoApplication;
 import lotto.system.validator.IntegerListToLottoValidator;
 import lotto.system.validator.WinningDtoToWinningValidator;
 import org.junit.jupiter.api.*;
@@ -11,7 +9,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -20,17 +17,13 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 class WinningTest {
     @BeforeEach
     void setup() {
-        ValidationHolder.initializeValidators(List.of(
-                new WinningDtoToWinningValidator(),
-                new IntegerListToLottoValidator()
-        ));
-        ConverterHolder.initializeConverters(List.of(new WinningDtoToWinningConverter()));
+        LottoApplication.initializeValidators();
+        LottoApplication.initializeConverters();
     }
 
     @AfterEach
     void runAfter() {
-        ValidationHolder.clearHolder();
-        ConverterHolder.clearHolder();
+        LottoApplication.doAfter();
     }
 
     @Nested

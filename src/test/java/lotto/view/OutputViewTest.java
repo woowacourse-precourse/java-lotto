@@ -1,8 +1,7 @@
 package lotto.view;
 
 import lotto.Lotto;
-import lotto.system.converter.MockValidator;
-import lotto.system.holder.ValidationHolder;
+import lotto.system.LottoApplication;
 import lotto.vo.LottoAmount;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,12 +21,13 @@ class OutputViewTest {
 
     @BeforeEach
     void setup() {
-        ValidationHolder.initializeValidators(List.of(new MockValidator()));
+        LottoApplication.initializeValidators();
+        LottoApplication.initializeConverters();
     }
 
     @AfterEach
     void runAfter() {
-        ValidationHolder.clearHolder();
+        LottoApplication.doAfter();
     }
 
     @Test

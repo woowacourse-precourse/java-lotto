@@ -1,29 +1,25 @@
 package lotto.system.converter;
 
-import static org.assertj.core.api.Assertions.*;
-
-import java.util.List;
-
+import lotto.system.LottoApplication;
+import lotto.system.holder.ConverterHolder;
+import lotto.vo.LottoAmount;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import lotto.system.holder.ConverterHolder;
-import lotto.system.holder.ValidationHolder;
-import lotto.vo.LottoAmount;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class ConverterTest {
 	@BeforeEach
 	void setup() {
-		ConverterHolder.initializeConverters(List.of(new StringToLottoAmountConverter()));
-		ValidationHolder.initializeValidators(List.of(new MockValidator()));
+		LottoApplication.initializeValidators();
+		LottoApplication.initializeConverters();
 	}
 
 	@AfterEach
 	void runAfter() {
-		ConverterHolder.clearHolder();
-		ValidationHolder.clearHolder();
+		LottoApplication.doAfter();
 	}
 
 	@Test

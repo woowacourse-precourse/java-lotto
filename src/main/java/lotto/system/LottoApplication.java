@@ -38,21 +38,25 @@ public class LottoApplication {
 		lottoService = new LottoService();
 		lottoController = new LottoController(inputView, outputView, lottoService);
 		initializeValidators();
+		initializeConverters();
 	}
 
-	private void initializeValidators() {
-		ValidationHolder.initializeValidators(List.of(
-				new StringToLottoAmountValidator(),
-				new IntegerListToLottoValidator(),
-				new WinningDtoToWinningValidator()
-		));
+	public static void initializeConverters() {
 		ConverterHolder.initializeConverters(List.of(
 				new StringToLottoAmountConverter(),
 				new WinningDtoToWinningConverter()
 		));
 	}
 
-	private void doAfter() {
+	public static void initializeValidators() {
+		ValidationHolder.initializeValidators(List.of(
+				new StringToLottoAmountValidator(),
+				new IntegerListToLottoValidator(),
+				new WinningDtoToWinningValidator()
+		));
+	}
+
+	public static void doAfter() {
 		ValidationHolder.clearHolder();
 		ConverterHolder.clearHolder();
 	}

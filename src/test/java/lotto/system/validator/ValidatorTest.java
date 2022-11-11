@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import lotto.system.LottoApplication;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -19,18 +20,15 @@ import lotto.system.holder.ValidationHolder;
 import lotto.vo.LottoAmount;
 
 class ValidatorTest {
-
     @BeforeEach
     void setup() {
-        ValidationHolder.initializeValidators(List.of(
-                new StringToLottoAmountValidator(),
-                new IntegerListToLottoValidator()
-        ));
+        LottoApplication.initializeValidators();
+        LottoApplication.initializeConverters();
     }
 
     @AfterEach
     void runAfter() {
-        ValidationHolder.clearHolder();
+        LottoApplication.doAfter();
     }
 
     @Nested
