@@ -42,6 +42,8 @@ public class Input {
             throw new IllegalArgumentException("[Error] 당첨 번호가 구별되지 않습니다.");
         }
 
+        validate(tempString);
+
         for(String s : tempString) {
             this.numbers.add(Integer.parseInt(s));
         }
@@ -61,6 +63,17 @@ public class Input {
         if((tempMoney % 1000) != 0)
             throw new IllegalArgumentException("[Error] 구매 금액이 천 원으로 나누어 떨어지지 않는 금액입니다.");
 
+        return true;
+    }
+
+    private boolean validate(String[] numbers) {
+        try{
+            for(String s : numbers) {
+                Integer.parseInt(s);
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[Error] 당첨 번호 중에 숫자가 아닌 값이 존재합니다.");
+        }
         return true;
     }
 }
