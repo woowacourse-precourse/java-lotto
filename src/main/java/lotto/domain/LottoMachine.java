@@ -3,7 +3,8 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 
 public class LottoMachine {
-    private int money;
+    private final int LOTTO_PRICE = 1000;
+    private int paid;
 
     public LottoMachine() {}
 
@@ -11,12 +12,14 @@ public class LottoMachine {
         System.out.println("구입 금액을 입력해 주세요");
         int money = Integer.parseInt(Console.readLine());
         validateMoney(money);
-        this.money = Integer.parseInt(Console.readLine());
+        this.paid = Integer.parseInt(Console.readLine());
     }
 
     private void validateMoney(int money){
-        if(money % 1000 != 0){
+        if(money % LOTTO_PRICE != 0){
             throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해 주세요");
         }
     }
+
+
 }
