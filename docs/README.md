@@ -50,7 +50,7 @@
   - void parseInputToInt(String s) : 당첨 번호로 입력 받은 사용자 입력을 ,(쉼표)로 구분한다. <br>
     또, 그 결과를 바탕으로 예외 사항 4번을 검사한다. 문제가 없다면 구분된 값들을 정수형으로 변환하여 <br>
     멤버 변수 numbers에 저장한다. <br><br>
-  - List<Integer> getNumbers() : 멤버 변수인 numbers를 반환한다.
+  - List\<Integer> getNumbers() : 멤버 변수인 numbers를 반환한다. <br><br>
   - int money() : 멤버 변수인 money를 반환한다.
   
 <br>
