@@ -42,7 +42,8 @@
 >- [ ] 총 수익률을 조회하는 기능 ( getRevenue )
 >- [x] 금액을 입력받는 기능 ( setPayMent )
 >- [x] User에게 입력받은 금액으로 LottoSystem에 로또를 구매하는 기능 ( buyLotto )
-
+>- [ ] User의 randomLottoNumber를 얻는 기능 ( getUserLottoNumber )
+ 
 **LottoSystemService**
 >- [ ] 당첨 통계를 계산하는 기능 ( setTotal )
 >- [ ] 당첨 통계를 조회하는 기능 ( getTotal )
