@@ -32,4 +32,8 @@ public enum WinningPrize {
         }
         return LAST_PLACE;
     }
+
+    public int getAmount() {
+        return amount;
+    }
 }
