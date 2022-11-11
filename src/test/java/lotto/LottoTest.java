@@ -38,6 +38,15 @@ class LottoTest {
         );
     }
 
+    private static Stream<Arguments> provideInvalidRangeLottoNumberList() {
+        return Stream.of(
+                Arguments.of(List.of(-1,2,3,4,5,6)),
+                Arguments.of(List.of(0,2,3,4,5,6)),
+                Arguments.of(List.of(1,2,3,4,5,46)),
+                Arguments.of(List.of(1,2,3,4,5,100))
+        );
+    }
+
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -107,4 +116,16 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(LottoConstants.DUPLICATE_NUMBER_EXIST_MSG);
     }
+
+    @ParameterizedTest
+    @DisplayName("리스트로 주어진 로또 값 중 유효하지 않은 값이 존재하는 경우 이유를 나타내는 메세지를 포함한 예외가 발생한다.")
+    @MethodSource("provideInvalidRangeLottoNumberList")
+    void createLottoByInvalidRangedList(List<Integer> lottoNumbers) {
+        assertThatThrownBy(() -> new Lotto(lottoNumbers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(LottoConstants.INVALID_RANGED_LOTTO_INPUT);
+    }
+
+
+
 }

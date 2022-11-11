@@ -28,6 +28,7 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         isValidSize(numbers);
         hasDuplicateNumber(numbers);
+        isInProperRange(numbers);
     }
 
     private void validate(String userInput) {
@@ -47,6 +48,14 @@ public class Lotto {
                 .distinct()
                 .count() != LOTTO_SIZE) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_EXIST_MSG);
+        }
+    }
+
+    private void isInProperRange(List<Integer> numbers) {
+        if (numbers.stream()
+                .filter(number -> MIN_VALID_LOTTO_VALUE <= number && number <= MAX_VALID_LOTTO_VALUE)
+                .count() != numbers.size()) {
+            throw new IllegalArgumentException(INVALID_RANGED_LOTTO_INPUT);
         }
     }
 
