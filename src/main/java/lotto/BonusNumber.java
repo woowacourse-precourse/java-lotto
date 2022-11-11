@@ -3,8 +3,11 @@ package lotto;
 import java.util.regex.Pattern;
 
 public class BonusNumber {
+	private int bonusnumber = 0;
 	public BonusNumber(String stringbonusnumber) {
 		validateBonusNumber(stringbonusnumber);
+		
+		this.bonusnumber = Integer.parseInt(stringbonusnumber);
 	}
 	
 	public void validateBonusNumber(String stringbonusnumber) {
@@ -18,4 +21,7 @@ public class BonusNumber {
 		
 	}
 	
+	public int getBonusNumber() {
+		return this.bonusnumber;
+	}
 }
