@@ -4,10 +4,7 @@ import lotto.LottoNumbersGenerator;
 import lotto.LottoWinningRank;
 import lotto.model.Lotto;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -83,7 +80,7 @@ public class LottoGameService {
         }
     }
 
-    public void validateBonusNumber(List<Integer> lottoWinningNumbers, String bonusNumber) {
+    public void validateBonusNumber(String lottoWinningNumbers, String bonusNumber) {
         if (isBonusNumberNotDigit(bonusNumber)) {
             throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + BONUS_NUMBER_NOT_DIGIT_EXCEPTION_MESSAGE);
         }
@@ -142,8 +139,12 @@ public class LottoGameService {
         return Integer.parseInt(bonusNumber) < 1 || Integer.parseInt(bonusNumber) > 45;
     }
 
-    private boolean isBonusNumberDuplicateWinningNumbers(List<Integer> lottoWinningNumbers, String bonusNumber) {
-        return lottoWinningNumbers.contains(Integer.parseInt(bonusNumber));
+    private boolean isBonusNumberDuplicateWinningNumbers(String lottoWinningNumbers, String bonusNumber) {
+        List<Integer> collectedLottoWinningNumbers = Arrays.stream(lottoWinningNumbers.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
+        return collectedLottoWinningNumbers.contains(Integer.parseInt(bonusNumber));
     }
 
     public List<Integer> inputWinningNumberConvertToCollection(String lottoWinningNumber) {

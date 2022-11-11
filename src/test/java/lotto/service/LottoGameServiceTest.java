@@ -168,7 +168,7 @@ class LottoGameServiceTest {
 
     @Test
     void 보너스_번호가_숫자가_아니면_예외_발생() {
-        List<Integer> lottoWinningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        String lottoWinningNumbers = "1,2,3,4,5,6";
         String bonusNumber = "aaaaa";
         assertThatThrownBy(() -> lottoGameService.validateBonusNumber(lottoWinningNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -177,7 +177,7 @@ class LottoGameServiceTest {
 
     @Test
     void 보너스_번호의_범위가_1부터_45가_아니면_예외_발생() {
-        List<Integer> lottoWinningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        String lottoWinningNumbers = "1,2,3,4,5,6";
         String bonusNumber = "50";
         assertThatThrownBy(() -> lottoGameService.validateBonusNumber(lottoWinningNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -186,7 +186,7 @@ class LottoGameServiceTest {
 
     @Test
     void 보너스_번호가_당첨_번호에_이미_있으면_예외_발생() {
-        List<Integer> lottoWinningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        String lottoWinningNumbers = "1,2,3,4,5,6";
         String bonusNumber = "6";
         assertThatThrownBy(() -> lottoGameService.validateBonusNumber(lottoWinningNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
