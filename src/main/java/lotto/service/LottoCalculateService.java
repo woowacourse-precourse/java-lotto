@@ -17,26 +17,34 @@ public class LottoCalculateService {
 
     }
 
-    public void countEqualsSix(List<Integer> numbers, List<Integer> lottoNumbers) {
-        if (numbers.equals(lottoNumbers)) {
+    public void countEqualsSix(List<Integer> numbers, Lotto lotto) {
+        if (numbers.equals(lotto.getNumbers())) {
             countOfWinning.put(Winning.SIXTH, countOfWinning.getOrDefault(Winning.SIXTH, 0) + 1);
         }
     }
 
-    public void countEqualsFiveWithBonus(List<Integer> numbers, List<Integer> lottoNumbers) {
-
+    public void countEqualsFiveWithBonus(List<Integer> numbers, Lotto lotto) {
+        if (containsNumCount(numbers, lotto.getNumbers()) == 5 && numbers.contains(lotto.getBonusNumber())) {
+            countOfWinning.put(Winning.FIFTH_WITH_BONUS, countOfWinning.getOrDefault(Winning.FIFTH_WITH_BONUS, 0) + 1);
+        }
     }
 
-    public void countEqualsFive() {
-
+    public void countEqualsFive(List<Integer> numbers, Lotto lotto) {
+        if (containsNumCount(numbers, lotto.getNumbers()) == 5) {
+            countOfWinning.put(Winning.FIFTH, countOfWinning.getOrDefault(Winning.FIFTH_WITH_BONUS, 0) + 1);
+        }
     }
 
-    public void countEqualsFour() {
-
+    public void countEqualsFour(List<Integer> numbers, Lotto lotto) {
+        if (containsNumCount(numbers, lotto.getNumbers()) == 4) {
+            countOfWinning.put(Winning.FOURTH, countOfWinning.getOrDefault(Winning.FIFTH_WITH_BONUS, 0) + 1);
+        }
     }
 
-    public void countEqualsThree() {
-
+    public void countEqualsThird(List<Integer> numbers, Lotto lotto) {
+        if (containsNumCount(numbers, lotto.getNumbers()) == 3) {
+            countOfWinning.put(Winning.THIRD, countOfWinning.getOrDefault(Winning.FIFTH_WITH_BONUS, 0) + 1);
+        }
     }
 
     public int containsNumCount(List<Integer> userNumbers, List<Integer> lottoNumbers) {
