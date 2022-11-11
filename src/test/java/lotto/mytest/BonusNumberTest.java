@@ -2,6 +2,8 @@ package lotto.mytest;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -41,6 +43,15 @@ public class BonusNumberTest {
 	void notRangeNumber() {
 		assertThatThrownBy(() -> {
 			BonusNumber.checkBonusNumber("46");
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@DisplayName("기존의 로또 번호와 중복되는 경우 예외가 발생")
+	@Test
+	void duplicatedWithWinningNumber() {
+		List<Integer> winningNumber = List.of(1, 2, 3, 4, 5, 6);
+		assertThatThrownBy(() -> {
+			BonusNumber.checkDuplicateBonusNumber("6", winningNumber);
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
 }
