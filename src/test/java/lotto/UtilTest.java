@@ -50,5 +50,14 @@ class UtilTest {
                 .isEqualTo(0);
     }
 
+    @Test
+    @DisplayName("문자열을 리스트로 잘 나누는지 확인")
+    void 문자열을_리스트로_나눴는지_테스트(){
+
+        final String numberic = "1,2,3,4";
+        assertThat(Util.splitInteger(numberic, ","))
+                .isEqualTo(List.of(1, 2, 3, 4));
+    }
+
 
 }
