@@ -33,7 +33,10 @@ public class InputUtils {
 
     public static boolean isNumberInLottoRange(String input) {
         // 숫자가 1~45 사이의 범위에 존재하는지 확인
-        return false;
+        final int startNumber = 1;
+        final int endNumber = 2;
+        int number = Integer.parseInt(input);
+        return number >= startNumber  && number <= endNumber;
     }
 
     public static String listToString(List<Integer> list) {
