@@ -7,4 +7,8 @@ public class OutputView {
         int count = lottos.countTotal();
         System.out.println(String.format("%d개를 구매했습니다.", count));
     }
+
+    public static void printIssuedLottos(Lottos lottos) {
+        System.out.println(lottos);
+    }
 }
