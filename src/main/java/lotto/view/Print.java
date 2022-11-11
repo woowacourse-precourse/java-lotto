@@ -25,10 +25,12 @@ public final class Print {
     }
 
     public static void printWinningLottoNumbersInput() {
+        System.out.println();
         System.out.println(WINNING_NUMBERS_INPUT_MESSAGE);
     }
 
     public static void printBonusLottoNumberInput() {
+        System.out.println();
         System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
     }
 
