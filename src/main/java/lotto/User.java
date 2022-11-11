@@ -4,6 +4,7 @@ import java.util.*;
 
 public class User {
     private int money;
+    private int earnMoney;
     private int bonusNumber;
     private List<Integer> winningNumbers;
     private Map<String, Integer> result;
@@ -13,13 +14,14 @@ public class User {
         this.bonusNumber = -1;
         this.winningNumbers = new ArrayList<>();
         this.result = new LinkedHashMap<>();
-        for (String rankI : new String[]{"FIRST", "SECOND", "THIRD", "FORTH", "FIFTH"}) {
-            result.put("FIRST", 0);
+        for (String rankI : new String[]{"FIFTH", "FORTH", "THIRD", "SECOND", "FIRST"}) {
+            result.put(rankI, 0);
         }
     }
 
     public void updateResult(String rank) {
         this.result.replace(rank, this.result.get(rank) + 1);
+//        System.out.println(rank + " " + this.result.get(rank)); // TODO : 제거
     }
 
     public void setMoney(String money) {
@@ -49,9 +51,32 @@ public class User {
         return this.bonusNumber;
     }
 
-    public void informProfit(int earnMoney) {
-        String profitRatio = String.format("%.1f", (double) earnMoney / this.money * 100);
+    public void calculateProfit() {
+        this.earnMoney = 0;
+        for (String rankI : this.result.keySet()) {
+            if (this.result.get(rankI) == 0) continue;
+            this.earnMoney += this.result.get(rankI) * Rank.valueOf(rankI).getMoney();
+        }
+    }
+
+    public void informProfit() {
+        String profitRatio = String.format("%.1f", (double) this.earnMoney / this.money * 100);
         System.out.printf("총 수익률은 %s%%입니다.", profitRatio);
+    }
+
+    public void informResult() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for (String rankI : this.result.keySet()) {
+            String resultI = String.format(Rank.valueOf(rankI).getInfo(), this.result.get(rankI));
+            System.out.println(resultI);
+        }
+    }
+
+    public void temp() {
+        for (String strI : this.result.keySet()) {
+            System.out.println(strI + " " + this.result.get(strI));
+        }
     }
 
 }

@@ -2,6 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,12 +13,29 @@ public class Game {
 
     public Game(int money) {
         this.gameNumber = money / 1000;
-        this.games = new Lotto[gameNumber];
+        this.games = new Lotto[this.gameNumber];
+//        this.games = new ArrayList<>();
+    }
+
+    public void informGameNumber() {
+        System.out.printf("%d개를 구매했습니다.%n", this.gameNumber);
+        System.out.println();
+    }
+
+    public void informGames() {
+        for (Lotto gameI : this.games) {
+            System.out.println(gameI.getNumbers().toString());
+//            System.out.println(Arrays.toString(gameI.getNumbers().toArray()));
+//            System.out.println(1);
+        }
+        System.out.println();
     }
 
     public void generateGame() {
         for (int i = 0; i < gameNumber; i++) {
-            games[i] = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            this.games[i] = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+//            this.games.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
+//            System.out.println(this.games[i].getNumbers().toString());
         }
     }
 

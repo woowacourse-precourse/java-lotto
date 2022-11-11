@@ -38,7 +38,7 @@ class UserTest {
         System.setOut(new PrintStream(out));
         User testUser = new User();
         testUser.setMoney("10000");
-        testUser.informProfit(8752);
+        testUser.informProfit();
         assertThat(out.toString()).isEqualTo("총 수익률은 87.5%입니다.");
 
     }
