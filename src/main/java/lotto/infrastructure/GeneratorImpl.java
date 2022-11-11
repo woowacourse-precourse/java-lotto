@@ -14,15 +14,6 @@ public class GeneratorImpl implements Generator {
         return str.split(",");
     }
 
-    @Override
-    public int generateMoney(String moneyUnChangedType) {
-        try {
-            int money = Integer.parseInt(moneyUnChangedType);
-            return money;
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(ERROR_CODE + GAME_MONEY_TYPE_EXCEPTION_MESSAGE);
-        }
-    }
 
     @Override
     public String generateLotto() {

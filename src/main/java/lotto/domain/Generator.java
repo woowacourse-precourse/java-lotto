@@ -7,7 +7,6 @@ public interface Generator {
     String[] numberSeparator(String str);
 
 
-    int generateMoney(String str);
 
     String generateLotto();
 
