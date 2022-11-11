@@ -5,10 +5,15 @@ import static lotto.global.ExceptionConstants.CAN_ONLY_MULTIPLY_1000;
 
 public class InputValidator extends CommonValidator {
 
-    public static void validateInput(String number, long divisor) {
+    public static void validatePurchaseInput(String number, long divisor) {
         isAllNumber(number);
         isZero(number);
         restEqualZero(number, divisor);
+    }
+
+    public static void validateBounsInput(String number) {
+        isAllNumber(number);
+        isRangeTrue(Integer.parseInt(number));
     }
 
     private static void restEqualZero(String dividend, long divisor) {

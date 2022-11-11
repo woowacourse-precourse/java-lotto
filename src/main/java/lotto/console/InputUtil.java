@@ -23,7 +23,7 @@ public class InputUtil {
 
         String purchasePrice = Console.readLine();
 
-        InputValidator.validateInput(purchasePrice, LOTTO_PRICE);
+        InputValidator.validatePurchaseInput(purchasePrice, LOTTO_PRICE);
 
         return Long.parseLong(purchasePrice);
     }
@@ -43,15 +43,15 @@ public class InputUtil {
 
         PrintUtil.printInsertBounsNumber();
 
-        int bounsNumber = Integer.parseInt(Console.readLine());
+        String number = Console.readLine();
 
-        InputValidator.isAllNumber(bounsNumber);
+        InputValidator.validateBounsInput(number);
+
+        int bounsNumber = Integer.parseInt(number);
 
         if (winningNumbers.contains(bounsNumber)) {
             throw new IllegalArgumentException(CANNOT_DUPLICATED_NUMBER);
         }
-
-        InputValidator.isRangeTrue(bounsNumber);
 
         return bounsNumber;
     }
