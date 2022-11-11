@@ -14,3 +14,4 @@
     * [ ] 당첨번호 중 하나와 중복되지 않는지 - validateForDuplicatedNumber()
 * [ ] 당첨 통계 - printWinningStatistics()
 * [ ] 수익률 계산하기 - calculateProfit()
+* [ ] 특정 번호가 로또 내에 존재하는지 - isContained()
