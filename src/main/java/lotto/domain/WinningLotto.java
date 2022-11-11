@@ -22,4 +22,8 @@ public class WinningLotto extends Lotto {
             throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATE_ERROR_MESSAGE);
         }
     }
+
+    public boolean containBonusNumber(Lotto lotto) {
+        return lotto.isContainNumber(bonusNumber);
+    }
 }
