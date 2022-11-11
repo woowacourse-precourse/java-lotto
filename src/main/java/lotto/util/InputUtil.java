@@ -3,6 +3,7 @@ package lotto.util;
 import lotto.domain.enums.Message;
 import lotto.domain.enums.Number;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -40,7 +41,7 @@ public class InputUtil {
     public void checkValidationWinningNumber(String input) {
         try {
             isOnlyCommaAndNumber(input);
-
+            isAllDifferentNumbers(input);
         } catch (IllegalArgumentException illegalArgumentException) {
             throw makeIllegalArgumentException(Message.WINNING_NUMBER_INPUT_ERROR.getMessage());
         }
@@ -53,6 +54,19 @@ public class InputUtil {
             if (matcher.find()) {
                 throw new IllegalArgumentException();
             }
+        }
+    }
+
+    public void isAllDifferentNumbers(String input) throws IllegalArgumentException {
+        String[] numbers = input.split(COMMA);
+        List<String> container = new ArrayList<>();
+
+        for (String number : numbers) {
+            if (container.contains(number)) {
+                throw new IllegalArgumentException();
+            }
+
+            container.add(number);
         }
     }
 
