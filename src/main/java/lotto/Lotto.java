@@ -27,8 +27,13 @@ public class Lotto {
         }
     }
 
-    private List<Integer> createLottoNumber() {
+    public static List<Integer> createLottoNumber() {
         return Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_COUNT);
+    }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
     }
 
 }
