@@ -3,6 +3,7 @@ package lotto.repository;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.Optional;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import lotto.domain.WinningLotto;
@@ -18,7 +19,7 @@ class RankRepositoryTest {
         Lotto playerLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
         // when
-        Rank rank = RankRepository.getRank(playerLotto, winningLotto);
+        Rank rank = RankRepository.getRank(playerLotto, winningLotto).get();
         // then
         assertThat(rank).isEqualTo(Rank.FIRST);
     }
@@ -30,7 +31,7 @@ class RankRepositoryTest {
         Lotto playerLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 45)), 6);
         // when
-        Rank rank = RankRepository.getRank(playerLotto, winningLotto);
+        Rank rank = RankRepository.getRank(playerLotto, winningLotto).get();
         // then
         assertThat(rank).isEqualTo(Rank.SECOND);
     }
@@ -42,7 +43,7 @@ class RankRepositoryTest {
         Lotto playerLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 45)), 44);
         // when
-        Rank rank = RankRepository.getRank(playerLotto, winningLotto);
+        Rank rank = RankRepository.getRank(playerLotto, winningLotto).get();
         // then
         assertThat(rank).isEqualTo(Rank.THIRD);
     }
@@ -54,7 +55,7 @@ class RankRepositoryTest {
         Lotto playerLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 45, 44)), 43);
         // when
-        Rank rank = RankRepository.getRank(playerLotto, winningLotto);
+        Rank rank = RankRepository.getRank(playerLotto, winningLotto).get();
         // then
         assertThat(rank).isEqualTo(Rank.FOURTH);
     }
@@ -66,9 +67,32 @@ class RankRepositoryTest {
         Lotto playerLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 45, 44, 43)), 42);
         // when
-        Rank rank = RankRepository.getRank(playerLotto, winningLotto);
+        Rank rank = RankRepository.getRank(playerLotto, winningLotto).get();
         // then
         assertThat(rank).isEqualTo(Rank.FIFTH);
     }
 
+    @Test
+    @DisplayName("보너스 숫자와 숫자 2개가 일치한다면 당첨이 아니다.")
+    public void getRankNone_twoNumberMatch_bonusMatch() {
+        // given
+        Lotto playerLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 45, 44, 43, 42)), 6);
+        // when
+        Optional<Rank> rank = RankRepository.getRank(playerLotto, winningLotto);
+        // then
+        assertThat(rank).isEmpty();
+    }
+
+    @Test
+    @DisplayName("보너스 숫자와 숫자 1개가 일치한다면 당첨이 아니다.")
+    public void getRankNone_oneNumberMatch_bonusMatch() {
+        // given
+        Lotto playerLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 45, 44, 43, 42, 41)), 6);
+        // when
+        Optional<Rank> rank = RankRepository.getRank(playerLotto, winningLotto);
+        // then
+        assertThat(rank).isEmpty();
+    }
 }

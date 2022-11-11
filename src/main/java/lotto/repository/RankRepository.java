@@ -3,7 +3,6 @@ package lotto.repository;
 import static lotto.domain.Rank.FIFTH;
 import static lotto.domain.Rank.FIRST;
 import static lotto.domain.Rank.FOURTH;
-import static lotto.domain.Rank.NONE;
 import static lotto.domain.Rank.SECOND;
 import static lotto.domain.Rank.THIRD;
 
@@ -11,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import lotto.domain.WinningLotto;
@@ -34,11 +34,11 @@ public class RankRepository {
         ranks.put(Score.of(3, true), FIFTH);
     }
 
-    public static Rank getRank(Lotto playerLotto, WinningLotto winningLotto) {
+    public static Optional<Rank> getRank(Lotto playerLotto, WinningLotto winningLotto) {
         List<Integer> playerNumbers = playerLotto.getNumbers();
         int matchedCount = getMatchedCount(winningLotto, playerNumbers);
         boolean bonusMatch = isBonusMatch(winningLotto, playerNumbers);
-        return ranks.getOrDefault(Score.of(matchedCount, bonusMatch), NONE);
+        return Optional.ofNullable(ranks.get(Score.of(matchedCount, bonusMatch)));
     }
 
     private static int getMatchedCount(WinningLotto winningLotto, List<Integer> playerNumbers) {
