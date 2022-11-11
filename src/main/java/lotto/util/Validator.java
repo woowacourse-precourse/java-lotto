@@ -25,4 +25,9 @@ public class Validator {
             throw new IllegalArgumentException(WRONG_INPUT);
         }
     }
+
+    private void isDivided(String input){
+        if(Integer.parseInt(input) % MONEY_UNIT != 0)
+            throw new IllegalArgumentException(WRONG_INPUT);
+    }
 }
