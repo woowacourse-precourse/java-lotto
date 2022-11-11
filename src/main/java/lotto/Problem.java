@@ -7,20 +7,29 @@ import java.util.List;
 
 public class Problem {
     WinningLotto winningLotto;
+    User user;
     Problem(){
         printInputGuide();
+        this.user=new User();
     }
 
     void printInputGuide(){
         System.out.println("구입금액을 입력해 주세요.");
     }
     void startProblem(){
-        User input=new User();
-        input.inputMoney();
-        input.setLottoQuantity();
-        input.printLottoQunantity();
-        input.buyingLotto();
-        input.printAllBuyingLotto();
+        setUserLotto();
+        setWinningLotto();
+    }
+
+    private void setUserLotto(){
+        this.user.inputMoney();
+        this.user.setLottoQuantity();
+        this.user.printLottoQunantity();
+        this.user.buyingLotto();
+        this.user.printAllBuyingLotto();
+    }
+
+    private void setWinningLotto(){
         printWinningNumberInputGuide();
         inputWinningNumber();
         printBonusNumberGuide();
