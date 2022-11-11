@@ -1,8 +1,12 @@
 package lotto.uitls;
 
+import java.util.List;
+
 public class Validation {
     private static final int LOTTO_PRICE = 1_000;
     private static final int COUNT_OF_NUMBERS_IN_LOTTO = 1_000;
+    private static final int LOTTO_MIN = 1;
+    private static final int LOTTO_MAX = 45;
 
     public static void validateLottoPurchaseAmount(String purchaseAmount) {
         if (hasNonDigitCharacter(purchaseAmount)) {
@@ -31,5 +35,13 @@ public class Validation {
     public static boolean isSeperatedByComma(String input) {
         String[] lottoNumbers = input.split(",");
         return lottoNumbers.length == COUNT_OF_NUMBERS_IN_LOTTO;
+    }
+
+    public static boolean hasDuplicatedNumber(List<Integer> lottoNnumbers) {
+        return lottoNnumbers.size() != lottoNnumbers.stream().distinct().count();
+    }
+
+    public static boolean isCorrectRange(List<Integer> lottoNumbers) {
+        return lottoNumbers.stream().anyMatch(number -> number > LOTTO_MAX || number < LOTTO_MIN);
     }
 }
