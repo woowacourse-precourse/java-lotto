@@ -259,4 +259,21 @@ public class Application {
 
         return Math.round(surplusRate * 10) / 10.0;
     }
+
+    public static Integer compareLottoNumbersAndWinningNumbers(Lotto lotto, List<Integer> winningNumberList, int equalNum) {
+
+        int number = 0;
+
+        for (int i = 0; i < winningNumberList.size(); i++) {
+
+            if (lotto.checkWinningNumberIsInLottoNumbers(winningNumberList.get(i))) {
+
+                number += 1;
+            }
+        }
+
+        if (number == equalNum) return 1;
+
+        return 0;
+    }
 }
