@@ -34,4 +34,10 @@ public class WinningNumber {
                 .map(this::getRank)
                 .collect(Collectors.toList());
     }
+
+    public int getTotalPrizeMoney(List<LottoRank> ranks) {
+        return ranks.stream()
+                .mapToInt(LottoRank::getPrizeMoney)
+                .sum();
+    }
 }
