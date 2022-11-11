@@ -16,10 +16,10 @@ public class Application {
         int numOfLotto = UserInput.inputPrice();
         createLottoTickets(numOfLotto);
         showLottoTickets();
+
         UserInput.inputWinningNumbers();
         Result result = new Result(lottoTickets);
-        double returnOfRate = result.calculateReturnOfRate(numOfLotto*MONEY_UNIT);
-        System.out.println("총 수익률은 "+returnOfRate+"%입니다.");
+        result.calculateReturnOfRate(numOfLotto*MONEY_UNIT);
     }
 
     private static void createLottoTickets(int numOfLotto) {
