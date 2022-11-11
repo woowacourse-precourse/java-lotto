@@ -3,10 +3,10 @@ package lotto.model;
 import lotto.util.Utils;
 import lotto.util.validator.MoneyValidator;
 
-public class GetMoneyService {
+public class MoneyService {
     private String money;
 
-    public GetMoneyService(String money) {
+    public MoneyService(String money) {
         new MoneyValidator(money);
         this.money = money;
     }

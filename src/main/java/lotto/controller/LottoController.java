@@ -1,6 +1,6 @@
 package lotto.controller;
 
-import lotto.model.GetMoneyService;
+import lotto.model.MoneyService;
 import lotto.model.LottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -13,7 +13,7 @@ public class LottoController {
     }
 
     private int getMoney() {
-        GetMoneyService money = new GetMoneyService(InputView.inputMoney());
+        MoneyService money = new MoneyService(InputView.inputMoney());
 
         return money.getLottoCount();
     }
