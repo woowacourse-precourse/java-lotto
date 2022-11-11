@@ -40,6 +40,13 @@ public class LottoResult {
         return lottoResult;
     }
 
+    public Double calculateYield(Pay pay) {
+        long reward = lottoResult.keySet().stream()
+                .mapToLong(lottoRank -> lottoRank.getReward() * lottoResult.get(lottoRank)).sum();
+
+        return (reward / (double)pay.getPay()) * 100;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
