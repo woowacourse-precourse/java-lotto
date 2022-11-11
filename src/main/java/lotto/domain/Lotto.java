@@ -7,13 +7,14 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import lotto.view.ErrorMessage;
 
 public class Lotto {
+    private final List<Integer> numbers;
     private static final int START_NUM = 1;
     private static final int END_NUM = 45;
     private static final int LOTTO_SIZE = 6;
-    private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -33,8 +34,11 @@ public class Lotto {
         }
         List<Integer> lotto = new ArrayList<>(duplicate);
         Collections.sort(lotto);
-        System.out.println(lotto);
         return new Lotto(lotto);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     private void validate(List<Integer> numbers) {
