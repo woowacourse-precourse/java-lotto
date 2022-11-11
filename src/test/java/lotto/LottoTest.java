@@ -44,9 +44,9 @@ class LottoTest {
     @Test
     void 발행번호_당첨번호_일치_개수_테스트() {
         Referee referee = new Referee();
-        Lotto input = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 7);
-        int count = referee.correctNumberCount(input, numbers);
+        Lotto computerLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto myLotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+        int count = referee.correctNumberCount(computerLotto, myLotto);
         assertThat(5).isEqualTo(count);
     }
 
@@ -54,22 +54,22 @@ class LottoTest {
     @Test
     void 당첨번호_보너스볼과_발행번호_비교하여_개수증가_테스트() {
         Referee referee = new Referee();
-        Lotto input = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto computerLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int input_bonus = 7;
-        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 7);
-        int correctNumberCount = referee.correctNumberCount(input, numbers);
+        Lotto myLotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+        int correctNumberCount = referee.correctNumberCount(computerLotto, myLotto);
 
-        referee.plusCorrectNumberCount(correctNumberCount, numbers, input_bonus);
+        referee.plusCorrectNumberCount(correctNumberCount, myLotto, input_bonus);
         assertThat(1).isEqualTo(FIVE_BONUS.getCount());
     }
 
     @DisplayName("보너스볼 숫자가 당첨번호에 포함되어 있는지 여부")
     @Test
     void 보너스볼_중복_체크_테스트() {
-        Referee referee = new Referee();
         Lotto input = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        int input_bonus = 7;
-        assertThat(referee.isDuplicateBonusBall(input_bonus, input)).isFalse();
+        int input_bonus = 6;
+        assertThatThrownBy(() -> Exception.validateBonusBall(input_bonus, input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("당첨금액 구하기")

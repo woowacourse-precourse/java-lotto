@@ -6,18 +6,18 @@ import static lotto.Rank.*;
 
 public class Referee {
 
-    public int correctNumberCount(Lotto lotto, List<Integer> myLotto) {
+    public int correctNumberCount(Lotto computerLotto, Lotto myLotto) {
         int count = 0;
 
-        for(int number : myLotto) {
-            if(lotto.getNumbers().contains(number)) {
+        for(int number : myLotto.getNumbers()) {
+            if(computerLotto.getNumbers().contains(number)) {
                 count++;
             }
         }
         return count;
     }
 
-    public void plusCorrectNumberCount(int correctNumberCount, List<Integer> myLotto, int bonus) {
+    public void plusCorrectNumberCount(int correctNumberCount, Lotto myLotto, int bonus) {
         if(correctNumberCount == 3) {
             THREE.plusCount();
         }
@@ -25,7 +25,7 @@ public class Referee {
             FOUR.plusCount();
         }
         if(correctNumberCount == 5) {
-            if(myLotto.contains(bonus)) {
+            if(myLotto.getNumbers().contains(bonus)) {
                 FIVE_BONUS.plusCount();
                 return;
             }
