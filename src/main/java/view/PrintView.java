@@ -33,4 +33,8 @@ public class PrintView {
         System.out.println(ConsoleMessage.WIN_LOTTO_NUMBER);
     }
 
+    public static void bonusNum() {
+        System.out.println(ConsoleMessage.WIN_LOTTO_NUMBER);
+    }
+
 }
