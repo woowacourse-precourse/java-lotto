@@ -1,19 +1,20 @@
 package data;
 
 public enum LottoData {
-    FIRST(6,false, 2000000000),
-    SECOND(5, true, 30000000),
-    THIRD(5, false, 1500000),
-    FOURTH(4, false, 50000),
-    FIFTH(3, false, 5000);
+    FIRST("FIRST",6, 2000000000),
+    SECOND("SECOND",5, 30000000),
+    THIRD("THIRD",5, 1500000),
+    FOURTH("FOURTH",4, 50000),
+    FIFTH("FIFTH",3, 5000);
 
-    private int winningAmount;
+    private String prizeName;
+    private int prizeAmount;
     private boolean isHavingBonus;
-    private int prize;
+    private int prizeMoney;
 
-    LottoData(int winningAmount, boolean isHavingBonus, int prize){
-        this.winningAmount = winningAmount;
-        this.isHavingBonus = isHavingBonus;
-        this.prize = prize;
+    LottoData(String prizeName, int prizegAmount, int prizeMoney){
+        prizeName = prizeName;
+        prizeAmount = prizeAmount;
+        prizeMoney = prizeMoney;
     }
 }

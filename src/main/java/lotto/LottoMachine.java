@@ -10,10 +10,6 @@ import input.NumberParser;
 public class LottoMachine {
     private final NumberParser numberParser = new NumberParser();
     private List<Lotto> lottos = new ArrayList<>();
-    private List<Integer> prize = new ArrayList<>();
-    private int winningMoney = 0;
-    private List<Integer> winningNumbers;
-    private int bonusNumber;
     public void start(){
         inputCash();
         inputWinningNumbers();
@@ -28,11 +24,11 @@ public class LottoMachine {
     }
 
     public void inputWinningNumbers() {
-        winningNumbers = numberParser.getWinningNumbers(inputRawData());
+        numberParser.setWinningNumbers(inputRawData());
     }
 
     public void inputBonusNumber() {
-        bonusNumber = numberParser.getBonusNumber(inputRawData());
+        numberParser.setBonusNumber(inputRawData());
     }
 
     public String inputRawData(){
@@ -41,8 +37,10 @@ public class LottoMachine {
     }
 
     public void drawLottos() {
-        for(Lotto lotto : lottos){
-
+        for(LottoData data : LottoData.values()){
+            if(data.getWinningAmount() == 5){
+                System.out.println(data.toString());
+            }
         }
     }
 
@@ -50,9 +48,8 @@ public class LottoMachine {
         int count;
         boolean isHavingBonus;
         for(Lotto lotto : lottos){
-            count = lotto.getNumberOfWins(winningNumbers);
-            isHavingBonus = lotto.isHavingBonusNumber(bonusNumber);
-
+            count = lotto.getNumberOfWins(numberParser.getWinningNumbers());
+            isHavingBonus = lotto.isHavingBonusNumber(numberParser.getBonusNumber());
         }
     }
     public void calculateProfitRate(){

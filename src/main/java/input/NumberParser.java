@@ -4,9 +4,10 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class NumberParser {
-    List<Integer> winningNumbers = new ArrayList<>();
     int bonusNumber;
-    public List<Integer> getWinningNumbers(String rawNumbers) {
+    List<Integer> winningNumbers = new ArrayList<>();
+    public void setWinningNumbers(String rawNumbers) {
+
         String[] splittedNumbers = rawNumbers.split(",");
         try {
             for (String number : splittedNumbers) {
@@ -14,24 +15,29 @@ public class NumberParser {
             }
             checkException(winningNumbers);
             System.out.println(winningNumbers);
-            return winningNumbers;
         }catch(Exception e){
             System.out.println("임시 에러: 숫자를 입력해야 한다.");
             throw new IllegalArgumentException();
         }
     }
 
-    public int getBonusNumber(String rawNumber){
+    public void setBonusNumber(String rawNumber){
         try {
             bonusNumber = Integer.parseInt(rawNumber);
             System.out.println(bonusNumber);
-            return bonusNumber;
         } catch(Exception e) {
             System.out.print("임시 에러: 숫자를 입력해야 한다.");
             throw new IllegalArgumentException();
         }
     }
 
+    public int getBonusNumber(){
+        return bonusNumber;
+    }
+
+    public List<Integer> getWinningNumbers(){
+        return winningNumbers;
+    }
     public NumberParser(List<Integer> numbers) {
         winningNumbers = numbers;
         checkException(winningNumbers);
