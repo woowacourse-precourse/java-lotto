@@ -11,4 +11,8 @@ public class Lotto {
         Validation.validate(numbers);
         this.numbers = numbers;
     }
+
+    public int getNumber(int index) {
+        return numbers.get(index);
+    }
 }

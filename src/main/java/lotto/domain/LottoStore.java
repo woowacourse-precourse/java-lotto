@@ -9,19 +9,27 @@ public class LottoStore {
         Money money = new Money(InputView.inputMoney);
         int numberOfLotto = money.purchase();
 
-        List<LottoNumbersIssuance> myLottos = new ArrayList<>();
-        makeLottos(numberOfLotto, myLottos);
+        List<LottoNumbersIssuance> purchasedLottos = new ArrayList<>();
+        MyLottos myLottos = new MyLottos(makeLottos(numberOfLotto, purchasedLottos));
 
         receiveWinningNumbers();
+        Person person = new Person(myLottos, makeWinningNumbers());
+        person.buyLotto();
+    }
+
+    private Lotto makeWinningNumbers() {
+        Lotto winningLotto = new Lotto(InputView.winningNumbers);
+        return winningLotto;
     }
 
     private void receiveWinningNumbers() {
         InputView.inputWinningNumbers();
     }
 
-    private static void makeLottos(int numberOfLotto, List<LottoNumbersIssuance> myLottos) {
+    private static List<LottoNumbersIssuance> makeLottos(int numberOfLotto, List<LottoNumbersIssuance> purchasedLottos) {
         for (int i = 0; i < numberOfLotto; i++) {
-            myLottos.add(new LottoNumbersIssuance());
+            purchasedLottos.add(new LottoNumbersIssuance());
         }
+        return purchasedLottos;
     }
 }

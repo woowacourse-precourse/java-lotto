@@ -6,6 +6,7 @@ import lotto.domain.InputView;
 import java.util.List;
 
 public class Validation {
+    public static final int LOTTO_PRICE = 1000;
     private static final int LOTTO_NUMBERS_SIZE = 6;
     private static final int LOTTO_FIRST_NUMBER = 1;
     private static final int LOTTO_LAST_NUMBER = 45;
@@ -37,7 +38,7 @@ public class Validation {
     }
 
     public static void validateMoney(int money) {
-        if (money < 1000) {
+        if (money < LOTTO_PRICE) {
             throw new IllegalArgumentException(ErrorStatus.MONEY_RANGE.printError());
         }
     }
@@ -58,7 +59,7 @@ public class Validation {
             }
         } catch (IllegalArgumentException error) {
             System.out.println(ErrorStatus.NOT_NUMBER.printError());
-            InputView.inputWinningNumbers();
+            throw new IllegalArgumentException();
         }
     }
 }

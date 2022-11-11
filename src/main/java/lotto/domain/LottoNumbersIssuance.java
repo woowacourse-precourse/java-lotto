@@ -15,4 +15,13 @@ public class LottoNumbersIssuance {
     public void printLotto() {
         System.out.println(numbers);
     }
+
+    public boolean contain(int winningNumber) {
+        for (Integer number : numbers) {
+            if (winningNumber == number) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
