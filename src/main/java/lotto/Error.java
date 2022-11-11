@@ -1,9 +1,8 @@
 package lotto;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
+import static lotto.LottoConst.LOTTO_MAX_NUMBER;
 
 public class Error {
     static void purchasePrice(int purchasePrice) {
@@ -18,8 +17,8 @@ public class Error {
                         .distinct()
                         .collect(Collectors.toList());
 
-        if (removedDuplicationNumber.size() != 6) {
-            throw new IllegalArgumentException("당첨번호에 중복된 숫자가 있습니다.");
+        if (removedDuplicationNumber.size() != LOTTO_MAX_NUMBER) {
+            throw new IllegalArgumentException("[ERROR] 당첨번호에 중복된 숫자가 있습니다.");
         }
     }
 }
