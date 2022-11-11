@@ -12,12 +12,12 @@ public class WinningNumber {
   public void validateNumber(String num) {
     for (int i = 0; i < num.length(); i++) {
       if (!Character.isDigit(num.charAt(i))) {
-        throw new IllegalArgumentException("[ERROR] 숫자가 아닙니다");
+        throw new IllegalArgumentException(Constant.NOT_ONLY_DIGIT);
       }
     }
     int result = Integer.parseInt(num);
     if (result > 45 || result < 1) {
-      throw new IllegalArgumentException("[ERROR] 1 ~ 45 내의 숫자가 아닙니다.");
+      throw new IllegalArgumentException(Constant.NOT_RANGE_MESSAGE);
     }
   }
 }

@@ -7,7 +7,7 @@ public class Money {
     for (int i = 0; i < userMoney.length(); i++)
     {
       if (!Character.isDigit(userMoney.charAt(i))) {
-        throw new IllegalArgumentException("[ERROR] 숫자만 입력할 수 있습니다.");
+        throw new IllegalArgumentException(Constant.NOT_ONLY_DIGIT);
       }
     }
     return true;
@@ -17,7 +17,7 @@ public class Money {
     int money = Integer.parseInt(userMoney);
 
     if (money % 1000 != 0) {
-      throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해 주세요.");
+      throw new IllegalArgumentException(Constant.NOT_1000);
     }
     return true;
   }

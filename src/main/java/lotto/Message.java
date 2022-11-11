@@ -1,8 +1,6 @@
 package lotto;
 
-import java.util.List;
-
-public class PrintOut {
+public class Message {
   public static void requestInputMessage() {
     System.out.println("구입금액을 입력해 주세요.");
   }
