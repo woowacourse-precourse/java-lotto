@@ -2,6 +2,7 @@ package lotto.domain;
 
 import static lotto.domain.Lotto.END_LOTTO_NUMBER;
 import static lotto.domain.Lotto.START_LOTTO_NUMBER;
+import static lotto.util.Printer.printErrorMessage;
 
 public class WinningLotto {
 
@@ -16,11 +17,14 @@ public class WinningLotto {
 
     static void validate(Lotto lotto, int bonusNumber) {
         if (isInvalidRange(bonusNumber)) {
-            System.out.printf("[ERROR] 보너스 숫자는 %d부터 %d 사이의 숫자여야 합니다.\n", START_LOTTO_NUMBER, END_LOTTO_NUMBER);
+            String errorMessage = String.format("보너스 숫자는 %d부터 %d 사이의 숫자여야 합니다.", START_LOTTO_NUMBER,
+                    END_LOTTO_NUMBER);
+            printErrorMessage(errorMessage);
             throw new IllegalArgumentException();
         }
         if (isDuplicateNumber(lotto, bonusNumber)) {
-            System.out.printf("[ERROR] 보너스 숫자(%d)가 중복됩니다.\n", bonusNumber);
+            String errorMessage = String.format("보너스 숫자(%d)가 중복됩니다.", bonusNumber);
+            printErrorMessage(errorMessage);
             throw new IllegalArgumentException();
         }
     }

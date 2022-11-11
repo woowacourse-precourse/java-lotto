@@ -4,10 +4,13 @@ import static lotto.domain.Lotto.END_LOTTO_NUMBER;
 import static lotto.domain.Lotto.LOTTO_NUMBER_COUNT;
 import static lotto.domain.Lotto.LOTTO_PRICE;
 import static lotto.domain.Lotto.START_LOTTO_NUMBER;
+import static lotto.util.Printer.printErrorMessage;
+import static lotto.util.Printer.printMessage;
+import static lotto.util.Printer.printPurchaseLottosInfo;
+import static lotto.util.Printer.printResult;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,9 +22,6 @@ import lotto.repository.RankRepository;
 
 public class LottoService {
 
-    private static final DecimalFormat INTEGER_FORMAT = new DecimalFormat("###,###");
-    private static final DecimalFormat FLOAT_FORMAT = new DecimalFormat("###,###.#");
-
     int purchasePrice;
     List<Lotto> playerPurchaseLottos = new ArrayList<>();
     WinningLotto winningLotto;
@@ -32,11 +32,11 @@ public class LottoService {
         printPurchaseLottosInfo(playerPurchaseLottos);
         setWinningLotto(inputWinningLotto());
         List<Rank> lottoResults = getResult();
-        printResult(lottoResults);
+        printResult(lottoResults, purchasePrice);
     }
 
     private static void printPurchaseGuideMessage() {
-        System.out.println("구입금액을 입력해 주세요.");
+        printMessage("구입금액을 입력해 주세요.");
     }
 
     private List<Rank> getResult() {
@@ -61,11 +61,11 @@ public class LottoService {
     }
 
     private static void printInputWinningLottoGuideMessage() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        printMessage("당첨 번호를 입력해 주세요.");
     }
 
     private static void printInputBonusNumberGuideMessage() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        printMessage("보너스 번호를 입력해 주세요.");
     }
 
     private Lotto getWinningLotto() {
@@ -81,7 +81,7 @@ public class LottoService {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {
-            System.out.println("[ERROR] 당첨 번호는 반드시 숫자여야 합니다.\n");
+            printErrorMessage("당첨 번호는 반드시 숫자여야 합니다.");
             throw new IllegalArgumentException(e);
         }
     }
@@ -91,7 +91,7 @@ public class LottoService {
         try {
             return Integer.parseInt(playerInput);
         } catch (NumberFormatException e) {
-            System.out.println("[ERROR] 보너스 번호는 반드시 숫자여야 합니다.");
+            printErrorMessage("보너스 번호는 반드시 숫자여야 합니다.");
             throw new IllegalArgumentException(e);
         }
     }
@@ -104,7 +104,7 @@ public class LottoService {
     List<Lotto> purchaseLottos() {
         this.purchasePrice = inputPurchasePrice();
         if (purchasePrice % LOTTO_PRICE != 0) {
-            System.out.printf("[ERROR] 로또는 %d원 단위로 나누어 떨어져야 합니다.\n", LOTTO_PRICE);
+            printErrorMessage(String.format("로또는 %d원 단위로 나누어 떨어져야 합니다.", LOTTO_PRICE));
             throw new IllegalArgumentException();
         }
         return generateLottos(purchasePrice / LOTTO_PRICE);
@@ -115,7 +115,7 @@ public class LottoService {
         try {
             return Integer.parseInt(playerInput);
         } catch (NumberFormatException e) {
-            System.out.println("[ERROR] 로또 구매 금액은 반드시 숫자여야 합니다.");
+            printErrorMessage("로또 구매 금액은 반드시 숫자여야 합니다.");
             throw new IllegalArgumentException(e);
         }
     }
@@ -132,38 +132,5 @@ public class LottoService {
         List<Integer> uniqueNumbers = Randoms.pickUniqueNumbersInRange(START_LOTTO_NUMBER, END_LOTTO_NUMBER,
                 LOTTO_NUMBER_COUNT);
         return new Lotto(uniqueNumbers);
-    }
-
-    private static void printPurchaseLottosInfo(List<Lotto> playerPurchaseLottos) {
-        System.out.printf("%d개를 구매했습니다.%n", playerPurchaseLottos.size());
-        for (Lotto playerPurchaseLotto : playerPurchaseLottos) {
-            System.out.println(playerPurchaseLotto.getNumbers());
-        }
-    }
-
-    private void printResult(List<Rank> lottoResults) {
-        int totalReward = 0;
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        for (Rank rank : Rank.values()) {
-            System.out.printf("%s (%s원) - %d개%n", rank.getDescriptionMessage(),
-                    getFormattedReward(rank.getWinningPrice()), getMatchedRankCount(lottoResults, rank));
-            totalReward += rank.getWinningPrice() * getMatchedRankCount(lottoResults, rank);
-        }
-        System.out.printf("총 수익률은 %s%%입니다.%n", getFormattedRateOfReturn(totalReward));
-    }
-
-    private String getFormattedRateOfReturn(int totalReward) {
-        return FLOAT_FORMAT.format(totalReward * 100.0 / purchasePrice);
-    }
-
-    private static long getMatchedRankCount(List<Rank> lottoResults, Rank matchedRank) {
-        return lottoResults.stream()
-                .filter(lottoResult -> lottoResult.equals(matchedRank))
-                .count();
-    }
-
-    private static String getFormattedReward(int winningPrice) {
-        return INTEGER_FORMAT.format(winningPrice);
     }
 }
