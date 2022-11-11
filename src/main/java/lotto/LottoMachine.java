@@ -38,6 +38,16 @@ public class LottoMachine {
         return newLottos;
     }
 
+    public int getEarnedMoney(){
+        int profit = 0;
+        for(Rank rank : Rank.values()){
+            int prize = rank.getPrizeMoney();
+            profit += rankCount.get(rank)*prize;
+        }
+
+        return profit;
+    }
+
     static Map<Rank, Integer> analyzeRank(Lotto winningLotto, int bonus, List<Lotto> lottos){
         initRank();
         for(Lotto lotto: lottos){
