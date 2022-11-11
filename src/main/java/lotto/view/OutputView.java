@@ -112,8 +112,11 @@ public class OutputView {
     }
     
     private static String prizeMoneyDisplay(final LottoRank lottoRank) {
-        final int prizeMoney = lottoRank.prizeMoney();
-        return moneyDecimalFormat().format(prizeMoney);
+        return moneyDecimalFormat().format(prizeMoney(lottoRank));
+    }
+    
+    private static int prizeMoney(final LottoRank lottoRank) {
+        return lottoRank.prizeMoney();
     }
     
     private static DecimalFormat moneyDecimalFormat() {
