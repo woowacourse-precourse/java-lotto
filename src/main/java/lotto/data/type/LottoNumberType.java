@@ -1,6 +1,7 @@
 package lotto.data.type;
 
 public enum LottoNumberType {
+    COST(1000),
     COUNT(6),
     MIN(1),
     MAX(45);
