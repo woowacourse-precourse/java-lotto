@@ -27,13 +27,29 @@ public class Drawer {
 
     }
 
-    private static class Calculater {
-        private static Map<Integer, Integer> calculateWin(List<Lotto> lottoTickets, List<Integer> lotto) {
-            return new HashMap<Integer, Integer>();
+    private static class Calculator {
+        private static Rank calculateWin(Lotto lottoTicket, Lotto lotto, Integer bonusNumber) {
+            Integer correctNumber = 0;
+            Integer correctBonusNumber = 0;
+            for (Integer number : lotto.getLottoNumbers()) {
+                if (lottoTicket.getLottoNumbers().contains(number)) {
+                    correctNumber++;
+                }
+            }
+            if (correctNumber == 5) {
+                if (lotto.getLottoNumbers().contains(bonusNumber)) {
+                    bonusNumber++;
+                }
+            }
+            return Rank.generateRank(correctNumber, correctBonusNumber);
         }
 
-        private static Float calculateYield(Map<Integer, Integer> winLog, Integer money) {
-            return new Float(0.0);
+        private static Float calculateYield(List<Rank> ranks, Integer money) {
+            Integer prize = 0;
+            for (Rank rank : ranks) {
+                prize += rank.getMoney();
+            }
+            return (float) prize / (float) money * 100;
         }
     }
 }
