@@ -1,11 +1,17 @@
 package lotto.lotteryshop;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import lotto.input.InputAgent;
 import lotto.validator.ValueValidator;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Lotto {
+
     private final List<Integer> numbers;
+
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
@@ -13,5 +19,34 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         ValueValidator.validateInputLottoNumber(numbers);
+    }
+
+    public List<List<Integer>> generateLottoNumber(int purchaseNumber) {
+        List<List<Integer>> generatedLottoPaper = new ArrayList<>();
+
+        for (int number = 0; number < purchaseNumber; number++) {
+            generatedLottoPaper.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        }
+        return generatedLottoPaper;
+    }
+
+    public void getGeneratedLottoNumber(List<List<Integer>> generatedLottoPaper) {
+        for (List<Integer> eachLottoPaper : generatedLottoPaper) {
+            System.out.println(Arrays.toString(eachLottoPaper.toArray()));
+        }
+    }
+
+    public List<Integer> publishWinningLottoNumbers() {
+        InputAgent inputAgent = new InputAgent();
+        List<Integer> inputLottoNumbers = new ArrayList<>();
+        System.out.println("당첨 번호를 입력해주세요.");
+        inputLottoNumbers.addAll(inputAgent.inputWinningNumbers());
+        return inputLottoNumbers;
+    }
+
+    public void publishWinningBonusNumber(List<Integer> lottoNumbers) {
+        InputAgent inputAgent = new InputAgent();
+        System.out.println("\n보너스 번호를 입력해주세요.");
+        lottoNumbers.add(inputAgent.inputWinningBonusNumber());
     }
 }
