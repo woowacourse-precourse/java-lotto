@@ -6,7 +6,7 @@ import static lotto.validator.NumberValidator.validateNonNumeric;
 import static lotto.validator.NumberValidator.validateUnit;
 
 public class InputView {
-    public static int getLottoPurchaseAmount() {
+    public static int inputLottoPurchaseAmount() {
         OutputView.printLottoPurchaseAmount();
         String input = Console.readLine();
 
