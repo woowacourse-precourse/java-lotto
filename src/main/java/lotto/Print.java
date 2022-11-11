@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Print {
+    public void out(String text) {
+        System.out.println(text);
+    }
     public void out(LottoText text) {
         System.out.println(text);
     }
@@ -28,5 +31,9 @@ public class Print {
         for (Map.Entry<Prize, Integer> prizeAndCount : statistic.entrySet()) {
             System.out.printf("%s - %d개\n", prizeAndCount.getKey().getDescription(), prizeAndCount.getValue());
         }
+    }
+
+    public void yield(double yield) {
+        System.out.printf("총 수익률은 %.1f%%입니다.", yield);
     }
 }
