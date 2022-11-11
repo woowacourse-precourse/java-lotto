@@ -6,6 +6,7 @@ public class Application {
         Controller controller = new Controller();
         try {
             controller.buyLotto();
+            controller.publishLotto();
         }catch(IllegalArgumentException e){
             System.out.println(e.getMessage());
         }

@@ -1,13 +1,16 @@
 package lotto;
 
+import lotto.Purchase;
+
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
+    Purchase purchase;
     public void buyLotto(){
-        Purchase purchase = new Purchase(Console.readLine());
+        purchase = new Purchase(Console.readLine());
 
         List<Integer> lottoAnswer = new ArrayList<>();
         String inputAnswer = Console.readLine();
@@ -22,7 +25,8 @@ public class Controller {
     }
 
     public void publishLotto(){
-
+        User user = new User();
+        user.getUserLotto(purchase.price);
     }
 
     public void resultLotto(){

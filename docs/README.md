@@ -11,7 +11,7 @@
   - [x] 보너스 번호 입력 유효성 검사 Lotto#validateBonusNumber
 
 **2. 로또 발행 및 출력** Controller#publishLotto
-- [ ] 로또 발행 User#getUserLotto
+- [x] 로또 발행 User#getUserLotto
 - [ ] 발행된 로또 오름차순 출력 User#printUserLotto
 
 **3. 로또 당첨 , 수익률 확인** Controller#resultLotto
