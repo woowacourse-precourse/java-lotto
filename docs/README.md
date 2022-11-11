@@ -7,12 +7,12 @@
 ## 🚀 구현 기능 목록
 
 - Model 
-  - [ ] Lotto
+  - [x] Lotto
   - [ ] Ticket (구입 금액에 맞는 로또 발행)
   - [ ] Money
   - [ ] WinningNumber
   - [ ] BonusNumber
-  - [ ] Prize (enum으로 구현)
+  - [ ] Prize (Enum 으로 구현)
 
 
 - Controller
@@ -38,8 +38,8 @@
 ---
 ## ⭐️ 검증 목록
 - Lotto
-  - [ ] 로또 번호의 개수가 6개가 맞는지 검증
-  - [ ] 로또 번호들이 중복이 없는지 검증
+  - [x] 로또 번호의 개수가 6개가 맞는지 검증
+  - [x] 로또 번호들이 중복이 없는지 검증
 
 
 - Ticket
