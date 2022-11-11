@@ -11,7 +11,7 @@ import lotto.view.InputView;
 
 public class LottoController {
     private static int ticketNumber;
-    private static List<List<Integer>> allplayerNumbers = new ArrayList<>();
+    private static List<List<Integer>> allPlayerNumbers = new ArrayList<>();
     private static List<Integer> winningNumbers;
     private static int bonusNumber;
 
@@ -20,7 +20,7 @@ public class LottoController {
         Purchase purchase = new Purchase(InputView.inputCash());
         ticketNumber = purchase.get();
         Player player = new Player(ticketNumber);
-        allplayerNumbers = player.get();
+        allPlayerNumbers = player.get();
 
         // set winning numbers, bonus number
         Lotto lotto = new Lotto(InputView.inputWinningNumbers());
@@ -30,7 +30,9 @@ public class LottoController {
         validateDuplicates();
 
         // calculate result
-        LottoResult result = new LottoResult(winningNumbers, allplayerNumbers, bonusNumber);
+        LottoResult result = new LottoResult(winningNumbers, allPlayerNumbers, bonusNumber);
+        List<Integer> matches = result.getMatches();
+        List<Boolean> bonusMatches = result.getBonusMatches();
     }
 
     private static void validateDuplicates() {

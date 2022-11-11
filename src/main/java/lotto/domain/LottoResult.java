@@ -6,12 +6,12 @@ import java.util.List;
 public class LottoResult {
 
     private List<Integer> matches = new ArrayList<>();
-    private List<Integer> bonusMatches = new ArrayList<>();
+    private List<Boolean> bonusMatches = new ArrayList<>();
 
     public LottoResult(List<Integer> winningNumbers, List<List<Integer>> allPlayerNumbers, int bonusNumber) {
         for (List<Integer> playerNumbers : allPlayerNumbers) {
             matches.add(calculateMatch(winningNumbers, playerNumbers));
-            bonusMatches.add(calculateBonusMatch(playerNumbers, bonusNumber));
+            bonusMatches.add(hasBonusNumber(playerNumbers, bonusNumber));
         }
         System.out.println("Match: " + matches);
         System.out.println("Bonus: " + bonusMatches);
@@ -27,19 +27,19 @@ public class LottoResult {
         return match;
     }
 
-    private int calculateBonusMatch(List<Integer> playerNumbers, int bonusNumber) {
-        int bonusMatch = 0;
+    private boolean hasBonusNumber(List<Integer> playerNumbers, int bonusNumber) {
+        boolean bonus = false;
         if (playerNumbers.contains(bonusNumber)) {
-            bonusMatch++;
+            bonus = true;
         }
-        return bonusMatch;
+        return bonus;
     }
 
     public List<Integer> getMatches() {
         return matches;
     }
 
-    public List<Integer> getBonusMatches() {
+    public List<Boolean> getBonusMatches() {
         return bonusMatches;
     }
 }
