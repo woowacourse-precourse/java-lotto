@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.util.GenerateLottoNumbers.generateLottoNumbers;
+
 import java.util.ArrayList;
 import java.util.List;
 import lotto.exception.UserBuyingException;
@@ -19,9 +21,18 @@ public class User {
 
 
     public void setLottos(int buyingPrice) {
-//        int quantity = buyingPrice / 1000;
-//        for(int i=0; i<quantity; i++) {
-//            Lotto lotto = new Lotto().createLotto();
-//        }
+        this.lottos = generateLottoNumbers(buyingPrice);
+    }
+
+    public List<UserLotto> getLottos() {
+        return lottos;
+    }
+
+    public int getBuyingPrice() {
+        return buyingPrice;
+    }
+
+    public int getWinningPrice() {
+        return winningPrice;
     }
 }
