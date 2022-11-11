@@ -3,8 +3,8 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * packageName : lotto.domain
@@ -22,7 +22,7 @@ public class Input {
     public static int buyCount;
     public static List<Integer> lottoNumber = new ArrayList<>();
     public static int lottoBonusNumber;
-    private static String errorPattern = "^[0-9]";
+    private static String errorPattern = "^[0-9]*$";
     private final static String inputCoinString = "구입금액을 입력해 주세요.";
     private final static String inputErrorMessage = "[ERROR] 문자를 입력할 수 없습니다.";
     private final static String coinErrorMessage = "[ERROR] 구입금액은 천원단위만 가능합니다.";
@@ -44,7 +44,7 @@ public class Input {
     }
 
     public static void coinStringError(String input){
-        if(input.contains(errorPattern)){
+        if(!Pattern.matches(errorPattern, input)) {
             System.out.println(inputErrorMessage);
             throw new IllegalArgumentException();
         }

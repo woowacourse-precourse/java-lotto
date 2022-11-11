@@ -25,6 +25,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * 2022/11/10         gim-yeong-geun          최초 생성
  */
 public class InputTest {
+    @DisplayName("문자를 입력하면 오류가 발생한다")
+    @Test
+    void coinStringErrorTest(){
+        assertThatThrownBy(() -> Input.coinStringError("1000j"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
     @DisplayName("1000원 단위 미만의 금액을 입력시 오류가 발생한다")
     @Test
     void inputCoinTest(){
