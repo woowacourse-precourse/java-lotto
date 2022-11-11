@@ -11,12 +11,18 @@ import java.util.stream.Collectors;
 public class UserInterface {
     int getPurchasePrice(){
         System.out.println("구입금액을 입력해 주세요.");
-        return Integer.parseInt(Console.readLine());
+        try {
+            return Integer.parseInt(Console.readLine());
+        }catch(Exception e) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
     }
 
     void printLottos(List<Lotto> lottos) {
         System.out.println(lottos.size() + "개를 구매했습니다.");
-        lottos.forEach(System.out::println);
+        for(Lotto lotto : lottos){
+            System.out.println(lotto.getNumbers());
+        }
     }
 
     List<Integer> getWinningNumber(){
