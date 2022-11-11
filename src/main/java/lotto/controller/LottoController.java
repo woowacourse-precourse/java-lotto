@@ -1,7 +1,7 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.domain.LotteryAnswer;
+import lotto.domain.Answer;
 import lotto.domain.Lotto;
 import lotto.domain.Prize;
 import lotto.domain.User;
@@ -10,34 +10,30 @@ import lotto.view.LottoView;
 import java.util.List;
 
 public class LottoController {
-    private final LotteryAnswer answer;
+    private final Answer answer;
     private final User user;
     private final LottoView lottoView;
 
-    public LottoController(LotteryAnswer answer, User user, LottoView lottoView) {
+    public LottoController(Answer answer, User user, LottoView lottoView) {
         this.answer = answer;
         this.user = user;
         this.lottoView = lottoView;
     }
 
     public void purchase() {
-        System.out.println(lottoView.PURCHASE);
+        lottoView.purchase();
         user.inputPurchaseAmount(Console.readLine());
-        System.out.println();
 
-        System.out.println(lottoView.afterPurchase(user.getPurchaseAmount()));
-        user.createLottos();
-        System.out.println(lottoView.lottos(user.getLottos()) + "\n");
+        lottoView.afterPurchase(user.getPurchaseAmount());
+        lottoView.lottos(user.createLottos());
     }
 
     public void inputAnswer() {
-        System.out.println(lottoView.INPUT_ANSWER);
+        lottoView.inputAnswer();
         answer.inputAnswerLotto(Console.readLine());
-        System.out.println();
 
-        System.out.println(lottoView.INPUT_BONUS);
+        lottoView.inputBonus();
         answer.inputBonusNumber(Console.readLine());
-        System.out.println();
     }
 
     public void getResult() {
@@ -48,8 +44,8 @@ public class LottoController {
             user.addPrize(Prize.getResult(countAnswer, countBonus));
         }
 
-        System.out.println(lottoView.result(user.getPrizes()));
-        System.out.println(lottoView.yield(user.getYield()));
+        lottoView.result(user.getPrizes());
+        lottoView.yield(user.getYield());
     }
 
     private int countAnswer(Lotto lotto) {

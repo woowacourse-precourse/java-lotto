@@ -31,13 +31,15 @@ public class User {
         this.purchaseAmount = Integer.parseInt(input);
     }
 
-    public void createLottos() {
+    public List<Lotto> createLottos() {
         int count = purchaseAmount / 1000;
 
         while (count-- > 0) {
             List<Integer> randoms = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             lottos.add(new Lotto(randoms));
         }
+
+        return lottos;
     }
 
     public void addPrize(Prize prize) {
