@@ -18,13 +18,5 @@ public class Lotto {
         }
     }
 
-    public List<Integer> generateLotto() {
-        List<Integer> lotto = Randoms.pickUniqueNumbersInRange(Constant.FIRST_NUMBER_IN_LOTTO,
-            Constant.LAST_NUMBER_IN_LOTTO,
-            Constant.LOTTO_SIZE);
-        Collections.sort(lotto);
-        return lotto;
-    }
-
     // TODO: 추가 기능 구현
 }
