@@ -42,6 +42,6 @@ public class Input {
     public void getWinningBonusNumber(Lotto lotto) {
         String input = Console.readLine();
         int bonusNumber = stringToInt(input);
-        lotto.addNumber(bonusNumber);
+        lotto.addBonusNumber(bonusNumber);
     }
 }
