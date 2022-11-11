@@ -19,12 +19,12 @@ public class Lotto {
         }
     }
 
+    // TODO: 추가 기능 구현
     private void check_duplicate_numbers(List<Integer> numbers) {
         for (int i = 0; i < numbers.size(); i++) {
             if (Collections.frequency(numbers, numbers.get(i)) != 1)
                 throw new IllegalArgumentException();
         }
-
-        // TODO: 추가 기능 구현
     }
+
 }
