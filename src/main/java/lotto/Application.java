@@ -55,6 +55,7 @@ public class Application {
         int fifth = calculateFifth(lottoList, winningNumberList);
         double surplusRate = calculateSurplus(first, second, third, forth, fifth, cash);
 
+        System.out.println();
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " + first + "개");
