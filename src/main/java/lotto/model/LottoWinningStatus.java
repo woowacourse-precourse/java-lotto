@@ -2,22 +2,23 @@ package lotto.model;
 
 public enum LottoWinningStatus {
 
-    MATCH_SIX_NUMBERS(1, 2000000000L), MATCH_FIVE_NUMBERS_WITH_BONUS_NUMBER(2, 30000000L),
-    MATCH_FIVE_NUMBERS(3, 1500000L), MATCH_FOUR_NUMBERS(4, 50000L), MATCH_THREE_NUMBERS(5, 5000L);
+    MATCH_THREE_NUMBERS(3, 5000L), MATCH_FOUR_NUMBERS(4, 50000L),
+    MATCH_FIVE_NUMBERS(5, 1500000L), MATCH_FIVE_NUMBERS_WITH_BONUS_NUMBERS(5, 30000000L),
+    MATCH_SIX_NUMBERS(6, 2000000000L);
 
-    private final Integer ranking;
-    private final Long winningMoney;
+    private final int numberOfMatch;
+    private final long winningMoney;
 
-    LottoWinningStatus(Integer ranking, Long winningMoney) {
-        this.ranking = ranking;
+    LottoWinningStatus(int numberOfMatch, long winningMoney) {
+        this.numberOfMatch = numberOfMatch;
         this.winningMoney = winningMoney;
     }
 
-    public Integer getRanking() {
-        return ranking;
+    public int getNumberOfMatch() {
+        return numberOfMatch;
     }
 
-    public Long getWinningMoney() {
+    public long getWinningMoney() {
         return winningMoney;
     }
 }
