@@ -28,4 +28,9 @@ public class PrintView {
             System.out.println(numbers.toString());
         }
     }
+
+    public static void winNum() {
+        System.out.println(ConsoleMessage.WIN_LOTTO_NUMBER);
+    }
+
 }
