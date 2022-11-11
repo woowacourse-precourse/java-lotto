@@ -10,14 +10,13 @@ public class RandomUtil {
 
     static final int LENGTH_OF_LOTTO_NUMBERS = 6;
 
-    public static List<List<Integer>> getLottoNumbers(String money){
+    public static List<List<Integer>> getLottoNumbers(int money){
         int countFromMoney = getCountFromMoney(money);
         return createLottoNumberList(countFromMoney);
     }
 
-    private static int getCountFromMoney(String money) {
-        int MoneyOfInteger = Integer.parseInt(money);
-        int countFromMoney = MoneyOfInteger / 1000;
+    private static int getCountFromMoney(int money) {
+        int countFromMoney = money / 1000;
         return countFromMoney;
     }
 

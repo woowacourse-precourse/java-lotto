@@ -1,6 +1,5 @@
 package lotto;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import lotto.util.RandomUtil;
@@ -13,7 +12,7 @@ class RandomUtilTest {
     @Test
     @DisplayName("로또번호 개수가 금액에 부합하는지 테스트")
     void countOfLottoNumbers(){
-        String money = "5000";
+        int money = 5000;
 
         List<List<Integer>> lottoNumbers = RandomUtil.getLottoNumbers(money);
 
@@ -23,7 +22,7 @@ class RandomUtilTest {
     @Test
     @DisplayName("로또 번호 하나가 6자리 숫자를 포함하는 지 테스트")
     void sizeOfLottoNumbers(){
-        String money = "1000";
+        int money = 1000;
 
         List<List<Integer>> lottoNumbers = RandomUtil.getLottoNumbers(money);
 
