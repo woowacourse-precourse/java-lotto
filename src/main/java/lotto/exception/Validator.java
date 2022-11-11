@@ -24,10 +24,11 @@ public class Validator {
     }
 
     public void validateWinningNumbers(String input) {
-        validateValueIsNumber(input.replaceAll(",", ""));
         validateValueUseComma(input);
-        validateNumberOfValue(input);
-        validateValueRange(input);
+        List<String> inputValues = Arrays.asList(input.split(","));
+        validateNumberOfValue(inputValues);
+        inputValues.forEach(this::validateValueIsNumber);
+        inputValues.forEach(this::validateValueRange);
     }
 
     public void validateBonusNumber(String input,
@@ -62,23 +63,17 @@ public class Validator {
     }
 
     private void validateValueRange(String input) {
-        List<String> inputValues = Arrays.asList(input.split(","));
-        if (isNotRightRangeNumber(inputValues)) {
+        if (isNotRightRangeNumber(input)) {
             throw new IllegalArgumentException(NEED_TO_INPUT_RIGHT_NUMBER_RANGE);
         }
     }
 
-    private boolean isNotRightRangeNumber(List<String> inputValues) {
-        return inputValues.stream()
-                .map(Integer::parseInt)
-                .anyMatch(number ->
-                        number < LOTTO_NUMBER_MIN_VALUE ||
-                        number > LOTTO_NUMBER_MAX_VALUE
-                );
+    private boolean isNotRightRangeNumber(String input) {
+        int value = Integer.parseInt(input);
+        return value > LOTTO_NUMBER_MAX_VALUE || value < LOTTO_NUMBER_MIN_VALUE;
     }
 
-    private void validateNumberOfValue(String input) {
-        List<String> inputValues = Arrays.asList(input.split(","));
+    private void validateNumberOfValue(List<String> inputValues) {
         if (inputValues.size() != LOTTO_NUMBER_LENGTH) {
             throw new IllegalArgumentException(NEED_TO_INPUT_SIX_NUMBER);
         }
