@@ -13,6 +13,9 @@ public class Application {
         Money money = new Money(askMoney());
         Integer count = money.getLottoCount();
         List<Lotto> lottos = generateLottos(count);
+        viewLottos(lottos);
+
+
     }
 
     @SuppressWarnings("unchecked")
@@ -25,6 +28,12 @@ public class Application {
             lottos.add(lotto);
         }
         return lottos;
+    }
+
+    public static void viewLottos(List<Lotto> lottos) {
+        for (Lotto lotto : lottos) {
+            lotto.view();
+        }
     }
 
     private static Integer askMoney() {

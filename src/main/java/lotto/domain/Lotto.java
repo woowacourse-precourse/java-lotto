@@ -10,6 +10,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public void view() {
+        System.out.println(numbers.toString());
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
