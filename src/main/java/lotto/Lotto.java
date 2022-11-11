@@ -12,12 +12,17 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        // 6자리 숫자이어야 한다.
-        if (numbers.size() != 6) {
+        checkLength(numbers);
+        checkRangeAndDuplicate(numbers);
+    }
+
+    private void checkLength(List<Integer> numbers) {
+        if (numbers.size() != Constants.LOTTO_LEN) {
             throw new IllegalArgumentException(Constants.LOTTO_NUMBERS_LEN_EXCEPTION);
         }
+    }
 
-        // 1부터 45까지 중복되지 않은 숫자이어야 한다.
+    private void checkRangeAndDuplicate(List<Integer> numbers) {
         boolean[] duplicateCheck = new boolean[Constants.LOTTO_END_NUMBER + 1];
         for (Integer num : numbers) {
             if (num < Constants.LOTTO_START_NUMBER || num > Constants.LOTTO_END_NUMBER) {
