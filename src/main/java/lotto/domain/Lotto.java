@@ -72,19 +72,6 @@ public class Lotto {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-
-        builder.append("[");
-        for (int i = 0; i < numbers.size(); i++) {
-            builder.append(numbers);
-            if (i != numbers.size() - 1) {
-                builder.append(", ");
-            }
-            if (i == numbers.size() - 1) {
-                builder.append("]");
-            }
-        }
-
-        return builder.toString();
+        return numbers.toString();
     }
 }
