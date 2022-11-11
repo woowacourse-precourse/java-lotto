@@ -1,6 +1,8 @@
 package lotto.domainTest;
 
+import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -25,4 +27,16 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("보너스번호 get, set 동작확인")
+    @Test
+    void initBonusNumber() {
+        //given(준비)
+        BonusNumber.BONUS_NUMBER.setNumber(7);
+
+        //when(실행)
+
+        //then(검증)
+        Assertions.assertThat(BonusNumber.BONUS_NUMBER.getNumber()).isEqualTo(7);
+    }
+
 }
