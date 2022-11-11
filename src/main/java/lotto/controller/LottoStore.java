@@ -13,23 +13,25 @@ import java.util.Map;
 public class LottoStore {
 
     private LottoController lottoController;
+    private int purchasedAmount;
 
     public LottoStore() {
         this.lottoController = new LottoController();
+        purchasedAmount = 0;
     }
 
     public void startLottoService() {
 
-        List<Lotto> myLottos = buyLottos();
+        List<Lotto> customerLottos = buyLottos();
 
         WinningLotto winningLotto = makeWinningLotto();
 
-        showWinningStatistic(winningLotto, myLottos);
+        showWinningStatistic(winningLotto, customerLottos);
     }
 
     private List<Lotto> buyLottos() {
         OutputUi.printInsertMoneyInfoMessage();
-        int purchasedAmount = InputUi.readPurchaseAmount();
+        purchasedAmount = InputUi.readPurchaseAmount();
         int lottoNumber = purchasedAmount / Lotto.PRICE;
 
         List<Lotto> generatedLottos = lottoController.generateLottoAuto(lottoNumber);
