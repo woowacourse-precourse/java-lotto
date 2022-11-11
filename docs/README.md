@@ -5,13 +5,13 @@
 * 당첨번호와 보너스 번호를 입력하면 당첨 통계와 수익률을 출력하는 게임이다.
 ---
 ## 🧀기능 목록
-- [ ] 로또 구입 금액을 입력받는다. getPayAmount()
+- [ ] 로또 구입 금액을 입력받는다. LottoPurchase#getPayAmount()
   - [ ] 천원단위 아닐 경우 예외처리한다. 
-- [ ] 입력 받은 금액에 따른 로또 개수를 구한다. countTicket()
-- [ ] 입력 받은 금액 만큼의 로또를 랜덤으로 발행한다. pickNumber()
-- [ ] 당첨번호와 보너스 번호를 입력받는다. getWinningNumber()
-- [ ] 구매번호와 당첨번호를 비교하여 일치하는 숫자가 몇개인지 구한다. compare()
-- [ ] 수익률을 구한다. getRateOfReturn()
+- [ ] 입력 받은 금액에 따른 로또 개수를 구한다. LottoPurchase#countTicket()
+- [ ] 입력 받은 금액 만큼의 로또를 랜덤으로 발행한다. LottoPurchase#pickNumbers()
+- [ ] 당첨번호와 보너스 번호를 입력받는다. LottoDrawing#getWinningNumber()
+- [ ] 구매번호와 당첨번호를 비교하여 일치하는 숫자가 몇개인지 구한다. LottoResult#compare()
+- [ ] 수익률을 구한다. LottoResult#getRateOfReturn()
 ---
 ### 로또번호
 - 1~9 범위의 숫자만 가능
