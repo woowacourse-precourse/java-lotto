@@ -70,4 +70,26 @@ public class ValueValidator {
         }
     }
 
+    public static void validateBonusNumberRange(int bonusNumber) {
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            System.out.println("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+    }
+
+    public static void validateInputBonusLottoNumber(String bonusNumber, List<Integer> numbers) {
+        validateIntegerValue(bonusNumber);
+        validateBonusNumberRange(Integer.parseInt(bonusNumber));
+        validateBonusNumberOverlap(numbers, Integer.parseInt(bonusNumber));
+    }
+
+    public static void validateInputLottoNumber(List<Integer> numbers) {
+        validateLottoNumbersLength(numbers);
+        validateLottoNumbersOverlap(numbers);
+        for (Integer number : numbers) {
+            validateIntegerValue(String.valueOf(number));
+            validateLottoNumbersRange(number);
+        }
+    }
+
 }
