@@ -13,7 +13,10 @@ public class LottoGame {
         issueLotto();
     }
 
-    private int countLotto() {
+    private int countLotto() throws IllegalArgumentException {
+        if (price % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR]구매 금액은 1000원 단위여야 합니다.");
+        }
         return price / 1000;
     }
 

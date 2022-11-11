@@ -79,6 +79,7 @@ public class LottoController {
     }
 
     private void checkWin(Map<Rank, Integer> result) {
+        OutputView.printResultMessage();
         checkFifth(result);
         checkFourth(result);
         checkThird(result);
@@ -92,13 +93,20 @@ public class LottoController {
     }
 
     public void run() {
-        createLottoPurchase();
+        try {
+            createLottoPurchase();
 
-        createWinChecker();
+            createWinChecker();
 
-        Map<Rank, Integer> result = createResult();
+            Map<Rank, Integer> result = createResult();
 
-        checkWin(result);
-        checkYield(result);
+            checkWin(result);
+            checkYield(result);
+        }
+        catch (NumberFormatException e){
+            throw new IllegalArgumentException("[ERROR]올바른 입력 포맷이 아닙니다.");
+        }catch (IllegalArgumentException e) {
+            throw e;
+        }
     }
 }
