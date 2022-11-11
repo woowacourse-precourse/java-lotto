@@ -12,7 +12,7 @@ public class InputExceptionHandler {
 	private static final String DUPLICATED_WINNING_NUMBER_EXCEPTION = "[ERROR] 당첨 번호는 중복이 안됩니다.";
 	private static final String ONE_TO_FORTY_FIVE_EXCEPTION = "[ERROR] 1 ~ 45 사이의 숫자여야합니다.";
 	private static final String WINNING_NUMBER_COUNT_EXCEPTION = "[ERROR] 당첨 번호는 6개를 입력해야 합니다.";
-	private static final String WINNING_NUMBER_DIVISION_EXCEPTION = "[ERROR] 당첨 번호는 쉼표로 구분지어야 합니다.";
+	private static final String REST_OR_NUMBER_EXCEPTION = "[ERROR] 당첨 번호는 숫자와 쉼표로 구분지어야 합니다.";
 	private static final String DUPLICATED_BONUS_NUMBER_MESSAGE = "[ERROR] 보너스 번호는 당첨 번호와 중복되면 안됩니다.";
 	private static final String NUMBER_REGEX = "^[0-9]*$";
 	private static final int CASH_UNIT = 1000;
@@ -38,20 +38,11 @@ public class InputExceptionHandler {
 	}
 
 	public static String checkWinningNumberForm(String input) {
-		isWinningNumber(input);
-		List<Integer> numbers = checkDivisionByRest(input);
+		List<Integer> numbers = isRestOrNumber(input);
 		checkOneToFortyFive(numbers);
-		isDuplicatedWinningNumber(numbers);
 		checkNumberCount(numbers);
+		isDuplicatedWinningNumber(numbers);
 		return input;
-	}
-
-	private static void isWinningNumber(String input) {
-		boolean isNumber = Arrays.stream(input.split(REST_DIVISION_REGEX))
-			.allMatch(number -> number.matches(NUMBER_REGEX));
-		if (!isNumber) {
-			throw new IllegalArgumentException(NUMBER_EXCEPTION_MESSAGE);
-		}
 	}
 
 	private static void checkOneToFortyFive(List<Integer> numbers) {
@@ -62,13 +53,13 @@ public class InputExceptionHandler {
 		}
 	}
 
-	private static List<Integer> checkDivisionByRest(String input) {
+	private static List<Integer> isRestOrNumber(String input) {
 		try {
 			return Arrays.stream(input.split(REST_DIVISION_REGEX))
 				.map(Integer::parseInt)
 				.collect(Collectors.toList());
 		} catch (Exception e) {
-			throw new IllegalArgumentException(WINNING_NUMBER_DIVISION_EXCEPTION);
+			throw new IllegalArgumentException(REST_OR_NUMBER_EXCEPTION);
 		}
 	}
 
