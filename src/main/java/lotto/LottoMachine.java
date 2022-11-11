@@ -38,6 +38,13 @@ public class LottoMachine {
         return newLottos;
     }
 
+    public double calculateEarningRate() {
+        int profit = getEarnedMoney();
+        double rateEarningMoney = profit/(double)userMoney*100;
+
+        return  Math.round(rateEarningMoney*10)/10.0;
+    }
+
     public int getEarnedMoney(){
         int profit = 0;
         for(Rank rank : Rank.values()){
