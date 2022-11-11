@@ -5,11 +5,11 @@ import lotto.exception.UtilClassCreateException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class InputPaymentValidator {
-    private static final String NON_NUMERIC_CHARACTERS_EXCEPTION_MESSAGE = "[ERROR] 지불 금액은 숫자만 입력 가능합니다.";
+public class InputNumberValidator {
+    private static final String NON_NUMERIC_CHARACTERS_EXCEPTION_MESSAGE = "[ERROR] 숫자만 입력 가능합니다.";
     private static final String INPUT_PAYMENT_FORM = "\\D";
     
-    private InputPaymentValidator() {
+    private InputNumberValidator() {
         throw new UtilClassCreateException();
     }
     

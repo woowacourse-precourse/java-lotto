@@ -10,12 +10,12 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
-class InputPaymentValidatorTest {
+class InputNumberValidatorTest {
     @Test
     @DisplayName("올바른 payment 입력 시")
     void correctPaymentInput() {
         assertThatNoException()
-                .isThrownBy(() -> InputPaymentValidator.validate("14000"));
+                .isThrownBy(() -> InputNumberValidator.validate("14000"));
     }
     
     @DisplayName("예외 처리 : null or empty 를 입력 시")
@@ -23,7 +23,7 @@ class InputPaymentValidatorTest {
     @NullAndEmptySource
     void nullOrEmptyInputException(String input) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> InputPaymentValidator.validate(input))
+                .isThrownBy(() -> InputNumberValidator.validate(input))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
     
@@ -32,7 +32,7 @@ class InputPaymentValidatorTest {
     @ValueSource(strings = {"14ㄱ000", "ㅏ14000", "14가000"})
     void koreanInputException(String input) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> InputPaymentValidator.validate(input))
+                .isThrownBy(() -> InputNumberValidator.validate(input))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
     
@@ -41,7 +41,7 @@ class InputPaymentValidatorTest {
     @ValueSource(strings = {"a14000", "14A000"})
     void englishInputException(String input) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> InputPaymentValidator.validate(input))
+                .isThrownBy(() -> InputNumberValidator.validate(input))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
     
@@ -50,7 +50,7 @@ class InputPaymentValidatorTest {
     @ValueSource(strings = {"14%000", "14$000"})
     void specialCharactersInputException(String input) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> InputPaymentValidator.validate(input))
+                .isThrownBy(() -> InputNumberValidator.validate(input))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
     
@@ -59,7 +59,7 @@ class InputPaymentValidatorTest {
     @ValueSource(strings = {"14 000", " 14000", "14000 "})
     void spaceInputException(String input) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> InputPaymentValidator.validate(input))
+                .isThrownBy(() -> InputNumberValidator.validate(input))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
 }
