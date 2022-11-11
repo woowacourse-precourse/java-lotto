@@ -23,4 +23,13 @@ class InputValidationTest {
         assertThatThrownBy(() -> inputValidation.checkNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("입력받은 값은 1000원 단위여야 한다.")
+    @Test
+    void checkInputIsThousand() {
+        String input = "1200";
+
+        assertThatThrownBy(() -> inputValidation.checkThousandMoney(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
