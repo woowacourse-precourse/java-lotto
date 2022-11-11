@@ -38,6 +38,19 @@ public class LottoMachine {
         return newLottos;
     }
 
+    static Map<Rank, Integer> analyzeRank(Lotto winningLotto, int bonus, List<Lotto> lottos){
+        initRank();
+        for(Lotto lotto: lottos){
+            int matchCount = howMachWithWinningNumber(winningLotto,lotto);
+            boolean checkBonus = isContainedBonus(winningLotto, bonus);
+
+            Rank rank = Rank.valueOf(matchCount, checkBonus);
+            updateRank(rank);
+        }
+
+        return rankCount;
+    }
+
     static boolean isContainedBonus(Lotto winningLotto, int bonus){
         List<Integer> winningNumber = winningLotto.getNumbers();
         return winningNumber.contains(bonus);
