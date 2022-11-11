@@ -12,6 +12,7 @@ public class OutputView {
         for (Lotto lottery : lotteries) {
             System.out.println(lottery.getNumbers());
         }
+        System.out.println();
     }
 
 }

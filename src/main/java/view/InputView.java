@@ -6,8 +6,10 @@ import static model.NoticeMessage.PURCHASING_AMOUNT;
 
 public class InputView {
     public String inputMoney() {
-        System.out.println(PURCHASING_AMOUNT.toString());
-        return Console.readLine();
+        System.out.println(PURCHASING_AMOUNT);
+        String input = Console.readLine();
+        System.out.println();
+        return input;
     }
 
 }
