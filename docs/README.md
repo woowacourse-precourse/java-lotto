@@ -1,0 +1,18 @@
+# Solution - bunsung92
+- [ ] 로또를 구매한다. - Buyer#buyLotto()
+- [ ] 로또를 발행한다. - LottoPublisher#publishLotto()
+  - [ ] 적합한 금액인지 검증한다. - LottoPublisher#validateCorrectAmount() 
+- [ ] 로또 번호를 검증한다. - Lotto#valid()
+  - [ ] 숫자 범위를 검증한다. - Lotto#validateRangeNumbers()
+  - [ ] 로또 번호의 중복을 검증한다. - Lotto#validateOverlapNumbers()
+- [ ] 당첨 번호가 유효한지 검증한다. - Application#validateWinningNumbers()
+- [ ] 보너스 번호가 유효한지 검증한다. - Application#validateBonusNumber()
+- [ ] 당첨 번호와 구매한 로또 번호를 비교한다. - Application#compareWinningNumbers()
+- [ ] 같은 수가 3개면 5등이다.
+- [ ] 같은 수가 4개면 4등이다.
+- [ ] 같은 수가 5개면 3등이다.
+- [ ] 같은 수가 5개이고 보너스 번호가 일치하면 2등이다.
+- [ ] 같은 수가 6개이면 1등이다.
+  - [ ] 같은 수가 6개이고 보너스 번호도 일치하면 1등이다.
+- [ ] 수익율을 계산한다. Application#calculateRateOfReturn()
+- [ ] 당첨 내역을 출력한다. - Printer#printWinningHistory()
