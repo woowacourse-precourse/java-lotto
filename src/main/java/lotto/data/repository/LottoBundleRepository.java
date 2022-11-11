@@ -6,6 +6,23 @@ import lotto.data.dto.LottoBundleDto;
 
 public class LottoBundleRepository {
 
+    private static LottoBundleRepository instance;
+
+    private LottoBundleRepository() {}
+
+    public static LottoBundleRepository getInstance() {
+        if (instance == null) {
+            assignNewInstance();
+        }
+        return instance;
+    }
+
+    private static void assignNewInstance() {
+        synchronized (LottoBundleRepository.class) {
+            instance = new LottoBundleRepository();
+        }
+    }
+
     private static final List<LottoBundleDto> purchasedLottos = new ArrayList<>();
 
     public List<LottoBundleDto> getPurchasedLottos() {
