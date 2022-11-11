@@ -9,6 +9,7 @@ public class Print {
 	List<ArrayList<Integer>> lottonumbersall;
 	int lottonum = 0;
 	int bonusnumber = 0;
+	int purchaseprice = 0;
 	enum rank { 
 		FIFTH(3,5000), FOURTH(4,50000), THIRD(5,1500000), SECOND(5,30000000), FIRST(6,2000000000);
 		
@@ -30,13 +31,14 @@ public class Print {
 	};
 	HashMap<Integer, Integer> rankmap = new HashMap<>();
 	
-	public void printNumberAll(List<ArrayList<Integer>> lottonumbersall, int lottonum) {
+	public void printNumberAll(List<ArrayList<Integer>> lottonumbersall, int lottonum, int purchaseprice) {
 		System.out.printf("%d를 구매했습니다.",lottonum);
 		for (int i = 0; i < lottonum; i++) {
 			System.out.println(lottonumbersall.get(i));
 		}
 		this.lottonumbersall = lottonumbersall;
 		this.lottonum = lottonum;
+		this.purchaseprice = purchaseprice;
 		System.out.println();
 	}
 	
@@ -95,7 +97,7 @@ public class Print {
 		} 
 	}
 	
-	public void printProfit() {
+	public double printProfit() {
 		double profit = 0;
 		int ranknum = 5;
 		for (rank r : rank.values()) {
@@ -104,6 +106,8 @@ public class Print {
 			profit += price;
 			ranknum--;
 		}
+		profit = profit / purchaseprice;
+		return profit;
 	}
 	
 	public void printProfitRound() {
