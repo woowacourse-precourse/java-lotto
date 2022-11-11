@@ -13,7 +13,7 @@ validate
    1. isNotDividedByThousand : 1000으로 나누었을때 나머지가 0이 아니면 참을 반환
    2. paymentNotAcceptableException : 예외처리한다.
 
-## 도메인 모델
+## 도메인
 ### Lotto
 1. validate : LottoException에서 validate한다. 
 2. 생성자 : 정수형 리스트를 입력받아 validate후에 저장한다.
@@ -38,7 +38,7 @@ List<Ranking>를 가진다.
 ### Ranking
 THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_MATCH_WITH_BONUS, SIX_MATCH를 가진다.
 
-## 엔티티
+## 모델
 ### Player
 List<Lotto>, Profit, Winning을 참조한다. 
 1. buyTickets

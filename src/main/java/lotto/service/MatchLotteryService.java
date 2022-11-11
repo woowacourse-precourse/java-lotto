@@ -33,11 +33,19 @@ public class MatchLotteryService {
 
     }
 
-    public void makePlayerLottoByPayment(Long payment){
+    public void makePlayerLottoByPayment(String payment){
 
     }
 
     public void saveComputerNumber(String lottoNumber, String bonusNumber){
 
+    }
+
+    public Player getPlayer(){
+        return player;
+    }
+
+    public Computer getComputer(){
+        return computer;
     }
 }
