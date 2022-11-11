@@ -40,4 +40,8 @@ public class OutputView {
 		System.out.println(PRINT_SECOND_PRIZE_RESULT + prizeResult.get("secondPrize") + PRINT_PRIZE_NUMBER);
 		System.out.println(PRINT_FIRST_PRIZE_RESULT + prizeResult.get("firstPrize") + PRINT_PRIZE_NUMBER);
 	}
+
+	public static void printRateReturn(double rateReturn){
+		System.out.println("총 수익률은 " + rateReturn + "%입니다.");
+	}
  }
