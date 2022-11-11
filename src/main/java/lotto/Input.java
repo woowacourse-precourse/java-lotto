@@ -10,6 +10,10 @@ public final class Input {
         return convertToInt(input);
     }
 
+    public static String inputWinningNumbers() {
+        return validator.validateDigitAndComma(readLine());
+    }
+
     private static int convertToInt(String input) {
         return Integer.parseInt(input);
     }
