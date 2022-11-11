@@ -1,6 +1,7 @@
 package lotto.view;
 
 import lotto.domain.Lotto;
+import lotto.domain.Money;
 
 import java.util.List;
 
@@ -17,6 +18,11 @@ public class Output {
             System.out.println(lotto.toString());
         }
         System.out.println();
+    }
+
+    public static void printYield(Long amount, Money money){
+        double yield = Math.round(((amount / (double)money.getMoney()) * 1000)) / 10.0;
+        System.out.printf("총 수익률은 %.1f%%입니다.", yield);
     }
 
     public static void printErrorMessage(String message) {

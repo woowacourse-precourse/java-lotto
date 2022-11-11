@@ -36,7 +36,7 @@ class LottoTest {
     @DisplayName("입력 금액이 1000원 단위가 아니면 예외가 발생한다.")
     @Test
     void creatMoneyByWrongUnit() {
-        assertThatThrownBy(() -> new Money(100))
+        assertThatThrownBy(() -> new Money("100"))
                 .isInstanceOf(IllegalArgumentException.class);
 
     }

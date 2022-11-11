@@ -37,4 +37,20 @@ public enum Rank {
     private boolean matchCount(int count) {
         return this.count == count;
     }
+
+    public int getCount() {
+        return count;
+    }
+
+    public int getPrize() {
+        return prize;
+    }
+
+    @Override
+    public String toString() {
+        if (this == SECOND) {
+            return this.getCount() + "개 일치, 보너스 볼 일치 (" + String.format("%,d", this.getPrize()) + "원) - ";
+        }
+        return this.getCount() + "개 일치 (" + String.format("%,d", this.getPrize()) + "원) - ";
+    }
 }

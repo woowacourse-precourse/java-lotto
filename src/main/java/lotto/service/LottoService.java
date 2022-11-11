@@ -16,7 +16,7 @@ public class LottoService {
     private static final int LOTTO_NUMBER_SIZE = 6;
 
     public Money insertMoney() {
-        int inputMoney = Input.inputMoney();
+        String inputMoney = Input.inputMoney();
         Money money = new Money(inputMoney);
         return money;
     }
@@ -88,5 +88,18 @@ public class LottoService {
             lottoResult.addRankCount(rank);
         }
         return lottoResult;
+    }
+
+    public void printLottoResult(LottoResult lottoResult, Money money) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        HashMap<Rank, Integer> result = lottoResult.getResult();
+        Long amount = 0L;
+        for (int ranking = 4; ranking >= 0; ranking--) {
+            Rank rank = Rank.values()[ranking];
+            System.out.printf(rank.toString() + "%d개\n", result.get(rank));
+            amount += result.get(rank) * rank.getPrize();
+        }
+        Output.printYield(amount, money);
     }
 }
