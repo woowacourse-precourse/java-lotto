@@ -29,10 +29,10 @@
   - 로또 구입 금액으로 살 수 있는 로또의 개수를 계산한다. - LottoSeller#numberOfLotto()
   - 구입 가능한 로또의 개수만큼 로또를 생성한다. - LottoGenerator#generateLotto()
 - 당첨 번호와 보너스 번호가 유효한지 확인한다. - WinningNumber#validate()
-- 구입한 로또 리스트와 당첨 번호, 보너스 번호를 비교한다.
-  - 각 로또별로 당첨 번호, 보너스 번호를 비교해 등수를 계산한다.
-  - 로또 리스트의 등수를 바탕으로 당첨 통계를 계산한다.
-  - 로또 리스트의 최종 수익률을 계산한다.
+- 구입한 로또 리스트와 당첨 번호, 보너스 번호를 비교한다. - User#compare()
+  - 각 로또별로 당첨 번호, 보너스 번호를 비교해 등수를 계산한다. - UserCalc#calcRank()
+  - 로또 리스트의 등수를 바탕으로 당첨 통계를 계산한다. - UserCalc#calcWinningStat()
+  - 로또 리스트의 최종 수익률을 계산한다. - UserCalc#calcYield()
 
 ### 입출력 요구 사항
 
