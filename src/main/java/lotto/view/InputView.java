@@ -14,4 +14,11 @@ public class InputView {
         String playerMoney = Console.readLine();
         return playerMoney;
     }
+
+    public static String winningNumbers() {
+        System.out.println(WINNIG_NUMBER_MESSAGE);
+
+        String winnigNumbers = Console.readLine();
+        return winnigNumbers;
+    }
 }
