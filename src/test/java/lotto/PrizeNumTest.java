@@ -69,7 +69,17 @@ public class PrizeNumTest extends NsTest {
         assertThat(gotErrMsg).isTrue();
     }
 
+    @Test
+    @DisplayName("유효한 보너스 번호면 로또 당첨 번호 List 에 저장")
+    void createPrizeWithBonus() {
+        String bonus = "7";
+        List<Integer> expectedPrize = List.of(1, 2, 3, 4, 5, 6, 7);
 
+        PrizeNum.setPrizeNum("1, 2, 3, 4, 5, 6");
+        PrizeNum.setBonusNum(bonus);
+
+        assertEquals(expectedPrize, PrizeNum.getPrize());
+    }
 
     @Override
     protected void runMain() {
