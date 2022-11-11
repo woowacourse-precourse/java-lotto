@@ -81,4 +81,6 @@ public class Input {
     public List<Integer> getNumbers() {
         return this.numbers;
     }
+
+    public int getMoney() { return this.money; }
 }
