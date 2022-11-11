@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -36,5 +37,12 @@ class LottoTest {
     void createLottoByUnderRange() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 0)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호 받아오기")
+    @Test
+    void createLottoAndGet() {
+        Lotto testResult = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(testResult.get()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
 }
