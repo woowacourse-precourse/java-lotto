@@ -39,6 +39,10 @@ public class LottoService {
         return randomLottoNumbers;
     }
 
+    public List<Integer> printAndInputLottoNumber() {
+        InputView.printInputLottoNumber();
+        return LottoNumber.getLottoNumber();
+    }
     private int getScore(List<Integer> lottoNumbers, List<Integer> randomLottoNumber, int score) {
         for (Integer lottoNumber : lottoNumbers) {
             score = existNumber(randomLottoNumber, score, lottoNumber);
