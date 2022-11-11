@@ -71,6 +71,21 @@ class InputTest {
                 .hasMessage(SEPARATOR_ERROR);
     }
 
+    @ParameterizedTest
+    @DisplayName("보너스 번호 문자 입력했을 때 예외")
+    @ValueSource(strings = {
+            "a",
+            " "
+    })
+    void validateBonusNumber(String input) {
+        InputStream in = generateInput(input);
+        System.setIn(in);
+
+        assertThatThrownBy(Input::bonus)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NUMBER_FORMAT_ERROR);
+    }
+
     private InputStream generateInput(String input) {
         return new ByteArrayInputStream(input.getBytes());
     }
