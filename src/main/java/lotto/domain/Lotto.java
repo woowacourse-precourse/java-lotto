@@ -25,4 +25,11 @@ public class Lotto {
     public boolean isNumberContains(final int bonusNumber) {
         return numbers.contains(bonusNumber);
     }
+    
+    @Override
+    public String toString() {
+        return "Lotto{" +
+                "numbers=" + numbers +
+                '}';
+    }
 }

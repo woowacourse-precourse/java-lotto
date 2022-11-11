@@ -31,4 +31,11 @@ public class Payment {
                 .mapToInt(LottoRank::prizeMoney)
                 .sum();
     }
+    
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "payment=" + payment +
+                '}';
+    }
 }

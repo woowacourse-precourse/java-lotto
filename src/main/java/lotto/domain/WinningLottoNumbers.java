@@ -24,4 +24,12 @@ public class WinningLottoNumbers {
     public boolean isBonusNumberExist(final Lotto lotto) {
         return lotto.isNumberContains(bonusNumber);
     }
+    
+    @Override
+    public String toString() {
+        return "WinningLottoNumbers{" +
+                "winningLotto=" + winningLotto +
+                ", bonusNumber=" + bonusNumber +
+                '}';
+    }
 }

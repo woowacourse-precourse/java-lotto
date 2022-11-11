@@ -22,4 +22,11 @@ public class Lottos {
         
         return LottoRank.parseRank(countOfSameLottoNumber, existBonusLottoNumber);
     }
+    
+    @Override
+    public String toString() {
+        return "Lottos{" +
+                "lottos=" + lottos +
+                '}';
+    }
 }

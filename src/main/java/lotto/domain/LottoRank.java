@@ -50,4 +50,12 @@ public enum LottoRank {
     public int prizeMoney() {
         return prizeMoney;
     }
+    
+    @Override
+    public String toString() {
+        return "LottoRank{" +
+                "countOfSameLottoNumber=" + countOfSameLottoNumber +
+                ", prizeMoney=" + prizeMoney +
+                '}';
+    }
 }
