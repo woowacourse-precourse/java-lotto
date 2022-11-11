@@ -30,6 +30,7 @@
   - M [x] 로또 번호, 보너스 번호를 비교해 일치 여부 확인한다 - LottoCalculate#checkBonusNumber()
 - M [x] 당첨 금액을 계산한다. - LottoCalculate#calculateWinMoney()
 - M [ ] 수익률을 계산한다. (소수점 둘째 자리에서 반올림.) - LottoCalculate#calculateWinPersentage()
+- M [x] Lotto 객체에 상금, 등수 정보를 저장할 수 있도록 메서드, 변수를 설정한다. - Lotto
 - V 입력을 위한 문구를 출력한다. - InputView
   - V [ ] 구입할 금액을 입력해주세요. - InputView#printHowMuch()
   - V [ ] 당첨 번호를 입력해 주세요. - InputView#printInputWinNumber()
