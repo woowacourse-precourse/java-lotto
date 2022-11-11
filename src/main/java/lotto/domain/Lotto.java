@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
 import lotto.constant.IntConstant;
 
@@ -19,6 +20,24 @@ public class Lotto {
     @Override
     public String toString() {
         return numbers.toString();
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public int[] compareToWinningLotto(WinningLotto winningLotto) {
+        List<Integer> winningLottoNumbers = winningLotto.getNumbers();
+        int bonusNumber = winningLotto.getBonusNumber();
+        int[] result = new int[2];
+        for (int lottoNum : this.numbers) {
+            if (winningLottoNumbers.contains(lottoNum)) {
+                result[0] += 1;
+            } else if (bonusNumber == lottoNum) {
+                result[1] += 1;
+            }
+        }
+        return result;
     }
     // TODO: 추가 기능 구현
 }

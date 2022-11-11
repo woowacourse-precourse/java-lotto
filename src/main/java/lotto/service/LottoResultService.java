@@ -9,6 +9,10 @@ import lotto.domain.WinningLotto;
 public class LottoResultService {
     public void getResult(List<Lotto> userLotto, String winningLottoInput, String bonusLottoInput) {
         WinningLotto winningLotto = createWinningLotto(winningLottoInput, bonusLottoInput);
+        for (Lotto lotto : userLotto) {
+            int[] correctCountAndBonusCount = lotto.compareToWinningLotto(winningLotto);
+
+        }
     }
 
     private WinningLotto createWinningLotto(String winningLotto, String bonusLotto) {
