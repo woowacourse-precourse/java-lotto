@@ -15,6 +15,7 @@ public class LottoPurchase {
     public int puchaseLotto() {
         int amount = inputAmount();
         ExceptionValidation.validateException(amount);
+        return amount / 1000;
     }
 }
 
