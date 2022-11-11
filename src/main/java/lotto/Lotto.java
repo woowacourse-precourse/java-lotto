@@ -16,7 +16,9 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호 개수는 6개여야 합니다.");
+            IllegalArgumentException e = new IllegalArgumentException();
+            System.out.println(Constant.ERROR_MESSAGE + "[ERROR] 로또 번호 개수는 6개여야 합니다.");
+            throw e;
         }
     }
 
@@ -93,27 +95,36 @@ public class Lotto {
     private void exceptionLottoByDuplicatedNumber(List<Integer> numbers) {
         HashSet<Integer> lottoHashSet = new HashSet<Integer>(numbers);
         if (lottoHashSet.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복될 수 없습니다.");
+            IllegalArgumentException e = new IllegalArgumentException();
+            System.out.println(Constant.ERROR_MESSAGE + "로또 번호는 중복될 수 없습니다.");
+            throw e;
         }
     }
 
     public void exceptionBonusNumberByDuplicatedLotto(int bonusNumber) {
         if (numbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 번호와 중복될 수 없습니다.");
+            IllegalArgumentException e = new IllegalArgumentException();
+            System.out.println(Constant.ERROR_MESSAGE + "보너스 번호는 로또 번호와 중복될 수 없습니다.");
+            throw e;
         }
     }
 
     private void exceptionLottoNumberOutOfRange(List<Integer> numbers) {
         for (Integer lottoNumber : numbers) {
             if (lottoNumber > 45 || lottoNumber < 1) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+                IllegalArgumentException e = new IllegalArgumentException();
+                System.out.println(Constant.ERROR_MESSAGE + "로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+                throw e;
+
             }
         }
     }
 
     public void exceptionBonusNumberOutOfRange(int bonusNumber) {
         if (bonusNumber > 45 || bonusNumber < 1) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+            IllegalArgumentException e = new IllegalArgumentException();
+            System.out.println(Constant.ERROR_MESSAGE + "보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw e;
         }
     }
 }
