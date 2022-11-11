@@ -11,4 +11,8 @@ public class UserBet {
 	public int getBettingMoney() {
 		return bettingMoney;
 	}
+
+	public void checkAmount() {
+		amount = bettingMoney / 1000;
+	}
 }
