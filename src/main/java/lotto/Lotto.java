@@ -38,6 +38,7 @@ public class Lotto {
             visitedNumbers.add(current);
         }
     }
+
     public static List<Integer> getLottoNumbers(String input) {
         List<Integer> lottoNumbers = new ArrayList<>();
         String[] numbers = input.split(",");
@@ -49,7 +50,40 @@ public class Lotto {
 
         return lottoNumbers;
     }
+
+    public List<Integer> getResult(Lotto winningNumbers, int bonus) {
+
+        List<Integer> result = new ArrayList<>();
+
+        for (int i = 0; i < ReferenceValue.LOTTO_SIZE; i++) {
+            int number = winningNumbers.getLottoNumber(i);
+            result = addResult(result, number);
+        }
+
+        result = addBonus(result, bonus);
+
+        return result;
+    }
+
+    private List<Integer> addBonus(List<Integer> result, int number) {
+        if (numbers.contains(number)) {
+            result.add(777);
+        }
+        return result;
+    }
+
+    private List<Integer> addResult(List<Integer> result, int number) {
+        if (numbers.contains(number)) {
+            result.add(number);
+        }
+        return result;
+    }
+
     public Integer getLottoNumber(int LottoIndex) {
         return numbers.get(LottoIndex);
+    }
+
+    public String getLotto() {
+        return numbers.toString();
     }
 }
