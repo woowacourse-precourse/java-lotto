@@ -22,7 +22,6 @@ public class LottoView {
     private static final int SKIP_RESULT_ELSE_CASE = 1;
     private static final long RESULT_NUMBER_ZERO = 0L;
 
-
     public void printStartMessage() {
         System.out.println(START_MESSAGE);
     }
@@ -43,22 +42,27 @@ public class LottoView {
     }
 
     public void printLottoResult(List<LottoResult> lottoResults) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
-
-        Map<LottoResult, Long> lottoResultToCount = lottoResults.stream()
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        printResultInfoStartMessage();
 
         Arrays.stream(LottoResult.values())
                 .skip(SKIP_RESULT_ELSE_CASE)
-                .map(lottoResult -> getResultMessage(lottoResult, lottoResultToCount))
+                .map(lottoResult -> getResultMessage(lottoResult, getResultNumber(lottoResults)))
                 .forEach(System.out::println);
-
     }
 
     public void printYield(double yield) {
         String yieldFormat = String.format("%.1f", yield);
         System.out.println(PREFIX_YIELD_MESSAGE + yieldFormat + SUFFIX_YIELD_MESSAGE);
+    }
+
+    private void printResultInfoStartMessage() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+    }
+
+    private Map<LottoResult, Long> getResultNumber(List<LottoResult> lottoResults) {
+        return lottoResults.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     }
 
     private String getResultMessage(LottoResult lottoResult,
