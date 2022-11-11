@@ -19,14 +19,19 @@ public class InputValidator {
         List<Integer> numbers = new ArrayList<>();
         List<String> splitForm = splitInput(input);
         for (String piece: splitForm) {
-            int number = validateNumeric(piece);
-            validateRange(number);
+            int number = validateProperNumber(piece);
             numbers.add(number);
         }
         return numbers;
     }
 
-    public void validateRange(int number) {
+    public int validateProperNumber(String input) {
+        int number = validateNumeric(input);
+        validateRange(number);
+        return number;
+    }
+
+    private void validateRange(int number) {
         if (number < 1 || number > 45) {
             throw new IllegalArgumentException(NOT_PROPER_NUMBER);
         }
