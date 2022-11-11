@@ -6,7 +6,7 @@ public class User {
     private int money;
     private int bonusNumber;
     private List<Integer> winningNumbers;
-    Map<String, Integer> result; //  TODO: test 이후 다시 private 로
+    private Map<String, Integer> result;
 
     public User() {
         this.money = -1;
@@ -48,4 +48,10 @@ public class User {
     public int getBonusNumber() {
         return this.bonusNumber;
     }
+    
+    public void informProfit(int earnMoney) {
+        float profitRatio = Math.round((double) earnMoney / this.money * 100);
+        System.out.printf("총 수익률은 %f입니다.", profitRatio);
+    }
+
 }
