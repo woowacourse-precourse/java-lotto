@@ -16,6 +16,20 @@ public class Request {
 		userInput = Console.readLine();
 	}
 
+	public void printRequestMessageByStatus(String status) {
+		if(status.equals("request money")) {
+			System.out.println("구입금액을 입력해 주세요.");
+		}
+
+		if(status.equals("request winning numbers")) {
+			System.out.println("당첨 번호를 입력해 주세요.");
+		}
+
+		if(status.equals("request bonus number")) {
+			System.out.println("보너스 번호를 입력해 주세요.");
+		}
+	}
+
 	public void validateByStatus(String status) {
 		if(status.equals("request money")) {
 			validateMoney();
