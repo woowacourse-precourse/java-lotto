@@ -1,11 +1,12 @@
 package lotto.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoNumberGeneratorTest {
 
@@ -19,6 +20,6 @@ class LottoNumberGeneratorTest {
     @Test
     void checkSize() {
         List<List<Integer>> lottoNumbers = lottoNumberGenerator.generateLottoNumber(5);
-        Assertions.assertThat(lottoNumbers.size()).isSameAs(5);
+        assertThat(lottoNumbers.size()).isSameAs(5);
     }
 }
