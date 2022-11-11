@@ -43,6 +43,5 @@ public class Result {
     public void calculateReturnOfRate(int price) {
         double returnOfRate = Math.round(((double)totalPrizeMoney/price)*PERCENT*ROUND_TWO)/TWO_DECIMAL;
         System.out.println("총 수익률은 "+returnOfRate+"%입니다.");
-
     }
 }
