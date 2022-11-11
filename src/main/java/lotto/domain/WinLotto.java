@@ -1,12 +1,17 @@
 package lotto.domain;
 
-import java.util.ArrayList;
+import lotto.validate.WinLottoValidate;
+
 import java.util.List;
 
 public class WinLotto {
 
-    public WinLotto(List<Integer> winNumber, int bonus) {
+    public WinLotto(Lotto winLotto, int bonus) {
+        validate(winLotto, bonus);
+    }
 
+    private void validate(Lotto winLotto, int bonus) {
+        WinLottoValidate winLottoValidate = new WinLottoValidate();
     }
 
 
