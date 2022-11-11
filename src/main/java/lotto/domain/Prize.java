@@ -1,7 +1,12 @@
 package lotto.domain;
 
 public enum Prize {
-    FIRST(6, 2000000000, "(2,000,000,000원)"), SECOND(5, 30000000, "(30,000,000원)"), THIRD(5, 1500000, "(1,500,000원)"), FOURTH(4, 50000, "(50,000원)"), FIFTH(3, 5000, "(5,000원)"), NOTHING(0, 0, "");
+    FIRST(6, 2000000000, "(2,000,000,000원)"),
+    SECOND(5, 30000000, "(30,000,000원)"),
+    THIRD(5, 1500000, "(1,500,000원)"),
+    FOURTH(4, 50000, "(50,000원)"),
+    FIFTH(3, 5000, "(5,000원)"),
+    NOTHING(0, 0, "");
 
     private final int countAnswer;
     private final int prize;
@@ -11,10 +16,6 @@ public enum Prize {
         this.countAnswer = countAnswer;
         this.prize = prize;
         this.prizeString = prizeString;
-    }
-
-    public int getCountAnswer() {
-        return countAnswer;
     }
 
     public String getPrizeString() {
@@ -45,6 +46,9 @@ public enum Prize {
 
         if (prize == 30000000) result.append(", 보너스 볼 일치");
 
-        return result.append(" ").append(getPrizeString()).append(" - ").toString();
+        return result.append(" ")
+                .append(getPrizeString())
+                .append(" - ")
+                .toString();
     }
 }
