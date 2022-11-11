@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.exception.LottoException;
 import lotto.model.Bonus;
+import lotto.model.Judgment;
 import lotto.model.Lotto;
 import lotto.model.Winner;
 import org.junit.jupiter.api.BeforeEach;
@@ -111,5 +112,29 @@ class LottoTest {
         }
     }
 
+    @Nested
+    class JudgmentTest{
+
+        private Judgment judgment;
+
+        @BeforeEach
+        void setUp(){
+            judgment = new Judgment();
+        }
+
+        @DisplayName("로또 번호와 당첨 번호를 비교하고 몇 개가 같은지 알 수 있다.")
+        @Test
+        void 로또_번호_당첨_번호_비교_테스트(){
+            int correctCount = judgment.correctCountLottoNumberAndWinnerNum(List.of(1, 2, 3, 4, 5, 6), List.of(2, 3, 12,43,45));
+            assertThat(correctCount).isEqualTo(2);
+        }
+
+        @DisplayName("로또 번호와 보너스 번호를 비교")
+        @Test
+        void 로또_번호_보너스_번호_비교_테스트(){
+            boolean found = judgment.isBonusNumberInLottoNumber(List.of(1, 2, 3, 4, 5, 6), 3);
+            assertThat(found).isEqualTo(true);
+        }
+    }
 
 }
