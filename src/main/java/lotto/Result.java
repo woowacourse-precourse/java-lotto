@@ -12,6 +12,9 @@ public class Result {
     int bonus_index=0;
     double total_prize=0;
     int [] winning = new int[5];
+    double earnRate = 0;
+
+    Printer printer = new Printer();
 
     public Result() {
 
@@ -26,6 +29,11 @@ public class Result {
             bonus_index=0;
         }
         calculateEarningRate(total_prize, Buyer.money);
+    }
+
+    private void calculateEarningRate(double total_prize, int money) {
+        earnRate = total_prize/money*100;
+        printer.printResult(winning, earnRate);
     }
 
     private void compareResult() {
