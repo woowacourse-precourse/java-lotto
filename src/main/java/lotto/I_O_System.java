@@ -10,19 +10,17 @@ public class I_O_System {
     public static final String BAGIC_ERROR_MESSAGE = "[ERROR]";
     private String Enter_Price;
 
-    public void Enter_Price()
-    {
+    public void Enter_Price() {
         Enter_Price = Console.readLine();
-       if(Differnet_Error()){
-           int Number= Integer.parseInt(Enter_Price);
-       }
+        if (Differnet_Error()) {
+            int Number = Integer.parseInt(Enter_Price);
+        }
 
     }
 
-    private boolean Differnet_Error()
-    {
+    private boolean Differnet_Error() {
         try {
-            if(!(Enter_Price != null && Enter_Price.matches("[0-9.]+"))) {
+            if (!(Enter_Price != null && Enter_Price.matches("[0-9.]+"))) {
                 throw new IllegalArgumentException(BAGIC_ERROR_MESSAGE + " 오류 발생");
             }
         } catch (IllegalArgumentException ex) {
@@ -33,9 +31,8 @@ public class I_O_System {
         return true;
     }
 
-    public boolean Check_True()
-    {
-        if(!Differnet_Error()) {
+    public boolean Check_True() {
+        if (!Differnet_Error()) {
             return false;
         }
 
