@@ -12,7 +12,6 @@ public class Application {
         List<Lotto> lottos = lottoMachine.buyLotto(2000);
         lottoMachine.printLottosInfo(lottos);
 
-
     }
 
 
