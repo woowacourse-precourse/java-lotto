@@ -4,22 +4,23 @@ import lotto.constant.IntConstant;
 import lotto.constant.StringConstant;
 
 public class IntegerValidation {
-    public boolean isNumeric(String userInput, int greaterThan, int smallerThan) {
+    public static boolean isNumeric(String userInput, IntConstant asciiGreaterThan, IntConstant asciiSmallerThan) {
         return userInput.length() == userInput.chars()
-                .filter(inputChar -> isNumber(inputChar, greaterThan, smallerThan))
+                .filter(inputChar -> isNumber(inputChar, asciiGreaterThan, asciiSmallerThan))
                 .count();
     }
 
-    public boolean isDivideByInteger(String money, int divisor) {
-        return (Integer.parseInt(money) % divisor) == 0;
+    public static boolean isDivideByInteger(String money, IntConstant divisor) {
+        return (Integer.parseInt(money) % divisor.getValue()) == 0;
     }
 
-    public boolean isBetween(String userInput, int greaterThan, int smallerThan) {
-        return greaterThan <= Integer.parseInt(userInput) && Integer.parseInt(userInput) <= smallerThan;
+    public static boolean isBetween(String userInput, IntConstant valueGreaterThan, IntConstant valueSmallerThan) {
+        return valueGreaterThan.getValue() <= Integer.parseInt(userInput)
+                && Integer.parseInt(userInput) <= valueSmallerThan.getValue();
     }
 
-    private boolean isNumber(int inputChar, int greaterThan, int smallerThan) {
-        return greaterThan <= inputChar
-                && inputChar <= smallerThan ;
+    private static boolean isNumber(int inputChar, IntConstant asciiGreaterThan, IntConstant asciiSmallerThan) {
+        return asciiGreaterThan.getValue() <= inputChar
+                && inputChar <= asciiSmallerThan.getValue() ;
     }
 }

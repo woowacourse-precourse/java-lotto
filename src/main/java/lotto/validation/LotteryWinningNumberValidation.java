@@ -8,34 +8,30 @@ public class LotteryWinningNumberValidation extends Validation{
     @Override
     public void isValidate(String userInput) {
         String[] splitString = userInput.split(",");
-        isLottoInputLength(splitString, IntConstant.LOTTO_NUMBER_COUNT.getValue());
-        isLottoInputNumeric(splitString, IntConstant.ZERO_ASCII_CODE.getValue(),
-                IntConstant.NINE_ASCII_CODE.getValue());
-        isLottoInputBetween(splitString, IntConstant.LOTTO_NUMBER_BIGGER_THAN.getValue(),
-                IntConstant.LOTTO_NUMBER_SMALLER_THAN.getValue());
+        isLottoInputLength(splitString, IntConstant.LOTTO_NUMBER_COUNT);
+        isLottoInputNumeric(splitString, IntConstant.ZERO_ASCII_CODE,
+                IntConstant.NINE_ASCII_CODE);
+        isLottoInputBetween(splitString, IntConstant.LOTTO_NUMBER_BIGGER_THAN,
+                IntConstant.LOTTO_NUMBER_SMALLER_THAN);
     }
 
-    private void isLottoInputNumeric(String[] splitString, int biggerThan, int smallerThan) {
-        IntegerValidation integerValidation = new IntegerValidation();
-        Arrays.stream(splitString)
-                .filter(digitString -> !(integerValidation.isNumeric(digitString, biggerThan, smallerThan)))
-                .map(digitString -> StringConstant.LOTTO_INPUT_NUMBER_BETWEEN_ERROR_MESSAGE.getMessage())
-                .forEach(this::createError);
-    }
-
-
-    private void isLottoInputLength(String[] splitString, int length) {
-        if (!(splitString.length == length)) {
+    private void isLottoInputLength(String[] splitString, IntConstant length) {
+        if (!(LottoValidation.isLottoInputLength(splitString, length))) {
             createError(StringConstant.LOTTO_INPUT_LENGTH_ERROR_MESSAGE.getMessage());
         }
     }
 
-    private void isLottoInputBetween(String[] splitString, int biggerThan, int smallerThan) {
-        IntegerValidation integerValidation = new IntegerValidation();
-        Arrays.stream(splitString)
-                .filter(digitString -> !(integerValidation.isBetween(digitString, biggerThan, smallerThan)))
-                .map(digitString -> StringConstant.LOTTO_INPUT_NUMBER_BETWEEN_ERROR_MESSAGE.getMessage())
-                .forEach(this::createError);
+    private void isLottoInputNumeric(String[] splitString, IntConstant asciiBiggerThan, IntConstant asciiSmallerThan) {
+        if (!(LottoValidation.isLottoInputNumeric(splitString, asciiBiggerThan, asciiSmallerThan))) {
+            createError(StringConstant.LOTTO_INPUT_NUMBER_BETWEEN_ERROR_MESSAGE.getMessage());
+        }
+    }
+
+
+    private void isLottoInputBetween(String[] splitString, IntConstant valueBiggerThan, IntConstant valueSmallerThan) {
+        if (!(LottoValidation.isLottoInputBetween(splitString, valueBiggerThan, valueSmallerThan))) {
+            createError(StringConstant.LOTTO_INPUT_NUMBER_BETWEEN_ERROR_MESSAGE.getMessage());
+        }
     }
 
 
