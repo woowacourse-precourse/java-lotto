@@ -1,6 +1,9 @@
 package lotto.domain.winning;
 
 import java.text.NumberFormat;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public enum LottoRanking {
 
@@ -31,9 +34,21 @@ public enum LottoRanking {
     ),
     ;
 
+    private static final Map<Integer, LottoRanking> LOTTO_RANKING_UNRELATED_TO_BONUS_NUMBER =
+            Arrays.stream(LottoRanking.values())
+                    .filter(lottoRanking -> !lottoRanking.isMatchedBonusNumber)
+                    .collect(Collectors.toUnmodifiableMap(
+                            lottoRanking -> lottoRanking.matchNumberCount,
+                            lottoRanking -> lottoRanking)
+                    );
+
     private final int matchNumberCount;
     private final boolean isMatchedBonusNumber;
     private final int winnings;
+
+    public static LottoRanking lottoRanking(int count) {
+        return LOTTO_RANKING_UNRELATED_TO_BONUS_NUMBER.get(count);
+    }
 
     LottoRanking(int matchNumberCount, boolean isMatchedBonusNumber, int winnings) {
         this.matchNumberCount = matchNumberCount;
@@ -43,10 +58,6 @@ public enum LottoRanking {
 
     public int sumOfWinnings(int count) {
         return winnings * count;
-    }
-
-    public boolean isMatchedOnlyNumberCount(int count) {
-        return matchNumberCount == count && !isMatchedBonusNumber;
     }
 
     public String stringFormat() {

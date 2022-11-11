@@ -5,7 +5,7 @@ import static lotto.domain.lotto_numbers.LottoNumbersErrorMessages.INVALID_SIZE_
 import static lotto.domain.lotto_numbers.LottoNumbersErrorMessages.NOT_ALLOW_DUPLICATED_LOTTO_NUMBER;
 import static lotto.domain.policy.LottoPolicy.MAX_NUMBER_OF_LOTTO;
 import static lotto.domain.policy.LottoPolicy.MIN_NUMBER_OF_LOTTO;
-import static lotto.domain.policy.LottoPolicy.COUNT_OF_LOTTO_NUMBERS;
+import static lotto.domain.policy.LottoPolicy.COUNTS_OF_LOTTO_NUMBERS;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,7 +43,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != COUNT_OF_LOTTO_NUMBERS) {
+        if (numbers.size() != COUNTS_OF_LOTTO_NUMBERS) {
             throw new IllegalArgumentException(INVALID_SIZE_OF_LOTTO_NUMBERS);
         }
     }

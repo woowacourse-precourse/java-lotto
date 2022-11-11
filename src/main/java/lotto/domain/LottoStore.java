@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
-import static lotto.domain.policy.LottoPolicy.COUNT_OF_LOTTO_NUMBERS;
+import static lotto.domain.policy.LottoPolicy.COUNTS_OF_LOTTO_NUMBERS;
 import static lotto.domain.policy.LottoPolicy.MAX_NUMBER_OF_LOTTO;
 import static lotto.domain.policy.LottoPolicy.MIN_NUMBER_OF_LOTTO;
 import static lotto.domain.policy.LottoPolicy.PRICE_OF_LOTTO;
@@ -33,7 +33,7 @@ public class LottoStore {
         List<Integer> lottoNumbers = pickUniqueNumbersInRange(
                 MIN_NUMBER_OF_LOTTO,
                 MAX_NUMBER_OF_LOTTO,
-                COUNT_OF_LOTTO_NUMBERS
+                COUNTS_OF_LOTTO_NUMBERS
         );
 
         return new Lotto(lottoNumbers);

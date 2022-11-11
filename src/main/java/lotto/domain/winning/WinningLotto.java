@@ -1,7 +1,7 @@
 package lotto.domain.winning;
 
+import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import lotto.domain.lotto_numbers.BonusNumber;
@@ -27,7 +27,7 @@ public class WinningLotto {
     }
 
     public LottoResults lottoResults(List<Lotto> purchasedLottos) {
-        Map<LottoRanking, Integer> results = new LinkedHashMap<>();
+        Map<LottoRanking, Integer> results = new EnumMap<>(LottoRanking.class);
         EnumSet.allOf(LottoRanking.class)
                 .forEach(lottoRanking -> results.put(lottoRanking, 0));
 
@@ -38,40 +38,37 @@ public class WinningLotto {
 
     private void judgeWinning(List<Lotto> purchasedLottos, Map<LottoRanking, Integer> results) {
         for (Lotto purchasedLotto : purchasedLottos) {
-            int matchCountsOfWinningNumber = winningNumber.matchNumberCounts(purchasedLotto);
-            if (matchCountsOfWinningNumber < 3) {
+            final int MIN_NUMBER_FOR_WINNING = 3;
+            int matchCountsOfNumber = winningNumber.matchNumberCounts(purchasedLotto);
+            if (matchCountsOfNumber < MIN_NUMBER_FOR_WINNING) {
                 continue;
             }
 
             int matchCountOfBonusNumber = 0;
-            if (matchCountsOfWinningNumber == 5) {
+            if (matchCountsOfNumber == 5) {
                 matchCountOfBonusNumber = bonusNumber.matchCount(purchasedLotto);
             }
 
-            addResults(matchCountsOfWinningNumber, matchCountOfBonusNumber, results);
+            addResults(matchCountsOfNumber, matchCountOfBonusNumber, results);
         }
     }
 
-    private void addResults(int matchCountsOfWinningNumber, int matchCountOfBonusNumber,
+    private void addResults(int matchCountsOfNumber, int matchCountOfBonusNumber,
             Map<LottoRanking, Integer> results) {
-        if (isSecondRankings(matchCountsOfWinningNumber, matchCountOfBonusNumber)) {
+        if (isSecondRankings(matchCountsOfNumber, matchCountOfBonusNumber)) {
             results.put(LottoRanking.SECOND, results.get(LottoRanking.SECOND) + 1);
             return;
         }
 
-        matchRankings(matchCountsOfWinningNumber, results);
+        matchRankings(matchCountsOfNumber, results);
     }
 
-    private void matchRankings(int matchCountsOfWinningNumber, Map<LottoRanking, Integer> results) {
-        // count 개수가 동일하고, bonus는 false인 랭킹 검색
-        EnumSet.allOf(LottoRanking.class).stream()
-                .filter(lottoRanking ->
-                        lottoRanking.isMatchedOnlyNumberCount(matchCountsOfWinningNumber))
-                .forEach(lottoRanking ->
-                        results.put(lottoRanking, results.get(lottoRanking) + 1));  // 검색된 랭킹의 value + 1
+    private void matchRankings(int matchCountsOfNumber, Map<LottoRanking, Integer> results) {
+        LottoRanking lottoRanking = LottoRanking.lottoRanking(matchCountsOfNumber);
+        results.put(lottoRanking, results.get(lottoRanking) + 1);
     }
 
-    private boolean isSecondRankings(int matchNumberCounts, int bonusNumberMatch) {
-        return matchNumberCounts == 5 && bonusNumberMatch == 1;
+    private boolean isSecondRankings(int matchCountsOfNumber, int matchCountOfBonusNumber) {
+        return matchCountsOfNumber == 5 && matchCountOfBonusNumber == 1;
     }
 }

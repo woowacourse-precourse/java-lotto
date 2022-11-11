@@ -22,4 +22,18 @@ class LottoRankingTest {
         LottoRanking second = LottoRanking.FIRST;
         assertThat(second.stringFormat()).doesNotContain(BONUS_FORMAT);
     }
+
+    @DisplayName("bonus number와 관련 없는 랭킹 정보를 matchNumberCount로 찾을 수 있다.")
+    @Test
+    void lottoRankingFindByMatchNumberCount1() {
+        LottoRanking lottoRanking = LottoRanking.lottoRanking(6);
+        assertThat(lottoRanking).isEqualTo(LottoRanking.FIRST);
+    }
+
+    @DisplayName("5를 입력 받으면 SECOND 랭킹이 아닌 THIRD 랭킹이 조회된다.")
+    @Test
+    void lottoRankingFindByMatchNumberCount2() {
+        LottoRanking lottoRanking = LottoRanking.lottoRanking(5);
+        assertThat(lottoRanking).isEqualTo(LottoRanking.THIRD);
+    }
 }
