@@ -1,5 +1,7 @@
 package lotto.Model;
 
+import static lotto.Model.Ranking.findRanking;
+
 public class Money {
 
     private static int inputMoney;
@@ -34,11 +36,11 @@ public class Money {
     public static void printYield() {
         double sum = 0.0;
         for(int i : LottoSystem.getWinningStatics()) {
-            if(i == 6) sum+=2000000000;
-            if(i == 7) sum+=30000000;
-            if(i == 5) sum+=1500000;
-            if(i == 4) sum+=50000;
-            if(i == 3) sum+=5000;
+            if(i == 6) sum+= findRanking(i).getPrize();
+            if(i == 7) sum+= findRanking(i).getPrize();
+            if(i == 5) sum+= findRanking(i).getPrize();
+            if(i == 4) sum+= findRanking(i).getPrize();
+            if(i == 3) sum+= findRanking(i).getPrize();
         }
         sum /= inputMoney;
         sum *= 100;
