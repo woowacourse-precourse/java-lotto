@@ -1,20 +1,12 @@
 //package lotto;
 //
-//import static lotto.Lotto.bonusNumberList;
-//import static lotto.Lotto.getMyLottoList;
-//import static lotto.Lotto.myLottoList;
-//import static lotto.Lotto.theNumberOfLotto;
-//import static lotto.Lotto.userInputMoney;
-//import static lotto.Lotto.winnerNumberList;
 //
-//import java.io.IOException;
-//import java.util.ArrayList;
-//import java.util.List;
 //
 //public class CompareLotto {
 //
 //    private static int first, second, third, fourth, fifth;
-//
+
+
 //    public static void compareLotto() throws IOException {
 //        for (int i = 0; i < theNumberOfLotto(); i++) {
 //            if(myLottoList.contains(bonusNumberList)){
@@ -52,7 +44,7 @@
 //
 //        }
 //    }
-//
+
 //    public static void printCompareLotto(){ // 구입한 로또와 1등 로또와 숫자 비교
 //        System.out.println("당첨 통계");
 //        System.out.println("---");
@@ -69,16 +61,11 @@
 //        System.out.println("총 수익률은 " + rateOfReturn + "%입니다.");
 //
 //    }
-
+//
 //    public double rateOfReturn(UserInputMoney, int earnedMoney){ // 소숫점 둘째자리에서 반올림 Math.floor Math.ceil 사용해야하나?
 //
 //        return inputMoney / earnedMoney;
 //    }
+//
+//}
 
-}
-
-// myLottoList -> n개의 로또 번호 생성 myLotooList.get(i).get(j) 와 winnerNumberList.get(i)랑 비교
-// myLottoList -> n개의 로또 번호 생성 myLotooList.get(i).get(j) 와 bonusNumberList.get(i)랑 비교
-
-// winnerNumberList -> 입력한 6개의 로또 값
-// bonusNumberList -> 보너스넘버 1개 ArrayList

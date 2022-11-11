@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -11,7 +12,7 @@ public class Lotto {
     private static List<Integer> bonusNum = new ArrayList<>();
     private static int howManyLotto;
     private static int inputMoney;
-
+    private static int first, second, third, fourth, fifth;
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
@@ -39,6 +40,7 @@ public class Lotto {
     public static List<List> myLottoNumber() {
         for (int i = 0; i < howManyLotto; i++) {
             List<Integer> ranLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(ranLotto);
             myLottoNum.add(ranLotto);
         }
         return myLottoNum;
@@ -51,6 +53,9 @@ public class Lotto {
         String[] nums = num.split(",");
         for (int i = 0; i < nums.length; i++) {
             numbers.add(Integer.parseInt(nums[i]));
+        }
+        if(numbers.size() > 6){
+            throw new IllegalArgumentException("[ERROR] 로또는 6자리의 숫자여야 합니다.");
         }
         return numbers;
     }
@@ -67,7 +72,76 @@ public class Lotto {
         return bonusNum;
     }
 
+    // 로또 당첨 확인
+//    public static void compareLotto() {
+//        checkWin();
+//        int lottoSize = myLottoNum.size();
+//        if(myLottoNum.contains(bonusNum)){
+//            if(lottoSize == 3){
+//                fifth++;
+//            }
+//            if(lottoSize == 4){
+//                fourth++;
+//            }
+//            if(lottoSize == 5){
+//                second++;
+//            }
+//            if(lottoSize == 6){
+//                first++;
+//            }
+//        }
+//        if(!myLottoNum.contains(bonusNum)){
+//            if(lottoSize == 3){
+//                fifth++;
+//            }
+//            if(lottoSize == 4){
+//                fourth++;
+//            }
+//            if(lottoSize == 5){
+//                third++;
+//            }
+//            if(lottoSize == 6){
+//                first++;
+//            }
+//        }
+//    }
 
+    public static void checkWin(){
+        for (int i = 0; i < Lotto.howManyLotto; i++){
+            if(myLottoNum.get(i).contains(bonusNum.get(0))){
+                myLottoNum.get(i).retainAll(numbers);
+                int lottoSize = myLottoNum.get(i).size();
+                if(lottoSize == 3){
+                    fifth++;
+                }
+                if(lottoSize == 4){
+                    fourth++;
+                }
+                if(lottoSize == 5){
+                    second++;
+                }
+                if(lottoSize == 6){
+                    first++;
+                }
+            }
+            if(!myLottoNum.get(i).contains(bonusNum.get(0))){
+                myLottoNum.get(i).retainAll((numbers));
+                int lottoSize = myLottoNum.get(i).size();
+                if(lottoSize == 3){
+                    fifth++;
+                }
+                if(lottoSize == 4){
+                    fourth++;
+                }
+                if(lottoSize == 5){
+                    third++;
+                }
+                if(lottoSize == 6){
+                    first++;
+                }
+            }
+        }
+    }
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또는 6자리의 숫자여야 합니다.");
