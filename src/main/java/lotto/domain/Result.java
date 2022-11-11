@@ -19,7 +19,7 @@ public class Result {
         }
     };
 
-    public void Result(List<List<Integer>> purchasedLotteries,
+    public Result(List<List<Integer>> purchasedLotteries,
                        WinningNumbers winningNumbers,
                        BonusNumber bonusNumber) {
         this.purchasedLotteries = purchasedLotteries;
