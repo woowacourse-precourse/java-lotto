@@ -55,4 +55,13 @@ class LottoTest {
         assertThat(1).isEqualTo(FIVE_BONUS.getCount());
     }
 
+    @DisplayName("보너스볼 숫자가 당첨번호에 포함되어 있는지 여부")
+    @Test
+    void 보너스볼_중복_체크_테스트() {
+        Lotto input = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int input_bonus = 7;
+        Referee referee = new Referee();
+        assertThat(referee.isDuplicateBonusBall(input_bonus, input)).isFalse();
+    }
+
 }

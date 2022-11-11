@@ -36,4 +36,7 @@ public class Referee {
         }
     }
 
+    public boolean isDuplicateBonusBall(int input_bonus, Lotto input) {
+        return input.getNumbers().contains(input_bonus);
+    }
 }
