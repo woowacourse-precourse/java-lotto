@@ -12,6 +12,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
+
+    private Lotto makeBasicLottoForTest() {
+        return new Lotto(List.of(1, 2, 3, 4, 5, 6));
+    }
+
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -36,8 +41,15 @@ class LottoTest {
 
     @Test
     void 로또_toString_테스트() {
-        Lotto lotto = new Lotto(List.of(20, 1, 36, 4, 10, 21));
-        String expectedToString = "[1, 4, 10, 20, 21, 36]";
+        Lotto lotto = makeBasicLottoForTest();
+        String expectedToString = "[1, 2, 3, 4, 5, 6]";
         assertThat(lotto.toString()).isEqualTo(expectedToString);
+    }
+
+    @ParameterizedTest(name = "로또 번호 포함 테스트 {index}: {0} - {1}")
+    @CsvSource(value = {"3,true", "9,false"})
+    void 로또_번호_포함_테스트(int number, boolean expected) {
+        Lotto lotto = makeBasicLottoForTest();
+        assertThat(lotto.isContainNumber(number)).isEqualTo(expected);
     }
 }
