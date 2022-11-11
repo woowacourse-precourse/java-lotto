@@ -19,7 +19,7 @@ public class WinningStatistics {
         return winningDetails;
     }
 
-    public static int compareNumbersWithWinningNumbers(Lotto lotto, WinningLotto winningLotto) {
+    private static int compareNumbersWithWinningNumbers(Lotto lotto, WinningLotto winningLotto) {
         List<Integer> numbers = lotto.getNumbers();
         List<Integer> winningNumbers = winningLotto.getWinningNumbers();
         return (int) numbers.stream()
@@ -27,7 +27,7 @@ public class WinningStatistics {
                 .count();
     }
 
-    public static boolean compareNumbersWithBonusNumber(Lotto lotto, WinningLotto winningLotto) {
+    private static boolean compareNumbersWithBonusNumber(Lotto lotto, WinningLotto winningLotto) {
         List<Integer> numbers = lotto.getNumbers();
         int bonusNumber = winningLotto.getBonusNumber();
         return numbers.contains(bonusNumber);
