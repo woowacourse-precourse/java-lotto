@@ -8,12 +8,12 @@ public class MoneyValidator {
 
     public MoneyValidator(String money) {
         this.money = money;
-        isInteger();
+        isInt();
         isThousand();
         isPositive();
     }
 
-    public void isInteger() {
+    private void isInt() {
         try {
             Utils.stringToIntMoney(money);
         } catch (NumberFormatException e) {
@@ -21,13 +21,13 @@ public class MoneyValidator {
         }
     }
 
-    public void isThousand() {
+    private void isThousand() {
         if ((Utils.stringToIntMoney(money) % 1000) != 0) {
             throw new IllegalArgumentException(Constants.ERROR_MONEY_THOUSAND);
         }
     }
 
-    public void isPositive() {
+    private void isPositive() {
         if (!(Utils.stringToIntMoney(money) > 0)) {
             throw new IllegalArgumentException(Constants.ERROR_MONEY_POSITIVE);
         }
