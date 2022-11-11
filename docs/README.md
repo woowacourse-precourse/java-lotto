@@ -86,10 +86,12 @@ Enum : Rank
 [constructor]<br>
 - Draw(Lotto winningLotto, int bonusNum) // (feat.3,feat.4)
   - validateBonusNumRange(bonusNum)
+  - setRankClassification()
   - this.
 
 [method]<br>
 - public Map<Rank,Integer> getWinningStats(List<Lotto> lottoPaper) // (feat.6)
+- private void setRankClassification() // Rank Map 초기화
 - private Rank tryLottoRank() // 로또 랭크 설정
 - private int winningNumSize(Lotto tryLotto) // 개개인의 로또 비교후 맞는 숫자 출력
 - private boolean isBonusExist(int bonusNum) // 보너스 번호가 있는지 확인
