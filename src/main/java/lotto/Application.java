@@ -44,13 +44,14 @@ public class Application {
 
         money = Converter.convertMoneyInput(readLine());
         user = new User(money);
-        user.printLottos();
+        user.showLottos();
 
         winningNumbers = Converter.convertNumbersInput(readLine());
         bonusNumber = Converter.convertBonusNumberInput(readLine());
         winningLotto = new WinningLotto(winningNumbers, bonusNumber);
 
         addWinnings(user, winningLotto);
+        user.showWinnings();
 
         user.printWinnings();
         System.out.println("총 수익률은 " + user.getYield() +"%입니다.");

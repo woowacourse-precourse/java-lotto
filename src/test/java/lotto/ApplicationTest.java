@@ -69,7 +69,7 @@ class ApplicationTest extends NsTest {
                     WinningLotto winningLotto = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7);
 
                     Application.addWinnings(user, winningLotto);
-                    user.printWinnings();
+                    user.showWinnings();
 
                     assertThat(output()).contains(
                             "3개 일치 (5,000원) - 0개",
