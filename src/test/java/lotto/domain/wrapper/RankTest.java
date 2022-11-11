@@ -20,4 +20,10 @@ class RankTest {
         Assertions.assertThat(totalPrize).isEqualTo(2031555000);
     }
 
+    @Test
+    public void rankValueTest() throws Exception {
+        int fifthPrize = 5000;
+        Assertions.assertThat(Rank.FIFTH.currentPrize()).isEqualTo(fifthPrize);
+    }
+
 }

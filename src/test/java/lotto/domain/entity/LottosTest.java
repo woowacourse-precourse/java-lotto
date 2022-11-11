@@ -1,6 +1,7 @@
 package lotto.domain.entity;
 
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -24,5 +25,12 @@ class LottosTest {
         Assertions.assertThat(numbers).isEqualTo(compareNumbers);
     }
 
-
+    @Test
+    public void uniqueRandomNumberSortingTest() throws Exception {
+        for (int i = 0; i < 10; i++) {
+            List<Integer> integers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(integers);
+            System.out.println("integers = " + integers);
+        }
+    }
 }

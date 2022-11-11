@@ -13,4 +13,6 @@ public class ConsoleOut {
 
     public static final String TOTAL_PRIZE_MESSAGE_PRE = "총 수익률은 ";
     public static final String TOTAL_PRIZE_MESSAGE_POST = "%입니다.";
+
+    public static final String AMOUNT = "개";
 }

@@ -7,6 +7,7 @@ import static lotto.domain.wrapper.Rank.SECOND;
 import static lotto.domain.wrapper.Rank.THIRD;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import lotto.domain.vo.MatchReport;
@@ -15,7 +16,7 @@ import lotto.domain.wrapper.Rank;
 public class Report {
 
     private int totalPrize = 0;
-    private Map<Rank, Integer> matchResultMap = new HashMap<>();
+    private Map<Rank, Integer> matchResultMap = new LinkedHashMap<>();
 
 
     public Map<Rank, Integer> printEachPrize(List<MatchReport> matchReports) {
@@ -45,12 +46,14 @@ public class Report {
                 matchResultMap.replace(THIRD, amountOfThirdPrize);
                 continue;
             }
+            // 4개의 숫자와 하나의 보너스가 맞을 경우
             if (matchReport.currentHitCount() == 4 && matchReport.currentBonus() == true) {
                 Integer amountOfSecondPrize = matchResultMap.get(SECOND);
                 amountOfSecondPrize += 1;
                 matchResultMap.replace(SECOND, amountOfSecondPrize);
                 continue;
             }
+            // 5개의 모든 숫자가 맞을 경우
             if (matchReport.currentHitCount() == 5) {
                 Integer amountOfFirstPrize = matchResultMap.get(FIRST);
                 amountOfFirstPrize += 1;
@@ -62,9 +65,20 @@ public class Report {
     }
 
     public String TotalInterest(int userMoney) {
-        double interest = (double) 5000 / userMoney;
+        getTotalPrize();
+        double interest = (double) totalPrize / userMoney;
         double roundedInterest = (double) Math.round(interest * 1000) / 10;
         return interestToPrintValue(roundedInterest);
+    }
+
+    private void getTotalPrize() {
+        for (Rank rank : matchResultMap.keySet()) {
+            Integer integer = matchResultMap.get(rank);
+            if (integer == 0) {
+                continue;
+            }
+            totalPrize += (rank.currentPrize() * integer);
+        }
     }
 
     private void matchResultMapSetting() {

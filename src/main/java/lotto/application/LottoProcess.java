@@ -2,7 +2,9 @@ package lotto.application;
 
 import static lotto.common.message.ConsoleOut.*;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import java.util.Map;
 import lotto.common.message.ConsoleOut;
 import lotto.domain.Generator;
 import lotto.domain.entity.LottoMachine;
@@ -12,6 +14,7 @@ import lotto.domain.entity.LottoNumberMatcher;
 import lotto.domain.entity.Report;
 import lotto.domain.entity.User;
 import lotto.domain.vo.MatchReport;
+import lotto.domain.wrapper.Rank;
 import lotto.infrastructure.GeneratorImpl;
 
 public class LottoProcess {
@@ -20,7 +23,7 @@ public class LottoProcess {
 
     public static void run() {
         System.out.println(INPUT_COST_MASSAGE);
-        int generateMoney = generator.generateMoney();
+        int generateMoney = generator.generateMoney(Console.readLine());
         Money money = Money.from(generateMoney);
         Lottos lottos = Lottos.from(money.currentTime());
 
@@ -45,7 +48,10 @@ public class LottoProcess {
         List<MatchReport> reportList = matcher.match(user.currentUserLottos(), lottoMachine);
 
         Report printReport = new Report();
-        printReport.printEachPrize(reportList);
+        Map<Rank, Integer> rankIntegerMap = printReport.printEachPrize(reportList);
+        for (Rank rank : rankIntegerMap.keySet()) {
+            System.out.println(rank.currentWinningMessage() + rankIntegerMap.get(rank) + AMOUNT);
+        }
         String interest = printReport.TotalInterest(money.currentMoney());
 
         System.out.println(ConsoleOut.TOTAL_PRIZE_MESSAGE_PRE + interest

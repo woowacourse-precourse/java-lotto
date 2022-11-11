@@ -4,11 +4,7 @@ import static lotto.common.message.ExceptionMessage.ERROR_CODE;
 import static lotto.common.message.ExceptionMessage.GAME_MONEY_TYPE_EXCEPTION_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.List;
-import lotto.common.message.ExceptionMessage;
 import lotto.domain.Generator;
-import org.assertj.core.internal.ErrorMessages;
 
 public class GeneratorImpl implements Generator {
 
@@ -19,11 +15,13 @@ public class GeneratorImpl implements Generator {
     }
 
     @Override
-    public int generateMoney() {
-        String moneyUnChangedType = Console.readLine();
-
-        validation(moneyUnChangedType);
-        return Integer.parseInt(moneyUnChangedType);
+    public int generateMoney(String moneyUnChangedType) {
+        try {
+            int money = Integer.parseInt(moneyUnChangedType);
+            return money;
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(ERROR_CODE + GAME_MONEY_TYPE_EXCEPTION_MESSAGE);
+        }
     }
 
     @Override
@@ -39,12 +37,12 @@ public class GeneratorImpl implements Generator {
     private void validation(String moneyUnChangedType) {
         char[] chars = moneyUnChangedType.toCharArray();
         for (char aChar : chars) {
-            isNotDigit(aChar);
+            moneyIsDigit(aChar);
         }
     }
 
-    private void isNotDigit(char aChar) {
-        if (!Character.isDigit(aChar)) {
+    private void moneyIsDigit(char aChar) {
+        if (Character.isDigit(aChar) == false) {
             throw new IllegalArgumentException(ERROR_CODE + GAME_MONEY_TYPE_EXCEPTION_MESSAGE);
         }
     }
