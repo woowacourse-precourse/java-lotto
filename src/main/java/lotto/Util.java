@@ -24,6 +24,14 @@ public class Util {
         return false;
     }
 
+    public static int countChar(final String input, final char ch){
+        final int count = (int)input.chars()
+                .filter(c -> c == ch)
+                .count();
+
+        return count;
+    }
+
     /*public static long dividedBuy1000(final String input){
         final long longInput = Long.valueOf(input);
         final int thousand = 1000;
