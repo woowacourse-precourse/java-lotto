@@ -112,6 +112,96 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    @DisplayName("당첨 번호 검증 테스트 - 올바른 형식이 아닐 때 에러 1")
+    void getWinningLotto_1() {
+        // given
+        String string = "123 456 789 101 121 314";
+
+        // when
+
+        // then
+        assertSimpleTest(() -> {
+            runException("8000", string);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    @DisplayName("당첨 번호 검증 테스트 - 올바른 형식이 아닐 때 에러 2")
+    void getWinningLotto_2() {
+        // given
+        String string = "ab,12,4g,bb,67,11";
+
+        // when
+
+        // then
+        assertSimpleTest(() -> {
+            runException("8000", string);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    @DisplayName("당첨 번호 검증 테스트 - 올바른 범위가 아닐 때 에러 1")
+    void getWinningLotto_3() {
+        // given
+        String string = "1,2,0,3,4,5";
+
+        // when
+
+        // then
+        assertSimpleTest(() -> {
+            runException("8000", string);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    @DisplayName("당첨 번호 검증 테스트 - 올바른 범위가 아닐 때 에러 2")
+    void getWinningLotto_4() {
+        // given
+        String string = "1,2,3,4,5,46";
+
+        // when
+
+        // then
+        assertSimpleTest(() -> {
+            runException("8000", string);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    @DisplayName("당첨 번호 검증 테스트 - 당첨 번호의 개수가 6개가 아닐 때 에러")
+    void getWinningLotto_5() {
+        // given
+        String string = "1,2,3,4,5";
+
+        // when
+
+        // then
+        assertSimpleTest(() -> {
+            runException("8000", string);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    @DisplayName("당첨 번호 검증 테스트 - 당첨 번호 중 중복이 있을 때 에러")
+    void getWinningLotto_6() {
+        // given
+        String string = "1,2,3,4,5,1";
+
+        // when
+
+        // then
+        assertSimpleTest(() -> {
+            runException("8000", string);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
