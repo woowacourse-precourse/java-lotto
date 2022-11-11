@@ -4,6 +4,8 @@ import java.util.List;
 
 public class LottoException {
 
+    private static final int NUMBERS_LENGTH = 6;
+
     public LottoException(){}
 
     public void validate(List<Integer> numbers){
@@ -11,7 +13,7 @@ public class LottoException {
     }
 
     private boolean isNotRightLength(List<Integer> numbers){
-        return true;
+        return numbers.size() != NUMBERS_LENGTH;
     }
 
     private boolean containsSameNumber(List<Integer> numbers){
