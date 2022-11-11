@@ -31,4 +31,9 @@ public enum WinningRank {
         return prizeMoney;
     }
 
+
+    @Override
+    public String toString() {
+        return this.winningRule + " (" + this.prizeMoney + "원)";
+    }
 }

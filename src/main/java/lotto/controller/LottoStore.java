@@ -23,6 +23,8 @@ public class LottoStore {
         List<Lotto> myLottos = buyLottos();
 
         WinningLotto winningLotto = makeWinningLotto();
+
+        showWinningStatistic(winningLotto, myLottos);
     }
 
     private List<Lotto> buyLottos() {
@@ -47,8 +49,9 @@ public class LottoStore {
         return new WinningLotto(winningNumbers, bonusNumber);
     }
 
-    private void showWinningStatistics(WinningLotto winningLotto, List<Lotto> lottos) {
+    private void showWinningStatistic(WinningLotto winningLotto, List<Lotto> lottos) {
         Map<WinningRank, Integer> winLottoCount = lottoController.countWinLotto(winningLotto, lottos);
+        OutputUi.printWinLottoStatistic(winLottoCount);
     }
 
 }
