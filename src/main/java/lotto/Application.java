@@ -28,6 +28,9 @@ public class Application {
         lotto_win = Arrays.asList(Console.readLine().split(",")).stream().map(s -> Integer.parseInt(((String) s).trim())).collect(Collectors.toList());
         winLotto = new Lotto(lotto_win);
         bonus = input_validate();
+
+        get_prize_num(winLotto, lotto_issuance, bonus);
+        display_result(purchase);
     }
 
     private static void validate(int purchase){
@@ -73,5 +76,14 @@ public class Application {
                 prize_num.set(prize_num.get(same - 3), prize_num.get(same - 3) + 1);
             }
         }
+    }
+
+    private static void display_result(int purchase){
+        System.out.println("당첨 통계\n---");
+        System.out.printf("3개 일치 (5,000원) - %d개\n", prize_num.get(0));
+        System.out.printf("4개 일치 (50,000원) - %d개\n", prize_num.get(1));
+        System.out.printf("5개 일치 (1,500,000원) - %d개\n", prize_num.get(2));
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", prize_num.get(3));
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", prize_num.get(4));
     }
 }
