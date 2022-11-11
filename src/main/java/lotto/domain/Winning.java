@@ -18,7 +18,7 @@ public class Winning {
     }
 
     public HashMap<Ranking, Integer> figureSameRanking(){
-        return new HashMap<>();
+        return score;
     }
 
     private void initializeScore(){
