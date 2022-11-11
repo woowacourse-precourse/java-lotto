@@ -40,12 +40,23 @@ public class Lotto {
         }
     }
 
-    public void validateBonusNumber(int BonusNumber) {
+    public void validateBonusNumber(int bonusNumber) {
+        validateRangeOfBonusNumber(bonusNumber);
+        validateDuplicationOfBonusNumber(bonusNumber);
+    }
+
+    private void validateRangeOfBonusNumber(int bonusNumber) {
+        if (bonusNumber > 45 || bonusNumber < 1) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateDuplicationOfBonusNumber(int bonusNumber) {
         int[] checkDuplication = new int[46];
         for(Integer number : numbers) {
             checkDuplication[number] = 1;
         }
-        if (checkDuplication[BonusNumber] == 1) {
+        if (checkDuplication[bonusNumber] == 1) {
             throw new IllegalArgumentException();
         }
     }
