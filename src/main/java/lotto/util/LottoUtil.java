@@ -2,6 +2,7 @@ package lotto.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,6 +11,7 @@ public class LottoUtil {
         List<Integer> lottoNumbers = new ArrayList<>();
         Arrays.stream(inputLottoNumbers.split(",")).map(number -> lottoNumbers.add(Integer.parseInt(number)))
                 .collect(Collectors.toList());
+        Collections.sort(lottoNumbers);
         return lottoNumbers;
     }
 
