@@ -2,6 +2,7 @@ package lotto.uitls;
 
 public class Validation {
     private static final int LOTTO_PRICE = 1_000;
+    private static final int COUNT_OF_NUMBERS_IN_LOTTO = 1_000;
 
     public static void validateLottoPurchaseAmount(String purchaseAmount) {
         if (hasNonDigitCharacter(purchaseAmount)) {
@@ -25,5 +26,10 @@ public class Validation {
 
     public static boolean isPossiblePrice(String purchaseAmount) {
         return Integer.parseInt(purchaseAmount) > 0;
+    }
+
+    public static boolean isSeperatedByComma(String input) {
+        String[] lottoNumbers = input.split(",");
+        return lottoNumbers.length == COUNT_OF_NUMBERS_IN_LOTTO;
     }
 }
