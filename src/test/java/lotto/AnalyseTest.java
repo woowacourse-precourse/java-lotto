@@ -45,6 +45,16 @@ public class AnalyseTest {
         }
     }
 
+    @Test
+    @DisplayName("로또 당첨 번호와 6개 모두 일치할 때")
+    void allCorrect() throws InvocationTargetException, IllegalAccessException {
+        expectedStat.put(Prize.FIRST, 1);
+        Method method = InvokeMethod();
+        System.out.println("invokeMethod: "+Analyse.getStats().get(Prize.FIRST));
 
+        method.invoke(analyse, lottos.get(0), prize);
+
+        assertEquals(expectedStat.get(Prize.FIRST), Analyse.getStats().get(Prize.FIRST));
+    }
 
 }
