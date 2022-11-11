@@ -48,6 +48,7 @@
   - [ ] 당첨 번호 모두를 int로 변환 - List<Integer> winNumbers = InputLotto#allToInts(String[] numbers)
     - [x] 문자열을 long으로 변환 - int number = InputLotto#toLongs(String number)
 
+- [x] 숫자만 입력되었는지 검사한다. - ExceptionHandling#isNumeric(String value)
 - [x] 입력한 금액이 1,000원 단위로 나누어떨어지는지 검사한다. - ExceptionHandling#notDivideException(long amount)
 - [ ] 입력한 당첨 번호가 입력 규칙에 유효한지 검사한다. - ExceptionHandling#lottoNumberRuleException(String lottoNumber)
   - [ ] 문자열을 ,(쉼표)를 기준으로 나누기 - String[] numbers = InputLotto#splitStrings(String numbers)
