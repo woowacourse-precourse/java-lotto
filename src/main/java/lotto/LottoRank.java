@@ -18,7 +18,7 @@ public enum LottoRank {
         this.prizeMoney = prizeMoney;
     }
 
-    boolean equal(int hitCount, boolean hitBonus) {
+    public boolean equal(int hitCount, boolean hitBonus) {
         if (this.hitCount == hitCount && hitCount != 5) {
             return true;
         }
