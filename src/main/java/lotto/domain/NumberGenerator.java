@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class NumberGenerator {
-    public List<List<Integer>> collectionOfLottoNumbers;
+    public final List<List<Integer>> collectionOfLottoNumbers;
 
     public NumberGenerator(int money) {
         validate(money);
