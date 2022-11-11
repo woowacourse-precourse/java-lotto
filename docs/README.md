@@ -73,6 +73,7 @@ Enum : Rank
 - private int calcLottoSize(int price) // (feat.2)
 - private List<Lotto> setLottoPayed(int lottoSize) // (feat.5)
 - private void priceValidate(int price) // (valid.4)
+- private Lotto getRandomLotto() // 랜덤한 숫자로 로또 생성
 ```
 
 ### Draw : 로또 당첨을 비교하는 로또 본사
