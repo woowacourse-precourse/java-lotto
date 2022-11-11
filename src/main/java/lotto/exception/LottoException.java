@@ -10,6 +10,7 @@ public class LottoException {
     private static final int MAXIMUM_NUMBER_IN_RANGE = 45;
     private static final int FIRST_INDEX = 0;
     private static final int LAST_INDEX = 5;
+    private static final String NOT_RIGHT_NUMBER_COMMENT = "[ERROR] 로또 번호는 1부터 45까지 서로 다른 6개의 수여야 합니다.";
 
     public LottoException(){}
 
@@ -29,5 +30,7 @@ public class LottoException {
         return numbers.get(FIRST_INDEX) < MINIMUM_NUMBER_IN_RANGE || numbers.get(LAST_INDEX) > MAXIMUM_NUMBER_IN_RANGE;
     }
 
-    private void notRightNumberException(){}
+    private void notRightNumberException(){
+        throw new IllegalArgumentException(NOT_RIGHT_NUMBER_COMMENT);
+    }
 }
