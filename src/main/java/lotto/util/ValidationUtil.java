@@ -6,11 +6,11 @@ import lotto.enums.ErrorMessage;
 import java.util.*;
 
 public class ValidationUtil {
-    public static void isValidAmount(String input) {
-        String str = input.trim();
-        if (str.isEmpty() || !str.matches("[0-9]*") || Integer.parseInt(str) % ConstVariable.STANDARD.getValue() != 0) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_AMOUNT_INPUT.getValue());
-        }
+
+    public static void isValidWinNumbers(List<Integer> numbers) {
+        isValidNumber(numbers);
+        isValidCount(numbers);
+        hasDistinctNumbers(numbers);
     }
 
     public static List<Integer> isValidWinNumbers(String input) {
@@ -32,6 +32,13 @@ public class ValidationUtil {
             throw new IllegalArgumentException(ErrorMessage.INVALID_WIN_NUMBERS_INPUT.getValue());
         }
         numbers.add(Integer.parseInt(str));
+    }
+
+    public static void isValidAmount(String input) {
+        String str = input.trim();
+        if (str.isEmpty() || !str.matches("[0-9]*") || Integer.parseInt(str) % ConstVariable.STANDARD.getValue() != 0) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_AMOUNT_INPUT.getValue());
+        }
     }
 
     public static void isValidNumber(List<Integer> numbers) {
