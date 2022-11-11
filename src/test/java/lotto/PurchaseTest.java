@@ -57,4 +57,12 @@ public class PurchaseTest {
         assertThatThrownBy(()->new Purchase(input)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 구입금액을 입력해 주세요.");
     }
+
+    @DisplayName("로또 생성기 테스트")
+    @Test
+    void lottoCreatorTest() {
+        String input = "";
+        Purchase purchase = new Purchase("1000");
+        purchase.lottoCreator();
+    }
 }

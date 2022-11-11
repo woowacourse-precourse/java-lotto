@@ -22,11 +22,12 @@ public class Lotto {
 
     private void validateDuplicatedNumber(List<Integer> numbers) {
         Map<Integer, Integer> duplicateChecker = new HashMap<>();
-        long countsOfDuplicatedNumber = numbers.stream()
-                .map(x -> duplicateChecker.put(x, duplicateChecker.getOrDefault(x, 0) + 1))
-                .count();
-        if (countsOfDuplicatedNumber != 1) {
-            throw new IllegalArgumentException("[ERROR] 로또의 번호는 중복될 수 없습니다.");
+        numbers.forEach(x -> duplicateChecker.put(x, duplicateChecker.getOrDefault(x,0)+1));
+
+        for(int x : duplicateChecker.values()) {
+            if (x > 1) {
+                throw new IllegalArgumentException("[ERROR] 로또의 번호는 중복될 수 없습니다.");
+            }
         }
     }
 
