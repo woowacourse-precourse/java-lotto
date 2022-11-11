@@ -9,12 +9,12 @@
       - StepType: 로또 구매의 진행 단계
       - CommandType: 입력 명령어 종류
       - LottoResultType: 로또 당첨 등급과 금액
-      - LottoNumberType: 로또 숫자 갯수, 최소, 최대값 등의 상수
+      - ConstantNumberType: 로또 숫자 갯수, 최소, 최대값 등의 상수
     - dto
       - Lotto: 로또 1매에 포함된 숫자들
         - .validate(): 숫자 개수를 검증한다
-      - LottoBoughtDto: 한 회에 구매한 모든 로또 
-      - LottoWinnerDto: 당첨 로또 숫자 
+      - LottoPurchaseDto: 한 회에 구매한 모든 로또 
+      - LottoWinNumberDto: 당첨 로또 숫자 
   - #### controller
     - LottoController
       - .run(): 로또 게임을 실행합니다.
