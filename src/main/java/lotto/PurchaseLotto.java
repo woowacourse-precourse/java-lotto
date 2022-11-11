@@ -33,6 +33,7 @@ public class PurchaseLotto {
                 continue;
             numbers.add(randomnumber);
         }
+        Collections.sort(numbers);
         return numbers;
     }
 }
