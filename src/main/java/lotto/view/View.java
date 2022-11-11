@@ -9,6 +9,10 @@ public abstract class View {
         return "";
     }
 
+    public static void printLineFormat(String format, Object ...args) {
+        printLine(String.format(format, args));
+    }
+
     public static void printLine(String message) {
         System.out.println(message);
     }

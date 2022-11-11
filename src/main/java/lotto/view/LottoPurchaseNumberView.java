@@ -11,7 +11,7 @@ public class LottoPurchaseNumberView extends View {
 
     @Override
     public void show() {
-        printLine(String.format("%s개를 구매했습니다.", this.purchaseLotteries.size()));
+        printLineFormat("%s개를 구매했습니다.", this.purchaseLotteries.size());
         printLine("");
 
         for (Lotto lotto : this.purchaseLotteries) {

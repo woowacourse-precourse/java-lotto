@@ -26,10 +26,10 @@ public class LottoStatisticView extends View {
                 .sum();
 
         for (PlaceType placeType: winStatisticKeys) {
-            printLine(String.format("%s - %d개", placeType.toString(), this.winStatistics.get(placeType)));
+            printLineFormat("%s - %d개", placeType.toString(), this.winStatistics.get(placeType));
         }
 
-        printLine(String.format("총 수익률은 %f%%입니다.", this.calculateRevenue(rewardMoney)));
+        printLineFormat("총 수익률은 %.1f%%입니다.", this.calculateRevenue(rewardMoney));
     }
 
     private float calculateRevenue(long rewardMoney) {
