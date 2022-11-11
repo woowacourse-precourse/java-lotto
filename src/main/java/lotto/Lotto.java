@@ -17,6 +17,13 @@ public class Lotto {
         List<Integer> copyNumbers = new ArrayList<>(numbers);
         for (Integer number : copyNumbers) {
             checkDuplicateNumber(copyNumbers, number);
+            checkLottoRange(number);
+        }
+    }
+
+    private void checkLottoRange(Integer number) {
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException();
         }
     }
 
