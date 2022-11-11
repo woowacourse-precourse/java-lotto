@@ -18,6 +18,10 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public List<Integer> setLotto() {
+        return numbers;
+    }
+
     public void printLotto() {
         System.out.println(numbers);
     }
