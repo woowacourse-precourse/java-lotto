@@ -21,7 +21,6 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @Disabled
     @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
     @Test
     void createLottoByDuplicatedNumber() {
@@ -76,6 +75,13 @@ class LottoTest {
     @Test
     void checkOutOfRangeNumbers2() {
         assertThatThrownBy(() -> new Lotto("1,2,3,4,5,0"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 당첨 번호 입력 - 중복되는 값이 있는 경우 예외 발생")
+    @Test
+    void checkDuplicateNumbers() {
+        assertThatThrownBy(() -> new Lotto("1,2,3,4,5,5"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
