@@ -44,4 +44,37 @@ class LotteryAnswerTest {
                 () -> lotteryAnswer.inputAnswerLotto(trash))
                 .getMessage().equals(LottoError.NOT_NUMERIC.getErrorMessage());
     }
+
+    @Test
+    void 보너스_번호_입력_받기() throws Exception {
+        //given
+        LotteryAnswer lotteryAnswer = new LotteryAnswer();
+        lotteryAnswer.inputAnswerLotto("1,2,3,4,5,6");
+
+        //when
+        String bonusNumber = "7";
+
+        //then
+        assertDoesNotThrow(() -> lotteryAnswer.inputBonusNumber(bonusNumber));
+    }
+
+    @Test
+    void 보너스_번호_예외_발생() throws Exception {
+        //given
+        LotteryAnswer lotteryAnswer = new LotteryAnswer();
+        lotteryAnswer.inputAnswerLotto("1,2,3,4,5,6");
+
+        //when
+        String distinct = "3";
+        String notNumber = "I'm hungry";
+
+        //then
+        assertThrows(IllegalArgumentException.class,
+                () -> lotteryAnswer.inputBonusNumber(distinct))
+                .getMessage().equals(LottoError.DISTINCT_NUMBERS.getErrorMessage());
+
+        assertThrows(IllegalArgumentException.class,
+                () -> lotteryAnswer.inputBonusNumber(notNumber))
+                .getMessage().equals(LottoError.NOT_NUMERIC.getErrorMessage());
+    }
 }
