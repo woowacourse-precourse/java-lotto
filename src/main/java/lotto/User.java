@@ -25,6 +25,13 @@ public class User {
         List<String> winningNumber = Stream.of(str.split("\\s*,\\s*"))
                 .collect(Collectors.toList());
 
+        enterWinningNumberValidation(winningNumber);
+
+        return winningNumber.stream().map(value -> Integer.parseInt(value)).collect(Collectors.toList());
+
+    }
+
+    private void enterWinningNumberValidation(List<String> winningNumber) {
         HashSet set = new HashSet(winningNumber);
 
         if (set.size() != winningNumber.size()) {
@@ -40,9 +47,6 @@ public class User {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }
-
-        return winningNumber.stream().map(value -> Integer.parseInt(value)).collect(Collectors.toList());
-
     }
 
     public int enterBonusNumber(List<Integer> winningNumber) {

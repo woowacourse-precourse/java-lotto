@@ -19,15 +19,16 @@ public class Application {
         int bonusNumber = 0;
 
         try {
-            if (amountValidation(amount)) {
-                lotteryNumberOutput(amount);
+            amountValidation(amount);
 
-                winningNumber = getWinningNumber(user);
+            lotteryNumberOutput(amount);
 
-                bonusNumber = getBonusNumber(user, winningNumber);
-            }
+            winningNumber = getWinningNumber(user);
+
+            bonusNumber = getBonusNumber(user, winningNumber);
+
         } catch (IllegalArgumentException e) {
-            System.out.println("e.getMessage() = " + e.getMessage());
+            System.out.println(e.getMessage());
         }
     }
 
@@ -62,19 +63,10 @@ public class Application {
 
     }
 
-    private static boolean amountValidation(int amount) {
+    private static void amountValidation(int amount) {
 
-        try {
-            if (amount % 1000 != 0 || amount == -1) {
-                throw new IllegalArgumentException("[ERROR] 천 원단위로 입력해 주세요.");
-            }
-
-            return true;
-
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-
-            return false;
+        if (amount % 1000 != 0 || amount == -1) {
+            throw new IllegalArgumentException("[ERROR] 천 원단위로 입력해 주세요.");
         }
     }
 }
