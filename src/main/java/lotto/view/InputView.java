@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputView {
+
+    static final int START_RANGE = 1;
+    static final int FINAL_RANGE = 45;
+    static final int MAX_LEN = 6;
+
     public static int getPurchase() throws NumberFormatException {
         return Integer.parseInt(Console.readLine());
     }
@@ -16,11 +21,12 @@ public class InputView {
 
         for (String s : splitInput) {
             int number = Integer.parseInt(s);
-            if (number > 45 || number < 1)
+            if (number > FINAL_RANGE || number < START_RANGE) {
                 throw new NumberFormatException();
+            }
             winningNumber.add(number);
         }
-        if (winningNumber.size() != 6) {
+        if (winningNumber.size() != MAX_LEN) {
             throw new NumberFormatException();
         }
         return winningNumber;
@@ -28,7 +34,11 @@ public class InputView {
 
     public static int getBonusNumber() throws NumberFormatException {
         String input = Console.readLine();
+        int number = Integer.parseInt(input);
 
-        return Integer.parseInt(input);
+        if (number > FINAL_RANGE || number < START_RANGE) {
+            throw new NumberFormatException();
+        }
+        return number;
     }
 }
