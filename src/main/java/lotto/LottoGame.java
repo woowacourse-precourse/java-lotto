@@ -8,9 +8,9 @@ public class LottoGame {
     public void start() {
         Print.money();
         int lottoTickets = Input.purchaseAmount();
+        List<Lotto> lottos = generator.makeLottos(lottoTickets);
         Print.purchaseLotto(lottoTickets);
 
-        List<Lotto> lottos = generator.makeLottos(lottoTickets);
         Print.lottos(lottos);
 
         Print.winningNumber();
