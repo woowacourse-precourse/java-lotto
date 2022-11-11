@@ -27,16 +27,21 @@ Model(Service) : Lotto, Shop, Draw, EarningRate
 Enum : Rank
 
 ### View
+```
 - printLottoPayed() // (feat.8)
 - printWinningStats() // (feat.9)
 - printEarningRate() // (feat.10)
+```
 
 ### Controller
+```
 - getPrice() // (feat.1)
 - getWinningLotto() // (feat.3)
 - getBonusNum() // (feat.4)
+```
 
 ### Lotto : 하나하나의 로또 
+```
 [Field]<br>
 - List<Integer> numbers // 로또 숫자들
 
@@ -49,8 +54,10 @@ Enum : Rank
 [method]<br>
 - private void validate(List<Integer> numbers)
 - private void validateNumRange(List<Integer> numbers)
+```
 
 ### Shop : 로또를 발행해주는 상점
+```
 [Field]<br>
 - int price // 로또 구입 금액
 - int lottoSize // 로또 구입 개수
@@ -62,12 +69,14 @@ Enum : Rank
   - setLottoPayed()
 
 [method]<br>
-- public List<Lotto> getlottoPayed // lottoPayed Getter
-- private void calcLottoSize() // (feat.2)
-- private void setLottoPayed() // (feat.5)
+- public List<Lotto> getlottoPayed() // lottoPayed Getter
+- private void calcLottoSize(int price) // (feat.2)
+- private void setLottoPayed(int lottoSize) // (feat.5)
 - private void priceValidate(int price) // (valid.4)
+```
 
 ### Draw : 로또 당첨을 비교하는 로또 본사
+```
 [Field]<br>
 - Lotto winningLotto
 - int bonusNum
@@ -79,10 +88,12 @@ Enum : Rank
 [method]<br>
 - public Map<Rank,Integer> getWinningStats(List<Lotto> lottoPaper) // (feat.6)
 - private Rank winningNumSize(Lotto tryLotto) // 개개인의 로또 비교
-- private boolean isBonusExist() // 보너스 번호가 있는지 확인
+- private boolean isBonusExist(int bonusNum) // 보너스 번호가 있는지 확인
 - private void validateBonusNumRange(int bonusNum) // (valid.3)
+```
 
 ### Rate : 수익률을 계산해주는 회사
+```
 [Field]<br>
 - Map<Rank,Integer> winningStats
 - double earningRate
@@ -90,13 +101,14 @@ Enum : Rank
 [constructor]<br>
 - Rate(Map<Rank,Integer> winningStats)
   - this.
+  - setEarningRate(winningStats)
 
 [method]<br>
 - public getEarningRate() // earningRate Getter 
-- private void setEarningRate() // (feat.7)
-- private int calcEarning() // 총 수익 계산
-- private int calcSpending() // 총 지출 계산
-
+- private void setEarningRate(Map<Rank,Integer> winningStats) // (feat.7)
+- private int calcEarning(Map<Rank,Integer> winningStats) // 총 수익 계산
+- private int calcSpending(Map<Rank,Integer> winningStats) // 총 지출 계산
+```
 
 ## 추가 제약 사항
 1. Lotto Class를 사용한다.(필드,생성자 추가 금지)
