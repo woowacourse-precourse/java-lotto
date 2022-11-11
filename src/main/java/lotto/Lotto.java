@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -32,5 +33,9 @@ public class Lotto {
         if (!numbers.stream().allMatch(number -> 1 <= number && number <= 45)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return Collections.unmodifiableList(numbers);
     }
 }

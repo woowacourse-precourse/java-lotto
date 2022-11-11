@@ -13,4 +13,8 @@ public class Bonus {
             throw new IllegalArgumentException();
         }
     }
+
+    public int getNumber() {
+        return number;
+    }
 }
