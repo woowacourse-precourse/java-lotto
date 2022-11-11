@@ -41,10 +41,21 @@ public class Lotto {
         System.out.println(Arrays.deepToString(numbers.toArray()));
     }
     
-    public int compare_win(Lotto win){
+    public int compare_win(Lotto win, int bonus){
         int count = 0;
+
         for (int i = 0; i < numbers.size(); i++){
             if (win.get_numbers().contains(numbers.get(i))){
+                count++;
+            }
+        }
+
+        if (count == 6){
+            count++;
+        }
+
+        if (count == 5){
+            if (win.get_numbers().contains(bonus)){
                 count++;
             }
         }
