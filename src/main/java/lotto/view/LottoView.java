@@ -43,10 +43,11 @@ public class LottoView {
     public void printLottoResult(List<LottoResult> lottoResults) {
         printResultInfoStartMessage();
 
+        Map<LottoResult, Long> numberOfEachLottoResult = getNumberOfEachLottoResult(lottoResults);
+
         Arrays.stream(LottoResult.values())
                 .filter(lottoResult -> lottoResult.getPayout() != 0)
-                .map(lottoResult ->
-                        getResultMessage(lottoResult, getNumberOfEachLottoResult(lottoResults)))
+                .map(lottoResult -> getResultMessage(lottoResult, numberOfEachLottoResult))
                 .forEach(System.out::println);
     }
 
