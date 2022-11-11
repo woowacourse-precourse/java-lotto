@@ -45,8 +45,33 @@ public class GameOutputHandler {
                 amountOfThatRanking = 0;
             }
 
-
-            System.out.printf("%d개 일치 (%d원) - %d개\n",howManyNumbersCorrect,winningMoney,amountOfThatRanking);
+            boolean isSecondRank = (ranking == 2);
+            printWinningRecordOneByOne(howManyNumbersCorrect,winningMoney,amountOfThatRanking,isSecondRank);
         }
+    }
+    private void printWinningRecordOneByOne(int numbersCorrect, int winningMoney, int amountOfThatRanking, boolean isSecondRank){
+        StringBuilder printMake = new StringBuilder();
+        printMake.append(String.format("%d개 일치",numbersCorrect));
+
+        if(isSecondRank){
+            printMake.append(", 보너스 볼 일치");
+        }
+
+        printMake.append(String.format(" (%s원)",insertCommaInMoney(winningMoney)));
+        printMake.append(String.format(" - %d개",amountOfThatRanking));
+        System.out.println(printMake);
+    }
+    private String insertCommaInMoney(int winningMoney){
+        StringBuilder originalToReverse = new StringBuilder(Integer.toString(winningMoney)).reverse();
+        StringBuilder forMake = new StringBuilder();
+
+        for(int stringIndex = 0; stringIndex < originalToReverse.length(); stringIndex++){
+            if((stringIndex != 0) && (stringIndex % 3 == 0)){
+                forMake.append(",");
+            }
+            forMake.append(originalToReverse.charAt(stringIndex));
+        }
+
+        return forMake.reverse().toString();
     }
 }
