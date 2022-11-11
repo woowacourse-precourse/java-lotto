@@ -30,8 +30,7 @@ public class InputView {
         WinNumbers winNumbers = getWinNumbers();
         BonusNumber bonusNumber = getBonusNumber();
 
-//        return LottoDraw.of(winNumbers, bonusNumber);
-        return null;
+        return LottoDraw.of(winNumbers.asList(), bonusNumber.getNumber());
     }
 
     private WinNumbers getWinNumbers() {

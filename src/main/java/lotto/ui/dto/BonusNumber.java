@@ -10,4 +10,8 @@ public class BonusNumber {
         validator.validate(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
+
+    public int getNumber() {
+        return Integer.parseInt(bonusNumber);
+    }
 }

@@ -11,7 +11,8 @@ public enum InputErrors {
     WIN_NUMBER_OUT_OF_RANGE("당첨 번호는 1 ~ 45사이의 값이어야 합니다."),
     WIN_NUMBER_DUPLICATED("당첨 번호는 중복 될 수 없습니다."),
     BONUS_NUMBER_NOT_NUMBER("보너스 번호는 3자리 이하로 구성된 숫자만 가능합니다."),
-    BONUS_NUMBER_OUT_OF_RANGE("보너스 번호는 1 ~ 45사이의 값이어야 합니다.");
+    BONUS_NUMBER_OUT_OF_RANGE("보너스 번호는 1 ~ 45사이의 값이어야 합니다."),
+    BONUS_NUMBER_DUPLICATED_WIN_NUMBER("보너스 번호는 당첨 번호와 중복 될 수 없습니다.");
 
     private String message;
     InputErrors(String message) {
