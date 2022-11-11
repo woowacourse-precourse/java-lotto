@@ -18,6 +18,7 @@ public abstract class InputData {
     }
 
     public static String designateBonus(){
+        System.out.println();
         System.out.println(INPUT_DESIGNATE_BONUS.getMessage());
         return Console.readLine();
     }
