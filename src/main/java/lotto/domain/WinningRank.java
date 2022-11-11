@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public enum WinningRank {
@@ -9,6 +10,9 @@ public enum WinningRank {
     THIRD_RANK(3, 1_500_000, "5개 일치"),
     SECOND_RANK(2, 30_000_000, "5개 일치, 보너스 볼 일치"),
     FIRST_RANK(1, 2_000_000_000, "6개 일치");
+
+
+    private static final String DECIMAL_FORMAT = "###,###";
 
     private final int rank;
     private final int prizeMoney;
@@ -34,6 +38,7 @@ public enum WinningRank {
 
     @Override
     public String toString() {
-        return this.winningRule + " (" + this.prizeMoney + "원)";
+        DecimalFormat decimalFormat = new DecimalFormat(DECIMAL_FORMAT);
+        return this.winningRule + " (" + decimalFormat.format(this.prizeMoney) + "원)";
     }
 }
