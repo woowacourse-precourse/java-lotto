@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.domain.enums.Message;
 import lotto.domain.enums.Number;
 import lotto.util.InputUtil;
 
@@ -27,7 +28,7 @@ public class Manager {
             return (money / 1000);
         }
 
-        throw InputUtil.makeIllegalArgumentException("[ERROR] 잘못된 값을 입력하셨습니다.");
+        throw InputUtil.makeIllegalArgumentException(Message.MINUS_INPUT_ERROR.getMessage());
     }
 
     public int getCorrectCount(List<Integer> userLotto) {
