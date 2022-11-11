@@ -34,4 +34,8 @@ public class Lotto {
         if(numbers.stream().collect(Collectors.toSet()).size() != 6)
             throw new IllegalArgumentException();
     }
+
+    public List<Integer> getNumbers(){
+        return this.numbers;
+    }
 }
