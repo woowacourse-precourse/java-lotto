@@ -75,8 +75,8 @@ public class LottoView {
         String suffix = "(" + df.format(lottoResult.getPayout()) + "원) - ";
 
         if (lottoResult.equals(LottoResult.FIVE_WITH_BONUS)) {
-            return lottoResult.getMatchingNumberCount() + "개 일치, 보너스 볼 일치 " + suffix;
+            return lottoResult.getNumberOfMatches() + "개 일치, 보너스 볼 일치 " + suffix;
         }
-        return lottoResult.getMatchingNumberCount() + "개 일치 " + suffix;
+        return lottoResult.getNumberOfMatches() + "개 일치 " + suffix;
     }
 }

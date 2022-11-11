@@ -15,20 +15,20 @@ public enum LottoResult {
     SIX(2_000_000_000, 6);
 
     private int payout;
-    private int matchingNumberCount;
+    private int numberOfMatches;
 
 
     LottoResult(int payout, int matchingNumberCount) {
         this.payout = payout;
-        this.matchingNumberCount = matchingNumberCount;
+        this.numberOfMatches = matchingNumberCount;
     }
 
     public int getPayout() {
         return payout;
     }
 
-    public int getMatchingNumberCount() {
-        return matchingNumberCount;
+    public int getNumberOfMatches() {
+        return numberOfMatches;
     }
 
     public static LottoResult of(Lotto lotto,
@@ -41,7 +41,7 @@ public enum LottoResult {
         }
 
         return Arrays.stream(LottoResult.values())
-                .filter(lottoResult -> lottoResult.getMatchingNumberCount() == matchingNumberCount)
+                .filter(lottoResult -> lottoResult.getNumberOfMatches() == matchingNumberCount)
                 .findFirst()
                 .get();
     }
