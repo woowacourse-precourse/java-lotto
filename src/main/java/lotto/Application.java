@@ -12,6 +12,7 @@ public class Application {
     public static void main(String[] args) {
     	int price = 0;  
     	int lottonum = 0;
+    	int bonusnumber = 0;
     	List<ArrayList<Integer>> lottonumbersall; 
     	List<Integer> inputnumbers = new ArrayList<Integer>();
     	
@@ -27,6 +28,8 @@ public class Application {
         print.printNumberAll(lottonumbersall,lottonum);  // 로또 개수와 로또 번호들을 모두 출력해주기
         
         inputnumbers = askNumbers();  // 사용자 입력으로 6개 로또 번호들을 inputnumbers 리스트에 입력 받기
+        
+        bonusnumber = askBonusNumber(inputnumbers);
     }
     
     public static int askTotalPrice() {
@@ -81,11 +84,13 @@ public class Application {
     	}
     }
     
-    public void askBonusNumber() {
+    public static int askBonusNumber(List<Integer> inputnumbers) {
     	String stringbonusnumber = "";
     	System.out.println("보너스 번호를 입력해 주세요.");
     	stringbonusnumber = Console.readLine();
     	
-    	BonusNumber bonusnumber = new BonusNumber(stringbonusnumber);
+    	BonusNumber bonusnumber = new BonusNumber(stringbonusnumber,inputnumbers);
+    	
+    	return bonusnumber.getBonusNumber();
     }
 }
