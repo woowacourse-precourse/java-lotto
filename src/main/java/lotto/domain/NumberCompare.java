@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -19,22 +20,7 @@ public class NumberCompare {
         int count = compareCount(numbers, randomNumbers);
         int bonusCount = compareBonusNumber(randomNumbers, bonusNumber);
         // 등수 입력
-        if (count == 6) {
-            return Rank.ONE;
-        }
-        if (count == 5 && bonusCount == 1) {
-            return Rank.TWO;
-        }
-        if (count == 5) {
-            return Rank.THREE;
-        }
-        if (count == 4) {
-            return Rank.FOUR;
-        }
-        if (count == 3) {
-            return Rank.FIVE;
-        }
-        return Rank.LOSE;
+
     }
 
     public static int compareCount(List<Integer> numbers, List<Integer> randomNumbers) {
@@ -61,4 +47,16 @@ public class NumberCompare {
         return bonusCount;
     }
 
+    public static Rank compareRank(int count, int bonusCount) {
+        List<Rank> ranks = Arrays.asList(Rank.FIVE, Rank.FOUR, Rank.THREE, Rank.TWO, Rank.ONE);
+        for(int i=3; i<7; i++){
+            if(i == count && bonusCount == 1){
+                return ranks.get(i-3);
+            }
+            if(i == count){
+                return ranks.get(i-3);
+            }
+        }
+        return Rank.LOSE;
+    }
 }
