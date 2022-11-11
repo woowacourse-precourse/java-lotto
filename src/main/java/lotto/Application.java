@@ -65,6 +65,7 @@ public class Application {
         printMyLotto(myLottos);
         WinningLotto winningLotto = inputWinNumber();
         inputBonusNumber(winningLotto);
+        MyResult myResult = new MyResult(myLottos, winningLotto);
     }
 }
 
