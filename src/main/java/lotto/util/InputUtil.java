@@ -15,8 +15,6 @@ public class InputUtil {
     private final String NOT_NUMBER_REGEX = "\\D";
     private final String COMMA = ",";
 
-    Pattern pattern = Pattern.compile(NOT_NUMBER_REGEX);
-
     public String getUserInput() {
         String input = readLine();
         return input;
@@ -31,8 +29,8 @@ public class InputUtil {
     }
 
     public void checkValidationBonusNumber(String input, List<Integer> lottoNumbers) {
-        Matcher matcher = pattern.matcher(input);
-        if (matcher.find()) {
+        Integer bonusNumber = Integer.parseInt(input);
+        if (lottoNumbers.contains(bonusNumber)) {
             throw makeIllegalArgumentException(Message.BONUS_NUMBER_INPUT_ERROR.getMessage());
         }
     }
@@ -48,6 +46,8 @@ public class InputUtil {
 
     public void isOnlyCommaAndNumber(String input) throws IllegalArgumentException {
         String[] numbers = input.split(COMMA);
+        Pattern pattern = Pattern.compile(NOT_NUMBER_REGEX);
+
         for (String number : numbers) {
             Matcher matcher = pattern.matcher(number);
             if (matcher.find()) {
