@@ -5,6 +5,26 @@ import java.util.Stack;
 
 public class ValueValidator {
 
+    public static void validateIntegerValue(String inputValue) {
+        try {
+            Integer.parseInt(inputValue);
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 로또 번호는 정수형이여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 정수형이여야 합니다.");
+        }
+    }
+
+    public static void validateIntegerValue(String[] inputValue) {
+        try {
+            for (String value : inputValue) {
+                Integer.parseInt(value);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 로또 번호는 정수형이여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 정수형이여야 합니다.");
+        }
+    }
+
     public static void validateLottoPurchaseMoney(String lottoPurchaseMoney) {
         try {
             Integer.parseInt(lottoPurchaseMoney);
