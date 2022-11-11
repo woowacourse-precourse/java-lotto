@@ -39,19 +39,19 @@ public class Lotto {
         }
         return -1;
     }
-    public int getRtn(List<Integer> truenum,int bonusnum){
+    public LottoRank getRtn(List<Integer> truenum,int bonusnum){
         int cnt = 0;
         int bonus = 0;
         if(findidx(bonusnum) == 1) bonus = 1;
         for(int i = 0; i < truenum.size(); i++){
             if(truenum.get(i) != -1) cnt++;
         }
-        if(cnt == 6) return 1;
-        if(cnt == 5 && bonus == 1) return 2;
-        if(cnt == 5) return 3;
-        if(cnt == 4 || (cnt == 3 && bonus == 1)) return 4;
-        if(cnt == 3 || (cnt == 2 && bonus == 1)) return 5;
-        return 6;
+        if(cnt == 6) return LottoRank.First;
+        if(cnt == 5 && bonus == 1) return LottoRank.Second;
+        if(cnt == 5) return LottoRank.Third;
+        if(cnt == 4 || (cnt == 3 && bonus == 1)) return LottoRank.Fourth;
+        if(cnt == 3 || (cnt == 2 && bonus == 1)) return LottoRank.Fifth;
+        return LottoRank.Sixth;
     }
 
     // TODO: 추가 기능 구현
