@@ -426,4 +426,18 @@ class LottoTest {
 
         assertThat(ranks.size()).isEqualTo(2);
     }
+
+    @DisplayName("랭크 결과 리스트를 입력하면 총 당첨금을 반환한다")
+    @Test
+    void getTotalPrizeMoneyByRanks() {
+        List<LottoRank> ranks = List.of(LottoRank.SECOND_PLACE, LottoRank.SECOND_PLACE, LottoRank.THIRD_PLACE);
+        List<Integer> winningNumbers = List.of(1, 10, 12, 24, 33, 45);
+        int bonusNumber = 43;
+        WinningNumber winningNumber = new WinningNumber(winningNumbers, bonusNumber);
+        int result = 61_500_000;
+
+        int totalPrizeMoney = winningNumber.getTotalPrizeMoney(ranks);
+
+        assertThat(totalPrizeMoney).isEqualTo(result);
+    }
 }
