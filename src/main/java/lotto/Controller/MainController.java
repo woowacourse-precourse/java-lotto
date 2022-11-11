@@ -5,6 +5,7 @@ import lotto.Bonus;
 import lotto.Cash;
 import lotto.Lotto;
 import lotto.Model.Calculator;
+import lotto.View.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +23,11 @@ public class MainController {
         }
 
         cash = new Cash(integer);
+        countLottoNumber(cash);
     }
 
     private int lottoNumber;
-    public void countLottoNumber() throws IllegalArgumentException{
+    private void countLottoNumber(Cash cash) throws IllegalArgumentException{
         Calculator calculator = new Calculator();
         lottoNumber = calculator.countLottoNumber(cash);
     }
@@ -46,6 +48,7 @@ public class MainController {
         }
 
         winningLotto = new Lotto(winningNumber);
+
     }
 
     private Bonus bonus;
