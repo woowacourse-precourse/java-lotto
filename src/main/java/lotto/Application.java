@@ -1,10 +1,13 @@
 package lotto;
 
+
+import lotto.lottoShop.LottoShop;
+
 public class Application {
     public static void main(String[] args) {
-        Consumer consumer = new Consumer();
+        LottoShop lottoShop = LottoShop.getInstance();
 
-        consumer.purchaseLotto();
+        lottoShop.takeOneConsumer();
 
 //        추첨
 

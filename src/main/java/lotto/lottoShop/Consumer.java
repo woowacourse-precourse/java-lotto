@@ -1,19 +1,20 @@
-package lotto;
+package lotto.lottoShop;
 
 import camp.nextstep.edu.missionutils.Console;
-
 import java.util.List;
 
 public class Consumer {
+    private final Clerk clerk;
     private List<Lotto> lotto_group;
 
-    public Consumer() {
+    public Consumer(Clerk clerk) {
+        this.clerk = clerk;
     }
 
     public void purchaseLotto() {
         String purchaseAmount = Console.readLine();
 
-        lotto_group = Clerk.sellLotto(purchaseAmount);
+        lotto_group = clerk.sellLotto(purchaseAmount);
 
         printLottoGroup();
     }
