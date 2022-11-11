@@ -18,4 +18,13 @@ public class WinningNumberTest {
 			WinningNumber.checkWinningNumber(winningNumber);
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@DisplayName("번호의 개수가 6개가 아닌 경우 예외가 발생")
+	@ParameterizedTest
+	@ValueSource(strings = {"1,2,3,4,5,6,7", "1,2,3,4,5"})
+	void notSixNumbers(String winningNumber) {
+		assertThatThrownBy(() -> {
+			WinningNumber.checkWinningNumber(winningNumber);
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
 }
