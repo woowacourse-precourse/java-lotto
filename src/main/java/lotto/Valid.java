@@ -11,10 +11,12 @@ public class Valid {
 		int verification = isNumber(purchaseAmount);
 
 		if (isZero(verification)) {
+			System.out.println(PURCHASE_AMOUNT_IS_ZERO_ERROR);
 			throw new IllegalArgumentException(PURCHASE_AMOUNT_IS_ZERO_ERROR);
 		}
 		if(isDividedBy1000(verification))
 			return verification;
+		System.out.println(NOT_DIVIDED_BY_1000_ERROR);
 		throw new IllegalArgumentException(NOT_DIVIDED_BY_1000_ERROR);
 	}
 
@@ -28,6 +30,7 @@ public class Valid {
 		if (isNumeric(purchaseAmount)) {
 			return Integer.parseInt(purchaseAmount);
 		}
+		System.out.println(INPUT_IS_NOT_NUMBER_ERROR);
 		throw new IllegalArgumentException(INPUT_IS_NOT_NUMBER_ERROR);
 	}
 	private static boolean isZero(int purchaseAmount) {
