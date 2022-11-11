@@ -33,7 +33,6 @@
 - [x] 구입할 금액만큼 로또 번호를 반복하여 생성 - List<List<Integer>> lottoNumber = Lotto#createLotto()
 
 - [ ] 로또를 구매하기 - Long amount = Lotto#buyLotto()
-- [ ] List<Integer>형식의 로또들을 List<List<Integer>로 합친다. - List<List<Integer>> = Lotto#createLottolst(List<List<Integer>> lottoLst)
 - [ ] 당첨 확인 - Lotto#lottoCheckWin()
 
 - [ ] 구매한 로또 번호들과 당첨 번호를 비교한다. - Lotto#lottoCompare()
@@ -63,6 +62,5 @@
 - [ ] "6개 일치 (2,000,000,000원) - n개"를 출력한다. - WinStatistics#showWinMessage(int number)
 
 ## 예외 처리
-- [ ] 로또를 구매하는 금액이 1000으로 나누어지지 않는 경우
-- [ ] 로또(보너스) 번호를 입력 받을 때 숫자 범위(1 ~ 45)를 벗어나는 입력을 한 경우
-- [ ] 숫자가 아닌 것을 입력한 경우
+- [ ] 로또를 구매하는 금액이 1000으로 나누어지지 않는 경우 || 0이하인 경우 || 숫자가 아닌 경우
+- [ ] 로또(보너스) 번호를 입력 받을 때 숫자 범위(1 ~ 45)를 벗어나는 입력을 한 경우 || 숫자가 아닌 경우
