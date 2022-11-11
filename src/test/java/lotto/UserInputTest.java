@@ -3,11 +3,11 @@ package lotto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
-import java.util.*;
-
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class UserInputTest {
     final private String ERROR = "[ERROR]";
@@ -63,6 +63,17 @@ class UserInputTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         assertThatThrownBy(() -> UserInput.inputWinningNumber())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 예외_메시지() {
+        String input = "1000j";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(() -> UserInput.inputMoney())
+                .hasMessageContaining("[ERROR]")
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
