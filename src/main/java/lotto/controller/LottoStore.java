@@ -24,6 +24,8 @@ public class LottoStore {
 
         List<Lotto> generatedLottos = lottoController.generateLottoAuto(purchasedAmount);
         OutputUi.printPurchasedLottos(generatedLottos);
+
+        return generatedLottos;
     }
 
 }
