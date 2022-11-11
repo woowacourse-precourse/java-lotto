@@ -21,4 +21,10 @@ public class Error {
             throw new IllegalArgumentException("[ERROR] 당첨번호에 중복된 숫자가 있습니다.");
         }
     }
+
+    static void containBonusInWinningNumber(List<Integer> winningNumber,int Bonus) {
+        if (winningNumber.contains(Bonus)) {
+            throw new IllegalArgumentException("[ERROR] 당첨번호 안에 중복된 보너스번호가 있습니다.");
+        }
+    }
 }
