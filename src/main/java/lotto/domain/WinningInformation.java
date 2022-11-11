@@ -15,6 +15,7 @@ public class WinningInformation {
         for(int i = 0; i < winningNumbers.size(); i++){
             validator.checkNumberRange(winningNumbers.get(i));
         }
+        validator.checkDuplicatedNumber(winningNumbers);
         this.winningNumbers = winningNumbers;
     }
 
