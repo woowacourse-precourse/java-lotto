@@ -7,20 +7,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 enum PrintResult {
-    FIFTH("3개 일치 (5,000원) - "),
-    FOURTH("4개 일치 (50,000원) - "),
-    THIRD("5개 일치 (1,500,000원) - "),
-    SECOND("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
-    FIRST("6개 일치 (2,000,000,000원) - ");
+    FIFTH("3개 일치 (5,000원) - ", 5000),
+    FOURTH("4개 일치 (50,000원) - ", 50000),
+    THIRD("5개 일치 (1,500,000원) - ", 1500000),
+    SECOND("5개 일치, 보너스 볼 일치 (30,000,000원) - ", 30000000),
+    FIRST("6개 일치 (2,000,000,000원) - ", 2000000000);
 
     private final String name;
+    private final long value;
 
-    PrintResult(String name) {
+    PrintResult(String name, long value) {
         this.name = name;
+        this.value = value;
     }
 
     public String getName() {
         return this.name;
+    }
+
+    public long getValue() {
+        return this.value;
     }
 }
 
@@ -88,6 +94,16 @@ public class Application {
 //        }
     }
 
+    static void printYield(MyResult myResult, int purchase) {
+        double yield = 0;
+        for (PrintResult rank : PrintResult.values()) {
+            yield += (myResult.getWinningResult().get(rank.ordinal()) * rank.getValue());
+        }
+        yield /= purchase;
+        yield *= 100;
+        System.out.println("총 수익률은 " + yield + "% 입니다.");
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int purchase = inputMoney() / 1000;
@@ -97,6 +113,7 @@ public class Application {
         inputBonusNumber(winningLotto);
         MyResult myResult = new MyResult(myLottos, winningLotto);
         printMyLottoResult(myResult);
+        printYield(myResult, purchase * 1000);
     }
 }
 
