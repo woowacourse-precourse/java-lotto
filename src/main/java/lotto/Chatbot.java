@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Chatbot {
+
+        private static final int COUNT = 6;
+
         public String askPrice() {
                 System.out.println("구입금액을 입력해 주세요.");
                 String price=Console.readLine();
@@ -26,12 +29,14 @@ public class Chatbot {
         }
 
         public List<Integer> askLottoNumber() {
+                System.out.println();
                 System.out.println("당첨 번호를 입력해 주세요.");
+                String[] input=Console.readLine().split(",");
 
-                Scanner scanner = new Scanner(System.in);
-
-                ArrayList lotto = null;
-
+                List<Integer> lotto = new ArrayList<Integer>();
+                for(int i=0;i<input.length;i++){
+                        lotto.add(Integer.parseInt(input[i]));
+                }
                 return lotto;
         }
 
