@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.model.Bonus;
+import lotto.model.Player;
 import lotto.model.Lotto;
 import lotto.model.Purchase;
 import lotto.view.InputView;
@@ -17,7 +18,11 @@ public class LottoController {
         if (lotto.get().contains(bonusNumber.get())) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.");
         }
-        // issueCount만큼 발행 반복
+
+        for (int i = 0; i < issueCount.get(); i++) {
+            Player playerNumbers = new Player();
+            System.out.println(playerNumbers.get());
+        }
 
     }
 }
