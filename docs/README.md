@@ -7,6 +7,7 @@
 - [x] 당첨 번호 입력 기능 - Console#inputWinningNumbers()
 - [x] 보너스 번호 입력 기능 - Console#inputBonusNumber()
 - [x] 당첨 번호와 로또 번호 비교 기능 - Lotto#compareNumbers()
+- [x] 보너스 번호와 로또 번호 비교 기능 - Lotto#compareBonus()
 - [ ] 등수 계산 기능 - Calculator#calculateRank()
 - [ ] 수익률 계산 기능 - Calculator#calculateYield()
 - [ ] 당첨 통계 출력 기능 - Console#outputWinningResult()

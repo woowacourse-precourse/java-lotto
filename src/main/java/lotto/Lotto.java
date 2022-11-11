@@ -26,4 +26,10 @@ public class Lotto {
         }
         return count;
     }
+    public boolean compareBonus(int bonus) {
+        if (numbers.contains(bonus)) {
+            return true;
+        }
+        return false;
+    }
 }
