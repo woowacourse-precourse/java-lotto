@@ -55,4 +55,12 @@ public class WinningNumber {
             throw new IllegalArgumentException("당첨 번호는 6자리, 보너스 번호는 1자리 숫자가 아닙니다.");
         }
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }
