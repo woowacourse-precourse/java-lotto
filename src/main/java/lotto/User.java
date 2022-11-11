@@ -5,7 +5,7 @@ import java.util.List;
 
 public class User {
     private int money;
-    private int earning;
+    private double earning;
     public void inputMoney(int money) {
         this.money = money;
     }
@@ -40,5 +40,9 @@ public class User {
         }
     }
 
-
+    public double calculateEarningRate() {
+        double earningRate;
+        earningRate = earning/money;
+        return earningRate;
+    }
 }
