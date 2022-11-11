@@ -10,7 +10,7 @@ public class BonusNumberException {
             if (bonusNumber > 45 || bonusNumber < 1) {
                 throw new IllegalArgumentException("[ERROR] 1~45의 값이 아닙니다.");
             }
-        } catch (IllegalArgumentException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             throw e;
         }
@@ -18,11 +18,11 @@ public class BonusNumberException {
 
     public void notNumber(String bonusNumber) {
         try {
-            if (String.valueOf(bonusNumber).isEmpty() ||
-                    !IsOnlyNumber.matcher(String.valueOf(bonusNumber)).matches()) {
+            if (bonusNumber.isEmpty() ||
+                    !IsOnlyNumber.matcher(bonusNumber).matches()) {
                 throw new IllegalArgumentException("[ERROR] 숫자가 아닌 값이 들어왔습니다.");
             }
-        } catch (IllegalArgumentException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             throw e;
         }

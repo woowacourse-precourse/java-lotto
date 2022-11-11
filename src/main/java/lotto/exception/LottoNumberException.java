@@ -9,6 +9,7 @@ public class LottoNumberException {
                 throw new IllegalArgumentException("[ERROR] 크기가 6이 아닙니다.");
             }
         } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
             throw e;
         }
@@ -18,10 +19,11 @@ public class LottoNumberException {
         try {
             for (Integer num : numbers) {
                 if (num > 45 || num < 1) {
-                    throw new IllegalArgumentException("로또의 최대 최소 값이 맞지 않습니다.");
+                    throw new IllegalArgumentException("[ERROR] 로또의 최대 최소 값이 맞지 않습니다.");
                 }
             }
-        } catch (IllegalArgumentException e) {
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
             throw e;
         }
@@ -31,10 +33,11 @@ public class LottoNumberException {
         try {
             for (Integer num : numbers) {
                 if (numbers.indexOf(num) != numbers.lastIndexOf(num)) {
-                    throw new IllegalArgumentException("중복된 값이 있습니다.");
+                    throw new IllegalArgumentException("[ERROR] 중복된 값이 있습니다.");
                 }
             }
-        } catch (IllegalArgumentException e) {
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
             throw e;
         }
@@ -43,8 +46,9 @@ public class LottoNumberException {
     public void bonusNumber(List<Integer> winningNumbers, int bonusNumber) {
         try {
             if (winningNumbers.contains(bonusNumber))
-                throw new IllegalArgumentException("보너스 숫자가 이미 있는 번호입니다.");
-        } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException("[ERROR] 보너스 숫자가 이미 있는 번호입니다.");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
             e.printStackTrace();
             throw e;
         }
