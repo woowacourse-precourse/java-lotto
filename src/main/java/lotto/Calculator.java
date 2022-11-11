@@ -19,6 +19,6 @@ public class Calculator {
         for (Rank rank : result.keySet()) {
             earnMoney += rank.money * result.get(rank);
         }
-        return Math.round(earnMoney/money * 100 * 100) / 100.0;
+        return Math.round(earnMoney/money * 100 * 10) / 10.0;
     }
 }

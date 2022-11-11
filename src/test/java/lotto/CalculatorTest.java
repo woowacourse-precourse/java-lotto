@@ -31,7 +31,7 @@ class CalculatorTest {
         Map<Rank, Integer> map = new HashMap<>();
         map.put(Rank.FIFTH, 1);
         double answer = calculator.calculateYield(map, 9000);
-        assertThat(answer).isEqualTo(55.56);
+        assertThat(answer).isEqualTo(55.6);
     }
     @Test
     void 수익률_계산_같은랭크_1개이상_테스트2() {
@@ -40,6 +40,6 @@ class CalculatorTest {
         map.put(Rank.FIFTH, 2); //10000
         map.put(Rank.FOURTH, 1); // 50000
         double answer = calculator.calculateYield(map, 90000);
-        assertThat(answer).isEqualTo(66.67);
+        assertThat(answer).isEqualTo(66.7);
     }
 }
