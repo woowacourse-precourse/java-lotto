@@ -8,15 +8,15 @@ import java.util.List;
 
 public class User {
     private int purchaseAmount;
-    private int earnedAmouont;
+    private final PrizeList prizes = new PrizeList();
     private final List<Lotto> lottos = new ArrayList<>();
 
     public List<Lotto> getLottos() {
         return lottos;
     }
 
-    public int getEarnedAmouont() {
-        return earnedAmouont;
+    public PrizeList getPrizes() {
+        return prizes;
     }
 
     public int getPurchaseAmount() {
@@ -38,6 +38,10 @@ public class User {
             List<Integer> randoms = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             lottos.add(new Lotto(randoms));
         }
+    }
+
+    public void addPrize(Prize prize) {
+        getPrizes().addCount(prize);
     }
 
     private void validate(String input) {
