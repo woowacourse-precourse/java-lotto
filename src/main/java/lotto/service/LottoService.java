@@ -7,6 +7,7 @@ import static lotto.domain.Lotto.START_LOTTO_NUMBER;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +19,9 @@ import lotto.repository.RankRepository;
 
 public class LottoService {
 
+    private static final DecimalFormat INTEGER_FORMAT = new DecimalFormat("###,###");
+    private static final DecimalFormat FLOAT_FORMAT = new DecimalFormat("###,###.#");
+
     int purchasePrice;
     List<Lotto> playerPurchaseLottos = new ArrayList<>();
     WinningLotto winningLotto;
@@ -26,12 +30,40 @@ public class LottoService {
         setPlayerPurchaseLottos(purchaseLottos());
         setWinningLotto(inputWinningLotto());
         List<Rank> lottoResults = getResult();
+        printResult(lottoResults);
+    }
+
+    private void printResult(List<Rank> lottoResults) {
+        int totalReward = 0;
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for (Rank rank : Rank.values()) {
+            System.out.printf("%s (%s) - %d개%n", rank.getDescriptionMessage(),
+                    getFormattedReward(rank.getWinningPrice()), getMatchedRankCount(lottoResults, rank));
+            totalReward += rank.getWinningPrice() * getMatchedRankCount(lottoResults, rank);
+        }
+        System.out.printf("총 수익률은 %s%%입니다.%n", getFormattedRateOfReturn(totalReward));
+    }
+
+    private String getFormattedRateOfReturn(int totalReward) {
+        return FLOAT_FORMAT.format(totalReward * 100.0 / purchasePrice);
+    }
+
+    private static long getMatchedRankCount(List<Rank> lottoResults, Rank matchedRank) {
+        return lottoResults.stream()
+                .filter(lottoResult -> lottoResult.equals(matchedRank))
+                .count();
+    }
+
+    private static String getFormattedReward(int winningPrice) {
+        return INTEGER_FORMAT.format(winningPrice);
     }
 
     private List<Rank> getResult() {
         List<Rank> lottoResults = new ArrayList<>();
         for (Lotto playerPurchaseLotto : playerPurchaseLottos) {
-            lottoResults.add(RankRepository.getRank(playerPurchaseLotto, winningLotto));
+            RankRepository.getRank(playerPurchaseLotto, winningLotto)
+                    .ifPresent(lottoResults::add);
         }
         return lottoResults;
     }
