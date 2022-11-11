@@ -5,6 +5,7 @@ import lotto.domain.Lotto;
 import lotto.utils.Utils;
 import lotto.validation.Validation;
 import lotto.view.InputMessage;
+import lotto.view.OutputMessage;
 
 import java.util.List;
 
@@ -40,6 +41,13 @@ public class Service {
         int count = buyer.getPurchaseAmount() / LOTTO_LEAST_AMOUNT;
         for(;count>0; count--){
             buyOneLotto();
+        }
+    }
+
+    public void showBuyingResult(){
+        OutputMessage.purchaseComplete(buyer.getPurchaseAmount()/LOTTO_LEAST_AMOUNT);
+        for(Lotto lotto : buyer.getPurchasedLotteries()){
+            OutputMessage.lottoNumbers(lotto.getNumbers());
         }
     }
 
