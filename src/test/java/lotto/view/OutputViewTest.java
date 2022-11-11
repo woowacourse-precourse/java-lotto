@@ -63,4 +63,13 @@ class OutputViewTest {
 
         assertThat(output.toString()).isEqualTo(lottoWinningStatisticsMessage);
     }
+
+    @Test
+    void 수익률_출력() {
+        String earningsRatio = "62.5%";
+        outputView.printEarningsRatio(earningsRatio);
+        String earningsRatioMessage = "총 수익률은 62.5%입니다.\n";
+
+        assertThat(output.toString()).isEqualTo(earningsRatioMessage);
+    }
 }
