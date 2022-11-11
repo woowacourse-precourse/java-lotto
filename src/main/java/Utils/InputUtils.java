@@ -13,7 +13,7 @@ public class InputUtils {
 
     public static boolean isNumberLengthSix(List<Integer> input) {
         // 당첨 번호가 6자리인지 확인
-        return false;
+        return input.size() == 6;
     }
 
     public static boolean isNumberSplitWithComma(String input) {
