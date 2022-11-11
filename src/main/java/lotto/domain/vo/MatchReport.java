@@ -15,4 +15,12 @@ public class MatchReport {
     public void bonusTurnTrue() {
         bonus = true;
     }
+
+    public int currentHitCount() {
+        return hitCount;
+    }
+
+    public boolean currentBonus() {
+        return bonus;
+    }
 }
