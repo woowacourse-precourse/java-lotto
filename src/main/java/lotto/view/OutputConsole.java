@@ -18,11 +18,11 @@ public class OutputConsole {
     public void showWinningStatistics(WinningHistory winningHistory) {
         consolelog.println(LINE + "당첨 통계");
         consolelog.println("---");
-        consolelog.println("3개 일치 (5,000원) - " + winningHistory.getFifthCount());
-        consolelog.println("4개 일치 (50,000원) - " + winningHistory.getFourthCount());
-        consolelog.println("5개 일치 (1,500,000원) - " + winningHistory.getThirdCount());
-        consolelog.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + winningHistory.getSecondCount());
-        consolelog.println("6개 일치 (2,000,000,000원) - " + winningHistory.getFirstCount());
-        consolelog.println("총 수익률은 " + winningHistory.getYield() +"입니다.");
+        consolelog.println("3개 일치 (5,000원) - " + winningHistory.getFifthCount() + "개");
+        consolelog.println("4개 일치 (50,000원) - " + winningHistory.getFourthCount() + "개");
+        consolelog.println("5개 일치 (1,500,000원) - " + winningHistory.getThirdCount() + "개");
+        consolelog.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + winningHistory.getSecondCount() + "개");
+        consolelog.println("6개 일치 (2,000,000,000원) - " + winningHistory.getFirstCount() + "개");
+        consolelog.println("총 수익률은 " + winningHistory.getYield() +"%입니다.");
     }
 }
