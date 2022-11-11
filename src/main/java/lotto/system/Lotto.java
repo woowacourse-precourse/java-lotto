@@ -1,8 +1,8 @@
 package lotto.system;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -10,7 +10,7 @@ public class Lotto {
 	private final List<Integer> numbers;
 
 	public Lotto(List<Integer> numbers) {
-		Validator.isListValidate(numbers);
+		Validator.isSizeValidate(numbers);
 		this.numbers = numbers;
 	}
 
@@ -18,18 +18,13 @@ public class Lotto {
 		List<List<Integer>> lottoGames = new ArrayList<>();
 		for (int i = 0; i < count; i++) {
 			List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-			sort(numbers);
-			lottoGames.add(numbers);
+			List<Integer> game = numbers.stream()
+				.sorted()
+				.collect(Collectors.toList());
+			lottoGames.add(game);
 		}
 		return lottoGames;
 	}
-
-	public static List<Integer> sort(List<Integer> numbers){
-		List<Integer> result = new ArrayList<>(numbers);
-		Collections.sort(result);
-		return result;
-	}
-
 
 	public List<Integer> getNumbers() {
 		return numbers;
