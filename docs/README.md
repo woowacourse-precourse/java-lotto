@@ -31,14 +31,11 @@
 
 2. Enum
     - WinningLotto
-        - 로또 등 수
-            - ThirdPrice, FourthPrice ...
+        - 로또 등수
 
 3. Util
     - GenerateLottoNumbers
         - 유저가 로또 구매시 번호 추출 및 정렬을 해준다.
-    - RoundToTwoDecimalParser
-        - 수익률을 소수점 둘째 자리에서 반올림 해준다.
     - LottoUtil
         - 6개의 입력된 로또번호를 ','를 기준으로 나눠고 List<Integer>로 번호 반환.
         - 보너스 번호를 int형으로 반환.
@@ -47,10 +44,10 @@
 
 
 4. Exception
-    - UserBuyLottoException
-        - 로또 구입 금액 입력 시 1000원 단위로 떨어지는지 확인
+    - UserBuyingException
+        - 로또 구입 금액 입력 예외 처리 진행
 
-    - UserInputLottoNumbersException
+    - LottoException
         - 로또 번호 6개 입력을 했는지
         - 1~45의 숫자의 값인지 확인
         - 6개의 번호가 중복인지 확인
