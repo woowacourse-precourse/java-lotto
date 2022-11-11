@@ -12,6 +12,7 @@ public class NumberParser {
             for (String number : splittedNumbers) {
                 winningNumbers.add(Integer.parseInt(number));
             }
+            checkException(winningNumbers);
             System.out.println(winningNumbers);
             return winningNumbers;
         }catch(Exception e){
@@ -33,10 +34,12 @@ public class NumberParser {
 
     public NumberParser(List<Integer> numbers) {
         winningNumbers = numbers;
+        checkException(winningNumbers);
     }
 
     public NumberParser(int number){
         bonusNumber = number;
+        checkException(number);
     }
 
     public NumberParser(){}
