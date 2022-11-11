@@ -20,7 +20,7 @@ public class Utils {
         System.out.println();
     }
 
-    private void validateMoney(String inputMoney) {
+    public void validateMoney(String inputMoney) {
         if (!Pattern.matches("[0-9]+", inputMoney)
                 || Integer.parseInt(inputMoney) <= 0
                 || Math.floorMod(Integer.parseInt(inputMoney), 1000) != 0) {
