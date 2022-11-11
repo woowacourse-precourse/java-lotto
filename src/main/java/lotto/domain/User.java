@@ -4,16 +4,13 @@ import static lotto.util.GenerateLottoNumbers.generateLottoNumbers;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.exception.UserBuyingException;
 
 public class User {
     private final int buyingPrice;
     private final int winningPrice;
     private List<UserLotto> lottos;
-    private final UserBuyingException userBuyingException = new UserBuyingException();
 
     public User(int buyingPrice) {
-        userBuyingException.validBuyingException(buyingPrice);
         lottos = new ArrayList<>();
         this.buyingPrice = buyingPrice;
         this.winningPrice = 0;
