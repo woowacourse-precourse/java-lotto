@@ -18,6 +18,7 @@ _예외 상황 시 에러 문구를 출력해야 한다. 단, 에러 문구는 "
 2. 당첨 번호의 수가 6개인가?
 3. 보너스 번호의 숫자 범위가 1~45인가?
 4. 로또 구입 금액이 1000으로 나누어 떨어지는가?
+5. 보너스 번호와 당첨 번호가 겹치지 않는가?
 
 ## 구조화(MVC)
 [ MVC 패턴 ]<br>
@@ -87,6 +88,7 @@ Enum : Rank
 [constructor]<br>
 - Draw(Lotto winningLotto, int bonusNum) // (feat.3,feat.4)
   - validateBonusNumRange(bonusNum)
+  - validateBonusNumAndLottoOverlap()
   - setRankClassification()
   - setWinningStats()
   - this.
@@ -99,6 +101,7 @@ Enum : Rank
 - private int winningNumSize(Lotto tryLotto) // 개개인의 로또 비교후 맞는 숫자 출력
 - private boolean isBonusExist(int bonusNum) // 보너스 번호가 있는지 확인
 - private void validateBonusNumRange(int bonusNum) // (valid.3)
+- private void validateBonusNumAndLottoOverlap() // (valid.5)
 ```
 
 ### Rate : 수익률을 계산해주는 회사
