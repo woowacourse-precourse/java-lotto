@@ -14,16 +14,6 @@ public class LottoFactory {
     private static final int LOTTO_LENGTH = 6;
 
     public static Lotto generateLotto() {
-        Set<Integer> lottoNumbers = new HashSet<>();
-
-        while (lottoNumbers.size() < LOTTO_LENGTH) {
-            Integer randomNumber = Randoms.pickNumberInRange(START_NUMBER, END_NUMBER);
-            lottoNumbers.add(randomNumber);
-        }
-
-        List<Integer> fixedLottoNumber = new ArrayList<>(lottoNumbers);
-        fixedLottoNumber.sort(Comparator.naturalOrder());
-
-        return new Lotto(fixedLottoNumber);
+        return new Lotto(Randoms.pickUniqueNumbersInRange(START_NUMBER, END_NUMBER, LOTTO_LENGTH));
     }
 }
