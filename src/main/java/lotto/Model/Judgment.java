@@ -1,5 +1,6 @@
 package lotto.Model;
 
+import lotto.Bonus;
 import lotto.Lotto;
 
 import java.util.List;
@@ -17,7 +18,8 @@ public class Judgment {
         return match;
     }
 
-    public boolean hasBonusNumber(List<Integer> winningNumber, int bonusNumber) {
-        return winningNumber.contains(bonusNumber);
+    public boolean hasBonusNumber(Lotto winningLotto, Bonus bonus) {
+        List<Integer> winningNumber = winningLotto.getNumbers();
+        return winningNumber.contains(bonus.getBonus());
     }
 }
