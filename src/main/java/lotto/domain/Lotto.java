@@ -2,8 +2,6 @@ package lotto.domain;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 
 public class Lotto {
 	private final List<Integer> numbers;
@@ -28,8 +26,7 @@ public class Lotto {
 	}
 
 	public Rank getRank(Lotto winnerLotto, int bonusNumber) {
-		Set<Integer> winnerLottoNumbers = new TreeSet<>(winnerLotto.getNumbers());
-		this.numbers.removeAll(winnerLottoNumbers);
+		this.numbers.removeAll(winnerLotto.getNumbers());
 		int count = 6 - this.numbers.size();
 		boolean isBonus = false;
 		if (isBonusNumber(bonusNumber, count)) {
@@ -39,7 +36,7 @@ public class Lotto {
 	}
 
 	private boolean isBonusNumber(int bonusNumber, int count) {
-		return count == 1 && this.numbers.contains(bonusNumber);
+		return count == 5 && this.numbers.contains(bonusNumber);
 	}
 
 }
