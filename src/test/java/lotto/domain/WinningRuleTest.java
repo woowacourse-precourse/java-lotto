@@ -22,7 +22,7 @@ class WinningRuleTest {
         WinningRule winningRule = check.get();
 
         // then
-        assertEquals(WinningRule.SECOND, winningRule);
+        assertEquals(WinningRule.FIRST, winningRule);
     }
 
     @Test

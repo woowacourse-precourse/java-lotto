@@ -31,6 +31,6 @@ class WinningHistoryTest {
         assertEquals(1, winningHistory.getFourthCount());
         assertEquals(1, winningHistory.getFifthCount());
         assertEquals(2_031_555_000, winningHistory.getWinningAmount());
-        assertEquals(6771850.0, winningHistory.getYield());
+        assertEquals(33_859_250.0, winningHistory.getYield());
     }
 }
