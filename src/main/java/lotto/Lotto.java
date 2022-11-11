@@ -22,7 +22,7 @@ public class Lotto {
         System.out.println(numbers);
     }
 
-    public void asendingOrderSort() {
+    public void ascendingOrderSort() {
         Collections.sort(numbers);
     }
 }
