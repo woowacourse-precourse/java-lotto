@@ -13,7 +13,7 @@ public class LottoException {
     private final static int PERMITTED_LOTTO_LENGTH = 6;
     private final static int MIN_LOTTO_NUMBER = 1;
     private final static int MAX_LOTTO_NUMBER = 45;
-    private static final String ONLY_NUMBER_REGEX = "[1-45]+";
+    private static final String ONLY_NUMBER_REGEX = "^[1-9]{1}$|^[1-3]{1}[0-9]{1}$|^4{1}[0-5]{1}$+";
 
     public void validateLottoNumbers(String inputNumbers) {
         validateLottoNumbersLength(inputNumbers);
