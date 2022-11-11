@@ -16,17 +16,23 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
-        if(numbers.size()!=numbers.stream().distinct().count()){
+        if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException();
         }
     }
-    public List<Integer> getNumbers(){
+
+    public List<Integer> getNumbers() {
         return this.numbers;
     }
-    public int get_hitCount(List<Integer> winning_numbers,int bonusNumber){
-        int hit_Count=0;
-        for(int checkNumber :numbers) {
-            if(winning_numbers.contains(checkNumber)) hit_Count++;
+
+    public static Lotto get() {
+        return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+    }
+
+    public int get_hitCount(List<Integer> winning_numbers, int bonusNumber) {
+        int hit_Count = 0;
+        for (int checkNumber : numbers) {
+            if (winning_numbers.contains(checkNumber)) hit_Count++;
         }
         return hit_Count;
     }
