@@ -6,24 +6,24 @@ import lotto.service.LottoGenerator;
 import java.util.ArrayList;
 import java.util.List;
 
-import static constants.Constants.START_MSG;
+import static constants.Constants.*;
 
 public class User {
     public List<Lotto> purchaseLotto;
     public int purchaseMoney;
     public int purchaseLottoNum;
 
-    public void buyLotto(){
+    public void buyLotto() {
         purchaseMoney = scanPayMoney();
-        purchaseLottoNum = purchaseMoney/1000;
+        purchaseLottoNum = purchaseMoney / LOTTO_PRICE;
         purchaseLotto = issueLotto(purchaseLottoNum);
     }
 
     private List<Lotto> issueLotto(int purchaseLottoNum) {
         LottoGenerator generator = new LottoGenerator();
         List<Lotto> tempLotto = new ArrayList<>();
-        for(int buy=0;buy<purchaseLottoNum;buy++){
-            List<Integer> generatedNums =  generator.generateRandomNums();
+        for (int buy = 0; buy < purchaseLottoNum; buy++) {
+            List<Integer> generatedNums = generator.generateRandomNums();
             tempLotto.add(new Lotto(generatedNums));
         }
         return tempLotto;
@@ -37,8 +37,8 @@ public class User {
     }
 
     public void validateMoney(int money) {
-        if(money%1000 ==0 )return;
-        throw new IllegalArgumentException("[ERROR] 구입금액은 1000원 단위로 끝나야 합니다. ");
+        if (money % LOTTO_PRICE == 0) return;
+        throw new IllegalArgumentException(PAY_MONEY_ERROR);
     }
 
 }
