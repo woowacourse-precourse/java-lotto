@@ -23,7 +23,12 @@ public class InputUtils {
 
     public static boolean isDigit(String input) {
         // 정수 이외의 다른 문자 값을 입력하였는지 확인
-        return false;
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
     }
 
     public static boolean isNumberInLottoRange(String input) {
