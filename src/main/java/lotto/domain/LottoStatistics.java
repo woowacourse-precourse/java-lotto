@@ -1,7 +1,7 @@
 package lotto.domain;
 
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,9 +16,9 @@ import static lotto.domain.LottoResult.LOSING;
 
 public class LottoStatistics {
 
-    private final Map<LottoResult,Integer> lottoResultMap = new HashMap<>();
+    private static final Map<LottoResult,Integer> lottoResultMap = new LinkedHashMap<>();
 
-    private void initLottoResultMap(){
+    private static void initLottoResultMap(){
         lottoResultMap.put(THREE,0);
         lottoResultMap.put(FOUR,0);
         lottoResultMap.put(FIVE,0);
@@ -27,7 +27,7 @@ public class LottoStatistics {
         lottoResultMap.put(LOSING,0);
     }
 
-    public void calculation(List<Lotto> lottoTicketList, WinningNumbers winningNumbers){
+    public static void calculation(List<Lotto> lottoTicketList, WinningNumbers winningNumbers){
         initLottoResultMap();
         for (Lotto lottoTicket : lottoTicketList) {
             LottoResult result = checkRanking(lottoTicket,winningNumbers);
@@ -35,7 +35,7 @@ public class LottoStatistics {
         }
     }
 
-    private LottoResult checkRanking(Lotto oneLottoTicket, WinningNumbers winningNumbers){
+    private static LottoResult checkRanking(Lotto oneLottoTicket, WinningNumbers winningNumbers){
         List<Integer> lottoTicket = oneLottoTicket.get();
         List<Integer> winningSixNumbers = winningNumbers.getWinNumbers();
         int winningBonusNumber = winningNumbers.getBonus();
@@ -44,13 +44,13 @@ public class LottoStatistics {
         return findRanking(count,oneLottoTicket);
     }
 
-    private List<Integer> countContain(int  number, List<Integer> winningSixNumbers,int winningBonusNumber,List<Integer> count){
+    private static List<Integer> countContain(int number, List<Integer> winningSixNumbers, int winningBonusNumber, List<Integer> count){
         if (winningSixNumbers.contains(number)) count.set(0,count.get(0)+1);
         else if (number == winningBonusNumber) count.set(1,1);
         return count;
     }
     
-    private LottoResult findRanking(List<Integer> count,Lotto oneLottoTicket){
+    private static LottoResult findRanking(List<Integer> count, Lotto oneLottoTicket){
         if (count.get(0)+count.get(1) == 3) oneLottoTicket.setLottoResult(THREE);
         else if (count.get(0)+count.get(1) == 4) oneLottoTicket.setLottoResult(FOUR);
         else if (count.get(0)+count.get(1) == 5) oneLottoTicket.setLottoResult(FIVE);
@@ -60,7 +60,7 @@ public class LottoStatistics {
         return oneLottoTicket.getLottoResult();
     }
 
-    public List<Integer> getLottoStatisticsList(){
+    public static List<Integer> getLottoStatisticsList(){
         List<Integer> lottoStatisticsList = new ArrayList<>();
         for ( LottoResult key : lottoResultMap.keySet() ) {
             lottoStatisticsList.add(lottoResultMap.get(key));
