@@ -18,6 +18,11 @@ public class Lotto {
         }
     }
 
+    public int lottoCount(int number) {
+        exceptionHandling.notDivideException(number); // 예외 검사
+        return number / 1000;
+    }
+
     public List<Integer> createLottoNumber(){
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return lottoNumbers;
