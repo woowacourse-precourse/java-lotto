@@ -22,7 +22,7 @@ public class LottoGameController {
 
     private final Map<String, String> lottoWinningNumberAndBonusNumberMap = new HashMap<>();
 
-    public void PlayGame() {
+    public void playGame() {
         purchaseLotto();
         setWinningNumberAndBonusNumber();
         decidePurchaseLottosRank();
