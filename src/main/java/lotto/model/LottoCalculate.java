@@ -15,6 +15,14 @@ public class LottoCalculate {
         }
     }
 
+    void totalCalculate(Lotto lotto, List<Integer> winNumbers, int bonusNumber) {
+        int matchCount = checkMatches(lotto.getNumbers(), winNumbers);
+        boolean matchBonusNumber = checkBonusNumber(lotto.getNumbers(), bonusNumber);
+        LottoPrizeMoney lottoPrizeMoney = calculatePrize(matchCount, matchBonusNumber);
+        lotto.addPrize(lottoPrizeMoney.prize);
+        lotto.addPrizeMoney(lottoPrizeMoney.prizeMoney);
+    }
+
     int checkMatches(Collection<Integer> lottoNumbers, List<Integer> winNumbers) {
         int matchCount = lottoNumbers.size();
         lottoNumbers.removeAll(winNumbers);
@@ -41,7 +49,7 @@ public class LottoCalculate {
         return LottoPrizeMoney.NONE;
     }
 
-    int calculateWinMoney(LottoPrizeMoney prizeNumber){
+    int calculateWinMoney(LottoPrizeMoney prizeNumber) {
         return prizeNumber.prizeMoney;
     }
 }
