@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static lotto.ui.ConsoleOutput.*;
@@ -9,6 +10,7 @@ import static lotto.ui.ConsoleOutput.*;
 public class LottoIssuer {
 
 	private static int purchasedLotto;
+	public static List<List<Integer>> issuedLottoes = new ArrayList<List<Integer>>();
 
 	public LottoIssuer(long totalAmount) {
 		countLotto(totalAmount);
@@ -24,6 +26,7 @@ public class LottoIssuer {
 	private static void issueLotto() {
 		for (int i = 0; i < purchasedLotto; i++) {
 			Lotto lotto = new Lotto(generateLottoNumbers());
+			issuedLottoes.add(lotto.getNumbers());
 		}
 	}
 
