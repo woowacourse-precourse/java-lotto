@@ -14,4 +14,8 @@ public class Generator {
 		}
 		return lotteryTicket;
 	}
+
+	public List<Integer> sortNumber(HashSet<Integer> randomLottoNumber) {
+		return null;
+	}
 }
