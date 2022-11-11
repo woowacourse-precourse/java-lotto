@@ -16,7 +16,16 @@ public class LottoService {
     static final int LOTTO_PRICE = 1000;
     private List<Lotto> lottos;
     private WinningNumber winningNumber;
-    private List<WinningPlace> winningResult;
+    private Map<WinningPlace, Integer> winningResult;
+
+    public void playLotto() {
+        System.out.println("구입금액을 입력해주세요.");
+        getLottos(Console.readLine());
+        getWinningNumber();
+        initializeWinningResult();
+        calcWinningResult();
+        printWinningResult();
+    }
 
     public void getLottos(String money) {
         lottos = new ArrayList<>();
@@ -47,7 +56,7 @@ public class LottoService {
 
     private void validateMoney(String money) {
         int tempMoney;
-        String range = String.format("^[0-9]+$");
+        String range = "^[0-9]+$";
         if (!Pattern.matches(range, money)) {
             System.out.println("[ERROR] 구입 금액은 숫자여야합니다.");
             throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자여야합니다.");
