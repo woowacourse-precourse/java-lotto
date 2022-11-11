@@ -1,8 +1,8 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -29,6 +29,15 @@ public class Lotto {
 
     public static List<List<Integer>> generateNumbers(int tickets){
         List<List<Integer>> lottoTickets = new ArrayList<>();
+        for (int i=0; i<tickets; i++){
+            List<Integer> ticketNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Set<Integer> set = new HashSet<Integer>(ticketNumbers);
+            while (set.size() < ticketNumbers.size()){
+                ticketNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+                set = new HashSet<Integer>(ticketNumbers);
+            }
+            lottoTickets.add(ticketNumbers);
+        }
         return lottoTickets;
     }
 
