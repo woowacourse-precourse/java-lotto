@@ -10,9 +10,11 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.List;
 
 import static lotto.domain.lottomachine.winningnumber.WinningNumberSystem.REGULAR_EXPRESSION_FOR_WINNING_NUMBERS_INPUT;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class WinningNumberSystemTest {
     private WinningNumberSystem winningNumberSystem;
@@ -68,5 +70,55 @@ class WinningNumberSystemTest {
             assertThat(e.getTargetException()).isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR] 여섯 개의 숫자를 \",\"로 구분해서 입력해야 합니다.");
         }
+    }
+
+    @DisplayName("createWinningNumberList 메소드에 1~45범위 안의 숫자 문자열이 입력되었을 때 WinningNumber 리스트를 반환하는지 확인")
+    @ParameterizedTest()
+    @ValueSource(strings = {"1,2,3,4,5,45", "4,34,12,33,21,44"})
+    void createWinningNumberList_test(String input) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Method method = winningNumberSystem.getClass().getDeclaredMethod("createWinningNumberList", String.class);
+        method.setAccessible(true);
+
+        assertThat(method.invoke(winningNumberSystem, input)).isInstanceOf(List.class);
+    }
+
+    @DisplayName("createWinningNumberList 메소드에 1~45범위 밖의 숫자 문자열이 입력되었을 때 오류가 발생하는지 확인")
+    @ParameterizedTest()
+    @ValueSource(strings = {"1,2,3,4,5,46", "4,34,12,33,21,0"})
+    void createWinningNumberList_error_test(String input) throws NoSuchMethodException, IllegalAccessException {
+        Method method = winningNumberSystem.getClass().getDeclaredMethod("createWinningNumberList", String.class);
+        method.setAccessible(true);
+
+        try {
+            method.invoke(winningNumberSystem, input);
+
+        } catch (InvocationTargetException e) {
+            assertThat(e.getTargetException()).isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR] 숫자는 1부터 45에 속해야 합니다.");
+        }
+    }
+
+    @DisplayName("receiveWinningNumber 메소드에서 사용자 입력 숫자에 중복이 있을 때 오류가 발생하는지 확인")
+    @ParameterizedTest()
+    @ValueSource(strings = {"1,2,3,4,5,5", "4,34,12,33,21,4"})
+    void receiveWinningNumber_duplication_error_test(String input) {
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        assertThatThrownBy(() -> winningNumberSystem.receiveWinningNumber())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 당첨번호는 중복될 수 없습니다.");
+    }
+
+    @DisplayName("receiveWinningNumber 메소드에서 사용자 입력이 검증을 통과할 때 WinningNumbers를 반환하는지 확인")
+    @ParameterizedTest()
+    @ValueSource(strings = {"1,2,3,4,5,45", "4,34,12,33,21,44"})
+    void receiveWinningNumber_test(String input) {
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        WinningNumbers winningNumbers = winningNumberSystem.receiveWinningNumber();
+
+        assertThat(winningNumbers).isInstanceOf(WinningNumbers.class);
     }
 }
