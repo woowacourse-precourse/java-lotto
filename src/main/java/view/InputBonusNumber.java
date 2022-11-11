@@ -6,14 +6,14 @@ import java.util.List;
 
 public class InputBonusNumber {
 
-    static int bonus;
+    static int bonusNumber;
     public static void inputBonusNumber(){
         System.out.println("보너스 번호를 입력해주세요.");
         String inputBonusNumber = Console.readLine();
         validateBonusNumber(inputBonusNumber);
     }
 
-    public static int validateBonusNumber(String inputBonusNumber){
+    public static void validateBonusNumber(String inputBonusNumber){
         int bonusNumber=0;
         bonusNumber = convertInteger(inputBonusNumber);
 
@@ -21,11 +21,10 @@ public class InputBonusNumber {
 
         isBonusNumberInWinningList(bonusNumber);
 
-        return bonusNumber;
     }
 
     private static int convertInteger(String inputBonusNumber) {
-        int bonusNumber;
+
         try{
            bonusNumber = Integer.parseInt(inputBonusNumber);
        }
@@ -49,7 +48,7 @@ public class InputBonusNumber {
         }
     }
 
-    public static int getBonus() {
-        return bonus;
+    public static int getBonusNumber() {
+        return bonusNumber;
     }
 }
