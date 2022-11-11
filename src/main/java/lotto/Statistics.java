@@ -13,7 +13,7 @@ public class Statistics {
     private static final int DEFAULT_VALUE = 0;
 
     public Map<Prize, Integer> produce(WinLotto winLotto, List<Lotto> lottos) {
-        Map<Prize, Integer> output = new EnumMap<>(Prize.class);
+        Map<Prize, Integer> output = getDefaultOutput();
         Set<Integer> winNumbers = new HashSet<>(winLotto.getNumbers());
         int bonusNumber = winLotto.getBonusNumber(); 
         
@@ -22,6 +22,15 @@ public class Statistics {
         }
 
         return output;
+    }
+
+    private EnumMap<Prize, Integer> getDefaultOutput() {
+        return new EnumMap<>(Prize.class){{
+            for (Prize prize : Prize.values()) {
+                put(prize, DEFAULT_VALUE);
+            }
+            remove(Prize.NONE);
+        }};
     }
 
     private void pileUpOutput(Map<Prize, Integer> output, Set<Integer> winNumbers, int bonusNumber, Lotto lotto) {
