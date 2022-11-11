@@ -5,11 +5,15 @@ import lotto.view.InputView;
 public class WinningLotto {
     private Lotto winningLotto;
 
-    public void readWinningLotto() {
-        winningLotto = new Lotto(InputView.readWinningNumber());
+    public WinningLotto() {
+        readWinningLotto();
     }
 
     public Lotto getWinningLotto() {
         return winningLotto;
+    }
+
+    private void readWinningLotto() {
+        winningLotto = new Lotto(InputView.readWinningNumber());
     }
 }
