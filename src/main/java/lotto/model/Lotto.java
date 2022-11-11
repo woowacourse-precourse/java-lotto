@@ -2,6 +2,7 @@ package lotto.model;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 public class Lotto {
 
@@ -14,6 +15,19 @@ public class Lotto {
         validate(numbers);
         this.numbers = numbers;
         sortByAsc();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Lotto lotto = (Lotto) o;
+        return Objects.equals(numbers, lotto.numbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numbers);
     }
 
     private void validate(List<Integer> numbers) {
