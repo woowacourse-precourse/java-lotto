@@ -44,7 +44,7 @@ public class LotteryAnswer {
         this.bonusNumber = bonusNumber;
     }
 
-    private void validate(String token) {
+    private void validate(String token) throws RuntimeException{
         int numericLength = (int) token.chars().filter(Character::isDigit).count();
         if (token.length() != numericLength)
             throw new IllegalArgumentException(LottoError.NOT_NUMERIC.getErrorMessage());
