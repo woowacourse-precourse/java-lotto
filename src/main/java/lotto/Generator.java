@@ -16,21 +16,21 @@ public class Generator extends LottoKiosk {
 
     public static List<Lotto> generate(int payment) {
         List<Lotto> lottos = new ArrayList<>();
-        for (int lottoNumber = 0; lottoNumber < countNumberOfLotto(Integer.valueOf(payment)); lottoNumber++) {
+        for (int lottoNumber = 0; lottoNumber < countLottos(payment); lottoNumber++) {
             List<Integer> lottoNumbers = new ArrayList<>(pickLottoNumbers());
             lottos.add(new Lotto(orderNumbers(lottoNumbers)));
         }
         return lottos;
     }
 
-    public static void validatePayment(int amount) {
-        if (amount % PRICE_PER_LOTTO != 0) {
+    public static void validatePayment(int payment) {
+        if (payment % PRICE_PER_LOTTO != 0) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static int countNumberOfLotto(int amount) {
-        return amount / PRICE_PER_LOTTO;
+    public static int countLottos(int payment) {
+        return payment / PRICE_PER_LOTTO;
     }
 
     public static List<Integer> pickLottoNumbers() {
