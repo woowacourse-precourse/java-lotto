@@ -69,4 +69,16 @@ public class AnalyseTest {
         assertEquals(expectedStat.get(second), Analyse.getStats().get(second));
     }
 
+    @Test
+    @DisplayName("로또 당첨 번호와 5개가 일치하고 보너스 번호와는 불일치할 때")
+    void fiveCorrect() throws Exception {
+        Prize third = Prize.THIRD;
+        expectedStat.put(third, 1);
+        Method method = InvokeMethod();
+
+        method.invoke(analyse, lottos.get(2), prize);
+
+        assertEquals(expectedStat.get(third), Analyse.getStats().get(third));
+    }
+
 }
