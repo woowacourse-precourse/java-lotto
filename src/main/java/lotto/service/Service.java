@@ -1,18 +1,19 @@
 package lotto.service;
 
 import java.util.List;
+import java.util.Map;
 
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotteries;
-import lotto.domain.Lotto;
+import lotto.domain.Result;
 import lotto.domain.WinningNumbers;
 import lotto.utils.Converter;
-import lotto.utils.Validator;
 
 public class Service {
     Lotteries lotteries;
     WinningNumbers winningNumbers;
     BonusNumber bonusNumber;
+    Result result;
 
     public void generateLottoList(String lottoPrice) {
         try {
@@ -41,6 +42,17 @@ public class Service {
     public void setBonusNumber(String bonusInput) {
         int bonusNumberInput = Converter.toIntFromString(bonusInput);
         bonusNumber = new BonusNumber(bonusNumberInput);
+    }
+
+    public List<String> getWinningResult() {
+        initResult();
+        result.countWinningCase();
+        Map<String,Integer> resultMap = result.getResultMap();
+        return Converter.toWinningResults(resultMap);
+    }
+
+    private void initResult() {
+        this.result = new Result(getPurchaseResult(), winningNumbers, bonusNumber);
     }
 
     private void generateLotteries(int lottoPrice) {
