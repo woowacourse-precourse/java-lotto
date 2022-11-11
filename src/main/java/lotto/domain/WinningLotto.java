@@ -8,7 +8,6 @@ import static lotto.constant.SystemValue.LOTTERY_NUMBERS_SIZE;
 import static lotto.constant.SystemValue.MAXIMUM_LOTTERY_NUMBER;
 import static lotto.constant.SystemValue.MINIMUM_LOTTERY_NUMBER;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 import lotto.util.TypeConverter;

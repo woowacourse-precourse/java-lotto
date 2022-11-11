@@ -3,13 +3,10 @@ package lotto.domain;
 import static lotto.constant.SystemMessage.BONUS_NUMBER_CONFLICT_ERROR;
 import static lotto.constant.SystemMessage.BONUS_NUMBER_RANGE_ERROR;
 import static lotto.constant.SystemMessage.BONUS_NUMBER_TYPE_ERROR;
-import static lotto.constant.SystemMessage.WINNING_NUMBERS_RANGE_ERROR;
-import static lotto.constant.SystemValue.LOTTERY_NUMBERS_SIZE;
 import static lotto.constant.SystemValue.MAXIMUM_LOTTERY_NUMBER;
 import static lotto.constant.SystemValue.MINIMUM_LOTTERY_NUMBER;
 
 import java.util.List;
-import lotto.util.TypeConverter;
 import lotto.view.Output;
 
 public class BonusNumber {
