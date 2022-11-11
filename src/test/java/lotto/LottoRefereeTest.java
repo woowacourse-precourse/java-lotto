@@ -1,10 +1,10 @@
 package lotto;
 
-import static lotto.LottoPrize.FIFTH_PRIZE;
-import static lotto.LottoPrize.FIRST_PRIZE;
-import static lotto.LottoPrize.FOURTH_PRIZE;
-import static lotto.LottoPrize.SECOND_PRIZE;
-import static lotto.LottoPrize.THIRD_PRIZE;
+import static lotto.domain.LottoPrize.FIFTH_PRIZE;
+import static lotto.domain.LottoPrize.FIRST_PRIZE;
+import static lotto.domain.LottoPrize.FOURTH_PRIZE;
+import static lotto.domain.LottoPrize.SECOND_PRIZE;
+import static lotto.domain.LottoPrize.THIRD_PRIZE;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.mockito.Mockito.mock;
@@ -14,6 +14,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import lotto.domain.Buyer;
+import lotto.domain.LotteryMachine;
+import lotto.domain.Lotto;
+import lotto.domain.LottoPrize;
+import lotto.domain.LottoReferee;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

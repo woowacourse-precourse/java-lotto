@@ -1,11 +1,11 @@
-package lotto;
+package lotto.domain;
 
-import static lotto.LottoPrize.FIFTH_PRIZE;
-import static lotto.LottoPrize.FIRST_PRIZE;
-import static lotto.LottoPrize.FOURTH_PRIZE;
-import static lotto.LottoPrize.SECOND_PRIZE;
-import static lotto.LottoPrize.SIXTH_PRIZE;
-import static lotto.LottoPrize.THIRD_PRIZE;
+import static lotto.domain.LottoPrize.FIFTH_PRIZE;
+import static lotto.domain.LottoPrize.FIRST_PRIZE;
+import static lotto.domain.LottoPrize.FOURTH_PRIZE;
+import static lotto.domain.LottoPrize.SECOND_PRIZE;
+import static lotto.domain.LottoPrize.SIXTH_PRIZE;
+import static lotto.domain.LottoPrize.THIRD_PRIZE;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,18 +14,19 @@ import java.util.Map;
 public class LottoReferee {
     private final Map<LottoPrize, Integer> result = new HashMap<>();
 
-    LottoReferee() {
-        for (LottoPrize prize : List.of(SIXTH_PRIZE,FIFTH_PRIZE, FOURTH_PRIZE, THIRD_PRIZE, SECOND_PRIZE, FIRST_PRIZE)) {
+    public LottoReferee() {
+        for (LottoPrize prize : List.of(SIXTH_PRIZE, FIFTH_PRIZE, FOURTH_PRIZE, THIRD_PRIZE, SECOND_PRIZE,
+                FIRST_PRIZE)) {
             result.put(prize, 0);
         }
     }
 
     public int sumPrizes() {
-        int wins = 0;
+        int prizes = 0;
         for (LottoPrize prize : List.of(FIFTH_PRIZE, FOURTH_PRIZE, THIRD_PRIZE, SECOND_PRIZE, FIRST_PRIZE)) {
-            wins += result.get(prize)*prize.ofPrize();
+            prizes += result.get(prize) * prize.ofPrize();
         }
-        return wins;
+        return prizes;
     }
 
     public Map<LottoPrize, Integer> analyzeResult(LotteryMachine lotteryMachine, Buyer buyer) {
@@ -39,34 +40,24 @@ public class LottoReferee {
     private LottoPrize checkWinPrize(LotteryMachine lotteryMachine, Lotto buyerLotto) {
         Lotto winningLotto = lotteryMachine.getWinningLotto();
         int bonusNumber = lotteryMachine.getBonusNumber();
-
-        LottoPrize lottoPrize = SIXTH_PRIZE;
         int sameCount = compare(winningLotto, buyerLotto);
         if (sameCount == 6) {
-            lottoPrize = FIRST_PRIZE;
+            return FIRST_PRIZE;
+        } else if (sameCount == 5) {
+            return rankSecondOrThird(buyerLotto, bonusNumber);
+        } else if (sameCount == 4) {
+            return FOURTH_PRIZE;
+        } else if (sameCount == 3) {
+            return FIFTH_PRIZE;
         }
-        if (sameCount == 5) {
-            lottoPrize = rankSecondOrThird(bonusNumber, buyerLotto);
-        }
-        if (sameCount == 4) {
-            lottoPrize = FOURTH_PRIZE;
-        }
-        if (sameCount == 3) {
-            lottoPrize = FIFTH_PRIZE;
-        }
-        return lottoPrize;
-    }
-    private int compare(Lotto winningLotto, Lotto buyerLotto) {
-        int count=0;
-        for(int i=0;i<6;i++){
-            if(winningLotto.contains(buyerLotto.getNumbers().get(i))){
-                count++;
-            }
-        }
-        return count;
+        return SIXTH_PRIZE;
     }
 
-    private LottoPrize rankSecondOrThird(int bonusNumber, Lotto buyerLotto) {
+    private int compare(Lotto winningLotto, Lotto buyerLotto) {
+        return buyerLotto.compare(winningLotto);
+    }
+
+    private LottoPrize rankSecondOrThird(Lotto buyerLotto, int bonusNumber) {
         if (buyerLotto.contains(bonusNumber)) {
             return SECOND_PRIZE;
         }

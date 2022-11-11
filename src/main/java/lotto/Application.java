@@ -2,6 +2,12 @@ package lotto;
 
 import java.util.List;
 import java.util.Map;
+import lotto.domain.Buyer;
+import lotto.domain.LotteryMachine;
+import lotto.domain.Lotto;
+import lotto.domain.LottoPrize;
+import lotto.domain.LottoReferee;
+import lotto.domain.LottoVendor;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 

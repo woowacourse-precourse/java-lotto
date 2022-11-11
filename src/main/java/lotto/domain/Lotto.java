@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -15,6 +15,15 @@ public class Lotto {
     }
     public List<Integer> getNumbers() {
         return numbers;
+    }
+    public int compare(Lotto winningLotto){
+        int count = 0;
+        for (int i = 0; i < 6; i++) {
+            if (winningLotto.contains(this.numbers.get(i))) {
+                count++;
+            }
+        }
+        return count;
     }
     public boolean contains(int number){
         return numbers.contains(number);
