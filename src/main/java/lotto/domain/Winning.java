@@ -22,6 +22,7 @@ public class Winning {
     }
 
     private void initializeScore(){
+        score = new HashMap<>();
         score.put(Ranking.THREE_MATCH, 0);
         score.put(Ranking.FOUR_MATCH, 0);
         score.put(Ranking.FIVE_MATCH, 0);
