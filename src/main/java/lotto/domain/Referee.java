@@ -1,21 +1,21 @@
 package lotto.domain;
 
-import lotto.dto.GameResultResponseDto;
+import lotto.dto.GameResultResponseDtos;
 
 import java.util.*;
 
-import static lotto.dto.GameResultResponseDto.*;
+import static lotto.dto.GameResultResponseDtos.*;
 
 public class Referee {
 
     public static final int CRITERION_PERCENT_VALUE = 100;
     public static final int CRITERION_ROUND_VALUE = 10;
 
-    public static GameResultResponseDto calculate(List<LottoResult> lottoResults, int purchasePrice) {
+    public static GameResultResponseDtos calculate(List<LottoResult> lottoResults, int purchasePrice) {
         double earningPrice = calculateEarningPrice(purchasePrice, LottoResult.sumWinnerPrice(lottoResults));
-        Map<String, LottoResultResponseDto> responseDtos = createResponseDtos(lottoResults);
+        Map<String, GameResultResponseDto> responseDtos = createResponseDtos(lottoResults);
 
-        return new GameResultResponseDto(earningPrice, responseDtos);
+        return new GameResultResponseDtos(earningPrice, responseDtos);
     }
 
     private static double calculateEarningPrice(int purchasePrice, int sumWinnerPrice) {
@@ -27,8 +27,8 @@ public class Referee {
         return ((double) Math.round(earningPrice * CRITERION_ROUND_VALUE)) / CRITERION_ROUND_VALUE;
     }
 
-    private static Map<String, LottoResultResponseDto> createResponseDtos(List<LottoResult> lottoResults) {
-        Map<String, LottoResultResponseDto> responseDtos = new HashMap<>();
+    private static Map<String, GameResultResponseDto> createResponseDtos(List<LottoResult> lottoResults) {
+        Map<String, GameResultResponseDto> responseDtos = new HashMap<>();
 
         List<LottoResult> valuesExcludeElse = LottoResult.valuesExcludeElse();
         for (LottoResult value : valuesExcludeElse) {

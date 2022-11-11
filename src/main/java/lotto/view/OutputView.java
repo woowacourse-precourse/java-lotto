@@ -1,9 +1,12 @@
 package lotto.view;
 
+import lotto.dto.GameResultResponseDtos;
 import lotto.dto.LottosResponseDto;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
+import static lotto.dto.GameResultResponseDtos.*;
 import static lotto.dto.LottosResponseDto.*;
 
 public class OutputView {
@@ -13,6 +16,11 @@ public class OutputView {
     public static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
     public static final String WINNING_STATISTICS_MESSAGE = "당첨 통계\n" + "---";
     public static final String LOTTO_COUNT_MESSAGE = "%d개를 구매했습니다.\n";
+    public static final String SAME_NUMBER_COUNT_MESSAGE = "%d개 일치";
+    public static final String BONUS_NUMBER_MESSAGE = ", 보너스 볼 일치";
+    public static final String WINNTER_PRICE_MESSAGE = " (%s원) ";
+    public static final String TOTAL_COUNT_MESSAGE = "- %d개\n";
+    public static final String MONEY_DEMICAL_FORMAT = "###,###,###,###";
 
     public static void printInputPurchasePrice() {
         System.out.println(INPUT_PURCHASE_PRICE_MESSAGE);
@@ -39,7 +47,35 @@ public class OutputView {
         System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
     }
 
-    public static void printWinningStatistics() {
+    public static void printWinningStatisticsMessage() {
         System.out.println(WINNING_STATISTICS_MESSAGE);
+    }
+
+    public static void printWinningStatistics(GameResultResponseDtos responseDto) {
+        StringBuilder result = new StringBuilder();
+
+        List<GameResultResponseDto> resultDtos = responseDto.getGameResultResponseDtos();
+        for (GameResultResponseDto dto : resultDtos) {
+            result.append(createStatisticsString(dto));
+        }
+
+        System.out.println(result);
+    }
+
+    public static String createStatisticsString(GameResultResponseDto dto) {
+        StringBuilder statistics = new StringBuilder();
+
+        statistics.append(String.format(SAME_NUMBER_COUNT_MESSAGE, dto.getSameNumberCount()));
+        if (dto.isBonus()) {
+            statistics.append(BONUS_NUMBER_MESSAGE);
+        }
+        statistics.append(String.format(WINNTER_PRICE_MESSAGE, toMoneyFormat(dto.getWinnerPrice())));
+        statistics.append(String.format(TOTAL_COUNT_MESSAGE, dto.getTotalCount()));
+        return statistics.toString();
+    }
+
+    public static String toMoneyFormat(int money) {
+        DecimalFormat dc = new DecimalFormat(MONEY_DEMICAL_FORMAT);
+        return dc.format(money);
     }
 }

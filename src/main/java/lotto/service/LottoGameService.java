@@ -1,7 +1,7 @@
 package lotto.service;
 
 import lotto.domain.*;
-import lotto.dto.GameResultResponseDto;
+import lotto.dto.GameResultResponseDtos;
 import lotto.dto.LottosResponseDto;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public class LottoGameService {
         answer = new Answer(answers, bonusNumber);
     }
 
-    public GameResultResponseDto playGame(int purchasePrice) {
+    public GameResultResponseDtos playGame(int purchasePrice) {
         Lottos lottos = player.getLottos();
         List<LottoResult> lottoResults = answer.play(lottos);
         return Referee.calculate(lottoResults, purchasePrice);

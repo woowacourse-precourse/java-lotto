@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.dto.GameResultResponseDto.*;
+import static lotto.dto.GameResultResponseDtos.*;
 
 public enum LottoResult {
 
@@ -57,8 +57,8 @@ public enum LottoResult {
                 .collect(Collectors.toList());
     }
 
-    public LottoResultResponseDto toResponseDto(int totalCount) {
-        return new LottoResultResponseDto(sameNumberCount, winnerPrice, isSameBonus, totalCount);
+    public GameResultResponseDto toResponseDto(int totalCount) {
+        return new GameResultResponseDto(sameNumberCount, winnerPrice, isSameBonus, totalCount);
     }
 
     public boolean isFirst() {

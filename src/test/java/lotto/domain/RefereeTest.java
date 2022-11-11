@@ -1,7 +1,6 @@
 package lotto.domain;
 
-import lotto.dto.GameResultResponseDto;
-import org.assertj.core.api.Assertions;
+import lotto.dto.GameResultResponseDtos;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +22,8 @@ public class RefereeTest {
                 LottoResult.ELSE,
                 LottoResult.ELSE,
                 LottoResult.ELSE);
-        GameResultResponseDto responseDto = Referee.calculate(lottoResults, 8000);
+
+        GameResultResponseDtos responseDto = Referee.calculate(lottoResults, 8000);
         assertThat(responseDto.getEarningRate()).isEqualTo(62.5D);
     }
 
@@ -39,7 +39,7 @@ public class RefereeTest {
                 LottoResult.ELSE,
                 LottoResult.ELSE);
 
-        GameResultResponseDto responseDto = Referee.calculate(lottoResults, 7000);
-        Assertions.assertThat(responseDto.getEarningRate()).isEqualTo(428642.9D);
+        GameResultResponseDtos responseDto = Referee.calculate(lottoResults, 7000);
+        assertThat(responseDto.getEarningRate()).isEqualTo(428642.9D);
     }
 }
