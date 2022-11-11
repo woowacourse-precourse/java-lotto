@@ -1,6 +1,11 @@
 package lotto.domain;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+
+import static lotto.domain.LottosResponseDto.*;
 
 public class Lotto {
 
@@ -20,5 +25,14 @@ public class Lotto {
 
     public boolean isContains(int number) {
         return numbers.contains(number);
+    }
+
+    public LottoResponseDto toResponseDto() {
+        sort();
+        return new LottoResponseDto(new ArrayList<>(numbers));
+    }
+
+    private void sort() {
+        Collections.sort(numbers);
     }
 }
