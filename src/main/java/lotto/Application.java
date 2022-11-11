@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    private static List<Lotto> userLottoNum = new ArrayList<>();
     private static List<Integer> lottoNumbers = new ArrayList<>();
     private static int lottoBonusNumber;
 
@@ -24,19 +25,16 @@ public class Application {
     }
 
     // 로또 번호 생성
-    private static List<Lotto> generateLottoNumbers(int lottoCnt){
-        List<Lotto> userLottoNum = new ArrayList<>();
+    private static void generateLottoNumbers(int lottoCnt){
         for(int i=0; i<lottoCnt; i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Lotto lotto = new Lotto(numbers);
             userLottoNum.add(lotto);
         }
-
-        return userLottoNum;
     }
 
     // 로또 번호 출력
-    private static void printLottoNumbers(List<Lotto> userLottoNum){
+    private static void printLottoNumbers(){
         System.out.println(userLottoNum.size()+"개를 구매했습니다.");
         for(Lotto lotto : userLottoNum){
             lotto.printLottoNumbers();
@@ -78,10 +76,10 @@ public class Application {
         int lottoCnt = inputBuyMoney()/1000;
 
         // 로또 번호 생성
-        List<Lotto> userLottoNum = generateLottoNumbers(lottoCnt);
+        generateLottoNumbers(lottoCnt);
 
         // 로또 번호 출력
-        printLottoNumbers(userLottoNum);
+        printLottoNumbers();
 
         // 당첨 번호 입력
         inputLottoNumbers();
