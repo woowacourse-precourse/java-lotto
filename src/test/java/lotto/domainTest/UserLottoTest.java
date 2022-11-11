@@ -13,14 +13,16 @@ public class UserLottoTest {
     @Test
     void createLottoTest() {
         //given(준비)
-        UserLotto userLotto = new UserLotto();
+        UserLotto userLotto = new UserLotto(5);
 
         //when(실행)
-        List<Integer> lotto = userLotto.createLotto();
+        List<List<Integer>> lotto = userLotto.getUserLotto();
 
         //then(검증)
-        for(int lottoNumber : lotto) {
-            Assertions.assertThat(lottoNumber).isBetween(1,45);
+        for(List<Integer> numbers : lotto) {
+            for (int number : numbers) {
+                Assertions.assertThat(number).isBetween(1,45);
+            }
         }
     }
 
@@ -28,13 +30,15 @@ public class UserLottoTest {
     @Test
     void createLottoDuplicateTest() {
         //given(준비)
-        UserLotto userLotto = new UserLotto();
+        UserLotto userLotto = new UserLotto(5);
 
         //when(실행)
-        List<Integer> lotto = userLotto.createLotto();
+        List<List<Integer>> lotto = userLotto.getUserLotto();
 
         //then(검증)
-        Assertions.assertThat(lotto).doesNotHaveDuplicates();
+        for(List<Integer> numbers : lotto) {
+            Assertions.assertThat(numbers).doesNotHaveDuplicates();
+        }
     }
 
 }
