@@ -10,9 +10,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class NumberGenerator {
 	
 	public List<List<Integer>> createRandomLotto(int lottocount) {
-		List<List<Integer>> lottonumbersall = new ArrayList<>();
+		ArrayList<List<Integer>> lottonumbersall = new ArrayList<>();
 		for (int i = 0; i < lottocount; i++) {
-			List<Integer> lottonumbers;
+			List<Integer> lottonumbers = new ArrayList<>();
 			lottonumbers = Randoms.pickUniqueNumbersInRange(1,45,6);
 			lottonumbers = ascendingOrder(lottonumbers);
 			lottonumbersall.add(lottonumbers);
@@ -21,7 +21,9 @@ public class NumberGenerator {
 	}
 	
 	public List<Integer> ascendingOrder(List<Integer> lottonumbers) {
-		lottonumbers.sort(Comparator.naturalOrder());
-		return lottonumbers;
+		ArrayList<Integer> lottonumberslist = new ArrayList<Integer>();
+		lottonumberslist.addAll(lottonumbers);
+		lottonumberslist.sort(Comparator.naturalOrder());
+		return lottonumberslist;
 	}
 }

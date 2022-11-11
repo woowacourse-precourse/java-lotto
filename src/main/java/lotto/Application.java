@@ -3,7 +3,6 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
-
 import org.assertj.core.util.Arrays;
 import camp.nextstep.edu.missionutils.Console;
 
