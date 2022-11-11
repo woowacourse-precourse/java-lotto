@@ -3,6 +3,7 @@ package lotto;
 public class BonusLotto {
     private final Lotto lotto;
     private final int bonus;
+
     public BonusLotto(Lotto lotto, int bonus) {
         if (lotto.checkBonus(bonus)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호랑 중복될 수 없어요.");
