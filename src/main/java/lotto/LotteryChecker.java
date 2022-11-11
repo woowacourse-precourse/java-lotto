@@ -27,7 +27,7 @@ public class LotteryChecker {
         if (match_count == 4) return LottoRanking.RANK_4;
         if (match_count == 3) return LottoRanking.RANK_5;
 
-        return LottoRanking.RANK_LOSE;
+        return LottoRanking.LOSE;
     }
 
     private List<Integer> inputWinningNumbers() {
