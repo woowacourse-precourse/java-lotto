@@ -14,11 +14,11 @@ public class Input {
         return userInput;
     }
 
-    private int readPurchaseAmount() {
+    private int readMoney() {
         Messages.INPUT_MONEY.printMessage();
-        String amount = readInput();
+        String userInput = readInput();
 
-        return Integer.parseInt(amount);
+        return Integer.parseInt(userInput);
     }
 
     //예외사항 검사
