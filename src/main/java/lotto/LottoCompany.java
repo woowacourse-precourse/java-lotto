@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class LottoCompany {
 
@@ -12,11 +11,10 @@ public class LottoCompany {
 
     Validator validator = new Validator();
     Result result = new Result();
-    Map<Integer, LottoNumber> lottoNumberMap = new LottoNumberGenerater().makeLottoNumberMap();
     List<Integer>forValidate = new ArrayList<>();
-    public Lottos lottos;
-    public Lotto lotto;
-    public LottoNumber bonus;
+    Lottos lottos;
+    Lotto lotto;
+    int bonus;
 
     public LottoCompany(){
 
@@ -33,7 +31,7 @@ public class LottoCompany {
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonusNumber = Console.readLine();
         validator.validateBonus(bonusNumber, forValidate);
-        this.bonus = lottoNumberMap.get(Integer.parseInt(bonusNumber));
+        this.bonus = Integer.parseInt(bonusNumber);
         result.compareNumbers(this.lottos, this.lotto, this.bonus);
     }
 

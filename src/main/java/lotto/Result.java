@@ -20,7 +20,7 @@ public class Result {
 
     }
 
-    public void compareNumbers(Lottos userLottos, Lotto winningLotto, LottoNumber bonus) {
+    public void compareNumbers(Lottos userLottos, Lotto winningLotto, int bonus) {
         for(int sheet=0;sheet<userLottos.size();sheet++){
             Lotto lotto = userLottos.get(sheet);
             compareEachLotto(winningLotto, bonus, lotto);
@@ -79,7 +79,7 @@ public class Result {
         }
     }
 
-    private void compareEachLotto(Lotto winningLotto, LottoNumber bonus, Lotto lotto) {
+    private void compareEachLotto(Lotto winningLotto, int bonus, Lotto lotto) {
         for(int order = 0; order< lotto.size(); order++){
             if(winningLotto.contains(lotto.get(order))){
                 count++;

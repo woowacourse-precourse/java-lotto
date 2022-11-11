@@ -19,7 +19,11 @@ public class Lotto {
         return numbers.get(order);
     }
 
-    public boolean contains(LottoNumber lottoNumber) {
+    public boolean contains(int lottoNumber) {
         return numbers.contains(lottoNumber);
+    }
+
+    public List<Integer> printLotto(){
+        return this.numbers;
     }
 }
