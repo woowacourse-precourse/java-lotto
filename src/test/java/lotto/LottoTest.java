@@ -85,4 +85,23 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("숫자가 저장되어 있는 String 타입의 배열을 List<Integer>로 변환한다.")
+    @Test
+    public void stringArrToIntegerListTest() {
+        String[] testArr = new String[] {"3", "24", "1", "29", "15", "40"};
+        List<Integer> testList = Application.stringArrToIntegerList(testArr);
+
+        for (int idx = 0; idx < testList.size() ; idx++) {
+            assertThat(testList.get(idx)).isEqualTo(Integer.parseInt(testArr[idx]));
+        }
+    }
+
+    @DisplayName("String 타입 배열 내에 정수가 아닌 데이터가 포함되어 있으면 예외가 발생한다.")
+    @Test
+    public void includingNotIntTest() {
+        String[] testArr = new String[] {"3", "이십사", "1", "29", "15", "40"};
+        assertThatThrownBy(() -> Application.stringArrToIntegerList(testArr))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }

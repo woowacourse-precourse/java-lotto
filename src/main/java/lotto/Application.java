@@ -77,4 +77,16 @@ public class Application {
         return trimmed.split(",");
     }
 
+    public static List<Integer> stringArrToIntegerList(String[] winningNums) {
+        List<Integer> converted = new ArrayList<>();
+        try {
+            for (String num : winningNums) {
+                converted.add(Integer.parseInt(num));
+            }
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 정수로 입력해야 합니다.");
+        }
+        return converted;
+    }
+
 }

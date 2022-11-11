@@ -13,7 +13,7 @@
 
 1. [x] 당첨 번호 입력받기
 2. [x] 당첨 번호를 쉼표를 기준으로 split해서 String 배열의 각 인덱스에 하나씩 저장
-3. [] String 배열에 저장된 당첨 번호를 List\<Integer\>로 변환
+3. [x] **String 배열에 저장된 당첨 번호를 List\<Integer\>로 변환**
 4. [ ] 입력된 당첨 번호가 형식에 맞는지 검증
 5. [ ] 새로운 Lotto 인스턴스 생성해 Lotto.numbers에 당첨 번호 저장
 
