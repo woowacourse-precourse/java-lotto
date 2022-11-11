@@ -57,4 +57,9 @@ public class LottoGameController {
             lottoGameService.updateWinningRankMap(lottoWinningRank);
         }
     }
+
+    public void printGameResult() {
+        outputView.printLottoWinningStatistics(lottoGameService.getLottoWinningRankMap());
+        outputView.printEarningsRatio(lottoGameService.getEarningsRatio(lottoPurchaseAmount));
+    }
 }
