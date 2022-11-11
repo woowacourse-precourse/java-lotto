@@ -41,15 +41,30 @@ public class Award {
             prize.put(winning, Optional.ofNullable(prize.get(winning)).orElse(0) + 1);
         }
 
-        printResult();
+        printResult(myLotteries.size() * 1000);
     }
 
-    private void printResult() {
+    private void printResult(int money) {
         System.out.println();
         System.out.println("당첨 통계");
         System.out.println("---");
         for(Winning winning : Winning.getValues()) {
             System.out.println(winning.getMessage() + prize.get(winning) + "개");
         }
+        System.out.println("총 수익율은 " + getRevenueRate(money) + "%입니다.");
+    }
+
+    private double getRevenueRate(int money) {
+        double revenue = 0;
+
+        for(Winning winning : prize.keySet()) {
+            revenue += winning.getCash() * prize.get(winning);
+        }
+
+        return getRoundDecimal(revenue / money);
+    }
+
+    private double getRoundDecimal(double decimal) {
+        return (double)((int)(decimal * 1000)) / 10;
     }
 }
