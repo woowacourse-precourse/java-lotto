@@ -93,4 +93,99 @@ class RefereeTest {
         // then
         assertThat(result).isEqualTo(1);
     }
+
+    @DisplayName("당첨 통계를 반환한다. - 3개 일치")
+    @Test
+    void compare_three_match() {
+        // given
+        List<Integer> player = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+
+        // when
+        List<WinningStat> compare = referee.compare(lottos, player, bonusNumber);
+        WinningStat result = compare.stream()
+                .filter(winningStat -> winningStat.getWinningType().equals(WinningType.THREE_MATCH))
+                .findAny()
+                .orElseThrow();
+
+        // then
+        assertThat(result.getWinningType()).isEqualTo(WinningType.THREE_MATCH);
+        assertThat(result.getCount()).isEqualTo(1);
+    }
+
+    @DisplayName("당첨 통계를 반환한다. - 4개 일치")
+    @Test
+    void compare_four_match() {
+        // given
+        List<Integer> player = List.of(1, 2, 3, 4, 5, 14);
+        int bonusNumber = 7;
+
+        // when
+        List<WinningStat> compare = referee.compare(lottos, player, bonusNumber);
+        WinningStat result = compare.stream()
+                .filter(winningStat -> winningStat.getWinningType().equals(WinningType.FOUR_MATCH))
+                .findAny()
+                .orElseThrow();
+
+        // then
+        assertThat(result.getWinningType()).isEqualTo(WinningType.FOUR_MATCH);
+        assertThat(result.getCount()).isEqualTo(1);
+    }
+
+    @DisplayName("당첨 통계를 반환한다. - 5개 일치")
+    @Test
+    void compareWithFiveMatch() {
+        // given
+        List<Integer> player = List.of(1, 2, 3, 5, 14, 22);
+        int bonusNumber = 7;
+
+        // when
+        List<WinningStat> compare = referee.compare(lottos, player, bonusNumber);
+        WinningStat result = compare.stream()
+                .filter(winningStat -> winningStat.getWinningType().equals(WinningType.FIVE_MATCH))
+                .findAny()
+                .orElseThrow();
+
+        // then
+        assertThat(result.getWinningType()).isEqualTo(WinningType.FIVE_MATCH);
+        assertThat(result.getCount()).isEqualTo(1);
+    }
+
+    @DisplayName("당첨 통계를 반환한다. - 5개 그리고 보너스 번호 일치")
+    @Test
+    void compareWithFiveMatchAndBonusNumberMatch() {
+        // given
+        List<Integer> player = List.of(1, 2, 3, 5, 14, 22);
+        int bonusNumber = 45;
+
+        // when
+        List<WinningStat> compare = referee.compare(lottos, player, bonusNumber);
+        WinningStat result = compare.stream()
+                .filter(winningStat -> winningStat.getWinningType().equals(WinningType.FIVE_WITH_BONUS_MATCH))
+                .findAny()
+                .orElseThrow();
+
+        // then
+        assertThat(result.getWinningType()).isEqualTo(WinningType.FIVE_WITH_BONUS_MATCH);
+        assertThat(result.getCount()).isEqualTo(1);
+    }
+
+    @DisplayName("당첨 통계를 반환한다. - 6개 일치")
+    @Test
+    void compareWithSixMatch() {
+        // given
+        List<Integer> player = List.of(1, 3, 5, 14, 22, 45);
+        int bonusNumber = 7;
+
+        // when
+        List<WinningStat> compare = referee.compare(lottos, player, bonusNumber);
+        WinningStat result = compare.stream()
+                .filter(winningStat -> winningStat.getWinningType().equals(WinningType.SIX_MATCH))
+                .findAny()
+                .orElseThrow();
+
+        // then
+        assertThat(result.getWinningType()).isEqualTo(WinningType.SIX_MATCH);
+        assertThat(result.getCount()).isEqualTo(1);
+    }
 }
