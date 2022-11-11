@@ -73,4 +73,13 @@ public class Service {
         Validation.validateListNumberInRange(winningNumbers, LOTTO_START_NUMBER, LOTTO_LAST_NUMBER);
         return winningNumbers;
     }
+
+    public int getInputBonusNumber(){
+        InputMessage.inputBonusNumber();
+        String userInput = readLine().trim();
+        Validation.validateStringToInteger(userInput);
+        int bonusNumber = Integer.parseInt(userInput);
+        Validation.validateNumberInRange(bonusNumber, LOTTO_START_NUMBER, LOTTO_LAST_NUMBER);
+        return bonusNumber;
+    }
 }
