@@ -2,8 +2,10 @@ package lotto.domain;
 
 import static lotto.utils.Constant.NUMBER_OF_LOTTO;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.PriorityQueue;
 import lotto.utils.ExceptionType;
 import lotto.view.Output;
 
@@ -70,8 +72,23 @@ public class Lotto {
         this.numbers.add(number);
     }
 
+    private PriorityQueue<Integer> sort() {
+        PriorityQueue<Integer> sortingNumbers = new PriorityQueue<>(Comparator.naturalOrder());
+        sortingNumbers.addAll(numbers);
+        return sortingNumbers;
+    }
+
     @Override
     public String toString() {
-        return numbers.toString();
+        PriorityQueue<Integer> sortingNumbers = sort();
+
+        StringBuilder builder = new StringBuilder();
+        builder.append("[");
+        while(sortingNumbers.size() > 1) {
+            builder.append(sortingNumbers.poll()).append(", ");
+        }
+        builder.append(sortingNumbers.poll()).append("]");
+
+        return builder.toString();
     }
 }
