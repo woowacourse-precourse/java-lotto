@@ -2,6 +2,9 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
+
+import org.assertj.core.util.Arrays;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -19,7 +22,7 @@ public class Application {
         lottonumbersall = numbergenerator.createRandomLotto(lottonum);  // 로또 개수만큼 랜덤 로또 숫자 6개씩 추출해서 리스트에 넣기
         
         Print print = new Print();
-        print.printNumberAll(lottonumbersall,lottonum);
+        print.printNumberAll(lottonumbersall,lottonum);  // 로또 개수와 로또 번호들을 모두 출력해주기
     }
     
     public static int askTotalPrice() {
@@ -34,12 +37,26 @@ public class Application {
     }
     
     public static int askNumbers() {
-    	int lottocount = 0;
-    	return lottocount;
+    	List<Integer> numbers = new ArrayList<>();
+    	
+    	System.out.println("당첨 번호를 입력해 주세요.");
+    	String stringnumbers = Console.readLine();
+    	
+    	lottoValidateNumber(stringnumbers);
+    	
+    	String[] numbersarray = stringnumbers.split(",");
+    	for (String number : numbersarray) {
+    		numbers.add(Integer.parseInt(number));
+    	}
+    	
+    	Lotto lotto = new Lotto(numbers);
     }
     
-    public void lottoValidateNumber() {
-    	
+    public static void lottoValidateNumber(String stringnumbers) {
+    	String pattern = "^[1-45],[1-45],[1-45],[1-45],[1-45],[1-45]$";
+    	if (!Pattern.matches(pattern, stringnumbers)) {
+    		throw new IllegalArgumentException("[ERROR] 1-45사이의 6개의 숫자를 ,로 구분해서 입력하세요.");
+    	}
     }
     
     public void askBonusNumber() {

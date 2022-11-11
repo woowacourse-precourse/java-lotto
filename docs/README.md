@@ -7,7 +7,7 @@
 * 입력
     1. 로또 구입 금액 입력 - Application#askTotalPrice()
         * 예외1 : 입력시 숫자가 아니거나 1000미만의 수 입력시 IllegalArgumentException 발생, 에러메시지([ERROR] 1000원 이상의 금액만 입력하세요.) - LottoCount#validateNumber()
-        * 예외2 : 1000원으로 나누어 떨어지지 않는 수 입력시 IllegalArgumentException 발생, 에러메시지([ERROR] 로또 1장당 1000원 입니다.) - LottoCount#validateDividRight()
+        * 예외2 : 1000원으로 나누어 떨어지지 않는 수 입력시 IllegalArgumentException 발생, 에러메시지([ERROR] 로또 1장당 1000원 입니다.) - LottoCount#validateDivideRight()
         * 로또 구입 금액/1000 을 하여 로또 개수 구하는 기능 - LottoCount#LottoCount()
     2. 당첨 번호 6개 입력(구분자 : ,) - Application#askNumbers()
         * 예외1 : 입력시 ,로 나누어지지 않았거나 1-45 사이의 숫자가 아닐 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 1-45사이의 6개의 숫자를 ,로 구분해서 입력하세요.) - Application#lottoValidateNumber()
