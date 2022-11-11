@@ -66,4 +66,8 @@ public class User {
         yield /= 10;
         return yield;
     }
+
+    public int getLottoCount() {
+        return this.lottos.size();
+    }
 }
