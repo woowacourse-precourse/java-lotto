@@ -72,6 +72,8 @@ class LottoTest {
         void createLottoAndPrintNumbers() {
             Lotto generatedLotto = Lotto.create();
             String printResult = generatedLotto.printNumbers();
+
+            System.out.println(printResult);
             assertThat(printResult.startsWith("[")).isTrue();
             assertThat(printResult.endsWith("]")).isTrue();
 
