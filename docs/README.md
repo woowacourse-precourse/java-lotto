@@ -7,7 +7,6 @@
       - MessageType: 로또 게임 진행시 콘솔 출력 메시지
       - ErrorType: 에러 발생 종류
       - StepType: 로또 구매의 진행 단계
-      - CommandType: 입력 명령어 종류
       - LottoResultType: 로또 당첨 등급과 금액
       - ConstantNumberType: 로또 숫자 갯수, 최소, 최대값 등의 상수
     - dto
