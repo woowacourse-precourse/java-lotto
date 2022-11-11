@@ -58,4 +58,24 @@ class LottoTicketMachineTest {
 
         assertThat(unsortedNumbers).isSorted();
     }
+
+    @DisplayName("issueLottoTicket 메소드가 Lotto 객체를 반환하는지 확인")
+    @Test
+    void issueLottoTicket_test() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Method method = lottoTicketMachine.getClass().getDeclaredMethod("issueLottoTicket");
+        method.setAccessible(true);
+
+        Lotto lottoTicket = (Lotto) method.invoke(lottoTicketMachine);
+
+        assertThat(lottoTicket).isInstanceOf(Lotto.class);
+    }
+
+    @DisplayName("issueLottoTicket 메소드에 금액을 입력하면 금액에 맞는 장수의 LottoTickets 객체를 반환하는지 확인")
+    @ParameterizedTest(name = "{index} : {0}원 -> {1}장")
+    @CsvSource({"15000, 15", "2000, 2", "6000, 6"})
+    void issueLottoTickets_test(int money, int numberOfTickets) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        LottoTickets tickets = lottoTicketMachine.issueLottoTickets(money);
+
+        assertThat(tickets.size()).isEqualTo(numberOfTickets);
+    }
 }
