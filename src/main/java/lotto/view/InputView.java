@@ -8,7 +8,7 @@ public class InputView {
         return Console.readLine();
     }
 
-    public static String getWinningNumber() {
+    public static String getWinningNumberInput() {
         System.out.println("\n당첨 번호를 입력해 주세요.");
         return Console.readLine();
     }

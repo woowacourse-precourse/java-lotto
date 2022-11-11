@@ -26,10 +26,9 @@ public class Controller {
         OutputView.printPurchaseResult(purchaseResult);
     }
 
-    //TODO: method 이름 바꾸기
     private void setWinningNumber() {
-        String winningNumber = InputView.getWinningNumber();
-        service.setWinningNumber(winningNumber);
+        String winningNumberInput = InputView.getWinningNumberInput();
+        service.setWinningNumber(winningNumberInput);
     }
 
     private void setBonusNumber() {
