@@ -66,7 +66,7 @@ public class NumberGenerator {
             String[] lottoNumbers = Console.readLine().split(",");
             computerLotto = addComputerNumber(new ArrayList<>(Arrays.asList(lottoNumbers)));
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호에 문자 또는 값을 비워 둘 수 없습니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 
@@ -74,7 +74,7 @@ public class NumberGenerator {
         try {
             return Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호에 문자 또는 값을 비워 둘 수 없습니다.");
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 }
