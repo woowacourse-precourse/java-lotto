@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static lotto.Enum.ConstantNumber.*;
@@ -9,8 +10,25 @@ import static lotto.Enum.Error.*;
 public class Clerk {
 
     public static List<Lotto> sellLotto(String purchaseAmount) {
+
         validatePurchaseAmount(purchaseAmount);
-        return List.of(new Lotto());
+
+        int lotto_amount = getLottoAmount(purchaseAmount);
+
+        return makeLottoList(lotto_amount);
+    }
+
+    private static List<Lotto> makeLottoList(int lotto_amount) {
+        List<Lotto> lottoList = new ArrayList<>();
+
+        for (int i = 0; i < lotto_amount; i++) {
+            lottoList.add(new Lotto());
+        }
+        return lottoList;
+    }
+
+    private static int getLottoAmount(String purchaseAmount) {
+        return Integer.parseInt(purchaseAmount) % THOUSAND.getValue();
     }
 
     private static void validatePurchaseAmount(String purchaseAmount) {
@@ -24,7 +42,7 @@ public class Clerk {
     }
 
     private static void validatePurchaseOnlyNumber(String purchaseAmount) {
-        if (!purchaseAmount.matches(REGEX_ONLY_NUMBER.getValue())) {
+        if(!purchaseAmount.matches(REGEX_ONLY_NUMBER.getValue())){
             throw new IllegalArgumentException(PURCHASE_ONLY_NUMBER_ERROR.getMessage());
         }
     }
