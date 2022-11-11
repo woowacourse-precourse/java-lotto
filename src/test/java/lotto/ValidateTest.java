@@ -13,13 +13,15 @@ class ValidateTest {
 
     @Test
     public void 나누어떨어지는_값() {
-        assertThatCode(() -> validate.validDivisible(51_000)).doesNotThrowAnyException();
+        assertThatCode(() ->
+                validate.validDivisible(51_000, 1000)).doesNotThrowAnyException();
     }
 
     @Test
     public void 나누어떨어지지_않는_값() {
         Throwable exception =
-                assertThrows(IllegalArgumentException.class, () -> validate.validDivisible(51_001));
+                assertThrows(IllegalArgumentException.class, () ->
+                        validate.validDivisible(51_001, 1000));
         assertThat(exception.getMessage()).contains("나누어떨어지지");
     }
 
