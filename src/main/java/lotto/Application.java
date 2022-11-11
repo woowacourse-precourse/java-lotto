@@ -10,11 +10,12 @@ public class Application {
     	int price = 0;                  
         price = askTotalPrice();               // 사용자 입력으로 금액 입력받기
         
+        int lottonum = 0;
         LottoCount lottocount = new LottoCount(price);
-        int lottonum = lottocount.lottonum;         // 사용자 입력으로 받은 금액 / 1000을 해서 로또 개수 구하기
+        lottonum = lottocount.lottonum;         // 사용자 입력으로 받은 금액 / 1000을 해서 로또 개수 구하기
         
-        NumberGenerator numbergenerator = new NumberGenerator();
         List<List<Integer>> lottonumbersall; 
+        NumberGenerator numbergenerator = new NumberGenerator();
         lottonumbersall = numbergenerator.createRandomLotto(lottonum);  // 로또 개수만큼 랜덤 로또 숫자 6개씩 추출해서 리스트에 넣기
     }
     
