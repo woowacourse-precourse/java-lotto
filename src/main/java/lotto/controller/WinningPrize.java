@@ -13,7 +13,7 @@ public enum WinningPrize {
 
     WinningPrize(int ranking,int winningMoney, int howManyNumbersIncluded) {}
 
-    public static int getRanking(int amountOfCorrectNumbers, Lotto lottoPapers, int bonusNumber){
+    public static int findRanking(int amountOfCorrectNumbers, Lotto lottoPapers, int bonusNumber){
         boolean isSecondPrize = (amountOfCorrectNumbers == 5) && isBonusNumberIncludedInPapers(lottoPapers,bonusNumber);
 
         for(WinningPrize prize : WinningPrize.values()){
