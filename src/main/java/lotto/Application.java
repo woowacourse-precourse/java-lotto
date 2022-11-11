@@ -25,5 +25,16 @@ public class Application {
         }
     }
 
+    public static void validatePrice(int price) {
+        if (price <= 0) {
+            throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 0보다 커야 합니다.");
+        }
+        if (price / LOTTO_PRICE > 10000) {
+            throw new IllegalArgumentException("[ERROR] 한 번에 최대 만 장까지만 구매 가능합니다.");
+        }
+        if (price % LOTTO_PRICE != 0) {
+            throw new IllegalArgumentException("[ERROR] 로또는 천 원 단위로만 구입 가능합니다.");
+        }
+    }
 
 }

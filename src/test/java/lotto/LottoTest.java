@@ -37,4 +37,20 @@ class LottoTest {
         assertThatThrownBy(() -> Application.stringToInt("testString"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("적절하지 않은 로또 구입 금액이 입력될 경우 예외가 발생한다.")
+    @Test
+    public void validatePrice() {
+        // 금액이 0보다 작은 경우
+        assertThatThrownBy(() -> Application.validatePrice(-5))
+                .isInstanceOf(IllegalArgumentException.class);
+        // 1회 구매 수량 제한을 초과하는 금액인 경우
+        assertThatThrownBy(() -> Application.validatePrice(20000000))
+                .isInstanceOf(IllegalArgumentException.class);
+        // 금액이 1000원 단위가 아닌 경우
+        assertThatThrownBy(() -> Application.validatePrice(1234))
+                .isInstanceOf(IllegalArgumentException.class);
+
+    }
+
 }
