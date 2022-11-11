@@ -15,7 +15,6 @@ public class Application {
     public static void main(String[] args) {
         int numOfLotto = UserInput.inputPrice();
         createLottoTickets(numOfLotto);
-        System.out.println(numOfLotto+"개를 구매했습니다.");
         showLottoTickets();
         UserInput.inputWinningNumbers();
         Result result = new Result(lottoTickets);
@@ -30,6 +29,7 @@ public class Application {
     }
 
     public static void showLottoTickets() {
+        System.out.println(lottoTickets.size()+"개를 구매했습니다.");
         for (Lotto lottoTicket : lottoTickets) {
             System.out.println(lottoTicket);
         }
