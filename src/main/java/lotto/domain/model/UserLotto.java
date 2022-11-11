@@ -4,9 +4,7 @@ import static lotto.utils.Advice.PurchaseValidator.MINIMUM_ORDER;
 import static lotto.utils.Advice.PurchaseValidator.checkConsistNumber;
 import static lotto.utils.Advice.PurchaseValidator.checkReminder;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import lotto.utils.LottoGenerator;
@@ -24,6 +22,7 @@ public class UserLotto {
         this.userLotto = IntStream.rangeClosed(1, Integer.parseInt(pay) / MINIMUM_ORDER)
                 .mapToObj(count -> new Lotto(LottoGenerator.makeLotto())).collect(Collectors.toList());
     }
+
     public List<Lotto> getUserLotto() {
         return userLotto;
     }
@@ -34,8 +33,10 @@ public class UserLotto {
     }
 
     public List<LottoRank> compareLottoNumber(LottoNumber lottoNumber) {
-        List<LottoRank> rankCollection = userLotto.stream().map(lotto -> lotto.compareLottoNumber(lottoNumber))
-                .filter(lottoRank -> lottoRank != LottoRank.NONE).collect(Collectors.toList());
+        List<LottoRank> rankCollection = userLotto.stream()
+                .map(lotto -> lotto.compareLottoNumber(lottoNumber))
+                .filter(lottoRank -> lottoRank != LottoRank.NONE)
+                .collect(Collectors.toList());
         validateLottoRankSize(rankCollection);
         return rankCollection;
     }
