@@ -44,14 +44,14 @@
 
 ## 🔎 당첨 확인 - Checker
 
-- [ ] 사용자가 구매한 로또 번호와 당첨 번호를 비교한다.
+- [x] 사용자가 구매한 로또 번호와 당첨 번호를 비교한다.
 
-    - [ ] 1 ~ 5등 통계를 구한다. - getTotalScore
-        - [ ] 로또 번호로부터 등수를 저장. - setResultScoreByLottoNumber
-            - [ ] 등수의 count를 올린다. - setScoreCountByPlace
-            - [ ] 2, 3등의 경우 보너스 번호를 포함하는지 구분한다.
-                - [ ] 보너스 점수를 포함하는지 여부 확인 - isContainBonusNumber
-        - [ ] 일치하는 번호 개수를 구한다. - getMatchNumberCount
+    - [x] 1 ~ 5등 통계를 구한다. - getTotalScore
+        - [x] 로또 번호로부터 등수를 저장. - setResultScoreByLottoNumber
+            - [x] 등수의 count를 올린다. - setScoreCountByPlace
+            - [x] 2, 3등의 경우 보너스 번호를 포함하는지 구분한다.
+                - [x] 보너스 점수를 포함하는지 여부 확인 - isContainBonusNumber
+        - [x] 일치하는 번호 개수를 구한다. - getMatchNumberCount
 
 ## 💰 MoneyManger
 
