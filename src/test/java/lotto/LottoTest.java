@@ -67,7 +67,7 @@ class LottoTest {
     @Test
     void 보너스볼_중복_체크_테스트() {
         Lotto input = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        int input_bonus = 6;
+        String input_bonus = "6";
         assertThatThrownBy(() -> Exception.validateBonusBall(input_bonus, input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
