@@ -4,20 +4,18 @@ import lotto.domain.Const;
 import lotto.domain.Lotto;
 
 public class BonusCheck {
-    private static final String numErrMsg = "숫자를 입력해 주세요.";
-    private static final String rangeErrMsg = "숫자는 1~45사이의 숫자를 입력해 주세요.";
-    private static final String duplicateErrMsg = "숫자가 중복 되었습니다.";
+
 
     public static Integer check(String bonusNumber, Lotto winningLotto) {
         if (!isNumber(bonusNumber)) {
-            throw new IllegalArgumentException(numErrMsg);
+            throw new IllegalArgumentException(Const.NUM_ERRMSG);
         }
         if (!isRange(bonusNumber)) {
-            throw new IllegalArgumentException(rangeErrMsg);
+            throw new IllegalArgumentException(Const.RANGE_ERRMSG);
         }
         int bonus = Integer.parseInt(bonusNumber);
         if (winningLotto.getNumbers().contains(bonus)) {
-            throw new IllegalArgumentException(duplicateErrMsg);
+            throw new IllegalArgumentException(Const.DUPLICATE_ERRMSG);
         }
         return bonus;
     }

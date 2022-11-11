@@ -8,14 +8,13 @@ import java.util.List;
 
 public class WinningNumberCheck {
 
-    private static final String rangeErrMsg = "1~45사이의 숫자를 입력해 주세요.";
 
     public static List<Integer> check(String winningNumber) {
         winningNumber = winningNumber.replace(" ", "");
         String[] split = winningNumber.split(",");
         List<String> numbers = Arrays.asList(split);
         if (!checkNumber(numbers)) {
-            throw new IllegalArgumentException(rangeErrMsg);
+            throw new IllegalArgumentException(Const.RANGE_ERRMSG);
         }
         return toIntegerList(numbers);
     }

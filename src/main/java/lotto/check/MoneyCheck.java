@@ -1,15 +1,16 @@
 package lotto.check;
 
+import lotto.domain.Const;
+
 public class MoneyCheck {
 
-    private static final String errMsg = "1000원 단위로 숫자를 입력해 주세요.";
 
     public static Integer check(String money) {
         if (!isMoney(money)) {
-            throw new IllegalArgumentException(errMsg);
+            throw new IllegalArgumentException(Const.NUM_ERRMSG);
         }
         if (Integer.parseInt(money) % 1000 != 0) {
-            throw new IllegalArgumentException(errMsg);
+            throw new IllegalArgumentException(Const.MONEY_ERRMSG);
         }
         return Integer.parseInt(money);
     }
