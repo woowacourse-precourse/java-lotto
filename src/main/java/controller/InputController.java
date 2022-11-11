@@ -9,6 +9,11 @@ import java.util.Comparator;
 import java.util.List;
 
 public class InputController {
+    private final int DIVIDEPRICE = 1000;
+    private final int LOTTONUMBERQUANTITY = 6;
+    private final int MINLOTTOVALUE = 1;
+    private final int MAXLOTTOVALUE = 45;
+
     public Integer insertLottoAmount() {
         String stringpuramount = Console.readLine();
         Integer lottopuramount = Integer.parseInt(stringpuramount);
@@ -26,15 +31,15 @@ public class InputController {
     }
 
     public void checkDevidePrice(Integer lottopuramount) {
-        if(lottopuramount % 1000 != 0) {
+        if(lottopuramount % DIVIDEPRICE != 0) {
             throw new IllegalArgumentException();
         }
     }
 
     public List<Integer> makeLottoNumber() {
         List<Integer> lottonumber = new ArrayList<>();
-        while (lottonumber.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 45);
+        while (lottonumber.size() < LOTTONUMBERQUANTITY) {
+            int randomNumber = Randoms.pickNumberInRange(MINLOTTOVALUE, MAXLOTTOVALUE);
             if (!lottonumber.contains(randomNumber)) {
                 lottonumber.add(randomNumber);
             }
@@ -43,4 +48,13 @@ public class InputController {
         return lottonumber;
     }
 
+    public List<List<Integer>> makeLottoNumberList(LottoPurAmount lottoPurAmount) {
+        List<List<Integer>> makeLottoNumberList = new ArrayList<>();
+        for(int i=0; i<lottoPurAmount.getLottopuramount()/DIVIDEPRICE; i++) {
+            List<Integer> lottonumber = new ArrayList<>();
+            lottonumber = makeLottoNumber();
+            makeLottoNumberList.add(lottonumber);
+        }
+        return makeLottoNumberList;
+    }
 }

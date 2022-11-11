@@ -4,5 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoNumberList {
-    List<List<Integer>> lottolist = new ArrayList<>();
+    private List<List<Integer>> lottolist = new ArrayList<>();
+
+    public LottoNumberList(List<List<Integer>> lottolist) {
+        this.lottolist = lottolist;
+    }
+
+    public List<List<Integer>> getLottolist() {
+        return lottolist;
+    }
 }
