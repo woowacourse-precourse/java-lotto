@@ -15,4 +15,5 @@ public final class ExceptionMessage {
     public static final String NUMBER_EACH_OUT_OF_RANGE = "[ERROR] 입력된 당첨번호 각각은 " +
             Constant.LOTTO_SIZE + "부터 " + Constant.END_INCLUSIVE + "까지의 값이어야 합니다";
     public static final String NUMBER_NOT_DISTINCT = "[ERROR] 당첨번호는 중복되서는 안됩니다.";
+    public static final String NUMBER_OUT_OF_TYPE_RANGE = "[ERROR] 입력된 당첨번호는 정상적인 범위의 값이 아닙니다.";
 }

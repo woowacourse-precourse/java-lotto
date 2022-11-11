@@ -25,6 +25,14 @@ public class WinnerNumberVerifier implements Verifier {
             throw new IllegalArgumentException(ExceptionMessage.NUMBER_EACH_NOT_NUMBER);
         }
     }
+    private void checkEachOutOfTypeRange(String input) {
+        String[] divided = input.split(",");
+        try {
+            Arrays.stream(divided).forEach(Long::parseLong);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(ExceptionMessage.NUMBER_OUT_OF_TYPE_RANGE);
+        }
+    }
 
     private void checkEachOutOfRange(String input) {
         if(Arrays.stream(input.split(","))
