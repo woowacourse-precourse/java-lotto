@@ -1,17 +1,19 @@
 package lotto.view.output;
 
+import static lotto.view.output.StringFormatter.errorMessageFormat;
+import static lotto.view.output.StringFormatter.purchasedNumberOfLottosFormat;
+import static lotto.view.output.StringFormatter.resultStatisticsFormat;
+
 public class LottoPrinter {
 
     public void printGuideMessageForPurchase() {
         System.out.println("구입금액을 입력해 주세요.");
     }
 
-    // 발행한 로또 수량을 출력한다.
-    public void printTheNumberOfLottos(int number) {
-        System.out.println(number + "개를 구매했습니다.");
+    public void printTheNumberOfPurchaseLottos(int number) {
+        System.out.println(purchasedNumberOfLottosFormat(number));
     }
 
-    // 발행한 로또 번호를 출력한다.
     public void printLottoNumbers(String lottoNumbers) {
         System.out.println(lottoNumbers);
     }
@@ -24,17 +26,11 @@ public class LottoPrinter {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-
-    // 당첨 통계를 출력한다.
-    public void printWinningStatistics(String resultsFormat, double rateOfReturn) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        System.out.println(resultsFormat);
-        System.out.println("총 수익률은 " + rateOfReturn + "%입니다.");
+    public void printWinningStatistics(String lottoResults, double rateOfReturn) {
+        System.out.println(resultStatisticsFormat(lottoResults, rateOfReturn));
     }
 
-    // 예외 출력
     public void printError(String message) {
-        System.out.println("[ERROR]" + message);
+        System.out.println(errorMessageFormat(message));
     }
 }

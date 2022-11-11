@@ -8,9 +8,10 @@ import lotto.domain.winning.WinningLotto;
 
 public class LottoMachine {
 
-    public WinningLotto winningNumbers(String formattedNumber, String strBonusNumber) {
+    public WinningLotto winningLotto(String formattedNumber, String strBonusNumber) {
         Lotto winningNumber = new Lotto(numbers(formattedNumber));
         BonusNumber bonusNumber = new BonusNumber(Integer.parseInt(strBonusNumber));
+        
         return new WinningLotto(winningNumber, bonusNumber);
     }
 }

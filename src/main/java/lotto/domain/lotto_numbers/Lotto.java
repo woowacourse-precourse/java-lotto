@@ -3,9 +3,9 @@ package lotto.domain.lotto_numbers;
 import static lotto.domain.lotto_numbers.LottoNumbersErrorMessages.INVALID_RANGE_OF_LOTTO_NUMBER;
 import static lotto.domain.lotto_numbers.LottoNumbersErrorMessages.INVALID_SIZE_OF_LOTTO_NUMBERS;
 import static lotto.domain.lotto_numbers.LottoNumbersErrorMessages.NOT_ALLOW_DUPLICATED_LOTTO_NUMBER;
+import static lotto.domain.policy.LottoPolicy.COUNTS_OF_LOTTO_NUMBERS;
 import static lotto.domain.policy.LottoPolicy.MAX_NUMBER_OF_LOTTO;
 import static lotto.domain.policy.LottoPolicy.MIN_NUMBER_OF_LOTTO;
-import static lotto.domain.policy.LottoPolicy.COUNTS_OF_LOTTO_NUMBERS;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,18 +28,16 @@ public class Lotto {
         return numbers.contains(number);
     }
 
-    public int matchNumberCounts(Lotto purchasedLotto) {
+    public int matchNumberCounts(Lotto lotto) {
         return (int) numbers.stream()
-                .filter(purchasedLotto::contains)
+                .filter(lotto::contains)
                 .count();
     }
 
-    // 위의 List<Integer> 자체를 sort하니까 테스트 케이스가 UnsupportedOperation을 터트린다.
-    // 그래서 아래의 방법으로 우회하였다.
     public List<Integer> numbers() {
-        List<Integer> copied = new ArrayList<>(Collections.unmodifiableList(numbers));
+        List<Integer> copied = new ArrayList<>(numbers);
         Collections.sort(copied);
-        return copied;
+        return Collections.unmodifiableList(copied);
     }
 
     private void validate(List<Integer> numbers) {
@@ -58,7 +56,8 @@ public class Lotto {
     private void validateRangeOfNumbers(List<Integer> numbers) {
         boolean presentInvalidNumber = numbers.stream()
                 .anyMatch(number ->
-                        number < MIN_NUMBER_OF_LOTTO || MAX_NUMBER_OF_LOTTO < number);
+                        number < MIN_NUMBER_OF_LOTTO || MAX_NUMBER_OF_LOTTO < number
+                );
 
         if (presentInvalidNumber) {
             throw new IllegalArgumentException(INVALID_RANGE_OF_LOTTO_NUMBER);

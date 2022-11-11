@@ -15,11 +15,8 @@ public class LottoService {
     private final LottoScanner lottoScanner;
     private final LottoPrinter lottoPrinter;
 
-    public LottoService(
-            LottoStore lottoStore,
-            LottoMachine lottoMachine,
-            LottoScanner lottoScanner,
-            LottoPrinter lottoPrinter) {
+    public LottoService(LottoStore lottoStore, LottoMachine lottoMachine,
+            LottoScanner lottoScanner, LottoPrinter lottoPrinter) {
         this.lottoStore = lottoStore;
         this.lottoMachine = lottoMachine;
         this.lottoScanner = lottoScanner;
@@ -31,12 +28,12 @@ public class LottoService {
             String money = money();
             LottoPurchaser lottoPurchaser = lottoPurchaser(money);
 
-            WinningLotto winningLotto = lottoMachine.winningNumbers(
+            WinningLotto winningLotto = lottoMachine.winningLotto(
                     winningNumber(),
                     bonusNumber()
             );
 
-            winningResults(lottoPurchaser, winningLotto);
+            makeWinningResults(lottoPurchaser, winningLotto);
 
         } catch (IllegalArgumentException e) {
             lottoPrinter.printError(e.getMessage());
@@ -48,10 +45,12 @@ public class LottoService {
         return lottoScanner.number();
     }
 
-    private void winningResults(LottoPurchaser lottoPurchaser, WinningLotto winningLotto) {
-        LottoResults lottoResults = lottoPurchaser.lottoResults(winningLotto);
-        double rateOfReturn = lottoPurchaser.rateOfReturn(lottoResults);
-        lottoPrinter.printWinningStatistics(lottoResults.resultFormat(), rateOfReturn);
+    private LottoPurchaser lottoPurchaser(String money) {
+        LottoPurchaser lottoPurchaser = lottoStore.lottos(money);
+        lottoPrinter.printTheNumberOfPurchaseLottos(lottoPurchaser.numberOfPurchasedLottos());
+        lottoPrinter.printLottoNumbers(lottoPurchaser.purchasedLottosFormat());
+
+        return lottoPurchaser;
     }
 
     private String bonusNumber() {
@@ -64,10 +63,9 @@ public class LottoService {
         return lottoScanner.formattedNumber();
     }
 
-    private LottoPurchaser lottoPurchaser(String money) {
-        LottoPurchaser lottoPurchaser = lottoStore.lottos(money);
-        lottoPrinter.printTheNumberOfLottos(lottoPurchaser.numberOfPurchasedLottos());
-        lottoPrinter.printLottoNumbers(lottoPurchaser.purchasedLottosFormat());
-        return lottoPurchaser;
+    private void makeWinningResults(LottoPurchaser lottoPurchaser, WinningLotto winningLotto) {
+        LottoResults lottoResults = lottoPurchaser.lottoResults(winningLotto);
+        double rateOfReturn = lottoPurchaser.rateOfReturn(lottoResults);
+        lottoPrinter.printWinningStatistics(lottoResults.toString(), rateOfReturn);
     }
 }

@@ -24,7 +24,7 @@ class WinningLottoTest {
         );
 
         WinningLotto winningLotto = lottoMachine
-                .winningNumbers("1,2,3,4,5,6", "7");
+                .winningLotto("1,2,3,4,5,6", "7");
 
         LottoResults lottoResults = winningLotto.lottoResults(purchasedLottos);
         Map<LottoRanking, Integer> actual = lottoResults.results();

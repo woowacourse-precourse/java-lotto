@@ -16,15 +16,14 @@ public class LottoStore {
 
     static final String INVALID_VALUE_OF_MONEY = "1_000원 단위로만 입력해 주세요.";
 
-    // 구매자로 반환해도 될것같음.
     public LottoPurchaser lottos(String strMoney) {
-        int money = Integer.parseInt(strMoney);  // 아무래도 사용하는 쪽에서 알맞게 변경하는게..
+        int money = Integer.parseInt(strMoney);
         validateMoney(money);
 
         int quantityToBuy = money / PRICE_OF_LOTTO;
         return new LottoPurchaser(
                 IntStream.range(0, quantityToBuy)
-                        .mapToObj(i -> newLotto())  // 좀 더 나은 방법은 없을까 생각해보자.
+                        .mapToObj(i -> newLotto())
                         .collect(Collectors.toList())
         );
     }

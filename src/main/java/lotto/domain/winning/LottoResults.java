@@ -10,19 +10,22 @@ public class LottoResults {
         this.results = results;
     }
 
-    public String resultFormat() {
+    public int totalWinnings() {
+        return results.entrySet().stream()
+                .mapToInt(result -> result.getKey().sumOfWinnings(result.getValue()))
+                .sum();
+    }
+
+    @Override
+    public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         results.forEach(
                 (key, value) -> stringBuilder
                         .append(key.stringFormat()).append(" - ")
-                        .append(value).append("개\n"));
-        return stringBuilder.toString();
-    }
+                        .append(value).append("개\n")
+        );
 
-    public int totalWinnings() {
-        return results.entrySet().stream()
-                .mapToInt(entry -> entry.getKey().sumOfWinnings(entry.getValue()))
-                .sum();
+        return stringBuilder.toString();
     }
 
     // 테스트용 메서드
