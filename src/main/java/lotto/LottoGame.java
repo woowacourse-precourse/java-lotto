@@ -53,6 +53,13 @@ public class LottoGame {
         return bonusNumber;
     }
 
+    private WinningNumbers inputWinningNumbers() {
+        List<Integer> standardNumbers = inputWinningStandardNumbers();
+        int bonusNumber = inputWinningBonusNumber();
+
+        return new WinningNumbers(standardNumbers, bonusNumber);
+    }
+
     private Results matchLottoWithWinningNumbers(List<Lotto> lottos,
             WinningNumbers winningNumbers) {
         List<Reward> rewards = new ArrayList<>();
@@ -110,10 +117,7 @@ public class LottoGame {
             List<Lotto> lottos = buyLottos(money);
             printLottos(lottos);
 
-            List<Integer> standardNumbers = inputWinningStandardNumbers();
-            int bonusNumber = inputWinningBonusNumber();
-            WinningNumbers winningNumbers = new WinningNumbers(standardNumbers, bonusNumber);
-
+            WinningNumbers winningNumbers = inputWinningNumbers();
             Results results = matchLottoWithWinningNumbers(lottos, winningNumbers);
 
             printStatistics(results);
