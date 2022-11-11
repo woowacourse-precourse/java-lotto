@@ -31,7 +31,7 @@ public class LottoPurchaseValidatorTest {
             // when, then
             assertThatThrownBy(() -> LottoPurchaseValidator.validatePurchaseUnit(inputMoney))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(ErrorMessage.UNIT_OF_LOTTO_PURCHASE_DOES_NOT_COMPLY_WITH_RULE.message());
+                    .hasMessage(ErrorMessage.UNIT_OF_LOTTO_PURCHASE_DOES_NOT_COMPLY_WITH_RULE.getMessage());
         }
 
         /**

@@ -24,7 +24,7 @@ public class LottoNumberValidatorTest {
             // when, then
             assertThatThrownBy(() -> LottoNumberValidator.validateExistDuplicateNumber(numbers))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(ErrorMessage.CAN_NOT_EXIST_DUPLICATE_NUMBER_IN_LOTTO.message());
+                    .hasMessage(ErrorMessage.CAN_NOT_EXIST_DUPLICATE_NUMBER_IN_LOTTO.getMessage());
         }
 
         @Test

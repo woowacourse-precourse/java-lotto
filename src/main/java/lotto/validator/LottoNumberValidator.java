@@ -8,7 +8,8 @@ public class LottoNumberValidator {
 
     public static void validateExistDuplicateNumber(List<Integer> numbers) {
         if (numbers.size() != Set.copyOf(numbers).size()) {
-            throw new IllegalArgumentException(ErrorMessage.CAN_NOT_EXIST_DUPLICATE_NUMBER_IN_LOTTO.message());
+            throw new IllegalArgumentException(ErrorMessage.CAN_NOT_EXIST_DUPLICATE_NUMBER_IN_LOTTO.getMessage());
         }
     }
+    
 }
