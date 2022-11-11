@@ -19,5 +19,13 @@ class BuyerGenerateTest {
         assertThatThrownBy(()-> new BuyerGenerate())
                 .isInstanceOf(IllegalArgumentException.class);
     }
+    @Test
+    public void buyerGenerateCreate() throws Exception{
+        String input = "1500";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
 
+        assertThatThrownBy(()-> new BuyerGenerate().generate())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
