@@ -20,10 +20,17 @@ public class Manager {
         return won / Lotto.PRICE;
     }
 
-    public void purchaseLotto(int amount){
-        for(int i = 0; i < amount; i++){
+    public void purchaseLotto(int amount) {
+        for (int i = 0; i < amount; i++) {
             Lotto lotto = new Lotto(getRandomNumbers());
             lottoTable.add(lotto);
         }
     }
+
+    public List<Lotto> getLottoTable() {
+        return lottoTable;
+    }
+
+
 }
+
