@@ -1,7 +1,9 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -29,5 +31,15 @@ public class Console {
         for (int i = 0; i < count; i++) {
             System.out.println(numbers[i]);
         }
+    }
+    public void outputWinningResult(Map<Rank, Integer> result, double yield) {
+        System.out.println("당첨 통계\n---");
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        for (Rank value : Rank.values()) {
+            String splitCommaMoney = decimalFormat.format(value.money);
+            System.out.println(value.correctCount + "개 일치 (" + splitCommaMoney + "원) - " +
+                    result.getOrDefault(value, 0) + "개");
+        }
+        System.out.println("총 수익률은 " + yield + "%입니다.");
     }
 }
