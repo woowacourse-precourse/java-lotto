@@ -27,7 +27,8 @@ public class InputView {
     
     public static WinningLottoNumbers inputWinningLottoNumbers() {
         Lotto inputWinningLotto = inputWinningLotto(Console.readLine());
-        return null;
+        int inputBonusNumber = inputBonusNumber(Console.readLine());
+        return new WinningLottoNumbers(inputWinningLotto, inputBonusNumber);
     }
     
     private static Lotto inputWinningLotto(final String inputWinningLottoNumbers) {
@@ -39,5 +40,9 @@ public class InputView {
         return Arrays.stream(inputWinningLottoNumbers.split(COMMA_DELIMITER))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+    
+    private static int inputBonusNumber(final String inputBonusNumber) {
+        return Integer.parseInt(inputBonusNumber);
     }
 }

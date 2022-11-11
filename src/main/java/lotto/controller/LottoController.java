@@ -8,5 +8,6 @@ public class LottoController {
     public void run() {
         Payment payment = InputView.inputPayment();
         WinningLottoNumbers winningLottoNumbers = InputView.inputWinningLottoNumbers();
+        System.out.println(winningLottoNumbers);
     }
 }
