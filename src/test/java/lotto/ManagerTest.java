@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -20,6 +21,7 @@ public class ManagerTest {
     void getAmountFromPrice() {
         Manager manager = new Manager();
         int result = manager.getAmount(20000);
+
         assertThat(result).isEqualTo(20);
     }
 
@@ -28,6 +30,7 @@ public class ManagerTest {
     @ValueSource(ints = {15500, 900, 0})
     void getAmountFromPriceButException(int won) {
         Manager manager = new Manager();
+
         assertThatThrownBy(() -> manager.getAmount(won)).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -36,6 +39,7 @@ public class ManagerTest {
     void purchaseLotto() {
         Manager manager = new Manager();
         manager.purchaseLotto(5);
+
         assertThat(manager.getLottoTable().size()).isEqualTo(5);
     }
 
@@ -55,8 +59,18 @@ public class ManagerTest {
                 Arguments.of(List.of(1, 2, 3, 4, 5, 6), 6),
                 Arguments.of(List.of(1, 2, 3, 4, 5, 8), 5),
                 Arguments.of(List.of(11, 12, 13, 14, 15, 16), 0)
-
         );
+    }
+
+    @DisplayName("로또 보너스번호가 있는지 확인.")
+    @ParameterizedTest(name = "{displayName} {0}이면 {1}")
+    @CsvSource(value = {"1:true", "7:false"}, delimiter = ':')
+    void hasBonusNumber(int bonunsNumber, boolean hasBounsNumber) {
+        Manager manager = new Manager();
+        Lotto purchasedLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        boolean result = manager.hasBonusNumber(purchasedLotto, bonunsNumber);
+
+        assertThat(result).isEqualTo(hasBounsNumber);
     }
 }
 
