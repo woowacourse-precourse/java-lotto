@@ -8,9 +8,8 @@ import java.util.List;
 
 public class LottoMachine {
     public List<Integer> issueLotto() {
-        List<Integer> numbers = new ArrayList<>();
-        numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(numbers);
-        return numbers;
+        List<Integer> lotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        Collections.sort(lotto);
+        return lotto;
     }
 }
