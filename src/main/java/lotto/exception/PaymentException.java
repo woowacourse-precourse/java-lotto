@@ -3,6 +3,7 @@ package lotto.exception;
 public class PaymentException {
 
     private static final int LOTTO_PRICE = 1000;
+    private static final String NOT_RIGHT_PAYMENT_COMMENT = "[ERROR] 금액은 1000으로 나누어 떨어지는 금액이어야 합니다.";
 
     public void validate(String price){
 
@@ -17,6 +18,6 @@ public class PaymentException {
     }
 
     private void paymentNotAcceptableException(){
-
+        throw new IllegalArgumentException(NOT_RIGHT_PAYMENT_COMMENT);
     }
 }
