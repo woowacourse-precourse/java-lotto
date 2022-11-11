@@ -1,6 +1,6 @@
 package lotto.model;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static lotto.model.LottoWinningStatus.*;
@@ -16,7 +16,7 @@ public class LottoWinningStatistics {
     }
 
     private void initWinningCounts() {
-        winningCounts = new HashMap<>();
+        winningCounts = new LinkedHashMap<>();
         winningCounts.put(MATCH_THREE_NUMBERS, 0);
         winningCounts.put(MATCH_FOUR_NUMBERS, 0);
         winningCounts.put(MATCH_FIVE_NUMBERS, 0);
