@@ -44,4 +44,11 @@ public enum Error {
                 throw new IllegalArgumentException(NUMBER_DUPLICATE.getErrorMsg());
         }
     }
+
+    public static void validateBonusNumDuplicate(List<Integer> numbers, int bonusNum) {
+        if (numbers.contains(bonusNum)) {
+            throw new IllegalArgumentException(BONUS_DUPLICATE_LOTTO.getErrorMsg());
+        }
+    }
+
 }
