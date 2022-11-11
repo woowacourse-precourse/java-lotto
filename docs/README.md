@@ -163,7 +163,7 @@
   - 2등 로또의 개수를 계산하는 함수
 
 
-- Integer calculateThird(List<Lotto>, List<Integer>)
+- Integer calculateThird(List<Lotto>, List<Integer>, int)
   - 3등 로또의 개수를 계산하는 함수
 
 
