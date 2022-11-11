@@ -39,6 +39,12 @@ public class LottoView {
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException("[ERROR] 입력된 당첨 번호에 중복값이 존재합니다.");
         }
+
+        for (int number : numbers) {
+            if (validateNumberRange(number)) {
+                throw new IllegalArgumentException("[ERROR] 당첨 번호는 1~45 사이의 숫자여야 합니다.");
+            }
+        }
     }
 
     public int getBonusNumber(List<Integer> numbers) {
