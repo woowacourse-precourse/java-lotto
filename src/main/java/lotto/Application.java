@@ -6,6 +6,24 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+enum PrintResult {
+    FIFTH("3개 일치 (5,000원) - "),
+    FOURTH("4개 일치 (50,000원) - "),
+    THIRD("5개 일치 (1,500,000원) - "),
+    SECOND("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
+    FIRST("6개 일치 (2,000,000,000원) - ");
+
+    private final String name;
+
+    PrintResult(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+}
+
 public class Application {
     static int inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -51,11 +69,23 @@ public class Application {
         return winningNumbers;
     }
 
-    static void inputBonusNumber(WinningLotto winningLotto){
+    static void inputBonusNumber(WinningLotto winningLotto) {
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
         winningLotto.inputBonusNumber(input);
         System.out.println();
+    }
+
+    static void printMyLottoResult(MyResult myResult) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for (PrintResult rank : PrintResult.values()) {
+            System.out.print(rank.getName());
+            System.out.println(myResult.getWinningResult().get(rank.ordinal()) + "개");
+        }
+//        for(int rank = 3; rank < 8; rank++){
+//            System.out.println(rank+"개 일치 - "+ myResult.getWinningResult().get(rank-3)+"개");
+//        }
     }
 
     public static void main(String[] args) {
@@ -66,6 +96,7 @@ public class Application {
         WinningLotto winningLotto = inputWinNumber();
         inputBonusNumber(winningLotto);
         MyResult myResult = new MyResult(myLottos, winningLotto);
+        printMyLottoResult(myResult);
     }
 }
 
