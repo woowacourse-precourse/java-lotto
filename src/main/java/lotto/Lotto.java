@@ -1,6 +1,9 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -29,5 +32,9 @@ public class Lotto {
         }
     }
 
+    public void display_num(){
+        Collections.sort(numbers);
+        System.out.println(Arrays.deepToString(numbers.toArray()));
+    }
     
 }
