@@ -21,12 +21,14 @@ public class Draw {
     }
 
     public Map<Rank,Integer> getWinningStats(List<Lotto> lottoPaper) {
-        Map<Rank,Integer> winningStats = new HashMap<>();
-        for (Lotto tryLotto : lottoPaper) {
-            tryLottoRank(tryLotto);
-        }
+        Map<Rank, Integer> winningStats = this.winningStats;
+        Rank rank;
 
-        return null;
+        for (Lotto tryLotto : lottoPaper) {
+            rank = tryLottoRank(tryLotto);
+            winningStats.compute(rank,(k,v) -> v+1);
+        }
+        return winningStats;
     }
 
     private void setRankClassification(){
