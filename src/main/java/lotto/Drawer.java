@@ -25,6 +25,11 @@ public class Drawer {
         return Integer.valueOf(answer);
     }
 
+    public void compare(List<Lotto> lottoTickets, Lotto lotto, Integer bonusNumber) {
+        List<Rank> ranks = new ArrayList<Rank>();
+        for (Lotto ticket : lottoTickets) {
+            ranks.add(Calculator.calculateWin(ticket, lotto, bonusNumber));
+        }
     }
 
     private static class Calculator {
