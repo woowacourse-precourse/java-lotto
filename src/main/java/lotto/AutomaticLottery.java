@@ -47,16 +47,16 @@ public class AutomaticLottery {
         }
     }
 
-    private void validateInputEmpty(String amount) {
-        if (amount.equals("")) {
-            System.out.println("[ERROR] 공백을 입력할 수 없습니다 금액을 입력해 주세요.");
+    private void characterCheck(char inputSequence) {
+        if (47 >= inputSequence || 58 <= inputSequence) {
+            System.out.println("[ERROR] 금액은 숫자로만 입력할 수 있습니다.");
             throw new IllegalArgumentException();
         }
     }
 
-    private void characterCheck(char inputSequence) {
-        if (47 >= inputSequence || 58 <= inputSequence) {
-            System.out.println("[ERROR] 금액은 숫자로만 입력할 수 있습니다.");
+    private void validateInputEmpty(String amount) {
+        if (amount.equals("")) {
+            System.out.println("[ERROR] 공백을 입력할 수 없습니다 금액을 입력해 주세요.");
             throw new IllegalArgumentException();
         }
     }
