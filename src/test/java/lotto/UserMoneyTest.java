@@ -1,6 +1,7 @@
 package lotto;
 
 import Service.LottoService;
+import domain.Ticket;
 import domain.UserMoneyValidate;
 import exception.MoneyExceptionType;
 import org.junit.jupiter.api.Assertions;
@@ -55,4 +56,5 @@ public class UserMoneyTest {
         //then
         assertThrows(IllegalArgumentException.class, () -> userMoneyValidate.isDivideThousand(testMoney));
     }
+
 }
