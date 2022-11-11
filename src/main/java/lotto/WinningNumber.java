@@ -35,6 +35,10 @@ public class WinningNumber {
       throw new IllegalArgumentException(Constant.NOT_RANGE_MESSAGE.getMessage());
     }
   }
+
+  public List<Integer> getNumber() {
+    return number;
+  }
 }
 
 
