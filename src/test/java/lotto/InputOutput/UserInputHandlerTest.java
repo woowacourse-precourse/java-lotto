@@ -43,6 +43,14 @@ class UserInputHandlerTest{
     }
 
     @Test
+    void getHowMuchTickets_case2() {
+        String input = "15000";
+        int output = 15;
+        beforeSetting(input);
+        assertThat(inputHandler.getHowMuchTickets()).isEqualTo(output);
+    }
+
+    @Test
     void getHowMuchTickets_exception1(){
         String input = "Hello World";
         beforeSetting(input);
@@ -51,6 +59,15 @@ class UserInputHandlerTest{
             exceptionRunning(functionSupply);
             assertThat(out.toString().trim()).isEqualTo("[ERROR] 구입 금액에는 정수만 입력할 수 있습니다.");
         });
-
+    }
+    @Test
+    void getHowMuchTickets_exception2() {
+        String input = "-1000";
+        beforeSetting(input);
+        functionSupply = () -> inputHandler.getHowMuchTickets();
+        assertSimpleTest(() -> {
+            exceptionRunning(functionSupply);
+            assertThat(out.toString().trim()).isEqualTo("[ERROR] 지불하는 돈은 양수여야 합니다.");
+        });
     }
 }
