@@ -1,12 +1,23 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class WinningNumber {
+  private List<Integer> number;
+
+  public WinningNumber(String userNumber) {
+    this.number = splitNumber(userNumber);
+  }
   // ','를 기준으로 split 시행
-  public void splitNumber(String userNumber) {
+  public List<Integer> splitNumber(String userNumber) {
     String[] number = userNumber.split(",");
+    List<Integer> numberInt = new ArrayList<>();
     for (String num : number) {
       onlyDigit(num);
+      numberInt.add(Integer.parseInt(num));
     }
+    return numberInt;
   }
 // 유효성 검사
   public void onlyDigit(String num) {
