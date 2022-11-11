@@ -36,6 +36,16 @@ public class InputController {
         }
     }
 
+    public List<List<Integer>> makeLottoNumberList(LottoPurAmount lottoPurAmount) {
+        List<List<Integer>> makeLottoNumberList = new ArrayList<>();
+        for(int i=0; i<lottoPurAmount.getLottopuramount()/DIVIDEPRICE; i++) {
+            List<Integer> lottonumber = new ArrayList<>();
+            lottonumber = makeLottoNumber();
+            makeLottoNumberList.add(lottonumber);
+        }
+        return makeLottoNumberList;
+    }
+
     public List<Integer> makeLottoNumber() {
         List<Integer> lottonumber = new ArrayList<>();
         while (lottonumber.size() < LOTTONUMBERQUANTITY) {
@@ -48,13 +58,4 @@ public class InputController {
         return lottonumber;
     }
 
-    public List<List<Integer>> makeLottoNumberList(LottoPurAmount lottoPurAmount) {
-        List<List<Integer>> makeLottoNumberList = new ArrayList<>();
-        for(int i=0; i<lottoPurAmount.getLottopuramount()/DIVIDEPRICE; i++) {
-            List<Integer> lottonumber = new ArrayList<>();
-            lottonumber = makeLottoNumber();
-            makeLottoNumberList.add(lottonumber);
-        }
-        return makeLottoNumberList;
-    }
 }
