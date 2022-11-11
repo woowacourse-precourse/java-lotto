@@ -41,6 +41,6 @@ public class Application {
 
         Map<Lotto, Integer> countedLotto = lottoCounter.countedLotto(lottoPapers,winningNumbers);
         Map<Integer, Integer> winningCounts = lottoCounter.countWinningPaper(countedLotto,winningNumbers,bonusNumbers);
-        outputHandler.printWinningRecord(winningCounts);
+        outputHandler.printAllRecord(winningCounts, amountOfLottoPaper * 1000);
     }
 }
