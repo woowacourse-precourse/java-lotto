@@ -25,13 +25,7 @@ public class Lotto {
         CompareResult result = new CompareResult(0, false);
 
         for (Integer number : numbers) {
-            if (winningNumbers.isWinningNumber(number)) {
-                result = result.increaseMatch();
-                continue;
-            }
-            if (winningNumbers.isBonusNumber(number)) {
-                result = result.foundBonusNumber();
-            }
+            result = winningNumbers.judgeMatchOrBonus(number, result);
         }
 
         return result;

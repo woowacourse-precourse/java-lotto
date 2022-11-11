@@ -17,4 +17,15 @@ public class WinningNumbers {
     public boolean isBonusNumber(int number) {
         return bonusNumber == number;
     }
+
+    public CompareResult judgeMatchOrBonus(Integer number, CompareResult compareResult) {
+        if (isWinningNumber(number)) {
+            return compareResult.increaseMatchCount();
+        }
+        if (isBonusNumber(number)) {
+            return compareResult.bonusNumberFound();
+        }
+
+        return compareResult;
+    }
 }
