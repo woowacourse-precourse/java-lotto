@@ -28,10 +28,11 @@
 - [x] "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다." - ShowErrorMessage#showOutRangeLottoNumber()
 - [x] "[ERROR] 금액은 1,000으로 나누어 떨어져야 합니다."를 출력한다. - ShowErrorMessage#showNotDivide()
 
-- [x] 1 ~ 45까지의 숫자 중 6개의 중복되지 않는 숫자를 뽑는다. - Lotto#createLottoNumbers()
 - [x] 구입할 수 있는 로또의 개수를 반환 - int lottoCount = Lotto#lottoCount(int number)
+- [x] 1 ~ 45까지의 숫자 중 6개의 중복되지 않는 숫자를 뽑는다. - Lotto#createLottoNumbers()
+- [x] 구입할 금액만큼 로또 번호를 반복하여 생성 - List<List<Integer>> lottoNumber = Lotto#createLotto()
+
 - [ ] 로또를 구매하기 - Long amount = Lotto#buyLotto()
-- [ ] 구입할 금액만큼 로또 번호를 반복하여 생성 - List<Integer> lottoNumber = Lotto#createLotto()
 - [ ] List<Integer>형식의 로또들을 List<List<Integer>로 합친다. - List<List<Integer>> = Lotto#createLottolst(List<List<Integer>> lottoLst)
 - [ ] 당첨 확인 - Lotto#lottoCheckWin()
 
