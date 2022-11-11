@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -17,5 +18,15 @@ public class Lotto {
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.DUPLICATE_NUMBER);
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public void print() {
+        System.out.println(numbers.stream()
+                .sorted()
+                .collect(Collectors.toList()));
     }
 }
