@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
@@ -29,6 +30,7 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
+        numbers.sort(Comparator.naturalOrder());
         return numbers;
     }
 }
