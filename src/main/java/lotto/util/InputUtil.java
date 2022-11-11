@@ -44,7 +44,7 @@ public class InputUtil {
         }
     }
 
-    public void isOnlyCommaAndNumber(String input) throws IllegalArgumentException {
+    private void isOnlyCommaAndNumber(String input) throws IllegalArgumentException {
         String[] numbers = input.split(COMMA);
         Pattern pattern = Pattern.compile(NOT_NUMBER_REGEX);
 
@@ -56,7 +56,7 @@ public class InputUtil {
         }
     }
 
-    public void isAllDifferentNumbers(String input) throws IllegalArgumentException {
+    private void isAllDifferentNumbers(String input) throws IllegalArgumentException {
         String[] numbers = input.split(COMMA);
         List<String> container = new ArrayList<>();
 
