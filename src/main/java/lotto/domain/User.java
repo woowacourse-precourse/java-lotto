@@ -26,4 +26,8 @@ public class User {
         }
     }
 
+    public int getBuyAmount() {
+        return lottos.size();
+    }
+
 }
