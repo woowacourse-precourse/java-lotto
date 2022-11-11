@@ -70,7 +70,7 @@ public class InputUtil {
         }
     }
 
-    public IllegalArgumentException makeIllegalArgumentException(String message) {
+    public static IllegalArgumentException makeIllegalArgumentException(String message) {
         return new IllegalArgumentException(message);
     }
 }
