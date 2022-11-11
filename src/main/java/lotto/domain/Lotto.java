@@ -21,6 +21,12 @@ public class Lotto {
         this.lottoNumbers = lottoNumbers;
     }
 
+    public long matchCount(Lotto userLotto) {
+        return lottoNumbers.stream()
+                .filter(userLotto::contain)
+                .count();
+    }
+
     public boolean contain(LottoNumber bonusNumber) {
         return lottoNumbers.contains(bonusNumber);
     }

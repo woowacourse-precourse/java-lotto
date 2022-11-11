@@ -11,4 +11,16 @@ public class WinningLotto {
         this.bonusNumber = bonusNumber;
         this.winningLotto = winningLotto;
     }
+
+    public LottoResult makeResult(Lotto userLotto) {
+        return LottoResult.valueOf(compareWithWinningLotto(userLotto), compareWithBonusLotto(userLotto));
+    }
+
+    private int compareWithWinningLotto(Lotto userLotto) {
+        return (int) winningLotto.matchCount(userLotto);
+    }
+
+    private boolean compareWithBonusLotto(Lotto userLotto) {
+        return userLotto.contain(bonusNumber);
+    }
 }
