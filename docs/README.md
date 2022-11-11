@@ -40,9 +40,10 @@
 >- [ ] Lotto System을 통해 당첨 통계를 조회하는 기능 ( getUserLottoResult ) ( Lotto System을 통해 구매한 로또 번호와 비교 )
 >- [ ] 총 수익률을 계산하는 기능 ( setRevenue )
 >- [ ] 총 수익률을 조회하는 기능 ( getRevenue )
->- [x] 랜덤 번호를 생성하는 기능 ( setRandomLottoNumbers )
->- [x] 랜덤 번호를 각 정렬하는 기능 ( setRandomLottoNumbers 내부 )
 >- [x] 금액을 입력받는 기능 ( setPayMent )
+>- [ ] 입력받은 금액으로 구매할 수 있는 로또 갯수를 조회하는 기능 ( getLottoCount )
+>- [x] 입력 받은 금액으로 랜덤 번호를 생성하는 기능 ( setRandomLottoNumbers )
+>- [x] 랜덤 번호를 각 정렬하는 기능 ( setRandomLottoNumbers 내부 )
 
 **LottoSystemService**
 >- [ ] 당첨 통계를 계산하는 기능 ( setTotal )
