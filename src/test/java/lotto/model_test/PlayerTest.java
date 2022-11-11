@@ -53,8 +53,10 @@ public class PlayerTest {
     private HashMap<Ranking, Integer> createTester(){
         HashMap<Ranking, Integer> tester = new HashMap<>();
         tester.put(Ranking.THREE_MATCH, 3);
+        tester.put(Ranking.FOUR_MATCH, 0);
         tester.put(Ranking.FIVE_MATCH_WITH_BONUS, 1);
         tester.put(Ranking.FIVE_MATCH, 1);
+        tester.put(Ranking.SIX_MATCH, 0);
         return tester;
     }
 }
