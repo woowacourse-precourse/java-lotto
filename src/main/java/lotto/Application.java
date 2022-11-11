@@ -322,4 +322,16 @@ public class Application {
 
         return number;
     }
+
+    public static Integer calculateForth(List<Lotto> lottoList, List<Integer> winningNumberList) {
+
+        int number = 0;
+
+        for (Lotto lotto : lottoList) {
+
+            number += compareLottoNumbersAndWinningNumbers(lotto, winningNumberList, 4);
+        }
+
+        return number;
+    }
 }
