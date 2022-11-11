@@ -1,10 +1,10 @@
 package lotto.domain;
 
-import lotto.GameResultResponseDto;
+import lotto.dto.GameResultResponseDto;
 
 import java.util.*;
 
-import static lotto.GameResultResponseDto.*;
+import static lotto.dto.GameResultResponseDto.*;
 
 public class Referee {
 

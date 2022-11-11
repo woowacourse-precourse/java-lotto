@@ -1,8 +1,6 @@
 package lotto.domain;
 
-import lotto.GameResultResponseDto;
-import lotto.domain.LottoResult;
-import lotto.domain.Referee;
+import lotto.dto.GameResultResponseDto;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
