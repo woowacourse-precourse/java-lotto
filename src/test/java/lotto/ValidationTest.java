@@ -34,4 +34,28 @@ class ValidationTest {
         assertThat(result2).isInstanceOf(IllegalArgumentException.class);
         assertThat(result3).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void validateDuplicationList_테스트(){
+        //given
+        List<Integer> case1 = List.of(30, 1, 45, 9, 2, 23);
+        List<Integer> case2 = List.of(0,1,45,1,5,23);
+        List<Integer> case3 = List.of(0,0,0);
+
+        //when
+        Throwable result1 = catchThrowable(()->{
+            Validation.validateDuplicationList(case1);
+        });
+        Throwable result2 = catchThrowable(()->{
+            Validation.validateDuplicationList(case2);
+        });
+        Throwable result3 = catchThrowable(()->{
+            Validation.validateDuplicationList(case3);
+        });
+
+        //then
+        assertThat(result1).doesNotThrowAnyException();
+        assertThat(result2).isInstanceOf(IllegalArgumentException.class);
+        assertThat(result3).isInstanceOf(IllegalArgumentException.class);
+    }
 }
