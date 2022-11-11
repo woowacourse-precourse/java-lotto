@@ -3,12 +3,10 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LottoNumber {
-    static final int INITIAL_NUMBER = 0;
-    static final int LOTTO_SIZE = 6;
-    static final int LOTTO_NUMBER_MIN = 1;
-    static final int LOTTO_NUMBER_MAX = 45;
+import static constant.ErrorMessage.*;
+import static constant.Constant.*;
 
+public class LottoNumber {
     private static List<Integer> lottoNumbers = new ArrayList<>();
     private static int bonusNumber;
 
@@ -23,13 +21,15 @@ public class LottoNumber {
         try {
             return validNumberRange(Integer.parseInt(num));
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
+            System.out.println(NOT_NUMBER);
+            throw new IllegalArgumentException();
         }
     }
 
     private int validNumberRange(int num) {
         if (num < LOTTO_NUMBER_MIN || num > LOTTO_NUMBER_MAX) {
-            throw new IllegalArgumentException("[ERROR] 1에서 45사이의 숫자를 입력해주세요.");
+            System.out.println(NOT_LOTTO_NUMBER_RANGE);
+            throw new IllegalArgumentException();
         }
         return num;
     }
