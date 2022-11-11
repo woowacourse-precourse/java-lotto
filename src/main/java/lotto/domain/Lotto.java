@@ -44,7 +44,7 @@ public class Lotto {
     private void validateByOverlap(List<Integer> numbers) {
         HashSet<Integer> checkNumbers = new HashSet<>(numbers);
 
-        if(checkNumbers.size() != NUMBER_OF_LOTTO) {
+        if (checkNumbers.size() != NUMBER_OF_LOTTO) {
             Output.printErrorAndExit(ExceptionType.HAVE_OVERLAP.getMessage());
             throw new IllegalArgumentException(ExceptionType.HAVE_OVERLAP.getMessage());
         }
@@ -54,7 +54,7 @@ public class Lotto {
         HashSet<Integer> checkNumbers = new HashSet<>(numbers);
         checkNumbers.add(bonusNumber);
 
-        if(checkNumbers.size() != NUMBER_OF_LOTTO + 1) {
+        if (checkNumbers.size() != NUMBER_OF_LOTTO + 1) {
             Output.printErrorAndExit(ExceptionType.HAVE_OVERLAP.getMessage());
             throw new IllegalArgumentException(ExceptionType.HAVE_OVERLAP.getMessage());
         }
@@ -70,7 +70,21 @@ public class Lotto {
         this.numbers.add(number);
     }
 
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
 
+        builder.append("[");
+        for (int i = 0; i < numbers.size(); i++) {
+            builder.append(numbers);
+            if (i != numbers.size() - 1) {
+                builder.append(", ");
+            }
+            if (i == numbers.size() - 1) {
+                builder.append("]");
+            }
+        }
 
-
+        return builder.toString();
+    }
 }
