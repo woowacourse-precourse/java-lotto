@@ -14,8 +14,15 @@ public class UserData {
         this.games = makeLottoGame(this.gameCount);
     }
 
+    public int getPurchaseAmount() {
+        return purchaseAmount;
+    }
+
     private int calculateGameCount(int purchaseAmount) {
         return purchaseAmount / 1000;
+    }
+    public int getGameCount() {
+        return this.gameCount;
     }
 
     private void checkMoney(int purchaseAmount) {
@@ -25,5 +32,9 @@ public class UserData {
     }
     private List<Lotto> makeLottoGame(int gameCount) {
         return null;
+    }
+
+    public List<Lotto> getGames() {
+        return this.games;
     }
 }
