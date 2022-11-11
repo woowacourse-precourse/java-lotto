@@ -14,11 +14,11 @@
   - E [x] 숫자를 입력했는지 확인한다. - validateNumber
   - E [x] 1000으로 나워지는지 확인한다 -validateDivideThousand()
 - M [x] 구매 금액을 통해 구매할 로또 장수를 계산한다 - LottoData#LottoData() (생성자)
-- M [ ] 당첨 번호를 입력받는다 - InputLotto#inputWinNumber()
-  - E [ ] 쉼표를 기준으로 구분했는지 확인한다. - validateSeparator()
-  - E [ ] 입력한게 숫자인지, 숫자가 1~45사이에 있는지 확인한다. - validateNumberInRange()
-  - E [ ] 숫자가 총 6개인지 확인한다. - validateSize()
-  - E [ ] 중복 숫자가 없는지 확인한다. - validateDuplicateNumber()
+- M [x] 당첨 번호를 입력받는다 - InputLotto#inputWinNumber()
+  - E [x] 쉼표를 기준으로 구분했는지, 숫자가 6개인지 확인한다. - validateSeparatorAndSize()
+  - E [x] 입력한게 숫자인지, 숫자가 1~45사이에 있는지 확인한다. - validateNumberInRange()
+  - ~~E [ ] 숫자가 총 6개인지 확인한다. - validateSize()~~
+  - E [x] 중복 숫자가 없는지 확인한다. - validateDuplicateNumber()
 - M [ ] 보너스 번호를 입력받는다. - InputLotto#inputBonusNumber()
   - E [ ] 입력한게 숫자인지, 숫자가 1~45사이에 있는지 확인한다. - validateNumberInRange()
   - E [ ] 숫자가 1개인지 확인한다. - validateSize()
