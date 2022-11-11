@@ -24,6 +24,7 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    // TODO 생성자 수정해 보기
     @DisplayName("1000으로 나눈 몫을 반환, 1000으로 나누어떨어지지 않으면 IllegalArgumentExcpetion 발생")
     @Test
     void lottoCount() {
@@ -31,5 +32,12 @@ class LottoTest {
         assertThatThrownBy(() -> lotto.lottoCount(1001))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-    // 아래에 추가 테스트 작성 가능
+
+    @DisplayName("리스트를 오름차순 정렬")
+    @Test
+    void sortLottoNumberAscending() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertEquals(List.of(1, 2, 3, 4, 5, 6), lotto.sortLottoNumberAscending(List.of(5, 6, 2, 1, 3, 4)));
+    }
+
 }
