@@ -26,12 +26,15 @@ public class InputView {
     }
     
     public static WinningLottoNumbers inputWinningLottoNumbers() {
-        Lotto inputWinningLotto = inputWinningLotto(Console.readLine());
-        int inputBonusNumber = inputBonusNumber(Console.readLine());
+        Lotto inputWinningLotto = inputWinningLotto();
+        int inputBonusNumber = inputBonusNumber();
         return new WinningLottoNumbers(inputWinningLotto, inputBonusNumber);
     }
     
-    private static Lotto inputWinningLotto(final String inputWinningLottoNumbers) {
+    private static Lotto inputWinningLotto() {
+        OutputView.printWinningLottoNumbersInputMessage();
+        final String inputWinningLottoNumbers = Console.readLine();
+        
         InputWinningLottoValidator.validate(inputWinningLottoNumbers);
         return new Lotto(parseLotto(inputWinningLottoNumbers));
     }
@@ -42,7 +45,10 @@ public class InputView {
                 .collect(Collectors.toList());
     }
     
-    private static int inputBonusNumber(final String inputBonusNumber) {
+    private static int inputBonusNumber() {
+        OutputView.printBonusNumberInputMessage();
+        final String inputBonusNumber = Console.readLine();
+        
         InputNumberValidator.validate(inputBonusNumber);
         return Integer.parseInt(inputBonusNumber);
     }

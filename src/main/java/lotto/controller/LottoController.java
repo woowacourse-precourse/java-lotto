@@ -10,7 +10,6 @@ public class LottoController {
         OutputView.printPaymentInputMessage();
         Payment payment = InputView.inputPayment();
         
-        OutputView.printWinningLottoNumbersInputMessage();
         WinningLottoNumbers winningLottoNumbers = InputView.inputWinningLottoNumbers();
         
         System.out.println(winningLottoNumbers);
