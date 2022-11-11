@@ -1,13 +1,14 @@
 package models;
 
+import constants.LottoConstant;
+
 import java.util.List;
 
-public class WinningLottoData {
-
+public class WinningLotto {
     private Lotto lotto;
     private int bonusNumber;
 
-    public WinningLottoData(List<Integer> lottoNumbers,int bonusNumber){
+    public WinningLotto(List<Integer> lottoNumbers, int bonusNumber){
         this.lotto = new Lotto(lottoNumbers);
         this.bonusNumber = bonusNumber;
     }
@@ -19,4 +20,5 @@ public class WinningLottoData {
     public int getBonusNumber() {
         return bonusNumber;
     }
+
 }
