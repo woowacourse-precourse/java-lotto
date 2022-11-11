@@ -51,14 +51,6 @@ class LottoValidatorTest {
         assertThat(exception.getMessage()).isEqualTo("[ERROR] Lotto Number Have Out Bound Number.");
     }
 
-    @DisplayName("로또가 오름차순으로 정렬되지 않으면 예외가 발생한다.")
-    @Test
-    void createLottoByNotSortedByAsc(){
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class,
-                () -> new Lotto(List.of(9, 1, 8, 3, 5, 4)));
-        assertThat(exception.getMessage()).isEqualTo("[ERROR] Lotto Number Not Sorted by ASC.");
-    }
-
     @DisplayName("쉼표로 숫자를 구분하지 않으면 예외가 발생한다.")
     @Test
     void createFirstPlaceByNotDivideCommas1(){

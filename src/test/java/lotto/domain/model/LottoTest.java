@@ -37,13 +37,6 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또가 오름차순으로 정렬되지 않으면 예외가 발생한다.")
-    @Test
-    void createLottoByNotSortedByAsc(){
-        assertThatThrownBy(() -> new Lotto(List.of(9, 1, 8, 3, 5, 4)))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
     @DisplayName("로또 계산 결과를 리턴한다. : 6개 일치")
     @Test
     void compareLottoToLottoNumber_ResultSix() {
@@ -89,7 +82,7 @@ class LottoTest {
     void compareLottoToLottoNumber_ResultUnderTree() {
         LottoNumber lottoNumber = new LottoNumber("8,18,21,45,15,36", "13");
         Lotto lotto = new Lotto(List.of(7, 14, 18, 22, 33, 45));
-        assertThat(lotto.compareLottoNumber(lottoNumber)).isEqualTo(LottoRank.NONE);
+        assertThat(lotto.compareLottoNumber(lottoNumber)).isEqualTo(LottoRank.NO_MATCH);
     }
 
 }

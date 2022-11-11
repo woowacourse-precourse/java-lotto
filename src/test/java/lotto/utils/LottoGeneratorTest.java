@@ -41,11 +41,4 @@ class LottoGeneratorTest {
     void 랜덤_번호_범위_확인() {
         lottoNumber.stream().map(STANDARD_LOTTO_NUMBER::contains).forEach(Assertions::assertTrue);
     }
-
-    @Test
-    void 랜덤_번호_생성_순서_오름차순_확인() {
-        for (int i = 0; i < lottoNumber.size() - 1; i++) {
-            assertTrue(lottoNumber.get(i) < lottoNumber.get(i + 1));
-        }
-    }
 }
