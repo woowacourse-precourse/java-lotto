@@ -18,6 +18,6 @@ public class OutputView {
     }
 
     public static void printProfitRate(String profitRate) {
-        System.out.printf("총 수익률은 %s 입니다.", profitRate);
+        System.out.printf("총 수익률은 %s입니다.", profitRate);
     }
 }
