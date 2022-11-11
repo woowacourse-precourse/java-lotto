@@ -28,7 +28,7 @@ public class Statistics {
         Set<Integer> numbers = new HashSet<>(lotto.getNumbers());
         int match = getMatch(winNumbers, numbers);
         boolean bonus = isBonus(bonusNumber, numbers, match);
-        Prize prize = Prize.search(match, bonus);
+        Prize prize = PrizeSearchTool.search(match, bonus);
         pileUp(output, prize);
     }
 

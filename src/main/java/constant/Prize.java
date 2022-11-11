@@ -1,7 +1,8 @@
 package constant;
 
-import java.util.HashMap;
-import java.util.Map;
+import lotto.PrizeSearchTool;
+
+import java.text.NumberFormat;
 
 public enum Prize {
     FIRST(6, false, 2_000_000_000),
@@ -18,37 +19,28 @@ public enum Prize {
 
     private final int money;
 
-    private static class SearchTool {
-        static Map<Integer, Map<Boolean, Prize>> matchPrize = new HashMap<>();
-    }
+    private final String description;
+
+    private static final NumberFormat numberFormat = NumberFormat.getInstance();
 
     Prize(int match, boolean bonus, int money) {
         this.match = match;
         this.bonus = bonus;
         this.money = money;
-        updateSearchTool(match, bonus, this);
+        this.description = writeDescription();
+        PrizeSearchTool.updateSearchTool(this);
     }
 
-    private void updateSearchTool(int match, boolean bonus, Prize prize) {
-        Map<Boolean, Prize> booleanPrize = SearchTool.matchPrize.getOrDefault(match, new HashMap<>());
-        booleanPrize.put(bonus, prize);
-        SearchTool.matchPrize.put(match, booleanPrize);
+    private String writeDescription() {
+        return String.format("%d개 일치%s (%s)", match, bonusText(), numberFormat.format(money));
     }
 
-    public static Prize search(int match, boolean bonus) {
-        Map<Boolean, Prize> booleanPrize = SearchTool.matchPrize.get(match);
-
-        if (booleanPrize == null || booleanPrize.size() == 0) {
-            return NONE;
+    private String bonusText() {
+        if (bonus) {
+            return ", 보너스 볼 일치";
         }
 
-        Prize prize = booleanPrize.get(bonus);
-
-        if (prize == null) {
-            return NONE;
-        }
-
-        return prize;
+        return "";
     }
 
     public int getMoney() {
@@ -63,8 +55,7 @@ public enum Prize {
         return bonus;
     }
 
-    @Override
-    public String toString() {
-        return Integer.toString(money);
+    public String getDescription() {
+        return description;
     }
 }
