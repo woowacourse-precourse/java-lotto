@@ -36,7 +36,6 @@ public class WinningStatistics {
                 .filter(entry -> entry.getValue() != 0)
                 .mapToLong(entry -> (long) entry.getKey().getWinningPrice() * entry.getValue())
                 .sum();
-        double lottoYield = 100 + (winningAmount - money) / money * 100;
-        return Math.round(lottoYield * 100) / 100.0;
+        return 100 + (double)(winningAmount - money) / money * 100;
     }
 }

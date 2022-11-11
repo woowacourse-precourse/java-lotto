@@ -11,7 +11,7 @@ public class OutputView {
     private static final String WINNING_STATISTICS_MESSAGE = "당첨 통계\n---";
     private static final String WINNING_DETAILS_MESSAGE = "%d개 일치 (%s원) - %d개\n";
     private static final String WINNING_DETAILS_WITH_BONUS_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
-    private static final String LOTTO_YIELD_MESSAGE = "총 수익률은 %.2f%%입니다.\n";
+    private static final String LOTTO_YIELD_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
 
     public static void printHowManyLottoUserPurchased(int lottoQuantity) {
         System.out.printf(HOW_MANY_LOTTO_USER_PURCHASED_MESSAGE, lottoQuantity);
