@@ -1,6 +1,10 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -14,6 +18,13 @@ public class Application {
 
         int lottoCnt = money/1000;
 
+        // 로또 번호 생성
+        List<Lotto> userLottoNum = new ArrayList<>();
+        for(int i=0; i<lottoCnt; i++){
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Lotto lotto = new Lotto(numbers);
+            userLottoNum.add(lotto);
+        }
 
     }
 }
