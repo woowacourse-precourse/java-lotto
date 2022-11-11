@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.constants.ErrorMessageConstant;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,14 +12,13 @@ import static org.assertj.core.api.Assertions.*;
 
 public class LottoTest {
     public static final Lotto FROM_ONE_TO_SIX = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-    private static final String ERROR_MESSAGE = "[ERROR]";
     
     @Test
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     void createLottoByOverSize() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageStartingWith(ERROR_MESSAGE);
+                .hasMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
 
     @Test
@@ -26,7 +26,7 @@ public class LottoTest {
     void createLottoByDuplicatedNumber() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageStartingWith(ERROR_MESSAGE);
+                .hasMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
     
     @Test
@@ -42,7 +42,7 @@ public class LottoTest {
     void outOfRangeException(int lottoNumber) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, lottoNumber)))
-                .withMessageStartingWith(ERROR_MESSAGE);
+                .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
     
     @Test
