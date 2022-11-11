@@ -8,12 +8,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class LottoAutomatonTest {
-    private LottoAutomaton lottoAutomaton;
+    private Lotto lotto;
+    private LottoAutomaton automaton;
     private List<Integer> numbers;
 
     @BeforeEach
     void beforeEach() {
-        lottoAutomaton = new LottoAutomaton(numbers);
+        automaton = new LottoAutomaton();
+        lotto = new Lotto(automaton.createNumbers());
     }
 
     @DisplayName("로또 개수 테스트")
@@ -23,7 +25,7 @@ class LottoAutomatonTest {
         String amount = "10000";
 
         // when
-        int count = lottoAutomaton.getCount(amount);
+        int count = automaton.getCount(amount);
 
         // then
         assertThat(count).isEqualTo(10);
@@ -33,7 +35,7 @@ class LottoAutomatonTest {
     @Test
     void createNumbersTest() {
         // when
-        numbers = lottoAutomaton.createNumbers();
+        numbers = automaton.getNumbers();
 
         // then
         assertThat(numbers).doesNotHaveDuplicates();
@@ -44,10 +46,10 @@ class LottoAutomatonTest {
     @Test
     void ascendingTest() {
         // given
-        numbers = lottoAutomaton.createNumbers();
-
+        numbers = automaton.getNumbers();
+        lotto = new Lotto(numbers);
         // when
-        lottoAutomaton.ascending(numbers);
+        lotto.ascending(numbers);
 
         // then
         assertThat(numbers).isSorted();
