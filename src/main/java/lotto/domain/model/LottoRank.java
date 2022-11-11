@@ -22,4 +22,11 @@ public enum LottoRank {
         return Arrays.stream(values()).filter(lottoRank -> lottoRank.matchPoint.equals(matchPoint)).findFirst()
                 .orElse(NONE);
     }
+
+    public static LottoRank of(LottoRank lottoRank, Boolean isBonusMatch) {
+        if (lottoRank == FIVE_MATCHES && isBonusMatch) {
+            return FIVE_BONUS_MATCHES;
+        }
+        return lottoRank;
+    }
 }

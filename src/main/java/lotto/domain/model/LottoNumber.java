@@ -1,7 +1,6 @@
 package lotto.domain.model;
 
 import java.util.List;
-import java.util.Map;
 
 public class LottoNumber {
     private final FirstPlace firstPlace;
@@ -13,12 +12,7 @@ public class LottoNumber {
     }
 
     public LottoRank calculateMatch(final List<Integer> numbers) {
-        LottoRank lottoRank = this.firstPlace.calculateMatch(numbers);
-        Boolean bonusMatch = this.bonus.calculateMatch(numbers);
-
-        if (lottoRank == LottoRank.FIVE_MATCHES && bonusMatch) {
-            return LottoRank.FIVE_BONUS_MATCHES;
-        }
-        return lottoRank;
+        return LottoRank.of(
+                this.firstPlace.calculateMatch(numbers), this.bonus.calculateMatch(numbers));
     }
 }
