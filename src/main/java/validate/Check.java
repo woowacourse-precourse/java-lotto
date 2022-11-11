@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Check {
 
-    public static int countLottoTicket(int paperMoney) {
-        int tickets = paperMoney / 1000;
+    public static int countLottoTicket(Long paperMoney) {
+        int tickets = (int) (paperMoney / 1000);
 
         if (paperMoney % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 올바른 금액이 아닙니다. (지폐만 가능)");

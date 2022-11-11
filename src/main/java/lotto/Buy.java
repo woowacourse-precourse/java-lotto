@@ -25,13 +25,15 @@ public class Buy {
         validate.Check.isNumber(money);
 
 
-        int paperMoney = Integer.parseInt(money);
+        Long paperMoney = Long.parseLong(money);
         int tickets = validate.Check.countLottoTicket(paperMoney);
+
+        System.out.println("\n" + tickets + "개를 구매했습니다.");
 
         return tickets;
     }
 
-    public static void inputNumber() {
+    public static void inputWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String numbers = Console.readLine();
 
