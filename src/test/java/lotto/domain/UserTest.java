@@ -14,4 +14,11 @@ class UserTest {
         List<List<Integer>> numbers = User.randomLotto(8000);
         assertThat(numbers.size()).isEqualTo(8);
     }
+
+    @Test
+    void 보너스_번호_테스트() {
+        User user = new User();
+        user.setBonusNum(1);
+        assertThat(user.getBonusNum()).isEqualTo(1);
+    }
 }
