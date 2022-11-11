@@ -98,8 +98,7 @@ class LottoTest {
         @ParameterizedTest
         @ValueSource(strings = {"a","b","big","small"})
         void createBonusByNotNumber(String situation){
-            Bonus bonus = new Bonus();
-            assertThatThrownBy(() -> bonus.checkBonus(situation))
+            assertThatThrownBy(() -> new Bonus(situation))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -107,8 +106,7 @@ class LottoTest {
         @ParameterizedTest
         @ValueSource(strings = {"46","0","1234","200"})
         void createBonusByOverRange(String situation){
-            Bonus bonus = new Bonus();
-            assertThatThrownBy(() -> bonus.checkBonus(situation))
+            assertThatThrownBy(() -> new Bonus(situation))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
