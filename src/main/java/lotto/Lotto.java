@@ -1,5 +1,7 @@
 package lotto;
 
+import ui.View;
+
 import java.util.List;
 
 public class Lotto {
@@ -15,6 +17,17 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+    private String numberForm(){
+        String message ="[";
+        for(int number : numbers){
+            message += number + ", ";
+        }
+        message = message.substring(0, message.length() - 1) + "]";
+        return message;
+    }
 
-    // TODO: 추가 기능 구현
+    public void printLotto(){
+        View.printLottoNumber(numberForm());
+    }
+
 }
