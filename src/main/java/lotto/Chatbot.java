@@ -40,11 +40,16 @@ public class Chatbot {
                 return lotto;
         }
 
-        public String askLottoBonus() {
+        public int askLottoBonus() {
+                System.out.println();
                 System.out.println("보너스 번호를 입력해 주세요.");
 
-                Scanner scanner = new Scanner(System.in);
-                String bonus = scanner.nextLine();
+                int bonus;
+                try {
+                        bonus = Integer.parseInt(Console.readLine());
+                } catch (Exception e) {
+                        throw new IllegalArgumentException("보너스 번호는 숫자입니다.");
+                }
 
                 return bonus;
         }
