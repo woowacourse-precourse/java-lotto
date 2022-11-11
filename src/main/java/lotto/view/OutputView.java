@@ -1,5 +1,7 @@
 package lotto.view;
 
+import java.util.List;
+
 public class OutputView {
     public static void printCashInput() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -15,5 +17,9 @@ public class OutputView {
 
     public static void printBonusNumberInput() {
         System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
+    public static void printPlayerNumbers(List<Integer> playerNumbers) {
+        System.out.println(playerNumbers);
     }
 }
