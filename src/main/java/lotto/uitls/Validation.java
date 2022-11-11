@@ -3,7 +3,7 @@ package lotto.uitls;
 public class Validation {
     private static final int LOTTO_PRICE = 1_000;
 
-    public void validateLottoPurchaseAmount(String purchaseAmount) {
+    public static void validateLottoPurchaseAmount(String purchaseAmount) {
         if (hasNonDigitCharacter(purchaseAmount)) {
             throw new IllegalArgumentException("[ERROR] 로또 구매 금액에는 숫자 외의 문자가 포함될 수 없습니다.");
         }
@@ -15,15 +15,15 @@ public class Validation {
         }
     }
 
-    public boolean hasNonDigitCharacter(String input) {
+    public static boolean hasNonDigitCharacter(String input) {
         return input.chars().allMatch(Character::isDigit);
     }
 
-    public boolean isDividedByLottoPrice(String purchaseAmount) {
+    public static boolean isDividedByLottoPrice(String purchaseAmount) {
         return Integer.parseInt(purchaseAmount) % LOTTO_PRICE == 0;
     }
 
-    public boolean isPossiblePrice(String purchaseAmount) {
+    public static boolean isPossiblePrice(String purchaseAmount) {
         return Integer.parseInt(purchaseAmount) > 0;
     }
 }
