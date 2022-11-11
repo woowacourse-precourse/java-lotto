@@ -29,4 +29,10 @@ public final class Validation {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void validateMultipleNumber(int dividend, int divisor){
+        if(dividend % divisor != 0){
+            throw new IllegalArgumentException();
+        }
+    }
 }
