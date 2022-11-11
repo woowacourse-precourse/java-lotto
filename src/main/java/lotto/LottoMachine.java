@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static lotto.LottoConst.LOTTO_NUMBER_COUNT;
 import static lotto.LottoConst.LOTTO_PRICE;
 
 public class LottoMachine {
@@ -35,6 +36,14 @@ public class LottoMachine {
             newLottos.add(createLotto());
         }
         return newLottos;
+    }
+
+    static List<Integer> mergeList(List<Integer> list1, List<Integer> list2){
+        List<Integer> mergeList = new ArrayList<>();
+        Collections.addAll(mergeList, list1.toArray(new Integer[0]));
+        Collections.addAll(mergeList, list2.toArray(new Integer[0]));
+
+        return mergeList;
     }
 
     static void initRank(){
