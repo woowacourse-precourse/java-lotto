@@ -1,10 +1,8 @@
 package lotto.view;
 
 import lotto.utils.ConsoleLog;
-import lotto.validation.InputValidation;
 
-import java.util.Arrays;
-import java.util.Optional;
+import static lotto.validation.InputValidation.checkValidation;
 
 public class InputConsole {
     private static final ConsoleLog consolelog = ConsoleLog.getInstance();
@@ -29,16 +27,5 @@ public class InputConsole {
         String input = consolelog.input();
         checkValidation(input, "enterPurchaseAmount");
         return input;
-    }
-
-    private void checkValidation(String input, String validationGroup) {
-        Optional<InputValidation> validation = Arrays.stream(InputValidation.values())
-                .filter(enumType -> enumType.getGroup().contains(validationGroup))
-                .filter(enumType -> enumType.validate(input))
-                .findFirst();
-
-        if (validation.isPresent()) {
-            throw new IllegalArgumentException(validation.get().errorMessage());
-        }
     }
 }

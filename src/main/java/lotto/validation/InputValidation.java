@@ -2,7 +2,9 @@ package lotto.validation;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 public enum InputValidation {
     BLANK(
@@ -56,11 +58,17 @@ public enum InputValidation {
         return "[ERROR] " + errorMessage;
     }
 
-    public List<String> getGroup() {
-        return group;
+    private static Optional<InputValidation> validate(String input, String validationGroup) {
+        return Stream.of(values())
+                .filter(enumType -> enumType.group.contains(validationGroup))
+                .filter(enumType -> enumType.expression.apply(input))
+                .findFirst();
     }
 
-    public boolean validate(String input) {
-        return expression.apply(input);
+    public static void checkValidation(String input, String validationGroup) {
+        Optional<InputValidation> validation = validate(input, validationGroup);
+        if (validation.isPresent()) {
+            throw new IllegalArgumentException(validation.get().errorMessage());
+        }
     }
 }
