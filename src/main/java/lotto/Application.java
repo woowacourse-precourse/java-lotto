@@ -6,8 +6,9 @@ import utils.UserInput;
 import java.util.ArrayList;
 import java.util.List;
 
+import static constant.Constant.INITIAL_NUMBER;
+
 public class Application {
-    static final int INITIAL_NUMBER = 0;
     static List<Lotto> lottoTickets = new ArrayList<>();
 
     public static void main(String[] args) {
