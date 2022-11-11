@@ -7,16 +7,12 @@ import java.util.List;
 
 public class LottoGenerator {
 
-    static final int LOTTO_MAX_LEN = 8;
+    static final int LOTTO_MAX_LEN = 6;
+    static final int START_RANGE = 1;
+    static final int FINAL_RANGE = 45;
 
     public List<Integer> createRandomLotto() {
-        List<Integer> numbers = new ArrayList<>();
-
-        while (numbers.size() < LOTTO_MAX_LEN) {
-            int randomNumber = Randoms.pickNumberInRange(1, 45);
-            addNum(numbers, randomNumber);
-        }
-
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_RANGE, FINAL_RANGE, LOTTO_MAX_LEN);
         sortByNaturalOrder(numbers);
         return numbers;
     }
@@ -25,9 +21,4 @@ public class LottoGenerator {
         numbers.sort(Comparator.naturalOrder());
     }
 
-    private void addNum(List<Integer> numbers, int randomNumber) {
-        if (!numbers.contains(randomNumber)) {
-            numbers.add(randomNumber);
-        }
-    }
 }
