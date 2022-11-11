@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class InputNumberValidator {
     private static final String NON_NUMERIC_CHARACTERS_EXCEPTION_MESSAGE = "[ERROR] 숫자만 입력 가능합니다.";
-    private static final String INPUT_PAYMENT_FORM = "\\D";
+    private static final String INPUT_NON_NUMBER_FORM = "\\D";
     
     private InputNumberValidator() {
         throw new UtilClassCreateException();
@@ -29,7 +29,7 @@ public class InputNumberValidator {
     }
     
     private static boolean isNonNumericCharactersExist(final String inputPayment) {
-        final Matcher matcher = Pattern.compile(INPUT_PAYMENT_FORM).matcher(inputPayment);
+        final Matcher matcher = Pattern.compile(INPUT_NON_NUMBER_FORM).matcher(inputPayment);
         return matcher.find();
     }
 }
