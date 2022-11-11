@@ -2,6 +2,7 @@ package lotto.data.dto;
 
 import java.util.Collections;
 import java.util.List;
+import lotto.data.type.ConstantNumberType;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -12,7 +13,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != ConstantNumberType.COUNT.getValue()) {
             throw new IllegalArgumentException();
         }
     }
