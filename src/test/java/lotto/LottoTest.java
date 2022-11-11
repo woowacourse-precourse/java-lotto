@@ -26,4 +26,15 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("발행한 로또번호는 45가 넘으면 안된다.")
+    @Test
+    void checkLottoNumberOver45() {
+        assertThatThrownBy(() -> new Lotto(List.of(1,2,3,4,5,46)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+
+        assertThatThrownBy(() -> new Lotto(List.of(0,2,3,4,5,45)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+    }
 }
