@@ -1,3 +1,4 @@
+import lotto.ExceptionHandling;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +11,15 @@ class ExceptionHandlingTest {
     @Test
     void notDivideException() {
         ExceptionHandling exceptionHandling = new ExceptionHandling();
-        assertThatThrownBy(() -> exceptionHandling.notDivideException(1001))
+        assertThatThrownBy(() -> exceptionHandling.notDivideException(3000000000L))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    
+    @DisplayName("숫자인지 검사")
+    @Test
+    void isNumeric(){
+        ExceptionHandling exceptionHandling = new ExceptionHandling();
+        assertThatThrownBy(() -> exceptionHandling.isNumeric("123$"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
