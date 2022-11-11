@@ -32,4 +32,13 @@ class LottoTest {
 
         assertThat(lotto.contains(bonusNumber)).isTrue();
     }
+
+    @DisplayName("로또 번호와 당첨 번호를 비교하는 기능")
+    @Test
+    void createLottoContains3WinningNumbers() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto winningLotto = new Lotto(List.of(1, 3, 5 ,7, 9, 11));
+
+        assertThat(lotto.countSameNumbers(winningLotto)).isEqualTo(3);
+    }
 }

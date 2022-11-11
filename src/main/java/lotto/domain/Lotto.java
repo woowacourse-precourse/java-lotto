@@ -17,7 +17,8 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = sortAscending(numbers);;
+        this.numbers = sortAscending(numbers);
+        ;
     }
 
     private List<Integer> sortAscending(List<Integer> numbers) {
@@ -50,5 +51,11 @@ public class Lotto {
 
     public boolean contains(int bonusNumber) {
         return numbers.contains(bonusNumber);
+    }
+
+    public int countSameNumbers(Lotto winningLotto) {
+        return (int) numbers.stream()
+                .filter(number -> winningLotto.contains(number))
+                .count();
     }
 }
