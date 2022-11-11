@@ -10,4 +10,10 @@ public class DrawingMachine {
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
     }
+
+    public long getHitCount(Lotto lotto) {
+        return winningNumbers.stream()
+                .filter(lotto::isContain)
+                .count();
+    }
 }
