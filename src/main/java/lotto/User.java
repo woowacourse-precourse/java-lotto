@@ -5,7 +5,7 @@ import java.util.List;
 
 public class User {
     private int money;
-
+    private int earning;
     public void inputMoney(int money) {
         this.money = money;
     }
@@ -25,20 +25,19 @@ public class User {
         return Integer.parseInt(inputtedBonusNumber);
     }
 
-    public int calculateEarning(int howManyWinningNumber, boolean isBonusNumberCorrect) {
+    public void calculateEarning(int howManyWinningNumber, boolean isBonusNumberCorrect) {
         if (howManyWinningNumber==6) {
-            return WinningNumberAndEarningPair.CORRECT_6.getEarning();
+            earning+=WinningNumberAndEarningPair.CORRECT_6.getEarning();
         } else if (howManyWinningNumber==5) {
             if (isBonusNumberCorrect) {
-                return WinningNumberAndEarningPair.CORRECT_5_BONUS.getEarning();
+                earning+=WinningNumberAndEarningPair.CORRECT_5_BONUS.getEarning();
             }
-            return WinningNumberAndEarningPair.CORRECT_5.getEarning();
+            earning+=WinningNumberAndEarningPair.CORRECT_5.getEarning();
         } else if (howManyWinningNumber==4) {
-            return WinningNumberAndEarningPair.CORRECT_4.getEarning();
+            earning+=WinningNumberAndEarningPair.CORRECT_4.getEarning();
         } else if (howManyWinningNumber==3) {
-            return WinningNumberAndEarningPair.CORRECT_3.getEarning();
+            earning += WinningNumberAndEarningPair.CORRECT_3.getEarning();
         }
-        return WinningNumberAndEarningPair.CORRECT_3_UNDER.getEarning();
     }
 
 
