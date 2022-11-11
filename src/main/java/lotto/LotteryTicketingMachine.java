@@ -6,15 +6,16 @@ import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class LotteryTicketingMachine {
 
-    public int TicketHowManyLotto(int money) {
+    public int ticketHowManyLotto(int money) {
         int howManyLotto;
         howManyLotto = money/1000;
         return howManyLotto;
     }
 
-    public Lotto TicketLotto() {
+    public Lotto ticketLotto() {
         Lotto lotto;
         lotto = new Lotto(pickUniqueNumbersInRange(1, 45, 6));
+        lotto.sort();
         return lotto;
     }
 
