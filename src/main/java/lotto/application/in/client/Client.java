@@ -10,8 +10,8 @@ public class Client {
         int inputValue = 0;
         try {
             inputValue = inputAgent.inputUserMoney();
-        } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 입력 오류 입니다. 에러 로그를 확인해주세요.");
+        } catch (IllegalArgumentException exception) {
+            throw new IllegalArgumentException();
         }
         System.out.printf("\n%d개를 구매했습니다.\n", inputValue / 1000);
         return inputValue / 1000;
