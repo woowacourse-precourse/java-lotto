@@ -8,6 +8,8 @@ import lotto.view.OutputConsole;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Integer.parseInt;
+
 public class PurchaseService {
     private final InputConsole inputConsole;
     private final OutputConsole outputConsole;
@@ -22,9 +24,7 @@ public class PurchaseService {
 
     public List<Lotto> purchase() {
         String purchaseAmount = inputConsole.enterPurchaseAmount();
-        int lottoCount = Integer.parseInt(purchaseAmount) / ONE_LOTTO_AMOUNT;
-
-        List<Lotto> lottos = createLotto(lottoCount);
+        List<Lotto> lottos = createLotto(parseInt(purchaseAmount) / ONE_LOTTO_AMOUNT);
         outputConsole.checkPurchaseLotto(lottos);
         return lottos;
     }

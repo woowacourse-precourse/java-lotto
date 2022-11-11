@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -10,9 +11,14 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    // exception이 거의 안 걸릴꺼 같음 -> test로 빼도되지 않을까 고민
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException("[ERROR] 생성 된 로또가 6개의 숫자가 아닙니다.");
+        }
+        HashSet<Integer> numbersSet = new HashSet<>(numbers);
+        if (numbersSet.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 생성 된 로또에 중복된 숫자가 존재합니다.");
         }
     }
 
