@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoGameConsole {
 
@@ -37,10 +39,10 @@ public class LottoGameConsole {
     }
 
     private List<Integer> createWinningNumbers() {
-        // 당첨 번호 안내
-        // 당첨 번호 입력
-        // 당첨 번호 검증
-        return null;
+        emcee.guideWinningNumber();
+        String winningNumbers = player.selectWinningNumbers();
+        validator.validateWinningNumbers(winningNumbers);
+        return Arrays.stream(winningNumbers.split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
 
     private int createBonusNumber() {
