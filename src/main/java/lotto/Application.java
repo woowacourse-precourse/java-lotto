@@ -1,13 +1,12 @@
 package lotto;
 
 import lotto.model.BonusNumber;
-import lotto.model.PlayerNumber;
-import lotto.model.WinningNumber;
+import lotto.model.Lotto;
 import lotto.view.InputView;
 
 public class Application {
     public static void main(String[] args) {
-        WinningNumber winningNumber = new WinningNumber(InputView.inputWinningNumbers());
+        Lotto lotto = new Lotto(InputView.inputWinningNumbers());
         BonusNumber bonusNumber = new BonusNumber(InputView.inputBonusNumber());
     }
 }
