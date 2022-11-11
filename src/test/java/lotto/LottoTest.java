@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.controller.LottoMachineController;
 import lotto.model.Lotto;
 import lotto.model.LottoMachine;
 import org.junit.jupiter.api.DisplayName;
@@ -42,5 +43,13 @@ class LottoTest {
         // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> new LottoMachine(532))
             .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 금액 확인")
+    @Test
+    void LottoInformationViewTest() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        LottoMachineController lottoMachinController = new LottoMachineController(8523);
+        lottoMachinController.viewLotto();
     }
 }
