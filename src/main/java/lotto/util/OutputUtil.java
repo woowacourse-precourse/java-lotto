@@ -1,7 +1,6 @@
 package lotto.util;
 
 import lotto.domain.Lotto;
-import lotto.domain.enums.Constant;
 import lotto.domain.enums.Number;
 
 import java.util.List;
