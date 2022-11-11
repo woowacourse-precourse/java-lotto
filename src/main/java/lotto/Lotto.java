@@ -1,24 +1,11 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 public class Lotto {
     private final List<Integer> numbers;
-
-    public Lotto(){
-        numbers = new ArrayList<>();
-        while (numbers.size() < 6) {
-            int randomNumber = Randoms.pickNumberInRange(1, 45);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
-        }
-    }
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);

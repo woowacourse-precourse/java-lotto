@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.assertj.core.util.Arrays;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Application {
     private static final int ticket_price = 1000;
@@ -55,7 +56,7 @@ public class Application {
         final int tickets = (int) purchase / ticket_price;
         final List<Lotto> issuance = new ArrayList<>();
         for (int i = 0; i < tickets; i++){
-            issuance.add(new Lotto());
+            issuance.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
         }
         return issuance;
     }
