@@ -31,7 +31,7 @@
 
 2. Enum
     - WinningLotto
-        - 로또 등수 별 상금
+        - 로또 등 수
             - ThirdPrice, FourthPrice ...
 
 3. Util
