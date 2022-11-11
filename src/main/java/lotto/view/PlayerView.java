@@ -18,7 +18,7 @@ public class PlayerView {
     }
 
     private String scanPrice(){
-        return "";
+        return Console.readLine();
     }
 
     private void validate(String price){
