@@ -27,24 +27,25 @@ public class LotteryMachine {
         return winningLottery;
     }
 
-    public void setWinningLottery() {
-        System.out.println();
-        System.out.println("당첨 번호를 입력해 주세요.");
-
-        setWinningLottery(Console.readLine().trim());
-    }
-
-    private void setWinningLottery(String winningStr) {
-        winningLottery = new Lotto(convert(winningStr));
-
-        validateWinningNumbers();
-    }
-
     public int getBonus() {
         return bonus;
     }
 
-    public void setBonus() {
+    public void setWinning() {
+        setWinningLottery();
+        setBonus();
+    }
+
+    private void setWinningLottery() {
+        System.out.println();
+        System.out.println("당첨 번호를 입력해 주세요.");
+
+        winningLottery = new Lotto(convert(Console.readLine().trim()));
+
+        validateWinningNumbers();
+    }
+
+    private void setBonus() {
         System.out.println();
         System.out.println("보너스 번호를 입력해 주세요.");
 
