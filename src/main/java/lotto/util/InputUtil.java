@@ -12,10 +12,10 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputUtil {
 
-    private final String NOT_NUMBER_REGEX = "\\D";
-    private final String COMMA = ",";
+    private static final String NOT_NUMBER_REGEX = "\\D";
+    private static final String COMMA = ",";
 
-    public String getUserInput() {
+    public static String getUserInput() {
         String input = readLine();
         return input;
     }
@@ -28,14 +28,14 @@ public class InputUtil {
         }
     }
 
-    public void checkValidationBonusNumber(String input, List<Integer> lottoNumbers) {
+    public static void checkValidationBonusNumber(String input, List<Integer> lottoNumbers) {
         Integer bonusNumber = Integer.parseInt(input);
         if (lottoNumbers.contains(bonusNumber)) {
             throw makeIllegalArgumentException(Message.BONUS_NUMBER_INPUT_ERROR.getMessage());
         }
     }
 
-    public void checkValidationWinningNumber(String input) {
+    public static void checkValidationWinningNumber(String input) {
         try {
             isOnlyCommaAndNumber(input);
             isAllDifferentNumbers(input);
@@ -44,7 +44,7 @@ public class InputUtil {
         }
     }
 
-    private void isOnlyCommaAndNumber(String input) throws IllegalArgumentException {
+    private static void isOnlyCommaAndNumber(String input) throws IllegalArgumentException {
         String[] numbers = input.split(COMMA);
         Pattern pattern = Pattern.compile(NOT_NUMBER_REGEX);
 
@@ -56,7 +56,7 @@ public class InputUtil {
         }
     }
 
-    private void isAllDifferentNumbers(String input) throws IllegalArgumentException {
+    private static void isAllDifferentNumbers(String input) throws IllegalArgumentException {
         String[] numbers = input.split(COMMA);
         List<String> container = new ArrayList<>();
 
