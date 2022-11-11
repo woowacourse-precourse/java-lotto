@@ -15,7 +15,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import lotto.Lotto;
+import lotto.vo.Lotto;
 import lotto.system.holder.ValidationHolder;
 import lotto.vo.LottoAmount;
 

@@ -1,6 +1,6 @@
 package lotto.service;
 
-import lotto.Lotto;
+import lotto.vo.Lotto;
 import lotto.system.LottoApplication;
 import lotto.vo.LottoAmount;
 import org.junit.jupiter.api.AfterEach;
@@ -30,7 +30,7 @@ class LottoServiceTest {
 	@DisplayName("주어진 LottoAmount 값만큼 새로운 Lotto 객체를 만들어 반환한다.")
 	void givenLottoAmount_whenCreatingLotto_thenReturnsListOfLotto() {
 		//given
-		LottoAmount lottoAmount = LottoAmount.of(10);
+		LottoAmount lottoAmount = new LottoAmount(10);
 
 		//when
 		List<Lotto> result = lottoService.createLottos(lottoAmount);

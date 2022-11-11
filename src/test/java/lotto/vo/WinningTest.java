@@ -35,7 +35,7 @@ class WinningTest {
         void givenInputNotIntegerWithRest_whenMakingWinning_thenThrowsException(String winning) {
             //given
             String bonus = "3";
-            WinningDto winningDto = WinningDto.of(winning, bonus);
+            WinningDto winningDto = new WinningDto(winning, bonus);
 
             //when & then
             assertThatThrownBy(winningDto::toWinning)
@@ -49,7 +49,7 @@ class WinningTest {
         void givenInvalidWinningNumber_whenMakingWinning_thenThrowsException(String winningNumber, String errorMessage) {
             //given
             String bonus = "5";
-            WinningDto winningDto = WinningDto.of(winningNumber, bonus);
+            WinningDto winningDto = new WinningDto(winningNumber, bonus);
 
             //when & then
             assertThatThrownBy(winningDto::toWinning)
@@ -63,7 +63,7 @@ class WinningTest {
             //given
             String winningNumber = "1, 2, 5, 23, 34, 44";
             String bonus = "6";
-            WinningDto winningDto = WinningDto.of(winningNumber, bonus);
+            WinningDto winningDto = new WinningDto(winningNumber, bonus);
 
             //when & then
             assertDoesNotThrow(winningDto::toWinning);
@@ -95,7 +95,7 @@ class WinningTest {
         void givenBonusNotInteger_whenMakingWinning_thenThrowsException(String bonus) {
             //given
             String winning = "1,3,7,14,34,43";
-            WinningDto winningDto = WinningDto.of(winning, bonus);
+            WinningDto winningDto = new WinningDto(winning, bonus);
 
             //when & then
             assertThatThrownBy(winningDto::toWinning)
@@ -109,7 +109,7 @@ class WinningTest {
             //given
             String winning = "1,3,7,14,34,43";
             String bonus = "46";
-            WinningDto winningDto = WinningDto.of(winning, bonus);
+            WinningDto winningDto = new WinningDto(winning, bonus);
 
             //when & then
             assertThatThrownBy(winningDto::toWinning)
@@ -122,7 +122,7 @@ class WinningTest {
         void givenBonusInWinningNumbers_whenMakingWinning_thenThrowsException() {
             String winning = "1,3,7,14,34,43";
             String bonus = "14";
-            WinningDto winningDto = WinningDto.of(winning, bonus);
+            WinningDto winningDto = new WinningDto(winning, bonus);
 
             //when & then
             assertThatThrownBy(winningDto::toWinning)

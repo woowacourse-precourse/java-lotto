@@ -7,13 +7,9 @@ public class WinningDto {
     private String winning;
     private String bonus;
 
-    private WinningDto(String winning, String bonus) {
+    public WinningDto(String winning, String bonus) {
         this.winning = winning;
         this.bonus = bonus;
-    }
-
-    public static WinningDto of(String winning, String bonus) {
-        return new WinningDto(winning, bonus);
     }
 
     public Winning toWinning() {

@@ -26,6 +26,6 @@ public class WinningDtoToWinningConverter implements Converter {
                 .collect(Collectors.toList());
         int bonus = Integer.parseInt(winningDto.getBonus());
 
-        return Winning.of(winning, bonus);
+        return new Winning(winning, bonus);
     }
 }

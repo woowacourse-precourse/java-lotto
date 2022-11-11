@@ -1,4 +1,4 @@
-package lotto;
+package lotto.vo;
 
 import java.util.List;
 
@@ -8,12 +8,8 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        this.numbers = numbers;
-    }
-
-    public static Lotto of(List<Integer> numbers) {
         ValidationHolder.validate(numbers, Lotto.class);
-        return new Lotto(numbers);
+        this.numbers = numbers;
     }
 
     @Override

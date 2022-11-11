@@ -13,6 +13,6 @@ public class StringToLottoAmountConverter implements Converter {
 	public Object convert(Object target) {
 		ValidationHolder.validate(target, LottoAmount.class);
 		target = ((String)target).replaceAll(",", "");
-		return LottoAmount.of(Integer.parseInt((String)target) / 1000);
+		return new LottoAmount(Integer.parseInt((String)target) / 1000);
 	}
 }

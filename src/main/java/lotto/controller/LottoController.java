@@ -2,7 +2,7 @@ package lotto.controller;
 
 import java.util.List;
 
-import lotto.Lotto;
+import lotto.vo.Lotto;
 import lotto.dto.WinningDto;
 import lotto.service.LottoService;
 import lotto.system.holder.ConverterHolder;
@@ -33,7 +33,7 @@ public class LottoController {
 
 		String winningNumber = inputView.getWinning();
 		String bonus = inputView.getBonus();
-		WinningDto winningDto = WinningDto.of(winningNumber, bonus);
+		WinningDto winningDto = new WinningDto(winningNumber, bonus);
 
 		Winning winning = winningDto.toWinning();
 	}

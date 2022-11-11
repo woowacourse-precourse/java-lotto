@@ -1,6 +1,6 @@
 package lotto.view;
 
-import lotto.Lotto;
+import lotto.vo.Lotto;
 import lotto.system.LottoApplication;
 import lotto.vo.LottoAmount;
 import org.junit.jupiter.api.AfterEach;
@@ -36,7 +36,7 @@ class OutputViewTest {
         //given
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        LottoAmount lottoAmount = LottoAmount.of(10);
+        LottoAmount lottoAmount = new LottoAmount(10);
 
         //when
         outputView.printLottoAmount(lottoAmount);
@@ -53,10 +53,10 @@ class OutputViewTest {
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         List<Lotto> lottos = Arrays.asList(
-                Lotto.of(Arrays.asList(8, 21, 23, 41, 42, 43)),
-                Lotto.of(Arrays.asList(3, 5, 11, 16, 32, 38)),
-                Lotto.of(Arrays.asList(7, 11, 16, 35, 36, 44)),
-                Lotto.of(Arrays.asList(1, 8, 11, 31, 41, 42))
+                new Lotto(Arrays.asList(8, 21, 23, 41, 42, 43)),
+                new Lotto(Arrays.asList(3, 5, 11, 16, 32, 38)),
+                new Lotto(Arrays.asList(7, 11, 16, 35, 36, 44)),
+                new Lotto(Arrays.asList(1, 8, 11, 31, 41, 42))
         );
 
         //when

@@ -1,6 +1,6 @@
 package lotto.system.validator;
 
-import lotto.Lotto;
+import lotto.vo.Lotto;
 
 import java.util.Collections;
 import java.util.List;

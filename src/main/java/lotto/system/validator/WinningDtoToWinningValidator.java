@@ -1,6 +1,6 @@
 package lotto.system.validator;
 
-import lotto.Lotto;
+import lotto.vo.Lotto;
 import lotto.dto.WinningDto;
 import lotto.system.holder.ValidationHolder;
 import lotto.vo.Winning;
