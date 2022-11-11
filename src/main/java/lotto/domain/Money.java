@@ -1,41 +1,32 @@
 package lotto.domain;
 
 import lotto.exception.ErrorMessage;
+import lotto.view.OutputView;
 
 public class Money {
 
 	private final int amount;
 
-	public Money(String amount) {
+	public Money(int amount) {
 		validate(amount);
-		this.amount = Integer.parseInt(amount);
+		this.amount = amount;
 	}
 
-	private void validate(String amount) {
-		validateNumber(amount);
-		validateNonZero(Integer.parseInt(amount));
-		validateDivisible(Integer.parseInt(amount));
-	}
-
-	private void validateNumber(String amount) {
-		final String REGEX = "[0-9]+";
-
-		if (!amount.matches(REGEX)) {
-			System.out.println(ErrorMessage.NOT_NUMBER_ERROR.getMessage());
-			throw new IllegalArgumentException();
-		}
+	private void validate(int amount) {
+		validateNonZero(amount);
+		validateDivisible(amount);
 	}
 
 	private void validateNonZero(int amount) {
 		if (amount == 0) {
-			System.out.println(ErrorMessage.ZERO_MONEY_ERROR.getMessage());
+			OutputView.printError(ErrorMessage.ZERO_MONEY_ERROR);
 			throw new IllegalArgumentException();
 		}
 	}
 
 	private void validateDivisible(int amount) {
 		if (amount % 1000 != 0) {
-			System.out.println(ErrorMessage.NOT_DIVISIBLE_MONEY_ERROR.getMessage());
+			OutputView.printError(ErrorMessage.NOT_DIVISIBLE_MONEY_ERROR);
 			throw new IllegalArgumentException();
 		}
 	}
