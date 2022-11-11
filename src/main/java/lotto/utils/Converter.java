@@ -27,7 +27,7 @@ public class Converter {
     }
 
     public static List<String> toWinningResults(Map<String, Integer> resultMap) {
-        String messageLayout = "%s (%s) - %s개";
+        String messageLayout = "%s (%s원) - %s개";
         DecimalFormat decFormat = new DecimalFormat("###,###");
 
         return new ArrayList<>(resultMap.keySet()).stream()
