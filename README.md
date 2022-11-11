@@ -11,8 +11,12 @@
   - [x] 1000원 단위로 로또를 구매한다. #lottoPurchase()
   - [x] 로또 한장당 중복 없이 6개의 번호 뽑는다. - LottoGenerator#createLotto  
   - [x] 구매된 로또를 표시해준다. #printPurchasedLotto()
-- [ ] 당첨 번호를 검사한다. - Lotto
+- [x] 당첨 번호를 검사한다. - Lotto
   - [ ] 입력이 유효한지 검사한다. #validate
+    - [x] 중복이 있는지 검사한다. #checkDuplicate
+    - [x] 숫자의 범위에 해당하는지 검사한다. #checkRange
+    - [ ] 1234567890, 외에 들어온 문자가 있는지 검사한다. - WinningNumber#checkLetterDeparture
+    - [ ] 6개의 숫자가 들어온 것인지 확인한다. #checkNumber
 - 당첨 번호를 입력받는다. WinningNumber
   - [x] 당첨 번호 6자리를 입력받는다. #getWinningNumber
   - [x] 보너스 번호 1자리를 입력받는다. #getBonusNumber

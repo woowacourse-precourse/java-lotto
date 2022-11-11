@@ -32,12 +32,12 @@ public class WinningNumber {
         System.out.println("\n보너스 번호를 입력해 주세요.");
         bonus = Integer.parseInt(Console.readLine());
 
-        validateLotto();
+        validateBonus();
 
         return result;
     }
 
-    private void validateLotto() {
+    private void validateBonus() {
         validateDuplication();
         validateRange();
     }

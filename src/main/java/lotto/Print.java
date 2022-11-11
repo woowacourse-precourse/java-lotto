@@ -5,6 +5,7 @@ import java.util.*;
 public class Print {
 
     private HashMap<Rank, Integer> rankCount;
+
     void printPurchasedLotto(List<Lotto> lottos) {
         System.out.println("\n" + lottos.size() + "개를 구매했습니다.");
         lottos.forEach(System.out::println);
