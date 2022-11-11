@@ -36,4 +36,11 @@ public class InputValidator {
         }
     }
 
+    public static void validateRangeLottoNumbers(List<Integer> lottoNumberList){
+        for (Integer number : lottoNumberList) {
+            if (number>45 || number < 1)
+                throw new IllegalArgumentException(" 1 ~ 45 수를 입력해야 합니다.");
+        }
+    }
+
 }
