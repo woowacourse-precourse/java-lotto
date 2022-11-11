@@ -4,27 +4,29 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static lotto.global.ExceptionConstants.CANNOT_DUPLICATED_NUMBER;
+import static lotto.global.ExceptionConstants.CAN_ONLY_SIX_COUNT;
 import static lotto.global.LottoConstants.MAX_LOTTO_NUMBER_COUNT;
 
 public class LottoValidator extends CommonValidator {
 
-    public static boolean hasSixNumbers(List<Integer> numbers) {
-        return numbers.size() == MAX_LOTTO_NUMBER_COUNT;
+    public static void hasSixNumbers(List<Integer> numbers) {
+        if (numbers.size() != MAX_LOTTO_NUMBER_COUNT) {
+            throw new IllegalArgumentException(CAN_ONLY_SIX_COUNT);
+        }
     }
 
-    public static boolean hasDuplicatedNumber(List<Integer> numbers) {
+    public static void hasDuplicatedNumber(List<Integer> numbers) {
         Set<Integer> duplicatedCheck = new HashSet<>(numbers);
 
-        return duplicatedCheck.size() == MAX_LOTTO_NUMBER_COUNT;
+        if (duplicatedCheck.size() != MAX_LOTTO_NUMBER_COUNT) {
+            throw new IllegalArgumentException(CANNOT_DUPLICATED_NUMBER);
+        }
     }
 
-    public static boolean satisfyLottoNumberRange(List<Integer> numbers) {
+    public static void satisfyLottoNumberRange(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if (!isRangeTrue(number)) {
-                return false;
-            }
+            isRangeTrue(number);
         }
-
-        return true;
     }
 }

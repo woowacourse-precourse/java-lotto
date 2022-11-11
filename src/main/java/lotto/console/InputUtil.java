@@ -9,10 +9,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static lotto.global.ExceptionConstants.CANNOT_DUPLICATED_NUMBER;
-import static lotto.global.ExceptionConstants.CANNOT_INPUT_ZERO;
 import static lotto.global.ExceptionConstants.CANNOT_SATISFY_NUMBER_RANGE;
 import static lotto.global.ExceptionConstants.CAN_ONLY_INPUT_NUMBER;
-import static lotto.global.ExceptionConstants.CAN_ONLY_MULTIPLY_1000;
 import static lotto.global.LottoConstants.LOTTO_PRICE;
 
 public class InputUtil {
@@ -27,17 +25,11 @@ public class InputUtil {
 
         long purchasePrice = Long.parseLong(Console.readLine());
 
-        if (!InputValidator.isAllNumber(purchasePrice)) {
-            throw new IllegalArgumentException(CAN_ONLY_INPUT_NUMBER);
-        }
+        InputValidator.isAllNumber(purchasePrice);
 
-        if (InputValidator.isZero(purchasePrice)) {
-            throw new IllegalArgumentException(CANNOT_INPUT_ZERO);
-        }
+        InputValidator.isZero(purchasePrice);
 
-        if (!InputValidator.restEqualZero(purchasePrice, LOTTO_PRICE)) {
-            throw new IllegalArgumentException(CAN_ONLY_MULTIPLY_1000);
-        }
+        InputValidator.restEqualZero(purchasePrice, LOTTO_PRICE);
 
         return purchasePrice;
     }
@@ -59,17 +51,13 @@ public class InputUtil {
 
         int bounsNumber = Integer.parseInt(Console.readLine());
 
-        if (!InputValidator.isAllNumber(bounsNumber)) {
-            throw new IllegalArgumentException(CAN_ONLY_INPUT_NUMBER);
-        }
+        InputValidator.isAllNumber(bounsNumber);
 
         if (winningNumbers.contains(bounsNumber)) {
             throw new IllegalArgumentException(CANNOT_DUPLICATED_NUMBER);
         }
 
-        if (!InputValidator.isRangeTrue(bounsNumber)) {
-            throw new IllegalArgumentException(CANNOT_SATISFY_NUMBER_RANGE);
-        }
+        InputValidator.isRangeTrue(bounsNumber);
 
         return bounsNumber;
     }
