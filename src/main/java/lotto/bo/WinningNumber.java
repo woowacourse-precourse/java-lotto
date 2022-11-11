@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class WinningNumber {
-    static final int LOTTO_NUMBER_SIZE = 6;
     static final int BONUS_NUMBER_SIZE = 1;
     private final List<Integer> numbers;
 
@@ -18,7 +17,7 @@ public class WinningNumber {
 
         validateRange(tmpNumbers);
         validateRange(tmpBonusNumber);
-        validateNumberSize(tmpNumbers, LOTTO_NUMBER_SIZE);
+        validateNumberSize(tmpNumbers, Lotto.LOTTO_NUMBER_SIZE);
         validateNumberSize(tmpBonusNumber, BONUS_NUMBER_SIZE);
 
         tmpNumbers.add(tmpBonusNumber.get(0));
