@@ -1,6 +1,9 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -11,7 +14,9 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        Set<Integer> set = new HashSet<>(numbers);
+        List<Integer> newNumbers = new ArrayList<>(set);
+        if (newNumbers.size() != 6) {
             throw new IllegalArgumentException();
         }
     }
