@@ -127,8 +127,15 @@ class ValidatorTest {
         }
 
         @Test
+        @DisplayName("45보다 큰 숫자가 있으면 예외를 던딘다.")
         void numberOver45() {
+            // given
+            Validator validator = new Validator();
 
+            // throws
+            assertThatThrownBy(() -> validator.validateWinningNumbers("46,1,2,3,4,5"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR] 당첨 번호들의 값이 잘못되었습니다.");
         }
 
         @Test
