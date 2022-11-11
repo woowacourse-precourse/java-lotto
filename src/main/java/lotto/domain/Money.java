@@ -12,23 +12,36 @@ public class Money {
 
     public Money(String input) {
         validateConsistOfNumbers(input);
-        int _money = Integer.parseInt(input);
-        validateMoneyZero(_money);
-        validateMoney(_money);
-        this.money = _money;
+        validateMoneyZero(input);
+        this.money = validateMoney(input);
     }
 
-    public void validateMoney(int money) {
-        if(Math.floorMod(Math.round(money), STANDARD_WON) != 0) { throw new IllegalArgumentException(NOT_MOD_ZERO_MESSAGE); }
+    public int validateMoney(String input) {
+        try {
+            int money = Integer.parseInt(input);
+            if(Math.floorMod(Math.round(money), STANDARD_WON) != 0) { throw new IllegalArgumentException(NOT_MOD_ZERO_MESSAGE); }
+            return money;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return 0;
+        }
     }
 
     public void validateConsistOfNumbers(String input) {
         boolean result = Pattern.matches("^[0-9]*$", input);
-        if(!result) { throw new IllegalArgumentException(REJECT_NOT_NUMBERS); }
+        try {
+            if(!result) { throw new IllegalArgumentException(REJECT_NOT_NUMBERS); }
+        } catch(IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    public void validateMoneyZero(int money) {
-        if(money == ZERO_WON) { throw new IllegalArgumentException(REJECT_ZERO); }
+    public void validateMoneyZero(String input) {
+        try {
+            if(input.equals(String.valueOf(ZERO_WON))) { throw new IllegalArgumentException(REJECT_ZERO); }
+        } catch(IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public int getLottoCount() {

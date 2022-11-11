@@ -10,7 +10,7 @@ public class Application {
         // TODO: 프로그램 구현
         Buyer buyer = new Buyer();
         LottoService lottoService = new LottoService();
-        System.out.print("구입금액을 입력해 주세요.");
+        System.out.println("구입금액을 입력해 주세요.");
         String input = buyer.inputMoney();
         List<Lotto> lottos = lottoService.publishLotto(new Money(input).getLottoCount());
         System.out.println(lottos.size() + "개를 구매하였습니다.");
