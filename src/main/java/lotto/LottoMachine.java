@@ -1,5 +1,6 @@
 package lotto;
 
+import static java.lang.Integer.parseInt;
 import static lotto.utils.RandomUtil.createRandomNumbers;
 
 import java.util.ArrayList;
@@ -29,6 +30,20 @@ public class LottoMachine {
         }
 
         return allLotto;
+    }
+
+    public Lotto publishWinningLotto(String winningNumbers) {
+        return new Lotto(convertToList(winningNumbers));
+    }
+
+    private List<Integer> convertToList(String numbers) {
+        List<Integer> convertedNumbers = new ArrayList<>();
+
+        for (String number : numbers.split(",")) {
+            convertedNumbers.add(parseInt(number));
+        }
+
+        return convertedNumbers;
     }
 
     private void spendMoney() {
