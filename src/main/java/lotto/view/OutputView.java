@@ -36,7 +36,15 @@ public class OutputView {
     public static void printLottoIssuanceResults(final LottosDTO lottosDTO) {
         final List<List<Integer>> lottos = lottosDTO.getLottos();
     
+        printNumberOfPurchases(lottos);
+        printLottosIssuanceResults(lottos);
+    }
+    
+    private static void printNumberOfPurchases(final List<List<Integer>> lottos) {
         System.out.printf("%n%d개를 구매했습니다.%n", lottos.size());
+    }
+    
+    private static void printLottosIssuanceResults(final List<List<Integer>> lottos) {
         System.out.println(parseLottosIssuanceResults(lottos));
     }
     
@@ -55,32 +63,60 @@ public class OutputView {
     
     public static void printWinningStats(final LottoRanksDTO lottoRanksDTO) {
         final List<LottoRank> lottoRanks = lottoRanksDTO.lottoRanks();
+    
+        printWinningStatsGuidanceMessage();
+        printDivisionLine();
+        printCoreWinningStats(lottoRanks);
+    }
+    
+    private static void printWinningStatsGuidanceMessage() {
         System.out.println("\n당첨 통계");
+    }
+    
+    private static void printDivisionLine() {
         System.out.println("---");
-        System.out.println(Arrays.stream(LottoRank.values())
+    }
+    
+    private static void printCoreWinningStats(final List<LottoRank> lottoRanks) {
+        System.out.println(parseWinningStats(lottoRanks));
+    }
+    
+    private static String parseWinningStats(final List<LottoRank> lottoRanks) {
+        return Arrays.stream(LottoRank.values())
                 .filter(Predicate.not(LottoRank::isMiss))
                 .sorted(Comparator.reverseOrder())
                 .map(lottoRank -> parsePerWinningStats(lottoRanks, lottoRank))
-                .collect(Collectors.joining("\n")));
+                .collect(Collectors.joining("\n"));
     }
     
     private static String parsePerWinningStats(final List<LottoRank> lottoRanks, final LottoRank lottoRank) {
-        DecimalFormat decimalFormat = new DecimalFormat("###,###");
         final int countOfSameLottoNumber = lottoRank.countOfSameLottoNumber();
-        final int prizeMoney = lottoRank.prizeMoney();
-        final String prizeMoneyDisplay = decimalFormat.format(prizeMoney);
+        final String prizeMoneyDisplay = prizeMoneyDisplay(lottoRank);
         final int countOfMatchingLottoRank = countOfMatchingLottoRank(lottoRanks, lottoRank);
         
-        if (lottoRank.isSecond()) {
+        if (isSecond(lottoRank)) {
             return String.format("%d개 일치, 보너스 볼 일치 (%s원) - %d개", countOfSameLottoNumber, prizeMoneyDisplay, countOfMatchingLottoRank);
         }
         return String.format("%d개 일치 (%s원) - %d개", countOfSameLottoNumber, prizeMoneyDisplay, countOfMatchingLottoRank);
+    }
+    
+    private static String prizeMoneyDisplay(final LottoRank lottoRank) {
+        final int prizeMoney = lottoRank.prizeMoney();
+        return moneyDecimalFormat().format(prizeMoney);
+    }
+    
+    private static DecimalFormat moneyDecimalFormat() {
+        return new DecimalFormat("###,###");
     }
     
     private static int countOfMatchingLottoRank(final List<LottoRank> lottoRanks, final LottoRank lottoRankToCompare) {
         return (int) lottoRanks.stream()
                 .filter(lottoRank -> lottoRank == lottoRankToCompare)
                 .count();
+    }
+    
+    private static boolean isSecond(final LottoRank lottoRank) {
+        return lottoRank.isSecond();
     }
     
     public static void printYield(final double yield) {
