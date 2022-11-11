@@ -22,6 +22,11 @@ public class Print {
     private final static String LOTTERY_RESULT_COUNT = "개";
     private final static String PROFIT_RATE_START = "총 수익률은 ";
     private final static String PROFIT_RATE_END = "%입니다.";
+    private final static String NUMBER_EXCEPTION = "[ERROR] 숫자로 된 입력이 아닙니다.";
+    private final static String LOTTO_NUMBER_EXCEPTION = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
+    private final static String PRICE_EXCEPTION = "[ERROR] 구입 금액은 1,000으로 나누어 떨어져야 합니다.";
+    private final static String SPLIT_BY_COMMA_INPUT_SIZE_EXCEPTION = "[ERROR] ',' 로 구분되는 6개의 문자열이어야 합니다.";
+    private final static String NON_DUPLICATED_LOTTO_NUMBERS_EXCEPTION = "[ERROR] 당첨 번호는 중복되지 않는 6개의 숫자여야 합니다.";
 
     public static void inputPrice() {
         System.out.println(INPUT_PRICE);
@@ -63,5 +68,25 @@ public class Print {
 
     public static void profitRate(double rate) {
         System.out.printf("%s%.1f%s\n", PROFIT_RATE_START, rate, PROFIT_RATE_END);
+    }
+
+    public static void numberException() {
+        System.out.println(NUMBER_EXCEPTION);
+    }
+
+    public static void lottoNumberException() {
+        System.out.println(LOTTO_NUMBER_EXCEPTION);
+    }
+
+    public static void priceException() {
+        System.out.println(PRICE_EXCEPTION);
+    }
+
+    public static void splitByCommaInputSizeException() {
+        System.out.println(SPLIT_BY_COMMA_INPUT_SIZE_EXCEPTION);
+    }
+
+    public static void nonDuplicatedLottoNumbersException() {
+        System.out.println(NON_DUPLICATED_LOTTO_NUMBERS_EXCEPTION);
     }
 }
