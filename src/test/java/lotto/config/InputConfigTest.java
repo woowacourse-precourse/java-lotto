@@ -1,9 +1,10 @@
 package lotto.config;
 
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Set;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
@@ -58,9 +59,7 @@ class InputConfigTest {
     @Test
     @DisplayName("당첨 로또 유효성 확인_중복입력")
     void prize_lotto_test_overlap() {
-        Set<Integer> set = Set.of(1, 2, 3, 4, 5);       // 중복됐다 가정
-        int bonus = 10;
-        assertThatThrownBy(() -> InputConfig.checkPrizeLottoWithBonus(set, bonus))
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageStartingWith(errorStartMsg);
     }
@@ -68,9 +67,7 @@ class InputConfigTest {
     @Test
     @DisplayName("당첨 로또 유효성 확인_초과 입력")
     void prize_lotto_test_over_size() {
-        Set<Integer> set = Set.of(1, 2, 3, 4, 5, 6, 7);
-        int bonus = 10;
-        assertThatThrownBy(() -> InputConfig.checkPrizeLottoWithBonus(set, bonus))
+        assertThatThrownBy(()->new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageStartingWith(errorStartMsg);
     }
@@ -78,7 +75,7 @@ class InputConfigTest {
     @Test
     @DisplayName("당첨 로또 유효성 확인_보너스 번호 중복")
     void prize_lotto_test_bonus_overlap() {
-        Set<Integer> set = Set.of(1, 2, 3, 4, 5, 6);
+        Lotto set = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonus = 1;
         assertThatThrownBy(() -> InputConfig.checkPrizeLottoWithBonus(set, bonus))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -89,9 +86,8 @@ class InputConfigTest {
     @DisplayName("당첨 로또 유효성 확인_범위 초과")
     void prize_lotto_test_over_value_range() {
         int rangeOverNum = InputConfig.END_INCLUSIVE + 1;
-        Set<Integer> set = Set.of(1, 2, 3, 4, 5, rangeOverNum);
-        int bonus = 10;
-        assertThatThrownBy(() -> InputConfig.checkPrizeLottoWithBonus(set, bonus))
+
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, rangeOverNum)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageStartingWith(errorStartMsg);
     }
@@ -99,7 +95,7 @@ class InputConfigTest {
     @Test
     @DisplayName("당첨 로또 유효성 확인_정상입력")
     void prize_lotto_test() {
-        Set<Integer> set = Set.of(1, 2, 3, 4, 5, 6);
+        Lotto set = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonus = 10;
 
         assertDoesNotThrow(() -> InputConfig.checkPrizeLottoWithBonus(set, bonus));

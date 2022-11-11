@@ -1,5 +1,7 @@
 package lotto.config;
 
+import lotto.domain.Lotto;
+
 import java.util.Set;
 
 public class InputConfig {
@@ -10,10 +12,8 @@ public class InputConfig {
     public static final long LOTTO_PRICE = 1000;
 
 
-    public static void checkPrizeLottoWithBonus(Set<Integer> lotto, int bonus) {
-        checkPrizeLotto(lotto);
-        isBonusNumberInLotto(lotto, bonus);
-
+    public static void checkPrizeLottoWithBonus(Lotto lotto, int bonus) {
+        isBonusNumberInLotto(lotto.toSet(), bonus);
     }
 
     public static void checkPrizeLotto(Set<Integer> lotto) {
@@ -70,15 +70,3 @@ public class InputConfig {
     }
 
 }
-
-
-/*
-[x] 1000원으로 나누어 떨어지지 않았을 때
-- [x] **0원일 경우는?** (나누어 떨어지니 허용?)
-- 당첨 번호 관련
-- [x] 6개 미만 또는 초과하는 번호를 입력했을 때
-- [x] 1 ~ 45 범위를 벗어나는 번호를 입력했을 때
-- [ ] 쉼표(,) 구분되지 않는 입력이 주어졌을 때
-- [x] 당첨 번호에 중복되는 숫자가 존재할 때  set --> set의 size가 6이 안됨
-- [x] 보너스 번호가 당첨 번호와 중복될 때 set
- */
