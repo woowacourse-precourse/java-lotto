@@ -27,8 +27,14 @@ public class Shop {
     }
 
     private List<Lotto> setLottoPayed(int lottoSize) {
+        List<Lotto> lottoPayed = new ArrayList<>();
 
-        return null;
+        while (lottoSize > 0) {
+            lottoPayed.add(getRandomLotto());
+            lottoSize--;
+        }
+
+        return lottoPayed;
     }
 
     private Lotto getRandomLotto(){
