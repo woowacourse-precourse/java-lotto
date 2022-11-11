@@ -2,6 +2,7 @@ package lotto.model;
 
 import lotto.enums.Rank;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,8 +10,11 @@ public class Draw {
     private Lotto winningLotto;
     private int bonusNum;
 
+    private Map<Integer,Rank> rankClassification;
+
     public Draw(Lotto winningLotto, int bonusNum){
         validateBonusNumRange(bonusNum);
+        setRankClassification();
         this.winningLotto = winningLotto;
         this.bonusNum = bonusNum;
     }
@@ -19,6 +23,21 @@ public class Draw {
         return null;
     }
 
+    private void setRankClassification(){
+        Map<Integer,Rank> rankClassification = new HashMap<>();
+        rankClassification.put(6,Rank.first);
+        rankClassification.put(5,Rank.third);
+        rankClassification.put(4,Rank.fourth);
+        rankClassification.put(3,Rank.fifth);
+        this.rankClassification = rankClassification;
+    }
+
+    private Rank tryLottoRank(Lotto tryLotto) {
+        int winningCount = winningNumSize(tryLotto);
+        boolean bonusExist = isBonusExist(this.bonusNum);
+
+    }
+    
     private int winningNumSize(Lotto tryLotto) {
         int winningCount = 0;
         Lotto winningLotto = this.winningLotto;
