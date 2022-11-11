@@ -38,9 +38,10 @@ validate
 3. getProfit : 입력변수로 당첨금액의 총합을 구해 로또 구매금액으로 백분율을 소수점 첫째 자리까지 문자열로 리턴한다. 
 
 ### Winning
-List<Ranking>를 가진다. 
-1. addRankingOfPlayer : 입력변수 Ranking을 List<Ranking>에 add한다. 
-2. figureSameRanking : List<Ranking>을 HashMap으로 바꾸어 리턴한다. 
+HashMap<Ranking, Integer>를 가진다. 
+1. 생성자 : HashMap에 모든 Ranking을 키로 가지는 value = 0의 맵을 초기화시킨다. 
+2. addRankingOfPlayer : 입력받은 Ranking을 키로 가지는 value를 1씩 증가시킨다. 
+3. getWinningResult : 해시맵을 반환한다. 
 
 ## enum
 ### Ranking
