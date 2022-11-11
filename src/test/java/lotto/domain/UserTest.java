@@ -1,9 +1,9 @@
 package lotto.domain;
 
 import lotto.exception.Input;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class UserTest {
@@ -14,10 +14,10 @@ class UserTest {
         User user = new User();
 
         //when
-        user.inputPurchaseAmouont("5000");
+        user.inputPurchaseAmount("5000");
 
         //then
-        Assertions.assertThat(user.getPurchaseAmount()).isEqualTo(5000);
+        assertThat(user.getPurchaseAmount()).isEqualTo(5000);
     }
 
     @Test
@@ -31,11 +31,25 @@ class UserTest {
 
         //then
         assertThrows(IllegalArgumentException.class,
-                () -> user.inputPurchaseAmouont(wrongUnit))
+                () -> user.inputPurchaseAmount(wrongUnit))
                 .getMessage().equals(Input.WRONG_UNIT_OF_WON.getErrorMessage());
 
         assertThrows(IllegalArgumentException.class,
-                () -> user.inputPurchaseAmouont(notNumeric))
+                () -> user.inputPurchaseAmount(notNumeric))
                 .getMessage().equals(Input.NOT_NUMERIC.getErrorMessage());
+    }
+
+    @Test
+    void 로또_발행하기() throws Exception {
+        //given
+        User user = new User();
+        user.inputPurchaseAmount("50000");
+
+        //when
+        user.createLottos();
+
+        //then
+        assertThat(user.getLottos().size()).isEqualTo(50);
+        assertThat(user.getLottos().get(0).getNumbers()).isSorted();
     }
 }
