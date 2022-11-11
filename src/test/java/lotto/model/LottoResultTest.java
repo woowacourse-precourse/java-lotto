@@ -1,22 +1,26 @@
 package lotto.model;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class LottoResultTest {
+    private static final List<Integer> WINNING_NUMBERS = List.of(1, 2, 3, 4, 5, 6);
+
     @Test
     void 로또_결과() {
-        LottoResult sixMatches = new LottoResult(List.of(1,2,3,4,5,6), List.of(1,2,3,4,5,6));
-        LottoResult fiveMatches = new LottoResult(List.of(1,2,3,4,5,6), List.of(1,2,3,4,5,7));
-        LottoResult fourMatches = new LottoResult(List.of(1,2,3,4,5,6), List.of(1,2,3,4,7,8));
-        LottoResult threeMatches = new LottoResult(List.of(1,2,3,4,5,6), List.of(1,2,3,7,8,9));
+        LottoResult sixMatches = new LottoResult(WINNING_NUMBERS, List.of(1, 2, 3, 4, 5, 6), 10);
+        LottoResult fiveMatches = new LottoResult(WINNING_NUMBERS, List.of(1, 2, 3, 4, 5, 7), 10);
+        LottoResult fourMatches = new LottoResult(WINNING_NUMBERS, List.of(1, 2, 3, 4, 7, 8), 10);
+        LottoResult threeMatches = new LottoResult(WINNING_NUMBERS, List.of(1, 2, 3, 7, 8, 9), 10);
+        LottoResult fiveMatchesAndBonus = new LottoResult(WINNING_NUMBERS, List.of(1, 2, 3, 4, 5, 7), 7);
 
-        Assertions.assertEquals(6, sixMatches.get());
-        Assertions.assertEquals(5, fiveMatches.get());
-        Assertions.assertEquals(4, fourMatches.get());
-        Assertions.assertEquals(3, threeMatches.get());
+        Assertions.assertEquals(6, sixMatches.getCountSame());
+        Assertions.assertEquals(5, fiveMatches.getCountSame());
+        Assertions.assertEquals(4, fourMatches.getCountSame());
+        Assertions.assertEquals(3, threeMatches.getCountSame());
+        Assertions.assertEquals(1, fiveMatchesAndBonus.getBonusSame());
+
     }
+    
 }

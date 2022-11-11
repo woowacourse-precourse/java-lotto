@@ -30,19 +30,23 @@ public class LottoController {
             throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.");
         }
 
-        List<Integer> results = new ArrayList<>();
+        List<Integer> countResults = new ArrayList<>();
+        List<Integer> bonusResults = new ArrayList<>();
         for (List<Integer> playerNumbers : playerLotto) {
-            LottoResult result = new LottoResult(lotto.get(), playerNumbers);
-            results.add(result.get());
+            LottoResult result = new LottoResult(lotto.get(), playerNumbers, bonusNumber.get());
+            countResults.add(result.getCountSame());
+            bonusResults.add(result.getBonusSame());
         }
-        int three = Collections.frequency(results, 3);
-        int four = Collections.frequency(results, 4);
-        int five = Collections.frequency(results, 5);
-        int six = Collections.frequency(results, 6);
+        int three = Collections.frequency(countResults, 3);
+        int four = Collections.frequency(countResults, 4);
+        int five = Collections.frequency(countResults, 5);
+        int fiveBonus = Collections.frequency(bonusResults,1);
+        int six = Collections.frequency(countResults, 6);
 
         System.out.println("3개 일치 (5,000원) - " + three + "개");
         System.out.println("4개 일치 (50,000원) - " + four + "개");
         System.out.println("5개 일치 (1,500,000원) - " + five + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + fiveBonus + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + six + "개");
     }
 }
