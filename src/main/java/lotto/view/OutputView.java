@@ -18,6 +18,10 @@ public class OutputView {
 
         }
     }
+    
+    public void printProfit(String profit){
+        System.out.print("총 수익률은 "+profit+"%입니다.");
+    }
 
     public void printLottoResult(Map<LottoRank, Integer> lottoResultCount) {
         System.out.println("당첨 통계");
