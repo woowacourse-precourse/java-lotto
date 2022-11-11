@@ -39,5 +39,18 @@ public class InputController {
         return lottonumber;
     }
 
+    public List<Integer> insertLottoNumber() {
+        List<Integer> lottonumber = new ArrayList<>();
+        String strlottonumber = Console.readLine();
+        int idxnumber = 0;
+        for(int i=0; i<strlottonumber.length(); i++) {
+            if(strlottonumber.charAt(i) == ',') {
+                int a = Integer.parseInt(strlottonumber.substring(idxnumber,i));
+                lottonumber.add(a);
+                idxnumber = i;
+            }
+        }
+        return lottonumber;
+    }
 
 }
