@@ -2,6 +2,7 @@ package lotto.domain.lottomachine.lottoticket;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Collections;
 import java.util.List;
 
 public class LottoTicketMachine {
@@ -14,4 +15,7 @@ public class LottoTicketMachine {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
+    private void sortInAscendingOrder(List<Integer> list) {
+        Collections.sort(list);
+    }
 }
