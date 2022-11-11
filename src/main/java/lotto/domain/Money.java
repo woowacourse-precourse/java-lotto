@@ -3,7 +3,7 @@ package lotto.domain;
 
 public class Money {
     private static final int LOTTO_PRICE = 1000;
-    private static final String AGAIN_INPUT_NUMBER = "[ERROR] 숫자만 입력해주세요.";
+    private static final String ERROR_INPUT_NUMBER = "[ERROR] 숫자만 입력해주세요.";
     private static final String NOT_VALID_MONEY = "[ERROR] 1000원 단위로 입력해주세요.";
     private final int money;
 
@@ -26,8 +26,10 @@ public class Money {
         try {
             return Integer.parseInt(money);
         } catch (Exception e) {
-            throw new IllegalArgumentException(AGAIN_INPUT_NUMBER);
+            throw new IllegalArgumentException(ERROR_INPUT_NUMBER);
         }
     }
+
+
 
 }
