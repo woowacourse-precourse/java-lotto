@@ -21,17 +21,13 @@ public class ValueValidator {
         }
     }
 
-    public static void validateLottoPurchaseMoney(String lottoPurchaseMoney) {
-        validatePurchaseMoneyInteger(lottoPurchaseMoney);
-        validatePurchaseMoneyDividable(lottoPurchaseMoney);
-    }
-
     public static void validateIntegerValue(String inputValue) {
         try {
             Integer.parseInt(inputValue);
         } catch (NumberFormatException exception) {
-            System.out.println("[ERROR] 보너스 로또 번호는 정수형이여야 합니다.");
-            throw new IllegalArgumentException("[ERROR] 보너스 로또 번호는 정수형이여야 합니다.");
+            System.out.println("inputValue = " + inputValue);
+            System.out.println("[ERROR] 보너스 로또 번호는 단 하나의 정수형을 입력하셔야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 보너스 로또 번호는 단 하나의 정수형을 입력하셔야 합니다.");
         }
     }
 
@@ -85,10 +81,9 @@ public class ValueValidator {
         }
     }
 
-    public static void validateInputBonusLottoNumber(String bonusNumber, List<Integer> numbers) {
-        validateIntegerValue(bonusNumber);
-        validateBonusNumberRange(Integer.parseInt(bonusNumber));
-        validateBonusNumberOverlap(numbers, Integer.parseInt(bonusNumber));
+    public static void validateLottoPurchaseMoney(String lottoPurchaseMoney) {
+        validatePurchaseMoneyInteger(lottoPurchaseMoney);
+        validatePurchaseMoneyDividable(lottoPurchaseMoney);
     }
 
     public static void validateInputLottoNumber(List<Integer> numbers) {
@@ -98,6 +93,12 @@ public class ValueValidator {
             validateIntegerValue(String.valueOf(number));
             validateLottoNumbersRange(number);
         }
+    }
+
+    public static void validateInputBonusLottoNumber(String bonusNumber, List<Integer> numbers) {
+        validateIntegerValue(bonusNumber);
+        validateBonusNumberRange(Integer.parseInt(bonusNumber));
+        validateBonusNumberOverlap(numbers, Integer.parseInt(bonusNumber));
     }
 
 }
