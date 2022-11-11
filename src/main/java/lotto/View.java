@@ -41,27 +41,19 @@ public class View {
         return Console.readLine();
     }
 
-    private List<Integer> splitLottoNumber (String tempLottoNumber) {
-        List<Integer> lottoNumber = new ArrayList<>();
+    public enum Ranking {
+        FIRST(1),
+        SECOND(2),
+        THIRD(3),
+        FORTH(4),
+        FIFTH(5);
 
-        for(String element: tempLottoNumber.split(",")) {
-            lottoNumber.add(Integer.parseInt(element));
+        final private int ranking;
+        private int getPrize() {
+            return ranking;
         }
-
-        return lottoNumber;
-    }
-
-    private void isRealNumber (String inputStatement) {
-        for (char element: inputStatement.toCharArray()) {
-            if (element < 49 || element > 57) throw new IllegalArgumentException();
-        }
-    }
-
-    private void isRealLottoNumber (String lottoNumber) {
-        String mergedNumber = String.join(lottoNumber);
-
-        for (char element: mergedNumber.toCharArray()) {
-            if (element < 49 || element > 57) throw new IllegalArgumentException();
+        Ranking(int ranking) {
+            this.ranking = ranking;
         }
     }
 }
