@@ -27,13 +27,13 @@ public class MainController {
             throw new IllegalArgumentException("입력 값이 올바르지 않습니다.");
         }
         cash = new Cash(integer);
-        countLottoNumber(cash);
+        lottoNumber = countLottoNumber(cash);
     }
 
     private int lottoNumber;
-    private void countLottoNumber(Cash cash) throws IllegalArgumentException{
+    private int countLottoNumber(Cash cash) throws IllegalArgumentException{
         Calculator calculator = new Calculator();
-        lottoNumber = calculator.countLottoNumber(cash);
+        return calculator.countLottoNumber(cash);
     }
 
     public void createMyLottos(){
