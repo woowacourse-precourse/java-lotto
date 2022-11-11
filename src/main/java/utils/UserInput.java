@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.LottoNumber;
 
 import static constant.Constant.*;
-import static constant.ErrorMessage.NOT_NUMBER;
+import static constant.ErrorMessage.*;
 import static constant.Messages.*;
 
 public class UserInput {
@@ -42,8 +42,8 @@ public class UserInput {
 
     private static void validMoneyUnit(int price) {
         if (price%MONEY_UNIT!=REMAINDER_ZERO) {
-            System.out.println("[ERROR] 1,000원 단위로 입력해주세요.");
-            throw new IllegalArgumentException("[ERROR] 1,000원 단위로 입력해주세요.");
+            System.out.println(NOT_RADIX_1000);
+            throw new IllegalArgumentException(NOT_RADIX_1000);
         }
     }
 
