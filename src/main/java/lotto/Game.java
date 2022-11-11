@@ -51,11 +51,7 @@ public class Game {
         // TODO: 당첨 통계 출력
         System.out.println(Sentences.STATS.value());
         System.out.println(Sentences.LINE.value());
-        List<Integer> results = List.of(1, 0, 0, 0, 0);
-        for (int i = 0; i < 5; i++) {
-            String result = Sentences.getResult(rankings.get(i), results.get(i));
-            System.out.println(result);
-        }
+        printResult();
 
         // TODO: 총 수익률 출력
         System.out.println(Sentences.getRate(62.5F));
@@ -107,6 +103,13 @@ public class Game {
                 Integer before = results.get(5 - ranking);
                 results.set(5 - ranking, before + 1);
             }
+        }
+    }
+
+    private void printResult() {
+        for (int i = 0; i < 5; i++) {
+            String result = Sentences.getResult(rankings.get(i), results.get(i));
+            System.out.println(result);
         }
     }
 }
