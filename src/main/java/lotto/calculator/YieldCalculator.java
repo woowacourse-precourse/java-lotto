@@ -1,6 +1,8 @@
 package lotto.calculator;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class YieldCalculator {
 
@@ -41,5 +43,10 @@ public class YieldCalculator {
         result += winInformation.get(6) * 2000000000;
 
         return (double) result / (double) purchaseMoney * 100;
+    }
+
+    public void getYield(Map<Integer, Integer> winInformation, int purchaseNumber) {
+        double yield = countMatchResult(winInformation, (purchaseNumber * 1000));
+        System.out.printf("총 수익률은 %.1f%%입니다.", yield);
     }
 }
