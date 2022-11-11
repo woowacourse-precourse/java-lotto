@@ -2,6 +2,8 @@ package lotto.domain;
 
 import java.util.List;
 
+import lotto.util.ErrorConst;
+
 public class Lotto {
 	private final List<Integer> numbers;
 
@@ -26,7 +28,7 @@ public class Lotto {
 		//중복되지 않는 숫자
 		int count = (int)numbers.stream().filter(n -> numbers.contains(n)).count();
 		if (count != 6) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(ErrorConst.DUPLICATED_ERROR);
 		}
 	}
 
@@ -34,7 +36,7 @@ public class Lotto {
 		//범위 1부터 45 까지
 		int count = (int)numbers.stream().filter(i -> 1 <= i && i <= 45).count();
 		if (count != 6) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(ErrorConst.OUT_OF_RANGE_ERROR);
 		}
 	}
 

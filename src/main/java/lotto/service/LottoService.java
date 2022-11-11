@@ -16,8 +16,7 @@ public class LottoService {
 		this.userLottoRepository = userLottoRepository;
 	}
 
-	public UserLottoDto makeRandomLottoNumber(Integer buyPrice) {
-		int lottoCount = Integer.valueOf(buyPrice) / 1000;
+	public UserLottoDto makeRandomLottoNumber(Integer lottoCount) {
 		for (int i = 0; i < lottoCount; i++) {
 			List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
 				.stream()
