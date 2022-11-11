@@ -13,20 +13,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
     private Application application;
+    private LottoMachine lottoMachine;
 
-    @BeforeEach
-    void setUp(){
-        application = new Application();
-    }
-    @DisplayName("입력이 1000 단위 아니면 true반환")
-    @Test
-    void inputNotThousandsNumber(){
-        String testData = "500";
-        InputStream in = new ByteArrayInputStream(testData.getBytes());
-        System.setIn(in);
-        application.inputMoney();
-        assertThat(true).isEqualTo(application.getSystemError());
-    }
+
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -42,5 +31,32 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("입력이 1000 단위로 받고 로또개수 출력")
+    @Test
+    void testLottoCount() {
+        lottoMachine = new LottoMachine();
+        assertThat(8).isEqualTo(lottoMachine.makeLottoCount(8000));
+    }
+
+    @DisplayName("입력이 1000 단위 아니면 true반환")
+    @Test
+    void inputNotThousandsNumber() {
+        application = new Application();
+        String testData = "500";
+        InputStream in = new ByteArrayInputStream(testData.getBytes());
+        System.setIn(in);
+        application.inputMoney();
+        assertThat(true).isEqualTo(application.getSystemError());
+    }
+
+    @DisplayName("구입 입력만큼 나오는지 확인")
+    @Test
+    void checkSix() {
+        lottoMachine=new LottoMachine();
+        lottoMachine.makeLottoCount(6000);
+        lottoMachine.makeLottoReceipt();
+        assertThat(6).isEqualTo(lottoMachine.getLottoReceipt().size());
+    }
+
+
 }
