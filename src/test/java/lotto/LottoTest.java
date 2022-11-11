@@ -107,11 +107,10 @@ class LottoTest extends NsTest {
     void validateInputValueForCharacterCase4() {
         String input = "";
         AutomaticLottery buyLotto = new AutomaticLottery();
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-        assertThat(output()).contains(ERROR_MESSAGE);
+        assertSimpleTest(() -> {
+            buyLotto.getLottoPieces(input);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
     }
 
     @DisplayName("조건에 맞게 입력하면 정상적으로 구매할 로또의 수를 반환한다.")

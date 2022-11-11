@@ -14,7 +14,11 @@ public class EarningsRate {
 
     public String calculationEarningsRate(String amount) {
         LotteryExceptionCase exceptionCase = new LotteryExceptionCaseImpl();
-        exceptionCase.amountCharacterCheck(amount);
+        exceptionCase.characterCheck(amount);
+        exceptionCase.amountInputEmptyCheck(amount);
+        exceptionCase.convertStringToInteger(amount);
+        exceptionCase.validateAmountForEarnings(Integer.parseInt(amount));
+
         Double principal = Double.valueOf(amount);
         Double totalPrizeMoney = Double.valueOf(calculationTotalPrizeMoney());
 

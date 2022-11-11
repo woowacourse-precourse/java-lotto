@@ -21,19 +21,13 @@ public class LotteryExceptionCaseImpl implements LotteryExceptionCase {
     }
 
     @Override
-    public void amountCharacterCheck(String amount) {
-        for (int seq = 0; seq < amount.length(); seq++) {
-            if (47 >= amount.charAt(seq) || 58 <= amount.charAt(seq)) {
+    public void validateInputEmpty(String amount) {
+        try {
+            if (amount.equals("")) {
                 throw new IllegalArgumentException();
             }
-        }
-    }
-
-    @Override
-    public void validateInputEmpty(String amount) {
-        if (amount.equals("")) {
+        } catch (IllegalArgumentException exception) {
             System.out.println("[ERROR] 공백을 입력할 수 없습니다 금액을 입력해 주세요.");
-            throw new IllegalArgumentException();
         }
     }
 
@@ -58,5 +52,28 @@ public class LotteryExceptionCaseImpl implements LotteryExceptionCase {
         }
 
         return convert;
+    }
+
+    @Override
+    public void characterCheck(String amount) {
+        for (int seq = 0; seq < amount.length(); seq++) {
+            if (47 >= amount.charAt(seq) || 58 <= amount.charAt(seq)) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    @Override
+    public void amountInputEmptyCheck(String amount) {
+        if (amount.equals("")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    @Override
+    public void validateAmountForEarnings(int amount) {
+        if (amount % 1000 != 0 || amount == 0) {
+            throw new IllegalArgumentException();
+        }
     }
 }
