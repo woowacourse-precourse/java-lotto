@@ -15,6 +15,26 @@ public class LottoCounting {
 
         return lottoBox;
     }
+    // 당첨된
+    public Map<Integer,Integer> countWinningPaper(Map<Lotto,Integer> countedLotto,Lotto winningLotto,int bonusNumber){
+        Map<Integer,Integer> countedWinningPaper = new HashMap<>();
+        countedLotto.forEach((key,value) -> {
+            addOneWinningPrize(countedWinningPaper,value,winningLotto,bonusNumber);
+        });
+        return countedWinningPaper;
+    }
+
+    private void addOneWinningPrize(Map<Integer,Integer> countedLotto,int howMuchCorrect,Lotto winningLotto,int bonusNumber){
+
+        int ranking = WinningPrize.getRanking(howMuchCorrect,winningLotto,bonusNumber);
+        try{
+            int previousRankingCount = countedLotto.get(ranking);
+            countedLotto.replace(ranking,previousRankingCount + 1);
+        }catch(NullPointerException ex){
+            countedLotto.put(ranking,1);
+        }
+    }
+
     // 한 장의 로또가 몇개 맞췄는지, 세어서 로또박스에 매핑해야 한다.
     private void storeLottoInBox(Map<Lotto, Integer> lottoBox, Lotto oneLottoPaper, Lotto winningLotto){
         int howManyNumbersCorrect = compareLottoAndCount(oneLottoPaper, winningLotto);
