@@ -25,9 +25,10 @@ public class LottoMachine {
 	private List<Lotto> publishLottoTickets(int getNumberOfTickets) {
 		List<Lotto> list = new ArrayList<>();
 		for (int i = 0; i < getNumberOfTickets; i++) {
-			List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_NUMBERS_SIZE);
-			Collections.sort(lottoNumbers);
-			list.add(new Lotto(lottoNumbers));
+			List<Integer> numbers = new ArrayList<>(
+				Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_NUMBERS_SIZE));
+			Collections.sort(numbers);
+			list.add(new Lotto(numbers));
 		}
 		return list;
 	}
