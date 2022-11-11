@@ -1,7 +1,7 @@
 package lotto;
 
 public enum WinningNumberAndEarningPair {
-
+    CORRECT_3_UNDER(0),
     CORRECT_3(5000),
     CORRECT_4(50000),
     CORRECT_5(1500000),
@@ -12,5 +12,9 @@ public enum WinningNumberAndEarningPair {
 
     WinningNumberAndEarningPair(int earning) {
         this.earning = earning;
+    }
+
+    public int getEarning() {
+        return earning;
     }
 }
