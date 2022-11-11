@@ -1,4 +1,4 @@
-package lotto.constant;
+package lotto.domain.constant;
 
 public enum PrizeMoney {
 
