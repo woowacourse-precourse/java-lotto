@@ -13,6 +13,8 @@ Lotto Class
         numbers 순회하며 숫자 n이 있는지 찾아봄
     getRtn
         발표된 로또 번호를 바탕으로 당첨금액이 얼마인지 return
+    printInfo
+        저장되어 있는 로또 번호를 출력
 
 Application Class
     int bonusnum : 입력받는 보너스 숫자
