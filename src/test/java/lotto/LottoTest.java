@@ -8,8 +8,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -267,7 +265,7 @@ class LottoTest {
     void generateWinningNumberInDrawingMachine() throws NoSuchFieldException, IllegalAccessException {
         List<Integer> result = List.of(1, 7, 10, 24, 37, 45);
         int bonusNumber = 11;
-        DrawingMachine drawingMachine = new DrawingMachine(result, bonusNumber);
+        WinningNumber drawingMachine = new WinningNumber(result, bonusNumber);
 
         Field field = drawingMachine.getClass().getDeclaredField("winningNumbers");
         field.setAccessible(true);
@@ -281,7 +279,7 @@ class LottoTest {
     void generateBonusNumberInDrawingMachine() throws NoSuchFieldException, IllegalAccessException {
         List<Integer> winningNumber = List.of(1, 7, 10, 24, 37, 45);
         int result = 11;
-        DrawingMachine drawingMachine = new DrawingMachine(winningNumber, result);
+        WinningNumber drawingMachine = new WinningNumber(winningNumber, result);
 
         Field field = drawingMachine.getClass().getDeclaredField("bonusNumber");
         field.setAccessible(true);
@@ -318,7 +316,7 @@ class LottoTest {
         List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
         List<Integer> winningNumber = List.of(3, 10, 12, 20, 33, 45);
         int bonusNumber = 2;
-        DrawingMachine drawingMachine = new DrawingMachine(winningNumber, bonusNumber);
+        WinningNumber drawingMachine = new WinningNumber(winningNumber, bonusNumber);
         Lotto lotto = new Lotto(lottoNumber);
         int result = 3;
 
@@ -333,7 +331,7 @@ class LottoTest {
         List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
         List<Integer> winningNumber = List.of(3, 10, 12, 20, 33, 45);
         int bonusNumber = 43;
-        DrawingMachine drawingMachine = new DrawingMachine(winningNumber, bonusNumber);
+        WinningNumber drawingMachine = new WinningNumber(winningNumber, bonusNumber);
         Lotto lotto = new Lotto(lottoNumber);
 
         boolean hitBonusNumber = drawingMachine.isHitBonusNumber(lotto);
@@ -347,7 +345,7 @@ class LottoTest {
         List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
         List<Integer> winningNumber = List.of(3, 10, 12, 20, 33, 45);
         int bonusNumber = 41;
-        DrawingMachine drawingMachine = new DrawingMachine(winningNumber, bonusNumber);
+        WinningNumber drawingMachine = new WinningNumber(winningNumber, bonusNumber);
         Lotto lotto = new Lotto(lottoNumber);
 
         boolean hitBonusNumber = drawingMachine.isHitBonusNumber(lotto);
@@ -361,7 +359,7 @@ class LottoTest {
         List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
         List<Integer> winningNumber = List.of(1, 10, 12, 24, 33, 45);
         int bonusNumber = 43;
-        DrawingMachine drawingMachine = new DrawingMachine(winningNumber, bonusNumber);
+        WinningNumber drawingMachine = new WinningNumber(winningNumber, bonusNumber);
         Lotto lotto = new Lotto(lottoNumber);
         LottoRank result = LottoRank.SECOND_PLACE;
 
@@ -376,7 +374,7 @@ class LottoTest {
         List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
         List<Integer> winningNumber = List.of(1, 10, 12, 24, 33, 45);
         int bonusNumber = 42;
-        DrawingMachine drawingMachine = new DrawingMachine(winningNumber, bonusNumber);
+        WinningNumber drawingMachine = new WinningNumber(winningNumber, bonusNumber);
         Lotto lotto = new Lotto(lottoNumber);
         LottoRank result = LottoRank.THIRD_PLACE;
 
@@ -391,7 +389,7 @@ class LottoTest {
         List<Integer> lottoNumber = List.of(1, 10, 12, 24, 32, 43);
         List<Integer> winningNumber = List.of(1, 10, 12, 24, 33, 45);
         int bonusNumber = 43;
-        DrawingMachine drawingMachine = new DrawingMachine(winningNumber, bonusNumber);
+        WinningNumber drawingMachine = new WinningNumber(winningNumber, bonusNumber);
         Lotto lotto = new Lotto(lottoNumber);
         LottoRank result = LottoRank.FOURTH_PLACE;
 
@@ -406,7 +404,7 @@ class LottoTest {
         List<Integer> lottoNumber = List.of(1, 10, 13, 25, 32, 43);
         List<Integer> winningNumber = List.of(1, 10, 12, 24, 33, 45);
         int bonusNumber = 43;
-        DrawingMachine drawingMachine = new DrawingMachine(winningNumber, bonusNumber);
+        WinningNumber drawingMachine = new WinningNumber(winningNumber, bonusNumber);
         Lotto lotto = new Lotto(lottoNumber);
         LottoRank result = LottoRank.NOTHING;
 
