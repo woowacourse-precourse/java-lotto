@@ -21,7 +21,7 @@ public class LotteryExceptionCaseImpl implements LotteryExceptionCase {
     }
 
     @Override
-    public void characterCheck(String amount) {
+    public void amountCharacterCheck(String amount) {
         for (int seq = 0; seq < amount.length(); seq++) {
             if (47 >= amount.charAt(seq) || 58 <= amount.charAt(seq)) {
                 throw new IllegalArgumentException();
