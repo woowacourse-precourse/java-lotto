@@ -12,6 +12,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -79,5 +80,13 @@ class LottoTest {
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
+
+        @DisplayName("로또 당첨 번호를 문자열 파싱을 통해 List 로 변환")
+        @Test
+        void changeLottoWinningNumberToList(){
+            Winner winner = new Winner("11,45,2,13,24,35");
+            List<Integer> lottoWinningNumber = winner.getLottoWinningNumber();
+            assertThat(lottoWinningNumber).containsExactlyInAnyOrder(45,11,13,24,35,2);
+        }
     }
 }
