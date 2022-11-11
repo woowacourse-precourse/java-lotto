@@ -16,7 +16,8 @@ public class Person {
 
     public void buyLotto() {
         List<PlaceStatus> myPlaces = confirmResult();
-
+        Result lottoResult = new Result(myPlaces);
+        lottoResult.getWinningResult();
     }
 
     private List<PlaceStatus> confirmResult() {

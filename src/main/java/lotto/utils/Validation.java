@@ -1,6 +1,5 @@
 package lotto.utils;
 
-import lotto.domain.ErrorStatus;
 import lotto.domain.InputView;
 
 import java.util.List;

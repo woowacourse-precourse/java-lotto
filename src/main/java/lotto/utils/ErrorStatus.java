@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.utils;
 
 public enum ErrorStatus {
     OUT_OF_RANGE_NUMBER("로또 번호는 1부터 45까지의 숫자여야 합니다."),
