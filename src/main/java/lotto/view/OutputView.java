@@ -1,4 +1,4 @@
-package lotto;
+package lotto.view;
 
 import static lotto.LottoPrize.FIFTH_PRIZE;
 import static lotto.LottoPrize.FIRST_PRIZE;
@@ -8,6 +8,9 @@ import static lotto.LottoPrize.THIRD_PRIZE;
 
 import java.util.List;
 import java.util.Map;
+import lotto.Buyer;
+import lotto.Lotto;
+import lotto.LottoPrize;
 
 public class OutputView {
     public void printLottoNumbers(Buyer buyer) {

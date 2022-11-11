@@ -59,7 +59,7 @@ public class LottoReferee {
     private int compare(Lotto winningLotto, Lotto buyerLotto) {
         int count=0;
         for(int i=0;i<6;i++){
-            if(winningLotto.getNumbers().contains(buyerLotto.getNumbers().get(i))){
+            if(winningLotto.contains(buyerLotto.getNumbers().get(i))){
                 count++;
             }
         }
@@ -67,7 +67,7 @@ public class LottoReferee {
     }
 
     private LottoPrize rankSecondOrThird(int bonusNumber, Lotto buyerLotto) {
-        if (buyerLotto.getNumbers().contains(bonusNumber)) {
+        if (buyerLotto.contains(bonusNumber)) {
             return SECOND_PRIZE;
         }
         return THIRD_PRIZE;

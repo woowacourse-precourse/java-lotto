@@ -1,9 +1,6 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,6 +15,9 @@ public class Lotto {
     }
     public List<Integer> getNumbers() {
         return numbers;
+    }
+    public boolean contains(int number){
+        return numbers.contains(number);
     }
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
