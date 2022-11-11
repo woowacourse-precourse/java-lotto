@@ -3,12 +3,21 @@ package lotto.logic;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 import lotto.domain.Result;
+import lotto.domain.User;
 import lotto.domain.Win;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class LottoLogic {
+    private static LottoLogic lottoLogic = new LottoLogic();
+
+    private LottoLogic() {
+    }
+
+    public static LottoLogic getInstance() {
+        return lottoLogic;
+    }
 
     public Lotto makeLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -43,5 +52,9 @@ public class LottoLogic {
 
     public List<Integer> getHistory() {
         return Win.getCountTable();
+    }
+
+    public List<Lotto> getLottos(User user) {
+        return user.getLottos();
     }
 }
