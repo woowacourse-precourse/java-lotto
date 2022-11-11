@@ -9,8 +9,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static lotto.global.ExceptionConstants.CANNOT_DUPLICATED_NUMBER;
-import static lotto.global.ExceptionConstants.CANNOT_SATISFY_NUMBER_RANGE;
-import static lotto.global.ExceptionConstants.CAN_ONLY_INPUT_NUMBER;
 import static lotto.global.LottoConstants.LOTTO_PRICE;
 
 public class InputUtil {
@@ -23,15 +21,11 @@ public class InputUtil {
 
         PrintUtil.printInsertMoney();
 
-        long purchasePrice = Long.parseLong(Console.readLine());
+        String purchasePrice = Console.readLine();
 
-        InputValidator.isAllNumber(purchasePrice);
+        InputValidator.validateInput(purchasePrice, LOTTO_PRICE);
 
-        InputValidator.isZero(purchasePrice);
-
-        InputValidator.restEqualZero(purchasePrice, LOTTO_PRICE);
-
-        return purchasePrice;
+        return Long.parseLong(purchasePrice);
     }
 
     public static Lotto inputWinningLottoNumber() {
