@@ -8,8 +8,6 @@ public class Constant {
     public static final int BONUS_NUMBER_SIZE = 1;
     public static final int WINNER_NUMBER = 5;
     public static final int LOTTO_PRICE = 1000;
-    public static final int MIN_MATCHING_COUNT = 3;
-    public static final int MAX_MATCHING_COUNT = LOTTO_SIZE;
     public static final int CHECK_BONUS_COUNT = 5;
 
 }
