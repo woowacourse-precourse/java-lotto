@@ -14,7 +14,7 @@ public class ShowMessage {
         System.out.println(INPUT_AMOUNT_BUY_MESSAGE);
     }
 
-    public static void showHowManyBuy(int number) {
+    public static void showHowManyBuy(long number) {
         System.out.println(number + HOW_MANY_BUY_MESSAGE);
     }
 

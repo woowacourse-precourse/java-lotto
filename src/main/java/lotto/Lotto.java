@@ -20,7 +20,7 @@ public class Lotto {
         }
     }
 
-    public int lottoCount(int amount) {
+    public long lottoCount(long amount) {
         exceptionHandling.notDivideException(amount); // 예외 검사
         return amount / 1000;
     }

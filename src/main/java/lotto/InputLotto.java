@@ -4,17 +4,17 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputLotto {
 
-    public int inputValueToints(){
+    public long inputValueToints(){
         String value = inputValueOfUser();
-        return toInts(value);
+        return toLongs(value);
     }
 
     public String inputValueOfUser() {
         return Console.readLine();
     }
 
-    public int toInts(String value) {
-        return Integer.parseInt(value);
+    public long toLongs(String value) {
+        return Long.parseLong(value);
     }
 
 }

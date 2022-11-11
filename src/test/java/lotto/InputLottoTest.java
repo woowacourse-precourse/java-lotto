@@ -9,8 +9,8 @@ class InputLottoTest {
 
     @DisplayName("String to int")
     @Test
-    void toInts() {
+    void toLongs() {
         InputLotto inputLotto = new InputLotto();
-        assertEquals(3,inputLotto.toInts("3"));
+        assertEquals(3000000000L,inputLotto.toLongs("3000000000"));
     }
 }
