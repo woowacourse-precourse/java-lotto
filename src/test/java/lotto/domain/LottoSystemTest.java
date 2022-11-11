@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.in;
 
 class LottoSystemTest {
     LottoSystem system = new LottoSystem();
@@ -57,6 +58,16 @@ class LottoSystemTest {
         };
         for (String input : invalidInput) {
             assertThatThrownBy(() -> system.setWinningNumbers(input))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
+    @DisplayName("보너스 번호 입력 시 값이 숫자인지 확인한다")
+    @Test
+    void InputNonNumericBonusNumber() {
+        String[] invalidInput = {"eewq", "fk", "1w"};
+        for (String input : invalidInput) {
+            assertThatThrownBy(() -> system.setBonusNumber(input))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
