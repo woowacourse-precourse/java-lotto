@@ -29,7 +29,14 @@ public class InputNumberValidator {
     }
     
     private static boolean isNonNumericCharactersExist(final String inputPayment) {
-        final Matcher matcher = Pattern.compile(INPUT_NON_NUMBER_FORM).matcher(inputPayment);
-        return matcher.find();
+        return matcher(inputPayment).find();
+    }
+    
+    private static Matcher matcher(final String inputPayment) {
+        return compiler().matcher(inputPayment);
+    }
+    
+    private static Pattern compiler() {
+        return Pattern.compile(INPUT_NON_NUMBER_FORM);
     }
 }
