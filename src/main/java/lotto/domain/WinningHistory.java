@@ -15,8 +15,8 @@ public class WinningHistory {
 
     public WinningHistory(ArrayList<Map<String, Object>> results) {
         analysis(results);
-        double amount = (double) winningAmount / (5_000 * results.size()) * 100;
-        this.yield = Math.round(amount);
+        double yield = (double) winningAmount / (1_000 * results.size()) * 100;
+        this.yield = (double) Math.round(yield * 10) / 10;
     }
 
     private void analysis(ArrayList<Map<String, Object>> results) {
