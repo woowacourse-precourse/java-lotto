@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -368,5 +369,22 @@ public class Application {
         }
 
         return number;
+    }
+
+    public static List<Integer> issueLottoNumbers() {
+
+        List<Integer> randomNumberList = new ArrayList<>();
+
+        while (randomNumberList.size() < 6) {
+
+            int randomNumber = Randoms.pickNumberInRange(1, 45);
+
+            if (!randomNumberList.contains(randomNumber)) {
+
+                randomNumberList.add(randomNumber);
+            }
+        }
+
+        return randomNumberList;
     }
 }
