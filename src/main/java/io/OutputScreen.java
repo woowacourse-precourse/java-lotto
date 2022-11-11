@@ -3,9 +3,9 @@ package io;
 public class OutputScreen implements Output{
 
     @Override
-    public String printOutput(Sentence sentence) {
+    public String printOutput(String sentence) {
 
-        System.out.println(sentence.getValue());
+        System.out.println(sentence);
         return null;
     }
 }
