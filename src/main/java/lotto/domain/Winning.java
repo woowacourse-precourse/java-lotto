@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.*;
 
@@ -19,6 +19,7 @@ public class Winning {
     public int getBonusNumber() {
         return bonusNumber;
     }
+
 
     public List<Integer> transformWinningInput(String winningNumberInput) {
         validateWinningNumber(winningNumberInput);

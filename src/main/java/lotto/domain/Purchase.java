@@ -1,19 +1,22 @@
-package lotto;
+package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Purchase {
 
     private final long purchaseAmount;
     private final long purchaseQuantity;
-    private List<Integer> lottos;
+    private final List<Lotto> lottos;
 
     public Purchase(String purchaseAmount) {
         validatePurchase(purchaseAmount);
         this.purchaseAmount = Long.parseLong(purchaseAmount);
         this.purchaseQuantity = calculatePurchaseQuantity(this.purchaseAmount);
+        this.lottos = createLottos();
     }
 
     public long getPurchaseAmount() {
@@ -24,7 +27,7 @@ public class Purchase {
         return purchaseQuantity;
     }
 
-    public List<Integer> getLottos() {
+    public List<Lotto> getLottos() {
         return lottos;
     }
 
@@ -55,5 +58,19 @@ public class Purchase {
 
     public Long calculatePurchaseQuantity(long purchaseAmount) {
         return purchaseAmount / 1000;
+    }
+
+    public List<Lotto> createLottos() {
+        List<Lotto> lottos = new ArrayList<>();
+        for (int i=0; i < purchaseQuantity; i++) {
+            List<Integer> lottoNumbers = createLottoNumbers();
+            lottos.add(new Lotto(lottoNumbers));
+        }
+        return lottos;
+    }
+    public List<Integer> createLottoNumbers() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Collections.sort(numbers);
+        return numbers;
     }
 }
