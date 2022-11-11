@@ -46,4 +46,10 @@ public class UserInput {
             System.out.println(it.next());
         }
     }
+
+    static void inputWinningNumber() {
+        String winningNumber = Console.readLine();
+        List numbers = List.of(validateLotto(winningNumber));
+        Lotto lotto = new Lotto(numbers);
+    }
 }
