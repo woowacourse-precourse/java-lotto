@@ -1,5 +1,10 @@
 package lotto.view;
 
+import static lotto.constant.PrizeType.FIVE_MATCHES_WITHOUT_BONUS_PRIZE;
+import static lotto.constant.PrizeType.FIVE_MATCHES_WITH_BONUS_PRIZE;
+import static lotto.constant.PrizeType.FOUR_MATCHES_PRIZE;
+import static lotto.constant.PrizeType.SIX_MATCHES_PRIZE;
+import static lotto.constant.PrizeType.THREE_MATCHES_PRIZE;
 import static lotto.constant.MatchType.FIVE_MATCHES_WITHOUT_BONUS;
 import static lotto.constant.MatchType.FIVE_MATCHES_WITH_BONUS;
 import static lotto.constant.MatchType.FOUR_MATCHES;
@@ -22,11 +27,16 @@ import java.util.List;
 public class Output {
 
     public static void printWinningStatistics(List<Integer> matchResults) {
-        System.out.printf(THREE_MATCHES.getMessage(), matchResults.get(THREE_MATCHES_INDEX));
-        System.out.printf(FOUR_MATCHES.getMessage(), matchResults.get(FOUR_MATCHES_INDEX));
-        System.out.printf(FIVE_MATCHES_WITHOUT_BONUS.getMessage(), matchResults.get(FIVE_MATCHES_WITHOUT_BONUS_INDEX));
-        System.out.printf(FIVE_MATCHES_WITH_BONUS.getMessage(), matchResults.get(FIVE_MATCHES_WITH_BONUS_INDEX));
-        System.out.printf(SIX_MATCHES.getMessage(), matchResults.get(SIX_MATCHES_INDEX));
+        System.out.printf(THREE_MATCHES.printMessage(matchResults.get(THREE_MATCHES_INDEX)),
+                THREE_MATCHES_PRIZE.getPrize());
+        System.out.printf(FOUR_MATCHES.printMessage(matchResults.get(FOUR_MATCHES_INDEX)),
+                FOUR_MATCHES_PRIZE.getPrize());
+        System.out.printf(FIVE_MATCHES_WITHOUT_BONUS.printMessage(matchResults.get(FIVE_MATCHES_WITHOUT_BONUS_INDEX)),
+                FIVE_MATCHES_WITHOUT_BONUS_PRIZE.getPrize());
+        System.out.printf(FIVE_MATCHES_WITH_BONUS.printMessage(matchResults.get(FIVE_MATCHES_WITH_BONUS_INDEX)),
+                FIVE_MATCHES_WITH_BONUS_PRIZE.getPrize());
+        System.out.printf(SIX_MATCHES.printMessage(matchResults.get(SIX_MATCHES_INDEX)),
+                SIX_MATCHES_PRIZE.getPrize());
     }
 
     public static void printLotteryNumbers(List<Integer> lotteryNumbers) {
