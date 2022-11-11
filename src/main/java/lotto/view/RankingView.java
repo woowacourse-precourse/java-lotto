@@ -1,7 +1,7 @@
 package lotto.view;
 
 public class RankingView {
-    private static final String WINNING_STATISTICS = "당첨 통계\n---\n";
+    private static final String WINNING_STATISTICS = "당첨 통계\n---";
     private static final String THREE_MATCH = "3개 일치 (5,000원) - ";
     private static final String FOUR_MATCH = "4개 일치 (50,000원) - ";
     private static final String FIVE_MATCH = "5개 일치 (1,500,000원) - ";
@@ -16,7 +16,7 @@ public class RankingView {
     }
 
     private void startWinningStatistics(){
-
+        System.out.println(WINNING_STATISTICS);
     }
 
     private void showPriceToPlayer(){
