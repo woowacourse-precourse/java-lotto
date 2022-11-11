@@ -10,14 +10,16 @@ public class Shop {
 
     public Shop(int price){
         this.price = price;
+        this.lottoSize = calcLottoSize(price);
     }
 
     public List<Lotto> getlottoPayed() {
         return null;
     }
 
-    private void calcLottoSize(int price) {
-
+    private int calcLottoSize(int price) {
+        priceValidate(price);
+        return (price / 1000);
     }
 
     private void setLottoPayed(int lottoSize) {
@@ -25,7 +27,9 @@ public class Shop {
     }
 
     private void priceValidate(int price) {
-        
+        if (price % 1000 != 0) {
+            throw new IllegalArgumentException();
+        }
     }
 
 }
