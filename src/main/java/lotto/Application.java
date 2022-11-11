@@ -39,21 +39,10 @@ public class Application {
         return money.getAmount();
     }
 
-    static List<Integer> pickLottoNum() {
-        List<Integer> numbers = new ArrayList<>();
-        while (numbers.size() < 6) {
-            int randomNumber = Randoms.pickNumberInRange(1, 45);
-            if (!numbers.contains(randomNumber)) {
-                numbers.add(randomNumber);
-            }
-        }
-        return numbers;
-    }
-
     static List<Lotto> buyLotto(int count) {
         List<Lotto> myLotto = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            Lotto pickLotto = new Lotto(pickLottoNum());
+            Lotto pickLotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             myLotto.add(pickLotto);
         }
         return myLotto;
@@ -89,9 +78,6 @@ public class Application {
             System.out.print(rank.getName());
             System.out.println(myResult.getWinningResult().get(rank.ordinal()) + "개");
         }
-//        for(int rank = 3; rank < 8; rank++){
-//            System.out.println(rank+"개 일치 - "+ myResult.getWinningResult().get(rank-3)+"개");
-//        }
     }
 
     static void printYield(MyResult myResult, int purchase) {
@@ -101,7 +87,7 @@ public class Application {
         }
         yield /= purchase;
         yield *= 100;
-        System.out.println("총 수익률은 " + yield + "% 입니다.");
+        System.out.println("총 수익률은 " + yield + "%입니다.");
     }
 
     public static void main(String[] args) {
