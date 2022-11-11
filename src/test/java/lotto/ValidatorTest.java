@@ -20,4 +20,11 @@ class ValidatorTest {
         assertThatThrownBy(() -> validator.validateDigit("abc"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("숫자와 ,가 아닌 입력이 있을 경우 예외가 발생한다.")
+    @Test
+    void validateDigitAndComma() {
+        assertThatThrownBy(() -> validator.validateDigitAndComma("1#2#3#4#5#6"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
