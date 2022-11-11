@@ -3,6 +3,8 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.Data.User;
+import lotto.handler.UserInputMoneyHandler;
+import lotto.service.Lotto;
 import lotto.service.UserLottoService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,17 +14,49 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
+    UserInputMoneyHandler userInputMoneyHandler = new UserInputMoneyHandler();
 
-    @DisplayName("사용자의 입력 금액이 User에 저장 되었는지 확인한다.")
+    @DisplayName("사용자의 입력 금액이 User에 저장 되었는지 확인 Test")
     @Test
     void checkUserInputMoney() {
         String inputMoney = "1000";
         User user = new User(Integer.parseInt(inputMoney));
 
         assertThat(Integer.parseInt(inputMoney)).isEqualTo(user.getMoney());
+    }
+
+    @DisplayName("사용자의 입력 금액이 숫자가 아닐 때 예외발생 Test")
+    @Test
+    void checkIsNumber() {
+        String inputMoney = "1000a";
+
+        assertThatThrownBy(() -> {
+            userInputMoneyHandler.checkIsNumber(inputMoney);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("사용자의 입력 금액이 0일 때 예외발생 Test")
+    @Test
+    void checkIsNonzero() {
+        String inputMoney = "0";
+
+        assertThatThrownBy(() -> {
+            userInputMoneyHandler.checkIsNonzero(inputMoney);
+        }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("사용자의 입력 금액이 1000으로 나누어지지 않을 때 예외발생 Test")
+    @Test
+    void checkIsValidMoney() {
+        String inputMoney = "1001";
+
+        assertThatThrownBy(() -> {
+            userInputMoneyHandler.checkIsValidMoney(inputMoney);
+        }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
