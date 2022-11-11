@@ -23,6 +23,7 @@ public class InputUi {
 
     public static List<Integer> readWinningLottoNumbers() {
         String winningNumbersInput = Console.readLine();
+        InputValidator.validateWinningNumbersInput(winningNumbersInput);
 
         List<Integer> winningNumbers = splitNumbersStringToList(winningNumbersInput);
         return Collections.unmodifiableList(winningNumbers);
