@@ -1,12 +1,9 @@
 package domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import vo.LottoInfo;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
