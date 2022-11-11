@@ -14,14 +14,15 @@ public class WinningNumber {
         validateInteger(BonusNumber);
 
         List<Integer> tmpNumbers = convertStrToNumberList(winningLottoNumbers);
-        int tmpBonusNumber = Integer.parseInt(BonusNumber);
+        List<Integer> tmpBonusNumber = convertStrToNumberList(BonusNumber);
+
 
         validateRange(tmpNumbers);
-        validateRange(List.of(tmpBonusNumber));
+        validateRange(tmpBonusNumber);
         validateNumberSize(tmpNumbers, LOTTO_NUMBER_SIZE);
-        validateNumberSize(List.of(tmpBonusNumber), BONUS_NUMBER_SIZE);
+        validateNumberSize(tmpBonusNumber, BONUS_NUMBER_SIZE);
 
-        tmpNumbers.add(tmpBonusNumber);
+        tmpNumbers.add(tmpBonusNumber.get(0));
         this.numbers = tmpNumbers;
     }
 
