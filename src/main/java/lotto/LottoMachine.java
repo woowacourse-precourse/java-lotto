@@ -43,4 +43,8 @@ public class LottoMachine {
         }
     }
 
+    static void updateRank(Rank rank) {
+        rankCount.put(rank, rankCount.get(rank) + 1);
+    }
+
 }
