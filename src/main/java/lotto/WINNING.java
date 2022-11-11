@@ -5,7 +5,8 @@ public enum WINNING {
     SECOND("30,000,000", 5, 4),
     THIRD("1,500,000", 5, 3),
     FOURTH("50,000", 4, 2),
-    FIFTH("5,000", 3, 1);
+    FIFTH("5,000", 3, 1),
+    BOOM("0",0,0); // 낙첨
 
     String value;
     int correctCount; // 맞춘 갯수(출력용)
@@ -41,7 +42,7 @@ public enum WINNING {
         if(correctCount == 6)
             return WINNING.FIRST;
 
-        return null;
+        return WINNING.BOOM;
     }
 
     public static void printWinningInfo(WINNING winning, int winningCount){

@@ -64,7 +64,7 @@ public class Application {
             // 단일 로또 당첨 확인
             WINNING curWinning = Lotto.checkUserLottoWinning(winningLotto, lotto, bonusNumber);
 
-            if(curWinning == null)
+            if(curWinning == WINNING.BOOM)
                 continue;
 
             int winningCount = result.get(curWinning);
