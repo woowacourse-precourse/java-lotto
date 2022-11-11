@@ -41,22 +41,15 @@ public class OutputView {
     public static void printResult(Map<String, Integer> result) {
         for (int i = 3; i < 8; i++) {
             String printResult = null;
-
             isI6SaveBonus1OrElseSaveBonus0(i);
-            assert OutputResult.getMessage(i, BONUS) != null;
-            String message = OutputResult.getMessage(i, BONUS);
 
-            int proxy = i;
-            if (i == 6 || i == 7) {
-                proxy -= 1;
-            }
+            int proxy = getProxyNumber(i);
+            String message = createMessage(i);
 
             printResult = String.format(message, result.get(String.format(matchCount, proxy)));
-
             if (result.get(String.format(matchCount, proxy)) == null) {
                 printResult = String.format(message, 0);
             }
-
             System.out.println(printResult);
         }
     }
@@ -70,5 +63,18 @@ public class OutputView {
             BONUS = 1;
             matchCount = "일치 개수 %d개, 보너스 볼";
         }
+    }
+
+    private static int getProxyNumber(int i) {
+        int proxy = i;
+        if (i == 6 || i == 7) {
+            proxy -= 1;
+        }
+        return proxy;
+    }
+
+    private static String createMessage(int i) {
+        assert OutputResult.getMessage(i, BONUS) != null;
+        return OutputResult.getMessage(i, BONUS);
     }
 }
