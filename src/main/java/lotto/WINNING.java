@@ -45,15 +45,15 @@ public enum WINNING {
     }
 
     public static void printWinningInfo(WINNING winning, int winningCount){
-        if(winning == WINNING.SECOND){
-            System.out.println(winning.getCorrectCount() + "개 일치, 보너스 볼 일치 ("
-                    + winning.getValue() + "원) - "
-                    + winningCount + "개");
-            return;
-        }
+        StringBuffer correctInfo = new StringBuffer(winning.getCorrectCount() + "개 일치");
 
-        System.out.println(winning.getCorrectCount() + "개 일치 ("
+        if(winning == WINNING.SECOND)
+            correctInfo.append(", 보너스 볼 일치");
+
+        correctInfo.append(" ("
                 + winning.getValue() + "원) - "
                 + winningCount + "개");
+
+        System.out.println(correctInfo);
     }
 }
