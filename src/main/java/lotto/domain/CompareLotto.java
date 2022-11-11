@@ -1,9 +1,7 @@
-package lotto;
+package lotto.domain;
 
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CompareLotto {
     private final Map<Rank, Integer> rankMap;

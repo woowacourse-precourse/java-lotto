@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 public enum Rank {
     first("6개 일치 (2,000,000,000원)", 2000000000),
