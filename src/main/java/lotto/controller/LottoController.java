@@ -24,15 +24,31 @@ public class LottoController {
     }
 
     public WinningRank judgeRank(WinningLotto winningLotto, Lotto lotto) {
-        // todo: judgeRank 구현하기
-        return null;
+        int matchedNumbersCount = countMatchedNumbers(winningLotto, lotto);
+
+        if(matchedNumbersCount == 3){
+            return WinningRank.FIFTH_RANK;
+        }
+        if(matchedNumbersCount == 4){
+            return WinningRank.FOURTH_RANK;
+        }
+        if(matchedNumbersCount == 5){
+            if(winningLotto.containBonusNumber(lotto)){
+                return WinningRank.SECOND_RANK;
+            }
+            return WinningRank.THIRD_RANK;
+        }
+        if(matchedNumbersCount == 6){
+            return WinningRank.FIRST_RANK;
+        }
+        return WinningRank.NONE_RANKED;
     }
 
     private int countMatchedNumbers(WinningLotto winningLotto, Lotto lotto) {
         List<Integer> myLottoNumbers = lotto.getNumbers();
         int count = 0;
-        for(Integer number : myLottoNumbers) {
-            if(winningLotto.isContainNumber(number)){
+        for (Integer number : myLottoNumbers) {
+            if (winningLotto.isContainNumber(number)) {
                 count++;
             }
         }
