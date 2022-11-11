@@ -16,7 +16,6 @@ public class WinningNumber {
         List<Integer> tmpNumbers = convertStrToNumberList(winningLottoNumbers);
         List<Integer> tmpBonusNumber = convertStrToNumberList(BonusNumber);
 
-
         validateRange(tmpNumbers);
         validateRange(tmpBonusNumber);
         validateNumberSize(tmpNumbers, LOTTO_NUMBER_SIZE);
