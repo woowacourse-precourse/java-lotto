@@ -38,4 +38,18 @@ public class Request {
 			throw new IllegalArgumentException();
 		}
 	}
+
+	public void validateWinningNumbers() {
+		splitUserInput();
+		isLottoNumbers();
+		validateDuplication();
+	}
+
+	public void splitUserInput() {
+		String[] splitUserInput = userInput.split(",");
+
+		if(splitUserInput.length != 6) {
+			throw new IllegalArgumentException();
+		}
+	}
 }
