@@ -28,8 +28,8 @@ public class Calculator {
 
     public static double yield(double revenue, double coin) {
         double result = (((revenue - coin)/coin) * 100);
-        result = Math.round(result * 10)/10.0;
-        result = result + 100.0;
+        // 소수 둘째자리 반올림, 기본 금액의 비율(100%)을 기준으로 계산
+        result = Math.round(result * 10)/10.0 + 100;
         System.out.println("총 수익률은 " + result + "%입니다.");
         return result;
     }
