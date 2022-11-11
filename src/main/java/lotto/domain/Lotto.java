@@ -23,6 +23,12 @@ public class Lotto {
         return numbers.toString();
     }
 
+    public List<Integer> value() {
+        return numbers.stream()
+                .map(LottoNumber::value)
+                .collect(toList());
+    }
+
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBERS_SIZE) {
             throw new IllegalArgumentException(INVALID_SIZE_MESSAGE);

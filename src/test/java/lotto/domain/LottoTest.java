@@ -35,8 +35,8 @@ class LottoTest {
     }
 
     @Test
-    void toString_메서드는_로또_번호를_반환한다() {
+    void value_메서드는_로또_번호_리스트를_반환한다() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        assertThat(lotto.toString()).isEqualTo("[1, 2, 3, 4, 5, 6]");
+        assertThat(lotto.value()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
 }
