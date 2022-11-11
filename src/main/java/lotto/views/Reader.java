@@ -21,6 +21,7 @@ public class Reader {
 
 	public static Lotto readUserLottoWinningNumber() {
 		String userWinningLottoInput = Console.readLine();
+		SystemValidator.validateAllLottoNumberInputElementsIsNumber(userWinningLottoInput);
 
 		List<Integer> winningLotto = parsingLottoNumber(userWinningLottoInput);
 

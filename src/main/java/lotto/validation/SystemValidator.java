@@ -15,6 +15,13 @@ public class SystemValidator {
 		}
 	}
 
+	public static void validateAllLottoNumberInputElementsIsNumber(String winningLottoNumber) {
+		String[] lottoNumbers = winningLottoNumber.split(SPLIT_LOTTO_DELIMITER);
+		for (String lottoNumber : lottoNumbers) {
+			validateIsNumber(lottoNumber);
+		}
+	}
+
 	protected static void validateIsNumber(String purchaseAmount) {
 		if (hasNothing(purchaseAmount)) {
 			throw new IllegalArgumentException(ERROR_EMPTY_PURCHASE_AMOUNT_INPUT);
