@@ -28,6 +28,11 @@ public class GeneralWinNumber {
         }
     }
 
+    public boolean contains(BonusNumber bonusNumber) {
+        return generalWinNumbers.stream()
+                .anyMatch(i -> bonusNumber.isSame(i));
+    }
+
     private boolean isWithinRange(List<Integer> generalWinNumbers) {
         return generalWinNumbers.stream()
                 .anyMatch(number -> number < LottoGame.LOTTO_MIN_RANGE || number > LottoGame.LOTTO_MAX_RANGE);

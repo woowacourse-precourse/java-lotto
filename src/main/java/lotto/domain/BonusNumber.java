@@ -18,4 +18,8 @@ public class BonusNumber {
         }
     }
 
+    public boolean isSame(int number) {
+        return this.bonusNumber == number;
+    }
+
 }
