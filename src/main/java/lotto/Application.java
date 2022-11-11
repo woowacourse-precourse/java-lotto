@@ -1,7 +1,6 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -85,5 +84,16 @@ public class Application {
         System.out.printf("5개 일치 (1,500,000원) - %d개\n", prize_num.get(2));
         System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", prize_num.get(3));
         System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", prize_num.get(4));
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", get_yield(purchase));
+    }
+
+    private static double get_yield(int purchase){
+        double yield;
+        int total_prize = 0;
+        for (int i = 0; i < prize.size(); i++){
+            total_prize += prize.get(i) * prize_num.get(i);
+        }
+        yield = total_prize / purchase * 100;
+        return yield;
     }
 }
