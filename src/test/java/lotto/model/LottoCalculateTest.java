@@ -68,4 +68,40 @@ class LottoCalculateTest {
         assertThat(lottoCalculate.calculateWinMoney(lottoPrizeMoney)).isEqualTo(30000000);
     }
 
+    @DisplayName("로또 번호가 2등 당첨인 상황에서 Lotto 객체에 prize, prizeMoney 정보가 등수에 맞게 업데이트 된다.")
+    @Test
+    void totalCalculateTest1() {
+        List<Integer> winNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+        List<Integer> lottoNumbers = new ArrayList<>(Arrays.asList(2, 3, 4, 5, 6, 7));
+        Lotto lotto = new Lotto(lottoNumbers);
+        lottoCalculate.totalCalculate(lotto, winNumbers, bonusNumber);
+        assertThat(lotto.getPrize()).isEqualTo(2);
+        assertThat(lotto.getPrizeMoney()).isEqualTo(30000000);
+    }
+
+    @DisplayName("로또 번호가 4등 당첨인 상황에서 Lotto 객체에 prize, prizeMoney 정보가 등수에 맞게 업데이트 된다.")
+    @Test
+    void totalCalculateTest2() {
+        List<Integer> winNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+        List<Integer> lottoNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 9, 10));
+        Lotto lotto = new Lotto(lottoNumbers);
+        lottoCalculate.totalCalculate(lotto, winNumbers, bonusNumber);
+        assertThat(lotto.getPrize()).isEqualTo(4);
+        assertThat(lotto.getPrizeMoney()).isEqualTo(50000);
+    }
+
+    @DisplayName("로또 번호가 3등 당첨인 상황에서 Lotto 객체에 prize, prizeMoney 정보가 등수에 맞게 업데이트 된다.")
+    @Test
+    void totalCalculateTest3() {
+        List<Integer> winNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+        List<Integer> lottoNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 10));
+        Lotto lotto = new Lotto(lottoNumbers);
+        lottoCalculate.totalCalculate(lotto, winNumbers, bonusNumber);
+        assertThat(lotto.getPrize()).isEqualTo(3);
+        assertThat(lotto.getPrizeMoney()).isEqualTo(1500000);
+    }
+
 }
