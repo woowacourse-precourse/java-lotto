@@ -21,4 +21,8 @@ public class LottoCalculator {
         if (count == 6) {return 1;}
         return 0;
     }
+
+    public static float calculateYield (int cost, List<Integer> rankMyLotto) {
+        return 0f;
+    }
 }
