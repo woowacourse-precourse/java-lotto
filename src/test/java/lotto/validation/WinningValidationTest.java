@@ -3,6 +3,7 @@ package lotto.validation;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -92,24 +93,12 @@ class WinningValidationTest {
                 .hasMessageContaining(ERROR_MESSAGE);
     }
 
-    @DisplayName("보너스 번호 개수(1개)를 잘못 입력한 경우")
-    @Test
-    void isCorrectBonusSizeTest() {
-        // given
-        input = "9, 33";
-
-        // when, then
-        assertThatThrownBy(() -> validation.isCorrectBonusSize(input))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ERROR_MESSAGE);
-    }
-
     @DisplayName("당첨 번호에 포함된 숫자를 입력한 경우")
     @Test
     void isContainWinningTest() {
         // given
         input = "6";
-        List<Integer> winnings = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+        List<Integer> winnings = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
 
         // when, then
         assertThatThrownBy(() -> validation.isContainWinning(input, winnings))

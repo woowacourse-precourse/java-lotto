@@ -69,11 +69,17 @@ public class WinningValidation extends IllegalArgumentException {
     }
 
     public void isNumber(String input) {
-    }
-
-    public void isCorrectBonusSize(String input) {
+        regEx = RegEx.valueOf("NUMBER_REG_EX");
+        if (!Pattern.matches(regEx.getRegEx(), input)) {
+            message = ErrorMessage.valueOf("NUMBER_BONUS_EXCEPTION");
+            throwError(message.getMessage());
+        }
     }
 
     public void isContainWinning(String input, List<Integer> winnings) {
+        if (winnings.contains(Integer.parseInt(input))) {
+            message = ErrorMessage.valueOf("CONTAIN_BONUS_EXCEPTION");
+            throwError(message.getMessage());
+        }
     }
 }
