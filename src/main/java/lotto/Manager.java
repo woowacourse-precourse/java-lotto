@@ -58,20 +58,17 @@ public class Manager {
         }
 
         for (Hi value : Hi.values()) {
-            int c = 0;
             System.out.print(value.getHi());
             for (String s : mapTest.keySet()) {
                 if (value.getHi().substring(0,1).equals(s)) {
                     System.out.print(" - " + mapTest.get(s) + "개");
-                } else {
+                } else if (!(value.getHi().substring(0,1).equals(s))) {
                     System.out.print(" - 0개" );
                 }
-
             }
             System.out.println();
         }
-
-//        System.out.println("count = " + count);
+        System.out.println("***********수익률 구하기**************");
 
 
     }

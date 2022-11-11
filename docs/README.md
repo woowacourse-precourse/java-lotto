@@ -5,6 +5,7 @@
 - [ ] 1~45까지 랜덤 숫자를 중복없이 생성 - LottoNumbers#createRandomNumbers()
 - [ ] 로또 구입 금액에 맞게 로또 발행 - LottoNumbers#buyHowManyLotto()
 - [ ] 당첨 번호 6개 입력 ( , 로 구분 ), 중복 x - Manager#inputWinNumbers()
+- [ ] 수익률 구하기 - Manager#calculateMoney()
   - [ ] 보너스 번호 1개 입력 - Manager#inputBonusNumber()
 - [ ] 로또 숫자 중, 중복된 숫자 있으면 예외 발생 - Lotto#hasNumber()
 
