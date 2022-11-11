@@ -6,6 +6,7 @@ import java.util.List;
 
 public class OutputView {
     private static final String PURCHASE_DETAILS_OUTPUT_MESSAGE = "개를 구매했습니다";
+    private static final String RATE_OF_RETURN_OUTPUT_FORMAT = "총 수익률은 %.1f%%입니다";
 
     public void printPurchaseDetails(List<Lotto> lottoTickets) {
         int numberOfTickets = lottoTickets.size();
@@ -27,5 +28,10 @@ public class OutputView {
         }
         result += "]";
         System.out.println(result);
+    }
+
+    public void printRateOfReturn(double rateOfReturn){
+        System.out.printf(RATE_OF_RETURN_OUTPUT_FORMAT, rateOfReturn);
+        System.out.print("\n");
     }
 }
