@@ -109,7 +109,7 @@ class CalculatorTest {
         }
     }
 
-    @DisplayName("countPublicationLotto 메소드 테스트")
+    @DisplayName("countLottoNumber 메소드 테스트")
     @Nested
     class countPublicationLottoTest {
         @BeforeEach
@@ -128,7 +128,7 @@ class CalculatorTest {
 
         @Test
         void case2() {
-            Cash cash = new Cash(8000);
+            Cash cash = new Cash(14000);
 
             int actual = calculator.countLottoNumber(cash);
             int result = 14;
