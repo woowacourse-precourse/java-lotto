@@ -1,6 +1,8 @@
 package lotto.support;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Validator {
     private static final int UNIT=1000;
@@ -13,6 +15,7 @@ public class Validator {
     private static final String BELOW_AMOUNT="입력값이 1000원 이상이여야 합니다.";
     private static final String NUMERIC_RANGE="1~45 사이의 숫자여야 합니다.";
     private static final String NUMBER_OF_DIGIT="자리 숫자여야 합니다.";
+    private static final String DUPLICATE_NUMBER="중복되지 않은 숫자여야 합니다.";
     private static final String REGEX = "[0-9]+";
     private static final Validator instance=new Validator();
     private Validator(){}
@@ -45,6 +48,12 @@ public class Validator {
     public void checkNumberOfDigit(Integer digit,List<Integer> target){
         if(target.size()!=digit){
             throw new IllegalArgumentException(ERROR_MESSAGE+digit+NUMBER_OF_DIGIT);
+        }
+    }
+    public void checkDuplicate(List<Integer> target){
+        Set<Integer> set=new HashSet<>(target);
+        if(set.size()!=target.size()){
+            throw new IllegalArgumentException(ERROR_MESSAGE+DUPLICATE_NUMBER);
         }
     }
     private Integer stringToInteger(String target){

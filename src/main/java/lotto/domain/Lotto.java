@@ -17,6 +17,7 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         validator.checkNumericalRange(numbers);
         validator.checkNumberOfDigit(DIGIT,numbers);
+        validator.checkDuplicate(numbers);
     }
 
     // TODO: 추가 기능 구현
