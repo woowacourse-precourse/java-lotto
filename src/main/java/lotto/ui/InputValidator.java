@@ -19,4 +19,13 @@ public class InputValidator {
             }
         }
     }
+
+    public void validateInputMoney(String userInput) {
+        validateInputDigit(userInput);
+
+        int money = Integer.parseInt(userInput);
+        if(money/1000 != 0) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
