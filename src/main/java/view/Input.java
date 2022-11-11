@@ -50,16 +50,11 @@ public class Input {
         return Console.readLine().split(",");
     }
 
-    public void checkValidAnswer(String[] enterAnswer) {
-        if (Valid.hasRepeatNumber(enterAnswer) || Valid.enterNumberOverLength(enterAnswer)
-            || Valid.isOverRange(enterAnswer)) {
-            throw new IllegalArgumentException("1-45까지의 수 중 6개의 수를 골라 입력하세요.");
-        }
-    }
-
     public void returnAnswer(String[] enterAnswer) {
-        if (!Valid.hasRepeatNumber(enterAnswer) && !Valid.enterNumberOverLength(enterAnswer)
-                && !Valid.isOverRange(enterAnswer)) {
+        if(Valid.checkValidAnswer(enterAnswer)) {
+            throw new IllegalArgumentException("[ERROR] 1-45까지의 수 중 서로 다른 6개의 수를 골라 입력하세요.");
+        }
+        if (!Valid.checkValidAnswer(enterAnswer)) {
             int[] answerNumber= Arrays.stream(enterAnswer).mapToInt(Integer::parseInt).toArray();
             for (int i : answerNumber) {
                 answer.add(i);
@@ -72,16 +67,11 @@ public class Input {
         return Console.readLine();
     }
 
-    public void checkValidBonus(String bonus, String[] answer) {
-        if (Valid.numberOverLength(bonus) || Valid.isRepeatWithAnswer(bonus, answer)
-        || Valid.isOverRangeValue(bonus)) {
-            throw new IllegalArgumentException("보너스 번호는 정답 수 제외 1~45 수 중 하나의 숫자를 입력해 주세요.");
-        }
-    }
-
     public void returnBonus(String bonusNum, String[] answer) {
-        if (!Valid.numberOverLength(bonusNum) && !Valid.isRepeatWithAnswer(bonusNum, answer)
-                && !Valid.isOverRangeValue(bonusNum)) {
+        if(Valid.checkValidBonus(bonusNum, answer)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 정답 수 제외 1~45 수 중 하나의 숫자를 입력해 주세요.");
+        }
+        if (!Valid.checkValidBonus(bonusNum, answer)) {
             bonus = Integer.parseInt(bonusNum);
         }
     }

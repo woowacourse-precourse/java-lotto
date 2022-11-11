@@ -42,6 +42,15 @@ public class Valid {
         return overLength;
     }
 
+    public static boolean checkValidAnswer(String[] enterAnswer) {
+        boolean isValid = false;
+        if (hasRepeatNumber(enterAnswer) || enterNumberOverLength(enterAnswer)
+                || isOverRange(enterAnswer)) {
+            isValid = true;
+        }
+        return isValid;
+    }
+
     public static boolean numberOverLength(String bonus) {
         boolean overLength = false;
         if (bonus.length() != 1) {
@@ -68,4 +77,12 @@ public class Valid {
         return overRange;
     }
 
+    public static boolean checkValidBonus(String bonus, String[] answer) {
+        boolean isValid = false;
+        if (numberOverLength(bonus) || isRepeatWithAnswer(bonus, answer)
+                || isOverRangeValue(bonus)) {
+            isValid = true;
+        }
+        return isValid;
+    }
 }
