@@ -14,7 +14,7 @@ public class Application {
             mainController.inputBonusNumber();
 
             mainController.calculateWinning();
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] " + e.getMessage());
         }
     }

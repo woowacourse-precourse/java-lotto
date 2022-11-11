@@ -9,7 +9,7 @@ import lotto.Lotto;
 public class LottoGenerator {
     public List<Lotto> createMyLottos(int lottoNumber) {
         List<Lotto> myLottos = new ArrayList<>();
-        for(int i = 0; i < lottoNumber; i++){
+        for (int i = 0; i < lottoNumber; i++) {
             Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             myLottos.add(lotto);
         }

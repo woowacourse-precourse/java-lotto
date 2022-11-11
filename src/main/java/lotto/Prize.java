@@ -1,4 +1,4 @@
-package lotto.Model;
+package lotto;
 
 public enum Prize {
     FIFTH("5등", 5_000),
