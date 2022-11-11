@@ -51,4 +51,6 @@ public class Lotto {
 
         return lottoNumbers;
     }
+
+    private List<>
 }
