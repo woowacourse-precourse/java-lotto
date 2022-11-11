@@ -23,4 +23,13 @@ public class ProfitTest {
         profit.addPrice(5000);
         assertThat(profit.getProfit()).isEqualTo("50.0");
     }
+
+    @Test
+    @DisplayName("로또 구매비용과 당첨금을 입력하면 수익률을 퍼센트로 출력한다. ")
+    void getProfitWithTwoPrice(){
+        profit.checkPayment(10000);
+        profit.addPrice(5000);
+        profit.addPrice(7000);
+        assertThat(profit.getProfit()).isEqualTo("120.0");
+    }
 }
