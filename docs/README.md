@@ -19,7 +19,8 @@ Application Class
     List<Integer> truenum : 입력받는 로또 숫자 다섯개
     List<Lotto> lottos : 입력받은 금액으로 만든 로또 리스트
     List<Integer> res : 최종 결과를 저장
-
+    
+    printAllLottos : 저장되어 있는 모든 로또 정부 출력
     generateLotto : 가격 입력받아서 로또들 생성
     allocateInital : 입력받아서 bonusnum,truenum 만듬
     calcFinal : 로또 보고 몇등인지 계산하고 저장
