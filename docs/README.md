@@ -23,3 +23,6 @@
 ### prize related
 + define amount of each prize
 + count how many matches for each prize
+***
+# NOTE
+### Never abuse declaring unnecessary static variables or functions, <br>which will cause static variable reusing in multiple gradlew clean test
