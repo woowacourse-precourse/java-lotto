@@ -93,7 +93,7 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("사용자가 구매한 값을 0으로 입력했을 때")
+    @DisplayName("사용자가 구매한 값이 0으로 나누어 떨어지지 않을 때")
     @Test
     void 로또구매금액_실패_1_2() {
         String lottoPurchaseMoney = "1001";
