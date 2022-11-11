@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class InputData {
+public class Input {
 
     private String readInput() {
         String userInput = Console.readLine();
