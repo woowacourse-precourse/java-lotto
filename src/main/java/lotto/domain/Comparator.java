@@ -23,6 +23,28 @@ public class Comparator {
         }
     }
 
+    public void compareTickets() {
+        for (List<Integer> ticket: this.tickets) {
+            compareNumbers(ticket);
+        }
+    }
+
+    private void compareNumbers(List<Integer> ticket) {
+        int same = 0;
+        boolean bonus = false;
+
+        for (int number: ticket) {
+            if (number == this.bonusNumber) {
+                bonus = true;
+                continue;
+            }
+            if (this.winningNumbers.contains(number)) {
+                same += 1;
+            }
+        }
+        countSameNumber(same, bonus);
+    }
+
     private void countSameNumber(int same, boolean bonus) {
         if (same == 3 && !bonus) {
             int count = winningTickets.get(Prize.FIFTH);
