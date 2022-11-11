@@ -13,6 +13,15 @@ public class LottoGame {
     private static final String INPUT_MONEY_ERROR_MESSAGE = "[ERROR] 금액을 1000원 단위로 입력해주세요.";
 
     private Lotto winningNumbers;
+    private int bonusNumber;
+
+    public int getBonusNumber(){
+        return this.bonusNumber;
+    }
+
+    public void setBonusNumbers() {
+        this.bonusNumber = translateNumbers(Console.readLine()).get(0);
+    }
 
     public Lotto getwinningNumbers(){
         return this.winningNumbers;
