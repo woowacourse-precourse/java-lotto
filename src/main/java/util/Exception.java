@@ -2,7 +2,11 @@ package util;
 
 import domain.InputConverter;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static util.Constant.LOTTO_PRICE;
+import static util.Constant.NUMBER_OF_NUMBERS;
 
 public class Exception {
 
@@ -17,6 +21,13 @@ public class Exception {
         isValidMoneyUnit(moneyInput);
     }
 
+    public static void isValidLottoNumbersInput(String numbersInput) {
+        isNumeralNumbers(numbersInput);
+        isValidNumberOfNumbers(numbersInput);
+        isUniqueNumbers(numbersInput);
+        isInRangeNumbers(numbersInput);
+    }
+
     private static void isNumeralMoneyInput(String moneyInput) {
         try {
             InputConverter.getMoney(moneyInput);
@@ -29,6 +40,39 @@ public class Exception {
         int money = InputConverter.getMoney(moneyInput);
         if (money % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(NOT_VALID_MONEY_ERROR);
+        }
+    }
+
+    private static void isNumeralNumbers(String numbersInput) {
+        try {
+            InputConverter.getWinningNumbers(numbersInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(NOT_NUMERAL_NUMBER_ERROR);
+        }
+    }
+
+    private static void isValidNumberOfNumbers(String numbersInput) {
+        List<Integer> winningNumbers = InputConverter.getWinningNumbers(numbersInput);
+        if (winningNumbers.size() != NUMBER_OF_NUMBERS) {
+            throw new IllegalArgumentException(NOT_UNIQUE_NUMBER_ERROR);
+        }
+    }
+
+    private static void isUniqueNumbers(String numbersInput) {
+        List<Integer> winningNumbers = InputConverter.getWinningNumbers(numbersInput);
+        List<Integer> uniqueNumbers = winningNumbers.stream()
+                .distinct()
+                .collect(Collectors.toList());
+
+        if (uniqueNumbers.size() != NUMBER_OF_NUMBERS) {
+            throw new IllegalArgumentException(NOT_UNIQUE_NUMBER_ERROR);
+        }
+    }
+
+    private static void isInRangeNumbers(String numbersInput) {
+        int number = InputConverter.getNumber(numbersInput);
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException(NOT_IN_RANGE_NUMBER_ERROR);
         }
     }
 
