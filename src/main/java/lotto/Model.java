@@ -13,10 +13,10 @@ public class Model {
     private final int MAXIMUM_LOTTO_NUMBERS = 45;
     private final int LOTTO_NUMBERS = 6;
 
-    public List<Integer> checkLottoNumber (List<Integer> lottoNumbers, List<List<Integer>> uncheckedLottos) {
+    public List<Integer> checkLottoNumber (List<Integer> lottoNumbers, List<List<Integer>> usersLottos) {
         List<Integer> duplicatedNumbers = new ArrayList<>();
 
-        for (List<Integer> lotto: uncheckedLottos){
+        for (List<Integer> lotto: usersLottos){
             List<Integer> comparingNumbers = lotto.stream()
                     .filter(number -> lottoNumbers.contains(number))
                     .collect(Collectors.toList());
@@ -27,14 +27,14 @@ public class Model {
         return duplicatedNumbers;
     }
 
-    public HashMap<Integer, Integer> checkPrizeLotto (List<Integer> duplicatedNumbers, List<List<Integer>> uncheckedLottos, int bonusNumber) {
+    public HashMap<Integer, Integer> checkPrizeLotto (List<Integer> duplicatedNumbers, List<List<Integer>> usersLottos, int bonusNumber) {
         List<Integer> prizeRankings = new ArrayList<>();
 
         for (int number: duplicatedNumbers) {
             prizeRankings.add(addPrizeRanking(number));
         }
 
-        checkBonusNumber(prizeRankings, uncheckedLottos, bonusNumber);
+        checkBonusNumber(prizeRankings, usersLottos, bonusNumber);
 
         return makeNumberByRanking(prizeRankings);
     }
@@ -50,20 +50,20 @@ public class Model {
         return numberByRanking;
     }
 
-    public void checkBonusNumber(List<Integer> prizeRankings, List<List<Integer>> uncheckedLottos, int bonusNumber){
+    public void checkBonusNumber(List<Integer> prizeRankings, List<List<Integer>> usersLottos, int bonusNumber){
         int changedRanking;
 
         for (int temp = 0; temp < prizeRankings.size(); temp++) {
 
             if (prizeRankings.get(temp) == 3) {
-                changedRanking = upRanking(uncheckedLottos.get(temp), bonusNumber);
+                changedRanking = upRanking(usersLottos.get(temp), bonusNumber);
                 prizeRankings.set(temp, changedRanking);
             }
         }
     }
 
-    private int upRanking (List<Integer> unCheckedLotto, int bonusNumber) {
-        if (unCheckedLotto.contains(bonusNumber)) {
+    private int upRanking (List<Integer> usersLottos, int bonusNumber) {
+        if (usersLottos.contains(bonusNumber)) {
             return 2;
         }
         return 3;
@@ -106,13 +106,13 @@ public class Model {
     }
 
     public List<List<Integer>> repeatGetLottoNumber(int moneyNumber) {
-        List<List<Integer>> uncheckedLottos = new ArrayList<>();
+        List<List<Integer>> usersLottos = new ArrayList<>();
 
         for (int temp = 0; temp < moneyNumber; temp++) {
-            uncheckedLottos.add(getLottoNumber());
+            usersLottos.add(getLottoNumber());
         }
 
-        return uncheckedLottos;
+        return usersLottos;
     }
 
     private List<Integer> getLottoNumber() {
