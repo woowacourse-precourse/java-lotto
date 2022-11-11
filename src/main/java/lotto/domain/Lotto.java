@@ -1,7 +1,8 @@
 package lotto.domain;
 
-import lotto.constant.ErrorMessage;
 import lotto.constant.LottoRule;
+import lotto.exception.DuplicateLottoNumberException;
+import lotto.exception.LottoNumberOutOfBoundException;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class Lotto {
     private void validateRangeOfNumber(int number) {
         if (number > LottoRule.MAXIMUM_NUMBER.getValueForRule()
                 || number < LottoRule.MINIMUM_NUMBER.getValueForRule()) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_NUMBER.getMessage());
+            throw new LottoNumberOutOfBoundException();
         }
     }
 
@@ -37,7 +38,7 @@ public class Lotto {
 
     private void isDuplicate(int numberToCompare, int numberWithNext) {
         if (numberToCompare==numberWithNext) {
-            throw new IllegalArgumentException(ErrorMessage.DUPLICATE.getMessage());
+            throw new DuplicateLottoNumberException();
         }
     }
 

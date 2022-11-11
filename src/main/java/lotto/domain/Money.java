@@ -1,7 +1,7 @@
 package lotto.domain;
 
-import lotto.constant.ErrorMessage;
 import lotto.constant.LottoRule;
+import lotto.exception.IllegalMoneyInputException;
 
 public class Money {
     private final int money;
@@ -17,7 +17,7 @@ public class Money {
 
     public void validate(int money) throws IllegalArgumentException {
         if (money % LottoRule.COST.getValueForRule() != 0 || money < 0) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_DIVISIBLE.getMessage());
+            throw new IllegalMoneyInputException();
         }
     }
 

@@ -1,7 +1,7 @@
 package lotto.domain;
 
-import lotto.constant.ErrorMessage;
 import lotto.constant.LottoRule;
+import lotto.exception.IllegalLottoNumberAmountException;
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,8 +24,7 @@ public class WinningLottoGenerator {
 
     private static void validate(int size) {
         if(size!=LottoRule.AMOUNT_OF_NUMBER.getValueForRule()) {
-            throw new IllegalArgumentException(
-                    ErrorMessage.NOT_EQUAL_TO_LOTTO_NUMBER_AMOUNT.getMessage());
+            throw new IllegalLottoNumberAmountException();
         }
     }
 }

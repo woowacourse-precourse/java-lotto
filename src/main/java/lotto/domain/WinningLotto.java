@@ -1,7 +1,8 @@
 package lotto.domain;
 
-import lotto.constant.ErrorMessage;
 import lotto.constant.LottoRule;
+import lotto.exception.DuplicateLottoNumberException;
+import lotto.exception.LottoNumberOutOfBoundException;
 
 import java.util.Map;
 
@@ -21,7 +22,7 @@ public class WinningLotto {
         if (winningNumbers.size() !=
                 LottoRule.AMOUNT_OF_NUMBER.getValueForRule() +
                         LottoRule.AMOUNT_OF_BONUS.getValueForRule()) {
-            throw new IllegalArgumentException(ErrorMessage.DUPLICATE.getMessage());
+            throw new DuplicateLottoNumberException();
         }
 
         for (Integer number : winningNumbers.keySet()) {
@@ -32,7 +33,7 @@ public class WinningLotto {
     private void validateNumberInRange(Integer key) {
         if (key>LottoRule.MAXIMUM_NUMBER.getValueForRule() ||
                 key<LottoRule.MINIMUM_NUMBER.getValueForRule()) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_NUMBER.getMessage());
+            throw new LottoNumberOutOfBoundException();
         }
     }
 

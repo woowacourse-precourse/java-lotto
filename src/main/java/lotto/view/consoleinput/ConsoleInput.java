@@ -1,6 +1,7 @@
 package lotto.view.consoleinput;
 
 import lotto.constant.ErrorMessage;
+import lotto.exception.UnexpectedException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,7 +16,7 @@ public class ConsoleInput {
         try {
             return userInputReader.readLine();
         } catch (IOException error) {
-            throw new IllegalArgumentException(ErrorMessage.UNEXPECTED.getMessage());
+            throw new UnexpectedException();
         }
     }
 }
