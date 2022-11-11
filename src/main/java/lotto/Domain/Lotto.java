@@ -17,7 +17,7 @@ public class Lotto {
         }
     }
 
-    public List<List<Integer>> setLottos() {
+    public List<List<Integer>> setLottos(int lottoCount) {
         return Collections.emptyList();
     }
 }
