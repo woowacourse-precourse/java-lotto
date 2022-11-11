@@ -34,12 +34,15 @@ public class Manager {
     public int compareLottoNumbers(Lotto purchasedLotto, Lotto winningLotto) {
         int numberOfMatches = 0;
         for (int i = 0; i < winningLotto.getNumbers().size(); i++) {
-            if(purchasedLotto.getNumbers().contains(winningLotto.getNumbers().get(i))){
-                numberOfMatches ++;
+            if (purchasedLotto.getNumbers().contains(winningLotto.getNumbers().get(i))) {
+                numberOfMatches++;
             }
         }
         return numberOfMatches;
     }
 
+    public boolean hasBonusNumber(Lotto purchasedLotto, int bonunsNumber) {
+        return purchasedLotto.getNumbers().contains(bonunsNumber);
+    }
 }
 
