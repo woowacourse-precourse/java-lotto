@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoService {
-    private static final int UNIT = 1000;
     private static final LottoService instance = new LottoService();
+    private static final int UNIT = 1000;
     private final LottoRepository lottoRepository;
 
     private LottoService() {
@@ -28,12 +28,12 @@ public class LottoService {
         lottoRepository.updateCountLotto(countPurchasedLotto(purchaseAmount));
     }
 
-    public List<Lotto> buyLotto(Integer countLotto) {
+    public void purchasedLotto() {
         List<Lotto> lottos=new ArrayList<>();
-        for(int i=0;i<countLotto;i++){
+        for(int i=0;i<lottoRepository.getCountLotto();i++){
             Lotto lotto=new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             lottos.add(lotto.sort());
         }
-        return lottos;
+        lottoRepository.updatePurchasedLotto(lottos);
     }
 }

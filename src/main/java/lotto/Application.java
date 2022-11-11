@@ -10,5 +10,6 @@ public class Application {
         LottoController lottoController=LottoController.getInstance();
         lottoController.run();
         lottoController.countPurchasedLotto(new PurchaseAmount(Console.readLine()));
+        lottoController.purchaseLotto();
     }
 }
