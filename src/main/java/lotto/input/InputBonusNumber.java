@@ -5,6 +5,7 @@ import lotto.model.BonusNumber;
 
 public class InputBonusNumber {
     public static BonusNumber input() {
+        System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
         validateInteger(input);
         return new BonusNumber(Integer.parseInt(input));

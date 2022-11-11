@@ -7,6 +7,7 @@ import java.util.List;
 
 public class InputWinningNumbers {
     public static List<Integer> input() {
+        System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         validate(input);
 
