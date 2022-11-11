@@ -13,9 +13,10 @@ public class UserLotto {
 
     public UserLotto() {
         buyLotto();
+        printMyLotto();
     }
 
-    public void printMyLotto() {
+    private void printMyLotto() {
         OutputView.printIOMessage(
                 IOMessage.WRITE_AMOUNT_MESSAGE
                         .mergeAndGetMessage(String.valueOf(lottoSet.size()))
