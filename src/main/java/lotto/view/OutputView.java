@@ -13,12 +13,12 @@ public class OutputView {
     public static void printPurchaseLottoNumbers(List<Lotto> lottoNumbers) {
         int i,j;
         for ( i = 0; i < lottoNumbers.size(); i++) {
-            System.out.println("[");
+            System.out.print("[");
             List<Integer> lottoOneSetNumbers=new ArrayList<>(lottoNumbers.get(i).getNumbers());
             for( j=0;j< 5; j++) {
-                System.out.println(lottoOneSetNumbers.get(j) + ",");
+                System.out.print(lottoOneSetNumbers.get(j) + ",");
             }
-            System.out.println(lottoOneSetNumbers.get(j) + "]");
+            System.out.print(lottoOneSetNumbers.get(j) + "] \n");
         }
     }
 
