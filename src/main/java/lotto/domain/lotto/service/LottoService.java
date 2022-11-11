@@ -35,21 +35,28 @@ public class LottoService {
     public void compareNumbers(List<Lotto> lottos, Lotto prizeLotto, int bonusNumber) {
         Map<String, Integer> result = new HashMap<>();
         for (Lotto lotto : lottos) {
-            Map<String, Integer> howManyMatchNumber =
-                    howManyMatchNumber(lotto.getNumbers(), prizeLotto.getNumbers(), bonusNumber);
-            String key = keyNameForResult(howManyMatchNumber.get(UserServiceConstants.PRIZE), howManyMatchNumber.get("bonus"));
-            if (result.get(key) != null) {
-                result.put(key, result.get(key) + 1);
-            }
-            result.putIfAbsent(key, 1);
+            String key = getKeyForMap(lotto, prizeLotto, bonusNumber);
+            putValues(result, key);
         }
         OutputView.printResult(result);
+    }
+
+    private void putValues(Map<String, Integer> result, String key) {
+        if (result.get(key) != null) {
+            result.put(key, result.get(key) + 1);
+        }
+        result.putIfAbsent(key, 1);
+    }
+
+    private String getKeyForMap(Lotto lotto, Lotto prizeLotto, int bonusNumber) {
+        Map<String, Integer> howManyMatchNumber =
+                howManyMatchNumber(lotto.getNumbers(), prizeLotto.getNumbers(), bonusNumber);
+        return keyNameForResult(howManyMatchNumber.get(UserServiceConstants.PRIZE), howManyMatchNumber.get("bonus"));
     }
 
     static int PRIZE = 0;
     static int BONUS = 0;
 
-    // TODO
     private Map<String, Integer> howManyMatchNumber(List<Integer> lotto, List<Integer> prizeLotto, int bonusNumber) {
         Map<String, Integer> countMatchNumbers = new HashMap<>();
         for (int number : lotto) {
