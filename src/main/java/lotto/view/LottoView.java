@@ -1,10 +1,7 @@
 package lotto.view;
 
-import lotto.model.Lotto;
 import lotto.model.LottoIssuingMachine;
 import lotto.model.LottoWinningStatistics;
-
-import java.util.List;
 
 public class LottoView {
 
@@ -22,11 +19,7 @@ public class LottoView {
     }
 
     public void printIssuedLottoDetails(LottoIssuingMachine issuingMachine) {
-        List<Lotto> lottos = issuingMachine.getLottos();
-        System.out.println(lottos.size() + "개를 구매했습니다.");
-        for (Lotto lotto : lottos) {
-            System.out.println(lotto);
-        }
+        System.out.println(issuingMachine);
     }
 
     public void printWinningNumbersInputCommand() {

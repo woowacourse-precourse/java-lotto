@@ -14,8 +14,15 @@ public class LottoIssuingMachine {
         lottos = new ArrayList<>();
     }
 
-    public List<Lotto> getLottos() {
-        return lottos;
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(lottos.size())
+                .append("개를 구매했습니다.\n");
+        for (Lotto lotto : lottos) {
+            builder.append(lotto).append("\n");
+        }
+        return builder.toString();
     }
 
     public void issue(int purchaseMoney) {
