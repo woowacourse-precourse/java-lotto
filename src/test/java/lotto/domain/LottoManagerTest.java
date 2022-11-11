@@ -64,4 +64,16 @@ public class LottoManagerTest {
                 Arguments.of(6, List.of(3, 9, 17, 25, 34, 43))
         );
     }
+
+    @DisplayName("일치하는 수를 인자로 받아 당첨 등수를 얻는 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"0:0", "1:0", "2:0", "3:5", "4:4", "5:3", "6:1"}, delimiter = ':')
+    void getRankTest(int sameNumberCount, int rank) throws Exception {
+        // Reflection Setting
+        LottoManager lottoManager = new LottoManager();
+        Method privateMethod = lottoManager.getClass().getDeclaredMethod("getRank", int.class);
+        privateMethod.setAccessible(true);
+
+        assertThat(privateMethod.invoke(lottoManager, sameNumberCount)).isEqualTo(rank);
+    }
 }
