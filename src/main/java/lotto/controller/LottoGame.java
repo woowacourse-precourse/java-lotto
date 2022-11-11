@@ -3,11 +3,20 @@ package lotto.controller;
 import lotto.domain.Lotto;
 import lotto.domain.RandomNumbers;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 public class LottoGame {
+    public void startLottoGame() {
+        int quantity = getLottoPurchaseAmount();
+        OutputView.printLottoPurchaseCompleteAmount(quantity);
+
+        List<Lotto> purchaseLotto = buyLotto(quantity);
+        OutputView.printLottoFormatting(purchaseLotto);
+    }
+
     private int getLottoPurchaseAmount() {
         int quantity = InputView.getLottoPurchaseAmount() / 1000;
         return quantity;
