@@ -45,4 +45,8 @@ public class Lotto {
         Set<Integer> eraseDuplicatedNumber = new HashSet<>(numbers);
         return eraseDuplicatedNumber.size() != LOTTO_NUMBER_LENGTH;
     }
+
+    public List<Integer> getLottoNumber() {
+        return this.numbers;
+    }
 }
