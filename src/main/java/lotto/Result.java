@@ -1,7 +1,10 @@
 package lotto;
 
+import static lotto.Rank.*;
+
 public class Result {
     private double earningsRate;
+    private long resultMoney;
     private int first = 0;
     private int second = 0;
     private int third = 0;
@@ -50,6 +53,11 @@ public class Result {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + second + "개");
         System.out.println("6개 일치 (2,000,000,000원) - " + first + "개");
         System.out.println("총 수익률은 " + Math.round(earningsRate*10)/10.0 + "%입니다.");
+    }
+
+    public void calcResultMoney(){
+        resultMoney = first*FIRST.money() + second*SECOND.money() + third*THIRD.money()
+                + fourth*FOURTH.money() + fifth*FIFTH.money();
     }
 
     public void calcEarningRate(int userMoney, int resultMoney){
