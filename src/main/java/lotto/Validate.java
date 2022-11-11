@@ -24,13 +24,15 @@ public class Validate {
             isContainOthers(num);
         }
     }
-    public void validateBonusNumber(String userInput)throws IllegalArgumentException{
+    public void validateBonusNumber(List<Integer> winningNumber, String userInput)throws IllegalArgumentException{
         int bonusNumber = Integer.parseInt(userInput);
         if(userInput.length() > 2)
             throw new IllegalArgumentException("[ERROR] 올바른 숫자를 입력하세요.");
+        isContainOthers(userInput);
         if(bonusNumber < 1 || bonusNumber > 45)
             throw new IllegalArgumentException("[ERROR] 1 ~ 45 사이의 숫자를 입력하세요.");
-        isContainOthers(userInput);
+        if(winningNumber.contains(bonusNumber))
+            throw new IllegalArgumentException("[ERROR] 당첨번호와 겹치지 않는 숫자를 입력하세요.");
     }
     public boolean validUserWinningNumber(List<Integer> winningNumber) {
         Set<Integer> overlapCheck = new HashSet<>(winningNumber);
