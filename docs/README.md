@@ -9,7 +9,7 @@
 ## 개인 목표 사항
 - 클래스를 패키지로 묶어 가독성을 높이자
 ## 기능 목록
-- MVC Pattern을 적용해 문제를 해결합니다.M:Module, V:View, C:Controller E:ErrorCheck
+- MVC Pattern을 적용해 문제를 해결합니다.M:Model, V:View, C:Controller E:ErrorCheck
 - M [ ] 로또 구매 금액을 입력받는다. - InputLotto#inputMoney()
   - E [ ] 1000으로 나워지는지 확인한다 -validateDivideThousand()
 - M [ ] 구매 금액을 통해 구매할 로또 장수를 계산한다 - calculateLottoAmount()
@@ -25,7 +25,7 @@
 - M [ ] 로또 번호를 랜덤으로 생성해 리스트에 담는다 - LottoData#makeLottoNumber()
 - M [ ] 로또 구매 장수 만큼 로또 객체 생성해 리스트에 담는다 - LottoData#makeLottoList()
 - M [ ] ~~로또 객체의 번호와 당첨 번호, 보너스 번호를 비교해~~일치 개수, 보너스번호 일치 여부로 당첨 등수 산정한다. - LottoCalculate#calculatePrize()
-  - M [ ] 로또 번호, 당첨 번호를 비교해 일치 개수를 계산한다 - LottoCalculate#countMatches()
+  - M [x] 로또 번호, 당첨 번호를 비교해 일치 개수를 계산한다 - LottoCalculate#countMatches()
   - M [ ] 로또 번호, 보너스 번호를 비교해 일치 여부 확인한다 - LottoCalculate#checkBonusNumber()
 - M [ ] 당첨 금액을 계산한다. - LottoCalculate#calculateWinMoney()
 - M [ ] 수익률을 계산한다. (소수점 둘째 자리에서 반올림.) - LottoCalculate#calculateWinPersentage()
