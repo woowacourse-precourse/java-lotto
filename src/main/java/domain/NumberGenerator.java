@@ -10,7 +10,7 @@ import java.util.Set;
 
 public class NumberGenerator {
 
-    public List<Integer> createUniqueRandomNumbers() {
+    public static List<Integer> createUniqueRandomNumbers() {
         Set<Integer> LottoNumbers = new HashSet<>();
         while (LottoNumbers.size() < 6) {
             int number = Randoms.pickNumberInRange(Constant.MINIMUM_NUMBER, Constant.MAXIMUM_NUMBER);
