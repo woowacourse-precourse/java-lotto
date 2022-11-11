@@ -1,7 +1,19 @@
 package lotto;
 
+import lotto.InputOutput.UserInputHandler;
+
 public class Application {
+    static UserInputHandler inputHandler;
+
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Application lottoApplication = new Application();
+
+        inputHandler = new UserInputHandler();
+        lottoApplication.start();
+    }
+
+    void start(){
+
+        inputHandler.getHowMuchTickets();
     }
 }
