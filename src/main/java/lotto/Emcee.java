@@ -30,7 +30,9 @@ public class Emcee {
     }
 
     public void guideWinningNumber() {
-
+        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println("당첨 번호는 1과 45 사이의 서로 다른 6개의 숫자입니다.");
+        System.out.println("각 번호를 쉼표로 구분해서 입력해주세요.");
     }
 
     public void guideBonusNumber() {
