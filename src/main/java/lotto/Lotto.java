@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Lotto {
 
-    private final List<LottoNumber> numbers;
+    private final List<Integer> numbers;
 
-    public Lotto(List<LottoNumber> numbers) {
+    public Lotto(List<Integer> numbers) {
         this.numbers = numbers;
     }
 
@@ -15,7 +15,7 @@ public class Lotto {
         return numbers.size();
     }
 
-    public LottoNumber get(int order) {
+    public int get(int order) {
         return numbers.get(order);
     }
 
