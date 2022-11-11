@@ -1,8 +1,10 @@
 package lotto.controller;
 
+import java.util.Collections;
+import java.util.List;
 import lotto.model.Bonus;
-import lotto.model.Player;
 import lotto.model.Lotto;
+import lotto.model.Player;
 import lotto.model.Purchase;
 import lotto.view.InputView;
 
@@ -20,8 +22,10 @@ public class LottoController {
         }
 
         for (int i = 0; i < issueCount.get(); i++) {
-            Player playerNumbers = new Player();
-            System.out.println(playerNumbers.get());
+            Player player = new Player();
+            List<Integer> playerNumbers = player.get();
+            Collections.sort(playerNumbers);
+            System.out.println(playerNumbers);
         }
 
     }
