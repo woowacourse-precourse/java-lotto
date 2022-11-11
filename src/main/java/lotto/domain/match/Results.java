@@ -1,6 +1,6 @@
 package lotto.domain.match;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +13,7 @@ public class Results {
     }
 
     private Map<MatchAndReward, Integer> createCounts(List<MatchAndReward> matchAndRewardList) {
-        Map<MatchAndReward, Integer> counts = new HashMap<>();
+        Map<MatchAndReward, Integer> counts = new EnumMap<>(MatchAndReward.class);
 
         for (MatchAndReward matchAndReward : matchAndRewardList) {
             int currentCount = counts.getOrDefault(matchAndReward, 0);
