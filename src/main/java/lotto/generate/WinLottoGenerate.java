@@ -12,7 +12,15 @@ public class WinLottoGenerate {
         Output.askWinNumber();
         String[] winNumber = Console.readLine().split(",");
         winNumberValidate(winNumber);
+        Output.askBonusNumber();
+        String bonus = Console.readLine();
+        bonusValidate(bonus);
+    }
 
+    private void bonusValidate(String bonus) {
+        if(!bonus.chars().allMatch(Character::isDigit)){
+            throw new IllegalArgumentException();
+        }
     }
 
     private void winNumberValidate(String[] winNumber) {
