@@ -16,9 +16,13 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
-        if (numbers.size() != numbers.stream().distinct().count()) {
+        if (numbers.size() != numbers.stream().distinct().filter(this::inRange).count()) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private boolean inRange(int number) {
+        return number >= 1 && number <= 45;
     }
 
     public boolean hasNumber(int number) {
