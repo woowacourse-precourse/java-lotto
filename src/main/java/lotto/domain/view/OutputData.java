@@ -38,8 +38,7 @@ public abstract class OutputData {
     }
 
     private static void printYield(LottoResult lottoResult, Pay pay) {
-        System.out.println(
-                String.format(OUTPUT_YIELD_MESSAGE.getMessage(), Math.round(lottoResult.calculateYield(pay) * 10) / 10.0));
+        System.out.printf((OUTPUT_YIELD_MESSAGE.getMessage()) + "%n", Math.round(lottoResult.calculateYield(pay) * 10) / 10.0);
 
     }
 }
