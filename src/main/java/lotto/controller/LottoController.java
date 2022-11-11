@@ -3,6 +3,8 @@ package lotto.controller;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.domain.Lotto;
+import lotto.service.UserLottoService;
 import lotto.validation.BonusLottoValidation;
 import lotto.validation.LotteryWinningNumberValidation;
 import lotto.validation.LottoMoneyValidation;
@@ -14,7 +16,6 @@ import lotto.view.View;
 
 public class LottoController {
 
-
     /**
      * 사용자에게 money 를 입력받고 validation 후 돈을 기억해둔다.
      * 사용자에게 LotteryWinningNumber 를 입력받고 validation 후 기억해둔다.
@@ -23,7 +24,7 @@ public class LottoController {
     public void lottoProcedure() {
         String userMoneyInput = lottoMoneyInputView();
         lottoMoneyInputValidation(userMoneyInput);
-        int userMoney = Integer.parseInt(userMoneyInput);
+        List<Lotto> userLotto = createUserLotto(userMoneyInput);
 
         String userLottoWinningInput = lottoWinningNumberView();
         winningLottoInputValidation(userLottoWinningInput);
@@ -102,6 +103,11 @@ public class LottoController {
         return Arrays.stream(userWinningLottoInput)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    private static List<Lotto> createUserLotto(String userMoneyInput) {
+        UserLottoService userLottoService = new UserLottoService(userMoneyInput);
+        return userLottoService.createLottoNumber();
     }
 
 }
