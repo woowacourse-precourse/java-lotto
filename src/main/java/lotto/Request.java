@@ -52,4 +52,14 @@ public class Request {
 			throw new IllegalArgumentException();
 		}
 	}
+
+	public void isLottoNumbers() {
+		String[] splitUserInput = userInput.split(",");
+
+		for(String eachNumber : splitUserInput) {
+			if(Pattern.matches("^([1-9])|([1-3][0-9])|(4[0-5])$", eachNumber)) {
+				throw new IllegalArgumentException();
+			}
+		}
+	}
 }
