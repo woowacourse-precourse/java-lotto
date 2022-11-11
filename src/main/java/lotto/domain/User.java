@@ -4,8 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class User {
     //2주차 피드백 반영
@@ -13,7 +11,7 @@ public class User {
 
     private int money;
     private List<Integer> winningNumbers;
-    private int bonusNum;
+    private int bonusNumber;
 
     public void inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -31,6 +29,11 @@ public class User {
         String winningNumbers = Console.readLine();
 
         this.winningNumbers=convertToList(winningNumbers);
+    }
+
+    public void inputBonusNumber(){
+        String bonusNumber = Console.readLine();
+        this.bonusNumber = convertToInt(bonusNumber);
     }
 
     public int convertToInt(String userInput) {
