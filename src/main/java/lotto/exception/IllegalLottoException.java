@@ -1,10 +1,9 @@
 package lotto.exception;
 
-import lotto.common.exception.BaseException;
+public class IllegalLottoException extends IllegalBaseException {
+    static final String MESSAGE = "로또는 중복되지않은 6개여야합니다.";
 
-public class IllegalLottoException extends BaseException {
-    final static String MSG = "로또는 중복되지않은 6개여야합니다.";
-    public IllegalLottoException(){
-        super(MSG);
+    public IllegalLottoException() {
+        super(MESSAGE);
     }
 }
