@@ -13,6 +13,7 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         isSize_6(numbers);
         isNotDuplicated(numbers);
+        isInRange(numbers);
     }
     private void isSize_6(List<Integer> numbers){
         if (numbers.size() != 6) {
@@ -27,7 +28,7 @@ public class Lotto {
     }
     private void isInRange(List<Integer> numbers){
         for(int n : numbers){
-            if(n<1 && n>45){
+            if(n<1 || n>45){
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }
