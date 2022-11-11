@@ -73,6 +73,6 @@
 - [ ✔ ] 로또를 발행해야 한다. `LottoGenerator#publish`
 - [ ✔ ] 로또를 추첨한다. `Lotto#draw`
 - [ ✔ ] 로또가 유효한지 검사한다. `Lotto#validate`
-- [ ] 로또 구입 금액을 입력하면 구입 금액에 해당하는 만큼 로또를 구매한다. `User#buyLotto`
-- [ ] 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 당첨 내역을 출력한다. `User#getWinningHistory`
+- [ ✔ ] 로또 구입 금액을 입력하면 구입 금액에 해당하는 만큼 로또를 구매한다. `User#buyLotto`
+- [ ✔ ] 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 당첨 내역을 출력한다. `User#getWinningHistory`
 - [ ] 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 수익률을 출력한다. `User#getYield`
