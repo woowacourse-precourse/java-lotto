@@ -30,7 +30,7 @@ public class Calculator {
         double result = (((revenue - coin)/coin) * 100);
         result = Math.round(result * 10)/10.0;
         yield = result;
-        System.out.println("총 수익률은 " + yield + "%입니다.");
+        System.out.println("총 수익률은 " + yield + 100 + "%입니다.");
         return result;
     }
 }

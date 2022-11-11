@@ -22,22 +22,33 @@ public class Input {
     public static int buyCount;
     public static List<Integer> lottoNumber = new ArrayList<>();
     public static int lottoBonusNumber;
+    private static String errorPattern = "^[0-9]";
     private final static String inputCoinString = "구입금액을 입력해 주세요.";
+    private final static String inputErrorMessage = "[ERROR] 문자를 입력할 수 없습니다.";
     private final static String coinErrorMessage = "[ERROR] 구입금액은 천원단위만 가능합니다.";
     private final static String inputNumberString = "당첨 번호를 입력해 주세요.";
     private final static String inputBonusNumberString = "보너스 번호를 입력해 주세요.";
 
     public static void inputCoin() {
         System.out.println(inputCoinString);
-        coin = Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
+        // 문자를 포함하여 입력받았을 경우 예외 처리
+        coinStringError(input);
+        coin = Integer.parseInt(input);
         // 입력받은 금액이 1000원 단위가 아닐 때 예외 처리
         coinError(coin);
         // 입력받은 금액이 로또를 몇번 살 수 있는지 저장
         buyCount = coin / 1000;
         // 구입한 로또의 개수 출력
-        System.out.println(buyCount + "개를 구입했습니다.");
+        System.out.println(buyCount + "개를 구매했습니다.");
     }
 
+    public static void coinStringError(String input){
+        if(input.contains(errorPattern)){
+            System.out.println(inputErrorMessage);
+            throw new IllegalArgumentException();
+        }
+    }
     public static void coinError(int coin) {
         if (coin % 1000 != 0) {
             System.out.println(coinErrorMessage);

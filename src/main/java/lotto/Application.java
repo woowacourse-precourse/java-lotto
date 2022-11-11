@@ -24,6 +24,8 @@ public class Application {
         }
         // 당첨 번호를 입력
         Input.inputWinningNumber();
+        // 로또 입력 번호 예외사항 확인 기능 실행
+        new Lotto(Input.lottoNumber);
         // 보너스 번호 입력
         Input.inputBonusNumber();
 
@@ -44,7 +46,7 @@ public class Application {
         Output.outputLottoRank(rankOne, rankTwo, rankThree, rankFour, rankFive);
         // 로또 총 수익 계산 기능 실행
         Calculator.revenue(rankOne, rankTwo, rankThree, rankFour, rankFive);
-        // 수익률 계산 기능 실행
+        // 수익 계산 기능 실행
         Calculator.yield(Calculator.revenue, Input.coin);
     }
 }
