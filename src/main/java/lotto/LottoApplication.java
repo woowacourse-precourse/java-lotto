@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoGenerator;
+import lotto.domain.LottoSummary;
 import lotto.domain.LottoTickets;
 import lotto.domain.Money;
 import lotto.domain.Rank;
@@ -28,6 +29,8 @@ public class LottoApplication {
             List<Rank> ranks = lottoTickets.getLottos().stream()
                     .map(winningLotto::match)
                     .collect(Collectors.toList());
+            LottoSummary summary = new LottoSummary(ranks, money);
+            OutputView.printSummary(summary);
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e.getMessage());
             throw e;

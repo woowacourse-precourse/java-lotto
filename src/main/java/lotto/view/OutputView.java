@@ -1,6 +1,7 @@
 package lotto.view;
 
 import lotto.domain.Lotto;
+import lotto.domain.LottoSummary;
 import lotto.domain.LottoTickets;
 
 import java.util.List;
@@ -17,6 +18,10 @@ public class OutputView {
         lottoTicketList.forEach(lottoTicket ->
                         System.out.println(String.format(LOTTO_TICKET_NUMBERS, lottoTicket)));
         System.out.println();
+    }
+
+    public static void printSummary(LottoSummary summary) {
+        System.out.println(summary);
     }
 
     public static void printErrorMessage(String errorMessage) {
