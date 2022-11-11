@@ -1,6 +1,8 @@
 package lotto.model;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -29,6 +31,9 @@ public class Lotto {
     }
 
     private void validateNumOverlap(List<Integer> numbers) {
-        // TODO: 추가 기능 구현
+        Set<Integer> numberCollect = numbers.stream().collect(Collectors.toSet());
+        if (numbers.size() != numberCollect.size()) {
+            throw new IllegalArgumentException();
+        }
     }
 }
