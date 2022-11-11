@@ -1,11 +1,13 @@
 package lotto.domain.lotto;
 
+import static lotto.domain.lotto.Lotto.MAX_NUMBER;
+import static lotto.domain.lotto.Lotto.MIN_NUMBER;
+import static lotto.domain.lotto.Lotto.NUMBER_COUNT;
+
 import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
-
-import static lotto.domain.lotto.Lotto.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class LottoSeller {
 
@@ -21,16 +23,16 @@ public class LottoSeller {
         validateMoney(money);
 
         int lottoCount = money / PRICE;
-        List<Lotto> lottoList = new ArrayList<>();
-
-        for (int i = 0; i < lottoCount; i++) {
-            lottoList.add(createRandomLotto());
-        }
-
-        return lottoList;
+        return Stream.generate(this::createRandomLotto)
+                .limit(lottoCount)
+                .collect(Collectors.toList());
     }
 
     private void validateMoney(int money) {
+        if (money <= 0) {
+            throw new IllegalArgumentException("로또 구매 금액은 0보다 커야 합니다.");
+        }
+
         if (money % PRICE != 0) {
             throw new IllegalArgumentException("로또 구앱 금액은 1,000원 단위로 입력해야 합니다.");
         }
