@@ -12,7 +12,7 @@ public class User {
 
     private void validate(){
         if(checkDivisibleByThousand(money.substring(money.length()-3))){
-            throw new IllegalArgumentException("[ERROR] 구입금액은 1000원 단위이어야 합니다.");
+            throw new IllegalArgumentException("구입금액은 1000원 단위이어야 합니다.");
         }
     }
 
