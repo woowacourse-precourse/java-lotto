@@ -23,7 +23,8 @@ public class LottoNumbers {
     private List<List<Integer>> createRandomNumbers(int want) {
         numbers = new ArrayList<>();
         for (int i = 0; i < want; i++) {
-            basket = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            basket = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            Collections.sort(basket);
             numbers.add(basket);
         }
         return numbers;
