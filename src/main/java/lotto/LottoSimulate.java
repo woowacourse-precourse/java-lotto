@@ -16,12 +16,15 @@ public class LottoSimulate {
 
     private final Statistics statistics = new Statistics();
 
+    private final Calculate calculate = new Calculate();
+
     public void start() {
         try {
             int purchasePrice = inputPurchasePrice();
             List<Lotto> lottos = buyLottos(purchasePrice);
             WinLotto winLotto = new WinLotto(inputWinLottoNumbers(), inputWinLottoBonusNumber());
             Map<Prize, Integer> lottoStatics = getLottoStatics(winLotto, lottos);
+            calculateYield(purchasePrice, lottoStatics);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -59,5 +62,10 @@ public class LottoSimulate {
         Map<Prize,Integer> lottoStatics = statistics.produce(winLotto, lottos);
         print.out(lottoStatics);
         return lottoStatics;
+    }
+
+    private void calculateYield(int purchasePrice, Map<Prize, Integer> lottoStatics) {
+        double percent = calculate.yield(purchasePrice, lottoStatics);
+        print.yield(percent);
     }
 }
