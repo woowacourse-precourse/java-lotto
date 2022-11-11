@@ -22,9 +22,14 @@ public class Lotto {
         }
         if (hasOutOfRangeNumber(numbers)) {
             throw new IllegalArgumentException(
-                "로또 번호는 " + RANGE_START + "부터 " + RANGE_END + " 사이의 숫자여야 합니다.");
+                "로또 번호는 " + RANGE_START + "부터 " + RANGE_END + " 사이의 숫자여야 합니다. 입력 : " + numbers);
+        }
+        if (hasDuplication(numbers)) {
+            throw new IllegalArgumentException("로또 번호는 중복된 숫자를 가지면 안됩니다. 입력 : " + numbers);
         }
     }
+
+    // TODO: 추가 기능 구현
 
     private boolean hasOutOfRangeNumber(List<Integer> numbers) {
         return numbers.stream()
@@ -35,7 +40,11 @@ public class Lotto {
         return RANGE_START > number || RANGE_END < number;
     }
 
-    // TODO: 추가 기능 구현
+    private boolean hasDuplication(List<Integer> numbers) {
+        return numbers.stream()
+            .distinct()
+            .count() != COUNT;
+    }
 
     @Override
     public String toString() {
