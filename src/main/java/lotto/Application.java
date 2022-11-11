@@ -320,10 +320,8 @@ public class Application {
 
                 continue;
             }
-
             number += compareLottoNumbersAndWinningNumbers(lotto, winningNumberList, 5);
         }
-
         return number;
     }
 
