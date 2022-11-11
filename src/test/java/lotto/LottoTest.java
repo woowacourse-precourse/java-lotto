@@ -27,4 +27,14 @@ class LottoTest {
 
     // 아래에 추가 테스트 작성 가능
 
+    @Test
+    public void 로또랜덤숫자생성() throws Exception{
+        //given
+        RandomNumberLottoGenerator generator = new RandomNumberLottoGenerator();
+        Set<Integer> lottoSet = generator.generate();
+        //when
+
+
+        //then
+    }
 }

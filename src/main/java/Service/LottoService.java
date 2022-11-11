@@ -4,6 +4,10 @@ import domain.UserMoneyValidate;
 import view.RequestUser;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 public class LottoService {
 
     UserMoneyValidate userMoneyValidate = new UserMoneyValidate();

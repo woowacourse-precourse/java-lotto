@@ -1,7 +1,10 @@
 package utils;
 
 import lotto.Lotto;
+
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -18,5 +21,9 @@ public class RandomNumberLottoGenerator {
             lottoNumSet.add(Randoms.pickNumberInRange(MIN_NUM, MAX_NUM));
         }
         return lottoNumSet;
+    }
+
+    public List<Integer> convertSetToList(Set<Integer> set){
+        return new ArrayList<>(set);
     }
 }
