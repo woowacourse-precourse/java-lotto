@@ -1,6 +1,10 @@
 package lotto;
 
+import static java.math.BigInteger.ZERO;
+
 import java.util.List;
+import java.util.Objects;
+import java.util.zip.ZipError;
 
 public class NumbersValidator {
 
@@ -22,5 +26,11 @@ public class NumbersValidator {
 
     private static boolean isOverlapping(List<Integer> numbers){
         return numbers.stream().distinct().count() != numbers.size();
+    }
+
+    public static void validateMoney(int money) {
+        if(!Objects.equals(money % LottoMachine.MONEY_UNIT, 0)){
+            throw new IllegalArgumentException();
+        }
     }
 }
