@@ -10,4 +10,6 @@ public class ErrorMessage {
     public static final String HAS_NOT_DUPLICATE_NUM = "로또는 중복된 숫자를 가질 수 없습니다.";
     public static final String IS_NOT_LOTTO_RANGE_NUM = "로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     public static final String LOTTO_LENGTH_SIZE_NOT_SIX = "로또 번호길이는 6자리여야합니다.";
+
+    public static final String INVALID_INPUT_WIN_LOTTO = "당첨번호는 다음과 같이 입력하여주십시오.(ex - 1,2,3,4,5,6)";
 }
