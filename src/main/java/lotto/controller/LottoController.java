@@ -12,22 +12,22 @@ import lotto.view.OutputView;
 
 public class LottoController {
     private static List<List<Integer>> allPlayerNumbers = new ArrayList<>();
-    private static Lotto lotto;
+    private static Lotto winningNumbers;
     private static Bonus bonusNumber;
 
     public static void run() {
         Purchase issueCount = new Purchase(InputView.inputCash());
         createAllPlayerNumbers(issueCount);
 
-        lotto = new Lotto(InputView.inputWinningNumbers());
+        winningNumbers = new Lotto(InputView.inputWinningNumbers());
         bonusNumber = new Bonus(InputView.inputBonusNumber());
-
         validateDuplicates();
+
 
     }
 
     private static void validateDuplicates() {
-        if (lotto.get().contains(bonusNumber.get())) {
+        if (winningNumbers.get().contains(bonusNumber.get())) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.");
         }
     }

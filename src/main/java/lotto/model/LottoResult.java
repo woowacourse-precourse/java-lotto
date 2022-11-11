@@ -3,24 +3,24 @@ package lotto.model;
 import java.util.List;
 
 public class LottoResult {
-    private int countMatch;
+    // winningNumbers, playerNumbers, bonusNumbers => match, bonusMatch => Rank에 전달
+    private int match;
     private int bonusMatch;
-
 
     public LottoResult(List<Integer> winningNumbers, List<Integer> playerNumbers, int bonusNumber) {
         for (Integer playerNumber : playerNumbers) {
             if (winningNumbers.contains(playerNumber)) {
-                countMatch++;
-                if (countMatch == 5 && playerNumbers.contains(bonusNumber)) {
+                match++;
+                if (match == 5 && playerNumbers.contains(bonusNumber)) {
                     bonusMatch++;
                 }
             }
         }
-        countMatch -= bonusMatch;
+        match -= bonusMatch;
     }
 
-    public int getCountMatch() {
-        return countMatch;
+    public int getMatch() {
+        return match;
     }
 
     public int getBonusMatch() {

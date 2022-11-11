@@ -13,7 +13,6 @@ public class Bonus {
 
     private static int validateBonusNumber(int number) {
         verifyRangeOfLottoNumber(number);
-        /*verifyDuplicateNumber(number);*/
         return number;
     }
 
