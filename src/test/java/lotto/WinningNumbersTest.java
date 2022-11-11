@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,6 +9,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import lotto.domain.WinningNumbers;
 
@@ -51,12 +55,20 @@ public class WinningNumbersTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("1등 당첨 결과 테스트")
-    @Test
-    void checkFirstWinningTest() {
-        List<Integer> purchasedLotto = List.of(1, 2, 3, 4, 5, 6);
-        int expect = 6;
+    @DisplayName("당첨 번호 카운트 테스트")
+    @ParameterizedTest(name = "{displayName} {index}등")
+    @MethodSource("generateDataForWinningTest")
+    void checkFirstWinningTest(List<Integer> purchasedLotto, int expect) {
         int result = WinningNumbersTest.winningNumbers.countWinning(purchasedLotto);
         assertThat(result).isEqualTo(expect);
+    }
+
+    static Stream<Arguments> generateDataForWinningTest() {
+        return Stream.of(
+                Arguments.of(List.of(1, 2, 3, 4, 5, 6), 6),
+                Arguments.of(List.of(1, 2, 3, 4, 5, 7), 5),
+                Arguments.of(List.of(1, 2, 3, 4, 7, 8), 4),
+                Arguments.of(List.of(1, 2, 3, 7, 8, 9), 3)
+                );
     }
 }
