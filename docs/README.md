@@ -75,7 +75,7 @@
 - [x]  입력을 처리하는 InputView 추가
 - [x]  요청을 처리하는 LottoController 클래스 추가
 - [x]  비즈니스 로직을 처리하는 LottoService 클래스 추가
-- [ ]  List<Lotto>의 일급 컬렉션인 LottoTicket 클래스 추가
+- [x]  List<Lotto>의 일급 컬렉션인 LottoTicket 클래스 추가
 
 ### dto
 
