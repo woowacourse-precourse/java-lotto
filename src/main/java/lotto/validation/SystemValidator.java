@@ -17,20 +17,31 @@ public class SystemValidator {
 
 	public static void validateAllLottoNumberInputElementsIsNumber(String winningLottoNumber) {
 		String[] lottoNumbers = winningLottoNumber.split(SPLIT_LOTTO_DELIMITER);
+		if (lottoNumbers.length == 0) {
+			throw new IllegalArgumentException(ERROR_EMPTY_INPUT);
+		}
+
 		for (String lottoNumber : lottoNumbers) {
 			validateIsNumber(lottoNumber);
 		}
 	}
 
-	protected static void validateIsNumber(String purchaseAmount) {
-		if (hasNothing(purchaseAmount)) {
-			throw new IllegalArgumentException(ERROR_EMPTY_PURCHASE_AMOUNT_INPUT);
+	protected static void validateIsNumber(String input) {
+		if (hasNothing(input)) {
+			throw new IllegalArgumentException(ERROR_EMPTY_INPUT);
 		}
-		if (!hasOnlyNumeric(purchaseAmount)) {
-			throw new IllegalArgumentException(ERROR_NOT_NUMERIC_PURCHASE_AMOUNT_INPUT);
+		if (hasZeroValueAtFirstChar(input)) {
+			throw new IllegalArgumentException(ERROR_FIRST_CHAR_IS_ZERO);
 		}
-		if (hasZeroValueAtFirstChar(purchaseAmount)) {
-			throw new IllegalArgumentException(ERROR_FIRST_ZERO_PURCHASE_AMOUNT_INPUT);
+
+		validateNumeric(input);
+	}
+
+	private static void validateNumeric(String input) {
+		try {
+			Integer.parseInt(input);
+		} catch (Exception e) {
+			throw new IllegalArgumentException(ERROR_IS_NOT_NUMERIC_VALUE);
 		}
 	}
 
@@ -39,8 +50,8 @@ public class SystemValidator {
 		return parsedPurchaseAmount >= LOTTO_PRICE;
 	}
 
-	protected static boolean hasZeroValueAtFirstChar(String purchaseAmount) {
-		return purchaseAmount.charAt(0) == '0';
+	protected static boolean hasZeroValueAtFirstChar(String input) {
+		return input.charAt(0) == '0';
 	}
 
 	protected static boolean isDividedByLottoPrice(String purchaseAmount) {
@@ -48,12 +59,7 @@ public class SystemValidator {
 		return parsedPurchaseAmount % LOTTO_PRICE == 0;
 	}
 
-	protected static boolean hasOnlyNumeric(String purchaseAmount) {
-		return purchaseAmount.chars()
-				.allMatch(Character::isDigit);
-	}
-
-	protected static boolean hasNothing(String purchaseAmount) {
-		return purchaseAmount.isEmpty() || purchaseAmount.isBlank();
+	protected static boolean hasNothing(String input) {
+		return input.isEmpty() || input.isBlank();
 	}
 }
