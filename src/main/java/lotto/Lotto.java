@@ -26,17 +26,24 @@ public class Lotto {
         return amount / 1000;
     }
 
-    public List<Integer> createLottoNumber() {
-        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return lottoNumbers;
-    }
-
     public List<List<Integer>> createLotto(long numberOfLotto) {
         List<List<Integer>> lottos = new ArrayList<>();
         for (int i = 0; i < numberOfLotto; i++) {
-            lottos.add(createLottoNumber());
+            List<Integer> lotto = createLottoList();
+            lottos.add(lotto);
         }
         return lottos;
+    }
+
+    public List<Integer> createLottoList(){
+        List<Integer> lotto = createLottoNumber();
+        sortLottoNumberAscending(lotto);
+        return lotto;
+    }
+
+    public List<Integer> createLottoNumber() {
+        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return lottoNumbers;
     }
 
     public List<Integer> sortLottoNumberAscending(List<Integer> lotto) {
