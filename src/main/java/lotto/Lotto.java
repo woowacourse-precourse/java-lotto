@@ -3,7 +3,7 @@ package lotto;
 import java.util.List;
 
 public class Lotto {
-    private final List<Integer> numbers;
+    private final List<Integer> numbers; // 인스턴스 변수, 변하지 않는 값
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -37,6 +37,17 @@ public class Lotto {
             if (number > 45 || number < 1) {
                 throw new IllegalArgumentException();
             }
+        }
+    }
+
+    public int calculateQuantity(int money) {
+        validateMonetaryUnit(money);
+        return 0;
+    }
+
+    private void validateMonetaryUnit(int money) {
+        if (money % 1000 != 0) {
+            throw new IllegalArgumentException();
         }
     }
 }
