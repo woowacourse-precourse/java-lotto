@@ -31,4 +31,15 @@ public class YieldCalculator {
 
         return winInformation;
     }
+
+    public double countMatchResult(Map<Integer, Integer> winInformation, int purchaseMoney) {
+        int result = 0;
+
+        result += winInformation.get(3) * 5000;
+        result += winInformation.get(4) * 50000;
+        result += winInformation.get(5) * 1500000;
+        result += winInformation.get(6) * 2000000000;
+
+        return (double) result / (double) purchaseMoney * 100;
+    }
 }
