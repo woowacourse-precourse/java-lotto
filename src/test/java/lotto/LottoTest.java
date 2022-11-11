@@ -30,4 +30,14 @@ class LottoTest {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         assertThat(numbers.size()).isEqualTo(6);
     }
+
+    @DisplayName("발행번호, 당첨번호 일치 개수 세기")
+    @Test
+    void 발행번호_당첨번호_일치_개수_테스트() {
+        Lotto input = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 7);
+        Referee referee = new Referee();
+        int count = referee.correctCount(input, numbers);
+        assertThat(5).isEqualTo(count);
+    }
 }

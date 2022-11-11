@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -22,5 +21,9 @@ public class Lotto {
 
     private boolean isDuplicate(List<Integer> numbers) {
         return numbers.size() != numbers.stream().distinct().count();
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
