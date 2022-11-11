@@ -10,16 +10,20 @@ import java.util.stream.Collectors;
 public class InputView {
     public static String inputCash() {
         OutputView.printCashInput();
-        return Console.readLine();
+        return getInput();
     }
 
     public static List<Integer> inputWinningNumbers() {
         OutputView.printWinningNumberInput();
-        return formatInput(Console.readLine());
+        return formatInput(getInput());
     }
 
     public static String inputBonusNumber() {
         OutputView.printBonusNumberInput();
+        return getInput();
+    }
+
+    private static String getInput() {
         return Console.readLine();
     }
 
