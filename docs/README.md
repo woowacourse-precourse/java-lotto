@@ -27,6 +27,7 @@ Application Class
     allocateInital : 입력받아서 bonusnum,truenum 만듬
     calcFinal : 로또 보고 몇등인지 계산하고 저장
     printFinal : 마지막 결과 출력 
+    convertTrueNum : 로또 리스트 문자열을 Integer List로 변환
     
 
     
