@@ -5,8 +5,11 @@ import lotto.view.InputView;
 public class BonusNumber {
     private long bonusNumber;
 
+    public BonusNumber() {
+          makeBonusNumber();
+    }
+    
     public long getBonusNumber() {
-        makeBonusNumber();
         return bonusNumber;
     }
 
