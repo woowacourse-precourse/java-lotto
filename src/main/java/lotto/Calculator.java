@@ -3,8 +3,8 @@ package lotto;
 import java.util.Map;
 
 public class Calculator {
-    public double getLottoCount(double money) {
-        return money / 1000.0;
+    public int getLottoCount(double money) {
+        return (int)money / 1000;
     }
 
     public Rank calculateRank(int correctCount, boolean bonus) {
