@@ -53,4 +53,8 @@ public class OutputView {
     public static void printResultMessage() {
         System.out.println("당첨 통계\n---");
     }
+
+    public static void printErrorMessage(String errorMessage){
+        System.out.println(errorMessage);
+    }
 }
