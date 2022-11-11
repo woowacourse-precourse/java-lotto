@@ -22,6 +22,7 @@ public class LottoGameService {
     private static final String LOTTO_WINNING_NUMBERS_RANGE_EXCEPTION_MESSAGE = "로또 당첨 번호의 범위는 1~45여야합니다.";
     private static final String LOTTO_WINNING_NUMBERS_REGEX = "^[0-9,]+$";
     private static final String LOTTO_WINNING_NUMBERS_TYPE_EXCEPTION_MESSAGE = "로또 당첨 번호는 공백 없이 쉼표로 구분된 숫자여야합니다.";
+    private static final String BONUS_NUMBER_NOT_DIGIT_EXCEPTION_MESSAGE = "보너스 번호는 숫자여야합니다.";
 
     private Lotto lotto;
 
@@ -57,6 +58,12 @@ public class LottoGameService {
         }
         if (isLottoWinningNumbersWrongRange(convertedLottoWinningNumbers)) {
             throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + LOTTO_WINNING_NUMBERS_RANGE_EXCEPTION_MESSAGE);
+        }
+    }
+
+    public void validateBonusNumber(String bonusNumber) {
+        if (isBonusNumberNotDigit(bonusNumber)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + BONUS_NUMBER_NOT_DIGIT_EXCEPTION_MESSAGE);
         }
     }
 
@@ -97,6 +104,10 @@ public class LottoGameService {
 
     private boolean isLottoWinningNumbersWrongType(String inputLottoWinningNumber) {
         return !Pattern.compile(LOTTO_WINNING_NUMBERS_REGEX).matcher(inputLottoWinningNumber).matches();
+    }
+
+    private boolean isBonusNumberNotDigit(String bonusNumber) {
+        return !Pattern.compile(DIGIT_REGEX).matcher(bonusNumber).matches();
     }
 
     public List<Integer> inputWinningNumberConvertToCollection(String lottoWinningNumber) {
