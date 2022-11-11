@@ -3,7 +3,7 @@ package lotto.Data;
 public class User {
     private int money;
 
-    public User(int money){
+    public User(int money) {
         this.money = money;
     }
 
