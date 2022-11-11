@@ -5,7 +5,9 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
 
@@ -87,6 +89,24 @@ public class Application {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 정수로 입력해야 합니다.");
         }
         return converted;
+    }
+
+    public static Lotto validateWinningNums(List<Integer> winningNums) {
+        if (winningNums.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+        }
+
+        Set<Integer> winningNumsSet = new HashSet<>(winningNums);
+        if (winningNums.size() != winningNumsSet.size()) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 서로 중복되지 않아야 합니다.");
+        }
+
+        for (int num : winningNums) {
+            if (num < 1 || num > 45) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            }
+        }
+        return new Lotto(winningNums);
     }
 
 }
