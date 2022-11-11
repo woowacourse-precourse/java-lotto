@@ -35,7 +35,7 @@ public class PlayerView {
     }
 
     private void showPlayersLottoCount(List<Lotto> playerLotto){
-
+        System.out.println(playerLotto.size()+CHECK_PAYMENT);
     }
 
     private void showLottoNumbers(List<Lotto> playerLotto){
