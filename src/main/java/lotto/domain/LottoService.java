@@ -43,6 +43,12 @@ public class LottoService {
         InputView.printInputLottoNumber();
         return LottoNumber.getLottoNumber();
     }
+
+    public int printAndInputBonusNumber() {
+        InputView.printInputBonusNumber();
+        return LottoNumber.getBonusNumber();
+    }
+
     private int getScore(List<Integer> lottoNumbers, List<Integer> randomLottoNumber, int score) {
         for (Integer lottoNumber : lottoNumbers) {
             score = existNumber(randomLottoNumber, score, lottoNumber);
