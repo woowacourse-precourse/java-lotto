@@ -101,4 +101,32 @@ public class LottoNumberValidatorTest {
                     .doesNotThrowAnyException();
         }
     }
+
+    @Nested
+    @DisplayName("입력된 보너스 번호가 로또 규칙에")
+    class If_input_bonus_number {
+
+        @Test
+        @DisplayName("맞지 않으면 예외를 던진다")
+        void does_not_comply_with_rule_then_throw_exception() {
+            // given
+            int bonusNumber = LottoNumber.END_NUMBER_OF_LOTTO.getNumber() + 1;
+
+            // when, then
+            assertThatThrownBy(() -> LottoNumberValidator.validateRangeOfNumber(bonusNumber))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ErrorMessage.LOTTO_NUMBER_IS_OUT_OF_RANGE.getMessage());
+        }
+
+        @Test
+        @DisplayName("맞다면 예외를 던지지 않는다")
+        void does_not_comply_with_rule_then_does_not_throw_exception() {
+            // given
+            int bonusNumber = LottoNumber.START_NUMBER_OF_LOTTO.getNumber();
+
+            // when, then
+            assertThatCode(() -> LottoNumberValidator.validateRangeOfNumber(bonusNumber))
+                    .doesNotThrowAnyException();
+        }
+    }
 }

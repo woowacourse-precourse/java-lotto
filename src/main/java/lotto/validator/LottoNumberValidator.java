@@ -23,6 +23,9 @@ public class LottoNumberValidator {
         }
     }
 
+    public static void validateRangeOfNumber(int number) {
+    }
+
     public static void validateBonusNumberAndLottoAreDuplicate(Lotto lotto, int bonusNumber) {
         if (lotto.isContains(bonusNumber)) {
             throw new IllegalArgumentException(
