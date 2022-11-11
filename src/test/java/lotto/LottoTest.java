@@ -51,4 +51,21 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(LottoExceptionType.NOT_MATCH_RANGE.getErrorMessage());
     }
+
+    @Test
+    public void 로또생성() throws Exception{
+        //given
+        RandomNumberLottoGenerator generator = new RandomNumberLottoGenerator();
+        Set<Integer> generate = generator.generate();
+        List<Integer> lottoList = generator.convertSetToList(generate);
+
+        Lotto lotto = new Lotto(lottoList);
+        //when
+        List<Integer> finalLotto = lotto.numbersAscending(lottoList);
+        //then
+
+        for(int num : finalLotto){
+            System.out.printf(num + " ");
+        }
+    }
 }

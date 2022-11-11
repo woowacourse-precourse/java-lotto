@@ -2,19 +2,13 @@ package lotto;
 
 import exception.LottoExceptionType;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
     private final int NUM_SIZE = 6;
 
     public Lotto(List<Integer> numbers) {
-        validateSize(numbers);
-        validateRange(numbers);
-        validateDuplicate(numbers);
         this.numbers = numbers;
     }
 
@@ -38,6 +32,15 @@ public class Lotto {
         if(set.size() != NUM_SIZE){
             throw new IllegalArgumentException(LottoExceptionType.NOT_UNIQUE_NUMBER.getErrorMessage());
         }
+    }
+
+    public List<Integer> numbersAscending(List<Integer> numbers){
+        validateSize(numbers);
+        validateRange(numbers);
+        validateDuplicate(numbers);
+        Collections.sort(numbers);
+
+        return numbers;
     }
 
     // TODO: 추가 기능 구현
