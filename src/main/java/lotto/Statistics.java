@@ -24,18 +24,12 @@ public class Statistics {
         return output;
     }
 
-    private void pileUpOutput(Map<Prize, Integer> result, Set<Integer> winNumbers, int bonusNumber, Lotto lotto) {
+    private void pileUpOutput(Map<Prize, Integer> output, Set<Integer> winNumbers, int bonusNumber, Lotto lotto) {
         Set<Integer> numbers = new HashSet<>(lotto.getNumbers());
         int match = getMatch(winNumbers, numbers);
-        boolean bonus = isNecessaryBonus(bonusNumber, numbers, match);
+        boolean bonus = isBonus(bonusNumber, numbers, match);
         Prize prize = Prize.search(match, bonus);
-
-        if (prize == Prize.NONE) {
-            return;
-        }
-
-        Integer count = result.getOrDefault(prize, DEFAULT_VALUE);
-        result.put(prize, count + 1);
+        pileUp(output, prize);
     }
 
     private int getMatch(Set<Integer> winNumbers, Set<Integer> numbers) {
@@ -43,10 +37,19 @@ public class Statistics {
         return LottoRule.SIZE.getValue() - numbers.size();
     }
 
-    private boolean isNecessaryBonus(int bonusNumber, Set<Integer> numbers, int match) {
+    private boolean isBonus(int bonusNumber, Set<Integer> numbers, int match) {
         if (match == Prize.THIRD.getMatch()) {
             return numbers.contains(bonusNumber);
         }
         return false;
+    }
+
+    private void pileUp(Map<Prize, Integer> result, Prize prize) {
+        if (prize == Prize.NONE) {
+            return;
+        }
+
+        Integer count = result.getOrDefault(prize, DEFAULT_VALUE);
+        result.put(prize, count + 1);
     }
 }
