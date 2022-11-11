@@ -18,8 +18,19 @@ public class Draw {
         return null;
     }
 
-    private Rank winningNumSize(Lotto tryLotto) {
-        return null;
+    private int winningNumSize(Lotto tryLotto) {
+        int winningCount = 0;
+        Lotto winningLotto = this.winningLotto;
+        List<Integer> winningLottoNumbers = winningLotto.getNumbers();
+        List<Integer> tryLottoNumbers = tryLotto.getNumbers();
+
+        for (Integer tryNumber : tryLottoNumbers) {
+            if (winningLottoNumbers.contains(tryNumber)) {
+                winningCount++;
+            }
+        }
+
+        return winningCount;
     }
 
     private boolean isBonusExist(int bonusNum) {
