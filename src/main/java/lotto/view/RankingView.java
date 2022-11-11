@@ -1,6 +1,7 @@
 package lotto.view;
 
 import lotto.Ranking;
+import lotto.domain.Profit;
 import lotto.domain.Winning;
 
 import java.util.HashMap;
@@ -32,8 +33,8 @@ public class RankingView {
         System.out.println(SIX_MATCH_COMMENT + score.get(Ranking.SIX_MATCH) + TELL_COUNT);
     }
 
-    private void showProfit(){
-
+    private void showProfit(Profit profit){
+        System.out.println(TOTAL_PROFIT_START + profit.getProfit() + TOTAL_PROFIT_END);
     }
 
 }
