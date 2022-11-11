@@ -7,7 +7,7 @@ public class Calculator {
     private double earningsRate;
     private List<Integer> prizeMoney = List.of(0, 2000000000, 30000000, 1500000, 50000, 5000);
 
-    private void calculateTotalEarnings(List<Integer> result) {
+    public void calculateTotalEarnings(List<Integer> result) {
         for (int i = 1; i < result.size(); i++) {
             totalEarnings += (prizeMoney.get(i) * result.get(i));
         }
@@ -15,7 +15,7 @@ public class Calculator {
     public int getTotalEarnings() {
         return totalEarnings;
     }
-    private void calculateEarningsRate(int purchaseAmount) {
+    public void calculateEarningsRate(int purchaseAmount) {
         earningsRate = (double) totalEarnings / purchaseAmount * 100;
         earningsRate = Math.round(earningsRate * 10) / 10.0;
     }
