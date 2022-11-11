@@ -10,7 +10,7 @@ import static lotto.view.Constants.*;
 public class Customer {
     private final int paidMoney;
     private final int numOfTicket;
-    private final List<List<Integer>> purchasedTickets = new ArrayList<>();
+    private final List<List<Integer>> tickets = new ArrayList<>();
 
     public Customer(int paidMoney) {
         validateNoMoney(paidMoney);
@@ -24,8 +24,8 @@ public class Customer {
         return this.numOfTicket;
     }
 
-    public List<List<Integer>> getPurchasedTickets() {
-        return this.purchasedTickets;
+    public List<List<Integer>> getTickets() {
+        return this.tickets;
     }
 
     private void validateNoMoney(int paidMoney) {
@@ -44,7 +44,7 @@ public class Customer {
         for (int i = 0; i < this.numOfTicket; i++) {
             List<Integer> ticket = pickUniqueNumbersInRange(MIN_NUM, MAX_NUM, COUNT);
             Collections.sort(ticket);
-            this.purchasedTickets.add(ticket);
+            this.tickets.add(ticket);
         }
     }
 }
