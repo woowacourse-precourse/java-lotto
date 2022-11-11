@@ -12,7 +12,7 @@ public class Manager {
     }
 
     public int getAmount(int won) {
-        if (won % Lotto.PRICE != 0) {
+        if (won % Lotto.PRICE != 0 || won == 0) {
             throw new IllegalArgumentException();
         }
         return won / Lotto.PRICE;
