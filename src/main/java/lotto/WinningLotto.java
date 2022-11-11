@@ -9,10 +9,12 @@ public class WinningLotto extends Lotto{
         super(numbers);
 
         if (numbers.contains(bonusNumber)) {
+            System.out.println(ErrorMessage.DUPLICATED_INPUT);
             throw new IllegalArgumentException();
         }
 
         if (LottoNumberValidator.isOutOfRange(bonusNumber)) {
+            System.out.println(ErrorMessage.WRONG_RANGE);
             throw new IllegalArgumentException();
         }
 

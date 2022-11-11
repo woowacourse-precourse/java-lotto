@@ -8,6 +8,7 @@ public class Converter {
         try {
             return Integer.parseInt(input);
         } catch(Exception exception) {
+            System.out.println(ErrorMessage.WRONG_INPUT);
             throw new IllegalArgumentException();
         }
     }
@@ -23,6 +24,7 @@ public class Converter {
 
             return numbers;
         } catch (Exception exception) {
+            System.out.println(ErrorMessage.WRONG_INPUT);
             throw new IllegalArgumentException();
         }
 
@@ -32,6 +34,7 @@ public class Converter {
         try {
             return Integer.parseInt(input);
         } catch (Exception exception) {
+            System.out.println(ErrorMessage.WRONG_INPUT);
             throw new IllegalArgumentException();
         }
     }

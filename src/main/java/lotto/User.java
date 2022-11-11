@@ -25,6 +25,7 @@ public class User {
 
     private void validateMoney(int money) {
         if (money % 1000 != 0) {
+            System.out.println(ErrorMessage.WRONG_MONEY_UNIT);
             throw new IllegalArgumentException();
         }
     }

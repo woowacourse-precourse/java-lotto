@@ -19,14 +19,17 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (LottoNumberValidator.isNotSameSize(numbers)) {
+            System.out.println(ErrorMessage.WRONG_SIZE);
             throw new IllegalArgumentException();
         }
 
         if (LottoNumberValidator.existDuplicate(numbers)) {
+            System.out.println(ErrorMessage.DUPLICATED_INPUT);
             throw new IllegalArgumentException();
         }
 
         if (LottoNumberValidator.isOutOfRange(numbers)) {
+            System.out.println(ErrorMessage.WRONG_RANGE);
             throw new IllegalArgumentException();
         }
     }
