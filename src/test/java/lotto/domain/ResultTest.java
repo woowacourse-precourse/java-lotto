@@ -94,4 +94,18 @@ class ResultTest {
         assertThat(rank.get(4)).isEqualTo(0);
         assertThat(rank.get(5)).isEqualTo(1);
     }
+
+    @Test
+    @DisplayName("로또를 8000원을 구매해 5등 1개가 당첨됐을 경우 수익률은 62.5%이다.")
+    void getWinningAmount(){
+        List<Integer> winningNumber = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+        List<Lotto> lottos = List.of(new Lotto(List.of(1, 2, 3, 11, 15, 16)));
+
+        Result result = new Result();
+        result.initRank(winningNumber, bonusNumber, lottos);
+        result.initWinningAmount(8000);
+
+        assertThat(String.format("%.1f", result.getWinningAmount())).isEqualTo("62.5");
+    }
 }
