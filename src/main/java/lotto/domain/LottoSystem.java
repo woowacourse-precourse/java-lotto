@@ -2,9 +2,7 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class LottoSystem {
@@ -29,6 +27,7 @@ public class LottoSystem {
         validateCount(numbers);
         validateType(numbers);
         validateRange(numbers);
+        validateUnique(numbers);
     }
 
     private void validateCount(String[] numbers) {
@@ -51,6 +50,13 @@ public class LottoSystem {
             if (currentNumber > MAX_RANGE || currentNumber < MIN_RANGE) {
                 throw new IllegalArgumentException("1부터 45까지의 숫자만 입력하세요");
             }
+        }
+    }
+
+    private void validateUnique(String[] numbers) {
+        Set<String> deduplication = new HashSet<>(Arrays.asList(numbers));
+        if (deduplication.size() != 6) {
+            throw new IllegalArgumentException("모두 다른 숫자를 입력해주세요.");
         }
     }
 
