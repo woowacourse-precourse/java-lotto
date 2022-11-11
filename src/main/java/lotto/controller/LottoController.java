@@ -8,12 +8,11 @@ import java.util.List;
 
 public class LottoController {
 
-    public List<Lotto> generateLottoAuto(int purchaseAmount) {
+    public List<Lotto> generateLottoAuto(int number) {
 
-        int generatedLottoNum = purchaseAmount / Lotto.PRICE;
         List<Lotto> generatedLottos = new ArrayList<>();
 
-        while (generatedLottos.size() < generatedLottoNum) {
+        while (generatedLottos.size() < number) {
             List<Integer> numbers =
                     Randoms.pickUniqueNumbersInRange(Lotto.MIN_NUMBER, Lotto.MAX_NUMBER, Lotto.NUMBER_COUNT);
             generatedLottos.add(new Lotto(numbers));

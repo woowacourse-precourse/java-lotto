@@ -21,8 +21,9 @@ public class LottoStore {
     private List<Lotto> buyLottos() {
         OutputUi.printInsertMoneyInfoMessage();
         int purchasedAmount = InputUi.readPurchaseAmount();
+        int lottoNumber = purchasedAmount/Lotto.PRICE;
 
-        List<Lotto> generatedLottos = lottoController.generateLottoAuto(purchasedAmount);
+        List<Lotto> generatedLottos = lottoController.generateLottoAuto(lottoNumber);
         OutputUi.printPurchasedLottos(generatedLottos);
 
         return generatedLottos;
