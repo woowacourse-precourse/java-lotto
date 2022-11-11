@@ -3,9 +3,10 @@ package lotto.domain.model;
 import static lotto.utils.Advice.LottoValidator.checkDuplication;
 import static lotto.utils.Advice.LottoValidator.checkRange;
 import static lotto.utils.Advice.LottoValidator.checkSize;
-import static lotto.utils.Advice.LottoValidator.checkSortedAsc;
+
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -19,7 +20,6 @@ public class Lotto {
         checkSize(numbers);
         checkDuplication(numbers);
         checkRange(numbers);
-        checkSortedAsc(numbers);
     }
 
     public LottoRank compareLottoNumber(LottoNumber lottoNumber) {
@@ -28,6 +28,7 @@ public class Lotto {
 
     @Override
     public String toString() {
-        return numbers.toString();
+        List<Integer> sortedNumbers = this.numbers.stream().sorted().collect(Collectors.toList());
+        return sortedNumbers.toString();
     }
 }

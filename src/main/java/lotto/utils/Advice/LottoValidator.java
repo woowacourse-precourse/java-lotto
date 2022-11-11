@@ -40,11 +40,6 @@ public abstract class LottoValidator {
         });
     }
 
-    public static void checkSortedAsc(List<Integer> numbers) {
-        IntStream.range(0, numbers.size() - 1).filter(i -> numbers.get(i) > numbers.get(i + 1)).forEachOrdered(i -> {
-            throw new IllegalArgumentException(getErrorMessage(LOTTE_NUMBER_NOT_ASC));
-        });
-    }
 
     public static void checkConsistOfOnlyCommas(String firstPlace) {
         if (!firstPlace.matches(FIRST_PLACE_REG_EXP))
