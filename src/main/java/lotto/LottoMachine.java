@@ -31,6 +31,11 @@ public class LottoMachine {
         int amount = lottos.size();
         System.out.println(amount+"개를 구매했습니다.");
 
+        for (int i = 0; i < amount; i++) {
+            Lotto lotto = lottos.get(i);
+            lotto.printNumbers();
+
+        }
     }
 
 
