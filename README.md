@@ -236,7 +236,7 @@ public class Lotto {
 - Lotto 클래스
   - 로또 번호가 중복될 경우 예외 처리
 - PrizeCut Enum
-  - 로또 당첨 기준 설정
+  - 로또 당첨등수, 당첨금 설정
 - LottoDraw 클래스
   - 로또 당첨 금액, 당첨 횟수를 0으로 초기설정
   - UI 클래스를 통해 로또 당첨 번호 입력
