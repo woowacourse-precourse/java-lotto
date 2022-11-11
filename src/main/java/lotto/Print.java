@@ -111,6 +111,8 @@ public class Print {
 	}
 	
 	public void printProfitRound(double profit) {
-		System.out.printf("총 수익률은 %.2f%%입니다.", profit);
+		double profitresult = 0f;
+		profitresult = Math.round(profit * 10) / 10.0;
+		System.out.printf("총 수익률은 %.1f%%입니다.", profit);
 	}
 }
