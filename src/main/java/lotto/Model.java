@@ -137,4 +137,20 @@ public class Model {
             this.prize = prize;
         }
     }
+
+    public enum Ranking {
+        FIRST(1),
+        SECOND(2),
+        THIRD(3),
+        FORTH(4),
+        FIFTH(5);
+
+        final private int ranking;
+        private int getRanking() {
+            return ranking;
+        }
+        Ranking(int ranking) {
+            this.ranking = ranking;
+        }
+    }
 }
