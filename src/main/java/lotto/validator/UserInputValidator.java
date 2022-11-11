@@ -11,4 +11,7 @@ public class UserInputValidator {
             throw new IllegalArgumentException(ErrorMessage.MONEY_IS_ALLOWED_ONLY_NUMERIC.getMessage());
         }
     }
+
+    public static void validateWinningLottoNumberComplyWithRule(String userInput) {
+    }
 }
