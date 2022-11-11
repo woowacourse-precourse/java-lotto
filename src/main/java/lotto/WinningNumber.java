@@ -9,6 +9,9 @@ public class WinningNumber {
     private int bonusNumber;
 
     public WinningNumber(List<Integer> winningNumbers, int bonusNumber) {
+        validateNumbersRange(winningNumbers);
+        validateNumberRange(bonusNumber);
+        validateContainsInWinningNumber(winningNumbers, bonusNumber);
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
     }
@@ -43,5 +46,21 @@ public class WinningNumber {
 
     public double getRateOfReturn(int money, int prizeMoney) {
         return ((double) prizeMoney / money) * 100;
+    }
+
+    private void validateNumbersRange(List<Integer> winningNumbers) {
+        winningNumbers.forEach(this::validateNumberRange);
+    }
+
+    private void validateNumberRange(int number) {
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_NUMBER_RANGE.getMessage());
+        }
+    }
+
+    private void validateContainsInWinningNumber(List<Integer> winningNumber, int number) {
+        if (winningNumber.contains(number)) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATION_BONUS_NUMBER.getMessage());
+        }
     }
 }
