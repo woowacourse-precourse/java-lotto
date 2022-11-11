@@ -1,5 +1,8 @@
-package lotto.domain;
+package lotto.controller;
 
+import lotto.domain.Calculator;
+import lotto.domain.Lotto;
+import lotto.domain.LottoMachine;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -7,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class LottoManager {
+public class LottoController {
     private int purchaseAmount;
     private int lottoIssueCount;
     private int bonusNumber;
