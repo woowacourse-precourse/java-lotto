@@ -15,8 +15,10 @@ public class User {
 
     public static List<Integer> inputLottoNumbers() {
         String userNumbers = Console.readLine();
-        LottoNumbersValidation.validate(userNumbers);
-        return UserUtil.convertUserInputToNumbers(userNumbers);
+        LottoNumbersValidation.validateInputLottoNumbers(userNumbers);
+        List<Integer> lottoNumbers = UserUtil.convertUserInputToNumbers(userNumbers);
+        LottoNumbersValidation.validateLottoNumbers(lottoNumbers);
+        return lottoNumbers;
     }
 
     public static Integer inputBonusNumber() {

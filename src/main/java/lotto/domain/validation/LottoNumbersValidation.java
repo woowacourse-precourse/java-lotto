@@ -9,14 +9,14 @@ import lotto.user.validation.ExceptionMessage;
 public class LottoNumbersValidation {
     private static final String INPUT_NUMBERS_REGEXP = "^([1-9]+,)+[1-9]+$";
 
-    public static void validate(String userInput) {
+    public static void validateInputLottoNumbers(String userInput) {
         validateInputFormat(userInput);
+    }
 
-        List<Integer> userNumbers = UserUtil.convertUserInputToNumbers(userInput);
-
-        validateNumbersLength(userNumbers);
-        validateNumberRange(userNumbers);
-        validateNoDuplicateNumbers(userNumbers);
+    public static void validateLottoNumbers(List<Integer> LottoNumbers) {
+        validateNumbersLength(LottoNumbers);
+        validateNumberRange(LottoNumbers);
+        validateNoDuplicateNumbers(LottoNumbers);
     }
 
     private static void validateInputFormat(String uerInput) {
