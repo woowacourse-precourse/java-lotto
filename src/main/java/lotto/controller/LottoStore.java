@@ -2,10 +2,13 @@ package lotto.controller;
 
 import lotto.domain.Lotto;
 import lotto.domain.WinningLotto;
+import lotto.domain.WinningRank;
 import lotto.ui.InputUi;
 import lotto.ui.OutputUi;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class LottoStore {
 
@@ -42,6 +45,10 @@ public class LottoStore {
         int bonusNumber = InputUi.readSingleNumber();
 
         return new WinningLotto(winningNumbers, bonusNumber);
+    }
+
+    private void showWinningStatistics(WinningLotto winningLotto, List<Lotto> lottos) {
+        Map<WinningRank, Integer> winLottoCount = lottoController.countWinLotto(winningLotto, lottos);
     }
 
 }

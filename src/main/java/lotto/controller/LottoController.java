@@ -6,7 +6,9 @@ import lotto.domain.WinningLotto;
 import lotto.domain.WinningRank;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class LottoController {
 
@@ -21,6 +23,17 @@ public class LottoController {
         }
 
         return generatedLottos;
+    }
+
+    public Map<WinningRank, Integer> countWinLotto(WinningLotto winningLotto, List<Lotto> lottos) {
+        Map<WinningRank, Integer> winLottoCount = new HashMap<>();
+
+        for (Lotto lotto : lottos) {
+            WinningRank rank = judgeRank(winningLotto, lotto);
+            winLottoCount.put(rank, winLottoCount.getOrDefault(rank, 0) + 1);
+        }
+
+        return winLottoCount;
     }
 
     public WinningRank judgeRank(WinningLotto winningLotto, Lotto lotto) {

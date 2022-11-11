@@ -20,12 +20,15 @@ public enum WinningRank {
         this.winningRule = winningRule;
     }
 
-    public static WinningRank findByRank(int rankNum){
+    public static WinningRank findByRank(int rankNum) {
         return Arrays.stream(WinningRank.values())
                 .filter(rank -> rank.rank == rankNum)
                 .findAny()
                 .orElse(NONE_RANKED);
     }
 
+    public int getPrizeMoney() {
+        return prizeMoney;
+    }
 
 }
