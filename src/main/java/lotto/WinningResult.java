@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,29 +17,38 @@ enum Rank{
 }
 public class WinningResult {
      WinningNumber winningNumber;
-     private List<Rank> rank;
+     private HashMap<Rank, Integer> rankcount;
      private int winningRate;
 
      WinningResult(WinningNumber winningNumber) {
           this.winningNumber = winningNumber;
      }
-     public List<Rank> winningHistory(List<Lotto> lottos) {
-          this.rank = checkRank(lottos);
-          return countRank(this.rank);
+     public HashMap<Rank, Integer> winningHistory(List<Lotto> lottos) {
+          List<Rank> rank = checkRank(lottos);
+          return countRank(rank);
      }
 
-     private List<Rank> countRank(List<Integer> rank) {
-          List<Rank> rankCount = new ArrayList<>(6);
+     private HashMap<Rank, Integer> countRank(List<Rank> rank) {
+          HashMap<Rank, Integer> rankCount = new HashMap<>();
+          rankCount.put(Rank.NONE, 0);
+          rankCount.put(Rank.FIRST, 0);
+          rankCount.put(Rank.SECOND, 0);
+          rankCount.put(Rank.THIRD, 0);
+          rankCount.put(Rank.FOURTH, 0);
+          rankCount.put(Rank.FIFTH, 0);
 
-          for (Integer rankNum : rank) {
-               rankCount.set(rankNum, rankCount.get(rankNum));
+          for (Rank rankNum : rank) {
+               rankCount.put(rankNum, rankCount.get(rankNum) + 1);
           }
 
           return rankCount;
      }
 
-     int winningRate(Integer purchaseAmount) {
+     float winningRate(Integer purchaseAmount) {
+          int winningAmout = 0;
+          float result = 0f;
 
+          return result;
      }
 
      private List<Rank> checkRank(List<Lotto> lottos) {
