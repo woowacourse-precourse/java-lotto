@@ -9,8 +9,7 @@ public class LotteryStoreUi {
 	private static final LotteryStoreUi storeUi = new LotteryStoreUi();
 	private static final ErrorChecker errorChecker = new ErrorChecker();
 	private final LotteryRequestController requestController;
-	private String winningNumbers;
-	private String bonusNumber;
+	private String winningPrizeNumbers;
 
 	private LotteryStoreUi() {
 		this.requestController = LotteryRequestController.getController();
@@ -26,16 +25,16 @@ public class LotteryStoreUi {
 		String money = Console.readLine();
 		errorChecker.validateMoneyFromBuyer(money);
 
-		requestForTransferingMoneyForPurchase(money);
+		requestToTransferMoney(money);
 	}
 
 	public void takeWinningLotteryNumbers() {
 		printMessageForWinningPrizeNumbers();
 
-		String winningNumbers = Console.readLine();
-		errorChecker.validateWinningNumbers(winningNumbers);
+		String winningPrizeNumbers = Console.readLine();
+		errorChecker.validateWinningNumbers(winningPrizeNumbers);
 
-		this.winningNumbers = winningNumbers;
+		this.winningPrizeNumbers = winningPrizeNumbers;
 	}
 
 	public void takeBonusNumber() {
@@ -44,7 +43,7 @@ public class LotteryStoreUi {
 		String bonusNumber = Console.readLine();
 		errorChecker.validateBonusNumbers(bonusNumber);
 
-		requestForTransferingWinningPrizeNumbers(winningNumbers, bonusNumber);
+		requestToTransferWinningPrizeNumbers(winningPrizeNumbers, bonusNumber);
 	}
 
 	private void printPurchaseMessage() {
@@ -59,17 +58,17 @@ public class LotteryStoreUi {
 		System.out.println("보너스 번호를 입력해 주세요.");
 	}
 
-	private void requestForTransferingMoneyForPurchase(String money) {
+	private void requestToTransferMoney(String money) {
 		// FrontEnd에서 API를 호출해서 데이터 전송하는 것과 비슷하게(??) 구현
 		MoneyForPurchase moneyDto = new MoneyForPurchase(money);
 		requestController.receiveMoneyForPurchase(moneyDto);
 	}
 
-	private void requestForTransferingWinningPrizeNumbers(String winningNumbers,
+	private void requestToTransferWinningPrizeNumbers(String winningPrizeNumbers,
 		String bonusNumber) {
 		// FrontEnd에서 API를 호출해서 데이터 전송하는 것과 비슷하게(??) 구현
 		NumbersForWinningPrize winningNumbersDto =
-			new NumbersForWinningPrize(winningNumbers, bonusNumber);
+			new NumbersForWinningPrize(winningPrizeNumbers, bonusNumber);
 		requestController.receiveNumbersForWinningPrize(winningNumbersDto);
 	}
 }

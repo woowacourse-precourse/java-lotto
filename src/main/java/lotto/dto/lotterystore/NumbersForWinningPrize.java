@@ -1,16 +1,16 @@
 package lotto.dto.lotterystore;
 
 public class NumbersForWinningPrize {
-	private final String numbersForWinningPrize;
+	private final String winningPrizeNumbers;
 	private final String bonusNumber;
 
-	public NumbersForWinningPrize(String numbersForWinningPrize, String bonusNumber) {
-		this.numbersForWinningPrize = numbersForWinningPrize;
+	public NumbersForWinningPrize(String winningPrizeNumbers, String bonusNumber) {
+		this.winningPrizeNumbers = winningPrizeNumbers;
 		this.bonusNumber = bonusNumber;
 	}
 
-	public String getNumbersForWinningPrize() {
-		return numbersForWinningPrize;
+	public String getWinningPrizeNumbers() {
+		return winningPrizeNumbers;
 	}
 
 	public String getBonusNumber() {
