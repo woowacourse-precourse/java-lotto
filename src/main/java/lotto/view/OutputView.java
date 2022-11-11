@@ -26,6 +26,7 @@ public class OutputView {
 
     public void printIssuedLottoNumbers(List<List<Integer>> issuedLottoNumbers) {
         issuedLottoNumbers.forEach(issuedLottoNumber -> System.out.println(issuedLottoNumber.toString()));
+        System.out.println();
     }
 
     public void printLottoWinningStatistics(Map<LottoWinningRank, Integer> lottoWinningRankMap) {
