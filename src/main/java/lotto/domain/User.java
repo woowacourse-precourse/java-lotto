@@ -28,7 +28,7 @@ public class User {
         System.out.println("당첨 번호를 입력해 주세요.");
         String winningNumbers = Console.readLine();
 
-        this.winningNumbers=convertToList(winningNumbers);
+        this.winningNumbers= new Lotto(convertToList(winningNumbers)).getNumbers();
     }
 
     public void inputBonusNumber(){
