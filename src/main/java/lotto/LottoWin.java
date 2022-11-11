@@ -6,9 +6,11 @@ import java.util.Map;
 
 public class LottoWin {
     int count;
+    int secondCount;
 
     public LottoWin(List<List<Integer>> quickPicks, List<Integer> lotto, int bonus) {
         count = 0;
+        secondCount = 0;
         if(lotto.contains(bonus)) {
             throw new IllegalArgumentException();
         }
@@ -22,8 +24,17 @@ public class LottoWin {
                 count++;
             }
         }
+        for(List<Integer> quickPick: quickPicks) {
+            ArrayList<Integer> tmpArr = new ArrayList<>(quickPick);
+            if(tmpArr.contains(bonus)) {
+                tmpArr.retainAll(lotto);
+                if (tmpArr.size() == LottoState.LENGTH.number() - 1) {
+                    secondCount++;
+                }
+            }
+        }
     }
     public Map<String,Integer> getPrizesMap() {
-        return Map.of("1st", count);
+        return Map.of("1st", count, "2nd", secondCount);
     }
 }
