@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 public class Request {
 
 	private String userInput;
+	private List<Integer> winningNumbers;
 
 	public Request() {}
 
@@ -67,7 +68,7 @@ public class Request {
 
 	public void validateDuplication() {
 		String[] splitUserInput = userInput.split(",");
-		List<Integer> winningNumbers = new ArrayList<>();
+		winningNumbers = new ArrayList<>();
 
 		for(String eachNumbers : splitUserInput) {
 			if(winningNumbers.contains(Integer.parseInt(eachNumbers))) {
@@ -85,6 +86,12 @@ public class Request {
 
 	public void isBonusNumber() {
 		if(Pattern.matches("^([1-9])|([1-3][0-9])|(4[0-5])$", userInput)) {
+			throw new IllegalArgumentException();
+		}
+	}
+
+	public void validateDuplicationWithWinningNumbers() {
+		if(winningNumbers.contains(Integer.parseInt(userInput))) {
 			throw new IllegalArgumentException();
 		}
 	}
