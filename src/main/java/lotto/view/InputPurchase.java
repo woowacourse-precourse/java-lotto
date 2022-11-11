@@ -21,22 +21,24 @@ public class InputPurchase {
 
         System.out.println(PURCHASE_REQUEST);
         inputData = Console.readLine();
-        checkPurchase(inputData);
-        amount = Integer.parseInt(inputData);
-        check1000(amount);
-
+        amount = checkPurchase(inputData);
         userDTO = new UserDTO(amount);
 
         return userDTO;
     }
 
-    private void check1000(int amount) {
+    private int checkPurchase(String inputData) {
+        int amount;
+
+        checkNumeric(inputData);
+        amount = Integer.parseInt(inputData);
         if (amount % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 1000원 단위로만 입력할 수 있습니다.");
         }
+        return amount;
     }
 
-    private void checkPurchase(String amount) {
+    private void checkNumeric(String amount) {
         for (int i = 0; i < amount.length(); i++) {
             checkIsNum(amount.charAt(i));
         }
