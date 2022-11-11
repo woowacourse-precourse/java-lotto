@@ -32,18 +32,23 @@ public class Application {
         return userLottoNum;
     }
 
+    // 로또 번호 출력
+    private static void printLottoNumbers(List<Lotto> userLottoNum){
+        System.out.println(userLottoNum.size()+"개를 구매했습니다.");
+        for(Lotto lotto : userLottoNum){
+            lotto.printLottoNumbers();
+        }
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         // 구입금액 입력
         int lottoCnt = inputBuyMoney()/1000;
 
         // 로또 번호 생성
         List<Lotto> userLottoNum = generateLottoNumbers(lottoCnt);
-        
+
         // 로또 번호 출력
-        System.out.println(lottoCnt+"개를 구매했습니다.");
-        for(Lotto lotto : userLottoNum){
-            lotto.printLottoNumbers();
-        }
-        System.out.println();
+        printLottoNumbers(userLottoNum);
     }
 }
