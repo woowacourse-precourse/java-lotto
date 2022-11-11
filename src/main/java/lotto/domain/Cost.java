@@ -3,8 +3,6 @@ package lotto.domain;
 import static lotto.constant.SystemMessage.PURCHASE_COST_TYPE_ERROR;
 import static lotto.constant.SystemMessage.PURCHASE_COST_UNIT_ERROR;
 
-import lotto.view.Output;
-
 public class Cost {
     private final int cost;
 
@@ -14,29 +12,26 @@ public class Cost {
     }
 
     private void validate(String cost) {
-        if (!isTypeValid(cost) || !isUnitValid(cost)) {
-            throw new IllegalArgumentException();
-        }
+        checkTypeValid(cost);
+        checkUnitValid(cost);
     }
 
     public int getCost() {
         return cost;
     }
 
-    public static boolean isTypeValid(String purchaseCost) {
+    public static void checkTypeValid(String purchaseCost) {
         boolean isType = purchaseCost.chars().allMatch(Character::isDigit);
         if (!isType) {
-            Output.printError(PURCHASE_COST_TYPE_ERROR);
+            throw new IllegalArgumentException(PURCHASE_COST_TYPE_ERROR);
         }
-        return isType;
     }
 
-    public static boolean isUnitValid(String purchaseCost) {
+    public static void checkUnitValid(String purchaseCost) {
         boolean isUnit = Integer.parseInt(purchaseCost) % 1000 == 0;
         if (!isUnit) {
-            Output.printError(PURCHASE_COST_UNIT_ERROR);
+            throw new IllegalArgumentException(PURCHASE_COST_UNIT_ERROR);
         }
-        return isUnit;
     }
 
 }
