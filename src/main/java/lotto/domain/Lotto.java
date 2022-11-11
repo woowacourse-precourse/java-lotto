@@ -22,16 +22,16 @@ public class Lotto {
     }
 
     public static List<List<Integer>> generateLottoNumber(int purchaseNumber) {
-        List<List<Integer>> generatedLottoPaper = new ArrayList<>();
+        List<List<Integer>> generatedLottoNumber = new ArrayList<>();
 
         for (int number = 0; number < purchaseNumber; number++) {
-            generatedLottoPaper.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            generatedLottoNumber.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         }
-        return generatedLottoPaper;
+        return generatedLottoNumber;
     }
 
-    public static void getGeneratedLottoNumber(List<List<Integer>> generatedLottoPaper) {
-        for (List<Integer> eachLottoPaper : generatedLottoPaper) {
+    public static void getGeneratedLottoNumber(List<List<Integer>> generatedLottoNumber) {
+        for (List<Integer> eachLottoPaper : generatedLottoNumber) {
             System.out.println(Arrays.toString(Arrays.stream(eachLottoPaper.toArray()).sorted().toArray()));
         }
     }
