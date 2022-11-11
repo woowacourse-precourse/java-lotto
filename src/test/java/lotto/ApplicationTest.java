@@ -23,7 +23,6 @@ class ApplicationTest extends NsTest {
         assertThat(lottoNumberGen.createSortedLottoNumbers(lottoNumCount).size()).isEqualTo(lottoNumCount);
 
     }
-
     @ParameterizedTest
     @CsvSource({"0,1","1,2","2,3","3,4","4,5"})
     void 로또_번호가_오름차순_정렬이_맞는지_확인(int smallIdx, int bigIdx) {
@@ -34,6 +33,14 @@ class ApplicationTest extends NsTest {
 
         assertThat(lottoList.get(smallIdx) < lottoList.get(bigIdx)).isEqualTo(true);
 
+    }
+    @ParameterizedTest
+    @CsvSource({"1","10","100","1001","'1,000'","-10000000000","qwer","ㅁㄴㅇㅂㅈㄱ","100ㅂ","100a","5a0a","10000000000000000000000000000000000000"})
+    void 로또_구매_금액_예외_입력_확인(String purchaseAmount) {
+        assertSimpleTest(() -> {
+            runException(purchaseAmount);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
     }
 
     @Test
