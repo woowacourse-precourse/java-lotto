@@ -1,7 +1,11 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.LottoSystem;
 import lotto.domain.User;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserService {
     private User user;
@@ -16,5 +20,28 @@ public class UserService {
         }
 
         user = new User(payMent);
+    }
+
+    public void setRandomLottoNumbers(){
+        int lottoCount;
+        List<List<Integer>> numbers = new ArrayList<>();
+
+        LottoSystem lottoSystem =  new LottoSystem(user);
+        lottoSystem.setUserLottoCount();
+        lottoCount = lottoSystem.getUserLottoCount();
+
+        numbers = getRandomLottoNumbers(lottoCount);
+
+        user.setUserLottoNumber(numbers);
+    }
+
+    private List<List<Integer>> getRandomLottoNumbers(int lottoCount) {
+        List<List<Integer>> numbers = new ArrayList<>();
+
+        for (int i = 0; i < lottoCount; i++) {
+            numbers.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        }
+
+        return numbers;
     }
 }
