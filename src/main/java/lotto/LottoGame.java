@@ -14,11 +14,16 @@ public class LottoGame {
     private final OutputView outputView = new OutputView();
     private List<Lotto> lottos = new ArrayList<>();
 
-    public void start() {
-        int money = new Money(new InputView().inputMoney()).getMoney();
-        outputView.printPurchaseLottoCount(money);
+    public void start() throws Exception {
+        try {
+            int money = new Money(new InputView().inputMoney()).getMoney();
+            outputView.printPurchaseLottoCount(money);
 
-        lottos = lottoMachine.ticketLottos(money);
-        outputView.printLottos(lottos);
+            lottos = lottoMachine.ticketLottos(money);
+            outputView.printLottos(lottos);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw e;
+        }
     }
 }
