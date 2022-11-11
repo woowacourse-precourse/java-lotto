@@ -7,7 +7,9 @@ public class Profit {
 
     public Profit(){}
 
-    public void checkPayment(long payment){}
+    public void checkPayment(long payment){
+        this.payment = payment;
+    }
 
     public void addPrice(long price){}
 
