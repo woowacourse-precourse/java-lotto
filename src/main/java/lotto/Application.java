@@ -35,5 +35,22 @@ public class Application {
         for (List<Integer> lottoList : lottoLists) {
             System.out.println(lottoList);
         }
+
+        // 당첨번호 입력
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String winningNumber = Console.readLine();
+        String[] winningNumbers = winningNumber.split(",");
+        List<Integer> winningLotto = new ArrayList<>();
+
+        // 당첨번호 리스트화
+        for (String s : winningNumbers) {
+            winningLotto.add(Integer.valueOf(s));
+        }
+
+        // 입력한 당첨 번호 오름차순 정렬
+        Collections.sort(winningLotto);
+
+        // 당첨번호를 Lotto 클래스에 입력 + 검증
+        new Lotto(winningLotto);
     }
 }
