@@ -22,7 +22,12 @@ public class Manager {
 
     public int changeLottoCount(int money) {
         InputUtil.checkValidationMoney(String.valueOf(money));
-        return (money / 1000);
+
+        if (money > 0) {
+            return (money / 1000);
+        }
+
+        throw InputUtil.makeIllegalArgumentException("[ERROR] 잘못된 값을 입력하셨습니다.");
     }
 
     public int getCorrectCount(List<Integer> userLotto) {
