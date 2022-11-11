@@ -35,6 +35,21 @@ public class WinningLotto {
         }
     }
 
+    public Integer checkMatchNumber(List<Integer> lottoNumbers){
+        int count = 0;
+        for (Integer lottoNumber : lottoNumbers) {
+            if(numbers.contains(lottoNumber)){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public boolean isThereBonusNumber(List<Integer> lottoNumber){
+        boolean bonus = lottoNumber.contains(bonusNumber);
+        return bonus;
+    }
+
     @Override
     public String toString() {
         return numbers.toString();
