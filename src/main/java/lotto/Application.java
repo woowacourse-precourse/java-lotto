@@ -1,21 +1,25 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
-        final String ERROR_MESSAGE = "[ERROR]";
 
+    private static final String ERROR_MESSAGE = "[ERROR]";
+    private static final int STARTINCLUSIVE = 1;
+    private static final int ENDINCLUSIVE = 45;
+    private static final int COUNT = 6;
+
+    public static void main(String[] args) {
         try {
             Chatbot chatbot = new Chatbot();
             int lottoPrice = validatePrice(chatbot.askPrice());
-            System.out.println(lottoPrice);
-            List<List<Integer>> userNumber = setUserNumber(lottoPrice / 1000);
+            List<List<Integer>> userNumber = issueUserLotto(lottoPrice / 1000);
             chatbot.printUserNumber(userNumber);
             Lotto lotto = new Lotto(chatbot.askLottoNumber());
-            int bonus = validateLottoBonus(chatbot.askLottoBonus());
-            List<Integer> result = compareNumbers(userNumber, lotto, bonus);
+            List<Integer> result = compareNumbers(userNumber, lotto, validateLottoBonus(chatbot.askLottoBonus()));
             float rate = calculateRate(lottoPrice, result);
             chatbot.printResult(rate, result);
         } catch (IllegalArgumentException e) {
@@ -43,9 +47,12 @@ public class Application {
         return lottoPrice;
     }
 
-    public static List<List<Integer>> setUserNumber(int amount) {
-        List<List<Integer>> userNumber = new ArrayList();
+    public static List<List<Integer>> issueUserLotto(int amount) {
+        List<List<Integer>> userNumber = new ArrayList(amount);
 
+        for(int i=0;i<amount;i++){
+            userNumber.add(Randoms.pickUniqueNumbersInRange(STARTINCLUSIVE, ENDINCLUSIVE, COUNT));
+        }
         return userNumber;
     }
 
