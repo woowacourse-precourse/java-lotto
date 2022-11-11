@@ -38,6 +38,7 @@ public class LottoView {
     }
 
     public void printWinningStatistics(LottoWinningStatistics winningStatistics) {
-        //TODO: 로또 당첨 통계 출력
+        System.out.println("당첨 통계\n" + "---");
+        System.out.println(winningStatistics);
     }
 }
