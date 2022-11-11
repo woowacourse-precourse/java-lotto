@@ -1,14 +1,10 @@
 package lotto;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -34,14 +30,14 @@ class UserTest {
     }
 
     @DisplayName("구매한 가격 대비 수익률은 0.0 퍼센트보다 커야한다.")
-    @ParameterizedTest()
+    @ParameterizedTest(name = "{index} ==> 주어진 값이 {0}원이라면 수익률은 0.0퍼센트보다 커야한다.")
     @CsvSource(value = {"20000:20", "10000:10", "1000:1", "2000:2", "500:0", "0:0", "12000:12", "12500:12"}, delimiter = ':')
     void yeildIsGreaterThanOrEqualToZero(int source, int expected) {
         User user = new User();
         user.buyLotto(source);
         List<Integer> winningHistory = user.getWinningHistory(List.of(1, 2, 3, 4, 5, 6), 7);
-        float actual = user.getYield(winningHistory);
-        assertThat(actual).isGreaterThanOrEqualTo(0.0f);
+        double actual = user.getYield(winningHistory, source);
+        assertThat(actual).isGreaterThanOrEqualTo(0.0);
     }
 
 }
