@@ -2,17 +2,24 @@ package lotto.ui;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.common.MessageConstants;
+import lotto.ui.dto.BonusNumber;
 import lotto.ui.dto.LottoDraw;
 import lotto.ui.dto.LottoPurchasedAmount;
+import lotto.ui.dto.WinNumbers;
 import lotto.util.Validator;
 
 public class InputView {
 	private final Validator lottoPurchasedAmountValidator;
-	private final Validator lottoDrawValidator;
+	private final Validator winNumbersValidator;
+	private final Validator bonusNumberValidator;
 
-	public InputView(Validator lottoPurchasedAmountValidator, Validator lottoDrawValidator) {
+	public InputView(Validator lottoPurchasedAmountValidator,
+					 Validator winNumbersValidator,
+					 Validator bonusNumberValidator) {
+
 		this.lottoPurchasedAmountValidator = lottoPurchasedAmountValidator;
-		this.lottoDrawValidator = lottoDrawValidator;
+		this.winNumbersValidator = winNumbersValidator;
+		this.bonusNumberValidator = bonusNumberValidator;
 	}
 
 	public LottoPurchasedAmount getLottoPurchasedAmount() {
@@ -22,17 +29,15 @@ public class InputView {
 	}
 
 	public LottoDraw getLottoDraw() {
-        String winNumbers = getWinNumbers();
-        String bonusNumber = getBonusNumber();
-    }
+		WinNumbers winNumbers = getWinNumbers();
+		BonusNumber bonusNumber = getBonusNumber();
 
-	private String getWinNumbers() {
-		System.out.println(MessageConstants.WIN_NUMBER_MESSAGE);
-		return Console.readLine();
+		return LottoDraw.of(winNumbers, bonusNumber);
 	}
 
-    private String getBonusNumber() {
-        System.out.println(MessageConstants.BONUS_NUMBER_MESSAGE);
-        return Console.readLine();
+	private WinNumbers getWinNumbers() {
+	}
+
+    private BonusNumber getBonusNumber() {
     }
 }
