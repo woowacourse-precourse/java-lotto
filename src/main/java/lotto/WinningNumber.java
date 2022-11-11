@@ -20,11 +20,6 @@ public class WinningNumber {
       throw new IllegalArgumentException("[ERROR] 1 ~ 45 내의 숫자가 아닙니다.");
     }
   }
-
-  public static void main(String[] args){
-    WinningNumber win = new WinningNumber();
-    win.splitNumber("133,2,4");
-  }
 }
 
 
