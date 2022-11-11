@@ -1,11 +1,10 @@
 package lotto.domain.model;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,9 +14,9 @@ class LottoResultTest {
     @DisplayName("결과 EnumMap 초기화 테스트")
     @Test
     void createInitResult() {
-        EnumMap<LottoRank, Integer> result = Arrays.stream(LottoRank.values())
+        EnumMap<LottoRank, Long> result = Arrays.stream(LottoRank.values())
                 .filter(value -> value != LottoRank.NONE)
-                .collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b,
+                .collect(Collectors.toMap(value -> value, count -> 0L, (a, b) -> b,
                         () -> new EnumMap<>(LottoRank.class)));
         assertThat(new LottoResult()).isEqualTo(new LottoResult(result));
     }
@@ -36,12 +35,12 @@ class LottoResultTest {
         UserLotto userLotto = new UserLotto(lottos);
         LottoNumber lottoNumber = new LottoNumber("1,2,3,4,5,6", "13");
 
-        EnumMap<LottoRank, Integer> result = new EnumMap<>(LottoRank.class);
-        result.put(LottoRank.THREE_MATCHES, 1);
-        result.put(LottoRank.FOUR_MATCHES, 1);
-        result.put(LottoRank.FIVE_MATCHES, 1);
-        result.put(LottoRank.FIVE_BONUS_MATCHES, 1);
-        result.put(LottoRank.SIX_MATCHES, 1);
+        EnumMap<LottoRank, Long> result = new EnumMap<>(LottoRank.class);
+        result.put(LottoRank.THREE_MATCHES, 1L);
+        result.put(LottoRank.FOUR_MATCHES, 1L);
+        result.put(LottoRank.FIVE_MATCHES, 1L);
+        result.put(LottoRank.FIVE_BONUS_MATCHES, 1L);
+        result.put(LottoRank.SIX_MATCHES, 1L);
 
         assertThat(new LottoResult(userLotto, lottoNumber)).isEqualTo(new LottoResult(result));
     }

@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class LottoResult {
-    private final Map<LottoRank, Integer> lottoResult;
+    private final Map<LottoRank, Long> lottoResult;
 
     public LottoResult() {
         this.lottoResult = initLottoResult();
@@ -17,23 +17,23 @@ public class LottoResult {
     public LottoResult(final UserLotto userLotto, final LottoNumber lottoNumber) {
         this.lottoResult = createLottoResult(userLotto.compareLottoNumber(lottoNumber));
     }
-    public LottoResult(final Map<LottoRank, Integer> lottoResult) {
+    public LottoResult(final Map<LottoRank, Long> lottoResult) {
         this.lottoResult = lottoResult;
     }
 
-    public Map<LottoRank, Integer> getLottoResult() {
+    public Map<LottoRank, Long> getLottoResult() {
         return lottoResult;
     }
 
-    private EnumMap<LottoRank, Integer> initLottoResult() {
+    private EnumMap<LottoRank, Long> initLottoResult() {
         return Arrays.stream(LottoRank.values())
                 .filter(value -> value != LottoRank.NONE)
-                .collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b,
+                .collect(Collectors.toMap(value -> value, count -> 0L, (a, b) -> b,
                         () -> new EnumMap<>(LottoRank.class)));
     }
 
-    private Map<LottoRank, Integer> createLottoResult(final List<LottoRank> lottoRanks) {
-        Map<LottoRank, Integer> lottoResult = initLottoResult();
+    private Map<LottoRank, Long> createLottoResult(final List<LottoRank> lottoRanks) {
+        Map<LottoRank, Long> lottoResult = initLottoResult();
         for (LottoRank lottoRank : lottoRanks) {
             lottoResult.put(lottoRank, lottoResult.get(lottoRank) + 1);
         }

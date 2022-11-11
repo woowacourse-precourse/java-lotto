@@ -26,7 +26,7 @@ public abstract class OutputData {
     }
 
     private static void printStatistics(LottoResult lottoResult) {
-        Map<LottoRank, Integer> result = lottoResult.getLottoResult();
+        Map<LottoRank, Long> result = lottoResult.getLottoResult();
         for (LottoRank lottoRank : result.keySet()) {
             System.out.println(LottoRank.createStatisticsForm(lottoRank, result.get(lottoRank)));
         }

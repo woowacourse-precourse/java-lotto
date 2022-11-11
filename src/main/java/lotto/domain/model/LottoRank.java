@@ -7,22 +7,22 @@ import java.util.Arrays;
 
 public enum LottoRank {
 
-    NONE("0", 0),
-    THREE_MATCHES("3",5000),
-    FOUR_MATCHES("4",50000),
-    FIVE_MATCHES("5",1500000),
-    FIVE_BONUS_MATCHES("5",30000000),
-    SIX_MATCHES("6",2000000000);
+    NONE("0", 0L),
+    THREE_MATCHES("3",5000L),
+    FOUR_MATCHES("4",50000L),
+    FIVE_MATCHES("5",1500000L),
+    FIVE_BONUS_MATCHES("5",30000000L),
+    SIX_MATCHES("6",2000000000L);
 
 
     private final String matchPoint;
-    private final Integer reward;
-    LottoRank(final String matchPoint, final Integer prizeMoney) {
+    private final Long reward;
+    LottoRank(final String matchPoint, final Long prizeMoney) {
         this.matchPoint = matchPoint;
         this.reward = prizeMoney;
     }
 
-    public Integer getReward() {
+    public Long getReward() {
         return reward;
     }
 
@@ -38,7 +38,7 @@ public enum LottoRank {
         return lottoRank;
     }
 
-    public static String createStatisticsForm(LottoRank lottoRank, Integer count) {
+    public static String createStatisticsForm(LottoRank lottoRank, Long count) {
         if (lottoRank == FIVE_BONUS_MATCHES) {
             return String.format(BONUS_STATISTICS_MESSAGE.getMessage(), lottoRank.matchPoint, lottoRank.reward, count);
         }
