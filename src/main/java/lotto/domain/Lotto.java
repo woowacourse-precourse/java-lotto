@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /*
 * 제공된 Lotto 클래스를 활용해 구현해야 한다.
@@ -13,19 +14,23 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateSize(numbers);
+        validateDuplicate(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
     }
-    //보너스 번호를 제외하고 validate 를 만든거보니까 보너스 번호는 enum 으로 만들던가 해야겠다.
+
     // TODO: 추가 기능 구현
+    private void validateDuplicate(List<Integer> numbers) {
+        List<Integer> removeDuplicate = numbers.stream().distinct().collect(Collectors.toList());
 
-    public void initBonusNumber(int number) {
-
+        if(numbers.size() != removeDuplicate.size()) {
+            throw new IllegalArgumentException();
+        }
     }
 }

@@ -17,7 +17,8 @@ public class UserLotto {
 
         return amount;
     }
-    
+
+    //정렬되게 만든다
     public List<Integer> createLotto() {
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         Collections.sort(lottoNumbers);
