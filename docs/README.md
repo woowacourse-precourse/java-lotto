@@ -11,15 +11,17 @@
       - ConstantNumberType: 로또 숫자 갯수, 최소, 최대값 등의 상수
     - dto
       - Lotto: 로또 1매에 포함된 숫자들
-        - .validate(): 숫자 개수를 검증한다
+        - .validate(): 로또가 올바른지 검사한다.
       - LottoPurchaseDto: 한 회에 구매한 모든 로또 
       - LottoWinNumberDto: 당첨 로또 숫자 
   - #### controller
     - LottoController
       - .run(): 로또 게임을 실행합니다.
   - #### service
-    - LottoService
-      - .buy(): 로또를 구매합니다.
+    - UserService
+      - .purchase(): 로또를 구매합니다.
+      - .checkResult(): 로또 당첨 결과를 조회합니다.
+    - AdminService
       - .decideWinner(): 당첨 번호를 정합니다.
       - .decideBonus(): 보너스 번호를 정합니다.
   - #### view
