@@ -10,7 +10,7 @@ public class Amount {
     public static final int FIVE_HIT = 5;
     public static final int SIX_HIT = 6;
 
-    enum grade {first, second, third, fourth, fifth,lose}
+    enum grade {first, second, third, fourth, fifth, lose}
 
     private final List<grade> winning_amount = Arrays.asList(grade.first, grade.second, grade.third, grade.fourth, grade.fifth);
 
@@ -20,6 +20,7 @@ public class Amount {
         if (hitCount == FIVE_HIT && !bonus_hit) return grade.third;
         if (hitCount == FIVE_HIT && bonus_hit) return grade.second;
         if (hitCount == SIX_HIT) return grade.first;
+
         else return grade.lose;
 
     }
