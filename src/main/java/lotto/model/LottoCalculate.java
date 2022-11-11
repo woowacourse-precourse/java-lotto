@@ -23,19 +23,19 @@ public class LottoCalculate {
         return lottoNumbers.contains(bonusNumber);
     }
 
-    int calculatePrize(int matchCount, boolean checkBonusNumber) {
+    LottoPrizeMoney calculatePrize(int matchCount, boolean checkBonusNumber) {
         if (matchCount == 6) {
-            return 1;
+            return LottoPrizeMoney.FIRST;
         } else if (matchCount == 5 & checkBonusNumber) {
-            return 2;
+            return LottoPrizeMoney.SECOND;
         } else if (matchCount == 5) {
-            return 3;
+            return LottoPrizeMoney.THIRD;
         } else if (matchCount == 4) {
-            return 4;
+            return LottoPrizeMoney.FOURTH;
         } else if (matchCount == 3) {
-            return 5;
+            return LottoPrizeMoney.FIFTH;
         }
-        return 0;
+        return LottoPrizeMoney.NONE;
     }
 
     int calculateWinMoney(LottoPrizeMoney prizeNumber){
