@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
@@ -19,6 +18,7 @@ public class Validator {
     public void validateMoneyOnlyNumber(String inputMoney){
         String pattern = "^[0-9]*$";
         if (!Pattern.matches(pattern, inputMoney)) {
+            System.out.println("[ERROR] 금액은 숫자로만 입력해야 합니다.");
             throw new IllegalArgumentException("[ERROR] 금액은 숫자로만 입력해야 합니다.");
         }
     }
@@ -39,18 +39,30 @@ public class Validator {
     }
 
     public void validateBonus(String bonusInput, List<Integer>numbers) {
-        String pattern = "^[0-9]*$";
-        if (!Pattern.matches(pattern, bonusInput)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 '하나의 숫자로만' 입력해야 합니다.");
-        }
+        ValidateBonusOnlyNumber(bonusInput);
         int bonus = Integer.parseInt(bonusInput);
-        if (bonus > MAX_VALUE || bonus < MIN_VALUE) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 사이의 숫자만 입력해야 합니다.");
-        }
+        validateBonusRange(bonus);
+        validateBonusDuplicate(numbers, bonus);
+    }
+
+    private void validateBonusDuplicate(List<Integer> numbers, int bonus) {
         for (int i = 0; i < numbers.size(); i++) {
             if (numbers.get(i) == bonus) {
                 throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복되지 않게 입력해야 합니다.");
             }
+        }
+    }
+
+    private void validateBonusRange(int bonus) {
+        if (bonus > MAX_VALUE || bonus < MIN_VALUE) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 사이의 숫자만 입력해야 합니다.");
+        }
+    }
+
+    private void ValidateBonusOnlyNumber(String bonusInput) {
+        String pattern = "^[0-9]*$";
+        if (!Pattern.matches(pattern, bonusInput)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 '하나의 숫자로만' 입력해야 합니다.");
         }
     }
 
