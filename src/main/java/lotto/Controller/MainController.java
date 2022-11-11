@@ -2,21 +2,32 @@ package lotto.Controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.Bonus;
+import lotto.Cash;
 import lotto.Lotto;
+import lotto.Model.Calculator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainController {
-    private int cash;
+    private Cash cash;
     public void inputCash() throws IllegalArgumentException{
         System.out.println("구입 금액을 입력해주세요.");
         String input = Console.readLine();
+        int integer;
         try{
-            cash = Integer.parseInt(input);
+            integer = Integer.parseInt(input);
         }catch (NumberFormatException exception){
-            throw new IllegalArgumentException("[ERROR] 입력 값이 올바르지 않습니다.");
+            throw new IllegalArgumentException("입력 값이 올바르지 않습니다.");
         }
+
+        cash = new Cash(integer);
+    }
+
+    private int lottoNumber;
+    public void countLottoNumber() throws IllegalArgumentException{
+        Calculator calculator = new Calculator();
+        lottoNumber = calculator.countLottoNumber(cash);
     }
 
     private Lotto winningLotto;
