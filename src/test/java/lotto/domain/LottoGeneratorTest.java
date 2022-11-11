@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +43,6 @@ class LottoGeneratorTest {
     @Test
     @DisplayName("로또 번호가 6개면 통과")
     void lottoGenerator_SizeOfLottoIs6_True() {
-        for (Lotto lotto : lottos) {
-            assertThat(lotto.get().size()).isEqualTo(6);
-        }
+
     }
 }
