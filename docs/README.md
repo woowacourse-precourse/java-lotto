@@ -52,20 +52,15 @@
 ---
 
 ## 예외 처리
-
-### 예외 관련 사항을 담당하는 클래스 Name : Exception
-
 > 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`를 발생시키고,
 > [ERROR] 로 시작하는 에러 메시지를 출력 후 종료한다.
-
 - [ ] 입력한 구입 금액이 유효하지 않은 경우 - #isValidMoneyInput()
   - [ ] 입력한 구입 금액에 숫자가 아닌 값이 포함된 경우 -#isNumeralMoneyInput()
   - [ ] 입력한 구입 금액이 1000원 단위가 아닌경우 -#isValidMoneyUnit()
-- [ ] 입력한 당첨 번호가 유효하지 않은 경우 - #isValidLottoNumbersInput()
-    - [ ] 숫자가 아닌 값이 포함된 경우 - #isNumeralNumbers()
-    - [ ] 숫자이 개수가 6개가 아닌 경우 - #isValidNumberOfNumbers()
-    - [ ] 중복된 숫자가 포함된 경우 - #isUniqueNumbers()
-    - [ ] 범위 내의 숫자가 아닌 값이 포함된 경우 - #isInRangeNumbers()
+- [x] 입력한 당첨 번호가 유효하지 않은 경우 - #isValidLottoNumbersInput()
+    - [x] 숫자이 개수가 6개가 아닌 경우 - #isValidNumberOfNumbers()
+    - [x] 중복된 숫자가 포함된 경우 - #isUniqueNumbers()
+    - [x] 범위 내의 숫자가 아닌 값이 포함된 경우 - #isInRangeNumbers()
 - [ ] 입력한 보너스 번호가 유효하지 않은 경우 - #isValidBonusNumberInput()
     - [ ] 숫자가 아닌 값인 경우- #isNumeralNumber()
     - [ ] 범위 내의 숫자가 아닌 값이 포함된 경우 - #isInRangeNumber()
