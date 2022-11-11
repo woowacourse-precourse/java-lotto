@@ -122,7 +122,8 @@ public class Customer {
 
     private void purchaseLottery() {
         for (int i = 0; i < this.numOfTicket; i++) {
-            List<Integer> ticket = pickUniqueNumbersInRange(MIN_NUM, MAX_NUM, COUNT);
+            List<Integer> tempTicket = pickUniqueNumbersInRange(MIN_NUM, MAX_NUM, COUNT);
+            List<Integer> ticket = new ArrayList<>(tempTicket);
             Collections.sort(ticket);
             this.tickets.add(ticket);
         }
