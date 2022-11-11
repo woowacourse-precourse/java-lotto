@@ -20,10 +20,10 @@ public class InputUtil {
 	}
 
 	private void checkNumber(String inputNumber) {
-		List<Integer> number = inputNumber.chars().mapToObj(i -> i - 48).collect(Collectors.toList());
+		List<Integer> numbers = inputNumber.chars().mapToObj(i -> i - 48).collect(Collectors.toList());
 
-		int count = (int)number.stream().filter(i -> 1 > i || i > 9).count();
-		if (count > 0) {
+		int count = (int)numbers.stream().filter(i -> 0 > i || 9 < i).count();
+		if (count != 0) {
 			throw new IllegalArgumentException(ErrorConst.NOT_NUMBER_ERROR);
 		}
 	}

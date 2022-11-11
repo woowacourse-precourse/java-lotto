@@ -27,18 +27,32 @@ public class LottoController {
 	}
 
 	public void startApplication() {
+
 		String userMoney = inputView.printStart();
-		Integer userMoneyNumber = inputUtil.validateUserMoney(userMoney);
+		Integer userMoneyNumber;
+		try {
+			userMoneyNumber = inputUtil.validateUserMoney(userMoney);
+		} catch (IllegalArgumentException e) {
+			outputView.printError(e.getMessage());
+			return;
+		}
+
 		int lottoCount = userMoneyNumber / 1000;
 		outputView.printLottoCount(lottoCount);
 		UserLottoDto userLottoDto = lottoService.makeRandomLottoNumber(lottoCount);
 		outputView.printUserLotto(userLottoDto.getUserLotto());
-
 		String answer = inputView.printWinnerNumber();
-		List<Integer> answerNumber = inputUtil.validAnswer(answer);
 
-		String bonus = inputView.bonusNumber();
-		Integer bonusNumber = inputUtil.validateBonus(bonus);
+		List<Integer> answerNumber;
+		Integer bonusNumber;
+		try {
+			answerNumber = inputUtil.validAnswer(answer);
+			String bonus = inputView.bonusNumber();
+			bonusNumber = inputUtil.validateBonus(bonus);
+		} catch (IllegalArgumentException e) {
+			outputView.printError(e.getMessage());
+			return;
+		}
 
 		statisticsService.updateStatistics(userLottoDto, answerNumber, bonusNumber);
 		outputView.printUserStatistics(userMoneyNumber);

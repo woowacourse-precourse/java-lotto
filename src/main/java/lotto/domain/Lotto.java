@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.Set;
 
 import lotto.util.ErrorConst;
 
@@ -20,14 +21,14 @@ public class Lotto {
 
 	private void validNumbersSize(List<Integer> numbers) {
 		if (numbers.size() != 6) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(ErrorConst.NUMBERS_SIZE_ERROR);
 		}
 	}
 
 	private void validDuplicated(List<Integer> numbers) {
 		//중복되지 않는 숫자
-		int count = (int)numbers.stream().filter(n -> numbers.contains(n)).count();
-		if (count != 6) {
+		Set<Integer> numbersSet = Set.copyOf(numbers);
+		if (numbers.size() != numbersSet.size()) {
 			throw new IllegalArgumentException(ErrorConst.DUPLICATED_ERROR);
 		}
 	}

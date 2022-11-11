@@ -16,7 +16,7 @@ public class OutputView {
 	}
 
 	public void printLottoCount(Integer lottoCount) {
-		System.out.println(lottoCount / 1000 + ViewConst.LOTTO_COUNT_OUTPUT);
+		System.out.println(lottoCount + ViewConst.LOTTO_COUNT_OUTPUT);
 	}
 
 	public void printUserStatistics(Integer buyPrice) {
@@ -24,6 +24,10 @@ public class OutputView {
 		Arrays.stream(Rank.values())
 			.forEach(i -> System.out.println(i.getUserStatisticsResult()));
 		System.out.println("총 수익률은 " + Rank.findYield(buyPrice) + "%입니다.");
+	}
+
+	public void printError(String errorMessage) {
+		System.out.println(errorMessage);
 	}
 
 }
