@@ -32,7 +32,7 @@ public class Validation {
         return Integer.parseInt(purchaseAmount) > 0;
     }
 
-    public static boolean isSeperatedByComma(String input) {
+    public static boolean hasCorrectNumberOfNumbers(String input) {
         String[] lottoNumbers = input.split(",");
         return lottoNumbers.length == COUNT_OF_NUMBERS_IN_LOTTO;
     }
