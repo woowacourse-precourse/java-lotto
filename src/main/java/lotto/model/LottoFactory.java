@@ -18,7 +18,7 @@ public class LottoFactory {
 
     private static Lotto generate() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(Lotto.NUMBER_LOWER_BOUNDS
-                                                                , Lotto.NUMBER_UPPER_BOUNDS, Lotto.NUMBERS_SIZE);
+                                                               , Lotto.NUMBER_UPPER_BOUNDS, Lotto.NUMBERS_SIZE);
         Collections.sort(numbers);
 
         return new Lotto(numbers);
