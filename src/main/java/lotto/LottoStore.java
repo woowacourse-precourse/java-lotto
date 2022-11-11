@@ -28,6 +28,10 @@ public class LottoStore {
         return lottoTickets;
     }
 
+    public int getUserPaidMoney(){
+        return lottoTickets.size() * LOTTO_PRICE;
+    }
+
     private void validate(int price) {
         if (price < LOTTO_PRICE) {
             System.out.println(PRICE_ERROR_MSG);
@@ -44,7 +48,7 @@ public class LottoStore {
         StringBuilder message = new StringBuilder();
         int lottoPurchaseCount = lottoTickets.size();
 
-        message.append(lottoPurchaseCount + BUY_MSG + "\n");
+        message.append(String.format(BUY_MSG,lottoPurchaseCount));
 
         for (int i = 0; i < lottoPurchaseCount; i++) {
             message.append(lottoTickets.get(i) + "\n");
