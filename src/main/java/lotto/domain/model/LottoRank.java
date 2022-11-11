@@ -3,6 +3,7 @@ package lotto.domain.model;
 import static lotto.domain.view.IOMessage.BONUS_STATISTICS_MESSAGE;
 import static lotto.domain.view.IOMessage.STANDARD_STATISTICS_MESSAGE;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public enum LottoRank {
@@ -39,9 +40,14 @@ public enum LottoRank {
     }
 
     public static String createStatisticsForm(LottoRank lottoRank, Long count) {
+        DecimalFormat decFormat = new DecimalFormat("###,###");
         if (lottoRank == FIVE_BONUS_MATCHES) {
-            return String.format(BONUS_STATISTICS_MESSAGE.getMessage(), lottoRank.matchPoint, lottoRank.reward, count);
+            return String.format(BONUS_STATISTICS_MESSAGE.getMessage(), lottoRank.matchPoint,
+                    decFormat.format(lottoRank.reward), count);
         }
-        return String.format(STANDARD_STATISTICS_MESSAGE.getMessage(), lottoRank.matchPoint, lottoRank.reward, count);
+        return String.format(STANDARD_STATISTICS_MESSAGE.getMessage(), lottoRank.matchPoint,
+                decFormat.format(lottoRank.reward), count);
+
     }
+
 }
