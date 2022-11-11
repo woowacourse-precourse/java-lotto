@@ -27,7 +27,7 @@
 
 - View
   - [x] Ticket 정보 출력
-  - [ ] LottoResult 활용해서 당첨 통계 출력
+  - [x] LottoResult 활용해서 당첨 통계 출력
   - [ ] Money, Ticket 활용해서 수익률 출력
 
 
