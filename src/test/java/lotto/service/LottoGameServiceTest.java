@@ -164,4 +164,12 @@ class LottoGameServiceTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("로또 당첨 번호는 공백 없이 쉼표로 구분된 숫자여야합니다.");
     }
+
+    @Test
+    void 보너스_번호가_숫자가_아니면_예외_발생() {
+        String bonusNubmer = "aaaaa";
+        assertThatThrownBy(() -> lottoGameService.validateBonusNumber(bonusNubmer))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("보너스 번호는 숫자여야합니다.");
+    }
 }
