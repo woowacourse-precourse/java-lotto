@@ -1,8 +1,10 @@
-package lotto.domain;
+package lotto.Model;
 
-import lotto.domain.Prize;
+import lotto.Prize;
 
 public class Calculator {
+    private final static int MIN_UNIT = 1000;
+
     public Prize givePrize(int matchNumber, boolean bonus) {
         if (matchNumber == 6) {
             return Prize.FIRST;
@@ -27,7 +29,7 @@ public class Calculator {
         return profit / 10;
     }
 
-    public int countPublicationLotto(int investmentCash) {
-        return investmentCash / 1000;
+    public int countLottoNumber(int cash) {
+        return cash / MIN_UNIT;
     }
 }
