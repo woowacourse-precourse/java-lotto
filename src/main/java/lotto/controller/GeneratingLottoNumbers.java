@@ -1,7 +1,6 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.controller.Lotto;
 
 import java.util.List;
 
