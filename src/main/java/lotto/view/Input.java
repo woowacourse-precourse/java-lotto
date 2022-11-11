@@ -1,6 +1,8 @@
-package lotto;
+package lotto.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+
+import lotto.Validator;
 
 public final class Input {
     private static final Validator validator = new Validator();
