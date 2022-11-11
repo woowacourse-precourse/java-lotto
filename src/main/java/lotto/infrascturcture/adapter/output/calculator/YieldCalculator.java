@@ -45,7 +45,6 @@ public class YieldCalculator {
     }
 
     public void showStatistic(Map<String, Integer> winInformation) {
-        System.out.println("winInformation = " + winInformation);
         System.out.println("\n당첨 통계\n---");
         System.out.printf("3개 일치 (5,000원) - %d개\n", winInformation.get("three"));
         System.out.printf("4개 일치 (50,000원) - %d개\n", winInformation.get("four"));
