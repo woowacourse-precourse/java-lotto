@@ -28,14 +28,4 @@ public enum PrizeRank {
     public int getAnswerCount() {
         return answerCount;
     }
-
-    public String getPrizeRank(int matchingCount) {
-        PrizeRank[] values = values();
-        for (PrizeRank value : values) {
-            if (value.getAnswerCount() == matchingCount) {
-                return value.toString();
-            }
-        }
-        return "";
-    }
 }
