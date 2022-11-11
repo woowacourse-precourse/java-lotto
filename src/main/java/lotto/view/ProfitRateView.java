@@ -9,7 +9,7 @@ public class ProfitRateView {
         int money = purchaseAmount.getMoney();
 
         double profit = calculateProfit(money, prizeMoney);
-        System.out.println("총 수익률은" + profit + "입니다.");
+        System.out.println("총 수익률은 " + profit + "%입니다.");
     }
 
     private static double calculateProfit(int money, double prizeMoney) {
