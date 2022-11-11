@@ -27,16 +27,16 @@ public class LottoNumbersValidator extends NumberValidator {
     }
     
     private static boolean isOutOfLength(final List<Integer> lottoNumbers) {
-        return isSameLength(lottoNumbers.size(), LENGTH_OF_LOTTO_NUMBERS);
+        return isDifferentLength(lottoNumbers.size(), LENGTH_OF_LOTTO_NUMBERS);
     }
     
     private static void validateExistDuplicateNumber(final List<Integer> lottoNumbers) {
-        if (isSameLength(lottoNumbers.size(), lengthAfterDeduplication(lottoNumbers))) {
+        if (isDifferentLength(lottoNumbers.size(), lengthAfterDeduplication(lottoNumbers))) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_EXIST_EXCEPTION_MESSAGE);
         }
     }
     
-    private static boolean isSameLength(final int lottoNumbersLength, final int lengthToCompare) {
+    private static boolean isDifferentLength(final int lottoNumbersLength, final int lengthToCompare) {
         return lottoNumbersLength != lengthToCompare;
     }
     
