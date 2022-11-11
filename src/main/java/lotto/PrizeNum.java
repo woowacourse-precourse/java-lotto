@@ -27,7 +27,7 @@ public class PrizeNum {
         String[] splitInput = splitInputPrize(inputPrize);
         prize = new ArrayList<>();
 
-        for(String input : splitInput) {
+        for (String input : splitInput) {
             prize.add(Integer.parseInt(input));
         }
 
@@ -35,10 +35,10 @@ public class PrizeNum {
     }
 
     private static void validatePrizeNum(List<Integer> prizeNum) throws IllegalArgumentException {
-        if(prizeNum.size()!=6) {
+        if (prizeNum.size() != 6) {
             throw new IllegalArgumentException(ErrMsg.VALIDATE_PRIZE_NUM_SIX);
         }
-        if(prizeNum.size()!=prizeNum.stream().distinct().count()) {
+        if (prizeNum.size() != prizeNum.stream().distinct().count()) {
             throw new IllegalArgumentException(ErrMsg.VALIDATE_PRIZE_NUM_UNIQUE);
         }
     }
@@ -52,7 +52,7 @@ public class PrizeNum {
     }
 
     private static void validateBonusNum(int bonus) throws IllegalArgumentException {
-        if(prize.contains(bonus)) {
+        if (prize.contains(bonus)) {
             throw new IllegalArgumentException(ErrMsg.VALIDATE_BONUS_NUM_UNIQUE);
         }
     }

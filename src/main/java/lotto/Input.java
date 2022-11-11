@@ -7,7 +7,8 @@ import java.util.regex.Pattern;
 
 public class Input {
     private static final String regexGroup = "([1-9]|[1-3][0-9]|4[0-5])";
-    private Input() {
+
+    public Input() {
 
     }
 
@@ -25,7 +26,7 @@ public class Input {
     }
 
     private static void validateInputBudget(String input) throws IllegalArgumentException {
-        if(!Pattern.matches("^[0-9]*000$", input)) {
+        if (!Pattern.matches("^[0-9]*000$", input)) {
             throw new IllegalArgumentException(ErrMsg.VALIDATE_INPUT_BUDGET);
         }
     }
@@ -40,9 +41,9 @@ public class Input {
     }
 
     private static void validateInputPrize(String prize) throws IllegalArgumentException {
-        String pattern = "^("+regexGroup+",){5}"+regexGroup;
+        String pattern = "^(" + regexGroup + ",? ){5}" + regexGroup;
 
-        if(!Pattern.matches(pattern, prize)) {
+        if (!Pattern.matches(pattern, prize)) {
             throw new IllegalArgumentException(ErrMsg.VALIDATE_INPUT_PRIZE_NUM);
         }
     }
@@ -56,7 +57,7 @@ public class Input {
     }
 
     private static void validateInputBonus(String bonus) throws IllegalArgumentException {
-        if(!Pattern.matches("^"+regexGroup, bonus)) {
+        if (!Pattern.matches("^" + regexGroup, bonus)) {
             throw new IllegalArgumentException(ErrMsg.VALIDATE_BONUS_NUM_ONE);
         }
     }

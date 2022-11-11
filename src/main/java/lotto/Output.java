@@ -9,6 +9,7 @@ public class Output {
     public static String budget;
     public static List<Lotto> lottos;
     private static TreeMap<Prize, Integer> stats;
+
     public static void askBuy() {
         System.out.println(Print.ASK_BUY);
         budget = Input.inputBudget();
@@ -20,19 +21,21 @@ public class Output {
     }
 
     public static void printLotto() {
-        for(Lotto lotto : lottos) {
+        for (Lotto lotto : lottos) {
             System.out.println(lotto);
         }
     }
 
     public static void askPrizeNum() {
         System.out.println(Print.ASK_PRIZE);
-        PrizeNum.setPrizeNum();
+        String prize = Input.inputPrize();
+        PrizeNum.setPrizeNum(prize);
     }
 
     public static void askBonusNum() {
         System.out.println(Print.ASK_BONUS);
-        PrizeNum.setBonusNum();
+        String bonus = Input.inputBonus();
+        PrizeNum.setBonusNum(bonus);
     }
 
     public static void printLottoStat() {
@@ -41,13 +44,13 @@ public class Output {
 
         stats = Analyse.getStats();
 
-        for(Prize p : stats.descendingKeySet()) {
+        for (Prize p : stats.descendingKeySet()) {
             System.out.println(p.getPrizePrint() + " - " + stats.get(p) + "개");
         }
     }
 
     public static void printLottoRate() {
-        double rate = Analyse.rateLotto(lottos.size()*1000);
+        double rate = Analyse.rateLotto(lottos.size() * 1000);
         System.out.println(Print.RATE_BEFORE + String.format("%,.1f", Double.parseDouble(new BigDecimal(rate).toPlainString())) + Print.RATE_AFTER);
     }
 }

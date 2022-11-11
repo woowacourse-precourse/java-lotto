@@ -19,7 +19,7 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrMsg.VALIDATE_LOTTO_NUM);
         }
-        if(numbers.size() != numbers.stream().distinct().count()) {
+        if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException(ErrMsg.VALIDATE_LOTTO_NUM);
         }
     }
@@ -30,7 +30,7 @@ public class Lotto {
         List<Lotto> lottos = new ArrayList<>();
         int publishNum = getPublishNum(budget);
 
-        while(lottos.size() < publishNum) {
+        while (lottos.size() < publishNum) {
             lottos.add(new Lotto(getLottoNum()));
         }
 
@@ -44,7 +44,7 @@ public class Lotto {
     }
 
     public static int getPublishNum(String budget) {
-        return parseBudget(budget)/1000;
+        return parseBudget(budget) / 1000;
     }
 
     private static List<Integer> getLottoNum() {
@@ -60,7 +60,7 @@ public class Lotto {
     }
 
     public static void validateLotto(List<Lotto> lotto, int publishNum) {
-        if(lotto.size()!=publishNum) {
+        if (lotto.size() != publishNum) {
             throw new IllegalArgumentException(ErrMsg.VALIDATE_LOTTO_SIZE);
         }
     }

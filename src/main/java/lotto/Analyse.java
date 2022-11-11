@@ -30,7 +30,7 @@ public class Analyse {
     public static void analyseLotto(List<Lotto> lottos, List<Integer> prize) {
         setStats();
 
-        for(Lotto lotto : lottos) {
+        for (Lotto lotto : lottos) {
             countSameNum(lotto, prize);
         }
 
@@ -41,32 +41,32 @@ public class Analyse {
         int count = 0;
         List<Integer> lottoNum = lotto.getNumbers();
 
-        for(int i=0; i< prize.size()-1; i++) {
-            if(lottoNum.contains(prize.get(i))) {
+        for (int i = 0; i < prize.size() - 1; i++) {
+            if (lottoNum.contains(prize.get(i))) {
                 count++;
             }
         }
 
-        if(count==5 && lottoNum.contains(prize.get(6))) {
-            stats.replace(Prize.SECOND, stats.get(Prize.SECOND)+1);
+        if (count == 5 && lottoNum.contains(prize.get(6))) {
+            stats.replace(Prize.SECOND, stats.get(Prize.SECOND) + 1);
             return;
         }
 
         Prize prizeName = Prize.findPrize(count);
-        stats.replace(prizeName, stats.get(prizeName)+1);
+        stats.replace(prizeName, stats.get(prizeName) + 1);
     }
 
     //로또 수익률
     public static double rateLotto(int budget) {
         long total = getTotalPrizeWon();
 
-        return Math.round(((double)total/budget)*1000)/10.0;
+        return Math.round(((double) total / budget) * 1000) / 10.0;
     }
 
     private static long getTotalPrizeWon() {
         long prizeWon = 0L;
 
-        for(Prize p : stats.keySet()) {
+        for (Prize p : stats.keySet()) {
             prizeWon += p.getPrizeWon() * stats.get(p);
         }
 
