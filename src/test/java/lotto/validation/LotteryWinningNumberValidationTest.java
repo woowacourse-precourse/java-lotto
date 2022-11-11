@@ -42,6 +42,15 @@ class LotteryWinningNumberValidationTest {
         assertThrows(IllegalArgumentException.class, () -> lotteryWinningNumberValidation.isValidate(userInput));
     }
 
+    @DisplayName("올바른 winning number 일 경우 오류를 내지 않는다.")
+    @Test
+    void successWinningNumber() {
+        LotteryWinningNumberValidation lotteryWinningNumberValidation = new LotteryWinningNumberValidation();
+        String userInput = createUserInputWithLength(IntConstant.LOTTO_NUMBER_BIGGER_THAN.getValue(),
+                IntConstant.LOTTO_NUMBER_COUNT.getValue());
+        assertDoesNotThrow(() -> lotteryWinningNumberValidation.isValidate(userInput));
+    }
+
     /**
      * String consists of String starts with(start with number) ascending with length (length number)
      * ex) (1,2) -> 1,2
