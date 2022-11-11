@@ -39,4 +39,14 @@ public class Lotto {
             }
         }
     }
+
+    public void validateBonusNumber(int BonusNumber) {
+        int[] checkDuplication = new int[46];
+        for(Integer number : numbers) {
+            checkDuplication[number] = 1;
+        }
+        if (checkDuplication[BonusNumber] == 1) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
