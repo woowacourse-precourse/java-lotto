@@ -1,7 +1,10 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import lotto.constant.LottoConstant;
 
 public class View {
 
@@ -23,6 +26,25 @@ public class View {
         System.out.println(lotteries.size() + "개를 구매했습니다.");
         for (List<Integer> lottery : lotteries) {
             System.out.println(lottery);
+        }
+    }
+
+    public List<Integer> inputWinningNumber() {
+        String numbers = Console.readLine();
+        List<Integer> winningNumber = Arrays.stream(numbers.split(","))
+                .sorted()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+        validateWinningNumber(winningNumber);
+        return winningNumber;
+    }
+
+    private void validateWinningNumber(List<Integer> winningNumber) {
+        for (Integer integer : winningNumber) {
+            if (integer > LottoConstant.MAX_LOTTO_NUMBER ||
+                    integer < LottoConstant.LOW_LOTTO_NUMBER) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            }
         }
     }
 
