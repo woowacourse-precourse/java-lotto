@@ -14,9 +14,12 @@ public class Application {
         LottoCount lottocount = new LottoCount(price);
         lottonum = lottocount.lottonum;         // 사용자 입력으로 받은 금액 / 1000을 해서 로또 개수 구하기
         
-        List<List<Integer>> lottonumbersall; 
+        List<ArrayList<Integer>> lottonumbersall; 
         NumberGenerator numbergenerator = new NumberGenerator();
         lottonumbersall = numbergenerator.createRandomLotto(lottonum);  // 로또 개수만큼 랜덤 로또 숫자 6개씩 추출해서 리스트에 넣기
+        
+        Print print = new Print();
+        print.printNumberAll(lottonumbersall,lottonum);
     }
     
     public static int askTotalPrice() {
