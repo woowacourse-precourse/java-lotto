@@ -6,11 +6,11 @@ import java.util.List;
 public class LottoGame {
 
     private final List<Lotto> userLottos = new ArrayList<>();
-
     private final int price;
 
     public LottoGame(int price) {
         this.price = price;
+        issueLotto();
     }
 
     private int countLotto() {
@@ -22,9 +22,13 @@ public class LottoGame {
         LottoGenerator lottoGenerator = new LottoGenerator();
 
         lottoNum = countLotto();
-        for (int count = 0; count < lottoNum; count++){
+        for (int count = 0; count < lottoNum; count++) {
             List<Integer> lotto = lottoGenerator.createRandomLotto();
             userLottos.add(new Lotto(lotto));
         }
+    }
+
+    public List<Lotto> getUserLottos() {
+        return userLottos;
     }
 }
