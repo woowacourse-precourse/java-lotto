@@ -9,7 +9,7 @@
 - Model 
   - [x] Lotto
   - [x] Ticket (구입 금액에 맞는 로또 발행)
-  - [x] Money
+  - [x] PurchaseAmount
   - [x] WinningLotto
   - [x] BonusNumber
   - [x] Prize (Enum 으로 구현)
@@ -28,7 +28,7 @@
 - View
   - [x] Ticket 정보 출력
   - [x] LottoResult 활용해서 당첨 통계 출력
-  - [ ] Money, Ticket 활용해서 수익률 출력
+  - [ ] PurchaseAmount, LottoResult 활용해서 수익률 출력
 
 
 - Input
@@ -47,7 +47,7 @@
   - [x] 구입 금액만큼 로또를 생성하는지 검증
   
 
-- Money
+- PurchaseAmount
   - [x] 1000원 단위로 나누어 떨어지는지 검증
 
 
@@ -74,7 +74,7 @@
 
 ---
 ## 🚨 에러 출력 목록
-- [ ] Money
+- [ ] PurchaseAmount
     - [ ] 숫자가 아닌 경우
     - [ ] 1000원 보다 작은 경우
     - [ ] 1000원으로 나누어 떨어지지 않는 경우

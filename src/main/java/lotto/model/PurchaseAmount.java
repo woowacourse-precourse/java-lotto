@@ -1,11 +1,15 @@
 package lotto.model;
 
-public class Money {
+public class PurchaseAmount {
     private final int money;
 
-    public Money(int money) {
+    public PurchaseAmount(int money) {
         validateMoney(money);
         this.money = money;
+    }
+
+    public int getMoney() {
+        return money;
     }
 
     private void validateMoney(int money) {
