@@ -36,19 +36,6 @@ class LottoSystemTest {
         }
     }
 
-    @DisplayName("당첨 번호 입력 시 1부터 45 사이의 숫자인지 확인한다")
-    @Test
-    void InputInvalidRange() {
-        String[] invalidInput = {
-                "1, 46, 2, 3, 4, 5",
-                "-1, 45, 4, 24, 14, 5",
-        };
-        for (String input : invalidInput) {
-            assertThatThrownBy(() -> system.setWinningNumbers(input))
-                    .isInstanceOf(IllegalArgumentException.class);
-        }
-    }
-
     @DisplayName("당첨 번호 입력 시 모두 다른 숫자인지 확인한다")
     @Test
     void InputDuplicateNumbers() {
@@ -71,7 +58,6 @@ class LottoSystemTest {
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
-
     @DisplayName("보너스 번호 입력 시 1부터 45까지의 숫자인지 확인한다.")
     @Test
     void InputInvalidBonusNumber() {

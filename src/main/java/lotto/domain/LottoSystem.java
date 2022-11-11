@@ -22,10 +22,10 @@ public class LottoSystem {
     }
 
     public void setBonusNumber(String number) {
+        validateType(number);
         if (winningNumber == null) {
             return;
         }
-        validateType(number);
         winningNumber.setBonusNumber(Integer.parseInt(number));
     }
 

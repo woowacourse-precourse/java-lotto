@@ -31,9 +31,13 @@ public class Lotto {
 
     private void validateRange(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number > MAX_RANGE || number < MIN_RANGE) {
-                throw new IllegalArgumentException("1부터 45까지의 숫자만 허용됩니다.");
-            }
+            validateRange(number);
+        }
+    }
+
+    protected void validateRange(int number) {
+        if (number > MAX_RANGE || number < MIN_RANGE) {
+            throw new IllegalArgumentException("1부터 45까지의 숫자만 허용됩니다.");
         }
     }
 

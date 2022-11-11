@@ -10,6 +10,7 @@ public class WinningNumber extends Lotto{
     }
 
     public void setBonusNumber(int bonusNumber) {
+        validateRange(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 }
