@@ -1,6 +1,6 @@
 package lotto;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Console;
@@ -18,6 +18,8 @@ public class View {
     }
 
     public void printUncheckedLotto (List<List<Integer>> uncheckedLottos) {
+        System.out.printf("%d개를 구매했습니다.\n", uncheckedLottos.size());
+
         for (List<Integer> lotto: uncheckedLottos) {
             System.out.println(lotto);
         }
