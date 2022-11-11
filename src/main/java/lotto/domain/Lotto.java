@@ -1,7 +1,11 @@
 package lotto.domain;
 
+import lotto.constant.Rank;
+
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -27,5 +31,24 @@ public class Lotto {
 
     private void sortInAscendingOrder(){
         Collections.sort(numbers);
+    }
+
+    public int calculateCountOfMatchingNumbers(List<Integer> winningNumbers){
+        int count = 0;
+        for(int i = 0; i < winningNumbers.size(); i++){
+            if(numbers.contains(winningNumbers.get(i))){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public boolean contains(int number){
+        for(int i = 0; i < numbers.size(); i++){
+            if(numbers.contains(number)){
+                return true;
+            }
+        }
+        return false;
     }
 }
