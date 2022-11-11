@@ -28,6 +28,10 @@ public class LottoGame {
         }
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     public List<Lotto> getUserLottos() {
         return userLottos;
     }

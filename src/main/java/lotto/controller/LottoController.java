@@ -12,18 +12,17 @@ import lotto.view.OutputView;
 
 public class LottoController {
 
-    private int purchaseMoney;
     private LottoGame lottoGame;
     private WinChecker winChecker;
 
     private void createLottoPurchase() {
         OutputView.printStartMesseage();
-        purchaseMoney = InputView.getPurchase();
+        int purchaseMoney = InputView.getPurchase();
         lottoGame = new LottoGame(purchaseMoney);
 
         List<Lotto> lottos = lottoGame.getUserLottos();
 
-        OutputView.printLottoNumber(purchaseMoney / 1000);
+        OutputView.printLottoNumber(lottos.size());
         OutputView.printLotto(lottos);
     }
 
@@ -88,7 +87,7 @@ public class LottoController {
     }
 
     private void checkYield(Map<Rank, Integer> result) {
-        float yield = PriceCalculator.getyield(result, purchaseMoney);
+        float yield = PriceCalculator.getyield(result, lottoGame.getPrice());
         OutputView.printYield(yield);
     }
 
