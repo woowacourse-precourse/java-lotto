@@ -4,6 +4,7 @@ import lotto.service.LottoGenerator;
 import lotto.service.UserIOService;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static constants.Constants.LOTTO_PRICE;
@@ -22,14 +23,17 @@ public class User {
 
     private List<Lotto> issueLotto(int purchaseLottoNum) {
         LottoGenerator generator = new LottoGenerator();
-        List<Lotto> tempLotto = new ArrayList<>();
+        List<Lotto> tempGeneratedLotto = new ArrayList<>();
         for (int buy = 0; buy < purchaseLottoNum; buy++) {
             List<Integer> generatedNums = generator.generateRandomNums();
-            tempLotto.add(new Lotto(generatedNums));
+            Collections.sort(generatedNums);
+            tempGeneratedLotto.add(new Lotto(generatedNums));
         }
-        return tempLotto;
+        return tempGeneratedLotto;
     }
 
-
+    public void printBoughtLotto(){
+        System.out.println(ioService.print(purchaseLottoNum,purchaseLotto));
+    }
 
 }

@@ -2,7 +2,8 @@ package constants;
 
 public final class Constants {
     public static final String START_MSG = "구입금액을 입력해 주세요.";
-
+    public static final String PURCHASE_MSG = "개를 구매했습니다.";
+    public static final String BLANK_BR = "\n";
 
     public static final String PAY_MONEY_ERROR = "[ERROR] 구입금액은 1000원 단위로 끝나야 합니다.";
 
