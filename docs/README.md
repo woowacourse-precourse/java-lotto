@@ -8,7 +8,7 @@
 * [x] 로또 번호 생성 - createLottoNumber()
   * [x] 입력한 번호가 6개가 맞는지 - validate()
   * [x] 중복되지 않는지 - validate()
-* [ ] 당첨번호 입력  - inputWinningNumber()
+* [x] 당첨번호 입력  - inputWinningNumber()
   * [x] 1 ~ 45 사이의 숫자인지 - validate()
 * [ ] 보너스 번호 입력  - inputBonusNumber()
     * [ ] 당첨번호 중 하나와 중복되지 않는지 - validateForDuplicatedNumber()
