@@ -1,6 +1,9 @@
-package lotto;
+package lotto.domain;
+
+import lotto.LottoInputException;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Lotto {
@@ -31,5 +34,18 @@ public class Lotto {
         if (numbers.stream().distinct().count() != 6){
             throw new IllegalArgumentException("[ERROR] 중복된 숫자를 입력했습니다.");
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Lotto lotto = (Lotto) o;
+        return Objects.equals(numbers, lotto.numbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numbers);
     }
 }
