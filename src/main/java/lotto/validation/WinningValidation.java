@@ -21,10 +21,19 @@ public class WinningValidation extends IllegalArgumentException {
         throw new IllegalArgumentException(msg);
     }
 
-    public void isValidWinning() {
+    public void isValidWinning(String input) {
+        isBlank(input);
+        isNumberAndComma(input);
+        isCorrectRange(input);
+        isCorrectWinningSize(input);
+        isDuplicate(input);
     }
 
-    public void isValidBonus() {
+    public void isValidBonus(String input, List<Integer> winnings) {
+        isBlank(input);
+        isNumber(input);
+        isCorrectRange(input);
+        isContainWinning(input, winnings);
     }
 
     public void isBlank(String input) {
