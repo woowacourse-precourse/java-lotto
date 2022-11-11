@@ -48,4 +48,10 @@ public class Validator {
         if(list.contains(Integer.parseInt(number)))
             throw new IllegalArgumentException(WRONG_INPUT);
     }
+
+    private void isRightRange(String input){
+        int number = Integer.parseInt(input);
+        if(number < MIN_NUMBER || number > MAX_NUMBER)
+            throw new IllegalArgumentException(WRONG_INPUT);
+    }
 }
