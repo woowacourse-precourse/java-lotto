@@ -27,4 +27,10 @@ public class Error {
             throw new IllegalArgumentException("[ERROR] 당첨번호 안에 중복된 보너스번호가 있습니다.");
         }
     }
+
+    static void sizeWinningNumber(List<Integer> winningNumber) {
+        if (winningNumber.size() != LottoConst.LOTTO_NUMBER_COUNT) {
+            throw new IllegalArgumentException("[ERROR] 로또번호의 개수가 유효하지 않습니다.");
+        }
+    }
 }
