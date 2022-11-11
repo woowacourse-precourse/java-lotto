@@ -1,5 +1,7 @@
 package lotto.domain.validator;
 
+import lotto.exception.UtilClassCreateException;
+
 import java.util.List;
 
 public class LottoNumbersValidator extends NumberValidator {
@@ -9,7 +11,7 @@ public class LottoNumbersValidator extends NumberValidator {
     private static final int LENGTH_OF_LOTTO_NUMBERS = 6;
     
     private LottoNumbersValidator() {
-        throw new IllegalStateException(ValidatorExceptionMessageConstants.UTILITY_CLASS_CREATE_EXCEPTION_MESSAGE);
+        throw new UtilClassCreateException();
     }
     
     public static void validate(List<Integer> lottoNumbers) {

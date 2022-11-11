@@ -1,6 +1,6 @@
 package lotto.view.validator;
 
-import lotto.domain.validator.ValidatorExceptionMessageConstants;
+import lotto.exception.UtilClassCreateException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,7 +10,7 @@ public class InputPaymentValidator {
     private static final String INPUT_PAYMENT_FORM = "\\D";
     
     private InputPaymentValidator() {
-        throw new IllegalStateException(ValidatorExceptionMessageConstants.UTILITY_CLASS_CREATE_EXCEPTION_MESSAGE);
+        throw new UtilClassCreateException();
     }
     
     public static void validate(final String inputPayment) {

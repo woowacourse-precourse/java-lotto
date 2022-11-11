@@ -1,12 +1,12 @@
 package lotto.utils;
 
-import lotto.domain.validator.ValidatorExceptionMessageConstants;
+import lotto.exception.UtilClassCreateException;
 
 import java.util.Objects;
 
 public class StringUtils {
     private StringUtils() {
-        throw new IllegalStateException(ValidatorExceptionMessageConstants.UTILITY_CLASS_CREATE_EXCEPTION_MESSAGE);
+        throw new UtilClassCreateException();
     }
     
     public static boolean isBlank(final String input) {

@@ -1,12 +1,14 @@
 package lotto.domain.validator;
 
+import lotto.exception.UtilClassCreateException;
+
 public class PaymentValidator {
     private static final String UNIT_OF_PAYMENT_EXCEPTION_MESSAGE = "[ERROR] 지불 금액은 1000의 배수여야 합니다.";
     private static final String ZERO_PAYMENT_EXCEPTION_MESSAGE = "[ERROR] 지불금액은 0이 될 수 없습니다.";
     private static final int LOTTO_PRICE = 1000;
     
     private PaymentValidator() {
-        throw new IllegalStateException(ValidatorExceptionMessageConstants.UTILITY_CLASS_CREATE_EXCEPTION_MESSAGE);
+        throw new UtilClassCreateException();
     }
     
     public static void validate(final int payment) {
