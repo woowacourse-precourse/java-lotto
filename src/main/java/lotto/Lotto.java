@@ -13,14 +13,22 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+        checkLottoSize(numbers);
         List<Integer> copyNumbers = new ArrayList<>(numbers);
         for (Integer number : copyNumbers) {
-            if (copyNumbers.indexOf(number) != copyNumbers.lastIndexOf(number)) {
-                throw new IllegalArgumentException();
-            }
+            checkDuplicateNumber(copyNumbers, number);
+        }
+    }
+
+    private static void checkDuplicateNumber(List<Integer> numbers, Integer number) {
+        if (numbers.indexOf(number) != numbers.lastIndexOf(number)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void checkLottoSize(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException();
         }
     }
 
