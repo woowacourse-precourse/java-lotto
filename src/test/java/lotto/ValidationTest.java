@@ -45,4 +45,11 @@ public class ValidationTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void validatePrice_메서드_사용시_1000으로_나누어_떨어지지_않을_경우_예외_발생() {
+        int price = 11500;
+
+        assertThatThrownBy(() -> Input.validatePrice(price)).isInstanceOf(IllegalArgumentException.class);
+    }
 }
