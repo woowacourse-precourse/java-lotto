@@ -104,7 +104,7 @@ Enum : Rank
   - setEarningRate(winningStats)
 
 [method]<br>
-- public getEarningRate() // earningRate Getter 
+- public double getEarningRate() // earningRate Getter 
 - private void setEarningRate(Map<Rank,Integer> winningStats) // (feat.7)
 - private int calcEarning(Map<Rank,Integer> winningStats) // 총 수익 계산
 - private int calcSpending(Map<Rank,Integer> winningStats) // 총 지출 계산
