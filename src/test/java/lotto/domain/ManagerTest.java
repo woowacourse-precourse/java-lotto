@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.domain.enums.Number;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -13,7 +14,12 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 
 class ManagerTest {
 
-    Manager manager = new Manager();
+    Manager manager;
+
+    @BeforeEach
+    void beforeEach() {
+        manager = new Manager();
+    }
 
     @Test
     void 구입금액에_따른_로또_장수_반환_테스트() {
@@ -72,15 +78,26 @@ class ManagerTest {
     @Test
     void judgeRankTest() {
         assertAll(
-            () -> assertSame(manager.judgeRank(3, true), Number.FIVE.getValue()),
-            () -> assertSame(manager.judgeRank(4, true), Number.FOUR.getValue()),
-            () -> assertSame(manager.judgeRank(5, false), Number.THREE.getValue()),
-            () -> assertSame(manager.judgeRank(5, true), Number.TWO.getValue()),
-            () -> assertSame(manager.judgeRank(6, true), Number.ONE.getValue()),
-            () -> assertSame(manager.judgeRank(2, true), Number.ZERO.getValue()),
-            () -> assertSame(manager.judgeRank(1, true), Number.ZERO.getValue()),
-            () -> assertSame(manager.judgeRank(0, true), Number.ZERO.getValue())
+            () -> assertThat(manager.judgeRank(0, true)).isEqualTo(Number.ZERO.getValue()),
+            () -> assertThat(manager.judgeRank(1, true)).isEqualTo(Number.ZERO.getValue()),
+            () -> assertThat(manager.judgeRank(2, true)).isEqualTo(Number.ZERO.getValue()),
+            () -> assertThat(manager.judgeRank(3, true)).isEqualTo(Number.FIVE.getValue()),
+            () -> assertThat(manager.judgeRank(4, true)).isEqualTo(Number.FOUR.getValue()),
+            () -> assertThat(manager.judgeRank(5, false)).isEqualTo(Number.THREE.getValue()),
+            () -> assertThat(manager.judgeRank(5, true)).isEqualTo(Number.TWO.getValue()),
+            () -> assertThat(manager.judgeRank(6, true)).isEqualTo(Number.ONE.getValue())
         );
     }
 
+    @Test
+    void getWinningAmountTest() {
+        assertAll(
+            () -> assertThat(manager.getWinningAmount(0)).isEqualTo(Number.ZERO.getValue()),
+            () -> assertThat(manager.getWinningAmount(1)).isEqualTo(Number.FIRST_WINNING_AMOUNT.getValue()),
+            () -> assertThat(manager.getWinningAmount(2)).isEqualTo(Number.SECOND_WINNING_AMOUNT.getValue()),
+            () -> assertThat(manager.getWinningAmount(3)).isEqualTo(Number.THIRD_WINNING_AMOUNT.getValue()),
+            () -> assertThat(manager.getWinningAmount(4)).isEqualTo(Number.FOURTH_WINNING_AMOUNT.getValue()),
+            () -> assertThat(manager.getWinningAmount(5)).isEqualTo(Number.FIFTH_WINNING_AMOUNT.getValue())
+        );
+    }
 }
