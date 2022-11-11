@@ -30,8 +30,7 @@ public class LottoGame {
     protected void purchaseLottos() {
         lottoView.printPurchaseMoneyInputCommand();
         int purchaseMoney = Integer.parseInt(Console.readLine()); //TODO: 구입금액 입력 !예외처리
-
-        //TODO: 구입금액 만큼 로또 발행, issuingMachine.issue(purchaseMoney);
+        issuingMachine.issue(purchaseMoney);
         lottoView.printIssuedLottoDetails(issuingMachine);
     }
 
