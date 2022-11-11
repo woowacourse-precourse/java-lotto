@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lotto.domain.Lotto;
@@ -11,6 +12,7 @@ public class View {
 	private static String BONUS_NUMBER_INPUT_GUIDE_MESSAGE = "보너스 번호를 입력해 주세요.";
 	private static String LINES = "---";
 	private static String WINNING_MESSAGE_GUIDE_MESSAGE = "당첨 통계";
+	private static List<String> winnerPrize;
 
 	public static void showPurchaseInputGuideMessage() {
 		System.out.println(PURCHASE_INPUT_GUIDE_MESSAGE);
@@ -36,8 +38,38 @@ public class View {
 		System.out.println("\n" + BONUS_NUMBER_INPUT_GUIDE_MESSAGE);
 	}
 
+	public static void initWinnerPrize(){
+		winnerPrize = new ArrayList<>();
+
+		winnerPrize.add("0개 일치 (미당첨)");
+		winnerPrize.add("1개 일치 (미당첨) - ");
+		winnerPrize.add("2개 일치 (미당첨) - ");
+		winnerPrize.add("3개 일치 (5,000원) - ");
+		winnerPrize.add("4개 일치 (50,000원) - ");
+		winnerPrize.add("5개 일치 (1,500,000원) - ");
+		winnerPrize.add("5개 일치, 보너스 볼 일치 (30,000,000원) - ");
+		winnerPrize.add("6개 일치 (2,000,000,000원) - ");
+	}
+
 	public static void showWinnings() {
 		System.out.println(WINNING_MESSAGE_GUIDE_MESSAGE + "\n" + LINES);
+
+		initWinnerPrize();
+
+
+		for (int i = 3; i <= 7; i++) {
+			System.out.println(winnerPrize.get(i) + MakeWinner.winnerResult[i] + "개");
+
+			/*
+			 * count 3, i =3 (5등)
+			 * count 4, i =4 (4등)
+			 * count 5, i=5 (3등)
+			 * count 6, i=6 (2등)
+			 * count 7, i=7 (1등)
+			 * */
+		}
+
+
 	}
 
 	public static void showYield() {
