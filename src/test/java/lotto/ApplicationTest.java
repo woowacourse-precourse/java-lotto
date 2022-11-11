@@ -1,14 +1,16 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.test.NsTest;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import camp.nextstep.edu.missionutils.test.NsTest;
+import java.util.List;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -92,9 +94,10 @@ class ApplicationTest extends NsTest {
         });
     }
 
-    @Test
-    void 예외_올바르지_않은_단위() {
-        assertThatThrownBy(() -> new User(1010))
+    @ParameterizedTest
+    @ValueSource(ints = {1010, 1001, 1030, 2111})
+    void 예외_올바르지_않은_단위(int money) {
+        assertThatThrownBy(() -> new User(money))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
