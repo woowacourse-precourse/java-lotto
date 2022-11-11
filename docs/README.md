@@ -17,6 +17,10 @@
   - #### controller
     - LottoController
       - .run(): 로또 게임을 실행합니다.
+      - .purchaseLotto(): 로또를 구매합니다.
+      - .decideWinNumber(): 당첨 번호를 정합니다.
+      - .decideBonusNumber(): 보너스 번호를 정합니다.
+      - .getResult(): 결과를 출력합니다.
   - #### service
     - UserService
       - .purchase(): 로또를 구매합니다.
