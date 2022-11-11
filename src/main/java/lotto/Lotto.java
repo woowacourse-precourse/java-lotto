@@ -16,5 +16,8 @@ public class Lotto {
         }
     }
 
+    public static int compareBonus(int bonus) {
+
+    }
     // TODO: 추가 기능 구현
 }

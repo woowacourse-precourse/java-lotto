@@ -7,8 +7,8 @@ import io.Sentence;
 public class Money {
     private static long lottoCnt;// =1_000_000;
 
-    public static void InputMoneyForLotto(Input input, Output output) {
-        String moneyInput = input.getInput(Sentence.INPUTMONEY.getValue(), output);
+    public static void inputMoneyForLotto(Input input, Output output) {
+        String moneyInput = input.getInput(Sentence.INPUTMONEY.getValue(), output).trim();
         validateMoneyInput(moneyInput);
         lottoCnt = getlottoCnt(moneyInput);
         //'구매 금액 입력해 주세요' 출력
