@@ -23,6 +23,12 @@ public class Lottos {
         return LottoRank.parseRank(countOfSameLottoNumber, existBonusLottoNumber);
     }
     
+    public List<List<Integer>> lottos() {
+        return lottos.stream()
+                .map(Lotto::lottoNumber)
+                .collect(Collectors.toList());
+    }
+    
     @Override
     public String toString() {
         return "Lottos{" +

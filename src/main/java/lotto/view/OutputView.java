@@ -1,6 +1,10 @@
 package lotto.view;
 
+import lotto.dto.LottosDTO;
 import lotto.exception.ViewClassCreateException;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class OutputView {
     private static final String PAYMENT_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
@@ -21,5 +25,21 @@ public class OutputView {
     
     public static void printBonusNumberInputMessage() {
         System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
+    }
+    
+    public static void printLottoIssuanceResults(final LottosDTO lottosDTO) {
+        final List<List<Integer>> lottos = lottosDTO.getLottos();
+    
+        System.out.printf("%d개를 구매했습니다.%n", lottos.size());
+        System.out.println(lottos.stream()
+                .map(OutputView::parseLottoIssuanceResults)
+                .collect(Collectors.joining("\n")));
+    }
+    
+    private static String parseLottoIssuanceResults(final List<Integer> lottoNumbers) {
+        return lottoNumbers.stream()
+                .sorted()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", ", "[", "]"));
     }
 }

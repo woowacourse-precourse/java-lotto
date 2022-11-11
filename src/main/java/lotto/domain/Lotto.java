@@ -26,6 +26,10 @@ public class Lotto {
         return numbers.contains(bonusNumber);
     }
     
+    public List<Integer> lottoNumber() {
+        return numbers;
+    }
+    
     @Override
     public String toString() {
         return "Lotto{" +
