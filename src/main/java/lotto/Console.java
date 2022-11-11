@@ -9,9 +9,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Console {
     private static final String ERROR_MESSAGE = "[ERROR]";
-    public int inputMoney() {
+    public double inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
-        return Integer.parseInt(readLine());
+        return Double.valueOf(readLine());
     }
     public Lotto inputWinningNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
