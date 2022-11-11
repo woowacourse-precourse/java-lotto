@@ -27,7 +27,7 @@
 - M [x] ~~로또 객체의 번호와 당첨 번호, 보너스 번호를 비교해~~일치 개수, 보너스번호 일치 여부로 당첨 등수 산정한다. - LottoCalculate#calculatePrize()
   - M [x] 로또 번호, 당첨 번호를 비교해 일치 개수를 계산한다 - LottoCalculate#countMatches()
   - M [x] 로또 번호, 보너스 번호를 비교해 일치 여부 확인한다 - LottoCalculate#checkBonusNumber()
-- M [ ] 당첨 금액을 계산한다. - LottoCalculate#calculateWinMoney()
+- M [x] 당첨 금액을 계산한다. - LottoCalculate#calculateWinMoney()
 - M [ ] 수익률을 계산한다. (소수점 둘째 자리에서 반올림.) - LottoCalculate#calculateWinPersentage()
 - V 입력을 위한 문구를 출력한다. - InputView
   - V [ ] 구입할 금액을 입력해주세요. - InputView#printHowMuch()

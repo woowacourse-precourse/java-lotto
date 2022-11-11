@@ -4,6 +4,13 @@ import java.util.Collection;
 import java.util.List;
 
 public class LottoCalculate {
+    enum LottoPrizeMoney {
+        NONE(0), FIRST(2000000000), SECOND(30000000), THIRD(1500000), FOURTH(50000), FIFTH(5000);
+        final int prizeMoney;
+        LottoPrizeMoney(int prizeMoney){
+            this.prizeMoney = prizeMoney;
+        }
+    }
 
     int checkMatches(Collection<Integer> lottoNumbers, List<Integer> winNumbers) {
         int matchCount = lottoNumbers.size();
@@ -29,5 +36,9 @@ public class LottoCalculate {
             return 5;
         }
         return 0;
+    }
+
+    int calculateWinMoney(LottoPrizeMoney prizeNumber){
+        return prizeNumber.prizeMoney;
     }
 }
