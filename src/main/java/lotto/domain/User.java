@@ -6,10 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-
-    private final int startNumber = 1;
-    private final int endNumber = 45;
-    private final int count = 6;
     private Integer money;
     private List<Lotto> myLottoNumbers;
 
@@ -41,7 +37,7 @@ public class User {
         myLottoNumbers = new ArrayList<>();
         int times = this.money / 1000;
         for (int i = 0; i < times; i++) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(startNumber, endNumber, count);
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(Const.START_NUMBER, Const.END_NUMBER, Const.COUNT);
             myLottoNumbers.add(new Lotto(numbers));
         }
     }

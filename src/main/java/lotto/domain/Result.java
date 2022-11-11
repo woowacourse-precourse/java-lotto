@@ -6,6 +6,10 @@ import java.util.*;
 
 public class Result {
 
+    /**
+     * counts - 당첨 번호와 사용자 로또 번호를 비교하여 맞춘 개수를 담고 있는 리스트
+     * counting - 맞춘 갯수별 횟수를 담고 있는 Enum 맵
+     */
     private List<Integer> counts;
 
     private Map<Money, Integer> counting;
@@ -37,6 +41,9 @@ public class Result {
     }
 
 
+    /**
+     * 사용자가 로또를 통해 번 돈을 구하는 기능
+     */
     private Integer getMoney() {
         Integer totalMoney = 0;
         for (Map.Entry<Money, Integer> moneyEntry : counting.entrySet()) {
@@ -45,6 +52,9 @@ public class Result {
         return totalMoney;
     }
 
+    /**
+     * 사용자가 맞춘 횟수가 담겨 있는 counts 리스트를 맞춘 횟수 별로 정리하는 기능
+     */
     private void organize() {
         for (Integer count : counts) {
             if (count < 3) continue;
@@ -63,7 +73,10 @@ public class Result {
         return null;
     }
 
-    public void getCount(List<Lotto> userLottos, Lotto winningNumbers, Integer bonus) {
+    /**
+     * 사용자의 로또와 당첨번호를 비교하여 맞춘 개수를 구하는 기능
+     */
+    public void compare(List<Lotto> userLottos, Lotto winningNumbers, Integer bonus) {
         List<Integer> numbers = winningNumbers.getNumbers();
         for (Lotto userLotto : userLottos) {
             List<Integer> userNumbers = userLotto.getNumbers();
