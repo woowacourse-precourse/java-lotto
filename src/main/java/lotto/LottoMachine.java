@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,5 +28,13 @@ public class LottoMachine {
                 .collect(Collectors.toList());
 
         return new Lotto(newLotto);
+    }
+
+    static List<Lotto> createLottos(){
+        List<Lotto> newLottos = new ArrayList<>();
+        for(int i = 0; i < lottoCount; i++){
+            newLottos.add(createLotto());
+        }
+        return newLottos;
     }
 }
