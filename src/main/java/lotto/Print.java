@@ -61,7 +61,6 @@ public class Print {
 		this.bonusnumber = bonusnumber;
 		HashSet<Integer> inputnumberset = new HashSet<>();  // 사용자 입력값들을 모두 inputnumberset에 담기
 		inputnumberset.addAll(inputnumbers);
-		inputnumberset.add(bonusnumber);
 		
 		for (int i =0; i < lottonum; i++) {
 			List<Integer> lotto = new ArrayList<Integer>();  
