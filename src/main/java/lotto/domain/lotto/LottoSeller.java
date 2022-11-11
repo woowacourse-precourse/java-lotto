@@ -18,6 +18,8 @@ public class LottoSeller {
     }
 
     public List<Lotto> buyLottos(int money) {
+        validateMoney(money);
+
         int lottoCount = money / PRICE;
         List<Lotto> lottoList = new ArrayList<>();
 
@@ -26,5 +28,11 @@ public class LottoSeller {
         }
 
         return lottoList;
+    }
+
+    private void validateMoney(int money) {
+        if (money % PRICE != 0) {
+            throw new IllegalArgumentException("로또 구앱 금액은 1,000원 단위로 입력해야 합니다.");
+        }
     }
 }
