@@ -41,7 +41,7 @@ public class WinnerNumberVerifier implements Verifier {
 
     private void checkEachOutOfRange(String input) {
         if (Arrays.stream(input.split(","))
-                .allMatch(number -> Long.parseLong(number) < Constant.START_INCLUSIVE ||
+                .anyMatch(number -> Long.parseLong(number) < Constant.START_INCLUSIVE ||
                         Long.parseLong(number) > Constant.END_INCLUSIVE)
         )
         {
