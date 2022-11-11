@@ -10,29 +10,16 @@ public class Buying {
 
     private BoughtLottos boughtLottos;
 
-    public Buying() {
-        boughtLottos = proceedBuying();
-        printboughtLottos();
+    public Buying(String amountPaid) {
+        boughtLottos = proceedBuying(amountPaid);
+        boughtLottos.printLottoList();
     }
 
-    private BoughtLottos proceedBuying() {
-        String amountPaidInput = inputAmountPaid();
-        int amount = calculateAvailableAmount(amountPaidInput);
-        return buyLottos(amount);
+    private BoughtLottos proceedBuying(String amountPaid) {
+        return buyLottos(calculateAvailableAmount(amountPaid));
     }
 
-    String inputAmountPaid() throws IllegalArgumentException {
-        printInputAmountPaidText();
-        String amountPaidInput = Input.input();
-
-        if (IsCollection.isContain(amountPaidInput, ",")) {
-            IllegalArgument.handleException(IllegalArgument.NOT_DIGIT_TEXT.getMessage());
-        }
-
-        return amountPaidInput;
-    }
-
-    int calculateAvailableAmount(String amountPaidInput) throws IllegalArgumentException {
+    int calculateAvailableAmount(String amountPaidInput) {
         int amountPaid = Integer.parseInt(amountPaidInput);
 
         if (amountPaid % LottoConstant.ONE_LOTTO_PRICE != 0) {
@@ -48,14 +35,6 @@ public class Buying {
 
     public BoughtLottos getBuyingLottos() {
         return boughtLottos;
-    }
-
-    private void printboughtLottos() {
-        boughtLottos.printLottoList();
-    }
-
-    private void printInputAmountPaidText() {
-        System.out.println("구입금액을 입력해 주세요.");
     }
 
 }

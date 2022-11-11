@@ -1,8 +1,9 @@
 package system.process;
 
-import constants.LottoConstant;
 import constants.PrizeDivision;
-import models.*;
+import models.BoughtLottos;
+import models.Statistics;
+import models.WinningLotto;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,8 +22,8 @@ public class StatisticsCalculator {
     public void calculateStatistics() {
         LottoComparison lottoComparison = new LottoComparison(winningLotto);
 
-        boughtLottos.getLottosData().forEach((purchasedOneLotto) -> {
-            lottoComparison.compareLotto(purchasedOneLotto);
+        boughtLottos.getLottos().forEach((Lotto) -> {
+            lottoComparison.startComparison(Lotto);
             statistics.countDivision(lottoComparison.rank());
         });
 
@@ -35,26 +36,29 @@ public class StatisticsCalculator {
 
         List<PrizeDivision> prizeDivision = Arrays.asList(PrizeDivision.values());
 
-        int sum = 0;
-
-        for (int index = PrizeDivision.FIFTH.getDivision(); index >= PrizeDivision.FIRST.getDivision(); index--) {
-            String sameCount = prizeDivision.get(index).getMatchingCount();
-            String money = prizeDivision.get(index).getPrizeAmount();
-            int count = statistics.getDivisionCount().get(index);
-
-            System.out.println(sameCount + " (" + money + ") - " + count + "개");
-
-            if (count > 0) {
-                sum += Integer.parseInt(money.replaceAll(",", "")) * count;
-            }
-
-        }
-
-        double percent = (double) sum / (boughtLottos.getAmount() * 1000);
-
-        System.out.print("총 수익률은 " + (double) Math.round(percent * 1000) / 10 + "%입니다.");
-
+        long prizeAmountSummation = accumulatePrizeAmount(prizeDivision);
+        calculatePercent(prizeAmountSummation);
     }
 
+    private long accumulatePrizeAmount(List<PrizeDivision> prizeDivision) {
+        long prizeAmountSummation = 0;
 
+        for (int index = PrizeDivision.FIFTH.getDivision(); index >= PrizeDivision.FIRST.getDivision(); index--) {
+            String matchingCount = prizeDivision.get(index).getMatchingCount();
+            String prizeAmount = prizeDivision.get(index).getPrizeAmount();
+            int divisionCount = statistics.getDivisionCount().get(index);
+            
+            prizeAmountSummation += Integer.parseInt(prizeAmount.replaceAll(",", "")) * divisionCount;
+            /*중복 코드를 방지하기 위해 누적하면서 출력.*/
+            System.out.println(matchingCount + " (" + prizeAmount + "원) - " + divisionCount + "개");
+        }
+        
+        return prizeAmountSummation;
+    }
+
+    private void calculatePercent(long prizeAmountSummation) {
+        double rate = (double) prizeAmountSummation / (boughtLottos.getAmount() * 1000);
+        double percent = (double) Math.round(rate * 1000) / 10;
+        System.out.print("총 수익률은 " + percent + "%입니다.");
+    }
 }
