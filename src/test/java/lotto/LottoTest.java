@@ -37,7 +37,7 @@ class LottoTest {
         Lotto input = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 7);
         Referee referee = new Referee();
-        int count = referee.correctCount(input, numbers);
+        int count = referee.correctNumberCount(input, numbers);
         assertThat(5).isEqualTo(count);
     }
 }
