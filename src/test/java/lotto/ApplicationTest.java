@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
@@ -132,6 +133,18 @@ class ApplicationTest extends NsTest {
     void compareLottoNumbersAndWinningNumbersTest() {
 
         assertThat(1).isEqualTo(compareLottoNumbersAndWinningNumbers(new Lotto(List.of(1, 2, 3, 4, 5, 6)), List.of(6, 5, 4, 3, 2, 1), 6));
+    }
+
+    @Test
+    void calculateFirstTest() {
+        List<Lotto> lottoList = new ArrayList<>();
+
+        lottoList.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        lottoList.add(new Lotto(List.of(4, 23, 43, 1, 7, 8)));
+        lottoList.add(new Lotto(List.of(3, 14, 23, 31, 39, 17)));
+        lottoList.add(new Lotto(List.of(3, 4, 1, 5, 2, 6)));
+
+        assertThat(2).isEqualTo(calculateFirst(lottoList, List.of(6, 5, 4, 3, 2, 1)));
     }
 
     @Override
