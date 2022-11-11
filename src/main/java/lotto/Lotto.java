@@ -31,4 +31,31 @@ public class Lotto {
             throw new IllegalArgumentException(Errors.WRONG_BONUS.toString());
         }
     }
+
+    private int compareNumber(Lotto target) {
+        int sameNumber = 0;
+        for (Integer number : target.numbers) {
+            if (this.numbers.contains(number)) {
+                sameNumber += 1;
+            }
+        }
+        return sameNumber;
+    }
+
+    public int getRanking(Lotto target, int bonus) {
+        int sameNumber = compareNumber(target);
+        if (sameNumber == 6) {
+            return 1;
+        } else if (sameNumber == 5) {
+            if (target.numbers.contains(bonus)) {
+                return 2;
+            }
+            return 3;
+        } else if (sameNumber == 4) {
+            return 4;
+        } else if (sameNumber == 3) {
+            return 5;
+        }
+        return 0;
+    }
 }

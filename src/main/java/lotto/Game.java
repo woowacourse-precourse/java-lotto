@@ -3,12 +3,14 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class Game {
 
     private static final Validation validation = new Validation();
+    List<Integer> results;
     private static final List<Sentences> rankings = List.of(
             Sentences.FIFTH,
             Sentences.FOURTH,
@@ -43,6 +45,8 @@ public class Game {
         System.out.println();
 
         // TODO: 번호 비교
+        results = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
+        getResult(lottos, lucky, bonus);
 
         // TODO: 당첨 통계 출력
         System.out.println(Sentences.STATS.value());
@@ -94,5 +98,15 @@ public class Game {
         int bonus = Integer.parseInt(input);
         validation.validateNumberRange(bonus);
         return bonus;
+    }
+
+    private void getResult(List<Lotto> lottos, Lotto lucky, int bonus) {
+        for (Lotto lotto : lottos) {
+            int ranking = lucky.getRanking(lotto, bonus);
+            if (ranking != 0) {
+                Integer before = results.get(5 - ranking);
+                results.set(5 - ranking, before + 1);
+            }
+        }
     }
 }
