@@ -3,6 +3,10 @@ package lotto.model;
 public class BonusNumber {
     private final int bonusNumber;
 
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
     public BonusNumber(int bonusNumber) {
         validateBonusNumber(bonusNumber);
         this.bonusNumber = bonusNumber;

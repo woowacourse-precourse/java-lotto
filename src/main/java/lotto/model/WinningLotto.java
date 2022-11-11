@@ -6,17 +6,17 @@ import java.util.Set;
 
 public class WinningLotto {
     private final List<Integer> winningNumbers;
-    private final int bonusNumber;
+    private final BonusNumber bonusNumber;
 
     public List<Integer> getWinningNumbers() {
         return winningNumbers;
     }
 
     public int getBonusNumber() {
-        return bonusNumber;
+        return bonusNumber.getBonusNumber();
     }
 
-    public WinningLotto(List<Integer> winningNumbers, int bonusNumber) {
+    public WinningLotto(List<Integer> winningNumbers, BonusNumber bonusNumber) {
         validateWinningNumbers(winningNumbers);
         validateBonusNumber(bonusNumber, winningNumbers);
         this.winningNumbers = winningNumbers;
@@ -50,8 +50,8 @@ public class WinningLotto {
         }
     }
 
-    private void validateBonusNumber(int bonusNumber, List<Integer> winningNumbers) {
-        if (winningNumbers.contains(bonusNumber)) {
+    private void validateBonusNumber(BonusNumber bonusNumber, List<Integer> winningNumbers) {
+        if (winningNumbers.contains(bonusNumber.getBonusNumber())) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
         }
     }
