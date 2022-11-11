@@ -3,7 +3,9 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
 
@@ -17,13 +19,14 @@ public class Application {
             Chatbot chatbot = new Chatbot();
             int lottoPrice = validatePrice(chatbot.askPrice());
             List<List<Integer>> userNumber = issueUserLotto(lottoPrice / 1000);
-            chatbot.printUserLotto(lottoPrice / 1000,userNumber);
+            chatbot.printUserLotto(lottoPrice / 1000, userNumber);
             Lotto lotto = new Lotto(chatbot.askLottoNumber());
-            List<Integer> result = compareNumbers(userNumber, lotto, validateLottoBonus(chatbot.askLottoBonus()));
+            int bonus=validateLottoBonus(lotto, chatbot.askLottoBonus());
+            List<Integer> result = compareNumbers(userNumber, lotto, bonus);
             float rate = calculateRate(lottoPrice, result);
             chatbot.printResult(rate, result);
         } catch (IllegalArgumentException e) {
-            System.out.println(ERROR_MESSAGE + e.getMessage());
+            System.out.println(ERROR_MESSAGE + " " + e.getMessage());
         }
     }
 
@@ -46,14 +49,25 @@ public class Application {
     public static List<List<Integer>> issueUserLotto(int amount) {
         List<List<Integer>> userNumber = new ArrayList(amount);
 
-        for(int i=0;i<amount;i++){
+        for (int i = 0; i < amount; i++) {
             userNumber.add(Randoms.pickUniqueNumbersInRange(STARTINCLUSIVE, ENDINCLUSIVE, COUNT));
         }
         return userNumber;
     }
 
-    public static int validateLottoBonus(String price) {
-        return 0;
+    public static int validateLottoBonus(Lotto lotto,int bonus) {
+
+        if (!(0<bonus && bonus<= 45)) {
+                throw new IllegalArgumentException("보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+            }
+
+        for(int i=0;i<lotto.getLottoNumber().size();i++){
+            if(lotto.getLottoNumber().get(i).equals(bonus)){
+                throw new IllegalArgumentException("로또 번호와 보너스 번호는 중복되지 않아야 합니다.");
+            }
+        }
+
+        return bonus;
     }
 
     public static List<Integer> compareNumbers(List<List<Integer>> userNumber, Lotto lotto, int bonus) {
