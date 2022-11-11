@@ -26,17 +26,20 @@ public class UserInterface {
     }
 
     List<Integer> getWinningNumber(){
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println("당첨번호를 입력해 주세요.");
         String userInput = Console.readLine();
         List<Integer> winningNumbers = Arrays.stream(userInput.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
 
+        return winningNumbers;
+    }
+
+    int getBonusNumber(){
         System.out.println("보너스 볼을 입력해 주세요.");
         int bonus = Integer.parseInt(Console.readLine());
-        winningNumbers.add(bonus);
 
-        return winningNumbers;
+        return bonus;
     }
 
     void printResultRank(Map<Rank, Integer> rankCount) {
@@ -47,13 +50,6 @@ public class UserInterface {
                 .filter(rank -> rank != Rank.NOTHING)
                 .map(rank -> rank.getNumberOfRight() + "개 일치" + (rank == Rank.SECOND ? ", 보너스 볼 일치" : "") + " (" + rank.getFormatPrizeMoney() + "원) - " + rankCount.get(rank) + "개")
                 .forEach(System.out::println);
-    }
-
-    int getBonusNumber(){
-        System.out.println("보너스 볼을 입력해 주세요.");
-        int bonus = Integer.parseInt(Console.readLine());
-
-        return bonus;
     }
 
     void printRateReturn(double rateOfReturn){
