@@ -8,8 +8,8 @@ public enum WINNING {
     FIFTH("5,000", 3, 1);
 
     String value;
-    int correctCount;
-    int sortOrder;
+    int correctCount; // 맞춘 갯수(출력용)
+    int sortOrder; // 정렬 기준(정렬용)
 
     private WINNING(String value, int correctCount, int sortOrder)
     {

@@ -15,7 +15,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        // set으로 변환하여 중복된 숫자의 사용을 감지한다
+        // set으로 변환하여 중복된 숫자를 제거한다
         Set<Integer> numSet = new HashSet<>(numbers);
 
         if (numbers.size() != 6)
@@ -55,6 +55,7 @@ public class Lotto {
 
         for(int i = 0; i < userLotto.numbers.size(); i++){
             int userNumber = userLotto.numbers.get(i);
+            // 데이터가 정렬되어 있으므로, 이분탐색으로 탐색
             if(Arrays.binarySearch(winningLotto.numbers.toArray(), userNumber) >= 0)
                 correctCount++;
 
@@ -66,6 +67,7 @@ public class Lotto {
     }
 
     private static List<Integer> convertStringToIntegerList(String userInputWinningLottoNumbers) {
+        // 유저 로또 문자열을 정수 리스트로 변환
         return Arrays.stream(
                         Stream.of(userInputWinningLottoNumbers.split(","))
                                     .mapToInt(Integer::parseInt)

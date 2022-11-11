@@ -23,6 +23,12 @@ public class Application {
     private static final String ERROR_MESSAGE = "[ERROR]";
     private static final int LOTTO_PRICE = 1000;
 
+    /*
+     *  input :
+     *      > 로또 구매 금액(1000의 배수) ex) 3000
+     *      > 당첨 번호 6개(쉼표로 구분) ex) 1,2,3,4,5,6
+     *      > 보너스 번호 입력(한자리) ex) 7
+     */
     public static void main(String[] args) {
         List<Lotto> userLotto = new ArrayList<>();
 
@@ -30,20 +36,21 @@ public class Application {
             int purchaseLottoPrice= inputTotalPurchaseLottoPrice();
             int purchaseLottoAmount = purchaseLottoPrice / LOTTO_PRICE;
 
-            validateLottoPrice(purchaseLottoPrice);
-            purchaseLotto(userLotto, purchaseLottoAmount);
+            validateLottoPrice(purchaseLottoPrice); // 입력 검증
+            purchaseLotto(userLotto, purchaseLottoAmount); // 로또 구매
 
             Lotto winningLotto = Lotto.inputWinningLottoNumber();
             int bonusNumber = Lotto.inputBonusNumber();
 
-            Map<WINNING, Integer> result = initResultMap();
-            checkUserLottoWinning(result, userLotto, winningLotto, bonusNumber, purchaseLottoPrice);
+            Map<WINNING, Integer> result = initResultMap(); // 결과 초기화
+            checkAllUserLottoWinning(result, userLotto, winningLotto, bonusNumber, purchaseLottoPrice); // 유저 로또 당첨 확인
         } catch(IllegalArgumentException e){
             System.out.println(ERROR_MESSAGE + " " + e.getMessage());
         }
     }
 
     public static Map<WINNING, Integer> initResultMap(){
+        // 각 enum type이 sortOrder를 기준으로 정렬하여, 출력 기준 지정
         Map<WINNING, Integer> result = new TreeMap<>(Comparator.comparingInt(WINNING::getSortOrder));
 
         for(WINNING WINNING : WINNING.values())
@@ -52,8 +59,9 @@ public class Application {
         return result;
     }
 
-    public static void checkUserLottoWinning(Map<WINNING, Integer> result, List<Lotto> userLotto, Lotto winningLotto, int bonusNumber, int purchaseLottoPrice) {
+    public static void checkAllUserLottoWinning(Map<WINNING, Integer> result, List<Lotto> userLotto, Lotto winningLotto, int bonusNumber, int purchaseLottoPrice) {
         for (Lotto lotto : userLotto) {
+            // 단일 로또 당첨 확인
             WINNING curWinning = Lotto.checkUserLottoWinning(winningLotto, lotto, bonusNumber);
 
             if(curWinning == null)
@@ -71,10 +79,9 @@ public class Application {
 
         for (WINNING WINNING : result.keySet()) {
             int winningCount = result.get(WINNING);
-
             int curWinning = Integer.parseInt(WINNING.getValue().replace(",", "")) * winningCount;
-            totalSumOfWinning += curWinning;
 
+            totalSumOfWinning += curWinning;
             WINNING.printWinningInfo(WINNING, winningCount);
         }
 
@@ -107,6 +114,7 @@ public class Application {
     }
 
     private static Lotto createRandomLottoList() {
+        // 랜덤 번호를 생성하고 정렬하여 반환
         return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)
                 .stream().sorted()
                 .collect(Collectors.toList()));
