@@ -3,6 +3,9 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
+    //2주차 피드백 반영
+    static final int LOTTO_CHARGE = 1000;
+
     private int money;
 
     public void inputMoney(){
@@ -28,7 +31,7 @@ public class User {
     }
 
     public void validateMoney(int money){
-        if(money < 1000){
+        if(money < LOTTO_CHARGE){
             throw new IllegalArgumentException("[ERROR] 로또 1장의 구매가격은 1000원 입니다! 1000이상의 수를 입력해주세요");
         }
     }
