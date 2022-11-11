@@ -19,4 +19,16 @@ public enum Rank {
     public void plusCount() {
         this.count++;
     }
+
+    public int getMatchNumber() {
+        return matchNumber;
+    }
+
+    public int getPrize() {
+        return prize;
+    }
+
+    public int getCount() {
+        return count;
+    }
 }
