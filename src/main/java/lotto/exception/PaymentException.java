@@ -2,12 +2,14 @@ package lotto.exception;
 
 public class PaymentException {
 
+    private static final int LOTTO_PRICE = 1000;
+
     public void validate(String price){
 
     }
 
     private boolean isNotDividedByThousand(String price){
-        return true;
+        return Long.parseLong(price) % LOTTO_PRICE != 0;
     }
 
     private void paymentNotAcceptableException(){

@@ -10,7 +10,7 @@ validate
 
 ### PaymentException
 1. validate
-   1. isNotDividedByThousand : 1000으로 나누었을때 나머지가 0이 아니면 참을 반환
+   1. isNotDividedByThousand : 값이 0이거나 1000으로 나누었을때 나머지가 0이 아니면 참을 반환
    2. paymentNotAcceptableException : 예외처리한다.
 
 ## 도메인
