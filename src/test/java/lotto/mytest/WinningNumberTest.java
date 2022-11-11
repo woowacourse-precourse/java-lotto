@@ -54,4 +54,13 @@ public class WinningNumberTest {
 			WinningNumber.checkWinningNumber("0,1,2,3,4,5");
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@DisplayName("1부터 45사이의 숫자가 아닌 경우 예외가 발생")
+	@ParameterizedTest
+	@ValueSource(strings = {"1,2,3,4,5,46", "51,2,3,4,5,6", "123,456,789,101,112,113"})
+	void notRangeNumber(String winningNumber) {
+		assertThatThrownBy(() -> {
+			WinningNumber.checkWinningNumber(winningNumber);
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
 }
