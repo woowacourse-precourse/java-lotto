@@ -26,6 +26,17 @@ public class User {
         }
     }
 
+    public void validateBuyMoney(String money) {
+        validator.validateBuyMoney(money);
+    }
+
+    public void compare(List<Integer> winningLottoNumbers) {
+        for (Lotto lotto : lottos) {
+            int count = lotto.correctCount(winningLottoNumbers);
+            boolean isMatch = lotto.isMatchBonusNumber(winningLottoNumbers);
+        }
+    }
+
     public int getBuyAmount() {
         return lottos.size();
     }
