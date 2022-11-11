@@ -12,6 +12,9 @@ public class UserBet {
 
 	public UserBet(String userInput){
 		bettingMoney = Integer.parseInt(userInput);
+		checkAmount();
+		buyLottos();
+		printResult();
 	}
 
 	public int getBettingMoney() {
@@ -38,5 +41,13 @@ public class UserBet {
 
 	public List<List<Integer>> getMyLottos() {
 		return myLottos;
+	}
+
+	public void printResult() {
+		System.out.println(amount + "개를 구매했습니다.");
+
+		for(List<Integer> lottos : myLottos) {
+			System.out.println(lottos);
+		}
 	}
 }
