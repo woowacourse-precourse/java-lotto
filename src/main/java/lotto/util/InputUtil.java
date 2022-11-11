@@ -29,4 +29,17 @@ public class InputUtil {
 		}
 	}
 
+	public Integer validateBonus(String bonus) {
+		isNumber(bonus);
+		Integer bonusNumber = Integer.valueOf(bonus);
+		checkNumberRange(bonusNumber);
+		return bonusNumber;
+	}
+
+	private void checkNumberRange(Integer bonusNumber) {
+		if (1 > bonusNumber || 45 < bonusNumber) {
+			throw new IllegalArgumentException(ErrorConst.OUT_OF_RANGE_ERROR);
+		}
+	}
+
 }
