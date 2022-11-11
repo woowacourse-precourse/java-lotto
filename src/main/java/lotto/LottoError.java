@@ -10,7 +10,11 @@ public enum LottoError {
     LottoError(String message) {
         this.message = "[ERROR] " + message;
     }
-    public void printMessage() {
+    public void createError() {
+        printMessage();
+        throw new IllegalArgumentException();
+    }
+    private void printMessage() {
         System.out.print(this.message);
     }
 }

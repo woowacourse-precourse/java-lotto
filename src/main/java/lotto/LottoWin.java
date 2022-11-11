@@ -18,12 +18,10 @@ public class LottoWin {
     }
     private void validate(List<Integer> lotto, int bonus) {
         if (bonus < LottoState.START.number() || bonus > LottoState.END.number()) {
-            LottoError.OUT_OF_BOUND.printMessage();
-            throw new IllegalArgumentException();
+            LottoError.OUT_OF_BOUND.createError();
         }
         if (lotto.contains(bonus)) {
-            LottoError.DUPLICATION.printMessage();
-            throw new IllegalArgumentException();
+            LottoError.DUPLICATION.createError();
         }
     }
     private void matchingNumber(List<Integer> quickPick, List<Integer> lotto, int bonus) {
