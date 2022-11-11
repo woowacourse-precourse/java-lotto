@@ -10,6 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class WinnerNumberVerifierTest {
     WinnerNumberVerifier winnerNumberVerifier = new WinnerNumberVerifier();
+
     @Nested
     @DisplayName("유효한 개수가 입력되지 않았을 때")
     class CheckNumberCount {
@@ -74,6 +75,22 @@ class WinnerNumberVerifierTest {
             assertThatThrownBy(() -> winnerNumberVerifier.check(target))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(ExceptionMessage.NUMBER_EACH_OUT_OF_RANGE);
+        }
+    }
+
+    @Nested
+    @DisplayName("중복된 원소가 있을 때")
+    class CheckEachDistinct {
+        @ParameterizedTest(name = "{0}가 입력되었을 때")
+        @ValueSource(strings = {
+                "1,2,3,4,5,1",
+                "1,2,3,4,4,4",
+                "43,43,43,45,45,45"
+        })
+        void 각_원소가_중복되지_않는지_테스트한다(String target) {
+            assertThatThrownBy(() -> winnerNumberVerifier.check(target))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(ExceptionMessage.NUMBER_NOT_DISTINCT);
         }
     }
 }
