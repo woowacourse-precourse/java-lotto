@@ -32,10 +32,16 @@ public class Validator {
 
     public void validateNumberRange(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if (isNotValidRange(number)) {
-                throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
-            }
+            validateNumberRange(number);
         }
+    }
+
+    public int validateNumberRange(int number) {
+        if (isNotValidRange(number)) {
+            throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
+        }
+
+        return number;
     }
 
     public String validateDigit(String input) {
