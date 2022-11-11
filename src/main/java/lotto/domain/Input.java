@@ -18,10 +18,10 @@ import java.util.List;
  * 2022/11/09         gim-yeong-geun          최초 생성
  */
 public class Input {
-    private static int coin;
-    private static int buyCount;
-    private static List<Integer> lottoNumber = new ArrayList<>();
-    private static int lottoBonusNumber;
+    public static int coin;
+    public static int buyCount;
+    public static List<Integer> lottoNumber = new ArrayList<>();
+    public static int lottoBonusNumber;
     private final static String inputCoinString = "구입금액을 입력해 주세요.";
     private final static String coinErrorMessage = "[ERROR] 구입금액은 천원단위만 가능합니다.";
     private final static String inputNumberString = "당첨 번호를 입력해 주세요.";

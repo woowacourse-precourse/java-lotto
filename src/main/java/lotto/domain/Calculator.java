@@ -12,8 +12,8 @@ package lotto.domain;
  * 2022/11/09         gim-yeong-geun          최초 생성
  */
 public class Calculator {
-    private static int revenue = 0;
-    private static double yield = 0;
+    public static int revenue = 0;
+    public static double yield = 0;
 
     public static int revenue(int rankOne, int rankTwo, int rankThree, int rankFour, int rankFive) {
         int result = 0;

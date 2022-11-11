@@ -16,10 +16,6 @@ import java.util.List;
  */
 public class Output {
 
-    public static void outputRandomNumber(List<Integer> createRandomNumber) {
-
-    }
-
     public static void outputLottoRank(int rankOne, int rankTwo, int rankThree, int rankFour, int rankFive) {
         System.out.println(Rank.FIVE.getCompare() + "개 일치 " + "(" + Rank.FIVE.getMoneyWon() + ")" + " - " + rankFive + "개");
         System.out.println(Rank.FOUR.getCompare() + "개 일치 " + "(" + Rank.FOUR.getMoneyWon() + ")" + " - " + rankFour + "개");
