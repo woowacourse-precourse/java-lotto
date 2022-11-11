@@ -15,6 +15,8 @@ public class Application {
         List<Lotto> lottos = generateLottos(count);
         viewLottos(lottos);
 
+        askWinnerLotto();
+
 
     }
 
@@ -41,4 +43,17 @@ public class Application {
         System.out.println("구입금액을 입력해 주세요.");
         return Integer.parseInt(Console.readLine());
     }
+
+    public static Lotto askWinnerLotto() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String[] dividedNumbers = Console.readLine().split(",");
+        System.out.println();
+        List<Integer> temp = new ArrayList<>();
+        for (String dividedNumber : dividedNumbers) {
+            temp.add(Integer.parseInt(dividedNumber));
+        }
+
+        return new Lotto(temp);
+    }
+
 }
