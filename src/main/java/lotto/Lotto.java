@@ -1,6 +1,6 @@
 package lotto;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Predicate;
@@ -22,8 +22,9 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
     public List<Integer> getNumbers() {
-        numbers.sort(Comparator.naturalOrder());
-        return numbers;
+        List<Integer> sortedNumbers = new ArrayList<>(numbers);
+        sortedNumbers.sort(Comparator.naturalOrder());
+        return sortedNumbers;
     }
 
     public String checkWinningNums(List<Integer> winningNums, int bonusNum) {
