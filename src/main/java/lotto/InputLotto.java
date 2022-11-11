@@ -14,6 +14,8 @@ public class InputLotto {
     }
 
     public long toLongs(String value) {
+        ExceptionHandling exceptionHandling = new ExceptionHandling();
+        exceptionHandling.isNumeric(value); // 숫자인지 검사
         return Long.parseLong(value);
     }
 
