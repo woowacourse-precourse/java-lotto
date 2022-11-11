@@ -85,13 +85,7 @@ public class Application {
         System.out.println("\n당첨 번호를 입력해 주세요.");
         String userInput = Console.readLine();
 
-        List<Integer> winningNumbers = parseWinningNumbers(userInput);
-
-        if(winningNumbers.size() != Lotto.LOTTERY_NUMBER_LENGTH) {
-            throw new IllegalArgumentException(String.format("[ERROR] 당첨 결과는 %d개의 숫자로 구성되어야 합니다.", Lotto.LOTTERY_NUMBER_LENGTH));
-        }
-
-        return winningNumbers;
+        return parseWinningNumbers(userInput);
     }
 
     /**
@@ -111,6 +105,10 @@ public class Application {
 
             int number = Integer.parseInt(splitedUserInput);
             winningNumbers.add(number);
+        }
+
+        if(winningNumbers.size() != Lotto.LOTTERY_NUMBER_LENGTH) {
+            throw new IllegalArgumentException(String.format("[ERROR] 당첨 결과는 %d개의 숫자로 구성되어야 합니다.", Lotto.LOTTERY_NUMBER_LENGTH));
         }
         return winningNumbers;
     }
