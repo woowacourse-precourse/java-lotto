@@ -14,7 +14,7 @@ public class ComputerView {
     }
 
     private void inquireNumbers(){
-
+        System.out.println(REQUEST_WINNING_NUMBERS);
     }
 
     private String scanNumbers(){
