@@ -23,7 +23,7 @@ public enum LottoResult {
         }
     }
 
-    private LottoResult(int countOfMatch, int winningMoney) {
+    LottoResult(int countOfMatch, int winningMoney) {
         this.countOfMatch = countOfMatch;
         this.winningMoney = winningMoney;
     }
@@ -37,5 +37,9 @@ public enum LottoResult {
         }
 
         return BY_COUNT_OF_MATCH.get(count);
+    }
+
+    public boolean isNotFailed() {
+        return this != LottoResult.FAILED;
     }
 }

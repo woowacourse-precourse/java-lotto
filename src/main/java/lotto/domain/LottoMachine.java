@@ -2,10 +2,7 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -17,6 +14,7 @@ public class LottoMachine {
 
     private final int purchaseMoney;
     private final List<Lotto> lottos;
+    private Map<LottoResult, Long> lottoResults;
 
     public LottoMachine(int purchaseMoney) {
         this.purchaseMoney = purchaseMoney;
@@ -40,6 +38,13 @@ public class LottoMachine {
             lotto.add(lottoNumber);
         }
         return new ArrayList<>(lotto);
+    }
+
+    public void enterWinningLotto(WinningLotto winningLotto) {
+        this.lottoResults = lottos.stream()
+                .map(winningLotto::makeResult)
+                .filter(LottoResult::isNotFailed)
+                .collect(Collectors.groupingBy(lottoResult -> lottoResult, Collectors.counting()));
     }
 
     public List<Lotto> getLottos() {
