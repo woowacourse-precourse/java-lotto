@@ -1,11 +1,6 @@
 package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import lotto.ui.Messages;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /*
 * 제공된 Lotto 클래스를 활용해 구현해야 한다.
@@ -30,13 +25,6 @@ public class Lotto {
     //보너스 번호를 제외하고 validate 를 만든거보니까 보너스 번호는 enum 으로 만들던가 해야겠다.
     // TODO: 추가 기능 구현
 
-    //예외사항(입력단위가 1000원이 아니면)
-    private int getLottoAmount(int money) {
-        int amount = money/1000;
-
-        return amount;
-    }
-
     //ui에서 예외 검사하고 넘어올거여서 굳이 예외사항을 검사해야할까?
     private void initNumbers(List<Integer> winningNumbers) {
         int length = winningNumbers.size();
@@ -45,12 +33,4 @@ public class Lotto {
             numbers.add(number);
         }
     }
-
-    private List<Integer> createLotto() {
-        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-
-        return lottoNumbers;
-    }
-
-    private List<>
 }
