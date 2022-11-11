@@ -1,13 +1,32 @@
 package lotto;
 
+import java.util.stream.Stream;
+import lotto.constant.LottoConstants;
+import lotto.model.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
+    private static Stream<Arguments> provideLottoNumberList() {
+        return Stream.of(
+                Arguments.of(List.of()),
+                Arguments.of(List.of(1)),
+                Arguments.of(List.of(1, 2)),
+                Arguments.of(List.of(1, 2, 3)),
+                Arguments.of(List.of(1, 2, 3, 4)),
+                Arguments.of(List.of(1, 2, 3, 4, 5)),
+                Arguments.of(List.of(1, 2, 3, 4, 5, 6, 7, 8)),
+                Arguments.of(List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11))
+        );
+    }
+
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -23,5 +42,12 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @ParameterizedTest
+    @DisplayName("로또 번호의 개수 6이 아닌 경우 이유를 나타내는 메세지를 포함한 예외가 발생한다.")
+    @MethodSource("provideLottoNumberList")
+    void createLottoByInvalidSize(List<Integer> lottoNumbers) {
+        assertThatThrownBy(() -> new Lotto(lottoNumbers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(LottoConstants.INVALID_LOTTO_SIZE_MSG);
+    }
 }
