@@ -46,7 +46,7 @@ public class Lottos {
         int winningAmount = getWinningAmount(winningLotto, bonusNumber);
         int money = getMoney();
 
-        return (double) winningAmount / money;
+        return (double) winningAmount / money * 100;
     }
 
     public Map<WinningPrize, Integer> countWinningPrize(Lotto winningLotto, int bonusNumber) {

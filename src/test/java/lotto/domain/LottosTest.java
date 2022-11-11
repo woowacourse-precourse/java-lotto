@@ -46,7 +46,7 @@ class LottosTest {
 
         double profit = lottos.calculateProfit(winningLotto, bonusNumber);
 
-        assertThat(String.format("%.1f%%", profit)).isEqualTo("16.7%");
+        assertThat(String.format("%.1f%%", profit)).isEqualTo("1666.7%");
     }
 
     @DisplayName("등수별 당첨 횟수를 세는 기능")
