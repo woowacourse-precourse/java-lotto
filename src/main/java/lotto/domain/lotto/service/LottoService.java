@@ -4,11 +4,14 @@ import lotto.domain.lotto.domain.Lotto;
 import lotto.domain.lotto.domain.type.PriceNumberCount;
 import lotto.domain.view.InputView;
 import lotto.domain.view.OutputView;
+import lotto.domain.view.constant.UserServiceConstants;
 import lotto.global.util.Util;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static lotto.domain.view.constant.UserServiceConstants.*;
 
 public class LottoService {
 
@@ -34,7 +37,7 @@ public class LottoService {
         for (Lotto lotto : lottos) {
             Map<String, Integer> howManyMatchNumber =
                     howManyMatchNumber(lotto.getNumbers(), prizeLotto.getNumbers(), bonusNumber);
-            String key = keyNameForResult(howManyMatchNumber.get("prize"), howManyMatchNumber.get("bonus"));
+            String key = keyNameForResult(howManyMatchNumber.get(UserServiceConstants.PRIZE), howManyMatchNumber.get("bonus"));
             if (result.get(key) != null) {
                 result.put(key, result.get(key) + 1);
             }
@@ -52,8 +55,8 @@ public class LottoService {
         for (int number : lotto) {
             compareNumber(prizeLotto, number, bonusNumber);
         }
-        countMatchNumbers.put("prize", PRIZE);
-        countMatchNumbers.put("bonus", BONUS);
+        countMatchNumbers.put(UserServiceConstants.PRIZE, PRIZE);
+        countMatchNumbers.put(UserServiceConstants.BONUS, BONUS);
         return countMatchNumbers;
     }
 
@@ -77,7 +80,7 @@ public class LottoService {
                 return isExistsNumber(priceNumberCount, prize, bonus);
             }
         }
-        return "none";
+        return NONE;
     }
 
     private String isExistsNumber(PriceNumberCount priceNumberCount, int prize, int bonus) {
