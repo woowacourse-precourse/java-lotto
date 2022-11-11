@@ -8,8 +8,8 @@ public class Bonus {
     public Bonus(String inputBonusNumber, List<Integer> lotto){
         int number = convertNumber(inputBonusNumber);
 
-        validateBonusNumberRange(number);
-        validateBonusNumber(number, lotto);
+        checkBonusNumberRange(number);
+        checkBonusDuplicatedNumber(number, lotto);
         this.number = number;
     }
 
@@ -26,13 +26,13 @@ public class Bonus {
         return number;
     }
 
-    public void validateBonusNumberRange(int lottoBonusNumber){
+    public void checkBonusNumberRange(int lottoBonusNumber){
         if (lottoBonusNumber < 1 || lottoBonusNumber > 45){
             throw new IllegalArgumentException("[ERROR]: 보너스 번호는 반드시 1~45 이내에 숫자여야 합니다.");
         }
     }
 
-    public void validateBonusNumber(int lottoBonusNumber, List<Integer> lotto){
+    public void checkBonusDuplicatedNumber(int lottoBonusNumber, List<Integer> lotto){
         if (lotto.contains(lottoBonusNumber)){
             throw new IllegalArgumentException("[ERROR]: 보너스 번호는 입력한 당첨번호와 중복되어선 안됩니다.");
         }
