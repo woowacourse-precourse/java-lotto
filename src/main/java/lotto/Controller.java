@@ -21,17 +21,21 @@ public class Controller {
     void start() {
         view.startMention();
         input = Console.readLine();
-        ex.initialInput(input);
+        if (ex.initialInput(input)) return;
         inMoney = Integer.parseInt(input);
         Computer[] computers = getComputers();
-        inputWinningNumber();
+
+        if (inputWinningNumber()) return;
+
         view.inputBonus();
         input = Console.readLine();
-        ex.inputWinningBonus(input);
+        if (ex.inputWinningBonus(input)) return;
         bonus = Integer.parseInt(input);
         lotto.getNumbers().add(bonus);
+
         domain.checkWinning(computers, list, lotto);
         view.printResult(list);
+
         result = domain.checkWinningMoney(list);
         view.printBenfit(inMoney, result);
     }
@@ -45,14 +49,19 @@ public class Controller {
     }
 
 
-    private void inputWinningNumber() {
+    private boolean inputWinningNumber() {
         view.inputNumber();
         input = Console.readLine();
         str = input.split(",");
         for (String s : str) {
             lottoList.add(Integer.parseInt(s));
         }
-        lotto = new Lotto(lottoList);
+        try {
+            lotto = new Lotto(lottoList);
+        }catch (IllegalArgumentException e){
+            return true;
+        }
         System.out.println();
+        return false;
     }
 }
