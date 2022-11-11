@@ -3,6 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.utils.ErrorMessage;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -15,6 +16,8 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        Collections.sort(numbers);
+
         this.numbers = numbers;
     }
 
