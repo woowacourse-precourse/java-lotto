@@ -45,6 +45,11 @@ public class Lotto {
         }
     }
 
+    public boolean checkWinningNumberIsInLottoNumbers(int winningNumber) {
+
+        return numbers.contains(winningNumber);
+    }
+
     public List<Integer> getNumbers() {
 
         return numbers;
