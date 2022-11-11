@@ -15,23 +15,22 @@ public class Printer {
 
     public void printLottoNumbers(Lottos lottos){
         for(int order=0;order<lottos.size();order++){
-            printEachLottoNumbers(lottos.get(order));
+            System.out.println(printEachLottoNumbers(lottos.get(order)));
         }
     }
 
-    private void printEachLottoNumbers(Lotto lotto) {
-        List<Integer> list = new LottoNumberGenerater().makeLottoNumber(lotto);
-        System.out.println(list);
+    private List<Integer> printEachLottoNumbers(Lotto lotto) {
+        return lotto.printLotto();
     }
 
     public void printResult(int[] winning, double yield) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.printf(Rank.FIFTH.getValue()+"(%d원) - "+winning[0]+"개%n", new Result().FIFTH_PRIZE);
-        System.out.printf(Rank.FOURTH.getValue()+"(%d원) - "+winning[1]+"개%n", new Result().FOURTH_PRIZE);
-        System.out.printf(Rank.THIRD.getValue()+"(%d원) - "+winning[2]+"개%n", new Result().THIRD_PRIZE);
-        System.out.printf(Rank.SECOND.getValue()+"(%d원) - "+winning[3]+"개%n", new Result().SECOND_PRIZE);
-        System.out.printf(Rank.FIRST.getValue()+"(%d원) - "+winning[4]+"개%n", new Result().FIRST_PRIZE);
+        System.out.printf("%s(%d원) - %d개\n", Rank.FIFTH.getValue(), new Result().FIFTH_PRIZE, winning[0]);
+        System.out.printf("%s(%d원) - %d개\n", Rank.FOURTH.getValue(), new Result().FOURTH_PRIZE, winning[1]);
+        System.out.printf("%s(%d원) - %d개\n", Rank.THIRD.getValue(), new Result().THIRD_PRIZE, winning[2]);
+        System.out.printf("%s(%d원) - %d개\n", Rank.SECOND.getValue(), new Result().SECOND_PRIZE, winning[3]);
+        System.out.printf("%s(%d원) - %d개\n", Rank.FIRST.getValue(), new Result().FIRST_PRIZE, winning[4]);
         System.out.print("총 수익률은 "+String.format("%,.1f",yield)+ "%입니다.");
     }
 }
