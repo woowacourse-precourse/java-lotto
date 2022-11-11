@@ -12,5 +12,9 @@ public class Lotto {
                 IntConstant.LOTTO_NUMBER_SMALLER_THAN.getValue(), IntConstant.LOTTO_NUMBER_COUNT.getValue());
     }
 
+    public Lotto(List<Integer> numbers) {
+        this.numbers = numbers;
+    }
+
     // TODO: 추가 기능 구현
 }
