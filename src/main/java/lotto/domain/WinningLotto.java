@@ -38,14 +38,8 @@ public class WinningLotto extends Lotto {
     }
 
     private int countMatchNumbers(List<Integer> lottoNumbers) {
-        int matchCount = 0;
-        if (isContainingBonusNumber(lottoNumbers)) {
-            matchCount++;
-        }
-
-        matchCount += (int) lottoNumbers.stream()
+        return (int) lottoNumbers.stream()
                 .filter(number -> this.getNumbers().contains(number))
                 .count();
-        return matchCount;
     }
 }
