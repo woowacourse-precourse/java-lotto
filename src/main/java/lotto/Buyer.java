@@ -25,7 +25,10 @@ public class Buyer {
     }
 
     public int calculateLotteryNum(int buyNum) {
-        return buyNum / 1000;
+        int cnt = buyNum / 1000;
+        System.out.println(cnt+"개 구매했습니다.");
+
+        return cnt;
     }
 
     public void setLottos(int lottoCnt) {
@@ -40,6 +43,12 @@ public class Buyer {
 
     public List<Lotto> getLottos() {
         return lottos;
+    }
+
+    public void printBuyLotto() {
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.getNumbers());
+        }
     }
 
 
