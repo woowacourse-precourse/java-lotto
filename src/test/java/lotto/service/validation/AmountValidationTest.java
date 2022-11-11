@@ -3,11 +3,9 @@ package lotto.service.validation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class isValidAmountTest {
+public class AmountValidationTest {
     @DisplayName("금액이 음수 값일 경우 false 반환")
     @Test
     void amount_is_minus_Test() {
