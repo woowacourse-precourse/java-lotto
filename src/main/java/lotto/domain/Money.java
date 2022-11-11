@@ -17,4 +17,8 @@ public class Money {
             throw new IllegalArgumentException(MONEY_UNIT_ERROR.toString());
         }
     }
+
+    public int countLotto() {
+        return money / UNIT_MONEY;
+    }
 }
