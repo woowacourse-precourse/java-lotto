@@ -16,4 +16,8 @@ public class DrawingMachine {
                 .filter(lotto::isContain)
                 .count();
     }
+
+    public boolean isHitBonusNumber(Lotto lotto) {
+        return lotto.isContain(bonusNumber);
+    }
 }
