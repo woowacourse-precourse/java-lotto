@@ -8,14 +8,14 @@ import org.junit.jupiter.api.Test;
 public class ValidationTest {
 
     @Test
-    void validateLottoNumber_메서드_사용시_숫자_입력이_아닐_경우_예외_발생() {
+    void validateNumber_메서드_사용시_숫자_입력이_아닐_경우_예외_발생() {
         String inputWithAlphabet = "abc";
         String inputWithKorean = "한글";
 
         assertAll(
-                () -> assertThatThrownBy(() -> Input.validateLottoNumber(inputWithAlphabet))
+                () -> assertThatThrownBy(() -> Input.validateNumber(inputWithAlphabet))
                         .isInstanceOf(IllegalArgumentException.class),
-                () -> assertThatThrownBy(() -> Input.validateLottoNumber(inputWithKorean))
+                () -> assertThatThrownBy(() -> Input.validateNumber(inputWithKorean))
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
