@@ -56,7 +56,7 @@ class ManagerTest {
     @Test
     void getCorrectCountTest() {
         List<Integer> userLotto = new ArrayList<>(List.of(6,5,4,3,2,1));
-        List<Integer> winningNumbers = new ArrayList<>(List.of(1,2,3,4,5,7));
+        String winningNumbers = "1,2,3,4,5,7";
         manager.setWinningNumbers(winningNumbers);
 
         int expect = 5;
