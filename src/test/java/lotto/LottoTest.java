@@ -15,8 +15,8 @@ public class LottoTest {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Answer answer = new Answer(List.of(6, 5, 4, 3, 2, 1), 7);
 
-        GameResult gameResult = answer.play(lotto);
-        assertThat(gameResult.isFirst()).isTrue();
+        LottoResult lottoResult = answer.play(lotto);
+        assertThat(lottoResult.isFirst()).isTrue();
     }
 
     @DisplayName("1개의 로또와 당첨 번호를 비교하여 2등 결과를 반환하는 기능")
@@ -25,8 +25,8 @@ public class LottoTest {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
         Answer answer = new Answer(List.of(6, 5, 4, 3, 2, 1), 7);
 
-        GameResult gameResult = answer.play(lotto);
-        assertThat(gameResult.isSecond()).isTrue();
+        LottoResult lottoResult = answer.play(lotto);
+        assertThat(lottoResult.isSecond()).isTrue();
     }
 
     @DisplayName("1개의 로또와 당첨 번호를 비교하여 3등 결과를 반환하는 기능")
@@ -35,8 +35,8 @@ public class LottoTest {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
         Answer answer = new Answer(List.of(6, 5, 4, 3, 2, 1), 7);
 
-        GameResult gameResult = answer.play(lotto);
-        assertThat(gameResult.isThird()).isTrue();
+        LottoResult lottoResult = answer.play(lotto);
+        assertThat(lottoResult.isThird()).isTrue();
     }
 
     @DisplayName("1개의 로또와 당첨 번호를 비교하여 4등 결과를 반환하는 기능")
@@ -45,8 +45,8 @@ public class LottoTest {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 7, 8));
         Answer answer = new Answer(List.of(6, 5, 4, 3, 2, 1), 7);
 
-        GameResult gameResult = answer.play(lotto);
-        assertThat(gameResult.isFourth()).isTrue();
+        LottoResult lottoResult = answer.play(lotto);
+        assertThat(lottoResult.isFourth()).isTrue();
     }
 
     @DisplayName("1개의 로또와 당첨 번호를 비교하여 5등 결과를 반환하는 기능")
@@ -55,8 +55,8 @@ public class LottoTest {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 8, 9, 7));
         Answer answer = new Answer(List.of(6, 5, 4, 3, 2, 1), 7);
 
-        GameResult gameResult = answer.play(lotto);
-        assertThat(gameResult.isFifth()).isTrue();
+        LottoResult lottoResult = answer.play(lotto);
+        assertThat(lottoResult.isFifth()).isTrue();
     }
 
     @DisplayName("1개의 로또와 당첨 번호를 비교하여 이외의 결과를 반환하는 기능")
@@ -65,8 +65,8 @@ public class LottoTest {
         Lotto lotto = new Lotto(List.of(7, 8, 9, 10, 11, 12));
         Answer answer = new Answer(List.of(6, 5, 4, 3, 2, 1), 7);
 
-        GameResult gameResult = answer.play(lotto);
-        assertThat(gameResult.isElse()).isTrue();
+        LottoResult lottoResult = answer.play(lotto);
+        assertThat(lottoResult.isElse()).isTrue();
     }
 
 }

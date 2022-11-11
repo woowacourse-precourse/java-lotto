@@ -14,10 +14,10 @@ public class Answer {
         this.bonusNumber = bonusNumber;
     }
 
-    public GameResult play(Lotto lotto) {
+    public LottoResult play(Lotto lotto) {
         int countResult = answer.countContainsNumber(lotto);
         boolean bonusResult = calculateBonus(lotto, countResult);
-        return GameResult.of(countResult, bonusResult);
+        return LottoResult.of(countResult, bonusResult);
     }
 
     private boolean calculateBonus(Lotto lotto, int countResult) {
@@ -28,7 +28,7 @@ public class Answer {
         return countResult == CRITERION_CAN_HAS_BONUS;
     }
 
-    public List<GameResult> play(List<Lotto> lottos) {
+    public List<LottoResult> play(List<Lotto> lottos) {
         return lottos.stream()
                 .map(this::play)
                 .collect(Collectors.toList());

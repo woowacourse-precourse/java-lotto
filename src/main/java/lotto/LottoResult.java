@@ -2,8 +2,11 @@ package lotto;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public enum GameResult {
+import static lotto.GameResultResponseDto.*;
+
+public enum LottoResult {
 
     FIRST(6, 2000000000, false),
     SECOND(5, 30000000, true),
@@ -16,14 +19,14 @@ public enum GameResult {
     private final int winnerPrice;
     private final boolean isSameBonus;
 
-    GameResult(int sameNumberCount, int winnerPrice, boolean isSameBonus) {
+    LottoResult(int sameNumberCount, int winnerPrice, boolean isSameBonus) {
         this.sameNumberCount = sameNumberCount;
         this.winnerPrice = winnerPrice;
         this.isSameBonus = isSameBonus;
     }
 
-    public static GameResult of(int sameNumberCount, boolean isSameBonus) {
-        return Arrays.stream(GameResult.values())
+    public static LottoResult of(int sameNumberCount, boolean isSameBonus) {
+        return Arrays.stream(LottoResult.values())
                 .filter(gameResult -> gameResult.isEqualSameNumberCount(sameNumberCount))
                 .filter(gameResult -> gameResult.isEqualSameBonus(isSameBonus))
                 .findFirst()
@@ -36,6 +39,22 @@ public enum GameResult {
 
     private boolean isEqualSameBonus(boolean isSameBonus) {
         return this.isSameBonus == isSameBonus;
+    }
+
+    public static int sumWinnerPrice(List<LottoResult> lottoResults) {
+        return lottoResults.stream()
+                .mapToInt(LottoResult::getWinnerPrice)
+                .sum();
+    }
+
+    private static int getWinnerPrice(LottoResult lottoResult) {
+        return lottoResult.winnerPrice;
+    }
+
+    public static List<LottoResult> valuesExcludeElse() {
+        return Arrays.stream(LottoResult.values())
+                .filter(gameResult -> !gameResult.isElse())
+                .collect(Collectors.toList());
     }
 
     public boolean isFirst() {
@@ -62,14 +81,11 @@ public enum GameResult {
         return this == ELSE;
     }
 
-    public static int sumWinnerPrice(List<GameResult> gameResults) {
-        return gameResults.stream()
-                .mapToInt(GameResult::getWinnerPrice)
-                .sum();
+    public boolean equals(LottoResult lottoResult) {
+        return this == lottoResult;
     }
 
-    private static int getWinnerPrice(GameResult gameResult) {
-        return gameResult.winnerPrice;
+    public LottoResultResponseDto toResponseDto(int totalCount) {
+        return new LottoResultResponseDto(sameNumberCount, winnerPrice, isSameBonus, totalCount);
     }
-
 }
