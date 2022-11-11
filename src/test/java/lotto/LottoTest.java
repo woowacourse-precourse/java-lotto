@@ -354,4 +354,64 @@ class LottoTest {
 
         assertThat(hitBonusNumber).isEqualTo(false);
     }
+
+    @DisplayName("5개 번호와 1개의 보너스 번호가 일치하면 2등을 반환한다")
+    @Test
+    void isSecondPlace() {
+        List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
+        List<Integer> winningNumber = List.of(1, 10, 12, 24, 33, 45);
+        int bonusNumber = 43;
+        DrawingMachine drawingMachine = new DrawingMachine(winningNumber, bonusNumber);
+        Lotto lotto = new Lotto(lottoNumber);
+        LottoRank result = LottoRank.SECOND_PLACE;
+
+        LottoRank rank = drawingMachine.getRank(lotto);
+
+        assertThat(rank).isEqualTo(result);
+    }
+
+    @DisplayName("5개 번호가 일치하면 3등을 반환한다")
+    @Test
+    void isThirdPlace() {
+        List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
+        List<Integer> winningNumber = List.of(1, 10, 12, 24, 33, 45);
+        int bonusNumber = 42;
+        DrawingMachine drawingMachine = new DrawingMachine(winningNumber, bonusNumber);
+        Lotto lotto = new Lotto(lottoNumber);
+        LottoRank result = LottoRank.THIRD_PLACE;
+
+        LottoRank rank = drawingMachine.getRank(lotto);
+
+        assertThat(rank).isEqualTo(result);
+    }
+
+    @DisplayName("4개 번호가 일치하면 4등을 반환한다")
+    @Test
+    void isFourthPlace() {
+        List<Integer> lottoNumber = List.of(1, 10, 12, 24, 32, 43);
+        List<Integer> winningNumber = List.of(1, 10, 12, 24, 33, 45);
+        int bonusNumber = 43;
+        DrawingMachine drawingMachine = new DrawingMachine(winningNumber, bonusNumber);
+        Lotto lotto = new Lotto(lottoNumber);
+        LottoRank result = LottoRank.FOURTH_PLACE;
+
+        LottoRank rank = drawingMachine.getRank(lotto);
+
+        assertThat(rank).isEqualTo(result);
+    }
+
+    @DisplayName("2개 번호가 일치하면 낫싱을 반환한다")
+    @Test
+    void isNothing() {
+        List<Integer> lottoNumber = List.of(1, 10, 13, 25, 32, 43);
+        List<Integer> winningNumber = List.of(1, 10, 12, 24, 33, 45);
+        int bonusNumber = 43;
+        DrawingMachine drawingMachine = new DrawingMachine(winningNumber, bonusNumber);
+        Lotto lotto = new Lotto(lottoNumber);
+        LottoRank result = LottoRank.NOTHING;
+
+        LottoRank rank = drawingMachine.getRank(lotto);
+
+        assertThat(rank).isEqualTo(result);
+    }
 }
