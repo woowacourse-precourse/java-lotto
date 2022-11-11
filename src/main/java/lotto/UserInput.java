@@ -80,10 +80,10 @@ public class UserInput {
         try {
             result = Integer.parseInt(bonus);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Message.ERROR_INPUT_NUMBER.printError(););
+            throw new IllegalArgumentException(Message.ERROR_INPUT_NUMBER.printError());
         }
         if (result > 45 || result < 1) {
-            throw new IllegalArgumentException(Message.ERROR_INPUT_RANGE.printError(););
+            throw new IllegalArgumentException(Message.ERROR_INPUT_RANGE.printError());
         }
         return result;
     }
