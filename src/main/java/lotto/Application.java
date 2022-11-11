@@ -12,9 +12,10 @@ public class Application {
     public static void main(String[] args) {
         try {
             List<Lotto> generatedLottos = generateLottos(InputView.getGeneratedLottoCount());
+
             WinLotto winLotto = new WinLotto(InputView.getWinLottoNumbers(), InputView.getWinBonusNumber());
 
-            OutputView.showStaistics(generatedLottos, winLotto);
+            OutputView.showStatistics(generatedLottos, winLotto);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -24,8 +25,8 @@ public class Application {
         List<Lotto> generatedLottos = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             Lotto lotto = Lotto.create();
-            generatedLottos.add(lotto);
             System.out.println(lotto.printNumbers());
+            generatedLottos.add(lotto);
         }
         return generatedLottos;
     }
