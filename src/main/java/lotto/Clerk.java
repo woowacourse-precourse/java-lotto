@@ -20,16 +20,16 @@ public class Clerk {
     }
 
     private static List<Lotto> makeLottoGroup(int lotto_amount) {
-        List<Lotto> lottoList = new ArrayList<>();
+        List<Lotto> lotto_group = new ArrayList<>();
 
         for (int i = ZERO.getIntValue(); i < lotto_amount; i++) {
-            Lotto new_lotto = makeLotto(lottoList);
-            lottoList.add(new_lotto);
+            Lotto new_lotto = makeLotto(lotto_group);
+            lotto_group.add(new_lotto);
         }
-        return lottoList;
+        return lotto_group;
     }
 
-    private static Lotto makeLotto(List<Lotto> lottoList) {
+    private static Lotto makeLotto(List<Lotto> lotto_group) {
         List<Integer> random_lotto_num = pickUniqueNumbersInRange(
                 ZERO.getIntValue(), FOURTY_FIVE.getIntValue(), SIX.getIntValue()
         );

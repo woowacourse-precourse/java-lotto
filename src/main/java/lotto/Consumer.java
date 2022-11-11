@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Consumer {
-    private List<Lotto> lottoList;
+    private List<Lotto> lotto_group;
 
     public Consumer() {
     }
@@ -13,12 +13,12 @@ public class Consumer {
     public void purchaseLotto() {
         String purchaseAmount = Console.readLine();
 
-        lottoList = Clerk.sellLotto(purchaseAmount);
+        lotto_group = Clerk.sellLotto(purchaseAmount);
 
-        printLottoList();
+        printLottoGroup();
     }
 
-    private void printLottoList() {
+    private void printLottoGroup() {
 
     }
 }
