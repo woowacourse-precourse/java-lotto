@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class LottoRankCalculator {
     private static LottoRankCalculator lottoCalculator;
 
@@ -12,6 +15,15 @@ public class LottoRankCalculator {
             lottoCalculator = new LottoRankCalculator();
         }
         return lottoCalculator;
+    }
+
+    public Map<LottoRank, Integer> calculateRanks(WinningNumbers winningNumbers, Lottos lottos) {
+        Map<LottoRank, Integer> ranks = new HashMap<>();
+        for (Lotto lotto : lottos) {
+            LottoRank rank = calculateRank(winningNumbers, lotto);
+            ranks.put(rank, ranks.getOrDefault(rank, 0) + 1);
+        }
+        return ranks;
     }
 
     public LottoRank calculateRank(WinningNumbers winningNumbers, Lotto lotto) {
