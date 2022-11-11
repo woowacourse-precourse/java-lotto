@@ -9,21 +9,13 @@ import lotto.exception.Exceptions;
 public class LottoNumbers {
     private List<Integer> lottoNumbers;
 
-    public List<Integer> convertStringArrToIntegerList(String numbers) {
-        return List.of(numbers.split(",")).stream()
-                .map(s -> Integer.parseInt(s))
-                .collect(Collectors.toList());
-    }
-
-    public List<Integer> createRandomNumbers(){
-        List<Integer> numbers = new ArrayList<>();
-        try{
-            numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        }catch(IllegalArgumentException e){
-            System.out.println("[ERROR]");
-            throw new IllegalArgumentException();
+    public List<Integer> createRandomNumbers(String numbers) {
+        lottoNumbers = new ArrayList<>();
+        if (!Exceptions.validLottoNumbers(numbers)) {
+            throw new IllegalArgumentException("입력 오류");
         }
-        return numbers;
+        lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return lottoNumbers;
     }
 
 }
