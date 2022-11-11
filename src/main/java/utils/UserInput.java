@@ -9,7 +9,6 @@ import static constant.Messages.*;
 
 public class UserInput {
 
-
     public static int inputPrice() {
         System.out.println(INPUT_PRICE_MESSAGE);
         String price = Console.readLine();
@@ -28,7 +27,7 @@ public class UserInput {
     }
 
     private static void validPriceOfLotto(String price) {
-        if (price.equals(EMPTY)){
+        if (price.equals(EMPTY)) {
             System.out.println(NOT_NUMBER);
             throw new IllegalArgumentException(NOT_NUMBER);
         }
@@ -41,13 +40,13 @@ public class UserInput {
     }
 
     private static void validMoneyUnit(int price) {
-        if (price%MONEY_UNIT!=REMAINDER_ZERO) {
+        if (price % MONEY_UNIT != REMAINDER_ZERO) {
             System.out.println(NOT_RADIX_1000);
             throw new IllegalArgumentException(NOT_RADIX_1000);
         }
     }
 
     private static int calculateNumOfLotto(int price) {
-        return price/MONEY_UNIT;
+        return price / MONEY_UNIT;
     }
 }
