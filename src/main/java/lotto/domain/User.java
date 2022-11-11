@@ -25,4 +25,8 @@ public class User {
     public void calculateNumOfLotteries() {
         this.numOfLotteries = money / LOTTERY_PRICE;
     }
+
+    public int getNumOfLotteries() {
+        return numOfLotteries;
+    }
 }
