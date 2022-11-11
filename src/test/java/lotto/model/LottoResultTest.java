@@ -15,12 +15,12 @@ class LottoResultTest {
         LottoResult threeMatches = new LottoResult(WINNING_NUMBERS, List.of(1, 2, 3, 7, 8, 9), 10);
         LottoResult fiveMatchesAndBonus = new LottoResult(WINNING_NUMBERS, List.of(1, 2, 3, 4, 5, 7), 7);
 
-        Assertions.assertEquals(6, sixMatches.getCountSame());
-        Assertions.assertEquals(5, fiveMatches.getCountSame());
-        Assertions.assertEquals(4, fourMatches.getCountSame());
-        Assertions.assertEquals(3, threeMatches.getCountSame());
-        Assertions.assertEquals(1, fiveMatchesAndBonus.getBonusSame());
+        Assertions.assertEquals(6, sixMatches.getCountMatch());
+        Assertions.assertEquals(5, fiveMatches.getCountMatch());
+        Assertions.assertEquals(4, fourMatches.getCountMatch());
+        Assertions.assertEquals(3, threeMatches.getCountMatch());
+        Assertions.assertEquals(1, fiveMatchesAndBonus.getBonusMatch());
 
     }
-    
+
 }

@@ -34,8 +34,8 @@ public class LottoController {
         List<Integer> bonusResults = new ArrayList<>();
         for (List<Integer> playerNumbers : playerLotto) {
             LottoResult result = new LottoResult(lotto.get(), playerNumbers, bonusNumber.get());
-            countResults.add(result.getCountSame());
-            bonusResults.add(result.getBonusSame());
+            countResults.add(result.getCountMatch());
+            bonusResults.add(result.getBonusMatch());
         }
         int three = Collections.frequency(countResults, 3);
         int four = Collections.frequency(countResults, 4);
