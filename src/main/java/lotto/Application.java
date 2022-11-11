@@ -20,6 +20,8 @@ public class Application {
             lottoController.purchasedLotto();
             //로또 발행 내역 출력
             lottoController.printPurchasedLotto();
+            //당첨 번호 입력 시작
+            lottoController.inputWinnerNumberInformation();
             //당첨 번호 저장
             lottoController.saveWinnerNumber(new WinnerNumber(Console.readLine()));
         }catch (IllegalArgumentException e){
