@@ -12,9 +12,9 @@
 - [x] 결과를 출력해주는 toString 오버라이딩
 
 ## Rank
-- [ ] 등수
-- [ ] 코멘트와 당첨 금액
-- [ ] setter, getter 구현
+- [x] 등수
+- [x] 코멘트와 당첨 금액
+- [x] setter, getter 구현
 
 ## CompareLotto
 - [ ] EnumMap 생성 메소드
