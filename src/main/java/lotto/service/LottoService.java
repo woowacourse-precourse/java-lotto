@@ -39,39 +39,6 @@ public class LottoService {
         System.out.println("구입금액을 입력해 주세요.");
     }
 
-    private static void printPurchaseLottosInfo(List<Lotto> playerPurchaseLottos) {
-        System.out.printf("%d개를 구매했습니다.%n", playerPurchaseLottos.size());
-        for (Lotto playerPurchaseLotto : playerPurchaseLottos) {
-            System.out.println(playerPurchaseLotto.getNumbers());
-        }
-    }
-
-    private void printResult(List<Rank> lottoResults) {
-        int totalReward = 0;
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        for (Rank rank : Rank.values()) {
-            System.out.printf("%s (%s) - %d개%n", rank.getDescriptionMessage(),
-                    getFormattedReward(rank.getWinningPrice()), getMatchedRankCount(lottoResults, rank));
-            totalReward += rank.getWinningPrice() * getMatchedRankCount(lottoResults, rank);
-        }
-        System.out.printf("총 수익률은 %s%%입니다.%n", getFormattedRateOfReturn(totalReward));
-    }
-
-    private String getFormattedRateOfReturn(int totalReward) {
-        return FLOAT_FORMAT.format(totalReward * 100.0 / purchasePrice);
-    }
-
-    private static long getMatchedRankCount(List<Rank> lottoResults, Rank matchedRank) {
-        return lottoResults.stream()
-                .filter(lottoResult -> lottoResult.equals(matchedRank))
-                .count();
-    }
-
-    private static String getFormattedReward(int winningPrice) {
-        return INTEGER_FORMAT.format(winningPrice);
-    }
-
     private List<Rank> getResult() {
         List<Rank> lottoResults = new ArrayList<>();
         for (Lotto playerPurchaseLotto : playerPurchaseLottos) {
@@ -165,5 +132,38 @@ public class LottoService {
         List<Integer> uniqueNumbers = Randoms.pickUniqueNumbersInRange(START_LOTTO_NUMBER, END_LOTTO_NUMBER,
                 LOTTO_NUMBER_COUNT);
         return new Lotto(uniqueNumbers);
+    }
+
+    private static void printPurchaseLottosInfo(List<Lotto> playerPurchaseLottos) {
+        System.out.printf("%d개를 구매했습니다.%n", playerPurchaseLottos.size());
+        for (Lotto playerPurchaseLotto : playerPurchaseLottos) {
+            System.out.println(playerPurchaseLotto.getNumbers());
+        }
+    }
+
+    private void printResult(List<Rank> lottoResults) {
+        int totalReward = 0;
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for (Rank rank : Rank.values()) {
+            System.out.printf("%s (%s) - %d개%n", rank.getDescriptionMessage(),
+                    getFormattedReward(rank.getWinningPrice()), getMatchedRankCount(lottoResults, rank));
+            totalReward += rank.getWinningPrice() * getMatchedRankCount(lottoResults, rank);
+        }
+        System.out.printf("총 수익률은 %s%%입니다.%n", getFormattedRateOfReturn(totalReward));
+    }
+
+    private String getFormattedRateOfReturn(int totalReward) {
+        return FLOAT_FORMAT.format(totalReward * 100.0 / purchasePrice);
+    }
+
+    private static long getMatchedRankCount(List<Rank> lottoResults, Rank matchedRank) {
+        return lottoResults.stream()
+                .filter(lottoResult -> lottoResult.equals(matchedRank))
+                .count();
+    }
+
+    private static String getFormattedReward(int winningPrice) {
+        return INTEGER_FORMAT.format(winningPrice);
     }
 }
