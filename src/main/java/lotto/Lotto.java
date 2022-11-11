@@ -1,8 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -10,6 +7,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        duplicateCheck(numbers);
         this.numbers = numbers;
     }
 
@@ -17,6 +15,11 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+    }
+    private static void duplicateCheck(List<Integer> result) {
+        if(result.stream().distinct().count()!=6){
+            throw new IllegalArgumentException("[ERROR] 입력 숫자가 중복되었습니다.");
+        };
     }
 
     public ContainStatus isContainNumber(int LottoNumber) {
@@ -38,7 +41,11 @@ public class Lotto {
 
         return result;
     }
-
+    public void bonusNotIncludeWinningNumbers(int bonus) {
+        if (numbers.contains(bonus)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호가 이미 로또번호에 포함되어 있습니다.");
+        }
+    }
     public int[] getWinningArray(List<List<Integer>> getPurchaseLottoList, Input input) {
         int[] result = new int[]{0, 0, 0, 0, 0};
         for (List<Integer> lotto : getPurchaseLottoList) {

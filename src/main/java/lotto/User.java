@@ -8,17 +8,32 @@ import java.util.List;
 public class User {
     public int inputCost;
     public List<List<Integer>> purchaseLottoList;
-    private int[] winningArray;
-    private int getProfit;
-    private float earningsRate;
+    public int[] winningArray;
 
-    User(int inputCost) {
+    User(String inputCost) {
         valid(inputCost);
-        this.inputCost = inputCost;
+        int tempCost = Integer.parseInt(inputCost);
+
+        this.inputCost = tempCost;
     }
 
-    private void valid(int inputCost) {
-        if (inputCost / 1000 != 0) {
+    private void valid(String inputCost) {
+        correctNumber(inputCost);
+        multipleOfThousand(inputCost);
+    }
+
+    private void correctNumber(String inputCost) {
+        for (int i = 0; i <inputCost.length() ; i++) {
+            char tempNum = inputCost.charAt(i);
+            if (!(tempNum >= '0' && tempNum <= '9')) {
+                throw new IllegalArgumentException("[ERROR] 구매금액이 숫자가 아닙니다.");
+            }
+        }
+    }
+
+    private void multipleOfThousand(String inputCost) {
+        int cost = Integer.parseInt(inputCost);
+        if (cost % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 구매금액이 1000의 배수가 아닙니다.");
         }
     }

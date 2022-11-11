@@ -35,7 +35,7 @@ public class FeatureTest {
 
     @Test
     void 사용자의_구매횟수만큼_로또숫자_발행() {
-        User user = new User(5000);
+        User user = new User("5000");
         user.getPurchaseLottoList();
         assertThat(user.purchaseLottoList.size()).isEqualTo(5);
     }
@@ -127,7 +127,8 @@ public class FeatureTest {
                 .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 입력 숫자가 중복되었습니다.");
         String s4 = "1,2,3,4,5,6";
         int bonus = 6;
-        assertThatThrownBy(() -> Input.bonusNotIncludeWinningNumbers(bonus, Input.getWinningNumber(s4)))
+        Lotto lotto = new Lotto(Input.getWinningNumber(s4));
+        assertThatThrownBy(() -> lotto.bonusNotIncludeWinningNumbers(bonus))
                 .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 보너스 번호가 이미 로또번호에 포함되어 있습니다.");
 
     }
@@ -135,7 +136,7 @@ public class FeatureTest {
     @Test
     void 구매_금액_예외_처리() {
 
-        assertThatThrownBy(() -> new User(5555))
+        assertThatThrownBy(() -> new User("5555"))
                 .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 구매금액이 1000의 배수가 아닙니다.");
     }
 

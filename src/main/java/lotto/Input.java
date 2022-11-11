@@ -22,11 +22,7 @@ public class Input {
         return Integer.parseInt(readLine);
     }
 
-    public static void bonusNotIncludeWinningNumbers(int bonus, List<Integer> winningNumbers) {
-        if (winningNumbers.contains(bonus)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호가 이미 로또번호에 포함되어 있습니다.");
-        }
-    }
+
 
     public static List<Integer> getWinningNumber(String readLine) {
         String[] tempNumberList = readLine.split(",");
@@ -36,15 +32,10 @@ public class Input {
             int num = getInputToInt(tempNumberList[i]);
             result.add(num);
         }
-        duplicateCheck(result);
         return result;
     }
 
-    private static void duplicateCheck(List<Integer> result) {
-        if(result.stream().distinct().count()!=6){
-            throw new IllegalArgumentException("[ERROR] 입력 숫자가 중복되었습니다.");
-        };
-    }
+
 
     private static void validNumberCount(int n) {
         if (n != 6) {
@@ -70,7 +61,7 @@ public class Input {
     private static boolean isNum(String s) {
         for (int i = 0; i <s.length() ; i++) {
             char inspection = s.charAt(i);
-            if (!(inspection >= '1' && inspection <= '9')) {
+            if (!(inspection >= '0' && inspection <= '9')) {
                 return false;
             }
         }
