@@ -15,6 +15,9 @@ public class User {
         this.userLottoNumber = userLottoNumber;
     }
 
+    public Integer getUserPayAmount(){
+        return payAmount;
+    }
     public List<List<Integer>> getUserLottoNumber(){
         return this.userLottoNumber;
     }
