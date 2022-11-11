@@ -10,12 +10,12 @@ public class LottoGameController {
     OutputView outputView = new OutputView();
     LottoGameService lottoGameService = new LottoGameService();
 
-    public void lottoPurchase() {
+    public void purchaseLotto() {
         String lottoPurchaseAmount = inputView.inputLottoPurchaseAmount();
         int lottoIssueCount = lottoGameService.getLottoIssueCount(lottoPurchaseAmount);
         outputView.printPurchaseLottoCount(lottoIssueCount);
         generateLottoNumbers(lottoIssueCount);
-        outputView.printIssuedLottoNumbers(lottoGameService.getLottoNumbers());
+        outputView.printIssuedLottoNumbers(lottoGameService.getPurchaseLottoNumbers());
     }
 
     public void generateLottoNumbers(int lottoIssueCount) {
