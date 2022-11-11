@@ -1,6 +1,6 @@
 package lotto.validator;
 
-import static lotto.validator.ErrorMessages.DUPLICATE_ERROR_MESSAGE;
+import static lotto.validator.ErrorMessages.DUPLICATE_LOTTO_NUMBER_ERROR_MESSAGE;
 import static lotto.validator.ErrorMessages.INVALID_LENGTH_ERROR_MESSAGE;
 import static lotto.validator.LottoNumberValidator.hasNonDuplicateNumbers;
 import static lotto.validator.LottoNumberValidator.hasValidLength;
@@ -34,7 +34,7 @@ public class LottoNumberValidatorTest {
         //when, then
         assertThatThrownBy(() -> hasNonDuplicateNumbers(duplicateInput))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(DUPLICATE_ERROR_MESSAGE);
+                .hasMessageContaining(DUPLICATE_LOTTO_NUMBER_ERROR_MESSAGE);
     }
 
     @Test

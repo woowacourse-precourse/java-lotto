@@ -31,7 +31,7 @@ public class NumberValidator {
         Set<Integer> tempLotteryNumbers = new HashSet<>(lotteryNumbers);
         if (tempLotteryNumbers.size() != lotteryNumbers.size()) {
             if (lotteryNumbers.size() == VALID_LOTTERY_NUMBER_LENGTH) {
-                throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
+                throw new IllegalArgumentException(DUPLICATE_LOTTO_NUMBER_ERROR_MESSAGE);
             }
             throw new IllegalArgumentException(DUPLICATE_BONUS_NUMBER_ERROR_MESSAGE);
         }
