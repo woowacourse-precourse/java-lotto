@@ -12,6 +12,7 @@ public class LottoGame {
     private static final int LOTTO_NUMBER_COUNT = 6;
 
     public String inputMoney() {
+        System.out.println("구매금액을 입력해 주세요.");
         String money = Console.readLine();
         validateMoneyType(money);
         validateUnitOf1000(money);
@@ -31,6 +32,7 @@ public class LottoGame {
     }
 
     public void printLottos(List<Lotto> lottos) {
+        System.out.println(lottos.size() + "개를 구매했습니다.");
         lottos.forEach(lotto -> printSortedLotto(lotto.getNumbers()));
     }
 
@@ -45,11 +47,13 @@ public class LottoGame {
     }
 
     public List<Integer> inputWinningNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요.");
         String winningNumbers = Console.readLine();
         return getValidNumbers(winningNumbers);
     }
 
     public int inputBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
         String inputNumber = Console.readLine();
         validateNumberType(inputNumber);
 
@@ -94,6 +98,9 @@ public class LottoGame {
 
     public void printWinningResult(List<LottoRank> ranks) {
         Map<LottoRank, Integer> rankCount = getRankCount(ranks);
+
+        System.out.println("당첨 통계");
+        System.out.println("---");
         Arrays.stream(WinningResultMessage.values())
                 .forEach(message -> message.print(rankCount.getOrDefault(message.getLottoRank(), 0)));
     }
