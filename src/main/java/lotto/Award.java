@@ -48,7 +48,7 @@ public class Award {
         System.out.println();
         System.out.println("당첨 통계");
         System.out.println("---");
-        for(Winning winning : prize.keySet()) {
+        for(Winning winning : Winning.getValues()) {
             System.out.println(winning.getMessage() + prize.get(winning) + "개");
         }
     }

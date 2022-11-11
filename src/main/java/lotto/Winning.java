@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 public enum Winning {
     EqualThree("3개 일치 (5,000원) - ", 5000),
     EqualFour("4개 일치 (50,000원) - ", 50000),
@@ -41,5 +43,9 @@ public enum Winning {
         }
 
         return null;
+    }
+
+    public static List<Winning> getValues() {
+        return List.of(EqualThree, EqualFour, EqualFive, EqualFiveAndBonus, EqualSix);
     }
 }
