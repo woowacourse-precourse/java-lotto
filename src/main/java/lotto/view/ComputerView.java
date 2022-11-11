@@ -15,7 +15,10 @@ public class ComputerView {
     }
 
     public String getBonusNumber(){
-        return "";
+        printRequest(REQUEST_BONUS_NUMBERS);
+        String input = scanInput();
+        giveSpaceOnView();
+        return input;
     }
 
     private void printRequest(String statement){
