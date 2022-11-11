@@ -2,6 +2,7 @@ package lotto.domain;
 
 
 import lotto.config.InputConfig;
+import lotto.util.LottoComparator;
 
 import java.util.*;
 
@@ -24,4 +25,24 @@ public class Statistics {
         this.result = tmp;
     }
 
+    long getTotalProfit() {
+        long total = 0;
+        for (Map.Entry<Winner, Integer> entry : result.entrySet()) {
+            int prizeMoney = entry.getKey().getPrizeMoney();
+            total += prizeMoney * entry.getValue();
+        }
+        return total;
+    }
+
+    private void matchLotto(List<Lotto> purchased) {
+        initResult();
+        Map<Winner, Integer> ranked = LottoComparator.compareToPrize(purchased, prizeLotto, bonusNumber);
+        ranked.forEach((key, value) -> result.merge(key, value, (v1, v2) -> v1 + v2));
+        result.remove(Winner.NONE);
+    }
+
+    public Map<Winner, Integer> getResult(List<Lotto> purchased) {
+        matchLotto(purchased);
+        return result;
+    }
 }
