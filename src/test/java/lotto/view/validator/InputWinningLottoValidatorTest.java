@@ -26,4 +26,13 @@ class InputWinningLottoValidatorTest {
                 .isThrownBy(() -> InputWinningLottoValidator.validate(input))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
+    
+    @DisplayName("예외 처리 : 한글 입력 시")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {"1,2,3,ㄱ,5,6", "1,2,3,ㅏ,5,6", "1,2,3,4,5,가"})
+    void koreanInputException(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> InputWinningLottoValidator.validate(input))
+                .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
+    }
 }
