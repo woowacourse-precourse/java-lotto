@@ -2,20 +2,16 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Game {
     int gameNumber; // TODO : test 이후 private로 다시 변경
-
-    int[] result;
     Lotto[] games; // TODO : test 이후 private로 다시 변경
-//    User user;
 
     public Game(int money) {
-//        this.user = user;
         this.gameNumber = money / 1000;
         this.games = new Lotto[gameNumber];
-        this.result = new int[5]; // 1 ~ 5등
     }
 
     public void generateGame() {
@@ -45,7 +41,8 @@ public class Game {
         for (Lotto gameI : this.games) {
             String resultI = compareNumbers(gameI.getNumbers(), user);
             if (resultI.equals("NOTHING")) continue;
-            result[Rank.valueOf(resultI).getRank() - 1]++;
+            user.updateResult(resultI);
         }
+//        return user;
     }
 }

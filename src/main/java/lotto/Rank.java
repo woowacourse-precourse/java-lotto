@@ -1,16 +1,23 @@
 package lotto;
 
 public enum Rank {
-    FIRST(1), SECOND(2), THIRD(3), FORTH(4), FIFTH(5);
+    FIRST(0, "6개 일치 (2,000,000,000원) - "),
+    SECOND(1, "5개 일치, 보너스 볼 일치 (30,000,000원) - "),
+    THIRD(2, "5개 일치 (1,500,000원) - "),
+    FORTH(3, "4개 일치 (50,000원) - "),
+    FIFTH(4, "3개 일치 (5,000원) - ");
 
     private final int rank;
+    private final String info;
 
-    Rank(int rank) {
+    Rank(int rank, String info) {
         this.rank = rank;
+        this.info = info;
     }
 
     public int getRank() {
         return this.rank;
     }
+    public String getInfo() { return this.info; }
 
 }
