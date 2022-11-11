@@ -16,7 +16,7 @@ public class Buy {
         return numbers;
     }
 
-    public static int order() {
+    public static int orderTicket() {
         System.out.println("구입금액을 입력해 주세요.");
         int money = Integer.parseInt(Console.readLine());
         int tickets = validate.Check.countLottoTicket(money);
