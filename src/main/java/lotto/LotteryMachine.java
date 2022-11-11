@@ -11,6 +11,11 @@ public class LotteryMachine {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
+    public Lotto makeWinningLottoNum() {
+
+        return new Lotto(makeLottoNum());
+    }
+
     public int makeBonusNum(List<Integer> lottoNum) {
 
 
