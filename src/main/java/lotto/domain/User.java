@@ -67,4 +67,16 @@ public class User {
             throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요!");
         }
     }
+
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
+    public int getMoney() {
+        return money;
+    }
 }
