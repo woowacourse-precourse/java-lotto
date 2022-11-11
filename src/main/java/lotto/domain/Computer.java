@@ -7,8 +7,14 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Computer {
+    // 2주차 피드백 반영
+    static final int STRAT_RANGE = 1;
+    static final int END_RANGE = 45;
+    static final int LOTTO_NUMBER_LENGTH = 6;
+    static final int LOTTO_CHARGE = 1000;
+
     public List<Integer> createLottoNumbers(){
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(STRAT_RANGE, END_RANGE, LOTTO_NUMBER_LENGTH);
         // 오름차순 정렬
         numbers.sort(Comparator.naturalOrder());
 
@@ -16,7 +22,7 @@ public class Computer {
     }
 
     public List<List<Integer>> createLottos(int money){
-        int times = money / 1000;
+        int times = money / LOTTO_CHARGE;
 
         List<List<Integer>> lottos = new ArrayList<>();
 
