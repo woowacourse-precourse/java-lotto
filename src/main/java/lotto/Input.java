@@ -18,7 +18,7 @@ public class Input {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException exception) {
-            // TODO: 2022/11/11 에러 메시지 출력 추가
+            Print.numberException();
             throw new IllegalArgumentException();
         }
     }
@@ -28,14 +28,14 @@ public class Input {
         validateNumber(input);
         lottoNumber = Integer.parseInt(input);
         if (lottoNumber < LOTTO_NUMBER_MIN || lottoNumber > LOTTO_NUMBER_MAX) {
-            // TODO: 2022/11/11 에러 메시지 출력 추가
+            Print.lottoNumberException();
             throw new IllegalArgumentException();
         }
     }
 
     public static void validatePrice(int price) {
         if (price % LOTTO_PRICE_UNIT != 0) {
-            // TODO: 2022/11/11 에러 메시지 출력 추가
+            Print.priceException();
             throw new IllegalArgumentException();
         }
     }
@@ -64,14 +64,14 @@ public class Input {
 
     public static void validateSplitByCommaInputSize(String[] splitByCommaInput) {
         if (splitByCommaInput.length != LOTTO_NUMBERS_INPUT_SIZE) {
-            // TODO: 2022/11/11 에러 메시지 출력 추가
+            Print.splitByCommaInputSizeException();
             throw new IllegalArgumentException();
         }
     }
 
     public static void validateNonDuplicatedLottoNumbers(Set<Integer> lottoNumbers) {
         if (lottoNumbers.size() != LOTTO_NUMBERS_INPUT_SIZE) {
-            // TODO: 2022/11/11 에러 메시지 출력 추가
+            Print.nonDuplicatedLottoNumbersException();
             throw new IllegalArgumentException();
         }
     }
