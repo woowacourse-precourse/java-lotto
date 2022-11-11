@@ -13,11 +13,11 @@ public class RandomUtils {
         return Collections.emptyList();
     }
 
-    public static boolean isUniqueNumber() {
+    public static boolean isUniqueNumber(List<Integer> LottoNumbers) {
         return false;
     }
 
-    public static boolean isUniqueBonusNumber() {
+    public static boolean isUniqueBonusNumber(int BonusNumber) {
         return false;
     }
 }
