@@ -40,4 +40,15 @@ public class LottoCompany {
         this.lotto = new Lotto(lottoNumbers);
         bonusNumber();
     }
+
+    private void validate(String[] winningNumbers) {
+        validator.validateWinningNumbers(winningNumbers);
+        validator.validateLottoLength(winningNumbers);
+        validator.validateDuplicate(winningNumbers);
+        for(int i = 0; i< winningNumbers.length; i++){
+            forValidate.add(Integer.parseInt(winningNumbers[i]));
+        }
+        validator.validateNumbersRange(forValidate);
+    }
+
 }
