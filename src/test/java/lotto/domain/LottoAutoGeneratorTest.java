@@ -20,6 +20,6 @@ class LottoAutoGeneratorTest {
 
         //then
         assertThat(result.size())
-                .isEqualTo(money/LottoRule.COST.getValueForRule());
+                .isEqualTo(money/LottoRule.COST.getValue());
     }
 }

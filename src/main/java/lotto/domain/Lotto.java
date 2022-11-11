@@ -24,8 +24,8 @@ public class Lotto {
     }
 
     private void validateRangeOfNumber(int number) {
-        if (number > LottoRule.MAXIMUM_NUMBER.getValueForRule()
-                || number < LottoRule.MINIMUM_NUMBER.getValueForRule()) {
+        if (number > LottoRule.MAXIMUM_NUMBER.getValue()
+                || number < LottoRule.MINIMUM_NUMBER.getValue()) {
             throw new LottoNumberOutOfBoundException();
         }
     }

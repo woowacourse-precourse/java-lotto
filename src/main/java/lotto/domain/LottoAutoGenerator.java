@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 public class LottoAutoGenerator {
     public static List<Lotto> generateLottoCollection(int money) {
         List<Lotto> groupOfLotto = new ArrayList<>();
-        int amountOfLotto = money / LottoRule.COST.getValueForRule();
+        int amountOfLotto = money / LottoRule.COST.getValue();
 
         IntStream.range(0, amountOfLotto)
                 .forEach((index) -> groupOfLotto.add(generateLotto()));
@@ -20,9 +20,9 @@ public class LottoAutoGenerator {
     }
     public static Lotto generateLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(
-                LottoRule.MINIMUM_NUMBER.getValueForRule(),
-                LottoRule.MAXIMUM_NUMBER.getValueForRule(),
-                LottoRule.AMOUNT_OF_NUMBER.getValueForRule()
+                LottoRule.MINIMUM_NUMBER.getValue(),
+                LottoRule.MAXIMUM_NUMBER.getValue(),
+                LottoRule.AMOUNT_OF_NUMBER.getValue()
         );
         Collections.sort(numbers);
 

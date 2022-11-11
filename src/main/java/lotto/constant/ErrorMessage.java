@@ -8,8 +8,8 @@ public enum ErrorMessage {
     INVALID_LOTTO_NUMBER(
             String.format(
                     "로또 숫자는 %d 이상 %d 이하입니다.",
-                    LottoRule.MINIMUM_NUMBER.getValueForRule(),
-                    LottoRule.MAXIMUM_NUMBER.getValueForRule()
+                    LottoRule.MINIMUM_NUMBER.getValue(),
+                    LottoRule.MAXIMUM_NUMBER.getValue()
             )
     ),
     DUPLICATE("중복되는 로또 번호가 있습니다."),

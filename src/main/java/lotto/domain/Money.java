@@ -16,7 +16,7 @@ public class Money {
     }
 
     public void validate(int money) throws IllegalArgumentException {
-        if (money % LottoRule.COST.getValueForRule() != 0 || money < LottoRule.COST.getValueForRule()) {
+        if (money % LottoRule.COST.getValue() != 0 || money < LottoRule.COST.getValue()) {
             throw new IllegalMoneyInputException();
         }
     }

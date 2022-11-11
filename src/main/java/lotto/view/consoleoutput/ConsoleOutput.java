@@ -10,7 +10,7 @@ public class ConsoleOutput {
         System.out.println(Directive.INPUT_MONEY.getMessage());
     }
     public void printAmountOfLottos(int money) {
-        int count = money / LottoRule.COST.getValueForRule();
+        int count = money / LottoRule.COST.getValue();
         System.out.println(
                 String.format(Information.AMOUNT_OF_LOTTO.getMessage(), count)
         );

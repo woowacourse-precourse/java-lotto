@@ -7,13 +7,13 @@ public enum LottoRule {
     AMOUNT_OF_BONUS(1),
     COST(1000);
 
-    private final int valueForRule;
+    private final int value;
 
-    LottoRule(int valueForRule) {
-        this.valueForRule = valueForRule;
+    LottoRule(int value) {
+        this.value = value;
     }
 
-    public int getValueForRule() {
-        return this.valueForRule;
+    public int getValue() {
+        return this.value;
     }
 }

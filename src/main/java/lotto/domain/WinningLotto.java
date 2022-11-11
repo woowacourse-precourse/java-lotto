@@ -20,8 +20,8 @@ public class WinningLotto {
 
     private void validate(Map<Integer, Boolean> winningNumbers) {
         if (winningNumbers.size() !=
-                LottoRule.AMOUNT_OF_NUMBER.getValueForRule() +
-                        LottoRule.AMOUNT_OF_BONUS.getValueForRule()) {
+                LottoRule.AMOUNT_OF_NUMBER.getValue() +
+                        LottoRule.AMOUNT_OF_BONUS.getValue()) {
             throw new DuplicateLottoNumberException();
         }
 
@@ -31,8 +31,8 @@ public class WinningLotto {
     }
 
     private void validateNumberInRange(Integer key) {
-        if (key>LottoRule.MAXIMUM_NUMBER.getValueForRule() ||
-                key<LottoRule.MINIMUM_NUMBER.getValueForRule()) {
+        if (key>LottoRule.MAXIMUM_NUMBER.getValue() ||
+                key<LottoRule.MINIMUM_NUMBER.getValue()) {
             throw new LottoNumberOutOfBoundException();
         }
     }
