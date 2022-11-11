@@ -48,10 +48,20 @@ public class LottoGame {
 
     public List<Integer> inputWinningNumbers() {
         String winningNumbers = Console.readLine();
-        return getNumbers(winningNumbers);
+        return getValidNumbers(winningNumbers);
     }
 
-    private List<Integer> getNumbers(String winningNumbers) {
+    public int inputBonusNumber() {
+        String inputNumber = Console.readLine();
+        validateNumberType(inputNumber);
+
+        int bonusNumber = Integer.parseInt(inputNumber);
+        validateNumberRange(bonusNumber);
+
+        return bonusNumber;
+    }
+
+    private List<Integer> getValidNumbers(String winningNumbers) {
         validateNumberCount(winningNumbers);
         return Arrays.stream(winningNumbers.split(","))
                 .peek(this::validateNumberType)
@@ -75,6 +85,12 @@ public class LottoGame {
     private void validateNumberRange(int number) {
         if (number < 1 || number > 45) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_NUMBER_RANGE.getMessage());
+        }
+    }
+
+    private void validateContainsInWinningNumber(List<Integer> winningNumber, int number) {
+        if (winningNumber.contains(number)) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATION_BONUS_NUMBER.getMessage());
         }
     }
 }
