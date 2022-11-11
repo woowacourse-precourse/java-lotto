@@ -15,8 +15,8 @@ public class ProfitCalculator {
     }
 
     public static double calculateProfitRate(int totalProfit, int purchaseAmount) {
-        double profitRate = totalProfit/ (double)purchaseAmount;
+        double profitRate = totalProfit * 100.0 / purchaseAmount;
 
-        return Math.round(profitRate*10.0)/10.0;
+        return Math.round(profitRate * 10.0) / 10.0;
     }
 }
