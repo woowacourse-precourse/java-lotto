@@ -1,25 +1,35 @@
 package lotto;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Application { // 패키지 분리
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Message.requestInputMoneyMessage();
-        int i = Money.countLotto(UserNumberScan.requestValue());
-        List<Lotto> lottos = RandomNumberCreater.generateLottoNumber(i);
+        int count = Money.countLotto(UserNumberScan.requestValue());
+        Message.lottoBuyMessage(count);
+        List<Lotto> countLotto = RandomNumberCreater.generateLottoNumber(count);
+        for (int j = 0; j < count; j++) {
+            Lotto lotto = countLotto.get(j);
+            List<Integer> numbers = lotto.getNumbers();
+            Collections.sort(numbers);
+            System.out.println(numbers);
+        }
 
-
-        Message.requestBonusNumberMessage();
+        Message.requestWinningNumberMessage();
         WinningNumber winningNumber = new WinningNumber(UserNumberScan.requestValue());
         List<Integer> numbers = winningNumber.getNumber();
-        int count = 0;
+        Message.requestBonusNumberMessage();
+
+
         for (Integer integer : numbers) {
-            Lotto lotto = lottos.get(0);
+            Lotto lotto = countLotto.get(0);
             List<Integer> number1 = lotto.getNumbers();
             if (number1.contains(integer)) {
 
             }
         }
-    }
+   }
 }

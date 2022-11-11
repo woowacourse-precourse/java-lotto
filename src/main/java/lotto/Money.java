@@ -5,7 +5,7 @@ public class Money {
     for (int i = 0; i < userMoney.length(); i++)
     {
       if (!Character.isDigit(userMoney.charAt(i))) {
-        throw new IllegalArgumentException(Constant.NOT_ONLY_DIGIT.getMessage());
+        throw new IllegalArgumentException(ErrorMessage.NOT_ONLY_DIGIT.getMessage());
       }
     }
     return true;
@@ -15,7 +15,7 @@ public class Money {
     int money = Integer.parseInt(userMoney);
 
     if (money % 1000 != 0) {
-      throw new IllegalArgumentException(Constant.NOT_1000.getMessage());
+      throw new IllegalArgumentException(ErrorMessage.NOT_1000.getMessage());
     }
     return true;
   }
