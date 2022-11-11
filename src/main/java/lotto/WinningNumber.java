@@ -18,6 +18,10 @@ public class WinningNumber {
 			if (Integer.parseInt(token) == 0) {
 				throw new IllegalArgumentException("0은 입력할 수 없습니다.");
 			}
+
+			if (Integer.parseInt(token) > 45) {
+				throw new IllegalArgumentException("45보다 큰 숫자는 입력할 수 없습니다.");
+			}
 		}
 	}
 }
