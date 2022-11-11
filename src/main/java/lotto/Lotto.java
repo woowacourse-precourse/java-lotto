@@ -18,13 +18,13 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validateSize(List<Integer> numbers) {
+    public void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(LottoExceptionType.NOT_MATCH_CNT.getErrorMessage());
         }
     }
 
-    private void validateRange(List<Integer> numbers){
+    public void validateRange(List<Integer> numbers){
         for(int num : numbers){
             if(num < 1 || num > 45){
                 throw new IllegalArgumentException(LottoExceptionType.NOT_MATCH_RANGE.getErrorMessage());
@@ -32,7 +32,7 @@ public class Lotto {
         }
     }
 
-    private void validateDuplicate(List<Integer> numbers){
+    public void validateDuplicate(List<Integer> numbers){
         Set<Integer> set = new HashSet<>(numbers);
 
         if(set.size() != NUM_SIZE){
