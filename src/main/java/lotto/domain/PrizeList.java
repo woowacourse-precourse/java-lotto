@@ -39,4 +39,16 @@ public class PrizeList {
         if (prize == Prize.FIFTH)
             fifth++;
     }
+
+    public long getYield() {
+        long result = 0;
+
+        result += (long) first * Prize.FIRST.getPrize();
+        result += (long) second * Prize.SECOND.getPrize();
+        result += (long) third * Prize.THIRD.getPrize();
+        result += (long) fourth * Prize.FOURTH.getPrize();
+        result += (long) fifth * Prize.FIFTH.getPrize();
+
+        return result;
+    }
 }

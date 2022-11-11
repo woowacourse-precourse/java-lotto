@@ -44,6 +44,12 @@ public class User {
         getPrizes().addCount(prize);
     }
 
+    public String getYield() {
+        long yield = prizes.getYield();
+        double yieldPercent = (double) yield / purchaseAmount * 100;
+        return String.format("%.1f", yieldPercent);
+    }
+
     private void validate(String input) {
         long numericLength = input.chars().filter(Character::isDigit).count();
         if (numericLength != input.length())
