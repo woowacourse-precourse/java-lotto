@@ -10,9 +10,7 @@ public class LottoController {
 
     public void run() {
         LottoCollection lottoCollection = buyLotto();
-
-        WinningNumber winningNumber = new WinningNumber(InputView.requestWinningNumber());
-        InputView.requestBonusNumber();
+        WinningNumber winningNumber = WinnerAnnouncement();
     }
 
     private LottoCollection buyLotto() {
@@ -21,6 +19,13 @@ public class LottoController {
 
         OutputView.printLottoCollection(lottoCollection);
         return lottoCollection;
+    }
+
+    private WinningNumber WinnerAnnouncement() {
+        String winningNumber = InputView.requestWinningNumber();
+        String bonusNumber = InputView.requestBonusNumber();
+
+        return new WinningNumber(winningNumber, bonusNumber);
     }
 
 }
