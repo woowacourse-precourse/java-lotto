@@ -18,8 +18,8 @@ public class PurchaseLotto {
         PurchaseException.inputMoneyException(money);
         return Integer.valueOf(money)/1000;
     }
-    private static List<Lotto> drawLotto(int lottocount){
-        List<Lotto> answer = Collections.emptyList();
+    public static List<Lotto> drawLotto(int lottocount){
+        List<Lotto> answer = new LinkedList<>();
         for(int i=0 ;i<lottocount ; i++){
             answer.add(new Lotto(makeRandomNumbers()));
         }
