@@ -68,8 +68,10 @@ public class LottoSystemService {
         lotto = new Lotto(numbers);
     }
 
-    public List<Integer> getLottoNumbers(){
-        return lotto.getLottoNumber();
-    }
+    public void setTotal(){
+        List<List<Integer>> userLottoNumber = user.getUserLottoNumber();
+        List<Integer> lottoNumber = lotto.getLottoNumber();
+        List<Integer> hit = Arrays.asList( 0, 0, 0, 0, 0, 0);
 
+    }
 }
