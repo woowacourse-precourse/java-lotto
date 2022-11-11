@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.Grade.*;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -246,5 +248,15 @@ public class Application {
         }
 
         return bonusNumber;
+    }
+
+    public static Double calculateSurplus(int first, int second, int third, int forth, int fifth, int cash) {
+
+        int surplusSum = first * FIRST.getValue() + second * SECOND.getValue()
+                + third * THIRD.getValue() + forth * FORTH.getValue() + fifth * FIFTH.getValue();
+
+        double surplusRate = 100.0 * (double) surplusSum / (double) cash;
+
+        return Math.round(surplusRate * 10) / 10.0;
     }
 }
