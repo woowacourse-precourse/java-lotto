@@ -38,10 +38,11 @@ class OutputViewTest {
     }
 
     @Test
-    void 로또_발행_번호_출력() {
-        List<Integer> issuedLottoNumbers = List.of(1, 2, 3, 4, 5, 6);
+    void 전체_로또_발행_번호_출력() {
+        List<List<Integer>> issuedLottoNumbers = List.of(List.of(1, 2, 3, 4, 5, 6), List.of(7, 8, 9, 10, 11, 12));
         outputView.printIssuedLottoNumbers(issuedLottoNumbers);
-        String purchaseLottoCountMessage = "[1, 2, 3, 4, 5, 6]\n";
+        String purchaseLottoCountMessage = "[1, 2, 3, 4, 5, 6]\n" +
+                "[7, 8, 9, 10, 11, 12]\n";
 
         assertThat(output.toString()).isEqualTo(purchaseLottoCountMessage);
     }
