@@ -9,6 +9,11 @@ import java.util.Arrays;
 public class WinnerNumberVerifier implements Verifier {
     @Override
     public void check(String input) {
+        checkNumberCount(input);
+        checkEachNumeric(input);
+        checkEachOutOfTypeRange(input);
+        checkEachOutOfRange(input);
+        checkEachDistinct(input);
     }
 
     private void checkNumberCount(String input) {
@@ -35,12 +40,23 @@ public class WinnerNumberVerifier implements Verifier {
     }
 
     private void checkEachOutOfRange(String input) {
-        if(Arrays.stream(input.split(","))
+        if (Arrays.stream(input.split(","))
                 .allMatch(number -> Long.parseLong(number) < Constant.START_INCLUSIVE ||
                         Long.parseLong(number) > Constant.END_INCLUSIVE)
         )
         {
             throw new IllegalArgumentException(ExceptionMessage.NUMBER_EACH_OUT_OF_RANGE);
+        }
+    }
+
+    private void checkEachDistinct(String input) {
+        int distinctCount = (int) Arrays.stream(input.split(","))
+                .distinct()
+                .count();
+        int inputCount = (int) Arrays.stream(input.split(","))
+                .count();
+        if (distinctCount != inputCount) {
+            throw new IllegalArgumentException(ExceptionMessage.NUMBER_NOT_DISTINCT);
         }
     }
 }
