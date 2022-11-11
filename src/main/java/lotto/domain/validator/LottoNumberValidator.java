@@ -52,4 +52,11 @@ public class LottoNumberValidator {
         }
     }
 
+    // 5차 : 중복값 여부 - 중복값 제거했는데 6개 미만일 때
+    public void checkingOverlap(final String inputValue){
+        Stream<String> deduplicatedNumbers = Arrays.stream(inputValue.split(",")).distinct();
+        if(deduplicatedNumbers.count() < 6){
+            throw new IllegalArgumentException(ErrorMessages.HAS_OVERLAP_NUMBER.getMessage());
+        }
+    }
 }
