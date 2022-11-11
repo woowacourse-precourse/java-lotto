@@ -46,7 +46,10 @@ public class Lotto {
     }
 
     public static void printNumbers(List<List<Integer>> lottoTickets, int tickets){
-        System.out.println();
+        System.out.println(tickets+"개를 구매했습니다.");
+        for (int i=0; i<lottoTickets.size(); i++){
+            System.out.println(lottoTickets.get(i));
+        }
     }
 
     public static List<Integer> getNumbers(String input){
