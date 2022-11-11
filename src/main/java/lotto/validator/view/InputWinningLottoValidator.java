@@ -24,10 +24,17 @@ public class InputWinningLottoValidator {
     }
     
     private static void validateInputWinningLottoFormatMatching(final String inputWinningLottoNumbers) {
-        final Matcher matcher = Pattern.compile(WINNING_LOTTO_INPUT_FORM).matcher(inputWinningLottoNumbers);
-        if (isNotMatchInputFormat(matcher)) {
+        if (isNotMatchInputFormat(matcher(inputWinningLottoNumbers))) {
             throw new IllegalArgumentException(WINNING_LOTTO_INPUT_FORMAT_EXCEPTION_MESSAGE);
         }
+    }
+    
+    private static Matcher matcher(final String inputWinningLottoNumbers) {
+        return compiler().matcher(inputWinningLottoNumbers);
+    }
+    
+    private static Pattern compiler() {
+        return Pattern.compile(WINNING_LOTTO_INPUT_FORM);
     }
     
     private static boolean isNotMatchInputFormat(final Matcher matcher) {
