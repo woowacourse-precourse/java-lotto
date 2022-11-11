@@ -12,32 +12,35 @@ public class LottoNumber {
 
     public LottoNumber(String winningNumbers, String bonusNumber) {
         for (String num : winningNumbers.split(",")) {
-            this.winningNumbers.add(validLottoNumber(num));
+            validLottoNumber(num);
+            validNumberRange(Integer.parseInt(num));
+            this.winningNumbers.add(Integer.parseInt(num));
         }
-        this.bonusNumber = validLottoNumber(bonusNumber);
+        validLottoNumber(bonusNumber);
+        validNumberRange(Integer.parseInt(bonusNumber));
+        this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
-    private int validLottoNumber(String num) {
-        try {
-            return validNumberRange(Integer.parseInt(num));
-        } catch (NumberFormatException e) {
-            System.out.println(NOT_NUMBER);
-            throw new IllegalArgumentException();
+    private void validLottoNumber(String numbers) {
+        for (int i = INITIAL_NUMBER; i < numbers.length(); i++) {
+            if (!Character.isDigit(numbers.charAt(i))) {
+                System.out.println(NOT_NUMBER);
+                throw new IllegalArgumentException(NOT_NUMBER);
+            }
         }
     }
 
-    private int validNumberRange(int num) {
+    private void validNumberRange(int num) {
         if (num < LOTTO_NUMBER_MIN || num > LOTTO_NUMBER_MAX) {
             System.out.println(NOT_LOTTO_NUMBER_RANGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NOT_LOTTO_NUMBER_RANGE);
         }
-        return num;
     }
 
     public static MatchCount getMatchResult(Lotto lotto) {
         int match = 0;
         int bonusMatch = 0;
-        for (int idx=INITIAL_NUMBER; idx<LOTTO_SIZE; idx++) {
+        for (int idx = INITIAL_NUMBER; idx < LOTTO_SIZE; idx++) {
             if (lotto.getNumbers().contains(winningNumbers.get(idx))) {
                 match++;
             }
