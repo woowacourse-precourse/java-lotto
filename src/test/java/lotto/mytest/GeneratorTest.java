@@ -15,17 +15,15 @@ public class GeneratorTest {
 	@DisplayName("로또 번호 6개 생성")
 	@Test
 	void hasSixNumber() {
-		HashSet<Integer> randomLottoNumber = generator.createLottery();
-		assertEquals(6, randomLottoNumber.size());
+		assertEquals(generator.createLottery().size(), 6);
 	}
 
 	@DisplayName("6개 번호 정렬 확인")
 	@Test
 	void sortSixNumber() {
-		HashSet<Integer> randomLottoNumber = generator.createLottery();
-		List<Integer> sortedLottoNumber = generator.sortNumber(randomLottoNumber);
-		for (int i = 0; i < sortedLottoNumber.size() - 1; i++) {
-			assertTrue(sortedLottoNumber.get(i) < sortedLottoNumber.get(i + 1));
+		List<Integer> lotto = generator.createLottery();
+		for (int i = 0; i < lotto.size() - 1; i++) {
+			assertTrue(lotto.get(i) < lotto.get(i + 1));
 		}
 	}
 }

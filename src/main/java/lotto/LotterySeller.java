@@ -10,9 +10,7 @@ public class LotterySeller {
 	public static List<List<Integer>> sellLottery(int totalNumberOfLotto) {
 		for (int i = 0; i < totalNumberOfLotto; i++) {
 			Generator generator = new Generator();
-			HashSet<Integer> LotteryTicket = generator.createLottery();
-			List<Integer> sortedLotteryTicket = generator.sortNumber(LotteryTicket);
-			LotteryTickets.add(sortedLotteryTicket);
+			LotteryTickets.add(generator.createLottery());
 		}
 		return LotteryTickets;
 	}

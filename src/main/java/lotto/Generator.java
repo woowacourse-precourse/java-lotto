@@ -7,16 +7,16 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Generator {
-	public HashSet<Integer> createLottery() {
+	public List<Integer> createLottery() {
 		HashSet<Integer> lotteryTicket = new HashSet<>();
 		while (lotteryTicket.size() < 6) {
 			int randomNum = Randoms.pickNumberInRange(1, 45);
 			lotteryTicket.add(randomNum);
 		}
-		return lotteryTicket;
+		return sortNumber(lotteryTicket);
 	}
 
-	public List<Integer> sortNumber(HashSet<Integer> randomNumbers) {
+	private List<Integer> sortNumber(HashSet<Integer> randomNumbers) {
 		List<Integer> sortedNumbers = new ArrayList<>(randomNumbers);
 		sortedNumbers.sort(null);
 		return sortedNumbers;
