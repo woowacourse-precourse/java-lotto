@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.validator.ValueValidator;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class InputAgent {
@@ -18,6 +17,8 @@ public class InputAgent {
     public List<Integer> inputWinningNumbers() {
         String[] lottoNumbers = Console.readLine().split(",");
         List<Integer> convertedLottoNumbers = new ArrayList<>();
+        ValueValidator.validateIntegerValue(lottoNumbers);
+
         for (String value : lottoNumbers) {
             convertedLottoNumbers.add(Integer.parseInt(value));
         }
@@ -25,9 +26,9 @@ public class InputAgent {
         return convertedLottoNumbers;
     }
 
-    public int inputWinningBonusNumber() {
-        List<Integer> bonusNumber = Collections.singletonList(Integer.parseInt(Console.readLine()));
-        ValueValidator.validateInputLottoNumber(bonusNumber);
-        return bonusNumber.get(0);
+    public int inputWinningBonusNumber(List<Integer> numbers) {
+        String inputBonusNumber = Console.readLine();
+        ValueValidator.validateInputBonusLottoNumber(inputBonusNumber, numbers);
+        return Integer.parseInt(inputBonusNumber);
     }
 }
