@@ -29,7 +29,7 @@ class InputPaymentValidatorTest {
     
     @DisplayName("예외 처리 : 한글 입력 시")
     @ParameterizedTest(name = "{displayName} => {0}")
-    @ValueSource(strings = {"ㄱ", "ㅏ", "가"})
+    @ValueSource(strings = {"14ㄱ000", "ㅏ14000", "14가000"})
     void koreanInputException(String input) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> InputPaymentValidator.validate(input))
@@ -38,7 +38,7 @@ class InputPaymentValidatorTest {
     
     @DisplayName("예외 처리 : 영어 입력 시")
     @ParameterizedTest(name = "{displayName} => {0}")
-    @ValueSource(strings = {"a", "A"})
+    @ValueSource(strings = {"a14000", "14A000"})
     void englishInputException(String input) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> InputPaymentValidator.validate(input))
@@ -47,8 +47,17 @@ class InputPaymentValidatorTest {
     
     @DisplayName("예외 처리 : 특수 문자 입력 시")
     @ParameterizedTest(name = "{displayName} => {0}")
-    @ValueSource(strings = {"%", "$"})
+    @ValueSource(strings = {"14%000", "14$000"})
     void specialCharactersInputException(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> InputPaymentValidator.validate(input))
+                .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
+    }
+    
+    @DisplayName("예외 처리 : 공백 입력 시")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {"14 000", " 14000", "14000 "})
+    void spaceInputException(String input) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> InputPaymentValidator.validate(input))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
