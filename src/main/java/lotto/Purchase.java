@@ -6,9 +6,11 @@ import java.util.List;
 
 public class Purchase {
 
+    Integer purchaseAmount;
+
     public List<Lotto> lottoPurchase() {
         // 로또 구입 금액 입력
-        Integer purchaseAmount = Integer.parseInt(Console.readLine());
+        this.purchaseAmount = Integer.parseInt(Console.readLine());
         if (purchaseAmount % 1000 != 0) {
             throw new IllegalArgumentException();
         }

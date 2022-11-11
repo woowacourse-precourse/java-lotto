@@ -16,7 +16,18 @@ public class Lotto {
         }
     }
 
-    boolean hasBonus(int bonus) {
+    boolean hasNumber(int bonus) {
         return numbers.contains(bonus);
+    }
+
+    int countMatchedNumber(Lotto winningLotto) {
+        return (int) this.numbers.stream()
+                .filter(winningLotto::hasNumber)
+                .count();
+    }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
     }
 }

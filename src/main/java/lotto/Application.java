@@ -9,13 +9,14 @@ public class Application {
         Purchase purchase = new Purchase();
         Print print = new Print();
         WinningNumber winningNumber = new WinningNumber();
-        List<Lotto> purchasedLotto = purchase.lottoPurchase();
 
+        List<Lotto> purchasedLotto = purchase.lottoPurchase();
         print.printPurchasedLotto(purchasedLotto);
 
         winningNumber.getWinningNumber();
         WinningResult winningResult = new WinningResult(winningNumber);
         winningResult.winningHistory(purchasedLotto);
-//        winningResult.winningRate(purchase.purchase());
+//        print.printWinningHistory(winningResult.winningHistory(purchasedLotto));
+        winningResult.winningRate(purchase.purchaseAmount);
     }
 }
