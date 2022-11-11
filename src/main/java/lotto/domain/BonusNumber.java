@@ -7,7 +7,6 @@ import static lotto.constant.SystemValue.MAXIMUM_LOTTERY_NUMBER;
 import static lotto.constant.SystemValue.MINIMUM_LOTTERY_NUMBER;
 
 import java.util.List;
-import lotto.view.Output;
 
 public class BonusNumber {
 
@@ -24,9 +23,6 @@ public class BonusNumber {
         checkTypeValid(bonusNumber);
         checkRangeValid(bonusNumber);
         checkConflictWithWinningsValid(bonusNumber);
-//        if (!isTypeValid(bonusNumber) || !isRangeValid(bonusNumber) || !isConflictWithWinningsValid(bonusNumber)) {
-////            throw new IllegalArgumentException();
-//        }
     }
 
     public int getNumber() {
@@ -37,9 +33,7 @@ public class BonusNumber {
         boolean isType = bonusNumber.chars().allMatch(Character::isDigit);
         if (!isType) {
             throw new IllegalArgumentException(BONUS_NUMBER_TYPE_ERROR);
-//            Output.printError(BONUS_NUMBER_TYPE_ERROR);
         }
-//        return isType;
     }
 
     public static void checkRangeValid(String bonusNumber) {
@@ -47,9 +41,7 @@ public class BonusNumber {
         boolean isRange = (number >= MINIMUM_LOTTERY_NUMBER && number <= MAXIMUM_LOTTERY_NUMBER);
         if (!isRange) {
             throw new IllegalArgumentException(BONUS_NUMBER_RANGE_ERROR);
-//            Output.printError(BONUS_NUMBER_RANGE_ERROR);
         }
-//        return isRange;
     }
 
     public void checkConflictWithWinningsValid(String bonusNumber) {
@@ -58,8 +50,6 @@ public class BonusNumber {
                 .noneMatch(number -> Integer.parseInt(bonusNumber) == number);
         if (!isConflictWithWinnings) {
             throw new IllegalArgumentException(BONUS_NUMBER_CONFLICT_ERROR);
-//            Output.printError(BONUS_NUMBER_CONFLICT_ERROR);
         }
-//        return isConflictWithWinnings;
     }
 }
