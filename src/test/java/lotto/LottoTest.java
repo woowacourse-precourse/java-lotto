@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,4 +25,16 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("입력된 로또 구입 금액이 정수 형태이면 int 타입으로 변환하여 반환한다.")
+    @Test
+    public void stringToIntTest() {
+        assertThat(Application.stringToInt("34")).isEqualTo(34);
+    }
+
+    @DisplayName("입력된 로또 구입 금액이 정수가 아니면 예외가 발생한다.")
+    @Test
+    public void priceFormatExceptionTest() {
+        assertThatThrownBy(() -> Application.stringToInt("testString"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
