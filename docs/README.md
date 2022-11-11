@@ -17,10 +17,10 @@
 - [x] setter, getter 구현
 
 ## CompareLotto
-- [ ] EnumMap 생성 메소드
-- [ ] EnumMap 추가 메소드
-- [ ] 총수익 계산 메소드
-- [ ] 결과를 출력해주는 toString 오버라이딩
+- [x] EnumMap 생성 메소드
+- [x] EnumMap 추가 메소드
+- [x] 총수익 계산 메소드
+- [x] 결과를 출력해주는 toString 오버라이딩
 
 ## LottoLauncher
 - [ ] 복권 발행 메소드
