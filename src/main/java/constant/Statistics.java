@@ -9,12 +9,12 @@ public enum Statistics {
 
 
 
-    private String s;
-    Statistics(String s) {
-        this.s=s;
+    private String rank;
+    Statistics(String rank) {
+        this.rank=rank;
     }
 
     public String getStatistics(){
-        return s;
+        return rank;
     }
 }

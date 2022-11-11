@@ -11,7 +11,9 @@ public class OutputView {
     public static void printButMoney(){
         System.out.println("구입 금액을 입력해주세요.");
     }
-
+    public static void printInputLotto(){
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
 
 
     public static void printException(Exception e){

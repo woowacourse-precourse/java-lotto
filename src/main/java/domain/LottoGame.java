@@ -10,11 +10,14 @@ import view.OutputView;
 
 public class LottoGame {
 
+
+    static final Integer BONUS = 7;
+    static final int MINIMUM_WINNING=3;
+    static final List<Integer> moneyRankedList = Arrays.asList(5000, 50000, 1500000, 2000000000, 30000000);
     List<List<Integer>> buyLottoList = new ArrayList<>();
     List<Integer> winningLottoList = new ArrayList<>();
     List<Integer> matchCountList = new ArrayList<>();
     static List<Integer> rankedList = new ArrayList<>();
-    List<Integer> moneyRankedList = new ArrayList<>();
     int bonusNumber;
     static long sumMoney;
     static float yield;
@@ -45,7 +48,6 @@ public class LottoGame {
     }
 
     private  void calculate(List<Integer> matchCountList) {
-
         countingRank(matchCountList);
         sumMoney = calculateSumMoney(rankedList);
         yield = setYield((float) sumMoney);
@@ -58,7 +60,6 @@ public class LottoGame {
     }
 
     private long calculateSumMoney(List<Integer> rankedList) {
-         moneyRankedList = Arrays.asList(5000, 50000, 1500000, 2000000000, 30000000);
         long sumGetMoney=0;
         for(int i=0; i<rankedList.size(); i++){
             Integer nowRankMoney = moneyRankedList.get(i);
@@ -70,7 +71,7 @@ public class LottoGame {
     }
 
     private void countingRank(List<Integer> matchCountList) {
-        for(int j=3; j<=7; j++){
+        for(int j=MINIMUM_WINNING; j<=BONUS; j++){
             int finalJ = j;
             rankedList.add((int) matchCountList.stream().filter(n -> n == finalJ).count());
         }
@@ -87,7 +88,7 @@ public class LottoGame {
         long count = winningLottoList.stream().filter(n -> nowBuyLottoList.contains(n)).count();
         if(count==5){
             if(isInBonusNumber(nowBuyLottoList, bonusNumber)){
-                return 7;
+                return BONUS;
             }
         }
         return Math.toIntExact(count);

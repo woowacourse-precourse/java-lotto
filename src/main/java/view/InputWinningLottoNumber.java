@@ -13,7 +13,7 @@ public class InputWinningLottoNumber {
     static List<Integer> winningLottoList = new ArrayList<>();
 
     public static void inputWinningLottoNumber(){
-        System.out.println("당첨 번호를 입력해 주세요.");
+        OutputView.printInputLotto();
         String Lotto = Console.readLine();
         winningLottoList = setWinningLotto(Lotto);
         Lotto lotto = new Lotto(winningLottoList);
