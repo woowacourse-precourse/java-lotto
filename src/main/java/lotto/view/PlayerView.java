@@ -1,5 +1,6 @@
 package lotto.view;
 
+import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public class PlayerView {
     }
 
     private void inquirePrice(){
-
+        System.out.println(REQUEST_PAYMENT);
     }
 
     private String scanPrice(){
