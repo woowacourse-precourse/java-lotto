@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -78,5 +79,14 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(userInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(LottoConstants.EMPTY_LOTTO_VALUE_MSG);
+    }
+
+    @ParameterizedTest
+    @DisplayName("사용자에게 입력받은 값을 쉼표로 구분했을 때 로또 크기만큼 구분되지 않는 경우 이유를 나타내는 메세지를 포함한 예외가 발생한다.")
+    @ValueSource(strings = {"123456","12345,6","1234,5,6","123,4,5,6","12,3,4,5,6","abc,d,e,f","ab,c,d,e,f",})
+    void createLottoByUserInputWithWrongForm(String userInput) {
+        assertThatThrownBy(() -> new Lotto(userInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(LottoConstants.INVALID_LOTTO_INPUT_FORM);
     }
 }

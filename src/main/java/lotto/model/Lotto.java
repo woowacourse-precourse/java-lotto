@@ -32,6 +32,7 @@ public class Lotto {
 
     private void validate(String userInput) {
         isBlank(userInput);
+        canSplit(userInput);
     }
 
     private void isValidSize(List<Integer> numbers) {
@@ -53,4 +54,11 @@ public class Lotto {
             throw new IllegalArgumentException(EMPTY_LOTTO_VALUE_MSG);
         }
     }
+
+    private void canSplit(String userInput) {
+        if (userInput.split(",").length != LOTTO_SIZE) {
+            throw new IllegalArgumentException(INVALID_LOTTO_INPUT_FORM);
+        }
+    }
+
 }
