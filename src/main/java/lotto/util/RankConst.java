@@ -1,6 +1,6 @@
 package lotto.util;
 
-public final class Const {
+public final class RankConst {
 
 	public static final String FIRST_RANK_RESULT = "6개 일치 (2,000,000,000원) - ";
 	public static final String SECOND_RANK_RESULT = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";

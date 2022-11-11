@@ -2,14 +2,14 @@ package lotto.domain;
 
 import java.util.Arrays;
 
-import lotto.util.Const;
+import lotto.util.RankConst;
 
 public enum Rank {
-	fifthRank(5_000, Const.FIFTH_RANK_RESULT),
-	forthRank(50_000, Const.FORTH_RANK_RESULT),
-	thirdRank(1_500_000, Const.THIRD_RANK_RESULT),
-	secondRank(30_000_000, Const.SECOND_RANK_RESULT),
-	firstRank(2_000_000_000, Const.FIRST_RANK_RESULT);
+	fifthRank(5_000, RankConst.FIFTH_RANK_RESULT),
+	forthRank(50_000, RankConst.FORTH_RANK_RESULT),
+	thirdRank(1_500_000, RankConst.THIRD_RANK_RESULT),
+	secondRank(30_000_000, RankConst.SECOND_RANK_RESULT),
+	firstRank(2_000_000_000, RankConst.FIRST_RANK_RESULT);
 
 	private final Integer price;
 	private final String priceWon;
@@ -33,7 +33,7 @@ public enum Rank {
 	}
 
 	public String getUserStatisticsResult() {
-		return this.priceWon + this.count + Const.COUNT;
+		return this.priceWon + this.count + RankConst.COUNT;
 	}
 
 }
