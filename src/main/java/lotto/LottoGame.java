@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
+import lotto.domain.Money;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -14,10 +15,10 @@ public class LottoGame {
     private List<Lotto> lottos = new ArrayList<>();
 
     public void start() {
-        int money = new InputView().inputMoney();
-        lottos = lottoMachine.ticketLottos(money);
-
+        int money = new Money(new InputView().inputMoney()).getMoney();
         outputView.printPurchaseLottoCount(money);
+
+        lottos = lottoMachine.ticketLottos(money);
         outputView.printLottos(lottos);
     }
 }
