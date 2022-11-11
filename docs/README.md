@@ -10,6 +10,7 @@
 - [x] 보너스 번호와 로또 번호 비교 기능 - Lotto#compareBonus()
 - [x] 등수 계산 기능 - Calculator#calculateRank()
 - [x] 등수 찾기 기능 - Rank#findByCorrectCountAndBonus()
+- [x] 당첨 결과 기록 기능 - LottoResult#insertResult()
 - [ ] 수익률 계산 기능 - Calculator#calculateYield()
 - [ ] 당첨 통계 출력 기능 - Console#outputWinningResult()
 - [ ] 예외 상황 에러 문구 출력 기능 - Console#outputErrorMessage()
