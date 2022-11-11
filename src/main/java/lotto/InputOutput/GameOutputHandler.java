@@ -37,7 +37,14 @@ public class GameOutputHandler {
         for(int ranking = 5; ranking >= 1; ranking--){
             int howManyNumbersCorrect = WinningPrize.findHowManyNumbers(ranking).getHowManyNumbersIncluded();
             int winningMoney = WinningPrize.findWinningMoney(ranking).getWinningMoney();
-            int amountOfThatRanking = winningCounts.get(ranking);
+            int amountOfThatRanking;
+
+            try{
+                amountOfThatRanking = winningCounts.get(ranking);
+            }catch(NullPointerException ex){
+                amountOfThatRanking = 0;
+            }
+
 
             System.out.printf("%d개 일치 (%d원) - %d개\n",howManyNumbersCorrect,winningMoney,amountOfThatRanking);
         }
