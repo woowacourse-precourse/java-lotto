@@ -28,7 +28,7 @@
     - [x] 4등: 4개 번호 일치 / 50,000원 - MakeWinner#initWinnerPrize()
     - [x] 5등: 3개 번호 일치 / 5,000원 - MakeWinner#initWinnerPrize()
 
-- [] 당첨 통계 메세지를 출력한다. - View#WINNING_MESSAGE_GUIDE_MESSAGE
+- [x] 당첨 통계 메세지를 출력한다. - View#WINNING_MESSAGE_GUIDE_MESSAGE
   - [] 각 등수가 몇 개인지 출력한다. - View#showWinnings()
 
 - [] 총 수익률을 출력한다. - View#showYield()

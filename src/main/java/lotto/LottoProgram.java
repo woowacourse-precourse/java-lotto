@@ -31,6 +31,8 @@ public class LottoProgram {
 		Checker.checkBonusNumberInput(userInput);
 
 		MakeWinner.compareNumbers(Checker.winningNumber,Checker.bonusNumber);
+
+		View.showWinnings();
 	}
 
 	public void createLotto(int lottoCount) {
