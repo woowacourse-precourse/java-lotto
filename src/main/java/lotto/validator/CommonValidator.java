@@ -1,6 +1,7 @@
 package lotto.validator;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static lotto.global.ExceptionConstants.CANNOT_SATISFY_NUMBER_RANGE;
 import static lotto.global.ExceptionConstants.CAN_ONLY_INPUT_NUMBER;
@@ -14,7 +15,7 @@ public class CommonValidator {
 
         for (char digit : digits) {
             if (!Character.isDigit(digit)) {
-                throw new IllegalArgumentException(CANNOT_SATISFY_NUMBER_RANGE);
+                throw new IllegalArgumentException(CAN_ONLY_INPUT_NUMBER);
             }
         }
     }
@@ -22,6 +23,14 @@ public class CommonValidator {
     public static void isAllNumber(List<Integer> numbers) {
         for (Integer number : numbers) {
             isAllNumber(number);
+        }
+    }
+
+    public static void isAllNumber(String number) {
+        for (int i = 0; i < number.length(); i++) {
+            if (!Character.isDigit(number.charAt(i))) {
+                throw new IllegalArgumentException(CAN_ONLY_INPUT_NUMBER);
+            }
         }
     }
 
