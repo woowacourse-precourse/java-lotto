@@ -18,9 +18,10 @@ public class OutputView {
     public static final String LOTTO_COUNT_MESSAGE = "%d개를 구매했습니다.\n";
     public static final String SAME_NUMBER_COUNT_MESSAGE = "%d개 일치";
     public static final String BONUS_NUMBER_MESSAGE = ", 보너스 볼 일치";
-    public static final String WINNTER_PRICE_MESSAGE = " (%s원) ";
+    public static final String WINNER_PRICE_MESSAGE = " (%s원) ";
     public static final String TOTAL_COUNT_MESSAGE = "- %d개\n";
-    public static final String MONEY_DEMICAL_FORMAT = "###,###,###,###";
+    public static final String MONEY_DECIMAL_FORMAT = "###,###,###,###";
+    public static final String EARNING_RATE_MESSAGE = "총 수익률은 %f%%입니다.";
 
     public static void printInputPurchasePrice() {
         System.out.println(INPUT_PURCHASE_PRICE_MESSAGE);
@@ -60,6 +61,7 @@ public class OutputView {
         }
 
         System.out.println(result);
+        printEarningRate(responseDto.getEarningRate());
     }
 
     public static String createStatisticsString(GameResultResponseDto dto) {
@@ -69,13 +71,17 @@ public class OutputView {
         if (dto.isBonus()) {
             statistics.append(BONUS_NUMBER_MESSAGE);
         }
-        statistics.append(String.format(WINNTER_PRICE_MESSAGE, toMoneyFormat(dto.getWinnerPrice())));
+        statistics.append(String.format(WINNER_PRICE_MESSAGE, toMoneyFormat(dto.getWinnerPrice())));
         statistics.append(String.format(TOTAL_COUNT_MESSAGE, dto.getTotalCount()));
         return statistics.toString();
     }
 
     public static String toMoneyFormat(int money) {
-        DecimalFormat dc = new DecimalFormat(MONEY_DEMICAL_FORMAT);
+        DecimalFormat dc = new DecimalFormat(MONEY_DECIMAL_FORMAT);
         return dc.format(money);
+    }
+
+    private static void printEarningRate(double earningRate) {
+        System.out.printf(EARNING_RATE_MESSAGE, earningRate);
     }
 }
