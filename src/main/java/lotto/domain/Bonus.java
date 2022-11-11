@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto.domain;
 
 import static lotto.util.Util.removeSpace;
 import static lotto.util.Util.verifyRangeOfLottoNumber;

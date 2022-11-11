@@ -2,10 +2,10 @@ package lotto.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.model.Bonus;
-import lotto.model.Lotto;
-import lotto.model.Player;
-import lotto.model.Purchase;
+import lotto.domain.Bonus;
+import lotto.domain.Lotto;
+import lotto.domain.Player;
+import lotto.domain.Purchase;
 import lotto.view.InputView;
 
 public class LottoController {

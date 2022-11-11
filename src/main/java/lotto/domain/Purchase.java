@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto.domain;
 
 import lotto.view.OutputView;
 
