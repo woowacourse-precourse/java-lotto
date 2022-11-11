@@ -59,8 +59,13 @@
 > [ERROR] 로 시작하는 에러 메시지를 출력 후 종료한다.
 
 - [ ] 통합 입력 예외처리 확인 - #isValidInput()
-    - [ ] 입력한 구입 금액이 1000원 단위가 아닌경우 - #isValidMoneyInput()
-    - [ ] 입력한 [당첨 번호/보너스 번호] 가 유효하지 않은 경우 - #isValidLottoNumberInput()
+    - [ ] 입력한 구입 금액이 유효하지 않은 경우 - #isValidMoneyInput()
+      - [ ] 입력한 구입 금액에 숫자가 아닌 값이 포함된 경우 -#isNumeralMoneyInput()
+      - [ ] 입력한 구입 금액이 1000원 단위가 아닌경우 -#isValidMoneyUnit()
+    - [ ] 입력한 당첨 번호가 유효하지 않은 경우 - #isValidLottoNumbersInput()
         - [ ] 숫자가 아닌 값이 포함된 경우 - #isNumeral()
         - [ ] 중복된 숫자가 포함된 경우 - #isUniqueNumber()
+        - [ ] 범위 내의 숫자가 아닌 값이 포함된 경우 - #isInRangeNumbers()
+    - [ ] 입력한 보너스 번호가 유효하지 않은 경우 - #isValidBonusNumberInput()
+        - [ ] 숫자가 아닌 값인 경우- #isNumeral()
         - [ ] 범위 내의 숫자가 아닌 값이 포함된 경우 - #isInRangeNumber()
