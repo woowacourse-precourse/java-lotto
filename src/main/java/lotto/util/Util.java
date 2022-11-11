@@ -1,19 +1,16 @@
 package lotto.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.enums.ConstVariable;
 import lotto.enums.ErrorMessage;
 
 import java.util.*;
 
 public class Util {
-    public static final int MIN_NUMBER = 1;
-    public static final int MAX_NUMBER = 45;
-    public static final int LOTTO_COUNT = 6;
-    public static final int STANDARD = 1000;
 
     public static void isValidAmount(String input) {
         String str = input.trim();
-        if (str.isEmpty() || !str.matches("[0-9]*") || Integer.parseInt(str) % STANDARD != 0) {
+        if (str.isEmpty() || !str.matches("[0-9]*") || Integer.parseInt(str) % ConstVariable.STANDARD.getValue() != 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_AMOUNT_INPUT.getValue());
         }
     }
@@ -41,7 +38,7 @@ public class Util {
 
     public static void isValidNumber(List<Integer> numbers) {
         Optional<Integer> result = numbers.stream()
-                .filter(number -> number < MIN_NUMBER || number > MAX_NUMBER)
+                .filter(number -> number < ConstVariable.MIN_NUMBER.getValue() || number > ConstVariable.MAX_NUMBER.getValue())
                 .findFirst();
 
         if (result.isPresent()) {
@@ -50,7 +47,7 @@ public class Util {
     }
 
     public static void isValidCount(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_COUNT) {
+        if (numbers.size() != ConstVariable.LOTTO_COUNT.getValue()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_COUNT.getValue());
         }
     }
@@ -69,6 +66,8 @@ public class Util {
     }
 
     public static List<Integer> createRandomNumbers() {
-        return Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_COUNT);
+        return Randoms.pickUniqueNumbersInRange(ConstVariable.MIN_NUMBER.getValue(),
+                ConstVariable.MAX_NUMBER.getValue(),
+                ConstVariable.LOTTO_COUNT.getValue());
     }
 }

@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.enums.ConstVariable;
 import lotto.util.Util;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public class InputView {
         System.out.println("구입금액을 입력해 주세요.");
         String amount = Console.readLine();
         Util.isValidAmount(amount);
-        int count = Integer.parseInt(amount) / 1000;
+        int count = Integer.parseInt(amount) / ConstVariable.STANDARD.getValue();
         System.out.println(count + "개를 구매했습니다.");
         return count;
     }
