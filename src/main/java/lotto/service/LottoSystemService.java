@@ -14,6 +14,7 @@ import java.util.List;
 public class LottoSystemService {
     private User user;
     private Lotto lotto;
+    List<Integer> hit;
 
     private List<Integer> numbers = new ArrayList<>();
     private List<String> total = Arrays.asList("3개 일치 (5,000원) - ",
@@ -68,13 +69,18 @@ public class LottoSystemService {
         lotto = new Lotto(numbers);
     }
 
-    public List<String> getTotal(){
+    public List<String> getTotal() {
         return total;
     }
+
+    public List<Integer> getHitCount() {
+        return hit;
+    }
+
     public void setTotal() {
         List<List<Integer>> userLottoNumbers = user.getUserLottoNumber();
-        List<Integer> hit = Arrays.asList(0, 0, 0, 0, 0);
         int hitIndex;
+        hit = Arrays.asList(0, 0, 0, 0, 0);
 
         for (int i = 0; i < userLottoNumbers.size(); i++) {
             hitIndex = hitIndex(userLottoNumbers.get(i));
@@ -83,10 +89,10 @@ public class LottoSystemService {
             }
         }
 
-        makeHit(hit);
+        makeHit();
     }
 
-    private void makeHit(List<Integer> hit) {
+    private void makeHit() {
         String nowMessage;
         String resultMessage;
 
@@ -133,16 +139,10 @@ public class LottoSystemService {
     private Integer resultIndex(int count, int bonusHit) {
         int returnIndex = -1;
 
-        if (count == 3) {
-            returnIndex = 0;
-        } else if (count == 4) {
-            returnIndex = 1;
-        } else if (count == 5) {
-            if (bonusHit == 0) {
-                returnIndex = 2;
-            } else if (bonusHit == 1) {
-                returnIndex = 3;
-            }
+        if (count == 3 || count == 4 || (count == 5 && bonusHit == 0)) {
+            returnIndex = count - 3;
+        } else if ((count == 5 && bonusHit == 1)) {
+            returnIndex = 3;
         } else if (count == 6) {
             returnIndex = 4;
         }
