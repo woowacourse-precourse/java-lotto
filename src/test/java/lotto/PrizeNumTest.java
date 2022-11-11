@@ -47,6 +47,28 @@ public class PrizeNumTest extends NsTest {
         assertEquals(expectedPrize, PrizeNum.getPrize());
     }
 
+    @Test
+    @DisplayName("보너스 번호가 로또 당첨 번호와 중복이면 예외 발생")
+    void createDuplicateBonus() throws Exception {
+        int bonus = 6;
+        PrizeNum.setPrizeNum("1, 2, 3, 4, 5, 6");
+        boolean gotErrMsg = false;
+
+        PrizeNum prizeNum = new PrizeNum();
+        Method method = prizeNum.getClass().getDeclaredMethod("validateBonusNum", int.class);
+        method.setAccessible(true);
+
+        try {
+            method.invoke(prizeNum, bonus);
+        } catch (InvocationTargetException e) {
+            if(e.getTargetException().getMessage().contains(InputTest.ERROR_MSG)) {
+                gotErrMsg = true;
+            }
+        }
+
+        assertThat(gotErrMsg).isTrue();
+    }
+
 
 
     @Override
