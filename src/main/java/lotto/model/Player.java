@@ -26,7 +26,7 @@ public class Player {
     }
 
     private int countTickets(long payment){
-        return 0;
+        return (int)(payment / 1000L);
     }
 
     private void makeTickets(int ticketCount){
