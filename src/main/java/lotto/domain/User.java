@@ -1,15 +1,19 @@
 package lotto.domain;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
 
     private List<Lotto> lottos = new ArrayList<>();
-    private Long money;
-    private Long winningAmount;
+    private double money;
+    private double winningAmount;
     private int rank;
     private double yield;
+
+    public User() {
+    }
 
     public User(List<Lotto> lottos) {
         this.lottos = lottos;
@@ -23,19 +27,19 @@ public class User {
         this.lottos = lottos;
     }
 
-    public Long getMoney() {
+    public Double getMoney() {
         return money;
     }
 
-    public void setMoney(Long money) {
+    public void setMoney(Double money) {
         this.money = money;
     }
 
-    public Long getWinningAmount() {
+    public Double getWinningAmount() {
         return winningAmount;
     }
 
-    public void setWinningAmount(Long winningAmount) {
+    public void setWinningAmount(Double winningAmount) {
         this.winningAmount = winningAmount;
     }
 
@@ -56,6 +60,10 @@ public class User {
     }
 
     public double calculateYield() {
-        return (double)(winningAmount / money);
+        double yield = this.winningAmount / this.money;
+        yield *= 1000;
+        yield = Math.round(yield);
+        yield /= 10;
+        return yield;
     }
 }
