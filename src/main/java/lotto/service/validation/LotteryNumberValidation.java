@@ -1,6 +1,8 @@
 package lotto.service.validation;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class LotteryNumberValidation {
 
@@ -18,12 +20,12 @@ public class LotteryNumberValidation {
      * 당첨 숫자 예외 사항
      * 1. 각각 숫자가 1-45 범위를 벗어나는 경우
      * 2. 총 인자 개수가 6개가 아닌 경우
+     * 3. 중복된 숫자를 가지고 있으면 false
      */
 
     public boolean isValidWinningNumbers() {
-        return checkSize() && assertEachNumberSatisfyRange();
+        return checkSize() && assertEachNumberSatisfyRange() && hasUniqueNumbers();
     }
-
 
     public boolean isValidBonusNumber(int bonusNumber) {
         return isRightRange(bonusNumber) && includesWinningNumbers(bonusNumber);
@@ -35,18 +37,18 @@ public class LotteryNumberValidation {
     }
 
     private boolean assertEachNumberSatisfyRange() {
-        return winningNumbers.stream().anyMatch(this::isRightRange);
+        return winningNumbers.stream().allMatch(this::isRightRange);
     }
 
-
-    /*
-     * 보너스 넘버 예외사항:
-     * 1. 당첨 번호에 포함된 숫자를 뽑는 경우 (O)
-     * 2. 숫자가 1-45 범위가 아닌 경우 (O)
-     * 3. 2개 이상 값이 들어오는 경우 -> controller 영역에서 에러 핸들링
-     * 4. 숫자 외 값이 들어올 경우 -> controller 영역에서 에러 핸들링
-     */
-
+    private boolean hasUniqueNumbers() {
+        final Set<Integer> uniques = new HashSet<Integer>();
+        for(Integer number: winningNumbers) {
+            if(!uniques.add(number)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     private boolean isRightRange(int number) {
         return number <= MAX_LOTTO_NUMBER && number >= MIN_LOTTO_NUMBER;
