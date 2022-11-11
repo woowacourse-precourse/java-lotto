@@ -19,12 +19,16 @@ public class LottoGame {
     }
 
     public void play() {
-        int money = lottoGameView.inputMoney();
-        List<Lotto> lottos = customer.purchaseLottos(money);
-        lottoGameView.printLottos(lottos);
-        WinningNumber winningNumber = new WinningNumber(lottoGameView.inputWinningNumbers(), lottoGameView.inputBonusNumber());
-        List<LottoRank> ranks = winningNumber.getRanks(lottos);
-        lottoGameView.printWinningResult(ranks);
-        lottoGameView.printRateOfReturn(winningNumber.getRateOfReturn(money, winningNumber.getTotalPrizeMoney(ranks)));
+        try {
+            int money = lottoGameView.inputMoney();
+            List<Lotto> lottos = customer.purchaseLottos(money);
+            lottoGameView.printLottos(lottos);
+            WinningNumber winningNumber = new WinningNumber(lottoGameView.inputWinningNumbers(), lottoGameView.inputBonusNumber());
+            List<LottoRank> ranks = winningNumber.getRanks(lottos);
+            lottoGameView.printWinningResult(ranks);
+            lottoGameView.printRateOfReturn(winningNumber.getRateOfReturn(money, winningNumber.getTotalPrizeMoney(ranks)));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
