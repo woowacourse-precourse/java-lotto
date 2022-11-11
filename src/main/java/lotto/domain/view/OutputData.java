@@ -33,7 +33,7 @@ public abstract class OutputData {
     }
 
     private static void printYield(LottoResult lottoResult, Pay pay) {
-        Long yield = lottoResult.calculateYield(pay);
-        System.out.println(yield);
+        System.out.println(Math.round(lottoResult.calculateYield(pay) * 10) / 10.0);
+
     }
 }
