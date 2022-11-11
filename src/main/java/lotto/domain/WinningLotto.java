@@ -15,10 +15,10 @@ public class WinningLotto extends Lotto {
     }
 
     private void validateBonusNumber(int bonusNumberInput) {
-        if (bonusNumberInput < MIN_NUMBER || bonusNumberInput > MIN_NUMBER) {
+        if (bonusNumberInput < MIN_NUMBER || bonusNumberInput > MAX_NUMBER) {
             throw new IllegalArgumentException(NUMBER_INPUT_RANGE_ERROR_MESSAGE);
         }
-        if (super.isContainNumber(bonusNumber)) {
+        if (super.isContainNumber(bonusNumberInput)) {
             throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATE_ERROR_MESSAGE);
         }
     }
