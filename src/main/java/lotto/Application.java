@@ -371,8 +371,10 @@ public class Application {
         return number;
     }
 
-    public static List<Integer> issueLottoNumbers() {
+    public static void issueLottoNumbers(int buyNumber, List<Lotto> lottoList) {
 
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        for (int i = 0; i < buyNumber; i++) {
+            lottoList.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
+        }
     }
 }
