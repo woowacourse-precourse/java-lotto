@@ -6,11 +6,16 @@ import lotto.dto.lotterystore.MoneyForPurchase;
 import lotto.dto.lotterystore.NumbersForWinningPrize;
 
 public class LotteryStoreUi {
+	private static final LotteryStoreUi storeUi = new LotteryStoreUi();
 	private static final ErrorChecker errorChecker = new ErrorChecker();
 	private final LotteryRequestController requestController;
 
-	public LotteryStoreUi(LotteryRequestController requestController) {
-		this.requestController = requestController;
+	private LotteryStoreUi() {
+		this.requestController = LotteryRequestController.getController();
+	}
+
+	public static LotteryStoreUi getStoreUi() {
+		return storeUi;
 	}
 
 	public void takeMoneyFromBuyer() {
@@ -28,7 +33,7 @@ public class LotteryStoreUi {
 		String winningNumbers = Console.readLine();
 		errorChecker.validateWinningNumbers(winningNumbers);
 
-		requestFortransferingWinningPrizeNumbers(winningNumbers);
+		requestForTransferingWinningPrizeNumbers(winningNumbers);
 	}
 
 	private void printPurchaseMessage() {
@@ -45,7 +50,7 @@ public class LotteryStoreUi {
 		requestController.receiveMoneyForPurchase(moneyDto);
 	}
 
-	private void requestFortransferingWinningPrizeNumbers(String winningNumbers) {
+	private void requestForTransferingWinningPrizeNumbers(String winningNumbers) {
 		// FrontEnd에서 API를 호출해서 데이터 전송하는 것과 비슷하게(??) 구현
 		NumbersForWinningPrize winningNumbersDto = new NumbersForWinningPrize(winningNumbers);
 		requestController.receiveNumbersForWinningPrize(winningNumbersDto);
