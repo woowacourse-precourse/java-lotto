@@ -40,6 +40,9 @@ public class LottoManager {
             List<Integer> myLottoNumber = myLotto.get(i).getLottoNumbers();
             int sameNumberCount = compareMyLottoWithWinningNumber(myLottoNumber, winningNumber);
             int rank = getRank(sameNumberCount);
+            if (rank == 3 && checkBonusNumber(myLottoNumber, bonusNumber)) {
+                rank = 2;
+            }
         }
         this.result = result;
     }
@@ -66,6 +69,12 @@ public class LottoManager {
             return 5;
         }
         return 0;
+    }
+    private boolean checkBonusNumber(List<Integer> myLottoNumber, int bonusNumber) {
+        if (myLottoNumber.contains(bonusNumber)) {
+            return true;
+        }
+        return false;
     }
 
 }
