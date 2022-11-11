@@ -9,7 +9,7 @@
 - Model 
   - [x] Lotto
   - [x] Ticket (구입 금액에 맞는 로또 발행)
-  - [ ] Money
+  - [x] Money
   - [ ] WinningNumber
   - [ ] BonusNumber
   - [ ] Prize (Enum 으로 구현)
@@ -47,7 +47,7 @@
   
 
 - Money
-  - [ ] 1000원 단위로 나누어 떨어지는지 검증
+  - [x] 1000원 단위로 나누어 떨어지는지 검증
 
 
 - WinningNumber
