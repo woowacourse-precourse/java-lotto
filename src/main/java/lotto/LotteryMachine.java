@@ -4,11 +4,12 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LotteryMachine {
 
-    private Lotto lotto;
+    private Lotto winningLotto;
     private int bonusNum;
     public List<Integer> makeLottoNum() {
 
@@ -27,7 +28,9 @@ public class LotteryMachine {
 
             winningNum.add(Integer.parseInt(num));
         }
-        this.lotto = new Lotto(winningNum);
+
+        Collections.sort(winningNum);
+        this.winningLotto = new Lotto(winningNum);
     }
 
 
@@ -47,8 +50,21 @@ public class LotteryMachine {
         this.bonusNum =  bonusNum;
     }
 
+    public int compareLotto(Lotto lotto) {
+        int same = 0;
+        List<Integer> winningLottoNumbers = winningLotto.getNumbers();
+        List<Integer> lottoNumbers = lotto.getNumbers();
+
+        for (int index = 0; index < lottoNumbers.size(); index++) {
+            if (winningLottoNumbers.contains(lottoNumbers.get(index))) {
+                same++;
+            }
+        }
+
+        return same;
+    }
     public Lotto getLotto() {
-        return lotto;
+        return winningLotto;
     }
 
     public int getBonusNum() {
