@@ -7,6 +7,7 @@ import lotto.Lotto;
 public class Result {
 
     private HashMap<Integer, Integer> rank = new HashMap<>();
+    private float winningAmount;
 
     public Result() {
         for (int i = 1; i <= 5; i++) {
@@ -25,8 +26,20 @@ public class Result {
         }
     }
 
+    public void initWinningAmount(int purchase){
+        int[] winningAmounts = {0, 2_000_000_000, 30_000_000, 1_500_000, 50_000, 5_000};
+        for (Integer key : rank.keySet()) {
+            winningAmount += winningAmounts[key] * rank.get(key);
+        }
+        winningAmount = (winningAmount / purchase) * 100;
+    }
+
     public HashMap<Integer, Integer> getRank() {
         return rank;
+    }
+
+    public float getWinningAmount() {
+        return winningAmount;
     }
 
     private boolean isContainBonusNumber(int bonusNumber, Lotto lotto) {
