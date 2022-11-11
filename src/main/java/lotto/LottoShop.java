@@ -21,7 +21,7 @@ public class LottoShop {
 
     private Lotto issueLotto() {
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(
-                LottoRule.START_NUMBER.getValue(), LottoRule.END_NUMBER.getValue(), LottoRule.COUNT.getValue());
+                LottoRule.START_NUMBER.getValue(), LottoRule.END_NUMBER.getValue(), LottoRule.SIZE.getValue());
         lottoNumbers.sort(Comparator.naturalOrder());
         return new Lotto(lottoNumbers);
     }

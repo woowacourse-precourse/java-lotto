@@ -1,7 +1,7 @@
 package constant;
 
 public enum LottoRule {
-    COUNT(6),
+    SIZE(6),
     START_NUMBER(1),
     END_NUMBER(45),
     ;
