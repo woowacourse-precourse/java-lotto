@@ -10,11 +10,11 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        Money money = new Money();
+        Money money = new Money(askMoney());
         Integer count = money.getLottoCount();
         List<Lotto> lottos = generateLottos(count);
     }
-
+    @SuppressWarnings("unchecked")
     public static List<Lotto> generateLottos(int count) {
         NumberGenerator generator = new NumberGenerator();
         List<Lotto> lottos = new ArrayList<>();
@@ -24,5 +24,10 @@ public class Application {
             lottos.add(lotto);
         }
         return lottos;
+    }
+
+    private static Integer askMoney(){
+        System.out.println("구입금액을 입력해 주세요.");
+        return Integer.parseInt(Console.readLine());
     }
 }
