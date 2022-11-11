@@ -10,6 +10,9 @@ public class Application {
         Lotto.bonusNumber();
 
         Lotto.checkWin();
+        Lotto.printResult();
+
+        Lotto.returnRate();
 
     }
 

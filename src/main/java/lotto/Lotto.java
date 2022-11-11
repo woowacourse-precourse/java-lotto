@@ -13,6 +13,7 @@ public class Lotto {
     private static int howManyLotto;
     private static int inputMoney;
     private static int first, second, third, fourth, fifth;
+
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
@@ -54,7 +55,7 @@ public class Lotto {
         for (int i = 0; i < nums.length; i++) {
             numbers.add(Integer.parseInt(nums[i]));
         }
-        if(numbers.size() > 6){
+        if (numbers.size() > 6) {
             throw new IllegalArgumentException("[ERROR] 로또는 6자리의 숫자여야 합니다.");
         }
         return numbers;
@@ -64,7 +65,7 @@ public class Lotto {
     public static List<Integer> bonusNumber() {
         System.out.println("보너스 번호를 입력해주세요");
         int bonus = Integer.parseInt(Console.readLine());
-        if(bonus <= 0 || bonus > 45){
+        if (bonus <= 0 || bonus > 45) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
         bonusNum.add(bonus);
@@ -72,76 +73,62 @@ public class Lotto {
         return bonusNum;
     }
 
-    // 로또 당첨 확인
-//    public static void compareLotto() {
-//        checkWin();
-//        int lottoSize = myLottoNum.size();
-//        if(myLottoNum.contains(bonusNum)){
-//            if(lottoSize == 3){
-//                fifth++;
-//            }
-//            if(lottoSize == 4){
-//                fourth++;
-//            }
-//            if(lottoSize == 5){
-//                second++;
-//            }
-//            if(lottoSize == 6){
-//                first++;
-//            }
-//        }
-//        if(!myLottoNum.contains(bonusNum)){
-//            if(lottoSize == 3){
-//                fifth++;
-//            }
-//            if(lottoSize == 4){
-//                fourth++;
-//            }
-//            if(lottoSize == 5){
-//                third++;
-//            }
-//            if(lottoSize == 6){
-//                first++;
-//            }
-//        }
-//    }
 
-    public static void checkWin(){
-        for (int i = 0; i < Lotto.howManyLotto; i++){
-            if(myLottoNum.get(i).contains(bonusNum.get(0))){
+
+    public static void checkWin() {
+        for (int i = 0; i < Lotto.howManyLotto; i++) {
+            if (myLottoNum.get(i).contains(bonusNum.get(0))) {
                 myLottoNum.get(i).retainAll(numbers);
                 int lottoSize = myLottoNum.get(i).size();
-                if(lottoSize == 3){
+                if (lottoSize == 3) {
                     fifth++;
                 }
-                if(lottoSize == 4){
+                if (lottoSize == 4) {
                     fourth++;
                 }
-                if(lottoSize == 5){
+                if (lottoSize == 5) {
                     second++;
                 }
-                if(lottoSize == 6){
+                if (lottoSize == 6) {
                     first++;
                 }
             }
-            if(!myLottoNum.get(i).contains(bonusNum.get(0))){
+            if (!myLottoNum.get(i).contains(bonusNum.get(0))) {
                 myLottoNum.get(i).retainAll((numbers));
                 int lottoSize = myLottoNum.get(i).size();
-                if(lottoSize == 3){
+                if (lottoSize == 3) {
                     fifth++;
                 }
-                if(lottoSize == 4){
+                if (lottoSize == 4) {
                     fourth++;
                 }
-                if(lottoSize == 5){
+                if (lottoSize == 5) {
                     third++;
                 }
-                if(lottoSize == 6){
+                if (lottoSize == 6) {
                     first++;
                 }
             }
         }
     }
+
+    public static void printResult() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - " + fifth);
+        System.out.println("4개 일치 (50,000원) - " + fourth);
+        System.out.println("5개 일치 (1,500,000원) - " + third);
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) -" + second);
+        System.out.println("6개 일치 (2,000,000,000) - " + first);
+    }
+
+    public static void returnRate(){
+        double earnedMoney= (5000 * fifth) + (50000 * fourth) + (1500000 * third) + (30000000 * second) + (2000000000 * first);
+        double earnedMoneyRate = (earnedMoney / inputMoney) * 100;
+
+        System.out.println("총 수익률은 " + earnedMoneyRate +"% 입니다.");
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또는 6자리의 숫자여야 합니다.");
