@@ -24,21 +24,21 @@ public class LottoController {
     }
 
     public WinningRank judgeRank(WinningLotto winningLotto, Lotto lotto) {
+        // todo: refactoring....
         int matchedNumbersCount = countMatchedNumbers(winningLotto, lotto);
-
-        if(matchedNumbersCount == 3){
+        if (matchedNumbersCount == 3) {
             return WinningRank.FIFTH_RANK;
         }
-        if(matchedNumbersCount == 4){
+        if (matchedNumbersCount == 4) {
             return WinningRank.FOURTH_RANK;
         }
-        if(matchedNumbersCount == 5){
-            if(winningLotto.containBonusNumber(lotto)){
+        if (matchedNumbersCount == 5) {
+            if (winningLotto.containBonusNumber(lotto)) {
                 return WinningRank.SECOND_RANK;
             }
             return WinningRank.THIRD_RANK;
         }
-        if(matchedNumbersCount == 6){
+        if (matchedNumbersCount == 6) {
             return WinningRank.FIRST_RANK;
         }
         return WinningRank.NONE_RANKED;
