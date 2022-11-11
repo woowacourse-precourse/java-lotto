@@ -9,9 +9,17 @@
 + input how much lotto
 + input winning numbers
 + input bonus number
-### print related
+### output related
 + print all bought lotto
 + print all winning status
 + print earning-rate
 ### lotto related
 + generate 6 random numbers [1, 45]
++ check how many numbers match
+### error related
++ if non-numeric value
++ if out of range numeric value
++ if duplicate value
+### prize related
++ define amount of each prize
++ count how many matches for each prize

@@ -10,63 +10,60 @@ import java.util.List;
 
 public class UserInput {
     private static final Integer each_lotto = 1000;
-    private static Integer lotto_total = 0;
-    private static List<Integer> winning = new ArrayList<>();
-    private static Integer bouns = 0;
-    public static List<Lotto> bought = null;
+    public Long cost = 0L;
+    public Integer bonus = 0;
+    public HashSet<Integer> winning = null;
+    public List<Lotto> bought = new ArrayList<>();
 
-    public static void getAllInput() throws IllegalArgumentException {
+    public void getAllInput() throws IllegalArgumentException {
         howMuchLotto();
-        Output.printLotto(bought);
+        Output.printLotto(this);
         winningNumber();
         bonusNumber();
     }
 
-    public static void buy() throws IllegalArgumentException {
-        bought = new ArrayList<>();
-        for (int i = 0; i < lotto_total / each_lotto; ++i) {
+    public void buy() throws IllegalArgumentException {
+        for (int i = 0; i < cost / each_lotto; ++i) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             bought.add(new Lotto(numbers));
         }
     }
 
-    private static void howMuchLotto() throws IllegalArgumentException {
+    private void howMuchLotto() throws IllegalArgumentException {
+        System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
         if (!input.matches("\\d+"))
             Err.NUMERIC_ERROR.invalid();
         if (Integer.parseInt(input) % 1000 != 0)
             Err.PAYMENT_NUMBER_ERROR.invalid();
-        lotto_total = Integer.parseInt(input);
-
+        cost = Long.parseLong(input);
+        buy();
     }
 
-    private static void winningNumber() throws IllegalArgumentException {
+    private void winningNumber() throws IllegalArgumentException {
+        System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
-        if (!input.matches("(\\d,){5}\\d+"))
+        if (!input.matches("(\\d+,){5}\\d+"))
             Err.LOTTO_FORMAT_ERROR.invalid();
-        HashSet<Integer> check = new HashSet<>();
         String[] tmp = input.split(",");
         for (int i = 0; i < 6; ++i) {
             Integer curr = Integer.parseInt(tmp[i]);
             if (curr < 1 || curr > 45)
                 Err.RANGE_ERROR.invalid();
-            if (check.contains(curr))
+            if (!winning.add(curr))
                 Err.DUPLICATE_ERROR.invalid();
-            check.add(curr);
-            winning.add(curr);
         }
-        // sort winning number for easier comparison
-        Collections.sort(winning);
     }
 
-    private static void bonusNumber() throws IllegalArgumentException {
+    private void bonusNumber() throws IllegalArgumentException {
+        System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
-        if (!input.matches("\\d"))
+        if (!input.matches("\\d+"))
             Err.NUMERIC_ERROR.invalid();
-        bouns = Integer.parseInt(input);
-        if (bouns < 1 || bouns > 45)
+        bonus = Integer.parseInt(input);
+        if (bonus < 1 || bonus > 45)
             Err.RANGE_ERROR.invalid();
-        if (winning.contains(bouns))
+        if (winning.contains(bonus))
             Err.DUPLICATE_ERROR.invalid();
     }
 }
