@@ -4,12 +4,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -42,5 +45,17 @@ class LottoTicketMachineTest {
         List<Integer> numbers = (List<Integer>) method.invoke(lottoTicketMachine);
 
         assertThat(numbers.size()).isEqualTo(6);
+    }
+
+    @DisplayName("sortInAscendingOrder 메소드에 리스트를 입력하면 리스트가 정렬되는지 확인")
+    @Test
+    void sortInAscendingOrder_test() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Method method = lottoTicketMachine.getClass().getDeclaredMethod("sortInAscendingOrder", List.class);
+        method.setAccessible(true);
+        List<Integer> unsortedNumbers = new ArrayList<>(List.of(3,4,2,1,5));
+
+        method.invoke(lottoTicketMachine, unsortedNumbers);
+
+        assertThat(unsortedNumbers).isSorted();
     }
 }
