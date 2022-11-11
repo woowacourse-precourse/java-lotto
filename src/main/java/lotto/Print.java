@@ -102,15 +102,15 @@ public class Print {
 		int ranknum = 5;
 		for (rank r : rank.values()) {
 			double price = 0;
-			price = rankmap.get(ranknum) * r.getPrice();
+			price = rankmap.getOrDefault(ranknum, 0) * r.getPrice();
 			profit += price;
 			ranknum--;
 		}
 		profit = profit / purchaseprice;
-		return profit;
+		return profit * 100;
 	}
 	
 	public void printProfitRound(double profit) {
-		System.out.printf("총 수익률은 %f.2%%입니다.", profit);
+		System.out.printf("총 수익률은 %.2f%%입니다.", profit);
 	}
 }
