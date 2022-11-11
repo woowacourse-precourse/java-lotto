@@ -1,5 +1,8 @@
 package lotto.model;
 
+
+import static lotto.validator.LottoNumberValidator.hasValidLotteryNumber;
+
 import java.util.List;
 
 public class Lotto {
@@ -11,9 +14,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+        hasValidLotteryNumber(numbers);
     }
 
     // TODO: 추가 기능 구현
