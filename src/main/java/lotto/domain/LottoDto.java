@@ -4,27 +4,27 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
-public class LottoList {
-    private final List<Lotto> lottoList;
+public class LottoDto {
+    private final List<Lotto> lottos;
 
-    public LottoList(int money) {
+    public LottoDto(int money) {
         validate(money);
 
-        this.lottoList = createLottoList(money / 1000);
+        this.lottos = createLottoList(money / 1000);
     }
 
     private List<Lotto> createLottoList(int size) {
-        List<Lotto> lottoList = new ArrayList<>();
+        List<Lotto> newLottos = new ArrayList<>();
 
         for (int i = 0; i < size; i++) {
-            List<Integer> list = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> newNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 
-            Lotto lotto = new Lotto(list);
+            Lotto lotto = new Lotto(newNumbers);
 
-            lottoList.add(lotto);
+            newLottos.add(lotto);
         }
 
-        return lottoList;
+        return newLottos;
     }
 
     private void validate(int money) {
@@ -34,16 +34,16 @@ public class LottoList {
     }
 
     public List<Lotto> getLottoList() {
-        return lottoList;
+        return lottos;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append(lottoList.size()).append("개를 구매했습니다.");
+        sb.append(lottos.size()).append("개를 구매했습니다.");
 
-        lottoList.stream().map(Lotto::getNumbers)
+        lottos.stream().map(Lotto::getNumbers)
                 .forEach(numbers -> sb.append("\n").append(numbers));
 
         return sb.toString();

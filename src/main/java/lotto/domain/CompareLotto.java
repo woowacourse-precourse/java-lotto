@@ -4,14 +4,14 @@ package lotto.domain;
 import java.util.*;
 
 public class CompareLotto {
-    private final Map<Rank, Integer> rankMap;
+    private final Map<Rank, Integer> rankByCount;
     private final int originalMoney;
 
-    public CompareLotto(LottoList lottoList, Lotto lotto_1st, int bonusNumbers) {
-        this.rankMap = createRankMap();
-        this.originalMoney = 1000 * lottoList.getLottoList().size();
+    public CompareLotto(LottoDto lottoDto, Lotto lotto_1st, int bonusNumbers) {
+        this.rankByCount = createRankMap();
+        this.originalMoney = 1000 * lottoDto.getLottoList().size();
 
-        lottoList.getLottoList()
+        lottoDto.getLottoList()
                 .forEach(lotto -> addRankMap(lotto.getNumbers(), lotto_1st, bonusNumbers));
     }
 
@@ -19,25 +19,25 @@ public class CompareLotto {
     public String toString() {
         return "당첨 통계"
                 + "\n" + "---"
-                + "\n" + Rank.fifth.getComment() + " - " + rankMap.get(Rank.fifth) + "개"
-                + "\n" + Rank.fourth.getComment() + " - " + rankMap.get(Rank.fourth) + "개"
-                + "\n" + Rank.third.getComment() + " - " + rankMap.get(Rank.third) + "개"
-                + "\n" + Rank.second.getComment() + " - " + rankMap.get(Rank.second) + "개"
-                + "\n" + Rank.first.getComment() + " - " + rankMap.get(Rank.first) + "개"
+                + "\n" + Rank.fifth.getComment() + " - " + rankByCount.get(Rank.fifth) + "개"
+                + "\n" + Rank.fourth.getComment() + " - " + rankByCount.get(Rank.fourth) + "개"
+                + "\n" + Rank.third.getComment() + " - " + rankByCount.get(Rank.third) + "개"
+                + "\n" + Rank.second.getComment() + " - " + rankByCount.get(Rank.second) + "개"
+                + "\n" + Rank.first.getComment() + " - " + rankByCount.get(Rank.first) + "개"
                 + "\n" + calculateYield();
     }
     
     private Map<Rank, Integer> createRankMap() {
-        HashMap<Rank, Integer> rankMap = new HashMap<>();
+        HashMap<Rank, Integer> rankByCount = new HashMap<>();
 
-        rankMap.put(Rank.etc, 0);
-        rankMap.put(Rank.fifth, 0);
-        rankMap.put(Rank.fourth, 0);
-        rankMap.put(Rank.third, 0);
-        rankMap.put(Rank.second, 0);
-        rankMap.put(Rank.first, 0);
+        rankByCount.put(Rank.etc, 0);
+        rankByCount.put(Rank.fifth, 0);
+        rankByCount.put(Rank.fourth, 0);
+        rankByCount.put(Rank.third, 0);
+        rankByCount.put(Rank.second, 0);
+        rankByCount.put(Rank.first, 0);
 
-        return rankMap;
+        return rankByCount;
     }
 
     private void addRankMap(List<Integer> numbers, Lotto lotto_1st, int bonusNumbers) {
@@ -45,7 +45,7 @@ public class CompareLotto {
 
         rank = rank.setRank(countEqualNumbers(numbers, lotto_1st), numbers.contains(bonusNumbers));
 
-        rankMap.put(rank, rankMap.get(rank) + 1);
+        rankByCount.put(rank, rankByCount.get(rank) + 1);
     }
 
     private int countEqualNumbers(List<Integer> numbers, Lotto lotto_1st) {
@@ -63,8 +63,8 @@ public class CompareLotto {
     private String calculateYield() {
         double receiveMoney = 0;
 
-        for (Rank rank : rankMap.keySet()) {
-            receiveMoney += rank.getPrice() * rankMap.get(rank);
+        for (Rank rank : rankByCount.keySet()) {
+            receiveMoney += rank.getPrice() * rankByCount.get(rank);
         }
 
         double totalYield = (receiveMoney / originalMoney) * 100;

@@ -4,24 +4,24 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class LottoLauncher {
     public void startLotto(){
-        LottoList lottoList = inputMoney();
+        LottoDto lottoDto = inputMoney();
 
-        System.out.println(lottoList);
+        System.out.println(lottoDto);
 
         Lotto lotto_1st = create1stLotto();
         int bonusNumbers = createBonusNumber();
 
-        CompareLotto compareLotto = new CompareLotto(lottoList, lotto_1st, bonusNumbers);
+        CompareLotto compareLotto = new CompareLotto(lottoDto, lotto_1st, bonusNumbers);
 
         System.out.println(compareLotto);
     }
 
-    private LottoList inputMoney(){
+    private LottoDto inputMoney(){
         System.out.println("구입금액을 입력해 주세요.");
 
         int money = castInt(Console.readLine());
 
-        return new LottoList(money);
+        return new LottoDto(money);
     }
 
     private Lotto create1stLotto(){
