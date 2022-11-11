@@ -12,7 +12,9 @@ public class Application {
         Input input = new InputKeyboard();
         Output output = new OutputScreen();
 
-        output.printOutput(Sentence.INPUTMONEY);
+        //output.printOutput(Sentence.INPUTMONEY);
+        Game game = new Game(input, output);
+        game.run();
 
         // TODO: 프로그램 구현
     }
