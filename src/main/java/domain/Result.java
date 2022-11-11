@@ -15,4 +15,8 @@ public class Result {
         }
         return matchingCount;
     }
+
+    public boolean isMatchingBonusNumber(List<Integer> userNumbers, int bonusNumber) {
+        return userNumbers.contains(bonusNumber);
+    }
 }
