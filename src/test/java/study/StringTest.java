@@ -15,4 +15,11 @@ class StringTest {
         final List<String> strings = Arrays.asList("1,2".split(","));
         assertThat(strings).isEqualTo(List.of("1", "2"));
     }
+    
+    @Test
+    @DisplayName("\"1\"을 , 로 split 했을 때 1만을 포함하는 배열이 반환되는지 확인")
+    void one_split() {
+        final List<String> strings = Arrays.asList("1".split(","));
+        assertThat(strings).isEqualTo(List.of("1"));
+    }
 }
