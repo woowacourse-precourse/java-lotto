@@ -1,6 +1,7 @@
 package lotto.view;
 
 import lotto.domain.MoneyEnumClass;
+import lotto.exception.BuyMoneyException;
 import lotto.service.BuyLotto;
 import lotto.service.WinningMoney;
 
@@ -10,6 +11,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.*;
 
 public class InputOutputView {
+    private BuyMoneyException buyMoneyException = new BuyMoneyException();
     private int fifth;
     private int fourth;
     private int third;
@@ -18,7 +20,9 @@ public class InputOutputView {
 
     public int buyMoney() {
         System.out.println("구입금액을 입력해 주세요.");
-        return Integer.parseInt(readLine());
+        String money = readLine();
+        buyMoneyException.fullException(money);
+        return Integer.parseInt(money);
     }
 
     public void buyFin(int quantity) {
