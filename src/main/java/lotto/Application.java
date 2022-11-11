@@ -115,9 +115,12 @@ public class Application {
         return Console.readLine().trim();
     }
 
-    public static void validateBonusNumber(int bonusNum) {
+    public static void validateBonusNumber(int bonusNum, List<Integer> winningNums) {
         if (bonusNum < 1 || bonusNum > 45) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+        if (winningNums.contains(bonusNum)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
         }
     }
 
