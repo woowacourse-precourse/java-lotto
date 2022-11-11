@@ -2,19 +2,28 @@ package lotto.controller;
 
 import lotto.domain.Lotto;
 import lotto.domain.RandomNumbers;
+import lotto.util.Transform;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 import java.util.List;
 import java.util.ArrayList;
 
+import static lotto.validator.NumbersValidator.*;
+
 public class LottoGame {
+    private List<Lotto> purchaseLotto;
+    private Lotto lottoNumbers;
+    private int bonusNumber;
+
     public void startLottoGame() {
         int quantity = getLottoPurchaseAmount();
         OutputView.printLottoPurchaseCompleteAmount(quantity);
 
-        List<Lotto> purchaseLotto = buyLotto(quantity);
+        purchaseLotto = buyLotto(quantity);
         OutputView.printLottoFormatting(purchaseLotto);
+        lottoNumbers = setLottoNumbers();
+        bonusNumber = setBonusNumber();
     }
 
     private int getLottoPurchaseAmount() {
@@ -32,5 +41,27 @@ public class LottoGame {
             purchaseLotto.add(lotto);
         }
         return purchaseLotto;
+    }
+
+    private Lotto setLottoNumbers() {
+        Transform transform = new Transform();
+
+        String rawInputValue = InputView.inputLottoNumbers();
+        List<String> splitedNumbers = transform.splitLottoNumbers(rawInputValue);
+        validateNonNumericElements(splitedNumbers);
+        validateSize(splitedNumbers);
+
+        List<Integer> numbers = transform.transformType(splitedNumbers);
+        validateDuplicateNumber(numbers);
+        validateRangeNumbers(numbers);
+
+        Lotto lotto = new Lotto(numbers);
+        return lotto;
+    }
+
+    private int setBonusNumber() {
+        int bonus = InputView.inputBonusNumber();
+        validateAlreadyExist(lottoNumbers, bonus);
+        return bonus;
     }
 }
