@@ -26,12 +26,18 @@ class LottoTest {
     }
 
 
-
     // 아래에 추가 테스트 작성 가능
     CreateLotto createLotto = new CreateLotto();
+
     @Test
-    void CreateLottoTestByOverSize(){
+    void CreateLottoTestByOverSize() {
         assertThat(createLotto.numbers.size()).isEqualTo(6);
+    }
+
+    @Test
+    void ValidateUserPayDivide1000() {
+        assertThatThrownBy(() -> new User(9800))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
 
