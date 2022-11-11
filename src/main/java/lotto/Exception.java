@@ -33,7 +33,6 @@ public class Exception {
         for(String number : numbers) {
             numericException(number);
         }
-        throw new IllegalArgumentException();
     }
 
     private static void emptyException(String input) {
