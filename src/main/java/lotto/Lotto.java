@@ -16,7 +16,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR]");
         }
     }
 
@@ -62,6 +62,10 @@ public class Lotto {
         double yield = (double)(sum * 100) / (double)purchasePrice;
 
         System.out.println(Constant.TOTAL_YIELD + String.format("%.1f", yield) + "%입니다.");
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
 
