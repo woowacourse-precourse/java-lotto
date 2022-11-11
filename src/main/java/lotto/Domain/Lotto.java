@@ -18,4 +18,8 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
+    public List<Integer> getLottoNumbers() {
+        return this.numbers;
+    }
 }

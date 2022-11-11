@@ -4,13 +4,14 @@ import Utils.RandomUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Player {
     private int money;
     private int lottoCount;
     private Lotto playerLotto;
     private int playerBonusNumber;
-    private List<Lotto> Lottos;
+    private List<Lotto> lottos;
 
     public int getLottoCount() {
         return this.lottoCount;
@@ -26,6 +27,12 @@ public class Player {
         for (int i = 0; i < lottoCount; i++) {
             lottos.add(new Lotto(RandomUtils.getRandomLottoNumber()));
         }
-        this.Lottos = lottos; 
+        this.lottos = lottos;
+    }
+
+    public List<String> getLottos() {
+        return this.lottos.stream()
+                .map(value -> value.getLottoNumbers().toString())
+                .collect(Collectors.toList());
     }
 }
