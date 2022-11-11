@@ -27,6 +27,10 @@ public class Draw {
 
         for (Lotto tryLotto : lottoPaper) {
             rank = tryLottoRank(tryLotto);
+
+            if (rank.equals(Rank.none)) {
+                continue;
+            }
             winningStats.compute(rank,(k,v) -> v+1);
         }
         return winningStats;
