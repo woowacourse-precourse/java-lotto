@@ -11,7 +11,7 @@ public enum MessageType {
         this.message = message;
     }
 
-    public String getMessage(String... args) {
-        return String.format(this.message, (Object[]) args);
+    public String getMessage() {
+        return this.message;
     }
 }
