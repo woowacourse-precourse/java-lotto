@@ -34,7 +34,6 @@ public class Referee {
         addLottoCountNotPresent(rank);
     }
 
-
     private static void addLottoCountNotPresent(LottoRank rank) {
         if (!isContainRank(rank)) {
             lottoResultCount.put(rank, 1);

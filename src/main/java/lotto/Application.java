@@ -9,6 +9,7 @@ import lotto.view.OutputView;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +25,10 @@ public class Application {
         BigDecimal bigDecimal = new BigDecimal(10);
         bigDecimal = bigDecimal.add(BigDecimal.valueOf(10));
         bigDecimal = bigDecimal.add(BigDecimal.valueOf(10));
-        System.out.println(bigDecimal);
+//        System.out.println(bigDecimal);
+        Map<LottoRank, Integer> lottoResultCount;
+        Referee referee = new Referee();
+        outputView.printLottoResult(referee.getLottoResultCount());
 //        profitCalculator.
     }
 }
