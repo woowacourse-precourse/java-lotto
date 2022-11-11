@@ -250,7 +250,7 @@ class LottoTest {
 
     @DisplayName("1개의 보너스 번호가 6개의 당첨 번호 중에 포함되어있지 않으면 예외가 발생하지 않는다")
     @Test
-    void createBonusNumberExcluded() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    void createBonusNumberExcluded() throws NoSuchMethodException {
         LottoGame lottoGame = new LottoGame();
         List<Integer> winningNumber = List.of(1, 7, 10, 24, 37, 45);
         int bonusNumber = 11;
@@ -288,5 +288,42 @@ class LottoTest {
         int bonusNumber = (int) field.get(drawingMachine);
 
         assertThat(bonusNumber).isEqualTo(result);
+    }
+
+    @DisplayName("로또 번호에 특정 번호가 포함되어 있으면 true를 반환한다")
+    @Test
+    void isContainNumber() {
+        List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
+        Lotto lotto = new Lotto(lottoNumber);
+
+        boolean contain = lotto.isContain(10);
+
+        assertThat(contain).isEqualTo(true);
+    }
+
+    @DisplayName("로또 번호에 특정 번호가 포함되어 있지 않으면 false를 반환한다")
+    @Test
+    void isNotContainNumber() {
+        List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
+        Lotto lotto = new Lotto(lottoNumber);
+
+        boolean contain = lotto.isContain(11);
+
+        assertThat(contain).isEqualTo(false);
+    }
+
+    @DisplayName("로또 번호가 당첨 번호에 일치하는 개수를 반환한다")
+    @Test
+    void getThreeHitCount() {
+        List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
+        List<Integer> winningNumber = List.of(3, 10, 12, 20, 33, 45);
+        int bonusNumber = 2;
+        DrawingMachine drawingMachine = new DrawingMachine(winningNumber, bonusNumber);
+        Lotto lotto = new Lotto(lottoNumber);
+        int result = 3;
+
+        long hitCount = drawingMachine.getHitCount(lotto);
+
+        assertThat(hitCount).isEqualTo(result);
     }
 }
