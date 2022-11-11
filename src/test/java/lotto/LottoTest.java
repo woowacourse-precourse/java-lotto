@@ -44,4 +44,35 @@ class LottoTest {
         assertThat(answerNumbersCount).isEqualTo(NumbersCount);
         assertThat(answerBonusCount).isEqualTo(bonusCount);
     }
+
+    @DisplayName("등수 확인 util 메소드 테스트")
+    @Test
+    void checkRank() {
+        // given
+        int numberCount = 6;
+        int bonusCount = 0;
+        int answerRank = 1;
+
+        // when
+        int rank = LottoUtil.checkRank(numberCount, bonusCount);
+
+        // then
+        assertThat(rank).isEqualTo(answerRank);
+    }
+
+    @DisplayName("등수 확인 테스트")
+    @Test
+    void checkRealRank() {
+        // given
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        Integer bonus = 7;
+        List<Integer> userNumbers = List.of(1,2,3,4,5,6);
+        int answerRank = 1;
+
+        // when
+        int rank = lotto.getRank(userNumbers, bonus);
+
+        // then
+        assertThat(rank).isEqualTo(answerRank);
+    }
 }
