@@ -7,7 +7,7 @@ import static lotto.LottoErrorMessage.*;
 import static lotto.LottoConstant.*;
 
 public class LottoStore {
-    private List<Lotto> lottoNumbers = new ArrayList<>();
+    private List<Lotto> lottoTickets = new ArrayList<>();
 
     public void buyLottoNumber(int price) {
         validate(price);
@@ -16,12 +16,16 @@ public class LottoStore {
         LottoMachine lottoMachine = new LottoMachine();
 
         for (int i = 0; i < lottoPurchaseCount; i++) {
-            Lotto lotto = new Lotto(lottoMachine.create());
+            Lotto lotto = new Lotto(lottoMachine.createNumbers());
 
-            lottoNumbers.add(lotto);
+            lottoTickets.add(lotto);
         }
 
         printLottoNumbers();
+    }
+
+    public List<Lotto> getLottoTickets(){
+        return lottoTickets;
     }
 
     private void validate(int price) {
@@ -38,12 +42,12 @@ public class LottoStore {
 
     private void printLottoNumbers() {
         StringBuilder message = new StringBuilder();
-        int lottoPurchaseCount = lottoNumbers.size();
+        int lottoPurchaseCount = lottoTickets.size();
 
         message.append(lottoPurchaseCount + BUY_MSG + "\n");
 
         for (int i = 0; i < lottoPurchaseCount; i++) {
-            message.append(lottoNumbers.get(i) + "\n");
+            message.append(lottoTickets.get(i) + "\n");
         }
 
         System.out.println(message);
