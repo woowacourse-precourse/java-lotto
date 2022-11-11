@@ -8,17 +8,24 @@ import java.util.List;
 
 class ValidateTest {
 
-    @Test
-    void validMoney() {
-    }
+
 
     @Test
-    void validUserInputMoney() {
+    void validMoney() {
+        Validate test = new Validate();
+        long money1 = 200;
+        long money2 = 1200;
+        assertThatThrownBy(() -> test.validMoney(money1))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 1000원 이상의 금액을 입력하세요.");
+        assertThatThrownBy(() -> test.validMoney(money2))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 유효한 값을 입력하세요.");
     }
 
     @Test
     void validateUserInput() {
-        String testcase = "1,2,3,45, ";
+        String testcase = "1,2,3,45, 1";
         Validate validate = new Validate();
         assertThatThrownBy(() -> validate.validateUserInput(testcase))
                 .isInstanceOf(IllegalArgumentException.class);

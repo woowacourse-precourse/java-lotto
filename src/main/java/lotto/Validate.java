@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Validate {
-    public long isValidMoney(long money)throws IllegalArgumentException{
+    public long validMoney(long money)throws IllegalArgumentException{
         if(money < 1000)
             throw new IllegalArgumentException("[ERROR] 1000원 이상의 금액을 입력하세요.");
         if(money % 1000 != 0)
