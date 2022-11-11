@@ -2,7 +2,7 @@
 
 ## 입력 (Console.readLine())
 - [ ] 구입 금액 입력 ([^\d])
-  - [ ] 구입 금액 입력하기
+  - [x] 구입 금액 입력하기
   - [ ] 예외 처리 (IllegalArgumentException, 예외 메시지는 "[ERROR]"로 시작해야 한다.)
     - [ ] null 또는 empty 인 경우
     - [ ] 한글이 존재하는 경우
