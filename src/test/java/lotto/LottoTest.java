@@ -44,6 +44,14 @@ class LottoTest {
                 .hasMessage(ExceptionType.NOT_WITHIN_THE_RANGE.getMessage());
     }
 
+    @DisplayName("입력한 보너스 번호가 기존 번호와 중복된 경우 예외가 발생한다.")
+    @Test
+    void addBonusNumberByDuplicatedNumber() {
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
 
+        assertThatThrownBy(() -> lotto.addNumber(3))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ExceptionType.HAVE_OVERLAP.getMessage());
+    }
 
 }
