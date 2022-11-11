@@ -3,6 +3,7 @@ package lotto.mytest;
 import static org.assertj.core.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -24,6 +25,14 @@ public class BonusNumberTest {
 	void notPositiveNumber(String input) {
 		assertThatThrownBy(() -> {
 			BonusNumber.checkBonusNumber(input);
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@DisplayName("0인 경우 예외가 발생")
+	@Test
+	void zero() {
+		assertThatThrownBy(() -> {
+			BonusNumber.checkBonusNumber("0");
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
 }
