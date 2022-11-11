@@ -4,7 +4,9 @@ public class BuyAmount {
 
     private final int MONEY;
 
-    public BuyAmount(int money) {
+    public BuyAmount(String userInput) {
+        Utility.intValidate(userInput);
+        int money = Integer.parseInt(userInput);
         notDivideValidate(money);
         this.MONEY = money;
     }
@@ -15,5 +17,8 @@ public class BuyAmount {
         }
     }
 
+    public int getMONEY() {
+        return MONEY;
+    }
 
 }

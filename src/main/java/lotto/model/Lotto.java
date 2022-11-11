@@ -1,14 +1,17 @@
 package lotto.model;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
 
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        this.numbers = numbers;
+    public Lotto(List<Integer> nums) {
+        validate(nums);
+        Collections.sort(nums);
+        this.numbers = nums;
+
     }
 
     private void validate(List<Integer> numbers) {
@@ -27,5 +30,10 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 중복된 값이 있습니다.");
         }
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     // TODO: 추가 기능 구현
 }
