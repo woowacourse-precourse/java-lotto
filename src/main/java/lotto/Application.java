@@ -21,7 +21,7 @@ public class Application {
             List<List<Integer>> userNumber = issueUserLotto(lottoPrice / 1000);
             chatbot.printUserLotto(lottoPrice / 1000, userNumber);
             Lotto lotto = new Lotto(chatbot.askLottoNumber());
-            int bonus=validateLottoBonus(lotto, chatbot.askLottoBonus());
+            int bonus = validateLottoBonus(lotto, chatbot.askLottoBonus());
             List<Integer> result = compareNumbers(userNumber, lotto, bonus);
             float rate = calculateRate(lottoPrice, result);
             chatbot.printResult(rate, result);
@@ -55,14 +55,14 @@ public class Application {
         return userNumber;
     }
 
-    public static int validateLottoBonus(Lotto lotto,int bonus) {
+    public static int validateLottoBonus(Lotto lotto, int bonus) {
 
-        if (!(0<bonus && bonus<= 45)) {
-                throw new IllegalArgumentException("보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
-            }
+        if (!(0 < bonus && bonus <= 45)) {
+            throw new IllegalArgumentException("보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
 
-        for(int i=0;i<lotto.getLottoNumber().size();i++){
-            if(lotto.getLottoNumber().get(i).equals(bonus)){
+        for (int i = 0; i < lotto.getLottoNumber().size(); i++) {
+            if (lotto.getLottoNumber().get(i).equals(bonus)) {
                 throw new IllegalArgumentException("로또 번호와 보너스 번호는 중복되지 않아야 합니다.");
             }
         }
@@ -71,9 +71,21 @@ public class Application {
     }
 
     public static List<Integer> compareNumbers(List<List<Integer>> userNumber, Lotto lotto, int bonus) {
-        List<Integer> result = new ArrayList();
+        //List<Integer> result = new ArrayList<Integer>();
 
-        return result;
+        return null;
+    }
+
+    public static int countSameNum(List<Integer> userEachNumber, Lotto lotto) {
+        List<Integer> result = new ArrayList<Integer>();
+        int count = 0;
+
+        for (int i = 0; i < COUNT; i++) {
+            if(lotto.getLottoNumber().contains(userEachNumber.get(i))) {
+                count++;
+            }
+        }
+        return count;
     }
 
     public static float calculateRate(int price, List<Integer> result) {
