@@ -3,7 +3,7 @@ package lotto.domain.lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
-public class LottoDrawer {
+public class LottoPublishMachine {
     private static final int LOTTO_NUMBER_START_INCLUSIVE = 1;
     private static final int LOTTO_NUMBER_END_INCLUSIVE = 45;
     private static final int LOTTO_SIZE = 6;
