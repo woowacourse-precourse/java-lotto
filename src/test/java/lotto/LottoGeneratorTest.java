@@ -41,7 +41,7 @@ class LottoGeneratorTest {
     void eachNumberInTheLottoIsGreaterThanOne() {
         List<Integer> numbers = lottoGenerator.publish().getNumbers();
         numbers.forEach((actual) -> {
-            assertThat(actual).isGreaterThan(1);
+            assertThat(actual).isGreaterThanOrEqualTo(1);
         });
     }
 
@@ -50,7 +50,7 @@ class LottoGeneratorTest {
     void eachNumberInTheLottoIsLessThanFortyFive() {
         List<Integer> numbers = lottoGenerator.publish().getNumbers();
         numbers.forEach((actual) -> {
-            assertThat(actual).isGreaterThan(45);
+            assertThat(actual).isLessThanOrEqualTo(45);
         });
     }
 }
