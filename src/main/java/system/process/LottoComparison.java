@@ -1,11 +1,10 @@
 package system.process;
 
-import constants.LottoConstant;
 import constants.PrizeDivision;
 import models.Lotto;
 import models.WinningLotto;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,52 +20,45 @@ public class LottoComparison {
         this.winningLotto = winningLotto;
     }
 
-    public void compareLotto(Lotto boughtLotto) {
-
-        setBoughtLotto(boughtLotto);
-
-        List<Integer> boughtLottoNumbers = new ArrayList<>(boughtLotto.getNumbers());
-        Set<Integer> winningLottoNumbers = new HashSet<>(winningLotto.getLotto().getNumbers());
-
-        countSameNumber(boughtLottoNumbers, winningLottoNumbers);
-        countBonusNumber(boughtLottoNumbers, winningLotto.getBonusNumber());
+    public void startComparison(Lotto boughtLotto) {
+        initializeComparison(boughtLotto);
+        compareLotto();
     }
 
-    private void setBoughtLotto(Lotto boughtLotto) {
+    private void compareLotto() {
+        Set<Integer> winningLottoNumbers = new HashSet<>(winningLotto.getLotto().getNumbers());
+
+        countSameNumber(winningLottoNumbers);
+        countBonusNumber();
+    }
+
+    private void initializeComparison(Lotto boughtLotto) {
         sameNumberCount = 0;
-        bonusCount = 0;     // init
+        bonusCount = 0;
         this.boughtLotto = boughtLotto;
     }
 
-    private void countSameNumber(List<Integer> boughtLottoNumbers, Set<Integer> winningLottoNumbers) {
-        boughtLottoNumbers.forEach(number -> {
+    private void countSameNumber(Set<Integer> winningLottoNumbers) {
+        boughtLotto.getNumbers().forEach(number -> {
             if (winningLottoNumbers.contains(number)) {
                 sameNumberCount++;
             }
         });
     }
 
-    private void countBonusNumber(List<Integer> boughtLottoNumbers, int bonusNumber) {
-        if (boughtLottoNumbers.contains(bonusNumber)) {
+    private void countBonusNumber() {
+        if (boughtLotto.getNumbers().contains(winningLotto.getBonusNumber())) {
             bonusCount++;
         }
     }
 
     public int rank() {
-        if (sameNumberCount == 6) {
-            return PrizeDivision.FIRST.getDivision();
-        }
-        if (sameNumberCount == 5 && bonusCount == 1) {
-            return PrizeDivision.SECOND.getDivision();
-        }
-        if (sameNumberCount == 5) {
-            return PrizeDivision.THIRD.getDivision();
-        }
-        if (sameNumberCount == 4) {
-            return PrizeDivision.FOURTH.getDivision();
-        }
-        if (sameNumberCount == 3) {
-            return PrizeDivision.FIFTH.getDivision();
+        List<PrizeDivision> prizeDivision = Arrays.asList(PrizeDivision.values());
+
+        for(PrizeDivision division : prizeDivision){
+            if(division.getSameNumberCount() == sameNumberCount && division.getBonusCount() == bonusCount){
+                return division.getDivision();
+            }
         }
 
         return PrizeDivision.NO_DIVISION.getDivision();
