@@ -14,6 +14,7 @@ public class OutputView {
 	private static final String PRINT_WINNING_STATS_MESSAGE = "\n당첨 통계\n---";
 	private static final String PRINT_WINNING_RANK = "%d개 일치 (%d원) - %d개\n";
 	private static final String PRINT_WINNING_2ND_RANK = "%d개 일치, 보너스 볼 일치 (%d원) - %d개\n";
+	private static final String PRINT_YIELD_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
 
 	public static void printAmountMessage() {
 		System.out.println(INPUT_AMOUNT_MESSAGE);
@@ -44,5 +45,9 @@ public class OutputView {
 	public static void printSecondRankCount(Map.Entry<Rank, Integer> stat) {
 		System.out.printf(PRINT_WINNING_2ND_RANK, stat.getKey().getSameWinningNumberCount(), stat.getKey().getReward(),
 			stat.getValue());
+	}
+
+	public static void printYieldMessage(double yield) {
+		System.out.printf(PRINT_YIELD_MESSAGE, yield);
 	}
 }

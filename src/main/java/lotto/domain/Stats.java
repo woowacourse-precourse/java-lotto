@@ -35,4 +35,12 @@ public class Stats {
 				OutputView.printRankCount(rankIntegerEntry);
 			});
 	}
+
+	public int totalReward() {
+		return stats.keySet()
+			.stream()
+			.mapToInt(rank -> rank.getReward() * stats.get(rank))
+			.sum();
+
+	}
 }

@@ -40,5 +40,6 @@ public class LottoMachine {
 	private void winningStats() {
 		Stats stats = machineSystem.createStats();
 		stats.print();
+		OutputView.printYieldMessage(machineSystem.yield(stats.totalReward()));
 	}
 }

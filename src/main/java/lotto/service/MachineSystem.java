@@ -9,6 +9,7 @@ import lotto.domain.Stats;
 import lotto.domain.WinningLotto;
 
 public class MachineSystem {
+	private static final int PERCENTAGE = 100;
 
 	private final Buyer buyer;
 	private final WinningLotto winningLotto;
@@ -36,4 +37,7 @@ public class MachineSystem {
 			.filter(winningLotto.getNumbers()::contains).count();
 	}
 
+	public double yield(int totalReward) {
+		return (double)totalReward / buyer.getAmount() * PERCENTAGE;
+	}
 }

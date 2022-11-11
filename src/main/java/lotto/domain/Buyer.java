@@ -44,4 +44,8 @@ public class Buyer {
 	public List<Lotto> getLotto() {
 		return lottos;
 	}
+
+	public double getAmount() {
+		return amount;
+	}
 }
