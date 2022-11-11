@@ -42,8 +42,17 @@ class LottoBuyerTest extends NsTest{
                 .hasMessageContaining(ERROR_MESSAGE);
     }
 
+    @Test
+    @DisplayName("로또의 보너스 번호를 제대로 입력했는지 확인")
+    void 로또_보너스_번호_입력_테스트(){
+        assertThatThrownBy(() -> run("-31"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
+
     public void runMain() {
         //lottoBuyerTest.setMoney();
-        lottoBuyerTest.setLottoNumbers();
+        //lottoBuyerTest.setLottoNumbers();
+        lottoBuyerTest.setBonusNumber();
     }
 }
