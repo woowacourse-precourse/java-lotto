@@ -21,7 +21,7 @@ public enum Rank {
         this.bonusBall = bonusBall;
     }
 
-    public Rank getRank(int matchingCnt, boolean bonusBall){
+    public static Rank getRank(int matchingCnt, boolean bonusBall){
         return Arrays.stream(Rank.values())
                 .filter(rank -> rank.matchingCnt == matchingCnt)
                 .filter(rank -> rank.bonusBall == bonusBall)

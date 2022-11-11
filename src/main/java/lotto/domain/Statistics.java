@@ -26,12 +26,13 @@ public class Statistics {
         }
     }
 
-    private void getLottoResult(Lotto lotto, WinningLotto winningLotto){
+    private Rank getLottoResult(Lotto lotto, WinningLotto winningLotto){
         int matchingCnt = compareNumbers(lotto, winningLotto);
         boolean bonusBall = false;
         if(matchingCnt == FIVE_MATCHING_LOTTO_NUMBERS){
-
+            bonusBall = compareBonusNumber(lotto, winningLotto.getBonusBall());
         }
+        return Rank.getRank(matchingCnt, bonusBall);
     }
 
     private boolean compareBonusNumber(Lotto lotto, int bonusBall){
