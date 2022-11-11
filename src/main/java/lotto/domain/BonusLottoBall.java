@@ -3,6 +3,9 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 보너스 번호가 해당 되는 로또 찾기 구현
+ */
 public class BonusLottoBall {
     public List<Integer> findNumber(List<List<Integer>> random, List<Integer> resultNumber, int bonus) {
         List<Integer> result = new ArrayList<>();
