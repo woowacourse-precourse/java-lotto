@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class InputExceptionTest {
     @DisplayName("입력된 금액 예외 발생 테스트")
     @ParameterizedTest
-    @ValueSource(strings = {"3500", "4650", "9080", "10", "100", "1298089", "0"})
+    @ValueSource(strings = {"3500", "4650", "9080", "10", "100", "1298089", "0", "1000j", "1000kj"})
     void validatePurchaseAmountTest(String money) {
         assertThatThrownBy(() -> InputException.validatePurchaseAmount(money))
                 .isInstanceOf(IllegalArgumentException.class);
