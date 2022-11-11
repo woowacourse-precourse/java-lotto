@@ -50,11 +50,11 @@ public class Result {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Result result = (Result) o;
-        return matchCount == result.matchCount && hasBonusNumber == result.hasBonusNumber;
+        return resultStatus == result.resultStatus;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(matchCount, hasBonusNumber);
+        return Objects.hash(resultStatus);
     }
 }

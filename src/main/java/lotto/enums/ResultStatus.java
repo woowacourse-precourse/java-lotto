@@ -12,8 +12,7 @@ public enum ResultStatus {
     MATCH4(50000, false),
     MATCH5(1500000, false),
     MATCH5_WITH_BONUS_BALL(30000000, true),
-    MATCH6(2000000000, false),
-    ;
+    MATCH6(2000000000, false);
 
     private final int value;
     private final boolean hasBonusBall;
