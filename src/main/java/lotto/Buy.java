@@ -19,7 +19,17 @@ public class Buy {
         return numbers;
     }
 
+    public static int orderTicket() {
+        System.out.println("구입금액을 입력해 주세요.");
+        String money = Console.readLine();
+        validate.Check.isNumber(money);
 
+
+        int paperMoney = Integer.parseInt(money);
+        int tickets = validate.Check.countLottoTicket(paperMoney);
+
+        return tickets;
+    }
 
     public static void inputNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
