@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
 public class UserInput {
@@ -36,6 +37,13 @@ public class UserInput {
             List tmpLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             tmpLotto.sort(Comparator.naturalOrder());
             lotteries.add(tmpLotto);
+        }
+    }
+
+    static void printLotto() {
+        Iterator it = lotteries.iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
         }
     }
 }
