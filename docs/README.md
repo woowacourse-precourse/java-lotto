@@ -3,20 +3,53 @@
 ## 기능 목록
 
 Money
-- [x] 요구사항에 맞는 머니 인지 확인한다. validate(int money)
-  - [x] 음수와 0 그리고 천의 단위로 나눠떨어지지 않는경우 예외 처리. IllegalMoneyException()
-- [x] Lotto를 살수 있는 숫자를 반환한다 getPayLottos()
-- [] 수익률을 알려준다. getBenefit(int earningMoney)
 
+- [x] 요구사항에 맞는 머니 인지 확인한다. validate(int money)
+    - [x] 음수와 0 그리고 천의 단위로 나눠떨어지지 않는경우 예외 처리. IllegalMoneyException()
+- [x] Lotto를 살수 있는 숫자를 반환한다 getPayLottos()
+- [x] 수익률을 알려준다. getBenefit(int earningMoney)
+    - [x] 수익률을 계산한다. getBenefit(double earningMoney)
+    - [x] 뒤자리 0을 지워준다. removeBackZero(String benefit)
 
 Lotto
-- [x] 요구사항에 맞는 Lotto 인지 확인한다. validate(List<Integer> numbers)
-  - [x] 숫자가 중복인 경우 예외처리. llegalLottoException()
-  - [x] 숫자들의 사이즈가 6개 가 아닌경우, 예외처리. llegalLottoException()
-  - [x] 숫자 범위가 1-45가 아닌경우, 예외처리. NotLottoValueException()
-- [x] 정렬되어있는 numbers String를 반환한다. toString()
-- [] 당첨이 되는지 확인하는 메소드 compare(Lotto result)
 
+- [x] 요구사항에 맞는 Lotto 인지 확인한다. validate(List<Integer> numbers)
+    - [x] 숫자가 중복인 경우 예외처리. llegalLottoException()
+    - [x] 숫자들의 사이즈가 6개 가 아닌경우, 예외처리. llegalLottoException()
+    - [x] 숫자 범위가 1-45가 아닌경우, 예외처리. NotBoundLottoNumberException()
+- [x] 정렬되어있는 Lotto번호의 String를 반환한다. toString()
+- [x] 당첨이 되는지 확인하는 반환한다. isSame(ResultLotto resultLotto, Rank rank)
+    - [x] 같은게 있는 숫자의 개수를 반환한다. countIfExist(List<Integer> others)
+
+Rank
+
+-[x] 당첨관련 상수를 열거한다. (int equalCount, int bonusCount, int rewardMoney)
+-[x] 알맞은 랭크를 반환한다. getRanks(List<Lotto> expectLottos, ResultLotto resultLotto)
+-[x] 랭크 통켸를 반환한다 getStatistics(List<Rank> ranks)
+-[x] Rank에 대한 정보를 반환한다. toString()
+
+ResultLotto
+
+-[x] 알맞은 ResultLotto 을 생성한다
+- [x] 숫자 범위가 1-45가 아닌경우, 예외처리. NotBoundLottoNumberException()
+- [x] 중복이거나 사이즈가 다른경우, 예외처리. IllegalResultLottoException()
+
+LottoValueRange
+
+-[x] 범위밖에있는지 확인한다. validate(List<Integer> numbers)
+    - [x] 범위 밖에있다면, 예외처리 NotBoundLottoNumberException
+
+Printer
+
+-[x] 게임에 관련 내용을 출력한다 methods
+
+RandomLottoGenerator
+
+-[x] 랜덤 번호를 가진 로또 를 반환한다. getRandomLottos(Money money, int lottoLength)
+
+WonMaker
+
+-[x] 원화에 점을 찍어준다. makeWon(long money)
 
 ## 🚀 기능 요구 사항
 
@@ -164,14 +197,15 @@ Lotto
 
 ### 라이브러리
 
-- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
+- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console`
+  API를 사용하여 구현해야 한다.
     - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
     - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 #### 사용 예시
 
 ```java
-List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+List<Integer> numbers=Randoms.pickUniqueNumbersInRange(1,45,6);
 ```
 
 ### Lotto 클래스
