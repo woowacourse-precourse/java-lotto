@@ -12,6 +12,10 @@ public class Bonus {
         this.bonusNumber = getParseInt(bonusNumber);
     }
 
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
     private static int getParseInt(String bonusNumber) {
         return Integer.parseInt(bonusNumber);
     }

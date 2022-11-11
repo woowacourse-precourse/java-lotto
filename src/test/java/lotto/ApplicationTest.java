@@ -60,12 +60,10 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 로또_수량_구하기_테스트(){
-        LottoCount lottoCount = new LottoCount();
+        LottoCount lottoCount = new LottoCount();;
         int count = lottoCount.countLotto("14000");
         assertThat(count).isEqualTo(14);
     }
-
-
 
     @Override
     public void runMain() {
