@@ -9,5 +9,7 @@ public class Application {
         Money money = new Money(InputView.askAmount());
         Lottos lottos = new Lottos(money.getMoney());
         OutputView.printLottos(lottos);
+        String winningNumberInput = InputView.askWinningNumber();
+        String bonusNumberInput = InputView.askBonusNumber();
     }
 }
