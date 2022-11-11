@@ -33,19 +33,23 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        int money = Converter.convertMoneyInput(readLine());
+        try {
+            int money = Converter.convertMoneyInput(readLine());
 
-        User user = new User(money);
-        user.showLottos();
+            User user = new User(money);
+            user.showLottos();
 
-        List<Integer> winningNumbers = Converter.convertNumbersInput(readLine());;
-        int bonusNumber = Converter.convertBonusNumberInput(readLine());
+            List<Integer> winningNumbers = Converter.convertNumbersInput(readLine());
+            int bonusNumber = Converter.convertBonusNumberInput(readLine());
 
-        WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
+            WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
 
-        addWinnings(user, winningLotto);
-        user.showWinnings();
+            addWinnings(user, winningLotto);
+            user.showWinnings();
 
-        System.out.println("총 수익률은 " + user.getYield() + "%입니다.");
+            System.out.println("총 수익률은 " + user.getYield() + "%입니다.");
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
+        }
     }
 }

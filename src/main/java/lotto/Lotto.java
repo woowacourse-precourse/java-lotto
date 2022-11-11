@@ -27,18 +27,15 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (LottoNumberValidator.isNotSameSize(numbers)) {
-            System.out.println(ErrorMessage.WRONG_SIZE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.WRONG_SIZE);
         }
 
         if (LottoNumberValidator.existDuplicate(numbers)) {
-            System.out.println(ErrorMessage.DUPLICATED_INPUT);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_INPUT);
         }
 
         if (LottoNumberValidator.isOutOfRange(numbers)) {
-            System.out.println(ErrorMessage.WRONG_RANGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.WRONG_RANGE);
         }
     }
 
