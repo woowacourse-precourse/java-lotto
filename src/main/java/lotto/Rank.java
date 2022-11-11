@@ -1,5 +1,7 @@
 package lotto;
 
+import java.text.NumberFormat;
+
 public enum Rank {
     FIRST(6, 2000000000),
     SECOND(5, 30000000),
@@ -35,5 +37,10 @@ public enum Rank {
 
     public int getPrizeMoney(){
         return prizeMoney;
+    }
+
+    public String getFormatPrizeMoney() {
+        NumberFormat numberFormat = NumberFormat.getInstance();
+        return numberFormat.format(getPrizeMoney());
     }
 }
