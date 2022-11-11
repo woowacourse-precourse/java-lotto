@@ -1,9 +1,9 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import lotto.Constant.ErrorMessage;
+import lotto.Constant.LottoValue;
 
 public class User {
     private List<Lotto> lottos;
@@ -17,7 +17,7 @@ public class User {
         validateMoney(money);
 
         this.money = money;
-        this.lottoNum = money / 1000;
+        this.lottoNum = money / LottoValue.LOTTO_PRICE;
         generateLottos();
         this.winnings = new ArrayList<>();
         this.earn = 0;
@@ -25,7 +25,7 @@ public class User {
 
 
     private void validateMoney(int money) {
-        if (money % 1000 != 0) {
+        if (money % LottoValue.LOTTO_PRICE != 0) {
             System.out.println(ErrorMessage.WRONG_MONEY_UNIT);
             throw new IllegalArgumentException();
         }
@@ -41,26 +41,17 @@ public class User {
         }
     }
 
-    public void printLottos() {
+    public void showLottos() {
         System.out.println(lottoNum + "개를 구매했습니다.");
-        for (Lotto lotto : lottos) {
-            System.out.println(lotto.getNumbers());
-        }
+        Printer.printLottos(lottos);
+    }
+
+    public void showWinnings() {
+        Printer.printWinnings(winnings);
     }
 
     public void addWinning(Winning winning) {
         winnings.add(winning);
-    }
-
-    public void printWinnings() {
-        winnings.stream()
-                .forEach(winning -> System.out.println(winning.name()));
-        System.out.println("3개 일치 (5,000원) - " + Collections.frequency(this.winnings, Winning.FIFTH) + "개");
-        System.out.println("4개 일치 (50,000원) - " + Collections.frequency(this.winnings, Winning.FOURTH) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + Collections.frequency(this.winnings, Winning.THIRD) + "개");
-        System.out.println(
-                "5개 일치, 보너스 볼 일치 (30,000,000원) - " + Collections.frequency(this.winnings, Winning.SECOND) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + Collections.frequency(this.winnings, Winning.FIRST) + "개");
     }
 
     public double getYield() {
@@ -78,6 +69,4 @@ public class User {
     public List<Lotto> getLottos() {
         return this.lottos;
     }
-
-
 }

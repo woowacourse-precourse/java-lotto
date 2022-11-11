@@ -3,12 +3,13 @@ package lotto;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import lotto.Constant.LottoValue;
 
 public class LottoNumberValidator {
-    private static final int NUMBER_EA = 6;
-    private static final int MIN_RANGE = 1;
-    private static final int MAX_RANGE = 45;
-
+    private static final List<Integer> range = IntStream
+            .rangeClosed(LottoValue.MIN_RANGE, LottoValue.MAX_RANGE)
+            .boxed()
+            .collect(Collectors.toList());
 
     public static boolean existDuplicate(List<Integer> numbers) {
         int numbersTypeCount = (int)numbers
@@ -24,7 +25,7 @@ public class LottoNumberValidator {
     }
 
     public static boolean isNotSameSize(List<Integer> numbers) {
-        if (numbers.size() != NUMBER_EA) {
+        if (numbers.size() != LottoValue.NUMBER_EA) {
             return true;
         }
 
@@ -32,10 +33,6 @@ public class LottoNumberValidator {
     }
 
     public static boolean isOutOfRange(List<Integer> numbers) {
-        List<Integer> range = IntStream.rangeClosed(MIN_RANGE, MAX_RANGE)
-                .boxed()
-                .collect(Collectors.toList());
-
         if (range.containsAll(numbers)) {
             return false;
         }
@@ -44,9 +41,6 @@ public class LottoNumberValidator {
     }
 
     public static boolean isOutOfRange(int bonusNumber) {
-        List<Integer> range = IntStream.rangeClosed(MIN_RANGE, MAX_RANGE)
-                .boxed()
-                .collect(Collectors.toList());
         if (range.contains(bonusNumber)) {
             return false;
         }
