@@ -1,7 +1,9 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 import org.assertj.core.internal.Numbers;
@@ -24,6 +26,10 @@ public class WinningNumber {
 				throw new IllegalArgumentException("45보다 큰 숫자는 입력할 수 없습니다.");
 			}
 		}
+
+		if (hasDuplicatedNum(convertToSet(winningNumber))) {
+			throw new IllegalArgumentException("중복된 숫자가 있습니다.");
+		}
 	}
 
 	private static StringTokenizer splitWinningNumber(String winningNumber) {
@@ -34,13 +40,17 @@ public class WinningNumber {
 		return splitter;
 	}
 
-	private static List<Integer> toList(String winningNumber) {
+	private static Set<Integer> convertToSet (String winningNumber) {
 		StringTokenizer splitter = splitWinningNumber(winningNumber);
-		List<Integer> numbers = new ArrayList<>();
+		Set<Integer> numbers = new HashSet<>();
 		while (splitter.hasMoreTokens()) {
 			String token = splitter.nextToken();
 			numbers.add(Integer.parseInt(token));
 		}
 		return numbers;
+	}
+
+	private static boolean hasDuplicatedNum(Set<Integer> numbers) {
+		return numbers.size() != 6;
 	}
 }
