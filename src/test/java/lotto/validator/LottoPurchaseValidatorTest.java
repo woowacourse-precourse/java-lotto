@@ -15,7 +15,6 @@ public class LottoPurchaseValidatorTest {
     @DisplayName("입력한 구입 금액이")
     class If_input_value_to_purchase {
 
-
         /**
          * 만약 구매 단위가 1원이라면 나머지가 생길 수 없기 때문에 테스트가 항상 통과한다
          */
