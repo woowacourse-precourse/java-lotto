@@ -1,5 +1,6 @@
 package lotto.exception;
 
+import lotto.constants.ErrorMessageConstant;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +13,6 @@ class UtilClassCreateExceptionTest {
         assertThatThrownBy(() -> {
             throw new UtilClassCreateException();
         }).isExactlyInstanceOf(UtilClassCreateException.class)
-                .hasMessageStartingWith("[ERROR] 생성할 수 없는 유틸 클래스입니다.");
+                .hasMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
 }

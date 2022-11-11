@@ -1,5 +1,6 @@
 package lotto.exception;
 
+import lotto.constants.ErrorMessageConstant;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +14,6 @@ class ViewClassCreateExceptionTest {
             throw new ViewClassCreateException();
         })
                 .isExactlyInstanceOf(ViewClassCreateException.class)
-                .hasMessageStartingWith("[ERROR] View 클래스는 생성할 수 없습니다.");
+                .hasMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
 }
