@@ -18,11 +18,11 @@ public class Output {
         writeLine("%d개를 구매했습니다.", buyCount);
     }
 
-    public void writeEnterWinningNumbers() {
+    public void writeEnterWinningStandardNumbers() {
         writeLine("당첨 번호를 입력해 주세요.");
     }
 
-    public void writeEnterBonusNumber() {
+    public void writeEnterWinningBonusNumber() {
         writeLine("보너스 번호를 입력해 주세요.");
     }
 

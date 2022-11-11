@@ -9,18 +9,18 @@ import static lotto.domain.lotto.Lotto.MIN_NUMBER;
 
 public class WinningNumbers {
 
-    private final List<Integer> numbers;
+    private final List<Integer> standardNumbers;
     private final int bonusNumber;
 
-    public WinningNumbers(List<Integer> numbers, int bonusNumber) {
-        validateNumbers(numbers);
+    public WinningNumbers(List<Integer> standardNumbers, int bonusNumber) {
+        validateStandardNumbers(standardNumbers);
         validateBonusNumber(bonusNumber);
 
-        this.numbers = numbers;
+        this.standardNumbers = standardNumbers;
         this.bonusNumber = bonusNumber;
     }
 
-    private void validateNumbers(List<Integer> numbers) {
+    private void validateStandardNumbers(List<Integer> numbers) {
         if (numbers.size() != Lotto.NUMBER_COUNT) {
             throw new IllegalArgumentException("당첨번호는 6개여야 합니다.");
         }
@@ -47,7 +47,7 @@ public class WinningNumbers {
 
     private int getMatchedNumberCount(Lotto lotto) {
         return (int) lotto.value().stream()
-                .filter(numbers::contains)
+                .filter(standardNumbers::contains)
                 .count();
     }
 

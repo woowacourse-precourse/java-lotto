@@ -37,16 +37,16 @@ public class LottoGame {
         output.writeEmptyLine();
     }
 
-    private List<Integer> inputWinningNumbers() {
-        output.writeEnterWinningNumbers();
+    private List<Integer> inputWinningStandardNumbers() {
+        output.writeEnterWinningStandardNumbers();
         List<Integer> numbers = input.readIntList();
         output.writeEmptyLine();
 
         return numbers;
     }
 
-    private int inputBonusNumber() {
-        output.writeEnterBonusNumber();
+    private int inputWinningBonusNumber() {
+        output.writeEnterWinningBonusNumber();
         int bonusNumber = input.readInt();
         output.writeEmptyLine();
 
@@ -67,21 +67,29 @@ public class LottoGame {
         return new Results(rewards);
     }
 
+    private void printStatisticsWithBonus(Results results, Reward reward) {
+        output.writeMatchStatisticWithBonus(
+                reward.getMatch(),
+                reward.getReward(),
+                results.getCount(reward));
+    }
+
+    private void printStatisticsWithNonBonus(Results results, Reward reward) {
+        output.writeMatchStatistic(
+                reward.getMatch(),
+                reward.getReward(),
+                results.getCount(reward));
+    }
+
     private void printStatistics(Results results) {
         output.writePrefixMatchStatistics();
         for (Reward reward : Reward.values()) {
             if (!reward.isRequireBonus()) {
-                output.writeMatchStatistic(
-                        reward.getMatch(),
-                        reward.getReward(),
-                        results.getCount(reward));
+                printStatisticsWithNonBonus(results, reward);
             }
 
             if (reward.isRequireBonus()) {
-                output.writeMatchStatisticWithBonus(
-                        reward.getMatch(),
-                        reward.getReward(),
-                        results.getCount(reward));
+                printStatisticsWithBonus(results, reward);
             }
         }
     }
@@ -99,9 +107,9 @@ public class LottoGame {
 
             printLottos(lottos);
 
-            List<Integer> numbers = inputWinningNumbers();
-            int bonusNumber = inputBonusNumber();
-            WinningNumbers winningNumbers = new WinningNumbers(numbers, bonusNumber);
+            List<Integer> standardNumbers = inputWinningStandardNumbers();
+            int bonusNumber = inputWinningBonusNumber();
+            WinningNumbers winningNumbers = new WinningNumbers(standardNumbers, bonusNumber);
 
             Results results = matchLottoWithWinningNumbers(lottos, winningNumbers);
 
