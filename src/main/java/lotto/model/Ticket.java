@@ -11,9 +11,7 @@ public class Ticket {
 
     public Ticket(PurchaseAmount purchaseAmount) {
         this.purchaseAmount = purchaseAmount;
-        List<Lotto> lotteries = createLotteries(purchaseAmount);
-        validateLotteries(lotteries);
-        this.lotteries = lotteries;
+        this.lotteries = createLotteries(purchaseAmount);
     }
 
     public List<Lotto> getLotteries() {
@@ -38,11 +36,5 @@ public class Ticket {
 
     private static List<Integer> createLotto() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
-    }
-
-    private void validateLotteries(List<Lotto> lotteries) {
-        if (lotteries.size() != purchaseAmount.getMoney() / 1000) {
-            throw new IllegalArgumentException("[ERROR] 로또 발행 개수가 올바르지 않습니다.");
-        }
     }
 }
