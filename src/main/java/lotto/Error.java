@@ -46,8 +46,15 @@ public enum Error {
     }
 
     public static void validateBonusNumDuplicate(List<Integer> numbers, int bonusNum) {
-        if (numbers.contains(bonusNum)) {
+        if (numbers.contains(bonusNum))
             throw new IllegalArgumentException(BONUS_DUPLICATE_LOTTO.getErrorMsg());
+    }
+
+    public static void validateNumIsInBoundary(List<Integer> numbers) {
+
+        for (Integer number : numbers) {
+            if (number < 1 || number > 45)
+                throw new IllegalArgumentException(NOT_NUMBER_IN_BOUNDARY.getErrorMsg());
         }
     }
 
