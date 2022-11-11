@@ -27,11 +27,7 @@ public class Application {
         for(Lotto userLotto : user.getLottos()) {
             Winning winning = getWinning(userLotto, winningLotto);
 
-            if(winning == null) {
-                continue;
-            }
-
-            user.addWinning((winning));
+            user.addWinning(winning);
         }
     }
 
@@ -53,7 +49,6 @@ public class Application {
         addWinnings(user, winningLotto);
         user.showWinnings();
 
-        user.printWinnings();
         System.out.println("총 수익률은 " + user.getYield() +"%입니다.");
     }
 }
