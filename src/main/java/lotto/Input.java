@@ -18,7 +18,18 @@ public class Input {
 
     public static List<Integer> winningNumber() {
         String input = input();
-        return Stream.of(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        checkContainSeparator(input);
+        try {
+            return Stream.of(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력해 주세요.");
+        }
+    }
+
+    private static void checkContainSeparator(String input) {
+        if (!input.contains(",")) {
+            throw new IllegalArgumentException("[ERROR] 구분자 ',' 를 입력해 주세요.");
+        }
     }
 
     private static void checkLottoAmount(int input) {
