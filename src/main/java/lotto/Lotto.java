@@ -2,21 +2,20 @@ package lotto;
 
 import java.util.List;
 
-public class Lotto implements LottoInterface {
-    private final List<Integer> numbers;
+public class Lotto {
+    protected final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
     }
 
-    @Override
     public void validate(List<Integer> numbers) {
         validateLottoSize(numbers);
         validateLottoNumberRange(numbers);
         validateLottoNumberDuplicated(numbers);
     }
-    @Override
+
     public void validateLottoSize(List<Integer> numbers){
         final int LottoSize = 6;
         if(numbers.size() != LottoSize){
