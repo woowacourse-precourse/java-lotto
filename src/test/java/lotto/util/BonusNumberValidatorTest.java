@@ -2,7 +2,6 @@ package lotto.util;
 
 import lotto.common.InputErrors;
 import lotto.ui.dto.BonusNumber;
-import lotto.ui.dto.LottoPurchasedAmount;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
