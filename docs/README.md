@@ -7,14 +7,14 @@
 - [x] 중복되지 않는 6개의 숫자 뽑기 - #getUniqueRandomNumbers()
 
 ### String 형태의 입력을 int 형태로 변환해주는 클래스 Name : InputConverter
-- [ ] 금액의 입력값을 바꿔주는 기능 - #convertMoneyInput()
-- [ ] 6개의 당첨 번호 입력값을 바꿔주는 기능 - #convertWinningNumber()
-- [ ] 보너스 당첨 번호 입력값을 바꿔주는 기능 - #convertBonusNumber()
+- [x] 금액의 입력값을 바꿔주는 기능 - #convertMoneyInput()
+- [x] 6개의 당첨 번호 입력값을 바꿔주는 기능 - #convertWinningNumber()
+- [x] 보너스 당첨 번호 입력값을 바꿔주는 기능 - #convertBonusNumber()
 
 ### 발행된 로또의 번호 List 를 wrapping 하는 클래스 Name : Lotto
 
 - [ ] ~~뽑은 6개의 숫자를 Lotto 클래스 내부의 로또의 번호 List 에 할당~~ - 생성자를 통해 할당
-- [ ] 발행된 번호를 반환 - #getUserLottoNumbers()
+- [x] 발행된 번호를 반환 - #getUserLottoNumbers()
 
 ---
 
@@ -58,14 +58,15 @@
 > 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`를 발생시키고,
 > [ERROR] 로 시작하는 에러 메시지를 출력 후 종료한다.
 
-- [ ] 통합 입력 예외처리 확인 - #isValidInput()
-    - [ ] 입력한 구입 금액이 유효하지 않은 경우 - #isValidMoneyInput()
-      - [ ] 입력한 구입 금액에 숫자가 아닌 값이 포함된 경우 -#isNumeralMoneyInput()
-      - [ ] 입력한 구입 금액이 1000원 단위가 아닌경우 -#isValidMoneyUnit()
-    - [ ] 입력한 당첨 번호가 유효하지 않은 경우 - #isValidLottoNumbersInput()
-        - [ ] 숫자가 아닌 값이 포함된 경우 - #isNumeral()
-        - [ ] 중복된 숫자가 포함된 경우 - #isUniqueNumber()
-        - [ ] 범위 내의 숫자가 아닌 값이 포함된 경우 - #isInRangeNumbers()
-    - [ ] 입력한 보너스 번호가 유효하지 않은 경우 - #isValidBonusNumberInput()
-        - [ ] 숫자가 아닌 값인 경우- #isNumeral()
-        - [ ] 범위 내의 숫자가 아닌 값이 포함된 경우 - #isInRangeNumber()
+- [ ] 입력한 구입 금액이 유효하지 않은 경우 - #isValidMoneyInput()
+  - [ ] 입력한 구입 금액에 숫자가 아닌 값이 포함된 경우 -#isNumeralMoneyInput()
+  - [ ] 입력한 구입 금액이 1000원 단위가 아닌경우 -#isValidMoneyUnit()
+- [ ] 입력한 당첨 번호가 유효하지 않은 경우 - #isValidLottoNumbersInput()
+    - [ ] 숫자가 아닌 값이 포함된 경우 - #isNumeralNumbers()
+    - [ ] 숫자이 개수가 6개가 아닌 경우 - #isValidNumberOfNumbers()
+    - [ ] 중복된 숫자가 포함된 경우 - #isUniqueNumbers()
+    - [ ] 범위 내의 숫자가 아닌 값이 포함된 경우 - #isInRangeNumbers()
+- [ ] 입력한 보너스 번호가 유효하지 않은 경우 - #isValidBonusNumberInput()
+    - [ ] 숫자가 아닌 값인 경우- #isNumeralNumber()
+    - [ ] 범위 내의 숫자가 아닌 값이 포함된 경우 - #isInRangeNumber()
+    - [ ] 당첨 번호 6개에 포함되는 경우 - #isExistNumber()
