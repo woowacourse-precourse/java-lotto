@@ -22,7 +22,7 @@ class LottoPaper {
     public LottoPaper(List<Integer> number){
         this.number = number;
     }
-    public int getResult(List<Integer> winningNumber){
-
-    }
+//    public int getResult(List<Integer> winningNumber){
+//
+//    }
 }

@@ -1,7 +1,7 @@
 package lotto;
 
-public class CreateBonusNumber {
-    public int getBonusNumber(String userInput){
-
-    }
-}
+//public class CreateBonusNumber {
+//    public int getBonusNumber(String userInput){
+//
+//    }
+//}

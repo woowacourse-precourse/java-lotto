@@ -20,7 +20,13 @@ class ValidateTest {
         assertThatThrownBy(() -> validate.validateUserInput(testcase))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
+    @Test
+    void validateBonusNumber() {
+        String testcase = "123";
+        Validate test = new Validate();
+        assertThatThrownBy(() -> test.validateBonusNumber(testcase))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
     @Test
     void validUserWinningNumber() {
     }
