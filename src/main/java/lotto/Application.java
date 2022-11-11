@@ -132,8 +132,7 @@ public class Application {
             + 1500000 * winningCnt.get("3등")
             + 50000 * winningCnt.get("4등")
             + 5000  * winningCnt.get("5등");
-
-        return String.format("%2f", winningMoney / money).concat("%");
+        return String.valueOf(Math.round(((winningMoney /money) * 100) * 100) / 100.0).concat("%");
     }
 
     private static void printYield(Map<String, Integer> winningCnt, String yield) {
