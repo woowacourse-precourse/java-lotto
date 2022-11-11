@@ -29,8 +29,8 @@ public class Calculator {
     public static double yield(double revenue, double coin) {
         double result = (((revenue - coin)/coin) * 100);
         result = Math.round(result * 10)/10.0;
-        yield = result;
-        System.out.println("총 수익률은 " + yield + 100 + "%입니다.");
+        result = result + 100.0;
+        System.out.println("총 수익률은 " + result + "%입니다.");
         return result;
     }
 }
