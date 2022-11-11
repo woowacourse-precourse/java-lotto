@@ -15,8 +15,9 @@ public class Validator {
     }
 
     private void validateFormOfWinningNumbers(String winningNumbers) {
-        // 숫자와 쉼표를 제외한 문자가 있어서는 안된다.
-        // 처음과 끝은 쉼표가 아니다.
+        if (!winningNumbers.matches("[1-9][0-9]*,[1-9][0-9]*,[1-9][0-9]*,[1-9][0-9]*,[1-9][0-9]*,[1-9][0-9]*")) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호들의 형태가 잘못되었습니다.");
+        }
     }
 
     private void validateValuesOfWinningNumbers(List<Integer> winningNumbers) {
