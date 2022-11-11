@@ -1,10 +1,21 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
 
-    public void buyLotto() {
+    private List<Lotto> lottos;
+
+    public User() {
+        this.lottos = new ArrayList<>();
+    }
+
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
+
+    public void buyLotto(int price) {
         return;
     }
 
