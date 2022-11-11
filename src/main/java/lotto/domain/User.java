@@ -8,9 +8,9 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class User {
     private int money;
     private int totalPrize;
-    private int numOfLotto;
+    private int numOfLotteries;
     private double rateOfReturn;
-    private List<Lotto> purchasedLotto;
+    private List<Lotto> lotteries;
 
     public void inputUserMoney() {
         String userInput = readLine();
