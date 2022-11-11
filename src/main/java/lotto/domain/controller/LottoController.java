@@ -15,9 +15,14 @@ public class LottoController {
 
     public void start() {
         setUserData();
+        setLottoData();
     }
 
     public void setUserData() {
         user = userInputDataService.inputUserData();
+    }
+
+    public void setLottoData() {
+        lotto = lottoInputDataService.inputLottoData();
     }
 }
