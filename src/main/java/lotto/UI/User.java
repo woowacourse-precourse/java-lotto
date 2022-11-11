@@ -53,4 +53,11 @@ public class User {
         }
     }
 
+    public static Integer bonusNumberRangeCheck(Integer number) {
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException("[ERROR] 1~45 사이의 숫자 한개를 입력해 주세요.");
+        }
+        return number;
+    }
+
 }
