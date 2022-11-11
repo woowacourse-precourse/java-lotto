@@ -3,16 +3,19 @@ package lotto;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private static final int LOTTO_NUMBERS_LENGTH = 6;
 
-    private final List<Integer> numbers;
+    private final List<LottoNumber> numbers;
 
     public Lotto(List<Integer> numbers) {
         validateLength(numbers);
         validateNoDuplicate(numbers);
-        this.numbers = numbers;
+        this.numbers = numbers.stream()
+                .map(LottoNumber::new)
+                .collect(Collectors.toList());
     }
 
     private void validateLength(List<Integer> numbers) {
