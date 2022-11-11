@@ -171,6 +171,10 @@
   - 5등 로또의 개수를 계산하는 함수
 
 
+- Integer compareLottoNumbersAndWinningNumbers(Lotto, List<Integer>)
+  - 로또 번호와 당첨 번호의 같은 숫자 개수를 계산하는 함수
+
+
 - Double calculateSurplus(int, int, int, int, int, int)
   - 수익률을 계산하는 함수
 
