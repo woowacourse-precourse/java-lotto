@@ -2,20 +2,38 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Buyer {
 
-    public static int inputBuyLottoMoney() {
+    private List<Lotto> lottos = new ArrayList<>();
+
+    public int inputBuyLottoMoney() {
         System.out.println("구입금액을 입력해 주세요");
         String inputBuyMoney = Console.readLine();
 
         if(!inputBuyMoney.matches("^[0-9]*$"))
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자여야 합니다.");
+            throw new IllegalArgumentException(Error.INPUT_IS_NOT_NUM.getErrorMsg());
 
         int buyMoney = Integer.parseInt(inputBuyMoney);
 
         if (buyMoney % 1000 != 0 || buyMoney == 0)
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원 단위입니다.");
+            throw new IllegalArgumentException(Error.NOT_NUMBER_DIVIDED_1000.getErrorMsg());
 
         return buyMoney;
+    }
+
+    public void setLottos(int lottoCnt) {
+        LotteryMachine lotteryMachine = new LotteryMachine();
+
+        for (int index = 0; index < lottoCnt; index++) {
+            Lotto newLotto = new Lotto(lotteryMachine.makeLottoNum());
+
+            this.lottos.add(newLotto);
+        }
+    }
+    public List<Lotto> getLottos() {
+        return lottos;
     }
 }
