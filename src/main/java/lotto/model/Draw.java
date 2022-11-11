@@ -29,6 +29,9 @@ public class Draw {
         rankClassification.put(5,Rank.third);
         rankClassification.put(4,Rank.fourth);
         rankClassification.put(3,Rank.fifth);
+        rankClassification.put(2,Rank.none);
+        rankClassification.put(1,Rank.none);
+        rankClassification.put(0,Rank.none);
         this.rankClassification = rankClassification;
     }
 
@@ -36,8 +39,9 @@ public class Draw {
         int winningCount = winningNumSize(tryLotto);
         boolean bonusExist = isBonusExist(this.bonusNum);
 
+
     }
-    
+
     private int winningNumSize(Lotto tryLotto) {
         int winningCount = 0;
         Lotto winningLotto = this.winningLotto;
