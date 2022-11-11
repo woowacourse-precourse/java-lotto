@@ -1,8 +1,11 @@
 package lotto.view;
 
+import lotto.constant.Rank;
 import lotto.domain.Lotto;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class OutputView {
     private static final String PURCHASE_DETAILS_OUTPUT_MESSAGE = "개를 구매했습니다";
@@ -33,5 +36,14 @@ public class OutputView {
     public void printRateOfReturn(double rateOfReturn){
         System.out.printf(RATE_OF_RETURN_OUTPUT_FORMAT, rateOfReturn);
         System.out.print("\n");
+    }
+
+    public void printLottoResults(Map<Rank, Integer> lottoResults){
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for(int i = 0; i < lottoResults.size(); i++){
+            String output = Rank.get(i).condition() + " (" + Rank.get(i).winningAmount() + "원) - " + lottoResults.get(Rank.get(i)) + "개";
+            System.out.println(output);
+        }
     }
 }
