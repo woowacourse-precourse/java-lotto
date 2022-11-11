@@ -4,22 +4,23 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
-public class UserInput {
+public class InOutput {
     private static final Integer each_lotto = 1000;
-    public Long cost = 0L;
-    public Integer bonus = 0;
-    public HashSet<Integer> winning = null;
-    public List<Lotto> bought = new ArrayList<>();
+    private Long cost = 0L;
+    private Integer bonus = 0;
+    private HashSet<Integer> winning = new HashSet<>();
+    private List<Lotto> bought = new ArrayList<>();
+    private double earn_rate = 0.0;
 
-    public void getAllInput() throws IllegalArgumentException {
+    public void printAll() throws IllegalArgumentException {
         howMuchLotto();
-        Output.printLotto(this);
+        printLotto();
         winningNumber();
         bonusNumber();
+        printWinning();
     }
 
     public void buy() throws IllegalArgumentException {
@@ -32,9 +33,11 @@ public class UserInput {
     private void howMuchLotto() throws IllegalArgumentException {
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
+        // only positive integers are allowed
         if (!input.matches("\\d+"))
             Err.NUMERIC_ERROR.invalid();
-        if (Integer.parseInt(input) % 1000 != 0)
+        // only multiples of 1000 are allowed
+        if (Integer.parseInt(input) % each_lotto != 0 && !input.equals("0"))
             Err.PAYMENT_NUMBER_ERROR.invalid();
         cost = Long.parseLong(input);
         buy();
@@ -65,5 +68,23 @@ public class UserInput {
             Err.RANGE_ERROR.invalid();
         if (winning.contains(bonus))
             Err.DUPLICATE_ERROR.invalid();
+    }
+
+    private void printWinning() {
+        System.out.print("당첨통계\n---\n");
+        for (int i = 0; i < bought.size(); ++i)
+            bought.get(i).check(winning, bonus);
+        for (Prize p: Prize.values()) {
+            p.print();
+            earn_rate += p.earn();
+        }
+        earn_rate = Math.round(earn_rate / cost * 1000.0) / 1000.0;
+        System.out.format("총 수익률은 %,.1f%%입니다.\n", earn_rate * 100.0);
+    }
+
+    private void printLotto() {
+        System.out.format("%d개를 구매했습니다.\n", cost / 1000);
+        for (int i = 0; i < bought.size(); ++i)
+            bought.get(i).print();
     }
 }
