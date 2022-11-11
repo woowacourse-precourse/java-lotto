@@ -55,7 +55,7 @@ public class NumberParser {
     }
 
     public void checkException(int number) {
-        if(number < 0 || number < 45){
+        if(number < 0 || number > 45){
             System.out.println("임시에러: 1부터 45사이의 숫자여야한다.");
             throw new IllegalArgumentException();
         }

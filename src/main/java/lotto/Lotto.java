@@ -21,7 +21,17 @@ public class Lotto {
         }
     }
 
-    public void printLotto(){
-        System.out.println(numbers);
+    public int getNumberOfWins(List<Integer> winningNumbers){
+        int count = 0;
+        for(int number : winningNumbers){
+            if(numbers.contains(number)){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public boolean isHavingBonusNumber(int bonusNumber){
+        return numbers.contains(bonusNumber);
     }
 }

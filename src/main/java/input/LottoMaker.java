@@ -25,7 +25,7 @@ public class LottoMaker {
 
         for(int lotto = 0; lotto < amount; lotto ++ ){
             lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6)));
-            lottos.get(lottos.size()-1).printLotto();
+            //lottos.get(lottos.size()-1).printLotto();
         }
         return lottos;
     }
