@@ -5,7 +5,6 @@ import lotto.domain.Bonus;
 import lotto.utils.Validation;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class InputView {

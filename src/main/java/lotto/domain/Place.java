@@ -1,7 +1,6 @@
 package lotto.domain;
 
 public class Place {
-
     public static final int CORRECT_NUMBER_SIX = 6;
     public static final int CORRECT_NUMBER_FIVE = 5;
     public static final int CORRECT_NUMBER_FOUR = 4;
