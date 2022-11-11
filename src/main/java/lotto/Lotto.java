@@ -11,6 +11,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         checkDuplicate(numbers);
+        checkRange(numbers);
         this.numbers = numbers;
     }
 
@@ -36,6 +37,19 @@ public class Lotto {
             }
 
             visitedNumbers.add(current);
+        }
+    }
+
+    private void checkRange(List<Integer> numbers) {
+
+        for (int i = 0; i < LOTTO_SIZE; i++) {
+            int current = numbers.get(i);
+
+            if (ReferenceValue.LOTTO_START_RANGE <= current
+                    && ReferenceValue.LOTTO_END_RANGE >= current) {
+                Record.printRangeError();
+                throw new IllegalArgumentException();
+            }
         }
     }
 

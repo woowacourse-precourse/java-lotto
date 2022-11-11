@@ -26,6 +26,7 @@ public class Record {
     private static final String ERROR_MINIMUM_MESSAGE = ReferenceValue.IS_ERROR + " 입력값이 1,000 이상 되야합니다.";
     private static final String ERROR_SIZE_MESSAGE = ReferenceValue.IS_ERROR + " 입력 크기가 초과했습니다.";
     private static final String ERROR_DUPLICATE_MESSAGE = ReferenceValue.IS_ERROR + " 중복된 숫자가 있습니다.";
+    private static final String ERROR_RANGE_MESSAGE = ReferenceValue.IS_ERROR + " 범위를 벗어난 숫자가 있습니다.";
 
     public static void printNumberError() {
         System.out.print(ERROR_NUMBER_MESSAGE);
@@ -39,6 +40,9 @@ public class Record {
 
     public static void printSizeError() {
         System.out.println(ERROR_SIZE_MESSAGE);
+    }
+    public static void printRangeError() {
+        System.out.println(ERROR_RANGE_MESSAGE);
     }
 
     public static void printDuplicateError() {

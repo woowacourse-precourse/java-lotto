@@ -19,7 +19,11 @@ public class Game {
     }
 
     public static void play() {
-        enterLottoTickets();
+        try {
+            enterLottoTickets();
+        } catch (IllegalArgumentException e) {
+            return;
+        }
         enterWinningNumbers();
         enterBonus();
         setLottoResults();
@@ -45,14 +49,13 @@ public class Game {
 
     private static void enterLottoTickets() {
         int counts = price / ReferenceValue.LOTTO_PRICE;
-
         Record.printBuyCounts(counts);
-
         List<Lotto> allLottery = new ArrayList<>();
         for (int i = 0; i < counts; i++) {
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(ReferenceValue.LOTTO_START_RANGE,
                     ReferenceValue.LOTTO_END_RANGE, ReferenceValue.LOTTO_SIZE);
 
+            checkLottoNumbers(lottoNumbers);
             Lotto lotto = new Lotto(lottoNumbers);
             Record.printLotto(lotto);
             allLottery.add(lotto);
@@ -60,6 +63,9 @@ public class Game {
 
         lottoTickets = new LottoTickets(allLottery);
         System.out.println();
+    }
+
+    private static void checkLottoNumbers(List<Integer> lottoNumbers) {
     }
 
     private static void enterWinningNumbers() {
@@ -90,11 +96,18 @@ public class Game {
         System.out.println(input);
         System.out.println();
 
-        if (checkNumberError(input) || checkPriceError(input) || checkMinimumPriceError(input)) {
+        if (checkNumberError(input) || checkMinimumPriceError(input) || checkPriceError(input)) {
             return ReferenceValue.IS_ERROR;
         }
 
         return input;
+    }
+
+    public static void checkError(boolean error) {
+
+        if (error) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private static boolean checkMinimumPriceError(String input) {
@@ -107,6 +120,7 @@ public class Game {
 
         return false;
     }
+
     private static boolean checkPriceError(String input) {
         int price = Integer.parseInt(input);
 
