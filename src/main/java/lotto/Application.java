@@ -16,7 +16,7 @@ public class Application {
         winningNumber.getWinningNumber();
         WinningResult winningResult = new WinningResult(winningNumber);
         winningResult.winningHistory(purchasedLotto);
-//        print.printWinningHistory(winningResult.winningHistory(purchasedLotto));
-        winningResult.winningRate(purchase.purchaseAmount);
+        print.printWinningHistory(winningResult.winningHistory(purchasedLotto));
+        print.printWinningRate(winningResult.winningRate(purchase.purchaseAmount));
     }
 }

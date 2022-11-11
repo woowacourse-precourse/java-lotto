@@ -4,13 +4,19 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 enum Rank{
-     NONE(0), FIRST(2_000_000_000), SECOND(30_000_000), THIRD(1_500_000), FOURTH(50_000), FIFTH(5_000);
-     int value;
-     Rank(int value){
-          this.value = value;
+     NONE(0, 0), FIRST(6, 2_000_000_000), SECOND(5, 30_000_000), THIRD(5, 1_500_000), FOURTH(4, 50_000), FIFTH(3, 5_000);
+     int winningAmount;
+     int matchCount;
+     Rank(int matchCount, int winningAmount){
+          this.matchCount = matchCount;
+          this.winningAmount = winningAmount;
      }
-     public int getValue(){
-          return value;
+     public int getWinningAmount(){
+          return winningAmount;
+     }
+
+     public int getMatchCount() {
+          return matchCount;
      }
 }
 public class WinningResult {
@@ -50,7 +56,7 @@ public class WinningResult {
 
           while (entry.hasNext()) {
                Map.Entry<Rank, Integer> element = entry.next();
-               winningAmout += element.getKey().value * element.getValue();
+               winningAmout += element.getKey().getWinningAmount() * element.getValue();
           }
 
           result = winningAmout / (float)purchaseAmount * 100;
