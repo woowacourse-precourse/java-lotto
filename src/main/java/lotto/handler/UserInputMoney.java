@@ -1,9 +1,8 @@
 package lotto.handler;
 
-import lotto.service.UserLottoService;
-import lotto.view.OutputView;
+import lotto.service.InputMoney;
 
-public class UserInputMoneyHandler {
+public class UserInputMoney {
     private final String ERROR_ORDER = "[ERROR]";
     public void checkException(String inputMoney) {
         checkIsNumber(inputMoney);
@@ -23,7 +22,7 @@ public class UserInputMoneyHandler {
         }
     }
     public void checkIsValidMoney(String inputMoney) {
-        UserLottoService userLottoService = new UserLottoService();
+        InputMoney userLottoService = new InputMoney();
         int money = Integer.parseInt(inputMoney);
 
         if(money % userLottoService.LOTTO_PRICE  != 0) {

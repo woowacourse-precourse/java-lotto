@@ -1,5 +1,5 @@
 package lotto.view;
-public class OutputView {
+public class Output {
     private final String INPUTMONEY_ORDER = "구입금액을 입력해 주세요.";
     private final String PURCHASE_LOTTO_ORDER = "개를 구매했습니다.";
 
