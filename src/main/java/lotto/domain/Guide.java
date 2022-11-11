@@ -11,4 +11,7 @@ public class Guide {
         System.out.println("\n" + Integer.toString(LottoCount) + "개를 구매했습니다.");
     }
 
+    public static int convertStringToInt(String Number) {
+        return Integer.parseInt(Number);
+    }
 }
