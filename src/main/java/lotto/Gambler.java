@@ -16,6 +16,13 @@ public class Gambler {
         this.gamblerLotto = new ArrayList<>(this.amountOfLotto);
     }
 
+    public void buyingLotto(){
+        this.CurrentMoney = 0;
+        for (int cnt=0;cnt<this.amountOfLotto;cnt++){
+            List<Integer> currentLottoNumbers = generateLottoNumbers();
+            this.gamblerLotto.add(new Lotto(currentLottoNumbers));
+        }
+    }
 
     public List<Integer> generateLottoNumbers(){
         return Randoms.pickUniqueNumbersInRange(1,45,6);
