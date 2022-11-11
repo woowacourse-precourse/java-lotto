@@ -6,8 +6,8 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static lotto.Enum.Constant.*;
 
-public class LottoMachine {
-    public LottoMachine() {
+public class LottoProvidingMachine {
+    public LottoProvidingMachine() {
     }
 
     public List<Lotto> makeLottoGroup(int lotto_amount) {

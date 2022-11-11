@@ -2,13 +2,13 @@ package lotto.lottoShop;
 
 public class LottoShop {
     private final MoneyValidator moneyValidator;
-    private final LottoMachine lottoMachine;
+    private final LottoProvidingMachine lottoProvidingMachine;
     private final Clerk clerk;
 
     private LottoShop() {
         this.moneyValidator = new MoneyValidator();
-        this.lottoMachine = new LottoMachine();
-        this.clerk = new Clerk(moneyValidator, lottoMachine);
+        this.lottoProvidingMachine = new LottoProvidingMachine();
+        this.clerk = new Clerk(moneyValidator, lottoProvidingMachine);
     }
 
     private static class SingletonHelper{

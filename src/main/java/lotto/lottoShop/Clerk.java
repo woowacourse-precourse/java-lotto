@@ -6,11 +6,11 @@ import static lotto.Enum.Constant.*;
 
 public class Clerk {
     private final MoneyValidator moneyValidator;
-    private final LottoMachine lottoMachine;
+    private final LottoProvidingMachine lottoProvidingMachine;
 
-    public Clerk(MoneyValidator moneyValidator, LottoMachine lottoMachine) {
+    public Clerk(MoneyValidator moneyValidator, LottoProvidingMachine lottoProvidingMachine) {
         this.moneyValidator = moneyValidator;
-        this.lottoMachine = lottoMachine;
+        this.lottoProvidingMachine = lottoProvidingMachine;
     }
 
     public List<Lotto> sellLotto(String purchaseAmount) {
@@ -18,7 +18,7 @@ public class Clerk {
 
         int lotto_amount = getLottoAmount(purchaseAmount);
 
-        return lottoMachine.makeLottoGroup(lotto_amount);
+        return lottoProvidingMachine.makeLottoGroup(lotto_amount);
     }
 
     private int getLottoAmount(String purchaseAmount) {
