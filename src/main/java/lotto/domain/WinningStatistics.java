@@ -30,4 +30,13 @@ public class WinningStatistics {
         int bonusNumber = winningLotto.getBonusNumber();
         return numbers.contains(bonusNumber);
     }
+    
+    public static double getLottoYield(Map<WinningRank, Integer> winningDetails, int money) {
+        long winningAmount = winningDetails.entrySet().stream()
+                .filter(entry -> entry.getValue() != 0)
+                .mapToLong(entry -> (long) entry.getKey().getWinningPrice() * entry.getValue())
+                .sum();
+        double lottoYield = 100 + (winningAmount - money) / money * 100;
+        return Math.round(lottoYield * 100) / 100.0;
+    }
 }
