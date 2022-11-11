@@ -19,25 +19,39 @@ public class Controller {
     List<Integer> lottoList = new ArrayList<>();
 
     void start() {
-        view.startMention();
-        input = Console.readLine();
-        if (ex.initialInput(input)) return;
-        inMoney = Integer.parseInt(input);
+        if (inputStart()) return;
         Computer[] computers = getComputers();
-
         if (inputWinningNumber()) return;
-
-        view.inputBonus();
-        input = Console.readLine();
-        if (ex.inputWinningBonus(input)) return;
-        bonus = Integer.parseInt(input);
+        if (inputBonus()) return;
         lotto.getNumbers().add(bonus);
-
         domain.checkWinning(computers, list, lotto);
         view.printResult(list);
-
         result = domain.checkWinningMoney(list);
         view.printBenfit(inMoney, result);
+    }
+
+    private boolean inputBonus() {
+        view.inputBonus();
+        input = Console.readLine();
+        try {
+            ex.inputWinningBonus(input);
+        }catch (IllegalArgumentException e){
+            return true;
+        }
+        bonus = Integer.parseInt(input);
+        return false;
+    }
+
+    private boolean inputStart() {
+        view.startMention();
+        input = Console.readLine();
+        try{
+            ex.initialInput(input);
+        }catch (IllegalArgumentException e){
+            return true;
+        }
+        inMoney = Integer.parseInt(input);
+        return false;
     }
 
     private Computer[] getComputers() {
