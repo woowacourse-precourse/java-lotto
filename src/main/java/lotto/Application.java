@@ -288,4 +288,21 @@ public class Application {
 
         return number;
     }
+
+    public static Integer calculateSecond(List<Lotto> lottoList, List<Integer> winningNumberList, int bonusNumber) {
+
+        int number = 0;
+
+        for (int i = 0; i < lottoList.size(); i++) {
+
+            if (!lottoList.get(i).checkWinningNumberIsInLottoNumbers(bonusNumber)) {
+
+                continue;
+            }
+
+            number += compareLottoNumbersAndWinningNumbers(lottoList.get(i), winningNumberList, 5);
+        }
+
+        return number;
+    }
 }
