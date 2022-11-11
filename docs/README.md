@@ -43,10 +43,12 @@ Enum : Rank
 [constructor]<br>
 - Lotto(List<Integer> numbers)<br>
   - this.
-  - validate(numbers)
+  - validate(numbers) // (valid.2)
+  - validateNumRange(numbers) // (valid.1)
 
 [method]<br>
 - private void validate(List<Integer> numbers)
+- private void validateNumRange(List<Integer> numbers)
 
 ### Shop : 로또를 발행해주는 상점
 [Field]<br>
@@ -78,6 +80,7 @@ Enum : Rank
 - public Map<Rank,Integer> getWinningStats(List<Lotto> lottoPaper) // (feat.6)
 - private Rank winningNumSize(Lotto tryLotto) // 개개인의 로또 비교
 - private boolean isBonusExist() // 보너스 번호가 있는지 확인
+- private void validateBonusNumRange(int bonusNum) // (valid.3)
 
 ### Rate : 수익률을 계산해주는 회사
 [Field]<br>
