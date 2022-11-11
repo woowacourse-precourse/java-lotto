@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class BonusInput {
+    private static int bonusNumber;
     public static String bonusInput;
-    public static int bonusNumber;
     public static boolean bonus;
 
     public static void bonusNumberInput() {
@@ -22,11 +22,12 @@ public class BonusInput {
         for (List<Integer> check : lottos) {
             if (check.contains(bonusNumber)) {
                 bonus = true;
+                break;
             }
         }
     }
 
-    public static int bonusToInt(String bonusInput) {
+    private static int bonusToInt(String bonusInput) {
         bonusNumber = Integer.parseInt(bonusInput);
         return bonusNumber;
     }
