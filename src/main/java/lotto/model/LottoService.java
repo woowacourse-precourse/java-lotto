@@ -1,11 +1,30 @@
 package lotto.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Collections;
 import java.util.List;
 import lotto.bo.Lotto;
+import lotto.bo.WinningNumber;
+import lotto.model.Checker.WinningPlace;
 
 public class LottoService {
     static final int LOTTO_PRICE = 1000;
+    private List<Lotto> lottos;
+    private WinningNumber winningNumber;
+    private List<WinningPlace> winningResult;
+
+    public void getLottos(String money) {
+        validateMoney(money);
+        int numberOfLottos = Integer.parseInt(money) / LOTTO_PRICE;
+
+        System.out.printf("\n%d개를 구매했습니다.", numberOfLottos);
+        for (int i = 0; i < numberOfLottos; i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Lotto lotto = new Lotto(numbers);
+            printLottoNumbers(lotto);
+            lottos.add(lotto);
+        }
+    }
 
     private void validateMoney(String money) {
         int tempMoney;
