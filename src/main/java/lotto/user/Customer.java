@@ -3,7 +3,9 @@ package lotto.user;
 import lotto.store.Lotto;
 import lotto.store.LottoMachine;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.StringJoiner;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -39,8 +41,15 @@ public class Customer {
         return currentLotteries.toString();
     }
 
-    public List<Integer> determineRanking(List<Integer> winNumbers) {
-        return lotteries.stream().map(lottoNumbers -> lottoNumbers.compareWinNumbers(winNumbers))
+    public List<Integer> matchWinNumbers(List<Integer> winNumbers) {
+        return lotteries.stream()
+                .map(lottoNumbers -> lottoNumbers.compareWinNumbers(winNumbers))
+                .collect(Collectors.toList());
+    }
+
+    public List<Integer> matchBonusNumber(int bonusNumber) {
+        return lotteries.stream()
+                .map(matchNumber -> matchNumber.compareBonusNumber(bonusNumber))
                 .collect(Collectors.toList());
     }
 
