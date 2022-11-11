@@ -156,6 +156,37 @@ class LottoTest {
         }
     }
 
+    @Nested
+    class ProfitCalculatorTest{
 
+        private ProfitCalculator profitCalculator;
+        @BeforeEach
+        void setUp(){
+            profitCalculator = new ProfitCalculator();
+        }
+
+        @DisplayName("총 우승 상금 테스트")
+        @Test
+        void winningMoneyAmountTest(){
+            HashMap<LottoRank, Integer> lottoResultCount = new HashMap<>();
+            lottoResultCount.put(LottoRank.THREE_CORRECT, 0);
+            lottoResultCount.put(LottoRank.FOUR_CORRECT, 1);
+            lottoResultCount.put(LottoRank.SIX_CORRECT, 0);
+            BigDecimal winningMoneyAmount = profitCalculator.getWinningMoneyAmount(lottoResultCount);
+            //double winningMoneyAmount = profitCalculator.getWinningMoneyAmount(lottoResultCount);
+            assertThat(winningMoneyAmount).isEqualTo("50000");
+        }
+
+
+        @DisplayName("수익률 계산 테스트")
+        @Test
+        void profitCalculate(){
+            HashMap<LottoRank, Integer> lottoResultCount = new HashMap<>();
+            lottoResultCount.put(LottoRank.THREE_CORRECT, 1);
+            String profit = profitCalculator.calculate(8, lottoResultCount);
+            assertThat(profit).isEqualTo("62.5");
+
+        }
+    }
 
 }
