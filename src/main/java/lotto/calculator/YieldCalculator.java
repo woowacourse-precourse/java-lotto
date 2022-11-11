@@ -12,6 +12,7 @@ public class YieldCalculator {
             put(4, 0);
             put(5, 0);
             put(6, 0);
+            put(7, 0);
         }};
 
         for (Integer integer : matchResult) {
@@ -29,7 +30,8 @@ public class YieldCalculator {
         System.out.printf("3개 일치 (5,000원) - %d개\n", winInformation.get(3));
         System.out.printf("4개 일치 (50,000원) - %d개\n", winInformation.get(4));
         System.out.printf("5개 일치 (1,500,000원) - %d개\n", winInformation.get(5));
-        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", winInformation.get(6));
+        System.out.printf("5개 일치 보너스 볼 일치 (30,000,000원) - %d개\n", winInformation.get(6));
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", winInformation.get(7));
 
         return winInformation;
     }
