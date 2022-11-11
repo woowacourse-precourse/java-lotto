@@ -4,13 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.model.PurchaseAmount;
 
 public class InputPurchaseAmount {
-    public PurchaseAmount input() {
+    public static PurchaseAmount input() {
         String input = Console.readLine();
         validateInteger(input);
         return new PurchaseAmount(Integer.parseInt(input));
     }
 
-    private void validateInteger(String input) {
+    private static void validateInteger(String input) {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {

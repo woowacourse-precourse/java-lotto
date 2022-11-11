@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputWinningNumbers {
-    public List<Integer> input() {
+    public static List<Integer> input() {
         String input = Console.readLine();
         validate(input);
 
@@ -18,14 +18,14 @@ public class InputWinningNumbers {
         return winningNumbers;
     }
 
-    private void validate(String input) {
+    private static void validate(String input) {
         String[] numbers = input.split(",");
         for (String number : numbers) {
             validateInteger(number);
         }
     }
 
-    private void validateInteger(String input) {
+    private static void validateInteger(String input) {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
