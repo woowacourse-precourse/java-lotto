@@ -1,22 +1,21 @@
 package lotto.exception;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class InputException {
-    public static void validatePurchaseAmount(String data) {
+    public static void validatePurchaseAmount(String purchaseAmount) {
         try {
-            Integer.valueOf(data);
+            Integer.valueOf(purchaseAmount);
         } catch (Exception exception) {
             System.out.println("[ERROR] 입력된 금액이 숫자가 아닙니다.");
-            throw new NoSuchElementException();  // 이렇게 코드를 입력하지 않으면 예외_처리() 테스트가 통과되지 않는다...
+            throw new IllegalArgumentException();
         }
-        if (Integer.valueOf(data) == 0) {
+        if (Integer.valueOf(purchaseAmount) == 0) {
             System.out.println("[ERROR] 입력된 금액이 0원보다는 커야 합니다.");
             throw new IllegalArgumentException();
         }
-        if (Integer.valueOf(data) % 1000 != 0) {
+        if (Integer.valueOf(purchaseAmount) % 1000 != 0) {
             System.out.println("[ERROR] 입력된 금액이 1000원 단위로 나눠 떨어져야 합니다.");
             throw new IllegalArgumentException();
         }
