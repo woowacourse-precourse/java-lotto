@@ -38,4 +38,8 @@ public class Lotto {
     public List<Integer> getNumbers(){
         return this.numbers;
     }
+
+    public static Lotto of(){
+        return new Lotto(Randoms.pickUniqueNumbersInRange(FIRST_NUMBER, LAST_NUMBER, PICK_NUMBER));
+    }
 }
