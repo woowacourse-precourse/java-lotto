@@ -20,4 +20,11 @@ public class Input {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void validatePrice(int price) {
+        if (price % 1000 != 0) {
+            // TODO: 2022/11/11 에러 메시지 출력 추가
+            throw new IllegalArgumentException();
+        }
+    }
 }
