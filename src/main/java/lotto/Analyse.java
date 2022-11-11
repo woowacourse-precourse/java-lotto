@@ -6,7 +6,7 @@ import java.util.TreeMap;
 public class Analyse {
     private static TreeMap<Prize, Integer> stats = new TreeMap<>();
 
-    private Analyse() {
+    public Analyse() {
 
     }
 
@@ -17,6 +17,10 @@ public class Analyse {
         stats.put(Prize.FOURTH, 0);
         stats.put(Prize.FIFTH, 0);
         stats.put(Prize.ZERO, 0);
+    }
+
+    public static void clearStats() {
+        stats.clear();
     }
 
     public static TreeMap<Prize, Integer> getStats() {
