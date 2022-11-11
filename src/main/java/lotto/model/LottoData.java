@@ -8,6 +8,7 @@ import java.util.List;
 public class LottoData {
     int lottoAmount;
     List<Lotto> allLotto;
+    LottoCalculate lottoCalculate = new LottoCalculate();
 
     LottoData(int money) {
         this.lottoAmount = money / 1000;
@@ -21,6 +22,12 @@ public class LottoData {
             lottoNumbers.sort(Comparator.naturalOrder());
             Lotto lotto = new Lotto(lottoNumbers);
             allLotto.add(lotto);
+        }
+    }
+
+    void putDataToLotto(List<Integer> winNumbers, int bonusNumber) {
+        for (Lotto lotto : allLotto) {
+            lottoCalculate.totalCalculate(lotto, winNumbers, bonusNumber);
         }
     }
 }
