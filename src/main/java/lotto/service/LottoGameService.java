@@ -30,7 +30,7 @@ public class LottoGameService {
     // Key : 로또 당첨 등수 ENUM / Value : 해당 등수에 당첨된 횟수인 당첨 통계를 위한 HashMap
     private final Map<LottoWinningRank, Integer> lottoWinningRankMap = new HashMap<>();
 
-    private final List<List<Integer>> lottoNumbers = new ArrayList<>();
+    private final List<List<Integer>> purchaseLottoNumbers = new ArrayList<>();
 
     public LottoGameService() {
         initLottoWinningRankMap();
@@ -46,7 +46,7 @@ public class LottoGameService {
 
     public void addLottoNumberToLottoNumbers() {
         Lotto lotto = new Lotto(LottoNumbersGenerator.generateLottoNumbers());
-        lottoNumbers.add(lotto.getNumbers());
+        purchaseLottoNumbers.add(lotto.getNumbers());
     }
 
     public int getLottoIssueCount(String lottoPurchaseAmount) {
@@ -193,7 +193,7 @@ public class LottoGameService {
         return originalWinningMoney.replace(",", "");
     }
 
-    public List<List<Integer>> getLottoNumbers() {
-        return lottoNumbers;
+    public List<List<Integer>> getPurchaseLottoNumbers() {
+        return purchaseLottoNumbers;
     }
 }
