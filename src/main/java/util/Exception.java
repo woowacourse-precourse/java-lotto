@@ -13,6 +13,7 @@ public class Exception {
     private static final String NOT_NUMERAL_MONEY_ERROR = "[ERROR] 구매 금액은 숫자로 입력해야 합니다.";
     private static final String NOT_VALID_MONEY_ERROR = "[ERROR] 구매 금액은 1000원 단위여야 합니다.";
     private static final String NOT_NUMERAL_NUMBER_ERROR = "[ERROR] 로또 번호는 숫자로만 이루어져야 합니다.";
+    private static final String NOT_VALID_NUMBER_OF_NUMBERS = "[ERROR] 로또 번호는 6개의 숫자로 이루어져야 합니다.";
     private static final String NOT_UNIQUE_NUMBER_ERROR = "[ERROR] 로또 번호는 중복되지 않아야 합니다.";
     private static final String NOT_IN_RANGE_NUMBER_ERROR = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
 
@@ -54,7 +55,7 @@ public class Exception {
     private static void isValidNumberOfNumbers(String numbersInput) {
         List<Integer> winningNumbers = InputConverter.getWinningNumbers(numbersInput);
         if (winningNumbers.size() != NUMBER_OF_NUMBERS) {
-            throw new IllegalArgumentException(NOT_UNIQUE_NUMBER_ERROR);
+            throw new IllegalArgumentException(NOT_VALID_NUMBER_OF_NUMBERS);
         }
     }
 
