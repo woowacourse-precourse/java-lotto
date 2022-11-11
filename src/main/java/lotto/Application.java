@@ -39,21 +39,25 @@ public class Application {
     public static int askTotalPrice() {
     	String stringprice = "";
     	int price = 0;
-    	
-    	System.out.println("구입금액을 입력해 주세요.");
-    	stringprice = Console.readLine();
-    	validateNumber(stringprice);
+    	boolean check = false;
+    	while(check == false) {
+    		System.out.println("구입금액을 입력해 주세요.");
+    		stringprice = Console.readLine();
+    		check = validateNumber(stringprice);
+    	}
     	price = Integer.parseInt(stringprice);
     	System.out.println();
     	
     	return price;
     }
     
-    public static void validateNumber(String stringprice) {
+    public static boolean validateNumber(String stringprice) {
     	String pattern = "^[0-9]+$";
     	if (!Pattern.matches(pattern, stringprice)) {
-    		throw new IllegalArgumentException("[ERROR] 금액(숫자)를 입력해주세요.");
+    		System.out.println("[ERROR] 금액(숫자)를 입력해주세요.");
+    		return false;
     	}
+    	return true;
     }
     public static List<Integer> askNumbers() {
     	List<Integer> numbers = new ArrayList<>();
