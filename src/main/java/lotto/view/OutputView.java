@@ -19,8 +19,7 @@ public class OutputView {
 
     public static void printLottos(Lottos lottos) {
         lottos.getLottos().stream()
-                .map(Object::toString)
-                .forEach(System.out::println);
+                .forEach(lotto -> System.out.println(lotto.getNumbers().toString()));
     }
 
     public static void printWinningStatistics() {
