@@ -1,5 +1,8 @@
 package lotto;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Print {
 
     public static void PrintUserPurchaseAmount(){
@@ -8,5 +11,13 @@ public class Print {
 
     public static void PrintUserPurchaseLottoAmount(Integer lottoMoney){
         System.out.println(lottoMoney+"개를 구매했습니다.");
+    }
+
+    public static void PrintUserLottoNumbers(UserLotto userLottoes) {
+
+        for (Lotto l : userLottoes.getUserLottoes()){
+            List<Integer> numbers = l.getNumbers();
+            System.out.println(Arrays.toString(numbers.toArray()));
+        }
     }
 }

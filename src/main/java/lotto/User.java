@@ -21,9 +21,7 @@ public class User {
         Print.PrintUserPurchaseLottoAmount(this.lottoCount);
 
         this.userLottoes = new UserLotto(lottoCount);
-
-        for (Lotto l : userLottoes.getUserLottoes()){
-            System.out.println("l.getNumbers() = " + l.getNumbers());
-        }
+        Print.PrintUserLottoNumbers(userLottoes);
     }
+
 }
