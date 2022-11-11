@@ -8,9 +8,12 @@ public enum Reward {
     FIFTH(5_000),
     ;
 
-    private int amount;
-    private Reward(int amount) {
+    private final int amount;
+    Reward(int amount) {
         this.amount = amount;
+    }
 
+    public int getAmount() {
+        return amount;
     }
 }
