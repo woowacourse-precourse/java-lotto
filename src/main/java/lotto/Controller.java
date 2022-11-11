@@ -18,6 +18,7 @@ public class Controller {
         }
 
         Lotto lotto = new Lotto(lottoAnswer);
+        lotto.getLottoBonusNumber(Console.readLine());
     }
 
     public void publishLotto(){

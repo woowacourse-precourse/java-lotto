@@ -17,10 +17,11 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    public void getLottoBonusNumber(){
-
+    public void getLottoBonusNumber(String bonusNumber){
+        validateBonusNumber(bonusNumber);
+        this.numbers.add(Integer.parseInt(bonusNumber));
     }
-    public void validateBonusNumber(){
+    public void validateBonusNumber(String bonusNumber){
 
     }
 }
