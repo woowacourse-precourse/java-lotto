@@ -24,7 +24,6 @@ public class LottoController {
         try {
             init();
             read();
-            result = new Result();
             result.compare(user.getMyLottoNumbers(), lotto, bonus);
             result.calc(user);
             view.printResult(result);
