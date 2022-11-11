@@ -1,8 +1,6 @@
 package lotto.view.output;
 
-import static lotto.view.output.StringFormatter.errorMessageFormat;
-import static lotto.view.output.StringFormatter.purchasedNumberOfLottosFormat;
-import static lotto.view.output.StringFormatter.resultStatisticsFormat;
+import lotto.domain.winning.WinningStatistics;
 
 public class LottoPrinter {
 
@@ -10,8 +8,8 @@ public class LottoPrinter {
         System.out.println("구입금액을 입력해 주세요.");
     }
 
-    public void printTheNumberOfPurchaseLottos(int number) {
-        System.out.println(purchasedNumberOfLottosFormat(number));
+    public void printTheNumberOfPurchaseLottos(int number, String suffix) {
+        System.out.println(number + suffix);
     }
 
     public void printLottoNumbers(String lottoNumbers) {
@@ -26,11 +24,11 @@ public class LottoPrinter {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-    public void printWinningStatistics(String lottoResults, double rateOfReturn) {
-        System.out.println(resultStatisticsFormat(lottoResults, rateOfReturn));
+    public void printWinningStatistics(WinningStatistics winningStatistics) {
+        System.out.println(winningStatistics);
     }
 
-    public void printError(String message) {
-        System.out.println(errorMessageFormat(message));
+    public void printError(String errorMessage) {
+        System.out.println(errorMessage);
     }
 }

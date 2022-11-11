@@ -39,7 +39,7 @@ public class LottoStore {
     }
 
     private void validateMoney(int money) {
-        if (money % PRICE_OF_LOTTO != 0) {
+        if (money == 0 || money % PRICE_OF_LOTTO != 0) {
             throw new IllegalArgumentException(INVALID_VALUE_OF_MONEY);
         }
     }

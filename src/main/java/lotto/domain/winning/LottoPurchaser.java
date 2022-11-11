@@ -17,16 +17,8 @@ public class LottoPurchaser {
         return winningLotto.lottoResults(purchasedLottos);
     }
 
-    public double rateOfReturn(LottoResults results) {
-        int totalWinnings = results.totalWinnings();
-        double totalPricesOfPurchase = PRICE_OF_LOTTO * purchasedLottos.size();
-        double rateOfReturn = totalWinnings / totalPricesOfPurchase * 100;
-
-        return roundedNumber(rateOfReturn);
-    }
-
-    private double roundedNumber(double rateOfReturn) {
-        return (double) Math.round(rateOfReturn * 10) / 10;  // 소수점 둘째 자리 반올림
+    public int totalPricesOfPurchase() {
+        return PRICE_OF_LOTTO * numberOfPurchasedLottos();
     }
 
     public int numberOfPurchasedLottos() {

@@ -5,7 +5,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import lotto.domain.winning.LottoPurchaser;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -32,6 +34,14 @@ class LottoStoreTest {
         @ValueSource(strings = {"1100", "25555", "500"})
         void test(String money) {
             assertThatThrownBy(() -> lottoStore.lottos(money))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(INVALID_VALUE_OF_MONEY);
+        }
+
+        @DisplayName("0원을 입력하면 예외를 던진다.")
+        @Test
+        void test2() {
+            assertThatThrownBy(() -> lottoStore.lottos("0"))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(INVALID_VALUE_OF_MONEY);
         }
