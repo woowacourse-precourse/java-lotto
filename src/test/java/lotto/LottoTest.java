@@ -65,6 +65,20 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("로또 당첨 번호 입력 - 45를 초과하는 값이 있는 경우 예외 발생")
+    @Test
+    void checkOutOfRangeNumbers() {
+        assertThatThrownBy(() -> new Lotto("1,2,3,4,5,54"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 당첨 번호 입력 - 1 미만의 값이 있는 경우 예외 발생")
+    @Test
+    void checkOutOfRangeNumbers2() {
+        assertThatThrownBy(() -> new Lotto("1,2,3,4,5,0"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("로또 당첨 번호 입력 - 문자열을 문자열 리스트로 형 변환")
     @Test
     void convertStringToListTest() throws NoSuchMethodException {
