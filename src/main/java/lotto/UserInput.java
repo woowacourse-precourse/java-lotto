@@ -2,8 +2,12 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserInput {
 
+    static List<List<Integer>> lotteries = new ArrayList<>();
     private UserInput() {}
 
     static public long inputMoney() {
@@ -15,7 +19,7 @@ public class UserInput {
     static private void validateMoney(String input) {
         try {
             long money = Long.parseLong(input);
-            if (money % 1000 != 0) {
+            if (money % 1000 != 0 || money == 0) {
                 Message.ERROR_INPUT_1000.printError();
                 throw new IllegalArgumentException();
             }
