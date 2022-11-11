@@ -43,26 +43,31 @@ public class LottoService {
         OutputView.printResult(result);
     }
 
+    static int prize = 0;
+    static int bonus = 0;
+
     // TODO
     private Map<String, Integer> howManyMatchNumber(List<Integer> lotto, List<Integer> prizeLotto, int bonusNumber) {
         Map<String, Integer> countMatchNumbers = new HashMap<>();
-        int prize = 0;
-        int bonus = 0;
         for (int number : lotto) {
-            for (int prizeNumber : prizeLotto) {
-                if (number == prizeNumber) {
-                    prize++;
-                    break;
-                }
-                if (number == bonusNumber) {
-                    bonus++;
-                    break;
-                }
-            }
+            compareNumber(prizeLotto, number, bonusNumber);
         }
         countMatchNumbers.put("prize", prize);
         countMatchNumbers.put("bonus", bonus);
         return countMatchNumbers;
+    }
+
+    private void compareNumber(List<Integer> prizeLotto, int number, int bonusNumber) {
+        for (int prizeNumber : prizeLotto) {
+            if (number == prizeNumber) {
+                prize++;
+                break;
+            }
+            if (number == bonusNumber) {
+                bonus++;
+                break;
+            }
+        }
     }
 
     private String keyNameForResult(int prize, int bonus) {

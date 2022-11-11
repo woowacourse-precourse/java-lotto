@@ -31,7 +31,6 @@ public class OutputView {
         return Util.input();
     }
 
-    // TODO::
     public static void printDividingLine() {
         enter();
         System.out.println(WINNING_STATISTICS);
@@ -55,7 +54,6 @@ public class OutputView {
         }
     }
 
-    // TODO::
     private static void isI6SaveBonus1OrElseSaveBonus0(int i) {
         if (i != 6) {
             BONUS = 0;
@@ -67,7 +65,6 @@ public class OutputView {
         }
     }
 
-    // TODO::
     private static int getProxyNumber(int i) {
         int proxy = i;
         if (i == 6 || i == 7) {
@@ -76,7 +73,6 @@ public class OutputView {
         return proxy;
     }
 
-    // TODO::
     private static String createMessage(int i) {
         assert OutputResult.getMessage(i, BONUS) != null;
         return OutputResult.getMessage(i, BONUS);
