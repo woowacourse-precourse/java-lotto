@@ -60,7 +60,8 @@ enum LottoRanking {
         return winnings * count;
     }
 
-    public String stringFormat() {
+    @Override
+    public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(matchNumberCount).append("개 일치");
 

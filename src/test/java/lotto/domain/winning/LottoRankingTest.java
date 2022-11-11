@@ -13,14 +13,14 @@ class LottoRankingTest {
     @Test
     void trueMatchBonusNumber() {
         LottoRanking second = LottoRanking.SECOND;
-        assertThat(second.stringFormat()).contains(BONUS_FORMAT);
+        assertThat(second.toString()).contains(BONUS_FORMAT);
     }
 
-    @DisplayName("matchBonusNumber가 false인 LottoRanking은 stringFormat에 '보너스 볼 일치'가 포함된다.")
+    @DisplayName("matchBonusNumber가 false인 LottoRanking은 toString에 '보너스 볼 일치'가 포함된다.")
     @Test
     void falseMatchBonusNumber() {
         LottoRanking second = LottoRanking.FIRST;
-        assertThat(second.stringFormat()).doesNotContain(BONUS_FORMAT);
+        assertThat(second.toString()).doesNotContain(BONUS_FORMAT);
     }
 
     @DisplayName("bonus number와 관련 없는 랭킹 정보를 matchNumberCount로 찾을 수 있다.")

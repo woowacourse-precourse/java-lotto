@@ -21,7 +21,7 @@ public class LottoResults {
         StringBuilder stringBuilder = new StringBuilder();
         results.forEach(
                 (key, value) -> stringBuilder
-                        .append(key.stringFormat()).append(" - ")
+                        .append(key.toString()).append(" - ")
                         .append(value).append("개\n")
         );
 
