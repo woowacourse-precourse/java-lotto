@@ -50,10 +50,19 @@ public class Lotto {
         }
     }
 
+    private void validateByOverlapForAddBonusNumber(int bonusNumber) {
+        HashSet<Integer> checkNumbers = new HashSet<>(numbers);
+        checkNumbers.add(bonusNumber);
 
+        if(checkNumbers.size() != NUMBER_OF_LOTTO + 1) {
+            Output.printErrorAndExit(ExceptionType.HAVE_OVERLAP.getMessage());
+            throw new IllegalArgumentException(ExceptionType.HAVE_OVERLAP.getMessage());
+        }
+    }
 
     private void validateForBonusNumber(int number) {
         validateNumberInLottoRange(number);
+        validateByOverlapForAddBonusNumber(number);
     }
 
     public void addNumber(int number) {
