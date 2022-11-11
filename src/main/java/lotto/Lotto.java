@@ -42,7 +42,7 @@ public class Lotto {
 
     public int calculateQuantity(int money) {
         validateMonetaryUnit(money);
-        return 0;
+        return money / 1000;
     }
 
     private void validateMonetaryUnit(int money) {
