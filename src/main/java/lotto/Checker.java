@@ -14,8 +14,12 @@ public class Checker {
 	public static List<String> bonusNumber;
 
 	public static void checkUserInput(String userInput) {
-		checkNumberOnlyException(Arrays.asList(userInput));
-		checkMaxPrice(userInput);
+		//try {
+			checkNumberOnlyException(Arrays.asList(userInput));
+			checkMaxPrice(userInput);
+		//}catch(IllegalArgumentException e){
+
+		//}
 	}
 
 	@Override
@@ -97,7 +101,4 @@ public class Checker {
 		}
 	}
 
-	public void compareNumbers() {
-
-	}
 }

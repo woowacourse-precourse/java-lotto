@@ -17,30 +17,34 @@ public class LottoProgram {
 	private static List<Lotto> lottoList = new ArrayList<>();
 
 	public void start() {
-		View.showPurchaseInputGuideMessage();
-		String userInput = Input.userInput();
-		Checker.checkUserInput(userInput);
+		try {
+			View.showPurchaseInputGuideMessage();
+			String userInput = Input.userInput();
+			Checker.checkUserInput(userInput);
 
-		lottoCount = Integer.parseInt(userInput) / PRICE;
-		createLotto(lottoCount);
+			lottoCount = Integer.parseInt(userInput) / PRICE;
+			createLotto(lottoCount);
 
-		View.showLottoPurchasedGuideMessage(lottoCount);
-		View.showLottoNumbers(lottoList);
+			View.showLottoPurchasedGuideMessage(lottoCount);
+			View.showLottoNumbers(lottoList);
 
-		View.showWinningNumberInputGuideMessage();
-		userInput = Input.userInput();
-		Checker.checkWinningNumberInput(userInput);
+			View.showWinningNumberInputGuideMessage();
+			userInput = Input.userInput();
+			Checker.checkWinningNumberInput(userInput);
 
-		View.showBonusNumberInputGuideMessage();
-		userInput = Input.userInput();
-		Checker.checkBonusNumberInput(userInput);
+			View.showBonusNumberInputGuideMessage();
+			userInput = Input.userInput();
+			Checker.checkBonusNumberInput(userInput);
 
-		MakeWinner.compareNumbers(Checker.winningNumber, Checker.bonusNumber,lottoList);
-		MakeWinner.createWinnerResult();
+			MakeWinner.compareNumbers(Checker.winningNumber, Checker.bonusNumber, lottoList);
+			MakeWinner.createWinnerResult();
 
-		View.showWinnings();
+			View.showWinnings();
 
-		View.showYield(calculateYield());
+			View.showYield(calculateYield());
+		}catch(IllegalArgumentException e){
+			System.out.println(e.getMessage());
+		}
 
 	}
 
