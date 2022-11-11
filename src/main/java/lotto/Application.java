@@ -35,7 +35,7 @@ public class Application {
         Set<Integer> winnerNumber = setWinnerNumber();
         System.out.println("winnerNumber = " + winnerNumber);
 
-        int bonusNumber = setBonusNumber();
+        int bonusNumber = setBonusNumber(winnerNumber);
         System.out.println("bonusNumber = " + bonusNumber);
 
         System.out.println("보너스 넘버 완료 ================");
@@ -69,10 +69,17 @@ public class Application {
       return List.of(rightNumbers.intValue(), rightBonusNumber.intValue());
     }
 
-    private static int setBonusNumber() {
+    private static int setBonusNumber(Set<Integer> winnerNumber) {
         String input = Console.readLine();
+        int bonusNumber = 0;
         if(validBonusNumber(input)){
-            return Integer.parseInt(input);
+            bonusNumber =  Integer.parseInt(input);
+        }
+        if(winnerNumber.contains(bonusNumber)){
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_VALUE.message());
+        }
+        if(bonusNumber >= 1 && bonusNumber <= 45){
+            return bonusNumber;
         }
         throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_VALUE.message());
     }
@@ -100,7 +107,22 @@ public class Application {
 
     private static boolean validWinnerNumber(String input) {
         // 정규표현식 1 ~ 45 의 수 확인하기 -> 숫자 검증 로직을 별도 생성
-        if(Pattern.matches("(\\d?\\d,){5}\\d", input)){
+        validRegex(input);
+        // 입력 받은 당첨 번호의 값이 1~45 사이인지 검증
+        validNumberRange(input);
+        return true;
+    }
+
+    private static void validNumberRange(String input) {
+        Stream.of(input.split(",")).map(Integer::parseInt).forEach(x-> {
+            if (x < 1 || x > 45) {
+                throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_VALUE.message());
+            }
+        });
+    }
+
+    private static boolean validRegex(String input) {
+        if(Pattern.matches("((\\d?\\d,){5}\\d?\\d)", input)){
             return true;
         }
         throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_VALUE.message());
