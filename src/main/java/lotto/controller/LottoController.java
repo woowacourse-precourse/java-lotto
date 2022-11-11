@@ -13,15 +13,10 @@ import lotto.view.OutputView;
 public class LottoController {
     public void run() {
         try {
-            playLotto();
+            playLottoDraw(inputPayment());
         } catch (IllegalArgumentException exceptionRaised) {
             System.out.println(exceptionRaised.getMessage());
         }
-    }
-    
-    private void playLotto() {
-        Payment payment = inputPayment();
-        playLottoDraw(payment);
     }
     
     private Payment inputPayment() {
