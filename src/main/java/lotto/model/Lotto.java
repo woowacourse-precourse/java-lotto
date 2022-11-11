@@ -42,4 +42,9 @@ public class Lotto {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return this.numbers.toString();
+    }
 }
