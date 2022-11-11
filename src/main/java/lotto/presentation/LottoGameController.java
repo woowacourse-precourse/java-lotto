@@ -2,6 +2,7 @@ package lotto.presentation;
 
 import java.util.List;
 import lotto.application.LottoService;
+import lotto.domain.BonusNumber;
 import lotto.domain.GeneralWinNumber;
 import lotto.domain.Lotto;
 import lotto.presentation.view.LottoGamePrinter;
@@ -14,8 +15,8 @@ public class LottoGameController {
         LottoGamePrinter.printLottos(lottos);
 
         GeneralWinNumber generalWinNumber = new GeneralWinNumber(LottoGameReader.readWinNumber());
+        BonusNumber bonusNumber = new BonusNumber(LottoGameReader.readBonusNumber());
 
-        int bonusNumber = LottoGameReader.readBonusNumber();
     }
 
 }
