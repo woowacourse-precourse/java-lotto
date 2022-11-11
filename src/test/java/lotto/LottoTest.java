@@ -91,5 +91,27 @@ class LottoTest {
         }
     }
 
+    @Nested
+    class BonusTest{
+
+        @DisplayName("보너스 번호가 숫자가 아닐 때 예외가 발생한다.")
+        @ParameterizedTest
+        @ValueSource(strings = {"a","b","big","small"})
+        void createBonusByNotNumber(String situation){
+            Bonus bonus = new Bonus();
+            assertThatThrownBy(() -> bonus.checkBonus(situation))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @DisplayName("보너스 번호가 1~45 사이가 아니면 예외가 발생한다.")
+        @ParameterizedTest
+        @ValueSource(strings = {"46","0","1234","200"})
+        void createBonusByOverRange(String situation){
+            Bonus bonus = new Bonus();
+            assertThatThrownBy(() -> bonus.checkBonus(situation))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
 
 }
