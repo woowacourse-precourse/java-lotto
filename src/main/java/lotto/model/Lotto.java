@@ -1,17 +1,17 @@
 package lotto.model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
 
-    private final List<Integer> numbers;
+    private final List<Integer> numbers = new ArrayList<>();
 
     public Lotto(List<Integer> nums) {
         validate(nums);
-        Collections.sort(nums);
-        this.numbers = nums;
-
+        this.numbers.addAll(nums);
+        Collections.sort(this.numbers);
     }
 
     private void validate(List<Integer> numbers) {

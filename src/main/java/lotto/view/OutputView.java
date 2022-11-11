@@ -1,6 +1,8 @@
 package lotto.view;
 
+import java.util.List;
 import lotto.controller.LottoListController;
+import lotto.controller.LottoSameCountController;
 import lotto.model.Lotto;
 
 public class OutputView {
@@ -23,5 +25,20 @@ public class OutputView {
         }
         System.out.print("]");
     }
+
+    public static void ResultPrint(List<Integer> rankcountlist) {
+        System.out.println("\n당첨 통계\n---");
+        System.out.println("3개 일치 (5,000원) - " + rankcountlist.get(4) + "개");
+        System.out.println("4개 일치 (50,000원) - " + rankcountlist.get(3) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + rankcountlist.get(2) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + rankcountlist.get(1) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + rankcountlist.get(0) + "개");
+    }
+
+    public static void YieldPrint(int summoney, int paymonney) {
+        double result = (double) summoney * 100 / paymonney;
+        System.out.println("총 수익률은 " + result + "%입니다.");
+    }
+
 
 }

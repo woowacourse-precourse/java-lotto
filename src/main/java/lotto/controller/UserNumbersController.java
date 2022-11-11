@@ -10,6 +10,7 @@ public class UserNumbersController {
     private final Lotto NUMBERS;
     private final int BONUS_NUMBER;
 
+
     public UserNumbersController(String usernumbers, String bonusnumber) {
         List<Integer> numbers = new ArrayList<>();
         for (String s : stringSplit(usernumbers)) {
@@ -42,5 +43,8 @@ public class UserNumbersController {
         return NUMBERS;
     }
 
+    public int getBONUS_NUMBER() {
+        return BONUS_NUMBER;
+    }
 
 }

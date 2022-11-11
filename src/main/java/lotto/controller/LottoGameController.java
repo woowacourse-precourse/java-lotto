@@ -7,16 +7,29 @@ import lotto.view.OutputView;
 public class LottoGameController {
 
     public LottoGameController() {
+        gameStart();
+    }
 
+    private void gameStart() {
         BuyAmount buyAmount = new BuyAmount(InputView.buyAmountInput());
-        LottoListController lottoGameController = new LottoListController(buyAmount.getMONEY());
-        OutputView.LottoCountPrint(lottoGameController.getLOTTO_COUNT());
-        OutputView.LottoListPrint(lottoGameController);
-        String usernumbers = InputView.answerNumberInput();
-        String userbonusnumber = InputView.bonusNumberInput();
-        UserNumbersController userNumbersController = new UserNumbersController(usernumbers,
-            userbonusnumber);
+        LottoListController lottoListController = new LottoListController(buyAmount.getMONEY());
+        initMessage(lottoListController);
+        UserNumbersController userNumbersController = new UserNumbersController(
+            InputView.answerNumberInput(),
+            InputView.bonusNumberInput());
+        LottoSameCountController lottoSameCountController = new LottoSameCountController(
+            lottoListController, userNumbersController);
+        OutputView.ResultPrint(lottoSameCountController.getRANK_COUNT_LIST());
+        OutputView.YieldPrint(lottoSameCountController.getSUM_MONEY(), buyAmount.getMONEY());
+    }
 
+    private void initMessage(LottoListController lottoListController) {
+        OutputView.LottoCountPrint(lottoListController.getLOTTO_COUNT());
+        OutputView.LottoListPrint(lottoListController);
+    }
+
+    private void sameMessage(LottoListController lottoListController,
+        UserNumbersController userNumbersController) {
 
     }
 
