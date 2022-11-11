@@ -35,7 +35,7 @@ public enum LottoRank {
         return isCountOfMatchingLottoNumberSame(SECOND, countOfSameLottoNumber) && existBonusLottoNumber;
     }
     
-    private boolean isSecond() {
+    public boolean isSecond() {
         return this == SECOND;
     }
     
@@ -45,6 +45,14 @@ public enum LottoRank {
     
     private static boolean isCountOfMatchingLottoNumberSame(final LottoRank second, final int countOfSameLottoNumber) {
         return second.countOfSameLottoNumber == countOfSameLottoNumber;
+    }
+    
+    public boolean isMiss() {
+        return this == MISS;
+    }
+    
+    public int countOfSameLottoNumber() {
+        return countOfSameLottoNumber;
     }
     
     public int prizeMoney() {

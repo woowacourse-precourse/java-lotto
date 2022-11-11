@@ -1,9 +1,14 @@
 package lotto.view;
 
+import lotto.domain.LottoRank;
 import lotto.dto.LottosDTO;
 import lotto.exception.ViewClassCreateException;
 
+import java.text.DecimalFormat;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class OutputView {
@@ -30,7 +35,7 @@ public class OutputView {
     public static void printLottoIssuanceResults(final LottosDTO lottosDTO) {
         final List<List<Integer>> lottos = lottosDTO.getLottos();
     
-        System.out.printf("%d개를 구매했습니다.%n", lottos.size());
+        System.out.printf("%n%d개를 구매했습니다.%n", lottos.size());
         System.out.println(lottos.stream()
                 .map(OutputView::parseLottoIssuanceResults)
                 .collect(Collectors.joining("\n")));
@@ -41,5 +46,34 @@ public class OutputView {
                 .sorted()
                 .map(String::valueOf)
                 .collect(Collectors.joining(", ", "[", "]"));
+    }
+    
+    public static void printWinningStats(final List<LottoRank> lottoRanks) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println(Arrays.stream(LottoRank.values())
+                .filter(Predicate.not(LottoRank::isMiss))
+                .sorted(Comparator.reverseOrder())
+                .map(lottoRank -> parsePerWinningStats(lottoRanks, lottoRank))
+                .collect(Collectors.joining("\n")));
+    }
+    
+    private static String parsePerWinningStats(final List<LottoRank> lottoRanks, final LottoRank lottoRank) {
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        final int countOfSameLottoNumber = lottoRank.countOfSameLottoNumber();
+        final int prizeMoney = lottoRank.prizeMoney();
+        final String prizeMoneyDisplay = decimalFormat.format(prizeMoney);
+        final int countOfMatchingLottoRank = countOfMatchingLottoRank(lottoRanks, lottoRank);
+        
+        if (lottoRank.isSecond()) {
+            return String.format("%d개 일치, 보너스 볼 일치 (%s원) - %d개", countOfSameLottoNumber, prizeMoneyDisplay, countOfMatchingLottoRank);
+        }
+        return String.format("%d개 일치 (%s원) - %d개", countOfSameLottoNumber, prizeMoneyDisplay, countOfMatchingLottoRank);
+    }
+    
+    private static int countOfMatchingLottoRank(final List<LottoRank> lottoRanks, final LottoRank lottoRankToCompare) {
+        return (int) lottoRanks.stream()
+                .filter(lottoRank -> lottoRank == lottoRankToCompare)
+                .count();
     }
 }
