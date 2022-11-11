@@ -13,7 +13,7 @@ public class LottoResult {
     public void insertResult(Rank rank) {
         result.put(rank, result.getOrDefault(rank, 0)+1);
     }
-    public Map getCopyResult() {
+    public Map<Rank, Integer> getCopyResult() {
         Map<Rank, Integer> copy = new HashMap<>();
         for (Rank rank : result.keySet()) {
             copy.put(rank, result.get(rank));
