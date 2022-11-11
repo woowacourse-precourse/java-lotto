@@ -20,5 +20,15 @@ public class Lotto {
         return numbers;
     }
 
-    // TODO: 추가 기능 구현
+    private void validateNumRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (!(number >= 1 && number <= 45)) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    private void validateNumOverlap(List<Integer> numbers) {
+        // TODO: 추가 기능 구현
+    }
 }
