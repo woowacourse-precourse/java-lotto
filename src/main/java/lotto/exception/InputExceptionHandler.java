@@ -87,6 +87,7 @@ public class InputExceptionHandler {
 	}
 
 	public static int checkBonusNumberForm(List<Integer> numbers, String bonusNumber) {
+		isNumber(bonusNumber);
 		int number = Integer.parseInt(bonusNumber);
 		isOneToFortyFiveBonusNumber(number);
 		isDuplicatedBonusNumber(numbers, number);
