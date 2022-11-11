@@ -7,6 +7,8 @@ public class Constants {
     public final static String NOT_SIX_NUMBERS = "로또 번호의 개수가 6개가 아닙니다.";
     public final static String DUPLICATE_NUMBERS = "겹치는 로또 번호가 존재합니다.";
     public final static String OUT_OF_RANGE = "로또 번호는 1부터 45 사이의 숫자들로 이루어져야 합니다.";
+    public final static String NO_COMMAS_FOUND = "당첨 번호는 쉼표(,)를 기준으로 구분됩니다.";
+    public final static String ONLY_NUMBER_REGEX = "^\\d+$";
 
     public static final int START_NUMBER_INCLUSIVE = 1;
     public static final int END_NUMBER_INCLUSIVE = 45;

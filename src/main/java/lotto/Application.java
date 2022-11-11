@@ -13,10 +13,8 @@ public class Application {
     public static void main(String[] args) {
         String payment = Input.submit(ENTER_PURCHASE_PRICE);
         try {
-            Input.validateIfNumeric(payment);
-            Input.validateIfInThousands(payment);
-
-            Integer purchasePrice = Integer.valueOf(payment);
+            Integer purchasePrice = Convertor.getNumericValue(payment);
+            Validator.checkIfInThousands(payment);
             Integer purchaseQuantity = purchasePrice / UNIT_PRICE;
 
             List<List<Integer>> lottoTickets = new ArrayList<>();
@@ -27,8 +25,10 @@ public class Application {
             Output.purchaseSuccessful(purchasePrice, lottoTickets);
 
             String winningNumbers = Input.submit(ENTER_WINNING_NUMBERS);
+            List<Integer> winningNumbersConverted =  Convertor.separate(winningNumbers);
             String bonusNumber = Input.submit(ENTER_BONUS_NUMBER);
-            Winner winner = new Winner(winningNumbers, bonusNumber);
+            Integer bonusNumberConverted = Convertor.getNumericValue(bonusNumber);
+            Winner winner = new Winner(winningNumbersConverted, bonusNumberConverted);
 
             List<Integer> profits = new ArrayList<>();
             for (List<Integer> lotto : lottoTickets) {
