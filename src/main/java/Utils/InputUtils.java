@@ -6,7 +6,9 @@ import java.util.List;
 public class InputUtils {
     public static boolean isMultipleOfOneThousand(String input) {
         // 1000원 단위로 떨어지는지 검증
-        return false;
+        final int THOUSAND_WON = 1000;
+        int number = Integer.parseInt(input);
+        return number % THOUSAND_WON == 0;
     }
 
     public static boolean isNumberLengthSix(List<Integer> input) {
