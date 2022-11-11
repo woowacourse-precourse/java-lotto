@@ -67,6 +67,6 @@ public class YieldCalculator {
 
     public void getYield(Map<String, Integer> winInformation, int purchaseNumber) {
         double yield = countMatchResult(winInformation, (purchaseNumber * 1000));
-        System.out.printf("총 수익률은 %.1f%%입니다.", yield);
+        System.out.printf("총 수익률은 %s%%입니다.", Math.round(yield * 10) / 10.0);
     }
 }
