@@ -20,7 +20,9 @@ public class LottoService {
 
         System.out.printf("\n%d개를 구매했습니다.", numberOfLottos);
         for (int i = 0; i < numberOfLottos; i++) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(Lotto.LOTTO_MIN_NUMBER,
+                    Lotto.LOTTO_MAX_NUMBER,
+                    Lotto.LOTTO_NUMBER_SIZE);
             Lotto lotto = new Lotto(numbers);
             printLottoNumbers(lotto);
             lottos.add(lotto);
