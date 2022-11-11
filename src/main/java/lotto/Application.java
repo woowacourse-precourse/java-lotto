@@ -373,18 +373,6 @@ public class Application {
 
     public static List<Integer> issueLottoNumbers() {
 
-        List<Integer> randomNumberList = new ArrayList<>();
-
-        while (randomNumberList.size() < 6) {
-
-            int randomNumber = Randoms.pickNumberInRange(1, 45);
-
-            if (!randomNumberList.contains(randomNumber)) {
-
-                randomNumberList.add(randomNumber);
-            }
-        }
-
-        return randomNumberList;
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 }
