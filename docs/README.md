@@ -9,7 +9,7 @@
   * [x] 입력한 번호가 6개가 맞는지 - validate()
   * [x] 중복되지 않는지 - validate()
 * [ ] 당첨번호 입력  - inputWinningNumber()
-  * [ ] 1 ~ 45 사이의 숫자인지 - validate()
+  * [x] 1 ~ 45 사이의 숫자인지 - validate()
 * [ ] 보너스 번호 입력  - inputBonusNumber()
     * [ ] 당첨번호 중 하나와 중복되지 않는지 - validateForDuplicatedNumber()
 * [ ] 당첨 통계 - printWinningStatistics()

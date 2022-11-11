@@ -23,5 +23,6 @@ public final class Constants {
     public static final String INVALID_INPUT_ERROR_MESSAGE = "[ERROR] 올바르지 않은 입력입니다.";
     public static final String INVALID_LENGTH_ERROR_MESSAGE = "[ERROR] 6개의 번호를 입력해야 합니다.";
     public static final String DUPLICATED_NUMBER_ERROR_MESSAGE = "[ERROR] 중복되는 번호가 있습니다.";
+    public static final String OUT_OF_RANGE_ERROR_MESSAGE = "[ERROR] 1 ~ 45 사이의 값을 입력해주세요";
 
 }
