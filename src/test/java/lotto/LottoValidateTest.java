@@ -1,12 +1,12 @@
 package lotto;
 
+import lotto.validate.LottoValidate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class LottoValidateTest {
     private static LottoValidate lottoValidate;
