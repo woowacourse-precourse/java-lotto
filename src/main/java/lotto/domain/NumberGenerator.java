@@ -1,14 +1,17 @@
 package lotto.domain;
 
-public class NumberGenerator {
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-    private final int money;
-    private final int quantity;
+public class NumberGenerator {
+    public List<List<Integer>> collectionOfLottoNumbers;
 
     public NumberGenerator(int money) {
         validate(money);
-        this.money = money;
-        this.quantity = this.money / 1000;
+        int quantity = money / 1000;
+        this.collectionOfLottoNumbers = generate(quantity);
     }
 
     private void validate(int money) {
@@ -17,5 +20,16 @@ public class NumberGenerator {
         }
     }
 
+    private List<List<Integer>> generate(int quantity) {
+        List<List<Integer>> collectionOfNumbers = new ArrayList<>();
 
+        return collectionOfNumbers;
+    }
+
+    private  List<Integer> generateEachNumbers() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6); // 정렬 안되있음
+        Collections.sort(numbers);
+        System.out.println(numbers);
+        return numbers;
+    }
 }
