@@ -1,6 +1,8 @@
 package lotto.exception;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoException {
 
@@ -17,7 +19,7 @@ public class LottoException {
     }
 
     private boolean containsSameNumber(List<Integer> numbers){
-        return true;
+        return new HashSet<>(numbers).size() != numbers.size();
     }
 
     private boolean containsNumberOutOfRange(List<Integer> numbers){
