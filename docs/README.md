@@ -18,12 +18,12 @@
 # 로또 게임 주요 기능 목록 작성
 ### 🟧 domain package
 **Lotto**
->- [x] Lotto 생성자를 통해 로또 당첨 번호를 저장 ( Lotto ) (보너스 번호 포함) 
+>- [x] Lotto 생성자를 통해 로또 당첨 번호를 저장 ( Lotto 생성자 ) (보너스 번호 포함) 
 >- [x] 로또 당첨 번호를 조회하는 기능 ( getLottoNumber )
 >- [x] 로또 당첨 번호를 검증하는 기능 검증되지 않으면 에러를 발생 시킴 ( validate, checkOverLap ) (에러는 "[ERROR]" 로 시작하는 문구)
 
 **User**
->- [ ] 구입 금액을 입력받는 기능 ( User가 LottoSystem에게 지불할 금액 ) ( setUserMoney )
+>- [x] 구입 금액을 입력받는 기능 ( User가 LottoSystem에게 지불할 금액 ) ( User 생성자 )
 >- [ ] 구매한 랜덤 로또 번호를 기억하는 기능 ( User가 지불한 금액에 따른 랜덤 로또 번호 ) ( setUserLottoNumber )
 >- [ ] 구매한 랜덤 로또 번호를 조회하는 기능 ( getUserLottoNumber )
 
