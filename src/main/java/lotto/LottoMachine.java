@@ -10,12 +10,16 @@ public class LottoMachine {
 
     public List<Lotto> generateLottos(int money) {
         return IntStream.range(0, getLottoCount(money))
-                .mapToObj(index -> new Lotto(generateLottoNumber()))
+                .mapToObj(index -> generateLotto())
                 .collect(Collectors.toList());
     }
 
     public int getLottoCount(int money) {
         return money / LOTTO_PRICE;
+    }
+
+    private Lotto generateLotto() {
+        return new Lotto(generateLottoNumber());
     }
 
     private List<Integer> generateLottoNumber() {
