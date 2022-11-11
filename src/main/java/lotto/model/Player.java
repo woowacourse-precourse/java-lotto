@@ -19,7 +19,8 @@ public class Player {
     }
 
     public void buyTickets(long payment){
-
+        payTickets(payment);
+        makeTickets(countTickets(payment));
     }
 
     private void payTickets(long payment){
