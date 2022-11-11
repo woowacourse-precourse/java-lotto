@@ -25,7 +25,7 @@ public class BonusNumberVerifier implements Verifier {
         try {
             new BigInteger(input);
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.IS_NOT_NUMERIC);
         }
     }
 
@@ -33,7 +33,7 @@ public class BonusNumberVerifier implements Verifier {
         try {
             Long.parseLong(input);
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionMessage.NUMBER_OUT_OF_TYPE_RANGE);
         }
     }
 
