@@ -5,9 +5,13 @@ import java.util.List;
 
 public class User {
     private int money;
-    private double earning;
-    public void inputMoney(int money) {
+    private double earning = 0;
+    public void setMoney(int money) {
         this.money = money;
+    }
+
+    public int getMoney() {
+        return money;
     }
 
     public List<Integer> inputWinningNumber(String inputtedWinningNumber) {
