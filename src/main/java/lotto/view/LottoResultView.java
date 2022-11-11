@@ -7,7 +7,7 @@ import lotto.model.Prize;
 import java.util.Map;
 
 public class LottoResultView {
-    public static void outPut(LottoResult lottoResult){
+    public static void outPut(LottoResult lottoResult) {
         Map<Prize, Integer> statistics = lottoResult.getStatistics();
 
         System.out.println("당첨 통계");
