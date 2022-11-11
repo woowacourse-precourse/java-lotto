@@ -1,6 +1,5 @@
 package lotto;
 
-import lotto.controller.LottoGame;
 import lotto.domain.Customer;
 import lotto.domain.Lotto;
 import lotto.domain.WinningNumber;
@@ -150,7 +149,7 @@ class LottoTest {
         int money = 6000;
         int result = 6;
 
-        List<Lotto> lottos = customer.generateLottos(money);
+        List<Lotto> lottos = customer.purchaseLottos(money);
 
         assertThat(lottos.size()).isEqualTo(result);
     }
