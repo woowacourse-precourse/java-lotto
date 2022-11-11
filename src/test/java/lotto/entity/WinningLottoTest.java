@@ -32,4 +32,16 @@ class WinningLottoTest {
             IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호가 로또 번호와 중복된 숫자를 가지면 예외가 발생한다.")
+    @Test
+    void createWinningLottoByDuplicateLottoNumber() {
+        //given
+        int bonus = 1;
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        //then
+        assertThatThrownBy(() -> new WinningLotto(lotto, bonus)).isInstanceOf(
+            IllegalArgumentException.class);
+    }
+
 }
