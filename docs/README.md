@@ -40,9 +40,16 @@
 - Method 
   - Input() : 매개 인자가 없는 생성자이다. 인스턴스 생성 시에 enterMethod 메서드를 호출한다. <br><br>
   - void enterMoney() : 사용자로부터 구매 금액을 표준 입력 장치를 통해 입력 받는다. <br>
-     입력 받은 값은 validate 메서드를 통해 유효성 검사를 실시하고, 문제가 없으면 멤버 변수 money에
+     입력 받은 값은 validate(String s) 메서드를 통해 유효성 검사를 실시하고, 문제가 없으면 멤버 변수 money에
      사용자 입력 값을 정수형으로 변환하여 저장한다. <br><br>
-  - boolean validate(String s) : 문자열 형태인 구매 금액을 인자로 받아서 예외 사항 1 ~ 2번을 검사한다.
+  - boolean validate(String s) : 문자열 형태인 구매 금액을 인자로 받아서 예외 사항 1 ~ 3번을 검사한다. <br><br>
+  - void enterNumbers() : 사용자로부터 당첨 번호를 표준 입력 장치를 통해 입력 받는다. 입력 받은 값은 <br>
+    validate(String[] s) 메서드를 통해 유효성 검사를 실시하고, 문제가 없으면 멤버 변수 numbers에 사용자 입력 값을 <br>
+    parseInputToInt 메서드를 사용하여 저장한다. <br><br>
+  - boolean validate(String[] s) : 문자열 배열 형태인 당첨 번호를 인자로 받아서 예외 사항 5번을 검사한다. <br><br>
+  - void parseInputToInt(String s) : 당첨 번호로 입력 받은 사용자 입력을 ,(쉼표)로 구분한다. <br>
+    또, 그 결과를 바탕으로 예외 사항 4번을 검사한다. 문제가 없다면 구분된 값들을 정수형으로 변환하여 <br>
+    멤버 변수 numbers에 저장한다.
   
 <br>
 
@@ -76,7 +83,7 @@
   - Lotto(List<Integer> numbers) : 사용자로부터 입력 받은 정수형 리스트를 매개 인자로 받아서 <br>
     validate 메서드를 통해 유효성 검사를 실시한다. 이후, 멤버 변수인 numbers에 값을 저장한다. <br><br>
   - void validate(List<Integer> numbers) : 사용자로부터 입력 받은 정수를 매개 인자로 받아서 <br>
-    예외 사항 1 ~ 2번을 검사한다.
+    예외 사항 1 ~ 3번을 검사한다.
 
 <br>
 
