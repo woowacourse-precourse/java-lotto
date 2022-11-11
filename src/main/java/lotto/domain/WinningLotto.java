@@ -2,6 +2,8 @@ package lotto.domain;
 
 import java.util.List;
 
+import lotto.exception.InputExceptionHandler;
+
 public class WinningLotto extends Lotto {
 	private int bonusNumber;
 
@@ -14,6 +16,6 @@ public class WinningLotto extends Lotto {
 	}
 
 	public void setBonusNumber(String bonusNumber) {
-		this.bonusNumber = Integer.parseInt(bonusNumber);
+		this.bonusNumber = InputExceptionHandler.checkBonusNumberForm(getNumbers(), bonusNumber);
 	}
 }
