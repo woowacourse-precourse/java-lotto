@@ -15,4 +15,11 @@ public class Calculator {
     public int getTotalEarnings() {
         return totalEarnings;
     }
+    private void calculateEarningsRate(int purchaseAmount) {
+        earningsRate = (double) totalEarnings / purchaseAmount * 100;
+        earningsRate = Math.round(earningsRate * 10) / 10.0;
+    }
+    public double getEarningsRate() {
+        return earningsRate;
+    }
 }
