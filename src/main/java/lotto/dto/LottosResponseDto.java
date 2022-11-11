@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.dto;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ public class LottosResponseDto {
 
     private final List<LottoResponseDto> lottoResponseDtos;
 
-    static class LottoResponseDto {
+    public static class LottoResponseDto {
 
         private final List<Integer> lottoNumber;
 

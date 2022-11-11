@@ -2,10 +2,9 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
-import static lotto.domain.LottosResponseDto.*;
+import static lotto.dto.LottosResponseDto.*;
 
 public class Lotto {
 

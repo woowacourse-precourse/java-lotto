@@ -1,9 +1,11 @@
 package lotto.domain;
 
+import lotto.dto.LottosResponseDto;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.domain.LottosResponseDto.*;
+import static lotto.dto.LottosResponseDto.*;
 
 public class Lottos {
 
