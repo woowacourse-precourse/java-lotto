@@ -11,6 +11,24 @@ import static lotto.Grade.*;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        playLottoGame();
+    }
+
+    public static void playLottoGame() {
+        printCashInputBox();
+        int cash = getUserCash(inputUserCash());
+        List<Lotto> lottoList = new ArrayList<>();
+        issueLottoNumbers(cash / 1000, lottoList);
+        printLottoQuantity(cash / 1000);
+        for (Lotto lotto : lottoList) {
+            printLottoNumbers(lotto.getNumbers());
+        }
+        printWinningNumbersInputBox();
+        Lotto winningNumberList = new Lotto(getWinningNumbers(inputWinningNumbers()));
+        printBonusNumberInputBox();
+        int bonusNumber = getBonusNumber(inputBonusNumber(), winningNumberList.getNumbers());
+        printStatsPhrase();
+        printGradeStats(lottoList, winningNumberList.getNumbers(), bonusNumber, cash);
     }
 
     public static void printLottoQuantity(int quantity) {
