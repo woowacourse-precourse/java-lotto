@@ -5,7 +5,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicIntegerArray;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -28,8 +27,8 @@ public class Application {
         List<List<Integer>> lottos = buyLotto(account);
 
         // 로또 출력
-        lottos.stream().forEach(System.out::println);
         System.out.println(lottos.size() + "개를 구매했습니다.");
+        lottos.stream().forEach(System.out::println);
 
         // 당첨 번호 , 보너스 번호 입력 받기
         Set<Integer> winnerNumber = setWinnerNumber();
@@ -44,8 +43,29 @@ public class Application {
         List<List<Integer>> result = checkLotto(lottos, winnerNumber, bonusNumber);
         System.out.println("result = " + result);
 
+        // 로또 당첨 내역 통계
+        List<int[]> sumResult = calResult(result);
+        
+
 
     }
+
+    private static List<int[]> calResult(List<List<Integer>> result) {
+        int[] rightResult = {0, 0, 0, 0, 0, 0, 0};
+        int[] rightBonusResult = {0, 0, 0, 0, 0, 0, 0};
+        result.forEach(lotto -> {
+            int rightNumber = lotto.get(0);
+            int bonusNumber = lotto.get(1);
+            if(bonusNumber >= 1){
+                rightBonusResult[rightNumber]++;
+            }
+            if (bonusNumber == 0) {
+                rightResult[rightNumber]++;
+            }
+        });
+        return List.of(rightResult, rightBonusResult);
+    }
+
 
     private static List<List<Integer>> checkLotto(List<List<Integer>> lottos, Set<Integer> winnerNumber, int bonusNumber) {
         List<List<Integer>> resultLotto = new ArrayList<>();
@@ -85,7 +105,7 @@ public class Application {
     }
 
     private static boolean validBonusNumber(String input) {
-        if(Pattern.matches("\\d", input)){
+        if(Pattern.matches("\\d?\\d", input)){
             return true;
         }
         throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_VALUE.message());
