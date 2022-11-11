@@ -48,6 +48,25 @@ public class Model {
         return numberByRanking;
     }
 
+    public void checkBonusNumber(List<Integer> prizeRankings, List<List<Integer>> uncheckedLottos, int bonusNumber){
+        int changedRanking;
+
+        for (int temp = 0; temp < prizeRankings.size(); temp++) {
+
+            if (prizeRankings.get(temp) == 3) {
+                changedRanking = upRanking(uncheckedLottos.get(temp), bonusNumber);
+                prizeRankings.set(temp, changedRanking);
+            }
+        }
+    }
+
+    private int upRanking (List<Integer> unCheckedLotto, int bonusNumber) {
+        if (unCheckedLotto.contains(bonusNumber)) {
+            return 2;
+        }
+        return 3;
+    }
+
     private void inputNumberByRanking (List<Integer> prizeRankings, HashMap<Integer, Integer> numberByRanking) {
 
         for (int ranking: prizeRankings) {
@@ -75,35 +94,8 @@ public class Model {
         return uncheckedLottos;
     }
 
-    public void checkBonusNumber(List<Integer> prizeRankings, List<List<Integer>> uncheckedLottos, int bonusNumber){
-        int changedRanking;
-
-        for (int temp = 0; temp < prizeRankings.size(); temp++) {
-
-            if (prizeRankings.get(temp) == 3) {
-                changedRanking = upRanking(uncheckedLottos.get(temp), bonusNumber);
-                prizeRankings.set(temp, changedRanking);
-            }
-        }
-    }
-
-    private int upRanking (List<Integer> unCheckedLotto, int bonusNumber) {
-        if (unCheckedLotto.contains(bonusNumber)) {
-            return 2;
-        }
-        return 3;
-    }
-
     private List<Integer> getLottoNumber() {
-        List<Integer> lottoNumbers = new ArrayList<>();
-
-        while (lottoNumbers.size() < LOTTO_NUMBERS) {
-            int randomNumber = Randoms.pickNumberInRange(1, 45);
-
-            if (!lottoNumbers.contains(randomNumber)) {
-                lottoNumbers.add(randomNumber);
-            }
-        }
+        List<Integer> lottoNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(MINIMUM_LOTTO_NUMBERS, MAXIMUM_LOTTO_NUMBERS, LOTTO_NUMBERS));
         Collections.sort(lottoNumbers);
         return lottoNumbers;
     }
