@@ -10,18 +10,18 @@ public enum ErrorType {
     MONEY("%d원 단위로 입력해야 합니다.",
             ConstantNumberType.COST.getValue()),
     COUNT("갯수가 %d개 이어야 합니다",
-            ConstantNumberType.COUNT.getValue())
+            ConstantNumberType.COUNT.getValue()),
     ;
 
     private static final String ERROR_BASE = "[ERROR] ";
 
-    private final Exception exception;
+    private final IllegalArgumentException exception;
 
     ErrorType(String message, Object... replacers) {
         this.exception = new IllegalArgumentException(ERROR_BASE + String.format(message, replacers));
     }
 
-    private Exception getException() {
+    public IllegalArgumentException getException() {
         return this.exception;
     }
 }
