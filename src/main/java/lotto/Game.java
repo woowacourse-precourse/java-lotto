@@ -32,6 +32,7 @@ public class Game {
 
         // TODO: 당첨 번호 입력
         System.out.println(Sentences.LUCKY.value());
+        Lotto lucky = getLuckyNumbers();
         System.out.println();
 
         // TODO: 보너스 번호 입력
@@ -69,5 +70,19 @@ public class Game {
             lottos.add(new Lotto(numbers));
         }
         return lottos;
+    }
+
+    private Lotto getLuckyNumbers() {
+        String input = Console.readLine().trim();
+        String[] splitedInput = input.split(",");
+        List<Integer> luckyNumber = new ArrayList<>();
+        for (String s : splitedInput) {
+            validation.validateNumber(s);
+            int number = Integer.parseInt(s);
+            validation.validateNumberRange(number);
+            luckyNumber.add(number);
+        }
+        return new Lotto(luckyNumber);
+
     }
 }
