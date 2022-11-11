@@ -6,6 +6,8 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
+    private static final int LOTTERY_PRICE = 1_000;
+
     private int money;
     private int totalPrize;
     private int numOfLotteries;
@@ -20,4 +22,7 @@ public class User {
         this.money = Integer.parseInt(userInput);
     }
 
+    public void calculateNumOfLotteries() {
+        this.numOfLotteries = money / LOTTERY_PRICE;
+    }
 }
