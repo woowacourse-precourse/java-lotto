@@ -15,4 +15,7 @@ public class Money {
         }
     }
 
+    public int exchangeLotto() {
+        return money / 1000;
+    }
 }
