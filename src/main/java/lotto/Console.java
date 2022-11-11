@@ -38,10 +38,16 @@ public class Console {
         DecimalFormat decimalFormat = new DecimalFormat("###,###");
         for (Rank value : Rank.values()) {
             String splitCommaMoney = decimalFormat.format(value.money);
-            System.out.println(value.correctCount + "개 일치 (" + splitCommaMoney + "원) - " +
-                    result.getOrDefault(value, 0) + "개");
+            int count = result.getOrDefault(value, 0);
+            System.out.println(sumRankMessage(value, splitCommaMoney, count));
         }
         System.out.println("총 수익률은 " + yield + "%입니다.");
+    }
+    private String sumRankMessage(Rank rank, String splitCommaMoney, int count) {
+        if (rank == Rank.SECOND) {
+            return rank.correctCount + "개 일치, 보너스 볼 일치 (" + splitCommaMoney + "원) - " + count + "개";
+        }
+        return rank.correctCount + "개 일치 (" + splitCommaMoney + "원) - " + count + "개";
     }
     public void outputErrorMessage() {
         System.out.println(ERROR_MESSAGE + "로또 번호는 1부터 45 사이의 숫자여야 합니다.");
