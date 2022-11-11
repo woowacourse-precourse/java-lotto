@@ -14,12 +14,14 @@ public class Application {
     private static final int[] prize_num_arr = {0, 0, 0, 0, 0}; 
     private static final List<Integer> prize_num = Arrays.stream(prize_num_arr).boxed().collect(Collectors.toList());
 
-    public static void main(String[] args) {
+    public static int main(String[] args) throws IllegalArgumentException{
         final List<Integer> lotto_win;
         final List<Lotto> lotto_issuance;
         final Integer purchase, bonus;
         Lotto winLotto;
+
         purchase = input_validate();
+        if (purchase == -1) return 0;
 
         validate(purchase);
         lotto_issuance = lotto_create(purchase);
@@ -28,28 +30,29 @@ public class Application {
         lotto_win = Arrays.asList(Console.readLine().split(",")).stream().map(s -> Integer.parseInt(((String) s).trim())).collect(Collectors.toList());
         winLotto = new Lotto(lotto_win);
         bonus = input_validate();
+        if (bonus == -1) return 0;
 
         get_prize_num(winLotto, lotto_issuance, bonus);
         display_result(purchase);
+        return 0;
     }
 
-    private static void validate(int purchase){
+    private static void validate(int purchase) throws IllegalArgumentException{
         if (purchase % ticket_price != 0 || purchase <= 0){
-            System.out.println("[ERROR] 금액은 반드시 1,000원 이상, 1,000원 단위로 입력하세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 금액은 반드시 1,000원 이상, 1,000원 단위로 입력하세요.");
         }
     }
 
-    private static int input_validate(){
+    private static int input_validate() throws IllegalArgumentException{
         Integer num;
         String input = Console.readLine();
-        try{
+        if (input != null && input.matches("-?\\d+")){
             num = Integer.parseInt(input);
             return num;
-        } catch (NumberFormatException e){
-            System.out.println("[ERROR] 정수를 입력하세요.");
-            throw new IllegalArgumentException();
         }
+        IllegalArgumentException e = new IllegalArgumentException();
+        System.out.println("[ERROR] 정수를 입력하세요. " + e.toString());
+        return -1;
     }
 
     private static List<Lotto> lotto_create(int purchase){
