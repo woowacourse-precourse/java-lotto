@@ -27,6 +27,12 @@ public class LottoService {
         return Input.inputMoney();
     }
 
+    public int getAndPrintLottoPurchaseCount(int money) {
+        int lottoCount = LottoPurchaseCount.getLottoCount(money);
+        InputView.printLottoPurchaseCount(lottoCount);
+        return lottoCount;
+    }
+
     private int getScore(List<Integer> lottoNumbers, List<Integer> randomLottoNumber, int score) {
         for (Integer lottoNumber : lottoNumbers) {
             score = existNumber(randomLottoNumber, score, lottoNumber);
