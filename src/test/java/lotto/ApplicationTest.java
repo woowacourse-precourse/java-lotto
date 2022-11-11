@@ -128,6 +128,12 @@ class ApplicationTest extends NsTest {
         assertThat(62.5).isEqualTo(calculateSurplus(0, 0, 0, 0, 1, 8000));
     }
 
+    @Test
+    void compareLottoNumbersAndWinningNumbersTest() {
+
+        assertThat(1).isEqualTo(compareLottoNumbersAndWinningNumbers(new Lotto(List.of(1, 2, 3, 4, 5, 6)), List.of(6, 5, 4, 3, 2, 1), 6));
+    }
+
     @Override
     public void runMain() {
         main(new String[]{});
