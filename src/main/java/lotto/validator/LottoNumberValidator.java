@@ -24,6 +24,9 @@ public class LottoNumberValidator {
     }
 
     public static void validateRangeOfNumber(int number) {
+        if (!isInRange(number)) {
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_OUT_OF_RANGE.getMessage());
+        }
     }
 
     public static void validateBonusNumberAndLottoAreDuplicate(Lotto lotto, int bonusNumber) {
