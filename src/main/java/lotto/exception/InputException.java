@@ -4,11 +4,17 @@ import java.util.List;
 import java.util.Set;
 
 public class InputException {
-    public static void validatePurchaseAmount(int purchaseAmount) {
-        if (purchaseAmount == 0) {
+    public static void validatePurchaseAmount(String data) {
+        String[] convertedData = data.split("");
+        for (String d : convertedData) {
+            if (!Character.isDigit(d.charAt(0))) {
+                throw new IllegalArgumentException("[ERROR] 입력된 금액이 숫자가 아닙니다.");
+            }
+        }
+        if (Integer.valueOf(data) == 0) {
             throw new IllegalArgumentException("[ERROR] 입력된 금액이 0원보다는 커야 합니다.");
         }
-        if (purchaseAmount % 1000 != 0) {
+        if (Integer.valueOf(data) % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 입력된 금액이 1000원 단위로 나눠 떨어져야 합니다.");
         }
     }
