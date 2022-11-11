@@ -1,6 +1,5 @@
 package lotto.service;
 
-import lotto.constant.Information;
 import lotto.lotto.LottoAutoGenerator;
 import lotto.lotto.LottoCollection;
 import lotto.utils.InputParser;
@@ -15,7 +14,7 @@ public class LottoApplicationService {
     private LottoCollection lottoCollection;
 
     public void inputMoney() {
-        System.out.println(Information.INPUT_MONEY.getMessage());
+        consoleOutput.printDirectiveAboutInputMoney();
         money = Money.of(InputParser.parseToInteger(consoleInput.readInput()));
     }
 
