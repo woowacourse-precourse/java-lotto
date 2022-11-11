@@ -11,11 +11,11 @@ public class Lotto {
     private static final int SIZE = 6;
     private static final int MAX = 45;
     private static final int MIN = 1;
-    private final List<Integer> numbers;
+    private final List<Integer> lotto;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = add(numbers);
+        this.lotto = add(numbers);
     }
 
     private List<Integer> add(List<Integer> numbers) {
@@ -42,8 +42,12 @@ public class Lotto {
         }
     }
 
-    public List<Integer> get(){
-        return numbers;
+    public List<Integer> get() {
+        return lotto;
+    }
+
+    public boolean contains(int bonus) {
+        return lotto.contains(bonus);
     }
 
     @Override
@@ -55,11 +59,12 @@ public class Lotto {
             return false;
         }
         Lotto lotto = (Lotto) o;
-        return Objects.equals(numbers, lotto.numbers);
+        return Objects.equals(lotto, lotto.lotto);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(numbers);
+        return Objects.hash(lotto);
     }
+
 }
