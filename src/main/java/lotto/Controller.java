@@ -19,39 +19,62 @@ public class Controller {
     List<Integer> lottoList = new ArrayList<>();
 
     void start() {
-        if (inputStart()) return;
-        Computer[] computers = getComputers();
-        if (inputWinningNumber()) return;
-        if (inputBonus()) return;
-        lotto.getNumbers().add(bonus);
-        domain.checkWinning(computers, list, lotto);
-        view.printResult(list);
+        try {
+            inputStart();
+            inputStartException();
+            inMoney();
+            Computer[] computers = getComputers();
+            inputWinningNumber();
+            inputWinningNumberException();
+            inputBonus();
+            inputBonusException();
+            inBonus();
+            checkWinning(computers);
+            calculateResult();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void calculateResult() {
         result = domain.checkWinningMoney(list);
         view.printBenfit(inMoney, result);
     }
 
-    private boolean inputBonus() {
-        view.inputBonus();
-        input = Console.readLine();
-        try {
-            ex.inputWinningBonus(input);
-        }catch (IllegalArgumentException e){
-            return true;
-        }
-        bonus = Integer.parseInt(input);
-        return false;
+    private void checkWinning(Computer[] computers) {
+        domain.checkWinning(computers, list, lotto);
+        view.printResult(list);
     }
 
-    private boolean inputStart() {
-        view.startMention();
-        input = Console.readLine();
-        try{
-            ex.initialInput(input);
-        }catch (IllegalArgumentException e){
-            return true;
-        }
+    private void inBonus() {
+        bonus = Integer.parseInt(input);
+        lotto.getNumbers().add(bonus);
+    }
+
+    private void inMoney() {
         inMoney = Integer.parseInt(input);
-        return false;
+    }
+
+    private void getInput() {
+        input = Console.readLine();
+    }
+
+    public void inputBonusException() throws IllegalArgumentException {
+        ex.inputWinningBonus(input);
+    }
+
+    private void inputBonus() {
+        view.inputBonus();
+        getInput();
+    }
+
+    public void inputStartException() throws IllegalArgumentException {
+        ex.initialInput(input);
+    }
+
+    private void inputStart() {
+        view.startMention();
+        getInput();
     }
 
     private Computer[] getComputers() {
@@ -63,19 +86,25 @@ public class Controller {
     }
 
 
-    private boolean inputWinningNumber() {
-        view.inputNumber();
-        input = Console.readLine();
+    public void inputWinningNumberException() throws IllegalArgumentException {
         str = input.split(",");
-        for (String s : str) {
-            lottoList.add(Integer.parseInt(s));
-        }
-        try {
-            lotto = new Lotto(lottoList);
-        }catch (IllegalArgumentException e){
-            return true;
-        }
+        addWinningNum();
+        lotto = new Lotto(lottoList);
         System.out.println();
-        return false;
+    }
+
+    private void inputWinningNumber() {
+        view.inputNumber();
+        getInput();
+    }
+
+    private void addWinningNum() throws IllegalArgumentException {
+        for (String s : str) {
+            try {
+                lottoList.add(Integer.parseInt(s));
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException("[ERROR] 공백없이 숫자와 ,를 입력해주세요.");
+            }
+        }
     }
 }
