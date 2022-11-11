@@ -19,7 +19,7 @@ public class LottoView {
     private static final String PREFIX_YIELD_MESSAGE = "총 수익률은 ";
     private static final String SUFFIX_YIELD_MESSAGE = "%입니다.";
 
-    private static final int SKIP_RESULT_ELSE_CASE = 1;
+    private static final int SKIP_RESULT_ELSE_CASE = 3;
     private static final long RESULT_NUMBER_ZERO = 0L;
 
     public void printStartMessage() {
@@ -67,9 +67,17 @@ public class LottoView {
 
     private String getResultMessage(LottoResult lottoResult,
                                     Map<LottoResult, Long> lottoResultToCount) {
+        return getResultMessagePrefix(lottoResult) +
+               lottoResultToCount.getOrDefault(lottoResult, RESULT_NUMBER_ZERO) + "개";
+    }
+
+    private String getResultMessagePrefix(LottoResult lottoResult) {
         DecimalFormat df = new DecimalFormat("###,###");
-        return lottoResult.getStatus() + " " +
-                "(" + df.format(lottoResult.getPayout()) + "원)" +
-                " - " + lottoResultToCount.getOrDefault(lottoResult, RESULT_NUMBER_ZERO) + "개";
+        String suffix = "(" + df.format(lottoResult.getPayout()) + "원) - ";
+
+        if (lottoResult.equals(lottoResult.FIVE_WITH_BONUS)) {
+            return lottoResult.getMatchingNumberCount() + "개 일치, 보너스 볼 일치 " + suffix;
+        }
+        return lottoResult.getMatchingNumberCount() + "개 일치 " + suffix;
     }
 }

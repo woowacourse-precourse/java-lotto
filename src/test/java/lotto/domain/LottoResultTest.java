@@ -56,7 +56,7 @@ class LottoResultTest {
     void test6() {
         Lotto lotto = new Lotto(List.of(1, 2, 42, 43, 44, 45));
         LottoResult result = LottoResult.of(lotto, WINNING_NUMBERS, BONUS_NUMBER);
-        assertThat(result).isEqualTo(LottoResult.ELSE);
+        assertThat(result).isEqualTo(LottoResult.TWO);
     }
 
 
@@ -65,7 +65,7 @@ class LottoResultTest {
     void test7() {
         Lotto lotto = new Lotto(List.of(1, 41, 42, 43, 44, 45));
         LottoResult result = LottoResult.of(lotto, WINNING_NUMBERS, BONUS_NUMBER);
-        assertThat(result).isEqualTo(LottoResult.ELSE);
+        assertThat(result).isEqualTo(LottoResult.ONE);
     }
 
 
@@ -74,6 +74,6 @@ class LottoResultTest {
     void test8() {
         Lotto lotto = new Lotto(List.of(40, 41, 42, 43, 44, 45));
         LottoResult result = LottoResult.of(lotto, WINNING_NUMBERS, BONUS_NUMBER);
-        assertThat(result).isEqualTo(LottoResult.ELSE);
+        assertThat(result).isEqualTo(LottoResult.ZERO);
     }
 }
