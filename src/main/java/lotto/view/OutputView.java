@@ -4,7 +4,9 @@ import lotto.domain.Lotto;
 import lotto.domain.Result;
 import lotto.domain.ResultStatistics;
 import lotto.domain.WinLotto;
+import lotto.enums.ConstVariable;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +40,8 @@ public class OutputView {
     }
 
     private static void printTotalProfit(ResultStatistics statistics, int count) {
-        float totalProfitRate = Math.round((float) (statistics.getTotalProfit()) / (count * 1000) * 1000) / 10f;
-        System.out.println("총 수익률은 " + totalProfitRate + "%입니다.");
+        DecimalFormat format = new DecimalFormat("##.##%");
+        String totalProfitRate = format.format((float) (statistics.getTotalProfit()) / (count * ConstVariable.STANDARD.getValue()));
+        System.out.println("총 수익률은 " + totalProfitRate + "입니다.");
     }
 }
