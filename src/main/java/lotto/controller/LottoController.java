@@ -20,17 +20,19 @@ public class LottoController {
     private List<Integer> result = new ArrayList<>();
 
     public void playLottoProgram() {
-        savePurchaseAmount();
-        saveLottoIssueCount();
-        issueLottoSeveralTimes(lottoIssueCount, myLotto);
-        OutputView.printLottoPurchaseInformation(myLotto, lottoIssueCount);
-        saveWinningNumber();
-        saveBonusNumber();
-        setResult(myLotto, winningNumber, bonusNumber);
-        Calculator calculator = new Calculator();
-        calculator.calculateTotalEarnings(result);
-        calculator.calculateEarningsRate(purchaseAmount);
-        OutputView.printLottoResult(result, calculator.getEarningsRate());
+        try {
+            savePurchaseAmount();
+            saveLottoIssueCount();
+            issueLottoSeveralTimes(lottoIssueCount, myLotto);
+            OutputView.printLottoPurchaseInformation(myLotto, lottoIssueCount);
+            saveWinningNumber();
+            saveBonusNumber();
+            setResult(myLotto, winningNumber, bonusNumber);
+            Calculator calculator = new Calculator();
+            calculator.calculateTotalEarnings(result);
+            calculator.calculateEarningsRate(purchaseAmount);
+            OutputView.printLottoResult(result, calculator.getEarningsRate());
+        } catch (IllegalArgumentException exception) {}
     }
 
     private void savePurchaseAmount() {
