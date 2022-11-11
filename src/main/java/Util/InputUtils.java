@@ -9,20 +9,21 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static domain.ErrorMessage.*;
-import static domain.InputMessage.*;
 
 public class InputUtils {
-
+    private static final String INPUT_BUY_MESSAGE = "구입금액을 입력해 주세요.";
+    private static final String INPUT_LOTTO_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
 
     public int StringToMoney() {
-        System.out.println(INPUT_BUY_MESSAGE.getMessage());
+        System.out.println(INPUT_BUY_MESSAGE);
         String money = Console.readLine();
         validateMoney(money);
         return Integer.parseInt(money);
     }
 
     public Lotto StringToWinningLottoNumber(){
-        System.out.println(INPUT_LOTTO_NUMBER_MESSAGE.getMessage());
+        System.out.println(INPUT_LOTTO_NUMBER_MESSAGE);
         String WinningLottoNumber = Console.readLine();
         validateWinningLottoNumber(WinningLottoNumber);
 
@@ -34,7 +35,7 @@ public class InputUtils {
     }
 
     public int StringToBonus(Lotto winningNumber) {
-        System.out.println(INPUT_BONUS_NUMBER_MESSAGE.getMessage());
+        System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
         String bonus = Console.readLine();
         validateBonus(bonus, winningNumber);
 
