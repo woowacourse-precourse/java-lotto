@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -15,7 +16,9 @@ public class Generator {
 		return lotteryTicket;
 	}
 
-	public List<Integer> sortNumber(HashSet<Integer> randomLottoNumber) {
-		return null;
+	public List<Integer> sortNumber(HashSet<Integer> randomNumbers) {
+		List<Integer> sortedNumbers = new ArrayList<>(randomNumbers);
+		sortedNumbers.sort(null);
+		return sortedNumbers;
 	}
 }
