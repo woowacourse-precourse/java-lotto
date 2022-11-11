@@ -7,7 +7,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class LottoRankTest {
     @DisplayName("1등인지 확인")
@@ -55,5 +54,19 @@ class LottoRankTest {
     @CsvSource(value = {"FIRST, 2000000000", "SECOND, 30000000", "THIRD, 1500000", "FOURTH, 50000", "FIFTH, 5000", "MISS, 0"})
     void matchingPrizeMoney(final LottoRank lottoRank, final int prizeMoney) {
         assertThat(lottoRank.prizeMoney()).isEqualTo(prizeMoney);
+    }
+    
+    @DisplayName("2등인지 확인")
+    @ParameterizedTest(name = "{displayName} : 로또 랭크 => {0}, 결과 => {1}")
+    @CsvSource(value = {"FIRST, false", "SECOND, true", "THIRD, false", "FOURTH, false", "FIFTH, false", "MISS, false"})
+    void isSecondRank(final LottoRank lottoRank, final boolean result) {
+        assertThat(lottoRank.isSecond()).isEqualTo(result);
+    }
+    
+    @DisplayName("꽝인지 확인")
+    @ParameterizedTest(name = "{displayName} : 로또 랭크 => {0}, 결과 => {1}")
+    @CsvSource(value = {"FIRST, false", "SECOND, false", "THIRD, false", "FOURTH, false", "FIFTH, false", "MISS, true"})
+    void isMissRank(final LottoRank lottoRank, final boolean result) {
+        assertThat(lottoRank.isMiss()).isEqualTo(result);
     }
 }
