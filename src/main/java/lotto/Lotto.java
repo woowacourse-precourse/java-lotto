@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
-    private Result result;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -22,13 +21,4 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
-
-    public Result getResult() {
-        return result;
-    }
-
-    public void setResult(Result result) {
-        this.result = result;
-    }
-
 }
