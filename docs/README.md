@@ -8,23 +8,23 @@
     1. 로또 구입 금액 입력 - Application#askTotalPrice()
         * 로또 구입 금액/1000 을 하여 로또 개수 구하는 기능 - LottoCount#LottoCount()
 
-        * 예외1 : 입력시 숫자가 아니거나 1000미만의 수 입력시 IllegalArgumentException 발생, 에러메시지([ERROR] 1000원 이상의 금액만 입력하세요.) - LottoCount#validateNumber()
-        * 예외2 : 1000원으로 나누어 떨어지지 않는 수 입력시 IllegalArgumentException 발생, 에러메시지([ERROR] 로또 1장당 1000원 입니다.) - LottoCount#validateDivideRight()
+            * 예외1 : 입력시 숫자가 아니거나 1000미만의 수 입력시 IllegalArgumentException 발생, 에러메시지([ERROR] 1000원 이상의 금액만 입력하세요.) - LottoCount#validateNumber()
+            * 예외2 : 1000원으로 나누어 떨어지지 않는 수 입력시 IllegalArgumentException 발생, 에러메시지([ERROR] 로또 1장당 1000원 입니다.) - LottoCount#validateDivideRight()
        
     2. 당첨 번호 6개 입력(구분자 : ,) - Application#askNumbers()
         * 사용자 입력 당첨 번호 리스트에 저장하는 기능 - Lotto#Lotto()
         * Lotto클래스에 저장된 리스트를 main으로 가지고 오는 기능 - Lotto#getLottoNumbers()
 
-        * 예외1 : 입력시 ,로 나누어지지 않았을 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 값을 ,로 구분해서 입력하세요.) - Application#splitValidate()
-        * 예외2 : 1-45 사이의 숫자가 아닐 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 1-45사이의 6개의 숫자를 입력하세요.) - Application#lottoValidateNumber()
-        * 예외3 : 입력한 숫자의 개수가 6개가 아닐 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 숫자의 개수가 6개가 아닙니다.) - Lotto#validate()
-        * 예외4 : 입력 숫자 6개 중 하나라도 중복되는 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 서로 다른 숫자 6개를 입력하세요.) - Lotto#numbersNoRepeat()
+            * 예외1 : 입력시 ,로 나누어지지 않았을 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 값을 ,로 구분해서 입력하세요.) - Application#validateSplit()
+            * 예외2 : 1-45 사이의 숫자가 아닐 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 1-45사이의 6개의 숫자를 입력하세요.) - Application#validateLottoNumber()
+            * 예외3 : 입력한 숫자의 개수가 6개가 아닐 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 숫자의 개수가 6개가 아닙니다.) - Lotto#validate()
+            * 예외4 : 입력 숫자 6개 중 하나라도 중복되는 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 서로 다른 숫자 6개를 입력하세요.) - Lotto#numbersNoRepeat()
         
     3. 보너스 번호 입력  - Application#askBonusNumber()
         * 사용자 입력 보너스 번호 리스트에 저장하는 기능 - BonusNumber#BonusNumber()
-        
-        * 예외1 : 입력시 숫자가 아니거나 1-45 사이 숫자가 아닐 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 1-45사이의 1개의 숫자만 입력하세요.) - BonusNumber#bonusNumberValidate()
-        * 예외2 : 입력 숫자 6개와 보너스 번호가 중복되는 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 보너스 번호가 입력된 당첨 번호 6개와 중복됩니다.) - BonusNumber#bonusNoRepeat()
+
+            * 예외1 : 입력시 1-45 사이 숫자가 아닐 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 1-45사이의 1개의 숫자만 입력하세요.) - BonusNumber#validateBonusNumber()
+            * 예외2 : 입력 숫자 6개와 보너스 번호가 중복되는 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 보너스 번호가 입력된 당첨 번호 6개와 중복됩니다.) - BonusNumber#bonusNoRepeat()
        
 * 출력
     1. 발행한 로또 수량 및 번호 출력 - Print#printNumberAll()

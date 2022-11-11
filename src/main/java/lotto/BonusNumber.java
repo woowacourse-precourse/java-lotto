@@ -5,7 +5,7 @@ public class BonusNumber {
 		
 	}
 	
-	public void bonusNumberValidate() {
+	public void validateBonusNumber() {
 		
 	}
 	

@@ -49,10 +49,10 @@ public class Application {
     	System.out.println("당첨 번호를 입력해 주세요.");
     	stringnumbers = Console.readLine();
     	
-    	splitValidate(stringnumbers);         // 먼저 구분자로 입력값이 나누어지는지 확인
+    	validateSplit(stringnumbers);         // 먼저 구분자로 입력값이 나누어지는지 확인
     	numbersarray = stringnumbers.split(",");  // 구분자 ,로 입력값을 나눠서 numbersarray에 담기
     	
-    	lottoValidateNumber(numbersarray);     // numbersarray에 담긴 값들이 모두 1-45까지의 숫자인지 확인
+    	validateLottoNumber(numbersarray);     // numbersarray에 담긴 값들이 모두 1-45까지의 숫자인지 확인
     	for (String number : numbersarray) {        //numbersarray값들(string)을 숫자로 바꿔서 numbers리스트에 담기
     		numbers.add(Integer.parseInt(number));
     	}
@@ -63,7 +63,7 @@ public class Application {
     	return lotto.getLottoNumbers();
     }
     
-    public static void lottoValidateNumber(String[] numbersarray) {
+    public static void validateLottoNumber(String[] numbersarray) {
     	String pattern = "^[1-45]$";
     	for (String number : numbersarray) {
     		if (!Pattern.matches(pattern, number)) {
@@ -72,12 +72,12 @@ public class Application {
     	}
     }
     
-    public static void splitValidate(String stringnumbers) {
+    public static void validateSplit(String stringnumbers) {
     	String[] numbersarray;
     	try {
     		numbersarray = stringnumbers.split(",");
     	} catch (Exception e) {
-    		throw new IllegalArgumentException(",로 구분하세요.");
+    		throw new IllegalArgumentException("[ERROR] 값을 ,로 구분해서 입력하세요.");
     	}
     }
     
@@ -85,5 +85,6 @@ public class Application {
     	String stringbonusnumber = "";
     	System.out.println("보너스 번호를 입력해 주세요.");
     	stringbonusnumber = Console.readLine();
+    	
     }
 }
