@@ -37,10 +37,10 @@ public class Validate {
     public void validUserWinningNumber(List<Integer> winningNumber) {
         Set<Integer> overlapCheck = new HashSet<>(winningNumber);
         if (overlapCheck.size() != winningNumber.size())
-            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.")
+            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
         for (Integer lottoNumber : winningNumber) {
             if (lottoNumber < 1 || lottoNumber > 45)
-                throw new IllegalArgumentException("[ERROR] 1 ~ 45 사이의 숫자를 입력하세요.")
+                throw new IllegalArgumentException("[ERROR] 1 ~ 45 사이의 숫자를 입력하세요.");
         }
     }
 }

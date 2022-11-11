@@ -15,9 +15,7 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 번호 6개를 입력하세요.");
         }
-        if(!checkNumber.validUserWinningNumber(numbers)){
-            throw new IllegalArgumentException("[ERROR] 올바른 번호를 입력하세요.");
-        }
+        checkNumber.validUserWinningNumber(numbers);
     }
 
     // TODO: 추가 기능 구현

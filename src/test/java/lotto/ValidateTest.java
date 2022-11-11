@@ -33,5 +33,14 @@ class ValidateTest {
     }
     @Test
     void validUserWinningNumber() {
+        Validate test = new Validate();
+        List<Integer> testcase1 = new ArrayList<>(List.of(1, 2, 3, 4, 5, 48));
+        List<Integer> testcase2 = new ArrayList<>(List.of(1, 2, 3, 5, 5, 6));
+        assertThatThrownBy(() -> test.validUserWinningNumber(testcase1))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 1 ~ 45 사이의 숫자를 입력하세요.");
+        assertThatThrownBy(() -> test.validUserWinningNumber(testcase2))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] 중복된 숫자가 있습니다.");
     }
 }
