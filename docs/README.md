@@ -8,10 +8,10 @@
 
 ### String 형태의 입력을 int 형태로 변환해주는 클래스 Name : InputConverter
 - [x] 금액의 입력값을 바꿔주는 기능 - #convertMoneyInput()
-  - [ ] 금액의 입력값이 유효하지 않은 경우 예외처리 -#isValidMoneyInput()
+  - [x] 금액의 입력값이 유효하지 않은 경우 예외처리 -#isValidMoneyInput()
 - [x] 6개의 당첨 번호 입력값을 바꿔주는 기능 - #convertWinningNumber()
 - [x] 보너스 당첨 번호 입력값을 바꿔주는 기능 - #convertBonusNumber()
-  - [ ] 숫자가 아닌 값인 경우/범위 내의 숫자가 아닌 경우 - #isValidInRangeNumber()
+  - [x] 숫자가 아닌 값인 경우/범위 내의 숫자가 아닌 경우 - #isValidInRangeNumber()
   
 
 ### 발행된 로또의 번호 List 를 wrapping 하는 클래스 Name : Lotto
@@ -38,14 +38,20 @@
 
 ---
 
+### 로또 확인 과정을 진행하는 클래스 Name : LottoService
+- [ ] 로또 구매 수량 반환
+- [ ] 로또 구매 수량 만큼 로또 발행
+- [ ] 로또 당첨 여부를 통해 상금을 반환
+- [ ] 모든 로또의 당첨 결과 리스트 반환
+- [ ] 수익률 반환
+
 ## 사용자의 입력
 
 ### 사용자의 입력을 담당하는 클래스 Name : UserInput
 > 입력값을 변환하지 않으며 그 상태에서 처리할 수 있는 예외에 대해서 처리한다.
 - [x] 사용자의 구입 금액 입력받기 - #buyLotto()
 - [x] 당첨 번호 입력 - #enterWinnigLottoNumber()
-- [ ] 보너스 번호 입력 - #enterBonusNumber()
-- [ ] 입력한 보너스 번호가 유효하지 않은 경우 예외처리
+- [x] 보너스 번호 입력 - #enterBonusNumber()
 
 
 
