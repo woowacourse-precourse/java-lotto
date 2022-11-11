@@ -35,4 +35,13 @@ class InputPaymentValidatorTest {
                 .isThrownBy(() -> InputPaymentValidator.validate(input))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
+    
+    @DisplayName("예외 처리 : 영어 입력 시")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {"a", "A"})
+    void englishInputException(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> InputPaymentValidator.validate(input))
+                .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
+    }
 }
