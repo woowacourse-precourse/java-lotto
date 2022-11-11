@@ -8,4 +8,8 @@ public abstract class Utility {
         System.out.println(message);
     }
 
+    public String receiveInput(){
+        String input = Console.readLine();
+        return input;
+    }
 }
