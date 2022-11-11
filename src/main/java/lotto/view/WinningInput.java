@@ -10,48 +10,47 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public class WinningInput {
-    public static String winningNumber;
-    public static int[] winningIntArr;
+    private static int[] winningIntArr;
+    public static String winningInput;
     public static List<Integer> winningNumbers;
     public static int winningCount;
 
     public static void winningNumberInput() {
         System.out.println(Message.WINNING_NUMBER_INPUT.getMessage());
-        winningNumber = readLine();
-        validateWinningNumber(winningNumber);
-        validateWinningNumberSize(winningNumber);
-        validateInputBlank(winningNumber);
-        validateInputSeparator(winningNumber);
+        winningInput = readLine();
+        validateWinningNumber(winningInput);
+        validateWinningNumberSize(winningInput);
+        validateInputBlank(winningInput);
+        validateInputSeparator(winningInput);
+        winningNumberToInt(winningInput);
+        winningIntArrToList(winningIntArr);
     }
 
-    public static int[] winningNumberToInt(String winningNumber) {
-        String[] winningStringArr = winningNumber.split(",");
-        winningIntArr = new int[winningStringArr.length];
-        for (int i = 0; i < winningStringArr.length; i++) {
-            winningIntArr[i] = Integer.parseInt(winningStringArr[i]);
-        }
-        return winningIntArr;
-    }
-
-    public static List<Integer> winningIntArrToList(int[] winningIntArr) {
-        winningNumbers = new ArrayList<>(winningIntArr.length);
-        for (int i : winningIntArr) {
-            winningNumbers.add(i);
-        }
-        return winningNumbers;
-    }
-
-    public static int getWinningResult(List<List<Integer>> lottos, List<Integer> winningNumbers) {
+    public static void getWinningResult(List<List<Integer>> lottos, List<Integer> winningNumbers) {
         Map<List<Integer>, Integer> map = new HashMap<>();
         for (List<Integer> check : lottos) {
             winningCount = 0;
             checkCount(check, winningNumbers, map);
         }
         winningCount = Collections.max(map.values());
-        return winningCount;
     }
 
-    public static void checkCount(List<Integer> check, List<Integer> winningNumbers, Map<List<Integer>, Integer> map) {
+    private static void winningNumberToInt(String winningInput) {
+        String[] winningStringArr = winningInput.split(",");
+        winningIntArr = new int[winningStringArr.length];
+        for (int i = 0; i < winningStringArr.length; i++) {
+            winningIntArr[i] = Integer.parseInt(winningStringArr[i]);
+        }
+    }
+
+    private static void winningIntArrToList(int[] winningIntArr) {
+        winningNumbers = new ArrayList<>(winningIntArr.length);
+        for (int i : winningIntArr) {
+            winningNumbers.add(i);
+        }
+    }
+
+    private static void checkCount(List<Integer> check, List<Integer> winningNumbers, Map<List<Integer>, Integer> map) {
         for (int i = 0; i < check.size(); i++) {
             if (check.contains(winningNumbers.get(i))) {
                 winningCount++;
@@ -60,8 +59,8 @@ public class WinningInput {
         }
     }
 
-    private static void validateWinningNumber(String winningNumber) {
-        Integer[] winningNumberArr = Stream.of(winningNumber.split(","))
+    private static void validateWinningNumber(String winningInput) {
+        Integer[] winningNumberArr = Stream.of(winningInput.split(","))
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .toArray(Integer[]::new);
@@ -72,23 +71,23 @@ public class WinningInput {
         }
     }
 
-    private static void validateWinningNumberSize(String winningNumber) {
-        String[] numberSizeCheck = winningNumber.split(",");
+    private static void validateWinningNumberSize(String winningInput) {
+        String[] numberSizeCheck = winningInput.split(",");
         if (numberSizeCheck.length != 6) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_LOTTO_LENGTH.getErrorMessage());
         }
     }
 
-    private static void validateInputBlank(String winningNumber) {
-        for (int i = 0; i < winningNumber.length(); i++) {
-            if (winningNumber.charAt(i) == ' ') {
+    private static void validateInputBlank(String winningInput) {
+        for (int i = 0; i < winningInput.length(); i++) {
+            if (winningInput.charAt(i) == ' ') {
                 throw new IllegalArgumentException(ErrorMessage.ERROR_BLANK.getErrorMessage());
             }
         }
     }
 
-    private static void validateInputSeparator(String winningNumber) {
-        String[] separatorCheck = winningNumber.split(",");
+    private static void validateInputSeparator(String winningInput) {
+        String[] separatorCheck = winningInput.split(",");
         if (separatorCheck.length != 6) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_SEPARATOR.getErrorMessage());
         }
