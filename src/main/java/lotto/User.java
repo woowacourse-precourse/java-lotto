@@ -26,17 +26,17 @@ public class User {
     }
 
     public int calculateEarning(int howManyWinningNumber, boolean isBonusNumberCorrect) {
-        if (howManyWinningNumber==3) {
-            return WinningNumberAndEarningPair.CORRECT_3.getEarning();
-        } else if (howManyWinningNumber==4) {
-            return WinningNumberAndEarningPair.CORRECT_4.getEarning();
+        if (howManyWinningNumber==6) {
+            return WinningNumberAndEarningPair.CORRECT_6.getEarning();
         } else if (howManyWinningNumber==5) {
             if (isBonusNumberCorrect) {
                 return WinningNumberAndEarningPair.CORRECT_5_BONUS.getEarning();
             }
             return WinningNumberAndEarningPair.CORRECT_5.getEarning();
-        } else if (howManyWinningNumber==6) {
-            return WinningNumberAndEarningPair.CORRECT_6.getEarning();
+        } else if (howManyWinningNumber==4) {
+            return WinningNumberAndEarningPair.CORRECT_4.getEarning();
+        } else if (howManyWinningNumber==3) {
+            return WinningNumberAndEarningPair.CORRECT_3.getEarning();
         }
         return WinningNumberAndEarningPair.CORRECT_3_UNDER.getEarning();
     }
