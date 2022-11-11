@@ -19,6 +19,16 @@ public class Lotto {
         if (numbers.size() != numbers.stream().distinct().count()){
             throw new IllegalArgumentException();
         }
+
+        for (Integer number : numbers) {
+            if (!isCorrectRange(number)) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    private Boolean isCorrectRange(Integer number){
+        return 1 <= number && number <= 45;
     }
 
     // TODO: 추가 기능 구현
