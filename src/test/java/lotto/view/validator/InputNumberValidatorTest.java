@@ -11,11 +11,12 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
 class InputNumberValidatorTest {
-    @Test
-    @DisplayName("올바른 payment 입력 시")
-    void correctPaymentInput() {
+    @DisplayName("숫자 입력 시")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {"14000", "1", "45"})
+    void correctPaymentInput(String input) {
         assertThatNoException()
-                .isThrownBy(() -> InputNumberValidator.validate("14000"));
+                .isThrownBy(() -> InputNumberValidator.validate(input));
     }
     
     @DisplayName("예외 처리 : null or empty 를 입력 시")
