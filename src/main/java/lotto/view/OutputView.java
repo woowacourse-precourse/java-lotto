@@ -32,6 +32,7 @@ public class OutputView {
     }
 
     public void printLottoWinningStatistics(Map<LottoWinningRank, Integer> lottoWinningRankMap) {
+        System.out.println();
         System.out.println(LOTTO_WINNING_STATISTICS_MESSAGE);
         System.out.println(DIVIDING_LINE);
         System.out.println(LOTTO_RANK_FIFTH_MESSAGE + lottoWinningRankMap.get(LottoWinningRank.FIFTH) + COUNT_UNIT);
