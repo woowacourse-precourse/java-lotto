@@ -6,7 +6,7 @@ public class User {
     private int money;
     private int bonusNumber;
     private List<Integer> winningNumbers;
-    private Map<String, Integer> result;
+    Map<String, Integer> result; //  TODO: test 이후 다시 private 로
 
     public User() {
         this.money = -1;

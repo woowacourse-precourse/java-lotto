@@ -20,13 +20,18 @@ class GameTest {
     @Test
     void calculateResultTest() {
         User testUser = new User();
-        testUser.setMoney("8000");
+        testUser.setMoney("4000");
         Game testGame = new Game(testUser.getMoney());
         testGame.generateGame();
-        testUser.setWinningNumbers("1,2,3,4,5,6");
-        testUser.setBonusNumber("7");
+        testUser.setWinningNumbers("41,42,11,8,21,23");
+        testUser.setBonusNumber("43");
         testGame.calculateResult(testUser);
-        assertThat(testGame.result).isEqualTo(new int[]{0, 0, 0, 0, 1});
+        int[] realResult = {0, 1, 0, 1, 0};
+        int idx = 0;
+        for (String rankI : testUser.result.keySet()) {
+            assertThat(testUser.result.get(rankI)).isEqualTo(realResult[idx]);
+            idx++;
+        }
     }
 
 
