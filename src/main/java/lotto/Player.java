@@ -12,7 +12,7 @@ public class Player {
     int lottoCount;
     List<Lotto> lottoSet = new ArrayList<>();
 
-    public void playLotto() {
+    public Player() {
         inputCostForLotto();
         buyLotto();
         printLottoNumber();
