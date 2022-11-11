@@ -1,4 +1,4 @@
-package lotto.domain.payment;
+package lotto.domain.lottomachine.payment;
 
 import camp.nextstep.edu.missionutils.Console;
 

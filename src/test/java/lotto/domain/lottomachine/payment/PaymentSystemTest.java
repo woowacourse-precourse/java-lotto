@@ -1,4 +1,4 @@
-package lotto.domain.payment;
+package lotto.domain.lottomachine.payment;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
