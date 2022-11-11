@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 public class InputViewTest {
 
+	NewInputView input = new NewInputView();
 	@Test
 	@DisplayName("문자열을 입력받아 ,를 기준으로 나누어 저장")
 	void getLottoNumbersTest() {
@@ -30,7 +31,7 @@ public class InputViewTest {
 			strings[i] = String.valueOf(i);
 			list1.add(i);
 		}
-		Assertions.assertThat(InputView.convertIntoIntegerList(strings)).isEqualTo(list1);
+		Assertions.assertThat(input.convertIntoIntegerList(strings)).isEqualTo(list1);
 	}
 
 }
