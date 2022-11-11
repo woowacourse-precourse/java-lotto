@@ -16,5 +16,15 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+
+    @Override
+    public String toString() {
+        String value = "";
+        for (Integer n : numbers)
+            value += Integer.toString(n) + " ";
+        return value;
+    }
 }
