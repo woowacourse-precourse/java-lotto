@@ -1,6 +1,9 @@
 package lotto.domain;
 
 public class Game {
+    private static final String ENTER_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
+    private static final String BUY_SOMETHING = "개를 구매했습니다.";
+
     Price price = new Price();
     NumberGenerator numberGenerator = new NumberGenerator();
 
@@ -12,12 +15,13 @@ public class Game {
     }
 
     public void askPrice() {
-        System.out.println("수입금액을 입력해 주세요.");
+        System.out.println(ENTER_PURCHASE_AMOUNT);
     }
 
     public void showNumberOfPurchase() {
         int count = getCount();
-        System.out.println("\n" + count + "개를 구매했습니다.");
+        System.out.println();
+        System.out.println(count + BUY_SOMETHING);
     }
 
     public int getCount() {
