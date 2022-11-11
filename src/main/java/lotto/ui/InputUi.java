@@ -40,7 +40,7 @@ public class InputUi {
         return Collections.unmodifiableList(numbers);
     }
 
-    public static int readSingleNumber() throws IllegalArgumentException{
+    public static int readSingleNumber() throws IllegalArgumentException {
         String numberInput = Console.readLine();
         InputValidator.validateIsNumber(numberInput);
 
