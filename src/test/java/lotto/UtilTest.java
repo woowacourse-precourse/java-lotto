@@ -37,4 +37,18 @@ class UtilTest {
                 .isFalse();
     }
 
+    @Test
+    @DisplayName("문자열에서 특정 문자의 갯수 확인")
+    void 문자열에서_특정_문자_갯수_테스트(){
+
+        final String fiveComma = "1,2,a,4,5,";
+        assertThat(Util.countChar(fiveComma, ','))
+                .isEqualTo(5);
+
+        final String zeroComma = "1234";
+        assertThat(Util.countChar(zeroComma, ','))
+                .isEqualTo(0);
+    }
+
+
 }
