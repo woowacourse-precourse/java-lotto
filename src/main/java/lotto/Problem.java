@@ -3,14 +3,19 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Problem {
     WinningLotto winningLotto;
     User user;
+    int []prize;
+
     Problem(){
         printInputGuide();
         this.user=new User();
+        this.prize=new int[5];
     }
 
     void printInputGuide(){
@@ -19,6 +24,7 @@ public class Problem {
     void startProblem(){
         setUserLotto();
         setWinningLotto();
+        findResult();
     }
 
     private void setUserLotto(){
@@ -34,6 +40,37 @@ public class Problem {
         inputWinningNumber();
         printBonusNumberGuide();
         inputBonusNumber();
+    }
+    private void findResult(){
+        for(Lotto lotto:user.lottos){
+            checkPrize(lotto);
+        }
+    }
+
+    void checkPrize(Lotto lotto){
+        Set<Integer> userNumbers=new HashSet<>(lotto.getNumbers());
+        Set<Integer> winningNumbers=new HashSet<>(this.winningLotto.getNumbers());
+
+        userNumbers.retainAll(winningNumbers);
+        int winCount=userNumbers.size();
+
+        if(winCount>=3){
+            winPrize(winCount,lotto);
+        }
+    }
+
+    void winPrize(int winCount,Lotto lotto){
+        int index=6-winCount;
+        if(winCount==5){
+            if(!lotto.getNumbers().contains(this.winningLotto.bonusNumber)){
+                index++;
+            }
+        }
+        else if(winCount>5){
+            index++;
+        }
+
+        prize[index]++;
     }
 
     private void printWinningNumberInputGuide(){
