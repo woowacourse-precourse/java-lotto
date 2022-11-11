@@ -12,7 +12,7 @@
   - [ ] 에러 입력시  IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료
 - [ ] 보너스 번호 입력 받기 #getBonusNumber
 - [ ] 당첨 내역 확인 #castLotto 
-- [ ] 당첨 내역 출력 
+- [ ] 당첨 내역 출력 #printLotto
 - [ ] 수익률 출력 #printProfit
 
 ## 요구사항
