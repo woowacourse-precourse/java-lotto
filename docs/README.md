@@ -40,18 +40,18 @@
 
 - [ ] 사용자에게 입력 받고 int로 반환 int lottoCount = InputLotto#inputValueToInts()
   - [x] 사용자에게 값을 입력 받는다. String userValue = InputLotto#inputValueOfUser()
-  - [ ] 문자열을 int로 변환 - int number = Pretreatment#toInts(String number)
+  - [ ] 문자열을 int로 변환 - int number = InputLotto#toInts(String number)
 - [ ] 사용자에게 입력을 받고 List로 변환 List<Integer> winNumbers = InputLotto#InputValueToLst()
 - [ ] String형식의 번호를 입력 받고 List로 변환 List<Integer> winNumbers = InputLotto#InputStringToLst()
   - [x] 사용자에게 값을 입력 받는다. String userValue = InputLotto#inputValueOfUser()
-  - [ ] 문자열을 ,(쉼표)를 기준으로 나누기 - String[] numbers = Pretreatment#splitStrings(String numbers)
-  - [ ] 당첨 번호 모두를 int로 변환 - List<Integer> winNumbers = Pretreatment#allToInts(String[] numbers)
-    - [ ] 문자열을 int로 변환 - int number = Pretreatment#toInts(String number)
+  - [ ] 문자열을 ,(쉼표)를 기준으로 나누기 - String[] numbers = InputLotto#splitStrings(String numbers)
+  - [ ] 당첨 번호 모두를 int로 변환 - List<Integer> winNumbers = InputLotto#allToInts(String[] numbers)
+    - [ ] 문자열을 int로 변환 - int number = InputLotto#toInts(String number)
 
 - [ ] 입력한 금액이 1,000원 단위로 나누어떨어지는지 검사한다. - ExceptionHandling#notDivideException(long amount)
 - [ ] 입력한 당첨 번호가 입력 규칙에 유효한지 검사한다. - ExceptionHandling#lottoNumberRuleException(String lottoNumber)
-  - [ ] 문자열을 ,(쉼표)를 기준으로 나누기 - String[] numbers = Pretreatment#splitStrings(String numbers)
-  - [ ] 문자열을 int로 변환 - int number = Pretreatment#toInts(String number)
+  - [ ] 문자열을 ,(쉼표)를 기준으로 나누기 - String[] numbers = InputLotto#splitStrings(String numbers)
+  - [ ] 문자열을 int로 변환 - int number = InputLotto#toInts(String number)
 - [ ] 입력한 숫자가 1 ~ 45의 숫자인지 검사한다. - ExceptionHandling#bonusNumberException(int bonusNumber)
 
 ### enum으로 처리
