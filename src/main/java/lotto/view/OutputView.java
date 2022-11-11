@@ -1,5 +1,7 @@
 package lotto.view;
 
+import java.util.List;
+
 import static lotto.constant.MessageConstant.OUTPUT_PURCHASE;
 import static lotto.constant.MessageConstant.STATISTICS_MESSAGE;
 import static lotto.constant.MessageConstant.STATISTICS_THREE_MATCH;
@@ -15,13 +17,13 @@ public class OutputView {
         System.out.printf(OUTPUT_PURCHASE,lottoCount);
     }
 
-    public void printStatistics(int three, int four, int five, int fiveAndBonus, int six){
+    public void printStatistics(List<Integer> lottoStatistics){
         System.out.println(STATISTICS_MESSAGE);
-        System.out.printf(STATISTICS_THREE_MATCH, three);
-        System.out.printf(STATISTICS_FOUR_MATCH, four);
-        System.out.printf(STATISTICS_FIVE_MATCH, five);
-        System.out.printf(STATISTICS_FIVE_MATCH_ONE_BONUS, fiveAndBonus);
-        System.out.printf(STATISTICS_SIX_MATCH, six);
+        System.out.printf(STATISTICS_THREE_MATCH, lottoStatistics.get(0));
+        System.out.printf(STATISTICS_FOUR_MATCH, lottoStatistics.get(1));
+        System.out.printf(STATISTICS_FIVE_MATCH, lottoStatistics.get(2));
+        System.out.printf(STATISTICS_FIVE_MATCH_ONE_BONUS, lottoStatistics.get(3));
+        System.out.printf(STATISTICS_SIX_MATCH, lottoStatistics.get(4));
     }
 
     public void printEarning(float earning){
