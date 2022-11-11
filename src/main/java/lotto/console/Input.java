@@ -20,6 +20,10 @@ public class Input {
 
     public List<Integer> readIntList() {
         String line = readLine();
-        return InputParser.parseIntList(line, ",");
+        try {
+            return InputParser.parseIntList(line, ",");
+        } catch (NumberFormatException exception) {
+            throw new IllegalArgumentException("‘,’로 구분해서 숫자들을 입력해주세요.");
+        }
     }
 }
