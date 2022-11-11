@@ -7,8 +7,10 @@ public enum IOMessage {
 
     OUTPUT_PURCHASE_LOTTO("개를 구매했습니다."),
     OUTPUT_LOTTO_RESULT_HEAD("당첨 통계\n---"),
-    STANDARD_STATISTICS_MESSAGE("%d개 일치 (%d원) - %d개"),
-    BONUS_STATISTICS_MESSAGE("%d개 일치, 보너스 볼 일치 (%d원) - %d개");
+    STANDARD_STATISTICS_MESSAGE("%s개 일치 (%s원) - %d개"),
+    BONUS_STATISTICS_MESSAGE("%s개 일치, 보너스 볼 일치 (%s원) - %d개"),
+    OUTPUT_YIELD_MESSAGE("총 수익률은 %.1f%%입니다.");
+
 
     private String message;
 
