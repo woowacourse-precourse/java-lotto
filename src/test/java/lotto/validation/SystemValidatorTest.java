@@ -177,4 +177,13 @@ class SystemValidatorTest {
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessageContaining(Message.ERROR_DONT_DIVIDED_BY_LOTTO_PRICE);
 	}
+
+	@ParameterizedTest(name = "''''{0}''''이 모두 적절한 숫자 원소를 갖는게 아니어서 [ERROR]로 시작하는 예외 메세지를 던진다.")
+	@ValueSource(strings = {"1,2, , , ,4", "0,1,2,3,4,5", "a,b,c,d,e,f", " , , , , , ", "1,02,03,4,5,6", ""})
+	void checkWinningLottoNumberIsNumber(String winningLottoNumber) {
+		assertThatThrownBy(() ->
+				SystemValidator.validateAllLottoNumberInputElementsIsNumber(winningLottoNumber))
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(Message.ERROR_PREFIX);
+	}
 }
