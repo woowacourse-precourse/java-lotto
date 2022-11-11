@@ -6,13 +6,13 @@ import lotto.view.InputView;
 import java.util.List;
 
 public class LottoController {
-    private List<Integer> userLottoNumbers;
-    private int userLottoQuantity;
-    private int userLottoMoney;
-    private LottoQuantity lottoQuantity = new LottoQuantity();
-
+    public List<Integer> userLottoNumbers;
+    public int userLottoQuantity;
+    public int userLottoMoney;
+    public LottoQuantity lottoQuantity=new LottoQuantity();
     public void startLotto() {
         getUserMoney();
+        printLottoQuantity();
     }
 
     public void getUserMoney() {
@@ -20,7 +20,9 @@ public class LottoController {
     }
 
 
-    public void printLottoNumbers() {
-        //service에서 구현하기
+    public void printLottoQuantity() {
+        LottoQuantity lottoQuantity=new LottoQuantity();
+        lottoQuantity.setLottoQuantityNumber(userLottoMoney/10);
+        userLottoQuantity=lottoQuantity.getLottoQuantityNumber();
     }
 }
