@@ -1,13 +1,15 @@
 package lotto.domain;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
 import static lotto.exception.ValidatorTest.WINNING_NUMBERS;
+import static lotto.service.LottoServiceTest.BONUS_NUMBER;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -24,46 +26,82 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("당첨번호가 6개 일치하면 LottoResult.SIX를 반환한다.")
-    @Test
-    void test1() {
-        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        assertThat(lotto.result(WINNING_NUMBERS, 7)).isEqualTo(LottoResult.SIX);
+
+
     }
 
-    @DisplayName("당첨번호가 5개 일치하고 보너스번호가 일치하지 않으면 LottoResult.FIVE를 반환한다.")
-    @Test
-    void test2() {
-        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 45));
-        assertThat(lotto.result(WINNING_NUMBERS, 7)).isEqualTo(LottoResult.FIVE);
+    @Nested
+    @DisplayName("compareWinningNumbers method")
+    class MethodTest {
+
+        @DisplayName("당첨번호가 6개인 경우")
+        @Test
+        void test1() {
+
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+            assertThat(lotto.compareWinningNumbers(WINNING_NUMBERS)).isEqualTo(6);
+        }
+
+        @DisplayName("당첨번호가 5개인 경우")
+        @Test
+        void test2() {
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 45));
+            assertThat(lotto.compareWinningNumbers(WINNING_NUMBERS)).isEqualTo(5);
+        }
+
+        @DisplayName("당첨번호가 4개인 경우")
+        @Test
+        void test3() {
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 44, 45));
+            assertThat(lotto.compareWinningNumbers(WINNING_NUMBERS)).isEqualTo(4);
+        }
+
+        @DisplayName("당첨번호가 3개인 경우.")
+        @Test
+        void test4() {
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 43, 44, 45));
+            assertThat(lotto.compareWinningNumbers(WINNING_NUMBERS)).isEqualTo(3);
+        }
+
+        @DisplayName("당첨번호가 2개인 경우")
+        @Test
+        void test5() {
+            Lotto lotto = new Lotto(List.of(1, 2, 42, 43, 44, 45));
+            assertThat(lotto.compareWinningNumbers(WINNING_NUMBERS)).isEqualTo(2);
+        }
+
+        @DisplayName("당첨번호가 1개인 경우")
+        @Test
+        void test6() {
+            Lotto lotto = new Lotto(List.of(1, 41, 42, 43, 44, 45));
+            assertThat(lotto.compareWinningNumbers(WINNING_NUMBERS)).isEqualTo(1);
+        }
+
+        @DisplayName("당첨번호가 0개인 경우")
+        @Test
+        void test7() {
+            Lotto lotto = new Lotto(List.of(40, 41, 42, 43, 44, 45));
+            assertThat(lotto.compareWinningNumbers(WINNING_NUMBERS)).isEqualTo(0);
+        }
     }
 
-    @DisplayName("당첨번호가 5개 일치하고 보너스번호가 일치하면 LottoResult.FIVE_WITH_BONUS를 반환한다.")
-    @Test
-    void test3() {
-        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
-        assertThat(lotto.result(WINNING_NUMBERS, 7)).isEqualTo(LottoResult.FIVE_WITH_BONUS);
-    }
+    @Nested
+    @DisplayName("isContainBonusNumber method")
+    class MethodTest2 {
 
-    @DisplayName("당첨번호가 4개 일치하면 LottoResult.FOUR를 반환한다.")
-    @Test
-    void test4() {
-        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 44, 45));
-        assertThat(lotto.result(WINNING_NUMBERS, 7)).isEqualTo(LottoResult.FOUR);
-    }
+        @DisplayName("보너스 번호가 일치하는 경우")
+        @Test
+        void test1() {
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+            assertThat(lotto.isContainBonusNumber(BONUS_NUMBER)).isTrue();
+        }
 
-    @DisplayName("당첨번호가 3개 일치하면 LottoResult.THREE를 반환한다.")
-    @Test
-    void test5() {
-        Lotto lotto = new Lotto(List.of(1, 2, 3, 43, 44, 45));
-        assertThat(lotto.result(WINNING_NUMBERS, 7)).isEqualTo(LottoResult.THREE);
-    }
-
-    @DisplayName("당첨번호가 일치갯수가 2개 이하면 LottoResult.ESLE를 반환한다.")
-    @Test
-    void test6() {
-        Lotto lotto = new Lotto(List.of(1, 2, 32, 43, 44, 45));
-        assertThat(lotto.result(WINNING_NUMBERS, 7)).isEqualTo(LottoResult.ELSE);
+        @DisplayName("보너스 번호가 일치하지 않는 경우")
+        @Test
+        void test2() {
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+            assertThat(lotto.isContainBonusNumber(BONUS_NUMBER)).isFalse();
+        }
     }
 
 }

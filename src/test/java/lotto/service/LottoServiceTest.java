@@ -9,11 +9,12 @@ import lotto.domain.LottoResult;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class LottoServiceTest {
+public class LottoServiceTest {
 
     LottoService lottoService = new LottoService();
 
-    private final static int BONUS_NUMBER = 7;
+    public final static int BONUS_NUMBER = 7;
+
     private List<Lotto> lottoBundle = List.of(
             new Lotto(List.of(1, 2, 3, 4, 5, 6)),
             new Lotto(List.of(1, 2, 3, 4, 5, 7)),
