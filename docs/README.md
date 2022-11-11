@@ -30,13 +30,14 @@
 
 - [x] 구입할 수 있는 로또의 개수를 반환 - int lottoCount = Lotto#lottoCount(int number)
 - [x] 1 ~ 45까지의 숫자 중 6개의 중복되지 않는 숫자를 뽑는다. - Lotto#createLottoNumbers()
-- [x] 구입할 금액만큼 로또 번호를 반복하여 생성 - List<List<Integer>> lottoNumber = Lotto#createLotto()
+- [ ] 구입할 금액만큼 로또 번호를 반복하여 생성하고 오름차순 정렬 - List<List<Integer>> lottoList = Lotto#createLottoList(int numberOfLotto)
+  - [x] 구입할 금액만큼 로또 번호를 반복하여 생성 - List<List<Integer>> lottoList = Lotto#createLottoList(int numberOfLotto)
+  - [x] 발행한 로또 번호를 오름차순으로 정렬한다. - List<Integer> lotto = Lotto#sortLottoNumberAscending(List<Integer> lottoNumber)
 
 - [ ] 로또를 구매하기 - Long amount = Lotto#buyLotto()
 - [ ] 당첨 확인 - Lotto#lottoCheckWin()
 
 - [ ] 구매한 로또 번호들과 당첨 번호를 비교한다. - Lotto#lottoCompare()
-- [ ] 발행한 로또 번호를 오름차순으로 정렬한다. - Lotto#sortLottoNumberAscending(List<Integer> lottoNumber)
 
 - [x] 사용자에게 입력 받고 long으로 반환 int lottoCount = InputLotto#inputValueToLongs()
   - [x] 사용자에게 값을 입력 받는다. String userValue = InputLotto#inputValueOfUser()

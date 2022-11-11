@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -30,12 +31,17 @@ public class Lotto {
         return lottoNumbers;
     }
 
-    public List<List<Integer>> createLotto(int numberOfLotto) {
+    public List<List<Integer>> createLotto(long numberOfLotto) {
         List<List<Integer>> lottos = new ArrayList<>();
         for (int i = 0; i < numberOfLotto; i++) {
             lottos.add(createLottoNumber());
         }
         return lottos;
+    }
+
+    public List<Integer> sortLottoNumberAscending(List<Integer> lotto) {
+        Collections.sort(lotto);
+        return lotto;
     }
 
     // TODO: 추가 기능 구현
