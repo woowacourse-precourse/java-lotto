@@ -24,15 +24,19 @@ public enum LottoRank {
             return SECOND;
         }
         
+        return matchingRank(countOfSameLottoNumber);
+    }
+    
+    private static boolean isSecondRank(final int countOfSameLottoNumber, final boolean existBonusLottoNumber) {
+        return isCountOfMatchingLottoNumberSame(SECOND, countOfSameLottoNumber) && existBonusLottoNumber;
+    }
+    
+    private static LottoRank matchingRank(final int countOfSameLottoNumber) {
         return Arrays.stream(values())
                 .filter(Predicate.not(LottoRank::isSecond))
                 .filter(lottoRank -> isCountOfSameLottoNumberSame(lottoRank, countOfSameLottoNumber))
                 .findAny()
                 .orElse(MISS);
-    }
-    
-    private static boolean isSecondRank(final int countOfSameLottoNumber, final boolean existBonusLottoNumber) {
-        return isCountOfMatchingLottoNumberSame(SECOND, countOfSameLottoNumber) && existBonusLottoNumber;
     }
     
     public boolean isSecond() {
