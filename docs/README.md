@@ -25,7 +25,7 @@
 - [x] "보너스 번호를 입력해 주세요."를 출력한다. - ShowMessage#showInputBonusNumber()
 - [x] "당첨 통계{\n}---"를 출력한다. - ShowMessage#showLottoStatistics()
 
-- [x] "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다." - ShowErrorMessage#showOutRangeLottoNumber()
+- [ ] "[ERROR] 로또(당첨, 보너스) 번호는 1부터 45 사이의 숫자여야 합니다." - ShowErrorMessage#showOutRangeLottoNumber(String kind)
 - [ ] "[ERROR] 금액은 1,000으로 나누어 떨어져야 합니다."를 출력한다. - ShowErrorMessage#showNotDivide()
 
 - [ ] 로또를 구매하기 - Long amount = Lotto#buyLotto()
