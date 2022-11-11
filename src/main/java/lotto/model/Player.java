@@ -46,7 +46,7 @@ public class Player {
     }
 
     public String showWinningProfit(){
-        return "";
+        return playerProfit.getProfit();
     }
 
     public void addLottoRanking(Ranking lottoRanking){
