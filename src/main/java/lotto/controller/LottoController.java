@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.view.IntroduceView;
+import lotto.view.LottoNumberInputView;
 import lotto.view.LottoPurchaseNumberView;
 import lotto.view.View;
 import lotto.vo.Lotto;
@@ -30,6 +31,17 @@ public class LottoController {
 
         View view = new LottoPurchaseNumberView(purchaseNumbers);
         view.show();
+    }
+
+    public void showLottoNumberInput() {
+        View view = new LottoNumberInputView();
+        view.show();
+
+        String response = view.getResponse();
+        validateInput("^([1-9,])$", response);
+
+        //TODO - 당첨번호 저장 Service 호출
+
     }
 
     public static void validateInput(String regex, String input) {
