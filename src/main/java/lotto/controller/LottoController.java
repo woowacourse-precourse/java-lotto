@@ -9,7 +9,10 @@ public class LottoController {
     public void run() {
         OutputView.printPaymentInputMessage();
         Payment payment = InputView.inputPayment();
+        
+        OutputView.printWinningLottoNumbersInputMessage();
         WinningLottoNumbers winningLottoNumbers = InputView.inputWinningLottoNumbers();
+        
         System.out.println(winningLottoNumbers);
     }
 }

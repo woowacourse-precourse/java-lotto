@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
 import lotto.domain.Payment;
 import lotto.domain.WinningLottoNumbers;
+import lotto.exception.ViewClassCreateException;
 import lotto.view.validator.InputNumberValidator;
 import lotto.view.validator.InputWinningLottoValidator;
 
@@ -12,11 +13,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputView {
-    private static final String VIEW_CLASS_CREATE_EXCEPTION_MESSAGE = "View 클래스는 생성할 수 없습니다.";
     private static final String COMMA_DELIMITER = ",";
     
     private InputView() {
-        throw new IllegalStateException(VIEW_CLASS_CREATE_EXCEPTION_MESSAGE);
+        throw new ViewClassCreateException();
     }
     
     public static Payment inputPayment() {
