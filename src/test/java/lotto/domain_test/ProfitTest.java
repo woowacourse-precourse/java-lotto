@@ -21,6 +21,6 @@ public class ProfitTest {
     void getProfit(){
         profit.checkPayment(10000);
         profit.addPrice(5000);
-        assertThat(profit.getProfit()).isEqualTo(50.0);
+        assertThat(profit.getProfit()).isEqualTo("50.0");
     }
 }

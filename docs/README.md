@@ -35,7 +35,7 @@ validate
 정수형 전역변수 payment, price를 가진다. 
 1. checkPayment : 플레이어가 구매한 로또의 금액을 전역변수에 저장한다. 
 2. addPrice : 입력변수 Ranking에 따른 상금을 price와 더해 저장한다.
-3. getProfit : 입력변수로 당첨금액의 총합을 구해 로또 구매금액으로 백분율을 소수점 첫째 자리까지 리턴한다. 
+3. getProfit : 입력변수로 당첨금액의 총합을 구해 로또 구매금액으로 백분율을 소수점 첫째 자리까지 문자열로 리턴한다. 
 
 ### Winning
 List<Ranking>를 가진다. 

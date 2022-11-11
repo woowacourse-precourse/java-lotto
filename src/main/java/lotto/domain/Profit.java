@@ -17,6 +17,8 @@ public class Profit {
         this.price += price;
     }
 
-    public float getProfit(){return 0;}
+    public String getProfit(){
+        return String.format("%.1f", 100 * (double)price / (double)payment);
+    }
 
 }
