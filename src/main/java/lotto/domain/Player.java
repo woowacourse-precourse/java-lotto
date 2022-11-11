@@ -5,6 +5,7 @@ import lotto.ui.ConsoleInput;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.lang.Integer.*;
@@ -12,8 +13,8 @@ import static lotto.ui.ConsoleOutput.*;
 
 public class Player {
 
-	public static List<String> winningNumbers;
-	public static List<String> bonusNumber;
+	public static List<Integer> winningNumbers;
+	public static List<Integer> bonusNumber;
 
 	public long receiveTotalAmount() {
 		PrintRequestMessage(REQUEST_TOTAL_AMOUNT);
@@ -92,11 +93,11 @@ public class Player {
 	}
 
 	public static void storeWinningNumbers(String input){
-		winningNumbers = Arrays.asList(input.split(","));
+		winningNumbers =  Arrays.stream(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
 	}
 
 	public static void storeBonusNumber(String input){
-		bonusNumber = Arrays.asList(input.split(","));
+		bonusNumber = Arrays.stream(input.split("")).map(Integer::parseInt).collect(Collectors.toList());
 	}
 
 }
