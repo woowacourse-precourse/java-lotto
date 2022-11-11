@@ -46,13 +46,13 @@ public class Request {
 
 	public void validateMoney() {
 		if(!Pattern.matches("^1?[0-9]?[0-9]+000$", userInput)) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("[ERROR] 유효하지 않은 입력입니다.");
 		}
 
 		int input = Integer.parseInt(userInput);
 
 		if(input > 100000 || input == 0) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("[ERROR] 소액으로 건전하게 즐기세요. 1회차 1인당 구매 한도는 10만원 입니다.");
 		}
 	}
 
@@ -66,7 +66,7 @@ public class Request {
 		String[] splitUserInput = userInput.split(",");
 
 		if(splitUserInput.length != 6) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("[ERROR] 로또 숫자는 6자리 입니다.");
 		}
 	}
 
@@ -75,7 +75,7 @@ public class Request {
 
 		for(String eachNumber : splitUserInput) {
 			if(!Pattern.matches("^([1-9])|([1-3][0-9])|(4[0-5])$", eachNumber)) {
-				throw new IllegalArgumentException();
+				throw new IllegalArgumentException("[ERROR] 1에서 45 사이 숫자를 입력해 주세요.");
 			}
 		}
 	}
@@ -86,7 +86,7 @@ public class Request {
 
 		for(String eachNumbers : splitUserInput) {
 			if(winningNumbers.contains(Integer.parseInt(eachNumbers))) {
-				throw new IllegalArgumentException();
+				throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
 			}
 
 			winningNumbers.add(Integer.parseInt(eachNumbers));
@@ -100,13 +100,13 @@ public class Request {
 
 	public void isBonusNumber() {
 		if(!Pattern.matches("^([1-9])|([1-3][0-9])|(4[0-5])$", userInput)) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("[ERROR] 유효하지 않은 입력입니다.");
 		}
 	}
 
 	public void validateDuplicationWithWinningNumbers() {
 		if(winningNumbers.contains(Integer.parseInt(userInput))) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
 		}
 	}
 
