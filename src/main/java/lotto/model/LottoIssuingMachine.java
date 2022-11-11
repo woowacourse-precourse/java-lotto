@@ -14,6 +14,10 @@ public class LottoIssuingMachine {
         lottos = new ArrayList<>();
     }
 
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
+
     public void issue(int purchaseMoney) {
         int quantity = purchaseMoney / LOTTO_PRICE;
         while (lottos.size() != quantity) {
