@@ -20,19 +20,22 @@ public class User {
     }
 
     public int convertToInt(String money){
-        int convertMoney = 0;
-        try{
-            convertMoney = Integer.parseInt(money);
-        } catch (NumberFormatException e){
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요!");
-        }
+        validateMoney(money);
 
-        return convertMoney;
+        return Integer.parseInt(money);
     }
 
     public void validateMoney(int money){
         if(money < LOTTO_CHARGE){
             throw new IllegalArgumentException("[ERROR] 로또 1장의 구매가격은 1000원 입니다! 1000이상의 수를 입력해주세요");
+        }
+    }
+
+    public void validateMoney(String money){
+        try{
+            Integer.parseInt(money);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요!");
         }
     }
 }
