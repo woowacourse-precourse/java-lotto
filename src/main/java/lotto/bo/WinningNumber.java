@@ -1,6 +1,7 @@
 package lotto.bo;
 
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -35,9 +36,9 @@ public class WinningNumber {
     private void validateInteger(String numbers) {
         for (String number : numbers.split(",")) {
             String tmpNumber = number.strip();
-            try {
-                Integer.valueOf(tmpNumber);
-            } catch (NumberFormatException e) {
+            String range = String.format("^[0-9]+$");
+            if (!Pattern.matches(range, tmpNumber)) {
+                System.out.println("[ERROR] 당첨번호와 보너스 번호가 숫자가 아닙니다");
                 throw new IllegalArgumentException("[ERROR] 당첨번호와 보너스 번호가 숫자가 아닙니다");
             }
         }

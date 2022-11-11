@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.regex.Pattern;
 import lotto.bo.Lotto;
 import lotto.bo.WinningNumber;
 import lotto.model.Checker.WinningPlace;
@@ -15,6 +17,7 @@ public class LottoService {
     private List<WinningPlace> winningResult;
 
     public void getLottos(String money) {
+        lottos = new ArrayList<>();
         validateMoney(money);
         int numberOfLottos = Integer.parseInt(money) / LOTTO_PRICE;
 
@@ -42,12 +45,12 @@ public class LottoService {
 
     private void validateMoney(String money) {
         int tempMoney;
-
-        try {
-            tempMoney = Integer.parseInt(money);
-        } catch (NumberFormatException e) {
+        String range = String.format("^[0-9]+$");
+        if (!Pattern.matches(range, money)) {
+            System.out.println("[ERROR] 구입 금액은 숫자여야합니다.");
             throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자여야합니다.");
         }
+        tempMoney = Integer.parseInt(money);
         if (tempMoney % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1000으로 나누어 떨어져야합니다.");
         }
@@ -58,12 +61,12 @@ public class LottoService {
 
     private void printLottoNumbers(Lotto lotto) {
         List<Integer> numbers = lotto.getNumbers();
-
-        Collections.sort(numbers);
+        ArrayList<Integer> numbersNew = new ArrayList<>(numbers);
+        Collections.sort(numbersNew);
         System.out.print("[");
-        for (int i = 0; i < numbers.size(); i++) {
-            System.out.print(numbers.get(i));
-            if (i != numbers.size() - 1) {
+        for (int i = 0; i < numbersNew.size(); i++) {
+            System.out.print(numbersNew.get(i));
+            if (i != numbersNew.size() - 1) {
                 System.out.print(", ");
             }
         }
