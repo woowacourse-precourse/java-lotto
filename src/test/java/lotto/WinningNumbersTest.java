@@ -58,7 +58,7 @@ public class WinningNumbersTest {
     @DisplayName("당첨 번호 카운트 테스트")
     @ParameterizedTest(name = "{displayName} {index}등")
     @MethodSource("generateDataForWinningTest")
-    void checkFirstWinningTest(List<Integer> purchasedLotto, int expect) {
+    void checkCountWinningTest(List<Integer> purchasedLotto, int expect) {
         int result = WinningNumbersTest.winningNumbers.countWinning(purchasedLotto);
         assertThat(result).isEqualTo(expect);
     }
