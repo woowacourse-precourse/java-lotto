@@ -20,4 +20,10 @@ class StringTest {
     void one_split() {
         assertThat("1".split(",")).containsExactly("1");
     }
+    
+    @Test
+    @DisplayName("\"(1,2)\" 값이 주어졌을 때 String의 substring() 메소드를 활용해 () 을 제거하고 \"1,2\"를 반환")
+    void substring() {
+        assertThat("(1,2)".substring(1, 4)).isEqualTo("1,2");
+    }
 }
