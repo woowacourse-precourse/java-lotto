@@ -1,9 +1,7 @@
 package lotto.exception;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
@@ -15,11 +13,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class InputExceptionTest {
     @DisplayName("입력된 금액 예외 발생 테스트")
     @ParameterizedTest
-    @ValueSource(strings = {"3500", "4650", "9080", "10", "100", "1298089", "0", "100ki"})
+    @ValueSource(strings = {"3500", "4650", "9080", "10", "100", "1298089", "0"})
     void validatePurchaseAmountTest(String money) {
         assertThatThrownBy(() -> InputException.validatePurchaseAmount(money))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageStartingWith("[ERROR]");
+                .isInstanceOf(IllegalArgumentException.class);
     }
     @DisplayName("입력된 당첨 번호 예외 발생 테스트")
     @ParameterizedTest
@@ -29,8 +26,7 @@ public class InputExceptionTest {
                 .map(number -> Integer.valueOf(number))
                 .collect(Collectors.toList());
         assertThatThrownBy(() -> InputException.validateWinningNumber(winningNumber))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageStartingWith("[ERROR]");
+                .isInstanceOf(IllegalArgumentException.class);
     }
     @DisplayName("입력된 보너스 번호 예외 발생 테스트")
     @ParameterizedTest
@@ -38,7 +34,6 @@ public class InputExceptionTest {
     void validateWinningNumberTest(int bonusNumber) {
         List<Integer> winningNumber = List.of(1, 5, 13, 18, 22, 43);
         assertThatThrownBy(() -> InputException.validateBonusNumber(bonusNumber, winningNumber))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageStartingWith("[ERROR]");
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
