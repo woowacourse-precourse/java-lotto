@@ -3,8 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import org.assertj.core.util.Arrays;
+import java.util.Arrays;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -12,7 +11,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
     private static final int ticket_price = 1000;
     private static final List<Integer> prize = List.of(5000, 50000, 1500000, 30000000, 2000000000);
-    private static List<Integer> prize_num = List.of(0, 0, 0, 0, 0);
+    private static final int[] prize_num_arr = {0, 0, 0, 0, 0}; 
+    private static final List<Integer> prize_num = Arrays.stream(prize_num_arr).boxed().collect(Collectors.toList());
 
     public static void main(String[] args) {
         final List<Integer> lotto_win;
@@ -94,7 +94,7 @@ public class Application {
         for (int i = 0; i < prize.size(); i++){
             total_prize += prize.get(i) * prize_num.get(i);
         }
-        yield = total_prize / purchase * 100;
+        yield = (double)total_prize * 100 / (double)purchase;
         return yield;
     }
 }

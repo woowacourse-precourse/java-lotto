@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -24,8 +25,10 @@ public class Lotto {
     }
 
     public void display_num(){
-        Collections.sort(numbers);
-        System.out.println(Arrays.deepToString(numbers.toArray()));
+        List<Integer> sorted_numbers = new ArrayList<>();
+        sorted_numbers.addAll(numbers);
+        Collections.sort(sorted_numbers);
+        System.out.println(Arrays.deepToString(sorted_numbers.toArray()));
     }
     
     public int compare_win(Lotto win, int bonus){
