@@ -17,6 +17,7 @@ public class InputExceptionHandler {
 	private static final String NUMBER_REGEX = "^[0-9]*$";
 	private static final int CASH_UNIT = 1000;
 	private static final String REST_DIVISION_REGEX = ",";
+	private static final String NOT_REST_DIVISION_REGEX = "^[,]";
 
 	public void checkPurchaseAmountForm(String input) {
 		isNumber(input);
@@ -36,10 +37,18 @@ public class InputExceptionHandler {
 	}
 
 	public void checkWinningNumberForm(String input) {
-		List<Integer> numbers = Arrays.stream(input.split(REST_DIVISION_REGEX))
-			.map(Integer::parseInt)
-			.collect(Collectors.toList());
+		List<Integer> numbers = checkDivisionByRest(input);
 		isDuplicatedWinningNumber(numbers);
+		checkNumberCount(numbers);
+		checkOneToFortyFive(numbers);
+	}
+
+	private void checkOneToFortyFive(List<Integer> numbers) {
+		boolean allOneToFortyFive = numbers.stream()
+			.allMatch(number -> ConstValue.MIN_LOTTO_NUMBER <= number && ConstValue.MAX_LOTTO_NUMBER >= number);
+		if (!allOneToFortyFive) {
+			throw new IllegalArgumentException(ONE_TO_FORTY_FIVE_EXCEPTION);
+		}
 	}
 
 	private void isDuplicatedWinningNumber(List<Integer> numbers) {
@@ -51,17 +60,19 @@ public class InputExceptionHandler {
 		}
 	}
 
-	private void checkOneToFortyFive(List<Integer> numbers) {
-		boolean allOneToFortyFive = numbers.stream()
-			.allMatch(number -> ConstValue.MIN_LOTTO_NUMBER <= number && ConstValue.MAX_LOTTO_NUMBER >= number);
-		if (!allOneToFortyFive) {
-			throw new IllegalArgumentException(ONE_TO_FORTY_FIVE_EXCEPTION);
-		}
-	}
-
 	private void checkNumberCount(List<Integer> numbers) {
 		if (numbers.size() != ConstValue.LOTTO_NUMBERS) {
 			throw new IllegalArgumentException(WINNING_NUMBER_COUNT_EXCEPTION);
+		}
+	}
+
+	private List<Integer> checkDivisionByRest(String input) {
+		try {
+			return Arrays.stream(input.split(REST_DIVISION_REGEX))
+				.map(Integer::parseInt)
+				.collect(Collectors.toList());
+		} catch (Exception e) {
+			throw new IllegalArgumentException(WINNING_NUMBER_DIVISION_EXCEPTION);
 		}
 	}
 }
