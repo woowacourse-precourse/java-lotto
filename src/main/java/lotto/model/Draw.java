@@ -9,17 +9,23 @@ import java.util.Map;
 public class Draw {
     private Lotto winningLotto;
     private int bonusNum;
-
+    private Map<Rank, Integer> winningStats;
     private Map<Integer,Rank> rankClassification;
 
     public Draw(Lotto winningLotto, int bonusNum){
         validateBonusNumRange(bonusNum);
         setRankClassification();
+        setWinningStats();
         this.winningLotto = winningLotto;
         this.bonusNum = bonusNum;
     }
 
     public Map<Rank,Integer> getWinningStats(List<Lotto> lottoPaper) {
+        Map<Rank,Integer> winningStats = new HashMap<>();
+        for (Lotto tryLotto : lottoPaper) {
+            tryLottoRank(tryLotto);
+        }
+
         return null;
     }
 
@@ -35,11 +41,27 @@ public class Draw {
         this.rankClassification = rankClassification;
     }
 
+    private void setWinningStats(){
+        Map<Rank,Integer> winningStats = new HashMap<>();
+        winningStats.put(Rank.first,0);
+        winningStats.put(Rank.second,0);
+        winningStats.put(Rank.third,0);
+        winningStats.put(Rank.fourth,0);
+        winningStats.put(Rank.fifth,0);
+        this.winningStats = winningStats;
+    }
+
     private Rank tryLottoRank(Lotto tryLotto) {
         int winningCount = winningNumSize(tryLotto);
         boolean bonusExist = isBonusExist(this.bonusNum);
+        Rank rank = this.rankClassification.get(winningCount);
 
-
+        if (rank.equals(Rank.third)) {
+            if (bonusExist == true) {
+                return Rank.second;
+            }
+        }
+        return rank;
     }
 
     private int winningNumSize(Lotto tryLotto) {
