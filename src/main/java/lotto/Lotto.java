@@ -29,9 +29,11 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        Collections.sort(numbers);
-        this.numbers = numbers;
+        // 입력받은 List를 Sort할 때 수정이 불가능한 List가 넘어오는 문제를 해결하기 위해 Copy
+        List<Integer> copiedNumbers = new ArrayList<>(numbers);
+        validate(copiedNumbers);
+        Collections.sort(copiedNumbers);
+        this.numbers = copiedNumbers;
     }
 
     /**
