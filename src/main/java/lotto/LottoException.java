@@ -9,9 +9,15 @@ public class LottoException {
     }
 
     public void exceptionLottoByDuplicatedNumber(List<Integer> computerLotto) {
-        HashSet<Integer> LottoHashSet = new HashSet<Integer>(computerLotto);
-        for (Integer integer : LottoHashSet) {
-            System.out.println(integer);
+        HashSet<Integer> lottoHashSet = new HashSet<Integer>(computerLotto);
+        if (lottoHashSet.size() != 6) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
+    }
+
+    public void exceptionBonusNumberByDuplicatedLotto(List<Integer> computerLotto, int bonusNumber) {
+        if (computerLotto.contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR]");
         }
     }
 }
