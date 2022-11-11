@@ -1,6 +1,8 @@
 ## 기능 목록
 - 로또 (Lotto)
   - [x] 6자리 로또 번호가 유효한지 판단하는 기능 - validate()
+    - [ ] 6자리인가? - isSixNumbers()
+    - [ ] 모두 다른 숫자인가? - isAllDifferentNumbers()
 
 
 - 로또 기계 (LottoMachine)
