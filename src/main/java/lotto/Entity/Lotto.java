@@ -20,6 +20,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public Lotto(String input){
+        this.numbers = Arrays.stream(input.split(STRING_TOKEN)).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
