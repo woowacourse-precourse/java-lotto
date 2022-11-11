@@ -19,7 +19,8 @@ class PlayerTest {
         @DisplayName("로또 수량을 구합니다.")
         void case1() {
             int money = 14000;
-            int result = player.getLottoCount(money);
+            player.setLottoCount(money);
+            int result = player.getLottoCount();
             int expect = 14;
 
             assertThat(result).isEqualTo(expect);
@@ -28,7 +29,8 @@ class PlayerTest {
         @Test
         void case2() {
             int money = 2000000;
-            int result = player.getLottoCount(money);
+            player.setLottoCount(money);
+            int result = player.getLottoCount();
             int expect = 2000;
 
             assertThat(result).isEqualTo(expect);
