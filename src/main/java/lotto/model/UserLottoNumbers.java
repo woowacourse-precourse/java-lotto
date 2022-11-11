@@ -1,14 +1,16 @@
 package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.Collections;
 import java.util.List;
 
 public class UserLottoNumbers {
     private final Lotto lotto;
 
     public UserLottoNumbers() {
-        List<Integer> lottoNumber = makeRandomLottoNumbers();
-        this.lotto = new Lotto(lottoNumber);
+        List<Integer> lottoNumbers = makeRandomLottoNumbers();
+        sortLottoNumbers(lottoNumbers);
+        this.lotto = new Lotto(lottoNumbers);
     }
 
     private List<Integer> makeRandomLottoNumbers() {
@@ -17,5 +19,9 @@ public class UserLottoNumbers {
                         Constant.NUMBER_RANGE_END,
                         Constant.LOTTO_NUMBER_COUNT);
         return randomNumbers;
+    }
+
+    private void sortLottoNumbers(List<Integer> lottoNumbers) {
+        Collections.sort(lottoNumbers);
     }
 }
