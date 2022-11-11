@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Statistics {
+    private static final int FIVE_MATCHING_LOTTO_NUMBERS = 5;
+
     private Map<Rank, Integer> lottoResult;
 
     private Statistics(List<Lotto> lottos, WinningLotto winningLotto) {
@@ -26,6 +28,14 @@ public class Statistics {
 
     private void getLottoResult(Lotto lotto, WinningLotto winningLotto){
         int matchingCnt = compareNumbers(lotto, winningLotto);
+        boolean bonusBall = false;
+        if(matchingCnt == FIVE_MATCHING_LOTTO_NUMBERS){
+
+        }
+    }
+
+    private boolean compareBonusNumber(Lotto lotto, int bonusBall){
+        return lotto.getNumbers().contains(bonusBall);
     }
 
     private int compareNumbers(Lotto lotto, WinningLotto winningLotto) {
