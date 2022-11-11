@@ -24,7 +24,7 @@ public class Checker {
 	private void resetWinGames() {
 		Arrays.stream(Grade.values())
 			.filter(grade -> grade != DEFAULT)
-			.forEach(value -> winGames.put(value, 0));
+			.forEach(grade -> winGames.put(grade, 0));
 	}
 
 	private void checkLottoTicket() {

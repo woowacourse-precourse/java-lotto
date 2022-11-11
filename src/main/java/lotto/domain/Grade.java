@@ -1,13 +1,13 @@
-package lotto;
+package lotto.domain;
 
 import java.util.Arrays;
 
 public enum Grade {
-	FIRST(2_000_000_000, 6, false),
-	SECOND(30_000_000, 5, true),
-	THIRD(1_500_000, 5, false),
-	FORTH(50_000, 4, false),
 	FIFTH(5_000, 3, false),
+	FORTH(50_000, 4, false),
+	THIRD(1_500_000, 5, false),
+	SECOND(30_000_000, 5, true),
+	FIRST(2_000_000_000, 6, false),
 	DEFAULT(0, 0, false);
 	private static final int SECOND_OR_THIRD_WINNING_NUMBER_COUNT = 5;
 	private final int cashPrize;
@@ -48,9 +48,5 @@ public enum Grade {
 
 	public int getWinningNumberCount() {
 		return winningNumberCount;
-	}
-
-	public boolean getHasBonusNumber() {
-		return hasBonusNumber;
 	}
 }
