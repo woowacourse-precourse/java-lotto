@@ -71,4 +71,25 @@ public class UserInput {
             throw new IllegalArgumentException();
         }
     }
+
+    static int inputBonus() {
+        String bonus = Console.readLine();
+        int result = validateBonus(bonus);
+        return result;
+    }
+
+    static private int validateBonus(String bonus) {
+        int result;
+        try {
+            result = Integer.parseInt(bonus);
+        } catch (NumberFormatException e) {
+            Message.ERROR_INPUT_NUMBER.printError();
+            throw new IllegalArgumentException();
+        }
+        if (result > 45 || result < 1) {
+            Message.ERROR_INPUT_RANGE.printError();
+            throw new IllegalArgumentException();
+        }
+        return result;
+    }
 }
