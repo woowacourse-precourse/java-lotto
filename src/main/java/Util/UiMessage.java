@@ -5,15 +5,15 @@ import static domain.InputMessage.*;
 public class UiMessage {
 
     public static void inputBuyMessage(){
-        System.out.println(INPUT_BUY_MESSAGE);
+        System.out.println(INPUT_BUY_MESSAGE.getMessage());
     }
 
     public static void inputWinningLottoNumberMessage(){
-        System.out.println(INPUT_LOTTO_NUMBER_MESSAGE);
+        System.out.println(INPUT_LOTTO_NUMBER_MESSAGE.getMessage());
     }
 
     public static void inputBonusMessage(){
-        System.out.println(INPUT_SPECIAL_NUMBER_MESSAGE);
+        System.out.println(INPUT_SPECIAL_NUMBER_MESSAGE.getMessage());
     }
 
 }
