@@ -37,4 +37,9 @@ public class Statistics {
         Integer count = result.getOrDefault(prize, DEFAULT_VALUE);
         result.put(prize, count + 1);
     }
+
+    private int getMatch(Set<Integer> winNumbers, Set<Integer> numbers) {
+        numbers.removeAll(winNumbers);
+        return LottoRule.SIZE.getValue() - numbers.size();
+    }
 }
