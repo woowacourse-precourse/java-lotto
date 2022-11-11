@@ -74,12 +74,16 @@ public class Input {
         lottoBonusNumber = Integer.parseInt(Console.readLine());
         return lottoBonusNumber;
     }
-    public static void BonusRangeError(int bonusNumber){
+    public static void bonusRangeError(int bonusNumber){
         if(bonusNumber < 0 || bonusNumber > 45){
             System.out.println(bonusNumberRangeError);
             throw new IllegalArgumentException();
         }
     }
-
-
+    public static void bonusDupleError(List<Integer> lottoNumber, int lottoBonusNumber){
+        if(lottoNumber.contains(lottoBonusNumber)){
+            System.out.println(bonusNumberDupleError);
+            throw new IllegalArgumentException();
+        }
+    }
 }
