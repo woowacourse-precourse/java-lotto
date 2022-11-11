@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import static lotto.util.Printer.printErrorMessage;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,17 +21,14 @@ public class Lotto {
         if (isInvalidNumberSize(numbers)) {
             String errorMessage = String.format("%d개의 숫자를 입력하셨습니다. 로또는 %d개의 숫자를 가져야 합니다.", numbers.size(),
                     LOTTO_NUMBER_COUNT);
-            printErrorMessage(errorMessage);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(errorMessage);
         }
         if (isInvalidNumberRange(numbers)) {
             String errorMessage = String.format("로또 번호는 %d부터 %d 사이의 숫자여야 합니다.", START_LOTTO_NUMBER, END_LOTTO_NUMBER);
-            printErrorMessage(errorMessage);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(errorMessage);
         }
         if (hasDuplicateNumber(numbers)) {
-            printErrorMessage("로또 번호는 서로 달라야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("로또 번호는 서로 달라야 합니다.");
         }
     }
 

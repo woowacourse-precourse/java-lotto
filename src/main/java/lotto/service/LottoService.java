@@ -4,7 +4,6 @@ import static lotto.domain.Lotto.END_LOTTO_NUMBER;
 import static lotto.domain.Lotto.LOTTO_NUMBER_COUNT;
 import static lotto.domain.Lotto.LOTTO_PRICE;
 import static lotto.domain.Lotto.START_LOTTO_NUMBER;
-import static lotto.util.Printer.printErrorMessage;
 import static lotto.util.Printer.printMessage;
 import static lotto.util.Printer.printPurchaseLottosInfo;
 import static lotto.util.Printer.printResult;
@@ -81,8 +80,7 @@ public class LottoService {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {
-            printErrorMessage("당첨 번호는 반드시 숫자여야 합니다.");
-            throw new IllegalArgumentException(e);
+            throw new IllegalArgumentException("당첨 번호는 반드시 숫자여야 합니다.", e);
         }
     }
 
@@ -91,8 +89,7 @@ public class LottoService {
         try {
             return Integer.parseInt(playerInput);
         } catch (NumberFormatException e) {
-            printErrorMessage("보너스 번호는 반드시 숫자여야 합니다.");
-            throw new IllegalArgumentException(e);
+            throw new IllegalArgumentException("보너스 번호는 반드시 숫자여야 합니다.", e);
         }
     }
 
@@ -104,8 +101,7 @@ public class LottoService {
     List<Lotto> purchaseLottos() {
         this.purchasePrice = inputPurchasePrice();
         if (purchasePrice % LOTTO_PRICE != 0) {
-            printErrorMessage(String.format("로또는 %d원 단위로 나누어 떨어져야 합니다.", LOTTO_PRICE));
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(String.format("로또는 %d원 단위로 나누어 떨어져야 합니다.", LOTTO_PRICE));
         }
         return generateLottos(purchasePrice / LOTTO_PRICE);
     }
@@ -115,8 +111,7 @@ public class LottoService {
         try {
             return Integer.parseInt(playerInput);
         } catch (NumberFormatException e) {
-            printErrorMessage("로또 구매 금액은 반드시 숫자여야 합니다.");
-            throw new IllegalArgumentException(e);
+            throw new IllegalArgumentException("로또 구매 금액은 반드시 숫자여야 합니다.", e);
         }
     }
 
