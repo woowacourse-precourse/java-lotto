@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.dto.LottoDto;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,14 +14,14 @@ public class Publisher {
     private static final int COUNT_LOTTO_NUMBER = 6;
     private static final int LOTTO_PRICE = 1000;
 
-    public List<List<Integer>> getLottoGroup(int money) {
+    public List<LottoDto> getLottoGroup(int money) {
         validate(money);
 
-        List<List<Integer>> result;
+        List<LottoDto> result;
         int count = getLottoCount(money);
 
         result = IntStream.range(0, count)
-                .mapToObj(index -> getLottoNumber())
+                .mapToObj(lotto -> new LottoDto(getLotto()))
                 .collect(Collectors.toList());
 
         return result;
@@ -32,7 +33,7 @@ public class Publisher {
         }
     }
 
-    private List<Integer> getLottoNumber() {
+    private List<Integer> getLotto() {
         List<Integer> randomNumber = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, COUNT_LOTTO_NUMBER);
         return randomNumber.stream().sorted().collect(Collectors.toList());
     }
