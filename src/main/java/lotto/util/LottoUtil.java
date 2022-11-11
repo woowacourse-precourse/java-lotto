@@ -14,8 +14,6 @@ public class LottoUtil {
     }
 
     public static int bonusNumberParser(String inputBonusNumber) {
-        int bonusNumber = 0;
-
-        return bonusNumber;
+        return Integer.parseInt(inputBonusNumber);
     }
 }
