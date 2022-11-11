@@ -30,7 +30,7 @@ public enum Prize {
     }
 
     private String writeDescription() {
-        return String.format("%d개 일치%s (%s)", match, bonusText(), NumberFormat.getNumberInstance().format(money));
+        return String.format("%d개 일치%s (%s원)", match, bonusText(), NumberFormat.getNumberInstance().format(money));
     }
 
     private String bonusText() {
