@@ -29,6 +29,9 @@ public class GameView {
 
         // 사용자에게 랜덤으로 로또 번호를 발행한다
         UserLotto userLotto = userLottoController.createUserLotto(purchaseNumber);
+
+        // 구매한 로또 번호를 출력한다
+        System.out.println(userLottoController.getUserLottoHistory(userLotto));
     }
 
     public String inputPurchaseAmount() {

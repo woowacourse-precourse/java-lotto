@@ -8,4 +8,12 @@ public class UserLotto {
     public UserLotto(List<List<Integer>> userLotto) {
         this.userLotto = userLotto;
     }
+
+    public List<Integer> getUserLottoNumbers(int index) {
+        return userLotto.get(index);
+    }
+
+    public int getUserLottoSize() {
+        return userLotto.size();
+    }
 }

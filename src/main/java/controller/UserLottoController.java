@@ -9,4 +9,8 @@ public class UserLottoController {
     public UserLotto createUserLotto(int purchaseNumber) {
         return userLottoService.createUserLotto(purchaseNumber);
     }
+
+    public String getUserLottoHistory(UserLotto userLotto) {
+        return userLottoService.getUserLottoHistory(userLotto);
+    }
 }

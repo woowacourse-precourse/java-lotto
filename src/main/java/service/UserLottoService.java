@@ -17,4 +17,13 @@ public class UserLottoService {
 
         return new UserLotto(randomNumbers);
     }
+
+    public String getUserLottoHistory(UserLotto userLotto) {
+        StringBuilder userLottoHistory = new StringBuilder();
+
+        for(int count = 0; count < userLotto.getUserLottoSize(); count++){
+            userLottoHistory.append(userLotto.getUserLottoNumbers(count)).append("\n");
+        }
+        return userLottoHistory.toString();
+    }
 }
