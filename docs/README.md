@@ -127,7 +127,7 @@
   - 입력받은 당첨 번호 문자열에 대한 검사 함수가 수행되고 당첨 번호를 담은 리스트를 반환해주는 함수
 
 
-- Integer getBonusNumber(String)
+- Integer getBonusNumber(String, List<Integer>)
   - 입력받은 보너스 번호 문자열에 대한 검사 함수가 수행되고 이를 Integer 자료형으로 반환해주는 함수
   
 
@@ -143,11 +143,11 @@
   - 보너스 번호가 숫자로 이루어져있는지 검사하는 함수
 
 
-- void validateBonusNumberIsInRange()
+- void validateBonusNumberIsInRange(String)
   - 보너스 번호가 1~45 사이의 숫자인지 검사하는 함수
 
 
-- void validateBonusNumberIsDuplicate()
+- void validateBonusNumberIsDuplicate(String, List<Integer>)
   - 보너스 번호가 당첨 번호와 중복되는지 검사하는 함수
 
 
