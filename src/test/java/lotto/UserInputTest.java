@@ -56,4 +56,13 @@ class UserInputTest {
         int lottoSize = 6;
         assertThat(UserInput.lotteries.get(0).size()).isEqualTo(lottoSize);
     }
+
+    @Test
+    void 당첨_번호_입력_예외_1() {
+        String input = "나, 5, 6, 7, 가";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatThrownBy(() -> UserInput.inputWinningNumber())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
