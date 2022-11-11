@@ -2,8 +2,10 @@ package lotto.controller;
 
 import lotto.view.*;
 import lotto.vo.Lotto;
+import lotto.vo.PlaceType;
 
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class LottoController {
@@ -50,6 +52,15 @@ public class LottoController {
 
         //TODO - 보너스번호 저장 Service 호출
 
+    }
+
+    public void showLottoStatistic() {
+        //TODO - 당첨 통계 Service 호출
+        Map<PlaceType, Integer> statistic = Map.of(PlaceType.THIRD_PLACE, 1); // mockup
+        int numberOfPurchases = 1;
+
+        View view = new LottoStatisticView(statistic, numberOfPurchases);
+        view.show();
     }
 
     public static void validateInput(String regex, String input) {
