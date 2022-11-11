@@ -16,6 +16,12 @@ public class Lotto {
         }
     }
 
+    public int getRank(List<Integer> userNumbers, Integer bonusNumber) {
+        int numberCount = getCorrectNumberCountInNumbers(userNumbers);
+        int bonusCount = getCorrectBonusCount(bonusNumber);
+        return LottoUtil.checkRank(numberCount, bonusCount);
+    }
+
     public int getCorrectNumberCountInNumbers(List<Integer> userNumbers) {
         return userNumbers.stream().filter(numbers::contains).toArray().length;
     }
