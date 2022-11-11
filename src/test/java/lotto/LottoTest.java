@@ -46,7 +46,7 @@ class LottoTest {
         Referee referee = new Referee();
         Lotto computerLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Lotto myLotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
-        int count = referee.correctNumberCount(computerLotto, myLotto);
+        int count = referee.getCorrectNumberCount(computerLotto, myLotto);
         assertThat(5).isEqualTo(count);
     }
 
@@ -57,7 +57,7 @@ class LottoTest {
         Lotto computerLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int input_bonus = 7;
         Lotto myLotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
-        int correctNumberCount = referee.correctNumberCount(computerLotto, myLotto);
+        int correctNumberCount = referee.getCorrectNumberCount(computerLotto, myLotto);
 
         referee.plusCorrectNumberCount(correctNumberCount, myLotto, input_bonus);
         assertThat(1).isEqualTo(FIVE_BONUS.getCount());

@@ -6,7 +6,7 @@ import static lotto.Rank.*;
 
 public class Referee {
 
-    public int correctNumberCount(Lotto computerLotto, Lotto myLotto) {
+    public int getCorrectNumberCount(Lotto computerLotto, Lotto myLotto) {
         int count = 0;
 
         for(int number : myLotto.getNumbers()) {
