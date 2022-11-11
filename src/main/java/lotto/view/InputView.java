@@ -10,7 +10,7 @@ public class InputView {
         System.out.println(INPUT_MONEY);
     }
 
-    public static void printLottoCount(int count) {
+    public static void printLottoPurchaseCount(int count) {
         System.out.println(count + PURCHASE_LOTTO);
     }
 
