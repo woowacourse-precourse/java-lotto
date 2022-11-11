@@ -22,8 +22,8 @@ public class CompareResult {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CompareResult that = (CompareResult) o;
-        return matchCount == that.matchCount && hasBonus == that.hasBonus;
+        CompareResult other = (CompareResult) o;
+        return matchCount == other.matchCount && hasBonus == other.hasBonus;
     }
 
     @Override
