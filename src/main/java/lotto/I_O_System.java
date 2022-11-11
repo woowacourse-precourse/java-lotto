@@ -12,4 +12,15 @@ public class I_O_System {
         String Enter_Price = Console.readLine();
 
     }
+
+    private void Differnet_Error(String Number)
+    {
+        try{
+            int number = Integer.parseInt(Number);
+        }
+        catch (IllegalAccessError ex)
+        {
+            ex.printStackTrace();
+        }
+    }
 }
