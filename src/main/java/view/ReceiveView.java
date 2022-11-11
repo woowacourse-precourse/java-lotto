@@ -63,6 +63,14 @@ public class ReceiveView {
         return true;
     }
 
+    public static int bonusNumber() {
+        String bonusNumber = Console.readLine();
+        isDigit(bonusNumber);
+        return Integer.parseInt(bonusNumber);
+    }
+
+
+
 
 
 }
