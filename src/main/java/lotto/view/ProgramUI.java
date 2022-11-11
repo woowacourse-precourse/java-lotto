@@ -1,5 +1,9 @@
 package lotto.view;
 
+import lotto.domain.Prize;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -30,5 +34,17 @@ public class ProgramUI {
         System.out.println();
         System.out.println(INPUT_BONUS_NUMBER);
         return readLine();
+    }
+
+    public void printPrize(LinkedHashMap<Prize, Integer> winningTickets) {
+        List<String> winningNotice = Prize.getNoticeValues();
+        List<Integer> winningCount = new ArrayList<>(winningTickets.values());
+
+        System.out.println();
+        System.out.println(WIN_STAT);
+        for (int i = 0; i < winningCount.size(); i++) {
+            String notice = String.format(winningNotice.get(i), winningCount.get(i));
+            System.out.println(notice);
+        }
     }
 }
