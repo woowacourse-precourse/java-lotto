@@ -22,11 +22,11 @@
   * [x] 발행한 로또 수량을 출력한다.
   * [x] 발행한 로또 번호를 출력한다.
 * [x] 당첨 번호를 입력받는다.
-  * [ ] 유효한 숫자인가?
-  * [ ] 검증 실패시 IllegalArgumentException 발생, [Error]로 시작하는 메시지를 출력한다.
+  * [x] 유효한 숫자인가?
+  * [x] 검증 실패시 IllegalArgumentException 발생, [Error]로 시작하는 메시지를 출력한다.
 * [x] 보너스 번호를 입력받는다.
-  * [ ] 유효한 숫자인가?
-  * [ ] 검증 실패시 IllegalArgumentException 발생, [Error]로 시작하는 메시지를 출력한다.
+  * [x] 유효한 숫자인가?
+  * [x] 검증 실패시 IllegalArgumentException 발생, [Error]로 시작하는 메시지를 출력한다.
 * [ ] 당첨 통계를 계산한다.
 * [ ] 당첨 통계 메시지를 출력한다.
 * [ ] 총 수익률을 계산한다.
