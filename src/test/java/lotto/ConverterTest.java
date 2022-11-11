@@ -7,7 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 
-class InputValidatorTest {
+class ConverterTest {
     @DisplayName("입력한 당첨번호에 ','와 숫자가 아닌 문자가 존재하면 예외를 던진다.")
     @ParameterizedTest
     @ValueSource(strings = {"1, 3, 2, 4, 5, 7;", "1, 2, 3, 4 + 5 , 6, 7"})
@@ -31,7 +31,4 @@ class InputValidatorTest {
         assertThatThrownBy(() -> Converter.convertBonusNumberInput(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
-
-
 }
