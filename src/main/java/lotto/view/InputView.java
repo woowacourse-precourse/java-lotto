@@ -10,4 +10,9 @@ public class InputView {
         OutputView.printRequestMoney();
         return SCANNER.nextLine();
     }
+
+    public static String requestWinningNumber() {
+        OutputView.printRequestWinningNumber();
+        return SCANNER.nextLine();
+    }
 }
