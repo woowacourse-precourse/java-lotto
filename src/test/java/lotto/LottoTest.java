@@ -71,6 +71,16 @@ class LottoTest {
         FIVE.plusCount();
         FIVE_BONUS.plusCount();
         SIX.plusCount();
-        assertThat(2_031_605_000).isEqualTo(Calculate.getLotteryWinningPrize());
+        assertThat(2_031_605_000L).isEqualTo(Calculate.getLotteryWinningPrize());
+    }
+
+    @DisplayName("총 수익률 구하기")
+    @Test
+    void 총_수익률_구하기_테스트() {
+        THREE.plusCount();
+        long lotteryWinningPrize = Calculate.getLotteryWinningPrize();
+        long payMoney = 8000L;
+        double totalLotteryWinningPrizeProfit = Calculate.getTotalLotteryWinningPrizeProfit(lotteryWinningPrize, payMoney);
+        assertThat(62.5).isEqualTo(totalLotteryWinningPrizeProfit);
     }
 }
