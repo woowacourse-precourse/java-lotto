@@ -11,18 +11,20 @@ public class InputValid {
     }
 
     public static boolean checkPriceUnit(String userPrice){
-        int isValidUserGameChance;
-
-        try{
-            isValidUserGameChance=Integer.parseInt(userPrice)%EXCEPTED_UNIT_OF_PRICE;
-        }catch (Exception e){
-            return false;
-        }
+        int isValidUserGameChance=tryCheckPriceUnit(userPrice);
 
         if(isValidUserGameChance!=0){
             return false;
         }
         return true;
+    }
+
+    private static int tryCheckPriceUnit(String userPrice){
+        try{
+            return Integer.parseInt(userPrice)%EXCEPTED_UNIT_OF_PRICE;
+        }catch (Exception e){
+            return 1;
+        }
     }
 
     public static boolean checkLottoNumber(String strLottoNumber){
