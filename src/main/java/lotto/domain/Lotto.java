@@ -1,22 +1,43 @@
 package lotto.domain;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateLength(numbers);
+        validateDuplicatedNumber(numbers);
+        validateNumberRange(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validateLength(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또의 번호 개수는 6개여야 합니다.");
         }
     }
 
-    public void printLotto () {
+    private void validateDuplicatedNumber(List<Integer> numbers) {
+        Map<Integer, Integer> duplicateChecker = new HashMap<>();
+        long countsOfDuplicatedNumber = numbers.stream()
+                .map(x -> duplicateChecker.put(x, duplicateChecker.getOrDefault(x, 0) + 1))
+                .count();
+        if (countsOfDuplicatedNumber != 1) {
+            throw new IllegalArgumentException("[ERROR] 로또의 번호는 중복될 수 없습니다.");
+        }
+    }
+
+    private void validateNumberRange(List<Integer> numbers) {
+        long countsOfRangeOut = numbers.stream().filter(x -> x < 1 || x > 45).count();
+        if (countsOfRangeOut > 0) {
+            throw new IllegalArgumentException("[ERROR] 로또의 숫자 범위는 1에서 45까지 가능합니다.");
+        }
+    }
+
+    public void printLotto() {
         System.out.println(numbers);
     }
 }
