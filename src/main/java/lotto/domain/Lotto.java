@@ -16,5 +16,11 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public int getCorrectNumberCountInNumbers(List<Integer> userNumbers) {
+        return userNumbers.stream().filter(numbers::contains).toArray().length;
+    }
+
+    public int getCorrectBonusCount(Integer bonusNumber) {
+        return numbers.stream().filter(bonusNumber::equals).toArray().length;
+    }
 }
