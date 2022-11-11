@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.domain.Lotto;
+import lotto.domain.ProfitCalculator;
 import lotto.domain.WinningLotto;
 import lotto.domain.WinningRank;
 import lotto.ui.InputUi;
@@ -54,6 +55,8 @@ public class LottoStore {
     private void showWinningStatistic(WinningLotto winningLotto, List<Lotto> lottos) {
         Map<WinningRank, Integer> winLottoCount = lottoController.countWinLotto(winningLotto, lottos);
         OutputUi.printWinLottoStatistic(winLottoCount);
+
+        int totalProfit = ProfitCalculator.calculateTotalProfit(winLottoCount);
     }
 
 }
