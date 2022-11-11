@@ -33,4 +33,15 @@ public class Error {
             throw new IllegalArgumentException("[ERROR] 로또번호의 개수가 유효하지 않습니다.");
         }
     }
+
+    static void rangeWinningNumber(List<Integer> winningNumber) {
+        long validRangeNumberCount = winningNumber.stream()
+                .filter(number -> number >= LottoConst.LOTTO_MIN_NUMBER)
+                .filter(number -> number <= LottoConst.LOTTO_MAX_NUMBER)
+                .count();
+
+        if (validRangeNumberCount != LottoConst.LOTTO_NUMBER_COUNT) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 로또 번호가 있습니다.");
+        }
+    }
 }
