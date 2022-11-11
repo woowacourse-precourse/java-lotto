@@ -412,4 +412,18 @@ class LottoTest {
 
         assertThat(rank).isEqualTo(result);
     }
+
+    @DisplayName("2개의 로또가 들어가면 2개의 당첨 결과가 나온다")
+    @Test
+    void getRankByLottos() {
+        Lotto lotto1 = new Lotto(List.of(1, 10, 13, 25, 32, 43));
+        Lotto lotto2 = new Lotto(List.of(2, 11, 13, 25, 33, 45));
+        List<Integer> winningNumbers = List.of(1, 10, 12, 24, 33, 45);
+        int bonusNumber = 43;
+        WinningNumber winningNumber = new WinningNumber(winningNumbers, bonusNumber);
+
+        List<LottoRank> ranks = winningNumber.getRanks(List.of(lotto1, lotto2));
+
+        assertThat(ranks.size()).isEqualTo(2);
+    }
 }
