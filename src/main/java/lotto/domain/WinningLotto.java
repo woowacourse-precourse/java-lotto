@@ -9,6 +9,10 @@ public class WinningLotto extends Lotto {
 		super(numbers);
 	}
 
+	public int getBonusNumber() {
+		return bonusNumber;
+	}
+
 	public void setBonusNumber(String bonusNumber) {
 		this.bonusNumber = Integer.parseInt(bonusNumber);
 	}
