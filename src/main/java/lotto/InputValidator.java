@@ -5,7 +5,8 @@ import lotto.exception.NotThousandException;
 
 public class InputValidator {
     public void validateInputPurchaseAmount(String input) {
-        throw new UnsupportedOperationException();
+        validateIsNumber(input);
+        validateIsThousand(Integer.parseInt(input));
     }
 
     public void validateInputWinningNumbers() {
