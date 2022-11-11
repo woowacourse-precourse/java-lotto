@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Arrays;
 import java.util.List;
 
 public enum LottoResult {
@@ -35,33 +36,13 @@ public enum LottoResult {
                                  int bonusNumber) {
         long matchingNumberCount = lotto.compareWinningNumbers(winningNumbers);
 
-
-        if (matchingNumberCount == 0) {
-            return ZERO;
+        if (matchingNumberCount == 5 && lotto.isContainBonusNumber(bonusNumber)) {
+            return FIVE_WITH_BONUS;
         }
 
-        if (matchingNumberCount == 1) {
-            return ONE;
-        }
-
-        if (matchingNumberCount == 2) {
-            return TWO;
-        }
-
-        if (matchingNumberCount == 3) {
-            return THREE;
-        }
-
-        if (matchingNumberCount == 4) {
-            return FOUR;
-        }
-
-        if (matchingNumberCount == 5) {
-            if (lotto.isContainBonusNumber(bonusNumber)) {
-                return FIVE_WITH_BONUS;
-            }
-            return FIVE;
-        }
-        return SIX;
+        return Arrays.stream(LottoResult.values())
+                .filter(lottoResult -> lottoResult.getMatchingNumberCount() == matchingNumberCount)
+                .findFirst()
+                .get();
     }
 }
