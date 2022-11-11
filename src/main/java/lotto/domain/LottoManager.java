@@ -20,7 +20,7 @@ public class LottoManager {
         savePurchaseAmount();
         saveLottoIssueCount();
         issueLottoSeveralTimes(lottoIssueCount, myLotto);
-        OutputView.printLottoPurchaseInformation(myLotto);
+        OutputView.printLottoPurchaseInformation(myLotto, lottoIssueCount);
         saveWinningNumber();
         saveBonusNumber();
         setResult(myLotto, winningNumber, bonusNumber);
