@@ -20,6 +20,7 @@ public class OutputView {
     private static final String EARNINGS_RATIO_SUFFIX = "입니다.";
 
     public void printPurchaseLottoCount(int purchaseLottoCount) {
+        System.out.println();
         System.out.println(purchaseLottoCount + PURCHASE_LOTTO_COUNT_MESSAGE);
     }
 
