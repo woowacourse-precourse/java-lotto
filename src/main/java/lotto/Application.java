@@ -25,12 +25,8 @@ public class Application {
 
     private static void createLottoTickets(int numOfLotto) {
         for (int i=INITIAL_NUMBER; i<numOfLotto; i++) {
-            lottoTickets.add(createLotto());
+            lottoTickets.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
         }
-    }
-
-    private static Lotto createLotto() {
-        return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
 
     public static void showLottoTickets() {
