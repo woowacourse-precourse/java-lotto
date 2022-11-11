@@ -11,11 +11,12 @@ public class LottoController {
     public List<Integer> userLottoNumbers;
     public int userLottoQuantity;
     public int userLottoMoney;
-    public Lottos lottos;
+    public Lottos lottos=new Lottos(userLottoQuantity);
     public LottoQuantity lottoQuantity=new LottoQuantity();
     public void startLotto() {
         getUserMoney();
         printLottoQuantity();
+        printLottos();
     }
 
     public void getUserMoney() {
@@ -25,8 +26,9 @@ public class LottoController {
 
     public void printLottoQuantity() {
         LottoQuantity lottoQuantity=new LottoQuantity();
-        lottoQuantity.setLottoQuantityNumber(userLottoMoney/10);
+        lottoQuantity.setLottoQuantityNumber(userLottoMoney/1000);
         userLottoQuantity=lottoQuantity.getLottoQuantityNumber();
+        OutputView.printPurchaseLottoSet(userLottoQuantity);
     }
     public void printLottos(){
         lottos.initLottos(userLottoQuantity);

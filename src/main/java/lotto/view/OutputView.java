@@ -11,11 +11,14 @@ public class OutputView {
     }
 
     public static void printPurchaseLottoNumbers(List<Lotto> lottoNumbers) {
-        for (int i = 0; i < lottoNumbers.size(); i++) {
+        int i,j;
+        for ( i = 0; i < lottoNumbers.size(); i++) {
             System.out.println("[");
-           // for(int j=0;j< 6; j++)
-               // System.out.println(lottoNumbers.get(i). + "]");
-            //System.out.println(lottoNumbers.get(i)[lottoNumbers[i].length - 1] + "]");
+            List<Integer> lottoOneSetNumbers=new ArrayList<>(lottoNumbers.get(i).getNumbers());
+            for( j=0;j< 5; j++) {
+                System.out.println(lottoOneSetNumbers.get(j) + ",");
+            }
+            System.out.println(lottoOneSetNumbers.get(j) + "]");
         }
     }
 
