@@ -17,6 +17,7 @@ public class LottoController {
         getUserMoney();
         printLottoQuantity();
         printLottos();
+        getUserLottoNumbers();
     }
 
     public void getUserMoney() {
@@ -33,5 +34,13 @@ public class LottoController {
     public void printLottos(){
         lottos.initLottos(userLottoQuantity);
         OutputView.printPurchaseLottoNumbers(lottos.getLottos());
+    }
+
+    public void getUserLottoNumbers(){
+        userLottoNumbers = InputView.requestLottoNumbers();
+        //System.out.println("userLottoNumbers: "+userLottoNumbers);
+    }
+    public void getUserBonusNumber(){
+        //userLottoNumbers.add(InputView.requestBonusNumber());
     }
 }
