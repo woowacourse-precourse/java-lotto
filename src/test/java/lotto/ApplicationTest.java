@@ -122,6 +122,12 @@ class ApplicationTest extends NsTest {
         assertThat(33).isEqualTo(getBonusNumber("33", List.of(1, 2, 3, 4, 5, 6)));
     }
 
+    @Test
+    void calculateSurplusTest() {
+
+        assertThat(62.5).isEqualTo(calculateSurplus(0, 0, 0, 0, 1, 8000));
+    }
+
     @Override
     public void runMain() {
         main(new String[]{});
