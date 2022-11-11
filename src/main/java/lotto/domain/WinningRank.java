@@ -32,7 +32,7 @@ public enum WinningRank {
                 .orElse(WinningRank.LAST_PLACE);
     }
 
-    public static Map<WinningRank, Integer> getWinningDetails() {
+    public static Map<WinningRank, Integer> generateWinningDetails() {
         Map<WinningRank, Integer> winningDetails = new EnumMap<>(WinningRank.class);
         Arrays.stream(values()).forEach(winningRank -> winningDetails.put(winningRank, INITIAL_VALUE));
         return winningDetails;
