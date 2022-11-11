@@ -99,4 +99,8 @@ public class Request {
 	public String getUserInput() {
 		return userInput;
 	}
+
+	public List<Integer> getWinningNumbers () {
+		return winningNumbers;
+	}
 }
