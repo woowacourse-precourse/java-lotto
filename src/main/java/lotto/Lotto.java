@@ -3,6 +3,8 @@ package lotto;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.Constants.*;
+
 public class Lotto {
     private final List<Integer> lottoNumbers;
 
@@ -18,8 +20,8 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호가 6개가 아닙니다.");
+        if (numbers.size() != LOTTO_SIZE) {
+            throw new IllegalArgumentException(ERROR_TITLE + NOT_SIX_NUMBERS);
         }
     }
 
@@ -27,16 +29,16 @@ public class Lotto {
         List<Integer> numbersToBeValidated = numbers.stream()
                 .distinct()
                 .collect(Collectors.toList());
-        if (numbersToBeValidated.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 겹치는 로또 번호가 존재합니다.");
+        if (numbersToBeValidated.size() != LOTTO_SIZE) {
+            throw new IllegalArgumentException(ERROR_TITLE + DUPLICATE_NUMBERS);
         }
     }
 
     private void validateRange(List<Integer> numbers) {
         boolean isOutOfRange = numbers.stream()
-                .anyMatch(number -> number < 1 || number > 45 );
+                .anyMatch(number -> number < START_NUMBER_INCLUSIVE || number > END_NUMBER_INCLUSIVE );
         if (isOutOfRange) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자들로 이루어져야 합니다.");
+            throw new IllegalArgumentException(ERROR_TITLE + OUT_OF_RANGE);
         }
     }
 }

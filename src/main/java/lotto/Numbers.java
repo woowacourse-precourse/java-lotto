@@ -5,15 +5,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Generator {
-    private static final int START_NUMBER_INCLUSIVE = 1;
-    private static final int END_NUMBER_INCLUSIVE = 45;
-    private static final int COUNT = 6;
+import static lotto.Constants.*;
 
-    public static List<Integer> LottoNumbers() {
+public class Numbers {
+    public static final List<Integer> generate() {
         List<Integer> numbers = new ArrayList<>(
                 Randoms.pickUniqueNumbersInRange(
-                        START_NUMBER_INCLUSIVE, END_NUMBER_INCLUSIVE, COUNT
+                        START_NUMBER_INCLUSIVE, END_NUMBER_INCLUSIVE, LOTTO_SIZE
                 ));
         Collections.sort(numbers);
         return numbers;

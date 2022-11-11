@@ -1,14 +1,11 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import static lotto.Constants.*;
+
 public class Output {
-    // 상수는 추후 application으로 이동
     private final static String PURCHASE_MESSAGE = "개를 구매했습니다.";
     private static final String STATS_TITLE_MESSAGE = "당첨 통계";
     private static final String HORIZONTAL_RULE = "---";
@@ -17,10 +14,10 @@ public class Output {
 
 
 
-    public static final void purchaseSuccessful(Integer cost, List<List<Integer>> lottos) {
-        Integer numberOfLottos = cost / 1000;
-        System.out.println(numberOfLottos + PURCHASE_MESSAGE);
-        for (List<Integer> lotto : lottos) {
+    public static final void purchaseSuccessful(Integer cost, List<List<Integer>> lottoTickets) {
+        Integer numberOfLottoTickets = cost / UNIT_PRICE;
+        System.out.println(numberOfLottoTickets + PURCHASE_MESSAGE);
+        for (List<Integer> lotto : lottoTickets) {
             System.out.println(lotto);
         }
         System.out.println();
