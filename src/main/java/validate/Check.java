@@ -26,4 +26,10 @@ public class Check {
             throw new IllegalArgumentException("[ERROR] 당첨번호 숫자는 6개를 입력해야 합니다.");
         }
     }
+
+    public static void isNumber(String number) {
+        if (number.matches(".*[^0-9].*")) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
+    }
 }
