@@ -2,7 +2,7 @@ package lotto;
 
 import java.util.List;
 
-import static lotto.Enum.ConstantNumber.*;
+import static lotto.Enum.Constant.*;
 import static lotto.Enum.Error.*;
 
 public class Lotto {
@@ -20,7 +20,7 @@ public class Lotto {
     }
 
     private void validateLottoNumLength(List<Integer> numbers) {
-        if (numbers.size() != SIX.getValue()) {
+        if (numbers.size() != SIX.getIntValue()) {
             throw new IllegalArgumentException(LOTTO_NUM_LENGTH_ERROR.getMessage());
         }
     }
@@ -28,7 +28,7 @@ public class Lotto {
     private void validateLottoNumDuplicated(List<Integer> numbers) {
         if (numbers.stream()
                 .distinct()
-                .count() != SIX.getValue()) {
+                .count() != SIX.getIntValue()) {
             throw new IllegalArgumentException(LOTTO_NUM_DUPLICATED_ERROR.getMessage());
         }
     }
@@ -36,13 +36,13 @@ public class Lotto {
     private void validateLottoNumRange(List<Integer> numbers) {
         if (numbers.stream()
                 .filter(this::checkLottoNumRange)
-                .count() != SIX.getValue()) {
+                .count() != SIX.getIntValue()) {
             throw new IllegalArgumentException(LOTTO_NUM_RANGE_ERROR.getMessage());
         }
     }
 
     public boolean checkLottoNumRange(int num) {
-        return num > ZERO.getValue()
-                && num <= FOURTY_FIVE.getValue();
+        return num > ZERO.getIntValue()
+                && num <= FOURTY_FIVE.getIntValue();
     }
 }

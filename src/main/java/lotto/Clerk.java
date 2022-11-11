@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
-import static lotto.Enum.ConstantNumber.*;
-import static lotto.Enum.ConstantString.REGEX_ONLY_NUMBER;
+import static lotto.Enum.Constant.*;
 import static lotto.Enum.Error.*;
 
 public class Clerk {
+
 
     public static List<Lotto> sellLotto(String purchaseAmount) {
 
@@ -22,16 +22,22 @@ public class Clerk {
     private static List<Lotto> makeLottoGroup(int lotto_amount) {
         List<Lotto> lottoList = new ArrayList<>();
 
-        for (int i = 0; i < lotto_amount; i++) {
-            List<Integer> random_lotto_num = pickUniqueNumbersInRange(1, 45, 6);
-
-            lottoList.add(new Lotto(random_lotto_num));
+        for (int i = ZERO.getIntValue(); i < lotto_amount; i++) {
+            Lotto new_lotto = makeLotto(lottoList);
+            lottoList.add(new_lotto);
         }
         return lottoList;
     }
 
+    private static Lotto makeLotto(List<Lotto> lottoList) {
+        List<Integer> random_lotto_num = pickUniqueNumbersInRange(
+                ZERO.getIntValue(), FOURTY_FIVE.getIntValue(), SIX.getIntValue()
+        );
+        return new Lotto(random_lotto_num);
+    }
+
     private static int getLottoAmount(String purchaseAmount) {
-        return Integer.parseInt(purchaseAmount) % THOUSAND.getValue();
+        return Integer.parseInt(purchaseAmount) % THOUSAND.getIntValue();
     }
 
     private static void validatePurchaseAmount(String purchaseAmount) {
@@ -51,13 +57,13 @@ public class Clerk {
     }
 
     private static void validatePurchaseRange(int purchaseAmount) {
-        if (purchaseAmount == ZERO.getValue() || purchaseAmount > HUNDRED_THOUSAND.getValue()) {
+        if (purchaseAmount == ZERO.getIntValue() || purchaseAmount > HUNDRED_THOUSAND.getIntValue()) {
             throw new IllegalArgumentException(PURCHASE_RANGE_ERROR.getMessage());
         }
     }
 
     private static void validatePurchaseThousandModular(int purchaseAmount) {
-        if (purchaseAmount % THOUSAND.getValue() != ZERO.getValue()) {
+        if (purchaseAmount % THOUSAND.getIntValue() != ZERO.getIntValue()) {
             throw new IllegalArgumentException(PURCHASE_THOUSAND_MODULAR_ERROR.getMessage());
         }
     }

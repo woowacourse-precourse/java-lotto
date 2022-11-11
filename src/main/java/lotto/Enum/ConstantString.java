@@ -2,7 +2,6 @@ package lotto.Enum;
 
 public enum ConstantString {
 
-    REGEX_ONLY_NUMBER("[0-9]+"),
     ;
 
     final private String value;

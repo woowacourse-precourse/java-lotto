@@ -12,7 +12,13 @@ public class Consumer {
 
     public void purchaseLotto() {
         String purchaseAmount = Console.readLine();
+
         lottoList = Clerk.sellLotto(purchaseAmount);
+
+        printLottoList();
     }
 
+    private void printLottoList() {
+
+    }
 }
