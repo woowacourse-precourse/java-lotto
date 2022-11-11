@@ -3,7 +3,8 @@ package lotto.domain;
 public class LottoMoney {
     private int money;
 
-    public void inputMoney(String input) {
+    public int inputMoney(String input) {
         money = Integer.parseInt(input);
+        return money;
     }
 }
