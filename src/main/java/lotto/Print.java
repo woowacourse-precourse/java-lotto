@@ -32,7 +32,7 @@ public class Print {
 	HashMap<Integer, Integer> rankmap = new HashMap<>();
 	
 	public void printNumberAll(List<List<Integer>> lottonumbersall, int lottonum, int purchaseprice) {
-		System.out.printf("%d를 구매했습니다.",lottonum);
+		System.out.printf("%d개를 구매했습니다.\n",lottonum);
 		for (int i = 0; i < lottonum; i++) {
 			System.out.println(lottonumbersall.get(i));
 		}

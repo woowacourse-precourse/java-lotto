@@ -72,11 +72,14 @@ public class Application {
     }
     
     public static void validateLottoNumber(String[] numbersarray) {
-    	String pattern = "^[1-45]$";
+    	String pattern = "^[0-9]{1,2}$";
     	for (String number : numbersarray) {
     		if (!Pattern.matches(pattern, number)) {
-        		throw new IllegalArgumentException("[ERROR] 1-45사이의 숫자만 입력하세요.");
+        		throw new IllegalArgumentException("[ERROR] 숫자만 입력하세요.");
         	}
+    		if (Integer.parseInt(number) < 1 || Integer.parseInt(number) > 45) {
+    			throw new IllegalArgumentException("[ERROR] 1-45사이의 숫자만 입력하세요.");
+    		}
     	}
     }
     
