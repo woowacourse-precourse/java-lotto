@@ -56,7 +56,8 @@ class RandomUtilsTest {
         @DisplayName("입력된 보너스 번호가 로또 번호와 중복되지 않을 경우")
         void case1() {
             int number = 1;
-            boolean result = RandomUtils.isUniqueBonusNumber(number);
+            List<Integer> lotto = List.of(11, 12, 13, 14, 15, 16);
+            boolean result = RandomUtils.isUniqueBonusNumber(number, lotto);
             assertThat(result).isTrue();
         }
 
@@ -64,7 +65,8 @@ class RandomUtilsTest {
         @DisplayName("입력된 보너스 번호가 로또 번호와 중복되는 경우")
         void case2() {
             int number = 1;
-            boolean result = RandomUtils.isUniqueBonusNumber(number);
+            List<Integer> lotto = List.of(1, 2, 3, 4, 5, 6);
+            boolean result = RandomUtils.isUniqueBonusNumber(number, lotto);
             assertThat(result).isFalse();
         }
     }
