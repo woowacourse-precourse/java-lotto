@@ -31,7 +31,8 @@ public class InputExceptionHandler {
 	}
 
 	private static void divideByThousand(String input) {
-		if (Integer.parseInt(input) % CASH_UNIT != 0) {
+		int amount = Integer.parseInt(input);
+		if (amount % CASH_UNIT != 0 || amount < CASH_UNIT) {
 			throw new IllegalArgumentException(DIVISION_EXCEPTION_MESSAGE);
 		}
 	}
