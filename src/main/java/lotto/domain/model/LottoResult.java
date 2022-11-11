@@ -2,20 +2,38 @@ package lotto.domain.model;
 
 import java.util.Arrays;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class LottoResult {
-    private final Map<ResultCase, Integer> lottoResult;
+    private final Map<LottoRank, Integer> lottoResult;
 
     public LottoResult() {
-        this.lottoResult = Arrays.stream(ResultCase.values())
-                .collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b,
-                        () -> new EnumMap<>(ResultCase.class)));
+        this.lottoResult = initLottoResult();
     }
-    public LottoResult(final Map<ResultCase, Integer> lottoResult) {
+
+    public LottoResult(final UserLotto userLotto, final LottoNumber lottoNumber) {
+        this.lottoResult = createLottoResult(userLotto.compareLottoNumber(lottoNumber));
+    }
+    public LottoResult(final Map<LottoRank, Integer> lottoResult) {
         this.lottoResult = lottoResult;
+    }
+
+    private EnumMap<LottoRank, Integer> initLottoResult() {
+        return Arrays.stream(LottoRank.values())
+                .filter(value -> value != LottoRank.NONE)
+                .collect(Collectors.toMap(value -> value, count -> 0, (a, b) -> b,
+                        () -> new EnumMap<>(LottoRank.class)));
+    }
+
+    private Map<LottoRank, Integer> createLottoResult(final List<LottoRank> lottoRanks) {
+        Map<LottoRank, Integer> lottoResult = initLottoResult();
+        for (LottoRank lottoRank : lottoRanks) {
+            lottoResult.put(lottoRank, lottoResult.get(lottoRank) + 1);
+        }
+        return lottoResult;
     }
 
     @Override
