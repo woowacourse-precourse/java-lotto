@@ -1,9 +1,6 @@
 package lotto.controller;
 
-import lotto.view.IntroduceView;
-import lotto.view.LottoNumberInputView;
-import lotto.view.LottoPurchaseNumberView;
-import lotto.view.View;
+import lotto.view.*;
 import lotto.vo.Lotto;
 
 import java.util.List;
@@ -41,6 +38,17 @@ public class LottoController {
         validateInput("^([1-9,])$", response);
 
         //TODO - 당첨번호 저장 Service 호출
+
+    }
+
+    public void showBonusNumberInput() {
+        View view = new BonusNumberInputView();
+        view.show();
+
+        String response = view.getResponse();
+        validateInput("^([1-9]{1-2})$", response);
+
+        //TODO - 보너스번호 저장 Service 호출
 
     }
 
