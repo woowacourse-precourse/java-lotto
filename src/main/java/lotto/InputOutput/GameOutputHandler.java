@@ -60,7 +60,7 @@ public class GameOutputHandler {
     private void printProfitRate(int buyingMoney){
         double rate = ((double)totalEarnMoney / (double)buyingMoney) * 100;
         double roundOff = Math.round(rate * 100.0) / 100.0;
-        System.out.print("총 수익률은 " + roundOff + "% 입니다.");
+        System.out.print("총 수익률은 " + roundOff + "%입니다.");
     }
     private void printWinningRecordOneByOne(int numbersCorrect, int winningMoney, int amountOfThatRanking, boolean isSecondRank){
         StringBuilder printMake = new StringBuilder();
