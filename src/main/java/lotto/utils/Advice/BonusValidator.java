@@ -6,11 +6,9 @@ import static lotto.domain.model.ErrorMessage.COMMON_MESSAGE;
 import static lotto.domain.model.ErrorMessage.getErrorMessage;
 import static lotto.utils.Advice.LottoValidator.STANDARD_LOTTO_NUMBER;
 
-public class BonusValidator {
+public abstract class BonusValidator {
 
     private static final String BONUS_REG_EXP = "\\d{1,2}";
-
-    private BonusValidator(){}
     public static void checkSizeAndNumber(String bonus) {
         if (!bonus.matches(BONUS_REG_EXP)) {
             throw new IllegalArgumentException(getErrorMessage(BONUS_NUMBER_INVALID));

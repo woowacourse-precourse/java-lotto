@@ -5,13 +5,11 @@ import static lotto.domain.model.ErrorMessage.PURCHASE_PAY_CONSISTENCE;
 import static lotto.domain.model.ErrorMessage.PURCHASE_PAY_REMINDER;
 import static lotto.domain.model.ErrorMessage.getErrorMessage;
 
-public class PurchaseValidator {
+public abstract class PurchaseValidator {
 
     public static final int MINIMUM_ORDER = 1000;
     private static final int STANDARD_REMINDER = 0;
     private static final String NUMBER_REG_EXP = "^[0-9]+$";
-
-    private PurchaseValidator(){}
 
     public static void checkConsistNumber(String pay) {
         if (!pay.matches(NUMBER_REG_EXP)) {

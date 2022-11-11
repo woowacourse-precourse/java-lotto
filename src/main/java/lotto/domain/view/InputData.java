@@ -7,9 +7,6 @@ import static lotto.domain.view.IOMessage.INPUT_PURCHASE_LOTTO;
 import camp.nextstep.edu.missionutils.Console;
 
 public abstract class InputData {
-
-    private InputData(){}
-
     public static String purchaseLotto(){
         System.out.println(INPUT_PURCHASE_LOTTO.getMessage());
         return Console.readLine();
