@@ -7,15 +7,21 @@ public class LottoGame {
 
     private final List<Lotto> userLottos = new ArrayList<>();
 
-    private int countLotto(int price) {
+    private final int price;
+
+    public LottoGame(int price) {
+        this.price = price;
+    }
+
+    private int countLotto() {
         return price / 1000;
     }
 
-    private void issueLotto(int price) {
+    private void issueLotto() {
         int lottoNum;
         LottoGenerator lottoGenerator = new LottoGenerator();
 
-        lottoNum = countLotto(price);
+        lottoNum = countLotto();
         for (int count = 0; count < lottoNum; count++){
             List<Integer> lotto = lottoGenerator.createRandomLotto();
             userLottos.add(new Lotto(lotto));
