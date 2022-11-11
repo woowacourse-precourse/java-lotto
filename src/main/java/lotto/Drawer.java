@@ -22,6 +22,9 @@ public class Drawer {
     public Integer drawBonusNumber(Lotto lotto) {
         System.out.println(DRAW_BONUS_QUESTION);
         String answer = Console.readLine();
+        if(!answer.matches("[+-]?\\d*(\\.\\d+)?")) {
+            throw new IllegalArgumentException("[ERROR] 잘못된 값을 입력하셨습니다.");
+        }
         Integer number = Integer.valueOf(answer);
         if (number < 1 || 45 < number && lotto.getLottoNumbers().contains(number)) {
             throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
@@ -29,14 +32,15 @@ public class Drawer {
         return number;
     }
 
-    public void compare(List<Lotto> lottoTickets, Lotto lotto, Integer bonusNumber) {
+    public List<Rank> compare(List<Lotto> lottoTickets, Lotto lotto, Integer bonusNumber) {
         List<Rank> ranks = new ArrayList<Rank>();
         for (Lotto ticket : lottoTickets) {
             ranks.add(Calculator.calculateWin(ticket, lotto, bonusNumber));
         }
+        return ranks;
     }
 
-    private static class Calculator {
+    public static class Calculator {
         private static Rank calculateWin(Lotto lottoTicket, Lotto lotto, Integer bonusNumber) {
             Integer correctNumber = 0;
             Integer correctBonusNumber = 0;
@@ -46,19 +50,19 @@ public class Drawer {
                 }
             }
             if (correctNumber == 5) {
-                if (lotto.getLottoNumbers().contains(bonusNumber)) {
-                    bonusNumber++;
+                if (lottoTicket.getLottoNumbers().contains(bonusNumber)) {
+                    correctBonusNumber++;
                 }
             }
             return Rank.generateRank(correctNumber, correctBonusNumber);
         }
 
-        private static Float calculateYield(List<Rank> ranks, Integer money) {
+        public static Float calculateYield(List<Rank> ranks, Integer money) {
             Integer prize = 0;
             for (Rank rank : ranks) {
                 prize += rank.getMoney();
             }
-            return (float) prize / (float) money * 100;
+            return (float)Math.round((float) prize / (float) money * 1000) / 10;
         }
     }
 }
