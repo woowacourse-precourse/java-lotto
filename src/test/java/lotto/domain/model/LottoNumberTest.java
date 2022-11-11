@@ -1,10 +1,8 @@
 package lotto.domain.model;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -55,6 +53,6 @@ class LottoNumberTest {
     void calculateLottoResultMatchUnderThree() {
         LottoNumber lottoNumber = new LottoNumber("8,18,21,45,15,36", "13");
         List<Integer> userLotto = List.of(2, 14, 19, 21, 36, 44);
-        assertThat(lottoNumber.calculateMatch(userLotto)).isEqualTo(LottoRank.NONE);
+        assertThat(lottoNumber.calculateMatch(userLotto)).isEqualTo(LottoRank.NO_MATCH);
     }
 }

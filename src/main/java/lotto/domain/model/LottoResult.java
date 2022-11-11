@@ -27,7 +27,7 @@ public class LottoResult {
 
     private EnumMap<LottoRank, Long> initLottoResult() {
         return Arrays.stream(LottoRank.values())
-                .filter(value -> value != LottoRank.NONE)
+                .filter(value -> value != LottoRank.NO_MATCH)
                 .collect(Collectors.toMap(value -> value, count -> 0L, (a, b) -> b,
                         () -> new EnumMap<>(LottoRank.class)));
     }

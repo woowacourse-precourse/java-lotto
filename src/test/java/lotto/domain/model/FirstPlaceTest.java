@@ -60,7 +60,7 @@ class FirstPlaceTest {
     void calculateFirstPlaceByUserLottoMatchUnderThree(){
         String firstPlace = "10,21,31,45,15,36";
         List<Integer> userLotto = List.of(9, 14, 23, 31, 32, 45);
-        assertThat(new FirstPlace(firstPlace).calculateMatch(userLotto)).isEqualTo(LottoRank.NONE);
+        assertThat(new FirstPlace(firstPlace).calculateMatch(userLotto)).isEqualTo(LottoRank.NO_MATCH);
     }
 
 

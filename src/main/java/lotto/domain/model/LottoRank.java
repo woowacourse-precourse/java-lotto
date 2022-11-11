@@ -1,14 +1,14 @@
 package lotto.domain.model;
 
-import static lotto.domain.view.IOMessage.BONUS_STATISTICS_MESSAGE;
-import static lotto.domain.view.IOMessage.STANDARD_STATISTICS_MESSAGE;
+import static lotto.domain.view.IOMessage.OUTPUT_BONUS_STATISTICS;
+import static lotto.domain.view.IOMessage.OUTPUT_STANDARD_STATISTICS;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;
 
 public enum LottoRank {
 
-    NONE("0", 0L),
+    NO_MATCH("0", 0L),
     THREE_MATCHES("3",5_000L),
     FOUR_MATCHES("4",50_000L),
     FIVE_MATCHES("5",1_500_000L),
@@ -16,11 +16,11 @@ public enum LottoRank {
     SIX_MATCHES("6",2_000_000_000L);
 
 
-    private final String matchPoint;
+    private final String matchCount;
     private final Long reward;
 
-    LottoRank(final String matchPoint, final Long prizeMoney) {
-        this.matchPoint = matchPoint;
+    LottoRank(final String matchCount, final Long prizeMoney) {
+        this.matchCount = matchCount;
         this.reward = prizeMoney;
     }
 
@@ -28,9 +28,9 @@ public enum LottoRank {
         return reward;
     }
 
-    public static LottoRank find(String matchPoint) {
-        return Arrays.stream(values()).filter(lottoRank -> lottoRank.matchPoint.equals(matchPoint)).findFirst()
-                .orElse(NONE);
+    public static LottoRank find(String matchCount) {
+        return Arrays.stream(values()).filter(lottoRank -> lottoRank.matchCount.equals(matchCount)).findFirst()
+                .orElse(NO_MATCH);
     }
 
     public static LottoRank of(LottoRank lottoRank, Boolean isBonusMatch) {
@@ -43,10 +43,10 @@ public enum LottoRank {
     public static String createStatisticsForm(LottoRank lottoRank, Long count) {
         DecimalFormat decFormat = new DecimalFormat("###,###");
         if (lottoRank == FIVE_BONUS_MATCHES) {
-            return String.format(BONUS_STATISTICS_MESSAGE.getMessage(), lottoRank.matchPoint,
+            return String.format(OUTPUT_BONUS_STATISTICS.getMessage(), lottoRank.matchCount,
                     decFormat.format(lottoRank.reward), count);
         }
-        return String.format(STANDARD_STATISTICS_MESSAGE.getMessage(), lottoRank.matchPoint,
+        return String.format(OUTPUT_STANDARD_STATISTICS.getMessage(), lottoRank.matchCount,
                 decFormat.format(lottoRank.reward), count);
 
     }

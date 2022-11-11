@@ -15,7 +15,7 @@ class LottoResultTest {
     @Test
     void createInitResult() {
         EnumMap<LottoRank, Long> result = Arrays.stream(LottoRank.values())
-                .filter(value -> value != LottoRank.NONE)
+                .filter(value -> value != LottoRank.NO_MATCH)
                 .collect(Collectors.toMap(value -> value, count -> 0L, (a, b) -> b,
                         () -> new EnumMap<>(LottoRank.class)));
         assertThat(new LottoResult()).isEqualTo(new LottoResult(result));
