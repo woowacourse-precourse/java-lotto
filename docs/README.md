@@ -42,6 +42,8 @@
     - LottoUtil
         - 6개의 입력된 로또번호를 ','를 기준으로 나눠고 List<Integer>로 번호 반환.
         - 보너스 번호를 int형으로 반환.
+    - InputUtil
+        - String 타입으로 들어온 숫자를 int 타입으로 파싱
 
 
 4. Exception
@@ -49,18 +51,20 @@
         - 로또 구입 금액 입력 시 1000원 단위로 떨어지는지 확인
 
     - UserInputLottoNumbersException
-      - 로또 번호 6개 입력을 했는지
-      - 1~45의 숫자의 값인지 확인
-      - 6개의 번호가 중복인지 확인
-      - 보너스 번호 1개만 입력했는지 확인
-      - 보너스 번호 입력시 중복이 아닌지 확인
+        - 로또 번호 6개 입력을 했는지
+        - 1~45의 숫자의 값인지 확인
+        - 6개의 번호가 중복인지 확인
+        - 보너스 번호 1개만 입력했는지 확인
+        - 보너스 번호 입력시 중복이 아닌지 확인
 
 5. Service
-    - LottoViewService
-        - View를 통해 입력받은 값을 도메인에 저장한다. (유저가 로또를 사는 경우)
-        - View를 통해 계산한 값을 출력한다. (로또 당첨 및 계산)
+    - UserInputDataService
+        - View를 통해 유저가 로또를 사는 것을 진행하고, 유저의 정보를 반환한다.
+    - LottoInputDataService
+        - View를 통해 당첨 로또의 번호와 보너스 번호를 입력 받고, 로또의 정보를 반환한다.
     - LottoCalculateService
         - 로또 당첨 확인 및 수익률을 계산한다.
+        - 계산한 값을 출력한다. (로또 당첨 및 계산)
 
 6. Controller
     - LottoController
