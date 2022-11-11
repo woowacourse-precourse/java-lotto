@@ -51,7 +51,7 @@
 >- [x] 랜덤 번호를 각 정렬하는 기능 ( setRandomLottoNumbers 내부 )
 >- [x] 당첨 번호를 입력하는 기능 ( setAnswerLottoNumbers )
 >- [x] 보너스 번호를 입력하는 기능 ( setBonusLottoNumbers )
-
+>- [ ] 당첨번호와 보너스 번호를 저장하는 기능 ( saveLottoNumbers )
 *****
 ### 🟧 controller package
 **LottoController**
