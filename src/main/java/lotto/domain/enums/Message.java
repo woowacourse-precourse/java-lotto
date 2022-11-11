@@ -11,7 +11,7 @@ public enum Message {
     NOT_THOUSAND_UNIT_INPUT_ERROR("[ERROR] 입력 금액은 1,000원 단위입니다."),
     BONUS_NUMBER_INPUT_ERROR("[ERROR] 보너스 번호는 로또 번호와 중복되지 않는 1~9 사이의 하나의 숫자입니다."),
     WINNING_NUMBER_INPUT_ERROR("[ERROR] 1부터 45 사이의 수를 중복되지 않게 쉼표(,)를 이용하여 입력해주세요.\n예) 1,2,3,4,5,6"),
-    MINUS_INPUT_ERROR("[ERROR] 잘못된 값을 입력하셨습니다."),
+    MINUS_INPUT_ERROR("[ERROR] 음수를 입력하셨습니다. 올바른 값을 입력해주세요."),
     YIELD_MESSAGE("총 수익률은 %.1d%입니다.\n");
 
     private final String message;
