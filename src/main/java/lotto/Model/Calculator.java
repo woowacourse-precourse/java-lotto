@@ -1,5 +1,6 @@
 package lotto.Model;
 
+import lotto.Cash;
 import lotto.Prize;
 
 public class Calculator {
@@ -29,7 +30,7 @@ public class Calculator {
         return profit / 10;
     }
 
-    public int countLottoNumber(int cash) {
-        return cash / MIN_UNIT;
+    public int countLottoNumber(Cash cash) {
+        return cash.getCash() / MIN_UNIT;
     }
 }
