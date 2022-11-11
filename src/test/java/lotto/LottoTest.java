@@ -1,9 +1,9 @@
 package lotto;
 
 import lotto.domain.Lotto;
+import lotto.domain.WinningPrize;
 import lotto.utils.ErrorMessage;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.List;
 
@@ -49,5 +49,65 @@ class LottoTest {
         Lotto winningLotto = new Lotto(List.of(1, 3, 5 ,7, 9, 11));
 
         assertThat(lotto.countSameNumbers(winningLotto)).isEqualTo(3);
+    }
+
+    @DisplayName("로또에 당첨됐을 때")
+    @Nested
+    class WhenWinningLottery {
+        Lotto winningLotto;
+        int bonusNumber = 7;
+
+        @BeforeEach
+        void setUp() {
+            winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        }
+
+        @DisplayName("숫자 6개가 모두 일치하면 1등")
+        @Test
+        void createFirstPlaceLotto() {
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+            assertThat(lotto.getWinningPrize(winningLotto, bonusNumber)).isEqualTo(WinningPrize.FIRST_PLACE);
+        }
+
+        @DisplayName("숫자 5개가 일치하고 보너스 숫자가 일치하면 2등")
+        @Test
+        void createSecondPlaceLotto() {
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+
+            assertThat(lotto.getWinningPrize(winningLotto, bonusNumber)).isEqualTo(WinningPrize.SECOND_PLACE);
+        }
+
+        @DisplayName("숫자 5개가 일치하고 보너스 숫자가 일치하지 않으면 3등")
+        @Test
+        void createThirdPlaceLotto() {
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
+
+            assertThat(lotto.getWinningPrize(winningLotto, bonusNumber)).isEqualTo(WinningPrize.THIRD_PLACE);
+        }
+
+        @DisplayName("숫자 4개가 일치하면 4등")
+        @Test
+        void createFourthPlaceLotto() {
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 7, 8));
+
+            assertThat(lotto.getWinningPrize(winningLotto, bonusNumber)).isEqualTo(WinningPrize.FOURTH_PLACE);
+        }
+
+        @DisplayName("숫자 3개가 일치하면 5등")
+        @Test
+        void createFifthPlaceLotto() {
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 7, 8, 9));
+
+            assertThat(lotto.getWinningPrize(winningLotto, bonusNumber)).isEqualTo(WinningPrize.FIFTH_PLACE);
+        }
+
+        @DisplayName("숫자가 3개 이상 일치하지 않으면 꼴등")
+        @Test
+        void createLastPlaceLotto() {
+            Lotto lotto = new Lotto(List.of(1, 2, 7, 8, 9, 10));
+
+            assertThat(lotto.getWinningPrize(winningLotto, bonusNumber)).isEqualTo(WinningPrize.LAST_PLACE);
+        }
     }
 }

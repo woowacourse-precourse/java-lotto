@@ -66,4 +66,11 @@ public class Lotto {
                 .filter(number -> winningLotto.contains(number))
                 .count();
     }
+
+    public WinningPrize getWinningPrize(Lotto winningLotto, int bonusNumber) {
+        int sameCount = countSameNumbers(winningLotto);
+        boolean containsBonusNumber = contains(bonusNumber);
+
+        return WinningPrize.of(sameCount, containsBonusNumber);
+    }
 }
