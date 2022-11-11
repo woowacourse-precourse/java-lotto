@@ -5,45 +5,55 @@ import java.util.List;
 import java.util.Map;
 import lotto.domain.Lotto;
 import lotto.domain.User;
+import lotto.domain.UserLotto;
 import lotto.domain.Winning;
 import lotto.view.OutputView;
 
 public class LottoCalculateService {
-    private final OutputView outputView = new OutputView();
     private int winningPrice = 0;
+    private final OutputView outputView = new OutputView();
     private Map<Winning, Integer> countOfWinning = new HashMap<>();
 
-    public void calculateWinning(User user, Lotto lotto) {
+    public Map<Winning, Integer> calculateWinning(User user, Lotto lotto) {
+        countLottoWinningCount(user, lotto);
+        outputView.responseWinningHistory(countOfWinning);
+        return countOfWinning;
+    }
 
+    public void countLottoWinningCount(User user, Lotto lotto) {
+        List<UserLotto> userLottos = user.getLottos();
+        for (UserLotto userLotto : userLottos) {
+            List<Integer> userLottoNumbers = userLotto.getNumbers();
+            countEqualsSix(userLottoNumbers, lotto);
+            countEqualsFive(userLottoNumbers, lotto);
+            countEqualsFour(userLottoNumbers, lotto);
+            countEqualsThird(userLottoNumbers, lotto);
+        }
     }
 
     public void countEqualsSix(List<Integer> numbers, Lotto lotto) {
         if (numbers.equals(lotto.getNumbers())) {
-            countOfWinning.put(Winning.SIXTH, countOfWinning.getOrDefault(Winning.SIXTH, 0) + 1);
-        }
-    }
-
-    public void countEqualsFiveWithBonus(List<Integer> numbers, Lotto lotto) {
-        if (containsNumCount(numbers, lotto.getNumbers()) == 5 && numbers.contains(lotto.getBonusNumber())) {
-            countOfWinning.put(Winning.FIFTH_WITH_BONUS, countOfWinning.getOrDefault(Winning.FIFTH_WITH_BONUS, 0) + 1);
+            inputWinning(Winning.SIXTH);
         }
     }
 
     public void countEqualsFive(List<Integer> numbers, Lotto lotto) {
-        if (containsNumCount(numbers, lotto.getNumbers()) == 5) {
-            countOfWinning.put(Winning.FIFTH, countOfWinning.getOrDefault(Winning.FIFTH_WITH_BONUS, 0) + 1);
+        if (containsNumCount(numbers, lotto.getNumbers()) == 5 && numbers.contains(lotto.getBonusNumber())) {
+            inputWinning(Winning.FIFTH_WITH_BONUS);
+            return;
         }
+        inputWinning(Winning.FIFTH);
     }
 
     public void countEqualsFour(List<Integer> numbers, Lotto lotto) {
         if (containsNumCount(numbers, lotto.getNumbers()) == 4) {
-            countOfWinning.put(Winning.FOURTH, countOfWinning.getOrDefault(Winning.FIFTH_WITH_BONUS, 0) + 1);
+            inputWinning(Winning.FOURTH);
         }
     }
 
     public void countEqualsThird(List<Integer> numbers, Lotto lotto) {
         if (containsNumCount(numbers, lotto.getNumbers()) == 3) {
-            countOfWinning.put(Winning.THIRD, countOfWinning.getOrDefault(Winning.FIFTH_WITH_BONUS, 0) + 1);
+            inputWinning(Winning.THIRD);
         }
     }
 
@@ -55,5 +65,9 @@ public class LottoCalculateService {
             }
         }
         return count;
+    }
+
+    public void inputWinning(Winning winning) {
+        countOfWinning.put(winning, countOfWinning.getOrDefault(winning, 0) + 1);
     }
 }
