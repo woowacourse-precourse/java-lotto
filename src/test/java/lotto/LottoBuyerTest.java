@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -44,6 +45,20 @@ class LottoBuyerTest {
         System.out.println(lotto.getNumbers());
 
         assertThat(lotto.getNumbers().size()).isEqualTo(6);
+
     }
 
+    @Test
+    void getLotteries() {
+        LottoBuyer lottoBuyer = new LottoBuyer(5000);
+
+        List<Lotto> lotteries = lottoBuyer.getLotteries();
+
+        for (Lotto lotto : lotteries) {
+            System.out.println(lotto.getNumbers());
+        }
+
+        assertThat(lotteries.size()).isEqualTo(5);
+        assertThat(lotteries.get(0)).isInstanceOf(Lotto.class);
+    }
 }

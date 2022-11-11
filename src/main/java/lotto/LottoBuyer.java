@@ -2,22 +2,26 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 public class LottoBuyer {
 
     private final int cost;
-//    private List<Lotto> lotteries;
+    private final List<Lotto> lotteries = new ArrayList<>();
 
     public LottoBuyer(int cost) {
         costValidate(cost);
         this.cost = cost;
+
+        int totalLottoCount = this.cost / 1000;
+
+        for (int cnt = 0; cnt < totalLottoCount; cnt++) {
+            lotteries.add(buyLotto());
+        }
     }
 
-    public int getCost() {
-        return cost;
-    }
 
     public void costValidate(int cost) {
         if (cost % 1000 != 0) {
@@ -32,7 +36,11 @@ public class LottoBuyer {
         return new Lotto(numbers);
     }
 
+    public int getCost() {
+        return cost;
+    }
 
-
-
+    public List<Lotto> getLotteries() {
+        return lotteries;
+    }
 }
