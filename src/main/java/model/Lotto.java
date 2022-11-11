@@ -2,19 +2,19 @@ package model;
 
 import java.util.List;
 
+import static model.ErrorMessage.INCORRECT_SIZE;
+
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateSize(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+    private void validateSize(List<Integer> numbers) {
+        if (numbers.size() != LottoStatus.SIZE.getValue()) {
+            throw new IllegalArgumentException(INCORRECT_SIZE.toString());
         }
     }
-
-    // TODO: 추가 기능 구현
 }
