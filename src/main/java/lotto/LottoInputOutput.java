@@ -44,7 +44,7 @@ public class LottoInputOutput {
         stream.forEach(lotto -> lotto.printLotto());
     }
 
-    public List<Integer> getWinnigLotto() {
+    public List<Integer> getWinnigLottoAndCheck() {
         String winnigLottoString = Console.readLine();
 
         String[] split = winnigLottoString.split(",");
@@ -84,7 +84,7 @@ public class LottoInputOutput {
             throw new IllegalArgumentException("[ERROR] 중복되지 않는 숫자를 입력해주세요.");
     }
 
-    public int getBonusNumber(List<Integer> winningNumber) {
+    public int getBonusNumberAndCheck(List<Integer> winningNumber) {
         String bonusNumString = Console.readLine();
         int bonusNum = stringToIntAndCheckError(winningNumber, bonusNumString);
         return bonusNum;
