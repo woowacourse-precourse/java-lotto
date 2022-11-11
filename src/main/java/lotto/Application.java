@@ -2,15 +2,18 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class Application {
     public static void main(String[] args) {
-        int price = askPrice();
+        long price = askPrice();
         List<Lotto> lottos = makeLotto(price);
-        Lotto winningLotto = askWinning();
+        List<Integer> winningLotto = askWinning();
         int bonusNumber = askBonus();
+        Rank.calcRank(price, lottos, winningLotto, bonusNumber);
     }
 
     public static int askBonus() {
@@ -20,17 +23,17 @@ public class Application {
         return num;
     }
 
-    public static Lotto askWinning() {
+    public static List<Integer> askWinning() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = readLine();
         List<Integer> nums = new ArrayList<>();
         for (String str : input.split(",")) {
             int num = validateNumber(str);
-            nums.add(Integer.parseInt(str));
+            nums.add(num);
         }
 
-        Lotto winning = new Lotto(nums);
-        return winning;
+        new Lotto(nums); // 로또 당첨 번호 유효성 검사
+        return nums;
     }
 
     public static int validateNumber(String str) {
@@ -46,22 +49,18 @@ public class Application {
         return num;
     }
 
-    public static List<Lotto> makeLotto(int price) {
+    public static List<Lotto> makeLotto(long price) {
         if(price % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 가격은 1000원 단위여야 합니다.");
         }
-        int amount = price / 1000;
+        long amount = price / 1000;
         System.out.println(amount + "개를 구매했습니다.");
 
         List<Lotto> lottos = new ArrayList<>();
         while(lottos.size() < amount) {
             List<Integer> nums = pickUniqueNumbersInRange(1, 45, 6);
-            Lotto lotto;
-            try {
-                lotto = new Lotto(nums);
-            } catch (IllegalArgumentException e) {
-                continue;
-            }
+            nums = nums.stream().sorted().collect(Collectors.toList());
+            Lotto lotto = new Lotto(nums);
             lottos.add(lotto);
         }
 
@@ -71,11 +70,10 @@ public class Application {
         return lottos;
     }
 
-    public static int askPrice() {
+    public static long askPrice() {
         System.out.println("구입금액을 입력해 주세요.");
         String input = readLine();
-
-        return Integer.parseInt(input);
+        return Long.parseLong(input);
     }
 
 }

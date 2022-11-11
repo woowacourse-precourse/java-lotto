@@ -1,6 +1,6 @@
 package lotto;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -8,7 +8,6 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
@@ -19,16 +18,18 @@ public class Lotto {
         int[] nums = new int[46];
         for(int num : numbers) {
             nums[num]++;
-            if(nums[num] > 1) {
+            if (nums[num] > 1) {
                 throw new IllegalArgumentException("[ERROR] 중복된 로또 번호가 존재합니다.");
             }
         }
+    }
+
+    public boolean contains(int num) {
+        return this.numbers.contains(num);
     }
 
     @Override
     public String toString() {
         return numbers.toString();
     }
-
-    // TODO: 추가 기능 구현
 }
