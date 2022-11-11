@@ -11,4 +11,9 @@ public class Calculator {
         }
         return Rank.findByCorrectCountAndBonus(correctCount, bonus);
     }
+
+    public double calculateYield(Rank rank, double money) {
+        double earnMoney = rank.money;
+        return Math.round(earnMoney/money * 100 * 100) / 100.0;
+    }
 }
