@@ -2,9 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static lotto.LottoConst.LOTTO_PRICE;
@@ -12,6 +10,7 @@ import static lotto.LottoConst.LOTTO_PRICE;
 public class LottoMachine {
     static int userMoney;
     static int lottoCount;
+    static Map<Rank, Integer> rankCount = new HashMap<>();
 
     LottoMachine(int userMoney){
         Error.purchasePrice(userMoney);
@@ -37,4 +36,11 @@ public class LottoMachine {
         }
         return newLottos;
     }
+
+    static void initRank(){
+        for(Rank rank : Rank.values()){
+            rankCount.put(rank,0);
+        }
+    }
+
 }
