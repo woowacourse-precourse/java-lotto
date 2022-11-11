@@ -41,6 +41,6 @@ public class Money {
 
     double sumAll = third + forth + fifth + fifthBonus + sixth + 0.0;
     double result = sumAll / money;
-    return Math.round((result * 10) / 10);
+    return Math.round((result * 1000) / 10);
   }
 }

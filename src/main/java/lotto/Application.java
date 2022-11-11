@@ -35,5 +35,6 @@ public class Application { // 패키지 분리
         Message.winningStatic();
         Message.line();
         Message.matchMessage(matchNumbers.getMaps());
+        Message.ratio(Money.percentage(matchNumbers.getMaps()));
     }
 }

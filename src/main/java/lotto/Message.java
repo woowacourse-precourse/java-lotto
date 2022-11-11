@@ -37,7 +37,7 @@ public class Message {
     }
   }
 
-  public static void ratio() {
-
+  public static void ratio(double percentage) {
+    System.out.println("총 수익률은 " + percentage + "%입니다.");
   }
 }
