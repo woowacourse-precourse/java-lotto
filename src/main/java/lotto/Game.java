@@ -11,12 +11,12 @@ public class Game {
 
     private static final Validation validation = new Validation();
     List<Integer> results;
-    private static final List<Sentences> rankings = List.of(
-            Sentences.FIFTH,
-            Sentences.FOURTH,
-            Sentences.THRID,
-            Sentences.SECOND,
-            Sentences.FIRST
+    private static final List<Winning> rankings = List.of(
+            Winning.FIFTH,
+            Winning.FOURTH,
+            Winning.THRID,
+            Winning.SECOND,
+            Winning.FIRST
     );
 
     public Game() {
@@ -54,7 +54,8 @@ public class Game {
         printResult();
 
         // TODO: 총 수익률 출력
-        System.out.println(Sentences.getRate(62.5F));
+        String earningRate = calculateEarningRate(amount);
+        System.out.println(Sentences.getRate(earningRate));
 
     }
 
@@ -108,8 +109,28 @@ public class Game {
 
     private void printResult() {
         for (int i = 0; i < 5; i++) {
-            String result = Sentences.getResult(rankings.get(i), results.get(i));
+//            String result = Sentences.getResult(rankings.get(i), results.get(i));
+            Winning ranking = rankings.get(i);
+            String result = ranking.toString(results.get(i));
             System.out.println(result);
         }
+    }
+
+    private String calculateEarningRate(int amount) {
+        int price = amount * 1000;
+        int prize = calculatePrize();
+        float rate = prize / price * 100;
+        return String.format("%.1f", rate);
+    }
+
+    private int calculatePrize() {
+        int prize = 0;
+        for (int i = 0; i < 5; i++) {
+            Integer result = results.get(i);
+            if (result != 0) {
+                prize += rankings.get(i).prize;
+            }
+        }
+        return prize;
     }
 }
