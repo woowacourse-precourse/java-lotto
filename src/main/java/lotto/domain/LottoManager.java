@@ -18,6 +18,9 @@ public class LottoManager {
     private void savePurchaseAmount() {
         this.purchaseAmount = InputView.enterPurchaseAmount();
     }
+    public int getPurchaseAmount() {
+        return purchaseAmount;
+    }
     private void saveLottoIssueCount() {
         this.lottoIssueCount = purchaseAmount / 1000;
     }
@@ -46,6 +49,9 @@ public class LottoManager {
             result.add(rank, result.get(rank) + 1);
         }
         this.result = result;
+    }
+    public List<Integer> getResult() {
+        return result;
     }
     private int compareMyLottoWithWinningNumber(List<Integer> myLottoNumber, List<Integer> winningNumber) {
         int sameNumberCount = 0;
