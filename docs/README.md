@@ -1,4 +1,4 @@
-# 기능 목록 ver 1.1.2
+# 기능 목록 ver 1.2
 <hr>
 
 ### 예외처리 상황
@@ -32,9 +32,12 @@
   - [ ] 보너스 번호 입력받기 문구 출력 - Guide
   - [ ] 당첨 통계 출력 - UserLotto
 - [ ] 입력 기능
-  - [ ] 구입 금액 입력받기 - Guide
-  - [ ] 당첨 번호 입력받기 - Guide
-  - [ ] 보너스 번호 입력받기 - Guide
+  - [ ] 입력받은 구입금액에 대한 생성자 - UserLotto
+    - [x]String 형식에 대한 int 형변환 - Guide
+  - [ ] 입력받은 당첨 번호에 대한 생성자 - Lotto
+    - [ ]String 형식에 대한 List\<Integer> 형변환 - Guide
+  - [ ] 입력받은 보너스 번호에 대한 생성자 - Bonus
+    - [x]String 형식에 대한 int 형변환 - Guide
 
 - [ ] 로또 번호 접근자 - Lotto
 - [ ] 구매 개수 계산 - UserLotto
