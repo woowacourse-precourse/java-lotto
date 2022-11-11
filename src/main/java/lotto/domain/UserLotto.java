@@ -20,4 +20,7 @@ public class UserLotto {
         return InputView.readAmount();
     }
 
+    private Lotto makeLotto() {
+        return new Lotto(RandomNumGenerator.makeUniqueRandomList());
+    }
 }
