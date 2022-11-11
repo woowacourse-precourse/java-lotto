@@ -58,5 +58,16 @@ class LottoTest {
         assertThat(6).isEqualTo(lottoMachine.getLottoReceipt().size());
     }
 
+    @DisplayName("정답 제대로 입력 안했을 시 메인 시스템 에러 체크")
+    @Test
+    void checkBadAnswer() {
+        String testData = "500sfmoieroivajsfioisa";
+        InputStream in = new ByteArrayInputStream(testData.getBytes());
+        System.setIn(in);
+        application = new Application();
+        application.answerLotto();
+        assertThat(true).isEqualTo(application.getSystemError());
+    }
+
 
 }
