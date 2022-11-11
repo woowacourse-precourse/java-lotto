@@ -20,10 +20,14 @@ public class Application {
         if (application.systemError)
             return;
         lottoClerk.sayBuyLotto(lottoMachine.makeLottoCount(application.getMoney()));
+        application.giveLotto();
+    }
+
+    public void giveLotto()
+    {
         lottoMachine.makeLottoReceipt();
         lottoClerk.sayLottoReceipt(lottoMachine.getLottoReceipt());
     }
-
     public int getMoney() {
         return money;
     }
