@@ -146,7 +146,7 @@ public class LottoService {
         System.out.println("당첨 통계");
         System.out.println("---");
         for (Rank rank : Rank.values()) {
-            System.out.printf("%s (%s) - %d개%n", rank.getDescriptionMessage(),
+            System.out.printf("%s (%s원) - %d개%n", rank.getDescriptionMessage(),
                     getFormattedReward(rank.getWinningPrice()), getMatchedRankCount(lottoResults, rank));
             totalReward += rank.getWinningPrice() * getMatchedRankCount(lottoResults, rank);
         }
