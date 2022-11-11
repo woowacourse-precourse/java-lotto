@@ -19,9 +19,6 @@ public class Lotto {
 
     private void exception(List<Integer> numbers) {
         LottoNumberException lottoNumberException = new LottoNumberException();
-
-        lottoNumberException.lottoNumberSize(numbers);
-        lottoNumberException.lottoNumberDuplicated(numbers);
-        lottoNumberException.lottoNumberMaxMin(numbers);
+        lottoNumberException.fullException(numbers);
     }
 }
