@@ -9,7 +9,7 @@ import java.util.List;
 
 public class InputUi {
 
-    private static String NUMBER_INPUT_DIVIDER = ",";
+    private static final String NUMBER_INPUT_DIVIDER = ",";
 
     public static int readPurchaseAmount() throws IllegalArgumentException {
         String amountInput = Console.readLine();
@@ -28,11 +28,11 @@ public class InputUi {
         return Collections.unmodifiableList(winningNumbers);
     }
 
-    private static List<Integer> splitNumbersStringToList(String numberInput){
+    private static List<Integer> splitNumbersStringToList(String numberInput) {
         String[] dividedNumbersInput = numberInput.split(NUMBER_INPUT_DIVIDER);
 
         List<Integer> numbers = new ArrayList<>();
-        for(String number : dividedNumbersInput){
+        for (String number : dividedNumbersInput) {
             numbers.add(Integer.valueOf(number));
         }
 
