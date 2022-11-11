@@ -1,17 +1,19 @@
 package lotto;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Collections;
-import java.util.Set;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        Collections.sort(numbers);
-        this.numbers = numbers;
+        this.numbers=sortNumbers(numbers);
+    }
+
+    public List<Integer> sortNumbers(List<Integer> numbers){
+        List<Integer> sortNumbers=new ArrayList<>(numbers);
+        Collections.sort(sortNumbers);
+        return sortNumbers;
     }
 
     private void validate(List<Integer> numbers) {
