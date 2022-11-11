@@ -14,14 +14,14 @@ public class LottoSimulate {
 
     private final LottoShop lottoShop = new LottoShop();
 
-    private Statistics statistics = new Statistics();
+    private final Statistics statistics = new Statistics();
 
     public void start() {
         try {
             int purchasePrice = inputPurchasePrice();
             List<Lotto> lottos = buyLottos(purchasePrice);
             WinLotto winLotto = new WinLotto(inputWinLottoNumbers(), inputWinLottoBonusNumber());
-            Map<Prize, Integer> statistic = getLottoStatics(winLotto, lottos);
+            Map<Prize, Integer> lottoStatics = getLottoStatics(winLotto, lottos);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -57,7 +57,7 @@ public class LottoSimulate {
 
     private Map<Prize,Integer> getLottoStatics(WinLotto winLotto, List<Lotto> lottos) {
         Map<Prize,Integer> lottoStatics = statistics.produce(winLotto, lottos);
-        print.out(LottoText.WINNING_STATISTICS);
+        print.out(lottoStatics);
         return lottoStatics;
     }
 }
