@@ -58,4 +58,10 @@ public class InputExceptionHandler {
 			throw new IllegalArgumentException(ONE_TO_FORTY_FIVE_EXCEPTION);
 		}
 	}
+
+	private void checkNumberCount(List<Integer> numbers) {
+		if (numbers.size() != ConstValue.LOTTO_NUMBERS) {
+			throw new IllegalArgumentException(WINNING_NUMBER_COUNT_EXCEPTION);
+		}
+	}
 }
