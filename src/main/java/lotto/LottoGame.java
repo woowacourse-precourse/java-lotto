@@ -11,12 +11,22 @@ public class LottoGame {
     private static final int UNIT_OF_MONEY = 1000;
     private static final int LOTTO_NUMBER_COUNT = 6;
 
-    public String inputMoney() {
+    public void play(LottoMachine lottoMachine) {
+        int money = inputMoney();
+        List<Lotto> lottos = lottoMachine.generateLottos(money);
+        printLottos(lottos);
+        WinningNumber winningNumber = new WinningNumber(inputWinningNumbers(), inputBonusNumber());
+        List<LottoRank> ranks = winningNumber.getRanks(lottos);
+        printWinningResult(ranks);
+        printRateOfReturn(winningNumber.getRateOfReturn(money, winningNumber.getTotalPrizeMoney(ranks)));
+    }
+
+    public int inputMoney() {
         System.out.println("구매금액을 입력해 주세요.");
         String money = Console.readLine();
         validateMoneyType(money);
         validateUnitOf1000(money);
-        return money;
+        return Integer.parseInt(money);
     }
 
     private void validateMoneyType(String money) {
