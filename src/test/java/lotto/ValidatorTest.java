@@ -151,8 +151,13 @@ class ValidatorTest {
         }
 
         @Test
+        @DisplayName("올바른 당첨 번호들이면 예외를 던지지 않는다.")
         void goodWinningNumbers() {
+            // given
+            Validator validator = new Validator();
 
+            // throws
+            assertThatNoException().isThrownBy(() -> validator.validateWinningNumbers("15,32,2,41,31,23"));
         }
     }
 }
