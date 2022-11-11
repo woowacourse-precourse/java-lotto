@@ -9,8 +9,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoGame {
-    private static final String TYPE_ERROR_MESSAGE = "[ERROR] 숫자를 입력해주세요.";
-    private static final String INPUT_MONEY_ERROR_MESSAGE = "[ERROR] 금액을 1000원 단위로 입력해주세요.";
+    private static final String TYPE_ERROR_MESSAGE = "[ERROR] 숫자가 입력되지 않았습니다.";
+    private static final String INPUT_MONEY_ERROR_MESSAGE = "[ERROR] 금액이 1000원 단위가 아닙니다.";
+    private static final String BONUS_DUPLICATE_NUMBER_ERROR_MESSAGE = "[ERROR] 보너스번호가 당첨번호와 같습니다.";
 
     private Lotto winningNumbers;
     private int bonusNumber;
@@ -20,7 +21,14 @@ public class LottoGame {
     }
 
     public void setBonusNumbers() {
-        this.bonusNumber = translateNumbers(Console.readLine()).get(0);
+        int bonusNumber = translateNumbers(Console.readLine()).get(0);
+        for (int number : winningNumbers.getNumbers()) {
+            if (number == bonusNumber) {
+                throw new IllegalArgumentException(BONUS_DUPLICATE_NUMBER_ERROR_MESSAGE);
+            }
+        }
+
+        this.bonusNumber = bonusNumber;
     }
 
     public Lotto getwinningNumbers(){
