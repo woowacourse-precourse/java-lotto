@@ -14,6 +14,11 @@ public final class Input {
         return validator.validateDigitAndComma(readLine());
     }
 
+    public static int inputBonusNumber() {
+        String input = validator.validateDigit(readLine());
+        return validator.validateNumberRange(convertToInt(input));
+    }
+
     private static int convertToInt(String input) {
         return Integer.parseInt(input);
     }
