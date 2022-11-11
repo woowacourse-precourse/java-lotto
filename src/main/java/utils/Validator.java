@@ -1,6 +1,7 @@
 package utils;
 
 import model.ErrorMessage;
+import model.LottoStatus;
 
 public class Validator {
     public void validateNumber(String input) {
@@ -25,6 +26,16 @@ public class Validator {
 
     private char getDigit(String input, int index) {
         return input.charAt(index);
+    }
+
+    public void validateMonetaryUnit(String input) {
+        if (!isMonetaryUnit(input)) {
+            throw new IllegalArgumentException(ErrorMessage.INCORRECT_PURCHASING_AMOUNT.toString());
+        }
+    }
+
+    private boolean isMonetaryUnit(String input) {
+        return Integer.parseInt(input) % LottoStatus.PRICE.getValue() == 0;
     }
 
 }
