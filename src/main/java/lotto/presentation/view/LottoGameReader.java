@@ -21,6 +21,12 @@ public class LottoGameReader {
         return ReaderConverter.convertIntegerList(winNumber);
     }
 
+    public static Integer readBonusNumber() {
+        LottoGamePrinter.printEnterBonusNumber();
+        String bonusNumber = readLine();
+        return ReaderConverter.convertInteger(bonusNumber);
+    }
+
     public static String readLine() {
         return Console.readLine();
     }

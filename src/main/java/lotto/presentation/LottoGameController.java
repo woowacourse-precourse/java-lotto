@@ -8,6 +8,7 @@ public class LottoGameController {
     public static void start() {
         int lottoCount = LottoGameReader.readLottoAmount();
         List<Integer> winNumber = LottoGameReader.readWinNumber();
+        int bonusNumber = LottoGameReader.readBonusNumber();
     }
 
 }

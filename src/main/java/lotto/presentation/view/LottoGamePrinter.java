@@ -12,4 +12,8 @@ public class LottoGamePrinter {
         System.out.println(LottoGameMessage.READ_WIN_NUMBER);
     }
 
+    public static void printEnterBonusNumber() {
+        System.out.println(LottoGameMessage.READ_BONUS_NUMBER);
+    }
+
 }
