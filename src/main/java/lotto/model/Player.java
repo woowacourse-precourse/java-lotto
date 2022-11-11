@@ -22,7 +22,7 @@ public class Player {
     }
 
     private void payTickets(long payment){
-
+        playerProfit.checkPayment(payment);
     }
 
     private int countTickets(long payment){
