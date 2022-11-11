@@ -33,7 +33,7 @@
 
 <br>
 
-##  [B] lotto.rule 패키지
+##  [B] lotto.game.rule 패키지
 
 ### [1] GameRule 클래스
 
@@ -45,7 +45,7 @@
 
 <br>
 
-##  [C] computer.generator 패키지
+##  [C] lotto.computer.generator 패키지
 
 ### [1] ComputerNumber 클래스
 
@@ -59,7 +59,7 @@
 
 <br>
 
-##  [D] computer.output 패키지
+##  [D] lotto.computer.output 패키지
 
 ### [1] ComputerOutput 클래스
 
@@ -73,7 +73,7 @@
 
 <br>
 
-##  [E] user.generator 패키지
+##  [E] lotto.user.generator 패키지
 
 ### [1] UserNumber 클래스
 
@@ -90,7 +90,7 @@
 
 <br>
 
-##  [F] common.validator 패키지
+##  [F] lotto.common.validator 패키지
 
 ### [1] NumberValidator 클래스
 
@@ -100,7 +100,7 @@
 
 <br>
 
-##  [G] common.sort 패키지
+##  [G] lotto.common.sort 패키지
 
 ### [1] NumberSort 클래스
 
@@ -110,7 +110,7 @@
 
 <br>
 
-##  [H] user.exception 패키지
+##  [H] lotto.user.exception 패키지
 
 ### [1] UserExceptionHandler 클래스
 
@@ -128,7 +128,7 @@
 
 <br>
 
-##  [I] global.exception 패키지
+##  [I] lotto.global.exception 패키지
 
 ### [1] GlobalExceptionHandler 클래스
 
