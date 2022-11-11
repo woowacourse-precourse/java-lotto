@@ -6,12 +6,6 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class LottoInputDataService {
-
-    public static void main(String[] args) {
-        LottoInputDataService in = new LottoInputDataService();
-        in.inputLottoData();
-    }
-
     private final LottoException lottoException = new LottoException();
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
