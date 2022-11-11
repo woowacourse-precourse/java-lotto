@@ -6,13 +6,11 @@ import java.util.List;
 
 public class Seller {
 
-
-    public LottoTicket buyLottoByAmount(Money amount) {
-        return new LottoTicket(toLottos(amount));
+    public static LottoTicket buyLottoByMoney(Money money) {
+        return new LottoTicket(toLottos(money));
     }
 
-
-    private List<Lotto> toLottos(Money money) {
+    private static List<Lotto> toLottos(Money money) {
         List<Lotto> lottos = new ArrayList<>();
         while (money.hasMoney()) {
             lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
@@ -20,6 +18,4 @@ public class Seller {
         }
         return lottos;
     }
-
-
 }
