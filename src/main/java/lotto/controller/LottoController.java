@@ -18,6 +18,8 @@ public class LottoController {
         printLottoQuantity();
         printLottos();
         getUserLottoNumbers();
+        getUserBonusNumber();
+        System.out.println("userLottoNumbers: "+userLottoNumbers);
     }
 
     public void getUserMoney() {
@@ -41,6 +43,6 @@ public class LottoController {
         //System.out.println("userLottoNumbers: "+userLottoNumbers);
     }
     public void getUserBonusNumber(){
-        //userLottoNumbers.add(InputView.requestBonusNumber());
+        userLottoNumbers.add(InputView.requestBonusNumber());
     }
 }
