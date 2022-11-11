@@ -9,7 +9,8 @@ import util.message.ErrorMessage;
 
 public class ReceiveView {
     private static final String NUMBER_REGEX = "^[0-9]*$";
-    private static final String WIN_LOTTO_REGEX = "^[\\d]+[\\,\\d]+[\\,\\d]+[\\,\\d]+[\\,\\d]+[\\,\\d]+$";
+    private static final String WIN_LOTTO_REGEX = "^[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+$";
+    private static final String WIN_LOTTO_SEPARATE = ",";
 
     public static int purchaseLotto() {
         String money = Console.readLine();
@@ -39,19 +40,17 @@ public class ReceiveView {
 
     private static List<Integer> splitInputWinLotto(String inputWinLotto) {
         List<Integer> winLotto = new ArrayList<>();
-        String[] splitWinLotto = inputWinLotto.split(",");
+        String[] splitWinLotto = inputWinLotto.split(WIN_LOTTO_SEPARATE);
         for (String winLottoNum : splitWinLotto) {
             winLotto.add(Integer.parseInt(winLottoNum));
         }
         return winLotto;
     }
 
-    public static List<Integer> winLottoValid(String winLottoInput) {
+    public static void winLottoValid(String winLottoInput) {
         if (!isCorrectInput(winLottoInput)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_WIN_LOTTO);
         }
-        return new ArrayList<>();
-
     }
 
     private static boolean isCorrectInput(String winLottoInput) {
