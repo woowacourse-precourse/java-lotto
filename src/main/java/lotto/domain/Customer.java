@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.domain.Lotto;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,9 +9,9 @@ import java.util.stream.IntStream;
 public class Customer {
     private static final int LOTTO_PRICE = 1000;
 
-    public List<Lotto> generateLottos(int money) {
+    public List<Lotto> purchaseLottos(int money) {
         return IntStream.range(0, getLottoCount(money))
-                .mapToObj(index -> generateLotto())
+                .mapToObj(index -> purchaseLotto())
                 .collect(Collectors.toList());
     }
 
@@ -20,7 +19,7 @@ public class Customer {
         return money / LOTTO_PRICE;
     }
 
-    private Lotto generateLotto() {
+    private Lotto purchaseLotto() {
         return new Lotto(generateLottoNumber());
     }
 
