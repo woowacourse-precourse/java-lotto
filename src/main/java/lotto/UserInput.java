@@ -1,13 +1,15 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class UserInput {
 
-    static List<List<Integer>> lotteries = new ArrayList<>();
+    static private List<List<Integer>> lotteries = new ArrayList<>();
     private UserInput() {}
 
     static public long inputMoney() {
@@ -26,6 +28,14 @@ public class UserInput {
         } catch (NumberFormatException e) {
             Message.ERROR_INPUT_NUMBER.printError();
             throw new IllegalArgumentException();
+        }
+    }
+
+    static void generateRandomLotto(long quantity) {
+        for (int i = 0; i < quantity; i++) {
+            List tmpLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            tmpLotto.sort(Comparator.naturalOrder());
+            lotteries.add(tmpLotto);
         }
     }
 }
