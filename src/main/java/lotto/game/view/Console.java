@@ -1,4 +1,4 @@
-package lotto.view;
+package lotto.game.view;
 
 import lotto.util.Validator;
 
