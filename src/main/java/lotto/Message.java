@@ -30,8 +30,8 @@ public enum Message {
         return msg;
     }
 
-    void printError() {
-        System.out.println(Message.ERROR + " " + this.msg);
+    String printError() {
+        return Message.ERROR.msg + msg;
     }
 
     void printResult(long count) {
