@@ -32,12 +32,16 @@ public class LottoPurchaseInformation {
         }
     }
 
-    public void compareLottoTicketsWith(List<Integer> winningNumbers, int bonusNumber){
+    private void initializeLottoResults(){
         lottoResults.put(Rank.FIFTH, 0);
         lottoResults.put(Rank.FOURTH, 0);
         lottoResults.put(Rank.THIRD, 0);
         lottoResults.put(Rank.SECOND, 0);
         lottoResults.put(Rank.FIRST, 0);
+    }
+
+    public void compareLottoTicketsWith(List<Integer> winningNumbers, int bonusNumber){
+        initializeLottoResults();
         for(int i = 0; i < lottoTickets.size(); i++) {
             int count = lottoTickets.get(i).calculateCountOfMatchingNumbers(winningNumbers);
             String condition = count + "개 일치";
