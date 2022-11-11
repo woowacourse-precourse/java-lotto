@@ -14,7 +14,7 @@
 
 ### 사용자 구매 금액 입력 검증
 - [x] validateLottoPurchaseMoney
-  - validatePurchaseMoneyInteger(유저가 구매한 로또 금액이 Integer Type 의 범위를 벗어나면 IllegalArgumentException를 발생시키기) 
+  - validatePurchaseMoneyInteger(유저가 입력한 로또 구매 금액이 정수형아니고, Integer의 범위를 벗어나면 IllegalArgumentException를 발생시키기) 
   - validatePurchaseMoneyDividable(유저가 구매한 로또 금액이 1000 으로 나누어 떨어지지 않으면 IllegalArgumentException를 발생시키기)
 
 ### 당첨 번호 입력 검증
