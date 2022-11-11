@@ -28,7 +28,7 @@ public class LottoException {
     }
 
     public void validateLottoNumbersLength(String numbers) {
-        if (numbers.replace(",", "").length() != PERMITTED_LOTTO_LENGTH) {
+        if (numbers.split(",").length != PERMITTED_LOTTO_LENGTH) {
             throw new IllegalArgumentException("로또 번호는 6개 입력해주세요.");
         }
     }
