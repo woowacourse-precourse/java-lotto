@@ -104,7 +104,7 @@ public class LottoIO {
 
     // 총 수익률 결과 출력
     public void printYieldsFormat(double yields) {
-        System.out.println("총 수익률은 " + yields + "%입니다.");
+        System.out.print("총 수익률은 " + yields + "%입니다.");
     }
 
     public List<Integer> getLottoAnswer() {
