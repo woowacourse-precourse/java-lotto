@@ -1,6 +1,5 @@
 package lotto.domain.match;
 
-import java.util.Collections;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -25,16 +24,16 @@ public enum Reward {
     }
 
     private static final Map<Integer, Reward> matchToNonRequireBonusReward =
-            Collections.unmodifiableMap(Stream.of(values())
+            Stream.of(values())
                     .filter(Predicate.not(Reward::isRequireBonus))
-                    .collect(Collectors.toMap(
-                            Reward::getMatch, Function.identity())));
+                    .collect(Collectors.toUnmodifiableMap(
+                            Reward::getMatch, Function.identity()));
 
     private static final Map<Integer, Reward> matchToRequireBonusReward =
-            Collections.unmodifiableMap(Stream.of(values())
+            Stream.of(values())
                     .filter(Reward::isRequireBonus)
-                    .collect(Collectors.toMap(
-                            Reward::getMatch, Function.identity())));
+                    .collect(Collectors.toUnmodifiableMap(
+                            Reward::getMatch, Function.identity()));
 
     public static Reward find(int match, boolean isBonusMatched) {
         if (isBonusMatched) {
