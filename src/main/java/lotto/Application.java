@@ -71,6 +71,15 @@ public class Application {
     	return lotto.getLottoNumbers();
     }
     
+    public static void validateSplit(String stringnumbers) {
+    	String[] numbersarray;
+    	try {
+    		numbersarray = stringnumbers.split(",");
+    	} catch (Exception e) {
+    		throw new IllegalArgumentException("[ERROR] 값을 ,로 구분해서 입력하세요.");
+    	}
+    }
+    
     public static void validateLottoNumber(String[] numbersarray) {
     	String pattern = "^[0-9]{1,2}$";
     	for (String number : numbersarray) {
@@ -80,15 +89,6 @@ public class Application {
     		if (Integer.parseInt(number) < 1 || Integer.parseInt(number) > 45) {
     			throw new IllegalArgumentException("[ERROR] 1-45사이의 숫자만 입력하세요.");
     		}
-    	}
-    }
-    
-    public static void validateSplit(String stringnumbers) {
-    	String[] numbersarray;
-    	try {
-    		numbersarray = stringnumbers.split(",");
-    	} catch (Exception e) {
-    		throw new IllegalArgumentException("[ERROR] 값을 ,로 구분해서 입력하세요.");
     	}
     }
     

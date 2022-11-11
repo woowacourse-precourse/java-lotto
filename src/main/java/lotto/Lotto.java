@@ -19,10 +19,10 @@ public class Lotto {
     }
 
     public void numbersNoRepeat(List<Integer> numbers) {  //숫자가 중복되는지 확인하기
-    	HashSet numbersset = new HashSet();
+    	HashSet<Integer> numbersset = new HashSet<>();
     	numbersset.addAll(numbers);
     	
-    	if (numbers.size() != 6) {
+    	if (numbersset.size() != 6) {
     		throw new IllegalArgumentException("[ERROR] 서로 다른 숫자 6개를 입력하세요.");
     	}
     }
