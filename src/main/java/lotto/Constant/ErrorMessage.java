@@ -1,4 +1,4 @@
-package lotto;
+package lotto.Constant;
 
 public class ErrorMessage {
     public static final String ERROR = "[ERROR]";

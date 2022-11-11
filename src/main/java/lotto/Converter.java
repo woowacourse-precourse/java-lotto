@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.Constant.ErrorMessage;
 
 public class Converter {
     public static int convertMoneyInput(String input) {

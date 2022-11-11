@@ -3,6 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lotto.Constant.ErrorMessage;
 
 public class User {
     private List<Lotto> lottos;

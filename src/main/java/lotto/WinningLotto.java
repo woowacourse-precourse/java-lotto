@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import lotto.Constant.ErrorMessage;
 
 public class WinningLotto extends Lotto{
     private int bonusNumber;
