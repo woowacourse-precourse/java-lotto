@@ -70,4 +70,48 @@ class ResultTest {
 
         Assertions.assertThat(matchingBonusNumber).isEqualTo(false);
     }
+
+    @DisplayName("랭킹 조회 테스트")
+    @Test
+    void getRankTest1() {
+        int matchingCount = 5;
+        boolean checkBonusNumber = true;
+
+        Rank rank = result.getRank(matchingCount, checkBonusNumber);
+
+        Assertions.assertThat(rank).isEqualTo(Rank.second);
+    }
+
+    @DisplayName("랭킹 조회 테스트")
+    @Test
+    void getRankTest2() {
+        int matchingCount = 5;
+        boolean checkBonusNumber = false;
+
+        Rank rank = result.getRank(matchingCount, checkBonusNumber);
+
+        Assertions.assertThat(rank).isEqualTo(Rank.third);
+    }
+
+    @DisplayName("랭킹 조회 테스트")
+    @Test
+    void getRankTest3() {
+        int matchingCount = 6;
+        boolean checkBonusNumber = false;
+
+        Rank rank = result.getRank(matchingCount, checkBonusNumber);
+
+        Assertions.assertThat(rank).isEqualTo(Rank.first);
+    }
+
+    @DisplayName("랭킹 조회 테스트")
+    @Test
+    void getRankTest4() {
+        int matchingCount = 1;
+        boolean checkBonusNumber = false;
+
+        Rank rank = result.getRank(matchingCount, checkBonusNumber);
+
+        Assertions.assertThat(rank).isEqualTo(Rank.nothing);
+    }
 }
