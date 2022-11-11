@@ -10,16 +10,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputView {
-    private static int lottoIssueCount = 0;
-    public static int getLottoIssueCount() {
-        return lottoIssueCount;
-    }
     public static int enterPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
         String data = Console.readLine();
         InputException.validatePurchaseAmount(data);
         int purchaseAmount = Integer.valueOf(data);
-        lottoIssueCount = purchaseAmount / 1000;
         System.out.println();
         return purchaseAmount;
     }
