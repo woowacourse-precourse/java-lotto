@@ -1,14 +1,10 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-import lotto.domain.LottoSystem;
 import lotto.domain.User;
 
-import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.List;
-import java.util.ListIterator;
 
 public class UserService {
     private User user;

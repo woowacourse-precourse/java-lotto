@@ -37,22 +37,21 @@
 *****
 ### 🟧 service package
 **UserService**
->- [ ] Lotto System을 통해 당첨 통계를 조회하는 기능 ( getUserLottoResult ) ( Lotto System을 통해 구매한 로또 번호와 비교 )
->- [ ] 총 수익률을 계산하는 기능 ( setRevenue )
->- [ ] 총 수익률을 조회하는 기능 ( getRevenue )
 >- [x] 금액을 입력받는 기능 ( setPayMent )
 >- [x] User에게 입력받은 금액으로 LottoSystem에 로또를 구매하는 기능 ( buyLotto )
 >- [x] User의 randomLottoNumber를 얻는 기능 ( getUserLottoNumber )
  
 **LottoSystemService**
->- [ ] 당첨 통계를 계산하는 기능 ( setTotal )
->- [ ] 당첨 통계를 조회하는 기능 ( getTotal )
 >- [x] 입력 받은 금액으로 랜덤 번호를 생성하는 기능 ( setRandomLottoNumbers )
 >- [x] 랜덤 번호를 각 정렬하는 기능 ( setRandomLottoNumbers 내부 )
 
 *****
 ### 🟧 controller package
 **LottoController**
+>- [ ] 총 수익률을 계산하는 기능 ( setRevenue )
+>- [ ] 총 수익률을 조회하는 기능 ( getRevenue )
+>- [ ] 당첨 통계를 계산하는 기능 ( setTotal )
+>- [ ] 당첨 통계를 조회하는 기능 ( getTotal )
 >- [ ] 사용자가 로또를 구매하는 기능 ( inputUserMoney )
 >- [ ] 구매된 로또 번호를 보여주는 기능 ( printLottoNumber )
 >- [ ] 당첨번호를 입력하는 기능 ( inputWinningNumber )
