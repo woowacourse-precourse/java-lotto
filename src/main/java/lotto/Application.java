@@ -114,7 +114,6 @@ public class Application {
     public static void validateCashIsDividedThousand(String input) {
 
         if (input.length() < 4) {
-
             printErrorAboutDivisionByThousand();
             throw new IllegalArgumentException();
         }
@@ -122,7 +121,6 @@ public class Application {
         for (int i = input.length() - 3; i < input.length(); i++) {
 
             if (input.charAt(i) != 48) {
-
                 printErrorAboutDivisionByThousand();
                 throw new IllegalArgumentException();
             }
