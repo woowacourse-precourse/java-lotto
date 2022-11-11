@@ -3,7 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
-public class RandomNumberGenerator {
+public class LottoNumbers {
     private static final int START_NUMBER = 1;
     private static final int END_NUMBER = 45;
     private static final int NUMBER_COUNT = 6;
