@@ -73,7 +73,7 @@ public class OutputView {
     }
     
     public static void printWinningStats(final LottoRanksDTO lottoRanksDTO) {
-        final List<LottoRank> lottoRanks = lottoRanksDTO.lottoRanks();
+        final List<LottoRank> lottoRanks = lottoRanksDTO.getLottoRanks();
     
         printWinningStatsGuidanceMessage();
         printDivisionLine();

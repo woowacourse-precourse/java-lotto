@@ -14,7 +14,7 @@ public class LottoRanksDTO {
         this.lottoRanks = lottos.parseRanks(winningLottoNumbers);
     }
     
-    public List<LottoRank> lottoRanks() {
+    public List<LottoRank> getLottoRanks() {
         return Collections.unmodifiableList(lottoRanks);
     }
 }

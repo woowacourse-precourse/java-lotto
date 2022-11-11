@@ -62,6 +62,6 @@ public class LottoController {
     }
     
     private double calculateYield(final Payment payment, final LottoRanksDTO lottoRanksDTO) {
-        return payment.calculateYield(lottoRanksDTO.lottoRanks());
+        return payment.calculateYield(lottoRanksDTO.getLottoRanks());
     }
 }
