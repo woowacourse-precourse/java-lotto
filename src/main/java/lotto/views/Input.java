@@ -17,6 +17,7 @@ public class Input {
 
         String question = Console.readLine();
         inputValidation.checkNumber(question);
+        inputValidation.checkThousandMoney(question);
 
         return Integer.parseInt(question);
     }
