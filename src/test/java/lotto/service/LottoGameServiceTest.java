@@ -196,7 +196,7 @@ class LottoGameServiceTest {
     @Test
     void 수익률_구하기_구입_금액_8000원_5등() {
         String lottoPurchaseAmount = "8000";
-        lottoGameService.addWinningRank(LottoWinningRank.FIFTH);
+        lottoGameService.updateWinningRankMap(LottoWinningRank.FIFTH);
         String earningsRatio = lottoGameService.getEarningsRatio(lottoPurchaseAmount);
 
         assertThat(earningsRatio).isEqualTo("62.5%");
@@ -205,7 +205,7 @@ class LottoGameServiceTest {
     @Test
     void 수익률_구하기_구입_금액_8000원_4등() {
         String lottoPurchaseAmount = "8000";
-        lottoGameService.addWinningRank(LottoWinningRank.FOURTH);
+        lottoGameService.updateWinningRankMap(LottoWinningRank.FOURTH);
         String earningsRatio = lottoGameService.getEarningsRatio(lottoPurchaseAmount);
 
         assertThat(earningsRatio).isEqualTo("625.0%");
@@ -214,7 +214,7 @@ class LottoGameServiceTest {
     @Test
     void 수익률_구하기_구입_금액_8000원_3등() {
         String lottoPurchaseAmount = "8000";
-        lottoGameService.addWinningRank(LottoWinningRank.THIRD);
+        lottoGameService.updateWinningRankMap(LottoWinningRank.THIRD);
         String earningsRatio = lottoGameService.getEarningsRatio(lottoPurchaseAmount);
 
         assertThat(earningsRatio).isEqualTo("18,750.0%");
@@ -223,7 +223,7 @@ class LottoGameServiceTest {
     @Test
     void 수익률_구하기_구입_금액_8000원_2등() {
         String lottoPurchaseAmount = "8000";
-        lottoGameService.addWinningRank(LottoWinningRank.SECOND);
+        lottoGameService.updateWinningRankMap(LottoWinningRank.SECOND);
         String earningsRatio = lottoGameService.getEarningsRatio(lottoPurchaseAmount);
 
         assertThat(earningsRatio).isEqualTo("375,000.0%");
@@ -232,7 +232,7 @@ class LottoGameServiceTest {
     @Test
     void 수익률_구하기_구입_금액_8000원_1등() {
         String lottoPurchaseAmount = "8000";
-        lottoGameService.addWinningRank(LottoWinningRank.FIRST);
+        lottoGameService.updateWinningRankMap(LottoWinningRank.FIRST);
         String earningsRatio = lottoGameService.getEarningsRatio(lottoPurchaseAmount);
 
         assertThat(earningsRatio).isEqualTo("25,000,000.0%");
