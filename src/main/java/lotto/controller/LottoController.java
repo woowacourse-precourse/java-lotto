@@ -4,6 +4,7 @@ import static lotto.service.LottoService.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import lotto.ExceptionHandler;
 import lotto.domain.Lotto;

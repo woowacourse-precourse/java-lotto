@@ -1,20 +1,25 @@
 package lotto.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.ExceptionHandler;
 
 public class LottoService {
 	public static List<Integer> pickLottoNumbers() {
-		List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1,45,6);
+		List<Integer> lottoNumbers = new ArrayList<>();
 
-		lottoNumbers.stream()
-				.sorted();
+		lottoNumbers.addAll(Randoms.pickUniqueNumbersInRange(1,45,6));
+
+		Collections.sort(lottoNumbers);
 
 		return lottoNumbers;
 	}
+
 	public static List<List<Integer>> publishLotto(List<List<Integer>> candidateLotto, List<Integer> candidate) {
 		candidateLotto.add(candidate);
 
@@ -23,6 +28,7 @@ public class LottoService {
 
 	public static List<Integer> convertStringToList(String numbers) {
 		List<String> lotto = Arrays.asList(numbers.split(","));
+		ExceptionHandler.checkInput(lotto);
 
 		List<Integer> lottoNumbers = lotto.stream()
 				.map(s -> Integer.parseInt(s))
