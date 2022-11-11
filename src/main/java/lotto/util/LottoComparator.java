@@ -8,7 +8,7 @@ import java.util.*;
 
 public class LottoComparator {
 
-    public Map<Winner, Integer> compareToPrize(List<Lotto> lottoList, Lotto prizeLotto, int bonusNumber) {
+    public static Map<Winner, Integer> compareToPrize(List<Lotto> lottoList, Lotto prizeLotto, int bonusNumber) {
         Map<Winner, Integer> ranked = new LinkedHashMap<>();
         for (Lotto lotto : lottoList) {
             Winner result = getLottoRank(lotto, prizeLotto, bonusNumber);
@@ -17,7 +17,7 @@ public class LottoComparator {
         return ranked;
     }
 
-    private Winner getLottoRank(Lotto ownLotto, Lotto prizeLotto, int bonusNumber) {
+    private static Winner getLottoRank(Lotto ownLotto, Lotto prizeLotto, int bonusNumber) {
         int cnt = countNumberCorrectness(ownLotto, prizeLotto);
         boolean bonus = hasBonusNumber(ownLotto, bonusNumber);
         int maxValue = InputConfig.LOTTO_NUMBER_COUNT;
@@ -40,11 +40,11 @@ public class LottoComparator {
         return Winner.NONE;
     }
 
-    private boolean hasBonusNumber(Lotto ownLotto, int bonusNumber) {
+    private static boolean hasBonusNumber(Lotto ownLotto, int bonusNumber) {
         return ownLotto.contains(bonusNumber);
     }
 
-    private int countNumberCorrectness(Lotto lotto, Lotto prizeLotto) {
+    private static int countNumberCorrectness(Lotto lotto, Lotto prizeLotto) {
         Set<Integer> ownLotto = lotto.toSet();
         Set<Integer> matchedLotto = prizeLotto.toSet();
 
