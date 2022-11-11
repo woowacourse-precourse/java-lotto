@@ -1,5 +1,6 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -44,15 +45,16 @@ public class Print {
 	
 	public void printWin() {
 		int ranknum = 5;
+		DecimalFormat df = new DecimalFormat("#,###");
 		System.out.println("당첨 통계");
 		System.out.println("---");
 		for (rank r : rank.values()) {
 			if (ranknum == 2) {
-				System.out.printf("%d개 일치, 보너스 볼 일치 (%d원) - %d개\n", r.getValue(), r.getPrice(), rankmap.getOrDefault(ranknum, 0));
+				System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n", r.getValue(), df.format(r.getPrice()), rankmap.getOrDefault(ranknum, 0));
 				ranknum--;
 				continue;
 			}
-			System.out.printf("%d개 일치 (%d원) - %d개\n", r.getValue(), r.getPrice(), rankmap.getOrDefault(ranknum, 0));
+			System.out.printf("%d개 일치 (%s원) - %d개\n", r.getValue(), df.format(r.getPrice()), rankmap.getOrDefault(ranknum, 0));
 			ranknum--;
 		}
 	}
