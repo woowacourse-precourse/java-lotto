@@ -1,23 +1,26 @@
 # 미션 - 로또
-- [ ] 로또 번호의 숫자 범위는 1 ~ 45
-- [ ] 1개의 로또는 중복되지 않는 6개의 난수
-- [ ] 로또 추첨 시 중복되지 않는 6개의 난수와 1개의 보너스 난수
-- [ ] 로또 당첨 기준 정의
+- [X] 로또 번호의 숫자 범위는 1 ~ 45
+- [X] 1개의 로또는 6개의 수
+  - [X] 중복되지 않을 것
+- [X] 로또 추첨 시 중복되지 않는 6개의 난수와 1개의 보너스 난수 입력
+- [X] 로또 당첨 기준 정의
   - 1등: 6개 번호 일치 / 2,000,000,000원
   - 2등: 5개 번호 일치 + 보너스 번호 일치 / 30,000,000원 
   - 3등: 5개 번호 일치 / 1,500,000원 
   - 4등: 4개 번호 일치 / 50,000원 
   - 5등: 3개 번호 일치 / 5,000원
-- [ ] 로또 구입 금액 입력 시 구입 금액에 해당하는 로또 발행 - Generator#generate
+- [X] 로또 구입 금액 입력 시 구입 금액에 해당하는 로또 발행 - Generator#generate
   - [ ] 로또 1장 가격:  1000원
-  - [ ] 발행한 로또 수량 및 번호 출력 - Generator#printGeneratedLotto
+  - [ ] 구입 금액 1000으로 나누어 떨어지지 않으면 ```IllegalArgumentException```, ```"[Error]"``` 로 시작하는 에러메시지 출력후 종료
+  - [X] 발행한 로또 수량 및 번호 출력 - Generator#printGeneratedLotto
     - [ ] 오름차순 정렬
+- [X] 추첨 시 당첨 번호 입력 - Drawer#drawLotto
   - [ ] 잘못된 값 입력 시 ```IllegalArgumentException```, ```"[Error]"``` 로 시작하는 에러메시지 출력후 종료
-- [ ] 추첨 시 당첨 번호와 보너스 번호 입력 - Drawer#draw
+- [X] 추첨 시 보너스 번호 입력 - Drawer#drawBonusNumber
   - [ ] 잘못된 값 입력 시 ```IllegalArgumentException```, ```"[Error]"``` 로 시작하는 에러메시지 출력후 종료
-- [ ] 사용자가 구매한 로또 번호와 당첨 번호 비교 - Drawer#compare
-  - [ ] 당첨 내역 계산 Drawer#Calculater#calculateWin
+- [X] 사용자가 구매한 로또 번호와 당첨 번호 비교 - Drawer#compare
+  - [X] 당첨 내역 계산 Drawer#Calculater#calculateWin
     - [ ] 출력
-  - [ ] 수익률 계산 Drawer#Calculater#calcualteYield
-    - [ ] 소수점 둘째 자리에서 반올림
+  - [X] 수익률 계산 Drawer#Calculater#calcualteYield
+    - [X] 소수점 둘째 자리에서 반올림
     - [ ] 출력
