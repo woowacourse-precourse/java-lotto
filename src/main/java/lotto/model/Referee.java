@@ -4,9 +4,9 @@ import java.util.*;
 
 public class Referee {
 
-    private static Map<LottoRank,Integer> lottoResultCount;
+    private static Map<LottoRank, Integer> lottoResultCount;
 
-    public Referee(){
+    public Referee() {
         this.lottoResultCount = new HashMap<>();
     }
 
@@ -14,7 +14,7 @@ public class Referee {
         return lottoResultCount;
     }
 
-    public void createLottoResult(int correctCountLottoAndWinner, boolean foundBonus){
+    public void createLottoResult(int correctCountLottoAndWinner, boolean foundBonus) {
         Map<LottoRank, Integer> lottoResultCount = new HashMap<>();
         LottoRank rank = findLottoRank(correctCountLottoAndWinner, foundBonus);
         addLottoCount(rank);

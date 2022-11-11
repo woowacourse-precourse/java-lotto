@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -153,5 +155,7 @@ class LottoTest {
             assertThat(lottoResultCount).containsEntry(LottoRank.FIVE_PLUS_BONUS_CORRECT, 2);
         }
     }
+
+
 
 }

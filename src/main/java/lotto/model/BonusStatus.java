@@ -2,18 +2,18 @@ package lotto.model;
 
 public enum BonusStatus {
 
-    REQUIRED{
-        boolean isBonus(boolean status){
+    REQUIRED {
+        boolean isBonus(boolean status) {
             return status;
         }
     },
-    NOT_REQUIRED{
-        boolean isBonus(boolean status){
+    NOT_REQUIRED {
+        boolean isBonus(boolean status) {
             return !status;
         }
     },
-    NO_MATTER{
-        boolean isBonus(boolean status){
+    NO_MATTER {
+        boolean isBonus(boolean status) {
             return true;
         }
     };

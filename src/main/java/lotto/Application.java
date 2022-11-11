@@ -6,6 +6,9 @@ import lotto.model.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Map;
 
@@ -17,9 +20,11 @@ public class Application {
         OutputView outputView = new OutputView();
         Winner winner = new Winner("45,2,3,4,5,6");
         List<Integer> lottoWinningNumber = winner.getLottoWinningNumber();
-//        for (Integer integer : lottoWinningNumber) {
-//            System.out.println("integer = " + integer);
-//        }
-//        winner.checkLottoWinningNumber("46,2,3,4,5,6");
+        ProfitCalculator profitCalculator = new ProfitCalculator();
+        BigDecimal bigDecimal = new BigDecimal(10);
+        bigDecimal = bigDecimal.add(BigDecimal.valueOf(10));
+        bigDecimal = bigDecimal.add(BigDecimal.valueOf(10));
+        System.out.println(bigDecimal);
+//        profitCalculator.
     }
 }
