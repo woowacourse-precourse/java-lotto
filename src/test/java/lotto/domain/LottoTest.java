@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static lotto.domain.LottoResult.LOSING;
+import static lotto.domain.LottoResult.THREE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -44,5 +46,20 @@ class LottoTest {
     void createLottoAndGet() {
         Lotto testResult = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         assertThat(testResult.get()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+    }
+
+    @DisplayName("로또 결과 디폴트 값 받아오기")
+    @Test
+    void createLottoResultGet() {
+        Lotto testResult = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        assertThat(testResult.getLottoResult()).isEqualTo(LOSING);
+    }
+
+    @DisplayName("로또 결과 설정 및 받아오기")
+    @Test
+    void createLottoResultSetAndGet() {
+        Lotto testResult = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        testResult.setLottoResult(THREE);
+        assertThat(testResult.getLottoResult()).isEqualTo(THREE);
     }
 }
