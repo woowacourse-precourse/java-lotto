@@ -61,13 +61,13 @@ class LottoPurchasedAmountValidatorTest {
     }
 
     private void assertIllegalArgumentException(String userInput, String containedMessage) {
-        Assertions.assertThatThrownBy(() -> getLottoPurchasedAmount(userInput))
+        Assertions.assertThatThrownBy(() -> generateLottoPurchasedAmount(userInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_PREFIX)
                 .hasMessageContaining(containedMessage);
     }
 
-    private void getLottoPurchasedAmount(String userInput) {
+    private void generateLottoPurchasedAmount(String userInput) {
         new LottoPurchasedAmount(userInput, validator);
     }
 }
