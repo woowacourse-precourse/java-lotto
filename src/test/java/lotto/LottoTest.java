@@ -6,8 +6,16 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class LottoTest {
+
+    @Test
+    @DisplayName("주어진 수만큼 로또를 생성하는지 테스트")
+    void generateLotteriesTest() {
+        assertThat(Lotto.generateLotteries(6).size()).isEqualTo(6);
+    }
+
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
