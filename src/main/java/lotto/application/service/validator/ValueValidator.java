@@ -5,12 +5,33 @@ import java.util.Stack;
 
 public class ValueValidator {
 
+    public static void validatePurchaseMoneyInteger(String lottoPurchaseMoney) {
+        try {
+            Integer.parseInt(lottoPurchaseMoney);
+        } catch (NumberFormatException exception) {
+            System.out.println("[ERROR] 구매 금액은 정수로만 입력이 가능하며, 범위는 최대 2,147,483,647 까지 입니다.");
+            throw new IllegalArgumentException("[ERROR] 구매 금액은 정수로만 입력이 가능하며, 범위는 최대 2,147,483,647 까지 입니다.");
+        }
+    }
+
+    public static void validatePurchaseMoneyDividable(String lottoPurchaseMoney) {
+        if (Integer.parseInt(lottoPurchaseMoney) % 1000 != 0 || Integer.parseInt(lottoPurchaseMoney) == 0) {
+            System.out.println("[ERROR] 구매 금액은 1000으로 나누어 떨어지는 단위만 가능합니다.");
+            throw new IllegalArgumentException("[ERROR] 구매 금액은 1000으로 나누어 떨어지는 단위만 가능합니다.");
+        }
+    }
+
+    public static void validateLottoPurchaseMoney(String lottoPurchaseMoney) {
+        validatePurchaseMoneyInteger(lottoPurchaseMoney);
+        validatePurchaseMoneyDividable(lottoPurchaseMoney);
+    }
+
     public static void validateIntegerValue(String inputValue) {
         try {
             Integer.parseInt(inputValue);
-        } catch (NumberFormatException e) {
-            System.out.println("[ERROR] 로또 번호는 정수형이여야 합니다.");
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 정수형이여야 합니다.");
+        } catch (NumberFormatException exception) {
+            System.out.println("[ERROR] 보너스 로또 번호는 정수형이여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 보너스 로또 번호는 정수형이여야 합니다.");
         }
     }
 
@@ -19,22 +40,9 @@ public class ValueValidator {
             for (String value : inputValue) {
                 Integer.parseInt(value);
             }
-        } catch (NumberFormatException e) {
-            System.out.println("[ERROR] 로또 번호는 정수형이여야 합니다.");
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 정수형이여야 합니다.");
-        }
-    }
-
-    public static void validateLottoPurchaseMoney(String lottoPurchaseMoney) {
-        try {
-            Integer.parseInt(lottoPurchaseMoney);
-        } catch (NumberFormatException e) {
-            System.out.println("[ERROR] 구매 금액은 정수로만 입력이 가능하며, 범위는 최대 2,147,483,647 까지 입니다.");
-            throw new IllegalArgumentException("[ERROR] 구매 금액은 정수로만 입력이 가능하며, 범위는 최대 2,147,483,647 까지 입니다.");
-        }
-        if (Integer.parseInt(lottoPurchaseMoney) % 1000 != 0 || Integer.parseInt(lottoPurchaseMoney) == 0) {
-            System.out.println("[ERROR] 구매 금액은 1000으로 나누어 떨어지는 단위만 가능합니다.");
-            throw new IllegalArgumentException("[ERROR] 구매 금액은 1000으로 나누어 떨어지는 단위만 가능합니다.");
+        } catch (NumberFormatException exception) {
+            System.out.println("[ERROR] 로또 번호는 \"1,2,3,...\" 으로 입력받는 정수형이여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 \"1,2,3,...\" 으로 입력받는 정수형이여야 합니다.");
         }
     }
 
