@@ -15,6 +15,8 @@ public class LottoMachine {
         inputCash();
         inputWinningNumbers();
         inputBonusNumber();
+        drawLottos();
+        printProfitRate();
     }
 
     public void inputCash() {
@@ -33,5 +35,13 @@ public class LottoMachine {
     public String inputRawData(){
         String rawData = Console.readLine();
         return rawData;
+    }
+
+    public void drawLottos(){
+
+    }
+
+    public void printProfitRate(){
+
     }
 }
