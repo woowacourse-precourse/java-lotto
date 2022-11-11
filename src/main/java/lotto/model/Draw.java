@@ -34,6 +34,12 @@ public class Draw {
     }
 
     private boolean isBonusExist(int bonusNum) {
+        Lotto winningLotto = this.winningLotto;
+        List<Integer> winningLottoNumbers = winningLotto.getNumbers();
+
+        if (winningLottoNumbers.contains(bonusNum)) {
+            return true;
+        }
         return false;
     }
 
