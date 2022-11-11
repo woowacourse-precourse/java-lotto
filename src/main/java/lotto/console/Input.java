@@ -11,7 +11,11 @@ public class Input {
     }
 
     public int readInt() {
-        return Integer.parseInt(readLine());
+        try {
+            return Integer.parseInt(readLine());
+        } catch (NumberFormatException exception) {
+            throw new IllegalArgumentException("숫자를 입력해 주세요.");
+        }
     }
 
     public List<Integer> readIntList() {
