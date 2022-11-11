@@ -1,17 +1,20 @@
-package lotto.domain;
+package lotto.Model;
+
+import lotto.Lotto;
 
 import java.util.List;
 
 public class Judgment {
-    public int compare(List<Integer> winningNumber, List<Integer> playerNumber) {
-        int matchNumber = 0;
-        for (int number : playerNumber) {
+    public int compare(Lotto winningLotto, Lotto myLotto) {
+        int match = 0;
+        List<Integer> winningNumber = winningLotto.getNumbers();
+        for (int number : myLotto.getNumbers()) {
             if (winningNumber.contains(number)) {
-                matchNumber++;
+                match++;
             }
         }
 
-        return matchNumber;
+        return match;
     }
 
     public boolean hasBonusNumber(List<Integer> winningNumber, int bonusNumber) {
