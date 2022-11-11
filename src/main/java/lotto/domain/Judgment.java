@@ -47,6 +47,17 @@ public class Judgment {
         return count;
     }
 
+    private int calculateFourth(List<Integer>numbers) {
+        int count = 0;
+        for (List<Integer> lottoNumbers : collectionOfLottoNumbers) {
+            if (correctCount(lottoNumbers, numbers) == 4) {
+                collectionOfLottoNumbers.remove(lottoNumbers);
+                count++;
+            }
+        }
+        return count;
+    }
+
     public int correctCount(List<Integer> actualNumbers, List<Integer> expectedNumbers) {
         int count = 0;
         int[] checkCorrect = new int[46];
