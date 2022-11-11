@@ -16,7 +16,7 @@ public class MoneyTest {
         String userInput = "";
         //when
         //then
-        assertThatThrownBy(() -> Money.valueOf(userInput))
+        assertThatThrownBy(() -> Money.of(userInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(MoneyConstants.EMPTY_MONEY_MSG);
     }
@@ -28,7 +28,7 @@ public class MoneyTest {
         //given
         //when
         //then
-        assertThatThrownBy(() -> Money.valueOf(userInput))
+        assertThatThrownBy(() -> Money.of(userInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(MoneyConstants.CHARACTER_IN_MONEY_MSG);
     }
@@ -40,7 +40,7 @@ public class MoneyTest {
         //given
         //when
         //then
-        assertThatThrownBy(() -> Money.valueOf(userInput))
+        assertThatThrownBy(() -> Money.of(userInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(MoneyConstants.REMAINDER_IN_MONEY_MSG);
     }

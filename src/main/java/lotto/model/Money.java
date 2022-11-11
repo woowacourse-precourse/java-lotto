@@ -5,7 +5,7 @@ import static lotto.constant.MoneyConstants.*;
 public class Money {
     private int money;
 
-    public static Money valueOf(String userInput){
+    public static Money of(String userInput){
         return new Money(userInput);
     }
 
