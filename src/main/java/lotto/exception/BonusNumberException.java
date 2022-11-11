@@ -3,7 +3,7 @@ package lotto.exception;
 import java.util.regex.Pattern;
 
 public class BonusNumberException {
-    private static final Pattern IsOnlyNumber = Pattern.compile("^[1-9]*?");
+    private static final Pattern IsOnlyNumber = Pattern.compile("^[0-9]*?");
 
     public void maxAndMinNumber(int bonusNumber) {
         try {
