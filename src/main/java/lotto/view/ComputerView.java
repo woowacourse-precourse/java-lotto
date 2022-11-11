@@ -15,19 +15,11 @@ public class ComputerView {
         return "";
     }
 
-    private void inquireNumbers(){
-        System.out.println(REQUEST_WINNING_NUMBERS);
+    private void printRequest(String statement){
+        System.out.println(statement);
     }
 
     private String scanInput(){
         return Console.readLine();
-    }
-
-    private void inquireBonusNumber(){
-
-    }
-
-    private String scanBonusNumber(){
-        return "";
     }
 }

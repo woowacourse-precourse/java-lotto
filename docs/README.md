@@ -95,11 +95,13 @@ Lotto, BonusNumber를 참조한다.
 
 ### ComputerView
 1. getNumbers
-   1. inquireNumbers : '당첨 번호를 입력해 주세요.'를 출력한다. 
+   1. printRequest : 입력 변수로 '당첨 번호를 입력해 주세요.'를 넣어 출력시킨다.
    2. scanInput : 입력 문자열을 반환한다. 
+   3. giveSpaceOnView : 공백 문자열을 하나 넣어준다. 
 2. getBonusNumber
-   1. inquireBonusNumber : '보너스 번호를 입력해 주세요.'를 출력한다. 
+   1. inquireBonusNumber : 입력 변수로 '보너스 번호를 입력해 주세요.'를 넣어 출력시킨다. 
    2. scanInput : 입력 문자열을 반환한다.
+   3. giveSpaceOnView : 공백 문자열을 하나 넣어준다.
 
 ### RankingView
 1. startWinningStatistics : '당첨 통계\n---'를 출력한다. 
