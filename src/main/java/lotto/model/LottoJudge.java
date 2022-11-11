@@ -34,7 +34,7 @@ public class LottoJudge {
             totalProfit += Collections.frequency(rankCount, lottoRank) * profit.get(lottoRank);
         }
 
-        profitPercent = String.format("%.1f", (money / totalProfit) * 100);
+        profitPercent = String.format("%.1f", (totalProfit / money) * 100.0);
         return profitPercent;
     }
 
