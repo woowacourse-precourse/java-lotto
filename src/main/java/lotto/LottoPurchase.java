@@ -3,15 +3,13 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 public class LottoPurchase {
-    int purchaseAmount = Integer.parseInt(Console.readLine());
-
-    public void getPayAmount(){
-
+    public int getPayAmount() {
+        return Integer.parseInt(Console.readLine());
     }
-    public int countTicket(){
+
+    public int countTicket() {
         return 0;
     }
-    public void pickNumbers(){
 
-    }
+
 }
