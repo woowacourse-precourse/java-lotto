@@ -21,39 +21,45 @@ public class BonusNumber {
     }
 
     private void validate(String bonusNumber) {
-        if (!isTypeValid(bonusNumber) || !isRangeValid(bonusNumber) || !isConflictWithWinningsValid(bonusNumber)) {
-            throw new IllegalArgumentException();
-        }
+        checkTypeValid(bonusNumber);
+        checkRangeValid(bonusNumber);
+        checkConflictWithWinningsValid(bonusNumber);
+//        if (!isTypeValid(bonusNumber) || !isRangeValid(bonusNumber) || !isConflictWithWinningsValid(bonusNumber)) {
+////            throw new IllegalArgumentException();
+//        }
     }
 
     public int getNumber() {
         return bonusNumber;
     }
 
-    public static boolean isTypeValid(String bonusNumber) {
+    public static void checkTypeValid(String bonusNumber) {
         boolean isType = bonusNumber.chars().allMatch(Character::isDigit);
         if (!isType) {
-            Output.printError(BONUS_NUMBER_TYPE_ERROR);
+            throw new IllegalArgumentException(BONUS_NUMBER_TYPE_ERROR);
+//            Output.printError(BONUS_NUMBER_TYPE_ERROR);
         }
-        return isType;
+//        return isType;
     }
 
-    public static boolean isRangeValid(String bonusNumber) {
+    public static void checkRangeValid(String bonusNumber) {
         int number = Integer.parseInt(bonusNumber);
         boolean isRange = (number >= MINIMUM_LOTTERY_NUMBER && number <= MAXIMUM_LOTTERY_NUMBER);
         if (!isRange) {
-            Output.printError(BONUS_NUMBER_RANGE_ERROR);
+            throw new IllegalArgumentException(BONUS_NUMBER_RANGE_ERROR);
+//            Output.printError(BONUS_NUMBER_RANGE_ERROR);
         }
-        return isRange;
+//        return isRange;
     }
 
-    public boolean isConflictWithWinningsValid(String bonusNumber) {
+    public void checkConflictWithWinningsValid(String bonusNumber) {
         List<Integer> winningNumbers = winningLotto.getNumbers();
         boolean isConflictWithWinnings = winningNumbers.stream()
                 .noneMatch(number -> Integer.parseInt(bonusNumber) == number);
         if (!isConflictWithWinnings) {
-            Output.printError(BONUS_NUMBER_CONFLICT_ERROR);
+            throw new IllegalArgumentException(BONUS_NUMBER_CONFLICT_ERROR);
+//            Output.printError(BONUS_NUMBER_CONFLICT_ERROR);
         }
-        return isConflictWithWinnings;
+//        return isConflictWithWinnings;
     }
 }
