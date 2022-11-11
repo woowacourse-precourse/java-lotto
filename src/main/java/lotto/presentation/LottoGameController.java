@@ -21,6 +21,7 @@ public class LottoGameController {
         WinNumber winNumber = LottoService.getWinNumber(generalWinNumber,bonusNumber);
 
         List<Match> matches = LottoService.match(lottos,winNumber);
+        LottoGamePrinter.printMatchResult(matches);
     }
 
 }
