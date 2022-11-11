@@ -26,6 +26,16 @@ Controller : 입력 및 요청 수행<br>
 Model(Service) : Lotto, Shop, Draw, EarningRate
 Enum : Rank
 
+### View
+- printLottoPayed() // (feat.8)
+- printWinningStats() // (feat.9)
+- printEarningRate() // (feat.10)
+
+### Controller
+- getPrice() // (feat.1)
+- getWinningLotto() // (feat.3)
+- getBonusNum() // (feat.4)
+
 ### Lotto : 하나하나의 로또 
 [Field]<br>
 - List<Integer> numbers // 로또 숫자들
