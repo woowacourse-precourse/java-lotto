@@ -23,9 +23,14 @@
     - 보너스 번호를 입력 받는다.
       - bonusNumberInput()
 - 당첨번호를 검증한다.
-  - validWinningNumbersInput() 
+  - validWinningNumbersInput()
+    - validWinningNumbersSize()
+    - validDuplicateWinningNumbers()
+    - validWinningNumbersRange()
 - 보너스 번호를 검증한다.
-  - validBonusNumberInput()
+  - validBonusNumberInputContainWinningNumbers()
+  - validBonusNumberRange()
+  
 - 당첨번호와 사용자가 구매한 로또 번호를 비교한다.
     - compareUserLottoNumbersAndWinningNumbers()
 - 당첨내역과 수익률을 출력한다.
