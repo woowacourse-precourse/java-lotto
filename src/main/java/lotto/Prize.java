@@ -1,53 +1,32 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Prize {
-    private Ranks myRank;
-    private final int reward;
-    private final List<Integer> statistics;
+    private Ranks ranks;
+    private final int indexOfRank;
+    private final int money;
 
     Prize(int winningNumberCount, int bonusNumberCount) {
-        myRank = getRankByMatchingNumberCount(winningNumberCount, bonusNumberCount);
-        int index = myRank.ordinal();
-        List<Integer> initialStatistics = createStatistics();
-        initialStatistics.set(index, 1);
-        statistics = initialStatistics;
-        reward = myRank.getPrizeMoney();
+        ranks = ranks.getRankByMatchingNumberCount(winningNumberCount, bonusNumberCount);
+        indexOfRank = ranks.ordinal();
+        money = ranks.getPrizeMoney();
     }
 
-    public int getReward() {
-        return reward;
+    public int getMoney() {
+        return money;
     }
 
-    public List<Integer> getStatistics() {
-        return statistics;
-    }
-
-    private List<Integer> createStatistics() {
-        List<Integer> statistics = new ArrayList<>();
-        for (int index = 0; index < Ranks.values().length; index++) {
-            statistics.add(0);
-        }
-        return statistics;
-    }
-
-    public Ranks getRankByMatchingNumberCount(int winningNumberCount, int bonusNumberCount) {
-        return Arrays.stream(myRank.values())
-                .filter(rank -> rank.matchingWinningNumberCount == winningNumberCount
-                        && rank.matchingBonusNumberCount == bonusNumberCount)
-                .findFirst()
-                .orElse(Ranks.NONE);
+    public int getIndexOfRank() {
+        return indexOfRank;
     }
 
     public enum Ranks {
-        THREE(3, 0, 5_000),
-        FOUR(4, 0, 50_000),
-        FIVE(5, 0, 1_500_000),
-        BONUS(5, 1, 30_000_000),
-        SIX(6, 0, 2_000_000_000),
+        THREE_NUMBERS(3, 0, 5_000),
+        FOUR_NUMBERS(4, 0, 50_000),
+        FIVE_NUMBERS(5, 0, 1_500_000),
+        BONUS_NUMBERS(5, 1, 30_000_000),
+        SIX_NUMBERS(6, 0, 2_000_000_000),
         NONE(0, 0, 0);
 
         private final int matchingWinningNumberCount;
@@ -64,10 +43,10 @@ public class Prize {
             return prizeMoney;
         }
 
-        public Ranks getRankByMatchingNumberCount(int winningNumberCount, int bonusNumberCount) {
+        public Ranks getRankByMatchingNumberCount(int myMatchingWinningNumberCount, int myMatchingBonusNumberCount) {
             return Arrays.stream(values())
-                    .filter(rank -> rank.matchingWinningNumberCount == winningNumberCount
-                            && rank.matchingBonusNumberCount == bonusNumberCount)
+                    .filter(rank -> rank.matchingWinningNumberCount == myMatchingWinningNumberCount
+                            && rank.matchingBonusNumberCount == myMatchingBonusNumberCount)
                     .findFirst()
                     .orElse(Ranks.NONE);
         }
