@@ -3,7 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 public class UserNumberScan {
-  public String requestValue() {
+  public static String requestValue() {
     return Console.readLine();
   }
 }

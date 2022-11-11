@@ -1,7 +1,7 @@
 package lotto;
 
 public class Message {
-  public static void requestInputMessage() {
+  public static void requestInputMoneyMessage() {
     System.out.println("구입금액을 입력해 주세요.");
   }
 
@@ -13,7 +13,7 @@ public class Message {
     System.out.println("당첨 번호를 입력해 주세요.");
   }
 
-  public static void requesBonusNumberMessage() {
+  public static void requestBonusNumberMessage() {
     System.out.println("보너스 번호를 입력해 주세요.");
   }
 }
