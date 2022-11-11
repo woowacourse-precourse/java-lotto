@@ -12,6 +12,10 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class InputUtil {
 
     private final String NOT_NUMBER_REGEX = "\\D";
+    private final String NOT_NUMBER_AND_COMMA_REGEX = "";
+    private final String COMMA = ",";
+
+    Pattern pattern = Pattern.compile(NOT_NUMBER_REGEX);
 
     public String getUserInput() {
         String input = readLine();
@@ -27,11 +31,28 @@ public class InputUtil {
     }
 
     public void checkValidationBonusNumber(String input, List<Integer> lottoNumbers) {
-        Pattern pattern = Pattern.compile(NOT_NUMBER_REGEX);
         Matcher matcher = pattern.matcher(input);
-
         if (matcher.find()) {
             throw makeIllegalArgumentException(Message.BONUS_NUMBER_INPUT_ERROR.getMessage());
+        }
+    }
+
+    public void checkValidationWinningNumber(String input) {
+        try {
+            isOnlyCommaAndNumber(input);
+
+        } catch (IllegalArgumentException illegalArgumentException) {
+            throw makeIllegalArgumentException(Message.WINNING_NUMBER_INPUT_ERROR.getMessage());
+        }
+    }
+
+    public void isOnlyCommaAndNumber(String input) throws IllegalArgumentException {
+        String[] numbers = input.split(COMMA);
+        for (String number : numbers) {
+            Matcher matcher = pattern.matcher(number);
+            if (matcher.find()) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 

@@ -33,7 +33,7 @@
 - 예외
   - [x] 입력받은 금액이 유효한 입력인지 판단하는 기능 - checkValidationMoney()
   - [ ] 입력받은 당첨번호가 유효한 입력인지 판단하는 기능
-    - [ ] 구분자가 콤마이면서 숫자만 입력했는가?
+    - [x] 구분자가 콤마이면서 숫자만 입력했는가?
     - [ ] 중복되는 숫자가 있는가?
   - [x] 입력받은 보너스번호가 유효한 입력인지 판단하는 기능 - checkValidationBonusNumber()
   - [x] 메시지를 입력받아 해당 메시지로 IllegalArgumentException 반환하는 기능 - makeIllegalArgumentException()
