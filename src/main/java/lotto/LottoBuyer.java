@@ -13,10 +13,12 @@ public class LottoBuyer {
 
     private Lotto lotto;
     private BigInteger money;
+    private Integer bonusNumber;
 
     public LottoBuyer(){
         lotto = null;
         money = null;
+        bonusNumber = null;
     }
     public void setMoney() throws IllegalArgumentException{
         System.out.println("구입금액을 입력해주세요.");
@@ -46,4 +48,17 @@ public class LottoBuyer {
             throw iae;
         }
     }
+
+    public void setBonusNumber() throws IllegalArgumentException{
+        final String input = Console.readLine();
+
+        try{
+            CheckInputException.checkBuyerInputIsNotNumberRange(input);
+            CheckInputException.checkBuyerInputIsNotNumber(input);
+            bonusNumber = Integer.valueOf(input);
+        }catch(IllegalArgumentException iae){
+            throw iae;
+        }
+    }
+
 }
