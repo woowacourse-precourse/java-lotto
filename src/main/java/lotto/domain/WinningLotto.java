@@ -31,8 +31,8 @@ public class WinningLotto {
     }
 
     private void validateNumberInRange(Integer key) {
-        if (key>LottoRule.MAXIMUM_NUMBER.getValue() ||
-                key<LottoRule.MINIMUM_NUMBER.getValue()) {
+        if (key > LottoRule.MAXIMUM_NUMBER.getValue() ||
+                key < LottoRule.MINIMUM_NUMBER.getValue()) {
             throw new LottoNumberOutOfBoundException();
         }
     }

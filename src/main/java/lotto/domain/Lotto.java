@@ -32,12 +32,12 @@ public class Lotto {
 
     private void validateNotDuplicate(List<Integer> numbers) {
         for (int index = 0; index < numbers.size() - 1; index++) {
-            isDuplicate(numbers.get(index), numbers.get(index+1));
+            isDuplicate(numbers.get(index), numbers.get(index + 1));
         }
     }
 
     private void isDuplicate(int numberToCompare, int numberWithNext) {
-        if (numberToCompare==numberWithNext) {
+        if (numberToCompare == numberWithNext) {
             throw new DuplicateLottoNumberException();
         }
     }

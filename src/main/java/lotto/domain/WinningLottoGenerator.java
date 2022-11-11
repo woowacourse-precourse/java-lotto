@@ -23,7 +23,7 @@ public class WinningLottoGenerator {
     }
 
     private static void validate(int size) {
-        if(size!=LottoRule.AMOUNT_OF_NUMBER.getValue()) {
+        if(size != LottoRule.AMOUNT_OF_NUMBER.getValue()) {
             throw new IllegalLottoNumberAmountException();
         }
     }
