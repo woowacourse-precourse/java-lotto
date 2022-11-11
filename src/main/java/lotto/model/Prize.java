@@ -5,5 +5,6 @@ public enum Prize {
     SECOND,
     THIRD,
     FOURTH,
-    FIFTH
+    FIFTH,
+    NONE
 }

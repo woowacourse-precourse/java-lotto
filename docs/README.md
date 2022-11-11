@@ -13,7 +13,7 @@
   - [x] WinningLotto
   - [x] BonusNumber
   - [x] Prize (Enum 으로 구현)
-  - [ ] LottoResult
+  - [x] LottoResult
 
 
 - Controller
