@@ -11,7 +11,6 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    // exception이 거의 안 걸릴꺼 같음 -> test로 빼도되지 않을까 고민
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 생성 된 로또가 6개의 숫자가 아닙니다.");
