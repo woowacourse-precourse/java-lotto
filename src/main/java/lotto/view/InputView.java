@@ -1,29 +1,33 @@
-package lotto;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class InputView {
     public static int lottoMoney = 0;
     public final int PRICE_PER_LOTTO = 1000;
+
+    public List<Integer> result = new ArrayList<>();
+    public List<List<Integer>> allLottoNumber = new ArrayList<>();
+    public int bonusNumber = 0;
+
+
     Validator validator = new Validator();
 
-    // 로또 구매 금액을 천원 단위로 입력해 게임 횟수를 출력하게 하는 함수
     public int inputLottoPurchaseMoney() {
         lottoMoney = Integer.parseInt(Console.readLine());
         validator.validateMoneyInput(lottoMoney);
         return lottoMoney;
     }
 
-    // 금액에 따른 로또 총 로또 게임 횟수를 반환한
     public int getLottoChance(int money) {
         return lottoMoney / PRICE_PER_LOTTO;
     }
 
-    // 한 게임의 로또 번호를 List 형태로 만들어줌
     public List<Integer> createLottoOneGameNumber() {
         List<Integer> oneGameNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         oneGameNumbers.sort(Integer::compareTo);
@@ -38,6 +42,23 @@ public class User {
         return allLottoNumber;
     }
 
+    public void compareWinningNumber(List<Integer> lottoNumbers, List<Integer> winningNumbers) {
+        lottoNumbers.retainAll(winningNumbers);
+        lottoNumbers.size();// 몇개 같은 지 출력
+        if (lottoNumbers.size() == 3) {
+            // 5등
+        }
+        if (lottoNumbers.size() == 4) {
+            // 4등
+        }
+        if (lottoNumbers.size() == 5) {
+            // 3등
+        }
+        if (lottoNumbers.size() == 5 && ) {
+            // 2등
+        }
+    }
+
     // 당첨 번호를 입력하는 메소드
     public List<Integer> createWinningNumber() {
         String inputNumbers = Console.readLine();
@@ -48,4 +69,7 @@ public class User {
         return winningNumbers;
     }
 
+    public int inputBonusNumber() {
+        return Integer.parseInt(Console.readLine());
+    }
 }
