@@ -1,8 +1,8 @@
 package lotto.domain;
 
 public class LotteryMachine {//로또 추첨기계
-    private Lotto winningLotto;
-    private int bonusNumber;
+    private final Lotto winningLotto;
+    private final int bonusNumber;
     public LotteryMachine(Lotto winningLotto, int bonusNumber) {
         validate(winningLotto,bonusNumber);
         this.winningLotto=winningLotto;
