@@ -6,7 +6,7 @@
 - [x] 로또 구입 금액 입력 Purchase
   - [x] 1000원 단위로 구매금액 유효성 검사 Purchase#validatePurchase()
 - [x] 당첨 번호 입력 Lotto
-  - [ ] 당첨 번호 입력 유효성 검사 (중복되지 않는 숫자 6개) Lotto#validate()
+  - [x] 당첨 번호 입력 유효성 검사 (중복되지 않는 숫자 6개) Lotto#validate()
 - [ ] 보너스 번호 입력 Lotto#getLottoBonusNumber
   - [ ] 보너스 번호 입력 유효성 검사 Lotto#validateBonusNumber
 

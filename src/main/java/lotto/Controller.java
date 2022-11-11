@@ -17,6 +17,7 @@ public class Controller {
             }
         }
 
+        Lotto lotto = new Lotto(lottoAnswer);
     }
 
     public void publishLotto(){
