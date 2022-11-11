@@ -1,6 +1,8 @@
 package lotto.presentation.view;
 
 import constants.LottoGameMessage;
+import java.util.List;
+import lotto.domain.Lotto;
 
 public class LottoGamePrinter {
 
@@ -14,6 +16,10 @@ public class LottoGamePrinter {
 
     public static void printEnterBonusNumber() {
         System.out.println(LottoGameMessage.READ_BONUS_NUMBER);
+    }
+
+    public static void printLottos(List<Lotto> lottos) {
+        lottos.forEach(lotto -> System.out.println(lotto));
     }
 
 }
