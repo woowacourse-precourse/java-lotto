@@ -13,4 +13,8 @@ public class LottoWrapper {
     public long size() {
         return lottoWrapper.size();
     }
+
+    public void printAllLotto() {
+        lottoWrapper.forEach(Lotto::printLottoInfo);
+    }
 }

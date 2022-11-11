@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserLotto {
-    private LottoWrapper lottoSet = new LottoWrapper();
+    private final LottoWrapper lottoSet = new LottoWrapper();
 
     public void buyLotto() {
         long count = readMoney() / Constant.MONEY_UNIT;
@@ -15,6 +15,10 @@ public class UserLotto {
             lottoSet.add(makeLotto());
         }
         System.out.println(lottoSet);
+    }
+
+    public void printMyLotto() {
+        lottoSet.printAllLotto();
     }
 
     private long readMoney() {
