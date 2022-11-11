@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.model.Customer;
 import lotto.model.LottoNumberGenerator;
 import lotto.model.LottoSeller;
 import lotto.model.PurchasePrice;
@@ -20,5 +21,10 @@ public class Application {
         PurchasePrice purchasePrice = new PurchasePrice(InputView.purchasePrice());
         LottoSeller lottoSeller = new LottoSeller(new LottoNumberGenerator());
         OutputView.printQuantity(lottoSeller.calculateQuantity(purchasePrice));
+
+        Customer customer = new Customer(purchasePrice);
+
+        lottoSeller.sellLotteriesTo(customer);
+        OutputView.printLottos(customer.getLottos());
     }
 }
