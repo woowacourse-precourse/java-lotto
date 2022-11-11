@@ -26,20 +26,28 @@ public class LottoWinTest {
         assertThatThrownBy(() -> new LottoWin(List.of(List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 46))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-    @DisplayName("1등 출력 확인")
+    @DisplayName("1등 확인")
     @Test
     void firstPrize() {
         LottoWin lottoPrizes = new LottoWin(List.of(List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 7);
         assertThat(lottoPrizes.getPrizesMap()).contains(entry("1st", 1));
 
     }
-    @DisplayName("1등 2명 출력 확인")
+    @DisplayName("1등 2명 확인")
     @Test
     void twoFirstPrize() {
         LottoWin lottoPrizes = new LottoWin(
                 List.of(List.of(1, 2, 3, 4, 5, 6), List.of(1, 2, 3, 4, 5, 6)),
                 List.of(1, 2, 3, 4, 5, 6), 7);
         assertThat(lottoPrizes.getPrizesMap()).contains(entry("1st", 2));
+    }
+    @DisplayName("2등 확인")
+    @Test
+    void secondPrize() {
+        LottoWin lottoPrizes = new LottoWin(
+                List.of(List.of(1, 2, 3, 4, 5, 7), List.of(1, 2, 3, 4, 5, 6)),
+                List.of(1, 2, 3, 4, 5, 6), 7);
+        assertThat(lottoPrizes.getPrizesMap()).contains(entry("2nd", 1));
     }
 
 }
