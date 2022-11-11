@@ -1,6 +1,6 @@
 package lotto.domain.lotto_numbers;
 
-import static lotto.domain.lotto_numbers.LottoNumbersErrorMessages.INVALID_RANGE_OF_LOTTO_NUMBER;
+import static lotto.domain.lotto_numbers.Lotto.INVALID_RANGE_OF_LOTTO_NUMBER;
 import static lotto.domain.policy.LottoPolicy.MAX_NUMBER_OF_LOTTO;
 import static lotto.domain.policy.LottoPolicy.MIN_NUMBER_OF_LOTTO;
 

@@ -1,8 +1,8 @@
 package lotto.domain.lotto_numbers;
 
-import static lotto.domain.lotto_numbers.LottoNumbersErrorMessages.INVALID_RANGE_OF_LOTTO_NUMBER;
-import static lotto.domain.lotto_numbers.LottoNumbersErrorMessages.INVALID_SIZE_OF_LOTTO_NUMBERS;
-import static lotto.domain.lotto_numbers.LottoNumbersErrorMessages.NOT_ALLOW_DUPLICATED_LOTTO_NUMBER;
+import static lotto.domain.lotto_numbers.Lotto.INVALID_RANGE_OF_LOTTO_NUMBER;
+import static lotto.domain.lotto_numbers.Lotto.INVALID_SIZE_OF_LOTTO_NUMBERS;
+import static lotto.domain.lotto_numbers.Lotto.NOT_ALLOW_DUPLICATED_LOTTO_NUMBER;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
