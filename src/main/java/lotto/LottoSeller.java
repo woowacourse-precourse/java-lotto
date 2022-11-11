@@ -7,7 +7,7 @@ public class LottoSeller {
         int numOfLotto = numberOfLotto(amount);
         LottoGenerator lottogenerator = new LottoGenerator();
 
-        return lottogenerator.generateLotto(numOfLotto);
+        return lottogenerator.generateLottoList(numOfLotto);
     }
 
     private int numberOfLotto(int amount) {
