@@ -24,13 +24,4 @@ public class Lotto {
     }
     //보너스 번호를 제외하고 validate 를 만든거보니까 보너스 번호는 enum 으로 만들던가 해야겠다.
     // TODO: 추가 기능 구현
-
-    //ui에서 예외 검사하고 넘어올거여서 굳이 예외사항을 검사해야할까?
-    private void initNumbers(List<Integer> winningNumbers) {
-        int length = winningNumbers.size();
-
-        for(int number : winningNumbers) {
-            numbers.add(number);
-        }
-    }
 }
