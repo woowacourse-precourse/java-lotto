@@ -8,6 +8,11 @@ public class MatchLotteryService {
     private Player player;
     private Computer computer;
 
+    public MatchLotteryService(){
+        player = new Player();
+        computer = new Computer();
+    }
+
     public void matchPlayerWithComputer(){
 
     }
@@ -25,6 +30,14 @@ public class MatchLotteryService {
     }
 
     private void separateByBonusNumber(){
+
+    }
+
+    public void makePlayerLottoByPayment(Long payment){
+
+    }
+
+    public void saveComputerNumber(String lottoNumber, String bonusNumber){
 
     }
 }

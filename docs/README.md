@@ -17,6 +17,7 @@ validate
 ### Lotto
 1. validate : LottoException에서 validate한다. 
 2. 생성자 : 정수형 리스트를 입력받아 validate후에 저장한다.
+3. getNumbers : 정수형 리스트를 반환한다. 
 
 ### BonusNumber
 1. 생성자 : 정수형 입력변수를 저장한다. 컴퓨터 엔티티에서 로또번호에 포함되어있을 경우 예외처리
@@ -68,6 +69,8 @@ Lotto, BonusNumber를 참조한다.
       1. isFiveMatch : 같은 숫자의 개수가 5개면 참을 반환한다. 
       2. separateByBonusNumber
          1. containsBonusNumber : 로또가 보너스 넘버를 가지면 참을 반환한다.
+2. makePlayerLottoByPayment : 플레이어.checkPayment한다. 
+3. saveComputerNumber : 로또번호와 보너스 번호를 입력받아 컴퓨터 객체에 저장한다. 
 
 ## 뷰
 ### PlayerView
