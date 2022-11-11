@@ -5,6 +5,7 @@ import lotto.exception.LottoException;
 import lotto.model.Lotto;
 import lotto.model.LottoCount;
 import lotto.model.LottoGenerator;
+import lotto.model.Winner;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -16,6 +17,7 @@ public class Application {
         InputView inputView = new InputView();
         LottoException exception = new LottoException();
         OutputView outputView = new OutputView();
-
+        Winner winner = new Winner();
+        winner.checkLottoWinningNumber("46,2,3,4,5,6");
     }
 }
