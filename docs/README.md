@@ -16,8 +16,8 @@
 - [ ] 추첨 시 당첨 번호와 보너스 번호 입력 - Drawer#draw
   - [ ] 잘못된 값 입력 시 ```IllegalArgumentException```, ```"[Error]"``` 로 시작하는 에러메시지 출력후 종료
 - [ ] 사용자가 구매한 로또 번호와 당첨 번호 비교 - Drawer#compare
-  - [ ] 당첨 내역 계산 Drawer#Calculater#Win
+  - [ ] 당첨 내역 계산 Drawer#Calculater#calculateWin
     - [ ] 출력
-  - [ ] 수익률 계산 Drawer#Calculater#Yield
+  - [ ] 수익률 계산 Drawer#Calculater#calcualteYield
     - [ ] 소수점 둘째 자리에서 반올림
     - [ ] 출력
