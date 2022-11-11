@@ -9,8 +9,8 @@ import lotto.util.WinnerInfo;
 
 public class Service {
 
-    public static int countLottoAmount(String purchaseAmount) {
-        return Integer.parseInt(purchaseAmount) / 1000;
+    public static int getLottoAmount(int money) {
+        return money / 1000;
     }
 
     public static double getProfitRates(String money, int[] lottoResult) {
