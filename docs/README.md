@@ -19,10 +19,10 @@
   - E [x] 입력한게 숫자인지, 숫자가 1~45사이에 있는지 확인한다. - validateNumberInRange()
   - ~~E [ ] 숫자가 총 6개인지 확인한다. - validateSize()~~
   - E [x] 중복 숫자가 없는지 확인한다. - validateDuplicateNumber()
-- M [ ] 보너스 번호를 입력받는다. - InputLotto#inputBonusNumber()
-  - E [ ] 입력한게 숫자인지, 숫자가 1~45사이에 있는지 확인한다. - validateNumberInRange()
-  - E [ ] 숫자가 1개인지 확인한다. - validateSize()
-  - E [ ] 당첨 번호와 중복 없는지 확인한다. - validateDuplicateWinNumber()
+- M [x] 보너스 번호를 입력받는다. - InputLotto#inputBonusNumber()
+  - E [x] 입력한게 숫자인지, 숫자가 1~45사이에 있는지 확인한다. - validateNumberInRange()
+  - ~~E [ ] 숫자가 1개인지 확인한다. - validateSize()~~
+  - E [x] 당첨 번호와 중복 없는지 확인한다. - validateDuplicateNumber()
 - M [ ] 로또 번호를 랜덤으로 생성해 리스트에 담는다 - LottoData#makeLottoNumber()
 - M [ ] 로또 구매 장수 만큼 로또 객체 생성해 리스트에 담는다 - LottoData#makeLottoList()
 - M [x] ~~로또 객체의 번호와 당첨 번호, 보너스 번호를 비교해~~일치 개수, 보너스번호 일치 여부로 당첨 등수 산정한다. - LottoCalculate#calculatePrize()

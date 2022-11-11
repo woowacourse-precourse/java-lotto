@@ -31,6 +31,18 @@ public class InputLotto {
         return winNumbers;
     }
 
+    int inputBonusNumber(List<Integer> winNumbers) {
+        String input = Console.readLine();
+        return convertToBonusNumber(input, winNumbers);
+    }
+
+    int convertToBonusNumber(String input, List<Integer> winNumbers) {
+        validateNumberInRange(input);
+        int bonusNumber = Integer.parseInt(input);
+        validateDuplicateNumber(winNumbers, bonusNumber);
+        return bonusNumber;
+    }
+
     void validateSeparatorAndSize(String[] input) {
         if (input.length != 6) {
             System.out.println("[ERROR] 6개의 숫자를 ',' 로 구분해 입력해주세요.");
