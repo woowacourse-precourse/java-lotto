@@ -38,5 +38,14 @@ public class User {
         return allLottoNumber;
     }
 
+    // 당첨 번호를 입력하는 메소드
+    public List<Integer> createWinningNumber() {
+        String inputNumbers = Console.readLine();
+        List<Integer> winningNumbers = new ArrayList<>();
+        for (String value: inputNumbers.split(",")) {
+            winningNumbers.add(Integer.parseInt(value));
+        }
+        return winningNumbers;
+    }
 
 }
