@@ -55,6 +55,7 @@ Enum : Rank
 - public List<Integer> getNumbers() // numbers Getter
 - private void validate(List<Integer> numbers)
 - private void validateNumRange(List<Integer> numbers)
+- private void validateNumOverlap(List<Integer> numbers)
 ```
 
 ### Shop : 로또를 발행해주는 상점
