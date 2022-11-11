@@ -1,12 +1,9 @@
 package lotto.service;
 
 import lotto.domain.Lotto;
+import lotto.util.LottoGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class LottoGeneratorTest {
     private LottoGenerator generator = new LottoGenerator();

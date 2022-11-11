@@ -1,4 +1,4 @@
-package lotto.service;
+package lotto.util;
 
 import lotto.config.InputConfig;
 import lotto.domain.Lotto;
