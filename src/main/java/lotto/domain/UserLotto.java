@@ -2,11 +2,9 @@ package lotto.domain;
 
 import lotto.util.Constant;
 import lotto.util.IOMessage;
+import lotto.util.RandomNumGenerator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class UserLotto {
     private final LottoWrapper lottoSet = new LottoWrapper();
