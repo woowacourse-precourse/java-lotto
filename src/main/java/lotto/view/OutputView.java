@@ -18,9 +18,9 @@ public class OutputView {
     }
 
     public static void printLottos(Lottos lottos) {
-        for (Lotto lotto : lottos.getLottos()) {
-            System.out.println(lotto.toString());
-        }
+        lottos.getLottos().stream()
+                .map(Object::toString)
+                .forEach(System.out::println);
     }
 
     public static void printWinningDetails(Map<WinningRank, Integer> winningDetails) {
