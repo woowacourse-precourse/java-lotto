@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.BonusNumber;
 import lotto.domain.Calculator;
+import lotto.domain.Cost;
 import lotto.domain.LotteryDrawMachine;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGroup;
 import lotto.domain.WinningLotto;
-import lotto.util.InputValidator;
 import lotto.view.Output;
 
 public class LottoController {
@@ -18,12 +18,15 @@ public class LottoController {
         LotteryDrawMachine lotteryDrawMachine = new LotteryDrawMachine();
 
         Output.enterPurchaseCost();
-        String purchaseCost = Console.readLine();
-        if (!InputValidator.checkPurchaseCost(purchaseCost)) {
+        Cost cost;
+        try {
+            String purchaseCost = Console.readLine();
+            cost = new Cost(purchaseCost);
+        } catch (IllegalArgumentException ex) {
             return;
         }
 
-        int purchaseCount = Integer.parseInt(purchaseCost) / 1000;
+        int purchaseCount = cost.getCost() / 1000;
         Output.purchaseCountNotification(purchaseCount);
 
         List<Lotto> lottos = new ArrayList<>();
@@ -50,7 +53,7 @@ public class LottoController {
         Output.printWinningStatistics(matchResults);
 
         int profit = calculator.calculateProfit(matchResults);
-        double earningsRate = calculator.calculateEarningsRate(Integer.parseInt(purchaseCost), profit);
+        double earningsRate = calculator.calculateEarningsRate(cost.getCost(), profit);
         Output.earningsRateNotification(earningsRate);
     }
 }
