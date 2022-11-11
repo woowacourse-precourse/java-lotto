@@ -10,23 +10,23 @@ public class Player {
     public static final int CRITERION_ZERO = 0;
     public static final String ERROR_PRICE_COUNT_NOT_EQUAL_LOTTO_SIZE = "[ERROR] 주어진 금액과 주어진 로또 번호의 개수가 일치하지 않습니다.";
 
-    public int canBuyLottoCount(int price) {
-        validate(price);
-        return price / LOTTO_PRICE;
+    public int canBuyLottoCount(int purchasePrice) {
+        validate(purchasePrice);
+        return purchasePrice / LOTTO_PRICE;
     }
 
-    private void validate(int price) {
-        if (!isDivided(price)) {
+    private void validate(int purchasePrice) {
+        if (!isDivided(purchasePrice)) {
             throw new IllegalArgumentException(ERROR_NOT_VALID_PRICE);
         }
     }
 
-    private boolean isDivided(int price) {
-        return ((price % LOTTO_PRICE) == CRITERION_ZERO);
+    private boolean isDivided(int purchasePrice) {
+        return ((purchasePrice % LOTTO_PRICE) == CRITERION_ZERO);
     }
 
-    public List<Lotto> buyLottos(int price, List<List<Integer>> lottoNumbers) {
-        int buyLottoCount = canBuyLottoCount(price);
+    public List<Lotto> buyLottos(int purchasePrice, List<List<Integer>> lottoNumbers) {
+        int buyLottoCount = canBuyLottoCount(purchasePrice);
         validateCount(buyLottoCount, lottoNumbers);
 
         return lottoNumbers.stream()
