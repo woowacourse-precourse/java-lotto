@@ -8,6 +8,9 @@ import java.util.Set;
 
 public class Input {
 
+    private final static int LOTTO_NUMBER_MIN = 1;
+    private final static int LOTTO_NUMBER_MAX = 45;
+    private final static int LOTTO_PRICE_UNIT = 1000;
     private final static int LOTTO_NUMBERS_INPUT_SIZE = 6;
 
     public static void validateNumber(String input) {
@@ -23,14 +26,14 @@ public class Input {
         int lottoNumber;
         validateNumber(input);
         lottoNumber = Integer.parseInt(input);
-        if (lottoNumber < 1 || lottoNumber > 45) {
+        if (lottoNumber < LOTTO_NUMBER_MIN || lottoNumber > LOTTO_NUMBER_MAX) {
             // TODO: 2022/11/11 에러 메시지 출력 추가
             throw new IllegalArgumentException();
         }
     }
 
     public static void validatePrice(int price) {
-        if (price % 1000 != 0) {
+        if (price % LOTTO_PRICE_UNIT != 0) {
             // TODO: 2022/11/11 에러 메시지 출력 추가
             throw new IllegalArgumentException();
         }
