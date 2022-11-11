@@ -11,7 +11,15 @@ validate
 ### PaymentException
 1. validate
    1. isNotDividedByThousand : 값이 0이거나 1000으로 나누었을때 나머지가 0이 아니면 참을 반환
-   2. paymentNotAcceptableException : 예외처리한다.
+   2. isZero : 값이 0일 경우 참을 반환한다. 
+   3. paymentNotAcceptableException : 예외처리한다.
+
+### BonusNumberException
+1. validate
+   1. isOutOfRange : 1부터 45까지가 아닐 경우 예외처리한다. 
+   2. isAlreadyInNumbers : Computer.getComputerNumber에 값이 이미 있을 경우 참을 반환한다. 
+   3. outOfRangeException : 에외처리한다. 
+   4. alreadyInNumberException : 예외처리한다. 
 
 ## 도메인
 ### Lotto
@@ -57,7 +65,9 @@ Lotto, BonusNumber를 참조한다.
 1. saveWinningTicket : 문자열로 입력받은 값을 정수형 리스트로 바꾸어 저장한다. 
    1. splitTicket : ','로 문자열을 나누어 문자열의 배열로 리턴한다. 
    2. createTicket : 정수형 리스트로 바꾸어 Lotto의 생성자에 입력변수로 사용해 저장한다. 
-2. saveBonusNumber : BonusNumber에 입력변수값을 정수형 변수로 저장한다. 
+2. saveBonusNumber
+   1. validateBonusNumber : BonusNumberException.validate을 통해 예외처리한다. 
+   2. addBonusNumber : BonusNumber에 입력변수값을 정수형 변수로 저장한다.
 3. getComputerNumber : 컴퓨터의 당첨번호를 Lotto타입으로 반환한다. 
 4. getBonusNumber : 보너스 넘버를 정수형으로 반환한다. 
 
