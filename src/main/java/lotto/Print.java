@@ -27,11 +27,12 @@ public class Print {
         if (rank == Rank.SECOND) {
             result += ", 보너스 볼 일치";
         }
-        result += " (" + rank.getWinningAmount() + "원) - ";
+        result += " (" + rank.getDottedWinningAmount() + "원) - ";
         result += rankCount.get(rank) + "개";
 
         return result;
     }
     void printWinningRate(float winningRate) {
+
     }
 }

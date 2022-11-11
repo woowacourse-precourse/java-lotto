@@ -1,5 +1,6 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -15,6 +16,11 @@ enum Rank{
           return winningAmount;
      }
 
+     public String getDottedWinningAmount(){
+          DecimalFormat decimalFormat = new DecimalFormat("###,###");
+          String dottedWinningAmount = decimalFormat.format(winningAmount);
+          return dottedWinningAmount;
+     }
      public int getMatchCount() {
           return matchCount;
      }
