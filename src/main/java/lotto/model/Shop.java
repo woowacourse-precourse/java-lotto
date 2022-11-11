@@ -1,6 +1,9 @@
 package lotto.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Shop {
@@ -11,6 +14,7 @@ public class Shop {
     public Shop(int price){
         this.price = price;
         this.lottoSize = calcLottoSize(price);
+        this.lottoPayed = setLottoPayed(this.lottoSize);
     }
 
     public List<Lotto> getlottoPayed() {
@@ -22,8 +26,13 @@ public class Shop {
         return (price / 1000);
     }
 
-    private void setLottoPayed(int lottoSize) {
+    private List<Lotto> setLottoPayed(int lottoSize) {
 
+        return null;
+    }
+
+    private Lotto getRandomLotto(){
+        return new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6));
     }
 
     private void priceValidate(int price) {
