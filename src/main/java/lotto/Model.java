@@ -9,6 +9,8 @@ import java.util.HashMap;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Model {
+    private final int MINIMUM_LOTTO_NUMBERS = 1;
+    private final int MAXIMUM_LOTTO_NUMBERS = 45;
     private final int LOTTO_NUMBERS = 6;
 
     public List<Integer> checkLottoNumber (List<Integer> lottoNumbers, List<List<Integer>> uncheckedLottos) {
