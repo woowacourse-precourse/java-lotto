@@ -13,5 +13,6 @@ public class Problem {
         User input=new User();
         input.inputMoney();
         input.setLottoQuantity();
+        input.printLottoQunantity();
     }
 }
