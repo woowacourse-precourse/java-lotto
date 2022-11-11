@@ -63,4 +63,13 @@ public class WinningNumberTest {
 			WinningNumber.checkWinningNumber(winningNumber);
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@DisplayName("중복된 숫자가 있는 경우 예외가 발생")
+	@ParameterizedTest
+	@ValueSource(strings = {"1,2,3,4,5,5", "1,2,3,4,4,5", "1,2,2,3,4,5"})
+	void duplicateNumber(String winningNumber) {
+		assertThatThrownBy(() -> {
+			WinningNumber.checkWinningNumber(winningNumber);
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
 }
