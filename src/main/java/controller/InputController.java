@@ -26,14 +26,14 @@ public class InputController {
     public void checkDigitPrice(String lottopuramount) {
         for(int i=0; i<lottopuramount.length(); i++) {
             if(!Character.isDigit(lottopuramount.charAt(i))) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 숫자를 입력하세요.");
             }
         }
     }
 
     public void checkDevidePrice(Integer lottopuramount) {
         if(lottopuramount % DIVIDEPRICE != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 금액이 1000원 단위로 나누어 떨어지지 않습니다.");
         }
     }
 
@@ -56,7 +56,9 @@ public class InputController {
 
     public void checkNumberQuantity(String lottonumber) {
         if(lottonumber.length() != LOTTONUMBERQUANTITY) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호가 6개가 아닙니다.");
         }
     }
+
+
 }
