@@ -45,7 +45,7 @@
 >- [x] User의 randomLottoNumber를 얻는 기능 ( getUserLottoNumber )
  
 **LottoSystemService**
->- [ ] 당첨 통계를 계산하는 기능 ( setTotal )
+>- [x] 당첨 통계를 계산하는 기능 ( setTotal )
 >- [ ] 당첨 통계를 조회하는 기능 ( getTotal )
 >- [x] 입력 받은 금액으로 랜덤 번호를 생성하는 기능 ( setRandomLottoNumbers )
 >- [x] 랜덤 번호를 각 정렬하는 기능 ( setRandomLottoNumbers 내부 )
