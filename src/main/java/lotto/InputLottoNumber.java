@@ -5,11 +5,15 @@ import java.util.LinkedList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 import exceptioncase.InputLottoNumberException;
+import ui.InputLottoNumberPrint;
+
 public class InputLottoNumber {
     public static List<Integer> inputLottoAnswerNumber(){
         List<Integer> answer;
+        InputLottoNumberPrint.inputAsnwerNumber();
         String input = Console.readLine();
         answer = makeAnswerNumbers(input);
+        InputLottoNumberPrint.inputBonusNumber();
         String bonusNumber = Console.readLine();
         addBonusNumber(answer,bonusNumber);
         return answer;
