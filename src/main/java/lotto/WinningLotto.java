@@ -3,6 +3,7 @@ package lotto;
 import java.util.List;
 
 import static lotto.LottoErrorMessage.*;
+import static lotto.LottoConstant.*;
 
 public class WinningLotto {
     private Lotto winningLotto;
@@ -12,6 +13,25 @@ public class WinningLotto {
         this.winningLotto = new Lotto(numbers);
         validateBonusNumber(bonusNumber);
         this.bonusNumber = bonusNumber;
+    }
+
+    public int countWinningNumber(Lotto userLotto) {
+        int count = 0;
+        List<Integer> userNumbers = userLotto.getNumbers();
+
+        for (int i = 0; i < LOTTO_SIZE; i++) {
+            int userNumber = userNumbers.get(i);
+
+            if (winningLotto.hasNumber(userNumber)) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public boolean hasNumberInBonus(Lotto userLotto) {
+        return userLotto.hasNumber(bonusNumber);
     }
 
     private void validateBonusNumber(int bonusNumber) {
