@@ -18,7 +18,7 @@ public class WinnerNumberVerifier implements Verifier {
 
     private void checkNumberCount(String input) {
         if (input.split(",").length != Constant.LOTTO_SIZE) {
-            throw new IllegalArgumentException(ExceptionMessage.NUMBER_COUNT_NOT_EQUAL);
+            throw new IllegalArgumentException(ExceptionMessage.COUNT_NOT_EQUAL);
         }
     }
 
@@ -27,7 +27,7 @@ public class WinnerNumberVerifier implements Verifier {
         try {
             Arrays.stream(divided).forEach(BigInteger::new);
         } catch (Exception e) {
-            throw new IllegalArgumentException(ExceptionMessage.NUMBER_EACH_NOT_NUMBER);
+            throw new IllegalArgumentException(ExceptionMessage.EACH_NOT_NUMERIC);
         }
     }
     private void checkEachOutOfTypeRange(String input) {
