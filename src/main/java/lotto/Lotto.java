@@ -18,7 +18,7 @@ public class Lotto {
 
     public Lotto(String numbers) {
         validateString(numbers);
-        this.numbers = new ArrayList<>();
+        this.numbers = convertStringListToIntegerList(convertStringToList(numbers));
     }
 
     private void validate(List<Integer> numbers) {
