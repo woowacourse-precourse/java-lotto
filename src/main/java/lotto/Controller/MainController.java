@@ -5,6 +5,7 @@ import lotto.Bonus;
 import lotto.Cash;
 import lotto.Lotto;
 import lotto.Model.Calculator;
+import lotto.Model.LottoGenerator;
 import lotto.View.OutputView;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
 
 public class MainController {
     private Cash cash;
+    private List<Lotto> myLottos = new ArrayList<>();
     public void inputCash() throws IllegalArgumentException{
         System.out.println("구입 금액을 입력해주세요.");
         String input = Console.readLine();
@@ -21,9 +23,12 @@ public class MainController {
         }catch (NumberFormatException exception){
             throw new IllegalArgumentException("입력 값이 올바르지 않습니다.");
         }
-
         cash = new Cash(integer);
         countLottoNumber(cash);
+        LottoGenerator lottoGenerator = new LottoGenerator();
+        myLottos = lottoGenerator.createMyLottos(lottoNumber);
+        OutputView outputView = new OutputView();
+        outputView.printMyLottoInfo(myLottos);
     }
 
     private int lottoNumber;
@@ -48,7 +53,6 @@ public class MainController {
         }
 
         winningLotto = new Lotto(winningNumber);
-
     }
 
     private Bonus bonus;
