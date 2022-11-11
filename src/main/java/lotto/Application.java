@@ -60,7 +60,8 @@ public class Application {
 
     private static int validateInputMoney(String inputMoney) {
         if (!inputMoney.matches(NUMBER_REG)) {
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
+            System.out.println("[ERROR] 숫자만 입력 가능합니다.");
+            throw new NoSuchElementException("[ERROR] 숫자만 입력 가능합니다.");
         } else if (Integer.parseInt(inputMoney) % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 1000원 단위만 입력할 수 있습니다.");
         }
