@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Lotto {
     private static final int LOTTO_NUMBERS_LENGTH = 6;
 
@@ -16,6 +18,11 @@ public class Lotto {
         this.numbers = numbers.stream()
                 .map(LottoNumber::new)
                 .collect(Collectors.toList());
+    }
+
+    public static Lotto createRandomized() {
+        return new Lotto(Randoms.pickUniqueNumbersInRange(LottoNumber.RANGE_MINIMUM, LottoNumber.RANGE_MAXIMUM,
+                LOTTO_NUMBERS_LENGTH));
     }
 
     private void validateLength(List<Integer> numbers) {
