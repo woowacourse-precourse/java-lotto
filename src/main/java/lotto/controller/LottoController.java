@@ -1,7 +1,9 @@
 package lotto.controller;
 
-import lotto.domain.Lotto;
+import java.util.List;
+
 import lotto.domain.LottoGroup;
+import lotto.domain.Rank;
 import lotto.handler.CheckHandler;
 import lotto.handler.InputHandler;
 import lotto.service.LottoService;
@@ -13,12 +15,8 @@ public class LottoController {
 	public void run() {
 		LottoGroup lottoGroup = makeLottoGroup();
 		System.out.println();
-		Lotto winnerLotto = makeWinnerLotto();
-		int bonusNumber = lottoService.makeWinnerBonusNumber();
-	}
-
-	private Lotto makeWinnerLotto() {
-		return lottoService.makeWinnerLotto();
+		List<Rank> ranks = lottoGroup.winningStatistics(lottoService.makeWinnerLotto(),
+			lottoService.makeWinnerBonusNumber());
 	}
 
 	private LottoGroup makeLottoGroup() {

@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,6 +22,14 @@ public class LottoGroup {
 
 	private List<Lotto> getLottos() {
 		return Collections.unmodifiableList(this.lottos);
+	}
+
+	public List<Rank> winningStatistics(Lotto winnerLotto, int bonusNumber) {
+		List<Rank> rankList = new ArrayList<>();
+		for (Lotto purchaseLotto : this.lottos) {
+			rankList.add(purchaseLotto.getRank(winnerLotto, bonusNumber));
+		}
+		return rankList;
 	}
 
 }
