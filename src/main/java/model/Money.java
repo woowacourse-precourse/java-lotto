@@ -1,8 +1,9 @@
 package model;
 
+import constant.Config;
+
 public class Money {
-    private static final int PRICE = 1000;
-    private static final String PRICE_ERROR = String.format("[ERROR] 구입금액은 %,d원으로 나누어 떨어져야 합니다.", PRICE);
+    private static final String PRICE_ERROR = String.format("%s 구입금액은 %,d원으로 나누어 떨어져야 합니다.", Config.ERROR, Config.PRICE);
 
     private final int money;
 
@@ -11,8 +12,12 @@ public class Money {
         this.money = money;
     }
 
+    public int getMoney() {
+        return money;
+    }
+
     private static void validatePrice(int money) {
-        if (money % PRICE != 0 || money < PRICE) {
+        if (money % Config.PRICE != 0 || money < Config.PRICE) {
             throw new IllegalArgumentException(PRICE_ERROR);
         }
     }
