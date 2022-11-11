@@ -8,7 +8,7 @@
 
 - Model 
   - [x] Lotto
-  - [ ] Ticket (구입 금액에 맞는 로또 발행)
+  - [x] Ticket (구입 금액에 맞는 로또 발행)
   - [ ] Money
   - [ ] WinningNumber
   - [ ] BonusNumber
@@ -43,7 +43,7 @@
 
 
 - Ticket
-  - [ ] 구입 금액만큼 로또를 생성하는지 검증
+  - [x] 구입 금액만큼 로또를 생성하는지 검증
   
 
 - Money
