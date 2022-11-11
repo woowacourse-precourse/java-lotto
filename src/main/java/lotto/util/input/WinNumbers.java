@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class WinNumbers {
-    private final int MAX_VALUE = 45;
-    private final int MIN_VALUE = 1;
+    private static final int MAX_VALUE = 45;
+    private static final int MIN_VALUE = 1;
     private Lotto winNumbers;
     private Set<Integer> winNumbersSet = new HashSet<>();
 
