@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
-    private static List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45 , 6);
+    private static List<Integer> numbers = new ArrayList<>();
     private static List<List> myLottoNum = new ArrayList<>();
     private static int howManyLotto;
     private static int inputMoney;
@@ -42,7 +42,15 @@ public class Lotto {
         return myLottoNum;
     }
 
-
+    // 1등 당첨 번호 입력
+    public static List<Integer> winnerNumber(){
+        String num = Console.readLine();
+        String[] nums = num.split(",");
+        for(int i = 0; i < nums.length; i++) {
+            numbers.add(Integer.parseInt(nums[i]));
+        }
+        return numbers;
+    }
 
 
 
