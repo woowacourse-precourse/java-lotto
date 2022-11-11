@@ -8,11 +8,13 @@ public class WinningNumber {
 
     private static final String NUMBER_SEPARATOR = ",";
 
-    private final List<Integer> numbers;
+    private final Lotto lotto;
 
     public WinningNumber(String winningNumber) {
-        numbers = Arrays.stream(winningNumber.split(NUMBER_SEPARATOR))
+        List<Integer> numbers = Arrays.stream(winningNumber.split(NUMBER_SEPARATOR))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+
+        lotto = new Lotto(numbers);
     }
 }
