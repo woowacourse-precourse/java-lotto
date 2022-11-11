@@ -47,22 +47,16 @@ public class UserInput {
         }
     }
 
-    static void inputWinningNumber() {
+    static Lotto inputWinningNumber() {
         String winningNumber = Console.readLine();
         List numbers = validateLotto(winningNumber);
-        Lotto lotto = new Lotto(numbers);
+        return new Lotto(numbers);
     }
 
     static private List validateLotto(String winningNumber) {
         String[] splitInput = winningNumber.split(",");
         List<Integer> result = new ArrayList();
-        if (splitInput.length != 6) {
-            Message.ERROR_INPUT_SIX.printError();
-            throw new IllegalArgumentException();
-        }
         validateLottoType(splitInput, result);
-        validateLottoRange(result);
-        validateLottoDuplicate(result);
 
         return result;
     }
@@ -74,22 +68,6 @@ public class UserInput {
             }
         } catch (NumberFormatException e) {
             Message.ERROR_INPUT_NUMBER.printError();
-            throw new IllegalArgumentException();
-        }
-    }
-
-    static private void validateLottoRange(List<Integer> result) {
-        long count = result.stream().filter(s -> s > 45 || s < 1).count();
-        if (count != 0) {
-            Message.ERROR_INPUT_RANGE.printError();
-            throw new IllegalArgumentException();
-        }
-    }
-
-    static private void validateLottoDuplicate(List<Integer> result) {
-        long count = result.stream().distinct().count();
-        if (count != result.size()) {
-            Message.ERROR_INPUT_DUPLICATE.printError();
             throw new IllegalArgumentException();
         }
     }
