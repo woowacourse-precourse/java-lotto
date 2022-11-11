@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,6 +15,20 @@ public class LottoManager {
     private List<Lotto> myLotto = new ArrayList<>();
     private List<Integer> winningNumber = new ArrayList<>();
     private List<Integer> result = new ArrayList<>();
+
+    public void playLottoProgram() {
+        savePurchaseAmount();
+        saveLottoIssueCount();
+        issueLottoSeveralTimes(lottoIssueCount, myLotto);
+        OutputView.printLottoPurchaseInformation(myLotto);
+        saveWinningNumber();
+        saveBonusNumber();
+        setResult(myLotto, winningNumber, bonusNumber);
+        Calculator calculator = new Calculator();
+        calculator.calculateTotalEarnings(result);
+        calculator.calculateEarningsRate(purchaseAmount);
+        OutputView.printLottoResult(result, calculator.getEarningsRate());
+    }
 
     private void savePurchaseAmount() {
         this.purchaseAmount = InputView.enterPurchaseAmount();
@@ -35,10 +50,10 @@ public class LottoManager {
         this.winningNumber = InputView.enterWinningNumber();
     }
     private void saveBonusNumber() {
-        this.bonusNumber = InputView.enterBonusNumber();
+        this.bonusNumber = InputView.enterBonusNumber(winningNumber);
     }
     private void setResult(List<Lotto> myLotto, List<Integer> winningNumber, int bonusNumber) {
-        List<Integer> result = new ArrayList<>(List.of(0, 0, 0, 0, 0, 0, 0));
+        List<Integer> result = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0));
         for (int i = 0; i < myLotto.size(); i++) {
             List<Integer> myLottoNumber = myLotto.get(i).getLottoNumbers();
             int sameNumberCount = compareMyLottoWithWinningNumber(myLottoNumber, winningNumber);
@@ -46,7 +61,7 @@ public class LottoManager {
             if (rank == 3 && checkBonusNumber(myLottoNumber, bonusNumber)) {
                 rank = 2;
             }
-            result.add(rank, result.get(rank) + 1);
+            result.set(rank, result.get(rank) + 1);
         }
         this.result = result;
     }
