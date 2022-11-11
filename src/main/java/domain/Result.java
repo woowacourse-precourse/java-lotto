@@ -15,12 +15,11 @@ public class Result {
                 .orElse(Rank.nothing);
     }
 
-    public int getPrize(Rank rank) {
+    public Prize getPrize(Rank rank) {
         return Arrays.stream(Prize.values())
                 .filter(prize -> prize.ranking == rank.ranking)
                 .findAny()
-                .get()
-                .rankingPrize;
+                .get();
     }
 
     public int countMatchingNumber(List<Integer> winningLottoNumbers, List<Integer> userNumbers) {
