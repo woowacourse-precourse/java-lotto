@@ -21,7 +21,8 @@ public class LottoShop {
         }
     }
 
-    public WinningLottoNumber createWinningLottoNumber(String writeLottoNumber, String writeBonusNumber) {
+    public WinningLottoNumber createWinningLottoNumberFor(String writeLottoNumber, String writeBonusNumber) {
         return memberWriteService.writeWinningLottoNumbers(writeLottoNumber, writeBonusNumber);
     }
+
 }

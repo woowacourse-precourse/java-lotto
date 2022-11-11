@@ -49,13 +49,19 @@ public class Lotto {
     }
 
     public WinningNumberCount winningLottoNumberCount(WinningLottoNumber winningLottoNumber) {
-        int winningCount = (int) numbers.stream()
+        int winningCount = getWinningNumberCount(winningLottoNumber);
+        boolean isMatchBonusNumber = isMatchBonusNumber(winningLottoNumber);
+        return WinningNumberCount.of(winningCount, isMatchBonusNumber);
+    }
+
+    private boolean isMatchBonusNumber(WinningLottoNumber winningLottoNumber) {
+        return numbers.stream()
+                .anyMatch(number -> number == winningLottoNumber.getBonusNumber());
+    }
+
+    private int getWinningNumberCount(WinningLottoNumber winningLottoNumber) {
+        return (int) numbers.stream()
                 .filter(number -> winningLottoNumber.getWinningNumbers().contains(number))
                 .count();
-
-        boolean isMatchBonusNumber = numbers.stream()
-                .anyMatch(number -> number == winningLottoNumber.getBonusNumber());
-
-        return WinningNumberCount.of(winningCount, isMatchBonusNumber);
     }
 }
