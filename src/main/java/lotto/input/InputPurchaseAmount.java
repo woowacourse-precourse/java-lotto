@@ -14,7 +14,7 @@ public class InputPurchaseAmount {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 구매 금액은 숫자를 입력해야 합니다.");
         }
     }
 }
