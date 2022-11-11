@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import static lotto.util.LottoUtil.bonusNumberParser;
-
 import java.util.List;
 import lotto.exception.LottoException;
 
