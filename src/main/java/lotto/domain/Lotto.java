@@ -7,15 +7,16 @@ import java.util.List;
 
 public class Lotto {
     private static final Validator validator=Validator.getInstance();
+    private static final int DIGIT=6;
     private final List<Integer> numbers;
-
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
-
+        validator.checkNumericalRange(numbers);
+        validator.checkNumberOfDigit(DIGIT,numbers);
     }
 
     // TODO: 추가 기능 구현
