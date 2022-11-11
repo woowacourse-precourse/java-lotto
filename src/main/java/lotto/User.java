@@ -35,7 +35,7 @@ public class User {
         return Arrays.stream(history).boxed().collect(Collectors.toList());
     }
 
-    public float getYield() {
+    public float getYield(List<Integer> winningHistory) {
         return 0.0f;
     }
 
