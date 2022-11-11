@@ -13,9 +13,16 @@ public class ErrorChecker {
 	public void validateWinningNumbers(String winningNumbers) {
 		String[] separation = winningNumbers.split(",");
 
-		if (isNotValidLength(separation) || isNotAllPositiveNumber(separation) || isNotUniqueNumbers(
-			separation)) {
+		if (isNotValidLength(separation) || isNotAllPositiveNumber(separation)
+			|| isNotUniqueNumbers(separation)) {
 			throw new IllegalArgumentException("[ERROR] 올바른 당첨번호를 입력해주세요!\n");
+		}
+	}
+
+	public void validateBonusNumbers(String bonusNumber) {
+		if (isNotOneDigit(bonusNumber) || isNotNumber(bonusNumber) || isNotPositiveNumber(
+			bonusNumber)) {
+			throw new IllegalArgumentException("[ERROR] 올바른 보너스번호를 입력해주세요!\n");
 		}
 	}
 
@@ -47,8 +54,6 @@ public class ErrorChecker {
 			.anyMatch(elem -> Integer.parseInt(elem) < 1 || Integer.parseInt(elem) > 45);
 	}
 
-
-
 	private boolean isNotNumber(String money) {
 		// 숫자가 아닌 경우 참값 반환
 		try {
@@ -67,5 +72,9 @@ public class ErrorChecker {
 	private boolean isNotZeroRemainder(String money) {
 		// 천원 단위로 입력이 안되었다면 참값 반환
 		return (Integer.parseInt(money) % 1000) != 0;
+	}
+
+	private boolean isNotOneDigit(String bonusNumber) {
+		return bonusNumber.length() != 1;
 	}
 }
