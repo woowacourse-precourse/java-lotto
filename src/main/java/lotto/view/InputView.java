@@ -2,7 +2,6 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,6 +21,13 @@ public class InputView {
         String numbersWithSeparator = Console.readLine();
 
         return getWinningNumbers(numbersWithSeparator);
+    }
+
+    public static int inputBounsNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonusNumber = Console.readLine();
+
+        return Integer.parseInt(bonusNumber);
     }
 
     private static List<Integer> getWinningNumbers(String numbersWithSeparator) {
