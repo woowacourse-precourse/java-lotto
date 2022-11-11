@@ -12,9 +12,11 @@ public class Prize {
     }
 
     public Ranks getRankByMatchingNumberCount(int myMatchingWinningNumberCount, int myMatchingBonusNumberCount) {
+        if (myMatchingWinningNumberCount == 5 && myMatchingBonusNumberCount == 1) {
+            return Ranks.BONUS_NUMBERS;
+        }
         return Arrays.stream(Ranks.values())
-                .filter(rank -> rank.matchingWinningNumberCount == myMatchingWinningNumberCount
-                        && rank.matchingBonusNumberCount == myMatchingBonusNumberCount)
+                .filter(rank -> rank.matchingWinningNumberCount == myMatchingWinningNumberCount)
                 .findFirst()
                 .orElse(Ranks.NONE);
     }
