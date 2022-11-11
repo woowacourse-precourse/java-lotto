@@ -5,11 +5,21 @@ import lotto.domain.UserLotto;
 import lotto.domain.WinningLotto;
 
 public final class LottoSystem {
-    private final UserLotto userLotto = new UserLotto();
-    private final WinningLotto winningLotto = new WinningLotto();
-    private final BonusNumber bonusNumber = new BonusNumber();
+    private UserLotto userLotto;
+    private WinningLotto winningLotto;
+    private BonusNumber bonusNumber;
 
     public void run() {
-        userLotto.printMyLotto();
+        initialize();
+    }
+
+    private void initialize() {
+        try {
+            userLotto = new UserLotto();
+            winningLotto = new WinningLotto();
+            bonusNumber = new BonusNumber();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
