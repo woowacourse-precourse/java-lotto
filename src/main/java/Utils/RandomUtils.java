@@ -22,7 +22,7 @@ public class RandomUtils {
         return input.size() == inputWithoutDuplicate.size();
     }
 
-    public static boolean isUniqueBonusNumber(int BonusNumber) {
-        return false;
+    public static boolean isUniqueBonusNumber(int BonusNumber, List<Integer> lotto) {
+        return !lotto.contains(BonusNumber);
     }
 }
