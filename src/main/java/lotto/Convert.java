@@ -1,17 +1,18 @@
 package lotto;
 
-import constant.Amount;
 import constant.LottoText;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Convert {
+    private static final int UNIT_LOTTO_PRICE = 1_000;
+
     private final Validate validate = new Validate();
 
     public int toLottoCount(int purchasePrice) {
-        validate.validDivisible(purchasePrice);
-        return purchasePrice / Amount.UNIT.getPrice();
+        validate.validDivisible(purchasePrice, UNIT_LOTTO_PRICE);
+        return purchasePrice / UNIT_LOTTO_PRICE;
     }
 
     public int toInt(String input) {
