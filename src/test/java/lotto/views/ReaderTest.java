@@ -1,5 +1,6 @@
 package lotto.views;
 
+import lotto.models.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -7,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -40,5 +42,19 @@ class ReaderTest {
 
 		assertThatThrownBy(Reader::readUserLottoPurchaseAmount)
 				.isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@DisplayName("사용자가 정상적인 로또 당첨 번호를 입력했을 때 확인하는 테스트")
+	@Test
+	void inputUserValidWinningLottoNumberTest() {
+		final String WINNING_LOTTO_NUMBER = "1,2,3,4,5,6";
+		InputStream inputStream = generateInputStream(WINNING_LOTTO_NUMBER);
+		System.setIn(inputStream);
+
+		Lotto lotto = Reader.readUserLottoWinningNumber();
+		List<Integer> winningLottoNumber = lotto.getLottoNumber();
+
+		final List<Integer> expected = List.of(1, 2, 3, 4, 5, 6);
+		assertThat(winningLottoNumber).hasSameElementsAs(expected);
 	}
 }
