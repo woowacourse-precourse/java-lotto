@@ -59,24 +59,33 @@ public class LottoServiceTest {
                 .count()
         ).isEqualTo(1);
 
-        //TODO
-//        assertThat(lottoResults.stream()
-//                .filter(LottoResult.ELSE::equals)
-//                .count()
-//        ).isEqualTo(3);
+        assertThat(lottoResults.stream()
+                .filter(LottoResult.TWO::equals)
+                .count()
+        ).isEqualTo(1);
+
+        assertThat(lottoResults.stream()
+                .filter(LottoResult.ONE::equals)
+                .count()
+        ).isEqualTo(1);
+
+        assertThat(lottoResults.stream()
+                .filter(LottoResult.ZERO::equals)
+                .count()
+        ).isEqualTo(1);
     }
 
     @DisplayName("calculateYield - 반환값 테스트")
-//    @Test TODO
+    @Test
     void test2() {
-//        List<LottoResult> results = List.of(
-//                LottoResult.ELSE,
-//                LottoResult.ELSE,
-//                LottoResult.ELSE,
-//                LottoResult.THREE
-//        );
-//        double yield = lottoService.calculateYield(results);
-//        assertThat(yield).isEqualTo(125.0);
+        List<LottoResult> results = List.of(
+                LottoResult.ONE,
+                LottoResult.ONE,
+                LottoResult.TWO,
+                LottoResult.THREE
+        );
+        double yield = lottoService.calculateYield(results);
+        assertThat(yield).isEqualTo(125.0);
     }
 
 }
