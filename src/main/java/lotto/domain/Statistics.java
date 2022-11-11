@@ -6,15 +6,15 @@ public class Statistics {
     public static final String REG_XP_DIGITS = "^[0-9]+$";
     private final int purchaseAmount;
 
-    public Statistics(int purchaseAmount) {
+    public Statistics(String purchaseAmount) {
         hasDigitsOnly(purchaseAmount);
-        isDividedByLottoAmount(purchaseAmount);
-        this.purchaseAmount = purchaseAmount;
+        int money = Integer.parseInt(purchaseAmount);
+        isDividedByLottoAmount(money);
+        this.purchaseAmount = money;
     }
 
-    private void hasDigitsOnly(int purchaseAmount) {
-        String money = String.valueOf(purchaseAmount);
-        if (!money.matches(REG_XP_DIGITS)) {
+    private void hasDigitsOnly(String purchaseAmount) {
+        if (!purchaseAmount.matches(REG_XP_DIGITS)) {
             System.out.println("[ERROR] 금액은 0-9까지의 숫자로만 이루어저야 합니다.");
             throw new IllegalArgumentException();
         }
