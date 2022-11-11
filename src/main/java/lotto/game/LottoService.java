@@ -104,4 +104,16 @@ public class LottoService {
         }
         totalWinnings.put(grade, 1);
     }
+
+    public double calculateProfitPercent(Money money, List<LottoGrade> totalWinnings) {
+        Money profit = calculateTotalProfit(totalWinnings);
+        return (double) profit.getValue() / money.getValue() * 100;
+    }
+
+    private Money calculateTotalProfit(List<LottoGrade> totalWinnings) {
+        return totalWinnings.stream()
+                .map(grade -> Money.of(grade.getPrize()))
+                .reduce(Money::add)
+                .orElse(Money.of(0));
+    }
 }
