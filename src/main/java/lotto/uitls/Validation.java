@@ -21,7 +21,7 @@ public class Validation {
     }
 
     public static boolean hasNonDigitCharacter(String input) {
-        return input.chars().allMatch(Character::isDigit);
+        return !input.chars().allMatch(Character::isDigit);
     }
 
     public static boolean isDividedByLottoPrice(String purchaseAmount) {
