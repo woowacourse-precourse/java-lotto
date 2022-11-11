@@ -12,7 +12,7 @@ public class ConsoleOutput {
     public void printAmountOfLottos(int money) {
         int count = money / LottoRule.COST.getValueForRule();
         System.out.println(
-                String.format(Information.PRINT_AMOUNT_OF_LOTTO.getMessage(), count)
+                String.format(Information.AMOUNT_OF_LOTTO.getMessage(), count)
         );
     }
 
