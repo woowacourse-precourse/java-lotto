@@ -71,4 +71,14 @@ class LottoSystemTest {
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
+
+    @DisplayName("보너스 번호 입력 시 1부터 45까지의 숫자인지 확인한다.")
+    @Test
+    void InputInvalidBonusNumber() {
+        String[] invalidInput = {"46", "-1"};
+        for (String input : invalidInput) {
+            assertThatThrownBy(() -> system.setBonusNumber(input))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
 }
