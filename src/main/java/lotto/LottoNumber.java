@@ -7,12 +7,12 @@ import static constant.ErrorMessage.*;
 import static constant.Constant.*;
 
 public class LottoNumber {
-    private static List<Integer> lottoNumbers = new ArrayList<>();
+    private static List<Integer> winningNumbers = new ArrayList<>();
     private static int bonusNumber;
 
-    public LottoNumber(String lottoNumbers, String bonusNumber) {
-        for (String num : lottoNumbers.split(",")) {
-            this.lottoNumbers.add(validLottoNumber(num));
+    public LottoNumber(String winningNumbers, String bonusNumber) {
+        for (String num : winningNumbers.split(",")) {
+            this.winningNumbers.add(validLottoNumber(num));
         }
         this.bonusNumber = validLottoNumber(bonusNumber);
     }
@@ -38,7 +38,7 @@ public class LottoNumber {
         int match = 0;
         int bonusMatch = 0;
         for (int idx=INITIAL_NUMBER; idx<LOTTO_SIZE; idx++) {
-            if (lotto.getNumbers().contains(lottoNumbers.get(idx))) {
+            if (lotto.getNumbers().contains(winningNumbers.get(idx))) {
                 match++;
             }
         }
