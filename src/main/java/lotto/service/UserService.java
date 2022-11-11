@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.LottoSystem;
 import lotto.domain.User;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class UserService {
@@ -37,11 +38,15 @@ public class UserService {
 
     private List<List<Integer>> getRandomLottoNumbers(int lottoCount) {
         List<List<Integer>> numbers = new ArrayList<>();
+        List<Integer> number = new ArrayList<>();
 
         for (int i = 0; i < lottoCount; i++) {
-            numbers.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            number = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(number);
+            numbers.add(number);
         }
 
         return numbers;
     }
+
 }

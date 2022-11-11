@@ -41,7 +41,7 @@
 >- [ ] 총 수익률을 계산하는 기능 ( setRevenue )
 >- [ ] 총 수익률을 조회하는 기능 ( getRevenue )
 >- [x] 랜덤 번호를 생성하는 기능 ( setRandomLottoNumbers )
->- [ ] 랜덤 번호를 각 정렬하는 기능 (sortRandomLottoNumbers )
+>- [x] 랜덤 번호를 각 정렬하는 기능 ( setRandomLottoNumbers 내부 )
 >- [x] 금액을 입력받는 기능 ( setPayMent )
 
 **LottoSystemService**
