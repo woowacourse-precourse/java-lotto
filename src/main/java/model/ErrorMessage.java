@@ -25,5 +25,11 @@ public enum ErrorMessage {
         public String toString() {
             return HEADER + "로또 번호는 중복되지 않아야 합니다.";
         }
-    }
+    },
+    INCORRECT_PURCHASING_AMOUNT{
+        @Override
+        public String toString() {
+            return HEADER + "1000원 단위의 숫자여야 합니다.";
+        }
+    },
 }
