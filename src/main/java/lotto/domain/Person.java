@@ -18,6 +18,7 @@ public class Person {
         List<PlaceStatus> myPlaces = confirmResult();
         Result lottoResult = new Result(myPlaces);
         lottoResult.getWinningResult();
+        ResultView.printWinningResult(lottoResult);
     }
 
     private List<PlaceStatus> confirmResult() {
