@@ -74,4 +74,43 @@ class ValidatorTest {
             assertThatNoException().isThrownBy(() -> validator.validatePayment("1000"));
         }
     }
+
+    @Nested
+    class winningNumbersValidationTest {
+
+        @Test
+        void otherCharExceptNumberAndComma() {
+
+        }
+
+        @Test
+        void commaAtStartOrEnd() {
+
+        }
+
+        @Test
+        void numberStartingWithZero() {
+
+        }
+
+        @Test
+        void moreThanSixNumbers() {
+
+        }
+
+        @Test
+        void numberOver45() {
+
+        }
+
+        @Test
+        void numberDuplication() {
+
+        }
+
+        @Test
+        void goodWinningNumbers() {
+
+        }
+    }
 }
