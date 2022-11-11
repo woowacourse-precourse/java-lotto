@@ -20,6 +20,10 @@ public class Validate {
         }
     }
 
+    public void validateWinningLottoNumber(String input){
+        isLottoNumberStyle(input);
+    }
+
     private static void isLottoSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(NOT_LOTTO_SIZE_ERROR.getMessage());
@@ -50,6 +54,13 @@ public class Validate {
         String regex = "^[0-9]*$";
         if (!Pattern.matches(regex, input)) {
             throw new IllegalArgumentException(NOT_NUMBER_ERROR.getMessage());
+        }
+    }
+
+    private void isLottoNumberStyle(String input){
+        String regex = "^\\d{1,2},\\d{1,2},\\d{1,2},\\d{1,2},\\d{1,2},\\d{1,2}";
+        if(!Pattern.matches(regex, input)){
+            throw new IllegalArgumentException(NOT_WINNING_LOTTO_INPUT_STYLE_ERROR.getMessage());
         }
     }
 }
