@@ -18,7 +18,7 @@ public class Application {
         // TODO: 프로그램 구현
         // 로또 구입 금액 입력
         Input.inputCoin();
-        // 구매 개수만큼 로또용지 출력
+        // 구매 개수만큼 로또 번호 부여 및 출력
         for (int i = 0; i < Input.buyCount; i++) {
             randomNumbers.add(NumberGenerator.createRandomNumber());
         }
