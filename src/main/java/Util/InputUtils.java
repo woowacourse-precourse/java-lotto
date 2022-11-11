@@ -5,7 +5,6 @@ import domain.ConstantNumber;
 import lotto.Lotto;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -34,7 +33,7 @@ public class InputUtils {
         );
     }
 
-    public int StringToBonus(List<Integer> winningNumber) {
+    public int StringToBonus(Lotto winningNumber) {
         System.out.println(INPUT_BONUS_NUMBER_MESSAGE.getMessage());
         String bonus = Console.readLine();
         validateBonus(bonus, winningNumber);
@@ -51,7 +50,7 @@ public class InputUtils {
         isLottoNumberStyle(input);
     }
 
-    public void validateBonus(String input, List<Integer> lottoNumbers) {
+    public void validateBonus(String input, Lotto lottoNumbers) {
         isNumber(input);
         int bonus = Integer.parseInt(input);
 
@@ -79,11 +78,12 @@ public class InputUtils {
             throw new IllegalArgumentException(NOT_WINNING_LOTTO_INPUT_STYLE_ERROR.getMessage());
         }
     }
-    private void isContainWinningLotto(int bonus, List<Integer> lottoNumbers) {
-        if (lottoNumbers.contains(bonus)){
+    private void isContainWinningLotto(int bonus, Lotto lottoNumbers) {
+        if (lottoNumbers.getNumbers().contains(bonus)){
             throw new IllegalArgumentException(NOT_BONUS_SAME_WINNING_LOTTO_ERROR.getMessage());
         }
     }
+
     private void isLottoRange(int number){
         if(number < ConstantNumber.MIN_LOTTO_NUMBER.getNumber()
                 || number > ConstantNumber.MAX_LOTTO_NUMBER.getNumber()) {
