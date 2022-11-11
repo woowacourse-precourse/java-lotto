@@ -1,20 +1,21 @@
-package lotto;
+package lotto.Domain;
 
+import java.util.Collections;
 import java.util.List;
 
-public class Lotto {
+public class Lotto extends LottoShop {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+
+        Collections.sort(numbers);
         this.numbers = numbers;
+
+        soldLottoList.add(numbers);
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+        inspection.validateLottoNumberList(numbers);
     }
-
-    // TODO: 추가 기능 구현
 }
