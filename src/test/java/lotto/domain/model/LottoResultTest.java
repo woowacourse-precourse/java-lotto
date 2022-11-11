@@ -44,4 +44,20 @@ class LottoResultTest {
 
         assertThat(new LottoResult(userLotto, lottoNumber)).isEqualTo(new LottoResult(result));
     }
+
+    @DisplayName("로또 수익율을 계산한다.")
+    @Test
+    void calculateYield() {
+        EnumMap<LottoRank, Long> result = new EnumMap<>(LottoRank.class);
+        result.put(LottoRank.THREE_MATCHES, 1L);
+        result.put(LottoRank.FOUR_MATCHES, 1L);
+        result.put(LottoRank.FIVE_MATCHES, 1L);
+        result.put(LottoRank.FIVE_BONUS_MATCHES, 0L);
+        result.put(LottoRank.SIX_MATCHES, 0L);
+
+        LottoResult lottoResult = new LottoResult(result);
+
+        assertThat(lottoResult.calculateYield(new Pay("5000"))).isEqualTo(1_555_000 / (double)5000 * 100);
+    }
+
 }
