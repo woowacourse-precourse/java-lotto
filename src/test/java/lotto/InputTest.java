@@ -57,4 +57,11 @@ public class InputTest {
         int result = Input.inputBonusNumber();
         assertThat(result).isEqualTo(1);
     }
+
+    @DisplayName("보너스 범위에러가 생긴다")
+    @Test
+    void bonusRangeErrorTest(){
+        assertThatThrownBy(() -> Input.bonusRangeError(46))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
