@@ -5,9 +5,18 @@ public class Money {
     private static int inputMoney;
     private static final String ERROR_MESSAGE = "[ERROR]";
 
-    public static void setInputMoney(int inputMoney) {
-        checkUnit(inputMoney);
-        Money.inputMoney = inputMoney;
+    public static void setInputMoney(String inputMoney) {
+        int temp = convertToInt(inputMoney);
+        checkUnit(temp);
+        Money.inputMoney = temp;
+    }
+
+    private static int convertToInt(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ERROR_MESSAGE + " 숫자만 입력 가능합니다.");
+        }
     }
 
     public static int getInputMoney() {
@@ -38,3 +47,4 @@ public class Money {
 
 
 }
+

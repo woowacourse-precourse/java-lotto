@@ -32,8 +32,13 @@ public class Lotto {
     }
 
     private static void checkBonusNumber(int bonusNumber) {
-        if(winningNumbers.contains(bonusNumber))
-            throw new IllegalArgumentException(ERROR_MESSAGE + " 보너스 번호는 당첨번호와 중복 되지 않습니다.");
+        try{
+            if(winningNumbers.contains(bonusNumber))
+                throw new IllegalArgumentException(ERROR_MESSAGE + " 보너스 번호는 당첨번호와 중복 되지 않습니다.");
+        }catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
 
     }
 
@@ -74,6 +79,5 @@ public class Lotto {
         Set<Integer> temp = new HashSet<>(numbers);
         if(temp.size() != numbers.size()) throw new IllegalArgumentException(ERROR_MESSAGE + " 로또 번호는 겹치면 안됩니다.");
     }
-
 
 }

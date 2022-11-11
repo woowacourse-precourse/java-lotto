@@ -9,12 +9,19 @@ import lotto.View.OutputView;
 
 public class LottoController {
     public void lottoStart() {
+
         InputView.inputAmount();
+
         RandomLotto.BuyNewLotto();
+
         InputView.printWinningNumberInput();
+
         InputView.printBonusNumberInput();
+
         LottoSystem.lottoSystem(Lotto.getWinningNumbers(), Lotto.getBonusNumber());
+
         OutputView.printResult();
+
         Money.printYield();
     }
 }
