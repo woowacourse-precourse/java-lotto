@@ -167,9 +167,17 @@ class LottoGameServiceTest {
 
     @Test
     void 보너스_번호가_숫자가_아니면_예외_발생() {
-        String bonusNubmer = "aaaaa";
-        assertThatThrownBy(() -> lottoGameService.validateBonusNumber(bonusNubmer))
+        String bonusNumber = "aaaaa";
+        assertThatThrownBy(() -> lottoGameService.validateBonusNumber(bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("보너스 번호는 숫자여야합니다.");
+    }
+
+    @Test
+    void 보너스_번호의_범위가_1부터_45가_아니면_예외_발생() {
+        String bonusNumber = "50";
+        assertThatThrownBy(() -> lottoGameService.validateBonusNumber(bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("보너스 번호의 범위는 1~45여야합니다.");
     }
 }
