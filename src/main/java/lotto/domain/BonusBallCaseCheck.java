@@ -3,12 +3,13 @@ package lotto.domain;
 import java.util.List;
 
 public class BonusBallCaseCheck {
-    public List<Integer> updateWinningNumber(List<Integer> number, List<Integer> bonusNumber) {
-        for (int i = 0; i < number.size(); i++) {
-            if (number.get(i) == 5 && bonusNumber.get(i) == 1) {
-                number.set(i, 7);
+    public int updateWinningNumber(List<Integer> bonusNumber, List<Integer> statistics) {
+        int result = 0;
+        for (int i = 0; i < bonusNumber.size(); i++) {
+            if (bonusNumber.get(i) == 1) {
+                result++;
             }
         }
-        return number;
+        return result;
     }
 }
