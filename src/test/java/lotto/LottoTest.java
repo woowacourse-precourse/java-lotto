@@ -326,4 +326,32 @@ class LottoTest {
 
         assertThat(hitCount).isEqualTo(result);
     }
+
+    @DisplayName("로또 번호에 보너스 번호가 포함되어 있으면 true를 반환한다")
+    @Test
+    void isHitBonusNumber() {
+        List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
+        List<Integer> winningNumber = List.of(3, 10, 12, 20, 33, 45);
+        int bonusNumber = 43;
+        DrawingMachine drawingMachine = new DrawingMachine(winningNumber, bonusNumber);
+        Lotto lotto = new Lotto(lottoNumber);
+
+        boolean hitBonusNumber = drawingMachine.isHitBonusNumber(lotto);
+
+        assertThat(hitBonusNumber).isEqualTo(true);
+    }
+
+    @DisplayName("로또 번호에 보너스 번호가 포함되어 있지 않으면 false를 반환한다")
+    @Test
+    void isNotHitBonusNumber() {
+        List<Integer> lottoNumber = List.of(1, 10, 12, 24, 33, 43);
+        List<Integer> winningNumber = List.of(3, 10, 12, 20, 33, 45);
+        int bonusNumber = 41;
+        DrawingMachine drawingMachine = new DrawingMachine(winningNumber, bonusNumber);
+        Lotto lotto = new Lotto(lottoNumber);
+
+        boolean hitBonusNumber = drawingMachine.isHitBonusNumber(lotto);
+
+        assertThat(hitBonusNumber).isEqualTo(false);
+    }
 }
