@@ -57,6 +57,7 @@ public class LottoStore {
         OutputUi.printWinLottoStatistic(winLottoCount);
 
         int totalProfit = ProfitCalculator.calculateTotalProfit(winLottoCount);
+        double profitRate = ProfitCalculator.calculateProfitRate(totalProfit, purchasedAmount);
     }
 
 }
