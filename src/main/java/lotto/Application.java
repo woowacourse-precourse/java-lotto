@@ -13,13 +13,16 @@ public class Application {
     static List<Lotto> lottoTickets = new ArrayList<>();
 
     public static void main(String[] args) {
-        int numOfLotto = UserInput.inputPrice();
-        createLottoTickets(numOfLotto);
-        showLottoTickets();
+        try{
+            int numOfLotto = UserInput.inputPrice();
+            createLottoTickets(numOfLotto);
+            showLottoTickets();
 
-        UserInput.inputWinningNumbers();
-        Result result = new Result(lottoTickets);
-        result.calculateReturnOfRate(numOfLotto*MONEY_UNIT);
+            UserInput.inputWinningNumbers();
+            Result result = new Result(lottoTickets);
+            result.calculateReturnOfRate(numOfLotto*MONEY_UNIT);
+        } catch (IllegalArgumentException e) {
+        }
     }
 
     private static void createLottoTickets(int numOfLotto) {
