@@ -14,14 +14,14 @@ public class LottoCalculator {
             }
         }
 
-        if (count == 3) {return 5;}
-        if (count == 4) {return 4;}
+        if (count == 3) {return RankOfLotto.FIFTHPRIZE.ordinal();}
+        if (count == 4) {return RankOfLotto.FOURTHPRIZE.ordinal();}
         if (count == 5) {
-            if (!myLotto.contains(bonusNumber)) {return 3;}
-            return 2;
+            if (!myLotto.contains(bonusNumber)) {return RankOfLotto.THIRDPRIZE.ordinal();}
+            return RankOfLotto.SECONDPRIZE.ordinal();
         }
-        if (count == 6) {return 1;}
-        return 0;
+        if (count == 6) {return RankOfLotto.FIRSTPRIZE.ordinal();}
+        return RankOfLotto.NOTHING.ordinal();
     }
 
     public static float calculateYield (int cost, List<Integer> rankOfMyLotto) {
