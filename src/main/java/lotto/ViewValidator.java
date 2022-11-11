@@ -22,12 +22,9 @@ public class ViewValidator {
         }
     }
 
-    public List<Integer> getValidNumbers(String winningNumbers) {
-        validateNumberCount(winningNumbers);
-        return Arrays.stream(winningNumbers.split(","))
-                .peek(this::validateNumberType)
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+    public void validateNumbersType(String numbers) {
+        Arrays.stream(numbers.split(","))
+                .forEach(this::validateNumberType);
     }
 
     public void validateNumberCount(String numbers) {

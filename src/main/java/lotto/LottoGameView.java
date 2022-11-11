@@ -31,7 +31,16 @@ public class LottoGameView {
         System.out.println("당첨 번호를 입력해 주세요.");
         String winningNumbers = Console.readLine();
 
-        return viewValidator.getValidNumbers(winningNumbers);
+        viewValidator.validateNumberCount(winningNumbers);
+        viewValidator.validateNumbersType(winningNumbers);
+
+        return convertWinningNumbers(winningNumbers);
+    }
+
+    private List<Integer> convertWinningNumbers(String numbers) {
+        return Arrays.stream(numbers.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     public int inputBonusNumber() {
