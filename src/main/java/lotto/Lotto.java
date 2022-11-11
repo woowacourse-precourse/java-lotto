@@ -12,6 +12,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public boolean checkBonus(int bonus) {
+        return numbers.contains(bonus);
+    }
+
     private void validate(List<Integer> numbers) {
         checkLottoSize(numbers);
         List<Integer> copyNumbers = new ArrayList<>(numbers);
