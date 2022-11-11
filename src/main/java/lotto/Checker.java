@@ -3,50 +3,36 @@ package lotto;
 import java.util.Arrays;
 import java.util.List;
 
+import lotto.domain.WinningLotto;
+
 public class Checker {
-	private static final int MAX_PRICE = 100000;
+	private static final int MAX_PRICE = 100000; //1인당 최대 복권 구매금액은 10만원이다.
 	private static final int MAX_WINNING_NUMBER_LENGTH = 6;
 	private static final int MAX_BONUS_NUMBER_LENGTH = 1;
 	private static final int MAX_NUMBER = 45;
 	private static final int MIN_NUMBER = 1;
-	private static final String WINNING_NUMBER_DELIMITER = ",";
-	public static List<String> winningNumber;
-	public static List<String> bonusNumber;
 
-	public static void checkUserInput(String userInput) {
-		//try {
-			checkNumberOnlyException(Arrays.asList(userInput));
-			checkMaxPrice(userInput);
-		//}catch(IllegalArgumentException e){
-
-		//}
+	public static void checkPriceInput(String userInput) {
+		checkNumberOnlyException(Arrays.asList(userInput));
+		checkMaxPrice(userInput);
 	}
 
-	@Override
-	public String toString() {
-		return super.toString();
-	}
-
-	public static void checkWinningNumberInput(String userInput) {
-		winningNumber = Arrays.asList(userInput.split(WINNING_NUMBER_DELIMITER));
-
+	public static void checkWinningNumberInput(List<String> winningNumber) {
 		checkNumberOnlyException(winningNumber);
 		checkLengthException(winningNumber, MAX_WINNING_NUMBER_LENGTH);
 		checkSameNumberException(winningNumber);
 		checkNumberRangeException(winningNumber);
 	}
 
-	public static void checkBonusNumberInput(String userInput) {
-		bonusNumber = Arrays.asList(userInput);
-
+	public static void checkBonusNumberInput(List<String> bonusNumber) {
 		checkNumberOnlyException(bonusNumber);
 		checkLengthException(bonusNumber, MAX_BONUS_NUMBER_LENGTH);
-		checkSameNumberInWinningNumberException(userInput);
+		checkSameNumberInWinningNumberException(bonusNumber);
 		checkNumberRangeException(bonusNumber);
 	}
 
-	private static void checkSameNumberInWinningNumberException(String bonusNumber) {
-		if (winningNumber.contains(bonusNumber)) {
+	public static void checkSameNumberInWinningNumberException(List<String> bonusNumber) {
+		if (WinningLotto.getWinningNumber().contains(bonusNumber.get(0))) {
 			Exception.sameNumberException();
 		}
 	}
@@ -59,7 +45,7 @@ public class Checker {
 		}
 	}
 
-	private static boolean isSameNumber(List<String> winningNumber) {
+	public static boolean isSameNumber(List<String> winningNumber) {
 		boolean isSameNumberExist = winningNumber.stream()
 			.distinct()
 			.count() != winningNumber.size();
@@ -67,7 +53,7 @@ public class Checker {
 		return isSameNumberExist;
 	}
 
-	private static void checkSameNumberException(List<String> winningNumber) {
+	public static void checkSameNumberException(List<String> winningNumber) {
 
 		if (isSameNumber(winningNumber)) {
 			Exception.sameNumberException();
@@ -81,17 +67,17 @@ public class Checker {
 		}
 	}
 
-	private static void checkMaxPrice(String userInput) {
+	public static void checkMaxPrice(String userInput) {
 		if (isExceedMaxPrice(userInput)) {
 			Exception.maxPriceException();
 		}
 	}
 
-	private static boolean isExceedMaxPrice(String userInput) {
+	public static boolean isExceedMaxPrice(String userInput) {
 		return Integer.parseInt(userInput) > MAX_PRICE;
 	}
 
-	private static void checkNumberOnlyException(List<String> numbers) {
+	public static void checkNumberOnlyException(List<String> numbers) {
 		try {
 			for (String number : numbers) {
 				Integer.parseInt(number);
@@ -100,5 +86,4 @@ public class Checker {
 			Exception.numberOnlyException();
 		}
 	}
-
 }

@@ -3,14 +3,13 @@
 
 - [x] 구입금액 입력 메세지를 출력한다. - View#PURCHASE_INPUT_GUIDE_MESSAGE
 - [x] 로또 구입 금액을 입력한다. - Input#userInput()
-  - [x] 잘못된 값 입력시 예외 발생 - Checker#checkUserInput()
+  - [x] 잘못된 값 입력시 예외 발생 - Checker#checkPriceInput()
 
-- [x] 구입금액에 해당하는 만큼 로또를 산다. - LottoProgram#createLotto()
+- [x] 구입금액에 해당하는 만큼 로또를 만든다. - LottoProgram#createLottos()
   - [x] 1~45까지의 6개의 숫자를 뽑는다 - LottoProgram#createLottoNumbers()
-  - [x] 로또의 숫자를 오름차순으로 정렬한다 - LottoProgram#createLotto()
 
 - [x] 구매 메세지를 출력한다. - View#LOTTO_PURCHASED_GUIDE_MESSAGE
-  - [x] 로또들의 숫자들을 출력한다. - View#showLottoNumbers()
+  - [x] 로또들의 숫자들을 출력한다. - View#View.showMyLottos()
 
 - [x] 당첨 번호 입력 메세지를 출력한다. - View#WINNING_NUMBER_INPUT_GUIDE_MESSAGE
 - [x] 당첨 번호 입력 받는다. - Input#userInput()
@@ -20,13 +19,13 @@
 - [x] 보너스 번호를 입력 받는다. - Input#userInput()
   - [x] 잘못된 보너스 번호 입력시 예외 발생 - Checker#checkBonusNumberInput()
 
-- [x] 사용자의 로또 번호와 당첨 번호를 비교한다. - makeWinner#compareNumbers()
-  - [x] List에 n등에 대한 맞춰야하는 번호, 보너스 번호 맞춤여부, 상금을 담음 - makeWinner#initWinnerPrize()
-    - [x] 1등: 6개 번호 일치 / 2,000,000,000원 - MakeWinner#initWinnerPrize()
-    - [x] 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원 - MakeWinner#initWinnerPrize()
-    - [x] 3등: 5개 번호 일치 / 1,500,000원 - MakeWinner#initWinnerPrize()
-    - [x] 4등: 4개 번호 일치 / 50,000원 - MakeWinner#initWinnerPrize()
-    - [x] 5등: 3개 번호 일치 / 5,000원 - MakeWinner#initWinnerPrize()
+- [x] 사용자의 로또 번호와 당첨 번호를 비교한다. - LottoComparator#compareNumbers()
+  - [x] List에 n등에 대한 상금을 담음 - LottoComparator#initWinnerAndPrize()
+    - [x] 1등: 6개 번호 일치 / 2,000,000,000원 - LottoComparator#prize
+    - [x] 2등: 5개 번호 + 보너스 번호 일치 / 30,000,000원 - LottoComparator#prize
+    - [x] 3등: 5개 번호 일치 / 1,500,000원 - LottoComparator#prize
+    - [x] 4등: 4개 번호 일치 / 50,000원 - LottoComparator#prize
+    - [x] 5등: 3개 번호 일치 / 5,000원 - LottoComparator#prize
 
 - [x] 당첨 통계 메세지를 출력한다. - View#WINNING_MESSAGE_GUIDE_MESSAGE
   - [x] 각 등수가 몇 개인지 출력한다. - View#showWinnings()

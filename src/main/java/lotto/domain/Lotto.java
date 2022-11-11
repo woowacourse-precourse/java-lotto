@@ -1,14 +1,17 @@
 package lotto.domain;
 
-import java.util.List;
 import java.util.Set;
 
 public class Lotto {
 	private final Set<Integer> numbers;
+	public boolean isMatchBonusNumber;
+	public int matchNumberCount;
 
 	public Lotto(Set<Integer> numbers) {
 		validate(numbers);
 		this.numbers = numbers;
+		this.isMatchBonusNumber = false;
+		this.matchNumberCount = 0;
 	}
 
 	private void validate(Set<Integer> numbers) {
@@ -17,10 +20,15 @@ public class Lotto {
 		}
 	}
 
-	private void createLotto() {
-	}
-
 	public Set<Integer> getNumbers() {
 		return numbers;
+	}
+
+	public void setMatchBonusNumber(boolean matchBonusNumber) {
+		isMatchBonusNumber = matchBonusNumber;
+	}
+
+	public void setMatchNumberCount(int matchNumberCount) {
+		this.matchNumberCount = matchNumberCount;
 	}
 }

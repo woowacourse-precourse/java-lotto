@@ -21,12 +21,6 @@ public class LottoProgramTest extends NsTest {
 	}
 
 	@Test
-	void 로또_사이즈_테스트() {
-		lottoProgram.createLotto(6);
-		assertThat(lottoList.size()).isEqualTo(6);
-	}
-
-	@Test
 	void createLotto_메서드로_다른_수를_가진_로또_생성() {
 		boolean isSameLottoNumberExist = lottoList.stream()
 			.distinct()
