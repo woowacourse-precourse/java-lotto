@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import static lotto.domain.LottoPrize.FIFTH_PRIZE;
 import static lotto.domain.LottoPrize.FIRST_PRIZE;
