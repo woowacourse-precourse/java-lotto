@@ -19,4 +19,10 @@ public class Validator {
         isNumber(input);
         isDivided(input);
     }
+
+    private void isNumber(String input){
+        if(!Pattern.matches(MONEY_PATTERN, input)) {
+            throw new IllegalArgumentException(WRONG_INPUT);
+        }
+    }
 }
