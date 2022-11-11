@@ -31,3 +31,4 @@
   - [x] 문자열이 숫자열인지 아닌지 판별 여부 구현 - isNumberic()
   - [x] 문자열이 1000으로 나누어 떨어지는지 판별 여부 - isDividedBuyThousand()
   - [x] 문자열내의 특정 문자의 갯수를 반환 기능 구현 - countChar()
+  - [x] 문자열을 특정 문자열을 기준으로 나누는 기능 구현 - splitInteger()
