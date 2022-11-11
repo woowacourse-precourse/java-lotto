@@ -11,5 +11,15 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public int size() {
+        return numbers.size();
+    }
 
+    public LottoNumber get(int order) {
+        return numbers.get(order);
+    }
+
+    public boolean contains(LottoNumber lottoNumber) {
+        return numbers.contains(lottoNumber);
+    }
 }
