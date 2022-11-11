@@ -9,11 +9,12 @@ import org.junit.jupiter.api.Test;
 
 class StringToNumbersConverterTest {
 
+    private final Converter<String, List<Integer>> converter = new StringToNumbersConverter();
+
     @DisplayName("문자열을 숫자 목록으로 변환한다.")
     @Test
     void convertStringToNumbers() {
         //given
-        Converter<String, List<Integer>> converter = new StringToNumbersConverter();
         String target = "1,2,3";
 
         //when
@@ -28,7 +29,6 @@ class StringToNumbersConverterTest {
     @Test
     void convertFail() {
         //given
-        Converter<String, List<Integer>> converter = new StringToNumbersConverter();
         String target = "1,2,3p";
 
         //then

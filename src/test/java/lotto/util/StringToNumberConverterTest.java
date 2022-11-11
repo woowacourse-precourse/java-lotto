@@ -8,11 +8,12 @@ import org.junit.jupiter.api.Test;
 
 class StringToNumberConverterTest {
 
+    private final Converter<String, Integer> converter = new StringToNumberConverter();
+
     @DisplayName("문자열을 숫자로 변환한다.")
     @Test
     void convertStringToNumber() {
         //given
-        Converter<String, Integer> converter = new StringToNumberConverter();
         String target = "123";
         Integer number = 123;
 
@@ -27,7 +28,6 @@ class StringToNumberConverterTest {
     @Test
     void convertFail() {
         //given
-        Converter<String, Integer> converter = new StringToNumberConverter();
         String target = "12a";
 
         //then
