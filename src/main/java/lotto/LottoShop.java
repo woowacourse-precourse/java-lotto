@@ -6,12 +6,13 @@ import java.util.List;
 
 public class LottoShop {
     private static final int LOTTO_PRICE = 1_000;
+    private static final int ZERO = 0;
 
-    public static List<Lotto> purchase(int money) {
+    public static List<Lotto> purchase(Money money) {
         List<Lotto> lottos = new ArrayList<>();
-        int purchaseQuantity = money / LOTTO_PRICE;
-        while (lottos.size() < purchaseQuantity) {
+        while (money.getAmount() != ZERO) {
             lottos.add(issueLotto());
+            money.decreaseAmount(LOTTO_PRICE);
         }
         return lottos;
     }

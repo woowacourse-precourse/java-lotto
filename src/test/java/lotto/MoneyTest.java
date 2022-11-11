@@ -1,9 +1,11 @@
 package lotto;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.Objects;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -22,7 +24,17 @@ class MoneyTest {
             } catch (IllegalArgumentException ignored) {
             }
 
-            Assertions.assertThat(Objects.isNull(money)).isEqualTo(expected);
+            assertThat(Objects.isNull(money)).isEqualTo(expected);
         }
+    }
+
+    @DisplayName("")
+    @Test
+    void decreaseAmount() {
+        Money money = new Money(3000);
+
+        money.decreaseAmount(2000);
+
+        assertThat(money.getAmount()).isEqualTo(1000);
     }
 }

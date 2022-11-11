@@ -10,9 +10,17 @@ public class Money {
         this.amount = amount;
     }
 
+    public void decreaseAmount(int value) {
+        amount -= value;
+    }
+
     private void validate(int amount) {
         if (amount % THOUSAND != ZERO) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public int getAmount() {
+        return amount;
     }
 }

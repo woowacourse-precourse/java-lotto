@@ -7,15 +7,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class LottoShopTest {
-    @DisplayName("로또 금액을 입력하면 금액을 1,000으로 나눈 수 만큼 로또를 생성한다.")
+    @DisplayName("금액을 입력하면 금액이 0이 될 때까지 로또를 구매한다.")
     @Test
     void purchaseLotto() {
-        int money = 3000;
-        int lottoPrice = 1000;
-        int quantity = money / lottoPrice;
+        Money money = new Money(3000);
 
         List<Lotto> lottos = LottoShop.purchase(money);
 
-        assertThat(lottos.size()).isEqualTo(quantity);
+        assertThat(lottos.size()).isEqualTo(3);
     }
 }
