@@ -17,4 +17,8 @@ public class Print {
     public static void inputBonusNumber() {
         System.out.println(INPUT_BONUS_NUMBER);
     }
+
+    public static void newLine() {
+        System.out.println();
+    }
 }
