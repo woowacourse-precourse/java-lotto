@@ -47,6 +47,10 @@ public class OutputView {
     }
 
     public static void printYield(float yield){
-        System.out.printf("총 수익률은 %.1f입니다.\n", yield);
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", yield);
+    }
+
+    public static void printResultMessage() {
+        System.out.println("당첨 통계\n---");
     }
 }
