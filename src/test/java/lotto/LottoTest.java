@@ -1,11 +1,13 @@
 package lotto;
 
 import lotto.domain.Lotto;
+import lotto.domain.LottoUtil;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -24,5 +26,22 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 숫자중 맞은 숫자 개수 확인")
+    @Test
+    void checkCorrectLottoNumberCount() {
+        // given
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+        Integer bonus = 6;
+        List<Integer> userNumbers = List.of(1,2,3,8,9,7);
+        int answerNumbersCount = 3;
+        int answerBonusCount = 1;
+
+        // when
+        int NumbersCount = lotto.getCorrectNumberCountInNumbers(userNumbers);
+        int bonusCount = lotto.getCorrectBonusCount(bonus);
+
+        // then
+        assertThat(answerNumbersCount).isEqualTo(NumbersCount);
+        assertThat(answerBonusCount).isEqualTo(bonusCount);
+    }
 }
