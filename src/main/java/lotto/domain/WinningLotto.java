@@ -2,17 +2,20 @@ package lotto.domain;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 import lotto.view.ErrorMessage;
 import lotto.view.Message;
 
 public class WinningLotto {
+    public static String winningNumber;
+    public static String bonusNumber;
+    public static int[] winningIntArr;
+    public static List<Integer> winningNumbers;
 
-    private String winningNumber;
-    private String bonusNumber;
-
-    public void winningNumberInput() {
+    public static void winningNumberInput() {
         System.out.println(Message.WINNING_NUMBER_INPUT.getMessage());
         winningNumber = readLine();
         validateWinningNumber(winningNumber);
@@ -21,10 +24,27 @@ public class WinningLotto {
         validateInputSeparator(winningNumber);
     }
 
-    public void bonusNumberInput() {
+    public static void bonusNumberInput() {
         System.out.println(Message.BONUS_NUMBER_INPUT.getMessage());
         bonusNumber = readLine();
         validateInputBonusNumber(bonusNumber);
+    }
+
+    public static int[] winningNumberToInt(String winningNumber) {
+        String[] winningStringArr = winningNumber.split(",");
+        winningIntArr = new int[winningStringArr.length];
+        for (int i = 0; i < winningStringArr.length; i++) {
+            winningIntArr[i] = Integer.parseInt(winningStringArr[i]);
+        }
+        return winningIntArr;
+    }
+
+    public static List<Integer> winningIntArrToList(int[] winningIntArr) {
+        winningNumbers = new ArrayList<>(winningIntArr.length);
+        for(int i : winningIntArr) {
+            winningNumbers.add(i);
+        }
+        return winningNumbers;
     }
 
     private static void validateWinningNumber(String winningNumber) {
