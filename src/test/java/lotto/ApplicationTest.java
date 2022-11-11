@@ -81,6 +81,7 @@ class ApplicationTest extends NsTest {
                     .hasMessage("[Error] 구매 금액이 천 원으로 나누어 떨어지지 않는 금액입니다.");
         });
     }
+
     @DisplayName("로또 번호를 쉼표로 구분할 수 없는 경우에는 예외가 발생한다")
     @Test
     void enterLottoByNotIdentify(){

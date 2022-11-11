@@ -12,6 +12,7 @@ public class Input {
 
     public Input() {
         enterMoney();
+        enterNumbers();
     }
 
     private void enterMoney() {
@@ -20,6 +21,29 @@ public class Input {
 
         if(validate(userInput)) {
             this.money = parseInt(userInput);
+        }
+    }
+
+    private void enterNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String userInput = Console.readLine();
+        parseInputToInt(userInput);
+    }
+
+    private void parseInputToInt(String userInput) {
+        String[] tempString = userInput.split(",", 6);
+
+        /*
+            당첨 번호가 성공적으로 분리되어 배열에 저장되면, 그 배열의 크기는
+            항상 6이 된다. 그렇지 않으면 당첨 번호가 쉼표로 구별되지
+            않은 것이므로 예외를 발생시킨다.
+         */
+        if(tempString.length != 6) {
+            throw new IllegalArgumentException("[Error] 당첨 번호가 구별되지 않습니다.");
+        }
+
+        for(String s : tempString) {
+            this.numbers.add(Integer.parseInt(s));
         }
     }
 
