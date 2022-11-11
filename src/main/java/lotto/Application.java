@@ -3,6 +3,6 @@ package lotto;
 public class Application {
     public static void main(String[] args) {
         LottoGame lottoGame = new LottoGame();
-        lottoGame.play(new LottoMachine());
+        lottoGame.play(new Customer());
     }
 }

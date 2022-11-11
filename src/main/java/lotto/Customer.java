@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class LottoMachine {
+public class Customer {
     private static final int LOTTO_PRICE = 1000;
 
     public List<Lotto> generateLottos(int money) {

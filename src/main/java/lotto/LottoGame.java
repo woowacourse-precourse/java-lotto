@@ -11,9 +11,9 @@ public class LottoGame {
     private static final int UNIT_OF_MONEY = 1000;
     private static final int LOTTO_NUMBER_COUNT = 6;
 
-    public void play(LottoMachine lottoMachine) {
+    public void play(Customer customer) {
         int money = inputMoney();
-        List<Lotto> lottos = lottoMachine.generateLottos(money);
+        List<Lotto> lottos = customer.generateLottos(money);
         printLottos(lottos);
         WinningNumber winningNumber = new WinningNumber(inputWinningNumbers(), inputBonusNumber());
         List<LottoRank> ranks = winningNumber.getRanks(lottos);
