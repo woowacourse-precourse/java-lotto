@@ -17,4 +17,12 @@ public class BonusNumberVerifier implements Verifier {
             throw new IllegalArgumentException(ExceptionMessage.IS_NOT_NUMERIC);
         }
     }
+
+    private void checkOutOfRange(String input) {
+        try {
+            Long.parseLong(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(ExceptionMessage.OUT_OF_RANGE);
+        }
+    }
 }
