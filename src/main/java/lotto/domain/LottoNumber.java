@@ -27,6 +27,10 @@ public class LottoNumber {
         return number.toString();
     }
 
+    public Integer value() {
+        return number;
+    }
+
     public static LottoNumber valueOf(Integer number) {
         validate(number);
         return CACHE.get(number);

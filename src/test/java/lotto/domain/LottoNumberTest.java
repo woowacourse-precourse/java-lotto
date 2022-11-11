@@ -30,8 +30,8 @@ public class LottoNumberTest {
 
     @ParameterizedTest
     @ValueSource(ints = {LOTTO_NUMBER_LOWER_BOUND, 10, 20, 30, 40, LOTTO_NUMBER_UPPER_BOUND})
-    void toString_메서드는_로또_번호를_반환한다(int number) {
+    void value_메서드는_로또_번호를_반환한다(int number) {
         LottoNumber lottoNumber = LottoNumber.valueOf(number);
-        assertThat(lottoNumber.toString()).isEqualTo(String.valueOf(number));
+        assertThat(lottoNumber.value()).isEqualTo(number);
     }
 }
