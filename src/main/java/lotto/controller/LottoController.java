@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.constant.StringConstant;
+import lotto.validation.BonusLottoValidation;
 import lotto.validation.LotteryWinningNumberValidation;
 import lotto.validation.LottoMoneyValidation;
 import lotto.validation.Validation;
@@ -41,11 +42,12 @@ public class LottoController {
     }
 
     private void bonusLottoInputValidation(String userBonusLottoInput) {
-        createBonusLottoInputValidation();
+        Validation bonusLottoInputValidation = createBonusLottoInputValidation();
+        bonusLottoInputValidation(userBonusLottoInput);
     }
 
     private Validation createBonusLottoInputValidation() {
-        return null;
+        return new BonusLottoValidation();
     }
 
     private String lottoMoneyInputView() {

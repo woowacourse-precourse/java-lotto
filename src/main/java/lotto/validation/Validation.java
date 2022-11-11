@@ -1,10 +1,12 @@
 package lotto.validation;
 
+import java.util.List;
 import lotto.view.ErrorView;
 
 public abstract class Validation {
 
     public abstract void isValidate(String userInput);
+    public abstract void isValidate(String userInput, List<Integer> compareToUserInput);
 
     protected void createError(String errorMessage) {
         printErrorMessage(errorMessage);

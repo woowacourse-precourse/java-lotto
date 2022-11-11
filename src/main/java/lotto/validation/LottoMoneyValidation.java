@@ -1,5 +1,6 @@
 package lotto.validation;
 
+import java.util.List;
 import lotto.constant.IntConstant;
 import lotto.constant.StringConstant;
 
@@ -9,6 +10,11 @@ public class LottoMoneyValidation extends Validation{
     public void isValidate(String userInput) {
         isNumericFormat(userInput);
         isDivideByInteger(userInput);
+    }
+
+    @Override
+    public void isValidate(String userInput, List<Integer> compareToUserInput) {
+
     }
 
     private void isNumericFormat(String userInput) {
