@@ -7,5 +7,4 @@ public class Constant {
     public static final int LOTTO_NUMBER_MAX = 45;
     public static final int MONEY_UNIT = 1000;
     public static final int REMAINDER_ZERO = 0;
-    public static final String EMPTY = "";
 }
