@@ -27,6 +27,10 @@ public class CommonValidator {
     }
 
     public static void isAllNumber(String number) {
+        if (number.isBlank()) {
+            throw new IllegalArgumentException(CAN_ONLY_INPUT_NUMBER);
+        }
+
         for (int i = 0; i < number.length(); i++) {
             if (!Character.isDigit(number.charAt(i))) {
                 throw new IllegalArgumentException(CAN_ONLY_INPUT_NUMBER);
