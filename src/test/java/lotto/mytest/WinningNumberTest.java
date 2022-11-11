@@ -27,4 +27,13 @@ public class WinningNumberTest {
 			WinningNumber.checkWinningNumber(winningNumber);
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@DisplayName("숫자가 아닌 경우 예외가 발생")
+	@ParameterizedTest
+	@ValueSource(strings = {"1, 2,3,4,5,6", "a,b,c,d,e,f", ",,,,,", " , , , , , ", "1, 2, 3, 4, 5, 6","","a,1,2,3,4,5"})
+	void notNumber(String winningNumber) {
+		assertThatThrownBy(() -> {
+			WinningNumber.checkWinningNumber(winningNumber);
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
 }
