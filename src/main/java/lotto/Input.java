@@ -74,4 +74,10 @@ public class Input {
             throw new IllegalArgumentException();
         }
     }
+
+    public static int bonusNumber() {
+        String input = Console.readLine();
+        validateLottoNumber(input);
+        return Integer.parseInt(input);
+    }
 }
