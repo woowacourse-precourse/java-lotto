@@ -59,4 +59,10 @@ public class Validator {
         if(list.size() != TOTAL_NUMBER)
             throw new IllegalArgumentException(WRONG_INPUT);
     }
+
+    public void isValidBonusNumber(String input, List<Integer> list){
+        this.list = list;
+        if(list.contains(Integer.parseInt(input)))
+            throw new IllegalArgumentException(WRONG_INPUT);
+    }
 }
