@@ -11,7 +11,8 @@
   - [ ] 중복되지 않는 6개의 수, 번호는 쉼표 기준
   - [ ] 에러 입력시  IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료
 - [ ] 보너스 번호 입력 받기 #getBonusNumber
-- [ ] 당첨 내역 확인 및 출력 #castLotto
+- [ ] 당첨 내역 확인 #castLotto 
+- [ ] 당첨 내역 출력 
 - [ ] 수익률 출력 #printProfit
 
 ## 요구사항
