@@ -50,7 +50,8 @@ public class InputUtil {
         int bounsNumber = Integer.parseInt(number);
 
         if (winningNumbers.contains(bounsNumber)) {
-            throw new IllegalArgumentException(CANNOT_DUPLICATED_NUMBER);
+            System.out.println(CANNOT_DUPLICATED_NUMBER);
+            throw new IllegalArgumentException();
         }
 
         return bounsNumber;

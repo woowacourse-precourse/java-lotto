@@ -18,13 +18,15 @@ public class InputValidator extends CommonValidator {
 
     private static void restEqualZero(String dividend, long divisor) {
         if (Long.parseLong(dividend) % divisor != 0) {
-            throw new IllegalArgumentException(CAN_ONLY_MULTIPLY_1000);
+            System.out.println(CAN_ONLY_MULTIPLY_1000);
+            throw new IllegalArgumentException();
         }
     }
 
     private static void isZero(String number) {
         if (Integer.parseInt(number) == 0) {
-            throw new IllegalArgumentException(CANNOT_INPUT_ZERO);
+            System.out.println(CANNOT_INPUT_ZERO);
+            throw new IllegalArgumentException();
         }
     }
 }

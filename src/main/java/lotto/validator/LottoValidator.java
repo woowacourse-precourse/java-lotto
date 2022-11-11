@@ -19,7 +19,8 @@ public class LottoValidator extends CommonValidator {
 
     private static void hasSixNumbers(List<Integer> numbers) {
         if (numbers.size() != MAX_LOTTO_NUMBER_COUNT) {
-            throw new IllegalArgumentException(CAN_ONLY_SIX_COUNT);
+            System.out.println(CAN_ONLY_SIX_COUNT);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -27,7 +28,8 @@ public class LottoValidator extends CommonValidator {
         Set<Integer> duplicatedCheck = new HashSet<>(numbers);
 
         if (duplicatedCheck.size() != MAX_LOTTO_NUMBER_COUNT) {
-            throw new IllegalArgumentException(CANNOT_DUPLICATED_NUMBER);
+            System.out.println(CANNOT_DUPLICATED_NUMBER);
+            throw new IllegalArgumentException();
         }
     }
 
