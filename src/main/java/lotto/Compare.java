@@ -78,4 +78,14 @@ public class Compare {
 	public void figureYield(int bettingMoney) {
 		yield = String.format("%.1f", (double) 100 * sum / bettingMoney);
 	}
+
+	public void printResult() {
+		System.out.println("\n당첨 통계\n---");
+		System.out.println("3개 일치 (5,000원) - " + compareResult[4] + "개");
+		System.out.println("4개 일치 (50,000원) - " + compareResult[3] + "개");
+		System.out.println("5개 일치 (1,500,000원) - " + compareResult[2] + "개");
+		System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + compareResult[1] + "개");
+		System.out.println("6개 일치 (2,000,000,000원) - " + compareResult[0] + "개");
+		System.out.println("총 수익률은 " + yield + "%입니다.");
+	}
 }
