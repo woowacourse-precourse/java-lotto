@@ -137,9 +137,3 @@
 - [ ] 구현 세부 내용 생략
 
 <br>
-
-##  [J] lotto.global.exception 패키지
-
-### [1] GlobalExceptionHandler 클래스
-
-#### 1. 로또 번호의 집합에 중복이 있는지 확인하는 호출 메소드를 가집니다.
