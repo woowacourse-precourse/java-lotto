@@ -28,6 +28,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6 || numbers.size() != numbers.stream().distinct().count()) {
+            System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 정수여야 하며 중복은 불가합니다.");
             throw new IllegalArgumentException();
         }
     }
