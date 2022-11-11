@@ -12,5 +12,22 @@ public enum WinningPrize {
     private int howManyNumbersIncluded;
 
     WinningPrize(int ranking,int winningMoney, int howManyNumbersIncluded) {}
-    
+
+    public static int getRanking(int amountOfCorrectNumbers, Lotto lottoPapers, int bonusNumber){
+        boolean isSecondPrize = (amountOfCorrectNumbers == 5) && isBonusNumberIncludedInPapers(lottoPapers,bonusNumber);
+
+        for(WinningPrize prize : WinningPrize.values()){
+            if(amountOfCorrectNumbers == prize.howManyNumbersIncluded){
+                if(isSecondPrize){
+                    return 2;
+                }
+                return prize.ranking;
+            }
+        }
+        return -1;
+    }
+
+    private static boolean isBonusNumberIncludedInPapers(Lotto lottoPapers, int bonusNumber){
+        return lottoPapers.getNumbers().contains(bonusNumber);
+    }
 }
