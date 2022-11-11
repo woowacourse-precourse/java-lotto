@@ -4,7 +4,7 @@ import lotto.application.service.agent.InputAgent;
 
 public class Client {
 
-    public int getPurchaseMoney() {
+    public static int getPurchaseMoney() {
         System.out.println("구매금액을 입력해 주세요.");
         InputAgent inputAgent = new InputAgent();
         int inputValue = 0;
