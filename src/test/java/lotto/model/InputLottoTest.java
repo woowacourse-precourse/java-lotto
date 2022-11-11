@@ -106,4 +106,64 @@ class InputLottoTest {
 
         assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputWinNumber());
     }
+
+    @DisplayName("보너스번호 입력시 정환한 값은 int 로 변환해 반환합니다.")
+    @Test
+    void inputBonusNumberTest1() {
+        List<Integer> winNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        String input = "7";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThat(inputLotto.inputBonusNumber(winNumbers)).isEqualTo(7);
+    }
+
+    @DisplayName("보너스 번호 입력 시 숫자 이외의 다른것을 넣으면 IllegalArgumentException 이 발생합니다.")
+    @Test
+    void inputBonusNumberTest2() {
+        List<Integer> winNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        String input = "s";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputBonusNumber(winNumbers));
+    }
+
+    @DisplayName("보너스 번호 입력 시 숫자 이외의 다른것을 넣으면 IllegalArgumentException 이 발생합니다.")
+    @Test
+    void inputBonusNumberTest3() {
+        List<Integer> winNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        String input = "23,";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputBonusNumber(winNumbers));
+    }
+
+    @DisplayName("보너스 번호 입력 시 1~45 범위 밖의 숫자를 넣으면 IllegalArgumentException 이 발생합니다.")
+    @Test
+    void inputBonusNumberTest4() {
+        List<Integer> winNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        String input = "46";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputBonusNumber(winNumbers));
+    }
+
+    @DisplayName("보너스 번호 입력 시 1~45 범위 밖의 숫자를 넣으면 IllegalArgumentException 이 발생합니다.")
+    @Test
+    void inputBonusNumberTest5() {
+        List<Integer> winNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        String input = "0";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputBonusNumber(winNumbers));
+    }
+
+    @DisplayName("보너스 번호 입력 시 당첨 번호와 중복되는 숫자를 넣으면 IllegalArgumentException 이 발생합니다.")
+    @Test
+    void inputBonusNumberTest6() {
+        List<Integer> winNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        String input = "1";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        assertThatIllegalArgumentException().isThrownBy(() -> inputLotto.inputBonusNumber(winNumbers));
+    }
 }
