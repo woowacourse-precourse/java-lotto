@@ -18,7 +18,7 @@ public class LottoIO {
     }
 
     // 당첨 번호 입력
-    public List<Integer> inputLottoAnswer() {
+    public void inputLottoAnswer() {
         System.out.println("당첨 번호를 입력 주세요.");
         String input = Console.readLine();
         System.out.println();
@@ -31,11 +31,11 @@ public class LottoIO {
         for (String num : nums) {
             this.lottoAnswer.add(Integer.valueOf(num));
         }
-        return this.lottoAnswer;
+        return;
     }
 
     // 보너스 번호 입력
-    public int inputBonusAnswer() {
+    public void inputBonusAnswer() {
         System.out.println("보너스 번호를 입력 주세요.");
         String input = Console.readLine();
         System.out.println();
@@ -46,7 +46,7 @@ public class LottoIO {
         Integer result = Integer.valueOf(input);
 
         this.bonus = result;
-        return bonus;
+        return;
     }
 
     // 올바르지 않은 당첨 번호 확인
