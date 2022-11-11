@@ -1,5 +1,6 @@
 package lotto.model;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Ranking;
 import lotto.domain.Lotto;
 import lotto.domain.Profit;
@@ -30,7 +31,9 @@ public class Player {
     }
 
     private void makeTickets(int ticketCount){
-
+        for(int count = 0; count < ticketCount; count++){
+            playerLotto.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
+        }
     }
 
     public List<Lotto> getPlayerLotto(){
