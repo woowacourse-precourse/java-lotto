@@ -2,19 +2,37 @@ package lotto.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 public class BonusInput {
-    public static String bonusNumber;
+    public static String bonusInput;
+    public static int bonusNumber;
+    public static boolean bonus;
 
     public static void bonusNumberInput() {
         System.out.println(Message.BONUS_NUMBER_INPUT.getMessage());
-        bonusNumber = readLine();
-        validateInputBonusNumber(bonusNumber);
+        bonusInput = readLine();
+        validateInputBonusNumber(bonusInput);
     }
 
-    private static void validateInputBonusNumber(String bonusNumber) {
-        Integer[] bonusNumberArr = Stream.of(bonusNumber)
+    public static void getBonusResult(List<List<Integer>> lottos) {
+        bonusNumber = bonusToInt(bonusInput);
+        bonus = false;
+        for (List<Integer> check : lottos) {
+            if (check.contains(bonusNumber)) {
+                bonus = true;
+            }
+        }
+    }
+
+    public static int bonusToInt(String bonusInput) {
+        bonusNumber = Integer.parseInt(bonusInput);
+        return bonusNumber;
+    }
+
+    private static void validateInputBonusNumber(String bonusInput) {
+        Integer[] bonusNumberArr = Stream.of(bonusInput)
                 .mapToInt(Integer::parseInt)
                 .boxed()
                 .toArray(Integer[]::new);
