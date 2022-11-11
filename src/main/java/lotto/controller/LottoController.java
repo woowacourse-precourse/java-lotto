@@ -5,6 +5,7 @@ import static lotto.service.LottoService.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import lotto.ExceptionHandler;
 import lotto.domain.Lotto;
 import lotto.service.LottoService;
 import lotto.view.Input;
@@ -27,12 +28,15 @@ public class LottoController {
 
 	public static List<Integer> pickWinningNumbers() {
 		String winningNumbers = Input.pickWinningNumbers();
+		ExceptionHandler.checkSpilt(winningNumbers);
 
 		return LottoService.convertStringToList(winningNumbers);
 	}
 
 	public static int pickBonusNumbers() {
 		String bonusNumber = Input.pickWinningNumbers();
+
+		ExceptionHandler.checkBonus(bonusNumber);
 
 		return Integer.parseInt(bonusNumber);
 	}

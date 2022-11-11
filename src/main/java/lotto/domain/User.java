@@ -10,8 +10,17 @@ public class User {
 	private double rateOfReturn;
 
 	public User(int money) {
-		ExceptionHandler.checkMoney(money);
+		checkMoney(money);
 
+		this.money = money;
+	}
+
+	private void checkMoney(int money) {
+		try {
+			money /= 1000;
+		} catch (Exception e) {
+			System.out.println("[ERROR]");
+		}
 		this.money = money;
 	}
 

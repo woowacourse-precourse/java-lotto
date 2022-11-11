@@ -12,33 +12,44 @@ import lotto.view.Output;
 
 public class Application {
     public static void main(String[] args) {
-        Output.printNotice(Notice.start.getNoticeMessage());
+        Output.printNotice(Notice.START.getNoticeMessage());
 
-        User user = new User(Integer.parseInt(Input.buyLotto()));
+        String money = Input.buyLotto();
+        int checkMoney = 0;
 
-        LottoSeller seller = new LottoSeller(User.getMoney());
+        try {
+            checkMoney = Integer.parseInt(money);
+        } catch (IllegalArgumentException e) {
+            Output.printNotice(Notice.ERROR.getNoticeMessage());
+        }
 
-        Output.printResult(seller.getQuantity(), Notice.purchase.getNoticeMessage());
+        if (checkMoney != 0) {
+            User user = new User(checkMoney);
 
-        user.userLottoeris(seller.getLotto());
+            LottoSeller seller = new LottoSeller(User.getMoney());
 
+            Output.printResult(seller.getQuantity(), Notice.PURCHASE.getNoticeMessage());
 
-        //당첨 번호 입력
-        Output.printNotice(Notice.winningNumbers.getNoticeMessage());
-        Lotto lotto = new Lotto(pickWinningNumbers());
-        Output.printNotice(Notice.bonusNumber.getNoticeMessage());
-        Company lottoCompany = new Company(lotto.getNumbers(), pickBonusNumbers());
-
-        Output.printNotice(Notice.statistics.getNoticeMessage());
+            user.userLottoeris(seller.getLotto());
 
 
-        PrizeMoney prizeMoney = new PrizeMoney();
-        prizeMoney.setCount(countWinningLotto(user.getLottoeris(), lottoCompany.getWinningLotto(), lottoCompany.getBonus(), LottoSeller.getQuantity()));
+            //당첨 번호 입력
+            Output.printNotice(Notice.WINNING_NUMBERS.getNoticeMessage());
+            Lotto lotto = new Lotto(pickWinningNumbers());
+            Output.printNotice(Notice.BONUS_NUMBER.getNoticeMessage());
+            Company lottoCompany = new Company(lotto.getNumbers(), pickBonusNumbers());
 
-        Output.printCount(prizeMoney.getCount());
+            Output.printNotice(Notice.STATISTICS.getNoticeMessage());
 
-        user.setRateOfReturn(calculateProfit(prizeMoney.getCount(), user.getMoney()));
 
-        Output.printRateOfReturn(user.getRateOfReturn());
+            PrizeMoney prizeMoney = new PrizeMoney();
+            prizeMoney.setCount(getWinningRanking(user.getLottoeris(), lottoCompany.getWinningLotto(), lottoCompany.getBonus()));
+
+            Output.printCount(prizeMoney.getCount());
+
+            user.setRateOfReturn(calculateProfit(prizeMoney.getCount(), user.getMoney()));
+
+            Output.printRateOfReturn(user.getRateOfReturn());
+        }
     }
 }
