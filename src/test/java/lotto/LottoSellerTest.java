@@ -42,7 +42,7 @@ class LottoSellerTest {
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
 
-        Assertions.assertThatThrownBy(() -> new Lotto(lottoSeller.receiveWinningNumbers()))
+        Assertions.assertThatThrownBy(() -> lottoSeller.createWinningLotto())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -53,7 +53,7 @@ class LottoSellerTest {
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
 
-        Assertions.assertThatThrownBy(() -> lottoSeller.receiveWinningNumbers())
+        Assertions.assertThatThrownBy(() -> lottoSeller.createWinningLotto())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -64,21 +64,21 @@ class LottoSellerTest {
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
 
-        Assertions.assertThatThrownBy(() -> new Lotto(lottoSeller.receiveWinningNumbers()))
+        Assertions.assertThatThrownBy(() -> lottoSeller.createWinningLotto())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("올바른 당첨번호를 입력하면 정상적으로 동작한다.")
     @Test
     void inputValidWinningNumber() {
-        String input = "15,16,20,45,11,9";
+        String input = "15,16,20,45,11,9\n1";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
 
-        List<Integer> winningNumbers = lottoSeller.receiveWinningNumbers();
-
-        Assertions.assertThat(winningNumbers)
-                .isEqualTo(Arrays.asList(15, 16, 20, 45, 11, 9));
+        WinningLotto winningLotto = lottoSeller.createWinningLotto();
+        Lotto userLotto = new Lotto(Arrays.asList(15, 16, 20, 45, 11, 10));
+        Assertions.assertThat(winningLotto.countWinningNumber(userLotto))
+                .isEqualTo(5);
     }
 
     @DisplayName("숫자가 아닌 보너스 번호를 입력하면 예외가 발생한다.")
@@ -88,7 +88,7 @@ class LottoSellerTest {
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
 
-        Assertions.assertThatThrownBy(() -> lottoSeller.receiveBonusNumber())
+        Assertions.assertThatThrownBy(() -> lottoSeller.createWinningLotto())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -99,19 +99,21 @@ class LottoSellerTest {
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
 
-        Assertions.assertThatThrownBy(() -> lottoSeller.receiveBonusNumber())
+        Assertions.assertThatThrownBy(() -> lottoSeller.createWinningLotto())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("정상적인 보너스 번호를 입력하면 정상적으로 동작한다.")
     @Test
     void inputValidBonusNumber() {
-        String input = "30";
+        String input = "10,14,15,16,18,30\n12";
         InputStream inputStream = new ByteArrayInputStream(input.getBytes());
         System.setIn(inputStream);
 
-        int number = lottoSeller.receiveBonusNumber();
+        WinningLotto winningLotto = lottoSeller.createWinningLotto();
+        Lotto userLotto = new Lotto(Arrays.asList(15, 16, 20, 12, 11, 10));
 
-        Assertions.assertThat(number).isEqualTo(30);
+        Assertions.assertThat(winningLotto.hasNumberInBonus(userLotto))
+                .isEqualTo(true);
     }
 }

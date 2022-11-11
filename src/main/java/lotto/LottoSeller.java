@@ -23,7 +23,14 @@ public class LottoSeller {
         validateNumber(input);
     }
 
-    public List<Integer> receiveWinningNumbers() {
+    public WinningLotto createWinningLotto() {
+        Lotto winningNumber = new Lotto(receiveWinningNumbers());
+        int bonusNumber = receiveBonusNumber();
+
+        return new WinningLotto(winningNumber, bonusNumber);
+    }
+
+    private List<Integer> receiveWinningNumbers() {
         System.out.println(WINNING_NUM_MSG);
         String userInput = receiveUserInput();
         validateWinningNumbers(userInput);
@@ -46,7 +53,7 @@ public class LottoSeller {
         }
     }
 
-    public int receiveBonusNumber() {
+    private int receiveBonusNumber() {
         System.out.println(BONUS_NUM_MSG);
         String userInput = receiveUserInput();
         validateBonusNumber(userInput);
