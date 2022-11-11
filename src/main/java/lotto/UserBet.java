@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class UserBet {
@@ -34,6 +35,7 @@ public class UserBet {
 
 		while(myLottos.size() < amount) {
 			List<Integer> randomLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+			Collections.sort(randomLotto);
 
 			myLottos.add(randomLotto);
 		}
