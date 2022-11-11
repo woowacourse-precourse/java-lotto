@@ -31,7 +31,7 @@
 - 참조사항으로 최종 구현 시점까지 언제든 변경 가능하다.
 ***
 
-## UI
+## 💻UI
 #### 입력
 1. class ConsoleUserInput
 - List sixWinnningNumbersAndBonusNumber
@@ -51,7 +51,7 @@
 * Boolean invalidInput
 
 
-## Domain
+## 🎰Domain
 #### 입력처리(로또 번호 맞추기, 가격에 따라 발급하기)
 1. class LottoCounter
 - putWinningNumbers(StringTokenizer)()
@@ -65,7 +65,7 @@
 
 
 
-## enum
+## 🤖enum
 1. class RobotClerk
 - ASK_MONEY_TO_BUY_LOTTO
 - LET_USER_KNOW_THE_NUMBER_OF_TICKETS
