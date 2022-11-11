@@ -3,6 +3,7 @@ package lotto.view;
 import lotto.Ranking;
 import lotto.domain.Profit;
 import lotto.domain.Winning;
+import lotto.model.Player;
 
 import java.util.HashMap;
 
@@ -17,8 +18,10 @@ public class RankingView {
     private static final String TOTAL_PROFIT_START = "총 수익률은 ";
     private static final String TOTAL_PROFIT_END = "%입니다.";
 
-    public void showWinningResult(){
-
+    public void showWinningResult(Player player){
+        startWinningStatistics();
+        showPriceToPlayer(player.showWinningStatistics());
+        showProfit(player.showWinningProfit());
     }
 
     private void startWinningStatistics(){
