@@ -8,8 +8,8 @@ class GetRateOfReturnTest {
     @Test
     void calculateRate() {
         GetRateOfReturn testcase = new GetRateOfReturn();
-        int [] result = {0, 0, 1, 0, 0, 0, 0};
-        int money = 8000;
+        long [] result = {0, 0, 1, 0, 0, 0, 0};
+        long money = 8000;
         assertThat(testcase.calculateRate(result, money)).isEqualTo(62.5);
     }
 }

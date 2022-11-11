@@ -3,14 +3,16 @@ package lotto;
 import java.util.List;
 
 public class LottoPaper {
-    final List<Integer> number;
-    public LottoPaper(List<Integer> number){
+    public List<Integer> number;
+
+    public void setNumber(List<Integer> number) {
         this.number = number;
     }
-    public int getResult(List<Integer> winningNumber, int bonusNumber){
-        if(this.number.contains(bonusNumber)){
+
+    public int getResult(List<Integer> winningNumber, int bonusNumber) {
+        if (this.number.contains(bonusNumber)) {
             this.number.retainAll(winningNumber);
-            if(this.number.size() == 5){
+            if (this.number.size() == 5) {
                 return 7; //보너스 얘외 처리
             }
         }

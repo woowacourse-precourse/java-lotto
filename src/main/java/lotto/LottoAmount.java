@@ -1,8 +1,8 @@
 package lotto;
 
 public class LottoAmount {
-    public int lottoTries(String money) {
+    public long lottoTries(String money) {
         Validate checkMoney = new Validate();
-        return checkMoney.isValidMoney(Integer.parseInt(money));
+        return checkMoney.isValidMoney(Long.parseLong(money));
     }
 }

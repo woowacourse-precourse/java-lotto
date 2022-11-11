@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Validate {
-    public int isValidMoney(int money)throws IllegalArgumentException{
+    public long isValidMoney(long money)throws IllegalArgumentException{
         if(money < 1000)
             throw new IllegalArgumentException("[ERROR] 1000원 이상의 금액을 입력하세요.");
         if(money % 1000 != 0)
@@ -34,16 +34,13 @@ public class Validate {
         if(winningNumber.contains(bonusNumber))
             throw new IllegalArgumentException("[ERROR] 당첨번호와 겹치지 않는 숫자를 입력하세요.");
     }
-    public boolean validUserWinningNumber(List<Integer> winningNumber) {
+    public void validUserWinningNumber(List<Integer> winningNumber) {
         Set<Integer> overlapCheck = new HashSet<>(winningNumber);
-        if(winningNumber.size() != 6)
-            return false;
         if (overlapCheck.size() != winningNumber.size())
-            return false;
+            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.")
         for (Integer lottoNumber : winningNumber) {
             if (lottoNumber < 1 || lottoNumber > 45)
-                return false;
+                throw new IllegalArgumentException("[ERROR] 1 ~ 45 사이의 숫자를 입력하세요.")
         }
-        return true;
     }
 }

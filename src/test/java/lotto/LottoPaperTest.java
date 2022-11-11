@@ -11,7 +11,7 @@ class LottoPaperTest {
 
     @Test
     void getResult() {
-        LottoPaper lottoPaper = new LottoPaper(new ArrayList<>(List.of(1, 2, 45, 40, 50, 10)));
+        LottoPaper lottoPaper = new LottoPaper();
         List<Integer> testLotto = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
         int bonus = 10;
         assertThat(lottoPaper.getResult(testLotto, bonus)).isEqualTo(2);
