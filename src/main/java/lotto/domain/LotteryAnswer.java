@@ -34,6 +34,16 @@ public class LotteryAnswer {
         answer = new Lotto(numbers);
     }
 
+    public void inputBonusNumber(String input) {
+        validate(input);
+        int bonusNumber = Integer.parseInt(input);
+
+        if (getAnswer().getNumbers().contains(bonusNumber))
+            throw new IllegalArgumentException(LottoError.DISTINCT_NUMBERS.getErrorMessage());
+
+        this.bonusNumber = bonusNumber;
+    }
+
     private void validate(String token) {
         int numericLength = (int) token.chars().filter(Character::isDigit).count();
         if (token.length() != numericLength)
