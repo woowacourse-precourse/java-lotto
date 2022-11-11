@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -12,20 +13,21 @@ public class UserInput {
     private static Integer lotto_total = 0;
     private static List<Integer> winning = new ArrayList<>();
     private static Integer bouns = 0;
+    public static List<Lotto> bought = null;
 
     public static void getAllInput() throws IllegalArgumentException {
         howMuchLotto();
+        Output.printLotto(bought);
         winningNumber();
         bonusNumber();
     }
 
-    public static List<Lotto> buy() throws IllegalArgumentException {
-        List<Lotto> bought = new ArrayList<>();
+    public static void buy() throws IllegalArgumentException {
+        bought = new ArrayList<>();
         for (int i = 0; i < lotto_total / each_lotto; ++i) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             bought.add(new Lotto(numbers));
         }
-        return bought;
     }
 
     private static void howMuchLotto() throws IllegalArgumentException {
@@ -53,6 +55,8 @@ public class UserInput {
             check.add(curr);
             winning.add(curr);
         }
+        // sort winning number for easier comparison
+        Collections.sort(winning);
     }
 
     private static void bonusNumber() throws IllegalArgumentException {
