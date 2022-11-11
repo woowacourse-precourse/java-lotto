@@ -28,20 +28,25 @@ public class InputValid {
     }
 
     public static boolean checkLottoNumber(String strLottoNumber){
-        List<String> listLottoNumber;
-        try {
-            listLottoNumber = Arrays.asList(strLottoNumber.split(","));
-            listLottoNumber = listLottoNumber.stream().
-                    distinct().
-                    filter(s -> Integer.parseInt(s) > 0).filter(s -> Integer.parseInt(s) < 46).
-                    collect(Collectors.toList());
-        }catch (Exception e){
-            return false;
-        }
+        List<String> listLottoNumber=tryCheckLottoNumber(strLottoNumber);
 
         if(listLottoNumber.size()!=6){
             return false;
         }
         return true;
+    }
+
+    private static List<String> tryCheckLottoNumber(String strLottoNumber){
+        try {
+            List<String> listLottoNumber = Arrays.asList(strLottoNumber.split(","));
+
+            return listLottoNumber.stream().
+                    distinct().
+                    filter(s -> Integer.parseInt(s) > 0).filter(s -> Integer.parseInt(s) < 46).
+                    collect(Collectors.toList());
+
+        }catch (Exception e){
+            return Arrays.asList("");
+        }
     }
 }
