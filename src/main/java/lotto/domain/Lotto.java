@@ -5,7 +5,6 @@ import static lotto.constant.SystemMessage.USER_LOTTERY_NUMBERS_SIZE_ERROR;
 import static lotto.constant.SystemValue.LOTTERY_NUMBERS_SIZE;
 
 import java.util.List;
-import lotto.view.Output;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -13,34 +12,30 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
-        Output.printLotteryNumbers(numbers);
     }
 
     private void validate(List<Integer> numbers) {
-        if (!isSizeValid(numbers) || !isConflictValid(numbers)) {
-            throw new IllegalArgumentException();
-        }
+        checkSizeValid(numbers);
+        checkConflictValid(numbers);
     }
 
     public List<Integer> getNumbers() {
         return numbers;
     }
 
-    public static boolean isSizeValid(List<Integer> numbers) {
+    public static void checkSizeValid(List<Integer> numbers) {
         boolean isSize = numbers.size() == LOTTERY_NUMBERS_SIZE;
         if (!isSize) {
-            Output.printError(USER_LOTTERY_NUMBERS_SIZE_ERROR);
+            throw new IllegalArgumentException(USER_LOTTERY_NUMBERS_SIZE_ERROR);
         }
-        return isSize;
     }
 
-    public static boolean isConflictValid(List<Integer> numbers) {
+    public static void checkConflictValid(List<Integer> numbers) {
         boolean isConflict = numbers.stream()
                 .distinct()
                 .count() == LOTTERY_NUMBERS_SIZE;
         if (!isConflict) {
-            Output.printError(USER_LOTTERY_NUMBERS_CONFLICT_ERROR);
+            throw new IllegalArgumentException(USER_LOTTERY_NUMBERS_CONFLICT_ERROR);
         }
-        return isConflict;
     }
 }
