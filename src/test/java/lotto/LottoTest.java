@@ -1,5 +1,11 @@
 package lotto;
 
+import lotto.controller.LottoGame;
+import lotto.domain.Customer;
+import lotto.domain.Lotto;
+import lotto.domain.WinningNumber;
+import lotto.view.LottoGameView;
+import lotto.view.ViewValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -29,65 +35,47 @@ class LottoTest {
 
     @DisplayName("숫자가 아닌 다른 글자가 들어가면 예외가 발생한다")
     @Test
-    void createMoneyByNotNumber() throws NoSuchMethodException {
-        LottoGame lottoGame = new LottoGame();
+    void createMoneyByNotNumber() {
+        ViewValidator viewValidator = new ViewValidator();
 
-        Method method = lottoGame.getClass().getDeclaredMethod("validateMoneyType", String.class);
-        method.setAccessible(true);
-
-        assertThatThrownBy(() -> method.invoke(lottoGame, "a1000"))
-                .getCause()
+        assertThatThrownBy(() -> viewValidator.validateNumberType("a1000"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("숫자가 들어가면 예외가 발생하지 않는다")
     @Test
     void createMoneyByNumber() throws NoSuchMethodException {
-        LottoGame lottoGame = new LottoGame();
-
-        Method method = lottoGame.getClass().getDeclaredMethod("validateMoneyType", String.class);
-        method.setAccessible(true);
+        ViewValidator viewValidator = new ViewValidator();
 
         assertThatNoException()
-                .isThrownBy(() -> method.invoke(lottoGame, "1000"));
+                .isThrownBy(() -> viewValidator.validateNumberType("1000"));
     }
 
     @DisplayName("숫자 예외가 발생 시 메시지에 접두어로 [ERROR]가 들어간다")
     @Test
     void errorMessageByNotNumber() throws NoSuchMethodException {
-        LottoGame lottoGame = new LottoGame();
+        ViewValidator viewValidator = new ViewValidator();
 
-        Method method = lottoGame.getClass().getDeclaredMethod("validateMoneyType", String.class);
-        method.setAccessible(true);
-
-        assertThatThrownBy(() -> method.invoke(lottoGame, "a1000"))
-                .getCause()
+        assertThatThrownBy(() -> viewValidator.validateNumberType("a1000"))
                 .hasMessageStartingWith("[ERROR]");
     }
 
     @DisplayName("1000원 단위가 아닌 돈이 입력됐을 때 예외가 발생한다")
     @Test
-    void createMoneyByNotUnitOf1000() throws NoSuchMethodException {
-        LottoGame lottoGame = new LottoGame();
+    void createMoneyByNotUnitOf1000() {
+        ViewValidator viewValidator = new ViewValidator();
 
-        Method method = lottoGame.getClass().getDeclaredMethod("validateUnitOf1000", String.class);
-        method.setAccessible(true);
-
-        assertThatThrownBy(() -> method.invoke(lottoGame, "1200"))
-                .getCause()
+        assertThatThrownBy(() -> viewValidator.validateUnitOf1000("1200"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("1000원 단위인 돈이 입력됐을 때 예외가 발생하지 않는다")
     @Test
-    void createMoneyByUnitOf1000() throws NoSuchMethodException {
-        LottoGame lottoGame = new LottoGame();
-
-        Method method = lottoGame.getClass().getDeclaredMethod("validateUnitOf1000", String.class);
-        method.setAccessible(true);
+    void createMoneyByUnitOf1000() {
+        ViewValidator viewValidator = new ViewValidator();
 
         assertThatNoException()
-                .isThrownBy(() -> method.invoke(lottoGame, "2000"));
+                .isThrownBy(() -> viewValidator.validateUnitOf1000("2000"));
     }
 
     @DisplayName("로또 번호를 생성하면 리스트로 로또 번호가 나온다")
@@ -132,13 +120,13 @@ class LottoTest {
     @DisplayName("로또 번호를 입력하면 오름차순으로 정렬한다")
     @Test
     void sortLottoNumber() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        LottoGame lottoGame = new LottoGame();
+        LottoGameView lottoGameView = new LottoGameView(new ViewValidator());
         List<Integer> lotto = List.of(34, 24, 40, 41, 10, 7);
         List<Integer> result = List.of(7, 10, 24, 34, 40, 41);
 
-        Method method = lottoGame.getClass().getDeclaredMethod("getSortedByAscend", List.class);
+        Method method = lottoGameView.getClass().getDeclaredMethod("getSortedByAscend", List.class);
         method.setAccessible(true);
-        List<Integer> sortedLotto = (List<Integer>) method.invoke(lottoGame, lotto);
+        List<Integer> sortedLotto = (List<Integer>) method.invoke(lottoGameView, lotto);
 
         assertThat(sortedLotto).isEqualTo(result);
     }
@@ -167,97 +155,76 @@ class LottoTest {
         assertThat(lottos.size()).isEqualTo(result);
     }
 
-    @DisplayName("1과 45사이의 값이 아니면 예외가 발생한다")
+    @DisplayName("당첨 번호가 1과 45사이의 값이 아니면 예외가 발생한다")
     @Test
-    void createNumberByOutOfRange() throws NoSuchMethodException {
-        LottoGame lottoGame = new LottoGame();
+    void createNumberByOutOfRange() {
+        List<Integer> winningNumbers = List.of(1, 7, 10, 24, 37, 46);
+        int bonusNumber = 12;
 
-        Method method = lottoGame.getClass().getDeclaredMethod("validateNumberRange", int.class);
-        method.setAccessible(true);
-
-        assertThatThrownBy(() -> method.invoke(lottoGame, 46))
-                .getCause()
+        assertThatThrownBy(() -> new WinningNumber(winningNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("1과 45사이의 값이면 예외가 발생하지 않는다")
+    @DisplayName("당첨 번호가 1과 45사이의 값이면 예외가 발생하지 않는다")
     @Test
     void createNumberByWithinRange() throws NoSuchMethodException {
-        LottoGame lottoGame = new LottoGame();
-
-        Method method = lottoGame.getClass().getDeclaredMethod("validateNumberRange", int.class);
-        method.setAccessible(true);
+        List<Integer> winningNumbers = List.of(1, 7, 10, 24, 37, 45);
+        int bonusNumber = 12;
 
         assertThatNoException()
-                .isThrownBy(() -> method.invoke(lottoGame, 44));
+                .isThrownBy(() -> new WinningNumber(winningNumbers, bonusNumber));
     }
 
     @DisplayName("값이 숫자가 아니면 예외가 발생한다")
     @Test
-    void createNumberByNotIntegerType() throws NoSuchMethodException {
-        LottoGame lottoGame = new LottoGame();
+    void createNumberByNotIntegerType() {
+        ViewValidator viewValidator = new ViewValidator();
 
-        Method method = lottoGame.getClass().getDeclaredMethod("validateNumberType", String.class);
-        method.setAccessible(true);
-
-        assertThatThrownBy(() -> method.invoke(lottoGame, "a1"))
-                .getCause()
+        assertThatThrownBy(() -> viewValidator.validateNumberType("a1"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("값이 숫자면 예외가 발생하지 않는다")
     @Test
-    void createNumberByIntegerType() throws NoSuchMethodException {
-        LottoGame lottoGame = new LottoGame();
-
-        Method method = lottoGame.getClass().getDeclaredMethod("validateNumberType", String.class);
-        method.setAccessible(true);
+    void createNumberByIntegerType() {
+        ViewValidator viewValidator = new ViewValidator();
 
         assertThatNoException()
-                .isThrownBy(() -> method.invoke(lottoGame, "11"));
+                .isThrownBy(() -> viewValidator.validateNumberType("11"));
     }
 
     @DisplayName("5개의 콤마로 구분된 숫자들이 입력되면 6개의 숫자 리스트가 나온다")
     @Test
     void createSixNumber() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        LottoGame lottoGame = new LottoGame();
+        LottoGameView lottoGameView = new LottoGameView(new ViewValidator());
         String winningNumbers = "1,7,10,24,37,45";
         List<Integer> result = List.of(1, 7, 10, 24, 37, 45);
 
-        Method method = lottoGame.getClass().getDeclaredMethod("getNumbers", String.class);
+        Method method = lottoGameView.getClass().getDeclaredMethod("convertWinningNumbers", String.class);
         method.setAccessible(true);
-        List<Integer> numbers = (List<Integer>) method.invoke(lottoGame, winningNumbers);
+        List<Integer> numbers = (List<Integer>) method.invoke(lottoGameView, winningNumbers);
 
         assertThat(numbers).isEqualTo(result);
     }
 
     @DisplayName("1개의 보너스 번호가 6개의 당첨 번호 중에 포함되어있으면 예외가 발생한다")
     @Test
-    void createBonusNumberIncludedInWinningNumber() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        LottoGame lottoGame = new LottoGame();
-        List<Integer> winningNumber = List.of(1, 7, 10, 24, 37, 45);
+    void createBonusNumberIncludedInWinningNumber() {
+        List<Integer> winningNumbers = List.of(1, 7, 10, 24, 37, 45);
         int bonusNumber = 7;
 
-        Method method = lottoGame.getClass().getDeclaredMethod("validateContainsInWinningNumber", List.class, int.class);
-        method.setAccessible(true);
-
-        assertThatThrownBy(() -> method.invoke(lottoGame, winningNumber, bonusNumber))
-                .getCause()
+        assertThatThrownBy(() -> new WinningNumber(winningNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("1개의 보너스 번호가 6개의 당첨 번호 중에 포함되어있지 않으면 예외가 발생하지 않는다")
     @Test
-    void createBonusNumberExcluded() throws NoSuchMethodException {
-        LottoGame lottoGame = new LottoGame();
-        List<Integer> winningNumber = List.of(1, 7, 10, 24, 37, 45);
+    void createBonusNumberExcluded() {
+        List<Integer> winningNumbers = List.of(1, 7, 10, 24, 37, 45);
         int bonusNumber = 11;
 
-        Method method = lottoGame.getClass().getDeclaredMethod("validateContainsInWinningNumber", List.class, int.class);
-        method.setAccessible(true);
-
         assertThatNoException()
-                .isThrownBy(() -> method.invoke(lottoGame, winningNumber, bonusNumber));
+                .isThrownBy(() -> new WinningNumber(winningNumbers, bonusNumber));
     }
 
     @DisplayName("뽑기 기계에 당첨 번호를 넣으면 당첨 번호가 들어간다")
