@@ -5,7 +5,8 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-
+import java.util.List;
+import java.util.ArrayList;
 
 class CheckInputExceptionTest {
 
@@ -57,5 +58,33 @@ class CheckInputExceptionTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
+
+    @Test
+    @DisplayName("구매자가 입력한 ','가 5개가 아니라면 예외 발생 확인")
+    void 구매자_입력이_컨마5개_아니면_예외_테스트(){
+        final String sixComma = "1,2,3,4,5,6,";
+
+        assertThatThrownBy(() -> CheckInputException.checkBuyerInputIsNotFiveComma(sixComma))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+
+        final String zeroComma = "1234";
+
+        assertThatThrownBy(() -> CheckInputException.checkBuyerInputIsNotFiveComma(zeroComma))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
+
+    /*@Test
+    void test(){
+        String str = "11,2,33,44,55, ";
+        List<Integer> numberic = new ArrayList<>();
+
+        for (String number : str.split(",")){
+            numberic.add(Integer.valueOf(number));
+        }
+        System.out.println(numberic.size());
+    }*/
+
 
 }
