@@ -2,7 +2,7 @@ package lotto.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -14,7 +14,14 @@ class ProfitRateCalculatorTest {
 	class GetProfitRateTest {
 		@Test
 		void case1() {
-			List<Integer> ranks = List.of(1, 0, 0, 0, 0);
+			Map<Rank, Integer> ranks = Map.ofEntries(
+				Map.entry(Rank.FIRST, 0),
+				Map.entry(Rank.SECOND, 0),
+				Map.entry(Rank.THIRD, 0),
+				Map.entry(Rank.FOURTH, 0),
+				Map.entry(Rank.FIFTH, 1),
+				Map.entry(Rank.MISS, 7)
+			);
 			int purchaseAmount = 8000;
 			ProfitRateCalculator profitRateCalculator = new ProfitRateCalculator(ranks, purchaseAmount);
 			assertEquals(profitRateCalculator.getProfitRate(), 62.5);
@@ -22,7 +29,14 @@ class ProfitRateCalculatorTest {
 
 		@Test
 		void case2() {
-			List<Integer> ranks = List.of(1, 1, 0, 0, 0);
+			Map<Rank, Integer> ranks = Map.ofEntries(
+				Map.entry(Rank.FIRST, 0),
+				Map.entry(Rank.SECOND, 0),
+				Map.entry(Rank.THIRD, 0),
+				Map.entry(Rank.FOURTH, 1),
+				Map.entry(Rank.FIFTH, 1),
+				Map.entry(Rank.MISS, 7)
+			);
 			int purchaseAmount = 9000;
 			ProfitRateCalculator profitRateCalculator = new ProfitRateCalculator(ranks, purchaseAmount);
 			assertEquals(profitRateCalculator.getProfitRate(), 611.1);
@@ -30,7 +44,14 @@ class ProfitRateCalculatorTest {
 
 		@Test
 		void case3() {
-			List<Integer> ranks = List.of(0, 0, 0, 0, 0);
+			Map<Rank, Integer> ranks = Map.ofEntries(
+				Map.entry(Rank.FIRST, 0),
+				Map.entry(Rank.SECOND, 0),
+				Map.entry(Rank.THIRD, 0),
+				Map.entry(Rank.FOURTH, 0),
+				Map.entry(Rank.FIFTH, 0),
+				Map.entry(Rank.MISS, 9)
+			);
 			int purchaseAmount = 9000;
 			ProfitRateCalculator profitRateCalculator = new ProfitRateCalculator(ranks, purchaseAmount);
 			assertEquals(profitRateCalculator.getProfitRate(), 0);
@@ -38,7 +59,14 @@ class ProfitRateCalculatorTest {
 
 		@Test
 		void case4() {
-			List<Integer> ranks = List.of(1, 0, 0, 0, 0);
+			Map<Rank, Integer> ranks = Map.ofEntries(
+				Map.entry(Rank.FIRST, 0),
+				Map.entry(Rank.SECOND, 0),
+				Map.entry(Rank.THIRD, 0),
+				Map.entry(Rank.FOURTH, 0),
+				Map.entry(Rank.FIFTH, 1),
+				Map.entry(Rank.MISS, 8)
+			);
 			int purchaseAmount = 9000;
 			ProfitRateCalculator profitRateCalculator = new ProfitRateCalculator(ranks, purchaseAmount);
 			assertEquals(profitRateCalculator.getProfitRate(), 55.6);
