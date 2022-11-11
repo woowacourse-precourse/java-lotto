@@ -8,7 +8,10 @@ import java.util.List;
 public class LottoManager {
     private int purchaseAmount;
     private int lottoIssueCount;
+    private int bonusNumber;
+
     private List<Lotto> myLotto = new ArrayList<>();
+    private List<Integer> winningNumber = new ArrayList<>();
 
     private void savePurchaseAmount() {
         this.purchaseAmount = InputView.enterPurchaseAmount();
@@ -22,6 +25,12 @@ public class LottoManager {
             Lotto lotto = new Lotto(lottoMachine.issueLotto());
             myLotto.add(lotto);
         }
+    }
+    private void saveWinningNumber() {
+        this.winningNumber = InputView.enterWinningNumber();
+    }
+    private void saveBonusNumber() {
+        this.bonusNumber = InputView.enterBonusNumber();
     }
 
 }
