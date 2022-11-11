@@ -10,6 +10,7 @@ public class LottoLauncher {
 
         Lotto lotto_1st = create1stLotto();
         int bonusNumbers = createBonusNumber();
+
         CompareLotto compareLotto = new CompareLotto(lottoList, lotto_1st, bonusNumbers);
 
         System.out.println(compareLotto);
