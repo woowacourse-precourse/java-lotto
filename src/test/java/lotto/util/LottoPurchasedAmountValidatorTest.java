@@ -1,13 +1,13 @@
-package lotto.ui.dto;
+package lotto.util;
 
 import lotto.common.InputErrors;
-import lotto.util.LottoPurchasedAmountValidator;
+import lotto.ui.dto.LottoPurchasedAmount;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @DisplayName(value = "로또 구입 금액 입력 검증 테스트")
-class LottoPurchasedAmountTest {
+class LottoPurchasedAmountValidatorTest {
 
     private static final String ERROR_PREFIX = "[ERROR]";
     private final LottoPurchasedAmountValidator validator = new LottoPurchasedAmountValidator();
