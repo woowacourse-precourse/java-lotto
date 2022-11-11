@@ -93,11 +93,11 @@ class LottoTest {
     @DisplayName("로또 번호를 생성하면 리스트로 로또 번호가 나온다")
     @Test
     void generateLottoNumberByList() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        LottoMachine lottoMachine = new LottoMachine();
+        Customer customer = new Customer();
 
-        Method method = lottoMachine.getClass().getDeclaredMethod("generateLottoNumber");
+        Method method = customer.getClass().getDeclaredMethod("generateLottoNumber");
         method.setAccessible(true);
-        Object lottoNumber = method.invoke(lottoMachine);
+        Object lottoNumber = method.invoke(customer);
 
         assertThat(lottoNumber).isInstanceOf(List.class);
     }
@@ -105,12 +105,12 @@ class LottoTest {
     @DisplayName("로또 번호를 생성하면 6개의 번호가 나온다")
     @Test
     void generateLottoNumberBySixLength() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        LottoMachine lottoMachine = new LottoMachine();
+        Customer customer = new Customer();
         int result = 6;
 
-        Method method = lottoMachine.getClass().getDeclaredMethod("generateLottoNumber");
+        Method method = customer.getClass().getDeclaredMethod("generateLottoNumber");
         method.setAccessible(true);
-        List<Integer> lottoNumber = (List<Integer>) method.invoke(lottoMachine);
+        List<Integer> lottoNumber = (List<Integer>) method.invoke(customer);
 
         assertThat(lottoNumber.size()).isEqualTo(result);
     }
@@ -118,12 +118,12 @@ class LottoTest {
     @DisplayName("로또 번호를 생성하면 중복없이 6개의 번호가 나온다")
     @Test
     void generateLottoNumberByNotDuplicated() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        LottoMachine lottoMachine = new LottoMachine();
+        Customer customer = new Customer();
         int result = 6;
 
-        Method method = lottoMachine.getClass().getDeclaredMethod("generateLottoNumber");
+        Method method = customer.getClass().getDeclaredMethod("generateLottoNumber");
         method.setAccessible(true);
-        List<Integer> lottoNumber = (List<Integer>) method.invoke(lottoMachine);
+        List<Integer> lottoNumber = (List<Integer>) method.invoke(customer);
         int lottoNumberSize = new HashSet<>(lottoNumber).size();
 
         assertThat(lottoNumberSize).isEqualTo(result);
@@ -146,11 +146,11 @@ class LottoTest {
     @DisplayName("금액을 입력하면 로또 개수를 반환한다")
     @Test
     void getLottoCountByMoney() {
-        LottoMachine lottoMachine = new LottoMachine();
+        Customer customer = new Customer();
         int money = 8000;
         int result = 8;
 
-        int lottoCount = lottoMachine.getLottoCount(money);
+        int lottoCount = customer.getLottoCount(money);
 
         assertThat(lottoCount).isEqualTo(result);
     }
@@ -158,11 +158,11 @@ class LottoTest {
     @DisplayName("돈을 입력하면 금액만큼 로또를 생성한다")
     @Test
     void generateLottosByMoney() {
-        LottoMachine lottoMachine = new LottoMachine();
+        Customer customer = new Customer();
         int money = 6000;
         int result = 6;
 
-        List<Lotto> lottos = lottoMachine.generateLottos(money);
+        List<Lotto> lottos = customer.generateLottos(money);
 
         assertThat(lottos.size()).isEqualTo(result);
     }
