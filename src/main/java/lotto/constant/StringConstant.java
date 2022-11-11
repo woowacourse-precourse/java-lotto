@@ -9,8 +9,8 @@ public enum StringConstant {
     LOTTO_INPUT_LENGTH_ERROR_MESSAGE("[ERROR] 로또 번호는 길이가 " + IntConstant.LOTTO_NUMBER_COUNT.getValue() + " 이어야 합니다."),
     LOTTO_INPUT_NUMBER_BETWEEN_ERROR_MESSAGE(
             "[ERROR] 로또 번호는 " + IntConstant.LOTTO_NUMBER_BIGGER_THAN.getValue() + " 이상 "
-                    + IntConstant.LOTTO_NUMBER_SMALLER_THAN.getValue() + " 이하 여야합니다."),;
-
+                    + IntConstant.LOTTO_NUMBER_SMALLER_THAN.getValue() + " 이하 여야합니다."),
+    BONUS_LOTTO_INPUT_MESSAGE("보너스 번호를 입력해 주세요.");
     private final String message;
 
     StringConstant(String message) {

@@ -7,6 +7,7 @@ import lotto.constant.StringConstant;
 import lotto.validation.LotteryWinningNumberValidation;
 import lotto.validation.LottoMoneyValidation;
 import lotto.validation.Validation;
+import lotto.view.BonusLottoView;
 import lotto.view.LotteryWinningNumberView;
 import lotto.view.LottoBuyView;
 import lotto.view.View;
@@ -26,7 +27,25 @@ public class LottoController {
         winningLottoInputValidation(userLottoWinningInput);
         List<Integer> lotteryWinningNumber = createLottoNumber(userLottoWinningInput);
 
+        String userBonusLottoInput = bonusLottoView();
+        bonusLottoInputValidation(userBonusLottoInput);
+    }
 
+    private String bonusLottoView() {
+        View bonusLottoView = createBonusLottoView();
+        return printViewAndReturnInput(bonusLottoView);
+    }
+
+    private View createBonusLottoView() {
+        return new BonusLottoView();
+    }
+
+    private void bonusLottoInputValidation(String userBonusLottoInput) {
+        createBonusLottoInputValidation();
+    }
+
+    private Validation createBonusLottoInputValidation() {
+        return null;
     }
 
     private String lottoMoneyInputView() {
