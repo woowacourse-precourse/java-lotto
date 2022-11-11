@@ -10,12 +10,13 @@ public class UserInputLottoException {
     private final static int PERMITTED_BONUS_LENGTH = 1;
     private final static int MIN_LOTTO_NUMBER = 1;
     private final static int MAX_LOTTO_NUMBER = 45;
+    private static final String ONLY_NUMBER_REGEX = "[1-45]+";
 
     public void validateLotto(String inputNumbers, String inputBonusNumber) {
         validateLottoNumbersLength(inputNumbers);
         validateOverlapNumbers()
         validateNumbersPermittedRange();
-        validateBonusNumberPermittedLength(inputBonusNumber);
+        validateBonusNumberIsNumber(inputBonusNumber);
 
     }
 
@@ -40,10 +41,10 @@ public class UserInputLottoException {
             }
         }
     }
-
-    public void validateBonusNumberPermittedLength(String inputBonusNumber) {
-        if(inputBonusNumber.length() != PERMITTED_BONUS_LENGTH) {
-            throw new IllegalArgumentException("보너스 번호는 한 개만 입력 가능합니다.");
+    // 밑에 예외가 있음
+    public void validateBonusNumberIsNumber(String inputBonusNumber) {
+        if(!inputBonusNumber.matches(ONLY_NUMBER_REGEX)) {
+            throw new IllegalArgumentException("보너스 번호는 한 개의 숫자만 입력 가능합니다.");
         }
     }
 
