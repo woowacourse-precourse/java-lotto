@@ -1,17 +1,13 @@
 package lotto.model;
 
-import camp.nextstep.edu.missionutils.Console;
-import java.util.regex.Pattern;
-
 public class Purchase {
-    private static final Pattern MONEY_REGEX = Pattern.compile("/^[0-9]*$/");
+  /*  private static final String MONEY_REGEX = "/^[0-9]*$/";*/
     private final int issueCount;
 
-    public Purchase() {
-        String input = Console.readLine();
-        if (!MONEY_REGEX.matcher(input).matches()) {
+    public Purchase(String input) {
+  /*      if (!Pattern.matches(MONEY_REGEX, input)) {
             throw new IllegalArgumentException("[ERROR] 올바른 로또 구입 금액을 입력해 주세요.");
-        }
+        }*/
         int money = Integer.parseInt(input);
         if (money < 0) {
             throw new IllegalArgumentException("[ERROR] 올바른 로또 구입 금액을 입력해 주세요.");
@@ -23,4 +19,7 @@ public class Purchase {
         System.out.println(issueCount);
     }
 
+    public int get() {
+        return issueCount;
+    }
 }

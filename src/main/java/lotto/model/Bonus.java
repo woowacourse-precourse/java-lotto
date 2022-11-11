@@ -6,17 +6,21 @@ import static lotto.Util.verifyRangeOfLottoNumber;
 
 public class Bonus {
     private static int bonusNumber;
+
     public Bonus(String input) {
         this.bonusNumber = validateBonusNumber(formatInput(input));
     }
+
     private static int validateBonusNumber(int number) {
         verifyRangeOfLottoNumber(number);
         /*verifyDuplicateNumber(number);*/
         return number;
     }
+
     private static int formatInput(String input) {
         return Integer.parseInt(removeSpace(input));
     }
+
     public int get() {
         return bonusNumber;
     }

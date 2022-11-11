@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputView {
+    public static String inputMoney() {
+        return Console.readLine();
+    }
+
     public static List<Integer> inputWinningNumbers() {
         return formatInput(Console.readLine());
     }
