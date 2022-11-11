@@ -1,6 +1,8 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class Request {
@@ -60,6 +62,19 @@ public class Request {
 			if(Pattern.matches("^([1-9])|([1-3][0-9])|(4[0-5])$", eachNumber)) {
 				throw new IllegalArgumentException();
 			}
+		}
+	}
+
+	public void validateDuplication() {
+		String[] splitUserInput = userInput.split(",");
+		List<Integer> winningNumbers = new ArrayList<>();
+
+		for(String eachNumbers : splitUserInput) {
+			if(winningNumbers.contains(Integer.parseInt(eachNumbers))) {
+				throw new IllegalArgumentException();
+			}
+
+			winningNumbers.add(Integer.parseInt(eachNumbers));
 		}
 	}
 }
