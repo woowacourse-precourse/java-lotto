@@ -5,13 +5,24 @@ import java.util.regex.Pattern;
 
 public class Bonus {
 
+    private int bonusNumber;
+    
+    public Bonus(String bonusNumber){
+        checkBonus(bonusNumber);
+        this.bonusNumber = getParseInt(bonusNumber);
+    }
+
+    private static int getParseInt(String bonusNumber) {
+        return Integer.parseInt(bonusNumber);
+    }
+
     public void checkBonus(String bonusNumber){
         checkBonusNumber(bonusNumber);
         checkBonusRange(bonusNumber);
     }
 
     public void checkBonusRange(String bonusNumber){
-        int bonus = Integer.parseInt(bonusNumber);
+        int bonus = getParseInt(bonusNumber);
         if(bonus>=1 && bonus<=45){
             return;
         }
