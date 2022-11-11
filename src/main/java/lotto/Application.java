@@ -57,4 +57,11 @@ public class Application {
         return issuedLottos;
     }
 
+    public static void printLottoNumbers(int amount, List<Lotto> issuedLottos) {
+        System.out.println(amount + "개를 구매했습니다.");
+        for (Lotto lotto : issuedLottos) {
+            System.out.println(lotto.getNumbers());
+        }
+    }
+
 }
