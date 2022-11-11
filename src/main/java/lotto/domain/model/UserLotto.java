@@ -34,14 +34,14 @@ public class UserLotto {
     }
 
     public List<LottoRank> compareLottoNumber(LottoNumber lottoNumber) {
-        List<LottoRank> lottoRanks = userLotto.stream().map(lotto -> lotto.compareLottoNumber(lottoNumber))
+        List<LottoRank> rankCollection = userLotto.stream().map(lotto -> lotto.compareLottoNumber(lottoNumber))
                 .filter(lottoRank -> lottoRank != LottoRank.NONE).collect(Collectors.toList());
-        validateLottoRankSize(lottoRanks);
-        return lottoRanks;
+        validateLottoRankSize(rankCollection);
+        return rankCollection;
     }
 
-    private void validateLottoRankSize(List<LottoRank> lottoRanks) {
-        if (this.userLotto.size() < lottoRanks.size()) {
+    private void validateLottoRankSize(List<LottoRank> rankCollection) {
+        if (this.userLotto.size() < rankCollection.size()) {
             throw new IllegalArgumentException();
         }
     }
