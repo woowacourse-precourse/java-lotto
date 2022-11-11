@@ -440,4 +440,17 @@ class LottoTest {
 
         assertThat(totalPrizeMoney).isEqualTo(result);
     }
+
+    @DisplayName("지불한 금액과 상금을 입력하면 수익률이 반환된다")
+    @Test
+    void getRateOfReturnByMoneyAndPrizeMoney() {
+        List<Integer> winningNumbers = List.of(1, 10, 12, 24, 33, 45);
+        int bonusNumber = 43;
+        WinningNumber winningNumber = new WinningNumber(winningNumbers, bonusNumber);
+        double result = 62.5;
+
+        double rateOfReturn = winningNumber.getRateOfReturn(8000, 5000);
+
+        assertThat(rateOfReturn).isEqualTo(result);
+    }
 }
