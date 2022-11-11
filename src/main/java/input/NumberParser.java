@@ -1,24 +1,33 @@
 package input;
 
-import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.ArrayList;
 
 public class NumberParser {
-    public List<Integer> getWinningNumbers(){
-        String rawNumbers = Console.readLine();
+    List<Integer> winningNumbers = new ArrayList<>();
+    int bonusNumber;
+    public List<Integer> getWinningNumbers(String rawNumbers){
         String[] splittedNumbers = rawNumbers.split(",");
-        List<Integer> winningNumbers = new ArrayList<>();
         for(String number : splittedNumbers){
             winningNumbers.add(Integer.parseInt(number));
         }
-
+        System.out.println(winningNumbers);
         return winningNumbers;
     }
 
-    public int getBonusNumber(){
-        String rawNumbers = Console.readLine();
-        int bonusNumber = Integer.parseInt(rawNumbers);
+    public int getBonusNumber(String rawNumber){
+        bonusNumber = Integer.parseInt(rawNumber);
+        System.out.println(bonusNumber);
         return bonusNumber;
     }
+
+    public NumberParser(List<Integer> numbers) {
+        winningNumbers = numbers;
+    }
+
+    public NumberParser(int number){
+        bonusNumber = number;
+    }
+
+    public NumberParser(){}
 }

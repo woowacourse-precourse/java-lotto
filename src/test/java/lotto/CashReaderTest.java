@@ -10,7 +10,7 @@ public class CashReaderTest {
     @DisplayName("로또 금액이 1000으로 나눠 떨어지지 않으면 예외가 발생한다.")
     @Test
     void insertMoneyThatIsNotDivisibleBy1000(){
-        assertThatThrownBy(() -> new LottoMaker(1200))
+        assertThatThrownBy(() -> new LottoMaker("1200"))
             .isInstanceOf(IllegalArgumentException.class);
     }
 }

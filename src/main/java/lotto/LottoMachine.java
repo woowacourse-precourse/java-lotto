@@ -18,16 +18,20 @@ public class LottoMachine {
     }
 
     public void inputCash() {
-        String rawMoney = Console.readLine();
-        LottoMaker cashReader = new LottoMaker(Integer.parseInt(rawMoney));
+        LottoMaker cashReader = new LottoMaker(inputRawData());
         lottos = cashReader.publishLotto();
     }
 
     public void inputWinningNumbers() {
-        winningNumbers = numberParser.getWinningNumbers();
+        winningNumbers = numberParser.getWinningNumbers(inputRawData());
     }
 
     public void inputBonusNumber() {
-        bonusNumber = numberParser.getBonusNumber();
+        bonusNumber = numberParser.getBonusNumber(inputRawData());
+    }
+
+    public String inputRawData(){
+        String rawData = Console.readLine();
+        return rawData;
     }
 }

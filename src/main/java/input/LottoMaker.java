@@ -14,9 +14,9 @@ public class LottoMaker {
         }
     }
 
-    public LottoMaker(int money) { // 테스트를 위한 생성자
-        this.money = money;
-        validate(money);
+    public LottoMaker(String money) { // 테스트를 위한 생성자
+        this.money = Integer.parseInt(money);
+        validate(this.money);
     }
 
     public List<Lotto> publishLotto(){
