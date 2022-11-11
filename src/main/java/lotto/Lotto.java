@@ -16,15 +16,21 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public Lotto(List<Integer> lottoNumbers) {
-        validateLottoNumberCount(lottoNumbers);
-        validateLottoNumberRange(lottoNumbers);
-        validateLottoNumberDuplicated(lottoNumbers);
-        this.lottoNumbers = lottoNumbers;
+    public List<Integer> getLottoNumbers() {
+        return this.numbers;
     }
 
-    private void validateLottoNumberCount(List<Integer> lottoNumbers) {
-        if (lottoNumbers.size() != 6) {
+    public List<Integer> convertNumbers (String inputLottoNumber) {
+        List<Integer> numbers;
+
+        isRealLottoNumber(inputLottoNumber);
+        numbers = splitLottoNumber(inputLottoNumber);
+
+        return numbers;
+    }
+
+    private void validateLottoNumberCount(List<Integer> numbers) {
+        if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR]: 로또 당첨 숫자에는 6개를 입력해주세요");
         }
     }
@@ -43,4 +49,24 @@ public class Lotto {
         }
     }
 
+    private List<Integer> splitLottoNumber (String tempLottoNumber) {
+        List<Integer> lottoNumber = new ArrayList<>();
+
+        for(String element: tempLottoNumber.split(",")) {
+            lottoNumber.add(Integer.parseInt(element));
+        }
+
+        return lottoNumber;
+    }
+
+    private void isRealLottoNumber (String lottoNumber) {
+        String mergedNumber = String.join(lottoNumber);
+
+        for (char element: mergedNumber.toCharArray()) {
+            if (element < 48 || element > 57) {
+                System.out.println("[ERROR]: 로또 번호는 숫자만 입력할 수 있습니다.");
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }
