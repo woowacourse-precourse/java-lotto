@@ -3,7 +3,9 @@ package lotto.model;
 import lotto.enums.Rank;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Rate {
     private Map<Rank,Integer> winningStats;
@@ -35,7 +37,12 @@ public class Rate {
     }
 
     private int calcEarning(Map<Rank,Integer> winningStats) {
-        return 0;
+        int earningPrice = 0;
+
+        for (Map.Entry<Rank, Integer> elem : winningStats.entrySet()) {
+            earningPrice += rankPrice.get(elem.getKey()) * elem.getValue();
+        }
+        return earningPrice;
     }
 
     private int calcSpending(Map<Rank,Integer> winningStats) {
