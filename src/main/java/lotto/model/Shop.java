@@ -17,8 +17,8 @@ public class Shop {
         this.lottoPayed = setLottoPayed(this.lottoSize);
     }
 
-    public List<Lotto> getlottoPayed() {
-        return null;
+    public List<Lotto> getLottoPayed() {
+        return this.lottoPayed;
     }
 
     private int calcLottoSize(int price) {
