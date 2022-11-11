@@ -24,5 +24,15 @@ public class Lotto {
         Collections.sort(numbers);
     }
 
-    // TODO: 추가 기능 구현
+    // 로또 번호 출력
+    public void printLottoNumbers(){
+        System.out.print("[");
+        for(int i=0; i<numbers.size(); i++){
+            System.out.print(numbers.get(i));
+            if(i!=numbers.size()-1){
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
 }

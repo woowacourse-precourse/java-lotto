@@ -17,6 +17,7 @@ public class Application {
         }
 
         int lottoCnt = money/1000;
+        System.out.println();
 
         // 로또 번호 생성
         List<Lotto> userLottoNum = new ArrayList<>();
@@ -26,5 +27,11 @@ public class Application {
             userLottoNum.add(lotto);
         }
 
+        // 로또 번호 출력
+        System.out.println(lottoCnt+"개를 구매했습니다.");
+        for(Lotto lotto : userLottoNum){
+            lotto.printLottoNumbers();
+        }
+        System.out.println();
     }
 }
