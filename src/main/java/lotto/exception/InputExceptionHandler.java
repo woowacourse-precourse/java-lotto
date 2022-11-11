@@ -9,10 +9,17 @@ public class InputExceptionHandler {
 	private static final String WINNING_NUMBER_DIVISION_EXCEPTION = "[ERROR] 당첨 번호는 쉼표로 구분지어야 합니다.";
 	private static final String DUPLICATED_BONUS_NUMBER_MESSAGE = "[ERROR] 보너스 번호는 당첨 번호와 중복되면 안됩니다.";
 	private static final String NUMBER_REGEX = "^[0-9]*$";
+	private static final int CASH_UNIT = 1000;
 
 	private void isNumber(String input) {
 		if (!input.matches(input)) {
 			throw new IllegalArgumentException(NUMBER_EXCEPTION_MESSAGE);
+		}
+	}
+
+	private void divideByThousand(String input) {
+		if (Integer.parseInt(input) % CASH_UNIT != 0) {
+			throw new IllegalArgumentException(DIVISION_EXCEPTION_MESSAGE);
 		}
 	}
 
