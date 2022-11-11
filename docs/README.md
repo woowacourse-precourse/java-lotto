@@ -14,6 +14,7 @@
         * 예외2 : 입력시 숫자의 개수가 6개가 아닐 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 숫자의 개수가 6개가 아닙니다.) - Lotto#validate()
         * 예외3 : 입력 숫자 6개 중 하나라도 중복되는 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 서로 다른 숫자 6개를 입력하세요.) - Lotto#numbersNoRepeat()
         * 사용자 입력 당첨 번호 리스트에 저장하는 기능 - Lotto#Lotto()
+        * Lotto클래스에 저장된 리스트를 main으로 가지고 오는 기능 - Lotto#getLottoNumbers()
     3. 보너스 번호 입력  - Application#askBonusNumber()
         * 예외1 : 입력시 숫자가 아니거나 1-45 사이 숫자가 아닐 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 1-45사이의 1개의 숫자만 입력하세요.) - BonusNumber#bonusNumberValidate()
         * 예외2 : 입력 숫자 6개와 보너스 번호가 중복되는 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 보너스 번호가 입력된 당첨 번호 6개와 중복됩니다.) - BonusNumber#bonusNoRepeat()
