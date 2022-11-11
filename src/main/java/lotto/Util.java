@@ -42,6 +42,7 @@ public class Util {
         try{
             for (String number : input.split(sep)){
                 CheckInputException.checkBuyerInputIsNotNumber(number);
+                CheckInputException.checkBuyerInputIsNotNumberRange(number);
                 Integer tmpNumber = Integer.valueOf(number);
                 lottoNumbers.add(tmpNumber);
             }
