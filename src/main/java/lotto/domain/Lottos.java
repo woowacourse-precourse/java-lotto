@@ -7,7 +7,8 @@ import lotto.view.InputView;
 
 public class Lottos {
 
-    public static final int LOTTO_PRICE = 1000;
+    private static final int LOTTO_PRICE = 1000;
+    private static final String QUANTITY_NOTIFICATION_MESSAGE = "개를 구매했습니다.\n";
 
     private Integer quantity;
 
@@ -30,5 +31,12 @@ public class Lottos {
             lottoNumbers.add(new Lotto(LottoGenerator.generateLottoNumbers()));
         }
         return lottoNumbers;
+    }
+
+    @Override
+    public String toString() {
+        String quantityMessage = this.quantity + QUANTITY_NOTIFICATION_MESSAGE;
+        String numbersString = lottoNumbers.toString();
+        return quantityMessage + numbersString.substring(1, numbersString.length() - 1).replace("], [", "]\n[");
     }
 }

@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class Lotto {
 
-    public static final int LOTTO_NUMBERS_SIZE = 6;
+    private static final int LOTTO_NUMBERS_SIZE = 6;
 
     private final List<Integer> numbers;
 
@@ -33,5 +33,10 @@ public class Lotto {
         if (LOTTO_NUMBERS_SIZE != uniqueNumbers.size()) {
             throw new IllegalArgumentException("[ERROR] 로또 번호에 중복된 값이 있습니다.");
         }
+    }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
     }
 }
