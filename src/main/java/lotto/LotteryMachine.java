@@ -9,6 +9,7 @@ import java.util.List;
 public class LotteryMachine {
 
     private Lotto lotto;
+    private int bonusNum;
     public List<Integer> makeLottoNum() {
 
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -30,20 +31,21 @@ public class LotteryMachine {
     }
 
 
-    public int makeBonusNum(List<Integer> lottoNum) {
+    public void makeBonusNum(List<Integer> lottoNum) {
 
         List<Integer> bonusNum = Randoms.pickUniqueNumbersInRange(1, 45, 1);
         if (lottoNum.contains(bonusNum.get(0))) {
             throw new IllegalArgumentException(Error.BONUS_DUPLICATE_LOTTO.getErrorMsg());
         }
 
-        return bonusNum.get(0);
+        this.bonusNum =  bonusNum.get(0);
     }
 
     public Lotto getLotto() {
         return lotto;
     }
 
-
-
+    public int getBonusNum() {
+        return bonusNum;
+    }
 }
