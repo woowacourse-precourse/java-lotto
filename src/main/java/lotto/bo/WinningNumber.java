@@ -28,14 +28,15 @@ public class WinningNumber {
     private List<Integer> convertStrToNumberList(String numbers) {
         List<Integer> result;
         result = Stream.of(numbers.split(","))
-                .map(Integer::valueOf).collect(Collectors.toList());
+                .map(number -> Integer.parseInt(number.strip())).collect(Collectors.toList());
         return result;
     }
 
     private void validateInteger(String numbers) {
         for (String number : numbers.split(",")) {
+            String tmpNumber = number.strip();
             try {
-                Integer.valueOf(number);
+                Integer.valueOf(tmpNumber);
             } catch (NumberFormatException e) {
                 throw new IllegalArgumentException("당첨번호와 보너스 번호가 숫자가 아닙니다");
             }
@@ -52,7 +53,7 @@ public class WinningNumber {
 
     private void validateNumberSize(List<Integer> numbers, int size) {
         if (numbers.size() != size) {
-            throw new IllegalArgumentException("당첨 번호는 6자리, 보너스 번호는 1자리 숫자가 아닙니다.");
+            throw new IllegalArgumentException("당첨 번호는 6개, 보너스 번호는 1개의 숫자가 아닙니다.");
         }
     }
 
