@@ -11,12 +11,16 @@ public class Application {
         int amount = user.purchaseAmount();
 
         if (amountValidation(amount)) {
-            Lotto[] lottos = new Lotto[amount / 1000];
+            lotteryNumberOutput(amount);
+        }
+    }
 
-            for (Lotto lotto : lottos) {
-                lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-                System.out.println(lotto.getNumbers());
-            }
+    private static void lotteryNumberOutput(int amount) {
+        Lotto[] lottos = new Lotto[amount / 1000];
+
+        for (Lotto lotto : lottos) {
+            lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            System.out.println(lotto.getNumbers());
         }
     }
 
