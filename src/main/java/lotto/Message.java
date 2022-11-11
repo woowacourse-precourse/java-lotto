@@ -32,13 +32,12 @@ public class Message {
     Ranking[] values = Ranking.values();
     DecimalFormat decimalFormat = new DecimalFormat();
     for (Ranking value : values) {
-      System.out.print(value.getRank() + "개 일치");
-      if (value.getRank() == 7) {
-        System.out.print(", 보너스 볼 일치");
-      }
-      System.out.println(" (" +
-              decimalFormat.format(value.getMoney()) + "원) - " +
-              maps.getOrDefault(value.getRank(), 0) + "개");
+      System.out.print(value.getMessage());
+      System.out.println(maps.getOrDefault(value.getRank(), 0) + "개");
     }
+  }
+
+  public static void ratio() {
+
   }
 }
