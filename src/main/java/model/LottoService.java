@@ -3,6 +3,7 @@ package model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoService {
@@ -10,16 +11,18 @@ public class LottoService {
         List<Lotto> lotteries = new ArrayList<>();
 
         for (int i = 0; i < getCount(money); i++) {
-            lotteries.add(createLotto());
+            List<Integer> numbers = createLottoNumbers();
+            Collections.sort(numbers);
+            lotteries.add(new Lotto(numbers));
         }
         return lotteries;
     }
 
-    private Lotto createLotto() {
-        return new Lotto(Randoms.pickUniqueNumbersInRange(
-                LottoStatus.START.getValue(),
-                LottoStatus.END.getValue(),
-                LottoStatus.SIZE.getValue()));
+    private List<Integer> createLottoNumbers() {
+        return Randoms.pickUniqueNumbersInRange(
+                        LottoStatus.START.getValue(),
+                        LottoStatus.END.getValue(),
+                        LottoStatus.SIZE.getValue());
     }
 
     private int getCount(int money) {

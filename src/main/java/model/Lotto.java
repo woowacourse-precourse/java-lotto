@@ -15,6 +15,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != LottoStatus.SIZE.getValue()) {
             throw new IllegalArgumentException(INCORRECT_SIZE.toString());
@@ -37,7 +41,7 @@ public class Lotto {
         return number < LottoStatus.START.getValue() || number > LottoStatus.END.getValue();
     }
 
-    private void validateDuplicate(List<Integer> numbers){
+    private void validateDuplicate(List<Integer> numbers) {
         HashMap<Integer, Integer> exist = new HashMap<>();
         addExist(numbers, exist);
         countExist(numbers, exist);
