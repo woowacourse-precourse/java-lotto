@@ -11,7 +11,10 @@ public class PlayerView {
     private static final String CHECK_PAYMENT = "개를 구매했습니다.";
 
     public String payMoney(){
-        return "";
+        inquirePrice();
+        String price = scanPrice();
+        validate(price);
+        return price;
     }
 
     private void inquirePrice(){
