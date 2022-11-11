@@ -11,11 +11,12 @@ public class Problem {
     WinningLotto winningLotto;
     User user;
     int []prize;
-
+    long winMoney;
     Problem(){
         printInputGuide();
         this.user=new User();
         this.prize=new int[5];
+        this.winMoney=0;
     }
 
     void printInputGuide(){
@@ -45,6 +46,15 @@ public class Problem {
         for(Lotto lotto:user.lottos){
             checkPrize(lotto);
         }
+        addPrize();
+    }
+
+    void addPrize(){
+        winMoney+=prize[0]*200000000l;
+        winMoney+=prize[1]*30000000l;
+        winMoney+=prize[2]*1500000l;
+        winMoney+=prize[3]*50000l;
+        winMoney+=prize[4]*5000l;
     }
 
     void checkPrize(Lotto lotto){
