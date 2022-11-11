@@ -28,4 +28,12 @@ public enum Rank {
 
         throw new IllegalArgumentException(numberOfRight + "은 유효하지 않습니다.");
     }
+
+    public int getNumberOfRight() {
+        return numberOfRight;
+    }
+
+    public int getPrizeMoney(){
+        return prizeMoney;
+    }
 }
