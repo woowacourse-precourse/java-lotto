@@ -85,6 +85,7 @@ Enum : Rank
 
 [constructor]<br>
 - Draw(Lotto winningLotto, int bonusNum) // (feat.3,feat.4)
+  - validateBonusNumRange(bonusNum)
   - this.
 
 [method]<br>
