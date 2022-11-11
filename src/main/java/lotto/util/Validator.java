@@ -15,5 +15,8 @@ public class Validator {
 
     private List<Integer> list = new LinkedList<>();
 
-
+    public void moneyValid(String input){
+        isNumber(input);
+        isDivided(input);
+    }
 }
