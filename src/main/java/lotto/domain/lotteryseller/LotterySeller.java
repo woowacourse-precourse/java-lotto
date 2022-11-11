@@ -1,6 +1,7 @@
 package lotto.domain.lotteryseller;
 
 import lotto.controller.LotteryRequestController;
+import lotto.dto.lotteryseller.RandomNumbersSets;
 import lotto.dto.lotterystore.MoneyForPurchase;
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -25,10 +26,11 @@ public class LotterySeller {
 		money = Integer.parseInt(moneyDto.getMoney());
 	}
 
-	public void sendGeneratedLotterySet() {
+	public void sendGeneratedLotterySets() {
 		int numberOfPurchases = getNumberOfPurchases();
 		List<List<Integer>> randomNumbersSets = generateRandomNumbersSets(numberOfPurchases);
-		requestController.receiveRandomNumbersSets(randomNumbersSets);
+		RandomNumbersSets randomNumbersSetsDto = new RandomNumbersSets(randomNumbersSets);
+		requestController.receiveRandomNumbersSets(randomNumbersSetsDto);
 	}
 
 	private int getNumberOfPurchases() {
@@ -47,6 +49,10 @@ public class LotterySeller {
 		return randomNumbersSets;
 	}
 
+	private List<Integer> getOneSet() {
+		return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+	}
+
 	private List<Integer> sortAscendingOrder(List<Integer> numbersSet) {
 		List<Integer> sortedSet = new ArrayList<>();
 
@@ -54,9 +60,5 @@ public class LotterySeller {
 		elementsForSort.sorted().forEach(sortedSet::add);
 
 		return sortedSet;
-	}
-
-	private List<Integer> getOneSet() {
-		return Randoms.pickUniqueNumbersInRange(1, 45, 6);
 	}
 }

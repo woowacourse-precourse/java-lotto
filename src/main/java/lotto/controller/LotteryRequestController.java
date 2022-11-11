@@ -1,10 +1,9 @@
 package lotto.controller;
 
 import lotto.domain.lotteryseller.LotterySeller;
+import lotto.dto.lotteryseller.RandomNumbersSets;
 import lotto.dto.lotterystore.MoneyForPurchase;
 import lotto.dto.lotterystore.NumbersForWinningPrize;
-
-import java.util.List;
 
 public class LotteryRequestController {
 	private static final LotteryRequestController controller = new LotteryRequestController();
@@ -35,6 +34,6 @@ public class LotteryRequestController {
 
 	}
 
-	public void receiveRandomNumbersSets(List<List<Integer>> randomNumbersSets) {
+	public void receiveRandomNumbersSets(RandomNumbersSets randomNumbersSets) {
 	}
 }
