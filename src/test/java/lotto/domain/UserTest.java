@@ -11,7 +11,7 @@ import java.io.InputStream;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class UserTest extends NsTest {
+public class UserTest {
 
     @Test
     void userInput() {
@@ -36,10 +36,5 @@ public class UserTest extends NsTest {
         user.inputUserMoney();
         user.calculateNumOfLotteries();
         assertThat(3).isEqualTo(user.getNumOfLotteries());
-    }
-
-    @Override
-    protected void runMain() {
-        Application.main(new String[]{});
     }
 }
