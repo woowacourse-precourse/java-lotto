@@ -35,7 +35,7 @@ public class LottoWinNumberDto {
         private Set<Integer> winNumbers;
         private int bonusNumber;
 
-        LottoWinNumberDtoBuilder() {}
+        private LottoWinNumberDtoBuilder() {}
 
         public LottoWinNumberDtoBuilder winNumbers(Set<Integer> winNumbers) {
             this.winNumbers = winNumbers;
