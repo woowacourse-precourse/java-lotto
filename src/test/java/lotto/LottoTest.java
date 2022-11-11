@@ -24,5 +24,27 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("입력된 구입금액이 1,000원 단위가 아닌 경우 예외가 발생한다.")
+    @Test
+    void inputMoneyWrongUnit() {
+        Utils utils = new Utils();
+        assertThatThrownBy(() -> utils.validateMoney("500"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력된 구입금액이 0원 이하인 경우 예외가 발생한다.")
+    @Test
+    void inputMoneyUnder0() {
+        Utils utils = new Utils();
+        assertThatThrownBy(() -> utils.validateMoney("0"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력된 구입금액이 숫자가 아닌 경우 예외가 발생한다.")
+    @Test
+    void inputMoneyNotDigit() {
+        Utils utils = new Utils();
+        assertThatThrownBy(() -> utils.validateMoney("5000d"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
