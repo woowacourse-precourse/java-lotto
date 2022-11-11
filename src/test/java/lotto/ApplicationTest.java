@@ -84,11 +84,21 @@ class ApplicationTest extends NsTest {
 
     @DisplayName("로또 번호를 쉼표로 구분할 수 없는 경우에는 예외가 발생한다")
     @Test
-    void enterLottoByNotIdentify(){
+    void enterLottoByNotIdentify() {
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> runException("8000", "1.2.3.4.5.6"))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("[Error] 당첨 번호가 구별되지 않습니다.");
+        });
+    }
+
+    @DisplayName("입력한 로또 번호들 중에서 숫자가 아닌 값이 있는 경우에는 예외가 발생한다.")
+    @Test
+    void enterLottoByNotNumber() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("8000", "1, a, 10, 3, 4, 5"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("[Error] 당첨 번호 중에 숫자가 아닌 값이 존재합니다.");
         });
     }
 
