@@ -1,6 +1,8 @@
 package lotto.Domain;
 
-import java.util.Collections;
+import Utils.RandomUtils;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
@@ -18,6 +20,10 @@ public class Lotto {
     }
 
     public List<List<Integer>> setLottos(int lottoCount) {
-        return Collections.emptyList();
+        List<List<Integer>> lottos = new ArrayList<>(lottoCount);
+        for (int i = 0; i < lottoCount; i++) {
+            lottos.add(RandomUtils.getRandomLottoNumber());
+        }
+        return lottos;
     }
 }
