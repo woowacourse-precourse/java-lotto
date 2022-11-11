@@ -34,7 +34,7 @@ public class PrintView {
     }
 
     public static void bonusNum() {
-        System.out.println(ConsoleMessage.WIN_LOTTO_NUMBER);
+        System.out.println(ConsoleMessage.BONUS_NUMBER);
     }
 
 }
