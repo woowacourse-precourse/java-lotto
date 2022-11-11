@@ -1,6 +1,9 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static lotto.domain.LottosResponseDto.*;
 
 public class Lottos {
 
@@ -16,5 +19,15 @@ public class Lottos {
 
     public int size() {
         return lottos.size();
+    }
+
+    public LottosResponseDto responseDto() {
+        return new LottosResponseDto(mapToLottoResponseDtos());
+    }
+
+    private List<LottoResponseDto> mapToLottoResponseDtos() {
+        return lottos.stream()
+                .map(Lotto::toResponseDto)
+                .collect(Collectors.toList());
     }
 }

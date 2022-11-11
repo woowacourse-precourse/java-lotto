@@ -53,4 +53,8 @@ public class Player {
                 .map(Lotto::new)
                 .collect(Collectors.toList());
     }
+
+    public LottosResponseDto getPurchaseLottos() {
+        return lottos.responseDto();
+    }
 }
