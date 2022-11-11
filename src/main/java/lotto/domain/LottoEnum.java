@@ -3,7 +3,8 @@ package lotto.domain;
 public enum LottoEnum {
     MIN_NUMBER(1),
     MAX_NUMBER(45),
-    LENGTH(6);
+    LENGTH(6),
+    PRICE(1_000);
 
     private final int value;
 
