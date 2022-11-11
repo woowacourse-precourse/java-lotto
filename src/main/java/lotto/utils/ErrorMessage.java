@@ -6,4 +6,5 @@ public interface ErrorMessage {
     String MONEY_LEFT_OVER = "[ERROR] 천원 단위의 금액만 입력해주세요.";
     String CONTAINS_NON_NUMERIC_VALUES = "[ERROR] 문자열을 포함시킬 수 없습니다.";
     String IS_EMPTY = "[ERROR] 공백을 입력할 수 없습니다.";
+    String IMPROPER_SIZE = "[ERROR] 쉽표를 기준으로 6개의 숫자를 입력해주세요.";
 }

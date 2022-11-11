@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 public class InputView {
     public static final String SEPARATOR = ",";
+    public static final int PROPER_SIZE = 6;
 
     public static int insertMoney() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -34,8 +35,22 @@ public class InputView {
     public static List<Integer> inputWinningNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String numbersWithSeparator = Console.readLine();
+        validateWinningNumbers(numbersWithSeparator);
 
         return getWinningNumbers(numbersWithSeparator);
+    }
+
+    private static void validateWinningNumbers(String numbersWithSeparator) {
+        if (numbersWithSeparator.isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessage.IS_EMPTY);
+        }
+        if (hasProperSize(numbersWithSeparator.split(SEPARATOR))) {
+            throw new IllegalArgumentException(ErrorMessage.IMPROPER_SIZE);
+        }
+    }
+
+    private static boolean hasProperSize(String[] separatedNumbers) {
+        return separatedNumbers.length != PROPER_SIZE;
     }
 
     public static int inputBounsNumber() {
