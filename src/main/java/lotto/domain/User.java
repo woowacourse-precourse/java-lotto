@@ -10,7 +10,7 @@ public class User {
 
     private int money;
     private int totalPrize;
-    private int numOfLotteries;
+    private int numberOfLotteries;
     private double rateOfReturn;
     private List<Lotto> lotteries;
 
@@ -23,10 +23,10 @@ public class User {
     }
 
     public void calculateNumOfLotteries() {
-        this.numOfLotteries = money / LOTTERY_PRICE;
+        this.numberOfLotteries = money / LOTTERY_PRICE;
     }
 
     public int getNumOfLotteries() {
-        return numOfLotteries;
+        return numberOfLotteries;
     }
 }
