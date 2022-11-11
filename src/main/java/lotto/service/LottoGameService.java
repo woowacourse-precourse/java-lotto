@@ -24,6 +24,7 @@ public class LottoGameService {
     private static final String LOTTO_WINNING_NUMBERS_TYPE_EXCEPTION_MESSAGE = "로또 당첨 번호는 공백 없이 쉼표로 구분된 숫자여야합니다.";
     private static final String BONUS_NUMBER_NOT_DIGIT_EXCEPTION_MESSAGE = "보너스 번호는 숫자여야합니다.";
     private static final String BONUS_NUMBER_RANGE_EXCEPTION_MESSAGE = "보너스 번호의 범위는 1~45여야합니다.";
+    private static final String BONUS_NUMBER_WINNING_NUMBERS_DUPLICATE_EXCEPTION_MESSAGE = "보너스 번호는 당첨 번호에 있는 번호를 제외한 번호여야합니다.";
 
     private Lotto lotto;
 
@@ -62,12 +63,15 @@ public class LottoGameService {
         }
     }
 
-    public void validateBonusNumber(String bonusNumber) {
+    public void validateBonusNumber(List<Integer> lottoWinningNumbers, String bonusNumber) {
         if (isBonusNumberNotDigit(bonusNumber)) {
             throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + BONUS_NUMBER_NOT_DIGIT_EXCEPTION_MESSAGE);
         }
         if (isBonusNumberWrongRange(bonusNumber)) {
             throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + BONUS_NUMBER_RANGE_EXCEPTION_MESSAGE);
+        }
+        if (isBonusNumberDuplicateWinningNumbers(lottoWinningNumbers, bonusNumber)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + BONUS_NUMBER_WINNING_NUMBERS_DUPLICATE_EXCEPTION_MESSAGE);
         }
     }
 
@@ -116,6 +120,10 @@ public class LottoGameService {
 
     private boolean isBonusNumberWrongRange(String bonusNumber) {
         return Integer.parseInt(bonusNumber) < 1 || Integer.parseInt(bonusNumber) > 45;
+    }
+
+    private boolean isBonusNumberDuplicateWinningNumbers(List<Integer> lottoWinningNumbers,String bonusNumber) {
+        return lottoWinningNumbers.contains(Integer.parseInt(bonusNumber));
     }
 
     public List<Integer> inputWinningNumberConvertToCollection(String lottoWinningNumber) {
