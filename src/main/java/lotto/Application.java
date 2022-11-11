@@ -1,6 +1,8 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.List;
 
 public class Application {
 
@@ -29,5 +31,9 @@ public class Application {
             throw new IllegalArgumentException("[ERROR] 로또 구입 금액이 1,000원으로 나누어떨어지지 않습니다.");
         }
         return number / 1000;
+    }
+
+    public List<Integer> getRandomUniqueNumberList() {
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 }
