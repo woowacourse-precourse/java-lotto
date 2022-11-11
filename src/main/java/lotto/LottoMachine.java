@@ -16,7 +16,7 @@ public class LottoMachine {
         inputWinningNumbers();
         inputBonusNumber();
         drawLottos();
-        printProfitRate();
+        calculateProfitRate();
     }
 
     public void inputCash() {
@@ -38,10 +38,10 @@ public class LottoMachine {
     }
 
     public void drawLottos(){
-
+        
     }
 
-    public void printProfitRate(){
+    public void calculateProfitRate(){
 
     }
 }
