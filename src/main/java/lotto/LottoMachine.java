@@ -38,6 +38,16 @@ public class LottoMachine {
         return newLottos;
     }
 
+    static int howMachWithWinningNumber(Lotto winningLotto, Lotto lotto){
+        List<Integer> winningLottoList = winningLotto.getNumbers();
+        List<Integer> lottoList = lotto.getNumbers();
+
+        List<Integer> mergeLottoNumbers = mergeList(winningLottoList, lottoList);
+        Set<Integer> LottoNumbersSet = new HashSet<>(mergeLottoNumbers);
+
+        return LOTTO_NUMBER_COUNT*2 - LottoNumbersSet.size();
+    }
+
     static List<Integer> mergeList(List<Integer> list1, List<Integer> list2){
         List<Integer> mergeList = new ArrayList<>();
         Collections.addAll(mergeList, list1.toArray(new Integer[0]));
