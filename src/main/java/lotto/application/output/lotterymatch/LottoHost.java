@@ -5,7 +5,7 @@ import java.util.List;
 
 public class LottoHost {
 
-    public List<List<Integer>> matchNotContainBonusNumber(
+    public List<List<Integer>> matchWinningLotto(
             List<List<Integer>> generatedLottoNumbers, List<Integer> winningLottoNumbers, int bonusWinningNumber) {
 
         winningLottoNumbers.add(bonusWinningNumber);

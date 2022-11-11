@@ -22,7 +22,7 @@ public class LottoStarter {
         Lotto lotto = new Lotto(winningLotto);
         int bonusWinningNumber = lotto.inputWinningBonusNumber(winningLotto);
 
-        List<List<Integer>> matchResult = lottoHost.matchNotContainBonusNumber(
+        List<List<Integer>> matchResult = lottoHost.matchWinningLotto(
                 generatedLottoNumber, winningLotto, bonusWinningNumber);
 
         Map<String, Integer> statistic = yieldCalculator.extractStatistic(matchResult);
