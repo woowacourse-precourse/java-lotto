@@ -9,7 +9,7 @@ public class MoneyVerifier implements Verifier {
     @Override
     public void check(String input) {
         checkNumeric(input);
-        checkOutOfRange(input);
+        checkOutOfTypeRange(input);
         checkPositive(input);
         checkDivisible(input);
     }
@@ -22,7 +22,7 @@ public class MoneyVerifier implements Verifier {
         }
     }
 
-    private void checkOutOfRange(String input) {
+    private void checkOutOfTypeRange(String input) {
         try {
             Long.parseLong(input);
         } catch (Exception e) {
