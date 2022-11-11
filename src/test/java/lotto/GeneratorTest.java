@@ -38,13 +38,14 @@ class GeneratorTest {
 
     @Test
     @DisplayName("1,000원 단위 체크")
-    void 천원단위_o() {
-        assertThat(Generator.calculateLottoNum(22000)).isEqualTo(22);
+    void correctInput() {
+        assertThat(Generator.checkValidation("22000")).isEqualTo(true);
     }
 
-    @Test
+    @ParameterizedTest
     @DisplayName("1,000원 단위가 아닐 시 에러 발생")
-    void 천원단위_x() {
-        assertThrows(IllegalArgumentException.class, () -> Generator.calculateLottoNum(12345));
+    @ValueSource(strings = {"12345", "가나다", "", "1200"})
+    void incorrectInput(String input) {
+        assertThrows(IllegalArgumentException.class, () -> Generator.checkValidation(input));
     }
 }
