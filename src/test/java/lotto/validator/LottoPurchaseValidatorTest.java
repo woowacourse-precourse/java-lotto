@@ -4,6 +4,7 @@ import static lotto.constant.Constants.UNIT_OF_LOTTO_PURCHASE;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import lotto.constant.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,8 @@ public class LottoPurchaseValidatorTest {
 
             // when, then
             assertThatThrownBy(() -> LottoPurchaseValidator.validatePurchaseUnit(inputMoney))
-                    .isInstanceOf(IllegalArgumentException.class);
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ErrorMessage.UNIT_OF_LOTTO_PURCHASE_DOES_NOT_COMPLY_WITH_RULE.message());
         }
 
         /**
