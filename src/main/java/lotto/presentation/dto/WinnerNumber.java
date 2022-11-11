@@ -12,11 +12,15 @@ public class WinnerNumber {
     public WinnerNumber(String winnerNumber){
         winnerNumber=firstValidate(winnerNumber);
         this.winnerNumber=stringToList(winnerNumber);
+        lastValidate(this.winnerNumber);
     }
     private String firstValidate(String target){
         target=target.replace(",","");
         validator.checkInteger(target);
         return target;
+    }
+    private void lastValidate(List<Integer> target){
+        validator.checkNumericalRange(target);
     }
     private List<Integer> stringToList(String target){
         List<Integer> result=new ArrayList<>();
