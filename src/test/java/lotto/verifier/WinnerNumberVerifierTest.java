@@ -45,4 +45,19 @@ class WinnerNumberVerifierTest {
                     .hasMessageContaining(ExceptionMessage.EACH_NOT_NUMERIC);
         }
     }
+
+    @Nested
+    @DisplayName("각 원소가 자료형의 범위를 넘어섰을 때")
+    class CheckEachOutOfTypeRange {
+        @ParameterizedTest(name = "{0}가 입력되었을 때")
+        @ValueSource(strings = {
+                "-9223372036854775809,1,2,3,4,5",
+                "1,2,3,4,5,9223372036854775808"
+        })
+        void 각_원소가_자료형의_범위를_넘지_않는지_테스트한다(String target) {
+            assertThatThrownBy(() -> winnerNumberVerifier.check(target))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(ExceptionMessage.NUMBER_OUT_OF_TYPE_RANGE);
+        }
+    }
 }
