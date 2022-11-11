@@ -20,9 +20,8 @@
 ## 기능 목록
 - [x] "구입금액을 입력해 주세요."를 출력한다. - ShowMessage#showInputAmountBuy()
 - [x] "n개를 구매했습니다."를 출력한다. - ShowMessage#showHowManyBuy(int number)
-- [ ] 발행한 로또 번호를 "[n, n, n, n, n, n]"의 형식으로 출력한다. - ShowMessage#showLottoNumber(List<List<Integer>> lottoNumber)
+- [x] 발행한 로또 번호를 "[n, n, n, n, n, n]"의 형식으로 출력한다. - ShowMessage#showLottoNumber(List<List<Integer>> lottoNumbers)
 - [x] "당첨 번호를 입력해 주세요."를 출력한다. - ShowMessage#showInputLottoNumber()
-
 - [ ] "보너스 번호를 입력해 주세요."를 출력한다. - ShowMessage#showInputBonusNumber()
 - [ ] "당첨 통계{\n}---"를 출력한다. - ShowMessage#showLottoStatistics()
 
