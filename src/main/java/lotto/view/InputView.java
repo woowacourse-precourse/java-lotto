@@ -13,6 +13,7 @@ public class InputView {
     private static final String GET_WIN_LOTTO_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String WIN_LOTTO_REGEX = "^[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+$";
     private static final String SPLIT_REGEX = ",";
+    private static final String GET_BONUS_MESSAGE = "보너스 번호를 입력해 주세요.";
 
     public static int getMoneyInput() {
         System.out.println(GET_MONEY_MESSAGE);
@@ -43,6 +44,13 @@ public class InputView {
         if (!Pattern.matches(WIN_LOTTO_REGEX, input)) {
             throw new IllegalArgumentException("[ERROR] 입력 형식이 올바르지 않습니다.");
         }
+    }
+
+    public static int getBonus() {
+        System.out.println(GET_BONUS_MESSAGE);
+        String input = Console.readLine();
+        validate(input);
+        return toNumbers(input);
     }
 
 }
