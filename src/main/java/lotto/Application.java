@@ -27,6 +27,11 @@ public class Application {
     }
 
     void start(){
+        outputHandler.requestHowMuchToBuy();
+        int amountOfLottoPaper = inputHandler.getHowMuchTickets();
 
+        outputHandler.checkHowMuchToBuy(amountOfLottoPaper);
+        Lotto[] lottoPapers = lottoNumbers.generatingAllLottoPapers(amountOfLottoPaper);
+        outputHandler.printAllLottoPapers(lottoPapers);
     }
 }
