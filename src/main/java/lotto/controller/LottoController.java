@@ -1,5 +1,7 @@
 package lotto.controller;
 
+import java.util.List;
+
 import lotto.repository.dto.UserLottoDto;
 import lotto.service.LottoService;
 import lotto.service.StatisticsService;
@@ -33,10 +35,13 @@ public class LottoController {
 		outputView.printUserLotto(userLottoDto.getUserLotto());
 
 		String answer = inputView.printWinnerNumber();
-		inputUtil.validAnswer(answer);
+		List<Integer> answerNumber = inputUtil.validAnswer(answer);
 
 		String bonus = inputView.bonusNumber();
 		Integer bonusNumber = inputUtil.validateBonus(bonus);
+
+		statisticsService.updateStatistics(userLottoDto, answerNumber, bonusNumber);
+		outputView.printUserStatistics(userMoneyNumber);
 
 	}
 
