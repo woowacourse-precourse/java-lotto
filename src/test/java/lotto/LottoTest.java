@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -31,5 +32,12 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(num1, num2, num3, num4, num5, num6)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Lotto.NUMBER_INPUT_RANGE_ERROR_MESSAGE);
+    }
+
+    @Test
+    void 로또_toString_테스트() {
+        Lotto lotto = new Lotto(List.of(20, 1, 36, 4, 10, 21));
+        String expectedToString = "[1, 4, 10, 20, 21, 36]";
+        assertThat(lotto.toString()).isEqualTo(expectedToString);
     }
 }
