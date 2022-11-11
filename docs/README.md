@@ -19,6 +19,10 @@
   - 입력된 로또 번호가 중복되는지 실제로 검사하는 함수
 
 
+- boolean checkWinningNumberIsInLottoNumbers(int)
+  - 당첨 번호가 로또 번호 안에 존재하는지 확인하는 함수
+
+
 - List<Integer> getNumbers()
   - 로또 번호들을 반환해주는 함수
 
@@ -167,7 +171,7 @@
   - 4등 로또의 개수를 계산하는 함수
 
 
-- Integer calculateFifth(List<Lotto>, List<Integer>)
+- Integer calculateFifth(List<Lotto>, List<Integer>가, int)
   - 5등 로또의 개수를 계산하는 함수
 
 
