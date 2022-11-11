@@ -13,7 +13,7 @@ public class GradingMachine {
         this.bonusNumber = bonusNumber;
     }
 
-    public GradesResult gradeByLottoTicket(LottoTicket lottoTicket) {
+    public GradesResult getGradesResultByLottoTicket(LottoTicket lottoTicket) {
         Map<Grade, Integer> gradeResult = new EnumMap<>(Grade.class);
         for (Lotto buyingLotto : lottoTicket.getLottoTicket()) {
             Grade grade = findGrade(buyingLotto);
