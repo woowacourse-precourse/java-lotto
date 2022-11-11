@@ -1,5 +1,8 @@
 package lotto;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class PurchaseLottoTest {
@@ -18,4 +21,10 @@ class PurchaseLottoTest {
         });
     }
     */
+    @DisplayName("적절한 갯수의 lotto를 생성하는지")
+    @Test
+    void LOTTO_생성(){
+        List<Lotto> lottos = PurchaseLotto.drawLotto(3);
+        assertThat(3).isEqualTo(lottos.size());
+    }
 }
