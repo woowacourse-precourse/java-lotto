@@ -24,20 +24,20 @@ public class MoneyVerifier implements Verifier {
 
     private void checkOutOfRange(String input) {
         try {
-            Integer.parseInt(input);
+            Long.parseLong(input);
         } catch (Exception e) {
             throw new IllegalArgumentException(ExceptionMessage.OUT_OF_RANGE);
         }
     }
 
     private void checkDivisible(String input) {
-        if (Integer.parseInt(input) % Constant.MONEY_UNIT != 0) {
+        if (Long.parseLong(input) % Constant.MONEY_UNIT != 0) {
             throw new IllegalArgumentException(ExceptionMessage.IS_NOT_DIVISIBLE);
         }
     }
 
     private void checkPositive(String input) {
-        if (Integer.parseInt(input) < 0) {
+        if (Long.parseLong(input) < 0) {
             throw new IllegalArgumentException(ExceptionMessage.IS_NOT_POSITIVE);
         }
     }
