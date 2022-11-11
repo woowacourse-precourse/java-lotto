@@ -21,7 +21,7 @@ public class Lotto {
                 .boxed()
                 .collect(Collectors.toList());
 
-        validate(numbers);
+        hasDuplicateNumber(numbers);
         this.numbers=numbers;
     }
 

@@ -98,4 +98,13 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(LottoConstants.INVALID_RANGED_LOTTO_INPUT);
     }
+
+    @ParameterizedTest
+    @DisplayName("구분된 값들 중 중복된 값이 존재하는 경우 이유를 나타내는 메세지를 포함한 예외가 발생한다.")
+    @ValueSource(strings = {"1,2,3,4,5,5","1,2,3,5,5,5","1,2,5,5,5,5","1,5,5,5,5,5","5,5,5,5,5,5"})
+    void createLottoByUserInputWithDuplicatedNumbers(String userInput) {
+        assertThatThrownBy(() -> new Lotto(userInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(LottoConstants.DUPLICATE_NUMBER_EXIST_MSG);
+    }
 }
