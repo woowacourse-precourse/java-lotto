@@ -12,8 +12,12 @@ public class InputValidator {
     
     
     public static void validateNullOrEmpty(final String input) {
-        if (StringUtils.isBlank(input)) {
+        if (isBlank(input)) {
             throw new IllegalArgumentException(NULL_OR_EMPTY_INPUT_EXCEPTION_MESSAGE);
         }
+    }
+    
+    private static boolean isBlank(final String input) {
+        return StringUtils.isBlank(input);
     }
 }
