@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Lotto {
@@ -15,6 +16,12 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
+    public void inputBuyPirce(){
+        System.out.println("구입금액을 입력해주세요");
+    }
+
+//    public HashMap<String, Integer>
 
     // TODO: 추가 기능 구현
 }
