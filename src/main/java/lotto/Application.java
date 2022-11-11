@@ -109,4 +109,9 @@ public class Application {
         return new Lotto(winningNums);
     }
 
+    public static String getBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        return Console.readLine();
+    }
+
 }

@@ -38,7 +38,6 @@ class LottoTest {
         assertThat(test.getNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
 
-    // 아래에 추가 테스트 작성 가능
     @DisplayName("입력된 로또 구입 금액이 정수 형태이면 int 타입으로 변환하여 반환한다.")
     @Test
     public void stringToIntTest() {
