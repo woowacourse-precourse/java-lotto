@@ -4,9 +4,9 @@ import static lotto.Util.removeSpace;
 import static lotto.Util.verifyRangeOfLottoNumber;
 
 
-public class BonusNumber {
+public class Bonus {
     private static int bonusNumber;
-    public BonusNumber(String input) {
+    public Bonus(String input) {
         this.bonusNumber = validateBonusNumber(formatInput(input));
     }
     private static int validateBonusNumber(int number) {
