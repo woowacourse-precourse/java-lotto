@@ -1,8 +1,6 @@
 package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Console;
 
-import java.util.List;
 
 public class Money {
     private final Integer myMoney;
@@ -19,6 +17,9 @@ public class Money {
     }
 
     private void validate(Integer money) {
+        if (money < 1000) {
+            throw new IllegalArgumentException();
+        }
         if ((money % 1000) != 0) {
             throw new IllegalArgumentException();
         }
