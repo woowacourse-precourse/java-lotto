@@ -16,6 +16,7 @@ public class OutputView {
 	private static final String PRINT_PRIZE_NUMBER = "개";
 
 	public static void printLottoNumber(int lottoNumber) {
+		System.out.println();
 		System.out.println(lottoNumber + PRINT_LOTTO_NUMBER);
 	}
 
@@ -34,6 +35,9 @@ public class OutputView {
 	}
 
 	public static void printPrize(HashMap<String, Integer> prizeResult) {
+		System.out.println();
+		System.out.println("당첨 통계");
+		System.out.println("---");
 		System.out.println(PRINT_FIFTH_PRIZE_RESULT + prizeResult.get("fifthPrize")+ PRINT_PRIZE_NUMBER);
 		System.out.println(PRINT_FOURTH_PRIZE_RESULT + prizeResult.get("fourthPrize") + PRINT_PRIZE_NUMBER);
 		System.out.println(PRINT_THIRD_PRIZE_RESULT + prizeResult.get("thirdPrize") + PRINT_PRIZE_NUMBER);
@@ -42,6 +46,6 @@ public class OutputView {
 	}
 
 	public static void printRateReturn(double rateReturn){
-		System.out.println("총 수익률은 " + rateReturn + "%입니다.");
+		System.out.println("총 수익률은 " + String.format("%.1f", rateReturn) + "%입니다.");
 	}
  }

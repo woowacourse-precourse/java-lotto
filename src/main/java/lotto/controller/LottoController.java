@@ -67,7 +67,7 @@ public class LottoController {
 		sum += prizeCount.get("fourthPrize") * 50000;
 		sum += prizeCount.get("fifthPrize") * 5000;
 
-		result = Math.round((double)sum / userMoney * 100);
+		result = (double)sum / userMoney * 100;
 		OutputView.printRateReturn(result);
 	}
 }
