@@ -91,8 +91,15 @@ class ValidatorTest {
         }
 
         @Test
+        @DisplayName("쉼표가 처음이나 끝에 있으면 예외를 던진다.")
         void commaAtStartOrEnd() {
+            // given
+            Validator validator = new Validator();
 
+            // throws
+            assertThatThrownBy(() -> validator.validateWinningNumbers(",12,31,5,1,26,4,"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR] 당첨 번호들의 형태가 잘못되었습니다.");
         }
 
         @Test
