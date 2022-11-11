@@ -1,5 +1,6 @@
 package lotto.data.dto;
 
+import java.util.Collections;
 import java.util.Set;
 
 public class LottoWinNumberDto {
@@ -8,7 +9,7 @@ public class LottoWinNumberDto {
     private final int bonusNumber;
 
     LottoWinNumberDto(Set<Integer> winNumbers, int bonusNumber){
-        this.winNumbers = winNumbers;
+        this.winNumbers = Collections.unmodifiableSet(winNumbers);
         this.bonusNumber = bonusNumber;
     }
 
