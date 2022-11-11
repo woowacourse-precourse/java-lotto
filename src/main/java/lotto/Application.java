@@ -51,12 +51,20 @@ public class Application {
         return winningNumbers;
     }
 
+    static void inputBonusNumber(WinningLotto winningLotto){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        winningLotto.inputBonusNumber(input);
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int purchase = inputMoney() / 1000;
         List<Lotto> myLottos = buyLotto(purchase);
         printMyLotto(myLottos);
         WinningLotto winningLotto = inputWinNumber();
+        inputBonusNumber(winningLotto);
     }
 }
 

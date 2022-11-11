@@ -38,6 +38,32 @@ public class WinningLotto {
         return winNumbers;
     }
 
+    private void compareBonusWithWin(int bonus) {
+        for (int winNumber : this.winNumbers) {
+            if (bonus == winNumber) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    private int checkBonusNumber(String input) {
+        try {
+            int bonus = Integer.parseInt(input);
+            if (bonus < 1 || bonus > 45) {
+                throw new IllegalArgumentException();
+            }
+            compareBonusWithWin(bonus);
+            return bonus;
+        } catch (NumberFormatException exception) {
+            throw new IllegalArgumentException();
+        }
+
+    }
+
+    public void inputBonusNumber(String input) {
+        this.bonus = checkBonusNumber(input);
+    }
+
     public List<Integer> getWinNumbers() {
         return this.winNumbers;
     }
