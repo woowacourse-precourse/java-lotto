@@ -4,18 +4,29 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.exception.LottoError;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class User {
     private int purchaseAmount;
-    private final PrizeList prizes = new PrizeList();
+    private final Map<Prize, Integer> prizes = new HashMap<>();
     private final List<Lotto> lottos = new ArrayList<>();
+
+    public User() {
+        prizes.put(Prize.FIFTH, 0);
+        prizes.put(Prize.FOURTH, 0);
+        prizes.put(Prize.THIRD, 0);
+        prizes.put(Prize.SECOND, 0);
+        prizes.put(Prize.FIRST, 0);
+        prizes.put(Prize.NOTHING, 0);
+    }
 
     public List<Lotto> getLottos() {
         return lottos;
     }
 
-    public PrizeList getPrizes() {
+    public Map<Prize, Integer> getPrizes() {
         return prizes;
     }
 
@@ -43,13 +54,19 @@ public class User {
     }
 
     public void addPrize(Prize prize) {
-        getPrizes().addCount(prize);
+        prizes.put(prize, prizes.get(prize) + 1);
     }
 
     public String getYield() {
-        long yield = prizes.getYield();
-        double yieldPercent = (double) yield / purchaseAmount * 100;
+        double yieldPercent = (double) sumPrizes() / purchaseAmount * 100;
+
         return String.format("%.1f", yieldPercent);
+    }
+
+    private long sumPrizes() {
+        return prizes.entrySet().stream()
+                .mapToLong(o -> (long) o.getKey().getPrize() * o.getValue())
+                .sum();
     }
 
     private void validate(String input) throws RuntimeException {

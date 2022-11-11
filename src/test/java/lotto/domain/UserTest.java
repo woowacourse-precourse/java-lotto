@@ -58,8 +58,8 @@ class UserTest {
         //given
         User user = new User();
         user.inputPurchaseAmount("50000");
-        user.getPrizes().addCount(Prize.FIRST);
-        user.getPrizes().addCount(Prize.FIRST);
+        user.addPrize(Prize.FIRST);
+        user.addPrize(Prize.FIRST);
 
         //when
         String yield = user.getYield();
