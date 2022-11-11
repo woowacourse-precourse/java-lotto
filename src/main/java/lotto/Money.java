@@ -1,14 +1,14 @@
 package lotto;
 
-public class Money {
+import static lotto.Constants.*;
 
-	public static final String NUMBER_SERIES = "[0-9]+";
+public class Money {
 
 	public Money() {
 	}
 
 	public static void checkMoneyInput(String input) {
-		if (!input.matches(NUMBER_SERIES)) {
+		if (!input.matches(ONLY_INTEGER_SERIES)) {
 			throw new IllegalArgumentException("숫자가 아닙니다.");
 		}
 
@@ -18,10 +18,10 @@ public class Money {
 	}
 
 	private static boolean isUnitOfThousand(String input) {
-		return Integer.parseInt(input) % 1000 == 0;
+		return Integer.parseInt(input) % LOTTO_PRICE == 0;
 	}
 
 	public static int calculateMaximumLottoCount(String input) {
-		return Integer.parseInt(input) / 1000;
+		return Integer.parseInt(input) / LOTTO_PRICE;
 	}
 }
