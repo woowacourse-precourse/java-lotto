@@ -3,11 +3,11 @@ package lotto.domain;
 import lotto.config.InputConfig;
 
 public enum Winner {
-    FIRST(InputConfig.LOTTO_NUMBER_COUNT,  2000000000),
-    SECOND(InputConfig.LOTTO_NUMBER_COUNT-1,  30000000),
-    THIRD(InputConfig.LOTTO_NUMBER_COUNT-1,  1500000),
-    FOURTH(InputConfig.LOTTO_NUMBER_COUNT-2, 50000),
     FIFTH(InputConfig.LOTTO_NUMBER_COUNT-3,  5000),
+    FOURTH(InputConfig.LOTTO_NUMBER_COUNT-2, 50000),
+    THIRD(InputConfig.LOTTO_NUMBER_COUNT-1,  1500000),
+    SECOND(InputConfig.LOTTO_NUMBER_COUNT-1,  30000000),
+    FIRST(InputConfig.LOTTO_NUMBER_COUNT,  2000000000),
     NONE(0, 0);
 
     private int correctness;

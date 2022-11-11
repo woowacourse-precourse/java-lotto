@@ -40,4 +40,13 @@ public class InputView {
 
         }
     }
+
+    void printNewLine() {
+        try {
+            bw.newLine();
+            bw.flush();
+        } catch (IOException e) {
+
+        }
+    }
 }

@@ -7,6 +7,7 @@ import lotto.domain.Winner;
 import lotto.util.InputMapper;
 
 import java.util.List;
+import java.util.Map;
 
 public class ViewController {
     private final long LOTTO_PRICE = InputConfig.LOTTO_PRICE;
@@ -22,18 +23,27 @@ public class ViewController {
         this.inputMapper = new InputMapper();
     }
 
-    public void printStatisticsStart() {
+    public void printStatisticsByRank(Map<Winner, Integer> result) {
         outputView.printStatisticStart();
+
+        for (Map.Entry<Winner, Integer> entry : result.entrySet()) {
+            Winner winner = entry.getKey();
+            int count = entry.getValue();
+            outputView.printStatisticsByRank(winner, count);
+        }
+        outputView.flush();
     }
 
-    public void printStatisticsByRank(Winner winner, int count) {
-        outputView.printStatisticsByRank(winner, count);
+    public void printProfitPercentage(float profit) {
+        outputView.printTotalProfitPercent(profit);
         outputView.flush();
     }
 
     public long inputPurchaseAmount() {
         inputView.printInputPurchaseAmount();
         String amount = Console.readLine();
+        inputView.printNewLine();
+
         InputConfig.checkPurchaseInput(amount);
         return Long.parseLong(amount) / LOTTO_PRICE;
     }
@@ -52,6 +62,8 @@ public class ViewController {
     private List<Integer> inputPrizeLottoNumber() {
         inputView.printInputPrizeLottoNumber();
         String input = Console.readLine();
+        inputView.printNewLine();
+
         List<Integer> prize = inputMapper.splitBy(input, SPLIT_REGEX);
         return prize;
     }
@@ -59,6 +71,8 @@ public class ViewController {
     public int inputBonusNumber() {
         inputView.printInputBonusNumber();
         String input = Console.readLine();
+        inputView.printNewLine();
+
         return Integer.parseInt(input);
     }
 }

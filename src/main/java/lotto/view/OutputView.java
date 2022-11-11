@@ -40,7 +40,7 @@ public class OutputView {
     void printStatisticsByRank(Winner winner, int winCount) {
         try {
             String raw = RANK_MESSAGE;
-            if(winner.equals(Winner.SECOND)) {
+            if (winner.equals(Winner.SECOND)) {
                 raw = SECOND_RANK_MESSAGE;
             }
             String formatted = String.format(raw, winner.getCorrectnessCount(), winner.getPrizeMoneyToString(), winCount);
@@ -66,6 +66,7 @@ public class OutputView {
                 bw.write(lotto.toString());
                 bw.newLine();
             }
+            bw.newLine();
         } catch (IOException e) {
 
         }
