@@ -1,33 +1,34 @@
 package lotto.controller;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import lotto.model.Bonus;
 import lotto.model.Lotto;
 import lotto.model.Player;
 import lotto.model.Purchase;
 import lotto.view.InputView;
-import lotto.view.OutputView;
 
 public class LottoController {
+    private static int ticketNumber;
     private static List<List<Integer>> allPlayerNumbers = new ArrayList<>();
-    private static Lotto winningNumbers;
-    private static Bonus bonusNumber;
+    private static List<Integer> winningNumbers;
+    private static int bonusNumber;
 
     public static void run() {
-        Purchase issueCount = new Purchase(InputView.inputCash());
-        createAllPlayerNumbers(issueCount);
+        Purchase purchase = new Purchase(InputView.inputCash());
+        ticketNumber = purchase.get();
+        createAllPlayerNumbers(purchase);
 
-        winningNumbers = new Lotto(InputView.inputWinningNumbers());
-        bonusNumber = new Bonus(InputView.inputBonusNumber());
+        Lotto lotto = new Lotto(InputView.inputWinningNumbers());
+        Bonus bonus = new Bonus(InputView.inputBonusNumber());
+        winningNumbers = lotto.get();
+        bonusNumber = bonus.get();
         validateDuplicates();
-
 
     }
 
     private static void validateDuplicates() {
-        if (winningNumbers.get().contains(bonusNumber.get())) {
+        if (winningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.");
         }
     }
