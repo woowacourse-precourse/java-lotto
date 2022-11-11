@@ -1,6 +1,5 @@
 package lotto;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -8,14 +7,13 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class FeatureTest {
     @Test
     void 입력을_숫자로_변환() {
-        String input = "1400";
+        String input = "1";
         assertThat(Input.getInputToInt(input)).isEqualTo(1400);
     }
 
@@ -123,7 +121,7 @@ public class FeatureTest {
         assertThatThrownBy(() -> Input.getWinningNumber(s2))
                 .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 로또 번호의 숫자가 6개가 아닙니다.");
         String s3 = "1,2,3,4,5,5";
-        assertThatThrownBy(() -> Input.getWinningNumber(s3))
+        assertThatThrownBy(() -> new Lotto(Input.getWinningNumber(s3)))
                 .isInstanceOf(IllegalArgumentException.class).hasMessage("[ERROR] 입력 숫자가 중복되었습니다.");
         String s4 = "1,2,3,4,5,6";
         int bonus = 6;
