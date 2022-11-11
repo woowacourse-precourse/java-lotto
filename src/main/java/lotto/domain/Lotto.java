@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -16,5 +19,10 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
-}
+    //로또 번호에 중복된 숫자가 있으면 예외가 발생한다
+    private void duplicateNumber(List<Integer> numbers) {
+
+            }
+        // TODO: 추가 기능 구현
+    }
+
