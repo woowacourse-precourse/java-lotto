@@ -276,4 +276,16 @@ public class Application {
 
         return 0;
     }
+
+    public static Integer calculateFirst(List<Lotto> lottoList, List<Integer> winningNumberList) {
+
+        int number = 0;
+
+        for (int i = 0; i < lottoList.size(); i++) {
+
+            number += compareLottoNumbersAndWinningNumbers(lottoList.get(i), winningNumberList, 6);
+        }
+
+        return number;
+    }
 }
