@@ -32,4 +32,25 @@ class UserInputHandlerTest{
             function.get();
         }catch(IllegalArgumentException | NoSuchElementException ignored){}
     }
+
+
+    @Test
+    void getHowMuchTickets_case1() {
+        String input = "8000";
+        int output = 8;
+        beforeSetting(input);
+        assertThat(inputHandler.getHowMuchTickets()).isEqualTo(output);
+    }
+
+    @Test
+    void getHowMuchTickets_exception1(){
+        String input = "Hello World";
+        beforeSetting(input);
+        functionSupply = () -> inputHandler.getHowMuchTickets();
+        assertSimpleTest(() ->{
+            exceptionRunning(functionSupply);
+            assertThat(out.toString().trim()).isEqualTo("[ERROR] 구입 금액에는 정수만 입력할 수 있습니다.");
+        });
+
+    }
 }
