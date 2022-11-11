@@ -8,7 +8,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        LottoExceptionCase exceptionCase = new LottoExceptionCase();
+        LottoExceptionCaseImpl exceptionCase = new LottoExceptionCaseImpl();
         validate(numbers);
         exceptionCase.validateNumberRange(numbers);
         exceptionCase.validateDuplicate(numbers);
@@ -24,7 +24,7 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
     public static List<Integer> sliceWinningNumber(String winningNumber) {
-        LottoExceptionCase exceptionCase = new LottoExceptionCase();
+        LottoExceptionCaseImpl exceptionCase = new LottoExceptionCaseImpl();
         exceptionCase.validateFirstIndexIsComma(winningNumber);
         exceptionCase.validateInputValue(winningNumber);
         exceptionCase.validateCommaCount(winningNumber);
@@ -40,7 +40,7 @@ public class Lotto {
     }
 
     public Integer inputBonusNumber(String number) {
-        LottoExceptionCase exceptionCase = new LottoExceptionCase();
+        LottoExceptionCaseImpl exceptionCase = new LottoExceptionCaseImpl();
 
         for (int seq = 0; seq < number.length(); seq++) {
             exceptionCase.validateCharacter(number.charAt(seq));

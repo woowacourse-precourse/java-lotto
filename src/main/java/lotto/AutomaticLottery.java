@@ -1,8 +1,5 @@
 package lotto;
 
-import static lotto.LotteriesExceptionCase.validateAmount;
-import static lotto.LotteriesExceptionCase.validateInputEmpty;
-import static lotto.LotteriesExceptionCase.validateInputType;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -12,10 +9,13 @@ import java.util.stream.Collectors;
 
 public class AutomaticLottery {
     public int getLottoPieces(String amount) {
-        validateInputEmpty(amount);
-        validateInputType(amount);
-        validateAmount(amount);
-        int money = Integer.parseInt(amount);
+        LotteryExceptionCase exceptionCase = new LotteryExceptionCaseImpl();
+
+        exceptionCase.validateInputEmpty(amount);
+        exceptionCase.validateInputType(amount);
+        int money = exceptionCase.convertStringToInteger(amount);
+        exceptionCase.validateAmount(money);
+
         return money / 1000;
     }
 
