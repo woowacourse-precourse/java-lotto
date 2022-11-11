@@ -1,9 +1,9 @@
-package lotto;
+package lotto.view;
+
+import lotto.ErrorMessage;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class ViewValidator {
     private static final String INVALID_NUMBER_TYPE_REGEX = "\\D";
