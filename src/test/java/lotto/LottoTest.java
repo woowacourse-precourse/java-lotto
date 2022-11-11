@@ -1,5 +1,6 @@
 package lotto;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -8,6 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
+    @Disabled
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -15,6 +17,7 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Disabled
     @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
     @Test
     void createLottoByDuplicatedNumber() {
@@ -23,5 +26,17 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 당첨 번호 입력 - 빈 값을 입력한 경우 예외 발생")
+    @Test
+    void checkInputIsNotEmpty() {
+        assertThatThrownBy(() -> new Lotto(""))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 당첨 번호 입력 - 띄어쓰기만 입력한 경우 예외 발생")
+    @Test
+    void checkInputIsSpace() {
+        assertThatThrownBy(() -> new Lotto("    "))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
