@@ -1,6 +1,8 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,6 +10,9 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -51,6 +56,55 @@ class ApplicationTest extends NsTest {
         assertSimpleTest(() -> {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 당첨번호_테스트() {
+        //given
+        String number = "1,2,3,4,5,6";
+
+        List<Integer> winningNumbers = lotto.Buy.makeWinningNumbers(number);
+
+        List<Integer> test =  List.of(1, 2, 3, 4, 5, 6);
+
+        assertThat(winningNumbers).isEqualTo(test);
+
+
+    }
+
+    @Test
+    void 당첨번호_중복_예외_테스트() {
+        //given
+        String number = "1,2,3,4,6, 6";
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            lotto.Buy.makeWinningNumbers(number);
+        });
+
+
+
+    }
+
+    @Test
+    @DisplayName("천원단위가 아니면 예외 발생")
+    void 주문_테스트() {
+        Long money = 11010L;
+
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+            validate.Check.countLottoTicket(money);
+        });
+
+        assertEquals("[ERROR] 올바른 금액이 아닙니다. (지폐만 가능)", exception.getMessage());
+
+    }
+
+    @Test
+    void 당첨번호_숫자_크기_테스트() {
+        String number = "1,2,3,4,5";
+
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            lotto.Buy.makeWinningNumbers(number);
         });
     }
 

@@ -18,5 +18,12 @@ public class Lotto {
         }
     }
 
+    public void printNumber() {
+        for (Integer data : numbers) {
+            System.out.print(data + ", ");
+        }
+        System.out.println();
+    }
+
 
 }
