@@ -1,8 +1,11 @@
 package lotto;
 
 public class View {
+    final String Cost = "구입금액을 입력해 주세요.";
+    final String Winning = "당첨 번호를 입력해 주세요.";
+    final String Bonus = "보너스 번호를 입력해 주세요.";
     void startMention() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(Cost);
     }
 
     void purchaseNumber(int number, Computer[] computers) {
@@ -11,11 +14,11 @@ public class View {
     }
 
     void inputNumber() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(Winning);
     }
 
     void inputBonus() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(Bonus);
     }
 
     void printResult(int[] list) {
