@@ -12,7 +12,7 @@
   - [x] Money
   - [x] WinningNumbers
   - [x] BonusNumber
-  - [ ] Prize (Enum 으로 구현)
+  - [x] Prize (Enum 으로 구현)
 
 
 - Controller
