@@ -18,12 +18,4 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-
-    public List<List<Integer>> setLottos(int lottoCount) {
-        List<List<Integer>> lottos = new ArrayList<>(lottoCount);
-        for (int i = 0; i < lottoCount; i++) {
-            lottos.add(RandomUtils.getRandomLottoNumber());
-        }
-        return lottos;
-    }
 }
