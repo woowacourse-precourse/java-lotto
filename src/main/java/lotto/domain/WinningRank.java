@@ -5,12 +5,13 @@ import java.util.EnumMap;
 import java.util.Map;
 
 public enum WinningRank {
-    FIRST_PLACE(6, false, 2_000_000_000),
-    SECOND_PLACE(5, true, 30_000_000),
-    THIRD_PLACE(5, false, 1_500_000),
-    FOURTH_PLACE(4, false, 50_000),
+
+    LAST_PLACE(0, false, 0),
     FIFTH_PLACE(3, false, 5_000),
-    LAST_PLACE(0, false, 0);
+    FOURTH_PLACE(4, false, 50_000),
+    THIRD_PLACE(5, false, 1_500_000),
+    SECOND_PLACE(5, true, 30_000_000),
+    FIRST_PLACE(6, false, 2_000_000_000);
 
     private static final int INITIAL_VALUE = 0;
 
