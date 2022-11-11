@@ -7,11 +7,16 @@ public enum WinningPrize {
     FOURTH(4,50_000,4),
     FIFTH(5,5_000,3);
 
-    private int ranking;
-    private int winningMoney;
-    private int howManyNumbersIncluded;
+    private final int ranking;
+    private final int winningMoney;
+    private final int howManyNumbersIncluded;
 
-    WinningPrize(int ranking,int winningMoney, int howManyNumbersIncluded) {}
+    WinningPrize(int ranking,int winningMoney, int howManyNumbersIncluded) {
+        this.ranking = ranking;
+        this.winningMoney = winningMoney;
+        this.howManyNumbersIncluded = howManyNumbersIncluded;
+
+    }
 
     public static int findRanking(int amountOfCorrectNumbers, Lotto lottoPapers, int bonusNumber){
         boolean isSecondPrize = (amountOfCorrectNumbers == 5) && isBonusNumberIncludedInPapers(lottoPapers,bonusNumber);
