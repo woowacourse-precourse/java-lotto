@@ -5,12 +5,11 @@ import java.util.List;
 
 public class LottoHost {
 
-    public List<Integer> matchNotContainBonusNumber(
-            List<List<Integer>> generatedLottoNumbers, List<Integer> winningLottoNumbers, int bonusNumber) {
+    public List<List<Integer>> matchNotContainBonusNumber(
+            List<List<Integer>> generatedLottoNumbers, List<Integer> winningLottoNumbers, int bonusWinningNumber) {
 
-        winningLottoNumbers.add(bonusNumber);
-        List<Integer> MatchResultNotContainBonusNumber = new ArrayList<>();
-
+        winningLottoNumbers.add(bonusWinningNumber);
+        List<Integer> matchResultNotContainBonusNumber = new ArrayList<>();
         for (List<Integer> generatedLottoNumber : generatedLottoNumbers) {
             int count = 0;
             for (Integer winningNumber : winningLottoNumbers) {
@@ -18,26 +17,29 @@ public class LottoHost {
                         .filter(e -> e.equals(winningNumber))
                         .count();
             }
-            MatchResultNotContainBonusNumber.add(count);
+            matchResultNotContainBonusNumber.add(count);
         }
-        return MatchResultNotContainBonusNumber;
+
+        List<Integer> countingContainBonusNumber = countContainBonusNumber(
+                matchResultNotContainBonusNumber, generatedLottoNumbers, bonusWinningNumber);
+        return new ArrayList<>() {{
+            add(matchResultNotContainBonusNumber);
+            add(countingContainBonusNumber);
+        }};
     }
 
-    public List<Integer> matchContainBonusNumber(
-            List<List<Integer>> generatedLottoNumbers, List<Integer> winningLottoNumbers, int bonusNumber) {
-        List<Integer> MatchResultContainBonusNumber = new ArrayList<>();
+    public List<Integer> countContainBonusNumber(
+            List<Integer> matchResultNotContainBonusNumber,
+            List<List<Integer>> generatedLottoNumbers, int bonusWinningNumber) {
 
-        for (List<Integer> generatedLottoNumber : generatedLottoNumbers) {
-            int count = 0;
-            for (Integer winningNumber : winningLottoNumbers) {
-                count += generatedLottoNumber.stream()
-                        .filter(e -> e.equals(winningNumber))
-                        .filter(e -> e.equals(bonusNumber))
-                        .count();
+        List<Integer> result = new ArrayList<>();
+
+        for (int i = 0; i < matchResultNotContainBonusNumber.size(); i++) {
+            if (matchResultNotContainBonusNumber.get(i) == 5 &&
+                    generatedLottoNumbers.get(i).contains(bonusWinningNumber)) {
+                result.add(1);
             }
-            MatchResultContainBonusNumber.add(count);
         }
-        return MatchResultContainBonusNumber;
+        return result;
     }
-
 }
