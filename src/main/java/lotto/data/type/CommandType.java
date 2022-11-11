@@ -1,4 +1,4 @@
-package lotto.type;
+package lotto.data.type;
 
 public enum CommandType {
     BUY_WITH_MONEY,
