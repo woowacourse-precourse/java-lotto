@@ -46,7 +46,19 @@ public class CustomerTest {
             List<Integer> winNumber = List.of(1,2,3,4,5,6);
             List<Integer> result = List.of(6,4);
 
-            assertThat(input.determineRanking(winNumber)).isEqualTo(result);
+            assertThat(input.matchWinNumbers(winNumber)).isEqualTo(result);
+        }, List.of(1, 2, 3, 4, 5, 6),List.of(3,4,5,6,7,8));
+    }
+
+    @DisplayName("당첨번호와 비교 후 맞는 번호 개수를 출력한다.")
+    @Test
+    void case5_count_the_duplicate_bonus_number() {
+        assertRandomUniqueNumbersInRangeTest(() -> {
+            Customer input = new Customer("2000");
+            int bonusNumber = 1;
+            List<Integer> result = List.of(1,0);
+
+            assertThat(input.matchBonusNumber(bonusNumber)).isEqualTo(result);
         }, List.of(1, 2, 3, 4, 5, 6),List.of(3,4,5,6,7,8));
     }
 }
