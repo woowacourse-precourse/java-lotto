@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 public enum Rank {
 
@@ -14,12 +14,10 @@ public enum Rank {
     private static final int THIRD_PRICE_NUM = 5;
     private static final int FOURTH_PRICE_NUM = 4;
     private static final int FIFTH_PRICE_NUM = 3;
-
-    private final int count;
+=
     private final int prizemoney;
 
-    Rank(int count, int prizemoney) {
-        this.count = count;
+    Rank(int prizemoney) {
         this.prizemoney = prizemoney;
     }
 

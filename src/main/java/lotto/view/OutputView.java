@@ -1,6 +1,7 @@
-package lotto;
+package lotto.view;
 
 import java.util.List;
+import lotto.domain.Lotto;
 
 public class OutputView {
     public static void printStartMesseage() {
