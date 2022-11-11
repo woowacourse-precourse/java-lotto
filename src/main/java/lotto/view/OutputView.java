@@ -1,10 +1,20 @@
 package lotto.view;
 
+import lotto.model.domain.LottoCollection;
+
 public class OutputView {
 
     private static final String REQUEST_MONEY = "구입금액을 입력해 주세요.";
+    private static final String BUY_SOME = "개를 구매했습니다.";
 
     public static void printRequestMoney() {
         System.out.println(REQUEST_MONEY);
     }
+
+    public static void printLottoCollection(LottoCollection lottoCollection) {
+        System.out.println();
+        System.out.println(lottoCollection.size() + BUY_SOME);
+        System.out.println(lottoCollection);
+    }
+
 }

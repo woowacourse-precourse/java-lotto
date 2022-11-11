@@ -24,5 +24,14 @@ public class LottoCollection {
         return Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_MIN, LOTTO_NUMBER_MAX, LOTTO_NUMBER_SIZE);
     }
 
+    public int size() {
+        return lottoCollection.size();
+    }
 
+    @Override
+    public String toString() {
+        return lottoCollection.stream()
+                .map(Lotto::toString)
+                .collect(Collectors.joining());
+    }
 }
