@@ -7,10 +7,10 @@ public class Validator {
     private static final int REMAINDER=0;
     private static final int START_RANGE=1;
     private static final int END_RANGE=45;
-    private static final String ERROR_MESSAGE="[ERROR]";
-    private static final String MUST_INTEGER=" 입력값이 숫자여야 합니다.";
-    private static final String UNMATCHED_UNIT=" 입력값이 1000원 단위여야 합니다.";
-    private static final String BELOW_AMOUNT=" 입력값이 1000원 이상이여야 합니다.";
+    private static final String ERROR_MESSAGE="[ERROR] ";
+    private static final String MUST_INTEGER="입력값이 숫자여야 합니다.";
+    private static final String UNMATCHED_UNIT="입력값이 1000원 단위여야 합니다.";
+    private static final String BELOW_AMOUNT="입력값이 1000원 이상이여야 합니다.";
     private static final String NUMERIC_RANGE="1~45 사이의 숫자여야 합니다.";
     private static final String NUMBER_OF_DIGIT="자리 숫자여야 합니다.";
     private static final String REGEX = "[0-9]+";

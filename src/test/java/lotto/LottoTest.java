@@ -59,4 +59,11 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1,2,3,4,5,46)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+    @DisplayName("구매한 로또의 숫자가 6자리가 아닌 경우 예외가 발생한다.")
+    @Test
+    void numberOfDigit() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        assertThatThrownBy(() -> new Lotto(List.of(1,2,3,4,5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
