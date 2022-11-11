@@ -17,6 +17,10 @@ public class Lotto {
         return numbers.contains(number);
     }
 
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
             System.out.println(LOTTO_SIZE_ERROR_MSG);
