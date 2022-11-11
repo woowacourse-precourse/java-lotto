@@ -22,6 +22,10 @@ public class User {
         return winningNumber;
     }
 
+    public int inputBonusNumber(String inputtedBonusNumber) {
+        return Integer.parseInt(inputtedBonusNumber);
+    }
+
 
 
 }
