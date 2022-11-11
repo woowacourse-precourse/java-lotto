@@ -19,4 +19,30 @@ public class ValidationTest {
                         .isInstanceOf(IllegalArgumentException.class)
         );
     }
+
+    @Test
+    void validateLottoNumber_메서드_사용시_숫자_입력이_아닐_경우_예외_발생() {
+        String inputWithAlphabet = "abc";
+        String inputWithKorean = "한글";
+
+        assertAll(
+                () -> assertThatThrownBy(() -> Input.validateLottoNumber(inputWithAlphabet))
+                        .isInstanceOf(IllegalArgumentException.class),
+                () -> assertThatThrownBy(() -> Input.validateLottoNumber(inputWithKorean))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
+    @Test
+    void validateLottoNumber_메서드_사용시_1_부터_45_범위의_숫자가_아닐_경우_예외_발생() {
+        String inputWithAlphabet = "0";
+        String inputWithKorean = "46";
+
+        assertAll(
+                () -> assertThatThrownBy(() -> Input.validateLottoNumber(inputWithAlphabet))
+                        .isInstanceOf(IllegalArgumentException.class),
+                () -> assertThatThrownBy(() -> Input.validateLottoNumber(inputWithKorean))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 }
