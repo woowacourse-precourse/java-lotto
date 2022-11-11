@@ -4,7 +4,8 @@ public final class Constants {
 
     public static final int LOTTO_START_NUMBER = 1;
     public static final int LOTTO_END_NUMBER = 45;
-    public static final int LOTTO_PRICE_TERMS = 1_000;
+    public static final int LOTTO_PRICE = 1_000;
+    public static final int MONEY_TERMS = 1_000;
 
     public static final String CONSOLE_LOTTO_NUMBER = "당첨 번호를 입력해 주세요.";
     public static final String CONSOLE_LOTTO_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";

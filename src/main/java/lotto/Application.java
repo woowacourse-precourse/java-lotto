@@ -8,24 +8,15 @@ public class Application {
 
     public static void main(String[] args) {
         try {
-            int money = enterMoney();
+            User user = new User();
+            Store store = new Store();
+            user.buyLotto(store, user.getMoney() / Constants.LOTTO_PRICE);
 
             Winning winningLotto = new Winning(new Lotto(enterWinningNumbers()),
                     enterWinningBonusNumber());
         } catch (IllegalArgumentException e) {
             System.out.println(Constants.ERROR_PREFIX + e.getMessage());
         }
-    }
-
-    private static int enterMoney() {
-        System.out.println(Constants.CONSOLE_MONEY);
-
-        int money = Integer.parseInt(Console.readLine());
-        if (money % Constants.LOTTO_PRICE_TERMS != 0) {
-            throw new IllegalArgumentException(Constants.LOTTO_MONEY_EXCEPTION);
-        }
-
-        return money;
     }
 
     private static List<Integer> enterWinningNumbers() {
