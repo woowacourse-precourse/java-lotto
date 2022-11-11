@@ -43,12 +43,19 @@ public class Application {
     	
     	System.out.println("구입금액을 입력해 주세요.");
     	stringprice = Console.readLine();
+    	validateNumber(stringprice);
     	price = Integer.parseInt(stringprice);
     	System.out.println();
     	
     	return price;
     }
     
+    public static void validateNumber(String stringprice) {
+    	String pattern = "^[0-9]+$";
+    	if (!Pattern.matches(pattern, stringprice)) {
+    		throw new IllegalArgumentException("[ERROR] 금액(숫자)를 입력해주세요.");
+    	}
+    }
     public static List<Integer> askNumbers() {
     	List<Integer> numbers = new ArrayList<>();
     	String stringnumbers = "";
