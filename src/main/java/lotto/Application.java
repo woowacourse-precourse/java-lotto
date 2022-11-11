@@ -28,7 +28,11 @@ public class Application {
         // 당첨 번호를 입력
         Input.inputWinningNumber();
         // 로또 입력 번호 예외사항 확인 기능 실행
-        new Lotto(Input.lottoNumber);
+        try {
+            new Lotto(Input.lottoNumber);
+        } catch (IllegalArgumentException e) {
+            return;
+        }
         // 보너스 번호 입력
         Input.inputBonusNumber();
 

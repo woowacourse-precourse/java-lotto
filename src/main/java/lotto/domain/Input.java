@@ -72,4 +72,6 @@ public class Input {
         lottoBonusNumber = Integer.parseInt(Console.readLine());
         return lottoBonusNumber;
     }
+
+
 }
