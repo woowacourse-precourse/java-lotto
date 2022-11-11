@@ -1,15 +1,14 @@
 package lotto.check;
 
+import lotto.domain.Const;
 import lotto.domain.Lotto;
 
 public class BonusCheck {
-    private final String numErrMsg = "숫자를 입력해 주세요.";
-    private final String rangeErrMsg = "숫자는 1~45사이의 숫자를 입력해 주세요.";
-    private final String duplicateErrMsg = "숫자가 중복 되었습니다.";
-    private final int startNumber = 1;
-    private final int endNumber = 45;
+    private static final String numErrMsg = "숫자를 입력해 주세요.";
+    private static final String rangeErrMsg = "숫자는 1~45사이의 숫자를 입력해 주세요.";
+    private static final String duplicateErrMsg = "숫자가 중복 되었습니다.";
 
-    public Integer check(String bonusNumber, Lotto winningLotto) {
+    public static Integer check(String bonusNumber, Lotto winningLotto) {
         if (!isNumber(bonusNumber)) {
             throw new IllegalArgumentException(numErrMsg);
         }
@@ -23,7 +22,7 @@ public class BonusCheck {
         return bonus;
     }
 
-    private boolean isNumber(String bonusNumber) {
+    private static boolean isNumber(String bonusNumber) {
         for (int i = 0; i < bonusNumber.length(); i++) {
             char c = bonusNumber.charAt(i);
             if (!Character.isDigit(c)) return false;
@@ -31,9 +30,9 @@ public class BonusCheck {
         return true;
     }
 
-    private boolean isRange(String bonusNumber) {
+    private static boolean isRange(String bonusNumber) {
         int bonus = Integer.parseInt(bonusNumber);
-        if (bonus < startNumber || bonus > endNumber) return false;
+        if (bonus < Const.START_NUMBER || bonus > Const.END_NUMBER) return false;
         return true;
     }
 }

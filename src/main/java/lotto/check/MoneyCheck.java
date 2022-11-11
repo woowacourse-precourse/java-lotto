@@ -2,9 +2,9 @@ package lotto.check;
 
 public class MoneyCheck {
 
-    private final String errMsg = "1000원 단위로 숫자를 입력해 주세요.";
+    private static final String errMsg = "1000원 단위로 숫자를 입력해 주세요.";
 
-    public Integer check(String money) {
+    public static Integer check(String money) {
         if (!isMoney(money)) {
             throw new IllegalArgumentException(errMsg);
         }
@@ -14,7 +14,7 @@ public class MoneyCheck {
         return Integer.parseInt(money);
     }
 
-    private boolean isMoney(String money) {
+    private static boolean isMoney(String money) {
         char[] chars = money.toCharArray();
         for (char c : chars) {
             if (!isDigit(c)) return false;
@@ -22,7 +22,7 @@ public class MoneyCheck {
         return true;
     }
 
-    private boolean isDigit(char c) {
+    private static boolean isDigit(char c) {
         if (c < '0' && c > '9') return false;
         return true;
     }

@@ -1,16 +1,16 @@
 package lotto.check;
 
+import lotto.domain.Const;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class WinningNumberCheck {
 
-    private final String rangeErrMsg = "1~45사이의 숫자를 입력해 주세요.";
-    private final int startNum = 1;
-    private final int endNum = 45;
+    private static final String rangeErrMsg = "1~45사이의 숫자를 입력해 주세요.";
 
-    public List<Integer> check(String winningNumber) {
+    public static List<Integer> check(String winningNumber) {
         winningNumber = winningNumber.replace(" ", "");
         String[] split = winningNumber.split(",");
         List<String> numbers = Arrays.asList(split);
@@ -20,7 +20,7 @@ public class WinningNumberCheck {
         return toIntegerList(numbers);
     }
 
-    private List<Integer> toIntegerList(List<String> split) {
+    private static List<Integer> toIntegerList(List<String> split) {
         ArrayList<Integer> winningNumber = new ArrayList<>();
         for (String s : split) {
             winningNumber.add(Integer.parseInt(s));
@@ -28,22 +28,22 @@ public class WinningNumberCheck {
         return winningNumber;
     }
 
-    private boolean checkNumber(List<String> numbers) {
+    private static boolean checkNumber(List<String> numbers) {
         for (String number : numbers) {
             if (!isRange(number)) return false;
         }
         return true;
     }
 
-    private boolean isRange(String number) {
+    private static boolean isRange(String number) {
         Integer n = stringTointeger(number);
-        if (n < startNum || n > endNum) {
+        if (n < Const.START_NUMBER || n > Const.END_NUMBER) {
             return false;
         }
         return true;
     }
 
-    private Integer stringTointeger(String number) {
+    private static Integer stringTointeger(String number) {
         return Integer.parseInt(number);
     }
 
