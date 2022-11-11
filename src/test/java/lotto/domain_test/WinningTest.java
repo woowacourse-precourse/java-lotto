@@ -21,6 +21,8 @@ public class WinningTest {
     @Test
     @DisplayName("리스트에 넣은 순위들은 해시맵으로 해당 등수를 몇번 달성했는지 리턴해준다. ")
     void createMapWithRankings(){
+        addCases();
+        assertThat(winning.figureSameRanking()).isEqualTo(makeExampleMap());
     }
 
     private void addCases(){
@@ -29,14 +31,15 @@ public class WinningTest {
         winning.addRankingOfPlayer(THREE_MATCH);
         winning.addRankingOfPlayer(Ranking.FIVE_MATCH_WITH_BONUS);
         winning.addRankingOfPlayer(Ranking.FIVE_MATCH);
-        assertThat(winning.figureSameRanking()).isEqualTo(makeExampleMap());
     }
 
     private HashMap<Ranking, Integer> makeExampleMap(){
         HashMap<Ranking, Integer> exampleMap = new HashMap<>();
         exampleMap.put(THREE_MATCH, 3);
+        exampleMap.put(FOUR_MATCH, 0);
         exampleMap.put(FIVE_MATCH, 1);
         exampleMap.put(FIVE_MATCH_WITH_BONUS, 1);
+        exampleMap.put(SIX_MATCH, 0);
         return exampleMap;
     }
 }
