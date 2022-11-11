@@ -15,7 +15,14 @@ public enum WinningPrize {
         this.ranking = ranking;
         this.winningMoney = winningMoney;
         this.howManyNumbersIncluded = howManyNumbersIncluded;
+    }
 
+    public int getWinningMoney() {
+        return winningMoney;
+    }
+
+    public int getHowManyNumbersIncluded() {
+        return howManyNumbersIncluded;
     }
 
     public static int findRanking(int amountOfCorrectNumbers, Lotto lottoPapers, int bonusNumber){
