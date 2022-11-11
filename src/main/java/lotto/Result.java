@@ -8,10 +8,10 @@ public class Result {
     public final int FOURTH_PRIZE = 50_000;
     public final int FIFTH_PRIZE = 5000;
 
-    int count=0;
-    int bonus_index=0;
-    double total_prize=0;
-    int [] winning = new int[5];
+    public int count = 0;
+    int bonus_index = 0;
+    double total_prize = 0;
+    int[] winning = new int[5];
     double earnRate = 0;
 
     Printer printer = new Printer();
@@ -21,18 +21,18 @@ public class Result {
     }
 
     public void compareNumbers(Lottos userLottos, Lotto winningLotto, int bonus) {
-        for(int sheet=0;sheet<userLottos.size();sheet++){
+        for (int sheet = 0; sheet < userLottos.size(); sheet++) {
             Lotto lotto = userLottos.get(sheet);
             compareEachLotto(winningLotto, bonus, lotto);
             compareResult();
-            count=0;
-            bonus_index=0;
+            count = 0;
+            bonus_index = 0;
         }
         calculateEarningRate(total_prize, Buyer.money);
     }
 
     private void calculateEarningRate(double total_prize, int money) {
-        earnRate = total_prize/money*100;
+        earnRate = total_prize / money * 100;
         printer.printResult(winning, earnRate);
     }
 
@@ -45,47 +45,47 @@ public class Result {
     }
 
     private void winFifth() {
-        if(count==3){
+        if (count == 3) {
             winning[0]++;
-            total_prize+=FIFTH_PRIZE;
+            total_prize += FIFTH_PRIZE;
         }
     }
 
     private void winFourth() {
-        if(count==4){
+        if (count == 4) {
             winning[1]++;
-            total_prize+=FOURTH_PRIZE;
+            total_prize += FOURTH_PRIZE;
         }
     }
 
     private void winThird() {
-        if(count==5&&bonus_index==0){
+        if (count == 5 && bonus_index == 0) {
             winning[2]++;
-            total_prize+=THIRD_PRIZE;
+            total_prize += THIRD_PRIZE;
         }
     }
 
     private void winSecond() {
-        if(count==5&&bonus_index==1){
+        if (count == 5 && bonus_index == 1) {
             winning[3]++;
-            total_prize+=SECOND_PRIZE;
+            total_prize += SECOND_PRIZE;
         }
     }
 
     private void winFirst() {
-        if(count==6){
+        if (count == 6) {
             winning[4]++;
-            total_prize+=FIRST_PRIZE;
+            total_prize += FIRST_PRIZE;
         }
     }
 
-    private void compareEachLotto(Lotto winningLotto, int bonus, Lotto lotto) {
-        for(int order = 0; order< lotto.size(); order++){
-            if(winningLotto.contains(lotto.get(order))){
+    public void compareEachLotto(Lotto winningLotto, int bonus, Lotto lotto) {
+        for (int order = 0; order < lotto.size(); order++) {
+            if (winningLotto.contains(lotto.get(order))) {
                 count++;
             }
-            if(lotto.get(order)== bonus){
-                bonus_index=1;
+            if (lotto.get(order) == bonus) {
+                bonus_index = 1;
             }
         }
     }

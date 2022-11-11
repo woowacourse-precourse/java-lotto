@@ -39,13 +39,13 @@ public class Validator {
     }
 
     public void validateBonus(String bonusInput, List<Integer>numbers) {
-        ValidateBonusOnlyNumber(bonusInput);
+        validateBonusOneNumber(bonusInput);
         int bonus = Integer.parseInt(bonusInput);
         validateBonusRange(bonus);
         validateBonusDuplicate(numbers, bonus);
     }
 
-    private void validateBonusDuplicate(List<Integer> numbers, int bonus) {
+    public void validateBonusDuplicate(List<Integer> numbers, int bonus) {
         for (int i = 0; i < numbers.size(); i++) {
             if (numbers.get(i) == bonus) {
                 throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복되지 않게 입력해야 합니다.");
@@ -53,13 +53,13 @@ public class Validator {
         }
     }
 
-    private void validateBonusRange(int bonus) {
+    public void validateBonusRange(int bonus) {
         if (bonus > MAX_VALUE || bonus < MIN_VALUE) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 사이의 숫자만 입력해야 합니다.");
         }
     }
 
-    private void ValidateBonusOnlyNumber(String bonusInput) {
+    public void validateBonusOneNumber(String bonusInput) {
         String pattern = "^[0-9]*$";
         if (!Pattern.matches(pattern, bonusInput)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 '하나의 숫자로만' 입력해야 합니다.");
