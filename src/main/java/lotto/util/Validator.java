@@ -30,4 +30,17 @@ public class Validator {
         if(Integer.parseInt(input) % MONEY_UNIT != 0)
             throw new IllegalArgumentException(WRONG_INPUT);
     }
+
+    public void isRightNumbers(String input){
+        list.clear();
+        StringTokenizer st = new StringTokenizer(input, STRING_TOKEN);
+        while (st.hasMoreTokens()){
+            String number = st.nextToken();
+            isNumber(number);
+            isRightRange(number);
+            isContainNumber(number);
+            list.add(Integer.parseInt(number));
+        }
+        isValidCount();
+    }
 }
