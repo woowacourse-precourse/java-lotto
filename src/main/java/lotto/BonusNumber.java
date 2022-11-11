@@ -20,7 +20,7 @@ public class BonusNumber {
 	}
 	
 	public void bonusNoRepeat(List<Integer> inputnumbers) {
-		HashSet inputnumbersset = new HashSet();
+		HashSet<Integer> inputnumbersset = new HashSet<>();
 		inputnumbersset.addAll(inputnumbers);
 		inputnumbersset.add(bonusnumber);
 		

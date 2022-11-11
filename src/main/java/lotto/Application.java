@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import org.assertj.core.util.Arrays;
-
 import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
@@ -29,7 +28,9 @@ public class Application {
         
         inputnumbers = askNumbers();  // 사용자 입력으로 6개 로또 번호들을 inputnumbers 리스트에 입력 받기
         
-        bonusnumber = askBonusNumber(inputnumbers);
+        bonusnumber = askBonusNumber(inputnumbers);  // 사용자 입력으로 보너스 숫자를 받아서 bonusnumber 변수에 저장하기
+        
+        print.countWin(bonusnumber);
     }
     
     public static int askTotalPrice() {

@@ -31,6 +31,7 @@
     1. 발행한 로또 수량 및 번호 출력 - Print#printNumberAll()
     2. 당첨 내역 출력 - Print#printWin()
         * 1-5등까지의 당첨조건에 각각 몇번 해당하는지 세어 주는 기능 - Print#countWin()
+            * enum을 활용해서 각각 몇번 해당하는지 세어주는 기능 - Print#enumCount()
     3. 수익률 소수점 둘째자리에서 반올림해서 출력 - Print#printProfit()
         * 당첨 금액/로또 구매 금액으로 수익률 계산한 뒤 소수점 둘째자리에서 반올림 해주는 기능 - Print#printProfitRound()
     
