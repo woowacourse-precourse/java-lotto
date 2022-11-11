@@ -49,7 +49,8 @@
   - boolean validate(String[] s) : 문자열 배열 형태인 당첨 번호를 인자로 받아서 예외 사항 5번을 검사한다. <br><br>
   - void parseInputToInt(String s) : 당첨 번호로 입력 받은 사용자 입력을 ,(쉼표)로 구분한다. <br>
     또, 그 결과를 바탕으로 예외 사항 4번을 검사한다. 문제가 없다면 구분된 값들을 정수형으로 변환하여 <br>
-    멤버 변수 numbers에 저장한다.
+    멤버 변수 numbers에 저장한다. <br><br>
+  - List<Integer> getNumbers() : 멤버 변수인 numbers를 반환한다.
   
 <br>
 
@@ -83,7 +84,8 @@
   - Lotto(List<Integer> numbers) : 사용자로부터 입력 받은 정수형 리스트를 매개 인자로 받아서 <br>
     validate 메서드를 통해 유효성 검사를 실시한다. 이후, 멤버 변수인 numbers에 값을 저장한다. <br><br>
   - void validate(List<Integer> numbers) : 사용자로부터 입력 받은 정수를 매개 인자로 받아서 <br>
-    예외 사항 1 ~ 3번을 검사한다.
+    예외 사항 1 ~ 3번을 검사한다. <br><br>
+  - List<Integer> getNumbers() : 멤버 변수인 numbers를 반환한다.
 
 <br>
 
