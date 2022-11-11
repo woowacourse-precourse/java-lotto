@@ -116,6 +116,12 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void getBonusNumberTest() {
+
+        assertThat(33).isEqualTo(getBonusNumber("33", List.of(1, 2, 3, 4, 5, 6)));
+    }
+
     @Override
     public void runMain() {
         main(new String[]{});
