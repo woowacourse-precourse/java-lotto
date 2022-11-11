@@ -9,6 +9,9 @@ import static lotto.constant.SystemValue.THREE_MATCHES_INDEX;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import lotto.constant.PrizeType;
 
 public class Calculator {
 
@@ -60,7 +63,9 @@ public class Calculator {
 
     public int calculateProfit(List<Integer> matchResults) {
         int profit = 0;
-        List<Integer> prizeMoneys = List.of(5000, 50000, 1500000, 30000000, 2000000000);
+        List<Integer> prizeMoneys = Stream.of(PrizeType.values())
+                .map(PrizeType::getPrize)
+                .collect(Collectors.toList());
         for (int index = 0; index < matchResults.size(); index++) {
             if (matchResults.get(index) > 0) {
                 profit += (matchResults.get(index) * prizeMoneys.get(index));
