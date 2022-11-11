@@ -37,6 +37,12 @@ public class Application {
 //
 //    }
 
+    public static void checkValidLottoNumbers(String winningNumbers){
+        checkDigitAndComma(winningNumbers); // 1. 숫자와 콤마(,)로만 이루어져 있는가?
+        checkOverlapAndSize(winningNumbers); // 2. split 했을 때 사이즈가 6이며 중복된 숫자는 없는가?
+        isBetweenCertainNumbers(winningNumbers, 1, 45); // 3. 숫자가 1이상 45이하로만 구성되어 있는가?
+    }
+
     /**
      * 숫자와 콤마로만 이루어져 있는지 확인한다.
       * @param winningNumbers 로또 1등 당첨 번호(보너스 번호 제외)
@@ -59,6 +65,22 @@ public class Application {
         boolean isNoOverlap = delOverlap.size() == 6;
         if (!(isSizeSix && isNoOverlap)){
             throw new IllegalArgumentException();
+        }
+    }
+
+    /**
+     * csv의 값이 start이상 end이하인지 확인한다.
+     * @param winningNumbers 로또 1등 당첨 번호(보너스 번호 제외)
+     * @param start 범위 시작하는 정수(포함)
+     * @param end 범위 끝나는 정수(포함)
+     */
+    private static void isBetweenCertainNumbers(String winningNumbers, int start, int end){
+        String[] target = winningNumbers.split(",");
+        for (String num: target){
+            int current = Integer.parseInt(num);
+            if (current < start || current > end){
+                throw new IllegalArgumentException();
+            }
         }
     }
 
