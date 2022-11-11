@@ -96,7 +96,7 @@ class ApplicationTest extends NsTest {
     @Test
     void enterLottoByNotNumber() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException("8000", "1, a, 10, 3, 4, 5"))
+            assertThatThrownBy(() -> runException("8000", "1,a,10,3,4,5"))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("[Error] 당첨 번호 중에 숫자가 아닌 값이 존재합니다.");
         });
@@ -106,7 +106,7 @@ class ApplicationTest extends NsTest {
     @Test
     void checkLottoByInvalidRange() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException("8000", "1, 99, 2, 3, 4, 5"))
+            assertThatThrownBy(() -> runException("8000", "1,99,2,3,4,5"))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("[Error] 입력된 당첨 번호 값의 범위가 1부터 45 사이의 값이 아닙니다.");
         });

@@ -2,13 +2,14 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
 
 public class Input {
     private int money;
-    private List<Integer> numbers;
+    private ArrayList<Integer> numbers = new ArrayList<>();
 
     public Input() {
         enterMoney();
@@ -41,10 +42,10 @@ public class Input {
             throw new IllegalArgumentException("[Error] 당첨 번호가 구별되지 않습니다.");
         }
 
-        validate(tempString);
-
-        for(String s : tempString) {
-            this.numbers.add(Integer.parseInt(s));
+        if(validate(tempString)) {
+            for (String s : tempString) {
+                this.numbers.add(Integer.parseInt(s));
+            }
         }
     }
 
@@ -70,9 +71,14 @@ public class Input {
             for(String s : numbers) {
                 Integer.parseInt(s);
             }
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             throw new IllegalArgumentException("[Error] 당첨 번호 중에 숫자가 아닌 값이 존재합니다.");
         }
+
         return true;
+    }
+
+    public List<Integer> getNumbers() {
+        return this.numbers;
     }
 }

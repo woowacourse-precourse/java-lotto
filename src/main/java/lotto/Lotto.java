@@ -18,6 +18,10 @@ public class Lotto {
         for (int n : numbers) {
             if (Collections.frequency(numbers, n) != 1)
                 throw new IllegalArgumentException("[Error] 중복되는 값이 존재합니다.");
+
+            if (!(n >= 1 && n <= 45)) {
+                throw new IllegalArgumentException("[Error] 입력된 당첨 번호 값의 범위가 1부터 45 사이의 값이 아닙니다.");
+            }
         }
     }
 }
