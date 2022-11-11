@@ -25,7 +25,7 @@ public class View {
         List<Integer> winningLotto = new ArrayList<>();
         System.out.println("당첨 번호를 입력해 주세요.");
         String number = Console.readLine();
-        number = number.replaceAll(" ","");
+        number = number.replaceAll(" ", "");
         String[] winningNumbers = number.split(",");
 
         for (String winningNumber : winningNumbers) {
@@ -34,9 +34,17 @@ public class View {
         return winningLotto;
     }
 
-    public int askBonusNumber(){
+    public int askBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonusNumber = Console.readLine();
         return Integer.parseInt(bonusNumber);
+    }
+
+    public void showWinCase(WinningCount winningCount) {
+        System.out.println("3개 일치 (5,000원) - " + winningCount.getCount().get("3") + "개");
+        System.out.println("4개 일치 (50,000원) - " + winningCount.getCount().get("4") + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + winningCount.getCount().get("5") + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + winningCount.getCount().get("bonus") + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + winningCount.getCount().get("6") + "개");
     }
 }
