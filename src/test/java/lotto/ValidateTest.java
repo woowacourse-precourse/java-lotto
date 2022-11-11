@@ -8,8 +8,6 @@ import java.util.List;
 
 class ValidateTest {
 
-
-
     @Test
     void validMoney() {
         Validate test = new Validate();
