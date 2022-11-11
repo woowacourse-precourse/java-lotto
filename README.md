@@ -231,18 +231,21 @@ public class Lotto {
 
 #### 도메인
 
-- [ ] 로또 당첨 번호와 보너스 번호를 정한다. - createWinningNumber()
 - [ ] 금액만큼의 로또를 구입한다. - buyLotto(int price)
   - [ ] 금액에 따라 로또의 개수를 계산한다. - numberOfLotto()
   - [ ] 로또 번호를 뽑는다. - drawLotto()
-- [ ] 당첨된 로또의 개수를 계산한다. - numberOfWinnings()
-  - [ ] 뽑은 로또와 당첨 번호와 비교한다. - compareWithWinning()
+- [ ] 로또 당첨 번호를 정한다. - setWinningNumber()
+- [ ] 보너스 번호를 정한다. - setBonusNumber()
+- [ ] 당첨된 로또의 등수와 개수를 계산한다. - getRanking()
+  - [ ] 일치하는 번호의 개수에 따라 등수를 계산한다. - calRank()
+    - [ ] 뽑은 로또와 당첨 번호를 비교하여 몇개가 일치하는지 계산한다. - compareWithWinning()
+      - [ ] 숫자가 5개 일치하면 보너스와 비교한다. - boolean containsBonus()
 - [ ] 수익을 계산한다. - calProfit()
 - [ ] 수익률을 계산한다. (소수점 둘째 자리에서 반올림한다.) - calProfitRate() 
 
 #### UI
 
-- [ ] 구매금액을 입력하라는 메시지를 출력한다. 
+- [ ] 구매금액을 입력하라는 메시지를 출력한다.
 - [ ] 구매금액을 입력받는다.
 - [ ] 구매한 로또의 개수를 출력한다.
 - [ ] 구매한 로또의 번호를 정렬하여 출력한다.
@@ -251,6 +254,10 @@ public class Lotto {
 - [ ] 보너스 번호를 입력하라는 메시지를 출력한다.
 - [ ] 보너스 번호를 입력받는다.
 - [ ] 당첨 통계를 출력한다.
+
+#### 모델
+
+- [ ] 로또 등수에 대한 정의
 
 ## 예외 사항
 
