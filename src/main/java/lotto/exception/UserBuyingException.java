@@ -8,12 +8,6 @@ public class UserBuyingException {
         validPrice(buyingPrice);
     }
 
-    public void validBuyingException(int buyingMoney) {
-        if (buyingMoney % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException("[ERROR] 구매는 1,000원 단위로 가능합니다.");
-        }
-    }
-
     public void validPrice(String pay) {
         int buyingPrice = Integer.parseInt(pay);
         if (buyingPrice % LOTTO_PRICE != 0) {
@@ -21,12 +15,11 @@ public class UserBuyingException {
         }
     }
 
-    static boolean validIsNumber(String s) { //정수 판별 함수
-        try {
-            Integer.parseInt(s);
-            return true;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
+    public static void validIsNumber(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            if (!Character.isDigit(input.charAt(i))) {
+                throw new IllegalArgumentException("[ERROR] 입력은 숫자만 가능합니다.");
+            }
         }
     }
 }
