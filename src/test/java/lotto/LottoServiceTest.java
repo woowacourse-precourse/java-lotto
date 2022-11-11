@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.Money;
 import lotto.domain.NumberGenerator;
 import lotto.service.LottoService;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,8 +13,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 public class LottoServiceTest {
     NumberGenerator generator;
@@ -43,16 +43,17 @@ public class LottoServiceTest {
     void 로또구입금액_0으로인해_예외발생_테스트() {
         assertThatIllegalArgumentException()
                 .as("[ERROR] 실패하는 입력값이 존재합니다.")
-                .isThrownBy(() -> lottoService.validateMoneyZero(0));
+                .isThrownBy(() -> new Money("0"));
     }
+
 
     @ParameterizedTest
     @DisplayName("구입 금액이 1000원으로 나누어 떨어지지 않기 때문에 IllegalArgumentException테스트")
-    @ValueSource(ints = {1005, 20001, 500, 2, 200})
-    void 로또구입금액으로인해_예외발생_테스트(int input) {
+    @ValueSource(strings = {"1005", "20001", "500", "2", "200"})
+    void 로또구입금액으로인해_예외발생_테스트(String input) {
         assertThatIllegalArgumentException()
                 .as("[ERROR] 실패하는 입력값이 존재합니다.")
-                .isThrownBy(() -> lottoService.validateMoney(input));
+                .isThrownBy(() -> new Money(input));
     }
 
     @ParameterizedTest
@@ -61,7 +62,7 @@ public class LottoServiceTest {
     void 로또구입금액_숫자가아니기때문에_예외발생_테스트(String input) {
         assertThatIllegalArgumentException()
                 .as("[ERROR] 실패하는 입력값이 존재합니다.")
-                .isThrownBy(() -> lottoService.validateConsistOfNumbers(input));
+                .isThrownBy(() -> new Money(input));
     }
 
     @ParameterizedTest
