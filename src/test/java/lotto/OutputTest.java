@@ -16,4 +16,12 @@ public class OutputTest {
 
         assertThat(lotto.toString()).isEqualTo("[8, 21, 23, 41, 42, 43]");
     }
+
+    @DisplayName("로또를 오름차순으로 정렬 후 출력하는지 확인한다.")
+    @Test
+    void printLottoByASC() {
+        Lotto lotto = new Lotto(List.of(42, 16, 45, 13, 38 ,14));
+
+        assertThat(lotto.toString()).isEqualTo("[13, 14, 16, 38, 42, 45]");
+    }
 }
