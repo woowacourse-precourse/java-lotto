@@ -7,18 +7,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
-        // 구입금액 입력
+    // 구입금액 입력
+    private static int inputBuyMoney(){
         System.out.println("구입금액을 입력해 주세요.");
         int money = Integer.parseInt(Console.readLine());
 
         if(money%1000!=0){
             throw new IllegalArgumentException("[ERROR] 로또 구매 금액은 1000원 단위로 입력해야 합니다.");
         }
-
-        int lottoCnt = money/1000;
         System.out.println();
 
+        return money;
+    }
+
+    public static void main(String[] args) {
+        // 구입금액 입력
+        int lottoCnt = inputBuyMoney()/1000;
+        
         // 로또 번호 생성
         List<Lotto> userLottoNum = new ArrayList<>();
         for(int i=0; i<lottoCnt; i++){
