@@ -4,8 +4,12 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -38,5 +42,29 @@ class LottoTest {
     void checkInputIsSpace() {
         assertThatThrownBy(() -> new Lotto("    "))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 당첨 번호 입력 - 문자열 리스트에 숫자와 문자가 모두 있는 경우 예외 발생")
+    @Test
+    void checkListDigitWithString() {
+        assertThatThrownBy(() -> new Lotto("1,2,3,a,b,c"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 당첨 번호 입력 - 문자열을 문자열 리스트로 형 변환")
+    @Test
+    void convertStringToListTest() throws NoSuchMethodException {
+        String inputNumbers = "1,2,3,4,5,6";
+        List<String> expectedNumbers = List.of("1", "2", "3", "4", "5", "6");
+        Lotto lotto = new Lotto(inputNumbers);
+        Method method = lotto.getClass().getDeclaredMethod("convertStringToList", String.class);
+        method.setAccessible(true);
+
+        try {
+            List<String> result = (List<String>) method.invoke(lotto, inputNumbers);
+            assertThat(result).isEqualTo(expectedNumbers);
+        } catch (IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
