@@ -34,6 +34,10 @@ public class Customer {
         return this.tickets;
     }
 
+    public LinkedHashMap<Prize, Integer> getWinningTickets() {
+        return winningTickets;
+    }
+
     public void compareTickets(List<Integer> winningNumbers, int bonusNumber) {
         for (List<Integer> ticket: this.tickets) {
             compareNumbers(ticket, winningNumbers, bonusNumber);
