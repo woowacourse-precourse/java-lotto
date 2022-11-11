@@ -10,7 +10,6 @@ import java.util.NoSuchElementException;
 public class UserInputHandler {
 
     static final int moneyOfOneTicket = 1000;
-    static final int numbersOfLotto = 6;
 
     public int getHowMuchTickets(){
 
@@ -39,8 +38,8 @@ public class UserInputHandler {
         List<Integer> lottoNumbers = new ArrayList<>();
         String[] lottoNumbersBeforeValidate = input.split(",");
 
-        for(int lottoIndex = 0; lottoIndex < numbersOfLotto; lottoIndex++){
-            lottoNumbers.add(validateLottoNumbers(lottoNumbersBeforeValidate[lottoIndex]));
+        for (String beforeValidateInput : lottoNumbersBeforeValidate) {
+            lottoNumbers.add(validateLottoNumbers(beforeValidateInput));
         }
         return lottoNumbers;
     }
