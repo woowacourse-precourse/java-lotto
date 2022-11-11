@@ -22,6 +22,7 @@ public class WinnerNumber {
     private void lastValidate(List<Integer> target){
         Validator.checkNumericalRange(target);
         Validator.checkNumberOfDigit(NUMBER_OF_DIGIT,target);
+        Validator.checkDuplicate(target);
     }
     private List<Integer> stringToList(String target){
         List<Integer> result=new ArrayList<>();
