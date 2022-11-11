@@ -29,7 +29,7 @@ class ResultTest {
         lottos.add(lotto);
         Lotto winningLotto = new Lotto(List.of(4, 5, 6, 7, 8, 9));
 
-        result.getCount(lottos, winningLotto, 1);
+        result.compare(lottos, winningLotto, 1);
         List<Integer> counts = result.getCounts();
 
         assertThat(counts.get(0)).isEqualTo(3);
@@ -43,7 +43,7 @@ class ResultTest {
         lottos.add(lotto);
         Lotto winningLotto = new Lotto(List.of(2, 3, 4, 5, 6, 9));
 
-        result.getCount(lottos, winningLotto, 1);
+        result.compare(lottos, winningLotto, 1);
 
         Integer res = result.getCounts().get(0);
 
@@ -67,7 +67,7 @@ class ResultTest {
         userLottos.add(new Lotto(List.of(1, 3, 5, 14, 22, 45)));
         user.setMyLottoNumbers(userLottos);
 
-        result.getCount(user.getMyLottoNumbers(),winningLotto,7);
+        result.compare(user.getMyLottoNumbers(),winningLotto,7);
         result.calc(user);
 
         assertThat(result.getProfit()).isEqualTo(62.5f);
