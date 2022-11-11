@@ -27,6 +27,16 @@ class LottoTest {
         );
     }
 
+    private static Stream<Arguments> provideDuplicatedLottoNumberList() {
+        return Stream.of(
+                Arguments.of(List.of(1,2,3,4,5,5)),
+                Arguments.of(List.of(1,2,3,5,5,5)),
+                Arguments.of(List.of(1,2,5,5,5,5)),
+                Arguments.of(List.of(1,5,5,5,5,5)),
+                Arguments.of(List.of(5,5,5,5,5,5))
+        );
+    }
+
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -49,5 +59,14 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(lottoNumbers))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(LottoConstants.INVALID_LOTTO_SIZE_MSG);
+    }
+
+    @ParameterizedTest
+    @DisplayName("로또 숫자 중 중복된 값이 있는 경우 이유를 나타내는 메세지를 포함한 예외가 발생한다.")
+    @MethodSource("provideDuplicatedLottoNumberList")
+    void createLottoByDuplicatedNumbers(List<Integer> lottoNumbers) {
+        assertThatThrownBy(() -> new Lotto(lottoNumbers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(LottoConstants.DUPLICATE_NUMBER_EXIST_MSG);
     }
 }
