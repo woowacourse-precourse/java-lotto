@@ -3,6 +3,9 @@ package lotto.domain;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ManagerTest {
@@ -39,6 +42,18 @@ class ManagerTest {
         int money = -10000;
         Assertions.assertThatIllegalArgumentException()
                 .isThrownBy(() -> manager.changeLottoCount(money));
+    }
+
+    @Test
+    void getCorrectCountTest() {
+        List<Integer> userLotto = new ArrayList<>(List.of(6,5,4,3,2,1));
+        List<Integer> winningNumbers = new ArrayList<>(List.of(1,2,3,4,5,7));
+        manager.setWinningNumbers(winningNumbers);
+
+        int expect = 5;
+        int result = manager.getCorrectCount(userLotto);
+
+        assertThat(result).isEqualTo(expect);
     }
 
 }
