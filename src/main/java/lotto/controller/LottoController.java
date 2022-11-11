@@ -23,6 +23,7 @@ public class LottoController {
             String purchaseCost = Console.readLine();
             cost = new Cost(purchaseCost);
         } catch (IllegalArgumentException ex) {
+            Output.printError(ex.getMessage());
             return;
         }
 
@@ -30,21 +31,38 @@ public class LottoController {
         Output.purchaseCountNotification(purchaseCount);
 
         List<Lotto> lottos = new ArrayList<>();
-
-        for (int count = 0; count < purchaseCount; count++) {
-            Lotto lotto = lotteryDrawMachine.createLotto();
-            lottos.add(lotto);
+        try {
+            for (int count = 0; count < purchaseCount; count++) {
+                Lotto lotto = lotteryDrawMachine.createLotto();
+                System.out.println(lotto.getNumbers());
+                lottos.add(lotto);
+            }
+        } catch (IllegalArgumentException ex) {
+            Output.printError(ex.getMessage());
+            return;
         }
         LottoGroup lottoGroup = new LottoGroup(lottos);
 
 
         Output.enterWinningNumbers();
         String inputWinningNumbers = Console.readLine();
-        WinningLotto winningLotto = new WinningLotto(inputWinningNumbers);
+        WinningLotto winningLotto;
+        try {
+            winningLotto = new WinningLotto(inputWinningNumbers);
+        } catch (IllegalArgumentException ex) {
+            Output.printError(ex.getMessage());
+            return;
+        }
 
         Output.enterBonusNumber();
         String inputBonusNumber = Console.readLine();
-        BonusNumber bonusNumber = new BonusNumber(inputBonusNumber, winningLotto);
+        BonusNumber bonusNumber;
+        try {
+            bonusNumber = new BonusNumber(inputBonusNumber, winningLotto);
+        } catch (IllegalArgumentException ex) {
+            Output.printError(ex.getMessage());
+            return;
+        }
 
         Output.winningStatistics();
         Calculator calculator = new Calculator();
