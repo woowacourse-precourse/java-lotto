@@ -4,7 +4,8 @@ public enum LottoStatus {
     START(1),
     END(45),
     SIZE(6),
-    LIMIT(1);
+    LIMIT(1),
+    PRICE(1000);
 
     private final int value;
 
