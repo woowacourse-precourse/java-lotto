@@ -18,5 +18,10 @@ public class LottoGameUI {
         System.out.println(INPUT_PURCHASE_AMOUNT);
         return Console.readLine();
     }
+
+    public String inputWinningNumber() {
+        System.out.println(INPUT_WINNING_NUMBER);
+        return Console.readLine();
+    }
 }
 
