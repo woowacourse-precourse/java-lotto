@@ -4,6 +4,7 @@ import lotto.LottoNumbersGenerator;
 import lotto.LottoWinningRank;
 import lotto.model.Lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -27,6 +28,8 @@ public class LottoGameService {
     private static final String BONUS_NUMBER_WINNING_NUMBERS_DUPLICATE_EXCEPTION_MESSAGE = "보너스 번호는 당첨 번호에 있는 번호를 제외한 번호여야합니다.";
 
     private Lotto lotto;
+
+    private final List<LottoWinningRank> lottoWinningRanks = new ArrayList<>();
 
     public void generateLotto() {
         this.lotto = new Lotto(LottoNumbersGenerator.generateLottoNumbers());
@@ -134,6 +137,10 @@ public class LottoGameService {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
 
+    }
+
+    public void addWinningRank(LottoWinningRank lottoWinningRank) {
+        lottoWinningRanks.add(lottoWinningRank);
     }
 
     public LottoWinningRank decideWinningRank(List<Integer> purchaseLottoNumbers,
