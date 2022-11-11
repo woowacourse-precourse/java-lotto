@@ -1,6 +1,6 @@
 package lotto.model;
 
-import static lotto.Util.verifyRangeOfLottoNumber;
+import static lotto.util.Util.verifyRangeOfLottoNumber;
 
 import java.util.List;
 

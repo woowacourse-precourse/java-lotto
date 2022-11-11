@@ -1,6 +1,6 @@
 package lotto.view;
 
-import static lotto.Util.removeSpace;
+import static lotto.util.Util.removeSpace;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;

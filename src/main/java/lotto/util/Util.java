@@ -1,4 +1,4 @@
-package lotto;
+package lotto.util;
 
 public class Util {
     public static String removeSpace(String input) {
