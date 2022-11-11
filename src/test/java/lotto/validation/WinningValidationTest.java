@@ -105,4 +105,25 @@ class WinningValidationTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", "  ", "1, 2, 3, 4, 5, 6", "1/2/3/4/5/6", "1,2,3,45,67,89", "1,2,3,4,5", "1,2,3,4,5,six", "1,1,2,2,3,4"})
+    void isValidWinningTest(String input) {
+        // when, then
+        assertThatThrownBy(() -> validation.isValidWinning(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", "   ", "십", "ten", "1,2", "!", "46", "0", "33"})
+    void isValidBonusTest(String input) {
+        // given
+        List<Integer> winnings = new ArrayList<>(Arrays.asList(1, 2, 33, 4, 5, 6));
+
+        // when, then
+        assertThatThrownBy(() -> validation.isValidBonus(input, winnings))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
 }
