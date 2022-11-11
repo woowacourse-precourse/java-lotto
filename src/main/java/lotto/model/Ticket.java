@@ -27,10 +27,12 @@ public class Ticket {
     private List<Lotto> createTicket(int money) {
         List<Lotto> ticket = new ArrayList<>();
         int lottoCount = money / 1000;
+
         for (int count = 1; count <= lottoCount; count++) {
-            List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> lottoNumber = createLotto();
             ticket.add(new Lotto(lottoNumber));
         }
+
         return ticket;
     }
 
