@@ -5,6 +5,7 @@ import static lotto.validator.LottoNumberValidator.validateRangeOfNumber;
 import static lotto.validator.UserInputValidator.validateWinningLottoNumberComplyWithRule;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.constant.Constants;
@@ -38,6 +39,10 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public List<Integer> getNumbers() {
+        return Collections.unmodifiableList(numbers);
+    }
+
     public boolean isContains(int number) {
         return numbers.contains(number);
     }
@@ -47,4 +52,5 @@ public class Lotto {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
+
 }
