@@ -22,4 +22,8 @@ public class ComputerView {
     private String scanInput(){
         return Console.readLine();
     }
+
+    private void giveSpaceOnView(){
+        System.out.println();
+    }
 }
