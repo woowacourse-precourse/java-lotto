@@ -10,7 +10,7 @@
   - [x] Lotto
   - [x] Ticket (구입 금액에 맞는 로또 발행)
   - [x] Money
-  - [x] WinningNumbers
+  - [x] WinningLotto
   - [x] BonusNumber
   - [x] Prize (Enum 으로 구현)
 
@@ -50,7 +50,7 @@
   - [x] 1000원 단위로 나누어 떨어지는지 검증
 
 
-- WinningNumbers
+- WinningLotto
   - [x] 당첨 번호가 중복되는지 검증
   - [x] 각 번호가 1~45사이에 숫자가 맞는지 검증
   - [x] 보너스 번호가 당첨 번호와 중복되는지 검증
@@ -74,7 +74,7 @@
     - [ ] 1000원으로 나누어 떨어지지 않는 경우
 
 
-- [ ] WinningNumber
+- [ ] WinningLotto
     - [ ] 쉼표(,)를 기준으로 올바른 형식이 아닌경우
     - [ ] 개수가 6개가 넘는 경우
     - [ ] 각 숫자의 범위가 1~45가 아닌 경우
