@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.exception.LottoException;
+import lotto.model.Bonus;
 import lotto.model.Lotto;
 import lotto.model.Winner;
 import org.junit.jupiter.api.BeforeEach;
@@ -89,4 +90,6 @@ class LottoTest {
             assertThat(lottoWinningNumber).containsExactlyInAnyOrder(45,11,13,24,35,2);
         }
     }
+
+
 }
