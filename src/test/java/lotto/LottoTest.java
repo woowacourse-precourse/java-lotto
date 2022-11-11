@@ -24,7 +24,6 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
-
     @DisplayName("1 ~ 45 사이의 숫자가 아니며 예외가 발생한다.")
     @Test
     void overRangeNumber() {

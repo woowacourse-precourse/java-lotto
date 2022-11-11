@@ -12,7 +12,7 @@ public class WinningNumber {
   public void onlyDigit(String num) {
     for (int i = 0; i < num.length(); i++) {
       if (!Character.isDigit(num.charAt(i))) {
-        throw new IllegalArgumentException(Constant.NOT_ONLY_DIGIT);
+        throw new IllegalArgumentException(Constant.NOT_ONLY_DIGIT.getMessage());
       }
     }
     int result = Integer.parseInt(num);
@@ -21,7 +21,7 @@ public class WinningNumber {
 
   public void isNumberInRange(int num) {
     if (num > 45 || num < 1) {
-      throw new IllegalArgumentException(Constant.NOT_RANGE_MESSAGE);
+      throw new IllegalArgumentException(Constant.NOT_RANGE_MESSAGE.getMessage());
     }
   }
 }

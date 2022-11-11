@@ -7,14 +7,14 @@ public class BonusNumber {
     }
     for (int i = 0; i < number.length(); i++) {
       if (!Character.isDigit(number.charAt(i))) {
-        throw new IllegalArgumentException(Constant.NOT_ONLY_DIGIT);
+        throw new IllegalArgumentException(Constant.NOT_ONLY_DIGIT.getMessage());
       }
     }
     int num = Integer.parseInt(number);
     if (num < 1 || num > 45) {
-      throw new IllegalArgumentException(Constant.NOT_RANGE_MESSAGE);
+      throw new IllegalArgumentException(Constant.NOT_RANGE_MESSAGE.getMessage());
     }
-    // 당첨번호와 중복되지 않도록
+    // 당첨번호와 중복되지 않도록 기능 추가
     return number;
   }
 

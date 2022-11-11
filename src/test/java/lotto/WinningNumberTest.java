@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class WinningNumberTest {
 
-  @DisplayName("들어온 String이 범위 내에 포함되어있지 않을 경")
+  @DisplayName("들어온 String이 범위 내에 포함되어있지 않을 경우")
   @Test
   void notRangeNumber() {
     assertThatThrownBy(() -> new WinningNumber().splitNumber("152,3,4"))

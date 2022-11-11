@@ -10,8 +10,11 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     private void validate(List<Integer> numbers) {
-        WinningNumber winningNumber = new WinningNumber();
         Set<Integer> set = new HashSet<>(numbers);
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 6개의 숫자만 입력해주세요.");
