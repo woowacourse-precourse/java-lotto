@@ -23,8 +23,8 @@ public class OutputView {
         System.out.println(purchaseLottoCount + PURCHASE_LOTTO_COUNT_MESSAGE);
     }
 
-    public void printIssuedLottoNumbers(List<Integer> issuedLottoNumbers) {
-        System.out.println(issuedLottoNumbers.toString());
+    public void printIssuedLottoNumbers(List<List<Integer>> issuedLottoNumbers) {
+        issuedLottoNumbers.forEach(issuedLottoNumber -> System.out.println(issuedLottoNumber.toString()));
     }
 
     public void printLottoWinningStatistics(Map<LottoWinningRank, Integer> lottoWinningRankMap) {
