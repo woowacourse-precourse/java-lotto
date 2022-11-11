@@ -36,7 +36,7 @@ public class Lotto {
         }
     }
 
-    public List<Integer> publishWinningLottoNumbers() {
+    public static List<Integer> inputWinningLottoNumbers() {
         InputAgent inputAgent = new InputAgent();
         List<Integer> inputLottoNumbers = new ArrayList<>();
         System.out.println("당첨 번호를 입력해주세요.");
@@ -44,9 +44,9 @@ public class Lotto {
         return inputLottoNumbers;
     }
 
-    public void publishWinningBonusNumber(List<Integer> lottoNumbers) {
+    public int inputWinningBonusNumber(List<Integer> numbers) {
         InputAgent inputAgent = new InputAgent();
         System.out.println("\n보너스 번호를 입력해주세요.");
-        lottoNumbers.add(inputAgent.inputWinningBonusNumber());
+        return inputAgent.inputWinningBonusNumber(numbers);
     }
 }
