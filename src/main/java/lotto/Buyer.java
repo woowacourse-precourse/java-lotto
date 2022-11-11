@@ -24,6 +24,10 @@ public class Buyer {
         return buyMoney;
     }
 
+    public int calculateLotteryNum(int buyNum) {
+        return buyNum / 1000;
+    }
+
     public void setLottos(int lottoCnt) {
         LotteryMachine lotteryMachine = new LotteryMachine();
 
@@ -33,7 +37,10 @@ public class Buyer {
             this.lottos.add(newLotto);
         }
     }
+
     public List<Lotto> getLottos() {
         return lottos;
     }
+
+
 }
