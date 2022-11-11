@@ -11,10 +11,12 @@ public class Generator {
         for (int i = 0; i < ticketCount; i++) {
             lottoTickets.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
         }
-            return lottoTickets;
+        return lottoTickets;
     }
 
     private void printGeneratedLotto(List<Lotto> generatedLotto) {
-        return;
+        for (Lotto lotto : generatedLotto) {
+            System.out.println(lotto);
+        }
     }
 }
