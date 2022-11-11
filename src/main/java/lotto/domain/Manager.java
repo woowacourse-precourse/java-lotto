@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.domain.enums.Number;
+import lotto.util.InputUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,7 +21,7 @@ public class Manager {
     }
 
     public int changeLottoCount(int money) {
-        // TODO: money가 1천원 단위인지 확인
+        InputUtil.checkValidationMoney(String.valueOf(money));
         return (money / 1000);
     }
 

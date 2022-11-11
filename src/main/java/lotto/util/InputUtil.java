@@ -20,7 +20,7 @@ public class InputUtil {
         return input;
     }
 
-    public void checkValidationMoney(String input) {
+    public static void checkValidationMoney(String input) {
         int inputNumber = Integer.parseInt(input);
 
         if (inputNumber % Number.THOUSAND.getValue() != Number.ZERO.getValue()) {
