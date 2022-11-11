@@ -169,6 +169,16 @@ class ApplicationTest extends NsTest {
         assertThat(1).isEqualTo(calculateThird(lottoList, List.of(1, 2, 3, 4, 5, 7), 6));
     }
 
+    @Test
+    void calculateForthTest() {
+        List<Lotto> lottoList = new ArrayList<>();
+
+        lottoList.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        lottoList.add(new Lotto(List.of(3, 4, 5, 6, 7, 8)));
+
+        assertThat(2).isEqualTo(calculateForth(lottoList, List.of(3, 4, 5, 6, 11, 19)));
+    }
+
     @Override
     public void runMain() {
         main(new String[]{});
