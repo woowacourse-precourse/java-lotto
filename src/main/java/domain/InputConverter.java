@@ -52,8 +52,7 @@ public class InputConverter {
         }
 
         if (bonusNumber < MINIMUM_NUMBER || bonusNumber > MAXIMUM_NUMBER) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1~45 범위의 숫자여야 합니다.")
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1~45 범위의 숫자여야 합니다.");
         }
     }
-
 }
