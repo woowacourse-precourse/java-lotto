@@ -14,6 +14,7 @@ public class LottoController {
     public void run() {
         try {
             int money = lottoService.getMoney();
+            lottoService.buyLotto(money);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

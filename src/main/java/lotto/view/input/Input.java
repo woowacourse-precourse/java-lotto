@@ -7,6 +7,8 @@ public class Input {
 
     public String scanMoneyInput() {
         System.out.println(GuideMessage.MONEY_INPUT_MESSAGE.getGuideMessage());
-        return Console.readLine();
+        String money = Console.readLine();
+        System.out.println();
+        return money;
     }
 }
