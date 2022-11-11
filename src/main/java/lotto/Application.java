@@ -5,7 +5,6 @@ public class Application {
         // TODO: 프로그램 구현
 
         try {
-            Status status = new Status();
             Request request = new Request();
             request.requestBettingMoney();
             request.validateBettingMoney();
