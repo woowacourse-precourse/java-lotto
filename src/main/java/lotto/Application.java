@@ -12,6 +12,9 @@ public class Application {
         if(application.systemError)
             return;
     }
+    public boolean getSystemError(){
+        return systemError;
+    }
     public void inputMoney()
     {
         try{
