@@ -19,6 +19,9 @@ public class InputView {
     }
 
     private static void validateMoney(String money) {
+        if (money.isEmpty()) {
+            throw new IllegalArgumentException(ErrorMessage.IS_EMPTY);
+        }
         if (containsNonNumeric(money)) {
             throw new IllegalArgumentException(ErrorMessage.CONTAINS_NON_NUMERIC_VALUES);
         }
