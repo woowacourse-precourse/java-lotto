@@ -9,8 +9,10 @@ import java.util.List;
 
 public class LotteryMachine {
 
+    private final int[] proceeds = {5000, 50000, 1500000, 30000000, 2000000000};
     private Lotto winningLotto;
     private int bonusNum;
+
 
     public List<Integer> makeLottoNum() {
 
@@ -83,10 +85,30 @@ public class LotteryMachine {
                 int bonusResult = compareBonusNum(lotto);
                 sameNumCount[same - bonusResult - 3]++;
             }
-            if (same != 5)
+            if (same >= 3 && same != 5)
                 sameNumCount[same - 3]++;
         }
         return sameNumCount;
+    }
+
+    public void printResult(int[] sameNumCount) {
+
+        System.out.println("3개 일치 (5,000원) - " + sameNumCount[0] + "개");
+        System.out.println("4개 일치 (50,000원) - " + sameNumCount[1] + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + sameNumCount[2] + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + sameNumCount[3] + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + sameNumCount[4] + "개");
+    }
+
+    public void printRateOfReturn(int[] lottoResult, int buyMoney) {
+        double money = 0;
+
+        for (int index = 0; index < lottoResult.length; index++) {
+            money += (long) lottoResult[index] * proceeds[index];
+        }
+        System.out.println(money);
+        double rateOfReturn = (money / buyMoney) * 100.0;
+        System.out.println("총 수익률은 "+ rateOfReturn +"%입니다.");
     }
 
     public Lotto getLotto() {
