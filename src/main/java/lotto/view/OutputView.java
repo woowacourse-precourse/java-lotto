@@ -1,6 +1,7 @@
 package lotto.view;
 
 import lotto.domain.LottoRank;
+import lotto.dto.LottoRanksDTO;
 import lotto.dto.LottosDTO;
 import lotto.exception.ViewClassCreateException;
 
@@ -36,9 +37,13 @@ public class OutputView {
         final List<List<Integer>> lottos = lottosDTO.getLottos();
     
         System.out.printf("%n%d개를 구매했습니다.%n", lottos.size());
-        System.out.println(lottos.stream()
+        System.out.println(parseLottosIssuanceResults(lottos));
+    }
+    
+    private static String parseLottosIssuanceResults(final List<List<Integer>> lottos) {
+        return lottos.stream()
                 .map(OutputView::parseLottoIssuanceResults)
-                .collect(Collectors.joining("\n")));
+                .collect(Collectors.joining("\n"));
     }
     
     private static String parseLottoIssuanceResults(final List<Integer> lottoNumbers) {
@@ -48,8 +53,9 @@ public class OutputView {
                 .collect(Collectors.joining(", ", "[", "]"));
     }
     
-    public static void printWinningStats(final List<LottoRank> lottoRanks) {
-        System.out.println("당첨 통계");
+    public static void printWinningStats(final LottoRanksDTO lottoRanksDTO) {
+        final List<LottoRank> lottoRanks = lottoRanksDTO.lottoRanks();
+        System.out.println("\n당첨 통계");
         System.out.println("---");
         System.out.println(Arrays.stream(LottoRank.values())
                 .filter(Predicate.not(LottoRank::isMiss))
