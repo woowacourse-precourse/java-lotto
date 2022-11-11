@@ -1,11 +1,9 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 
-import static lotto.ErrorMessage.DUPLICATED_LOTTO;
-import static lotto.ErrorMessage.MORE_THAN_SIX_LOTTO;
+import static lotto.ErrorMessage.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -13,8 +11,11 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         checkLottoByDuplicatedNumber(numbers);
+        checkLottoNumberOver45(numbers);
+
         this.numbers = numbers;
     }
+
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
@@ -22,11 +23,18 @@ public class Lotto {
         }
     }
 
+
     private void checkLottoByDuplicatedNumber(List<Integer> numbers) {
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException(DUPLICATED_LOTTO.getStatus());
         }
     }
 
+
     // TODO: 추가 기능 구현
+    private void checkLottoNumberOver45(List<Integer> numbers) {
+        for (int num : numbers) {
+            if (num > 45 || num < 1) throw new IllegalArgumentException(ABOVE_ELEMENT.getStatus());
+        }
+    }
 }
