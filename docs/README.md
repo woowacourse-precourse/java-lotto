@@ -13,7 +13,10 @@
       - Lotto: 로또 1매에 포함된 숫자들
         - .validate(): 로또가 올바른지 검사한다.
       - LottoPurchaseDto: 한 회에 구매한 모든 로또 
-      - LottoWinNumberDto: 당첨 로또 숫자 
+      - LottoWinNumberDto: 당첨 로또 숫자
+    - repository
+      - LottoBundleRepository: 구매 로또 저장소
+      - LottoWinNumberRepository: 당첨 번호 저장소
   - #### controller
     - LottoController
       - .run(): 로또 게임을 실행합니다.
@@ -43,7 +46,7 @@
       - .hasUniqueElements(): 배열에 중복된 원소가 있는지 확인한다.
 
 ## 🔍 설계시 고려한 문제들
-* '입력 순서가 뒤바뀌면 어떻게 하지?'
+* '단계를 옮겨다니는 기능으로 입력 순서가 뒤바뀌면 어떻게 하지?'
   * LottoWinNumberDto에 빌더 패턴을 적용
 
 ## ✏ 과제를 진행하며 배운 점
@@ -62,4 +65,5 @@
   따라서 MVC 패턴을 사용하면 입출력을 담당하는 View와 로직을 담당하는 Model을 독립적으로 개발을 진행할 수 있게 된다. 
   
   유효성 검증은 보통 프론트엔드에서 처리해 들어오지만, 프리코스 과제 특성상 입력은 일관되게 `readLine()`을 통해 받으므로, 모델까지 접근 후 유효성 검사해야 해야겠다.
+* ### Enum을 사용해 전략 패턴 구현하기[[참조](https://doohyun.tistory.com/64)]
   
