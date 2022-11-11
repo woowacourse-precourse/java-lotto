@@ -19,7 +19,11 @@ public class Drawer {
         return new Lotto(numbers);
     }
 
-    public void compare(List<Lotto> lottoTickets, List<Integer> lotto) {
+    public Integer drawBonusNumber() {
+        System.out.println(DRAW_BONUS_QUESTION);
+        String answer = Console.readLine();
+        return Integer.valueOf(answer);
+    }
 
     }
 
