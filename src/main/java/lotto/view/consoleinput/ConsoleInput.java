@@ -11,11 +11,9 @@ public class ConsoleInput {
     private final BufferedReader userInputReader =
             new BufferedReader(new InputStreamReader(System.in));
 
-    public Integer readNumber() {
+    public String readInput() {
         try {
-            return Integer.parseInt(userInputReader.readLine());
-        } catch (NumberFormatException error) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_NUMBER.getMessage());
+            return userInputReader.readLine();
         } catch (IOException error) {
             throw new IllegalArgumentException(ErrorMessage.UNEXPECTED.getMessage());
         }
