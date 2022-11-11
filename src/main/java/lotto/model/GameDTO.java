@@ -16,11 +16,35 @@ public class GameDTO {
         return this.winningNumber;
     }
 
+    public int getBonusNumber() {
+        return this.bonusNumber;
+    }
+
     public void setBonusNumber(int bonusNumber) {
         this.bonusNumber = bonusNumber;
     }
 
-    public int getBonusNumber() {
-        return this.bonusNumber;
+    public int getWinningAmount() {
+        return winningAmount;
+    }
+
+    public void setWinningAmount(int winningAmount) {
+        this.winningAmount = winningAmount;
+    }
+
+    public int getReturnOfRate() {
+        return returnOfRate;
+    }
+
+    public void setReturnOfRate(int returnOfRate) {
+        this.returnOfRate = returnOfRate;
+    }
+
+    public int[] getWinningCount() {
+        return winningCount;
+    }
+
+    public void setWinningCount(int[] winningCount) {
+        this.winningCount = winningCount;
     }
 }
