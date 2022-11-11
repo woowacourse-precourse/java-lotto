@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.message.ErrorMessage;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class PurchasedLottos {
@@ -42,6 +43,12 @@ public class PurchasedLottos {
     }
 
     private List<Integer> generateRandomNumbers() {
-        return Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, 6);
+        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, 6);
+        sortRandomNumbers(randomNumbers);
+        return randomNumbers;
+    }
+
+    private void sortRandomNumbers(List<Integer> randomNumbers) {
+        Collections.sort(randomNumbers);
     }
 }
