@@ -18,6 +18,7 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         validateBySize(numbers);
         validateByRange(numbers);
+        validateByOverlap(numbers);
     }
 
     private void validateBySize(List<Integer> numbers) {
@@ -36,6 +37,15 @@ public class Lotto {
         if (number < 1 || number > 45) {
             Output.printErrorAndExit(ExceptionType.NOT_WITHIN_THE_RANGE.getMessage());
             throw new IllegalArgumentException(ExceptionType.NOT_WITHIN_THE_RANGE.getMessage());
+        }
+    }
+
+    private void validateByOverlap(List<Integer> numbers) {
+        HashSet<Integer> checkNumbers = new HashSet<>(numbers);
+
+        if(checkNumbers.size() != NUMBER_OF_LOTTO) {
+            Output.printErrorAndExit(ExceptionType.HAVE_OVERLAP.getMessage());
+            throw new IllegalArgumentException(ExceptionType.HAVE_OVERLAP.getMessage());
         }
     }
 
