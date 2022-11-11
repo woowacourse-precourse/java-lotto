@@ -124,11 +124,12 @@ public class Application {
         }
     }
 
-    public static void getAllResults(List<Lotto> issuedLottos, List<Integer> winningNums, int bonusNum) {
+    public static Map<Result, Integer> getAllResults(List<Lotto> issuedLottos, List<Integer> winningNums, int bonusNum) {
         for (Lotto lotto : issuedLottos) {
             int numOfMatching = (int) winningNums.stream().filter(lotto.getNumbers()::contains).count();
             getEachResult(lotto, winningNums, bonusNum);
         }
+        return numOfEachResult;
     }
 
     private static void getEachResult(Lotto lotto, List<Integer> winningNums, int bonusNum) {

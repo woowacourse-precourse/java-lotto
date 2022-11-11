@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -114,6 +115,17 @@ class LottoTest {
         String[] testArr = new String[] {"3", "이십사", "1", "29", "15", "40"};
         assertThatThrownBy(() -> Application.stringArrToIntegerList(testArr))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("각 로또 번호들에 대한 당첨 여부, 당첨된 등수를 저장한다.")
+    @Test
+    public void getAllResultsTest() {
+        List<Lotto> testLottos = Application.issueLotto(3);
+        List<Integer> winningNumbers = List.of(1, 23, 24, 35, 14, 4);
+        int bonusNumber = 19;
+        Map<Result, Integer> allResults = Application.getAllResults(testLottos, winningNumbers, bonusNumber);
+        System.out.println(allResults.entrySet());
+
     }
 
 }
