@@ -3,8 +3,10 @@ package lotto.util;
 import lotto.common.InputErrors;
 import lotto.ui.dto.WinNumbers;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName(value = "당첨 번호 입력 검증 테스트")
 class WinNumbersValidatorTest {
 
     private static final String ERROR_PREFIX = "[ERROR]";
@@ -22,7 +24,7 @@ class WinNumbersValidatorTest {
     public void 값은_숫자만_가능하다() {
         String userInput = "1,a,v,c";
 
-        String containedMessage = InputErrors.WIN_NUMBER_NOT_NUMBER.getMessage();
+        String containedMessage = InputErrors.WIN_NUMBER_NOT_FORMAT.getMessage();
         assertIllegalArgumentException(userInput, containedMessage);
     }
 
@@ -70,7 +72,7 @@ class WinNumbersValidatorTest {
     public void 당첨_번호는_45보다_작거나_같은_숫자이다() {
         String userInput = "1,2,3,4,5,46";
 
-        String containedMessage = InputErrors.WIN_NUMBER_UNDER_MINIMUM.getMessage();
+        String containedMessage = InputErrors.WIN_NUMBER_OUT_OF_RANGE.getMessage();
         assertIllegalArgumentException(userInput, containedMessage);
     }
 
@@ -78,7 +80,7 @@ class WinNumbersValidatorTest {
     public void 당첨_번호는_1보다_크거나_같은_숫자이다() {
         String userInput = "0,1,2,3,4,5";
 
-        String containedMessage = InputErrors.WIN_NUMBER_OVER_LIMIT.getMessage();
+        String containedMessage = InputErrors.WIN_NUMBER_OUT_OF_RANGE.getMessage();
         assertIllegalArgumentException(userInput, containedMessage);
     }
 
