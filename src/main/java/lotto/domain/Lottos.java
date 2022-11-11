@@ -23,7 +23,7 @@ public class Lottos {
         return lottos.size();
     }
 
-    public LottosResponseDto responseDto() {
+    public LottosResponseDto toResponseDto() {
         return new LottosResponseDto(mapToLottoResponseDtos());
     }
 

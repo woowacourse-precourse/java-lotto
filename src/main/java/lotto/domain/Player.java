@@ -14,9 +14,6 @@ public class Player {
 
     private Lottos lottos;
 
-    public Player() {
-    }
-
     public Lottos purchaseLottos(int purchasePrice, List<List<Integer>> lottoNumbers) {
         int purchaseLottoCount = calculateLottoCount(purchasePrice);
         validateSize(purchaseLottoCount, lottoNumbers.size());
@@ -56,7 +53,4 @@ public class Player {
                 .collect(Collectors.toList());
     }
 
-    public LottosResponseDto getPurchaseLottos() {
-        return lottos.responseDto();
-    }
 }
