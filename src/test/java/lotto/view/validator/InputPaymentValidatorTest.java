@@ -44,4 +44,13 @@ class InputPaymentValidatorTest {
                 .isThrownBy(() -> InputPaymentValidator.validate(input))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
+    
+    @DisplayName("예외 처리 : 특수 문자 입력 시")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {"%", "$"})
+    void specialCharactersInputException(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> InputPaymentValidator.validate(input))
+                .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
+    }
 }
