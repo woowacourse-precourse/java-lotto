@@ -38,6 +38,15 @@ public class PrizeNumTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("유효한 로또 당첨 번호면 로또 당첨 번호 List 생성")
+    void createPrizeWithPrizeNum() {
+        PrizeNum.setPrizeNum("1, 2, 3, 4, 5, 6");
+        List<Integer> expectedPrize = List.of(1, 2, 3, 4, 5, 6);
+
+        assertEquals(expectedPrize, PrizeNum.getPrize());
+    }
+
 
 
     @Override
