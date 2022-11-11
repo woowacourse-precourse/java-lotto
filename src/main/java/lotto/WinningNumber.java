@@ -14,6 +14,10 @@ public class WinningNumber {
 			if (!token.matches("[0-9]+")) {
 				throw new IllegalArgumentException("알맞은 숫자가 아닙니다.");
 			}
+
+			if (Integer.parseInt(token) == 0) {
+				throw new IllegalArgumentException("0은 입력할 수 없습니다.");
+			}
 		}
 	}
 }
