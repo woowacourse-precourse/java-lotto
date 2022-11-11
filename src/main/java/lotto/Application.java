@@ -12,7 +12,7 @@ public class Application {
         try {
             List<Lotto> lottoBundle = lottoUI.buy();
             lottoUI.printLottoBundle(lottoBundle);
-
+            lottoUI.inputWinningNumbers();
         } catch (IllegalArgumentException exception) {
             System.out.println(Message.ERROR_MESSAGE + exception.getMessage());
         }

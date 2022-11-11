@@ -9,6 +9,7 @@ public class LottoSystem {
     public static final int MIN_RANGE = 1;
     public static final int MAX_RANGE = 45;
     private List<Integer> winningNumbers;
+    private int bonusNumber;
 
     public LottoSystem() {
         winningNumbers = new ArrayList<>();
@@ -20,6 +21,12 @@ public class LottoSystem {
         winningNumbers = Arrays.stream(numbers.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    public void setBonusNumber(String number) {
+        validateType(number);
+        validateRange(number);
+        bonusNumber = Integer.parseInt(number);
     }
 
     private void validateWinningNumbers(String input) {
@@ -38,18 +45,26 @@ public class LottoSystem {
 
     private void validateType(String[] numbers) {
         for (String number : numbers) {
-            if (!isNumeric(number)) {
-                throw new IllegalArgumentException("숫자만 입력하세요.");
-            }
+            validateType(number);
+        }
+    }
+
+    private void validateType(String number) {
+        if (!isNumeric(number)) {
+            throw new IllegalArgumentException("숫자만 입력하세요.");
         }
     }
 
     private void validateRange(String[] numbers) {
         for (String number : numbers) {
-            int currentNumber = Integer.parseInt(number);
-            if (currentNumber > MAX_RANGE || currentNumber < MIN_RANGE) {
-                throw new IllegalArgumentException("1부터 45까지의 숫자만 입력하세요");
-            }
+            validateRange(number);
+        }
+    }
+
+    private void validateRange(String number) {
+        int num = Integer.parseInt(number);
+        if (num > MAX_RANGE || num < MIN_RANGE) {
+            throw new IllegalArgumentException("1부터 45까지의 숫자만 입력하세요");
         }
     }
 
