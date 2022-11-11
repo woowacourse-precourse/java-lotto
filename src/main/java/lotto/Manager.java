@@ -44,5 +44,20 @@ public class Manager {
     public boolean hasBonusNumber(Lotto purchasedLotto, int bonunsNumber) {
         return purchasedLotto.getNumbers().contains(bonunsNumber);
     }
+
+    public List<Integer> compareLottoTable(List<Lotto> lottoTable, Lotto winningLotto, int bonunsNumber) {
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < lottoTable.size(); i++) {
+            int numberOfMatches = 0;
+            numberOfMatches = compareLottoNumbers(lottoTable.get(i), winningLotto);
+            if (numberOfMatches == 5 && hasBonusNumber(lottoTable.get(i), bonunsNumber)) {
+                numberOfMatches += 10;
+            }
+            result.add(numberOfMatches);
+        }
+        return result;
+    }
+
 }
+
 
