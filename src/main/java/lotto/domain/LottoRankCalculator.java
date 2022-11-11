@@ -1,15 +1,15 @@
 package lotto.domain;
 
-public class LottoCalculator {
-    private static LottoCalculator lottoCalculator;
+public class LottoRankCalculator {
+    private static LottoRankCalculator lottoCalculator;
 
-    private LottoCalculator() {
+    private LottoRankCalculator() {
 
     }
 
-    public static LottoCalculator getInstance() {
+    public static LottoRankCalculator getInstance() {
         if (lottoCalculator == null) {
-            lottoCalculator = new LottoCalculator();
+            lottoCalculator = new LottoRankCalculator();
         }
         return lottoCalculator;
     }

@@ -10,13 +10,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-class LottoCalculatorTest {
+class LottoRankCalculatorTest {
     private static WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 2, 3, 4, 5, 6), 7);
 
     @ParameterizedTest(name = "순위를_계산한다")
     @MethodSource
     void calculate_lotto_rank(Lotto lotto, LottoRank expectedRank) {
-        LottoCalculator calculator = LottoCalculator.getInstance();
+        LottoRankCalculator calculator = LottoRankCalculator.getInstance();
         assertThat(calculator.calculateRank(winningNumbers, lotto)).isEqualTo(expectedRank);
     }
 
@@ -36,8 +36,8 @@ class LottoCalculatorTest {
     @Test
     @DisplayName("싱글톤_인스턴스를_반환한다")
     void return_singleton_instance_test() {
-        LottoCalculator instance1 = LottoCalculator.getInstance();
-        LottoCalculator instance2 = LottoCalculator.getInstance();
+        LottoRankCalculator instance1 = LottoRankCalculator.getInstance();
+        LottoRankCalculator instance2 = LottoRankCalculator.getInstance();
         assertThat(instance1).isEqualTo(instance2);
     }
 
