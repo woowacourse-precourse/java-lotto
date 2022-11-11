@@ -6,18 +6,18 @@ import java.util.Map;
 
 public class Results {
 
-    private final Map<MatchAndReward, Integer> counts;
+    private final Map<Reward, Integer> counts;
 
-    public Results(List<MatchAndReward> matchAndRewardList) {
-        this.counts = createCounts(matchAndRewardList);
+    public Results(List<Reward> rewardList) {
+        this.counts = createCounts(rewardList);
     }
 
-    private Map<MatchAndReward, Integer> createCounts(List<MatchAndReward> matchAndRewardList) {
-        Map<MatchAndReward, Integer> counts = new EnumMap<>(MatchAndReward.class);
+    private Map<Reward, Integer> createCounts(List<Reward> rewardList) {
+        Map<Reward, Integer> counts = new EnumMap<>(Reward.class);
 
-        for (MatchAndReward matchAndReward : matchAndRewardList) {
-            int currentCount = counts.getOrDefault(matchAndReward, 0);
-            counts.put(matchAndReward, currentCount + 1);
+        for (Reward reward : rewardList) {
+            int currentCount = counts.getOrDefault(reward, 0);
+            counts.put(reward, currentCount + 1);
         }
 
         return counts;
@@ -26,15 +26,15 @@ public class Results {
     public float getYield(int buyMoney) {
         int totalReward = 0;
 
-        for (MatchAndReward matchAndReward : MatchAndReward.values()) {
-            int count = counts.getOrDefault(matchAndReward, 0);
-            totalReward += matchAndReward.getReward() * count;
+        for (Reward reward : Reward.values()) {
+            int count = counts.getOrDefault(reward, 0);
+            totalReward += reward.getReward() * count;
         }
 
         return (float) totalReward / buyMoney;
     }
 
-    public int getCount(MatchAndReward matchAndReward) {
-        return counts.getOrDefault(matchAndReward, 0);
+    public int getCount(Reward reward) {
+        return counts.getOrDefault(reward, 0);
     }
 }

@@ -41,8 +41,8 @@ public class WinningNumbers {
         }
     }
 
-    public MatchAndReward match(Lotto lotto) {
-        return MatchAndReward.find(getMatchedNumberCount(lotto), isMatchedBonus(lotto));
+    public Reward match(Lotto lotto) {
+        return Reward.find(getMatchedNumberCount(lotto), isMatchedBonus(lotto));
     }
 
     private int getMatchedNumberCount(Lotto lotto) {

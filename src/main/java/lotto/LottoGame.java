@@ -4,7 +4,7 @@ import lotto.console.Input;
 import lotto.console.Output;
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.LottoSeller;
-import lotto.domain.match.MatchAndReward;
+import lotto.domain.match.Reward;
 import lotto.domain.match.Results;
 import lotto.domain.match.WinningNumbers;
 
@@ -44,31 +44,31 @@ public class LottoGame {
         output.writeEmptyLine();
 
         WinningNumbers winningNumbers = new WinningNumbers(numbers, bonusNumber);
-        List<MatchAndReward> matchAndRewards = new ArrayList<>();
+        List<Reward> rewards = new ArrayList<>();
 
         for (Lotto lotto : lottos) {
-            MatchAndReward matchAndReward = winningNumbers.match(lotto);
-            if (matchAndReward != null) {
-                matchAndRewards.add(matchAndReward);
+            Reward reward = winningNumbers.match(lotto);
+            if (reward != null) {
+                rewards.add(reward);
             }
         }
 
-        Results results = new Results(matchAndRewards);
+        Results results = new Results(rewards);
 
         output.writePrefixMatchStatistics();
-        for (MatchAndReward matchAndReward : MatchAndReward.values()) {
-            if (!matchAndReward.isRequireBonus()) {
+        for (Reward reward : Reward.values()) {
+            if (!reward.isRequireBonus()) {
                 output.writeMatchStatistic(
-                        matchAndReward.getMatch(),
-                        matchAndReward.getReward(),
-                        results.getCount(matchAndReward));
+                        reward.getMatch(),
+                        reward.getReward(),
+                        results.getCount(reward));
             }
 
-            if (matchAndReward.isRequireBonus()) {
+            if (reward.isRequireBonus()) {
                 output.writeMatchStatisticWithBonus(
-                        matchAndReward.getMatch(),
-                        matchAndReward.getReward(),
-                        results.getCount(matchAndReward));
+                        reward.getMatch(),
+                        reward.getReward(),
+                        results.getCount(reward));
             }
         }
         output.writeYield(results.getYield(money));
