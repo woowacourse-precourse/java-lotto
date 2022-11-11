@@ -32,4 +32,16 @@ public class MoneyTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(MoneyConstants.CHARACTER_IN_MONEY_MSG);
     }
+
+    @DisplayName("로또 구매 금액이 1000으로 나눠 떨어지지 않는 경우 이유를 나타내는 메세지를 포함한 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"1","12","123","1234","0001","0011","0101","10001","1000000001","100300"})
+    void createMoneyWithRemainder(String userInput) {
+        //given
+        //when
+        //then
+        assertThatThrownBy(() -> Money.valueOf(userInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(MoneyConstants.REMAINDER_IN_MONEY_MSG);
+    }
 }

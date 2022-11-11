@@ -18,6 +18,7 @@ public class Money {
     private void validate(String userInput){
         isBlank(userInput);
         isConsistsWithOnlyDigits(userInput);
+        isDividedClearlyByLottoPrice(userInput);
     }
 
     private void isBlank(String userInput) {
@@ -35,6 +36,12 @@ public class Money {
     private void isDigit(char piece) {
         if (!Character.isDigit(piece)) {
             throw new IllegalArgumentException(CHARACTER_IN_MONEY_MSG);
+        }
+    }
+
+    private void isDividedClearlyByLottoPrice(String userInput) {
+        if (Integer.parseInt(userInput) % LOTTO_PRICE != 0) {
+            throw new IllegalArgumentException(REMAINDER_IN_MONEY_MSG);
         }
     }
 
