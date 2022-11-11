@@ -16,4 +16,8 @@ public class UserLotto {
         }
     }
 
+    private long readMoney() {
+        return InputView.readAmount();
+    }
+
 }
