@@ -1,10 +1,12 @@
-package lotto.util;
+package lotto.service;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class InputUtil {
+import lotto.util.ErrorConst;
+
+public class InputService {
 
 	public Integer validateUserMoney(String userMoney) {
 		checkNumber(userMoney);
