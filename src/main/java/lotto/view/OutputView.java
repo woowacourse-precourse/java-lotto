@@ -9,4 +9,11 @@ public class OutputView {
             System.out.println(lottoNumbers);
         }
     }
+
+    public static void printWinningResult(List<String> winningResults) {
+        System.out.println("\n당첨 통계\n---");
+        for (String winningResult : winningResults) {
+            System.out.println(winningResult);
+        }
+    }
 }
