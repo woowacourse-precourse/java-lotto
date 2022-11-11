@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 public class WinningNumber {
     static final int BONUS_NUMBER_SIZE = 1;
     private final List<Integer> numbers;
+    private final int bonusNumber;
 
     public WinningNumber(String winningLottoNumbers, String BonusNumber) {
         validateInteger(winningLottoNumbers);
@@ -20,8 +21,8 @@ public class WinningNumber {
         validateNumberSize(tmpNumbers, Lotto.LOTTO_NUMBER_SIZE);
         validateNumberSize(tmpBonusNumber, BONUS_NUMBER_SIZE);
 
-        tmpNumbers.add(tmpBonusNumber.get(0));
         this.numbers = tmpNumbers;
+        this.bonusNumber = tmpBonusNumber.get(0);
     }
 
     private List<Integer> convertStrToNumberList(String numbers) {
