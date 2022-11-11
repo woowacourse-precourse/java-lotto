@@ -20,13 +20,13 @@ public class InputValidator {
         List<String> splitForm = splitInput(input);
         for (String piece: splitForm) {
             int number = validateNumeric(piece);
-            validateProperNumber(number);
+            validateRange(number);
             numbers.add(number);
         }
         return numbers;
     }
 
-    public void validateProperNumber(int number) {
+    public void validateRange(int number) {
         if (number < 1 || number > 45) {
             throw new IllegalArgumentException(NOT_PROPER_NUMBER);
         }
