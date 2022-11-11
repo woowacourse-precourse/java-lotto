@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.Mission;
+import lotto.controller.Mission;
 import lotto.utils.ExceptionType;
 
 public class Money {

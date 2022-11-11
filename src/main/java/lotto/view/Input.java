@@ -1,7 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.Mission;
+import lotto.controller.Mission;
 import lotto.domain.Money;
 import lotto.utils.ExceptionType;
 
