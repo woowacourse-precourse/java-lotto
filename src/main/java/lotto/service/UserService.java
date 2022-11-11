@@ -11,6 +11,7 @@ import java.util.List;
 
 public class UserService {
     private User user;
+    private LottoSystemService lottoSystemService;
 
     public void setPayMent() {
         int payMent;
@@ -22,6 +23,11 @@ public class UserService {
         }
 
         user = new User(payMent);
+    }
+
+    public void buyLotto(){
+        lottoSystemService = new LottoSystemService();
+        lottoSystemService.setRandomLottoNumbers(user);
     }
 
 }
