@@ -5,6 +5,7 @@ import lotto.domain.Lotto;
 import lotto.domain.Payment;
 import lotto.domain.WinningLottoNumbers;
 import lotto.view.validator.InputNumberValidator;
+import lotto.view.validator.InputWinningLottoValidator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,6 +31,7 @@ public class InputView {
     }
     
     private static Lotto inputWinningLotto(final String inputWinningLottoNumbers) {
+        InputWinningLottoValidator.validate(inputWinningLottoNumbers);
         return new Lotto(parseLotto(inputWinningLottoNumbers));
     }
     

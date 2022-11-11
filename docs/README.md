@@ -18,7 +18,7 @@
 - [ ] 당첨 로또 번호 입력 ([^\d,])
   - [x] 당첨 로또 번호 입력하기
   - [ ] 예외 처리 (IllegalArgumentException, 예외 메시지는 "[ERROR]"로 시작해야 한다.)
-    - [ ] null 또는 empty 인 경우
+    - [x] null 또는 empty 인 경우
     - [ ] 한글이 존재하는 경우
       - [ ] 자음
       - [ ] 모음
