@@ -32,7 +32,7 @@ public class WinningTest {
         String winningInput = "1,2,38,4,5,6";
         winning.initializeWinningNumber(winningInput);
 
-        assertThat(winning.getWinningNumbers().toString()).isEqualTo("[1, 2, 38, 4, 5, 6]");
+        assertThat(winning.getWinning_numbers().toString()).isEqualTo("[1, 2, 38, 4, 5, 6]");
     }
 
     @DisplayName("당첨번호 비정상 입력(문자 입력)")

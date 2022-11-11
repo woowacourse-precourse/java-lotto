@@ -4,33 +4,50 @@ import java.util.*;
 
 public class Winning {
     private final String ERROR_MSG = "[ERROR] 잘못된 입력 입니다.";
+    private final List<Integer> winning_numbers;
+    private final int bonusNumber;
 
-    private List<Integer> winningNumbers = new ArrayList<>();
-    private int bonusNumber = 0;
+    public Winning(String winningNumberInput, String bonusNumberInput) {
+        this.winning_numbers = transformWinningInput(winningNumberInput);
+        this.bonusNumber = transformBonusInput(bonusNumberInput);
+    }
 
-    public List<Integer> getWinningNumbers() {
-        return winningNumbers;
+    public List<Integer> getWinning_numbers() {
+        return winning_numbers;
     }
 
     public int getBonusNumber() {
         return bonusNumber;
     }
 
-    public void initializeWinningNumber(String winningNumberInput) {
+    public List<Integer> transformWinningInput(String winningNumberInput) {
+        validateWinningNumber(winningNumberInput);
+        String[] inputs = winningNumberInput.split(",");
+
+        List<Integer> winning = new ArrayList<>();
+        Arrays.stream(inputs).mapToInt(Integer::parseInt).forEach(winning::add);
+        return winning;
+    }
+
+    public int transformBonusInput(String bonusNumberInput) {
+        validateBonusNumber(bonusNumberInput);
+        return Integer.parseInt(bonusNumberInput);
+    }
+
+
+    public void validateWinningNumber(String winningNumberInput) {
         String[] inputs = winningNumberInput.split(",");
         for (String number : inputs) {
             validate(number);
-            this.winningNumbers.add(Integer.parseInt(number));
         }
 
-        if (this.winningNumbers.size() != 6) {
+        if (inputs.length != 6) {
             throw new IllegalArgumentException(ERROR_MSG);
         }
     }
 
-    public void initializeBonusNumber(String bonusNumberInput) {
+    public void validateBonusNumber(String bonusNumberInput) {
         validate(bonusNumberInput);
-        this.bonusNumber = Integer.parseInt(bonusNumberInput);
     }
 
 
@@ -57,7 +74,7 @@ public class Winning {
 
     public void validateUniqueNumber(String input) {
         int intInput = Integer.parseInt(input);
-        if (this.winningNumbers.contains(intInput)) {
+        if (this.winning_numbers.contains(intInput)) {
             throw new IllegalArgumentException(ERROR_MSG);
         }
     }
