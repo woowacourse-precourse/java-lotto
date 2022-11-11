@@ -1,6 +1,7 @@
 package lotto.util;
 
 import java.text.DecimalFormat;
+import java.util.Collections;
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
@@ -22,7 +23,9 @@ public class Printer {
     public static void printPurchaseLottosInfo(List<Lotto> playerPurchaseLottos) {
         printMessage(String.format("%d개를 구매했습니다.", playerPurchaseLottos.size()));
         for (Lotto playerPurchaseLotto : playerPurchaseLottos) {
-            printMessage(playerPurchaseLotto.getNumbers().toString());
+            List<Integer> playerLottoNumbers = playerPurchaseLotto.getNumbers();
+            Collections.sort(playerLottoNumbers);
+            printMessage(playerLottoNumbers.toString());
         }
     }
 
