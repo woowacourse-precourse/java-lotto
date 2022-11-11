@@ -64,6 +64,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 구입금액_0원테스트() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("0"));
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
