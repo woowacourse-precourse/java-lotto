@@ -1,16 +1,15 @@
 package utils;
 
 import camp.nextstep.edu.missionutils.Console;
+import system.process.exception.IllegalArgument;
 
 public class Input {
 
     public static String input() throws IllegalArgumentException{
         String textInput = Console.readLine();
 
-        boolean result = textInput.chars().allMatch(ch -> ( Character.isDigit(ch) || ch == ','));
-
-        if(!result){
-            throw new IllegalArgumentException("[ERROR] 입력이 잘못 되었습니다.");
+        if(!IsCollection.isDigitOrCommaText(textInput)){
+            IllegalArgument.handleException(IllegalArgument.NOT_DIGIT_OR_COMMA_TEXT.getMessage());
         }
 
         return textInput;

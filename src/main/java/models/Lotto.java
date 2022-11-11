@@ -1,5 +1,8 @@
 package models;
 
+import constants.LottoConstant;
+import system.process.exception.IllegalArgument;
+
 import java.util.Comparator;
 import java.util.List;
 
@@ -7,40 +10,46 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validateSize(numbers);
-        validateInRange(numbers);
-        validateDuplication(numbers);
+        validate(numbers);
         numbers.sort(Comparator.naturalOrder());
         this.numbers = numbers;
     }
 
+    private void validate(List<Integer> numbers){
+        validateSize(numbers);
+        validateInRange(numbers);
+        validateDuplication(numbers);
+    }
+
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 6개의 숫자가 아닙니다.");
+
+        boolean isNotSetSize = numbers.size() != LottoConstant.NUMBERS_SIZE;
+
+        if (isNotSetSize) {
+            IllegalArgument.handleException(IllegalArgument.NOT_SET_SIZE.getMessage());
         }
     }
 
     private void validateInRange(List<Integer> numbers) {
 
-        boolean result = numbers.stream().allMatch(number -> number >= 1 && number <= 45);
+        boolean IsNotInRange = numbers.stream()
+                .allMatch(number -> number < LottoConstant.NUMBER_START || number > LottoConstant.NUMBER_END);
 
-        if (!result) {
-            throw new IllegalArgumentException("[ERROR] 숫자의 범위가 1~45가 아닙니다.");
+        if (IsNotInRange) {
+            IllegalArgument.handleException(IllegalArgument.NOT_IN_RANGE.getMessage());
         }
-
     }
 
     private void validateDuplication(List<Integer> numbers) {
 
-        boolean result = numbers.size() == numbers.stream().distinct().count();
+        boolean isDuplication = numbers.size() != numbers.stream().distinct().count();
 
-        if (!result) {
-            throw new IllegalArgumentException("[ERROR] 중복된 값이 존재합니다..");
+        if (isDuplication) {
+            IllegalArgument.handleException(IllegalArgument.DUPLICATION.getMessage());
         }
     }
 
     public List<Integer> getNumbers() {
         return numbers;
     }
-
 }
