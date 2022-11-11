@@ -1,5 +1,9 @@
 package lotto.service;
 
+import static lotto.util.LottoUtil.bonusNumberParser;
+import static lotto.util.LottoUtil.lottoNumbersParser;
+
+import java.util.List;
 import lotto.domain.Lotto;
 import lotto.exception.LottoException;
 import lotto.view.InputView;
@@ -11,23 +15,26 @@ public class LottoInputDataService {
     private final OutputView outputView = new OutputView();
 
     public Lotto inputLottoData() {
-        String lottoNumbers = inputLottoNumbers();
-        String bonusNumber = inputBonusNumber(lottoNumbers);
-        Lotto lotto = new Lotto(lottoNumbers, bonusNumber); // 로또 번호 + 보너스 번호 받기
+        List<Integer> lottoNumbers = inputLottoNumbers();
+        int bonusNumber = inputBonusNumber();
+        return setLotto(lottoNumbers, bonusNumber);
+    }
+
+    public Lotto setLotto(List<Integer> lottoNumbers, int bonusNumber) {
+        Lotto lotto = new Lotto(lottoNumbers);
+        lotto.setBonusNumber(bonusNumber);
         return lotto;
     }
 
-    public String inputLottoNumbers() {
+    public List<Integer> inputLottoNumbers() {
         outputView.askLottoNumbers();
-        String lottoNumbers = inputView.inputLottoNumbersView();
-        lottoException.validateLottoNumbers(lottoNumbers);
+        List<Integer> lottoNumbers = lottoNumbersParser(inputView.inputLottoNumbersView());
         return lottoNumbers;
     }
 
-    public String inputBonusNumber(String lottoNumbers) {
+    public int inputBonusNumber() {
         outputView.askBonusNumber();
-        String bonusNumber = inputView.inputBonusNumberView();
-        lottoException.validateBonusNumbers(lottoNumbers, bonusNumber);
+        int bonusNumber = bonusNumberParser(inputView.inputBonusNumberView());
         return bonusNumber;
     }
 }
