@@ -26,11 +26,11 @@ public class CalculatorTest {
         assertThat(result).isEqualTo(2031555000);
     }
 
-    @DisplayName("수익률이 81.8이 나온다")
+    @DisplayName("수익률이 181.8이 나온다")
     @Test
     void yieldTest(){
         double result = Calculator.yield(20000, 11000);
-        assertThat(result).isEqualTo(81.8);
+        assertThat(result).isEqualTo(181.8);
     }
 
 }
