@@ -30,8 +30,8 @@ public class User {
         return numberOfLotteries;
     }
 
-    public void setLotteries(List<Lotto> lotteries) {
-        this.lotteries = lotteries;
+    public void setLotteries(LotteryMachine lotteryMachine) {
+        lotteries = lotteryMachine.generateLotteries(numberOfLotteries);
     }
 
     public List<Lotto> getLotteries() { // for test Only, it will be deleted

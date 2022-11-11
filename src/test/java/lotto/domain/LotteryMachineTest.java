@@ -18,7 +18,7 @@ public class LotteryMachineTest {
         InputStream inputStream = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(inputStream);
 
-        lotteryMachine.generateLotteries(user);
+        user.setLotteries(lotteryMachine);
         List<Lotto> userLotteries = user.getLotteries();
         for (int i = 0; i < user.getNumOfLotteries(); ++i) {
             Lotto lotto = userLotteries.get(i);

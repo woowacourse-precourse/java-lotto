@@ -8,8 +8,7 @@ import java.util.List;
 
 public class LotteryMachine {
 
-    public void generateLotteries(User user) {
-        int numberOfLotteries = user.getNumOfLotteries();
+    public List<Lotto> generateLotteries(int numberOfLotteries) {
         List<Lotto> lotteries = new ArrayList<>();
         for (int i = 0; i < numberOfLotteries; ++i) {
             List<Integer> lotteryNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -17,6 +16,6 @@ public class LotteryMachine {
             Lotto lotto = new Lotto(lotteryNumbers);
             lotteries.add(lotto);
         }
-        user.setLotteries(lotteries);
+        return lotteries;
     }
 }
