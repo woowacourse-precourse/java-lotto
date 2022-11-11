@@ -28,6 +28,7 @@ public class Mission {
 
         int many = calculateHowManyLotto(money);
         List<Lotto> lottos = lottoMaker.getLottos(many);
+        output.printLottos(lottos);
 
         Lotto winningLotto = getWinningLotto();
 
