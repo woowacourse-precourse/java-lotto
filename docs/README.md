@@ -13,7 +13,7 @@
 - [x] 당첨 결과 기록 기능 - LottoResult#insertResult()
 - [x] 수익률 계산 기능 - Calculator#calculateYield()
 - [x] 당첨 통계 출력 기능 - Console#outputWinningResult()
-- [ ] 예외 상황 에러 문구 출력 기능 - Console#outputErrorMessage()
+- [x] 예외 상황 에러 문구 출력 기능 - Console#outputErrorMessage()
 
 
 ## 기능 요구 사항

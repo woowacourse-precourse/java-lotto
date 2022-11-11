@@ -8,6 +8,7 @@ import java.util.Map;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Console {
+    private static final String ERROR_MESSAGE = "[ERROR]";
     public int inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         return Integer.parseInt(readLine());
@@ -41,5 +42,8 @@ public class Console {
                     result.getOrDefault(value, 0) + "개");
         }
         System.out.println("총 수익률은 " + yield + "%입니다.");
+    }
+    public void outputErrorMessage() {
+        System.out.println(ERROR_MESSAGE + "로또 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
 }
