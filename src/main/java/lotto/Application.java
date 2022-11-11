@@ -26,14 +26,18 @@ public class Application {
     private static List<Integer> convertTrueNum(String tmp) {
         ArrayList<Integer> res = new ArrayList<>();
         List<String> tmpli = List.of(tmp.split(","));
-        for(int i = 0; i < tmpli.size(); i++)
-            res.add(Integer.parseInt(tmpli.get(i)));
+        for(int i = 0; i < tmpli.size(); i++){
+            int cur = Integer.parseInt(tmpli.get(i));
+            if(cur < 0 || cur > 45) throw new IllegalArgumentException();
+            res.add(cur);
+        }
+
         return res;
     }
     private static void allocateInitial(){ //입력받아서 bonusnum,truenum 만듬
         String lottolist = Console.readLine();
         bonusnum = (Integer.parseInt(Console.readLine()));
-
+        truenum = convertTrueNum(lottolist);
     }
     private static List<Integer> calcFinal(){ //로또 보고 몇등인지 계산하고 저장
         List<Integer> tmpres = List.of(new Integer[6]);
