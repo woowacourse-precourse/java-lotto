@@ -34,9 +34,11 @@ public class LottoStore {
     }
 
     private WinningLotto makeWinningLotto() {
-        OutputUi.printInputWinningNumbersInfoMessage();
 
+        OutputUi.printInputWinningNumbersInfoMessage();
         List<Integer> winningNumbers = InputUi.readWinningLottoNumbers();
+
+        OutputUi.printInputBonusNumberInfoMessage();
         int bonusNumber = InputUi.readSingleNumber();
 
         return new WinningLotto(winningNumbers, bonusNumber);
