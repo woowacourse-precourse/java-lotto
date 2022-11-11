@@ -4,6 +4,22 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class PaymentSystem {
 
+    public int receivePaymentForLottoTickets() {
+        int money = convertStringToInt(receiveUserInput());
+        validateAmount(money);
+        return money;
+    }
+
+    private String receiveUserInput() {
+        String userInput = Console.readLine();
+        validateForm(userInput);
+        return userInput;
+    }
+
+    private int convertStringToInt(String number) {
+        return Integer.parseInt(number);
+    }
+
     public void validateForm(String userInput) {
         if (!userInput.matches("\\d{1,}")) {
             throw new IllegalArgumentException("[ERROR] 금액은 숫자로 입력해야 합니다.");
