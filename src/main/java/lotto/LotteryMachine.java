@@ -1,7 +1,9 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LotteryMachine {
@@ -12,9 +14,19 @@ public class LotteryMachine {
     }
 
     public Lotto makeWinningLottoNum() {
+        String inputWinningNum = Console.readLine();
+        String[] spiltWinningNum = inputWinningNum.split(",");
+        List<Integer> winningNum = new ArrayList<>();
 
-        return new Lotto(makeLottoNum());
+        for (String num : spiltWinningNum) {
+            Error.validateInputIsNotNum(num);
+
+            winningNum.add(Integer.parseInt(num));
+        }
+
+        return new Lotto(winningNum);
     }
+
 
     public int makeBonusNum(List<Integer> lottoNum) {
 
@@ -26,6 +38,8 @@ public class LotteryMachine {
 
         return bonusNum.get(0);
     }
+
+
 
 
 
