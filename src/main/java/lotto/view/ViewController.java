@@ -4,12 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.config.InputConfig;
 import lotto.domain.Lotto;
 import lotto.domain.Winner;
-import lotto.mapper.InputMapper;
-import lotto.service.LottoComparator;
+import lotto.util.InputMapper;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class ViewController {
     private final long LOTTO_PRICE = InputConfig.LOTTO_PRICE;
@@ -25,7 +22,7 @@ public class ViewController {
         this.inputMapper = new InputMapper();
     }
 
-    public void printPrizeStatistics() {
+    public void printStatisticsStart() {
         outputView.printStatisticStart();
     }
 
@@ -47,23 +44,19 @@ public class ViewController {
         outputView.flush();
     }
 
-    public LottoComparator createComparator() {
-        Set<Integer> prizeLottoSet = inputPrizeLottoNumber();
-        int bonusNumber = inputBonusNumber();
-        InputConfig.checkPrizeLottoWithBonus(prizeLottoSet, bonusNumber);
-
-        List<Integer> prizeLottoList = new ArrayList<>(prizeLottoSet);
-        return new LottoComparator(prizeLottoList, bonusNumber);
+    public List<Integer> inputPrizeLotto() {
+        List<Integer> prizeLotto = inputPrizeLottoNumber();
+        return prizeLotto;
     }
 
-    private Set<Integer> inputPrizeLottoNumber() {
+    private List<Integer> inputPrizeLottoNumber() {
         inputView.printInputPrizeLottoNumber();
         String input = Console.readLine();
         List<Integer> prize = inputMapper.splitBy(input, SPLIT_REGEX);
         return prize;
     }
 
-    private int inputBonusNumber() {
+    public int inputBonusNumber() {
         inputView.printInputBonusNumber();
         String input = Console.readLine();
         return Integer.parseInt(input);
