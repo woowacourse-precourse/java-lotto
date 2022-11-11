@@ -13,4 +13,8 @@ public class Print {
     public static void inputLottoNumbers() {
         System.out.println(INPUT_LOTTO_NUMBERS);
     }
+
+    public static void inputBonusNumber() {
+        System.out.println(INPUT_BONUS_NUMBER);
+    }
 }
