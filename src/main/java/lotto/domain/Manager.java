@@ -23,7 +23,7 @@ public class Manager {
     public int changeLottoCount(int money) {
         InputUtil.checkValidationMoney(String.valueOf(money));
 
-        if (money > 0) {
+        if (money >= 0) {
             return (money / 1000);
         }
 
