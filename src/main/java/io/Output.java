@@ -1,5 +1,6 @@
 package io;
 
 public interface Output {
-    String printOutput(String sentence);
+    void printOutput(String sentence);
+
 }
