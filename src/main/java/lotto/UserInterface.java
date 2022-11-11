@@ -43,6 +43,13 @@ public class UserInterface {
                 .forEach(System.out::println);
     }
 
+    int getBonusNumber(){
+        System.out.println("보너스 볼을 입력해 주세요.");
+        int bonus = Integer.parseInt(Console.readLine());
+
+        return bonus;
+    }
+
     void printRateReturn(double rateOfReturn){
         System.out.println("총 수익률은 "+rateOfReturn+"입니다.");
     }
