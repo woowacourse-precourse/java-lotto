@@ -22,7 +22,7 @@ public class Wallet {
 
     public void showMyLottos() {
         for(Lotto l : myLottos) {
-            System.out.println(l);
+            System.out.println(l.getNumbers().toString());
         }
     }
 }
