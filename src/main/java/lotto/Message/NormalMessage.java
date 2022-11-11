@@ -52,6 +52,6 @@ public class NormalMessage {
             resultOutput += " - " + lottoWinningNumbers.get(place) + "개";
             System.out.println(resultOutput);
         }
-        System.out.println("총 수익률은" + winningResult.getYield() + "%입니다.");
+        System.out.println("총 수익률은 " + winningResult.getYield() + "%입니다.");
     }
 }
