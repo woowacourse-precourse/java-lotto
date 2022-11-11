@@ -15,9 +15,12 @@ public class Application {
     private static int rankFive = 0;
 
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         // 로또 구입 금액 입력
-        Input.inputCoin();
+        try {
+            Input.inputCoin();
+        } catch (IllegalArgumentException e) {
+            return;
+        }
         // 구매 개수만큼 로또 번호 부여 및 출력
         for (int i = 0; i < Input.buyCount; i++) {
             randomNumbers.add(NumberGenerator.createRandomNumber());
@@ -33,6 +36,16 @@ public class Application {
         System.out.println("---");
 
         // 일치하는 숫자 확인 기능 실행
+        compareRankInput();
+        // 등수당 일치 개수 출력
+        Output.outputLottoRank(rankOne, rankTwo, rankThree, rankFour, rankFive);
+        // 로또 총 수익 계산 기능 실행
+        Calculator.revenue(rankOne, rankTwo, rankThree, rankFour, rankFive);
+        // 수익 계산 기능 실행
+        Calculator.yield(Calculator.revenue, Input.coin);
+    }
+
+    public static void compareRankInput() {
         for (int i = 0; i < Input.buyCount; i++) {
             rank = NumberCompare.compare(Input.lottoNumber, randomNumbers.get(i), Input.lottoBonusNumber);
             if (rank == Rank.LOSE) continue;
@@ -42,11 +55,5 @@ public class Application {
             if (rank == Rank.FOUR) rankFour += 1;
             if (rank == Rank.FIVE) rankFive += 1;
         }
-        // 등수당 일치 개수 출력
-        Output.outputLottoRank(rankOne, rankTwo, rankThree, rankFour, rankFive);
-        // 로또 총 수익 계산 기능 실행
-        Calculator.revenue(rankOne, rankTwo, rankThree, rankFour, rankFive);
-        // 수익 계산 기능 실행
-        Calculator.yield(Calculator.revenue, Input.coin);
     }
 }
