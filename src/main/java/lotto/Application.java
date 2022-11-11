@@ -73,9 +73,7 @@ public class Application {
     
     public static void validateSplit(String stringnumbers) {
     	String[] numbersarray;
-    	try {
-    		numbersarray = stringnumbers.split(",");
-    	} catch (Exception e) {
+    	if (!stringnumbers.contains(",")) {
     		throw new IllegalArgumentException("[ERROR] 값을 ,로 구분해서 입력하세요.");
     	}
     }
@@ -84,7 +82,7 @@ public class Application {
     	String pattern = "^[0-9]{1,2}$";
     	for (String number : numbersarray) {
     		if (!Pattern.matches(pattern, number)) {
-        		throw new IllegalArgumentException("[ERROR] 숫자만 입력하세요.");
+        		throw new IllegalArgumentException("[ERROR] 1-45사이의 숫자만 입력하세요.");
         	}
     		if (Integer.parseInt(number) < 1 || Integer.parseInt(number) > 45) {
     			throw new IllegalArgumentException("[ERROR] 1-45사이의 숫자만 입력하세요.");
