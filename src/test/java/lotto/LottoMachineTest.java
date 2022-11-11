@@ -40,4 +40,12 @@ class LottoMachineTest {
         List<Lotto> publishedLotto = lottoMachine.publishLotto();
         assertThat(publishedLotto).hasSize(expected);
     }
+
+    @DisplayName("입력된 당첨 번호를 가지고 당첨 로또가 발행된다.")
+    @Test
+    void publishWinningLotto() {
+        Lotto lotto = lottoMachine.publishWinningLotto("1,2,3,4,5,6");
+        boolean result = lotto.equals(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        assertThat(result).isTrue();
+    }
 }
