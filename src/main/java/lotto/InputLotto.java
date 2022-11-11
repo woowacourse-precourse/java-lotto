@@ -4,6 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputLotto {
 
+    public int inputValueToints(){
+        String value = inputValueOfUser();
+        return toInts(value);
+    }
+
     public String inputValueOfUser() {
         String inputValue;
         inputValue = Console.readLine();
