@@ -28,7 +28,9 @@ public class LottoResults {
         return stringBuilder.toString();
     }
 
-    // 테스트용 메서드
+    /**
+     * 테스트용 메서드 입니다.
+     */
     Map<LottoRanking, Integer> results() {
         return Map.copyOf(results);
     }

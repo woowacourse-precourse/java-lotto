@@ -22,7 +22,11 @@ public class LottoPurchaser {
         double totalPricesOfPurchase = PRICE_OF_LOTTO * purchasedLottos.size();
         double rateOfReturn = totalWinnings / totalPricesOfPurchase * 100;
 
-        return (double) Math.round(rateOfReturn * 10) / 10;
+        return roundedNumber(rateOfReturn);
+    }
+
+    private double roundedNumber(double rateOfReturn) {
+        return (double) Math.round(rateOfReturn * 10) / 10;  // 소수점 둘째 자리 반올림
     }
 
     public int numberOfPurchasedLottos() {

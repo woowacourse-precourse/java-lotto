@@ -4,6 +4,9 @@ import java.util.StringJoiner;
 
 public class StringFormatter {
 
+    private StringFormatter() {
+    }
+
     static String resultStatisticsFormat(String lottoResults, double rateOfReturn) {
         StringJoiner stringJoiner = new StringJoiner("\n");
         stringJoiner

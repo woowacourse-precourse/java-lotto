@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public enum LottoRanking {
+enum LottoRanking {
 
     FIFTH(
             3,

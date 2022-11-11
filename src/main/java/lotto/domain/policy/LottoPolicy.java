@@ -2,6 +2,9 @@ package lotto.domain.policy;
 
 public class LottoPolicy {
 
+    private LottoPolicy() {
+    }
+
     public static final int MIN_NUMBER_OF_LOTTO = 1;
     public static final int MAX_NUMBER_OF_LOTTO = 45;
     public static final int COUNTS_OF_LOTTO_NUMBERS = 6;
