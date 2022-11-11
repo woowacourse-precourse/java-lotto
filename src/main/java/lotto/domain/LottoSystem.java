@@ -2,45 +2,36 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.stream.Collectors;
 
 public class LottoSystem {
-    public static final int MIN_RANGE = 1;
-    public static final int MAX_RANGE = 45;
-    private List<Integer> winningNumbers;
-    private int bonusNumber;
-
-    public LottoSystem() {
-        winningNumbers = new ArrayList<>();
-    }
+    private WinningNumber winningNumber;
 
     public void setWinningNumbers(String numbers) throws IllegalArgumentException {
         numbers = numbers.replaceAll("\\s", "");
         validateWinningNumbers(numbers);
-        winningNumbers = Arrays.stream(numbers.split(","))
+        List<Integer> toList = Arrays.stream(numbers.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+        winningNumber = new WinningNumber(toList);
     }
 
     public void setBonusNumber(String number) {
+        if (winningNumber == null) {
+            return;
+        }
         validateType(number);
-        validateRange(number);
-        bonusNumber = Integer.parseInt(number);
+        winningNumber.setBonusNumber(Integer.parseInt(number));
     }
 
     private void validateWinningNumbers(String input) {
         String[] numbers = input.split(",");
-        validateCount(numbers);
         validateType(numbers);
-        validateRange(numbers);
-        validateUnique(numbers);
-    }
-
-    private void validateCount(String[] numbers) {
-        if (numbers.length != 6) {
-            throw new IllegalArgumentException("6개의 숫자를 쉼표(,)로 구분하여 입력하세요.");
-        }
     }
 
     private void validateType(String[] numbers) {
@@ -52,26 +43,6 @@ public class LottoSystem {
     private void validateType(String number) {
         if (!isNumeric(number)) {
             throw new IllegalArgumentException("숫자만 입력하세요.");
-        }
-    }
-
-    private void validateRange(String[] numbers) {
-        for (String number : numbers) {
-            validateRange(number);
-        }
-    }
-
-    private void validateRange(String number) {
-        int num = Integer.parseInt(number);
-        if (num > MAX_RANGE || num < MIN_RANGE) {
-            throw new IllegalArgumentException("1부터 45까지의 숫자만 입력하세요");
-        }
-    }
-
-    private void validateUnique(String[] numbers) {
-        Set<String> deduplication = new HashSet<>(Arrays.asList(numbers));
-        if (deduplication.size() != 6) {
-            throw new IllegalArgumentException("모두 다른 숫자를 입력해주세요.");
         }
     }
 
