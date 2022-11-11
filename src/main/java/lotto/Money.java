@@ -11,14 +11,6 @@ public class Money {
         validate();
     }
 
-    private int parse(String amount) {
-        try {
-            return Integer.parseInt(amount);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액에는 숫자만 입력할 수 있습니다.");
-        }
-    }
-
     private void validate() {
         validateNotNegative();
         validateMultipleOfLottoPrice();
