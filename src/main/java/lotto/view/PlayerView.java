@@ -39,7 +39,10 @@ public class PlayerView {
     }
 
     private void showLottoNumbers(List<Lotto> playerLotto){
-
+        for(Lotto lottoEach : playerLotto){
+            System.out.println(lottoEach.toString());
+        }
+        System.out.println();
     }
 
 
