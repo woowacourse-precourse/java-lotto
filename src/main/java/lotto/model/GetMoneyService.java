@@ -11,7 +11,7 @@ public class GetMoneyService {
         this.money = money;
     }
 
-    public int toInt() {
-        return Utils.stringToIntMoney(money);
+    public int getLottoCount() {
+        return (Utils.stringToIntMoney(money) / 1000);
     }
 }

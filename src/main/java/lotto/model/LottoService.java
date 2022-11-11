@@ -9,8 +9,8 @@ import java.util.List;
 public class LottoService {
     private List<Lotto> lottoList = new ArrayList<>();
 
-    public LottoService(int money) {
-        int count = getLottoCount(money);
+    public LottoService(int lottoCount) {
+        int count = getLottoCount(lottoCount);
         for (int cnt = 0; cnt < count; cnt++) {
             addLotto(createLotto());
         }
@@ -38,5 +38,9 @@ public class LottoService {
         Collections.sort(numbers);
 
         return numbers;
+    }
+
+    public List<Lotto> getLottoList() {
+        return lottoList;
     }
 }
