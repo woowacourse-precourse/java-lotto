@@ -1,18 +1,21 @@
 package lotto.game;
 
 public enum LottoGrade {
-    FIRST(2_000_000_000L),
-    SECOND(30_000_000L),
-    THIRD(1_500_000L),
-    FOURTH(50_000L),
-    FIFTH(5_000L),
-    NOTHING(0);
+    FIRST(Money.of(2_000_000_000L)),
+    SECOND(Money.of(30_000_000L)),
+    THIRD(Money.of(1_500_000L)),
+    FOURTH(Money.of(50_000L)),
+    FIFTH(Money.of(5_000L)),
+    NOTHING(Money.NO_MONEY);
 
+    private final Money prize;
 
-    private final long prize;
+    LottoGrade(Money money) {
+        this.prize = money;
+    }
 
-    LottoGrade(long prize) {
-        this.prize = prize;
+    public long getPrize() {
+        return prize.getValue();
     }
 
     public static LottoGrade confirmWinning(int winningCount, boolean bonusMatch) {
