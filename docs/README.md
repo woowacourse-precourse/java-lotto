@@ -8,9 +8,9 @@
 - [ ] 로또 구매 장수 만큼 1~45까지의 중복되지 않는 숫자 6자리를 생성해낸다.
 - [X] 실제 로또 당첨번호 6자리 + 보너스 숫자를 입력받는다. - inputUserLottoWinningNumbers()
   - [X] 사용자에게 입력받은 로또 당첨번호가 적절한지 판단한다. - LotteryWinningNumberValidation 클래스의 isValidate()
-  - [ ] 사용자에게 입력받은 보너스 숫자번호가 적절한지 판단한다.
+  - [X] 사용자에게 입력받은 보너스 숫자번호가 적절한지 판단한다. - BonusLottoValidation 클래스의 isValidate()
   - [X] refactoring 요소 : 당첨번호 6자리와 보너스 숫자 1자리는 길이만 다를 뿐 모든 요소가 같다. 컴포넌트화 할 필요가 있어보인다. - LottoValidation 클래스
-  - [ ] refactoring 요소 : 사용자에게 출력과 입력을 받는 View, 입력의 Validation 의 경우 실제 구현만 다르고 메써드 호출명은 똑같다.
+  - [X] refactoring 요소 : 사용자에게 출력과 입력을 받는 View, 입력의 Validation 의 경우 실제 구현만 다르고 메써드 호출명은 똑같다. - LottoController 클래스
     (View, Validation 을 추상클래스로 정의했기에) 그러므로 이러한 구현들의 공통부분을 합치는 refactoring 요소가 필요
 - [ ] 사용자의 로또 각각 당첨 여부를 판단한다.
   - [ ] 당첨 번호와 사용자의 로또 번호가 같은게 있으면 일치 개수가 한개 증가한다.

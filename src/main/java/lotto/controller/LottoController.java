@@ -3,7 +3,6 @@ package lotto.controller;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.constant.StringConstant;
 import lotto.validation.BonusLottoValidation;
 import lotto.validation.LotteryWinningNumberValidation;
 import lotto.validation.LottoMoneyValidation;
@@ -15,9 +14,11 @@ import lotto.view.View;
 
 public class LottoController {
 
+
     /**
      * 사용자에게 money 를 입력받고 validation 후 돈을 기억해둔다.
      * 사용자에게 LotteryWinningNumber 를 입력받고 validation 후 기억해둔다.
+     * 사용자에게 BonusLottoNumber 를 입력받고 validation 후 기억해둔다.
      */
     public void lottoProcedure() {
         String userMoneyInput = lottoMoneyInputView();
@@ -29,7 +30,8 @@ public class LottoController {
         List<Integer> lotteryWinningNumber = createLottoNumber(userLottoWinningInput);
 
         String userBonusLottoInput = bonusLottoView();
-        bonusLottoInputValidation(userBonusLottoInput);
+        bonusLottoInputValidation(userBonusLottoInput, lotteryWinningNumber);
+        int bonusLotto = Integer.parseInt(userBonusLottoInput);
     }
 
     private String bonusLottoView() {
@@ -41,9 +43,9 @@ public class LottoController {
         return new BonusLottoView();
     }
 
-    private void bonusLottoInputValidation(String userBonusLottoInput) {
+    private void bonusLottoInputValidation(String userBonusLottoInput, List<Integer> lotteryWinningNumber) {
         Validation bonusLottoInputValidation = createBonusLottoInputValidation();
-        bonusLottoInputValidation(userBonusLottoInput);
+        bonusLottoInputValidation.isValidate(userBonusLottoInput, lotteryWinningNumber);
     }
 
     private Validation createBonusLottoInputValidation() {
