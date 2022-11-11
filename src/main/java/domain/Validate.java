@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 import static domain.ErrorMessage.*;
@@ -9,6 +10,23 @@ public class Validate {
     public void validateMoney(String input) {
         isNumber(input);
         isEnoughMoney(input);
+    }
+
+    public static void validateLottoNumber(List<Integer> numbers){
+        isDistinctNumber(numbers);
+        isLottoSize(numbers);
+    }
+
+    private static void isLottoSize(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException(NOT_LOTTO_SIZE_ERROR.getMessage());
+        }
+    }
+
+    private static void isDistinctNumber(List<Integer> lottoNumber) {
+        if(lottoNumber.stream().distinct().count() != lottoNumber.size()){
+            throw new IllegalArgumentException(NOT_LOTTO_DISTINCT_NUMBER_ERROR.getMessage());
+        }
     }
 
     private void isEnoughMoney(String input) {
