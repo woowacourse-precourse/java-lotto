@@ -94,4 +94,74 @@ class UserInputHandlerTest{
             });
         }
     }
+    @Nested
+    class GetWinningNumbersTest{
+        Supplier<Lotto> functionSupply = () -> inputHandler.getWinningNumbers();
+
+        @Test
+        void getWinningNumbersTest_exception1(){
+            String input = "1,2,3,4,5";
+            beforeSetting(input);
+            functionSupply = () -> inputHandler.getWinningNumbers();
+            assertSimpleTest(() -> {
+                exceptionRunning(functionSupply);
+                assertThat(out.toString().trim()).contains(ERROR_MESSAGE);
+            });
+        }
+
+        @Test
+        void getWinningNumbersTest_exception2(){
+            String input = "1,2,3,4,5,6,7,8";
+            beforeSetting(input);
+            functionSupply = () -> inputHandler.getWinningNumbers();
+            assertSimpleTest(() -> {
+                exceptionRunning(functionSupply);
+                assertThat(out.toString().trim()).contains(ERROR_MESSAGE);
+            });
+        }
+
+        @Test
+        void getWinningNumbersTest_exception3(){
+            String input = "1,2,3,4,4,5";
+            beforeSetting(input);
+            functionSupply = () -> inputHandler.getWinningNumbers();
+            assertSimpleTest(() -> {
+                exceptionRunning(functionSupply);
+                assertThat(out.toString().trim()).contains(ERROR_MESSAGE);
+            });
+        }
+
+        @Test
+        void getWinningNumbersTest_exception4(){
+            String input = "0,1,2,3,4,5";
+            beforeSetting(input);
+            functionSupply = () -> inputHandler.getWinningNumbers();
+            assertSimpleTest(() -> {
+                exceptionRunning(functionSupply);
+                assertThat(out.toString().trim()).contains(ERROR_MESSAGE);
+            });
+        }
+
+        @Test
+        void getWinningNumbersTest_exception5(){
+            String input = "41,42,43,44,45,46";
+            beforeSetting(input);
+            functionSupply = () -> inputHandler.getWinningNumbers();
+            assertSimpleTest(() -> {
+                exceptionRunning(functionSupply);
+                assertThat(out.toString().trim()).contains(ERROR_MESSAGE);
+            });
+        }
+
+        @Test
+        void getWinningNumbersTest_exception6(){
+            String input = "41,42,43,44,45,Hello";
+            beforeSetting(input);
+            functionSupply = () -> inputHandler.getWinningNumbers();
+            assertSimpleTest(() -> {
+                exceptionRunning(functionSupply);
+                assertThat(out.toString().trim()).contains(ERROR_MESSAGE);
+            });
+        }
+    }
 }
