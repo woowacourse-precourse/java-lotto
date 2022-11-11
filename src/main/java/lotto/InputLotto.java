@@ -10,4 +10,8 @@ public class InputLotto {
         return inputValue;
     }
 
+    public int toInts(String number) {
+        return Integer.parseInt(number);
+    }
+
 }
