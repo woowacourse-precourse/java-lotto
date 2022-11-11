@@ -5,7 +5,7 @@ import io.Output;
 import io.Sentence;
 
 public class Money {
-    private static int lottoCnt;
+    private static long lottoCnt;// =1_000_000;
 
     public static void InputMoneyForLotto(Input input, Output output) {
         String moneyInput = input.getInput(Sentence.INPUTMONEY.getValue(), output);
@@ -14,13 +14,14 @@ public class Money {
         //'구매 금액 입력해 주세요' 출력
     }
 
-    public static int printHowManyLottos(Output output) {
+    public static long printHowManyLottos(Output output) {
         output.printOutput(String.format(Sentence.YOUPURCHASED.getValue(), lottoCnt));
         return lottoCnt;
         //'n장의 로또 구매했어요' 출력
     }
 
     private static void validateMoneyInput(String moneyInput) {
+        //추가 공백 제거?
         checkDigits(moneyInput);
         checkDivideBy1000(moneyInput);
     }
@@ -40,7 +41,7 @@ public class Money {
         }
     }
 
-    private static int getlottoCnt(String moneyInput) {
+    private static long getlottoCnt(String moneyInput) {
         lottoCnt = Integer.parseInt(moneyInput.substring(0, moneyInput.length()-3));
         return lottoCnt;
     }
