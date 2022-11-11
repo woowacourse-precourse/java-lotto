@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class LottoTicketMachine {
+public class LottoTicketSystem {
 
     public LottoTickets issueLottoTickets(int money) {
         int numberOfTickets = convertMoneyIntoTickets(money);
