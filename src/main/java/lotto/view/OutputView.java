@@ -14,7 +14,7 @@ import lotto.LottoPrize;
 
 public class OutputView {
     public void printLottoNumbers(Buyer buyer) {
-        System.out.println("\n" + buyer.getLottoTicketAmount() + "개를 구매했습니다.");
+        System.out.println("\n" + buyer.countHoldingLotto() + "개를 구매했습니다.");
         for (Lotto lotto : buyer.getHoldingLottoTickets()) {
             System.out.println(lotto.getNumbers());
         }
