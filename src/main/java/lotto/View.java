@@ -7,6 +7,16 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class View {
 
+    public void printResult (HashMap<Integer, Integer> prizeRankings, double totalProfit) {
+
+        System.out.printf("3개 일치 (5,000원) - %d개\n", prizeRankings.get(Ranking.FIFTH.getPrize()));
+        System.out.printf("4개 일치 (50,000원) - %d개\n", prizeRankings.get(Ranking.FORTH.getPrize()));
+        System.out.printf("5개 일치 (1,500,000원) - %d개\n", prizeRankings.get(Ranking.THIRD.getPrize()));
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", prizeRankings.get(Ranking.SECOND.getPrize()));
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", prizeRankings.get(Ranking.FIRST.getPrize()));
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", totalProfit*100);
+    }
+
     public void printUncheckedLotto (List<List<Integer>> uncheckedLottos) {
         for (List<Integer> lotto: uncheckedLottos) {
             System.out.println(lotto);
