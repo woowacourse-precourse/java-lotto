@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Buy {
 
@@ -24,12 +26,20 @@ public class Buy {
         return tickets;
     }
 
-    public static void inputWinningNumber() {
+    public static void inputNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
-        String winningNumber = Console.readLine();
+        String numbers = Console.readLine();
 
         System.out.println("보너스 번호를 입력해 주세요.");
-        int bonusNumber = Integer.parseInt(Console.readLine());
+        int bonusNumbers = Integer.parseInt(Console.readLine());
+    }
+
+    public static <T, U> List<U> transform(List<T> list,
+                                           Function<T, U> function)
+    {
+        return list.stream()
+                .map(function)
+                .collect(Collectors.toList());
     }
 
 
