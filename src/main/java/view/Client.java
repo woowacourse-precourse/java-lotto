@@ -1,9 +1,11 @@
 package view;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Client {
+
+    private static final int LOTTO_PRICE = 1000;
+
     public int getLottoMoney(){
         String money = Console.readLine();
         if(!isNumber(money) || isDivideBy1000(money)){
@@ -17,6 +19,6 @@ public class Client {
     }
 
     private Boolean isDivideBy1000(String money){
-        return Integer.parseInt(money) % 1000 != 0;
+        return Integer.parseInt(money) % LOTTO_PRICE != 0;
     }
 }
