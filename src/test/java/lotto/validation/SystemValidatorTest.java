@@ -89,9 +89,8 @@ class SystemValidatorTest {
 	void checkPurchaseAmountHasOnlyNumericValuesTest() {
 		final String purchaseAmount = "1234";
 
-		boolean result = SystemValidator.hasOnlyNumeric(purchaseAmount);
-
-		assertThat(result).isTrue();
+		assertThatNoException().isThrownBy(() ->
+				SystemValidator.validateIsNumber(purchaseAmount));
 	}
 
 	@DisplayName("구입금액 입력 중 하나라도 숫자가 아니라면 테스트 통과")
@@ -99,9 +98,10 @@ class SystemValidatorTest {
 	void checkPurchaseAmountHasNotOnlyNumericValuesTest() {
 		final String purchaseAmount = "12a3";
 
-		boolean result = SystemValidator.hasOnlyNumeric(purchaseAmount);
-
-		assertThat(result).isFalse();
+		assertThatThrownBy(() ->
+				SystemValidator.validateIsNumber(purchaseAmount))
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(Message.ERROR_IS_NOT_NUMERIC_VALUE);
 	}
 
 	@ParameterizedTest(name = "{0} 는 모두 숫자로만 이뤄졌고, 맨 앞의 숫자가 0이 아니기에 테스트 통과")
@@ -115,11 +115,11 @@ class SystemValidatorTest {
 	@ValueSource(strings = {"01000", "1a234", "99 99", "1\n1"})
 	void checkPurchaseAmountIsNotNumberTest(String purchaseAmount) {
 		assertThatThrownBy(() -> SystemValidator.validateIsNumber(purchaseAmount))
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(Message.ERROR_PREFIX);
 	}
 
-	@DisplayName("구입금액을 검증하는데 문자가 공백이나 개행문자만 존재하면 " +
-			"'ERROR_EMPTY_PURCHASE_AMOUNT_INPUT' 메세지를 예외로 던지는 테스트")
+	@DisplayName("구입금액을 검증하는데 문자가 공백이나 개행문자만 존재하면 'ERROR_EMPTY_INPUT' 메세지를 예외로 던지는 테스트")
 	@Test
 	void checkPurchaseAmountInputIsBlankTest() {
 		final String purchaseAmount = " ";
@@ -127,7 +127,7 @@ class SystemValidatorTest {
 		assertThatThrownBy(() ->
 				SystemValidator.validateUserPurchaseAmount(purchaseAmount))
 				.isInstanceOf(IllegalArgumentException.class)
-				.hasMessageContaining(Message.ERROR_EMPTY_PURCHASE_AMOUNT_INPUT);
+				.hasMessageContaining(Message.ERROR_EMPTY_INPUT);
 	}
 
 	@DisplayName("구입금액을 검증하는데 문자가 중간에 한 개라도 존재하면 " +
@@ -139,7 +139,7 @@ class SystemValidatorTest {
 		assertThatThrownBy(() ->
 				SystemValidator.validateUserPurchaseAmount(purchaseAmount))
 				.isInstanceOf(IllegalArgumentException.class)
-				.hasMessageContaining(Message.ERROR_NOT_NUMERIC_PURCHASE_AMOUNT_INPUT);
+				.hasMessageContaining(Message.ERROR_IS_NOT_NUMERIC_VALUE);
 	}
 
 	@DisplayName("구입금액을 검증하는데 맨 앞 문자가 '0'이라면 " +
@@ -151,7 +151,7 @@ class SystemValidatorTest {
 		assertThatThrownBy(() ->
 				SystemValidator.validateUserPurchaseAmount(purchaseAmount))
 				.isInstanceOf(IllegalArgumentException.class)
-				.hasMessageContaining(Message.ERROR_FIRST_ZERO_PURCHASE_AMOUNT_INPUT);
+				.hasMessageContaining(Message.ERROR_FIRST_CHAR_IS_ZERO);
 	}
 
 	@DisplayName("구입금액을 검증하는데 1개의 로또도 못사는 가격을 입력하면 " +
@@ -185,5 +185,16 @@ class SystemValidatorTest {
 				SystemValidator.validateAllLottoNumberInputElementsIsNumber(winningLottoNumber))
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessageContaining(Message.ERROR_PREFIX);
+	}
+
+	@DisplayName("',,,,,' 입력이 주어지면 빈 문자열 입력하면 안된다는 예외 메세지 던짐")
+	@Test
+	void checkWinningLottoNumberIsBlankTest() {
+		final String input = ",,,,,";
+
+		assertThatThrownBy(() ->
+				SystemValidator.validateAllLottoNumberInputElementsIsNumber(input))
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(Message.ERROR_EMPTY_INPUT);
 	}
 }

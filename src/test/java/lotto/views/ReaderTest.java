@@ -41,7 +41,8 @@ class ReaderTest {
 		System.setIn(inputStream);
 
 		assertThatThrownBy(Reader::readUserLottoPurchaseAmount)
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(Message.ERROR_PREFIX);
 	}
 
 	@DisplayName("사용자가 정상적인 로또 당첨 번호를 입력했을 때 확인하는 테스트")
@@ -59,13 +60,14 @@ class ReaderTest {
 	}
 
 	@ParameterizedTest(name = "콤마 안에 숫자가 아닌 문자가 존재={0} ==> 예외를 던짐")
-	@ValueSource(strings = {"1,2,3,4,a,6", ",,,,,", " ,1,2,3,4,5", "1, 2, 3, 4, 5, 6", "a,b,c,d,e,f"})
+	@ValueSource(strings = {"1,2,3,4,a,6", "1, 2, 3, 4, 5, 6", "a,b,c,d,e,f"})
 	void checkWinningLottoNumberHasNotOnlyNumericValueTest(String input) {
 		InputStream inputStream = generateInputStream(input);
 		System.setIn(inputStream);
 
 		assertThatThrownBy(Reader::readUserLottoWinningNumber)
-				.isInstanceOf(IllegalArgumentException.class);
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(Message.ERROR_IS_NOT_NUMERIC_VALUE);
 	}
 
 	@DisplayName("공백만 포함된 원소들을 입력으로 받을 때 예외를 던짐 => 입력 숫자는 빈 문자열이면 안되기 때문")
@@ -77,7 +79,7 @@ class ReaderTest {
 
 		assertThatThrownBy(Reader::readUserLottoWinningNumber)
 				.isInstanceOf(IllegalArgumentException.class)
-				.hasMessageContaining(Message.ERROR_EMPTY_PURCHASE_AMOUNT_INPUT);
+				.hasMessageContaining(Message.ERROR_EMPTY_INPUT);
 	}
 
 	@ParameterizedTest(name = "공백과 숫자가 아닌 문자를 6개를 ,로 구분하여 입력했을 때 예외를 던짐''''{0}'''' " +
@@ -89,7 +91,7 @@ class ReaderTest {
 
 		assertThatThrownBy(Reader::readUserLottoWinningNumber)
 				.isInstanceOf(IllegalArgumentException.class)
-				.hasMessageContaining(Message.ERROR_NOT_NUMERIC_PURCHASE_AMOUNT_INPUT);
+				.hasMessageContaining(Message.ERROR_IS_NOT_NUMERIC_VALUE);
 	}
 
 	@DisplayName("모든 원소는 숫자지만 콤마가 5개가 아닐 때 예외를 던짐 => 로또 번호가 6개가 안되기 때문")
@@ -113,7 +115,7 @@ class ReaderTest {
 
 		assertThatThrownBy(Reader::readUserLottoWinningNumber)
 				.isInstanceOf(IllegalArgumentException.class)
-				.hasMessageContaining(Message.ERROR_FIRST_ZERO_PURCHASE_AMOUNT_INPUT);
+				.hasMessageContaining(Message.ERROR_FIRST_CHAR_IS_ZERO);
 	}
 
 	@ParameterizedTest(name = "숫자만 입력된 6개 원소를 가지는 입력에 대해''''{0}'''', 1~45 사이의 원소가 아니면 예외를 던진다.")
