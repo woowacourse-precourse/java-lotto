@@ -3,22 +3,24 @@ package lotto;
 import java.util.Arrays;
 
 public class Prize {
-    private Ranks ranks;
-    private final int indexOfRank;
+    private Ranks rank;
     private final int money;
 
     Prize(int winningNumberCount, int bonusNumberCount) {
-        ranks = ranks.getRankByMatchingNumberCount(winningNumberCount, bonusNumberCount);
-        indexOfRank = ranks.ordinal();
-        money = ranks.getPrizeMoney();
+        rank = getRankByMatchingNumberCount(winningNumberCount, bonusNumberCount);
+        money = rank.getPrizeMoney();
+    }
+
+    public Ranks getRankByMatchingNumberCount(int myMatchingWinningNumberCount, int myMatchingBonusNumberCount) {
+        return Arrays.stream(Ranks.values())
+                .filter(rank -> rank.matchingWinningNumberCount == myMatchingWinningNumberCount
+                        && rank.matchingBonusNumberCount == myMatchingBonusNumberCount)
+                .findFirst()
+                .orElse(Ranks.NONE);
     }
 
     public int getMoney() {
         return money;
-    }
-
-    public int getIndexOfRank() {
-        return indexOfRank;
     }
 
     public enum Ranks {
@@ -41,14 +43,6 @@ public class Prize {
 
         public int getPrizeMoney() {
             return prizeMoney;
-        }
-
-        public Ranks getRankByMatchingNumberCount(int myMatchingWinningNumberCount, int myMatchingBonusNumberCount) {
-            return Arrays.stream(values())
-                    .filter(rank -> rank.matchingWinningNumberCount == myMatchingWinningNumberCount
-                            && rank.matchingBonusNumberCount == myMatchingBonusNumberCount)
-                    .findFirst()
-                    .orElse(Ranks.NONE);
         }
     }
 }
