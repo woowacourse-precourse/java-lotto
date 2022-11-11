@@ -1,5 +1,6 @@
 package lotto.model;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Collections;
 import java.util.List;
@@ -24,6 +25,17 @@ public class LottoService {
             printLottoNumbers(lotto);
             lottos.add(lotto);
         }
+    }
+
+    public void getWinningNumber() {
+        String winningNumber;
+        String bonusNumber = "1";
+        System.out.println("\n당첨 번호를 입력해주세요.");
+        winningNumber = Console.readLine();
+        new WinningNumber(winningNumber, bonusNumber);
+        System.out.println("\n보너스 번호를 입력해주세요.");
+        bonusNumber = Console.readLine();
+        this.winningNumber = new WinningNumber(winningNumber, bonusNumber);
     }
 
     private void validateMoney(String money) {
