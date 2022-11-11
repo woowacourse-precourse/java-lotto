@@ -9,16 +9,25 @@ import lotto.view.OutputView;
 public class WinningNumbers {
 
 	private final List<Integer> numbers;
+	private final int bonusNumber;
 
-	public WinningNumbers(List<Integer> numbers) {
+	public WinningNumbers(List<Integer> numbers, int bonusNumber) {
 		validateWinningNumbers(numbers);
 		this.numbers = numbers;
+
+		validateBonusNumber(bonusNumber);
+		this.bonusNumber = bonusNumber;
 	}
 
 	private void validateWinningNumbers(List<Integer> numbers) {
 		validateCount(numbers);
 		validateRange(numbers);
 		validateDuplicate(numbers);
+	}
+
+	private void validateBonusNumber(int bonusNumber) {
+		checkRange(bonusNumber);
+		validateDuplicate(bonusNumber);
 	}
 
 	private void validateCount(List<Integer> numbers){
@@ -37,6 +46,13 @@ public class WinningNumbers {
 	private void validateDuplicate(List<Integer> numbers){
 		if(Set.copyOf(numbers).size()!= LottoRule.NUMBER_COUNT.getValue()){
 			OutputView.printError(ErrorMessage.DUPLICATE_NUMBER_ERROR);
+			throw new IllegalArgumentException();
+		}
+	}
+
+	private void validateDuplicate(Integer number){
+		if(numbers.contains(number)){
+			OutputView.printError(ErrorMessage.DUPLICATE_BONUS_NUMBER_ERROR);
 			throw new IllegalArgumentException();
 		}
 	}

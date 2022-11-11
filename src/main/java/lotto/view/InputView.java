@@ -9,6 +9,7 @@ import lotto.exception.ErrorMessage;
 public class InputView {
 	private static final String START_GAME_MESSAGE = "구입 금액을 입력해 주세요.";
 	private static final String INPUT_WINNING_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.";
+	private static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
 
 	public static int inputMoney() {
 		System.out.println(START_GAME_MESSAGE);
@@ -24,6 +25,15 @@ public class InputView {
 		validateNumbers(numbers);
 
 		return toIntegerList(numbers);
+	}
+
+	public static int inputBonusNumbers() {
+		System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
+
+		String number=Console.readLine();
+		validateNumber(number);
+
+		return Integer.parseInt(number);
 	}
 
 	private static void validateNumber(String number) {
@@ -51,5 +61,6 @@ public class InputView {
 	private static List<Integer> toIntegerList(List<String> numbers) {
 		return numbers.stream().map(Integer::parseInt).collect(Collectors.toList());
 	}
+
 
 }

@@ -35,6 +35,6 @@ public class GameController {
 	}
 
 	private WinningNumbers createWinningNumbers() {
-		return new WinningNumbers(InputView.inputWinningNumbers());
+		return new WinningNumbers(InputView.inputWinningNumbers(), InputView.inputBonusNumbers());
 	}
 }
