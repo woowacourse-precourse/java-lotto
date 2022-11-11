@@ -1,8 +1,6 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 enum Rank{
@@ -17,7 +15,7 @@ enum Rank{
 }
 public class WinningResult {
      WinningNumber winningNumber;
-     private HashMap<Rank, Integer> rankcount;
+     private HashMap<Rank, Integer> rankCount;
      private int winningRate;
 
      WinningResult(WinningNumber winningNumber) {
@@ -29,7 +27,7 @@ public class WinningResult {
      }
 
      private HashMap<Rank, Integer> countRank(List<Rank> rank) {
-          HashMap<Rank, Integer> rankCount = new HashMap<>();
+          this.rankCount = new HashMap<>();
           rankCount.put(Rank.NONE, 0);
           rankCount.put(Rank.FIRST, 0);
           rankCount.put(Rank.SECOND, 0);
@@ -47,6 +45,15 @@ public class WinningResult {
      float winningRate(Integer purchaseAmount) {
           int winningAmout = 0;
           float result = 0f;
+
+          Iterator<Map.Entry<Rank, Integer>> entry = rankCount.entrySet().iterator();
+
+          while (entry.hasNext()) {
+               Map.Entry<Rank, Integer> element = entry.next();
+               winningAmout += element.getKey().value * element.getValue();
+          }
+
+          result = winningAmout / (float)purchaseAmount * 100;
 
           return result;
      }
