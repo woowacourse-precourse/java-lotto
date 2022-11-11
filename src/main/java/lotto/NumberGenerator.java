@@ -27,11 +27,11 @@ public class NumberGenerator {
     }
 
     public void enterLottoNumbers() {
-        exceptionNotEnteredLottoNumber();
+        exceptionInvalidLottoNumber();
     }
 
     public int enterBonusNumber() {
-        return exceptionNotEnteredBonusNumber();
+        return exceptionInvalidBonusNumber();
     }
 
     private List<Integer> addComputerNumber(List<String> computerLottoString) {
@@ -61,20 +61,20 @@ public class NumberGenerator {
         }
     }
 
-    private void exceptionNotEnteredLottoNumber() {
+    private void exceptionInvalidLottoNumber() {
         try {
             String[] lottoNumbers = Console.readLine().split(",");
             computerLotto = addComputerNumber(new ArrayList<>(Arrays.asList(lottoNumbers)));
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR");
+            throw new IllegalArgumentException("[ERROR] 로또 번호에 문자 또는 값을 비워 둘 수 없습니다.");
         }
     }
 
-    private int exceptionNotEnteredBonusNumber() {
+    private int exceptionInvalidBonusNumber() {
         try {
             return Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException("[ERROR] 보너스 번호에 문자 또는 값을 비워 둘 수 없습니다.");
         }
     }
 }
