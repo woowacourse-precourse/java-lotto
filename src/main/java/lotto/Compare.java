@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Compare {
 	private int[] compareResult = {0, 0, 0, 0, 0};
+	private int sum;
 
 	public Compare() {}
 
@@ -63,5 +64,13 @@ public class Compare {
 		if(hitCount == 3) {
 			compareResult[4]++;
 		}
+	}
+
+	public void sumWinnings() {
+		sum = (2_000_000_000 * compareResult[0]) +
+				(30_000_000 * compareResult[1]) +
+				(1_500_000 * compareResult[2]) +
+				(50_000 * compareResult[3]) +
+				(5_000 * compareResult[4]);
 	}
 }
