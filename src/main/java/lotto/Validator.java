@@ -1,6 +1,8 @@
 package lotto;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Validator {
 
@@ -21,7 +23,12 @@ public class Validator {
     }
 
     private void validateValuesOfWinningNumbers(List<Integer> winningNumbers) {
-        // 숫자들은 1과 45 사이의 중복되지 않는 6개의 수이다.
+        Set<Integer> collection = winningNumbers.stream()
+                .filter(number -> 1 <= number && number <= 45)
+                .collect(Collectors.toSet());
+        if (collection.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호들의 값이 잘못되었습니다.");
+        }
     }
 
     public void validateBonusNumber(int bonusNumber) {
