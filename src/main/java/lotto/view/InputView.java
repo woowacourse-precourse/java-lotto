@@ -9,6 +9,11 @@ public class InputView {
         return getUserInput();
     }
 
+    public static String inputWinningLotto() {
+        System.out.println(LottoMessage.WINNING_LOTTO.getMessage());
+        return getUserInput();
+    }
+
     private static String getUserInput() {
         return Console.readLine();
     }

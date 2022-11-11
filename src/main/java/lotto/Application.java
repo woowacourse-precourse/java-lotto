@@ -26,5 +26,7 @@ public class Application {
 
         lottoSeller.sellLotteriesTo(customer);
         OutputView.printLottos(customer.getLottos());
+
+        String inputWinningLotto = InputView.inputWinningLotto();
     }
 }
