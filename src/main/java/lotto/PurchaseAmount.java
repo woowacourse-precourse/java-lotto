@@ -2,6 +2,7 @@ package lotto;
 
 public class PurchaseAmount {
     private static final int ZERO = 0;
+    private static final int THOUSAND_UNITS = 1000;
     private final int amount;
 
     public PurchaseAmount(String amount) {
@@ -18,6 +19,8 @@ public class PurchaseAmount {
             throw new IllegalArgumentException(ExceptionMessage.PURCHASE_AMOUNT_IS_NOT_NUMBER.getMessage());
         } else if (!isExceedZero(amount)) {
             throw new IllegalArgumentException(ExceptionMessage.PURCHASE_AMOUNT_IS_NOT_EXCEED_ZERO.getMessage());
+        } else if (!isThousandUnits(amount)) {
+            throw new IllegalArgumentException(ExceptionMessage.PURCHASE_AMOUNT_IS_NOT_THOUSAND_UNITS.getMessage());
         }
     }
 
@@ -31,6 +34,10 @@ public class PurchaseAmount {
 
     private boolean isExceedZero(String amount) {
         return convertStringToInt(amount) > ZERO;
+    }
+
+    private boolean isThousandUnits(String amount) {
+        return convertStringToInt(amount) % THOUSAND_UNITS == ZERO;
     }
 
     private int convertStringToInt(String amount) {
