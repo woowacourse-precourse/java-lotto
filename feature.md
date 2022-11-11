@@ -4,7 +4,7 @@
     - 장당 1000원
     - 구입 금액 / 1000
     - [ERROR] 구입 금액이 1000으로 나누어 떨어지지 않는 경우 -> `IllegalArgumentException`
-- [ ] 구매한 로또의 번호를 지정하는 기능
+- [x] 구매한 로또의 번호를 지정하는 기능
     - `Randoms.pickUniqueNumbersInRange(1, 45, 6);`
     - 1 ≤ n ≤ 45
     - 6개

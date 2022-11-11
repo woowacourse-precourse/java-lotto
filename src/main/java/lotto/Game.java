@@ -1,6 +1,9 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Game {
@@ -23,6 +26,7 @@ public class Game {
 
         // TODO: 구매 내역 출력
         System.out.println(Sentences.getPurchase(amount));
+        List<Lotto> lottos = getRandomLottos(amount);
         System.out.println();
 
         // TODO: 당첨 번호 입력
@@ -54,5 +58,16 @@ public class Game {
         String input = Console.readLine().trim();
         validation.validatePrice(input);
         return Integer.parseInt(input) / 1000;
+    }
+
+    private List<Lotto> getRandomLottos(int amount) {
+        List<Lotto> lottos = new ArrayList<>();
+        for (int i = 0; i < amount; i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(numbers);
+            System.out.println(numbers);
+            lottos.add(new Lotto(numbers));
+        }
+        return lottos;
     }
 }
