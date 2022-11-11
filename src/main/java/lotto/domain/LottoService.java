@@ -1,6 +1,9 @@
 package lotto.domain;
 
+import lotto.console.Input;
 import lotto.constant.Score;
+import lotto.view.InputView;
+import lotto.view.OutputView;
 
 import java.util.List;
 import java.util.Map;
@@ -17,6 +20,11 @@ public class LottoService {
             LottoScore.update(lottoNumbers, score, bonusNumber);
         });
         return scoreStore;
+    }
+
+    public int printAndInputMoney() {
+        InputView.setInputMoney();
+        return Input.inputMoney();
     }
 
     private int getScore(List<Integer> lottoNumbers, List<Integer> randomLottoNumber, int score) {
