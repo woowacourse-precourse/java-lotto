@@ -40,4 +40,16 @@ public class LottoNumberValidator {
         }
     }
 
+    // 3차 : 1~45 범위가 맞는지
+    public void checkingRange(final String inputValue){
+        String[] splitValues = inputValue.split(",");
+        for (String value : splitValues){
+            value = value.trim();
+            int number = Integer.parseInt(value);
+            if(number < 1 || number > 45){
+                throw new IllegalArgumentException(ErrorMessages.OUT_OF_BOUND.getMessage());
+            }
+        }
+    }
+
 }
