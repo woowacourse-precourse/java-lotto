@@ -13,7 +13,7 @@ public class UiController {
         statisticController();
     }
 
-    public void purchaseInputController() {
+    public Purchase purchaseInputController() {
         System.out.println("구입 금액을 입력해 주세요.");
         String purchaseAmount = Console.readLine();
         Purchase purchase = new Purchase(purchaseAmount);
@@ -22,9 +22,11 @@ public class UiController {
         for (Lotto lotto : purchase.getLotteries()) {
             lotto.printLotto();
         }
+
+        return purchase;
     }
 
-    public void winningInputController() {
+    public Winning winningInputController() {
         Winning winning = new Winning();
 
         System.out.println("\n당첨 번호를 입력해 주세요.");
@@ -34,6 +36,8 @@ public class UiController {
         System.out.println("\n보너스 번호를 입력해 주세요.");
         String bonusNumberInput = Console.readLine();
         winning.initBonusNumber(bonusNumberInput);
+
+        return winning;
     }
 
     static void statisticController() {
