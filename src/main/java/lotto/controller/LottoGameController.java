@@ -9,14 +9,15 @@ import java.util.Map;
 
 public class LottoGameController {
 
-    private static int lottoIssueCount;
+    private int lottoIssueCount;
+    private String lottoPurchaseAmount;
 
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
     LottoGameService lottoGameService = new LottoGameService();
 
     public void purchaseLotto() {
-        String lottoPurchaseAmount = inputView.inputLottoPurchaseAmount();
+        lottoPurchaseAmount = inputView.inputLottoPurchaseAmount();
         lottoIssueCount = lottoGameService.getLottoIssueCount(lottoPurchaseAmount);
         outputView.printPurchaseLottoCount(lottoIssueCount);
         generateLottoNumbers();
