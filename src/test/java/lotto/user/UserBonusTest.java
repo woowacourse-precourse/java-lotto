@@ -22,4 +22,18 @@ public class UserBonusTest {
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessageContaining(ExceptionMessage.ONLY_NUMBER.toString());
     }
+
+    @DisplayName("보너스는 1~45가 아니면 예외가 발생한다.")
+    @Test
+    void InputBonusByWrongRange() {
+        // given
+        String userAmount = "77";
+        InputStream in = new ByteArrayInputStream(userAmount.getBytes());
+        System.setIn(in);
+
+        // when then
+        assertThatThrownBy(User::inputBonusNumber)
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(ExceptionMessage.NUMBER_RANGE.toString());
+    }
 }
