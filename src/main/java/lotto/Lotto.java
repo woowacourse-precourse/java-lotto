@@ -4,6 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 
+import static lotto.ErrorMessage.DUPLICATED_LOTTO;
+import static lotto.ErrorMessage.MORE_THAN_SIX_LOTTO;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -15,13 +18,13 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호의 개수는 6개가 넘으면 안됩니다.");
+            throw new IllegalArgumentException(MORE_THAN_SIX_LOTTO.getStatus());
         }
     }
 
     private void checkLottoByDuplicatedNumber(List<Integer> numbers) {
         if (numbers.size() != numbers.stream().distinct().count()) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복될 수 없습니다.");
+            throw new IllegalArgumentException(DUPLICATED_LOTTO.getStatus());
         }
     }
 
