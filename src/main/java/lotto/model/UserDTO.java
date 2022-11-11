@@ -7,7 +7,7 @@ public class UserDTO {
     private int gameCount;
     private List<Lotto> games;
 
-    UserDTO(int purchaseAmount) {
+    public UserDTO(int purchaseAmount) {
         checkMoney(purchaseAmount);
         this.purchaseAmount = purchaseAmount;
         this.gameCount = calculateGameCount(this.purchaseAmount);
