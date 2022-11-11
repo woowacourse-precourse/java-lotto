@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -16,8 +17,17 @@ public class Lotto {
         }
     }
 
+    public int compare(Lotto compareLotto) {
+        return (int) IntStream.range(0, numbers.size())
+                .filter(i -> numbers.contains(compareLotto.numbers.get(i))).count();
+    }
+
+    public boolean hasBonusNumber(Integer bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
+
     @Override
     public String toString() {
-        return  "" + numbers;
+        return "" + numbers;
     }
 }

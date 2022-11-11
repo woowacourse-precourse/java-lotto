@@ -1,24 +1,21 @@
 package lotto;
 
+import lotto.type.Rank;
+
 import java.util.List;
 
-
 public class LottoGame {
-    //로또의 당첨결과를 계산하는 클래스
-    Integer buyPrice;
-    Integer bonusNumber;
-    Lotto winningLotto;
-    List<Lotto> publishedLottos;
+    private final Integer bonusNumber;
+    private final PublishedLottos publishedLottos;
 
-    public LottoGame(Integer buyPrice, Integer bonusNumber, Lotto winningLotto, List<Lotto> publishedLottos) {
-        this.buyPrice = buyPrice;
+    public LottoGame(Integer bonusNumber, Lotto winningLotto, List<Lotto> goingToPublishLottos) {
         this.bonusNumber = bonusNumber;
-        this.winningLotto = winningLotto;
-        this.publishedLottos = publishedLottos;
+        this.publishedLottos = new PublishedLottos(winningLotto, goingToPublishLottos);
     }
 
-    public void play() {
-    }
+    public LottoResult play() {
+        List<Rank> ranks = publishedLottos.calculateResultRanks(bonusNumber);
 
-    //private LottoResult calculateResult() {}
+        return new LottoResult(ranks);
+    }
 }
