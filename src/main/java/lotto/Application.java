@@ -16,6 +16,7 @@ public class Application {
 
     public static void main(String[] args) {
         // 로또 구입 금액 입력
+        // 구입 금액 예외사항 확인
         try {
             Input.inputCoin();
         } catch (IllegalArgumentException e) {
@@ -50,9 +51,9 @@ public class Application {
         compareRankInput();
         // 등수당 일치 개수 출력
         Output.outputLottoRank(rankOne, rankTwo, rankThree, rankFour, rankFive);
-        // 로또 총 수익 계산 기능 실행
+        // 로또 총 수익 계산 기능
         Calculator.revenue(rankOne, rankTwo, rankThree, rankFour, rankFive);
-        // 수익 계산 기능 실행
+        // 수익 계산 및 출력 기능
         Calculator.yield(Calculator.revenue, Input.coin);
     }
 
