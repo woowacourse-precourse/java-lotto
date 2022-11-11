@@ -27,10 +27,15 @@ public class LottoService {
     WinningLotto winningLotto;
 
     public void play() {
+        printPurchaseGuideMessage();
         setPlayerPurchaseLottos(purchaseLottos());
         setWinningLotto(inputWinningLotto());
         List<Rank> lottoResults = getResult();
         printResult(lottoResults);
+    }
+
+    private static void printPurchaseGuideMessage() {
+        System.out.println("구입금액을 입력해 주세요.");
     }
 
     private void printResult(List<Rank> lottoResults) {
@@ -73,9 +78,19 @@ public class LottoService {
     }
 
     WinningLotto inputWinningLotto() {
+        printInputWinningLottoGuideMessage();
         Lotto lotto = getWinningLotto();
+        printInputBonusNumberGuideMessage();
         int bonusNumber = inputBonusNumber();
         return new WinningLotto(lotto, bonusNumber);
+    }
+
+    private static void printInputWinningLottoGuideMessage() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
+
+    private static void printInputBonusNumberGuideMessage() {
+        System.out.println("보너스 번호를 입력해 주세요.");
     }
 
     private Lotto getWinningLotto() {
