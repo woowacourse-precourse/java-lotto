@@ -1,13 +1,9 @@
 package lotto;
 
 import org.assertj.core.api.Assertions;
-import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
 
