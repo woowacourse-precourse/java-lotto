@@ -1,7 +1,9 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.Mission;
 import lotto.domain.Money;
+import lotto.utils.ExceptionType;
 
 public class Input {
 
@@ -12,6 +14,11 @@ public class Input {
     }
 
     public int stringToInt(String target) {
-        return Integer.parseInt(target);
+        try {
+            return Integer.parseInt(target);
+        } catch (NumberFormatException e) {
+            Mission.endWithErrorMessage(ExceptionType.IS_NOT_NUMBER.getMessage());
+            throw new IllegalArgumentException(ExceptionType.IS_NOT_NUMBER.getMessage());
+        }
     }
 }

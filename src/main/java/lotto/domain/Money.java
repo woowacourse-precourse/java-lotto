@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import lotto.Mission;
+import lotto.utils.ExceptionType;
+
 public class Money {
     private static final int LOTTO_PRICE = 1000;
     private final int money;
@@ -16,13 +19,13 @@ public class Money {
 
     private void isLowerThan1000(int money) {
         if(money < LOTTO_PRICE) {
-            throw new IllegalArgumentException();
+            Mission.endWithErrorMessage(ExceptionType.LOWER_THAN_1000.getMessage());
         }
     }
 
     private void isDivideInto1000(int money) {
         if(money % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException();
+            Mission.endWithErrorMessage(ExceptionType.NOT_DIVISION_INTO_1000.getMessage());
         }
     }
 
