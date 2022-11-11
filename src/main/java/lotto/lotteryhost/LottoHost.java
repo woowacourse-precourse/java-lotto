@@ -5,8 +5,10 @@ import java.util.List;
 
 public class LottoHost {
 
-    public List<Integer> match(List<List<Integer>> generatedLottoNumbers, List<Integer> winningLottoNumbers) {
-        List<Integer> result = new ArrayList<>();
+    public List<Integer> matchNotContainBonusNumber(
+            List<List<Integer>> generatedLottoNumbers, List<Integer> winningLottoNumbers) {
+
+        List<Integer> MatchResultNotContainBonusNumber = new ArrayList<>();
 
         for (List<Integer> generatedLottoNumber : generatedLottoNumbers) {
             int count = 0;
@@ -15,8 +17,25 @@ public class LottoHost {
                         .filter(e -> e.equals(winningNumber))
                         .count();
             }
-            result.add(count);
+            MatchResultNotContainBonusNumber.add(count);
         }
-        return result;
+        return MatchResultNotContainBonusNumber;
     }
+    public List<Integer> matchContainBonusNumber(
+            List<List<Integer>> generatedLottoNumbers, List<Integer> winningLottoNumbers, int bonusNumber) {
+        List<Integer> MatchResultContainBonusNumber = new ArrayList<>();
+
+        for (List<Integer> generatedLottoNumber : generatedLottoNumbers) {
+            int count = 0;
+            for (Integer winningNumber : winningLottoNumbers) {
+                count += generatedLottoNumber.stream()
+                        .filter(e -> e.equals(winningNumber))
+                        .filter(e -> e.equals(bonusNumber))
+                        .count();
+            }
+            MatchResultContainBonusNumber.add(count);
+        }
+        return MatchResultContainBonusNumber;
+    }
+
 }
