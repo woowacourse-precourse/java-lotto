@@ -23,8 +23,9 @@ public class LottoService {
 
     public Lotto createLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTO_MINIMUN_NUM_SIZE, LOTTO_MAXIMUN_NUM_SIZE, LOTTO_NUMBER_SIZE);
-        numbers.sort(Comparator.naturalOrder());
-        return new Lotto(numbers);
+        //따로 numbers.sort or Collections.sort를 할 경우 Test에서 에러 출력, 따라서 TreeSet로 구현
+        Set<Integer> lottoNumbers = new TreeSet<>(numbers);
+        return new Lotto(new ArrayList<>(lottoNumbers));
     }
 
     public List<Lotto> purchaseLottos(Integer ticket) {
