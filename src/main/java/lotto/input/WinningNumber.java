@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WinningNumber {
-    public void getAnswer() {
+    public Lotto getAnswer() {
         List<Integer> answerNumbers = new ArrayList<>();
         String input = Console.readLine();
 
@@ -15,6 +15,6 @@ public class WinningNumber {
             int integer = Integer.parseInt(number);
             answerNumbers.add(integer);
         }
-        new Lotto(answerNumbers);
+        return new Lotto(answerNumbers);
     }
 }
