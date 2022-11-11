@@ -109,7 +109,7 @@ public class Game {
 
     private void printResult() {
         for (int i = 0; i < 5; i++) {
-//            String result = Sentences.getResult(rankings.get(i), results.get(i));
+//            String result = Sentences.getResult(rankings.get(i), results.et(i));
             Winning ranking = rankings.get(i);
             String result = ranking.toString(results.get(i));
             System.out.println(result);
@@ -127,9 +127,7 @@ public class Game {
         int prize = 0;
         for (int i = 0; i < 5; i++) {
             Integer result = results.get(i);
-            if (result != 0) {
-                prize += rankings.get(i).prize;
-            }
+            prize += rankings.get(i).prize * result;
         }
         return prize;
     }
