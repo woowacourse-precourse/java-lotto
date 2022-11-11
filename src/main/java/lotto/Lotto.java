@@ -39,15 +39,4 @@ public class Lotto {
             }
         }
     }
-
-    public int calculateQuantity(int money) {
-        validateMonetaryUnit(money);
-        return money / 1000;
-    }
-
-    private void validateMonetaryUnit(int money) {
-        if (money % 1000 != 0) {
-            throw new IllegalArgumentException();
-        }
-    }
 }
