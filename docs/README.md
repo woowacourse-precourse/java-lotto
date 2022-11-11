@@ -10,8 +10,8 @@
   - [x] 사용자가 입력한 당첨 번호가 6개가 아닐 경우 IllegalArguemntException 예외 처리 구현 - checkBuyerInputIsNotSixNumbers()
 
 - [ ] 로또 구매자 - Class LottoBuyer
-  - [x] 로또를 구매할 돈을 입력 구현
-  - [ ] 로또의 당첨 번호를 입력 구현
+  - [x] 로또를 구매할 돈을 입력 구현 - inputMoney();
+  - [x] 로또의 당첨 번호를 입력 구현 - inputLottoNumbers();
   - [ ] 로또의 보너스 번호를 입력 구현
 
 - [ ] 복권 - Class Lotto
