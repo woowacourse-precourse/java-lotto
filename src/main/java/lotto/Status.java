@@ -10,4 +10,8 @@ public class Status {
 	public void initStatus() {
 		status = "ready";
 	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 }
