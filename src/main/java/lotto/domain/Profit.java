@@ -14,7 +14,7 @@ public class Profit {
     }
 
     public void addPrice(long price){
-
+        this.price += price;
     }
 
     public float getProfit(){return 0;}
