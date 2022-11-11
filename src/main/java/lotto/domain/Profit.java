@@ -5,13 +5,17 @@ public class Profit {
     private long payment;
     private long price;
 
-    public Profit(){}
+    public Profit(){
+        price = 0;
+    }
 
     public void checkPayment(long payment){
         this.payment = payment;
     }
 
-    public void addPrice(long price){}
+    public void addPrice(long price){
+
+    }
 
     public float getProfit(){return 0;}
 
