@@ -56,4 +56,14 @@ class ManagerTest {
         assertThat(result).isEqualTo(expect);
     }
 
+    @Test
+    void isCorrectBonusTest() {
+        List<Integer> userLotto = new ArrayList<>(List.of(6,5,4,3,2,1));
+        manager.setBonusNumber(1);
+
+        boolean result = manager.isCorrectBonus(userLotto);
+
+        assertThat(result).isEqualTo(true);
+    }
+
 }
