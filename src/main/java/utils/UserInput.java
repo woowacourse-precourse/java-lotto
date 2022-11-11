@@ -18,13 +18,13 @@ public class UserInput {
         return calculateNumOfLotto(Integer.parseInt(price));
     }
 
-    public static LottoNumber inputWinningNumbers() {
+    public static void inputWinningNumbers() {
         System.out.println(INPUT_WINNING_NUM_MESSAGE);
         String winningNumbers = Console.readLine();
 
         System.out.println(INPUT_BONUS_NUM_MESSAGE);
         String bonusNumber = Console.readLine();
-        return new LottoNumber(winningNumbers, bonusNumber);
+        new LottoNumber(winningNumbers, bonusNumber);
     }
 
     private static void validPriceOfLotto(String price) {
