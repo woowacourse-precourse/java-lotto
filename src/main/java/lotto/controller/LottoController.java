@@ -3,11 +3,13 @@ package lotto.controller;
 import java.util.List;
 
 import lotto.Lotto;
+import lotto.dto.WinningDto;
 import lotto.service.LottoService;
 import lotto.system.holder.ConverterHolder;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 import lotto.vo.LottoAmount;
+import lotto.vo.Winning;
 
 public class LottoController {
 	private final InputView inputView;
@@ -29,7 +31,10 @@ public class LottoController {
 		List<Lotto> lottos = lottoService.createLottos(lottoAmount);
 		outputView.printLottos(lottos);
 
-		String winning = inputView.getWinning();
+		String winningNumber = inputView.getWinning();
 		String bonus = inputView.getBonus();
+		WinningDto winningDto = WinningDto.of(winningNumber, bonus);
+
+		Winning winning = winningDto.toWinning();
 	}
 }

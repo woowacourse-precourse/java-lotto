@@ -5,10 +5,12 @@ import java.util.List;
 import lotto.controller.LottoController;
 import lotto.service.LottoService;
 import lotto.system.converter.StringToLottoAmountConverter;
+import lotto.system.converter.WinningDtoToWinningConverter;
 import lotto.system.holder.ConverterHolder;
 import lotto.system.holder.ValidationHolder;
 import lotto.system.validator.IntegerListToLottoValidator;
 import lotto.system.validator.StringToLottoAmountValidator;
+import lotto.system.validator.WinningDtoToWinningValidator;
 import lotto.view.InputView;
 import lotto.view.InputViewImpl;
 import lotto.view.OutputView;
@@ -40,10 +42,14 @@ public class LottoApplication {
 
 	private void initializeValidators() {
 		ValidationHolder.initializeValidators(List.of(
-			new StringToLottoAmountValidator(),
-			new IntegerListToLottoValidator()
+				new StringToLottoAmountValidator(),
+				new IntegerListToLottoValidator(),
+				new WinningDtoToWinningValidator()
 		));
-		ConverterHolder.initializeConverters(List.of(new StringToLottoAmountConverter()));
+		ConverterHolder.initializeConverters(List.of(
+				new StringToLottoAmountConverter(),
+				new WinningDtoToWinningConverter()
+		));
 	}
 
 	private void doAfter() {
