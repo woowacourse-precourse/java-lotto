@@ -1,25 +1,22 @@
 package lotto.ui;
 
+import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class InputData {
-    private static Scanner scanner = new Scanner(System.in);
 
     private String readInput() {
-        String userInput = scanner.nextLine();
+        String userInput = Console.readLine();
 
         return userInput;
     }
 
     private int readPurchaseAmount() {
         System.out.println(Messages.INPUT_MONEY.getMessage());
-        String amount = scanner.nextLine();
+        String amount = readInput();
 
         return Integer.parseInt(amount);
     }
