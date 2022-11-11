@@ -135,6 +135,23 @@ class LottoTest {
         }
     }
 
+    @Nested
+    class RefereeTest{
 
+        private Referee referee;
+        @BeforeEach
+        void setUp(){
+            referee = new Referee();
+        }
+
+        @DisplayName("로또 번호와 당첨 번호, 보너스 번호로 당첨결과를 구할 수 있는지 테스트")
+        @Test
+        void 로또_번호_당첨_번호_보너스_번호_결과_테스트(){
+            referee.createLottoResult(5, true);
+            referee.createLottoResult(5, true);
+            Map<LottoRank, Integer> lottoResultCount = referee.getLottoResultCount();
+            assertThat(lottoResultCount).containsEntry(LottoRank.FIVE_PLUS_BONUS_CORRECT, 2);
+        }
+    }
 
 }
