@@ -2,7 +2,7 @@ package lotto.domain;
 
 import lotto.config.InputConfig;
 
-public enum Winner {
+public enum Rank {
     FIFTH(InputConfig.LOTTO_NUMBER_COUNT-3,  5000),
     FOURTH(InputConfig.LOTTO_NUMBER_COUNT-2, 50000),
     THIRD(InputConfig.LOTTO_NUMBER_COUNT-1,  1500000),
@@ -13,7 +13,7 @@ public enum Winner {
     private int correctness;
     private int prizeMoney;
 
-    Winner(int correctness, int prizeMoney) {
+    Rank(int correctness, int prizeMoney) {
         this.correctness = correctness;
         this.prizeMoney = prizeMoney;
     }

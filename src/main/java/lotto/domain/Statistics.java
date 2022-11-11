@@ -9,7 +9,7 @@ import java.util.*;
 public class Statistics {
     private final Lotto prizeLotto;
     private final int bonusNumber;
-    private Map<Winner, Integer> result;
+    private Map<Rank, Integer> result;
 
     public Statistics(Lotto prizeLotto, int bonusNumber) {
         this.prizeLotto = prizeLotto;
@@ -18,16 +18,16 @@ public class Statistics {
     }
 
     private void initResult() {
-        Map<Winner, Integer> tmp = new EnumMap<>(Winner.class);
-        for (Winner winner : Winner.values()) {
-            tmp.put(winner, 0);
+        Map<Rank, Integer> tmp = new EnumMap<>(Rank.class);
+        for (Rank rank : Rank.values()) {
+            tmp.put(rank, 0);
         }
         this.result = tmp;
     }
 
     long getTotalProfit() {
         long total = 0;
-        for (Map.Entry<Winner, Integer> entry : result.entrySet()) {
+        for (Map.Entry<Rank, Integer> entry : result.entrySet()) {
             int prizeMoney = entry.getKey().getPrizeMoney();
             total += prizeMoney * entry.getValue();
         }
@@ -36,12 +36,12 @@ public class Statistics {
 
     private void matchLotto(List<Lotto> purchased) {
         initResult();
-        Map<Winner, Integer> ranked = LottoComparator.compareToPrize(purchased, prizeLotto, bonusNumber);
+        Map<Rank, Integer> ranked = LottoComparator.compareToPrize(purchased, prizeLotto, bonusNumber);
         ranked.forEach((key, value) -> result.merge(key, value, (v1, v2) -> v1 + v2));
-        result.remove(Winner.NONE);
+        result.remove(Rank.NONE);
     }
 
-    public Map<Winner, Integer> getResult(List<Lotto> purchased) {
+    public Map<Rank, Integer> getResult(List<Lotto> purchased) {
         matchLotto(purchased);
         return result;
     }

@@ -1,7 +1,7 @@
 package lotto.service;
 
 import lotto.domain.Lotto;
-import lotto.domain.Winner;
+import lotto.domain.Rank;
 import lotto.util.LottoComparator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,8 +21,8 @@ class LottoComparatorTest {
     void get_lotto_rank_fifth() {
         List<Integer> mock = List.of(1, 2, 3, 21, 22, 23);
         Lotto lotto = new Lotto(mock);
-        Winner result = comparator.forTest_getLottoRank(lotto, prizeLotto, bonusNumber);
-        assertThat(result).isEqualTo(Winner.FIFTH);
+        Rank result = comparator.forTest_getLottoRank(lotto, prizeLotto, bonusNumber);
+        assertThat(result).isEqualTo(Rank.FIFTH);
     }
 
     @Test
@@ -30,8 +30,8 @@ class LottoComparatorTest {
     void get_lotto_rank_fourth() {
         List<Integer> mock = List.of(1, 2, 3, 4, 22, 23);
         Lotto lotto = new Lotto(mock);
-        Winner result = comparator.forTest_getLottoRank(lotto, prizeLotto, bonusNumber);
-        assertThat(result).isEqualTo(Winner.FOURTH);
+        Rank result = comparator.forTest_getLottoRank(lotto, prizeLotto, bonusNumber);
+        assertThat(result).isEqualTo(Rank.FOURTH);
     }
 
     @Test
@@ -39,8 +39,8 @@ class LottoComparatorTest {
     void get_lotto_rank_third() {
         List<Integer> mock = List.of(1, 2, 3, 4, 5, 23);
         Lotto lotto = new Lotto(mock);
-        Winner result = comparator.forTest_getLottoRank(lotto, prizeLotto, bonusNumber);
-        assertThat(result).isEqualTo(Winner.THIRD);
+        Rank result = comparator.forTest_getLottoRank(lotto, prizeLotto, bonusNumber);
+        assertThat(result).isEqualTo(Rank.THIRD);
     }
 
     @Test
@@ -48,8 +48,8 @@ class LottoComparatorTest {
     void get_lotto_rank_second() {
         List<Integer> mock = List.of(1, 2, 3, 4, 5, 10);
         Lotto lotto = new Lotto(mock);
-        Winner result = comparator.forTest_getLottoRank(lotto, prizeLotto, bonusNumber);
-        assertThat(result).isEqualTo(Winner.SECOND);
+        Rank result = comparator.forTest_getLottoRank(lotto, prizeLotto, bonusNumber);
+        assertThat(result).isEqualTo(Rank.SECOND);
     }
 
     @Test
@@ -57,8 +57,8 @@ class LottoComparatorTest {
     void get_lotto_rank_first() {
         List<Integer> mock = List.of(1, 2, 3, 4, 5, 6);
         Lotto lotto = new Lotto(mock);
-        Winner result = comparator.forTest_getLottoRank(lotto, prizeLotto, bonusNumber);
-        assertThat(result).isEqualTo(Winner.FIRST);
+        Rank result = comparator.forTest_getLottoRank(lotto, prizeLotto, bonusNumber);
+        assertThat(result).isEqualTo(Rank.FIRST);
     }
 
     @Test
@@ -66,8 +66,8 @@ class LottoComparatorTest {
     void get_lotto_rank_none() {
         List<Integer> mock = List.of(21, 22, 23, 24, 25, 26);
         Lotto lotto = new Lotto(mock);
-        Winner result = comparator.forTest_getLottoRank(lotto, prizeLotto, bonusNumber);
-        assertThat(result).isEqualTo(Winner.NONE);
+        Rank result = comparator.forTest_getLottoRank(lotto, prizeLotto, bonusNumber);
+        assertThat(result).isEqualTo(Rank.NONE);
     }
 
 }

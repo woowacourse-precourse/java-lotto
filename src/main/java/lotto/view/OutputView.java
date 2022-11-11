@@ -1,7 +1,7 @@
 package lotto.view;
 
 import lotto.domain.Lotto;
-import lotto.domain.Winner;
+import lotto.domain.Rank;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -37,13 +37,13 @@ public class OutputView {
 
     }
 
-    void printStatisticsByRank(Winner winner, int winCount) {
+    void printStatisticsByRank(Rank rank, int winCount) {
         try {
             String raw = RANK_MESSAGE;
-            if (winner.equals(Winner.SECOND)) {
+            if (rank.equals(Rank.SECOND)) {
                 raw = SECOND_RANK_MESSAGE;
             }
-            String formatted = String.format(raw, winner.getCorrectnessCount(), winner.getPrizeMoneyToString(), winCount);
+            String formatted = String.format(raw, rank.getCorrectnessCount(), rank.getPrizeMoneyToString(), winCount);
             bw.write(formatted);
             bw.newLine();
         } catch (IOException e) {

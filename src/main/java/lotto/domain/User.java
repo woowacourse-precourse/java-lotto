@@ -25,7 +25,7 @@ public class User {
         return profitPercent;
     }
 
-    public Map<Winner, Integer> getResult() {
+    public Map<Rank, Integer> getResult() {
         return statistics.getResult(purchasedLotto);
     }
 

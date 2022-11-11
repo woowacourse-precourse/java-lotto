@@ -3,7 +3,7 @@ package lotto.service;
 import lotto.domain.Lotto;
 import lotto.domain.Statistics;
 import lotto.domain.User;
-import lotto.domain.Winner;
+import lotto.domain.Rank;
 import lotto.util.LottoGenerator;
 import lotto.view.ViewController;
 
@@ -44,7 +44,7 @@ public class LottoService {
     }
 
     private void getStatisticsResult() {
-        Map<Winner, Integer> result = user.getResult();
+        Map<Rank, Integer> result = user.getResult();
         viewController.printStatisticsByRank(result);
     }
 

@@ -3,7 +3,7 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.config.InputConfig;
 import lotto.domain.Lotto;
-import lotto.domain.Winner;
+import lotto.domain.Rank;
 import lotto.util.InputMapper;
 
 import java.util.List;
@@ -23,13 +23,13 @@ public class ViewController {
         this.inputMapper = new InputMapper();
     }
 
-    public void printStatisticsByRank(Map<Winner, Integer> result) {
+    public void printStatisticsByRank(Map<Rank, Integer> result) {
         outputView.printStatisticStart();
 
-        for (Map.Entry<Winner, Integer> entry : result.entrySet()) {
-            Winner winner = entry.getKey();
+        for (Map.Entry<Rank, Integer> entry : result.entrySet()) {
+            Rank rank = entry.getKey();
             int count = entry.getValue();
-            outputView.printStatisticsByRank(winner, count);
+            outputView.printStatisticsByRank(rank, count);
         }
         outputView.flush();
     }
