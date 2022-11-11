@@ -25,7 +25,7 @@ public class Lotto {
         List<Integer> numbers = new ArrayList<>();
 
         Arrays.stream(StringNumbers.split(","))
-                .sorted().forEach(s -> numbers.add(castInt(s)));
+                .sorted().forEach(number -> numbers.add(castInt(number)));
 
         validate(numbers);
 

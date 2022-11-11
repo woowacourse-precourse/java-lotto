@@ -44,7 +44,7 @@ public class LottoList {
         sb.append(lottoList.size()).append("개를 구매했습니다.");
 
         lottoList.stream().map(Lotto::getNumbers)
-                .forEach(integers -> sb.append("\n").append(integers));
+                .forEach(numbers -> sb.append("\n").append(numbers));
 
         return sb.toString();
     }
