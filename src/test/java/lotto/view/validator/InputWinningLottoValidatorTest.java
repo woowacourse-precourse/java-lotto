@@ -53,4 +53,13 @@ class InputWinningLottoValidatorTest {
                 .isThrownBy(() -> InputWinningLottoValidator.validate(input))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
+    
+    @DisplayName("예외 처리 : 공백 입력 시")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {"1,2,3, ,5,6", "1,2,3,4,5,6 ", " 1,2,3,4,5,6", "1,2,3,4,5, "})
+    void spaceCharactersInputException(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> InputWinningLottoValidator.validate(input))
+                .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
+    }
 }
