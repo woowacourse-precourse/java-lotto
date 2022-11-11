@@ -1,5 +1,8 @@
 package lotto;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.List;
 
 import static java.util.Map.entry;
@@ -73,5 +76,22 @@ public class LottoWinTest {
                 List.of(1, 2, 3, 4, 5, 6), 7);
         assertThat(lottoPrizes.getPrizesMap()).contains(entry("5th", 2));
     }
-
+    @DisplayName("중복된 보너스 번호가 들어오면 에러 메세지가 출력되고 에러가 발생한다.")
+    @Test
+    void duplicatedBonusNumberForPrint() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        assertThatThrownBy(() -> new LottoWin(List.of(List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 6))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThat(out.toString()).isEqualTo("[ERROR] 로또 번호는 중복되지 않아야 합니다.");
+    }
+    @DisplayName("1~45 범위에서 벗어난 보너스 번호가 들어오면 메세지가 출력되고 에러가 발생한다")
+    @Test
+    void outOfBoundBonusNumberForPrint() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        assertThatThrownBy(() -> new LottoWin(List.of(List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 47))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThat(out.toString()).isEqualTo("[ERROR] 로또 번호는 1부터 45사이의 숫자여야 합니다.");
+    }
 }
