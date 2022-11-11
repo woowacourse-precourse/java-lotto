@@ -65,8 +65,12 @@ public class Lotto {
         validateByOverlapForAddBonusNumber(number);
     }
 
-    public void addNumber(int number) {
+    public void addBonusNumber(int number) {
         validateForBonusNumber(number);
         this.numbers.add(number);
     }
+
+
+
+
 }

@@ -39,7 +39,7 @@ class LottoTest {
     void addBonusNumberByOverRange() {
         Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
 
-        assertThatThrownBy(() -> lotto.addNumber(46))
+        assertThatThrownBy(() -> lotto.addBonusNumber(46))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ExceptionType.NOT_WITHIN_THE_RANGE.getMessage());
     }
@@ -49,7 +49,7 @@ class LottoTest {
     void addBonusNumberByDuplicatedNumber() {
         Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
 
-        assertThatThrownBy(() -> lotto.addNumber(3))
+        assertThatThrownBy(() -> lotto.addBonusNumber(3))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ExceptionType.HAVE_OVERLAP.getMessage());
     }
