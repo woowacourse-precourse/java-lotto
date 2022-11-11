@@ -21,4 +21,11 @@ public class InputView {
         String winnigNumbers = Console.readLine();
         return winnigNumbers;
     }
+
+    public static String bonusNumber() {
+        System.out.println(BONUS_NUMBER_MESSAGE);
+
+        String bonusNumber = Console.readLine();
+        return bonusNumber;
+    }
 }
