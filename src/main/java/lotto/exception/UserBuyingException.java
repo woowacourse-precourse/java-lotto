@@ -1,5 +1,7 @@
 package lotto.exception;
 
+import java.util.NoSuchElementException;
+
 public class UserBuyingException {
     private final static int LOTTO_PRICE = 1000;
 
@@ -18,7 +20,8 @@ public class UserBuyingException {
     public static void validIsNumber(String input) {
         for (int i = 0; i < input.length(); i++) {
             if (!Character.isDigit(input.charAt(i))) {
-                throw new IllegalArgumentException("[ERROR] 입력은 숫자만 가능합니다.");
+                System.out.println("[ERROR] 입력은 숫자만 가능합니다.");
+                throw new NoSuchElementException();
             }
         }
     }
