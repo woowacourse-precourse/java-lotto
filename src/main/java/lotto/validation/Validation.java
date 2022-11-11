@@ -16,4 +16,10 @@ public final class Validation {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void validateLengthOfList(List<Integer> list, int length){
+        if(list.size() != length){
+            throw new IllegalArgumentException();
+        }
+    }
 }
