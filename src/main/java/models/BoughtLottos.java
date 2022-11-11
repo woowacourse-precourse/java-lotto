@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoughtLottos {
-    private List<Lotto> lottosData;
+    private List<Lotto> lottos;
 
     public BoughtLottos(int amount) {
-        lottosData = createLottos(amount);
+        lottos = createLottos(amount);
     }
 
     private List<Lotto> createLottos(int amount) {
@@ -25,20 +25,22 @@ public class BoughtLottos {
     }
 
     private Lotto createLottoNumbers() {
-        return new Lotto(Randoms.pickUniqueNumbersInRange(LottoConstant.NUMBER_START, LottoConstant.NUMBER_END
-                , LottoConstant.NUMBERS_SIZE));
+        //immutable 오류로 인해 new로 생성하고 반환. (테스트 코드 오류 1 해결)
+        List<Integer> lottoNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(LottoConstant.NUMBER_START
+                , LottoConstant.NUMBER_END, LottoConstant.NUMBERS_SIZE));
+        return new Lotto(lottoNumbers);
     }
 
-    public List<Lotto> getLottosData() {
-        return lottosData;
+    public List<Lotto> getLottos() {
+        return lottos;
     }
 
     public int getAmount() {
-        return lottosData.size();
+        return lottos.size();
     }
 
     public void printLottoList() {
-        System.out.println(String.format("%d개를 구매했습니다.", lottosData.size()));
-        lottosData.forEach((lotto) -> System.out.println(lotto.getNumbers()));
+        System.out.println(String.format("%d개를 구매했습니다.", lottos.size()));
+        lottos.forEach((lotto) -> System.out.println(lotto.getNumbers()));
     }
 }
