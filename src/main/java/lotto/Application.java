@@ -35,6 +35,7 @@ public class Application {
         }
         // 보너스 번호 입력
         Input.inputBonusNumber();
+        // 보너스 번호 예외사항 확인
         try {
             Input.bonusRangeError(Input.lottoBonusNumber);
             Input.bonusDupleError(Input.lottoNumber, Input.lottoBonusNumber);

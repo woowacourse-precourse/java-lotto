@@ -29,17 +29,18 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    private void duplicatedValidate(List<Integer> numbers){
+    private void duplicatedValidate(List<Integer> numbers) {
         Set<Integer> set = new HashSet<>(numbers);
         List<Integer> newNumbers = new ArrayList<Integer>(set);
-        if(newNumbers.size() < 6){
+        if (newNumbers.size() < 6) {
             System.out.println(numberRepeatErrorMessage);
             throw new IllegalArgumentException();
         }
     }
-    private void rangeValidate(List<Integer> numbers){
-        for(int item : numbers){
-            if(item < 0 || item > 45){
+
+    private void rangeValidate(List<Integer> numbers) {
+        for (int item : numbers) {
+            if (item < 0 || item > 45) {
                 System.out.println(numberRangeErrorMessage);
                 throw new IllegalArgumentException();
             }

@@ -26,7 +26,7 @@ public class NumberCompare {
     public static int compareCount(List<Integer> numbers, List<Integer> randomNumbers) {
         int count = 0;
         // numbers 와 randomNumbers 의 일치 개수 확인
-        for(int i=0; i<6; i++){
+        for (int i = 0; i < 6; i++) {
             if (randomNumbers.contains(numbers.get(i))) {
                 count += 1;
             }
@@ -45,13 +45,13 @@ public class NumberCompare {
     public static Rank compareRank(int count, int bonusCount) {
         List<Rank> ranks = Arrays.asList(Rank.FIVE, Rank.FOUR, Rank.THREE, Rank.ONE);
         // 2등인 경우
-        if(count == 5 && bonusCount == 1){
+        if (count == 5 && bonusCount == 1) {
             return Rank.TWO;
         }
         // 2등이 아닌 경우
-        for(int i=6; i>2; i--){
-            if(i == count){
-                return ranks.get(i-3);
+        for (int i = 6; i > 2; i--) {
+            if (i == count) {
+                return ranks.get(i - 3);
             }
         }
         return Rank.LOSE;

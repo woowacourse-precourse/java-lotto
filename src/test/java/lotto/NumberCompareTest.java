@@ -15,6 +15,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 /**
  * packageName : lotto
  * fileName : NumberCompareTest
@@ -34,9 +35,9 @@ public class NumberCompareTest {
     @EnumSource(value = Rank.class)
     void NumberCompareTest() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
-        List<Integer> randomNumbers = Arrays.asList(1,2,3,4,5,11);
+        List<Integer> randomNumbers = Arrays.asList(1, 2, 3, 4, 5, 11);
         int bonusNumber = 11;
-        assertThat(NumberCompare.compare(numbers,randomNumbers,bonusNumber))
+        assertThat(NumberCompare.compare(numbers, randomNumbers, bonusNumber))
                 .isEqualTo(Rank.TWO);
     }
 }

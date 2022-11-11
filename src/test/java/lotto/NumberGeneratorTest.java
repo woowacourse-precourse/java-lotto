@@ -1,4 +1,5 @@
 package lotto;
+
 import lotto.domain.NumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueN
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+
 /**
  * packageName : lotto
  * fileName : NumberGeneratorTest
@@ -23,13 +25,13 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 public class NumberGeneratorTest {
     @DisplayName("랜덤 번호를 부여하고 그 번호를 출력")
     @Test
-    void createRandomNumberTest(){
+    void createRandomNumberTest() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     assertThat(NumberGenerator.createRandomNumber())
                             .contains(8, 21, 23, 41, 42, 43);
-            },
-            List.of(8, 21, 23, 41, 42, 43)
+                },
+                List.of(8, 21, 23, 41, 42, 43)
         );
     }
 }

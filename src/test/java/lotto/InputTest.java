@@ -28,30 +28,31 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class InputTest {
     @DisplayName("문자를 입력하면 오류가 발생한다")
     @Test
-    void coinStringErrorTest(){
+    void coinStringErrorTest() {
         assertThatThrownBy(() -> Input.coinStringError("1000j"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
     @DisplayName("1000원 단위 미만의 금액을 입력시 오류가 발생한다")
     @Test
-    void inputCoinTest(){
+    void inputCoinTest() {
         assertThatThrownBy(() -> Input.coinError(11100))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("당첨 번호를 입력시 배열로 변환한다")
     @Test
-    void inputWinningNumberToArrayTest(){
+    void inputWinningNumberToArrayTest() {
         String input_num = "1,2,3,4,5,6";
         InputStream in = new ByteArrayInputStream(input_num.getBytes());
         System.setIn(in);
         List<Integer> result = Input.inputWinningNumber();
-        assertThat(result).contains(1,2,3,4,5,6);
+        assertThat(result).contains(1, 2, 3, 4, 5, 6);
     }
 
     @DisplayName("보너스 번호 입력 여부 테스트")
     @Test
-    void inputBonusNumberInputTest(){
+    void inputBonusNumberInputTest() {
         String input_num = "1";
         InputStream in = new ByteArrayInputStream(input_num.getBytes());
         System.setIn(in);
@@ -61,16 +62,16 @@ public class InputTest {
 
     @DisplayName("보너스 범위에러가 생긴다")
     @Test
-    void bonusRangeErrorTest(){
+    void bonusRangeErrorTest() {
         assertThatThrownBy(() -> Input.bonusRangeError(46))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("보너스 당첨 번호와 중복 에러가 생긴다")
     @Test
-    void bonusDupleErrorTest(){
-        List<Integer> testList = Arrays.asList(1,2,3,4,5,6);
-        assertThatThrownBy(() -> Input.bonusDupleError(testList,1))
+    void bonusDupleErrorTest() {
+        List<Integer> testList = Arrays.asList(1, 2, 3, 4, 5, 6);
+        assertThatThrownBy(() -> Input.bonusDupleError(testList, 1))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

@@ -45,12 +45,13 @@ public class Input {
         System.out.println(buyCount + "개를 구매했습니다.");
     }
 
-    public static void coinStringError(String input){
-        if(!Pattern.matches(errorPattern, input)) {
+    public static void coinStringError(String input) {
+        if (!Pattern.matches(errorPattern, input)) {
             System.out.println(inputErrorMessage);
             throw new IllegalArgumentException();
         }
     }
+
     public static void coinError(int coin) {
         if (coin % 1000 != 0) {
             System.out.println(coinErrorMessage);
@@ -74,14 +75,16 @@ public class Input {
         lottoBonusNumber = Integer.parseInt(Console.readLine());
         return lottoBonusNumber;
     }
-    public static void bonusRangeError(int bonusNumber){
-        if(bonusNumber < 0 || bonusNumber > 45){
+
+    public static void bonusRangeError(int bonusNumber) {
+        if (bonusNumber < 0 || bonusNumber > 45) {
             System.out.println(bonusNumberRangeError);
             throw new IllegalArgumentException();
         }
     }
-    public static void bonusDupleError(List<Integer> lottoNumber, int lottoBonusNumber){
-        if(lottoNumber.contains(lottoBonusNumber)){
+
+    public static void bonusDupleError(List<Integer> lottoNumber, int lottoBonusNumber) {
+        if (lottoNumber.contains(lottoBonusNumber)) {
             System.out.println(bonusNumberDupleError);
             throw new IllegalArgumentException();
         }

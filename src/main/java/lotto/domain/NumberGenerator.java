@@ -18,6 +18,7 @@ import java.util.List;
  */
 public class NumberGenerator {
     public static List<Integer> randomNumbers = new ArrayList<>();
+
     public static List<Integer> createRandomNumber() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         randomNumbers = numbers;
