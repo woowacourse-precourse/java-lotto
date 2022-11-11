@@ -15,12 +15,7 @@ public class Input {
         return new Money(convertedInput);
     }
 
-    public Lotto getWinningLotto() {
-        Lotto winningLotto = getWinningLottoNumbers();
-        return winningLotto;
-    }
-
-    public Lotto getWinningLottoNumbers() {
+    public Lotto getWinningNumbers() {
         String input = Console.readLine();
         List<Integer> numbers = stringToIngerListByComma(input);
         return new Lotto(numbers);
@@ -42,5 +37,11 @@ public class Input {
             returns.add(stringToInt(number));
         }
         return returns;
+    }
+
+    public void getWinningBonusNumber(Lotto lotto) {
+        String input = Console.readLine();
+        int bonusNumber = stringToInt(input);
+        lotto.addNumber(bonusNumber);
     }
 }
