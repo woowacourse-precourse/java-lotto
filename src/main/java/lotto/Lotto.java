@@ -19,10 +19,10 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
     public void printLotto() {
-        System.out.println(this.numbers);
+        System.out.println(numbers);
     }
 
     public void asendingOrderSort() {
-        Collections.sort(this.numbers);
+        Collections.sort(numbers);
     }
 }
