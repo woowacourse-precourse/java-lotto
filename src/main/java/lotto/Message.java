@@ -1,5 +1,9 @@
 package lotto;
 
+import java.text.DecimalFormat;
+import java.util.List;
+import java.util.Map;
+
 public class Message {
   public static void requestInputMoneyMessage() {
     System.out.println("구입금액을 입력해 주세요.");
@@ -23,5 +27,19 @@ public class Message {
 
   public static void line() {
     System.out.println("---");
+  }
+
+  public static void prizeStatic(Map<Integer, Integer> maps) {
+    Ranking[] values = Ranking.values();
+    DecimalFormat decimalFormat = new DecimalFormat();
+    for (Ranking value : values) {
+      System.out.print(value.getRank() + "개 일치");
+      if (value.getRank() == 7) {
+        System.out.print(", 보너스 볼 일치");
+      }
+      System.out.println(" (" +
+              decimalFormat.format(value.getMoney()) + "원) - " +
+              maps.getOrDefault(value.getRank(), 0) + "개");
+    }
   }
 }

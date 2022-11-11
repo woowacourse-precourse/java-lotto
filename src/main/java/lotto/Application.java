@@ -22,7 +22,7 @@ public class Application { // 패키지 분리
         WinningNumber winningNumber = new WinningNumber(UserNumberScan.requestValue());
         List<Integer> numbers = winningNumber.getNumber();
         Message.requestBonusNumberMessage();
-        int validBonusNumber = BonusNumber.isValidBonusNumber(UserNumberScan.requestValue());
+        int validBonusNumber = BonusNumber.isValidBonusNumber(UserNumberScan.requestValue(), numbers);
         MatchNumbers matchNumbers = new MatchNumbers();
 
         for (int j = 0; j < count; j++) {
@@ -32,5 +32,9 @@ public class Application { // 패키지 분리
             matchNumbers.match(numbers1, numbers, validBonusNumber);
         }
         System.out.println(matchNumbers.getMaps());
+
+        Message.winningStatic();
+        Message.line();
+
     }
 }
