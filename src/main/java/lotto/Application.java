@@ -2,18 +2,32 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Application {
 
     public static void main(String[] args) {
-        System.out.println("구입금액을 입력해 주세요.");
-
         try {
+            System.out.println("구입금액을 입력해 주세요.");
+
             int lottoCount = getLottoCount(Console.readLine());
+            System.out.println();
+
+            System.out.println(lottoCount + "개를 구매했습니다.");
+
+            Set<Lotto> lotteries = new HashSet<>();
+            for (int i = 0; i < lottoCount; i++) {
+                lotteries.add(new Lotto(getRandomUniqueNumberList()));
+            }
+
+            for (Lotto lottery : lotteries) {
+                System.out.println(lottery.getLottoNumbers().toString());
+            }
+            System.out.println();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return;
         }
     }
 
