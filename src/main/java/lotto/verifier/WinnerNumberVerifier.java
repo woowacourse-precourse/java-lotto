@@ -24,4 +24,14 @@ public class WinnerNumberVerifier implements Verifier {
             throw new IllegalArgumentException(ExceptionMessage.NUMBER_EACH_NOT_NUMBER);
         }
     }
+
+    private void checkEachOutOfRange(String input) {
+        if(Arrays.stream(input.split(","))
+                .allMatch(number -> Long.parseLong(number) < Constant.START_INCLUSIVE ||
+                        Long.parseLong(number) > Constant.END_INCLUSIVE)
+        )
+        {
+            throw new IllegalArgumentException(ExceptionMessage.NUMBER_EACH_OUT_OF_RANGE);
+        }
+    }
 }
