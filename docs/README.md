@@ -57,13 +57,17 @@ public class Lotto {
 
 + lottoRandomNum, myLottoNum 로또 번호 대조(List<> 1, List<> 2)
 <br/><br/>
-+ Num index, 내용 적중
++ agreementCount 적중 숫자 리턴
 
 > - 6개 적중 -> 1등 출력
 > - 5개 + **보너스 번호 적중** -> 2등 출력
 > - 5개 적중 -> 3등 출력
 > - 4개 적중 -> 4등 출력
 > - 3개 적중 -> 5등 출력
+
+#####4-1. agreementLotto (로또 당첨 등수 리턴)
+
++ agreementCount -> 등수 리턴
 
 #####5. prizeMoney (int lottoStart) - (당첨금 출력)
 
