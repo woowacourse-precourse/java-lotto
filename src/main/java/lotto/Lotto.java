@@ -16,7 +16,7 @@ public class Lotto {
         return numbers;
     }
 
-    public int draw() {
+    public int draw(List<Integer> answer) {
         return 0;
     }
 
