@@ -16,6 +16,17 @@ public class OutputView {
     private static final String PAYMENT_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String WINNING_LOTTO_NUMBERS_INPUT_MESSAGE = "\n당첨 번호를 입력해 주세요.";
     private static final String BONUS_NUMBER_INPUT_MESSAGE = "\n보너스 번호를 입력해 주세요.";
+    private static final String NUMBER_OF_PURCHASES_FORMAT = "%n%d개를 구매했습니다.%n";
+    private static final String NEW_LINE_DELIMITER = "\n";
+    private static final String COMMA_SPACE_DELIMITER = ", ";
+    private static final String SQUARE_BRACKETS_PREFIX = "[";
+    private static final String SQUARE_BRACKETS_SUFFIX = "]";
+    private static final String WINNING_STATS_GUIDANCE_MESSAGE = "\n당첨 통계";
+    private static final String DIVISION_LINE = "---";
+    private static final String SECOND_RANK_FORM = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
+    private static final String ALL_RANK_FORM = "%d개 일치 (%s원) - %d개";
+    private static final String MONEY_DECIMAL_FORM = "###,###";
+    private static final String YIELD_PRINT_FORM = "총 수익률은 %.1f%%입니다.";
     
     private OutputView() {
         throw new ViewClassCreateException();
@@ -41,7 +52,7 @@ public class OutputView {
     }
     
     private static void printNumberOfPurchases(final List<List<Integer>> lottos) {
-        System.out.printf("%n%d개를 구매했습니다.%n", lottos.size());
+        System.out.printf(NUMBER_OF_PURCHASES_FORMAT, lottos.size());
     }
     
     private static void printLottosIssuanceResults(final List<List<Integer>> lottos) {
@@ -51,14 +62,14 @@ public class OutputView {
     private static String parseLottosIssuanceResults(final List<List<Integer>> lottos) {
         return lottos.stream()
                 .map(OutputView::parseLottoIssuanceResults)
-                .collect(Collectors.joining("\n"));
+                .collect(Collectors.joining(NEW_LINE_DELIMITER));
     }
     
     private static String parseLottoIssuanceResults(final List<Integer> lottoNumbers) {
         return lottoNumbers.stream()
                 .sorted()
                 .map(String::valueOf)
-                .collect(Collectors.joining(", ", "[", "]"));
+                .collect(Collectors.joining(COMMA_SPACE_DELIMITER, SQUARE_BRACKETS_PREFIX, SQUARE_BRACKETS_SUFFIX));
     }
     
     public static void printWinningStats(final LottoRanksDTO lottoRanksDTO) {
@@ -70,11 +81,11 @@ public class OutputView {
     }
     
     private static void printWinningStatsGuidanceMessage() {
-        System.out.println("\n당첨 통계");
+        System.out.println(WINNING_STATS_GUIDANCE_MESSAGE);
     }
     
     private static void printDivisionLine() {
-        System.out.println("---");
+        System.out.println(DIVISION_LINE);
     }
     
     private static void printCoreWinningStats(final List<LottoRank> lottoRanks) {
@@ -86,7 +97,7 @@ public class OutputView {
                 .filter(Predicate.not(LottoRank::isMiss))
                 .sorted(Comparator.reverseOrder())
                 .map(lottoRank -> parsePerWinningStats(lottoRanks, lottoRank))
-                .collect(Collectors.joining("\n"));
+                .collect(Collectors.joining(NEW_LINE_DELIMITER));
     }
     
     private static String parsePerWinningStats(final List<LottoRank> lottoRanks, final LottoRank lottoRank) {
@@ -95,9 +106,9 @@ public class OutputView {
         final int countOfMatchingLottoRank = countOfMatchingLottoRank(lottoRanks, lottoRank);
         
         if (isSecond(lottoRank)) {
-            return String.format("%d개 일치, 보너스 볼 일치 (%s원) - %d개", countOfSameLottoNumber, prizeMoneyDisplay, countOfMatchingLottoRank);
+            return String.format(SECOND_RANK_FORM, countOfSameLottoNumber, prizeMoneyDisplay, countOfMatchingLottoRank);
         }
-        return String.format("%d개 일치 (%s원) - %d개", countOfSameLottoNumber, prizeMoneyDisplay, countOfMatchingLottoRank);
+        return String.format(ALL_RANK_FORM, countOfSameLottoNumber, prizeMoneyDisplay, countOfMatchingLottoRank);
     }
     
     private static String prizeMoneyDisplay(final LottoRank lottoRank) {
@@ -106,7 +117,7 @@ public class OutputView {
     }
     
     private static DecimalFormat moneyDecimalFormat() {
-        return new DecimalFormat("###,###");
+        return new DecimalFormat(MONEY_DECIMAL_FORM);
     }
     
     private static int countOfMatchingLottoRank(final List<LottoRank> lottoRanks, final LottoRank lottoRankToCompare) {
@@ -120,6 +131,6 @@ public class OutputView {
     }
     
     public static void printYield(final double yield) {
-        System.out.printf("총 수익률은 %.1f%%입니다.", yield);
+        System.out.printf(YIELD_PRINT_FORM, yield);
     }
 }
