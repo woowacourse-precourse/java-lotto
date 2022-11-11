@@ -11,7 +11,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        Exception checkNumber = new Exception();
+        Validate checkNumber = new Validate();
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 번호 6개를 입력하세요.");
         }

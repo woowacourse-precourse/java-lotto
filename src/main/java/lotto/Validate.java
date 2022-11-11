@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Exception {
+public class Validate {
     public int isValidMoney(int money)throws IllegalArgumentException{
         if(money < 1000)
             throw new IllegalArgumentException("[ERROR] 1000원 이상의 금액을 입력하세요.");
@@ -23,6 +23,14 @@ public class Exception {
         for (String num : checkInput) {
             isContainOthers(num);
         }
+    }
+    public void validateBonusNumber(String userInput)throws IllegalArgumentException{
+        int bonusNumber = Integer.parseInt(userInput);
+        if(userInput.length() > 2)
+            throw new IllegalArgumentException("[ERROR] 올바른 숫자를 입력하세요.");
+        if(bonusNumber < 1 || bonusNumber > 45)
+            throw new IllegalArgumentException("[ERROR] 1 ~ 45 사이의 숫자를 입력하세요.");
+        isContainOthers(userInput);
     }
     public boolean validUserWinningNumber(List<Integer> winningNumber) {
         Set<Integer> overlapCheck = new HashSet<>(winningNumber);

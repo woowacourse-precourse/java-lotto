@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CreateUerNumber {
       public List<Integer> makeWinningNumber(String userInput){
-        Exception checkLottoNumber = new Exception();
+        Validate checkLottoNumber = new Validate();
         List<Integer> WinningNumber = new ArrayList<>();
         checkLottoNumber.validateUserInput(userInput);
         String [] splitNumber = userInput.split(",");

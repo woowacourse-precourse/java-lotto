@@ -3,7 +3,7 @@ package lotto;
 import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-class ExceptionTest {
+class ValidateTest {
 
     @Test
     void validMoney() {
@@ -16,8 +16,8 @@ class ExceptionTest {
     @Test
     void validateUserInput() {
         String testcase = "1,2,3,45, ";
-        Exception exception = new Exception();
-        assertThatThrownBy(() -> exception.validateUserInput(testcase))
+        Validate validate = new Validate();
+        assertThatThrownBy(() -> validate.validateUserInput(testcase))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
