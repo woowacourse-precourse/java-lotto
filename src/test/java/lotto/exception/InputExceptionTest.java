@@ -15,16 +15,11 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class InputExceptionTest {
     @DisplayName("입력된 금액 예외 발생 테스트")
     @ParameterizedTest
-    @ValueSource(ints = {3500, 4650, 9080, 10, 100, 1298089, 0})
-    void validatePurchaseAmountTest(int money) {
-        String errorMessage = "[ERROR] 입력된 금액이 1000원 단위로 나눠 떨어져야 합니다.";
-        if (money == 0) {
-            errorMessage = "[ERROR] 입력된 금액이 0원보다는 커야 합니다.";
-        }
+    @ValueSource(strings = {"3500", "4650", "9080", "10", "100", "1298089", "0", "100ki"})
+    void validatePurchaseAmountTest(String money) {
         assertThatThrownBy(() -> InputException.validatePurchaseAmount(money))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageStartingWith("[ERROR]")
-                .hasMessageContaining(errorMessage);
+                .hasMessageStartingWith("[ERROR]");
     }
     @DisplayName("입력된 당첨 번호 예외 발생 테스트")
     @ParameterizedTest
