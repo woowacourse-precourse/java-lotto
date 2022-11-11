@@ -16,15 +16,17 @@ import lotto.constant.PrizeType;
 public class Calculator {
 
     public List<Integer> calculateMatchResults(LottoGroup lottoGroup,
-            List<Integer> winningNumbers, int bonusNumber) {
+            WinningLotto winningLotto, BonusNumber bonusNumber) {
         List<List<Integer>> groupOfUserLotteryNumbers = lottoGroup.getLottoNumbers();
+        List<Integer> winningNumbers = winningLotto.getNumbers();
+        int bonus = bonusNumber.getNumber();
         Comparator comparator = new Comparator();
         List<Integer> matchResults = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
         int matchCount = 0;
         for (List<Integer> userLotteryNumbers : groupOfUserLotteryNumbers) {
             matchCount = comparator.getMatchCount(userLotteryNumbers, winningNumbers);
             if (matchCount == 5) {
-                setMatchResultsWithBonusNumber(bonusNumber, comparator, matchResults, userLotteryNumbers);
+                setMatchResultsWithBonusNumber(bonus, comparator, matchResults, userLotteryNumbers);
                 continue;
             }
             if (matchCount >= 3) {

@@ -27,11 +27,11 @@ class CalculatorTest {
                 new Lotto(List.of(4, 6, 14, 25, 36, 41))
         );
         LottoGroup lottoGroup = new LottoGroup(lottos);
-        List<Integer> winningNumbers = List.of(4, 6, 14, 25, 36, 41);
-        int bonusNumber = 8;
+        WinningLotto winningLotto = new WinningLotto("4,6,14,25,36,41");
+        BonusNumber bonusNumber = new BonusNumber("8", winningLotto);
         List<Integer> answer = List.of(1, 0, 1, 1, 1);
 
-        List<Integer> matchResults = calculator.calculateMatchResults(lottoGroup, winningNumbers,
+        List<Integer> matchResults = calculator.calculateMatchResults(lottoGroup, winningLotto,
                 bonusNumber);
 
         assertThat(matchResults)
