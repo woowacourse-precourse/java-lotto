@@ -9,7 +9,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class PurchaseLotto {
     public static List<Lotto> purchaseLotto(){
         int lottocount = inputPurchaseMoney();
+        PurchasePrint.checkPurchase(lottocount);
         List<Lotto> purchaselottos = drawLotto(lottocount);
+        PurchasePrint.printLottoNumber(purchaselottos);
         return purchaselottos;
     }
     private static int inputPurchaseMoney(){
