@@ -12,7 +12,7 @@ public class UserInput {
     public static int inputPrice() {
         System.out.println(INPUT_PRICE_MESSAGE);
         String price = Console.readLine();
-        validPriceOfLotto(price);
+        validIsDigit(price);
         validMoneyUnit(Integer.parseInt(price));
         return calculateNumOfLotto(Integer.parseInt(price));
     }
@@ -26,7 +26,7 @@ public class UserInput {
         new LottoNumber(winningNumbers, bonusNumber);
     }
 
-    private static void validPriceOfLotto(String price) {
+    private static void validIsDigit(String price) {
         try {
             Integer.parseInt(price);
         } catch (IllegalArgumentException e) {
