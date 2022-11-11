@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.text.DecimalFormat;
+import java.util.List;
 import java.util.Map;
 
 public enum LottoResult {
@@ -30,5 +31,31 @@ public enum LottoResult {
 
     public int getPayout() {
         return payout;
+    }
+
+
+    public static LottoResult of(Lotto lotto,
+                                 List<Integer> winningNumbers,
+                                 int bonusNumber) {
+        long matchingNumberCount = lotto.compareWinningNumbers(winningNumbers);
+
+        if (matchingNumberCount == 3) {
+            return THREE;
+        }
+
+        if (matchingNumberCount == 4) {
+            return FOUR;
+        }
+
+        if (matchingNumberCount == 5) {
+            if (lotto.isContainBonusNumber(bonusNumber)) {
+                return FIVE_WITH_BONUS;
+            }
+            return FIVE;
+        }
+        if (matchingNumberCount == 6) {
+            return SIX;
+        }
+        return ELSE;
     }
 }

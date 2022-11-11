@@ -17,11 +17,15 @@ public class Lotto {
         System.out.println(numbers);
     }
 
-    public LottoResult result(List<Integer> winningNumbers, int bonusNumber) {
-        long matchCount = numbers.stream()
+
+    public long compareWinningNumbers(List<Integer> winningNumbers) {
+        return numbers.stream()
                 .filter(winningNumbers::contains)
                 .count();
-        return changeToLottoResult(bonusNumber, matchCount);
+    }
+
+    public boolean isContainBonusNumber(int bonusNumber) {
+        return numbers.contains(bonusNumber);
     }
 
     private void validate(List<Integer> numbers) {
@@ -37,25 +41,4 @@ public class Lotto {
         return new HashSet<>(numbers).size() != LOTTO_NUMBER_LENGTH;
     }
 
-    private LottoResult changeToLottoResult(int bonusNumber, long matchCount) {
-        if (matchCount == 3) {
-            return LottoResult.THREE;
-        }
-
-        if (matchCount == 4) {
-            return LottoResult.FOUR;
-        }
-
-        if (matchCount == 5) {
-            if (numbers.contains(bonusNumber)) {
-                return LottoResult.FIVE_WITH_BONUS;
-            }
-            return LottoResult.FIVE;
-        }
-
-        if (matchCount == 6) {
-            return LottoResult.SIX;
-        }
-        return LottoResult.ELSE;
-    }
 }

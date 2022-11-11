@@ -18,7 +18,7 @@ public class LottoService {
                                                  List<Integer> winningNumbers,
                                                  int bonusNumber) {
         return lottoBundle.stream()
-                .map(lotto -> lotto.result(winningNumbers, bonusNumber))
+                .map(lotto -> LottoResult.of(lotto,winningNumbers,bonusNumber))
                 .collect(Collectors.toList());
     }
 
