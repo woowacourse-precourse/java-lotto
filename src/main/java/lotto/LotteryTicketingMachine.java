@@ -6,9 +6,6 @@ import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class LotteryTicketingMachine {
 
-    private int money;
-    private double earning;
-
     public int TicketHowManyLotto(int money) {
         int howManyLotto;
         howManyLotto = money/1000;
@@ -29,11 +26,5 @@ public class LotteryTicketingMachine {
             }
         }
         return howManyWinningNumber;
-    }
-
-    public double calculateEarningRate() {
-        double earningRate;
-        earningRate = earning/money;
-        return earningRate;
     }
 }
