@@ -36,7 +36,7 @@
     - [x]String 형식에 대한 int 형변환 - Guide
   - [ ] 입력받은 당첨 번호에 대한 생성자 - Lotto
     - [x] String 형식인 당첨 번호를 콤마로 구분하여 List\<String>로 변환 - Guide
-    - [ ] List\<String> 을 List\<Integer>로 변환
+    - [x] List\<String> 을 List\<Integer>로 변환
   - [ ] 입력받은 보너스 번호에 대한 생성자 - Bonus
     - [x]String 형식에 대한 int 형변환 - Guide
 
