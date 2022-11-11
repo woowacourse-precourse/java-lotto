@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.exception.NotNumberException;
 import lotto.exception.NotThousandException;
+import lotto.exception.WinningNumbersIllegalException;
 
 public class InputValidator {
     public void validateInputPurchaseAmount(String input) {
@@ -9,12 +10,19 @@ public class InputValidator {
         validateIsThousand(Integer.parseInt(input));
     }
 
-    public void validateInputWinningNumbers() {
-        throw new UnsupportedOperationException();
+    public void validateInputWinningNumbers(String input) {
+        validateIsSeparateByComma(input);
     }
 
     public void validateInputBonusNumber() {
         throw new UnsupportedOperationException();
+    }
+
+    private void validateIsSeparateByComma(String input) {
+        final String regex = "^\\d{1,2},\\d{1,2},\\d{1,2},\\d{1,2},\\d{1,2},\\d{1,2}$";
+        if (!input.matches(regex)) {
+            throw new WinningNumbersIllegalException();
+        }
     }
 
     private void validateIsNumber(String input) {
