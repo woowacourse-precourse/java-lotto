@@ -5,5 +5,6 @@ public class Game {
 
     public void play() {
         lottoStore.payLotto();
+        lottoStore.buyLotto();
     }
 }
