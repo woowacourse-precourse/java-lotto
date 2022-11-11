@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.Lotto;
+import lotto.utils.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -22,6 +23,14 @@ class LottoTest {
     void createLottoByDuplicatedNumber() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("1보다 작거나 45보다 큰 숫자가 포함되면 예외가 발생한다.")
+    @Test
+    void createLottoByOutOfRangeNumbers() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 3, 0, 46, 4, 5)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessage.NUMBERS_OUT_OF_RANGE);
     }
 
     @DisplayName("로또 번호와 보너스 번호를 비교하는 기능")
