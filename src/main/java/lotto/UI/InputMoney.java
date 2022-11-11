@@ -6,11 +6,15 @@ public class InputMoney {
     private int money;
 
     public int receiveInput() {
-        String input = Console.readLine();
+        isValidMoney(Console.readLine());
+        return money;
+    }
+
+    private void isValidMoney(String input) {
         if (isNumber(input)) {
             money = Integer.parseInt(input);
         }
-        return money;
+        canBuyLotto(money);
     }
 
     private boolean isNumber(String input) {
