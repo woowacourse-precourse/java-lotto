@@ -5,17 +5,16 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
-
     private User user;
 
     @BeforeEach
     public void setUp() {
         user = new User();
     }
-
 
     @DisplayName("구매금액 입력시 문자,공백을 입력하면 예외가 발생한다")
     @Test
@@ -29,7 +28,6 @@ class UserTest {
                 user.askPurchaseAmount());
         assertEquals("[ERROR] 문자 또는 공백은 입력이 불가능 합니다. 1,000원 단위의 숫자를 입력해 주세요.", illegalArgumentException.getMessage());
     }
-
 
     @DisplayName("구매금액 입력시 1,000원 단위가 아니라면 예외가 발생한다")
     @Test
@@ -47,4 +45,18 @@ class UserTest {
         assertEquals("[ERROR] 1,000원 단위의 숫자를 입력해 주세요.", illegalArgumentException.getMessage());
 
     }
+
+    @DisplayName("문자 공백 입력시 예외가 발생한다")
+    @Test
+    void 로또_문자_공백_검사() {
+        String input = "일,이,삼,사,오,육";
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () ->
+                user.lottoNumberReceiveInput());
+        assertEquals("[ERROR] 문자 또는 공백은 입력이 불가능합니다. 1~45 사이의 숫자를 입력해 주세요.", illegalArgumentException.getMessage());
+    }
+
 }
