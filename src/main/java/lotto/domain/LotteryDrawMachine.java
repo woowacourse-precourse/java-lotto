@@ -10,6 +10,10 @@ import java.util.stream.Collectors;
 
 public class LotteryDrawMachine {
 
+    public Lotto createLotto() {
+        return new Lotto(drawLotteryNumbers());
+    }
+
     public List<Integer> drawLotteryNumbers() {
         List<Integer> lotteryNumbers = Randoms.pickUniqueNumbersInRange(MINIMUM_LOTTERY_NUMBER, MAXIMUM_LOTTERY_NUMBER,
                 LOTTERY_NUMBERS_SIZE);

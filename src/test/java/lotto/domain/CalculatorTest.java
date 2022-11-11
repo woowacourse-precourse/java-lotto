@@ -12,18 +12,26 @@ class CalculatorTest {
     @DisplayName("로또 번호들 중 당첨의 수를 카운트합니다")
     void calculateMatchResults() {
         Calculator calculator = new Calculator();
-        List<List<Integer>> groupOfUserLotteryNumbers = List.of(
-                List.of(1, 2, 3, 4, 5, 6),
-                List.of(4, 6, 8, 14, 25, 36),
-                List.of(4, 6, 10, 14, 25, 36),
-                List.of(3, 6, 14, 25, 27, 44),
-                List.of(4, 6, 14, 25, 36, 41)
+//        List<List<Integer>> groupOfUserLotteryNumbers = List.of(
+//                List.of(1, 2, 3, 4, 5, 6),
+//                List.of(4, 6, 8, 14, 25, 36),
+//                List.of(4, 6, 10, 14, 25, 36),
+//                List.of(3, 6, 14, 25, 27, 44),
+//                List.of(4, 6, 14, 25, 36, 41)
+//        );
+        List<Lotto> lottos = List.of(
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                new Lotto(List.of(4, 6, 8, 14, 25, 36)),
+                new Lotto(List.of(4, 6, 10, 14, 25, 36)),
+                new Lotto(List.of(3, 6, 14, 25, 27, 44)),
+                new Lotto(List.of(4, 6, 14, 25, 36, 41))
         );
+        LottoGroup lottoGroup = new LottoGroup(lottos);
         List<Integer> winningNumbers = List.of(4, 6, 14, 25, 36, 41);
         int bonusNumber = 8;
         List<Integer> answer = List.of(1, 0, 1, 1, 1);
 
-        List<Integer> matchResults = calculator.calculateMatchResults(groupOfUserLotteryNumbers, winningNumbers,
+        List<Integer> matchResults = calculator.calculateMatchResults(lottoGroup, winningNumbers,
                 bonusNumber);
 
         assertThat(matchResults)

@@ -15,8 +15,9 @@ import lotto.constant.PrizeType;
 
 public class Calculator {
 
-    public List<Integer> calculateMatchResults(List<List<Integer>> groupOfUserLotteryNumbers,
+    public List<Integer> calculateMatchResults(LottoGroup lottoGroup,
             List<Integer> winningNumbers, int bonusNumber) {
+        List<List<Integer>> groupOfUserLotteryNumbers = lottoGroup.getLottoNumbers();
         Comparator comparator = new Comparator();
         List<Integer> matchResults = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
         int matchCount = 0;
