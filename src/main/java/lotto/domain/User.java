@@ -29,4 +29,8 @@ public class User {
     public int getNumOfLotteries() {
         return numberOfLotteries;
     }
+
+    public void setLotteries(List<Lotto> lotteries) {
+        this.lotteries = lotteries;
+    }
 }
