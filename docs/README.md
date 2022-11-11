@@ -26,7 +26,7 @@
 - [x] "당첨 통계{\n}---"를 출력한다. - ShowMessage#showLottoStatistics()
 
 - [x] "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다." - ShowErrorMessage#showOutRangeLottoNumber()
-- [ ] "[ERROR] 금액은 1,000으로 나누어 떨어져야 합니다."를 출력한다. - ShowErrorMessage#showNotDivide()
+- [x] "[ERROR] 금액은 1,000으로 나누어 떨어져야 합니다."를 출력한다. - ShowErrorMessage#showNotDivide()
 
 - [ ] 로또를 구매하기 - Long amount = Lotto#buyLotto()
 - [ ] 구입할 수 있는 로또의 개수를 반환 - int lottoCount = Lotto#lottoCount(int number)
