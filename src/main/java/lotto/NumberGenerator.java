@@ -27,12 +27,11 @@ public class NumberGenerator {
     }
 
     public void enterLottoNumbers() {
-        String[] lottoNumbers = Console.readLine().split(",");
-        computerLotto = addComputerNumber(new ArrayList<>(Arrays.asList(lottoNumbers)));
+        exceptionNotEnteredLottoNumber();
     }
 
     public int enterBonusNumber() {
-        return Integer.parseInt(Console.readLine());
+        return exceptionNotEnteredBonusNumber();
     }
 
     private List<Integer> addComputerNumber(List<String> computerLottoString) {
@@ -59,6 +58,23 @@ public class NumberGenerator {
     private void printLottoNumbers() {
         for (List<Integer> lotto : userLottos) {
             System.out.println(lotto);
+        }
+    }
+
+    private void exceptionNotEnteredLottoNumber() {
+        try {
+            String[] lottoNumbers = Console.readLine().split(",");
+            computerLotto = addComputerNumber(new ArrayList<>(Arrays.asList(lottoNumbers)));
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR");
+        }
+    }
+
+    private int exceptionNotEnteredBonusNumber() {
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR]");
         }
     }
 }
