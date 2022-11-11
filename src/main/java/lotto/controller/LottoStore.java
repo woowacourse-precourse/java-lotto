@@ -23,10 +23,9 @@ public class LottoStore {
     public void startLottoService() {
 
         List<Lotto> customerLottos = buyLottos();
-
         WinningLotto winningLotto = makeWinningLotto();
-
         showWinningStatistic(winningLotto, customerLottos);
+
     }
 
     private List<Lotto> buyLottos() {
@@ -57,6 +56,8 @@ public class LottoStore {
 
         int totalProfit = ProfitCalculator.calculateTotalProfit(winLottoCount);
         double profitRate = ProfitCalculator.calculateProfitRate(totalProfit, purchasedAmount);
+
+        OutputUi.printProfitRateMessage(profitRate);
     }
 
 }
