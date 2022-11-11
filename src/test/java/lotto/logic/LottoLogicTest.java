@@ -56,6 +56,19 @@ class LottoLogicTest {
         }
     }
 
+    @Test
+    void 당첨_내역_테스트(){
+        results.stream().forEach(result -> lottoLogic.addWinCount(result));
+
+        List<Integer> countHistory = lottoLogic.getHistory();
+
+        Assertions.assertThat(countHistory.get(1)).isEqualTo(1);    // 1등 1번
+        Assertions.assertThat(countHistory.get(2)).isEqualTo(1);    // 2등 1번
+        Assertions.assertThat(countHistory.get(3)).isEqualTo(1);    // 3등 1번
+        Assertions.assertThat(countHistory.get(4)).isEqualTo(2);    // 4등 2번
+        Assertions.assertThat(countHistory.get(5)).isEqualTo(1);    // 5등 1번
+    }
+
     private void assertResult(List<Result> results, int i) {
         Result result = lottoLogic.compareNumbers(lottos.get(i), winningNumbers, bonusNumber);
 
