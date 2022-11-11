@@ -30,4 +30,14 @@ public class Lotto {
             throw new IllegalArgumentException("로또 번호에 중복이 있습니다");
         }
     }
+
+    public long countMatchesWith(Lotto winningLotto) {
+        return numbers.stream()
+                .filter(winningLotto::contains)
+                .count();
+    }
+
+    private boolean contains(LottoNumber number) {
+        return numbers.contains(number);
+    }
 }
