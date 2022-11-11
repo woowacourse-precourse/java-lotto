@@ -3,6 +3,7 @@ package lotto;
 import java.text.DecimalFormat;
 
 public enum LottoRanking {
+    RANK_LOSE("꽝", 0),
     RANK_5("3개 일치", 5000),
     RANK_4("4개 일치", 50000),
     RANK_3("5개 일치", 1500000),
