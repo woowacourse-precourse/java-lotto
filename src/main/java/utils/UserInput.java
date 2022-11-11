@@ -1,6 +1,8 @@
-package lotto;
+package utils;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.Count;
+import lotto.LottoNumber;
 
 public class UserInput {
 
