@@ -43,7 +43,7 @@ public class NewLottoSystem {
 			compare(lotto.getNumbers(), lottoGames, input.bonusNumber);
 			fillPlaces();
 			OutputView.printStatistics(places, input.money);
-		} catch (Exception exception){
+		} catch (Exception exception) {
 			System.out.println(exception.getMessage());
 		}
 	}
