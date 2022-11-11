@@ -60,7 +60,7 @@ public class LottoProgram {
 	private void buyLottos() {
 		View.showPurchaseInputGuideMessage();
 		String userInput = Input.userInput();
-		Checker.checkPriceInput(userInput);
+		Checker.checkPriceException(userInput);
 
 		lottoCount = Integer.parseInt(userInput) / PRICE_UNIT;
 	}
