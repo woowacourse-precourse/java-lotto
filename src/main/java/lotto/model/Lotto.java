@@ -41,4 +41,24 @@ public class Lotto {
             }
         }
     }
+
+    public int countSameNumber(Lotto userLotto) {
+        int sameNumberCount = 0;
+        for(Integer lottoNumber: numbers) {
+            if(userLotto.hasNumber(lottoNumber)) {
+                sameNumberCount++;
+            }
+        }
+        return sameNumberCount;
+    }
+
+    public boolean hasNumber(Integer userLottoNumber) {
+        for(Integer lottoNumber: numbers) {
+            if (lottoNumber.equals(userLottoNumber)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
