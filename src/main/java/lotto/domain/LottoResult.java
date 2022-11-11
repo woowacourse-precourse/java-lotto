@@ -1,8 +1,6 @@
 package lotto.domain;
 
-import java.text.DecimalFormat;
 import java.util.List;
-import java.util.Map;
 
 public enum LottoResult {
 
@@ -21,18 +19,13 @@ public enum LottoResult {
         this.status = status;
     }
 
-    public void printMessage(Map<LottoResult, Long> lottoResultToCount) {
-        DecimalFormat df = new DecimalFormat("###,###");
-        String message = status + " " +
-                "(" + df.format(payout) + "원)" +
-                " - " + lottoResultToCount.getOrDefault(this, 0L) + "개";
-        System.out.println(message);
-    }
-
     public int getPayout() {
         return payout;
     }
 
+    public String getStatus() {
+        return status;
+    }
 
     public static LottoResult of(Lotto lotto,
                                  List<Integer> winningNumbers,

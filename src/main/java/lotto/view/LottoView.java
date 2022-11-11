@@ -1,5 +1,6 @@
 package lotto.view;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -49,11 +50,21 @@ public class LottoView {
 
         Arrays.stream(LottoResult.values())
                 .skip(SKIP_RESULT_ELSE_CASE)
-                .forEach(lottoResult -> lottoResult.printMessage(lottoResultToCount));
+                .map(lottoResult -> getResultMessage(lottoResult, lottoResultToCount))
+                .forEach(System.out::println);
+
     }
 
     public void printYield(double yield) {
         String yieldFormat = String.format("%.1f", yield);
         System.out.println(PREFIX_YIELD_MESSAGE + yieldFormat + SUFFIX_YIELD_MESSAGE);
+    }
+
+    private String getResultMessage(LottoResult lottoResult,
+                                    Map<LottoResult, Long> lottoResultToCount) {
+        DecimalFormat df = new DecimalFormat("###,###");
+        return lottoResult.getStatus() + " " +
+                "(" + df.format(lottoResult.getPayout()) + "원)" +
+                " - " + lottoResultToCount.getOrDefault(lottoResult, RESULT_NUMBER_ZERO) + "개";
     }
 }
