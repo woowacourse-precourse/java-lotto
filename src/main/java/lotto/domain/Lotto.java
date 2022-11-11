@@ -23,7 +23,8 @@ public class Lotto {
 
     private void validateBySize(List<Integer> numbers) {
         if (numbers.size() != NUMBER_OF_LOTTO) {
-            throw new IllegalArgumentException();
+            Output.printErrorAndExit(ExceptionType.OVER_THAN_NUMBER_OF_LOTTO.getMessage());
+            throw new IllegalArgumentException(ExceptionType.OVER_THAN_NUMBER_OF_LOTTO.getMessage());
         }
     }
 
