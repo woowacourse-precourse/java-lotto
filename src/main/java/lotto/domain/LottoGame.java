@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import lotto.Lotto;
 import lotto.input.AdditionalNumber;
 import lotto.input.LottoTickets;
 import lotto.input.WinningNumber;
@@ -27,14 +26,18 @@ public class LottoGame {
         }
 
         AdditionalNumber additionalNumber = new AdditionalNumber();
-        int bonus = additionalNumber.getBonus();
+        int bonus = additionalNumber.getBonus(); // 보너스 입력 값
 
-        BonusLottoBall bonusLottoBall = new BonusLottoBall();
-        List<Integer> bonusNumbers = bonusLottoBall.findNumber(lists, number, bonus);
+        BonusBallUsedLottery bonusBallUsedLottery = new BonusBallUsedLottery();
+        List<Integer> bonusNumbers = bonusBallUsedLottery.getLocations(lists, number, bonus); // 보너스 위치
 
         for (int c : bonusNumbers) {
             System.out.println(c);
         }
+
+        BonusBallCaseCheck bonusBallCaseCheck = new BonusBallCaseCheck();
+        List<Integer> updateWinningNumber = bonusBallCaseCheck.updateWinningNumber(number, bonusNumbers);
+
 
     }
 }

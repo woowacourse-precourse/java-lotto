@@ -6,8 +6,8 @@ import java.util.List;
 /**
  * 보너스 번호가 해당 되는 로또 찾기 구현
  */
-public class BonusLottoBall {
-    public List<Integer> findNumber(List<List<Integer>> random, List<Integer> resultNumber, int bonus) {
+public class BonusBallUsedLottery {
+    public List<Integer> getLocations(List<List<Integer>> random, List<Integer> resultNumber, int bonus) {
         List<Integer> result = new ArrayList<>();
 
         for (int i = 0; i < resultNumber.size(); i++) {
