@@ -22,7 +22,10 @@ public class NumberGenerator {
 
     private List<List<Integer>> generate(int quantity) {
         List<List<Integer>> collectionOfNumbers = new ArrayList<>();
-
+        for (int i = 0; i < quantity; i++) {
+            List<Integer> numbers = generateEachNumbers();
+            collectionOfNumbers.add(numbers);
+        }
         return collectionOfNumbers;
     }
 
