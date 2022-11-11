@@ -32,7 +32,7 @@ public class Lotto {
 
     public static void getGeneratedLottoNumber(List<List<Integer>> generatedLottoPaper) {
         for (List<Integer> eachLottoPaper : generatedLottoPaper) {
-            System.out.println(Arrays.toString(eachLottoPaper.toArray()));
+            System.out.println(Arrays.toString(Arrays.stream(eachLottoPaper.toArray()).sorted().toArray()));
         }
     }
 
