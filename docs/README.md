@@ -11,7 +11,7 @@
   - [x] Ticket (구입 금액에 맞는 로또 발행)
   - [x] Money
   - [x] WinningNumbers
-  - [ ] BonusNumber
+  - [x] BonusNumber
   - [ ] Prize (Enum 으로 구현)
 
 
@@ -58,7 +58,7 @@
   
 
 - BonusNumber
-  - [ ] 보너스 번호가 1~45사이에 숫자가 맞는지 검증
+  - [x] 보너스 번호가 1~45사이에 숫자가 맞는지 검증
 
 
 - Input
