@@ -16,7 +16,9 @@ public class Lotto {
         }
     }
     
-    
+    public void doLotto() {
+    	System.out.println(PrintMessage.INPUT_MONEY);
+    }
 
     // TODO: 추가 기능 구현
 }
