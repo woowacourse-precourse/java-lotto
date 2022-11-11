@@ -20,4 +20,8 @@ public class NumberAdapter {
     public static int getBonusNumber(String beforeBonusNumber) {
         return Integer.parseInt(beforeBonusNumber);
     }
+
+    public static int getPaidMoney(String beforePaidMoney) {
+        return Integer.parseInt(beforePaidMoney);
+    }
 }
