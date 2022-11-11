@@ -3,6 +3,7 @@ package lotto.output;
 import lotto.domain.Lotto;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Output {
     private static final String PRICE_MESSAGE  = "구입금액을 입력해주세요.";
@@ -13,7 +14,7 @@ public class Output {
     public static void askBuyPrice(){
         System.out.println(PRICE_MESSAGE);
     }
-    public static void checkBuyLotto(ArrayList<Lotto> buyLottos){
+    public static void checkBuyLotto(List<Lotto> buyLottos){
         int size = buyLottos.size();
         System.out.println(size+CHECK_LOTTOS_MESSAGE);
         for(Lotto tempLotto: buyLottos){
