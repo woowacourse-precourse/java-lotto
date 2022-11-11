@@ -1,6 +1,4 @@
-package lotto.controller;
-
-import lotto.view.View;
+package lotto.view;
 
 public class MoneyInputView extends View {
     private String money;
