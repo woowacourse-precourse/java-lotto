@@ -35,13 +35,9 @@ public class LottoController {
     private static void createAllPlayerNumbers(Purchase issueCount) {
         for (int i = 0; i < issueCount.get(); i++) {
             List<Integer> playerNumbers = new ArrayList<>(new Player().get());
-            sortInAscendingOrders(playerNumbers);
-            OutputView.printPlayerNumbers(playerNumbers);
             allPlayerNumbers.add(playerNumbers);
         }
     }
 
-    private static void sortInAscendingOrders(List<Integer> playerNumbers) {
-        Collections.sort(playerNumbers);
-    }
+
 }
