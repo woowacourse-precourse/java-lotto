@@ -13,34 +13,22 @@ public class View {
         }
     }
 
-    public int inputBonusNumber () {
-        String tempBonusNumber;
-
+    public String inputBonusNumber () {
         System.out.println("보너스 번호를 입력해주세요.");
-        tempBonusNumber = Console.readLine();
-        isRealNumber(tempBonusNumber);
 
-        return Integer.parseInt(tempBonusNumber);
+        return Console.readLine();
     }
 
-    public int inputMoney () {
-        String tempMoney;
-
+    public String inputMoney () {
         System.out.println("구입 금액을 입력해주세요.");
-        tempMoney = Console.readLine();
-        isRealNumber(tempMoney);
 
-        return Integer.parseInt(tempMoney);
+        return Console.readLine();
     }
 
-    public  List<Integer> inputLottoNumber () {
-        String tempLottoNumber;
-
+    public  String inputLottoNumber () {
         System.out.println("당첨 번호를 입력해주세요.");
-        tempLottoNumber = Console.readLine();
-        isRealLottoNumber(tempLottoNumber);
 
-        return splitLottoNumber(tempLottoNumber);
+        return Console.readLine();
     }
 
     private List<Integer> splitLottoNumber (String tempLottoNumber) {
