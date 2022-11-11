@@ -17,6 +17,18 @@ public class Referee {
         judgement = new Judgement();
     }
 
+    public List<WinningStat> compare(List<Lotto> lottos, List<Integer> player, int bonusNumber) {
+        List<WinningStat> result = new ArrayList<>();
+
+        result.add(new WinningStat(THREE_MATCH, countThreeMatch(lottos, player)));
+        result.add(new WinningStat(FOUR_MATCH, countFourMatch(lottos, player)));
+        result.add(new WinningStat(FIVE_MATCH, countFiveMatch(lottos, player)));
+        result.add(new WinningStat(FIVE_WITH_BONUS_MATCH, countFiveMatchWithBonusNumber(lottos, player, bonusNumber)));
+        result.add(new WinningStat(SIX_MATCH, countSixMatch(lottos, player)));
+
+        return result;
+    }
+
     public int countThreeMatch(List<Lotto> lottos, List<Integer> player) {
         int count = 0;
 
