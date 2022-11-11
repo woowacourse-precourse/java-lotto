@@ -6,7 +6,6 @@ import lotto.domain.view.InputView;
 import lotto.domain.view.OutputView;
 import lotto.global.util.Util;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,10 +28,12 @@ public class LottoService {
         return InputView.getInputBonusNumber(prizeLotto);
     }
 
+    // TODO
     public void compareNumbers(List<Lotto> lottos, Lotto prizeLotto, int bonusNumber) {
         Map<String, Integer> result = new HashMap<>();
         for (Lotto lotto : lottos) {
-            Map<String, Integer> howManyMatchNumber = howManyMatchNumber(lotto.getNumbers(), prizeLotto.getNumbers(), bonusNumber);
+            Map<String, Integer> howManyMatchNumber =
+                    howManyMatchNumber(lotto.getNumbers(), prizeLotto.getNumbers(), bonusNumber);
             String key = keyNameForResult(howManyMatchNumber.get("prize"), howManyMatchNumber.get("bonus"));
             if (result.get(key) != null) {
                 result.put(key, result.get(key) + 1);
@@ -51,9 +52,11 @@ public class LottoService {
             for (int prizeNumber : prizeLotto) {
                 if (number == prizeNumber) {
                     prize++;
+                    break;
                 }
                 if (number == bonusNumber) {
                     bonus++;
+                    break;
                 }
             }
         }

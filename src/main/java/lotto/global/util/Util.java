@@ -54,8 +54,4 @@ public class Util {
         return Util.stringToInt(bonusNumber);
     }
 
-    public static void emptyTo0(Map<String, Integer> result) {
-        for (int value : result.values()) {
-        }
-    }
 }

@@ -2,11 +2,11 @@ package lotto.domain.lotto.domain.type;
 
 public enum PriceNumberCount {
 
-    MATCH_THREE(3, 0, "3개 일치 개수"),
-    MATCH_FOUR(4, 0, "4개 일치 개수"),
-    MATCH_FIVE(5, 0, "5개 일치 개수"),
-    MATCH_FIVE_BONUS(5, 1, "5개 일치 개수, 보너스 볼 일치 개수"),
-    MATCH_SIX(6, 0, "6개 일치 개수");
+    MATCH_THREE(3, 0, "일치 개수 3개"),
+    MATCH_FOUR(4, 0, "일치 개수 4개"),
+    MATCH_FIVE(5, 0, "일치 개수 5개"),
+    MATCH_FIVE_BONUS(5, 1, "일치 개수 5개, 보너스 볼"),
+    MATCH_SIX(6, 0, "일치 개수 6개");
 
     private final int prize;
     private final int bonus;
