@@ -35,4 +35,12 @@ public class BonusNumberTest {
 			BonusNumber.checkBonusNumber("0");
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@DisplayName("1부터 45사이의 숫자가 아닌 경우 예외가 발생")
+	@Test
+	void notRangeNumber() {
+		assertThatThrownBy(() -> {
+			BonusNumber.checkBonusNumber("46");
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
 }
