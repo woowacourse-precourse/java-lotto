@@ -15,13 +15,24 @@ public class Application {
 
     /**
      * 사용자로부터 로또의 구입금액을 입력받는 함수 <br/>
-     * 만약 구입 금액을 숫자로 입력하지 않거나 로또의 가격으로 나누어 떨어지지 않는 금액을 입력할 경우 IllegalArgumentException 발생
+     *
      * @return 로또의 구입 금액
      */
     public static int receiveBuyPrice() {
         System.out.print("구입금액을 입력해 주세요. : ");
         String userInput = Console.readLine();
 
+        return parseBuyPrice(userInput);
+    }
+
+    /**
+     * 매개변수로 주어진 사용자의 입력을 파싱해 int로 구하는 함수 <br/>
+     * 만약 구입 금액이 숫자가 아니거나 나누어 떨어지지 않는 경우 IllegalArgumentException 발생
+     *
+     * @param userInput 사용자의 입력 문자열
+     * @return 로또 구입 금액
+     */
+    public static int parseBuyPrice(String userInput) {
         if(!userInput.matches(PRICE_PATTERN)) throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자로 입력해야 합니다.");
 
         int price = Integer.parseInt(userInput);
