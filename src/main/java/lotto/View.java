@@ -9,13 +9,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.text.DecimalFormat;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class View {
 
     public void printUserLottos(User user){
-        System.out.println(user.getMoney()+"개를 구매했습니다.");
+        System.out.println(user.getMyLottoNumbers().size()+"개를 구매했습니다.");
         List<Lotto> myLottoNumbers = user.getMyLottoNumbers();
         for (Lotto myLottoNumber : myLottoNumbers) {
             List<Integer> numbers = myLottoNumber.getNumbers();
@@ -38,12 +39,25 @@ public class View {
         System.out.println("당첨 통계");
         System.out.println("---");
         Map<Money, Integer> counting = result.getCounting();
-        for (Map.Entry<Money, Integer> moneyIntegerEntry : counting.entrySet()) {
-            System.out.println(moneyIntegerEntry.getKey().getCount()+"개 일치 ("
-                    +moneyIntegerEntry.getKey().getDescription()+"원) " +"-"
-                    + moneyIntegerEntry.getValue() +"개"
-            );
+        for (Map.Entry<Money, Integer> moneyEntry : counting.entrySet()) {
+            System.out.println(makePhrases(moneyEntry.getKey(),moneyEntry.getValue()));
         }
-        System.out.println("총 수익률은 "+result.getProfit()+"% 입니다.");
+        System.out.println("총 수익률은 "+result.getProfit()+"%입니다.");
+    }
+
+    private String makePhrases(Money money, Integer quantity){
+        Integer count = money.getCount();
+        Integer reward = money.getDescription();
+        String output = count.toString()+"개 일치 ";
+        if (count == 7 ){
+            output = "5개 일치, 보너스 볼 일치 ";
+        }
+        output += "("+getMoneyString(reward)+"원) - ";
+        output += quantity+"개";
+        return output;
+    }
+    private String getMoneyString(Integer reward){
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        return decimalFormat.format(reward);
     }
 }
