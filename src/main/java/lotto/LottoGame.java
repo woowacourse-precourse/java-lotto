@@ -2,9 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -92,5 +90,17 @@ public class LottoGame {
         if (winningNumber.contains(number)) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATION_BONUS_NUMBER.getMessage());
         }
+    }
+
+    public void printWinningResult(List<LottoRank> ranks) {
+        Map<LottoRank, Integer> rankCount = getRankCount(ranks);
+        Arrays.stream(WinningResultMessage.values())
+                .forEach(message -> message.print(rankCount.getOrDefault(message.getLottoRank(), 0)));
+    }
+
+    private Map<LottoRank, Integer> getRankCount(List<LottoRank> ranks) {
+        Map<LottoRank, Integer> rankCount = new HashMap<>();
+        ranks.forEach(lottoRank -> rankCount.put(lottoRank, rankCount.getOrDefault(lottoRank, 0) + 1));
+        return rankCount;
     }
 }
