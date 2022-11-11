@@ -2,7 +2,9 @@ package models;
 
 import constants.LottoConstant;
 import system.process.exception.IllegalArgument;
+import utils.IsCollection;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -11,42 +13,41 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        numbers.sort(Comparator.naturalOrder());
+        //numbers.sort(Comparator.naturalOrder());
+        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers){
+    private void validate(List<Integer> numbers) {
         validateSize(numbers);
         validateInRange(numbers);
         validateDuplication(numbers);
     }
 
     private void validateSize(List<Integer> numbers) {
-
-        boolean isNotSetSize = numbers.size() != LottoConstant.NUMBERS_SIZE;
-
-        if (isNotSetSize) {
+        if (isNotSetSize(numbers)) {
             IllegalArgument.handleException(IllegalArgument.NOT_SET_SIZE.getMessage());
         }
     }
 
     private void validateInRange(List<Integer> numbers) {
-
-        boolean IsNotInRange = numbers.stream()
-                .allMatch(number -> number < LottoConstant.NUMBER_START || number > LottoConstant.NUMBER_END);
-
-        if (IsNotInRange) {
+        if (isNotNumbersInRange(numbers)) {
             IllegalArgument.handleException(IllegalArgument.NOT_IN_RANGE.getMessage());
         }
     }
 
     private void validateDuplication(List<Integer> numbers) {
-
-        boolean isDuplication = numbers.size() != numbers.stream().distinct().count();
-
-        if (isDuplication) {
+        if (IsCollection.isDuplication(numbers)) {
             IllegalArgument.handleException(IllegalArgument.DUPLICATION.getMessage());
         }
+    }
+
+    private boolean isNotSetSize(List<Integer> numbers) {
+        return !IsCollection.isSetSize(numbers, LottoConstant.NUMBERS_SIZE);
+    }
+
+    private boolean isNotNumbersInRange(List<Integer> numbers) {
+        return !IsCollection.IsNumbersInRange(numbers, LottoConstant.NUMBER_START, LottoConstant.NUMBER_END);
     }
 
     public List<Integer> getNumbers() {
