@@ -8,7 +8,10 @@ public class ComputerView {
     private static final String REQUEST_BONUS_NUMBERS = "보너스 번호를 입력해 주세요.";
 
     public String getNumbers(){
-        return "";
+        printRequest(REQUEST_WINNING_NUMBERS);
+        String input = scanInput();
+        giveSpaceOnView();
+        return input;
     }
 
     public String getBonusNumber(){
