@@ -24,6 +24,7 @@
 
 **User**
 >- [x] 구입 금액을 입력받는 기능 ( User가 LottoSystem에게 지불할 금액 ) ( User 생성자 )
+>- [ ] 구입 금액을 조회하는 기능 ( getUserPayAmount )
 >- [x] 구매한 랜덤 로또 번호를 기억하는 기능 ( User가 지불한 금액에 따른 랜덤 로또 번호 ) ( setUserLottoNumber )
 >- [x] 구매한 랜덤 로또 번호를 조회하는 기능 ( getUserLottoNumber )
 
