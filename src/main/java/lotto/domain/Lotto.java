@@ -1,6 +1,10 @@
 package lotto.domain;
 
+import lotto.config.InputConfig;
+
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;        // 접근 제어자 수정 금지
@@ -11,9 +15,8 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+        Set<Integer> lotto = new HashSet<>(numbers);
+        InputConfig.checkPrizeLotto(lotto);
     }
 
     @Override
@@ -21,5 +24,12 @@ public class Lotto {
         return numbers.toString();
     }
 
-    // TODO: 추가 기능 구현
+    public boolean contains(int prizeBonusNumber) {
+        return numbers.contains(prizeBonusNumber);
+    }
+
+    public Set<Integer> toSet() {
+        return new HashSet<>(numbers);
+    }
+
 }
