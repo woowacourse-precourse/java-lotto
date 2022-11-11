@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -26,7 +25,9 @@ public class LottoMachine {
 	private List<Lotto> publishLottoTickets(int getNumberOfTickets) {
 		List<Lotto> list = new ArrayList<>();
 		for (int i = 0; i < getNumberOfTickets; i++) {
-			list.add(new Lotto(Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_NUMBERS_SIZE)));
+			List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_NUMBERS_SIZE);
+			Collections.sort(lottoNumbers);
+			list.add(new Lotto(lottoNumbers));
 		}
 		return list;
 	}
