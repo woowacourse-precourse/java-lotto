@@ -6,18 +6,18 @@ import java.util.List;
 
 public class Validator {
 
-	public static void isListValidate(List<Integer> numbers) {
+	public static void isSizeValidate(List<Integer> numbers) {
 		if (numbers.stream().distinct().count() != 6) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(INVALID_INPUT);
 		}
 		if (numbers.size() != 6) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(INVALID_INPUT);
 		}
 	}
 
 	public static void isDuplicate(List<Integer> winNumbers, String inputNumber) {
 		if (winNumbers.contains(Integer.parseInt(inputNumber))) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException(INVALID_INPUT);
 		}
 	}
 
@@ -29,7 +29,7 @@ public class Validator {
 	}
 
 	public static void isMoneyValidate(int money) {
-		if (money % 1000 != 0){
+		if (money % 1000 != 0) {
 			throw new IllegalArgumentException(INVALID_INPUT);
 		}
 	}
