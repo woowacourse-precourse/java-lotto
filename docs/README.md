@@ -18,8 +18,8 @@
       사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
 
 ## 기능 목록
-- [ ] "구입금액을 입력해 주세요."를 출력한다. - ShowMessage#showInputAmountBuy()
-- [ ] "n개를 구매했습니다."를 출력한다. - ShowMessage#showHowManyBuy(int number)
+- [x] "구입금액을 입력해 주세요."를 출력한다. - ShowMessage#showInputAmountBuy()
+- [x] "n개를 구매했습니다."를 출력한다. - ShowMessage#showHowManyBuy(int number)
 - [ ] 발행한 로또 번호를 "[n, n, n, n, n, n]"의 형식으로 출력한다. - ShowMessage#showLottoNumber(List<List<Integer>> lottoNumber)
 - [ ] "당첨 번호를 입력해 주세요."를 출력한다. - ShowMessage#showInputLottoNumber()
 
