@@ -20,11 +20,11 @@ public class LottoSystem {
         }
     }
 
-    private void setUserLottoCount() {
+    public void setUserLottoCount() {
         this.userLottoCount = userLottoNumber / STANDARD;
     }
 
-    private Integer getUserLottoCount() {
+    public Integer getUserLottoCount() {
         return userLottoNumber;
     }
 
