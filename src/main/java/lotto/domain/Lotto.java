@@ -17,7 +17,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         validateBySize(numbers);
-        validateByRange(numbers);
+        validateNumbersByRange(numbers);
         validateByOverlap(numbers);
     }
 
@@ -28,13 +28,13 @@ public class Lotto {
         }
     }
 
-    private void validateByRange(List<Integer> numbers) {
+    private void validateNumbersByRange(List<Integer> numbers) {
         for (Integer number : numbers) {
-            inLottoRange(number);
+            validateNumberInLottoRange(number);
         }
     }
 
-    private void inLottoRange(int number) {
+    private void validateNumberInLottoRange(int number) {
         if (number < 1 || number > 45) {
             Output.printErrorAndExit(ExceptionType.NOT_WITHIN_THE_RANGE.getMessage());
             throw new IllegalArgumentException(ExceptionType.NOT_WITHIN_THE_RANGE.getMessage());
@@ -50,9 +50,14 @@ public class Lotto {
         }
     }
 
-    public void addNumber(int number) {
-        this.numbers.add(number);
+
+
+    private void validateForBonusNumber(int number) {
+        validateNumberInLottoRange(number);
     }
 
-    // TODO: 추가 기능 구현
+    public void addNumber(int number) {
+        validateForBonusNumber(number);
+        this.numbers.add(number);
+    }
 }
