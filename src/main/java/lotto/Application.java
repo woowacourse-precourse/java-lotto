@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -49,5 +50,26 @@ public class Application {
 
     public static List<Integer> getRandomUniqueNumbers() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    }
+
+    public static Lotto getWinningLotto(String string) throws IllegalArgumentException {
+        List<Integer> winningNumbers = new ArrayList<>();
+        for (String splitString : string.split(",")) {
+            winningNumbers.add(getWinningNumber(splitString));
+        }
+        return new Lotto(winningNumbers);
+    }
+
+    private static int getWinningNumber(String string) throws IllegalArgumentException {
+        int number;
+        try {
+            number = Integer.parseInt(string);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호가 숫자 형식이 아닙니다.");
+        }
+        if (number < 1 || 45 < number) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호가 1부터 45 사이의 수가 아닙니다.");
+        }
+        return number;
     }
 }
