@@ -95,4 +95,8 @@ public class Request {
 			throw new IllegalArgumentException();
 		}
 	}
+
+	public String getUserInput() {
+		return userInput;
+	}
 }
