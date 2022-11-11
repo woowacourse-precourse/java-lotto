@@ -10,9 +10,9 @@
   - [x] 사용자가 입력한 당첨 번호가 6개가 아닐 경우 IllegalArguemntException 예외 처리 구현 - checkBuyerInputIsNotSixNumbers()
 
 - [ ] 로또 구매자 - Class LottoBuyer
-  - [x] 로또를 구매할 돈을 입력 구현 - inputMoney();
-  - [x] 로또의 당첨 번호를 입력 구현 - inputLottoNumbers();
-  - [ ] 로또의 보너스 번호를 입력 구현
+  - [x] 로또를 구매할 돈을 입력 구현 - inputMoney()
+  - [x] 로또의 당첨 번호를 입력 구현 - inputLottoNumbers()
+  - [x] 로또의 보너스 번호를 입력 구현 - inputLottoNumbers()
 
 - [ ] 복권 - Class Lotto
   - [ ] 로또 마킹 기능 구현
@@ -31,3 +31,4 @@
   - [x] 문자열이 1000으로 나누어 떨어지는지 판별 여부 - isDividedBuyThousand()
   - [x] 문자열내의 특정 문자의 갯수를 반환 기능 구현 - countChar()
   - [x] 문자열을 특정 문자열을 기준으로 나누는 기능 구현 - splitInteger()
+  - [ ] 중복 확인 기능 구현
