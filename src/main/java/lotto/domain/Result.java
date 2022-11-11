@@ -1,8 +1,12 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
+import lotto.utils.Winning;
 
 public class Result {
     List<List<Integer>> purchasedLotteries;
@@ -53,8 +57,16 @@ public class Result {
             if (winningCount == 3) {
                 resultMap.put("fifth", resultMap.get("fifth") + 1);
             }
-
-
         }
+    }
+
+    public void getProfitRate() {
+        int totalWinningPrize = getTotalWinningPrize();
+    }
+
+    private int getTotalWinningPrize() {
+        return resultMap.keySet().stream()
+                .map(key -> Winning.getPrizeByLabel(key) * resultMap.get(key))
+                .reduce(0, Integer::sum);
     }
 }
