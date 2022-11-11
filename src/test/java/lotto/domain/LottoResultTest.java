@@ -9,18 +9,11 @@ class LottoResultTest {
 
     @Test
     void 로또_결과() {
-        LottoResult sixMatches = new LottoResult(WINNING_NUMBERS, List.of(1, 2, 3, 4, 5, 6), 10);
-        LottoResult fiveMatches = new LottoResult(WINNING_NUMBERS, List.of(1, 2, 3, 4, 5, 7), 10);
-        LottoResult fourMatches = new LottoResult(WINNING_NUMBERS, List.of(1, 2, 3, 4, 7, 8), 10);
-        LottoResult threeMatches = new LottoResult(WINNING_NUMBERS, List.of(1, 2, 3, 7, 8, 9), 10);
-        LottoResult fiveMatchesAndBonus = new LottoResult(WINNING_NUMBERS, List.of(1, 2, 3, 4, 5, 7), 7);
+        LottoResult result = new LottoResult(WINNING_NUMBERS,
+                List.of(List.of(1, 2, 3, 4, 5, 6), List.of(1, 2, 3, 4, 5, 7), List.of(1, 2, 3, 4, 7, 8),
+                        List.of(1, 2, 3, 7, 8, 9), List.of(1, 2, 3, 4, 5, 42)), 42);
 
-        Assertions.assertEquals(6, sixMatches.getMatch());
-        Assertions.assertEquals(5, fiveMatches.getMatch());
-        Assertions.assertEquals(4, fourMatches.getMatch());
-        Assertions.assertEquals(3, threeMatches.getMatch());
-        Assertions.assertEquals(1, fiveMatchesAndBonus.getBonusMatch());
-
+        Assertions.assertEquals(List.of(6, 5, 4, 3, 5), result.getMatches());
+        Assertions.assertEquals(List.of(0, 0, 0, 0, 1), result.getBonusMatches());
     }
-
 }
