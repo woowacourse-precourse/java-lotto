@@ -1,5 +1,9 @@
 package lotto.exception;
 
+import java.util.Arrays;
+
+import lotto.domain.ConstValue;
+
 public class InputExceptionHandler {
 	private static final String NUMBER_EXCEPTION_MESSAGE = "[ERROR] 구입 금액은 숫자로 입력받아야 합니다.";
 	private static final String DIVISION_EXCEPTION_MESSAGE = "[ERROR] 구입 금액은 1000원 단위여야 합니다.";
@@ -10,6 +14,12 @@ public class InputExceptionHandler {
 	private static final String DUPLICATED_BONUS_NUMBER_MESSAGE = "[ERROR] 보너스 번호는 당첨 번호와 중복되면 안됩니다.";
 	private static final String NUMBER_REGEX = "^[0-9]*$";
 	private static final int CASH_UNIT = 1000;
+	private static final String REST_DIVISION_REGEX = ",";
+
+	public void checkPurchaseAmountForm(String input) {
+		isNumber(input);
+		divideByThousand(input);
+	}
 
 	private void isNumber(String input) {
 		if (!input.matches(input)) {
@@ -23,4 +33,13 @@ public class InputExceptionHandler {
 		}
 	}
 
+	private void isDuplicatedWinningNumber(String input) {
+		int distinctNumberCount = (int)Arrays.stream(input.split(REST_DIVISION_REGEX))
+			.map(Integer::parseInt)
+			.distinct()
+			.count();
+		if (distinctNumberCount != ConstValue.LOTTO_NUMBERS) {
+			throw new IllegalArgumentException(DUPLICATED_WINNING_NUMBER_EXCEPTION);
+		}
+	}
 }
