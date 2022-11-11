@@ -8,11 +8,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Validator {
-    private static final String SIZE_ERROR_MESSAGE = "[ERROR] 로또 번호의 개수는 6개이어야 합니다.";
-    private static final String DUPLICATES_ERROR_MESSAGE = "[ERROR] 로또 번호에 중복된 숫자가 있습니다.";
-    private static final String RANGE_ERROR_MESSAGE = "[ERROR] 로또 번호에 1 ~ 45 범위를 벗어난 숫자가 있습니다.";
-    private static final String DIGIT_ERROR_MESSAGE = "[ERROR] 숫자만 입력 가능합니다.";
-    private static final String DIGIT_COMMA_ERROR_MESSAGE = "[ERROR] 숫자와 콤마(,)만 입력 가능합니다.";
+    private static final String PREFIX = "[ERROR] ";
+    private static final String SIZE_ERROR_MESSAGE = PREFIX + "로또 번호의 개수는 6개이어야 합니다.";
+    private static final String DUPLICATES_ERROR_MESSAGE = PREFIX + "로또 번호에 중복된 숫자가 있습니다.";
+    private static final String RANGE_ERROR_MESSAGE = PREFIX + "로또 번호에 1 ~ 45 범위를 벗어난 숫자가 있습니다.";
+    private static final String DIGIT_ERROR_MESSAGE = PREFIX + "숫자만 입력 가능합니다.";
+    private static final String DIGIT_COMMA_ERROR_MESSAGE = PREFIX + "숫자와 콤마(,)만 입력 가능합니다.";
 
     public void validateNumberSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBER_SIZE) {
