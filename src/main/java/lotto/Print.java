@@ -10,16 +10,22 @@ public class Print {
 	int lottonum = 0;
 	int bonusnumber = 0;
 	enum rank { 
-		FIRST(6), SECOND(5), THIRD(5), FOURTH(4), FIFTH(3);
+		FIFTH(3,5000), FOURTH(4,50000), THIRD(5,1500000), SECOND(5,30000000), FIRST(6,2000000000);
 		
 		private final int value;
-	
-		rank(int value) {
+		private final int price;
+		
+		rank(int value, int price) {
 			this.value = value;
+			this.price = price;
 		} 
 		
 		public int getValue() {
 			return this.value;
+		}
+		
+		public int getPrice() {
+			return this.price;
 		}
 	};
 	HashMap<Integer, Integer> rankmap = new HashMap<>();
@@ -35,7 +41,16 @@ public class Print {
 	}
 	
 	public void printWin() {
-		
+		int ranknum = 5;
+		for (rank r : rank.values())) {
+			if (ranknum == 2) {
+				System.out.printf("%d개 일치, 보너스 볼 일치 (%d원) - %d개", r.getValue(), r.getPrice(), rankmap.get(ranknum));
+				ranknum--;
+				continue;
+			}
+			System.out.printf("%d개 일치 (%d원) - %d개", r.getValue(), r.getPrice(), rankmap.get(ranknum));
+			ranknum--;
+		}
 	}
 	
 	public void countWin(List<Integer> inputnumbers, int bonusnumber) {

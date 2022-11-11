@@ -30,7 +30,9 @@ public class Application {
         
         bonusnumber = askBonusNumber(inputnumbers);  // 사용자 입력으로 보너스 숫자를 받아서 bonusnumber 변수에 저장하기
         
-        print.countWin(bonusnumber);
+        print.countWin(inputnumbers, bonusnumber);  // 각 등수당 몇번 해당하는지 세어주는 기능
+        
+        print.printWin();
     }
     
     public static int askTotalPrice() {
