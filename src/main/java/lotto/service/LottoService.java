@@ -12,16 +12,28 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.domain.Lotto;
+import lotto.domain.Rank;
 import lotto.domain.WinningLotto;
+import lotto.repository.RankRepository;
 
 public class LottoService {
 
+    int purchasePrice;
     List<Lotto> playerPurchaseLottos = new ArrayList<>();
     WinningLotto winningLotto;
 
     public void play() {
         setPlayerPurchaseLottos(purchaseLottos());
         setWinningLotto(inputWinningLotto());
+        List<Rank> lottoResults = getResult();
+    }
+
+    private List<Rank> getResult() {
+        List<Rank> lottoResults = new ArrayList<>();
+        for (Lotto playerPurchaseLotto : playerPurchaseLottos) {
+            lottoResults.add(RankRepository.getRank(playerPurchaseLotto, winningLotto));
+        }
+        return lottoResults;
     }
 
     private void setWinningLotto(WinningLotto inputWinningLotto) {
@@ -68,7 +80,7 @@ public class LottoService {
     }
 
     List<Lotto> purchaseLottos() {
-        int purchasePrice = inputPurchasePrice();
+        this.purchasePrice = inputPurchasePrice();
         if (purchasePrice % LOTTO_PRICE != 0) {
             System.out.printf("[ERROR] 로또는 %d원 단위로 나누어 떨어져야 합니다.\n", LOTTO_PRICE);
             throw new IllegalArgumentException();
