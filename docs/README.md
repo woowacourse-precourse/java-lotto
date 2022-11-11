@@ -88,7 +88,7 @@ Enum : Rank
 [constructor]<br>
 - Draw(Lotto winningLotto, int bonusNum) // (feat.3,feat.4)
   - validateBonusNumRange(bonusNum)
-  - validateBonusNumAndLottoOverlap()
+  - validateBonusNumAndLottoOverlap(Lotto winningLotto, int bonusNum)
   - setRankClassification()
   - setWinningStats()
   - this.
@@ -101,7 +101,7 @@ Enum : Rank
 - private int winningNumSize(Lotto tryLotto) // 개개인의 로또 비교후 맞는 숫자 출력
 - private boolean isBonusExist(int bonusNum) // 보너스 번호가 있는지 확인
 - private void validateBonusNumRange(int bonusNum) // (valid.3)
-- private void validateBonusNumAndLottoOverlap() // (valid.5)
+- private void validateBonusNumAndLottoOverlap(Lotto winningLotto, int bonusNum) // (valid.5)
 ```
 
 ### Rate : 수익률을 계산해주는 회사
