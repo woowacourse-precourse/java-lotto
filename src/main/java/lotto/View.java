@@ -19,12 +19,14 @@ public class View {
             lotto.getNumbers().sort(Comparator.naturalOrder());
             System.out.println(lotto.getNumbers().toString());
         }
+        System.out.println();
     }
 
     public List<Integer> askWinningNumber() {
         List<Integer> winningLotto = new ArrayList<>();
         System.out.println("당첨 번호를 입력해 주세요.");
         String number = Console.readLine();
+        System.out.println();
         number = number.replaceAll(" ", "");
         String[] winningNumbers = number.split(",");
 
@@ -37,10 +39,13 @@ public class View {
     public int askBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonusNumber = Console.readLine();
+        System.out.println();
         return Integer.parseInt(bonusNumber);
     }
 
     public void showWinCase(WinningCount winningCount) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " + winningCount.getCount().get("3") + "개");
         System.out.println("4개 일치 (50,000원) - " + winningCount.getCount().get("4") + "개");
         System.out.println("5개 일치 (1,500,000원) - " + winningCount.getCount().get("5") + "개");
