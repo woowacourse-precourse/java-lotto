@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,6 +21,10 @@ public class Lotto {
         if (Collections.min(numbers) < 1 || 45 < Collections.max(numbers)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public void add(Integer number) {
+        numbers.add(number);
     }
 
     // TODO: 추가 기능 구현
