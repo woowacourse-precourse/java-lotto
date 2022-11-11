@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Lottos {
@@ -19,6 +20,7 @@ public class Lottos {
     public void initLottos(int set){
         for(int i=0;i<set;i++){
             Lotto lotto=new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6));
+            lotto.rangeLottoNumbers();
             lottos.add(lotto);
         }
     }
