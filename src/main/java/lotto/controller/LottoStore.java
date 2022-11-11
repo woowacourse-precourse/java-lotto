@@ -22,9 +22,13 @@ public class LottoStore {
 
     public void startLottoService() {
 
-        List<Lotto> customerLottos = buyLottos();
-        WinningLotto winningLotto = makeWinningLotto();
-        showWinningStatistic(winningLotto, customerLottos);
+        try {
+            List<Lotto> customerLottos = buyLottos();
+            WinningLotto winningLotto = makeWinningLotto();
+            showWinningStatistic(winningLotto, customerLottos);
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+        }
 
     }
 
