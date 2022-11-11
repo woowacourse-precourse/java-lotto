@@ -1,5 +1,6 @@
 package lotto;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import lotto.util.InputUtil;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,6 +14,13 @@ public class InputUtilTest {
     @BeforeEach
     void beforeEach() {
         inputUtil = new InputUtil();
+    }
+
+    @Test
+    void 올바른_구입금액_입력() {
+        String input = "1000";
+        Assertions.assertThatNoException()
+                .isThrownBy(() -> inputUtil.checkValidationMoney(input));
     }
 
     @Test
