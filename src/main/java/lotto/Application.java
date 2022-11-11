@@ -33,7 +33,7 @@ public class Application {
         return number / 1000;
     }
 
-    public List<Integer> getRandomUniqueNumberList() {
+    public static List<Integer> getRandomUniqueNumberList() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 }
