@@ -225,3 +225,17 @@ public class Lotto {
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
     - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+
+# 미션 - 로또
+## 기능 목록
+- [x] 로또 발행을 위해 1 ~ 45까지의 서로 다른 임의의 수 6개를 뽑는다.
+- [x] 서로 다른 임의의 수 당첨번호(6개), 보너스볼(1개)와 발행한 로또 번호(6자리)를 비교할 수 있다. - Lotto#compare()
+  - [x] 몇 개의 숫자가 같은지를 알 수 있다. - Lotto#correctCount()
+- [x] 1등 : 발행번호, 당첨번호 일치하는 수가 6개
+- [x] 2등 : 발행번호, 당첨번호 일치하는 수가 5개 + 발행번호, 보너스번호 일치
+- [x] 3등 : 발행번호, 당첨번호 일치하는 수가 5개
+- [x] 4등 : 발행번호, 당첨번호 일치하는 수가 4개
+- [x] 5등 : 발행번호, 당첨번호 일치하는 수가 3개
+- [x] 당첨금액을 구할 수 있다. - Lotto#getLotteryWinnings()
+- [x] 총 수익률(당첨금액총합 / 구매금액 * 100)을 구할 수 있다. - Lotto#getTotalLotteryWinningsProfit()
