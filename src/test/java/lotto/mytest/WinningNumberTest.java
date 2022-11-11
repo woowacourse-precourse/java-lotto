@@ -45,4 +45,12 @@ public class WinningNumberTest {
 			WinningNumber.checkWinningNumber(winningNumber);
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@DisplayName("0이 포함된 경우 예외가 발생")
+	@Test
+	void zero() {
+		assertThatThrownBy(() -> {
+			WinningNumber.checkWinningNumber("0,1,2,3,4,5");
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
 }

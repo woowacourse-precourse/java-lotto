@@ -11,7 +11,7 @@ public class WinningNumber {
 
 		while (splitter.hasMoreTokens()) {
 			String token = splitter.nextToken();
-			if (!token.matches("[1-9]+")) {
+			if (!token.matches("[0-9]+")) {
 				throw new IllegalArgumentException("알맞은 숫자가 아닙니다.");
 			}
 		}
