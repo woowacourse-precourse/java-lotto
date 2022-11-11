@@ -5,6 +5,7 @@ import java.util.List;
 public class Compare {
 	private int[] compareResult = {0, 0, 0, 0, 0};
 	private int sum;
+	private String yield;
 
 	public Compare() {}
 
@@ -72,5 +73,9 @@ public class Compare {
 				(1_500_000 * compareResult[2]) +
 				(50_000 * compareResult[3]) +
 				(5_000 * compareResult[4]);
+	}
+
+	public void figureYield(int bettingMoney) {
+		yield = String.format("%.1f", (double) 100 * sum / bettingMoney);
 	}
 }
