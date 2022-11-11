@@ -115,7 +115,7 @@ public class LottoService {
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {
             System.out.println("[ERROR] 당첨 번호는 반드시 숫자여야 합니다.\n");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(e);
         }
     }
 
@@ -125,7 +125,7 @@ public class LottoService {
             return Integer.parseInt(playerInput);
         } catch (NumberFormatException e) {
             System.out.println("[ERROR] 보너스 번호는 반드시 숫자여야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(e);
         }
     }
 
@@ -149,7 +149,7 @@ public class LottoService {
             return Integer.parseInt(playerInput);
         } catch (NumberFormatException e) {
             System.out.println("[ERROR] 로또 구매 금액은 반드시 숫자여야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(e);
         }
     }
 
