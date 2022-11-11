@@ -29,6 +29,14 @@ public class LottoCompany {
         makeWinningNumbers(winningNumbers);
     }
 
+    public void bonusNumber(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonusNumber = Console.readLine();
+        validator.validateBonus(bonusNumber, forValidate);
+        this.bonus = lottoNumberMap.get(Integer.parseInt(bonusNumber));
+        result.compareNumbers(this.lottos, this.lotto, this.bonus);
+    }
+
     public void makeWinningNumbers(String numbers) {
         String [] winningNumbers = numbers.split(",");
         Arrays.sort(winningNumbers);
