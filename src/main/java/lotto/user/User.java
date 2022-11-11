@@ -2,8 +2,8 @@ package lotto.user;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import lotto.user.validation.UserBonusValidation;
-import lotto.user.validation.UserNumbersValidation;
+import lotto.domain.validation.LottoBonusValidation;
+import lotto.domain.validation.LottoNumbersValidation;
 import lotto.user.validation.UserMoneyValidation;
 
 public class User {
@@ -15,13 +15,13 @@ public class User {
 
     public static List<Integer> inputLottoNumbers() {
         String userNumbers = Console.readLine();
-        UserNumbersValidation.validate(userNumbers);
+        LottoNumbersValidation.validate(userNumbers);
         return UserUtil.convertUserInputToNumbers(userNumbers);
     }
 
     public static Integer inputBonusNumber() {
         String userNumbers = Console.readLine();
-        UserBonusValidation.validate(userNumbers);
+        LottoBonusValidation.validate(userNumbers);
         return Integer.valueOf(userNumbers);
     }
 }

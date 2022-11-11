@@ -1,8 +1,9 @@
-package lotto.user.validation;
+package lotto.domain.validation;
 
 import lotto.domain.LottoEnum;
+import lotto.user.validation.ExceptionMessage;
 
-public class UserBonusValidation {
+public class LottoBonusValidation {
     private static final String NUMBER_REGEXP = "^[0-9]+$";
     public static void validate(String userInput) {
         validateOnlyNumber(userInput);

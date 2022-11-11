@@ -1,12 +1,12 @@
-package lotto.user.validation;
+package lotto.domain.validation;
 
 import java.util.HashSet;
 import java.util.List;
-import lotto.domain.Lotto;
 import lotto.domain.LottoEnum;
 import lotto.user.UserUtil;
+import lotto.user.validation.ExceptionMessage;
 
-public class UserNumbersValidation {
+public class LottoNumbersValidation {
     private static final String INPUT_NUMBERS_REGEXP = "^([1-9]+,)+[1-9]+$";
 
     public static void validate(String userInput) {
@@ -32,7 +32,7 @@ public class UserNumbersValidation {
         }
     }
 
-    private static void validateNoDuplicateNumbers(List<Integer> userNumbers) {
+    public static void validateNoDuplicateNumbers(List<Integer> userNumbers) {
         HashSet<Integer> numberAppeared = new HashSet<>();
         for (Integer number : userNumbers) {
             checkDuplicateNumber(number, numberAppeared);
