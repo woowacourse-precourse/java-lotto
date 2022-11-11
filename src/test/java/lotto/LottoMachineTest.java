@@ -12,14 +12,14 @@ class LottoMachineTest {
 
     @Test
     void 로또번호_크기_확인() {
-        List<Integer> lottoNumbers = lottoMachine.create();
+        List<Integer> lottoNumbers = lottoMachine.createNumbers();
 
         assertThat(lottoNumbers.size()).isEqualTo(6);
     }
 
     @Test
     void 로또번호_중복_확인() {
-        List<Integer> lottoNumbers = lottoMachine.create();
+        List<Integer> lottoNumbers = lottoMachine.createNumbers();
         long lottoSize = lottoNumbers.stream().count();
 
         assertThat(lottoNumbers.size()).isEqualTo(lottoSize);
@@ -27,7 +27,7 @@ class LottoMachineTest {
 
     @Test
     void 로또번호_정렬_확인() {
-        List<Integer> lottoNumbers = lottoMachine.create();
+        List<Integer> lottoNumbers = lottoMachine.createNumbers();
 
         for (int i = 0; i < lottoNumbers.size() - 1; i++) {
             assertThat(lottoNumbers.get(i)).isLessThan(lottoNumbers.get(i + 1));

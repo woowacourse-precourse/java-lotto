@@ -9,7 +9,7 @@ import static lotto.LottoConstant.*;
 
 public class LottoMachine {
 
-    public List<Integer> create() {
+    public List<Integer> createNumbers() {
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUM,
                 MAX_LOTTO_NUM, LOTTO_SIZE);
 
