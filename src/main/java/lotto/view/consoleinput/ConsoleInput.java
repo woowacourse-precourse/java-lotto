@@ -1,6 +1,5 @@
 package lotto.view.consoleinput;
 
-import lotto.constant.ErrorMessage;
 import lotto.exception.UnexpectedException;
 
 import java.io.BufferedReader;

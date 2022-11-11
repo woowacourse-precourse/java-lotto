@@ -3,7 +3,6 @@ package lotto.utils;
 import lotto.constant.ErrorMessage;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class InputParser {

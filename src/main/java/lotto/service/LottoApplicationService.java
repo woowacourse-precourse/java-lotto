@@ -1,10 +1,6 @@
 package lotto.service;
 
-import lotto.domain.Money;
-import lotto.domain.LottoAutoGenerator;
-import lotto.domain.LottoCollection;
-import lotto.domain.WinningLotto;
-import lotto.domain.WinningLottoGenerator;
+import lotto.domain.*;
 import lotto.utils.InputParser;
 import lotto.view.consoleinput.ConsoleInput;
 import lotto.view.consoleoutput.ConsoleOutput;
