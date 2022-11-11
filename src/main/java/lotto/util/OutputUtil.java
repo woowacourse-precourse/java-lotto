@@ -23,7 +23,16 @@ public class OutputUtil {
         }
     }
 
+    public static void printInputWinningNumbers() {
+        System.out.println(Message.INPUT_WINNING_NUMBERS_MESSAGE.getMessage());
+    }
+
+    public static void printInputBonusNumber() {
+        System.out.println(Message.INPUT_BONUS_NUMBER_MESSAGE.getMessage());
+    }
+
     public static void printResult(Map<Number, Integer> ranks) {
+        System.out.println(Message.TOTAL_RESULT_MESSAGE);
         System.out.println(Message.RESULT_FIFTH.getMessage() + ranks.get(Number.FIVE) + "개");
         System.out.println(Message.RESULT_FOURTH.getMessage() + ranks.get(Number.FOUR) + "개");
         System.out.println(Message.RESULT_THIRD.getMessage() + ranks.get(Number.THREE) + "개");
