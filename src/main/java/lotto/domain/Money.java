@@ -1,8 +1,11 @@
 package lotto.domain;
 
+import lotto.view.Output;
+
 public class Money {
 
-    private static final String UNIT_OF_AMOUNT_ERROR = "[ERROR] 구매 금액은 1000원 단위로 입력 가능합니다.";
+    private static final String UNIT_OF_MONEY_ERROR = "구매 금액은 1000원 단위로 입력 가능합니다.";
+    private static final String MONEY_ONLY_NUMBER_MESSAGE = "구입 금액은 숫자만 입력 가능합니다.";
     private int money;
 
     public Money(int money) {
@@ -10,15 +13,26 @@ public class Money {
     }
 
     public Money(String money) {
-        this.money = validate(Integer.parseInt(money));
+        this.money = validate(parseInt(money));
     }
 
     public int validate(int money) {
-        if (money % 1000 == 0) {
+        if (money % 1000 == 0 && money != 0) {
             return money;
         }
-        throw new IllegalArgumentException(UNIT_OF_AMOUNT_ERROR);
+        Output.printExceptionMessage(UNIT_OF_MONEY_ERROR);
+        throw new IllegalArgumentException();
     }
+
+    public int parseInt(String money) {
+        try {
+            return Integer.parseInt(money);
+        } catch (IllegalArgumentException e) {
+            Output.printExceptionMessage(MONEY_ONLY_NUMBER_MESSAGE);
+            throw e;
+        }
+    }
+
 
     public boolean hasMoney() {
         return money != 0;
