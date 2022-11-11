@@ -2,7 +2,6 @@ package lotto.domain.strategy.lottosissuancestrategy;
 
 import lotto.domain.Lottos;
 import lotto.domain.LottosTest;
-import lotto.domain.strategy.lottosissuancestrategy.LottosIssuanceStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

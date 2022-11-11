@@ -19,7 +19,7 @@ public class Lottos {
     private LottoRank parseRank(final WinningLottoNumbers winningLottoNumbers, final Lotto lotto) {
         int countOfSameLottoNumber = countOfMatchingNumber(winningLottoNumbers, lotto);
         boolean existBonusLottoNumber = isBonusNumberExist(winningLottoNumbers, lotto);
-    
+        
         return LottoRank.parseRank(countOfSameLottoNumber, existBonusLottoNumber);
     }
     

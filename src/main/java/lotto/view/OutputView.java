@@ -46,7 +46,7 @@ public class OutputView {
     
     public static void printLottoIssuanceResults(final LottosDTO lottosDTO) {
         final List<List<Integer>> lottos = lottosDTO.getLottos();
-    
+        
         printNumberOfPurchases(lottos);
         printLottosIssuanceResults(lottos);
     }
@@ -74,7 +74,7 @@ public class OutputView {
     
     public static void printWinningStats(final LottoRanksDTO lottoRanksDTO) {
         final List<LottoRank> lottoRanks = lottoRanksDTO.getLottoRanks();
-    
+        
         printWinningStatsGuidanceMessage();
         printDivisionLine();
         printCoreWinningStats(lottoRanks);

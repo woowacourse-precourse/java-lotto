@@ -12,7 +12,8 @@ class UtilClassCreateExceptionTest {
     void throwUtilClassCreateExceptionT() {
         assertThatThrownBy(() -> {
             throw new UtilClassCreateException();
-        }).isExactlyInstanceOf(UtilClassCreateException.class)
+        })
+                .isExactlyInstanceOf(UtilClassCreateException.class)
                 .hasMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
 }

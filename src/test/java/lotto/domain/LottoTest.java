@@ -20,7 +20,7 @@ public class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
-
+    
     @Test
     @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
     void createLottoByDuplicatedNumber() {

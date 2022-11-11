@@ -1,7 +1,6 @@
 package lotto.validator.domain;
 
 import lotto.constants.ErrorMessageConstant;
-import lotto.validator.domain.PaymentValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
