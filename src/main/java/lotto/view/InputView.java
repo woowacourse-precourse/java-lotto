@@ -41,7 +41,8 @@ public class InputView {
 	}
 
 	public void validWinningNumber(String userInput) {
-		if (notExistInputValue(userInput) ||  isWrongSize(userInput) || isDuplicateNumber(userInput) ) {
+		if (notExistInputValue(userInput) ||  isWrongSize(userInput) || isDuplicateNumber(userInput)
+			|| isWrongRangeWinningNumber(userInput)) {
 			throw new IllegalArgumentException("[ERROR] 당첨 번호는 1~45의 범위를 가지는 6개의 숫자여야 합니다.");
 		}
 	}
@@ -52,7 +53,7 @@ public class InputView {
 	}
 
 	private boolean isWrongRangeWinningNumber(String str) {
-		return Arrays.stream(str.split(",")).map(Integer::parseInt).noneMatch(num -> 1 <= num && num <= 45);
+		return Arrays.stream(str.split(",")).mapToInt(Integer::parseInt).noneMatch(num -> 1 <= num && num <= 45);
 	}
 
 	private boolean isWrongSize(String str) {
