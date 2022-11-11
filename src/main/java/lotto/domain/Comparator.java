@@ -23,6 +23,10 @@ public class Comparator {
         }
     }
 
+    public LinkedHashMap<Prize, Integer> getWinningTickets() {
+        return winningTickets;
+    }
+
     public void compareTickets() {
         for (List<Integer> ticket: this.tickets) {
             compareNumbers(ticket);
@@ -46,6 +50,9 @@ public class Comparator {
     }
 
     private void countSameNumber(int same, boolean bonus) {
+        if (same < 3) {
+            return;
+        }
         if (same == 3 && !bonus) {
             int count = winningTickets.get(Prize.FIFTH);
             this.winningTickets.put(Prize.FIFTH, count + 1);
