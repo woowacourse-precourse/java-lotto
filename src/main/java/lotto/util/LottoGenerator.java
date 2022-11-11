@@ -5,7 +5,6 @@ import lotto.config.InputConfig;
 import lotto.domain.Lotto;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class LottoGenerator {
@@ -29,7 +28,6 @@ public class LottoGenerator {
 
     private List<Integer> generateLottoNumbers() {
         List<Integer> lottoNum = Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, LOTTO_NUMBER_COUNT);
-        Collections.sort(lottoNum);
         return lottoNum;
     }
 
