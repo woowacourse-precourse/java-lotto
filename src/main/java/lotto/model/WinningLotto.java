@@ -1,5 +1,6 @@
 package lotto.model;
 
+import java.util.Collections;
 import java.util.List;
 
 public class WinningLotto extends Lotto {
@@ -22,5 +23,15 @@ public class WinningLotto extends Lotto {
         if (winningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(EXIST_BONUS_NUMBER_ERROR);
         }
+    }
+
+    public int countMatchingLottoNumbers(List<Integer> lottoNumbers) {
+        int countMatching = 0;
+        for (Integer lottoNumber : lottoNumbers) {
+            if (winningNumbers.contains(lottoNumber)) {
+                countMatching += 1;
+            }
+        }
+        return countMatching;
     }
 }
