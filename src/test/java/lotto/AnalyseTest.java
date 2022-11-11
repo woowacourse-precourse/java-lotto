@@ -81,4 +81,16 @@ public class AnalyseTest {
         assertEquals(expectedStat.get(third), Analyse.getStats().get(third));
     }
 
+    @Test
+    @DisplayName("로또 당첨 번호와 4개가 일치할 때")
+    void fourCorrect() throws Exception {
+        Prize fourth = Prize.FOURTH;
+        expectedStat.put(fourth, 1);
+        Method method = InvokeMethod();
+
+        method.invoke(analyse, lottos.get(3), prize);
+
+        assertEquals(expectedStat.get(fourth), Analyse.getStats().get(fourth));
+    }
+
 }
