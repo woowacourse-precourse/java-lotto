@@ -31,7 +31,7 @@ public class User {
 
     }
 
-    private void enterWinningNumberValidation(List<String> winningNumber) {
+    public void enterWinningNumberValidation(List<String> winningNumber) {
         HashSet set = new HashSet(winningNumber);
 
         if (set.size() != winningNumber.size()) {
@@ -58,7 +58,7 @@ public class User {
         return bonusNumber;
     }
 
-    private void enterBonusNumberValidation(List<Integer> winningNumber, int bonusNumber) {
+    public void enterBonusNumberValidation(List<Integer> winningNumber, int bonusNumber) {
 
         for (Integer number : winningNumber) {
             if (bonusNumber == number) {
