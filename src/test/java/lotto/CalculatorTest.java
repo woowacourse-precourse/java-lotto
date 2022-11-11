@@ -13,4 +13,17 @@ class CalculatorTest {
 
         assertThat(count).isEqualTo(14);
     }
+
+    @Test
+    void 수익률_계산_테스트() {
+        Calculator calculator = new Calculator();
+        double answer = calculator.calculateYield(Rank.FIFTH, 8000);
+        assertThat(answer).isEqualTo(62.5);
+    }
+    @Test
+    void 수익률_소수점_둘째짜리_반올림_테스트() {
+        Calculator calculator = new Calculator();
+        double answer = calculator.calculateYield(Rank.FIFTH, 9000);
+        assertThat(answer).isEqualTo(55.56);
+    }
 }
