@@ -5,9 +5,12 @@ import java.util.List;
 
 public class LottoCalculate {
     enum LottoPrizeMoney {
-        NONE(0), FIRST(2000000000), SECOND(30000000), THIRD(1500000), FOURTH(50000), FIFTH(5000);
+        NONE(0, 0), FIRST(1, 2000000000), SECOND(2, 30000000), THIRD(3, 1500000), FOURTH(4, 50000), FIFTH(5, 5000);
+        final int prize;
         final int prizeMoney;
-        LottoPrizeMoney(int prizeMoney){
+
+        LottoPrizeMoney(int prize, int prizeMoney) {
+            this.prize = prize;
             this.prizeMoney = prizeMoney;
         }
     }
