@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import view.Input;
+import view.Valid;
 
 
 import java.util.HashSet;
@@ -73,6 +74,81 @@ class LottoTest {
             lottos.generateLottos();
             //then
             assertThat(lottos.getLottos().size()).isEqualTo(numberOfLotto);
+        }
+    }
+
+    @Nested
+    class CheckInputAnswerValid {
+        //given
+        Input input = new Input();
+        @DisplayName("로또 번호의 개수가 중복되면 예외가 발생한다")
+        @Test
+        void repeatNumberInAnswer() {
+            //when
+            String[] answer = {"1","2","3","3","5","6"};
+            //then
+            assertThatThrownBy(() -> input.returnAnswer(answer))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR] 1-45까지의 수 중 서로 다른 6개의 수를 골라 입력하세요.");
+        }
+        @DisplayName("로또 번호의 개수가 6개 이상이면 예외가 발생한다")
+        @Test
+        void isNumberOverLength() {
+            //when
+            String[] answer = {"1","2","9","3","4","5","6"};
+            //then
+            assertThatThrownBy(() -> input.returnAnswer(answer))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR] 1-45까지의 수 중 서로 다른 6개의 수를 골라 입력하세요.");
+        }
+        @DisplayName("로또 번호가 1~45 사이의 숫자가 아니면 예외가 발생한다")
+        @Test
+        void isNumberNotInRange() {
+            //when
+            String[] answer = {"100","2","1","4","5","6"};
+            //then
+            assertThatThrownBy(() -> input.returnAnswer(answer))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR] 1-45까지의 수 중 서로 다른 6개의 수를 골라 입력하세요.");
+        }
+    }
+
+    @Nested
+    class CheckInputBonusValid {
+        //given
+        Input input = new Input();
+        @DisplayName("보너스 숫자가 입력 숫자들과 중복될 때")
+        @Test
+        void repeatBonusNumber() {
+            //when
+            String[] answer = {"1", "2", "3", "4", "5", "6"};
+            String bonus = "3";
+            //then
+            assertThatThrownBy(() -> input.returnBonus(bonus, answer))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR] 보너스 번호는 정답 수 제외 1~45 수 중 하나의 숫자를 입력해 주세요.");
+        }
+        @DisplayName("보너스 숫자가 두 개 이상 입력될 때")
+        @Test
+        void enterBonusNumberOverOne() {
+            //when
+            String[] answer = {"1","2","3","3","5","6"};
+            String bonus = "4,6";
+            //then
+            assertThatThrownBy(() -> input.returnBonus(bonus, answer))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR] 보너스 번호는 정답 수 제외 1~45 수 중 하나의 숫자를 입력해 주세요.");
+        }
+        @DisplayName("보너스 숫자가 1~46 사이의 수가 아닐 때")
+        @Test
+        void isNumberNotInRange() {
+            //when
+            String[] answer = {"1","2","3","3","5","6"};
+            String bonus = "50";
+            //then
+            assertThatThrownBy(() -> input.returnBonus(bonus, answer))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR] 보너스 번호는 정답 수 제외 1~45 수 중 하나의 숫자를 입력해 주세요.");
         }
     }
 
