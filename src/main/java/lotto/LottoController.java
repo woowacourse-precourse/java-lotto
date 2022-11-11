@@ -4,6 +4,7 @@ import lotto.check.BonusCheck;
 import lotto.check.MoneyCheck;
 import lotto.check.WinningNumberCheck;
 import lotto.domain.Lotto;
+import lotto.domain.Money;
 import lotto.domain.Result;
 import lotto.domain.User;
 
@@ -17,28 +18,32 @@ public class LottoController {
     private Integer bonus;
     private Result result;
     private View view;
+
     public LottoController() {
         view = new View();
         try {
+            init();
             read();
             result = new Result();
-            result.getCount(user.getMyLottoNumbers(), lotto, bonus);
+            result.compare(user.getMyLottoNumbers(), lotto, bonus);
             result.calc(user);
             view.printResult(result);
-        }catch (IllegalArgumentException e){
-            System.out.println("[ERROR] "+e.getMessage());
+        } catch (IllegalArgumentException e) {
+            view.printError(e.getMessage());
         }
     }
 
-    private void read(){
-        MoneyCheck moneyInputChecker = new MoneyCheck();
-        WinningNumberCheck winningNumberInputChecker = new WinningNumberCheck();
-        BonusCheck bonusCheck = new BonusCheck();
+    private void init() {
+        view = new View();
+        result = new Result();
+    }
+
+    private void read() {
         String moneyInput = readLine();
-        user = new User(moneyInputChecker.check(moneyInput));
+        user = new User(MoneyCheck.check(moneyInput));
         view.printUserLottos(user);
         List<String> numbers = view.printLottos();
-        lotto = new Lotto(winningNumberInputChecker.check(numbers.get(0)));
-        bonus = bonusCheck.check(numbers.get(1),lotto);
+        lotto = new Lotto(WinningNumberCheck.check(numbers.get(0)));
+        bonus = BonusCheck.check(numbers.get(1), lotto);
     }
 }
