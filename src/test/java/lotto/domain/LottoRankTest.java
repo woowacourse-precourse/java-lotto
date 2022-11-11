@@ -45,14 +45,21 @@ class LottoRankTest {
     @DisplayName("꽝인지 확인")
     @ParameterizedTest(name = "{displayName} : 매칭 번호 개수 => {0}, 보너스 번호 매칭 여부 => {1}")
     @CsvSource(value = {"2, true", "2, false", "1, true", "1, false", "0, true", "0, false"})
-    void fifthRank(final int countOfSameLottoNumber, final boolean existBonusLottoNumber) {
+    void missRank(final int countOfSameLottoNumber, final boolean existBonusLottoNumber) {
         assertThat(LottoRank.parseRank(countOfSameLottoNumber, existBonusLottoNumber)).isEqualTo(LottoRank.MISS);
     }
     
-    @DisplayName("상금 확인")
+    @DisplayName("1~3등 상금 확인")
     @ParameterizedTest(name = "{displayName} : 순위 => {0}, 상금 => {1}")
-    @CsvSource(value = {"FIRST, 2000000000", "SECOND, 30000000", "THIRD, 1500000", "FOURTH, 50000", "FIFTH, 5000", "MISS, 0"})
-    void matchingPrizeMoney(final LottoRank lottoRank, final int prizeMoney) {
+    @CsvSource(value = {"FIRST, 2000000000", "SECOND, 30000000", "THIRD, 1500000"})
+    void fromFirstToThirdMatchingPrizeMoney(final LottoRank lottoRank, final int prizeMoney) {
+        assertThat(lottoRank.prizeMoney()).isEqualTo(prizeMoney);
+    }
+    
+    @DisplayName("4~6등 상금 확인")
+    @ParameterizedTest(name = "{displayName} : 순위 => {0}, 상금 => {1}")
+    @CsvSource(value = {"FOURTH, 50000", "FIFTH, 5000", "MISS, 0"})
+    void fromFourthToLastPlaceMatchingPrizeMoney(final LottoRank lottoRank, final int prizeMoney) {
         assertThat(lottoRank.prizeMoney()).isEqualTo(prizeMoney);
     }
     
