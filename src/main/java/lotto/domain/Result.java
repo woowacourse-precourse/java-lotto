@@ -62,8 +62,9 @@ public class Result {
 
     public String getProfitRate() {
         int totalWinningPrize = getTotalWinningPrize();
-        double profitRate = (double) totalWinningPrize / (purchasedLotteries.size() * 1000);
-        return String.format("%,.1f", profitRate);
+        int purchasePrice = purchasedLotteries.size() * 1000;
+        double profitRate = (double) totalWinningPrize / purchasePrice;
+        return String.format("%,.1f", profitRate * 100) + "%";
     }
 
     private int getTotalWinningPrize() {
