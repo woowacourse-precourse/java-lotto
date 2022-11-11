@@ -58,16 +58,16 @@ class LottoTest {
 
         private Winner winner;
 
-        @BeforeEach
-        void setUp() {
-            winner = new Winner();
-        }
+//        @BeforeEach
+//        void setUp() {
+//            winner = new Winner();
+//        }
 
         @DisplayName("로또 당첨 번호의 형식을 벗어나면 예외가 발생한다.")
         @ParameterizedTest
         @ValueSource(strings = {"1,2,a,3,4,5","","1,02,01,3,4,5","1,2,3,4,5"})
         void createLottoWinningNumberByBadFormat(String situation) {
-            assertThatThrownBy(() -> winner.checkLottoWinningNumber(situation))
+            assertThatThrownBy(() -> new Winner(situation))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
@@ -75,7 +75,7 @@ class LottoTest {
         @ParameterizedTest
         @ValueSource(strings = {"1,2,0,3,4,5","1,46,2,3,4,5","1,2,3,4,5,500"})
         void createLottoWinningNumberByOverRange(String situation) {
-            assertThatThrownBy(() -> winner.checkLottoWinningNumber(situation))
+            assertThatThrownBy(() -> new Winner(situation))
                     .isInstanceOf(IllegalArgumentException.class);
         }
 

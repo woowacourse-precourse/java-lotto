@@ -2,9 +2,30 @@ package lotto.model;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.*;
 
 public class Winner {
 
+    private final List<Integer> lottoWinningNumber;
+
+    public Winner(String lottoWinningNumber) {
+        checkLottoWinningNumber(lottoWinningNumber);
+        this.lottoWinningNumber = getLottoWinningNumberParsing(lottoWinningNumber);
+    }
+
+    public List<Integer> getLottoWinningNumber() {
+        return lottoWinningNumber;
+    }
+
+    public List<Integer> getLottoWinningNumberParsing(String lottoNumber){
+        List<Integer> lottoWinningNumber = new ArrayList<>();
+        String[] lottoNumbersOnly = lottoNumber.split(",");
+        for (String lottoNumberOnly : lottoNumbersOnly) {
+            int lottoNumberParsing = Integer.parseInt(lottoNumberOnly);
+            lottoWinningNumber.add(lottoNumberParsing);
+        }
+        return lottoWinningNumber;
+    }
 
     public void checkLottoWinningNumber(String lottoNumber){
         checkLottoWinningNumberFormat(lottoNumber);

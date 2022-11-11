@@ -17,7 +17,11 @@ public class Application {
         InputView inputView = new InputView();
         LottoException exception = new LottoException();
         OutputView outputView = new OutputView();
-        Winner winner = new Winner();
-        winner.checkLottoWinningNumber("46,2,3,4,5,6");
+        Winner winner = new Winner("45,2,3,4,5,6");
+        List<Integer> lottoWinningNumber = winner.getLottoWinningNumber();
+        for (Integer integer : lottoWinningNumber) {
+            System.out.println("integer = " + integer);
+        }
+//        winner.checkLottoWinningNumber("46,2,3,4,5,6");
     }
 }
