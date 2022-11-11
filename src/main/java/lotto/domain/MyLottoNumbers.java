@@ -19,7 +19,6 @@ public class MyLottoNumbers {
         mine = Randoms.pickUniqueNumbersInRange(MIN_NUM, MAX_NUM, SIZE);
         myLottoNumbers = new ArrayList<>(mine);
         Lotto lotto = new Lotto(myLottoNumbers);
-        System.out.println(myLottoNumbers);
         Collections.sort(myLottoNumbers);
         return myLottoNumbers;
     }
