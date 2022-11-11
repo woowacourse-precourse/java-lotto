@@ -64,4 +64,7 @@ public class LottoSystemService {
         numbers.add((int) inputNumber.charAt(0));
     }
 
+    public void saveLottoNumbers(){
+        lotto = new Lotto(numbers);
+    }
 }
