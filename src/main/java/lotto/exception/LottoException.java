@@ -15,7 +15,8 @@ public class LottoException {
     public LottoException(){}
 
     public void validate(List<Integer> numbers){
-
+        if(isNotRightLength(numbers) || containsSameNumber(numbers) || containsNumberOutOfRange(numbers))
+            notRightNumberException();
     }
 
     private boolean isNotRightLength(List<Integer> numbers){
