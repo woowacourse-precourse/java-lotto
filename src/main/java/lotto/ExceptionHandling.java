@@ -1,4 +1,4 @@
-import org.assertj.core.api.ThrowableAssert;
+package lotto;
 
 public class ExceptionHandling {
 
