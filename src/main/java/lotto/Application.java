@@ -334,4 +334,16 @@ public class Application {
 
         return number;
     }
+
+    public static Integer calculateFifth(List<Lotto> lottoList, List<Integer> winningNumberList) {
+
+        int number = 0;
+
+        for (Lotto lotto : lottoList) {
+
+            number += compareLottoNumbersAndWinningNumbers(lotto, winningNumberList, 3);
+        }
+
+        return number;
+    }
 }
