@@ -10,6 +10,7 @@ public class Draw {
     private int bonusNum;
 
     public Draw(Lotto winningLotto, int bonusNum){
+        validateBonusNumRange(bonusNum);
         this.winningLotto = winningLotto;
         this.bonusNum = bonusNum;
     }
@@ -44,7 +45,9 @@ public class Draw {
     }
 
     private void validateBonusNumRange(int bonusNum) {
-
+        if (!(bonusNum >= 1 && bonusNum <= 45)) {
+            throw new IllegalArgumentException();
+        }
     }
 
 
