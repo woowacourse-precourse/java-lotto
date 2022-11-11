@@ -5,10 +5,13 @@ import lotto.Bonus;
 import lotto.Cash;
 import lotto.Lotto;
 import lotto.Model.Calculator;
+import lotto.Model.Judgment;
 import lotto.Model.LottoGenerator;
+import lotto.Prize;
 import lotto.View.OutputView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MainController {
@@ -71,5 +74,30 @@ public class MainController {
         }
 
         bonus = new Bonus(bonusNumber);
+    }
+
+    public void calculateWinning(){
+        Judgment judgment = new Judgment();
+        Calculator calculator = new Calculator();
+        int total = 0;
+        HashMap<Prize, Integer> point = new HashMap<>();
+        point.put(Prize.FIRST, 0);
+        point.put(Prize.SECOND, 0);
+        point.put(Prize.THIRD, 0);
+        point.put(Prize.FOURTH, 0);
+        point.put(Prize.FIFTH, 0);
+        point.put(Prize.LAST, 0);
+        for(Lotto myLotto: myLottos){
+            int match = judgment.compare(winningLotto, myLotto);
+            boolean hasBonus = judgment.hasBonusNumber(winningLotto, bonus);
+
+            Prize prize = calculator.givePrize(match, hasBonus);
+            total += prize.getPrize();
+            int p = point.get(prize);
+            point.replace(prize, p + 1);
+        }
+        double profit = calculator.getProfit(total, cash.getCash());
+        OutputView outputView = new OutputView();
+        outputView.printResult(point, profit);
     }
 }
