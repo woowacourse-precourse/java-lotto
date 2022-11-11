@@ -27,7 +27,7 @@ public class Lotto {
         return numbers;
     }
 
-    private LottoResult lottoResult;
+    private LottoResult lottoResult = LottoResult.LOSING;
 
     public void setLottoResult(LottoResult lottoResult){
         this.lottoResult = lottoResult;

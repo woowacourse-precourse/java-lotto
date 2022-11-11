@@ -61,7 +61,6 @@ public class LottoStatistics {
         else if (count.get(0)+count.get(1) == 5) oneLottoTicket.setLottoResult(FIVE);
         else if (count.get(0) == 6) oneLottoTicket.setLottoResult(SIX);
         else if (count.get(0)==5 && count.get(1)== LOTTO_BONUS_LENGTH) oneLottoTicket.setLottoResult(FIVE_BONUS);
-        else if (count.get(0)+count.get(1) < 3) oneLottoTicket.setLottoResult(LOSING);
         return oneLottoTicket.getLottoResult();
     }
 
