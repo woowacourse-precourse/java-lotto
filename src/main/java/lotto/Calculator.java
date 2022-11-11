@@ -15,6 +15,9 @@ public class Calculator {
     }
 
     public double calculateYield(Map<Rank, Integer> result, double money) {
+        if (result.size() == 0) {
+           return 0;
+        }
         double earnMoney = 0;
         for (Rank rank : result.keySet()) {
             earnMoney += rank.money * result.get(rank);
