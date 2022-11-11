@@ -38,7 +38,7 @@ public class Player {
     }
 
     public List<Lotto> getPlayerLotto(){
-        return List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        return playerLotto;
     }
 
     public HashMap<Ranking, Integer> showWinningStatistics(){
