@@ -22,35 +22,27 @@ public class LottoController {
      * 사용자에게 BonusLottoNumber 를 입력받고 validation 후 기억해둔다.
      */
     public void lottoProcedure() {
-        String userMoneyInput = lottoMoneyInputView();
-        lottoMoneyInputValidation(userMoneyInput);
+        String userMoneyInput = getUserMoneyWithValidation();
         List<Lotto> userLotto = createUserLotto(userMoneyInput);
 
         String userLottoWinningInput = lottoWinningNumberView();
         winningLottoInputValidation(userLottoWinningInput);
-        List<Integer> lotteryWinningNumber = createLottoNumber(userLottoWinningInput);
+//        List<Integer> lotteryWinningNumber = createLottoNumber(userLottoWinningInput);
 
         String userBonusLottoInput = bonusLottoView();
-        bonusLottoInputValidation(userBonusLottoInput, lotteryWinningNumber);
+//        bonusLottoInputValidation(userBonusLottoInput, lotteryWinningNumber);
         int bonusLotto = Integer.parseInt(userBonusLottoInput);
+    }
+
+    private String getUserMoneyWithValidation() {
+        String userMoneyInput = lottoMoneyInputView();
+        lottoMoneyInputValidation(userMoneyInput);
+        return userMoneyInput;
     }
 
     private String bonusLottoView() {
         View bonusLottoView = createBonusLottoView();
         return printViewAndReturnInput(bonusLottoView);
-    }
-
-    private View createBonusLottoView() {
-        return new BonusLottoView();
-    }
-
-    private void bonusLottoInputValidation(String userBonusLottoInput, List<Integer> lotteryWinningNumber) {
-        Validation bonusLottoInputValidation = createBonusLottoInputValidation();
-        bonusLottoInputValidation.isValidate(userBonusLottoInput, lotteryWinningNumber);
-    }
-
-    private Validation createBonusLottoInputValidation() {
-        return new BonusLottoValidation();
     }
 
     private String lottoMoneyInputView() {
@@ -98,12 +90,25 @@ public class LottoController {
         return new LotteryWinningNumberValidation();
     }
 
-    private static List<Integer> createLottoNumber(String userInput) {
-        String[] userWinningLottoInput = userInput.split(",");
-        return Arrays.stream(userWinningLottoInput)
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+    private View createBonusLottoView() {
+        return new BonusLottoView();
     }
+
+    private void bonusLottoInputValidation(String userBonusLottoInput, List<Integer> lotteryWinningNumber) {
+        Validation bonusLottoInputValidation = createBonusLottoInputValidation();
+        bonusLottoInputValidation.isValidate(userBonusLottoInput, lotteryWinningNumber);
+    }
+
+    private Validation createBonusLottoInputValidation() {
+        return new BonusLottoValidation();
+    }
+//    private static List<Integer> createLottoNumber(String userInput) {
+//        String[] userWinningLottoInput = userInput.split(",");
+//        return Arrays.stream(userWinningLottoInput)
+//                .map(Integer::parseInt)
+//                .collect(Collectors.toList());
+
+//    }
 
     private static List<Lotto> createUserLotto(String userMoneyInput) {
         UserLottoService userLottoService = new UserLottoService(userMoneyInput);

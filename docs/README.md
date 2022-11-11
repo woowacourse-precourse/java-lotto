@@ -4,8 +4,8 @@
 
 - [X] 사용자가 로또 구매 금액을 입력한다. - inputUserLottoBuyMoney()
   - [X] 사용자의 로또 구매 금액이 적절한지 판단한다. - LottoMoneyValidation 클래스의 isValidate()
-- [ ] 구매 금액으로 로또 몇 장을 살 수 있는지 조사한다.
-- [ ] 로또 구매 장수 만큼 1~45까지의 중복되지 않는 숫자 6자리를 생성해낸다.
+- [X] 구매 금액으로 로또 몇 장을 살 수 있는지 조사한다. - UserLottoService 클래스
+- [X] 로또 구매 장수 만큼 1~45까지의 중복되지 않는 숫자 6자리를 생성해낸다. - UserLottoService 클래스
 - [X] 실제 로또 당첨번호 6자리 + 보너스 숫자를 입력받는다. - inputUserLottoWinningNumbers()
   - [X] 사용자에게 입력받은 로또 당첨번호가 적절한지 판단한다. - LotteryWinningNumberValidation 클래스의 isValidate()
   - [X] 사용자에게 입력받은 보너스 숫자번호가 적절한지 판단한다. - BonusLottoValidation 클래스의 isValidate()
