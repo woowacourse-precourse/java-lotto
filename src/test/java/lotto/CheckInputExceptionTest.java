@@ -81,15 +81,13 @@ class CheckInputExceptionTest {
     }
 
     @Test
-    void test(){
-        final String str = "11,2,33 ,44,55";
+    @DisplayName("나눈 숫자열이 6개가 아니면 예외 처리 확인")
+    void 구매자_입력시_문자열의_숫자열을_나누기(){
+        final String numbers = "11,2,33,44,55,12,23";
 
         List<Integer> splitList;
-        assertThatThrownBy(() -> Util.splitInteger(str, ","))
+        assertThatThrownBy(() -> CheckInputException.checkBuyerInputIsNotSixNumbers(numbers))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
-
-
     }
-
 }
