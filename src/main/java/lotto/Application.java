@@ -17,12 +17,12 @@ public class Application {
         LotteryDrawMachine lotteryDrawMachine = new LotteryDrawMachine();
 
         Output.enterPurchaseCost();
-        int purchaseCost = Integer.parseInt(Console.readLine());
+        String purchaseCost = Console.readLine();
         if (!InputValidator.checkPurchaseCost(purchaseCost)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 구매 금액입니다.");
+            return;
         }
 
-        int purchaseCount = purchaseCost / 1000;
+        int purchaseCount = Integer.parseInt(purchaseCost) / 1000;
         Output.purchaseCountNotification(purchaseCount);
 
         List<List<Integer>> groupOfUserLotteryNumbers = new ArrayList<>();
@@ -39,7 +39,7 @@ public class Application {
                 .map(winningNumber -> Integer.parseInt(winningNumber))
                 .collect(Collectors.toList());
         if (!InputValidator.checkWinningNumbers(winningNumbers)) {
-            throw new IllegalArgumentException("[ERROR] 잘못된 당첨 번호입니다.");
+            return;
         }
 
         Output.enterBonusNumber();
@@ -52,7 +52,7 @@ public class Application {
         Output.printWinningStatistics(matchResults);
 
         int profit = calculator.calculateProfit(matchResults);
-        double earningsRate = calculator.calculateEarningsRate(purchaseCost, profit);
+        double earningsRate = calculator.calculateEarningsRate(Integer.parseInt(purchaseCost), profit);
         Output.earningsRateNotification(earningsRate);
     }
 }

@@ -14,6 +14,7 @@ import static lotto.constant.SystemMessage.EARNINGS_RATE_NOTIFICATION;
 import static lotto.constant.SystemMessage.ENTER_BONUS_NUMBER;
 import static lotto.constant.SystemMessage.ENTER_PURCHASE_COST;
 import static lotto.constant.SystemMessage.ENTER_WINNING_NUMBERS;
+import static lotto.constant.SystemMessage.ERROR_PREFIX;
 import static lotto.constant.SystemMessage.PURCHASE_COUNT_NOTIFICATION;
 import static lotto.constant.SystemMessage.WINNING_STATISTICS;
 import static lotto.constant.SystemValue.FIVE_MATCHES_WITHOUT_BONUS_INDEX;
@@ -25,6 +26,10 @@ import static lotto.constant.SystemValue.THREE_MATCHES_INDEX;
 import java.util.List;
 
 public class Output {
+
+    public static void printError(String message) {
+        System.out.println(ERROR_PREFIX + message);
+    }
 
     public static void printWinningStatistics(List<Integer> matchResults) {
         System.out.printf(THREE_MATCHES.printMessage(matchResults.get(THREE_MATCHES_INDEX)),
