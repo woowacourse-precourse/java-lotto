@@ -23,7 +23,16 @@ public class Application {
             lottos.add(new Lotto(numbers));
         }
     }
+    private static List<Integer> convertTrueNum(String tmp) {
+        ArrayList<Integer> res = new ArrayList<>();
+        List<String> tmpli = List.of(tmp.split(","));
+        for(int i = 0; i < tmpli.size(); i++)
+            res.add(Integer.parseInt(tmpli.get(i)));
+        return res;
+    }
     private static void allocateInitial(){ //입력받아서 bonusnum,truenum 만듬
+        String lottolist = Console.readLine();
+        bonusnum = (Integer.parseInt(Console.readLine()));
 
     }
     private static List<Integer> calcFinal(){ //로또 보고 몇등인지 계산하고 저장
@@ -35,8 +44,13 @@ public class Application {
 
     }
     public static void main(String[] args) {
+        //로또 생성
         generateLotto();
         System.out.println(lottos.size() + "개를 구매했습니다.");
         printAllLottos();
+        //당첨 번호
+        //보너스 번호
+        //계산
+        //당첨 통계 출력
     }
 }
