@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
@@ -53,6 +55,23 @@ public class Lotto {
      */
     public boolean hasDuplicated(List<Integer> numbers) {
         return new HashSet<>(numbers).size() != numbers.size();
+    }
+
+    /**
+     * 로또의 번호를 ,로 구분한 문자열로 반환
+     *
+     * @return ,로 구분한 문자열
+     */
+    @Override
+    public String toString() {
+        StringBuilder lottery = new StringBuilder();
+
+        for(Integer number : numbers) {
+            if(!lottery.toString().equals("")) lottery.append(", ");
+            lottery.append(number);
+        }
+
+        return String.format("[%s]", lottery);
     }
 
     // TODO: 추가 기능 구현

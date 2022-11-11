@@ -15,6 +15,8 @@ public class Application {
             int buyNum = buyPrice / LOTTERY_PRICE;
 
             List<Lotto> lotteries = Lotto.generateLotteries(buyNum);
+
+            printBuyResult(lotteries);
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
         }
@@ -53,6 +55,18 @@ public class Application {
         }
 
         return price;
+    }
+
+    /**
+     * 로또의 구입 갯수와 로또 번호들을 출력하는 함수
+     *
+     * @param lotteries 구입한 로또 정보
+     */
+    public static void printBuyResult(List<Lotto> lotteries) {
+        System.out.printf("\n%d개를 구매했습니다.\n", lotteries.size());
+        for(Lotto lottery : lotteries) {
+            System.out.println(lottery.toString());
+        }
     }
 
 }
