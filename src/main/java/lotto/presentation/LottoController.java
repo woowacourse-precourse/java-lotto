@@ -18,8 +18,8 @@ public class LottoController {
     public void run(){
         viewService.printInputPurchaseAmountInformation();
     }
-    public void buyLotto(PurchaseAmount purchaseAmount){
-        viewService.printCountLotto(lottoService.countingLotto(purchaseAmount));
-
+    public void countPurchasedLotto(PurchaseAmount purchaseAmount){
+        lottoService.saveCountLotto(purchaseAmount);
+        viewService.printCountLotto();
     }
 }
