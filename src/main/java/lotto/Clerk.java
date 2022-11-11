@@ -3,6 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static lotto.Enum.ConstantNumber.*;
 import static lotto.Enum.ConstantString.REGEX_ONLY_NUMBER;
 import static lotto.Enum.Error.*;
@@ -15,14 +16,16 @@ public class Clerk {
 
         int lotto_amount = getLottoAmount(purchaseAmount);
 
-        return makeLottoList(lotto_amount);
+        return makeLottoGroup(lotto_amount);
     }
 
-    private static List<Lotto> makeLottoList(int lotto_amount) {
+    private static List<Lotto> makeLottoGroup(int lotto_amount) {
         List<Lotto> lottoList = new ArrayList<>();
 
         for (int i = 0; i < lotto_amount; i++) {
-            lottoList.add(new Lotto());
+            List<Integer> random_lotto_num = pickUniqueNumbersInRange(1, 45, 6);
+
+            lottoList.add(new Lotto(random_lotto_num));
         }
         return lottoList;
     }

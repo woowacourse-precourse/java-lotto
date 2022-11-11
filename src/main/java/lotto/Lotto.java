@@ -1,32 +1,16 @@
 package lotto;
 
 import java.util.List;
-import java.util.function.Predicate;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static lotto.Enum.ConstantNumber.*;
 import static lotto.Enum.Error.*;
 
 public class Lotto {
     private final List<Integer> numbers;
 
-    // 자동 로또 생성
-    public Lotto() {
-        this.numbers = makeLottoAuto();
-    }
-
-    // 수동 로또 생성
     public Lotto(List<Integer> numbers) {
         validateLottoNum(numbers);
         this.numbers = numbers;
-    }
-
-    private List<Integer> makeLottoAuto() {
-        List<Integer> random_numbers = pickUniqueNumbersInRange(1, 45, 6);
-
-        validateLottoNum(random_numbers);
-
-        return random_numbers;
     }
 
     private void validateLottoNum(List<Integer> numbers) {
