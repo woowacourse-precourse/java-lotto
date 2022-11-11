@@ -19,10 +19,14 @@ public class Drawer {
         return new Lotto(numbers);
     }
 
-    public Integer drawBonusNumber() {
+    public Integer drawBonusNumber(Lotto lotto) {
         System.out.println(DRAW_BONUS_QUESTION);
         String answer = Console.readLine();
-        return Integer.valueOf(answer);
+        Integer number = Integer.valueOf(answer);
+        if (number < 1 || 45 < number && lotto.getLottoNumbers().contains(number)) {
+            throw new IllegalArgumentException("[Error] 잘못된 입력입니다.");
+        }
+        return number;
     }
 
     public void compare(List<Lotto> lottoTickets, Lotto lotto, Integer bonusNumber) {
