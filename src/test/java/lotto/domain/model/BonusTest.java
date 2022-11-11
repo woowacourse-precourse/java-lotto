@@ -27,7 +27,7 @@ class BonusTest {
 
     @DisplayName("구매한 로또 번호와 보너스 번호가 일치하는 경우 true를 리턴한다.")
     @ParameterizedTest(name = "{index} {displayName} Input Bonus Number = {0}")
-    @ValueSource(ints = {1, 4, 15, 24, 36, 48})
+    @ValueSource(ints = {1, 4, 15, 24, 36, 44})
     void calculateMatchBonusByUserLotto(int input) {
         List<Integer> userLotto = List.of(1, 4, 15, 24, 36, 44);
         assertTrue(new Bonus(input).calculateMatch(userLotto));
