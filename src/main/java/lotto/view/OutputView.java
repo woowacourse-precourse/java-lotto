@@ -5,7 +5,6 @@ import lotto.domain.Lotto;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class OutputView {
     private static final String PURCHASE_DETAILS_OUTPUT_MESSAGE = "개를 구매했습니다";
