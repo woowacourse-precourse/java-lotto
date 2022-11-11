@@ -6,11 +6,13 @@ public class Print {
 
     private HashMap<Rank, Integer> rankCount;
     void printPurchasedLotto(List<Lotto> lottos) {
+        System.out.println("\n" + lottos.size() + "개를 구매했습니다.");
         lottos.forEach(System.out::println);
+        System.out.println();
     }
 
     void printWinningHistory(HashMap<Rank, Integer> rankCount) {
-        System.out.println("당첨 통계");
+        System.out.println("\n당첨 통계");
         System.out.println("---");
         this.rankCount = rankCount;
         Arrays.stream(Rank.values())
@@ -32,6 +34,7 @@ public class Print {
 
         return result;
     }
+
     void printWinningRate(float winningRate) {
         System.out.println(String.format("총 수익률은 %.1f%%입니다.", winningRate));
     }
