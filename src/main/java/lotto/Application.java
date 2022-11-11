@@ -39,7 +39,8 @@ public class Application {
         outputHandler.requestBonusNumbers();
         int bonusNumbers = inputHandler.getBonusNumbers(winningNumbers);
 
-        
-
+        Map<Lotto, Integer> countedLotto = lottoCounter.countedLotto(lottoPapers,winningNumbers);
+        Map<Integer, Integer> winningCounts = lottoCounter.countWinningPaper(countedLotto,winningNumbers,bonusNumbers);
+        outputHandler.printWinningRecord(winningCounts);
     }
 }
