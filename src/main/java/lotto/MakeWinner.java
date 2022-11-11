@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import lotto.domain.Lotto;
 
@@ -15,10 +16,15 @@ public class MakeWinner {
 	private static List<List<Integer>> winner;
 	//(숫자 몇 개 맞췄는지),(bonusNumber맞췄으면 1, 못맞췄으면 -1) 저장
 	public static int[] winnerResult;
+	public static int[] prize;
+	public static int totalPrize;
 
 	public static void initWinnerPrize() {
 		winner = new ArrayList<>();
 		winnerResult = new int[8];
+		totalPrize = 0;
+		prize = new int[] {0, 0, 0, 5000, 50000, 1500000, 30000000 , 2000000000};
+
 	}
 
 	public static void compareNumbers(List<String> winningNumber, List<String> bonusNumber, List<Lotto> lottos) {
@@ -42,7 +48,7 @@ public class MakeWinner {
 		return matchResult.get(MATCH_COUNT_INDEX) >= MIN_WINNER_MATCH_NUMBER;
 	}
 
-	private static List<Integer> calculateMatchNumberCount(List<String> winningNumber, List<Integer> numbers,
+	private static List<Integer> calculateMatchNumberCount(List<String> winningNumber, Set<Integer> numbers,
 		List<String> bonusNumber) {
 		int matchNumberCount = INIT;
 
@@ -79,4 +85,13 @@ public class MakeWinner {
 
 	}
 
+	public static int calculateTotalPrize() {
+		int totalPrize = 0 ;
+
+		for (int index = 3; index < winnerResult.length; index++) {
+			totalPrize += prize[index] * winnerResult[index];
+		}
+
+		return totalPrize;
+	}
 }

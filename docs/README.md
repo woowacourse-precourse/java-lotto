@@ -31,7 +31,7 @@
 - [x] 당첨 통계 메세지를 출력한다. - View#WINNING_MESSAGE_GUIDE_MESSAGE
   - [x] 각 등수가 몇 개인지 출력한다. - View#showWinnings()
 
-- [] 총 수익률을 출력한다. - View#showYield()
+- [x] 총 수익률을 출력한다. - View#showYield()
 
 ## 🤓로또 게임이란?
 

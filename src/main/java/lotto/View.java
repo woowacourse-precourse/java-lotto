@@ -7,11 +7,13 @@ import lotto.domain.Lotto;
 
 public class View {
 	private static final String PURCHASE_INPUT_GUIDE_MESSAGE = "구입금액을 입력해 주세요.";
-	private static String LOTTO_PURCHASED_GUIDE_MESSAGE = "개를 구매했습니다.";
-	private static String WINNING_NUMBER_INPUT_GUIDE_MESSAGE = "당첨 번호를 입력해 주세요.";
-	private static String BONUS_NUMBER_INPUT_GUIDE_MESSAGE = "보너스 번호를 입력해 주세요.";
-	private static String LINES = "---";
-	private static String WINNING_MESSAGE_GUIDE_MESSAGE = "당첨 통계";
+	private static final String LOTTO_PURCHASED_GUIDE_MESSAGE = "개를 구매했습니다.";
+	private static final String WINNING_NUMBER_INPUT_GUIDE_MESSAGE = "당첨 번호를 입력해 주세요.";
+	private static final String BONUS_NUMBER_INPUT_GUIDE_MESSAGE = "보너스 번호를 입력해 주세요.";
+	private static final String LINES = "---";
+	private static final String WINNING_MESSAGE_GUIDE_MESSAGE = "당첨 통계";
+	private static final String YIELD_GUIDE_MESSAGE_END="입니다.";
+	private static final String YIELD_GUIDE_MESSAGE = "총 수익률은 ";
 	private static List<String> winnerPrize;
 
 	public static void showPurchaseInputGuideMessage() {
@@ -69,10 +71,9 @@ public class View {
 			 * */
 		}
 
-
 	}
 
-	public static void showYield() {
-
+	public static void showYield(String yield) {
+		System.out.println(YIELD_GUIDE_MESSAGE+yield+"%"+YIELD_GUIDE_MESSAGE_END);
 	}
 }

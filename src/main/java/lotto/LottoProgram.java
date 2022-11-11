@@ -2,13 +2,18 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 
 public class LottoProgram {
 	private static final int PRICE = 1000;
+	private static int lottoCount;
 	private static List<Lotto> lottoList = new ArrayList<>();
 
 	public void start() {
@@ -16,7 +21,7 @@ public class LottoProgram {
 		String userInput = Input.userInput();
 		Checker.checkUserInput(userInput);
 
-		int lottoCount = Integer.parseInt(userInput) / PRICE;
+		lottoCount = Integer.parseInt(userInput) / PRICE;
 		createLotto(lottoCount);
 
 		View.showLottoPurchasedGuideMessage(lottoCount);
@@ -35,15 +40,17 @@ public class LottoProgram {
 
 		View.showWinnings();
 
+		View.showYield(calculateYield());
+
 	}
 
 	public void createLotto(int lottoCount) {
 		while (lottoCount > 0) {
 			List<Integer> lottoNumbers = createLottoNumbers();
-			Collections.sort(lottoNumbers);
+			Set<Integer> hashSet = new TreeSet<>(Set.copyOf(lottoNumbers));
 
 			if (!lottoList.contains(lottoNumbers)) {
-				lottoList.add(new Lotto(lottoNumbers));
+				lottoList.add(new Lotto(hashSet));
 				lottoCount--;
 			}
 		}
@@ -55,5 +62,14 @@ public class LottoProgram {
 
 	public static List<Lotto> getLottoList() {
 		return lottoList;
+	}
+
+	public static String calculateYield(){
+		double totalPrice = lottoCount*1000;
+		double totalPrize = MakeWinner.calculateTotalPrize();
+
+
+		return String.format("%.1f",(totalPrize/totalPrice)*100.0);
+
 	}
 }
