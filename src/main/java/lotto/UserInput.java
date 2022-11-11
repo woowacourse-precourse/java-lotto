@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UserInput {
 
-    static private List<List<Integer>> lotteries = new ArrayList<>();
+    static List<List<Integer>> lotteries = new ArrayList<>();
     private UserInput() {}
 
     static public long inputMoney() {
