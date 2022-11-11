@@ -6,4 +6,8 @@ public class BonusNumber {
 	public BonusNumber(String userInput) {
 		bonusNumber = Integer.parseInt(userInput);
 	}
+
+	public int getBonusNumber() {
+		return bonusNumber;
+	}
 }
