@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.lotto.LottoDraw;
 import lotto.domain.lotto.Lottos;
 import lotto.ui.InputView;
 import lotto.ui.ResultView;
@@ -20,6 +21,7 @@ public class LottoApplication {
 		Lottos lottos = generateLottos(lottoPurchasedAmount.getLottoPurchasedAmount());
 
 		resultView.printDrawnLottos(lottos);
+		LottoDraw lottoDraw = inputView.getLottoDraw();
 	}
 
 	private Lottos generateLottos(int purchasedAmount) {
