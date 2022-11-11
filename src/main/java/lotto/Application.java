@@ -2,6 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+
 public class Application {
 
     private static final int LOTTERY_PRICE = 1000;
@@ -10,6 +12,8 @@ public class Application {
 
         int buyPrice = receiveBuyPrice();
         int buyNum = buyPrice / LOTTERY_PRICE;
+
+        List<Lotto> lotteries = Lotto.generateLotteries(buyNum);
 
     }
 
