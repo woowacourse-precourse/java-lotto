@@ -2,7 +2,9 @@ package lotto.model;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -73,5 +75,41 @@ public class LottoService {
             }
         }
         System.out.println("]");
+    }
+
+    private void initializeWinningResult() {
+        WinningPlace[] winningPlaces = WinningPlace.values();
+        winningResult = new HashMap<>();
+        for (WinningPlace tempWinningPlace : winningPlaces) {
+            winningResult.put(tempWinningPlace, 0);
+        }
+    }
+
+    private void calcWinningResult() {
+        for (Lotto lotto : lottos) {
+            WinningPlace tmpWinningPlace = Checker.calcWinningPlace(lotto, winningNumber);
+            if (tmpWinningPlace != WinningPlace.NOTHING) {
+                winningResult.merge(tmpWinningPlace, 1, Integer::sum);
+            }
+        }
+    }
+
+    private void printWinningResult() {
+        double benefit = 0;
+        WinningPlace[] winningPlaces = WinningPlace.values();
+
+        for (int i = winningPlaces.length - 1; i >= 0; i--) {
+            int corrects = winningPlaces[i].getCorrects();
+            int winningValue = Integer.parseInt(winningPlaces[i].getWinningValue().replaceAll(",", ""));
+            int myCorrects = winningResult.get(winningPlaces[i]);
+            benefit += winningValue * myCorrects;
+            if (winningPlaces[i] == WinningPlace.SECOND) {
+                System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n", corrects, winningPlaces[i].getWinningValue(), myCorrects);
+                continue;
+            }
+            System.out.printf("%d개 일치 (%s원) - %d개\n", corrects, winningPlaces[i].getWinningValue(), myCorrects);
+        }
+        double benefitPercent = ((benefit) / (lottos.size() * LOTTO_PRICE)) * 100;
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", benefitPercent);
     }
 }
