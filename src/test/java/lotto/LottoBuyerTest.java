@@ -34,4 +34,16 @@ class LottoBuyerTest {
                 .hasMessage("[ERROR] 로또 구입 금액은 1,000원 단위로 입력 가능합니다.");
 
     }
+
+    @Test
+    void buyLotto() {
+        LottoBuyer lottoBuyer = new LottoBuyer(12000);
+
+        Lotto lotto = lottoBuyer.buyLotto();
+
+        System.out.println(lotto.getNumbers());
+
+        assertThat(lotto.getNumbers().size()).isEqualTo(6);
+    }
+
 }

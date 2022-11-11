@@ -233,6 +233,8 @@ public class Lotto {
   - UI 클래스를 통해 지불할 돈 입력
   - 지불할 돈이 1000원 단위로 떨어지지 않을 경우 예외 처리
   - 지불할 돈만큼 로또를 구매하여 Lotto 인스턴스들을 보관
+- Lotto 클래스
+  - 로또 번호가 중복될 경우 예외 처리
 - PrizeCut Enum
   - 로또 당첨 기준 설정
 - LottoDraw 클래스
