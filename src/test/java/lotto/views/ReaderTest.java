@@ -2,11 +2,14 @@ package lotto.views;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ReaderTest {
 	public static InputStream generateInputStream(String input) {
@@ -27,5 +30,15 @@ class ReaderTest {
 		// then : int type 으로 정상적으로 반환하는지 확인
 		final int expected = 3000;
 		assertThat(result).isEqualTo(expected);
+	}
+
+	@ParameterizedTest(name = "사용자가 적절하지 않은 로또 구입금액''''{0}''''을 입력했을 경우 예외를 던짐")
+	@ValueSource(strings = {" ", " \n ", "123", "01000", "1000a", "999", "0", "500", "1500"})
+	void checkInvalidPurchaseAmountTest(String purchaseAmount) {
+		InputStream inputStream = generateInputStream(purchaseAmount);
+		System.setIn(inputStream);
+
+		assertThatThrownBy(Reader::readUserLottoPurchaseAmount)
+				.isInstanceOf(IllegalArgumentException.class);
 	}
 }
