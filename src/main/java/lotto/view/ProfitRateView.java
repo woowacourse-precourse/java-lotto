@@ -1,19 +1,10 @@
 package lotto.view;
 
-import lotto.model.LottoResult;
-import lotto.model.PurchaseAmount;
+import lotto.model.ProfitRate;
 
 public class ProfitRateView {
-    public static void outPut(PurchaseAmount purchaseAmount, LottoResult lottoResult) {
-        double prizeMoney = lottoResult.getPrizeMoney();
-        int money = purchaseAmount.getMoney();
-
-        double profit = calculateProfit(money, prizeMoney);
-        System.out.println("총 수익률은 " + profit + "%입니다.");
-    }
-
-    private static double calculateProfit(int money, double prizeMoney) {
-        double profit = (prizeMoney / (double) money) * 100;
-        return Math.round(profit * 10) / 10.0;
+    public static void outPut(ProfitRate profitRate) {
+        double rate = profitRate.getRate();
+        System.out.println("총 수익률은 " + rate + "%입니다.");
     }
 }

@@ -14,6 +14,7 @@
   - [x] BonusNumber
   - [x] Prize (Enum 으로 구현)
   - [x] LottoResult
+  - [x] ProfitRate
 
 
 - Controller
@@ -27,8 +28,8 @@
 
 - View
   - [x] Ticket 정보 출력
-  - [x] LottoResult 활용해서 당첨 통계 출력
-  - [x] PurchaseAmount, LottoResult 활용해서 수익률 출력
+  - [x] LottoResult 당첨 통계 출력
+  - [x] ProfitRate 수익률 출력
 
 
 - Input
@@ -53,11 +54,6 @@
 
 - BonusNumber
   - [x] 보너스 번호가 1~45사이에 숫자가 맞는지 검증
-
-
-- LottoResult
-  - [ ] 당첨 개수가 올바른지 테스트
-  - [ ] 로또 상금이 올바른지 테스트
 
 
 - Input

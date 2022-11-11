@@ -23,6 +23,8 @@ public class MainController {
 
         LottoResult lottoResult = new LottoResult(ticket, winningLotto);
         LottoResultView.outPut(lottoResult);
-        ProfitRateView.outPut(purchaseAmount, lottoResult);
+
+        ProfitRate profitRate = new ProfitRate(purchaseAmount, lottoResult);
+        ProfitRateView.outPut(profitRate);
     }
 }
