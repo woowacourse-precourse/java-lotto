@@ -39,11 +39,11 @@
 - [ ] 발행한 로또 번호를 오름차순으로 정렬한다. - Lotto#sortLottoNumberAscending(List<Integer> lottoNumber)
 
 - [ ] 사용자에게 입력 받고 int로 반환 int lottoCount = InputLotto#inputValueToInts()
-  - [ ] 사용자에게 값을 입력 받는다. String userValue = InputLotto#inputValueOfUser()
+  - [x] 사용자에게 값을 입력 받는다. String userValue = InputLotto#inputValueOfUser()
   - [ ] 문자열을 int로 변환 - int number = Pretreatment#toInts(String number)
 - [ ] 사용자에게 입력을 받고 List로 변환 List<Integer> winNumbers = InputLotto#InputValueToLst()
 - [ ] String형식의 번호를 입력 받고 List로 변환 List<Integer> winNumbers = InputLotto#InputStringToLst()
-  - [ ] 사용자에게 값을 입력 받는다. String userValue = InputLotto#inputValueOfUser()
+  - [x] 사용자에게 값을 입력 받는다. String userValue = InputLotto#inputValueOfUser()
   - [ ] 문자열을 ,(쉼표)를 기준으로 나누기 - String[] numbers = Pretreatment#splitStrings(String numbers)
   - [ ] 당첨 번호 모두를 int로 변환 - List<Integer> winNumbers = Pretreatment#allToInts(String[] numbers)
     - [ ] 문자열을 int로 변환 - int number = Pretreatment#toInts(String number)
