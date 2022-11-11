@@ -25,7 +25,4 @@ public class Lotto {
         validate(distinctNumbers);
     }
 
-    public void printLotto() {
-        System.out.println(numbers);
-    }
 }
