@@ -14,6 +14,11 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+
+        // 중복된 숫자가 존재할 경우 예외처리
+        if (numbers.size() != numbers.stream().distinct().count()){
+            throw new IllegalArgumentException();
+        }
     }
 
     // TODO: 추가 기능 구현
