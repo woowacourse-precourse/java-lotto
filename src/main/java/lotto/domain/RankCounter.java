@@ -20,6 +20,9 @@ public class RankCounter {
 	private Map<Rank, Integer> countRanks(List<Lotto> lottoTickets, WinningNumbers winningNumbers) {
 		Map<Rank, Integer> ranks = new HashMap<>();
 
+		for (Rank rank : Rank.values()) {
+			ranks.put(rank, 0);
+		}
 		for (Lotto lottoTicket : lottoTickets) {
 			Rank key = countRank(lottoTicket, winningNumbers);
 			ranks.put(key, ranks.get(key) + 1);
