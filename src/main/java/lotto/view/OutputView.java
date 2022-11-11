@@ -22,12 +22,12 @@ public class OutputView {
     }
 
     private static void printLotto(Lotto lotto) {
-        String lottoMessage = LOTTO_PREFIX;
+        StringBuilder lottoMessage = new StringBuilder(LOTTO_PREFIX);
         for (int number : lotto.getNumbers()) {
-            lottoMessage += (number + SEPARATOR);
+            lottoMessage.append(number).append(SEPARATOR);
         }
-        lottoMessage = lottoMessage.substring(0, lottoMessage.length()-2);
-        lottoMessage += LOTTO_SUFFIX;
+        lottoMessage = new StringBuilder(lottoMessage.substring(0, lottoMessage.length() - 2));
+        lottoMessage.append(LOTTO_SUFFIX);
         System.out.println(lottoMessage);
     }
 }
