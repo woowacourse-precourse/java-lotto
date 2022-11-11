@@ -14,17 +14,23 @@ class UserNumbersControllerTest {
     @Test
     void wrongUserInput() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new UserNumbersController("asdas,dqwdl,dq","1");
+            new UserNumbersController("asdas,dqwdl,dq", "1");
         });
-
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new UserNumbersController("1,2,3,4,5,6", "1g");
+        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new UserNumbersController("1,2,3,4,5,6", "1 2");
+        });
     }
 
     @DisplayName("형식은 맞지만 6자리가 아닌경우 예외가 발생한다.")
     @Test
     void overlengthUserInput() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new UserNumbersController("1,2,3,4,5,6,7","1").getNUMBERS();
+            new UserNumbersController("1,2,3,4,5,6,7", "1").getNUMBERS();
         });
     }
+
 
 }
