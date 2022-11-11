@@ -6,17 +6,14 @@ import java.util.List;
 public class Checker {
 	private static final int MAX_PRICE = 100000;
 	private static final int MAX_WINNING_NUMBER_LENGTH = 6;
-	private static final int MAX_BONUS_NUMBER_LENGTH = 1;
+	private static final int MAX_BONUS_NUMBER_LENGTH = 2;
 	private static final int MAX_NUMBER = 45;
 	private static final int MIN_NUMBER = 1;
 	private static final String WINNING_NUMBER_DELIMITER = ",";
-	private static final String JOIN_DELIMITER = "";
-	private static List<String> winningNumber;
+	public static List<String> winningNumber;
 
 	public static void checkUserInput(String userInput) {
-		//숫자, ','만 입력 받아야함
-		//6자리 이상이면 안돼
-		checkNumberOnlyException(userInput);
+		checkNumberOnlyException(Arrays.asList(userInput));
 		checkMaxPrice(userInput);
 	}
 
@@ -27,25 +24,24 @@ public class Checker {
 
 	public static void checkWinningNumberInput(String userInput) {
 		winningNumber = Arrays.asList(userInput.split(WINNING_NUMBER_DELIMITER));
-		userInput = String.join(JOIN_DELIMITER, userInput.split(WINNING_NUMBER_DELIMITER));
 
-		checkNumberOnlyException(userInput);
+		checkNumberOnlyException(winningNumber);
 		checkLengthException(winningNumber, MAX_WINNING_NUMBER_LENGTH);
 		checkSameNumberException(winningNumber);
 		checkNumberRangeException(winningNumber);
 	}
 
 	public static void checkBonusNumberInput(String userInput) {
-		List<String> bonusNumber = Arrays.asList(userInput.split(""));
+		List<String> bonusNumber = Arrays.asList(userInput);
 
-		checkNumberOnlyException(userInput);
+		checkNumberOnlyException(bonusNumber);
 		checkLengthException(bonusNumber, MAX_BONUS_NUMBER_LENGTH);
 		checkSameNumberInWinningNumberException(userInput);
 		checkNumberRangeException(bonusNumber);
 	}
 
 	private static void checkSameNumberInWinningNumberException(String bonusNumber) {
-		if(winningNumber.contains(bonusNumber)){
+		if (winningNumber.contains(bonusNumber)) {
 			Exception.sameNumberException();
 		}
 	}
@@ -90,9 +86,11 @@ public class Checker {
 		return Integer.parseInt(userInput) > MAX_PRICE;
 	}
 
-	private static void checkNumberOnlyException(String userInput) {
+	private static void checkNumberOnlyException(List<String> numbers) {
 		try {
-			Integer.parseInt(userInput);
+			for (String number : numbers) {
+				Integer.parseInt(number);
+			}
 		} catch (IllegalArgumentException e) {
 			Exception.numberOnlyException();
 		}
