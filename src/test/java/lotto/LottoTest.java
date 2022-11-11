@@ -33,7 +33,10 @@ class LottoTest {
         RandomNumberLottoGenerator generator = new RandomNumberLottoGenerator();
         Set<Integer> lottoSet = generator.generate();
         //when
-
+        List<Integer> lottoList = generator.convertSetToList(lottoSet);
+        for(int val : lottoList){
+            System.out.printf(val + " ");
+        }
 
         //then
     }
