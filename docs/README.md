@@ -30,7 +30,7 @@
 
 **LottoSystem**
 >- [x] User에게 입력받은 금액이 1000원 단위로 나누어 떨어지는지 확인하는 기능 떨어지지 않으면 에러를 발생시킴 ( setDivisible ) (에러는 "[ERROR]" 로 시작하는 문구)
->- [ ] User에게 입력받은 금액을 1000원 단위로 나누어 LottoSystem에 구매할 갯수를 저장하는 기능 ( setBuyCount )
+>- [x] User에게 입력받은 금액을 1000원 단위로 나누어 LottoSystem에 구매할 갯수를 저장하는 기능 ( setBuyCount )
 >- [ ] User에게 입력받은 금액을 1000원 단위로 나누어 LottoSystem에 구매할 갯수를 조회하는 기능 ( getBuyCount )
 
 
