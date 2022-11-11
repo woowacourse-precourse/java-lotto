@@ -35,4 +35,8 @@ public class UserBet {
 			myLottos.add(randomLotto);
 		}
 	}
+
+	public List<List<Integer>> getMyLottos() {
+		return myLottos;
+	}
 }
