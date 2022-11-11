@@ -8,6 +8,7 @@ import lotto.domain.User;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.ListIterator;
 
 public class UserService {
     private User user;
@@ -28,6 +29,10 @@ public class UserService {
     public void buyLotto(){
         lottoSystemService = new LottoSystemService();
         lottoSystemService.setRandomLottoNumbers(user);
+    }
+
+    public List<List<Integer>> getUserLottoNumber(){
+        return user.getUserLottoNumber();
     }
 
 }
