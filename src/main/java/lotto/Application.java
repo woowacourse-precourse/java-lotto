@@ -8,22 +8,26 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class Application {
-    public static void main(String[] args) {
-        long price = askPrice();
-        List<Lotto> lottos = makeLotto(price);
-        List<Integer> winningLotto = askWinning();
-        int bonusNumber = askBonus();
-        Rank.calcRank(price, lottos, winningLotto, bonusNumber);
+    public static void main(String[] args){
+        try {
+            long price = askPrice();
+            List<Lotto> lottos = makeLotto(price);
+            List<Integer> winningLotto = askWinning();
+            int bonusNumber = askBonus();
+            Rank.calcRank(price, lottos, winningLotto, bonusNumber);
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] 잘못된 값이 입력되었습니다.");
+        }
     }
 
-    public static int askBonus() {
+    public static int askBonus() throws IllegalArgumentException{
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = readLine();
         int num = validateNumber(input);
         return num;
     }
 
-    public static List<Integer> askWinning() {
+    public static List<Integer> askWinning() throws IllegalArgumentException {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = readLine();
         List<Integer> nums = new ArrayList<>();
@@ -36,23 +40,20 @@ public class Application {
         return nums;
     }
 
-    public static int validateNumber(String str) {
+    public static int validateNumber(String str) throws IllegalArgumentException{
         int num;
         try {
             num = Integer.parseInt(str);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자여야 합니다.");
+            throw new IllegalArgumentException();
         }
         if(num < 1 || num > 45) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 1 ~ 45여야 합니다.");
+            throw new IllegalArgumentException();
         }
         return num;
     }
 
-    public static List<Lotto> makeLotto(long price) {
-        if(price % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 가격은 1000원 단위여야 합니다.");
-        }
+    public static List<Lotto> makeLotto(long price) throws IllegalArgumentException{
         long amount = price / 1000;
         System.out.println(amount + "개를 구매했습니다.");
 
@@ -70,10 +71,18 @@ public class Application {
         return lottos;
     }
 
-    public static long askPrice() {
+    public static long askPrice() throws IllegalArgumentException{
         System.out.println("구입금액을 입력해 주세요.");
         String input = readLine();
-        return Long.parseLong(input);
+        long price;
+        try {
+            price = Long.parseLong(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
+        if(price % 1000 > 0) {
+            throw new IllegalArgumentException();
+        }
+        return price;
     }
-
 }
