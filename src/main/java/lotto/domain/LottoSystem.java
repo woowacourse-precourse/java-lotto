@@ -29,6 +29,11 @@ public class LottoSystem {
         winningNumber.setBonusNumber(Integer.parseInt(number));
     }
 
+    public String getWinningStatistics(List<Lotto> lottoBundle) {
+        LottoStatistics statistics = new LottoStatistics(lottoBundle, winningNumber);
+        return "";
+    }
+
     private void validateWinningNumbers(String input) {
         String[] numbers = input.split(",");
         validateType(numbers);

@@ -13,4 +13,8 @@ public class WinningNumber extends Lotto{
         validateRange(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }

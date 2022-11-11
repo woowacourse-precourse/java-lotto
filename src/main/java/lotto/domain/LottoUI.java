@@ -33,4 +33,8 @@ public class LottoUI {
         String bonusNumber = Console.readLine();
         lottoSystem.setBonusNumber(bonusNumber);
     }
+
+    public void printWinningStatistics(List<Lotto> lottoBundle) {
+        System.out.println(Message.PRINT_WINNING_STATISTICS);
+    }
 }
