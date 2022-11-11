@@ -15,10 +15,10 @@ public class LottoException {
     private final static int MAX_LOTTO_NUMBER = 45;
     private static final String ONLY_NUMBER_REGEX = "^[1-9]{1}$|^[1-3]{1}[0-9]{1}$|^4{1}[0-5]{1}$+";
 
-    public void validateLottoNumbers(String inputNumbers) {
-        validateLottoNumbersLength(inputNumbers);
-        validateOverlapNumbers(lottoNumbersParser(inputNumbers));
-        validateNumbersPermittedRange(lottoNumbersParser(inputNumbers));
+    public void validateLottoNumbers(List<Integer> numbers) {
+        validateLottoNumbersLength(numbers);
+        validateOverlapNumbers(numbers);
+        validateNumbersPermittedRange(numbers);
     }
 
     public void validateBonusNumbers(String inputNumbers, String inputBonusNumber) {
@@ -27,8 +27,8 @@ public class LottoException {
         validateBonusNumberOverlapNumbers(lottoNumbersParser(inputNumbers), bonusNumberParser(inputBonusNumber));
     }
 
-    public void validateLottoNumbersLength(String numbers) {
-        if (numbers.split(",").length != PERMITTED_LOTTO_LENGTH) {
+    public void validateLottoNumbersLength(List<Integer> numbers) {
+        if (numbers.size() != PERMITTED_LOTTO_LENGTH) {
             throw new IllegalArgumentException("로또 번호는 6개 입력해주세요.");
         }
     }
