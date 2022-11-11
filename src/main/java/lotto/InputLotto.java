@@ -10,8 +10,7 @@ public class InputLotto {
     }
 
     public String inputValueOfUser() {
-        String inputValue;
-        inputValue = Console.readLine();
+        String inputValue = Console.readLine();
         return inputValue;
     }
 
