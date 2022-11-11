@@ -36,20 +36,16 @@ public class LottoResult {
     }
 
     private Prize getPrize(List<Integer> lottoNumbers, WinningLotto winningLotto) {
-        int matchCount = matchNumber(lottoNumbers,winningLotto);
+        int matchCount = matchNumber(lottoNumbers, winningLotto);
         boolean containBonusNumber = isContainBonusNumber(lottoNumbers, winningLotto);
 
-        if(matchCount == 6) return Prize.FIRST;
-        if(matchCount == 5 && containBonusNumber) return Prize.SECOND;
-        if(matchCount == 5) return Prize.THIRD;
-        if(matchCount == 4) return Prize.FOURTH;
-        if(matchCount == 3) return Prize.FIFTH;
+        if (matchCount == 6) return Prize.FIRST;
+        if (matchCount == 5 && containBonusNumber) return Prize.SECOND;
+        if (matchCount == 5) return Prize.THIRD;
+        if (matchCount == 4) return Prize.FOURTH;
+        if (matchCount == 3) return Prize.FIFTH;
 
         return Prize.NONE;
-    }
-
-    private boolean isContainBonusNumber(List<Integer> lottoNumbers, WinningLotto winningLotto) {
-        return lottoNumbers.contains(winningLotto.getBonusNumber());
     }
 
     private int matchNumber(List<Integer> lottoNumbers, WinningLotto winningLotto) {
@@ -63,6 +59,10 @@ public class LottoResult {
         }
 
         return matchCount;
+    }
+
+    private boolean isContainBonusNumber(List<Integer> lottoNumbers, WinningLotto winningLotto) {
+        return lottoNumbers.contains(winningLotto.getBonusNumber());
     }
 
     private double getPrizeMoney(Map<Prize, Integer> statistics) {
