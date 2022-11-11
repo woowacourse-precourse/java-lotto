@@ -33,9 +33,17 @@ public class LottoGame {
 
     protected void purchaseLottos() {
         lottoView.printPurchaseMoneyInputCommand();
-        int purchaseMoney = Integer.parseInt(Console.readLine()); //TODO: 구입금액 입력 !예외처리
+        int purchaseMoney = inputPurchaseMoney();
         issuingMachine.issue(purchaseMoney);
         lottoView.printIssuedLottoDetails(issuingMachine);
+    }
+
+    private int inputPurchaseMoney() {
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자만을 입력해야 합니다.");
+        }
     }
 
     protected void drawLotto() {

@@ -19,10 +19,20 @@ public class LottoIssuingMachine {
     }
 
     public void issue(int purchaseMoney) {
+        validate(purchaseMoney);
         int quantity = purchaseMoney / LOTTO_PRICE;
         while (lottos.size() != quantity) {
             Lotto lotto = issueLotto();
             lottos.add(lotto);
+        }
+    }
+
+    private void validate(int purchaseMoney) {
+        if (purchaseMoney < LOTTO_PRICE) {
+            throw new IllegalArgumentException("[ERROR] 로또 최소 구입 금액은 1,000원입니다.");
+        }
+        if (purchaseMoney % LOTTO_PRICE != 0) {
+            throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1,000원 단위이어야 합니다.");
         }
     }
 
