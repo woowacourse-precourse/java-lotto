@@ -93,7 +93,7 @@ public class Model {
             totalProfit += profitByRanking(ranking, prizeRankings.get(ranking));
         }
 
-        return (double)totalProfit / money;
+        return (double)totalProfit*100 / money;
     }
 
     public int profitByRanking (int ranking, int numberOfRanking) {
