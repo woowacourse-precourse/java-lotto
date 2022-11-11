@@ -15,4 +15,9 @@ public class InputView {
         OutputView.printRequestWinningNumber();
         return SCANNER.nextLine();
     }
+
+    public static String requestBonusNumber() {
+        OutputView.printRequestBonusNumber();
+        return SCANNER.nextLine();
+    }
 }

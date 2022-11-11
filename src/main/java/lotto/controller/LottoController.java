@@ -12,6 +12,7 @@ public class LottoController {
         LottoCollection lottoCollection = buyLotto();
 
         WinningNumber winningNumber = new WinningNumber(InputView.requestWinningNumber());
+        InputView.requestBonusNumber();
     }
 
     private LottoCollection buyLotto() {
