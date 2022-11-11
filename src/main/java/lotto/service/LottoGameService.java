@@ -165,14 +165,15 @@ public class LottoGameService {
 
     public LottoWinningRank decideWinningRank(List<Integer> purchaseLottoNumbers,
                                               String lottoWinningNumbers,
-                                              int bonusNumber) {
+                                              String bonusNumber) {
         List<Integer> collectedLottoWinningNumbers = Arrays.stream(lottoWinningNumbers.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+        int convertedBonusNumber = Integer.parseInt(bonusNumber);
         long purchaseNumbersMatchWinningNumbersCount =
                 getPurchaseNumbersMatchWinningNumbersCount(purchaseLottoNumbers, collectedLottoWinningNumbers);
         return LottoWinningRank.decideLottoWinningRank(purchaseNumbersMatchWinningNumbersCount,
-                isPurchaseNumbersMatchBonusNumber(purchaseLottoNumbers, bonusNumber));
+                isPurchaseNumbersMatchBonusNumber(purchaseLottoNumbers, convertedBonusNumber));
     }
 
     public String getEarningsRatio(String lottoPurchaseAmount) {
