@@ -13,8 +13,8 @@ import static lotto.constant.UtilConstant.LOTTO_CLOSE;
 import static lotto.constant.UtilConstant.COMMA_AND_SPACE;
 
 public class LottoController {
-    private static final InputView inputView = InputView.INSTANCE;
-    private static final OutputView outputView = OutputView.INSTANCE;
+    private static final InputView inputView = new InputView();
+    private static final OutputView outputView = new OutputView();
 
     public static LottoController create(){
         return new LottoController();

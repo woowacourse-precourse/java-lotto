@@ -11,8 +11,7 @@ import static lotto.constant.MessageConstant.INPUT_PRICE;
 import static lotto.constant.MessageConstant.INPUT_BONUS_NUMBER;
 import static lotto.constant.UtilConstant.REGEX;
 
-public enum InputView {
-    INSTANCE;
+public class InputView {
 
     public int inputPrice(){
         System.out.println(INPUT_PRICE);
