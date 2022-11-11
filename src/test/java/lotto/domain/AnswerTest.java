@@ -1,5 +1,8 @@
-package lotto;
+package lotto.domain;
 
+import lotto.domain.Answer;
+import lotto.domain.Lotto;
+import lotto.domain.LottoResult;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;

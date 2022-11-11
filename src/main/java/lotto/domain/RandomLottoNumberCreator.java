@@ -1,11 +1,11 @@
-package lotto;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.LottoValidationUtils.*;
+import static lotto.domain.LottoValidationUtils.*;
 
 public class RandomLottoNumberCreator {
 

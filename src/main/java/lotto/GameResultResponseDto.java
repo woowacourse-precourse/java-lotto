@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.domain.LottoResult;
+
 import java.util.Map;
 
 public class GameResultResponseDto {
@@ -7,7 +9,7 @@ public class GameResultResponseDto {
     private final double earningRate;
     private final Map<String, LottoResultResponseDto> lottoResultResponseDtos;
 
-    static class LottoResultResponseDto {
+    public static class LottoResultResponseDto {
 
         private final int sameNumberCount;
         private final int winnerPrice;
