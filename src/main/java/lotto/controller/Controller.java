@@ -32,7 +32,7 @@ public class Controller {
         validator.checkNumericValue(bonusNumberInput);
         winningInformation.setBonusNumber(Integer.parseInt(bonusNumberInput));
         lottoPurchaseInformation.compareLottoTicketsWith(winningNumbers, Integer.parseInt(bonusNumberInput));
-        outputView.printLottoResults(lottoPurchaseInformation.getLottoResults());
+        outputView.printWinningStatistics(lottoPurchaseInformation.getWinningStatistics());
         lottoPurchaseInformation.calculateTotalWinningAmount();
         lottoPurchaseInformation.calculateRateOfReturn();
         outputView.printRateOfReturn(lottoPurchaseInformation.getRateOfReturn());

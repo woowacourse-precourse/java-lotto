@@ -37,11 +37,11 @@ public class OutputView {
         System.out.print("\n");
     }
 
-    public void printLottoResults(Map<Rank, Integer> lottoResults){
+    public void printWinningStatistics(Map<Rank, Integer> winningStatistics){
         System.out.println("당첨 통계");
         System.out.println("---");
-        for(int i = 0; i < lottoResults.size(); i++){
-            String output = Rank.get(i).condition() + " (" + Rank.get(i).winningAmount() + "원) - " + lottoResults.get(Rank.get(i)) + "개";
+        for(int i = 0; i < winningStatistics.size(); i++){
+            String output = Rank.get(i).condition() + " (" + Rank.get(i).winningAmount() + "원) - " + winningStatistics.get(Rank.get(i)) + "개";
             System.out.println(output);
         }
     }
