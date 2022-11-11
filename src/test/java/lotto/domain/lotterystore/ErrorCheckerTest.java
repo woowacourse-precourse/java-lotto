@@ -13,6 +13,8 @@ public class ErrorCheckerTest {
 			IllegalArgumentException.class);
 		assertThatThrownBy(() -> new ErrorChecker().validateMoneyFromBuyer("	")).isInstanceOf(
 			IllegalArgumentException.class);
+		assertThatThrownBy(() -> new ErrorChecker().validateMoneyFromBuyer("")).isInstanceOf(
+			IllegalArgumentException.class);
 	}
 
 	@DisplayName("구매자의 로또 구입금액이 음수라면 예외가 발생한다.") @Test void 구매입력값이음수인경우() {
@@ -34,6 +36,8 @@ public class ErrorCheckerTest {
 		assertThatThrownBy(() -> new ErrorChecker().validateWinningNumbers("1,2,3,,,")).isInstanceOf(
 			IllegalArgumentException.class);
 		assertThatThrownBy(() -> new ErrorChecker().validateWinningNumbers("1,2,3")).isInstanceOf(
+			IllegalArgumentException.class);
+		assertThatThrownBy(() -> new ErrorChecker().validateWinningNumbers("")).isInstanceOf(
 			IllegalArgumentException.class);
 	}
 
@@ -58,6 +62,31 @@ public class ErrorCheckerTest {
 		assertThatThrownBy(() -> new ErrorChecker().validateWinningNumbers("1,1,2,3,4,5")).isInstanceOf(
 			IllegalArgumentException.class);
 		assertThatThrownBy(() -> new ErrorChecker().validateWinningNumbers("1,2,2,2,4,5")).isInstanceOf(
+			IllegalArgumentException.class);
+	}
+
+	@DisplayName("한 자리 수가 아닌 경우") @Test void 보너스숫자예외테스트1() {
+		assertThatThrownBy(() -> new ErrorChecker().validateBonusNumbers("1423")).isInstanceOf(
+			IllegalArgumentException.class);
+	}
+
+	@DisplayName("숫자가 음수인 경우") @Test void 보너스숫자예외테스트2() {
+		assertThatThrownBy(() -> new ErrorChecker().validateBonusNumbers("-1")).isInstanceOf(
+			IllegalArgumentException.class);
+		assertThatThrownBy(() -> new ErrorChecker().validateBonusNumbers("-165")).isInstanceOf(
+			IllegalArgumentException.class);
+	}
+
+	@DisplayName("숫자가 아닌 문자인 경우") @Test void 보너스숫자예외테스트3() {
+		assertThatThrownBy(() -> new ErrorChecker().validateBonusNumbers("")).isInstanceOf(
+			IllegalArgumentException.class);
+		assertThatThrownBy(() -> new ErrorChecker().validateBonusNumbers("   ")).isInstanceOf(
+			IllegalArgumentException.class);
+		assertThatThrownBy(() -> new ErrorChecker().validateBonusNumbers("	")).isInstanceOf(
+			IllegalArgumentException.class);
+		assertThatThrownBy(() -> new ErrorChecker().validateBonusNumbers("@!$@#%")).isInstanceOf(
+			IllegalArgumentException.class);
+		assertThatThrownBy(() -> new ErrorChecker().validateBonusNumbers("1,4,2,3")).isInstanceOf(
 			IllegalArgumentException.class);
 	}
 
