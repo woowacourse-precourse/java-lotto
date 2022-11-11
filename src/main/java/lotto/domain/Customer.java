@@ -13,7 +13,8 @@ public class Customer {
     private final List<List<Integer>> purchasedTickets = new ArrayList<>();
 
     public Customer(int paidMoney) {
-        validateProperMoney(paidMoney);
+        validateNoMoney(paidMoney);
+        validateWrongMoney(paidMoney);
         this.paidMoney = paidMoney;
         this.numOfTicket = this.paidMoney / 1000;
         purchaseLottery();
@@ -27,12 +28,15 @@ public class Customer {
         return this.purchasedTickets;
     }
 
-    private void validateProperMoney(int paidMoney) {
-        if (paidMoney % 1000 != 0) {
-            throw new IllegalArgumentException(NOT_DIVISIBLE_BY_THOUSAND);
-        }
+    private void validateNoMoney(int paidMoney) {
         if (paidMoney == 0) {
             throw new IllegalArgumentException(BOUGHT_NOTHING);
+        }
+    }
+
+    private void validateWrongMoney(int paidMoney) {
+        if (paidMoney % 1000 != 0) {
+            throw new IllegalArgumentException(NOT_DIVISIBLE_BY_THOUSAND);
         }
     }
 
