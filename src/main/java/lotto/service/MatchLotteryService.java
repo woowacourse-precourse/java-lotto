@@ -1,7 +1,7 @@
 package lotto.service;
 
-import lotto.entity.Computer;
-import lotto.entity.Player;
+import lotto.model.Computer;
+import lotto.model.Player;
 
 public class MatchLotteryService {
 

@@ -1,4 +1,4 @@
-package lotto.entity;
+package lotto.model;
 
 import lotto.Ranking;
 import lotto.domain.Lotto;

@@ -1,4 +1,4 @@
-package lotto.entity;
+package lotto.model;
 
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;

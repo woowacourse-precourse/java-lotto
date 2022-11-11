@@ -1,7 +1,7 @@
 package lotto.entity_test;
 
 import lotto.domain.Lotto;
-import lotto.entity.Computer;
+import lotto.model.Computer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
