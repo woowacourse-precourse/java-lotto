@@ -1,5 +1,7 @@
 package lotto.controller;
 
+import lotto.*;
+
 import java.util.List;
 
 public class LottoCalculator {
@@ -22,7 +24,13 @@ public class LottoCalculator {
         return 0;
     }
 
-    public static float calculateYield (int cost, List<Integer> rankMyLotto) {
-        return 0f;
+    public static float calculateYield (int cost, List<Integer> rankOfMyLotto) {
+        float prizeMoney = 0;
+        int index = 1;
+        RankOfLotto[] rankOfLotto = RankOfLotto.values();
+        for (int count: rankOfMyLotto) {
+            prizeMoney += count * rankOfLotto[index].getMoney();
+        }
+        return (prizeMoney / cost) * 100;
     }
 }
