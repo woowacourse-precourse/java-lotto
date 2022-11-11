@@ -5,10 +5,7 @@ import lotto.domain.Money;
 import lotto.domain.Result;
 import lotto.domain.User;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.text.DecimalFormat;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -24,8 +21,9 @@ public class View {
         List<Lotto> myLottoNumbers = user.getMyLottoNumbers();
         for (Lotto myLottoNumber : myLottoNumbers) {
             List<Integer> numbers = myLottoNumber.getNumbers();
-            Arrays.sort(numbers.toArray());
-            System.out.println(numbers);
+            List<Integer> nums = new ArrayList<>(numbers);
+            Collections.sort(nums);
+            System.out.println(nums);
         }
     }
     public List<String> printLottos(){
