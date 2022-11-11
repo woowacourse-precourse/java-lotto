@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.domain.validator.BonusNumberValidator;
+import lotto.validator.domain.BonusNumberValidator;
 
 public class WinningLottoNumbers {
     private final Lotto winningLotto;

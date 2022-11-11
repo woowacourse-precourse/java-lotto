@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.domain.validator.LottoNumbersValidator;
+import lotto.validator.domain.LottoNumbersValidator;
 
 import java.util.List;
 

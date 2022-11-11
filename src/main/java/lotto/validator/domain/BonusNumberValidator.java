@@ -1,4 +1,4 @@
-package lotto.domain.validator;
+package lotto.validator.domain;
 
 import lotto.domain.Lotto;
 import lotto.exception.UtilClassCreateException;

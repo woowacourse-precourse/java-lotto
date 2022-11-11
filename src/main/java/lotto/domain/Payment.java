@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.domain.validator.PaymentValidator;
+import lotto.validator.domain.PaymentValidator;
 
 import java.util.List;
 

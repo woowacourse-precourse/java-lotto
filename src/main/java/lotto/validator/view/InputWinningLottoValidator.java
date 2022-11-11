@@ -1,4 +1,4 @@
-package lotto.view.validator;
+package lotto.validator.view;
 
 import lotto.exception.UtilClassCreateException;
 

@@ -5,8 +5,8 @@ import lotto.domain.Lotto;
 import lotto.domain.Payment;
 import lotto.domain.WinningLottoNumbers;
 import lotto.exception.ViewClassCreateException;
-import lotto.view.validator.InputNumberValidator;
-import lotto.view.validator.InputWinningLottoValidator;
+import lotto.validator.view.InputNumberValidator;
+import lotto.validator.view.InputWinningLottoValidator;
 
 import java.util.Arrays;
 import java.util.List;

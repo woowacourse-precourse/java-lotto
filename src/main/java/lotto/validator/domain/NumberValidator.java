@@ -1,4 +1,4 @@
-package lotto.domain.validator;
+package lotto.validator.domain;
 
 public class NumberValidator {
     private static final int MIN_LOTTO_NUMBER = 1;
