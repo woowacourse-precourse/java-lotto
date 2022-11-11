@@ -17,9 +17,14 @@ public class InputUtils {
         return input.size() == 6;
     }
 
-    public static boolean isNumberSplitWithComma(String input) {
+    public static boolean isInputSplitWithComma(String input) {
         // 당첨 번호가 쉼표로 구분되어 있는지
-        return false;
+        try{
+            stringToIntegerList(input);
+        } catch(RuntimeException exception) {
+            return false;
+        }
+        return true;
     }
 
     public static boolean isDigit(String input) {
