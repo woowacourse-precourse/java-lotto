@@ -99,6 +99,23 @@ public class Model {
     private List<Integer> getLottoNumber() {
         List<Integer> lottoNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(MINIMUM_LOTTO_NUMBERS, MAXIMUM_LOTTO_NUMBERS, LOTTO_NUMBERS));
         Collections.sort(lottoNumbers);
+
         return lottoNumbers;
+    }
+
+    public enum Prize {
+        FIRST(2_000_000),
+        SECOND(30_000),
+        THIRD(1_500),
+        FORTH(50),
+        FIFTH(5);
+
+        final private int prize;
+        private int getPrize() {
+            return prize;
+        }
+        Prize(int prize) {
+            this.prize = prize;
+        }
     }
 }
