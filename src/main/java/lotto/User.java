@@ -8,10 +8,17 @@ public class User {
     private List<Lotto> lotto = new ArrayList<>();
 
     public User(int amount) {
+        validate(amount);
         this.amount = amount;
     }
 
-    public void buyLotto() {
+    private void validate(int amount) {
+        if (amount % 1000 != 0) {
+            throw new IllegalArgumentException();
+        }
+    }
 
+    public void buyLotto(LottoSeller lottoSeller) {
+        lotto = lottoSeller.sellTo(amount);
     }
 }
