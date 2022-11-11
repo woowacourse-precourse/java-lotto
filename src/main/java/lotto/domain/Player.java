@@ -50,4 +50,8 @@ public class Player {
                 .map(Lotto::new)
                 .collect(Collectors.toList());
     }
+
+    public Lottos getLottos() {
+        return lottos;
+    }
 }
