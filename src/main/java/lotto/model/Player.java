@@ -42,7 +42,7 @@ public class Player {
     }
 
     public HashMap<Ranking, Integer> showWinningStatistics(){
-        return new HashMap<>();
+        return playerWinning.figureSameRanking();
     }
 
     public String showWinningProfit(){
