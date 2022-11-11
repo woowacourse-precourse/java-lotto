@@ -31,7 +31,7 @@ public enum Message {
     }
 
     String printError() {
-        return Message.ERROR.msg +  " " + msg;
+        return Message.ERROR.msg + " " + msg;
     }
 
     void printResult(long count) {
