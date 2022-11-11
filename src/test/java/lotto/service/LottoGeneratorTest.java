@@ -17,9 +17,9 @@ class LottoGeneratorTest {
     void generateNumsRangeTest() {
         List<Integer> randomNums = lottoGenerator.generateRandomNums();
         List<Integer> result = randomNums.stream()
-            .filter(x -> x <= LOTTO_RANGE_END && LOTTO_RANGE_START <= x)
+            .filter(x -> x <= LOTTO_RANGE_END &&  LOTTO_RANGE_START<= x)
             .collect(Collectors.toList());
-        assertThat(randomNums).containsAll(result);
+        assertThat(result).containsAll(randomNums);
     }
 
     @Test
@@ -28,7 +28,7 @@ class LottoGeneratorTest {
         List<Integer> randomNums = lottoGenerator.generateRandomNums();
         List<Integer> result = randomNums.stream()
             .distinct().collect(Collectors.toList());
-        assertThat(randomNums).containsAll(result);
+        assertThat(result).containsAll(randomNums);
     }
 
     @Test
