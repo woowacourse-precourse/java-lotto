@@ -17,20 +17,20 @@ public class Validator {
 
     private static void isProperSize(List<Integer> numbers) {
         if (numbers.size() != LottoRule.TOTAL_COUNT) {
-            throw new IllegalArgumentException("[ERROR]count of numbers in lotto should be" + LottoRule.TOTAL_COUNT);
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 총 " + LottoRule.TOTAL_COUNT + "개여야 합니다.");
         }
     }
 
     private static void isAllNumberUnique(List<Integer> numbers) {
         if (new HashSet<>(numbers).size() != LottoRule.TOTAL_COUNT) {
-            throw new IllegalArgumentException("[ERROR]all numbers in lotto should be unique");
+            throw new IllegalArgumentException("[ERROR] 로또 번호에 중복이 없어야 합니다.");
         }
     }
 
     private static void isInRange(int number) {
         if (number < LottoRule.MIN_NUMBER || number > LottoRule.MAX_NUMBER) {
             throw new IllegalArgumentException
-                    ("[ERROR]number should be between " + LottoRule.MIN_NUMBER + "and" + LottoRule.MAX_NUMBER);
+                    ("[ERROR] 로또 번호는 " + LottoRule.MIN_NUMBER + "보다 크거나 같고 " + LottoRule.MAX_NUMBER +"보다 작거나 같아야 합니다.");
         }
     }
 
