@@ -27,6 +27,12 @@ public class Judgment {
 
     private int calculateSecond(List<Integer>numbers, int bonusNumber) {
         int count = 0;
+        for (List<Integer> lottoNumbers : collectionOfLottoNumbers) {
+            if (correctCountIncludingBonus(lottoNumbers, numbers, bonusNumber)) {
+                collectionOfLottoNumbers.remove(lottoNumbers);
+                count++;
+            }
+        }
         return count;
     }
 
