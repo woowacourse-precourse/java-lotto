@@ -85,7 +85,31 @@ public class Application {
             throw new IllegalArgumentException("숫자를 입력해 주세요");
         }
     }
-
+    public static int overlapCnt(List<Integer> lottoNum, List<Integer> winningNum){
+        int cnt = 0;
+        for (int num : lottoNum){
+            if (winningNum.contains(num)){
+                cnt += 1;
+            }
+        }
+        return cnt;
+    }
+    public static int compareNumbers(List<Integer> lottoNum, List<Integer> winningNum, int bonusNum){
+        int output = 5;
+        int correctCnt = overlapCnt(lottoNum, winningNum);
+        if (correctCnt == 6){
+            output = 4;
+        }else if (correctCnt == 5 && lottoNum.contains(bonusNum)){
+            output = 3;
+        }else if (correctCnt == 5){
+            output = 2;
+        }else if (correctCnt == 4){
+            output = 1;
+        }else if (correctCnt == 3){
+            output = 0;
+        }
+        return output;
+    }
     public static void execute(){
         int money = getMoney();
         int lottoCnt = money / 1000;
