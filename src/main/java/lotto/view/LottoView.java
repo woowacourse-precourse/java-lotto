@@ -45,7 +45,8 @@ public class LottoView {
 
         Arrays.stream(LottoResult.values())
                 .filter(lottoResult -> lottoResult.getPayout() != 0)
-                .map(lottoResult -> getResultMessage(lottoResult, getResultNumber(lottoResults)))
+                .map(lottoResult ->
+                        getResultMessage(lottoResult, getNumberOfEachLottoResult(lottoResults)))
                 .forEach(System.out::println);
     }
 
@@ -59,15 +60,15 @@ public class LottoView {
         System.out.println("---");
     }
 
-    private Map<LottoResult, Long> getResultNumber(List<LottoResult> lottoResults) {
+    private Map<LottoResult, Long> getNumberOfEachLottoResult(List<LottoResult> lottoResults) {
         return lottoResults.stream()
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     }
 
     private String getResultMessage(LottoResult lottoResult,
-                                    Map<LottoResult, Long> lottoResultToCount) {
+                                    Map<LottoResult, Long> numberOfEachLottoResult) {
         return getResultMessagePrefix(lottoResult) +
-               lottoResultToCount.getOrDefault(lottoResult, RESULT_NUMBER_ZERO) + "개";
+               numberOfEachLottoResult.getOrDefault(lottoResult, RESULT_NUMBER_ZERO) + "개";
     }
 
     private String getResultMessagePrefix(LottoResult lottoResult) {
