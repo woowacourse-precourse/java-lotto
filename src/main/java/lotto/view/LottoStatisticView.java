@@ -1,10 +1,9 @@
 package lotto.view;
 
-import lotto.vo.PlaceType;
+import lotto.type.PlaceType;
 
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class LottoStatisticView extends View {
     private final Map<PlaceType, Integer> winStatistics;

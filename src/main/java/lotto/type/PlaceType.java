@@ -1,8 +1,9 @@
-package lotto.vo;
+package lotto.type;
 
-import java.util.Arrays;
+import lotto.vo.Lotto;
+import lotto.vo.LottoAndBonus;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 public enum PlaceType {
     FIRST_PLACE(List.of(6, 0), 2_000_000_000),

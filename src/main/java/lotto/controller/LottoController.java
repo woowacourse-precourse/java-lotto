@@ -2,7 +2,7 @@ package lotto.controller;
 
 import lotto.view.*;
 import lotto.vo.Lotto;
-import lotto.vo.PlaceType;
+import lotto.type.PlaceType;
 
 import java.util.List;
 import java.util.Map;
