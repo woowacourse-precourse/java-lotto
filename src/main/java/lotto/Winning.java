@@ -1,80 +1,64 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.*;
 
 public class Winning {
+    private final String ERROR_MSG = "[ERROR] 잘못된 입력 입니다.";
 
-    private final List<Integer> WINNING_NUMBERS;
-    private final int BONUS_NUMBER;
+    private List<Integer> winningNumbers = new ArrayList<>();
+    private int bonusNumber = 0;
 
-    public Winning() {
-        WINNING_NUMBERS = winningNumberInput();
-        BONUS_NUMBER = bonusNumberInput();
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
     }
 
-    public List<Integer> winningNumberInput() {
-        System.out.println("당첨 번호를 입력해 주세요.");
-        String winningNumbers = Console.readLine();
-        return TransformInputStringToList(winningNumbers);
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 
-    public int bonusNumberInput() {
-        System.out.println("보너스 번호를 입력해 주세요.");
-        String bonusNumber = Console.readLine();
-        return Integer.parseInt(bonusNumber);
-    }
-
-    public List<Integer> TransformInputStringToList(String input) {
-        validateWinningNumberInput(input);
-        String[] inputNumbers = input.split(",");
-
-        List<Integer> numbers = new ArrayList<>();
-        Arrays.stream(inputNumbers).mapToInt(Integer::parseInt).forEach(numbers::add);
-
-        return numbers;
-    }
-
-    public void validateWinningNumberInput(String winningNumbers) {
-        String errMessage = "[ERROR] 잘못된 입력 입니다.";
-        String[] winningNums = winningNumbers.split(",");
-
-        if (winningNums.length != 6) {
-            throw new IllegalArgumentException(errMessage);
+    public void initializeWinningNumber(String winningNumberInput) {
+        String[] inputs = winningNumberInput.split(",");
+        for (String number : inputs) {
+            validate(number);
+            this.winningNumbers.add(Integer.parseInt(number));
         }
 
-        if (!isPossibleTransformToInt(winningNums) || !isInRange(winningNums) || !hasUniqueNumber(winningNums)) {
-            throw new IllegalArgumentException(errMessage);
+        if (this.winningNumbers.size() != 6) {
+            throw new IllegalArgumentException(ERROR_MSG);
         }
     }
 
-    public boolean isPossibleTransformToInt(String[] inputs) {
-        for (String x  : inputs) {
-            try {
-                Integer.parseInt(x);
-            }catch (Exception e) {
-                return false;
-            }
+    public void initializeBonusNumber(String bonusNumberInput) {
+        validate(bonusNumberInput);
+        this.bonusNumber = Integer.parseInt(bonusNumberInput);
+    }
+
+
+    public void validate(String input) {
+        validateStringToInteger(input);
+        validateRange(input);
+        validateUniqueNumber(input);
+    }
+
+    public void validateStringToInteger(String input) {
+        try {
+            Integer.parseInt(input);
+        }catch (Exception e) {
+            throw new IllegalArgumentException(ERROR_MSG);
         }
-        return true;
     }
 
-    public boolean isInRange(String[] input) {
-        long countOfOutOfRange = Arrays.stream(input).mapToInt(Integer::parseInt)
-                .filter(x -> x < 1 || x > 45).count();
-
-        return countOfOutOfRange == 0;
+    public void validateRange(String input) {
+        int intInput = Integer.parseInt(input);
+        if (intInput < 1 || intInput > 45) {
+            throw new IllegalArgumentException(ERROR_MSG);
+        }
     }
 
-    public boolean hasUniqueNumber(String[] inputs) {
-        Map<Integer, Integer> counter = new HashMap<>();
-        Arrays.stream(inputs).mapToInt(Integer::parseInt)
-                .forEach(x -> counter.put(x, counter.getOrDefault(x, 0)+1));
-
-        long countOfDuplicatedNumber = counter.values().stream()
-                .filter(x -> counter.get(x) > 1).count();
-
-        return countOfDuplicatedNumber == 0;
+    public void validateUniqueNumber(String input) {
+        int intInput = Integer.parseInt(input);
+        if (this.winningNumbers.contains(intInput)) {
+            throw new IllegalArgumentException(ERROR_MSG);
+        }
     }
 }

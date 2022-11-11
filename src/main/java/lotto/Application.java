@@ -4,7 +4,8 @@ import camp.nextstep.edu.missionutils.*;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현c
+        Winning winning = new Winning();
+
     }
 
     /* 구매금액 입력 관련 */
