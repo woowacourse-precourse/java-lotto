@@ -11,8 +11,7 @@ public class InputLotto {
     }
 
     public int toInts(String value) {
-        int number = Integer.parseInt(value);
-        return number;
+        return Integer.parseInt(value);
     }
 
 }
