@@ -29,4 +29,15 @@ public class LottoNumberValidator {
         }
     }
 
+    // 2차 : 숫자값이 맞는지
+    public void checkingNotNumber(final String inputValue){
+        String[] splitValues = inputValue.split(",");
+        for (String value : splitValues){
+            value = value.trim();
+            if(!value.matches("[0-9]")){
+                throw new IllegalArgumentException(ErrorMessages.NOT_NUMBER_EXIST.getMessage());
+            }
+        }
+    }
+
 }
