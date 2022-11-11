@@ -15,14 +15,14 @@ public class InputNumberValidator {
     
     public static void validate(final String inputPayment) {
         validateNullOrEmpty(inputPayment);
-        validateInputPaymentFormatMatching(inputPayment);
+        validateInputNumberFormatMatching(inputPayment);
     }
     
     private static void validateNullOrEmpty(final String inputPayment) {
         InputValidator.validateNullOrEmpty(inputPayment);
     }
     
-    private static void validateInputPaymentFormatMatching(final String inputPayment) {
+    private static void validateInputNumberFormatMatching(final String inputPayment) {
         if (isNonNumericCharactersExist(inputPayment)) {
             throw new IllegalArgumentException(NON_NUMERIC_CHARACTERS_EXCEPTION_MESSAGE);
         }
