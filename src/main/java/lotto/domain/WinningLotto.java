@@ -1,7 +1,7 @@
 package lotto.domain;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class WinningLotto {
@@ -24,6 +24,32 @@ public class WinningLotto {
                 .boxed()
                 .sorted()
                 .collect(Collectors.toList());
+    }
+
+    public ArrayList<Map<String, Object>> confirmWinning(List<Lotto> lottos) {
+        ArrayList<Map<String, Object>> result = new ArrayList<>();
+        for (Lotto lotto : lottos) {
+            int count = matchesCount(lotto);
+            result.add(confirmSecondWinning(lotto, count));
+        }
+        return result;
+    }
+
+    private int matchesCount(Lotto lotto) {
+        AtomicInteger count = new AtomicInteger();
+        numbers.forEach(number -> {
+            if (lotto.getNumbers().contains(number)) {
+                count.getAndIncrement();
+            }
+        });
+        return count.get();
+    }
+
+    private Map<String, Object> confirmSecondWinning(Lotto lotto, int count) {
+        if (count == 5 && lotto.getNumbers().contains(bonusNumber)) {
+            return Map.of("count", count, "bonus", true);
+        }
+        return Map.of("count", count, "bonus", false);
     }
 
     private void validate(List<Integer> numbers, int bonusNumber) {

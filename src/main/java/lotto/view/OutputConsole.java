@@ -1,6 +1,7 @@
 package lotto.view;
 
 import lotto.domain.Lotto;
+import lotto.domain.WinningHistory;
 import lotto.utils.ConsoleLog;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class OutputConsole {
         purchaseLotto.forEach(lotto -> consolelog.println(String.valueOf(lotto.getNumbers())));
     }
 
-    public void showWinningStatistics() {
+    public void showWinningStatistics(WinningHistory winningHistory) {
         consolelog.println(LINE + "당첨 통계");
         consolelog.println("---");
         consolelog.println("3개 일치 (5,000원) - ");
