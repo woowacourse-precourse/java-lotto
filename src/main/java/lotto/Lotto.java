@@ -16,5 +16,14 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public Prize getPrize(List<Integer> winningNumbers, int bonus){
+        int counter = 0;
+        for(Integer num : numbers){
+            if(winningNumbers.contains(num))
+                counter++;
+        }
+        boolean bonusRight = numbers.contains(bonus);
+        return Prize.getPrize(counter, bonusRight);
+    }
+
 }
