@@ -9,10 +9,7 @@ public class WinningStatistics {
         Map<WinningRank, Integer> winningDetails = WinningRank.generateWinningDetails();
         for (Lotto lotto : lottos.getLottos()) {
             int matchingCount = compareNumbersWithWinningNumbers(lotto, winningLotto);
-            boolean containsBonusNumber = false;
-            if (matchingCount == 5) {
-                containsBonusNumber = compareNumbersWithBonusNumber(lotto, winningLotto);
-            }
+            boolean containsBonusNumber = compareNumbersWithBonusNumber(lotto, winningLotto, matchingCount);
             WinningRank winningRank = WinningRank.findWinningRank(matchingCount, containsBonusNumber);
             winningDetails.replace(winningRank, winningDetails.get(winningRank) + 1);
         }
@@ -27,7 +24,8 @@ public class WinningStatistics {
                 .count();
     }
 
-    private static boolean compareNumbersWithBonusNumber(Lotto lotto, WinningLotto winningLotto) {
+    private static boolean compareNumbersWithBonusNumber(Lotto lotto, WinningLotto winningLotto, int matchingCount) {
+        if (matchingCount != 5) return false;
         List<Integer> numbers = lotto.getNumbers();
         int bonusNumber = winningLotto.getBonusNumber();
         return numbers.contains(bonusNumber);
