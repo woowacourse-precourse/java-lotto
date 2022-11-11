@@ -44,7 +44,8 @@ class InputLottoTest {
         String input = "12000";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThat(inputLotto.inputMoney()).isEqualTo(12000);
+        inputLotto.inputMoney();
+        assertThat(inputLotto.money).isEqualTo(12000);
     }
 
     @DisplayName("당첨 번호 입력 시 정확한 입력값은 List 로 변환해 반환합니다.")
@@ -54,7 +55,8 @@ class InputLottoTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         List<Integer> expect = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
-        assertThat(inputLotto.inputWinNumber()).isEqualTo(expect);
+        inputLotto.inputWinNumber();
+        assertThat(inputLotto.winNumbers).isEqualTo(expect);
     }
 
     @DisplayName("당첨 번호 입력시 숫자 구분시 ',' 이 아닌 다른것을 사용하면 IllegalArgumentException 이 발생합니다.")
@@ -114,7 +116,8 @@ class InputLottoTest {
         String input = "7";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
-        assertThat(inputLotto.inputBonusNumber(winNumbers)).isEqualTo(7);
+        inputLotto.inputBonusNumber(winNumbers);
+        assertThat(inputLotto.bonusNumber).isEqualTo(7);
     }
 
     @DisplayName("보너스 번호 입력 시 숫자 이외의 다른것을 넣으면 IllegalArgumentException 이 발생합니다.")
