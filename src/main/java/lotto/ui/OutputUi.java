@@ -54,7 +54,7 @@ public class OutputUi {
                 stringBuilder.append("개\n");
             }
         }
-        stringBuilder.deleteCharAt(stringBuilder.length()-1);
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         return stringBuilder.toString();
     }
 

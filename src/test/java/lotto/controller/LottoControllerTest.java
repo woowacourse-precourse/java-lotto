@@ -55,10 +55,10 @@ class LottoControllerTest {
     void 당첨_로또_세기_테스트() {
         WinningLotto winningLotto = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7);
         List<Lotto> lottos = List.of(
-                new Lotto(List.of(1,2,3,4,5,6)),
-                new Lotto(List.of(1,2,3,4,5,7)),
-                new Lotto(List.of(1,2,7,8,9,10)),
-                new Lotto(List.of(5,6,7,8,9,10))
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                new Lotto(List.of(1, 2, 3, 4, 5, 7)),
+                new Lotto(List.of(1, 2, 7, 8, 9, 10)),
+                new Lotto(List.of(5, 6, 7, 8, 9, 10))
         );
 
         Map<WinningRank, Integer> winLottoCount = lottoController.countWinLotto(winningLotto, lottos);
