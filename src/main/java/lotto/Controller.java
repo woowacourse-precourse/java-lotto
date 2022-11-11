@@ -6,34 +6,61 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import lotto.Rank.Grade;
 
 public class Controller {
 
     public static void startGame() {
-        int money = View.inputMoney();
-        validateMoney(money);
+        String inputMoney = View.inputMoney();
+        try {
+            validateMoney(inputMoney);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+        int money = Integer.parseInt(inputMoney);
+
         List<Lotto> lottoList = Lotto.getLottoList(money);
         View.printLottoList(lottoList);
-        List<Integer> winningNumbers = getWinningNumberds();
+
+        String numbers = View.inputWinningNumbers();
+        try {
+            validateWinningNumbers(numbers);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+        List<Integer> winningNumbers = getWinningNumbers(numbers);
+
         int bonusNumber = View.inputBonusNumber();
-        validateBonusNumber(bonusNumber, winningNumbers);
+        try {
+            validateBonusNumber(bonusNumber, winningNumbers);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+
         Map<Integer, Integer> result = Rank.getResult(winningNumbers, lottoList, bonusNumber);
         View.printResult(result);
         double yield = getYield(money, result);
         View.printYield(yield);
     }
 
-    public static void validateMoney(int money) {
-        if (money % 1000 != 0) {
+    public static void validateMoney(String inputMoney) {
+        Pattern pattern = Pattern.compile("^[0-9]*$");
+        Matcher matcher = pattern.matcher(inputMoney);
+        if (!matcher.find()) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
+        }
+        if (Integer.parseInt(inputMoney) % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 1,000원 단위로 입력해야 합니다.");
         }
     }
 
-    public static List<Integer> getWinningNumberds() {
+    public static List<Integer> getWinningNumbers(String numbers) {
         List<Integer> winningNumbers = new ArrayList<>();
-        String numbers = View.inputWinningNumbers();
-        validateWinningNumbers(numbers);
         for (String number : numbers.split(",")) {
             winningNumbers.add(Integer.parseInt(number));
         }
@@ -45,10 +72,10 @@ public class Controller {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
         }
         if (!hasDuplication(numbers)) {
-            throw new IllegalStateException("[ERROR] 6개의 다른 숫자만 입력 가능합니다.");
+            throw new IllegalArgumentException("[ERROR] 6개의 다른 숫자만 입력 가능합니다.");
         }
         if (!hassValidScope(numbers)) {
-            throw new IllegalStateException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 
