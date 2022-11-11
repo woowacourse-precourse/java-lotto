@@ -20,11 +20,8 @@ public class Application {
         return money;
     }
 
-    public static void main(String[] args) {
-        // 구입금액 입력
-        int lottoCnt = inputBuyMoney()/1000;
-        
-        // 로또 번호 생성
+    // 로또 번호 생성
+    private static List<Lotto> generateLottoNumbers(int lottoCnt){
         List<Lotto> userLottoNum = new ArrayList<>();
         for(int i=0; i<lottoCnt; i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -32,6 +29,16 @@ public class Application {
             userLottoNum.add(lotto);
         }
 
+        return userLottoNum;
+    }
+
+    public static void main(String[] args) {
+        // 구입금액 입력
+        int lottoCnt = inputBuyMoney()/1000;
+
+        // 로또 번호 생성
+        List<Lotto> userLottoNum = generateLottoNumbers(lottoCnt);
+        
         // 로또 번호 출력
         System.out.println(lottoCnt+"개를 구매했습니다.");
         for(Lotto lotto : userLottoNum){
