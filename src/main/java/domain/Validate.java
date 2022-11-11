@@ -15,6 +15,9 @@ public class Validate {
     public static void validateLottoNumber(List<Integer> numbers){
         isDistinctNumber(numbers);
         isLottoSize(numbers);
+        for (Integer number : numbers) {
+            isLottoRange(number);
+        }
     }
 
     private static void isLottoSize(List<Integer> numbers) {
@@ -26,6 +29,13 @@ public class Validate {
     private static void isDistinctNumber(List<Integer> lottoNumber) {
         if(lottoNumber.stream().distinct().count() != lottoNumber.size()){
             throw new IllegalArgumentException(NOT_LOTTO_DISTINCT_NUMBER_ERROR.getMessage());
+        }
+    }
+
+    private static void isLottoRange(int number){
+        if(number < ConstantNumber.MIN_LOTTO_NUMBER.getNumber()
+                || number > ConstantNumber.MAX_LOTTO_NUMBER.getNumber()) {
+            throw new IllegalArgumentException(NOT_LOTTO_RANGE_ERROR.getMessage());
         }
     }
 
