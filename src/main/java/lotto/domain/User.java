@@ -6,7 +6,7 @@ import java.util.List;
 public class User {
     private final Integer MONEY;
 
-    List<Lotto> lottos = new ArrayList<>();
+    private List<Lotto> lottos = new ArrayList<>();
 
     private Integer benefit;
 
@@ -22,12 +22,20 @@ public class User {
         }
     }
 
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
+
     public Integer getLottoCount() {
         return MONEY / 1000;
     }
 
     public void addLotto(Lotto lotto) {
         lottos.add(lotto);
+    }
+
+    public void increasePrize(Integer prize){
+        this.benefit += prize;
     }
 
     public double getYield() {
