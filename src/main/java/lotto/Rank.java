@@ -11,7 +11,7 @@ public enum Rank {
     private final int prize;
     private int count;
 
-    Rank(int matchNumber, int prize) {  // Default 생성자는 private 으로 설정되어 있음.
+    Rank(int matchNumber, int prize) {
         this.matchNumber = matchNumber;
         this.prize = prize;
     }
