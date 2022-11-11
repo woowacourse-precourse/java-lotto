@@ -52,6 +52,7 @@ Enum : Rank
   - validateNumRange(numbers) // (valid.1)
 
 [method]<br>
+- public List<Integer> getNumbers() // numbers Getter
 - private void validate(List<Integer> numbers)
 - private void validateNumRange(List<Integer> numbers)
 ```
