@@ -5,7 +5,8 @@ public enum Errors {
     NOT_INCLUDE_CHARACTER("문자가 포함될 수 없습니다."),
     OUT_OF_RANGE("로또 번호는 숫자는 1부터 45 사이의 숫자여야 합니다."),
     NOT_DUPLICATE_NUMBER("로또 번호는 중복된 숫자가 포함될 수 없습니다."),
-    NOT_SIX_NUMBERS("로또 번호는 6개의 숫자로 구성되어야 합니다.");
+    NOT_SIX_NUMBERS("로또 번호는 6개의 숫자로 구성되어야 합니다."),
+    WRONG_BONUS("보너스 번호는 당첨 번호와 중복될 수 없습니다.");
 
     private final String message;
 

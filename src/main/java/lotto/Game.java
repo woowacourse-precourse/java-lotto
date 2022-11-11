@@ -24,6 +24,7 @@ public class Game {
         // TODO: 구입 금액 입력
         System.out.println(Sentences.PRICE.value());
         int amount = getPurchasePrice();
+        System.out.println();
 
         // TODO: 구매 내역 출력
         System.out.println(Sentences.getPurchase(amount));
@@ -37,6 +38,8 @@ public class Game {
 
         // TODO: 보너스 번호 입력
         System.out.println(Sentences.BONUS.value());
+        int bonus = getBonusNumber();
+        lucky.validateBonusNumber(bonus);
         System.out.println();
 
         // TODO: 번호 비교
@@ -83,6 +86,13 @@ public class Game {
             luckyNumber.add(number);
         }
         return new Lotto(luckyNumber);
+    }
 
+    private int getBonusNumber() {
+        String input = Console.readLine().trim();
+        validation.validateNumber(input);
+        int bonus = Integer.parseInt(input);
+        validation.validateNumberRange(bonus);
+        return bonus;
     }
 }

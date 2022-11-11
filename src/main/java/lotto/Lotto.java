@@ -25,4 +25,10 @@ public class Lotto {
             throw new IllegalArgumentException(Errors.NOT_DUPLICATE_NUMBER.toString());
         }
     }
+
+    public void validateBonusNumber(int bonus) {
+        if (numbers.contains(bonus)) {
+            throw new IllegalArgumentException(Errors.WRONG_BONUS.toString());
+        }
+    }
 }
