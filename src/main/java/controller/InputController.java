@@ -58,4 +58,9 @@ public class InputController {
         return lottonumber;
     }
 
+    public void checkNumberQuantity(String lottonumber) {
+        if(lottonumber.length() != LOTTONUMBERQUANTITY) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
