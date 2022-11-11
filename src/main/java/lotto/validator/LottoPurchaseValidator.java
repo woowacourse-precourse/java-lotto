@@ -6,6 +6,10 @@ import lotto.constant.ErrorMessage;
 
 public class LottoPurchaseValidator {
 
+    public static void validateInputMoneyIsNumeric(String userInput) {
+
+    }
+
     public static void validatePurchaseUnit(int money) {
         if (money % UNIT_OF_LOTTO_PURCHASE != 0) {
             throw new IllegalArgumentException(
