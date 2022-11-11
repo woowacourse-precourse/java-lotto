@@ -11,7 +11,7 @@ public enum Reward {
     SECOND(5, 30_000_000, true),
     THIRD(5, 1_500_000, false),
     FOURTH(4, 50_000, false),
-    FIFTH(4, 5_000, false);
+    FIFTH(3, 5_000, false);
 
     private final int reward;
     private final int match;
