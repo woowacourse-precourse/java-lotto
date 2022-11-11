@@ -1,11 +1,13 @@
 package lotto.domain;
 
+import lotto.view.InputView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class LottoMaker {
 
-    RandomLotto randomLotto = new RandomLotto();
+    private RandomLotto randomLotto = new RandomLotto();
 
     public List<Lotto> getRandomLottos(int lottoTicket) {
         List<Lotto> resultLottos = new ArrayList<>();
@@ -17,6 +19,10 @@ public class LottoMaker {
 
     public Lotto getSingleRandomLotto() {
         return randomLotto.getRandomLotto();
+    }
+
+    public Lotto getManualLotto(List<Integer> lottoNumbers) {
+        return new Lotto(lottoNumbers);
     }
 
 }
