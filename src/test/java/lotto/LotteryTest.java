@@ -12,7 +12,7 @@ public class LotteryTest {
     @Test
     void createLottos() {
         List<Lotto> expected = List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)), new Lotto(List.of(1, 2, 3, 4, 5, 6)));
-        TestStrategy testStrategy = new TestStrategy();
+        ConstantCreateStrategy testStrategy = new ConstantCreateStrategy();
         int buyLottos = 2;
 
         List<Lotto> lottos = new Lottery().createLottery(buyLottos, testStrategy);
