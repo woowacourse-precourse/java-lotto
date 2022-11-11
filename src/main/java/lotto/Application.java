@@ -59,6 +59,18 @@ public class Application {
         if(lottoNumbers.size()!=6){
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개를 입력해야 합니다.");
         }
+        System.out.println();
+    }
+
+    // 보너스 번호 입력
+    private static void inputLottoBonusNumber(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        try {
+            lottoBonusNumber = Integer.parseInt(Console.readLine());
+        } catch (IllegalArgumentException exception){
+            throw new IllegalArgumentException("[ERROR] 잘못된 형식의 입력입니다.");
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) {
@@ -73,5 +85,8 @@ public class Application {
 
         // 당첨 번호 입력
         inputLottoNumbers();
+
+        // 보너스 번호 입력
+        inputLottoBonusNumber();
     }
 }
