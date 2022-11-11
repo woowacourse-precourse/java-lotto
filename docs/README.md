@@ -4,7 +4,8 @@
 
 - [x] 금액을 받아 중복 되지 않는 6개 숫자의 리스트 (로또 번호) 자동 발행 기능 -User#randomLotto()
   - [x] 당첨 로또 번호 출력 기능 -Lotto#getNumbers() 
-- [ ] 당첨 번호 입력 기능 (중복되지 않는 숫자 6개와 보너스 번호 1개) -Lotto#lotto()
+- [x] 당첨 번호 입력 기능 (중복되지 않는 숫자 6개) -Lotto#lotto()
+  - [ ] 보너스 번호 입력 기능 -User#bonusNum()
 - [ ] 당첨 기능 -Winning#score()
   - [ ] 당첨 내역 출력 기능 
   - [ ] 수익률 계산 기능 -Winning#rate()
