@@ -8,13 +8,13 @@ public class Money {
     private final Integer myMoney;
     private final Integer lottoCount;
 
-    public Money(Integer money){
+    public Money(Integer money) {
         validate(money);
         this.myMoney = money;
         this.lottoCount = money / 1000;
     }
 
-    public Integer getLottoCount(){
+    public Integer getLottoCount() {
         return lottoCount;
     }
 

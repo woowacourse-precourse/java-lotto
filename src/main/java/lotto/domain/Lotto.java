@@ -16,7 +16,7 @@ public class Lotto {
         }
 
         // 중복된 숫자가 존재할 경우 예외처리
-        if (numbers.size() != numbers.stream().distinct().count()){
+        if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException();
         }
 
@@ -27,7 +27,7 @@ public class Lotto {
         }
     }
 
-    private Boolean isCorrectRange(Integer number){
+    private Boolean isCorrectRange(Integer number) {
         return 1 <= number && number <= 45;
     }
 

@@ -14,6 +14,7 @@ public class Application {
         Integer count = money.getLottoCount();
         List<Lotto> lottos = generateLottos(count);
     }
+
     @SuppressWarnings("unchecked")
     public static List<Lotto> generateLottos(int count) {
         NumberGenerator generator = new NumberGenerator();
@@ -26,7 +27,7 @@ public class Application {
         return lottos;
     }
 
-    private static Integer askMoney(){
+    private static Integer askMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         return Integer.parseInt(Console.readLine());
     }
