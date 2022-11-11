@@ -53,4 +53,10 @@ class LottoTest {
 
     }
 
+    @DisplayName("주어진 금액으로 구매해야 할 로또 장수를 반환한다.")
+    @Test
+    public void getNumberOfIssuesTest() {
+        assertThat(lotto.Application.getNumberOfIssues(34000)).isEqualTo(34);
+    }
+
 }

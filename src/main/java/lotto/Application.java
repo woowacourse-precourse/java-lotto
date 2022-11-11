@@ -37,4 +37,8 @@ public class Application {
         }
     }
 
+    public static int getNumberOfIssues(int price) {
+        return price / LOTTO_PRICE;
+    }
+
 }
