@@ -25,8 +25,7 @@ public class InputValidator {
     }
 
     private void validateIsThousand(int input) {
-        final int thousand = 1_000;
-        if(input < thousand || input % thousand != 0) {
+        if(input < InputManager.LOTTO_PRICE || input % InputManager.LOTTO_PRICE != 0) {
             throw new NotThousandException();
         }
     }
