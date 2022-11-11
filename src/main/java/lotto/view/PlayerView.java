@@ -2,6 +2,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
+import lotto.exception.PaymentException;
 
 import java.util.List;
 
@@ -22,7 +23,8 @@ public class PlayerView {
     }
 
     private void validate(String price){
-
+        PaymentException paymentException = new PaymentException();
+        paymentException.validate(price);
     }
 
     public void showPlayersLotto(List<Lotto> playerLotto){
