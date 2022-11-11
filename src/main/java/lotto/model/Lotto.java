@@ -21,4 +21,20 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public CompareResult compareWith(WinningNumbers winningNumbers) {
+        CompareResult result = new CompareResult(0, false);
+
+        for (Integer number : numbers) {
+            if (winningNumbers.isWinningNumber(number)) {
+                result = result.increaseMatch();
+                continue;
+            }
+            if (winningNumbers.isBonusNumber(number)) {
+                result = result.foundBonusNumber();
+            }
+        }
+
+        return result;
+    }
+
 }
