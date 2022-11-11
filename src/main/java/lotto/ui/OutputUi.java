@@ -13,7 +13,7 @@ public class OutputUi {
     private static final String INPUT_WINNING_NUMBERS_INFO_MESSAGE = "\n당첨 번호를 입력해 주세요.";
     private static final String INPUT_BONUS_NUMBER_INFO_MESSAGE = "\n보너스 번호를 입력해 주세요.";
     private static final String WIN_LOTTO_STATISTICS_INFO_MESSAGE = "\n당첨 통계\n---";
-    private static final String PROFIT_RATE_MESSAGE_FORMAT = "총 수익률은 %.1f입니다.";
+    private static final String PROFIT_RATE_MESSAGE_FORMAT = "총 수익률은 %.1f%%입니다.";
 
 
     public static void printInsertMoneyInfoMessage() {
@@ -54,6 +54,7 @@ public class OutputUi {
                 stringBuilder.append("개\n");
             }
         }
+        stringBuilder.deleteCharAt(stringBuilder.length()-1);
         return stringBuilder.toString();
     }
 
