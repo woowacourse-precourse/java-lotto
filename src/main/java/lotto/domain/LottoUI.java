@@ -27,7 +27,7 @@ public class LottoUI {
 
     public void inputWinningNumbers() throws IllegalArgumentException {
         System.out.println(Message.INPUT_WINNING_NUMBERS);
-        String numbers = Console.readLine().replaceAll("\\s", "");
+        String numbers = Console.readLine();
         lottoSystem.setWinningNumbers(numbers);
     }
 }

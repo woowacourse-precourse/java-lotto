@@ -10,13 +10,14 @@ import java.util.stream.Collectors;
 public class LottoSystem {
     public static final int MIN_RANGE = 1;
     public static final int MAX_RANGE = 45;
-    List<Integer> winningNumbers;
+    private List<Integer> winningNumbers;
 
     public LottoSystem() {
         winningNumbers = new ArrayList<>();
     }
 
     public void setWinningNumbers(String numbers) throws IllegalArgumentException {
+        numbers = numbers.replaceAll("\\s", "");
         validateWinningNumbers(numbers);
         winningNumbers = Arrays.stream(numbers.split(","))
                 .map(Integer::parseInt)
