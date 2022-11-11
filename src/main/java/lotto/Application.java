@@ -3,15 +3,12 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Application {
 
-    static String NUMBER_REG = "/^[0-9]+$/";
+    static String NUMBER_REG = "^[0-9]+$";
     static String LOTTO_NUMBER_REG = "^[1-9]{1}$|^[1-3]{1}[0-9]{1}$|^4{1}[0-5]{1}$";
     public static void main(String[] args) {
         // TODO: Java Enum 만들기
@@ -55,7 +52,10 @@ public class Application {
         List<Integer> winningNums = parseInputWinningNumsIntoInteger(inputWinningNums);
         int bonusNum = Integer.parseInt(inputBonusNum);
 
-
+        // 5.
+        Map<String, Integer> winningCnt = checkWinningCnt(lottos, winningNums, bonusNum);
+        String yield = calcurateYield(money, winningCnt);
+        printYield(winningCnt, yield);
     }
 
     private static int validateInputMoney(String inputMoney) {
@@ -111,5 +111,38 @@ public class Application {
         return inputWinningNumsList.stream()
             .map(Integer::parseInt)
             .collect(Collectors.toList());
+    }
+
+    private static Map<String, Integer> checkWinningCnt (List<Lotto> lottos, List<Integer> winningNums, int bonusNum) {
+        Map<String, Integer> winningCnt;
+        winningCnt = new HashMap<>(Map.of("1등", 0, "2등", 0, "3등", 0, "4등", 0, "5등", 0));
+
+        for (Lotto lotto: lottos) {
+            String rank = lotto.checkWinningNums(winningNums, bonusNum);
+            if (winningCnt.containsKey(rank)) {
+                winningCnt.replace(rank, winningCnt.get(rank) + 1);
+            }
+        }
+        return winningCnt;
+    }
+
+    private static String calcurateYield(int money, Map<String, Integer> winningCnt) {
+        double winningMoney = 2000000000 * winningCnt.get("1등")
+            + 30000000 * winningCnt.get("2등")
+            + 1500000 * winningCnt.get("3등")
+            + 50000 * winningCnt.get("4등")
+            + 5000  * winningCnt.get("5등");
+
+        return String.format("%2f", winningMoney / money).concat("%");
+    }
+
+    private static void printYield(Map<String, Integer> winningCnt, String yield) {
+        System.out.println("당첨 통계\n---");
+        System.out.printf("3개 일치 (5,000원) - %d개\n", winningCnt.get("5등"));
+        System.out.printf("4개 일치 (50,000원) - %d개\n", winningCnt.get("4등"));
+        System.out.printf("5개 일치 (1,500,000원) - %d개\n", winningCnt.get("3등"));
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", winningCnt.get("2등"));
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", winningCnt.get("1등"));
+        System.out.printf("총 수익률은 %s입니다.", yield);
     }
 }
