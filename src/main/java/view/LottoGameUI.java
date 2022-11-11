@@ -23,5 +23,9 @@ public class LottoGameUI {
         System.out.println(INPUT_WINNING_NUMBER);
         return Console.readLine();
     }
+
+    public String inputBonusNumber() {
+        return Console.readLine();
+    }
 }
 
