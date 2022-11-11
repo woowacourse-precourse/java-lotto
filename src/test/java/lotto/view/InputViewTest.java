@@ -89,4 +89,10 @@ class InputViewTest {
 		String input = "~~d";
 		assertThrows(IllegalArgumentException.class, () -> inputView.validBonusNumber(input));
 	}
+
+	@Test
+	void test() {
+		String input = "1,2,3,4,5,6";
+		assertDoesNotThrow(() -> inputView.validWinningNumber(input));
+	}
 }

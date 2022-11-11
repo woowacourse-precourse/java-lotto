@@ -15,12 +15,14 @@ public class LottoController {
 	InputView inputView = new InputView();
 	List<List<Integer>> lottoTickets;
 	List<Integer> winningNumbers;
+	HashMap<String, Integer> prizeCount;
 	int bonusNumber;
 
 	public void run() {
 		chargeLottoPurchaseAmount();
 		receiveWinningNumbers();
 		receiveBonusNumber();
+		winningNumberCount();
 	}
 
 	public void chargeLottoPurchaseAmount() {
@@ -49,7 +51,7 @@ public class LottoController {
 
 	public void winningNumberCount() {
 		LottoResult lottoResult = new LottoResult(lottoTickets, winningNumbers, bonusNumber);
-		HashMap<String, Integer> prizeCount = lottoResult.countWin();
-
+		prizeCount = lottoResult.countWin();
+		OutputView.printPrize(prizeCount);
 	}
 }

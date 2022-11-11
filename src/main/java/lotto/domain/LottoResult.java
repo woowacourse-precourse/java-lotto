@@ -8,7 +8,6 @@ public class LottoResult {
 	private final List<List<Integer>> lottoTickets;
 	private final List<Integer> winningNumber;
 	private final int bonusNumber;
-	private final HashMap<String, Integer> prize = new HashMap<>();
 
 	public LottoResult(List<List<Integer>> lottoTickets, List<Integer> winningNumber, int bonusNumber) {
 		this.lottoTickets = lottoTickets;
@@ -17,6 +16,14 @@ public class LottoResult {
 	}
 
 	public HashMap<String, Integer> countWin() {
+		HashMap<String, Integer> prize = new HashMap<>() {{
+			put("firstPrize" ,0);
+			put("secondPrize" ,0);
+			put("thirdPrize" ,0);
+			put("fourthPrize" ,0);
+			put("fifthPrize" ,0);
+		}};
+
 		for (List<Integer> lottoTicket : lottoTickets) {
 			int count = 0;
 			for (Integer i : lottoTicket) {
@@ -25,19 +32,19 @@ public class LottoResult {
 				}
 			}
 			if (count == 6) {
-				prize.put("firstPrize", prize.getOrDefault("firstPrize", 0) + 1);
+				prize.put("firstPrize", prize.get("firstPrize") + 1);
 			}
 			if (count == 5 && lottoTicket.contains(bonusNumber)) {
-				prize.put("secondPrize", prize.getOrDefault("secondPrize", 0) + 1);
+				prize.put("secondPrize", prize.get("secondPrize") + 1);
 			}
 			if (count == 5 && !lottoTicket.contains(bonusNumber)){
-				prize.put("thirdPrize", prize.getOrDefault("thirdPrize", 0) + 1);
+				prize.put("thirdPrize", prize.get("thirdPrize") + 1);
 			}
 			if (count == 4){
-				prize.put("fourthPrize", prize.getOrDefault("fourthPrize", 0) + 1);
+				prize.put("fourthPrize", prize.get("fourthPrize") + 1);
 			}
 			if (count == 3) {
-				prize.put("fifthPrize", prize.getOrDefault("fifthPrize", 0) + 1);
+				prize.put("fifthPrize", prize.get("fifthPrize") + 1);
 			}
 		}
 		return prize;
