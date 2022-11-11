@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
 class InputWinningLottoValidatorTest {
-    @DisplayName("올바른 당첨 로또 번호 입력 시")
+    @DisplayName("숫자와 쉼표만 입력 시")
     @ParameterizedTest(name = "{displayName} => {0}")
     @ValueSource(strings = {"1,2,3,4,5,6", "1,10,20,30,40,45"})
     void correctPaymentInput(String input) {
