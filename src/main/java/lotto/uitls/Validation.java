@@ -1,5 +1,7 @@
 package lotto.uitls;
 
+import static lotto.uitls.Converter.convertToIntegerList;
+
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -18,6 +20,23 @@ public class Validation {
         }
         if (!isPossiblePrice(purchaseAmount)) {
             throw new IllegalArgumentException("[ERROR] 0원 이하의 금액은 입력할 수 없습니다.");
+        }
+    }
+
+    public static void validateLottoWinningNumber(String winningNumber) {
+        if (!hasOnlyDigitAndComma(winningNumber)) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개의 숫자를 쉼표로 구분하여 입력해야 합니다.");
+        }
+        if (!hasCorrectNumberOfNumbers(winningNumber)) {
+            throw new IllegalArgumentException("[ERROR] 총 6개의 당첨 번호를 입력해야 합니다.");
+        }
+
+        List<Integer> winningNumbers = convertToIntegerList(winningNumber);
+        if (hasDuplicatedNumber(winningNumbers)) {
+            throw new IllegalArgumentException("[ERROR] 중복되는 당첨 번호가 존재합니다.");
+        }
+        if (!isCorrectRange(winningNumbers)) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 
