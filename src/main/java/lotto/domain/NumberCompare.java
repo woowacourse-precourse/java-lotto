@@ -20,20 +20,15 @@ public class NumberCompare {
         int count = compareCount(numbers, randomNumbers);
         int bonusCount = compareBonusNumber(randomNumbers, bonusNumber);
         // 등수 입력
-
+        return compareRank(count, bonusCount);
     }
 
     public static int compareCount(List<Integer> numbers, List<Integer> randomNumbers) {
-        int i = 0;
         int count = 0;
         // numbers 와 randomNumbers 의 일치 개수 확인
-        while (true) {
+        for(int i=0; i<6; i++){
             if (randomNumbers.contains(numbers.get(i))) {
                 count += 1;
-            }
-            i++;
-            if (i == 5) {
-                break;
             }
         }
         return count;
@@ -48,11 +43,13 @@ public class NumberCompare {
     }
 
     public static Rank compareRank(int count, int bonusCount) {
-        List<Rank> ranks = Arrays.asList(Rank.FIVE, Rank.FOUR, Rank.THREE, Rank.TWO, Rank.ONE);
-        for(int i=3; i<7; i++){
-            if(i == count && bonusCount == 1){
-                return ranks.get(i-3);
-            }
+        List<Rank> ranks = Arrays.asList(Rank.FIVE, Rank.FOUR, Rank.THREE, Rank.ONE);
+        // 2등인 경우
+        if(count == 5 && bonusCount == 1){
+            return Rank.TWO;
+        }
+        // 2등이 아닌 경우
+        for(int i=6; i>2; i--){
             if(i == count){
                 return ranks.get(i-3);
             }
