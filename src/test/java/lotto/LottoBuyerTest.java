@@ -15,10 +15,10 @@ import java.math.BigInteger;
 class LottoBuyerTest extends NsTest{
 
     public static String ERROR_MESSAGE = "[ERROR]";
-
+    private LottoBuyer lottoBuyerTest = new LottoBuyer();
     //성공했을때 확인 필요
     @Test
-    @DisplayName("로또를 구매할 돈을 입력 확인")
+    @DisplayName("로또를 구매할 돈을 잘못 입력할 시 예외 확인")
     void 로또를_구매할_돈을_입력_테스트(){
 
         assertThatThrownBy(() ->run("8000j"))
@@ -35,7 +35,7 @@ class LottoBuyerTest extends NsTest{
     }
 
     @Test
-    @DisplayName("로또의 번호를 제대로 입력할 수 있는지 확인")
+    @DisplayName("로또의 번호를 잘못 입력 시 예외 발생 예외 확인")
     void 로또_번호_입력_테스트(){
         assertThatThrownBy(() -> run("1,2,3,4,5,6"))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -43,7 +43,7 @@ class LottoBuyerTest extends NsTest{
     }
 
     public void runMain() {
-        //LottoBuyer.inputMoney();
-        LottoBuyer.inputLottoNumbers();
+        //lottoBuyerTest.setMoney();
+        lottoBuyerTest.setLottoNumbers();
     }
 }
