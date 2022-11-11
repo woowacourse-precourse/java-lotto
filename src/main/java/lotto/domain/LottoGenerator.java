@@ -2,8 +2,10 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoGenerator {
 
@@ -13,12 +15,14 @@ public class LottoGenerator {
 
     public List<Integer> createRandomLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_RANGE, FINAL_RANGE, LOTTO_MAX_LEN);
-        sortByNaturalOrder(numbers);
+        numbers = sortByNaturalOrder(numbers);
         return numbers;
     }
 
-    private void sortByNaturalOrder(List<Integer> numbers) {
-        numbers.sort(Comparator.naturalOrder());
+    private List<Integer> sortByNaturalOrder(List<Integer> numbers) {
+        return numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
 }
