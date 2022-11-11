@@ -22,22 +22,22 @@ public class WinningNumbers {
 
     private void validateNumbers(List<Integer> numbers) {
         if (numbers.size() != Lotto.NUMBER_COUNT) {
-            throw new IllegalArgumentException("정답번호는 6개여야 합니다.");
+            throw new IllegalArgumentException("당첨번호는 6개여야 합니다.");
         }
 
         if (numbers.stream().distinct().count() != numbers.size()) {
-            throw new IllegalArgumentException("정답번호는 중복되면 안됩니다.");
+            throw new IllegalArgumentException("당첨번호는 중복되면 안됩니다.");
         }
 
         if (!numbers.stream().allMatch(
                 number -> MIN_NUMBER <= number && number <= MAX_NUMBER)) {
-            throw new IllegalArgumentException("정답 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException("당첨 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 
     private void validateBonusNumber(int bonusNumber) {
         if (!(MIN_NUMBER <= bonusNumber && bonusNumber <= MAX_NUMBER)) {
-            throw new IllegalArgumentException("정답 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException("보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 
