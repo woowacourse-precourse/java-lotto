@@ -12,11 +12,11 @@ public class LottoServiceTest {
 
 	@DisplayName("로또 구매 수량 입력시 원하는만큼 구매가 되었는지 확인하는 테스트")
 	@Test
-	void givenPurchaseQuantity_whenMakeLottoGroup_thenLottosSizeEqualPurchaseQuantity(){
-	    //given
+	void givenPurchaseQuantity_whenMakeLottoGroup_thenLottosSizeEqualPurchaseQuantity() {
+		//given
 		int purchaseQuantity = 8;
 
-	    //when
+		//when
 		LottoGroup lottoGroup = lottoService.makeLottoGroup(purchaseQuantity);
 
 		//then
