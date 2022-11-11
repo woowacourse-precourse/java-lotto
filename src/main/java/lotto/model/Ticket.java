@@ -16,6 +16,14 @@ public class Ticket {
         this.lotteries = ticket;
     }
 
+    public List<Lotto> getLotteries() {
+        return lotteries;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
     private List<Lotto> createTicket(int money) {
         List<Lotto> ticket = new ArrayList<>();
         int lottoCount = money / 1000;

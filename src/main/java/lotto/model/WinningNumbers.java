@@ -8,6 +8,14 @@ public class WinningNumbers {
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
 
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
     public WinningNumbers(List<Integer> winningNumbers, int bonusNumber) {
         validateWinningNumbers(winningNumbers);
         validateBonusNumber(bonusNumber, winningNumbers);
