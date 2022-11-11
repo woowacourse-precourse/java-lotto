@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import lotto.domain.dto.MatchResultDTO;
 
 public class Lotto {
 
@@ -20,6 +21,16 @@ public class Lotto {
     @Override
     public String toString() {
         return numbers.toString();
+    }
+
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
+
+    public Match match(WinNumber winNumber) {
+        MatchResultDTO dto = winNumber.matching(this);
+
+        return Match.findByMatchCountAndMatchBonus(dto.getMatchCount(), dto.isMatchBonus());
     }
 
 }

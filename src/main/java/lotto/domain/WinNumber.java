@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import constants.ExceptionMessage;
+import lotto.domain.dto.MatchResultDTO;
 
 public class WinNumber {
 
@@ -17,6 +18,13 @@ public class WinNumber {
         if (generalWinNumber.contains(bonusNumber)) {
             throw new IllegalArgumentException(ExceptionMessage.CONTAIN_BONUS);
         }
+    }
+
+    public MatchResultDTO matching(Lotto lotto) {
+        int matchCount = generalWinNumber.matchCount(lotto);
+        boolean isMatchBonusNumber = bonusNumber.isMatch(lotto);
+
+        return new MatchResultDTO(matchCount, isMatchBonusNumber);
     }
 
 }

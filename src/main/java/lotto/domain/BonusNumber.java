@@ -22,4 +22,8 @@ public class BonusNumber {
         return this.bonusNumber == number;
     }
 
+    public boolean isMatch(Lotto lotto) {
+        return lotto.contains(bonusNumber);
+    }
+
 }

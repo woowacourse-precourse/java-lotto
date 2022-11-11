@@ -28,6 +28,12 @@ public class GeneralWinNumber {
         }
     }
 
+    public int matchCount(Lotto lotto) {
+        return (int) generalWinNumbers.stream()
+                .filter(i -> lotto.contains(i))
+                .count();
+    }
+
     public boolean contains(BonusNumber bonusNumber) {
         return generalWinNumbers.stream()
                 .anyMatch(i -> bonusNumber.isSame(i));
