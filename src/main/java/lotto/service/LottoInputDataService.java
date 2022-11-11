@@ -5,12 +5,10 @@ import static lotto.util.LottoUtil.lottoNumbersParser;
 
 import java.util.List;
 import lotto.domain.Lotto;
-import lotto.exception.LottoException;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class LottoInputDataService {
-    private final LottoException lottoException = new LottoException();
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
 
