@@ -26,7 +26,7 @@ public class Validator {
     public void validateWinningNumbers(String input) {
         validateValueIsNumber(input.replaceAll(",", ""));
         validateValueUseComma(input);
-        validateValueLength(input);
+        validateNumberOfValue(input);
         validateValueRange(input);
     }
 
@@ -77,7 +77,7 @@ public class Validator {
                 );
     }
 
-    private void validateValueLength(String input) {
+    private void validateNumberOfValue(String input) {
         List<String> inputValues = Arrays.asList(input.split(","));
         if (inputValues.size() != LOTTO_NUMBER_LENGTH) {
             throw new IllegalArgumentException(NEED_TO_INPUT_SIX_NUMBER);
