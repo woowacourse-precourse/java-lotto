@@ -22,6 +22,7 @@ public class Game {
 
     public void run() {
         // TODO: 구입 금액 입력
+        System.out.println(Sentences.PRICE.value());
         int amount = getPurchasePrice();
 
         // TODO: 구매 내역 출력
@@ -54,7 +55,6 @@ public class Game {
     }
 
     private int getPurchasePrice() {
-        System.out.println(Sentences.PRICE.value());
         String input = Console.readLine().trim();
         validation.validatePrice(input);
         return Integer.parseInt(input) / 1000;
