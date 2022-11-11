@@ -13,7 +13,10 @@ public enum Message {
     WINNING_NUMBER_INPUT_ERROR("[ERROR] 1부터 45 사이의 수를 중복되지 않게 쉼표(,)를 이용하여 입력해주세요.\n예) 1,2,3,4,5,6"),
     MINUS_INPUT_ERROR("[ERROR] 음수를 입력하셨습니다. 올바른 값을 입력해주세요."),
     YIELD_MESSAGE("총 수익률은 %.1d%입니다.\n"),
-    INPUT_PURCHASE_AMOUNT_MESSAGE("구입금액을 입력해 주세요.");
+    INPUT_PURCHASE_AMOUNT_MESSAGE("구입금액을 입력해 주세요."),
+    INPUT_WINNING_NUMBERS_MESSAGE("당첨 번호를 입력해 주세요."),
+    INPUT_BONUS_NUMBER_MESSAGE("보너스 번호를 입력해 주세요."),
+    TOTAL_RESULT_MESSAGE("당첨 통계\n---");
 
     private final String message;
 
