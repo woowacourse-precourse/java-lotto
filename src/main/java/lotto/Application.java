@@ -11,6 +11,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class Application {
     private static final int ticket_price = 1000;
     private static final List<Integer> prize = List.of(5000, 50000, 1500000, 30000000, 2000000000);
+    // 당첨 통계를 카운팅하기 위한 배열
     private static final int[] prize_num_arr = {0, 0, 0, 0, 0}; 
     private static final List<Integer> prize_num = Arrays.stream(prize_num_arr).boxed().collect(Collectors.toList());
 
