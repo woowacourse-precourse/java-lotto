@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.exception.Input;
+import lotto.exception.LottoError;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -32,11 +32,11 @@ class UserTest {
         //then
         assertThrows(IllegalArgumentException.class,
                 () -> user.inputPurchaseAmount(wrongUnit))
-                .getMessage().equals(Input.WRONG_UNIT_OF_WON.getErrorMessage());
+                .getMessage().equals(LottoError.WRONG_UNIT_OF_WON.getErrorMessage());
 
         assertThrows(IllegalArgumentException.class,
                 () -> user.inputPurchaseAmount(notNumeric))
-                .getMessage().equals(Input.NOT_NUMERIC.getErrorMessage());
+                .getMessage().equals(LottoError.NOT_NUMERIC.getErrorMessage());
     }
 
     @Test

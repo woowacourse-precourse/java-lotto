@@ -1,10 +1,9 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.exception.Input;
+import lotto.exception.LottoError;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class User {
@@ -28,9 +27,7 @@ public class User {
      * 도메인 로직
      */
     public void inputPurchaseAmount(String input) {
-        validateNumeric(input);
-        validateUnitOfWon(input);
-
+        validate(input);
         this.purchaseAmount = Integer.parseInt(input);
     }
 
@@ -39,20 +36,17 @@ public class User {
 
         while (count-- > 0) {
             List<Integer> randoms = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            randoms.sort(Comparator.naturalOrder());
             lottos.add(new Lotto(randoms));
         }
     }
 
-    private void validateNumeric(String input) {
+    private void validate(String input) {
         long numericLength = input.chars().filter(Character::isDigit).count();
         if (numericLength != input.length())
-            throw new IllegalArgumentException(Input.NOT_NUMERIC.getErrorMessage());
-    }
+            throw new IllegalArgumentException(LottoError.NOT_NUMERIC.getErrorMessage());
 
-    private void validateUnitOfWon(String input) {
         int money = Integer.parseInt(input);
         if (money % 1000 != 0)
-            throw new IllegalArgumentException(Input.WRONG_UNIT_OF_WON.getErrorMessage());
+            throw new IllegalArgumentException(LottoError.WRONG_UNIT_OF_WON.getErrorMessage());
     }
 }
