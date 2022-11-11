@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Print {
-	List<ArrayList<Integer>> lottonumbersall;
+	List<List<Integer>> lottonumbersall = null;
 	int lottonum = 0;
 	int bonusnumber = 0;
 	int purchaseprice = 0;
@@ -31,7 +31,7 @@ public class Print {
 	};
 	HashMap<Integer, Integer> rankmap = new HashMap<>();
 	
-	public void printNumberAll(List<ArrayList<Integer>> lottonumbersall, int lottonum, int purchaseprice) {
+	public void printNumberAll(List<List<Integer>> lottonumbersall, int lottonum, int purchaseprice) {
 		System.out.printf("%d를 구매했습니다.",lottonum);
 		for (int i = 0; i < lottonum; i++) {
 			System.out.println(lottonumbersall.get(i));
@@ -67,7 +67,7 @@ public class Print {
 			ArrayList<Integer> lotto = new ArrayList<Integer>();  
 			HashSet<Integer> lottoset = new HashSet<>();  
 			
-			lotto = lottonumbersall.get(i);
+			lotto = (ArrayList<Integer>) lottonumbersall.get(i);
 			lottoset.addAll(lotto);  // 한번 할 때마다 나온 로또 값 6개를 lottoset에 담기
 			
 			lottoset.retainAll(inputnumberset);
@@ -110,7 +110,7 @@ public class Print {
 		return profit;
 	}
 	
-	public void printProfitRound() {
-		
+	public void printProfitRound(double profit) {
+		System.out.printf("총 수익률은 %f.2%%입니다.", profit);
 	}
 }

@@ -12,7 +12,7 @@ public class Application {
     	int purchaseprice = 0;  
     	int lottonum = 0;
     	int bonusnumber = 0;
-    	List<ArrayList<Integer>> lottonumbersall; 
+    	List<List<Integer>> lottonumbersall = null; 
     	List<Integer> inputnumbers = new ArrayList<Integer>();
     	
         purchaseprice = askTotalPrice();               // 사용자 입력으로 금액 입력받기
@@ -32,7 +32,9 @@ public class Application {
         
         print.countWin(inputnumbers, bonusnumber);  // 각 등수당 몇번 해당하는지 세어주는 기능
         
-        print.printWin();
+        print.printWin(); // 당첨 통계 출력하는 기능
+        
+        print.printProfitRound(print.printProfit()); // 계산된 수익률을 소수점 2째자리까지 출력해주는 기능
     }
     
     public static int askTotalPrice() {
