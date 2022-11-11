@@ -1,6 +1,7 @@
 package lotto.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
@@ -18,7 +19,10 @@ public class LottoService {
 	public UserLottoDto makeRandomLottoNumber(Integer buyPrice) {
 		int lottoCount = Integer.valueOf(buyPrice) / 1000;
 		for (int i = 0; i < lottoCount; i++) {
-			List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+			List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+				.stream()
+				.sorted()
+				.collect(Collectors.toList());
 			userLottoRepository.updateLotto(new Lotto(numbers));
 		}
 		return userLottoRepository.findUserLottoDto();
