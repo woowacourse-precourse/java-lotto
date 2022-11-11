@@ -30,10 +30,10 @@ public class LottoGameService {
     private static final String BONUS_NUMBER_WINNING_NUMBERS_DUPLICATE_EXCEPTION_MESSAGE = "보너스 번호는 당첨 번호에 있는 번호를 제외한 번호여야합니다.";
     private static final int LOTTO_WINNING_RANK_MAP_INIT_VALUE = 0;
 
-    private Lotto lotto;
-
     // Key : 로또 당첨 등수 ENUM / Value : 해당 등수에 당첨된 횟수인 당첨 통계를 위한 HashMap
     private final Map<LottoWinningRank, Integer> lottoWinningRankMap = new HashMap<>();
+
+    private final List<List<Integer>> lottoNumbers = new ArrayList<>();
 
     public LottoGameService() {
         initLottoWinningRankMap();
@@ -47,8 +47,9 @@ public class LottoGameService {
         lottoWinningRankMap.put(LottoWinningRank.FIFTH, LOTTO_WINNING_RANK_MAP_INIT_VALUE);
     }
 
-    public void generateLotto() {
-        this.lotto = new Lotto(LottoNumbersGenerator.generateLottoNumbers());
+    public void addLottoNumberToLottoNumbers() {
+        Lotto lotto = new Lotto(LottoNumbersGenerator.generateLottoNumbers());
+        lottoNumbers.add(lotto.getNumbers());
     }
 
     public int getLottoIssueCount(String lottoPurchaseAmount) {
@@ -189,5 +190,9 @@ public class LottoGameService {
     public String removeWinningMoneyComma(LottoWinningRank lottoWinningRank) {
         String originalWinningMoney = lottoWinningRank.getWinningMoney();
         return originalWinningMoney.replace(",", "");
+    }
+
+    public List<List<Integer>> getLottoNumbers() {
+        return lottoNumbers;
     }
 }
