@@ -7,20 +7,24 @@ import java.util.List;
 public class PrizeNum {
     private static List<Integer> prize = new ArrayList<>();
 
-    private PrizeNum() {
+    public PrizeNum() {
 
+    }
+
+    public static void prizeClear() {
+        prize.clear();
     }
 
     public static List<Integer> getPrize() {
         return prize;
     }
 
-    private static String[] splitInputPrize() {
-        return Input.inputPrize().split(",");
+    private static String[] splitInputPrize(String inputPrize) {
+        return inputPrize.replace(" ", "").split(",");
     }
 
-    public static void setPrizeNum() throws IllegalArgumentException {
-        String[] splitInput = splitInputPrize();
+    public static void setPrizeNum(String inputPrize) throws IllegalArgumentException {
+        String[] splitInput = splitInputPrize(inputPrize);
         prize = new ArrayList<>();
 
         for(String input : splitInput) {
@@ -39,8 +43,8 @@ public class PrizeNum {
         }
     }
 
-    public static void setBonusNum() throws IllegalArgumentException {
-        int bonus = Integer.parseInt(Input.inputBonus());
+    public static void setBonusNum(String bonusNum) throws IllegalArgumentException {
+        int bonus = Integer.parseInt(bonusNum);
 
         validateBonusNum(bonus);
 
