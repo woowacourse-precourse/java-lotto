@@ -33,4 +33,8 @@ public class User {
     public void setLotteries(List<Lotto> lotteries) {
         this.lotteries = lotteries;
     }
+
+    public List<Lotto> getLotteries() { // for test Only, it will be deleted
+        return lotteries;
+    }
 }
