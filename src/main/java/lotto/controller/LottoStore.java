@@ -1,13 +1,12 @@
 package lotto.controller;
 
 import lotto.domain.Lotto;
-import lotto.domain.ProfitCalculator;
+import lotto.util.ProfitCalculator;
 import lotto.domain.WinningLotto;
 import lotto.domain.WinningRank;
 import lotto.ui.InputUi;
 import lotto.ui.OutputUi;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
