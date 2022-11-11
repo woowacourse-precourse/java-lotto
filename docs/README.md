@@ -26,7 +26,10 @@
         * 사용자 입력 보너스 번호 리스트에 저장하는 기능 - BonusNumber#BonusNumber()
         * BonusNumber클래스에 저장된 bonusnumber를 main으로 가지고 오는 기능 - BonusNumber#getBonusNumber()
 
-            * 예외1 : 입력시 1-45 사이 숫자가 아닐 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 1-45사이의 1개의 숫자만 입력하세요.) - BonusNumber#validateBonusNumber()
+            * 예외1 : 입력시 1-45 사이 숫자가 아닐 경우 IllegalArgumentException 발생 -  BonusNumber#validateBonusNumber()
+                * 에러메시지([ERROR] 숫자만 입력하세요.) 
+                * 에러메시지([ERROR] 1-45사이의 숫자만 입력하세요.) 
+          
             * 예외2 : 입력 숫자 6개와 보너스 번호가 중복되는 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 보너스 번호가 입력된 당첨 번호 6개와 중복됩니다.) - BonusNumber#bonusNoRepeat()
        
 * 출력

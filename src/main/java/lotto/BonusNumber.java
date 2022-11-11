@@ -15,7 +15,10 @@ public class BonusNumber {
 	public void validateBonusNumber(String stringbonusnumber) {
 		String pattern = "^[0-9]{1,2}$";
 		if (!Pattern.matches(pattern, stringbonusnumber)) {
-			throw new IllegalArgumentException("[ERROR] 1-45사이의 1개의 숫자만 입력하세요.");
+			throw new IllegalArgumentException("[ERROR] 숫자만 입력하세요.");
+		}
+		if (Integer.parseInt(stringbonusnumber) < 1 || Integer.parseInt(stringbonusnumber) > 45) {
+			throw new IllegalArgumentException("[ERROR] 1-45사이의 입력하세요.");
 		}
 	}
 	
