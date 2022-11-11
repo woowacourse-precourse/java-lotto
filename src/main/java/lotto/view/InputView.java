@@ -31,12 +31,15 @@ public class InputView {
                 .collect(Collectors.toList());
         InputException.validateWinningNumber(winningNumber);
         Collections.sort(winningNumber);
+        System.out.println();
         return winningNumber;
     }
 
     public static int enterBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        return Integer.valueOf(Console.readLine());
+        int bonusNumber = Integer.valueOf(Console.readLine());
+        System.out.println();
+        return bonusNumber;
     }
 
 }
