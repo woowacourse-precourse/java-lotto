@@ -21,6 +21,10 @@ public class Lotto {
         this.lottoNumbers = lottoNumbers;
     }
 
+    public boolean contain(LottoNumber bonusNumber) {
+        return lottoNumbers.contains(bonusNumber);
+    }
+
     public List<LottoNumber> getLottoNumbers() {
         return lottoNumbers;
     }
