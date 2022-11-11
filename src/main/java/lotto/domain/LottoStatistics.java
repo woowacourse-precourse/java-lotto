@@ -7,6 +7,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static lotto.constant.NumberConstant.GET_FIRST_RANKING_PRIZE;
+import static lotto.constant.NumberConstant.GET_SECOND_RANKING_PRIZE;
+import static lotto.constant.NumberConstant.GET_THIRD_RANKING_PRIZE;
+import static lotto.constant.NumberConstant.GET_FOURTH_RANKING_PRIZE;
+import static lotto.constant.NumberConstant.GET_FIFTH_RANKING_PRIZE;
+import static lotto.constant.NumberConstant.LOTTO_BONUS_LENGTH;
 import static lotto.domain.LottoResult.FOUR;
 import static lotto.domain.LottoResult.THREE;
 import static lotto.domain.LottoResult.FIVE;
@@ -54,7 +60,7 @@ public class LottoStatistics {
         else if (count.get(0)+count.get(1) == 4) oneLottoTicket.setLottoResult(FOUR);
         else if (count.get(0)+count.get(1) == 5) oneLottoTicket.setLottoResult(FIVE);
         else if (count.get(0) == 6) oneLottoTicket.setLottoResult(SIX);
-        else if (count.get(0)==5 && count.get(1)==1) oneLottoTicket.setLottoResult(FIVE_BONUS);
+        else if (count.get(0)==5 && count.get(1)== LOTTO_BONUS_LENGTH) oneLottoTicket.setLottoResult(FIVE_BONUS);
         else if (count.get(0)+count.get(1) < 3) oneLottoTicket.setLottoResult(LOSING);
         return oneLottoTicket.getLottoResult();
     }
@@ -74,11 +80,11 @@ public class LottoStatistics {
     private static int addPrize(){
         int total = 0;
         for ( LottoResult key : lottoResultMap.keySet() ) {
-            if (key == THREE) total+= 5000 * lottoResultMap.get(key);
-            else if (key == FOUR) total += 50000 * lottoResultMap.get(key);
-            else if (key == FIVE) total += 1500000 * lottoResultMap.get(key);
-            else if (key == FIVE_BONUS) total += 30000000 * lottoResultMap.get(key);
-            else if (key == SIX) total += 2000000000 * lottoResultMap.get(key);
+            if (key == THREE) total+= GET_FIFTH_RANKING_PRIZE * lottoResultMap.get(key);
+            else if (key == FOUR) total += GET_FOURTH_RANKING_PRIZE * lottoResultMap.get(key);
+            else if (key == FIVE) total += GET_THIRD_RANKING_PRIZE * lottoResultMap.get(key);
+            else if (key == FIVE_BONUS) total += GET_SECOND_RANKING_PRIZE * lottoResultMap.get(key);
+            else if (key == SIX) total += GET_FIRST_RANKING_PRIZE * lottoResultMap.get(key);
         }
         return total;
     }
