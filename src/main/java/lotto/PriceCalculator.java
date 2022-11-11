@@ -4,15 +4,16 @@ import java.util.Map;
 
 public class PriceCalculator {
 
-    private final Map<Rank, Integer> winStatus;
-    private int price = 0;
+    public static float getyield(Map<Rank, Integer> winStatus, int purchaseMoney) {
+        int totalPrice = 0;
 
-    public PriceCalculator(Map<Rank, Integer> winStatus) {
-        this.winStatus = winStatus;
-        getPrice(winStatus);
-    }
+        for (Rank rank : winStatus.keySet()) {
+            int prizemoney = rank.getPrizemoney();
+            int count = winStatus.getOrDefault(rank, 0);
 
-    private void getPrice(Map<Rank, Integer> winStatus) {
+            totalPrice += prizemoney * count;
+        }
 
+        return (float)totalPrice / (float)purchaseMoney * 100;
     }
 }
