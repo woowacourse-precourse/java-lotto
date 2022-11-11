@@ -5,7 +5,7 @@ import java.util.List;
 public class OutputView {
     public static void printPurchaseResult(List<List<Integer>> purchaseResult) {
         System.out.printf("%n%d개를 구입하였습니다.%n", purchaseResult.size());
-        for (List<Integer> lottoNumbers: purchaseResult) {
+        for (List<Integer> lottoNumbers : purchaseResult) {
             System.out.println(lottoNumbers);
         }
     }
@@ -15,5 +15,9 @@ public class OutputView {
         for (String winningResult : winningResults) {
             System.out.println(winningResult);
         }
+    }
+
+    public static void printProfitRate(String profitRate) {
+        System.out.printf("총 수익률은 %s 입니다.", profitRate);
     }
 }
