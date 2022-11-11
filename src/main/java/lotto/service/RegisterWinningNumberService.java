@@ -11,6 +11,14 @@ public class RegisterWinningNumberService {
     }
 
     public WinningLotto register() {
-        return new WinningLotto(inputConsole.enterWinningNumber(), inputConsole.enterBonusNumber());
+        return new WinningLotto(winningNumbers(), bonusNumber());
+    }
+
+    private String winningNumbers() {
+        return inputConsole.enterWinningNumber();
+    }
+
+    private String bonusNumber() {
+        return inputConsole.enterBonusNumber();
     }
 }
