@@ -12,34 +12,6 @@ import org.junit.jupiter.api.Test;
 public class LottoPurchaseValidatorTest {
 
     @Nested
-    @DisplayName("사용자가 입력한 구입 금액이")
-    class If_user_input_is {
-
-        @Test
-        @DisplayName("숫자가 아닐 경우 예외를 던진다")
-        void not_numeric() {
-            // given
-            String input = "로또게임";
-
-            // when, then
-            assertThatThrownBy(() -> LottoPurchaseValidator.validateInputMoneyIsNumeric(input))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(ErrorMessage.MONEY_IS_ALLOWED_ONLY_NUMERIC.getMessage());
-        }
-
-        @Test
-        @DisplayName("숫자일 경우 예외를 던지지 않는다")
-        void numeric() {
-            // given
-            String input = "123";
-
-            // when, then
-            assertThatCode(() -> LottoPurchaseValidator.validateInputMoneyIsNumeric(input))
-                    .doesNotThrowAnyException();
-        }
-    }
-
-    @Nested
     @DisplayName("입력한 구입 금액이")
     class If_input_value_to_purchase {
 
