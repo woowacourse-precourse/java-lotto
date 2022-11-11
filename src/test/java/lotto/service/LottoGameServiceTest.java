@@ -167,17 +167,28 @@ class LottoGameServiceTest {
 
     @Test
     void 보너스_번호가_숫자가_아니면_예외_발생() {
+        List<Integer> lottoWinningNumbers = List.of(1, 2, 3, 4, 5, 6);
         String bonusNumber = "aaaaa";
-        assertThatThrownBy(() -> lottoGameService.validateBonusNumber(bonusNumber))
+        assertThatThrownBy(() -> lottoGameService.validateBonusNumber(lottoWinningNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("보너스 번호는 숫자여야합니다.");
     }
 
     @Test
     void 보너스_번호의_범위가_1부터_45가_아니면_예외_발생() {
+        List<Integer> lottoWinningNumbers = List.of(1, 2, 3, 4, 5, 6);
         String bonusNumber = "50";
-        assertThatThrownBy(() -> lottoGameService.validateBonusNumber(bonusNumber))
+        assertThatThrownBy(() -> lottoGameService.validateBonusNumber(lottoWinningNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("보너스 번호의 범위는 1~45여야합니다.");
+    }
+
+    @Test
+    void 보너스_번호가_당첨_번호에_이미_있으면_예외_발생() {
+        List<Integer> lottoWinningNumbers = List.of(1, 2, 3, 4, 5, 6);
+        String bonusNumber = "6";
+        assertThatThrownBy(() -> lottoGameService.validateBonusNumber(lottoWinningNumbers, bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("보너스 번호는 당첨 번호에 있는 번호를 제외한 번호여야합니다.");
     }
 }
