@@ -28,8 +28,12 @@ public class LotterySeller {
 
 	public void sendGeneratedLotterySets() {
 		int numberOfPurchases = getNumberOfPurchases();
+
 		List<List<Integer>> randomNumbersSets = generateRandomNumbersSets(numberOfPurchases);
-		RandomNumbersSets randomNumbersSetsDto = new RandomNumbersSets(randomNumbersSets);
+		int randomNumbersSetsSize = randomNumbersSets.size();
+
+		RandomNumbersSets randomNumbersSetsDto =
+			new RandomNumbersSets(randomNumbersSets, randomNumbersSetsSize);
 		requestController.receiveRandomNumbersSets(randomNumbersSetsDto);
 	}
 
