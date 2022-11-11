@@ -49,6 +49,10 @@ public class LottoService {
         return LottoNumber.getBonusNumber();
     }
 
+    public String getProfitRate(Map<Score, Integer> scoreStore, int money) {
+        return ProfitRateCalculator.getProfitRate(scoreStore, money);
+    }
+
     private int getScore(List<Integer> lottoNumbers, List<Integer> randomLottoNumber, int score) {
         for (Integer lottoNumber : lottoNumbers) {
             score = existNumber(randomLottoNumber, score, lottoNumber);
