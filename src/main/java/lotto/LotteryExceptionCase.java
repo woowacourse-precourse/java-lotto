@@ -6,5 +6,5 @@ public interface LotteryExceptionCase {
     void validateInputEmpty(String amount);
     void validateAmount(int amount);
     int convertStringToInteger(String amount);
-    void characterCheck(String amount);
+    void amountCharacterCheck(String amount);
 }

@@ -52,11 +52,10 @@ class LottoTest extends NsTest {
     void validateInputValueForMoneyCase1() {
         String input = "1001";
         AutomaticLottery buyLotto = new AutomaticLottery();
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-        assertThat(output()).contains(ERROR_MESSAGE);
+        assertSimpleTest(() -> {
+            buyLotto.getLottoPieces(input);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
     }
 
     @DisplayName("입력 값이 천원으로 딱 나눠 나머지가 있으면 에러가 발생한다. 2")
@@ -64,11 +63,10 @@ class LottoTest extends NsTest {
     void validateInputValueForMoneyCase2() {
         String input = "999";
         AutomaticLottery buyLotto = new AutomaticLottery();
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-        assertThat(output()).contains(ERROR_MESSAGE);
+        assertSimpleTest(() -> {
+            buyLotto.getLottoPieces(input);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
     }
 
     @DisplayName("입력 값에 문자가 들어가면 에러가 발생한다. 1")
@@ -76,11 +74,10 @@ class LottoTest extends NsTest {
     void validateInputValueForCharacterCase1() {
         String input = "/001";
         AutomaticLottery buyLotto = new AutomaticLottery();
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-        assertThat(output()).contains(ERROR_MESSAGE);
+        assertSimpleTest(() -> {
+            buyLotto.getLottoPieces(input);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
     }
 
     @DisplayName("입력 값에 문자가 들어가면 에러가 발생한다. 2")
@@ -88,11 +85,10 @@ class LottoTest extends NsTest {
     void validateInputValueForCharacterCase2() {
         String input = " 10000";
         AutomaticLottery buyLotto = new AutomaticLottery();
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-        assertThat(output()).contains(ERROR_MESSAGE);
+        assertSimpleTest(() -> {
+            buyLotto.getLottoPieces(input);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
     }
 
     @DisplayName("입력 값에 문자가 들어가면 에러가 발생한다. 3")
@@ -100,11 +96,10 @@ class LottoTest extends NsTest {
     void validateInputValueForCharacterCase3() {
         String input = "10,000";
         AutomaticLottery buyLotto = new AutomaticLottery();
-        assertSimpleTest(() ->
-                assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
-                        .isInstanceOf(IllegalArgumentException.class)
-        );
-        assertThat(output()).contains(ERROR_MESSAGE);
+        assertSimpleTest(() -> {
+            buyLotto.getLottoPieces(input);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
     }
 
     @DisplayName("입력 값에 공백이 들어가면 에러가 발생한다.")
