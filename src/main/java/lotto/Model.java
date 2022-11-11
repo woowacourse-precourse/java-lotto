@@ -86,6 +86,25 @@ public class Model {
         return 0;
     }
 
+    public double calculateRateOfProfit (HashMap<Integer, Integer> prizeRankings, int money) {
+        int totalProfit = 0;
+
+        for (int ranking: prizeRankings.keySet()) {
+            totalProfit += profitByRanking(ranking, prizeRankings.get(ranking));
+        }
+
+        return (double)totalProfit / money;
+    }
+
+    public int profitByRanking (int ranking, int numberOfRanking) {
+        if (ranking == 1) return Prize.FIRST.getPrize() * numberOfRanking;
+        if (ranking == 2) return Prize.SECOND.getPrize() * numberOfRanking;
+        if (ranking == 3) return Prize.THIRD.getPrize() * numberOfRanking;
+        if (ranking == 4) return Prize.FORTH.getPrize() * numberOfRanking;
+        if (ranking == 5) return Prize.FIFTH.getPrize() * numberOfRanking;
+        return 0;
+    }
+
     public List<List<Integer>> repeatGetLottoNumber(int moneyNumber) {
         List<List<Integer>> uncheckedLottos = new ArrayList<>();
 
