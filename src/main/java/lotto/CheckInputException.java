@@ -38,4 +38,12 @@ class CheckInputException {
         }
     }
 
+    public static void checkBuyerInputIsNotFiveComma(final String input) throws IllegalArgumentException{
+        final int countComma = Util.countChar(input, ',');
+
+        if (countComma != 5){
+            throw new IllegalArgumentException(ERROR_MESSAGE + "','의 숫자가 5개가 아닙니다.");
+        }
+    }
+
 }
