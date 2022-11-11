@@ -1,14 +1,13 @@
 package lotto;
 
 import static java.lang.Integer.parseInt;
+import static lotto.utils.ConstantUtil.MIN_LOTTO_PRICE;
 import static lotto.utils.RandomUtil.createRandomNumbers;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LottoMachine {
-    private static final int MIN_MONEY = 1000;
-
     private int money;
 
     public LottoMachine() {
@@ -45,7 +44,7 @@ public class LottoMachine {
     }
 
     private void spendMoney() {
-        money -= MIN_MONEY;
+        money -= MIN_LOTTO_PRICE;
     }
 
     private void validate(int money) {

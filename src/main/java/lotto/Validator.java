@@ -3,6 +3,7 @@ package lotto;
 import static lotto.utils.ConstantUtil.LOTTO_NUMBER_SIZE;
 import static lotto.utils.ConstantUtil.MAX_LOTTO_NUMBER;
 import static lotto.utils.ConstantUtil.MIN_LOTTO_NUMBER;
+import static lotto.utils.ConstantUtil.MIN_LOTTO_PRICE;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +17,6 @@ public class Validator {
     private static final String DIGIT_COMMA_ERROR_MESSAGE = PREFIX + "숫자와 콤마(,)만 입력 가능합니다.";
     private static final String MIN_MONEY_ERROR_MESSAGE = PREFIX + "구입금액은 1000원 이상부터 가능합니다.";
     private static final String MONEY_UNIT_ERROR_MESSAGE = PREFIX + "구입금액은 1000원 단위만 가능합니다.";
-    private static final int MIN_MONEY = 1000;
 
     public void validateNumberSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBER_SIZE) {
@@ -69,7 +69,7 @@ public class Validator {
     }
 
     public void validateMinMoney(int money) {
-        if (money < MIN_MONEY) {
+        if (money < MIN_LOTTO_PRICE) {
             throw new IllegalArgumentException(MIN_MONEY_ERROR_MESSAGE);
         }
     }
@@ -81,7 +81,7 @@ public class Validator {
     }
 
     private boolean isNotValidMoneyUnit(int money) {
-        return money % MIN_MONEY != 0;
+        return money % MIN_LOTTO_PRICE != 0;
     }
 
     private boolean isNotValidRange(int number) {
