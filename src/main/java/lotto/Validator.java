@@ -14,6 +14,9 @@ public class Validator {
     private static final String RANGE_ERROR_MESSAGE = PREFIX + "로또 번호에 1 ~ 45 범위를 벗어난 숫자가 있습니다.";
     private static final String DIGIT_ERROR_MESSAGE = PREFIX + "숫자만 입력 가능합니다.";
     private static final String DIGIT_COMMA_ERROR_MESSAGE = PREFIX + "숫자와 콤마(,)만 입력 가능합니다.";
+    private static final String MIN_MONEY_ERROR_MESSAGE = PREFIX + "구입금액은 1000원 이상부터 가능합니다.";
+    private static final String MONEY_UNIT_ERROR_MESSAGE = PREFIX + "구입금액은 1000원 단위만 가능합니다.";
+    private static final int MIN_MONEY = 1000;
 
     public void validateNumberSize(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBER_SIZE) {
@@ -63,6 +66,22 @@ public class Validator {
         }
 
         return input;
+    }
+
+    public void validateMinMoney(int money) {
+        if (money < MIN_MONEY) {
+            throw new IllegalArgumentException(MIN_MONEY_ERROR_MESSAGE);
+        }
+    }
+
+    public void validateMoneyUnit(int money) {
+        if (isNotValidMoneyUnit(money)) {
+            throw new IllegalArgumentException(MONEY_UNIT_ERROR_MESSAGE);
+        }
+    }
+
+    private boolean isNotValidMoneyUnit(int money) {
+        return money % MIN_MONEY != 0;
     }
 
     private boolean isNotValidRange(int number) {
