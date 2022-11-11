@@ -9,7 +9,7 @@ public class Player {
     }
 
     public String selectWinningNumbers() {
-        return "";
+        return Console.readLine();
     }
 
     public String selectBonusNumber() {
