@@ -8,15 +8,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputView {
-    public static String inputMoney() {
+    public static String inputCash() {
+        OutputView.printCashInput();
         return Console.readLine();
     }
 
     public static List<Integer> inputWinningNumbers() {
+        OutputView.printWinningNumberInput();
         return formatInput(Console.readLine());
     }
 
     public static String inputBonusNumber() {
+        OutputView.printBonusNumberInput();
         return Console.readLine();
     }
 
