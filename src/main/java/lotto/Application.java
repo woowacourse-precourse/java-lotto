@@ -3,10 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class Application {
@@ -32,10 +29,27 @@ public class Application {
         }
     }
 
-//    public static List<Integer> inputWinningNumbers(){
-//        String WinningNumbers = Console.readLine();
-//
-//    }
+    public static List<Integer> inputWinningNumbers(){
+        String winningNumbers = Console.readLine();
+        checkValidLottoNumbers(winningNumbers);
+
+        return convertToIntegerList(winningNumbers);
+    }
+
+    /**
+     * csv 형태의 로또번호를 List<Integer>형태로 정리하여 반환한다.
+     * @param winningNumbers 로또 1등 당첨 번호(보너스 번호 제외)
+     * @return List<Integer>형태로 정리된 당첨 번호
+     */
+    private static List<Integer> convertToIntegerList(String winningNumbers) {
+        List<Integer> winningLotto = new ArrayList<>();
+        String[] targets = winningNumbers.split(",");
+        for (String num: targets){
+            Integer current = Integer.valueOf(num);
+            winningLotto.add(current);
+        }
+        return winningLotto;
+    }
 
     public static void checkValidLottoNumbers(String winningNumbers){
         checkDigitAndComma(winningNumbers); // 1. 숫자와 콤마(,)로만 이루어져 있는가?
@@ -90,5 +104,7 @@ public class Application {
         Gambler p1 = new Gambler(a2);
         p1.buyingLotto();
         p1.printAllLotto();
+        List<Integer> ll = inputWinningNumbers();
+        System.out.println(ll);
     }
 }
