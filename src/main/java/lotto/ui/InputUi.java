@@ -21,7 +21,7 @@ public class InputUi {
         return purchaseAmount;
     }
 
-    public static List<Integer> readWinningLottoNumbers() {
+    public static List<Integer> readWinningLottoNumbers() throws IllegalArgumentException {
         String winningNumbersInput = Console.readLine();
         InputValidator.validateWinningNumbersInput(winningNumbersInput);
 

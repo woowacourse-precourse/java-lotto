@@ -27,7 +27,7 @@ public class InputValidator {
         }
     }
 
-    public static void validateWinningNumbersInput(String input) {
+    public static void validateWinningNumbersInput(String input) throws IllegalArgumentException {
         if (input.matches(NUMBERS_INPUT_REGEX)) {
             return;
         }
