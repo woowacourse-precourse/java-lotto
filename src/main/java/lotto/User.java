@@ -44,4 +44,21 @@ public class User {
         System.out.println();
         System.out.println(this.lottoQuantity+"개를 구매했습니다.");
     }
+
+    void buyingLotto(){
+        for(int number=1;number<=Integer.parseInt(lottoQuantity);number++) {
+            lottos.add(generateLotto());
+        }
+    }
+
+    private Lotto generateLotto(){
+        return new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6));
+    }
+
+    void printAllBuyingLotto(){
+        for (Lotto lotto: lottos){
+            lotto.printLotto();
+        }
+        System.out.println();
+    }
 }

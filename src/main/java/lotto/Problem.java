@@ -14,5 +14,7 @@ public class Problem {
         input.inputMoney();
         input.setLottoQuantity();
         input.printLottoQunantity();
+        input.buyingLotto();
+        input.printAllBuyingLotto();
     }
 }
