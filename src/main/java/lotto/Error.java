@@ -33,6 +33,15 @@ public enum Error {
 
     public static void validateBuyMoneyDivided1000(int buyMoney) {
         if (buyMoney % 1000 != 0 || buyMoney == 0)
-            throw new IllegalArgumentException(Error.NOT_NUMBER_DIVIDED_1000.getErrorMsg());
+            throw new IllegalArgumentException(NOT_NUMBER_DIVIDED_1000.getErrorMsg());
+    }
+
+    public static void validateNotDuplicateLottoNum(List<Integer> numbers, int startIndex) {
+        int targetNum = numbers.get(startIndex);
+
+        for (int index = startIndex + 1; index < numbers.size(); index++) {
+            if (targetNum == numbers.get(index))
+                throw new IllegalArgumentException(NUMBER_DUPLICATE.getErrorMsg());
+        }
     }
 }
