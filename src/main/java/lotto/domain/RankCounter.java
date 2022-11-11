@@ -1,49 +1,40 @@
 package lotto.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 public class RankCounter {
-	private final List<Integer> ranks;
+	private final Map<Rank, Integer> ranks;
 
 	public RankCounter(List<Lotto> lottoTickets, WinningNumbers winningNumbers) {
-		this.ranks = sortRanks(lottoTickets, winningNumbers);
+		this.ranks = countRanks(lottoTickets, winningNumbers);
 	}
 
-	public List<Integer> getRanks() {
-		return Collections.unmodifiableList(ranks);
+	public Map<Rank, Integer> getRanks() {
+		return Collections.unmodifiableMap(ranks);
 	}
 
-	private List<Integer> sortRanks(List<Lotto> lottoTickets, WinningNumbers winningNumbers) {
-		int[] ranks = {0, 0, 0, 0, 0};
+	private Map<Rank, Integer> countRanks(List<Lotto> lottoTickets, WinningNumbers winningNumbers) {
+		Map<Rank, Integer> ranks = new HashMap<>();
+
 		for (Lotto lottoTicket : lottoTickets) {
-			ranks[countRank(lottoTicket, winningNumbers)]++;
+			Rank key = countRank(lottoTicket, winningNumbers);
+			ranks.put(key, ranks.get(key) + 1);
 		}
-		return Arrays.stream(ranks).boxed().collect(Collectors.toList());
+		return ranks;
 	}
 
-	private int countRank(Lotto lottoTicket, WinningNumbers winningNumbers) {
+	private Rank countRank(Lotto lottoTicket, WinningNumbers winningNumbers) {
 		List<Integer> intersection = new ArrayList<>(lottoTicket.getNumbers());
 		intersection.retainAll(winningNumbers.getWinningNumbers());
-		return intersection.size() + addBonusPoint(lottoTicket, winningNumbers, intersection);
-	}
-
-	private int addBonusPoint(Lotto lottoTicket, WinningNumbers winningNumbers, List<Integer> intersection) {
-		if (isThirdRank(intersection) && isContainsBonusNumber(lottoTicket, winningNumbers)) {
-			return 1;
-		}
-		return 0;
+		return Rank.of(intersection.size(), isContainsBonusNumber(lottoTicket, winningNumbers));
 	}
 
 	private boolean isContainsBonusNumber(Lotto lottoTicket, WinningNumbers winningNumbers) {
 		return lottoTicket.getNumbers().contains(winningNumbers.getBonusNumbers());
-	}
-
-	private boolean isThirdRank(List<Integer> intersection) {
-		return intersection.size() == 5;
 	}
 
 }
