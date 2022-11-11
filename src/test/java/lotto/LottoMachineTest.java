@@ -1,10 +1,14 @@
 package lotto;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class LottoMachineTest {
     private LottoMachine lottoMachine;
@@ -26,5 +30,14 @@ class LottoMachineTest {
     void createWrongMoneyUnit() {
         assertThatThrownBy(() -> lottoMachine.inputMoney(1100))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 구입금액에 맞춰 여러개의 로또가 발행된다.")
+    @ParameterizedTest
+    @CsvSource(value = {"1000, 1", "2000, 2", "5000, 5", "10000, 10"})
+    void publishLotto(int money, int expected) {
+        lottoMachine.inputMoney(money);
+        List<Lotto> publishedLotto = lottoMachine.publishLotto();
+        assertThat(publishedLotto).hasSize(expected);
     }
 }
