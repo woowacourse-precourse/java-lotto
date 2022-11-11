@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 import lotto.constant.ErrorMessage;
 import lotto.constant.LottoNumber;
+import lotto.domain.Lotto;
 
 public class LottoNumberValidator {
 
@@ -20,6 +21,9 @@ public class LottoNumberValidator {
         if (outOfRangeCount != 0) {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_OUT_OF_RANGE.getMessage());
         }
+    }
+
+    public static void validateBonusNumberAndLottoAreDuplicate(Lotto lotto, int bonusNumber) {
     }
 
     private static boolean isInRange(int number) {
