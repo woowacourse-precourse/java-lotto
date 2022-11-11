@@ -12,6 +12,7 @@ import lotto.validation.Validation;
 import lotto.view.BonusLottoView;
 import lotto.view.LotteryWinningNumberView;
 import lotto.view.LottoBuyView;
+import lotto.view.UserLottoView;
 import lotto.view.View;
 
 public class LottoController {
@@ -24,6 +25,7 @@ public class LottoController {
     public void lottoProcedure() {
         String userMoneyInput = getUserMoneyWithValidation();
         List<Lotto> userLotto = createUserLotto(userMoneyInput);
+        printUserLottoResult(userLotto);
 
         String userLottoWinningInput = lottoWinningNumberView();
         winningLottoInputValidation(userLottoWinningInput);
@@ -102,6 +104,7 @@ public class LottoController {
     private Validation createBonusLottoInputValidation() {
         return new BonusLottoValidation();
     }
+
 //    private static List<Integer> createLottoNumber(String userInput) {
 //        String[] userWinningLottoInput = userInput.split(",");
 //        return Arrays.stream(userWinningLottoInput)
@@ -109,10 +112,18 @@ public class LottoController {
 //                .collect(Collectors.toList());
 
 //    }
-
     private static List<Lotto> createUserLotto(String userMoneyInput) {
         UserLottoService userLottoService = new UserLottoService(userMoneyInput);
         return userLottoService.createLottoNumber();
+    }
+
+    private void printUserLottoResult(List<Lotto> userLotto) {
+        View userLottoView = new UserLottoView();
+        List<String> userLottoResult = userLotto.stream()
+                .map(Object::toString)
+                .collect(Collectors.toList());
+        userLottoView.setPrintElement(userLottoResult);
+        userLottoView.show();
     }
 
 }
