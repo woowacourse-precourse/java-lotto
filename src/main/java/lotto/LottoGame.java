@@ -98,13 +98,16 @@ public class LottoGame {
         output.writeYield(results.getYield(money));
     }
 
+    private List<Lotto> buyLottos(int money) {
+        LottoSeller seller = new LottoSeller();
+        return seller.buyLottos(money);
+    }
+
     public void play() {
         try {
             int money = inputMoney();
 
-            LottoSeller seller = new LottoSeller();
-            List<Lotto> lottos = seller.buyLottos(money);
-
+            List<Lotto> lottos = buyLottos(money);
             printLottos(lottos);
 
             List<Integer> standardNumbers = inputWinningStandardNumbers();
