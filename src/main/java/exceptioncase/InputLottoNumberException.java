@@ -5,7 +5,7 @@ import java.util.List;
 
 public class InputLottoNumberException {
     public static void exceptionsTest(String inpnut){
-        islength(inpnut);
+        isFitness(inpnut);
     }
     public static void bonusNumberTest(String bonusNumber,List<Integer> answerNumbers){
         bonusNumber = bonusNumber.replaceAll("[^\\d]", "");
