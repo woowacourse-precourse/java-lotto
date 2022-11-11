@@ -37,4 +37,11 @@ public enum LottoRank {
         }
         return lottoRank;
     }
+
+    public static String createStatisticsForm(LottoRank lottoRank, Integer count) {
+        if (lottoRank == FIVE_BONUS_MATCHES) {
+            return String.format(BONUS_STATISTICS_MESSAGE.getMessage(), lottoRank.matchPoint, lottoRank.reward, count);
+        }
+        return String.format(STANDARD_STATISTICS_MESSAGE.getMessage(), lottoRank.matchPoint, lottoRank.reward, count);
+    }
 }
