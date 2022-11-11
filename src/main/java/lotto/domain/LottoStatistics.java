@@ -60,5 +60,12 @@ public class LottoStatistics {
         return oneLottoTicket.getLottoResult();
     }
 
+    public List<Integer> getLottoStatisticsList(){
+        List<Integer> lottoStatisticsList = new ArrayList<>();
+        for ( LottoResult key : lottoResultMap.keySet() ) {
+            lottoStatisticsList.add(lottoResultMap.get(key));
+        }
+        return lottoStatisticsList;
+    }
 
 }
