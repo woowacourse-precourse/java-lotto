@@ -6,18 +6,18 @@ import static lotto.Rank.*;
 
 public class Referee {
 
-    public int correctNumberCount(Lotto input, List<Integer> numbers) {
+    public int correctNumberCount(Lotto lotto, List<Integer> myLotto) {
         int count = 0;
 
-        for(int number : numbers) {
-            if(input.getNumbers().contains(number)) {
+        for(int number : myLotto) {
+            if(lotto.getNumbers().contains(number)) {
                 count++;
             }
         }
         return count;
     }
 
-    public void plusCorrectNumberCount(int correctNumberCount, List<Integer> numbers, int bonus) {
+    public void plusCorrectNumberCount(int correctNumberCount, List<Integer> myLotto, int bonus) {
         if(correctNumberCount == 3) {
             THREE.plusCount();
         }
@@ -25,7 +25,7 @@ public class Referee {
             FOUR.plusCount();
         }
         if(correctNumberCount == 5) {
-            if(numbers.contains(bonus)) {
+            if(myLotto.contains(bonus)) {
                 FIVE_BONUS.plusCount();
                 return;
             }
@@ -36,7 +36,7 @@ public class Referee {
         }
     }
 
-    public boolean isDuplicateBonusBall(int input_bonus, Lotto input) {
-        return input.getNumbers().contains(input_bonus);
+    public boolean isDuplicateBonusBall(int bonus, Lotto lotto) {
+        return lotto.getNumbers().contains(bonus);
     }
 }
