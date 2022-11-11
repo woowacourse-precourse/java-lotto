@@ -15,21 +15,21 @@ class InputMapperTest {
     @Test
     @DisplayName("split 메서드 기능 테스트")
     void split_with_blank() {
-        List<Integer> set = inputMapper.splitBy("1 , 2 ,   3  , 4, 5", ",");
-        assertThat(set).isEqualTo(Set.of(1, 2, 3, 4, 5));
+        List<Integer> list = inputMapper.splitBy("1 , 2 ,   3  , 4, 5", ",");
+        assertThat(list).isEqualTo(List.of(1, 2, 3, 4, 5));
     }
 
     @Test
     @DisplayName("split 메서드 기능 테스트")
     void split_without_blank() {
-        List<Integer> set = inputMapper.splitBy("1,2,3,4,5", ",");
-        assertThat(set).isEqualTo(Set.of(1, 2, 3, 4, 5));
+        List<Integer> list = inputMapper.splitBy("1,2,3,4,5", ",");
+        assertThat(list).isEqualTo(List.of(1, 2, 3, 4, 5));
     }
 
     @Test
     @DisplayName("split 메서드 기능 테스트")
     void split_regex_error() {
         assertThatThrownBy(() -> inputMapper.splitBy("1,2  ,3.  4.5", ","))
-                .isInstanceOf(NumberFormatException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
