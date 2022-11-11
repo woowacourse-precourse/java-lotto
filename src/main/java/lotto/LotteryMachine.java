@@ -11,6 +11,7 @@ public class LotteryMachine {
 
     private Lotto winningLotto;
     private int bonusNum;
+
     public List<Integer> makeLottoNum() {
 
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -25,7 +26,6 @@ public class LotteryMachine {
 
         for (String num : spiltWinningNum) {
             Error.validateInputIsNotNum(num);
-
             winningNum.add(Integer.parseInt(num));
         }
 
@@ -63,6 +63,32 @@ public class LotteryMachine {
 
         return same;
     }
+
+    public int compareBonusNum(Lotto lotto) {
+        List<Integer> lottoNumbers = lotto.getNumbers();
+
+        if (lottoNumbers.contains(bonusNum)) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public int[] calculateLottoResult(Buyer buyer) {
+        int[] sameNumCount = new int[5];
+
+        for (Lotto lotto : buyer.getLottos()) {
+            int same = compareLotto(lotto);
+
+            if (same == 5) {
+                int bonusResult = compareBonusNum(lotto);
+                sameNumCount[same - bonusResult - 3]++;
+            }
+            if (same != 5)
+                sameNumCount[same - 3]++;
+        }
+        return sameNumCount;
+    }
+
     public Lotto getLotto() {
         return winningLotto;
     }
