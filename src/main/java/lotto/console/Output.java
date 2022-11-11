@@ -43,4 +43,8 @@ public class Output {
     public void writeYield(float yield) {
         writeLine("총 수익률은 %s입니다.", OutputFormatter.formatPercent(yield));
     }
+
+    public void writeErrorMessage(String errorMessage) {
+        writeLine("[ERROR] %s", errorMessage);
+    }
 }

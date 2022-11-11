@@ -22,55 +22,59 @@ public class LottoGame {
     }
 
     public void play() {
-        output.writeEnterMoney();
-        int money = input.readInt();
-        output.writeEmptyLine();
+        try {
+            output.writeEnterMoney();
+            int money = input.readInt();
+            output.writeEmptyLine();
 
-        LottoSeller seller = new LottoSeller();
-        List<Lotto> lottos = seller.buyLottos(money);
+            LottoSeller seller = new LottoSeller();
+            List<Lotto> lottos = seller.buyLottos(money);
 
-        output.writeBuyCount(lottos.size());
-        for (Lotto lotto : lottos) {
-            output.writeLine(lotto.toString());
-        }
-        output.writeEmptyLine();
-
-        output.writeEnterWinningNumbers();
-        List<Integer> numbers = input.readIntList();
-        output.writeEmptyLine();
-
-        output.writeEnterBonusNumber();
-        int bonusNumber = input.readInt();
-        output.writeEmptyLine();
-
-        WinningNumbers winningNumbers = new WinningNumbers(numbers, bonusNumber);
-        List<Reward> rewards = new ArrayList<>();
-
-        for (Lotto lotto : lottos) {
-            Reward reward = winningNumbers.match(lotto);
-            if (reward != null) {
-                rewards.add(reward);
+            output.writeBuyCount(lottos.size());
+            for (Lotto lotto : lottos) {
+                output.writeLine(lotto.toString());
             }
-        }
+            output.writeEmptyLine();
 
-        Results results = new Results(rewards);
+            output.writeEnterWinningNumbers();
+            List<Integer> numbers = input.readIntList();
+            output.writeEmptyLine();
 
-        output.writePrefixMatchStatistics();
-        for (Reward reward : Reward.values()) {
-            if (!reward.isRequireBonus()) {
-                output.writeMatchStatistic(
-                        reward.getMatch(),
-                        reward.getReward(),
-                        results.getCount(reward));
+            output.writeEnterBonusNumber();
+            int bonusNumber = input.readInt();
+            output.writeEmptyLine();
+
+            WinningNumbers winningNumbers = new WinningNumbers(numbers, bonusNumber);
+            List<Reward> rewards = new ArrayList<>();
+
+            for (Lotto lotto : lottos) {
+                Reward reward = winningNumbers.match(lotto);
+                if (reward != null) {
+                    rewards.add(reward);
+                }
             }
 
-            if (reward.isRequireBonus()) {
-                output.writeMatchStatisticWithBonus(
-                        reward.getMatch(),
-                        reward.getReward(),
-                        results.getCount(reward));
+            Results results = new Results(rewards);
+
+            output.writePrefixMatchStatistics();
+            for (Reward reward : Reward.values()) {
+                if (!reward.isRequireBonus()) {
+                    output.writeMatchStatistic(
+                            reward.getMatch(),
+                            reward.getReward(),
+                            results.getCount(reward));
+                }
+
+                if (reward.isRequireBonus()) {
+                    output.writeMatchStatisticWithBonus(
+                            reward.getMatch(),
+                            reward.getReward(),
+                            results.getCount(reward));
+                }
             }
+            output.writeYield(results.getYield(money));
+        } catch (IllegalArgumentException exception) {
+            output.writeErrorMessage(exception.getMessage());
         }
-        output.writeYield(results.getYield(money));
     }
 }
