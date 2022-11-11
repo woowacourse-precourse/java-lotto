@@ -12,7 +12,10 @@ public class Winning {
         initializeScore();
     }
 
-    public void addRankingOfPlayer(Ranking lottoRanking){}
+    public void addRankingOfPlayer(Ranking lottoRanking){
+        int lottoRankingCount = score.get(lottoRanking);
+        score.replace(lottoRanking, lottoRankingCount, lottoRankingCount+1);
+    }
 
     public HashMap<Ranking, Integer> figureSameRanking(){
         return new HashMap<>();
