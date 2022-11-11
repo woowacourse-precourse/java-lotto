@@ -1,27 +1,39 @@
 package lotto.model;
 
+import static lotto.model.Constants.LottoStatus.MATCH_FIVE_ADD_BONUS_DESCRIPTION;
 import static lotto.model.Constants.LottoStatus.MATCH_FIVE_ADD_BONUS_PROFIT;
+import static lotto.model.Constants.LottoStatus.MATCH_FIVE_ADD_BONUS_VALUE;
+import static lotto.model.Constants.LottoStatus.MATCH_FIVE_DESCRIPTION;
 import static lotto.model.Constants.LottoStatus.MATCH_FIVE_PROFIT;
+import static lotto.model.Constants.LottoStatus.MATCH_FIVE_VALUE;
+import static lotto.model.Constants.LottoStatus.MATCH_FOUR_DESCRIPTION;
 import static lotto.model.Constants.LottoStatus.MATCH_FOUR_PROFIT;
+import static lotto.model.Constants.LottoStatus.MATCH_FOUR_VALUE;
+import static lotto.model.Constants.LottoStatus.MATCH_SIX_VALUE;
+import static lotto.model.Constants.LottoStatus.MATCH_SIZE_PROFIT_DESCRIPTION;
 import static lotto.model.Constants.LottoStatus.MATCH_THREE_PROFIT;
+import static lotto.model.Constants.LottoStatus.MATCH_THREE_VALUE;
+import static lotto.model.Constants.LottoStatus.MATCH_TREE_DESCRIPTION;
+import static lotto.model.Constants.LottoStatus.MATCH_UNSATISFIED_VALUE;
 import static lotto.model.Constants.LottoStatus.MATH_SIX_PROFIT;
+import static lotto.model.Constants.LottoStatus.MATH_UNSATISFIED_DESCRIPTION;
 import static lotto.model.Constants.LottoStatus.MATH_UNSATISFIED_PROFIT;
 
 import java.util.Arrays;
 
 enum LottoStatus {
-    MATCH_UNSATISFIED(0,MATH_UNSATISFIED_PROFIT,"일치 수량 부족"),
-    MATCH_THREE(3,MATCH_THREE_PROFIT,"3개 일치 (5,000원)"),
-    MATCH_FOUR(4,MATCH_FOUR_PROFIT,"4개 일치 (50,000원)"),
-    MATCH_FIVE(5,MATCH_FIVE_PROFIT,"5개 일치 (1,500,000원)"),
-    MATCH_FIVE_ADD_BONUS(7,MATCH_FIVE_ADD_BONUS_PROFIT,"5개 일치, 보너스 볼 일치 (30,000,000원)"),
-    MATCH_SIX(6,MATH_SIX_PROFIT,"6개 일치 (2,000,000,000원)");
+    MATCH_UNSATISFIED(MATCH_UNSATISFIED_VALUE, MATH_UNSATISFIED_PROFIT, MATH_UNSATISFIED_DESCRIPTION),
+    MATCH_THREE(MATCH_THREE_VALUE, MATCH_THREE_PROFIT, MATCH_TREE_DESCRIPTION),
+    MATCH_FOUR(MATCH_FOUR_VALUE, MATCH_FOUR_PROFIT, MATCH_FOUR_DESCRIPTION),
+    MATCH_FIVE(MATCH_FIVE_VALUE, MATCH_FIVE_PROFIT, MATCH_FIVE_DESCRIPTION),
+    MATCH_FIVE_ADD_BONUS(MATCH_FIVE_ADD_BONUS_VALUE, MATCH_FIVE_ADD_BONUS_PROFIT, MATCH_FIVE_ADD_BONUS_DESCRIPTION),
+    MATCH_SIX(MATCH_SIX_VALUE, MATH_SIX_PROFIT, MATCH_SIZE_PROFIT_DESCRIPTION);
 
     private final int profit;
     private final int value;
     private final String description;
 
-    LottoStatus(int value,int profit,String description) {
+    LottoStatus(int value, int profit, String description) {
         this.value = value;
         this.profit = profit;
         this.description = description;
@@ -44,4 +56,5 @@ enum LottoStatus {
     public String getDescription() {
         return description;
     }
+
 }

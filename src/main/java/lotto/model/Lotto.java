@@ -1,9 +1,13 @@
 package lotto.model;
 
+import static lotto.model.Constants.LottoStatus.MATCH_FIVE_ADD_BONUS_VALUE;
+import static lotto.model.Constants.LottoStatus.MATCH_FIVE_VALUE;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Lotto {
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -16,23 +20,25 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        NumbersValidator.isValid(numbers);
+        if (!NumbersValidator.isValid(numbers)){
+            throw new IllegalArgumentException();
+        }
     }
 
-    public LottoStatus matchLotto(Lotto targetLotto,int bonusNumber) {
+    LottoStatus matchLotto(Lotto targetLotto,int bonusNumber) {
         int count = countMathNumbers(targetLotto);
         count = checkMatchFiveAddBonus(bonusNumber, count);
         return LottoStatus.checkValue(count);
     }
 
-    private int checkMatchFiveAddBonus(int bonusNumber, int count) {
-        if (count == 5 && numbers.contains(bonusNumber)) {
-            count = 7;
+    int checkMatchFiveAddBonus(int bonusNumber, int count) {
+        if (count == MATCH_FIVE_VALUE && numbers.contains(bonusNumber)) {
+            count = MATCH_FIVE_ADD_BONUS_VALUE;
         }
         return count;
     }
 
-    public int countMathNumbers(Lotto targetLotto) {
+    int countMathNumbers(Lotto targetLotto) {
         return targetLotto.countMathNumbers(numbers);
     }
 
@@ -42,7 +48,7 @@ public class Lotto {
                 .count();
     }
 
-    public boolean containsNumber(int number) {
+    boolean containsNumber(int number) {
         return numbers.contains(number);
     }
 

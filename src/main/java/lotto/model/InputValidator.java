@@ -1,6 +1,7 @@
 package lotto.model;
 
 import static lotto.model.Constants.MONEY_MIN_UNIT;
+import static lotto.model.Constants.NUMBER;
 import static lotto.model.NumbersValidator.NUMBER_MAX_VALUE;
 import static lotto.model.NumbersValidator.NUMBER_MIN_VALUE;
 
@@ -10,9 +11,8 @@ public class InputValidator {
 
     public static final String INPUT_BONUS_NUMBER_ERROR = "[ERROR] 정확한 보너스 번호가 아닙니다.";
     public static final String INPUT_MONEY_ERROR = "[ERROR] 정확한 금액을 입력해주세요.";
-    public static final int MONEY_REST = 0;
-    public static final String NUMBER = "^[1-9][0-9]*$";
-    public static final String LOTTO_TYPE = "^([1-9][0-9]*)(,[1-9][0-9]*){5}$";
+    public static final int INPUT_MONEY_REST = 0;
+    public static final String INPUT_LOTTO_TYPE = "^([1-9][0-9]*)(,[1-9][0-9]*){5}$";
 
     private InputValidator() {
     }
@@ -31,7 +31,7 @@ public class InputValidator {
 
     private static void isValidTargetLottoType(String inputTargetLottoNumbers) throws IllegalArgumentException {
         if (inputTargetLottoNumbers == null || inputTargetLottoNumbers.isBlank() ||
-                !inputTargetLottoNumbers.matches(LOTTO_TYPE)) {
+                !inputTargetLottoNumbers.matches(INPUT_LOTTO_TYPE)) {
             throw new IllegalArgumentException(INPUT_MONEY_ERROR);
         }
     }
@@ -74,7 +74,7 @@ public class InputValidator {
     }
 
     static void isValidMoneyRange(int money) throws IllegalArgumentException {
-        if (money < MONEY_MIN_UNIT || (money % MONEY_MIN_UNIT) != MONEY_REST) {
+        if (money < MONEY_MIN_UNIT || (money % MONEY_MIN_UNIT) != INPUT_MONEY_REST) {
             throw new IllegalArgumentException(INPUT_MONEY_ERROR);
         }
     }

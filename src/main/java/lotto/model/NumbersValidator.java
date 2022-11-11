@@ -25,7 +25,6 @@ class NumbersValidator {
             System.out.println(illegalArgumentException.getMessage());
             return false;
         }
-
     }
 
     public static void isValidSize(List<Integer> numbers) throws IllegalArgumentException {
