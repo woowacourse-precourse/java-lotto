@@ -4,6 +4,7 @@ import lotto.domain.Lotto;
 import lotto.domain.Result;
 import lotto.domain.WinLotto;
 import lotto.enums.ErrorMessage;
+import lotto.enums.ResultStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
@@ -93,7 +94,6 @@ class LottoTest {
             Result result = winLotto.getResult(generatedLotto);
             assertThat(result).isEqualTo(new Result(6, false));
 
-            assertThat(result.getResultStatus().getCount()).isEqualTo(6);
             assertThat(result.getResultStatus().getValue()).isEqualTo(2000000000);
         }
 
@@ -105,7 +105,7 @@ class LottoTest {
             Result result = winLotto.getResult(generatedLotto);
             assertThat(result).isEqualTo(new Result(5, true));
 
-            assertThat(result.getResultStatus().getCount()).isEqualTo(5);
+//            assertThat(result.getResultStatus().getCount()).isEqualTo(5);
             assertThat(result.getResultStatus().isHasBonusBall()).isTrue();
             assertThat(result.getResultStatus().getValue()).isEqualTo(30000000);
         }
@@ -118,7 +118,7 @@ class LottoTest {
             Result result = winLotto.getResult(generatedLotto);
             assertThat(result).isEqualTo(new Result(5, false));
 
-            assertThat(result.getResultStatus().getCount()).isEqualTo(5);
+//            assertThat(result.getResultStatus().getCount()).isEqualTo(5);
             assertThat(result.getResultStatus().isHasBonusBall()).isFalse();
             assertThat(result.getResultStatus().getValue()).isEqualTo(1500000);
         }
@@ -131,7 +131,7 @@ class LottoTest {
             Result result = winLotto.getResult(generatedLotto);
             assertThat(result).isEqualTo(new Result(4, false));
 
-            assertThat(result.getResultStatus().getCount()).isEqualTo(4);
+//            assertThat(result.getResultStatus().getCount()).isEqualTo(4);
             assertThat(result.getResultStatus().getValue()).isEqualTo(50000);
         }
 
@@ -143,7 +143,7 @@ class LottoTest {
             Result result = winLotto.getResult(generatedLotto);
             assertThat(result).isEqualTo(new Result(3, false));
 
-            assertThat(result.getResultStatus().getCount()).isEqualTo(3);
+//            assertThat(result.getResultStatus().getCount()).isEqualTo(3);
             assertThat(result.getResultStatus().getValue()).isEqualTo(5000);
         }
     }

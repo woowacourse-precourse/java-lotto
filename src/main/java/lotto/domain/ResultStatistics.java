@@ -25,7 +25,9 @@ public class ResultStatistics {
         map.put(ResultStatus.MATCH5, 0);
         map.put(ResultStatus.MATCH4, 0);
         map.put(ResultStatus.MATCH3, 0);
-        map.put(ResultStatus.NONE, 0);
+        map.put(ResultStatus.NONE2, 0);
+        map.put(ResultStatus.NONE1, 0);
+        map.put(ResultStatus.NONE0, 0);
     }
 
     private void makeMapAndTotalProfit(List<Result> results) {

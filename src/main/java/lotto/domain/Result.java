@@ -2,6 +2,8 @@ package lotto.domain;
 
 import lotto.enums.ResultStatus;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class Result {
@@ -36,28 +38,7 @@ public class Result {
     }
 
     private void setResultStatus() {
-        if (matchCount == ResultStatus.MATCH6.getCount()) {
-            this.resultStatus = ResultStatus.MATCH6;
-            return;
-        }
-        if (matchCount == ResultStatus.MATCH5_WITH_BONUS_BALL.getCount() &&
-                hasBonusNumber == ResultStatus.MATCH5_WITH_BONUS_BALL.isHasBonusBall()) {
-            this.resultStatus = ResultStatus.MATCH5_WITH_BONUS_BALL;
-            return;
-        }
-        if (matchCount == ResultStatus.MATCH5.getCount()) {
-            this.resultStatus = ResultStatus.MATCH5;
-            return;
-        }
-        if (matchCount == ResultStatus.MATCH4.getCount()) {
-            this.resultStatus = ResultStatus.MATCH4;
-            return;
-        }
-        if (matchCount == ResultStatus.MATCH3.getCount()) {
-            this.resultStatus = ResultStatus.MATCH3;
-            return;
-        }
-        this.resultStatus = ResultStatus.NONE;
+        this.resultStatus = ResultStatus.getResultStatus(matchCount, hasBonusNumber);
     }
 
     public ResultStatus getResultStatus() {
