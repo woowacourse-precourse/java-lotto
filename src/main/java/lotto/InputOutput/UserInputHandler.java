@@ -46,6 +46,10 @@ public class UserInputHandler {
     }
 
     private void validateMoney(int money){
+        if(money <= 0){
+            System.out.println("[ERROR] 지불하는 돈은 양수여야 합니다.");
+            throw new IllegalArgumentException();
+        }
         if(money % moneyOfOneTicket != 0){
             System.out.println("[ERROR] 로또는 1,000원 단위로 구입할 수 있습니다.\n");
             throw new IllegalArgumentException();
