@@ -11,9 +11,14 @@ public class LottoNumbers {
     private List<Integer> basket;
     private List<List<Integer>> numbers;
 
-    public LottoNumbers(int want) {
-        want = want / 1000;
-        this.numbers = createRandomNumbers(want);
+    public LottoNumbers(String want) {
+        if (want.length() != 4) {
+            System.out.println("[ERROR]");
+            throw new IllegalArgumentException("[ERROR]");
+        }
+        int piece = Integer.parseInt(want);
+        piece = piece / 1000;
+        this.numbers = createRandomNumbers(piece);
     }
 
     public List<List<Integer>> getNumbers() {
