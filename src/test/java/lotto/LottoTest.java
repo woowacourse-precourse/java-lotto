@@ -1,5 +1,6 @@
 package lotto;
 
+import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -69,6 +70,19 @@ class LottoTest {
             assertThat(lotto).isInstanceOf(Lotto.class);
         }
         Application.printLottoNumbers(3, testLottos);
+    }
+
+    @DisplayName("파라미터로 주어진 input에 쉼표가 포함되어 있을 경우 쉼표 기준으로 split한다. 내부에 포함되어 있는 공백은 삭제된다.")
+    @Test
+    public void splitInputTest() {
+        assertThat(Application.splitInput(" 3, 14,11, 43,36")).isEqualTo(new String[] {"3", "14", "11", "43", "36"});
+    }
+
+    @DisplayName("파라미터로 주어진 input에 쉼표가 포함되어 있지 않으면 예외가 발생한다.")
+    @Test
+    public void notIncludingRegexTest() {
+        assertThatThrownBy(() -> Application.splitInput("3 14 11 43 36"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
 }

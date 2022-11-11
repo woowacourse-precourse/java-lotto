@@ -69,5 +69,12 @@ public class Application {
         return Console.readLine();
     }
 
+    public static String[] splitInput(String input) {
+        if (!input.contains(",")) {
+            throw new IllegalArgumentException("[ERROR] 각 로또 번호는 쉼표(,)로 구분하여 입력되어야 합니다.");
+        }
+        String trimmed = input.replaceAll(" ", "");
+        return trimmed.split(",");
+    }
 
 }
