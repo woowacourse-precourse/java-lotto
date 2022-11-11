@@ -68,7 +68,7 @@ public class Application {
     }
 
     private static void validateInputWinningNums(String inputWinningNums) {
-        if (inputWinningNums.contains(",")) {
+        if (!inputWinningNums.contains(",")) {
             throw new IllegalArgumentException("[ERROR] 구분자 \",\"를 포함해야 합니다.");
         }
         String[] inputWinningNumsArr = inputWinningNums.split(",");
