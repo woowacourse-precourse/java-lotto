@@ -47,6 +47,16 @@ public class InputView {
         if (hasProperSize(numbersWithSeparator.split(SEPARATOR))) {
             throw new IllegalArgumentException(ErrorMessage.IMPROPER_SIZE);
         }
+        if (winningNumbersContainsNonNumeric(numbersWithSeparator)) {
+            throw new IllegalArgumentException(ErrorMessage.CONTAINS_NON_NUMERIC_VALUES);
+        }
+    }
+
+    private static boolean winningNumbersContainsNonNumeric(String numbersWithSeparator) {
+        String[] numbers = numbersWithSeparator.split(SEPARATOR);
+
+        return Arrays.stream(numbers)
+                .anyMatch(number -> containsNonNumeric(number));
     }
 
     private static boolean hasProperSize(String[] separatedNumbers) {
