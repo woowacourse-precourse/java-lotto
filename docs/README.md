@@ -19,10 +19,20 @@
   - [x] 등수에 따라 당첨 금액을 결정하는 기능 - getWinningAmount()
 
 
-- 입력
+- 입력 (InputUtil)
   - [x] 사용자의 입력을 받는 기능 - getUserInput()
 
-- 출력
+
+- 예외 (InputUtil)
+  - [x] 입력받은 금액이 유효한 입력인지 판단하는 기능 - checkValidationMoney()
+  - [x] 입력받은 당첨번호가 유효한 입력인지 판단하는 기능
+    - [x] 구분자가 콤마이면서 숫자만 입력했는가?
+    - [x] 중복되는 숫자가 있는가?
+  - [x] 입력받은 보너스번호가 유효한 입력인지 판단하는 기능 - checkValidationBonusNumber()
+  - [x] 메시지를 입력받아 해당 메시지로 IllegalArgumentException 반환하는 기능 - makeIllegalArgumentException()
+
+
+- 출력 (OutputUtil)
   - [x] 유저가 발행한 로또 수량을 출력하는 기능 - printUserLottoCount()
   - [x] 유저가 발행한 로또 번호를 모두 출력하는 기능 - printUserLottos()
   - [x] 당첨 내역을 출력하는 기능 - printResult()
@@ -30,10 +40,3 @@
   - [x] 총 수익률을 출력하는 기능 - printYield()
 
 
-- 예외
-  - [x] 입력받은 금액이 유효한 입력인지 판단하는 기능 - checkValidationMoney()
-  - [x] 입력받은 당첨번호가 유효한 입력인지 판단하는 기능
-    - [x] 구분자가 콤마이면서 숫자만 입력했는가?
-    - [x] 중복되는 숫자가 있는가?
-  - [x] 입력받은 보너스번호가 유효한 입력인지 판단하는 기능 - checkValidationBonusNumber()
-  - [x] 메시지를 입력받아 해당 메시지로 IllegalArgumentException 반환하는 기능 - makeIllegalArgumentException()
