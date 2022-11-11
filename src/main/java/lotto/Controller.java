@@ -39,5 +39,6 @@ public class Controller {
 
     private void printResult() {
         List<String> results = service.getWinningResult();
+        OutputView.printWinningResult(results);
     }
 }
