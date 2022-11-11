@@ -1,5 +1,6 @@
 package lotto;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
@@ -28,5 +29,17 @@ class BonusLottoTest {
 
         assertThatThrownBy(() -> new BonusLotto(lotto, bonus))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("발행한 로또와 비교")
+    void match() {
+        Lotto winningNumber = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonus = 7;
+        BonusLotto bonusLotto = new BonusLotto(winningNumber, bonus);
+
+        Lotto user = new Lotto(List.of(7, 8, 9, 10, 11, 12));
+
+        assertThat(bonusLotto.match(user)).isEqualTo(0);
     }
 }
