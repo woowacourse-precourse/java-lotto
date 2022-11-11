@@ -73,4 +73,17 @@ class LottoNumberValidatorTest {
         assertThat(exception1.getMessage()).isEqualTo(ErrorMessages.OUT_OF_BOUND.getMessage()) ;
         assertThat(exception2.getMessage()).isEqualTo(ErrorMessages.OUT_OF_BOUND.getMessage()) ;
     }
+
+    @Order(5)
+    @DisplayName("5차:중복 값 입력")
+    @Test
+    void hasOverlapNumber(){
+        String inputValue = "1, 2, 2, 4, 7, 5";
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> validator.checkingOverlap(inputValue))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->validator.checkingOverlap(inputValue));
+        assertThat(exception.getMessage()).isEqualTo(ErrorMessages.HAS_OVERLAP_NUMBER.getMessage()) ;
+    }
 }
