@@ -51,4 +51,26 @@ class LottoNumberValidatorTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () ->validator.checkingNotNumber(inputValue));
         assertThat(exception.getMessage()).isEqualTo(ErrorMessages.NOT_NUMBER_EXIST.getMessage()) ;
     }
+
+    @Order(3)
+    @DisplayName("3차:범위에서 벗어난 값 입력")
+    @Test
+    void outOfBoundExceptionTest(){
+        String inputValue1 = "-1, 2, 3, 4, 6, 5";
+        String inputValue2 = "1, 2, 3, 4, 5, 47";
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> validator.checkingRange(inputValue1))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> validator.checkingRange(inputValue2))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        Exception exception1 = assertThrows(IllegalArgumentException.class, () ->validator.checkingRange(inputValue1));
+        Exception exception2 = assertThrows(IllegalArgumentException.class, () ->validator.checkingRange(inputValue2));
+
+        assertThat(exception1.getMessage()).isEqualTo(ErrorMessages.OUT_OF_BOUND.getMessage()) ;
+        assertThat(exception2.getMessage()).isEqualTo(ErrorMessages.OUT_OF_BOUND.getMessage()) ;
+    }
 }
