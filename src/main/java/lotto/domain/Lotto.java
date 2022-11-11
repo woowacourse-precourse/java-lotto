@@ -24,4 +24,8 @@ public class Lotto {
     }
     //보너스 번호를 제외하고 validate 를 만든거보니까 보너스 번호는 enum 으로 만들던가 해야겠다.
     // TODO: 추가 기능 구현
+
+    public void initBonusNumber(int number) {
+
+    }
 }

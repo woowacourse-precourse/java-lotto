@@ -2,10 +2,11 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+
 
 public class UserLotto {
     private final Map<Integer,List<Integer>> userLotto = new HashMap<>();
@@ -19,6 +20,7 @@ public class UserLotto {
     
     public List<Integer> createLotto() {
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Collections.sort(lottoNumbers);
 
         return lottoNumbers;
     }

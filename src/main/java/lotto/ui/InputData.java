@@ -15,7 +15,7 @@ public class InputData {
     }
 
     private int readPurchaseAmount() {
-        System.out.println(Messages.INPUT_MONEY.getMessage());
+        Messages.INPUT_MONEY.printMessage();
         String amount = readInput();
 
         return Integer.parseInt(amount);
@@ -23,7 +23,7 @@ public class InputData {
 
     //예외사항 검사
     private List<Integer> readWinningNumber() {
-        System.out.println(Messages.INPUT_LOTTE_NUMBER.getMessage());
+        Messages.INPUT_LOTTE_NUMBER.printMessage();
         String userInput = readInput();
 
         List<Integer> numbers = Arrays.stream(userInput.split(","))
@@ -35,7 +35,7 @@ public class InputData {
 
     //예외사항 검사
     private int readBonusNumber() {
-        System.out.println(Messages.INPUT_BONUS_NUMBER);
+        Messages.INPUT_BONUS_NUMBER.printMessage();
         String userInput = readInput();
 
         return Integer.parseInt(userInput);

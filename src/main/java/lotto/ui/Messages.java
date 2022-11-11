@@ -5,15 +5,13 @@ public enum Messages {
     INPUT_LOTTE_NUMBER("당첨 번호를 입력해 주세요"),
     INPUT_BONUS_NUMBER("보너스 번호를 입력해 주세요");
 
-
     private final String message;
 
     Messages(String message) {
         this.message = message;
     }
 
-    public String getMessage() {
-        return message;
+    public void printMessage() {
+        System.out.println(this.message);
     }
-
 }
