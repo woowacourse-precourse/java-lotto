@@ -101,7 +101,7 @@ public class OutputView {
     }
     
     private static String parsePerWinningStats(final List<LottoRank> lottoRanks, final LottoRank lottoRank) {
-        final int countOfSameLottoNumber = lottoRank.countOfSameLottoNumber();
+        final int countOfSameLottoNumber = countOfSameLottoNumber(lottoRank);
         final String prizeMoneyDisplay = prizeMoneyDisplay(lottoRank);
         final int countOfMatchingLottoRank = countOfMatchingLottoRank(lottoRanks, lottoRank);
         
@@ -109,6 +109,10 @@ public class OutputView {
             return String.format(SECOND_RANK_FORM, countOfSameLottoNumber, prizeMoneyDisplay, countOfMatchingLottoRank);
         }
         return String.format(ALL_RANK_FORM, countOfSameLottoNumber, prizeMoneyDisplay, countOfMatchingLottoRank);
+    }
+    
+    private static int countOfSameLottoNumber(final LottoRank lottoRank) {
+        return lottoRank.countOfSameLottoNumber();
     }
     
     private static String prizeMoneyDisplay(final LottoRank lottoRank) {
