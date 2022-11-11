@@ -8,12 +8,15 @@ import java.util.List;
 
 public class LotteryMachine {
 
+    private Lotto lotto;
     public List<Integer> makeLottoNum() {
 
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
-    public Lotto makeWinningLottoNum() {
+    public void makeWinningLottoNum() {
+        System.out.println();
+        System.out.println("당첨 번호를 입력해 주세요");
         String inputWinningNum = Console.readLine();
         String[] spiltWinningNum = inputWinningNum.split(",");
         List<Integer> winningNum = new ArrayList<>();
@@ -23,13 +26,11 @@ public class LotteryMachine {
 
             winningNum.add(Integer.parseInt(num));
         }
-
-        return new Lotto(winningNum);
+        this.lotto = new Lotto(winningNum);
     }
 
 
     public int makeBonusNum(List<Integer> lottoNum) {
-
 
         List<Integer> bonusNum = Randoms.pickUniqueNumbersInRange(1, 45, 1);
         if (lottoNum.contains(bonusNum.get(0))) {
@@ -39,7 +40,9 @@ public class LotteryMachine {
         return bonusNum.get(0);
     }
 
-
+    public Lotto getLotto() {
+        return lotto;
+    }
 
 
 
