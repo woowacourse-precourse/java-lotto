@@ -140,7 +140,9 @@ public class LottoGameService {
     }
 
     public void addWinningRank(LottoWinningRank lottoWinningRank) {
-        lottoWinningRanks.add(lottoWinningRank);
+        if (lottoWinningRank != LottoWinningRank.NO_RANK) {
+            lottoWinningRanks.add(lottoWinningRank);
+        }
     }
 
     public LottoWinningRank decideWinningRank(List<Integer> purchaseLottoNumbers,
