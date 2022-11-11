@@ -47,6 +47,7 @@ public class WinningNumber {
     private void validateRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (number < Lotto.LOTTO_MIN_NUMBER || number > Lotto.LOTTO_MAX_NUMBER) {
+                System.out.println("[ERROR] 당첨 번호와 보너스 번호가 1~ 45 사이의 숫자가 아닙니다.");
                 throw new IllegalArgumentException("[ERROR] 당첨 번호와 보너스 번호가 1~ 45 사이의 숫자가 아닙니다.");
             }
         }
