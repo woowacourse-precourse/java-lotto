@@ -7,6 +7,7 @@ import domain.LottoPurAmount;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class InputController {
     private final int DIVIDEPRICE = 1000;
@@ -48,12 +49,7 @@ public class InputController {
 
     public List<Integer> makeLottoNumber() {
         List<Integer> lottonumber = new ArrayList<>();
-        while (lottonumber.size() < LOTTONUMBERQUANTITY) {
-            int randomNumber = Randoms.pickNumberInRange(MINLOTTOVALUE, MAXLOTTOVALUE);
-            if (!lottonumber.contains(randomNumber)) {
-                lottonumber.add(randomNumber);
-            }
-        }
+        lottonumber = Randoms.pickUniqueNumbersInRange(MINLOTTOVALUE, MAXLOTTOVALUE,LOTTONUMBERQUANTITY);
         lottonumber.sort(Comparator.naturalOrder());
         return lottonumber;
     }
