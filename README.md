@@ -23,8 +23,8 @@
 - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
 
 ### 기능 목록
+- 로또 구입 금액이 유효한지 확인한다. - User#validate()
 - 구입 금액만큼 로또를 구매한다. - User#buyLotto()
-- 로또 구입 금액이 유효한지 확인한다. - LottoSeller#validate()
 - 로또 구입 금액에 해당하는 만큼 로또를 판매한다. - LottoSeller#sellTo()
   - 로또 구입 금액으로 살 수 있는 로또의 개수를 계산한다.
   - 구입 가능한 로또의 개수만큼 로또를 생성한다.
