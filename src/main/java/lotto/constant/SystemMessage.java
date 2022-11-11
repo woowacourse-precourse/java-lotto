@@ -13,4 +13,5 @@ public final class SystemMessage {
     public static final String PURCHASE_COST_UNIT_ERROR = "구매 금액은 1000원 단위여야 합니다";
     public static final String WINNING_NUMBERS_SIZE_ERROR = "로또 번호는 6자리여야 합니다";
     public static final String WINNING_NUMBERS_RANGE_ERROR = "로또 번호는 1부터 45까지의 수로 이루어져야 합니다";
+    public static final String WINNING_NUMBERS_FORMAT_ERROR = "로또 번호는 1,2,3,4,5,6 과 같은 형식이어야 합니다";
 }

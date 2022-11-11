@@ -9,6 +9,7 @@ import lotto.domain.Calculator;
 import lotto.domain.LotteryDrawMachine;
 import lotto.domain.Lotto;
 import lotto.util.InputValidator;
+import lotto.util.TypeConverter;
 import lotto.view.Output;
 
 public class Application {
@@ -34,13 +35,11 @@ public class Application {
         }
 
         Output.enterWinningNumbers();
-        List<String> list = Arrays.asList(Console.readLine().split(","));
-        List<Integer> winningNumbers = list.stream()
-                .map(winningNumber -> Integer.parseInt(winningNumber))
-                .collect(Collectors.toList());
-        if (!InputValidator.checkWinningNumbers(winningNumbers)) {
+        String strWinningNumbers = Console.readLine();
+        if (!InputValidator.checkWinningNumbers(strWinningNumbers)) {
             return;
         }
+        List<Integer> winningNumbers = TypeConverter.toIntegerListByComma(strWinningNumbers);
 
         Output.enterBonusNumber();
         int bonusNumber = Integer.parseInt(Console.readLine());
