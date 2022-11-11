@@ -90,13 +90,23 @@ public class Game {
         System.out.println(input);
         System.out.println();
 
-        if (checkNumberError(input) || checkPriceError(input)) {
+        if (checkNumberError(input) || checkPriceError(input) || checkMinimumPriceError(input)) {
             return ReferenceValue.IS_ERROR;
         }
 
         return input;
     }
 
+    private static boolean checkMinimumPriceError(String input) {
+        int price = Integer.parseInt(input);
+
+        if (price < ReferenceValue.LOTTO_PRICE) {
+            Record.printMinimumError();
+            return true;
+        }
+
+        return false;
+    }
     private static boolean checkPriceError(String input) {
         int price = Integer.parseInt(input);
 

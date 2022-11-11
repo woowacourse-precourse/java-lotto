@@ -54,9 +54,16 @@ class ApplicationTest extends NsTest {
         });
     }
     @Test
-    void 예외_가격_테스트() {
+    void 예외_천단위_가격_테스트() {
         assertSimpleTest(() -> {
             runException("1200");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+    @Test
+    void 예외_최소_가격_테스트() {
+        assertSimpleTest(() -> {
+            runException("-3000");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
