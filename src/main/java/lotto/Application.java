@@ -215,7 +215,21 @@ public class Application {
             printErrorAboutRange();
             throw new IllegalArgumentException();
         }
+    }
 
+    public static void validateBonusNumberIsDuplicate(String input, List<Integer> winningNumberList) {
+
+        int bonusNumber = 0;
+
+        for (int i = 0; i < input.length(); i++) {
+            bonusNumber = bonusNumber * 10 + input.charAt(i) - 48;
+        }
+
+        if (winningNumberList.contains(bonusNumber)) {
+
+            printErrorAboutDuplicate();
+            throw new IllegalArgumentException();
+        }
 
     }
 }
