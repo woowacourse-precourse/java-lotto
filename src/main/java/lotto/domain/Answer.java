@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class LotteryAnswer {
+public class Answer {
     private Lotto answer;
     private int bonusNumber;
 
