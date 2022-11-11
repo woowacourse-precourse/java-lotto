@@ -2,6 +2,7 @@ package lotto.domain.lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Lottos {
     private static final int AMOUNT_PER_LOTTO = 1_000;
@@ -27,5 +28,7 @@ public class Lottos {
         return this.lottos.size();
     }
 
-
+    public Stream<Lotto> lottoStream() {
+        return lottos.stream();
+    }
 }

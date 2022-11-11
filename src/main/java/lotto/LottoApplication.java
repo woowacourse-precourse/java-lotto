@@ -17,7 +17,9 @@ public class LottoApplication {
 
 	public void run() {
 		LottoPurchasedAmount lottoPurchasedAmount = inputView.getLottoPurchasedAmount();
-		Lottos lottos = generateLottos(lottoPurchasedAmount.getLotteryPurchasedAmount());
+		Lottos lottos = generateLottos(lottoPurchasedAmount.getLottoPurchasedAmount());
+
+		resultView.printDrawnLottos(lottos);
 	}
 
 	private Lottos generateLottos(int purchasedAmount) {

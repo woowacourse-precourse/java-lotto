@@ -1,5 +1,7 @@
 package lotto.domain.lotto;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,6 +15,10 @@ public class Lotto {
 
     public int getNumberAt(int at) {
         return numbers.get(at);
+    }
+
+    public String formatString() {
+        return Arrays.toString(numbers.toArray());
     }
 
     private void validate(List<Integer> numbers) {

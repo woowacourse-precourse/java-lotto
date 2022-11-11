@@ -4,10 +4,14 @@ import lotto.util.Validator;
 
 public class LottoPurchasedAmount {
 
-    private final Integer lotteryPurchasedAmount;
+    private final Integer lottoPurchasedAmount;
 
     public LottoPurchasedAmount(String userInput, Validator validator) {
         validator.validate(userInput);
-        this.lotteryPurchasedAmount = Integer.parseInt(userInput);
+        this.lottoPurchasedAmount = Integer.parseInt(userInput);
+    }
+
+    public Integer getLottoPurchasedAmount() {
+        return this.lottoPurchasedAmount;
     }
 }
