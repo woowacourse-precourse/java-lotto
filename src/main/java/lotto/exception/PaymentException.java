@@ -6,7 +6,7 @@ public class PaymentException {
     private static final String NOT_RIGHT_PAYMENT_COMMENT = "[ERROR] 금액은 1000으로 나누어 떨어지는 금액이어야 합니다.";
 
     public void validate(String price){
-
+        if(isZero(price) || isNotDividedByThousand(price)) paymentNotAcceptableException();
     }
 
     private boolean isNotDividedByThousand(String price){
