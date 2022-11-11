@@ -36,4 +36,12 @@ public class LottoLogic {
     public Integer getPrize(Result result) {
         return Win.getPRIZE(result.getMatchCount(), result.isMatchBonus());
     }
+
+    public void addWinCount(Result result) {
+        Win.increaseCount(result.getMatchCount(), result.isMatchBonus());
+    }
+
+    public List<Integer> getHistory() {
+        return Win.getCountTable();
+    }
 }
