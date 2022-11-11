@@ -9,6 +9,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         validDuplicate(numbers);
+        validNumberRange(numbers);
         this.numbers = numbers;
     }
 
@@ -27,6 +28,14 @@ public class Lotto {
         for (Integer number : numbers) {
             if (Collections.frequency(numbers, number) > 1) {
                 throw new IllegalArgumentException(Error.DUPLICATED.getErrorMessage());
+            }
+        }
+    }
+
+    public void validNumberRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number > 45 || number < 0) {
+                throw new IllegalArgumentException();
             }
         }
     }
