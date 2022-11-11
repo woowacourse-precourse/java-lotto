@@ -5,7 +5,9 @@ import lotto.LottoWinningRank;
 import lotto.model.Lotto;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -26,10 +28,24 @@ public class LottoGameService {
     private static final String BONUS_NUMBER_NOT_DIGIT_EXCEPTION_MESSAGE = "보너스 번호는 숫자여야합니다.";
     private static final String BONUS_NUMBER_RANGE_EXCEPTION_MESSAGE = "보너스 번호의 범위는 1~45여야합니다.";
     private static final String BONUS_NUMBER_WINNING_NUMBERS_DUPLICATE_EXCEPTION_MESSAGE = "보너스 번호는 당첨 번호에 있는 번호를 제외한 번호여야합니다.";
+    private static final int LOTTO_WINNING_RANK_MAP_INIT_VALUE = 0;
 
     private Lotto lotto;
 
-    private final List<LottoWinningRank> lottoWinningRanks = new ArrayList<>();
+    // Key : 로또 당첨 등수 ENUM / Value : 해당 등수에 당첨된 횟수인 당첨 통계를 위한 HashMap
+    private final Map<LottoWinningRank, Integer> lottoWinningRankMap = new HashMap<>();
+
+    public LottoGameService() {
+        initLottoWinningRankMap();
+    }
+
+    private void initLottoWinningRankMap() {
+        lottoWinningRankMap.put(LottoWinningRank.FIRST, LOTTO_WINNING_RANK_MAP_INIT_VALUE);
+        lottoWinningRankMap.put(LottoWinningRank.SECOND, LOTTO_WINNING_RANK_MAP_INIT_VALUE);
+        lottoWinningRankMap.put(LottoWinningRank.THIRD, LOTTO_WINNING_RANK_MAP_INIT_VALUE);
+        lottoWinningRankMap.put(LottoWinningRank.FOURTH, LOTTO_WINNING_RANK_MAP_INIT_VALUE);
+        lottoWinningRankMap.put(LottoWinningRank.FIFTH, LOTTO_WINNING_RANK_MAP_INIT_VALUE);
+    }
 
     public void generateLotto() {
         this.lotto = new Lotto(LottoNumbersGenerator.generateLottoNumbers());
@@ -139,9 +155,9 @@ public class LottoGameService {
 
     }
 
-    public void addWinningRank(LottoWinningRank lottoWinningRank) {
+    public void updateWinningRankMap(LottoWinningRank lottoWinningRank) {
         if (lottoWinningRank != LottoWinningRank.NO_RANK) {
-            lottoWinningRanks.add(lottoWinningRank);
+            lottoWinningRankMap.put(lottoWinningRank,  lottoWinningRankMap.get(lottoWinningRank) + 1);
         }
     }
 
