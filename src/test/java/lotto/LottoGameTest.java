@@ -18,7 +18,7 @@ class LottoGameTest {
     @Test
     void 당첨번호_입력받아_세팅하기() {
         LottoGame lottoGame = new LottoGame();
-        List<Integer> integers = lottoGame.translateNumbers("1");
+        List<Integer> integers = lottoGame.convertNumbers("1");
         List<Integer> result = Arrays.asList(1);
 
         assertThat(integers).isEqualTo(result);
@@ -27,7 +27,7 @@ class LottoGameTest {
     @Test
     void 당첨번호_입력받아_세팅하기2() {
         LottoGame lottoGame = new LottoGame();
-        List<Integer> integers = lottoGame.translateNumbers("1,2,3,4,5");
+        List<Integer> integers = lottoGame.convertNumbers("1,2,3,4,5");
         List<Integer> result = Arrays.asList(1, 2, 3, 4, 5);
 
         assertThat(integers).isEqualTo(result);

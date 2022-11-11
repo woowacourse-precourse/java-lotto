@@ -21,7 +21,7 @@ public class LottoGame {
     }
 
     public void setBonusNumbers() {
-        int bonusNumber = translateNumbers(Console.readLine()).get(0);
+        int bonusNumber = convertNumbers(Console.readLine()).get(0);
         for (int number : winningNumbers.getNumbers()) {
             if (number == bonusNumber) {
                 throw new IllegalArgumentException(BONUS_DUPLICATE_NUMBER_ERROR_MESSAGE);
@@ -36,10 +36,10 @@ public class LottoGame {
     }
 
     public void setWinningNumbers() {
-        this.winningNumbers = new Lotto(translateNumbers(Console.readLine()));
+        this.winningNumbers = new Lotto(convertNumbers(Console.readLine()));
     }
 
-    public List<Integer> translateNumbers(String numbers) {
+    public List<Integer> convertNumbers(String numbers) {
         return Arrays.stream(numbers.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
