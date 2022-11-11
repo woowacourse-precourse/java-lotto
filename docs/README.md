@@ -104,3 +104,9 @@ UI를 제외하고 단위 테스트 만들기
 [x] 발행된 로또 오름차순 정렬 테스트 - sortNumbers() -> sortNaturalOrderLotto()
 [x] 발행된 로또의 수량과 로또 발행 횟수가 다를 때 예외 발생 테스트 - validateLotto() -> createDiffLottoSizeFromPublishNum()
 
+### PrizeNum 클래스
+[x] 로또 당첨 번호가 중복으로 들어오면 예외 발생 - validatePrizeNum()
+[x] 로또 당첨 번호가 6개가 아니면 예외 발생 - validatePrizeNum()
+[x] 유효한 로또 당첨 번호면 로또 당첨 번호 List 생성 - setPrizeNum()
+[x] 보너스 번호가 로또 당첨 번호와 중복이면 예외 발생 - validateBonusNum()
+[x] 유효한 보너스 번호면 로또 당첨 번호 List 에 저장 - setBonusNum()
