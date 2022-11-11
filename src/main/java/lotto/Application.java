@@ -35,6 +35,12 @@ public class Application {
         }
         // 보너스 번호 입력
         Input.inputBonusNumber();
+        try {
+            Input.bonusRangeError(Input.lottoBonusNumber);
+            Input.bonusDupleError(Input.lottoNumber, Input.lottoBonusNumber);
+        } catch (IllegalArgumentException e) {
+            return;
+        }
 
         System.out.println("당첨 통계");
         System.out.println("---");

@@ -26,8 +26,8 @@ public class Input {
     private final static String inputCoinString = "구입금액을 입력해 주세요.";
     private final static String inputErrorMessage = "[ERROR] 문자를 입력할 수 없습니다.";
     private final static String coinErrorMessage = "[ERROR] 구입금액은 천원단위만 가능합니다.";
-    private final static String bonusNumberRangeError = "[ERROR] 1~45 사이의 번호만 입력 가능합니다.";
-    private final static String bonusNumberDupleError = "[ERROR] 당첨 번호와 같을 수 없습니다.";
+    private final static String bonusNumberRangeError = "[ERROR] 보너스 번호는 1~45 사이의 번호만 입력 가능합니다.";
+    private final static String bonusNumberDupleError = "[ERROR] 보너스 번호는 당첨 번호와 같을 수 없습니다.";
     private final static String inputNumberString = "당첨 번호를 입력해 주세요.";
     private final static String inputBonusNumberString = "보너스 번호를 입력해 주세요.";
 
