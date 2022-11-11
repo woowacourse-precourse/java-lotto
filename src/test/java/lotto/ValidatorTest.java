@@ -79,8 +79,15 @@ class ValidatorTest {
     class winningNumbersValidationTest {
 
         @Test
+        @DisplayName("숫자와 쉼표를 제외한 문자가 있으면 예외를 던진다.")
         void otherCharExceptNumberAndComma() {
+            // given
+            Validator validator = new Validator();
 
+            // throws
+            assertThatThrownBy(() -> validator.validateWinningNumbers("-44,10,13,1,6,a"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR] 당첨 번호들의 형태가 잘못되었습니다.");
         }
 
         @Test
