@@ -25,4 +25,8 @@ public enum ErrorMessage {
     public String getMessage() {
         return message;
     }
+
+    public static String getErrorMessage(ErrorMessage errorMessage) {
+        return COMMON_MESSAGE.getMessage() + errorMessage.getMessage();
+    }
 }

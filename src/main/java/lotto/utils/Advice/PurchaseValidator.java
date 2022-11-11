@@ -3,6 +3,7 @@ package lotto.utils.Advice;
 import static lotto.domain.model.ErrorMessage.COMMON_MESSAGE;
 import static lotto.domain.model.ErrorMessage.PURCHASE_PAY_CONSISTENCE;
 import static lotto.domain.model.ErrorMessage.PURCHASE_PAY_REMINDER;
+import static lotto.domain.model.ErrorMessage.getErrorMessage;
 
 public class PurchaseValidator {
 
@@ -14,13 +15,13 @@ public class PurchaseValidator {
 
     public static void checkConsistNumber(String pay) {
         if (!pay.matches(NUMBER_REG_EXP)) {
-            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + PURCHASE_PAY_CONSISTENCE.getMessage());
+            throw new IllegalArgumentException(getErrorMessage(PURCHASE_PAY_CONSISTENCE));
         }
     }
 
     public static void checkReminder(String pay) {
         if (STANDARD_REMINDER != Integer.parseInt(pay) % MINIMUM_ORDER) {
-            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + PURCHASE_PAY_REMINDER.getMessage());
+            throw new IllegalArgumentException(getErrorMessage(PURCHASE_PAY_REMINDER));
         }
     }
 

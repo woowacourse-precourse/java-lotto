@@ -6,6 +6,7 @@ import static lotto.domain.model.ErrorMessage.LOTTE_NUMBER_NOT_ASC;
 import static lotto.domain.model.ErrorMessage.LOTTE_NUMBER_OUT_BOUND;
 import static lotto.domain.model.ErrorMessage.LOTTE_SIZE_INVALID;
 import static lotto.domain.model.ErrorMessage.NOT_DIVIDE_COMMAS;
+import static lotto.domain.model.ErrorMessage.getErrorMessage;
 import static lotto.utils.LottoGenerator.COUNT;
 import static lotto.utils.LottoGenerator.END_INCLUSIVE;
 import static lotto.utils.LottoGenerator.START_INCLUSIVE;
@@ -27,31 +28,30 @@ public class LottoValidator {
 
     public static void checkSize(List<Integer> numbers){
         if (COUNT != numbers.size()) {
-            throw new IllegalArgumentException(
-                    COMMON_MESSAGE.getMessage() + LOTTE_SIZE_INVALID.getMessage() + numbers.size());
+            throw new IllegalArgumentException(getErrorMessage(LOTTE_SIZE_INVALID) + numbers.size());
         }
     }
 
     public static void checkDuplication(List<Integer> numbers) {
         if (new HashSet<>(numbers).size() != numbers.size()) {
-            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + LOTTE_NUMBER_DUPLICATION.getMessage());
+            throw new IllegalArgumentException(getErrorMessage(LOTTE_NUMBER_DUPLICATION));
         }
     }
 
     public static void checkRange(List<Integer> numbers) {
         numbers.stream().filter(number -> !STANDARD_LOTTO_NUMBER.contains(number)).forEach(number -> {
-            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + LOTTE_NUMBER_OUT_BOUND.getMessage());
+            throw new IllegalArgumentException(getErrorMessage(LOTTE_NUMBER_OUT_BOUND));
         });
     }
 
     public static void checkSortedAsc(List<Integer> numbers) {
         IntStream.range(0, numbers.size() - 1).filter(i -> numbers.get(i) > numbers.get(i + 1)).forEachOrdered(i -> {
-            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + LOTTE_NUMBER_NOT_ASC.getMessage());
+            throw new IllegalArgumentException(getErrorMessage(LOTTE_NUMBER_NOT_ASC));
         });
     }
 
     public static void checkConsistOfOnlyCommas(String firstPlace) {
         if (!firstPlace.matches(FIRST_PLACE_REG_EXP))
-            throw new IllegalArgumentException(COMMON_MESSAGE.getMessage() + NOT_DIVIDE_COMMAS.getMessage());
+            throw new IllegalArgumentException(getErrorMessage(NOT_DIVIDE_COMMAS));
     }
 }
