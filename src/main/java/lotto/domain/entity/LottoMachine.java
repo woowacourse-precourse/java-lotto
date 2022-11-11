@@ -16,11 +16,8 @@ public class LottoMachine {
 
     private LottoMachine(String[] lottoNumbersArray, int bonusNumber) {
         lottoNumbersArrayValidation(lottoNumbersArray);
-
         List<Integer> numbers = ArrayToLottoNumbers(lottoNumbersArray);
-
         Collections.sort(numbers);
-
         this.lottoNumbers = new Lotto(numbers);
 
         bonusNumberValidation(bonusNumber);

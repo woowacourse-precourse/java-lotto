@@ -2,13 +2,12 @@ package lotto.application;
 
 import static lotto.common.message.ConsoleOut.*;
 import static lotto.common.message.ExceptionMessage.ERROR_CODE;
-import static lotto.common.message.ExceptionMessage.LOTTO_NUMBER_NOT_IS_DIGIT;
+import static lotto.common.message.ExceptionMessage.GAME_MONEY_TYPE_EXCEPTION_MESSAGE;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import java.util.Map;
 import lotto.common.message.ConsoleOut;
-import lotto.common.message.ExceptionMessage;
 import lotto.domain.Generator;
 import lotto.domain.entity.LottoMachine;
 import lotto.domain.entity.Lottos;
@@ -31,7 +30,7 @@ public class LottoProcess {
             String str = Console.readLine();
             moneyInput = Integer.parseInt(str);
         } catch (IllegalArgumentException e) {
-            System.out.println(ERROR_CODE + LOTTO_NUMBER_NOT_IS_DIGIT);
+            System.out.println(ERROR_CODE + GAME_MONEY_TYPE_EXCEPTION_MESSAGE);
         }
 
         Money money = Money.from(moneyInput);

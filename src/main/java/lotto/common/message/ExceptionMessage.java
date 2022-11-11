@@ -20,5 +20,5 @@ public class ExceptionMessage {
     public static final String BONUS_NUMBER_DUPLICATION_MESSAGE = "보너스 숫자는 중복될 수 없습니다.";
 
     public static final String LOTTO_NUMBER_NOT_IS_DIGIT = "입력한 로또 번호에 숫자가 아닌 문자가 포함되어 있습니다.";
-    public static final String GAME_MONEY_TYPE_EXCEPTION_MESSAGE = "입력한 숫자에 다른 문자가 포함되어 있습니다.";
+    public static final String GAME_MONEY_TYPE_EXCEPTION_MESSAGE = "입력한 돈에 다른 문자가 포함되어 있습니다.";
 }
