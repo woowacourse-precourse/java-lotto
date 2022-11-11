@@ -16,6 +16,8 @@ public class OutputView {
     private static final String LOTTO_RANK_SECOND_MESSAGE = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
     private static final String LOTTO_RANK_FIRST_MESSAGE = "6개 일치 (2,000,000,000원) - ";
     private static final String COUNT_UNIT = "개";
+    private static final String EARNINGS_RATIO_MESSAGE = "총 수익률은 ";
+    private static final String EARNINGS_RATIO_SUFFIX = "입니다.";
 
     public void printPurchaseLottoCount(int purchaseLottoCount) {
         System.out.println(purchaseLottoCount + PURCHASE_LOTTO_COUNT_MESSAGE);
@@ -31,5 +33,9 @@ public class OutputView {
         System.out.println(LOTTO_RANK_THIRD_MESSAGE + lottoWinningRankMap.get(LottoWinningRank.THIRD) + COUNT_UNIT);
         System.out.println(LOTTO_RANK_SECOND_MESSAGE + lottoWinningRankMap.get(LottoWinningRank.SECOND) + COUNT_UNIT);
         System.out.println(LOTTO_RANK_FIRST_MESSAGE + lottoWinningRankMap.get(LottoWinningRank.FIRST) + COUNT_UNIT);
+    }
+
+    public void printEarningsRatio(String earningsRatio) {
+        System.out.println(EARNINGS_RATIO_MESSAGE + earningsRatio + EARNINGS_RATIO_SUFFIX);
     }
 }
