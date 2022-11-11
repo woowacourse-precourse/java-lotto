@@ -54,7 +54,7 @@
   - 보너스 번호 입력 전 보너스 번호 입력이 이루어져야함을 알리는 함수
 
 
-- void printStats(List<Lotto>, List<Integer>, int)
+- void printStats(List<Lotto>, List<Integer>, int, int)
   - 당첨 내역을 출력하는 함수
 
 
