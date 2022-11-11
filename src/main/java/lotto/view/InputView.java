@@ -3,7 +3,6 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.exception.InputException;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -12,11 +11,10 @@ import java.util.stream.Collectors;
 public class InputView {
     public static int enterPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
-        String data = Console.readLine();
-        InputException.validatePurchaseAmount(data);
-        int purchaseAmount = Integer.valueOf(data);
+        String purchaseAmount = Console.readLine();
+        InputException.validatePurchaseAmount(purchaseAmount);
         System.out.println();
-        return purchaseAmount;
+        return Integer.valueOf(purchaseAmount);
     }
 
     public static List<Integer> enterWinningNumber() {
