@@ -20,7 +20,7 @@ public class Customer {
     }
 
     public void buyLotto() {
-
+        hasLotto = getMoney() / LOTTO_PRICE;
     }
 
     public int getLotto() {
