@@ -3,6 +3,8 @@ package lotto.model;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class LottoMachine {
 
@@ -27,13 +29,17 @@ public class LottoMachine {
 
 	private void createLottoBundle(int PurchasesNumber) {
 		for (int lottoCount = 0; lottoCount < PurchasesNumber; lottoCount++) {
-			lottoBundle.add(createLotto());
+			lottoBundle.add(new Lotto(createLottoNumber()));
 		}
 	}
 
-	private Lotto createLotto() {
-		return new Lotto(
-			Randoms.pickUniqueNumbersInRange(LottoMinRange, LottoMaxRange, LottoMaxNumber));
+	private List<Integer> createLottoNumber() {
+		return IntStream.generate(
+				() -> Randoms.pickNumberInRange(LottoMinRange, LottoMaxRange))
+			.distinct()
+			.limit(LottoMaxNumber)
+			.boxed()
+			.collect(Collectors.toList());
 	}
 
 	public List<Lotto> getLottoBundle() {
