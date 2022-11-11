@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 
-@DisplayName("Test about Validation of LottoNumber Input")
+@DisplayName("로또 번호 입력 유효성 검사 테스트")
 @TestMethodOrder(OrderAnnotation.class)
 class LottoNumberValidatorTest {
 
@@ -27,7 +27,7 @@ class LottoNumberValidatorTest {
     }
 
     @Order(1)
-    @DisplayName("when wrong separator")
+    @DisplayName("1차:잘못된 구분자")
     @Test
     void separatorExceptionTest(){
         String inputValue = "1, 2, 3, 4. 5. 6";
@@ -40,7 +40,7 @@ class LottoNumberValidatorTest {
     }
 
     @Order(2)
-    @DisplayName("when contains not number")
+    @DisplayName("2차:숫자가 아닌 값 입력")
     @Test
     void notNumberExceptionTest(){
         String inputValue = "1, 2, 3, a, b, 5";
