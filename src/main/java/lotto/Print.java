@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Print {
-	List<List<Integer>> lottonumbersall = null;
+	List<List<Integer>> lottonumbersall = new ArrayList<>();
 	int lottonum = 0;
 	int bonusnumber = 0;
 	int purchaseprice = 0;
@@ -48,11 +48,11 @@ public class Print {
 		System.out.println("---");
 		for (rank r : rank.values()) {
 			if (ranknum == 2) {
-				System.out.printf("%d개 일치, 보너스 볼 일치 (%d원) - %d개", r.getValue(), r.getPrice(), rankmap.get(ranknum));
+				System.out.printf("%d개 일치, 보너스 볼 일치 (%d원) - %d개\n", r.getValue(), r.getPrice(), rankmap.getOrDefault(ranknum, 0));
 				ranknum--;
 				continue;
 			}
-			System.out.printf("%d개 일치 (%d원) - %d개", r.getValue(), r.getPrice(), rankmap.get(ranknum));
+			System.out.printf("%d개 일치 (%d원) - %d개\n", r.getValue(), r.getPrice(), rankmap.getOrDefault(ranknum, 0));
 			ranknum--;
 		}
 	}
@@ -64,10 +64,10 @@ public class Print {
 		inputnumberset.add(bonusnumber);
 		
 		for (int i =0; i < lottonum; i++) {
-			ArrayList<Integer> lotto = new ArrayList<Integer>();  
+			List<Integer> lotto = new ArrayList<Integer>();  
 			HashSet<Integer> lottoset = new HashSet<>();  
 			
-			lotto = (ArrayList<Integer>) lottonumbersall.get(i);
+			lotto = lottonumbersall.get(i);
 			lottoset.addAll(lotto);  // 한번 할 때마다 나온 로또 값 6개를 lottoset에 담기
 			
 			lottoset.retainAll(inputnumberset);
@@ -75,7 +75,7 @@ public class Print {
 		}
 	}
 	
-	public void rankCount(ArrayList<Integer> lotto, HashSet<Integer> lottoset) {
+	public void rankCount(List<Integer> lotto, HashSet<Integer> lottoset) {
 		int count = 0;
 		if (lottoset.size() == rank.FIFTH.getValue()) {
 			count = rankmap.getOrDefault(5, 0) + 1;

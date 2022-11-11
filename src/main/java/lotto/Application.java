@@ -99,6 +99,7 @@ public class Application {
     	
     	BonusNumber bonusnumber = new BonusNumber(stringbonusnumber,inputnumbers);
     	
+    	System.out.println();
     	return bonusnumber.getBonusNumber();
     }
 }
