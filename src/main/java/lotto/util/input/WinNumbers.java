@@ -18,6 +18,10 @@ public class WinNumbers {
         this.winNumbers = new Lotto(winNumbersSet.stream().collect(Collectors.toList()));
     }
 
+    public Lotto getWinNumbers() {
+        return winNumbers;
+    }
+
     private void validate(String winNumbers) {
         for (String winNumber : winNumbers.split(",")) {
             validateOnlyNumber(winNumber);
@@ -26,13 +30,15 @@ public class WinNumbers {
             winNumbersSet.add(Integer.parseInt(winNumber));
         }
     }
-    private void validateOnlyNumber (String winNumber) {
+
+    private void validateOnlyNumber(String winNumber) {
         final String REGEX = "^[0-9]*$";
         if (!Pattern.matches(REGEX, winNumber)) {
             throw new IllegalArgumentException();
         }
     }
-    private void validateNumberInRange (String winNumber) {
+
+    private void validateNumberInRange(String winNumber) {
         int number = Integer.parseInt(winNumber);
         if (!(number >= MIN_VALUE && number <= MAX_VALUE)) {
             throw new IllegalArgumentException();
