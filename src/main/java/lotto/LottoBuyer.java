@@ -38,6 +38,7 @@ public class LottoBuyer {
         List<Integer> inputNumbers;
 
         try{
+            CheckInputException.checkBuyerInputIsNotFiveComma(input);
             CheckInputException.checkBuyerInputIsNotSixNumbers(input);
             inputNumbers = Util.splitInteger(input, ",");
             lotto = new Lotto(inputNumbers);
