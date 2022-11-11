@@ -6,6 +6,7 @@ import lotto.domain.Result;
 import lotto.domain.ResultStatistics;
 import lotto.domain.WinLotto;
 import lotto.util.Util;
+import lotto.view.InputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +14,7 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         try {
-            System.out.println("구입금액을 입력해 주세요.");
-
-            String amount = Console.readLine();
-            Util.isValidAmount(amount);
-            int count = Integer.parseInt(amount) / 1000;
-            System.out.println(count + "개를 구매했습니다.");
+            int count = InputView.getView();
 
             List<Lotto> generatedLottos = new ArrayList<>();
 
@@ -58,6 +54,5 @@ public class Application {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-
     }
 }
