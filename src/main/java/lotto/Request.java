@@ -77,4 +77,15 @@ public class Request {
 			winningNumbers.add(Integer.parseInt(eachNumbers));
 		}
 	}
+
+	public void validateBonusNumber() {
+		isBonusNumber();
+		validateDuplicationWithWinningNumbers();
+	}
+
+	public void isBonusNumber() {
+		if(Pattern.matches("^([1-9])|([1-3][0-9])|(4[0-5])$", userInput)) {
+			throw new IllegalArgumentException();
+		}
+	}
 }
