@@ -17,12 +17,12 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_COUNT) {
             throw new IllegalArgumentException(INVALID_LENGTH_ERROR_MESSAGE);
         }
 
         Set<Integer> lottoSet = new HashSet<>(numbers);
-        if (lottoSet.size() != 6) {
+        if (lottoSet.size() != LOTTO_COUNT) {
             throw new IllegalArgumentException(DUPLICATED_NUMBER_ERROR_MESSAGE);
         }
     }
@@ -33,7 +33,7 @@ public class Lotto {
     }
 
     public boolean isContained(int num) {
-        return  numbers.contains(num);
+        return numbers.contains(num);
     }
 
     @Override

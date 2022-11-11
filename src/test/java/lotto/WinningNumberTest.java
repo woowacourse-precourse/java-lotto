@@ -19,7 +19,7 @@ class WinningNumberTest {
         List<Integer> list = List.of(1, 2, 4, 45, 13);
 
         //When
-        Throwable t = catchThrowable(() -> validateForRange(list));
+        Throwable t = catchThrowable(() -> Validator.validateForRange(list));
 
         //Then
         assertThat(t).doesNotThrowAnyException();
@@ -32,7 +32,7 @@ class WinningNumberTest {
         List<Integer> list = List.of(1, 2, 4, 46, 1);
 
         //When
-        Throwable t = catchThrowable(() -> validateForRange(list));
+        Throwable t = catchThrowable(() -> Validator.validateForRange(list));
 
         //Then
         assertThat(t)
@@ -49,9 +49,10 @@ class WinningNumberTest {
         //When
         List<Integer> list = inputWinningNumber(input);
         //Then
-        assertThat(list).isEqualTo(List.of(2,6,15,22,33,34));
+        assertThat(list).isEqualTo(List.of(2, 6, 15, 22, 33, 34));
 
     }
+
     @DisplayName("사용자 입력 확인 테스트 - 문자 오류")
     @Test
     void givenString_whenInputValue_thenThrowIllegalException1() {
@@ -87,24 +88,25 @@ class WinningNumberTest {
     @Test
     void givenLotto_whenInputBonusNumber_thenDoesNothing() {
         //Given
-        Lotto winningNumber = new Lotto(List.of(1,2,3,4,5,6));
+        Lotto winningNumber = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonusNumber = 7;
 
         //When
-        Throwable t = catchThrowable(() -> validateForDuplicatedNumber(winningNumber, bonusNumber));
+        Throwable t = catchThrowable(() -> Validator.validateForDuplicatedNumber(winningNumber, bonusNumber));
 
         //Then
         assertThat(t).doesNotThrowAnyException();
     }
+
     @DisplayName("보너스 번호 중복 확인 - 비정상")
     @Test
     void givenLotto_whenInputBonusNumber_thenthrowException() {
         //Given
-        Lotto winningNumber = new Lotto(List.of(1,2,3,4,5,6));
+        Lotto winningNumber = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonusNumber = 6;
 
         //When
-        Throwable t = catchThrowable(() -> validateForDuplicatedNumber(winningNumber, bonusNumber));
+        Throwable t = catchThrowable(() -> Validator.validateForDuplicatedNumber(winningNumber, bonusNumber));
 
         //Then
         assertThat(t)
@@ -112,39 +114,20 @@ class WinningNumberTest {
                 .hasMessage(DUPLICATED_NUMBER_ERROR_MESSAGE);
     }
 
-    private void validateForRange(List<Integer> WinningNumber) {
-        if (!WinningNumber.stream().allMatch(num -> num >= MIN_LOTTO_NUMBER && num <= MAX_LOTTO_NUMBER)) {
-            throw new IllegalArgumentException(OUT_OF_RANGE_ERROR_MESSAGE);
-        }
-    }
-
     private List<Integer> inputWinningNumber(String input) {
         List<Integer> winningNumber = new ArrayList<>();
         String[] inputList = input.split(",");
 
-        validateForIllegalInput(inputList);
+        Validator.validateForIllegalInput(inputList);
 
-        for(int i = 0; i < inputList.length; i++) {
+        for (int i = 0; i < inputList.length; i++) {
             int num = Integer.parseInt(inputList[i]);
             winningNumber.add(num);
         }
 
-        validateForRange(winningNumber);
+        Validator.validateForRange(winningNumber);
         return winningNumber;
     }
 
-    private void validateForIllegalInput(String[] inputList) {
-        for(int i = 0; i< inputList.length; i++) {
-            if (!inputList[i].matches("^[0-9]*$")) {
-                throw new IllegalArgumentException(INVALID_INPUT_ERROR_MESSAGE);
-            }
-        }
-    }
-
-    private void validateForDuplicatedNumber(Lotto lotto, int bonusNumber) {
-        if(lotto.isContained(bonusNumber)) {
-            throw new IllegalArgumentException(DUPLICATED_NUMBER_ERROR_MESSAGE);
-        }
-    }
 
 }

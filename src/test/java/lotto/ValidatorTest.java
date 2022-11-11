@@ -70,7 +70,7 @@ class ValidatorTest {
     }
 
     private void validateForIllegalInput(String input) {
-        Pattern pattern = Pattern.compile("^[0-9]*$");
+        Pattern pattern = Pattern.compile(REGEX_ONLY_NUMBER);
         Matcher matcher = pattern.matcher(input);
         if (!matcher.find()) {
             throw new IllegalArgumentException(INVALID_INPUT_ERROR_MESSAGE);
@@ -78,7 +78,7 @@ class ValidatorTest {
     }
 
     private void validateForDividedBy1000(int cost) {
-        if (cost % 1000 != 0) {
+        if (cost % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(INVALID_COST_ERROR_MESSAGE);
         }
     }

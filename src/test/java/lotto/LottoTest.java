@@ -71,7 +71,7 @@ class LottoTest {
 
     private void validateForDuplicatedNumber(List<Integer> lotto) {
         Set<Integer> lottoSet = new HashSet<>(lotto);
-        if (lottoSet.size() != 6) {
+        if (lottoSet.size() != LOTTO_COUNT) {
             throw new IllegalArgumentException(DUPLICATED_NUMBER_ERROR_MESSAGE);
         }
     }
