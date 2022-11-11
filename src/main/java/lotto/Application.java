@@ -42,8 +42,6 @@ public class Application {
             outputView.printRate(lottoReferee.sumPrizes(), buyer.countHoldingLotto());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            throw e;
         }
-
     }
 }

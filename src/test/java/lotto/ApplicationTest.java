@@ -3,7 +3,6 @@ package lotto;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import java.util.List;
@@ -47,9 +46,9 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
-    void 예외_테스트() {
+    void 예외_테스트_기본() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException("1000j")).isInstanceOf(IllegalArgumentException.class);
+            runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
@@ -57,7 +56,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트_두번째() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException("1000", "1,2,3,4,5,a")).isInstanceOf(IllegalArgumentException.class);
+            runException("1000", "1,2,3,4,5,a");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
@@ -65,8 +64,7 @@ class ApplicationTest extends NsTest {
     @Test
     void 예외_테스트_세번째() {
         assertSimpleTest(() -> {
-            assertThatThrownBy(() -> runException("1000", "1,2,3,4,5,6", "a")).isInstanceOf(
-                    IllegalArgumentException.class);
+            runException("1000", "1,2,3,4,5,6", "a");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
