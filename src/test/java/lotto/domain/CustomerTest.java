@@ -17,6 +17,6 @@ class CustomerTest {
 
         customer.buyLottoTicketTo(new LottoSeller());
 
-        assertThat(customer.getLottoTicket().size()).isEqualTo(2);
+        assertThat(customer.getLottoTicket()).isInstanceOf(LottoTicket.class);
     }
 }

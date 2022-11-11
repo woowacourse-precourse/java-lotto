@@ -1,11 +1,9 @@
 package lotto.domain;
 
-import java.util.List;
-
 public class Customer {
 
     private Integer amount;
-    private List<Lotto> lottoTicket;
+    private LottoTicket lottoTicket;
 
     public Customer(Integer amount) {
         this.amount = amount;
@@ -16,7 +14,7 @@ public class Customer {
         spendAll();
     }
 
-    public List<Lotto> getLottoTicket() {
+    public LottoTicket getLottoTicket() {
         return lottoTicket;
     }
 

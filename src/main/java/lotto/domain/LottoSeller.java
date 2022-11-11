@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 import static lotto.domain.Lotto.LOTTO_NUMBERS_SIZE;
 import static lotto.domain.LottoNumber.LOTTO_NUMBER_LOWER_BOUND;
@@ -13,9 +14,9 @@ public class LottoSeller {
     private static final int LOTTO_PRICE = 1000;
     private static final String INVALID_AMOUNT_MESSAGE = "[ERROR] 로또를 구매할 수 없습니다.";
 
-    public List<Lotto> sell(Integer amount) {
+    public LottoTicket sell(Integer amount) {
         validate(amount);
-        return toLottos(generateQuickPickNumbers(amount / LOTTO_PRICE));
+        return generateQuickPickNumbers(amount / LOTTO_PRICE);
     }
 
     private void validate(Integer amount) {
@@ -24,12 +25,12 @@ public class LottoSeller {
         }
     }
 
-    private List<List<Integer>> generateQuickPickNumbers(Integer count) {
+    private LottoTicket generateQuickPickNumbers(Integer count) {
         List<List<Integer>> quickPickNumbers = new ArrayList<>();
         while (quickPickNumbers.size() < count) {
             quickPickNumbers.add(quickPick());
         }
-        return quickPickNumbers;
+        return toLottoTicket(quickPickNumbers);
     }
 
     private List<Integer> quickPick() {
@@ -39,9 +40,9 @@ public class LottoSeller {
                 .collect(toList());
     }
 
-    private List<Lotto> toLottos(List<List<Integer>> quickPickNumbers) {
+    private LottoTicket toLottoTicket(List<List<Integer>> quickPickNumbers) {
         return quickPickNumbers.stream()
                 .map(Lotto::new)
-                .collect(toList());
+                .collect(collectingAndThen(toList(), LottoTicket::new));
     }
 }

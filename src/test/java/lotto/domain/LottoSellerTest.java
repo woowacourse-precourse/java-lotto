@@ -2,7 +2,6 @@ package lotto.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -18,11 +17,9 @@ public class LottoSellerTest {
     private LottoSeller lottoSeller = new LottoSeller();
 
     @ParameterizedTest
-    @CsvSource(value = {"1000, 1", "2000, 2", "3000, 3", "4000, 4"})
-    void sell_메서드는_금액을_받고_로또_리스트를_반환한다(int amount, int resultSize) {
-        List<Lotto> lottos = lottoSeller.sell(amount);
-
-        assertThat(lottos.size()).isEqualTo(resultSize);
+    @CsvSource(value = {"1000", "2000", "3000", "4000"})
+    void sell_메서드는_금액을_받고_로또_티켓을_반환한다(int amount) {
+        assertThat(lottoSeller.sell(amount)).isInstanceOf(LottoTicket.class);
     }
 
     @ParameterizedTest
