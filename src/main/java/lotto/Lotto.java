@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 
+import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -18,7 +20,9 @@ public class Lotto {
         }
     }
 
-    public static int getMoney(String input) {
+    public static int getMoney() {
+        System.out.println("구입금액을 입력해 주세요.");
+        String input = readLine();
         int money = Integer.valueOf(input);
         if (money % 1000 != 0){
             throw new IllegalArgumentException("[ERROR] 금액을 올바르게 넣어주세요!");
