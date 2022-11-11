@@ -13,7 +13,7 @@ import java.util.List;
 
 class JudgmentTest {
     private Judgment judgment;
-    private List<Integer> winningNumber = List.of(1, 2, 3, 4, 5, 6);
+    private Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
     @DisplayName("compare 메소드 테스트")
     @Nested
@@ -26,9 +26,9 @@ class JudgmentTest {
         @DisplayName("0개 매치")
         @Test
         void case1() {
-            List<Integer> playerNumber = List.of(7, 8, 9, 10, 11, 12);
+            Lotto myLotto = new Lotto(List.of(7, 8, 9, 10, 11, 12));
             int result = 0;
-            int actual = judgment.compare(winningNumber, playerNumber);
+            int actual = judgment.compare(winningLotto, myLotto);
 
             assertThat(actual).isEqualTo(result);
         }
@@ -36,9 +36,9 @@ class JudgmentTest {
         @DisplayName("1개 매치")
         @Test
         void case2() {
-            List<Integer> playerNumber = List.of(6, 7, 8, 9, 10, 11);
+            Lotto myLotto = new Lotto(List.of(6, 7, 8, 9, 10, 11));
             int result = 1;
-            int actual = judgment.compare(winningNumber, playerNumber);
+            int actual = judgment.compare(winningLotto, myLotto);
 
             assertThat(actual).isEqualTo(result);
         }
@@ -46,9 +46,9 @@ class JudgmentTest {
         @DisplayName("2개 매치")
         @Test
         void case3() {
-            List<Integer> playerNumber = List.of(5, 6, 7, 8, 9, 10);
+            Lotto myLotto = new Lotto(List.of(5, 6, 7, 8, 9, 10));
             int result = 2;
-            int actual = judgment.compare(winningNumber, playerNumber);
+            int actual = judgment.compare(winningLotto, myLotto);
 
             assertThat(actual).isEqualTo(result);
         }
@@ -56,9 +56,9 @@ class JudgmentTest {
         @DisplayName("3개 매치")
         @Test
         void case4() {
-            List<Integer> playerNumber = List.of(4, 5, 6, 7, 8, 9);
+            Lotto myLotto = new Lotto(List.of(4, 5, 6, 7, 8, 9));
             int result = 3;
-            int actual = judgment.compare(winningNumber, playerNumber);
+            int actual = judgment.compare(winningLotto, myLotto);
 
             assertThat(actual).isEqualTo(result);
         }
@@ -75,9 +75,9 @@ class JudgmentTest {
         @DisplayName("매치하는 경우")
         @Test
         void case1() {
-            int bonusNumber = 6;
+            Bonus bonus = new Bonus(6);
             boolean result = true;
-            boolean actual = judgment.hasBonusNumber(winningNumber, bonusNumber);
+            boolean actual = judgment.hasBonusNumber(winningLotto, bonus);
 
             assertThat(actual).isEqualTo(result);
         }
@@ -85,9 +85,9 @@ class JudgmentTest {
         @DisplayName("매치하지 않는 경우")
         @Test
         void case2() {
-            int bonusNumber = 7;
+            Bonus bonus = new Bonus(7);
             boolean result = false;
-            boolean actual = judgment.hasBonusNumber(winningNumber, bonusNumber);
+            boolean actual = judgment.hasBonusNumber(winningLotto, bonus);
 
             assertThat(actual).isEqualTo(result);
         }
