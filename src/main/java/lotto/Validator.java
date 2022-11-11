@@ -1,7 +1,5 @@
 package lotto;
 
-import java.util.List;
-
 public class Validator {
 
     public void validatePayment(String payment) {
@@ -9,7 +7,7 @@ public class Validator {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위의 수이어야 합니다.");
     }
 
-    public void validateWinningNumbers(List<Integer> winningNumbers) {
+    public void validateWinningNumbers(String winningNumbers) {
 
     }
 
