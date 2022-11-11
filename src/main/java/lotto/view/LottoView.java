@@ -41,6 +41,17 @@ public class LottoView {
     public int getBonusNumber(List<Integer> numbers) {
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = Integer.parseInt(Console.readLine());
+        validateBonusNumber(numbers, bonusNumber);
         return bonusNumber;
+    }
+
+    private void validateBonusNumber(List<Integer> numbers, int bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복돼선 안 됩니다.");
+        }
+
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 사이의 숫자여야 합니다.");
+        }
     }
 }
