@@ -53,6 +53,14 @@ public class Lotto {
         if(cnt == 3 || (cnt == 2 && bonus == 1)) return LottoRank.Fifth;
         return LottoRank.Sixth;
     }
+    public void printInfo(){
+        System.out.print("[");
+        for(int i = 0 ; i < numbers.size(); i++){
+            System.out.print(numbers.get(i));
+            if(i != numbers.size()-1) System.out.print(",");
+        }
+        System.out.println("]");
+    }
 
     // TODO: 추가 기능 구현
 }
