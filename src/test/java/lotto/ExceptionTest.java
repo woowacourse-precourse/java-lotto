@@ -14,10 +14,10 @@ class ExceptionTest {
     }
 
     @Test
-    void validUserInputStringNumber() {
-        String testcase = "1,2,3,45";
+    void validateUserInput() {
+        String testcase = "1,2,3,45, ";
         Exception exception = new Exception();
-        assertThatThrownBy(() -> exception.isProperComma(testcase))
+        assertThatThrownBy(() -> exception.validateUserInput(testcase))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
