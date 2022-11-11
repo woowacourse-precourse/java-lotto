@@ -18,22 +18,14 @@ public class MainController {
 
     private Purchase purchaseLotto() {
         PrintView.purchaseLotto();
-
-        int purchaseLotto = 0;
-        try {
-            purchaseLotto = ReceiveView.purchaseLotto();
-        } catch (Exception e) {
-            PrintView.error(e.getMessage());
-            throw new IllegalArgumentException(e.getMessage());
-        }
-        Purchase purchase = new Purchase(purchaseLotto);
+        int purchaseLottoMoney = ReceiveView.purchaseLotto();
+        Purchase purchase = new Purchase(purchaseLottoMoney);
         return purchase;
     }
 
     private User purchaseInfo(Purchase purchase){
         User user = makeUserToPurchase(purchase);
         PrintView.infoBoughtLotto(user);
-
         return user;
     }
 

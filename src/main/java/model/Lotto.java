@@ -3,9 +3,9 @@ package model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
-import util.exception.Valid;
 import util.message.ErrorMessage;
 
 public class Lotto {
@@ -19,20 +19,40 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    protected void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_LENGTH_SIZE_NOT_SIX);
         }
-        if (Valid.hasDuplicateNum(numbers)) {
+        if (hasDuplicateNum(numbers)) {
             throw new IllegalArgumentException(ErrorMessage.HAS_NOT_DUPLICATE_NUM);
         }
-        if (!Valid.isNumRangeLotto(numbers)) {
+        if (!isNumRangeLotto(numbers)) {
             throw new IllegalArgumentException(ErrorMessage.IS_NOT_LOTTO_RANGE_NUM);
         }
     }
 
-    private void sortAscend(List<Integer> numbers){
+    protected void sortAscend(List<Integer> numbers){
         Collections.sort(numbers);
+    }
+
+    protected static boolean hasDuplicateNum(List<Integer> numbers) {
+        HashSet hashSet = new HashSet();
+        for (Integer number : numbers) {
+            if (hashSet.contains(number)) {
+                return true;
+            }
+            hashSet.add(number);
+        }
+        return false;
+    }
+
+    protected static boolean isNumRangeLotto(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number < 1 || number > 45) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static List<Integer> generateLotto() {

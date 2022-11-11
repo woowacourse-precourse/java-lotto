@@ -1,7 +1,7 @@
 package model;
 
-import util.exception.Valid;
 import util.message.ErrorMessage;
+import view.PrintView;
 
 public class Purchase {
     private static final int PURCHASE_MONEY_UNIT = 1000;
@@ -9,17 +9,17 @@ public class Purchase {
     private int money;
 
     public Purchase(int money) {
+        validate(money);
         this.money = money;
     }
 
-    public static boolean validate(String money){
-        if (!Valid.isDigit(money)) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_STRING_MONEY);
-        }
-        if (!isMoneyOverThousand(Integer.parseInt(money))) {
+    private boolean validate(int money){
+        if (!isMoneyOverThousand(money)) {
+            PrintView.error(ErrorMessage.OVER_THOUSAND_MONEY);
             throw new IllegalArgumentException(ErrorMessage.OVER_THOUSAND_MONEY);
         }
-        if (!isMoneyThousandUnit(Integer.parseInt(money))) {
+        if (!isMoneyThousandUnit(money)) {
+            PrintView.error(ErrorMessage.UNIT_THOUSAND_MONEY);
             throw new IllegalArgumentException(ErrorMessage.UNIT_THOUSAND_MONEY);
         }
         return true;
