@@ -5,8 +5,8 @@ public class Money {
     private final int money;
 
     public Money(int money) {
-        validateOneThousandUnit();
         this.money = money;
+        validateOneThousandUnit();
     }
 
     public void validateOneThousandUnit() {
