@@ -3,7 +3,6 @@ package lotto.service;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.User;
 
-
 import java.util.List;
 
 public class UserService {
