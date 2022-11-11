@@ -29,7 +29,7 @@ public class User {
         lottoList = readLine();
     }
 
-    public List<Integer> lottoToList(String UserIn, String User, List<Integer> numberResult){
+    public List<Integer> lottoToList(String UserIn){
 
         String lottoList = new String();
         List<Integer> lottoToList = new ArrayList<>();
@@ -41,5 +41,12 @@ public class User {
 
         return (List<Integer>) repeatDestroy;
     }
+
+    public void bonusNumber(){
+        Set<Integer> bonusNumber = new HashSet<>();
+        String bonusNumberInput = new String(String.valueOf(bonusNumber));
+        bonusNumberInput = readLine();
+    }
+
 
 }
