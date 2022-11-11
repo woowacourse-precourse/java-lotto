@@ -26,10 +26,6 @@ public class UserBet {
 		amount = bettingMoney / 1000;
 	}
 
-	public int getAmount() {
-		return amount;
-	}
-
 	public void buyLottos() {
 		myLottos = new ArrayList<>();
 
