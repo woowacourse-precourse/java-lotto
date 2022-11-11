@@ -9,6 +9,8 @@ public class WinningNumber {
     public WinningNumber(String winningLottoNumbers, String BonusNumber) {
         validateInteger(winningLottoNumbers);
         validateInteger(BonusNumber);
+        validateRange(winningLottoNumbers);
+        validateRange(BonusNumber);
         this.numbers = Collections.emptyList();
     }
 
@@ -22,4 +24,11 @@ public class WinningNumber {
         }
     }
 
+    private void validateRange(String numbers) {
+        for (String number : numbers.split(",")) {
+            if (Integer.valueOf(number) < 1 || Integer.valueOf(number) > 45) {
+                throw new IllegalArgumentException("당첨 번호와 보너스 번호는 1~ 45 사이의 숫자이어야합니다.");
+            }
+        }
+    }
 }
