@@ -13,4 +13,8 @@ public class WinningNumbers {
     public boolean isWinningNumber(int number) {
         return regularNumbers.contains(number);
     }
+
+    public boolean isBonusNumber(int number) {
+        return bonusNumber == number;
+    }
 }

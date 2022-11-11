@@ -24,6 +24,6 @@ class WinningNumbersTest {
     @ParameterizedTest
     @CsvSource({"7,true", "2,false", "3,false", "11,false", "-3,false", "20,false"})
     void 어떤_숫자가_보너스번호인지_확인한다(int number, boolean expected) {
-        assertThat(winningNumbers.isWinningNumber(number)).isEqualTo(expected);
+        assertThat(winningNumbers.isBonusNumber(number)).isEqualTo(expected);
     }
 }
