@@ -4,8 +4,12 @@ import constants.LottoGameMessage;
 
 public class LottoGamePrinter {
 
-    public static void printLottoAmount() {
+    public static void printEnterLottoAmount() {
         System.out.println(LottoGameMessage.READ_LOTTO_COUNT);
+    }
+
+    public static void printEnterWinNumber() {
+        System.out.println(LottoGameMessage.READ_WIN_NUMBER);
     }
 
 }
