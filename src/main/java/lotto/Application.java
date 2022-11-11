@@ -17,6 +17,13 @@ public class Application {
   }
 
   private static int getNumberOfBuyLotto(int purchaseAmount) {
+    valid(purchaseAmount);
     return purchaseAmount / LOTTO_AMOUNT;
+  }
+
+  private static void valid(int purchaseAmount){
+    if(purchaseAmount%LOTTO_AMOUNT>0){
+      throw new IllegalArgumentException("[ERROR] 구매 금액이 1000원 단위여야 합니다.");
+    }
   }
 }
