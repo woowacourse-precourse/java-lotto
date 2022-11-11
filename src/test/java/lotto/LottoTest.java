@@ -34,4 +34,16 @@ class LottoTest {
                 .hasMessage(ExceptionType.NOT_WITHIN_THE_RANGE.getMessage());
     }
 
+    @DisplayName("입력한 보너스 번호가 로또 숫자의 범위가 아닌 경우 예외가 발생한다.")
+    @Test
+    void addBonusNumberByOverRange() {
+        Lotto lotto = new Lotto(List.of(1,2,3,4,5,6));
+
+        assertThatThrownBy(() -> lotto.addNumber(46))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ExceptionType.NOT_WITHIN_THE_RANGE.getMessage());
+    }
+
+
+
 }
