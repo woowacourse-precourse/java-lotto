@@ -2,7 +2,9 @@ package lotto.model;
 
 import static lotto.constant.LottoConstants.*;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -12,9 +14,24 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public Lotto(String userInput) {
+        validate(userInput);
+        List<Integer> numbers = Arrays.stream(userInput.split(","))
+                .mapToInt(Integer::parseInt)
+                .boxed()
+                .collect(Collectors.toList());
+
+        validate(numbers);
+        this.numbers=numbers;
+    }
+
     private void validate(List<Integer> numbers) {
         isValidSize(numbers);
         hasDuplicateNumber(numbers);
+    }
+
+    private void validate(String userInput) {
+        isBlank(userInput);
     }
 
     private void isValidSize(List<Integer> numbers) {
@@ -30,5 +47,10 @@ public class Lotto {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_EXIST_MSG);
         }
     }
-    // TODO: 추가 기능 구현
+
+    private void isBlank(String userInput) {
+        if (userInput.isBlank()) {
+            throw new IllegalArgumentException(EMPTY_LOTTO_VALUE_MSG);
+        }
+    }
 }

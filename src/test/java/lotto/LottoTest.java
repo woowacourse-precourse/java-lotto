@@ -69,4 +69,14 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(LottoConstants.DUPLICATE_NUMBER_EXIST_MSG);
     }
+
+    @Test
+    @DisplayName("사용자에게 입력받은 값이 비어있는 경우 이유를 나타내는 메세지를 포함한 예외가 발생한다.")
+    void createLottoByUserInputWithEmptyValue() {
+        //given
+        String userInput ="";
+        assertThatThrownBy(() -> new Lotto(userInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(LottoConstants.EMPTY_LOTTO_VALUE_MSG);
+    }
 }
