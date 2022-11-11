@@ -21,10 +21,9 @@ public class LottoException {
         validateNumbersPermittedRange(numbers);
     }
 
-    public void validateBonusNumbers(String inputNumbers, String inputBonusNumber) {
-        validateBonusNumberIsNumber(inputBonusNumber);
-        validateBonusNumberPermittedRange(bonusNumberParser(inputBonusNumber));
-        validateBonusNumberOverlapNumbers(lottoNumbersParser(inputNumbers), bonusNumberParser(inputBonusNumber));
+    public void validateBonusNumbers(List<Integer> inputNumbers, int inputBonusNumber) {
+        validateBonusNumberPermittedRange(inputBonusNumber);
+        validateBonusNumberOverlapNumbers(inputNumbers, inputBonusNumber);
     }
 
     public void validateLottoNumbersLength(List<Integer> numbers) {
@@ -46,12 +45,6 @@ public class LottoException {
             if (number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER) {
                 throw new IllegalArgumentException("로또의 범위는 1~45입니다.");
             }
-        }
-    }
-
-    public void validateBonusNumberIsNumber(String bonusNumber) {
-        if (!bonusNumber.matches(ONLY_NUMBER_REGEX)) {
-            throw new IllegalArgumentException("보너스 번호는 한 개의 숫자만 입력 가능합니다.");
         }
     }
 
