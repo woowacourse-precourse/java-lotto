@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     static final int LOTTO_MIN_NUMBER = 1;
@@ -9,12 +11,20 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validateSize(numbers);
+        validateDuplicate(numbers);
         validateRange(numbers);
         this.numbers = numbers;
     }
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개이어야합니다.");
+        }
+    }
+
+    private void validateDuplicate(List<Integer> numbers) {
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+        if (uniqueNumbers.size() != numbers.size()) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 서로 중복될 수 없습니다.");
         }
     }
 
