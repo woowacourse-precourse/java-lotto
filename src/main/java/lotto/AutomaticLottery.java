@@ -41,12 +41,16 @@ public class AutomaticLottery {
     }
 
     private void validateInputType(String amount) {
+        validateInputEmpty(amount);
+        for (int seq = 0; seq < amount.length(); seq++) {
+            validateCharacter(amount.charAt(seq));
+        }
+    }
+
+    private void validateInputEmpty(String amount) {
         if (amount.equals("")) {
             System.out.println("[ERROR] 공백을 입력할 수 없습니다 금액을 입력해 주세요.");
             throw new IllegalArgumentException();
-        }
-        for (int seq = 0; seq < amount.length(); seq++) {
-            validateCharacter(amount.charAt(seq));
         }
     }
 
