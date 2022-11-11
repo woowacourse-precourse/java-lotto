@@ -6,12 +6,15 @@ import lotto.application.output.lotterymatch.LottoHost;
 import lotto.domain.Lotto;
 
 import java.util.List;
+import java.util.Map;
 
 public class LottoStarter {
 
+    private final LottoHost lottoHost = new LottoHost();
+    private final YieldCalculator yieldCalculator = new YieldCalculator();
+
     public void start() {
-        Client client = new Client();
-        int purchaseNumber = client.getPurchaseMoney();
+        int purchaseNumber = Client.getPurchaseMoney();
 
         List<List<Integer>> generatedLottoNumber = Lotto.generateLottoNumber(purchaseNumber);
         Lotto.getGeneratedLottoNumber(generatedLottoNumber);
@@ -19,14 +22,11 @@ public class LottoStarter {
         Lotto lotto = new Lotto(winningLotto);
         int bonusWinningNumber = lotto.inputWinningBonusNumber(winningLotto);
 
-        LottoHost lottoHost = new LottoHost();
-        List<Integer> matchResultNotContainBonusNumber =
-                lottoHost.matchNotContainBonusNumber(generatedLottoNumber, winningLotto, bonusWinningNumber);
-        List<Integer> matchResultContainBonusNumber =
-                lottoHost.matchContainBonusNumber(generatedLottoNumber, winningLotto, bonusWinningNumber);
+        List<List<Integer>> matchResult = lottoHost.matchNotContainBonusNumber(
+                generatedLottoNumber, winningLotto, bonusWinningNumber);
 
-        YieldCalculator yieldCalculator = new YieldCalculator();
-        yieldCalculator.getYield(yieldCalculator
-                .getStatistics(matchResultNotContainBonusNumber, matchResultContainBonusNumber), purchaseNumber);
+        Map<String, Integer> statistic = yieldCalculator.extractStatistic(matchResult);
+        yieldCalculator.showStatistic(statistic);
+        yieldCalculator.getYield(statistic, purchaseNumber);
     }
 }
