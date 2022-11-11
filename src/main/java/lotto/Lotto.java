@@ -21,6 +21,10 @@ public class Lotto {
         System.out.println("구입금액을 입력해주세요");
     }
 
+    public void buySucess(){
+        System.out.println("개를 구매하였습니다.");
+    }
+
 //    public HashMap<String, Integer>
 
     // TODO: 추가 기능 구현
