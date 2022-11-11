@@ -33,7 +33,17 @@ class LottoBuyerTest extends NsTest{
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
+
+    @Test
+    @DisplayName("로또의 번호를 제대로 입력할 수 있는지 확인")
+    void 로또_번호_입력_테스트(){
+        assertThatThrownBy(() -> run("1,2,3,4,5,6"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
+
     public void runMain() {
-        LottoBuyer.inputMoney();
+        //LottoBuyer.inputMoney();
+        LottoBuyer.inputLottoNumbers();
     }
 }
