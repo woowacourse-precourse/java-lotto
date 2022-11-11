@@ -1,6 +1,10 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.Data.User;
+import lotto.service.UserLottoService;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -11,6 +15,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
+
+    @DisplayName("사용자의 입력 금액이 User에 저장 되었는지 확인한다.")
+    @Test
+    void checkUserInputMoney() {
+        String inputMoney = "1000";
+        User user = new User(Integer.parseInt(inputMoney));
+
+        assertThat(Integer.parseInt(inputMoney)).isEqualTo(user.getMoney());
+    }
 
     @Test
     void 기능_테스트() {
