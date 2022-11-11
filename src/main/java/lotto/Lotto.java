@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private static final int LOTTO_NUMBERS_LENGTH = 6;
@@ -9,6 +11,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validateLength(numbers);
+        validateNoDuplicate(numbers);
         this.numbers = numbers;
     }
 
@@ -18,5 +21,10 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void validateNoDuplicate(List<Integer> numbers) {
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+        if (uniqueNumbers.size() != numbers.size()) {
+            throw new IllegalArgumentException("로또 번호에 중복이 있습니다");
+        }
+    }
 }
