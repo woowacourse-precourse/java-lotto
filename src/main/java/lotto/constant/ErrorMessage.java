@@ -3,7 +3,7 @@ package lotto.constant;
 public enum ErrorMessage {
     NOTICE("[ERROR] "),
     UNEXPECTED("예기치 않은 에러가 발생하였습니다."),
-    NOT_DIVISIBLE("금액을 맞춰서 주시기 바랍니다."),
+    NOT_DIVISIBLE("1개 이상 구매할 수 있어야 하며 잔돈이 남지 않는 금액을 입력해야 합니다."),
     NOT_EQUAL_TO_LOTTO_NUMBER_AMOUNT("로또 숫자 갯수가 맞지 않습니다"),
     INVALID_LOTTO_NUMBER(
             String.format(
