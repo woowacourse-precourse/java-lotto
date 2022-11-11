@@ -52,4 +52,19 @@ public class ValidationTest {
 
         assertThatThrownBy(() -> Input.validatePrice(price)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void validateSplitByCommaInputSize_메서드_사용시_6개의_입력으로_나누어지지_않을_경우_예외_발생() {
+        String inputWithFourCommas = "1,2,3,4,5";
+        String inputWithSixCommas = "1,2,3,4,5,6,7";
+        String[] inputWithFourCommasSplitByComma = inputWithFourCommas.split(",");
+        String[] inputWithSixCommasSplitByComma = inputWithSixCommas.split(",");
+
+        assertAll(
+                () -> assertThatThrownBy(() -> Input.validateSplitByCommaInputSize(inputWithFourCommasSplitByComma))
+                        .isInstanceOf(IllegalArgumentException.class),
+                () -> assertThatThrownBy(() -> Input.validateSplitByCommaInputSize(inputWithSixCommasSplitByComma))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 }
