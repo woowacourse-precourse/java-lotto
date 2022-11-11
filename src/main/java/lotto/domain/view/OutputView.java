@@ -6,10 +6,10 @@ import lotto.global.util.Util;
 
 import java.util.Map;
 
+import static lotto.domain.view.constant.OutputViewConstants.*;
+
 
 public class OutputView {
-    private static final String BUY_LOTTO = "%d개를 구매했습니다.";
-    private static final String INPUT_PRIZE_NUMBERS = "당첨 번호를 입력해 주세요.";
     private static int BONUS = 0;
     private static String matchCount = "일치 개수 %d개";
 
@@ -31,10 +31,11 @@ public class OutputView {
         return Util.input();
     }
 
+    // TODO::
     public static void printDividingLine() {
         enter();
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(WINNING_STATISTICS);
+        System.out.println(DIVIDE_LINE);
     }
 
     // TODO::
@@ -54,17 +55,19 @@ public class OutputView {
         }
     }
 
+    // TODO::
     private static void isI6SaveBonus1OrElseSaveBonus0(int i) {
         if (i != 6) {
             BONUS = 0;
-            matchCount = "일치 개수 %d개";
+            matchCount = MATCH_NUMBER_COUNT;
         }
         if (i == 6) {
             BONUS = 1;
-            matchCount = "일치 개수 %d개, 보너스 볼";
+            matchCount = MATCH_NUMBER_COUNT_AND_BONUS;
         }
     }
 
+    // TODO::
     private static int getProxyNumber(int i) {
         int proxy = i;
         if (i == 6 || i == 7) {
@@ -73,6 +76,7 @@ public class OutputView {
         return proxy;
     }
 
+    // TODO::
     private static String createMessage(int i) {
         assert OutputResult.getMessage(i, BONUS) != null;
         return OutputResult.getMessage(i, BONUS);
