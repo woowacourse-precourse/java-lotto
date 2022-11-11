@@ -1,36 +1,39 @@
 package lotto;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validateSize(numbers);
-        validateOverlap(numbers);
-        validateOutOfRange(numbers);
+        validate(numbers);
         this.numbers = numbers;
     }
 
-    private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+    private void validate(List<Integer> numbers) {
+        if (checkSize(numbers) || checkOverlap(numbers) || checkOutOfRange(numbers)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void validateOverlap(List<Integer> numbers) {
+    private boolean checkSize(List<Integer> numbers) {
+        return numbers.size() != 6;
+    }
+
+    private boolean checkOverlap(List<Integer> numbers) {
         Set<Integer> removeOverlap = new HashSet<>(numbers);
-        if (numbers.size() != removeOverlap.size()) {
-            throw new IllegalArgumentException();
-        }
+        return numbers.size() != removeOverlap.size();
     }
 
-    private void validateOutOfRange(List<Integer> numbers) {
+    private boolean checkOutOfRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (number > 45 || number < 1) {
-                throw new IllegalArgumentException();
+                return true;
             }
         }
+        return false;
     }
 
     public List<Integer> getLottoNumbers() {
