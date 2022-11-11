@@ -10,7 +10,7 @@
   - [x] Lotto
   - [x] Ticket (구입 금액에 맞는 로또 발행)
   - [x] Money
-  - [ ] WinningNumber
+  - [x] WinningNumbers
   - [ ] BonusNumber
   - [ ] Prize (Enum 으로 구현)
 
@@ -26,7 +26,7 @@
 
 - View
   - [ ] Ticket 정보 출력
-  - [ ] Ticket, WinningNumber 활용해서 당첨 통계 출력
+  - [ ] Ticket, WinningNumbers 활용해서 당첨 통계 출력
   - [ ] Money, Ticket 활용해서 수익률 출력
 
 
@@ -50,16 +50,15 @@
   - [x] 1000원 단위로 나누어 떨어지는지 검증
 
 
-- WinningNumber
-  - [ ] 당첨번호가 중복되는지 검증
-  - [ ] 각 번호가 1~45사이에 숫자가 맞는지 검증
-  - [ ] 보너스 번호가 당첨번호와 중복되는지 검증
-  - [ ] 번호가 6개인지 확인
+- WinningNumbers
+  - [x] 당첨 번호가 중복되는지 검증
+  - [x] 각 번호가 1~45사이에 숫자가 맞는지 검증
+  - [x] 보너스 번호가 당첨 번호와 중복되는지 검증
+  - [x] 당첨 번호 개수가 6개인지 확인
   
 
 - BonusNumber
   - [ ] 보너스 번호가 1~45사이에 숫자가 맞는지 검증
-  - [ ] 당첨번호와 중복되지 않는지 확인
 
 
 - Input
