@@ -43,6 +43,7 @@ public class LottoManager {
             if (rank == 3 && checkBonusNumber(myLottoNumber, bonusNumber)) {
                 rank = 2;
             }
+            result.add(rank, result.get(rank) + 1);
         }
         this.result = result;
     }
