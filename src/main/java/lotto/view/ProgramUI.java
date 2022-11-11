@@ -24,4 +24,9 @@ public class ProgramUI {
         System.out.println(INPUT_WINNING_NUMBERS);
         return readLine();
     }
+
+    public String inputBonusNumber() {
+        System.out.println(INPUT_BONUS_NUMBER);
+        return readLine();
+    }
 }
