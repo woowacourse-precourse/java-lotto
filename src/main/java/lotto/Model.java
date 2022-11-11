@@ -18,7 +18,7 @@ public class Model {
 
         for (List<Integer> lotto: usersLottos){
             List<Integer> comparingNumbers = lotto.stream()
-                    .filter(number -> lottoNumbers.contains(number))
+                    .filter(lottoNumbers::contains)
                     .collect(Collectors.toList());
 
                 duplicatedNumbers.add(comparingNumbers.size());
@@ -42,7 +42,7 @@ public class Model {
     private HashMap<Integer, Integer> makeNumberByRanking (List<Integer> prizeRankings) {
         HashMap<Integer, Integer> numberByRanking = new HashMap<>();
 
-        for (int temp = 1; temp <= 5; temp++) {
+        for (int temp = Ranking.FIRST.getRanking(); temp <= Ranking.FIFTH.getRanking(); temp++) {
             numberByRanking.put(temp, 0);
         }
 
@@ -50,12 +50,12 @@ public class Model {
         return numberByRanking;
     }
 
-    public void checkBonusNumber(List<Integer> prizeRankings, List<List<Integer>> usersLottos, int bonusNumber){
+    private void checkBonusNumber(List<Integer> prizeRankings, List<List<Integer>> usersLottos, int bonusNumber){
         int changedRanking;
 
         for (int temp = 0; temp < prizeRankings.size(); temp++) {
 
-            if (prizeRankings.get(temp) == 3) {
+            if (prizeRankings.get(temp) == Ranking.THIRD.getRanking()) {
                 changedRanking = upRanking(usersLottos.get(temp), bonusNumber);
                 prizeRankings.set(temp, changedRanking);
             }
@@ -64,9 +64,9 @@ public class Model {
 
     private int upRanking (List<Integer> usersLottos, int bonusNumber) {
         if (usersLottos.contains(bonusNumber)) {
-            return 2;
+            return Ranking.SECOND.getRanking();
         }
-        return 3;
+        return Ranking.THIRD.getRanking();
     }
 
     private void inputNumberByRanking (List<Integer> prizeRankings, HashMap<Integer, Integer> numberByRanking) {
@@ -79,10 +79,10 @@ public class Model {
     }
 
     private int addPrizeRanking(int duplicatedNumber) {
-        if (duplicatedNumber == 3) return 5;
-        if (duplicatedNumber == 4) return 4;
-        if (duplicatedNumber == 5) return 3;
-        if (duplicatedNumber == 6) return 1;
+        if (duplicatedNumber == 3) return Ranking.FIFTH.getRanking();
+        if (duplicatedNumber == 4) return Ranking.FORTH.getRanking();
+        if (duplicatedNumber == 5) return Ranking.THIRD.getRanking();
+        if (duplicatedNumber == 6) return Ranking.FIRST.getRanking();
         return 0;
     }
 
@@ -122,7 +122,7 @@ public class Model {
         return lottoNumbers;
     }
 
-    public enum Prize {
+    private enum Prize {
         FIRST(2_000_000),
         SECOND(30_000),
         THIRD(1_500),
