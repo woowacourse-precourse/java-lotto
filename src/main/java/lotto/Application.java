@@ -43,12 +43,20 @@ public class Application {
         System.out.println();
     }
 
+    static WinningLotto inputWinNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        WinningLotto winningNumbers = new WinningLotto(input);
+        System.out.println();
+        return winningNumbers;
+    }
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int purchase = inputMoney() / 1000;
         List<Lotto> myLottos = buyLotto(purchase);
         printMyLotto(myLottos);
+        WinningLotto winningLotto = inputWinNumber();
     }
 }
 
