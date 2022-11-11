@@ -59,4 +59,9 @@ public class LottoSystemService {
          }
     }
 
+    public void setBonusLottoNumbers(){
+        String inputNumber = Console.readLine();
+        numbers.add((int) inputNumber.charAt(0));
+    }
+
 }
