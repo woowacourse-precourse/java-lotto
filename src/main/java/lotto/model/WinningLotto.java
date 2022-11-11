@@ -34,4 +34,8 @@ public class WinningLotto extends Lotto {
         }
         return countMatching;
     }
+
+    public boolean matchBonusNumber(List<Integer> lottoNumbers) {
+        return lottoNumbers.contains(this.bonusNumber);
+    }
 }
