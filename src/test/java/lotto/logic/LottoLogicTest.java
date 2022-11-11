@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 class LottoLogicTest {
-    LottoLogic lottoLogic = new LottoLogic();
+    LottoLogic lottoLogic = LottoLogic.getInstance();
 
     List<List<Integer>> lottos = List.of(   // 일치하는 번호 개수 | 보너스 일치  |   상금
             List.of(8, 21, 23, 41, 42, 43), // 0                아니요         0
