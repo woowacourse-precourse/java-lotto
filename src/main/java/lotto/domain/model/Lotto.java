@@ -6,6 +6,7 @@ import static lotto.utils.Advice.LottoValidator.checkSize;
 import static lotto.utils.Advice.LottoValidator.checkSortedAsc;
 
 import java.util.List;
+import java.util.Map;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -20,5 +21,9 @@ public class Lotto {
         checkDuplication(numbers);
         checkRange(numbers);
         checkSortedAsc(numbers);
+    }
+
+    public LottoRank compareLottoNumber(LottoNumber lottoNumber) {
+        return lottoNumber.calculateMatch(this.numbers);
     }
 }
