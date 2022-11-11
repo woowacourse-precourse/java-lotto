@@ -15,4 +15,8 @@ public class GameMoney {
             throw new IllegalArgumentException(Error.ERROR_GAME_MONEY_AVAILABLE.getValue());
         }
     }
+
+    public int numberOfPurchases() {
+        return money / PRICE_PER_LOTTO;
+    }
 }
