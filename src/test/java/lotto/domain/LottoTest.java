@@ -26,8 +26,27 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Nested
+    @DisplayName("Lotto - numbers의 불변 여부 테스트")
+    class ImmutabilityTest {
 
+        @DisplayName("로또를 생성하는데 쓰인 리스트를 변경시켜도 불변 유지")
+        @Test
+        void test1() {
+            List<Integer> list = new ArrayList<>(List.of(1,2,3,4,5,6));
+            Lotto lotto = new Lotto(list);
+            list.add(7);
+            assertThat(lotto.getNumbers().size()).isEqualTo(6);
+        }
 
+        @DisplayName("Lotto에 getter를 통해 값을 추가하면 예외 반환")
+        @Test
+        void test2() {
+            List<Integer> list = new ArrayList<>(List.of(1,2,3,4,5,6));
+            Lotto lotto = new Lotto(list);
+            assertThatThrownBy(() -> lotto.getNumbers().add(7))
+                    .isInstanceOf(UnsupportedOperationException.class);
+        }
     }
 
     @Nested
