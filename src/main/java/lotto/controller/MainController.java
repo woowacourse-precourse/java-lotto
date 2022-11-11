@@ -14,7 +14,7 @@ public class MainController {
     public static void run() {
         PurchaseAmount purchaseAmount = InputPurchaseAmount.input();
 
-        Ticket ticket = new Ticket(purchaseAmount.getMoney());
+        Ticket ticket = new Ticket(purchaseAmount);
         TicketView.outPut(ticket);
 
         List<Integer> winningNumbers = InputWinningNumbers.input();
