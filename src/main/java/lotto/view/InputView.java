@@ -43,6 +43,7 @@ public class InputView {
     }
     
     private static int inputBonusNumber(final String inputBonusNumber) {
+        InputNumberValidator.validate(inputBonusNumber);
         return Integer.parseInt(inputBonusNumber);
     }
 }
