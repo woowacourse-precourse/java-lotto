@@ -1,9 +1,11 @@
 package lotto.handler;
 
+import lotto.service.UserLottoService;
 import lotto.view.OutputView;
 
 public class UserInputMoneyHandler {
     private final String ERROR_ORDER = "[ERROR]";
+    UserLottoService userLottoService = new UserLottoService();
     public void checkException(String inputMoney) {
         checkIsNumber(inputMoney);
         checkIsNonzero(inputMoney);
@@ -23,7 +25,7 @@ public class UserInputMoneyHandler {
     }
     public void checkIsValidMoney(String inputMoney) {
         int money = Integer.parseInt(inputMoney);
-        if(money%1000  != 0) {
+        if(money % userLottoService.LOTTO_PRICE  != 0) {
             throw new IllegalArgumentException(ERROR_ORDER);
         }
     }

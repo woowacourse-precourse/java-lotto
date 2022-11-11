@@ -6,8 +6,10 @@ import lotto.handler.UserInputMoneyHandler;
 import lotto.view.OutputView;
 
 public class UserLottoService {
+    public final int LOTTO_PRICE = 1000;
     UserInputMoneyHandler userInputMoneyHandler = new UserInputMoneyHandler();
     OutputView outputView = new OutputView();
+
     public User InputMoney() {
 
         outputView.inputMoneyOrder();
@@ -24,7 +26,7 @@ public class UserLottoService {
         return number;
     }
     public void lottoCount(User inputMoney) {
-        int lottoCount = inputMoney.getMoney() / 1000;
+        int lottoCount = inputMoney.getMoney() / LOTTO_PRICE;
         outputView.purchaseLottoOrder(lottoCount);
     }
     public void lineSkip() {

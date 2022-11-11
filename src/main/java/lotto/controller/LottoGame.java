@@ -7,9 +7,9 @@ public class LottoGame {
     UserLottoService userLottoService = new UserLottoService();
     public void run() {
         User user = userLottoService.InputMoney();
-        countLotto(user);
+        countLottoPaper(user);
     }
-    public void countLotto(User user) {
+    public void countLottoPaper(User user) {
         userLottoService.lottoCount(user);
     }
 }
