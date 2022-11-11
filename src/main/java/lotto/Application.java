@@ -202,4 +202,20 @@ public class Application {
             }
         }
     }
+
+    public static void validateBonusNumberIsInRange(String input) {
+        int bonusNumber = 0;
+
+        for (int i = 0; i < input.length(); i++) {
+            bonusNumber = bonusNumber * 10 + input.charAt(i) - 48;
+        }
+
+        if (bonusNumber < 1 || bonusNumber > 45) {
+
+            printErrorAboutRange();
+            throw new IllegalArgumentException();
+        }
+
+
+    }
 }
