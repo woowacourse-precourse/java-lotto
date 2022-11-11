@@ -1,8 +1,7 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-
 public class Purchase {
+
     private final static String ERROR_TITLE = "[ERROR] ";
     private final static String NON_NUMERIC = "숫자 이외의 값이 입력되었습니다. 문자나 띄어쓰기 등이 들어갔는지 확인해주세요.";
     private final static String NOT_IN_THOUSANDS = "금액은 천 원 단위로만 입력할 수 있습니다.";
@@ -13,7 +12,7 @@ public class Purchase {
 
     private final Integer price;
 
-    public Purchase(String input) {
+    public Purchase(String input) throws IllegalArgumentException {
         validateIfNumeric(input);
         Integer price = Integer.valueOf(input);
         validateIfInThousands(price);
@@ -25,7 +24,7 @@ public class Purchase {
         return price;
     }
 
-    private void validateIfNumeric(String input) {
+    private void validateIfNumeric(String input) throws IllegalArgumentException {
         boolean isNumber = input.matches(ONLY_NUMBER);
         if (!isNumber) {
             throw new IllegalArgumentException(ERROR_TITLE + NON_NUMERIC);
