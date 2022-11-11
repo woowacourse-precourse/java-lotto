@@ -17,11 +17,11 @@ public class Application {
             Chatbot chatbot = new Chatbot();
             int lottoPrice = validatePrice(chatbot.askPrice());
             List<List<Integer>> userNumber = issueUserLotto(lottoPrice / 1000);
-            chatbot.printUserNumber(userNumber);
-            Lotto lotto = new Lotto(chatbot.askLottoNumber());
+            chatbot.printUserLotto(lottoPrice / 1000,userNumber);
+            /*Lotto lotto = new Lotto(chatbot.askLottoNumber());
             List<Integer> result = compareNumbers(userNumber, lotto, validateLottoBonus(chatbot.askLottoBonus()));
             float rate = calculateRate(lottoPrice, result);
-            chatbot.printResult(rate, result);
+            chatbot.printResult(rate, result);*/
         } catch (IllegalArgumentException e) {
             System.out.println(ERROR_MESSAGE + e.getMessage());
         }
