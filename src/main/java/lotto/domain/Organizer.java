@@ -21,7 +21,10 @@ public class Organizer {
         List<Integer> numbers = new ArrayList<>();
         for (String element : splitInput) {
             ExceptionHandler.isStringNumeric(element);
-            numbers.add(Integer.parseInt(element));
+            int number = Integer.parseInt(element);
+            ExceptionHandler.isWithinRange(number,
+                    LottoStatistic.MIN_NUMBER.getValue(), LottoStatistic.MAX_NUMBER.getValue());
+            numbers.add(number);
         }
         ExceptionHandler.isListCorrectSize(numbers, LottoStatistic.NUMBER_OF_LOTTERY_NUMBERS.getValue());
         return numbers;

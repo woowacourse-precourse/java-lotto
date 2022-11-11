@@ -45,4 +45,12 @@ public class ExceptionHandler {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void isWithinRange(int number, int start, int end) {
+        if (number < start || number > end) {
+            Output.printMessage(ErrorMessage.NOT_IN_RANGE_ERROR.getMessage(start, end));
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
