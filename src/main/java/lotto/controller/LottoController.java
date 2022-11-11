@@ -1,9 +1,12 @@
 package lotto.controller;
 
 import java.util.List;
+import java.util.Map;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGame;
-import lotto.domain.vo.LottoInfo;
+import lotto.domain.PriceCalculator;
+import lotto.domain.Rank;
+import lotto.domain.WinChecker;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -23,6 +26,25 @@ public class LottoController {
         OutputView.printRequestBonusNumber();
         int bonusNumber = InputView.getBonusNumber();
 
-        LottoInfo lottoInfo = new LottoInfo(winningNumber, bonusNumber);
+        WinChecker winChecker = new WinChecker(winningNumber, bonusNumber);
+        Map<Rank, Integer> result = winChecker.checkLotto(lottos);
+
+        int count = result.getOrDefault(Rank.FIFTH, 0);
+        OutputView.printFifth(count);
+
+        count = result.getOrDefault(Rank.FOURTH, 0);
+        OutputView.printFourth(count);
+
+        count = result.getOrDefault(Rank.THIRD, 0);
+        OutputView.printThird(count);
+
+        count = result.getOrDefault(Rank.SECOND, 0);
+        OutputView.printSecond(count);
+
+        count = result.getOrDefault(Rank.FIRST, 0);
+        OutputView.printFirst(count);
+
+        float yield = PriceCalculator.getyield(result, purchaseMoney);
+        OutputView.printYield(yield);
     }
 }
