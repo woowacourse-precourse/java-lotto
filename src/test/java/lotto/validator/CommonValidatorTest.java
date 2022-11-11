@@ -21,4 +21,15 @@ class CommonValidatorTest {
         assertThrows(IllegalArgumentException.class,
                      () -> CommonValidator.isAllNumber(""));
     }
+
+    @Test
+    @DisplayName("1~45 범위의 숫자를 입력하지 않으면 IllegalArgumentException을 발생시킵니다.")
+    void testIsRangeTrue_testIsAllNumber_IllegalArgumentException() throws Exception {
+        //when & then
+        assertThrows(IllegalArgumentException.class,
+                     () -> CommonValidator.isRangeTrue(46));
+
+        assertThrows(IllegalArgumentException.class,
+                     () -> CommonValidator.isRangeTrue(0));
+    }
 }
