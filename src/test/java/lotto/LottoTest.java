@@ -3,6 +3,7 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashSet;
@@ -230,5 +231,62 @@ class LottoTest {
         List<Integer> numbers = (List<Integer>) method.invoke(lottoGame, winningNumbers);
 
         assertThat(numbers).isEqualTo(result);
+    }
+
+    @DisplayName("1개의 보너스 번호가 6개의 당첨 번호 중에 포함되어있으면 예외가 발생한다")
+    @Test
+    void createBonusNumberIncludedInWinningNumber() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        LottoGame lottoGame = new LottoGame();
+        List<Integer> winningNumber = List.of(1, 7, 10, 24, 37, 45);
+        int bonusNumber = 7;
+
+        Method method = lottoGame.getClass().getDeclaredMethod("validateContainsInWinningNumber", List.class, int.class);
+        method.setAccessible(true);
+
+        assertThatThrownBy(() -> method.invoke(lottoGame, winningNumber, bonusNumber))
+                .getCause()
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("1개의 보너스 번호가 6개의 당첨 번호 중에 포함되어있지 않으면 예외가 발생하지 않는다")
+    @Test
+    void createBonusNumberExcluded() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        LottoGame lottoGame = new LottoGame();
+        List<Integer> winningNumber = List.of(1, 7, 10, 24, 37, 45);
+        int bonusNumber = 11;
+
+        Method method = lottoGame.getClass().getDeclaredMethod("validateContainsInWinningNumber", List.class, int.class);
+        method.setAccessible(true);
+
+        assertThatNoException()
+                .isThrownBy(() -> method.invoke(lottoGame, winningNumber, bonusNumber));
+    }
+
+    @DisplayName("뽑기 기계에 당첨 번호를 넣으면 당첨 번호가 들어간다")
+    @Test
+    void generateWinningNumberInDrawingMachine() throws NoSuchFieldException, IllegalAccessException {
+        List<Integer> result = List.of(1, 7, 10, 24, 37, 45);
+        int bonusNumber = 11;
+        DrawingMachine drawingMachine = new DrawingMachine(result, bonusNumber);
+
+        Field field = drawingMachine.getClass().getDeclaredField("winningNumbers");
+        field.setAccessible(true);
+        List<Integer> winningNumber = (List<Integer>) field.get(drawingMachine);
+
+        assertThat(winningNumber).isEqualTo(result);
+    }
+
+    @DisplayName("뽑기 기계에 보너스 번호를 넣으면 보너스 번호가 들어간다")
+    @Test
+    void generateBonusNumberInDrawingMachine() throws NoSuchFieldException, IllegalAccessException {
+        List<Integer> winningNumber = List.of(1, 7, 10, 24, 37, 45);
+        int result = 11;
+        DrawingMachine drawingMachine = new DrawingMachine(winningNumber, result);
+
+        Field field = drawingMachine.getClass().getDeclaredField("bonusNumber");
+        field.setAccessible(true);
+        int bonusNumber = (int) field.get(drawingMachine);
+
+        assertThat(bonusNumber).isEqualTo(result);
     }
 }
