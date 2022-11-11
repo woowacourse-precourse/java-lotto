@@ -1,5 +1,7 @@
 package lotto.view;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class ComputerView {
 
     private static final String REQUEST_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
@@ -17,8 +19,8 @@ public class ComputerView {
         System.out.println(REQUEST_WINNING_NUMBERS);
     }
 
-    private String scanNumbers(){
-        return "";
+    private String scanInput(){
+        return Console.readLine();
     }
 
     private void inquireBonusNumber(){

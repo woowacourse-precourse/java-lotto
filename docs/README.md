@@ -96,10 +96,10 @@ Lotto, BonusNumber를 참조한다.
 ### ComputerView
 1. getNumbers
    1. inquireNumbers : '당첨 번호를 입력해 주세요.'를 출력한다. 
-   2. scanNumbers : ','로 구분되는 숫자의 문자열을 반환한다. 
+   2. scanInput : 입력 문자열을 반환한다. 
 2. getBonusNumber
    1. inquireBonusNumber : '보너스 번호를 입력해 주세요.'를 출력한다. 
-   2. scanBonusNumber : 보내스 숫자를 문자열로 반환한다.
+   2. scanInput : 입력 문자열을 반환한다.
 
 ### RankingView
 1. startWinningStatistics : '당첨 통계\n---'를 출력한다. 
