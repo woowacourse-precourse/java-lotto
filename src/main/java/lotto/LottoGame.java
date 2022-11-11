@@ -103,4 +103,8 @@ public class LottoGame {
         ranks.forEach(lottoRank -> rankCount.put(lottoRank, rankCount.getOrDefault(lottoRank, 0) + 1));
         return rankCount;
     }
+
+    public void printRateOfReturn(double rateOfReturn) {
+        System.out.println("총 수익률은 " + String.format("%.1f", rateOfReturn) + "%입니다.");
+    }
 }
