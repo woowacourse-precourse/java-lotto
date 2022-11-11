@@ -22,8 +22,13 @@ public class Person {
                 int winningNumber = this.winningNumbers.getNumber(winningNumberIndex);
                 hasNumberCount = guessCorrectNumber(myLottosIndex, hasNumberCount, winningNumber);
             }
-            System.out.println(hasNumberCount);
+            rankPlace(hasNumberCount);
         }
+    }
+
+    private static void rankPlace(int hasNumberCount) {
+        Place place = new Place(hasNumberCount);
+        place.selectPlace();
     }
 
     private int guessCorrectNumber(int myLottosIndex, int hasNumberCount, int winningNumber) {

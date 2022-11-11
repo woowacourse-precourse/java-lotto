@@ -62,4 +62,24 @@ public class Validation {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void validateBonus(String bonusNumber, List<Integer> winningNumbers) {
+        validateBonusNumber(bonusNumber);
+        validateBonusDuplication(bonusNumber, winningNumbers);
+    }
+
+    private static void validateBonusDuplication(String bonusNumber, List<Integer> winningNumbers) {
+        if (winningNumbers.contains(Integer.parseInt(bonusNumber))) {
+            throw new IllegalArgumentException(ErrorStatus.BONUS_DUPLICATION.printError());
+        }
+    }
+
+    private static void validateBonusNumber(String bonusNumber) {
+        try {
+            Integer.parseInt(bonusNumber);
+        } catch (IllegalArgumentException error) {
+            System.out.println(ErrorStatus.NOT_NUMBER.printError());
+            throw new IllegalArgumentException();
+        }
+    }
 }

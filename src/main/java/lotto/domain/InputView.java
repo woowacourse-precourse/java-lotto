@@ -35,4 +35,15 @@ public class InputView {
     private static void showWinningNumbersInputMessage() {
         System.out.println("당첨 번호를 입력해 주세요.");
     }
+
+    public static void inputBonusNumber() {
+        showBonusNumberInputMessage();
+        String bonusNumber = Console.readLine();
+        Validation.validateBonus(bonusNumber, winningNumbers);
+        Bonus bonus = new Bonus(Integer.parseInt(bonusNumber));
+    }
+
+    private static void showBonusNumberInputMessage() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+    }
 }

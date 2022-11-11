@@ -13,8 +13,14 @@ public class LottoStore {
         MyLottos myLottos = new MyLottos(makeLottos(numberOfLotto, purchasedLottos));
 
         receiveWinningNumbers();
+        receiveBonusNumber();
         Person person = new Person(myLottos, makeWinningNumbers());
         person.buyLotto();
+
+    }
+
+    private void receiveBonusNumber() {
+        InputView.inputBonusNumber();
     }
 
     private Lotto makeWinningNumbers() {
