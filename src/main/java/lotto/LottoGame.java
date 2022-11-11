@@ -13,5 +13,6 @@ public class LottoGame {
 
         Print.winningNumber();
         Lotto winningLotto = generator.makeLotto(Input.winningNumber());
+        Print.bonusNumber();
     }
 }
