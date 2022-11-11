@@ -8,7 +8,7 @@
 - [x] 당첨 번호 입력 Lotto
   - [x] 당첨 번호 입력 유효성 검사 (중복되지 않는 숫자 6개) Lotto#validate()
 - [x] 보너스 번호 입력 Lotto#getLottoBonusNumber
-  - [ ] 보너스 번호 입력 유효성 검사 Lotto#validateBonusNumber
+  - [x] 보너스 번호 입력 유효성 검사 Lotto#validateBonusNumber
 
 **2. 로또 발행 및 출력** Controller#publishLotto
 - [ ] 로또 발행 User#getUserLotto
