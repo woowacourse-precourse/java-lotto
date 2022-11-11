@@ -27,15 +27,11 @@ public class UserInput {
     }
 
     private static void validPriceOfLotto(String price) {
-        if (price.equals(EMPTY)) {
+        try {
+            Integer.parseInt(price);
+        } catch (IllegalArgumentException e) {
             System.out.println(NOT_NUMBER);
             throw new IllegalArgumentException(NOT_NUMBER);
-        }
-        for (int i = INITIAL_NUMBER; i < price.length(); i++) {
-            if (!Character.isDigit(price.charAt(i))) {
-                System.out.println(NOT_NUMBER);
-                throw new IllegalArgumentException(NOT_NUMBER);
-            }
         }
     }
 
