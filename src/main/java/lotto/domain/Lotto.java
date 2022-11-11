@@ -1,7 +1,9 @@
-package lotto;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.utils.ErrorMessage;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -20,6 +22,15 @@ public class Lotto {
         if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException();
         }
+        if (containsDuplicatedNumbers(numbers)) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_NUMBERS);
+        }
+    }
+
+    private boolean containsDuplicatedNumbers(List<Integer> numbers) {
+        HashSet<Integer> uniqueNumbers = new HashSet<>(numbers);
+
+        return uniqueNumbers.size() != LOTTO_SIZE;
     }
 
     public Lotto creatRandom() {
