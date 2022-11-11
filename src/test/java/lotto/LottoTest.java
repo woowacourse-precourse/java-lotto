@@ -1,10 +1,13 @@
 package lotto;
 
+import lotto.domain.NumberGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -23,5 +26,13 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호가 6개 생성되었을 때 정렬되어 생성한다.")
+    @Test
+    void createLottoNumbersByAscending() {
+        List<Integer> numbers = new NumberGenerator().createDuplicateNumbers();
+        Lotto expected = new Lotto(numbers.stream().sorted().collect(Collectors.toList()));
+        assertThat(new Lotto(numbers))
+                .usingRecursiveComparison()
+                .isEqualTo(expected);
+    }
 }
