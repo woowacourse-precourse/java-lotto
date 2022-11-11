@@ -175,7 +175,7 @@
   - 5등 로또의 개수를 계산하는 함수
 
 
-- Integer compareLottoNumbersAndWinningNumbers(Lotto, List<Integer>)
+- Integer compareLottoNumbersAndWinningNumbers(Lotto, List<Integer>, int)
   - 로또 번호와 당첨 번호의 같은 숫자 개수를 계산하는 함수
 
 
