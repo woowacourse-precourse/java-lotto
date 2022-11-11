@@ -12,7 +12,6 @@ public class Input {
 
     public Input() {
         enterMoney();
-        enterNumbers();
     }
 
     private void enterMoney() {
@@ -24,7 +23,7 @@ public class Input {
         }
     }
 
-    private void enterNumbers() {
+    public void enterNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String userInput = Console.readLine();
         parseInputToInt(userInput);
