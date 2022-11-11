@@ -1,9 +1,10 @@
 package lotto;
-
+import camp.nextstep.edu.missionutils.Console;
 public class inputMoney {
-    private final String money;
+    private String money;
 
-    public inputMoney(String money) {
+    public inputMoney() {
+        String money = Console.readLine();
         validate(money);
         this.money = money;
     }
