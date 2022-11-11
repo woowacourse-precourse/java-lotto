@@ -49,7 +49,8 @@
 >- [ ] 당첨 통계를 조회하는 기능 ( getTotal )
 >- [x] 입력 받은 금액으로 랜덤 번호를 생성하는 기능 ( setRandomLottoNumbers )
 >- [x] 랜덤 번호를 각 정렬하는 기능 ( setRandomLottoNumbers 내부 )
->- [ ] 당첨 번호를 입력하는 기능 ( setRandomLottoNumbers 내부 )
+>- [ ] 당첨 번호를 입력하는 기능 ( setAnswerLottoNumbers )
+>- [ ] 보너스 번호를 입력하는 기능 ( setBonusLottoNumbers )
 
 *****
 ### 🟧 controller package
