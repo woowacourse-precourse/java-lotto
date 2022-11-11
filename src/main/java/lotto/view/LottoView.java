@@ -37,4 +37,10 @@ public class LottoView {
             throw new IllegalArgumentException("[ERROR] 입력된 당첨 번호에 중복값이 존재합니다.");
         }
     }
+
+    public int getBonusNumber(List<Integer> numbers) {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int bonusNumber = Integer.parseInt(Console.readLine());
+        return bonusNumber;
+    }
 }
