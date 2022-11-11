@@ -1,11 +1,8 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import lotto.Data.User;
+import lotto.Data.UserMoney;
 import lotto.handler.UserInputMoneyHandler;
-import lotto.service.Lotto;
-import lotto.service.UserLottoService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -24,9 +21,9 @@ class ApplicationTest extends NsTest {
     @Test
     void checkUserInputMoney() {
         String inputMoney = "1000";
-        User user = new User(Integer.parseInt(inputMoney));
+        UserMoney userMoney = new UserMoney(Integer.parseInt(inputMoney));
 
-        assertThat(Integer.parseInt(inputMoney)).isEqualTo(user.getMoney());
+        assertThat(Integer.parseInt(inputMoney)).isEqualTo(userMoney.getMoney());
     }
 
     @DisplayName("사용자의 입력 금액이 숫자가 아닐 때 예외발생 Test")

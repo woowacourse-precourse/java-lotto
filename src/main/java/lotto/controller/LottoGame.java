@@ -1,15 +1,15 @@
 package lotto.controller;
 
-import lotto.Data.User;
+import lotto.Data.UserMoney;
 import lotto.service.UserLottoService;
 
 public class LottoGame {
     UserLottoService userLottoService = new UserLottoService();
     public void run() {
-        User user = userLottoService.InputMoney();
-        countLottoPaper(user);
+        UserMoney userMoney = userLottoService.InputMoney();
+        countLottoPaper(userMoney);
     }
-    public void countLottoPaper(User user) {
-        userLottoService.lottoCount(user);
+    public void countLottoPaper(UserMoney userMoney) {
+        userLottoService.lottoCount(userMoney);
     }
 }
