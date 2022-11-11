@@ -1,5 +1,6 @@
 package lotto;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
@@ -10,6 +11,11 @@ import static org.assertj.core.api.Assertions.*;
 
 class UserInputTest {
     final private String ERROR = "[ERROR]";
+
+    @AfterEach
+    void 구매_로또_초기화() {
+        UserInput.lotteries.clear();
+    }
     @Test
     void 돈_입력_예외_1() {
         String input = "1100";
@@ -35,5 +41,19 @@ class UserInputTest {
         System.setIn(in);
         long a = UserInput.inputMoney();
         assertThat(a).isEqualTo(2000);
+    }
+
+    @Test
+    void 로또_구매_생성() {
+        UserInput.generateRandomLotto(3);
+        int lottoSize = 3;
+        assertThat(UserInput.lotteries.size()).isEqualTo(lottoSize);
+    }
+
+    @Test
+    void 로또_구매_생성_2() {
+        UserInput.generateRandomLotto(1);
+        int lottoSize = 6;
+        assertThat(UserInput.lotteries.get(0).size()).isEqualTo(lottoSize);
     }
 }
