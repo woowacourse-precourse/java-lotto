@@ -4,7 +4,9 @@ import lotto.Lotto;
 import lotto.view.LottoIO;
 import lotto.view.UserIO;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -13,7 +15,6 @@ public class MatchLogic {
     LottoIO answer;
     UserIO user;
     private List<Integer> matchNums = Stream.of(0, 0, 0, 0, 0).collect(Collectors.toList());
-    private List<Long> priceList = Stream.of(2000000000L, 30000000L, 1500000L, 50000L, 5000L).collect(Collectors.toList());
 
     public MatchLogic(LottoIO answer, UserIO user) {
         this.answer = answer;
@@ -25,30 +26,33 @@ public class MatchLogic {
         for (Lotto userLotto : user.getUserLottoList()) {
             int answerMatch = answerMatch(userLotto.getNumbers(), answer.getLottoAnswer());
             boolean bonusMatch = bonusMatch(userLotto.getNumbers(), answer.getBonus());
+            Optional<Statistics> rank = Statistics.getRank(answerMatch, bonusMatch);
 
-            if (answerMatch == 6) { // 1등
-                Integer val = matchNums.get(0);
-                matchNums.set(0, val + 1);
+            // 등수 내로 들지 못한 경우
+            if (rank.isEmpty()) {
                 continue;
             }
-            if (answerMatch == 5 && bonusMatch) { // 2등
-                Integer val = matchNums.get(1);
-                matchNums.set(1, val + 1);
+            // 1-5등 로직
+            Statistics result = rank.get();
+            Long winnerPrice = result.getPrice();
+            if (result == Statistics.FIRST) {
+                matchNums.set(0, matchNums.get(0) + 1);
                 continue;
             }
-            if (answerMatch == 5) { // 3등
-                Integer val = matchNums.get(2);
-                matchNums.set(2, val + 1);
+            if (result == Statistics.SEC) {
+                matchNums.set(1, matchNums.get(1) + 1);
                 continue;
             }
-            if (answerMatch == 4) { // 4등
-                Integer val = matchNums.get(3);
-                matchNums.set(3, val + 1);
+            if (result == Statistics.THIRD) {
+                matchNums.set(2, matchNums.get(2) + 1);
                 continue;
             }
-            if (answerMatch == 3) { // 5등
-                Integer val = matchNums.get(4);
-                matchNums.set(4, val + 1);
+            if (result == Statistics.FOURTH) {
+                matchNums.set(3, matchNums.get(3) + 1);
+                continue;
+            }
+            if (result == Statistics.FIFTH) {
+                matchNums.set(4, matchNums.get(4) + 1);
                 continue;
             }
         }
@@ -76,12 +80,14 @@ public class MatchLogic {
     // 총 수익률 계산
     public double computeYields(int budget) {
         Long yields = 0L;
+        double result = 0;
         for (int i = 0; i < this.matchNums.size(); i++) {
             int cnt = matchNums.get(i);
-            Long value = cnt * priceList.get(i);
+            Long value = cnt * Statistics.values()[i].getPrice();
             yields += value;
         }
-        return yields / (double) budget * 100;
+        result = yields / (double) budget * 100;
+        return Math.round(result * 100.0) / 100.0;
     }
 
     public List<Integer> getMatchNums() {
