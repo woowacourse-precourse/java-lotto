@@ -1,15 +1,27 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
-public class LottoAutomaton extends Lotto {
-    public LottoAutomaton(List<Integer> numbers) {
-        super(numbers);
+public class LottoAutomaton {
+    private static final int PRICE = 1000;
+
+    private List<Integer> numbers;
+
+    public LottoAutomaton() {
+        this.numbers = createNumbers();
     }
 
-    public void getCount() {
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
-    public void createNumbers() {
+    public int getCount(String amount) {
+        return Integer.parseInt(amount) / PRICE;
+    }
+
+    public List<Integer> createNumbers() {
+        numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return numbers;
     }
 }
