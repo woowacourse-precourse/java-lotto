@@ -14,4 +14,8 @@ public class Money {
             throw new IllegalArgumentException("구입 금액은 1,000원 단위여야 합니다.");
         }
     }
+
+    public int availablePurchases() {
+        return money / UNIT;
+    }
 }

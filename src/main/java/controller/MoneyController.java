@@ -9,4 +9,8 @@ public class MoneyController {
     public Money getPurchaseAmount(String purchaseAmount) {
         return moneyService.saveMoney(purchaseAmount);
     }
+
+    public int getAvailablePurchaseNumber(Money money) {
+        return moneyService.getAvailablePurchaseNumber(money);
+    }
 }

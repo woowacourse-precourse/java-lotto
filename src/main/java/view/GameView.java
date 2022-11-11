@@ -19,6 +19,10 @@ public class GameView {
 
     public void start() {
         Money money = moneyController.getPurchaseAmount(inputPurchaseAmount());
+
+        // 몇 장의 로또를 발행할 것인지 계산
+        int purchaseNumber = moneyController.getAvailablePurchaseNumber(money);
+        System.out.println("\n" + purchaseNumber + NUMBER_OF_PURCHASE);
     }
 
     public String inputPurchaseAmount() {
