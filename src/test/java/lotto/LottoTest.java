@@ -2,7 +2,7 @@ package lotto;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import store.Lotto;
+import lotto.store.Lotto;
 
 import java.util.List;
 
@@ -30,7 +30,16 @@ class LottoTest {
     @Test
     void compareLottoAndWinNumbers() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        List<Integer> winNumbers = List.of(2,3,4,5,6,7);
         int result = 5;
-        assertThat(lotto.compareWinNumbers(List.of(2,3,4,5,6,7))).isEqualTo(result);
+        assertThat(lotto.compareWinNumbers(winNumbers)).isEqualTo(result);
+    }
+
+    @DisplayName("로또 번호와 보너스 번호를 비교하여 true or false 를 출력한다.")
+    @Test
+    void compareLottoAndBonusNumber() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 4;
+        assertThat(lotto.compareBonusNumber(bonusNumber)).isTrue();
     }
 }
