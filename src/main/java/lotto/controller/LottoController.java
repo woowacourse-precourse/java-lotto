@@ -37,7 +37,7 @@ public class LottoController {
     }
 
     public WinningRank judgeRank(WinningLotto winningLotto, Lotto lotto) {
-        // todo: refactoring....
+        // todo: refactoring.... enum 기능 더 공부 후 활용하여 구현 방식 수정
         int matchedNumbersCount = countMatchedNumbers(winningLotto, lotto);
         if (matchedNumbersCount == 3) {
             return WinningRank.FIFTH_RANK;
