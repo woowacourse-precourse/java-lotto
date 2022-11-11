@@ -33,6 +33,6 @@ public class Print {
         return result;
     }
     void printWinningRate(float winningRate) {
-
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", winningRate));
     }
 }
