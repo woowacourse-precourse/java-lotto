@@ -7,14 +7,14 @@ import lotto.domain.WinningRank;
 
 public class OutputView {
 
-    private static final String HOW_MANY_LOTTO_USER_PURCHASED_MESSAGE = "개를 구매했습니다.";
+    private static final String HOW_MANY_LOTTO_USER_PURCHASED_MESSAGE = "%d개를 구매했습니다.\n";
     private static final String WINNING_STATISTICS_MESSAGE = "당첨 통계\n---";
     private static final String WINNING_DETAILS_MESSAGE = "%d개 일치 (%s원) - %d개\n";
     private static final String WINNING_DETAILS_WITH_BONUS_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
     private static final String LOTTO_YIELD_MESSAGE = "총 수익률은 %.2f%%입니다.\n";
 
     public static void printHowManyLottoUserPurchased(int lottoQuantity) {
-        System.out.println(lottoQuantity + HOW_MANY_LOTTO_USER_PURCHASED_MESSAGE);
+        System.out.printf(HOW_MANY_LOTTO_USER_PURCHASED_MESSAGE, lottoQuantity);
     }
 
     public static void printLottos(Lottos lottos) {
