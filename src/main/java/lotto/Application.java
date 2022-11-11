@@ -33,5 +33,13 @@ public class Application {
         outputHandler.checkHowMuchToBuy(amountOfLottoPaper);
         Lotto[] lottoPapers = lottoNumbers.generatingAllLottoPapers(amountOfLottoPaper);
         outputHandler.printAllLottoPapers(lottoPapers);
+
+        outputHandler.requestWinningNumbers();
+        Lotto winningNumbers = inputHandler.getWinningNumbers();
+        outputHandler.requestBonusNumbers();
+        int bonusNumbers = inputHandler.getBonusNumbers(winningNumbers);
+
+        
+
     }
 }
