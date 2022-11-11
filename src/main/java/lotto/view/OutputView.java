@@ -1,5 +1,8 @@
 package lotto.view;
 
+import lotto.Lotto;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class OutputView {
@@ -7,13 +10,12 @@ public class OutputView {
         System.out.println(purchaseLottoSet + "개를 구매했습니다.");
     }
 
-    public static void printPurchaseLottoNumbers(int lottoNumbers[][]) {
-        for (int i = 0; i < lottoNumbers.length; i++) {
+    public static void printPurchaseLottoNumbers(List<Lotto> lottoNumbers) {
+        for (int i = 0; i < lottoNumbers.size(); i++) {
             System.out.println("[");
-            for (int j = 0; j < lottoNumbers[i].length - 1; j++) {
-                System.out.print(lottoNumbers[i][j] + ",");
-            }
-            System.out.println(lottoNumbers[i][lottoNumbers[i].length - 1] + "]");
+           // for(int j=0;j< 6; j++)
+               // System.out.println(lottoNumbers.get(i). + "]");
+            //System.out.println(lottoNumbers.get(i)[lottoNumbers[i].length - 1] + "]");
         }
     }
 
