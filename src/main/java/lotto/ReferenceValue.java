@@ -29,4 +29,6 @@ public class ReferenceValue {
     public static final int MULTIPLE_FIRST_DECIMAL = 10;
     public static final double DIVIDE_FIRST_DECIMAL = 10.0;
 
+    public static final String IS_ERROR = "[ERROR]";
+
 }

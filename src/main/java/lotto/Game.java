@@ -14,8 +14,8 @@ public class Game {
 
     public static int price;
 
-    Game(int price) {
-        this.price = price;
+    Game(String input) {
+        this.price = Integer.valueOf(input);
     }
 
     public static void play() {
@@ -82,27 +82,33 @@ public class Game {
         System.out.println();
     }
 
-    public static int enterPrice() {
-        Record.printEnterPrice();
+    public static String checkInputError() {
 
-        int price = 0;
+        Record.printEnterPrice();
         String input = Console.readLine();
 
         System.out.println(input);
         System.out.println();
-        boolean error = checkPriceError(input);
 
-        if (error) {
-            throw new RuntimeException("[ERROR]");
+        if (checkNumberError(input) || checkPriceError(input)) {
+            return ReferenceValue.IS_ERROR;
         }
 
-        price = Integer.parseInt(input);
-
-        return price;
+        return input;
     }
 
     private static boolean checkPriceError(String input) {
+        int price = Integer.parseInt(input);
 
+        if (price % ReferenceValue.LOTTO_PRICE != ReferenceValue.NOTHING) {
+            Record.printPriceError();
+            return true;
+        }
+
+        return false;
+    }
+
+    private static boolean checkNumberError(String input) {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
