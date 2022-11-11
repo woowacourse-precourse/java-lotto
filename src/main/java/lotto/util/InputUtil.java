@@ -1,12 +1,13 @@
 package lotto.util;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputUtil {
 
 	public Integer validateUserMoney(String userMoney) {
-		isNumber(userMoney);
+		checkNumber(userMoney);
 		Integer userMoneyNumber = Integer.valueOf(userMoney);
 		isDividedByThousand(userMoneyNumber);
 		return userMoneyNumber;
@@ -18,19 +19,17 @@ public class InputUtil {
 		}
 	}
 
-	private void isNumber(String userMoney) {
-		List<Integer> userMoneyNumber = userMoney.chars()
-			.mapToObj(i -> i - 48)
-			.collect(Collectors.toList());
+	private void checkNumber(String inputNumber) {
+		List<Integer> number = inputNumber.chars().mapToObj(i -> i - 48).collect(Collectors.toList());
 
-		int count = (int)userMoneyNumber.stream().filter(i -> 1 > i || i > 9).count();
+		int count = (int)number.stream().filter(i -> 1 > i || i > 9).count();
 		if (count > 0) {
 			throw new IllegalArgumentException(ErrorConst.NOT_NUMBER_ERROR);
 		}
 	}
 
 	public Integer validateBonus(String bonus) {
-		isNumber(bonus);
+		checkNumber(bonus);
 		Integer bonusNumber = Integer.valueOf(bonus);
 		checkNumberRange(bonusNumber);
 		return bonusNumber;
@@ -39,6 +38,25 @@ public class InputUtil {
 	private void checkNumberRange(Integer bonusNumber) {
 		if (1 > bonusNumber || 45 < bonusNumber) {
 			throw new IllegalArgumentException(ErrorConst.OUT_OF_RANGE_ERROR);
+		}
+	}
+
+	public List<Integer> validAnswer(String answer) {
+		String[] answers = answer.split(",");
+		checkNumbersSize(answers);
+		checkNumbers(answers);
+		return Arrays.stream(answers).map(i -> Integer.valueOf(i)).collect(Collectors.toList());
+	}
+
+	private void checkNumbers(String[] answers) {
+		for (String input : answers) {
+			checkNumber(input);
+		}
+	}
+
+	private void checkNumbersSize(String[] split) {
+		if (split.length != 6) {
+			throw new IllegalArgumentException(ErrorConst.NUMBERS_SIZE_ERROR);
 		}
 	}
 

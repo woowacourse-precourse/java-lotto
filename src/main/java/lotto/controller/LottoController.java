@@ -32,9 +32,12 @@ public class LottoController {
 		UserLottoDto userLottoDto = lottoService.makeRandomLottoNumber(lottoCount);
 		outputView.printUserLotto(userLottoDto.getUserLotto());
 
+		String answer = inputView.printWinnerNumber();
+		inputUtil.validAnswer(answer);
+
 		String bonus = inputView.bonusNumber();
 		Integer bonusNumber = inputUtil.validateBonus(bonus);
-		
+
 	}
 
 }
