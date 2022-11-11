@@ -46,51 +46,20 @@ public class AnalyseTest {
     }
 
     @Test
-    @DisplayName("로또 당첨 번호와 6개 모두 일치할 때")
-    void allCorrect() throws InvocationTargetException, IllegalAccessException {
-        expectedStat.put(Prize.FIRST, 1);
-        Method method = InvokeMethod();
-        System.out.println("invokeMethod: "+Analyse.getStats().get(Prize.FIRST));
-
-        method.invoke(analyse, lottos.get(0), prize);
-
-        assertEquals(expectedStat.get(Prize.FIRST), Analyse.getStats().get(Prize.FIRST));
-    }
-
-    @Test
-    @DisplayName("로또 당첨 번호와 5개가 일치하고 보너스 번호와 일치할 때")
-    void bonusCorrect() throws Exception {
-        Prize second = Prize.SECOND;
-        expectedStat.put(second, 1);
+    @DisplayName("로또 분석")
+    void AnalyseLotto() throws Exception {
+        Prize[] prizes = new Prize[] {
+                Prize.FIRST, Prize.SECOND, Prize.THIRD, Prize.FOURTH, Prize.FIFTH
+        };
+        int index = 0;
         Method method = InvokeMethod();
 
-        method.invoke(analyse, lottos.get(1), prize);
-
-        assertEquals(expectedStat.get(second), Analyse.getStats().get(second));
-    }
-
-    @Test
-    @DisplayName("로또 당첨 번호와 5개가 일치하고 보너스 번호와는 불일치할 때")
-    void fiveCorrect() throws Exception {
-        Prize third = Prize.THIRD;
-        expectedStat.put(third, 1);
-        Method method = InvokeMethod();
-
-        method.invoke(analyse, lottos.get(2), prize);
-
-        assertEquals(expectedStat.get(third), Analyse.getStats().get(third));
-    }
-
-    @Test
-    @DisplayName("로또 당첨 번호와 4개가 일치할 때")
-    void fourCorrect() throws Exception {
-        Prize fourth = Prize.FOURTH;
-        expectedStat.put(fourth, 1);
-        Method method = InvokeMethod();
-
-        method.invoke(analyse, lottos.get(3), prize);
-
-        assertEquals(expectedStat.get(fourth), Analyse.getStats().get(fourth));
+        for(; index<5; index++) {
+            System.out.println(prizes[index]);
+            expectedStat.put(prizes[index], 1);
+            method.invoke(analyse, lottos.get(index), prize);
+            assertEquals(expectedStat.get(prizes[index]), Analyse.getStats().get(prizes[index]));
+        }
     }
 
 }
