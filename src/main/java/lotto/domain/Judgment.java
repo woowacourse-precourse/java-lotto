@@ -11,6 +11,11 @@ public class Judgment {
 
     private int calculateFirst(List<List<Integer>> collectionOfLottoNumbers, List<Integer>numbers) {
         int count = 0;
+        for (List<Integer> lottoNumbers : collectionOfLottoNumbers) {
+            if (correctCount(lottoNumbers, numbers) == 6) {
+                count++;
+            }
+        }
         return count;
     }
 
