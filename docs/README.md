@@ -67,7 +67,7 @@ validate
    1. matchEachTicketWithComputer : 컴퓨터와 동일하게 가지고 있는 숫자의 개수를 리턴한다.
    2. convertCountToRanking : 같은 숫자의 개수를 받아 Ranking으로 리턴시킨다. 
       1. isFiveMatch : 같은 숫자의 개수가 5개면 참을 반환한다. 
-      2. seperateByBonusNumber
+      2. separateByBonusNumber
          1. containsBonusNumber : 로또가 보너스 넘버를 가지면 참을 반환한다.
 
 ## 뷰
