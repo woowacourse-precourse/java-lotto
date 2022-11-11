@@ -23,11 +23,11 @@ public class InputView {
 
     public List<Integer> inputWinningNumber() {
         System.out.println(REQUEST_WINNING_NUMBER);
-        List<Integer> winningNumber ;
+        List<Integer> winningNumber;
         try {
             winningNumber = Arrays.stream(Console.readLine().split(","))
                     .mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해야 합니다.");
         }
         return winningNumber;
@@ -35,10 +35,10 @@ public class InputView {
 
     public int inputBonusNumber() {
         System.out.println(REQUEST_BONUS_NUMBER);
-        int bonusNumber ;
+        int bonusNumber;
         try {
             bonusNumber = Integer.parseInt(Console.readLine());
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해야 합니다.");
         }
         return bonusNumber;

@@ -40,7 +40,7 @@ public class Application {
 
             // 수익률 확인
             outputView.printRate(lottoReferee.sumPrizes(), buyer.countHoldingLotto());
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             throw e;
         }

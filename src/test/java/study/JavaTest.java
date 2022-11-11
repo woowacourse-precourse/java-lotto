@@ -1,7 +1,6 @@
 package study;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -32,16 +31,16 @@ public class JavaTest {
         buyer.purchase(lottoVendor, purchaseMoney);
 
         System.out.println("BEFORE======");
-        for(Lotto lotto : buyer.getHoldingLottoTickets()){
+        for (Lotto lotto : buyer.getHoldingLottoTickets()) {
             System.out.println(lotto.getNumbers());
         }
-        assertThatThrownBy(()->{
+        assertThatThrownBy(() -> {
             System.out.println("Modify======");
-            buyer.getHoldingLottoTickets().add(new Lotto(new ArrayList<>(Arrays.asList(1,2,3,4,5,6))));
+            buyer.getHoldingLottoTickets().add(new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6))));
         }).isInstanceOf(UnsupportedOperationException.class);
 
         System.out.println("after======");
-        for(Lotto lotto : buyer.getHoldingLottoTickets()){
+        for (Lotto lotto : buyer.getHoldingLottoTickets()) {
             System.out.println(lotto.getNumbers());
         }
     }
