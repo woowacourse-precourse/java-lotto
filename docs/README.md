@@ -13,7 +13,7 @@
 - M [x] 로또 구매 금액을 입력받는다. - InputLotto#inputMoney()
   - E [x] 숫자를 입력했는지 확인한다. - validateNumber
   - E [x] 1000으로 나워지는지 확인한다 -validateDivideThousand()
-- M [ ] 구매 금액을 통해 구매할 로또 장수를 계산한다 - calculateLottoAmount()
+- M [x] 구매 금액을 통해 구매할 로또 장수를 계산한다 - LottoData#LottoData() (생성자)
 - M [ ] 당첨 번호를 입력받는다 - InputLotto#inputWinNumber()
   - E [ ] 쉼표를 기준으로 구분했는지 확인한다. - validateSeparator()
   - E [ ] 입력한게 숫자인지, 숫자가 1~45사이에 있는지 확인한다. - validateNumberInRange()
