@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.views.ResultView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +31,7 @@ public class Person {
             for (int winningNumberIndex = FIRST_INDEX; winningNumberIndex < 6; winningNumberIndex++) {
                 int winningNumber = this.winningNumbers.getNumber(winningNumberIndex);
                 numberCount = guessCorrectNumber(myLottosIndex, numberCount, winningNumber);
-                bonusCount = guessBonusNumber(myLottosIndex, Bonus.bonusNumber);
+                bonusCount = guessBonusNumber(myLottosIndex, Bonus.getBonusNumber());
             }
             myPlaces.add(rankPlace(numberCount, bonusCount));
         }

@@ -1,6 +1,6 @@
 package lotto.utils;
 
-import lotto.domain.InputView;
+import lotto.views.InputView;
 
 import java.util.List;
 
