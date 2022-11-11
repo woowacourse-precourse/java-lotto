@@ -1,7 +1,9 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import lotto.ui.Messages;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -44,7 +46,9 @@ public class Lotto {
         }
     }
 
-    private int stringToInt(String userInput) {
-        return Integer.parseInt(userInput);
+    private List<Integer> createLotto() {
+        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+
+        return lottoNumbers;
     }
 }
