@@ -1,6 +1,5 @@
 package lotto.exception_test;
 
-import lotto.domain.Lotto;
 import lotto.exception.LottoException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
