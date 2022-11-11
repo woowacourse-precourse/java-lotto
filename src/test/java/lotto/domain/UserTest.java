@@ -1,14 +1,11 @@
 package lotto.domain;
 
-import lotto.Application;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import camp.nextstep.edu.missionutils.test.NsTest;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class UserTest {
