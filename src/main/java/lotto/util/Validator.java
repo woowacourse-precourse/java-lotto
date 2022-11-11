@@ -54,4 +54,9 @@ public class Validator {
         if(number < MIN_NUMBER || number > MAX_NUMBER)
             throw new IllegalArgumentException(WRONG_INPUT);
     }
+
+    private void isValidCount(){
+        if(list.size() != TOTAL_NUMBER)
+            throw new IllegalArgumentException(WRONG_INPUT);
+    }
 }
