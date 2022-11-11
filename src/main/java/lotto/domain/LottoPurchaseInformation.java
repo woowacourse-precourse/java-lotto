@@ -12,7 +12,7 @@ public class LottoPurchaseInformation {
     private Map<Rank, Integer> lottoResults = new EnumMap<>(Rank.class);
     private int numberOfTickets;
     private int purchaseAmount;
-    private int totalWinningAmount = 1000;
+    private int totalWinningAmount;
     private double rateOfReturn;
 
 
@@ -73,6 +73,13 @@ public class LottoPurchaseInformation {
 
     public Map<Rank, Integer> getLottoResults(){
         return lottoResults;
+    }
+
+    public void calculateTotalWinningAmount(){
+        totalWinningAmount = 0;
+        for(int i = 0; i < 5; i++){
+            totalWinningAmount += lottoResults.get(Rank.get(i)) * Rank.get(i).winningAmount();
+        }
     }
 
     public void calculateRateOfReturn(){

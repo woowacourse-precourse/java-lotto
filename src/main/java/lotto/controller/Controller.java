@@ -31,8 +31,11 @@ public class Controller {
         String bonusNumberInput = inputView.getBonusNumber();
         validator.checkNumericValue(bonusNumberInput);
         winningInformation.setBonusNumber(Integer.parseInt(bonusNumberInput));
-        //당첨계산
-        //당첨통계 출력
+        lottoPurchaseInformation.compareLottoTicketsWith(winningNumbers, Integer.parseInt(bonusNumberInput));
+        outputView.printLottoResults(lottoPurchaseInformation.getLottoResults());
+        lottoPurchaseInformation.calculateTotalWinningAmount();
+        lottoPurchaseInformation.calculateRateOfReturn();
+        outputView.printRateOfReturn(lottoPurchaseInformation.getRateOfReturn());
     }
 
 }
