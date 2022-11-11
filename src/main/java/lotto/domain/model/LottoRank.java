@@ -9,15 +9,16 @@ import java.util.Arrays;
 public enum LottoRank {
 
     NONE("0", 0L),
-    THREE_MATCHES("3",5000L),
-    FOUR_MATCHES("4",50000L),
-    FIVE_MATCHES("5",1500000L),
-    FIVE_BONUS_MATCHES("5",30000000L),
-    SIX_MATCHES("6",2000000000L);
+    THREE_MATCHES("3",5_000L),
+    FOUR_MATCHES("4",50_000L),
+    FIVE_MATCHES("5",1_500_000L),
+    FIVE_BONUS_MATCHES("5",30_000_000L),
+    SIX_MATCHES("6",2_000_000_000L);
 
 
     private final String matchPoint;
     private final Long reward;
+
     LottoRank(final String matchPoint, final Long prizeMoney) {
         this.matchPoint = matchPoint;
         this.reward = prizeMoney;
