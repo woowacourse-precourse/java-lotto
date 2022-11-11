@@ -2,6 +2,7 @@ package lotto.util;
 
 import static lotto.constant.SystemMessage.PURCHASE_COST_TYPE_ERROR;
 import static lotto.constant.SystemMessage.PURCHASE_COST_UNIT_ERROR;
+import static lotto.constant.SystemMessage.WINNING_NUMBERS_CONFLICT_ERROR;
 import static lotto.constant.SystemMessage.WINNING_NUMBERS_FORMAT_ERROR;
 import static lotto.constant.SystemMessage.WINNING_NUMBERS_RANGE_ERROR;
 import static lotto.constant.SystemMessage.WINNING_NUMBERS_SIZE_ERROR;
@@ -35,12 +36,12 @@ public class InputValidator {
         return isUnitValid;
     }
 
-    public static boolean checkWinningNumbers(String winningNumbers) {
-        return isFormatValid(winningNumbers) && isSizeValid(winningNumbers) && isRangeValid(winningNumbers);
+    public static boolean checkWinningNumbers(String winningNumber) {
+        return isFormatValid(winningNumber) && isSizeValid(winningNumber) && isConflictValid(winningNumber) && isRangeValid(winningNumber);
     }
 
-    public static boolean isFormatValid(String winningNumbers) {
-        boolean isFormatValid = Pattern.matches("^[0-9,]*$", winningNumbers);
+    public static boolean isFormatValid(String winningNumber) {
+        boolean isFormatValid = Pattern.matches("^[0-9,]*$", winningNumber); // TODO: ,, 도 안되게!!
         if (!isFormatValid) {
             Output.printError(WINNING_NUMBERS_FORMAT_ERROR);
         }
@@ -54,6 +55,17 @@ public class InputValidator {
             Output.printError(WINNING_NUMBERS_SIZE_ERROR);
         }
         return isSizeValid;
+    }
+
+    public static boolean isConflictValid(String winningNumber) {
+        List<Integer> winningNumbers = TypeConverter.toIntegerListByComma(winningNumber);
+        boolean isConflictValid = winningNumbers.stream()
+                .distinct()
+                .count() == LOTTERY_NUMBERS_SIZE;
+        if (!isConflictValid) {
+            Output.printError(WINNING_NUMBERS_CONFLICT_ERROR);
+        }
+        return isConflictValid;
     }
 
     public static boolean isRangeValid(String winningNumber) {

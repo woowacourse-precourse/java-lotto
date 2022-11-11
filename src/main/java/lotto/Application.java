@@ -2,9 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import lotto.domain.Calculator;
 import lotto.domain.LotteryDrawMachine;
 import lotto.domain.Lotto;
