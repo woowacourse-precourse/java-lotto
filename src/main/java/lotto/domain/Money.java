@@ -9,6 +9,7 @@ public class Money {
         validate(money);
         this.myMoney = money;
         this.lottoCount = money / 1000;
+        System.out.println("\n" + lottoCount + "개를 구매했습니다.");
     }
 
     public Integer getLottoCount() {

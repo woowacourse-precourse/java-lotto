@@ -34,6 +34,7 @@ public class Application {
         for (Lotto lotto : lottos) {
             lotto.view();
         }
+        System.out.println();
     }
 
     private static Integer askMoney() {
