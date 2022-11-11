@@ -43,4 +43,9 @@ public class Validator {
         }
         isValidCount();
     }
+
+    private void isContainNumber(String number){
+        if(list.contains(Integer.parseInt(number)))
+            throw new IllegalArgumentException(WRONG_INPUT);
+    }
 }
