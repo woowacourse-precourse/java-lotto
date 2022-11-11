@@ -1,9 +1,11 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class Game {
 
+    private static final Validation validation = new Validation();
     private static final List<Sentences> rankings = List.of(
             Sentences.FIFTH,
             Sentences.FOURTH,
@@ -18,10 +20,12 @@ public class Game {
     public void run() {
         // TODO: 구입 금액 입력
         System.out.println(Sentences.PRICE.value());
-        System.out.println();
+        String input = Console.readLine().trim();
+        validation.validatePrice(input);
+        int amount = Integer.parseInt(input) / 1000;
 
         // TODO: 구매 내역 출력
-        System.out.println(Sentences.getPurchase(3));
+        System.out.println(Sentences.getPurchase(amount));
         System.out.println();
 
         // TODO: 당첨 번호 입력
