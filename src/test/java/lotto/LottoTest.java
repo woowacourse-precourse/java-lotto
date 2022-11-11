@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import static lotto.Rank.*;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -37,8 +38,7 @@ class LottoTest {
     void 발행번호_당첨번호_일치_개수_테스트() {
         Lotto input = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 7);
-        Referee referee = new Referee();
-        int count = referee.correctNumberCount(input, numbers);
+        int count = Referee.correctNumberCount(input, numbers);
         assertThat(5).isEqualTo(count);
     }
 
@@ -48,10 +48,9 @@ class LottoTest {
         Lotto input = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int input_bonus = 7;
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 7);
-        Referee referee = new Referee();
-        int correctNumberCount = referee.correctNumberCount(input, numbers);
+        int correctNumberCount = Referee.correctNumberCount(input, numbers);
 
-        referee.plusCorrectNumberCount(correctNumberCount, numbers, input_bonus);
+        Referee.plusCorrectNumberCount(correctNumberCount, numbers, input_bonus);
         assertThat(1).isEqualTo(FIVE_BONUS.getCount());
     }
 
@@ -60,8 +59,18 @@ class LottoTest {
     void 보너스볼_중복_체크_테스트() {
         Lotto input = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int input_bonus = 7;
-        Referee referee = new Referee();
-        assertThat(referee.isDuplicateBonusBall(input_bonus, input)).isFalse();
+        assertThat(Referee.isDuplicateBonusBall(input_bonus, input)).isFalse();
     }
 
+    @DisplayName("당첨금액 구하기")
+    @Test
+    void 당첨금액_구하기_테스트() {
+        THREE.plusCount();
+        FOUR.plusCount();
+        FOUR.plusCount();
+        FIVE.plusCount();
+        FIVE_BONUS.plusCount();
+        SIX.plusCount();
+        assertThat(2_031_605_000).isEqualTo(Calculate.getLotteryWinningPrize());
+    }
 }

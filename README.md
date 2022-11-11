@@ -238,5 +238,5 @@ public class Lotto {
   - [x] 5개일치 : 1,500,000원
   - [x] 5개일치 & 발행번호, 보너스볼 일치 : 30,000,000원
   - [x] 6개일치 : 2,000,000,000원
-- [] 당첨금액을 구할 수 있다. - Calculate#getLotteryWinningPrize()
+- [x] 당첨금액을 구할 수 있다. - Calculate#getLotteryWinningPrize()
 - [] 총 수익률(당첨금액총합 / 구매금액 * 100)을 구할 수 있다. - Calculate#getTotalLotteryWinningPrizeProfit()
