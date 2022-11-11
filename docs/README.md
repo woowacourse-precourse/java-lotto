@@ -70,7 +70,7 @@ Enum : Rank
 
 [method]<br>
 - public List<Lotto> getlottoPayed() // lottoPayed Getter
-- private void calcLottoSize(int price) // (feat.2)
+- private int calcLottoSize(int price) // (feat.2)
 - private void setLottoPayed(int lottoSize) // (feat.5)
 - private void priceValidate(int price) // (valid.4)
 ```
