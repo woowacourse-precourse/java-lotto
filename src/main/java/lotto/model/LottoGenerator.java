@@ -8,13 +8,6 @@ import lotto.constant.Constant;
 
 public class LottoGenerator {
 
-//    public static List<Integer> getWinningNumbers() {
-//        List<Integer> winningNumbers = new ArrayList<>(generateNumbers());
-//        winningNumbers.addAll(generateBonusNumber());
-//
-//        return winningNumbers;
-//    }
-
     public static int generateBonusNumber() {
         List<Integer> randomNumber = Randoms.pickUniqueNumbersInRange(
                 Constant.LOTTO_START_NUMBER, Constant.LOTTO_END_NUMBER, Constant.BONUS_NUMBER_SIZE);
@@ -31,5 +24,4 @@ public class LottoGenerator {
 
         return numbers;
     }
-
 }
