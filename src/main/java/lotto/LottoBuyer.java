@@ -6,7 +6,7 @@ public class LottoBuyer {
     private List<Lotto> lottos;
 
     public void buy(String payment) {
-        this.lottos = LottoGenerator.generate(payment);
+        this.lottos = Generator.getMoney(payment);
     }
 
     public void showLottos() {
