@@ -33,6 +33,7 @@ public class Lotto {
     private void validate(String userInput) {
         isBlank(userInput);
         canSplit(userInput);
+        isConsistWithProperRange(userInput);
     }
 
     private void isValidSize(List<Integer> numbers) {
@@ -60,5 +61,33 @@ public class Lotto {
             throw new IllegalArgumentException(INVALID_LOTTO_INPUT_FORM);
         }
     }
+
+    private void isConsistWithProperRange(String userInput){
+        for (String piece : userInput.split(",")) {
+            isInRange(piece);
+        }
+    }
+
+    private void isInRange(String piece) {
+        isNumeric(piece);
+        int pieceToInt = Integer.parseInt(piece);
+        if (pieceToInt < MIN_VALID_LOTTO_VALUE || pieceToInt >MAX_VALID_LOTTO_VALUE ) {
+            throw new IllegalArgumentException(INVALID_RANGED_LOTTO_INPUT);
+        }
+    }
+
+    private void isNumeric(String piece) {
+        isBlank(piece);
+        for (char characterInPiece : piece.toCharArray()) {
+            isDigit(characterInPiece);
+        }
+    }
+
+    private void isDigit(char characterInPiece) {
+        if (!Character.isDigit(characterInPiece)) {
+            throw new IllegalArgumentException(INVALID_RANGED_LOTTO_INPUT);
+        }
+    }
+
 
 }

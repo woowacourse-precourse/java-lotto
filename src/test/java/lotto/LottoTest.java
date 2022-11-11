@@ -89,4 +89,13 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(LottoConstants.INVALID_LOTTO_INPUT_FORM);
     }
+
+    @ParameterizedTest
+    @DisplayName("구분된 값들 중 로또 숫자 범위를 제외한 값이 존재하는 경우 이유를 나타내는 메세지를 포함한 예외가 발생한다.")
+    @ValueSource(strings = {"0,1,2,3,4,5","1,2,3,4,5,46","a,1,2,3,4,5","가,1,2,3,4,5","-1,2,3,4,5,6","1.1,1,2,3,4,5"})
+    void createLottoByUserInputWithInvalidElements(String userInput) {
+        assertThatThrownBy(() -> new Lotto(userInput))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(LottoConstants.INVALID_RANGED_LOTTO_INPUT);
+    }
 }
