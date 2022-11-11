@@ -1,7 +1,8 @@
 package Utils;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class InputUtils {
     public static boolean isMultipleOfOneThousand(String input) {
@@ -36,18 +37,21 @@ public class InputUtils {
         final int startNumber = 1;
         final int endNumber = 2;
         int number = Integer.parseInt(input);
-        return number >= startNumber  && number <= endNumber;
+        return number >= startNumber && number <= endNumber;
     }
 
     public static String listToString(List<Integer> list) {
-        return "";
+        return list.toString();
     }
 
-    public static int stringToInteger(String string) {
-        return 0;
+    public static int stringToInteger(String input) {
+        return Integer.parseInt(input);
     }
 
-    public static List<Integer>  stringToIntegerList(String string) {
-        return Collections.emptyList(); 
+    public static List<Integer> stringToIntegerList(String input) {
+        final String COMMA = ",";
+        return Stream.of(input.split(COMMA))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 }
