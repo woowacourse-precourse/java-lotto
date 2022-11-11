@@ -102,11 +102,10 @@ public class LottoController {
 
             checkWin(result);
             checkYield(result);
-        }
-        catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             String errorMessage = "[ERROR] 올바른 입력 포맷이 아닙니다.";
             OutputView.printErrorMessage(errorMessage);
-        }catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e.getMessage());
         }
     }

@@ -15,7 +15,7 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 로또의 갯수가 6개가 아닙니다.");
         }
 
-        if(numbers.size() != numbers.stream().distinct().count()){
+        if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException("[ERROR] 중복되는 번호가 존재합니다.");
         }
     }
@@ -32,7 +32,7 @@ public class Lotto {
         return count;
     }
 
-    public boolean contains(int number){
+    public boolean contains(int number) {
         return numbers.contains(number);
     }
 
@@ -40,10 +40,11 @@ public class Lotto {
     public String toString() {
         String str = "[";
 
-        for(int idx = 0; idx < numbers.size(); idx++){
+        for (int idx = 0; idx < numbers.size(); idx++) {
             str += numbers.get(idx);
-            if (idx != numbers.size() - 1)
+            if (idx != numbers.size() - 1) {
                 str += ", ";
+            }
         }
 
         return str + "]";

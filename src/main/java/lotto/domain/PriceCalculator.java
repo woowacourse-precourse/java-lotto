@@ -14,6 +14,6 @@ public class PriceCalculator {
             totalPrice += prizemoney * count;
         }
 
-        return (float)totalPrice / (float)purchaseMoney * 100;
+        return (float) totalPrice / (float) purchaseMoney * 100;
     }
 }

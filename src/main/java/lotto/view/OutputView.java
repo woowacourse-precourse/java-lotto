@@ -30,23 +30,23 @@ public class OutputView {
         System.out.println("3개 일치 (5,000원) - " + count + "개");
     }
 
-    public static void printFourth(int count){
+    public static void printFourth(int count) {
         System.out.println("4개 일치 (50,000원) - " + count + "개");
     }
 
-    public static void printThird(int count){
+    public static void printThird(int count) {
         System.out.println("5개 일치 (1,500,000원) - " + count + "개");
     }
 
-    public static void printSecond(int count){
+    public static void printSecond(int count) {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + count + "개");
     }
 
-    public static void printFirst(int count){
+    public static void printFirst(int count) {
         System.out.println("6개 일치 (2,000,000,000원) - " + count + "개");
     }
 
-    public static void printYield(float yield){
+    public static void printYield(float yield) {
         System.out.printf("총 수익률은 %.1f%%입니다.\n", yield);
     }
 
@@ -54,7 +54,7 @@ public class OutputView {
         System.out.println("당첨 통계\n---");
     }
 
-    public static void printErrorMessage(String errorMessage){
+    public static void printErrorMessage(String errorMessage) {
         System.out.println(errorMessage);
     }
 }
