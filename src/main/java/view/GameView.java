@@ -2,7 +2,9 @@ package view;
 
 import camp.nextstep.edu.missionutils.Console;
 import controller.MoneyController;
+import controller.UserLottoController;
 import domain.Money;
+import domain.UserLotto;
 
 public class GameView {
     private static final String INPUT_PURCHASE_AMOUNT = "구매 금액 입력해 주세요.";
@@ -16,6 +18,7 @@ public class GameView {
     private static final String REWARD = "원) - ";
     private static final String NUMBER_OF_MATCHES = "개";
     MoneyController moneyController = new MoneyController();
+    UserLottoController userLottoController = new UserLottoController();
 
     public void start() {
         Money money = moneyController.getPurchaseAmount(inputPurchaseAmount());
@@ -23,6 +26,9 @@ public class GameView {
         // 몇 장의 로또를 발행할 것인지 계산
         int purchaseNumber = moneyController.getAvailablePurchaseNumber(money);
         System.out.println("\n" + purchaseNumber + NUMBER_OF_PURCHASE);
+
+        // 사용자에게 랜덤으로 로또 번호를 발행한다
+        UserLotto userLotto = userLottoController.createUserLotto(purchaseNumber);
     }
 
     public String inputPurchaseAmount() {
