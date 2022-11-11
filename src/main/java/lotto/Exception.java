@@ -11,4 +11,9 @@ abstract public class Exception extends Throwable {
         }
         return number;
     }
+
+    public void checkDivisible(int dividend, int divisor){
+        int remainder = dividend % divisor;
+        if(remainder!=0) throw new IllegalArgumentException();
+    }
 }
