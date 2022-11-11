@@ -8,6 +8,13 @@ public class InputException {
     private static final int MIN_UNIT_NUMBER = 1000;
 
 
+    public static int isValidInputPrice(String input){
+        int price = validNumber(input);
+        if (isUnitNumber(price) && isNaturalNumber(price)){
+            return price;
+        }
+        throw new IllegalArgumentException();
+    }
 
     private static int validNumber(String input){
         try{
