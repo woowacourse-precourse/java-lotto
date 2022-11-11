@@ -2,10 +2,17 @@ package lotto;
 
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
 
     private static final int LOTTO_PRICE = 1000;
+    private static final int MIN_LOTTO_NUM = 1;
+    private static final int MAX_LOTTO_NUM = 45;
+    private static final int NUMBER_OF_LOTTO_NUMS = 6;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -39,6 +46,15 @@ public class Application {
 
     public static int getNumberOfIssues(int price) {
         return price / LOTTO_PRICE;
+    }
+
+    public static List<Lotto> issueLotto(int amount) {
+        List<Lotto> issuedLottos = new ArrayList<>();
+        for (int count = 0; count < amount ; count++) {
+            List<Integer> picked = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUM, MAX_LOTTO_NUM, NUMBER_OF_LOTTO_NUMS);
+            issuedLottos.add(new Lotto(picked));
+        }
+        return issuedLottos;
     }
 
 }

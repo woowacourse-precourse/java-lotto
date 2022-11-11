@@ -59,4 +59,16 @@ class LottoTest {
         assertThat(lotto.Application.getNumberOfIssues(34000)).isEqualTo(34);
     }
 
+    @DisplayName("파라미터로 주어진 장수만큼의 Lotto 객체를 생성해 반환한다.")
+    @Test
+    public void issueLottoTest() {
+        List<Lotto> testLottos = Application.issueLotto(3);
+        assertThat(testLottos.size()).isEqualTo(3);
+
+        for (Lotto lotto : testLottos) {
+            assertThat(lotto).isInstanceOf(Lotto.class);
+            System.out.println(lotto.getNumbers().toString());
+        }
+    }
+
 }
