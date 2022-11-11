@@ -1,7 +1,6 @@
 package lotto;
 
 import java.text.DecimalFormat;
-import java.util.List;
 import java.util.Map;
 
 public class Message {
@@ -29,7 +28,7 @@ public class Message {
     System.out.println("---");
   }
 
-  public static void prizeStatic(Map<Integer, Integer> maps) {
+  public static void matchMessage(Map<Integer, Integer> maps) {
     Ranking[] values = Ranking.values();
     DecimalFormat decimalFormat = new DecimalFormat();
     for (Ranking value : values) {

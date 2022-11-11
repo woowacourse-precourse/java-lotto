@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -35,6 +34,6 @@ public class Application { // 패키지 분리
 
         Message.winningStatic();
         Message.line();
-
+        Message.matchMessage(matchNumbers.getMaps());
     }
 }
