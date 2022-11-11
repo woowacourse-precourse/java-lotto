@@ -1,8 +1,6 @@
 package lotto.domain.model;
 
 import static lotto.utils.Advice.PurchaseValidator.MINIMUM_ORDER;
-import static lotto.utils.Advice.PurchaseValidator.checkConsistNumber;
-import static lotto.utils.Advice.PurchaseValidator.checkReminder;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,19 +15,19 @@ public class UserLotto {
         this.userLotto = userLotto;
     }
 
-    public UserLotto(String pay) {
-        validate(pay);
-        this.userLotto = IntStream.rangeClosed(1, Integer.parseInt(pay) / MINIMUM_ORDER)
+    public UserLotto(Pay pay) {
+        this.userLotto = IntStream.rangeClosed(1, (int) (pay.getPay() /MINIMUM_ORDER))
                 .mapToObj(count -> new Lotto(LottoGenerator.makeLotto())).collect(Collectors.toList());
     }
 
-    public List<Lotto> getUserLotto() {
-        return userLotto;
+    public int getUserLottoSize() {
+        return userLotto.size();
     }
 
-    private static void validate(String pay) {
-        checkConsistNumber(pay);
-        checkReminder(pay);
+    public List<String> getUserLotto() {
+        return userLotto.stream()
+                .map(Lotto::toString)
+                .collect(Collectors.toList());
     }
 
     public List<LottoRank> compareLottoNumber(LottoNumber lottoNumber) {
@@ -40,7 +38,6 @@ public class UserLotto {
         validateLottoRankSize(rankCollection);
         return rankCollection;
     }
-
     private void validateLottoRankSize(List<LottoRank> rankCollection) {
         if (this.userLotto.size() < rankCollection.size()) {
             throw new IllegalArgumentException();
