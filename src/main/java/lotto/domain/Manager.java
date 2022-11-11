@@ -3,6 +3,7 @@ package lotto.domain;
 import lotto.domain.enums.Message;
 import lotto.domain.enums.Number;
 import lotto.util.InputUtil;
+import lotto.util.OutputUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,8 +14,11 @@ public class Manager {
     private List<Integer> winningNumbers = new ArrayList<>();
     private int bonusNumber;
 
-    public void setWinningNumbers(List<Integer> winningNumbers) {
-        this.winningNumbers = winningNumbers;
+    public void setWinningNumbers(String input) {
+        String[] numbers = input.split(InputUtil.COMMA);
+        for (String number : numbers) {
+            winningNumbers.add(Integer.parseInt(number));
+        }
     }
 
     public void setBonusNumber(int bonusNumber) {
