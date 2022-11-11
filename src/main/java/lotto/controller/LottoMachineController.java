@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.model.LottoMachine;
+import lotto.model.Wallet;
 import lotto.view.LottoInformationView;
 
 public class LottoMachineController {
@@ -13,5 +14,9 @@ public class LottoMachineController {
 	public void viewLotto() {
 		int purchaseCount = lottoMachine.getPurchaseAmount() / lottoMachine.LottoCost;
 		new LottoInformationView(purchaseCount, lottoMachine.getLottoBundle());
+	}
+
+	public Wallet getWallet() {
+		return  new Wallet(lottoMachine.getLottoBundle(), lottoMachine.LottoCost);
 	}
 }
