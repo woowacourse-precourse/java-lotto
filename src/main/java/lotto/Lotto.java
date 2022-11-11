@@ -16,6 +16,7 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
     public static List<Integer> sliceWinningNumber(String winningNumber) {
+        validateFirstIndexIsComma(winningNumber);
         validateInputValue(winningNumber);
         validateCommaCount(winningNumber);
         validateLastIndexIsComma(winningNumber);
@@ -125,4 +126,10 @@ public class Lotto {
         }
     }
 
+    private static void validateFirstIndexIsComma(String winningNumber) {
+        if (winningNumber.charAt(0) == ',') {
+            System.out.println("[ERROR] 첫 번째 입력 값에 쉼표가 올 수 없습니다.");
+            throw new IllegalArgumentException();
+        }
+    }
 }
