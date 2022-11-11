@@ -1,18 +1,18 @@
 package system;
 
-import system.process.LottoComparison;
-import system.process.Purchase;
-import system.process.Statistics;
-import system.process.WinningLotto;
+import system.process.Buying;
+import system.process.StatisticsCalculator;
+import system.process.WinningLottoRegister;
 
 public class LottoGameSystem {
 
     public void runGame(){
 
-        Purchase purchase = new Purchase();
-        WinningLotto winningLotto = new WinningLotto();
+        Buying boughtLottos = new Buying();
+        WinningLottoRegister winningLotto = new WinningLottoRegister();
 
-        Statistics statistics = new Statistics(purchase,winningLotto);
+        StatisticsCalculator statisticsCalculator = new StatisticsCalculator(boughtLottos, winningLotto);
+        statisticsCalculator.calculateStatistics();
 
     }
 
