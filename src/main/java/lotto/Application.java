@@ -2,6 +2,7 @@ package lotto;
 
 import constant.ExceptionNumber;
 import domain.BuyLottoList;
+import domain.LottoGame;
 import view.InputBonusNumber;
 import view.InputWinningLottoNumber;
 import view.InputUserMoney;
@@ -16,12 +17,14 @@ public class Application {
             return;
         }
         inputValues(buyLottoList, money);
+        LottoGame game = new LottoGame();
+        game.Game();
 
     }
 
     private static void inputValues(BuyLottoList buyLottoList, int money) {
         buyLottoList.putLottoNumberList(money);
-        InputWinningLottoNumber.inputLottoNumber();
+        InputWinningLottoNumber.inputWinningLottoNumber();
         InputBonusNumber.inputBonusNumber();
     }
 

@@ -42,7 +42,7 @@ public class InputBonusNumber {
     }
 
     public static void isBonusNumberInWinningList(int bonusNumber) {
-        List<Integer> lottoList = InputWinningLottoNumber.getLottoList();
+        List<Integer> lottoList = InputWinningLottoNumber.getWinningLottoList();
         int rightBonusNumber = bonusNumber;
         if(lottoList.stream().anyMatch(n -> rightBonusNumber == n)) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_BONUS_DUPLICATE_WINNING.getMessage());

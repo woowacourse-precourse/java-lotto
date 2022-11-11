@@ -33,4 +33,5 @@ class LottoTest {
         assertThatThrownBy(() -> InputWinningLottoNumber.validateSplitNumber("1,2,a,3,4,5"))
             .isInstanceOf(IllegalArgumentException.class);
     }
+
 }

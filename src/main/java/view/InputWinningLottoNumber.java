@@ -8,27 +8,30 @@ import java.util.List;
 
 public class InputWinningLottoNumber {
 
-    public static void inputLottoNumber(){
+
+
+    static List<Integer> winningLottoList = new ArrayList<>();
+
+    public static void inputWinningLottoNumber(){
         System.out.println("당첨 번호를 입력해 주세요.");
         String Lotto = Console.readLine();
-        List<Integer> lottoList = setLotto(Lotto);
-        Lotto lotto = new Lotto(lottoList);
+        winningLottoList = setWinningLotto(Lotto);
+        Lotto lotto = new Lotto(winningLottoList);
     }
 
-    private static List<Integer> setLotto(String Lotto) {
-        String[] split = Lotto.split(",");
+    private static List<Integer> setWinningLotto(String winningLotto) {
+        String[] split = winningLotto.split(",");
         System.out.println("split = " + split);
 
-        List<Integer> lottoList = new ArrayList<>();
         for (String s : split) {
             validateSplitNumber(s);
-            lottoList.add(Integer.parseInt(s));
+            winningLottoList.add(Integer.parseInt(s));
         }
 
-        if(lottoList.size()!=6){
+        if(winningLottoList.size()!=6){
             throw new IllegalArgumentException(ErrorMessage.ERROR_INCORRECT_SIZE.getMessage());
         }
-        return lottoList;
+        return winningLottoList;
     }
 
     public static void validateSplitNumber(String splitedNumber) {
@@ -43,6 +46,10 @@ public class InputWinningLottoNumber {
         if(convertSplitedNumber<1 || convertSplitedNumber >45){
             throw new IllegalArgumentException(ErrorMessage.ERROR_OVERRANGE.getMessage());
         }
+    }
+
+    public static List<Integer> getWinningLottoList() {
+        return winningLottoList;
     }
 
 }

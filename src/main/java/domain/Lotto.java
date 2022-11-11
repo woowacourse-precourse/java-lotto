@@ -13,14 +13,13 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        Stream<Integer> stream = numbers.stream();
         if (isInCorrectSize(numbers)) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_INCORRECT_SIZE.getMessage());
         }
-        if(isDuplicated(numbers, stream)){
+        if(isDuplicated(numbers)){
             throw new IllegalArgumentException(ErrorMessage.ERROR_DUPLICATE.getMessage());
         }
-        if(isOverRange(stream)){
+        if(isOverRange(numbers)){
             throw new IllegalArgumentException(ErrorMessage.ERROR_OVERRANGE.getMessage());
         }
     }
@@ -29,12 +28,12 @@ public class Lotto {
         return numbers.size() != 6;
     }
 
-    private boolean isOverRange(Stream<Integer> stream) {
-        return stream.anyMatch(number -> number < 1 || number > 45);
+    private boolean isOverRange(List<Integer> numbers) {
+        return numbers.stream().anyMatch(number -> number < 1 || number > 45);
     }
 
-    private boolean isDuplicated(List<Integer> numbers, Stream<Integer> stream) {
-        return stream.distinct().count() != numbers.size();
+    private boolean isDuplicated(List<Integer> numbers) {
+        return numbers.stream().distinct().count() != numbers.size();
     }
 
     // TODO: 추가 기능 구현

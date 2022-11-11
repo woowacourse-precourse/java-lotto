@@ -9,15 +9,14 @@ import view.PrintBuyLottoList;
 public class BuyLottoList {
 
     PrintBuyLottoList printBuyLottoList = new PrintBuyLottoList();
-
+    static List<List<Integer>> buyLottoList = new ArrayList<>();
 
     public void putLottoNumberList(int money){
-        List<List<Integer>> pickList = new ArrayList<>();
         int pick_count= money/1000;
         for(int number=0; number<pick_count; number++){
-            setLottoNumberList(pickList, number);
+            setLottoNumberList(buyLottoList, number);
           }
-        printBuyLottoList.printLottoList(pick_count, pickList);
+        printBuyLottoList.printLottoList(pick_count, buyLottoList);
     }
 
     private void setLottoNumberList(List<List<Integer>> pickList, int number) {
@@ -25,5 +24,7 @@ public class BuyLottoList {
         Collections.sort(pickList.get(number));
     }
 
-
+    public static List<List<Integer>> getBuyLottoList() {
+        return buyLottoList;
+    }
 }
