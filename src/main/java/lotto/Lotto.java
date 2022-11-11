@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Lotto {
+    User user = new User();
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -22,10 +24,19 @@ public class Lotto {
     }
 
     public void buySucess(){
-        System.out.println("개를 구매하였습니다.");
+        System.out.println(Countlotto + "개를 구매하였습니다.");
     }
 
-//    public HashMap<String, Integer>
+    public int buyScuessCount(int Countlotto){
+        return Countlotto / 1000;
+
+    }
+
+
+
+
+
+
 
     // TODO: 추가 기능 구현
 }

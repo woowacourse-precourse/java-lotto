@@ -47,11 +47,12 @@ public class User {
             return (List<Integer>) repeatDestroy;
         }
 
-        public void bonusNumber () {
+        public int bonusNumber() {
             Set<Integer> bonusNumber1 = new HashSet<>();
             String bonusNumberInput = new String(String.valueOf(bonusNumber1));
-            bonusNumberInput = readLine();
+            return Integer.parseInt(readLine());
         }
+
 
     }
 
