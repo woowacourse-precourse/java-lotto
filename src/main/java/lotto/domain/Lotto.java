@@ -73,4 +73,9 @@ public class Lotto {
 
         return WinningPrize.of(sameCount, containsBonusNumber);
     }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }

@@ -46,7 +46,7 @@ class LottoTest {
     @Test
     void createLottoContains3WinningNumbers() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        Lotto winningLotto = new Lotto(List.of(1, 3, 5 ,7, 9, 11));
+        Lotto winningLotto = new Lotto(List.of(1, 3, 5, 7, 9, 11));
 
         assertThat(lotto.countSameNumbers(winningLotto)).isEqualTo(3);
     }
@@ -109,5 +109,14 @@ class LottoTest {
 
             assertThat(lotto.getWinningPrize(winningLotto, bonusNumber)).isEqualTo(WinningPrize.LAST_PLACE);
         }
+    }
+
+    @DisplayName("로또 번호를 문자열로 출력하는 기능")
+    @Test
+    void createCommonLotto() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        String expected = "[1, 2, 3, 4, 5, 6]";
+
+        assertThat(lotto.toString()).isEqualTo(expected);
     }
 }
