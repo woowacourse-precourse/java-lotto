@@ -57,6 +57,10 @@ public enum LottoResult {
                 .collect(Collectors.toList());
     }
 
+    public LottoResultResponseDto toResponseDto(int totalCount) {
+        return new LottoResultResponseDto(sameNumberCount, winnerPrice, isSameBonus, totalCount);
+    }
+
     public boolean isFirst() {
         return this == FIRST;
     }
@@ -83,9 +87,5 @@ public enum LottoResult {
 
     public boolean equals(LottoResult lottoResult) {
         return this == lottoResult;
-    }
-
-    public LottoResultResponseDto toResponseDto(int totalCount) {
-        return new LottoResultResponseDto(sameNumberCount, winnerPrice, isSameBonus, totalCount);
     }
 }

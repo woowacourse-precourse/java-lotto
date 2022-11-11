@@ -10,6 +10,10 @@ public class Lottos {
         this.lottos = lottos;
     }
 
+    public Lotto get(int index) {
+        return lottos.get(index);
+    }
+
     public int size() {
         return lottos.size();
     }

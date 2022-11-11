@@ -16,9 +16,11 @@ class AnswerTest {
         Lotto firstLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Lotto secondLotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
         Lotto thirdLotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
-        Answer answer = new Answer(List.of(1, 2, 3, 4, 5, 6), 7);
 
-        List<LottoResult> results = answer.play(List.of(firstLotto, secondLotto, thirdLotto));
+        Answer answer = new Answer(List.of(1, 2, 3, 4, 5, 6), 7);
+        Lottos lottos = new Lottos(List.of(firstLotto, secondLotto, thirdLotto));
+
+        List<LottoResult> results = answer.play(lottos);
         assertThat(results.get(index)).isEqualTo(lottoResult);
     }
 

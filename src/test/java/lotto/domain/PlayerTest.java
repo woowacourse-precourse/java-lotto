@@ -36,7 +36,7 @@ public class PlayerTest {
     @DisplayName("주어진 금액 많큼 로또를 발행하는 기능")
     @Test
     void buyLottos() {
-        Lottos createLottos = player.buyLottos(3000, createLottoNumbers());
+        Lottos createLottos = player.purchaseLottos(3000, createLottoNumbers());
 
         System.out.println(createLottos);
         assertThat(createLottos.size()).isEqualTo(3);
@@ -53,7 +53,7 @@ public class PlayerTest {
     @DisplayName("주어진 금액으로 살 수 있는 로또 개수와 로또 넘버의 개수가 같이 않는 경우 예외 발생")
     @Test
     void buyLottosDifferentSize() {
-        assertThatThrownBy(() -> player.buyLottos(4000, createLottoNumbers()))
+        assertThatThrownBy(() -> player.purchaseLottos(4000, createLottoNumbers()))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 주어진 금액과 주어진 로또 번호의 개수가 일치하지 않습니다.");
     }

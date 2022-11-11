@@ -15,7 +15,7 @@ public class Player {
     public Player() {
     }
 
-    public Lottos buyLottos(int purchasePrice, List<List<Integer>> lottoNumbers) {
+    public Lottos purchaseLottos(int purchasePrice, List<List<Integer>> lottoNumbers) {
         int purchaseLottoCount = calculateLottoCount(purchasePrice);
         validateSize(purchaseLottoCount, lottoNumbers.size());
 
