@@ -264,9 +264,9 @@ public class Application {
 
         int number = 0;
 
-        for (int i = 0; i < winningNumberList.size(); i++) {
+        for (int winningNumber : winningNumberList) {
 
-            if (lotto.checkWinningNumberIsInLottoNumbers(winningNumberList.get(i))) {
+            if (lotto.checkWinningNumberIsInLottoNumbers(winningNumber)) {
 
                 number += 1;
             }
