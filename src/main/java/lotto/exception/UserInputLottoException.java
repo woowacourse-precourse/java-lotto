@@ -17,6 +17,7 @@ public class UserInputLottoException {
         validateOverlapNumbers()
         validateNumbersPermittedRange();
         validateBonusNumberIsNumber(inputBonusNumber);
+        validateBonusNumberOverlapNumbers();
 
     }
 
@@ -48,6 +49,10 @@ public class UserInputLottoException {
         }
     }
 
-    public void
+    public void validateBonusNumberOverlapNumbers(List<Integer> numbers, int bonusNumber) {
+        if(numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("보너스 번호가 중복됩니다.");
+        }
+    }
 
 }
