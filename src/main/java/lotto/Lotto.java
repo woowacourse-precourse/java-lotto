@@ -12,17 +12,13 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validate(List<Integer> numbers) {  //숫자의 개수 6개인지 확인하기
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 숫자의 개수가 6개가 아닙니다.");
         }
     }
 
-    public List<Integer> getLottoNumbers() {
-    	return numbers;
-    }
-    
-    public void numbersNoRepeat(List<Integer> numbers) {
+    public void numbersNoRepeat(List<Integer> numbers) {  //숫자가 중복되는지 확인하기
     	HashSet numbersset = new HashSet();
     	numbersset.addAll(numbers);
     	
@@ -30,4 +26,9 @@ public class Lotto {
     		throw new IllegalArgumentException("[ERROR] 서로 다른 숫자 6개를 입력하세요.");
     	}
     }
+    
+    public List<Integer> getLottoNumbers() {
+    	return numbers;
+    }
+    
 }

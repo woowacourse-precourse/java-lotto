@@ -43,14 +43,17 @@ public class Application {
     
     public static List<Integer> askNumbers() {
     	List<Integer> numbers = new ArrayList<>();
+    	String stringnumbers = "";
+    	String[] numbersarray;
     	
     	System.out.println("당첨 번호를 입력해 주세요.");
-    	String stringnumbers = Console.readLine();
+    	stringnumbers = Console.readLine();
     	
-    	lottoValidateNumber(stringnumbers);
+    	splitValidate(stringnumbers);         // 먼저 구분자로 입력값이 나누어지는지 확인
+    	numbersarray = stringnumbers.split(",");  // 구분자 ,로 입력값을 나눠서 numbersarray에 담기
     	
-    	String[] numbersarray = stringnumbers.split(",");
-    	for (String number : numbersarray) {
+    	lottoValidateNumber(numbersarray);     // numbersarray에 담긴 값들이 모두 1-45까지의 숫자인지 확인
+    	for (String number : numbersarray) {        //numbersarray값들(string)을 숫자로 바꿔서 numbers리스트에 담기
     		numbers.add(Integer.parseInt(number));
     	}
     	
@@ -60,14 +63,27 @@ public class Application {
     	return lotto.getLottoNumbers();
     }
     
-    public static void lottoValidateNumber(String stringnumbers) {
-    	String pattern = "^[1-45],[1-45],[1-45],[1-45],[1-45],[1-45]$";
-    	if (!Pattern.matches(pattern, stringnumbers)) {
-    		throw new IllegalArgumentException("[ERROR] 1-45사이의 6개의 숫자를 ,로 구분해서 입력하세요.");
+    public static void lottoValidateNumber(String[] numbersarray) {
+    	String pattern = "^[1-45]$";
+    	for (String number : numbersarray) {
+    		if (!Pattern.matches(pattern, number)) {
+        		throw new IllegalArgumentException("[ERROR] 1-45사이의 숫자만 입력하세요.");
+        	}
+    	}
+    }
+    
+    public static void splitValidate(String stringnumbers) {
+    	String[] numbersarray;
+    	try {
+    		numbersarray = stringnumbers.split(",");
+    	} catch (Exception e) {
+    		throw new IllegalArgumentException(",로 구분하세요.");
     	}
     }
     
     public void askBonusNumber() {
-    	
+    	String stringbonusnumber = "";
+    	System.out.println("보너스 번호를 입력해 주세요.");
+    	stringbonusnumber = Console.readLine();
     }
 }
