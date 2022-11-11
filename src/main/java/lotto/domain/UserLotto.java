@@ -14,7 +14,6 @@ public class UserLotto {
         while (count-- > 0) {
             lottoSet.add(makeLotto());
         }
-        System.out.println(lottoSet);
     }
 
     public void printMyLotto() {
