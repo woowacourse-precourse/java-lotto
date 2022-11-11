@@ -25,7 +25,6 @@ public class MainController {
         }
         cash = new Cash(integer);
         countLottoNumber(cash);
-        createMyLottos();
     }
 
     private int lottoNumber;
@@ -34,7 +33,7 @@ public class MainController {
         lottoNumber = calculator.countLottoNumber(cash);
     }
 
-    private void createMyLottos(){
+    public void createMyLottos(){
         LottoGenerator lottoGenerator = new LottoGenerator();
         myLottos = lottoGenerator.createMyLottos(lottoNumber);
         OutputView outputView = new OutputView();
