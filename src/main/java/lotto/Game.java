@@ -23,37 +23,30 @@ public class Game {
     }
 
     public void run() {
-        // TODO: 구입 금액 입력
         System.out.println(Sentences.PRICE.value());
         int amount = getPurchasePrice();
         System.out.println();
 
-        // TODO: 구매 내역 출력
         System.out.println(Sentences.getPurchase(amount));
         List<Lotto> lottos = getRandomLottos(amount);
         System.out.println();
 
-        // TODO: 당첨 번호 입력
         System.out.println(Sentences.LUCKY.value());
         Lotto lucky = getLuckyNumbers();
         System.out.println();
 
-        // TODO: 보너스 번호 입력
         System.out.println(Sentences.BONUS.value());
         int bonus = getBonusNumber();
         lucky.validateBonusNumber(bonus);
         System.out.println();
 
-        // TODO: 번호 비교
         results = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
         getResult(lottos, lucky, bonus);
 
-        // TODO: 당첨 통계 출력
         System.out.println(Sentences.STATS.value());
         System.out.println(Sentences.LINE.value());
         printResult();
 
-        // TODO: 총 수익률 출력
         String earningRate = calculateEarningRate(amount);
         System.out.println(Sentences.getRate(earningRate));
 
@@ -109,7 +102,6 @@ public class Game {
 
     private void printResult() {
         for (int i = 0; i < 5; i++) {
-//            String result = Sentences.getResult(rankings.get(i), results.et(i));
             Winning ranking = rankings.get(i);
             String result = ranking.toString(results.get(i));
             System.out.println(result);
