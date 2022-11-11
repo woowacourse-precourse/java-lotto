@@ -6,12 +6,21 @@ import lotto.Domain.ErrorMessage;
 public class Application {
     private boolean systemError = false;
     private int money=0;
+    private LottoClerk lottoClerk;
+    private LottoMachine lottoMachine;
+    public Application()
+    {
+        lottoClerk=new LottoClerk();
+        lottoMachine=new LottoMachine();
+        this.inputMoney();
+    }
     public static void main(String[] args) {
         Application application = new Application();
-        application.inputMoney();
         if(application.systemError)
             return;
+
     }
+
     public boolean getSystemError(){
         return systemError;
     }
