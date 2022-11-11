@@ -33,7 +33,6 @@ public class LottoManagerTest {
         // Then
         assertThat(myLotto.size()).isEqualTo(lottoIssueCount);
     }
-
     @DisplayName("발행받은 로또와 당첨 번호 비교 테스트")
     @ParameterizedTest
     @MethodSource("compareMyLottoWithWinningNumberSource")
@@ -64,7 +63,6 @@ public class LottoManagerTest {
                 Arguments.of(6, List.of(3, 9, 17, 25, 34, 43))
         );
     }
-
     @DisplayName("일치하는 수를 인자로 받아 당첨 등수를 얻는 테스트")
     @ParameterizedTest
     @CsvSource(value = {"0:0", "1:0", "2:0", "3:5", "4:4", "5:3", "6:1"}, delimiter = ':')
@@ -75,5 +73,18 @@ public class LottoManagerTest {
         privateMethod.setAccessible(true);
 
         assertThat(privateMethod.invoke(lottoManager, sameNumberCount)).isEqualTo(rank);
+    }
+    @DisplayName("보너스 번호 일치 여부를 확인하는 테스트")
+    @ParameterizedTest
+    @CsvSource(value = {"5:true", "7:false", "35:true", "43:false"}, delimiter = ':')
+    void checkBonusNumberTest(int bonusNumber, boolean result) throws Exception {
+        // Reflection Setting
+        LottoManager lottoManager = new LottoManager();
+        Method privateMethod = lottoManager.getClass().getDeclaredMethod("checkBonusNumber", List.class, int.class);
+        privateMethod.setAccessible(true);
+
+        List<Integer> myLottoNumber = List.of(1, 3, 5, 35, 37, 45);
+
+        assertThat(privateMethod.invoke(lottoManager, myLottoNumber, bonusNumber)).isEqualTo(result);
     }
 }
