@@ -104,6 +104,12 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void validateBonusNumberIsInRangeTest() {
+        assertThatThrownBy(() -> validateBonusNumberIsInRange("46"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         main(new String[]{});
