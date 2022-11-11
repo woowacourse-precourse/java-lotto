@@ -1,5 +1,7 @@
 package lotto.InputOutput;
 
+import lotto.controller.Lotto;
+import lotto.controller.LottoCounting;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +29,7 @@ class UserInputHandlerTest{
         System.setIn(in);
     }
 
-    void exceptionRunning(Supplier<Integer> function){
+    void exceptionRunning(Supplier<?> function){
         try{
             function.get();
         }catch(IllegalArgumentException | NoSuchElementException ignored){}
