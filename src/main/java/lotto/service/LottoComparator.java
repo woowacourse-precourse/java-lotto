@@ -17,10 +17,10 @@ public class LottoComparator {
         return ranked;
     }
 
-    public Winner getLottoRank(List<Integer> ownLotto) {
-        int cnt = countNumberCorrectness(ownLotto);
-        boolean bonus = hasBonusNumber(ownLotto);
-        int maxValue = prizeLotto.size();
+    private Winner getLottoRank(Lotto ownLotto, Lotto prizeLotto, int bonusNumber) {
+        int cnt = countNumberCorrectness(ownLotto, prizeLotto);
+        boolean bonus = hasBonusNumber(ownLotto, bonusNumber);
+        int maxValue = InputConfig.LOTTO_NUMBER_COUNT;
 
         if (cnt == maxValue) {
             return Winner.FIRST;
@@ -52,7 +52,7 @@ public class LottoComparator {
         return ownLotto.size() - matchedLotto.size();
     }
 
-        prizeLottoSet.removeAll(ownLottoSet);
-        return prizeLotto.size() - prizeLottoSet.size();
+    public Winner forTest_getLottoRank(Lotto ownLotto, Lotto prizeLotto, int bonusNumber) {
+        return getLottoRank(ownLotto, prizeLotto, bonusNumber);
     }
 }
