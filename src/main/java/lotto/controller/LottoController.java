@@ -18,6 +18,8 @@ public class LottoController {
 
     private void showPurchasedLottos() {
         int amount = purchasedLottos.getLottos().size();
+        ConsoleView.printBlankLine();
         ConsoleView.printPurchaseAmount(amount);
+        ConsoleView.printPurchasedLottos(purchasedLottos);
     }
 }
