@@ -8,6 +8,9 @@ import java.util.stream.Collectors;
 
 public class LottoView {
 
+    private static final int MIN_LOTTO_NUMBER = 1;
+    private static final int MAX_LOTTO_NUMBER = 45;
+
     public int getMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         int money = Integer.parseInt(Console.readLine());
@@ -50,8 +53,12 @@ public class LottoView {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복돼선 안 됩니다.");
         }
 
-        if (bonusNumber < 1 || bonusNumber > 45) {
+        if (validateNumberRange(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 사이의 숫자여야 합니다.");
         }
+    }
+
+    private boolean validateNumberRange(int number) {
+        return number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER;
     }
 }
