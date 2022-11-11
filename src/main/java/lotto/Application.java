@@ -18,18 +18,11 @@ public class Application {
         Generator generator = new Generator();
         Drawer drawer = new Drawer();
         try {
-            System.out.println(BUY_LOTTO_QUESTION);
-            String moneyText = Console.readLine();
-            if(!moneyText.matches("[+-]?\\d*(\\.\\d+)?")) {
-                throw new IllegalArgumentException("[ERROR] 잘못된 값을 입력하셨습니다.");
-            }
-            Integer money = Integer.valueOf(moneyText);
+            Integer money = inputMoney();
             List<Lotto> lottoTickets = generator.generate(money);
             generator.printGeneratedLotto(lottoTickets);
-
             Lotto lotto = drawer.drawLotto();
             Integer bonusNumber = drawer.drawBonusNumber(lotto);
-
             List<Rank> ranks = drawer.compare(lottoTickets, lotto, bonusNumber);
             printRanks(ranks);
             System.out.println("총 수익률은 " + Drawer.Calculator.calculateYield(ranks, money) + "%입니다.");
@@ -46,5 +39,14 @@ public class Application {
         System.out.println(THIRD_RANK + ranks.stream().filter(rank -> rank == Rank.THIRD).count() + COUNTER);
         System.out.println(SECOND_RANK + ranks.stream().filter(rank -> rank == Rank.SECOND).count() + COUNTER);
         System.out.println(FIRST_RANK + ranks.stream().filter(rank -> rank == Rank.FIRST).count() + COUNTER);
+    }
+
+    public static Integer inputMoney() {
+        System.out.println(BUY_LOTTO_QUESTION);
+        String moneyText = Console.readLine();
+        if (!moneyText.matches("[+-]?\\d*(\\.\\d+)?")) {
+            throw new IllegalArgumentException("[ERROR] 잘못된 값을 입력하셨습니다.");
+        }
+        return Integer.valueOf(moneyText);
     }
 }
