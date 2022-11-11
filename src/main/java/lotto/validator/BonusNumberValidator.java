@@ -1,7 +1,11 @@
 package lotto.validator;
 
-public class BonusNumberValidator extends NumberValidator{
-    public static void hasValidBonusNumber(int bonusNumber){
+import java.util.List;
+
+public class BonusNumberValidator extends NumberValidator {
+    public static void hasValidBonusNumber(List<Integer> lottoNumber, int bonusNumber) {
         hasValidRange(bonusNumber);
+        lottoNumber.add(bonusNumber);
+        hasNonDuplicateNumbers(lottoNumber);
     }
 }
