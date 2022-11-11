@@ -118,24 +118,24 @@ class ResultTest {
     @DisplayName("상금 조회 테스트")
     @Test
     void getPrizeTest1() {
-        int prize = result.getPrize(Rank.first);
+        Prize prize = result.getPrize(Rank.first);
 
-        Assertions.assertThat(prize).isEqualTo(2000000000);
+        Assertions.assertThat(prize).isEqualTo(Prize.firstPrize);
     }
 
     @DisplayName("상금 조회 테스트")
     @Test
     void getPrizeTest2() {
-        int prize = result.getPrize(Rank.third);
+        Prize prize = result.getPrize(Rank.third);
 
-        Assertions.assertThat(prize).isEqualTo(1500000);
+        Assertions.assertThat(prize).isEqualTo(Prize.thirdPrice);
     }
 
     @DisplayName("상금 조회 테스트")
     @Test
     void getPrizeTest3() {
-        int prize = result.getPrize(Rank.nothing);
+        Prize prize = result.getPrize(Rank.nothing);
 
-        Assertions.assertThat(prize).isEqualTo(0);
+        Assertions.assertThat(prize).isEqualTo(Prize.nothing);
     }
 }
