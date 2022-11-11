@@ -10,4 +10,11 @@ public class InputView {
 
         return purchasingAmount;
     }
+
+    public String InputWinningNumber() {
+        System.out.println("당첨 번호를 입력해주세요.");
+        String winningNumber = Console.readLine();
+
+        return winningNumber;
+    }
 }
