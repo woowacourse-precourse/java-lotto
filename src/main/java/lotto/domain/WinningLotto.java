@@ -1,15 +1,35 @@
 package lotto.domain;
 
+import java.util.Arrays;
+
 public enum WinningLotto {
-    FIRST("2,000,000,000원"),
-    SECOND("30,000,000원"),
-    THIRD("1,500,000원"),
-    FOURTH("50,000원"),
-    FIFTH("5,000원");
+    FIRST(6),
+    SECOND(5),
+    THIRD(5),
+    FOURTH(4),
+    FIFTH(3),
+    NOTHING(0);
 
-    private String rank;
+    private int winningNuberCount;
 
-    WinningLotto(String rank) {
-        this.rank = rank;
+    WinningLotto(int winningNuberCount) {
+        this.winningNuberCount = winningNuberCount;
+    }
+
+    public int getWinningNuberCount() {
+        return winningNuberCount;
+    }
+
+    public static WinningLotto from(int winningNuberCount, boolean hasBonus) {
+        if (winningNuberCount == SECOND.winningNuberCount && hasBonus) {
+            return WinningLotto.SECOND;
+        }
+        if (winningNuberCount == THIRD.winningNuberCount && !hasBonus) {
+            return WinningLotto.THIRD;
+        }
+        return Arrays.stream(WinningLotto.values())
+                .filter(item -> item.getWinningNuberCount() == winningNuberCount)
+                .findAny()
+                .orElse(NOTHING);
     }
 }
