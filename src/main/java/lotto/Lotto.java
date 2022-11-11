@@ -3,6 +3,7 @@ package lotto;
 import java.util.List;
 
 public class Lotto {
+    private static final int MAX = 6;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -12,7 +13,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != MAX) {
             throw new IllegalArgumentException();
         }
     }
