@@ -27,6 +27,7 @@ class InputUtilsTest {
     }
 
     @Test
+    @DisplayName("금액 입력 시 int 형식으로 반환")
     public void 금액_반환_확인() throws Exception {
         //given
         String input = "5000";
@@ -55,6 +56,7 @@ class InputUtilsTest {
     }
 
     @Test
+    @DisplayName("번호 입력 시 Lotto 리스트 반환 확인")
     public void 당첨_로또_생성() throws Exception {
         //given
         String input = "1,2,3,4,5,6";
@@ -66,5 +68,35 @@ class InputUtilsTest {
 
         //then
         assertThat(winningLotto.getNumbers()).isEqualTo(List.of(1,2,3,4,5,6));
+    }
+
+    @Test
+    @DisplayName("숫자 확인, 1 ~ 45 범위 확인, 당첨 번호와 중복x")
+    public void 보너스_번호_입력_예외처리() throws Exception {
+        //given
+        String[] inputs = {"숫자", "46", "11"};
+        Lotto winningNumbers = new Lotto(List.of(11,4,32,33,22,28));
+
+        //when then
+        for (String input : inputs) {
+            assertThatThrownBy(() -> utils.validateBonus(input, winningNumbers))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
+
+    @Test
+    @DisplayName("번호 입력시 int 반환")
+    public void 보너스_번호_생성() throws Exception {
+        //given
+        String input = "15";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+        Lotto winningNumbers = new Lotto(List.of(11,4,32,33,22,28));
+
+        //when
+        int bonus = utils.StringToBonus(winningNumbers);
+
+        //then
+        assertThat(bonus).isEqualTo(15);
     }
 }
