@@ -3,15 +3,17 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static lotto.view.Constants.*;
 
 public class InputValidator {
-    public int validateNumeric(String input) {
+    public Integer validateNumeric(String input) {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(NOT_NUMERIC);
+            System.out.println(NOT_NUMERIC);
+            throw new IllegalArgumentException();
         }
     }
 
@@ -33,7 +35,8 @@ public class InputValidator {
 
     private void validateRange(int number) {
         if (number < 1 || number > 45) {
-            throw new IllegalArgumentException(NOT_PROPER_NUMBER);
+            System.out.println(NOT_PROPER_NUMBER);
+            throw new IllegalArgumentException();
         }
     }
 

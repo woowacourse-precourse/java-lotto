@@ -110,13 +110,15 @@ public class Customer {
 
     private void validateNoMoney(int paidMoney) {
         if (paidMoney == 0) {
-            throw new IllegalArgumentException(BOUGHT_NOTHING);
+            System.out.println(BOUGHT_NOTHING);
+            throw new IllegalArgumentException();
         }
     }
 
     private void validateWrongMoney(int paidMoney) {
         if (paidMoney % 1000 != 0) {
-            throw new IllegalArgumentException(NOT_DIVISIBLE_BY_THOUSAND);
+            System.out.println(NOT_DIVISIBLE_BY_THOUSAND);
+            throw new IllegalArgumentException();
         }
     }
 
