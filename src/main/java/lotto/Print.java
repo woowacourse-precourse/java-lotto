@@ -42,7 +42,9 @@ public class Print {
 	
 	public void printWin() {
 		int ranknum = 5;
-		for (rank r : rank.values())) {
+		System.out.println("당첨 통계");
+		System.out.println("---");
+		for (rank r : rank.values()) {
 			if (ranknum == 2) {
 				System.out.printf("%d개 일치, 보너스 볼 일치 (%d원) - %d개", r.getValue(), r.getPrice(), rankmap.get(ranknum));
 				ranknum--;
@@ -94,7 +96,14 @@ public class Print {
 	}
 	
 	public void printProfit() {
-		
+		double profit = 0;
+		int ranknum = 5;
+		for (rank r : rank.values()) {
+			double price = 0;
+			price = rankmap.get(ranknum) * r.getPrice();
+			profit += price;
+			ranknum--;
+		}
 	}
 	
 	public void printProfitRound() {

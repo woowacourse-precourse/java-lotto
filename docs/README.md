@@ -32,7 +32,7 @@
     2. 당첨 내역 출력 - Print#printWin()
         * 1-5등까지의 당첨조건에 각각 몇번 해당하는지 세어 주는 기능 - Print#countWin()
             * enum을 활용해서 각각 몇번 해당하는지 세어주는 기능 - Print#rankCount()
-    3. 수익률 소수점 둘째자리에서 반올림해서 출력 - Print#printProfit()
+    3. 수익률 구하기 위해서 전체 금액 합산 / 로또구입금액 계산하는 기능 구현 - Print#printProfit()
         * 당첨 금액/로또 구매 금액으로 수익률 계산한 뒤 소수점 둘째자리에서 반올림 해주는 기능 - Print#printProfitRound()
     
 
