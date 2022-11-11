@@ -16,6 +16,7 @@ public class BonusLottoValidation extends Validation{
         isBonusLottoInputLength(splitString);
         isBonusLottoInputNumeric(splitString);
         isBonusLottoInputBetween(splitString);
+        isContainsWinningLotto(splitString[0], compareToUserInput);
     }
 
     private void isBonusLottoInputLength(String[] splitString) {
@@ -34,6 +35,13 @@ public class BonusLottoValidation extends Validation{
         if (!(LottoValidation.isLottoInputBetween(splitString, IntConstant.LOTTO_NUMBER_BIGGER_THAN,
                 IntConstant.LOTTO_NUMBER_SMALLER_THAN))) {
             createError(StringConstant.BONUS_LOTTO_INPUT_NUMBER_BETWEEN_ERROR_MESSAGE.getMessage());
+        }
+    }
+
+    private void isContainsWinningLotto(String bonusLotto, List<Integer> compareToUserInput) {
+        int bonus = Integer.parseInt(bonusLotto);
+        if (compareToUserInput.contains(bonus)) {
+            createError(StringConstant.BONUS_LOTTO_OVERLAPPING_WITH_WINNING_LOTTO_ERROR_MESSAGE.getMessage());
         }
     }
 
