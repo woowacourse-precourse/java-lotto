@@ -3,11 +3,14 @@ package lotto.domain;
 import lotto.utils.ErrorMessage;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Lottos {
     private static final int LOTTO_PRICE = 1000;
     public static final int DIVISIBLE = 0;
+    public static final int DEFAULT_COUNT = 0;
 
     private final List<Lotto> lottos = new ArrayList<>();
 
@@ -44,6 +47,24 @@ public class Lottos {
         int money = getMoney();
 
         return (double) winningAmount / money;
+    }
+
+    public Map<WinningPrize, Integer> countWinningPrize(Lotto winningLotto, int bonusNumber) {
+        HashMap<WinningPrize, Integer> winningPrizeCounts = getDefaultWinningPrizeCounts();
+        for (Lotto lotto : lottos) {
+            WinningPrize winningPrize = lotto.getWinningPrize(winningLotto, bonusNumber);
+            Integer winningPrizeCount = winningPrizeCounts.getOrDefault(winningPrize, 0) + 1;
+            winningPrizeCounts.put(winningPrize, winningPrizeCount);
+        }
+        return winningPrizeCounts;
+    }
+
+    private HashMap<WinningPrize, Integer> getDefaultWinningPrizeCounts() {
+        HashMap<WinningPrize, Integer> winningPrizeCounts = new HashMap<>();
+        for (WinningPrize winningPrize : WinningPrize.values()) {
+            winningPrizeCounts.put(winningPrize, DEFAULT_COUNT);
+        }
+        return winningPrizeCounts;
     }
 
     private int getMoney() {
