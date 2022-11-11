@@ -30,3 +30,8 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### woowacourse addition ###
+/gradle
+gradle*
+/settings.gradle
