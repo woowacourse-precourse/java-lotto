@@ -53,30 +53,30 @@ public class WinningNumber {
         }
     }
 
-    int match(Lotto userLotto) {
+    Rank match(Lotto userLotto) {
         int countMatched = userLotto.countMatchedNumber(lotto);
         boolean bonusMatched = userLotto.hasNumber(bonus);
 
         return rank(countMatched, bonusMatched);
     }
 
-    private int rank(int countMatched, boolean bonusMatched) {
+    private Rank rank(int countMatched, boolean bonusMatched) {
         if (countMatched == 6) {
-            return 1;
+            return Rank.FIRST;
         } else if (countMatched == 5) {
             return isSecondThird(bonusMatched);
         } else if (countMatched == 4) {
-            return 4;
+            return Rank.FOURTH;
         } else if (countMatched == 3) {
-            return 3;
+            return Rank.FIFTH;
         }
-        return 0;
+        return Rank.NONE;
     }
 
-    private int isSecondThird(boolean bonusMatched){
+    private Rank isSecondThird(boolean bonusMatched){
         if (bonusMatched) {
-            return 2;
+            return Rank.SECOND;
         }
-        return 3;
+        return Rank.THIRD;
     }
 }

@@ -16,19 +16,19 @@ enum Rank{
 }
 public class WinningResult {
      WinningNumber winningNumber;
-     private List<Integer> rank;
+     private List<Rank> rank;
      private int winningRate;
 
      WinningResult(WinningNumber winningNumber) {
           this.winningNumber = winningNumber;
      }
-     public List<Integer> winningHistory(List<Lotto> lottos) {
+     public List<Rank> winningHistory(List<Lotto> lottos) {
           this.rank = checkRank(lottos);
           return countRank(this.rank);
      }
 
-     private List<Integer> countRank(List<Integer> rank) {
-          List<Integer> rankCount = new ArrayList<>(6);
+     private List<Rank> countRank(List<Integer> rank) {
+          List<Rank> rankCount = new ArrayList<>(6);
 
           for (Integer rankNum : rank) {
                rankCount.set(rankNum, rankCount.get(rankNum));
@@ -41,7 +41,7 @@ public class WinningResult {
 
      }
 
-     private List<Integer> checkRank(List<Lotto> lottos) {
+     private List<Rank> checkRank(List<Lotto> lottos) {
           return lottos.stream()
                   .map(winningNumber::match)
                   .collect(Collectors.toList());
