@@ -15,7 +15,8 @@ public class Application {
         List<Lotto> lottos = generateLottos(count);
         viewLottos(lottos);
 
-        askWinnerLotto();
+        Lotto winnerLotto = askWinnerLotto();
+        Integer bonusNumber = askBonusNumber();
 
 
     }
@@ -41,7 +42,9 @@ public class Application {
 
     private static Integer askMoney() {
         System.out.println("구입금액을 입력해 주세요.");
-        return Integer.parseInt(Console.readLine());
+        Integer temp = Integer.parseInt(Console.readLine());
+        System.out.println();
+        return temp;
     }
 
     public static Lotto askWinnerLotto() {
@@ -54,6 +57,13 @@ public class Application {
         }
 
         return new Lotto(temp);
+    }
+
+    public static Integer askBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        Integer temp = Integer.parseInt(Console.readLine());
+        System.out.println();
+        return temp;
     }
 
 }
