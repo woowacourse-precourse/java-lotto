@@ -1,7 +1,6 @@
 package lotto.domain;
 
 
-
 public class Money {
     private final Integer myMoney;
     private final Integer lottoCount;
