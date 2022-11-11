@@ -36,8 +36,8 @@ public class RankingView {
         System.out.println(SIX_MATCH_COMMENT + score.get(Ranking.SIX_MATCH) + TELL_COUNT);
     }
 
-    private void showProfit(Profit profit){
-        System.out.println(TOTAL_PROFIT_START + profit.getProfit() + TOTAL_PROFIT_END);
+    private void showProfit(String profit){
+        System.out.println(TOTAL_PROFIT_START + profit + TOTAL_PROFIT_END);
     }
 
 }

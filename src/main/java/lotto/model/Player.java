@@ -41,8 +41,8 @@ public class Player {
         return new HashMap<>();
     }
 
-    public float showWinningProfit(){
-        return 0;
+    public String showWinningProfit(){
+        return "";
     }
 
     public void addLottoRanking(Ranking lottoRanking){
