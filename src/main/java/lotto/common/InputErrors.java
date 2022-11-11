@@ -8,8 +8,10 @@ public enum InputErrors {
     AMOUNT_NOT_DIVIDABLE("구입 금액은 한 장의 가격으로 나누어 떨어져야 합니다"),
     WIN_NUMBER_NOT_FORMAT("당첨 번호는 공백 없이 \",\"로만 구분된 숫자의 조합만 가능합니다."),
     WIN_NUMBER_MISMATCH_SIZE("당첨 번호는 총 6개이어야 합니다."),
-    WIN_NUMBER_OUT_OF_RANGE("당첨 번호는 45보다 작거나 같아야 합니다."),
-    WIN_NUMBER_DUPLICATED("당첨 번호는 중복 될 수 없습니다.");
+    WIN_NUMBER_OUT_OF_RANGE("당첨 번호는 1 ~ 45사이의 값이어야 합니다."),
+    WIN_NUMBER_DUPLICATED("당첨 번호는 중복 될 수 없습니다."),
+    BONUS_NUMBER_NOT_NUMBER("보너스 번호는 숫자이어야 합니다."),
+    BONUS_NUMBER_OUT_OF_RANGE("보너스 번호는 1 ~ 45사이의 값이어야 합니다.");
 
     private String message;
     InputErrors(String message) {

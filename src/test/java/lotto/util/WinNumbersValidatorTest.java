@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 class WinNumbersValidatorTest {
 
     private static final String ERROR_PREFIX = "[ERROR]";
-    private final WinNumbersValidator validator = new WinNumbersValidator();
+    private final Validator validator = new WinNumbersValidator();
 
     @Test
     public void 값은_존재_해야_한다() {

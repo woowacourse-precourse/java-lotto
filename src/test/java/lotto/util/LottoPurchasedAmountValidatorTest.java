@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 class LottoPurchasedAmountValidatorTest {
 
     private static final String ERROR_PREFIX = "[ERROR]";
-    private final LottoPurchasedAmountValidator validator = new LottoPurchasedAmountValidator();
+    private final Validator validator = new LottoPurchasedAmountValidator();
 
     @Test
     public void 빈_값은_입력_될_수_없다() {
