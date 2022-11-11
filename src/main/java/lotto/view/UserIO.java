@@ -21,6 +21,7 @@ public class UserIO {
     public int moneySpent() {
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
+        System.out.println();
         int money = Integer.valueOf(input);
 
         if (money % 1000 != 0) {
@@ -53,6 +54,7 @@ public class UserIO {
         for (Lotto lotto : userLottoList) {
             lotto.printNumbers();
         }
+        System.out.println();
     }
 
     public List<Lotto> getUserLottoList() {
