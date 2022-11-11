@@ -1,5 +1,9 @@
 package lotto.domain;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import static lotto.view.Constants.*;
 
 public enum Prize {
@@ -23,5 +27,17 @@ public enum Prize {
 
     public String getPrizeNotice() {
         return prizeNotice;
+    }
+
+    public static List<Integer> getMoneyValues() {
+        return Stream.of(Prize.values())
+                .map(Prize::getPrizeMoney)
+                .collect(Collectors.toList());
+    }
+
+    public static List<String> getNoticeValues() {
+        return Stream.of(Prize.values())
+                .map(Prize::getPrizeNotice)
+                .collect(Collectors.toList());
     }
 }
