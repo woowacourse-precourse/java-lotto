@@ -1,7 +1,6 @@
 package lotto.domain;
 
-import lotto.exception.BonusNumberException;
-import lotto.exception.Lotto;
+import lotto.utils.Lotto;
 import lotto.exception.LottoNumberException;
 
 import java.util.ArrayList;

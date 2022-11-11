@@ -1,4 +1,6 @@
-package lotto.exception;
+package lotto.utils;
+
+import lotto.exception.LottoNumberException;
 
 import java.util.List;
 
