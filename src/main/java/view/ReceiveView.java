@@ -19,7 +19,6 @@ public class ReceiveView {
 
     public static void purchaseLottoValid(String money){
         if (!isDigit(money)) {
-            PrintView.error(ErrorMessage.NOT_STRING_MONEY);
             throw new IllegalArgumentException(ErrorMessage.NOT_STRING_MONEY);
         }
     }
@@ -49,7 +48,6 @@ public class ReceiveView {
 
     public static List<Integer> winLottoValid(String winLottoInput) {
         if (!isCorrectInput(winLottoInput)) {
-            PrintView.error(ErrorMessage.INVALID_INPUT_WIN_LOTTO);
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT_WIN_LOTTO);
         }
         return new ArrayList<>();

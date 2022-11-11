@@ -15,11 +15,9 @@ public class Purchase {
 
     private boolean validate(int money){
         if (!isMoneyOverThousand(money)) {
-            PrintView.error(ErrorMessage.OVER_THOUSAND_MONEY);
             throw new IllegalArgumentException(ErrorMessage.OVER_THOUSAND_MONEY);
         }
         if (!isMoneyThousandUnit(money)) {
-            PrintView.error(ErrorMessage.UNIT_THOUSAND_MONEY);
             throw new IllegalArgumentException(ErrorMessage.UNIT_THOUSAND_MONEY);
         }
         return true;
