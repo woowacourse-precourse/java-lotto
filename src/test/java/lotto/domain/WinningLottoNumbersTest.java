@@ -26,7 +26,7 @@ class WinningLottoNumbersTest {
     }
     
     @Test
-    @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
+    @DisplayName("예외 처리 : 로또 번호의 개수가 6개가 넘어갈 시")
     void createLottoByOverSize() {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new WinningLottoNumbers(new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)), 8))
@@ -34,7 +34,7 @@ class WinningLottoNumbersTest {
     }
     
     @Test
-    @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
+    @DisplayName("예외 처리 : 로또 번호에 중복된 숫자가 있을 시")
     void createLottoByDuplicatedNumber() {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new WinningLottoNumbers(new Lotto(List.of(1, 2, 3, 4, 5, 5)), 8))
