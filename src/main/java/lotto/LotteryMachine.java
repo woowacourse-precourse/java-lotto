@@ -106,7 +106,7 @@ public class LotteryMachine {
         for (int index = 0; index < lottoResult.length; index++) {
             money += (long) lottoResult[index] * proceeds[index];
         }
-        System.out.println(money);
+
         double rateOfReturn = (money / buyMoney) * 100.0;
         System.out.println("총 수익률은 "+ rateOfReturn +"%입니다.");
     }

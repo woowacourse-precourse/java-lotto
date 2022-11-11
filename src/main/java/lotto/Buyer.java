@@ -38,7 +38,6 @@ public class Buyer {
 
         for (int index = 0; index < lottoCnt; index++) {
             Lotto newLotto = new Lotto(lotteryMachine.makeLottoNum());
-            //Collections.sort(newLotto.getNumbers());
             this.lottos.add(newLotto);
         }
     }
