@@ -21,8 +21,8 @@ public class Lotto {
     }
 
     public void setBonusNumber(int inputBonusNumber) {
-        lottoException.validateBonusNumbers(inputBonusNumber);
-        this.bonusNumber = bonusNumberParser(inputBonusNumber);
+        lottoException.validateBonusNumbers(numbers, inputBonusNumber);
+        this.bonusNumber = inputBonusNumber;
     }
 
     public List<Integer> getNumbers() {
