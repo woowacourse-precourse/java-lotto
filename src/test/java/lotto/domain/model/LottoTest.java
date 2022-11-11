@@ -1,5 +1,6 @@
 package lotto.domain.model;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
@@ -41,7 +42,54 @@ class LottoTest {
     void createLottoByNotSortedByAsc(){
         assertThatThrownBy(() -> new Lotto(List.of(9, 1, 8, 3, 5, 4)))
                 .isInstanceOf(IllegalArgumentException.class);
-
-
     }
+
+    @DisplayName("로또 계산 결과를 리턴한다. : 6개 일치")
+    @Test
+    void compareLottoToLottoNumber_ResultSix() {
+        LottoNumber lottoNumber = new LottoNumber("8,18,21,45,15,36", "13");
+        Lotto lotto = new Lotto(List.of(8, 15, 18, 21, 36, 45));
+        assertThat(lotto.compareLottoNumber(lottoNumber)).isEqualTo(LottoRank.SIX_MATCHES);
+    }
+
+    @DisplayName("로또 계산 결과를 리턴한다. : 5개 + 보너스 일치")
+    @Test
+    void compareLottoToLottoNumber_ResultFiveBonus() {
+        LottoNumber lottoNumber = new LottoNumber("8,18,21,45,15,36", "13");
+        Lotto lotto = new Lotto(List.of(8, 13, 18, 21, 36, 45));
+        assertThat(lotto.compareLottoNumber(lottoNumber)).isEqualTo(LottoRank.FIVE_BONUS_MATCHES);
+    }
+
+    @DisplayName("로또 계산 결과를 리턴한다. : 5개 일치")
+    @Test
+    void compareLottoToLottoNumber_ResultFive() {
+        LottoNumber lottoNumber = new LottoNumber("8,18,21,45,15,36", "13");
+        Lotto lotto = new Lotto(List.of(8, 14, 18, 21, 36, 45));
+        assertThat(lotto.compareLottoNumber(lottoNumber)).isEqualTo(LottoRank.FIVE_MATCHES);
+    }
+
+    @DisplayName("로또 계산 결과를 리턴한다. : 4개 일치")
+    @Test
+    void compareLottoToLottoNumber_ResultFour() {
+        LottoNumber lottoNumber = new LottoNumber("8,18,21,45,15,36", "13");
+        Lotto lotto = new Lotto(List.of(7, 14, 18, 21, 36, 45));
+        assertThat(lotto.compareLottoNumber(lottoNumber)).isEqualTo(LottoRank.FOUR_MATCHES);
+    }
+
+    @DisplayName("로또 계산 결과를 리턴한다. : 3개 일치")
+    @Test
+    void compareLottoToLottoNumber_ResultThree() {
+        LottoNumber lottoNumber = new LottoNumber("8,18,21,45,15,36", "13");
+        Lotto lotto = new Lotto(List.of(7, 14, 18, 22, 36, 45));
+        assertThat(lotto.compareLottoNumber(lottoNumber)).isEqualTo(LottoRank.THREE_MATCHES);
+    }
+
+    @DisplayName("로또 계산 결과를 리턴한다. : 3개 이하 일치")
+    @Test
+    void compareLottoToLottoNumber_ResultUnderTree() {
+        LottoNumber lottoNumber = new LottoNumber("8,18,21,45,15,36", "13");
+        Lotto lotto = new Lotto(List.of(7, 14, 18, 22, 33, 45));
+        assertThat(lotto.compareLottoNumber(lottoNumber)).isEqualTo(LottoRank.NONE);
+    }
+
 }
