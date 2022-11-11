@@ -2,6 +2,8 @@ package lotto.domain;
 
 import static lotto.domain.LottoGenerator.LOTTO_NUMBER_LENGTH;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -10,13 +12,13 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = new ArrayList<>(numbers);
     }
 
-    public void printNumbers() {
-        System.out.println(numbers);
+    //numbers의 불변을 유지하기 위해 Collections.unmodifiableList를 통해 반환
+    public List<Integer> getNumbers() {
+        return Collections.unmodifiableList(numbers);
     }
-
 
     public long compareWinningNumbers(List<Integer> winningNumbers) {
         return numbers.stream()

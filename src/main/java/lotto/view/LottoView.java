@@ -20,6 +20,7 @@ public class LottoView {
     private static final String SUFFIX_YIELD_MESSAGE = "%입니다.";
 
     private static final int SKIP_RESULT_ELSE_CASE = 1;
+    private static final long RESULT_NUMBER_ZERO = 0L;
 
 
     public void printStartMessage() {
@@ -36,9 +37,9 @@ public class LottoView {
 
     public void printLottoBundleInfo(List<Lotto> lottoBundle) {
         System.out.println(lottoBundle.size() + LOTTO_NUMBER_MESSAGE);
-        for (Lotto lotto : lottoBundle) {
-            lotto.printNumbers();
-        }
+        lottoBundle.stream()
+                .map(Lotto::getNumbers)
+                .forEach(System.out::println);
     }
 
     public void printLottoResult(List<LottoResult> lottoResults) {
