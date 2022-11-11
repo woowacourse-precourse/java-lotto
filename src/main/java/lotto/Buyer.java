@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Buyer {
 
@@ -26,7 +28,7 @@ public class Buyer {
 
     public int calculateLotteryNum(int buyNum) {
         int cnt = buyNum / 1000;
-        System.out.println(cnt+"개 구매했습니다.");
+        System.out.println(cnt+"개를 구매했습니다.");
 
         return cnt;
     }
@@ -36,7 +38,7 @@ public class Buyer {
 
         for (int index = 0; index < lottoCnt; index++) {
             Lotto newLotto = new Lotto(lotteryMachine.makeLottoNum());
-            Collections.sort(newLotto.getNumbers());
+            //Collections.sort(newLotto.getNumbers());
             this.lottos.add(newLotto);
         }
     }
@@ -47,7 +49,7 @@ public class Buyer {
 
     public void printBuyLotto() {
         for (Lotto lotto : lottos) {
-            System.out.println(lotto.getNumbers());
+            System.out.println(lotto.getNumbers().stream().sorted().collect(Collectors.toList()));
         }
     }
 
