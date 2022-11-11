@@ -110,6 +110,40 @@ public class Application {
         }
         return output;
     }
+
+    public static void printStatistic( List<List<Integer>> generatedLottos, List<Integer> winnigNum, int bonusNum, int money){
+        int[] winCnt = {0,0,0,0,0};
+        int winningPrice = 0;
+
+        for (List<Integer> generatedLotto : generatedLottos){
+            int winGrade = compareNumbers(generatedLotto, winnigNum, bonusNum);
+            if (winGrade == 5){
+                continue;
+            }
+            winCnt[winGrade] += 1;
+        }
+        for(int i = 0; i < 5; i++){
+            if(i == 0){
+                winningPrice += 5000 * winCnt[i];
+                System.out.println("3개 일치 (5,000원) - " + winCnt[i] + "개");
+            }else if(i == 1){
+                winningPrice += 50000 * winCnt[i];
+                System.out.println("4개 일치 (50,000원) - "+ winCnt[i]+ "개");
+            }else if(i == 2){
+                winningPrice += 1500000 * winCnt[i];
+                System.out.println("5개 일치 (1,500,000원) - "+ winCnt[i]+ "개");
+            }else if(i == 3){
+                winningPrice += 30000000 * winCnt[i];
+                System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+ winCnt[i]+ "개");
+            }else if(i == 4){
+                winningPrice += 2000000000 * winCnt[i];
+                System.out.println("6개 일치 (2,000,000,000원) - "+ winCnt[i]+ "개");
+            }
+        }
+
+        System.out.format("총 수익률은 %.1f%%입니다.",(float)winningPrice / (float)money * 100.0);
+
+    }
     public static void execute(){
         int money = getMoney();
         int lottoCnt = money / 1000;
@@ -124,6 +158,11 @@ public class Application {
             generatedLottos.add(lotto);
         }
 
+        List<Integer> winnigNum = getWinningNum();
+
+        int bonusNum = getBonusNum();
+
+        printStatistic(generatedLottos, winnigNum, bonusNum, money);
     }
 
     public static void main(String[] args) {
