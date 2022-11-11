@@ -30,7 +30,7 @@
 
 - [x] 구입할 수 있는 로또의 개수를 반환 - int lottoCount = Lotto#lottoCount(int number)
 - [x] 1 ~ 45까지의 숫자 중 6개의 중복되지 않는 숫자를 뽑는다. - Lotto#createLottoNumbers()
-- [ ] 구입할 금액만큼 로또 번호를 반복하여 생성하고 오름차순 정렬 - List<List<Integer>> lottoList = Lotto#createLottoList(int numberOfLotto)
+- [x] 구입할 금액만큼 로또 번호를 반복하여 생성하고 오름차순 정렬 - List<List<Integer>> lottoList = Lotto#createLottoList(int numberOfLotto)
   - [x] 구입할 금액만큼 로또 번호를 반복하여 생성 - List<List<Integer>> lottoList = Lotto#createLottoList(int numberOfLotto)
   - [x] 발행한 로또 번호를 오름차순으로 정렬한다. - List<Integer> lotto = Lotto#sortLottoNumberAscending(List<Integer> lottoNumber)
 
