@@ -1,6 +1,7 @@
 package lotto.uitls;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Validation {
     private static final int LOTTO_PRICE = 1_000;
@@ -30,6 +31,11 @@ public class Validation {
 
     public static boolean isPossiblePrice(String purchaseAmount) {
         return Integer.parseInt(purchaseAmount) > 0;
+    }
+
+    public static boolean hasOnlyDigitAndComma(String input) {
+        String digitAndComma = "^([0-9,])*$";
+        return Pattern.matches(digitAndComma, input);
     }
 
     public static boolean hasCorrectNumberOfNumbers(String input) {
