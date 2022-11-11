@@ -2,6 +2,7 @@ package domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import view.PrintBuyLottoList;
@@ -16,12 +17,14 @@ public class BuyLottoList {
         for(int number=0; number<pick_count; number++){
             setLottoNumberList(buyLottoList, number);
           }
+
         printBuyLottoList.printLottoList(pick_count, buyLottoList);
     }
 
     private void setLottoNumberList(List<List<Integer>> pickList, int number) {
-        pickList.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-        Collections.sort(pickList.get(number));
+        List<Integer> integers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        Collections.sort(integers);
+        pickList.add(integers);
     }
 
     public static List<List<Integer>> getBuyLottoList() {
