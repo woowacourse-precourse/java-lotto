@@ -15,6 +15,10 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-
     // TODO: 추가 기능 구현
+
+    //구매횟수만큼 로또 출력
+    private void lottoGenerator() {
+
+    }
 }
