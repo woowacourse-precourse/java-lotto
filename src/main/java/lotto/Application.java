@@ -1,20 +1,23 @@
 package lotto;
 
-
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
+import static lotto.Result.*;
 
 public class Application {
 
     private static final int LOTTO_PRICE = 1000;
-    private static final int MIN_LOTTO_NUM = 1;
-    private static final int MAX_LOTTO_NUM = 45;
-    private static final int NUMBER_OF_LOTTO_NUMS = 6;
+    private static final int MIN_NUM = 1;
+    private static final int MAX_NUM = 45;
+    private static final int NUMBER_OF_NUMS = 6;
+    private static final int FIRST_PLACE_STANDARD = 6;
+    private static final int SECOND_THIRD_PLACE_STANDARD = 5;
+    private static final int FOURTH_PLACE_STANDARD = 4;
+    private static final int FIFTH_PLACE_STANDARD = 3;
+    private static final Map<Result, Integer> numOfEachResult = new HashMap<>();
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -53,7 +56,7 @@ public class Application {
     public static List<Lotto> issueLotto(int amount) {
         List<Lotto> issuedLottos = new ArrayList<>();
         for (int count = 0; count < amount ; count++) {
-            List<Integer> picked = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUM, MAX_LOTTO_NUM, NUMBER_OF_LOTTO_NUMS);
+            List<Integer> picked = Randoms.pickUniqueNumbersInRange(MIN_NUM, MAX_NUM, NUMBER_OF_NUMS);
             issuedLottos.add(new Lotto(picked));
         }
         return issuedLottos;
@@ -86,7 +89,7 @@ public class Application {
                 converted.add(Integer.parseInt(num));
             }
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 정수로 입력해야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 정수로 입력해야 합니다.");
         }
         return converted;
     }
@@ -95,12 +98,10 @@ public class Application {
         if (winningNums.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
         }
-
         Set<Integer> winningNumsSet = new HashSet<>(winningNums);
         if (winningNums.size() != winningNumsSet.size()) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 서로 중복되지 않아야 합니다.");
         }
-
         for (int num : winningNums) {
             if (num < 1 || num > 45) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
@@ -111,7 +112,37 @@ public class Application {
 
     public static String getBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        return Console.readLine();
+        return Console.readLine().trim();
+    }
+
+    public static void validateBonusNumber(int bonusNum) {
+        if (bonusNum < 1 || bonusNum > 45) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+    }
+
+    public static void getAllResults(List<Lotto> issuedLottos, List<Integer> winningNums, int bonusNum) {
+        for (Lotto lotto : issuedLottos) {
+            int numOfMatching = (int) winningNums.stream().filter(lotto.getNumbers()::contains).count();
+            getEachResult(lotto, winningNums, bonusNum);
+        }
+    }
+
+    private static void getEachResult(Lotto lotto, List<Integer> winningNums, int bonusNum) {
+        List<Integer> numbers = lotto.getNumbers();
+        int numOfMatching = (int) winningNums.stream().filter(numbers::contains).count();
+
+        if (numOfMatching == FIRST_PLACE_STANDARD) {
+            numOfEachResult.merge(FIRST, 1, Integer::sum);
+        } else if (numOfMatching == SECOND_THIRD_PLACE_STANDARD && numbers.contains(bonusNum)) {
+            numOfEachResult.merge(SECOND, 1, Integer::sum);
+        } else if (numOfMatching == SECOND_THIRD_PLACE_STANDARD) {
+            numOfEachResult.merge(THIRD, 1, Integer::sum);
+        } else if (numOfMatching == FOURTH_PLACE_STANDARD) {
+            numOfEachResult.merge(FOURTH, 1, Integer::sum);
+        } else if (numOfMatching == FIFTH_PLACE_STANDARD) {
+            numOfEachResult.merge(FIFTH, 1, Integer::sum);
+        }
     }
 
 }
