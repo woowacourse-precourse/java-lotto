@@ -23,8 +23,12 @@ public class BonusNumberValidator extends NumberValidator {
     }
     
     private static void validateDuplicateLottoNumber(final Lotto winningLotto, final int bonusNumber) {
-        if (winningLotto.isNumberContains(bonusNumber)) {
+        if (isNumberContains(winningLotto, bonusNumber)) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_EXCEPTION_MESSAGE);
         }
+    }
+    
+    private static boolean isNumberContains(final Lotto winningLotto, final int bonusNumber) {
+        return winningLotto.isNumberContains(bonusNumber);
     }
 }
