@@ -21,14 +21,14 @@ public class PlayerTest {
     @DisplayName("10000원이 주어졌을 때 살수있는 로또의 개수는 10개")
     @Test
     void canByLottoCount() {
-        int count = player.canBuyLottoCount(10000);
+        int count = player.calculateLottoCount(10000);
         assertThat(count).isEqualTo(10);
     }
 
     @DisplayName("구임 금액이 1000으로 나누어 떨어지지 않으면 예외 발생")
     @Test
     void validatePrice() {
-        assertThatThrownBy(() -> player.canBuyLottoCount(1350))
+        assertThatThrownBy(() -> player.calculateLottoCount(1350))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 구입 금액은 1000으로 나누어 떨어져야 합니다.");
     }
@@ -37,6 +37,8 @@ public class PlayerTest {
     @Test
     void buyLottos() {
         List<Lotto> lottos = player.buyLottos(3000, createLottoNumbers());
+
+        System.out.println(lottos);
         assertThat(lottos.size()).isEqualTo(3);
     }
 
