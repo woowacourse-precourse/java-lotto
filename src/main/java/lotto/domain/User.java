@@ -50,7 +50,7 @@ public class User {
         return String.format("%.1f", yieldPercent);
     }
 
-    private void validate(String input) {
+    private void validate(String input) throws RuntimeException {
         long numericLength = input.chars().filter(Character::isDigit).count();
         if (numericLength != input.length())
             throw new IllegalArgumentException(LottoError.NOT_NUMERIC.getErrorMessage());

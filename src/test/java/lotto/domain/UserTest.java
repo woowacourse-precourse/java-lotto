@@ -50,7 +50,7 @@ class UserTest {
 
         //then
         assertThat(user.getLottos().size()).isEqualTo(50);
-        assertThat(user.getLottos().get(0).getNumbers()).isSorted();
+        assertThat(user.getLottos().get(0).sorted()).isSorted();
     }
 
     @Test
@@ -65,7 +65,7 @@ class UserTest {
         String yield = user.getYield();
 
         //then
-        double expectedResult = (long) Prize.FIRST.getPrize() * 2 / user.getPurchaseAmount() * 100;
+        double expectedResult = (double) Prize.FIRST.getPrize() * 2 / user.getPurchaseAmount() * 100;
         assertThat(Double.parseDouble(yield)).isEqualTo(expectedResult);
         System.out.println("yield = " + yield);
     }

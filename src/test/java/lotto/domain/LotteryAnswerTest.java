@@ -18,7 +18,7 @@ class LotteryAnswerTest {
 
         //then
         assertDoesNotThrow(() -> lotteryAnswer.inputAnswerLotto("1,2,5,34,6,3"));
-        assertThat(lotteryAnswer.getAnswer().getNumbers()).isSorted();
+        assertThat(lotteryAnswer.getAnswer().sorted()).isSorted();
     }
 
     @Test
