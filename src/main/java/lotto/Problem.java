@@ -23,7 +23,8 @@ public class Problem {
         input.printAllBuyingLotto();
         printWinningNumberInputGuide();
         inputWinningNumber();
-
+        printBonusNumberGuide();
+        inputBonusNumber();
     }
 
     private void printWinningNumberInputGuide(){
@@ -42,5 +43,15 @@ public class Problem {
         }
 
         return numbers;
+    }
+
+    private void printBonusNumberGuide(){
+        System.out.println();
+        System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
+    private void inputBonusNumber(){
+        int bonusNumber=Integer.parseInt((Console.readLine()));
+        this.winningLotto.inputBonusNumber(bonusNumber);
     }
 }
