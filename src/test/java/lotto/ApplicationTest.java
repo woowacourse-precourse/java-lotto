@@ -1,13 +1,17 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -52,6 +56,22 @@ class ApplicationTest extends NsTest {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"asdf", "1000a", "1asdf0", "sd8asd"})
+    @DisplayName("User 돈 입력 문자 예외 테스트")
+    void 유저_돈_입력_문자_예외_테스트(String money) {
+        run(money);
+        assertThat(output()).contains("[ERROR] Please input Number only");
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"15300", "12345", "145321", "1234"})
+    @DisplayName("User 돈 입력 단위 예외 테스트")
+    void 유저_돈_입력_단위_예외_테스트(String money) {
+        run(money);
+        assertThat(output()).contains("[ERROR] Please enter in thousands");
     }
 
     @Override
