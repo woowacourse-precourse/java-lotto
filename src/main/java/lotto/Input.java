@@ -16,4 +16,10 @@ public class Input {
 		String userInput = Console.readLine();
 		return userInput;
 	}
+
+	public static String enterBonusNumber() {
+		System.out.println("보너스 번호를 입력해 주세요.");
+		String userInput = Console.readLine();
+		return userInput;
+	}
 }
