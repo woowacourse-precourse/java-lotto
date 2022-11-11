@@ -15,7 +15,7 @@ public class Constants {
     public static final String SAME_FIVE = "5개 일치 (1,500,000원) - %d개";
     public static final String SAME_FIVE_BONUS = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개";
     public static final String SAME_SIX = "6개 일치 (2,000,000,000원) - %d개";
-    public static final String EARNED_RATE = "총 수익률은 %.f입니다.";
+    public static final String EARNED_RATE = "총 수익률은 %.1f%%입니다.";
 
     public static final String ERROR_ALERT = "[ERROR] ";
     public static final String NOT_DIVISIBLE_BY_THOUSAND = ERROR_ALERT + "1000원 단위로 값을 지불해야 합니다.";

@@ -47,4 +47,9 @@ public class ProgramUI {
             System.out.println(notice);
         }
     }
+
+    public void printRate(float earnedRate) {
+        String rateNotice = String.format(EARNED_RATE, earnedRate);
+        System.out.println(rateNotice);
+    }
 }
