@@ -12,6 +12,7 @@ public class Input {
 
     private List<Integer> answer;
 
+    private int bonus;
     private Valid valid;
 
     private final static int unitPrice = 1000;
@@ -19,6 +20,7 @@ public class Input {
     public Input() {
         number = 0;
         answer = new ArrayList<>();
+        bonus = 0;
     }
 
     public int getNumber() {
@@ -49,7 +51,7 @@ public class Input {
         return Console.readLine().split(",");
     }
 
-    public void checkValid(String[] enterAnswer) {
+    public void checkValidAnswer(String[] enterAnswer) {
         if (valid.hasRepeatNumber(enterAnswer) || valid.enterNumberOverLength(enterAnswer)
             || valid.isOverRange(enterAnswer)) {
             throw new IllegalArgumentException("1-45까지의 수 중 6개의 수를 골라 입력하세요.");
@@ -66,6 +68,23 @@ public class Input {
         }
     }
 
+    public String enterBonus() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        return Console.readLine();
+    }
 
+    public void checkValidBonus(String bonus, String[] answer) {
+        if (valid.numberOverLength(bonus) || valid.isRepeatWithAnswer(bonus, answer)
+        || valid.isOverRangeValue(bonus)) {
+            throw new IllegalArgumentException("보너스 번호는 정답 수 제외 1~45 수 중 하나의 숫자를 입력해 주세요.");
+        }
+    }
+    
+    public void returnBonus(String bonusNum, String[] answer) {
+        if (!valid.numberOverLength(bonusNum) && !valid.isRepeatWithAnswer(bonusNum, answer)
+                && !valid.isOverRangeValue(bonusNum)) {
+            bonus = Integer.parseInt(bonusNum);
+        }
+    }
 }
 
