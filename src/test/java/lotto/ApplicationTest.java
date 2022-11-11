@@ -23,6 +23,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("당첨 번호를 파싱하는 기능 테스트")
+    void parseWinningNumbers() {
+        assertThat(Application.parseWinningNumbers("1,2,3,4,5,6").size()).isEqualTo(6);
+        assertThatThrownBy(() -> Application.parseWinningNumbers("1,2,3,4,5")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.parseWinningNumbers("1,2,3,4,5,A")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Application.parseWinningNumbers("1 2 3 4 5 6")).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     void 기능_테스트() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
