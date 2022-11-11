@@ -23,5 +23,21 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @Test
+    void 입력이_6개보다_적은_경우() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 숫자가_범위를_벗어남() {
+        assertThatThrownBy(() -> new Lotto(List.of(4, 25, 35, 42, 44, 46)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 숫자가_범위를_벗엇남_2() {
+        assertThatThrownBy(() -> new Lotto(List.of(0, 1, 2, 3, 4, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
