@@ -200,4 +200,8 @@ public class LottoGameService {
     public List<List<Integer>> getPurchaseLottoNumbers() {
         return purchaseLottoNumbers;
     }
+
+    public Map<LottoWinningRank, Integer> getLottoWinningRankMap() {
+        return lottoWinningRankMap;
+    }
 }
