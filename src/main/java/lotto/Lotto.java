@@ -28,7 +28,12 @@ public class Lotto {
     }
 
     public static List<Integer> createLottoNumber() {
+        //TODO : 정렬기능 필요
         return Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_COUNT);
+    }
+
+    public boolean isContained(int num) {
+        return  numbers.contains(num);
     }
 
     @Override

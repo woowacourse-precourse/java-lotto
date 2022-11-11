@@ -12,8 +12,15 @@ public class WinningNumber {
     Lotto lotto;
     int bonusNumber;
 
+    public WinningNumber() {
+        inputWinningNumber();
+        inputBonusNumber();
+    }
+
     private void inputWinningNumber() {
         List<Integer> winningNumber = new ArrayList<>();
+
+        System.out.println(WINNING_NUMBER_MESSAGE);
         String input = Console.readLine();
         String[] inputList = input.split(",");
 
@@ -23,9 +30,26 @@ public class WinningNumber {
             int num = Integer.parseInt(inputList[i]);
             winningNumber.add(num);
         }
-
         validateForRange(winningNumber);
         lotto = new Lotto(winningNumber);
+        System.out.println();
+    }
+
+    private void inputBonusNumber() {
+        System.out.println(BONUS_NUMBER_MESSAGE);
+        String input = Console.readLine();
+        Validator.validateForIllegalInput(input);
+
+        int bonus = Integer.parseInt(input);
+        validateForDuplicatedNumber(bonus);
+
+        bonusNumber = bonus;
+        System.out.println();
+    }
+    private void validateForDuplicatedNumber(int bonusNumber) {
+        if(lotto.isContained(bonusNumber)) {
+            throw new IllegalArgumentException(DUPLICATED_NUMBER_ERROR_MESSAGE);
+        }
     }
 
     private void validateForIllegalInput(String[] inputList) {
