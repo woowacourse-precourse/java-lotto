@@ -62,19 +62,34 @@ public class Lotto {
     /**
      * 로또의 번호를 ,로 구분한 문자열로 반환
      *
-     * @return ,로 구분한 문자열
+     * @return , 로 구분한 문자열
      */
     @Override
     public String toString() {
         StringBuilder lottery = new StringBuilder();
 
-        for(Integer number : numbers) {
-            if(!lottery.toString().equals("")) lottery.append(", ");
+        for (Integer number : numbers) {
+            if (!lottery.toString().equals("")) lottery.append(", ");
             lottery.append(number);
         }
 
         return String.format("[%s]", lottery);
     }
 
-    // TODO: 추가 기능 구현
+    /**
+     * 당첨 결과를 비교하는 함수
+     *
+     * @param winningNumbers 당첨 번호
+     * @param bonus 보너스 번호
+     * @return 당첨 결과
+     */
+    public LottoResult compareWinningNumbers(List<Integer> winningNumbers, int bonus) {
+        int matchCount = 0;
+        boolean bonusMatched = numbers.contains(bonus);
+        for (int number : winningNumbers) {
+            if (numbers.contains(number)) matchCount++;
+        }
+
+        return LottoResult.find(matchCount, bonusMatched);
+    }
 }
