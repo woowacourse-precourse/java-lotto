@@ -7,7 +7,6 @@ import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
-
 public class LotteryNumber {
     private ArrayList<ArrayList<Integer>> numbers = new ArrayList<>();
 
@@ -35,5 +34,13 @@ public class LotteryNumber {
     }
     public ArrayList<ArrayList<Integer>> getNumbers() {
         return this.numbers;
+    }
+
+    public void informLotteryNumbers() {
+        System.out.println(this.numbers.size() +  "개를 구매했습니다.");
+
+        for(List list : numbers){
+            System.out.println(list);
+        }
     }
 }
