@@ -5,6 +5,7 @@ import lotto.controller.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class UserInputHandler {
 
@@ -12,9 +13,15 @@ public class UserInputHandler {
     static final int numbersOfLotto = 6;
 
     public int getHowMuchTickets(){
-        int money = Integer.parseInt(Console.readLine());
-        validateMoney(money);
-        return money / moneyOfOneTicket;
+
+        try{
+            int money = Integer.parseInt(Console.readLine());
+            validateMoney(money);
+            return money / moneyOfOneTicket;
+        }catch(NumberFormatException ex){
+            System.out.println("[ERROR] 구입 금액에는 정수만 입력할 수 있습니다.");
+            throw new NoSuchElementException();
+        }
     }
 
     public Lotto getWinningNumbers(){
@@ -40,7 +47,8 @@ public class UserInputHandler {
 
     private void validateMoney(int money){
         if(money % moneyOfOneTicket != 0){
-            throw new IllegalArgumentException("[ERROR] 로또는 1,000원 단위로 구입할 수 있습니다.\n");
+            System.out.println("[ERROR] 로또는 1,000원 단위로 구입할 수 있습니다.\n");
+            throw new IllegalArgumentException();
         }
     }
 
