@@ -27,10 +27,6 @@ public class OutputUtil {
         System.out.println(Message.RESULT_FIRST.getMessage() + ranks.get(Number.ONE) + "개");
     }
 
-    public void printErrorMessage() {
-        System.out.println(Message.ERROR_MESSAGE.getMessage());
-    }
-
     public void printYield(double yield) {
         System.out.printf(Message.YIELD_MESSAGE.getMessage(), yield);
     }
