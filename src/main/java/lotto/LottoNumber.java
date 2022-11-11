@@ -1,45 +1,20 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-import static constant.ErrorMessage.*;
-import static constant.Constant.*;
+import static constant.Constant.INITIAL_NUMBER;
+import static constant.Constant.LOTTO_SIZE;
 
 public class LottoNumber {
-    private static List<Integer> winningNumbers = new ArrayList<>();
+    private static List<Integer> winningNumbers;
     private static int bonusNumber;
 
     public LottoNumber(String winningNumbers, String bonusNumber) {
-        for (String num : winningNumbers.split(",")) {
-            validLottoNumber(num);
-            validNumberRange(Integer.parseInt(num));
-            this.winningNumbers.add(Integer.parseInt(num));
-        }
-        validLottoNumber(bonusNumber);
-        validNumberRange(Integer.parseInt(bonusNumber));
+        String[] split = winningNumbers.split(",");
+        this.winningNumbers = Stream.of(split).map(Integer::parseInt).collect(Collectors.toList());
         this.bonusNumber = Integer.parseInt(bonusNumber);
-    }
-
-    private void validLottoNumber(String numbers) {
-        if (numbers.equals(EMPTY)) {
-            System.out.println(NOT_NUMBER);
-            throw new IllegalArgumentException(NOT_NUMBER);
-        }
-
-        for (int i = INITIAL_NUMBER; i < numbers.length(); i++) {
-            if (!Character.isDigit(numbers.charAt(i))) {
-                System.out.println(NOT_NUMBER);
-                throw new IllegalArgumentException(NOT_NUMBER);
-            }
-        }
-    }
-
-    private void validNumberRange(int num) {
-        if (num < LOTTO_NUMBER_MIN || num > LOTTO_NUMBER_MAX) {
-            System.out.println(NOT_LOTTO_NUMBER_RANGE);
-            throw new IllegalArgumentException(NOT_LOTTO_NUMBER_RANGE);
-        }
     }
 
     public static MatchCount getMatchResult(Lotto lotto) {
