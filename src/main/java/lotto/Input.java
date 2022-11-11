@@ -7,20 +7,22 @@ import java.util.stream.Stream;
 
 public class Input {
     public static int purchaseAmount() {
-        try {
-            int input = Integer.parseInt(input());
-            checkLottoAmount(input);
-            return input / 1000;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해 주세요.");
-        }
+        int parseInput = changeNumber(input());
+        checkLottoAmount(parseInput);
+        return parseInput / 1000;
     }
 
     public static List<Integer> winningNumber() {
         String input = input();
         checkContainSeparator(input);
+        return Stream.of(input.split(","))
+                .map(Input::changeNumber)
+                .collect(Collectors.toList());
+    }
+
+    private static int changeNumber(String input) {
         try {
-            return Stream.of(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 숫자를 입력해 주세요.");
         }
