@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static lotto.Lotto.createLottoNumber;
 import static lotto.constant.Constants.*;
 import static org.assertj.core.api.Assertions.*;
 
@@ -48,6 +49,7 @@ class LottoTest {
         Throwable t = catchThrowable(() -> {
             for (int i = 0; i < 100; i++) {
                 Lotto lotto = new Lotto(createLottoNumber());
+                System.out.println(lotto.toString());
             }
         });
         assertThat(t).doesNotThrowAnyException();
@@ -74,10 +76,6 @@ class LottoTest {
         if (lottoSet.size() != LOTTO_COUNT) {
             throw new IllegalArgumentException(DUPLICATED_NUMBER_ERROR_MESSAGE);
         }
-    }
-
-    private List<Integer> createLottoNumber() {
-        return Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_COUNT);
     }
 
 }
