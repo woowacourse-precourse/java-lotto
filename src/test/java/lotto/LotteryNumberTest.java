@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
@@ -23,12 +24,13 @@ public class LotteryNumberTest extends NsTest {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
                     LotteryNumber lotteryNumber = new LotteryNumber(3000);
-                    assertThat(lotteryNumber.getNumbers().equals(
-                            List.of(List.of(1, 3, 5, 7, 9, 11),
-                                    List.of(11, 13, 17, 23, 32, 42),
-                                    List.of(1, 2, 3, 4, 5, 6)
-                                    )
-                    ));
+                    List<List<Integer>> orderedNumbers = new ArrayList<>();
+
+                    orderedNumbers.add(List.of(1, 3, 5, 7, 9));
+                    orderedNumbers.add(List.of(11, 13, 17, 23, 32, 42));
+                    orderedNumbers.add(List.of(1, 3, 5, 7, 9));
+
+                    assertThat(lotteryNumber.getNumbers().equals(orderedNumbers));
                 },
                 List.of(11, 9, 7, 5, 3, 1),
                 List.of(13, 23, 42, 11, 32, 17),

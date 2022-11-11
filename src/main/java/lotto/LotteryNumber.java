@@ -9,7 +9,7 @@ import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 
 public class LotteryNumber {
-    private List<List<Integer>> numbers = new ArrayList<>();
+    private ArrayList<ArrayList<Integer>> numbers = new ArrayList<>();
 
     public LotteryNumber(int money) {
         int iterationNumber = money / 1000;
@@ -19,11 +19,21 @@ public class LotteryNumber {
     private void generateNumbers(int iterationNumber) {
         for (int i = 0; i < iterationNumber; i++) {
             List<Integer> randomNumbers = pickUniqueNumbersInRange(1, 45, 6);
-            numbers.add(randomNumbers);
+            numbers.add(sortElementNumbers(randomNumbers));
         }
     }
 
-    public List<List<Integer>> getNumbers() {
+    private ArrayList<Integer> sortElementNumbers(List<Integer> numbers) {
+        ArrayList<Integer> answer = new ArrayList();
+
+        for(int n : numbers){
+            answer.add(n);
+        }
+
+        Collections.sort(answer);
+        return answer;
+    }
+    public ArrayList<ArrayList<Integer>> getNumbers() {
         return this.numbers;
     }
 }
