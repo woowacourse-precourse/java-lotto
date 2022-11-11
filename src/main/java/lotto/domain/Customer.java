@@ -9,6 +9,7 @@ import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static lotto.view.Constants.*;
 
 public class Customer {
+    private int earnedMoney = 0;
     private final int paidMoney;
     private final int numOfTicket;
     private final List<List<Integer>> tickets = new ArrayList<>();
@@ -41,6 +42,15 @@ public class Customer {
     public void compareTickets(List<Integer> winningNumbers, int bonusNumber) {
         for (List<Integer> ticket: this.tickets) {
             compareNumbers(ticket, winningNumbers, bonusNumber);
+        }
+    }
+
+    private void calculateEarnedMoney() {
+        List<Integer> prizeMoney = Prize.getMoneyValues();
+        List<Integer> earnedCount = new ArrayList<>(this.winningTickets.values());
+
+        for (int i = 0; i < prizeMoney.size(); i++) {
+            this.earnedMoney += (prizeMoney.get(i) * earnedCount.get(i));
         }
     }
 
