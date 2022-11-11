@@ -49,6 +49,17 @@ public class PurchaseAmountTest {
                 .hasMessage(ExceptionMessage.PURCHASE_AMOUNT_IS_NOT_NUMBER.getMessage());
     }
 
+    @DisplayName("로또 구매 금액 입력 검증 - \\n 입력할 시 예외 발생")
+    @Test
+    void enterNewLine() {
+        String inputAmount = "\n";
+
+        assertThatThrownBy(() -> new PurchaseAmount(inputAmount))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new PurchaseAmount(inputAmount))
+                .hasMessage(ExceptionMessage.PURCHASE_AMOUNT_IS_NOT_NUMBER.getMessage());
+    }
+
     @DisplayName("로또 구매 금액 입력 검증 - 아무 값도 입력하지 않을 시 예외 발생")
     @Test
     void enterNothing() {
