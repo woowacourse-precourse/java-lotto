@@ -24,11 +24,8 @@ public class LottoController {
 
 	public void startApplication() {
 
-		Integer userMoneyNumber;
-		try {
-			userMoneyNumber = inputController.getUserMoneyNumber();
-		} catch (IllegalArgumentException e) {
-			outputView.printError(e.getMessage());
+		Integer userMoneyNumber = inputController.getUserMoneyNumber();
+		if (isInvalidNumber(userMoneyNumber)) {
 			return;
 		}
 
@@ -37,19 +34,19 @@ public class LottoController {
 		UserLottoDto userLottoDto = lottoService.makeRandomLottoNumber(lottoCount);
 		outputView.printUserLotto(userLottoDto.getUserLotto());
 
-		List<Integer> answerNumber;
-		Integer bonusNumber;
-		try {
-			answerNumber = inputController.getAnswerNumber();
-			bonusNumber = inputController.getBonusNumber();
-		} catch (IllegalArgumentException e) {
-			outputView.printError(e.getMessage());
+		List<Integer> answerNumber = inputController.getAnswerNumber();
+		Integer bonusNumber = inputController.getBonusNumber();
+		if (isInvalidNumber(answerNumber) || isInvalidNumber(bonusNumber)) {
 			return;
 		}
 
 		statisticsService.updateStatistics(userLottoDto, answerNumber, bonusNumber);
 		outputView.printUserStatistics(userMoneyNumber);
 
+	}
+
+	private boolean isInvalidNumber(Object number) {
+		return number == null;
 	}
 
 }
