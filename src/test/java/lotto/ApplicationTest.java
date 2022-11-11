@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.domain.LottoNumberGenerator;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -12,6 +13,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
+    @Test
+    void 로또_번호_만드는_메서드의_리턴_길이_확인() {
+        LottoNumberGenerator lottoNumberGen = new LottoNumberGenerator();
+        int lottoNumCount = 6;
+
+        assertThat(lottoNumberGen.createSortedLottoNumbers(lottoNumCount).size()).isEqualTo(lottoNumCount);
+
+    }
     @Test
     void 기능_테스트() {
         assertRandomUniqueNumbersInRangeTest(
