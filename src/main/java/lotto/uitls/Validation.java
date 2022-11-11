@@ -10,4 +10,8 @@ public class Validation {
     public boolean isDividedByLottoPrice(int purchaseAmount) {
         return purchaseAmount % LOTTO_PRICE == 0;
     }
+
+    public boolean isPossiblePrice(int purchaseAmount) {
+        return purchaseAmount > 0;
+    }
 }
