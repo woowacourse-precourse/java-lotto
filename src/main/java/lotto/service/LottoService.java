@@ -29,6 +29,7 @@ public class LottoService {
     public void play() {
         printPurchaseGuideMessage();
         setPlayerPurchaseLottos(purchaseLottos());
+        printPurchaseLottosInfo(playerPurchaseLottos);
         setWinningLotto(inputWinningLotto());
         List<Rank> lottoResults = getResult();
         printResult(lottoResults);
@@ -36,6 +37,13 @@ public class LottoService {
 
     private static void printPurchaseGuideMessage() {
         System.out.println("구입금액을 입력해 주세요.");
+    }
+
+    private static void printPurchaseLottosInfo(List<Lotto> playerPurchaseLottos) {
+        System.out.printf("%d개를 구매했습니다.%n", playerPurchaseLottos.size());
+        for (Lotto playerPurchaseLotto : playerPurchaseLottos) {
+            System.out.println(playerPurchaseLotto.getNumbers());
+        }
     }
 
     private void printResult(List<Rank> lottoResults) {
