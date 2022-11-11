@@ -31,6 +31,11 @@ class CheckInputExceptionTest {
         assertThatThrownBy(() -> CheckInputException.checkBuyerInputIsNotNumber(string))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
+
+        final String containSpace = "23 ";
+        assertThatThrownBy(() -> CheckInputException.checkBuyerInputIsNotNumber(containSpace))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
     }
 
     @Test
@@ -75,16 +80,16 @@ class CheckInputExceptionTest {
                 .hasMessageContaining(ERROR_MESSAGE);
     }
 
-    /*@Test
+    @Test
     void test(){
-        String str = "11,2,33,44,55, ";
-        List<Integer> numberic = new ArrayList<>();
+        final String str = "11,2,33 ,44,55";
 
-        for (String number : str.split(",")){
-            numberic.add(Integer.valueOf(number));
-        }
-        System.out.println(numberic.size());
-    }*/
+        List<Integer> splitList;
+        assertThatThrownBy(() -> Util.splitInteger(str, ","))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
 
+
+    }
 
 }
