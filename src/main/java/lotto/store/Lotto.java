@@ -1,8 +1,6 @@
 package lotto.store;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -29,5 +27,9 @@ public class Lotto {
         List<Integer> copyNumbers = new ArrayList<>(numbers);
         copyNumbers.retainAll(winNumbers);
         return copyNumbers.size();
+    }
+
+    public boolean compareBonusNumber(int bonusNumber) {
+        return numbers.contains(bonusNumber);
     }
 }
