@@ -1,6 +1,6 @@
 package lotto.data.type;
 
-public enum LottoNumberType {
+public enum ConstantNumberType {
     COST(1000),
     COUNT(6),
     MIN(1),
@@ -8,7 +8,7 @@ public enum LottoNumberType {
 
     private final int value;
 
-    LottoNumberType(int value) {
+    ConstantNumberType(int value) {
         this.value = value;
     }
 

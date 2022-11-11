@@ -1,45 +1,45 @@
 package lotto.data.type;
 
 import lotto.data.dto.Lotto;
-import lotto.data.dto.LottoAnswerDto;
+import lotto.data.dto.LottoWinNumberDto;
 
 public enum LottoResultType {
     FIRST(2000000000) {
         @Override
-        public boolean isAcquired(Lotto lotto, LottoAnswerDto lottoAnswerDto) {
-            return getMatches(lotto, lottoAnswerDto) == 6;
+        public boolean isAcquired(Lotto lotto, LottoWinNumberDto lottoWinNumberDto) {
+            return getMatches(lotto, lottoWinNumberDto) == 6;
         }
     },
     SECOND(30000000) {
         @Override
-        public boolean isAcquired(Lotto lotto, LottoAnswerDto lottoAnswerDto) {
-            return getMatches(lotto, lottoAnswerDto) == 5 &&
-                    lotto.getNumbers().contains(lottoAnswerDto.getBonusNumber());
+        public boolean isAcquired(Lotto lotto, LottoWinNumberDto lottoWinNumberDto) {
+            return getMatches(lotto, lottoWinNumberDto) == 5 &&
+                    lotto.getNumbers().contains(lottoWinNumberDto.getBonusNumber());
         }
     },
     THIRD(1500000) {
         @Override
-        public boolean isAcquired(Lotto lotto, LottoAnswerDto lottoAnswerDto) {
-            return getMatches(lotto, lottoAnswerDto) == 5;
+        public boolean isAcquired(Lotto lotto, LottoWinNumberDto lottoWinNumberDto) {
+            return getMatches(lotto, lottoWinNumberDto) == 5;
         }
     },
     FOURTH(50000) {
         @Override
-        public boolean isAcquired(Lotto lotto, LottoAnswerDto lottoAnswerDto) {
-            return getMatches(lotto, lottoAnswerDto) == 4;
+        public boolean isAcquired(Lotto lotto, LottoWinNumberDto lottoWinNumberDto) {
+            return getMatches(lotto, lottoWinNumberDto) == 4;
         }
     },
     FIFTH(5000) {
         @Override
-        public boolean isAcquired(Lotto lotto, LottoAnswerDto lottoAnswerDto) {
-            return getMatches(lotto, lottoAnswerDto) == 3;
+        public boolean isAcquired(Lotto lotto, LottoWinNumberDto lottoWinNumberDto) {
+            return getMatches(lotto, lottoWinNumberDto) == 3;
         }
     };
 
-    private static int getMatches(Lotto lotto, LottoAnswerDto lottoAnswerDto) {
+    private static int getMatches(Lotto lotto, LottoWinNumberDto lottoWinNumberDto) {
         return (int) lotto.getNumbers()
                 .stream()
-                .filter(number -> lottoAnswerDto.getNumbers().contains(number))
+                .filter(number -> lottoWinNumberDto.getWinNumbers().contains(number))
                 .count();
     }
 
@@ -53,5 +53,5 @@ public enum LottoResultType {
         return this.amount;
     }
 
-    public abstract boolean isAcquired(Lotto lotto, LottoAnswerDto lottoAnswerDto);
+    public abstract boolean isAcquired(Lotto lotto, LottoWinNumberDto lottoWinNumberDto);
 }
