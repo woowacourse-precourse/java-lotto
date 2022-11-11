@@ -21,14 +21,15 @@ public class Application { // 패키지 분리
         Message.requestWinningNumberMessage();
         WinningNumber winningNumber = new WinningNumber(UserNumberScan.requestValue());
         List<Integer> numbers = winningNumber.getNumber();
-//        Message.requestBonusNumberMessage();
+        Message.requestBonusNumberMessage();
+        int validBonusNumber = BonusNumber.isValidBonusNumber(UserNumberScan.requestValue());
         MatchNumbers matchNumbers = new MatchNumbers();
 
         for (int j = 0; j < count; j++) {
             Lotto lotto = countLotto.get(j);
             List<Integer> numbers1 = lotto.getNumbers();
             Collections.sort(numbers1);
-            matchNumbers.match(numbers1, numbers);
+            matchNumbers.match(numbers1, numbers, validBonusNumber);
         }
         System.out.println(matchNumbers.getMaps());
     }
