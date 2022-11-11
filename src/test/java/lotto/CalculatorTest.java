@@ -1,12 +1,10 @@
 package lotto;
 
-import lotto.domain.Calculator;
+import lotto.Model.Calculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import lotto.domain.Prize;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -121,18 +119,18 @@ class CalculatorTest {
 
         @Test
         void case1() {
-            int investmentCash = 8000;
+            Cash cash = new Cash(8000);
 
-            int actual = calculator.countPublicationLotto(investmentCash);
+            int actual = calculator.countLottoNumber(cash);
             int result = 8;
             assertThat(actual).isEqualTo(result);
         }
 
         @Test
         void case2() {
-            int investmentCash = 14000;
+            Cash cash = new Cash(8000);
 
-            int actual = calculator.countPublicationLotto(investmentCash);
+            int actual = calculator.countLottoNumber(cash);
             int result = 14;
             assertThat(actual).isEqualTo(result);
         }
