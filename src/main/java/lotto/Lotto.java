@@ -16,5 +16,9 @@ public class Lotto {
         }
     }
 
+    public List<Integer> getLottoNum() {
+        return numbers;
+    }
+
     // TODO: 추가 기능 구현
 }
