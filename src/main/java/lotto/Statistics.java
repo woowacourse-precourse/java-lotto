@@ -42,4 +42,11 @@ public class Statistics {
         numbers.removeAll(winNumbers);
         return LottoRule.SIZE.getValue() - numbers.size();
     }
+
+    private boolean isNecessaryBonus(int bonusNumber, Set<Integer> numbers, int match) {
+        if (match == Prize.THIRD.getMatch()) {
+            return numbers.contains(bonusNumber);
+        }
+        return false;
+    }
 }
