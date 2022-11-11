@@ -39,6 +39,7 @@ public class LottoManager {
         for (int i = 0; i < myLotto.size(); i++) {
             List<Integer> myLottoNumber = myLotto.get(i).getLottoNumbers();
             int sameNumberCount = compareMyLottoWithWinningNumber(myLottoNumber, winningNumber);
+            int rank = getRank(sameNumberCount);
         }
         this.result = result;
     }
@@ -50,6 +51,21 @@ public class LottoManager {
             }
         }
         return sameNumberCount;
+    }
+    private int getRank(int sameNumberCount) {
+        if (sameNumberCount == 6) {
+            return 1;
+        }
+        if (sameNumberCount == 5) {
+            return 3;
+        }
+        if (sameNumberCount == 4) {
+            return 4;
+        }
+        if (sameNumberCount == 3) {
+            return 5;
+        }
+        return 0;
     }
 
 }
