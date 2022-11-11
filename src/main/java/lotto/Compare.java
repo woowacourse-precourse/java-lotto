@@ -35,6 +35,7 @@ public class Compare {
 		setThird(hitCount, myLotto, bonusNumber);
 		setFourth(hitCount);
 		setFifth(hitCount);
+		sumWinnings();
 	}
 
 	public void setFirst(int hitCount) {

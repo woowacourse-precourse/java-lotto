@@ -34,7 +34,8 @@ public class UserBet {
 		myLottos = new ArrayList<>();
 
 		while(myLottos.size() < amount) {
-			List<Integer> randomLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+			List<Integer> randomLotto = new ArrayList<>();
+			randomLotto.addAll(Randoms.pickUniqueNumbersInRange(1, 45, 6));
 			Collections.sort(randomLotto);
 
 			myLottos.add(randomLotto);
