@@ -9,8 +9,8 @@ public class WinningLotto {
         readWinningLotto();
     }
 
-    public Lotto getWinningLotto() {
-        return winningLotto;
+    public int grade(Lotto lotto) {
+        return winningLotto.compare(lotto);
     }
 
     private void readWinningLotto() {
