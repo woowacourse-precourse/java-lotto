@@ -9,6 +9,12 @@ public class RelativeLottoService {
     private InputOutputView inputOutputView = new InputOutputView();
     private ProduceWinningNumbers produceWinningNumbers = new ProduceWinningNumbers();
 
+    private int money;
+    private int bonusNumber;
+    private int quantity;
+    private List<List<Integer>> myLottoNumbers;
+    private List<Integer> winningNumbers;
+
     public int getMoney() {
         return money;
     }
@@ -24,12 +30,6 @@ public class RelativeLottoService {
     public List<Integer> getWinningNumbers() {
         return winningNumbers;
     }
-
-    private int money;
-    private int bonusNumber;
-    private int quantity;
-    private List<List<Integer>> myLottoNumbers;
-    private List<Integer> winningNumbers;
 
     public void relativeLottoNumber() {
         money = inputOutputView.buyMoney();
