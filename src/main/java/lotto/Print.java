@@ -20,6 +20,8 @@ public class Print {
     private final static String LOTTERY_RESULT_SECOND = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
     private final static String LOTTERY_RESULT_FIRST = "6개 일치 (2,000,000,000원) - ";
     private final static String LOTTERY_RESULT_COUNT = "개";
+    private final static String PROFIT_RATE_START = "총 수익률은 ";
+    private final static String PROFIT_RATE_END = "%입니다.";
 
     public static void inputPrice() {
         System.out.println(INPUT_PRICE);
@@ -57,5 +59,9 @@ public class Print {
         System.out.println(LOTTERY_RESULT_THIRD + third + LOTTERY_RESULT_COUNT);
         System.out.println(LOTTERY_RESULT_SECOND + second + LOTTERY_RESULT_COUNT);
         System.out.println(LOTTERY_RESULT_FIRST + first + LOTTERY_RESULT_COUNT);
+    }
+
+    public static void profitRate(double rate) {
+        System.out.printf("%s%.1f%s\n", PROFIT_RATE_START, rate, PROFIT_RATE_END);
     }
 }
