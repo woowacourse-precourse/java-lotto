@@ -4,6 +4,8 @@ import lotto.validator.LottoValidator;
 
 import java.util.List;
 
+import static lotto.global.LottoConstants.LOTTO_COUNT_BY_2ND_AWARD;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -22,7 +24,7 @@ public class Lotto {
             }
         }
 
-        if (matchingCount == 5 && numbers.contains(bounsNumber)) {
+        if (matchingCount == LOTTO_COUNT_BY_2ND_AWARD && numbers.contains(bounsNumber)) {
             bounsFlag = true;
         }
 
