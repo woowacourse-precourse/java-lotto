@@ -20,8 +20,8 @@ public class LottoController {
     public void lottoProcedure() {
         int userMoney = userMoney();
         List<Integer> lotteryWinningNumber = lotteryNumber();
-
     }
+
 
     private static int userMoney() {
         String userLottoBuyMoney = inputUserLottoBuyMoney();
