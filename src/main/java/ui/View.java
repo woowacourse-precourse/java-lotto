@@ -40,6 +40,10 @@ public class View {
         }
     }
 
+    public static void printLottoNumber(String numberForm) {
+        System.out.println(numberForm);
+    }
+
     public static void printTotalPrize(User user) {
         System.out.print(RESULT_TOTAL_PRIZE_PRE + user.getRatio() + RESULT_TOTAL_PRIZE_END);
     }
