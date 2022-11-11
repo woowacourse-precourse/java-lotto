@@ -15,6 +15,10 @@ public class Money {
         this.money = Integer.parseInt(userInput);
     }
 
+    public int calculateCount() {
+        return this.money / LOTTO_PRICE;
+    }
+
     private void validate(String userInput){
         isBlank(userInput);
         isConsistsWithOnlyDigits(userInput);
