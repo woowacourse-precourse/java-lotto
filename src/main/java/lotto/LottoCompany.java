@@ -41,9 +41,9 @@ public class LottoCompany {
         String [] winningNumbers = numbers.split(",");
         Arrays.sort(winningNumbers);
         validate(winningNumbers);
-        List<LottoNumber> lottoNumbers = new ArrayList<>();
+        List<Integer> lottoNumbers = new ArrayList<>();
         for(int order=0; order<LENGTH;order++){
-            lottoNumbers.add(lottoNumberMap.get(Integer.parseInt(winningNumbers[order])));
+            lottoNumbers.add((Integer.parseInt(winningNumbers[order])));
         }
         this.lotto = new Lotto(lottoNumbers);
         bonusNumber();
