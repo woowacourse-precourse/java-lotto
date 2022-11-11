@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -12,8 +13,10 @@ public class Validator {
     }
 
     public void validateWinningNumbers(String winningNumbers) {
-        // 형태를 검증한다.
-        // 숫자들을 검증한다.
+        validateFormOfWinningNumbers(winningNumbers);
+        validateValuesOfWinningNumbers(Arrays.stream(winningNumbers.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList()));
     }
 
     private void validateFormOfWinningNumbers(String winningNumbers) {
