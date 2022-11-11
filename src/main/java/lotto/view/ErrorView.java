@@ -27,4 +27,5 @@ public class ErrorView {
 		System.out.println(ERROR + IS_NOT_LOTTO_NUMBER);
 		return ERROR + IS_NOT_LOTTO_NUMBER;
 	}
+
 }

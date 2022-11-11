@@ -2,13 +2,26 @@ package lotto.domain;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
+import lotto.handler.ExceptionHandler;
+import lotto.view.ErrorView;
 
 public class Lotto {
 	private final List<Integer> numbers;
 
 	public Lotto(List<Integer> numbers) {
 		validate(numbers);
+		isDuplicate(numbers);
 		this.numbers = numbers;
+	}
+
+	private void isDuplicate(List<Integer> numbers) {
+		Set<Integer> numberSet = new TreeSet<>(numbers);
+		if (numberSet.size() != 6) {
+			ExceptionHandler.raisingException(ErrorView.isNotLottoNumberList());
+		}
 	}
 
 	private void validate(List<Integer> numbers) {
