@@ -14,9 +14,8 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.NUMBER_OUT_OF_RANGE);
         }
-    }
-
-    public void print() {
-        System.out.println(numbers);
+        if (numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.DUPLICATE_NUMBER);
+        }
     }
 }
