@@ -37,6 +37,18 @@ class MoneyVerifierTest {
     }
 
     @Nested
+    @DisplayName("음수가 입력되었을 때")
+    class CheckPositive {
+        @ParameterizedTest(name = "{0}가 입력되었을 떄")
+        @ValueSource(strings = {"-123", "-10000", "-1145534", "-1", "-9223372036854775808"})
+        void 음수가_입력되었을때를_테스트한다(String target) {
+            assertThatThrownBy(() -> moneyVerifier.check(target))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(ExceptionMessage.IS_NOT_POSITIVE);
+        }
+    }
+
+    @Nested
     @DisplayName("기준 금액으로 나누어지지 않을 때")
     class CheckDivisible {
         @ParameterizedTest(name = "{0}가 입력되었을 때")
