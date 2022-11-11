@@ -12,18 +12,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class WinningNumberCheckTest {
 
-    WinningNumberCheck winningNumberCheck;
-    @BeforeEach
-    void init(){
-        winningNumberCheck = new WinningNumberCheck();
-    }
 
     @DisplayName("로또 번호 정상 입력 테스트")
     @Test
     void winningNumberTest() {
         List<Integer> winningNumber = List.of(1, 2, 3, 4, 5, 6);
         assertThat(winningNumber).isEqualTo(
-                winningNumberCheck.check("1,2,3,4,5,6")
+                WinningNumberCheck.check("1,2,3,4,5,6")
         );
     }
 
@@ -31,7 +26,7 @@ class WinningNumberCheckTest {
     void rangeTest(){
         String numbers = "1,2,3,55,4,7";
         assertThatThrownBy(()->{
-            winningNumberCheck.check(numbers);
+            WinningNumberCheck.check(numbers);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }

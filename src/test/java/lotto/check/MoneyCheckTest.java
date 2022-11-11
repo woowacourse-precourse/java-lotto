@@ -10,19 +10,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class MoneyCheckTest {
 
-    MoneyCheck moneyCheck;
-
-    @BeforeEach
-    void init(){
-        moneyCheck = new MoneyCheck();
-    }
 
     @DisplayName("숫자 아닌 값, 중복 테스트")
     @ParameterizedTest
     @ValueSource(strings = {"qwer","1234","222222","2v4f"})
     void moneyCheck(String s){
         assertThatThrownBy(()->{
-            moneyCheck.check(s);
+            MoneyCheck.check(s);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }

@@ -13,24 +13,19 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class BonusCheckTest {
-    BonusCheck bonusCheck;
-    @BeforeEach
-    void setUp() {
-        bonusCheck = new BonusCheck();
-    }
 
     @DisplayName("정상적인 보너스 입력 테스트")
     @Test
     void bonusCheckTest(){
 
-        assertThat(bonusCheck.check("42", new Lotto(List.of(1,2,3,4,5,6)))).isEqualTo(42);
+        assertThat(BonusCheck.check("42", new Lotto(List.of(1,2,3,4,5,6)))).isEqualTo(42);
     }
 
     @DisplayName("보너스 중복 테스트")
     @Test
     void bonusDuplicateTest(){
         assertThatThrownBy(()->{
-            bonusCheck.check("42", new Lotto(List.of(1,2,3,42,5,6)));
+            BonusCheck.check("42", new Lotto(List.of(1,2,3,42,5,6)));
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -39,7 +34,7 @@ class BonusCheckTest {
     @ValueSource(strings = {"qw","1q","2e","2  3"})
     void bonusCheckTest(String s){
         assertThatThrownBy(()->{
-            bonusCheck.check(s,new Lotto(List.of(1,2,3,4,5,6)));
+            BonusCheck.check(s,new Lotto(List.of(1,2,3,4,5,6)));
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -48,7 +43,7 @@ class BonusCheckTest {
     @ValueSource(strings={"49","47","88"})
     void rangeTest(String s){
         assertThatThrownBy(()->{
-            bonusCheck.check(s,new Lotto(List.of(1,2,3,4,5,6)));
+            BonusCheck.check(s,new Lotto(List.of(1,2,3,4,5,6)));
         }).isInstanceOf(IllegalArgumentException.class);
     }
 }
