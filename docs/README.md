@@ -108,15 +108,18 @@ Enum : Rank
 ```
 [Field]<br>
 - Map<Rank,Integer> winningStats
+- Map<Rank,Integer> rankPrice
 - double earningRate
 
 [constructor]<br>
 - Rate(Map<Rank,Integer> winningStats)
   - this.
+  - setRankPrice();
   - setEarningRate(winningStats)
 
 [method]<br>
 - public double getEarningRate() // earningRate Getter 
+- private void setRankPrice() // rankPrice 초기화 
 - private void setEarningRate(Map<Rank,Integer> winningStats) // (feat.7)
 - private int calcEarning(Map<Rank,Integer> winningStats) // 총 수익 계산
 - private int calcSpending(Map<Rank,Integer> winningStats) // 총 지출 계산
