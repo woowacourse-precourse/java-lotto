@@ -22,9 +22,5 @@ public class LottoException {
         return true;
     }
 
-    private void notRightLengthException(){}
-
-    private void sameNumbersException(){}
-
-    private void numberOutOfRangeException(){}
+    private void notRightNumberException(){}
 }

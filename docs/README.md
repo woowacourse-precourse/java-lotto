@@ -50,11 +50,9 @@ Lotto, BonusNumber를 참조한다.
 ### LottoException
 validate
 1. isNotRightLength : 리스트의 길이가 6이 아니면 참을 반환
-2. notRightLengthException : 맞지 않은 길이에 대한 예외처리
-3. containsSameNumber : 리스트의 숫자를 셋에 담았을 때, 둘의 사이즈가 다르면 참을 반환
-4. sameNumbersException : 같은 숫자를 가짐에 예외처리
-5. containsNumberOutOfRange : 리스트의 숫자가 1부터 45사이가 아닌게 있으면 참을 반환
-6. numberOutOfRangeException : 범위를 벗어난 숫자를 가짐에 예외처리
+2. containsSameNumber : 리스트의 숫자를 셋에 담았을 때, 둘의 사이즈가 다르면 참을 반환
+3. containsNumberOutOfRange : 리스트의 숫자가 1부터 45사이가 아닌게 있으면 참을 반환
+4. notRightNumberException : 예외처리 문구를 가지고 예외처리한다.
 
 ### PaymentException
 1. validate
