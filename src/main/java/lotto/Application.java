@@ -1,14 +1,33 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
 
     public static void main(String[] args) {
         try {
-            new Lotto(List.of(1, 2, 3, 4, 5, 5));
+            Winning winningLotto = new Winning(new Lotto(enterWinningNumbers()),
+                    enterWinningBonusNumber());
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] " + e.getMessage());
+            System.out.println(Constants.ERROR_PREFIX + e.getMessage());
         }
+    }
+
+    private static List<Integer> enterWinningNumbers() {
+        System.out.println(Constants.CONSOLE_LOTTO_NUMBER);
+        String input = Console.readLine();
+
+        List<Integer> numbers = new ArrayList<>();
+        for (String number : input.split(",")) {
+            numbers.add(Integer.parseInt(number));
+        }
+        return numbers;
+    }
+
+    private static int enterWinningBonusNumber() {
+        System.out.println(Constants.CONSOLE_LOTTO_BONUS_NUMBER);
+        return Integer.parseInt(Console.readLine());
     }
 }
