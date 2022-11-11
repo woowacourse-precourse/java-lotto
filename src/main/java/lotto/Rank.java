@@ -36,4 +36,8 @@ public enum Rank {
             return FIFTH;
         return NOTHING;
     }
+
+    public int getPrizemoney() {
+        return prizemoney;
+    }
 }
