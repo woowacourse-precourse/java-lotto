@@ -15,6 +15,10 @@ public class LottoStatistics {
         setResults(lottoBundle);
     }
 
+    public Map<Rank, Integer> getResults() {
+        return results;
+    }
+
     private void setResults(List<Lotto> lottoBundle) {
         for (Lotto lotto : lottoBundle) {
             Rank rank = getRank(lotto);
