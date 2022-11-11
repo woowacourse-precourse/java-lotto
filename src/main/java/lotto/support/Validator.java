@@ -22,34 +22,29 @@ public class Validator {
     }
     public void checkInteger(String target){
         if(!target.matches(REGEX)){
-            System.out.println(ERROR_MESSAGE+MUST_INTEGER);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_MESSAGE+MUST_INTEGER);
         }
     }
     public void checkUnit(String target){
         if((stringToInteger(target)%UNIT)!=REMAINDER){
-            System.out.println(ERROR_MESSAGE+UNMATCHED_UNIT);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_MESSAGE+UNMATCHED_UNIT);
         }
     }
     public void checkBelow(String target){
         if(stringToInteger(target)<UNIT){
-            System.out.println(ERROR_MESSAGE+BELOW_AMOUNT);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_MESSAGE+BELOW_AMOUNT);
         }
     }
     public void checkNumericalRange(List<Integer> target){
         for(Integer num:target){
             if(num<START_RANGE||num>END_RANGE){
-                System.out.println(ERROR_MESSAGE+NUMERIC_RANGE);
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ERROR_MESSAGE+NUMERIC_RANGE);
             }
         }
     }
     public void checkNumberOfDigit(Integer digit,List<Integer> target){
         if(target.size()!=digit){
-            System.out.println(ERROR_MESSAGE+digit+NUMBER_OF_DIGIT);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ERROR_MESSAGE+digit+NUMBER_OF_DIGIT);
         }
     }
     private Integer stringToInteger(String target){
