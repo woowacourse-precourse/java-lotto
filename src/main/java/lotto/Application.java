@@ -281,9 +281,9 @@ public class Application {
 
         int number = 0;
 
-        for (int i = 0; i < lottoList.size(); i++) {
+        for (Lotto lotto : lottoList) {
 
-            number += compareLottoNumbersAndWinningNumbers(lottoList.get(i), winningNumberList, 6);
+            number += compareLottoNumbersAndWinningNumbers(lotto, winningNumberList, 6);
         }
 
         return number;
