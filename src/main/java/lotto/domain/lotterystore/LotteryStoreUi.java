@@ -2,8 +2,11 @@ package lotto.domain.lotterystore;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.controller.LotteryRequestController;
+import lotto.dto.lotteryseller.RandomNumbersSets;
 import lotto.dto.lotterystore.MoneyForPurchase;
 import lotto.dto.lotterystore.NumbersForWinningPrize;
+
+import java.util.List;
 
 public class LotteryStoreUi {
 	private static final LotteryStoreUi storeUi = new LotteryStoreUi();
@@ -46,6 +49,13 @@ public class LotteryStoreUi {
 		requestToTransferWinningPrizeNumbers(winningPrizeNumbers, bonusNumber);
 	}
 
+	public void printRandomNumberSets(RandomNumbersSets randomNumbersSets) {
+		List<List<Integer>> sets = randomNumbersSets.getRandomNumbersSets();
+		int size = randomNumbersSets.getRandomNumbersSetsSize();
+		printMessageForRandomNumberSets(size);
+		sets.forEach(System.out::println);
+	}
+
 	private void printPurchaseMessage() {
 		System.out.println("구매금액을 입력해 주세요.");
 	}
@@ -56,6 +66,10 @@ public class LotteryStoreUi {
 
 	private void printMessageForBonusNumber() {
 		System.out.println("보너스 번호를 입력해 주세요.");
+	}
+
+	private void printMessageForRandomNumberSets(int size) {
+		System.out.println(size + "개를 구매했습니다.");
 	}
 
 	private void requestToTransferMoney(String money) {

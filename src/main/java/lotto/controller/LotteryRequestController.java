@@ -1,15 +1,19 @@
 package lotto.controller;
 
 import lotto.domain.lotteryseller.LotterySeller;
+import lotto.domain.lotterystore.LotteryStoreUi;
 import lotto.dto.lotteryseller.RandomNumbersSets;
 import lotto.dto.lotterystore.MoneyForPurchase;
 import lotto.dto.lotterystore.NumbersForWinningPrize;
 
 public class LotteryRequestController {
 	private static final LotteryRequestController controller = new LotteryRequestController();
+	private final LotteryStoreUi lotteryStoreUi;
 	private final LotterySeller lotterySeller;
 
+
 	private LotteryRequestController() {
+		lotteryStoreUi = LotteryStoreUi.getStoreUi();
 		lotterySeller = LotterySeller.getLotterySeller();
 	}
 
@@ -35,5 +39,10 @@ public class LotteryRequestController {
 	}
 
 	public void receiveRandomNumbersSets(RandomNumbersSets randomNumbersSets) {
+		sendRandomNumbersSetsToLotteryStoreUi(randomNumbersSets);
+	}
+
+	public void sendRandomNumbersSetsToLotteryStoreUi(RandomNumbersSets randomNumbersSets) {
+		lotteryStoreUi.printRandomNumberSets(randomNumbersSets);
 	}
 }
