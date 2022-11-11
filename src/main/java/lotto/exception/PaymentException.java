@@ -12,6 +12,10 @@ public class PaymentException {
         return Long.parseLong(price) % LOTTO_PRICE != 0;
     }
 
+    private boolean isZero(String price){
+        return price.equals("0");
+    }
+
     private void paymentNotAcceptableException(){
 
     }
