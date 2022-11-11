@@ -15,6 +15,7 @@ public class Controller {
         setWinningNumber();
         setBonusNumber();
         printResult();
+        printProfitRate();
     }
 
     private void purchaseLotto() {
@@ -40,5 +41,10 @@ public class Controller {
     private void printResult() {
         List<String> results = service.getWinningResult();
         OutputView.printWinningResult(results);
+    }
+
+    private void printProfitRate() {
+        String profitRate = service.getProfitRate();
+        OutputView.printProfitRate(profitRate);
     }
 }

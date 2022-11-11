@@ -2,6 +2,7 @@ package lotto.service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotteries;
@@ -21,7 +22,7 @@ public class Service {
             generateLotteries(lottoPriceNumber);
         } catch (IllegalArgumentException exception) {
             System.out.println(exception.getMessage());
-            throw new IllegalArgumentException();
+            throw new NoSuchElementException();
         }
     }
 
@@ -49,6 +50,10 @@ public class Service {
         result.countWinningCase();
         Map<String,Integer> resultMap = result.getResultMap();
         return Converter.toWinningResults(resultMap);
+    }
+
+    public String getProfitRate() {
+        return result.getProfitRate();
     }
 
     private void initResult() {
