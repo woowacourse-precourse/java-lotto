@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.exception.NotNumberException;
+import lotto.exception.NotThousandException;
 
 public class InputValidator {
     public void validateInputPurchaseAmount(String input) {
@@ -21,4 +22,12 @@ public class InputValidator {
             throw new NotNumberException();
         }
     }
+
+    private void validateIsThousand(int input) {
+        final int thousand = 1_000;
+        if(input < thousand || input % thousand != 0) {
+            throw new NotThousandException();
+        }
+    }
+
 }
