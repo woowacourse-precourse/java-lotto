@@ -50,7 +50,7 @@
   - 보너스 번호 입력 전 보너스 번호 입력이 이루어져야함을 알리는 함수
 
 
-- void printStats(List<Lotto>, int[], int)
+- void printStats(List<Lotto>, List<Integer>, int)
   - 당첨 내역을 출력하는 함수
 
 
@@ -149,6 +149,26 @@
 
 - void validateBonusNumberIsDuplicate(String, List<Integer>)
   - 보너스 번호가 당첨 번호와 중복되는지 검사하는 함수
+
+
+- Integer calculateFirst(List<Lotto>, List<Integer>)
+  - 1등 로또의 개수를 계산하는 함수
+
+
+- Integer calculateSecond(List<Lotto>, List<Integer>, int)
+  - 2등 로또의 개수를 계산하는 함수
+
+
+- Integer calculateThird(List<Lotto>, List<Integer>)
+  - 3등 로또의 개수를 계산하는 함수
+
+
+- Integer calculateForth(List<Lotto>, List<Integer>)
+  - 4등 로또의 개수를 계산하는 함수
+
+
+- Integer calculateFifth(List<Lotto>, List<Integer>)
+  - 5등 로또의 개수를 계산하는 함수
 
 
 - Double calculateSurplus(int, int, int, int, int, int)
