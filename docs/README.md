@@ -1,7 +1,7 @@
 # 가능 구현 목록
 
 ## 입력 (Console.readLine())
-- [x] 구입 금액 입력 ([^\d])
+- [x] 구입 금액 입력
   - [x] 구입 금액 입력하기
   - [x] 예외 처리 (IllegalArgumentException, 예외 메시지는 "[ERROR]"로 시작해야 한다.)
     - [x] null 또는 empty 인 경우
@@ -15,7 +15,7 @@
     - [x] 특수 문자가 존재하는 경우
     - [x] 공백이 포함된 경우
 
-- [x] 당첨 로또 번호 입력 ([^\d,])
+- [x] 당첨 로또 번호 입력
   - [x] 당첨 로또 번호 입력하기
   - [x] 예외 처리 (IllegalArgumentException, 예외 메시지는 "[ERROR]"로 시작해야 한다.)
     - [x] null 또는 empty 인 경우
@@ -30,7 +30,7 @@
     - [x] 공백이 포함된 경우
     - [x] 구분 기호가 쉼표가 아닌 경우
 
-- [x] 당첨 보너스 번호 입력 ([^\d])
+- [x] 당첨 보너스 번호 입력
   - [x] 당첨 보너스 번호 입력하기
   - [x] 예외 처리 (IllegalArgumentException, 예외 메시지는 "[ERROR]"로 시작해야 한다.)
     - [x] null 또는 empty 인 경우
