@@ -35,8 +35,4 @@ public class Referee {
             SIX.plusCount();
         }
     }
-
-    public boolean isDuplicateBonusBall(int bonus, Lotto lotto) {
-        return lotto.getNumbers().contains(bonus);
-    }
 }
