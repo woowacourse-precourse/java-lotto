@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.view.OutputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -36,5 +37,11 @@ public class LearningTest {
         DecimalFormat dc = new DecimalFormat("###,###,###,###");
         String ch = dc.format(money);
         assertThat(ch).isEqualTo("2,000,000,000");
+    }
+
+    @DisplayName("%가 들어간 문장 출력 확인 테스트")
+    @Test
+    void percentFormat() {
+        System.out.printf(OutputView.EARNING_RATE_MESSAGE, 62.5);
     }
 }
