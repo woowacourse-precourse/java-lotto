@@ -21,6 +21,10 @@ public class LottoResult {
         this.lottoResult = lottoResult;
     }
 
+    public Map<LottoRank, Integer> getLottoResult() {
+        return lottoResult;
+    }
+
     private EnumMap<LottoRank, Integer> initLottoResult() {
         return Arrays.stream(LottoRank.values())
                 .filter(value -> value != LottoRank.NONE)
