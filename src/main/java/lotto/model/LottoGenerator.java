@@ -2,6 +2,7 @@ package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoGenerator {
@@ -15,6 +16,7 @@ public class LottoGenerator {
 
         for (int i = 0; i < lottoCount; i++) {
             lottoNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(lottoNumber);
             lotteries.add(lottoNumber);
         }
         this.lotteries = lotteries;
