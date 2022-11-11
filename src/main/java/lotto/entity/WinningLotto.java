@@ -19,6 +19,9 @@ public class WinningLotto {
             throw new IllegalArgumentException(
                 "보너스 번호는 " + RANGE_START + "부터 " + RANGE_END + " 사이의 숫자여야 합니다. 입력 : " + bonus);
         }
+        if (lotto.contains(bonus)) {
+            throw new IllegalArgumentException("보너스 번호는 로또 번호와 중복된 숫자를 가지면 안됩니다. 입력 : " + bonus);
+        }
     }
 
     private boolean outOfRange(int bonus) {
