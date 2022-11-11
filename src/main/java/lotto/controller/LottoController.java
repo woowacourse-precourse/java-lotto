@@ -27,7 +27,8 @@ public class LottoController {
         final List<LottoRank> lottoRanks = lottos.parseRanks(winningLottoNumbers);
     
         OutputView.printWinningStats(lottoRanks);
-        
-        System.out.println(winningLottoNumbers);
+    
+        final double yield = payment.calculateYield(lottoRanks);
+        OutputView.printYield(yield);
     }
 }

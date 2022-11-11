@@ -76,4 +76,8 @@ public class OutputView {
                 .filter(lottoRank -> lottoRank == lottoRankToCompare)
                 .count();
     }
+    
+    public static void printYield(final double yield) {
+        System.out.printf("총 수익률은 %.1f%%입니다.", yield);
+    }
 }
