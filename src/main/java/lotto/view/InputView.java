@@ -7,7 +7,7 @@ import java.util.List;
 
 public class InputView {
 
-    public static int showPurchaseView() {
+    public static int getGeneratedLottoCount() {
         System.out.println("구입금액을 입력해 주세요.");
         String amount = Console.readLine();
         Util.isValidAmount(amount);
@@ -16,13 +16,13 @@ public class InputView {
         return count;
     }
 
-    public static List<Integer> showWinLottoNumberView() {
+    public static List<Integer> getWinLottoNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String winNumbers = Console.readLine();
         return Util.isValidWinNumbers(winNumbers);
     }
 
-    public static int showWinBonusNumberView() {
+    public static int getWinBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         return Integer.parseInt(Console.readLine());
     }

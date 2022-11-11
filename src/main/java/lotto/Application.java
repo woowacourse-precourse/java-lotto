@@ -1,10 +1,9 @@
 package lotto;
 
 import lotto.domain.Lotto;
-import lotto.domain.Result;
-import lotto.domain.ResultStatistics;
 import lotto.domain.WinLotto;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,31 +11,10 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         try {
-            int count = InputView.showPurchaseView();
-            List<Lotto> generatedLottos = generateLottos(count);
+            List<Lotto> generatedLottos = generateLottos(InputView.getGeneratedLottoCount());
+            WinLotto winLotto = new WinLotto(InputView.getWinLottoNumbers(), InputView.getWinBonusNumber());
 
-            List<Integer> validatedWinNumbers = InputView.showWinLottoNumberView();
-            int bonusNumber = InputView.showWinBonusNumberView();
-
-            WinLotto winLotto = new WinLotto(validatedWinNumbers, bonusNumber);
-
-            System.out.println("당첨 통계");
-            System.out.println("---");
-
-            List<Result> results = new ArrayList<>();
-
-            for (Lotto lotto : generatedLottos) {
-                Result result = winLotto.getResult(lotto);
-                results.add(result);
-            }
-
-            ResultStatistics statistics = new ResultStatistics(results);
-            System.out.println(statistics.printResultStatistics());
-            float totalProfitRate = Math.round((float) (statistics.getTotalProfit()) / (count * 1000) * 1000) / 10f;
-            System.out.println("statistics.getTotalProfit() = " + statistics.getTotalProfit());
-            System.out.println("(count * 1000) = " + (count * 1000));
-
-            System.out.println("총 수익률은 " + totalProfitRate + "%입니다.");
+            OutputView.showStaistics(generatedLottos, winLotto);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
