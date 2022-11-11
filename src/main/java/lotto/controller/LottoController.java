@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.service.LottoService;
 import lotto.view.*;
 import lotto.vo.Lotto;
 import lotto.type.PlaceType;
@@ -14,21 +15,20 @@ public class LottoController {
         view.show();
     }
 
-    public void showMoneyInput() {
+    public String showMoneyInput() {
         View view = new MoneyInputView();
         view.show();
 
         String response = view.getResponse();
-        validateInput("^(\\d+[0][0][0])$", response);
+        validateInput("^(\\d+[0][0][0]){4,}$", response);
 
-        //TODO - 로또 번호 생성 service 호출
+        return response;
     }
 
-    public void showLottoPurchaseNumbers() {
-        //TODO - 구입한 로또 번호 리스트업 Service 호출
-        List<Lotto> purchaseNumbers = List.of(new Lotto()); // mockup
-
-        View view = new LottoPurchaseNumberView(purchaseNumbers);
+    public void showLottoPurchaseNumbers(String input) {
+        LottoService service = new LottoService();
+        List<Lotto> purchaseLotteries = service.buyLotteriesAs(parseInt(input));
+        View view = new LottoPurchaseNumberView(purchaseLotteries);
         view.show();
     }
 
