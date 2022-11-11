@@ -8,13 +8,20 @@ import java.util.stream.IntStream;
 
 public class InputUserMoney {
 
+    static int userMoney;
+
     public static int inputMoney(){
         String input_money = Console.readLine();
 
         if(!validateMoney(input_money)){
             return ExceptionNumber.EXCEPTION_CODE.getCode();
         }
-        return Integer.parseInt(input_money);
+        userMoney = Integer.parseInt(input_money);
+        return userMoney;
+    }
+
+    public static int getUserMoney() {
+        return userMoney;
     }
 
     public static boolean validateMoney(String input_money){

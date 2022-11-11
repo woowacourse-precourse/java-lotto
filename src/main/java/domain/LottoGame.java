@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import view.InputBonusNumber;
+import view.InputUserMoney;
 import view.InputWinningLottoNumber;
 
 public class LottoGame {
@@ -14,6 +15,7 @@ public class LottoGame {
     List<Integer> rankedList = new ArrayList<>();
     List<Integer> moneyRankedList = new ArrayList<>();
     int bonusNumber;
+    float yield;
 
 
     public void Game() {
@@ -30,14 +32,19 @@ public class LottoGame {
     private  void calculate(List<Integer> matchCountList) {
 
         countingRank(matchCountList);
-        int sumMoney = calculateSumMoney(rankedList);
-        System.out.println("sumMoney = " + sumMoney);
+        long sumMoney = calculateSumMoney(rankedList);
+        yield = setYield((float) sumMoney);
 
     }
 
-    private int calculateSumMoney(List<Integer> rankedList) {
+    private float setYield(float sumMoney) {
+        float yield = sumMoney / (float) InputUserMoney.getUserMoney() * 100;
+        return yield;
+    }
+
+    private long calculateSumMoney(List<Integer> rankedList) {
         List<Integer> money = Arrays.asList(5000, 50000, 1500000, 2000000000, 30000000);
-        int sumGetMoney=0;
+        long sumGetMoney=0;
         for(int i=0; i<rankedList.size(); i++){
             Integer nowRankMoney = money.get(i);
             Integer howManyRanked = rankedList.get(i);
