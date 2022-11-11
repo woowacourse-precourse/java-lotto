@@ -8,7 +8,7 @@
     1. 로또 구입 금액 입력 - Application#askTotalPrice()
         * 로또 구입 금액/1000 을 하여 로또 개수 구하는 기능 - LottoCount#LottoCount()
 
-            * 예외1 : 입력시 숫자가 아닐 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 금액(숫자)를 입력해주세요.) - Application#validateNumber()
+            * 예외1 : 입력시 숫자가 아닐 경우 에러메시지([ERROR] 금액(숫자)를 입력해주세요.) 하고 while구문을 통해서 다시 입력받도록 함 - Application#validateNumber()
             * 예외2 : 1000미만의 수 입력시 IllegalArgumentException 발생, 에러메시지([ERROR] 1000원 이상의 금액만 입력하세요.) - LottoCount#validateNumber()
             * 예외3 : 1000원으로 나누어 떨어지지 않는 수 입력시 IllegalArgumentException 발생, 에러메시지([ERROR] 로또 1장당 1000원 입니다.) - LottoCount#validateDivideRight()
        
