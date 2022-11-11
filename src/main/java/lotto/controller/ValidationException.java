@@ -1,6 +1,6 @@
 package lotto.controller;
 
-import lotto.Message;
+import lotto.ErrorMessage;
 
 import java.util.regex.Pattern;
 
@@ -12,6 +12,6 @@ public class ValidationException {
         if (Pattern.matches(regExp, userMoney)) {
             return true;
         }
-        throw new IllegalArgumentException(Message.ERROR + Message.ERROR_MESSAGE_WON);
+        throw new IllegalArgumentException(ErrorMessage.ERROR + ErrorMessage.ERROR_MESSAGE_WON);
     }
 }

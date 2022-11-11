@@ -2,7 +2,6 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.List;
 import java.util.regex.Pattern;
 
 public class Generator {
@@ -27,7 +26,7 @@ public class Generator {
         if (Pattern.matches(regExp, userMoney)) {
             return true;
         }
-        throw new IllegalArgumentException(Message.ERROR + Message.ERROR_MESSAGE_WON);
+        throw new IllegalArgumentException(ErrorMessage.ERROR + ErrorMessage.ERROR_MESSAGE_WON);
     }
 
 
