@@ -3,11 +3,12 @@ package lotto.util;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.service.OutputService;
 
 public class StringToNumbersConverter implements Converter<String, List<Integer>> {
 
     private static final String REGEX = ",";
-    private static final String CONVERT_NUMBER_ERROR_MESSAGE = "[ERROR] 숫자로 변환할 수 없는 값이 포함되어 있습니다. 입력: %s\n";
+    private static final String ERROR_MESSAGE = "숫자로 변환할 수 없는 값이 포함되어 있습니다. 입력: ";
 
     @Override
     public List<Integer> convert(String target) {
@@ -20,7 +21,7 @@ public class StringToNumbersConverter implements Converter<String, List<Integer>
         try {
             return Integer.parseInt(target);
         } catch (NumberFormatException e) {
-            System.out.printf(CONVERT_NUMBER_ERROR_MESSAGE, target);
+            OutputService.printErrorMessage(ERROR_MESSAGE + target);
             throw new IllegalArgumentException(e);
         }
     }
