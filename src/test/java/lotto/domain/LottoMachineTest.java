@@ -11,8 +11,7 @@ class LottoMachineTest {
 
     @Test
     void 생성한_로또번호_검증_테스트() {
-        List<Integer> numbers = lottoMachine.generateLottoNumbers();
         Assertions.assertThatNoException()
-                .isThrownBy(() -> new Lotto(numbers));
+                .isThrownBy(() -> lottoMachine.generateLotto());
     }
 }

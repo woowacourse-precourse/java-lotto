@@ -6,10 +6,8 @@ import java.util.List;
 
 public class LottoMachine {
 
-    private List<Integer> numbers;
-
-    public List<Integer> generateLottoNumbers() {
-        numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return numbers;
+    public Lotto generateLotto() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return new Lotto(numbers);
     }
 }
