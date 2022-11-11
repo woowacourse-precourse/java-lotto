@@ -38,9 +38,9 @@ public class LottoMachine {
 
     public void drawLottos() {
         for(LottoData data : LottoData.values()){
-            if(data.getWinningAmount() == 5){
+            //if(data.getWinningAmount() == 5){
                 System.out.println(data.toString());
-            }
+            //}
         }
     }
 
