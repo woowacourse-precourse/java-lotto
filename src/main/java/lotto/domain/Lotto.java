@@ -51,7 +51,7 @@ public class Lotto {
         return uniqueNumbers.size() != LOTTO_SIZE;
     }
 
-    public Lotto creatRandom() {
+    public static Lotto creatRandom() {
         List<Integer> uniqueNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_SIZE);
 
         return new Lotto(uniqueNumbers);
