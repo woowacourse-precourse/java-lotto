@@ -74,7 +74,7 @@ public class Request {
 		String[] splitUserInput = userInput.split(",");
 
 		for(String eachNumber : splitUserInput) {
-			if(Pattern.matches("^([1-9])|([1-3][0-9])|(4[0-5])$", eachNumber)) {
+			if(!Pattern.matches("^([1-9])|([1-3][0-9])|(4[0-5])$", eachNumber)) {
 				throw new IllegalArgumentException();
 			}
 		}
@@ -99,7 +99,7 @@ public class Request {
 	}
 
 	public void isBonusNumber() {
-		if(Pattern.matches("^([1-9])|([1-3][0-9])|(4[0-5])$", userInput)) {
+		if(!Pattern.matches("^([1-9])|([1-3][0-9])|(4[0-5])$", userInput)) {
 			throw new IllegalArgumentException();
 		}
 	}
