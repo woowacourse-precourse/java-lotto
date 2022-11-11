@@ -13,7 +13,7 @@ public class Application { // 패키지 분리
         for (int j = 0; j < count; j++) {
             Lotto lotto = countLotto.get(j);
             List<Integer> numbers = lotto.getNumbers();
-            Collections.sort(numbers);
+            //Collections.sort(numbers);
             System.out.println(numbers);
         }
 
@@ -27,7 +27,6 @@ public class Application { // 패키지 분리
         for (int j = 0; j < count; j++) {
             Lotto lotto = countLotto.get(j);
             List<Integer> numbers1 = lotto.getNumbers();
-            Collections.sort(numbers1);
             matchNumbers.match(numbers1, numbers, validBonusNumber);
         }
         System.out.println(matchNumbers.getMaps());
