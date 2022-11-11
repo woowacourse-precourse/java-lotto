@@ -1,11 +1,11 @@
-package lotto;
+package lotto.controller;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class LottoCounting {
-    
+
     // 로또 한장한장 세어서, Map 에다가 집어넣기. 그래서, 몇개 맞췄는지 매핑하기.
     public Map<Lotto, Integer> countedLotto(Lotto[] lottoPapers, Lotto winningLotto){
         Map<Lotto, Integer> lottoBox = new HashMap<>();

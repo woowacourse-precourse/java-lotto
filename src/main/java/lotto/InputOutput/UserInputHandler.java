@@ -1,6 +1,7 @@
-package lotto;
+package lotto.InputOutput;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.controller.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;

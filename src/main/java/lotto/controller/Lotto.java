@@ -1,4 +1,4 @@
-package lotto;
+package lotto.controller;
 
 import java.util.Comparator;
 import java.util.HashSet;
