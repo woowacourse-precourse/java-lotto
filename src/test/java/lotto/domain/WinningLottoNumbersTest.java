@@ -8,8 +8,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
-import static org.assertj.core.api.Assertions.assertThatNoException;
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 class WinningLottoNumbersTest {
     public static final WinningLottoNumbers WINNING_LOTTO_NUMBERS;
@@ -66,5 +66,20 @@ class WinningLottoNumbersTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new WinningLottoNumbers(LottoTest.FROM_ONE_TO_SIX, bonusNumber))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
+    }
+    
+    @Test
+    @DisplayName("매칭되는 번호 개수 구하기")
+    void numberOfMatchingNumbers() {
+        assertThat(WINNING_LOTTO_NUMBERS.countOfMatchingNumber(LottoTest.FROM_ONE_TO_SIX)).isEqualTo(6);
+    }
+    
+    @Test
+    @DisplayName("보너스 번호가 매칭되는지 확인하기")
+    void isBonusNumberExist() {
+        assertAll(
+                () -> assertThat(WINNING_LOTTO_NUMBERS.isBonusNumberExist(LottoTest.FROM_ONE_TO_SIX)).isFalse(),
+                () -> assertThat(WINNING_LOTTO_NUMBERS.isBonusNumberExist(new Lotto(List.of(1,2,3,4,5,7)))).isTrue()
+        );
     }
 }
