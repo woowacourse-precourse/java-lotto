@@ -29,6 +29,15 @@ public class PrizeNumTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("로또 당첨 번호가 6개가 아니면 예외 발생")
+    void createNotSixLottoNumber() {
+        String inputPrize = "1,2,3,4,5";
+
+        assertThatThrownBy(() -> PrizeNum.setPrizeNum(inputPrize))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 
     @Override
