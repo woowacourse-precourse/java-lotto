@@ -2,6 +2,7 @@ package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.LottoAnswer;
@@ -10,7 +11,7 @@ import lotto.view.OutputView;
 
 public class LottoController {
     private static final int PRICE_PER_LOTTO = 1000;
-    private List<Lotto> lottos = new ArrayList<Lotto>();
+    private List<Lotto> lottos = new ArrayList<>();
     private LottoAnswer lottoAnswer;
     private LottoResult lottoResult;
     private LottoResultController lottoResultController;
@@ -19,7 +20,7 @@ public class LottoController {
     private int lottoCount;
 
 
-    public void run() {
+    public void run() throws Exception {
         int price = inputController.getPrice();
         int lottoCount = price / PRICE_PER_LOTTO;
         generateLottos(lottoCount);
@@ -36,7 +37,8 @@ public class LottoController {
 
     private void generateLottos(int repeat) {
         for (int i = 0; i < repeat; i++) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            Collections.sort(numbers);
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
         }

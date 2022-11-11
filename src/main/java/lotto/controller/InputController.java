@@ -10,24 +10,31 @@ public class InputController {
     private List<Integer> lottoAnswer = new ArrayList<>();
     private int bonusNumber;
 
-    private static String INPUT_PRICE_STR = "구입금액을 입력해 주세요.";
-    private static String INPUT_ANSWER_STR = "당첨 번호를 입력해 주세요.";
-    private static String INPUT_BONUS_STR = "보너스 번호를 입력해 주세요.";
+    private static String INPUT_PRICE_STR = "구입금액을 입력해 주세요.\n";
+    private static String INPUT_ANSWER_STR = "당첨 번호를 입력해 주세요.\n";
+    private static String INPUT_BONUS_STR = "보너스 번호를 입력해 주세요.\n";
 
-    public int getPrice() {
+    public int getPrice() throws Exception {
         return inputPrice();
     }
 
-    private int inputPrice() {
+    private int inputPrice() throws Exception {
         System.out.print(INPUT_PRICE_STR);
         String userInputPrice = Console.readLine();
+        validateInputPrice(userInputPrice);
         price = Integer.parseInt(userInputPrice);
-        validatePrice(price);
         return price;
     }
 
-    private void validatePrice(int price) {
-
+    private void validateInputPrice(String inputPrice) throws Exception {
+        try {
+            int tempPrice = Integer.parseInt(inputPrice);
+            if (tempPrice % 1000 > 0) {
+                throw new IllegalArgumentException("[ERROR]");
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
     }
 
     public LottoAnswer getLottoAnswer() {
