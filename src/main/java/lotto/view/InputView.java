@@ -26,9 +26,7 @@ public class InputView {
     }
     
     public static WinningLottoNumbers inputWinningLottoNumbers() {
-        Lotto inputWinningLotto = inputWinningLotto();
-        int inputBonusNumber = inputBonusNumber();
-        return new WinningLottoNumbers(inputWinningLotto, inputBonusNumber);
+        return new WinningLottoNumbers(inputWinningLotto(), inputBonusNumber());
     }
     
     private static Lotto inputWinningLotto() {
