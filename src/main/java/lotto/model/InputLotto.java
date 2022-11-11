@@ -1,19 +1,22 @@
 package lotto.model;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InputLotto {
 
     int inputMoney() {
         String input = Console.readLine();
-        int money = validateNumber(input);
+        validateNumber(input);
+        int money = Integer.parseInt(input);
         validateDivideThousand(money);
         return money;
     }
 
     int validateNumber(String money) {
         try {
-            return Integer.parseInt(money);
+            Integer.parseInt(money);
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] 숫자를 입력해 주세요.");
             throw new IllegalArgumentException();
