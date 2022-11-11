@@ -19,7 +19,7 @@ public class Application {
 
             Set<Lotto> lotteries = new HashSet<>();
             for (int i = 0; i < lottoCount; i++) {
-                lotteries.add(new Lotto(getRandomUniqueNumberList()));
+                lotteries.add(new Lotto(getRandomUniqueNumbers()));
             }
 
             for (Lotto lottery : lotteries) {
@@ -47,7 +47,7 @@ public class Application {
         return number / 1000;
     }
 
-    public static List<Integer> getRandomUniqueNumberList() {
+    public static List<Integer> getRandomUniqueNumbers() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 }
