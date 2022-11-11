@@ -151,7 +151,7 @@
   - 보너스 번호가 당첨 번호와 중복되는지 검사하는 함수
 
 
-- void calculateSurplus(int, int, int, int, int, int)
+- Double calculateSurplus(int, int, int, int, int, int)
   - 수익률을 계산하는 함수
 
 
