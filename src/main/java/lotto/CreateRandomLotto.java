@@ -18,11 +18,13 @@ public class CreateRandomLotto {
 }
 class LottoPaper {
     private List<Integer> number;
-    private int result;
+    private int count;
     public LottoPaper(List<Integer> number){
         this.number = number;
     }
-//    public int getResult(List<Integer> winningNumber){
-//
-//    }
+    public int getResult(List<Integer> winningNumber, int bonusNumber){
+        if(this.number.contains(bonusNumber)){
+
+        }
+    }
 }
