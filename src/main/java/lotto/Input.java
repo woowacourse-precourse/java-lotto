@@ -1,5 +1,7 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Input {
 
     public static void validateNumber(String input) {
@@ -26,5 +28,14 @@ public class Input {
             // TODO: 2022/11/11 에러 메시지 출력 추가
             throw new IllegalArgumentException();
         }
+    }
+
+    public static int price() {
+        int price;
+        String input = Console.readLine();
+        validateNumber(input);
+        price = Integer.parseInt(input);
+        validatePrice(price);
+        return price;
     }
 }
