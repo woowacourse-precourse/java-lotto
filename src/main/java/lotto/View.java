@@ -15,6 +15,10 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class View {
 
+    public void printError(String errMsg){
+        System.out.println("[ERROR] " + errMsg);
+    }
+
     public void printUserLottos(User user){
         System.out.println(user.getMyLottoNumbers().size()+"개를 구매했습니다.");
         List<Lotto> myLottoNumbers = user.getMyLottoNumbers();
