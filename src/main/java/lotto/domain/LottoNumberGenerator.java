@@ -8,9 +8,9 @@ import java.util.stream.IntStream;
 
 public class LottoNumberGenerator {
 
-    private final List<List<Integer>> randomLottoNumbers = new ArrayList<>();
+    private static final List<List<Integer>> randomLottoNumbers = new ArrayList<>();
 
-    public List<List<Integer>> generateLottoNumber(int count) {
+    public static List<List<Integer>> generateLottoNumber(int count) {
         IntStream.range(0, count).forEach((__) -> {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             new Lotto(numbers);
