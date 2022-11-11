@@ -7,4 +7,8 @@ public class UserBet {
 	public UserBet(String userInput){
 		bettingMoney = Integer.parseInt(userInput);
 	}
+
+	public int getBettingMoney() {
+		return bettingMoney;
+	}
 }
