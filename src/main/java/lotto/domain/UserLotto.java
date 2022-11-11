@@ -1,7 +1,9 @@
 package lotto.domain;
 
 import lotto.util.Constant;
+import lotto.util.IOMessage;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,10 @@ public class UserLotto {
     }
 
     public void printMyLotto() {
+        OutputView.printIOMessage(
+                IOMessage.WRITE_AMOUNT_MESSAGE
+                        .mergeAndGetMessage(String.valueOf(lottoSet.size()))
+        );
         lottoSet.printAllLotto();
     }
 
@@ -23,7 +29,7 @@ public class UserLotto {
             lottoSet.add(makeLotto());
         }
     }
-    
+
     private long readMoney() {
         return InputView.readAmount();
     }
