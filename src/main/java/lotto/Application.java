@@ -232,4 +232,19 @@ public class Application {
         }
 
     }
+
+    public static Integer getBonusNumber(String input, List<Integer> winningNumberList) {
+
+        validateBonusNumberIsInteger(input);
+        validateBonusNumberIsInRange(input);
+        validateBonusNumberIsDuplicate(input, winningNumberList);
+
+        int bonusNumber = 0;
+
+        for (int i = 0; i < input.length(); i++) {
+            bonusNumber = bonusNumber * 10 + input.charAt(i) - 48;
+        }
+
+        return bonusNumber;
+    }
 }
