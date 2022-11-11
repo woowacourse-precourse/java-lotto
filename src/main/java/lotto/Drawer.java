@@ -24,7 +24,7 @@ public class Drawer {
         String answer = Console.readLine();
         Integer number = Integer.valueOf(answer);
         if (number < 1 || 45 < number && lotto.getLottoNumbers().contains(number)) {
-            throw new IllegalArgumentException("[Error] 잘못된 입력입니다.");
+            throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
         }
         return number;
     }
