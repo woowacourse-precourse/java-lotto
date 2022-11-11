@@ -21,43 +21,84 @@ public class Record {
     private static final String PERCENT_MESSAGE = "%입니다.";
 
 
+    private static final String ERROR_NUMBER_MESSAGE = "[ERROR] 입력값이 숫자로 바뀔 수 업습니다.";
     private static final String ERROR_SIZE_MESSAGE = "[ERROR] 입력 크기가 초과했습니다.";
     private static final String ERROR_DUPLICATE_MESSAGE = "[ERROR] 중복된 숫자가 있습니다.";
 
+    public static void printNumberError() {
+        System.out.print(ERROR_NUMBER_MESSAGE);
+    }
+
     public static void printSizeError() {
-        System.out.print(ERROR_SIZE_MESSAGE);
+        System.out.println(ERROR_SIZE_MESSAGE);
     }
+
     public static void printDuplicateError() {
-        System.out.print(ERROR_DUPLICATE_MESSAGE);
+        System.out.println(ERROR_DUPLICATE_MESSAGE);
     }
+
     public static void printBonusNumber() {
-        System.out.print(ENTER_BONUS_NUMBER_MESSAGE);
+        System.out.println(ENTER_BONUS_NUMBER_MESSAGE);
     }
+
     public static void printWinningNumbers() {
-        System.out.print(ENTER_WINNING_NUMBER_MESSAGE);
+        System.out.println(ENTER_WINNING_NUMBER_MESSAGE);
     }
+
     public static void printBuyCounts(int counts) {
-        System.out.print(counts + BUY_MESSAGE);
+        System.out.println(counts + BUY_MESSAGE);
     }
-    public static void printLotto(List<Integer> lottoNumbers) {
-        System.out.print(lottoNumbers);
+
+    public static void printLotto(Lotto lotto) {
+        String lottoNumbers = lotto.getLotto();
+        System.out.println(lottoNumbers);
     }
-    public static void printEnterMoney() {
-        System.out.print(ENTER_MONEY_MESSAGE);
+
+    public static void printEnterPrice() {
+        System.out.println(ENTER_MONEY_MESSAGE);
     }
-    public static void printWinningStats() {
-        int resultIndex = 0;
-        List<Integer> lottoResults = LottoTickets.getLottoResults();
 
-        System.out.print(WINNING_STATS_BORDER);
-        System.out.print(THREE_MATCHES_MESSAGE + lottoResults.get(resultIndex++) + COUNT_MESSAGE);
-        System.out.print(FOUR_MATCHES_MESSAGE + lottoResults.get(resultIndex++) + COUNT_MESSAGE);
-        System.out.print(FIVE_MATCHES_MESSAGE + lottoResults.get(resultIndex++) + COUNT_MESSAGE);
-        System.out.print(FIVE_BONUS_MATCHES_MESSAGE + lottoResults.get(resultIndex++) + COUNT_MESSAGE);
-        System.out.print(SIX_MATCHES_MESSAGE + lottoResults.get(resultIndex++) + COUNT_MESSAGE);
+    public static void printWinningStats(LottoTickets lottoTickets) {
 
-        double totalReturn = LottoTickets.getTotalReturn();
+        System.out.println(WINNING_STATS_BORDER);
 
-        System.out.print(TOTAL_RETURN_MESSAGE + totalReturn + PERCENT_MESSAGE);
+        int matchesListSize = 6;
+
+        List<Integer> matches = lottoTickets.getMatches();
+
+        for (int index = ReferenceValue.INDEX_THREE_MATCHES; index < matchesListSize; index++) {
+            int matchesCount = matches.get(index);
+            String matchesMessage = getMatchesMessage(index, matchesCount);
+            printEachWinning(matchesMessage);
+        }
+
+        double totalReturn = lottoTickets.getTotalReturn();
+
+        System.out.println(TOTAL_RETURN_MESSAGE + totalReturn + PERCENT_MESSAGE);
+    }
+
+    public static void printEachWinning(String matchesMessage) {
+        System.out.println(matchesMessage + COUNT_MESSAGE);
+    }
+
+    public static String getMatchesMessage(int index, int count) {
+
+        String matchesMessage = "";
+
+        if (index == ReferenceValue.INDEX_THREE_MATCHES) {
+            matchesMessage = THREE_MATCHES_MESSAGE;
+        } else if (index == ReferenceValue.INDEX_FOUR_MATCHES) {
+            matchesMessage = FOUR_MATCHES_MESSAGE;
+        } else if (index == ReferenceValue.INDEX_FIVE_MATCHES) {
+            matchesMessage = FIVE_MATCHES_MESSAGE;
+        } else if (index == ReferenceValue.INDEX_FIVE_BONUS_MATCHES) {
+            matchesMessage = FIVE_BONUS_MATCHES_MESSAGE;
+        } else if (index == ReferenceValue.INDEX_SIX_MATCHES) {
+            matchesMessage = SIX_MATCHES_MESSAGE;
+        }
+
+        matchesMessage += count;
+
+        return matchesMessage;
     }
 }
