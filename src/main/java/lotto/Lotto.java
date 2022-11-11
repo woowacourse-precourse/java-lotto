@@ -9,12 +9,13 @@ public class Lotto {
     private static final int MAX_SIZE = 6;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateLength(numbers);
         validateOverlap(numbers);
+        sortByAscending(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validateLength(List<Integer> numbers) {
         if (numbers.size() != MAX_SIZE) {
             throw new IllegalArgumentException();
         }
@@ -25,6 +26,10 @@ public class Lotto {
         if (set.size() != MAX_SIZE) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private void sortByAscending(List<Integer> numbers) {
+        Collections.sort(numbers);
     }
 
     public List<Integer> getNumbers() {
