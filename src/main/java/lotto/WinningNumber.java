@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WinningNumber {
     private List<Integer> winningNumbers;
@@ -26,5 +27,11 @@ public class WinningNumber {
         return Arrays.stream(LottoRank.values())
                 .filter(lottoRank -> lottoRank.equal(getHitCount(lotto), isHitBonusNumber(lotto)))
                 .findAny().orElse(LottoRank.NOTHING);
+    }
+
+    public List<LottoRank> getRanks(List<Lotto> lottos) {
+        return lottos.stream()
+                .map(this::getRank)
+                .collect(Collectors.toList());
     }
 }
