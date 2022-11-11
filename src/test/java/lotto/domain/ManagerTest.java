@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.domain.enums.Number;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -7,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 class ManagerTest {
 
@@ -64,6 +67,20 @@ class ManagerTest {
         boolean result = manager.isCorrectBonus(userLotto);
 
         assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    void judgeRankTest() {
+        assertAll(
+            () -> assertSame(manager.judgeRank(3, true), Number.FIVE.getValue()),
+            () -> assertSame(manager.judgeRank(4, true), Number.FOUR.getValue()),
+            () -> assertSame(manager.judgeRank(5, false), Number.THREE.getValue()),
+            () -> assertSame(manager.judgeRank(5, true), Number.TWO.getValue()),
+            () -> assertSame(manager.judgeRank(6, true), Number.ONE.getValue()),
+            () -> assertSame(manager.judgeRank(2, true), Number.ZERO.getValue()),
+            () -> assertSame(manager.judgeRank(1, true), Number.ZERO.getValue()),
+            () -> assertSame(manager.judgeRank(0, true), Number.ZERO.getValue())
+        );
     }
 
 }
