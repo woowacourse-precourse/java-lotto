@@ -5,7 +5,14 @@ import camp.nextstep.edu.missionutils.Console;
 public class UserInput {
 
     public String buyLotto() {
-        String money = Console.readLine();
-        return money;
+        return Console.readLine();
+    }
+
+    public String enterWinningLottoNumber() {
+        return Console.readLine();
+    }
+
+    public String enterBonusNumber() {
+        return Console.readLine();
     }
 }
