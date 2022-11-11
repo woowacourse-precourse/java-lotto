@@ -25,13 +25,14 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 번호생성 도메인 로직 확인")
+    @DisplayName("로또 번호생성 후 로또 번호 반환을 확인한다.")
     @Test
-    void createLottoByRandomNumber() {
+    void createLottoByRandomNumberAndGet() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         List<Integer> targetNumber = lotto.generateLotto();
         lotto.setNumbers(targetNumber);
 
         assertThat(targetNumber).isEqualTo(lotto.getNumbers());
     }
+
 }
