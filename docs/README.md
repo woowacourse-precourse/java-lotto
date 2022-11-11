@@ -51,6 +51,7 @@
     또, 그 결과를 바탕으로 예외 사항 4번을 검사한다. 문제가 없다면 구분된 값들을 정수형으로 변환하여 <br>
     멤버 변수 numbers에 저장한다. <br><br>
   - List<Integer> getNumbers() : 멤버 변수인 numbers를 반환한다.
+  - int money() : 멤버 변수인 money를 반환한다.
   
 <br>
 
