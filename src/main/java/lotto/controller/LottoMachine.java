@@ -12,8 +12,8 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class LottoMachine {
-
 	private static final String REST_REGEX = ",";
+
 	private MachineSystem machineSystem;
 
 	public void run() {

@@ -30,7 +30,7 @@ public enum Rank {
 		if (sameNumberCount == RANK_1ST.getSameWinningNumberCount()) {
 			return RANK_1ST;
 		}
-		if (sameNumberCount == RANK_2ND.getSameWinningNumberCount() && bonusNumber) {
+		if (sameNumberCount == RANK_2ND.getSameWinningNumberCount() && RANK_2ND.bonusBall == bonusNumber) {
 			return RANK_2ND;
 		}
 		if (sameNumberCount == RANK_3RD.getSameWinningNumberCount()) {
