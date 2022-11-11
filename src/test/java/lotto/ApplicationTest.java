@@ -49,9 +49,17 @@ class ApplicationTest extends NsTest {
 
 
     @Test
-    void 로또구입_숫자테스트() {
+    void 구입금액_숫자테스트() {
         assertSimpleTest(() -> {
             assertThatThrownBy(() -> runException("1000j"));
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    void 구입금액_1000원단위테스트() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("1100"));
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
