@@ -40,12 +40,15 @@ public class Application {
         List<Integer> winningNumbers = TypeConverter.toIntegerListByComma(strWinningNumbers);
 
         Output.enterBonusNumber();
-        int bonusNumber = Integer.parseInt(Console.readLine());
+        String bonusNumber = Console.readLine();
+        if (!InputValidator.checkBonusNumber(bonusNumber, winningNumbers)) {
+            return;
+        }
 
         Output.winningStatistics();
         Calculator calculator = new Calculator();
         List<Integer> matchResults = calculator.calculateMatchResults(groupOfUserLotteryNumbers, winningNumbers,
-                bonusNumber);
+                Integer.parseInt(bonusNumber));
         Output.printWinningStatistics(matchResults);
 
         int profit = calculator.calculateProfit(matchResults);

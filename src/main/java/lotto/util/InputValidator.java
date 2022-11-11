@@ -1,5 +1,6 @@
 package lotto.util;
 
+import static lotto.constant.SystemMessage.BONUS_NUMBER_CONFLICT_ERROR;
 import static lotto.constant.SystemMessage.PURCHASE_COST_TYPE_ERROR;
 import static lotto.constant.SystemMessage.PURCHASE_COST_UNIT_ERROR;
 import static lotto.constant.SystemMessage.WINNING_NUMBERS_CONFLICT_ERROR;
@@ -21,19 +22,19 @@ public class InputValidator {
     }
 
     public static boolean isTypeValid(String purchaseCost) {
-        boolean isTypeValid = purchaseCost.chars().allMatch(Character::isDigit);
-        if (!isTypeValid) {
+        boolean isType = purchaseCost.chars().allMatch(Character::isDigit);
+        if (!isType) {
             Output.printError(PURCHASE_COST_TYPE_ERROR);
         }
-        return isTypeValid;
+        return isType;
     }
 
     public static boolean isUnitValid(String purchaseCost) {
-        boolean isUnitValid = Integer.parseInt(purchaseCost) % 1000 == 0;
-        if (!isUnitValid) {
+        boolean isUnit = Integer.parseInt(purchaseCost) % 1000 == 0;
+        if (!isUnit) {
             Output.printError(PURCHASE_COST_UNIT_ERROR);
         }
-        return isUnitValid;
+        return isUnit;
     }
 
     public static boolean checkWinningNumbers(String winningNumber) {
@@ -41,42 +42,55 @@ public class InputValidator {
     }
 
     public static boolean isFormatValid(String winningNumber) {
-        boolean isFormatValid = Pattern.matches("^[0-9,]*$", winningNumber); // TODO: ,, 도 안되게!!
-        if (!isFormatValid) {
+        boolean isFormat = Pattern.matches("^[0-9,]*$", winningNumber); // TODO: ,, 도 안되게!!
+        if (!isFormat) {
             Output.printError(WINNING_NUMBERS_FORMAT_ERROR);
         }
-        return isFormatValid;
+        return isFormat;
     }
 
     public static boolean isSizeValid(String winningNumber) {
         List<String> winningNumbers = TypeConverter.toStringListByComma(winningNumber);
-        boolean isSizeValid = winningNumbers.size() == LOTTERY_NUMBERS_SIZE;
-        if (!isSizeValid) {
+        boolean isSize = winningNumbers.size() == LOTTERY_NUMBERS_SIZE;
+        if (!isSize) {
             Output.printError(WINNING_NUMBERS_SIZE_ERROR);
         }
-        return isSizeValid;
+        return isSize;
     }
 
     public static boolean isConflictValid(String winningNumber) {
         List<Integer> winningNumbers = TypeConverter.toIntegerListByComma(winningNumber);
-        boolean isConflictValid = winningNumbers.stream()
+        boolean isConflict = winningNumbers.stream()
                 .distinct()
                 .count() == LOTTERY_NUMBERS_SIZE;
-        if (!isConflictValid) {
+        if (!isConflict) {
             Output.printError(WINNING_NUMBERS_CONFLICT_ERROR);
         }
-        return isConflictValid;
+        return isConflict;
     }
 
     public static boolean isRangeValid(String winningNumber) {
         List<Integer> winningNumbers = TypeConverter.toIntegerListByComma(winningNumber);
-        boolean isRangeValid = winningNumbers.stream()
+        boolean isRange = winningNumbers.stream()
                 .filter(number -> MINIMUM_LOTTERY_NUMBER <= number
                         && number <= MAXIMUM_LOTTERY_NUMBER)
                 .count() == LOTTERY_NUMBERS_SIZE;
-        if (!isRangeValid) {
+        if (!isRange) {
             Output.printError(WINNING_NUMBERS_RANGE_ERROR);
         }
-        return isRangeValid;
+        return isRange;
+    }
+
+    public static boolean checkBonusNumber(String bonusNumber, List<Integer> winningNumbers) {
+        return isConflictWithWinningsValid(bonusNumber, winningNumbers);
+    }
+
+    public static boolean isConflictWithWinningsValid(String bonusNumber, List<Integer> winningNumbers) {
+        boolean isConflictWithWinnings = winningNumbers.stream()
+                .noneMatch(number -> Integer.parseInt(bonusNumber) == number);
+        if (!isConflictWithWinnings) {
+            Output.printError(BONUS_NUMBER_CONFLICT_ERROR);
+        }
+        return isConflictWithWinnings;
     }
 }
