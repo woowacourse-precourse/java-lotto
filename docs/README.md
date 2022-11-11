@@ -15,6 +15,10 @@
 
 - [ ] ~~뽑은 6개의 숫자를 Lotto 클래스 내부의 로또의 번호 List 에 할당~~ - 생성자를 통해 할당
 - [x] 발행된 번호를 반환 - #getUserLottoNumbers()
+- [x] 입력한 당첨 번호가 유효하지 않은 경우 - #isValidLottoNumbersInput()
+  - [x] 숫자이 개수가 6개가 아닌 경우 - #isValidNumberOfNumbers()
+  - [x] 중복된 숫자가 포함된 경우 - #isUniqueNumbers()
+  - [x] 범위 내의 숫자가 아닌 값이 포함된 경우 - #isInRangeNumbers()
 
 ---
 
@@ -36,8 +40,17 @@
 ### 사용자의 입력을 담당하는 클래스 Name : UserInput
 
 - [ ] 사용자의 구입 금액 입력받기 - #buyLotto()
+- [ ] 입력한 구입 금액이 유효하지 않은 경우 예외처리 - #isValidMoneyInput()
+  - [ ] 입력한 구입 금액에 숫자가 아닌 값이 포함된 경우 -#isNumeralMoneyInput()
+  - [ ] 입력한 구입 금액이 1000원 단위가 아닌경우 -#isValidMoneyUnit()
 - [ ] 당첨 번호 입력 - #enterWinnigLottoNumber()
+  - [ ] 숫자가 아닌 값이 포함된 경우 예외처리
 - [ ] 보너스 번호 입력 - #enterBonusNumber()
+- [ ] 입력한 보너스 번호가 유효하지 않은 경우 예외처리 - #isValidBonusNumberInput()
+  - [ ] 숫자가 아닌 값인 경우- #isNumeralNumber()
+  - [ ] 범위 내의 숫자가 아닌 값이 포함된 경우 - #isInRangeNumber()
+  - [ ] 당첨 번호 6개에 포함되는 경우 - #isExistNumber()
+
 
 ---
 
@@ -50,18 +63,6 @@
 - [ ] 발행한 로또의 번호를 오름차순으로 정렬하여 출력 - #showNumbers()
 
 ---
-
 ## 예외 처리
 > 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`를 발생시키고,
 > [ERROR] 로 시작하는 에러 메시지를 출력 후 종료한다.
-- [ ] 입력한 구입 금액이 유효하지 않은 경우 - #isValidMoneyInput()
-  - [ ] 입력한 구입 금액에 숫자가 아닌 값이 포함된 경우 -#isNumeralMoneyInput()
-  - [ ] 입력한 구입 금액이 1000원 단위가 아닌경우 -#isValidMoneyUnit()
-- [x] 입력한 당첨 번호가 유효하지 않은 경우 - #isValidLottoNumbersInput()
-    - [x] 숫자이 개수가 6개가 아닌 경우 - #isValidNumberOfNumbers()
-    - [x] 중복된 숫자가 포함된 경우 - #isUniqueNumbers()
-    - [x] 범위 내의 숫자가 아닌 값이 포함된 경우 - #isInRangeNumbers()
-- [ ] 입력한 보너스 번호가 유효하지 않은 경우 - #isValidBonusNumberInput()
-    - [ ] 숫자가 아닌 값인 경우- #isNumeralNumber()
-    - [ ] 범위 내의 숫자가 아닌 값이 포함된 경우 - #isInRangeNumber()
-    - [ ] 당첨 번호 6개에 포함되는 경우 - #isExistNumber()
