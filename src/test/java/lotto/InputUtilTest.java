@@ -37,16 +37,44 @@ public class InputUtilTest {
     }
 
     @Test
-    void 잘못된_보너스번호_입력1() {
+    void 잘못된_보너스번호_입력_중복() {
         String input = "6";
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> inputUtil.checkValidationBonusNumber(input, lottoNumbers));
     }
 
     @Test
-    void 잘못된_보너스번호_입력2() {
+    void 잘못된_보너스번호_입력_문자() {
         String input = "a";
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> inputUtil.checkValidationBonusNumber(input, lottoNumbers));
+    }
+
+    @Test
+    void 올바른_당첨번호_입력() {
+        String input = "1,2,3,4,5,6";
+        assertThatNoException()
+                .isThrownBy(() -> inputUtil.checkValidationWinningNumber(input));
+    }
+
+    @Test
+    void 잘못된_당첨번호_입력_콤마아닌경우() {
+        String input = "1,2,3.4,5,6";
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> inputUtil.checkValidationWinningNumber(input));
+    }
+
+    @Test
+    void 잘못된_당첨번호_입력_문자() {
+        String input = "1,2,3,a,5,6";
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> inputUtil.checkValidationWinningNumber(input));
+    }
+
+    @Test
+    void 잘못된_당첨번호_입력_중복() {
+        String input = "1,2,3,4,5,5";
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> inputUtil.checkValidationWinningNumber(input));
     }
 }
