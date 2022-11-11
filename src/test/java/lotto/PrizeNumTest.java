@@ -20,6 +20,15 @@ public class PrizeNumTest extends NsTest {
         PrizeNum.prizeClear();
     }
 
+    @Test
+    @DisplayName("로또 당첨 번호가 중복으로 들어오면 예외 발생")
+    void createDuplicateLottoNumber() {
+        String inputPrize = "1,2,3,4,5,5";
+
+        assertThatThrownBy(() -> PrizeNum.setPrizeNum(inputPrize))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 
     @Override
