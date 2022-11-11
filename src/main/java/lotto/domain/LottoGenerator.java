@@ -40,4 +40,8 @@ public class LottoGenerator {
         randomNumbers.sort(Comparator.naturalOrder());
         return new Lotto(randomNumbers);
     }
+
+    public int getLottoQuantity() {
+        return lottoQuantity;
+    }
 }
