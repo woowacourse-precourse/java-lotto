@@ -1,29 +1,45 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoResult {
-    // winningNumbers, playerNumbers, bonusNumbers => match, bonusMatch => Rank에 전달
-    private int match;
-    private int bonusMatch;
 
-    public LottoResult(List<Integer> winningNumbers, List<Integer> playerNumbers, int bonusNumber) {
-        for (Integer playerNumber : playerNumbers) {
-            if (winningNumbers.contains(playerNumber)) {
-                match++;
-                if (match == 5 && playerNumbers.contains(bonusNumber)) {
-                    bonusMatch++;
-                }
-            }
+    private List<Integer> matches = new ArrayList<>();
+    private List<Integer> bonusMatches = new ArrayList<>();
+
+    public LottoResult(List<Integer> winningNumbers, List<List<Integer>> allPlayerNumbers, int bonusNumber) {
+        for (List<Integer> playerNumbers : allPlayerNumbers) {
+            matches.add(calculateMatch(winningNumbers, playerNumbers));
+            bonusMatches.add(calculateBonusMatch(playerNumbers, bonusNumber));
         }
-        match -= bonusMatch;
+        System.out.println("Match: " + matches);
+        System.out.println("Bonus: " + bonusMatches);
     }
 
-    public int getMatch() {
+    private int calculateMatch(List<Integer> winningNumbers, List<Integer> playerNumbers) {
+        int match = 0;
+        for (int playerNumber : playerNumbers) {
+            if (winningNumbers.contains(playerNumber)) {
+                match++;
+            }
+        }
         return match;
     }
 
-    public int getBonusMatch() {
+    private int calculateBonusMatch(List<Integer> playerNumbers, int bonusNumber) {
+        int bonusMatch = 0;
+        if (playerNumbers.contains(bonusNumber)) {
+            bonusMatch++;
+        }
         return bonusMatch;
+    }
+
+    public List<Integer> getMatches() {
+        return matches;
+    }
+
+    public List<Integer> getBonusMatches() {
+        return bonusMatches;
     }
 }

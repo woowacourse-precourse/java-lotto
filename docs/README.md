@@ -22,14 +22,14 @@
 
 **로또 발행**
 
-- [x] 구입한 로또 수 만큼 랜덤으로 숫자를 뽑는다. - Player
+- [x] 구입한 로또 수 만큼 랜덤으로 숫자를 뽑는다. - Player#createAllPlayerNumbers(ticketNumber)
     - [x] 로또 번호는 오름차순으로 정렬한다. - Player#sortInAscendingOrders()
 
 **로또 결과 계산**
 
-- [ ] 당첨 번호, 나의 번호, 보너스 번호를 입력받는다. - LottoResult
-- [ ] 나의 번호와 당첨번호 중 겹치는 개수를 구한다.
-- [ ] 나의 번호에 보너스 번호가 포함되는 지 구한다.
+- [x] 당첨 번호, 나의 번호, 보너스 번호를 입력받는다. - LottoResult
+- [x] 나의 번호와 당첨번호 중 겹치는 개수를 구한다. - LottoResult#calculateMatch()
+- [x] 나의 번호에 보너스 번호가 포함되는 지 구한다. - LottoResult#calculateBonusMatch()
 - [ ] 당첨 내역을 출력한다.
 
 **수익률 계산**
