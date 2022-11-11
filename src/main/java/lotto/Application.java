@@ -10,10 +10,8 @@ public class Application {
     }
 
     static String how_much_money() {
-        Scanner scanner = new Scanner(System.in);
-
         String user_money;
-        user_money = scanner.nextLine();
+        user_money = readLine();
 
         return user_money;
     }
