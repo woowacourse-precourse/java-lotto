@@ -22,7 +22,7 @@
 - [x] "n개를 구매했습니다."를 출력한다. - ShowMessage#showHowManyBuy(int number)
 - [x] 발행한 로또 번호를 "[n, n, n, n, n, n]"의 형식으로 출력한다. - ShowMessage#showLottoNumber(List<List<Integer>> lottoNumbers)
 - [x] "당첨 번호를 입력해 주세요."를 출력한다. - ShowMessage#showInputLottoNumber()
-- [ ] "보너스 번호를 입력해 주세요."를 출력한다. - ShowMessage#showInputBonusNumber()
+- [x] "보너스 번호를 입력해 주세요."를 출력한다. - ShowMessage#showInputBonusNumber()
 - [ ] "당첨 통계{\n}---"를 출력한다. - ShowMessage#showLottoStatistics()
 
 - [ ] "[ERROR] 로또(당첨, 보너스) 번호는 1부터 45 사이의 숫자여야 합니다." - ShowErrorMessage#showOutRangeLottoNumber(String kind)

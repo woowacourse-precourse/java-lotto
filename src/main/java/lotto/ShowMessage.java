@@ -6,7 +6,8 @@ public class ShowMessage {
 
     private static final String INPUT_AMOUNT_BUY_MESSAGE = "구입 금액을 입력해 주세요.";
     private static final String HOW_MANY_BUY_MESSAGE = "개를 구매했습니다.";
-    private static final String INPUT_LOTTO_NUMBER = "당첨 번호를 입력해 주세요.";
+    private static final String INPUT_LOTTO_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
 
     public static void showInputAmountBuy() {
         System.out.println(INPUT_AMOUNT_BUY_MESSAGE);
@@ -23,7 +24,11 @@ public class ShowMessage {
     }
 
     public static void showInputLottoNumber() {
-        System.out.println(INPUT_LOTTO_NUMBER);
+        System.out.println(INPUT_LOTTO_NUMBER_MESSAGE);
+    }
+
+    public static void showInputBonusNumber() {
+        System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
     }
 
 }
