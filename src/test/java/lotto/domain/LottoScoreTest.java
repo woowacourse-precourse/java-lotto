@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoScoreTest {
 
-    @DisplayName("로또 3개일 때 정상적으로 작동되는지 테스트")
+    @DisplayName("로또 번호 맞은 개수가 3개일 때 정상적으로 작동되는지 테스트")
     @Test
     void updateThreeLottoScore() {
         //given
@@ -28,7 +28,7 @@ class LottoScoreTest {
         assertThat(count).isSameAs(1);
     }
 
-    @DisplayName("로또 4개일 때 정상적으로 작동되는지 테스트")
+    @DisplayName("로또 번호 맞은 개수가 4개일 때 정상적으로 작동되는지 테스트")
     @Test
     void updateFourLottoScore() {
         //given
@@ -44,7 +44,7 @@ class LottoScoreTest {
         assertThat(count).isSameAs(1);
     }
 
-    @DisplayName("로또 5개일 때 정상적으로 작동되는지 테스트")
+    @DisplayName("로또 번호 맞은 개수가 5개일 때 정상적으로 작동되는지 테스트")
     @Test
     void updateFiveLottoScore() {
         //given
@@ -60,7 +60,7 @@ class LottoScoreTest {
         assertThat(count).isSameAs(1);
     }
 
-    @DisplayName("로또 5개 + 보너스 숫자일 때 정상적으로 작동되는지 테스트")
+    @DisplayName("로또 번호 맞은 개수가 5개 + 보너스 숫자일 때 정상적으로 작동되는지 테스트")
     @Test
     void updateFiveBonusLottoScore() {
         //given
@@ -76,7 +76,7 @@ class LottoScoreTest {
         assertThat(count).isSameAs(1);
     }
 
-    @DisplayName("로또 6개일 때 정상적으로 작동되는지 테스트")
+    @DisplayName("로또 번호 맞은 개수가 6개일 때 정상적으로 작동되는지 테스트")
     @Test
     void updateSixLottoScore() {
         //given
