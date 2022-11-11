@@ -1,8 +1,9 @@
 package lotto;
 
 public class LottoGameSimulator {
+    private final MessagePrinter messagePrinter;
     public LottoGameSimulator() {
-
+        messagePrinter = new MessagePrinter();
     }
 
     public void run() {
@@ -14,7 +15,7 @@ public class LottoGameSimulator {
     }
 
     public void getInputOfMoney() {
-
+        messagePrinter.printMoneyInputRequest();
     }
 
     public void printGeneratedLotto() {
