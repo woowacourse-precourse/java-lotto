@@ -1,10 +1,11 @@
 package lotto.domain;
 
+import static lotto.utils.Constant.LOTTO_PRICE;
+
 import lotto.utils.ExceptionType;
 import lotto.view.Output;
 
 public class Money {
-    private static final int LOTTO_PRICE = 1000;
     private final int money;
 
     public Money(int money) {
@@ -13,21 +14,21 @@ public class Money {
     }
 
     private void validate(int money) {
-        isLowerThan1000(money);
-        isDivideInto1000(money);
+        isLowerThanLottoPrice(money);
+        isDivideIntoLottoPrice(money);
     }
 
-    private void isLowerThan1000(int money) {
+    private void isLowerThanLottoPrice(int money) {
         if(money < LOTTO_PRICE) {
-            Output.printErrorAndExit(ExceptionType.LOWER_THAN_1000.getMessage());
-            throw new IllegalArgumentException(ExceptionType.LOWER_THAN_1000.getMessage());
+            Output.printErrorAndExit(ExceptionType.LOWER_THAN_LOTTO_PRICE.getMessage());
+            throw new IllegalArgumentException(ExceptionType.LOWER_THAN_LOTTO_PRICE.getMessage());
         }
     }
 
-    private void isDivideInto1000(int money) {
+    private void isDivideIntoLottoPrice(int money) {
         if(money % LOTTO_PRICE != 0) {
-            Output.printErrorAndExit(ExceptionType.NOT_DIVISION_INTO_1000.getMessage());
-            throw new IllegalArgumentException(ExceptionType.NOT_DIVISION_INTO_1000.getMessage());
+            Output.printErrorAndExit(ExceptionType.NOT_DIVISION_INTO_LOTTO_PRICE.getMessage());
+            throw new IllegalArgumentException(ExceptionType.NOT_DIVISION_INTO_LOTTO_PRICE.getMessage());
         }
     }
 
