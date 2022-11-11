@@ -134,7 +134,7 @@ public class Application {
 
     private static void getEachResult(Lotto lotto, List<Integer> winningNums, int bonusNum) {
         List<Integer> numbers = lotto.getNumbers();
-        int numOfMatching = (int) winningNums.stream().filter(numbers::contains).count();
+        int numOfMatching = (int) numbers.stream().filter(winningNums::contains).count();
 
         if (numOfMatching == FIRST_PLACE_STANDARD) {
             numOfEachResult.merge(FIRST, 1, Integer::sum);
