@@ -1,5 +1,6 @@
 package lotto.model;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -10,11 +11,19 @@ public class Lotto {
         validateNumberRange(numbers);
         validateDuplicateNumbers(numbers);
         this.numbers = numbers;
+        sortNumbers();
     }
 
     private void validateNumberCount(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(InputErrorMessage.INVALID_DIGITS_COUNT.getErrorMessage());
+        }
+    }
+    private void validateNumberRange(List<Integer> numbers) {
+        for(Integer number : numbers) {
+            if(number < Constant.NUMBER_RANGE_START || number > Constant.NUMBER_RANGE_END) {
+                throw new IllegalArgumentException(InputErrorMessage.OUT_OF_RANGE_NUMBER.getErrorMessage());
+            }
         }
     }
 
@@ -34,11 +43,7 @@ public class Lotto {
         }
     }
 
-    private void validateNumberRange(List<Integer> numbers) {
-        for(Integer number : numbers) {
-            if(number < Constant.NUMBER_RANGE_START || number > Constant.NUMBER_RANGE_END) {
-                throw new IllegalArgumentException(InputErrorMessage.OUT_OF_RANGE_NUMBER.getErrorMessage());
-            }
-        }
+    public void sortNumbers() {
+        Collections.sort(numbers);
     }
 }
