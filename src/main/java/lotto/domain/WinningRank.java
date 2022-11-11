@@ -9,7 +9,8 @@ public enum WinningRank {
     SECOND_PLACE(5, true, 30_000_000),
     THIRD_PLACE(5, false, 1_500_000),
     FOURTH_PLACE(4, false, 50_000),
-    FIFTH_PLACE(3, false, 5_000);
+    FIFTH_PLACE(3, false, 5_000),
+    LAST_PLACE(0, false, 0);
 
     private static final int INITIAL_VALUE = 0;
 
@@ -21,6 +22,14 @@ public enum WinningRank {
         this.matchingCount = matchingCount;
         this.containsBonusNumber = containsBonusNumber;
         this.winningPrice = winningPrice;
+    }
+
+    public static WinningRank findWinningRank(int matchingCount, boolean containsBonusNumber) {
+        return Arrays.stream(values())
+                .filter(winningRank -> winningRank.matchingCount == matchingCount)
+                .filter(winningRank -> winningRank.containsBonusNumber == containsBonusNumber)
+                .findFirst()
+                .orElse(WinningRank.LAST_PLACE);
     }
 
     public static Map<WinningRank, Integer> getWinningDetails() {
