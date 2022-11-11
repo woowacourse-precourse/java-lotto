@@ -6,11 +6,12 @@ import java.util.List;
 public class Checker {
 	private static final int MAX_PRICE = 100000;
 	private static final int MAX_WINNING_NUMBER_LENGTH = 6;
-	private static final int MAX_BONUS_NUMBER_LENGTH = 2;
+	private static final int MAX_BONUS_NUMBER_LENGTH = 1;
 	private static final int MAX_NUMBER = 45;
 	private static final int MIN_NUMBER = 1;
 	private static final String WINNING_NUMBER_DELIMITER = ",";
 	public static List<String> winningNumber;
+	public static List<String> bonusNumber;
 
 	public static void checkUserInput(String userInput) {
 		checkNumberOnlyException(Arrays.asList(userInput));
@@ -32,7 +33,7 @@ public class Checker {
 	}
 
 	public static void checkBonusNumberInput(String userInput) {
-		List<String> bonusNumber = Arrays.asList(userInput);
+		bonusNumber = Arrays.asList(userInput);
 
 		checkNumberOnlyException(bonusNumber);
 		checkLengthException(bonusNumber, MAX_BONUS_NUMBER_LENGTH);
@@ -70,9 +71,9 @@ public class Checker {
 
 	}
 
-	public static void checkLengthException(List<String> winningNumber, int maxLength) {
-		if (winningNumber.size() > maxLength) {
-			Exception.winningNumberLengthException();
+	public static void checkLengthException(List<String> numbers, int maxLength) {
+		if (numbers.size() > maxLength) {
+			Exception.numberLengthException();
 		}
 	}
 

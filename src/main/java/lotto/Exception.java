@@ -12,7 +12,7 @@ public class Exception {
 		throw new IllegalArgumentException(NUMBER_ONLY_EXCEPTION_MESSAGE);
 	}
 
-	public static void winningNumberLengthException() {
+	public static void numberLengthException() {
 		throw new IllegalArgumentException(LENGTH_EXCEPTION_MESSAGE);
 	}
 
