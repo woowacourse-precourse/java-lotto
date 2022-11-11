@@ -1,5 +1,7 @@
 package lotto.validator;
 
+import lotto.domain.Lotto;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -32,6 +34,12 @@ public class NumbersValidator extends NumberValidator {
     public static void validateRangeNumbers(List<Integer> numbers) {
         for (int element : numbers) {
             validateRange(element);
+        }
+    }
+
+    public static void validateAlreadyExist(Lotto numbers, int number) {
+        if (numbers.contains(number)) {
+            throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
         }
     }
 }
