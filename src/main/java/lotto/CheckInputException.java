@@ -16,7 +16,7 @@ class CheckInputException {
     }
 
     public static void checkBuyerInputIsNotNumber(final String input) throws IllegalArgumentException{
-        if (Util.isNumberic(input) == false) {
+        if (Util.isNumberic(input) == false || input.contains(" ") == true) {
             throw new IllegalArgumentException(ERROR_MESSAGE + " 입력하신 문자열은 숫자열이 아닙니다.");
         }
     }
