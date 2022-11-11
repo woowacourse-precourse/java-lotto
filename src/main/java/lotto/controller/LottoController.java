@@ -7,10 +7,6 @@ import lotto.view.OutputView;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.constant.UtilConstant.LOTTO_OPEN;
-import static lotto.constant.UtilConstant.LOTTO_CLOSE;
-import static lotto.constant.UtilConstant.COMMA_AND_SPACE;
-
 public class LottoController {
     private static final InputView inputView = new InputView();
     private static final OutputView outputView = new OutputView();
@@ -41,12 +37,7 @@ public class LottoController {
     }
 
     private void printLottoNumbers(Lotto lotto) {
-        StringBuilder result = new StringBuilder(LOTTO_OPEN);
-        for (int lottoNumber : lotto.get()) {
-            result.append(lottoNumber).append(COMMA_AND_SPACE);
-        }
-        result.delete(result.length() - 2, result.length()).append(LOTTO_CLOSE);
-        System.out.println(result);
+        outputView.printLottoNumbers(lotto);
     }
 
     private WinningNumbers inputLottoNumbers(){

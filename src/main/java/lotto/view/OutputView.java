@@ -1,5 +1,7 @@
 package lotto.view;
 
+import lotto.domain.Lotto;
+
 import java.util.List;
 
 import static lotto.constant.MessageConstant.OUTPUT_PURCHASE;
@@ -10,6 +12,10 @@ import static lotto.constant.MessageConstant.STATISTICS_FIVE_MATCH;
 import static lotto.constant.MessageConstant.STATISTICS_FIVE_MATCH_ONE_BONUS;
 import static lotto.constant.MessageConstant.STATISTICS_SIX_MATCH;
 import static lotto.constant.MessageConstant.OUTPUT_EARNING;
+
+import static lotto.constant.UtilConstant.LOTTO_OPEN;
+import static lotto.constant.UtilConstant.LOTTO_CLOSE;
+import static lotto.constant.UtilConstant.COMMA_AND_SPACE;
 
 public class OutputView {
 
@@ -28,5 +34,14 @@ public class OutputView {
 
     public void printEarning(float earning){
         System.out.printf(OUTPUT_EARNING,earning);
+    }
+
+    public void printLottoNumbers(Lotto lotto) {
+        StringBuilder result = new StringBuilder(LOTTO_OPEN);
+        for (int lottoNumber : lotto.get()) {
+            result.append(lottoNumber).append(COMMA_AND_SPACE);
+        }
+        result.delete(result.length() - 2, result.length()).append(LOTTO_CLOSE);
+        System.out.println(result);
     }
 }
