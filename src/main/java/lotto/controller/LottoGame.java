@@ -10,11 +10,17 @@ import java.util.*;
 
 public class LottoGame {
 
-    private LottoGameView lottoGameView;
+    private final LottoGameView lottoGameView;
+    private final Customer customer;
 
-    public void play(Customer customer) {
+    public LottoGame(LottoGameView lottoGameView, Customer customer) {
+        this.lottoGameView = lottoGameView;
+        this.customer = customer;
+    }
+
+    public void play() {
         int money = lottoGameView.inputMoney();
-        List<Lotto> lottos = customer.generateLottos(money);
+        List<Lotto> lottos = customer.purchaseLottos(money);
         lottoGameView.printLottos(lottos);
         WinningNumber winningNumber = new WinningNumber(lottoGameView.inputWinningNumbers(), lottoGameView.inputBonusNumber());
         List<LottoRank> ranks = winningNumber.getRanks(lottos);
