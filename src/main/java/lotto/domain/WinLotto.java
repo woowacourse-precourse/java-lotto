@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.util.Util;
+import lotto.util.ValidationUtil;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public class WinLotto extends Lotto {
     }
 
     private void validate(List<Integer> numbers, int bonusNumber) {
-        Util.isValidBonusNumber(numbers, bonusNumber);
+        ValidationUtil.isValidBonusNumber(numbers, bonusNumber);
     }
 
     public Result getResult(Lotto generatedLotto) {

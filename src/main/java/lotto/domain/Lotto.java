@@ -1,6 +1,7 @@
 package lotto.domain;
 
-import lotto.util.Util;
+import lotto.util.GenerationUtil;
+import lotto.util.ValidationUtil;
 
 import java.util.*;
 
@@ -14,13 +15,13 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        Util.isValidCount(numbers);
-        Util.isValidNumber(numbers);
-        Util.hasDistinctNumbers(numbers);
+        ValidationUtil.isValidCount(numbers);
+        ValidationUtil.isValidNumber(numbers);
+        ValidationUtil.hasDistinctNumbers(numbers);
     }
 
     public static Lotto create() {
-        return new Lotto(Util.createRandomNumbers());
+        return new Lotto(GenerationUtil.generateRandomNumbers());
     }
 
     public List<Integer> getNumbers() {
