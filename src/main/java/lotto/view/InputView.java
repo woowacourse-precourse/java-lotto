@@ -8,4 +8,9 @@ public class InputView {
         System.out.println(Constants.PRINT_INPUT_MONEY);
         return Utils.readConsole();
     }
+
+    public static String inputWinningNumbers() {
+        System.out.println(Constants.PRINT_INPUT_WINNING_NUMBERS);
+        return Utils.readConsole();
+    }
 }
