@@ -1,8 +1,8 @@
-package lotto.lotteryshop;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.input.InputAgent;
-import lotto.validator.ValueValidator;
+import lotto.application.service.agent.InputAgent;
+import lotto.application.service.validator.ValueValidator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +21,7 @@ public class Lotto {
         ValueValidator.validateInputLottoNumber(numbers);
     }
 
-    public List<List<Integer>> generateLottoNumber(int purchaseNumber) {
+    public static List<List<Integer>> generateLottoNumber(int purchaseNumber) {
         List<List<Integer>> generatedLottoPaper = new ArrayList<>();
 
         for (int number = 0; number < purchaseNumber; number++) {
@@ -30,7 +30,7 @@ public class Lotto {
         return generatedLottoPaper;
     }
 
-    public void getGeneratedLottoNumber(List<List<Integer>> generatedLottoPaper) {
+    public static void getGeneratedLottoNumber(List<List<Integer>> generatedLottoPaper) {
         for (List<Integer> eachLottoPaper : generatedLottoPaper) {
             System.out.println(Arrays.toString(eachLottoPaper.toArray()));
         }

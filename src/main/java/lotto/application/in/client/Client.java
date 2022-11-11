@@ -1,6 +1,6 @@
-package lotto.client;
+package lotto.application.in.client;
 
-import lotto.input.InputAgent;
+import lotto.application.service.agent.InputAgent;
 
 public class Client {
 
@@ -11,10 +11,9 @@ public class Client {
         try {
             inputValue = inputAgent.inputUserMoney();
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException("[ERROR] 입력 오류 입니다. 에러 로그를 확인해주세요.");
         }
         System.out.printf("\n%d개를 구매했습니다.\n", inputValue / 1000);
         return inputValue / 1000;
-
     }
 }

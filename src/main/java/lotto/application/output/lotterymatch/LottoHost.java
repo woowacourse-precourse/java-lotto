@@ -1,4 +1,4 @@
-package lotto.lotteryhost;
+package lotto.application.output.lotterymatch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,9 @@ import java.util.List;
 public class LottoHost {
 
     public List<Integer> matchNotContainBonusNumber(
-            List<List<Integer>> generatedLottoNumbers, List<Integer> winningLottoNumbers) {
+            List<List<Integer>> generatedLottoNumbers, List<Integer> winningLottoNumbers, int bonusNumber) {
 
+        winningLottoNumbers.add(bonusNumber);
         List<Integer> MatchResultNotContainBonusNumber = new ArrayList<>();
 
         for (List<Integer> generatedLottoNumber : generatedLottoNumbers) {
@@ -21,6 +22,7 @@ public class LottoHost {
         }
         return MatchResultNotContainBonusNumber;
     }
+
     public List<Integer> matchContainBonusNumber(
             List<List<Integer>> generatedLottoNumbers, List<Integer> winningLottoNumbers, int bonusNumber) {
         List<Integer> MatchResultContainBonusNumber = new ArrayList<>();

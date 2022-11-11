@@ -1,4 +1,4 @@
-package lotto.calculator;
+package lotto.infrascturcture.adapter.output.calculator;
 
 import java.util.HashMap;
 import java.util.List;
