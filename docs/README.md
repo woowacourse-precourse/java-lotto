@@ -7,7 +7,7 @@
   - [x] 사용자가 입력한 돈이 1000원 단위로 나누어 떨어지지 않을 경우 IllegalArgumentException 예외 처리 구현 - checkBuyerInputIsNotDivided()
   - [x] 사용자가 입력한 당첨 번호가 1~45가 아닐 경우 IllegalArguemntException 예외 처리 구현 - checkBuyerInputIsNotNumberRange()
   - [x] 사용자가 입력한 당첨 번호에 ','의 5개가 아닐 경우 IllegalArguemntException 예외 처리 구현 - checkBuyerInputIsNotFiveComma()
-  - [ ] 사용자가 입력한 당첨 번호가 6개가 아닐 경우 IllegalArguemntException 예외 처리 구현
+  - [x] 사용자가 입력한 당첨 번호가 6개가 아닐 경우 IllegalArguemntException 예외 처리 구현
   - [ ] 사용자가 입력한 보너스 번호에 숫자 이외의 문자가 있을 경우 IllegalArguemntException 예외 처리 구현
 
 - [ ] 로또 구매자 - Class LottoBuyer
