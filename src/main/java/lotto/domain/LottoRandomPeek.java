@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -28,6 +30,7 @@ public class LottoRandomPeek {
                 randomNumbers.add(randomNumber);
             }
         }
+        Collections.sort(randomNumbers);
         randomLottos.add(new Lotto(randomNumbers));
     }
     public List<Lotto> getRandomLottos(){
