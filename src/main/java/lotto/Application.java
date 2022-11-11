@@ -10,6 +10,7 @@ public class Application {
         try {
             Chatbot chatbot = new Chatbot();
             int lottoPrice = validatePrice(chatbot.askPrice());
+            System.out.println(lottoPrice);
             List<List<Integer>> userNumber = setUserNumber(lottoPrice / 1000);
             chatbot.printUserNumber(userNumber);
             Lotto lotto = new Lotto(chatbot.askLottoNumber());
@@ -28,11 +29,15 @@ public class Application {
                 throw new IllegalArgumentException("입력값이 숫자가 아닙니다.");
             }
         }
-        int lottoPrice = Integer.parseInt(price);
-        if (lottoPrice <= 0) {
+        int lottoPrice;
+        try {
+            lottoPrice = Integer.parseInt(price);
+        } catch (Exception e) {
             throw new IllegalArgumentException("입력값이 범위를 벗어났습니다.(1,000 이상 2,147,483,000 이하)");
         }
-        if (lottoPrice % 1000 != 0) {
+        if (lottoPrice <= 0) {
+            throw new IllegalArgumentException("입력값이 범위를 벗어났습니다.(1,000 이상 2,147,483,000 이하)");
+        } else if (lottoPrice % 1000 != 0) {
             throw new IllegalArgumentException("입력값이 1,000원으로 나누어 떨어지지 않습니다.");
         }
         return lottoPrice;
@@ -57,5 +62,4 @@ public class Application {
     public static float calculateRate(int price, List<Integer> result) {
         return 0f;
     }
-
 }
