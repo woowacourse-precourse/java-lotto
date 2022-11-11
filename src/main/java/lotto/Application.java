@@ -22,6 +22,8 @@ public class Application {
         lotto_win = Arrays.asList(sc.nextLine().split(",")).stream().map(s -> Integer.parseInt(((String) s).trim())).collect(Collectors.toList());
         Lotto winLotto = new Lotto(lotto_win);
         bonus = sc.nextInt();
+
+        
         sc.close();
     }
 
