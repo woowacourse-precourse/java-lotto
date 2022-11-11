@@ -1,15 +1,11 @@
 package lotto.view;
 
-
-import lotto.model.LottoResult;
 import lotto.model.Prize;
 
 import java.util.Map;
 
-public class LottoResultView {
-    public static void outPut(LottoResult lottoResult) {
-        Map<Prize, Integer> statistics = lottoResult.getStatistics();
-
+public class StatisticsView {
+    public static void outPut(Map<Prize, Integer> statistics) {
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " + statistics.get(Prize.FIFTH) + "개");

@@ -13,8 +13,6 @@
   - [x] WinningLotto
   - [x] BonusNumber
   - [x] Prize (Enum 으로 구현)
-  - [x] LottoResult
-  - [x] ProfitRate
 
 
 - Controller
@@ -27,9 +25,14 @@
 
 
 - View
-  - [x] Ticket 정보 출력
-  - [x] LottoResult 당첨 통계 출력
-  - [x] ProfitRate 수익률 출력
+  - [x] TicketView
+  - [x] StatisticsView
+  - [x] ProfitRateView
+
+
+- Service
+  - [x] LottoResult
+  - [x] ProfitRateCalculator
 
 
 - Input
@@ -115,6 +118,6 @@
   - [ ] 총 상금이 당첨 내역 상금의 합계와 같은지 테스트
 
 
-- ProfitRate
+- ProfitRateCalculator
   - [ ] 수익률 계산이 정확한지 테스트
   - [ ] 수익률이 소수점 둘째 자리에서 반올림 하는지 테스트

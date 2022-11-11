@@ -1,28 +1,15 @@
-package lotto.model;
+package lotto.service;
+
+import lotto.model.Lotto;
+import lotto.model.Prize;
+import lotto.model.WinningLotto;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class LottoResult {
-    private final Map<Prize, Integer> statistics;
-    private final double prizeMoney;
-
-    public Map<Prize, Integer> getStatistics() {
-        return statistics;
-    }
-
-    public double getPrizeMoney() {
-        return prizeMoney;
-    }
-
-    public LottoResult(Ticket ticket, WinningLotto winningLotto) {
-        this.statistics = getStatistics(ticket, winningLotto);
-        this.prizeMoney = getPrizeMoney(statistics);
-    }
-
-    private Map<Prize, Integer> getStatistics(Ticket ticket, WinningLotto winningNumbers) {
-        List<Lotto> lotteries = ticket.getLotteries();
+    public static Map<Prize, Integer> getStatistics(List<Lotto> lotteries, WinningLotto winningNumbers) {
         Map<Prize, Integer> statistics = new HashMap<>();
         init(statistics);
 
@@ -35,7 +22,17 @@ public class LottoResult {
         return statistics;
     }
 
-    private Prize getPrize(List<Integer> lottoNumbers, WinningLotto winningLotto) {
+    public static double getPrizeMoney(Map<Prize, Integer> statistics) {
+        double prizeMoney = 0;
+        prizeMoney += 2000000000L * statistics.get(Prize.FIRST);
+        prizeMoney += 30000000L * statistics.get(Prize.SECOND);
+        prizeMoney += 1500000L * statistics.get(Prize.THIRD);
+        prizeMoney += 50000L * statistics.get(Prize.FOURTH);
+        prizeMoney += 5000L * statistics.get(Prize.FIFTH);
+        return prizeMoney;
+    }
+
+    private static Prize getPrize(List<Integer> lottoNumbers, WinningLotto winningLotto) {
         int matchCount = matchNumber(lottoNumbers, winningLotto);
         boolean containBonusNumber = isContainBonusNumber(lottoNumbers, winningLotto);
 
@@ -48,7 +45,7 @@ public class LottoResult {
         return Prize.NONE;
     }
 
-    private int matchNumber(List<Integer> lottoNumbers, WinningLotto winningLotto) {
+    private static int matchNumber(List<Integer> lottoNumbers, WinningLotto winningLotto) {
         List<Integer> winningNumbers = winningLotto.getWinningNumbers();
         int matchCount = 0;
 
@@ -61,21 +58,11 @@ public class LottoResult {
         return matchCount;
     }
 
-    private boolean isContainBonusNumber(List<Integer> lottoNumbers, WinningLotto winningLotto) {
+    private static boolean isContainBonusNumber(List<Integer> lottoNumbers, WinningLotto winningLotto) {
         return lottoNumbers.contains(winningLotto.getBonusNumber());
     }
 
-    private double getPrizeMoney(Map<Prize, Integer> statistics) {
-        double prizeMoney = 0;
-        prizeMoney += 2000000000L * statistics.get(Prize.FIRST);
-        prizeMoney += 30000000L * statistics.get(Prize.SECOND);
-        prizeMoney += 1500000L * statistics.get(Prize.THIRD);
-        prizeMoney += 50000L * statistics.get(Prize.FOURTH);
-        prizeMoney += 5000L * statistics.get(Prize.FIFTH);
-        return prizeMoney;
-    }
-
-    private void init(Map<Prize, Integer> statistics) {
+    private static void init(Map<Prize, Integer> statistics) {
         for (Prize prize : Prize.values()) {
             statistics.put(prize, 0);
         }
