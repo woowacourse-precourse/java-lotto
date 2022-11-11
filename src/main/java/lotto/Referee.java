@@ -6,7 +6,7 @@ import static lotto.Rank.*;
 
 public class Referee {
 
-    public static int correctNumberCount(Lotto lotto, List<Integer> myLotto) {
+    public int correctNumberCount(Lotto lotto, List<Integer> myLotto) {
         int count = 0;
 
         for(int number : myLotto) {
@@ -17,7 +17,7 @@ public class Referee {
         return count;
     }
 
-    public static void plusCorrectNumberCount(int correctNumberCount, List<Integer> myLotto, int bonus) {
+    public void plusCorrectNumberCount(int correctNumberCount, List<Integer> myLotto, int bonus) {
         if(correctNumberCount == 3) {
             THREE.plusCount();
         }
@@ -36,7 +36,7 @@ public class Referee {
         }
     }
 
-    public static boolean isDuplicateBonusBall(int bonus, Lotto lotto) {
+    public boolean isDuplicateBonusBall(int bonus, Lotto lotto) {
         return lotto.getNumbers().contains(bonus);
     }
 }
