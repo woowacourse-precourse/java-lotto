@@ -1,5 +1,6 @@
 package lotto.view;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -12,8 +13,8 @@ public class OutputView {
 	private static final String PRINT_LOTTO_QUANTITY = "\n%d개를 구매했습니다.\n";
 	private static final String INPUT_BONUS_NUMBER_MESSAGE = "\n보너스 번호를 입력해 주세요.";
 	private static final String PRINT_WINNING_STATS_MESSAGE = "\n당첨 통계\n---";
-	private static final String PRINT_WINNING_RANK = "%d개 일치 (%d원) - %d개\n";
-	private static final String PRINT_WINNING_2ND_RANK = "%d개 일치, 보너스 볼 일치 (%d원) - %d개\n";
+	private static final String PRINT_WINNING_RANK = "%d개 일치 (%s원) - %d개\n";
+	private static final String PRINT_WINNING_2ND_RANK = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
 	private static final String PRINT_YIELD_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
 
 	public static void printAmountMessage() {
@@ -38,12 +39,16 @@ public class OutputView {
 	}
 
 	public static void printRankCount(Map.Entry<Rank, Integer> stat) {
-		System.out.printf(PRINT_WINNING_RANK, stat.getKey().getSameWinningNumberCount(), stat.getKey().getReward(),
+		DecimalFormat formatter = new DecimalFormat("###,###");
+		System.out.printf(PRINT_WINNING_RANK, stat.getKey().getSameWinningNumberCount(),
+			formatter.format(stat.getKey().getReward()),
 			stat.getValue());
 	}
 
 	public static void printSecondRankCount(Map.Entry<Rank, Integer> stat) {
-		System.out.printf(PRINT_WINNING_2ND_RANK, stat.getKey().getSameWinningNumberCount(), stat.getKey().getReward(),
+		DecimalFormat formatter = new DecimalFormat("###,###");
+		System.out.printf(PRINT_WINNING_2ND_RANK, stat.getKey().getSameWinningNumberCount(),
+			formatter.format(stat.getKey().getReward()),
 			stat.getValue());
 	}
 
