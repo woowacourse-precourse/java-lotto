@@ -37,15 +37,15 @@ public class WinningNumber {
             try {
                 Integer.valueOf(number);
             } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("숫자가 아닙니다");
+                throw new IllegalArgumentException("당첨번호와 보너스 번호가 숫자가 아닙니다");
             }
         }
     }
 
     private void validateRange(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number < 1 || number > 45) {
-                throw new IllegalArgumentException("당첨 번호와 보너스 번호는 1~ 45 사이의 숫자이어야합니다.");
+            if (number < Lotto.LOTTO_MIN_NUMBER || number > Lotto.LOTTO_MAX_NUMBER) {
+                throw new IllegalArgumentException("당첨 번호와 보너스 번호가 1~ 45 사이의 숫자가 아닙니다.");
             }
         }
     }
