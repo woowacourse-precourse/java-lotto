@@ -38,6 +38,11 @@ public class LottoMachine {
         return newLottos;
     }
 
+    static boolean isContainedBonus(Lotto winningLotto, int bonus){
+        List<Integer> winningNumber = winningLotto.getNumbers();
+        return winningNumber.contains(bonus);
+    }
+
     static int howMachWithWinningNumber(Lotto winningLotto, Lotto lotto){
         List<Integer> winningLottoList = winningLotto.getNumbers();
         List<Integer> lottoList = lotto.getNumbers();
