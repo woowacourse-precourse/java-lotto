@@ -62,7 +62,7 @@ class LottoTest extends NsTest {
     @DisplayName("입력 값이 천원으로 딱 나눠 나머지가 있으면 에러가 발생한다. 2")
     @Test
     void validateInputValueForMoneyCase2() {
-        String input = "100";
+        String input = "999";
         AutomaticLottery buyLotto = new AutomaticLottery();
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
@@ -99,6 +99,18 @@ class LottoTest extends NsTest {
     @Test
     void validateInputValueForCharacterCase3() {
         String input = "10,000";
+        AutomaticLottery buyLotto = new AutomaticLottery();
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> buyLotto.getLottoPieces(input))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertThat(output()).contains(ERROR_MESSAGE);
+    }
+
+    @DisplayName("입력 값에 공백이 들어가면 에러가 발생한다.")
+    @Test
+    void validateInputValueForCharacterCase4() {
+        String input = "";
         AutomaticLottery buyLotto = new AutomaticLottery();
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> buyLotto.getLottoPieces(input))

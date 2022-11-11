@@ -4,12 +4,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class AutomaticLottery {
     public int getLottoPieces(String amount) {
         validateInputType(amount);
-        int money = validateAmount(amount);
+        validateAmount(amount);
+        int money = Integer.parseInt(amount);
         return money / 1000;
     }
 
@@ -39,6 +41,10 @@ public class AutomaticLottery {
     }
 
     private void validateInputType(String amount) {
+        if (amount.equals("")) {
+            System.out.println("[ERROR] 공백을 입력할 수 없습니다 금액을 입력해 주세요.");
+            throw new IllegalArgumentException();
+        }
         for (int seq = 0; seq < amount.length(); seq++) {
             validateCharacter(amount.charAt(seq));
         }
@@ -51,13 +57,12 @@ public class AutomaticLottery {
         }
     }
 
-    private int validateAmount(String amount) {
+    private void validateAmount(String amount) {
         int money = Integer.parseInt(amount);
         if (money % 1000 != 0) {
             System.out.println("[ERROR] 금액은 1,000원 단위로 입력해야 합니다.");
             throw new IllegalArgumentException();
         }
-        return money;
     }
 
 }
