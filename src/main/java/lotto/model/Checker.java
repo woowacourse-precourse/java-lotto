@@ -10,22 +10,22 @@ public class Checker {
     }
 
     public enum WinningPlace {
-        FIRST(2000000000, 6),
-        SECOND(30000000, 5),
-        THIRD(1500000, 5),
-        FOURTH(50000, 4),
-        FIFTH(5000, 3),
-        NOTHING(0, 0);
+        FIRST("2,000,000,000", 6),
+        SECOND("30,000,000", 5),
+        THIRD("1,500,000", 5),
+        FOURTH("50,000", 4),
+        FIFTH("5,000", 3),
+        NOTHING("0", 0);
 
-        private final int winningValue;
+        private final String winningValue;
         private final int corrects;
 
-        WinningPlace(int value, int corrects) {
+        WinningPlace(String value, int corrects) {
             this.winningValue = value;
             this.corrects = corrects;
         }
 
-        public int getWinningValue() {
+        public String getWinningValue() {
             return this.winningValue;
         }
 
