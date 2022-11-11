@@ -52,4 +52,21 @@ class UserTest {
         assertThat(user.getLottos().size()).isEqualTo(50);
         assertThat(user.getLottos().get(0).getNumbers()).isSorted();
     }
+
+    @Test
+    void 수익률_계산하기() throws Exception {
+        //given
+        User user = new User();
+        user.inputPurchaseAmount("50000");
+        user.getPrizes().addCount(Prize.FIRST);
+        user.getPrizes().addCount(Prize.FIRST);
+
+        //when
+        String yield = user.getYield();
+
+        //then
+        double expectedResult = (long) Prize.FIRST.getPrize() * 2 / user.getPurchaseAmount() * 100;
+        assertThat(Double.parseDouble(yield)).isEqualTo(expectedResult);
+        System.out.println("yield = " + yield);
+    }
 }
