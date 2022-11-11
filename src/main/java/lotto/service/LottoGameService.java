@@ -125,7 +125,7 @@ public class LottoGameService {
         return Integer.parseInt(bonusNumber) < 1 || Integer.parseInt(bonusNumber) > 45;
     }
 
-    private boolean isBonusNumberDuplicateWinningNumbers(List<Integer> lottoWinningNumbers,String bonusNumber) {
+    private boolean isBonusNumberDuplicateWinningNumbers(List<Integer> lottoWinningNumbers, String bonusNumber) {
         return lottoWinningNumbers.contains(Integer.parseInt(bonusNumber));
     }
 
@@ -152,5 +152,22 @@ public class LottoGameService {
                 getPurchaseNumbersMatchWinningNumbersCount(purchaseLottoNumbers, lottoWinningNumbers);
         return LottoWinningRank.decideLottoWinningRank(purchaseNumbersMatchWinningNumbersCount,
                 isPurchaseNumbersMatchBonusNumber(purchaseLottoNumbers, bonusNumber));
+    }
+
+    public String getEarningsRatio(String lottoPurchaseAmount) {
+        double sumLottoWinningMoney = 0;
+        for (LottoWinningRank lottoWinningRank : lottoWinningRanks) {
+            String commaRemovedWinningMoney = removeWinningMoneyComma(lottoWinningRank);
+            int convertedWinningMoney = Integer.parseInt(commaRemovedWinningMoney);
+            sumLottoWinningMoney += convertedWinningMoney;
+        }
+        double convertedLottoPurchaseAmount = Double.parseDouble(lottoPurchaseAmount);
+        double earningsRatio = (sumLottoWinningMoney / convertedLottoPurchaseAmount) * 100;
+        return String.format("%,.1f", earningsRatio) + "%";
+    }
+
+    public String removeWinningMoneyComma(LottoWinningRank lottoWinningRank) {
+        String originalWinningMoney = lottoWinningRank.getWinningMoney();
+        return originalWinningMoney.replace(",", "");
     }
 }
