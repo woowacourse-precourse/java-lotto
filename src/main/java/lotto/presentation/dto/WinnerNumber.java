@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WinnerNumber {
-    private final Validator validator=Validator.getInstance();
-    private List<Integer> winnerNumber;
+    private static final int NUMBER_OF_DIGIT=6;
+    private final List<Integer> winnerNumber;
 
     public WinnerNumber(String winnerNumber){
         winnerNumber=firstValidate(winnerNumber);
@@ -16,11 +16,12 @@ public class WinnerNumber {
     }
     private String firstValidate(String target){
         target=target.replace(",","");
-        validator.checkInteger(target);
+        Validator.checkInteger(target);
         return target;
     }
     private void lastValidate(List<Integer> target){
-        validator.checkNumericalRange(target);
+        Validator.checkNumericalRange(target);
+        Validator.checkNumberOfDigit(NUMBER_OF_DIGIT,target);
     }
     private List<Integer> stringToList(String target){
         List<Integer> result=new ArrayList<>();

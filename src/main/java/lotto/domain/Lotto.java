@@ -6,8 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
-    private static final Validator validator=Validator.getInstance();
-    private static final int DIGIT=6;
+    private static final int NUMBER_OF_DIGIT=6;
     private final List<Integer> numbers;
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -15,9 +14,9 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        validator.checkNumericalRange(numbers);
-        validator.checkNumberOfDigit(DIGIT,numbers);
-        validator.checkDuplicate(numbers);
+        Validator.checkNumericalRange(numbers);
+        Validator.checkNumberOfDigit(NUMBER_OF_DIGIT,numbers);
+        Validator.checkDuplicate(numbers);
     }
 
     // TODO: 추가 기능 구현

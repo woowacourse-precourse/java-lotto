@@ -17,46 +17,41 @@ public class Validator {
     private static final String NUMBER_OF_DIGIT="자리 숫자여야 합니다.";
     private static final String DUPLICATE_NUMBER="중복되지 않은 숫자여야 합니다.";
     private static final String REGEX = "[0-9]+";
-    private static final Validator instance=new Validator();
-    private Validator(){}
 
-    public static Validator getInstance(){
-        return instance;
-    }
-    public void checkInteger(String target){
+    public static void checkInteger(String target){
         if(!target.matches(REGEX)){
             throw new IllegalArgumentException(ERROR_MESSAGE+MUST_INTEGER);
         }
     }
-    public void checkUnit(String target){
+    public static void checkUnit(String target){
         if((stringToInteger(target)%UNIT)!=REMAINDER){
             throw new IllegalArgumentException(ERROR_MESSAGE+UNMATCHED_UNIT);
         }
     }
-    public void checkBelow(String target){
+    public static void checkBelow(String target){
         if(stringToInteger(target)<UNIT){
             throw new IllegalArgumentException(ERROR_MESSAGE+BELOW_AMOUNT);
         }
     }
-    public void checkNumericalRange(List<Integer> target){
+    public static void checkNumericalRange(List<Integer> target){
         for(Integer num:target){
             if(num<START_RANGE||num>END_RANGE){
                 throw new IllegalArgumentException(ERROR_MESSAGE+NUMERIC_RANGE);
             }
         }
     }
-    public void checkNumberOfDigit(Integer digit,List<Integer> target){
+    public static void checkNumberOfDigit(Integer digit,List<Integer> target){
         if(target.size()!=digit){
             throw new IllegalArgumentException(ERROR_MESSAGE+digit+NUMBER_OF_DIGIT);
         }
     }
-    public void checkDuplicate(List<Integer> target){
+    public static void checkDuplicate(List<Integer> target){
         Set<Integer> set=new HashSet<>(target);
         if(set.size()!=target.size()){
             throw new IllegalArgumentException(ERROR_MESSAGE+DUPLICATE_NUMBER);
         }
     }
-    private Integer stringToInteger(String target){
+    private static Integer stringToInteger(String target){
         return Integer.parseInt(target);
     }
 }
