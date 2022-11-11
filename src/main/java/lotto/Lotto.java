@@ -27,4 +27,8 @@ public class Lotto {
         return numSet.size() != numbers.size();
     }
 
+    public List<Integer> getLottoNumber(){
+        return this.numbers;
+    }
+
 }
