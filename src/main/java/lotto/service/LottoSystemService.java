@@ -68,6 +68,9 @@ public class LottoSystemService {
         lotto = new Lotto(numbers);
     }
 
+    public List<String> getTotal(){
+        return total;
+    }
     public void setTotal() {
         List<List<Integer>> userLottoNumbers = user.getUserLottoNumber();
         List<Integer> hit = Arrays.asList(0, 0, 0, 0, 0);
