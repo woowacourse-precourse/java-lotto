@@ -36,4 +36,13 @@ public class WinningNumberTest {
 			WinningNumber.checkWinningNumber(winningNumber);
 		}).isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@DisplayName("양의 정수가 아닌 경우 예외가 발생")
+	@ParameterizedTest
+	@ValueSource(strings = {"0,1,2,3,4,5", "-1,2,3,4,5,6", "1.5,2.3,4,5,6,7", "3,2.2,1,4,5,6"})
+	void notPositiveNumber(String winningNumber) {
+		assertThatThrownBy(() -> {
+			WinningNumber.checkWinningNumber(winningNumber);
+		}).isInstanceOf(IllegalArgumentException.class);
+	}
 }
