@@ -3,6 +3,7 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class WinningNumberTest {
 
@@ -10,6 +11,8 @@ class WinningNumberTest {
   @Test
   void notRangeNumber() {
     assertThatThrownBy(() -> new WinningNumber().splitNumber("152,3,4"))
+            .isInstanceOf(IllegalArgumentException.class);
+    assertThatThrownBy(() -> new WinningNumber().isNumberInRange(46))
             .isInstanceOf(IllegalArgumentException.class);
   }
 

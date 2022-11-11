@@ -1,7 +1,7 @@
 package lotto;
 
 public class BonusNumber {
-  public void isValidBonusNumber(String number) {
+  public String isValidBonusNumber(String number) {
     if (number.length() > 2) {
       throw new IllegalArgumentException("[ERROR] 하나의 숫자만 입력해 주세요.");
     }
@@ -14,7 +14,13 @@ public class BonusNumber {
     if (num < 1 || num > 45) {
       throw new IllegalArgumentException(Constant.NOT_RANGE_MESSAGE);
     }
+    // 당첨번호와 중복되지 않도록
+    return number;
   }
+
+//  public boolean isNotWinningNumber(String number) {
+//
+//  }
 
   public static void main(String[] args) {
     BonusNumber bonusNumber = new BonusNumber();
