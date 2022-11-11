@@ -1,5 +1,8 @@
 package lotto.domain.model;
 
+import static lotto.domain.view.IOMessage.BONUS_STATISTICS_MESSAGE;
+import static lotto.domain.view.IOMessage.STANDARD_STATISTICS_MESSAGE;
+
 import java.util.Arrays;
 
 public enum LottoRank {
@@ -8,14 +11,19 @@ public enum LottoRank {
     THREE_MATCHES("3",5000),
     FOUR_MATCHES("4",50000),
     FIVE_MATCHES("5",1500000),
-    FIVE_BONUS_MATCHES("5-1",30000000),
+    FIVE_BONUS_MATCHES("5",30000000),
     SIX_MATCHES("6",2000000000);
 
+
     private final String matchPoint;
-    private final Integer prizeMoney;
+    private final Integer reward;
     LottoRank(final String matchPoint, final Integer prizeMoney) {
         this.matchPoint = matchPoint;
-        this.prizeMoney = prizeMoney;
+        this.reward = prizeMoney;
+    }
+
+    public Integer getReward() {
+        return reward;
     }
 
     public static LottoRank find(String matchPoint) {
