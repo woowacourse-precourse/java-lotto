@@ -1,7 +1,7 @@
 # [미션- 로또] 기능 목록
 
 ### 사용자 입력
-- [x] inputUserMoney 
+- [x] getPurchaseMoney 
   - 사용자에게 금액을 입력받기
 
 - [x] publishWinningLottoNumbers 
