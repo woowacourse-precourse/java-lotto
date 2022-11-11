@@ -5,7 +5,12 @@ public class Player {
     private int lottoCount;
     private int Lottos;
 
-    public int getLottoCount(){
-        return 0;
+    public void setLottoCount(int money){
+        final int THOUSAND_WON = 1000;
+        this.lottoCount = money / THOUSAND_WON;
+    }
+
+    public int getLottoCount() {
+        return this.lottoCount;
     }
 }
