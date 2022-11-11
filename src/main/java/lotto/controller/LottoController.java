@@ -8,10 +8,16 @@ public class LottoController {
 
     public void process() {
         purchaseLotto();
+        showPurchasedLottos();
     }
 
     private void purchaseLotto() {
         int payment = ConsoleView.inputPurchasePrice();
         purchasedLottos = new PurchasedLottos(payment);
+    }
+
+    private void showPurchasedLottos() {
+        int amount = purchasedLottos.getLottos().size();
+        ConsoleView.printPurchaseAmount(amount);
     }
 }
