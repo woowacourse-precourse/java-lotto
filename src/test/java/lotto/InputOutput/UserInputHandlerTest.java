@@ -18,7 +18,6 @@ class UserInputHandlerTest{
     InputStream in;
     UserInputHandler inputHandler = new UserInputHandler();
     Supplier<Integer> functionSupply;
-    // 인풋으로 입력해야 뭐가 들어가는데, 어떻게할 것인지?
 
     void beforeSetting(String input){
         out = new ByteArrayOutputStream();
