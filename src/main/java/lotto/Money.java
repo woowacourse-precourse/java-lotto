@@ -6,8 +6,8 @@ public class Money {
 
     private final int money;
 
-    public Money(String amount) {
-        money = parse(amount);
+    public Money(int money) {
+        this.money = money;
         validate();
     }
 
