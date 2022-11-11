@@ -13,7 +13,7 @@ import java.util.List;
 
 public class MainController {
     private Cash cash;
-    private List<Lotto> myLottos = new ArrayList<>();
+    private List<Lotto> myLottos;
     public void inputCash() throws IllegalArgumentException{
         System.out.println("구입 금액을 입력해주세요.");
         String input = Console.readLine();
@@ -25,16 +25,20 @@ public class MainController {
         }
         cash = new Cash(integer);
         countLottoNumber(cash);
-        LottoGenerator lottoGenerator = new LottoGenerator();
-        myLottos = lottoGenerator.createMyLottos(lottoNumber);
-        OutputView outputView = new OutputView();
-        outputView.printMyLottoInfo(myLottos);
+        createMyLottos();
     }
 
     private int lottoNumber;
     private void countLottoNumber(Cash cash) throws IllegalArgumentException{
         Calculator calculator = new Calculator();
         lottoNumber = calculator.countLottoNumber(cash);
+    }
+
+    private void createMyLottos(){
+        LottoGenerator lottoGenerator = new LottoGenerator();
+        myLottos = lottoGenerator.createMyLottos(lottoNumber);
+        OutputView outputView = new OutputView();
+        outputView.printMyLottoInfo(myLottos);
     }
 
     private Lotto winningLotto;
@@ -48,7 +52,7 @@ public class MainController {
             try {
                 winningNumber.add(Integer.parseInt(number));
             } catch(NumberFormatException exception){
-                throw new IllegalArgumentException("[ERROR] 입력 값이 올바르지 않습니다.");
+                throw new IllegalArgumentException("입력 값이 올바르지 않습니다.");
             }
         }
 
