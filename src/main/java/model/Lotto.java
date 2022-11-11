@@ -7,11 +7,12 @@ import java.util.HashSet;
 import java.util.List;
 
 import util.message.ErrorMessage;
+import view.PrintView;
 
 public class Lotto {
     public static final int PER_PRICE_LOTTO=1000;
 
-    private final List<Integer> numbers;
+    protected List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -19,14 +20,20 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public Lotto() {
+    }
+
     protected void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            PrintView.error(ErrorMessage.LOTTO_LENGTH_SIZE_NOT_SIX);
             throw new IllegalArgumentException(ErrorMessage.LOTTO_LENGTH_SIZE_NOT_SIX);
         }
         if (hasDuplicateNum(numbers)) {
+            PrintView.error(ErrorMessage.HAS_NOT_DUPLICATE_NUM);
             throw new IllegalArgumentException(ErrorMessage.HAS_NOT_DUPLICATE_NUM);
         }
         if (!isNumRangeLotto(numbers)) {
+            PrintView.error(ErrorMessage.IS_NOT_LOTTO_RANGE_NUM);
             throw new IllegalArgumentException(ErrorMessage.IS_NOT_LOTTO_RANGE_NUM);
         }
     }

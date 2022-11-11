@@ -5,14 +5,20 @@ import java.util.List;
 import model.Lotto;
 import model.Purchase;
 import model.User;
+import model.WinLotto;
 import view.PrintView;
 import view.ReceiveView;
 
 public class MainController {
 
     public void run(){
-        Purchase usersPurchase = purchaseLotto();
-        User user = purchaseInfo(usersPurchase);
+        try {
+            Purchase usersPurchase = purchaseLotto();
+            User user = purchaseInfo(usersPurchase);
+            WinLotto winLotto = winLottoWithBonus();
+        } catch (IllegalArgumentException exception) {
+            PrintView.error(exception.getMessage());
+        }
 
     }
 
@@ -40,5 +46,23 @@ public class MainController {
         }
 
         return new User(boughtLotto,purchase);
+    }
+
+    public WinLotto winLottoWithBonus() {
+        List<Integer> winLottoNumbers = getWinLotto();
+        int bonusNumber = getBonusNumber();
+        return new WinLotto(winLottoNumbers, bonusNumber);
+    }
+
+    private int getBonusNumber() {
+        PrintView.bonusNum();
+        int bonusNumber = ReceiveView.bonusNumber();
+        return bonusNumber;
+    }
+
+    private List<Integer> getWinLotto() {
+        PrintView.winNum();
+        List<Integer> winLotto = ReceiveView.winLotto();
+        return winLotto;
     }
 }
