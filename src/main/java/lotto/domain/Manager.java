@@ -57,10 +57,10 @@ public class Manager {
         if (correctCount == Number.FOUR.getValue()) {
             return Number.FOUR.getValue();
         }
-        if (correctCount == Number.FIVE.getValue()) {
+        if (!isCorrectBonus && correctCount == Number.FIVE.getValue()) {
             return Number.THREE.getValue();
         }
-        if (correctCount == Number.FIVE.getValue() && isCorrectBonus) {
+        if (isCorrectBonus && correctCount == Number.FIVE.getValue()) {
             return Number.TWO.getValue();
         }
         if (correctCount == Number.SIX.getValue()) {
