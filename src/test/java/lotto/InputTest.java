@@ -9,6 +9,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class InputTest {
@@ -20,6 +21,7 @@ public class InputTest {
             "1, 2, 3, 4, 5, 47", "가나다", "abc", "123abc", "1, 2, 3, 4, 5"
     );
     private final List<String> budget = List.of("999","abc","가","10990","1~947");
+    private final List<String> bonus = List.of("0", "47", "abc", "가", "@@!");
 
     private Method invokeMethod(String declaredMethod) throws NoSuchMethodException {
         Method method = input.getClass().getDeclaredMethod(declaredMethod, String.class);
@@ -68,6 +70,17 @@ public class InputTest {
 
         System.out.println("countErr: "+countErr);
         assertEquals(countErr, budget.size());
+    }
+
+    @Test
+    @DisplayName("보너스 번호 입력 유효성 검사")
+    void validateInputBonus() throws Exception {
+        Method method = invokeMethod("validateInputBonus");
+
+        getCountErr(method, bonus);
+
+        System.out.println("countErr: "+countErr);
+        assertEquals(countErr, bonus.size());
     }
 
 }
