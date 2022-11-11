@@ -5,7 +5,8 @@ public enum Prize {
     secondPrice(2, 30000000),
     thirdPrice(3, 1500000),
     fourthPrice(4, 50000),
-    fifthPrice(5, 5000);
+    fifthPrice(5, 5000),
+    nothing(0, 0);
 
     public final int ranking;
     public final int rankingPrize;
