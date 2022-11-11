@@ -51,7 +51,7 @@ public class Award {
         for(Winning winning : Winning.getValues()) {
             System.out.println(winning.getMessage() + prize.get(winning) + "개");
         }
-        System.out.println("총 수익율은 " + getRevenueRate(money) + "%입니다.");
+        System.out.println("총 수익률은 " + getRevenueRate(money) + "%입니다.");
     }
 
     private double getRevenueRate(int money) {
