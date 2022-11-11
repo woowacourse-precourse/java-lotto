@@ -10,8 +10,8 @@ public class MoneyVerifier implements Verifier {
     public void check(String input) {
         checkNumeric(input);
         checkOutOfRange(input);
-        checkDivisible(input);
         checkPositive(input);
+        checkDivisible(input);
     }
 
     private void checkNumeric(String input) {
@@ -30,15 +30,15 @@ public class MoneyVerifier implements Verifier {
         }
     }
 
-    private void checkDivisible(String input) {
-        if (Long.parseLong(input) % Constant.MONEY_UNIT != 0) {
-            throw new IllegalArgumentException(ExceptionMessage.IS_NOT_DIVISIBLE);
-        }
-    }
-
     private void checkPositive(String input) {
         if (Long.parseLong(input) < 0) {
             throw new IllegalArgumentException(ExceptionMessage.IS_NOT_POSITIVE);
+        }
+    }
+
+    private void checkDivisible(String input) {
+        if (Long.parseLong(input) % Constant.MONEY_UNIT != 0) {
+            throw new IllegalArgumentException(ExceptionMessage.IS_NOT_DIVISIBLE);
         }
     }
 }
