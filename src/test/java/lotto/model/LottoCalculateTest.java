@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import lotto.model.LottoCalculate.LottoPrizeMoney;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -36,7 +37,7 @@ class LottoCalculateTest {
         assertThat(lottoCalculate.checkBonusNumber(l1, bonusNumber)).isEqualTo(true);
     }
 
-    @DisplayName(("로또번호(l1)가 당첨 숫자(l2)와5개가 일치하고, 보너스넘버가 불일치하면 3을 리턴한다"))
+    @DisplayName(("로또번호(l1)가 당첨 숫자(l2)와5개가 일치하고, 보너스넘버가 불일치하면 LottoPrizeMoney.THIRD 을 리턴한다"))
     @Test
     void calculatePrizeTest1() {
         List<Integer> l1 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
@@ -45,10 +46,10 @@ class LottoCalculateTest {
         int matchCount = lottoCalculate.checkMatches(l1, l2);
         boolean checkBonusNumber = lottoCalculate.checkBonusNumber(l1, bonusNumber);
 
-        assertThat(lottoCalculate.calculatePrize(matchCount, checkBonusNumber)).isEqualTo(3);
+        assertThat(lottoCalculate.calculatePrize(matchCount, checkBonusNumber)).isEqualTo(LottoPrizeMoney.THIRD);
     }
 
-    @DisplayName(("로또번호(l1)가 당첨 숫자(l2)와5개가 일치하고, 보너스넘버가 일치하면 2을 리턴한다"))
+    @DisplayName(("로또번호(l1)가 당첨 숫자(l2)와5개가 일치하고, 보너스넘버가 일치하면 LottoPrizeMoney.SECOND 을 리턴한다"))
     @Test
     void calculatePrizeTest2() {
         List<Integer> l1 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
@@ -57,7 +58,14 @@ class LottoCalculateTest {
         int matchCount = lottoCalculate.checkMatches(l1, l2);
         boolean checkBonusNumber = lottoCalculate.checkBonusNumber(l1, bonusNumber);
 
-        assertThat(lottoCalculate.calculatePrize(matchCount, checkBonusNumber)).isEqualTo(2);
+        assertThat(lottoCalculate.calculatePrize(matchCount, checkBonusNumber)).isEqualTo(LottoPrizeMoney.SECOND);
+    }
+
+    @DisplayName("2등인 경우 상금 3천만 을 리턴한다.")
+    @Test
+    void checkWinMoneyTest() {
+        LottoPrizeMoney lottoPrizeMoney = lottoCalculate.calculatePrize(5, true);
+        assertThat(lottoCalculate.calculateWinMoney(lottoPrizeMoney)).isEqualTo(30000000);
     }
 
 }
