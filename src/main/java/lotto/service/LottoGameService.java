@@ -164,10 +164,13 @@ public class LottoGameService {
     }
 
     public LottoWinningRank decideWinningRank(List<Integer> purchaseLottoNumbers,
-                                              List<Integer> lottoWinningNumbers,
+                                              String lottoWinningNumbers,
                                               int bonusNumber) {
+        List<Integer> collectedLottoWinningNumbers = Arrays.stream(lottoWinningNumbers.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
         long purchaseNumbersMatchWinningNumbersCount =
-                getPurchaseNumbersMatchWinningNumbersCount(purchaseLottoNumbers, lottoWinningNumbers);
+                getPurchaseNumbersMatchWinningNumbersCount(purchaseLottoNumbers, collectedLottoWinningNumbers);
         return LottoWinningRank.decideLottoWinningRank(purchaseNumbersMatchWinningNumbersCount,
                 isPurchaseNumbersMatchBonusNumber(purchaseLottoNumbers, bonusNumber));
     }
