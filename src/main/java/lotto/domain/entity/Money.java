@@ -28,4 +28,8 @@ public class Money {
     public int currentTime() {
         return money / 1000;
     }
+
+    public int currentMoney() {
+        return money;
+    }
 }

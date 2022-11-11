@@ -21,8 +21,5 @@ class GeneratorImplTest {
         assertThat(generator.numberSeparator(str)).containsExactly("1", "2");
     }
 
-    @Test
-    public void randomNumberGeneratorSizeTest() throws Exception {
-        assertThat(generator.lottoNumbersGenerator().size()).isEqualTo(6);
-    }
+
 }

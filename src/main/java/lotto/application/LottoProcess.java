@@ -3,11 +3,13 @@ package lotto.application;
 import static lotto.common.message.ConsoleOut.*;
 
 import java.util.List;
+import lotto.common.message.ConsoleOut;
 import lotto.domain.Generator;
 import lotto.domain.entity.LottoMachine;
 import lotto.domain.entity.Lottos;
 import lotto.domain.entity.Money;
 import lotto.domain.entity.LottoNumberMatcher;
+import lotto.domain.entity.Report;
 import lotto.domain.entity.User;
 import lotto.domain.vo.MatchReport;
 import lotto.infrastructure.GeneratorImpl;
@@ -42,5 +44,11 @@ public class LottoProcess {
 
         List<MatchReport> reportList = matcher.match(user.currentUserLottos(), lottoMachine);
 
+        Report printReport = new Report();
+        printReport.printEachPrize(reportList);
+        String interest = printReport.TotalInterest(money.currentMoney());
+
+        System.out.println(ConsoleOut.TOTAL_PRIZE_MESSAGE_PRE + interest
+            + ConsoleOut.TOTAL_PRIZE_MESSAGE_POST);
     }
 }

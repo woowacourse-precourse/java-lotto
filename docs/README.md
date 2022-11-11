@@ -13,8 +13,7 @@
    - User : 사용자 Entity, Money와 lottos를 갖고 있다.
      - printCurrentTime() : 로또 총 발행 횟수를 출력해주는 Method
      - printUserLottosNumbers() : 유저의 총 로또 번호를 출력해주는 Method
-     
-   - Ball : 당첨 공 Entity
+
    - LottoMachine : Lotto 번호 구성 담당 Entity. Money를 갖고 있습니다.
      - bonusNumberValidation() : 보너스 번호에 관한 검증 Method
 

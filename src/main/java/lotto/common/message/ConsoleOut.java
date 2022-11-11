@@ -10,4 +10,7 @@ public class ConsoleOut {
 
     public static final String WINNING_RESULT_MESSAGE = "당첨 통계";
     public static final String THREE_DASHES_AFTER_WINNING_RESULT_MESSAGE = "---";
+
+    public static final String TOTAL_PRIZE_MESSAGE_PRE = "총 수익률은 ";
+    public static final String TOTAL_PRIZE_MESSAGE_POST = "%입니다.";
 }
