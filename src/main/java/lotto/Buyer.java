@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Buyer {
@@ -13,13 +14,12 @@ public class Buyer {
         System.out.println("구입금액을 입력해 주세요");
         String inputBuyMoney = Console.readLine();
 
-        if(!inputBuyMoney.matches("^[0-9]*$"))
-            throw new IllegalArgumentException(Error.INPUT_IS_NOT_NUM.getErrorMsg());
+
+        Error.validateInputIsNotNum(inputBuyMoney);
 
         int buyMoney = Integer.parseInt(inputBuyMoney);
 
-        if (buyMoney % 1000 != 0 || buyMoney == 0)
-            throw new IllegalArgumentException(Error.NOT_NUMBER_DIVIDED_1000.getErrorMsg());
+        Error.validateBuyMoneyDivided1000(buyMoney);
 
         return buyMoney;
     }
@@ -33,7 +33,7 @@ public class Buyer {
 
         for (int index = 0; index < lottoCnt; index++) {
             Lotto newLotto = new Lotto(lotteryMachine.makeLottoNum());
-
+            Collections.sort(newLotto.getNumbers());
             this.lottos.add(newLotto);
         }
     }

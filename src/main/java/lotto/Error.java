@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 public enum Error {
     NOT_NUMBER_COUNT_SIX("[ERROR] 로또 번호는 6개의 숫자여야 합니다."),
     NOT_NUMBER_IN_BOUNDARY("[ERROR] 로또 번호는 1~45 사이 숫자여야 합니다."),
@@ -16,5 +18,21 @@ public enum Error {
 
     public String getErrorMsg() {
         return errorMsg;
+    }
+
+    public static void validateLottoNumSix(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException(NOT_NUMBER_COUNT_SIX.getErrorMsg());
+        }
+    }
+
+    public static void validateInputIsNotNum(String input){
+        if(!input.matches("^[0-9]*$"))
+            throw new IllegalArgumentException(INPUT_IS_NOT_NUM.getErrorMsg());
+    }
+
+    public static void validateBuyMoneyDivided1000(int buyMoney) {
+        if (buyMoney % 1000 != 0 || buyMoney == 0)
+            throw new IllegalArgumentException(Error.NOT_NUMBER_DIVIDED_1000.getErrorMsg());
     }
 }
