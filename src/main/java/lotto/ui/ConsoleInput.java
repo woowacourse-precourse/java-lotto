@@ -7,9 +7,14 @@ import static lotto.ui.ConsoleOutput.*;
 public class ConsoleInput {
 		public static String readLine() {
 			String input = Console.readLine();
-			if (input.isEmpty()) {
-				PrintErrorMessage(EMPTY);
-			}
+			validateIsEmpty(input);
 			return input;
 		}
+
+	private static void validateIsEmpty(String input) {
+		if (input.isEmpty()) {
+			PrintErrorMessage(EMPTY);
+			throw new IllegalArgumentException();
+		}
+	}
 }
