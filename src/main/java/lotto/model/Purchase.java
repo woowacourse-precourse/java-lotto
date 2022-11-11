@@ -1,4 +1,4 @@
-package lotto;
+package lotto.model;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
