@@ -31,7 +31,8 @@ public class PlayerView {
     }
 
     public void showPlayersLotto(List<Lotto> playerLotto){
-
+        showPlayersLottoCount(playerLotto);
+        showLottoNumbers(playerLotto);
     }
 
     private void showPlayersLottoCount(List<Lotto> playerLotto){
