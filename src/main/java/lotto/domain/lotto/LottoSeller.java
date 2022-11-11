@@ -12,7 +12,8 @@ public class LottoSeller {
     static final int PRICE = 1000;
 
     private Lotto createRandomLotto() {
-        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, NUMBER_COUNT);
+        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER,
+                NUMBER_COUNT);
         return new Lotto(randomNumbers);
     }
 

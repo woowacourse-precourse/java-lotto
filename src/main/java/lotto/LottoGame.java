@@ -48,25 +48,28 @@ public class LottoGame {
 
         for (Lotto lotto : lottos) {
             MatchAndReward matchAndReward = winningNumbers.match(lotto);
-            if (matchAndReward != null)
+            if (matchAndReward != null) {
                 matchAndRewards.add(matchAndReward);
+            }
         }
 
         Results results = new Results(matchAndRewards);
 
         output.writePrefixMatchStatistics();
         for (MatchAndReward matchAndReward : MatchAndReward.values()) {
-            if (!matchAndReward.isRequireBonus())
+            if (!matchAndReward.isRequireBonus()) {
                 output.writeMatchStatistic(
                         matchAndReward.getMatch(),
                         matchAndReward.getReward(),
                         results.getCount(matchAndReward));
+            }
 
-            if (matchAndReward.isRequireBonus())
+            if (matchAndReward.isRequireBonus()) {
                 output.writeMatchStatisticWithBonus(
                         matchAndReward.getMatch(),
                         matchAndReward.getReward(),
                         results.getCount(matchAndReward));
+            }
         }
         output.writeYield(results.getYield(money));
     }

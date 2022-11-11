@@ -7,6 +7,6 @@ class OutputFormatter {
     }
 
     static String formatPercent(float number) {
-        return String.format("%.1f%%", number*100f);
+        return String.format("%.1f%%", number * 100f);
     }
 }

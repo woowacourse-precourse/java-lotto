@@ -20,14 +20,16 @@ public enum MatchAndReward {
     public static MatchAndReward find(int match, boolean isBonusMatched) {
         if (isBonusMatched) {
             for (MatchAndReward matchAndReward : MatchAndReward.values()) {
-                if (matchAndReward.requireBonus && matchAndReward.match == match)
+                if (matchAndReward.requireBonus && matchAndReward.match == match) {
                     return matchAndReward;
+                }
             }
         }
 
         for (MatchAndReward matchAndReward : MatchAndReward.values()) {
-            if (!matchAndReward.requireBonus && matchAndReward.match == match)
+            if (!matchAndReward.requireBonus && matchAndReward.match == match) {
                 return matchAndReward;
+            }
         }
 
         return null;
