@@ -14,6 +14,7 @@ public class LottoController {
         int amountLotto = input.inputMoney();
         output.printAmount(amountLotto);
         groupLotto = lottogenerator.getGroupLotto(amountLotto);
+        output.printAmountLotto(groupLotto);
 
     }
 
