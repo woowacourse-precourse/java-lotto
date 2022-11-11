@@ -25,4 +25,9 @@ public class Lotto {
     public LottoRank compareLottoNumber(LottoNumber lottoNumber) {
         return lottoNumber.calculateMatch(this.numbers);
     }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }
