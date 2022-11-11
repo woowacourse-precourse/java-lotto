@@ -3,12 +3,14 @@ package lotto.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class CalculatorTest {
 
     @Test
-    void 로또_번호들_중_당첨의_수를_카운트합니다() {
+    @DisplayName("로또 번호들 중 당첨의 수를 카운트합니다")
+    void calculateMatchResults() {
         Calculator calculator = new Calculator();
         List<List<Integer>> groupOfUserLotteryNumbers = List.of(
                 List.of(1, 2, 3, 4, 5, 6),
@@ -29,7 +31,8 @@ class CalculatorTest {
     }
 
     @Test
-    void 총_수익을_계산합니다() {
+    @DisplayName("총 수익을 계산합니다")
+    void calculateProfit() {
         Calculator calculator = new Calculator();
         List<Integer> matchResults = List.of(1, 0, 1, 0, 0);
 
@@ -38,7 +41,8 @@ class CalculatorTest {
     }
 
     @Test
-    void 수익률을_계산합니다() {
+    @DisplayName("수익률을 계산합니다")
+    void calculateEarningsRate() {
         Calculator calculator = new Calculator();
         int purchaseCost = 8000;
         int profit = 5000;

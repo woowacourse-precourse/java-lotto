@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ComparatorTest {
@@ -24,7 +25,8 @@ class ComparatorTest {
     }
 
     @Test
-    void 로또_번호와_당첨_번호를_비교합니다() {
+    @DisplayName("로또 번호와 당첨 번호를 비교합니다")
+    void getMatchCount() {
         int matchCount = comparator.getMatchCount(userLotteryNumbers, winningNumbers);
 
         assertThat(matchCount)
@@ -32,7 +34,8 @@ class ComparatorTest {
     }
 
     @Test
-    void 로또_번호와_보너스_번호를_비교합니다() {
+    @DisplayName("로또 번호와 보너스 번호를 비교합니다")
+    void hasBonusNumber() {
         boolean hasBonusNumber = comparator.hasBonusNumber(userLotteryNumbers, bonusNumber);
 
         assertThat(hasBonusNumber)
