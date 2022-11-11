@@ -2,6 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
+
 public class Application {
     public static void getMoneyInput(User user) {
         System.out.println("구입금액을 입력해 주세요.");
@@ -35,6 +37,7 @@ public class Application {
     }
     public static void main(String[] args) {
         User user = new User();
+        String moneyInput = Console.readLine();
         getMoneyInput(user);
         Game game = initializeGame(user);
         getWinningNumbersInput(user);

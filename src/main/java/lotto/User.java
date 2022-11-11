@@ -21,7 +21,6 @@ public class User {
 
     public void updateResult(String rank) {
         this.result.replace(rank, this.result.get(rank) + 1);
-//        System.out.println(rank + " " + this.result.get(rank)); // TODO : 제거
     }
 
     public void setMoney(String money) {
@@ -70,12 +69,6 @@ public class User {
         for (String rankI : this.result.keySet()) {
             String resultI = String.format(Rank.valueOf(rankI).getInfo(), this.result.get(rankI));
             System.out.println(resultI);
-        }
-    }
-
-    public void temp() {
-        for (String strI : this.result.keySet()) {
-            System.out.println(strI + " " + this.result.get(strI));
         }
     }
 

@@ -8,14 +8,14 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class GameTest {
-    @Test
-    void generateGameTest() {
-        Game testGame = new Game(10000);
-        testGame.generateGame();
-        for (Lotto lottoI : testGame.games) {
-            assertThat(lottoI.getNumbers()).isEqualTo(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-        }
-    }
+//    @Test
+//    void generateGameTest() {
+//        Game testGame = new Game(10000);
+//        testGame.generateGame();
+//        for (Lotto lottoI : testGame.games) {
+//            assertThat(lottoI.getNumbers()).isEqualTo(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+//        }
+//    }
 //    @Test
 //    void calculateResultTest() {
 //        User testUser = new User();

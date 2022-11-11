@@ -1,20 +1,15 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 public class Game {
-    int gameNumber; // TODO : test 이후 private로 다시 변경
-    Lotto[] games; // TODO : test 이후 private로 다시 변경
+    private int gameNumber;
+    private Lotto[] games;
 
     public Game(int money) {
         this.gameNumber = money / 1000;
         this.games = new Lotto[this.gameNumber];
-//        this.games = new ArrayList<>();
     }
 
     public void informGameNumber() {
@@ -25,8 +20,6 @@ public class Game {
     public void informGames() {
         for (Lotto gameI : this.games) {
             System.out.println(gameI.getNumbers().toString());
-//            System.out.println(Arrays.toString(gameI.getNumbers().toArray()));
-//            System.out.println(1);
         }
         System.out.println();
     }
@@ -34,8 +27,6 @@ public class Game {
     public void generateGame() {
         for (int i = 0; i < gameNumber; i++) {
             this.games[i] = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-//            this.games.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
-//            System.out.println(this.games[i].getNumbers().toString());
         }
     }
 
@@ -62,6 +53,5 @@ public class Game {
             if (resultI.equals("NOTHING")) continue;
             user.updateResult(resultI);
         }
-//        return user;
     }
 }
