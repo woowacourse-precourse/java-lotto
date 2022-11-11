@@ -1,12 +1,13 @@
-package lotto;
+package controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import data.LottoData;
-import input.LottoMaker;
+import controller.LottoMaker;
 import java.util.List;
 import java.util.ArrayList;
-import input.NumberParser;
-
+import controller.NumberParser;
+import lotto.Lotto;
+import data.PrintData;
 public class LottoMachine {
     private final NumberParser numberParser = new NumberParser();
     private List<Lotto> lottos = new ArrayList<>();
@@ -19,15 +20,24 @@ public class LottoMachine {
     }
 
     public void inputCash() {
+        PrintData.printData("INPUT_MONEY");
+        System.out.println();
         LottoMaker cashReader = new LottoMaker(inputRawData());
         lottos = cashReader.publishLotto();
+        System.out.print(lottos.size());
+        PrintData.printData("BUY_LOTTO");
+        System.out.println();
     }
 
     public void inputWinningNumbers() {
+        PrintData.printData("INPUT_NUMBER");
+        System.out.println();
         numberParser.setWinningNumbers(inputRawData());
     }
 
     public void inputBonusNumber() {
+        PrintData.printData("INPUT_BONUS");
+        System.out.println();
         numberParser.setBonusNumber(inputRawData());
     }
 

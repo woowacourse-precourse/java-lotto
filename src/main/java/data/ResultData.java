@@ -10,8 +10,7 @@ public enum ResultData {
     PROFIT_RATE("총 수익률은 "),
     PROFIT_RATE_CLOSE("%입니다.");
 
-    private String resultData;
-    ResultData(String resultData){
-        this.resultData = resultData;
-    }
+
+
+    ResultData(String resultData){ }
 }

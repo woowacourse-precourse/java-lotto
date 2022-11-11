@@ -9,7 +9,18 @@ public enum PrintData {
     LINE("---");
 
     private String printData;
+
     PrintData(String printData){
         this.printData = printData;
+    }
+
+    public static void printData(String label){
+        String enumField;
+        for(PrintData dataField : PrintData.values()){
+            enumField = dataField.toString();
+            if(enumField.equals(label)){
+                System.out.print(dataField.printData);
+            }
+        }
     }
 }

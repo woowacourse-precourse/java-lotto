@@ -7,14 +7,5 @@ public enum LottoData {
     FOURTH("FOURTH",4, 50000),
     FIFTH("FIFTH",3, 5000);
 
-    private String prizeName;
-    private int prizeAmount;
-    private boolean isHavingBonus;
-    private int prizeMoney;
-
-    LottoData(String prizeName, int prizegAmount, int prizeMoney){
-        prizeName = prizeName;
-        prizeAmount = prizeAmount;
-        prizeMoney = prizeMoney;
-    }
+    LottoData(String prizeName, int prizeAmount, int prizeMoney) { }
 }
