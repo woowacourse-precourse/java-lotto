@@ -24,6 +24,17 @@ public class LottoView {
     public List<Integer> getWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         List<Integer> numbers = Arrays.stream(Console.readLine().split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        validateWinningNumber(numbers);
         return numbers;
+    }
+
+    private void validateWinningNumber(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 입력된 당첨 번호의 개수가 6개가 아닙니다.");
+        }
+
+        if (numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException("[ERROR] 입력된 당첨 번호에 중복값이 존재합니다.");
+        }
     }
 }
