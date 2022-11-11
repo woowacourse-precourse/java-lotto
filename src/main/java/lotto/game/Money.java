@@ -1,6 +1,8 @@
 package lotto.game;
 
 public class Money {
+    public static final Money NO_MONEY = new Money(0);
+
     private final long value;
 
     private Money(long value) {
@@ -21,6 +23,10 @@ public class Money {
 
     public long getValue() {
         return value;
+    }
+
+    public Money add(Money money) {
+        return new Money(this.value + money.value);
     }
 
     @Override
