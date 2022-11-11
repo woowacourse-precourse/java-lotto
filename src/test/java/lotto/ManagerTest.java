@@ -24,4 +24,15 @@ public class ManagerTest {
         Manager manager = new Manager();
         assertThatThrownBy(() -> manager.getAmount(won)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또 구매 확인")
+    @Test
+    void purchaseLotto() {
+        Manager manager = new Manager();
+        manager.purchaseLotto(5);
+        assertThat(manager.getLottoTable().size()).isEqualTo(5);
+    }
+
 }
+
+
