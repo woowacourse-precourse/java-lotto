@@ -17,10 +17,18 @@ public class Lottos {
     }
     
     private LottoRank parseRank(final WinningLottoNumbers winningLottoNumbers, final Lotto lotto) {
-        int countOfSameLottoNumber = winningLottoNumbers.countOfMatchingNumber(lotto);
-        boolean existBonusLottoNumber = winningLottoNumbers.isBonusNumberExist(lotto);
-        
+        int countOfSameLottoNumber = countOfMatchingNumber(winningLottoNumbers, lotto);
+        boolean existBonusLottoNumber = isBonusNumberExist(winningLottoNumbers, lotto);
+    
         return LottoRank.parseRank(countOfSameLottoNumber, existBonusLottoNumber);
+    }
+    
+    private int countOfMatchingNumber(final WinningLottoNumbers winningLottoNumbers, final Lotto lotto) {
+        return winningLottoNumbers.countOfMatchingNumber(lotto);
+    }
+    
+    private boolean isBonusNumberExist(final WinningLottoNumbers winningLottoNumbers, final Lotto lotto) {
+        return winningLottoNumbers.isBonusNumberExist(lotto);
     }
     
     public List<List<Integer>> lottos() {
