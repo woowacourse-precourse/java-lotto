@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 public class Rate {
     private Map<Rank,Integer> winningStats;
     private Map<Rank,Integer> rankPrice;
+    private int price;
     private double earningRate;
 
     public Rate(Map<Rank,Integer> winningStats){
@@ -19,8 +20,8 @@ public class Rate {
 
     }
 
-    public void getEarningRate() {
-
+    public double getEarningRate() {
+        return this.earningRate;
     }
 
     private void setRankPrice(){
@@ -33,7 +34,8 @@ public class Rate {
     }
 
     private void setEarningRate(Map<Rank,Integer> winningStats) {
-
+        int earningPrice = calcEarning(winningStats);
+        this.earningRate = Math.round((earningPrice / price) * 100 * 100) / 100.0;
     }
 
     private int calcEarning(Map<Rank,Integer> winningStats) {
@@ -45,7 +47,4 @@ public class Rate {
         return earningPrice;
     }
 
-    private int calcSpending(Map<Rank,Integer> winningStats) {
-        return 0;
-    }
 }
