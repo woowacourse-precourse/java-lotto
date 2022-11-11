@@ -17,13 +17,15 @@ public enum WinningStatisticsMessage {
   }
 
   //TODO 인자의 갯수를 줄일 수 없을까
-  public void print(int same3Num, int same4Num, int same5Num, int same5NumAndBonus, int same6Num) {
-    System.out.println(WINNING_STATISTICS);
-    System.out.println(SAME_THREE_NUMBER + Integer.toString(same3Num) + NUMBER);
-    System.out.println(SAME_FOUR_NUMBER + Integer.toString(same4Num) + NUMBER);
-    System.out.println(SAME_FIVE_NUMBER + Integer.toString(same5Num) + NUMBER);
-    System.out.println(SAME_FIVE_AND_BONUS_NUMBER + Integer.toString(same5NumAndBonus) + NUMBER);
-    System.out.println(SAME_SIX_NUMBER + Integer.toString(same6Num) + NUMBER);
+  public String print(int same3Num, int same4Num, int same5Num, int same5NumAndBonus, int same6Num) {
+    StringBuilder sb = new StringBuilder();
+    sb.append(WINNING_STATISTICS).append("\n")
+      .append(SAME_THREE_NUMBER).append(same3Num).append(NUMBER).append("\n")
+      .append(SAME_FOUR_NUMBER).append(same4Num).append(NUMBER).append("\n")
+      .append(SAME_FIVE_NUMBER).append(same5Num).append(NUMBER).append("\n")
+      .append(SAME_FIVE_AND_BONUS_NUMBER).append(same5NumAndBonus).append(NUMBER).append("\n")
+      .append(SAME_SIX_NUMBER).append(same6Num).append(NUMBER).append("\n");
+    return sb.toString();
   }
 
 }
