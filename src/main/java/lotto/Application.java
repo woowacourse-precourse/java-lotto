@@ -10,5 +10,6 @@ public class Application {
 
         lottoApplicationService.inputMoney();
         lottoApplicationService.createLottos();
+        lottoApplicationService.createWinningLottoNumbers();
     }
 }

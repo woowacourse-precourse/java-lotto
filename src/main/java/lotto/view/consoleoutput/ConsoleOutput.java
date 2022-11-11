@@ -19,4 +19,12 @@ public class ConsoleOutput {
     public void printAllNumberOfLottoCollection(LottoCollection lottoCollection) {
         System.out.print(lottoCollection.toString());
     }
+
+    public void printDirectiveAboutInputWinningNumber() {
+        System.out.println(Directive.INPUT_LOTTO_WINNING_NUMBER.getMessage());
+    }
+
+    public void printDirectiveAboutInputBonusNumber() {
+        System.out.println(Directive.INPUT_BONUS_NUMBER.getMessage());
+    }
 }

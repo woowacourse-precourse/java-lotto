@@ -41,6 +41,10 @@ public class Lotto {
         }
     }
 
+    private void countMatchedNumber(WinningLotto winningLotto) {
+
+    }
+
     public static Lotto of(List<Integer> numbers) {
         return new Lotto(numbers);
     }
