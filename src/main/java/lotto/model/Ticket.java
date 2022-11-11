@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ticket {
-    private final List<Lotto> ticket;
+    private final List<Lotto> lotteries;
     private final int money;
 
     public Ticket(int money) {
         this.money = money;
         List<Lotto> ticket = createTicket(money);
         validateTicket(ticket);
-        this.ticket = ticket;
+        this.lotteries = ticket;
     }
 
     private List<Lotto> createTicket(int money) {
