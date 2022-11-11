@@ -21,9 +21,13 @@ public class LottoController {
     public void countPurchasedLotto(PurchaseAmount purchaseAmount){
         lottoService.saveCountLotto(purchaseAmount);
     }
-    public void purchaseLotto(){
+    public void purchasedLotto(){
         lottoService.purchasedLotto();
+    }
+    public void printCountLotto(){
         viewService.printCountLotto();
+    }
+    public void printPurchasedLotto(){
         viewService.printPurchasedLotto();
     }
 }
