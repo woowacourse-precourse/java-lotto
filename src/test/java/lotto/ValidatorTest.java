@@ -103,8 +103,15 @@ class ValidatorTest {
         }
 
         @Test
+        @DisplayName("0으로 시작하는 숫자가 있으면 예외를 던진다.")
         void numberStartingWithZero() {
+            // given
+            Validator validator = new Validator();
 
+            // throws
+            assertThatThrownBy(() -> validator.validateWinningNumbers("01,02,03,04,05,06"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR] 당첨 번호들의 형태가 잘못되었습니다.");
         }
 
         @Test
