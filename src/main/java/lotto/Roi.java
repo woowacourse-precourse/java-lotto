@@ -5,19 +5,19 @@ import java.util.List;
 import java.util.Map;
 
 public class Roi {
-    private final Integer returnOnInvestment;
+    private final double returnOnInvestment;
     private final Map<Integer, Integer> statistics;
 
-    public Roi(Integer spending, List<Integer> profit) {
-        Integer totalProfit = profit.stream()
+    public Roi(List<Integer> profits, double spending) {
+        Integer totalProfit = profits.stream()
                 .mapToInt(Integer::intValue)
                 .sum();
-        returnOnInvestment = spending / totalProfit;
+        returnOnInvestment = Math.round(((totalProfit / spending) * 100) * 10) / 10.0;
         statistics = createStatistics();
-        updateStatistics(statistics, profit);
+        updateStatistics(statistics, profits);
     }
 
-    public Integer getReturnOnInvestment() {
+    public double getReturnOnInvestment() {
         return returnOnInvestment;
     }
 
