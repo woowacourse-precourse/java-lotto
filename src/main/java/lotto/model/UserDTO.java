@@ -2,12 +2,12 @@ package lotto.model;
 
 import java.util.List;
 
-public class UserData {
+public class UserDTO {
     private int purchaseAmount;
     private int gameCount;
     private List<Lotto> games;
 
-    UserData(int purchaseAmount) {
+    UserDTO(int purchaseAmount) {
         checkMoney(purchaseAmount);
         this.purchaseAmount = purchaseAmount;
         this.gameCount = calculateGameCount(this.purchaseAmount);
