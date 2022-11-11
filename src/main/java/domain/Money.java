@@ -1,5 +1,7 @@
 package domain;
 
+import vo.LottoInfo;
+
 public class Money {
 
     private final String userAmount;
@@ -19,7 +21,7 @@ public class Money {
 
     private void validateUnit(String userAmount) {
         int userMoney = Integer.parseInt(userAmount);
-        if (userMoney % 1000 != 0) {
+        if (userMoney % LottoInfo.PRICE != 0) {
             throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1,000원 단위로 입력 가능합니다.");
         }
     }

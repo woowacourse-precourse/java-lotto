@@ -1,5 +1,7 @@
 package domain;
 
+import vo.LottoInfo;
+
 import java.util.HashSet;
 import java.util.List;
 
@@ -16,7 +18,7 @@ public class WinningNumber {
     }
 
     private void validateSize(List<Integer> winningNumbers) {
-        if (winningNumbers.size() != 6) {
+        if (winningNumbers.size() != LottoInfo.LOTTO_LENGTH) {
             throw new IllegalArgumentException("[ERROR] 로또 번호 6개를 입력하셔야 합니다.");
         }
     }

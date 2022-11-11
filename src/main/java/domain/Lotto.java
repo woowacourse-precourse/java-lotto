@@ -1,6 +1,7 @@
 package domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import vo.LottoInfo;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -17,7 +18,7 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LottoInfo.LOTTO_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
