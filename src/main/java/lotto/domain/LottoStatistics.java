@@ -17,7 +17,6 @@ import static lotto.domain.LottoResult.LOSING;
 public class LottoStatistics {
 
     private static final Map<LottoResult,Integer> lottoResultMap = new LinkedHashMap<>();
-
     private static void initLottoResultMap(){
         lottoResultMap.put(THREE,0);
         lottoResultMap.put(FOUR,0);
@@ -66,6 +65,22 @@ public class LottoStatistics {
             lottoStatisticsList.add(lottoResultMap.get(key));
         }
         return lottoStatisticsList;
+    }
+
+    public static float calculateEarning(int lottoPrice){
+        return ((float)addPrize()/(float)lottoPrice) *100;
+    }
+
+    private static int addPrize(){
+        int total = 0;
+        for ( LottoResult key : lottoResultMap.keySet() ) {
+            if (key == THREE) total+= 5000 * lottoResultMap.get(key);
+            else if (key == FOUR) total += 50000 * lottoResultMap.get(key);
+            else if (key == FIVE) total += 1500000 * lottoResultMap.get(key);
+            else if (key == FIVE_BONUS) total += 30000000 * lottoResultMap.get(key);
+            else if (key == SIX) total += 2000000000 * lottoResultMap.get(key);
+        }
+        return total;
     }
 
 }

@@ -13,4 +13,8 @@ public class LottoPrice {
         return lottoPrice/LOTTO_MIN_PRICE;
     }
 
+    public int getLottoPrice(){
+        return this.lottoPrice;
+    }
+
 }

@@ -30,7 +30,7 @@ public class LottoController {
         winningNumbers = inputLottoNumbers();
         LottoStatistics.calculation(lottoTicketList,winningNumbers);
         printStatistics(LottoStatistics.getLottoStatisticsList());
-        printEarning();
+        printEarning(LottoStatistics.calculateEarning(lottoPrice.getLottoPrice()));
     }
     private LottoPrice buyLottoTicket(){
         return new LottoPrice(inputView.inputPrice());
@@ -57,8 +57,8 @@ public class LottoController {
         outputView.printStatistics(lottoStatistics);
     }
 
-    private void printEarning(){
-        outputView.printEarning(62.5F);
+    private void printEarning(float earning){
+        outputView.printEarning(earning);
     }
 
 }
