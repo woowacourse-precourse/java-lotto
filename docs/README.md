@@ -8,8 +8,6 @@
       - ErrorType: 에러 발생 종류
       - StepType: 로또 구매의 진행 단계
       - CommandType: 입력 명령어 종류
-      - RegExType: 로또 게임 진행에 필요한 정규표현식
-      - NumberSelectType: 로또 숫자 선택 방법
       - LottoResultType: 로또 당첨 등급과 금액
       - LottoNumberType: 로또 숫자 갯수, 최소, 최대값 등의 상수
     - dto
