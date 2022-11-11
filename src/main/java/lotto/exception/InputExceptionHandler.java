@@ -17,7 +17,6 @@ public class InputExceptionHandler {
 	private static final String NUMBER_REGEX = "^[0-9]*$";
 	private static final int CASH_UNIT = 1000;
 	private static final String REST_DIVISION_REGEX = ",";
-	private static final String NOT_REST_DIVISION_REGEX = "^[,]";
 
 	public void checkPurchaseAmountForm(String input) {
 		isNumber(input);
@@ -25,7 +24,7 @@ public class InputExceptionHandler {
 	}
 
 	private void isNumber(String input) {
-		if (!input.matches(input)) {
+		if (!input.matches(NUMBER_REGEX)) {
 			throw new IllegalArgumentException(NUMBER_EXCEPTION_MESSAGE);
 		}
 	}
@@ -75,4 +74,22 @@ public class InputExceptionHandler {
 			throw new IllegalArgumentException(WINNING_NUMBER_DIVISION_EXCEPTION);
 		}
 	}
+
+	public void checkBonusNumberForm(List<Integer> numbers, int bonusNumber) {
+		isOneToFortyFiveBonusNumber(bonusNumber);
+		isDuplicatedBonusNumber(numbers, bonusNumber);
+	}
+
+	private void isOneToFortyFiveBonusNumber(int bonusNumber) {
+		if (bonusNumber < ConstValue.MIN_LOTTO_NUMBER || bonusNumber > ConstValue.MAX_LOTTO_NUMBER) {
+			throw new IllegalArgumentException(ONE_TO_FORTY_FIVE_EXCEPTION);
+		}
+	}
+
+	private void isDuplicatedBonusNumber(List<Integer> numbers, int bonusNumber) {
+		if (numbers.contains(bonusNumber)) {
+			throw new IllegalArgumentException(DUPLICATED_BONUS_NUMBER_MESSAGE);
+		}
+	}
+
 }
