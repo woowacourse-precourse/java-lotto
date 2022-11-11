@@ -40,4 +40,8 @@ public class WinningNumber {
                 .mapToInt(LottoRank::getPrizeMoney)
                 .sum();
     }
+
+    public double getRateOfReturn(int money, int prizeMoney) {
+        return ((double) prizeMoney / money) * 100;
+    }
 }
