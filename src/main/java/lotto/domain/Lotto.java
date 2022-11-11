@@ -23,6 +23,11 @@ public class Lotto {
                         .count();
     }
 
+
+    public void printLottoInfo() {
+        System.out.println(numbers);
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();

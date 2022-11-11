@@ -16,6 +16,14 @@ public class UserLotto {
         printMyLotto();
     }
 
+    public int size() {
+        return lottoSet.size();
+    }
+
+    public Lotto getLottoAt(int index) {
+        return lottoSet.get(index);
+    }
+
     private void printMyLotto() {
         OutputView.printIOMessage(
                 IOMessage.WRITE_AMOUNT_MESSAGE

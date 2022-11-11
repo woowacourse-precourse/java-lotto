@@ -10,8 +10,12 @@ public class LottoWrapper {
         lottoWrapper.add(lotto);
     }
 
-    public long size() {
+    public int size() {
         return lottoWrapper.size();
+    }
+
+    public Lotto get(int index) {
+        return lottoWrapper.get(index);
     }
 
     public void printAllLotto() {
