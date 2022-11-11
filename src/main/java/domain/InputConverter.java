@@ -38,7 +38,7 @@ public class InputConverter {
             throw new IllegalArgumentException("[ERROR] 구입 금액에 숫자가 아닌 값이 포함되어 있습니다.");
         }
 
-        if (money / LOTTO_PRICE != 0) {
+        if (money % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원 단위로 입력되어야 합니다.");
         }
     }
