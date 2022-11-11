@@ -30,4 +30,6 @@ public class Generator {
         throw new IllegalArgumentException(Message.ERROR + Message.ERROR_MESSAGE_WON);
     }
 
+
+
 }
