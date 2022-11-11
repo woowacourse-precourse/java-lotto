@@ -55,7 +55,7 @@ class InputUtilsTest {
         @DisplayName("당첨 번호가 쉼표로 구분되어 있는 경우")
         void case1() {
             String input = "1,2,3,4,5,6";
-            boolean result = InputUtils.isNumberSplitWithComma(input);
+            boolean result = InputUtils.isInputSplitWithComma(input);
             assertThat(result).isTrue();
         }
 
@@ -63,7 +63,7 @@ class InputUtilsTest {
         @DisplayName("쉼표가 아닌 다른 기호로 구분되어 있는 경우")
         void case2() {
             String input = "1/2/3/4/5/6";
-            boolean result = InputUtils.isNumberSplitWithComma(input);
+            boolean result = InputUtils.isInputSplitWithComma(input);
             assertThat(result).isFalse();
         }
     }
