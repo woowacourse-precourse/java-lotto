@@ -9,4 +9,8 @@ public class Print {
     public static void inputPrice() {
         System.out.println(INPUT_PRICE);
     }
+
+    public static void inputLottoNumbers() {
+        System.out.println(INPUT_LOTTO_NUMBERS);
+    }
 }
