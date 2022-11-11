@@ -74,6 +74,26 @@ class LottoNumberValidatorTest {
         assertThat(exception2.getMessage()).isEqualTo(ErrorMessages.OUT_OF_BOUND.getMessage()) ;
     }
 
+    @Order(4)
+    @DisplayName("4차:6개보다 많거나 적게 숫자 입력")
+    @Test
+    void hasLessOrMoreNumber(){
+        String inputValueMore = "1, 2, 3, 4, 5, 6, 7";
+        String inputValueLess = "1, 2, 3, 4, 5";
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> validator.checkingQuantity(inputValueMore))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> validator.checkingQuantity(inputValueLess))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        Exception exceptionMore = assertThrows(IllegalArgumentException.class, () ->validator.checkingQuantity(inputValueMore));
+        Exception exceptionLess = assertThrows(IllegalArgumentException.class, () ->validator.checkingQuantity(inputValueLess));
+        assertThat(exceptionMore.getMessage()).isEqualTo(ErrorMessages.MORE_THAN_SIX.getMessage()) ;
+        assertThat(exceptionLess.getMessage()).isEqualTo(ErrorMessages.LESS_THAN_SIX.getMessage()) ;
+    }
+
     @Order(5)
     @DisplayName("5차:중복 값 입력")
     @Test
