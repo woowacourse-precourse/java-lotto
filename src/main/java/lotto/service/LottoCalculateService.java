@@ -17,13 +17,13 @@ public class LottoCalculateService {
 
     }
 
-    public void countEqualsSix(List<Integer> numbers, Lotto lotto) {
-        if (numbers.equals(lotto.getNumbers())) {
+    public void countEqualsSix(List<Integer> numbers, List<Integer> lottoNumbers) {
+        if (numbers.equals(lottoNumbers)) {
             countOfWinning.put(Winning.SIXTH, countOfWinning.getOrDefault(Winning.SIXTH, 0) + 1);
         }
     }
 
-    public void countEqualsFiveWithBonus() {
+    public void countEqualsFiveWithBonus(List<Integer> numbers, List<Integer> lottoNumbers) {
 
     }
 
@@ -37,5 +37,15 @@ public class LottoCalculateService {
 
     public void countEqualsThree() {
 
+    }
+
+    public int containsNumCount(List<Integer> userNumbers, List<Integer> lottoNumbers) {
+        int count = 0;
+        for (int number : userNumbers) {
+            if (lottoNumbers.contains(number)) {
+                count++;
+            }
+        }
+        return count;
     }
 }
