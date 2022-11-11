@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.constant.Score;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +11,12 @@ import static lotto.constant.Score.THREE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ProfitRateCalculatorTest {
+
+    @AfterEach
+    void clear() {
+        Map<Score, Integer> scoreStore = LottoScore.setInitialSetting();
+        scoreStore.clear();
+    }
 
     @DisplayName("수익률 계산 테스트")
     @Test
