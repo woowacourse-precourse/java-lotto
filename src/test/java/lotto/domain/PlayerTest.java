@@ -36,10 +36,10 @@ public class PlayerTest {
     @DisplayName("주어진 금액 많큼 로또를 발행하는 기능")
     @Test
     void buyLottos() {
-        List<Lotto> lottos = player.buyLottos(3000, createLottoNumbers());
+        Lottos createLottos = player.buyLottos(3000, createLottoNumbers());
 
-        System.out.println(lottos);
-        assertThat(lottos.size()).isEqualTo(3);
+        System.out.println(createLottos);
+        assertThat(createLottos.size()).isEqualTo(3);
     }
 
     private List<List<Integer>> createLottoNumbers() {

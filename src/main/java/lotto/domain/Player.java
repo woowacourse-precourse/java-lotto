@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,21 +10,16 @@ public class Player {
     public static final int CRITERION_ZERO = 0;
     public static final String ERROR_PRICE_COUNT_NOT_EQUAL_LOTTO_SIZE = "[ERROR] 주어진 금액과 주어진 로또 번호의 개수가 일치하지 않습니다.";
 
-    private final List<Lotto> lottos;
+    private Lottos lottos;
 
     public Player() {
-        lottos = new ArrayList<>();
     }
 
-    public List<Lotto> buyLottos(int purchasePrice, List<List<Integer>> lottoNumbers) {
+    public Lottos buyLottos(int purchasePrice, List<List<Integer>> lottoNumbers) {
         int purchaseLottoCount = calculateLottoCount(purchasePrice);
         validateSize(purchaseLottoCount, lottoNumbers.size());
 
-        List<Lotto> createLottos = lottoNumbers.stream()
-                .map(Lotto::new)
-                .collect(Collectors.toList());
-
-        this.lottos.addAll(createLottos);
+        lottos = new Lottos(createLottos(lottoNumbers));
         return lottos;
     }
 
@@ -52,5 +46,11 @@ public class Player {
 
     private boolean isSame(int count, int lottoNumbersSize) {
         return count == lottoNumbersSize;
+    }
+
+    private List<Lotto> createLottos(List<List<Integer>> lottoNumbers) {
+        return lottoNumbers.stream()
+                .map(Lotto::new)
+                .collect(Collectors.toList());
     }
 }
