@@ -11,16 +11,33 @@ public class WinningLotto {
     private static final String ERROR_NO_POSITIVE_INTEGER = "[ERROR] 숫자를 입력해주세요.";
     private static final String ERROR_NO_LOTTO_NUMBER = "[ERROR] 정수 1 ~ 45를 입력해주세요.";
     private static final String ERROR_WRONG_LOTTO_SIZE = "[ERROR] 당첨 번호 6개를 입력해주세요.";
+    private static final String ERROR_DUPLICATE_NUMBER = "[ERROR] 당첨 번호와 보너스 번호가 겹칩니다.";
 
     private final List<Integer> winningNumbers;
     private int bonusBall;
 
-    public WinningLotto(List<String> numbers, String bonusBall) {
+    public WinningLotto(List<String> numbers) {
         validateWinningNumbers(numbers);
         winningNumbers = numbers.stream()
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    public void pickBonusBall(String bonusBall) {
+        validateBonusBall(bonusBall);
         this.bonusBall = Integer.parseInt(bonusBall);
+    }
+
+    private void validateBonusBall(String bonusBall) {
+        try {
+            int bonusBallNumber = Integer.parseInt(bonusBall);
+            validateLottoNumber(bonusBallNumber);
+            checkDuplicate(winningNumbers, bonusBallNumber);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ERROR_NO_POSITIVE_INTEGER);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
     }
 
     private void validateWinningNumbers(List<String> numbers) {
@@ -33,10 +50,18 @@ public class WinningLotto {
             }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR_NO_POSITIVE_INTEGER);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e.getMessage());
         }
 
         if (unDuplicateNumbers.size() != COUNT_LOTTO_NUMBER) {
             throw new IllegalArgumentException(ERROR_WRONG_LOTTO_SIZE);
+        }
+    }
+
+    private void checkDuplicate(List<Integer> numbers, int bonusBall) {
+        if (numbers.contains(bonusBall)) {
+            throw new IllegalArgumentException(ERROR_DUPLICATE_NUMBER);
         }
     }
 

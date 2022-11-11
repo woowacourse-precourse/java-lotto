@@ -35,7 +35,11 @@ public class LottoGame {
 
     public WinningLotto inputWinningAndBonusNumber() {
         List<String> winningNumbers = new InputView().inputWinningNumber();
-        String bonusball = new InputView().inputBonusBall();
-        return new WinningLotto(winningNumbers, bonusball);
+        WinningLotto winningLotto = new WinningLotto(winningNumbers);
+
+        String bonusBall = new InputView().inputBonusBall();
+        winningLotto.pickBonusBall(bonusBall);
+
+        return winningLotto;
     }
 }
