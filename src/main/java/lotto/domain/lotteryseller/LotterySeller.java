@@ -12,7 +12,6 @@ public class LotterySeller {
 	private static final LotterySeller lotterySeller = new LotterySeller();
 	private final LotteryRequestController requestController;
 	private int money = 0;
-	public List<List<Integer>> test;
 
 	private LotterySeller() {
 		requestController = LotteryRequestController.getController();
@@ -29,7 +28,6 @@ public class LotterySeller {
 	public void sendGeneratedLotterySet() {
 		int numberOfPurchases = getNumberOfPurchases();
 		List<List<Integer>> randomNumbersSets = generateRandomNumbersSets(numberOfPurchases);
-		test = randomNumbersSets;
 		requestController.receiveRandomNumbersSets(randomNumbersSets);
 	}
 
