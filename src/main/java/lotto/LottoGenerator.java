@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoGenerator {
-    public List<Lotto> makeLottos(int lottoTickets) {
+    public Lottos makeLottos(int lottoTickets) {
         checkPositive(lottoTickets);
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < lottoTickets; i++) {
@@ -14,7 +14,7 @@ public class LottoGenerator {
             Collections.sort(random);
             lottos.add(new Lotto(random));
         }
-        return lottos;
+        return new Lottos(lottos);
     }
 
     public Lotto makeLotto(List<Integer> winningNumber) {

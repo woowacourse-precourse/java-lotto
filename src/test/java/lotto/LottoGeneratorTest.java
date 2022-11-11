@@ -38,7 +38,7 @@ class LottoGeneratorTest {
             "4,4"
     })
     void makeLottos(int lottoTicket, int lottoSize) {
-        assertThat(generator.makeLottos(lottoTicket).size()).isEqualTo(lottoSize);
+        assertThat(generator.makeLottos(lottoTicket).getLottos().size()).isEqualTo(lottoSize);
     }
 
     @Test
