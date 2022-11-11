@@ -17,7 +17,7 @@ public class LotteryMachine {
 
     public void makeWinningLottoNum() {
         System.out.println();
-        System.out.println("당첨 번호를 입력해 주세요");
+        System.out.println("당첨 번호를 입력해 주세요.");
         String inputWinningNum = Console.readLine();
         String[] spiltWinningNum = inputWinningNum.split(",");
         List<Integer> winningNum = new ArrayList<>();
@@ -32,13 +32,19 @@ public class LotteryMachine {
 
 
     public void makeBonusNum(List<Integer> lottoNum) {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String inputBonusNum = Console.readLine();
 
-        List<Integer> bonusNum = Randoms.pickUniqueNumbersInRange(1, 45, 1);
-        if (lottoNum.contains(bonusNum.get(0))) {
+        Error.validateInputIsNotNum(inputBonusNum);
+
+        int bonusNum = Integer.parseInt(inputBonusNum);
+
+        Error.validateNumIsInBoundary(bonusNum);
+        if (lottoNum.contains(bonusNum)) {
             throw new IllegalArgumentException(Error.BONUS_DUPLICATE_LOTTO.getErrorMsg());
         }
 
-        this.bonusNum =  bonusNum.get(0);
+        this.bonusNum =  bonusNum;
     }
 
     public Lotto getLotto() {
