@@ -48,10 +48,10 @@ public class User {
     public int getBonusNumber() {
         return this.bonusNumber;
     }
-    
+
     public void informProfit(int earnMoney) {
-        float profitRatio = Math.round((double) earnMoney / this.money * 100);
-        System.out.printf("총 수익률은 %f입니다.", profitRatio);
+        String profitRatio = String.format("%.1f", (double) earnMoney / this.money * 100);
+        System.out.printf("총 수익률은 %s%%입니다.", profitRatio);
     }
 
 }
