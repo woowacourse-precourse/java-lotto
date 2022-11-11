@@ -20,4 +20,8 @@ public class Print {
             System.out.println(Arrays.toString(numbers.toArray()));
         }
     }
+
+    public static void PrintTypingWinLotto(){
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
 }
