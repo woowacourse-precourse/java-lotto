@@ -14,6 +14,7 @@ public class Draw {
 
     public Draw(Lotto winningLotto, int bonusNum){
         validateBonusNumRange(bonusNum);
+        validateBonusNumAndLottoOverlap(winningLotto, bonusNum);
         setRankClassification();
         setWinningStats();
         this.winningLotto = winningLotto;
@@ -93,6 +94,12 @@ public class Draw {
 
     private void validateBonusNumRange(int bonusNum) {
         if (!(bonusNum >= 1 && bonusNum <= 45)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateBonusNumAndLottoOverlap(Lotto winningLotto, int bonusNum) {
+        if(winningLotto.getNumbers().contains(bonusNum)) {
             throw new IllegalArgumentException();
         }
     }
