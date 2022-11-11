@@ -10,12 +10,14 @@ public class Application {
         User user = new User();
         int amount = user.purchaseAmount();
 
-        Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-
         if (amountValidation(amount)) {
+            Lotto[] lottos = new Lotto[amount / 1000];
 
+            for (Lotto lotto : lottos) {
+                lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+                System.out.println(lotto.getNumbers());
+            }
         }
-
     }
 
     private static boolean amountValidation(int amount) {
