@@ -11,5 +11,8 @@ public class LottoNumberValidator {
             throw new IllegalArgumentException(ErrorMessage.CAN_NOT_EXIST_DUPLICATE_NUMBER_IN_LOTTO.getMessage());
         }
     }
-    
+
+    public static void validateRangeOfNumber(List<Integer> numbers) {
+    }
+
 }
