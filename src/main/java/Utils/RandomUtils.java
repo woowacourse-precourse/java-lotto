@@ -3,7 +3,9 @@ package Utils;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class RandomUtils {
 //    - 당첨 번호 및 보너스 번호의 중복성 체크
@@ -15,8 +17,9 @@ public class RandomUtils {
         return lotto;
     }
 
-    public static boolean isUniqueNumber(List<Integer> LottoNumbers) {
-        return false;
+    public static boolean isUniqueNumber(List<Integer> input) {
+        Set<Integer> inputWithoutDuplicate = new HashSet<>(input);
+        return input.size() == inputWithoutDuplicate.size();
     }
 
     public static boolean isUniqueBonusNumber(int BonusNumber) {
