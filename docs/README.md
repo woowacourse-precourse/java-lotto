@@ -1,4 +1,18 @@
 # 기능목록
+
+## 예외처리
+### LottoException
+validate
+1. isNotRightLength : 리스트의 길이가 6이 아니면 참을 반환
+2. containsSameNumber : 리스트의 숫자를 셋에 담았을 때, 둘의 사이즈가 다르면 참을 반환
+3. containsNumberOutOfRange : 리스트의 숫자가 1부터 45사이가 아닌게 있으면 참을 반환
+4. notRightNumberException : 예외처리 문구를 가지고 예외처리한다.
+
+### PaymentException
+1. validate
+   1. isNotDividedByThousand : 1000으로 나누었을때 나머지가 0이 아니면 참을 반환
+   2. paymentNotAcceptableException : 예외처리한다.
+
 ## 도메인 모델
 ### Lotto
 1. validate : LottoException에서 validate한다. 
@@ -45,19 +59,6 @@ Lotto, BonusNumber를 참조한다.
 2. saveBonusNumber : BonusNumber에 입력변수값을 정수형 변수로 저장한다. 
 3. getComputerNumber : 컴퓨터의 당첨번호를 Lotto타입으로 반환한다. 
 4. getBonusNumber : 보너스 넘버를 정수형으로 반환한다. 
-
-## 예외처리
-### LottoException
-validate
-1. isNotRightLength : 리스트의 길이가 6이 아니면 참을 반환
-2. containsSameNumber : 리스트의 숫자를 셋에 담았을 때, 둘의 사이즈가 다르면 참을 반환
-3. containsNumberOutOfRange : 리스트의 숫자가 1부터 45사이가 아닌게 있으면 참을 반환
-4. notRightNumberException : 예외처리 문구를 가지고 예외처리한다.
-
-### PaymentException
-1. validate
-   1. isNotDividedByThousand : 1000으로 나누었을때 나머지가 0이 아니면 참을 반환
-   2. paymentNotAcceptableException : 예외처리한다. 
 
 ## 서비스
 ### MatchLotteryService
