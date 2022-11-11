@@ -27,6 +27,11 @@ public class Input {
                 .collect(Collectors.toList());
     }
 
+    public static int bonus() {
+        String input = input();
+        return changeNumber(input);
+    }
+
     private static int changeNumber(String input) {
         try {
             return Integer.parseInt(input);
