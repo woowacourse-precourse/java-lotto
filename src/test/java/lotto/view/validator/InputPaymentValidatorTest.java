@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatNoException;
@@ -21,6 +22,15 @@ class InputPaymentValidatorTest {
     @ParameterizedTest(name = "{displayName} => {0}")
     @NullAndEmptySource
     void nullOrEmptyInputException(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> InputPaymentValidator.validate(input))
+                .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
+    }
+    
+    @DisplayName("예외 처리 : 한글 입력 시")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {"ㄱ", "ㅏ", "가"})
+    void koreanInputException(String input) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> InputPaymentValidator.validate(input))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
