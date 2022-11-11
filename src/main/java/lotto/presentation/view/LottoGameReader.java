@@ -24,6 +24,7 @@ public class LottoGameReader {
     public static Integer readBonusNumber() {
         LottoGamePrinter.printEnterBonusNumber();
         String bonusNumber = readLine();
+        LottoReaderValidator.validateNumber(bonusNumber);
         return ReaderConverter.convertInteger(bonusNumber);
     }
 
