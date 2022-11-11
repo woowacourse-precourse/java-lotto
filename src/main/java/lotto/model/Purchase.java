@@ -1,7 +1,9 @@
 package lotto.model;
 
+import lotto.view.OutputView;
+
 public class Purchase {
-  /*  private static final String MONEY_REGEX = "/^[0-9]*$/";*/
+    /*  private static final String MONEY_REGEX = "/^[0-9]*$/";*/
     private final int issueCount;
 
     public Purchase(String input) {
@@ -16,7 +18,7 @@ public class Purchase {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위로 가능합니다.");
         }
         this.issueCount = money / 1000;
-        System.out.println(issueCount);
+        OutputView.printIssueCount(issueCount);
     }
 
     public int get() {

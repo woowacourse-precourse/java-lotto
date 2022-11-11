@@ -8,7 +8,7 @@ public class Player {
     private final List<Integer> playerNumbers;
 
     public Player() {
-        playerNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        this.playerNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
     public List<Integer> get() {
