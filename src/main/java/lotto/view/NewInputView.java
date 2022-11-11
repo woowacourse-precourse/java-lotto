@@ -16,14 +16,13 @@ public class NewInputView {
 	public int bonusNumber;
 	public int money;
 
-
 	public void getWinNumbers() {
 		String[] inputNumbers = readNumbers();
 		for (String inputNumber : inputNumbers) {
 			Validator.isInRange(inputNumber);
 		}
 		winNumbers = convertIntoIntegerList(inputNumbers);
-		Validator.isListValidate(winNumbers);
+		Validator.isSizeValidate(winNumbers);
 		Collections.sort(winNumbers);
 	}
 
@@ -44,7 +43,7 @@ public class NewInputView {
 		Validator.isInRange(inputNumber);
 		try {
 			bonusNumber = Integer.parseInt(inputNumber);
-		} catch (Exception exception){
+		} catch (Exception exception) {
 			throw new IllegalArgumentException(INVALID_INPUT);
 		}
 	}
@@ -53,10 +52,9 @@ public class NewInputView {
 		String inputNumber = Console.readLine();
 		try {
 			money = Integer.parseInt(inputNumber);
-		} catch (Exception exception){
+		} catch (Exception exception) {
 			throw new IllegalArgumentException(INVALID_INPUT);
 		}
 	}
-
 
 }
