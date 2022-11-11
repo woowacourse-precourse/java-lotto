@@ -6,6 +6,10 @@ import lotto.model.LottoIssuingMachine;
 import lotto.model.LottoWinningStatistics;
 import lotto.view.LottoView;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class LottoGame {
 
     private final LottoIssuingMachine issuingMachine;
@@ -36,12 +40,33 @@ public class LottoGame {
 
     protected void drawLotto() {
         lottoView.printWinningNumbersInputCommand();
-        //TODO: 당첨 번호 문자열 입력 !예외처리, List<Integer> winningNumbers = inputWinningNumbers();
-        //TODO: 당첨 번호 확정 !예외처리, drawingMachine.setWinningNumbers(winningNumbers);
-
+        List<Integer> winningNumbers = inputWinningNumbers();
         lottoView.printBonusNumberInputCommand();
-        //TODO: 보너스 번호 문자열 입력 !예외처리, Integer bonusNumber = inputBonusNumber();
-        //TODO: 보너스 번호 확정 !예외처리, drawingMachine.setBonusNumber(bonusNumber);
+        Integer bonusNumber = inputBonusNumber();
+        drawingMachine.draw(winningNumbers, bonusNumber);
+    }
+
+    private List<Integer> inputWinningNumbers() {
+        return parseNumbers(Console.readLine(), ",");
+    }
+
+    private List<Integer> parseNumbers(String token, String separator) {
+        try {
+            return Arrays.stream(token.split(separator))
+                    .map(String::trim)
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 쉼표(,)와 숫자만을 입력해야 합니다.");
+        }
+    }
+
+    private Integer inputBonusNumber() {
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 숫자만을 입력해야 합니다.");
+        }
     }
 
     protected void generateStatistics() {
