@@ -110,6 +110,12 @@ class ApplicationTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void validateBonusNumberIsDuplicateTest() {
+        assertThatThrownBy(() -> validateBonusNumberIsDuplicate("33", List.of(1, 2, 5, 6, 33, 41)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @Override
     public void runMain() {
         main(new String[]{});
