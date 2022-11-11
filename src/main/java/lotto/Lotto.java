@@ -21,11 +21,10 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    public void tmp(List<List<Integer>> userLottos, int bonusNumber, int purchasePrice) {
+    public void processLotto(List<List<Integer>> userLottos, int bonusNumber, int purchasePrice) {
         HashMap<Integer, Integer> matchingPair = createLottoHashSet();
         calculateWinningStatistics(userLottos, bonusNumber, matchingPair);
-        printWinningStatistics(matchingPair);
-        printTotalYield(purchasePrice, matchingPair);
+        printWinningStatistics(matchingPair, purchasePrice);
     }
 
     private HashMap<Integer, Integer> createLottoHashSet() {
@@ -36,6 +35,16 @@ public class Lotto {
             put(7, 0); // 5개 일치 + 보너스 번호
             put(6, 0);
         }};
+    }
+
+    private void printWinningStatistics(HashMap<Integer, Integer> matchingPair, int purchasePrice) {
+        System.out.println(Constant.THREE_MATCHING + " - " + matchingPair.get(3) + "개");
+        System.out.println(Constant.FOUR_MATCHING + " - " + matchingPair.get(4) + "개");
+        System.out.println(Constant.FIVE_MATCHING + " - " + matchingPair.get(5) + "개");
+        System.out.println(Constant.FIVE_MATCHING_WITH_BONUS_NUM + " - " + matchingPair.get(7) + "개");
+        System.out.println(Constant.SIX_MATCHING + " - " + matchingPair.get(6) + "개");
+
+        printTotalYield(purchasePrice, matchingPair);
     }
 
     private void printTotalYield(double purchasePrice, HashMap<Integer, Integer> matchingPair) {
@@ -50,16 +59,8 @@ public class Lotto {
         sum += matchingPair.get(5) * 1500000;
         sum += matchingPair.get(7) * 30000000;
         sum += matchingPair.get(6) * 2000000000;
-        
-        return (double) sum * 100.0 / purchasePrice;
-    }
 
-    private void printWinningStatistics(HashMap<Integer, Integer> matchingPair) {
-        System.out.println(Constant.THREE_MATCHING + " - " + matchingPair.get(3) + "개");
-        System.out.println(Constant.FOUR_MATCHING + " - " + matchingPair.get(4) + "개");
-        System.out.println(Constant.FIVE_MATCHING + " - " + matchingPair.get(5) + "개");
-        System.out.println(Constant.FIVE_MATCHING_WITH_BONUS_NUM + " - " + matchingPair.get(7) + "개");
-        System.out.println(Constant.SIX_MATCHING + " - " + matchingPair.get(6) + "개");
+        return (double) sum * 100.0 / purchasePrice;
     }
 
     private void calculateWinningStatistics(List<List<Integer>> userLottos, int bonusNumber, HashMap<Integer, Integer> matchingPair) {
