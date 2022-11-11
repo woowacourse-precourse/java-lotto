@@ -31,6 +31,15 @@ public class Manager {
         return lottoTable;
     }
 
+    public int compareLottoNumbers(Lotto purchasedLotto, Lotto winningLotto) {
+        int numberOfMatches = 0;
+        for (int i = 0; i < winningLotto.getNumbers().size(); i++) {
+            if(purchasedLotto.getNumbers().contains(winningLotto.getNumbers().get(i))){
+                numberOfMatches ++;
+            }
+        }
+        return numberOfMatches;
+    }
 
 }
 
