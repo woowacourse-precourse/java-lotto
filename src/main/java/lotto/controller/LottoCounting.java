@@ -26,7 +26,7 @@ public class LottoCounting {
 
     private void addOneWinningPrize(Map<Integer,Integer> countedLotto,int howMuchCorrect,Lotto winningLotto,int bonusNumber){
 
-        int ranking = WinningPrize.getRanking(howMuchCorrect,winningLotto,bonusNumber);
+        int ranking = WinningPrize.findRanking(howMuchCorrect,winningLotto,bonusNumber);
         try{
             int previousRankingCount = countedLotto.get(ranking);
             countedLotto.replace(ranking,previousRankingCount + 1);
