@@ -19,7 +19,10 @@ public class Money {
     public int validateMoney(String input) {
         try {
             int money = Integer.parseInt(input);
-            if(Math.floorMod(Math.round(money), STANDARD_WON) != 0) { throw new IllegalArgumentException(NOT_MOD_ZERO_MESSAGE); }
+            if (Math.floorMod(Math.round(money), STANDARD_WON) != 0) {
+                throw new IllegalArgumentException(NOT_MOD_ZERO_MESSAGE);
+            }
+
             return money;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -30,16 +33,20 @@ public class Money {
     public void validateConsistOfNumbers(String input) {
         boolean result = Pattern.matches("^[0-9]*$", input);
         try {
-            if(!result) { throw new IllegalArgumentException(REJECT_NOT_NUMBERS); }
-        } catch(IllegalArgumentException e) {
+            if (!result) {
+                throw new IllegalArgumentException(REJECT_NOT_NUMBERS);
+            }
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
 
     public void validateMoneyZero(String input) {
         try {
-            if(input.equals(String.valueOf(ZERO_WON))) { throw new IllegalArgumentException(REJECT_ZERO); }
-        } catch(IllegalArgumentException e) {
+            if (input.equals(String.valueOf(ZERO_WON))) {
+                throw new IllegalArgumentException(REJECT_ZERO);
+            }
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }

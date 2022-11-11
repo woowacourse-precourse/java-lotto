@@ -14,7 +14,7 @@ public class Application {
         String input = buyer.inputMoney();
         List<Lotto> lottos = lottoService.publishLotto(new Money(input).getLottoCount());
         System.out.println(lottos.size() + "개를 구매하였습니다.");
-        for(Lotto lotto : lottos){
+        for(Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
     }
