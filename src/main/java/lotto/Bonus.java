@@ -3,7 +3,7 @@ package lotto;
 import java.util.List;
 
 public class Bonus {
-    public final int number;
+    private final int number;
 
     public Bonus(String inputBonusNumber, List<Integer> lotto){
         int number = convertNumber(inputBonusNumber);
