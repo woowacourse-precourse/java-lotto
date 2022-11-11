@@ -38,20 +38,24 @@ public class Validator {
         }
     }
 
-    public void validateDigit(String input) {
+    public String validateDigit(String input) {
         String replacedResult = input.replaceAll("[0-9,]", "");
 
         if (replacedResult.length() != 0) {
             throw new IllegalArgumentException(DIGIT_ERROR_MESSAGE);
         }
+
+        return input;
     }
 
-    public void validateDigitAndComma(String input) {
+    public String validateDigitAndComma(String input) {
         String replacedResult = input.replaceAll("[0-9,]", "");
 
         if (replacedResult.length() != 0) {
             throw new IllegalArgumentException(DIGIT_COMMA_ERROR_MESSAGE);
         }
+
+        return input;
     }
 
     private boolean isNotValidRange(int number) {
