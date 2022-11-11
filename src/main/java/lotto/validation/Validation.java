@@ -35,4 +35,10 @@ public final class Validation {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void validateExceedNumber(int number, int limitNumber){
+        if(number>limitNumber){
+            throw new IllegalArgumentException();
+        }
+    }
 }
