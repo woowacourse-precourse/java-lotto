@@ -8,14 +8,21 @@ import java.util.List;
 import java.util.Map;
 
 public class CreateRandomLotto {
-    public Map<Integer, List<List<Integer>>> randomLotto(int counts){
-        Map<Integer, List<List<Integer>>> lottopaper = new HashMap<>();
-        lottopaper.put(0, new ArrayList<>());
-        while(counts != 0){
+    public void randomLotto(int counts){
+        LottoPaper [] lottoPaper= new LottoPaper[counts];
+       for(int i = 0; i < counts; i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            lottopaper.get(0).add(numbers);
-            counts--;
+            lottoPaper[i] = new LottoPaper(numbers);
         }
-        return lottopaper;
+    }
+}
+class LottoPaper {
+    private List<Integer> number;
+    private int result;
+    public LottoPaper(List<Integer> number){
+        this.number = number;
+    }
+    public int getResult(List<Integer> winningNumber){
+
     }
 }

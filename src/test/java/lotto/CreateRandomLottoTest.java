@@ -10,8 +10,5 @@ class CreateRandomLottoTest {
 
     @Test
     void randomLotto() {
-      //  Map<Integer, List<Integer>> testcase = new HashMap<>();
-        CreateRandomLotto test = new CreateRandomLotto();
-        System.out.println(test.randomLotto(5));
     }
 }

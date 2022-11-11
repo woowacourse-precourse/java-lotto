@@ -19,8 +19,6 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 올바른 번호를 입력하세요.");
         }
     }
-    public List<Integer> properNumber(){
-        return this.numbers;
-    }
+
     // TODO: 추가 기능 구현
 }
