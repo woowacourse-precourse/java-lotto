@@ -10,8 +10,15 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            throw new IllegalArgumentException();
+        }
+        if (numbers.stream().distinct().count() != numbers.size()) {
             throw new IllegalArgumentException();
         }
     }
