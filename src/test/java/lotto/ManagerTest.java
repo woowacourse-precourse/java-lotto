@@ -72,6 +72,25 @@ public class ManagerTest {
 
         assertThat(result).isEqualTo(hasBounsNumber);
     }
+
+    @DisplayName("로또 테이블 비교하기")
+    @Test
+    void compareLottoTable() {
+        Manager manager = new Manager();
+        List<Lotto> lottoTable = List.of(
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                new Lotto(List.of(1, 2, 3, 4, 5, 45)),
+                new Lotto(List.of(1, 2, 3, 4, 5, 16)),
+                new Lotto(List.of(1, 2, 3, 4, 15, 45)),
+                new Lotto(List.of(1, 2, 3, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 14, 15, 16))
+        );
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonunsNumber = 45;
+        List<Integer> result = manager.compareLottoTable(lottoTable, winningLotto, bonunsNumber);
+
+        assertThat(result).isEqualTo(List.of(6, 15, 5, 4, 3, 0));
+    }
 }
 
 
