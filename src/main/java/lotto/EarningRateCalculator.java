@@ -7,6 +7,9 @@ import java.util.List;
 
 public class EarningRateCalculator{
 
+    private volatile static EarningRateCalculator calculator;
+
+    private EarningRateCalculator(){}
     public double calculate(List<Prize> prizeLottos, Integer price) {
         double sum = 0L;
         for (Prize prizeLotto : prizeLottos) {
@@ -29,4 +32,19 @@ public class EarningRateCalculator{
         return (total/portion)*100;
     }
 
+    public static EarningRateCalculator getInstance()
+    {
+        if(calculator == null)
+        {
+            synchronized (EarningRateCalculator.class)
+            {
+                if(calculator == null)
+                {
+                    calculator = new EarningRateCalculator();
+                }
+            }
+        }
+
+        return calculator;
+    }
 }

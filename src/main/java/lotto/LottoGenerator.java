@@ -38,7 +38,7 @@ public class LottoGenerator
         return lottoNumbers;
     }
 
-    public static LottoGenerator getLottoGenerator()
+    public static LottoGenerator getInstance()
     {
         if(lottoGenerator == null)
         {

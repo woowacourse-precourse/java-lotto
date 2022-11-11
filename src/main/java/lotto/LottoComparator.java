@@ -5,6 +5,8 @@ import lotto.Lotto.WinningLotto;
 
 public class LottoComparator {
 
+    private volatile static LottoComparator lottoComparator;
+
     public Prize compare(Lotto myLotto, WinningLotto winningLotto)
     {
         int correctCount = 0;
@@ -39,6 +41,22 @@ public class LottoComparator {
         }
 
         return false;
+    }
+
+    public static LottoComparator getInstance()
+    {
+        if(lottoComparator == null)
+        {
+            synchronized (LottoComparator.class)
+            {
+                if(lottoComparator == null)
+                {
+                    lottoComparator = new LottoComparator();
+                }
+            }
+        }
+
+        return lottoComparator;
     }
 
 
