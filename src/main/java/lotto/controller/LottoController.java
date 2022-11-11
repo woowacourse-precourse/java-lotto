@@ -1,14 +1,16 @@
-package controller;
+package lotto.controller;
 
-import domain.Lotto;
-import domain.LottoPrice;
-import domain.LottoTicket;
-import view.InputView;
-import view.OutputView;
+import lotto.domain.Lotto;
+import lotto.domain.LottoPrice;
+import lotto.domain.LottoTicket;
+import lotto.view.InputView;
+import lotto.view.OutputView;
 
-import static constant.UtilConstant.LOTTO_OPEN;
-import static constant.UtilConstant.LOTTO_CLOSE;
-import static constant.UtilConstant.COMMA_AND_SPACE;
+import java.util.List;
+
+import static lotto.constant.UtilConstant.LOTTO_OPEN;
+import static lotto.constant.UtilConstant.LOTTO_CLOSE;
+import static lotto.constant.UtilConstant.COMMA_AND_SPACE;
 
 public class LottoController {
     private static final InputView inputView = InputView.INSTANCE;
@@ -23,6 +25,7 @@ public class LottoController {
         for(int i=0 ; i<lottoPrice.lottoTicketCount() ;i++)
             printLottoNumbers(LottoTicket.generate());
         inputLottoNumbers();
+        inputBonusNumber();
         printStatistics();
         printEarning();
     }
@@ -43,12 +46,12 @@ public class LottoController {
         System.out.println(result);
     }
 
-    private void inputLottoNumbers(){
-        inputView.inputLottoNumbers();
+    private List<Integer> inputLottoNumbers(){
+        return inputView.inputLottoNumbers();
     }
 
-    private void inputBonusNumber(){
-        inputView.inputBonusNumber();
+    private int inputBonusNumber(){
+        return inputView.inputBonusNumber();
     }
 
     private void printStatistics(){

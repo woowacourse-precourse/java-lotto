@@ -1,13 +1,13 @@
-package view;
+package lotto.view;
 
-import static constant.MessageConstant.OUTPUT_PURCHASE;
-import static constant.MessageConstant.STATISTICS_MESSAGE;
-import static constant.MessageConstant.STATISTICS_THREE_MATCH;
-import static constant.MessageConstant.STATISTICS_FOUR_MATCH;
-import static constant.MessageConstant.STATISTICS_FIVE_MATCH;
-import static constant.MessageConstant.STATISTICS_FIVE_MATCH_ONE_BONUS;
-import static constant.MessageConstant.STATISTICS_SIX_MATCH;
-import static constant.MessageConstant.OUTPUT_EARNING;
+import static lotto.constant.MessageConstant.OUTPUT_PURCHASE;
+import static lotto.constant.MessageConstant.STATISTICS_MESSAGE;
+import static lotto.constant.MessageConstant.STATISTICS_THREE_MATCH;
+import static lotto.constant.MessageConstant.STATISTICS_FOUR_MATCH;
+import static lotto.constant.MessageConstant.STATISTICS_FIVE_MATCH;
+import static lotto.constant.MessageConstant.STATISTICS_FIVE_MATCH_ONE_BONUS;
+import static lotto.constant.MessageConstant.STATISTICS_SIX_MATCH;
+import static lotto.constant.MessageConstant.OUTPUT_EARNING;
 
 public enum OutputView {
     INSTANCE;

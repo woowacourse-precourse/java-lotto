@@ -1,4 +1,4 @@
-package view;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -6,10 +6,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static constant.MessageConstant.INPUT_LOTTO_NUMBERS;
-import static constant.MessageConstant.INPUT_PRICE;
-import static constant.MessageConstant.INPUT_BONUS_NUMBER;
-import static constant.UtilConstant.REGEX;
+import static lotto.constant.MessageConstant.INPUT_LOTTO_NUMBERS;
+import static lotto.constant.MessageConstant.INPUT_PRICE;
+import static lotto.constant.MessageConstant.INPUT_BONUS_NUMBER;
+import static lotto.constant.UtilConstant.REGEX;
 
 public enum InputView {
     INSTANCE;

@@ -1,9 +1,9 @@
-package view;
+package lotto.view;
 
 import java.util.List;
 import java.util.regex.Pattern;
 
-import static constant.NumberConstant.LOTTO_LENGTH;
+import static lotto.constant.NumberConstant.LOTTO_LENGTH;
 
 public class InputValidator {
 

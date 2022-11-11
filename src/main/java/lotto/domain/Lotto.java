@@ -1,12 +1,15 @@
-package domain;
+package lotto.domain;
 
 import java.util.List;
+
+import static lotto.view.InputValidator.validateDifferentLottoNumbers;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        validateDifferentLottoNumbers(numbers);
         this.numbers = numbers;
     }
 
