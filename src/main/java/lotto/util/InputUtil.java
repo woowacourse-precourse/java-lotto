@@ -12,8 +12,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputUtil {
 
-    private static final String NOT_NUMBER_REGEX = "\\D";
-    private static final String COMMA = ",";
+    public static final String NOT_NUMBER_REGEX = "\\D";
+    public static final String COMMA = ",";
 
     public static String getUserInput() {
         String input = readLine();
@@ -21,10 +21,17 @@ public class InputUtil {
     }
 
     public static void checkValidationMoney(String input) {
-        int inputNumber = Integer.parseInt(input);
-
-        if (inputNumber % Number.THOUSAND.getValue() != Number.ZERO.getValue()) {
+        try {
+            int inputNumber = Integer.parseInt(input);
+            checkThousandUnit(inputNumber);
+        } catch (IllegalArgumentException exception) {
             throw makeIllegalArgumentException(Message.NOT_THOUSAND_UNIT_INPUT_ERROR.getMessage());
+        }
+    }
+
+    private static void checkThousandUnit(int input) throws IllegalArgumentException {
+        if (input % Number.THOUSAND.getValue() != Number.ZERO.getValue()) {
+            throw new IllegalArgumentException();
         }
     }
 
