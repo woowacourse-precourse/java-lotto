@@ -3,6 +3,7 @@ package lotto.verifier;
 import lotto.util.Constant;
 import lotto.util.ExceptionMessage;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 
 public class WinnerNumberVerifier implements Verifier {
@@ -19,7 +20,7 @@ public class WinnerNumberVerifier implements Verifier {
     private void checkEachNumeric(String input) {
         String[] divided = input.split(",");
         try {
-            Arrays.stream(divided).forEach(Long::parseLong);
+            Arrays.stream(divided).forEach(BigInteger::new);
         } catch (Exception e) {
             throw new IllegalArgumentException(ExceptionMessage.NUMBER_EACH_NOT_NUMBER);
         }
