@@ -10,13 +10,20 @@ import static lotto.global.LottoConstants.MAX_LOTTO_NUMBER_COUNT;
 
 public class LottoValidator extends CommonValidator {
 
-    public static void hasSixNumbers(List<Integer> numbers) {
+    public static void validate(List<Integer> numbers) {
+        isAllNumber(numbers);
+        hasSixNumbers(numbers);
+        hasDuplicatedNumber(numbers);
+        satisfyLottoNumberRange(numbers);
+    }
+
+    private static void hasSixNumbers(List<Integer> numbers) {
         if (numbers.size() != MAX_LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException(CAN_ONLY_SIX_COUNT);
         }
     }
 
-    public static void hasDuplicatedNumber(List<Integer> numbers) {
+    private static void hasDuplicatedNumber(List<Integer> numbers) {
         Set<Integer> duplicatedCheck = new HashSet<>(numbers);
 
         if (duplicatedCheck.size() != MAX_LOTTO_NUMBER_COUNT) {
@@ -24,7 +31,7 @@ public class LottoValidator extends CommonValidator {
         }
     }
 
-    public static void satisfyLottoNumberRange(List<Integer> numbers) {
+    private static void satisfyLottoNumberRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             isRangeTrue(number);
         }
