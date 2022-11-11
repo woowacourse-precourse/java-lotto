@@ -22,6 +22,11 @@ public class LottoNumber {
     }
 
     private void validLottoNumber(String numbers) {
+        if (numbers.equals(EMPTY)) {
+            System.out.println(NOT_NUMBER);
+            throw new IllegalArgumentException(NOT_NUMBER);
+        }
+
         for (int i = INITIAL_NUMBER; i < numbers.length(); i++) {
             if (!Character.isDigit(numbers.charAt(i))) {
                 System.out.println(NOT_NUMBER);
