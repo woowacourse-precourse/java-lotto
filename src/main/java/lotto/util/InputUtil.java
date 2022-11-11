@@ -13,7 +13,6 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class InputUtil {
 
     private final String NOT_NUMBER_REGEX = "\\D";
-    private final String NOT_NUMBER_AND_COMMA_REGEX = "";
     private final String COMMA = ",";
 
     Pattern pattern = Pattern.compile(NOT_NUMBER_REGEX);
@@ -27,7 +26,7 @@ public class InputUtil {
         int inputNumber = Integer.parseInt(input);
 
         if (inputNumber % Number.THOUSAND.getValue() != Number.ZERO.getValue()) {
-            throw makeIllegalArgumentException(Message.BONUS_NUMBER_INPUT_ERROR.getMessage());
+            throw makeIllegalArgumentException(Message.NOT_THOUSAND_UNIT_INPUT_ERROR.getMessage());
         }
     }
 
