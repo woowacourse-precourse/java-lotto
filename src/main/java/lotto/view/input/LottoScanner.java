@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 
 public class LottoScanner {
 
-    private static final String NOT_ONLY_NUMBER = "숫자만 입력해 주세요";
+    private static final String NOT_ONLY_NUMBER = "숫자만 입력해 주세요.";
 
     public String number() {
         String number = readLine();

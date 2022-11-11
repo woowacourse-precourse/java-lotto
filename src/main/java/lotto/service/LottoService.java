@@ -12,7 +12,7 @@ import lotto.view.output.LottoPrinter;
 public class LottoService {
 
     private static final String PURCHASED_SUFFIX = "개를 구매했습니다.";
-    private static final String ERROR_MESSAGE_PREFIX = "[ERROR]";
+    private static final String ERROR_MESSAGE_PREFIX = "[ERROR] ";
 
     private final LottoStore lottoStore;
     private final LottoMachine lottoMachine;

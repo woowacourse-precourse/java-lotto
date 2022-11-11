@@ -9,7 +9,7 @@ import lotto.domain.lotto_numbers.Lotto;
 
 public class WinningLotto {
 
-    static final String NOT_ALLOW_DUPLICATED_LOTTO_NUMBER = "중복 숫자는 입력될 수 없습니다.";
+    static final String NOT_ALLOW_DUPLICATED_LOTTO_NUMBER = "당첨 숫자와 보너스 숫자는 중복될 수 없습니다.";
 
     private final Lotto winningNumber;
     private final BonusNumber bonusNumber;
