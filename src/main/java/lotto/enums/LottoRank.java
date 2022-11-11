@@ -1,11 +1,11 @@
 package lotto.enums;
 
 public enum LottoRank {
-    FIFTH(3, 5000, "5등"),
-    FOURTH(4, 50000, "4등"),
-    THIRD(5, 1500000, "3등"),
-    SECOND(5, 30000000, "2등(보너스 볼 일치)"),
-    FIRST(6, 2000000000, "1등");
+    FIFTH(3, 5000, "3개 일치"),
+    FOURTH(4, 50000, "4개 일치"),
+    THIRD(5, 1500000, "5개 일치"),
+    SECOND(5, 30000000, "5개 일치, 보너스 볼 일치"),
+    FIRST(6, 2000000000, "6개 일치");
 
     private int lottoCount;
     private int price;
@@ -13,6 +13,10 @@ public enum LottoRank {
 
     public static int getPrice(LottoRank lottoRank) {
         return lottoRank.price;
+    }
+
+    public static String getRank(LottoRank lottoRank) {
+        return lottoRank.rank;
     }
 
     LottoRank(int lottoCount, int price, String rank) {
