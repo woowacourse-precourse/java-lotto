@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import lotto.dto.LottosResponseDto;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,5 +50,4 @@ public class Player {
                 .map(Lotto::new)
                 .collect(Collectors.toList());
     }
-
 }
