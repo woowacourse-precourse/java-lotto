@@ -16,7 +16,6 @@ public class LottoStore {
         receiveBonusNumber();
         Person person = new Person(myLottos, makeWinningNumbers());
         person.buyLotto();
-
     }
 
     private void receiveBonusNumber() {

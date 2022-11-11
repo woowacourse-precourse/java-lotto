@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Person {
     public static final int FIRST_INDEX = 0;
     public MyLottos myLottos;
@@ -12,29 +15,41 @@ public class Person {
     }
 
     public void buyLotto() {
-        confirmResult();
+        List<PlaceStatus> myPlaces = confirmResult();
+
     }
 
-    private void confirmResult() {
+    private List<PlaceStatus> confirmResult() {
+        List<PlaceStatus> myPlaces = new ArrayList<>();
         for (int myLottosIndex = FIRST_INDEX; myLottosIndex < myLottos.getMyLottoSize(); myLottosIndex++) {
-            int hasNumberCount = 0;
+            int numberCount = 0;
+            int bonusCount = 0;
             for (int winningNumberIndex = FIRST_INDEX; winningNumberIndex < 6; winningNumberIndex++) {
                 int winningNumber = this.winningNumbers.getNumber(winningNumberIndex);
-                hasNumberCount = guessCorrectNumber(myLottosIndex, hasNumberCount, winningNumber);
+                numberCount = guessCorrectNumber(myLottosIndex, numberCount, winningNumber);
+                bonusCount = guessBonusNumber(myLottosIndex, Bonus.bonusNumber);
             }
-            rankPlace(hasNumberCount);
+            myPlaces.add(rankPlace(numberCount, bonusCount));
         }
+        return myPlaces;
     }
 
-    private static void rankPlace(int hasNumberCount) {
-        Place place = new Place(hasNumberCount);
-        place.selectPlace();
+    private int guessBonusNumber(int myLottosIndex, int bonusNumber) {
+        if (myLottos.getMyLotto(myLottosIndex).contain(bonusNumber)) {
+            return 1;
+        }
+        return 0;
     }
 
-    private int guessCorrectNumber(int myLottosIndex, int hasNumberCount, int winningNumber) {
+    private PlaceStatus rankPlace(int hasNumberCount, int bonusCount) {
+        Place place = new Place(hasNumberCount, bonusCount);
+        return place.selectPlace();
+    }
+
+    private int guessCorrectNumber(int myLottosIndex, int numberCount, int winningNumber) {
         if (myLottos.getMyLotto(myLottosIndex).contain(winningNumber)) {
-            hasNumberCount++;
+            numberCount++;
         }
-        return hasNumberCount;
+        return numberCount;
     }
 }

@@ -40,7 +40,7 @@ public class InputView {
         showBonusNumberInputMessage();
         String bonusNumber = Console.readLine();
         Validation.validateBonus(bonusNumber, winningNumbers);
-        Bonus bonus = new Bonus(Integer.parseInt(bonusNumber));
+        new Bonus(Integer.parseInt(bonusNumber));
     }
 
     private static void showBonusNumberInputMessage() {
