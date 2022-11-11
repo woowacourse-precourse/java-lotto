@@ -17,54 +17,41 @@ public class LottoPurchasedAmountValidator implements Validator {
         validateDivideByLottoUnit(userInput);
     }
 
-    private boolean validateNotNull(String userInput) {
-        if (!userInput.isBlank()) {
-            return true;
+    private void validateNotNull(String userInput) {
+        if (userInput.isBlank()) {
+            throw new IllegalArgumentException(InputErrors.BLANK.getMessage());
         }
-
-        throw new IllegalArgumentException(InputErrors.BLANK.getMessage());
     }
 
-    private boolean validateNumber(String userInput) {
+    private void validateNumber(String userInput) {
         final String numberRegex = "^([1-9][0-9]*)$";
-        if (Pattern.matches(numberRegex, userInput)) {
-            return true;
+        if (!Pattern.matches(numberRegex, userInput)) {
+            throw new IllegalArgumentException(InputErrors.AMOUNT_NOT_NUMBER.getMessage());
         }
 
-        throw new IllegalArgumentException(InputErrors.AMOUNT_NOT_NUMBER.getMessage());
     }
 
-    private boolean validateRange(String userInput) {
-        if (isLessOrEqualThanLimit(userInput)
-                && isGreaterAndEqualThanLottoUnit(userInput)) {
-            return true;
-        }
-
-        return false;
+    private void validateRange(String userInput) {
+        validateMaxRange(userInput);
+        validateMinRange(userInput);
     }
 
-    private boolean isLessOrEqualThanLimit(String userInput) {
-        if (userInput.length() < LOTTO_PURCHASED_LIMIT_DIGIT
-                || userInput.equals(String.valueOf(LOTTO_PURCHASED_LIMIT))) {
-            return true;
+    private void validateMaxRange(String userInput) {
+        if (userInput.length() >= LOTTO_PURCHASED_LIMIT_DIGIT // 6자리 이상이면서 100_000이 아닌 경우 예외
+                && !userInput.equals(String.valueOf(LOTTO_PURCHASED_LIMIT))) {
+            throw new IllegalArgumentException(InputErrors.AMOUNT_OVER_LIMIT.getMessage());
         }
-
-        throw new IllegalArgumentException(InputErrors.AMOUNT_OVER_LIMIT.getMessage());
     }
 
-    private boolean isGreaterAndEqualThanLottoUnit(String userInput) {
-        if (Integer.parseInt(userInput) >= AMOUNT_PER_LOTTO) {
-            return true;
+    private void validateMinRange(String userInput) {
+        if (Integer.parseInt(userInput) < AMOUNT_PER_LOTTO) {
+            throw new IllegalArgumentException(InputErrors.AMOUNT_UNDER_MINIMUM.getMessage());
         }
-
-        throw new IllegalArgumentException(InputErrors.AMOUNT_UNDER_MINIMUM.getMessage());
     }
 
-    private boolean validateDivideByLottoUnit(String userInput) {
-        if (Integer.parseInt(userInput) % AMOUNT_PER_LOTTO == 0) {
-            return true;
+    private void validateDivideByLottoUnit(String userInput) {
+        if (Integer.parseInt(userInput) % AMOUNT_PER_LOTTO != 0) {
+            throw new IllegalArgumentException(InputErrors.AMOUNT_NOT_DIVIDABLE.getMessage());
         }
-
-        throw new IllegalArgumentException(InputErrors.AMOUNT_NOT_DIVIDABLE.getMessage());
     }
 }
