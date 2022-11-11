@@ -33,7 +33,7 @@ public class LottoWinTest {
     @Test
     void firstPrize() {
         LottoWin lottoPrizes = new LottoWin(List.of(List.of(1, 2, 3, 4, 5, 6)), List.of(1, 2, 3, 4, 5, 6), 7);
-        assertThat(lottoPrizes.getPrizesMap()).contains(entry("1st", 1));
+        assertThat(lottoPrizes.getPrizesMap()).contains(entry("FIRST", 1));
 
     }
     @DisplayName("1등 2명 확인")
@@ -42,7 +42,7 @@ public class LottoWinTest {
         LottoWin lottoPrizes = new LottoWin(
                 List.of(List.of(1, 2, 3, 4, 5, 6), List.of(1, 2, 3, 4, 5, 6)),
                 List.of(1, 2, 3, 4, 5, 6), 7);
-        assertThat(lottoPrizes.getPrizesMap()).contains(entry("1st", 2));
+        assertThat(lottoPrizes.getPrizesMap()).contains(entry("FIRST", 2));
     }
     @DisplayName("2등 확인")
     @Test
@@ -50,7 +50,7 @@ public class LottoWinTest {
         LottoWin lottoPrizes = new LottoWin(
                 List.of(List.of(1, 2, 3, 4, 5, 7), List.of(1, 2, 3, 4, 5, 6)),
                 List.of(1, 2, 3, 4, 5, 6), 7);
-        assertThat(lottoPrizes.getPrizesMap()).contains(entry("2nd", 1));
+        assertThat(lottoPrizes.getPrizesMap()).contains(entry("SECOND", 1));
     }
     @DisplayName("3등 확인")
     @Test
@@ -58,7 +58,7 @@ public class LottoWinTest {
         LottoWin lottoPrizes = new LottoWin(
                 List.of(List.of(1, 2, 3, 4, 5, 8), List.of(1, 2, 3, 4, 5, 9)),
                 List.of(1, 2, 3, 4, 5, 6), 7);
-        assertThat(lottoPrizes.getPrizesMap()).contains(entry("3rd", 2));
+        assertThat(lottoPrizes.getPrizesMap()).contains(entry("THIRD", 2));
     }
     @DisplayName("4등 확인")
     @Test
@@ -66,7 +66,7 @@ public class LottoWinTest {
         LottoWin lottoPrizes = new LottoWin(
                 List.of(List.of(1, 2, 3, 4, 9, 10), List.of(1, 2, 3, 4, 7, 9)),
                 List.of(1, 2, 3, 4, 5, 6), 7);
-        assertThat(lottoPrizes.getPrizesMap()).contains(entry("4th", 2));
+        assertThat(lottoPrizes.getPrizesMap()).contains(entry("FOURTH", 2));
     }
     @DisplayName("5등 확인")
     @Test
@@ -74,7 +74,7 @@ public class LottoWinTest {
         LottoWin lottoPrizes = new LottoWin(
                 List.of(List.of(1, 2, 3, 8, 9, 10), List.of(3, 4, 5, 7, 8, 9)),
                 List.of(1, 2, 3, 4, 5, 6), 7);
-        assertThat(lottoPrizes.getPrizesMap()).contains(entry("5th", 2));
+        assertThat(lottoPrizes.getPrizesMap()).contains(entry("FIFTH", 2));
     }
     @DisplayName("중복된 보너스 번호가 들어오면 에러 메세지가 출력되고 에러가 발생한다.")
     @Test

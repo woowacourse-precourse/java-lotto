@@ -33,7 +33,7 @@ public class LottoWin {
     public Map<String, Integer> getPrizesMap() {
         Map<String, Integer> prizesMap = new HashMap<>();
         for (LottoPrizes lottoPrize : LottoPrizes.values()) {
-            prizesMap.put(lottoPrize.key(), count[lottoPrize.index()]);
+            prizesMap.put(lottoPrize.name(), count[lottoPrize.index()]);
         }
         return prizesMap;
     }
