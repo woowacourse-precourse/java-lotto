@@ -53,12 +53,21 @@ public class User {
 
         int bonusNumber = Integer.parseInt(readLine());
 
+        enterBonusNumberValidation(winningNumber, bonusNumber);
+
+        return bonusNumber;
+    }
+
+    private void enterBonusNumberValidation(List<Integer> winningNumber, int bonusNumber) {
+
         for (Integer number : winningNumber) {
             if (bonusNumber == number) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호와 보너스 번호가 중복됩니다.");
             }
         }
 
-        return bonusNumber;
+        if (1 > bonusNumber || 45 < bonusNumber) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
     }
 }
