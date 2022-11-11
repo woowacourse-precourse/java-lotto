@@ -6,7 +6,7 @@ import java.util.List;
 import view.InputBonusNumber;
 import view.InputUserMoney;
 import view.InputWinningLottoNumber;
-import view.PrintStatistics;
+import view.OutputView;
 
 public class LottoGame {
 
@@ -18,7 +18,6 @@ public class LottoGame {
     int bonusNumber;
     static long sumMoney;
     static float yield;
-    PrintStatistics printStatistics = new PrintStatistics();
 
     public static List<Integer> getRankedList() {
         return rankedList;
@@ -33,8 +32,7 @@ public class LottoGame {
         }
 
         calculate(matchCountList);
-        printStatistics.printStatistcs();
-
+        OutputView.printStatistics();
 
     }
 
@@ -76,7 +74,6 @@ public class LottoGame {
             int finalJ = j;
             rankedList.add((int) matchCountList.stream().filter(n -> n == finalJ).count());
         }
-        System.out.println("rankedList = " + rankedList);
     }
 
     public void setting() {
@@ -90,11 +87,9 @@ public class LottoGame {
         long count = winningLottoList.stream().filter(n -> nowBuyLottoList.contains(n)).count();
         if(count==5){
             if(isInBonusNumber(nowBuyLottoList, bonusNumber)){
-                System.out.println("count = " + 7);
                 return 7;
             }
         }
-        System.out.println("count = " + count);
         return Math.toIntExact(count);
     }
 

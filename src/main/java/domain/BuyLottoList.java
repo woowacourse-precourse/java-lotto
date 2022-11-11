@@ -2,14 +2,12 @@ package domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import view.PrintBuyLottoList;
+import view.OutputView;
 
 public class BuyLottoList {
 
-    PrintBuyLottoList printBuyLottoList = new PrintBuyLottoList();
     static List<List<Integer>> buyLottoList = new ArrayList<>();
 
     public void putLottoNumberList(int money){
@@ -18,7 +16,7 @@ public class BuyLottoList {
             setLottoNumberList(buyLottoList, number);
           }
 
-        printBuyLottoList.printLottoList(pick_count, buyLottoList);
+        OutputView.printLottoList(pick_count, buyLottoList);
     }
 
     private void setLottoNumberList(List<List<Integer>> pickList, int number) {

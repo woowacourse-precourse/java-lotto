@@ -39,7 +39,7 @@ public class InputUserMoney {
             isCorrectMoney(Integer.parseInt(input_money));
         }
         catch (IllegalArgumentException e){
-            ExceptionInfo.printException(e);
+            OutputView.printException(e);
             return true;
         }
         return false;
@@ -50,7 +50,7 @@ public class InputUserMoney {
             isNumber(input_money);
         }
         catch(IllegalArgumentException e){
-            ExceptionInfo.printException(e);
+            OutputView.printException(e);
             return true;
         }
         return false;

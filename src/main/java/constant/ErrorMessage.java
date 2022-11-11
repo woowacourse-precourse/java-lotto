@@ -3,7 +3,7 @@ package constant;
 public enum ErrorMessage {
 
 
-    ERROR_NOT_NUMBER("[ERROR] 숫자가 아닌 것이 입력되었습니다"),
+    ERROR_NOT_NUMBER("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."),
     ERROR_INCORRECT_MONEY("[ERROR] 올바르지 못한 입력 금액입니다."),
     ERROR_INCORRECT_SIZE("[ERROR] 입력된 갯수가 올바르지 않습니다!"),
     ERROR_DUPLICATE("[ERROR] 중복된 숫자 발견!"),

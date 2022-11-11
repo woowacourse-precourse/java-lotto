@@ -21,11 +21,10 @@ public class InputWinningLottoNumber {
 
     private static List<Integer> setWinningLotto(String winningLotto) {
         String[] split = winningLotto.split(",");
-        System.out.println("split = " + split);
 
-        for (String s : split) {
-            validateSplitNumber(s);
-            winningLottoList.add(Integer.parseInt(s));
+        for (String number : split) {
+            validateSplitNumber(number);
+            winningLottoList.add(Integer.parseInt(number));
         }
 
         if(winningLottoList.size()!=6){

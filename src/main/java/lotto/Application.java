@@ -6,12 +6,13 @@ import domain.LottoGame;
 import view.InputBonusNumber;
 import view.InputWinningLottoNumber;
 import view.InputUserMoney;
+import view.OutputView;
 
 public class Application {
     public static void main(String[] args) throws IllegalArgumentException{
         // TODO: 프로그램 구현
         BuyLottoList buyLottoList = new BuyLottoList();
-        System.out.println("구입 금액을 입력해주세요.");
+        OutputView.printButMoney();
         int money = InputUserMoney.inputMoney();
         if(money== ExceptionNumber.EXCEPTION_CODE.getCode()){
             return;
