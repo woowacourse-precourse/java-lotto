@@ -15,10 +15,11 @@ public class LottoController {
         this.lottoMoney = new LottoMoney();
         this.lottos = new Lottos();
     }
-
+    //메소드명 필수 확인
     public void run() {
         inputView.printRequest();
         lottoMoney.inputMoney(Console.readLine());
         lottos.buy(lottoMoney.getLottoQuantity());
+        inputView.printWinningNumber();
     }
 }
