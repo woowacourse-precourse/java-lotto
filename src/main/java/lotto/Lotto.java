@@ -1,5 +1,7 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.List;
 
 public class Lotto {
@@ -16,5 +18,12 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public static Lotto create() {
+        return new Lotto(Randoms.pickUniqueNumbersInRange(
+                LottoEnum.MIN_NUMBER.getValue(),
+                LottoEnum.MAX_NUMBER.getValue(),
+                LottoEnum.WINNING_NUMBERS.getValue()
+        ));
+    }
 }
+
