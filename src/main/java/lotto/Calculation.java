@@ -14,9 +14,15 @@ public class Calculation {
 	private static final int[] countingMatches = new int[4];
 	private static int lottoMatch;
 	private static int bonusMatch;
+	private static double totalReward;
 
-	public static void yieldResult(long totalAmount) {
+	public static void calculateResult() {
 		ConsoleOutput.PrintResultMessage(fiveMatchAndBonusMatch, countingMatches);
+	}
+
+	public static void calculateProfit(long totalAmount) {
+		countPrize();
+		ConsoleOutput.PrintProfitMessage(computeProfit(totalAmount));
 	}
 
 	public static void findMatch() {
@@ -25,8 +31,8 @@ public class Calculation {
 		for (List<Integer> lotto : lottoes) {
 			getLottoMatch(lotto);
 			recordMaxMatch(lottoMatch);
-			countMatches(lottoMatch);
 			getBonusMatch(lotto, lottoMatch);
+			countMatches(lottoMatch);
 		}
 	}
 
@@ -60,6 +66,23 @@ public class Calculation {
 		if (match >= 3) {
 			countingMatches[match - 3]++;
 		}
+	}
+
+	private static String computeProfit(long totalAmount){
+		return String.format("%.1f", totalReward * 100 / totalAmount);
+	}
+
+	private static void countPrize() {
+		totalReward += countingMatches[0] * convertToDouble(Rule.valueOf("FIFTH_PRIZE").getReward());
+		totalReward += countingMatches[1] * convertToDouble(Rule.valueOf("FOURTH_PRIZE").getReward());
+		totalReward += countingMatches[2] * convertToDouble(Rule.valueOf("THIRD_PRIZE").getReward());
+		totalReward += fiveMatchAndBonusMatch * convertToDouble(Rule.valueOf("SECOND_PRIZE").getReward());
+		totalReward += countingMatches[3] * convertToDouble(Rule.valueOf("FIRST_PRIZE").getReward());
+	}
+
+	private static double convertToDouble(String value){
+		return Double.parseDouble(value.replaceAll("[^0-9]",""));
+
 	}
 }
 

@@ -34,6 +34,7 @@ public class ConsoleOutput {
 	public static final String LINE = "---";
 	public static final String RESULT_CONTENT = "%d개 일치 (%s) - %d개\n";
 	public static final String RESULT_CONTENT_BONUS = "%d개 일치, 보너스 볼 일치 (%s) - %d개\n";
+	public static final String PROFIT_MESSAGE = "총 수익률은 %s%%입니다.";
 
 
 	public static void PrintErrorMessage(String message) {
@@ -65,6 +66,9 @@ public class ConsoleOutput {
 		System.out.printf(RESULT_CONTENT, Rule.THIRD_PRIZE.getMatches(),Rule.THIRD_PRIZE.getReward(), counting[2]);
 		System.out.printf(RESULT_CONTENT_BONUS, Rule.SECOND_PRIZE.getMatches(),Rule.SECOND_PRIZE.getReward(), specialMatch);
 		System.out.printf(RESULT_CONTENT, Rule.FIRST_PRIZE.getMatches(),Rule.FIRST_PRIZE.getReward(), counting[3]);
+	}
+	public static void PrintProfitMessage(String profit) {
+		System.out.printf(PROFIT_MESSAGE,profit);
 	}
 
 
