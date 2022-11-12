@@ -16,7 +16,13 @@ public class ResultView implements View{
         print();
     }
     private void print(){
-
+        printDefaultMessage();
+        print3Matches();
+        print4Matches();
+        print5Matches();
+        print5AndBonusMatches();
+        printAllMatches();
+        printYield();
     }
     private void printDefaultMessage(){
         System.out.println("당첨 통계");
