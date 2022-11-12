@@ -9,6 +9,11 @@ public class Validation {
         isLottoBetween1And45(numbers);
     }
 
+    public Validation(String number){
+        isIncludeNotNumber(number);
+        isMultipleOf1000(number);
+    }
+
     private void isLottoBetween1And45(List<Integer> numbers) throws IllegalArgumentException {
         for (int number : numbers) {
             if (number < 1 || number > 45)
