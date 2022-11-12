@@ -1,6 +1,7 @@
 package lotto.model;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import lotto.constants.ErrorCode;
 
@@ -14,8 +15,11 @@ public class Lotto {
         validateSixDigits(numbers);
         validateRange(numbers);
         validateDuplicate(numbers);
-        Collections.sort(numbers);
         this.numbers = numbers;
+    }
+
+    public List<Integer> getLottoNumbers() {
+        return numbers;
     }
 
     private void validateSixDigits(List<Integer> numbers) throws Exception {
@@ -42,10 +46,12 @@ public class Lotto {
 
     private static boolean isDuplicate(List<Integer> numbers, int index) {
         for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(index) == numbers.get(i)) {
+            if (index == i) {
                 continue;
             }
-            return true;
+            if (numbers.get(index) == numbers.get(i)) {
+                return true;
+            }
         }
         return false;
     }
