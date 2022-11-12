@@ -65,6 +65,14 @@ public class LottoDesignator {
 
     }
 
+    public void checkBonusDuplication(String input, String number) {
+        List<Integer> lotto = changeList(input);
+        int bonus = Integer.parseInt(number);
+        if(lotto.contains(bonus)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 번호와 중복 불가합니다.");
+        }
+    }
+
     private String[] removeComma(String input) {
         return input.split(",");
     }
