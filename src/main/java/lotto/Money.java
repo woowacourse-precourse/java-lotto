@@ -48,4 +48,8 @@ public class Money {
     public void printLottoCount() {
         System.out.println("\n"+getLottoCount()+"개를 구매했습니다.");
     }
+
+    public Integer getMoney() {
+        return this.money;
+    }
 }
