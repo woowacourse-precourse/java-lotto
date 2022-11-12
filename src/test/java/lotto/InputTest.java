@@ -9,7 +9,7 @@ import java.util.Set;
 import lotto.ui.Input;
 import org.junit.jupiter.api.Test;
 
-public class ValidationTest {
+public class InputTest {
 
     @Test
     void validateNumber_메서드_사용시_숫자_입력이_아닐_경우_예외_발생() {
