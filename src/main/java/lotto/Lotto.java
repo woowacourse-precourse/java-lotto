@@ -2,9 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Lotto {
     private static final int lottoStart = 1;
@@ -12,6 +10,7 @@ public class Lotto {
     private static final int lottoCount = 6;
     private static final String printSalesLottoAmount = "%d개를 구매했습니다.";
     private final List<Integer> numbers;
+
 
     private static List<List<Integer>> salesLottos;
 
@@ -21,8 +20,15 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        if (numbers.size() != 6)
+            Error.error(Error.errMsg_WrongLottoSize);
+
+        for(int number : numbers){
+            if(number < 1 || number > 45)
+                Error.error(Error.errMsg_WrongLottoNumber);
+
+            if(Collections.frequency(numbers,number) >= 2)
+                Error.error(Error.errMsg_ExistSameNumber);
         }
     }
 
