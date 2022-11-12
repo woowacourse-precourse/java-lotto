@@ -24,6 +24,7 @@ public class WinningInput {
         validateInputSeparator(winningInput);
         winningNumberToInt(winningInput);
         winningIntArrToList(winningIntArr);
+        System.out.println();
     }
 
     public static void getWinningResult(List<List<Integer>> lottos, List<Integer> winningNumbers) {
