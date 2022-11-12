@@ -11,12 +11,16 @@ public class LottoGenerator {
     List<List<Integer>> lottosNumber = new ArrayList<>();
 
     public List<List<Integer>> generateLotto(int count) {
-        while (lottos.size() < count) {
-            lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
-        }
+        getNewLottes(count);
         validateLottos(count, lottos);
         getNumbersFromLottos(lottos);
         return lottosNumber;
+    }
+
+    private void getNewLottes(int count) {
+        while (lottos.size() < count) {
+            lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
+        }
     }
 
     private void getNumbersFromLottos(List<Lotto> lottos) {
