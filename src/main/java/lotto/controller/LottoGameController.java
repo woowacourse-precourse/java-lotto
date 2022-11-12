@@ -25,7 +25,7 @@ public class LottoGameController {
     }
 
     private PlayerLotto createPlayerLotto(LottoPurchaseMoney lottoPurchaseMoney) {
-        return new PlayerLotto();
+        return new PlayerLotto(lottoPurchaseMoney);
     }
 
     private void printPlayerLotto(PlayerLotto playerLotto) {
