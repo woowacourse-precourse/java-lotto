@@ -21,6 +21,11 @@ public class Constant {
 
     public static final int LOTTO_SIZE = 6;
     public static final int THOUSAND = 1000;
+    public static final int FIVE_THOUSAND = 5000;
+    public static final int FIFTY_THOUSAND = 50000;
+    public static final int FIFTEEN = 1500000;
+    public static final int THIRTY = 30000000;
+    public static final int TWO_HUNDRED = 2000000000;
 
     public static final String INPUT_ERROR_MESSAGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
 }
