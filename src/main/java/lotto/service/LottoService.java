@@ -91,15 +91,6 @@ public class LottoService {
     }
 
     public void printLottoResult(LottoResult lottoResult, Money money) {
-        System.out.println("당첨 통계");
-        System.out.println("---");
-        HashMap<Rank, Integer> result = lottoResult.getResult();
-        Long amount = 0L;
-        for (int ranking = 4; ranking >= 0; ranking--) {
-            Rank rank = Rank.values()[ranking];
-            System.out.printf(rank.toString() + "%d개\n", result.get(rank));
-            amount += result.get(rank) * rank.getPrize();
-        }
-        Output.printYield(amount, money);
+        Output.printLottoResult(lottoResult, money);
     }
 }
