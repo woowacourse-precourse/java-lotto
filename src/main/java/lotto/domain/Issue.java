@@ -19,4 +19,17 @@ public class Issue {
         }
         return money/1000;
     }
+
+
+    public Lotto createLottoNum(){
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < 6) {
+            int randomNumber = Randoms.pickNumberInRange(1, 45);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
+            }
+        }
+        return new Lotto(numbers);
+    }
+
 }
