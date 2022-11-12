@@ -3,10 +3,10 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import lotto.utils.LottoInfo;
 import lotto.utils.Validator;
 
 public class Lotteries {
-    private static final int LOTTO_PRICE = 1000;
     private final List<Lotto> lotteries;
 
     public Lotteries(List<Lotto> lotteries) {
@@ -17,7 +17,7 @@ public class Lotteries {
         validate(totalPrice);
 
         List<Lotto> lotteries = new ArrayList<>();
-        int count = totalPrice / LOTTO_PRICE;
+        int count = totalPrice / LottoInfo.PRICE.getNumber();
 
         for (int i = 0; i < count; i++) {
             Lotto lotto = LottoFactory.generateLotto();
