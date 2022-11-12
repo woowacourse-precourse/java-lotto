@@ -2,6 +2,7 @@ package lotto.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -64,6 +65,31 @@ class PlayerTest {
                     .forEach(lottoRanking ->
                             assertThat(actualMap.getOrDefault(lottoRanking, 0))
                                     .isSameAs(expectedMap.get(lottoRanking)));
+        }
+    }
+
+    @Nested
+    @DisplayName("calculateRevenuePercent 메소드는")
+    class CalculateRevenuePercentMethodTest {
+
+        @ParameterizedTest
+        @CsvSource(
+            value = {
+                "1000:500.0",
+                "2000:250.0",
+                "3000:166.7",
+                "4000:125.0",
+                "5000:100.0"
+            },
+            delimiter = ':'
+        )
+        @DisplayName("만약 총 당첨 상금이 주어지면 수익률을 반환한다.")
+        void success_test(String amountInput, String expectedRevenue) {
+            Player player = new Player(new LottoPurchaseAmount(amountInput));
+
+            BigDecimal actualRevenue = player.calculateRevenuePercent(BigDecimal.valueOf(5000L));
+
+            assertThat(actualRevenue.toString()).isEqualTo(expectedRevenue);
         }
     }
 

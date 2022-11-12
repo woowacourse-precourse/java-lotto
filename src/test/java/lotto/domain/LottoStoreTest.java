@@ -3,10 +3,12 @@ package lotto.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import lotto.helper.factory.LottoResultTestFactory;
 import lotto.helper.factory.stub.LottoStoreTestFactory;
 import lotto.helper.util.LottoResultTestUtils;
 import lotto.helper.util.LottoStoreTestUtils;
@@ -155,6 +157,23 @@ class LottoStoreTest {
                     .forEach(lottoRanking ->
                             assertThat(actualMap.getOrDefault(lottoRanking, 0))
                                     .isSameAs(expectedMap.get(lottoRanking)));
+        }
+    }
+
+    @Nested
+    @DisplayName("calculateRevenuePercent 메소드는")
+    class CalculateRevenuePercentMethodTest {
+
+        @ParameterizedTest
+        @MethodSource("lotto.domain.argument.CalculateRevenueArgument#calculateRevenuePercentArgument")
+        @DisplayName("만약 LottoResult가 주어지면 수익률을 반환한다.")
+        void success_test(Map<LottoRanking, Integer> lottoRankingResult, String amountInput, String expectedPercent) {
+            LottoResult lottoResult = LottoResultTestFactory.lottoRankingResultOf(lottoRankingResult);
+            LottoStore lottoStore = new LottoStore(new LottoPurchaseAmount(amountInput));
+
+            BigDecimal actualPercent = lottoStore.calculateRevenuePercent(lottoResult);
+
+            assertThat(actualPercent.toString()).isEqualTo(expectedPercent);
         }
     }
 }
