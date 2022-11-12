@@ -22,8 +22,13 @@ public class Lotto {
         return numbers.contains(bonusNumber);
     }
 
-    // TODO: 추가 기능 구현
     public void printNumbers() {
         System.out.println(numbers);
+    }
+
+    public int countMatchingNumber(Lotto lotto) {
+        return (int) numbers.stream()
+                .filter(lotto.numbers::contains)
+                .count();
     }
 }
