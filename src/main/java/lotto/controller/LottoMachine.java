@@ -17,8 +17,12 @@ public class LottoMachine {
 	private MachineSystem machineSystem;
 
 	public void run() {
-		setting();
-		winningStats();
+		try {
+			setting();
+			winningStats();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	private void setting() {
