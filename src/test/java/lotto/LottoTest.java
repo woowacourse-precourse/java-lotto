@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import domain.Amount;
 import domain.Game;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,6 +39,14 @@ class LottoTest {
         Lotto lotto=new Lotto(List.of(11,12,13,42,37,10));
 
         assertThat(lotto.get_hitCount(List.of(1,31,42,37,11,12))).isEqualTo(4);
+    }
+
+    @Test
+    void getGradeTest(){
+
+        assertThat(Amount.getGrade(3,false)).isEqualTo(Amount.grade.fifth);
+        assertThat(Amount.getGrade(5,true)).isEqualTo(Amount.grade.second);
+
     }
 
     // 아래에 추가 테스트 작성 가능
