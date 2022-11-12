@@ -40,8 +40,8 @@
   - [ ] 입력받은 보너스 번호에 대한 생성자 - Bonus
     - [x] String 형식에 대한 int 형변환 - Guide
 
-- [ ] 로또 번호 접근자 - Lotto
-- [ ] 구매 개수 계산 - UserLotto
+- [x] 로또 번호 접근자 - Lotto
+- [x] 구매 개수 계산 - UserLotto
 - [ ] 구매 리스트 생성(랜덤) - NumberGenerator
 - [ ] 몇 개의 번호가 당첨 번호와 일치하는지 확인 - Judgment
 - [ ] 보너스 번호 일치 여부 확인 - Judgment

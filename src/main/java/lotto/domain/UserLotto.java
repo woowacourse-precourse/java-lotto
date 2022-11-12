@@ -12,6 +12,10 @@ public class UserLotto {
         this.lottoAmount = tmpLottoAmount;
     }
 
+    public int getLottoCount() {
+        return (this.lottoAmount / 1000);
+    }
+
     private void validateIsNumeric(String lottoAmount) {
         for(char c : lottoAmount.toCharArray()) {
             if (!(0 <= c - '0' && c - '0' <= 9)) {
