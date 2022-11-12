@@ -7,7 +7,7 @@ import java.util.List;
 public class Validation {
 
     public static void purchaseNumberValid(int number){
-        if (number % 1000 != 0) {
+        if (number % 1000 != 0 || number == 0) {
             throw new IllegalArgumentException(String.valueOf(ErrorType.INVALID_PRICE_INPUT));
         }
     }
