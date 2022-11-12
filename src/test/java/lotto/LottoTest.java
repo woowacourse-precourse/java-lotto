@@ -30,4 +30,13 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 47)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 보너스_일치_출력() {
+        Compare compare = new Compare();
+        int sameNumber = compare.compareNumbers(Arrays.asList(1, 2, 3, 4, 5, 9, 35), Arrays.asList(1, 3, 5, 2, 9, 35));
+
+        assertThat(sameNumber).isEqualTo(-1);
+    }
+
 }
