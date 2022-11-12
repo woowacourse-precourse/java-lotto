@@ -10,8 +10,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WinLottoGenerate {
-    private final int LOTTO_SIZE = 6;
-
     private void bonusValidate(String bonus) {
         if (!bonus.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException();
@@ -31,15 +29,25 @@ public class WinLottoGenerate {
     }
 
     public WinLotto generate() {
-        Output.askWinNumber();
-        String[] winNumber = Console.readLine().split(",");
-        winNumberValidate(winNumber);
+        Lotto winLotto = askWinNumber();
+        Integer bonusInteger = askBonus();
+        return new WinLotto(winLotto, bonusInteger);
+    }
+
+    private Integer askBonus() {
         Output.askBonusNumber();
         String bonus = Console.readLine();
         bonusValidate(bonus);
+        return Integer.parseInt(bonus);
+    }
+
+    private Lotto askWinNumber() {
+        Output.askWinNumber();
+        String[] winNumber = Console.readLine().split(",");
+        winNumberValidate(winNumber);
         List<Integer> numbers = Arrays.stream(winNumber).map(Integer::parseInt).collect(Collectors.toList());
-        Integer bonusInteger = Integer.parseInt(bonus);
-        return new WinLotto(new Lotto(numbers), bonusInteger);
+        Lotto winLotto = new Lotto(numbers);
+        return winLotto;
     }
 
 }
