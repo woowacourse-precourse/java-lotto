@@ -31,7 +31,7 @@ public class Lotto {
             uniqueNumbers.add(number);
         }
 
-        return !(uniqueNumbers.size() == numbers.size());
+        return uniqueNumbers.size() != numbers.size();
     }
 
     public static Lotto numberOf(List<Integer> numbers) {
