@@ -26,7 +26,11 @@ public class Validator {
 
     public static void bonusNumber(String bonusNumber){
         checkNumber(bonusNumber);
-        if (Integer.parseInt(bonusNumber) < 1 || Integer.parseInt(bonusNumber) > 45){
+        isGreaterThanOneAndLessThanFortyFive(bonusNumber);
+    }
+
+    private static void isGreaterThanOneAndLessThanFortyFive(String number) {
+        if (Integer.parseInt(number) < 1 || Integer.parseInt(number) > 45){
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45사이의 수여야 합니다.");
         }
     }
