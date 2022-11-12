@@ -26,6 +26,14 @@ public class Application {
 
         Print.winningNumber();
         List<Integer> winningNumber =lotto.getLottoNumbers();
+        List<Integer> winningList = new ArrayList<>();
+
+        for(int i = 0; i < lottoNumbers.size(); i++){
+            Computer computer =new Computer(winningNumber, lottoNumbers.get(i));
+            winningList.add(computer.getOverlapedCount());
+        }
+
+
 
 
 

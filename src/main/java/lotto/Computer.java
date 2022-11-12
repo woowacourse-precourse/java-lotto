@@ -12,6 +12,10 @@ public class Computer {
         this.overlapedCount = getOverlapedNumber(winningNumers, lottoes).size();
     }
 
+    public int getOverlapedCount(){
+        return overlapedCount;
+    }
+
     public HashSet<Integer> getOverlapedNumber(List<Integer> winningNumers, List<Integer> lottoes){
         HashSet<Integer> winningNumber = new HashSet<>(winningNumers);
         HashSet<Integer> lotto = new HashSet<>(lottoes);
