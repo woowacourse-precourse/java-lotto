@@ -54,4 +54,11 @@ public class WiningNumber {
             throw new IllegalArgumentException();
         }
     }
+
+    private void validateBonusNumberOverlap(int number) {
+        if (winingNumber.contains(number)) {
+            System.out.println("[ERROR] 보너스 번호는 로또 번호에 포함되면 안됩니다.");
+            throw new IllegalArgumentException();
+        }
+    }
 }
