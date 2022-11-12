@@ -31,6 +31,10 @@ public class OutputUtil {
         System.out.println(Message.INPUT_WINNING_NUMBERS_MESSAGE.getMessage());
     }
 
+    public static void printInputWinningNumbersError() {
+        System.out.println(Message.INPUT_WINNING_NUMBER_ERROR);
+    }
+
     public static void printInputBonusNumber() {
         System.out.println(Message.INPUT_BONUS_NUMBER_MESSAGE.getMessage());
     }
