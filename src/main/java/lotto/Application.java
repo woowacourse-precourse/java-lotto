@@ -12,6 +12,8 @@ public class Application {
         System.out.println("구입금액을 입력해 주세요.");
         int lottoCount = validateBudget(Console.readLine());
         List<Lotto> lottoArray = generateLottoNumbers(lottoCount);
+        Lotto lottoAnswer = generateLottoAnswers(Console.readLine());
+
     }
 
     public static int validateBudget(String input){
@@ -33,6 +35,27 @@ public class Application {
             System.out.println(lotto.getNumbers());
         }
         return lottoArray;
+    }
+
+    public static Lotto generateLottoAnswers(String input){
+        List<Integer> numberList = new ArrayList<>();
+        String[] strings = input.split(",");
+        for(int i=0; i<strings.length; i++){
+            try{
+                int elem = Integer.parseInt(strings[i]);
+                numberList.add(elem);
+            }catch(Exception e){throwException("당첨 번호는 모두 숫자이어야 합니다.");}
+        }
+        if(!isUniqueList(numberList)) throwException("당첨 번호는 중복되지 않아야 합니다.");
+        return new Lotto(numberList);
+    }
+
+    public static boolean isUniqueList(List<Integer> numberList){
+        for(int i=0; i<numberList.size(); i++){
+            int elem = numberList.get(i);
+            if(numberList.indexOf(elem) != numberList.lastIndexOf(elem)) return false;
+        }
+        return true;
     }
 
     public static void throwException(String message){
