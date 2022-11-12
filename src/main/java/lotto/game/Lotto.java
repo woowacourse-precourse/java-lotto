@@ -32,24 +32,7 @@ public class Lotto {
         List<Integer> matchedNumbers = getMatchedNumbers(winningLottoNumbers, bonusNumber);
         int lottoNumbersCount = matchedNumbers.get(LOTTO_NUMBER_INDEX);
         int bonusNumberCount = matchedNumbers.get(BONUS_NUMBER_INDEX);
-        if (lottoNumbersCount == Constant.FIFTH_MATCHED_NUMBER_COUNT) {
-            return LottoResult.FIFTH;
-        }
-        if (lottoNumbersCount == Constant.FOURTH_MATCHED_NUMBER_COUNT) {
-            return LottoResult.FOURTH;
-        }
-        if (lottoNumbersCount == Constant.THIRD_MATCHED_NUMBER_COUNT
-                && bonusNumberCount == Constant.THIRD_MATCHED_BONUS_COUNT) {
-            return LottoResult.THIRD;
-        }
-        if (lottoNumbersCount == Constant.SECOND_MATCHED_NUMBER_COUNT
-                && bonusNumberCount == Constant.SECOND_MATCHED_BONUS_COUNT) {
-            return LottoResult.SECOND;
-        }
-        if (lottoNumbersCount == Constant.FIRST_MATCHED_NUMBER_COUNT) {
-            return LottoResult.FIRST;
-        }
-        return LottoResult.ERROR;
+        return LottoResult.get(lottoNumbersCount, bonusNumberCount);
     }
 
     private List<Integer> getMatchedNumbers(List<Integer> winningLottoNumbers, int bonusNumber) {
