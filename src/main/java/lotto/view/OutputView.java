@@ -9,4 +9,8 @@ public class OutputView {
     public String unitErrorMsg() {
         return "[ERROR] 1000원으로 나누어 떨어지지 않습니다.";
     }
+
+    public void lottoCountMsg(int count) {
+        System.out.println(count + "개를 구입했습니다.");
+    }
 }
