@@ -3,6 +3,7 @@ package lotto.controller;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMaker;
 import lotto.domain.TicketMachine;
+import lotto.domain.WinningLotto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -16,6 +17,7 @@ public class LottoController {
     public void process() {
         int ticket = getTicketFromUserByConsole();
         List<Lotto> lottos = getRandomLottoBy(ticket);
+        WinningLotto winningLotto = getWinningLottoByUser();
     }
 
     private int getTicketFromUserByConsole() {
@@ -30,5 +32,20 @@ public class LottoController {
         OutputView.printLottosInformation(lottos);
         return lottos;
     }
+
+    private WinningLotto getWinningLottoByUser() {
+        Lotto manualLotto = getManualLottoFromUserByConsole();
+        int bonusNumber = getBonusNumberFromUserByConsole();
+    }
+
+    private Lotto getManualLottoFromUserByConsole() {
+        List<Integer> lottoNumbers = InputView.getManualLottoNumberFromUser();
+        return lottoMaker.getManualLotto(lottoNumbers);
+    }
+
+    private int getBonusNumberFromUserByConsole(){
+        return 0;
+    }
+
 
 }
