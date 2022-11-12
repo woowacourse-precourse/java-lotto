@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Controller {
@@ -30,7 +31,19 @@ public class Controller {
             }
         }
         return matchCount;
-
     }
+
+    //당첨 로또 저장공간 만들기
+    public void addToStatistics(Map<Integer, Integer> statistics, int matchCount) {
+        //putIfAbsent나 다른 것 사용해보기
+        int winningCount = statistics.getOrDefault(matchCount, 0);
+        statistics.put(matchCount, winningCount);
+    }
+
+
+
+//        if(matchCount == 5){
+//        myLotto.contains(bonusNumber)
+//
 
 }
