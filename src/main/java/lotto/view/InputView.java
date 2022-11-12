@@ -13,4 +13,9 @@ public class InputView {
         System.out.printf(Messages.INPUT_WIN_LOTTO_NUM.get());
         return Console.readLine();
     }
+
+    public static String inputBonusNum() {
+        System.out.printf(Messages.INPUT_WIN_BONUS_NUM.get());
+        return Console.readLine();
+    }
 }
