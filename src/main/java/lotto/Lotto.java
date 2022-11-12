@@ -18,6 +18,10 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
+
     public void printLottoNumbers() {
         System.out.println(this.numbers);
     }
