@@ -18,6 +18,7 @@ public class LottoController {
     private PurchaseAmount purchaseAmount;
     private List<Lotto> lottos;
     private List<Integer> winNumbers;
+    private int bonusNumber;
 
     public LottoController() {
         lottos = new ArrayList<>();
@@ -55,6 +56,13 @@ public class LottoController {
                 .collect(Collectors.toList());
     }
 
+    private void getBonusNumberFromUser() {
+        String userInput = InputUtils.getBonusNumberFromUser();
+        Validator.checkBonusNumberIsValid(userInput, winNumbers);
+
+        bonusNumber = Integer.parseInt(userInput);
+    }
+
     public void start() {
         getLottoPurchaseAmountFromUser();
 
@@ -67,5 +75,6 @@ public class LottoController {
         printPurchasedLottoNumbers();
 
         getWinNumbersFromUser();
+        getBonusNumberFromUser();
     }
 }
