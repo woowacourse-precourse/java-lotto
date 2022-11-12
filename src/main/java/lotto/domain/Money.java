@@ -23,4 +23,8 @@ public class Money {
             throw new IllegalArgumentException(Error.MONEY_CHANGE_LEFT.getCode());
         }
     }
+
+    public int calculateBoughtLottoCount() {
+        return money / MIN_AMOUNT;
+    }
 }

@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Collections;
 import java.util.List;
 import lotto.domain.errorenum.Error;
 import lotto.domain.lottoenum.LottoCondition;
@@ -9,7 +10,12 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        Collections.sort(numbers);
         this.numbers = numbers;
+    }
+
+    public List<Integer> getSortedNumbers() {
+        return numbers;
     }
 
     private void validate(List<Integer> numbers) {
@@ -20,7 +26,7 @@ public class Lotto {
 
     private void validateLength(int size) {
         if (size != LottoCondition.LENGTH.getValue()) {
-            throw new IllegalArgumentException(Error.HEAD.getCode() + Error.NOT_6_LENGTH.getCode());
+            throw new IllegalArgumentException(Error.NOT_6_LENGTH.getCode());
         }
     }
 
@@ -32,12 +38,12 @@ public class Lotto {
         if (number >= LottoCondition.MIN.getValue() && number <= LottoCondition.MAX.getValue()) {
             return;
         }
-        throw new IllegalArgumentException(Error.HEAD.getCode() + Error.NOT_IN_RANGE.getCode());
+        throw new IllegalArgumentException(Error.NOT_IN_RANGE.getCode());
     }
 
     private void validateNonDuplicate(List<Integer> numbers) {
         if (removeDuplicateNumbers(numbers) != LottoCondition.LENGTH.getValue()) {
-            throw new IllegalArgumentException(Error.HEAD.getCode() + Error.DUPLICATE_FOUND.getCode());
+            throw new IllegalArgumentException(Error.DUPLICATE_FOUND.getCode());
         }
     }
 

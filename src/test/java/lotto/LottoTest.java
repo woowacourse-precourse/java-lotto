@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 import lotto.domain.Lotto;
@@ -9,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -60,5 +61,16 @@ class LottoTest {
                 List.of(45, 1, 2, 3, 4, 5),
                 List.of(1, 10, 20, 30, 40, 45)
         );
+    }
+
+    @DisplayName("로또 번호가 생성되면 오름차순으로 정렬된다")
+    @Test
+    void checkLottoGenerationSorted() {
+        List<Integer> origin = new ArrayList<>(List.of(6, 45, 44, 4, 15, 10));
+        List<Integer> sortedResult = List.of(4, 6, 10, 15, 44, 45);
+
+        List<Integer> sortedNumbers = new Lotto(origin).getSortedNumbers();
+
+        assertThat(sortedNumbers).isEqualTo(sortedResult);
     }
 }
