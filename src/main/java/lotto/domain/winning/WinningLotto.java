@@ -1,7 +1,7 @@
 package lotto.domain.winning;
 
+import java.util.Arrays;
 import java.util.EnumMap;
-import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
 import lotto.domain.lotto_numbers.BonusNumber;
@@ -28,7 +28,7 @@ public class WinningLotto {
 
     public LottoResults lottoResults(List<Lotto> purchasedLottos) {
         Map<LottoRanking, Integer> results = new EnumMap<>(LottoRanking.class);
-        EnumSet.allOf(LottoRanking.class)
+        Arrays.stream(LottoRanking.values())
                 .forEach(lottoRanking -> results.put(lottoRanking, 0));
 
         judgeWinning(purchasedLottos, results);
