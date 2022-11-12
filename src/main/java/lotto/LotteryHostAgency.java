@@ -26,12 +26,14 @@ public class LotteryHostAgency {
     }
 
 
-    public static enum WinningCriteria {
-        // TODO: 열거형 구조체 구현
-        NOTHING
-    }
+    public enum WinningCriteria {
+        FIRST(2000000000), SECOND(30000000), THIRD(1500000), FORTH(50000), FIFTH(5000), NOTHING(0);
+        int amount;
 
-    ;
+        WinningCriteria(int amount) {
+            this.amount = amount;
+        }
+    }
 
 
 }
