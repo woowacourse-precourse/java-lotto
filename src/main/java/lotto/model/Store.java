@@ -1,0 +1,15 @@
+package lotto.model;
+
+import java.util.List;
+
+public class Store {
+    private final Customer customer;
+    private final List<Integer> winningNumber;
+
+    public Store(
+            Customer customer,
+            List<Integer> winningNumber) {
+        this.customer = customer;
+        this.winningNumber = winningNumber;
+    }
+}
