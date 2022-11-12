@@ -2,6 +2,7 @@
 
 - [ ] 로또 구입 금액 입력 받기(1,000 원 단위 입력)
   - (e) 숫자 이외의 입력이 들어올 경우 예외처리(IllegalArgumentException)
+  - (e) 1000미만의 입력에 대하여 예외처리(IllegalArgumentException)
   - (e) 1000의 배수가 아닐경우 예외처리(IllegalArgumentException)
 - [ ] 당첨 번호 입력 받기(6개의 숫자)
   - (e) 6개의 숫자를 초과하거나 미만이면 예외처리(IllegalArgumentException)
