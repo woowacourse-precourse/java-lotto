@@ -12,7 +12,11 @@ public class RandomLottoNumberCreator {
     public static final int CRITERION_ZERO = 0;
 
     public static List<Integer> createLottoNumber() {
-        return Randoms.pickUniqueNumbersInRange(MINIMUM_LOTTO_NUMBER, MAXIMUM_LOTTO_NUMBER, CRITERION_LOTTO_SIZE);
+        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(
+                MINIMUM_LOTTO_NUMBER,
+                MAXIMUM_LOTTO_NUMBER,
+                CRITERION_LOTTO_SIZE);
+        return new ArrayList<>(randomNumbers);
     }
 
     public static List<List<Integer>> createLottoNumber(int count) {
