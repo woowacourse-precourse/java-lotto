@@ -1,6 +1,10 @@
 package lotto;
 
 import java.io.ByteArrayInputStream;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
 class LottoKioskTest {
-    private final int LOTTO_PRICE = 1000;
     private final String ERROR_MESSAGE = "[ERROR]";
 
     @DisplayName("[오류 테스트] 입력에 숫자가 아닌 것이 존재")
@@ -22,7 +25,7 @@ class LottoKioskTest {
         LottoKiosk lottoKiosk = new LottoKiosk();
         lottoKiosk.moneyInserted();
         //when then
-        assertThatThrownBy(() -> lottoKiosk.validateMoneyInput())
+        assertThatThrownBy(lottoKiosk::validateMoneyInput)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
@@ -39,12 +42,12 @@ class LottoKioskTest {
         lottoKiosk.moneyInserted();
         lottoKiosk.chargeMoney();
         //when then
-        assertThatThrownBy(() -> lottoKiosk.validateMoney())
+        assertThatThrownBy(lottoKiosk::validateMoney)
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
 
-    @DisplayName("문자열로 받은 금액 Long 으로 저장")
+    @DisplayName("문자열로 올바른 입력값 Long 으로 저장")
     @Test
     void chargeMoney() {
         //입력값 정의
@@ -82,6 +85,7 @@ class LottoKioskTest {
     @Test
     void calculateLottoAmount() {
         //입력값 정의
+        final int LOTTO_PRICE = 1000;
         String input = "20000";
         ByteArrayInputStream byteInput = new ByteArrayInputStream(input.getBytes());
         System.setIn(byteInput);
@@ -93,5 +97,34 @@ class LottoKioskTest {
         //then
         long howManyLotto = lottoKiosk.showInsertedMoney() / LOTTO_PRICE;
         assertThat(lottoKiosk.showHowMany()).isEqualTo(howManyLotto);
+    }
+
+    @DisplayName("로또 숫가 6개 만들기")
+    @Test
+    void makeUniqueSixLottoNumbers() {
+        //given
+        final int LOTTO_START_NUM = 1;
+        final int LOTTO_END_NUM = 45;
+        final int LOTTO_NUM_COUNT = 6;
+        LottoKiosk lottoKiosk = new LottoKiosk();
+        //when
+        List<Integer> sixLottoNumbers = lottoKiosk.makeUniqueSixLottoNumbers();
+        //then
+        assertThat(sixLottoNumbers).allSatisfy(o -> assertThat(o).isBetween(LOTTO_START_NUM, LOTTO_END_NUM));
+        assertThat(sixLottoNumbers.size()).isEqualTo(LOTTO_NUM_COUNT);
+        Set<Integer> numbersNotDuplicate = new HashSet<>(sixLottoNumbers);
+        assertThat(numbersNotDuplicate.size()).isEqualTo(LOTTO_NUM_COUNT);
+    }
+
+    @DisplayName("오름차순으로 정렬된 로또 숫가 6개 만들기")
+    @Test
+    void sortUniqueSixLottoNumbers() {
+        //given
+        LottoKiosk lottoKiosk = new LottoKiosk();
+        //when
+        List<Integer> sixLottoNumbers = lottoKiosk.makeUniqueSixLottoNumbers();
+        List<Integer> sortedLottoNumbers = lottoKiosk.sortUniqueSixLottoNumbers(sixLottoNumbers);
+        //then
+        assertThat(sortedLottoNumbers).isSortedAccordingTo(Comparator.naturalOrder());
     }
 }
