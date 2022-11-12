@@ -1,8 +1,9 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-
 import java.util.List;
+
+import static lotto.constance.LottoConstance.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -18,6 +19,6 @@ public class Lotto {
     }
 
     private static List<Integer> createRandomNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return Randoms.pickUniqueNumbersInRange(START_RANDOM_NUMBER, END_RANDOM_NUMBER, REPEATABLE);
     }
 }
