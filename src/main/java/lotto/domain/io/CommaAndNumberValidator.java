@@ -7,9 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CommaValidator {
+public class CommaAndNumberValidator {
 
-  public void validate(String input) {
+  void validate(String input) {
     List<String> inputList = new ArrayList<>(Arrays.asList(input.split(",")));
     List<Integer> digits;
     try {
