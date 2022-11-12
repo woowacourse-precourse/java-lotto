@@ -12,6 +12,8 @@ public final class GameConstants {
     public static final String ERROR_IS_NOT_POSITIVE_NUMBER = "[ERROR] 구입 금액은 양수여야 합니다.";
     public static final String ERROR_IS_NOT_DIVISIBLE_BY_1000 = "[ERROR] 구입 금액은 1000원으로 나누어 떨어져야 합니다.";
 
+    public static final int LOTTO_AMOUNT_UNIT = 1000;
+
     private GameConstants() {
 
     }
