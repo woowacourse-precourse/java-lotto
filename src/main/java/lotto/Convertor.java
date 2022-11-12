@@ -6,30 +6,30 @@ import java.util.List;
 public class Convertor {
     private final static String COMMA = ",";
 
-    public static Integer toPurchasePrice(String input) {
-        Validator.checkIfNumeric(input);
-        Validator.checkIfInThousands(input);
+    public static Integer toPurchasePrice(String arg) {
+        Validator.checkIfNumeric(arg);
+        Validator.checkIfInThousands(arg);
 
-        Integer purchasePrice = getNumericValue(input);
+        Integer purchasePrice = getNumericValue(arg);
         return purchasePrice;
     }
 
-    public static List<Integer> separate(String input) {
-        String[] inputSplitted = input.split(COMMA);
-        Validator.checkFormat(inputSplitted);
+    public static List<Integer> separate(String arg) {
+        String[] argSplitted = arg.split(COMMA);
+        Validator.checkFormat(argSplitted);
 
-        List<Integer> inputConverted = new ArrayList<>();
-        for (String element : inputSplitted) {
+        List<Integer> valueConverted = new ArrayList<>();
+        for (String element : argSplitted) {
             Validator.checkIfNumeric(element);
             Integer numericValue = Integer.valueOf(element);
-            inputConverted.add(numericValue);
+            valueConverted.add(numericValue);
         }
-        return inputConverted;
+        return valueConverted;
     }
 
-    public static Integer getNumericValue(String input) {
-        Validator.checkIfNumeric(input);
-        Integer numericValue = Integer.valueOf(input);
+    public static Integer toNumericValue(String arg) {
+        Validator.checkIfNumeric(arg);
+        Integer numericValue = Integer.valueOf(arg);
         return numericValue;
     }
 }

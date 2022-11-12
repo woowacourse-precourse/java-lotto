@@ -57,7 +57,7 @@ public class Validator {
         }
     }
 
-    public static void checkIfBonusNumberIncludedInWinningNumbers(List<Integer> winningNumbers, Integer bonusNumber) {
+    public static void checkIfWinningNumbersContainBonusNumber(List<Integer> winningNumbers, Integer bonusNumber) {
         if (winningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(ERROR_TITLE + DUPLICATE_NUMBERS);
         }

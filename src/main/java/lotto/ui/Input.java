@@ -7,15 +7,15 @@ public class Input {
     private final static String ENTER_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
     private final static String ENTER_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 
-    public static final String submitPayment() {
+    public static final String payment() {
         return messageBox(ENTER_PURCHASE_PRICE);
     }
 
-    public static final String submitWinningNumbers() {
+    public static final String winningNumbers() {
         return messageBox(ENTER_WINNING_NUMBERS);
     }
 
-    public static final String submitBonusNumber() {
+    public static final String bonusNumber() {
         return messageBox(ENTER_BONUS_NUMBER);
     }
 

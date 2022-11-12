@@ -11,20 +11,13 @@ public class Winner {
     private final Lotto winningNumbers;
 
     public Winner(List<Integer> winningNumbers, Integer bonusNumber) {
-        Validator.checkIfBonusNumberIncludedInWinningNumbers(winningNumbers, bonusNumber);
         this.winningNumbers = new Lotto(winningNumbers);
+        Validator.checkIfWinningNumbersContainBonusNumber(
+                winningNumbers,
+                bonusNumber
+        );
+        Validator.checkRange(bonusNumber);
         this.bonusNumber = bonusNumber;
-        Validator.checkRange(this.bonusNumber);
-    }
-
-    public static List<Integer> convert(String[] numbers) {
-        List<Integer> validNumbers = new ArrayList<>();
-        for (String number : numbers) {
-            Validator.checkIfNumeric(number);
-            Integer numericValue = Integer.valueOf(number);
-            validNumbers.add(numericValue);
-        }
-        return validNumbers;
     }
 
     public List<Integer> getWinningNumbers() {
