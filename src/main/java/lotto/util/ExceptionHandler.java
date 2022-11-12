@@ -28,9 +28,9 @@ public class ExceptionHandler {
         }
     }
 
-    public static void checkValidationBonusNumber(String input, List<Integer> lottoNumbers) throws IllegalArgumentException {
+    public static void checkValidationBonusNumber(String input, List<Integer> winningNumbers) throws IllegalArgumentException {
         Integer bonusNumber = Integer.parseInt(input);
-        if (lottoNumbers.contains(bonusNumber)) {
+        if (winningNumbers.contains(bonusNumber)) {
             throw makeIllegalArgumentException(Message.BONUS_NUMBER_INPUT_ERROR);
         }
     }
@@ -40,7 +40,7 @@ public class ExceptionHandler {
             isOnlyCommaAndNumber(input);
             isAllDifferentNumbers(input);
         } catch (IllegalArgumentException illegalArgumentException) {
-            throw makeIllegalArgumentException(Message.WINNING_NUMBER_INPUT_ERROR);
+            throw makeIllegalArgumentException(Message.INPUT_WINNING_NUMBER_ERROR);
         }
     }
 
