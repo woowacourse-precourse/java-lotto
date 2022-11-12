@@ -42,15 +42,21 @@ public class InputController {
     public List<Integer> insertLottoNumber() {
         List<Integer> lottonumber = new ArrayList<>();
         String strlottonumber = Console.readLine();
-        int idxnumber = 0;
+        int numberidx = 0;
         for(int i=0; i<strlottonumber.length(); i++) {
             if(strlottonumber.charAt(i) == ',') {
-                int a = Integer.parseInt(strlottonumber.substring(idxnumber,i));
-                lottonumber.add(a);
-                idxnumber = i;
+                lottonumber.add(StringToIntNumber(strlottonumber,numberidx,i));
+                numberidx = i+1;
             }
         }
+        lottonumber.add(StringToIntNumber(strlottonumber,numberidx,strlottonumber.length()));
+        
         return lottonumber;
     }
 
+    public int StringToIntNumber(String strlottonumber,int firstidx,int lastidx) {
+        int resultnumber;
+        resultnumber = Integer.parseInt(strlottonumber.substring(firstidx,lastidx));
+        return resultnumber;
+    }
 }
