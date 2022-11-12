@@ -2,10 +2,8 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.model.GameDTO;
-import lotto.model.Lotto;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class InputManager {
@@ -27,7 +25,6 @@ public class InputManager {
         System.out.println();
         System.out.println(WINNING_REQUEST);
         this.inputData = Console.readLine();
-
     }
     private void setInputBonus() {
         System.out.println();
@@ -47,7 +44,15 @@ public class InputManager {
                 winNumberList.add(tempNumber);
             }
         }
+        checkDuplicate(winNumberList);
         return winNumberList;
+    }
+    private void checkDuplicate(List<Integer> winNumberList) {
+        for (int i = 0; i < winNumberList.size(); i++) {
+            if (winNumberList.contains(winNumberList.get(i))) {
+                throw new IllegalArgumentException("[ERROR]중복된 숫자는 사용할수 없습니다");
+            }
+        }
     }
 
     private int makeBounsNumber(String inputBonus) {
