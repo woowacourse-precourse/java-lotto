@@ -4,35 +4,35 @@
 
 ---
 
-### 로또 구입 금액 입력
+### <span style = "color:skyblue" >getPurchaseAmount</span> : 로또 구입 금액 입력
 - 🟩 **`convertStringToInt`** → 문자입력을 숫자로 변환 
 - 🟩 **`validateMultipleOfThousand`** → 1000원으로 나누어 떨어지지 않으면 예외처리
 
-### 로또 개수 저장
+### <span style = "color:skyblue" >getLottoCount</span> : 로또 개수 저장
 - 🟩 **`getLottoAmount`** → 구입 금액과 로또 금액을 나눈 값을 저장
 
-### 로또 번호 출력
+### <span style = "color:skyblue" >getLottos</span> : 로또 번호 출력
 - 🟩 **`getLottoNumber`** → 제시된 라이브러리를 사용하여 개수만큼 랜덤번호 생성
 - 🟩 **`printLottoNumber`** → 로또 번호 출력
 
-### 당첨 번호 입력
+### <span style = "color:skyblue" >getUserNumber</span> : 당첨 번호 입력
 - 🟩 **`getUserNumber`** → 문자입력을 쉼표를 기준으로 구분하여 리스트 저장
 - 🟩 **`validateCommas`** → 쉼표로 구분되어 있지 않으면 예외처리
 - 🟩 **`validateUnique`** → 중복이 있다면 예외처리
 - 🟩 **`validateLength`** → 쉼표를 포함하여 길이가 11이 아니라면 예외처리
 - 🟩 **`validateNumber`** → 숫자가 아니라면 예외처리
 
-### 보너스 번호 입력
+### <span style = "color:skyblue" >getBonusNumber</span> : 보너스 번호 입력
 - 🟩 **`getBonusNumber`** → 문자 하나를 입력
 - 🟩 **`validateNumber`** → 숫자가 아니라면 예외처리
 - 🟩 **`validateLength`** → 길이가 1이 아니라면 예외처리
 
-### 당첨 내역 확인
+### <span style = "color:skyblue" >getWinningHistory</span> : 당첨 내역 확인
 - 🟩 **`getAccordance`** → 로또 번호마다 값이 일치하는 개수 저장
 - 🟩 **`matchWinning`** → 당첨내역 계산
 - 🟩 **`printWinning`** → 당첨내역 출력
 
-### 수익률 계산
+### <span style = "color:skyblue" >getYeild</span> : 수익률 계산
 - 🟩 **`getYield`** → 수익률 계산
 - 🟩 **`roundsYield`** → 소수점 둘째 자리에서 반올림
 - 🟩 **`printYield`** → 수익률 출력
