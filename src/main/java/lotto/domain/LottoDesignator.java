@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 public class LottoDesignator {
     private static final String INT_REGEX = "^[0-9]*$";
     private static final int CIPHER = 6;
+    private static final int RANGE = 45;
 
     public void checkOnlyNumber(String input) {
         String lotto = Arrays
@@ -28,13 +29,9 @@ public class LottoDesignator {
     }
 
     public void checkDuplication(String input) {
-        Integer[] numbers = Stream.of(removeComma(input))
-                .mapToInt(Integer::parseInt)
-                .boxed()
-                .toArray(Integer[]::new);
-        List<Integer> lotto = Arrays.asList(numbers);
+        List<Integer> lotto = changeList(input);
         HashSet<Integer> removeDuplication = new HashSet<>(lotto);
-        if(numbers.length != removeDuplication.size()) {
+        if(lotto.size() != removeDuplication.size()) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복될 수 없습니다.");
         }
     }
