@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InputLottoTest {
 
-    @DisplayName("String to int")
+    @DisplayName("to long")
     @Test
     void toLongs() {
         InputLotto inputLotto = new InputLotto();
@@ -23,4 +23,19 @@ class InputLottoTest {
         InputLotto inputLotto = new InputLotto();
         assertEquals(List.of("23", "42", "12", "3", "24", "26"), inputLotto.splitCommas("23,42,12,3,24,26"));
     }
+
+    @DisplayName("to Int")
+    @Test
+    void toInts(){
+        InputLotto inputLotto = new InputLotto();
+        assertEquals(1, inputLotto.toInts("1"));
+    }
+
+    @DisplayName("to List<Integer>")
+    @Test
+    void toIntList(){
+        InputLotto inputLotto = new InputLotto();
+        assertEquals(List.of(12, 23, 34, 45, 56, 67), inputLotto.toIntList(List.of("12", "23", "34", "45", "56", "67")));
+    }
+
 }
