@@ -2,9 +2,8 @@ package lotto;
 
 import lotto.controller.LottoController;
 
-import static lotto.constant.MessageConstant.ERROR;
-
 public class Application {
+    private static final String ERROR = "[ERROR]";
     public static void main(String[] args) {
         LottoController lottoController = LottoController.create();
         try{

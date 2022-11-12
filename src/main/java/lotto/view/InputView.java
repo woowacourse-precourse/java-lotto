@@ -6,12 +6,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.constant.MessageConstant.INPUT_LOTTO_NUMBERS;
-import static lotto.constant.MessageConstant.INPUT_PRICE;
-import static lotto.constant.MessageConstant.INPUT_BONUS_NUMBER;
-import static lotto.constant.UtilConstant.REGEX;
-
 public class InputView {
+    private static final String REGEX = ",";
+    private static final String LINE = System.lineSeparator();
+
+    private static final String INPUT_PRICE = "구입금액을 입력해 주세요.";
+    private static final String INPUT_LOTTO_NUMBERS = LINE + "당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS_NUMBER = LINE + "보너스 번호를 입력해 주세요.";
 
     public int inputPrice(){
         System.out.println(INPUT_PRICE);
