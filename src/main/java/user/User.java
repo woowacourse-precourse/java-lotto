@@ -1,6 +1,8 @@
 package user;
 
+import camp.nextstep.edu.missionutils.Console;
 import lotto.Lotto;
+import ui.View;
 
 import java.util.List;
 
@@ -10,9 +12,8 @@ public class User {
     private Money prizeMoney;
 
     public User() {
-        int inputMoney = 0;
-        seedMoney = new Money(inputMoney);
-        prizeMoney = new Money();
+        seedMoney = new Money();
+        prizeMoney = new Money(0);
     }
 
     public void setLottos(List<Lotto> lottos) {
