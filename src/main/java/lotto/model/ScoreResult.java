@@ -15,5 +15,13 @@ public class ScoreResult{
     public ScoreResult(){
     }
 
-
+    private int getScore(List<Integer> computer, List<Integer> user){
+        int count=0;
+        for(int i=0; i<computer.size(); i++){
+            if(user.contains(computer.get(i))){
+                count++;
+            }
+        }
+        return count;
+    }
 }
