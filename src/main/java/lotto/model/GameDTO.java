@@ -6,7 +6,7 @@ public class GameDTO {
     private Lotto winningNumber;
     private int bonusNumber;
     private int[] winningCount = new int[5];
-    private int winningAmount;
+    private double winningAmount;
     private double returnOfRate;
     private int purchaseAmount;
 
@@ -25,11 +25,11 @@ public class GameDTO {
         this.bonusNumber = bonusNumber;
     }
 
-    public int getWinningAmount() {
+    public double getWinningAmount() {
         return winningAmount;
     }
 
-    public void setWinningAmount(int winningAmount) {
+    public void setWinningAmount(double winningAmount) {
         this.winningAmount = winningAmount;
     }
 

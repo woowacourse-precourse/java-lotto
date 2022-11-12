@@ -19,7 +19,7 @@ public class ProcessingGameData {
     }
 
     private void makeAllAmount(GameDTO gameDTO) {
-        int result = 0;
+        double result = 0;
         result += gameDTO.getWinningCount()[0] * 5000;
         result += gameDTO.getWinningCount()[1] * 50000;
         result += gameDTO.getWinningCount()[2] * 1500000;

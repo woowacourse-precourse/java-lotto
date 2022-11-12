@@ -20,6 +20,7 @@ public class RunGame {
             managerSide();
             judgeGame();
             processingGameData();
+            printResult();
         } catch(IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -40,5 +41,9 @@ public class RunGame {
 
     private void processingGameData() {
         ProcessingGameData process = new ProcessingGameData(this.gameDTO);
+    }
+
+    private void printResult() {
+        print.printResult(this.gameDTO);
     }
 }
