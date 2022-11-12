@@ -156,9 +156,9 @@ public class Application {
 
     public static String getRatioOfProfit(int price) {
         float totalPrize = 0F;
-        Set<Result> standards = WINNING_DATA.keySet();
-        for (Result standard : standards) {
-            totalPrize += standard.getIntPrize() * WINNING_DATA.get(standard);
+        Set<Result> results = WINNING_DATA.keySet();
+        for (Result result : results) {
+            totalPrize += result.getIntPrize() * WINNING_DATA.get(result);
         }
         float ratio = (totalPrize / (float) price) * 100;
         return String.format("%.1f", ratio);
