@@ -9,8 +9,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class ConsoleInputTest {
     @Test
     void testGettingPurchaseAmount() {
+
         assertThrows(ParseException.class, () -> {
-            ConsoleInput.getPurchaseAmount();
+            InputValidator.validateToParseInt(String str);
         });
     }
 }
