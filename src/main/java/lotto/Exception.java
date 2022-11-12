@@ -1,7 +1,7 @@
 package lotto;
 
 abstract public class Exception extends Throwable {
-    public long checkNumeric(String input){
+    public static long checkNumeric(String input){
         long number;
         try{
             number = Long.parseLong(input);
