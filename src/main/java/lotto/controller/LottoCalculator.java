@@ -24,13 +24,14 @@ public class LottoCalculator {
         return RankOfLotto.NOTHING.ordinal();
     }
 
-    public static float calculateYield (int cost, List<Integer> rankOfMyLotto) {
+    public static float calculateYield (int cost, int[] rankOfMyLotto) {
         float prizeMoney = 0;
-        int index = 1;
+        int index = 0;
         RankOfLotto[] rankOfLotto = RankOfLotto.values();
         for (int count : rankOfMyLotto) {
             prizeMoney += count * rankOfLotto[index].getMoney();
+            index++;
         }
-        return (prizeMoney / cost) * 100;
+        return (prizeMoney/cost)*100;
     }
 }
