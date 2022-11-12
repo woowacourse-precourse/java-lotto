@@ -218,5 +218,16 @@ class ValidatorTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR] 보너스 번호가 당첨 번호와 중복되었습니다.");
         }
+
+        @Test
+        @DisplayName("올바른 보너스 번호이면 예외를 던지지 않는다.")
+        void goodBonusNumber() {
+            // given
+            Validator validator = new Validator();
+            List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
+
+            // throws
+            assertThatNoException().isThrownBy(() -> validator.validateBonusNumber("7", winningNumbers));
+        }
     }
 }
