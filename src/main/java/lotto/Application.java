@@ -2,22 +2,55 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.text.DecimalFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+enum MatchNumber {
+    THREE(3, 5000),
+    FOUR(4, 50000),
+    FIVE(5, 1500000),
+    SIX(6, 2000000000),
+    BONUS_MATCH(7, 30000000);
+
+    private final int value;
+    private final long prize;
+
+    MatchNumber(int value, int prize) {
+        this.value = value;
+        this.prize = prize;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public long getPrize() {
+        return prize;
+    }
+}
 
 public class Application {
 
-    private static final String ERROR_MESSAGE = "[ERROR]";
-    private static final int STARTINCLUSIVE = 1;
-    private static final int ENDINCLUSIVE = 45;
-    private static final int COUNT = 6;
+    public static final String ERROR_MESSAGE = "[ERROR]";
+    public static final int START_INCLUSIVE = 1;
+    public static final int END_INCLUSIVE = 45;
+    public static final int COUNT = 6;
+    public static final int ONE_THOUSAND = 1000;
+
+    public static MatchNumber three = MatchNumber.THREE;
+    public static MatchNumber four = MatchNumber.FOUR;
+    public static MatchNumber five = MatchNumber.FIVE;
+    public static MatchNumber six = MatchNumber.SIX;
+    public static MatchNumber bonusMatch = MatchNumber.BONUS_MATCH;
 
     public static void main(String[] args) {
         try {
             Chatbot chatbot = new Chatbot();
             int lottoPrice = validatePrice(chatbot.askPrice());
-            List<List<Integer>> userNumber = issueUserLotto(lottoPrice / 1000);
-            chatbot.printUserLotto(lottoPrice / 1000, userNumber);
+            List<List<Integer>> userNumber = issueUserLotto(lottoPrice / ONE_THOUSAND);
+            chatbot.printUserLotto(lottoPrice / ONE_THOUSAND, userNumber);
             Lotto lotto = new Lotto(chatbot.askLottoNumber());
             int bonus = validateLottoBonus(lotto, chatbot.askLottoBonus());
             List<Integer> result = getNumberOfWin(userNumber, lotto, bonus);
@@ -94,17 +127,20 @@ public class Application {
                 count++;
             }
         }
-        if (count == 5 && userEachNumber.contains(bonus)) {
-            count=7;
+        if (count == five.getValue() && userEachNumber.contains(bonus)) {
+            count = bonusMatch.getValue();
         }
         return count;
     }
 
     public static double calculateRate(int price, List<Integer> result) {
 
-        long prizeMoney=result.get(3)*5000+result.get(4)*50000+result.get(5)*1500000+result.get(7)*30000000+result.get(6)*2000000000;
-        double cal=prizeMoney/(double)price*100;
-        double rate=(int)(cal*10+0.5)/10d;
-        return rate;
+        long prizeMoney = result.get(three.getValue()) * three.getPrize()
+                + result.get(four.getValue()) * four.getPrize()
+                + result.get(five.getValue()) * five.getPrize()
+                + result.get(bonusMatch.getValue()) * bonusMatch.getPrize()
+                + result.get(six.getValue()) * six.getPrize();
+        double cal = prizeMoney / (double) price * 100;
+        return (int) (cal * 10 + 0.5) / 10d;
     }
 }
