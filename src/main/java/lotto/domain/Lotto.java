@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -18,7 +19,7 @@ public class Lotto {
     }
 
     private List<Integer> deDuplicationAndSort(List<Integer> numbers) {
-        List<Integer> list = List.copyOf(new TreeSet<Integer>(numbers));
+        List<Integer> list = new ArrayList<>(List.copyOf(new TreeSet<Integer>(numbers)));
         if (list.size() != 6) {
             throw new IllegalArgumentException("[Error] 로또 번호는 중복이 허용되지 않습니다.");
         }

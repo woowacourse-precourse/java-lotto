@@ -5,10 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 public class CheckLottosPrize {
-    private static final int LOTTO_LENGTH = 6;
-    private final List<Lotto> lottos;
-    private final Lotto winningNumbers;
-    private final Integer bonusNumber;
+    private  List<Lotto> lottos;
+    private  Lotto winningNumbers;
+    private  Integer bonusNumber;
     private Map<String, Integer> totalPrize;
 
     public CheckLottosPrize(List<Lotto> lottos, Lotto winningNumbers, Integer bonusNumber) {
@@ -26,7 +25,7 @@ public class CheckLottosPrize {
         }
     }
 
-    private Map<String, Integer> checkTotalPrize(List<Lotto> lottos) {
+    public Map<String, Integer> checkTotalPrize(List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
             String rank = getRank(lotto);
             if (totalPrize.containsKey(rank)) {
@@ -38,8 +37,13 @@ public class CheckLottosPrize {
 
     private String getRank(Lotto lotto) {
         int answerCount = getAnswerCount(lotto);
-        PrizeRank[] values = PrizeRank.values();
-        for (PrizeRank value : values) {
+        if (answerCount == 5) {
+            if (lotto.get().contains(bonusNumber)) {
+                return PrizeRank.SECOND.name();
+            }
+            return PrizeRank.THIRD.name();
+        }
+        for (PrizeRank value : PrizeRank.values()) {
             if (value.getAnswerCount() == answerCount) {
                 return value.name();
             }
@@ -49,7 +53,7 @@ public class CheckLottosPrize {
 
     private int getAnswerCount(Lotto lotto) {
         lotto.get().retainAll(winningNumbers.get());
-        return LOTTO_LENGTH - lotto.get().size();
+        return lotto.get().size();
     }
 
     public Map<String, Integer> getTotalPrize() {
