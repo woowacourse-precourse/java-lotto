@@ -17,6 +17,8 @@ public class Application {
 
             getBonusNumberMessage();
             Integer bonus = Integer.parseInt(Console.readLine());
+
+            getWinningStatusMessage();
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] "+e.getMessage());
         }
@@ -33,5 +35,10 @@ public class Application {
     public static void getBonusNumberMessage() {
         System.out.println();
         System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
+    public static void getWinningStatusMessage() {
+        System.out.println();
+        System.out.println("당첨 통계\n"+"---");
     }
 }
