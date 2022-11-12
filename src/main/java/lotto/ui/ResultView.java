@@ -32,5 +32,8 @@ public class ResultView implements View{
     private void print5AndBonusMatches(){
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + result.get(3) + "개");
     }
+    private void printAllMatches(){
+        System.out.println("6개 일치 (2,000,000,000원) - " + result.get(4) + "개");
+    }
 
 }
