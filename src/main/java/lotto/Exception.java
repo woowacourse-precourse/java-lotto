@@ -1,5 +1,8 @@
 package lotto;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Exception {
     public static int isInteger(String str) {
         int integer;
@@ -19,4 +22,15 @@ public class Exception {
     public static boolean isNotPositive(int money) {
         return money <= 0;
     }
+
+    public static List<Integer> changeListStringToInteger(List<String> stringList) {
+        try {
+            return stringList.stream()
+                    .map(s -> Integer.parseInt(s))
+                    .collect(Collectors.toList());
+        } catch(NumberFormatException e){
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자를 입력해야 합니다.");
+        }
+    }
+
 }
