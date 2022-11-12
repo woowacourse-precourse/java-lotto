@@ -3,7 +3,10 @@ package lotto;
 import lotto.io.Inputter;
 import lotto.io.MessagePrinter;
 
+import java.util.List;
+
 public class LottoGameSimulator {
+    private List<Lotto> purchasedLottos;
     private Money userMoney;
     public LottoGameSimulator() {
     }
@@ -25,7 +28,8 @@ public class LottoGameSimulator {
     }
 
     public void printGeneratedLotto() {
-
+        int countOfLotto = userMoney.getMoney() / 1000;
+        purchasedLottos = LottoGenerator.generateLottos(countOfLotto);
     }
 
     public void getInputOfWinningNumbers() {
