@@ -57,6 +57,8 @@ public class LottoResult {
     }
 
     private void updatePercentege() {
-        profitPercentege = String.format("%.2f", (total/(double)money)*100);
+        double a = (total/(double)money)*100;
+        double round = Math.round((a * 10))/10.0;
+        profitPercentege = String.format("%.1f", round);
     }
 }
