@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.constant.Score;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +12,12 @@ import static lotto.constant.Score.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoScoreTest {
+
+    @AfterEach
+    void clear() {
+        Map<Score, Integer> scoreStore = LottoScore.setInitialSetting();
+        scoreStore.clear();
+    }
 
     @DisplayName("로또 번호 맞은 개수가 3개일 때 정상적으로 작동되는지 테스트")
     @Test
