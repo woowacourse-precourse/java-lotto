@@ -99,3 +99,7 @@ public class PlayLotto extends Input {
         }
         return false;
     }
+
+    public void print_result(List<Integer> win_count){
+        out.print_result(win_count);
+    }
