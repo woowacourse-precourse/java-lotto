@@ -33,4 +33,11 @@ public class UserInput {
             .collect(Collectors.toList());
     }
 
+    // String 리스트를 Integer 리스트로 변환하는 기능
+    private static List<Integer> stringListToIntegerList(List<String> input) {
+        return input.stream()
+            .map(Integer::parseInt)
+            .collect(Collectors.toList());
+    }
+
 }
