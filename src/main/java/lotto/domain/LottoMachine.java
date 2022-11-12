@@ -21,12 +21,20 @@ public class LottoMachine {
 	private List<Lotto> publishLottoTickets(int getNumberOfTickets) {
 		List<Lotto> list = new ArrayList<>();
 		for (int i = 0; i < getNumberOfTickets; i++) {
-			List<Integer> numbers = new ArrayList<>(
-				Randoms.pickUniqueNumbersInRange(Number.MIN.getValue(), Number.MAX.getValue(), Number.SIZE.getValue()));
-			Collections.sort(numbers);
-			list.add(new Lotto(numbers));
+			list.add(new Lotto(createLottoNumbers()));
 		}
 		return list;
+	}
+
+	private List<Integer> createLottoNumbers() {
+		List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(
+			Number.MIN.getValue(),
+			Number.MAX.getValue(),
+			Number.SIZE.getValue()
+		);
+		List<Integer> lottoNumbers = new ArrayList<>(randomNumbers);
+		Collections.sort(lottoNumbers);
+		return lottoNumbers;
 	}
 
 }
