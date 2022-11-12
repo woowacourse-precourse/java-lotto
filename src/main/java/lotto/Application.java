@@ -1,12 +1,16 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Application {
-    public static boolean validationCheck(int money){
-        return money % 1000 == 0;
+    public static void validationCheck(int money) {
+        if(money % 1000 != 0){
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
     }
 
     public static List<Lotto> createLottos(int money){
@@ -21,10 +25,10 @@ public class Application {
         return Lottos;
     }
 
-    public static double compareMyLotto(Lotto lotto, List<Integer> winningNumber, Integer bonusNumber){
+    public static double compareMyLotto(Lotto lotto, List<Integer> winningNumbers, Integer bonusNumber){
         double count = 0;
         for(Integer eachNumber: lotto.asList()){
-            if(winningNumber.contains(eachNumber)){
+            if(winningNumbers.contains(eachNumber)){
                 count += 1;
             }
         }
@@ -35,7 +39,34 @@ public class Application {
         return count;
     }
 
+    public static List<Integer> getWinningNumbers(){
+        String[] userInput = Console.readLine().split(",");
+        List<Integer> winningNumbers = new ArrayList<>();
+
+        for(String str : userInput){
+            winningNumbers.add(Integer.parseInt(str));
+        }
+
+        if (winningNumbers.size() != 6) {
+            throw new IllegalArgumentException("잘못된 입력입니다.");
+        }
+
+        return winningNumbers;
+    }
+
+
     public static void main(String[] args) {
+        int money = Integer.parseInt(Console.readLine());
+        validationCheck(money);
+        List<Lotto> Lottos = createLottos(money);
+
+        List<Integer> winningNumbers = getWinningNumbers();
+        Integer bonusNumber = Integer.parseInt(Console.readLine());
+/*
+        for(lotto : Lottos){
+            compareMyLotto(lotto,winningNumbers,bonusNumber);
+        }
+*/
         // TODO: 프로그램 구현
     }
 }
