@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import lotto.util.message.LottoExceptionMessageUtils;
 import lotto.util.number.LottoNumberConst;
 import lotto.util.number.LottoNumberFactory;
+import lotto.util.ranking.LottoRanking;
 
 public class Lotto {
 
@@ -100,6 +101,15 @@ public class Lotto {
                     LottoExceptionMessageUtils.INVALID_NUMBER_SIZE.findExceptionMessage(validNumberSize)
             );
         }
+    }
+
+    public LottoRanking calculateLottoGrade(Lotto playerLotto, LottoNumber bonusNumber) {
+        long numberOfWins = this.numbers
+                .stream()
+                .filter(playerLotto.numbers::contains)
+                .count();
+
+        return LottoRanking.findLottoRanking(numberOfWins, numbers.contains(bonusNumber));
     }
 
     @Override

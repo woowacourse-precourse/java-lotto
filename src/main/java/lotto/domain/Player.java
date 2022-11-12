@@ -35,6 +35,10 @@ public class Player {
         return myLottos;
     }
 
+    public void calculateLottoRanking(LottoResult lottoResult, Lotto winningLotto, LottoNumber bonusNumber) {
+        myLottos.forEach(lotto -> lottoResult.addRankingCount(winningLotto.calculateLottoGrade(lotto, bonusNumber)));
+    }
+
     @Override
     public String toString() {
         StringBuilder playerMessage = new StringBuilder();
