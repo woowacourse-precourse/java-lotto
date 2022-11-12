@@ -12,7 +12,7 @@ public class MessagePrinter {
 
     public void printPurchaseConfirmMessage(int howManyLotto) {
         System.out.print(howManyLotto);
-        System.out.println(Message.PURCHASE_CONFIRM_MESSAGE);
+        System.out.println(Message.PURCHASE_CONFIRM_MESSAGE.getPrintingMessage());
     }
 
     public void printPurchasedLotto(List<Lotto> lottoBundle) {
