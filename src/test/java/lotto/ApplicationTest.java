@@ -107,6 +107,16 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+
+    @Test
+    @DisplayName("당첨번호 리스트에 중복이 존재하면 IllegalArgumentException 발생한다.")
+    void 당첨번호리스트_중복있으면_예외발생() {
+        assertSimpleTest(() -> {
+            new WinningTicket(Arrays.asList(1, 2, 3, 4, 6, 6), 8);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
