@@ -24,6 +24,14 @@ public class LottoService {
         player.countLottoNumber();
     }
 
+    public void isValidRange(List<Integer> winningLottoNumbers){
+        for (Integer number : winningLottoNumbers) {
+            if(Constant.LOTTO_START_NUMBER > number || Constant.LOTTO_END_NUMBER < number)
+                throw new IllegalArgumentException(Constant.NOT_VALID_RANGE_EXCEPTION);
+        }
+    }
+
+
     public void printPlayerLottoNumberAndCreateLottoNumber(Player player){
         lottoGameMessage.printPurchaseCountMessage(player.getLottoCount());
         createPlayerRandomLottoPickNumbers(player);
