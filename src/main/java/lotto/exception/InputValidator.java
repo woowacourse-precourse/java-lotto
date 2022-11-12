@@ -7,7 +7,7 @@ import static lotto.constant.LottoConstant.LOTTO_NUMBER_MIN_VALUE;
 import java.util.Arrays;
 import java.util.List;
 
-public class Validator {
+public class InputValidator {
 
     public static final String ERROR_MESSAGE_PREFIX = "[ERROR] ";
     

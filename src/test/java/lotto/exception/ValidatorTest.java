@@ -27,7 +27,7 @@ public class ValidatorTest {
     public static final String INPUT_WINNING_NUMBERS_RIGHT_VALUE = "1,2,3,4,5,6";
     public static final String INPUT_BONUS_MONEY_RIGHT_VALUE = "7";
 
-    private Validator validator = new Validator();
+    private InputValidator validator = new InputValidator();
 
     @Nested
     @DisplayName("validateMoney method")

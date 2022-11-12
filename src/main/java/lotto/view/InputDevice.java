@@ -4,11 +4,11 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.exception.Validator;
+import lotto.exception.InputValidator;
 
 public class InputDevice {
 
-    private Validator validator = new Validator();
+    private InputValidator validator = new InputValidator();
 
     public int sendMoney() {
         String money = Console.readLine();
