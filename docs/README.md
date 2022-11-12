@@ -4,10 +4,13 @@
     - 로또는 1개당 1000원 
     - 예외 처리
       - 1000원 단위로 입력되지 않을 경우
-- [ ] 구매한 로또 번호 발행 기능 Store#drawLottoNumber()
+- [x] 구매한 로또 번호 발행 기능 Store#drawLottoNumber()
     - 랜덤으로 당첨 번호(6개)와 보너스 번호(1개) 발행
-    - 당첨 번호는 중복 X
+    - 발행된 번호 리스트를 매개 변수로 Lotto 클래스 생성
     - 번호는 오름차순
+    - 예외 처리 Lotto#Validate()
+      - 당첨 번호 6개 만족하지 않을 경우
+      - 당첨 번호가 중복일 경우 
 - [ ] 로또 번호 비교 후 상금 및 수익률 계산 
   - [ ] 추첨된 로또 번호 입력 기능 Checker#insertWinningNumbers()
   - [ ] 보너스 로또 번호 입력 기능 Checker#insertBonusNumbers()
