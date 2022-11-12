@@ -19,10 +19,11 @@ public class Controller {
     private Draw draw;
     private Rate rate;
 
-    public void buyLotto() {
+    public List<Lotto> buyLotto() {
         int price = getPrice();
         shop = new Shop(price);
         shop.getLottoPayed();
+        return shop.getLottoPayed();
     }
 
     public void getWinningNums() {
