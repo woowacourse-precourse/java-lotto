@@ -6,13 +6,13 @@ import lotto.domain.PurchasedLottos;
 import lotto.message.ConsoleMessage;
 import lotto.validator.InputValidator;
 
-import java.sql.SQLOutput;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ConsoleView {
     private static final String LEFT_BRACKET = "[";
     private static final String RIGHT_BRACKET = "]";
+    private static final String LOTTO_NUMBER_DELIMITER = ", ";
 
     public static void printBlankLine() {
         System.out.println();
@@ -22,6 +22,12 @@ public class ConsoleView {
         System.out.println(ConsoleMessage.INPUT_PURCHASE_PRICE.getMessage());
         String input = Console.readLine();
         return InputValidator.changeStringToInt(input);
+    }
+
+    public static List<Integer> inputWinningLotto() {
+        System.out.println(ConsoleMessage.INPUT_WINNING_NUMBERS.getMessage());
+        String input = Console.readLine();
+        return InputValidator.changeInputToIntegerList(input);
     }
 
     public static void printPurchaseAmount(int amount) {
@@ -41,7 +47,7 @@ public class ConsoleView {
     private static void printLottoNumbers(Lotto lotto) {
         String numbers = lotto.getNumbers().stream()
                 .map(String::valueOf)
-                .collect(Collectors.joining(", "));
+                .collect(Collectors.joining(LOTTO_NUMBER_DELIMITER));
 
         System.out.print(numbers);
     }
