@@ -28,7 +28,12 @@ public class LottoController {
 
     private void showUserLotto(List<Lotto> userLotto) {
         View.printUserLotto(userLotto);
+        createWinningNumber();
+    }
 
+    private void createWinningNumber() {
+        String winningNumber = View.printUserInputWinningNumber();
+        lottoService.createWinningLotto(winningNumber);
     }
 
 
