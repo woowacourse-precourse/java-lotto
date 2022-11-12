@@ -36,11 +36,13 @@ public class LottoInStream {
         if (isNullOrEmptyString(line)) {
             throw new IllegalArgumentException(_error_default_msg + " 빈 문자열은 입력할 수 없습니다.");
         }
-        if (line.length() != _lotto_number_length) {
+
+        String removedCommaLine = String.join("", line.split(","));
+        if (removedCommaLine.length() != _lotto_number_length) {
             throw new IllegalArgumentException(
                     _error_default_msg + " 당첨 번호는 " + _lotto_number_length + "개를 입력해야 합니다.");
         }
-        return convStrToIntList(line);
+        return convStrToIntList(removedCommaLine);
     }
 
     public static int readToGetLottoBonus() {
