@@ -19,7 +19,7 @@ import static lotto.Generator.createRandomLotto;
         // [x] 보너스 번호를 입력 받기 ( ex - 7)
 
         // [X] 발행한 로또 수량 및 번호를 출력한다. 로또 번호는 오름 차순으로 정렬
-        // [] 당첨 내역 출력
+        // [X] 당첨 내역 출력
         // [] 수익률은 소수점 둘째 자리에서 반올림
         // [] 예외 상황 시 에러 문구 출력
  */
@@ -28,32 +28,31 @@ public class Application {
     public static void main(String[] args) throws IOException {
 
         Input input = new Input();
+        List<Integer>[] lottos = new List[]{};
+        List<Integer> luckyNumbers = new ArrayList<>();
+        ArrayList<Integer> exceptBonusResultList = new ArrayList<>();
+        ArrayList<Integer> BonusResultList = new ArrayList<>();
+        int price = 0;
 
         System.out.println("구입 금액을 입력해 주세요.");
         int haveLottoCount = input.howMuchLotto();
 
         System.out.println(haveLottoCount + "개를 구매했습니다.");
 
-        List<Integer>[] lottos = new List[]{};
         lottos = createRandomLotto(haveLottoCount);
 
-        // 로또 번호 출력
-        for(int i = 0; i < lottos.length; i++){
-            Collections.sort(lottos[i]);
-            System.out.println(lottos[i]);
-        }
-
-
         System.out.println("당첨 번호를 입력해주세요.");
-        List<Integer> luckyNumbers = new ArrayList<>();
         luckyNumbers = input.getLuckyNumber();
 
         System.out.println("보너스 번호를 입력해주세요.");
         int bonusNumber = input.getBonusNumber();
 
+        exceptBonusResultList = Lotto.getresultList(lottos, luckyNumbers);
+        BonusResultList = Lotto.getBonusresultList(lottos, bonusNumber);
+
         System.out.println("당첨 통계");
         System.out.println("---");
-        // 당첨 내역 출력
+        price = Lotto.getResult(exceptBonusResultList, BonusResultList);
         // 수익률 출력
 
     }
