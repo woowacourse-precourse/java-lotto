@@ -1,10 +1,9 @@
-package domain;
+package Service;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Amount {
+public class gradeService {
     public static final int THREE_HIT = 3;
     public static final int FOUR_HIT = 4;
     public static final int FIVE_HIT = 5;

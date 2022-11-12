@@ -1,46 +1,35 @@
 package domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
+import Service.gradeService;
 import lotto.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static Service.LottoService.lottos;
+
 public class Controller {
-    public static List<Lotto> lottos =new ArrayList<>();
-    public static List<Amount.grade> grades=new ArrayList<>();
+
+    public static List<gradeService.grade> grades=new ArrayList<>();
     public static int first_count = 0;
     public static int second_count = 0;
     public static int third_count = 0;
     public static int fourth_count = 0;
     public static int fifth_count = 0;
 
-    public static void lottoSpawner(int lottoCount) {
-        for (int i = 0; i < lottoCount; i++) {
-            lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6)));
-        }
-    }
-
-    public static void printLottoNumbers() {
-        for (Lotto lotto : lottos) {
-            lotto.print();
-            System.out.print("\n");
-        }
-    }
-
     public static void setGrades() {
         for (Lotto lotto : lottos) {
-            grades.add(Amount.getGrade(lotto.get_hitCount(Game.getWinning_numbers()), lotto.bonus_hit(Game.bonusNumber)));
+            grades.add(gradeService.getGrade(lotto.get_hitCount(Game.getWinning_numbers()), lotto.bonus_hit(Game.bonusNumber)));
         }
     }
 
     public static void grade_count() {
-        for (Amount.grade grade : grades) {
-            if (Amount.grade.fifth == grade) fifth_count++;
-            if (Amount.grade.fourth == grade) fourth_count++;
-            if (Amount.grade.third == grade) third_count++;
-            if (Amount.grade.second == grade) second_count++;
-            if (Amount.grade.first == grade) first_count++;
+        for (gradeService.grade grade : grades) {
+            if (gradeService.grade.fifth == grade) fifth_count++;
+            if (gradeService.grade.fourth == grade) fourth_count++;
+            if (gradeService.grade.third == grade) third_count++;
+            if (gradeService.grade.second == grade) second_count++;
+            if (gradeService.grade.first == grade) first_count++;
         }
     }
 
