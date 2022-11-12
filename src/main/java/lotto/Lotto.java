@@ -8,47 +8,13 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Lotto {
-    public enum INPUT_SENTENCE {
-        WIN("당첨 번호를 입력해 주세요.\n"), BONUS("보너스 번호를 입력해 주세요.\n");
-
-        private final String label;
-
-        INPUT_SENTENCE(String label) {
-            this.label = label;
-        }
-
-        public String label() {
-            return label;
-        }
-    }
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        numbers = numbers();
         validateCount(numbers);
         validateOverlap(numbers);
         validateRange(numbers);
         this.numbers = numbers;
-    }
-
-    private List<Integer> numbers() {
-        System.out.print(Lotto.INPUT_SENTENCE.WIN.label());
-        String number = Console.readLine();
-        List<String> winNumbers = new ArrayList<>(Arrays.asList(number.split("\\s*,\\s*")));
-        List<Integer> winNumber = new ArrayList<>();
-        for(int i = 0; i<winNumbers.size(); i++) {
-            winNumber.add(Integer.parseInt(winNumbers.get(i)));
-        }
-        return winNumber;
-    }
-
-    private int bonus() {
-        System.out.print(Lotto.INPUT_SENTENCE.BONUS.label());
-        int bonusNumber = Integer.parseInt(Console.readLine());
-        if(bonusNumber< 1 || bonusNumber> 45) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-        }
-       return bonusNumber;
     }
 
     private void validateCount(List<Integer> numbers) {
