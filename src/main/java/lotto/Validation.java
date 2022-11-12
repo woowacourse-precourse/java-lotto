@@ -21,6 +21,11 @@ public class Validation {
         }
     }
 
+    private void isNumberBetween1And45(int number) throws IllegalArgumentException {
+        if (number < 1 || number > 45)
+            throw new IllegalArgumentException(Notification.ERROR_MESSAGE_NUMBER_IS_NOT_BETWEEN_1_AND_45.getMessage());
+    }
+
     private void isLottoDuplicate(List<Integer> numbers) throws IllegalArgumentException {
         HashSet<Integer> set = new HashSet<>(numbers);
         if (set.size() != 6)
