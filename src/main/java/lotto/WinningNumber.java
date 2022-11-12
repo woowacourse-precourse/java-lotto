@@ -19,6 +19,18 @@ public enum WinningNumber {
         this.money = money;
     }
 
+    public int getNumberOfWinning() {
+        return numberOfWinning;
+    }
+
+    public int getNumberOfBonus() {
+        return numberOfBonus;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
     public static void count(Map<WinningNumber, Integer> amountCount, int winningCount, int bonusCount) {
         WinningNumber key = getKey(amountCount, winningCount, bonusCount);
         if (key != null) {
