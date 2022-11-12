@@ -25,6 +25,8 @@ public class LottoController {
 
         String luckyNumber = inputView.inputLuckyNumber();
         validateLuckyNumber(luckyNumber);
+
+        String bonusNumber = inputView.inputBonusNumber();
     }
 
     private void validateLuckyNumber(String luckyNumber) {
@@ -40,4 +42,8 @@ public class LottoController {
         validator.validateMonetaryUnit(input);
     }
 
+    public static void main(String[] args) {
+        LottoController lottoController = new LottoController();
+        lottoController.start();
+    }
 }

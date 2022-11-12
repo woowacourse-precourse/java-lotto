@@ -18,5 +18,11 @@ public enum NoticeMessage {
         public String toString() {
             return "당첨 번호를 입력해 주세요.";
         }
+    },
+    BONUS_NUMBER{
+        @Override
+        public String toString() {
+            return "보너스 번호를 입력해 주세요.";
+        }
     }
 }

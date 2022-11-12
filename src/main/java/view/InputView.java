@@ -3,8 +3,7 @@ package view;
 import camp.nextstep.edu.missionutils.Console;
 import model.NoticeMessage;
 
-import static model.NoticeMessage.LUCKY_NUMBER;
-import static model.NoticeMessage.PURCHASING_AMOUNT;
+import static model.NoticeMessage.*;
 
 public class InputView {
     public String inputMoney() {
@@ -22,4 +21,7 @@ public class InputView {
         return input;
     }
 
+    public String inputBonusNumber() {
+        return printMessage(BONUS_NUMBER);
+    }
 }
