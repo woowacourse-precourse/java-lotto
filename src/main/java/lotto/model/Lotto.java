@@ -6,7 +6,7 @@ import java.util.List;
 public class Lotto {
     private final List<Integer> numbers;
 
-    private static final int Size = 6;
+    private static final int SIZE = 6;
     private static final int MIN = 1;
     private static final int MAX = 45;
 
@@ -26,7 +26,7 @@ public class Lotto {
     }
 
     private void checkSize(List<Integer> numbers){
-        if (numbers.size() != Size) {
+        if (numbers.size() != SIZE) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
@@ -45,7 +45,7 @@ public class Lotto {
 
     private void checkDuplication(List<Integer> input){
         HashSet<Integer> checker = new HashSet<>(input);
-        if(checker.size() != Size){
+        if(checker.size() != SIZE){
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
