@@ -1,6 +1,10 @@
 package lotto;
 
+import java.util.List;
+
 public class MessagePrinter {
+
+    LotteryTicketingMachine lotteryTicketingMachine = new LotteryTicketingMachine();
 
     public void printInputMoneyMessage() {
         System.out.println(Message.INPUT_MONEY_MESSAGE.getPrintingMessage());
@@ -9,6 +13,12 @@ public class MessagePrinter {
     public void printPurchaseConfirmMessage(int howManyLotto) {
         System.out.print(howManyLotto);
         System.out.println(Message.PURCHASE_CONFIRM_MESSAGE);
+    }
+
+    public void printPurchasedLotto(List<Lotto> lottoBundle) {
+        for (Lotto lotto : lottoBundle) {
+            System.out.println(lotto);
+        }
     }
 
     public void printInputWinningNumberMessage() {
