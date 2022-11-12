@@ -20,4 +20,13 @@ public class InputView {
         String input = Console.readLine();
         return input;
     }
+
+    public List<Integer> winningNumberInput(){
+        System.out.println(NumberInput);
+        StringTokenizer stringTokenizer = new StringTokenizer(Console.readLine(), ",");
+        while(stringTokenizer.hasMoreTokens()){
+            winningNumber.add(Integer.parseInt(stringTokenizer.nextToken()));
+        }
+        return winningNumber;
+    }
 }
