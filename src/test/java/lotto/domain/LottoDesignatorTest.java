@@ -46,4 +46,13 @@ public class LottoDesignatorTest {
         assertThatThrownBy(() -> lottoDesignator.checkOnlyNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("입력받은 보너스 번호가 6 자리와 중복일 경우 예외가 발생한다.")
+    @Test
+    void 보너스번호_중복_예외() {
+        String bonus = "1";
+        String lotto = "1,2,3,4,5,6";
+        assertThatThrownBy(() -> lottoDesignator.checkBonusDuplication(lotto, bonus))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
