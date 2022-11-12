@@ -298,13 +298,13 @@ public class Application {
         return 0;
     }
 
-    public static Integer calculateFirst(List<Lotto> lottoList, List<Integer> winningNumberList) {
+    public static Integer calculateFirst(List<Lotto> lottoTickets, List<Integer> winningNumbers) {
 
         int number = 0;
 
-        for (Lotto lotto : lottoList) {
+        for (Lotto lotto : lottoTickets) {
 
-            number += compareLottoNumbersAndWinningNumbers(lotto, winningNumberList, 6);
+            number += compareLottoNumbersAndWinningNumbers(lotto, winningNumbers, 6);
         }
 
         return number;
