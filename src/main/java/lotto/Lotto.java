@@ -25,4 +25,21 @@ public class Lotto {
 
         return createdRandomNumbers;
     }
+
+    public WinningPlace countCorrespondingNumbers(List<Integer> winnerNumber, List<Integer> checkTargetNumber, int bonusNumber) throws Exception {
+        int correspondingNumber = 0;
+        int correspondingBonusNumber = 0;
+
+        for (Integer targetNumber : checkTargetNumber) {
+            if (winnerNumber.contains(targetNumber)) {
+                correspondingNumber++;
+            }
+        }
+
+        if (checkTargetNumber.contains(bonusNumber)) {
+            correspondingBonusNumber++;
+        }
+
+        return WinningPlace.getPlace(correspondingNumber, correspondingBonusNumber);
+    }
 }
