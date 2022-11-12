@@ -4,10 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import validate.Check;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Buy {
@@ -45,30 +42,42 @@ public class Buy {
     public static List<Integer> inputWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String numbers = Console.readLine();
-        List<Integer> winningNumbers = makeWinningNumbers(numbers);
+        List<Integer> winningNumbers = new ArrayList<>();
+        try {
+            winningNumbers = makeWinningNumbers(numbers);
 
-        System.out.println("보너스 번호를 입력해 주세요.");
-        String temporaryBonusNumbers = Console.readLine();
-        Check.isNumber(temporaryBonusNumbers);
-        int bonusNumber = Integer.parseInt(temporaryBonusNumbers);
-        Check.rightRange(bonusNumber, START_NUMBER, FINAL_NUMBER);
-        Check.numberDuplicate(winningNumbers, bonusNumber);
-        winningNumbers.add(bonusNumber);
+            System.out.println("보너스 번호를 입력해 주세요.");
+            String temporaryBonusNumbers = Console.readLine();
+            Check.isNumber(temporaryBonusNumbers);
+            int bonusNumber = Integer.parseInt(temporaryBonusNumbers);
+            Check.rightRange(bonusNumber, START_NUMBER, FINAL_NUMBER);
+            Check.numberDuplicate(winningNumbers, bonusNumber);
+            winningNumbers.add(bonusNumber);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
 
         return winningNumbers;
     }
 
 
     public static List<Integer> makeWinningNumbers(String numbers) {
-        List<String> temporaryWinningNumbers = Arrays.asList(numbers.split(","));
-        Check.isNumber(temporaryWinningNumbers);
-        Check.rightRange(temporaryWinningNumbers, START_NUMBER, FINAL_NUMBER);
-        Check.numberDuplicate(temporaryWinningNumbers);
-        Check.numberCount(temporaryWinningNumbers);
+        List<Integer> winningNumbers = new ArrayList<>();
+        try {
+            List<String> temporaryWinningNumbers = new ArrayList<>();
+            temporaryWinningNumbers = Arrays.asList(numbers.split(","));
+            Check.isNumber(temporaryWinningNumbers);
+            Check.rightRange(temporaryWinningNumbers, START_NUMBER, FINAL_NUMBER);
+            Check.numberDuplicate(temporaryWinningNumbers);
+            Check.numberCount(temporaryWinningNumbers);
 
-        List<Integer> winningNumbers = temporaryWinningNumbers.stream()
-                .map(s -> Integer.parseInt(s))
-                .collect(Collectors.toList());
+            winningNumbers = temporaryWinningNumbers.stream()
+                    .map(s -> Integer.parseInt(s))
+                    .collect(Collectors.toList());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
 
         return winningNumbers;
     }
