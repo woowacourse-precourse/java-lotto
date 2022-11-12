@@ -82,4 +82,16 @@ class LottoTest {
         assertThatThrownBy(() -> lottoMachine.setWinNumber(List.of(" ", " ", " ", " ", " ", " ")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("주어진 보너스 번호를 저장한다.")
+    @Test
+    void saveBonusNumber() {
+
+        LottoMachine lottoMachine = new LottoMachine();
+
+        lottoMachine.setWinNumber(List.of("1", "2", "3", "4", "5", "6"));
+        lottoMachine.setBonusNumber("7");
+
+        assertThat(lottoMachine.getBonusNumber()).isEqualTo(7);
+    }
 }
