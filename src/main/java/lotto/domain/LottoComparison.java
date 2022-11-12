@@ -8,13 +8,7 @@ import java.util.List;
 
 public class LottoComparison {
 
-    private final WinningNumber winningNumber;
-    public LottoComparison(WinningNumber winningNumber) {
-        this.winningNumber = winningNumber;
-    }
-
-    public List<Integer> findNumber(List<List<Integer>> randomLotto) {
-        Lotto answer = winningNumber.getAnswer();
+    public List<Integer> findNumber(Lotto answer, List<List<Integer>> randomLotto) {
         List<Integer> winning = answer.getNumbers();
         System.out.println("당첨 번호: " + winning);
         System.out.println("------------");

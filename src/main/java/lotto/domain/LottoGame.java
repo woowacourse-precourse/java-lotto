@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.Lotto;
 import lotto.input.AdditionalNumber;
 import lotto.input.LottoTickets;
 import lotto.input.WinningNumber;
@@ -18,8 +19,11 @@ public class LottoGame {
             System.out.println(b);
         }
 
-        LottoComparison lottoComparison = new LottoComparison(new WinningNumber());
-        List<Integer> number = lottoComparison.findNumber(lists); // 결과 리스트
+        WinningNumber winningNumber = new WinningNumber();
+        Lotto lottoAnswer = winningNumber.getAnswer(); // 당첨되는 숫자들
+
+        LottoComparison lottoComparison = new LottoComparison();
+        List<Integer> number = lottoComparison.findNumber(lottoAnswer, lists); // 결과 리스트
 
         for (int a : number) {
             System.out.println(a);
@@ -29,15 +33,24 @@ public class LottoGame {
         int bonus = additionalNumber.getBonus(); // 보너스 입력 값
 
         BonusBallUsedLottery bonusBallUsedLottery = new BonusBallUsedLottery();
-        List<Integer> bonusNumbers = bonusBallUsedLottery.getLocations(lists, number, bonus); // 보너스 위치
+        List<Integer> bonusNumbers = bonusBallUsedLottery.getLocations(lottoAnswer, lists, number, bonus); // 보너스 위치
 
         for (int c : bonusNumbers) {
             System.out.println(c);
         }
 
-        BonusBallCaseCheck bonusBallCaseCheck = new BonusBallCaseCheck();
-        List<Integer> updateWinningNumber = bonusBallCaseCheck.updateWinningNumber(number, bonusNumbers);
+        System.out.println("마지막--------");
 
+        WinningStatistics winningStatistics = new WinningStatistics();
+        List<Integer> countCheck = winningStatistics.countCheck(number, bonusNumbers);
+
+        for (int t : countCheck) {
+            System.out.println(t);
+        }
+
+        TotalPrizeMoney totalPrizeMoney = new TotalPrizeMoney();
+        int calculation = totalPrizeMoney.calculation(number, countCheck);
+        System.out.println("총값은:" + calculation);
 
     }
 }
