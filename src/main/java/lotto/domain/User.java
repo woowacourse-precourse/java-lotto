@@ -16,7 +16,6 @@ public class User {
         this.winningPrice = 0;
     }
 
-
     public void setLottos(int buyingPrice) {
         this.lottos = generateLottoNumbers(buyingPrice);
     }
