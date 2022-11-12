@@ -21,6 +21,11 @@ public class NumberAdapter {
         return Integer.parseInt(beforeBonusNumber);
     }
 
+    public static List<Integer> getWinningNumber(List<Integer> winningNumber, int bonusNumber) {
+        winningNumber.add(bonusNumber);
+        return winningNumber;
+    }
+
     public static int getPaidMoney(String beforePaidMoney) {
         return Integer.parseInt(beforePaidMoney);
     }
