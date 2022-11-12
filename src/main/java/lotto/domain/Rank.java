@@ -10,7 +10,6 @@ public enum Rank {
     FIRST(6, 2000000000, false),
     OUTRANK(0,0,false);
 
-
     private final int matchingCnt;
     private final int reward;
     private final boolean bonusBall;

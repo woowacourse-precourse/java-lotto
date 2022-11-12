@@ -14,17 +14,23 @@ public class Money {
 
     private void validateMoney(String money) {
         int purchaseMoney;
-
         try {
             purchaseMoney = Integer.parseInt(money);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR_NON_POSITIVE_INTEGER);
         }
 
+        checkNegativeNumber(purchaseMoney);
+        checkNoLottoMoney(purchaseMoney);
+    }
+
+    private void checkNegativeNumber(int purchaseMoney) {
         if (purchaseMoney < 0) {
             throw new IllegalArgumentException(ERROR_NON_POSITIVE_INTEGER);
         }
+    }
 
+    private void checkNoLottoMoney(int purchaseMoney) {
         if (purchaseMoney % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(ERROR_NON_LOTTO_MONEY);
         }

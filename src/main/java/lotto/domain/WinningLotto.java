@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -33,7 +32,7 @@ public class WinningLotto {
     private void validateBonusBall(String bonusBall) {
         try {
             int bonusBallNumber = Integer.parseInt(bonusBall);
-            validateLottoNumber(bonusBallNumber);
+            checkLottoNumber(bonusBallNumber);
             checkDuplicate(winningNumbers, bonusBallNumber);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR_NO_POSITIVE_INTEGER);
@@ -47,7 +46,7 @@ public class WinningLotto {
         try {
             for (String number : numbers) {
                 int lottoNumber = Integer.parseInt(number);
-                validateLottoNumber(lottoNumber);
+                checkLottoNumber(lottoNumber);
                 unDuplicateNumbers.add(lottoNumber);
             }
         } catch (NumberFormatException e) {
@@ -55,7 +54,6 @@ public class WinningLotto {
         } catch (Exception e) {
             throw new IllegalArgumentException(e.getMessage());
         }
-
         checkLottoNumberSize(unDuplicateNumbers);
     }
 
@@ -71,7 +69,7 @@ public class WinningLotto {
         }
     }
 
-    private void validateLottoNumber(int number) {
+    private void checkLottoNumber(int number) {
         if (number < MIN_LOTTO_NUMBER || MAX_LOTTO_NUMBER < number) {
             throw new IllegalArgumentException(ERROR_NO_LOTTO_NUMBER);
         }
