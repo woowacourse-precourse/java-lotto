@@ -20,6 +20,7 @@ public class LottoUI {
     }
 
     public void printLottoBundle(List<Lotto> lottoBundle) {
+        System.out.println(String.format("%d개를 구매했습니다.", lottoBundle.size()));
         for (Lotto lotto : lottoBundle) {
             System.out.println(lotto.toString());
         }
