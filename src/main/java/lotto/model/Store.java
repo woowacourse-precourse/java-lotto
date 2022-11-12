@@ -6,18 +6,14 @@ import static lotto.view.InputView.readUserPaidMoney;
 import java.util.List;
 
 public class Store {
-    private final Customer customer;
-    private final List<Integer> winningNumber;
+    private Customer customer;
+    private List<Integer> winningNumberWithBonusNumber;
 
-    public Store(
-            Customer customer,
-            List<Integer> winningNumber) {
-        this.customer = customer;
-        this.winningNumber = winningNumber;
+    public Store() {
     }
 
-    public static Customer sellLottoToCustomer() {
+    public void sellLottoToCustomer() {
         int paidMoney = getPaidMoney(readUserPaidMoney());
-        return new Customer(paidMoney);
+        this.customer = new Customer(paidMoney);
     }
 }

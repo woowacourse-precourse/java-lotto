@@ -1,6 +1,7 @@
 package lotto.model;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatNoException;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -12,14 +13,12 @@ public class StoreTest {
     @DisplayName("로또를 파는 메서드가 새로운 Customer 객체를 생성한다.")
     void checkSellLottoToCustomerCreateNewCustomer() {
         //given
+        Store testStore = new Store();
         String paidMoney = "3000";
         InputStream in = new ByteArrayInputStream(paidMoney.getBytes());
         System.setIn(in);
 
-        //when
-        Customer result = Store.sellLottoToCustomer();
-
-        //then
-        assertThat(result).isInstanceOf(Customer.class);
+        //when, then
+        assertThatNoException().isThrownBy(testStore::sellLottoToCustomer);
     }
 }
