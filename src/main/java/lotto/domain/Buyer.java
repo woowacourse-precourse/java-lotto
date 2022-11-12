@@ -1,6 +1,8 @@
 package lotto.domain;
 
 
+import static lotto.exception.ExceptionHandler.ILLEGAL_VALUE;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
@@ -15,7 +17,11 @@ public class Buyer {
     }
 
     public void readyForBuyLotto() {
-        this.money = Long.valueOf(Console.readLine());
+        try {
+            this.money = Long.valueOf(Console.readLine());
+        } catch (NumberFormatException exception) {
+            ILLEGAL_VALUE.error();
+        }
     }
 
     public Long getMoney() {

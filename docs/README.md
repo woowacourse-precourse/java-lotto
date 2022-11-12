@@ -6,8 +6,9 @@
   - [x] 숫자 범위를 검증한다. - Lotto#validateRangeNumbers()
   - [x] 로또 번호의 중복을 검증한다. - Lotto#validateOverlapNumbers()
 - [x] 당첨 번호를 만든다. - Application#createWinningNumbers()
-- [x] 당첨 번호가 유효한지 검증한다. - Application#validateWinningNumbers()
-- [ ] 보너스 번호가 유효한지 검증한다. - Application#validateBonusNumber()
+  - [x] 당첨 번호가 유효한지 검증한다. - Application#validateWinningNumbers()
+- [x] 보너스 번호를 만든다 - Application#createBonusNumber()
+  - [x] 보너스 번호가 유효한지 검증한다. - Application#validateBonusNumber()
 - [ ] 당첨 번호와 구매한 로또 번호를 비교한다. - Application#compareWinningNumbers()
 - [ ] 같은 수가 3개면 5등이다.
 - [ ] 같은 수가 4개면 4등이다.
