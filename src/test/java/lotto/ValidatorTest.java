@@ -37,7 +37,7 @@ class ValidatorTest {
         //Then
         assertThat(t)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(INVALID_COST_ERROR_MESSAGE);
+                .hasMessage(ERROR_MESSAGE + INVALID_COST_ERROR_MESSAGE);
     }
 
     @DisplayName("숫자로 구성되어 있는 정상적인 입력")
