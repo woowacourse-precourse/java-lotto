@@ -1,16 +1,16 @@
 ## 💭 기능 구현 사항
 ```
 
-[UI 로직]    0. 사용할 상수 enum Class와 Constant Class에 저장 
+[UI 로직]    0. 사용할 상수 enum Class와 Constant Class에 저장 ✅
 
-[도메인 로직] 1. 구입 금액 입력받기
+[도메인 로직] 1. 구입 금액 입력받기 ✅
 
-[UI 로직]    2. 구입 금액을 통해 로또를 몇 장 구입할 지 체크   
+[UI 로직]    2. 구입 금액을 통해 로또를 몇 장 구입할 지 체크 ✅
 
-[도메인 로직]  3. 구매할 로또 장수만큼 반복하여 로또번호 생성
+[도메인 로직]  3. 구매할 로또 장수만큼 반복하여 로또번호 생성 ✅
             : 1~45 사이에서 중복되지 않는 6개의 값을 로또 번호로 뽑아 오름차순 정렬한다. 
 
-[UI 로직]    4. 생성된 로또번호 출력 
+[UI 로직]    4. 생성된 로또번호 출력 ✅
 
 [도메인 로직] 5. 당첨번호 입력받기 ( 숫자는 콤마(,)로 구분 ) 
 
@@ -29,12 +29,12 @@
 ```
 [UI 로직]
 입출력
-- 1번 : 입력값 1000으로 나누어 떨어지지 않으면 IllegalArgumentException
+- 1번 : 입력값 1000으로 나누어 떨어지지 않으면 IllegalArgumentException ✅
 
 로또번호
-- 숫자 6개 모두 1~45 범위 내의 숫자여야 함. 그렇지 않으면 IllegalArgumentException
-- 로또번호가 총 6개가 아니라면 IllegalArgumentException
-- 로또번호에 중복이 있으면 IllegalArgumentException
+- 숫자 6개 모두 1~45 범위 내의 숫자여야 함. 그렇지 않으면 IllegalArgumentException ✅
+- 로또번호가 총 6개가 아니라면 IllegalArgumentException ✅
+- 로또번호에 중복이 있으면 IllegalArgumentException ✅
 
 -
 ```
