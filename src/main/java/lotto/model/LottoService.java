@@ -54,20 +54,17 @@ public class LottoService {
         this.winningNumber = new WinningNumber(winningNumber, bonusNumber);
     }
 
-    private void validateMoney(String money) {
+    private void validateMoney(String money) throws IllegalArgumentException {
         int tempMoney;
         String range = "^[0-9]+$";
         if (!Pattern.matches(range, money)) {
-            System.out.println("[ERROR] 구입 금액은 숫자여야합니다.");
             throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자여야합니다.");
         }
         tempMoney = Integer.parseInt(money);
         if (tempMoney % LOTTO_PRICE != 0) {
-            System.out.println("[ERROR] 구입 금액은 1000으로 나누어 떨어져야합니다.");
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1000으로 나누어 떨어져야합니다.");
         }
         if (tempMoney < LOTTO_PRICE) {
-            System.out.println("[ERROR] 구입 금액은 로또 한장의 가격을 넘어야 합니다.");
             throw new IllegalArgumentException("[ERROR] 구입 금액은 로또 한장의 가격을 넘어야 합니다.");
         }
     }
@@ -113,7 +110,8 @@ public class LottoService {
             int myCorrects = winningResult.get(winningPlaces[i]);
             benefit += winningValue * myCorrects;
             if (winningPlaces[i] == WinningPlace.SECOND) {
-                System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n", corrects, winningPlaces[i].getWinningValue(), myCorrects);
+                System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n", corrects, winningPlaces[i].getWinningValue(),
+                        myCorrects);
                 continue;
             }
             System.out.printf("%d개 일치 (%s원) - %d개\n", corrects, winningPlaces[i].getWinningValue(), myCorrects);

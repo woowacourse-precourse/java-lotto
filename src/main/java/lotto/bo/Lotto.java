@@ -17,25 +17,23 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validateSize(List<Integer> numbers) {
+    private void validateSize(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != LOTTO_NUMBER_SIZE) {
             System.out.println("[ERROR] 로또 번호는 6개이어야합니다.");
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개이어야합니다.");
         }
     }
 
-    private void validateDuplicate(List<Integer> numbers) {
+    private void validateDuplicate(List<Integer> numbers) throws IllegalArgumentException {
         Set<Integer> uniqueNumbers = new HashSet<>(numbers);
         if (uniqueNumbers.size() != numbers.size()) {
-            System.out.println("[ERROR] 로또 번호는 서로 중복될 수 없습니다.");
             throw new IllegalArgumentException("[ERROR] 로또 번호는 서로 중복될 수 없습니다.");
         }
     }
 
-    private void validateRange(List<Integer> numbers) {
+    private void validateRange(List<Integer> numbers) throws IllegalArgumentException {
         for (int number : numbers) {
             if (number < LOTTO_MIN_NUMBER || number > LOTTO_MAX_NUMBER) {
-                System.out.println("[ERROR] 로또 번호는 1 ~ 45 사이의 숫자이어야합니다.");
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1 ~ 45 사이의 숫자이어야합니다.");
             }
         }

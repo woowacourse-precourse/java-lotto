@@ -33,27 +33,25 @@ public class WinningNumber {
         return result;
     }
 
-    private void validateInteger(String numbers) {
+    private void validateInteger(String numbers) throws IllegalArgumentException {
         for (String number : numbers.split(",")) {
             String tmpNumber = number.strip();
-            String range = String.format("^[0-9]+$");
+            String range = "^[0-9]+$";
             if (!Pattern.matches(range, tmpNumber)) {
-                System.out.println("[ERROR] 당첨번호와 보너스 번호가 숫자가 아닙니다");
                 throw new IllegalArgumentException("[ERROR] 당첨번호와 보너스 번호가 숫자가 아닙니다");
             }
         }
     }
 
-    private void validateRange(List<Integer> numbers) {
+    private void validateRange(List<Integer> numbers) throws IllegalArgumentException {
         for (int number : numbers) {
             if (number < Lotto.LOTTO_MIN_NUMBER || number > Lotto.LOTTO_MAX_NUMBER) {
-                System.out.println("[ERROR] 당첨 번호와 보너스 번호가 1~ 45 사이의 숫자가 아닙니다.");
                 throw new IllegalArgumentException("[ERROR] 당첨 번호와 보너스 번호가 1~ 45 사이의 숫자가 아닙니다.");
             }
         }
     }
 
-    private void validateNumberSize(List<Integer> numbers, int size) {
+    private void validateNumberSize(List<Integer> numbers, int size) throws IllegalArgumentException {
         if (numbers.size() != size) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개, 보너스 번호는 1개의 숫자가 아닙니다.");
         }
