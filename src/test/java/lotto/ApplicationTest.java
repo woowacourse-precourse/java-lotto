@@ -1,10 +1,13 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -57,5 +60,22 @@ class ApplicationTest extends NsTest {
     @Override
     public void runMain() {
         Application.main(new String[]{});
+    }
+
+    @Test
+    void 로또_1억원어치_자동이요() {
+        List<Integer> randomNumbers = pickUniqueNumbersInRange(1, 45, 7);
+        String lottoNumbers = randomNumbers.subList(0, 6)
+                .stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(","));
+        String bonusNumber = Integer.toString(randomNumbers.get(6));
+
+        assertSimpleTest(() -> {
+            run("100000000",
+                    lottoNumbers,
+                    bonusNumber
+            );
+        });
     }
 }
