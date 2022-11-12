@@ -31,13 +31,15 @@ public class Lotto {
 
     private void validateLottoNumberCount(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR]: 로또 당첨 숫자에는 6개를 입력해주세요");
+            throw new IllegalArgumentException
+                    ("[ERROR]: 로또 당첨 숫자에는 6개를 입력해주세요");
         }
     }
 
     private void validateLottoNumberRange(List<Integer> numbers) {
         for (int number: numbers){
-            if (number < 1 || number > 45) throw new IllegalArgumentException("[ERROR]: 로또 당첨 숫자에는 1이상 45이하의 숫자를 입력해주세요.");
+            if (number < 1 || number > 45) throw new IllegalArgumentException
+                    ("[ERROR]: 로또 당첨 숫자에는 1이상 45이하의 숫자를 입력해주세요.");
         }
     }
 
@@ -45,7 +47,8 @@ public class Lotto {
         HashSet<Integer> DuplicatedNumber = new HashSet<>(numbers);
 
         if (DuplicatedNumber.size() < 6){
-            throw new IllegalArgumentException("[ERROR]: 로또 당첨 숫자에는 중복된 숫자를 입력하면 안됩니다.");
+            throw new IllegalArgumentException
+                    ("[ERROR]: 로또 당첨 숫자에는 중복된 숫자를 입력하면 안됩니다.");
         }
     }
 
@@ -64,8 +67,8 @@ public class Lotto {
 
         for (char element: mergedNumber.toCharArray()) {
             if (element < 48 || element > 57) {
-                System.out.println("[ERROR]: 로또 번호는 숫자만 입력할 수 있습니다.");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException
+                        ("[ERROR]: 로또 번호는 숫자만 입력할 수 있습니다.");
             }
         }
     }
