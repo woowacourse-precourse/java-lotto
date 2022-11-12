@@ -3,7 +3,7 @@ package lotto.domain;
 public class Money {
     public static final int MONEY_DIVIDE_UNIT = 1000;
     private final int money;
-    private Money(String input) {
+    public Money(String input) {
         this.money = validate(input);
     }
 
