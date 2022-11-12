@@ -12,7 +12,7 @@ public class Input {
         inputValidation = new InputValidation();
     }
 
-    public int getLottoPrice() {
+    public int getUserMoney() {
         System.out.println(GameMessage.BUY_FOR_LOTTO);
 
         String question = Console.readLine();
