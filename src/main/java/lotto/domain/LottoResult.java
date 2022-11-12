@@ -22,7 +22,7 @@ public enum LottoResult {
         return prize;
     }
 
-    LottoResult getResult(int correctNum, boolean correctBonus) {
+    public static LottoResult getResult(int correctNum, boolean correctBonus) {
         if(correctNum == 6) {
             return FIRST;
         }
