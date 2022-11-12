@@ -18,7 +18,7 @@
 
 
 - [ ] Process
-  - [ ] 생성한 로또 번호와 당첨 번호가 몇개 맞는지 확인한다. -compareLotto()
+  - [ ] 생성한 로또 번호와 당첨 번호가 몇개 맞는지 확인한다. -compareWinningNumbers()
   - [ ] 맞은 개수에 따라 등수를 결정한다. -decideRank()
   - [ ] 당첨 통계를 출력한다. -printStatistics()
   - [ ] 수익률을 계산하여 출력한다. -calculateRateOfReturn()
