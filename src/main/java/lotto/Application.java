@@ -10,6 +10,8 @@ public class Application {
         try {
             startMessage();
             Money money = new Money(Console.readLine());
+
+            getLottosMessage();
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] "+e.getMessage());
         }
@@ -17,5 +19,9 @@ public class Application {
 
     public static void startMessage() {
         System.out.println("구입 금액을 입력해 주세요.");
+    }
+
+    public static void getLottosMessage() {
+        System.out.println("당첨 번호를 입력해 주세요.");
     }
 }
