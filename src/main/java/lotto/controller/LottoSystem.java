@@ -2,20 +2,28 @@ package lotto.controller;
 
 import lotto.domain.UserLotto;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoSystem {
-    private static final InputView inputview = new InputView();
+    private static final InputView inputView = new InputView();
+    private static final OutputView outputView = new OutputView();
     private static final int LOTTO_PRICE = 1000;
     private UserLotto userLotto;
 
-    private void makeLotto() {
+    public void startLottoSystem() {
+        int lottoQuantity = LottoQuantityCalculation();
+        outputView.printQuantity(lottoQuantity);
+        makeUserLottos(lottoQuantity);
+
+    }
+
+    private void makeUserLottos(int lottoQuantity) {
         userLotto = new UserLotto();
-        int quantity = LottoQuantityCalculation();
-        userLotto.setLottos(quantity);
+        userLotto.setLottos(lottoQuantity);
     }
 
     private int LottoQuantityCalculation() {
-        int userMoney = Integer.parseInt(inputview.inputUserMoney());
+        int userMoney = Integer.parseInt(inputView.inputUserMoney());
         return userMoney / LOTTO_PRICE;
     }
 }
