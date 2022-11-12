@@ -13,5 +13,7 @@ public class Price {
         for (int idx = 0; idx < price.length(); idx++) {
             if(!('0' <= price.charAt(idx) && price.charAt(idx) <= '9')) throw new IllegalArgumentException();
         }
+        // 1-2. 1000원 단위로 나누어 떨어지지 않으면 예외처리를 한다.
+        if(Integer.parseInt(price) % 1000 != 0) throw new IllegalArgumentException();
     }
 }

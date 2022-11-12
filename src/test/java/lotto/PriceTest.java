@@ -14,4 +14,13 @@ class PriceTest {
         assertThatThrownBy(() -> new Price("1a"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("1000원 단위로 나누어 떨어지지 않으면 예외처리를 한다.")
+    @Test
+    void createPriceByUndividedNumber() {
+        assertThatThrownBy(() -> new Price("1001"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Price("800"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
