@@ -12,6 +12,7 @@ public class InputView {
     private static final String ERROR_WINNING_NUMBER_INPUT = "[ERROR] 당첨번호가 숫자가 아닙니다.";
     private static final String MESSAGE_MONEY_INPUT = "구입금액을 입력해주세요.";
     private static final String MESSAGE_WINNING_INPUT = "당첨 번호를 입력해 주세요.";
+    private static final String MESSAGE_BONUS_INPUT = "보너스 번호를 입력해 주세요.";
 
     public static int getMoneyInput() {
         OutputView.printString(MESSAGE_MONEY_INPUT);
@@ -34,5 +35,10 @@ public class InputView {
             lotto.add(Integer.parseInt(tempNumber));
         }
         return lotto;
+    }
+
+    public static String getBonusInput() {
+        OutputView.printString(MESSAGE_BONUS_INPUT);
+        return Console.readLine();
     }
 }
