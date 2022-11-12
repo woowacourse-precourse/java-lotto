@@ -1,9 +1,8 @@
 package lotto.domain;
 
-import java.util.List;
-import java.util.Set;
+import static lotto.util.ValidUtil.*;
 
-import lotto.util.ErrorConst;
+import java.util.List;
 
 public class Lotto {
 	private final List<Integer> numbers;
@@ -15,30 +14,8 @@ public class Lotto {
 
 	private void validate(List<Integer> numbers) {
 		validNumbersSize(numbers);
-		validRange(numbers);
+		validLottoRange(numbers);
 		validDuplicated(numbers);
-	}
-
-	private void validNumbersSize(List<Integer> numbers) {
-		if (numbers.size() != 6) {
-			throw new IllegalArgumentException(ErrorConst.NUMBERS_SIZE_ERROR);
-		}
-	}
-
-	private void validDuplicated(List<Integer> numbers) {
-		//중복되지 않는 숫자
-		Set<Integer> numbersSet = Set.copyOf(numbers);
-		if (numbers.size() != numbersSet.size()) {
-			throw new IllegalArgumentException(ErrorConst.DUPLICATED_ERROR);
-		}
-	}
-
-	private void validRange(List<Integer> numbers) {
-		//범위 1부터 45 까지
-		int count = (int)numbers.stream().filter(i -> 1 <= i && i <= 45).count();
-		if (count != 6) {
-			throw new IllegalArgumentException(ErrorConst.OUT_OF_RANGE_ERROR);
-		}
 	}
 
 	public List<Integer> getNumbers() {

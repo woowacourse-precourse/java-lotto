@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.util.ValidUtil;
+import static lotto.util.ValidUtil.*;
 
 public class UserPrice {
 
@@ -8,7 +8,7 @@ public class UserPrice {
 	private Integer userTicketCount;
 
 	public UserPrice(String inputPrice) {
-		Integer userPrice = ValidUtil.validateUserMoney(inputPrice);
+		Integer userPrice = validateUserMoney(inputPrice);
 		this.inputPrice = userPrice;
 		this.userTicketCount = userPrice / 1000;
 	}
