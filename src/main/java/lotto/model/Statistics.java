@@ -1,9 +1,5 @@
 package lotto.model;
 
-import lotto.model.Lotto;
-import lotto.model.Rank;
-import lotto.model.WinningLotto;
-
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -15,31 +11,32 @@ public class Statistics {
 
     private final List<Lotto> lottos;
     private final WinningLotto winningLotto;
-    private Map<Rank, Integer> countRanks;
+    private Map<Rank, Integer> winningLottoCounter;
 
     public Statistics(List<Lotto> lottos, WinningLotto winningLotto) {
         this.lottos = lottos;
         this.winningLotto = winningLotto;
         initMap();
+        countRank();
     }
 
     private void initMap() {
-        countRanks = new LinkedHashMap<>();
+        winningLottoCounter = new LinkedHashMap<>();
         Rank[] values = Rank.values();
         for (Rank value : values) {
-            countRanks.put(value, 0);
+            winningLottoCounter.put(value, 0);
         }
     }
 
     public Map countRank() {
         for (Lotto lotto : lottos) {
             Rank rank = computeRank(lotto);
-            countRanks.put(rank, countRanks.get(rank) + 1);
+            winningLottoCounter.put(rank, winningLottoCounter.get(rank) + 1);
         }
 
-        countRanks.remove(Rank.NOTHING);
+        winningLottoCounter.remove(Rank.NOTHING);
 
-        return Collections.unmodifiableMap(countRanks);
+        return Collections.unmodifiableMap(winningLottoCounter);
     }
 
     private Rank computeRank(Lotto lotto) {
@@ -50,12 +47,24 @@ public class Statistics {
         return rank;
     }
 
+    public int computeTotalPrice() {
+        Set<Rank> ranks = winningLottoCounter.keySet();
+        int totalPrice = 0;
+
+        for (Rank rank: ranks) {
+            int price = rank.computePrice(winningLottoCounter.get(rank));
+            totalPrice += price;
+        }
+
+        return totalPrice;
+    }
+
     @Override
     public String toString() {
         StringBuilder statistics = new StringBuilder();
-        Set<Rank> ranks = countRanks.keySet();
+        Set<Rank> ranks = winningLottoCounter.keySet();
         for (Rank rank: ranks) {
-            statistics.append(rank.toString() + getCountString(countRanks.get(rank)));
+            statistics.append(rank.toString() + getCountString(winningLottoCounter.get(rank)));
             statistics.append("\n");
         }
         return statistics.toString();
