@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest extends NsTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -64,7 +64,6 @@ class LottoTest extends NsTest {
         Assertions.assertThat(out.toString()).contains("[1, 2, 3, 4, 5, 6]");
         Assertions.assertThat(out.toString()).contains("[1, 2, 3, 43, 44, 45]");
     }
-
 
 
     @Override
