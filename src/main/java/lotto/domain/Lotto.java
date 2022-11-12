@@ -2,7 +2,8 @@ package lotto.domain;
 
 import lotto.Game;
 import lotto.Input;
-import lotto.check.Check;
+import lotto.exception.Exception;
+import lotto.check.Validator;
 
 import java.util.*;
 
@@ -16,12 +17,12 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Exception.WRONG_RANGE.getExceptionMessage());
         }
     }
 
     public static void myLotto(String cash){
-        int myLottoCount = Integer.parseInt(cash) / Check.UNIT;
+        int myLottoCount = Integer.parseInt(cash) / Validator.UNIT;
         Game.myAutoLotto(myLottoCount);
     }
 
@@ -36,12 +37,13 @@ public class Lotto {
     }
     public static List<Integer> getLuckyNumber(){
         String luckyNumber = Input.input();
+        Validator.validateLuckyNumber(luckyNumber);
         List<Integer> luckyBall = makeLuckyNumber(luckyNumber);
         return luckyBall;
     }
     public static int getBonusNumber(){
         String bonusNumber = Input.input();
-        Check.checkBonusNumber(bonusNumber);
+        Validator.validateBonusNumber(bonusNumber);
         return Integer.parseInt(bonusNumber);
     }
 }
