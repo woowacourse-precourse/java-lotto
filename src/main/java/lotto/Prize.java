@@ -24,10 +24,6 @@ public enum Prize {
         this.message = message;
     }
 
-    public static List<Prize> getAllPrize() {
-        return List.of(Prize.values());
-    }
-
     private MatchCount getMatchCount() {
         return matchCount;
     }
