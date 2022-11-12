@@ -1,5 +1,7 @@
 package lotto.util;
 
+import java.util.List;
+
 import static lotto.constant.InputMessage.*;
 import static lotto.constant.OutputMessage.*;
 
@@ -18,8 +20,20 @@ public class MessageUtil {
         System.out.println(BONUS.getMessage());
     }
 
-    public void printPurchaseCount() {
-        System.out.println(PURCHASE_COUNT.getMessage());
+    public void printPurchaseCount(int purchaseCount) {
+        System.out.println(purchaseCount + PURCHASE_COUNT.getMessage());
+    }
+
+    public void printPurchaseInfo(List<Integer> lottoNums) {
+        StringBuilder lottoNum = new StringBuilder("");
+
+        lottoNum.append("[");
+        for (Integer number : lottoNums) {
+            lottoNum.append(number).append(",");
+        }
+        lottoNum.deleteCharAt(lottoNum.lastIndexOf(",")).append("]");
+
+        System.out.println(lottoNum);
     }
 
     public void printWinningStats() {
