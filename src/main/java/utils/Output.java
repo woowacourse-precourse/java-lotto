@@ -1,6 +1,6 @@
 package utils;
 
-import lotto.Lotto;
+import lotto.domain.Lotto;
 
 import java.util.List;
 

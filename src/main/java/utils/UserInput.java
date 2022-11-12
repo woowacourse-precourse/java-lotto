@@ -1,7 +1,7 @@
 package utils;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.LottoNumber;
+import lotto.domain.LottoNumber;
 
 import static constant.Constant.*;
 import static constant.ErrorMessage.*;
