@@ -9,7 +9,7 @@ public class BuyLotto {
     private final int INPUT_UNIT = 1000;
     private int price;
 
-    BuyLotto() {
+    public BuyLotto() {
         this.price = 0;
     }
 
@@ -34,11 +34,11 @@ public class BuyLotto {
         }
     }
 
-    public int numberOfLottoCount() {
+    private int numberOfLottoCount() {
         return price / INPUT_UNIT;
     }
 
-    public List<List<Integer>> issue() {
+    public List<List<Integer>> issue () {
         LottoNumbers lottoNumbers = new LottoNumbers();
 
         List<List<Integer>> allLottoNumbers = new ArrayList<>();

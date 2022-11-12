@@ -6,16 +6,16 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 public class WinningNumbers {
-    public void printInputWinningNumberMessage() {
+    private void inputWinningNumberMessage() {
         System.out.println("당첨 번호를 입력해 주세요");
     }
 
-    public void printInputBonusNumberMessage() {
+    private void inputBonusNumberMessage() {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
     public List<Integer> input() {
-        printInputWinningNumberMessage();
+        inputWinningNumberMessage();
 
         List<Integer> winningNumbers = new ArrayList<>();
         String inputNumber = Console.readLine();
@@ -31,7 +31,7 @@ public class WinningNumbers {
     }
 
     public int inputBonusNumber() {
-        printInputBonusNumberMessage();
+        inputBonusNumberMessage();
 
         int bonusNumber = Integer.parseInt(Console.readLine());
 
@@ -46,7 +46,7 @@ public class WinningNumbers {
         }
     }
 
-    public void inputDuplicationException(List<Integer> winning, int number) {
+    private void inputDuplicationException(List<Integer> winning, int number) {
         if (winning.contains(number)) {
             throw new IllegalArgumentException("[ERROR] 중복되는 수를 입력할 수 없습니다.");
         }
