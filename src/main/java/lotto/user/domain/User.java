@@ -24,6 +24,16 @@ public class User {
     public List<List<Integer>> getLottos() {
         return lottos;
     }
+    public int getInputMoney() {
+        return inputMoney;
+    }
+    public void setpurchaseAmount(int amount) {
+        this.purchaseAmount = amount;
+    }
+    public void setTicketAmount(int amount)
+    {
+        this.ticketAmount = amount ;
+    }
 
     public int getInputMoney() {
         return inputMoney;
