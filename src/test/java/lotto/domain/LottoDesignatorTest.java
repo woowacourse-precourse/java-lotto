@@ -30,4 +30,12 @@ public class LottoDesignatorTest {
         assertThatThrownBy(() -> lottoDesignator.checkDuplication(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("입력받은 로또번호가 1 ~ 45 범위에 벗어날 경우 예외가 발생한다.")
+    @Test
+    void 로또_범위_예외() {
+        String input = "1,2,3,4,5,61";
+        assertThatThrownBy(() -> lottoDesignator.checkRange(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
