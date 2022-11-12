@@ -26,9 +26,12 @@ public class UserInput {
         System.out.println();
 
         hasOnlyNumberAndComma(userInput);
+
+        List<Integer> winningNumber = stringToNumbers(userInput);
+
     }
 
-    private List<Integer> stringToNumbers(String input) {
+    private static List<Integer> stringToNumbers(String input) {
         String[] stringNumbers = input.split(",");
         List<Integer> numbers = new ArrayList<>();
         for (String number: stringNumbers) {
@@ -59,6 +62,12 @@ public class UserInput {
     private static void isDividableBy1000(int budget) {
         if (budget % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 1000으로 나누어 떨어지는 금액을 입력해 주세요.");
+        }
+    }
+
+    private static void hasSixNumbers(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 6개의 숫자를 입력해 주세요.");
         }
     }
 }
