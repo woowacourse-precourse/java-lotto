@@ -1,20 +1,22 @@
 package lotto.machine;
 
 import java.util.List;
+import lotto.ui.Input;
+import lotto.util.Convertor;
 import lotto.util.Validator;
 
 public class Winner {
     private final Integer bonusNumber;
     private final Lotto winningNumbers;
 
-    public Winner(List<Integer> winningNumbers, Integer bonusNumber) {
-        this.winningNumbers = new Lotto(winningNumbers);
+    public Winner(String winningNumbers, String bonusNumber) {
+        this.winningNumbers = new Lotto(Convertor.separate(winningNumbers));
+        this.bonusNumber = Convertor.toNumericValue(bonusNumber);
         Validator.checkIfWinningNumbersContainBonusNumber(
-                winningNumbers,
-                bonusNumber
+                this.winningNumbers.getLottoNumbers(),
+                this.bonusNumber
         );
-        Validator.checkRange(bonusNumber);
-        this.bonusNumber = bonusNumber;
+        Validator.checkRange(this.bonusNumber);
     }
 
     public List<Integer> getWinningNumbers() {

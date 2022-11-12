@@ -2,6 +2,7 @@ package lotto.util;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.machine.Lotto;
 
 public class Convertor {
     private final static String COMMA = ",";
@@ -18,13 +19,11 @@ public class Convertor {
         String[] argSplitted = arg.split(COMMA);
         Validator.checkFormat(argSplitted);
 
-        List<Integer> valueConverted = new ArrayList<>();
+        List<Integer> numbers = new ArrayList<>();
         for (String element : argSplitted) {
-            Validator.checkIfNumeric(element);
-            Integer numericValue = Integer.valueOf(element);
-            valueConverted.add(numericValue);
+            numbers.add(toNumericValue(element));
         }
-        return valueConverted;
+        return numbers;
     }
 
     public static Integer toNumericValue(String arg) {

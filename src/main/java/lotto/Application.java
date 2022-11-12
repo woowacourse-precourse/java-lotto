@@ -12,17 +12,12 @@ import lotto.util.Convertor;
 public class Application {
     public static void main(String[] args) {
         try {
-            String payment = Input.payment();
-            Integer purchasePrice = Convertor.toPurchasePrice(payment);
-
+            Integer purchasePrice = Convertor.toPurchasePrice(Input.payment());
             Tickets tickets = new Tickets(purchasePrice);
             List<List<Integer>> lottoTickets = tickets.getTickets();
             Output.purchaseSuccessful(purchasePrice, lottoTickets);
 
-            List<Integer> winningNumbers = Convertor.separate(Input.winningNumbers());
-            Integer bonusNumber = Convertor.toNumericValue(Input.bonusNumber());
-            Winner winner = new Winner(winningNumbers, bonusNumber);
-
+            Winner winner = new Winner(Input.winningNumbers(), Input.bonusNumber());
             Profit profit = new Profit(
                     lottoTickets,
                     winner.getWinningNumbers(),
