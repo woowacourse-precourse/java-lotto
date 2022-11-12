@@ -31,17 +31,28 @@ public class Domain {
         }
     }
 
+    public void validateOverlapping(String input) {
+        for (int i = 0; i < input.length(); i++) {
+            for (int j = i + 1; j <input.length(); j++) {
+                if (input.charAt(i) == input.charAt(j)) {
+                    throw new IllegalArgumentException("중복된 숫자 없이 입력해야 합니다.");
+                }
+            }
+        }
+    }
+
     public void validateWinningNumberInput(String input) {
         List<String> winningNumbers = new ArrayList<>(Arrays.asList(input.split(",")));
         if (winningNumbers.size() != 6) {
-            throw new IllegalArgumentException("여섯 개의 숫자를 ,로 구분하여 입력해야합니다.");
+            throw new IllegalArgumentException("여섯 개의 숫자를 ,로 구분하여 입력해야 합니다.");
         }
-        for (String number : winningNumbers) {
-            try {
+        validateOverlapping(input);
+        try {
+            for (String number : winningNumbers) {
                 validateNumberRange(number);
-            } catch (IllegalArgumentException e) {
-                throw e;
             }
+        } catch (IllegalArgumentException e) {
+            throw e;
         }
     }
 
