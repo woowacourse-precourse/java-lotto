@@ -1,7 +1,5 @@
 package constant;
 
-import lotto.PrizeSearchTool;
-
 import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,12 +23,20 @@ public enum Prize {
 
     static final Map<Integer, Map<Boolean, Prize>> matchPrize = new HashMap<>();
 
+    static {
+        for (Prize prize : Prize.values()) {
+            int match = prize.getMatch();
+            Map<Boolean, Prize> booleanPrize = matchPrize.getOrDefault(match, new HashMap<>());
+            booleanPrize.put(prize.isBonus(), prize);
+            matchPrize.put(match, booleanPrize);
+        }
+    }
+
     Prize(int match, boolean bonus, int money) {
         this.match = match;
         this.bonus = bonus;
         this.money = money;
         this.description = writeDescription();
-        updateSearchTool(this);
     }
 
     private String writeDescription() {
@@ -43,13 +49,6 @@ public enum Prize {
         }
 
         return "";
-    }
-
-    private static void updateSearchTool(Prize prize) {
-        int match = prize.getMatch();
-        Map<Boolean, Prize> booleanPrize = matchPrize.getOrDefault(match, new HashMap<>());
-        booleanPrize.put(prize.isBonus(), prize);
-        matchPrize.put(match, booleanPrize);
     }
 
     public static Prize search(int match, boolean bonus) {
