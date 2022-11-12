@@ -9,7 +9,7 @@ import static lotto.domain.ErrorMessage.*;
 public class Lotto {
     static final int MINIMUM_NUMBER = 1;
     static final int MAXIMUM_NUMBER = 45;
-    static final int NUMBER_SIZE = 6;
+    static final int NUMBERS_SIZE = 6;
 
     private final List<Integer> numbers;
 
@@ -32,14 +32,14 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != NUMBER_SIZE) {
-            throw new IllegalArgumentException(LOTTO_NUMBER_SIZE_ERROR_MESSAGE);
+        if (numbers.size() != NUMBERS_SIZE) {
+            throw new IllegalArgumentException(LOTTO_NUMBERS_SIZE_ERROR_MESSAGE);
         }
     }
 
     private void validateDuplication(List<Integer> numbers) {
         Set<Integer> numberStorage = new HashSet<>(numbers);
-        if (numberStorage.size() != NUMBER_SIZE) {
+        if (numberStorage.size() != NUMBERS_SIZE) {
             throw new IllegalArgumentException(LOTTO_NUMBER_DUPLICATE_ERROR_MESSAGE);
         }
     }
