@@ -36,7 +36,9 @@ public class Emcee {
     }
 
     public void guideBonusNumber() {
-
+        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println("보너스 번호는 당첨 번호와 중복되지 않는 1부터 45 사이의 숫자입니다.");
+        System.out.println("하나의 보너스 번호만 입력해 주세요.");
     }
 
     public void showResultOfLottoGame() {
