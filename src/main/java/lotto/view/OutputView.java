@@ -14,7 +14,7 @@ public class OutputView {
     private static final String LOTTO_RESULT_STARTING_MESSAGE = "당첨 통계\n---";
     private static final String LOTTO_RANKING_MESSAGE = "%d개 일치 (%s원) - %d개";
     private static final String LOTTO_SECOND_RANKING_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
-    private static final String LOTTO_RETURN_RATE_MESSAGE = "총 수익률은 %.2f%입니다.";
+    private static final String LOTTO_RETURN_RATE_MESSAGE = "총 수익률은 %.1f%%입니다.";
 
     public static void printNumberOfIssuedLotto(int lottoNumbers) {
         printEmptyLine();
@@ -36,7 +36,8 @@ public class OutputView {
     }
 
     public static void printReturnRate(double returnRate) {
-        System.out.println(String.format(LOTTO_RETURN_RATE_MESSAGE, returnRate));
+        double result = returnRate * 100;
+        System.out.println(String.format(LOTTO_RETURN_RATE_MESSAGE, result));
     }
 
     public static void printEmptyLine() {
@@ -77,10 +78,12 @@ public class OutputView {
 
     private static void printLotto(LottoRanking lottoRanking, int count) {
         String messageFrame = LOTTO_RANKING_MESSAGE;
+        if (lottoRanking == LottoRanking.MISS) {
+            return;
+        }
         if (lottoRanking == LottoRanking.SECOND) {
             messageFrame = LOTTO_SECOND_RANKING_MESSAGE;
         }
-
         String Reward = makeMoneyString(lottoRanking.getReward());
         System.out.println(String.format(messageFrame,
                 (int) lottoRanking.getSameNumber(),
