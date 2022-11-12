@@ -93,4 +93,20 @@ class LottoDrawTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 로또 당첨 번호는 1 ~ 45 범위입니다.");
     }
+
+//    @Test
+//    void compareLotteries() {
+//        ByteArrayInputStream in = new ByteArrayInputStream("10,20,31,42,15,6\n12".getBytes());
+//        System.setIn(in);
+//
+//        LottoBuyer lottoBuyer = new LottoBuyer(1000);
+//        LottoDraw lottoDraw = new LottoDraw(lottoBuyer);
+//
+//        List<Lotto> lotteries = lottoBuyer.getLotteries();
+//        for (Lotto lotto : lotteries) {
+//            System.out.println(lotto.getNumbers());
+//        }
+//
+//        System.out.println(lottoDraw.getNumberOfMatching());
+//    }
 }

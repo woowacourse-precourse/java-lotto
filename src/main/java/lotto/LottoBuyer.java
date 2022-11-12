@@ -18,8 +18,21 @@ public class LottoBuyer {
         int totalLottoCount = this.cost / 1000;
 
         for (int cnt = 0; cnt < totalLottoCount; cnt++) {
-            lotteries.add(buyLotto());
+            lotteries.add(buyRandomLotto());
         }
+    }
+
+    public LottoBuyer(int cost, List<List<Integer>> numbersList) {
+        costValidate(cost);
+        this.cost = cost;
+
+        int totalLottoCount = this.cost / 1000;
+
+        for (int cnt = 0; cnt < totalLottoCount; cnt++) {
+            List<Integer> numbers = numbersList.get(cnt);
+            lotteries.add(buyLotto(numbers));
+        }
+
     }
 
 
@@ -29,11 +42,18 @@ public class LottoBuyer {
         }
     }
 
-    public Lotto buyLotto() {
+    public Lotto buyRandomLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         numbers.sort(Comparator.naturalOrder());
 
         return new Lotto(numbers);
+    }
+
+    public Lotto buyLotto(List<Integer> numbers) {
+        List<Integer> sortedNumbers = new ArrayList<>(numbers);
+        sortedNumbers.sort(Comparator.naturalOrder());
+
+        return new Lotto(sortedNumbers);
     }
 
     public int getCost() {

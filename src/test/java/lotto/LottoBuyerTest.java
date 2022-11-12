@@ -37,14 +37,28 @@ class LottoBuyerTest {
     }
 
     @Test
-    void buyLotto() {
+    void buyRandomLotto() {
         LottoBuyer lottoBuyer = new LottoBuyer(12000);
 
-        Lotto lotto = lottoBuyer.buyLotto();
+        Lotto lotto = lottoBuyer.buyRandomLotto();
 
         System.out.println(lotto.getNumbers());
 
         assertThat(lotto.getNumbers().size()).isEqualTo(6);
+
+    }
+
+    @Test
+    void buyLotto() {
+        LottoBuyer lottoBuyer = new LottoBuyer(2000, List.of(
+                List.of(1, 3, 5, 7, 11, 9),
+                List.of(2, 4, 6, 8, 12, 10)
+        ));
+
+        Lotto lotto = lottoBuyer.buyLotto(List.of(1, 3, 5, 7, 11, 9));
+
+        assertThat(lotto.getNumbers().size()).isEqualTo(6);
+        assertThat(lotto.getNumbers()).containsExactly(1, 3, 5, 7, 9, 11);
 
     }
 

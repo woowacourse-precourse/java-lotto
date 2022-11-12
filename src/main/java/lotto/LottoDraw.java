@@ -57,12 +57,19 @@ public class LottoDraw {
         }
     }
 
-//    public List<Integer> compareLotteries() {
+//    public void compareLotteries() {
 //        List<Lotto> lotteries = lottoBuyer.getLotteries();
 //        for (Lotto lotto : lotteries) {
 //            List<Integer> lottoNumbers = lotto.getNumbers();
+//            boolean bonusNumberMatched = lottoNumbers.contains(bonusNumber);
 //            lottoNumbers.retainAll(winningNumbers);
+//            int matched = lottoNumbers.size();
 //
+//            if (matched == 5 && bonusNumberMatched) {
+//                matched = BONUS_NUMBER_MATCHED;
+//            }
+//
+//            numberOfMatching.put(matched, numberOfMatching.get(matched) + 1);
 //        }
 //    }
 
