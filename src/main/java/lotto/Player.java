@@ -7,6 +7,7 @@ public class Player {
 
     private Lotto winningNumber;
     private List<Lotto> lottos;
+    private int bonusNumber;
 
     public int putMoneyforLotto(String money){
         int totalPayment;
@@ -34,5 +35,8 @@ public class Player {
             lottos.add(lottoCreator.createRandomLotto());
         }
         this.lottos = lottos;
+    }
+    public void setBonusNumber(int numbers){
+        this.bonusNumber = numbers;
     }
 }
