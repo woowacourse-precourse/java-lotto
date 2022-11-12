@@ -41,8 +41,8 @@ public class LotteryController {
         return computerView.getNumbers();
     }
 
-    private void insertWinningLottery(){
-
+    private void insertWinningLottery(String winningLottoNumber){
+        computer.saveWinningTicket(winningLottoNumber);
     }
 
     private String typeWinningBonusNumber(){
