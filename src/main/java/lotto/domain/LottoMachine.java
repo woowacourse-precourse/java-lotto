@@ -10,7 +10,7 @@ public class LottoMachine {
     private static final int LOTTO_PRICE = 1000;
     private static final int MIN_LOTTO_NUMBER = 1;
     private static final int MAX_LOTTO_NUMBER = 45;
-    private static final int COUNT_LOTTO_NUMBER = 6;
+    private static final int LOTTO_NUMBER_SIZE = 6;
 
     final List<Lotto> lottos = new ArrayList<>();
 
@@ -24,6 +24,6 @@ public class LottoMachine {
     }
 
     private List<Integer> createLottoNumbers() {
-        return Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, COUNT_LOTTO_NUMBER);
+        return Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_NUMBER_SIZE);
     }
 }
