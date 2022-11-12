@@ -6,24 +6,9 @@ import java.util.Arrays;
 import java.util.function.Predicate;
 
 public enum LottoRanking {
-    RANKING_FIRST(
-            new BigDecimal(2_000_000_000L),
-            6L,
-            (correctBonus) -> true),
-
-    RANKING_SECOND(
-            new BigDecimal(30_000_000L),
-            5L,
-            (correctBonus) -> correctBonus),
-
-    RANKING_THIRD(
-            new BigDecimal(1_500_000L),
-            5,
-            (correctBonus) -> !correctBonus),
-
-    RANKING_FOURTH(
-            new BigDecimal(50_000L),
-            4L,
+    RANKING_NOTHING(
+            new BigDecimal(0L),
+            0L,
             (correctBonus) -> true),
 
     RANKING_FIFTH(
@@ -31,12 +16,27 @@ public enum LottoRanking {
             3L,
             (correctBonus) -> true),
 
-    RANKING_NOTHING(
-            new BigDecimal(0L),
-            0L,
+    RANKING_FOURTH(
+            new BigDecimal(50_000L),
+            4L,
+            (correctBonus) -> true),
+
+    RANKING_THIRD(
+            new BigDecimal(1_500_000L),
+            5L,
+            (correctBonus) -> !correctBonus),
+
+    RANKING_SECOND(
+            new BigDecimal(30_000_000L),
+            5L,
+            (correctBonus) -> correctBonus),
+
+    RANKING_FIRST(
+            new BigDecimal(2_000_000_000L),
+            6L,
             (correctBonus) -> true);
 
-    private static final DecimalFormat rewardFormat = new DecimalFormat("(###,###)원");
+    private static final DecimalFormat rewardFormat = new DecimalFormat("(###,###원)");
 
     private final BigDecimal lottoRankingReward;
     private final long correctNumberCount;
