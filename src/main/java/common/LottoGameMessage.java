@@ -41,4 +41,8 @@ public class LottoGameMessage {
         System.out.println(WINNING_LOTTO_FIVE_BONUS_MESSAGE + player.getWinningLottoCount().getOrDefault(LottoRank.WIN_LOTTO_5_BONUS,0));
         System.out.println(WINNING_LOTTO_SIX_MESSAGE + player.getWinningLottoCount().getOrDefault(LottoRank.WIN_LOTTO_6,0));
     }
+    public void printPlayerLottoYield(Player player){
+        double yield = Math.round(player.getLottoRevenue()/player.getLottoPrice() * 100);
+        Constant.PLAYER_YIELD_MESSAGE(yield);
+    }
 }
