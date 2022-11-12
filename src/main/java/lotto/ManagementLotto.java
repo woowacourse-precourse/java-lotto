@@ -2,10 +2,13 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.constant.LottoEnum;
 
 public class ManagementLotto {
+    private final ValidInput validInput = new ValidInput();
     public List<Lotto> purchase(Integer amount) {
         List<Lotto> lottos = new ArrayList<>();
 
@@ -24,8 +27,26 @@ public class ManagementLotto {
         return new Lotto(lottoNumber);
     }
 
-    public void makeWinNumber() {
+    public List<Integer> makeWinNumber(String input) {
+        // List<Integer> winLottoNumber = new ArrayList<>();
+        List<Integer> inputNumberList = Arrays.stream(input.split(",")).map(Integer::parseInt)
+                .collect(Collectors.toList());
+        validInput.validInputLength(inputNumberList);
 
+        for (Integer number : inputNumberList) {
+            validInput.validIsInputInRange(number);
+        }
+
+        validInput.validInputHasDuplicatedNumber(inputNumberList);
+
+        return inputNumberList;
+    }
+
+    public Integer makeBonusNumber(String input) {
+        Integer bonusNumber = Integer.parseInt(input);
+        validInput.validIsInputInRange(bonusNumber);
+
+        return bonusNumber;
     }
 
     public void checkLottoNumber() {
