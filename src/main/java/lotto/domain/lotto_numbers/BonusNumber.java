@@ -22,11 +22,4 @@ public class BonusNumber {
     public boolean isIn(Lotto lotto) {
         return lotto.contains(bonusNumber);
     }
-
-    public int matchCount(Lotto lotto) {
-        if (this.isIn(lotto)) {
-            return 1;
-        }
-        return 0;
-    }
 }

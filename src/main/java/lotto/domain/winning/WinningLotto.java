@@ -26,49 +26,44 @@ public class WinningLotto {
         }
     }
 
-    public LottoResults lottoResults(List<Lotto> purchasedLottos) {
+    public LottoResults lottoResults(List<Lotto> purchasedLottoTickets) {
         Map<LottoRanking, Integer> results = new EnumMap<>(LottoRanking.class);
         Arrays.stream(LottoRanking.values())
                 .forEach(lottoRanking -> results.put(lottoRanking, 0));
 
-        judgeWinning(purchasedLottos, results);
+        judgeWinning(purchasedLottoTickets, results);
 
         return new LottoResults(results);
     }
 
-    private void judgeWinning(List<Lotto> purchasedLottos, Map<LottoRanking, Integer> results) {
-        for (Lotto purchasedLotto : purchasedLottos) {
-            final int MIN_NUMBER_FOR_WINNING = 3;
-            int matchCountsOfNumber = winningNumber.matchNumberCounts(purchasedLotto);
-            if (matchCountsOfNumber < MIN_NUMBER_FOR_WINNING) {
+    private void judgeWinning(List<Lotto> purchasedLottoTickets,
+            Map<LottoRanking, Integer> results) {
+        final int MIN_NUMBER_FOR_WINNING = 3;
+        for (Lotto purchasedLotto : purchasedLottoTickets) {
+            int countsOfMatchingNumber = winningNumber.countsOfMatchingNumber(purchasedLotto);
+            if (countsOfMatchingNumber < MIN_NUMBER_FOR_WINNING) {
                 continue;
             }
 
-            int matchCountOfBonusNumber = 0;
-            if (matchCountsOfNumber == 5) {
-                matchCountOfBonusNumber = bonusNumber.matchCount(purchasedLotto);
-            }
-
-            addResults(matchCountsOfNumber, matchCountOfBonusNumber, results);
+            judgeLottoRankings(countsOfMatchingNumber, purchasedLotto, results);
         }
     }
 
-    private void addResults(int matchCountsOfNumber, int matchCountOfBonusNumber,
+    private void judgeLottoRankings(int countsOfMatchingNumber, Lotto purchasedLotto,
             Map<LottoRanking, Integer> results) {
-        if (isSecondRankings(matchCountsOfNumber, matchCountOfBonusNumber)) {
+        boolean isMatchedBonusNumber = bonusNumber.isIn(purchasedLotto);
+        if (isSecondRankings(countsOfMatchingNumber, isMatchedBonusNumber)) {
             results.put(LottoRanking.SECOND, results.get(LottoRanking.SECOND) + 1);
             return;
         }
 
-        matchRankings(matchCountsOfNumber, results);
-    }
-
-    private void matchRankings(int matchCountsOfNumber, Map<LottoRanking, Integer> results) {
-        LottoRanking lottoRanking = LottoRanking.lottoRanking(matchCountsOfNumber);
+        LottoRanking lottoRanking = LottoRanking.lottoRanking(countsOfMatchingNumber);
         results.put(lottoRanking, results.get(lottoRanking) + 1);
     }
 
-    private boolean isSecondRankings(int matchCountsOfNumber, int matchCountOfBonusNumber) {
-        return matchCountsOfNumber == 5 && matchCountOfBonusNumber == 1;
+    private boolean isSecondRankings(int countsOfMatchingNumber, boolean isMatchedBonusNumber) {
+        final int MATCH_NUMBER_FOR_SECOND_OR_THIRD = 5;
+        return countsOfMatchingNumber == MATCH_NUMBER_FOR_SECOND_OR_THIRD
+                && isMatchedBonusNumber;
     }
 }
