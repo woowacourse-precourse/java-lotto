@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static lotto.dto.LottosResponseDto.*;
+import static lotto.dto.LottoResponseDtos.*;
 
 public class Lotto {
 

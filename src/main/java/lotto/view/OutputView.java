@@ -1,13 +1,13 @@
 package lotto.view;
 
 import lotto.dto.GameResultResponseDtos;
-import lotto.dto.LottosResponseDto;
+import lotto.dto.LottoResponseDtos;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
 import static lotto.dto.GameResultResponseDtos.*;
-import static lotto.dto.LottosResponseDto.*;
+import static lotto.dto.LottoResponseDtos.*;
 
 public class OutputView {
 
@@ -31,7 +31,7 @@ public class OutputView {
         System.out.println(INPUT_PURCHASE_PRICE_MESSAGE);
     }
 
-    public static void printPurchaseLottos(LottosResponseDto responseDto) {
+    public static void printPurchaseLottos(LottoResponseDtos responseDto) {
         List<LottoResponseDto> lottoResponseDtos = responseDto.getLottoResponseDtos();
         printLottoCount(lottoResponseDtos.size());
 

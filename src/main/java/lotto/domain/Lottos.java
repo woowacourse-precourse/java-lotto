@@ -1,11 +1,11 @@
 package lotto.domain;
 
-import lotto.dto.LottosResponseDto;
+import lotto.dto.LottoResponseDtos;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static lotto.dto.LottosResponseDto.*;
+import static lotto.dto.LottoResponseDtos.*;
 
 public class Lottos {
 
@@ -23,8 +23,8 @@ public class Lottos {
         return lottos.size();
     }
 
-    public LottosResponseDto toResponseDto() {
-        return new LottosResponseDto(mapToLottoResponseDtos());
+    public LottoResponseDtos toResponseDto() {
+        return new LottoResponseDtos(mapToLottoResponseDtos());
     }
 
     private List<LottoResponseDto> mapToLottoResponseDtos() {

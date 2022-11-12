@@ -2,7 +2,7 @@ package lotto.service;
 
 import lotto.domain.*;
 import lotto.dto.GameResultResponseDtos;
-import lotto.dto.LottosResponseDto;
+import lotto.dto.LottoResponseDtos;
 
 import java.util.List;
 
@@ -19,8 +19,8 @@ public class LottoGameService {
         answer = new Answer(answers, bonusNumber);
     }
 
-    public LottosResponseDto getPurchaseLottos() {
-        return player.toLottosResponseDto();
+    public LottoResponseDtos getPurchaseLottos() {
+        return player.toLottoResponseDtos();
     }
 
     public GameResultResponseDtos playGame() {

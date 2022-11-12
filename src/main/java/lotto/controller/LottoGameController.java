@@ -2,7 +2,7 @@ package lotto.controller;
 
 import lotto.domain.LottoValidationUtils;
 import lotto.dto.GameResultResponseDtos;
-import lotto.dto.LottosResponseDto;
+import lotto.dto.LottoResponseDtos;
 import lotto.service.LottoGameService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -34,9 +34,9 @@ public class LottoGameController {
         return InputView.inputPurchasePrice();
     }
 
-    private void printLottos(LottosResponseDto lottosResponseDto) {
+    private void printLottos(LottoResponseDtos lottoResponseDtos) {
         OutputView.printBlankLine();
-        OutputView.printPurchaseLottos(lottosResponseDto);
+        OutputView.printPurchaseLottos(lottoResponseDtos);
     }
 
     private List<Integer> inputAnswerNumbers() {

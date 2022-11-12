@@ -2,7 +2,7 @@ package lotto.dto;
 
 import java.util.List;
 
-public class LottosResponseDto {
+public class LottoResponseDtos {
 
     private final List<LottoResponseDto> lottoResponseDtos;
 
@@ -19,7 +19,7 @@ public class LottosResponseDto {
         }
     }
 
-    public LottosResponseDto(List<LottoResponseDto> lottoResponseDtos) {
+    public LottoResponseDtos(List<LottoResponseDto> lottoResponseDtos) {
         this.lottoResponseDtos = lottoResponseDtos;
     }
 

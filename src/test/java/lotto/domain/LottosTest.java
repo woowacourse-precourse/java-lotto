@@ -1,13 +1,13 @@
 package lotto.domain;
 
-import lotto.dto.LottosResponseDto;
+import lotto.dto.LottoResponseDtos;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.dto.LottosResponseDto.LottoResponseDto;
+import static lotto.dto.LottoResponseDtos.LottoResponseDto;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class LottosTest {
@@ -18,7 +18,7 @@ public class LottosTest {
         List<List<Integer>> lottoNumbers = createSortTestLottoNumbers();
 
         Lottos lottos = LottosCreator.create(3000, lottoNumbers);
-        LottosResponseDto purchaseLottos = lottos.toResponseDto();
+        LottoResponseDtos purchaseLottos = lottos.toResponseDto();
         List<LottoResponseDto> responseDtos = purchaseLottos.getLottoResponseDtos();
         List<List<Integer>> answer = createAnswer();
 

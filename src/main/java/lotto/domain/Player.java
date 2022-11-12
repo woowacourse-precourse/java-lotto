@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import lotto.dto.GameResultResponseDtos;
-import lotto.dto.LottosResponseDto;
+import lotto.dto.LottoResponseDtos;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class Player {
         return answer.compare(lottos);
     }
 
-    public LottosResponseDto toLottosResponseDto() {
+    public LottoResponseDtos toLottoResponseDtos() {
         return lottos.toResponseDto();
     }
 }
