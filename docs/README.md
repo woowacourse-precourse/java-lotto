@@ -58,7 +58,7 @@ List<Lotto>, Profit, Winning을 참조한다.
 3. getPlayersProfit : Profit.getProfit을 리턴한다. 
 4. addLottoRanking
    1. addPlayersTicketRank : Winning.addRankingOfPlayer해준다. 
-   2. addProfitOfTicket : 당첨 등급에 따른 금액을 Profit.addPrice해준다. 
+   2. addPriceOfTicket : ChangeLottoPriceService를 통해 랭킹을 금액으로 바꾸어 당첨금액을 누적시킨다.  
 5. getPlayerLotto : 플레이어의 로또 리스트를 반환한다. 
 
 ### Computer
@@ -81,7 +81,15 @@ Lotto, BonusNumber를 참조한다.
       2. separateByBonusNumber
          1. containsBonusNumber : 로또가 보너스 넘버를 가지면 참을 반환한다.
 2. makePlayerLottoByPayment : 플레이어.checkPayment한다. 
-3. saveComputerNumber : 로또번호와 보너스 번호를 입력받아 컴퓨터 객체에 저장한다. 
+3. saveComputerNumber : 로또번호와 보너스 번호를 입력받아 컴퓨터 객체에 저장한다.
+
+### ChangeLottoPriceService
+1. changeRankingToPrice
+   1. isThreeMatch : enum타입이 THREE_MATCH 면 참을 반환
+   2. isFourMatch : enum타입이 FOUR_MATCH 면 참을 반환
+   3. isFiveMatch : enum타입이 FIVE_MATCH 면 참을 반환
+   4. isFiveMatchWithBonusNumber : enum타입이 FIVE_MATCH_WITH_BONUS_NUMBER 면 참을 반환
+   5. isSixMatch : enum타입이 SIX_MATCH 면 참을 반환
 
 ## 뷰
 ### PlayerView
