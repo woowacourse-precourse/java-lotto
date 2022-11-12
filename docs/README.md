@@ -54,7 +54,16 @@
 - 수익률을 출력하는 기능[o]
 
 ### 입력 기능
-- 구입 금액을 입력하는 기능[]
+- 구입 금액을 입력하는 기능[o]
 - 로또를 입력하는 기능[]
 - 당첨 번호를 입력하는 기능[]
 - 보너스 번호를 입력하는 기능[]
+
+To do list
+1. 입력 기능 다 구현
+2. controller 구현
+3. application test 확인
+4. service에 getter 없애기
+5. gameResult list 반환하는 로직 정렬해서 반환하는 로직으로 리팩토링
+6. Player validation 로직 분리할지
+7. OutView 메시지 따로 분리할지
