@@ -47,7 +47,7 @@ public class Lotto {
         return lottoTickets;
     }
 
-    public static void printNumbers(List<List<Integer>> lottoTickets{
+    public static void printNumbers(List<List<Integer>> lottoTickets){
         for (int i=0; i<lottoTickets.size(); i++){
             System.out.println(lottoTickets.get(i));
         }
@@ -118,8 +118,8 @@ public class Lotto {
         sum += result[2] * 1500000;
         sum += result[3] * 50000;
         sum += result[4] * 5000;
-        double profit = sum / (tickets*1000) * 100;
-        String information = String.format("총 수익률은 %.2f입니다.", profit);
+        double profit = sum / (double)(tickets*1000) *100.0;
+        String information = String.format("총 수익률은 %.1f%%입니다.", profit);
         System.out.println(information);
     }
     // TODO: 추가 기능 구현
