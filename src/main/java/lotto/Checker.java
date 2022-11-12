@@ -1,6 +1,6 @@
 package lotto;
 
-import enumCollections.PrizeRank;
+import enumCollections.RankIndex;
 import enumCollections.RankNumber;
 import enumCollections.Winnings;
 
@@ -13,20 +13,31 @@ public class Checker extends Kiosk {
     static final int FOURTH_PRIZE_COUNT = 4;
     static final int FIFTH_PRIZE_COUNT = 3;
 
-    static HashMap<Integer, PrizeRank> countMatchingPrizes = new HashMap<>() {
+    static HashMap<Integer, RankIndex> countMatchingPrizes = new HashMap<>() {
         {
-            put(FIRST_PRIZE_COUNT, PrizeRank.FIRST);
-            put(THIRD_PRIZE_COUNT, PrizeRank.THIRD);
-            put(FOURTH_PRIZE_COUNT, PrizeRank.FOURTH);
-            put(FIFTH_PRIZE_COUNT, PrizeRank.FIFTH);
+            put(FIRST_PRIZE_COUNT, RankIndex.FIRST);
+            put(THIRD_PRIZE_COUNT, RankIndex.THIRD);
+            put(FOURTH_PRIZE_COUNT, RankIndex.FOURTH);
+            put(FIFTH_PRIZE_COUNT, RankIndex.FIFTH);
         }
     };
+
+    public HashMap<Integer, Integer> initializeNumberMatchingRanks() {
+        HashMap<Integer, Integer> countMatchingPrizes = new HashMap<>();
+        for (RankNumber rank : RankNumber.values()) {
+            countMatchingPrizes.put(
+                    RankNumber.getRankNumber(rank),
+                    RankIndex.getRankIndex(rank.name())
+            );
+        }
+        return countMatchingPrizes;
+    }
 
     public static void compare(List<Lotto> buyerLottos) {
         for (Lotto lotto : buyerLottos) {
             Enum lottoRank = getRank(countSameNumbers(lotto));
-            if (lottoRank.equals(PrizeRank.THIRD) && hasBonusNumber(lotto)) {
-                lottoRank = PrizeRank.SECOND;
+            if (lottoRank.equals(RankIndex.THIRD) && hasBonusNumber(lotto)) {
+                lottoRank = RankIndex.SECOND;
             }
             resultStatistics[lottoRank.ordinal()]++;
         }
@@ -60,7 +71,7 @@ public class Checker extends Kiosk {
 
     public static int getTotalWinnings() {
         int totalWinnings = 0;
-        for (PrizeRank rank : PrizeRank.values()) {
+        for (RankIndex rank : RankIndex.values()) {
             totalWinnings += resultStatistics[rank.ordinal()] * Winnings.getAmount(rank.name());
         }
         return totalWinnings;
