@@ -1,7 +1,9 @@
-package lotto;
+package lotto.consumer;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.Matcher;
+import lotto.machine.Ranks;
 
 public class Profit {
     private final List<Integer> profit;

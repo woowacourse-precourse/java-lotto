@@ -1,7 +1,8 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.List;
+import lotto.consumer.Profit;
+import lotto.consumer.Statistics;
 import lotto.machine.Tickets;
 import lotto.ui.Input;
 
@@ -24,9 +25,8 @@ public class Application {
                     winner.getWinningNumbers(),
                     winner.getBonusNumber()
             );
-
-            Result matchingResult = new Result(profit.getProfit());
-            Output.statistics(purchasePrice, matchingResult.getStatistics());
+            Statistics statistics = new Statistics(profit.getProfit());
+            Output.statistics(purchasePrice, statistics.getStatistics());
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());
         }

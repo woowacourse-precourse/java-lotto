@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.List;
 import java.util.Map;
+import lotto.machine.Ranks;
 
 import static lotto.Constants.*;
 
@@ -28,17 +29,18 @@ public class Output {
 
         double totalProfit = 0;
         for (Map.Entry<Integer, Integer> entry : statistics.entrySet()) {
-            printWinCount(entry.getKey(), entry.getValue());
+            printWinCount(entry.getValue());
             totalProfit += (entry.getKey() * entry.getValue());
         }
         printReturnOnInvestment(purchasePrice, totalProfit);
     }
 
-    private static void printWinCount(Integer prizeMoney, Integer winCount) {
+    private static void printWinCount(Integer winCount) {
         String countUnit = " - %d개\n";
-        Ranks rank = Ranks.getRankBy(prizeMoney);
-        String message = rank.getMessage() + countUnit;
-        System.out.printf(message, winCount);
+        for (Ranks ranks : Ranks.values()) {
+            String message = ranks.getMessage() + countUnit;
+            System.out.printf(message, winCount);
+        }
     }
 
     private static void printReturnOnInvestment(Integer purchasePrice, double totalProfit) {

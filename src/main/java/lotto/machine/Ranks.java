@@ -1,4 +1,4 @@
-package lotto;
+package lotto.machine;
 
 import java.util.Arrays;
 
@@ -52,13 +52,6 @@ public enum Ranks {
             }
         }
         return 0;
-    }
-
-    public static Ranks getRankBy(Integer prizeMoney) {
-        return Arrays.stream(Ranks.values())
-                .filter(rank -> rank.prizeMoney == prizeMoney)
-                .findFirst()
-                .orElse(null);
     }
 }
 
