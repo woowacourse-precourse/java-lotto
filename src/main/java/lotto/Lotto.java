@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
+    private Integer bonusNumber;
 
     public Lotto(List<Integer> numbers) {
         validateSize(numbers);
@@ -19,6 +20,10 @@ public class Lotto {
 
     public void sort() {
         numbers.sort(Comparator.naturalOrder());
+    }
+
+    public void setBonusNumber(Integer bonusNumber) {
+        this.bonusNumber = bonusNumber;
     }
 
     public List<Integer> getNumbers() {
@@ -32,8 +37,14 @@ public class Lotto {
     }
 
     private void validateDuplicate(List<Integer> numbers) {
-        if(numbers.size() != numbers.stream().distinct().count()){
-            System.out.println("[ERROR]중복되는 번호는 입력할 수 없습니다.");
+        if (numbers.size() != numbers.stream().distinct().count()) {
+            throw new IllegalArgumentException("[ERROR]중복되는 번호는 입력할 수 없습니다.");
+        }
+    }
+
+    private void validateBonusNumberDuplicate(Integer bonusNumber) {
+        if (this.numbers.contains(bonusNumber)){
+            throw new IllegalArgumentException("[ERROR]보너스 번호가 기존 당첨 번호와 중복됩니다.");
         }
     }
 
