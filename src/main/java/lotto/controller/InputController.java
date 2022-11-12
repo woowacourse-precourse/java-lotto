@@ -1,7 +1,9 @@
 package lotto.controller;
 
-import lotto.domain.UserPrice;
-import lotto.domain.WinnerNumber;
+import static lotto.util.ValidUtil.*;
+
+import lotto.controller.dto.UserPriceDto;
+import lotto.controller.dto.WinnerNumberDto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -15,39 +17,39 @@ public class InputController {
 		this.outputView = outputView;
 	}
 
-	public UserPrice getUserMoneyNumber() {
+	public UserPriceDto getUserMoneyNumber() {
 		String userMoney = inputView.printStart();
-		UserPrice userPrice;
+		UserPriceDto userPriceDto;
 		try {
-			userPrice = new UserPrice(userMoney);
+			userPriceDto = new UserPriceDto(validateUserMoney(userMoney));
 		} catch (IllegalArgumentException e) {
 			outputView.printError(e.getMessage());
 			return null;
 		}
-		return userPrice;
+		return userPriceDto;
 	}
 
-	public WinnerNumber getAnswerNumber() {
+	public WinnerNumberDto getAnswerNumber() {
 		String answer = inputView.printWinnerNumber();
-		WinnerNumber winnerNumber;
+		WinnerNumberDto winnerNumberDto;
 		try {
-			winnerNumber = new WinnerNumber(answer);
+			winnerNumberDto = new WinnerNumberDto(validAnswer(answer));
 		} catch (IllegalArgumentException e) {
 			outputView.printError(e.getMessage());
 			return null;
 		}
-		return winnerNumber;
+		return winnerNumberDto;
 	}
 
-	public WinnerNumber getBonusNumber(WinnerNumber winnerNumber) {
+	public WinnerNumberDto getBonusNumber(WinnerNumberDto winnerNumberDto) {
 		String bonus = inputView.bonusNumber();
 		try {
-			winnerNumber.updateBonusNumber(bonus);
+			winnerNumberDto.setBonusNumber(validateBonus(bonus));
 		} catch (IllegalArgumentException e) {
 			outputView.printError(e.getMessage());
 			return null;
 		}
-		return winnerNumber;
+		return winnerNumberDto;
 	}
 
 }

@@ -4,6 +4,7 @@ import static lotto.util.ValidUtil.*;
 
 import java.util.List;
 
+import lotto.controller.dto.WinnerNumberDto;
 import lotto.domain.dto.WinnerCountDto;
 
 public class Lotto {
@@ -20,9 +21,9 @@ public class Lotto {
 		validDuplicated(numbers);
 	}
 
-	public WinnerCountDto countWinnerCount(WinnerNumber winnerNumber) {
-		int answerCount = countAnswer(winnerNumber.getAnswerNumbers());
-		int bonusCount = countBonus(winnerNumber.getBonusNumber());
+	public WinnerCountDto countWinnerCount(WinnerNumberDto winnerNumberDto) {
+		int answerCount = countAnswer(winnerNumberDto.getAnswerNumbers());
+		int bonusCount = countBonus(winnerNumberDto.getBonusNumber());
 		return new WinnerCountDto(answerCount, bonusCount);
 	}
 

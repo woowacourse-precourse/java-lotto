@@ -1,14 +1,11 @@
-package lotto.domain;
+package lotto.controller.dto;
 
-import static lotto.util.ValidUtil.*;
-
-public class UserPrice {
+public class UserPriceDto {
 
 	private Integer inputPrice;
 	private Integer userTicketCount;
 
-	public UserPrice(String inputPrice) {
-		Integer userPrice = validateUserMoney(inputPrice);
+	public UserPriceDto(Integer userPrice) {
 		this.inputPrice = userPrice;
 		this.userTicketCount = userPrice / 1000;
 	}

@@ -1,21 +1,21 @@
 package lotto.service;
 
+import lotto.controller.dto.WinnerNumberDto;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
-import lotto.domain.WinnerNumber;
 import lotto.domain.dto.WinnerCountDto;
 import lotto.repository.dto.UserLottoDto;
 
 public class StatisticsService {
 
-	public void updateStatistics(UserLottoDto userLottoDto, WinnerNumber winnerNumber) {
+	public void updateStatistics(UserLottoDto userLottoDto, WinnerNumberDto winnerNumberDto) {
 		for (Lotto lotto : userLottoDto.getUserLotto()) {
-			updateRank(winnerNumber, lotto);
+			updateRank(winnerNumberDto, lotto);
 		}
 	}
 
-	private void updateRank(WinnerNumber winnerNumber, Lotto lotto) {
-		WinnerCountDto winnerCountDto = lotto.countWinnerCount(winnerNumber);
+	private void updateRank(WinnerNumberDto winnerNumberDto, Lotto lotto) {
+		WinnerCountDto winnerCountDto = lotto.countWinnerCount(winnerNumberDto);
 		updateRankCount(winnerCountDto);
 	}
 

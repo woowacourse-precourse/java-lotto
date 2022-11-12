@@ -1,7 +1,7 @@
 package lotto.controller;
 
-import lotto.domain.UserPrice;
-import lotto.domain.WinnerNumber;
+import lotto.controller.dto.UserPriceDto;
+import lotto.controller.dto.WinnerNumberDto;
 import lotto.repository.dto.UserLottoDto;
 import lotto.service.LottoService;
 import lotto.service.StatisticsService;
@@ -24,27 +24,27 @@ public class LottoController {
 
 	public void startApplication() {
 
-		UserPrice userPrice = inputController.getUserMoneyNumber();
-		if (isInvalidNumber(userPrice)) {
+		UserPriceDto userPriceDto = inputController.getUserMoneyNumber();
+		if (isInvalidNumber(userPriceDto)) {
 			return;
 		}
 
-		int lottoCount = userPrice.getUserTicketCount();
+		int lottoCount = userPriceDto.getUserTicketCount();
 		outputView.printLottoCount(lottoCount);
 		UserLottoDto userLottoDto = lottoService.makeRandomLottoNumber(lottoCount);
 		outputView.printUserLotto(userLottoDto.getUserLotto());
 
-		WinnerNumber winnerNumber = inputController.getAnswerNumber();
-		if (isInvalidNumber(winnerNumber.getAnswerNumbers())) {
+		WinnerNumberDto winnerNumberDto = inputController.getAnswerNumber();
+		if (isInvalidNumber(winnerNumberDto.getAnswerNumbers())) {
 			return;
 		}
-		inputController.getBonusNumber(winnerNumber);
-		if (isInvalidNumber(winnerNumber.getBonusNumber())) {
+		inputController.getBonusNumber(winnerNumberDto);
+		if (isInvalidNumber(winnerNumberDto.getBonusNumber())) {
 			return;
 		}
 
-		statisticsService.updateStatistics(userLottoDto, winnerNumber);
-		outputView.printUserStatistics(userPrice.getInputPrice());
+		statisticsService.updateStatistics(userLottoDto, winnerNumberDto);
+		outputView.printUserStatistics(userPriceDto.getInputPrice());
 
 	}
 
