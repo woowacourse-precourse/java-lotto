@@ -12,19 +12,27 @@ public class InputView {
 
     private final ValidationInView validator = new ValidationInView();
 
-    public String getPurchaseAmount(){
+    public int getPurchaseAmount(){
         System.out.println(PURCHASE_AMOUNT_INPUT_MESSAGE);
         String input = Console.readLine();
         validator.checkNumericValue(input);
-        return input;
+        return Integer.parseInt(input);
     }
 
-    public List<String> getWinningNumbers(){
+    public List<Integer> getWinningNumbers(){
         System.out.println(WINNING_NUMBERS_INPUT_MESSAGE);
         String line = Console.readLine();
         List<String> inputs = parse(line);
         validator.checkNumericValueList(inputs);
-        return inputs;
+        return convertToIntegerFromString(inputs);
+    }
+
+    private List<Integer> convertToIntegerFromString(List<String> inputs){
+        List<Integer> outputs = new ArrayList<>();
+        for(String input : inputs){
+            outputs.add(Integer.parseInt(input));
+        }
+        return outputs;
     }
 
     private List<String> parse(String line){
@@ -36,11 +44,11 @@ public class InputView {
         return inputs;
     }
 
-    public String getBonusNumber(){
+    public int getBonusNumber(){
         System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
         String input = Console.readLine();
         validator.checkNumericValue(input);
-        return input;
+        return Integer.parseInt(input);
     }
 
 }

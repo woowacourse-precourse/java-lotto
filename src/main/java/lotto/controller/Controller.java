@@ -5,7 +5,6 @@ import lotto.domain.WinningInformation;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
@@ -23,7 +22,7 @@ public class Controller {
     }
 
     private void createLottoPurchaseInformation(){
-        int purchaseAmount = Integer.parseInt(inputView.getPurchaseAmount());
+        int purchaseAmount = inputView.getPurchaseAmount();
         lottoPurchaseInformation = new LottoPurchaseInformation(purchaseAmount);
         lottoPurchaseInformation.generateLottoTickets();
     }
@@ -33,12 +32,8 @@ public class Controller {
     }
 
     private void createWinningInformation(){
-        List<String> winningNumbersInput = inputView.getWinningNumbers();
-        List<Integer> winningNumbers = new ArrayList<>();
-        for(String winningNumber : winningNumbersInput){
-            winningNumbers.add(Integer.parseInt(winningNumber));
-        }
-        int bonusNumber = Integer.parseInt(inputView.getBonusNumber());
+        List<Integer> winningNumbers = inputView.getWinningNumbers();
+        int bonusNumber = inputView.getBonusNumber();
         winningInformation = new WinningInformation(winningNumbers, bonusNumber);
     }
 
