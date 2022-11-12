@@ -9,7 +9,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import static lotto.common.NumberConstant.LOTTO_BONUS_LENGTH;
 import static lotto.domain.LottoResult.*;
 import static org.assertj.core.api.Assertions.assertThat;
 

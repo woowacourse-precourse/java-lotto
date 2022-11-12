@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static lotto.common.NumberConstant.LOTTO_BONUS_LENGTH;
+import static lotto.common.constant.NumberConstant.LOTTO_BONUS_LENGTH;
 import static lotto.domain.LottoResult.FOUR;
 import static lotto.domain.LottoResult.THREE;
 import static lotto.domain.LottoResult.FIVE;

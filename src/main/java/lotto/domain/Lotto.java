@@ -2,8 +2,8 @@ package lotto.domain;
 
 import java.util.List;
 
-import static lotto.view.InputValidator.validateDifferentLottoNumbers;
-import static lotto.view.InputValidator.validateRangeLottoNumbers;
+import static lotto.common.exception.Validator.validateDifferentLottoNumbers;
+import static lotto.common.exception.Validator.validateRangeLottoNumbers;
 
 public class Lotto {
     private final List<Integer> numbers;

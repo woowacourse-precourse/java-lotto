@@ -1,4 +1,4 @@
-package lotto.common;
+package lotto.common.constant;
 
 public class NumberConstant {
 

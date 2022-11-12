@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.common.exception.Validator;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,16 +16,16 @@ public class InputView {
 
     public int inputPrice(){
         System.out.println(INPUT_PRICE);
-        int price = InputValidator.validateInt(Console.readLine());
-        InputValidator.validatePrice(price);
+        int price = Validator.validateInt(Console.readLine());
+        Validator.validatePrice(price);
         return price;
     }
 
     public List<Integer> inputLottoNumbers(){
         System.out.println(INPUT_LOTTO_NUMBERS);
         String lottoNumbers = Console.readLine();
-        InputValidator.validateLottoNumbers(lottoNumbers);
-        InputValidator.validateDifferentLottoNumbers(splitNumbers(lottoNumbers));
+        Validator.validateLottoNumbers(lottoNumbers);
+        Validator.validateDifferentLottoNumbers(splitNumbers(lottoNumbers));
         return splitNumbers(lottoNumbers);
     }
 

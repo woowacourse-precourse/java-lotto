@@ -1,14 +1,14 @@
-package lotto.view;
+package lotto.common.exception;
 
 import java.util.List;
 import java.util.regex.Pattern;
 
-import static lotto.common.NumberConstant.LOTTO_LENGTH;
-import static lotto.common.NumberConstant.LOTTO_MIN_PRICE;
-import static lotto.common.NumberConstant.LOTTO_MAX_VALUE;
-import static lotto.common.NumberConstant.LOTTO_MIN_VALUE;
+import static lotto.common.constant.NumberConstant.LOTTO_LENGTH;
+import static lotto.common.constant.NumberConstant.LOTTO_MIN_PRICE;
+import static lotto.common.constant.NumberConstant.LOTTO_MAX_VALUE;
+import static lotto.common.constant.NumberConstant.LOTTO_MIN_VALUE;
 
-public class InputValidator {
+public class Validator {
 
     private static Pattern PATTERN = Pattern.compile("^[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+$");
 
