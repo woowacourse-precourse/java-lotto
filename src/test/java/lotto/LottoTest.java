@@ -3,8 +3,14 @@ package lotto;
 import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -24,5 +30,19 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    static Stream<Arguments> setLottoNumbers() {
+        return Stream.of(
+                Arguments.arguments(new ArrayList<String>(List.of("12","3","4","5","9.3","8"))),
+                Arguments.arguments(new ArrayList<String>(List.of("12","3","4","5","7","8a"))),
+                Arguments.arguments(new ArrayList<String>(List.of("12","-3","4","5","9","8")))
+                );
+    }
+
+    @DisplayName("로또 번호에 양의 정수 이외의 수가 있으면 예외가 발생한다.")
+    @MethodSource("setLottoNumbers")
+    @ParameterizedTest(name = "{index}. {0}")
+    void createLottoByOtherWords(List<String> numbers) {
+        assertThatThrownBy(() -> Lotto.validateIsNumeric(numbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

@@ -37,7 +37,7 @@ public class Guide {
                 .collect(Collectors.toList());
     }
 
-    public void printBoughtLottoList(List<Lotto> boughtLotto) {
+    public static void printBoughtLottoList(List<Lotto> boughtLotto) {
         for (Lotto lotto : boughtLotto) {
             System.out.println(lotto.getLotto());
         }

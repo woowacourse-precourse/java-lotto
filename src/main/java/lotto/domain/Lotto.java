@@ -42,7 +42,7 @@ public class Lotto {
         }
     }
 
-    public void validateIsNumeric(List<String> numbers) {
+    public static void validateIsNumeric(List<String> numbers) {
         String pattern = "^[0-9]*$";
         for (String number : numbers) {
             if (!Pattern.matches(pattern, number)) {
