@@ -238,7 +238,7 @@ public class Lotto {
 - [ ] 보너스 번호를 정한다. - setBonusNumber()
 - [ ] 당첨된 로또의 등수를 계산한다. - getRanking()
   - [x] 일치하는 번호의 개수에 따라 등수를 계산한다. - calRank()
-    - [ ] 뽑은 로또와 당첨 번호를 비교하여 몇개가 일치하는지 계산한다. - compareWithWinning()
+    - [] 뽑은 로또와 당첨 번호를 비교하여 몇개가 일치하는지 계산한다. - compareNumbers()
     - [ ] 뽑은 로또가 보너스 번호를 포함하는지 계산한다.
 - [ ] 로또 하나의 수익을 계산한다. - calProfit()
 - [ ] 수익의 합을 구한다. - sumProfit()
