@@ -1,5 +1,6 @@
 package lotto;
 
+import java.text.NumberFormat;
 import java.util.Map;
 
 public class Print {
@@ -27,20 +28,37 @@ public class Print {
 
     public static void winningResult(int lottoTickets, Map<LottoOperator, Integer> winningResult) {
         newLine();
+        double prizeMoney = 0;
         System.out.println("당첨 통계\n" + "---");
         for (LottoOperator lottoOperator : winningResult.keySet()) {
+            if (lottoOperator == LottoOperator.NO_LUCK) {
+                continue;
+            }
             if (lottoOperator == LottoOperator.FIVE_BONUS) {
                 printBonusResult(winningResult, lottoOperator);
+                prizeMoney += lottoOperator.getWinningAmount() * winningResult.get(lottoOperator);
                 continue;
             }
             printCommonResult(winningResult, lottoOperator);
+            prizeMoney += lottoOperator.getWinningAmount() * winningResult.get(lottoOperator);
         }
+        printYield(lottoTickets, prizeMoney);
+    }
+
+    private static void printYield(int lottoTickets, double prizeMoney) {
+        int lottoAmount = lottoTickets * 1000;
+        String yield = String.format("%,.1f", (prizeMoney / lottoAmount) * 100);
+        System.out.println("총 수익률은 " + yield + "%입니다.");
+    }
+
+    private static String numberComma(double number) {
+        return NumberFormat.getInstance().format(number);
     }
 
     private static void printCommonResult(Map<LottoOperator, Integer> winningResult, LottoOperator lottoOperator) {
         System.out.println(
                 lottoOperator.getCount() + "개 일치 (" +
-                        lottoOperator.getWinningAmount() + "원) - " +
+                        numberComma(lottoOperator.getWinningAmount()) + "원) - " +
                         winningResult.get(lottoOperator) + "개"
         );
     }
@@ -48,7 +66,7 @@ public class Print {
     private static void printBonusResult(Map<LottoOperator, Integer> winningResult, LottoOperator lottoOperator) {
         System.out.println(
                 lottoOperator.getCount() + "개 일치, 보너스 볼 일치 (" +
-                        lottoOperator.getWinningAmount() + "원) - " +
+                        numberComma(lottoOperator.getWinningAmount()) + "원) - " +
                         winningResult.get(lottoOperator) + "개");
     }
 
