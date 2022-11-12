@@ -1,6 +1,7 @@
 package lotto.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -68,6 +69,28 @@ class PurchaseAmountValidatorTest {
         @Test
         void 나누어_떨어지지_않을_경우_2() {
             assertThat(validator.isDivisibleBy1000("999")).isEqualTo(false);
+        }
+    }
+
+    @Nested
+    @DisplayName("구입 금액이 유효하지 않으면 예외가 발생한다.")
+    class isValidatePurchaseAmountTest {
+        @Test
+        void 숫자가_아닌_경우_예외_테스트() {
+            assertThatThrownBy(() -> validator.validatePurchaseAmount("1000aa"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void 양수가_아닌_경우_예외_테스트() {
+            assertThatThrownBy(() -> validator.validatePurchaseAmount("-1000"))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void 나누어_떨어지지_않을_경우_예외_테스트() {
+            assertThatThrownBy(() -> validator.validatePurchaseAmount("1234"))
+                    .isInstanceOf(IllegalArgumentException.class);
         }
     }
 }
