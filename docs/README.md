@@ -69,7 +69,7 @@
          * input: None
          * output: Lotto 당첨 로또 객체
    
-   * Rank
+   * Grade
       - 1 ~ 5등의 당첨 기준, 담첨액을 담는 Enum 객체
       - key: String 로또 등수 (FIRST, SECOND ...)
       - value: 당첨 기준 조건, int 상금
