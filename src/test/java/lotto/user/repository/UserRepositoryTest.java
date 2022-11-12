@@ -47,5 +47,4 @@ class UserRepositoryTest {
         target = 36000;
         assertThat(user.getPurchaseAmount()).isEqualTo(target);
     }
-
 }
