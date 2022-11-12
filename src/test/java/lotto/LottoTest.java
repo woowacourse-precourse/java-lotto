@@ -4,8 +4,20 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
 
 class LottoTest {
+
+    @Test
+    void 로또_번호_생성_확인() {
+        Lotto lotto = new Lotto("1,2,3,4,5,6");
+
+        List<Integer> result = List.of(1,2,3,4,5,6);
+
+        assertThat(lotto.getLottoNumbers()).isEqualTo(result);
+    }
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
