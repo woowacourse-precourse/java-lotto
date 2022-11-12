@@ -2,6 +2,9 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+import java.util.Arrays;
+
 public class PrintInputMessage {
 
     private static final String INPUT_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
@@ -15,6 +18,13 @@ public class PrintInputMessage {
         System.out.println(INPUT_PURCHASE_AMOUNT);
         String inputMoney = Console.readLine();
         return Integer.parseInt(inputMoney);
+    }
+
+    private static List<String> getWinningLottoNumber() {
+        System.out.println(INPUT_WINNING_LOTTO_NUMBER);
+        String inputTmpNum = Console.readLine();
+        List<String> inputWinningLottoNum = Arrays.asList(inputTmpNum.split(","));
+        return inputWinningLottoNum;
     }
 
 }
