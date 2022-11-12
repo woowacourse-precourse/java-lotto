@@ -38,9 +38,9 @@ public class Lotto {
         return numbers;
     }
 
-    private static List<List<Integer>> makeLottos(Integer money) {
+    public static List<List<Integer>> makeLottos(Integer money) {
         List<List<Integer>> lottos = new ArrayList<>();
-
+        System.out.printf("%s개를 구매했습니다.\n", (money / 1000));
         for (int ticket = 0; ticket < money / 1000; ticket++) {
             List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Collections.sort(lotto);
@@ -49,5 +49,12 @@ public class Lotto {
         }
         return lottos;
     }
+
+    public static void printLotto(List<List<Integer>> lottoNumbers) {
+        for (List<Integer> lottoNumber : lottoNumbers) {
+            System.out.println(lottoNumber);
+        }
+    }
+
 
 }
