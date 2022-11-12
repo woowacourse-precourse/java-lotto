@@ -19,6 +19,11 @@ public class Constants {
         }
     }
 
+    public static class Digit {
+        public static final int LOTTO_PRICE = 1000;
+        public static final int LOTTO_NUMBER_COUNT = 6;
+    }
+
     public static class Error {
         public static final String RANGE_ERROR = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
         public static final String DUPLICATION_ERROR = "[ERROR] 로또 번호에는 중복이 없어야 합니다.";
