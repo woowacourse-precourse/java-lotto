@@ -22,7 +22,7 @@ class RandomGeneratorTest {
         for (int i = 0; i < 100; i++) {
             List<Integer> randomNumbers = generateRandomNumbers();
             Set<Integer> uniqueRandomNumbers = new HashSet<>(randomNumbers);
-            assertThat(uniqueRandomNumbers.size()).isEqualTo(7);
+            assertThat(uniqueRandomNumbers.size()).isEqualTo(6);
         }
     }
 }

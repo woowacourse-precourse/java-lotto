@@ -20,8 +20,6 @@ class LottoNumberGeneratorTest {
         assertThat(lottoNumbers.size()).isEqualTo(100);
         for (int i = 0; i < 100; i++) {
             assertThat(lottoNumbers.get(i).getGeneralLottoNumber().getNumbers().size()).isEqualTo(6);
-            assertThat(lottoNumbers.get(i).getBonusLottoNumber()).isGreaterThanOrEqualTo(1);
-            assertThat(lottoNumbers.get(i).getBonusLottoNumber()).isLessThanOrEqualTo(45);
         }
     }
 }

@@ -22,7 +22,7 @@ public class LottoComparator {
             case 6:
                 return FIRST;
             case 5:
-                if (winningLotto.getBonusLottoNumber() == userLotto.getBonusLottoNumber()) return SECOND;
+                if (isSecond(winningLotto, userLotto)) return SECOND;
                 return THIRD;
             case 4:
                 return FOURTH;
@@ -55,12 +55,29 @@ public class LottoComparator {
      */
     private static int duplicateNumber(List<Integer> winningLotto, List<Integer> userLotto) {
         int winningNumber = 0;
+        userLotto = userLotto.subList(0, 6);
         for (Integer lottoNumber : userLotto) {
             if (winningLotto.contains(lottoNumber)) {
                 winningNumber++;
             }
         }
         return winningNumber;
+    }
+
+    /**
+     * 2등인지 여부를 판단합니다.
+     * @param winningLotto 당첨 로또
+     * @param userLotto 사용자의 로또
+     * @return 2등인지 여부
+     */
+    private static boolean isSecond(LottoNumber winningLotto, LottoNumber userLotto) {
+        for (Integer number : userLotto.getGeneralLottoNumber().getNumbers()) {
+            if (!winningLotto.getGeneralLottoNumber().getNumbers().contains(number) &&
+                    winningLotto.getBonusLottoNumber() == number) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

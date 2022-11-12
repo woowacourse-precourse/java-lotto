@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * 일반 로또 번호 6개와 보너스 로또 번호 1개를 저장하는 클래스입니다.
+ * 사용자가 구매한 로또 또한 해당 클래스를 사용하며, 이때 보너스 로또 번호는 의미를 갖지 않습니다.
  */
 public class LottoNumber {
 
@@ -22,6 +23,9 @@ public class LottoNumber {
      * @param generatedLottoNumber 일반 로또 번호와 보너스 로또 번호를 포함한 7개의 정수 리스트
      */
     public LottoNumber(List<Integer> generatedLottoNumber) {
+        if (generatedLottoNumber.size() == 6) {
+            generatedLottoNumber.add(-1);
+        }
         this.generalLottoNumber = new Lotto(generatedLottoNumber.subList(0, 6));
         this.generalLottoNumber.sortLottoNumbers();
         this.bonusLottoNumber = generatedLottoNumber.get(6);
