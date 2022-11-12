@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.Constant.LOTTO_PRICE;
+
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
@@ -17,19 +19,26 @@ public class LottoGame {
 
     public void start() {
         try {
-            Integer moneyEntered = Input.inputMoney();
-            validateInputMoney(moneyEntered);
-            int lottoCnt = moneyEntered / 1000;
-            List<Lotto> lottoes = lottoMachine.makeLottoes(lottoCnt);
-            Output.showLottoesPurchased(lottoes);
-            lottoMachine.makeWinningNumber(Input.inputWinningNumber());
-            lottoMachine.makeBonusNumber(Input.inputBonusNumber());
-
+            List<Lotto> lottoes = buyLottoes();
+            determineWinningNumberAndBonusNumber();
             Result result = lottoMachine.returnResult(lottoes);
             Output.showResult(result);
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] " + e.getMessage());
         }
+    }
+
+    private void determineWinningNumberAndBonusNumber() {
+        lottoMachine.makeWinningNumber(Input.inputWinningNumber());
+        lottoMachine.makeBonusNumber(Input.inputBonusNumber());
+    }
+
+    private List<Lotto> buyLottoes() {
+        Integer moneyEntered = Input.inputMoney();
+        validateInputMoney(moneyEntered);
+        List<Lotto> lottoes = lottoMachine.makeLottoes(moneyEntered / LOTTO_PRICE);
+        Output.showLottoesPurchased(lottoes);
+        return lottoes;
     }
 
     protected void validateInputMoney(Integer moneyEntered) {
