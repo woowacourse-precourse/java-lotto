@@ -1,5 +1,10 @@
 package lotto;
 
+import java.util.List;
+import java.util.ArrayList;
+
+import org.assertj.core.util.Arrays;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
@@ -29,5 +34,21 @@ public class User {
 		if (!isThousandUnits) {
 			throw new IllegalArgumentException("[ERROR] " + Constant.PAYMENT_UNIT.value + "원 단위로 입력해야 합니다.");
 		}
+	}
+	
+	public static List<Integer> getWinningNumbers() {
+		
+		System.out.println("\n당첨 번호를 입력해 주세요.");
+		String[] numbers = Console.readLine().split(",");
+		
+		List<Integer> winningNumbers = new ArrayList<Integer>(Constant.LOTTO_LENGTH.value);
+		
+		for (String number : numbers) {
+			
+			Integer _number = Integer.valueOf(number);
+			winningNumbers.add(_number);
+		}
+		
+		return winningNumbers;
 	}
 }

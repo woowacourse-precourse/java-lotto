@@ -12,11 +12,14 @@ public class Application {
     	int purchaseQuantity = payment / Constant.PAYMENT_UNIT.value;
 
     	List<List<Integer>> myLottos = getMyLottos(purchaseQuantity);
+    	
+    	List<Integer> winningNumbers = User.getWinningNumbers();
+    	System.out.println(winningNumbers);
     }
     
     public static List<List<Integer>> getMyLottos(int purchaseQuantity) {
     	
-    	System.out.println("8개를 구매했습니다.");
+    	System.out.println("\n" + purchaseQuantity + "개를 구매했습니다.");
     	
     	List<List<Integer>> myLottos = new ArrayList<List<Integer>>(purchaseQuantity);
     	
