@@ -17,4 +17,13 @@ public enum Rank {
         this.prize = prize;
         this.detail = detail;
     }
+
+    public void plus() {
+        this.count++;
+    }
+
+    public int getCount() {
+        return this.count;
+    }
+
 }
