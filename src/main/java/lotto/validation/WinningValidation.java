@@ -78,7 +78,7 @@ public class WinningValidation extends IllegalArgumentException {
     }
 
     public void isNumber(String input) {
-        regEx = RegEx.valueOf("NUMBER_REG_EX");
+        regEx = RegEx.valueOf("BONUS_INPUT_REG_EX");
         if (!Pattern.matches(regEx.getRegEx(), input)) {
             message = ErrorMessage.valueOf("NUMBER_BONUS_EXCEPTION");
             throwError(message.getMessage());
