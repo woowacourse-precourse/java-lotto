@@ -17,6 +17,9 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+    public List<Integer> getLottoInfo(){
+        return numbers;
+    }
 
     // TODO: 추가 기능 구현
 }
