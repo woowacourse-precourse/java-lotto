@@ -68,4 +68,9 @@ public class SystemController {
         System.out.print("총 수익률은 "+calculateYield(Integer.parseInt(purchaseMoney), Collections.frequency(matchScores, Three), Collections.frequency(matchScores, Four),
                 Collections.frequency(matchScores, Five), Collections.frequency(matchScores, FiveAndBonus), Collections.frequency(matchScores, Six))+"%입니다.");
     }
+
+    private double calculateYield(int purchaseMoney,int three, int four, int five, int fiveB, int six){
+        double yield= (double)(three*5_000+four*50_000+five*1_500_000+fiveB*30_000_000+six*2_000_000_000)*(double)100/(double)purchaseMoney;
+        return (Math.round(yield*10)/10.0);
+    }
 }
