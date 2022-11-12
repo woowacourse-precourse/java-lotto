@@ -16,5 +16,7 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public void autoGenerateNumber(){
+        // TODO: 메소드 구현
+    }
 }
