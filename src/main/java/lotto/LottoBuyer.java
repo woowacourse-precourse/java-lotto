@@ -15,6 +15,7 @@ public class LottoBuyer {
 
     public void buyLotto() {
         lottoPurchaseInfo = lottoSeller.sellLotto();
+        printController.print(lottoPurchaseInfo.getLottoNumbers());
     }
 
     public void checkWinStatics() {
