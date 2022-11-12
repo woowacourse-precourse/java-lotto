@@ -5,8 +5,12 @@ public class PurchaseMoney {
     private final int MAX_RANGE = 100_000;
     private final int MIN_RANGE = 1000;
 
+    private int purchaseMoney;
+
     public PurchaseMoney(String purchaseMoney) {
         validate(purchaseMoney);
+        this.purchaseMoney = Integer.parseInt(purchaseMoney);
+
     }
 
     public void validate(String purchaseMoney) {
@@ -40,5 +44,9 @@ public class PurchaseMoney {
             throw new IllegalArgumentException("[ERROR] 최소 " + MIN_RANGE +"원 이상 " + MAX_RANGE + "이하로 구입이 가능합니다.");
 
         }
+    }
+
+    public int getLottoCount() {
+        return purchaseMoney / LOTTO_PRICE;
     }
 }
