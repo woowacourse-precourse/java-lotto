@@ -1,6 +1,9 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +17,12 @@ public class LottoGame {
         NOTHING
     }
     private static final int _lotto_price = 1000;
+    public static final int _first_place = 0;
+    public static final int _second_place = 1;
+    public static final int _third_place = 2;
+    public static final int _fourth_place = 3;
+    public static final int _fifth_place = 4;
+
     private static final String _buy_msg = "개를 구매했습니다.\n";
     private static final String _error_default_msg = "[ERROR]";
 
@@ -41,6 +50,29 @@ public class LottoGame {
             }
         }
         return checkPlace(matches, l2.getNumbers().contains(bonus));
+    }
+
+    public static BigDecimal calcRateOfReturn(int[] matches, int money) {
+        BigDecimal rateOfReturn = new BigDecimal(sumReward(matches));
+
+        rateOfReturn.divide(new BigDecimal(String.valueOf(money)));
+        rateOfReturn.multiply(new BigDecimal("100"));
+
+        return rateOfReturn.setScale(1, RoundingMode.HALF_UP);
+    }
+
+    private static BigInteger sumReward(int[] matches) {
+        BigInteger reward = new BigInteger("0");
+        String[] rewardByPlace = {"2000000000", "30000000", "1500000", "50000", "5000"};
+
+        for (int i = 0; i < matches.length; ++i) {
+            BigInteger now_reward = new BigInteger(rewardByPlace[i]);
+            BigInteger count = new BigInteger(String.valueOf(matches[i]));
+
+            now_reward.multiply(count);
+            reward.add(now_reward);
+        }
+        return reward;
     }
 
     private static eLottoPlace checkPlace(int matches, boolean isBonusMatch) {
