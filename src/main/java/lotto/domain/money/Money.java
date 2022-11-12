@@ -1,11 +1,14 @@
 package lotto.domain.money;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toList;
 
 public class Money {
+
+    private static final DecimalFormat FORMAT = new DecimalFormat("###,###");
 
     private final int value;
 
@@ -41,5 +44,10 @@ public class Money {
 
     public int value() {
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return FORMAT.format(value);
     }
 }
