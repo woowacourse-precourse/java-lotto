@@ -7,12 +7,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import view.Input;
+import view.Output;
 import view.Valid;
 
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -128,6 +127,7 @@ class LottoTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR] 보너스 번호는 정답 수 제외 1~45 수 중 하나의 숫자를 입력해 주세요.");
         }
+
         @DisplayName("보너스 숫자가 두 개 이상 입력될 때")
         @Test
         void enterBonusNumberOverOne() {
@@ -139,6 +139,7 @@ class LottoTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR] 보너스 번호는 정답 수 제외 1~45 수 중 하나의 숫자를 입력해 주세요.");
         }
+
         @DisplayName("보너스 숫자가 1~46 사이의 수가 아닐 때")
         @Test
         void isNumberNotInRange() {
@@ -152,20 +153,60 @@ class LottoTest {
         }
     }
 
-    @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
-    @Test
-    void createLottoByOverSize() {
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
-                .isInstanceOf(IllegalArgumentException.class);
+    @Nested
+    class CheckOutputValueCorrect {
+        //given
+        Output output = new Output();
+        List<List<Integer>> lottos = new ArrayList<>();
+        List<Integer> answer = new ArrayList<>();
+        int bonus = 0;
+        @DisplayName("수익률이 정상적으로 출력되는지 확인_소수점_X")
+        @Test
+        void isProfitCorrectWorking() {
+            //given
+            lottos.add(Arrays.asList(1,2,3,4,5,6));
+            lottos.add(Arrays.asList(7,8,9,10,11,12));
+            answer = Arrays.asList(1,3,5,7,9,11);
+            bonus = 19;
+            //when
+            output.setRankList(lottos, answer, bonus);
+            int lottoPieces = 2;
+            //then
+            assertThat(output.calcProfitRate(lottoPieces)).isEqualTo(500.0);
+        }
+
+        @DisplayName("수익률이 정상적으로 출력되는지 확인_소수점_O")
+        @Test
+        void isProfitCorrectWorking_double() {
+            //given
+            for(int i = 1; i <= 9; i++) {
+                lottos.add(Arrays.asList(i, 2*i, 3*i, 4*i, 5*i, 4*i+3));
+            }
+            answer = Arrays.asList(1,2,3,18,39,37);
+            bonus = 45;
+            //when
+            output.setRankList(lottos, answer, bonus);
+            int lottoPieces = 9;
+            //then
+            output.printRank();
+            assertThat(output.calcProfitRate(lottoPieces)).isEqualTo(55.6);
+        }
     }
 
-    @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
-    @Test
-    void createLottoByDuplicatedNumber() {
-        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
-        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
+    @Nested
+    class LottoItselfValidate {
+        @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
+        @Test
+        void createLottoByOverSize() {
+            assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
 
-    // 아래에 추가 테스트 작성 가능
+        @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
+        @Test
+        void createLottoByDuplicatedNumber() {
+            assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+    }
 }
