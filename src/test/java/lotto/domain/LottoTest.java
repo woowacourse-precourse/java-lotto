@@ -1,8 +1,7 @@
 package lotto.domain;
 
-import lotto.domain.Lotto;
-import lotto.util.Constant;
-import lotto.util.ExceptionMessage;
+import lotto.system.Constant;
+import lotto.system.ExceptionMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -10,9 +9,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 

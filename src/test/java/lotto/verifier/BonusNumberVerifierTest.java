@@ -1,13 +1,12 @@
 package lotto.verifier;
 
-import lotto.util.ExceptionMessage;
+import lotto.system.ExceptionMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class BonusNumberVerifierTest {
     private BonusNumberVerifier bonusNumberVerifier = new BonusNumberVerifier();

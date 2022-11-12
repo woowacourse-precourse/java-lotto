@@ -1,8 +1,5 @@
 package lotto.view;
 
-import lotto.domain.Lotto;
-import lotto.util.IOMessage;
-
 public final class OutputView {
     private OutputView() {
     }

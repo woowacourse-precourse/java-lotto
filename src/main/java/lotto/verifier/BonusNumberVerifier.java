@@ -1,8 +1,7 @@
 package lotto.verifier;
 
-import lotto.domain.Lotto;
-import lotto.util.Constant;
-import lotto.util.ExceptionMessage;
+import lotto.system.Constant;
+import lotto.system.ExceptionMessage;
 
 import java.math.BigInteger;
 

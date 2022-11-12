@@ -1,4 +1,4 @@
-package lotto.util;
+package lotto.system;
 
 public final class Constant {
     private Constant() {}
