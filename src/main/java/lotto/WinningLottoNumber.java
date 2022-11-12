@@ -1,7 +1,6 @@
 package lotto;
 
 import java.util.List;
-import java.util.Set;
 
 public class WinningLottoNumber {
 
@@ -15,5 +14,13 @@ public class WinningLottoNumber {
 
     public static WinningLottoNumber createWinningLottoNumber(List<Integer> winningNumbers, int bonusNumber) {
         return new WinningLottoNumber(winningNumbers, bonusNumber);
+    }
+
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 }
