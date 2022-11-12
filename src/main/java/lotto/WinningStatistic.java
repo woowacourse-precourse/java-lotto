@@ -5,11 +5,30 @@ public enum WinningStatistic {
     RANK_TWO(5, true),
     RANK_THREE(5, false),
     RANK_FOUR(4, false),
-    RANK_FIVE(3, false);
+    RANK_FIVE(3, false),
+    RANK_ZERO(0, false);
     private final int numOfCorrectLottoNum;
     private final boolean bonusLottoNumCorrect;
     private final int ranking;
     private final int cashPrize;
+
+    public static WinningStatistic getInstance(int numOfCorrectLottoNum,
+        boolean bonusLottoNumCorrect) {
+        switch (numOfCorrectLottoNum) {
+            case 3:
+                return RANK_FIVE;
+            case 4:
+                return RANK_FOUR;
+            case 5:
+                if (!bonusLottoNumCorrect) {
+                    return RANK_THREE;
+                }
+                return RANK_TWO;
+            case 6:
+                return RANK_ONE;
+        }
+        return RANK_ZERO;
+    }
 
     WinningStatistic(int numOfCorrectLottoNum, boolean bonusLottoNumCorrect) {
         this.numOfCorrectLottoNum = numOfCorrectLottoNum;
