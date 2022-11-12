@@ -2,6 +2,7 @@ package lotto.controller;
 
 import java.util.List;
 
+import lotto.domain.ScoreInfo;
 import lotto.vo.Lotto;
 import lotto.dto.WinningDto;
 import lotto.service.LottoService;
@@ -36,5 +37,7 @@ public class LottoController {
 		WinningDto winningDto = new WinningDto(winningNumber, bonus);
 
 		Winning winning = winningDto.toWinning();
+
+		ScoreInfo scoreInfo = lottoService.makeScoreInfoBy(lottos, winning);
 	}
 }

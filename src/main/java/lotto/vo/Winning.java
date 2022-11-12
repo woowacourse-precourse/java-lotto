@@ -10,4 +10,12 @@ public class Winning {
         this.winnings = winnings;
         this.bonus = bonus;
     }
+
+    public Integer getBonus() {
+        return bonus;
+    }
+
+    public boolean contains(Integer target) {
+        return winnings.contains(target);
+    }
 }
