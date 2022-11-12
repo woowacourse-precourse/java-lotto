@@ -56,4 +56,9 @@ public class DrawLottoController {
                     , myLotto, winingNumber.getBonusNumber());
         }
     }
+
+    private void setWiningCount(){
+        drawLottoService.setWiningCount();
+        outputView.printWiningCountStatistics();
+    }
 }
