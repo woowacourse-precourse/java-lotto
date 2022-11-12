@@ -119,17 +119,14 @@ class RefereeTest {
 
     @DisplayName("로또를 맞췄는지 반환 - 3개 일치")
     @Test
-    void compareWithThreeMatch() {
+    void createMatchingTypeWithThreeMatch() {
         // given
+        Lotto lotto = lottos.get(7);
         List<Integer> player = List.of(1, 2, 3, 4, 5, 6);
         int bonusNumber = 7;
 
         // when
-        List<MatchingType> compare = referee.compare(lottos, player, bonusNumber);
-        MatchingType result = compare.stream()
-                .filter(matchingType -> matchingType == THREE_MATCH)
-                .findAny()
-                .orElseThrow();
+        MatchingType result = referee.createMatchingType(lotto, player, bonusNumber);
 
         // then
         assertThat(result).isEqualTo(THREE_MATCH);
@@ -137,17 +134,14 @@ class RefereeTest {
 
     @DisplayName("로또를 맞췄는지 반환. - 4개 일치")
     @Test
-    void compareWithFourMatch() {
+    void createMatchingTypeWithFourMatch() {
         // given
+        Lotto lotto = lottos.get(7);
         List<Integer> player = List.of(1, 2, 3, 4, 5, 14);
         int bonusNumber = 7;
 
         // when
-        List<MatchingType> compare = referee.compare(lottos, player, bonusNumber);
-        MatchingType result = compare.stream()
-                .filter(matchingType -> matchingType == FOUR_MATCH)
-                .findAny()
-                .orElseThrow();
+        MatchingType result = referee.createMatchingType(lotto, player, bonusNumber);
 
         // then
         assertThat(result).isEqualTo(FOUR_MATCH);
@@ -155,17 +149,14 @@ class RefereeTest {
 
     @DisplayName("로또를 맞췄는지 반환. - 5개 일치")
     @Test
-    void compareWithFiveMatch() {
+    void createMatchingTypeWithFiveMatch() {
         // given
+        Lotto lotto = lottos.get(7);
         List<Integer> player = List.of(1, 2, 3, 5, 14, 22);
         int bonusNumber = 7;
 
         // when
-        List<MatchingType> compare = referee.compare(lottos, player, bonusNumber);
-        MatchingType result = compare.stream()
-                .filter(matchingType -> matchingType == FIVE_MATCH)
-                .findAny()
-                .orElseThrow();
+        MatchingType result = referee.createMatchingType(lotto, player, bonusNumber);
 
         // then
         assertThat(result).isEqualTo(FIVE_MATCH);
@@ -173,17 +164,14 @@ class RefereeTest {
 
     @DisplayName("로또를 맞췄는지 반환. - 5개 그리고 보너스 번호 일치")
     @Test
-    void compareWithFiveMatchAndBonusNumberMatch() {
+    void createMatchingTypeWithFiveMatchAndBonusNumberMatch() {
         // given
+        Lotto lotto = lottos.get(7);
         List<Integer> player = List.of(1, 2, 3, 5, 14, 22);
         int bonusNumber = 45;
 
         // when
-        List<MatchingType> compare = referee.compare(lottos, player, bonusNumber);
-        MatchingType result = compare.stream()
-                .filter(matchingType -> matchingType == FIVE_WITH_BONUS_MATCH)
-                .findAny()
-                .orElseThrow();
+        MatchingType result = referee.createMatchingType(lotto, player, bonusNumber);
 
         // then
         assertThat(result).isEqualTo(FIVE_WITH_BONUS_MATCH);
@@ -191,117 +179,16 @@ class RefereeTest {
 
     @DisplayName("로또를 맞췄는지 반환. - 6개 일치")
     @Test
-    void compareWithSixMatch() {
+    void createMatchingTypeWithSixMatch() {
         // given
+        Lotto lotto = lottos.get(7);
         List<Integer> player = List.of(1, 3, 5, 14, 22, 45);
         int bonusNumber = 7;
 
         // when
-        List<MatchingType> compare = referee.compare(lottos, player, bonusNumber);
-        MatchingType result = compare.stream()
-                .filter(matchingType -> matchingType == SIX_MATCH)
-                .findAny()
-                .orElseThrow();
+        MatchingType result = referee.createMatchingType(lotto, player, bonusNumber);
 
         // then
         assertThat(result).isEqualTo(SIX_MATCH);
-    }
-
-    @DisplayName("로또를 맞췄는지 반환. - 일치하지 않음")
-    @Test
-    void compareWithNoneMatch() {
-        // given
-        List<Integer> player = List.of(1, 2, 3, 4, 12, 37);
-        int bonusNumber = 7;
-
-        // when
-        List<MatchingType> compare = referee.compare(lottos, player, bonusNumber);
-
-        MatchingType resultThreeMatch = compare.stream()
-                .filter(matchingType -> matchingType == THREE_MATCH)
-                .findAny()
-                .orElse(NOT_MATCH);
-
-        MatchingType resultFourMatch = compare.stream()
-                .filter(matchingType -> matchingType == FOUR_MATCH)
-                .findAny()
-                .orElse(NOT_MATCH);
-
-        MatchingType resultFiveMatch = compare.stream()
-                .filter(matchingType -> matchingType == FIVE_MATCH)
-                .findAny()
-                .orElse(NOT_MATCH);
-
-        MatchingType resultFiveMatchWithBonus = compare.stream()
-                .filter(matchingType -> matchingType == FIVE_WITH_BONUS_MATCH)
-                .findAny()
-                .orElse(NOT_MATCH);
-
-        MatchingType resultSixMatch = compare.stream()
-                .filter(matchingType -> matchingType == SIX_MATCH)
-                .findAny()
-                .orElse(NOT_MATCH);
-
-        // then
-        assertThat(resultThreeMatch).isEqualTo(NOT_MATCH);
-        assertThat(resultFourMatch).isEqualTo(NOT_MATCH);
-        assertThat(resultFiveMatch).isEqualTo(NOT_MATCH);
-        assertThat(resultFiveMatchWithBonus).isEqualTo(NOT_MATCH);
-        assertThat(resultSixMatch).isEqualTo(NOT_MATCH);
-    }
-
-    @DisplayName("로또를 맞췄는지 반환. - 2번씩 당첨")
-    @Test
-    void compareWithAllTwoMatch() {
-        // given
-        lottos = List.of(
-                new Lotto(List.of(1, 2, 3, 40, 41, 42)),
-                new Lotto(List.of(4, 5, 6, 40, 41, 42)),
-                new Lotto(List.of(1, 2, 3, 4, 40, 41)),
-                new Lotto(List.of(3, 4, 5, 6, 40, 41)),
-                new Lotto(List.of(1, 2, 3, 4, 5, 40)),
-                new Lotto(List.of(2, 3, 4, 5, 6, 40)),
-                new Lotto(List.of(1, 2, 3, 4, 5, 7)),
-                new Lotto(List.of(2, 3, 4, 5, 6, 7)),
-                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
-                new Lotto(List.of(1, 2, 3, 4, 5, 6))
-        );
-        List<Integer> player = List.of(1, 2, 3, 4, 5, 6);
-        int bonusNumber = 7;
-
-        // when
-        List<MatchingType> compare = referee.compare(lottos, player, bonusNumber);
-
-        MatchingType resultThreeMatch = compare.stream()
-                .filter(matchingType -> matchingType == THREE_MATCH)
-                .findAny()
-                .orElseThrow();
-
-        MatchingType resultFourMatch = compare.stream()
-                .filter(matchingType -> matchingType == FOUR_MATCH)
-                .findAny()
-                .orElseThrow();
-
-        MatchingType resultFiveMatch = compare.stream()
-                .filter(matchingType -> matchingType == FIVE_MATCH)
-                .findAny()
-                .orElseThrow();
-
-        MatchingType resultFiveMatchWithBonus = compare.stream()
-                .filter(matchingType -> matchingType == FIVE_WITH_BONUS_MATCH)
-                .findAny()
-                .orElseThrow();
-
-        MatchingType resultSixMatch = compare.stream()
-                .filter(winningStat -> winningStat == SIX_MATCH)
-                .findAny()
-                .orElseThrow();
-
-        // then
-        assertThat(resultThreeMatch).isEqualTo(THREE_MATCH);
-        assertThat(resultFourMatch).isEqualTo(FOUR_MATCH);
-        assertThat(resultFiveMatch).isEqualTo(FIVE_MATCH);
-        assertThat(resultFiveMatchWithBonus).isEqualTo(FIVE_WITH_BONUS_MATCH);
-        assertThat(resultSixMatch).isEqualTo(SIX_MATCH);
     }
 }
