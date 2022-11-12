@@ -40,4 +40,10 @@ public class DrawLottoService {
         }
         correctNumberCountMap.put(correctCount, correctNumberCountMap.getOrDefault(correctCount, 0) + 1);
     }
+
+    public void setWiningCount() {
+        for (int i = 3; i <= 7; i++) {
+            winingCount.add(correctNumberCountMap.getOrDefault(i, 0));
+        }
+    }
 }
