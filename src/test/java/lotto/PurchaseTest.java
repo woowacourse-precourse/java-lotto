@@ -20,6 +20,16 @@ public class PurchaseTest extends NsTest {
         );
     }
 
+    @DisplayName("구매 금액이 음수인 경우 에러 출력 테스트")
+    @Test
+    void 구매금액_음수_에러_테스트(){
+        String input = "-1";
+        PurchaseService purchaseService = new PurchaseService();
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> purchaseService.parsePurchaseInput(input))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
 
 
     @Override
