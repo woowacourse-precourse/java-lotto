@@ -13,7 +13,8 @@ public class User {
         this.lottos = new ArrayList<>();
     }
 
-    public void buyLottos(int money) {
+    public void buyLottos() {
+        int money = inputMoney();
         if (!validateMoney(money)) {
            throw new IllegalArgumentException("금액을 잘못 입력하셨습니다.");
         }
@@ -35,7 +36,7 @@ public class User {
         }
     }
 
-    public void printOneLotto(BoughtLotto lotto) {
+    private void printOneLotto(BoughtLotto lotto) {
         lotto.printLottoNumber();
     }
 
