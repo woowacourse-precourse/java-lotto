@@ -30,4 +30,8 @@ public class Lotto {
     public String toString() {
         return String.join(", ", numbers.toString());
     }
+
+    public boolean has(Integer number) {
+        return numbers.contains(number);
+    }
 }

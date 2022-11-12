@@ -1,7 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-import java.util.HashSet;
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
@@ -22,7 +20,8 @@ public class LottoGame {
         int lottoCnt = moneyEntered / 1000;
         List<Lotto> lottoes = lottoMachine.makeLottoes(lottoCnt);
         Output.showLottoesPurchased(lottoes);
-        Lotto winningNumber = new Lotto(Input.inputWinningNumber());
+        lottoMachine.makeWinningNumber(Input.inputWinningNumber());
+        lottoMachine.makeBonusNumber(Input.inputBonusNumber());
     }
 
     protected void validateInputMoney(Integer moneyEntered) {
