@@ -52,4 +52,14 @@ public class Validator {
         ValidatorRange(InputList);
     }
 
+    public List<Integer> InputList(String placeSplit){
+        List<Integer> afterSplit = new ArrayList<>();
+        String[] split = placeSplit.split(",");
+
+        for(String index : split){
+            afterSplit.add(Integer.parseInt(index));
+        }
+        return afterSplit;
+    }
+
 }
