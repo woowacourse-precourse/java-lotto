@@ -2,12 +2,15 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class Lotto {
+    private static final int BEGIN_RANGE = 1;
+    private static final int END_RANGE = 45;
+    private static final int LOTTO_COUNT = 6;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -24,7 +27,7 @@ public class Lotto {
     }
 
     public static Lotto createLottoNumbers() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(BEGIN_RANGE, END_RANGE, LOTTO_COUNT);
 
         return new Lotto(numbers);
     }
