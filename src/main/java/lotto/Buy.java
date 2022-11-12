@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import validate.Check;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,15 +24,22 @@ public class Buy {
     public static int orderTicket() {
         System.out.println("구입금액을 입력해 주세요.");
         String money = Console.readLine();
-        Check.isNumber(money);
+        int tickets = 0;
+        try {
+            Check.isNumber(money);
+            Long paperMoney = Long.parseLong(money);
+            tickets = Check.countLottoTicket(paperMoney);
+
+            System.out.println("\n" + tickets + "개를 구매했습니다.");
 
 
-        Long paperMoney = Long.parseLong(money);
-        int tickets = Check.countLottoTicket(paperMoney);
-
-        System.out.println("\n" + tickets + "개를 구매했습니다.");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
 
         return tickets;
+
+
     }
 
     public static List<Integer> inputWinningNumber() {
