@@ -15,28 +15,27 @@ public class LottoController {
 
     public void run() {
         List<Lotto> lottoBundle = buyLotto();
-        List<Integer> winningNumbers = inputView.sendWinningNumbers();
-        int bonusNumber = inputView.sendBonusNumber(winningNumbers);
-        List<LottoResult> lottoResults = getLottoResults(lottoBundle, winningNumbers, bonusNumber);
-        printYield(lottoResults);
+        List<LottoResult> lottoResults = getLottoResults(lottoBundle);
+        printResultMessage(lottoResults);
     }
 
     private List<Lotto> buyLotto() {
         List<Lotto> lottoBundle =  lottoService.buy(inputView.sendMoney());
         outputView.printLottoBundleInfo(lottoBundle);
+
         return lottoBundle;
     }
 
-    private List<LottoResult> getLottoResults(List<Lotto> lottoBundle,
-                                              List<Integer> winningNumbers,
-                                              int bonusNumber) {
+    private List<LottoResult> getLottoResults(List<Lotto> lottoBundle) {
+        List<Integer> winningNumbers = inputView.sendWinningNumbers();
+        int bonusNumber = inputView.sendBonusNumber(winningNumbers);
         List<LottoResult> lottoResults = lottoService.compareLottoNumbers(lottoBundle, winningNumbers, bonusNumber);
-        outputView.printLottoResult(lottoResults);
+
         return lottoResults;
     }
 
-    private void printYield(List<LottoResult> lottoResults) {
-        double yield = lottoService.calculateYield(lottoResults);
-        outputView.printYield(yield);
+    private void printResultMessage(List<LottoResult> lottoResults) {
+        outputView.printLottoResult(lottoResults);
+        outputView.printYield(lottoService.calculateYield(lottoResults));
     }
 }
