@@ -6,6 +6,8 @@ import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMaker;
 import lotto.domain.Money;
+import lotto.domain.Rank;
+import lotto.domain.ResultRepository;
 import lotto.domain.WinningLotto;
 import lotto.view.Input;
 import lotto.view.Output;
@@ -15,11 +17,13 @@ public class Mission {
     Output output;
     Input input;
     LottoMaker lottoMaker;
+    ResultRepository repository;
 
     Mission() {
         output = new Output();
         input = new Input();
         lottoMaker = new LottoMaker();
+        repository = new ResultRepository();
 
         play();
     }
@@ -33,7 +37,12 @@ public class Mission {
 
         WinningLotto winningLotto = getWinningLotto();
 
+        for (Lotto lotto : lottos) {
+            Rank rank = winningLotto.match(lotto);
+            repository.add(rank);
+        }
 
+        int totalMoney = repository.getTotalMoney();
     }
 
     private Money getMoney() {
@@ -48,8 +57,7 @@ public class Mission {
     private WinningLotto getWinningLotto() {
         List<Integer> winningNumbers = getWinningNumbers();
         int bonusNumber = addBonusNumber();
-        WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
-        return winningLotto;
+        return new WinningLotto(winningNumbers, bonusNumber);
     }
 
     private List<Integer> getWinningNumbers() {
