@@ -1,6 +1,8 @@
-package lotto.lottoShop;
+package lotto.LottoShop;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.LottoManager.Lotto;
+
 import java.util.List;
 
 public class Consumer {
@@ -14,12 +16,15 @@ public class Consumer {
     public void purchaseLotto() {
         String purchaseAmount = Console.readLine();
 
-        lotto_group = clerk.sellLotto(purchaseAmount);
+        this.lotto_group = clerk.sellLotto(purchaseAmount);
 
         printLottoGroup();
     }
 
     private void printLottoGroup() {
-
+        lotto_group.stream()
+                .forEach(lotto -> {
+                    System.out.println(lotto.getNumbers());
+                });
     }
 }
