@@ -1,6 +1,7 @@
 package lotto.domain.winning;
 
-import static lotto.domain.winning.Ranking.*;
+import static lotto.domain.winning.Ranking.ranking;
+import static lotto.domain.winning.Ranking.values;
 
 import java.util.Arrays;
 import java.util.EnumMap;
@@ -30,7 +31,7 @@ public class WinningLotto {
 
     public LottoResults lottoResults(List<Lotto> purchasedLottoTickets) {
         Map<Ranking, Integer> results = initializedRankingMap();
-        judgeRanking(purchasedLottoTickets, results);
+        judgeRanking(purchasedLottoTickets, results);  // TODO 메서드 이름 고민
 
         return new LottoResults(results);
     }
@@ -43,8 +44,7 @@ public class WinningLotto {
         return results;
     }
 
-    private void judgeRanking(List<Lotto> purchasedLottoTickets,
-            Map<Ranking, Integer> results) {
+    private void judgeRanking(List<Lotto> purchasedLottoTickets, Map<Ranking, Integer> results) {
         final int MIN_NUMBER_FOR_WINNING = 3;
         for (Lotto purchasedLotto : purchasedLottoTickets) {
             int countsOfMatchingNumber = winningNumber.countsOfMatchingNumber(purchasedLotto);

@@ -16,6 +16,6 @@ public class Application {
                 new LottoPrinter()
         );
 
-        lottoService.lottery();
+        lottoService.start();
     }
 }

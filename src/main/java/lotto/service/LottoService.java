@@ -27,7 +27,7 @@ public class LottoService {
         this.lottoPrinter = lottoPrinter;
     }
 
-    public void lottery() {
+    public void start() {
         try {
             String money = money();
             PurchasedLottoTickets purchasedLottoTickets = purchasedLottoTickets(money);
@@ -56,14 +56,14 @@ public class LottoService {
         return purchasedLottoTickets;
     }
 
-    private String bonusNumber() {
-        lottoPrinter.printGuideMessageForBonusNumber();
-        return lottoScanner.number();
-    }
-
     private String winningNumber() {
         lottoPrinter.printGuideMessageForWinningNumber();
         return lottoScanner.formattedNumber();
+    }
+
+    private String bonusNumber() {
+        lottoPrinter.printGuideMessageForBonusNumber();
+        return lottoScanner.number();
     }
 
     private void makeWinningResults(PurchasedLottoTickets purchasedLottoTickets,

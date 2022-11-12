@@ -2,8 +2,8 @@ package lotto.view.output;
 
 public class LottoPrinter {
 
-    public void printMessage(String message) {
-        System.out.println(message);
+    public void printMessage(String serviceMessage) {
+        System.out.println(serviceMessage);
     }
 
     public void printGuideMessageForPurchase() {
