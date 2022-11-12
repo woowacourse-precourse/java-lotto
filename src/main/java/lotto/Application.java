@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class Application {
 
         List<Lotto> lotto = issueLotto(lottoCount);
 
+        List<Integer> winningNumber = winningNumberInput();
     }
     public static int howMuchLottoBuy(){
         System.out.println("구입금액을 입력해 주세요.");
@@ -50,4 +52,18 @@ public class Application {
 
         return lotto;
     }
+    public static List<Integer> winningNumberInput(){
+        System.out.println("\n당첨 번호를 입력해 주세요.");
+
+        String number = readLine();
+        List<String> numbers = Arrays.asList(number.split(","));
+
+        List<Integer> winningNumber = new ArrayList<>();
+
+        for(int i = 0 ;  i < numbers.size() ;i++)
+            winningNumber.add(Integer.valueOf(numbers.get(i)));
+
+        return winningNumber;
+    }
+
 }
