@@ -16,8 +16,8 @@ public class Application {
     public static void main(String[] args) {
         Machine machine = new Machine();
         List<Lotto> lottoList = machine.buy(enterAmount());
-        getAnswerNumber();
-        getBonusNumber();
+        Grader grader = new Grader(lottoList, getAnswerNumber(), getBonusNumber());
+        grader.grade();
     }
 
     private static int getBonusNumber() {

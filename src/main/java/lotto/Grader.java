@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class Grader {
@@ -25,6 +26,15 @@ public class Grader {
             }
             Rank.getRank(matchNumber).plus();
         }
+        print();
+    }
+
+    private void print() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        Arrays.stream(Rank.values())
+                .sorted(Comparator.reverseOrder())
+                .forEach(rank -> System.out.println(rank.getDetail() + rank.getStrCount()));
     }
 
     private boolean isRankTwo(int matchNumber, List<Integer> lottoNumbers) {

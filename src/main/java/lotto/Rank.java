@@ -28,8 +28,20 @@ public enum Rank {
         return this.count;
     }
 
+    public String getStrCount() {
+        return this.count + "개";
+    }
+
     public int getMatchNum() {
         return this.matchNum;
+    }
+
+    public int getPrize() {
+        return this.prize;
+    }
+
+    public String getDetail() {
+        return this.detail;
     }
 
     public static Rank getRank(int matchNum) {
