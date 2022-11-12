@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import static lotto.common.NumberConstant.LOTTO_LENGTH;
+import static lotto.common.NumberConstant.LOTTO_MIN_PRICE;
+import static lotto.common.NumberConstant.LOTTO_MAX_VALUE;
+import static lotto.common.NumberConstant.LOTTO_MIN_VALUE;
 
 public class InputValidator {
 
@@ -19,7 +22,7 @@ public class InputValidator {
     }
 
     public static void validatePrice(int price){
-        if (price%1000!=0)
+        if (price%LOTTO_MIN_PRICE!=0)
             throw new IllegalArgumentException(" 구입 금액은 1,000원 단위로 입력해야 합니다.");
     }
 
@@ -38,7 +41,7 @@ public class InputValidator {
 
     public static void validateRangeLottoNumbers(List<Integer> lottoNumberList){
         for (Integer number : lottoNumberList) {
-            if (number>45 || number < 1)
+            if (number>LOTTO_MAX_VALUE || number < LOTTO_MIN_VALUE)
                 throw new IllegalArgumentException(" 1 ~ 45 수를 입력해야 합니다.");
         }
     }
