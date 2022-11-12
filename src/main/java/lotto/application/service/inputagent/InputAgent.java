@@ -26,9 +26,9 @@ public class InputAgent {
         return convertedLottoNumbers;
     }
 
-    public int inputWinningBonusNumber(List<Integer> numbers) {
+    public int inputBonusNumber(List<Integer> winningLottoNumbers) {
         String inputBonusNumber = Console.readLine();
-        ValueValidator.validateInputBonusLottoNumber(inputBonusNumber, numbers);
+        ValueValidator.validateInputBonusLottoNumber(inputBonusNumber, winningLottoNumbers);
         return Integer.parseInt(inputBonusNumber);
     }
 }
