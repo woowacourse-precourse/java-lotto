@@ -37,15 +37,15 @@ public class UserTest {
     @Test
     void buyLotto_정상() {
         int money = 12000;
-        user.buyLotto(money);
-        assertThat(user.getLotto().length).isEqualTo(money / 1000);
+        user.buyLottos(money);
+        assertThat(user.getLottos().size()).isEqualTo(money / 1000);
     }
 
     @DisplayName("입력된 숫자가 1000 단위가 아닌 경우에는 IllegalArgumentException을 반환한다.")
     @Test
     void buyLotto_예외() {
         int money = 12500;
-        assertThatThrownBy(() -> user.buyLotto(money))
+        assertThatThrownBy(() -> user.buyLottos(money))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

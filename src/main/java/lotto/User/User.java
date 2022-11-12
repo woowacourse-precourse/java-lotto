@@ -12,7 +12,7 @@ public class User {
         this.lottos = new ArrayList<>();
     }
 
-    public void buyLotto(int money) {
+    public void buyLottos(int money) {
 
     }
 
@@ -26,5 +26,9 @@ public class User {
 
     public void printOneLotto() {
 
+    }
+
+    public List<Lotto> getLottos() {
+        return lottos;
     }
 }
