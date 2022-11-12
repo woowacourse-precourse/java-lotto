@@ -21,13 +21,9 @@ public class LottoNumbersValidator extends NumberValidator {
     }
     
     private static void validateOutOfLength(final List<Integer> lottoNumbers) {
-        if (isOutOfLength(lottoNumbers)) {
+        if (isDifferentLength(lottoNumbers.size(), LENGTH_OF_LOTTO_NUMBERS)) {
             throw new IllegalArgumentException(OUT_OF_LENGTH_EXCEPTION_MESSAGE);
         }
-    }
-    
-    private static boolean isOutOfLength(final List<Integer> lottoNumbers) {
-        return isDifferentLength(lottoNumbers.size(), LENGTH_OF_LOTTO_NUMBERS);
     }
     
     private static void validateExistDuplicateNumber(final List<Integer> lottoNumbers) {
