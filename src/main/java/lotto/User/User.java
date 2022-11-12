@@ -28,7 +28,11 @@ public class User {
     }
 
     public void printLottos() {
-
+        int countOfLotto = lottos.size();
+        System.out.println(String.valueOf(countOfLotto) + "개를 구매했습니다.");
+        for (BoughtLotto lotto : lottos) {
+            printOneLotto(lotto);
+        }
     }
 
     public void printOneLotto(BoughtLotto lotto) {
