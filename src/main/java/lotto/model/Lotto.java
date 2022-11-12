@@ -1,5 +1,8 @@
 package lotto.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import lotto.constants.ErrorCode;
 
@@ -17,7 +20,10 @@ public class Lotto {
     }
 
     public List<Integer> getLottoNumbers() {
-        return numbers;
+        List<Integer> sortNumbers = new ArrayList<>();
+        sortNumbers.addAll(numbers);
+        Collections.sort(sortNumbers);
+        return sortNumbers;
     }
 
     private void validateSixDigits(List<Integer> numbers) {
