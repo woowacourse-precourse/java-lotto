@@ -42,11 +42,11 @@ public class LottoGame {
     }
 
     protected void validateInputMoney(Integer moneyEntered) {
-        if(moneyEntered % 1000 != 0) {
+        if(moneyEntered % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException("1000으로 나누어 떨어지는 숫자를 입력하세요");
         }
-        if (moneyEntered < 1000) {
-            throw new IllegalArgumentException("1000 이상의 숫자를 입력하세요");
+        if (moneyEntered < LOTTO_PRICE) {
+            throw new IllegalArgumentException("1장 이상은 로또를 구매해야 합니다");
         }
     }
 }

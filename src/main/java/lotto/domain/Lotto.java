@@ -1,5 +1,9 @@
 package lotto.domain;
 
+import static lotto.Constant.BALL_MAX_RANGE;
+import static lotto.Constant.BALL_MIN_RANGE;
+import static lotto.Constant.LOTTO_DIGIT_CNT;
+
 import java.util.HashSet;
 import java.util.List;
 

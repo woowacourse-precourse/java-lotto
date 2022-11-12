@@ -1,9 +1,10 @@
 package lotto.domain;
 
+import static lotto.Constant.MIN_LOTTO_CNT_PURCHASED;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import lotto.Input;
 
 public class LottoMachine {
     private static Lotto winningNumber;
@@ -13,7 +14,7 @@ public class LottoMachine {
     }
 
     public List<Lotto> makeLottoes(int lottoCnt) {
-        if(lottoCnt < 1) {
+        if(lottoCnt < MIN_LOTTO_CNT_PURCHASED) {
             throw new IllegalArgumentException("1 이상의 숫자를 입력해주세요");
         }
         List<Lotto> lottoes = new ArrayList<>();
