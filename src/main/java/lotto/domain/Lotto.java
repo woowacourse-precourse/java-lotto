@@ -19,4 +19,8 @@ public class Lotto {
     public boolean isContain(Integer number) {
         return this.numbers.contains(number);
     }
+
+    public List<Integer> getLotto() {
+        return this.numbers;
+    }
 }
