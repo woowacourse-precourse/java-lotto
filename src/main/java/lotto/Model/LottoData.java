@@ -5,6 +5,10 @@ import java.util.List;
 public class LottoData{
     private int countOfLotto;
     private List<Lotto> lottos;
+
+    private Lotto winnerNumber;
+
+    private int bonusNumber;
     public void setCountOfLotto(int numberOfLotto){
         this.countOfLotto = numberOfLotto;
     }
@@ -16,6 +20,9 @@ public class LottoData{
         this.lottos = lottos;
     }
 
+    public void setWinnerNumber(Lotto winnerNumber){
+        this.winnerNumber = winnerNumber;
+    }
     public List<Lotto> getLottos(){
         return lottos;
     }

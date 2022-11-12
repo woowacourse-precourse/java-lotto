@@ -6,7 +6,9 @@ import lotto.Model.LottoData;
 import lotto.View.OutputView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -36,5 +38,15 @@ public class LottoController {
             lottoNumber.add(lotto.getLottoNumber());
         }
         output.showPurchasedLotto(lottoData.getCountOfLotto(), lottoNumber);
+    }
+
+    private void inputWinnerNumber(){
+        output.askWinnerNumber();
+        List<Integer> winnerNumber = Arrays.stream(readLine().split(","))
+                                            .mapToInt(Integer::parseInt)
+                                            .boxed()
+                                            .collect(Collectors.toList());
+        Lotto winnerNumberLotto = new Lotto(winnerNumber);
+        lottoData.setWinnerNumber(winnerNumberLotto);
     }
 }

@@ -13,4 +13,6 @@ public class OutputView {
             System.out.println(lottoNumbers.toString());
         }
     }
+
+    public void askWinnerNumber(){System.out.print("당첨 번호를 입력해 주세요.");}
 }
