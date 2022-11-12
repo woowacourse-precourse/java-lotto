@@ -1,7 +1,7 @@
 package lotto;
 
 public class Exceptions {
-    public Exceptions(){
-        throw new IllegalArgumentException("[ERROR] 제대로 입력하지 않으셨습니다.");
+    public void inputPriceError() throws IllegalArgumentException{
+        throw new IllegalArgumentException("[ERROR] 숫자를 입력하지 않으셨습니다.");
     }
 }
