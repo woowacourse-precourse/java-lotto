@@ -1,18 +1,20 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.UI.Input;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
+import static lotto.Generator.createRandomLotto;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
-
     @Test
     void 기능_테스트() {
         assertRandomUniqueNumbersInRangeTest(
