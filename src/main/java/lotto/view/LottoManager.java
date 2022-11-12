@@ -5,11 +5,14 @@ import lotto.Lotto;
 
 public class LottoManager {
     public int inputLottoCount() {
-        String number = Console.readLine();
-        if (number.chars().allMatch(Character::isDigit)) {
+        int purchaseMoney = Integer.parseInt(Console.readLine());
+        if (purchaseMoney % 1000 > 0) {
             throw new IllegalArgumentException();
         }
-        return Integer.parseInt(number);
+//        if (purchaseMoney.chars().allMatch(Character::isDigit)) {
+//            throw new IllegalArgumentException();
+//        }
+        return purchaseMoney / 1000;
     }
 
     public void printLottoNumbers(Lotto[] lottos) {
