@@ -34,4 +34,8 @@ public class Client {
         }
         return winLottoNumber;
     }
+
+    public int getWinBonusNumber(){
+        return Integer.parseInt(Console.readLine());
+    }
 }
