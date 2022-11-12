@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 public class OutputView {
-    private static final String PURCHASE_DETAILS_OUTPUT_MESSAGE = "개를 구매했습니다";
-    private static final String RATE_OF_RETURN_OUTPUT_FORMAT = "총 수익률은 %.1f%%입니다";
+    private static final String PURCHASE_DETAILS_OUTPUT_MESSAGE = "개를 구매했습니다.";
+    private static final String RATE_OF_RETURN_OUTPUT_FORMAT = "총 수익률은 %.1f%%입니다.";
     private static final String WINNING_STATISTICS_OUTPUT_MESSAGE = "당첨 통계\n---";
 
     public void printPurchaseDetails(List<Lotto> lottoTickets) {
@@ -45,7 +45,7 @@ public class OutputView {
             if(rank.condition().equals("꽝")){
                 continue;
             }
-            String output = rank.condition() + " (" + rank.winningAmount() + "원) - " + winningStatistics.get(rank) + "개";
+            String output = rank.condition() + " (" + rank.printingFormatOfAmount() + ") - " + winningStatistics.get(rank) + "개";
             System.out.println(output);
         }
     }

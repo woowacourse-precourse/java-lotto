@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.constant.Rank;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class Lotto {
         validator.checkNumbersDuplication(numbers);
         validator.checkNumbersRange(numbers);
 
-        this.numbers = numbers;
+        this.numbers = new ArrayList<>(numbers);
         sortInAscendingOrder();
     }
 
