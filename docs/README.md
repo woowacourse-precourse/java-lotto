@@ -7,14 +7,14 @@
 
 <br><br>
 ### 기능목록
-- 로또 당첨 번호 6자리를 입력받는다 [ ] - LottoManager#GenerateLottoNumbers()
-- 보너스 번호를 입력받는다 [ ] -  LottoManager#GenerateBonusNumber()
+- 로또 당첨 번호 6자리를 입력받는다 [ x ] - LottoManager#GenerateLottoNumbers()
+- 보너스 번호를 입력받는다 [ x ] -  LottoManager#GenerateBonusNumber()
 
 
-- 사용자의 로또를 발행한다 [ ] - LottoManager#GenerateRandomNumbers()
-- 사용자로부터 금액을 입력받는다 [ ] - LottoManager#getMoney()
-- 6자리 로또를 오름차순 정렬한다 [ ] - LottoManager#sortLottoNumbers()
-- 금액에 맞는 양 만큼 로또를 발행한다 [ ] - LottoManager#publishLottoForPrice()
+- 사용자의 로또를 발행한다 [ x ] - LottoManager#GenerateRandomNumbers()
+- 사용자로부터 금액을 입력받는다 [ x ] - LottoManager#getMoney()
+- 6자리 로또를 오름차순 정렬한다 [ x ] - LottoManager#sortLottoNumbers()
+- 금액에 맞는 양 만큼 로또를 발행한다 [ x ] - LottoManager#publishLottoForPrice()
 
 
 - 당첨번호와 사용자가 가진 로또들을 비교할 수 있다 [ ] - Referee#compare()
