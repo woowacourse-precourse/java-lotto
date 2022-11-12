@@ -3,7 +3,7 @@ package lotto;
 import java.util.Arrays;
 
 public enum LottoInformation {
-    OTHER(0, false, 0L),
+    OTHERS(0, false, 0L),
     FIFTH(3, false, 5_000L),
     FOURTH(4, false, 50_000L),
     THIRD(5, false, 1_500_000L),
@@ -45,7 +45,7 @@ public enum LottoInformation {
         return Arrays.stream(values())
                 .filter(lottoInformation -> lottoInformation.validateMatchNumber(matchNumber) && lottoInformation.validateMatchBonus(matchBonus))
                 .findFirst()
-                .orElse(LottoInformation.OTHER);
+                .orElse(LottoInformation.OTHERS);
     }
 
     private boolean validateMatchBonus(boolean matchBonus) {
