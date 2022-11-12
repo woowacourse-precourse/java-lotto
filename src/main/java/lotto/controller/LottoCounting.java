@@ -18,8 +18,8 @@ public class LottoCounting {
     // 당첨된
     public Map<Integer,Integer> countWinningPaper(Map<Lotto,Integer> countedLotto,Lotto winningLotto,int bonusNumber){
         Map<Integer,Integer> countedWinningPaper = new HashMap<>();
-        countedLotto.forEach((key,value) -> {
-            addOneWinningPrize(countedWinningPaper,value,winningLotto,bonusNumber);
+        countedLotto.forEach((lottoPaper,lottoRanking) -> {
+            addOneWinningPrize(countedWinningPaper,lottoRanking,winningLotto,bonusNumber);
         });
         return countedWinningPaper;
     }
@@ -41,7 +41,7 @@ public class LottoCounting {
         lottoBox.put(oneLottoPaper,howManyNumbersCorrect);
     }
 
-    int compareLottoAndCount(Lotto oneLottoPaper, Lotto winningLotto){
+    private int compareLottoAndCount(Lotto oneLottoPaper, Lotto winningLotto){
         int lottoCount = 0;
         List<Integer> lottoNumbers = oneLottoPaper.getNumbers();
         for (Integer oneLottoNumber : lottoNumbers) {
