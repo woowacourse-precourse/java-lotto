@@ -23,6 +23,6 @@ public class OutputConsole {
         consolelog.println("5개 일치 (1,500,000원) - " + winningHistory.getThirdCount() + "개");
         consolelog.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + winningHistory.getSecondCount() + "개");
         consolelog.println("6개 일치 (2,000,000,000원) - " + winningHistory.getFirstCount() + "개");
-        consolelog.println("총 수익률은 " + winningHistory.getYield() +"%입니다.");
+        consolelog.println("총 수익률은 " + String.format("%.1f", winningHistory.getYield()) + "%입니다.");
     }
 }

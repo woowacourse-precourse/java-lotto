@@ -24,13 +24,17 @@ public class WinningHistory {
             WinningRule winningRule = checkWinning(result);
             if (winningRule == WinningRule.FIRST) {
                 firstCount++;
-            } else if (winningRule == WinningRule.SECOND) {
+            }
+            if (winningRule == WinningRule.SECOND) {
                 secondCount++;
-            } else if (winningRule == WinningRule.THIRD) {
+            }
+            if (winningRule == WinningRule.THIRD) {
                 thirdCount++;
-            } else if (winningRule == WinningRule.FOURTH) {
+            }
+            if (winningRule == WinningRule.FOURTH) {
                 fourthCount++;
-            } else if (winningRule == WinningRule.FIFTH) {
+            }
+            if (winningRule == WinningRule.FIFTH) {
                 fifthCount++;
             }
             winningAmount += winningRule.winningAmount();
