@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -11,6 +13,22 @@ public class LottoDesignator {
     private static final String INT_REGEX = "^[0-9]*$";
     private static final int CIPHER = 6;
     private static final int RANGE = 45;
+
+    public List<Integer> inputLotto() {
+        String input = Console.readLine();
+        List<Integer> lotto = changeList(input);
+
+        try {
+            checkOnlyNumber(input);
+            checkSixCipher(input);
+            checkRange(input);
+            checkDuplication(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return lotto;
+    }
 
     public void checkOnlyNumber(String input) {
         String lotto = Arrays
