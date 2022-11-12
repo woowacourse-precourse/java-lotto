@@ -1,5 +1,6 @@
 package lotto.domain.statistics;
 
+import lotto.domain.money.Money;
 import lotto.domain.rank.Rank;
 import lotto.domain.yield.Yield;
 
@@ -20,7 +21,7 @@ public class Statistics {
         this.yield = yield;
     }
 
-    public static Statistics of(int principal, List<Rank> ranks) {
+    public static Statistics of(Money money, List<Rank> ranks) {
 
         Map<Rank, Long> result = ranks.stream()
                 .collect(Collectors.groupingBy(r -> r, counting()));
@@ -31,7 +32,7 @@ public class Statistics {
 
         return new Statistics(
                 result,
-                Yield.calculate(principal, totalReword)
+                Yield.calculate(money.value(), totalReword)
         );
     }
 

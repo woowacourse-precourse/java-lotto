@@ -1,5 +1,6 @@
 package lotto.domain.statistics;
 
+import lotto.domain.money.Money;
 import lotto.domain.rank.Rank;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,7 @@ class StatisticsTest {
     @DisplayName("통계는 원금과 당첨 등수들을 통해 생성된다.")
     void createByPrincipleAndRanks() {
         // given
-        int principle = 8000;
+        Money principle = Money.valueOf(8000);
         List<Rank> ranks = List.of(FIFTH, FIFTH, UNWINNABLE, SECOND, THIRD, FIFTH, FOURTH);
 
         // when, then
@@ -28,7 +29,7 @@ class StatisticsTest {
     @DisplayName("통계로부터 몇등이 몇번 당첨되었는지 확인할 수 있다.")
     void checkNumberOfWins() {
         // given
-        int principle = 8000;
+        Money principle = Money.valueOf(8000);
         List<Rank> ranks = List.of(FIFTH, FIFTH, UNWINNABLE, SECOND, THIRD, FIFTH, FOURTH);
         Statistics statistics = Statistics.of(principle, ranks);
 
@@ -43,7 +44,7 @@ class StatisticsTest {
     @DisplayName("통계로부터 수익률을 받아올 수 있다.")
     void getYield() {
         // given
-        int principle = 8000;
+        Money principle = Money.valueOf(8000);
         List<Rank> ranks = List.of(FIFTH);
         Statistics statistics = Statistics.of(principle, ranks);
 
