@@ -14,7 +14,7 @@ class WinningNumberParserTest {
     @DisplayName("1,2,3,4,5,6 형태의 문자열 값을 받아 List<Integer>로 반환한다.")
     @Test
     void formattedNumberToIntegerList() {
-        List<Integer> numbers = WinningNumberParser.numbers("1,2,3,4,5,6");
+        List<Integer> numbers = WinningNumberParser.winningNumbers("1,2,3,4,5,6");
         assertThat(numbers).hasSize(6);
     }
 
@@ -26,7 +26,7 @@ class WinningNumberParserTest {
             "1,2,3,4,5,6,7,8"})
     void fail(String inputValue) {
         assertThatThrownBy(
-                () -> WinningNumberParser.numbers(inputValue))
+                () -> WinningNumberParser.winningNumbers(inputValue))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("올바른 당첨 번호 포맷이 아닙니다.");
     }
