@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -58,8 +59,11 @@ public class Application {
             System.out.println(
                 "6개 일치 (" + WinningAmount.FIRST_PLACE.getAmountToDecimalFormatString() + "원) - "
                     + calculateResult.get(0) + "개");
-            System.out.println(
-                "총 수익률은 " + String.format("%.1f", getYield(lottoCount, calculateResult)) + "%입니다.");
+
+            double yield = getYield(lottoCount, calculateResult);
+            DecimalFormat decFormat = new DecimalFormat("###,###.#");
+
+            System.out.println("총 수익률은 " + decFormat.format(yield) + "%입니다.");
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
