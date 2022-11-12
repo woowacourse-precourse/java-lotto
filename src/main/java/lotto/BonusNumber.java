@@ -9,7 +9,7 @@ public class BonusNumber {
 
     public BonusNumber(String bonusNumber, Lotto lottoNumbers) {
         validate(bonusNumber, lottoNumbers);
-        this.bonusNumber = 0;
+        this.bonusNumber = convertStringToInt(bonusNumber);
     }
 
     public int getBonusNumber() {
