@@ -66,6 +66,11 @@ public enum Prize
         return PRIZE_VALUES.getOrDefault(correctCount,null);
     }
 
+    public static List<Prize> getValues()
+    {
+        return List.of(First,Second,Third,Fourth,Fifth);
+    }
+
     @Override
     public String toString()
     {
