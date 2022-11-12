@@ -80,7 +80,20 @@ public class LottoService {
 
         if(LottoRank.WIN_LOTTO_6.getCount() == player.getLottoCount())
             player.getWinningLottoCount().put(LottoRank.WIN_LOTTO_6 , player.getWinningLottoCount().getOrDefault(LottoRank.WIN_LOTTO_6,0) + 1);
+    }
 
+    public void lookForPlayerLottoRevenue(Player player){
+        int countWinningLottoThree = player.getWinningLottoCount().getOrDefault(LottoRank.WIN_LOTTO_3,0);
+        int countWinningLottoFour = player.getWinningLottoCount().getOrDefault(LottoRank.WIN_LOTTO_4,0);
+        int countWinningLottoFive = player.getWinningLottoCount().getOrDefault(LottoRank.WIN_LOTTO_5,0);
+        int countWinningLottoFiveAndBonus = player.getWinningLottoCount().getOrDefault(LottoRank.WIN_LOTTO_5_BONUS,0);
+        int countWinningLottoSix = player.getWinningLottoCount().getOrDefault(LottoRank.WIN_LOTTO_6,0);
+
+        player.addLottoRevenue(countWinningLottoThree * LottoReward.REWARD_LOTTO_3.getReward());
+        player.addLottoRevenue(countWinningLottoFour * LottoReward.REWARD_LOTTO_4.getReward());
+        player.addLottoRevenue(countWinningLottoFive * LottoReward.REWARD_LOTTO_5.getReward());
+        player.addLottoRevenue(countWinningLottoFiveAndBonus * LottoReward.REWARD_LOTTO_5_BONUS.getReward());
+        player.addLottoRevenue(countWinningLottoSix * LottoReward.REWARD_LOTTO_6.getReward());
     }
 
     public void initializePlayerLottoCount(Player player){
