@@ -44,5 +44,4 @@ public class LottoController {
     public void printPurchasedLotto(){
         viewService.printPurchasedLotto();
     }
-
 }

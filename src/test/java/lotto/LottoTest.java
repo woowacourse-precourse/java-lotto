@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.Lotto;
+import lotto.presentation.dto.BonusNumber;
 import lotto.presentation.dto.PurchaseAmount;
 import lotto.presentation.dto.WinnerNumber;
 import org.junit.jupiter.api.DisplayName;
@@ -86,6 +87,28 @@ class LottoTest {
     void 당첨번호_중복_테스트() {
         // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> new WinnerNumber("1,1,3,4,5,6"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 숫자가 아닌 경우 예외가 발생한다.")
+    @Test
+    void 보너스번호_숫자_테스트() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        assertThatThrownBy(() -> new BonusNumber("q"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("보너스번호의 숫자가 1~45 사이가 아닌 경우 예외가 발생한다.")
+    @Test
+    void 보너스번호_범위_테스트() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        assertThatThrownBy(() -> new BonusNumber("46"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("보너스번호의 숫자가 1자리가 아닌 경우 예외가 발생한다.")
+    @Test
+    void 보너스번호_자리수_테스트() {
+        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+        assertThatThrownBy(() -> new  BonusNumber("44,1"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
