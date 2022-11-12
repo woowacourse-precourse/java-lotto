@@ -7,6 +7,4 @@ public class MoneyConstants {
 
     public static final int LOTTO_PRICE =1000;
     public static final int TO_PERCENTAGE=100;
-    public static final double TO_ROUND=10.0;
-
 }

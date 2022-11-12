@@ -19,8 +19,8 @@ public class Money {
         return this.money / LOTTO_PRICE;
     }
 
-    public double calculateProfitRate(Result result) {
-        return Math.round((double)result.calculateProfit()/this.money *TO_PERCENTAGE*TO_ROUND)/TO_ROUND;
+    public String calculateProfitRate(Result result) {
+        return String.format("%.1f",(double)result.calculateProfit()/this.money *TO_PERCENTAGE);
     }
 
     private void validate(String userInput){
