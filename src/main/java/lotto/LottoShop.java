@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -11,6 +12,16 @@ public class LottoShop {
 
     public int buyLotto(){
         return checkMoney(lottoConsole.inputMoney());
+    }
+
+    public List<Lotto> generateLottoList(int money) {
+        int numberOfLotto = money/1000;
+        List<Lotto> lottoList = new ArrayList<>();
+        while(numberOfLotto!=0){
+            lottoList.add(generateLotto());
+            --numberOfLotto;
+        }
+        return lottoList;
     }
 
     private Lotto generateLotto(){
