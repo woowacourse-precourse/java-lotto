@@ -11,7 +11,9 @@ public class Application {
             startMessage();
             Money money = new Money(Console.readLine());
 
+            LottoGenerator lottoList = new LottoGenerator(money.getLottoCount());
             getLottosMessage();
+
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] "+e.getMessage());
         }
