@@ -3,15 +3,12 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class Chatbot {
 
     public String askPrice() {
         System.out.println("구입금액을 입력해 주세요.");
-
         return Console.readLine();
     }
 
@@ -27,19 +24,22 @@ public class Chatbot {
     public List<Integer> askLottoNumber() {
         System.out.println();
         System.out.println("당첨 번호를 입력해 주세요.");
-        String[] input = Console.readLine().split(",");
 
+        String[] input = Console.readLine().split(",");
         List<Integer> lotto = new ArrayList<Integer>();
-        for (int i = 0; i < input.length; i++) {
-            lotto.add(Integer.parseInt(input[i]));
+
+        for (String s : input) {
+            lotto.add(Integer.parseInt(s));
         }
         return lotto;
     }
 
     public int askLottoBonus() {
+        int bonus;
+
         System.out.println();
         System.out.println("보너스 번호를 입력해 주세요.");
-        int bonus;
+
         try {
             bonus = Integer.parseInt(Console.readLine());
         } catch (Exception e) {
@@ -49,12 +49,13 @@ public class Chatbot {
     }
 
     public void printResult(double rate, List<Integer> result) {
+        String formattedRate = String.format("%,.1f", rate);
         System.out.println("\n당첨 통계\n" +
                 "---\n3개 일치 (5,000원) - " + result.get(Application.three.getValue()) + "개\n" +
                 "4개 일치 (50,000원) - " + result.get(Application.four.getValue()) + "개\n" +
                 "5개 일치 (1,500,000원) - " + result.get(Application.five.getValue()) + "개\n" +
                 "5개 일치, 보너스 볼 일치 (30,000,000원) - " + result.get(Application.bonusMatch.getValue()) + "개\n" +
                 "6개 일치 (2,000,000,000원) - " + result.get(Application.six.getValue()) + "개\n" +
-                "총 수익률은 " + rate + "%입니다.");
+                "총 수익률은 " + formattedRate + "%입니다.");
     }
 }

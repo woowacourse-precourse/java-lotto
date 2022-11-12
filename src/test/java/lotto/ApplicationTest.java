@@ -10,7 +10,6 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -119,31 +118,31 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 일치하는_숫자_개수_테스트() {
-        Lotto lotto=new Lotto(List.of(3,4,5,6,7,8));
-        int result=Application.countSameNum(List.of(1,2,3,4,5,6),lotto,10);
+        Lotto lotto = new Lotto(List.of(3, 4, 5, 6, 7, 8));
+        int result = Application.countSameNum(List.of(1, 2, 3, 4, 5, 6), lotto, 10);
         assertThat(result).isEqualTo(4);
     }
 
     @Test
     void 당첨_로또_개수_테스트() {
-        Lotto lotto=new Lotto(List.of(3,4,5,6,7,8));
-        List<List<Integer>> userNumber=new ArrayList<>();
+        Lotto lotto = new Lotto(List.of(3, 4, 5, 6, 7, 8));
+        List<List<Integer>> userNumber = new ArrayList<>();
         List<Integer> result;
-        userNumber.add(List.of(1,5,6,8,23,30));
-        userNumber.add(List.of(3,4,5,6,11,30));
-        result=Application.getNumberOfWin(userNumber,lotto,10);
-        assertThat(result).isEqualTo(List.of(0,0,0,1,1,0,0,0));
+        userNumber.add(List.of(1, 5, 6, 8, 23, 30));
+        userNumber.add(List.of(3, 4, 5, 6, 11, 30));
+        result = Application.getNumberOfWin(userNumber, lotto, 10);
+        assertThat(result).isEqualTo(List.of(0, 0, 0, 1, 1, 0, 0, 0));
     }
 
     @Test
     void 수익률_계산_테스트() {
-        Lotto lotto=new Lotto(List.of(3,4,5,6,7,8));
-        List<List<Integer>> userNumber=new ArrayList<>();
+        Lotto lotto = new Lotto(List.of(3, 4, 5, 6, 7, 8));
+        List<List<Integer>> userNumber = new ArrayList<>();
         List<Integer> result;
-        userNumber.add(List.of(1,5,6,8,23,30));
-        userNumber.add(List.of(3,4,5,6,11,30));
-        result=Application.getNumberOfWin(userNumber,lotto,10);
-        String rate=Application.calculateRate(2000,result)+"";
+        userNumber.add(List.of(1, 5, 6, 8, 23, 30));
+        userNumber.add(List.of(3, 4, 5, 6, 11, 30));
+        result = Application.getNumberOfWin(userNumber, lotto, 10);
+        String rate = Application.calculateRate(2000, result) + "";
         assertThat(rate).isEqualTo("2750.0");
     }
 

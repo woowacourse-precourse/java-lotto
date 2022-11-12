@@ -68,7 +68,7 @@ public class Application {
         }
         int lottoPrice = Integer.parseInt(price);
         if (lottoPrice <= 0) {
-            throw new IllegalArgumentException("입력값이 범위를 벗어났습니다.(1,000 이상 2,147,483,000 이하)");
+            throw new IllegalArgumentException("입력값이 범위를 벗어났습니다.");
         }
         if (lottoPrice % ONE_THOUSAND != 0) {
             throw new IllegalArgumentException("입력값이 1,000원으로 나누어 떨어지지 않습니다.");
@@ -79,16 +79,12 @@ public class Application {
     public static List<List<Integer>> issueUserLotto(int amount) {
         List<List<Integer>> userNumber = new ArrayList<>();
 
-
         for (int i = 0; i < amount; i++) {
-            List<Integer> tmpUserNumber=Randoms.pickUniqueNumbersInRange(STARTINCLUSIVE, ENDINCLUSIVE, COUNT);
-            List<Integer> list=new ArrayList<Integer>();
-
-
-            for(int j=0;j<COUNT;j++){
+            List<Integer> tmpUserNumber = Randoms.pickUniqueNumbersInRange(START_INCLUSIVE, END_INCLUSIVE, COUNT);
+            List<Integer> list = new ArrayList<Integer>();
+            for (int j = 0; j < COUNT; j++) {
                 list.add(tmpUserNumber.get(j));
             }
-
             Collections.sort(list);
             userNumber.add(list);
         }
@@ -96,8 +92,7 @@ public class Application {
     }
 
     public static int validateLottoBonus(Lotto lotto, int bonus) {
-
-        if (!(STARTINCLUSIVE <= bonus && bonus <= ENDINCLUSIVE)) {
+        if (!(START_INCLUSIVE <= bonus && bonus <= END_INCLUSIVE)) {
             throw new IllegalArgumentException("보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
         for (int i = 0; i < lotto.getLottoNumber().size(); i++) {
@@ -111,15 +106,14 @@ public class Application {
     public static List<Integer> getNumberOfWin(List<List<Integer>> userNumber, Lotto lotto, int bonus) {
         List<Integer> result = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0));
 
-        for (int i = 0; i < userNumber.size(); i++) {
-            int countSameNum = countSameNum(userNumber.get(i), lotto, bonus);
+        for (List<Integer> userEachNumber : userNumber) {
+            int countSameNum = countSameNum(userEachNumber, lotto, bonus);
             result.set(countSameNum, result.get(countSameNum) + 1);
         }
         return result;
     }
 
     public static int countSameNum(List<Integer> userEachNumber, Lotto lotto, int bonus) {
-        List<Integer> result = new ArrayList<Integer>();
         int count = 0;
 
         for (int i = 0; i < COUNT; i++) {
@@ -134,13 +128,13 @@ public class Application {
     }
 
     public static double calculateRate(int price, List<Integer> result) {
-
         long prizeMoney = result.get(three.getValue()) * three.getPrize()
                 + result.get(four.getValue()) * four.getPrize()
                 + result.get(five.getValue()) * five.getPrize()
                 + result.get(bonusMatch.getValue()) * bonusMatch.getPrize()
                 + result.get(six.getValue()) * six.getPrize();
         double cal = prizeMoney / (double) price * 100;
+
         return (int) (cal * 10 + 0.5) / 10d;
     }
 }

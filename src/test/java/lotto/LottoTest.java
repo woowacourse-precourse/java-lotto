@@ -17,7 +17,7 @@ class LottoTest {
 
     @DisplayName("로또 번호가 1부터 45 사이의 숫자가 아니면 예외가 발생한다.")
     @Test
-    void createLottoByWrongScope() {
+    void createLottoOutOfScope() {
         assertThatThrownBy(() -> new Lotto(List.of(0, 2, 3, 4, 5, 7)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
