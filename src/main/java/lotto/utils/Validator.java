@@ -7,16 +7,16 @@ public class Validator {
     private static final String INPUT_NUMBER_REGEX = "^[0-9]*$";
     public void isValidMoney(String input) {
         if(!isNumber(input)) {
-            throw new IllegalArgumentException(ErrorMessage.MONEY_IS_NOT_NUMBER.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.MONEY_IS_NOT_NUMBER.toString());
         }
         if(isZero(input)) {
-            throw new IllegalArgumentException(ErrorMessage.MONEY_IS_ZERO.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.MONEY_IS_ZERO.toString());
         }
         if(isEnteredSpace(input)){
-            throw new IllegalArgumentException(ErrorMessage.MONEY_IS_NOT_ENTERED.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.MONEY_IS_NOT_ENTERED.toString());
         }
         if(!is1000Units(Integer.parseInt(input))) {
-            throw new IllegalArgumentException(ErrorMessage.MONEY_IS_NOT_1000_UNIT.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.MONEY_IS_NOT_1000_UNIT.toString());
         }
     }
 

@@ -22,7 +22,7 @@ class ValidatorTest {
         //when
         Exception exception = assertThrows(IllegalArgumentException.class, () -> validator.isValidMoney(input));
         //then
-        assertThat(exception.getMessage()).isEqualTo(ErrorMessage.MONEY_IS_NOT_NUMBER.getMessage());
+        assertThat(exception.getMessage()).isEqualTo(ErrorMessage.MONEY_IS_NOT_NUMBER.toString());
     }
 
     @Test
@@ -32,7 +32,7 @@ class ValidatorTest {
         //when
         Exception exception = assertThrows(IllegalArgumentException.class, () -> validator.isValidMoney(input));
         //then
-        assertThat(exception.getMessage()).isEqualTo(ErrorMessage.MONEY_IS_ZERO.getMessage());
+        assertThat(exception.getMessage()).isEqualTo(ErrorMessage.MONEY_IS_ZERO.toString());
     }
 
     @Test
@@ -42,7 +42,7 @@ class ValidatorTest {
         //when
         Exception exception = assertThrows(IllegalArgumentException.class, () -> validator.isValidMoney(input));
         //then
-        assertThat(exception.getMessage()).isEqualTo(ErrorMessage.MONEY_IS_NOT_ENTERED.getMessage());
+        assertThat(exception.getMessage()).isEqualTo(ErrorMessage.MONEY_IS_NOT_ENTERED.toString());
     }
 
     @Test
@@ -52,6 +52,6 @@ class ValidatorTest {
         //when
         Exception exception = assertThrows(IllegalArgumentException.class, () -> validator.isValidMoney(input));
         //then
-        assertThat(exception.getMessage()).isEqualTo(ErrorMessage.MONEY_IS_NOT_1000_UNIT.getMessage());
+        assertThat(exception.getMessage()).isEqualTo(ErrorMessage.MONEY_IS_NOT_1000_UNIT.toString());
     }
 }
