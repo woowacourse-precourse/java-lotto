@@ -11,9 +11,9 @@ public class Validator {
     }
 
     public int changeNumber(String money) {
-        try{
+        try {
             return Integer.parseInt(money);
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new IllegalArgumentException(INVALID_MONEY);
         }
     }
@@ -26,11 +26,11 @@ public class Validator {
 
     }
 
-    public static void checkValidNumber(int number){
+    public static void checkValidNumber(int number) {
 
     }
 
-    public static void checkDuplication(List<Integer> numbers, int number){
+    public static void checkDuplication(List<Integer> numbers, int number) {
 
     }
 

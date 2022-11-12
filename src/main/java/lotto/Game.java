@@ -10,7 +10,7 @@ public class Game {
     private static InputView inputView;
     private static OutputView outputView;
 
-    public Game(){
+    public Game() {
         inputView = new InputView();
         outputView = new OutputView();
     }
