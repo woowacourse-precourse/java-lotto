@@ -20,7 +20,7 @@ public class LottoStarter {
         Lotto.getGeneratedLottoNumber(generatedLottoNumber);
         List<Integer> winningLotto = Lotto.inputWinningLottoNumbers();
         Lotto lotto = new Lotto(winningLotto);
-        int bonusWinningNumber = lotto.inputWinningBonusNumber(winningLotto);
+        int bonusWinningNumber = lotto.inputWinningLottoBonusNumber(winningLotto);
 
         List<List<Integer>> matchResult = lottoHost.matchWinningLotto(
                 generatedLottoNumber, winningLotto, bonusWinningNumber);
