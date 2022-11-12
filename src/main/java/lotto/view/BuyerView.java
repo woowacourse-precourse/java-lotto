@@ -13,7 +13,6 @@ public class BuyerView {
     private static final String ERROR_NOT_INT = "[ERROR] 숫자만 입력 가능합니다.";
     private static final String ERROR_NUMBERS = "[ERROR] 숫자,숫자 형식을 맞춰주세요.";
     private static final String REGEX_INT = "^[0-9]+$";
-    private static final int MIN_BUY_UNIT = 1_000;
 
     public static int inputMoney() {
         System.out.println(MESSAGE_INPUT_MONEY);
@@ -32,7 +31,7 @@ public class BuyerView {
     }
 
     private static void isValidMoneyInput(String input) {
-        if (!isDigit(input) || !isBuyUnit(input)) {
+        if (!isDigit(input)) {
             throw new IllegalArgumentException(ERROR_NOT_INT);
         }
     }
@@ -41,9 +40,6 @@ public class BuyerView {
         return Pattern.matches(REGEX_INT, input);
     }
 
-    private static boolean isBuyUnit(String input) {
-        return Integer.parseInt(input) % MIN_BUY_UNIT == 0;
-    }
 
     private static void isValidNumbers(String input) {
         if (!Arrays.stream(input.split(",")).allMatch(BuyerView::isDigit)) {
