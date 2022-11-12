@@ -1,16 +1,25 @@
 package lotto.domain;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Calculator {
 
+    private final Map<Rank, Integer> rankCounts = new HashMap<>();
+
     public Calculator(WinningNumbers winningNumbers, List<Lotto> lottos) {
+        for (Rank rank : Rank.values()) {
+            rankCounts.put(rank, 0);
+        }
         calculate(winningNumbers, lottos);
     }
 
     private void calculate(WinningNumbers winningNumbers, List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
             Rank rank = calculateRank(winningNumbers, lotto);
+            Integer count = rankCounts.get(rank);
+            rankCounts.put(rank, count + 1);
         }
     }
 
