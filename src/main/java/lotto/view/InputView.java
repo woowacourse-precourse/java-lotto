@@ -40,9 +40,7 @@ public class InputView {
 
     public static Lotto inputWinningNumbers() {
         System.out.println(ASK_WINNING_NUMBERS);
-
         String winningNumbers = Console.readLine();
-        checkInputWinningNumbers(winningNumbers);
 
         return new Lotto(convertToList(winningNumbers));
     }
@@ -54,23 +52,13 @@ public class InputView {
         return bonusNumber;
     }
 
-    private static void checkInputWinningNumbers(String inputWinningNumbers) {
-        checkDelimiter(inputWinningNumbers);
-    }
-
-    private static void checkDelimiter(String inputWinningNumbers) {
-        if ((int)countDelimiter(inputWinningNumbers) != 5) {
+    private static List<Integer> convertToList(String inputWinningNumbers) {
+        try {
+            return Arrays.stream(inputWinningNumbers.split(DELIMITER))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
             throw new IllegalArgumentException(WINNING_NUMBERS_DELIMITER_ERROR);
         }
-    }
-
-    private static long countDelimiter(String inputWinningNumbers) {
-        return inputWinningNumbers.chars().filter(ch -> ch == DELIMITER.charAt(0)).count();
-    }
-
-    private static List<Integer> convertToList(String inputWinningNumbers) {
-        return Arrays.stream(inputWinningNumbers.split(DELIMITER))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
     }
 }
