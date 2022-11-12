@@ -21,7 +21,7 @@ public class Application {
         Draw draw = new Draw(winnerLotto, bonusNumber);
 
         Integer winnings = draw.resultLottery(lottos);
-
+        money.viewYield(winnings);
     }
 
     public static List<Lotto> generateLottos(int count) {
