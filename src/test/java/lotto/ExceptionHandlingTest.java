@@ -1,9 +1,9 @@
-import lotto.ExceptionHandling;
+package lotto;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ExceptionHandlingTest {
 
@@ -11,15 +11,23 @@ class ExceptionHandlingTest {
     @Test
     void notDivideException() {
         ExceptionHandling exceptionHandling = new ExceptionHandling();
-        assertThatThrownBy(() -> exceptionHandling.notDivideException(3000000000L))
+        assertThatThrownBy(() -> exceptionHandling.notDivide(3000000000L))
                 .isInstanceOf(IllegalArgumentException.class);
     }
     
-    @DisplayName("숫자인지 검사")
+    @DisplayName("숫자인지 검사, 숫자가 아니면 IllegalArgumentException을 발생시킴")
     @Test
     void isNumeric(){
         ExceptionHandling exceptionHandling = new ExceptionHandling();
         assertThatThrownBy(() -> exceptionHandling.isNumeric("123$"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    
+    @DisplayName("1 ~ 45사이의 숫자인지 검사")
+    @Test
+    void outRangeLottoNumber(){
+        ExceptionHandling exceptionHandling = new ExceptionHandling();
+        assertThatThrownBy(()->exceptionHandling.outRangeLottoNumber("46"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
