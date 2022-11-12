@@ -11,19 +11,19 @@ public class LottoSystem {
     private UserLotto userLotto;
 
     public void startLottoSystem() {
-        int lottoQuantity = LottoQuantityCalculation();
+        int userMoney = Integer.parseInt(inputView.inputUserMoney());
+        int lottoQuantity = LottoQuantityCalculation(userMoney);
         outputView.printQuantity(lottoQuantity);
         makeUserLottos(lottoQuantity);
-
+        outputView.printLottoNumber(userLotto);
     }
 
-    private void makeUserLottos(int lottoQuantity) {
+    public void makeUserLottos(int lottoQuantity) {
         userLotto = new UserLotto();
         userLotto.setLottos(lottoQuantity);
     }
 
-    private int LottoQuantityCalculation() {
-        int userMoney = Integer.parseInt(inputView.inputUserMoney());
+    public int LottoQuantityCalculation(int userMoney) {
         return userMoney / LOTTO_PRICE;
     }
 }
