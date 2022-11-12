@@ -14,10 +14,10 @@ public class Wallet {
     public Wallet(int numberOfPurchase) {
         this.numberOfPurchase = numberOfPurchase;
         initialize();
-        buyLotto();
+        pickLottos();
     }
 
-    private void buyLotto() {
+    private void pickLottos() {
         for (int i = 0; i < numberOfPurchase; i++) {
             lottos.add(pickRandomNumber());
         }
