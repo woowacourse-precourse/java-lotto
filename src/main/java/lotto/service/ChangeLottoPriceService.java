@@ -15,7 +15,7 @@ public class ChangeLottoPriceService {
     }
 
     private boolean isFourMatch(Ranking ranking){
-        return false;
+        return ranking.equals(Ranking.FOUR_MATCH);
     }
 
     private boolean isFiveMatch(Ranking ranking){
