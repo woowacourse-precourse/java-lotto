@@ -52,6 +52,7 @@ public class InputLottoPurchaseAmountTest {
 
 	@Nested
 	class SuccessTest {
+		
 		@Test
 		@DisplayName("구입금액 숫자 유효성 검증 성공 테스트: 숫자만 입력")
 		void inputNumericLottoPurchaseAmount() {
@@ -64,6 +65,19 @@ public class InputLottoPurchaseAmountTest {
 			assertThatNoException().isThrownBy(() -> validateNumeric(lottoPurchaseAmountOne));
 			assertThatNoException().isThrownBy(() -> validateNumeric(lottoPurchaseAmountTwo));
 			assertThatNoException().isThrownBy(() -> validateNumeric(lottoPurchaseAmountThree));
+		}
+		
+		@Test
+		@DisplayName("구입금액 최소금액 유효성 검증 성공 테스트: 1000원 이상 입력")
+		void inputInRangeLottoPurchaseAmount() {
+			// given, when
+			int lottoPurchaseAmountOne = 1000;
+			int lottoPurchaseAmountTwo = 124011;
+			
+			// then
+			assertThatNoException().isThrownBy(() -> validatePurchaseAmountRange(lottoPurchaseAmountOne));
+			assertThatNoException().isThrownBy(() -> validatePurchaseAmountRange(lottoPurchaseAmountTwo));
+			
 		}
 	}
 }
