@@ -17,7 +17,9 @@ public class Output {
     private List<Integer> rankNumber; //1등~5등 각각 해당 로또 수
 
     private final static int unitPrice = 1000;
+
     private final static int changePercent = 100;
+
     private final static Profit[] rank = new Profit[]{One, Two, Three, Four, Five};
 
     public Output() {
@@ -48,7 +50,9 @@ public class Output {
 
     public void setRankList() {
         for(int i = 0; i < lottos.getLottos().size(); i++) {
-            rankNumber.set(checkOneLottoRank(i)-1, rankNumber.get(checkOneLottoRank(i)-1)+1);
+            if( checkOneLottoRank(i) <= 5) {
+                rankNumber.set(checkOneLottoRank(i)-1, rankNumber.get(checkOneLottoRank(i)-1)+1);
+            }
         }
     }
 
@@ -57,13 +61,18 @@ public class Output {
             System.out.println(rank[i].getPrint()+" - " + rankNumber.get(i)+"개");
         }
     }
-    public void printProfitRate() {
+
+    public int calcProfitRate() {
         int entirePurchaseLotto = input.getNumber() * unitPrice;
         int entireProfit = 0;
         for (int i = 0; i < rank.length; i++) {
             entireProfit += rankNumber.get(i) * rank[i].getPrize();
         }
-        System.out.println("총 수익률은 " + entireProfit / entirePurchaseLotto * changePercent + "%입니다.");
+        return (entireProfit / entirePurchaseLotto) * changePercent;
+    }
+
+    public void printProfitRate() {
+        System.out.println("총 수익률은 " + calcProfitRate() + "%입니다.");
     }
 
     public void printResult() {
