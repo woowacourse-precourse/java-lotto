@@ -29,9 +29,10 @@ public class Lotto {
             number.add(numbers.get(i));
         }
     }
+
     private void rangeOutvalidate(List<Integer> numbers) {
         for (int i = 1; i < numbers.size(); i++) {
-            if(numbers.get(i) > 45 ||  numbers.get(i) < 1){
+            if (numbers.get(i) > 45 || numbers.get(i) < 1) {
                 throw new IllegalArgumentException();
             }
         }
