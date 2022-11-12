@@ -3,7 +3,7 @@ package lotto.io;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
-import lotto.ValidateUtils;
+import lotto.utils.ValidateUtils;
 
 public class Input {
 

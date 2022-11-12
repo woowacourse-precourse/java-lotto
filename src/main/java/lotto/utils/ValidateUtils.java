@@ -1,4 +1,4 @@
-package lotto;
+package lotto.utils;
 
 import java.util.List;
 
@@ -12,8 +12,6 @@ public class ValidateUtils {
     private static final String VALIDATE_SIZE_INPUT = "당첨 번호는 %s개만 입력합니다.";
     private static final String VALIDATE_DUPLICATE_NUMBER = "중복된 당첨 번호는 입력할 수 없습니다.";
 
-    private static final int MONEY_UNIT = 1000;
-
     public static void checkTypeNumber(String money) {
         for (int i = 0; i < money.length(); i++) {
             if (!Character.isDigit(money.charAt(i))) {
@@ -24,7 +22,7 @@ public class ValidateUtils {
     }
 
     public static void checkMoneyUnit(int money) {
-        if (money % MONEY_UNIT != 0) {
+        if (money % Constant.MONEY_UNIT != 0) {
             System.out.println(ERROR_MEESAGE_HEADER + VALIDATE_MONEY_UNIT);
             throw new IllegalArgumentException(String.format(ERROR_MEESAGE_HEADER + VALIDATE_MONEY_UNIT));
         }
@@ -45,7 +43,7 @@ public class ValidateUtils {
     }
 
     public static void checkRangeNumber(int number) {
-        if (number < 1 || number > 45) {
+        if (number < Constant.NUMBER_START || number > Constant.NUMBER_END) {
             System.out.println(ERROR_MEESAGE_HEADER + VALIDATE_RANGE_ANSWER_NUMBER);
             throw new IllegalArgumentException(String.format(ERROR_MEESAGE_HEADER + VALIDATE_RANGE_ANSWER_NUMBER));
         }
