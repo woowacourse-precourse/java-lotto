@@ -36,6 +36,18 @@ public class PlayLotto extends Input {
         this.win_count = new ArrayList<>(List.of(0,0,0,0,0));
     }
 
+    public void play() { //한 사이클 실행
+        buy_lottery();
+        print_buy_lottery();
+        print_lottery_nums();
+        create_lotto();
+        create_bonus();
+        compare_lottery();
+        print_result(win_count);
+        print_yeild();
+
+    }
+
     public void buy_lottery(){ //사용자에게 복권 당첨 금액 입력받기
         out.buy_lottery();
         this.user.pay_Money();
@@ -115,3 +127,12 @@ public class PlayLotto extends Input {
         }
         return sum / user.getMoney() * 100;
     }
+
+    public static void main(String[] args) {
+        PlayLotto playLotto = new PlayLotto();
+
+    }
+
+
+
+}
