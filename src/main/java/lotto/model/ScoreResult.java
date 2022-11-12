@@ -24,4 +24,13 @@ public class ScoreResult{
         }
         return count;
     }
+
+    private MatchScore getScoreResult(List<Integer> computer, List<Integer> user){
+        for(int i=0; i<matchScores.size(); i++){
+            if(getScore(computer, user)==i){
+                return matchScores.get(i);
+            }
+        }
+        return Nothing;
+    }
 }
