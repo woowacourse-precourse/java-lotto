@@ -63,7 +63,7 @@ public class Draw {
     // 개별 Lotto별 Rank 판별
     private Rank tryLottoRank(Lotto tryLotto) {
         int winningCount = winningNumSize(tryLotto);
-        boolean bonusExist = isBonusExist(this.bonusNum);
+        boolean bonusExist = isBonusExist(tryLotto,this.bonusNum);
         Rank rank = this.rankClassification.get(winningCount);
 
         if (rank.equals(Rank.third)) {
@@ -91,11 +91,8 @@ public class Draw {
     }
 
     // tryLotto에서 bonusNum가 있는지 확인
-    private boolean isBonusExist(int bonusNum) {
-        Lotto winningLotto = this.winningLotto;
-        List<Integer> winningLottoNumbers = winningLotto.getNumbers();
-
-        if (winningLottoNumbers.contains(bonusNum)) {
+    private boolean isBonusExist(Lotto tryLotto, int bonusNum) {
+        if (tryLotto.getNumbers().contains(bonusNum)) {
             return true;
         }
         return false;
