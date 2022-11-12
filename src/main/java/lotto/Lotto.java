@@ -2,10 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static lotto.constant.Constants.*;
 
@@ -29,18 +26,24 @@ public class Lotto {
     }
 
     public static List<Integer> createLottoNumber() {
-        List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_COUNT);
-        Collections.sort(lottoNumber);
-        return lottoNumber;
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_COUNT);
+        return numbers;
     }
 
     public boolean isContained(int num) {
         return numbers.contains(num);
     }
 
-    @Override
-    public String toString() {
-        return numbers.toString();
+    public void printSortedLottoNumber() {
+        List<Integer> sortedNumbers = new ArrayList<>();
+        for (int i = 0; i < numbers.size(); i++) {
+            sortedNumbers.add(numbers.get(i));
+        }
+        Collections.sort(sortedNumbers);
+        System.out.println(sortedNumbers);
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }

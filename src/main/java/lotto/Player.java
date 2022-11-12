@@ -39,7 +39,7 @@ public class Player {
 
     private void printLottoNumber() {
         for (int i = 0; i < lottoSet.size(); i++) {
-            System.out.println(lottoSet.get(i));
+            lottoSet.get(i).printSortedLottoNumber();
         }
         System.out.println();
     }
