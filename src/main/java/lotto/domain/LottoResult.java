@@ -18,9 +18,9 @@ public enum LottoResult {
     private int numberOfMatches;
 
 
-    LottoResult(int payout, int matchingNumberCount) {
+    LottoResult(int payout, int numberOfMatches) {
         this.payout = payout;
-        this.numberOfMatches = matchingNumberCount;
+        this.numberOfMatches = numberOfMatches;
     }
 
     public int getPayout() {
@@ -34,14 +34,14 @@ public enum LottoResult {
     public static LottoResult of(Lotto lotto,
                                  List<Integer> winningNumbers,
                                  int bonusNumber) {
-        long matchingNumberCount = lotto.compareWinningNumbers(winningNumbers);
+        long numberOfMatches = lotto.compareWinningNumbers(winningNumbers);
 
-        if (matchingNumberCount == 5 && lotto.isContainBonusNumber(bonusNumber)) {
+        if (numberOfMatches == 5 && lotto.isContainBonusNumber(bonusNumber)) {
             return FIVE_WITH_BONUS;
         }
 
         return Arrays.stream(LottoResult.values())
-                .filter(lottoResult -> lottoResult.getNumberOfMatches() == matchingNumberCount)
+                .filter(lottoResult -> lottoResult.getNumberOfMatches() == numberOfMatches)
                 .findFirst()
                 .get();
     }
