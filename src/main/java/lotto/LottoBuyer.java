@@ -13,4 +13,8 @@ public class LottoBuyer {
         printController = new PrintController();
     }
 
+    public void buyLotto() {
+        lottoPurchaseInfo = lottoSeller.sellLotto();
+    }
+
 }
