@@ -16,8 +16,7 @@ public class Application {
         outputView = new OutputView();
         user = new User();
         String str = inputView.buyLotto();
-        user.isNumber(str);
-        user.unitError(str);
+        user.checkError(str);
         int count = user.lottoCount(str);
         outputView.lottoCountMsg(count);
     }

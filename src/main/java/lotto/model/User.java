@@ -27,6 +27,11 @@ public class User {
         throw new IllegalArgumentException(error);
     }
 
+    public void checkError(String str) {
+        isNumber(str);
+        unitError(str);
+    }
+
     public int lottoCount(String str) {
         int count = Integer.parseInt(str);
         count = count / 1000;
