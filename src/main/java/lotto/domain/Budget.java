@@ -14,6 +14,10 @@ public class Budget {
         this.budgetNumber = budget / 1000;
     }
 
+    public static Budget from(String money) {
+        return new Budget(money);
+    }
+
     private void isMoneyValid(String money) throws IllegalArgumentException {
         Boolean notDigit = money.chars().mapToObj(obj -> (char) obj).anyMatch(Predicate.not(Character::isDigit));
         if (notDigit) {
@@ -26,7 +30,10 @@ public class Budget {
             throw new IllegalArgumentException(ErrorMessage.INPUT_MULTIPLE_OF_1000.getValue());
         }
     }
-    public int getBudgetNumber(){ // getter
+
+    public int getBudgetNumber() { // getter
         return this.budgetNumber;
     }
+
+
 }
