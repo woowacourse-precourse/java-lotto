@@ -20,7 +20,7 @@ class InputValidationTest {
     void checkInputIsNumber() {
         String input = "1000a";
 
-        assertThatThrownBy(() -> inputValidation.checkNumber(input))
+        assertThatThrownBy(() -> inputValidation.checkNumber(input, ""))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -30,6 +30,15 @@ class InputValidationTest {
         String input = "1200";
 
         assertThatThrownBy(() -> inputValidation.checkThousandMoney(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력받은 당첨번호는 숫자여야한다.")
+    @Test
+    void checkWinningNumberIsNumeric() {
+        String input = "1,2,3,4,a,6";
+
+        assertThatThrownBy(() -> inputValidation.checkNumber(input, ","))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
