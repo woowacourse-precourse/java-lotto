@@ -1,0 +1,51 @@
+package lotto.domain;
+
+import static lotto.utils.Constant.NUMBER_OF_LOTTO;
+
+import java.util.HashSet;
+import java.util.List;
+import lotto.utils.ExceptionType;
+import lotto.view.Output;
+
+public class WinningLotto {
+
+    private final Lotto winning;
+    private final int bonusNumber;
+
+    public WinningLotto(List<Integer> numbers, int bonusNumber) {
+        this.winning = new Lotto(numbers);
+
+        validateForBonusNumber(bonusNumber);
+        this.bonusNumber = bonusNumber;
+    }
+
+    private void validateForBonusNumber(int number) {
+        validateNumberInLottoRange(number);
+        validateByOverlapForAddBonusNumber(number);
+    }
+
+    private void validateNumberInLottoRange(int number) {
+        if (number < 1 || number > 45) {
+            Output.printErrorAndExit(ExceptionType.NOT_WITHIN_THE_RANGE.getMessage());
+            throw new IllegalArgumentException(ExceptionType.NOT_WITHIN_THE_RANGE.getMessage());
+        }
+    }
+
+    private void validateByOverlapForAddBonusNumber(int bonusNumber) {
+        HashSet<Integer> checkNumbers = new HashSet<>(winning.getNumbers());
+        checkNumbers.add(bonusNumber);
+
+        if (checkNumbers.size() != NUMBER_OF_LOTTO + 1) {
+            Output.printErrorAndExit(ExceptionType.HAVE_OVERLAP.getMessage());
+            throw new IllegalArgumentException(ExceptionType.HAVE_OVERLAP.getMessage());
+        }
+    }
+
+    public Lotto getWinningLotto() {
+        return winning;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+}

@@ -1,4 +1,4 @@
-package lotto.controller;
+package lotto;
 
 import static lotto.utils.Constant.LOTTO_PRICE;
 
@@ -6,6 +6,7 @@ import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMaker;
 import lotto.domain.Money;
+import lotto.domain.WinningLotto;
 import lotto.view.Input;
 import lotto.view.Output;
 
@@ -30,7 +31,7 @@ public class Mission {
         List<Lotto> lottos = lottoMaker.getLottos(many);
         output.printLottos(lottos);
 
-        Lotto winningLotto = getWinningLotto();
+        WinningLotto winningLotto = getWinningLotto();
 
 
     }
@@ -44,19 +45,20 @@ public class Mission {
         return money.getMoney() / LOTTO_PRICE;
     }
 
-    private Lotto getWinningLotto() {
-        Lotto winningLotto = getWinningNumbers();
-        addBonusNumber(winningLotto);
+    private WinningLotto getWinningLotto() {
+        List<Integer> winningNumbers = getWinningNumbers();
+        int bonusNumber = addBonusNumber();
+        WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
         return winningLotto;
     }
 
-    private Lotto getWinningNumbers() {
+    private List<Integer> getWinningNumbers() {
         output.printGetWinningNumbers();
         return input.getWinningNumbers();
     }
 
-    private void addBonusNumber(Lotto lotto) {
+    private int addBonusNumber() {
         output.pringGetWinningBonusNumber();
-        input.getWinningBonusNumber(lotto);
+        return input.getWinningBonusNumber();
     }
 }
