@@ -17,11 +17,8 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-
     // TODO: 추가 기능 구현
-    private List<Integer> makeRandomNumber(){
-        List<Integer> list = Randoms.pickUniqueNumbersInRange(1,45,6);
-        Lotto lotto = new Lotto(list);
-        return lotto.numbers;
+    public List<Integer> toPrint(){
+        return this.numbers;
     }
 }
