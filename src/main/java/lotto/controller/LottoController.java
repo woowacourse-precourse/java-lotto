@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.domain.Customer;
+import lotto.dto.LottoDto;
 import lotto.dto.LottoInformationDto;
 import lotto.dto.PurchaseAmountDto;
 import lotto.service.LottoService;
@@ -22,5 +23,7 @@ public class LottoController {
         Customer customer = new Customer(purchaseAmountDto.getPurchaseAmount());
         LottoInformationDto lottoInformationDto = lottoService.buy(customer);
         outputView.printLottoInformation(lottoInformationDto);
+
+        LottoDto lottoDto = inputView.inputLottoNumbers();
     }
 }
