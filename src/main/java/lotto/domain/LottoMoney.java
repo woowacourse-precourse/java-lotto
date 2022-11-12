@@ -1,6 +1,8 @@
 package lotto.domain;
 
 public class LottoMoney {
+    //★ 변수명, 메소드명 컨벤션 확인하기 (input, isDivided, number, IS_NOT_DIVIDED)
+    //★ 메소드 분리 ? Integer.parseInt(), number / 1000 == 0
     private int money;
 
     public int inputMoney(String input) {
@@ -11,7 +13,7 @@ public class LottoMoney {
         if (!isDivided(number)) {
             throw new IllegalArgumentException(Error.IS_NOT_DIVIDED.getMessage());
         }
-        return money;
+        return money = number;
     }
 
     private boolean isDivided(int number) {
@@ -29,5 +31,9 @@ public class LottoMoney {
             }
         }
         return true;
+    }
+
+    public int getLottoQuantity() {
+        return money / 1000;
     }
 }
