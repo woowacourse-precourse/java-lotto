@@ -15,6 +15,7 @@ public class LottoService {
 
     LottoGameMessage lottoGameMessage = new LottoGameMessage();
 
+
     public void inputPurchasePriceAndCheckException(Player player){
         lottoGameMessage.printPurchasePriceMessage();
         String purchaseLottoPrice = input();
@@ -22,6 +23,11 @@ public class LottoService {
         player.inputPurchaseLottoPrice(Integer.parseInt(purchaseLottoPrice));
         player.canDivideThousand();
         player.countLottoNumber();
+    }
+
+    public Lotto inputWinningLottoNumber(){
+        lottoGameMessage.printWinningNumberMessage();
+        return new Lotto(inputLottoWinningNumbers());
     }
 
     public List<Integer> inputLottoWinningNumbers(){
