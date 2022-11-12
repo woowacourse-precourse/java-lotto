@@ -11,7 +11,10 @@ public class Application {
         int purchasePrice = getPurchasePrice();
         int purchaseCount = purchasePrice / 1000;
 
+        System.out.println();
+
         List<Lotto> lotteries = QuickPickGenerator.quickPick(purchaseCount);
+        printLotteries(lotteries);
 
     }
 
@@ -19,15 +22,24 @@ public class Application {
         String input = Console.readLine();
         validateIsNumber(input);
 
+
         int purchasePrice = Integer.parseInt(input);
         validateIsMultipleOfThousand(purchasePrice);
 
         return purchasePrice;
     }
 
+    public static void printLotteries(List<Lotto> lotteries) {
+        System.out.printf("%d개를 구매했습니다.\n", lotteries.size());
+        for (Lotto lotto : lotteries) {
+            System.out.println(lotto.getNumbers().toString());
+        }
+        System.out.println();
+    }
+
     private static void validateIsNumber(String str) {
         try {
-            Integer.parseInt("");
+            Integer.parseInt(str);
         }
         catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 입력받은 값이 숫자가 아닙니다.");
