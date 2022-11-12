@@ -39,7 +39,7 @@ public class Application {
         return lottoTickets;
     }
 
-    public static String inputWinnerNumber() {
+    public static String validateWinnerNumberContainsComma() {
         String userInput = Console.readLine();
         if (!userInput.contains(",")) {
             throw new IllegalArgumentException(ErrorResponse.INPUT_WITHOUT_COMMA_ERROR.getErrorMessage());
