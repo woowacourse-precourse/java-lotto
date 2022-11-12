@@ -36,5 +36,6 @@ public enum Message {
 
     void printResult(long count) {
         System.out.println(this.msg + count + "개");
+        System.out.println();
     }
 }
