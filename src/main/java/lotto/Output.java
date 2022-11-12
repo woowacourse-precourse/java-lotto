@@ -12,9 +12,8 @@ public class Output {
     private final static String ROI_HEAD = "총 수익률은 ";
     private final static String ROI_FOOTER = "%입니다.";
 
-    public static final void purchaseSuccessful(Integer purchasePrice, List<List<Integer>> lottoTickets) {
-        Integer numberOfLottoTickets = purchasePrice / UNIT_PRICE;
-        System.out.println(numberOfLottoTickets + PURCHASE_SUCCESSFUL);
+    public static final void purchaseSuccessful(Integer purchaseQuantity, List<List<Integer>> lottoTickets) {
+        System.out.println(purchaseQuantity + PURCHASE_SUCCESSFUL);
         for (List<Integer> lotto : lottoTickets) {
             System.out.println(lotto);
         }

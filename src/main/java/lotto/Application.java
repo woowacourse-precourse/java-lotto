@@ -10,16 +10,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             String payment = Input.submitPayment();
-            Integer purchasePrice = Convertor.getNumericValue(payment);
-            Validator.checkIfInThousands(payment);
-            Integer purchaseQuantity = purchasePrice / UNIT_PRICE;
+            Integer purchasePrice = Convertor.toPurchasePrice(payment);
+            Integer purchaseQuantity = Convertor.toPurchaseQuantity(purchasePrice);
 
             List<List<Integer>> lottoTickets = new ArrayList<>();
             for (int i = 0; i < purchaseQuantity; i++) {
                 Lotto lotto = new Lotto(Numbers.generate());
                 lottoTickets.add(lotto.getLottoNumbers());
             }
-            Output.purchaseSuccessful(purchasePrice, lottoTickets);
+            Output.purchaseSuccessful(purchaseQuantity, lottoTickets);
 
             // Winner 클래스에 다시 넣어야 할 듯
             String winningNumbers = Input.submitWinningNumbers();

@@ -4,8 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Convertor {
+    private final static Integer UNIT_PRICE = 1000;
+    private final static String COMMA = ",";
+
+    public static Integer toPurchasePrice(String input) {
+        Validator.checkIfNumeric(input);
+        Validator.checkIfInThousands(input);
+
+        Integer purchasePrice = getNumericValue(input);
+        return purchasePrice;
+    }
+
+    public static Integer toPurchaseQuantity(Integer purchasePrice) {
+        return purchasePrice / UNIT_PRICE;
+    }
+
     public static List<Integer> separate(String input) {
-        String[] inputSplitted = input.split(",");
+        String[] inputSplitted = input.split(COMMA);
         Validator.checkFormat(inputSplitted);
 
         List<Integer> inputConverted = new ArrayList<>();
