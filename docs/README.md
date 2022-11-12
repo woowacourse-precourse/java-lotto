@@ -17,7 +17,7 @@
 ### Domain
 
 #### 입력 유효성 검사
-- [ ] 잘못된 로또 구입 금액이 입력된 경우 `[ERROR] 1000원 단위의 금액을 입력해야 합니다.`라는 에러 메시지와 함께 `IllegalArguementException`을 발생시킨다
+- [x] 잘못된 로또 구입 금액이 입력된 경우 `[ERROR] 1000원 단위의 금액을 입력해야 합니다.`라는 에러 메시지와 함께 `IllegalArguementException`을 발생시킨다
 
 
 
