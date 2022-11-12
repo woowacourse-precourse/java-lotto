@@ -11,7 +11,7 @@ class LottoNumberTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 46})
     @DisplayName("로또 번호가 범위(1부터45)밖이면 예외를 발생한다.")
-    void createLottoNumber(int number) {
+    void createLottoNumberOutOfRange(int number) {
         assertThatThrownBy(() -> new LottoNumber(number))
                 .isInstanceOf(IllegalArgumentException.class);
     }
