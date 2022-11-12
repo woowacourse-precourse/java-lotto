@@ -33,7 +33,7 @@ public class Application {
         BonusNumber bonusNumber = new BonusNumber(Console.readLine(), winningNumbers.getNumbers());
 
         // 5. 당첨 내역을 출력한다.
-        Match match = new Match();
-        match.matchNumbers(lottos, winningNumbers, bonusNumber);
+        Match match = new Match(winningNumbers, bonusNumber);
+        match.matchNumbers(lottos);
     }
 }
