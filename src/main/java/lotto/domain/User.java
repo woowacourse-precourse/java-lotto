@@ -12,4 +12,7 @@ public class User {
         myLotto.add(lotto);
     }
 
+    public List<Lotto> getMyLotto() {
+        return myLotto;
+    }
 }
