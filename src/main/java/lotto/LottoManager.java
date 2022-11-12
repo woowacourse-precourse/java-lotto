@@ -1,10 +1,18 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoManager {
     public List<Integer> GenerateLottoNumbers() {
-        return List.of(1,2,3,4,5,6);
+        String inputLottoNumbers = Console.readLine();
+        List<Integer> lottoNumbers = new ArrayList<>();
+        for (String number : inputLottoNumbers.split(",")) {
+            lottoNumbers.add(Integer.valueOf(number));
+        }
+        return lottoNumbers;
     }
 
     public int GenerateBonusNumber() {
