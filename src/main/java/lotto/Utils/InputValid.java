@@ -6,7 +6,8 @@ import java.util.stream.Collectors;
 
 public class InputValid {
     private final static int EXCEPTED_UNIT_OF_PRICE=1000;
-
+    private final static int MAX_NUMBER_OF_LOTTO=45;
+    private final static int MIN_NUMBER_OF_LOTTO=1;
     public InputValid() {
     }
 
@@ -42,7 +43,8 @@ public class InputValid {
 
             return listLottoNumber.stream().
                     distinct().
-                    filter(s -> Integer.parseInt(s) > 0).filter(s -> Integer.parseInt(s) < 46).
+                    filter(s -> Integer.parseInt(s) >= MIN_NUMBER_OF_LOTTO).
+                    filter(s -> Integer.parseInt(s) <= MAX_NUMBER_OF_LOTTO).
                     collect(Collectors.toList());
 
         }catch (Exception e){
@@ -55,7 +57,7 @@ public class InputValid {
             return false;
         }
 
-        if(bonusNumber>=1&&bonusNumber<=45){
+        if(bonusNumber>=MIN_NUMBER_OF_LOTTO&&bonusNumber<=MAX_NUMBER_OF_LOTTO){
             return true;
         }
         return false;
