@@ -18,7 +18,6 @@ public class LottoCompanyImpl implements LottoCompany {
     }
 
     @Override
-
     public List<Lotto> publishNLotto(int publishLottoCount) {
         for (int i = 0; i < publishLottoCount; i++) {
             publishedLotto.addPublishedLotto(lottoMachine.createLotto());
