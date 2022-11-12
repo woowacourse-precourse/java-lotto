@@ -2,6 +2,7 @@ package lotto.model;
 
 import java.util.List;
 import lotto.constants.ErrorCode;
+import lotto.constants.LottoConstants;
 
 public class LottoWithBonus {
 
@@ -10,6 +11,7 @@ public class LottoWithBonus {
 
     public LottoWithBonus(Lotto lotto, int bonusNumber) {
         validateContains(lotto, bonusNumber);
+        validateRange(bonusNumber);
         this.lotto = lotto;
         this.bonusNumber = bonusNumber;
     }
@@ -27,6 +29,13 @@ public class LottoWithBonus {
 
         if (lottoNumbers.contains(bonusNumber)) {
             throw ErrorCode.NOT_CONTAINS_IN_LOTTO.getException();
+        }
+    }
+
+    private void validateRange(int bonusNumber) {
+        if (bonusNumber < LottoConstants.LOTTO_NUMBER_START
+                || bonusNumber > LottoConstants.LOTTO_NUMBER_END) {
+            throw ErrorCode.NOT_IN_RANGE.getException();
         }
     }
 }
