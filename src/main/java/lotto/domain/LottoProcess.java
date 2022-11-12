@@ -43,14 +43,20 @@ public class LottoProcess {
     }
 
     public Map<String, Integer> countRanks(List<Integer> ranks){
-        Map<String, Integer> rankInfomation = new HashMap<>();
-        rankInfomation.put("FIRST", Collections.frequency(ranks,1));
-        rankInfomation.put("SECOND", Collections.frequency(ranks,2));
-        rankInfomation.put("THIRD", Collections.frequency(ranks,3));
-        rankInfomation.put("FOURTH", Collections.frequency(ranks,4));
-        rankInfomation.put("FIFTH", Collections.frequency(ranks,5));
+        Map<String, Integer> ranking = new HashMap<>();
+        ranking.put("FIRST", Collections.frequency(ranks,1));
+        ranking.put("SECOND", Collections.frequency(ranks,2));
+        ranking.put("THIRD", Collections.frequency(ranks,3));
+        ranking.put("FOURTH", Collections.frequency(ranks,4));
+        ranking.put("FIFTH", Collections.frequency(ranks,5));
 
-        return rankInfomation;
+        return ranking;
+    }
+
+    public void printStatistics(Map<String, Integer> ranking){
+        for(Rank rank : Rank.values()){
+            System.out.println(rank.getMessage(ranking.get(rank.name())));
+        }
     }
 
 }
