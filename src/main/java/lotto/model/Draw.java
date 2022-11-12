@@ -101,14 +101,14 @@ public class Draw {
     
     private void validateBonusNumRange(int bonusNum) {
         if (!(bonusNum >= Constant.lottoRangeStartNum && bonusNum <= Constant.lottoRangeEndNum)) {
-            System.err.println(Constant.errorBonusNumRange);
+            System.out.println(Constant.errorBonusNumRange);
             throw new IllegalArgumentException();
         }
     }
 
     private void validateBonusNumAndLottoOverlap(Lotto winningLotto, int bonusNum) {
         if(winningLotto.getNumbers().contains(bonusNum)) {
-            System.err.println(Constant.errorBonusNumAndLottoOverlap);
+            System.out.println(Constant.errorBonusNumAndLottoOverlap);
             throw new IllegalArgumentException();
         }
     }

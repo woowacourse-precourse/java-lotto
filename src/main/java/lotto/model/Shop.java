@@ -45,7 +45,7 @@ public class Shop {
 
     private void priceValidate(int price) {
         if (price % Constant.lottoAmount != 0) {
-            System.err.println(Constant.errorPriceValid);
+            System.out.println(Constant.errorPriceValid);
             throw new IllegalArgumentException();
         }
     }
