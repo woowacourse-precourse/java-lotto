@@ -2,7 +2,7 @@ package lotto.domain.lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.application.service.inputagent.InputAgent;
-import lotto.application.service.inputvalidator.ValueValidator;
+import lotto.application.service.inputvalidator.InputValidator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        ValueValidator.validateInputLottoNumber(numbers);
+        InputValidator.validateInputLottoNumber(numbers);
     }
 
     public static List<List<Integer>> generateLottoNumber(int purchaseNumber) {

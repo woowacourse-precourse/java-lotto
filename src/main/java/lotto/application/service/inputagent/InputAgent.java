@@ -1,7 +1,7 @@
 package lotto.application.service.inputagent;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.application.service.inputvalidator.ValueValidator;
+import lotto.application.service.inputvalidator.InputValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,25 +10,25 @@ public class InputAgent {
 
     public int inputUserMoney() {
         String lottoPurchaseMoney = Console.readLine();
-        ValueValidator.validateLottoPurchaseMoney(lottoPurchaseMoney);
+        InputValidator.validateLottoPurchaseMoney(lottoPurchaseMoney);
         return Integer.parseInt(lottoPurchaseMoney);
     }
 
     public List<Integer> inputWinningNumbers() {
         String[] lottoNumbers = Console.readLine().split(",");
         List<Integer> convertedLottoNumbers = new ArrayList<>();
-        ValueValidator.validateIntegerValue(lottoNumbers);
+        InputValidator.validateIntegerValue(lottoNumbers);
 
         for (String value : lottoNumbers) {
             convertedLottoNumbers.add(Integer.parseInt(value));
         }
-        ValueValidator.validateInputLottoNumber(convertedLottoNumbers);
+        InputValidator.validateInputLottoNumber(convertedLottoNumbers);
         return convertedLottoNumbers;
     }
 
     public int inputBonusNumber(List<Integer> winningLottoNumbers) {
         String inputBonusNumber = Console.readLine();
-        ValueValidator.validateInputBonusLottoNumber(inputBonusNumber, winningLottoNumbers);
+        InputValidator.validateInputBonusLottoNumber(inputBonusNumber, winningLottoNumbers);
         return Integer.parseInt(inputBonusNumber);
     }
 }
