@@ -1,8 +1,7 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import validate.Check;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -18,12 +17,13 @@ public class Lotto {
         }
     }
 
-    public void printNumber() {
+    public List<Integer> printNumber() {
+        List<Integer> autoTicketNumbers = new ArrayList<>();
         for (Integer data : numbers) {
-            System.out.print(data + ", ");
+            autoTicketNumbers.add(data);
         }
-        System.out.println();
-    }
 
+        return autoTicketNumbers;
+    }
 
 }
