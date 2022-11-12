@@ -29,7 +29,7 @@
 ## LottoGame
 - 프로그램이 진행되는 최상위 클래스
 
-## ManagementLottoNumber
+## ManagementLotto
 - 로또 번호를 생성하는 `generateLottoNumber()` 메소드
 - 로또 당첨 여부를 확인하는 `checkLottoNumber()` 메소드
 - 수익률을 계산하는 `calcROI()` 메소드 / ROI = Return on investment
