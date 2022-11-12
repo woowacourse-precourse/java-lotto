@@ -46,4 +46,8 @@ public class DrawLottoService {
             winingCount.add(correctNumberCountMap.getOrDefault(i, 0));
         }
     }
+
+    public List<Integer> getWiningCount() {
+        return winingCount;
+    }
 }
