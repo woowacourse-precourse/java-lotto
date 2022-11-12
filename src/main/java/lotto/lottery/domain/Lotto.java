@@ -1,9 +1,7 @@
-package lotto.domain;
-
-import camp.nextstep.edu.missionutils.Randoms;
+package lotto.lottery.domain;
 
 import java.util.List;
-import lotto.validate.ValidateLotto;
+import lotto.lottery.validate.ValidateLotto;
 
 public class Lotto {
     private List<Integer> numbers;
