@@ -2,6 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+
 public class LottoUI {
     public static Integer purchase() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -13,7 +15,7 @@ public class LottoUI {
     }
 
     public static void numberOfLottoPurchased(final int num) {
-        System.out.printf("%d개를 구매했습니다.", num);
+        System.out.printf("%d개를 구매했습니다.\n", num);
     }
 
     public static void printLotto(final Lotto lotto) {
