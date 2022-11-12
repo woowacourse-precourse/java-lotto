@@ -13,17 +13,20 @@ public class Game {
     public static String winningNumbers_Input;
     public static int bonusNumber;
     public static int paymentAmount;
-    private static List<Integer> winning_numbers;
+    public static List<Integer> winning_numbers;
 
 
     public static void start() {
         Game.read_buyingLottoAmount();
-        System.out.print(Game.getLottoCount() + "개를 구매했습니다.");
+        System.out.print(getLottoCount() + "개를 구매했습니다.");
         Controller.lottoSpawner(getLottoCount());
         Controller.printLottoNumbers();
         changeToInt(read_WinningNumbers());
         read_bonusNumber();
         System.out.println("당첨 통계");
+        Controller.setGrades();
+        Controller.grade_count();
+        Controller.print_Stactistics();
 
     }
 
@@ -31,6 +34,7 @@ public class Game {
         String[] str = numbers.split(",");
         List<String> number = List.of(str);
         List<Integer> newforms = number.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
+        Collections.sort(newforms);
         Game.winning_numbers = newforms;
     }
 
@@ -55,10 +59,13 @@ public class Game {
         return paymentAmount / LottoPrice;
     }
 
-    public static List<Integer> upperSort(List<Integer> numbers) {
+    public static List<Integer> ascendingSort(List<Integer> numbers) {
 
         Collections.sort(numbers);
 
         return numbers;
+    }
+    public static List<Integer> getWinning_numbers(){
+        return winning_numbers;
     }
 }
