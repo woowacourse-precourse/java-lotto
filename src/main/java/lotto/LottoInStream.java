@@ -12,8 +12,23 @@ public class LottoInStream {
     public static Integer readToBuyLotto(Integer money) {
 
     }
+
     public static List<Integer> readToGetLottoNumbers() {
 
     }
 
+    private static String readline() {
+        try {
+            return (Console.readLine());
+        } catch (NoSuchElementException ex) {
+            return "";
+        }
+    }
+
+    private static boolean isNullOrEmptyString(String line) {
+        if (line == null || line.isEmpty()) {
+            return true;
+        }
+        return false;
+    }
 }
