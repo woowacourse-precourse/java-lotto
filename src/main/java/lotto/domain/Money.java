@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import lotto.exception.domain.MoneyMinimumException;
 
 public class Money {
-    private static final long MONEY_MIN = 1;
+    private static final long MONEY_MIN = 0;
     private static final BigDecimal HUNDRED_BIG_DECIMAL = new BigDecimal(100);
 
     private final long money;

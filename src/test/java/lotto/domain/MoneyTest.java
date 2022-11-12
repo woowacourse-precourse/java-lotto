@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Test;
 
 public class MoneyTest {
 
-    @DisplayName("1미만일 경우 에러를 반환한다.")
+    @DisplayName("0미만일 경우 에러를 반환한다.")
     @Test
     void createMoneyLessOne() {
         assertAll(
-                () -> assertThatThrownBy(() -> new Money(0)).isInstanceOf(IllegalArgumentException.class),
-                () -> assertDoesNotThrow(() -> new Money(1))
+                () -> assertThatThrownBy(() -> new Money(-1)).isInstanceOf(IllegalArgumentException.class),
+                () -> assertDoesNotThrow(() -> new Money(0))
         );
     }
 
