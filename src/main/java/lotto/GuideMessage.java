@@ -6,6 +6,7 @@ public class GuideMessage {
     public static final String ENTER_WINNING_NUMBER = "%n당첨 번호를 입력해 주세요.%n";
     public static final String ENTER_BONUS_NUMBER = "%n보너스 번호를 입력해 주세요.%n";
     public static final String WINNING_STATISTICS = "%n당첨 통계%n";
+    public static final String CONTOUR = "---";
     public static final String MATCH = "%d개 일치";
     public static final String BONUS_BALL_MATCH = "보너스 볼 일치";
     public static final String AMOUNT = " (%s원)";

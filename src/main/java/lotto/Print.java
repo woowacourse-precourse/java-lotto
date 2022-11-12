@@ -5,9 +5,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Print {
-    private static final String CONTOUR = "---";
-    private static final int LOTTO_PRICE = 1000;
-
     public static void purchaseMessage() {
         System.out.println(GuideMessage.ENTER_PURCHASE_AMOUNT);
     }
@@ -30,7 +27,7 @@ public class Print {
 
     public static void matchResult(Map<WinningNumber, Integer> matchCount, int numberOfLotto) {
         System.out.printf(GuideMessage.WINNING_STATISTICS);
-        System.out.println(CONTOUR);
+        System.out.println(GuideMessage.CONTOUR);
 
         for (WinningNumber winningNumber : matchCount.keySet()
                 .stream()
@@ -61,6 +58,6 @@ public class Print {
     }
 
     private static double calculateYield(int numberOfLotto, int revenue) {
-        return (double) revenue / (numberOfLotto * LOTTO_PRICE) * 100;
+        return (double) revenue / (numberOfLotto * Constant.LOTTO_PRICE) * 100;
     }
 }

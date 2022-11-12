@@ -3,18 +3,14 @@ package lotto;
 import java.util.List;
 
 public class Validation {
-    private static final int NUMBER_OF_WINNING_NUMBERS = 6;
-    private static final int LOTTO_START_NUMBER = 1;
-    private static final int LOTTO_END_NUMBER = 45;
-
     public static void isValidUnit(int amount) throws IllegalArgumentException {
-        if (amount <= 0 || amount % 1000 != 0) {
+        if (amount <= 0 || amount % Constant.LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.INVALID_AMOUNT_UNIT);
         }
     }
 
     public static void isValidInputRange(int winningNumber) throws IllegalArgumentException {
-        if (winningNumber < LOTTO_START_NUMBER || winningNumber > LOTTO_END_NUMBER) {
+        if (winningNumber < Constant.LOTTO_START_NUMBER || winningNumber > Constant.LOTTO_END_NUMBER) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.LOTTO_OUT_OF_RANGE);
         }
     }
@@ -40,7 +36,7 @@ public class Validation {
     }
 
     public static void checkNumberOfWinningNumber(List<String> numbers) throws IllegalArgumentException {
-        if (numbers.size() != NUMBER_OF_WINNING_NUMBERS) {
+        if (numbers.size() != Constant.NUMBER_OF_WINNING_NUMBERS) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.INVALID_WINNING_NUMBERS);
         }
     }
