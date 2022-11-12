@@ -18,8 +18,8 @@ public class Judgment {
         return match;
     }
 
-    public boolean hasBonusNumber(Lotto winningLotto, Bonus bonus) {
-        List<Integer> winningNumber = winningLotto.getNumbers();
+    public boolean hasBonusNumber(Lotto myLotto, Bonus bonus) {
+        List<Integer> winningNumber = myLotto.getNumbers();
         return winningNumber.contains(bonus.getBonus());
     }
 }

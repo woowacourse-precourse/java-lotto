@@ -93,7 +93,7 @@ public class MainController {
         point.put(Prize.LAST, 0);
         for (Lotto myLotto : myLottos) {
             int match = judgment.compare(winningLotto, myLotto);
-            boolean hasBonus = judgment.hasBonusNumber(winningLotto, bonus);
+            boolean hasBonus = judgment.hasBonusNumber(myLotto, bonus);
 
             Prize prize = calculator.givePrize(match, hasBonus);
             total += prize.getPrize();
