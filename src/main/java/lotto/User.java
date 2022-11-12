@@ -2,12 +2,22 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
     private int money;
     private double earning = 0;
     private List<Lotto> lottoBundle;
+    private List<Integer> winningNumber;
+    private int bonusNumber;
+    private Map<String,Integer> winningNumberCounting= Map.of(
+            "first",0,
+            "second",0,
+            "third",0,
+            "fourth",0,
+            "fifth",0
+    );
 
     LotteryTicketingMachine lotteryTicketingMachine = new LotteryTicketingMachine();
 
@@ -25,13 +35,17 @@ public class User {
         return lottoBundle;
     }
 
+    public List<Integer> getWinningNumber() {
+        return winningNumber;
+    }
+
     public void makeLottoBundle(int howManyLotto) {
         for (int lottoBundleIndex=0; lottoBundleIndex<howManyLotto; lottoBundleIndex++) {
             lottoBundle.add(lotteryTicketingMachine.ticketLotto());
         }
     }
 
-    public List<Integer> inputWinningNumber() {
+    public void inputWinningNumber() {
         int convertedWinningNumber;
         String inputtedWinningNumber;
         inputtedWinningNumber = Console.readLine();
@@ -41,13 +55,13 @@ public class User {
             convertedWinningNumber = Integer.parseInt(unconvertedWinningNumberContent);
             winningNumber.add(convertedWinningNumber);
         }
-        return winningNumber;
+        this.winningNumber = winningNumber;
     }
 
-    public int inputBonusNumber() {
+    public void inputBonusNumber() {
         String inputtedBonusNumber;
         inputtedBonusNumber = Console.readLine();
-        return Integer.parseInt(inputtedBonusNumber);
+        this.bonusNumber = Integer.parseInt(inputtedBonusNumber);
     }
 
     public void calculateEarning(int howManyWinningNumber, boolean isBonusNumberCorrect) {
