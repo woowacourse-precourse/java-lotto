@@ -2,6 +2,8 @@ package lotto.controller;
 
 import lotto.model.GameDTO;
 
+import java.math.BigDecimal;
+
 public class ProcessingGameData {
     private GameDTO gameDTO;
 
@@ -11,11 +13,13 @@ public class ProcessingGameData {
         makeRatio(gameDTO);
     }
     private void makeRatio(GameDTO gameDTO) {
-        double result = 0;
-        double allAmount = gameDTO.getWinningAmount();
+        double allAmount = gameDTO.getWinningAmount() * 100;
         double allcost = gameDTO.getPurchaseAmount();
-        result = (allAmount / allcost) * 100;
-        gameDTO.setReturnOfRate(Math.round(result * 10) / 10.0);
+
+        BigDecimal amount = new BigDecimal(allAmount);
+        BigDecimal cost = new BigDecimal(allcost);
+        BigDecimal result = amount.divide(cost);
+        gameDTO.setReturnOfRate(result.setScale(1, BigDecimal.ROUND_HALF_UP));
     }
 
     private void makeAllAmount(GameDTO gameDTO) {

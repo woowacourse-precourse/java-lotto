@@ -4,8 +4,6 @@ import lotto.model.GameDTO;
 import lotto.model.Lotto;
 import lotto.model.UserDTO;
 
-import java.util.List;
-
 public class Print {
     private static final String PURCHASE_LIST = "개를 구매했습니다.";
     private static final String END_SENTENCE = "당첨 통계\n---";

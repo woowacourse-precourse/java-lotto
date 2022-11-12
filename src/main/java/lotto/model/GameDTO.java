@@ -1,5 +1,6 @@
 package lotto.model;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class GameDTO {
@@ -7,7 +8,7 @@ public class GameDTO {
     private int bonusNumber;
     private int[] winningCount = new int[5];
     private double winningAmount;
-    private double returnOfRate;
+    private BigDecimal returnOfRate;
     private int purchaseAmount;
 
     public void setWinningNumber(List<Integer> number) {
@@ -33,11 +34,11 @@ public class GameDTO {
         this.winningAmount = winningAmount;
     }
 
-    public double getReturnOfRate() {
+    public BigDecimal getReturnOfRate() {
         return returnOfRate;
     }
 
-    public void setReturnOfRate(double returnOfRate) {
+    public void setReturnOfRate(BigDecimal returnOfRate) {
         this.returnOfRate = returnOfRate;
     }
 
