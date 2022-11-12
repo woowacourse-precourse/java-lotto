@@ -12,17 +12,21 @@ public class User {
 
     public List<List<Integer>> Count(int money){
         int count = money/1000;
-        CheckMoney(money);
         List<List<Integer>> AutoLotto = new ArrayList<>();
-        for(int i = 0;i<count;i++){
-            AutoLotto.add(i,Randoms.pickUniqueNumbersInRange(1, 45, 7));
-        }
+            CheckMoney(money);
+            for(int i = 0;i<count;i++){
+                AutoLotto.add(i,Randoms.pickUniqueNumbersInRange(1, 45, 7));
+            }
         return AutoLotto;
     }
 
     private void CheckMoney(int money){
-        if(money%1000 != 0){
-            throw new IllegalArgumentException();
+        try {
+            if (money % 1000 != 0) {
+                throw new Exception("[ERROR] 금액은 1000단위로 만 입력할수있습니다.");
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
         }
     }
 
@@ -37,8 +41,17 @@ public class User {
         System.out.println("당첨번호를 입력해주세요");
         String[] num = Console.readLine().split(",");
         List<Integer> UserLotto = StringToNum(num);
-        Lotto lotto = new Lotto(UserLotto);
-        StringToBonusNum(UserLotto);
+        try{
+            for(int i = 0;i<UserLotto.size();i++){
+                if(UserLotto.get(i)>45){
+                    throw new Exception("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+                }
+            }
+            Lotto lotto = new Lotto(UserLotto);
+            StringToBonusNum(UserLotto);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
         return UserLotto;
     }
 
