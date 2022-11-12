@@ -11,4 +11,14 @@ public class LottoResultJudge {
 
         return result;
     }
+
+    private int correspondNumber(List<Integer> userLotto, List<Integer> lotto) {
+        int correctNumber = 0;
+        for(int userLottoIndex = 0; userLottoIndex<userLotto.size(); userLottoIndex++) {
+            if(lotto.contains(userLotto.get(userLottoIndex))) {
+                correctNumber++;
+            }
+        }
+        return correctNumber;
+    }
 }
