@@ -3,20 +3,15 @@ package lotto.model;
 import lotto.enums.Rank;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class Rate {
-    private Map<Rank,Integer> winningStats;
     private Map<Rank,Integer> rankPrice;
     private double earningRate;
 
     public Rate(Map<Rank,Integer> winningStats, int price){
-        this.winningStats = winningStats;
         setRankPrice();
         setEarningRate(winningStats, price);
-
     }
 
     public double getEarningRate() {
