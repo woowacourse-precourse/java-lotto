@@ -11,6 +11,10 @@ public class Lotto {
 
     private final List<Integer> numbers;
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         Collections.sort(numbers);
@@ -33,6 +37,11 @@ public class Lotto {
         if (LOTTO_NUMBERS_SIZE != uniqueNumbers.size()) {
             throw new IllegalArgumentException("[ERROR] 로또 번호에 중복된 값이 있습니다.");
         }
+    }
+
+    public Integer countSameNumbers(Lotto winningLotto) {
+        numbers.retainAll(winningLotto.getNumbers());
+        return numbers.size();
     }
 
     @Override
