@@ -6,9 +6,13 @@ import static lotto.Converter.convertToInteger;
 import static lotto.Converter.convertToIntegerList;
 
 import static lotto.Printer.printProfits;
+
 import static lotto.Rank.calculateRank;
 
 import java.util.List;
+
+import lotto.Constant.RequestMessage;
+
 
 
 
@@ -21,17 +25,36 @@ public class Application {
         }
     }
 
-    public static void main(String[] args) {
+    public static Buyer createBuyer() {
+        System.out.println(RequestMessage.INPUT_MONEY);
+
+        int money = convertToInteger(readLine());
+        Buyer buyer = new Buyer(money);
+
+        buyer.showLottos();
+
+        return buyer;
+    }
+
+    public static WinningLotto createWinningLotto() {
         try {
-            int money = convertToInteger(readLine());
-
-            Buyer buyer = new Buyer(money);
-            buyer.showLottos();
-
+            System.out.println(RequestMessage.INPUT_NUMBERS);
             List<Integer> winningNumbers = convertToIntegerList(readLine());
+            LottoNumberValidator.validateNumbers(winningNumbers);
+
+            System.out.println(RequestMessage.INPUT_BONUS_NUMBER);
             int bonusNumber = convertToInteger(readLine());
 
-            WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
+            return new WinningLotto(winningNumbers, bonusNumber);
+        } catch (Exception exception) {
+            throw exception;
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            Buyer buyer = createBuyer();
+            WinningLotto winningLotto = createWinningLotto();
 
             calculateRanks(buyer, winningLotto);
             buyer.showWinnings();
