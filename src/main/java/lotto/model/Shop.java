@@ -2,7 +2,6 @@ package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +25,7 @@ public class Shop {
         return (price / 1000);
     }
 
+    // lottoSize 만큼의 Lotto 객체를 생성 후 List에 저장
     private List<Lotto> setLottoPayed(int lottoSize) {
         List<Lotto> lottoPayed = new ArrayList<>();
 
