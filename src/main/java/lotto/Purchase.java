@@ -30,7 +30,7 @@ public class Purchase {
 
     private void validateUnderPrice(int price) {
         if (price < 1000) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(GameMessage.PRICE_ERROR_MESSAGE.getMessage());
         }
     }
 
