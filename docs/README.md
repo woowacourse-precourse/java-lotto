@@ -9,7 +9,7 @@
 - ✅ **`isMultipleOfThousand`** → 1000원으로 나누어 떨어지지 않으면 예외처리
 
 ### <span style = "color:skyblue" >getLottoCount</span> : 로또 개수 저장
-- 🟩 **`getLottoAmount`** → 구입 금액과 로또 금액을 나눈 값을 저장
+- ✅ **`getLottoAmount`** → 구입 금액과 로또 금액을 나눈 값을 저장
 
 ### <span style = "color:skyblue" >getLottos</span> : 로또 번호 출력
 - 🟩 **`getLottoNumber`** → 제시된 라이브러리를 사용하여 개수만큼 랜덤번호 생성

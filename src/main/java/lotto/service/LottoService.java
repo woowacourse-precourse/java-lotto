@@ -15,6 +15,10 @@ public class LottoService {
             user.setPurchaseAmount(Parser.convertStringToInt(input));
         }
     }
+    public void getLottoCount(int amount) {
+        user.setLottoAmount(Parser.countLotto(amount));
+    }
+
 
 
     
