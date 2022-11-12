@@ -1,9 +1,9 @@
-package lotto.infrascturcture.adapter.in;
+package lotto.application.in.starter;
 
-import lotto.infrascturcture.adapter.output.calculator.YieldCalculator;
-import lotto.application.in.client.Client;
-import lotto.application.output.lotterymatch.LottoHost;
-import lotto.domain.Lotto;
+import lotto.application.service.calculator.YieldCalculator;
+import lotto.domain.client.Client;
+import lotto.application.service.lotterymatch.LottoHost;
+import lotto.domain.lotto.Lotto;
 
 import java.util.List;
 import java.util.Map;

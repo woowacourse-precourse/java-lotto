@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.infrascturcture.adapter.in.LottoStarter;
+import lotto.application.in.starter.LottoStarter;
 
 public class Application {
     public static void main(String[] args) {

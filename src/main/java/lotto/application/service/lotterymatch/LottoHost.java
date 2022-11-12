@@ -1,4 +1,4 @@
-package lotto.application.output.lotterymatch;
+package lotto.application.service.lotterymatch;
 
 import java.util.ArrayList;
 import java.util.List;

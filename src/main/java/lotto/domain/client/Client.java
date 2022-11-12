@@ -1,4 +1,4 @@
-package lotto.application.in.client;
+package lotto.domain.client;
 
 import lotto.application.service.agent.InputAgent;
 
