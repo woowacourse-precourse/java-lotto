@@ -14,12 +14,7 @@ public class LottoInStream {
         if (isNullOrEmptyString(line)) {
             throw new IllegalArgumentException(Application._err_msg + " 빈 문자열은 입력할 수 없습니다.");
         }
-
-        try {
-            return Integer.parseInt(line);
-        } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException();
-        }
+        return convStrToInt(line);
     }
 
     public static List<Integer> readLottoNumbers() {
