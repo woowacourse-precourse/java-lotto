@@ -50,4 +50,8 @@ public class LottoMachine {
 
         bonusNumber = Integer.parseInt(inputBonusNumber);
     }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }
