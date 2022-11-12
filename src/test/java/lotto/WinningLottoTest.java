@@ -14,10 +14,9 @@ public class WinningLottoTest {
 	@Test
 	void createWinningNumber_메서드_테스트() {
 		String userInput = "1,2,3,4,5,6";
-		List<String> winningNumber = List.of("1","2","3","4","5","6");
+		List<String> winningNumber = List.of("1", "2", "3", "4", "5", "6");
 		WinningLotto.createWinningNumber(userInput);
 		Assertions.assertThat(WinningLotto.getWinningNumber()).containsAll(winningNumber);
-
 	}
 
 	@DisplayName("split(,)으로 나눠서 bonusNumber 만들기")

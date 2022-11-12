@@ -56,7 +56,7 @@ public class LottoProgram {
 	private static void compareWithMyLottos() {
 		initMatchCount();
 		LottoComparator.compareNumbers(lottoList);
-		LottoComparator.createWinnerResult();
+		LottoComparator.calculatePrizeCount();
 	}
 
 	private static void initMatchCount() {
