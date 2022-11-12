@@ -13,18 +13,28 @@ public class InputPurchase {
     private static final String CORRECT_FIVE = "5개 일치 (1,500,000원) - ";
     private static final String CORRECT_FIVE_BONUS = "5개 일치, 보너스 볼 일치 (30,500,000원) - ";
     private static final String CORRECT_SIX = "6개 일치 (2,000,000,000원) - ";
-
-    public InputPurchase(UserDTO userDTO) {
-        String inputData;
-        int amount;
-
+    private String inputData;
+    public InputPurchase() {
         System.out.println(PURCHASE_REQUEST);
-        inputData = Console.readLine();
-        amount = inputPurchase(inputData);
-        userDTO.setPurchaseAmount(amount);
     }
 
-    public int inputPurchase(String inputData) {
+    public UserDTO makeUserData() {
+        int amount;
+
+        getInput();
+        amount = inputPurchase(this.inputData);
+        UserDTO userDTO = new UserDTO(amount);
+        return userDTO;
+    }
+
+    private void getInput() {
+        String inputData;
+
+        inputData = Console.readLine();
+        this.inputData = inputData;
+    }
+
+    private int inputPurchase(String inputData) {
         UserDTO userDTO;
         int amount = 0;
 
