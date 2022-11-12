@@ -15,7 +15,8 @@
 ### 구매자 - Buyer
 - [ ] 로또 구입 금액을 입력하면 구입 금액에 해당하는 만큼 로또를 발행해야 한다. - buyLotto
   - [ ] 로또 구입 금액을 입력 받는다. - inputSeedMoney
-    - 로도 구입 금액을 검증한다. - validateSeedMoney
+    - 로또 구입 안내 문구를 출력한다. - printInputSeedMoney
+    - 로또 구입 금액을 검증한다. - validateSeedMoney
       - 구입 금액은 1,000원 단위로 입력 받으며 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다.
       - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
 - [ ] 당첨 내역을 출력한다. - checkPrize
