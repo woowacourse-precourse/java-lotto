@@ -19,11 +19,10 @@ public class View {
     private static final String NOT_LOTTO_PRICE_MESSAGE = ERROR_MESSAGE + " %d단위로만 입력 가능합니다. 게임이 종료됩니다.%n";
     private static final String NOT_SEPARATED_BY_COMMA_MESSAGE = ERROR_MESSAGE + " 숫자는 콤마로 구분해 주세요. 게임이 종료됩니다.";
     private static final String NOT_LOTTO_SIZE_MESSAGE = ERROR_MESSAGE + " %d개의 숫자만 입력 가능합니다. 게임이 종료됩니다.%n";
-    private static final String NOT_BONUS_SIZE_MESSAGE = ERROR_MESSAGE + " 보너스 번호는 %d개의 숫자만 입력 가능합니다. 게임이 종료됩니다.%n";
     private static final String NOT_LOTTO_NUMBER_MESSAGE = ERROR_MESSAGE + " %d ~ %d 사이의 숫자만 입력 가능합니다. 게임이 종료됩니다.%n";
     private static final String NOT_UNIQUE_NUMBER_MESSAGE = ERROR_MESSAGE + " 중복된 숫자는 입력할 수 없습니다. 게임이 종료됩니다.";
 
-    public static void printInputPurchaseAmount() {
+    public static void printInputMoney() {
         System.out.println(GET_MONEY_MESSAGE);
     }
 
@@ -43,7 +42,7 @@ public class View {
         System.out.println(stringBuilder);
     }
 
-    public static void printInputLottoNumber() {
+    public static void printInputLottoNumbers() {
         System.out.println(GET_LOTTO_NUMBERS_MESSAGE);
     }
 
@@ -61,7 +60,7 @@ public class View {
         }
     }
 
-    public static void printProfitRate(double profitRates) {
+    public static void printProfitRates(double profitRates) {
         System.out.printf(GET_PROFIT_RATES_MESSAGE, profitRates);
     }
 
@@ -79,10 +78,6 @@ public class View {
 
     public static void printNotLottoSize() {
         System.out.printf(NOT_LOTTO_SIZE_MESSAGE, Constant.LOTTO_SIZE);
-    }
-
-    public static void printNotBonusNumberSize() {
-        System.out.printf(NOT_BONUS_SIZE_MESSAGE, Constant.BONUS_NUMBER_SIZE);
     }
 
     public static void printNotLottoNumber() {
