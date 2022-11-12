@@ -72,7 +72,6 @@ class BonusNumberTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 이 기능 추가
     @DisplayName("보너스 번호 입력 - 두 개의 값 입력 시 예외 발생")
     @Test
     void checkBonusTwoNumbersInput() {
@@ -82,7 +81,6 @@ class BonusNumberTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 이 기능 추가
     @DisplayName("보너스 번호 입력 - 두 개의 값 입력 시 예외 발생")
     @Test
     void checkBonusTwoNumbersWithCommaInput() {
