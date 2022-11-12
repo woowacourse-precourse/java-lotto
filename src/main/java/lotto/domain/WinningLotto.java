@@ -10,10 +10,10 @@ import lotto.util.TypeConverter;
 
 public class WinningLotto {
 
-    public static final String WINNING_NUMBERS_SIZE_ERROR = "당첨 번호는 6자리여야 합니다";
-    public static final String WINNING_NUMBERS_RANGE_ERROR = "당첨 번호는 1부터 45까지의 수로 이루어져야 합니다";
-    public static final String WINNING_NUMBERS_FORMAT_ERROR = "당첨 번호는 1,2,3,4,5,6 과 같은 형식이어야 합니다";
-    public static final String WINNING_NUMBERS_CONFLICT_ERROR = "당첨 번호에 중복이 포함될 수 없습니다";
+    private static final String WINNING_NUMBERS_SIZE_ERROR = "당첨 번호는 6자리여야 합니다";
+    private static final String WINNING_NUMBERS_RANGE_ERROR = "당첨 번호는 1부터 45까지의 수로 이루어져야 합니다";
+    private static final String WINNING_NUMBERS_FORMAT_ERROR = "당첨 번호는 1,2,3,4,5,6 과 같은 형식이어야 합니다";
+    private static final String WINNING_NUMBERS_CONFLICT_ERROR = "당첨 번호에 중복이 포함될 수 없습니다";
     private final List<Integer> numbers;
 
     public WinningLotto(String number) {
