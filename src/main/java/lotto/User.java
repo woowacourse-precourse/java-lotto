@@ -39,6 +39,10 @@ public class User {
         return winningNumber;
     }
 
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
     public void makeLottoBundle(int howManyLotto) {
         for (int lottoBundleIndex=0; lottoBundleIndex<howManyLotto; lottoBundleIndex++) {
             lottoBundle.add(lotteryTicketingMachine.ticketLotto());
@@ -62,6 +66,22 @@ public class User {
         String inputtedBonusNumber;
         inputtedBonusNumber = Console.readLine();
         this.bonusNumber = Integer.parseInt(inputtedBonusNumber);
+    }
+
+    public void countWinningNumber (int howManyWinningNumber, boolean isBonusNumberCorrect) {
+        if (howManyWinningNumber==6) {
+            winningNumberCounting.put("first",winningNumberCounting.get("first")+1);
+        } else if (howManyWinningNumber==5) {
+            if (isBonusNumberCorrect) {
+                winningNumberCounting.put("second",winningNumberCounting.get("second")+1);
+                return;
+            }
+                winningNumberCounting.put("third",winningNumberCounting.get("third")+1);
+        } else if (howManyWinningNumber==4) {
+            winningNumberCounting.put("fourth",winningNumberCounting.get("fourth")+1);
+        } else if (howManyWinningNumber==3) {
+            winningNumberCounting.put("fifth",winningNumberCounting.get("fifth")+1);
+        }
     }
 
     public void calculateEarning(int howManyWinningNumber, boolean isBonusNumberCorrect) {
