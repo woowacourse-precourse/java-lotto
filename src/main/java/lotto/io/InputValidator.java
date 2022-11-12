@@ -8,4 +8,10 @@ public class InputValidator {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.");
         }
     }
+
+    public static void validateWinningNumbers(String numbers) {
+        for (String number : numbers.trim().split(",")) {
+            validateToParseInt(number);
+        }
+    }
 }
