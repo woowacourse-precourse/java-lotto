@@ -61,4 +61,10 @@ class CheckInputException {
             throw new IllegalArgumentException(ERROR_MESSAGE + " 입력한 당첨 번호가 6개가 아닙니다.");
         }
     }
+
+    public static void checkDuplicateNumbers(List<Integer> numbers) throws IllegalArgumentException{
+        if (Util.isDuplicate(numbers) == true){
+            throw new IllegalArgumentException(ERROR_MESSAGE + " 중복된 값이 입력되었습니다.");
+        }
+    }
 }
