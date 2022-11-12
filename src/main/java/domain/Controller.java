@@ -13,6 +13,12 @@ public class Controller {
             lottos.add(Lotto.get());
         }
     }
+    public static void printLottoNumbers(){
+        for(Lotto lotto : lottos) {
+            lotto.print();
+            System.out.print("\n");
+        }
+    }
 
 }
 
