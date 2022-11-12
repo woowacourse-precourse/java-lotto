@@ -59,5 +59,11 @@ class UtilTest {
                 .isEqualTo(List.of(1, 2, 3, 4));
     }
 
+    @DisplayName("List 중복 검사")
+    @Test
+    void 리스트_중복검사_테스트(){
+        assertThat(Util.isDuplicate(List.of(1,2,3,4,5,5)))
+                .isTrue();
+    }
 
 }
