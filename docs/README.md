@@ -29,8 +29,9 @@
     - *ValidationUtil.validateBonusRange()*
 - 예외 사항에 대해서는 예외 메시지 출력 및 `IllegalArgumentException`를 발생시킨다.
 
-### ✔ 로또 번호 발행 기능
+### ☑️ 로또 번호 발행 기능
 - 1~45 사이의 값을 가지는 로또 번호 6개를 랜덤하게 생성하여 형식에 맞게 리턴한다.
+- *NumberGenerator.getLottoNumbers()*
 
 ### ✔ 로또 당첨 경우 판단 기능
 - 발행한 로또 번호와 당첨 번호가 일치하는 개수를 계산하여 어떤 경우에 속하는지 리턴한다.
