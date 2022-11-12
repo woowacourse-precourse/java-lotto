@@ -3,7 +3,7 @@ package lotto.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import lotto.constants.ErrorMessage;
+import lotto.constants.ErrorCode;
 import org.junit.jupiter.api.Test;
 
 class MoneyTest {
@@ -13,7 +13,7 @@ class MoneyTest {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
             new Money("string");
         });
-        assertEquals(ErrorMessage.NOT_NUMBER, exception.getMessage());
+        assertEquals(ErrorCode.NOT_NUMBER.getErrorMessage(), exception.getMessage());
     }
 
     @Test
@@ -21,6 +21,6 @@ class MoneyTest {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
             new Money("21002");
         });
-        assertEquals(ErrorMessage.NOT_BILL, exception.getMessage());
+        assertEquals(ErrorCode.NOT_BILL.getErrorMessage(), exception.getMessage());
     }
 }

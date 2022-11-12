@@ -1,30 +1,30 @@
 package lotto.model;
 
-import lotto.constants.ErrorMessage;
+import lotto.constants.ErrorCode;
 
 public class Money {
 
     private int value;
 
-    public Money(String input) {
+    public Money(String input) throws Exception {
         int inputNumber = stringToInt(input);
         validateBill(inputNumber);
         this.value = inputNumber;
     }
 
-    private int stringToInt(String input) {
+    private int stringToInt(String input) throws Exception {
         int inputNumber;
         try {
             inputNumber = Integer.valueOf(input);
         } catch (Exception e) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_NUMBER);
+            throw ErrorCode.NOT_NUMBER.getException();
         }
         return inputNumber;
     }
 
-    private void validateBill(int input) {
+    private void validateBill(int input) throws Exception {
         if (input % 1000 != 0) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_BILL);
+            throw ErrorCode.NOT_BILL.getException();
         }
     }
 }

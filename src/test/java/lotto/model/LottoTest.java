@@ -1,7 +1,6 @@
 package lotto.model;
 
-import lotto.constants.ErrorMessage;
-import lotto.model.Lotto;
+import lotto.constants.ErrorCode;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -34,7 +33,7 @@ class LottoTest {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
             new Lotto(List.of(1, 2, 3, 4, 5, 6, 7));
         });
-        assertEquals(ErrorMessage.NOT_SIX_DIGITS, exception.getMessage());
+        assertEquals(ErrorCode.NOT_SIX_DIGITS.getErrorMessage(), exception.getMessage());
     }
 
     @Test
@@ -43,7 +42,7 @@ class LottoTest {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
             new Lotto(List.of(1, 2, 3, 4, 5, 5));
         });
-        assertEquals(ErrorMessage.NOT_DUPLICATE, exception.getMessage());
+        assertEquals(ErrorCode.NOT_DUPLICATE.getErrorMessage(), exception.getMessage());
     }
 
     @Test
@@ -52,11 +51,11 @@ class LottoTest {
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
             new Lotto(List.of(0, 2, 3, 4, 5, 45));
         });
-        assertEquals(ErrorMessage.NOT_IN_RANGE, exception.getMessage());
+        assertEquals(ErrorCode.NOT_IN_RANGE.getErrorMessage(), exception.getMessage());
 
         exception = assertThrows(IllegalArgumentException.class, () -> {
             new Lotto(List.of(1, 2, 3, 4, 5, 46));
         });
-        assertEquals(ErrorMessage.NOT_IN_RANGE, exception.getMessage());
+        assertEquals(ErrorCode.NOT_IN_RANGE.getErrorMessage(), exception.getMessage());
     }
 }

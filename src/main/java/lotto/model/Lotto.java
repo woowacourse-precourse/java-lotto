@@ -2,7 +2,7 @@ package lotto.model;
 
 import java.util.Collections;
 import java.util.List;
-import lotto.constants.ErrorMessage;
+import lotto.constants.ErrorCode;
 
 public class Lotto {
 
@@ -10,7 +10,7 @@ public class Lotto {
     private static final int LOTTO_NUMBER_END = 45;
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    public Lotto(List<Integer> numbers) throws Exception {
         validateSixDigits(numbers);
         validateRange(numbers);
         validateDuplicate(numbers);
@@ -18,24 +18,24 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validateSixDigits(List<Integer> numbers) {
+    private void validateSixDigits(List<Integer> numbers) throws Exception {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_SIX_DIGITS);
+            throw ErrorCode.NOT_SIX_DIGITS.getException();
         }
     }
 
-    private void validateRange(List<Integer> numbers) {
+    private void validateRange(List<Integer> numbers) throws Exception {
         for (int number : numbers) {
             if (number < LOTTO_NUMBER_START || number > LOTTO_NUMBER_END) {
-                throw new IllegalArgumentException(ErrorMessage.NOT_IN_RANGE);
+                throw ErrorCode.NOT_IN_RANGE.getException();
             }
         }
     }
 
-    private void validateDuplicate(List<Integer> numbers) {
+    private void validateDuplicate(List<Integer> numbers) throws Exception {
         for (int index = 0; index < numbers.size(); index++) {
             if (isDuplicate(numbers, index)) {
-                throw new IllegalArgumentException(ErrorMessage.NOT_DUPLICATE);
+                throw ErrorCode.NOT_DUPLICATE.getException();
             }
         }
     }
