@@ -5,18 +5,18 @@ import lotto.domain.chart.RankChart;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Compensation {
+public class Rank {
 
-    public static List<Integer> li(List<Integer> ranking) {
-        List<Integer> li = new ArrayList<>();
-        for (int i : ranking) {
-            li.add(jk(i));
+    public static List<Integer> rankNumbers(List<Integer> sameNumbers) {
+        List<Integer> rankRecord = new ArrayList<>();
+        for (int sameNumber : sameNumbers) {
+            rankRecord.add(changeRank(sameNumber));
 
         }
-        return li;
+        return rankRecord;
     }
 
-    public static int jk(int i) {
+    public static int changeRank(int i) {
         if (i == RankChart.FirstPlace.getValue()) {
             return RankChart.FirstPlace.getValue();
 
