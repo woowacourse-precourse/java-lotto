@@ -44,4 +44,11 @@ public class OrganizerTest {
         assertThatThrownBy(() -> new Organizer("1,2,3,4,5,6", "65"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @DisplayName("당첨 숫자와 보너스 숫자 중 중복이 있으면 예외 처리한다.")
+    void throwsExceptionWhenExistsDuplicate() {
+        assertThatThrownBy(() -> new Organizer("1,2,3,4,5,6", "3"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

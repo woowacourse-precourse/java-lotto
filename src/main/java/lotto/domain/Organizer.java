@@ -18,6 +18,7 @@ public class Organizer {
         this.bonusNumber = getIntegerFromString(bonusNumberInput);
         ExceptionHandler.isWithinRange(bonusNumber,
                 LottoStatistic.MIN_NUMBER.getValue(), LottoStatistic.MAX_NUMBER.getValue());
+        checkDuplicate(winningNumbers, bonusNumber);
     }
 
     public List<Integer> getWinningNumbersFromInput(String input) {
@@ -41,5 +42,11 @@ public class Organizer {
             ExceptionHandler.isWithinRange(number,
                     LottoStatistic.MIN_NUMBER.getValue(), LottoStatistic.MAX_NUMBER.getValue());
         }
+    }
+
+    private void checkDuplicate(List<Integer> winningNumbers, int bonusNumber) {
+        List<Integer> combinedNumbers = new ArrayList<>(winningNumbers);
+        combinedNumbers.add(bonusNumber);
+        ExceptionHandler.doesContainDuplicate(combinedNumbers);
     }
 }
