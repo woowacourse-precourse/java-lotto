@@ -2,18 +2,15 @@ package lotto.controller;
 
 import lotto.domain.UserPrice;
 import lotto.domain.WinnerNumber;
-import lotto.util.ValidUtil;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class InputController {
 
-	private final ValidUtil validUtil;
 	private final InputView inputView;
 	private final OutputView outputView;
 
-	public InputController(ValidUtil validUtil, InputView inputView, OutputView outputView) {
-		this.validUtil = validUtil;
+	public InputController(InputView inputView, OutputView outputView) {
 		this.inputView = inputView;
 		this.outputView = outputView;
 	}

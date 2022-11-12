@@ -5,7 +5,6 @@ import lotto.controller.LottoController;
 import lotto.repository.UserLottoRepository;
 import lotto.service.LottoService;
 import lotto.service.StatisticsService;
-import lotto.util.ValidUtil;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -17,8 +16,7 @@ public class AppConfig {
 		LottoService lottoService = new LottoService(userLottoRepository);
 		InputView inputView = new InputView();
 		OutputView outputView = new OutputView();
-		ValidUtil validUtil = new ValidUtil();
-		InputController inputController = new InputController(validUtil, inputView, outputView);
+		InputController inputController = new InputController(inputView, outputView);
 		LottoController lottoController = new LottoController(lottoService, outputView, statisticsService,
 			inputController);
 		return lottoController;
