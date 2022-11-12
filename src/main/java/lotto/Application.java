@@ -40,5 +40,29 @@ public class Application {
 
         return inputMoney;
     }
+
+    // 사용자의 당첨 번호 & 보너스 번호 입력
+    public static List inputWinNumber() {
+        List<Integer> winNumber = new ArrayList<>();
+
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String[] inputNumber = Console.readLine().split(",");
+        for(int i = 0; i < inputNumber.length; i++) {
+            if(winNumber.contains(Integer.parseInt(inputNumber[i]))) {
+                throw new IllegalArgumentException(ERROR_MESSAGE + "잘못된 당첨 번호입니다.");
+            }
+            winNumber.add(Integer.parseInt(inputNumber[i]));
+        }
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int bonusNumber = Integer.parseInt(Console.readLine());
+        if(winNumber.contains(bonusNumber)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE + "잘못된 보너스 번호입니다.");
+        }
+        winNumber.add(bonusNumber);
+
+        return winNumber;
+    }
+
     }
 }
