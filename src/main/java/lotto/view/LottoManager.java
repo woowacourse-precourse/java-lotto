@@ -9,9 +9,6 @@ public class LottoManager {
         }
     }
 
-    public void printWinningDetails() { // 당첨 내역 출력
-    }
-
     public void printRateOfReturn() { // 수익률 출력
 
     }

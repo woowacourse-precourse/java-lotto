@@ -8,21 +8,24 @@
 7. 당첨 통계 출력
 
 ##기능 목록
+- [ ] 로또 개수 입력 - LottoManager # inputLottoCount
+  - [ ] 숫자인지 확인
 - [x] 1부터 45까지 서로 다른 수로 이루어진 6개의 로또번호 생성 - NumberGenerator#createLottoNumber
   - [x] 사이즈 확인 - Lotto#validate
   - [x] 중복 검사 - Lotto#checkOverlap
-  - [ ] 로또번호 출력 - LottoManager#printLottoNumbers
+  - [x] 로또번호 출력 - LottoManager#printLottoNumbers
 - 1부터 45까지 서로 다른 수로 이루어진 6개의 번호와 1개의 서비스 번호를 입력한다.
-  - [ ] 당첨 번호 입력 - NumberGenerator#createWinningNumber
-    - [ ] 사이즈 확인
-    - [ ] 중복 검사
-    - [ ] 범위 확인
-  - [x] 보너스 번호 입력 - NumberGenerator#createBonusNumber
+  - [ ] 당첨 번호 입력 - LottoManager #inputWinningNumbers
+    - [ ] 사이즈 확인 - WinningNumbers #validate
+    - [ ] 중복 검사 - WinningNumbers #checkOverlap
+    - [ ] 범위 확인 - WinningNumbers #checkScope
+  - [x] 보너스 번호 입력 - LottoManager# inputBonusNumber
     - [ ] 숫자인지 확인
-    - [ ] 범위 확인
+    - [ ] 범위 확인 - WinningNumbers #checkScope
 - [ ] 로또 번호(6자리)와 당첨 번호(6자리, 보너스 번호 1개)를 비교한다. - LottoManager#compare
   - [x] 당첨번호 중 몇개의 숫자가 같은지 알 수 있다. - Judgement#correctCount
     - [x] 보너스 번호가 있는지 알 수 있다.(당첨번호 5자리가 같은 경우만) - Judgement#hasWinningNumber
+  - [ ] 수익률 계산 - LottoCalculator#sumOfPrizeMoney
   - [ ] 당첨 내역 출력 - LottoManager#printWinningDetails
   - [ ] 수익률 출력 - LottoManager#printRateOfReturn
-    - [ ] 당첨 금액 합산 - LottoManager#sumOfPrizeMoney
+    
