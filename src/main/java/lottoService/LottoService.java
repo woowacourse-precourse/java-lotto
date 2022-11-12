@@ -37,10 +37,17 @@ public class LottoService {
         Collections.sort(lottoWinningNumbers);
         return lottoWinningNumbers;
     }
-    
+
+    public Integer inputLottoBonusNumber(Lotto lotto){
+        String lottoBonusNumber = input();
+        int bonusNumber = Integer.parseInt(lottoBonusNumber);
+        lotto.getNumbers().add(bonusNumber);
+        return bonusNumber;
+    }
+
     public void isDuplicate(List<Integer> winningLottoNumbers){
         Set<Integer> checkDuplicateNumber = new HashSet<>();
-
+9
         for (Integer winningLottoNumber : winningLottoNumbers) {
             if(checkDuplicateNumber.contains(winningLottoNumber))
                 throw new IllegalArgumentException(Constant.EXIST_DUPLICATE_NUMBER_EXCEPTION);
