@@ -23,4 +23,13 @@ public class LottoGameMessage {
     public void printBonusNumberMessage(){
         System.out.println(BONUS_NUMBER_MESSAGE);
     }
+
+    public void printPlayerRandomLottoPickNumbers(Player player){
+        Iterator<Lotto> playerLottoNumbers = player.getPlayerLottoPickNumbers().iterator();
+
+        while(playerLottoNumbers.hasNext()){
+            Lotto playerRandomLottoNumbers = playerLottoNumbers.next();
+            System.out.println(playerRandomLottoNumbers.getNumbers());
+        }
+    }
 }
