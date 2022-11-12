@@ -85,7 +85,7 @@ public class LottoRoundTest {
         assertThat(lottoRound.getRank(loseNum)).isEqualTo(LottoRank.SECOND);
     }
 
-    @DisplayName("당첨번호와 5개 일치하고 보너스 번호 미일치할 경우 3등.")
+    @DisplayName("당첨번호와 6개 일치할 경우 1등.")
     @Test
     void compareByFirstPlaceNumber() {
         Lotto winningNum = new Lotto(List.of(1, 2, 3, 4, 5, 6));
