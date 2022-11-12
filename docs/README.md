@@ -33,6 +33,7 @@
 - M [x] Lotto 객체에 상금, 등수 정보를 저장할 수 있도록 메서드, 변수를 설정한다. - Lotto
 - M [x] LottoCalculate 내 함수를 사용해 Lotto 객체에 로또 번호에 따른 등수 및 상금을 업데이트 한다. -LottoCalculate#totalCalculate()
 - M [x] LottoData 에 생성된 Lotto 객체에 등수, 상금 데이터를 추가한다 - LottoData#putDataToLotto()
+- M [x] Lotto에 추가된 등수, 상금 데이터를 모아 저장한다 - LottoData#countPrize(), LottoData#sumPrizeMoney()
 - V 입력을 위한 문구를 출력한다. - InputView
   - V [ ] 구입할 금액을 입력해주세요. - InputView#printHowMuch()
   - V [ ] 당첨 번호를 입력해 주세요. - InputView#printInputWinNumber()
