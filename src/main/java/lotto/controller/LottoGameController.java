@@ -5,12 +5,15 @@ import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 import lotto.view.UserInput;
+import lotto.view.UserOutput;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoGameController {
     public void run() {
         final Lottos boughtLottos = buyLottos();
+        UserOutput.outputBuyLottos(boughtLottos);
+
         final Lotto winLotto = getWinLotto();
         final Integer bonusNumber = getBonusNumber(winLotto);
     }
