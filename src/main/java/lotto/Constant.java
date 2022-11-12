@@ -13,7 +13,7 @@ public class Constant {
     public static final String FOUR_CORRECT = "4개 일치 (50,000원) - ";
     public static final String FIVE_CORRECT = "5개 일치 (1,500,000원) - ";
     public static final String FIVE_AND_BONUS_CORRECT = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
-    public static final String SIX_CORRECT = "6개 일치 (2,000,000,000원) - 0";
+    public static final String SIX_CORRECT = "6개 일치 (2,000,000,000원) - ";
     public static final String COUNT = "개";
 
     public static final String TOTAL_START = "총 수익률은 ";
