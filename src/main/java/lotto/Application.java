@@ -7,5 +7,6 @@ public class Application {
         lotteryNumber.informLotteryNumbers();
         input.enterNumbers();
         Lotto lotto = new Lotto(input.getNumbers());
+        input.enterBonusNumber();
     }
 }

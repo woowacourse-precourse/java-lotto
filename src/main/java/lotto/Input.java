@@ -51,10 +51,10 @@ public class Input {
                 throw new IllegalArgumentException("[Error] 보너스 번호 값의 범위가 1부터 45 사이의 값이 아닙니다.");
 
         } catch (Exception e) {
-            if(e.equals(NumberFormatException.class))
+            if(e.getClass() == NumberFormatException.class)
                 throw new IllegalArgumentException("[Error] 보너스 번호로 숫자가 아닌 값이 입력 되었습니다.");
 
-            if(e.equals(IllegalArgumentException.class))
+            if(e.getClass() == IllegalArgumentException.class)
                 throw new IllegalArgumentException(e.getMessage());
         }
 
