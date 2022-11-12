@@ -66,4 +66,20 @@ class LottoTest {
         assertThat(new Lotto(List.of(1, 2, 3, 4, 5, 6)).getLotto()).isEqualTo(lottoMachine.winNumber.getLotto());
 
     }
+
+    @DisplayName("잘못된 당첨 번호가 주어지면 예외가 발생한다.")
+    @Test
+    void giveWrongWinNumber() {
+
+        LottoMachine lottoMachine = new LottoMachine();
+
+        assertThatThrownBy(() -> lottoMachine.setWinNumber(List.of("1", "2", "3", "4", "5", "6", "7")))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> lottoMachine.setWinNumber(List.of("1", "2", "2", "3", "4", "5")))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> lottoMachine.setWinNumber(List.of(" ", " ", " ", " ", " ", " ")))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
