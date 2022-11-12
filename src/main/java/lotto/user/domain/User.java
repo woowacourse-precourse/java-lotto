@@ -20,8 +20,8 @@ public class User {
         lottos.add(lottoNumbers);
     }
 
-     public List<List<Integer>> getLottos() {
+    public List<List<Integer>> getLottos() {
         return lottos;
-     }
+    }
 
 }

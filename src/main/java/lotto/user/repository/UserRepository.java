@@ -8,9 +8,8 @@ import lotto.user.domain.User;
 public class UserRepository {
     private static final List<Integer> LOTTO_NUMBER = List.of(1, 2, 3, 4, 5, 6);
 
-
-    public static void createUserLottos(User user,int lottoTicketAmpunt) {
-        for (int i =0 ;i<lottoTicketAmpunt;i++){
+    public static void createUserLottos(User user, int lottoTicketAmpunt) {
+        for (int i = 0; i < lottoTicketAmpunt; i++) {
             Lotto lotto = new Lotto(LOTTO_NUMBER);
             lotto.setNumbers(LottoRepository.generateLotto());
             user.setLottos(lotto.getNumbers());
