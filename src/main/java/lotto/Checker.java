@@ -51,14 +51,15 @@ public class Checker extends Kiosk {
 //    }
 
     public static int getTotalWinnings() {
-        int totalWinnings =0;
-        for (int prizeCount : resultStatistics) {
-
+        int totalWinnings = 0;
+        HashMap<PrizeRank, Integer> winnings = initializeWinnings();
+        for (PrizeRank rank : PrizeRank.values()) {
+            totalWinnings += resultStatistics[rank.ordinal()] * Winnings.getAmount(rank.name());
         }
         return totalWinnings;
     }
 
-    public HashMap<PrizeRank, Integer> initializeWinnings() {
+    public static HashMap<PrizeRank, Integer> initializeWinnings() {
         HashMap<PrizeRank, Integer> winnings = new HashMap<>();
         for (PrizeRank rank : PrizeRank.values()) {
             winnings.put(rank, Winnings.getAmount(rank.name()));
