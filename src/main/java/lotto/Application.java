@@ -3,9 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     static final int LOTTO_PRICE = 1000;
@@ -72,11 +70,19 @@ public class Application {
         for (int number : numbers) {
             if(isNotInRange(number)) return true;
         }
-        return false;
+        return hasDuplicates(numbers);
     }
 
     public static boolean isNotInRange(int number){
         return number < 1 || number > 45;
+    }
+
+    public static boolean hasDuplicates(List<Integer> list) {
+        Set<Integer> set = new HashSet<>();
+        for (int elem : list) {
+            if (!set.add(elem)) return true;
+        }
+        return false;
     }
 
     public static void validateGivenNumbers() {
