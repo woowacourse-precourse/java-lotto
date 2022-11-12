@@ -4,7 +4,7 @@
   - [x] 1000원 단위로 나누어 떨어지지 않을 경우 예외 처리한다. - moneyInputError()
 - [x] 금액에 해당하는 만큼 로또 발행한다. (1장 = 1,000원)
   - [x] 로또 번호를 생성한다. - buyLotto()
-    - [ ] 중복 값이 나올 경우 예외 처리 - Lotto.java -> validate()
+    - [x] 중복 값이 나올 경우 예외 처리 - Lotto.java -> validate()
   - [x] 오름 차순으로 정렬한다. - Lotto.java -> Lotto.numSort()
   - [x] 발행한 로또 수량을 출력한다.
   - [x] 로또 번호를 출력한다. - Lotto.java -> Lotto.printNumbers()
