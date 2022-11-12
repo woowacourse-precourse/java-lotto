@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Statistics {
-    private final List<Integer> winningLotto;
-    private final int bonusNumber;
+    private final List<Integer> WINNING_LOTTO;
+    private final int BONUS_NUMBER;
     private int first = 0;
     private int second = 0;
     private int third = 0;
@@ -13,8 +13,8 @@ public class Statistics {
     private int fifth = 0;
 
     public Statistics(List<Integer> winningLotto, int bonusNumber) {
-        this.winningLotto = winningLotto;
-        this.bonusNumber = bonusNumber;
+        this.WINNING_LOTTO = winningLotto;
+        this.BONUS_NUMBER = bonusNumber;
     }
 
     public void compare(List<List<Integer>> lottos, int purchaseAmount) {
@@ -26,8 +26,8 @@ public class Statistics {
     }
 
     private void prize(List<Integer> lotto) {
-        boolean bonus = lotto.contains(bonusNumber);
-        lotto.retainAll(winningLotto);
+        boolean bonus = lotto.contains(BONUS_NUMBER);
+        lotto.retainAll(WINNING_LOTTO);
         int duplicate = lotto.size();
 
         if (duplicate==6) {

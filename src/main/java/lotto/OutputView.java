@@ -5,6 +5,7 @@ import java.util.List;
 public class OutputView {
     private long totalEarnMoney;
     private int purchaseAmount;
+    private final int ONE_HUNDRED_PERCENT = 100;
     public OutputView(List<Integer> statistics, int purchaseAmount) {
         this.purchaseAmount = purchaseAmount;
         System.out.println("당첨 통계");
@@ -42,6 +43,6 @@ public class OutputView {
         System.out.printf("총 수익률은 %.1f%%입니다.", calculator());
     }
     private double calculator() {
-        return totalEarnMoney / (double) purchaseAmount * 100;
+        return totalEarnMoney / (double) purchaseAmount * ONE_HUNDRED_PERCENT;
     }
 }

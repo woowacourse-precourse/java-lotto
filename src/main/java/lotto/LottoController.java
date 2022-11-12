@@ -27,7 +27,7 @@ public class LottoController {
         return new Lotto(input);
     }
 
-    private BonusNumber inputBonusNumber(String input) {
+    private BonusNumber inputBonusNumber(int input) {
         return new BonusNumber(input);
     }
 }

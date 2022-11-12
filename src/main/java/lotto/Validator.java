@@ -13,9 +13,7 @@ public class Validator {
         return purchaseAmount;
     }
 
-    public int validDateBonusNumber(String input) {
-        validDateType(input);
-        int bonusNumber = Integer.parseInt(input);
+    public int validDateBonusNumber(int bonusNumber) {
         validRangeLottoNumber(bonusNumber);
         nonOverlapWithLottoNumbers(bonusNumber);
         return bonusNumber;
@@ -27,14 +25,6 @@ public class Validator {
         nonOverlap(lottoNumbers);
         winningNumbers = lottoNumbers;
         return lottoNumbers;
-    }
-
-    private void validDateType(String input) {
-        try {
-            int number = Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주셔야 합니다.");
-        }
     }
     private void validDateThousandUnitNumber(Integer purchase) {
         if (purchase % 1000 != 0) {
