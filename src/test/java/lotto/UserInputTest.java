@@ -82,7 +82,7 @@ class UserInputTest {
         });
     }
 
-    @DisplayName("사용자 로또 번호에 숫자와 ','외에 다른 것이 오면 예외가 발생한다.")
+    @DisplayName("사용자 로또 번호에 숫자와 ,외에 다른 것이 오면 예외가 발생한다.")
     @Test
     void isNotNumberAndCommaLottoNumbers() {
         // given
@@ -91,6 +91,38 @@ class UserInputTest {
         // when, then
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
             new User().userLottoNumbers(() -> userInput);
+        });
+    }
+
+    @DisplayName("보너스 번호는 1~45 숫자 하나이다.")
+    @Test
+    void isBonusValidLottoNumbers() {
+        // given, when, then
+        String userInput = "7";
+        new User().isNumberAndInRange(userInput);
+    }
+
+    @DisplayName("보너스 번호는 1~45 숫자 범위가 아니면 예외를 발생한다.")
+    @Test
+    void isNotBonusValidLottoNumbers() {
+        // given
+        String userInput = "46";
+
+        // when, then
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new User().isNumberAndInRange(userInput);
+        });
+    }
+
+    @DisplayName("보너스 번호에 문자가 있으면 예외를 발생한다.")
+    @Test
+    void isCharContainBonusLottoNumbers() {
+        // given
+        String userInput = "2a";
+
+        // when, then
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            new User().isNumberAndInRange(userInput);
         });
     }
 }

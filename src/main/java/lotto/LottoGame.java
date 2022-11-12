@@ -11,5 +11,8 @@ public class LottoGame {
 
         System.out.println("번호 여섯 자리를 입력해 주세요.(쉼표로 구분합니다.)");
         user.userLottoNumbers(new UserInputGeneratorImpl());
+
+        System.out.println("보너스 번호를 입력해주세요.(1~45만 가능합니다.)");
+        user.userLottoNumbers(new UserInputGeneratorImpl());
     }
 }
