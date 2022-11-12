@@ -12,4 +12,8 @@ public class Output {
             System.out.println(lottoTicket);
         }
     }
+
+    public static void showReturnOfRate(double returnOfRate) {
+        System.out.println("총 수익률은 "+returnOfRate+"%입니다.");
+    }
 }
