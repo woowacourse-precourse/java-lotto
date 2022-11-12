@@ -10,7 +10,6 @@ import java.util.Set;
 public class Lotto {
     //로또 당첨번호
     private final List<Integer> numbers;
-//    private final Integer bonus_numbers = 0;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -34,10 +33,6 @@ public class Lotto {
         if(numbers.size() != qwer.size())
             throw new IllegalArgumentException("[ERROR] 잘못된 값이 입력되었습니다.");
 
-//        for (Integer s : numbers) {
-//            if (lotto_answer.contains(int_each_answer)) {
-//                throw new IllegalArgumentException("[ERROR] 잘못된 값이 입력되었습니다.");
-//            }
     }
     private static Boolean checkValidLottoRange(int number) {
         return number >= 1 && number <= 45;
@@ -50,19 +45,8 @@ public class Lotto {
             System.out.println("로또보너스오류");
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45사이의 숫자여야 합니다.");
         }
+        if(numbers.contains(bonus_numbers))
+            throw new IllegalArgumentException("[ERROR] 보너스 번호를 잘못 입력하였습니다.");
         return bonus_numbers;
     }
-    public List<Integer> getLottoNumber(){
-        return numbers;
-    }
-
-
-
-
-
-
-
-
-
-    // TODO: 추가 기능 구현
 }
