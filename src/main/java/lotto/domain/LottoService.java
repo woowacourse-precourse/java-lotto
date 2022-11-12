@@ -12,7 +12,6 @@ public class LottoService {
 
     public Map<Score, Integer> calculateLottoScore(List<Integer> lottoNumbers, List<List<Integer>> randomLottoNumbers,
                                                    int bonusNumber) {
-
         Map<Score, Integer> scoreStore = LottoScore.setInitialSetting();
         randomLottoNumbers.forEach(randomLottoNumber -> {
             int score = 0;
