@@ -9,10 +9,12 @@ public class BonusNumber {
 
 	public BonusNumber(String stringBonusNumber, List<Integer> inputNumbers) {
 		validateBonusNumber(stringBonusNumber);
-
-		noBonusRepeat (inputNumbers);
-
+		
 		this.bonusNumber = Integer.parseInt(stringBonusNumber);
+		
+		noRepeatBonus(inputNumbers);
+
+		
 	}
 
 	public void validateBonusNumber(String stringBonusNumber) {
@@ -27,7 +29,7 @@ public class BonusNumber {
 		}
 	}
 
-	public void noBonusRepeat (List<Integer> inputNumbers) {
+	public void noRepeatBonus (List<Integer> inputNumbers) {
 		HashSet<Integer> inputNumbersSet = new HashSet<>();
 		inputNumbersSet.addAll(inputNumbers);
 		inputNumbersSet.add(bonusNumber);

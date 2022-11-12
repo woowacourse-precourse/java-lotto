@@ -19,7 +19,7 @@ class UIAskBonusNumberTest {
 	@DisplayName("입력값이 숫자가 아닐 경우 예외가 발생한다.")
     @Test
     void ShouldBeNumber() {
-        assertThatThrownBy(() -> new BonusNumber("a", List.of(1, 2, 3, 4, 5, 6, 7)))
+        assertThatThrownBy(() -> new BonusNumber("a", List.of(1, 2, 3, 4, 5, 6)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
@@ -27,7 +27,7 @@ class UIAskBonusNumberTest {
 	@DisplayName("입력값이 1-45 사이의 숫자가 아닐 경우 예외가 발생한다.")
     @Test
     void ShouldBeNumbersOneToFortyFive() {
-        assertThatThrownBy(() -> new BonusNumber("50", List.of(1, 2, 3, 4, 5, 6, 7)))
+        assertThatThrownBy(() -> new BonusNumber("50", List.of(1, 2, 3, 4, 5, 6)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
@@ -35,7 +35,7 @@ class UIAskBonusNumberTest {
 	@DisplayName("입력 숫자 6개와 보너스 번호가 중복되는 경우 예외가 발생한다.")
     @Test
     void NoDuplicateBonusNumber() {
-        assertThatThrownBy(() -> new BonusNumber("3", List.of(1, 2, 3, 4, 5, 6, 7)))
+        assertThatThrownBy(() -> new BonusNumber("3", List.of(1, 2, 3, 4, 5, 6)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }

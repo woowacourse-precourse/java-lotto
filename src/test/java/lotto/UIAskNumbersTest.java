@@ -32,7 +32,7 @@ class UIAskNumbersTest extends NsTest {
 	
 	@DisplayName("입력값들이 1-45 사이의 숫자가 아닐 경우 예외가 발생한다.")
 	@ParameterizedTest
-	@ValueSource(strings = {"10,22,33,44,55,45", "90,100,1,2,3,4"})
+	@ValueSource(strings = {"10,22,33,44,55,45", "1,2,3,4,99,6"})
     void ShouldBeNumbersOneToFortyFive(String input) {
 		String[] inputStr = input.split(",");
 		

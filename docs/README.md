@@ -31,7 +31,7 @@
                 * 에러메시지([ERROR] 숫자만 입력하세요.) 
                 * 에러메시지([ERROR] 1-45사이의 숫자만 입력하세요.) 
           
-            * 예외2 : 입력 숫자 6개와 보너스 번호가 중복되는 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 보너스 번호가 입력된 당첨 번호 6개와 중복됩니다.) - BonusNumber#noBonusRepeat()
+            * 예외2 : 입력 숫자 6개와 보너스 번호가 중복되는 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 보너스 번호가 입력된 당첨 번호 6개와 중복됩니다.) - BonusNumber#noRepeatBonus()
        
 * 출력
     1. 발행한 로또 수량 및 번호 출력 - Print#printNumberAll()
@@ -51,7 +51,7 @@
             - enum을 활용해서 각각 몇번 해당하는지 세어주는 기능
     
     * printProfit()
-        - 수익률 구하기 위해서 전체 금액 합산 / 로또구입금액 계산하는 기능 구현
+        - 수익률 구하기 위해서 전체 금액 합산 / 로또구입금액 계산하는 기능
 
 2. UI 로직
 
@@ -78,13 +78,13 @@
             - 입력 숫자 6개와 보너스 번호가 중복되는 경우 - UIAskBonusNumberTest#NoDuplicateBonusNumber()
         
     * printNumberAll()
-        - 발행한 로또 수량 및 번호 출력
+        - 발행한 로또 수량 및 번호 출력 
 
     * printWin()
         - 당첨 내역 출력
 
     * printProfitRound()
-        - 수익률 계산한값을 소수점 둘째자리에서 반올림 해준다음 출력하는 기능 구현
+        - 수익률 계산한값을 소수점 둘째자리에서 반올림 해준다음 출력
 
 ------------
 ## 기능 요구 사항
