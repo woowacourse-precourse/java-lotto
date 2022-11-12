@@ -40,8 +40,9 @@ public class Lotto {
             if (winningNumber.subList(i, winningNumber.size()).contains(winningNumber.get(i))) {
                 throw new IllegalArgumentException("[Error] 당첨번호에는 중복되는 숫자가 있어선 안됩니다.");
             }
-
+            if (winningNumber.get(i) < 1 || winningNumber.get(i) > 45) {
+                throw new IllegalArgumentException("[Error] 당첨번호는 1 에서 45 사이의 정수여야 합니다.");
+            }
         }
     }
-
 }
