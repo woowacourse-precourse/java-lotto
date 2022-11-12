@@ -23,7 +23,7 @@ public class User {
         return true;
     }
 
-    public void inputError(String error) {
+    private void inputError(String error) {
         throw new IllegalArgumentException(error);
     }
 

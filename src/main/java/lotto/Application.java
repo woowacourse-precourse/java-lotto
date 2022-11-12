@@ -30,7 +30,8 @@ public class Application {
         int count = user.lottoCount(str);
         outputView.lottoCountMsg(count);
         String win = inputView.winningLotto();
-        lotto.change(win);
+        List<Integer> ar = lotto.change(win);
+        lotto.checkInput(ar);
 
 
     }
