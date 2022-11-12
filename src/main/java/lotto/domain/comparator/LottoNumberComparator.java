@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Optional;
 import lotto.domain.Lotto;
 import lotto.domain.ball.Ball;
+import lotto.domain.winning.WinningDetail;
 import lotto.domain.winning.WinningNumber;
+import lotto.domain.winning.WinningRank;
 
 public class LottoNumberComparator {
     
@@ -15,8 +17,11 @@ public class LottoNumberComparator {
         this.winningNumber = winningNumber;
     }
     
-    public void compare(Lotto lotto) {
+    public Optional<WinningDetail> compare(Lotto lotto) {
         List<Ball> matchBalls = getMatchBalls(lotto);
+        Optional<WinningRank> winningRank = WinningRank.getRank(matchBalls);
+        
+        return winningRank.map(rank -> new WinningDetail(rank, matchBalls));
     }
     
     private List<Ball> getMatchBalls(Lotto lotto) {
