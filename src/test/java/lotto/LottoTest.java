@@ -24,4 +24,24 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 구입 금액이 1000원 단위가 아닐 경우 예외가 발생한다.")
+    @Test
+    void checkLottoMoney1() {
+        assertThatThrownBy(() -> new Validation("1234"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 구입 금액에 문자가 포함됐을 경우 예외가 발생한다.")
+    @Test
+    void checkLottoMoney2() {
+        assertThatThrownBy(() -> new Validation("1000a"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호가 1미만이거나 45 초과할 경우 예외가 발생한다.")
+    @Test
+    void checkLottoNumbers1() {
+        assertThatThrownBy(() -> new Validation(List.of(0, 2, 3, 4, 5, 45)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
