@@ -23,6 +23,14 @@
     - ```FIRST``` ```SECOND``` ```THIRD``` ```FOURTH``` ```FIFTH```
     - 등수, 일치하는 번호 개수, 보너스볼 일치 여부, 당첨금
 
+### **Money 클래스**
+- #### **로또 구입 금액**
+    - ```inputMoney``` : 로또 구입할 금액 입력
+    - ```validate``` : 입력한 금액 검증 및 예외처리
+      - ```validateInputMoneyIsAllNumber``` : 2의 63승 이하 숫자인지 검증
+      - ```validateInputMoneyIsRightUnit``` : 단위에 맞게 입력했는지 검증
+    - ```boughtLottoCount``` : 구매한 로또 개수 반환
+
 ### **Output 클래스**
 - #### **출력 기능**
     - ```printInputMoney``` : 구입 금액 입력 멘트 출력
