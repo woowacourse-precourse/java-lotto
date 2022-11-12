@@ -19,7 +19,7 @@ public class Validation {
 
     public static void existOnlyNumber(String amount) throws IllegalArgumentException {
         try {
-            Integer.parseInt(amount);;
+            Integer.parseInt(amount);
         } catch (NumberFormatException exception) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.CANNOT_CONVERT_NUMBER);
         }
