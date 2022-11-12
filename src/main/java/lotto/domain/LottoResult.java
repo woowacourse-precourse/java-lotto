@@ -14,4 +14,12 @@ public enum LottoResult {
         this.result = result;
         this.prize = prize;
     }
+
+    String getName() {
+        return result;
+    }
+    int getPrize() {
+        return prize;
+    }
+
 }
