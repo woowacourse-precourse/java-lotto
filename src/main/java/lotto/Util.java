@@ -51,6 +51,16 @@ public class Util {
         }
         return lottoNumbers;
     }
+
+    public static boolean isDuplicate(List<Integer> numbers){
+        long numbersCount = numbers.stream().distinct().count();
+
+        if (numbers.size() != numbersCount){
+            return true;
+        }
+        return false;
+    }
+
     /*public static long dividedBuy1000(final String input){
         final long longInput = Long.valueOf(input);
         final int thousand = 1000;
