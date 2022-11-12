@@ -4,6 +4,7 @@ import lotto.domain.LottoGenerator;
 import lotto.domain.Lottos;
 import lotto.domain.Money;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoGame {
     public void start() {
@@ -11,5 +12,6 @@ public class LottoGame {
         int lottoCount = money.countLotto();
 
         Lottos lottos = new Lottos(LottoGenerator.generateLottos(lottoCount));
+        OutputView.printPurchaseLotto(lottos.getLottos());
     }
 }

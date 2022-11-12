@@ -19,7 +19,6 @@ public class LottoGenerator {
         for (int i = 0; i < lottoCount; i++) {
             lottos.add(LottoGenerator.pickRandomNumber());
         }
-        System.out.println(lottos.size());
         return lottos;
     }
 }
