@@ -4,11 +4,16 @@ import camp.nextstep.edu.missionutils.Console;
 import config.ErrorConstants;
 import config.PrintConstants;
 import lotto.Lotto;
+import lotto.LottoRank;
+import lotto.LottoStatistics;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserInterface {
+
+    private static DecimalFormat decimalFormat = new DecimalFormat("###,###");
 
     /**
      * 사용자로부터 구입금액을 입력받는다.
@@ -63,5 +68,28 @@ public class UserInterface {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorConstants.NOT_NUMBER_INPUT);
         }
+    }
+
+    /**
+     * 당첨 통계를 정해진 포맷으로 출력합니다.
+     * @param statistics 통계 정보
+     */
+    public static void printStatistics(LottoStatistics statistics) {
+        System.out.println(PrintConstants.START_PRINT_STATISTICS);
+        for (LottoRank rank : LottoRank.values()) {
+            if (rank.getRank() == 0)
+                continue;
+            String line = getRankLine(rank) + statistics.getNumOfRank(rank) + "개";
+            System.out.println(line);
+        }
+        System.out.println(getFormedYield(statistics));
+    }
+
+    private static String getRankLine(LottoRank rank) {
+        return rank.getDescription() + " (" + decimalFormat.format(rank.getPrize()) + "원) - ";
+    }
+
+    private static String getFormedYield(LottoStatistics statistics) {
+        return PrintConstants.PRINT_YIELD_START + String.format("%.1f", statistics.getYield()) + PrintConstants.PRINT_YIELD_END;
     }
 }
