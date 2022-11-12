@@ -9,13 +9,17 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class UserInterface {
-    int getPurchasePrice(){
+    int getPurchasePrice() throws IllegalArgumentException{
+        int puchasePrice = 0;
         System.out.println("구입금액을 입력해 주세요.");
-        try {
-            return Integer.parseInt(Console.readLine());
-        }catch(Exception e) {
-            throw new IllegalArgumentException("[ERROR]");
+
+        String userInput = Console.readLine();
+        if(Error.checkTextError(userInput)){
+            puchasePrice = Integer.parseInt(userInput);
+        }else{
+            throw new IllegalArgumentException();
         }
+        return puchasePrice;
     }
 
     void printLottos(List<Lotto> lottos) {
@@ -31,7 +35,6 @@ public class UserInterface {
         List<Integer> winningNumbers = Arrays.stream(userInput.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
-
         return winningNumbers;
     }
 
@@ -53,6 +56,6 @@ public class UserInterface {
     }
 
     void printRateReturn(double rateOfReturn){
-        System.out.println("총 수익률은 "+rateOfReturn+"입니다.");
+        System.out.println("총 수익률은 "+rateOfReturn+"%입니다.");
     }
 }
