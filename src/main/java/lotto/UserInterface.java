@@ -49,11 +49,11 @@ public class UserInterface {
     public static void printWinResult(HashMap<LottoRank, Integer> winResult) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.printf("3개 일치 (5,000원) - %d개\n", winResult.get(LottoRank.FIFTH));
-        System.out.printf("4개 일치 (50,000원) - %d개\n", winResult.get(LottoRank.FOURTH));
-        System.out.printf("5개 일치 (1,500,000원) - %d개\n", winResult.get(LottoRank.THIRD));
-        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", winResult.get(LottoRank.SECOND));
-        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", winResult.get(LottoRank.FIRST));
+        System.out.printf("3개 일치 (5,000원) - %d개\n", winResult.getOrDefault(LottoRank.FIFTH, 0));
+        System.out.printf("4개 일치 (50,000원) - %d개\n", winResult.getOrDefault(LottoRank.FOURTH, 0));
+        System.out.printf("5개 일치 (1,500,000원) - %d개\n", winResult.getOrDefault(LottoRank.THIRD, 0));
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", winResult.getOrDefault(LottoRank.SECOND, 0));
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", winResult.getOrDefault(LottoRank.FIRST, 0));
     }
 
     public static void printIncomePercent(float incomePercent) {
