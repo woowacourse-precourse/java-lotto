@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 enum ErrorMessages {
     LOTTO_NUM_NUMBER_ERROR("[ERROR] 로또 번호 개수가 6개여야 합니다."),
