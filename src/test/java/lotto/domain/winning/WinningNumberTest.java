@@ -15,15 +15,7 @@ public class WinningNumberTest {
     
     @BeforeEach
     void setUp() {
-        List<Ball> balls = List.of(new Ball(BallEnum.NORMAL, 1),
-                new Ball(BallEnum.NORMAL, 2),
-                new Ball(BallEnum.NORMAL, 3),
-                new Ball(BallEnum.NORMAL, 4),
-                new Ball(BallEnum.NORMAL, 5),
-                new Ball(BallEnum.BONUS, 6)
-        );
-        
-        winningNumber = new WinningNumber(balls);
+        winningNumber = new WinningNumber(List.of(1, 2, 3, 4, 5), List.of(6));
     }
     
     @DisplayName("일반 타입의 추첨 볼을 모두 반환해야 한다.")

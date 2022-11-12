@@ -1,5 +1,6 @@
 package lotto.domain.winning;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -8,10 +9,11 @@ import lotto.domain.ball.BallEnum;
 
 public class WinningNumber {
     
-    private final List<Ball> balls;
+    private final List<Ball> balls = new ArrayList<>();
     
-    public WinningNumber(List<Ball> balls) {
-        this.balls = balls;
+    public WinningNumber(List<Integer> normalNumbers, List<Integer> bonusNumbers) {
+        normalNumbers.forEach((normalNumber) -> balls.add(new Ball(BallEnum.NORMAL, normalNumber)));
+        bonusNumbers.forEach((bonusNumber) -> balls.add(new Ball(BallEnum.BONUS, bonusNumber)));
     }
     
     public List<Ball> getNormalNumbers() {
