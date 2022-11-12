@@ -1,14 +1,15 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
-        startMessage();
         try {
+            startMessage();
             Money money = new Money(Console.readLine());
-
-            LottoGenerator lottoList = new LottoGenerator(money.getLottoCount());
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] "+e.getMessage());
         }
