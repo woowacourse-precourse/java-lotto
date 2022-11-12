@@ -1,8 +1,9 @@
-package lotto.domain;
+package lotto.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import lotto.util.NumberGenerator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,10 +19,9 @@ class NumberGeneratorTest {
 
     @DisplayName("생성한 임의의 수 개수가 6개인지 확인한다.")
     @Test
-    void checkNumbersSize() {
+    void isNumbersSize6() {
         assertThat(numbers).hasSize(6);
     }
-
 
     @DisplayName("생성한 임의의 수 범위가 1부터 45까지인지 확인한다.")
     @Test
