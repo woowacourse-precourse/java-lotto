@@ -7,10 +7,14 @@ public enum LottoRank {
     FOURTH(50000),
     FIFTH(5000),
     LOSE(0);
-    
+
     private final int winPrice;
 
     LottoRank(int winPrice) {
         this.winPrice = winPrice;
+    }
+
+    public int getWinPrice() {
+        return this.winPrice;
     }
 }

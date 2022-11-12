@@ -77,7 +77,7 @@ BUILD SUCCESSFUL in 0s
         - [ ] `public static LottoRank getLottoRank(Lotto, WinLotto)`
         - [ ] `private static int getWinNumber(Lotto, WinLotto)`
         - [ ] `private static boolean existBonusNumber(Lotto, WinLotto)`
-- [ ] **CLASS 4.** `enum LottoRank`
+- [x] **CLASS 4.** `enum LottoRank`
     - **Class Variables:**
         - [x] `FIRST(2000000000)`
         - [x] `SECOND(30000000)`
@@ -88,7 +88,7 @@ BUILD SUCCESSFUL in 0s
         - [x] `private final int winPrice`
     - **Class Methods**
         - [x] `public LottoRank(int winPrice)`
-        - [ ] `public int getWinPrice()`
+        - [x] `public int getWinPrice()`
 - [ ] **CLASS 5.** `User`
     - **Class Variables:**
         - [ ] `private final int purchaseMoney`
