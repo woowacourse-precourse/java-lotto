@@ -1,14 +1,18 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.assertThat;
 
-class LottoTest {
+class LottoTest extends NsTest{
+    private static final String ERROR_MESSAGE = "[ERROR]";
+
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -25,24 +29,101 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @DisplayName("구매 금액에 문자가 들어간 경우 예외가 발생한다.")
+    @Test
+    void errorTest1() {
+        assertSimpleTest(() -> {
+            run("1000a");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("구매 금액이 1000원 단위가 아닌 경우 예외가 발생한다.")
+    @Test
+    void errorTest2() {
+        assertSimpleTest(() -> {
+            run("1234");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("당첨 번호가 1과 45사이에 없는 경우 예외가 발생한다.")
+    @Test
+    void errorTest3() {
+        assertSimpleTest(() -> {
+            run("8000","1,2,3,4,5,0");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("당첨 번호가 중복인 경우 예외가 발생한다.")
+    @Test
+    void errorTest4() {
+        assertSimpleTest(() -> {
+            run("8000","1,2,3,4,5,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("로또 번호가 6개가 아닌 경우 예외가 발생한다.")
+    @Test
+    void errorTest5() {
+        assertSimpleTest(() -> {
+            run("8000","1,2,3,4,5");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("보너스 번호는 당첨 번호에 있는 경우 예외가 발생한다.")
+    @Test
+    void errorTest6() {
+        assertSimpleTest(() -> {
+            run("8000","1,2,3,4,5,6","6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("보너스 번호가 1과 45사이에 없는 경우 예외가 발생한다.")
+    @Test
+    void errorTest7() {
+        assertSimpleTest(() -> {
+            run("8000","1,2,3,4,5,6","0");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("보너스 번호에 문자가 있는경우 예외가 발생한다.")
+    @Test
+    void errorTest8() {
+        assertSimpleTest(() -> {
+            run("8000","1,2,3,4,5,6","0a");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
+    }
+
     @DisplayName("로또 구입 금액이 1000원 단위가 아닐 경우 예외가 발생한다.")
     @Test
     void checkLottoMoney1() {
-        assertThatThrownBy(() -> new Validation("1234"))
+        assertThatThrownBy(() -> Validation.isMultipleOf1000("1234"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("로또 구입 금액에 문자가 포함됐을 경우 예외가 발생한다.")
     @Test
     void checkLottoMoney2() {
-        assertThatThrownBy(() -> new Validation("1000a"))
+        assertThatThrownBy(() -> Validation.isIncludeNotNumber("1000a"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("로또 번호가 1미만이거나 45 초과할 경우 예외가 발생한다.")
     @Test
     void checkLottoNumbers1() {
-        assertThatThrownBy(() -> new Validation(List.of(0, 2, 3, 4, 5, 45)))
+        assertThatThrownBy(() -> Validation.isLottoBetween1And45(List.of(0, 2, 3, 4, 5, 45)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
