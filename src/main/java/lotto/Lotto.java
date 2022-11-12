@@ -13,7 +13,8 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        new Validation(numbers);
+        Validation.isLottoBetween1And45(numbers);
+        Validation.isLottoDuplicate(numbers);
     }
 
     // TODO: 추가 기능 구현
