@@ -2,6 +2,8 @@ package lotto;
 
 import java.util.List;
 
+import static java.util.Collections.sort;
+
 public class Lotto {
     private final List<Integer> numbers;
 
@@ -16,5 +18,10 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    /**
+     * 일바 로또 번호 6개를 오름차순으로 정렬합니다.
+     */
+    public void sortLottoNumbers() {
+        sort(numbers);
+    }
 }
