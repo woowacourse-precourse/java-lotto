@@ -8,6 +8,7 @@ public class Controller {
     public void run(){
         beforeLottoGame();
         playLottoGame();
+        showGameResult();
     }
 
     public void beforeLottoGame(){
@@ -18,5 +19,10 @@ public class Controller {
 
     public void playLottoGame(){
         service.playLottoGame();
+    }
+
+    public void showGameResult(){
+        service.checkBuyerLotteries();
+        service.showGameResult();
     }
 }
