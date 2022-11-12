@@ -67,11 +67,11 @@
   - 당첨 통계를 콘솔에 보여준다.
 
 ### 수익률 계산
-- [x] countMatchResult()
+- [x] extractYield()
   - 당첨 통계를 바탕으로 사용자의 수익률을 계산한다.
 
 ### 수익률 출력
-- [x] getYield()
+- [x] showYield()
   - countMatchResult() 에서 계산된 수익률을 출력한다. 단, 소수점은 첫째 자리까지 출력한다.
 
 ---
