@@ -17,10 +17,6 @@ public class WinningStatistics {
         countRanks(rankCollection);
     }
 
-    public int findRankCount(Rank rank) {
-        return rankAndRankCount.get(rank);
-    }
-
     private void initRankAndRankCount() {
         rankAndRankCount.put(Rank.NOTHING, STATISTICS_INIT_NUM);
         rankAndRankCount.put(Rank.FIFTH, STATISTICS_INIT_NUM);
@@ -41,5 +37,7 @@ public class WinningStatistics {
         rankAndRankCount.put(rank, ++rankCount);
     }
 
-
+    public Map<Rank, Integer> get() {
+        return rankAndRankCount;
+    }
 }

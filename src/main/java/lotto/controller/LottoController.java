@@ -14,6 +14,8 @@ public class LottoController {
         WinningNumber winningNumber = WinnerAnnouncement();
 
         WinningStatistics winningStatistics = new WinningStatistics(lottoCollection.get(), winningNumber);
+        OutputView.printWinningStatistics(winningStatistics.get());
+
     }
 
     private LottoCollection buyLotto() {
