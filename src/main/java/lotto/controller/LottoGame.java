@@ -22,11 +22,15 @@ public class LottoGame {
         try {
             int money = lottoGameView.inputMoney();
             List<Lotto> lottos = customer.purchaseLottos(money);
+
             lottoGameView.printLottos(lottos);
+
             WinningNumber winningNumber = new WinningNumber(lottoGameView.inputWinningNumbers(), lottoGameView.inputBonusNumber());
             List<LottoRank> ranks = winningNumber.getRanks(lottos);
+            double rateOfReturn = winningNumber.getRateOfReturn(money, winningNumber.getTotalPrizeMoney(ranks));
+
             lottoGameView.printWinningResult(ranks);
-            lottoGameView.printRateOfReturn(winningNumber.getRateOfReturn(money, winningNumber.getTotalPrizeMoney(ranks)));
+            lottoGameView.printRateOfReturn(rateOfReturn);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

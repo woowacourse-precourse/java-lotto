@@ -2,8 +2,6 @@ package lotto.domain;
 
 import lotto.ErrorMessage;
 import lotto.LottoRank;
-import lotto.domain.Lotto;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -55,7 +53,7 @@ public class WinningNumber {
         return ((double) prizeMoney / money) * 100;
     }
 
-    public void validateNumberCount(List<Integer> winningNumbers) {
+    private void validateNumberCount(List<Integer> winningNumbers) {
         if (winningNumbers.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_NUMBER_COUNT.getMessage());
         }

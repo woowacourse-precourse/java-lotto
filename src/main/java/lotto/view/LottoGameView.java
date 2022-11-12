@@ -6,7 +6,6 @@ import lotto.domain.Lotto;
 import lotto.LottoRank;
 import lotto.WinningResultMessage;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
@@ -55,11 +54,11 @@ public class LottoGameView {
     }
     public void printLottos(List<Lotto> lottos) {
         System.out.println(lottos.size() + InformationMessage.PRINT_PURCHASE_COUNT.getMessage());
-        lottos.forEach(lotto -> printSortedLotto(lotto.getNumbers()));
+        lottos.forEach(this::printSortedLotto);
     }
 
-    public void printSortedLotto(List<Integer> lotto) {
-        System.out.println(getSortedByAscend(lotto));
+    public void printSortedLotto(Lotto lotto) {
+        System.out.println(lotto.getSortedByAscend());
     }
 
     public void printWinningResult(List<LottoRank> ranks) {
@@ -73,12 +72,6 @@ public class LottoGameView {
 
     public void printRateOfReturn(double rateOfReturn) {
         InformationMessage.PRINT_RATE_OF_RETURN.print(rateOfReturn);
-    }
-
-    private List<Integer> getSortedByAscend(List<Integer> lotto) {
-        return lotto.stream()
-                .sorted(Comparator.comparing(Integer::valueOf))
-                .collect(Collectors.toList());
     }
 
     private Map<LottoRank, Integer> getRankCount(List<LottoRank> ranks) {

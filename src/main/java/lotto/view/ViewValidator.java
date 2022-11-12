@@ -8,7 +8,6 @@ import java.util.regex.Pattern;
 public class ViewValidator {
     private static final String INVALID_NUMBER_TYPE_REGEX = "\\D";
     private static final int UNIT_OF_MONEY = 1000;
-    private static final int LOTTO_NUMBER_COUNT = 6;
 
     public void validateNumberType(String number) {
         if (Pattern.compile(INVALID_NUMBER_TYPE_REGEX).matcher(number).find()) {

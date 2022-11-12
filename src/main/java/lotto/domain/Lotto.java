@@ -1,8 +1,10 @@
 package lotto.domain;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private static final int LOTTO_NUMBER_COUNT = 6;
@@ -15,6 +17,16 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public boolean isContain(int number) {
+        return numbers.contains(number);
+    }
+
+    public List<Integer> getSortedByAscend() {
+        return numbers.stream()
+                .sorted(Comparator.comparing(Integer::valueOf))
+                .collect(Collectors.toList());
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException();
@@ -25,13 +37,5 @@ public class Lotto {
         if (new HashSet<>(numbers).size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException();
         }
-    }
-
-    public List<Integer> getNumbers() {
-        return Collections.unmodifiableList(numbers);
-    }
-
-    public boolean isContain(int number) {
-        return numbers.contains(number);
     }
 }
