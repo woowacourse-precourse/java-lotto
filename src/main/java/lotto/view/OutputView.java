@@ -12,6 +12,7 @@ public class OutputView {
     private static final int NO_WINNING_LOTTO = 0;
     private static final String PURCHASE_LOTTO = "\n%d개를 구매했습니다.\n";
     private static final String SHOW_STATISTICS = "\n당첨 통계\n---";
+    private static final String SHOW_YIELD = "총 수익률은 %.1f%%입니다.\n";
     private static final String WINNING_RESULT = "%d개 일치%s (%s원) - %d개\n";
     private static final String OPEN_BRACKET = "[";
     private static final String CLOSE_BRACKET = "]";
@@ -51,5 +52,10 @@ public class OutputView {
                     }
                     System.out.printf(WINNING_RESULT, rankEntry.getKey().getMatchingCnt(), bonusBall, reward, rankEntry.getValue());
                 });
+    }
+
+    public void printYield(Statistics statistics, int money) {
+        double yield = statistics.getYield(money);
+        System.out.printf(SHOW_YIELD, yield);
     }
 }

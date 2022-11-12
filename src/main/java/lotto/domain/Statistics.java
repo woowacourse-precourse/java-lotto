@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -9,6 +10,7 @@ public class Statistics {
     private static final int FIVE_MATCHING_LOTTO_NUMBERS = 5;
     private static final int COUNT_WINNING_LOTTO_BEFORE_RESULT = 0;
     private static final int COUNTING_WINNING_LOTTO = 1;
+    private static final int PERCENT = 100;
 
     private Map<Rank, Integer> lottosResult;
 
@@ -22,6 +24,13 @@ public class Statistics {
         for (Rank rank : Rank.values()) {
             lottosResult.put(rank, COUNT_WINNING_LOTTO_BEFORE_RESULT);
         }
+    }
+
+    public double getYield(int money) {
+        double totalWinnings = lottosResult.entrySet().stream()
+                .mapToDouble(rankEntry -> rankEntry.getKey().getReward() * rankEntry.getValue())
+                .sum();
+        return totalWinnings * PERCENT / money;
     }
 
     private void createStatistics(List<Lotto> lottos, WinningLotto winningLotto) {

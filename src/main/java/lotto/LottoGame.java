@@ -21,16 +21,17 @@ public class LottoGame {
             outputView.printLottos(lottos);
             winningLotto = inputWinningAndBonusNumber();
 
-            showStatistics(lottos, winningLotto);
+            showStatistics(lottos, winningLotto, money);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             throw e;
         }
     }
 
-    private void showStatistics(List<Lotto> lottos, WinningLotto winningLotto) {
+    private void showStatistics(List<Lotto> lottos, WinningLotto winningLotto, int money) {
         Statistics lottoStatistics = new Statistics(lottos, winningLotto);
         outputView.printStatistics(lottoStatistics);
+        outputView.printYield(lottoStatistics, money);
     }
 
     private WinningLotto inputWinningAndBonusNumber() {
