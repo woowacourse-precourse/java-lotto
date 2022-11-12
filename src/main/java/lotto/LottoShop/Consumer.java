@@ -17,14 +17,6 @@ public class Consumer {
         String purchaseAmount = Console.readLine();
 
         this.lotto_group = clerk.sellLotto(purchaseAmount);
-
-        printLottoGroup();
     }
 
-    private void printLottoGroup() {
-        lotto_group.stream()
-                .forEach(lotto -> {
-                    System.out.println(lotto.getNumbers());
-                });
-    }
 }

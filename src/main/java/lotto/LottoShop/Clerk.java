@@ -20,11 +20,21 @@ public class Clerk {
 
         int lotto_amount = getLottoAmount(purchaseAmount);
 
-        return lottoProvidingMachine.makeLottoGroup(lotto_amount);
+        List<Lotto> lotto_group = lottoProvidingMachine.makeLottoGroup(lotto_amount);
+
+        printPurchasedLotto(lotto_group);
+
+        return lotto_group;
     }
 
     private int getLottoAmount(String purchaseAmount) {
         return Integer.parseInt(purchaseAmount) / THOUSAND.getIntValue();
     }
 
+    private void printPurchasedLotto(List<Lotto> lotto_group) {
+        System.out.println(lotto_group.size() + MESSAGE_PURCHASE.getValue());
+        lotto_group.forEach(lotto -> {
+            System.out.println(lotto.getNumbers());
+        });
+    }
 }
