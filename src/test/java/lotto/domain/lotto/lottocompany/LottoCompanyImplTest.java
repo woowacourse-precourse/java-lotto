@@ -1,8 +1,11 @@
 package lotto.domain.lotto.lottocompany;
 
+import static lotto.domain.lotto.lottocompany.Win.*;
+import static org.assertj.core.api.Assertions.*;
+
 import java.util.List;
+import java.util.Map;
 import lotto.domain.lotto.lotto.Lotto;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +22,35 @@ class LottoCompanyImplTest {
         List<Lotto> publishNLotto = lottoCompany.publishNLotto(publishLottoCount);
 
         //then
-        Assertions.assertThat(publishNLotto.size()).isEqualTo(publishLottoCount);
+        assertThat(publishNLotto.size()).isEqualTo(publishLottoCount);
+    }
+
+    @Test
+    @DisplayName("로또 회사는 발행된 로또의 당첨 내역을 확인한다.")
+    void makeWinResultTest() {
+        //given
+        LottoCompany lottoCompany = new LottoCompanyImpl(new LottoMachineImpl());
+
+        List<String> winningNumbers = List.of("2", "5", "8", "15", "20", "44");
+        int bonusNumber = 14;
+
+        Lotto lotto1 = new Lotto(List.of(2, 5, 8, 15, 20, 44));
+        Lotto lotto2 = new Lotto(List.of(2, 5, 8, 14, 15, 44));
+        Lotto lotto3 = new Lotto(List.of(2, 5, 8, 16, 20, 44));
+        Lotto lotto4 = new Lotto(List.of(2, 5, 8, 15, 24, 45));
+        Lotto lotto5 = new Lotto(List.of(2, 5, 8, 12, 27, 41));
+
+        List<Lotto> publishedNLotto = List.of(lotto1, lotto2, lotto3, lotto4, lotto5);
+
+        //when
+        Map<Win, Integer> winResult = lottoCompany.makeWinResult(publishedNLotto, winningNumbers, bonusNumber);
+
+        //then
+        assertThat(winResult.get(first)).isEqualTo(1);
+        assertThat(winResult.get(second)).isEqualTo(1);
+        assertThat(winResult.get(third)).isEqualTo(1);
+        assertThat(winResult.get(fourth)).isEqualTo(1);
+        assertThat(winResult.get(fifth)).isEqualTo(1);
+
     }
 }
