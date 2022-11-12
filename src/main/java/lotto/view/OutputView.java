@@ -10,6 +10,5 @@ public class OutputView {
         System.out.printf(Messages.OUTPUT_LOTTO_COUNT.get(), lottoList.size());
         for (Lotto lotto : lottoList)
             System.out.println(lotto.getNumbers());
-        System.out.printf("\n");
     }
 }

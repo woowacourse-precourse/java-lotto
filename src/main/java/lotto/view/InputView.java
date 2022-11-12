@@ -10,6 +10,7 @@ public class InputView {
     }
 
     public static String inputWinLotto() {
-        return "";
+        System.out.printf(Messages.INPUT_WIN_LOTTO_NUM.get());
+        return Console.readLine();
     }
 }
