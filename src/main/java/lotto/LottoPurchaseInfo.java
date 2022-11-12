@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class LottoPurchaseInfo {
@@ -11,6 +12,7 @@ public class LottoPurchaseInfo {
 
         this.lottoNumbers = lottoNumbers;
         this.purchaseMoney = purchaseMoney;
+        lottoNumbers.stream().forEach(lottoNumber -> Collections.sort(lottoNumber.getLotto()));
     }
 
     public List<Lotto> getLottoNumbers() {
