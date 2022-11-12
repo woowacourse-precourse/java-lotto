@@ -1,5 +1,11 @@
 package lotto;
 
+import static lotto.LottoOperator.FIVE;
+import static lotto.LottoOperator.FIVE_BONUS;
+import static lotto.LottoOperator.FOUR;
+import static lotto.LottoOperator.NO_LUCK;
+import static lotto.LottoOperator.SIX;
+import static lotto.LottoOperator.THREE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -27,14 +33,17 @@ class LottosTest {
         Lotto user5 = new Lotto(List.of(1, 2, 7, 8, 9, 10));
         Lotto user6 = new Lotto(List.of(1, 7, 8, 9, 10, 11));
         Lotto user7 = new Lotto(List.of(7, 8, 9, 10, 11, 12));
+        Lotto user8 = new Lotto(List.of(1, 2, 3, 4, 5, 13));
 
         Lottos lottos = new Lottos(List.of(
-                user1, user2, user3, user4, user5, user6, user7
+                user1, user2, user3, user4, user5, user6, user7, user8
         ));
 
         int bonus = 13;
         BonusLotto bonusLotto = new BonusLotto(user1, bonus);
 
-        assertThat(lottos.result(bonusLotto)).isEqualTo(List.of(6, 5, 4, 3, 2, 1, 0));
+        List<LottoOperator> ranks = List.of(SIX, FIVE, FOUR, THREE, NO_LUCK, NO_LUCK, NO_LUCK, FIVE_BONUS);
+
+        assertThat(lottos.result(bonusLotto)).isEqualTo(ranks);
     }
 }
