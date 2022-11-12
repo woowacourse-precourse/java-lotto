@@ -4,11 +4,9 @@ import lotto.domain.Lotto;
 import lotto.domain.Result;
 import lotto.domain.WinLotto;
 import lotto.enums.ErrorMessage;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
+import java.util.HashSet;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -65,6 +63,7 @@ class LottoTest {
             for (Integer number : numbers) {
                 assertThat(number).isGreaterThan(0).isLessThan(46);
             }
+            assertThat(new HashSet<>(numbers).size()).isEqualTo(numbers.size());
         }
 
         @DisplayName("자동으로 생성된 로또 번호를 형식에 맞게 출력한다.")
@@ -73,7 +72,6 @@ class LottoTest {
             Lotto generatedLotto = Lotto.create();
             String printResult = generatedLotto.printNumbers();
 
-            System.out.println(printResult);
             assertThat(printResult.startsWith("[")).isTrue();
             assertThat(printResult.endsWith("]")).isTrue();
 
@@ -86,11 +84,15 @@ class LottoTest {
     @DisplayName("하나의 로또 번호에 대한 당첨 내역 테스트")
     @Nested
     class getSingleResult {
+        WinLotto winLotto;
+        @BeforeEach
+        void init() {
+            winLotto  = new WinLotto(List.of(1, 2, 3, 4, 5, 6), 7);
+        }
 
         @DisplayName("6개 일치")
         @Test
         void match6() {
-            WinLotto winLotto = new WinLotto(List.of(1, 2, 4, 3, 5, 6), 7);
             Lotto generatedLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             Result result = winLotto.getResult(generatedLotto);
             assertThat(result).isEqualTo(new Result(6, false));
@@ -102,7 +104,6 @@ class LottoTest {
         @DisplayName("5개 일치 & 보너스볼 일치")
         @Test
         void match5AndMatchBonusBall() {
-            WinLotto winLotto = new WinLotto(List.of(1, 2, 4, 3, 5, 6), 7);
             Lotto generatedLotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
             Result result = winLotto.getResult(generatedLotto);
             assertThat(result).isEqualTo(new Result(5, true));
@@ -114,7 +115,6 @@ class LottoTest {
         @DisplayName("5개 일치")
         @Test
         void match5() {
-            WinLotto winLotto = new WinLotto(List.of(1, 2, 4, 3, 5, 6), 7);
             Lotto generatedLotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
             Result result = winLotto.getResult(generatedLotto);
             assertThat(result).isEqualTo(new Result(5, false));
@@ -126,7 +126,6 @@ class LottoTest {
         @DisplayName("4개 일치")
         @Test
         void match4() {
-            WinLotto winLotto = new WinLotto(List.of(1, 2, 3, 4, 5, 6), 7);
             Lotto generatedLotto = new Lotto(List.of(1, 2, 3, 4, 40, 41));
             Result result = winLotto.getResult(generatedLotto);
             assertThat(result).isEqualTo(new Result(4, true));
@@ -138,13 +137,32 @@ class LottoTest {
         @DisplayName("3개 일치")
         @Test
         void match3() {
-            WinLotto winLotto = new WinLotto(List.of(1, 2, 3, 4, 5, 6), 7);
             Lotto generatedLotto = new Lotto(List.of(1, 2, 3, 40, 41, 45));
             Result result = winLotto.getResult(generatedLotto);
             assertThat(result).isEqualTo(new Result(3, true));
             assertThat(result).isEqualTo(new Result(3, false));
 
             assertThat(result.getResultStatus().getValue()).isEqualTo(5000);
+        }
+
+        @DisplayName("0~2개 일치")
+        @Test
+        void matchNone() {
+            Lotto generatedLotto0 = new Lotto(List.of(8, 9, 10, 11, 12, 13));
+            Lotto generatedLotto1 = new Lotto(List.of(1, 9, 10, 11, 12, 13));
+            Lotto generatedLotto2 = new Lotto(List.of(1, 2, 10, 11, 12, 13));
+
+            Result result0 = winLotto.getResult(generatedLotto0);
+            Result result1 = winLotto.getResult(generatedLotto1);
+            Result result2 = winLotto.getResult(generatedLotto2);
+
+            assertThat(result0).isEqualTo(new Result(0, false));
+            assertThat(result1).isEqualTo(new Result(1, false));
+            assertThat(result2).isEqualTo(new Result(2, false));
+
+            assertThat(result0.getResultStatus().getValue()).isEqualTo(0);
+            assertThat(result1.getResultStatus().getValue()).isEqualTo(0);
+            assertThat(result2.getResultStatus().getValue()).isEqualTo(0);
         }
     }
 
