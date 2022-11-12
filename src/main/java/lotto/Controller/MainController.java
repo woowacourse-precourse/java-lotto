@@ -51,6 +51,9 @@ public class MainController {
     public void createMyLottos() {
         LottoGeneratorModel lottoGenerator = new LottoGeneratorModel();
         myLottos = lottoGenerator.createMyLottos(lottoNumber);
+    }
+
+    public void printMyLottos(){
         OutputView outputView = new OutputView();
         outputView.printMyLottoInfo(myLottos);
     }
