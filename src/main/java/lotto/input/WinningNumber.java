@@ -9,7 +9,6 @@ import java.util.List;
 public class WinningNumber {
     public Lotto getAnswer() {
         List<Integer> answerNumbers = new ArrayList<>();
-        System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
 
         for (String number : input.split(",")) {

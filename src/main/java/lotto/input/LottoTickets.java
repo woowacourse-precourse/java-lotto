@@ -7,10 +7,8 @@ public class LottoTickets {
     private static int purchaseAmount;
 
     public int getPaid() {
-        System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
         int money = getMoney(input);
-        System.out.println();
         return toLottosSize(money);
     }
 

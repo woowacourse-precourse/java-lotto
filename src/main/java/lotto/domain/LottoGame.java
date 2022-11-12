@@ -13,7 +13,6 @@ public class LottoGame {
     public void run() {
         LottoTickets lottoTickets = new LottoTickets();
         int paid = lottoTickets.getPaid();
-        System.out.println(paid + "개를 구매했습니다.");
 
         RandomLotto randomLotto = new RandomLotto();
         List<List<Integer>> lists = randomLotto.randomGenerator(paid); // 랜덤 리스트
@@ -39,11 +38,6 @@ public class LottoGame {
         WinningStatistics winningStatistics = new WinningStatistics();
         List<Integer> countCheck = winningStatistics.countCheck(number, bonusNumbers);
 
-        /**
-         * 오룸차순으로 정렬해야 한다.
-         */
-        System.out.println("당첨 통계");
-        System.out.println("---");
 
         for (int i = 0; i < countCheck.size(); i++) {
             if (i == 0) {
@@ -78,9 +72,6 @@ public class LottoGame {
         YieldCalculation yieldCalculation = new YieldCalculation();
 
         double revenue = yieldCalculation.revenue(calculation);
-
-        System.out.println(String.format("총 수익률은 %.1f%%입니다.", revenue));
-
 
     }
 }
