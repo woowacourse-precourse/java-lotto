@@ -18,11 +18,11 @@ import lotto.view.View;
 
 public class LottoController {
 
+    private static final LottoResultService lottoResultService= new LottoResultService();
 
     /**
-     * 사용자에게 money 를 입력받고 validation 후 돈을 기억해둔다.
-     * 사용자에게 LotteryWinningNumber 를 입력받고 validation 후 기억해둔다.
-     * 사용자에게 BonusLottoNumber 를 입력받고 validation 후 기억해둔다.
+     * 사용자에게 money 를 입력받고 validation 후 돈을 기억해둔다. 사용자에게 LotteryWinningNumber 를 입력받고 validation 후 기억해둔다. 사용자에게
+     * BonusLottoNumber 를 입력받고 validation 후 기억해둔다.
      */
     public void lottoProcedure() {
         String userMoneyInput = getUserMoneyWithValidation();
@@ -33,7 +33,6 @@ public class LottoController {
 
         String bonusLotto = getBonusLottoWithValidation(winningLotto);
 
-        LottoResultService lottoResultService = new LottoResultService();
         lottoResultService.getResult(userLotto, winningLotto, bonusLotto);
     }
 
@@ -126,6 +125,7 @@ public class LottoController {
                 .collect(Collectors.toList());
 
     }
+
     private static List<Lotto> createUserLotto(String userMoneyInput) {
         UserLottoService userLottoService = new UserLottoService(userMoneyInput);
         return userLottoService.createLottoNumber();
