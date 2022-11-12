@@ -34,6 +34,14 @@ public class Lotto {
         return (number >= startInclusive) && (number <= endInclusive);
     }
 
-    // TODO: 추가 기능 구현
+    public int countMatchNumbers(Lotto target) {
+        return (int) target.numbers
+                .stream()
+                .filter(this.numbers::contains)
+                .count();
+    }
 
+    public boolean contains(int number) {
+        return this.numbers.contains(number);
+    }
 }
