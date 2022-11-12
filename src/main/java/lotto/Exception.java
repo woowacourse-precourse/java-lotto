@@ -28,17 +28,28 @@ public class Exception {
             return stringList.stream()
                     .map(s -> Integer.parseInt(s))
                     .collect(Collectors.toList());
-        } catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자를 입력해야 합니다.");
         }
     }
 
-    public static boolean isOverlap(List<Integer> number) {
-        return number.size() != number.stream().distinct().count();
+    public static boolean isOverlap(List<Integer> winningNumber) {
+        return winningNumber.size() != winningNumber.stream().distinct().count();
     }
 
-    public static boolean isNotSixSize(List<Integer> number) {
-        return number.size() != 6;
+    public static boolean isNotSixSize(List<Integer> winningNumber) {
+        return winningNumber.size() != 6;
+    }
+
+    public static boolean isNotInRange(List<Integer> winningNumber) {
+        for (int number : winningNumber) {
+            return checkOneNumber(number);
+        }
+        return false;
+    }
+
+    private static boolean checkOneNumber(int number) {
+        return number < 1 || number > 45;
     }
 
 }
