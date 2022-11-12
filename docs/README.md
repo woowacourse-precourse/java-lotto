@@ -16,5 +16,5 @@
   * [x] 로또 맞춘 개수 체크 - countNumberInLotto()
   * [x] 등수 체크 - checkRank()
   * [x] 전체 로또셋 결과 - findNthPlace()
-* [ ] 수익률 계산하기 - calculateProfit()
+* [x] 수익률 계산하기 - calculateProfit()
 * [x] 특정 번호가 로또 내에 존재하는지 - isContained()

@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static lotto.constant.Constants.*;
@@ -23,6 +22,19 @@ public class Game {
         System.out.println(THIRD_PLACE_MESSAGE + result[3] + "개");
         System.out.println(SECOND_PLACE_MESSAGE + result[2] + "개");
         System.out.println(FIRST_PLACE_MESSAGE + result[1] + "개");
+        printProfitPercent(result);
+    }
+
+    private void printProfitPercent(int[] result) {
+        List<Integer> prizeSet = List.of(FIRST_PLACE_PRIZE, SECOND_PLACE_PRIZE, THIRD_PLACE_PRIZE, FOURTH_PLACE_PRIZE, FIFTH_PLACE_PRIZE);
+        double playerMoney = player.lottoCount * LOTTO_PRICE;
+        double earnedMoney = 0;
+
+        for (int i = 0; i < prizeSet.size(); i++) {
+            earnedMoney += result[i + 1] * prizeSet.get(i);
+        }
+        double profit = earnedMoney / playerMoney * 100;
+        System.out.println("총 수익률은 " + String.format("%.1f", profit) + "%입니다.\n");
     }
 
     private int[] countMatch(List<Lotto> lottoSet, Lotto winningNumber, int bonusNumber) {
