@@ -18,6 +18,7 @@ public class LottoGenerator {
     public LottoGenerator(int purchaseAmount) {
         numberOfLotto = purchaseAmount / LOTTO_PRICE;
         lottos = generate(numberOfLotto);
+        printLottosInfo();
     }
 
     private List<Lotto> generate(int numberOfLotto){
@@ -30,6 +31,13 @@ public class LottoGenerator {
         }
 
         return lottos;
+    }
+
+    private void printLottosInfo(){
+        System.out.println(numberOfLotto + Message.LOTTO_GENERATE_SUCCESS);
+        for(Lotto lotto : lottos){
+            System.out.println(lotto);
+        }
     }
 
     public int getNumberOfLotto() {
