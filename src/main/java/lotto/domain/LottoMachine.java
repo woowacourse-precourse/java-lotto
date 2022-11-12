@@ -39,11 +39,12 @@ public class LottoMachine {
     }
 
     public WinningStatics enterWinningLotto(WinningLotto winningLotto) {
-        Map<LottoResult, Long> lottoResults = lottos.stream()
+        WinningStatics winningStatics = new WinningStatics(purchaseMoney);
+        lottos.stream()
                 .map(winningLotto::makeResult)
                 .filter(LottoResult::isNotFailed)
-                .collect(Collectors.groupingBy(lottoResult -> lottoResult, Collectors.counting()));
-        return new WinningStatics(lottoResults, purchaseMoney);
+                .forEach(winningStatics::updateLottoResults);
+        return winningStatics;
     }
 
     public List<Lotto> getLottos() {

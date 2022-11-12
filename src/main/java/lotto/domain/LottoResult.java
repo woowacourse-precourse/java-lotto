@@ -3,7 +3,7 @@ package lotto.domain;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum LottoResult {
+public enum LottoResult implements Comparable<LottoResult> {
     FIRST(6, 2_000_000_000), // 1등
     SECOND(5, 30_000_000), // 2등
     THIRD(5, 1_500_000), // 3등
@@ -13,6 +13,7 @@ public enum LottoResult {
 
     private static final int WINNING_MIN_COUNT = 3;
     private static final Map<Integer, LottoResult> BY_COUNT_OF_MATCH = new HashMap<>();
+    private static final String BONUS_NUMBER_MESSAGE = ", 보너스 볼 일치";
 
     private final int countOfMatch;
     private final int winningMoney;
@@ -47,8 +48,15 @@ public enum LottoResult {
         return (long) this.winningMoney * numberOfWinningLotto;
     }
 
+    private String printBonusMessage() {
+        if (this == THIRD) {
+            return BONUS_NUMBER_MESSAGE;
+        }
+        return "";
+    }
+
     @Override
     public String toString() {
-        return countOfMatch + "개 일치 (" + winningMoney + "원) - ";
+        return countOfMatch + "개 일치" + printBonusMessage() + " (" + winningMoney + "원) - ";
     }
 }
