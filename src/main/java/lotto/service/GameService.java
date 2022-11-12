@@ -1,13 +1,16 @@
 package lotto.service;
 
+import lotto.model.BonusBall;
 import lotto.model.LottoFactory;
 import lotto.model.Lottos;
 import lotto.model.Money;
+import lotto.model.WinningManager;
 
 public class GameService {
     private Money userMoney;
     private Lottos userLottos;
     private LottoFactory lottoFactory;
+    private WinningManager winningManager;
 
     public GameService() {
         this.lottoFactory = new LottoFactory();
@@ -21,4 +24,13 @@ public class GameService {
         this.userLottos = lottoFactory.generateBy(userMoney.calculateCount());
         return this.userLottos;
     }
+
+    public void createWinningManager(String userInput) {
+        this.winningManager = WinningManager.from(userInput);
+    }
+
+    public void createBonusBall(String userInput) {
+        this.winningManager.initBonusBall(BonusBall.from(userInput));
+    }
+
 }

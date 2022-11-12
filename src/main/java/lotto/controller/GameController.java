@@ -15,6 +15,7 @@ public class GameController {
         try {
             createMoney();
             generateLottosByMoney();
+            createWinningInformation();
         } catch (Exception e) {
             OutputView.announceError(e.getMessage());
         }
@@ -30,6 +31,22 @@ public class GameController {
     private void generateLottosByMoney() {
         OutputView.announceLottos(gameService.generateLottosByMoney());
     }
+
+    private void createWinningInformation() {
+        createWinningLotto();
+        createBonusBall();
+    }
+
+    private void createWinningLotto() {
+        OutputView.announceWinningLottoInputNotice();
+        gameService.createWinningManager(InputView.getUserInput());
+    }
+
+    private void createBonusBall() {
+        OutputView.announceBonusBallInputNotice();
+        gameService.createBonusBall(InputView.getUserInput());
+    }
+
 
 
 }
