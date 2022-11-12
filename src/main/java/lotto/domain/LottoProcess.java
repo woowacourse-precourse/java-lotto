@@ -6,11 +6,13 @@ public class LottoProcess {
     private final List<List<Integer>> lottos;
     private final List<Integer>winningNumbers;
     private final int bonusNumber;
+    private final int money;
 
-    public LottoProcess(List<List<Integer>> lottos, List<Integer> winningNumbers,int bonusNumber) {
+    public LottoProcess(List<List<Integer>> lottos, List<Integer> winningNumbers,int bonusNumber,int money) {
         this.lottos = lottos;
         this.winningNumbers=winningNumbers;
         this.bonusNumber=bonusNumber;
+        this.money = money;
     }
 
     public int compareWinningNumbers(List<Integer> lotto, List<Integer> winningNumbers){
@@ -57,6 +59,18 @@ public class LottoProcess {
         for(Rank rank : Rank.values()){
             System.out.println(rank.getMessage(ranking.get(rank.name())));
         }
+    }
+
+    public void calculateRateOfReturn(Map<String, Integer> ranking){
+        float totalPrize = 0;
+
+        for(Rank rank : Rank.values()){
+            if(ranking.get(rank.name()) != 0){
+                totalPrize += rank.getPrize();
+            }
+        }
+
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.",(totalPrize/this.money) * 100));
     }
 
 }
