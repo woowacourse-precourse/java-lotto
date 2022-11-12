@@ -1,6 +1,8 @@
 package lotto.domain;
 
-import static lotto.utils.LottoConstant.*;
+import static lotto.utils.LottoConstant.MIN_LOTTO_NUMBER;
+import static lotto.utils.LottoConstant.MAX_LOTTO_NUMBER;
+import static lotto.utils.LottoConstant.RIGHT_LOTTO_SIZE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.model.Lotto;
