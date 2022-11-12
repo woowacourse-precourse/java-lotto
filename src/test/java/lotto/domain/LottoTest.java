@@ -1,11 +1,11 @@
 package lotto.domain;
 
-import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -33,5 +33,25 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 50)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 1~45 범위 밖의 숫자가 포함되어 있습니다.");
+    }
+
+    @DisplayName("로또 번호에 특정 수가 있으면 true를 반환한다.")
+    @Test
+    void hasNumberReturnTrue() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        boolean result = lotto.hasNumber(3);
+
+        assertThat(result).isTrue();
+    }
+
+    @DisplayName("로또 번호에 특정 수가 없으면 false를 반환한다.")
+    @Test
+    void hasNumberReturnFalse() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        boolean result = lotto.hasNumber(10);
+
+        assertThat(result).isFalse();
     }
 }
