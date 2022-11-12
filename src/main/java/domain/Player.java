@@ -44,6 +44,10 @@ public class Player {
         isBonusNumberIncludedWinningLottoNumber = false;
     }
 
+    public void addLottoRevenue(int lottoRevenue){
+        this.lottoRevenue += lottoRevenue;
+    }
+
     public int getLottoPrice() {
         return lottoPrice;
     }
