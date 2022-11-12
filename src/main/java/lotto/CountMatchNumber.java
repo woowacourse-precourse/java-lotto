@@ -5,12 +5,8 @@ import java.util.List;
 public class CountMatchNumber {
     private int winNumberMatchCount;
     private int bonusNumberMatchCount;
-    private BuyLotto buyLotto;
-    private WinningNumbers winningNumbers;
 
-    public CountMatchNumber(BuyLotto buyLotto, WinningNumbers winningNumbers) {
-        this.buyLotto = buyLotto;
-        this.winningNumbers = winningNumbers;
+    public CountMatchNumber() {
         this.winNumberMatchCount = 0;
         this.bonusNumberMatchCount = 0;
     }
