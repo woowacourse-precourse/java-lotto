@@ -12,4 +12,10 @@ class LottoMakerTest {
         });
     }
 
+    @Test
+    void testReturnNumOfLottoAsExpected() {
+        assertEquals(13, LottoMaker.makeLotto(13000).size());
+        assertEquals(1, LottoMaker.makeLotto(1000).size());
+    }
+
 }
