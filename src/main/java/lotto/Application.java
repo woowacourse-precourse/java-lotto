@@ -6,30 +6,13 @@ import static lotto.Converter.convertToInteger;
 import static lotto.Converter.convertToIntegerList;
 
 import static lotto.Printer.printProfits;
+import static lotto.Rank.calculateRank;
 
 import java.util.List;
 
 
 
 public class Application {
-    public static Rank calculateRank(Lotto userLotto, WinningLotto winningLotto) {
-        // 메소드 호출로 필드의 객체를 반환 -> 필드 값이 변경되어서는 안됨
-        final List<Integer> userLottoNumbers = userLotto.getNumbers();
-        final List<Integer> winningLottoNumbers = winningLotto.getNumbers();
-        int bonusNumber = winningLotto.getBonusNumber();
-
-        int hitCount = ((int) userLottoNumbers.stream()
-                .filter(number -> winningLottoNumbers.contains(number))
-                .count());
-
-        boolean bonusHit = false;
-        if (userLottoNumbers.contains(bonusNumber)) {
-            bonusHit = true;
-        }
-
-        return Rank.getWinning(hitCount, bonusHit);
-    }
-
     public static void calculateRanks(Buyer buyer, WinningLotto winningLotto) {
         for (Lotto userLotto : buyer.getLottos()) {
             Rank rank = calculateRank(userLotto, winningLotto);

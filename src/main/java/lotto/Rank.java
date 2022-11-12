@@ -43,6 +43,24 @@ public enum Rank {
                 .collect(Collectors.toList());
     }
 
+    public static Rank calculateRank(Lotto userLotto, WinningLotto winningLotto) {
+        // 메소드 호출로 필드의 객체를 반환 -> 필드 값이 변경되어서는 안됨
+        final List<Integer> userLottoNumbers = userLotto.getNumbers();
+        final List<Integer> winningLottoNumbers = winningLotto.getNumbers();
+        int bonusNumber = winningLotto.getBonusNumber();
+
+        int hitCount = ((int) userLottoNumbers.stream()
+                .filter(number -> winningLottoNumbers.contains(number))
+                .count());
+
+        boolean bonusHit = false;
+        if (userLottoNumbers.contains(bonusNumber)) {
+            bonusHit = true;
+        }
+
+        return Rank.getWinning(hitCount, bonusHit);
+    }
+
     public int getPrizeMoney() {
         return this.prizeMoney;
     }
