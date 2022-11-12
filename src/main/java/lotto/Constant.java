@@ -20,7 +20,7 @@ public class Constant {
     public static final String TOTAL_END = "%입니다.";
 
     public static final int LOTTO_SIZE = 6;
-    public static final int TEN_THOUSAND = 1000;
+    public static final int THOUSAND = 1000;
 
     public static final String INPUT_ERROR_MESSAGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
 }

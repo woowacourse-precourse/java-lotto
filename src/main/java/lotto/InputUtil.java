@@ -24,7 +24,7 @@ public class InputUtil {
     }
 
     private void checkIsCorrectInputPrice(int price){
-        int divided = Math.floorMod(price,Constant.TEN_THOUSAND);
+        int divided = Math.floorMod(price,Constant.THOUSAND);
         if(divided!=0){
             throw new IllegalArgumentException(Constant.INPUT_ERROR_MESSAGE);
         }
