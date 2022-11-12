@@ -8,6 +8,10 @@ import java.util.List;
 public class Controller {
     Utils utils = new Utils();
     SystemMessage systemMessage = new SystemMessage();
+    List<List<Integer>> lottoNumbers;
+    List<Integer> winningNumbers;
+    int bonusNumber;
+
 
     public void run() {
         int money = utils.inputMoney();
@@ -19,16 +23,16 @@ public class Controller {
 
     public void createLotto(int lottoTicket) {
         NumberGenerator numberGenerator = new NumberGenerator();
-        List<List<Integer>> lottoNumbers = numberGenerator.createRandomNumbers(lottoTicket);
+        lottoNumbers = numberGenerator.createRandomNumbers(lottoTicket);
         systemMessage.printLottoNumbers(lottoNumbers);
     }
 
     public void setWinningNumbers() {
-        List<Integer> winningNumbers = utils.inputWinningNumbers();
+        winningNumbers = utils.inputWinningNumbers();
         new Lotto(winningNumbers);
     }
 
     public void setBonusNumber() {
-        int bonusNumbers = utils.inputBonusNumber();
+        bonusNumber = utils.inputBonusNumber();
     }
 }
