@@ -4,12 +4,15 @@ import java.util.List;
 
 public class WinningTicket {
     private static final String RANGE_EXCEED_MESSAGE = "[ERROR] 숫자는 1 ~ 45로 입력할 수 있습니다.";
+    private static final String LENGTH_MESSAGE = "[ERROR] 6개의 숫자를 입력해야 합니다.";
+    private static final int MAX_SIZE = 6;
     private List<Integer> winnings;
     private int bonusNumber;
 
     public WinningTicket(List<Integer> winnings, int bonusNumber) {
         try {
             validateNumberRange(winnings);
+            validateLength(winnings);
             this.winnings = winnings;
             this.bonusNumber = bonusNumber;
         } catch(IllegalArgumentException e) {
@@ -19,6 +22,12 @@ public class WinningTicket {
 
     public void validateNumberRange(List<Integer> winnings) throws IllegalArgumentException {
         winnings.forEach(this::checkRange);
+    }
+
+    public void validateLength(List<Integer> winnings) throws IllegalArgumentException {
+        if(winnings.size() != MAX_SIZE) {
+            throw new IllegalArgumentException(LENGTH_MESSAGE);
+        }
     }
 
     public void checkRange(int num) throws IllegalArgumentException {
