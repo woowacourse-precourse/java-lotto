@@ -10,4 +10,8 @@ public class LottoGenerator {
     public void generate() {
 
     }
+
+    public LottoContainer getLottoContainer() {
+        return lottoContainer;
+    }
 }

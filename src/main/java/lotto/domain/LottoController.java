@@ -4,21 +4,21 @@ public class LottoController {
     private static LottoGenerator lottoGenerator;
     private static WinningNumbers winningNumbers;
 
-    private LottoController() {
-
+    private LottoController(LottoGenerator generator, WinningNumbers numbers) {
+        lottoGenerator = new LottoGenerator();
+        winningNumbers = new WinningNumbers();
     }
 
     public static void run() {
-        issueLottos();
-        extractWinningNumbers();
+//        issueLottos();
+//        extractWinningNumbers();
+        LottoCompare.compare(lottoGenerator.getLottoContainer(), winningNumbers);
     }
 
     private static void issueLottos() {
-        lottoGenerator = new LottoGenerator();
 
     }
 
     private static void extractWinningNumbers() {
-        winningNumbers = new WinningNumbers();
     }
 }

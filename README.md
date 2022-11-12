@@ -9,7 +9,7 @@
 ## Skeleton
 - [x] **로또**를 발행
 - [x] 당첨 번호 추첨
-- [ ] 당첨을 확인
+- [x] 당첨을 확인
 
 ### Link: [lotto 기능 목록(Main)][mainlink]
 [mainlink]: docs/mainREADME.md "기능 목록(Main)"
