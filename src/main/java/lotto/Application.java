@@ -29,7 +29,7 @@ public class Application {
     }
     static List<Integer> make_lotto_num(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
-        Collections.sort(numbers);
+//        Collections.sort(numbers);
         return numbers;
     }
     static List<List<Integer>> buy_lotto(int chance){
@@ -99,7 +99,7 @@ public class Application {
         }
         return result;
     }
-    static void check_result(Lotto lotto,List<List<Integer>> lotto_nums,int bonus){
+    static void check_result(Lotto lotto, List<List<Integer>> lotto_nums, int bonus){
         List<Integer> count_rank = new ArrayList<Integer>(Arrays.asList(0,0,0,0,0));
         float result;
         int price = 0;
@@ -110,6 +110,8 @@ public class Application {
             count_rank = count_result(count_rank,result);
             price = calculate_price(price,result);
         }
+//        return count_rank;
+        write_result(count_rank);
     }
 
     static List<Integer> count_result (List<Integer> count_rank, float result){
@@ -129,21 +131,28 @@ public class Application {
         }
         return price;
     }
+    static void write_result(List<Integer> count_rank){
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for(RankType r : RankType.values()){
+            System.out.print(r.getResult());
+            System.out.println(" - "+count_rank.get(r.getCheck()) +"개");
+        }
+
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int money;
         int chance;
         List<List<Integer>> lotto_nums;
         List<Integer> winning_num;
-
+        List<Integer> count_rank;
         int bonus;
-        int price;
         try {
             money = check_money();
             chance = money2chance(money);
             lotto_nums = buy_lotto(chance);
             winning_num = read_winning();
-            System.out.println(winning_num);
             Lotto lotto = new Lotto(winning_num);
             bonus = read_bonus();
             check_bonus(lotto,bonus);
