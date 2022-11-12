@@ -1,8 +1,10 @@
 package lotto;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoKiosk {
     private final int LOTTO_PRICE = 1000;
@@ -59,5 +61,13 @@ public class LottoKiosk {
 
     void showHowManyLotto() {
         System.out.println(howMany + Messages.HOW_MANY_SOLD.message);
+    }
+
+    List<Integer> makeUniqueSixLottoNumbers() {
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    }
+
+    List<Integer> sortUniqueSixLottoNumbers(List<Integer> uniqueSixNumbers) {
+        return uniqueSixNumbers.stream().sorted().collect(Collectors.toList());
     }
 }
