@@ -10,7 +10,7 @@ import java.util.List;
 public class Simulation {
     private static int prices = 0;
 
-    public static void simulateLotto(){
+    public static void simulateLotto() {
         List<Lotto> trial = buyLotto();
         Display.displayLotto(trial);
         List<Integer> result = getResult(trial);
@@ -18,16 +18,17 @@ public class Simulation {
         String yield = calculateWinning(result);
         Display.displayYield(yield);
     }
-    private static List<Lotto> buyLotto(){
+
+    private static List<Lotto> buyLotto() {
         String prices = Function.getMoney();
         int price = Function.validPrice(prices);
         Simulation.prices = price;
         return Function.purchaseLotto(price);
     }
 
-    private static List<Integer> getResult(List<Lotto> trial){
-        List<Integer> winNumber = Function.getWinningNumber();
-        Function.validWinningNumber(winNumber);
+    private static List<Integer> getResult(List<Lotto> trial) {
+        String[] winNumbers = Function.getWinningNumber();
+        List<Integer> winNumber = Function.validWinningNumber(winNumbers);
         String bonus_s = Function.getBonus();
         int bonus = Function.validBonus(bonus_s, winNumber);
         List<Integer> result = new ArrayList<>(List.of(0, 0, 0, 0, 0));
@@ -40,7 +41,7 @@ public class Simulation {
         return result;
     }
 
-    private static String calculateWinning(List<Integer> result){
+    private static String calculateWinning(List<Integer> result) {
         int winning = Function.calculateWinning(result);
         return Function.calculateYield(winning, prices);
     }
