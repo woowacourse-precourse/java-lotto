@@ -10,10 +10,14 @@ public class StatisticsService {
 
 	public void updateStatistics(UserLottoDto userLottoDto, List<Integer> answers, Integer bonusNumber) {
 		for (Lotto lotto : userLottoDto.getUserLotto()) {
-			int answerCount = lotto.countAnswer(answers);
-			int bonusCount = lotto.countBonus(bonusNumber);
-			updateRankCount(answerCount, bonusCount);
+			updateRank(answers, bonusNumber, lotto);
 		}
+	}
+
+	private void updateRank(List<Integer> answers, Integer bonusNumber, Lotto lotto) {
+		int answerCount = lotto.countAnswer(answers);
+		int bonusCount = lotto.countBonus(bonusNumber);
+		updateRankCount(answerCount, bonusCount);
 	}
 
 	private void updateRankCount(int count, int bonusCount) {
