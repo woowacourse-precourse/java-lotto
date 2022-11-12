@@ -38,7 +38,7 @@ public class LottoService {
         return lottos;
     }
 
-    public List<Integer> inputWinningLottoNumber(){
+    public List<Integer> inputWinningLottoNumber() {
         String winningNumber = Input.inputWinningNumber();
         List<Integer> numbers = stringToList(winningNumber);
         validateLottoNumber(numbers);
@@ -46,20 +46,20 @@ public class LottoService {
         return numbers;
     }
 
-    public WinningLotto makeWinningLotto(List<Integer> winningLottoNumber){
+    public WinningLotto makeWinningLotto(List<Integer> winningLottoNumber) {
         Integer bonusNumber = Input.inputBonusNumber();
         validateBonusNumberRange(bonusNumber);
         WinningLotto winningLotto = new WinningLotto(winningLottoNumber, bonusNumber);
         return winningLotto;
     }
 
-    public void validateBonusNumberRange(Integer bonusNumber){
-        if(LOTTO_MINIMUN_NUM_SIZE > bonusNumber || bonusNumber > LOTTO_MAXIMUN_NUM_SIZE){
+    public void validateBonusNumberRange(Integer bonusNumber) {
+        if (LOTTO_MINIMUN_NUM_SIZE > bonusNumber || bonusNumber > LOTTO_MAXIMUN_NUM_SIZE) {
             throw new IllegalArgumentException();
         }
     }
 
-    public static List<Integer> stringToList(String number){
+    public static List<Integer> stringToList(String number) {
         List<Integer> numbers = Arrays.stream(number.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
@@ -78,7 +78,7 @@ public class LottoService {
         }
     }
 
-    public LottoResult lottoResult(WinningLotto winningLotto, List<Lotto> lottos, Money money){
+    public LottoResult lottoResult(WinningLotto winningLotto, List<Lotto> lottos) {
         LottoResult lottoResult = new LottoResult();
         for (Lotto lotto : lottos) {
             List<Integer> lottoNumber = lotto.getNumbers();

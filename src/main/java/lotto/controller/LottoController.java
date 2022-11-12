@@ -26,7 +26,7 @@ public class LottoController {
         WinningLotto winningLotto = lottoService.makeWinningLotto(winningLottoNumber);
 
         //결과 생성
-        LottoResult lottoResult = lottoService.lottoResult(winningLotto, lottos, money);
+        LottoResult lottoResult = lottoService.lottoResult(winningLotto, lottos);
 
         //결과 출력
         lottoService.printLottoResult(lottoResult, money);
