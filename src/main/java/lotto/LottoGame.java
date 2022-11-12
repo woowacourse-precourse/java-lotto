@@ -3,6 +3,7 @@ package lotto;
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
+import lotto.domain.Result;
 
 public class LottoGame {
     private static LottoMachine lottoMachine;
@@ -22,6 +23,9 @@ public class LottoGame {
         Output.showLottoesPurchased(lottoes);
         lottoMachine.makeWinningNumber(Input.inputWinningNumber());
         lottoMachine.makeBonusNumber(Input.inputBonusNumber());
+
+        Result result = lottoMachine.returnResult(lottoes);
+        Output.showResult(result);
     }
 
     protected void validateInputMoney(Integer moneyEntered) {
