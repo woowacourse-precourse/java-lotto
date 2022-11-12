@@ -43,7 +43,8 @@ public class Validator {
     }
 
     public void validateBonusNumber(String bonusNumber, List<Integer> winningNumbers) {
-
+        validateFormOfBonusNumber(bonusNumber);
+        validateDuplicationOfBonusNumber(Integer.parseInt(bonusNumber), winningNumbers);
     }
 
     private void validateFormOfBonusNumber(String bonusNumber) {
