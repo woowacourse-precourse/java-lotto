@@ -23,5 +23,9 @@ public class Application {
             // 2-3. 로또 수량 및 로또 번호를 n장 출력한다.
             System.out.println(lotto.getNumbers());
         }
+
+        // 3. 당첨 번호들을 입력받는다.
+        System.out.println("당첨 번호를 입력해 주세요.");
+        PickLotto pickLotto = new PickLotto(Console.readLine());
     }
 }
