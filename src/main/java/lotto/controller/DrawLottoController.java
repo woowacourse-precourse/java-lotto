@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.domain.Lotto;
 import lotto.domain.User;
+import lotto.domain.WiningNumber;
 import lotto.service.DrawLottoService;
 import lotto.util.CreateLottoNumber;
 import lotto.view.InputView;
@@ -14,10 +15,12 @@ public class DrawLottoController {
     InputView inputView = new InputView();
     CreateLottoNumber createLottoNumber = new CreateLottoNumber();
     User user = new User();
+
+    WiningNumber winingNumber;
     Lotto lotto;
     public void startDrawLotto() {
         buyLottoFromMyAmount();
-        setWiningLottoNumver();
+        setWiningLottoNumber();
         drawLotto();
         setWiningCount();
         printWiningCount(drawLottoService.getWiningCount());
@@ -37,5 +40,12 @@ public class DrawLottoController {
             lotto = new Lotto(createLottoNumber.createLottoNumber());
             user.setMyLotto(lotto);
         }
+    }
+
+    private void setWiningLottoNumber(){
+        outputView.printWiningNumberMessage();
+        winingNumber = new WiningNumber(drawLottoService.getListToWiningNumber(inputView.InputWiningNumber()));
+        outputView.printBonusNumberMessage();
+        winingNumber.setBonusNumber(inputView.InputBonusNumber());
     }
 }
