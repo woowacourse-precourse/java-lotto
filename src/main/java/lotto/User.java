@@ -23,8 +23,13 @@ public class User {
         return money;
     }
 
-    public void buyLotto(Store store, int num) {
-        this.lottos = store.sell(this, num);
+    public void buyLottoAll(Store store) {
+        System.out.println();
+
+        this.lottos = store.sell(this, this.money);
+        int boughtLottosCount = this.lottos.size();
+
+        System.out.println(boughtLottosCount + Constants.CONSOLE_BUY_RESULT);
     }
 
     protected int getMoney() {
@@ -33,5 +38,12 @@ public class User {
 
     protected void setMoney(int money) {
         this.money = money;
+    }
+
+    public void printLotto() {
+        for (Lotto lotto : this.lottos) {
+            System.out.println(lotto.getNumbers());
+        }
+        System.out.println();
     }
 }

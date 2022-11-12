@@ -10,7 +10,8 @@ public class Application {
         try {
             User user = new User();
             Store store = new Store();
-            user.buyLotto(store, user.getMoney() / Constants.LOTTO_PRICE);
+            user.buyLottoAll(store);
+            user.printLotto();
 
             Winning winningLotto = new Winning(new Lotto(enterWinningNumbers()),
                     enterWinningBonusNumber());

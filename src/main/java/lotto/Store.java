@@ -1,11 +1,31 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Store {
 
-    public List<Lotto> sell(User user, int num) {
-        user.setMoney(num * Constants.LOTTO_PRICE);
-        return null;
+    public List<Lotto> sell(User user, int receivedMoney) {
+        int sellCount = receivedMoney / Constants.LOTTO_PRICE;
+        user.setMoney(user.getMoney() - receivedMoney);
+        return makeLottos(sellCount);
+    }
+
+    private List<Lotto> makeLottos(int num) {
+        List<Lotto> lottos = new ArrayList<>();
+        for (int i = 0; i < num; i++) {
+            lottos.add(new Lotto(generateLottoNumber()));
+        }
+        return lottos;
+    }
+
+    private List<Integer> generateLottoNumber() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(Constants.LOTTO_START_NUMBER,
+                Constants.LOTTO_END_NUMBER, Constants.LOTTO_LEN);
+
+        Collections.sort(numbers);
+        return numbers;
     }
 }
