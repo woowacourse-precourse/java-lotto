@@ -114,6 +114,16 @@ public class ManagerTest {
 
         assertThat(sumOfResult).isEqualTo(List.of(2, 0, 1, 1, 1));
     }
+
+    @DisplayName("수익률 계산하기")
+    @Test
+    void getRateOfReturn() {
+        Manager manager = new Manager();
+        manager.purchaseLotto(8);
+        float result = manager.getRateOfReturn(List.of(1,0,0,0,0));
+
+        assertThat(result).isEqualTo(62.5f);
+    }
 }
 
 
