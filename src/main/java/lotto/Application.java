@@ -13,14 +13,10 @@ public class Application {
             LottoController lottoController=LottoController.getInstance();
             //앱 실행
             lottoController.run();
-            //구매 금액 저장
+            //구매 금액 입력
             lottoController.saveCountLotto(new PurchaseAmount(Console.readLine()));
-            //구매 개수 출력
-            lottoController.printCountLotto();
             //구매 개수 만큼의 로또 발행
             lottoController.purchasedLotto();
-            //로또 발행 내역 출력
-            lottoController.printPurchasedLotto();
             //당첨 번호 입력 시작
             lottoController.printInputWinnerNumber();
             //당첨 번호 저장
@@ -29,6 +25,8 @@ public class Application {
             lottoController.printInputBonusNumber();
             //보너스 번호 저장
             lottoController.saveBonusNumber(new BonusNumber(Console.readLine()));
+            //당첨 내역 출력
+            lottoController.winStatistics();
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }

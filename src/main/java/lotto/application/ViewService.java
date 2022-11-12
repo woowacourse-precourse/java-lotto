@@ -1,7 +1,10 @@
 package lotto.application;
 
+import lotto.application.dto.WinStat;
 import lotto.domain.Lotto;
 import lotto.domain.repository.LottoRepository;
+
+import java.util.List;
 
 public class ViewService {
     private static final ViewService instance=new ViewService();
@@ -26,6 +29,13 @@ public class ViewService {
         for(Lotto lotto:lottoRepository.getPurchasedLotto()){
             System.out.println(lotto.getNumbers());
         }
+    }
+    public void printWinStat(WinStat winStat){
+        System.out.println("3개 일치 (5,000원) - "+winStat.getFive()+"개");
+        System.out.println("4개 일치 (5,0000원) - "+winStat.getFour()+"개");
+        System.out.println("5개 일치 (1,500,000원) - "+winStat.getThree()+"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+winStat.getTwo()+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - "+winStat.getOne()+"개");
     }
     public void printInputWinnerNumber(){
         System.out.println(INPUT_WINNER_NUMBER_MESSAGE);
