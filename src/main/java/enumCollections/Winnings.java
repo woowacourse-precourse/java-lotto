@@ -1,2 +1,19 @@
-package enumCollections;public enum Winnings {
+package enumCollections;
+
+public enum Winnings {
+    FIRST(2000000000),
+    SECOND(30000000),
+    THIRD(1500000),
+    FOURTH(50000),
+    FIFTH(5000);
+
+    private final int amount;
+
+    Winnings(int amount) {
+        this.amount = amount;
+    }
+
+    static public int getAmount(String rank) {
+        return Winnings.valueOf(rank).amount;
+    }
 }

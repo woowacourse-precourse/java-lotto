@@ -7,17 +7,17 @@ public enum RankIndex {
     FOURTH(3),
     FIFTH(4);
 
-    private final int rank;
+    private final int index;
 
-    PrizeRank(int rank) {
-        this.rank = rank;
+    RankIndex(int index) {
+        this.index = index;
     }
 
-    public static int getPrizeIndex(String prizeRank) {
-        return PrizeRank.valueOf(prizeRank).rank;
+    public static int getRankIndex(String rank) {
+        return RankIndex.valueOf(rank).index;
     }
 
-    public static int getPrizeIndex(PrizeRank prizeRank) {
+    public static int getPrizeIndex(RankIndex prizeRank) {
         return prizeRank.ordinal();
     }
 }
