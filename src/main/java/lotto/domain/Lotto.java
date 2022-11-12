@@ -6,6 +6,7 @@ import java.util.List;
 public class Lotto {
 	private static final String VALIDATE_SIZE_EXCEPTION_MESSAGE = "로또 번호는 6개여야 합니다.";
 	private static final String VALIDATE_DUPLICATION_EXCEPTION_MESSAGE = "로또 번호는 중복되면 안됩니다.";
+
 	private final List<Integer> numbers;
 
 	public Lotto(List<Integer> numbers) {
