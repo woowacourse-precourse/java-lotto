@@ -10,5 +10,9 @@ public class Bonus {
         this.bonusNumber=bonusNumber;
     }
 
-
+    private void validateValue(int bonusNumber){
+        if(!Integer.toString(bonusNumber).matches(REGEX)){
+            throw new IllegalArgumentException("[ERROR] 1~45까지의 숫자를 입력해주세요");
+        }
+    }
 }
