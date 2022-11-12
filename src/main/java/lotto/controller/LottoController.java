@@ -32,18 +32,22 @@ public class LottoController {
             calculator.calculateTotalEarnings(result);
             calculator.calculateEarningsRate(purchaseAmount);
             OutputView.printLottoResult(result, calculator.getEarningsRate());
-        } catch (IllegalArgumentException exception) {}
+        } catch (IllegalArgumentException exception) {
+        }
     }
 
     private void savePurchaseAmount() {
         this.purchaseAmount = InputView.enterPurchaseAmount();
     }
+
     public int getPurchaseAmount() {
         return purchaseAmount;
     }
+
     private void saveLottoIssueCount() {
         this.lottoIssueCount = purchaseAmount / 1000;
     }
+
     private void issueLottoSeveralTimes(int lottoIssueCount, List<Lotto> myLotto) {
         for (int count = 0; count < lottoIssueCount; count++) {
             LottoMachine lottoMachine = new LottoMachine();
@@ -51,12 +55,15 @@ public class LottoController {
             myLotto.add(lotto);
         }
     }
+
     private void saveWinningNumber() {
         this.winningNumber = InputView.enterWinningNumber();
     }
+
     private void saveBonusNumber() {
         this.bonusNumber = InputView.enterBonusNumber(winningNumber);
     }
+
     private void setResult(List<Lotto> myLotto, List<Integer> winningNumber, int bonusNumber) {
         List<Integer> result = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0));
         for (int i = 0; i < myLotto.size(); i++) {
@@ -70,9 +77,11 @@ public class LottoController {
         }
         this.result = result;
     }
+
     public List<Integer> getResult() {
         return result;
     }
+
     private int compareMyLottoWithWinningNumber(List<Integer> myLottoNumber, List<Integer> winningNumber) {
         int sameNumberCount = 0;
         for (int i = 0; i < myLottoNumber.size(); i++) {
@@ -82,6 +91,7 @@ public class LottoController {
         }
         return sameNumberCount;
     }
+
     private int getRank(int sameNumberCount) {
         if (sameNumberCount == 6) {
             return 1;
@@ -97,6 +107,7 @@ public class LottoController {
         }
         return 0;
     }
+
     private boolean checkBonusNumber(List<Integer> myLottoNumber, int bonusNumber) {
         if (myLottoNumber.contains(bonusNumber)) {
             return true;

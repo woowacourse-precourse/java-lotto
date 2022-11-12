@@ -14,6 +14,7 @@ public class OutputView {
         }
         System.out.println();
     }
+
     public static void printLottoResult(List<Integer> result, double earningsRate) {
         BigDecimal rate = new BigDecimal(earningsRate);
         System.out.println("당첨통계");

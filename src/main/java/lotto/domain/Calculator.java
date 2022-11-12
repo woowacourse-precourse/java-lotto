@@ -12,13 +12,16 @@ public class Calculator {
             totalEarnings += (prizeMoney.get(i) * result.get(i));
         }
     }
+
     public int getTotalEarnings() {
         return totalEarnings;
     }
+
     public void calculateEarningsRate(int purchaseAmount) {
         earningsRate = (double) totalEarnings / purchaseAmount * 100;
         earningsRate = Math.round(earningsRate * 10) / 10.0;
     }
+
     public double getEarningsRate() {
         return earningsRate;
     }
