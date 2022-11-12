@@ -4,10 +4,10 @@
 
 ###  **Money**
 
-- [ ] 로또 구입 금액을 입력하면 구입 금액에 해당하는 만큼 로또를 발행해야 한다.
+- [x] 로또 구입 금액을 입력하면 구입 금액에 해당하는 만큼 로또를 발행해야 한다.
   - [x] 로또 구입 금액을 입력 받는다. 구입 금액은 1,000원 단위로 입력 받는다.
-  - [ ] 1,000원으로 나누어 떨어지는 경우
-  	- [ ] 로또 구입 금액 / 1000 한 개수만큼의 로또 값 출력
+  - [x] 1,000원으로 나누어 떨어지는 경우
+  	- [x] 로또 구입 금액 / 1000 한 개수만큼의 로또 값 출력
   - [x] 1,000원으로 나누어 떨어지지 않는 경우  `IllegalArgumentException` 발생 후 메시지 출력
   	- [x] "[ERROR] 입력한 금액이 1,000원으로 나누어 떨어지지 않습니다."
   	- [x] "[ERROR] 숫자만 입력 가능합니다."
@@ -16,15 +16,15 @@
 
 ###  **Lotto**
 
-- [ ] 로또 발급 : 당첨 번호를 입력 받는다. 번호는 쉼표(,)를 기준으로 구분한다.
-  - [ ] 정상 값
+- [x] 로또 발급 : 당첨 번호를 입력 받는다. 번호는 쉼표(,)를 기준으로 구분한다.
+  - [x] 정상 값
 
-    - [ ] 로또 번호의 숫자 범위는 1~45까지이다.
-    - [ ] 1개의 로또를 발행할 때 중복되지 않는 6개의 숫자를 뽑는다.
+    - [x] 로또 번호의 숫자 범위는 1~45까지이다.
+    - [x] 1개의 로또를 발행할 때 중복되지 않는 6개의 숫자를 뽑는다.
 
-    - [ ] 로또는 오름차순, List<Integer>, ex) [3, 5, 11, 16, 32, 38] 
+    - [x] 로또는 오름차순, List<Integer>, ex) [3, 5, 11, 16, 32, 38] 
 
-  - [ ] 예외 처리  `IllegalArgumentException` 발생 후 메시지 출력
+  - [x] 예외 처리  `IllegalArgumentException` 발생 후 메시지 출력
 
     - [x] "[ERROR] 로또 번호는 6자리 입니다."
     - [x] "[ERROR] 숫자만 입력 가능합니다."
@@ -36,23 +36,25 @@
 ### BonusNumber
 
 - [x] Lotto 값에 중복되면 안된다.
-- [ ] 1의 자리수이다. 
-- [ ] 숫자 범위는 1~45까지이다.
-- [ ] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException` 발생,
-  - [ ] "[ERROR] 보너스 번호는 한자리만 가능합니다."
-  - [ ] "[ERROR] 보너스 번호의 범위는 1부터 45가지 입니다."
-  - [ ] "[ERROR] 보너스 번호는 로또 번호와 중복될수없습니다."
+- [x] 하나의 값만 가진다.
+- [x] 숫자 범위는 1~45까지이다.
+- [x] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException` 발생,
+  - [x] "[ERROR] 보너스 번호는 하나의 값만 가능합니다."
+  - [x] "[ERROR] 보너스 번호의 범위는 1부터 45가지 입니다."
+  - [x] "[ERROR] 보너스 번호는 로또 번호와 중복될수없습니다."
 
 
 
-### **IssueLotto**
+## Domain
 
-- [ ] 로또 구입 금액 / 1000 한 개수만큼의 로또 값 출력 `pickUniqueNumbersInRange()` 사용
+### **LottoVendingMachine**
 
-- [ ] 중복되지 않는 숫자 6개
-  - [ ] ex)`1,2,3,4,5,6`
-- [ ] outputIssueLotto
-  - [ ] ```java
+- [x] 로또 구입 금액 / 1000 한 개수만큼의 로또 값 출력 `pickUniqueNumbersInRange()` 사용
+
+- [x] 중복되지 않는 숫자 6개
+  - [x] ex)`1,2,3,4,5,6`
+- [x] outputLottoTicket
+  - [x] ```java
     8개를 구매했습니다.
     [8, 21, 23, 41, 42, 43] 
     [3, 5, 11, 16, 32, 38] 
@@ -65,8 +67,6 @@
     ```
 
 
-
-## Domain
 
 ### **Compare**
 
@@ -91,37 +91,37 @@
 
 ## View
 
-### Print 
+```
+ViewHandler
+```
 
-- [ ] inputMoney : "구입금액을 입력해 주세요."
+- [x] inputMoney : "구입금액을 입력해 주세요."
 
-  - [ ] String to List<Integer>, handling exception
+  - [x] String to List<Integer>, handling exception
 
-- [ ] inputLottoNumber : "당첨 번호를 입력해 주세요."
+- [x] inputLottoWithBonus
 
-  - [ ] String to List<Integer>, handling exception
+	- [x] inputLottoNumber : "당첨 번호를 입력해 주세요."
+		- [x] String to List<Integer>, handling exception
 
-- [ ] inputBonusNumber : "보너스 번호를 입력해 주세요."
+	- [x] inputBonusNumber : "보너스 번호를 입력해 주세요."
+		- [x] String to Integer, handling exception
 
-  - [ ] String to Integer, handling exception
+- [ ] LottoTicket.outputLottoTicket(); 
 
-- [ ] IssueLotto.outputIssueLotto();
+- [ ] Compare 값 출력
 
-
-- [ ] LottoWinningStatistics : 
-
-  - [ ] Compare 값 출력
-  
   - [ ] ```
-  	당첨 통계
-  	---
-  	3개 일치 (5,000원) - 1개
-  	4개 일치 (50,000원) - 0개
-  	5개 일치 (1,500,000원) - 0개
-  	5개 일치, 보너스 볼 일치 (30,000,000원) - 0개
-  	6개 일치 (2,000,000,000원) - 0개
-  	총 수익률은 62.5%입니다.
-  	```
+    당첨 통계
+    ---
+    3개 일치 (5,000원) - 1개
+    4개 일치 (50,000원) - 0개
+    5개 일치 (1,500,000원) - 0개
+    5개 일치, 보너스 볼 일치 (30,000,000원) - 0개
+    6개 일치 (2,000,000,000원) - 0개
+    총 수익률은 62.5%입니다.
+    ```
+
 
 
 
