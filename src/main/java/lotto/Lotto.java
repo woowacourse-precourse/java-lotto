@@ -16,11 +16,9 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public void validateNumbersSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            error = ErrorMessage.SIZE;
-            throw new IllegalArgumentException();
-        }
+    public boolean validateNumbersSize(List<Integer> numbers) {
+
+        return numbers.size() == 6;
     }
 
     public boolean validateNumbersAreInRange(List<Integer> numbers) {
