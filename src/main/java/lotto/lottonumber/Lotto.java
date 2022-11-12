@@ -18,6 +18,10 @@ public class Lotto {
         }
     }
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     /**
      * 일바 로또 번호 6개를 오름차순으로 정렬합니다.
      */
