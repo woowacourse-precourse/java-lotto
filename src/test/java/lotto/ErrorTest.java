@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static lotto.LottoConst.LOTTO_NUMBER_COUNT;
+import static lotto.LottoConst.LOTTO_PRICE;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ErrorTest {
@@ -22,9 +23,21 @@ public class ErrorTest {
                         .collect(Collectors.toList());
 
         if (removedDuplicationNumber.size() != LOTTO_NUMBER_COUNT) {
-            assertThatThrownBy(() -> { throw new IllegalArgumentException("boom"); })
+            assertThatThrownBy(() -> { throw new IllegalArgumentException("confirmed duplication"); })
                     .isInstanceOf(Exception.class)
-                    .hasMessageContaining("boom");
+                    .hasMessageContaining("confirmed duplication");
+        }
+    }
+
+    @DisplayName("구입 금액의 유효성 테스트")
+    @Test
+    void checkPurchasePrice(){
+        int purchasePrice = 1001;
+
+        if (purchasePrice % LOTTO_PRICE != 0) {
+            assertThatThrownBy(() -> { throw new IllegalArgumentException("confirmed wrong price"); })
+                    .isInstanceOf(Exception.class)
+                    .hasMessageContaining("confirmed wrong price");
         }
     }
 }
