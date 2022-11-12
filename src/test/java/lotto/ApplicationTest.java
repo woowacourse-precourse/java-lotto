@@ -79,8 +79,23 @@ class ApplicationTest extends NsTest {
     void inputNotMultipleOf1000() {
         assertSimpleTest(() -> {
             runException("3003");
-            assertThat(output()).contains(ERROR_MESSAGE);
+            assertThat(output()).contains("입력값이 1,000원으로 나누어 떨어지지 않습니다.");
         });
+    }
+
+    @Test
+    void 오름차순_테스트() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("2000", "1,2,3,4,5,6", "7");
+                    assertThat(output()).contains(
+                            "[8, 21, 23, 41, 42, 43]",
+                            "[3, 5, 11, 16, 32, 38]"
+                    );
+                },
+                List.of(21, 23, 8, 43, 42, 41),
+                List.of(32, 5, 16, 11, 3, 38)
+        );
     }
 
     @Override
