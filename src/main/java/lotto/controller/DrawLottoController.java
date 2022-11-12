@@ -58,18 +58,20 @@ public class DrawLottoController {
         }
     }
 
-    private void setWiningCount(){
+    private void setWiningCount() {
         drawLottoService.setWiningCount();
         outputView.printWiningCountStatistics();
     }
-    private void printWiningCount(List<Integer> winingCount){
+
+    private void printWiningCount(List<Integer> winingCount) {
         outputView.printFifthCount(winingCount.get(0));
         outputView.printFourthCount(winingCount.get(1));
         outputView.printThirdCount(winingCount.get(2));
         outputView.printSecondCount(winingCount.get(3));
         outputView.printFirstCount(winingCount.get(4));
     }
-    private double getRevenue(){
+
+    private double getRevenue() {
         drawLottoService.setReward();
         return drawLottoService.getRevenue(user.getBuyAmount());
     }
