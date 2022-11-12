@@ -18,6 +18,7 @@ public class DrawLottoController {
 
     WiningNumber winingNumber;
     Lotto lotto;
+
     public void startDrawLotto() {
         buyLottoFromMyAmount();
         setWiningLottoNumber();
@@ -35,17 +36,24 @@ public class DrawLottoController {
         outputView.printCountBuyingLotto(count, user.getMyLotto());
     }
 
-    private void buyLotto(int count){
-        for (int i =0;i<count;i++){
+    private void buyLotto(int count) {
+        for (int i = 0; i < count; i++) {
             lotto = new Lotto(createLottoNumber.createLottoNumber());
             user.setMyLotto(lotto);
         }
     }
 
-    private void setWiningLottoNumber(){
+    private void setWiningLottoNumber() {
         outputView.printWiningNumberMessage();
         winingNumber = new WiningNumber(drawLottoService.getListToWiningNumber(inputView.InputWiningNumber()));
         outputView.printBonusNumberMessage();
         winingNumber.setBonusNumber(inputView.InputBonusNumber());
+    }
+
+    private void drawLotto() {
+        for (Lotto myLotto : user.getMyLotto()) {
+            drawLottoService.compareLottoToWiningLotto(winingNumber.getWiningNumber()
+                    , myLotto, winingNumber.getBonusNumber());
+        }
     }
 }
