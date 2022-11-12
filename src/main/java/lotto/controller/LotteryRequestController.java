@@ -10,11 +10,13 @@ public class LotteryRequestController {
 	private static final LotteryRequestController controller = new LotteryRequestController();
 	private final LotteryStoreUi lotteryStoreUi;
 	private final LotterySeller lotterySeller;
+	private final LottoCommittee lottoCommittee;
 
 
 	private LotteryRequestController() {
 		lotteryStoreUi = LotteryStoreUi.getStoreUi();
 		lotterySeller = LotterySeller.getLotterySeller();
+		lottoCommittee = LotteryCommittee.getLotteryCommittee();
 	}
 
 	public static LotteryRequestController getController() {
@@ -39,10 +41,15 @@ public class LotteryRequestController {
 	}
 
 	public void receiveRandomNumbersSets(RandomNumbersSets randomNumbersSets) {
+		sendRandomNumbersSetsToLotteryCommittee(randomNumbersSets);
 		sendRandomNumbersSetsToLotteryStoreUi(randomNumbersSets);
 	}
 
 	public void sendRandomNumbersSetsToLotteryStoreUi(RandomNumbersSets randomNumbersSets) {
 		lotteryStoreUi.printRandomNumberSets(randomNumbersSets);
+	}
+
+	private void sendRandomNumbersSetsToLotteryCommittee(RandomNumbersSets randomNumbersSets) {
+		lottoCommittee.receiveRandomNumbersSets(randomNumbersSets);
 	}
 }
