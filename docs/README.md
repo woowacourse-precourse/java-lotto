@@ -40,11 +40,11 @@
 3. **Domain**
     + PurchaseService
         - 로또 구매 처리
-        - List<List<Integer>> 로 로또 티켓 생성하는 기능
-        - 각 로또가 중복되지 않게 처리하는 기능
         - [예외] 입력값이 숫자인지 확인
         - [예외] 음수가 아닌 지 확인
         - [예외] 1000의 배수인지 확인
+    + MakeLotteriesService
+        - List<List<Integer>> 로 로또 티켓 생성하는 기능
     + WinningNumberService
         - Controller에서 받은 당첨번호 처리
         - Stringparser를 통해 당첨 번호 파싱
