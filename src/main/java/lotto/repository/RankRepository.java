@@ -17,13 +17,9 @@ public class RankRepository {
 
     private static int getMatchedCount(WinningLotto winningLotto, List<Integer> playerNumbers) {
         List<Integer> winningLottoNumbers = winningLotto.getLotto().getNumbers();
-        return playerNumbers.stream()
-                .reduce(0, (matchedCount, playerNumber) -> {
-                    if (winningLottoNumbers.contains(playerNumber)) {
-                        return matchedCount + 1;
-                    }
-                    return matchedCount;
-                });
+        return (int) playerNumbers.stream()
+                .filter(winningLottoNumbers::contains)
+                .count();
     }
 
     private static boolean isBonusMatch(WinningLotto winningLotto, List<Integer> playerNumbers) {
