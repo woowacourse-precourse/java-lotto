@@ -29,6 +29,9 @@ public class UserInput {
 
         List<Integer> winningNumber = stringToNumbers(userInput);
         hasSixNumbers(winningNumber);
+        for (int lottoNumber: winningNumber) {
+            validNumber(lottoNumber);
+        }
 
         return winningNumber;
     }
@@ -52,7 +55,6 @@ public class UserInput {
         List<Integer> numbers = new ArrayList<>();
         for (String number: stringNumbers) {
             int lottoNumber = Integer.valueOf(number);
-            validNumber(lottoNumber);
             hasSameNumber(lottoNumber, numbers);
             numbers.add(lottoNumber);
         }
