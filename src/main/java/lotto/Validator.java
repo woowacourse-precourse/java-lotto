@@ -42,7 +42,7 @@ public class Validator {
         }
     }
 
-    public void validateBonusNumber(int bonusNumber) {
+    public void validateBonusNumber(String bonusNumber) {
 
     }
 }
