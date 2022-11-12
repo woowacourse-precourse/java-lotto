@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import static lotto.Constant.BALL_MAX_RANGE;
+import static lotto.Constant.BALL_MIN_RANGE;
+import static lotto.Constant.LOTTO_DIGIT_CNT;
 import static lotto.Constant.MIN_LOTTO_CNT_PURCHASED;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -20,7 +23,7 @@ public class LottoMachine {
         List<Lotto> lottoes = new ArrayList<>();
 
         for (int i = 0; i < lottoCnt; i++) {
-            lottoes.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
+            lottoes.add(new Lotto(Randoms.pickUniqueNumbersInRange(BALL_MIN_RANGE, BALL_MAX_RANGE, LOTTO_DIGIT_CNT)));
         }
         return lottoes;
     }
@@ -30,7 +33,7 @@ public class LottoMachine {
     }
 
     public void makeBonusNumber(Integer bonusNumber) {
-        if(bonusNumber < 0 || bonusNumber > 45) {
+        if(bonusNumber < BALL_MIN_RANGE || bonusNumber > BALL_MAX_RANGE) {
             throw new IllegalArgumentException("1~45까지의 숫자만 가능합니다");
         }
         if (winningNumber == null) { //이게 맞나?
