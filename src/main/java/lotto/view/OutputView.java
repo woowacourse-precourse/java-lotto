@@ -43,4 +43,5 @@ public class OutputView {
         result.delete(result.length() - 2, result.length()).append(LOTTO_CLOSE);
         System.out.println(result);
     }
+
 }

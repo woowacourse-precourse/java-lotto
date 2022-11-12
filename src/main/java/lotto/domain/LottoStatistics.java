@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static lotto.constant.NumberConstant.LOTTO_BONUS_LENGTH;
+import static lotto.common.NumberConstant.LOTTO_BONUS_LENGTH;
 import static lotto.domain.LottoResult.FOUR;
 import static lotto.domain.LottoResult.THREE;
 import static lotto.domain.LottoResult.FIVE;
@@ -27,6 +27,7 @@ public class LottoStatistics {
     private static final int GET_FIRST_RANKING_PRIZE = 2000000000;
 
     private final Map<LottoResult,Integer> lottoResultMap = new LinkedHashMap<>();
+
     private void initLottoResultMap(){
         lottoResultMap.put(THREE,0);
         lottoResultMap.put(FOUR,0);

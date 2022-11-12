@@ -21,8 +21,6 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
-
     public List<Integer> get(){
         return numbers;
     }
@@ -32,7 +30,9 @@ public class Lotto {
     public void setLottoResult(LottoResult lottoResult){
         this.lottoResult = lottoResult;
     }
+
     public LottoResult getLottoResult(){
         return this.lottoResult;
     }
+
 }

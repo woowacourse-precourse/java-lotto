@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import static lotto.constant.NumberConstant.LOTTO_MIN_PRICE;
+import static lotto.common.NumberConstant.LOTTO_MIN_PRICE;
 
 public class LottoPrice {
     private final int lottoPrice;

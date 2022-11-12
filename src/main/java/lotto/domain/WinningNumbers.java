@@ -18,4 +18,5 @@ public class WinningNumbers {
     public int getBonus(){
         return this.bonus;
     }
+
 }
