@@ -1,4 +1,4 @@
-package domain;
+package vo;
 
 public enum LottoRanking {
     FIRST(6, false),
