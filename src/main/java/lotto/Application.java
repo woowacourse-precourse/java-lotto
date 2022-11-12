@@ -12,16 +12,16 @@ import java.util.List;
 public class Application {
     public static Rank getWinning(Lotto userLotto, WinningLotto winningLotto) {
         // 메소드 호출로 필드의 객체를 반환 -> 필드 값이 변경되어서는 안됨
-        final List<Integer> userNumbers = userLotto.getNumbers();
-        final List<Integer> winningNumbers = winningLotto.getNumbers();
+        final List<Integer> userLottoNumbers = userLotto.getNumbers();
+        final List<Integer> winningLottoNumbers = winningLotto.getNumbers();
         int bonusNumber = winningLotto.getBonusNumber();
 
-        int hitCount = ((int) userNumbers.stream()
-                .filter(userNumber -> winningNumbers.contains(userNumber))
+        int hitCount = ((int) userLottoNumbers.stream()
+                .filter(number -> winningLottoNumbers.contains(number))
                 .count());
 
         boolean bonusHit = false;
-        if (userNumbers.contains(bonusNumber)) {
+        if (userLottoNumbers.contains(bonusNumber)) {
             bonusHit = true;
         }
 
