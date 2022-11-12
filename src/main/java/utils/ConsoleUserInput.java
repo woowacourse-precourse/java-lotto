@@ -10,25 +10,29 @@ import static java.lang.Integer.valueOf;
 
 public class ConsoleUserInput {
     private List<Integer> sixWinningNumbers = new ArrayList<>();
+    String userInput="nothing";
 
-    public ConsoleUserInput(List<Integer> sixWinningNumbers) {
-        this.sixWinningNumbers = sixWinningNumbers;
+    public ConsoleUserInput() {
+
     }
 
     public String inputWinningNumbers(){
         String userInput = Console.readLine();
+        Validator.isValidFormatWithComma(userInput);
         return userInput;
     }
 
-    public int toIntegerWithoutComma(String userInput){
+    public List<Integer> toIntegerNumbersWithoutComma(String userInput){
         StringTokenizer winningNumbers = new StringTokenizer(userInput,",");
-        Validatior.isValidNumber(Integer.valueOf(winningNumbers.nextToken()));
-        return Integer.valueOf(winningNumbers.nextToken());
+        while(winningNumbers.hasMoreTokens()) {
+            Validator.isInValidRange(Integer.valueOf(winningNumbers.nextToken()));
+            putSixNumbersInRow(Integer.valueOf(winningNumbers.nextToken()));
+        }
+        return sixWinningNumbers;
     }
 
     public List<Integer> putSixNumbersInRow(int winningNumbers){
         sixWinningNumbers.add(winningNumbers);
         return sixWinningNumbers;
     }
-
 }

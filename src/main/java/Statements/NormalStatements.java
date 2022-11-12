@@ -1,6 +1,6 @@
 package statements;
 
-public enum RobotClerk {
+public enum NormalStatements {
     ASK_MONEY_TO_BUY_LOTTO("구입금액을 입력해 주세요."),
     LET_USER_KNOW_THE_NUMBER_OF_TICKETS("개를 구매했습니다."),
     ASK_WINNING_NUMBERS("당첨 번호를 입력해 주세요."),
@@ -14,7 +14,7 @@ public enum RobotClerk {
 
     private final String saying;
 
-    RobotClerk(String saying){
+    NormalStatements(String saying){
         this.saying = saying;
     }
 
