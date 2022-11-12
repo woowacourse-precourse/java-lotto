@@ -17,19 +17,39 @@ public class LottoGameController {
     }
 
     public void run() {
-        OutputView.printInputPurchasePrice();
-        int purchasePrice = InputView.inputPurchasePrice();
+        int purchasePrice = inputPurchasePrice();
+        printLottos(purchasePrice);
 
+        lottoGameService.createAnswer(inputAnswerNumbers(), inputBonusNumber());
+
+        printWinningResult(lottoGameService.playGame(purchasePrice));
+    }
+
+    private int inputPurchasePrice() {
+        OutputView.printInputPurchasePrice();
+        return InputView.inputPurchasePrice();
+    }
+
+    private void printLottos(int purchasePrice) {
+        OutputView.printBlankLine();
         LottosResponseDto lottosResponseDto = lottoGameService.purchaseLottos(purchasePrice);
         OutputView.printPurchaseLottos(lottosResponseDto);
+        OutputView.printBlankLine();
+    }
 
+    private List<Integer> inputAnswerNumbers() {
+        OutputView.printBlankLine();
         OutputView.printInputAnswerNumbers();
-        List<Integer> answerNumbers = InputView.inputAnswerNumbers();
-        OutputView.printInputBonusNumber();
-        int bonusNumber = InputView.inputBonusNumber();
-        lottoGameService.createAnswer(answerNumbers, bonusNumber);
+        return InputView.inputAnswerNumbers();
+    }
 
-        GameResultResponseDtos gameResponseDto = lottoGameService.playGame(purchasePrice);
+    private int inputBonusNumber() {
+        OutputView.printBlankLine();
+        OutputView.printInputBonusNumber();
+        return InputView.inputBonusNumber();
+    }
+
+    private void printWinningResult(GameResultResponseDtos gameResponseDto) {
         OutputView.printWinningStatisticsMessage();
         OutputView.printWinningStatistics(gameResponseDto);
     }
