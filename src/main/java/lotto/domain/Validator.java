@@ -7,9 +7,7 @@ import java.util.List;
 public class Validator {
 
     public static void purchase(String purchase){
-        if (!purchase.matches("^[1-9]")){
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자여야 합니다.");
-        }
+        checkNumber(purchase);
         if (Integer.parseInt(purchase) % 1000 != 0){
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위이여야 합니다.");
         }
