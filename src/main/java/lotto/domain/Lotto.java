@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import static lotto.domain.Rank.*;
@@ -25,27 +26,28 @@ public class Lotto {
     }
 
     public void checkInputNumberIsValid(String inputLottoNumber) {
-        unValidShape(splitNumber(inputLottoNumber));
-
-        List<Integer> lottoNumber = convertLottoNumber(inputLottoNumber);
-        duplicatedNumber(lottoNumber);
-        checkNumberValid(lottoNumber);
-    }
-
-    private void unValidShape(ArrayList<String> lottoNumber){
-        if(lottoNumber.size() != LOTTO_LEN.value()){
-            System.out.println("[ERROR] 숫자 입력이 잘못 되었습니다.");
-            throw new IllegalArgumentException();
+        try {
+            isValidShapeOrThrows(splitNumber(inputLottoNumber));
+            List<Integer> lottoNumber = convertLottoNumber(inputLottoNumber);
+            isNotDuplicatedNumberOrThrows(lottoNumber);
+            checkNumberValid(lottoNumber);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            throw new NoSuchElementException();
         }
     }
 
-    private void duplicatedNumber(List<Integer> lottoNumber) {
+    private void isValidShapeOrThrows(ArrayList<String> lottoNumber){
+        if(lottoNumber.size() != LOTTO_LEN.value()){
+            throw new IllegalArgumentException("[ERROR] 숫자 입력이 잘못 되었습니다.");
+        }
+    }
+
+    private void isNotDuplicatedNumberOrThrows(List<Integer> lottoNumber) {
         List<Integer> collect = lottoNumber.stream().distinct().collect(Collectors.toList());
         if(collect.size() != LOTTO_LEN.value()){
-            System.out.println("[ERROR] 중복된 숫자가 있습니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
         }
-
     }
 
     private void checkNumberValid(List<Integer> lottoNumber){
