@@ -17,7 +17,7 @@
   - +[x] 6개의 수 중 중복인 수가 있을 경우 예외처리 - ValidationInDomain.checkDuplicatedNumber()  
   - +[x] 보너스번호가 당첨번호와 중복될 경우 예외처리 - ValidationInDomain.checkBonusNumberDuplication()  
   - +[x] 입력받은 당첨번호가 6개가 아닐 경우 예외처리 - Lotto.validate(), ValidationInDomain.checkNumberOfNumbers()  
-  - +[ ] 예외 발생 시 "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료하는 기능  
+  - +[x] 예외 발생 시 "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료하는 기능  
 
 ### 출력
 - +[x] 구입 금액 입력 문구를 출력하는 기능  
