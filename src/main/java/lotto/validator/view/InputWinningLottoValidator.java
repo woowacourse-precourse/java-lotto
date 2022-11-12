@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 public class InputWinningLottoValidator {
     private static final String WINNING_LOTTO_INPUT_FORM_EXCEPTION_MESSAGE = "[ERROR] 로또 번호 입력 형식이 잘못 되었습니다.";
     private static final String EXIST_ZERO_AT_FIRST_PLACE_EXCEPTION_MESSAGE = "[ERROR] 숫자의 1번째 자리는 0일 수 없습니다.";
+    private static final String DIGIT_RANGE_OF_OUT_EXCEPTION = "[ERROR] 숫자의 자릿수는 9자리를 초과할 수 없습니다.";
     private static final String WINNING_LOTTO_INPUT_FORM = "(\\d+,){5}\\d+";
     private static final String EXIST_ZERO_AT_FIRST_PLACE_FORM = "0\\d+";
     private static final String COMMA_DELIMITER = ",";
@@ -21,6 +22,7 @@ public class InputWinningLottoValidator {
         validateNullOrEmpty(inputWinningLottoNumbers);
         validateInputWinningLottoFormatMatching(inputWinningLottoNumbers);
         validateZeroAtFirstPlaceExist(inputWinningLottoNumbers);
+        validateDigitRangeOfOut(inputWinningLottoNumbers);
     }
     
     private static void validateNullOrEmpty(final String inputWinningLottoNumbers) {
@@ -48,8 +50,23 @@ public class InputWinningLottoValidator {
                 .anyMatch(InputWinningLottoValidator::isExistZeroAtFirstPlace);
     }
     
-    private static boolean isExistZeroAtFirstPlace(final String inputWinningLottoNumbers) {
-        return matcher(inputWinningLottoNumbers, EXIST_ZERO_AT_FIRST_PLACE_FORM).matches();
+    private static boolean isExistZeroAtFirstPlace(final String inputWinningLottoNumber) {
+        return matcher(inputWinningLottoNumber, EXIST_ZERO_AT_FIRST_PLACE_FORM).matches();
+    }
+    
+    private static void validateDigitRangeOfOut(final String inputWinningLottoNumbers) {
+        if (isNumberExistDigitRangeOfOut(inputWinningLottoNumbers)) {
+            throw new IllegalArgumentException(DIGIT_RANGE_OF_OUT_EXCEPTION);
+        }
+    }
+    
+    private static boolean isNumberExistDigitRangeOfOut(final String inputWinningLottoNumbers) {
+        return Arrays.stream(inputWinningLottoNumbers.split(COMMA_DELIMITER))
+                .anyMatch(InputWinningLottoValidator::isExistDigitRangeOfOut);
+    }
+    
+    private static boolean isExistDigitRangeOfOut(final String inputWinningLottoNumber) {
+        return matcher(inputWinningLottoNumber, "\\d{10}").find();
     }
     
     private static Matcher matcher(final String inputWinningLottoNumbers, final String correctLottoNumbersForm) {
