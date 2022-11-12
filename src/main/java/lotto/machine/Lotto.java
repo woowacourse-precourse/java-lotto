@@ -1,10 +1,7 @@
 package lotto.machine;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import lotto.Validator;
-
-import static lotto.Constants.*;
+import lotto.util.Validator;
 
 public class Lotto {
 

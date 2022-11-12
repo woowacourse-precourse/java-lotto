@@ -4,7 +4,10 @@ import java.util.List;
 import lotto.consumer.Profit;
 import lotto.consumer.Statistics;
 import lotto.machine.Tickets;
+import lotto.machine.Winner;
 import lotto.ui.Input;
+import lotto.ui.Output;
+import lotto.util.Convertor;
 
 public class Application {
     public static void main(String[] args) {
@@ -26,7 +29,7 @@ public class Application {
                     winner.getBonusNumber()
             );
             Statistics statistics = new Statistics(profit.getProfit());
-            Output.statistics(purchasePrice, statistics.getStatistics());
+            Output.lottoResult(purchasePrice, statistics.getStatistics());
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());
         }

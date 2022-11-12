@@ -1,10 +1,7 @@
-package lotto;
+package lotto.machine;
 
-import java.util.ArrayList;
 import java.util.List;
-import lotto.machine.Lotto;
-
-import static lotto.Constants.*;
+import lotto.util.Validator;
 
 public class Winner {
     private final Integer bonusNumber;

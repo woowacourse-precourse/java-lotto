@@ -1,4 +1,4 @@
-package lotto;
+package lotto.ui;
 
 import java.util.List;
 import java.util.Map;
@@ -12,6 +12,7 @@ public class Output {
     private final static String HORIZONTAL_RULE = "---";
     private final static String ROI_HEAD = "총 수익률은 ";
     private final static String ROI_FOOTER = "%입니다.";
+    private final static String COUNT_UNIT = " - %d개\n";
 
     public static final void purchaseSuccessful(Integer purchasePrice, List<List<Integer>> lottoTickets) {
         Integer purchaseQuantity = purchasePrice / UNIT_PRICE;
@@ -23,34 +24,38 @@ public class Output {
         System.out.println();
     }
 
-    public static final void statistics(Integer purchasePrice, Map<Integer, Integer> statistics) {
+    public static final void lottoResult(Integer purchasePrice, Map<Integer, Integer> statistics) {
         System.out.println(STATS_TITLE);
         System.out.println(HORIZONTAL_RULE);
 
         double totalProfit = 0;
-        for (Map.Entry<Integer, Integer> entry : statistics.entrySet()) {
-            printWinCount(entry.getValue());
-            totalProfit += (entry.getKey() * entry.getValue());
+        for (Map.Entry<Integer, Integer> history : statistics.entrySet()) {
+            // key: prize money for from 3 winning numbers to 6 winning numbers
+            // values: counts of winning each prize money
+            printWinCount(history.getKey(), history.getValue());
+            totalProfit += (history.getKey() * history.getValue());
         }
         printReturnOnInvestment(purchasePrice, totalProfit);
     }
 
-    private static void printWinCount(Integer winCount) {
-        String countUnit = " - %d개\n";
-        for (Ranks ranks : Ranks.values()) {
-            String message = ranks.getMessage() + countUnit;
-            System.out.printf(message, winCount);
-        }
+    private static void printWinCount(Integer prizeMoney, Integer winCount) {
+        Ranks ranks = Ranks.getRankBy(prizeMoney);
+        String message = ranks.getMessage() + COUNT_UNIT;
+        System.out.printf(message, winCount);
     }
 
     private static void printReturnOnInvestment(Integer purchasePrice, double totalProfit) {
         double returnOnInvestment = (totalProfit / purchasePrice) * 100;
-        double roundedOffToOneDecimalPlace = Math.round((returnOnInvestment) * 10) / 10.0;
+        double returnOnInvestmentFormatted = roundOffToOneDecimalPlace(returnOnInvestment);
 
         StringBuilder message = new StringBuilder();
         message.append(ROI_HEAD);
-        message.append(roundedOffToOneDecimalPlace);
+        message.append(returnOnInvestmentFormatted);
         message.append(ROI_FOOTER);
         System.out.println(message);
+    }
+
+    private static double roundOffToOneDecimalPlace(double number) {
+        return Math.round((number) * 10) / 10.0;
     }
 }

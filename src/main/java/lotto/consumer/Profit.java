@@ -2,7 +2,7 @@ package lotto.consumer;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.Matcher;
+import lotto.util.Matcher;
 import lotto.machine.Ranks;
 
 public class Profit {
@@ -12,11 +12,7 @@ public class Profit {
         profit = new ArrayList<>();
 
         for (List<Integer> lottoTicket : lottoTickets) {
-            Matcher matcher = new Matcher(
-                    lottoTicket,
-                    winningNumbers,
-                    bonusNumber
-            );
+            Matcher matcher = new Matcher(lottoTicket, winningNumbers, bonusNumber);
             Integer prizeMoney = Ranks.getPrizeMoneyBy(
                     matcher.getMatchingWinningNumberCount(),
                     matcher.getMatchingBonusNumberCount()
