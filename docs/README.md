@@ -60,10 +60,15 @@
 - 보너스 번호를 입력하는 기능[o]
 
 To do list
-1. 입력 기능 다 구현
-2. controller 구현
+1. 입력 기능 다 구현[o]
+2. controller 구현[0]
 3. application test 확인
-4. service에 getter 없애기
-5. gameResult list 반환하는 로직 정렬해서 반환하는 로직으로 리팩토링
-6. Player validation 로직 분리할지
-7. OutView 메시지 따로 분리할지
+4. 보너스 번호 예외 처리
+5. service에 getter 없애기
+6. gameResult list 반환하는 로직 정렬해서 반환하는 로직으로 리팩토링
+7. Player validation 로직 분리할지
+8. OutView 메시지 따로 분리할지
+
+fix
+랜덤값 가격이 아니라 번호대로 만드는 걸로 수정
+테스트 데이터가 List.of로 들어오는데 정렬 가능하게 바꾸기
