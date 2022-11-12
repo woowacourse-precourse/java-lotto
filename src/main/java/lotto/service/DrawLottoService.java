@@ -1,5 +1,6 @@
 package lotto.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ public class DrawLottoService {
     Map<Integer, Integer> correctNumberCountMap = new HashMap<>();
     ConversionArrayToList conversionArrayToList = new ConversionArrayToList();
 
+    List<Integer> winingCount = new ArrayList<>();
 
     public int countBuyingLotto(int amount) {
         return amount / 1000;
