@@ -43,16 +43,6 @@ public class Purchase {
     }
 
     private static List<Integer> pickLottoNumber() {
-        List<Integer> randomNumber = new ArrayList<>();
-
-        while (randomNumber.size() < 6) {
-            int pickNumber = Randoms.pickNumberInRange(1, 45);
-
-            if (!randomNumber.contains(pickNumber)) {
-                randomNumber.add(pickNumber);
-            }
-        }
-
-        return randomNumber;
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 }
