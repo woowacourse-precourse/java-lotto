@@ -10,7 +10,7 @@ public class LottoNumberTest {
 
     @DisplayName("번호가 1부터 45를 벗어나면 에러를 반환한다.")
     @Test
-    void createLottoByOverSize() {
+    void createLottoNumberOutOfRange() {
         Assertions.assertAll(
                 () -> assertThatThrownBy(() -> LottoNumber.of(0)).isInstanceOf(IllegalArgumentException.class),
                 () -> Assertions.assertDoesNotThrow(() -> LottoNumber.of(1)),
