@@ -29,10 +29,23 @@ public class InputLottoPurchaseAmountTest {
 		}
 
 		@Test
-		@DisplayName("구입금액 예외사항 테스트: 1000원 미만 입력")
-		void inputOutOfRangeLottoPurchaseAmount() {
+		@DisplayName("구입금액 예외사항 테스트: 1,000원 미만 입력")
+		void inputLessThanMinimumPurchaseAmount() {
 			// given, when
 			List<String> lottoPurchaseAmounts = List.of("999", "0", "-1");
+
+			// then
+			for (String lottoPurchaseAmount : lottoPurchaseAmounts) {
+				readLine(lottoPurchaseAmount);
+				assertThatThrownBy(() -> readLottoPurchaseAmount()).isInstanceOf(IllegalArgumentException.class);
+			}
+		}
+
+		@Test
+		@DisplayName("구입금액 예외사항 테스트: 8,145,060,000원 초과 입력")
+		void inputMoreThanMaximumPurchaseAmount() {
+			// given, when
+			List<String> lottoPurchaseAmounts = List.of("8145061000", "743210100000");
 
 			// then
 			for (String lottoPurchaseAmount : lottoPurchaseAmounts) {
@@ -62,8 +75,8 @@ public class InputLottoPurchaseAmountTest {
 		@DisplayName("구입금액 유효성 검증 성공 테스트")
 		void inputNumericLottoPurchaseAmount() {
 			// given
-			List<String> lottoPurchaseAmounts = List.of("1000", "22000", "54835000", "743210100000");
-			List<Long> expectedLottoPurchaseAmounts = List.of(1000L, 22000L, 54835000L, 743210100000L);
+			List<String> lottoPurchaseAmounts = List.of("1000", "22000", "54835000", "8145060000");
+			List<Long> expectedLottoPurchaseAmounts = List.of(1000L, 22000L, 54835000L, 8145060000L);
 
 			for (int idx = 0; idx < lottoPurchaseAmounts.size(); idx++) {
 
