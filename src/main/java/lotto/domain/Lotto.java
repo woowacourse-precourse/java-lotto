@@ -10,29 +10,25 @@ public class Lotto {
     private static final int MAX = 6;
     private final List<LottoNumber> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    public Lotto(List<LottoNumber> numbers) {
         checkNumber(numbers);
-        this.numbers = convertLottoNumber(numbers);
+        this.numbers = numbers;
     }
 
-    private void checkNumber(List<Integer> numbers) {
+    private void checkNumber(List<LottoNumber> numbers) {
         validate(numbers);
         checkDuplicate(numbers);
     }
 
-    private List<LottoNumber> convertLottoNumber(List<Integer> numbers) {
-        return numbers.stream().map(LottoNumber::new).collect(Collectors.toList());
-    }
-
-    private void validate(List<Integer> numbers) {
+    private void validate(List<LottoNumber> numbers) {
         if (numbers.size() != MAX) {
             throw new LottoInputException("[ERROR]");
         }
     }
 
-    private void checkDuplicate(List<Integer> numbers) {
-        if (numbers.stream().distinct().count() != 6){
-            throw new IllegalArgumentException("[ERROR] 중복된 숫자를 입력했습니다.");
+    private void checkDuplicate(List<LottoNumber> numbers) {
+        if (numbers.stream().distinct().count() != MAX) {
+            throw new LottoInputException("[ERROR] 중복된 숫자를 입력했습니다.");
         }
     }
 
