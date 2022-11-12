@@ -6,6 +6,10 @@ public class OutputView {
 
     private final String LOTTO_PURCHASE_PRICE_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
     private final String LOTTO_PURCHASE_COMPLETE_MESSAGE = "개를 구매했습니다.";
+    private final String OPENING_BRACKET = "(";
+    private final String CLOSING_BRACKET = ")";
+    private final String ONE_SPACE = " ";
+    private final String COMMA = ",";
 
     public void printPriceInputMessage() {
         System.out.println(LOTTO_PURCHASE_PRICE_INPUT_MESSAGE);
