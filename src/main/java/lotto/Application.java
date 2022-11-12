@@ -1,6 +1,5 @@
 package lotto;
 
-import view.InputView;
 import view.OutputView;
 
 public class Application {
