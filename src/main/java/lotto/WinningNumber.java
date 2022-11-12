@@ -6,7 +6,7 @@ public enum WinningNumber {
     THREE_MATCHES(3, 0, 5000),
     FOUR_MATCHES(4, 0, 50000),
     FIVE_MATCHES(5, 0, 1500000),
-    FIVE_AND_BONUS_BALL_MATCHES(0, 1, 30000000),
+    FIVE_AND_BONUS_BALL_MATCHES(5, 1, 30000000),
     SIX_MATCHES(6, 0, 2000000000);
 
     private final int numberOfWinning;
