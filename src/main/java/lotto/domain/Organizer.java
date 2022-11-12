@@ -2,8 +2,10 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.constant.GameMessage;
 import lotto.constant.LottoStatistic;
 import lotto.exception.ExceptionHandler;
+import lotto.userinterface.Input;
 
 public class Organizer {
     public List<Integer> winningNumbers;
@@ -12,30 +14,32 @@ public class Organizer {
     public Organizer() {
     }
 
-    public void setWinningNumbers(String winningNumberInput) {
-        this.winningNumbers = getWinningNumbersFromInput(winningNumberInput);
+    public void setWinningNumbersFromInput() {
+        String winningNumberInput = Input.getInputWithMessage(GameMessage.ASK_FOR_WINNING_NUMBERS.getMessage());
+        this.winningNumbers = transformStringToWinningNumbers(winningNumberInput);
         validateWinningNumbers(this.winningNumbers);
         ExceptionHandler.doesContainDuplicate(this.winningNumbers);
     }
 
-    public void setBonusNumber(String bonusNumberInput) {
-        this.bonusNumber = getIntegerFromString(bonusNumberInput);
+    public void setBonusNumberFromInput() {
+        String bonusNumberInput = Input.getInputWithMessage(GameMessage.ASK_FOR_BONUS_NUMBER.getMessage());
+        this.bonusNumber = transformStringToInteger(bonusNumberInput);
         ExceptionHandler.isWithinRange(this.bonusNumber,
                 LottoStatistic.MIN_NUMBER.getValue(), LottoStatistic.MAX_NUMBER.getValue());
         checkDuplicate(this.winningNumbers, this.bonusNumber);
     }
 
-    public List<Integer> getWinningNumbersFromInput(String input) {
+    public List<Integer> transformStringToWinningNumbers(String input) {
         List<String> splitInput = List.of(input.split(","));
         List<Integer> numbers = new ArrayList<>();
         for (String element : splitInput) {
-            int number = getIntegerFromString(element);
+            int number = transformStringToInteger(element);
             numbers.add(number);
         }
         return numbers;
     }
 
-    private int getIntegerFromString(String input) {
+    private int transformStringToInteger(String input) {
         String trimmedInput = input.trim();
         ExceptionHandler.isStringNumeric(trimmedInput);
         return Integer.parseInt(trimmedInput);
@@ -49,7 +53,7 @@ public class Organizer {
         }
     }
 
-    private void checkDuplicate(List<Integer> winningNumbers, int bonusNumber) {
+    public void checkDuplicate(List<Integer> winningNumbers, int bonusNumber) {
         List<Integer> combinedNumbers = new ArrayList<>(winningNumbers);
         combinedNumbers.add(bonusNumber);
         ExceptionHandler.doesContainDuplicate(combinedNumbers);

@@ -18,9 +18,7 @@ public class Application {
         player.displayLottoTickets();
 
         Organizer organizer = new Organizer();
-        String winningNumberInput = Input.getInputWithMessage(GameMessage.ASK_FOR_WINNING_NUMBERS.getMessage());
-        organizer.setWinningNumbers(winningNumberInput);
-        String bonusNumberInput = Input.getInputWithMessage(GameMessage.ASK_FOR_BONUS_NUMBER.getMessage());
-        organizer.setBonusNumber(bonusNumberInput);
+        organizer.setWinningNumbersFromInput();
+        organizer.setBonusNumberFromInput();
     }
 }
