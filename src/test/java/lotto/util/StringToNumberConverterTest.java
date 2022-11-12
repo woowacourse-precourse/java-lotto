@@ -24,7 +24,7 @@ class StringToNumberConverterTest {
         assertThat(result).isEqualTo(number);
     }
 
-    @DisplayName("문자열이 숫자로 변환할 수 없으면 IllegalArgumentException이 발생한다.")
+    @DisplayName("문자열이 숫자로 변환할 수 없으면 예외가 발생한다.")
     @Test
     void convertFail() {
         //given

@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import lotto.service.OutputService;
 
 public class Consumer {
 
@@ -20,7 +21,7 @@ public class Consumer {
     private final int purchaseAmount;
 
     public Consumer(int purchaseAmount) {
-        if (purchaseAmount % COUNT.getValue() != 0) {
+        if (purchaseAmount % PRICE.getValue() != 0) {
             throw new IllegalArgumentException(
                 "금액은 " + PRICE.getValue() + "원 단위로 입력해야 합니다. 입력 : " + purchaseAmount);
         }
@@ -29,12 +30,14 @@ public class Consumer {
     }
 
     private List<Lotto> generateLottos() {
-        return IntStream.range(0, purchaseAmount / PRICE.getValue())
+        List<Lotto> result = IntStream.range(0, purchaseAmount / PRICE.getValue())
             .mapToObj(
                 i -> new Lotto(
                     Randoms.pickUniqueNumbersInRange(RANGE_START.getValue(), RANGE_END.getValue(),
                         COUNT.getValue())))
             .collect(Collectors.toList());
+        OutputService.printGeneratedLottos(result);
+        return result;
     }
 
     public Result confirmResultOfLottos(WinningLotto winningLotto) {
