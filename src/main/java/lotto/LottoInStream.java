@@ -14,7 +14,7 @@ public class LottoInStream {
     private static final String _input_bonus_number_str = "보너스 번호를 입력해 주세요.\n";
     private static final String _error_default_msg = "[ERROR]";
 
-    public static Integer readToBuyLotto() {
+    public static int readToBuyLotto() {
         System.out.print(_input_buy_str);
         String line = readline();
 
