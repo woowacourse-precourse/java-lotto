@@ -18,7 +18,7 @@ public class WinningLotto extends Lotto {
     }
 
     private void validate(int bonusNumber) {
-        super.getNumbers().forEach(InputValidator::validateNumberRange);
         InputValidator.validateNumberRange(bonusNumber);
+        InputValidator.validateOverlappingBonusNumbers(getNumbers(), bonusNumber);
     }
 }

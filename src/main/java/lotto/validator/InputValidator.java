@@ -24,6 +24,19 @@ public class InputValidator {
         }
     }
 
+    public static void validateOverlappingNumbers(List<Integer> numbers) {
+        long distinctCount = numbers.stream().distinct().count();
+        if (numbers.size() != distinctCount) {
+            throw new IllegalArgumentException(ErrorMessage.OVERLAPPED_NUMBER.getMessage());
+        }
+    }
+
+    public static void validateOverlappingBonusNumbers(List<Integer> numbers, int bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(ErrorMessage.OVERLAPPED_NUMBER.getMessage());
+        }
+    }
+
     public static List<Integer> changeInputToIntegerList(String input) {
         List<String> splitElements = Arrays.asList(input.split(INPUT_DELIMITER));
         List<Integer> numbers = splitElements.stream()
