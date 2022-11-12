@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.text.NumberFormat;
 import java.util.*;
 
 public class Application {
@@ -20,10 +21,7 @@ public class Application {
             Lotto lotto = new Lotto(chatbot.askLottoNumber());
             int bonus = validateLottoBonus(lotto, chatbot.askLottoBonus());
             List<Integer> result = getNumberOfWin(userNumber, lotto, bonus);
-            System.out.println("aaa");
-            System.out.println(result);
-/*            float rate = calculateRate(lottoPrice, result);
-            chatbot.printResult(rate, result);*/
+            chatbot.printResult(calculateRate(lottoPrice, result), result);
         } catch (IllegalArgumentException e) {
             System.out.println(ERROR_MESSAGE + " " + e.getMessage());
         }
@@ -91,11 +89,16 @@ public class Application {
         if (count == 5 && userEachNumber.contains(bonus)) {
             count=7;
         }
-        System.out.println(userEachNumber);
         return count;
     }
 
-    public static float calculateRate(int price, List<Integer> result) {
-        return 0f;
+    public static String calculateRate(int price, List<Integer> result) {
+        NumberFormat numberFormat = NumberFormat.getInstance();
+
+        long prizeMoney=result.get(3)*5000+result.get(4)*50000+result.get(5)*1500000+result.get(7)*30000000+result.get(6)*2000000000;
+        double rate=prizeMoney/(double)price*100;
+        String finalRate = numberFormat.format((int)(rate*10+0.5)/10f);
+
+        return finalRate;
     }
 }
