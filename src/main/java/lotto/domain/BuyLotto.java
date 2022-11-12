@@ -10,9 +10,19 @@ public class BuyLotto {
     int price;
     List<Lotto> lottos;
 
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
+
+    int count;
+
+    public int getCount() {
+        return count;
+    }
+
     public BuyLotto(int price) {
         this.price = price;
-        int count = numberOfLotto();
+        count = numberOfLotto();
         lottos = drawLottos(count);
     }
 
