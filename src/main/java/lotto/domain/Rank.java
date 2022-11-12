@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import java.util.Arrays;
+import java.util.List;
 
 public enum Rank {
 	FIRST(6, 2_000_000_000),
@@ -19,14 +19,12 @@ public enum Rank {
 	}
 
 	public static Rank of(int hitNumberCount, boolean isContainsBonusNumber) {
-		if (isContainsBonusNumber && SECOND.hitNumberCount == hitNumberCount) {
+		if (isSecond(hitNumberCount, isContainsBonusNumber)) {
 			return SECOND;
 		}
 
-		return Arrays.stream(values())
-			.filter(Rank -> ((Rank != SECOND) && Rank.hitNumberCount == hitNumberCount))
-			.findFirst()
-			.orElse(MISS);
+		List<Rank> rankList = List.of(MISS, FIFTH, FOURTH, THIRD, FIRST);
+		return rankList.get(convertIndex(hitNumberCount));
 	}
 
 	public int getHitNumberCount() {
@@ -40,6 +38,17 @@ public enum Rank {
 	public String getPrizeMoneyWithComma() {
 		String money = Integer.toString(prizeMoney);
 		return money.replaceAll("\\B(?=(\\d{3})+(?!\\d))", ",");
+	}
+
+	private static boolean isSecond(int hitNumberCount, boolean isContainsBonusNumber) {
+		return isContainsBonusNumber && SECOND.hitNumberCount == hitNumberCount;
+	}
+
+	private static int convertIndex(int hitNumberCount) {
+		if (hitNumberCount < 3) {
+			return 0;
+		}
+		return hitNumberCount - 2;
 	}
 
 }
