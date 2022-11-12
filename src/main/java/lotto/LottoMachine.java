@@ -25,4 +25,14 @@ public class LottoMachine {
         }
         System.out.println(lottos.size() + "개를 구매했습니다.");
     }
+
+    public static void printLottoLog(List<Lotto> lottos){
+        Iterator<Lotto>lottosIter = lottos.iterator();
+
+        while (lottosIter.hasNext()){
+            Lotto lotto = lottosIter.next();
+            System.out.println(lotto);
+        }
+    }
+
 }
