@@ -18,13 +18,7 @@ public class UserInput {
     // 당첨 번호를 입력하는 기능
     public static List<Integer> winningNumberInput() {
         String winningNumber = Console.readLine();
-
-        List<String> winningNumberSplit = Arrays.stream(winningNumber.split(","))
-            .collect(Collectors.toList());
-
-        return winningNumberSplit.stream()
-            .map(Integer::parseInt)
-            .collect(Collectors.toList());
+        return stringListToIntegerList(splitString(winningNumber));
     }
 
     // 문자열을 ,를 기준으로 분리하는 기능
