@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class User {
     private static int buyAmount;
@@ -21,9 +22,16 @@ public class User {
     }
 
     private void validate(String buyAmount) {
-        validateBuyAmountForms();
+        validateBuyAmountForms(buyAmount);
         validateBuyAmountFirstNumber();
         validateBuyAmount();
+    }
+
+    private void validateBuyAmountForms(String buyAmount){
+        if (!buyAmount.matches("^[0-9]*$")){
+            System.out.println("[ERROR] 금액은 숫자로만 이루어져야 합니다.");
+            throw new NoSuchElementException();
+        }
     }
 
     public int getBuyAmount() {
