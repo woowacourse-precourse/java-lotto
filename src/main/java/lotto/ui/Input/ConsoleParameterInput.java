@@ -20,19 +20,31 @@ public class ConsoleParameterInput implements ParameterInput {
     }
 
     public WinningNumber readWinningNumber() {
+        List<Integer> basicNumbers = readBasicWinningNumber();
+
+        System.out.println();
+
+        int bonus = readBonusWinningNumber();
+
+        return new WinningNumber(basicNumbers, bonus);
+    }
+
+    private List<Integer> readBasicWinningNumber() {
         System.out.println(InputText.INPUT_BASIC_WINNING_NUMBER);
 
         String basicNumberString = Console.readLine();
-        List<Integer> basicNumbers = Arrays
+
+        return Arrays
                 .stream(basicNumberString.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
-        System.out.println();
+    }
 
+    private int readBonusWinningNumber() {
         System.out.println(InputText.INPUT_BONUS_WINNING_NUMBER);
-        String bonusNumber = Console.readLine();
-        int bonus = Integer.parseInt(bonusNumber);
 
-        return new WinningNumber(basicNumbers, bonus);
+        String bonusNumber = Console.readLine();
+
+        return Integer.parseInt(bonusNumber);
     }
 }
