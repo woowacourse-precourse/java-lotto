@@ -32,4 +32,9 @@ public class LottoStore {
         }
     }
 
+    public void compareAllLottos(List<Integer> inputNumbers) {
+        for (Lotto lotto : lottos) {
+            lotto.compareLotto(inputNumbers);
+        }
+    }
 }
