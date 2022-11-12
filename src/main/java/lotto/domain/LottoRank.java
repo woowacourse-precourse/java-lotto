@@ -18,4 +18,14 @@ public enum LottoRank {
         this.winningNumberCount = winningNumberCount;
         this.rewardMoney = rewardMoney;
     }
+
+    public static LottoRank getLottoRank(int winningNumberCount, boolean bonusNumber) {
+        if (winningNumberCount == SECOND.winningNumberCount && bonusNumber) {
+            return SECOND;
+        }
+        return Arrays.stream(LottoRank.values())
+                .filter(LottoRank -> LottoRank.winningNumberCount == winningNumberCount)
+                .findFirst()
+                .orElse(FAILED);
+    }
 }
