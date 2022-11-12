@@ -19,7 +19,8 @@ public class LottoGame {
         int bonusNumber = inputBonusNumber();
         Lotto.validateBonusNumber(bonusNumber, winningNumbers);
 
-        Map<Integer, Integer> result = Rank.getResult(winningNumbers, lottoList, bonusNumber);
+        List<Integer> matchRank = Rank.findMatchRank(winningNumbers, lottoList, bonusNumber);
+        Map<Integer, Integer> result = Rank.getRankResult(matchRank);
         printResult(result);
 
         double yield = getYield(money, result);
@@ -63,11 +64,11 @@ public class LottoGame {
         for (Grade grade : Grade.values()) {
             if (grade.isCheck()) {
                 System.out.printf(Messages.OUTPUT_BONUS_MESSAGE, grade.getMatchCount(), decimalFormat.format(grade.getPrize()),
-                        result.get(7));
+                        result.getOrDefault(7, 0));
             }
             if (!grade.isCheck()) {
                 System.out.printf(Messages.OUTPUT_RESULT_MESSAGE, grade.getMatchCount(), decimalFormat.format(grade.getPrize()),
-                        result.get(grade.getMatchCount()));
+                        result.getOrDefault(grade.getMatchCount(), 0));
             }
         }
     }
@@ -76,9 +77,9 @@ public class LottoGame {
         double sum = 0;
         for (Grade grade : Grade.values()) {
             if (grade.isCheck())
-                sum += grade.getPrize() * result.get(7);
+                sum += grade.getPrize() * result.getOrDefault(7, 0);
             if (!grade.isCheck()) {
-                sum += grade.getPrize() * result.get(grade.getMatchCount());
+                sum += grade.getPrize() * result.getOrDefault(grade.getMatchCount(), 0);
             }
         }
         return (sum / money) * 100;
