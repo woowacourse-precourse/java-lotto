@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class LottoController {
+    private final int ONE_THOUSAND_WON = 1000;
     private int purchaseAmount;
     private int lottoIssueCount;
     private int bonusNumber;
@@ -53,7 +54,7 @@ public class LottoController {
     }
 
     private void saveLottoIssueCount() {
-        this.lottoIssueCount = purchaseAmount / 1000;
+        this.lottoIssueCount = purchaseAmount / ONE_THOUSAND_WON;
     }
 
     private void issueLottoSeveralTimes(int lottoIssueCount, List<Lotto> myLotto) {
