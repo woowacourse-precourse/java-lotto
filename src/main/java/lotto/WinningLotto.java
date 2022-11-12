@@ -14,20 +14,22 @@ public class WinningLotto extends Lotto {
     public WinningLotto(List<Integer> numbers, int bonusNumber) {
         super(numbers);
 
-        if (numbers.contains(bonusNumber)) {
-            System.out.println(DUPLICATED_INPUT);
-            throw new IllegalArgumentException();
-        }
-
-        if (LottoNumberValidator.isOutOfRange(bonusNumber)) {
-            System.out.println(WRONG_RANGE);
-            throw new IllegalArgumentException();
-        }
+        validate(bonusNumber);
 
         this.bonusNumber = bonusNumber;
     }
 
 
+    private void validate(int bonusNumber) {
+        if (LottoNumberValidator.isOutOfRange((bonusNumber))) {
+            throw new IllegalArgumentException(WRONG_RANGE);
+        }
+
+        List<Integer> numbers = this.getNumbers();
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(DUPLICATED_INPUT);
+        }
+    }
     public int getBonusNumber() {
         return this.bonusNumber;
     }
