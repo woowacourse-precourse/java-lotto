@@ -2,16 +2,19 @@ package lotto;
 
 import java.util.function.Predicate;
 
-public class LottoNumbers {
-    Lotto lotto;
-    Lotto winningLotto;
-    int bonusNum;
-    int winningAmount;
+public class LottoStatus {
+    private Lotto lotto;
+    private Lotto winningLotto;
+    private int bonusNum;
 
-    public LottoNumbers(Lotto lotto, Lotto winningLotto, int bonusNum) {
+    public LottoStatus(Lotto lotto, Lotto winningLotto, int bonusNum) {
         this.lotto = lotto;
         this.winningLotto = winningLotto;
         this.bonusNum = bonusNum;
+    }
+
+    public int calcAmount() {
+        return getResult().value();
     }
 
     public LottoResult getResult() {

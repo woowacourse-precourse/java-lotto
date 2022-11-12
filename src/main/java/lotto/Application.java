@@ -1,8 +1,6 @@
 package lotto;
 
-
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -58,9 +56,14 @@ public class Application {
         }
     }
 
+    static int calcYield(Lottos lottos, int lottoCount) {
+        return  lottos.getTotalWinningAmount() / (lottoCount*1000);
+    }
+
     public static void main(String[] args) {
         int lottoCount = amountToLottoCount(checkStringIsInt(InputView.receiveAmount()));
         Lottos lottos = checkAndMakeLottos(lottoCount);
         ResultView.printLottos(lottos);
+        ResultView.printYield(calcYield(lottos, lottoCount));
     }
 }

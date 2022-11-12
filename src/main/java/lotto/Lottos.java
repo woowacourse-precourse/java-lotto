@@ -1,8 +1,6 @@
 package lotto;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,11 +10,16 @@ public class Lottos {
     private static final int MIN_VALUE = 1;
     private static final int MAX_VALUE = 45;
     private static final int COUNT = 6;
-    LottoResult lottoResult;
-    int totalWinningAmount;
+
+    // Results
+    private List<LottoStatus> lottosStatus;
+    private List<LottoResult> lottoResults;
+    private int totalWinningAmount;
+
     // com Lottos
     private int lottoCount;
     private List<Lotto> lottosNumbers;
+
     // user Lottos
     private Lotto winningLotto;
     private int bonusNum;
@@ -25,6 +28,9 @@ public class Lottos {
         this.lottoCount = lottoCount;
         createLottos(lottoCount);
         createWinningNumbers(winningLotto, bonusNum);
+        createLottosStatus();
+        createLottoResults();
+        calcTotalAmount();
     }
 
     private void createLottos(int lottoCount){
@@ -40,10 +46,36 @@ public class Lottos {
         this.bonusNum = bonusNum;
     }
 
-    public void countResult() {
+    private void createLottosStatus() {
+        this.lottosStatus = new ArrayList<>();
+        for(int i = 0; i < lottoCount; i++) {
+            this.lottosStatus.add(createLottoStatus(lottosNumbers.get(i)));
+        }
     }
 
-    public void calcAmount() {
+    private LottoStatus createLottoStatus(Lotto lotto) {
+        return new LottoStatus(lotto, winningLotto, bonusNum);
+    }
+
+    public int getTotalWinningAmount() {
+        return this.totalWinningAmount;
+    }
+
+    private void calcTotalAmount() {
+        for(int i = 0; i < lottosStatus.size(); i++) {
+            this.totalWinningAmount += lottosStatus.get(i).calcAmount();
+        }
+    }
+
+    private void createLottoResults() {
+        this.lottoResults = this.lottosStatus
+                .stream()
+                .map(status -> status.getResult())
+                .collect(Collectors.toList());
+    }
+
+    public List<LottoResult> getLottoResults() {
+        return lottoResults;
     }
 
     public int getLottoCount() {
