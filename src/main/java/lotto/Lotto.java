@@ -83,6 +83,15 @@ public class Lotto {
         return sb.toString();
     }
     //7. 수익률을 계산하는 함수 (소수 두째자리에서 반올림)
+    public double totalPercent(int buyMoney){
+        double total = 0;
+        total += (5000.0 * sameNumberMap.get("3개"));
+        total += (50000.0 * sameNumberMap.get("4개"));
+        total += (1500000.0 * sameNumberMap.get("5개"));
+        total += (30000000.0 * sameNumberMap.get("5개+보너스"));
+        total += (2000000000.0 * sameNumberMap.get("6개"));
+        return Math.round((total / buyMoney)*100);
+    }
     //8. 예외처리 에러 문구 출력 함수 (단, [ERROR] 로 시작)
     //9. 보너스 볼이 일치하는지 확인하는 함수
     public boolean bonusBallCheck(List<Integer> buyLottoNumber){
