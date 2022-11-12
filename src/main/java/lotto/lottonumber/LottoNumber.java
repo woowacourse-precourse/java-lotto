@@ -1,6 +1,5 @@
 package lotto.lottonumber;
 
-import lotto.Lotto;
 import java.util.List;
 
 /**
