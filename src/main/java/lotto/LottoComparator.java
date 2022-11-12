@@ -48,7 +48,7 @@ public class LottoComparator {
         if (containCount == 5 && bonus) { // 2등
             calculateResult.set(1, calculateResult.get(1) + 1);
         }
-        if (containCount == 5) { // 3등
+        if (containCount == 5 && !bonus) { // 3등
             calculateResult.set(2, calculateResult.get(2) + 1);
         }
         if (containCount == 4) { // 4등
