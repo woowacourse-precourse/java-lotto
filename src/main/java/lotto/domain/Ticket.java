@@ -13,8 +13,8 @@ public class Ticket {
     private final List<List<Integer>> lottoTickets = new ArrayList<>();
     private final LinkedHashMap<Prize, Integer> winningTickets = new LinkedHashMap<>();
 
-    public Ticket(int numOfTicket) {
-        this.numOfTicket = numOfTicket;
+    public Ticket(int paidMoney) {
+        this.numOfTicket = paidMoney / 1000;
         for (Prize prize: Prize.values()) {
             this.winningTickets.put(prize, 0);
         }

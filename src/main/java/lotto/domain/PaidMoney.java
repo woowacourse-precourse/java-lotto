@@ -9,16 +9,11 @@ import static lotto.view.Constants.NOT_DIVISIBLE_BY_THOUSAND;
 
 public class PaidMoney {
     private final int paidMoney;
-    private int earnedMoney = 0;
 
     public PaidMoney(int paidMoney) {
         validateNoMoney(paidMoney);
         validateWrongMoney(paidMoney);
         this.paidMoney = paidMoney;
-    }
-
-    public int buyNTicket() {
-        return paidMoney / 1000;
     }
 
     private void validateNoMoney(int paidMoney) {
