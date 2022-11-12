@@ -9,7 +9,9 @@ import java.util.stream.Stream;
 public class LottoMachine {
 
     public static Lotto winNumber;
+    public static int bonusNumber;
     public InputController winNumberInputController = new WinNumberInputController();
+    public BonusNumberInputController bonusNumberInputController = new BonusNumberInputController();
 
     public List<Lotto> issueLottoNumbers(long count) {
 
@@ -36,5 +38,16 @@ public class LottoMachine {
         return inputLottoNumber.stream()
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    public Lotto getWinNumber() {
+        return winNumber;
+    }
+
+    public void setBonusNumber(String inputBonusNumber) {
+
+        bonusNumberInputController.validate(inputBonusNumber);
+
+        bonusNumber = Integer.parseInt(inputBonusNumber);
     }
 }
