@@ -8,21 +8,24 @@ import lotto.view.LottoManager;
 
 public class Application {
     public static void main(String[] args) {
-        NumberGenerator numberGenerator = new NumberGenerator();
-        LottoManager lottoManager = new LottoManager();
-        String winningNumbers = lottoManager.inputWinningNumbers();
-        int bonusNumber = lottoManager.inputBonusNumber();
-        List<Integer> numbers = numberGenerator.createWinningNumbers(winningNumbers);
-        try {
-            WinningNumbers w = new WinningNumbers(numbers, bonusNumber);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+        // 로또개수 입력
+        final LottoManager lottoManager = new LottoManager();
+        int lottoCount = lottoManager.inputLottoCount();
 
-//        Lotto[] lottos = new Lotto[countNumber];
-//        for (int i = 0; i < countNumber; i++) {
-//            lottos[i] = new Lotto(numberGenerator.createLottoNumbers());
-//        }
+        // 개수에 맞게 로또번호 생성 및 출력
+        final NumberGenerator numberGenerator = new NumberGenerator();
+        Lotto[] lottos = new Lotto[lottoCount];
+        for (int i = 0; i < lottos.length; i++) {
+            lottos[i] = new Lotto(numberGenerator.createLottoNumbers());
+        }
+        lottoManager.printLottoNumbers(lottos);
+
+        // 당첨번호 입력
+        String winningNumbers = lottoManager.inputWinningNumbers();
+        List<Integer> numbers = numberGenerator.createWinningNumbers(winningNumbers);
+        WinningNumbers w = new WinningNumbers(numbers);
+
+        int bonusNumber = lottoManager.inputBonusNumber();
 
     }
 }

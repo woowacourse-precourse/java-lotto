@@ -9,7 +9,7 @@
 
 ##기능 목록
 - [ ] 로또 개수 입력 - LottoManager # inputLottoCount
-  - [ ] 숫자인지 확인
+  - [ ] 1000 원 단위 확인
 - [x] 1부터 45까지 서로 다른 수로 이루어진 6개의 로또번호 생성 - NumberGenerator#createLottoNumber
   - [x] 사이즈 확인 - Lotto#validate
   - [x] 중복 검사 - Lotto#checkOverlap
