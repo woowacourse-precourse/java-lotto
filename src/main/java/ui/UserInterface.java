@@ -74,7 +74,7 @@ public class UserInterface {
      * 당첨 통계를 정해진 포맷으로 출력합니다.
      * @param statistics 통계 정보
      */
-    public static void printStatistics(LottoStatistics statistics) {
+    public static void printStatistics(LottoStatistics statistics) throws IllegalArgumentException {
         System.out.println(PrintConstants.START_PRINT_STATISTICS);
         for (LottoRank rank : LottoRank.values()) {
             if (rank.getRank() == 0)
@@ -82,7 +82,7 @@ public class UserInterface {
             String line = getRankLine(rank) + statistics.getNumOfRank(rank) + "개";
             System.out.println(line);
         }
-        System.out.println(getFormedYield(statistics));
+        System.out.println(getFormedYield(statistics.getYield()));
     }
 
     /**
@@ -97,19 +97,33 @@ public class UserInterface {
     }
 
     /**
-     * 정해진 형태로 오류를 출력합니다.
-     * @param e
+     * 정해진 형태로 오류의 메시지를 사용자에게 출력합니다.
+     * 출력 후에는 오류 스택을 모두 출력합니다.
+     * @param e 예외
      */
     public static void printError(Exception e) {
         System.out.println(ErrorConstants.ERROR_PREFIX + " " + e.getMessage());
         e.printStackTrace();
     }
 
+    /**
+     * 각 로또 등수의 정보에 대해서 문자열 형태로 반환합니다.
+     * ex) 6개 일치 (2,000,000,000원) -
+     * ex) 5개 일치, 보너스 볼 일치 (30,000,000원) -
+     * @param rank 로또 등수
+     * @return 로또 등수 정보
+     */
     private static String getRankLine(LottoRank rank) {
         return rank.getDescription() + " (" + decimalFormat.format(rank.getPrize()) + "원) - ";
     }
 
-    private static String getFormedYield(LottoStatistics statistics) {
-        return PrintConstants.PRINT_YIELD_START + String.format("%.1f", statistics.getYield()) + PrintConstants.PRINT_YIELD_END;
+    /**
+     * 정해진 포맷의 문자여로 수익률을 반환합니다.
+     * ex) 총 수익률은 62.5%입니다.
+     * @param yield 수익률
+     * @return 소수점 1의 자리까지 반올림된 수익률과 기타 포맷
+     */
+    private static String getFormedYield(double yield) {
+        return PrintConstants.PRINT_YIELD_START + String.format("%.1f", yield) + PrintConstants.PRINT_YIELD_END;
     }
 }
