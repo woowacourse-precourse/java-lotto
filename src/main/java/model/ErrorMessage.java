@@ -32,4 +32,10 @@ public enum ErrorMessage {
             return HEADER + "1000원 단위의 숫자여야 합니다.";
         }
     },
+    INCORRECT_LUCKY_NUMBER_SIZE{
+        @Override
+        public String toString() {
+            return HEADER + ",로 구분하여 6개의 번호(1~45)를 입력하여야 합니다.";
+        }
+    }
 }

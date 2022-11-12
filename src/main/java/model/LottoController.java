@@ -18,10 +18,13 @@ public class LottoController {
     }
 
     public void start() {
-        String input = inputView.inputMoney();
-        validatePurchasingAmount(input);
-        outputView.outputLotto(lottoService.issueLotto(Integer.parseInt(input)));
+        String money = inputView.inputMoney();
+        validatePurchasingAmount(money);
 
+        outputView.outputLotto(lottoService.issueLotto(Integer.parseInt(money)));
+
+        String luckyNumber = inputView.inputLuckyNumber();
+        validator.validateLuckyNumberSize(luckyNumber);
     }
 
     private void validatePurchasingAmount(String input) {
@@ -30,8 +33,4 @@ public class LottoController {
         validator.validateMonetaryUnit(input);
     }
 
-    public static void main(String[] args) {
-        LottoController lottoController = new LottoController();
-        lottoController.start();
-    }
 }
