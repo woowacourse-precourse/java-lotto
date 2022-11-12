@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Rate {
-    private Map<Rank,Integer> rankPrice;
-    private double earningRate;
+    private Map<Rank,Integer> rankPrice;    // <Rank, 상금(price)> Map
+    private double earningRate; // 수익률
 
     public Rate(Map<Rank,Integer> winningStats, int price){
         setRankPrice();
@@ -18,6 +18,7 @@ public class Rate {
         return this.earningRate;
     }
 
+    // rankPrice 초기화
     private void setRankPrice(){
         Map<Rank,Integer> rankPrice = new HashMap<>();
         rankPrice.put(Rank.first,2000000000);
@@ -28,11 +29,13 @@ public class Rate {
         this.rankPrice = rankPrice;
     }
 
+    // 수익률 계산
     private void setEarningRate(Map<Rank,Integer> winningStats, int price) {
         int earningPrice = calcEarning(winningStats);
         this.earningRate = Math.round((earningPrice / (double)price) * 100 * 10) / 10.0;
     }
 
+    // 전체 수익 금액 계산
     private int calcEarning(Map<Rank,Integer> winningStats) {
         int earningPrice = 0;
 
