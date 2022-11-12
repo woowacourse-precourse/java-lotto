@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class CommaAndNumberValidator {
 
-  void validate(String input) {
+  List<Integer> validate(String input) {
     List<String> inputList = new ArrayList<>(Arrays.asList(input.split(",")));
     List<Integer> digits;
     try {
@@ -17,5 +17,6 @@ public class CommaAndNumberValidator {
     } catch (NumberFormatException e) {
       throw new IllegalArgumentException(ExceptionMessage.INPUT_IS_NOT_SEPARATED_BY_COMMAS.getMessage());
     }
+    return digits;
   }
 }
