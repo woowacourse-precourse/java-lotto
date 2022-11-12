@@ -2,7 +2,6 @@ package lotto.UI;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import lotto.domain.Lotto;
 import lotto.domain.PrizeRank;
 
@@ -11,9 +10,9 @@ public class ConsoleView {
         System.out.println("구입금액을 입력해 주세요.");
     }
 
-    public void printNumberOfLotto(int quantity) {
+    public void printNumberOfLotto(int money) {
         System.out.println();
-        System.out.println(quantity + "개를 구매했습니다.");
+        System.out.println(money / 1000 + "개를 구매했습니다.");
     }
 
     public void printLottos(List<Lotto> lottos) {

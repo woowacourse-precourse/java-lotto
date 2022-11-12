@@ -5,13 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 public class CheckLottosPrize {
-    private  List<Lotto> lottos;
-    private  Lotto winningNumbers;
-    private  Integer bonusNumber;
+    private final Lotto winningNumbers;
+    private final Integer bonusNumber;
     private Map<String, Integer> totalPrize;
 
     public CheckLottosPrize(List<Lotto> lottos, Lotto winningNumbers, Integer bonusNumber) {
-        this.lottos = lottos;
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
         initTotalPrize();
@@ -25,7 +23,7 @@ public class CheckLottosPrize {
         }
     }
 
-    public Map<String, Integer> checkTotalPrize(List<Lotto> lottos) {
+    private Map<String, Integer> checkTotalPrize(List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
             String rank = getRank(lotto);
             if (totalPrize.containsKey(rank)) {

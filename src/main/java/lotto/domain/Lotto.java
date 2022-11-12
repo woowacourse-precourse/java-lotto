@@ -1,11 +1,10 @@
 package lotto.domain;
 
-import static lotto.CustomException.*;
+import static lotto.CustomException.throwException;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
-import lotto.CustomException;
 
 public class Lotto {
     private final List<Integer> numbers;

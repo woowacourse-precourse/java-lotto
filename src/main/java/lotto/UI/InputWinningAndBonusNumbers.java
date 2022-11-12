@@ -3,20 +3,21 @@ package lotto.UI;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
-import lotto.Application;
 import lotto.domain.Lotto;
 
 public class InputWinningAndBonusNumbers {
     private Lotto winningNumbers;
     private Integer bonusNumber;
 
-    public void inputWinningNumbers() {
+    public Lotto inputWinningNumbers() {
         winningNumbers = drawWinningNumbers(Console.readLine());
-
+        return winningNumbers;
     }
 
-    public void inputBonusNumber() {
+    public Integer inputBonusNumber() {
         bonusNumber = stringToInteger(Console.readLine());
+        validateBonusNumber();
+        return bonusNumber;
     }
 
     private Integer stringToInteger(String s) throws IllegalArgumentException {
@@ -54,13 +55,5 @@ public class InputWinningAndBonusNumbers {
             list.add(stringToInteger(s));
         }
         return new Lotto(list);
-    }
-
-    public Lotto getWinningNumbers() {
-        return winningNumbers;
-    }
-
-    public Integer getBonusNumber() {
-        return bonusNumber;
     }
 }

@@ -23,8 +23,4 @@ public class LottoGenerator {
     private List<Integer> generateLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
-
-    public int getQuantity() {
-        return quantity;
-    }
 }
