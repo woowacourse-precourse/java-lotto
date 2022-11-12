@@ -13,9 +13,17 @@ public class InputView {
 	private static final String INPUT_USER_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
 	private static final String DEFAULT_ERROR_MESSAGE = "[ERROR] ";
 	private static final String INPUT_MONEY_ERROR_MESSAGE = "구입금액은 숫자여야 합니다.";
-	private static final String IN_MONEY_ERROR_MESSAGE = "구입 금액은 1000원 단위로 입력하셔야 합니다.";
+	private static final String VALID_MONEY_ERROR_MESSAGE = "구입 금액은 1000원 단위로 입력하셔야 합니다.";
 	private static final String INPUT_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
 	private static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해주세요";
+	private static final String VALID_WIN_NUMBER_MESSAGE = "당첨 번호는 1~45의 범위를 가지는 6개의 숫자여야 합니다.";
+	private static final String VALID_BONUS_NUMBER_MESSAGE = "보너스 번호는 1~45의 범위를 가지는 1개의 숫자여야 합니다.";
+	private static final String INPUT_WIN_NUMBER_DIVIDE_STRING = ",";
+	private static final int DIVIDE_UNIT = 1000;
+	private static final int ZERO_NUMBER = 0;
+	private static final int DEFAULT_SIZE = 6;
+	private static final int MAX_VALUE = 45;
+	private static final int MIN_VALUE = 1;
 
 	public int inputUserMoney() {
 		System.out.println(INPUT_USER_MONEY_MESSAGE);
@@ -30,12 +38,12 @@ public class InputView {
 
 	public void validMoney(int money) {
 		if (isNotDividedInto1000Units(money)) {
-			throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + IN_MONEY_ERROR_MESSAGE);
+			throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + VALID_MONEY_ERROR_MESSAGE);
 		}
 	}
 
 	private boolean isNotDividedInto1000Units (int money) {
-		return money % 1000 != 0;
+		return money % DIVIDE_UNIT != ZERO_NUMBER;
 	}
 
 	public String inputWinningNumber() {
@@ -52,32 +60,33 @@ public class InputView {
 
 	public void validBonusNumber(String str) {
 		if (isWrongRangeBonusNumber(str)) {
-			throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45의 범위를 가지는 1개의 숫자여야 합니다.");
+			throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + VALID_BONUS_NUMBER_MESSAGE);
 		}
 	}
 
 	private boolean isWrongRangeBonusNumber(String str) {
 		int bonusNumber = Integer.parseInt(str);
-		return !(1 <= bonusNumber && bonusNumber <= 45);
+		return !(MIN_VALUE <= bonusNumber && bonusNumber <= MAX_VALUE);
 	}
 
 	public void validWinningNumber(String userInput) {
 		if (isWrongSize(userInput) || isDuplicateNumber(userInput)
 			|| isWrongRangeWinningNumber(userInput)) {
-			throw new IllegalArgumentException("[ERROR] 당첨 번호는 1~45의 범위를 가지는 6개의 숫자여야 합니다.");
+			throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + VALID_WIN_NUMBER_MESSAGE);
 		}
 	}
 
 	private boolean isDuplicateNumber(String str) {
-		Set<String> notDuplicateNumbers = Arrays.stream(str.split(",")).collect(Collectors.toSet());
-		return notDuplicateNumbers.size() != 6;
+		Set<String> notDuplicateNumbers = Arrays.stream(str.split(INPUT_WIN_NUMBER_DIVIDE_STRING)).collect(Collectors.toSet());
+		return notDuplicateNumbers.size() != DEFAULT_SIZE;
 	}
 
 	private boolean isWrongRangeWinningNumber(String str) {
-		return Arrays.stream(str.split(",")).mapToInt(Integer::parseInt).noneMatch(num -> 1 <= num && num <= 45);
+		return Arrays.stream(str.split(INPUT_WIN_NUMBER_DIVIDE_STRING))
+			.mapToInt(Integer::parseInt).noneMatch(num -> MIN_VALUE <= num && num <= MAX_VALUE);
 	}
 
 	private boolean isWrongSize(String str) {
-		return str.split(",").length != 6;
+		return str.split(INPUT_WIN_NUMBER_DIVIDE_STRING).length != DEFAULT_SIZE;
 	}
 }
