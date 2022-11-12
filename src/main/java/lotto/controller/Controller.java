@@ -25,6 +25,12 @@ public class Controller {
         shop.getLottoPayed();
     }
 
+    public void getWinningNums() {
+        draw = new Draw(getWinningLotto(),getBonusNum());
+    }
+    
+
+    // 입력 method
     public int getPrice() {
         String price = readLine();
         return Integer.parseInt(price);
