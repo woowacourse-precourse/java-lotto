@@ -3,6 +3,8 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 import view.InputView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LottoMachine {
@@ -14,9 +16,14 @@ public class LottoMachine {
         return lottoCount;
     }
 
-    public List<Integer> createLottoNumber() {
-        List<Integer> numbers =
-                Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return numbers;
+    public List<List<Integer>> createLotto() {
+        List<List<Integer>> totalLotteries = new ArrayList<>();
+        int lottoCount = CalculateLottoCount();
+        for (int i = 0; i < lottoCount; i++) {
+            List<Integer> numbers =
+                    Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            totalLotteries.add(numbers);
+        }
+        return totalLotteries;
     }
 }
