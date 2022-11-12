@@ -10,5 +10,6 @@ public class InputExceptionConstance {
     public static final String NOT_EXCEEDING_45 = "보너스 숫자는 45이하여야 합니다.";
     public static final String NOT_DUPLICATE = "숫자들은 중복되지 않아야 합니다.";
     public static final String NOT_SPLIT_COMMA = "숫자들은 콤마로 구분지어야 합니다.";
+    public static final int BONUS_NUMBER_LENGTH = 1;
     public static final String COMMA = ",";
 }

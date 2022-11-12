@@ -21,5 +21,6 @@ public class Game {
         buyer.buyLottos(amount);
         inputWinLottoNumberMessage();
         List<Integer> winLottoNumber = Presenter.inputWinLottoNumber();
+        int bonusNumber = Presenter.inputBonusNumber();
     }
 }

@@ -19,12 +19,19 @@ public class InputException {
     }
 
     public static List<Integer> validatesWinLottoNumber(String number) {
-        validateLength(number);
+        validateLength(number, NUMBER_LENGTH);
         validateNumber(number);
         validateSplitComma(number);
         validateDuplicate(number);
         validateNotExceed(number);
         return toList(number);
+    }
+
+    public static int validatesBonusNumber(String number) {
+        validateNumber(number);
+        validateLength(number, BONUS_NUMBER_LENGTH);
+        validateNotExceed(number);
+        return Integer.parseInt(number);
     }
 
     private static void validateNumber(String number) {
@@ -45,8 +52,8 @@ public class InputException {
         }
     }
 
-    private static void validateLength(String number) {
-        if(number.length() != NUMBER_LENGTH) {
+    private static void validateLength(String number, int length) {
+        if(number.length() != length) {
             exception(NOT_LENGTH);
         }
     }
