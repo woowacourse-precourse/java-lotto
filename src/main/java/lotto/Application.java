@@ -19,16 +19,21 @@ public class Application {
         int cash = getUserCash(inputUserCash());
         List<Lotto> lottoList = new ArrayList<>();
         issueLottoNumbers(cash / 1000, lottoList);
-        printLottoQuantity(cash / 1000);
-        for (Lotto lotto : lottoList) {
-            printLottoNumbers(lotto.getNumbers());
-        }
+        showLotto(cash, lottoList);
         printWinningNumbersInputBox();
         Lotto winningNumberList = new Lotto(getWinningNumbers(inputWinningNumbers()));
         printBonusNumberInputBox();
         int bonusNumber = getBonusNumber(inputBonusNumber(), winningNumberList.getNumbers());
         printStatsPhrase();
         printGradeStats(lottoList, winningNumberList.getNumbers(), bonusNumber, cash);
+    }
+
+    public static void showLotto(int cash, List<Lotto> lottoList) {
+
+        printLottoQuantity(cash / 1000);
+        for (Lotto lotto : lottoList) {
+            printLottoNumbers(lotto.getNumbers());
+        }
     }
 
     public static void printLottoQuantity(int quantity) {
