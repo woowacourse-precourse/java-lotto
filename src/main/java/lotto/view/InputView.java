@@ -27,7 +27,7 @@ public class InputView {
         String values[] = line.split(",");
         List<String> inputs = new ArrayList<>();
         for(int i = 0; i < values.length; i++){
-            inputs.add(values[i]);
+            inputs.add(values[i].trim());
         }
         return inputs;
     }
