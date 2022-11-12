@@ -1,8 +1,6 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -18,9 +16,12 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        Set<Integer> deleteDuplicatedNumbers = new HashSet<>(numbers);
+        if (numbers.size() != deleteDuplicatedNumbers.size()) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    // TODO: 추가 기능 구현
     public List<Integer> getNumbers() {
         List<Integer> sortedNumbers = new ArrayList<>(numbers);
         sortedNumbers.sort(Comparator.naturalOrder());
