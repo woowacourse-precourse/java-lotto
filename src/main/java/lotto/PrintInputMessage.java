@@ -23,8 +23,7 @@ public class PrintInputMessage {
     private static List<String> getWinningLottoNumber() {
         System.out.println(INPUT_WINNING_LOTTO_NUMBER);
         String inputTmpNum = Console.readLine();
-        List<String> inputWinningLottoNum = Arrays.asList(inputTmpNum.split(","));
-        return inputWinningLottoNum;
+        return Arrays.asList(inputTmpNum.split(","));
     }
 
     private static String getBonusLottoNumber() {
