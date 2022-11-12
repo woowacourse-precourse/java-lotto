@@ -52,7 +52,7 @@ public class Utils {
         return winningNumbers;
     }
 
-    private void validateInputNumbers(String inputNumbers) {
+    public void validateInputNumbers(String inputNumbers) {
         if (!Pattern.matches("[0-9]+", inputNumbers.replaceAll(",",""))) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
