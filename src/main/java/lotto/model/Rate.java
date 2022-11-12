@@ -31,6 +31,7 @@ public class Rate {
         rankPrice.put(Rank.third,1500000);
         rankPrice.put(Rank.fourth,50000);
         rankPrice.put(Rank.fifth,5000);
+        this.rankPrice = rankPrice;
     }
 
     private void setEarningRate(Map<Rank,Integer> winningStats) {
