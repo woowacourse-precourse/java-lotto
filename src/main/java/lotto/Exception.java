@@ -10,10 +10,14 @@ public class Exception {
             return false;
         }
     }
-
-    //천원 단위 나누어 떨어지지 않을시 예외처리
+    
     public boolean divThousandOfMoney(int money){
         if(money%1000==0)return true;
-        else return false;
+        return false;
+    }
+
+    public boolean lessThanThousand(int money){
+        if(money<1000)return true;
+        return false;
     }
 }
