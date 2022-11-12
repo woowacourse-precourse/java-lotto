@@ -24,8 +24,8 @@ public class ManageLotto {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
-    public void numberOfLotto (String budget) {
-        this.budget = Integer.valueOf(budget);
+    public void numberOfLotto (int budget) {
+        this.budget = budget;
         lottoNum = this.budget / LOTTOPRICE;
     }
 }

@@ -1,4 +1,4 @@
-package lotto.controller;
+package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import lotto.model.Lotto;
 import lotto.model.WinningNumber;
+import lotto.controller.UserInput;
 import lotto.controller.LottoCalculator;
 
 import lotto.controller.ManageLotto;
@@ -15,9 +16,7 @@ import lotto.controller.ManageLotto;
 public class Application {
     public static void main(String[] args) {
         ManageLotto manageLotto = new ManageLotto();
-        System.out.println("구입금액을 입력해 주세요.");
-        manageLotto.numberOfLotto(Console.readLine());
-        System.out.println();
+        manageLotto.numberOfLotto(UserInput.writeBudget());
 
         System.out.println(String.format("%d개를 구매했습니다.", manageLotto.lottoNum));
         manageLotto.makeMyLotto(manageLotto.lottoNum);
