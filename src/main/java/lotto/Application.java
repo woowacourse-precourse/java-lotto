@@ -23,6 +23,7 @@ public class Application {
 
         List<Integer> winningNumber = winningNumberInput();
         Integer bonusNumber = bonusNumberInput();
+        checkBonusNumberIncludedWinningNumber(winningNumber, bonusNumber);
     }
     public static int howMuchLottoBuy(){
         System.out.println("구입금액을 입력해 주세요.");
@@ -69,7 +70,6 @@ public class Application {
 
         return winningNumber;
     }
-
     public static Integer bonusNumberInput(){
         System.out.println("\n보너스 번호를 입력해 주세요.");
 
@@ -106,5 +106,9 @@ public class Application {
         int num = Integer.parseInt(number);
         if( num > 45 || num < 1 )
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+    }
+    public static void checkBonusNumberIncludedWinningNumber(List<Integer> winningNumber, Integer bonusNumber){
+        if ( winningNumber.contains(bonusNumber))
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 달라야 합니다.");
     }
 }
