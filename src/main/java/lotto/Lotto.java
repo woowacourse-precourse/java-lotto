@@ -2,6 +2,7 @@ package lotto;
 
 import static util.Constant.*;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -15,6 +16,7 @@ public class Lotto {
         validate(numbers);
         validateConsistOfNumBetween1And45(numbers);
         validateOverlap(numbers);
+        ascendingLotto(numbers);
         this.numbers = numbers;
     }
 
@@ -40,5 +42,10 @@ public class Lotto {
         if (lotto.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException("[ERROR] 로또 번호가 1과 45사이의 수로 구성되어 있지 않습니다.");
         }
+    }
+
+    // 로또 번호를 오름차순으로 정령하는 기능
+    private void ascendingLotto(List<Integer> numbers) {
+        numbers.sort(Comparator.naturalOrder());
     }
 }
