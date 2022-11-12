@@ -16,9 +16,9 @@ public class ConsoleInput {
             if (!Character.isDigit(purchaseAmount.charAt(index))) {
                 throw new IllegalArgumentException(LottoMessage.INTEGER_ERROR_MESSAGE.getMessage());
             }
-            Purchase userPurchase = new Purchase(Integer.parseInt(purchaseAmount));
-            purchaseCount = userPurchase.calculateCount();
         }
+        Purchase userPurchase = new Purchase(Integer.parseInt(purchaseAmount));
+        purchaseCount = userPurchase.calculateCount();
     }
 
     public void luckySixInput() {
