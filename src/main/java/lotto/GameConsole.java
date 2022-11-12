@@ -1,6 +1,9 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class GameConsole {
 
@@ -23,5 +26,12 @@ public class GameConsole {
 
     public void inputBonusNumber(){
         String bonusNumber = Console.readLine();
+    }
+
+    public void outputLottos(int lottoCount, List<Lotto> lottos) {
+        System.out.println(String.format("%d개를 구매했습니다.", lottoCount));
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.getNumbers());
+        }
     }
 }
