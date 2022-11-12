@@ -10,9 +10,11 @@ public class MakeLottoNumber {
     private final int maxNumber = 6;
     private final int rangeStartValue = 1;
     private final int rangeEndValue = 45;
-    List<Integer> lottoNumber = new ArrayList<>();
+
 
     public List<Integer> returnLottoNumber() {
+        List<Integer> lottoNumber = new ArrayList<>();
+
         int initNum = Randoms.pickNumberInRange(rangeStartValue, rangeEndValue);
         lottoNumber.add(initNum);
         for(int i = 1; i<maxNumber; i++){

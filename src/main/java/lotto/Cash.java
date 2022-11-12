@@ -4,6 +4,8 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Cash {
+    int cnt = 0;
+
     public void Input(String inputCash) {
         int money = 0;
         // String inputCash = Console.readLine();
@@ -11,8 +13,7 @@ public class Cash {
             money = Integer.parseInt(inputCash);
             validiate(money);
         }
-
-        System.out.println(money);
+        cnt = money / 1000;
     }
 
     private void validiate(int money) {
