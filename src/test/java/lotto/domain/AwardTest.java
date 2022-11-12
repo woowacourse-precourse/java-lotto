@@ -56,8 +56,7 @@ class AwardTest {
                     Arguments.of(3, Award.THREE),
                     Arguments.of(4, Award.FOUR),
                     Arguments.of(5, Award.FIVE),
-                    Arguments.of(6, Award.FIVE_BONUS),
-                    Arguments.of(7, Award.SIX)
+                    Arguments.of(6, Award.SIX)
             );
         }
     }
