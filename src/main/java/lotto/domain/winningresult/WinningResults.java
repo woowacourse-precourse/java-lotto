@@ -19,4 +19,11 @@ public class WinningResults {
 
         return new WinningResults(winningResultTypes);
     }
+
+    public int count(WinningResultType winningResultType){
+        return (int) winningResultTypes.stream()
+                .filter(o -> o == winningResultType)
+                .count();
+    }
+
 }
