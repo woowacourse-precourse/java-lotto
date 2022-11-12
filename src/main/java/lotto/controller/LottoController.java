@@ -15,6 +15,7 @@ public class LottoController {
 
     public void process() {
         int ticket = getTicketFromUserByConsole();
+        List<Lotto> lottos = getRandomLottoBy(ticket);
     }
 
     private int getTicketFromUserByConsole() {
@@ -22,6 +23,12 @@ public class LottoController {
         int ticket = ticketMachine.getTicket(money);
         OutputView.printNumberOfIssuedLotto(ticket);
         return ticket;
+    }
+
+    private List<Lotto> getRandomLottoBy(int ticket) {
+        List<Lotto> lottos = lottoMaker.getRandomLottos(ticket);
+        OutputView.printLottosInformation(lottos);
+        return lottos;
     }
 
 }
