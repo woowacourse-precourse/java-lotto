@@ -5,7 +5,7 @@ import java.util.List;
 public class Lotto {
     private final List<Integer> numbers;
 
-    public Lotto(String numbers) {
+    public Lotto(List<Integer> numbers) {
         Validator validator = new Validator();
         this.numbers = validator.validDateWinningNumbers(numbers);
     }

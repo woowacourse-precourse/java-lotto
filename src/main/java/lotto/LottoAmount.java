@@ -7,7 +7,7 @@ public class LottoAmount {
     private int purchaseAmount;
     private int lottoTickets;
 
-    public LottoAmount(String input) {
+    public LottoAmount(int input) {
         Validator validator = new Validator();
         this.purchaseAmount = validator.validDatePurchaseAmount(input);
         this.lottoTickets = purchaseAmount/1000;
@@ -17,5 +17,8 @@ public class LottoAmount {
         NumberGenerator numberGenerator = new NumberGenerator();
         System.out.println(lottoTickets + "개를 구매했습니다.");
         return numberGenerator.createRandomNumbers(lottoTickets);
+    }
+    public int getPurchaseAmount() {
+        return purchaseAmount;
     }
 }

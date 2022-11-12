@@ -5,16 +5,11 @@ import java.util.stream.Collectors;
 
 public class Validator {
 
-    private int purchaseAmount;
-    private int bonusNumber;
-    private List<Integer> lottoNumbers;
+    private static List<Integer> winningNumbers;
 
-    public int validDatePurchaseAmount(String input) {
-        validDateType(input);
-        int purchaseAmount = Integer.parseInt(input);
+    public int validDatePurchaseAmount(int purchaseAmount) {
         validDateThousandUnitNumber(purchaseAmount);
         validRangeNumber(purchaseAmount);
-        this.purchaseAmount = purchaseAmount;
         return purchaseAmount;
     }
 
@@ -23,20 +18,15 @@ public class Validator {
         int bonusNumber = Integer.parseInt(input);
         validRangeLottoNumber(bonusNumber);
         nonOverlapWithLottoNumbers(bonusNumber);
-        this.bonusNumber = bonusNumber;
         return bonusNumber;
     }
 
-    public List<Integer> validDateWinningNumbers(String input) {
-        List<String> lottoNumbers = List.of(input.split(","));
+    public List<Integer> validDateWinningNumbers(List<Integer> lottoNumbers) {
         validDateLottoNumberSize(lottoNumbers);
         validDateLottoNumbers(lottoNumbers);
-        List<Integer> winningLottoNumbers = lottoNumbers.stream()
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-        nonOverlap(winningLottoNumbers);
-        this.lottoNumbers = winningLottoNumbers;
-        return winningLottoNumbers;
+        nonOverlap(lottoNumbers);
+        winningNumbers = lottoNumbers;
+        return lottoNumbers;
     }
 
     private void validDateType(String input) {
@@ -58,24 +48,23 @@ public class Validator {
     }
     private void validRangeLottoNumber(Integer number) {
         if (!(1 <= number && number <= 45)) {
-            throw new IllegalArgumentException("[ERROR] 로또 숫자는 1이상 45 이하이 숫자를 입력하셔야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 숫자는 1이상 45 이하의 숫자를 입력하셔야 합니다.");
         }
     }
     private void nonOverlapWithLottoNumbers(Integer number) {
-        if (lottoNumbers.contains(number)) {
+        if (winningNumbers.contains(number)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
         }
     }
 
-    private void validDateLottoNumberSize(List<String> numbers) {
+    private void validDateLottoNumberSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 총 6개의 숫자를 입력해주세요.");
         }
     }
-    private void validDateLottoNumbers(List<String> numbers) {
-        for (String number : numbers) {
-            validDateType(number);
-            validRangeLottoNumber(Integer.parseInt(number));
+    private void validDateLottoNumbers(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            validRangeLottoNumber(number);
         }
     }
 
