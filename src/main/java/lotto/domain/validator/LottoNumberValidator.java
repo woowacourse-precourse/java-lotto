@@ -74,15 +74,18 @@ public class LottoNumberValidator {
 
     public void checkingSingleNumber(final String inputValue) {
         String[] splitValues = inputValue.split("");
+        boolean alreadyFound = false;
         for (String value : splitValues) {
-            if (value.matches("[^0-9]") || value.isBlank() ){
+            if (value.matches("[0-9]") && !alreadyFound) {
+                alreadyFound = true;
+                continue;
+            }
+            if (value.matches("[^0-9]")) {
+                throw new IllegalArgumentException(ErrorMessages.NOT_SINGLE_NUMBER.getMessage());
+            }
+            if (value.matches("[0-9]") && alreadyFound) {
                 throw new IllegalArgumentException(ErrorMessages.NOT_SINGLE_NUMBER.getMessage());
             }
         }
-//        try{
-//            Integer.parseInt(trimValue);
-//        }catch( NumberFormatException e){
-//            throw new IllegalArgumentException();
-//        }
     }
 }
