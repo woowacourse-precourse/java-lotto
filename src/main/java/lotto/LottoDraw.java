@@ -31,17 +31,10 @@ public class LottoDraw {
         List<Integer> numbersWithBonusNumber = new ArrayList<>(winningNumbers);
         numbersWithBonusNumber.add(bonusNumber);
 
-        validateDuplication(numbersWithBonusNumber);
+        Validation.validateDuplication(numbersWithBonusNumber);
         validateNumberRange(numbersWithBonusNumber);
     }
 
-    private void validateDuplication(List<Integer> numbers) {
-        HashSet<Integer> numbersSet = new HashSet<>(numbers);
-
-        if (numbersSet.size() != numbers.size()) {
-            throw new IllegalArgumentException("[ERROR] 로또 당첨 번호는 중복될 수 없습니다.");
-        }
-    }
 
     private void validateNumberRange(List<Integer> numbers) {
         for (Integer number : numbers) {

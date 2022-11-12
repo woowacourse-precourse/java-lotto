@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class Validation {
@@ -10,5 +11,11 @@ public class Validation {
         }
     }
 
-    
+    public static void validateDuplication(List<Integer> numbers) {
+        HashSet<Integer> numbersSet = new HashSet<>(numbers);
+
+        if (numbersSet.size() != numbers.size()) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복될 수 없습니다.");
+        }
+    }
 }
