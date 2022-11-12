@@ -17,7 +17,12 @@ public class WinningStatistics {
         countRanks(rankCollection);
     }
 
+    public int findRankCount(Rank rank) {
+        return rankAndRankCount.get(rank);
+    }
+
     private void initRankAndRankCount() {
+        rankAndRankCount.put(Rank.NOTHING, STATISTICS_INIT_NUM);
         rankAndRankCount.put(Rank.FIFTH, STATISTICS_INIT_NUM);
         rankAndRankCount.put(Rank.FOURTH, STATISTICS_INIT_NUM);
         rankAndRankCount.put(Rank.THIRD, STATISTICS_INIT_NUM);
