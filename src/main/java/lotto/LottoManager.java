@@ -21,7 +21,7 @@ public class LottoManager {
     private static final int[] PROFIT = {5000, 50000, 1500000, 30000000, 2000000000};
 
     public List<Integer> GenerateLottoNumbers() {
-        System.out.println("\n당첨 번호를 입력해 주세요.");
+        System.out.println("당첨 번호를 입력해 주세요.");
         String inputLottoNumbers = Console.readLine();
         List<Integer> lottoNumbers = new ArrayList<>();
         for (String number : inputLottoNumbers.split(",")) {
@@ -31,20 +31,32 @@ public class LottoManager {
     }
 
     public int GenerateBonusNumber() {
-        System.out.println("\n보너스 번호를 입력해 주세요.");
+        System.out.println("보너스 번호를 입력해 주세요.");
         String inputBonusNumbers = Console.readLine();
         return Integer.parseInt(inputBonusNumbers);
     }
 
     public List<Integer> GenerateRandomNumbers() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         return numbers;
     }
 
     public int getMoney() {
         System.out.println("구매금액을 입력해 주세요.");
         String inputMoney = Console.readLine();
-        return Integer.parseInt(inputMoney);
+
+        if (inputMoney.contains("j")) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
+
+        int money = Integer.parseInt(inputMoney);
+
+        if (money%1000 != 0) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
+
+        return money;
+
     }
 
     public void sortLottoNumbers(List<Integer> lotto) {
@@ -54,7 +66,7 @@ public class LottoManager {
     public List<Lotto> publishLottoForPrice(int money) {
         List<Lotto> result = new ArrayList<>();
         int numberOfLotto = money/LOTTO_PRICE;
-        System.out.println("\n" + numberOfLotto + "개를 구매했습니다.");
+        System.out.println(numberOfLotto + "개를 구매했습니다.");
 
         for (int i = 0; i < numberOfLotto; i++) {
             List<Integer> newLotto = GenerateRandomNumbers();
