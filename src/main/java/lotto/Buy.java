@@ -56,19 +56,15 @@ public class Buy {
     }
 
     public static List<Integer> makeWinningNumbers(String numbers) {
-        List<String> stringNumbers = new ArrayList<>();
-        String removeCommaNumber = numbers.replaceAll(",", "");
-        Check.isNumber(removeCommaNumber);
-        
-        for (int i = 0; i < removeCommaNumber.length(); i++) {
-            String number = String.valueOf(removeCommaNumber.charAt(i));
-            Check.NumberDuplicate(stringNumbers, number);
-            stringNumbers.add(number);
-        }
+        List<String> temporaryWinningNumbers = Arrays.asList(numbers.split(","));
+        Check.isNumber(temporaryWinningNumbers);
+        Check.rightRange(temporaryWinningNumbers, START_NUMBER, FINAL_NUMBER);
+        Check.numberDuplicate(temporaryWinningNumbers);
+        Check.numberCount(temporaryWinningNumbers);
 
-        Check.winningNumberSize(stringNumbers);
-
-        List<Integer> winningNumbers = transform(stringNumbers, Integer::parseInt);
+        List<Integer> winningNumbers = temporaryWinningNumbers.stream()
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList());
 
         return winningNumbers;
     }
