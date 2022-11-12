@@ -29,6 +29,7 @@ public class Lotto {
         return matchCount;
     }
 
+    //로또 등수 정하기
     public void setRank(List<Integer> winningLotto, int bonusNumber){
         int matchCount = calculateMatchCount(winningLotto);
         if(matchCount ==5 && numbers.contains(bonusNumber)){

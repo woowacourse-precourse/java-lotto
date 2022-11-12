@@ -58,4 +58,13 @@ public class Controller {
         return Math.round(totalPrize/money*1000)/10.0;
     }
 
+    //당첨 내역 출력하기
+    public void printResult(int money, Map<String, Integer> resultMap) {
+        for(int i = ranks.size()-1 ; i > 0 ; i--) {
+            String rank = ranks.get(i);
+            int count = resultMap.getOrDefault(rank, 0);
+            System.out.println(Rank.valueOf(rank).toString()+count+"개");
+        }
+    }
+
 }
