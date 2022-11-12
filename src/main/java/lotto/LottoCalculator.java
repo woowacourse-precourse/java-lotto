@@ -9,7 +9,7 @@ public class LottoCalculator {
         List<Integer> lottoNum = lotto.getNumbers();
         List<Integer> winningNum = winningLotto.getNumbers();
         for (int i = 0; i < 6; i++) {
-            if (lottoNum.get(i) == winningNum.get(i)) {
+            if (lottoNum.contains(winningNum.get(i))) {
                 matchCount++;
             }
         }
