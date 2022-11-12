@@ -8,6 +8,9 @@ public class ConsoleUserOutput {
         System.out.println();
     }
 
+    public static void askHowMuchWouldYouPayForLottos(){
+        System.out.println(NormalStatements.ASK_MONEY_TO_BUY_LOTTO.done());
+    }
 
 
 }
