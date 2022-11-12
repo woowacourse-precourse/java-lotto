@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -50,6 +52,33 @@ class ApplicationTest extends NsTest {
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @DisplayName("구입금액이 숫자가 아니면 예외가 발생한다.")
+    @Test
+    void inputNotNumber() {
+        assertSimpleTest(() -> {
+            runException("abcd");
+            assertThat(output()).contains("입력값이 숫자가 아닙니다.");
+        });
+    }
+
+    @DisplayName("구입금액이 범위를 벗어나면 예외가 발생한다.")
+    @Test
+    void inputOutOfScope() {
+        assertSimpleTest(() -> {
+            runException("0");
+            assertThat(output()).contains("입력값이 범위를 벗어났습니다.");
+        });
+    }
+
+    @DisplayName("구입금액이 1,000원으로 나누어 떨어지지 않으면 예외가 발생한다.")
+    @Test
+    void inputNotMultipleOf1000() {
+        assertSimpleTest(() -> {
+            runException("3003");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
