@@ -30,7 +30,9 @@ public class LottoBuyer {
     }
 
     public void checkRate() {
-        lottoPrizeRecordingManager.getPrizeRate(lottoPurchaseInfo.getPurchaseMoney());
+        double prizeRate = lottoPrizeRecordingManager.getPrizeRate(lottoPurchaseInfo.getPurchaseMoney());
+
+        printController.print(prizeRate);
     }
 
 }
