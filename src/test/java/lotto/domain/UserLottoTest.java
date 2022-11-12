@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 
 public class UserLottoTest {
 
-    @DisplayName("사용자 입력 예외 처리 테스트")
+    @DisplayName("당첨 번호 예외 처리 테스트")
     @Nested
-    class Exception {
+    class LottoException {
 
         @DisplayName("당첨 번호가 쉼표로 구분되어 있지 않은 경우 예외를 터트린다.")
         @Test
@@ -65,6 +65,45 @@ public class UserLottoTest {
             Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(InputException.INPUT_HAS_NOT_DUPLICATE_DIGIT.message());
+        }
+    }
+
+    @DisplayName("보너스 번호 예외 처리 테스트")
+    @Nested
+    class BonusLottoException {
+
+        @DisplayName("보너스 번호가 숫자가 아니면 예외를 터트린다.")
+        @Test
+        void bonusLottoNotDigitException() {
+            String winNumbers = "1,2,3,4,5,6";
+            String bonusNumber = "$";
+
+            Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(InputException.INPUT_INVALID_BONUS_LOTTO.message());
+        }
+
+        @DisplayName("보너스 번호가 1 - 45 사이가 아니면 예외를 터트린다.")
+        @Test
+        void bonusLottoInvalidRangeException() {
+            String winNumbers = "1,2,3,4,5,6";
+            String bonusNumber = "67";
+
+            Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(InputException.INPUT_INVALID_BONUS_LOTTO.message());
+
+        }
+
+        @DisplayName("보너스 번호가 1개가 아니면 예외를 터트린다.")
+        @Test
+        void bonusLottoInvalidCountException() {
+            String winNumbers = "1,2,3,4,5,6";
+            String bonusNumber = "1,3";
+
+            Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(InputException.INPUT_INVALID_BONUS_LOTTO.message());
         }
     }
 }
