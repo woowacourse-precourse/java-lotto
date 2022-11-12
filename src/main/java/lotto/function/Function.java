@@ -39,14 +39,12 @@ public class Function {
     }
 
     private static Boolean isInteger(String[] s) {
-        boolean result = true;
         for (String c : s) {
             if (!((c != null) && (c.matches("[0-9.]+")))) {
-                result = false;
-                break;
+                return false;
             }
         }
-        return result;
+        return true;
     }
 
     public static int validPrice(String price) {
