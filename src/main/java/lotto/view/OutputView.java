@@ -22,4 +22,8 @@ public class OutputView {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + lottoResult.get(1));
         System.out.println("6개 일치 (2,000,000,000원) - " + lottoResult.get(0));
     }
+
+    public void printLottoEarningRate(String earningRate) {
+        System.out.println("총 수익률은 "+ earningRate +"%입니다.");
+    }
 }
