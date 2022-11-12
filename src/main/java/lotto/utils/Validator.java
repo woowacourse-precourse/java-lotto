@@ -7,16 +7,16 @@ public class Validator {
     private static final String INPUT_NUMBER_REGEX = "^[0-9]*$";
     public void isValidMoney(String input) {
         if(!isNumber(input)) {
-            throw new IllegalArgumentException(String.valueOf(ErrorMessage.MONEY_IS_NOT_NUMBER));
+            throw new IllegalArgumentException(ErrorMessage.MONEY_IS_NOT_NUMBER.getMessage());
         }
         if(isZero(input)) {
-            throw new IllegalArgumentException(String.valueOf(ErrorMessage.MONEY_IS_ZERO));
-        }
-        if(!is1000Units(Integer.parseInt(input))) {
-            throw new IllegalArgumentException(String.valueOf(ErrorMessage.MONEY_IS_NOT_1000_UNIT));
+            throw new IllegalArgumentException(ErrorMessage.MONEY_IS_ZERO.getMessage());
         }
         if(isEnteredSpace(input)){
-            throw new IllegalArgumentException(String.valueOf(ErrorMessage.MONEY_IS_NOT_ENTERED));
+            throw new IllegalArgumentException(ErrorMessage.MONEY_IS_NOT_ENTERED.getMessage());
+        }
+        if(!is1000Units(Integer.parseInt(input))) {
+            throw new IllegalArgumentException(ErrorMessage.MONEY_IS_NOT_1000_UNIT.getMessage());
         }
     }
 
@@ -29,11 +29,11 @@ public class Validator {
         return input.equals("0");
     }
 
-    private boolean is1000Units(int money) {
-        return money % 1000 == 0;
-    }
-
     private boolean isEnteredSpace(String input) {
         return input.equals("");
+    }
+
+    private boolean is1000Units(int money) {
+        return money % 1000 == 0;
     }
 }
