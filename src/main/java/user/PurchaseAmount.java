@@ -1,5 +1,7 @@
 package user;
 
+import constants.LottoConstants;
+
 public class PurchaseAmount {
 
     private final int purchaseAmount;
@@ -8,7 +10,7 @@ public class PurchaseAmount {
         this.purchaseAmount = purchaseAmount;
     }
 
-    public int getPurchaseAmount() {
-        return purchaseAmount;
+    public int getPurchaseCount() {
+        return purchaseAmount / LottoConstants.MONEY_UNIT;
     }
 }
