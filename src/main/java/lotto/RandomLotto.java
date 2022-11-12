@@ -17,4 +17,21 @@ public class RandomLotto {
             throw new IllegalArgumentException();
         }
     }
+
+    private Lotto createRandomLotto() {
+        List<Integer> numbers = randomLottoGenerator.makeRandomLotto();
+        return new Lotto(numbers);
+    }
+
+    public List<Lotto> makeRandomLottos(int money) {
+        validate(money);
+
+        int buyLottoNumber = money / 1000;
+        System.out.println(buyLottoNumber + "개를 구매했습니다.");
+
+        // for 문 -> stream
+        return IntStream.rangeClosed(1, buyLottoNumber)
+                .mapToObj(c -> createRandomLotto())
+                .collect(Collectors.toList());
+    }
 }
