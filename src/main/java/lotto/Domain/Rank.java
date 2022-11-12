@@ -1,24 +1,43 @@
 package lotto.Domain;
 
+import lotto.type.RankType;
+
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 
 public class Rank {
     private int earningRate;
-    private String rank;
+    private Map<RankType, Integer> rank = new EnumMap<RankType, Integer>(RankType.class);
 
-    public int setEarningRate() {
-        return 0;
+    public void setEarningRate(int money) {
+        int total = 0;
+        for(RankType rankType: rank.keySet()) {
+            if(rank.get(rankType) > 0) {
+                total += rankType.getPrizeMoney();
+            }
+        }
+        this.earningRate = total / money * 100;
+    }
+    public int getEarningRate() {
+        return this.earningRate;
     }
 
-    public int getRank() {
-        return 0;
+    public Map<RankType, Integer> getRank() {
+        return this.rank;
     }
 
-    public void setRank() {
-        return;
+    public void setRank(RankType rankType) {
+        this.rank.put(rankType, rank.getOrDefault(rankType, 0) + 1);
     }
 
     public int countWinningNumber(List<Integer> lotto, List<Integer> playerLotto) {
-        return 0;
+        return (int) lotto.stream()
+                .filter(playerLotto::contains)
+                .count();
+    }
+
+    public boolean isBonusBallContain(List<Integer> lotto, int bonusBall) {
+        return lotto.contains(bonusBall);
     }
 }
