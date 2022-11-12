@@ -11,7 +11,7 @@ public class ConsoleOutput {
 	private static final String EXIT_MESSAGE = "프로그램을 종료합니다";
 
 	public static final String REQUEST_TOTAL_AMOUNT = "구입금액을 입력해 주세요.";
-	public static final String REQUEST_LOTTO_NUMBER = "\n당첨 번호를 입력해 주세요.";
+	public static final String REQUEST_WINNING_NUMBER = "\n당첨 번호를 입력해 주세요.";
 	public static final String REQUEST_BONUS_NUMBER = "\n보너스 번호를 입력해 주세요.";
 
 	public static final String EMPTY = "입력하지 않으셨습니다.";
@@ -67,9 +67,8 @@ public class ConsoleOutput {
 		System.out.printf(RESULT_CONTENT_BONUS, Rule.SECOND_PRIZE.getMatches(),Rule.SECOND_PRIZE.getReward(), specialMatch);
 		System.out.printf(RESULT_CONTENT, Rule.FIRST_PRIZE.getMatches(),Rule.FIRST_PRIZE.getReward(), counting[3]);
 	}
+
 	public static void PrintProfitMessage(String profit) {
 		System.out.printf(PROFIT_MESSAGE,profit);
 	}
-
-
 }
