@@ -111,7 +111,7 @@
 
 
 - List<Integer> changeWinningNumbersStringToList(String)
-  - 당첨 번호로 입력된 문자열을 Integer 값을 담은 리스트로 변환해주는 함름
+  - 당첨 번호로 입력된 문자열을 Integer 값을 담은 리스트로 변환해주는 함수
 
 
 - Integer getBonusNumber(String, List<Integer>)
