@@ -7,11 +7,14 @@ public class Buyer {
     private int money;
     private List<Integer> numbers;
     private int bonusNumber;
-
-    public Buyer(int money, List<Integer> numbers, int bonusNumber) {
-        Validator validator = new Validator();
+    private Validator validator = new Validator();
+    
+    public void payMoney(int money) {
         validator.validateUnit(money);
         this.money = money;
+    }
+
+    public void buyLottor(List<Integer> numbers, int bonusNumber) {
         validator.validateNumbers(numbers);
         this.numbers = numbers;
         validator.validateBonusNumber(numbers, bonusNumber);
