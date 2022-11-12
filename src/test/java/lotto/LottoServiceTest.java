@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import lotto.domain.UserLottoInfo;
+import lotto.ui.LottoConsole;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -16,11 +17,13 @@ class LottoServiceTest {
 
     private LottoService lottoService;
     private UserLottoInfo userLottoInfo;
+    private LottoConsole lottoConsole;
 
     @BeforeEach
     void setUp() {
         userLottoInfo = new UserLottoInfo();
-        lottoService = new LottoService(userLottoInfo);
+        lottoConsole = new LottoConsole();
+        lottoService = new LottoService(userLottoInfo, lottoConsole);
     }
 
     @Nested

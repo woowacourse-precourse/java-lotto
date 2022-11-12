@@ -17,5 +17,6 @@ public class LottoController {
         lottoService.storeLottoPrice(lottoPrice);
 
         lottoService.publishLottos();
+        lottoService.showLottoResult();
     }
 }

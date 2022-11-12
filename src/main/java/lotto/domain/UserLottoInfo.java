@@ -26,7 +26,15 @@ public class UserLottoInfo {
         userLotto.add(singleLotto);
     }
 
+    public Lotto getSingleLotto(int index){
+        return userLotto.get(index);
+    }
+
     public List<Lotto> getUserLotto() {
         return userLotto;
+    }
+
+    public int getUserLottoSize(){
+        return userLotto.size();
     }
 }
