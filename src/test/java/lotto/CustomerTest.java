@@ -83,16 +83,4 @@ public class CustomerTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("당첨된 등수에 맞는 당첨금을 출력한다.")
-    @Test
-    void case8_calculate_winnings() {
-        assertRandomUniqueNumbersInRangeTest(() -> {
-            Customer input = new Customer("2000");
-            input.createWinnings("1,2,3,4,5,7", "6");
-            long result = 30_050_000L;
-
-            assertThat(input.toResultString())
-                    .isEqualTo(String.valueOf(result));
-        }, List.of(1, 2, 3, 4, 5, 6), List.of(3, 4, 5, 6, 7, 8));
-    }
 }
