@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Money;
 import lotto.domain.RandomLotto;
 
-import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoService {
@@ -15,6 +15,7 @@ public class LottoService {
 
         for (int i = 0; i < numberOfLottoGame; i++) {
             List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(randomNumbers);
             randomLotto.getRandomLottoNumbersList().add(randomNumbers);
         }
         return randomLotto;

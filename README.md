@@ -1,6 +1,8 @@
 #
 - 금액 입력값 validation
 - Money getNumberOfLottoGame 메서드 검증
+- showNumberOfLottoPurchase, showAllRandomLottoNumbers 합칠 필요 있음
+- 
 
 # 로또 게임 기능 요구 사항 명세
 

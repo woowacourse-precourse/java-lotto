@@ -2,7 +2,11 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static java.lang.Integer.parseInt;
+import static java.util.Arrays.*;
 
 public class InputView {
 
@@ -20,12 +24,18 @@ public class InputView {
         return inputAmount;
     }
 
-    private String inputWinningNum() {
+    public List<Integer> getWinningNums() {
         System.out.println(INPUT_WINNING_NUM);
-        return Console.readLine();
+        String read = Console.readLine();
+        String[] strings = read.split(",");
+        List<Integer> list = new ArrayList<>();
+        for (String string : strings) {
+            list.add(Integer.parseInt(string));
+        }
+        return list;
     }
 
-    private int inputBonusNum() {
+    public int getBonusNum() {
         System.out.println(INPUT_BONUS_NUM);
         return parseInt(Console.readLine());
     }

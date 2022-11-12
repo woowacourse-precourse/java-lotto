@@ -6,6 +6,8 @@ import lotto.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.ResultView;
 
+import java.util.List;
+
 public class LottoController {
 
     private final LottoService lottoService;
@@ -21,5 +23,10 @@ public class LottoController {
     public void gameStart() {
         int inputAmount = inputView.getInputAmount();
         RandomLotto randomLotto = lottoService.makeRandomLottoNumbers(new Money(inputAmount));
+        resultView.showNumberOfLottoPurchase(randomLotto);
+        resultView.showAllRandomLottoNumbers(randomLotto);
+
+        List<Integer> winningNums = inputView.getWinningNums();
+        inputView.getBonusNum();
     }
 }
