@@ -15,12 +15,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class LottoMachine {
 
     public static void buyLotto(List<Lotto> lottos, BigInteger money){
-        while(money.equals(BigInteger.ZERO) != true){
+        BigInteger tmpMoney = new BigInteger(money.toString());
+        while(tmpMoney.equals(BigInteger.ZERO) != true){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             if (Util.isDuplicate(numbers) == false){
                 Collections.sort(numbers);
                 lottos.add(new Lotto(numbers));
-                money = money.subtract(BigInteger.valueOf(1000));
+                tmpMoney = tmpMoney.subtract(BigInteger.valueOf(1000));
             }
         }
         System.out.println(lottos.size() + "개를 구매했습니다.");
