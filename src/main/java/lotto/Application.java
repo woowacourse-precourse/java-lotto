@@ -13,7 +13,7 @@ public class Application {
 
             LottoGenerator lottoList = new LottoGenerator(money.getLottoCount());
             getLottosMessage();
-
+            Lotto lotto = new Lotto(Arrays.asList(Console.readLine().split(",")).stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList()));
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] "+e.getMessage());
         }
