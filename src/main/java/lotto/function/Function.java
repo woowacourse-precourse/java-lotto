@@ -31,4 +31,19 @@ public class Function {
         }
         return trial;
     }
+    public static int validPrice(String price){
+        try{
+            int prices = Integer.parseInt(price);
+            if (prices % 1000 != 0){
+                throw new IllegalArgumentException("로또 구매 금액은 1,000원 단위여야 합니다.");
+            }
+            return prices;
+        } catch (NumberFormatException e){
+            String message = "로또 구매 금액은 1,000원 단위의 정수를 입력해 주세요.";
+            Display.displayError(message);
+        } catch (IllegalArgumentException e){
+            Display.displayError(e.getMessage());
+        }
+        return 0;
+    }
 }
