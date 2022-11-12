@@ -54,7 +54,7 @@ public class LottoStatistics {
         return findRanking(count,oneLottoTicket);
     }
 
-    private List<Integer> countContain(int number, List<Integer> winningSixNumbers, int winningBonusNumber, List<Integer> count){
+    protected List<Integer> countContain(int number, List<Integer> winningSixNumbers, int winningBonusNumber, List<Integer> count){
         if (winningSixNumbers.contains(number)) count.set(0,count.get(0)+1);
         else if (number == winningBonusNumber) count.set(1,1);
         return count;
