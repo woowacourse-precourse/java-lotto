@@ -116,6 +116,13 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 일치하는_숫자_개수_테스트() {
+        Lotto lotto=new Lotto(List.of(3,4,5,6,7,8));
+        int result=Application.countSameNum(List.of(1,2,3,4,5,6),lotto,10);
+        assertThat(result).isEqualTo(4);
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
