@@ -6,36 +6,44 @@ import java.util.Map;
 
 public class Statistics {
     private static final int FIVE_MATCHING_LOTTO_NUMBERS = 5;
+    private static final int COUNT_WINNING_LOTTO_BEFORE_RESULT = 0;
+    private static final int COUNTING_WINNING_LOTTO = 1;
 
-    private Map<Rank, Integer> lottoResult;
+    private Map<Rank, Integer> lottosResult;
 
-    private Statistics(List<Lotto> lottos, WinningLotto winningLotto) {
-        lottoResult = new HashMap<>();
+    public Statistics(List<Lotto> lottos, WinningLotto winningLotto) {
+        lottosResult = new HashMap<>();
         initLottoResult();
+        createStatistics(lottos, winningLotto);
     }
 
     private void initLottoResult() {
-        for(Rank rank : Rank.values()){
-            lottoResult.put(rank, 0);
+        for (Rank rank : Rank.values()) {
+            lottosResult.put(rank, COUNT_WINNING_LOTTO_BEFORE_RESULT);
         }
     }
 
-    private void getLottosResult(List<Lotto> lottos, WinningLotto winningLotto) {
-        for(Lotto lotto : lottos){
-
+    private void createStatistics(List<Lotto> lottos, WinningLotto winningLotto) {
+        for (Lotto lotto : lottos) {
+            Rank lottoRank = getLottoResult(lotto, winningLotto);
+            updateLottosResult(lottoRank);
         }
     }
 
-    private Rank getLottoResult(Lotto lotto, WinningLotto winningLotto){
+    private void updateLottosResult(Rank lottoRank) {
+        lottosResult.put(lottoRank, lottosResult.get(lottoRank) + COUNTING_WINNING_LOTTO);
+    }
+
+    private Rank getLottoResult(Lotto lotto, WinningLotto winningLotto) {
         int matchingCnt = compareNumbers(lotto, winningLotto);
         boolean bonusBall = false;
-        if(matchingCnt == FIVE_MATCHING_LOTTO_NUMBERS){
+        if (matchingCnt == FIVE_MATCHING_LOTTO_NUMBERS) {
             bonusBall = compareBonusNumber(lotto, winningLotto.getBonusBall());
         }
         return Rank.getRank(matchingCnt, bonusBall);
     }
 
-    private boolean compareBonusNumber(Lotto lotto, int bonusBall){
+    private boolean compareBonusNumber(Lotto lotto, int bonusBall) {
         return lotto.getNumbers().contains(bonusBall);
     }
 
@@ -43,5 +51,9 @@ public class Statistics {
         return (int) lotto.getNumbers().stream()
                 .filter(winningLotto.getNumbers()::contains)
                 .count();
+    }
+
+    public Map<Rank, Integer> getLottosResult() {
+        return lottosResult;
     }
 }
