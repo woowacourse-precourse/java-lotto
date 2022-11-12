@@ -112,8 +112,7 @@ public class Application {
     private static String calculateEarningRate(int amount) {
         int price = amount * 1000;
         int prize = calculatePrize();
-        float rate = prize / price * 100;
-        return String.format("%.1f", rate);
+        return String.format("%.1f", (float) prize / price * 100);
     }
 
     private static int calculatePrize() {
