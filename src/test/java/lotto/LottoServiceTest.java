@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import lotto.service.LottoService;
 import lotto.system.SystemValid;
+import lotto.type.ErrorType;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +28,7 @@ public class LottoServiceTest {
     @DisplayName("사용자 입력 금액이 숫자가 아니라면 예외가 발생한다.")
     @Test
     void createdSystemValidByValidateNumber(){
-        assertThatThrownBy(() -> SystemValid.validateForNumber("1000asw"))
+        assertThatThrownBy(() -> SystemValid.validateForNumber("1000asw", ErrorType.MONEY))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

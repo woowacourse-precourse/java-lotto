@@ -4,9 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.regex.Pattern;
 import lotto.Buyer;
 import lotto.Lotto;
+import lotto.Winning;
 import lotto.system.SystemValue;
 
 public class LottoService {
@@ -42,5 +42,25 @@ public class LottoService {
         Lotto newLotto = new Lotto(randomNumbers);
         newLotto.printNumbers();
         return newLotto;
+    }
+
+    public void pick(List<Integer> winningNumbers, int bonusNumber) {
+        Winning winning = new Winning(winningNumbers, bonusNumber);
+        for (int number : winning.getNumbers()) {
+            System.out.println(number);
+        }
+        System.out.println();
+        System.out.println(winning.getBonusNumber());
+    }
+
+    public List<Integer> winningInputParseToList(String input) {
+        List<Integer> winningNumbers = new ArrayList<>();
+        String[] splitInput = input.split(",");
+
+        for (String number : splitInput) {
+            winningNumbers.add(Integer.parseInt(number));
+        }
+
+        return winningNumbers;
     }
 }
