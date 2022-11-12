@@ -1,5 +1,8 @@
 package lotto;
 
+import constant.LottoRule;
+
+import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -11,8 +14,12 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        if (numbers.size() != LottoRule.SIZE.getValue()) {
+            throw new IllegalArgumentException("값의 길이가 " + LottoRule.SIZE + "를 넘습니다.");
+        }
+
+        if (new HashSet<>(numbers).size() != LottoRule.SIZE.getValue()) {
+            throw new IllegalArgumentException("중복된 값이 있습니다.");
         }
     }
 
