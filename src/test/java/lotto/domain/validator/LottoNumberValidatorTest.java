@@ -106,4 +106,29 @@ class LottoNumberValidatorTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () ->validator.checkingOverlap(inputValue));
         assertThat(exception.getMessage()).isEqualTo(ErrorMessages.HAS_OVERLAP_NUMBER.getMessage()) ;
     }
+
+    @Order(6)
+    @DisplayName("보너스 번호 입력 검증")
+    @Test
+    void notSingleNumber(){
+        String inputValue1="4   23";
+        String inputValue2="2, 5, 6";
+        String inputValue3="a";
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> validator.checkingQuantity(inputValue1))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> validator.checkingQuantity(inputValue2))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> validator.checkingQuantity(inputValue3))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+
+        Exception exceptionNotSingleNum = assertThrows(IllegalArgumentException.class, () ->validator.checkingSingleNumber(inputValue1));
+        assertThat(exceptionNotSingleNum.getMessage()).isEqualTo(ErrorMessages.NOT_SINGLE_NUMBER.getMessage());
+    }
 }
