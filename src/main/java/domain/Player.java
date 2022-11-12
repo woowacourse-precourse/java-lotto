@@ -35,6 +35,11 @@ public class Player {
         this.lottoCount--;
     }
 
+    public void initializeLottoCount(){
+        lottoCount = 0;
+        isBonusNumberIncludedWinningLottoNumber = false;
+    }
+
     public int getLottoPrice() {
         return lottoPrice;
     }
