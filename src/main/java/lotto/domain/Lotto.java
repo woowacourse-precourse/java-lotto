@@ -2,8 +2,10 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class Lotto {
+
     private final List<Integer> numbers;
 
     private Lotto(List<Integer> numbers) {
@@ -17,5 +19,12 @@ public final class Lotto {
 
     public List<Integer> getNumbers() {
         return new ArrayList<>(numbers);
+    }
+
+    @Override
+    public String toString() {
+        return numbers.stream()
+                .sorted()
+                .collect(Collectors.toList()).toString();
     }
 }

@@ -29,4 +29,5 @@ public final class Lotties {
     public int getLottiesSize() {
         return lotties.size();
     }
+
 }
