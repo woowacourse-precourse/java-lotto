@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -35,33 +36,27 @@ public class Rank {
         }
     }
 
-    public static Map<Integer, Integer> initializeResult() {
-        Map<Integer, Integer> result = new TreeMap<>();
-        for (int key = 3; key < 8; key++) {
-            result.put(key, 0);
-        }
-        return result;
-    }
-
-    public static Map<Integer, Integer> getResult (Lotto winningNumbers, List<Lotto> lottoList, int bonusNumber) {
-        Map<Integer, Integer> result = initializeResult();
+    public static List<Integer> findMatchRank(Lotto winningNumbers, List<Lotto> lottoList, int bonusNumber) {
+        List<Integer> matchRank = new ArrayList<>();
         for (Lotto lotto : lottoList) {
-            int numberKey = Lotto.compareNumbers(winningNumbers, lotto);
-            result.putAll(putNumberKey(numberKey, lotto, bonusNumber));
+            int rankKey = lotto.compareNumbers(winningNumbers, lotto);
+            if (rankKey == 5 && lotto.hasBonusNumber(bonusNumber, lotto)) {
+                matchRank.add(7);
+                continue;
+            }
+            matchRank.add(rankKey);
         }
-        return result;
+        return matchRank;
     }
 
-    public static Map<Integer, Integer> putNumberKey (int key, Lotto lotto, int bonusNumber) {
-        Map<Integer, Integer> result = new TreeMap<>();
-        if (key > 2) {
-            result.put(key, result.getOrDefault(key, 0) + 1);
+    public static Map<Integer, Integer> getRankResult(List<Integer> matchRank) {
+        Map<Integer, Integer> rankResult = new TreeMap<>();
+        for (Integer rank : matchRank) {
+            if (rank > 2) {
+                rankResult.put(rank, rankResult.getOrDefault(rank, 0) + 1);
+            }
         }
-        if (key == 5 && Lotto.hasBonusNumber(bonusNumber, lotto)) {
-            result.put(7, result.getOrDefault(7, 0) + 1);
-            result.put(key, result.getOrDefault(key, 0) - 1);
-        }
-        return result;
+        return rankResult;
     }
 
 }
