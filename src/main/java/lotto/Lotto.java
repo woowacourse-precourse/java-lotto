@@ -24,8 +24,8 @@ public class Lotto {
     }
 
     private void validateNumbersAreInRange(List<Integer> numbers) {
-        for (int i = 0; i < numbers.size(); i++) {
-            if (numbers.get(i) < 1 || numbers.get(i) > 45) {
+        for (Integer number : numbers) {
+            if (number < 1 || number > 45) {
                 error = ErrorMessage.RANGE;
                 throw new IllegalArgumentException();
             }
