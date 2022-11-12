@@ -58,60 +58,60 @@ BUILD SUCCESSFUL in 0s
 ### 🔥 구현 기능 목록
 
 - [x] **CLASS 1.** `Lotto`
-  - **Class Variables:**
-    - [x] `private final List<Integer> numbers`
-  - **Class Methods:**
-    - [x] `public Lotto(List<Integer> numbers)`
-    - [x] `private void validate(List<Integer> numbers)`
-    - [x] `private void validateSizeOfNumbers(List<Integer> numbers)`
-    - [x] `private void validateDuplicateNumbers(List<Integer> numbers)`
-    - [x] `private void validateRangeOfNumbers(List<Integer> numbers)`
-- [ ] **CLASS 2.** `WinLotto extends Lotto`
-  - **Class Variables:**
-    - [x] `private final int bonusNumber`
-  - **Class Methods:**
-    - [ ] `public WinLotto(List<Inteber> winNumbers, int bonusNumber)`
-    - [ ] `private void validateBonusNumber(List<Integer> winNumbers, int bonusNumber)`
+    - **Class Variables:**
+        - [x] `private final List<Integer> numbers`
+    - **Class Methods:**
+        - [x] `public Lotto(List<Integer> numbers)`
+        - [x] `private void validate(List<Integer> numbers)`
+        - [x] `private void validateSizeOfNumbers(List<Integer> numbers)`
+        - [x] `private void validateDuplicateNumbers(List<Integer> numbers)`
+        - [x] `private void validateRangeOfNumbers(List<Integer> numbers)`
+- [x] **CLASS 2.** `WinLotto extends Lotto`
+    - **Class Variables:**
+        - [x] `private final int bonusNumber`
+    - **Class Methods:**
+        - [x] `public WinLotto(List<Inteber> winNumbers, int bonusNumber)`
+        - [x] `private void validateBonusNumber(List<Integer> winNumbers, int bonusNumber)`
 - [ ] **CLASS 3.** `LottoDraw`
-  - **Class Methods:**
-    - [ ] `public static LottoRank getLottoRank(Lotto, WinLotto)`
-    - [ ] `private static int getWinNumber(Lotto, WinLotto)`
-    - [ ] `private static boolean existBonusNumber(Lotto, WinLotto)`
+    - **Class Methods:**
+        - [ ] `public static LottoRank getLottoRank(Lotto, WinLotto)`
+        - [ ] `private static int getWinNumber(Lotto, WinLotto)`
+        - [ ] `private static boolean existBonusNumber(Lotto, WinLotto)`
 - [ ] **CLASS 4.** `enum LottoRank`
-  - **Class Variables:**
-    - [ ] `FIRST(2000000000)`
-    - [ ] `SECOND(30000000)`
-    - [ ] `THIRD(1500000)`
-    - [ ] `FOURTH(50000)`
-    - [ ] `FIFTH(5000)`
-    - [ ] `LOSE(0)`
-    - [ ] `private final int winPrice`
-  - **Class Methods**
-    - [ ] `public LottoRank(int winPrice)`
-    - [ ] `public int getWinPrice()`
+    - **Class Variables:**
+        - [ ] `FIRST(2000000000)`
+        - [ ] `SECOND(30000000)`
+        - [ ] `THIRD(1500000)`
+        - [ ] `FOURTH(50000)`
+        - [ ] `FIFTH(5000)`
+        - [ ] `LOSE(0)`
+        - [ ] `private final int winPrice`
+    - **Class Methods**
+        - [ ] `public LottoRank(int winPrice)`
+        - [ ] `public int getWinPrice()`
 - [ ] **CLASS 5.** `User`
-  - **Class Variables:**
-    - [ ] `private final int purchaseMoney`
-    - [ ] `private final int incomeMoney`
-    - [ ] `private final List<Lotto> lottoList`
-    - [ ] `private HashMap<LottoRank, Integer> winResult`
-  - **Class Methods:**
-    - [ ] `public User(purchaseMoney, List<Lotto> lottoList, WinLotto winLotto)`
-    - [ ] `private void validatePurchaseMoney(int purchaseMoney)`
-    - [ ] `private int getIncomeMoney(List<Lotto> lottoList, WinLotto winLotto)`
-    - [ ] `public float getIncomePercent()`
-    - [ ] `public HashMap<LottoRank, Integer> getWinResult()`
+    - **Class Variables:**
+        - [ ] `private final int purchaseMoney`
+        - [ ] `private final int incomeMoney`
+        - [ ] `private final List<Lotto> lottoList`
+        - [ ] `private HashMap<LottoRank, Integer> winResult`
+    - **Class Methods:**
+        - [ ] `public User(purchaseMoney, List<Lotto> lottoList, WinLotto winLotto)`
+        - [ ] `private void validatePurchaseMoney(int purchaseMoney)`
+        - [ ] `private int getIncomeMoney(List<Lotto> lottoList, WinLotto winLotto)`
+        - [ ] `public float getIncomePercent()`
+        - [ ] `public HashMap<LottoRank, Integer> getWinResult()`
 - [ ] **CLASS 6.** `UserInterface`
-  - [ ] **Class Methods:**
-    - [ ] `public static void printPurchaseMoneyMessage()`
-    - [ ] `public static int inputPurchaseMoney`
-    - [ ] `public static void printWinNumbersMessage()`
-    - [ ] `public static List<Integer> inputWinNumbers()`
-    - [ ] `public static void printBonusNumberMessage()`
-    - [ ] `public static int inputBonusNumber()`
-    - [ ] `public static void printLottoList(List<Lotto lottoList)`
-    - [ ] `public static void printWinResult(HashMap<LottoRang, Integer>)`
-    - [ ] `public static void printIncomePercent(int incomePercent)`
+    - [ ] **Class Methods:**
+        - [ ] `public static void printPurchaseMoneyMessage()`
+        - [ ] `public static int inputPurchaseMoney`
+        - [ ] `public static void printWinNumbersMessage()`
+        - [ ] `public static List<Integer> inputWinNumbers()`
+        - [ ] `public static void printBonusNumberMessage()`
+        - [ ] `public static int inputBonusNumber()`
+        - [ ] `public static void printLottoList(List<Lotto lottoList)`
+        - [ ] `public static void printWinResult(HashMap<LottoRang, Integer>)`
+        - [ ] `public static void printIncomePercent(int incomePercent)`
 
 ### 입출력 요구 사항
 
@@ -237,14 +237,15 @@ BUILD SUCCESSFUL in 0s
 
 ### 라이브러리
 
-- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
+- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console`
+  API를 사용하여 구현해야 한다.
     - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
     - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 #### 사용 예시
 
 ```java
-List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+List<Integer> numbers=Randoms.pickUniqueNumbersInRange(1,45,6);
 ```
 
 ### Lotto 클래스
