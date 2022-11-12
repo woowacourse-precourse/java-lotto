@@ -16,7 +16,11 @@ public class ConsoleUserOutput {
         System.out.println(theNumberOfLottos+NormalStatements.LET_USER_KNOW_THE_NUMBER_OF_TICKETS.done());
     }
 
-    public static void askWinningNumbersToUser(){
+    public static void askWinningNumbers(){
         System.out.println(NormalStatements.ASK_WINNING_NUMBERS.done());
+    }
+
+    public static void askBounsNumber(){
+        System.out.println(NormalStatements.ASK_BONUS_NUMBER.done());
     }
 }
