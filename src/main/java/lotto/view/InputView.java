@@ -5,7 +5,11 @@ import lotto.domain.Messages;
 
 public class InputView {
     public static String inputMoney() {
-        System.out.println(Messages.INPUT_MONEY_MESSAGE.get());
+        System.out.printf(Messages.INPUT_MONEY.get());
         return Console.readLine();
+    }
+
+    public static String inputWinLotto() {
+        return "";
     }
 }

@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +12,8 @@ import java.util.List;
 public class MainController {
     public static void run() {
         Money money = new Money(InputView.inputMoney());
-        
+        List<Lotto> lottoList = makeLotto(money.getLottoCount());
+        OutputView.printLottoList(lottoList);
     }
 
     private static List<Lotto> makeLotto(int count) {
