@@ -7,17 +7,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static lotto.Ranking.*;
 import static org.assertj.core.api.Assertions.*;
 public class MatchLotteryServiceTest {
 
     MatchLotteryService matchLotteryService;
+    Player player;
 
     @BeforeEach
     void initializeClass(){
-        Player player = new Player();
+        player = new Player();
         player.buyTickets(8000);
         Computer computer = new Computer();
         computer.saveWinningTicket("1,2,3,4,5,6,");
@@ -29,6 +28,6 @@ public class MatchLotteryServiceTest {
     @Test
     void matchPlayerWithComputerTest(){
         matchLotteryService.matchPlayerWithComputer();
-        assertThat(matchLotteryService.getPlayer().showWinningStatistics()).containsKeys(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_MATCH_WITH_BONUS, SIX_MATCH);
+        assertThat(player.showWinningStatistics()).containsKeys(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_MATCH_WITH_BONUS, SIX_MATCH);
     }
 }

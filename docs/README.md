@@ -120,3 +120,17 @@ Lotto, BonusNumber를 참조한다.
 
 ## Controller
 ### LotteryController
+전역변수로 플레이어와 컴퓨터를 가진다. 
+1. createPlayer
+   1. takePlayersMoney : PlayerView.payMoney()를 실행해 입력을 받아 반환한다.
+   2. makeLottoForPlayer : takePlayersMoney를 통해 받은 금액을 Player.buyTickets에 넣어 로또를 만든다. 
+   3. giveLottoToPlayer : Player의 Lotto리스트를 PlayerView.showPlayersLotto에 넘겨 로또 결과를 보여준다. 
+2. insertWinningNumbers
+   1. typeWinningLottery : ComputerView.getNumbers를 해 문자열을 반환한다. 
+   2. insertWinningLottery : Computer.saveWinningTicket으로 입력받은 문자열을 리스트로 저장한다. 
+   3. typeWinningBonusNumber : ComputerView.getBonusNumber를 해 문자열을 반환한다. 
+   4. insertWinningBonusNumber : Computer.saveBonusNumber으로 입력받은 문자열을 정수로 저장한다. 
+3. matchPlayerLottoWithWinningNumbers
+   1. savePlayersScore : 플레이어와 컴퓨터를 MatchLotteryService의 생성자에 넣어 MatchLotteryService.matchPlayerWithComputer를 통해 플레이어에 랭킹결과를 저장한다. 
+4. showPlayersResult
+   1. showGameResult : 전역변수 Player를 RankingView.showWinningResult에 넣어 결과를 출력받는다. 
