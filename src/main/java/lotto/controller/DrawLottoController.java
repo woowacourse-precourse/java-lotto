@@ -21,11 +21,12 @@ public class DrawLottoController {
         outputView.printRevenue(getRevenue());
     }
 
-    public void buyLottoFromMyAmount() {
+    private void buyLottoFromMyAmount() {
         outputView.printBuyAmountMessage();
         user.setBuyAmount(inputView.InputBuyAmount());
         int count = drawLottoService.countBuyingLotto(user.getBuyAmount());
         buyLotto(count);
         outputView.printCountBuyingLotto(count, user.getMyLotto());
     }
+
 }
