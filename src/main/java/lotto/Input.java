@@ -3,7 +3,6 @@ package lotto;
 import static lotto.Constant.NUMBER_REGEX;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 

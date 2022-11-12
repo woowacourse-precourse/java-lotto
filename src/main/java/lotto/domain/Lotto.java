@@ -4,15 +4,18 @@ import static lotto.Constant.BALL_MAX_RANGE;
 import static lotto.Constant.BALL_MIN_RANGE;
 import static lotto.Constant.LOTTO_DIGIT_CNT;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
-    private final List<Integer> numbers;
+    private List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = numbers.stream().sorted(Comparator.naturalOrder())
+                .collect(Collectors.toList());
     }
 
     private void validate(List<Integer> numbers) {

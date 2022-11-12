@@ -20,9 +20,10 @@ class LottoTest {
     @DisplayName("로또를 만들 때, 입력받은 숫자가")
     class LottoInputTest {
         @Test
-        @DisplayName("정상")
+        @DisplayName("오름차순으로 정렬된다")
         void test2() {
-            Lotto lotto = new Lotto(List.of(3, 5, 6, 7, 34, 1));
+            Lotto lotto = new Lotto(List.of(3, 5, 35, 7, 34, 1));
+            Assertions.assertThat(lotto.toString()).isEqualTo("[1, 3, 5, 7, 34, 35]");
         }
 
         @Test
