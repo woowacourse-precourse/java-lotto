@@ -36,8 +36,9 @@ public class Organizer {
     }
 
     private int getIntegerFromString(String input) {
-        ExceptionHandler.isStringNumeric(input);
-        return Integer.parseInt(input);
+        String trimmedInput = input.trim();
+        ExceptionHandler.isStringNumeric(trimmedInput);
+        return Integer.parseInt(trimmedInput);
     }
 
     private void validateWinningNumbers(List<Integer> winningNumbers) {

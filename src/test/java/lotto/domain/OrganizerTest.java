@@ -17,6 +17,14 @@ public class OrganizerTest {
     }
 
     @Test
+    @DisplayName("입력 문자열에 띄어쓰기가 존재해도 숫자 리스트로 변환한다.")
+    void getNumberListFromStringInputWithSpaces() {
+        Organizer organizer = new Organizer();
+        assertThat(organizer.getWinningNumbersFromInput("1 , 2,3 ,4 ,5 ,6"))
+                .isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+    }
+
+    @Test
     @DisplayName("입력 문자열에 숫자가 아닌 문자를 포함하면 예외 처리한다.")
     void throwsExceptionWhenInputIncludesNonNumeric() {
         Organizer organizer = new Organizer();
