@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -61,6 +62,7 @@ public class Application {
             lotteryBundleArray.add(createAndPrintLottery());
             cntForCreateLottery++;
         }
+        Lotto lotto = new Lotto(inputWinningNumbers());
     }
     private static int[] createAndPrintLottery(){
         List<Integer> tempLotteryArray = Randoms.pickUniqueNumbersInRange(1,45,LOTTERY_NUMBER_LIMIT);
@@ -68,11 +70,21 @@ public class Application {
         Collections.sort(tempLotteryArray);
         System.out.println(tempLotteryArray);
         Iterator lotteryNumberItr = tempLotteryArray.iterator();
-        int index=0;
+        int index = 0;
         while (lotteryNumberItr.hasNext()){
             lotteryNumberArray[index++] = (int)lotteryNumberItr.next();
         }
         return lotteryNumberArray;
+    }
+
+    private static List<Integer> inputWinningNumbers(){
+        System.out.println("\n당첨 번호를 입력해 주세요.");
+        String tempWinningNumbersString = Console.readLine();
+        ArrayList<Integer> winningNumbersArray = new ArrayList<>();
+        for (String winningNumber : tempWinningNumbersString.split(",")){
+            winningNumbersArray.add(Integer.parseInt(winningNumber));
+        }
+        return winningNumbersArray;
     }
 
 }
