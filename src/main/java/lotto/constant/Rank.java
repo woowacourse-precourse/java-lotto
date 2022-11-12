@@ -1,6 +1,7 @@
 package lotto.constant;
 
 public enum Rank {
+    NOTHING("꽝", 0),
     FIFTH("3개 일치", 5000),
     FOURTH("4개 일치", 50000),
     THIRD("5개 일치", 1500000),
@@ -9,9 +10,9 @@ public enum Rank {
 
     private final String condition;
     private final int winningAmount;
-    private static Rank[] list = Rank.values();
+    private static final Rank[] list = Rank.values();
 
-    private static int size = list.length;
+    private static final int size = list.length;
 
     Rank(String condition, int winningAmount){
         this.condition = condition;
