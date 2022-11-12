@@ -11,7 +11,6 @@ public class InputBonusLottoNumberHandler{
         }
     }
     public void checkBonusNumberException(String bonusNumber) {
-        inputMoneyHandler.checkIsNumber(bonusNumber);
         checkSize(bonusNumber);
         checkInRange(bonusNumber);
     }
