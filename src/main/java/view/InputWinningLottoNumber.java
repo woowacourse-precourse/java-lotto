@@ -1,7 +1,6 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
-import constant.ErrorMessage;
 import domain.Lotto;
 import java.util.ArrayList;
 import java.util.List;

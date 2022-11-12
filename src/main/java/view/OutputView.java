@@ -6,7 +6,6 @@ import java.util.List;
 
 public class OutputView {
 
-
     private static final String BUYMONEY= "구입 금액을 입력해주세요.";
     private static final String INPUT_LOTTO="당첨 번호를 입력해 주세요.";
     private static final String INPUT_BONUS="보너스 번호를 입력해주세요.";

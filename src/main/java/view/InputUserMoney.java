@@ -2,8 +2,6 @@ package view;
 
 
 import camp.nextstep.edu.missionutils.Console;
-import constant.ErrorMessage;
-import java.util.stream.IntStream;
 import util.ValidateUserMoney;
 
 public class InputUserMoney {
