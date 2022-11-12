@@ -1,8 +1,10 @@
 package lotto;
 
+import enumCollections.RankIndex;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -11,7 +13,7 @@ public class CheckerTest {
     @DisplayName("로또번호와 당첨번호를 비교하여 당첨된 등수를 알 수 있다.")
     @Test
     void compareLottoNumbersTest() {
-        assertThat(Checker.getRank(5)).isEqualTo(PrizeRank.THIRD);
+        assertThat(Checker.getRank(5)).isEqualTo(RankIndex.THIRD);
     }
 
     @DisplayName("당첨번호와 일치하는 번호의 개수를 알 수 있다.")
@@ -50,10 +52,23 @@ public class CheckerTest {
         assertThat(Kiosk.resultStatistics).isEqualTo(new Integer[]{1, 1, 0, 0, 2});
     }
 
-    @DisplayName("당첨 등수에 따른 당첨금 저장 해시맵 검사")
+    @DisplayName("총 당첨 금액 계산")
     @Test
-    void winningsHashMapTest() {
-        Checker checker = new Checker();
-        assertThat(checker.initializeWinnings()).isEqualTo("");
+    void getTotalWinningsTest() {
+        Kiosk.resultStatistics = new Integer[]{0, 0, 0, 2, 1};
+        assertThat(Checker.getTotalWinnings()).isEqualTo(105000);
+    }
+
+    @DisplayName("수익률 계산")
+    @Test
+    void getYieldTest() {
+        Kiosk.resultStatistics = new Integer[]{0, 0, 0, 2, 1};
+        assertThat(Checker.getYield(8000)).isEqualTo(1300.0f);
+    }
+
+    @DisplayName("수익률 반올림 검사")
+    @Test
+    void getRoundedYieldTest() {
+        assertThat(Checker.getRoundedYield(1300.145f)).isEqualTo(1300.15f);
     }
 }
