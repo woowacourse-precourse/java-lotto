@@ -16,6 +16,10 @@ public class LottoBundle {
                 .collect(Collectors.toList());
     }
 
+    public List<Lotto> getLottoBundle() {
+        return this.lottoBundle;
+    }
+
     // 소지하고 있는 로또를 리스트를 보여줌
     public String listUpLotto() {
         var stringBuilder = new StringBuilder();
