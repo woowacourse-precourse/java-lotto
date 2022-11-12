@@ -16,7 +16,8 @@ public class LottoManager {
     }
 
     public int GenerateBonusNumber() {
-        return 1;
+        String inputBonusNumbers = Console.readLine();
+        return Integer.parseInt(inputBonusNumbers);
     }
 
     public List<Integer> GenerateRandomNumbers() {
