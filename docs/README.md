@@ -4,6 +4,8 @@
   - (e) 숫자 이외의 입력이 들어올 경우 예외처리(IllegalArgumentException)
   - (e) 1000미만의 입력에 대하여 예외처리(IllegalArgumentException)
   - (e) 1000의 배수가 아닐경우 예외처리(IllegalArgumentException)
+- [ ] 구매 금액만큼 로또 생성
+  - 금액에 해당하는 만큼 로또를 생성
 - [ ] 당첨 번호 입력 받기(6개의 숫자)
   - (e) 6개의 숫자를 초과하거나 미만이면 예외처리(IllegalArgumentException)
   - (e) 숫자의 범위가 1~45사이가 아닌 경우 예외처리(IllegalArgumentException)
