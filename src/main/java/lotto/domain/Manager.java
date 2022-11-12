@@ -22,6 +22,10 @@ public class Manager {
         }
     }
 
+    public List<Integer> getWinningNumbers() {
+        return this.winningNumbers;
+    }
+
     public void setBonusNumber(int bonusNumber) {
         this.bonusNumber = bonusNumber;
     }
