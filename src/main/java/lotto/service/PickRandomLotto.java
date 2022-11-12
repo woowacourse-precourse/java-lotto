@@ -13,13 +13,17 @@ public class PickRandomLotto {
     public void PickRandomNumber(int lottoPapers) {
         while(randomLottoLists.size() != lottoPapers)   {
             List<Integer> sixLottoNumbers = Randoms.pickUniqueNumbersInRange(1,45,LIMIT_LOTTO);
-            if(sixLottoNumbers.stream().distinct().count() != LIMIT_LOTTO){
-                return;
-            }
-            if(sixLottoNumbers.stream().distinct().count() == LIMIT_LOTTO){
-                Lotto lotto = new Lotto(sixLottoNumbers);
-                randomLottoLists.add(sixLottoNumbers);
-            }
+            switchAddOrReturn(sixLottoNumbers);
+        }
+        checkRandomLottoLists();
+    }
+    public void switchAddOrReturn(List<Integer> sixLottoNumbers)    {
+        if(sixLottoNumbers.stream().distinct().count() != LIMIT_LOTTO){
+            return;
+        }
+        if(sixLottoNumbers.stream().distinct().count() == LIMIT_LOTTO){
+            Lotto lotto = new Lotto(sixLottoNumbers);
+            randomLottoLists.add(sixLottoNumbers);
         }
     }
     public void checkRandomLottoLists() {

@@ -11,7 +11,6 @@ public class LottoGame {
         UserMoney userMoney = inputMoney.InputMoney();
         countLottoPapers(userMoney);
         pickRandomLottos(inputMoney.lottoCount);
-        pickRandomLotto.checkRandomLottoLists();
     }
     public void countLottoPapers(UserMoney userMoney) {
         inputMoney.lottoCount(userMoney);
