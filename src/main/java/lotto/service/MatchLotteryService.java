@@ -27,8 +27,16 @@ public class MatchLotteryService {
     }
 
     private void matchEachTicketWithComputer(Lotto lottoEach){
-        int equalCount = (int)lottoEach.getNumbers().stream().map( s ->computer.getComputerNumber().getNumbers().contains(s)).count();
+        int equalCount = countContainingNumber(lottoEach);
         player.addLottoRanking(convertCountToRanking(lottoEach, equalCount));
+    }
+
+    private int countContainingNumber(Lotto lottoEach){
+        int countingResult = 0;
+        for(int  numberEach : lottoEach.getNumbers()){
+            countingResult += countNumberIfContains(numberEach);
+        }
+        return countingResult;
     }
 
     private Ranking convertCountToRanking(Lotto lottoEach, int equalCount){
