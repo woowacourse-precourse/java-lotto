@@ -17,6 +17,18 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public int lottoRanking(List<Integer> winningNumber, Integer bonusNumber){
+        int winningNumberCount = howManyWinningNumbers(winningNumber);
+        boolean haveBonusNum = haveBonusNumber(bonusNumber);
+
+        if(winningNumberCount == 6) return 1;
+        if((winningNumberCount == 5) && haveBonusNum ) return 2;
+        if(winningNumberCount == 5) return 3;
+        if(winningNumberCount == 4) return 4;
+        if(winningNumberCount == 3) return 5;
+
+        return 0;
+    }
     private int howManyWinningNumbers(List<Integer> winningNumber){
         int winningNumberCount = 0;
 
