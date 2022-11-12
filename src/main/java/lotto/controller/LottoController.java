@@ -11,6 +11,7 @@ public class LottoController {
 
     private TicketMachine ticketMachine = new TicketMachine();
     private LottoMaker lottoMaker = new LottoMaker();
+    private LottoResult lottoResult = new LottoResult();
 
     public void process() {
         int ticket = getTicketFromUserByConsole();
@@ -39,8 +40,9 @@ public class LottoController {
     }
 
     private void printLottoResult(List<Lotto> lottos, WinningLotto winningLotto) {
-        Map<LottoRanking, Integer> lottoResult = LottoReader.getLottoResults(lottos, winningLotto);
-        OutputView.printLottoResult(lottoResult);
+        Map<LottoRanking, Integer> lottoResultData = LottoReader.getLottoResults(lottos, winningLotto);
+        OutputView.printLottoResult(lottoResultData);
+        printLottoRate(lottoResult.getLottoResult(lottoResultData));
     }
 
     private Lotto getManualLottoFromUserByConsole() {
@@ -52,5 +54,8 @@ public class LottoController {
         return InputView.getBonusNumberFromUser();
     }
 
+    private void printLottoRate(double returnRate) {
+        OutputView.printReturnRate(returnRate);
+    }
 
 }

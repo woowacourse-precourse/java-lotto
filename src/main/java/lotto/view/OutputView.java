@@ -14,6 +14,7 @@ public class OutputView {
     private static final String LOTTO_RESULT_STARTING_MESSAGE = "당첨 통계\n---";
     private static final String LOTTO_RANKING_MESSAGE = "%d개 일치 (%s원) - %d개";
     private static final String LOTTO_SECOND_RANKING_MESSAGE = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
+    private static final String LOTTO_RETURN_RATE_MESSAGE = "총 수익률은 %.2f%입니다.";
 
     public static void printNumberOfIssuedLotto(int lottoNumbers) {
         printEmptyLine();
@@ -32,6 +33,10 @@ public class OutputView {
     public static void printLottoResult(Map<LottoRanking, Integer> lottoResult) {
         System.out.println(LOTTO_RESULT_STARTING_MESSAGE);
         printOrderLottoResult(lottoResult);
+    }
+
+    public static void printReturnRate(double returnRate) {
+        System.out.println(String.format(LOTTO_RETURN_RATE_MESSAGE, returnRate));
     }
 
     public static void printEmptyLine() {
