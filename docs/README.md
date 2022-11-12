@@ -1,7 +1,7 @@
 
 ## 기능 구현 목록
 - [ ] 로또 번호 형식에 맞는지 검증한다. Lotto#validateNumberFormat()
-  - [ ] 6자리인지 검증한다. Lotto#validateSize()
+  - [x] 6자리인지 검증한다. Lotto#validateSize()
   - [ ] 입력받은 당첨 번호가 중복되지 않는지 검증한다. Lotto#validateDuplicateNumber()
   - [ ] 1부터 ~ 45사이의 숫자인지 확인한다. Lotto#validateNumbersInRange
 - [ ] 발행한 로또 번호를 가능한 당첨 번호와 가장 많이 일치하는 갯수와 일치 금액을 계산 한다. Lotto#matchWinner()
@@ -38,7 +38,7 @@
 - ResultView: 결과 관련 UI
 - LottoRule: 로또 관련 상수
   - [ ] 로또 번호의 상한: 45
-  - [ ] 발행 로또 번호의 갯수: 6 => NUMBER_OF_SIZE
+  - [x] 발행 로또 번호의 갯수: 6 => NUMBER_OF_SIZE
 - LottoRank: 로또 순위 정보 관련
   - 1등: 6개 일치 / 2,000,000,000원
   - 2등: 5개가 일치하고, 보너스 번호가 일치 / 30,000,000원

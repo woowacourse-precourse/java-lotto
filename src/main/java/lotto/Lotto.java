@@ -1,20 +1,22 @@
 package lotto;
 
+import util.ExceptionMessage;
+import util.LottoRule;
+
 import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateSize(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+    private void validateSize(List<Integer> numbers) throws IllegalArgumentException {
+        if (numbers.size() != LottoRule.NUMBER_OF_SIZE) {
+            throw new IllegalArgumentException(ExceptionMessage.OUT_OF_SIZE);
         }
     }
 
-    // TODO: 추가 기능 구현
 }
