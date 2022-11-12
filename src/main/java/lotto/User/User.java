@@ -17,7 +17,7 @@ public class User {
     }
 
     private boolean validateMoney(int money) {
-        return true;
+        return money % 1000 == 0;
     }
 
     public void printLottos() {
