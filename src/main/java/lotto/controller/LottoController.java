@@ -5,7 +5,7 @@ import java.util.Map;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGame;
 import lotto.domain.PriceCalculator;
-import lotto.domain.Rank;
+import lotto.domain.enumeration.Rank;
 import lotto.domain.WinChecker;
 import lotto.view.InputView;
 import lotto.view.OutputView;
