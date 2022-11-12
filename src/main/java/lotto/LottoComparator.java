@@ -25,8 +25,7 @@ public class LottoComparator {
     private int getContainCount(Lotto lotto, Lotto winningLotto) {
         int count = 0;
         for (int i = 0; i < 6; i++) {
-            // 오름차순으로 정렬했기 때문에 get(index).equals() 로 비교 가능
-            if (lotto.getLottoNumbers().get(i).equals(winningLotto.getLottoNumbers().get(i))) {
+            if (lotto.getLottoNumbers().contains(winningLotto.getLottoNumbers().get(i))) {
                 count++;
             }
         }
@@ -35,7 +34,6 @@ public class LottoComparator {
 
     private boolean isBonus(Lotto lotto, Lotto winningLotto, int bonusNumber) {
         for (int i = 0; i < 6; i++) {
-            // 오름차순으로 정렬했기 때문에 get(index).equals() 로 비교 가능
             if (!lotto.getLottoNumbers().get(i).equals(winningLotto.getLottoNumbers().get(i))) {
                 return lotto.getLottoNumbers().get(i) == bonusNumber;
             }
