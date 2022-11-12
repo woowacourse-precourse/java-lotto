@@ -71,4 +71,13 @@ class InputWinningLottoValidatorTest {
                 .isThrownBy(() -> InputWinningLottoValidator.validate(input))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
+    
+    @DisplayName("예외 처리 : 쉼표 개수가 5개가 아닌 경우")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {"1,2,3,4,5,,", ",,1,2,3,4,5"})
+    void countOfCommaException(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> InputWinningLottoValidator.validate(input))
+                .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
+    }
 }
