@@ -37,6 +37,11 @@ public class Controller {
         return draw.getWinningStats(lottoPaper);
     }
 
+    public double getEarningRate(Map<Rank,Integer> winningStats) {
+        rate = new Rate(winningStats);
+        return rate.getEarningRate();
+    }
+
 
     // 입력 method
     public int getPrice() {
