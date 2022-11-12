@@ -40,7 +40,7 @@ public class OutputView {
     }
 
     private static void printTotalProfit(ResultStatistics statistics, int count) {
-        DecimalFormat format = new DecimalFormat("##.##%");
+        DecimalFormat format = new DecimalFormat("###,###.#%");
         String totalProfitRate = format.format((float) (statistics.getTotalProfit()) / (count * ConstVariable.STANDARD.getValue()));
         System.out.println("총 수익률은 " + totalProfitRate + "입니다.");
     }

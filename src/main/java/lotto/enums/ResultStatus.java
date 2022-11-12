@@ -48,7 +48,7 @@ public enum ResultStatus {
         return map.get(new ResultFlag(count, hasBonusBall));
     }
 
-    static class ResultFlag {
+    private static class ResultFlag {
         int count;
         boolean hasBonusBall;
 
