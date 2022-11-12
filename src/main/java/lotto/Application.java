@@ -364,10 +364,10 @@ public class Application {
         return number;
     }
 
-    public static void issueLottoNumbers(int buyNumber, List<Lotto> lottoList) {
+    public static void issueLottoNumbers(int buyNumber, List<Lotto> lottoTickets) {
 
         for (int i = 0; i < buyNumber; i++) {
-            lottoList.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
+            lottoTickets.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
         }
     }
 }
