@@ -1,5 +1,6 @@
 package lotto;
 
+import config.ErrorConstants;
 import config.PrintConstants;
 import ui.UserInterface;
 
@@ -16,6 +17,7 @@ public class Application {
             LottoStatistics statistics = makeStatistics(boughtLotteries, lottoRound);
             UserInterface.printStatistics(statistics);
         } catch (IllegalArgumentException e) {
+            System.out.println(ErrorConstants.ERROR_PREFIX + " " + e.getMessage());
             e.printStackTrace();
         }
     }
