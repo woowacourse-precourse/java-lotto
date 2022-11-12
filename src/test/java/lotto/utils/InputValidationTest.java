@@ -1,8 +1,11 @@
 package lotto.utils;
 
+import lotto.views.Input;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -40,5 +43,16 @@ class InputValidationTest {
 
         assertThatThrownBy(() -> inputValidation.checkNumber(input, Constant.REGEX_WINNING_NUMBER_INPUT))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력받은 당첨번호는 List<Integer>로 변환되서 받아져야한다.")
+    @Test
+    void checkWinningNumberIsConvert() {
+        String answer = "1,2,3,4,5,6";
+        List<Integer> result = List.of(1, 2, 3, 4, 5, 6);
+
+        Input input = new Input();
+
+        assertThat(input.convertToList(answer)).isEqualTo(result);
     }
 }
