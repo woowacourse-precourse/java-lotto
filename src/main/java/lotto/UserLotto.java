@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserLotto {
-
     private final List<Lotto> userLottoes = new ArrayList<>();
     public UserLotto(Integer lottoCount){
-        GenerateNumbers generateNumbers = new GenerateNumbers();
+        Numbers numbers = new Numbers();
         for (int i=0;i<lottoCount;i++){
-            List<Integer> lottoNumbers = generateNumbers.generateLottoNumbers();
+            List<Integer> lottoNumbers = numbers.generateLottoNumbers();
             userLottoes.add(new Lotto(lottoNumbers));
         }
     }
