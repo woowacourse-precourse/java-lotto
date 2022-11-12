@@ -17,4 +17,11 @@ public class Money {
             throw new IllegalArgumentException("[ERROR] 구입금액은 1000원 단위여야 합니다.");
         }
     }
+
+    private void validateNumber(String purchase){
+        if(!purchase.matches(REGEX)){
+            System.out.println("[ERROR] 1~45까지의 숫자를 입력해주세요");
+            throw new NoSuchElementException();
+        }
+    }
 }
