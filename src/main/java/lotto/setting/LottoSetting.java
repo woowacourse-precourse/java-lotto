@@ -1,5 +1,7 @@
 package lotto.setting;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import lotto.lotto.Lotto;
 import java.util.List;
 
 public enum LottoSetting {
@@ -30,6 +32,11 @@ public enum LottoSetting {
 
     private boolean isNotOverlapped(List<Integer> numbers) {
         return numbers.stream().distinct().count() == NUMBER_OF_DRAWS;
+    }
+
+    public Lotto createAutoLotto() {
+        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, NUMBER_OF_DRAWS);
+        return new Lotto(randomNumbers,this);
     }
 
 }

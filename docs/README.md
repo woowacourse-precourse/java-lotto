@@ -9,11 +9,10 @@
 - Lotto
     - [ ] Lotto 입력 형식이 올바른지 체크
       - 입력 형식이 올바르지 않을 경우 `IllegalArgumentException`을 발생
-    - [ ] 자동으로 Lotto를 생성하도록 함
     - [ ] 해당 숫자을 가지고 있는지 확인
 
 
-- WinningNumberCoordinator
+- LottoRewardCoordinator
     - [ ] WinningNumber를 생성
     - [ ] 해당 로또가 당첨되었는지를 판단
 
@@ -26,10 +25,9 @@
 - LottoApplicationSetting
   - LottoSetting
     - [ ] 변경 가능한 정보들을 enum 값으로 담고 있음
-    - [ ] 해당 정보에 따라 객체(Lotto)를 생성
+    - [ ] 해당 정보에 따라 객체(LottoShop)를 생성
   - WinningNumberSetting
     - [ ] 당첨 번호에 대한 정보를 저장하고 있음 (enum)
-    - [ ] 해당 정보에 따라 객체(WinningNumber)를 생성
+    - [ ] 해당 정보에 따라 객체(LottoRewardCoordinator)를 생성
   - LottoRewardSetting
     - [ ] 각 상금 조건과 상금 정보를 가지고 있음 (enum)
-    - [ ] 
