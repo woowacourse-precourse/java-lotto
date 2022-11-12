@@ -4,7 +4,7 @@ import lotto.io.Inputter;
 import lotto.io.MessagePrinter;
 
 public class LottoGameSimulator {
-    private Money money;
+    private Money userMoney;
     public LottoGameSimulator() {
     }
 
@@ -20,6 +20,8 @@ public class LottoGameSimulator {
         MessagePrinter.printMoneyInputRequest();
         String moneyInput = Inputter.readLine();
         MoneyValidator.validateMoney(moneyInput);
+        int money = Integer.parseInt(moneyInput);
+        userMoney = new Money(money);
     }
 
     public void printGeneratedLotto() {
