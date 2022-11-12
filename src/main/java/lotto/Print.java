@@ -30,18 +30,26 @@ public class Print {
         System.out.println("당첨 통계\n" + "---");
         for (LottoOperator lottoOperator : winningResult.keySet()) {
             if (lottoOperator == LottoOperator.FIVE_BONUS) {
-                System.out.println(
-                        lottoOperator.getCount() + "개 일치, 보너스 볼 일치 (" +
-                                lottoOperator.getWinningAmount() + "원) - " +
-                                winningResult.get(lottoOperator) + "개");
+                printBonusResult(winningResult, lottoOperator);
                 continue;
             }
-            System.out.println(
-                    lottoOperator.getCount() + "개 일치 (" +
-                            lottoOperator.getWinningAmount() + "원) - " +
-                            winningResult.get(lottoOperator) + "개"
-            );
+            printCommonResult(winningResult, lottoOperator);
         }
+    }
+
+    private static void printCommonResult(Map<LottoOperator, Integer> winningResult, LottoOperator lottoOperator) {
+        System.out.println(
+                lottoOperator.getCount() + "개 일치 (" +
+                        lottoOperator.getWinningAmount() + "원) - " +
+                        winningResult.get(lottoOperator) + "개"
+        );
+    }
+
+    private static void printBonusResult(Map<LottoOperator, Integer> winningResult, LottoOperator lottoOperator) {
+        System.out.println(
+                lottoOperator.getCount() + "개 일치, 보너스 볼 일치 (" +
+                        lottoOperator.getWinningAmount() + "원) - " +
+                        winningResult.get(lottoOperator) + "개");
     }
 
     private static void newLine() {
