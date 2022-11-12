@@ -1,5 +1,11 @@
 package lotto.controller;
 
+import lotto.model.Lotto;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Controller {
@@ -9,8 +15,12 @@ public class Controller {
         return Integer.parseInt(price);
     }
 
-    public void getWinningLotto() {
-
+    public Lotto getWinningLotto() {
+        String winningLotto = readLine();
+        List<Integer> winningLottoNumbers = Arrays.stream(winningLotto.split(","))
+                .map(w -> Integer.parseInt(w))
+                .collect(Collectors.toList());
+        return new Lotto(winningLottoNumbers);
     }
 
     public void getBonusNum() {
