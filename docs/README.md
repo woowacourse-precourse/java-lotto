@@ -16,16 +16,16 @@
 - ✅ **`printLottoNumber`** → 로또 번호 출력
 
 ### <span style = "color:skyblue" >getUserNumber</span> : 당첨 번호 입력
-- 🟩 **`getUserNumber`** → 문자입력을 쉼표를 기준으로 구분하여 리스트 저장
-- 🟩 **`isUnique`** : 중복인 경우
-- 🟩 **`isNumeric`** : 숫자가 아닌 경우
-- 🟩 **`isValidRange`** : 숫자 범위 초과
+- ✅ **`getUserNumber`** → 문자입력을 쉼표를 기준으로 구분하여 리스트 저장
+- ✅ **`isUnique`** : 중복인 경우
+- ✅ **`isNumeric`** : 숫자가 아닌 경우
+- ✅ **`isValidRange`** : 숫자 범위 초과
 
 ### <span style = "color:skyblue" >getBonusNumber</span> : 보너스 번호 입력
-- 🟩 **`getBonusNumber`** → 문자 하나를 입력
-- 🟩 **`isNumeric`** → 숫자가 아니라면 예외처리
-- 🟩 **`isvalidRange`** : 숫자 범위 초과
-- 🟩 **`isUnique`** : 중복인 경우
+- ✅ **`getBonusNumber`** → 문자 하나를 입력
+- ✅ **`isNumeric`** → 숫자가 아니라면 예외처리
+- ✅ **`isvalidRange`** : 숫자 범위 초과
+- ✅ **`isUnique`** : 중복인 경우
 - 
 ### <span style = "color:skyblue" >getWinningHistory</span> : 당첨 내역 확인
 - 🟩 **`getAccordance`** → 로또 번호마다 값이 일치하는 개수 저장

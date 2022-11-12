@@ -22,7 +22,7 @@ public class LottoService {
     public void getPurchaseMoney() {
         String input = UserRequest.userInput();
         if (Validation.validatePurchaseAmount(input)) {
-            user.setPurchaseMoney(Parser.convertStringToInt(input));
+            user.setPurchaseMoney(Parser.StringToInt(input));
         }
     }
     public void getLottoCount(int amount) {
@@ -46,6 +46,11 @@ public class LottoService {
         user.setUserNumber(Parser.seperateCommas(input));
     }
 
+    public void getBounsNumber() {
+        String input = UserRequest.userInput();
+        Validation.validateBonusNumber(input,user.getUserNumber());
+        user.setBonusNumber(Parser.StringToInt(input));
+    }
 
 
 }

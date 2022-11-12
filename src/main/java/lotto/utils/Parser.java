@@ -1,15 +1,11 @@
 package lotto.utils;
 
-import org.assertj.core.util.Streams;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Parser {
-    public static int convertStringToInt(String input) {
+    public static int StringToInt(String input) {
         return Integer.parseInt(input);
     }
 
@@ -27,4 +23,9 @@ public class Parser {
         return Stream.of(input).collect(Collectors.toList());
     }
 
+    public static List<String> unionUserNumber(List<Integer> userNumber, String number) {
+        List<String> stringUserNumber = userNumber.stream().map(String::valueOf).collect(Collectors.toList());
+        stringUserNumber.add(number);
+        return stringUserNumber;
+    }
 }

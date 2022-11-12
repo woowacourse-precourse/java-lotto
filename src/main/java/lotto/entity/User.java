@@ -5,6 +5,7 @@ import java.util.List;
 public class User {
     private int purchaseMoney;
     private List<Integer> userNumber;
+    private int bonusNumber;
     private int lottoAmount;
     public User(){}
 
@@ -30,5 +31,13 @@ public class User {
 
     public void setLottoAmount(int lottoAmount) {
         this.lottoAmount = lottoAmount;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
+    public void setBonusNumber(int bonusNumber) {
+        this.bonusNumber = bonusNumber;
     }
 }
