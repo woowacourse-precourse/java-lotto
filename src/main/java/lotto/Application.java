@@ -87,22 +87,43 @@ public class Application {
         }
         return bonus;
     }
-    static void check_rank(Lotto lotto,List<Integer> lotto_num){
-        int result;
+    static boolean check_bouns(List<Integer>lotto_num, int bonus){
+        if(lotto_num.contains(bonus)) return true;
+        return false;
+    }
+    static float check_same_num(Lotto lotto,List<Integer> lotto_num,int bonus){
+        float result;
         result = lotto.check_rank(lotto_num);
-    }
-    static void check_result(Lotto lotto,List<List<Integer>> lotto_nums){
-        for (int i=0;i<lotto_nums.size();i++){
-            check_rank(lotto,lotto_nums.get(i));
+        if(result == 5f){
+            if(check_bouns(lotto_num,bonus)) result = result + 0.5f;
         }
+        return result;
     }
+    static void check_result(Lotto lotto,List<List<Integer>> lotto_nums,int bonus){
+        List<Float> result_rank = new ArrayList<Float>();
+        float result;
+        int price;
+        List<Integer> temp;
+        for (int i = 0;i < lotto_nums.size();i++){
+            temp = lotto_nums.get(i);
+            result = check_same_num(lotto,temp,bonus);
+            result_rank.add(result);
+        }
+        System.out.println(result_rank);
+    }
+
+//    static int calculate_price(float result){
+//
+//    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int money;
         int chance;
         List<List<Integer>> lotto_nums;
         List<Integer> winning_num;
+
         int bonus;
+        int price;
         try {
             money = check_money();
             chance = money2chance(money);
@@ -111,9 +132,31 @@ public class Application {
             System.out.println(winning_num);
             Lotto lotto = new Lotto(winning_num);
             bonus = read_bonus();
-            check_result(lotto, lotto_nums);
+            check_result(lotto, lotto_nums,bonus);
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
+    }
+    public enum RankType{
+        RANK_FIFTH(0,3,"3개 일치(5,000원)",5000),
+        RANK_FOURTH(1,4,"4개 일치(50,000원)",50000),
+        RANk_THIRD(2,5,"5개 일치(1,500,000원)",1500000),
+        RANK_SECOND(3,5.5f,"5개 일치,보너스 볼 일치(30,000,000원)",30000000),
+        RANK_FIRST(4,6,"6개 일치 (2,000,000,000원)",2000000000);
+        final private float num;
+        final private String result;
+        private final int price;
+        public String getResult(){
+            return result;
+        }
+        public int getPrice(){
+            return price;
+        }
+        private RankType(int check, float num, String result,int price){
+            this.num = num;
+            this.result = result;
+            this.price = price;
+        }
+
     }
 }

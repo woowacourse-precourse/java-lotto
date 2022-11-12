@@ -33,7 +33,7 @@ public class Lotto {
             temp = numbers.get(0);
             number.add(temp);
         }
-        if (number.size() !=0 ){
+        if (number.size() !=6 ){
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복 될 수 없습니다.");
         }
     }
@@ -59,10 +59,6 @@ public class Lotto {
             }
         }
         return check;
-    }
-    public boolean check_bouns(int bonus){
-        if(numbers.contains(bonus)) return true;
-        return false;
     }
 
 }
