@@ -9,7 +9,7 @@ public class Computer {
 
     private static final Map<Integer, Integer> placeMap = new HashMap<>();
 
-    void init() {
+    final void init() {
         placeMap.clear();
         placeMap.put(60, 0);
         placeMap.put(51, 0);
@@ -19,6 +19,7 @@ public class Computer {
     }
 
     public List<Integer> getResult(List<Lotto> lottos, List<Integer> winns, int bonus) {
+        init();
         updatePlaceMap(lottos, winns, bonus);
         return getStatistics();
     }
