@@ -59,6 +59,7 @@ public class Lotto {
 
     @Override
     public String toString() {
+        List<Integer> numbers = cloneNumbers();
         Collections.sort(numbers);
         return numbers.toString();
     }
