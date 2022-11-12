@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -59,6 +60,8 @@ public class Application {
         String number = readLine();
         List<String> numbers = Arrays.asList(number.split(","));
 
+        winningNumberErrorCheck(numbers);
+
         List<Integer> winningNumber = new ArrayList<>();
 
         for(int i = 0 ;  i < numbers.size() ;i++)
@@ -75,5 +78,22 @@ public class Application {
         Integer bonusNumber = Integer.valueOf(number);
 
         return bonusNumber;
+    }
+    public static void winningNumberErrorCheck(List<String> numbers){
+        if(numbers.size() != 6)
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개여야 합니다.");
+
+        String numberPattern = "^[0-9]{1,2}$";
+        for(int i=0 ; i < numbers.size() ; i++)
+            if(!Pattern.matches(numberPattern, numbers.get(i)))
+                throw new IllegalArgumentException("[ERROR] 로또 당첨 번호는 숫자를 입력해야 합니다.");
+
+        int number;
+        for(int i=0 ; i < numbers.size() ; i++){
+            number = Integer.parseInt(numbers.get(i));
+            if( number > 45 || number < 1 )
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+
     }
 }
