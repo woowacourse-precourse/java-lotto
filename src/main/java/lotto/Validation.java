@@ -11,6 +11,12 @@ public class Validation {
         }
     }
 
+    public static void isValidInputRange(int winningNumber) throws IllegalArgumentException {
+        if (winningNumber < 1 || winningNumber > 45) {
+            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.LOTTO_OUT_OF_RANGE);
+        }
+    }
+
     public static void existOnlyNumber(String amount) throws IllegalArgumentException {
         try {
             Integer.parseInt(amount);

@@ -37,7 +37,7 @@ public class Winning {
         for (String winningNumber : numbers) {
             int convertNumber = Integer.parseInt(winningNumber);
 
-            Validation.isValidRange(convertNumber);
+            Validation.isValidInputRange(convertNumber);
             winningNumbers.add(convertNumber);
         }
         return winningNumbers;
