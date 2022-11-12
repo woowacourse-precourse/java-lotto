@@ -1,8 +1,8 @@
-package lotto.controller;
+package lotto.view;
 
 import java.util.List;
 
-public class ValidationInController {
+public class ValidationInView {
     private static final String NUMERIC_REGULAR_EXPRESSION = "^[0-9]+$";
 
     public void checkNumericValue(String value){

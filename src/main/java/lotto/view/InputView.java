@@ -10,9 +10,12 @@ public class InputView {
     private static final String WINNING_NUMBERS_INPUT_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String BONUS_NUMBER_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
 
+    private final ValidationInView validator = new ValidationInView();
+
     public String getPurchaseAmount(){
         System.out.println(PURCHASE_AMOUNT_INPUT_MESSAGE);
         String input = Console.readLine();
+        validator.checkNumericValue(input);
         return input;
     }
 
@@ -20,6 +23,7 @@ public class InputView {
         System.out.println(WINNING_NUMBERS_INPUT_MESSAGE);
         String line = Console.readLine();
         List<String> inputs = parse(line);
+        validator.checkNumericValueList(inputs);
         return inputs;
     }
 
@@ -35,6 +39,7 @@ public class InputView {
     public String getBonusNumber(){
         System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
         String input = Console.readLine();
+        validator.checkNumericValue(input);
         return input;
     }
 
