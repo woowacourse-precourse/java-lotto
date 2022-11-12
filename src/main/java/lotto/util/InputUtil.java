@@ -20,12 +20,12 @@ public class InputUtil {
         return input;
     }
 
-    public static void checkValidationMoney(String input) {
+    public static void checkValidationMoney(String input) throws IllegalArgumentException {
         try {
             int inputNumber = Integer.parseInt(input);
             checkThousandUnit(inputNumber);
         } catch (IllegalArgumentException exception) {
-            throw makeIllegalArgumentException(Message.NOT_THOUSAND_UNIT_INPUT_ERROR.getMessage());
+            throw makeIllegalArgumentException(Message.NOT_THOUSAND_UNIT_INPUT_ERROR);
         }
     }
 
@@ -35,10 +35,10 @@ public class InputUtil {
         }
     }
 
-    public static void checkValidationBonusNumber(String input, List<Integer> lottoNumbers) {
+    public static void checkValidationBonusNumber(String input, List<Integer> lottoNumbers) throws IllegalArgumentException {
         Integer bonusNumber = Integer.parseInt(input);
         if (lottoNumbers.contains(bonusNumber)) {
-            throw makeIllegalArgumentException(Message.BONUS_NUMBER_INPUT_ERROR.getMessage());
+            throw makeIllegalArgumentException(Message.BONUS_NUMBER_INPUT_ERROR);
         }
     }
 
@@ -47,7 +47,7 @@ public class InputUtil {
             isOnlyCommaAndNumber(input);
             isAllDifferentNumbers(input);
         } catch (IllegalArgumentException illegalArgumentException) {
-            throw makeIllegalArgumentException(Message.WINNING_NUMBER_INPUT_ERROR.getMessage());
+            throw makeIllegalArgumentException(Message.WINNING_NUMBER_INPUT_ERROR);
         }
     }
 
@@ -76,7 +76,7 @@ public class InputUtil {
         }
     }
 
-    public static IllegalArgumentException makeIllegalArgumentException(String message) {
-        return new IllegalArgumentException(message);
+    public static IllegalArgumentException makeIllegalArgumentException(Message message) {
+        return new IllegalArgumentException(message.getMessage());
     }
 }

@@ -32,7 +32,7 @@ public class Manager {
             return (money / 1000);
         }
 
-        throw InputUtil.makeIllegalArgumentException(Message.MINUS_INPUT_ERROR.getMessage());
+        throw InputUtil.makeIllegalArgumentException(Message.MINUS_INPUT_ERROR);
     }
 
     public int getCorrectCount(List<Integer> userLotto) {

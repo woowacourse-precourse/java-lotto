@@ -20,7 +20,7 @@ public class Lotto {
             isSixNumbers(numbers);
             isAllDifferentNumbers(numbers);
         } catch (IllegalArgumentException illegalArgumentException) {
-            throw InputUtil.makeIllegalArgumentException(Message.NUMBER_RANGE_ERROR.getMessage());
+            throw InputUtil.makeIllegalArgumentException(Message.NUMBER_RANGE_ERROR);
         }
     }
 
