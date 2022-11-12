@@ -53,7 +53,7 @@
 - [x] matchWinningLotto()
   - 발급 받은 로또 번호와 당첨 번호를 비교하여 당첨 갯수를 반환한다.
 
-- [x] countContainBonusNumber()
+- [x] considerBonusNumber()
   - matchWinningLotto() 메서드에서 반환된 값을 토대로 당첨된 로또들 중 보너스 번호를 포함하여 5개를 맞춘 갯수를 반환한다.
 
 ### 당첨 통계
