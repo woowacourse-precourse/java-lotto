@@ -11,9 +11,9 @@
 ### <span style = "color:skyblue" >getLottoCount</span> : 로또 개수 저장
 - ✅ **`getLottoAmount`** → 구입 금액과 로또 금액을 나눈 값을 저장
 
-### <span style = "color:skyblue" >getLottos</span> : 로또 번호 출력
-- 🟩 **`getLottoNumber`** → 제시된 라이브러리를 사용하여 개수만큼 랜덤번호 생성
-- 🟩 **`printLottoNumber`** → 로또 번호 출력
+### <span style = "color:skyblue" >getRandomLottos</span> : 로또 번호 출력
+- ✅ **`getRandomLottoNumber`** → 제시된 라이브러리를 사용하여 개수만큼 랜덤번호 생성
+- ✅ **`printLottoNumber`** → 로또 번호 출력
 
 ### <span style = "color:skyblue" >getUserNumber</span> : 당첨 번호 입력
 - 🟩 **`getUserNumber`** → 문자입력을 쉼표를 기준으로 구분하여 리스트 저장

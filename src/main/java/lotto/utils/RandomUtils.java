@@ -6,8 +6,8 @@ import lotto.entity.Lotto;
 import java.util.List;
 
 public class RandomUtils {
-
-
-
+    public static List<Integer> getRandomLottoNumber(int start, int end, int amount) {
+        return Randoms.pickUniqueNumbersInRange(start, end, amount);
+    }
 
 }
