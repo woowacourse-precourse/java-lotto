@@ -40,16 +40,16 @@ public class LotteryRequestController {
 
 	}
 
-	public void receiveRandomNumbersSets(RandomNumbersSets randomNumbersSets) {
-		sendRandomNumbersSetsToLotteryCommittee(randomNumbersSets);
-		sendRandomNumbersSetsToLotteryStoreUi(randomNumbersSets);
+	public void receiveRandomNumbersSets(RandomNumbersSets randomNumbersSetsDto) {
+		sendRandomNumbersSetsToLotteryCommittee(randomNumbersSetsDto);
+		sendRandomNumbersSetsToLotteryStoreUi(randomNumbersSetsDto);
 	}
 
-	public void sendRandomNumbersSetsToLotteryStoreUi(RandomNumbersSets randomNumbersSets) {
-		lotteryStoreUi.printRandomNumberSets(randomNumbersSets);
+	public void sendRandomNumbersSetsToLotteryStoreUi(RandomNumbersSets randomNumbersSetsDto) {
+		lotteryStoreUi.printRandomNumberSets(randomNumbersSetsDto);
 	}
 
-	private void sendRandomNumbersSetsToLotteryCommittee(RandomNumbersSets randomNumbersSets) {
-		lottoCommittee.receiveRandomNumbersSets(randomNumbersSets);
+	private void sendRandomNumbersSetsToLotteryCommittee(RandomNumbersSets randomNumbersSetsDto) {
+		lottoCommittee.receiveRandomNumbersSets(randomNumbersSetsDto);
 	}
 }
