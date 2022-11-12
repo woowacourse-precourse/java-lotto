@@ -10,6 +10,13 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class MoneyTest {
 
+    @DisplayName("구입금액에 아무것도 입력하지 않으면 예외가 발생한다.")
+    @Test
+    void inputMoneyByEmpty() {
+        assertThatThrownBy(() -> new Money(""))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("구입금액은 정수형 숫자여야 한다.")
     @Test
     void inputMoneyByFloat() {

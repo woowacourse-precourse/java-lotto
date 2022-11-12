@@ -9,13 +9,14 @@ public class Money {
     }
 
     private void validate(String input) {
-        for (char c : input.toCharArray()) {
-            if (!Character.isDigit(c)) {
-                throw new IllegalArgumentException(ErrorMessages.MONEY_NOT_INTEGER.get());
-            }
+        int money;
+
+        try {
+            money = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessages.MONEY_NOT_INTEGER.get());
         }
 
-        int money = Integer.parseInt(input);
         if (money < 1000) {
             throw new IllegalArgumentException(ErrorMessages.MONEY_UNDER_1000.get());
         }
