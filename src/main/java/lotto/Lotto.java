@@ -21,6 +21,7 @@ public class Lotto {
         }
     }
 
+
     public static int getMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         String input = readLine();
@@ -46,14 +47,14 @@ public class Lotto {
         return lottoTickets;
     }
 
-    public static void printNumbers(List<List<Integer>> lottoTickets, int tickets){
-        System.out.println(tickets+"개를 구매했습니다.");
+    public static void printNumbers(List<List<Integer>> lottoTickets{
         for (int i=0; i<lottoTickets.size(); i++){
             System.out.println(lottoTickets.get(i));
         }
     }
 
     public static List<Integer> getNumbers(){
+
         List<Integer> lottoNumbers = new ArrayList<>();
         String input = readLine();
         if (input.length() > 11){
@@ -118,7 +119,7 @@ public class Lotto {
         sum += result[3] * 50000;
         sum += result[4] * 5000;
         double profit = sum / (tickets*1000) * 100;
-        String information = String.format("총 수익률은 %.2f입니다.", sum);
+        String information = String.format("총 수익률은 %.2f입니다.", profit);
         System.out.println(information);
     }
     // TODO: 추가 기능 구현
