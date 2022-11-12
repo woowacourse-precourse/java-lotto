@@ -11,7 +11,7 @@ public class WinningNumber {
 
     public void inputBonusNum(String BonusStr) {
         int bonusNum = 0;
-        if (isNumeric(BonusStr)) {
+        if (isNumeric(BonusStr) && inRange(Integer.parseInt(BonusStr))) {
             bonusNum = Integer.parseInt(BonusStr);
         }
     }
@@ -19,7 +19,7 @@ public class WinningNumber {
     public int[] changeIntArr(String[] strArray) {
         int[] intArr = new int[strArray.length];
         for(int i = 0; i < strArray.length; i++) {
-            if(isNumeric(strArray[i])){
+            if(isNumeric(strArray[i]) && inRange(Integer.parseInt(strArray[i]))) {
                 intArr[i] = Integer.parseInt(strArray[i]);
             }
         }
@@ -36,9 +36,17 @@ public class WinningNumber {
         }
     }
 
+    private boolean inRange(int i) {
+        if((1 <= i && i <= 45)){
+            return true;
+        }
+        System.out.println("[ERROR] 잘못된 범위의 값을 입력하셨습니다");
+        throw new IllegalArgumentException();
+    }
+
     private void winningSize(int[] arr) {
         if(arr.length != 6) {
-            System.out.println("[ERROR] 잘못된 값을 입력하셨습니다");
+            System.out.println("[ERROR] 6개의 당첨 번호가 아닙니다");
             throw new IllegalArgumentException();
         }
     }
