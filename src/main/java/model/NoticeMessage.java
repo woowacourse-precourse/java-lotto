@@ -12,5 +12,11 @@ public enum NoticeMessage {
         public String toString() {
             return "개를 구매했습니다.";
         }
+    },
+    LUCKY_NUMBER{
+        @Override
+        public String toString() {
+            return "당첨 번호를 입력해 주세요.";
+        }
     }
 }
