@@ -2,16 +2,24 @@ package lotto.controller;
 
 import lotto.model.Computer;
 import lotto.model.Player;
+import lotto.service.MatchLotteryService;
+import lotto.view.ComputerView;
+import lotto.view.PlayerView;
+import lotto.view.RankingView;
 
 public class LotteryController {
 
-    Player player = new Player();
-    Computer computer = new Computer();
+    private final Player player = new Player();
+    private final Computer computer = new Computer();
+    private final PlayerView playerView = new PlayerView();
+    private final ComputerView computerView = new ComputerView();
+    private final RankingView rankingView = new RankingView();
+
 
     public void createPlayer(){}
 
     private String takePlayersMoney(){
-        return "";
+        return playerView.payMoney();
     }
 
     private void makeLottoForPlayer(){
