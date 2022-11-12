@@ -139,11 +139,11 @@
 
 ### 동적 텍스트 DynamicText
 
-- [ ] 로또 수 반환 totalQuantity()
+- [x] 로또 수 반환 totalQuantity()
     ```
     8개를 구매했습니다.
     ```
-- [ ] 통계 텍스트 반환 statistics()
+- [x] 통계 텍스트 반환 statistics()
 
     ```
     당첨 통계
