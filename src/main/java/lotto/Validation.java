@@ -11,18 +11,16 @@ public class Validation {
         }
     }
     // 1000원 단위로 입력했는지 검증
-    public static void isThousandUnit(String purchaseAmount) {
-        long money = Long.parseLong(purchaseAmount);
-        if (money % 1000 != 0) {
+    public static void isThousandUnit(long purchaseAmount) {
+        if (purchaseAmount % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해 주세요.");
         }
     }
     // 로또 구입 금액을 검증
     public static void validateLottoPurchaseAmount(String purchaseAmount) {
         isDigit(purchaseAmount);
-        isThousandUnit(purchaseAmount);
+        isThousandUnit(Long.parseLong(purchaseAmount));
     }
-
 
 
 }
