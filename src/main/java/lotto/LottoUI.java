@@ -8,9 +8,7 @@ public class LottoUI {
     public static Integer purchase() {
         System.out.println("구입금액을 입력해 주세요.");
         final String input = Console.readLine();
-        if (!isNumeric(input)) {
-            throw new IllegalArgumentException("[ERROR] 숫자로 변환할 수 없는 입력입니다.");
-        }
+        numericValidate(input);
         return Integer.parseInt(input);
     }
 
@@ -22,12 +20,11 @@ public class LottoUI {
         System.out.println(lotto.getNumbers().toString());
     }
 
-    public static boolean isNumeric(String str) {
+    private static void numericValidate(String str) {
         try {
             Integer.parseInt(str);
-            return true;
         } catch (NumberFormatException e) {
-            return false;
+            throw new IllegalArgumentException("[ERROR] 숫자로 변환할 수 없는 입력입니다.");
         }
     }
 }
