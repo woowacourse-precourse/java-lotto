@@ -21,28 +21,32 @@ class LottoTest {
         @Test
         void createLottoByOverSize() {
             assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 6, 7)))
-                    .isInstanceOf(IllegalArgumentException.class);
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("로또 번호의 갯수는 6개여야합니다.");
         }
 
         @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
         @Test
         void createLottoByDuplicatedNumber() {
             assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
-                    .isInstanceOf(IllegalArgumentException.class);
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("로또 번호가 중복됩니다.");
         }
 
         @DisplayName("로또 번호가 범위를 벗어나면 예외를 반환한다. - 초과하는 경우")
         @Test
         void test() {
             assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
-                    .isInstanceOf(IllegalArgumentException.class);
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("로또 번호는 1 이상 45 이하의 정수입니다.");
         }
 
         @DisplayName("로또 번호가 범위를 벗어나면 예외를 반환한다. - 미만인 경우")
         @Test
         void test2() {
             assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 0)))
-                    .isInstanceOf(IllegalArgumentException.class);
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("로또 번호는 1 이상 45 이하의 정수입니다.");
         }
     }
 
