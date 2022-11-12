@@ -62,9 +62,11 @@ public class Application {
             lotteryBundleArray.add(createAndPrintLottery());
             cntForCreateLottery++;
         }
-        checkLottoWinnings(inputWinningNumbers(),lotteryBundleArray);
+        checkLottoWinnings(inputWinningNumbers(),inputBonusWinningNumber(), lotteryBundleArray);
 
     }
+
+
 
     private static int[] createAndPrintLottery() {
         List<Integer> tempLotteryArray = Randoms.pickUniqueNumbersInRange(1, 45, LOTTERY_NUMBER_LIMIT);
@@ -88,7 +90,14 @@ public class Application {
         }
         return winningNumbersArray;
     }
-    private static void checkLottoWinnings(List<Integer> winningNumbers , ArrayList<int[]> lotteryBundleArray){
+
+    private static int inputBonusWinningNumber() {
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        return Integer.parseInt(Console.readLine());
+    }
+
+    private static void checkLottoWinnings(List<Integer> winningNumbers , int bonusWinningNumber, ArrayList<int[]> lotteryBundleArray){
         Lotto lotto = new Lotto(winningNumbers);
+        lotto.checkLottoWinnings(lotteryBundleArray, bonusWinningNumber);
     }
 }
