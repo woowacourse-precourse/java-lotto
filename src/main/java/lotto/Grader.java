@@ -13,4 +13,20 @@ public class Grader {
         this.bonusNumber = bonusNumber;
     }
 
+    public void grade() {
+        lottoList.forEach(lotto -> {
+            List<Integer> lottoNumbers = lotto.getNumbers();
+            int matchNumber = getMatchNumber(lottoNumbers);
+
+        });
+    }
+
+    public int getMatchNumber(List<Integer> lottoNumbers) {
+        int result = 0;
+        for (int lottoNum : lottoNumbers) {
+            if(answer.contains(lottoNum)) result++;
+        }
+        return result;
+    }
+
 }
