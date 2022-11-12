@@ -1,23 +1,20 @@
 package lotto.domain.io;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Lotto;
 
 import java.util.List;
 
 public class InputReader {
 
   private CommaAndNumberValidator commaAndNumberValidator;
-  private NumberLengthValidator numberLengthValidator;
   private RangeValidator rangeValidator;
-  private DuplicationValidator duplicationValidator;
   private NumberValidator numberValidator;
   private Multiple1000Validator multiple1000Validator;
 
   public InputReader() {
     this.commaAndNumberValidator = new CommaAndNumberValidator();
-    this.numberLengthValidator = new NumberLengthValidator();
     this.rangeValidator = new RangeValidator();
-    this.duplicationValidator = new DuplicationValidator();
     this.numberValidator = new NumberValidator();
     this.multiple1000Validator = new Multiple1000Validator();
   }
@@ -29,13 +26,10 @@ public class InputReader {
     return inputToInt;
   }
 
-  public List<Integer> readWinningNumber() {
+  public Lotto readWinningNumber() {
     String input = Console.readLine();
     List<Integer> inputs = commaAndNumberValidator.validate(input);
-    numberLengthValidator.validate(inputs);
-    rangeValidator.validate(inputs);
-    duplicationValidator.validate(inputs);
-    return inputs;
+    return new Lotto(inputs);
   }
 
   public int readBonusNumber() {
