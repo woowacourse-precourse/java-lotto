@@ -1,4 +1,4 @@
-package lotto.entity;
+package lotto.standard;
 
 public enum Place {
 

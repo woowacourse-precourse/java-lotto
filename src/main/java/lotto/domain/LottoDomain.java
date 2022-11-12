@@ -1,9 +1,6 @@
-package lotto;
+package lotto.domain;
 
-import lotto.domain.Amount;
-import lotto.domain.LottoGenerator;
-import lotto.domain.Rank;
-import lotto.entity.Place;
+import lotto.standard.Place;
 
 import java.util.List;
 import java.util.Map;

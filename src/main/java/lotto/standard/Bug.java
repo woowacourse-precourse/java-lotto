@@ -1,4 +1,4 @@
-package lotto.entity;
+package lotto.standard;
 
 import java.util.ArrayList;
 import java.util.List;

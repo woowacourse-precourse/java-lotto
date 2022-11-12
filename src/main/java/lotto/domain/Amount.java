@@ -1,7 +1,7 @@
 package lotto.domain;
 
-import lotto.entity.Bug;
-import lotto.entity.Place;
+import lotto.standard.Bug;
+import lotto.standard.Place;
 
 import java.util.Map;
 

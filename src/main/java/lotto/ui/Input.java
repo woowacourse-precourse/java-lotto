@@ -1,7 +1,7 @@
 package lotto.ui;
 
 
-import lotto.entity.Bug;
+import lotto.standard.Bug;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;

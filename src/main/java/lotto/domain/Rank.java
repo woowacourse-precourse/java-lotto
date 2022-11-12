@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.entity.Place;
+import lotto.standard.Place;
 
 import java.util.HashMap;
 import java.util.List;
@@ -29,23 +29,16 @@ public class Rank {
             winningRanks.put(place, winningRanks.get(place) + 1);
         }
     }
-
-    //15줄 넘음
+    
     private Place determine(int matchingNumber, boolean checkBonus) {
-        if (matchingNumber == Place.FIRST.getMatchingNumber()) {
-            return Place.FIRST;
-        }
-        if (matchingNumber == Place.SECOND.getMatchingNumber() && checkBonus) {
-            return Place.SECOND;
-        }
-        if (matchingNumber == Place.THIRD.getMatchingNumber() && !checkBonus) {
-            return Place.THIRD;
-        }
-        if (matchingNumber == Place.FOURTH.getMatchingNumber()) {
-            return Place.FOURTH;
-        }
-        if (matchingNumber == Place.FIFTH.getMatchingNumber()) {
-            return Place.FIFTH;
+
+        for (Place place : Place.values()) {
+            if (matchingNumber == place.getMatchingNumber() && checkBonus) {
+                return place.SECOND;
+            }
+            if (matchingNumber == place.getMatchingNumber()) {
+                return place;
+            }
         }
         return null;
     }

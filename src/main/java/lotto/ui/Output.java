@@ -1,6 +1,6 @@
 package lotto.ui;
 
-import lotto.entity.Place;
+import lotto.standard.Place;
 
 import java.util.List;
 import java.util.Map;

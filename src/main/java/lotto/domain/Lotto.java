@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.entity.Bug;
+import lotto.standard.Bug;
 
 import java.util.ArrayList;
 import java.util.HashSet;
