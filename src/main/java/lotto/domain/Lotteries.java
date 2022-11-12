@@ -16,20 +16,26 @@ public class Lotteries {
     public static Lotteries generateLotteriesByPrice(int totalPrice) {
         validate(totalPrice);
 
-        List<Lotto> lotteries = new ArrayList<>();
         int count = totalPrice / LottoInfo.PRICE.getNumber();
+        List<Lotto> lotteries = generateLottoList(count);
+
+        return new Lotteries(lotteries);
+    }
+
+    private static void validate(int totalPrice) {
+        Validator.isMultiplesOfThousand(totalPrice);
+        Validator.isUnderZero(totalPrice);
+    }
+
+    private static List<Lotto> generateLottoList(int count) {
+        List<Lotto> lotteries = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
             Lotto lotto = LottoFactory.generateLotto();
             lotteries.add(lotto);
         }
 
-        return new Lotteries(lotteries);
-    }
-
-    private static void validate (int totalPrice) {
-        Validator.isMultiplesOfThousand(totalPrice);
-        Validator.isUnderZero(totalPrice);
+        return lotteries;
     }
 
     public List<List<Integer>> getLotteries() {
@@ -39,5 +45,4 @@ public class Lotteries {
         }
         return lottoNumbers;
     }
-
 }
