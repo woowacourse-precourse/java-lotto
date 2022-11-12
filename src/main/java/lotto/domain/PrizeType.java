@@ -36,6 +36,10 @@ public enum PrizeType {
     }
 
     public String getNumOfMatched() {
+
+        if (this.equals(SECOND)) {
+            return numOfMatched + "개 일치, 보너스 볼 일치 ";
+        }
         return numOfMatched + "개 일치 ";
     }
 
