@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -32,5 +33,10 @@ public class Lotto {
     public boolean hasNumber(int number) {
         if(numbers.contains(number)) return true;
         return false;
+    }
+
+    public void printNumbers() {
+        Collections.sort(numbers);
+        System.out.println(numbers.toString());
     }
 }
