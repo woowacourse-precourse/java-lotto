@@ -17,6 +17,15 @@ public class Price {
             System.out.println(ExceptionMessage.NON_UNITS_OF_ONE_THOUSAND_WON.getMessage());
             throw new IllegalArgumentException();
         }
+
+        if (!hasMoney(purchasePrice)) {
+            System.out.println(ExceptionMessage.NO_MONEY.getMessage());
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private boolean hasMoney(Integer purchasePrice) {
+        return purchasePrice != 0;
     }
 
     private boolean isPriceInUnitsOfOneThousandWon(Integer purchasePrice) {
