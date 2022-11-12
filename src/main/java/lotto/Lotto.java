@@ -8,6 +8,8 @@ public class Lotto {
     private static final int LOTTO_GAME_NUMBERS_SIZE = 6;
     private static final int LOTTO_GAME_START_NUMBER = 1;
     private static final int LOTTO_GAME_END_NUMBER = 45;
+    private static final String SPACE = " ";
+    private static final String NULL = "";
     private static final String COMMA = ",";
     private final List<Integer> numbers;
 
@@ -17,6 +19,7 @@ public class Lotto {
     }
 
     public Lotto(String numbers) {
+        numbers = numbers.replace(SPACE, NULL);
         validateString(numbers);
         this.numbers = convertStringListToIntegerList(convertStringToList(numbers));
     }
