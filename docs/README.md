@@ -35,7 +35,7 @@
 
 ### BonusNumber
 
-- [ ] Lotto 값에 중복되면 안된다.
+- [x] Lotto 값에 중복되면 안된다.
 - [ ] 1의 자리수이다. 
 - [ ] 숫자 범위는 1~45까지이다.
 - [ ] 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException` 발생,
