@@ -8,12 +8,14 @@ import lotto.exception.ExceptionHandler;
 import lotto.userinterface.Output;
 
 public class Player {
-    private final long money;
+    private final long initialMoney;
     private List<Lotto> lottoTickets;
+    private long prizeMoney;
 
     public Player(long initialMoney) {
         validate(initialMoney);
-        this.money = initialMoney;
+        this.initialMoney = initialMoney;
+        this.prizeMoney = 0;
     }
 
     private void validate(long money) {
@@ -21,7 +23,7 @@ public class Player {
     }
 
     public void buyLottoTickets(Machine lottoMachine) {
-        this.lottoTickets = lottoMachine.issueLottoTickets(money);
+        this.lottoTickets = lottoMachine.issueLottoTickets(initialMoney);
     }
 
     public void displayLottoTickets() {
@@ -30,5 +32,24 @@ public class Player {
         for (Lotto lotto : lottoTickets) {
             Output.printMessage(lotto.getNumbersAsString());
         }
+    }
+
+    /*public void checkResult(Organizer organizer) {
+        List<Integer> winningNumbers = organizer.getWinningNumbers();
+        int bonusNumber = organizer.getBonusNumber();
+        for (Lotto lotto : lottoTickets) {
+            int matchingCount = compareWinningNumbers(lotto, winningNumbers);
+
+        }
+    }*/
+
+    public int compareWinningNumbers(Lotto lotto, List<Integer> winningNumbers) {
+        int count = 0;
+        for (int number : winningNumbers) {
+            if (lotto.doesContainNumber(number)){
+                count++;
+            }
+        }
+        return count;
     }
 }
