@@ -10,6 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.constant.LottoConstant.*;
+
 public class LottoGame {
 
     private final LottoIssuingMachine issuingMachine;
@@ -42,7 +44,7 @@ public class LottoGame {
         try {
             return Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만을 입력해야 합니다.");
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_ONLY_NUMBER);
         }
     }
 
@@ -65,7 +67,7 @@ public class LottoGame {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("쉼표(,)와 숫자만을 입력해야 합니다.");
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_ONLY_NUMBER_COMMA);
         }
     }
 
@@ -73,7 +75,7 @@ public class LottoGame {
         try {
             return Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만을 입력해야 합니다.");
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_INPUT_ONLY_NUMBER);
         }
     }
 

@@ -5,9 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.constant.LottoConstant.*;
+
 public class LottoIssuingMachine {
 
-    private static final int LOTTO_PRICE = 1000;
     private List<Lotto> lottos;
 
     public LottoIssuingMachine() {
@@ -36,10 +37,10 @@ public class LottoIssuingMachine {
 
     private void validate(int purchaseMoney) {
         if (purchaseMoney < LOTTO_PRICE) {
-            throw new IllegalArgumentException("로또 최소 구입 금액은 1,000원입니다.");
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_PURCHASE_MONEY_MIN);
         }
         if (purchaseMoney % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException("로또 구입 금액은 1,000원 단위이어야 합니다.");
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_PURCHASE_MONEY_UNIT);
         }
     }
 

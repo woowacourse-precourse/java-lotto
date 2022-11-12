@@ -4,11 +4,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import static lotto.constant.LottoConstant.*;
 import static lotto.model.LottoWinningStatus.*;
 
 public class LottoWinningStatistics {
 
-    private static final int LOTTO_PRICE = 1000;
     private Map<LottoWinningStatus, Integer> winningCounts;
     private double earningsRate;
 
