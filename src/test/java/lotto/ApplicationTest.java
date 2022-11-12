@@ -15,15 +15,13 @@ class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
 
     @Test
-    void 금액은_숫자만_입력하지_않으면_예외처리() {
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> Application.isValidAmount("11aa"));
-        assertThat(e.getMessage()).isEqualTo(Application.NOT_NUMBER_ERROR_MESSAGE);
+    void 금액은_숫자만_입력하지_않으면_종료() {
+        assertThat(Application.isValidAmount("11aa")).isEqualTo(false);
     }
 
     @Test
-    void 올바른_금액을_입력하지_않으면_예외처리() {
-        IllegalArgumentException e = assertThrows(IllegalArgumentException.class, () -> Application.isValidAmount("1100"));
-        assertThat(e.getMessage()).isEqualTo(Application.INVALID_AMOUNT_ERROR_MESSAGE);
+    void 올바른_금액을_입력하지_않으면_종료() {
+        assertThat(Application.isValidAmount("1100")).isEqualTo(false);
     }
 
     @Test
