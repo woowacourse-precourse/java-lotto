@@ -13,5 +13,8 @@ public class RunGame {
             System.out.println(e.getMessage());
             return ;
         }
+        for (int i = 0; i < userDTO.getGameCount(); i++) {
+            System.out.println(userDTO.getGames().get(i).getLotto());
+        }
     }
 }
