@@ -40,6 +40,17 @@ public class Application {
         // 사용자의 당첨 번호 & 보너스 번호 입력
         List winNumber = inputWinNumber();
 
+        // 당첨 번호 / 로또 번호 비교
+        for(int i = 0; i < numbers.size(); i++) {
+            Compare compare = new Compare();
+            int sameNumber = compare.compareNumbers(winNumber, numbers.get(i));
+            countStat(sameNumber);
+        }
+
+        calculateStat(inputMoney);
+
+    }
+
     // 사용자의 구매 금액 입력 (에러 판별)
     public static int input(int inputMoney) {
 
