@@ -23,8 +23,8 @@ public class User {
 
     private void validate(String buyAmount) {
         validateBuyAmountForms(buyAmount);
-        validateBuyAmountFirstNumber();
-        validateBuyAmount();
+        validateBuyAmountFirstNumber(buyAmount);
+        validateBuyAmount(buyAmount);
     }
 
     private void validateBuyAmountForms(String buyAmount) {
@@ -37,6 +37,13 @@ public class User {
     private void validateBuyAmountFirstNumber(String buyAmount) {
         if (buyAmount.charAt(0) == '0') {
             System.out.println("[ERROR] 금액의 첫자리가 0이면 안됩니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateBuyAmount(String buyAmount) {
+        if (Integer.parseInt(buyAmount) % 1000 != 0) {
+            System.out.println("[ERROR] 금액은 1000원 단위로 나누어져야 합니다.");
             throw new IllegalArgumentException();
         }
     }
