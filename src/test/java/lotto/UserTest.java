@@ -16,17 +16,14 @@ class UserTest {
     @ParameterizedTest
     @CsvSource({"1000,true","1001,false"})
     void userPayMoneyTest(String input, boolean expectedException) throws Exception {
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
         User user = new User();
 
         if (expectedException) {
-            assertThatCode(() -> user.payMoney())
+            assertThatCode(() -> user.payMoney(Integer.parseInt(input)))
                     .doesNotThrowAnyException();
         }
         if (!expectedException) {
-            assertThatThrownBy(() -> user.payMoney())
+            assertThatThrownBy(() -> user.payMoney(Integer.parseInt(input)))
                     .isInstanceOf(IllegalArgumentException.class);
         }
     }
@@ -34,11 +31,8 @@ class UserTest {
     @ParameterizedTest
     @CsvSource({"1000,1","2000,2","18000,18"})
     void userBuyLottoTest(String input, int lottoCount) {
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
         User user = new User();
-        user.payMoney();
+        user.payMoney(Integer.parseInt(input));
         user.buyLotto();
 
         assertThat(user.getLottoCount()).isEqualTo(lottoCount);
