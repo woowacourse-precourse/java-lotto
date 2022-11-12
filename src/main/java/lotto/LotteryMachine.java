@@ -13,7 +13,6 @@ public class LotteryMachine {
     private Lotto winningLotto;
     private int bonusNum;
 
-
     public List<Integer> makeLottoNum() {
 
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -34,7 +33,6 @@ public class LotteryMachine {
         Collections.sort(winningNum);
         this.winningLotto = new Lotto(winningNum);
     }
-
 
     public void makeBonusNum(List<Integer> lottoNum) {
         System.out.println("보너스 번호를 입력해 주세요.");
