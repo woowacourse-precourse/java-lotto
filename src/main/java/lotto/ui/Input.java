@@ -5,14 +5,12 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import lotto.common.Constant;
 
 public class Input {
 
-    private final static int LOTTO_NUMBER_MIN = 1;
-    private final static int LOTTO_NUMBER_MAX = 45;
-    private final static int LOTTO_PRICE_UNIT = 1000;
-    private final static int LOTTO_NUMBERS_INPUT_SIZE = 6;
     private final static String LOTTO_NUMBER_DELIMITER = ",";
+    private final static int REMAINDER = 0;
 
     public static void validateNumber(String input) {
         try {
@@ -27,14 +25,14 @@ public class Input {
         int lottoNumber;
         validateNumber(input);
         lottoNumber = Integer.parseInt(input);
-        if (lottoNumber < LOTTO_NUMBER_MIN || lottoNumber > LOTTO_NUMBER_MAX) {
+        if (lottoNumber < Constant.LOTTO_NUMBER_MIN || lottoNumber > Constant.LOTTO_NUMBER_MAX) {
             Print.lottoNumberException();
             throw new IllegalArgumentException();
         }
     }
 
     public static void validatePrice(int price) {
-        if (price % LOTTO_PRICE_UNIT != 0) {
+        if (price % Constant.LOTTO_PRICE_UNIT != REMAINDER) {
             Print.priceException();
             throw new IllegalArgumentException();
         }
@@ -63,14 +61,14 @@ public class Input {
     }
 
     public static void validateSplitByCommaInputSize(String[] splitByCommaInput) {
-        if (splitByCommaInput.length != LOTTO_NUMBERS_INPUT_SIZE) {
+        if (splitByCommaInput.length != Constant.LOTTO_NUMBERS_INPUT_SIZE) {
             Print.splitByCommaInputSizeException();
             throw new IllegalArgumentException();
         }
     }
 
     public static void validateNonDuplicatedLottoNumbers(Set<Integer> lottoNumbers) {
-        if (lottoNumbers.size() != LOTTO_NUMBERS_INPUT_SIZE) {
+        if (lottoNumbers.size() != Constant.LOTTO_NUMBERS_INPUT_SIZE) {
             Print.nonDuplicatedLottoNumbersException();
             throw new IllegalArgumentException();
         }
