@@ -160,4 +160,29 @@ class ValidatorTest {
             assertThatNoException().isThrownBy(() -> validator.validateWinningNumbers("15,32,2,41,31,23"));
         }
     }
+
+    @Nested
+    @DisplayName("validateBonusNumber method test")
+    class bonusNumberValidationTest {
+
+        @Test
+        void isNotAPositiveInteger() {
+
+        }
+
+        @Test
+        void startsWithZero() {
+
+        }
+
+        @Test
+        void isOver45() {
+
+        }
+
+        @Test
+        void isDuplicatedWithWinningNumbers() {
+
+        }
+    }
 }
