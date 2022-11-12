@@ -73,6 +73,15 @@ public class Lotto {
         Collections.sort(buyLottoNumber);
     }
     //6. 당첨 내역을 출력하는 함수
+    public String winStatistics(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("3개 일치 (5,000원) - ").append(sameNumberMap.get("3개")).append("개");
+        sb.append("4개 일치 (50,000원) - ").append(sameNumberMap.get("4개")).append("개");
+        sb.append("5개 일치 (1,500,000원) - ").append(sameNumberMap.get("5개")).append("개");
+        sb.append("5개 일치, 보너스 볼 일치 (30,000,000원) - ").append(sameNumberMap.get("5개+보너스")).append("개");
+        sb.append("6개 일치 (2,000,000,000원) - ").append(sameNumberMap.get("6개")).append("개");
+        return sb.toString();
+    }
     //7. 수익률을 계산하는 함수 (소수 두째자리에서 반올림)
     //8. 예외처리 에러 문구 출력 함수 (단, [ERROR] 로 시작)
     //9. 보너스 볼이 일치하는지 확인하는 함수
