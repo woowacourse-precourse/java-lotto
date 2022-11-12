@@ -10,6 +10,9 @@ import java.util.List;
 
 public abstract class Utility {
 
+    public static final int minLottoNumber = 1;
+    public static final int maxLottoNumber = 45;
+
     public void printMessage(String message){
         System.out.println(message);
     }
