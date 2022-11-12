@@ -21,6 +21,10 @@ public class Match {
             combineNumbers.addAll(pickLotto.getNumbers());
             combineNumbers.add(bonusNum.getNumber());
             int matchNum = 13 - new HashSet<>(combineNumbers).size();
+            // 5-2. 등수 별로 몇 개가 있는지 갯수를 구한다.
+            if (3 <= matchNum && matchNum <= 6) {
+                this.matches.put(matchNum, this.matches.get(matchNum)+1);
+            }
         }
     }
 
