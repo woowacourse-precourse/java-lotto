@@ -39,4 +39,13 @@ public class WinningNumberServiceTest{
         assertThatThrownBy(() -> winningNumberService.parseBonusNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("기존 로또 번호와 중복된 보너스 번호 에러 테스트")
+    @Test
+    void 중복된_보너스_번호_에러_테스트(){
+        winningNumberService.parseWinningNumber("1,2,3,4,5,6");
+        String input = "6";
+        assertThatThrownBy(() -> winningNumberService.parseBonusNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
