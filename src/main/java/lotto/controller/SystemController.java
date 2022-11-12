@@ -57,4 +57,15 @@ public class SystemController {
         myLotto=countRandomLotto.calculate(money.howMany(purchaseMoney));
         return myLotto;
     }
+
+    private void statistics(List<List<Integer>> myLotto, List<Integer> numbers, int Bonus, String purchaseMoney){
+        for(int i=0; i<myLotto.size(); i++) {
+            matchScores.add(scoreResult.getScoreFiveAndBonus(numbers, myLotto.get(i), Bonus));
+        }
+        for(int i=0; i<saveScores.size(); i++){
+            System.out.println(saveScores.get(i).getScore() + " - " + Collections.frequency(matchScores, saveScores.get(i)) +"개");
+        }
+        System.out.print("총 수익률은 "+calculateYield(Integer.parseInt(purchaseMoney), Collections.frequency(matchScores, Three), Collections.frequency(matchScores, Four),
+                Collections.frequency(matchScores, Five), Collections.frequency(matchScores, FiveAndBonus), Collections.frequency(matchScores, Six))+"%입니다.");
+    }
 }
