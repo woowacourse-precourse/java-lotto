@@ -83,9 +83,18 @@ public class Application {
         try {
             bonus = Integer.parseInt(input_num);
         } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1개의 숫자여야 합니다.");
         }
         return bonus;
+    }
+    static void check_rank(Lotto lotto,List<Integer> lotto_num){
+        int result;
+        result = lotto.check_rank(lotto_num);
+    }
+    static void check_result(Lotto lotto,List<List<Integer>> lotto_nums){
+        for (int i=0;i<lotto_nums.size();i++){
+            check_rank(lotto,lotto_nums.get(i));
+        }
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -101,8 +110,8 @@ public class Application {
             winning_num = read_winning();
             System.out.println(winning_num);
             Lotto lotto = new Lotto(winning_num);
-
             bonus = read_bonus();
+            check_result(lotto, lotto_nums);
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
