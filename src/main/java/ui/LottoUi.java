@@ -1,6 +1,7 @@
 package ui;
 
 import camp.nextstep.edu.missionutils.Console;
+import domain.Lotto;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -55,5 +56,11 @@ public class LottoUi {
         if(money % LOTTO_PRICE != 0){
             throw new IllegalArgumentException();
         }
+    }
+
+    private static void printLottoNumbers(List<Lotto> lottos){
+        lottos.forEach(lotto -> {
+            System.out.println(lotto);
+        });
     }
 }
