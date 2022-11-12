@@ -30,6 +30,19 @@ public class LottoDesignator {
         return lotto;
     }
 
+    public int inputBonus() {
+        String input = Console.readLine();
+
+        try {
+            checkOnlyNumber(input);
+            checkRange(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return Integer.parseInt(input);
+    }
+
     public void checkOnlyNumber(String input) {
         String lotto = Arrays
                 .stream(removeComma(input))
