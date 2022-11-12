@@ -5,7 +5,6 @@ import lotto.constant.Message;
 
 public class InputView {
 	public String getPurchasingAmount() {
-		printAskingPurchasingAmountMessage();
 		return Console.readLine();
 	}
 
