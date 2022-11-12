@@ -1,8 +1,8 @@
 package lotto.domain.lotto;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
+import java.util.stream.Collectors;
 
 public class Lotto {
 
@@ -14,11 +14,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
-    }
-
-    public List<Integer> value() {
-        return new ArrayList<>(numbers);
+        this.numbers = getSortedNumbers(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -46,11 +42,20 @@ public class Lotto {
         }
     }
 
+    private List<Integer> getSortedNumbers(List<Integer> numbers) {
+        return numbers.stream()
+                .sorted()
+                .collect(Collectors.toUnmodifiableList());
+    }
+
+    public List<Integer> value() {
+        return numbers;
+    }
+
     @Override
     public String toString() {
         StringJoiner joiner = new StringJoiner(", ", "[", "]");
         numbers.stream()
-                .sorted()
                 .map(number -> number + "")
                 .forEach(joiner::add);
 
