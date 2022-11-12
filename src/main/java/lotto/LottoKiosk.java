@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,6 +13,7 @@ public class LottoKiosk {
     private String moneyInput;
     private long money;
     private long howMany;
+    private List<Lotto> lottos;
 
     public void insertMoney() {
         askHowMuch();
@@ -69,5 +71,20 @@ public class LottoKiosk {
 
     List<Integer> sortUniqueSixLottoNumbers(List<Integer> uniqueSixNumbers) {
         return uniqueSixNumbers.stream().sorted().collect(Collectors.toList());
+    }
+
+    void makeAllLotto() {
+        lottos = new ArrayList<>();
+        for (int i = 0; i < this.howMany; i++) {
+            lottos.add(makeLotto(sortUniqueSixLottoNumbers(makeUniqueSixLottoNumbers())));
+        }
+    }
+
+    Lotto makeLotto(List<Integer> numbers){
+        return new Lotto(numbers);
+    }
+
+    List<Lotto> showAllLotto(){
+        return this.lottos.stream().map(o -> (Lotto)o).collect(Collectors.toList());
     }
 }
