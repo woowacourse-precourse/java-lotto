@@ -14,6 +14,7 @@ public class Buyer {
             MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER);
     private static final String ERROR_SIZE = String.format("[ERROR] 당첨 번호는 %d개 입니다.", LOTTO_SIZE);
     private static final String ERROR_DUPLICATED = String.format("[ERROR] 당첨 번호는 %d개 입니다.", LOTTO_SIZE);
+    private static final String ERROR_BONUS_DUPLICATED = "당첨 번호와 다른 값을 입력하세요.";
 
     private int money;
     private List<Integer> numbers;
@@ -24,7 +25,7 @@ public class Buyer {
         this.money = money;
         validateNumbers(numbers);
         this.numbers = numbers;
-        validateLottoRange(bonusNumber);
+        validateBonusNumber(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
@@ -74,6 +75,17 @@ public class Buyer {
         Set<Integer> noDuplicated = new HashSet<>(numbers);
         if (noDuplicated.size() != numbers.size()) {
             throw new IllegalArgumentException(ERROR_DUPLICATED);
+        }
+    }
+
+    private void validateBonusNumber(int bonusNumber) {
+        validateLottoRange(bonusNumber);
+        validateBonusDuplication(bonusNumber);
+    }
+
+    private void validateBonusDuplication(int bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(ERROR_BONUS_DUPLICATED);
         }
     }
 }
