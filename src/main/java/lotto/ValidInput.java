@@ -15,12 +15,12 @@ public class ValidInput {
         }
     }
 
-    /*public void validIsInputInRange(Integer number) {
+    public void validIsInputInRange(Integer number) {
         if (!((number < LottoEnum.END_NUM.getValue()) && (number > LottoEnum.START_NUM.getValue()))) {
             throw new IllegalArgumentException("[ERROR] 로또 번호가 " + LottoEnum.START_NUM.getValue() + "과 " +
                     LottoEnum.END_NUM.getValue() + "사이에 있지 않습니다!");
         }
-    }*/
+    }
 
     /*public void validInputHasDuplicatedNumber(List<Integer> numbers) {
         if ()

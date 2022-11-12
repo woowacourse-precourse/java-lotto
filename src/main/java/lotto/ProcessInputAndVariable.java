@@ -27,11 +27,11 @@ public class ProcessInputAndVariable {
                 .collect(Collectors.toList());
         validInput.validInputLength(inputNumberList);
 
-        /*for (Integer number : inputNumberList) {
+        for (Integer number : inputNumberList) {
             validInput.validIsInputInRange(number);
         }
 
-        validInput.validInputHasDuplicatedNumber(inputNumberList);*/
+        // validInput.validInputHasDuplicatedNumber(inputNumberList);
 
         return new Lotto(inputNumberList);
     }
