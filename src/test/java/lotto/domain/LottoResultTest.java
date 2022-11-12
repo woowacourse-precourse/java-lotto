@@ -20,8 +20,9 @@ class LottoResultTest {
     static Map<LottoRanking, Integer> firstData = new HashMap<>();
     static Map<LottoRanking, Integer> secondData = new HashMap<>();
     static Map<LottoRanking, Integer> thirdData = new HashMap<>();
+
     @BeforeEach
-    void valueSetting(){
+    void valueSetting() {
         firstData.put(LottoRanking.FIRST, 1);
         firstData.put(LottoRanking.SECOND, 2);
         firstData.put(LottoRanking.THIRD, 3);
@@ -59,6 +60,14 @@ class LottoResultTest {
         assertThat(lottoResult.getTotalReward(lottoData)).isEqualTo(expected);
     }
 
+    @DisplayName("로또 상금 수익률 계산 기능 테스트")
+    @ParameterizedTest
+    @MethodSource("lottoRankingRewardRateDataSource")
+    void 로또_상금_수익률_계산_테스트(Map<LottoRanking, Integer> lottoData, double expected) {
+        double result = Math.round(lottoResult.getLottoResult(lottoData) * 1000) / 1000.0;
+        assertThat(result).isEqualTo(expected);
+    }
+
     private static Stream<Arguments> lottoRankingTicketDataSource() {
         return Stream.of(
                 Arguments.of(firstData, 21),
@@ -72,6 +81,14 @@ class LottoResultTest {
                 Arguments.of(firstData, 2064725000),
                 Arguments.of(secondData, 3280000),
                 Arguments.of(thirdData, 5000)
+        );
+    }
+
+    private static Stream<Arguments> lottoRankingRewardRateDataSource() {
+        return Stream.of(
+                Arguments.of(firstData, 98320.238),
+                Arguments.of(secondData, 156.190),
+                Arguments.of(thirdData, 0.625)
         );
     }
 }
