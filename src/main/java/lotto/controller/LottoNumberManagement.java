@@ -19,6 +19,26 @@ public class LottoNumberManagement {
   public void setRandomNumbers() {
     this.numbers = Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_NUMBERS_SIZE);
   }
+
+  private void validate(List<Integer> numbers) {
+    checkNumbersRange(numbers);
+    checkDuplicateNumbers(numbers);
+  }
+
+  private void checkNumbersRange(List<Integer> numbers) {
+    for (int number : numbers) {
+      if (LOTTO_START_NUMBER > number || number > LOTTO_END_NUMBER) {
+        throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+      }
+    }
+  }
+
+  private void checkDuplicateNumbers(List<Integer> numbers) {
+    if (numbers.size() != numbers.stream().distinct().count()) {
+      throw new IllegalArgumentException("[ERROR] 중복된 번호를 사용하지 않아야 합니다.");
+    }
+  }
+
   private List<Integer> sortNumbers(List<Integer> numbers) {
     Collections.sort(numbers);
     return numbers;
