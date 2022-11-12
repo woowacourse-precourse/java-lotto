@@ -7,7 +7,7 @@ public class MatchUtil {
     public int matchWinningNumber(List<Integer> lotto, List<Integer> userNum){
         cnt = 0;
         for(int i=0;i<length;i++){
-            if(lotto.get(i).equals(userNum.get(i))){
+            if(lotto.contains(userNum.get(i))){
                 cnt++;
             }
         }
