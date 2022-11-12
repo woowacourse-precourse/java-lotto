@@ -43,6 +43,7 @@ public class YieldCalculator {
             }
         }
         winInformation.put("five", winInformation.get("five") - winInformation.get("fiveContainingBonusNumber"));
+
         return winInformation;
     }
 

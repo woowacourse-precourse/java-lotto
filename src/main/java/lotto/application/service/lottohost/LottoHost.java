@@ -7,8 +7,8 @@ public class LottoHost {
 
     public List<List<Integer>> matchWinningLotto(
             List<List<Integer>> generatedLottoNumbers, List<Integer> winningLottoNumbers, int bonusWinningNumber) {
-
         winningLottoNumbers.add(bonusWinningNumber);
+
         List<Integer> matchedWinningLotto = new ArrayList<>();
         for (List<Integer> generatedLottoNumber : generatedLottoNumbers) {
             int count = 0;
@@ -22,6 +22,7 @@ public class LottoHost {
 
         List<Integer> countingContainBonusNumber = countContainBonusNumber(
                 matchedWinningLotto, generatedLottoNumbers, bonusWinningNumber);
+
         return new ArrayList<>() {{
             add(matchedWinningLotto);
             add(countingContainBonusNumber);
@@ -30,7 +31,6 @@ public class LottoHost {
 
     public List<Integer> countContainBonusNumber(
             List<Integer> matchedWinningLotto, List<List<Integer>> generatedLottoNumbers, int bonusWinningNumber) {
-
         List<Integer> result = new ArrayList<>();
 
         for (int i = 0; i < matchedWinningLotto.size(); i++) {
@@ -39,6 +39,7 @@ public class LottoHost {
                 result.add(1);
             }
         }
+
         return result;
     }
 }

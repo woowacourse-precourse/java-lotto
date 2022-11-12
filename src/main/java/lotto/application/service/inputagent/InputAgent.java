@@ -13,6 +13,7 @@ public class InputAgent {
     public int inputUserMoney() {
         String lottoPurchaseMoney = Console.readLine();
         InputValidator.validateLottoPurchaseMoney(lottoPurchaseMoney);
+
         return Integer.parseInt(lottoPurchaseMoney);
     }
 
@@ -22,6 +23,7 @@ public class InputAgent {
 
         String[] lottoNumbers = lottoNumber.split(",");
         List<Integer> convertedLottoNumbers = new ArrayList<>();
+
         InputValidator.validateIntegerValue(lottoNumbers);
 
         for (String value : lottoNumbers) {
@@ -29,12 +31,14 @@ public class InputAgent {
         }
 
         InputValidator.validateInputLottoNumber(convertedLottoNumbers);
+
         return convertedLottoNumbers;
     }
 
     public int inputBonusNumber(List<Integer> winningLottoNumbers) {
         String inputBonusNumber = Console.readLine();
         InputValidator.validateInputBonusLottoNumber(inputBonusNumber, winningLottoNumbers);
+
         return Integer.parseInt(inputBonusNumber);
     }
 }

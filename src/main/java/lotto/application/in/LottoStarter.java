@@ -15,9 +15,9 @@ public class LottoStarter {
 
     public void start() {
         int purchaseNumber = Client.getPurchaseMoney();
-
         List<List<Integer>> generatedLottoNumber = Lotto.generateLottoNumber(purchaseNumber);
         Lotto.getGeneratedLottoNumber(generatedLottoNumber);
+
         List<Integer> winningLotto = Lotto.inputWinningLottoNumbers();
         Lotto lotto = new Lotto(winningLotto);
         int bonusWinningNumber = lotto.inputWinningLottoBonusNumber(winningLotto);

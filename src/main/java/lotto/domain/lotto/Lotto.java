@@ -27,6 +27,7 @@ public class Lotto {
         for (int number = 0; number < purchaseNumber; number++) {
             generatedLottoNumber.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         }
+
         return generatedLottoNumber;
     }
 
@@ -38,9 +39,11 @@ public class Lotto {
 
     public static List<Integer> inputWinningLottoNumbers() {
         InputAgent inputAgent = new InputAgent();
+
         List<Integer> inputLottoNumbers = new ArrayList<>();
         System.out.println("\n당첨 번호를 입력해주세요.");
         inputLottoNumbers.addAll(inputAgent.inputWinningNumbers());
+
         return inputLottoNumbers;
     }
 
