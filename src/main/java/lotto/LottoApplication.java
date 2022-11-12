@@ -34,6 +34,16 @@ public class LottoApplication {
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = Integer.parseInt(Console.readLine());
 
-
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for (LottoReward lottoReward : LottoReward.values()) {
+            if (lottoReward == LottoReward.SECOND) {
+                System.out.println(String.format("%d개 일치, 보너스 볼 일치 (%,d원) - %d개",
+                        lottoReward.getMatchingNumbers(), lottoReward.getReward(), lottoReward.getCount()));
+                continue;
+            }
+            System.out.println(String.format("%d개 일치 (%,d원) - %d개",
+                    lottoReward.getMatchingNumbers(), lottoReward.getReward(), lottoReward.getCount()));
+        }
     }
 }
