@@ -36,6 +36,7 @@
 - M [x] Lotto에 추가된 등수, 상금 데이터를 모아 저장한다 - LottoData#countPrize(), LottoData#sumPrizeMoney()
 - M [x] Lotto 객체로 lottoNumber 를 출력할 수 있도록 toString 을 오버라이딩 한다 - Lotto#toString()
 - M [x] LottoData 객체를 사용해 수익률을 반환할 수 있도록 한다. - LottoData#percentageOfReturn()
+- M [x] Lotto 객체에 매개변수로 들어오는 numbers 가 중복이 없는지 확인한다 - Lotto#validateDuplicateNumber()
 - V 입력을 위한 문구를 출력한다. - InputView
   - V [x] 구입할 금액을 입력해주세요. - InputView#printHowMuch()
   - V [x] 당첨 번호를 입력해 주세요. - InputView#printInputWinNumber()
