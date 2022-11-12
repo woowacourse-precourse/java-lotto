@@ -16,4 +16,16 @@ public enum Victory {
         this.matchCount = matchCount;
         this.isBonus = isBonus;
     }
+
+    public int getWinningMoney() {
+        return winningMoney;
+    }
+
+    public int getMatchCount() {
+        return matchCount;
+    }
+
+    public boolean isBonus() {
+        return isBonus;
+    }
 }

@@ -5,7 +5,10 @@ import com.sun.jdi.Value;
 import java.util.*;
 
 public class Banker {
+    private static Banker instance = new Banker();
+    public static Banker getInstance = instance;
     User user = User.getInstance;
+
     public Banker() {
     }
 
@@ -46,30 +49,26 @@ public class Banker {
         }
     }
 
-    public void compareCount(int[] victoruNumber) {
+    public void compareCount(int[] victoryNumber) {
         setMap();
         for (int i = 0; i < map.size(); i++) {
-            if (isBonusCount(victoruNumber)) {
+            if (isBonusCount(victoryNumber)) {
                 map.put(Victory.MATCH_BONUS, +1);
                 return;
             }
-            if (victoruNumber[VICTORY_LOCATION] == Victory.values()[i].getMatchCount()) {
+            if (victoryNumber[VICTORY_LOCATION] == Victory.values()[i].getMatchCount()) {
                 map.put(Victory.values()[i], +1);
             }
         }
     }
 
     public void printWinner() {
-        for (Map.Entry<Victory,Integer> entry : map.entrySet()) {
-            if (entry.getKey().isBonus() == false) {
-                System.out.println(entry.getKey().getMatchCount() + "개 일치" +
-                        "("+entry.getKey().getWinningMoney()+")" + "-" + entry.getValue() + "개");
-            }
-            if (entry.getKey().isBonus() == true) {
-                System.out.println(entry.getKey().getMatchCount() + "개 일치, 보너스 볼 일치" +
-                        "(" + entry.getKey().getWinningMoney()+")" + "-" + entry.getValue() + "개");
-            }
-        }
+        map.get(Victory.MATCH3).intValue();
+        System.out.println("3개 일치 (5,000원) - " + map.get(Victory.MATCH3).intValue() + "개");
+        System.out.println("4개 일치 (50,000원) - " + map.get(Victory.MATCH4).intValue() + "개");
+        System.out.println("5개 일치 (1,500,000원) - "+ map.get(Victory.MATCH5).intValue()+"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+ map.get(Victory.MATCH_BONUS).intValue()+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - "+ map.get(Victory.MATCH_ALL).intValue()+"개");
     }
 
     public double getWinnerMoney() {
@@ -77,7 +76,7 @@ public class Banker {
         for (Map.Entry<Victory, Integer> entry : map.entrySet()) {
             sum += entry.getKey().getWinningMoney() * entry.getValue();
         }
-        double money = Math.round(sum / user.getMoney() *10)/10.0;
+        double money = Math.round(sum / (double) user.getMoney() * 1000) / 10.0;
         return money;
     }
 

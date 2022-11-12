@@ -10,13 +10,16 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(numbers);
+        List<Integer> numbers1;
+        numbers1 = new ArrayList<>();
+        validate(numbers);
+        isBoundary(numbers);
         if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException("[ERROR] 로또번호는 중복일 수 없습니다.");
         }
-        validate(numbers);
-        this.numbers = numbers;
+        numbers1 = new ArrayList<>(numbers);
+        Collections.sort(numbers1);
+        this.numbers = numbers1;
     }
 
     private void validate(List<Integer> numbers) {
@@ -31,4 +34,17 @@ public class Lotto {
         return " " + numbers;
     }
 // TODO: 추가 기능 구현
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    public void isBoundary(List<Integer> numbers) {
+        for (int i = 0; i < numbers.size(); i++) {
+            if (0 < numbers.get(i) && numbers.get(i) < 46) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            }
+        }
+    }
+
 }
