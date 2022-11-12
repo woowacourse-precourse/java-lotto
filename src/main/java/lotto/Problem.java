@@ -37,6 +37,17 @@ public class Problem {
     void printAnswer(){
         printAnswerComment();
         printAllPrizeNumber();
+        printYield();
+    }
+
+    void printYield(){
+        double yield=calculateYield();
+        System.out.println("총 수익률은 "+String.format("%.1f",yield)+"%입니다.");
+    }
+
+    double calculateYield(){
+        double money=Double.parseDouble(user.money);
+        return winMoney/money*100;
     }
 
     void printAllPrizeNumber(){
