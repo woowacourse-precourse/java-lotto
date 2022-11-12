@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -61,6 +62,16 @@ public class Manager {
         return result;
     }
 
+    public List<Integer> sumUpResult(List<Integer> result) {
+        List<Integer> sumOfResult = new ArrayList<>();
+        for (int i = 3; i <= 6; i++) {
+            sumOfResult.add(Collections.frequency(result, i));
+            if (i == 5) {
+                sumOfResult.add(Collections.frequency(result, 15));
+            }
+        }
+        return sumOfResult;
+    }
 }
 
 
