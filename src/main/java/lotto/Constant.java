@@ -2,6 +2,7 @@ package lotto;
 
 public class Constant {
     public static final int PRICE_UNIT = 1000;
+    public static final double YIELD_OPERAND = 100.0;
 
     public static final String INPUT_MESSAGE = "구매금액을 입력해주세요.";
     public static final String PURCHASE_MESSAGE = "개를 구매했습니다.";
