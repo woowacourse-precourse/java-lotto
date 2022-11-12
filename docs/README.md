@@ -85,6 +85,22 @@
        + getResult()
          * input: None
          * output: Map winResult
+         
+   * Money
+     - 로또 구매에 필요한 돈을 담는 Class 객체
+     - 1000으로 나누어 떨어져야 하며, 1000 이상의 수여야 한다.
+     - instance:
+       + int money: 돈의 양
+     - methods:
+       + getLottoCount
+         * input: None
+         * output: int lottoCount
+       + getMoney()
+         * input: None
+         * output: int money
+       + getBenefitRatio()
+           * input: int 당첨 액수
+           * output: String 2자리 수에서 반올림된 이익률
 
    * Messages
      - 각종 입/출력에 필요한 메세지를 담는 Enum 객체
@@ -139,6 +155,3 @@
        + static makeLotto()
          * input: int 만들 로또 갯수
          * output: List<Lotto> 만들어진 Lotto List
-       + static calBenefitRatio()
-         * input: int 입력된 돈, int 당첨 액수
-         * output: String 2자리 수에서 반올림된 이익률
