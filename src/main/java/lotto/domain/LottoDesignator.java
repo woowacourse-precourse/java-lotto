@@ -40,12 +40,8 @@ public class LottoDesignator {
     }
 
     public void checkRange(String input) {
-        Integer[] numbers = Stream.of(removeComma(input))
-                .mapToInt(Integer::parseInt)
-                .boxed()
-                .toArray(Integer[]::new);
         List<Integer> range = initRange();
-        List<Integer> lotto = Arrays.asList(numbers);
+        List<Integer> lotto = changeList(input);
         for(int lottoIndex = 0; lottoIndex<lotto.size(); lottoIndex++) {
             if(!range.contains(lotto.get(lottoIndex))) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1 ~ 45 범위만 입력 가능합니다.");
@@ -56,5 +52,13 @@ public class LottoDesignator {
 
     private String[] removeComma(String input) {
         return input.split(",");
+    }
+
+    private List<Integer> changeList(String input) {
+        Integer[] numbers = Stream.of(removeComma(input))
+                .mapToInt(Integer::parseInt)
+                .boxed()
+                .toArray(Integer[]::new);
+        return Arrays.asList(numbers);
     }
 }
