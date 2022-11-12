@@ -58,6 +58,7 @@ public class Player {
     }
 
     private void addPriceOfTicket(Ranking lottoRanking){
-
+        ChangeLottoPriceService lottoToPriceService = new ChangeLottoPriceService();
+        return lottoToPriceService.changeRankingToPrice();
     }
 }
