@@ -10,9 +10,9 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.assertj.core.api.Assertions.assertThatNoException;
 
 class InputWinningLottoValidatorTest {
-    @DisplayName("올바른 당첨 번호 입력 시")
+    @DisplayName("입력 레벨의 예외에 포함되지 않는 당첨 번호 입력")
     @ParameterizedTest(name = "{displayName} => {0}")
-    @ValueSource(strings = {"1,2,3,4,5,6", "1,10,20,30,40,45", "45,40,30,20,10,1", "45,30,10,20,40,1"})
+    @ValueSource(strings = {"1,2,3,4,5,6", "1,10,20,30,40,45", "45,30,10,20,40,1", "45,30,10,990025003,40,1"})
     void correctPaymentInput(String input) {
         assertThatNoException()
                 .isThrownBy(() -> InputWinningLottoValidator.validate(input));
