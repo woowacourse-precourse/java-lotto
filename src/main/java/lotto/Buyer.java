@@ -34,6 +34,7 @@ public class Buyer {
         this.money = money;
         validateNumbers(numbers);
         this.numbers = numbers;
+        validateLottoRange(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
