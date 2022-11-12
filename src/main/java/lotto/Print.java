@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 public class Print {
     private static final String contour = "---";
+    private static final int LOTTO_PRICE = 1000;
 
     public static void purchaseMessage() {
         System.out.println(GuideMessage.ENTER_PURCHASE_AMOUNT);
@@ -60,6 +61,6 @@ public class Print {
     }
 
     private static double calculateYield(int numberOfLotto, int revenue) {
-        return (double) revenue / (numberOfLotto * 1000) * 100;
+        return (double) revenue / (numberOfLotto * LOTTO_PRICE) * 100;
     }
 }
