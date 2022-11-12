@@ -44,19 +44,19 @@ public class OutputView {
         System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
     }
     
-    public static void printLottoIssuanceResults(final LottosDTO lottosDTO) {
+    public static void printLottosIssuanceResults(final LottosDTO lottosDTO) {
         final List<List<Integer>> lottos = lottosDTO.getLottos();
         
         printNumberOfPurchases(lottos);
         printLottosIssuanceResults(lottos);
     }
     
-    private static void printNumberOfPurchases(final List<List<Integer>> lottos) {
-        System.out.printf(NUMBER_OF_PURCHASES_FORMAT, lottos.size());
-    }
-    
     private static void printLottosIssuanceResults(final List<List<Integer>> lottos) {
         System.out.println(parseLottosIssuanceResults(lottos));
+    }
+    
+    private static void printNumberOfPurchases(final List<List<Integer>> lottos) {
+        System.out.printf(NUMBER_OF_PURCHASES_FORMAT, lottos.size());
     }
     
     private static String parseLottosIssuanceResults(final List<List<Integer>> lottos) {

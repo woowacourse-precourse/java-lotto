@@ -44,7 +44,7 @@ public class LottoController {
     }
     
     private void printLottoIssuanceResults(final Lottos lottos) {
-        OutputView.printLottoIssuanceResults(new LottosDTO(lottos));
+        OutputView.printLottosIssuanceResults(new LottosDTO(lottos));
     }
     
     private LottoRanksDTO lottoRanksDTO(final Lottos lottos) {
