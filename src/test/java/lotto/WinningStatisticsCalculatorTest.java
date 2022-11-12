@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class WinningStatisticsCalculatorTest {
     @DisplayName("로또 등수 개수 세기")
     @Test
-    void createDifferentPurchaseLottos() {
+    void countLottoPrize() {
         List<Lotto> lottos = new ArrayList<>(){{
             add(new Lotto("1,2,3,4,5,6"));
             add(new Lotto("1,2,3,4,5,7"));
@@ -31,7 +31,31 @@ class WinningStatisticsCalculatorTest {
             put(WinningHistory.BLANK, 0);
         }};
 
-        WinningStatisticsCalculator winningStatisticsCalculator = new WinningStatisticsCalculator(lottos, lotto, bonus);
+        WinningStatisticsCalculator winningStatisticsCalculator = new WinningStatisticsCalculator();
+        winningStatisticsCalculator.calculateNumberOfWins(lottos, lotto, bonus);
         assertThat(winningStatisticsCalculator.getWinningHistory()).isEqualTo(result);
+    }
+
+    @DisplayName("로또 총 수익률 계산하기")
+    @Test
+    void calculateRateOfReturn() {
+        int amount = 8000;
+        List<Lotto> lottos = new ArrayList<>(){{
+            add(new Lotto("8, 21, 23, 41, 42, 43"));
+            add(new Lotto("3, 5, 11, 16, 32, 38"));
+            add(new Lotto("7, 11, 16, 35, 36, 44"));
+            add(new Lotto("1, 8, 11, 31, 41, 42"));
+            add(new Lotto("13, 14, 16, 38, 42, 45"));
+            add(new Lotto("7, 11, 30, 40, 42, 43"));
+            add(new Lotto("2, 13, 22, 32, 38, 45"));
+            add(new Lotto("1, 3, 5, 14, 22, 45"));
+        }};
+        Lotto lotto = new Lotto("1,2,3,4,5,6");
+        int bonus = 7;
+
+        WinningStatisticsCalculator winningStatisticsCalculator = new WinningStatisticsCalculator();
+        winningStatisticsCalculator.calculateNumberOfWins(lottos, lotto, bonus);
+        winningStatisticsCalculator.calculateRateOfReturn(amount);
+        assertThat(winningStatisticsCalculator.getRateOfReturn()).isEqualTo(62.5);
     }
 }
