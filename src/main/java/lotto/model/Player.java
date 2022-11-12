@@ -5,6 +5,7 @@ import lotto.Ranking;
 import lotto.domain.Lotto;
 import lotto.domain.Profit;
 import lotto.domain.Winning;
+import lotto.service.ChangeLottoPriceService;
 
 import java.util.HashMap;
 import java.util.List;
@@ -59,6 +60,6 @@ public class Player {
 
     private void addPriceOfTicket(Ranking lottoRanking){
         ChangeLottoPriceService lottoToPriceService = new ChangeLottoPriceService();
-        return lottoToPriceService.changeRankingToPrice();
+        playerProfit.addPrice(lottoToPriceService.changeRankingToPrice(lottoRanking));
     }
 }
