@@ -21,18 +21,7 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
     public static List<Integer> generateRandomLottoNumbers() {
-        List<Integer> lottoNum = new ArrayList<>();
-
-        while(lottoNum.size() < 6) {
-            int generatedNumber = Randoms.pickNumberInRange(1, 45);
-
-            if(!lottoNum.contains(generatedNumber)) {
-                lottoNum.add(generatedNumber);
-            }
-        }
-
-        lottoNum.sort(Comparator.naturalOrder());
-
+        List<Integer> lottoNum = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return lottoNum;
     }
 }
