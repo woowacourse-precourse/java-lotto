@@ -9,8 +9,7 @@ public class LottoService {
 
     public int getPurchaseAmount() {
         String input = UserRequest.userInput();
-        Validation.validateMultipleOfThousand(input);
-        return input;
+        return Parser.convertStringToInt(input);
     }
 
     
