@@ -9,6 +9,9 @@ import java.util.List;
 import static lotto.Grade.*;
 
 public class Application {
+
+    private static ErrorMessage error;
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         playLottoGame();
