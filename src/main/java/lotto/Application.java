@@ -1,13 +1,16 @@
 package lotto;
 
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
 
         User user = new User();
 
         Print.printInsertMoney();
+        int money = Input.readInteger();
 
-        user.payMoney();
+        user.payMoney(money);
         user.buyLotto();
 
         Print.printLotto(user.getUserLottos());
@@ -15,8 +18,11 @@ public class Application {
         WinningNumbers winningNumbers = new WinningNumbers();
 
         Print.printWinningNumber();
-        winningNumbers.newWinningNumbers();
+        List<Integer> newWinningNumbers = Input.readListInteger(",");
+        winningNumbers.newWinningNumbers(newWinningNumbers);
+
         Print.printBonusNumber();
-        winningNumbers.newBonusNumber();
+        int newBonusNumber = Input.readInteger();
+        winningNumbers.newBonusNumber(newBonusNumber);
     }
 }

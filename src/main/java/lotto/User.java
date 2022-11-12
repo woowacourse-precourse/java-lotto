@@ -9,8 +9,7 @@ public class User {
 
     public User() {}
 
-    public void payMoney() {
-        int money = Input.readInteger();
+    public void payMoney(int money) {
         this.gameMoney = new GameMoney(money);
     }
 

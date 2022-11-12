@@ -11,18 +11,16 @@ public class WinningNumbers {
 
     public WinningNumbers() {}
 
-    public void newWinningNumbers() {
-        List<Integer> inputs = Input.readListInteger(",");
-        validateSize(inputs);
-        validatedLottoRange(inputs);
-        validateDuplicate(inputs);
-        winningNumbers = new Lotto(inputs);
+    public void newWinningNumbers(List<Integer> newWinningNumbers) {
+        validateSize(newWinningNumbers);
+        validatedLottoRange(newWinningNumbers);
+        validateDuplicate(newWinningNumbers);
+        winningNumbers = new Lotto(newWinningNumbers);
     }
 
-    public void newBonusNumber() {
-        int input = Input.readInteger();
-        validateNumberRange(input);
-        bonusNumber = input;
+    public void newBonusNumber(int newBonusNumber) {
+        validateNumberRange(newBonusNumber);
+        bonusNumber = newBonusNumber;
     }
 
     private void validateSize(List<Integer> inputs) {
