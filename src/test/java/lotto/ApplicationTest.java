@@ -2,11 +2,13 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.domain.Money;
+import lotto.domain.WinningTicket;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
@@ -88,6 +90,14 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    @DisplayName("당첨 번호의 숫자 범위가 1 ~ 45가 벗어나면 IllegalArgumentException 발생한다.")
+    void 당첨번호범위_벗어나면_예외발생() {
+        assertSimpleTest(() -> {
+            new WinningTicket(Arrays.asList(1, 2, 3, 4, 5, 46), 7);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
