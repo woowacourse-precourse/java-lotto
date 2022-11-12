@@ -45,4 +45,17 @@ public class Application {
 
         return new Lotto(winningNunmbers);
     }
+
+    public static int getBonusInput() {
+        int bonus;
+        try {
+            bonus = Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR]Bonus input error");
+        }
+
+        if (bonus < 1 || bonus > 45) throw new IllegalArgumentException("[ERROR]Bonus input error");
+
+        return bonus;
+    }
 }
