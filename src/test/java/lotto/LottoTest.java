@@ -94,4 +94,23 @@ class LottoTest {
 
         assertThat(lottoMachine.getBonusNumber()).isEqualTo(7);
     }
+
+    @DisplayName("잘못된 보너스 번호가 주어지면 예외가 발생한다.")
+    @Test
+    void giveWrongBonusNumber() {
+
+        LottoMachine lottoMachine = new LottoMachine();
+
+        lottoMachine.setWinNumber(List.of("1", "2", "3", "4", "5", "6"));
+
+        assertThatThrownBy(() -> lottoMachine.setBonusNumber("3"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> lottoMachine.setBonusNumber("100"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> lottoMachine.setBonusNumber("1111111111111111111111111111111111111111"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+    }
 }
