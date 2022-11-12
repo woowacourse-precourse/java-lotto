@@ -112,7 +112,7 @@ BUILD SUCCESSFUL in 0s
         - [x] `public static List<Integer> inputWinNumbers()`
         - [x] `public static void printBonusNumberMessage()`
         - [x] `public static int inputBonusNumber()`
-        - [ ] `public static void printLottoList(List<Lotto lottoList)`
+        - [x] `public static void printLottoList(List<Lotto lottoList)`
         - [ ] `public static void printWinResult(HashMap<LottoRang, Integer>)`
         - [ ] `public static void printIncomePercent(int incomePercent)`
 

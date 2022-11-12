@@ -34,4 +34,12 @@ public class UserInterface {
     public static int inputBonusNumber() {
         return Integer.parseInt(Console.readLine());
     }
+
+    public static void printLottoList(List<Lotto> lottoList) {
+        System.out.printf("%d개를 구매했습니다.\n", lottoList.size());
+        for (Lotto lotto : lottoList) {
+            List<Integer> numbers = lotto.getLottoNumbers();
+            System.out.println(numbers);
+        }
+    }
 }
