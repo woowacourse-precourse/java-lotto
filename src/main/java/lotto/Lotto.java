@@ -37,20 +37,53 @@ public class Lotto {
         return bonusNumber;
     }
 
-    public Map<Integer, Integer> rankCount(List<List<Integer>> userLottoNumbers, int bonus) {
-        Map<Integer, Integer> rankNumbers = Map.of(
-                3,0,
-                4,0,
-                5,0,
-                50,0,
-                6,0
-        );
+    public Map<Integer,Integer> rankCount(List<List<Integer>> userLottoNumbers, int bonus) {
+        Map<Integer,Integer> rankNumbers = new HashMap<>();
+        rankNumbers.put(3,0);
+        rankNumbers.put(4,0);
+        rankNumbers.put(5,0);
+        rankNumbers.put(50,0);
+        rankNumbers.put(6,0);
+
         for (List<Integer> lottoNumber : userLottoNumbers) {
-            long commonNumbers = numbers.stream().filter(lottoNumber::contains).count();
-            if (commonNumbers == 5 && numbers.contains(bonus)) {
-                rankNumbers.put(50,rankNumbers.get(50)+1);
+            int commonNumbers = Long.valueOf(numbers.stream().filter(lottoNumber::contains).count()).intValue();
+            if (commonNumbers == 5 && lottoNumber.contains(bonus)) {
+                rankNumbers.put(50, rankNumbers.get(50)+1);
+            } else {
+                rankNumbers.put(commonNumbers, rankNumbers.get(commonNumbers)+1);
             }
+
         }
         return rankNumbers;
+    }
+
+    public int viewResult(Map<Integer,Integer> result) {
+        System.out.println("당첨 통계\n---");
+        int sumMoney = 0;
+        for (Map.Entry<Integer,Integer> entry : result.entrySet()) {
+            if (entry.getKey() == 3) {
+                System.out.print("3개 일치 (5,000원)");
+                sumMoney += 3000;
+            } else if (entry.getKey() == 4) {
+                System.out.print("4개 일치 (50,000원)");
+                sumMoney += 50000;
+            } else if (entry.getKey() == 5) {
+                System.out.print("5개 일치 (1,500,000원)");
+                sumMoney += 1500000;
+            } else if (entry.getKey() == 50) {
+                System.out.print("5개 일치, 보너스 볼 일치 (30,000,000원)");
+                sumMoney += 30000000;
+            } else if (entry.getKey() == 6) {
+                System.out.print("6개 일치 (2,000,000,000원)");
+                sumMoney += 2000000000;
+            }
+
+            System.out.printf(" - %d개\n",entry.getValue());
+        }
+        return sumMoney;
+    }
+
+    public String yield(int amount, int sumMoney) {
+        return String.format("%.1f", (float) sumMoney/(amount*1000));
     }
 }
