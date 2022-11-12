@@ -11,6 +11,8 @@ public enum Rank {
     private final int winningAmount;
     private static Rank[] list = Rank.values();
 
+    private static int size = list.length;
+
     Rank(String condition, int winningAmount){
         this.condition = condition;
         this.winningAmount = winningAmount;
@@ -27,4 +29,9 @@ public enum Rank {
     public static Rank get(int index){
         return list[index];
     }
+
+    public static int size(){
+        return size;
+    }
+
 }

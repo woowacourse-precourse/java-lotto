@@ -43,35 +43,23 @@ public class LottoPurchaseInformation {
     public void compareLottoTicketsWith(List<Integer> winningNumbers, int bonusNumber){
         initializeWinningStatistics();
         for(int i = 0; i < lottoTickets.size(); i++) {
-            int count = lottoTickets.get(i).calculateCountOfMatchingNumbers(winningNumbers);
-            String condition = count + "개 일치";
-            if(count == 5 && lottoTickets.get(i).contains(bonusNumber)){
-                condition += " 보너스 볼 일치";
+            Lotto lotto = lottoTickets.get(i);
+            int count = lotto.calculateCountOfMatchingNumbers(winningNumbers);
+            String winningData = count + "개 일치";
+            if(count == 5 && lotto.contains(bonusNumber)){
+                winningData += " 보너스 볼 일치";
             }
-            renewWinningStatistics(condition);
+            renewWinningStatistics(winningData);
         }
     }
 
-    private void renewWinningStatistics(String condition){
-        if(condition.equals(Rank.FIFTH.condition())){
-            winningStatistics.replace(Rank.FIFTH, winningStatistics.get(Rank.FIFTH) + 1);
-            return;
-        }
-        if(condition.equals(Rank.FOURTH.condition())){
-            winningStatistics.replace(Rank.FOURTH, winningStatistics.get(Rank.FOURTH) + 1);
-            return;
-        }
-        if(condition.equals(Rank.THIRD.condition())){
-            winningStatistics.replace(Rank.THIRD, winningStatistics.get(Rank.THIRD) + 1);
-            return;
-        }
-        if(condition.equals(Rank.SECOND.condition())){
-            winningStatistics.replace(Rank.SECOND, winningStatistics.get(Rank.SECOND) + 1);
-            return;
-        }
-        if(condition.equals(Rank.FIRST.condition())){
-            winningStatistics.replace(Rank.FIRST, winningStatistics.get(Rank.FIRST) + 1);
-            return;
+    private void renewWinningStatistics(String winningData){
+        for(int i =  0; i < Rank.size(); i++) {
+            Rank winningRank = Rank.get(i);
+            if (winningData.equals(winningRank.condition())) {
+                winningStatistics.replace(winningRank, winningStatistics.get(winningRank) + 1);
+                return;
+            }
         }
     }
 
