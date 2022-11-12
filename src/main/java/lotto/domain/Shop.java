@@ -12,6 +12,10 @@ public class Shop {
     public Shop(Money money) {
         int count = money.getMoney() / PRICE;
         OutputView.printLotteryCount(count);
+        for (int i = 0; i < count; i++) {
+            lottos.add(new Lotto(NumberGenerator.getNumbers()));
+        }
+        OutputView.enterLine();
     }
 
     public List<Lotto> buyLotto() {
