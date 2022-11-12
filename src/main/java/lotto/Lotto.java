@@ -16,7 +16,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (isNumberNullOrEmpty(numbers) || hasSixNumbers(numbers)) {
+        if (isNumberNullOrEmpty(numbers) || !hasSixNumbers(numbers)) {
             throw new IllegalArgumentException();
         }
         for (Integer num : numbers) {
