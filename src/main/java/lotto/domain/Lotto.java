@@ -35,8 +35,11 @@ public class Lotto {
     public void addBonusNum(int bonusNum){
         this.bonusNum = bonusNum;
     }
-    public void compare(List<Integer> numbers){
-
+    public int compare(List<Integer> numbers){
+        int matchNum = (int)this.numbers.stream()
+                .filter(num -> numbers.contains(num))
+                .count();
+        return matchNum;
     }
 
 
