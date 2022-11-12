@@ -64,7 +64,7 @@ BUILD SUCCESSFUL in 0s
     - [x] `public Lotto(List<Integer> numbers)`
     - [ ] `private void validate(List<Integer> numbers)`
     - [x] `private void validateSizeOfNumbers(List<Integer> numbers)`
-    - [ ] `private void validateDuplicateNumbers(List<Integer> numbers)`
+    - [x] `private void validateDuplicateNumbers(List<Integer> numbers)`
     - [ ] `private void validateRangeOfNumbers(List<Integer> numbers)`
 - [ ] **CLASS 2.** `WinLotto extends Lotto`
   - **Class Variables:**
