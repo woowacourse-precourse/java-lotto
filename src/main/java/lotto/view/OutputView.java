@@ -2,6 +2,7 @@ package lotto.view;
 
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.domain.Rank;
 
 public class OutputView {
     public void printBuyAmountMessage() {
@@ -27,25 +28,13 @@ public class OutputView {
         System.out.println("당첨 통게\n" + "---");
     }
 
-    public void printFifthCount(int count) {
-        System.out.println("3개 일치 (5,000원) - " + count + "개");
+    public void printWiningCount(List<Integer> winingCount){
+        int i = 0;
+        for (Rank priceMessage : Rank.values()){
+            System.out.println(priceMessage.getPriceMessage()+ winingCount.get(i++)+"개");
+        }
     }
 
-    public void printFourthCount(int count) {
-        System.out.println("4개 일치 (50,000원) - " + count + "개");
-    }
-
-    public void printThirdCount(int count) {
-        System.out.println("5개 일치 (1,500,000원) - " + count + "개");
-    }
-
-    public void printSecondCount(int count) {
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + count + "개");
-    }
-
-    public void printFirstCount(int count) {
-        System.out.println("6개 일치 (2,000,000,000원) - " + count + "개");
-    }
 
     public void printRevenue(double revenue) {
         System.out.printf("총 수익률은 %.1f%%입니다.", revenue);
