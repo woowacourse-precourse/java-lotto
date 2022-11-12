@@ -1,24 +1,28 @@
 package lotto.domain;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
+import lotto.utils.LottoInfo;
 import lotto.utils.Winning;
 
 public class Result {
+    private final String FIRST = Winning.FIRST.getLabel();
+    private final String SECOND = Winning.SECOND.getLabel();
+    private final String THIRD = Winning.THIRD.getLabel();
+    private final String FOURTH = Winning.FOURTH.getLabel();
+    private final String FIFTH = Winning.FIFTH.getLabel();
     List<List<Integer>> purchasedLotteries;
     WinningNumbers winningNumbers;
     BonusNumber bonusNumber;
     Map<String, Integer> resultMap = new LinkedHashMap<String, Integer>() {
         {
-            put("fifth", 0);
-            put("fourth", 0);
-            put("third", 0);
-            put("second", 0);
-            put("first", 0);
+            put(FIFTH, 0);
+            put(FOURTH, 0);
+            put(THIRD, 0);
+            put(SECOND, 0);
+            put(FIRST, 0);
         }
     };
 
@@ -34,35 +38,34 @@ public class Result {
         return resultMap;
     }
 
-    // TODO : 리팩토링 인덴트 1 유지 & 하드코딩 삭제
     public void countWinningCase() {
         for (List<Integer> purchasedLotto : purchasedLotteries) {
             int winningCount = winningNumbers.countWinning(purchasedLotto);
 
             if (winningCount == 6) {
-                resultMap.put("first", resultMap.get("first") + 1);
+                resultMap.put(FIRST, resultMap.get(FIRST) + 1);
             }
             if (winningCount == 5) {
                 if (bonusNumber.checkContainBonusNumber(purchasedLotto)) {
-                    resultMap.put("second", resultMap.get("second") + 1);
+                    resultMap.put(SECOND, resultMap.get(SECOND) + 1);
                 }
 
                 if (bonusNumber.checkContainBonusNumber(purchasedLotto)) {
-                    resultMap.put("third", resultMap.get("third") + 1);
+                    resultMap.put(THIRD, resultMap.get(THIRD) + 1);
                 }
             }
             if (winningCount == 4) {
-                resultMap.put("fourth", resultMap.get("fourth") + 1);
+                resultMap.put(FOURTH, resultMap.get(FOURTH) + 1);
             }
             if (winningCount == 3) {
-                resultMap.put("fifth", resultMap.get("fifth") + 1);
+                resultMap.put(FIFTH, resultMap.get(FIFTH) + 1);
             }
         }
     }
 
     public String getProfitRate() {
         int totalWinningPrize = getTotalWinningPrize();
-        int purchasePrice = purchasedLotteries.size() * 1000;
+        int purchasePrice = purchasedLotteries.size() * LottoInfo.PRICE.getNumber();
         double profitRate = (double) totalWinningPrize / purchasePrice;
         return String.format("%,.1f", profitRate * 100) + "%";
     }
