@@ -7,7 +7,8 @@ public enum Prize {
     prize_3(0,"4등", 50000),
     prize_4(0,"5등", 5000),
     prize_5(0,"아무것도아님",0),
-    prize_6(0,"아무것도아님2",0);
+    prize_6(0,"아무것도아님2",0),
+    prize_7(0,"아무것도아님2",0);
 
     private int count;
     private final String name;

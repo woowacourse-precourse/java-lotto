@@ -8,6 +8,7 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Application {
     public static List<Integer> lotto_answer = new ArrayList<>();
@@ -30,7 +31,15 @@ public class Application {
 
     public static void getPurchaseAmount(List<List<Integer>> lotto_list) {
         System.out.println("구입금액을 입력해 주세요.");
-        purchase_price = Integer.parseInt(Console.readLine());
+        String temp = Console.readLine();
+        try{
+            Integer.parseInt(temp);
+        }
+        catch(NumberFormatException e){
+            System.out.print("[ERROR]");
+            throw new IllegalArgumentException("[ERROR]");
+        }
+        purchase_price = Integer.parseInt(temp);
         lotto_amount = purchase_price / 1000;
         System.out.println(lotto_amount + "개를 구매했습니다.");
 
@@ -42,7 +51,7 @@ public class Application {
         List<Integer> numbers;
         while (lotto_list.size() < lotto_amount) {
             numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(numbers);
+            //Collections.sort(numbers);
             lotto_list.add(numbers);
         }
         for (List<Integer> each_lotto : lotto_list) {
@@ -69,7 +78,10 @@ public class Application {
         for (List<Integer> temp_user_lotto : lotto_list) {
             List<Integer> temp_lotto_answer = new ArrayList<>(lotto_answer);
             temp_lotto_answer.removeAll(temp_user_lotto);
-            String for_prize = "prize_" + temp_lotto_answer.size();
+            int a = temp_lotto_answer.size();
+            if(temp_lotto_answer.size() > 1 && !temp_user_lotto.contains(bonus_number))
+                a++;
+            String for_prize = "prize_" + a;
             Prize prize = Prize.valueOf(for_prize);
             sum_of_prize += prize.getWinLotteryPrize();
             prize.addWinLotteryCount();
@@ -80,6 +92,8 @@ public class Application {
     public static void lottoResult() {
 
         double end = Math.round((double) sum_of_prize / (double) purchase_price * 1000.0) / 1000.0;
+//        System.out.println(sum_of_prize);
+//        System.out.println(purchase_price);
         BigDecimal bd = new BigDecimal(end * 100);
 
         System.out.println("당첨통계");
@@ -88,7 +102,7 @@ public class Application {
         System.out.println("4개 일치 (50,000원) - " + Prize.prize_3.getWinLotteryCount() + "개");
         System.out.println("5개 일치 (1,500,000원) - " + Prize.prize_2.getWinLotteryCount() + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + Prize.prize_1.getWinLotteryCount() + "개");
-        System.out.println("6개 일치 (2,000,000,000)원 - " + Prize.prize_0.getWinLotteryCount() + "개");
-        System.out.println("수익률은 총 " + bd.setScale(1, RoundingMode.CEILING) + "% 입니다.");
+        System.out.println("6개 일치 (2,000,000,000원) - " + Prize.prize_0.getWinLotteryCount() + "개");
+        System.out.println("총 수익률은 " + bd.setScale(1, RoundingMode.CEILING) + "%입니다.");
     }
 }
