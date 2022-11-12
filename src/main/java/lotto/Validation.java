@@ -46,7 +46,15 @@ public class Validation {
             throw new IllegalArgumentException("[ERROR] 당첨번호는 쉼표로 구분해서 입력해 주세요");
         }
     }
-
+    // 입력된 당첨번호를 검증
+    public static void validateWinningLottoNumbers(String winningNumbersWithComma) {
+        List<String> winningNumbers = Arrays.stream(winningNumbersWithComma.split(",")).collect(Collectors.toList());
+        for (String winningNumber : winningNumbers) {
+            isDigit(winningNumber);
+            isRightLottoNumber(Integer.parseInt(winningNumber));
+        }
+        isDuplicatedWinningNumbers(winningNumbers.stream().map(Integer::parseInt).collect(Collectors.toList()));
+    }
 }
 
 
