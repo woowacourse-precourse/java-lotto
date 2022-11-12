@@ -57,11 +57,11 @@ class InputParserTest {
     void parseLottoStringOutOfRangeTest() {
         assertThatThrownBy(() -> parseLottoString("0,2,3,4,5,6"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("1 ~ 45의 범위를 갖는 숫자로만 이루어져 있어야 합니다.");
+                .hasMessage("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
 
         assertThatThrownBy(() -> parseLottoString("1,2,3,4,5,46"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("1 ~ 45의 범위를 갖는 숫자로만 이루어져 있어야 합니다.");
+                .hasMessage("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
 
     /**

@@ -19,18 +19,12 @@ public class InputParser {
     public static Lotto parseLottoString(String inputLottoString) {
         String[] numbers = inputLottoString.split(",");
         InputLottoType inputLottoType = validateInputLottoString(numbers);
-        switch (inputLottoType) {
-            case IS_NOT_SIX_NUMBERS:
-                throw new IllegalArgumentException(IS_NOT_SIX_NUMBERS.getMessage());
-            case OUT_OF_RANGE:
-                throw new IllegalArgumentException(OUT_OF_RANGE.getMessage());
-            case IS_NOT_NUMBER:
-                throw new IllegalArgumentException(IS_NOT_NUMBER.getMessage());
-            case DUPLICATED_NUMBER:
-                throw new IllegalArgumentException(DUPLICATED_NUMBER.getMessage());
-            default:
-                return new Lotto(parseStringList(numbers));
+
+        if (inputLottoType == OK) {
+            return new Lotto(parseStringList(numbers));
         }
+        alertError(inputLottoType);
+        return null;
     }
 
     /**
@@ -85,6 +79,16 @@ public class InputParser {
             lottoNumbers.add(Integer.parseInt(number));
         }
         return lottoNumbers;
+    }
+
+    /**
+     * 예외가 발생한 경우, 해당 예외에 해당하는 에러 메시지를 출력하고, 예외를 던집니다.
+     * @param inputLottoType 발생한 예외의 종류입니다.
+     */
+    private static void alertError(InputLottoType inputLottoType) {
+        String prefix = "[ERROR] ";
+        System.out.println(prefix + inputLottoType.getMessage());
+        throw new IllegalArgumentException(inputLottoType.getMessage());
     }
 
 }
