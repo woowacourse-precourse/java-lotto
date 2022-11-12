@@ -134,6 +134,16 @@ public class Application {
         System.out.print(COMMON_ERROR_MESSAGE + " 보너스 번호는 1개이고, 로또 번호와 중복되지 않는 1부터 45 사이의 숫자여야 합니다.");
     }
 
+    static void check_user_bonus_number(Lotto user_lotto, int user_bonus_number) {
+        if (user_lotto.get_numbers().contains(user_bonus_number)) {
+            throw new IllegalArgumentException();
+        }
+
+        if (user_bonus_number < 0 || user_bonus_number  > 45) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static void main(String[] args) {
         ask_how_much_money();
 
@@ -186,6 +196,12 @@ public class Application {
             user_bonus_number = what_user_bonus_number();
         } catch (IllegalArgumentException e) {
             print_not_one_number_error();
+            return;
+        }
+
+        try {
+            check_user_bonus_number(user_lotto, user_bonus_number);
+        } catch (IllegalArgumentException e) {
             return;
         }
     }
