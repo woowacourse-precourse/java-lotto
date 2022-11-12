@@ -7,7 +7,6 @@ public class PurchaseService {
 
     int purchaseAmount;
 
-
     public void parsePurchaseInput(String input){
         isInteger(input);
         isNegative(purchaseAmount);
@@ -25,6 +24,7 @@ public class PurchaseService {
             throw new IllegalArgumentException("[ERROR] 구매 금액은 숫자여야 합니다.");
         }
     }
+
     private void isNegative(int input){
         if(input < MIN){
             throw new IllegalArgumentException("[ERROR] 구매 금액은 0 이상의 1000의 배수여야 합니다.");
