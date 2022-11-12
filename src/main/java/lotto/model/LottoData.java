@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import lotto.model.LottoCalculate.LottoPrizeMoneyMatchCount;
 
 public class LottoData {
     public int lottoAmount;
@@ -18,6 +19,13 @@ public class LottoData {
     public LottoData(double money) {
         this.lottoAmount = (int) (money / 1000);
         allLotto = new ArrayList<>(lottoAmount);
+        prize = new HashMap<>();
+        prize.put(1, 0);
+        prize.put(2, 0);
+        prize.put(3, 0);
+        prize.put(4, 0);
+        prize.put(5, 0);
+        prizeMoneySum = 0;
     }
 
     public void makeLotto() {
@@ -33,27 +41,17 @@ public class LottoData {
 
     public void putDataToLotto(List<Integer> winNumbers, int bonusNumber) {
         for (Lotto lotto : allLotto) {
-            lottoCalculate.totalCalculate(lotto, winNumbers, bonusNumber);
+            totalCalculate(lotto, winNumbers, bonusNumber);
         }
     }
 
-    public void countPrize() {
-        prize = new HashMap<>();
-        prize.put(1, 0);
-        prize.put(2, 0);
-        prize.put(3, 0);
-        prize.put(4, 0);
-        prize.put(5, 0);
-        for (Lotto lotto : allLotto) {
-            prize.merge(lotto.prize, 1, Integer::sum);
-        }
-    }
-
-    public void sumPrizeMoney() {
-        prizeMoneySum = 0d;
-        for (Lotto lotto : allLotto) {
-            prizeMoneySum += lotto.getPrizeMoney();
-        }
+    void totalCalculate(Lotto lotto, List<Integer> winNumbers, int bonusNumber) {
+        int matchCount = lottoCalculate.checkMatches(lotto.getNumbers(), winNumbers);
+        boolean matchBonusNumber = lottoCalculate.checkBonusNumber(lotto.getNumbers(), bonusNumber);
+        LottoPrizeMoneyMatchCount lottoPrizeMoneyMatchCount = lottoCalculate.calculatePrize(matchCount,
+                matchBonusNumber);
+        prize.merge(lottoPrizeMoneyMatchCount.prize, 1, Integer::sum);
+        prizeMoneySum += lottoPrizeMoneyMatchCount.prizeMoney;
     }
 
     public double percentageOfReturn() {

@@ -18,14 +18,6 @@ public class LottoCalculate {
         }
     }
 
-    void totalCalculate(Lotto lotto, List<Integer> winNumbers, int bonusNumber) {
-        int matchCount = checkMatches(lotto.getNumbers(), winNumbers);
-        boolean matchBonusNumber = checkBonusNumber(lotto.getNumbers(), bonusNumber);
-        LottoPrizeMoneyMatchCount lottoPrizeMoneyMatchCount = calculatePrize(matchCount, matchBonusNumber);
-        lotto.addPrize(lottoPrizeMoneyMatchCount.prize);
-        lotto.addPrizeMoney(lottoPrizeMoneyMatchCount.prizeMoney);
-    }
-
     int checkMatches(Collection<Integer> lottoNumbers, List<Integer> winNumbers) {
         int matchCount = 0;
         for (Integer winNumber : winNumbers) {

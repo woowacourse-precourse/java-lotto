@@ -62,9 +62,9 @@
 6. 당첨 금액 계산해 수익률 체크 후 출력하기 (수익률은 소수점 둘째자리에서 반올림)
 
 ## 개선 필요 사항
-- [ ] **Lotto 클래스의 인스턴스 변수 삭제**
-  - [ ] prize 를 Lotto 클래스에 담지 말고, LottoData 클래스에 담기
-  - [ ] prizeMoney 를 Lotto 클래스에 담지 말고, LottoData 클래스에 누적시키기
+- [x] **Lotto 클래스의 인스턴스 변수 삭제**
+  - [x] prize 를 Lotto 클래스에 담지 말고, LottoData 클래스에 담기
+  - [x] prizeMoney 를 Lotto 클래스에 담지 말고, LottoData 클래스에 누적시키기
 - [x] error 검사 전용 클래스 생성
 - [ ] OutputView#getLottoPrizeMoney() 함수 클래스 이동
 - [ ] LottoInput 클래스 에 저장되는 데이터를 LottoData 클래스로 옮기기
