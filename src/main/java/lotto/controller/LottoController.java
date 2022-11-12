@@ -2,10 +2,13 @@ package lotto.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+import lotto.constant.LottoResultConstant;
 import lotto.domain.Lotto;
 import lotto.service.LottoResultService;
 import lotto.service.UserLottoService;
+import lotto.service.YieldService;
 import lotto.validation.BonusLottoValidation;
 import lotto.validation.LotteryWinningNumberValidation;
 import lotto.validation.LottoMoneyValidation;
@@ -19,7 +22,7 @@ import lotto.view.View;
 public class LottoController {
 
     private static final LottoResultService lottoResultService= new LottoResultService();
-
+    private static final YieldService yieldService = new YieldService();
     /**
      * 사용자에게 money 를 입력받고 validation 후 돈을 기억해둔다. 사용자에게 LotteryWinningNumber 를 입력받고 validation 후 기억해둔다. 사용자에게
      * BonusLottoNumber 를 입력받고 validation 후 기억해둔다.
@@ -33,8 +36,9 @@ public class LottoController {
 
         String bonusLotto = getBonusLottoWithValidation(winningLotto);
 
-        lottoResultService.getResult(userLotto, getWinningLotto(winningLotto), getBonusLotto(bonusLotto));
-
+        Map<LottoResultConstant, Integer> result = lottoResultService.getResult(userLotto,
+                getWinningLotto(winningLotto), getBonusLotto(bonusLotto));
+        printUserLottoAndUserYield(result);
     }
 
     private String getWinningLottoWithValidation() {
@@ -150,6 +154,11 @@ public class LottoController {
 
     private int getBonusLotto(String bonusLotto) {
         return Integer.parseInt(bonusLotto);
+    }
+
+    public int printUserLottoAndUserYield(Map<LottoResultConstant, Integer> result) {
+        int yieldResult = yieldService.calculateYield(result);
+        return yieldResult;
     }
 
 }
