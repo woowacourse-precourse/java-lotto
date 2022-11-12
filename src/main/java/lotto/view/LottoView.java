@@ -19,7 +19,7 @@ public class LottoView {
     }
 
     public void printIssuedLottoDetails(LottoIssuingMachine issuingMachine) {
-        System.out.println(issuingMachine);
+        System.out.println("\n" + issuingMachine);
     }
 
     public void printWinningNumbersInputCommand() {
@@ -27,11 +27,11 @@ public class LottoView {
     }
 
     public void printBonusNumberInputCommand() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println("\n보너스 번호를 입력해 주세요.");
     }
 
     public void printWinningStatistics(LottoWinningStatistics winningStatistics) {
-        System.out.println("당첨 통계\n" + "---");
+        System.out.println("\n당첨 통계\n" + "---");
         System.out.println(winningStatistics);
     }
 }
