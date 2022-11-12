@@ -15,9 +15,9 @@ public class OutputView {
     }
 
     public static void announceLottos(Lottos lottos) {
-        System.out.println(lottos.countLottos()+ PAY_COUNT_NOTICE);
+        System.out.println(NEW_LINE+lottos.countLottos()+ PAY_COUNT_NOTICE);
         for (Lotto lotto : lottos.provideLottos()) {
-            System.out.println(LOTTO_PREFIX+lotto+LOTTO_SUFFIX);
+            System.out.println(lotto.toString());
         }
     }
 
@@ -37,7 +37,7 @@ public class OutputView {
         NumberFormat numberFormat = new DecimalFormat("#,##0.0");
 
         System.out.println(RESULT_HEADER);
-        System.out.print(result);
+        System.out.print(result.toString());
         System.out.println(PROFIT_RATE_PREFIX+numberFormat.format(Double.parseDouble(profitRate))+PROFIT_RATE_SUFFIX);
     }
 }
