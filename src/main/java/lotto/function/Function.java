@@ -88,4 +88,28 @@ public class Function {
         }
         return 0;
     }
+    public static List<Integer> winLotto(Lotto lotto, List<Integer> winning, int bonus){
+        List<Integer> result = new ArrayList<>(List.of(0, 0, 0, 0, 0));
+        int count = 0;
+        List<Integer> numbers = lotto.getNumbers();
+        for (Integer number : numbers) {
+            if (winning.contains(number)) {
+                count += 1;
+            }
+        }
+        if (count == 5){
+            if (numbers.contains(bonus)){
+                result.set(3, result.get(3) + 1);
+                return result;
+            }
+        }
+        if (count == 6){
+            result.set(4, result.get(4) + 1);
+            return result;
+        }
+        if (count > 2) {
+            result.set(count - 3, result.get(count - 3) + 1);
+        }
+        return result;
+    }
 }
