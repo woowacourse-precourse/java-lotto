@@ -9,7 +9,7 @@ public class InputNumberValidator {
     private static final String NON_NUMERIC_CHARACTERS_EXCEPTION_MESSAGE = "[ERROR] '숫자'만 입력 가능합니다.";
     private static final String EXIST_ZERO_AT_FIRST_PLACE_EXCEPTION_MESSAGE = "[ERROR] 1번째 자리에는 0이 올 수 없습니다.";
     private static final String INPUT_NON_NUMBER_FORM = "\\D";
-    private static final String EXIST_ZERO_AT_FIRST_PLACE_FORM = "0\\d*";
+    private static final String EXIST_ZERO_AT_FIRST_PLACE_FORM = "0\\d+";
     
     private InputNumberValidator() {
         throw new UtilClassCreateException();
