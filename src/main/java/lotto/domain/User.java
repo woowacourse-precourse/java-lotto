@@ -12,6 +12,7 @@ public class User {
 
     public User(int purchase) {
         this.lottoCount = purchase / 1000;
+        createLottos();
     }
 
     public void createLottos() {
