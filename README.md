@@ -108,7 +108,7 @@ BUILD SUCCESSFUL in 0s
     - **Class Methods:**
         - [x] `public static void printPurchaseMoneyMessage()`
         - [x] `public static int inputPurchaseMoney()`
-        - [ ] `public static void printWinNumbersMessage()`
+        - [x] `public static void printWinNumbersMessage()`
         - [ ] `public static List<Integer> inputWinNumbers()`
         - [ ] `public static void printBonusNumberMessage()`
         - [ ] `public static int inputBonusNumber()`

@@ -10,4 +10,8 @@ public class UserInterface {
     public static int inputPurchaseMoney() {
         return Integer.parseInt(Console.readLine());
     }
+
+    public static void printWinNumbersMessage() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
 }
