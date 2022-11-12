@@ -43,15 +43,14 @@ public class UserTest extends NsTest {
                     User user = new User();
                     command("3000");
                     user.buy();
-                    user.createLotto();
                     List<Lotto> lottos = user.getLottos();
 
                     assertThat(lottos.get(0).getNumbers())
-                            .containsOnly(8, 21, 23, 41, 42, 43);
+                            .containsExactly(8, 21, 23, 41, 42, 43);
                     assertThat(lottos.get(1).getNumbers())
-                            .containsOnly(3, 5, 11, 16, 32, 38);
+                            .containsExactly(3, 5, 11, 16, 32, 38);
                     assertThat(lottos.get(2).getNumbers())
-                            .containsOnly(7, 11, 16, 35, 36, 44);
+                            .containsExactly(7, 11, 16, 35, 36, 44);
                 },
                 List.of(8, 21, 23, 41, 42, 43),
                 List.of(3, 5, 11, 16, 32, 38),
