@@ -3,9 +3,11 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -22,5 +24,10 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호는 오름차순으로 정렬된다.")
+    @Test
+    void createLottoIsSort() {
+        assertThat(new Lotto(new ArrayList<>(List.of(3, 5, 1, 21, 19, 6))).getNumbers())
+                .isEqualTo(List.of(1, 3, 5, 6, 19, 21));
+    }
 }
