@@ -38,7 +38,6 @@ public class LottoInStream {
         if (line.length() != _lotto_number_max_length) {
             throw new IllegalArgumentException();
         }
-
         return convStrToIntList(line);
     }
 
@@ -52,13 +51,7 @@ public class LottoInStream {
         if (line.length() != _lotto_bonus_max_length) {
             throw new IllegalArgumentException();
         }
-
-        char ch = line.charAt(_bonus_index);
-
-        if (!isNumber(ch)) {
-            throw new IllegalArgumentException();
-        }
-        return (charToDigit(ch));
+        return (convCharToInt(line.charAt(_bonus_index)));
     }
 
     private static boolean isNumber(char ch) {
@@ -99,5 +92,12 @@ public class LottoInStream {
             numbers.add(charToDigit(ch));
         }
         return numbers;
+    }
+
+    private static int convCharToInt(char ch) {
+        if (!isNumber(ch)) {
+            throw new IllegalArgumentException();
+        }
+        return (charToDigit(ch));
     }
 }
