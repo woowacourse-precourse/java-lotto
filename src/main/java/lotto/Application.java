@@ -51,24 +51,6 @@ public class Application {
         return lottos;
     }
 
-    static List<List<Integer>> make_bonus_numbers(List<Lotto> lottos, int how_many_lotto) {
-        List<List<Integer>> bonus_numbers = new ArrayList<List<Integer>>();
-        int temp_index = 0;
-
-        while (bonus_numbers.size() != how_many_lotto) {
-            List<Integer> bonus_number = pickUniqueNumbersInRange(1, 45, 1);
-
-            if (lottos.get(temp_index).get_numbers().contains(bonus_number.get(0))) {
-                continue;
-            }
-
-            temp_index = temp_index + 1;
-            bonus_numbers.add(bonus_number);
-        }
-
-        return bonus_numbers;
-    }
-
     static void print_lotto_info(List<Lotto> lottos) {
         System.out.print(lottos.size());
         System.out.println("개를 구매했습니다.");
@@ -167,9 +149,6 @@ public class Application {
 
         List<Lotto> lottos;
         lottos = make_lotto(how_many_lotto);
-
-        List<List<Integer>> bonus_numbers;
-        bonus_numbers = make_bonus_numbers(lottos, how_many_lotto);
 
         print_lotto_info(lottos);
 
