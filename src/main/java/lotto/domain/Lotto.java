@@ -2,10 +2,7 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Lotto {
     public static final int MIN_VALUE = 1;
@@ -16,9 +13,16 @@ public class Lotto {
     public static final String SCOPE_ERROR_MESSAGE = "[ERROR]: 로또 번호가 " + MIN_VALUE + "~" + MAX_VALUE + "사이 숫자가 아닙니다.\n";
     private final List<Integer> numbers;
 
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        List<Integer> list = new ArrayList<>(numbers);
+        list.sort(Comparator.naturalOrder());
+        this.numbers = list;
+
     }
 
     private void validate(List<Integer> numbers) {
@@ -28,7 +32,7 @@ public class Lotto {
     }
 
     public static Lotto createRandomNumbers() {
-        Set<Integer> randomNumberSet = new HashSet<>();
+        TreeSet<Integer> randomNumberSet = new TreeSet<>();
         while (randomNumberSet.size() != SIZE) {
             int randomNumber = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
             randomNumberSet.add(randomNumber);
