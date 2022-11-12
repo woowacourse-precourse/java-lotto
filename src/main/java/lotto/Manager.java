@@ -221,6 +221,7 @@ public class Manager {
         }
         System.out.println("total = " + total);
         double add = ((double) total / myMoney * 100);
+        add = Math.round(add*10)/10.0;
         System.out.println("총 수익률은 " + add + "%입니다.");
     }
 

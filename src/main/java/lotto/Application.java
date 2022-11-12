@@ -9,6 +9,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
     public static void main(String[] args) {
+
         final String ER = "[ERROR]";
 
         // TODO: 프로그램 구현
