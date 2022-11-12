@@ -43,4 +43,8 @@ public class OutputView {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + count + "개");
     }
 
+    public void printFirstCount(int count) {
+        System.out.println("6개 일치 2,000,000,000원) - " + count + "개");
+    }
+
 }
