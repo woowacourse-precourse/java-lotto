@@ -42,6 +42,13 @@ public class BuyerTest {
     @ParameterizedTest
     @ValueSource(ints={10500, 10010, 10001})
     public void 구매_금액이_최소_구매_단위인지_확인하기(int purchaseAMount){
-        assertThatThrownBy(()->new Buyer(purchaseAMount)).isInstanceOf(IllegalArgumentException.class);
+        Buyer buyer = new Buyer();
+        assertThatThrownBy(()->buyer.validateProperUnitAmount(purchaseAMount)).isInstanceOf(IllegalArgumentException.class);
+    }
+    @ParameterizedTest
+    @ValueSource(strings={"1050e", "10010 1000", "A000["})
+    public void 구매_금액에_다른_문자_있는지_확인하기(String purchaseAMount){
+        Buyer buyer = new Buyer();
+        assertThatThrownBy(()->buyer.validateProperLetters(purchaseAMount)).isInstanceOf(IllegalArgumentException.class);
     }
 }
