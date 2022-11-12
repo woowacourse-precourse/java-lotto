@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.function.Supplier;
 
@@ -32,6 +34,14 @@ class UserInputHandlerTest{
         try{
             function.get();
         }catch(IllegalArgumentException | NoSuchElementException ignored){}
+    }
+
+    void getExceptionTest(String input, Supplier<?> functionalSupply){
+        beforeSetting(input);
+        assertSimpleTest(() -> {
+            exceptionRunning(functionalSupply);
+            assertThat(out.toString().trim()).contains(ERROR_MESSAGE);
+        });
     }
 
     @Nested
@@ -213,6 +223,52 @@ class UserInputHandlerTest{
             String input = "10,20,30,40,42,44";
             beforeSetting(input);
             assertThat(functionSupply.get().getNumbers().size()).isEqualTo(WINNING_NUMBER_SiZE);
+        }
+    }
+
+    @Nested
+    class GetBonusNumberTest{
+        Supplier<Integer> functionalSupply = () -> inputHandler.getBonusNumbers(makeLotto());
+
+        Lotto makeLotto(){
+            List<Integer> oneToSixListForBonusTest = new ArrayList<>();
+            for(int listIndex = 1; listIndex <= 6; listIndex++){
+                oneToSixListForBonusTest.add(listIndex);
+            }
+
+            return new Lotto(oneToSixListForBonusTest);
+        }
+
+        @Test
+        void getBonusNumberTest_case1(){
+            String input = "7";
+            beforeSetting(input);
+            int output = Integer.parseInt(input);
+            assertThat(functionalSupply.get()).isEqualTo(output);
+        }
+
+        @Test
+        void getBonusNumberTest_exception1_1(){
+            String input = "I arrived at beach";
+            getExceptionTest(input,functionalSupply);
+        }
+
+        @Test
+        void getBonusNumberTest_exception1_2(){
+            String input = "!!Hello PoHang!!";
+            getExceptionTest(input,functionalSupply);
+        }
+
+        @Test
+        void getBonusNumberTest_exception1_3(){
+            String input = "!@#";
+            getExceptionTest(input,functionalSupply);
+        }
+
+        @Test
+        void getBonusNumberTest_exception2_1(){
+            String input = "!@#";
+            getExceptionTest(input,functionalSupply);
         }
     }
 }
