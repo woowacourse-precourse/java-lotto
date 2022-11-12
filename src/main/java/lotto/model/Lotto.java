@@ -30,7 +30,7 @@ public class Lotto {
     private void validateNumRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (!(number >= Constant.lottoRangeStartNum && number <= Constant.lottoRangeEndNum)) {
-                System.err.println("[ERROR] number range is invalid");
+                System.err.println(Constant.errorNumberRange);
                 throw new IllegalArgumentException();
             }
         }
@@ -39,7 +39,7 @@ public class Lotto {
     private void validateNumOverlap(List<Integer> numbers) {
         Set<Integer> numberCollect = numbers.stream().collect(Collectors.toSet());
         if (numbers.size() != numberCollect.size()) {
-            System.err.println("[ERROR] numbers are overlapped");
+            System.err.println(Constant.errorNumberOverlapped);
             throw new IllegalArgumentException();
         }
     }

@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.Constant;
 import lotto.enums.Rank;
 import lotto.model.Draw;
 import lotto.model.Lotto;
@@ -72,7 +73,7 @@ public class Controller {
 
         for (char charNumber : charNumbers) {
             if (!Character.isDigit(charNumber)) {
-                System.out.println("[ERROR] price is invalid(is not digit)");
+                System.out.println(Constant.errorPriceFormat);
                 throw new IllegalArgumentException();
             }
         }

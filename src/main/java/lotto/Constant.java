@@ -34,6 +34,14 @@ public class Constant {
     public static final String inputBonusNum = "보너스 번호를 입력해 주세요.";
     public static final String inputWinningStats = "당첨 통계";
 
+    // 에러 문자열
+    public static final String errorPriceFormat = "[ERROR] price is invalid(is not digit)";
+    public static final String errorNumberRange = "[ERROR] number range is invalid";
+    public static final String errorNumberOverlapped = "[ERROR] numbers are overlapped";
+    public static final String errorPriceValid = "[ERROR] price is invalid(cannot be divided by 1000)";
+    public static final String errorBonusNumRange = "[ERROR] bonus number range is invalid";
+    public static final String errorBonusNumAndLottoOverlap = "[ERROR] numbers and bonus number are overlapped";
+
     // 출력 문자열 format
     public static final String buyingFormat = "%d개를 구매했습니다.\n";
     public static final String winningFormat = "%d개 일치 (%s원) - %d개\n";
