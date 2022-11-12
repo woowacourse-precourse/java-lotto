@@ -21,6 +21,13 @@ public class Lotto {
         }
     }
 
+    private boolean isNumberNullOrEmpty(List<Integer> numbers) {
+        if (numbers == null || numbers.isEmpty()) {
+            return true;
+        }
+        return false;
+    }
+
     private boolean hasSixNumbers(List<Integer> numbers) {
         if (numbers.size() != 6) {
             return false;
