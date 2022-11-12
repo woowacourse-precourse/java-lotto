@@ -20,7 +20,7 @@ public class Calculator {
         return profit;
     }
 
-    public static void updateProfit(Map<Integer, Integer> statistics, List<Integer> profit) {
+    public static void updateStatistics(Map<Integer, Integer> statistics, List<Integer> profit) {
         for (Integer prizeMoney : profit) {
             if (statistics.containsKey(prizeMoney)) {
                 int winCount = statistics.get(prizeMoney);

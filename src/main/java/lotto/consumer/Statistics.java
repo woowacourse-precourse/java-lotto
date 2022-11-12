@@ -22,11 +22,11 @@ public class Statistics {
     private Map<Integer, Integer> createStatistics() {
         int initialWinCount = 0;
         Map<Integer, Integer> initialStatistics = new LinkedHashMap<>();
-
         for (Ranks ranks : Ranks.values()) {
             initialStatistics.put(ranks.getPrizeMoney(), initialWinCount);
         }
-        Calculator.updateProfit(initialStatistics, profit);
+
+        Calculator.updateStatistics(initialStatistics, profit);
         return initialStatistics;
     }
 }
