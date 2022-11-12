@@ -1,5 +1,9 @@
 package lotto.domain;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public enum Rank {
     FIRST(1, 6, false, 2_000_000_000),
     SECOND(2, 5, true, 30_000_000),
@@ -18,5 +22,31 @@ public enum Rank {
         this.matchCount = matchCount;
         this.matchBonusNumber = matchBonusNumber;
         this.reward = reward;
+    }
+
+
+    public static Rank result(int matchCount, boolean matchBonusNumber) {
+        return matchBonusNumberRank(matchBonusNumber, matchCountRanks(matchCount));
+    }
+
+    private static List<Rank> matchCountRanks(int matchCount) {
+        return Stream.of(Rank.values())
+                .filter(rank -> rank.isMatchCountEqual(matchCount))
+                .collect(Collectors.toList());
+    }
+
+    private boolean isMatchCountEqual(int matchCount) {
+        return this.matchCount == matchCount;
+    }
+
+    private static Rank matchBonusNumberRank(boolean matchBonusNumber, List<Rank> matchCountRanks) {
+        return matchCountRanks.stream()
+                .filter(rank -> rank.isMatchBonusNumber(matchBonusNumber))
+                .findFirst()
+                .orElse(matchCountRanks.stream().findFirst().orElse(Rank.MISS));
+    }
+
+    private boolean isMatchBonusNumber(boolean matchBonusNumber) {
+        return this.matchBonusNumber == matchBonusNumber;
     }
 }

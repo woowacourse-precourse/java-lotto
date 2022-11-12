@@ -37,4 +37,10 @@ public class Lotto {
         return this.numbers.stream()
                 .anyMatch(bonusNumber::equalNumber);
     }
+
+    public int matchCount(Lotto matchLotto) {
+        return Long.valueOf(this.numbers.stream()
+                .filter(matchLotto.numbers::contains)
+                .count()).intValue();
+    }
 }

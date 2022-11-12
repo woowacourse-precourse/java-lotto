@@ -17,4 +17,8 @@ public class WinningLotto {
             throw new WinningLottoNumberDuplicateException();
         }
     }
+
+    public Rank rank(Lotto matchLotto) {
+        return Rank.result(this.lotto.matchCount(matchLotto), matchLotto.isContainNumber(this.bonusNumber));
+    }
 }
