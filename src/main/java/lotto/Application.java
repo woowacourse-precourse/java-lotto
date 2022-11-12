@@ -8,6 +8,9 @@ import java.util.Scanner;
 import static lotto.lottocomparator.LottoComparator.judgeAllLotto;
 import static lotto.mainio.MainApplicationIo.*;
 
+/**
+ * 프로그램 메인 로직을 담당하는 클래스입니다.
+ */
 public class Application {
     /**
      * 프로그램 메인 함수입니다.
