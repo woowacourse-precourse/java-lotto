@@ -19,14 +19,14 @@ public class Lotto {
         }
     }
 
-    public List<Integer> crateRandomLottoNumber() {
+    public static List<Integer> crateRandomLottoNumber() {
         List<Integer> createdRandomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         Collections.sort(createdRandomNumbers);
 
         return createdRandomNumbers;
     }
 
-    public WinningPlace countCorrespondingNumbers(List<Integer> winnerNumber, List<Integer> checkTargetNumber, int bonusNumber) throws Exception {
+    public static WinningPlace countCorrespondingNumbers(List<Integer> winnerNumber, List<Integer> checkTargetNumber, int bonusNumber) throws Exception {
         int correspondingNumber = 0;
         int correspondingBonusNumber = 0;
 
