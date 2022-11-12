@@ -12,9 +12,8 @@ public class LottoService {
 
     public static final int MAKE_PERCENTAGE_SCALE = 100;
 
-    private LottoGenerator lottoGenerator = new LottoGenerator();
-
     public List<Lotto> buy(int money) {
+        LottoGenerator lottoGenerator = new LottoGenerator();
         return lottoGenerator.createLottoBundle(money);
     }
 
