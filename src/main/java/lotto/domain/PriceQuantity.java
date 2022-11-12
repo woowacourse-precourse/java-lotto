@@ -9,6 +9,8 @@ public class PriceQuantity {
 
     PriceQuantity(int money) {
         this.money = money;
+        isValidateMoney(money);
+        calculateQuantity();
     }
 
     public void calculateQuantity() {
@@ -19,7 +21,7 @@ public class PriceQuantity {
         return quantity;
     }
 
-    public void isValidateMoney() {
+    public void isValidateMoney(int money) {
         if ((money < UNIT) || ((money % UNIT) != 0)) {
             throw new IllegalArgumentException(MONEY_ERROR_MESSAGE);
         }
