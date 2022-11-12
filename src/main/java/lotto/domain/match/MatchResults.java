@@ -4,11 +4,11 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
-public class Results {
+public class MatchResults {
 
     private final Map<Reward, Integer> counts;
 
-    public Results(List<Reward> rewardList) {
+    public MatchResults(List<Reward> rewardList) {
         this.counts = createCounts(rewardList);
     }
 

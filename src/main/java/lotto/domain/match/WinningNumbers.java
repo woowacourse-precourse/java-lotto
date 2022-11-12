@@ -58,8 +58,8 @@ public class WinningNumbers {
         return Reward.find(getMatchedNumberCount(lotto), isMatchedBonus(lotto));
     }
 
-    public Results matchAll(List<Lotto> lottos) {
-        return new Results(lottos.stream()
+    public MatchResults matchAll(List<Lotto> lottos) {
+        return new MatchResults(lottos.stream()
                 .map(this::match)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList()));

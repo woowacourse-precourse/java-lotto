@@ -1,10 +1,10 @@
 package lotto.domain;
 
-import lotto.domain.match.Results;
+import lotto.domain.match.MatchResults;
 
 public class YieldCalculator {
 
-    public static float getYield(Results results, int buyMoney) {
+    public static float getYield(MatchResults results, int buyMoney) {
         return (float) results.getTotalPrice() / buyMoney;
     }
 }

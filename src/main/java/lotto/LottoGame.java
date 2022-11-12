@@ -7,7 +7,7 @@ import lotto.console.Input;
 import lotto.console.Output;
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.LottoSeller;
-import lotto.domain.match.Results;
+import lotto.domain.match.MatchResults;
 import lotto.domain.match.Reward;
 import lotto.domain.match.WinningNumbers;
 
@@ -60,21 +60,21 @@ public class LottoGame {
         return new WinningNumbers(standardNumbers, bonusNumber);
     }
 
-    private void printStatisticsWithBonus(Results results, Reward reward) {
+    private void printStatisticsWithBonus(MatchResults results, Reward reward) {
         output.writeMatchStatisticWithBonus(
                 reward.getMatch(),
                 reward.getReward(),
                 results.getCount(reward));
     }
 
-    private void printStatisticsWithNonBonus(Results results, Reward reward) {
+    private void printStatisticsWithNonBonus(MatchResults results, Reward reward) {
         output.writeMatchStatistic(
                 reward.getMatch(),
                 reward.getReward(),
                 results.getCount(reward));
     }
 
-    private void printStatistics(Results results) {
+    private void printStatistics(MatchResults results) {
         output.writePrefixMatchStatistics();
         for (Reward reward : Reward.values()) {
             if (!reward.isRequireBonus()) {
@@ -87,7 +87,7 @@ public class LottoGame {
         }
     }
 
-    private void printYield(Results results, int money) {
+    private void printYield(MatchResults results, int money) {
         output.writeYield(getYield(results, money));
     }
 
@@ -104,7 +104,7 @@ public class LottoGame {
             printLottos(lottos);
 
             WinningNumbers winningNumbers = inputWinningNumbers();
-            Results results = winningNumbers.matchAll(lottos);
+            MatchResults results = winningNumbers.matchAll(lottos);
 
             printStatistics(results);
             printYield(results, money);
