@@ -11,6 +11,7 @@ public class Input {
         this.purchaseAmount = purchaseAmount;
         this.winningNumber = winningNumber;
         this.bonusNumber = bonusNumber;
+        checkAmount();
     }
 
     private void checkAmount() {
