@@ -1,4 +1,4 @@
-package lotto.model;
+package lotto.ui;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 import lotto.bo.Lotto;
 import lotto.bo.WinningNumber;
+import lotto.model.Checker;
 import lotto.model.Checker.WinningPlace;
 
 public class LottoService {
@@ -27,7 +28,7 @@ public class LottoService {
         printWinningResult();
     }
 
-    public void getLottos(String money) {
+    private void getLottos(String money) {
         lottos = new ArrayList<>();
         validateMoney(money);
         int numberOfLottos = Integer.parseInt(money) / LOTTO_PRICE;
@@ -43,7 +44,7 @@ public class LottoService {
         }
     }
 
-    public void getWinningNumber() {
+    private void getWinningNumber() {
         String winningNumber;
         String bonusNumber = "1";
         System.out.println("\n당첨 번호를 입력해주세요.");
@@ -52,35 +53,6 @@ public class LottoService {
         System.out.println("\n보너스 번호를 입력해주세요.");
         bonusNumber = Console.readLine();
         this.winningNumber = new WinningNumber(winningNumber, bonusNumber);
-    }
-
-    private void validateMoney(String money) throws IllegalArgumentException {
-        int tempMoney;
-        String range = "^[0-9]+$";
-        if (!Pattern.matches(range, money)) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자여야합니다.");
-        }
-        tempMoney = Integer.parseInt(money);
-        if (tempMoney % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000으로 나누어 떨어져야합니다.");
-        }
-        if (tempMoney < LOTTO_PRICE) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 로또 한장의 가격을 넘어야 합니다.");
-        }
-    }
-
-    private void printLottoNumbers(Lotto lotto) {
-        List<Integer> numbers = lotto.getNumbers();
-        ArrayList<Integer> numbersNew = new ArrayList<>(numbers);
-        Collections.sort(numbersNew);
-        System.out.print("[");
-        for (int i = 0; i < numbersNew.size(); i++) {
-            System.out.print(numbersNew.get(i));
-            if (i != numbersNew.size() - 1) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println("]");
     }
 
     private void initializeWinningResult() {
@@ -119,4 +91,34 @@ public class LottoService {
         double benefitPercent = ((benefit) / (lottos.size() * LOTTO_PRICE)) * 100;
         System.out.printf("총 수익률은 %.1f%%입니다.\n", benefitPercent);
     }
+
+    private void validateMoney(String money) throws IllegalArgumentException {
+        int tempMoney;
+        String range = "^[0-9]+$";
+        if (!Pattern.matches(range, money)) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자여야합니다.");
+        }
+        tempMoney = Integer.parseInt(money);
+        if (tempMoney % LOTTO_PRICE != 0) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000으로 나누어 떨어져야합니다.");
+        }
+        if (tempMoney < LOTTO_PRICE) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 로또 한장의 가격을 넘어야 합니다.");
+        }
+    }
+
+    private void printLottoNumbers(Lotto lotto) {
+        List<Integer> numbers = lotto.getNumbers();
+        ArrayList<Integer> numbersNew = new ArrayList<>(numbers);
+        Collections.sort(numbersNew);
+        System.out.print("[");
+        for (int i = 0; i < numbersNew.size(); i++) {
+            System.out.print(numbersNew.get(i));
+            if (i != numbersNew.size() - 1) {
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
+    }
+
 }
