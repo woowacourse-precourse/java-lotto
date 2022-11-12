@@ -57,13 +57,13 @@ public class Domain {
         return new Lotto(pickUniqueNumbersInRange(1, 45, 6));
     }
 
-    public float getYield(List<Integer> ranks, int countOfLotto) {
+    public float getYield(List<Integer> rankList, int numberOfLotto) {
         float sumWinnings = 0;
-        for (int rank : ranks) {
-            sumWinnings += getReward(rank);
+        for (int i = 1; i < 6; i++) {
+            sumWinnings += rankList.get(i) * getReward(i);
         }
 
-        return sumWinnings / countOfLotto;
+        return sumWinnings / numberOfLotto;
     }
 
     public int getReward(int rank) {
