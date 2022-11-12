@@ -15,6 +15,14 @@ public class LottoService {
 
     LottoGameMessage lottoGameMessage = new LottoGameMessage();
 
+    public void inputPurchasePriceAndCheckException(Player player){
+        lottoGameMessage.printPurchasePriceMessage();
+        String purchaseLottoPrice = input();
+        isNumber(purchaseLottoPrice);
+        player.inputPurchaseLottoPrice(Integer.parseInt(purchaseLottoPrice));
+        player.canDivideThousand();
+        player.countLottoNumber();
+    }
 
     public void printPlayerLottoNumberAndCreateLottoNumber(Player player){
         lottoGameMessage.printPurchaseCountMessage(player.getLottoCount());
