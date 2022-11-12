@@ -2,13 +2,13 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Winning {
-    private static final int NUMBER_OF_WINNING_NUMBERS = 6;
-
-    public static CheckLotto getWinningLottery() {
+    public static CheckLotto getWinningLottery() throws IllegalArgumentException {
         CheckLotto winningLottery;
 
         Print.enterWinningNumberMessage();
@@ -26,40 +26,25 @@ public class Winning {
 
     private static List<String> splitInputByComma(String userInput) throws IllegalArgumentException {
         List<String> splitNumber = Arrays.stream(userInput.split(",")).collect(Collectors.toList());
-
-        if (splitNumber.size() != NUMBER_OF_WINNING_NUMBERS) {
-            throw new IllegalArgumentException(ExceptionMessage.INVALID_WINNING_NUMBERS);
-        }
-
+        Validation.checkWinningNumbersDuplication(splitNumber);
         return splitNumber;
     }
 
-    private static List<Integer> convertToNumbers(List<String> numbers) {
+    private static List<Integer> convertToNumbers(List<String> numbers) throws IllegalArgumentException {
+        Validation.checkNumberOfWinningNumber(numbers);
         List<Integer> winningNumbers = new ArrayList<>();
 
         for (String winningNumber : numbers) {
             int convertNumber = Integer.parseInt(winningNumber);
 
-            if (!Validation.isValidRange(convertNumber)) {
-                throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.LOTTO_OUT_OF_RANGE);
-            }
-            if (Validation.checkWinningNumbersDuplication(numbers)) {
-                throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.DUPLICATE_NUMBER);
-            }
-
+            Validation.isValidRange(convertNumber);
             winningNumbers.add(convertNumber);
         }
         return winningNumbers;
     }
 
-    private static int convertToNumber(List<Integer> winningNumbers, String bonusNumberInput) {
-        if (!Validation.existOnlyNumber(bonusNumberInput)) {
-            throw new IllegalArgumentException(ExceptionMessage.CANNOT_CONVERT_NUMBER);
-        }
-        if (Validation.checkBonusNumberDuplication(winningNumbers, bonusNumberInput)) {
-            throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_NUMBER);
-        }
-
+    private static int convertToNumber(List<Integer> winningNumbers, String bonusNumberInput) throws IllegalArgumentException {
+        Validation.checkBonusNumberDuplication(winningNumbers, bonusNumberInput);
         return Integer.parseInt(bonusNumberInput);
     }
 }

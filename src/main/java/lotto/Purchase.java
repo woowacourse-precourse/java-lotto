@@ -15,18 +15,13 @@ public class Purchase {
         return getLotto(numberOfLotto);
     }
 
-    private static int getNumberOfLotto(String userInput) {
-        if (!Validation.existOnlyNumber(userInput)) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.CANNOT_CONVERT_NUMBER);
-        }
+    private static int getNumberOfLotto(String userInput) throws IllegalArgumentException {
+        int amount;
+        Validation.existOnlyNumber(userInput);
+        amount = Integer.parseInt(userInput);
 
-        int amount = Integer.parseInt(userInput);
-        if (!Validation.isValidRange(amount)) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.LOTTO_OUT_OF_RANGE);
-        }
-        if (!Validation.isValidUnit(amount)) {
-            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.INVALID_AMOUNT_UNIT);
-        }
+        Validation.isValidRange(amount);
+        Validation.isValidUnit(amount);
 
         return amount / 1000;
     }
