@@ -11,10 +11,9 @@ import java.util.stream.Collectors;
 
 public class InputView {
     private final String NEWLINE = "";
-    InputMessage inputMessage;
 
     public int enterPurchaseAmount() {
-        System.out.println(inputMessage.PURCHASE_AMOUNT.getMessage());
+        System.out.println(InputMessage.PURCHASE_AMOUNT.getMessage());
         String purchaseAmount = Console.readLine();
         InputException.validatePurchaseAmount(purchaseAmount);
         System.out.println(NEWLINE);
@@ -22,7 +21,7 @@ public class InputView {
     }
 
     public List<Integer> enterWinningNumber() {
-        System.out.println(inputMessage.WINNING_NUMBER.getMessage());
+        System.out.println(InputMessage.WINNING_NUMBER.getMessage());
         String[] numbers = Console.readLine().split(",");
         List<Integer> winningNumber = Arrays.stream(numbers)
                 .map(number -> Integer.valueOf(number))
@@ -34,7 +33,7 @@ public class InputView {
     }
 
     public int enterBonusNumber(List<Integer> winningNumber) {
-        System.out.println(inputMessage.BONUS_NUMBER.getMessage());
+        System.out.println(InputMessage.BONUS_NUMBER.getMessage());
         int bonusNumber = Integer.valueOf(Console.readLine());
         InputException.validateBonusNumber(bonusNumber, winningNumber);
         System.out.println(NEWLINE);
