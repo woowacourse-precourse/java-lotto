@@ -34,7 +34,8 @@ public class LotteryController {
     }
 
     public void insertWinningNumbers(){
-
+        insertWinningLottery(typeWinningLottery());
+        insertWinningBonusNumber(typeWinningBonusNumber());
     }
 
     private String typeWinningLottery(){
