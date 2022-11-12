@@ -38,7 +38,7 @@ public class LotteryController {
     }
 
     private String typeWinningLottery(){
-        return "";
+        return computerView.getNumbers();
     }
 
     private void insertWinningLottery(){
