@@ -16,17 +16,18 @@ public class GameController {
     private final LottoService service = new LottoService(new Validator(), new Computer());
 
     public void start() {
-        welcome();
-        String money = inputMoney();
-        List<Lotto> lottos = buyLottos(money);
-        if (isEmpty(lottos)) {
-            return;
+        try {
+            welcome();
+            String money = inputMoney();
+            List<Lotto> lottos = buyLottos(money);
+            printNumberOfLotto(lottos);
+            printLottos(lottos);
+            String wins = inputWinnings();
+            String bonus = inputBonus();
+            printResult(lottos, wins, bonus);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        printNumberOfLotto(lottos);
-        printLottos(lottos);
-        String wins = inputWinnings();
-        String bonus = inputBonus();
-        printResult(lottos, wins, bonus);
     }
 
     private void welcome() {
@@ -38,12 +39,7 @@ public class GameController {
     }
 
     private List<Lotto> buyLottos(String money) {
-        try {
-            return service.buy(money);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        return Collections.EMPTY_LIST;
+        return service.buy(money);
     }
 
     private boolean isEmpty(List<Lotto> lottos) {

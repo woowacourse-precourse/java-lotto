@@ -49,8 +49,4 @@ public class LottoService {
         LottoResult lottoResult = new LottoResult(money, result);
         return lottoResult;
     }
-
-    public int getMoney() {
-        return money;
-    }
 }

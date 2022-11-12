@@ -57,16 +57,16 @@ class LottoServiceTest {
 
     private static Collection<Arguments> param3() {
         return Arrays.asList(
-            Arguments.of("비어있는 로또와 당첨번호",
+            Arguments.of("정상적인 로또와 당첨번호",
                 Collections.EMPTY_LIST,
-                Collections.EMPTY_LIST, 7)
+                "1,2,3,4,5,6", "7")
         );
     }
 
     @ParameterizedTest(name = "{index}: {0}")
     @MethodSource("param3")
     @DisplayName("로또 서비스의 getResult 테스트")
-    void test3(String description, List<Lotto> lottos, List<Integer> win, int bonus) {
+    void test3(String description, List<Lotto> lottos, String  win, String bonus) {
         ComputerSpy computerSpy = new ComputerSpy();
         LottoService service = new LottoService(new Validator(), computerSpy);
         service.getResult(lottos, win, bonus);
