@@ -15,4 +15,8 @@ public class LottoTickets {
 	public void print() {
 		OutputView.printLottos(lottos);
 	}
+
+	public List<Lotto> getLottos() {
+		return lottos;
+	}
 }

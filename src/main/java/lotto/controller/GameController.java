@@ -5,6 +5,7 @@ import java.util.List;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
+import lotto.domain.LottoReceipt;
 import lotto.domain.LottoRule;
 import lotto.domain.LottoTickets;
 import lotto.domain.Money;
@@ -21,6 +22,9 @@ public class GameController {
 		lottoTickets.print();
 
 		WinningNumbers winningNumbers = createWinningNumbers();
+
+		LottoReceipt lottoReceipt = new LottoReceipt(lottoTickets, winningNumbers);
+		lottoReceipt.print();
 
 	}
 

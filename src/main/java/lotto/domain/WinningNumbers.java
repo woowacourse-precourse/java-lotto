@@ -63,4 +63,12 @@ public class WinningNumbers {
 			throw new IllegalArgumentException();
 		}
 	}
+
+	public List<Integer> getNumbers() {
+		return numbers;
+	}
+
+	public int getBonusNumber() {
+		return bonusNumber;
+	}
 }
