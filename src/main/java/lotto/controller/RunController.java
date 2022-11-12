@@ -73,7 +73,7 @@ public class RunController {
 
 	private static int checkMoney() {
 		int checkMoney = 0;
-		String money = Input.buyLotto();
+		String money = Input.numbers();
 
 		try {
 			checkMoney = Integer.parseInt(money);

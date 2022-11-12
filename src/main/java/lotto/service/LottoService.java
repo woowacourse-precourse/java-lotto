@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.ExceptionHandler;
-import lotto.Notice;
+import lotto.Ranking;
 import lotto.domain.Lotto;
 import lotto.view.Input;
 import lotto.view.Output;
@@ -29,13 +29,13 @@ public class LottoService {
 	}
 
 	public static List<Integer> pickWinningNumbers() {
-		String winningNumbers = Input.pickWinningNumbers();
+		String winningNumbers = Input.numbers();
 
 		return convertStringToList(winningNumbers);
 	}
 
 	public static int pickBonusNumbers() {
-		String bonusNumber = Input.pickWinningNumbers();
+		String bonusNumber = Input.numbers();
 
 		ExceptionHandler.checkBonus(bonusNumber);
 
@@ -81,43 +81,50 @@ public class LottoService {
 		for (List<Integer> integers : candidate) {
 			int count = compareNumbers(integers, winningNumbers);
 
-			if (count == 4 && checkBonus(integers, bonusNumber)) {
-				count = -1;
+			if (count >= Ranking.NUMBER_TO_CONVERT_SCORE_TO_RANK.getValue()) {
+				int rank = judgement(count, checkBonus(integers, bonusNumber));
+
+				reviseScore(ranking, rank);
 			}
-			judgementRanking(count, ranking);
 		}
 
 		return ranking;
 	}
 
-	private static void judgementRanking(int count, List<Integer> ranking) {
-		if (count == -1) {
-			ranking.set(3, ranking.get(3) + 1);
+	private static int judgement(int count, boolean bonus) {
+		int rank = count - Ranking.NUMBER_TO_CONVERT_SCORE_TO_RANK.getValue();
+
+		if (rank == Ranking.THIRD_PLACE.getValue()) {
+			if (bonus)
+				rank = Ranking.SECOND_PLACE.getValue();
 		}
-		if (count == 3) {
-			ranking.set(0, ranking.get(0) + 1);
-		}
-		if (count == 4) {
-			ranking.set(1, ranking.get(1) + 1);
-		}
-		if (count == 5) {
-			ranking.set(2, ranking.get(2) + 1);
-		}
-		if (count == 6)
-			ranking.set(4, ranking.get(4) + 1);
+
+		return rank;
+	}
+
+	private static void reviseScore(List<Integer> ranking, int rank) {
+		ranking.set(rank, getScore(ranking, rank));
+	}
+
+	private static int getScore(List<Integer> ranking, int index) {
+		return ranking.get(index) + Ranking.SCORE.getValue();
 	}
 
 	private static boolean checkBonus(List<Integer> candidate, int bonusNumber) {
 		return candidate.contains(bonusNumber);
 	}
 
-	private static int compareNumbers(List<Integer> candidateNumbers, List<Integer> winningNumbers) {
+	private static int compareNumbers(List<Integer> candidate, List<Integer> winningNumbers) {
 		int count = 0;
 
-		for (int i = 0; i < candidateNumbers.size(); i++) {
-			if (candidateNumbers.contains(winningNumbers.get(i))) {
+		for (int i = 0; i < candidate.size(); i++) {
+			if (candidate.contains(winningNumbers.get(i))) {
 				count++;
 			}
+		}
+
+		if (count == Ranking.PERFECT.getValue()) {
+			count++;
 		}
 
 		return count;
