@@ -27,28 +27,42 @@ public class OrganizerTest {
     @Test
     @DisplayName("당첨 숫자 개수가 6이 아니면 예외 처리한다.")
     void throwsExceptionWhenInputIncludesMoreThan6() {
-        assertThatThrownBy(() -> new Organizer("1,2,3,4,5,6,7", ""))
+        Organizer organizer = new Organizer();
+        assertThatThrownBy(() -> organizer.setWinningNumbers("1,2,3,4,5,6,7"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("당첨 숫자 범위가 1~45 사이가 아니면 예외 처리한다.")
     void throwsExceptionWhenWinningNumbersNotInRange() {
-        assertThatThrownBy(() -> new Organizer("1,2,3,4,99,6", ""))
+        Organizer organizer = new Organizer();
+        assertThatThrownBy(() -> organizer.setWinningNumbers("1,2,3,4,99,6"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("당첨 숫자 중 중복이 존재하면 예외 처리한다.")
+    void throwsExceptionWhenExistsWinningNumbersDuplicate() {
+        Organizer organizer = new Organizer();
+        assertThatThrownBy(() -> organizer.setWinningNumbers("1,2,3,4,6,6"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("보너스 숫자 범위가 1~45 사이가 아니면 예외 처리한다.")
     void throwsExceptionWhenBonusNotInRange() {
-        assertThatThrownBy(() -> new Organizer("1,2,3,4,5,6", "65"))
+        Organizer organizer = new Organizer();
+        organizer.setWinningNumbers("1,2,3,4,5,6");
+        assertThatThrownBy(() -> organizer.setBonusNumber("65"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     @DisplayName("당첨 숫자와 보너스 숫자 중 중복이 있으면 예외 처리한다.")
     void throwsExceptionWhenExistsDuplicate() {
-        assertThatThrownBy(() -> new Organizer("1,2,3,4,5,6", "3"))
+        Organizer organizer = new Organizer();
+        organizer.setWinningNumbers("1,2,3,4,5,6");
+        assertThatThrownBy(() -> organizer.setBonusNumber("3"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

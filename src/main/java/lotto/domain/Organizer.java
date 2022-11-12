@@ -12,13 +12,17 @@ public class Organizer {
     public Organizer() {
     }
 
-    public Organizer(String winningNumberInput, String bonusNumberInput) {
+    public void setWinningNumbers(String winningNumberInput) {
         this.winningNumbers = getWinningNumbersFromInput(winningNumberInput);
         validateWinningNumbers(this.winningNumbers);
+        ExceptionHandler.doesContainDuplicate(this.winningNumbers);
+    }
+
+    public void setBonusNumber(String bonusNumberInput) {
         this.bonusNumber = getIntegerFromString(bonusNumberInput);
-        ExceptionHandler.isWithinRange(bonusNumber,
+        ExceptionHandler.isWithinRange(this.bonusNumber,
                 LottoStatistic.MIN_NUMBER.getValue(), LottoStatistic.MAX_NUMBER.getValue());
-        checkDuplicate(winningNumbers, bonusNumber);
+        checkDuplicate(this.winningNumbers, this.bonusNumber);
     }
 
     public List<Integer> getWinningNumbersFromInput(String input) {

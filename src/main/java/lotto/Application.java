@@ -17,8 +17,10 @@ public class Application {
         player.buyLottoTickets(lottoMachine);
         player.displayLottoTickets();
 
+        Organizer organizer = new Organizer();
         String winningNumberInput = Input.getInputWithMessage(GameMessage.ASK_FOR_WINNING_NUMBERS.getMessage());
+        organizer.setWinningNumbers(winningNumberInput);
         String bonusNumberInput = Input.getInputWithMessage(GameMessage.ASK_FOR_BONUS_NUMBER.getMessage());
-        Organizer organizer = new Organizer(winningNumberInput, bonusNumberInput);
+        organizer.setBonusNumber(bonusNumberInput);
     }
 }
