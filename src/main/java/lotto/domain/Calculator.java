@@ -10,11 +10,11 @@ public class Calculator {
 
     private void calculate(WinningNumbers winningNumbers, List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
-            calculateCount(winningNumbers, lotto);
+            Rank rank = calculateRank(winningNumbers, lotto);
         }
     }
 
-    public static int calculateCount(WinningNumbers winningNumbers, Lotto lotto) {
+    public static Rank calculateRank(WinningNumbers winningNumbers, Lotto lotto) {
         int count = 0;
         for (Integer number : winningNumbers.getWinningNumbers()) {
             if (lotto.getNumbers().contains(number)) {
@@ -22,15 +22,26 @@ public class Calculator {
             }
         }
         if (count == 5 && hasBonus(winningNumbers, lotto)) {
-
+            return Rank.SECOND;
         }
-        return count;
+        return rankMapper(count);
     }
 
+    public static Rank rankMapper(int count) {
+        if (count == 6) {
+            return Rank.FIRST;
+        } else if (count == 3) {
+            return Rank.FIFTH;
+        } else if (count == 4) {
+            return Rank.FOURTH;
+        } else if (count == 5) {
+            return Rank.THIRD;
+        }
+        return Rank.NOTHING;
+    }
 
     public static boolean hasBonus(WinningNumbers winningNumbers, Lotto lotto) {
         return lotto.getNumbers().contains(winningNumbers.getBonusNumber());
     }
-
 
 }
