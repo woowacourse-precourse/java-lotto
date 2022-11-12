@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Print {
-    private static final String contour = "---";
+    private static final String CONTOUR = "---";
     private static final int LOTTO_PRICE = 1000;
 
     public static void purchaseMessage() {
@@ -30,7 +30,7 @@ public class Print {
 
     public static void matchResult(Map<WinningNumber, Integer> matchCount, int numberOfLotto) {
         System.out.printf(GuideMessage.WINNING_STATISTICS);
-        System.out.println(contour);
+        System.out.println(CONTOUR);
 
         for (WinningNumber winningNumber : matchCount.keySet()
                 .stream()
