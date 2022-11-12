@@ -62,11 +62,10 @@
     - 구현 조건에 외부 라이브러리를 사용하므로 인터페이스와 구현체를 분리해서 의존도를 낮추기 위해 나눔
 
 
-- [ ] 6자리 로또 번호 generate()
-    - [ ] 숫자 범위 1 ~ 45에서 중복 없는 6자리의 수 생성
-    - [ ] 반환되는 리스트는 오름차순으로 정렬돼있다.
+- [x] 6자리 로또 번호 generate()
+    - [x] 반환되는 리스트는 오름차순으로 정렬돼있다.
     - 검토 사항
-        - [ ] `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용
+        - [x] `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용
 
 <br/>
 
