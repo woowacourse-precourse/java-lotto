@@ -28,14 +28,14 @@ public class Purchase {
         try {
             Double.parseDouble(money);
         } catch(NumberFormatException e) {
-            System.out.println("구입 금액은 숫자여야 합니다.");
+            System.out.println("[ERROR] 구입 금액은 숫자여야 합니다.");
             throw new IllegalArgumentException();
         }
     }
 
     public void validateMoneyUnit(int money) {
         if (money % 1000 != 0) {
-            System.out.println("구입 금액을 1,000원 단위로 입력해주세요.");
+            System.out.println("[ERROR] 구입 금액을 1,000원 단위로 입력해주세요.");
             throw new IllegalArgumentException();
         }
     }
