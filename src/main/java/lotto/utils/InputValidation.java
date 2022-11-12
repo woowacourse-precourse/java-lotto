@@ -15,7 +15,7 @@ public class InputValidation {
     public void checkThousandMoney(String input) {
         int price = Integer.parseInt(input);
 
-        if (price % 1000 != 0)
+        if (price % Constant.LOTTO_PRICE != 0)
             throw new IllegalArgumentException(ErrorMessage.LOTTO_MUST_THOUSAND_PRICE);
     }
 }
