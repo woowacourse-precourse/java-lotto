@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    List<Lotto> lottos;
+    List<BoughtLotto> lottos;
 
     public User() {
         this.lottos = new ArrayList<>();
@@ -31,11 +31,11 @@ public class User {
 
     }
 
-    public void printOneLotto() {
-
+    public void printOneLotto(BoughtLotto lotto) {
+        lotto.printLottoNumber();
     }
 
-    public List<Lotto> getLottos() {
+    public List<BoughtLotto> getLottos() {
         return lottos;
     }
 }
