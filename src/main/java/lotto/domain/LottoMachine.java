@@ -7,10 +7,6 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoMachine {
-	private static final int MIN_NUMBER = 1;
-	private static final int MAX_NUMBER = 45;
-	private static final int LOTTO_NUMBERS_SIZE = 6;
-
 	private final List<Lotto> lottoTickets;
 
 	public LottoMachine(int getNumberOfTickets) {
@@ -26,7 +22,7 @@ public class LottoMachine {
 		List<Lotto> list = new ArrayList<>();
 		for (int i = 0; i < getNumberOfTickets; i++) {
 			List<Integer> numbers = new ArrayList<>(
-				Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_NUMBERS_SIZE));
+				Randoms.pickUniqueNumbersInRange(Number.MIN.getValue(), Number.MAX.getValue(), Number.SIZE.getValue()));
 			Collections.sort(numbers);
 			list.add(new Lotto(numbers));
 		}
