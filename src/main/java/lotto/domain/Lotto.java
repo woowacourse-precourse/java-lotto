@@ -44,6 +44,13 @@ public class Lotto {
         return numbers.size();
     }
 
+    public boolean hasBonusNumberInNumbers(Integer bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return numbers.toString();
