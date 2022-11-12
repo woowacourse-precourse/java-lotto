@@ -12,7 +12,7 @@ public class BonusNumber {
 
     public BonusNumber(String bonusNumber) {
         int tmpBonusNumber = validateBonusNumberType(bonusNumber);
-
+        validateBonusNumberRange(tmpBonusNumber);
         this.bonusNumber = tmpBonusNumber;
     }
 
@@ -25,5 +25,12 @@ public class BonusNumber {
         }
 
         return Integer.valueOf(bonusNumber);
+    }
+
+    public void validateBonusNumberRange(int bonusNumber) {
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            System.out.println("[ERROR] 보너스 번호는 1~45 사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException();
+        }
     }
 }
