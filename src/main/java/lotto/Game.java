@@ -9,6 +9,10 @@ public class Game {
     Player player;
     WinningNumber winningNumber;
 
+    public void startGame() {
+        printWinningStatistics();
+    }
+
     public Game() {
         player = new Player();
         winningNumber = new WinningNumber();
