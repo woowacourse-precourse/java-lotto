@@ -32,4 +32,21 @@ public class InputLottoPurchaseAmountTest {
 					.isInstanceOf(IllegalArgumentException.class);
 		}
 	}
+
+	@Nested
+	class SuccessTest {
+		@Test
+		@DisplayName("구입금액 숫자 유효성 검증 성공 테스트: 숫자만 입력")
+		void inputNumericLottoPurchaseAmount() {
+			// given, when
+			String lottoPurchaseAmountOne = "1000";
+			String lottoPurchaseAmountTwo = "1234";
+			String lottoPurchaseAmountThree = "100000";
+
+			// then
+			assertThatNoException().isThrownBy(() -> validateNumeric(lottoPurchaseAmountOne));
+			assertThatNoException().isThrownBy(() -> validateNumeric(lottoPurchaseAmountTwo));
+			assertThatNoException().isThrownBy(() -> validateNumeric(lottoPurchaseAmountThree));
+		}
+	}
 }
