@@ -14,8 +14,8 @@ public class LottoController {
     public void run() {
         try {
             playLottoDraw(inputPayment());
-        } catch (IllegalArgumentException exceptionRaised) {
-            System.out.println(exceptionRaised.getMessage());
+        } catch (IllegalArgumentException raisedException) {
+            System.out.println(raisedException.getMessage());
         }
     }
     
