@@ -43,11 +43,15 @@
   - [x] 사용자에게 값을 입력 받는다. String userValue = InputLotto#inputValueOfUser()
   - [x] 문자열을 long으로 변환 - int number = InputLotto#toLongs(String number)
 - [ ] 사용자에게 입력을 받고 List로 변환 List<Integer> winNumbers = InputLotto#InputValueToLst()
-- [ ] String형식의 번호를 입력 받고 List로 변환 List<Integer> winNumbers = InputLotto#InputStringToLst()
+- [ ] String형식의 번호를 입력 받고 List로 변환 List<Integer> winNumbers = InputLotto#InputStringsToLst()
   - [x] 사용자에게 값을 입력 받는다. String userValue = InputLotto#inputValueOfUser()
-  - [x] 문자열을 ,(쉼표)를 기준으로 나누기 - String[] numbers = InputLotto#splitCommas(String numbers)
+  - [x] 문자열을 ,(쉼표)를 기준으로 나누기 - List<Integer> numbers = InputLotto#splitCommas(String numbers)
   - [ ] 당첨 번호 모두를 int로 변환 - List<Integer> winNumbers = InputLotto#allToInts(String[] numbers)
     - [x] 문자열을 long으로 변환 - int number = InputLotto#toLongs(String number)
+
+- [x] 당첨 번호를 입력받고 List<Integer> 형으로 반환 List<Integer> = InputValueSplitCommas()
+  - [x] String을 int형으로 변환하는 toInts 메서드 구현 int = toInts(String value)
+  - [x] List<String>형을 List<Integer>형으로 반환 List<Integer> = toIntList(List<String> stringsNubmerList)
 
 - [x] 숫자만 입력되었는지 검사한다. - ExceptionHandling#isNumeric(String value)
 - [x] 입력한 금액이 1,000원 단위로 나누어떨어지는지 검사한다. - ExceptionHandling#notDivideException(long amount)

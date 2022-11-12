@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InputLotto {
@@ -21,9 +22,30 @@ public class InputLotto {
         return Long.parseLong(value);
     }
 
+    public List<Integer> IntputValueSplitCommas(){
+        String value = inputValueOfUser();
+        List<String> stringsNumberList = splitCommas(value);
+        List<Integer> numberList = toIntList(stringsNumberList);
+        return numberList;
+    }
+
     public List<String> splitCommas(String value){
         List<String> valueList = List.of(value.split(","));
         return valueList;
+    }
+
+    public List<Integer> toIntList(List<String> stringsNumberList){
+        List<Integer> numberList = new ArrayList<>();
+        for(String stringsNumber : stringsNumberList){
+            numberList.add(toInts(stringsNumber));
+        }
+        return numberList;
+    }
+
+    public int toInts(String value){
+        ExceptionHandling exceptionHandling = new ExceptionHandling();
+        exceptionHandling.isNumeric(value); // 숫자인지 검사
+        return Integer.parseInt(value);
     }
 
 }
