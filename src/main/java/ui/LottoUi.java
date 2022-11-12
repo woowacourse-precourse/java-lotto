@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static values.Constants.Digit.LOTTO_NUMBER_COUNT;
 import static values.Constants.Error.*;
 import static values.Constants.Digit.LOTTO_PRICE;
 
@@ -65,8 +66,14 @@ public class LottoUi {
         });
     }
 
-    private static Lotto inputWinningLottoNumbers() {
-        List<Integer> winningLottoNumbers = new ArrayList<>();
+    public String getTotalRevenueMessage(Double percent) {
+        StringBuffer message = new StringBuffer();
+        String roundedPercent = String.format("%.1f", percent);
 
+        message.append("총 수익률은 ");
+        message.append(roundedPercent);
+        message.append("%입니다.");
+
+        return message.toString();
     }
 }
