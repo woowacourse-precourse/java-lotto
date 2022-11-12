@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto;
 
 public enum LottoRank {
     FIRST("6개 일치", 1, 2000000000),
