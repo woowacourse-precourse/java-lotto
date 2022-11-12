@@ -12,9 +12,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Player {
-    private List<Lotto> playerLotto;
-    private Profit playerProfit;
-    private Winning playerWinning;
+    private final List<Lotto> playerLotto;
+    private final Profit playerProfit;
+    private final Winning playerWinning;
 
     public Player(){
         playerLotto = new ArrayList<>();
