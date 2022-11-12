@@ -34,31 +34,32 @@ public class LottoResult {
     }
 
     public String getResult() {
-        make();
+        for (int rank = 5; rank >= 1; rank--) {
+            int zeroBasedIndex = rank - 1;
+            Integer count = resultOfLotto.get(zeroBasedIndex);
+            addResult(rewardMsg.get(rank), count);
+            updateTotal(reward.get(rank), count);
+        }
+        updatePercentage();
+        addProfitPercentage();
         return result;
     }
 
-    private void make() {
-        for (int i = 5; i >= 1; i--) {
-            Integer count = resultOfLotto.get(i-1);
-            result += updateResult(rewardMsg.get(i), count);
-            total += getReward(reward.get(i), count);
-        }
-        updatePercentege();
-        result += "총 수익률은 "+profitPercentege+"%입니다.";
+    private void addResult(String s, Integer count) {
+        result += s + count + "개\n";
     }
 
-    private static String updateResult(String s, Integer count) {
-        return s + count + "개\n";
+    private void updateTotal(int i, Integer integer) {
+        total += i * integer;
     }
 
-    private int getReward(int i, Integer integer) {
-        return i * integer;
-    }
-
-    private void updatePercentege() {
+    private void updatePercentage() {
         double a = (total/(double)money)*100;
         double round = Math.round((a * 10))/10.0;
         profitPercentege = String.format("%.1f", round);
+    }
+
+    private void addProfitPercentage() {
+        result += "총 수익률은 "+profitPercentege+"%입니다.";
     }
 }
