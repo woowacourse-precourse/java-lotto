@@ -2,11 +2,11 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.view.message.ExceptionMessage;
-import lotto.view.message.MessagePrinter;
+import lotto.view.message.FixedMessage;
 
 public class InputView {
     public Integer askPrice() {
-        MessagePrinter.printAskPriceMessage();
+        System.out.println(FixedMessage.INPUT_PRICE.getMessage());
         String inputValue = Console.readLine();
         return validateValue(inputValue);
     }
