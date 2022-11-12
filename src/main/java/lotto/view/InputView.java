@@ -8,7 +8,10 @@ import java.util.List;
 public class InputView {
     private static final String NUMBER_REGEX = "^[0-9]+$";
     private static final String COMMA = ",";
+    private static final int LOTTO_RANGE_MAX = 45;
+    private static final int LOTTO_RANGE_MIN = 1;
     private static final String ERROR_NUMBER_ONLY = "[ERROR] 투입금액은 숫자만 입력가능합니다.";
+    private static final String ERROR_NUMBER_RANGE = "[ERROR] 1부터 45 사이의 숫자만 입력가능합니다.";
     private static final String ERROR_WINNING_NUMBER_INPUT = "[ERROR] 당첨번호가 숫자가 아닙니다.";
     private static final String MESSAGE_MONEY_INPUT = "구입금액을 입력해주세요.";
     private static final String MESSAGE_WINNING_INPUT = "당첨 번호를 입력해 주세요.";
@@ -43,6 +46,10 @@ public class InputView {
         if (!bonusInput.matches(NUMBER_REGEX)) {
             throw new IllegalArgumentException(ERROR_NUMBER_ONLY);
         }
-        return Integer.parseInt(bonusInput);
+        int number = Integer.parseInt(bonusInput);
+        if (number > LOTTO_RANGE_MAX || number < LOTTO_RANGE_MIN) {
+            throw new IllegalArgumentException(ERROR_NUMBER_RANGE);
+        }
+        return number;
     }
 }
