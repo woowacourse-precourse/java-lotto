@@ -3,12 +3,13 @@ package lotto.controller;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.domain.BonusNumber;
-import lotto.domain.Calculator;
 import lotto.domain.Cost;
 import lotto.domain.LotteryDrawMachine;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGroup;
 import lotto.domain.WinningLotto;
+import lotto.domain.result.Profit;
+import lotto.domain.result.Result;
 import lotto.view.Input;
 import lotto.view.Output;
 
@@ -18,25 +19,31 @@ public class LottoController {
         try {
             Cost cost = createCost();
 
-            int purchaseCount = cost.getCost() / 1000;
+            int purchaseCost = cost.getCost();
+            int purchaseCount = purchaseCost / 1000;
             Output.purchaseCountNotification(purchaseCount);
 
             LottoGroup lottoGroup = createLottoGroup(purchaseCount);
             WinningLotto winningLotto = createWinningLotto();
             BonusNumber bonusNumber = createBonusNumber(winningLotto);
 
-            Calculator calculator = new Calculator();
-            List<Integer> matchResults = calculator.calculateMatchResults(lottoGroup, winningLotto,
-                    bonusNumber);
-            Output.printWinningStatistics(matchResults);
+            Result result = createResult(lottoGroup, winningLotto, bonusNumber);
+            Output.printWinningStatistics(result);
 
-            int profit = calculator.calculateProfit(matchResults);
-            double earningsRate = calculator.calculateEarningsRate(cost.getCost(), profit);
-            Output.earningsRateNotification(earningsRate);
+            Profit profit = createProfit(purchaseCost, result);
+            Output.earningsRateNotification(profit.getEarningsRate());
 
         } catch (IllegalArgumentException ex) {
             Output.printError(ex.getMessage());
         }
+    }
+
+    private Result createResult(LottoGroup lottoGroup, WinningLotto winningLotto, BonusNumber bonusNumber) {
+        return new Result(lottoGroup, winningLotto, bonusNumber);
+    }
+
+    private Profit createProfit(int purchaseCost, Result result) {
+        return new Profit(purchaseCost, result);
     }
 
     private Cost createCost() {
