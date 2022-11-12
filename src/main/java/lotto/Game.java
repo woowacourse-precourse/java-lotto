@@ -5,9 +5,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import lotto.io.Input;
+import lotto.io.Print;
 import lotto.utils.Constant;
 
 public class Game {
+
+    public GameScore getGameScore(List<Lotto> lottos, Lotto winLottoNumbers, int bonusLottoNumber) {
+        int totalPrizeMoney = 0;
+        Map<LottoWinType, Integer> lottoWinTypeMap = initLottoWinTypeMap();
+        for (Lotto lotto : lottos) {
+            LottoWinType winType = lotto.findMatchedLotto(lotto.getNumbers(), winLottoNumbers.getNumbers(), bonusLottoNumber);
+            totalPrizeMoney += winType.getMoney();
+
+            lottoWinTypeMap.put(winType, lottoWinTypeMap.get(winType) + 1);
+        }
+        GameScore gameScore = new GameScore(totalPrizeMoney, lottoWinTypeMap);
+        gameScore.setProfitRate(lottos.size() * Constant.MONEY_UNIT);
+        return gameScore;
+    }
 
     public int payDividedByUnit(int money) {
         return money / Constant.MONEY_UNIT;
