@@ -20,6 +20,10 @@ public class LottoView {
         System.out.println(message);
     }
 
+    public void printExceptionMessage(Exception exception) {
+        System.out.println(ERROR + exception.getMessage());
+    }
+
     public int inputMoney() {
         int money = 0;
         try {   // TODO validate 내부로 넣을지 고민

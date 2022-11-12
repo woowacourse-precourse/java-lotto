@@ -32,4 +32,21 @@ public class Lotto {
         Collections.sort(numbers);
         return new Lotto(numbers);
     }
+
+    @Override
+    public String toString() {
+        int index;
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("[");
+        for (Integer number : numbers) {
+            sb.append(number).append(", ");
+        }
+
+        index = sb.lastIndexOf(",");
+        sb.delete(index, sb.length());
+        sb.append("]");
+
+        return sb.toString();
+    }
 }
