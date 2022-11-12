@@ -46,9 +46,9 @@ public class Checker extends Kiosk {
         return countMatchingPrizes.get(countSameNumbers);
     }
 
-//    public static float getYield(int payment) {
-//        return
-//    }
+    public static float getYield(int payment) {
+        return (getTotalWinnings() / payment) * 100;
+    }
 
     public static int getTotalWinnings() {
         int totalWinnings = 0;
