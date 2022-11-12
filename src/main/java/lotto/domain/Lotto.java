@@ -1,6 +1,9 @@
 package lotto.domain;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -11,10 +14,21 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        Set<Integer> distinctNumbers = new HashSet<>(numbers);
+
+        if (distinctNumbers.size() != 6) {
             throw new IllegalArgumentException();
         }
     }
 
-    // TODO: 추가 기능 구현
+    @Override
+    public String toString() {
+        List<String> stringNumbers = new ArrayList<>();
+
+        for (Integer number : numbers) {
+            stringNumbers.add(number.toString());
+        }
+
+        return "[" + String.join(", ", stringNumbers) + "]";
+    }
 }

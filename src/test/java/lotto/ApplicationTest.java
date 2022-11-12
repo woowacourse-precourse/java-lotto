@@ -43,6 +43,15 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @ParameterizedTest
+    @CsvSource({"1000,1개를 구매했습니다.","6000,6개를 구매했습니다.","9000,9개를 구매했습니다.","15000,15개를 구매했습니다."})
+    void 로또_구입금액에_맞춰서_구매가_되는지_확인(String purchaseMoney, String msg) {
+        assertSimpleTest(() -> {
+            runException(purchaseMoney);
+            assertThat(output()).contains(msg);
+        });
+    }
+
     @Test
     void 기능_테스트() {
         assertRandomUniqueNumbersInRangeTest(
