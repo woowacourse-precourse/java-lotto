@@ -16,4 +16,12 @@ public class LottoRepository {
     public static void saveWinningLotto(Lotto winningLotto) {
         lastWinningLotto = winningLotto;
     }
+
+    public static Lotto getLastWinningLotto() {
+        return lastWinningLotto;
+    }
+
+    public static List<Lotto> getLastUserLottoGroup() {
+        return lastUserLottoGroup;
+    }
 }

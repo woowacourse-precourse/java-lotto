@@ -2,7 +2,7 @@ package lotto.service;
 
 import lotto.Lotto;
 import lotto.repository.LottoRepository;
-import lotto.util.InputValidator;
+import lotto.validator.InputValidator;
 import lotto.utils.RandomUtils;
 
 import java.util.ArrayList;
