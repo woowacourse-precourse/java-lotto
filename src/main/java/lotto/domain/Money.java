@@ -26,13 +26,19 @@ public class Money {
         return calculateYield(new BigDecimal(investmentPrincipalMoney.money), new BigDecimal(revenueMoney.money));
     }
 
-    private static double calculateYield(BigDecimal investmentPrincipal, BigDecimal revenue) {
-        return revenue.divide(investmentPrincipal).multiply(HUNDRED_BIG_DECIMAL).doubleValue();
-    }
-
-    public int divide(Money money) {
+    public int divideValue(Money money) {
         validateNotZero(money);
         return Long.valueOf(this.money / money.money).intValue();
+    }
+
+    private static void validateNotZero(Money money) {
+        if (money.money == 0) {
+            throw new DivideZeroException();
+        }
+    }
+
+    private static double calculateYield(BigDecimal investmentPrincipal, BigDecimal revenue) {
+        return revenue.divide(investmentPrincipal).multiply(HUNDRED_BIG_DECIMAL).doubleValue();
     }
 
     public Money add(Money money) {
@@ -41,12 +47,6 @@ public class Money {
 
     public Money multiply(int value) {
         return new Money(this.money * value);
-    }
-
-    private static void validateNotZero(Money money) {
-        if (money.money == 0) {
-            throw new DivideZeroException();
-        }
     }
 
     @Override

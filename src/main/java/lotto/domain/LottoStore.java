@@ -13,7 +13,7 @@ public class LottoStore {
     }
 
     public Lottos purchaseLotto(Money money) {
-        return new Lottos(IntStream.range(0, money.divide(LOTTO_PRICE))
+        return new Lottos(IntStream.range(0, money.divideValue(LOTTO_PRICE))
                 .mapToObj(number -> createLotto())
                 .collect(Collectors.toList()));
     }
