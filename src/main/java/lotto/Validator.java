@@ -9,20 +9,25 @@ public class Validator {
     private int bonusNumber;
     private List<Integer> lottoNumbers;
 
-    public void validDatePurchaseAmount(String input) {
+    public int validDatePurchaseAmount(String input) {
         validDateType(input);
         int purchaseAmount = Integer.parseInt(input);
         validDateThousandUnitNumber(purchaseAmount);
         validRangeNumber(purchaseAmount);
+        this.purchaseAmount = purchaseAmount;
+        return purchaseAmount;
     }
 
-    public void validDateBonusNumber(String input) {
+    public int validDateBonusNumber(String input) {
         validDateType(input);
         int bonusNumber = Integer.parseInt(input);
         validRangeLottoNumber(bonusNumber);
+        nonOverlapWithLottoNumbers(bonusNumber);
+        this.bonusNumber = bonusNumber;
+        return bonusNumber;
     }
 
-    public void validDateWinningNumbers(String input) {
+    public List<Integer> validDateWinningNumbers(String input) {
         List<String> lottoNumbers = List.of(input.split(","));
         validDateLottoNumberSize(lottoNumbers);
         validDateLottoNumbers(lottoNumbers);
@@ -30,7 +35,8 @@ public class Validator {
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
         nonOverlap(winningLottoNumbers);
-        System.out.println(input);
+        this.lottoNumbers = winningLottoNumbers;
+        return winningLottoNumbers;
     }
 
     private void validDateType(String input) {
@@ -55,6 +61,12 @@ public class Validator {
             throw new IllegalArgumentException("[ERROR] 로또 숫자는 1이상 45 이하이 숫자를 입력하셔야 합니다.");
         }
     }
+    private void nonOverlapWithLottoNumbers(Integer number) {
+        if (lottoNumbers.contains(number)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
+        }
+    }
+
     private void validDateLottoNumberSize(List<String> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 총 6개의 숫자를 입력해주세요.");
