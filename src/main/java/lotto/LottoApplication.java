@@ -10,11 +10,13 @@ public class LottoApplication {
 
     public void run() {
 
-
-        lottoBuyer.buyLotto();
-        lottoBuyer.checkWinStatics();
-        lottoBuyer.checkRate();
-
+        try {
+            lottoBuyer.buyLotto();
+            lottoBuyer.checkWinStatics();
+            lottoBuyer.checkRate();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 
