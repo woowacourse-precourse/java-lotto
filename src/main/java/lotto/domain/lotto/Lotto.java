@@ -50,5 +50,9 @@ public class Lotto {
         return this.numbers;
     }
 
+    public String print() {
+        return String.valueOf(this.numbers);
+    }
+
     // TODO: 추가 기능 구현
 }
