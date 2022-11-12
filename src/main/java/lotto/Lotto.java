@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -11,8 +13,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        Validation.isLottoDuplicate(numbers);
-        Validation.isLottoBetween1And45(numbers);
+        new Validation(numbers);
     }
 
     // TODO: 추가 기능 구현
