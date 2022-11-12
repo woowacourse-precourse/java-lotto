@@ -29,14 +29,14 @@
 - [X] 로또 번호 일치하는 개수를 확인하여 등수 선정 - Customer.createWinnings()
 - [X] 총 당첨금을 계산하기 -Customer.calculateWinnings()
 - [X] 수익률 계산하기 - Customer.calculateEarningRate()
-- [ ] 등수와 수익률을 출력할 문구 만들기
+- [X] 등수와 수익률을 출력할 문구 만들기
 
 ## 기타 및 추가사항
 
 - [X] 입력값이 글자인지 숫자인지 확인하기(예외처리 - 숫자를 입력해주시기 바랍니다) - Customer.validateNumeric()
 - [ ] 예외들 인터페이스로 리팩토링 하기
 - [ ] 에러 출력하는 테스트 코드 예시 양식으로 리팩토링 하기
-- [ ] enum 사용하기
+- [X] enum 사용하기
 - [X] 당첨 번호와 보너스 번호가 일치한지 확인하기(예외처리 - 당첨 번호와 보너스 번호에 중복된 숫자가 있습니다.) - Customer.validateDuplication()
 
 ## 참고사항
