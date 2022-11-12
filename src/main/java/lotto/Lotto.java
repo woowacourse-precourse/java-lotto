@@ -37,6 +37,18 @@ public class Lotto {
         }
     }
 
+    public void printNumbers() {
+        String print = "";
+
+        for (int number : numbers) {
+            print = print.concat(" " + number);
+        }
+
+        print = print.trim();
+        print = print.replaceAll(" ", ", ");
+        System.out.println("[" + print + "]");
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
     }
