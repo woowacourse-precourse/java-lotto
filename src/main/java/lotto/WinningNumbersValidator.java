@@ -33,11 +33,11 @@ public class WinningNumbersValidator {
 
     public static void validate(String winningNumberInput) {
         List<String> winningNumbers = Arrays.asList(winningNumberInput.split(","));
-        if (!isSixNumbers(winningNumbers)) {
-            throw new IllegalArgumentException(SIX_NUMBERS_ERROR_MESSAGE);
-        }
         if (!isAllNumeric(winningNumbers)) {
             throw new IllegalArgumentException(ALL_NUMERIC_ERROR_MESSAGE);
+        }
+        if (!isSixNumbers(winningNumbers)) {
+            throw new IllegalArgumentException(SIX_NUMBERS_ERROR_MESSAGE);
         }
     }
 }
