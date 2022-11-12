@@ -14,8 +14,10 @@ public class InputValidator {
         validateIsSeparateByComma(input);
     }
 
-    public void validateInputBonusNumber() {
-        throw new UnsupportedOperationException();
+    public void validateInputBonusNumber(String input) {
+        validateIsNumber(input);
+        validateOutOfRange(Integer.parseInt(input));
+
     }
 
     private void validateIsSeparateByComma(String input) {
@@ -38,4 +40,9 @@ public class InputValidator {
         }
     }
 
+    private void validateOutOfRange(Integer value) {
+        if(value < 1 || value > 45) {
+            throw new IllegalArgumentException("숫자 범위가 초과되었습니다.");
+        }
+    }
 }
