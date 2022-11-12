@@ -15,22 +15,31 @@ public class Lotto {
         isNotDuplicated(numbers);
         isInRange(numbers);
     }
-    private void isSize_6(List<Integer> numbers){
+
+    private void isSize_6(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개 여야 합니다.");
         }
     }
-    private void isNotDuplicated(List<Integer> numbers){
+
+    private void isNotDuplicated(List<Integer> numbers) {
         int notDuplicatedSize = (int) numbers.stream().distinct().count();
-        if(notDuplicatedSize != 6){
+        if (notDuplicatedSize != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되지 않아야 합니다.");
         }
     }
-    private void isInRange(List<Integer> numbers){
-        for(int n : numbers){
-            if(n<1 || n>45){
+
+    private void isInRange(List<Integer> numbers) {
+        for (int n : numbers) {
+            if (n < 1 || n > 45) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
             }
         }
     }
+    public List<Integer> getNumbers(){
+        return this.numbers;
+    }
+
+
+
 }
