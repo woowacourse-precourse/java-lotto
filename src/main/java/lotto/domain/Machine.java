@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class Machine {
         List<Rank> ranks = RankGenerator.getRanks();
         CompareLotto.compare(ranks, lottos, winningNumbers, bonusNumber);
         double yield = Calculator.getYield(ranks, quantity);
+        OutputView.result(ranks, yield);
     }
 
 

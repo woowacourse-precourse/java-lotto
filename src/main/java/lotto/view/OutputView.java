@@ -1,6 +1,7 @@
 package lotto.view;
 
 import lotto.domain.Lotto;
+import lotto.domain.Rank;
 
 import java.util.List;
 
@@ -13,5 +14,16 @@ public class OutputView {
         for (Lotto lotto : lottos) {
             lotto.printNumbers();
         }
+    }
+
+    public static void result(List<Rank> ranks, double yield) {
+
+        for (Rank rank : ranks) {
+            System.out.println(rank.toString());
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("총 수익률은 ").append(yield).append("%입니다.");
+        System.out.println(sb.toString());
     }
 }

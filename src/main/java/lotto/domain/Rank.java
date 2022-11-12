@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.text.NumberFormat;
+
 public class Rank {
     private int ranking;
     private int match;
@@ -30,5 +32,12 @@ public class Rank {
 
     public long getTotalReward() {
         return (reward * count);
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(match).append("개 일치 (").append(NumberFormat.getInstance().format(reward))
+                .append("원) - ").append(count).append("개");
+        return sb.toString();
     }
 }
