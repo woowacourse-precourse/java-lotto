@@ -1,6 +1,11 @@
 package lotto.controller;
 
-import lotto.domain.*;
+import lotto.domain.Lotto;
+import lotto.domain.LottoStatistics;
+import lotto.domain.LottoPrice;
+import lotto.domain.LottoPrize;
+import lotto.domain.LottoTicket;
+import lotto.domain.WinningNumbers;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
