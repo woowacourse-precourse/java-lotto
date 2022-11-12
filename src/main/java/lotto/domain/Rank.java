@@ -1,8 +1,7 @@
 package lotto.domain;
 
-import lotto.LottoInputException;
-
 import java.util.Arrays;
+import java.util.function.Function;
 
 public enum Rank {
     FIFTH(3, 5000),
@@ -19,11 +18,21 @@ public enum Rank {
         this.reward = reward;
     }
 
-    public static Rank findRank(int matchNum) {
+    public static Rank findRank(int matchNum, boolean bonusNumber) {
         return Arrays.stream(Rank.values())
                 .filter(rank -> rank.getMatchNumber().equals(matchNum))
+                .map(discriminateSecond(bonusNumber))
                 .findFirst()
                 .orElseThrow();
+    }
+
+    private static Function<Rank, Rank> discriminateSecond(boolean bonusNumber) {
+        return rank -> {
+            if (rank.matchNumber.equals(SECOND.getMatchNumber()) && bonusNumber) {
+                return SECOND;
+            }
+            return rank;
+        };
     }
 
     public Integer getMatchNumber() {

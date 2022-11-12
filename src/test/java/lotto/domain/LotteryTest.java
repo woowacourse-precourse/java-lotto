@@ -28,13 +28,14 @@ public class LotteryTest {
         List<LottoNumber> lottoNumbers2 = List.of(new LottoNumber(1), new LottoNumber(2), new LottoNumber(3)
                 , new LottoNumber(4), new LottoNumber(41), new LottoNumber(43));
         Lotto winningLotto = new Lotto(lottoNumbers2);
+        LottoNumber bonusNumber = new LottoNumber(41);
 
         int buyLottos = 2;
         ConstantCreateStrategy lottoCreateStrategy = new ConstantCreateStrategy();
         List<Lotto> lottos = new Lottery().createLottery(buyLottos, lottoCreateStrategy);
 
         Lottery lottery = new Lottery();
-        List<Rank> ranks = lottery.ranks(winningLotto,lottos);
+        List<Rank> ranks = lottery.ranks(winningLotto, lottos, bonusNumber);
 
         assertThat(ranks).contains(Rank.FOURTH);
     }

@@ -9,6 +9,12 @@ class RankTest {
     @Test
     void findRank() {
 
-        assertEquals(Rank.FIRST, Rank.findRank(6));
+        assertEquals(Rank.FIRST, Rank.findRank(6, false));
+    }
+
+    @Test
+    void if_matchNumber_five() {
+
+        assertEquals(Rank.SECOND, Rank.findRank(5, true));
     }
 }

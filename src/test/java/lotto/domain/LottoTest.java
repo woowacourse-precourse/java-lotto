@@ -37,6 +37,6 @@ class LottoTest {
         List<LottoNumber> tempLottoNumber = new ConstantCreateStrategy().createTempLottoNumber();
         Lotto purchaseLotto = new Lotto(tempLottoNumber);
 
-        assertThat(purchaseLotto.matchCountLotto(winningLotto)).isEqualTo(Rank.FIFTH.getMatchNumber());
+        assertThat(purchaseLotto.countMatchNumber(winningLotto)).isEqualTo(Rank.FIFTH.getMatchNumber());
     }
 }

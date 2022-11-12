@@ -31,7 +31,11 @@ public class Lotto {
         }
     }
 
-    public int matchCountLotto(Lotto comPareLotto) {
+    public boolean bonus(LottoNumber bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
+
+    public int countMatchNumber(Lotto comPareLotto) {
         return Math.toIntExact(numbers.stream().filter(comPareLotto::matchCountLottoNumber).count());
 
     }
