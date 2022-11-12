@@ -1,7 +1,6 @@
 package lotto.service;
 
-import lotto.domain.Lotto;
-import lotto.domain.NumberGenerator;
+import lotto.domain.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,9 +13,15 @@ public class LottoService {
         this.numberGenerator = new NumberGenerator();
     }
 
-    public List<Lotto> publishLotto(int cnt) {
-        return IntStream.range(0, cnt)
+    public Lottos publishLotto(String input) {
+        List<Lotto> result = IntStream.range(0, new Money(input).getLottoCount())
                 .mapToObj(i -> new Lotto(this.numberGenerator.createDuplicateNumbers()))
                 .collect(Collectors.toList());
+
+        return new Lottos(result);
+    }
+
+    public void getLottosByMoney(Buyer buyer, String input) {
+        buyer.buyLottos(publishLotto(input));
     }
 }

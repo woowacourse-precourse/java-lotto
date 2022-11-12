@@ -23,7 +23,6 @@ public class Controller {
     public void startGame() {
         view.printWelcomeMessage();
         String input = buyer.inputMoney();
-        List<Lotto> lottos = lottoService.publishLotto(new Money(input).getLottoCount());
-        view.printLottoCountMessage(lottos.size());
+        lottoService.getLottosByMoney(buyer, input);
     }
 }
