@@ -1,5 +1,6 @@
 package lotto.domain.rank;
 
+import lotto.domain.money.Money;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -21,7 +22,7 @@ class RankTest {
     void rankAndRewardTest(final String rank, final int reward) {
         // when, then
         assertThat(reward)
-                .isEqualTo(Rank.valueOf(rank).getReward());
+                .isEqualTo(Rank.valueOf(rank).getReward().value());
     }
 
     @ParameterizedTest(name = "{0}개의 번호가 일치하면 RANK는 {1}이다")

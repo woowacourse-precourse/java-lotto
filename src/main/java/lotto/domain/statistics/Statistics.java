@@ -28,6 +28,7 @@ public class Statistics {
 
         int totalReword = ranks.stream()
                 .map(Rank::getReward)
+                .map(Money::value)
                 .reduce(0, Integer::sum);
 
         return new Statistics(

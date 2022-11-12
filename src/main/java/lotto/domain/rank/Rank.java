@@ -1,5 +1,7 @@
 package lotto.domain.rank;
 
+import lotto.domain.money.Money;
+
 import java.util.Arrays;
 import java.util.function.BiPredicate;
 
@@ -13,15 +15,15 @@ public enum Rank {
     UNWINNABLE(0, (matchCount, matchBonus) -> matchCount < 3),
     ;
 
-    private final int reward;
+    private final Money reward;
     private final BiPredicate<Integer, Boolean> match;
 
     Rank(int reward, BiPredicate<Integer, Boolean> match) {
-        this.reward = reward;
+        this.reward = Money.valueOf(reward);
         this.match = match;
     }
 
-    public int getReward() {
+    public Money getReward() {
         return reward;
     }
 
