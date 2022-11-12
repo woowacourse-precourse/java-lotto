@@ -2,6 +2,7 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -20,4 +21,13 @@ public class UserLotto {
         Collections.sort(lottoNumbers);
         return new Lotto(lottoNumbers);
     }
+
+    public int getSize() {
+        int count = 0;
+        for(Lotto lotto : lottos) {
+            count++;
+        }
+        return count;
+    }
+
 }
