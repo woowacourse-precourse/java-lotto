@@ -24,4 +24,12 @@ public class Lottos {
             lottos.add(lotto);
         }
     }
+
+    public void calculateLottos(List<Integer> lottoWinningNumber){
+        for(Lotto lotto: lottos){
+            int matchNumbers=lotto.matchLotto(lottoWinningNumber);
+            boolean containsBonus=lotto.contains(new ArrayList<>(lottoWinningNumber.get(6)));
+        }
+
+    }
 }

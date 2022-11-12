@@ -18,8 +18,8 @@ public enum LottoRanking {
         lottoWinningMoney=money;
     }
     public LottoRanking getLottoRanking(int matchLottoCounts, boolean haveBonus){
-        if(matchLottoCounts==SECOND.lottoCounts && haveBonus)
-            return SECOND;
+        if(matchLottoCounts==SECOND.lottoCounts && !haveBonus)
+            return THIRD;
         if(matchLottoCounts< FIFTH.lottoCounts)
             return NOTTING;
         return Arrays.stream(LottoRanking.values())

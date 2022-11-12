@@ -45,4 +45,8 @@ public class LottoController {
     public void getUserBonusNumber(){
         userLottoNumbers.add(InputView.requestBonusNumber());
     }
+
+    public void compareLottos(){
+        lottos.calculateLottos(userLottoNumbers);
+    }
 }

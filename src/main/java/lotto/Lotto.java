@@ -23,4 +23,15 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    public int matchLotto(List<Integer> lotto){
+        return (int) this.numbers.stream()
+                .filter(lotto::contains)
+                .count();
+    }
+
+
+    public boolean contains(List<Integer> lottoWinningNumbers){
+        return numbers.contains(lottoWinningNumbers);
+    }
 }
