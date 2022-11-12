@@ -7,26 +7,15 @@ public class Seller {
 
     private static final int LOTTO_PRICE = 1000;
 
-    public List<Lotto> issueLottos(int money) {
-        validateGreaterThanZero(money);
-        validateNoRemainder(money);
-        return issueRandomLottos(amountToIssue(money));
+    public List<Lotto> issueLottos(Money money) {
+        validateNoChange(money);
+        return issueRandomLottos(money.countAffordableFor(LOTTO_PRICE));
     }
 
-    private void validateGreaterThanZero(int money) {
-        if (money < 0) {
-            throw new IllegalArgumentException("금액은 음수이면 안됩니다");
-        }
-    }
-
-    private void validateNoRemainder(int money) {
-        if (money % LOTTO_PRICE != 0) {
+    private void validateNoChange(Money money) {
+        if (money.hasChangesWith(LOTTO_PRICE)) {
             throw new IllegalArgumentException("금액이 나눠 떨어지지 않습니다");
         }
-    }
-
-    private int amountToIssue(int money) {
-        return money / LOTTO_PRICE;
     }
 
     private List<Lotto> issueRandomLottos(int amount) {
