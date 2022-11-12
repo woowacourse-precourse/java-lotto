@@ -23,7 +23,6 @@ public class InputPurchase {
         inputData = Console.readLine();
         amount = checkPurchase(inputData);
         userDTO = new UserDTO(amount);
-
         return userDTO;
     }
 
@@ -44,7 +43,7 @@ public class InputPurchase {
         }
     }
     private void checkIsNum(char ch) {
-        if ('0' > ch && '9' < ch) {
+        if ('0' > ch || '9' < ch) {
             throw new IllegalArgumentException("[ERROR] 숫자값을 입력해야 합니다.");
         }
     }

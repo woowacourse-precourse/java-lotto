@@ -8,7 +8,11 @@ public class RunGame {
 
     public void runGame() {
         UserDTO userDTO;
-
+        try {
         userDTO = input.inputPurchase();
+        } catch(IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return ;
+        }
     }
 }
