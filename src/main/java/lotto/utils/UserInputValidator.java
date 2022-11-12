@@ -17,7 +17,7 @@ public class UserInputValidator {
     }
 
     private static void isValidUnitOfMoney(int purchaseAmount) {
-        if (purchaseAmount % UNIT_OF_MONEY != 0) {
+        if (purchaseAmount % UNIT_OF_MONEY != 0 || purchaseAmount == 0) {
             throw new IllegalArgumentException(ERROR_MESSAGE_NOT_VALID_UNIT_OF_MONEY);
         }
     }
