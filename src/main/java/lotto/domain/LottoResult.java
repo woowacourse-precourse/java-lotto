@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Objects;
 
 public class LottoResult {
@@ -13,6 +14,15 @@ public class LottoResult {
 
     public void addResult(Rank rank) {
         lottoResult.put(rank, lottoResult.getOrDefault(rank, 0) + 1);
+    }
+
+    public Money reward() {
+        Money reward = new Money(0);
+        for (Entry<Rank, Integer> entry : lottoResult.entrySet()) {
+            Money rankReward = entry.getKey().reward();
+            reward = reward.add(rankReward.multiply(entry.getValue()));
+        }
+        return reward;
     }
 
     @Override

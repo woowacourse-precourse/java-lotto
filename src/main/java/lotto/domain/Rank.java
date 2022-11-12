@@ -26,6 +26,17 @@ public enum Rank {
         return matchBonusNumberRank(matchBonusNumber, matchCountRanks(matchCount));
     }
 
+    private static Rank matchBonusNumberRank(boolean matchBonusNumber, List<Rank> matchCountRanks) {
+        return matchCountRanks.stream()
+                .filter(rank -> rank.isMatchBonusNumber(matchBonusNumber))
+                .findFirst()
+                .orElse(matchCountRanks.stream().findFirst().orElse(Rank.MISS));
+    }
+
+    private boolean isMatchBonusNumber(boolean matchBonusNumber) {
+        return this.matchBonusNumber == matchBonusNumber;
+    }
+
     private static List<Rank> matchCountRanks(int matchCount) {
         return Stream.of(Rank.values())
                 .filter(rank -> rank.isMatchCountEqual(matchCount))
@@ -36,14 +47,7 @@ public enum Rank {
         return this.matchCount == matchCount;
     }
 
-    private static Rank matchBonusNumberRank(boolean matchBonusNumber, List<Rank> matchCountRanks) {
-        return matchCountRanks.stream()
-                .filter(rank -> rank.isMatchBonusNumber(matchBonusNumber))
-                .findFirst()
-                .orElse(matchCountRanks.stream().findFirst().orElse(Rank.MISS));
-    }
-
-    private boolean isMatchBonusNumber(boolean matchBonusNumber) {
-        return this.matchBonusNumber == matchBonusNumber;
+    public Money reward() {
+        return this.reward;
     }
 }

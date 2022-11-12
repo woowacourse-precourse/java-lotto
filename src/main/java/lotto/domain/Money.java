@@ -35,9 +35,29 @@ public class Money {
         return Long.valueOf(this.money / money.money).intValue();
     }
 
+    public Money add(Money money) {
+        return new Money(this.money + money.money);
+    }
+
+    public Money multiply(int value) {
+        return new Money(this.money * value);
+    }
+
     private static void validateNotZero(Money money) {
         if (money.money == 0) {
             throw new DivideZeroException();
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Money money1 = (Money) o;
+        return money == money1.money;
     }
 }

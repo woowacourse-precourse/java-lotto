@@ -20,4 +20,18 @@ public class LottoResultTest {
 
         assertThat(actual).isEqualTo(expected);
     }
+
+    @DisplayName("총 상금을 반환한다.")
+    @Test
+    void reward() {
+        LottoResult lottoResult = new LottoResult();
+        lottoResult.addResult(Rank.FIRST);
+        lottoResult.addResult(Rank.SECOND);
+        lottoResult.addResult(Rank.THIRD);
+        lottoResult.addResult(Rank.FOURTH);
+        lottoResult.addResult(Rank.FIFTH);
+        lottoResult.addResult(Rank.MISS);
+
+        assertThat(lottoResult.reward()).isEqualTo(new Money(2_031_555_000));
+    }
 }
