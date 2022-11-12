@@ -3,6 +3,8 @@ package domain;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import util.ValidateBonusNumber;
+import util.ValidateUserMoney;
 import view.InputBonusNumber;
 import view.InputUserMoney;
 import view.InputWinningLottoNumber;
