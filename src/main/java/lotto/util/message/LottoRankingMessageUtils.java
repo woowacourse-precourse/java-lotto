@@ -22,6 +22,8 @@ public enum LottoRankingMessageUtils {
         return Arrays.stream(LottoRankingMessageUtils.values())
                 .filter(utils -> utils.lottoRanking == lottoRanking)
                 .map(utils -> String.format(utils.message, lottoRanking.findRewardMessage(), numberOfWins))
-                .findAny().orElseThrow();
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException(LottoExceptionMessageUtils
+                        .INVALID_RANKING.findExceptionMessage(lottoRanking.name())));
     }
 }
