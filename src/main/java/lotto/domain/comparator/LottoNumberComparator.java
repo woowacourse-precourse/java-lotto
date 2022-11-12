@@ -46,7 +46,7 @@ public class LottoNumberComparator {
     }
     
     private Optional<Ball> findMatchBonusBall(Integer userNumber) {
-        return winningNumber.getNormalNumbers().stream().filter((ball) -> ball.getNumber().equals(userNumber))
+        return winningNumber.getBonusNumbers().stream().filter((ball) -> ball.getNumber().equals(userNumber))
                 .findFirst();
     }
 }
