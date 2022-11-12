@@ -38,7 +38,7 @@ public class PlayerTest {
     void getPlayersProfitTest(){
         player.buyTickets(5000);
         addRankings();
-        assertThat(player.showWinningProfit()).isEqualTo(40030300);
+        assertThat(player.showWinningProfit()).isEqualTo("630300.0");
     }
 
 
