@@ -10,7 +10,10 @@
 # 기능 목록
 
 ## UI 계층
- -> 어플리케이션?
+1. 구입 금액을 입력받는 메서드 : getInputMoney()
+2. 구입한 로또의 번호를 출력하는 메서드 : printLottoNumbers()
+3. 당첨 로또 번호를 입력받는 메서드 : getWinningNumbers()
+4. 당첨 통계를 출력하는 메서드 : printWinningStats()
 
 ## 도메인 계층
 1. Lotto 클래스
