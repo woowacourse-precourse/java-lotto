@@ -1,10 +1,10 @@
-# 기능 목록 ver 1.3
+# 기능 목록 ver 1.3.1
 <hr>
 
 ### 예외처리 상황
 - 구입금액
-  - [ ] 입력 값이 숫자가 아닌 경우 - UserLotto
-  - [ ] 구입금액이 1000 으로 나누어 떨어지지 않는 경우 - UserLotto
+  - [x] 입력 값이 숫자가 아닌 경우 - UserLotto
+  - [x] 구입금액이 1000 으로 나누어 떨어지지 않는 경우 - UserLotto
 
 
 - 당첨 번호
@@ -33,13 +33,14 @@
   - [ ] 당첨 통계 출력 - UserLotto
 - [ ] 입력 기능
   - [ ] 입력받은 구입금액에 대한 생성자 - UserLotto
-    - [x]String 형식에 대한 int 형변환 - Guide
+    - [x] String 형식에 대한 int 형변환 - Guide
   - [ ] 입력받은 당첨 번호에 대한 생성자 - Lotto
     - [x] String 형식인 당첨 번호를 콤마로 구분하여 List\<String>로 변환 - Guide
     - [x] List\<String> 을 List\<Integer>로 변환
   - [ ] 입력받은 보너스 번호에 대한 생성자 - Bonus
-    - [x]String 형식에 대한 int 형변환 - Guide
+    - [x] String 형식에 대한 int 형변환 - Guide
 
+- [x] UserLotto 생성자 - UserLotto
 - [ ] 로또 번호 접근자 - Lotto
 - [ ] 구매 개수 계산 - UserLotto
 - [ ] 구매 리스트 생성(랜덤) - NumberGenerator
