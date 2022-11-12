@@ -2,7 +2,7 @@ package lotto.domain;
 
 import java.util.Arrays;
 
-public enum WinningCondition {
+public enum WinningTable {
     FIRST(2000000000, 6, false),
     SECOND(30000000, 5, true),
     THIRD(1500000, 5, false),
@@ -14,18 +14,18 @@ public enum WinningCondition {
     int numberOfCorrected;
     boolean isBonusCorrected;
 
-    WinningCondition(int price) {
+    WinningTable(int price) {
         this.price = price;
     }
 
-    WinningCondition(int price, int numberOfCorrected, boolean isBonusCorrected) {
+    WinningTable(int price, int numberOfCorrected, boolean isBonusCorrected) {
         this.price = price;
         this.numberOfCorrected = numberOfCorrected;
         this.isBonusCorrected = isBonusCorrected;
     }
 
-    public static WinningCondition getRank(int numberOfCorrected, boolean isBonusCorrected) {
-        return Arrays.stream(WinningCondition.values())
+    public static WinningTable getRank(int numberOfCorrected, boolean isBonusCorrected) {
+        return Arrays.stream(WinningTable.values())
                 .filter(wc -> wc.hasCondition(numberOfCorrected, isBonusCorrected))
                 .findAny()
                 .orElse(LOSE);
