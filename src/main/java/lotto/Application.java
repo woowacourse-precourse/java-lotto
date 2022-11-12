@@ -6,7 +6,9 @@ public class Application {
 
         //구입금액 입력 받기
         int price = InputNum.askPrice();
+        int lotto_cnt = Calculate.countLotto(price);
 
+        System.out.println("lotto_cnt = " + lotto_cnt);
 
     }
 }
