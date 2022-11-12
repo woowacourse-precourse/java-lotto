@@ -14,6 +14,7 @@ public class Lotto {
 
     public Lotto(List<Integer> lottoNumbers) {
         validateLottoSize(lottoNumbers);
+        validateDuplicatedLottoNumber(lottoNumbers);
         this.lottoNumbers = lottoNumbers;
     }
 
@@ -25,5 +26,10 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-
+    private void validateDuplicatedLottoNumber(List<Integer> lottoNumbers) {
+        long count = lottoNumbers.stream().distinct().count();
+        if (count < LOTTO_SIZE) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
