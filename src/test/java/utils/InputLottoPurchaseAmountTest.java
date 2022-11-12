@@ -28,11 +28,6 @@ public class InputLottoPurchaseAmountTest {
 			}
 		}
 
-		private void readLine(String lottoPurchaseAmount) {
-			InputStream in = new ByteArrayInputStream(lottoPurchaseAmount.getBytes());
-			System.setIn(in);
-		}
-
 		@Test
 		@DisplayName("구입금액 예외사항 테스트: 1000원 미만 입력")
 		void inputOutOfRangeLottoPurchaseAmount() {
@@ -64,42 +59,29 @@ public class InputLottoPurchaseAmountTest {
 	class SuccessTest {
 
 		@Test
-		@DisplayName("구입금액 숫자 유효성 검증 성공 테스트: 숫자만 입력")
+		@DisplayName("구입금액 유효성 검증 성공 테스트")
 		void inputNumericLottoPurchaseAmount() {
-			// given, when
-			String lottoPurchaseAmountOne = "1000";
-			String lottoPurchaseAmountTwo = "1234";
-			String lottoPurchaseAmountThree = "100000";
+			// given
+			List<String> lottoPurchaseAmounts = List.of("1000", "22000", "54835000", "743210100000");
+			List<Long> expectedLottoPurchaseAmounts = List.of(1000L, 22000L, 54835000L, 743210100000L);
 
-			// then
-			assertThatNoException().isThrownBy(() -> validateNumeric(lottoPurchaseAmountOne));
-			assertThatNoException().isThrownBy(() -> validateNumeric(lottoPurchaseAmountTwo));
-			assertThatNoException().isThrownBy(() -> validateNumeric(lottoPurchaseAmountThree));
+			for (int idx = 0; idx < lottoPurchaseAmounts.size(); idx++) {
+
+				String lottoPurchaseAmount = lottoPurchaseAmounts.get(idx);
+
+				// when
+				long expectedLottoPurchaseAmount = expectedLottoPurchaseAmounts.get(idx);
+				readLine(lottoPurchaseAmount);
+				long result = readLottoPurchaseAmount();
+
+				// then
+				assertThat(result).isEqualTo(expectedLottoPurchaseAmount);
+			}
 		}
+	}
 
-		@Test
-		@DisplayName("구입금액 최소금액 유효성 검증 성공 테스트: 1000원 이상 입력")
-		void inputInRangeLottoPurchaseAmount() {
-			// given, when
-			int lottoPurchaseAmountOne = 1000;
-			int lottoPurchaseAmountTwo = 124011;
-
-			// then
-			assertThatNoException().isThrownBy(() -> validatePurchaseAmountRange(lottoPurchaseAmountOne));
-			assertThatNoException().isThrownBy(() -> validatePurchaseAmountRange(lottoPurchaseAmountTwo));
-
-		}
-
-		@Test
-		@DisplayName("구입금액 천원 단위 유효성 검증 성공 테스트: 1000원 단위 입력")
-		void inputValidatePurchaseAmountUnit() {
-			// given, when
-			int lottoPurchaseAmountOne = 1000;
-			int lottoPurchaseAmountTwo = 5000000;
-
-			// then
-			assertThatNoException().isThrownBy(() -> validatePurchaseAmountRange(lottoPurchaseAmountOne));
-			assertThatNoException().isThrownBy(() -> validatePurchaseAmountRange(lottoPurchaseAmountTwo));
-		}
+	private void readLine(String lottoPurchaseAmount) {
+		InputStream in = new ByteArrayInputStream(lottoPurchaseAmount.getBytes());
+		System.setIn(in);
 	}
 }
