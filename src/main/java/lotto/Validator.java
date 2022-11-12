@@ -30,4 +30,18 @@ public class Validator {
             }
         }
     }
+
+    public void ValidatorBonusRepeatNumber(List<Integer> ValidatorNumber, String BonusNumber){
+        if(ValidatorNumber.contains(BonusNumber)){
+            throw new IllegalArgumentException("[ERROR] 중복된 수는 들어올수 없습니다!");
+        }
+    }
+
+    public void ValidatorBonusRangeNumber(List<Integer> BonusNumber){
+        for(Integer integer : BonusNumber){
+            if(integer > 45 || integer < 0){
+                throw new IllegalArgumentException("[ERROR] 1부터~45의 수까지 입력가능합니다");
+            }
+        }
+    }
 }
