@@ -2,6 +2,8 @@ package lotto.exception;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -77,6 +79,24 @@ class InputExceptionHandlerTest {
 	void checkWinningNumberCountTest(String input) {
 		assertThatThrownBy(
 			() -> InputExceptionHandler.checkWinningNumberForm(input)
+		).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@ParameterizedTest
+	@DisplayName("보너스 번호는 당첨 번호와 중복되지 않은 숫자로 구성되어야 한다. -성공할 경우")
+	@ValueSource(strings = {"7", "15", "28"})
+	void checkBonusNumberTest(String input) {
+		assertThatCode(
+			() -> InputExceptionHandler.checkBonusNumberForm(Arrays.asList(1, 2, 3, 4, 5, 6), input)
+		).doesNotThrowAnyException();
+	}
+
+	@ParameterizedTest
+	@DisplayName("보너스 번호는 당첨 번호와 중복되지 않은 숫자로 구성되지 않을 경우 예외 발생한다. -실패할 경우")
+	@ValueSource(strings = {"5", "qw", "47"})
+	void checkBonusNumberExceptionTest(String input) {
+		assertThatThrownBy(
+			() -> InputExceptionHandler.checkBonusNumberForm(Arrays.asList(1, 2, 3, 4, 5, 6), input)
 		).isInstanceOf(IllegalArgumentException.class);
 	}
 }
