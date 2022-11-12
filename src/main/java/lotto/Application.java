@@ -68,22 +68,15 @@ public class Application {
 
     public static boolean hasInvalidInput(List<Integer> numbers) {
         for (int number : numbers) {
-            if(isNotInRange(number)) return true;
-        }
-        return hasDuplicates(numbers);
-    }
-
-    public static boolean isNotInRange(int number){
-        return number < 1 || number > 45;
-    }
-
-    public static boolean hasDuplicates(List<Integer> list) {
-        Set<Integer> set = new HashSet<>();
-        for (int elem : list) {
-            if (!set.add(elem)) return true;
+            if (isNotInRange(number)) return true;
         }
         return false;
     }
+
+    public static boolean isNotInRange(int number) {
+        return number < 1 || number > 45;
+    }
+
 
     public static void validateGivenNumbers() {
         winning_number_lotto = generateSixNumbers();
@@ -96,9 +89,11 @@ public class Application {
 
     public static void initializeBonusNumber() {
         System.out.println(BONUS_NUMBER_MESSAGE);
-        do {
-            BONUS_NUMBER = Integer.parseInt(Console.readLine());
-        } while (hasInvalidInput(List.of(BONUS_NUMBER)));
+        BONUS_NUMBER = Integer.parseInt(Console.readLine());
+        if (isNotInRange(BONUS_NUMBER)) {
+            System.out.println(ERROR_MESSAGE);
+            throw new IllegalArgumentException();
+        }
     }
 
     public static Lotto generateRandomSixNumbers() {
