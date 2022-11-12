@@ -14,12 +14,18 @@ public class BonusCheck {
             throw new IllegalArgumentException(Const.RANGE_ERRMSG);
         }
         int bonus = Integer.parseInt(bonusNumber);
-        if (winningLotto.getNumbers().contains(bonus)) {
+        if (!hasNumber(bonus,winningLotto)) {
             throw new IllegalArgumentException(Const.DUPLICATE_ERRMSG);
         }
         return bonus;
     }
 
+    private static boolean hasNumber(Integer bonus, Lotto winningLotto){
+        if (winningLotto.getNumbers().contains(bonus)){
+            return false;
+        }
+        return true;
+    }
     private static boolean isNumber(String bonusNumber) {
         for (int i = 0; i < bonusNumber.length(); i++) {
             char c = bonusNumber.charAt(i);
