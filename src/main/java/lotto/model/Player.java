@@ -1,7 +1,6 @@
 package lotto.model;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import lotto.util.Convertor;
@@ -19,18 +18,15 @@ public class Player {
 
     public List<Integer> inputLottoNumbers() {
         String input = Console.readLine();
-        List<String> checkComma;
         List<Integer> numbers;
 
-        try {
-            checkComma = new ArrayList<>(Arrays.asList(input.split("\\s*,\\s*")));
-        } catch (IllegalArgumentException ie) {
+        if (!input.contains(",")) {
             View.printNotComma();
             throw new IllegalArgumentException();
         }
 
         try {
-            numbers = Convertor.StringToInteger(checkComma);
+            numbers = Convertor.StringToInteger(Arrays.asList(input.split("\\s*,\\s*")));
         } catch (IllegalArgumentException ie) {
             View.printNotInteger();
             throw new IllegalArgumentException();
