@@ -7,4 +7,9 @@ public class User {
     private static int buyAmount;
 
     private List<Lotto> myLotto = new ArrayList<>();
+
+    public void setMyLotto(Lotto lotto) {
+        myLotto.add(lotto);
+    }
+
 }
