@@ -52,8 +52,8 @@ public class Validator {
             throw new IllegalArgumentException(INCORRECT_LUCKY_NUMBER_SIZE.toString());
         }
 
-        for (int i = 0; i < numbers.length; i++) {
-            if (numbers[i].length() > LottoStatus.END.getDigitsSize()) {
+        for (String number : numbers) {
+            if (number.length() > LottoStatus.END.getDigitsSize()) {
                 throw new IllegalArgumentException(INCORRECT_LUCKY_NUMBER_SIZE.toString());
             }
         }
@@ -63,4 +63,17 @@ public class Validator {
         return input.split(",");
     }
 
+    public void validateLuckyNumberDigit(String input) {
+        for (String number : getNumbers(input)) {
+            checkNumber(number);
+        }
+    }
+
+    private void checkNumber(String number) {
+        for (int index = 0; index < number.length(); index++) {
+            if (!Character.isDigit(getDigit(number, index))) {
+                throw new IllegalArgumentException(INCORRECT_LUCKY_NUMBER_DIGIT.toString());
+            }
+        }
+    }
 }

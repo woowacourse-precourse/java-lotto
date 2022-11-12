@@ -37,5 +37,11 @@ public enum ErrorMessage {
         public String toString() {
             return HEADER + ",로 구분하여 6개의 번호(1~45)를 입력하여야 합니다.";
         }
+    },
+    INCORRECT_LUCKY_NUMBER_DIGIT{
+        @Override
+        public String toString() {
+            return HEADER + "숫자를 입력하여야 합니다.";
+        }
     }
 }
