@@ -26,6 +26,15 @@ public class Lotto {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
     //2. 당첨에 대한 금액을 산정하는 함수
+    public int sameNumberCheck(List<Integer> buyLottoNumber){
+        int count = 0;
+        for(int i = 0; i < 6; i++){
+            if(buyLottoNumber.contains(numbers.get(i))){
+                count++;
+            }
+        }
+        return count;
+    }
     //3. 입력 받은 금액이 1000원단위인지 확인하는 함수
     public void moneyUnitCheck(int inputMoney){
         if(inputMoney % 1000 != 0){
