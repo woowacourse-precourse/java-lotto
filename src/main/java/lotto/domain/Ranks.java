@@ -14,4 +14,12 @@ public enum Ranks {
         this.matchNumber = matchNumber;
         this.reward = reward;
     }
+
+    public Integer getMatchNumber() {
+        return matchNumber;
+    }
+
+    public Integer getReward() {
+        return reward;
+    }
 }

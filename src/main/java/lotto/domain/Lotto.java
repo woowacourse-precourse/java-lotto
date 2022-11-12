@@ -31,6 +31,15 @@ public class Lotto {
         }
     }
 
+    public int matchCountLotto(Lotto winningLotto) {
+        return Math.toIntExact(numbers.stream().filter(winningLotto::matchCountLottoNumber).count());
+
+    }
+
+    public boolean matchCountLottoNumber(LottoNumber compare) {
+        return numbers.stream().anyMatch(control -> control.equals(compare));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -42,5 +51,9 @@ public class Lotto {
     @Override
     public int hashCode() {
         return Objects.hash(numbers);
+    }
+
+    public List<LottoNumber> getNumbers() {
+        return numbers;
     }
 }
