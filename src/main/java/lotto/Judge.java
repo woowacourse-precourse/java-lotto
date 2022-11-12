@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Judge {
@@ -26,5 +27,19 @@ public class Judge {
         } catch(Exception e) {
             return false;
         }
+    }
+
+    public boolean allNumber(String numbers) {
+        String[] num = numbers.split(",");
+        for(String n : num) {
+            if(!isNumber(n)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean inputValueIsNumber(String numbers, String num) {
+        return allNumber(numbers) && isNumber(num);
     }
 }
