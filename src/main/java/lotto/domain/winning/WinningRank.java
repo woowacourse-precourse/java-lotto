@@ -49,7 +49,6 @@ public class WinningRank {
     }
     
     public static Optional<WinningRank> getRank(List<Ball> matchBalls) {
-        System.out.println(ranks.size());
         int normalMatchCount = (int) matchBalls.stream().filter(ball -> ball.getType().equals(BallEnum.NORMAL)).count();
         int bonusMatchCount = (int) matchBalls.stream().filter(ball -> ball.getType().equals(BallEnum.BONUS)).count();
         
