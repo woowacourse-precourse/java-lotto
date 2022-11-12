@@ -77,9 +77,11 @@
 - [x]  입력을 처리하는 InputView 추가
 - [x]  요청을 처리하는 LottoController 클래스 추가
 - [x]  비즈니스 로직을 처리하는 LottoService 클래스 추가
+    - [x] 로또 구매 로직을 처리하는 메서드 추가
 - [x]  List<Lotto>의 일급 컬렉션인 LottoTicket 클래스 추가
     - [x] 로또 번호 리스트들을 반환하는 value 메서드 추가
 
 ### dto
 
 - [x]  구입 금액에 대한 값을 가진 PurchaseAmountDto 추가
+- [x]  구입한 로또에 대한 값을 가진 LottoInformationDto 추가
