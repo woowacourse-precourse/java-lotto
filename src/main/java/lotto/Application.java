@@ -32,6 +32,17 @@ public class Application {
         }
     }
 
+    static List<Lotto> make_lotto(int how_many_lotto) {
+        List<Lotto> lottos = new ArrayList<Lotto>();
+
+        for (int i = 0; i < how_many_lotto; i++) {
+            Lotto lotto = new Lotto(pickUniqueNumbersInRange(1, 45, 6));
+            lottos.add(lotto);
+        }
+
+        return lottos;
+    }
+
     static void print_money_error() {
         System.out.print(COMMON_ERROR_MESSAGE + " 구매 금액은 1000원으로 나누어 떨어져야 합니다.");
     }
@@ -47,5 +58,8 @@ public class Application {
         } catch (IllegalArgumentException e) {
             print_money_error();
         }
+
+        List<Lotto> lottos;
+        lottos = make_lotto(Integer.parseInt(user_money) / 1000);
     }
 }
