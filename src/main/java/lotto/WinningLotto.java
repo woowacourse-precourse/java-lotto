@@ -1,7 +1,9 @@
 package lotto;
 
+import static lotto.Constant.ErrorMessage.DUPLICATED_INPUT;
+import static lotto.Constant.ErrorMessage.WRONG_RANGE;
+
 import java.util.List;
-import lotto.Constant.ErrorMessage;
 
 
 
@@ -13,12 +15,12 @@ public class WinningLotto extends Lotto {
         super(numbers);
 
         if (numbers.contains(bonusNumber)) {
-            System.out.println(ErrorMessage.DUPLICATED_INPUT);
+            System.out.println(DUPLICATED_INPUT);
             throw new IllegalArgumentException();
         }
 
         if (LottoNumberValidator.isOutOfRange(bonusNumber)) {
-            System.out.println(ErrorMessage.WRONG_RANGE);
+            System.out.println(WRONG_RANGE);
             throw new IllegalArgumentException();
         }
 

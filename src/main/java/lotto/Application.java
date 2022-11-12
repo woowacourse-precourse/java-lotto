@@ -2,6 +2,9 @@ package lotto;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import static lotto.Converter.convertToInteger;
+import static lotto.Converter.convertToIntegerList;
+
 import java.util.List;
 
 
@@ -35,13 +38,13 @@ public class Application {
 
     public static void main(String[] args) {
         try {
-            int money = Converter.convertToInteger(readLine());
+            int money = convertToInteger(readLine());
 
             User user = new User(money);
             user.showLottos();
 
-            List<Integer> winningNumbers = Converter.convertToIntegerList(readLine());
-            int bonusNumber = Converter.convertToInteger(readLine());
+            List<Integer> winningNumbers = convertToIntegerList(readLine());
+            int bonusNumber = convertToInteger(readLine());
 
             WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
 

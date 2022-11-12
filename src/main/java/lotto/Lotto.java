@@ -1,9 +1,18 @@
 package lotto;
 
+import static lotto.Constant.ErrorMessage.DUPLICATED_INPUT;
+import static lotto.Constant.ErrorMessage.WRONG_RANGE;
+import static lotto.Constant.ErrorMessage.WRONG_SIZE;
+
+import static lotto.Constant.LottoValue.MAX_RANGE;
+import static lotto.Constant.LottoValue.MIN_RANGE;
+import static lotto.Constant.LottoValue.NUMBER_EA;
+
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.Constant.ErrorMessage;
+
 
 
 public class Lotto {
@@ -19,7 +28,7 @@ public class Lotto {
 
 
     public static Lotto generate() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_RANGE, MAX_RANGE, NUMBER_EA);
         final Lotto lotto = new Lotto(numbers);
 
         return lotto;
@@ -27,15 +36,15 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (LottoNumberValidator.isNotSameSize(numbers)) {
-            throw new IllegalArgumentException(ErrorMessage.WRONG_SIZE);
+            throw new IllegalArgumentException(WRONG_SIZE);
         }
 
         if (LottoNumberValidator.existDuplicate(numbers)) {
-            throw new IllegalArgumentException(ErrorMessage.DUPLICATED_INPUT);
+            throw new IllegalArgumentException(DUPLICATED_INPUT);
         }
 
         if (LottoNumberValidator.isOutOfRange(numbers)) {
-            throw new IllegalArgumentException(ErrorMessage.WRONG_RANGE);
+            throw new IllegalArgumentException(WRONG_RANGE);
         }
     }
 

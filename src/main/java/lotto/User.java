@@ -1,9 +1,12 @@
 package lotto;
 
+
+import static lotto.Constant.ErrorMessage.WRONG_MONEY_UNIT;
+import static lotto.Constant.LottoValue.LOTTO_PRICE;
+import static lotto.Printer.*;
+
 import java.util.ArrayList;
 import java.util.List;
-import lotto.Constant.ErrorMessage;
-import lotto.Constant.LottoValue;
 
 
 
@@ -19,7 +22,7 @@ public class User {
         validateMoney(money);
 
         this.money = money;
-        this.lottoNum = money / LottoValue.LOTTO_PRICE;
+        this.lottoNum = money / LOTTO_PRICE;
         generateLottos();
         this.winnings = new ArrayList<>();
         this.earn = 0;
@@ -27,8 +30,8 @@ public class User {
 
 
     private void validateMoney(int money) {
-        if (money % LottoValue.LOTTO_PRICE != 0) {
-            System.out.println(ErrorMessage.WRONG_MONEY_UNIT);
+        if (money % LOTTO_PRICE != 0) {
+            System.out.println(WRONG_MONEY_UNIT);
             throw new IllegalArgumentException();
         }
     }
@@ -45,11 +48,11 @@ public class User {
 
     public void showLottos() {
         System.out.println(lottoNum + "개를 구매했습니다.");
-        Printer.printLottos(lottos);
+        printLottos(lottos);
     }
 
     public void showWinnings() {
-        Printer.printWinnings(winnings);
+        printWinnings(winnings);
     }
 
     public void addWinning(Winning winning) {

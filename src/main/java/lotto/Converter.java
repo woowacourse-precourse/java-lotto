@@ -1,8 +1,9 @@
 package lotto;
 
+import static lotto.Constant.ErrorMessage.WRONG_INPUT;
+
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.Constant.ErrorMessage;
 
 
 
@@ -11,7 +12,7 @@ public class Converter {
         try {
             return Integer.parseInt(input);
         } catch (Exception exception) {
-            throw new IllegalArgumentException(ErrorMessage.WRONG_INPUT);
+            throw new IllegalArgumentException(WRONG_INPUT);
         }
     }
 
@@ -25,7 +26,7 @@ public class Converter {
 
             return numbers;
         } catch (Exception exception) {
-            throw new IllegalArgumentException(ErrorMessage.WRONG_INPUT);
+            throw new IllegalArgumentException(WRONG_INPUT);
         }
     }
 }
