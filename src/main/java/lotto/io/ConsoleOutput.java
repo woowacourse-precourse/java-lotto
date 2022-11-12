@@ -45,21 +45,22 @@ public class ConsoleOutput {
         System.out.println("]");
     }
 
-    public static void printWinningStatistics(List<Result> results, int purchaseAmount) {
+    public static void printWinningStatistics(List<Result> results, double profit) {
         System.out.println("당첨 통계");
         System.out.println("---");
         for (WinningPrice winningPrice : WinningPrice.values()) {
             printWinningPrice(winningPrice);
             System.out.println(winningPrice.countMatchResult(results) + "개");
         }
-        System.out.printf("총 수익률은 %.1f%입니다.\n", ProfitCalculator.getProfit(results, purchaseAmount));
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", profit);
     }
 
     private static void printWinningPrice(WinningPrice winningPrice) {
-        System.out.print(winningPrice.getAccordedNumber() + "개 일치 ");
-        if (winningPrice.shouldHitBonus()) {
-            System.out.println(", 보너스 볼 일치 ");
+        System.out.print(winningPrice.getAccordedNumber() + "개 일치");
+        if (winningPrice.shouldHitBonus() && winningPrice.getAccordedNumber() == 5) {
+            System.out.print(", 보너스 볼 일치");
         }
-        System.out.print("(" + formatter.format(winningPrice.getPrice()) + ") - ");
+        String formattedNumber = formatter.format(winningPrice.getPrice());
+        System.out.print(" (" + formattedNumber + "원) - ");
     }
 }

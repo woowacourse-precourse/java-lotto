@@ -7,7 +7,7 @@ public class ProfitCalculator {
         double revenue = 0;
         for (WinningPrice winningPrice : WinningPrice.values()) {
             int numOfWinning = (int)results.stream()
-                    .filter(result -> winningPrice.isSameAsThis(result))
+                    .filter(winningPrice::isSameAsThis)
                     .count();
             revenue += winningPrice.getPrice() * numOfWinning;
         }
