@@ -8,6 +8,10 @@ public class WinningNumberService {
     private Lotto lotteryWinningNumbers;
     private int bonus;
 
+    private static final int MIN = 1;
+    private static final int MAX = 45;
+
+
     public void parseWinningNumber(String input){
         try{
             lotteryWinningNumbers = new Lotto(StringParser.stringToIntegerList(input));
@@ -28,7 +32,7 @@ public class WinningNumberService {
     }
 
     private void checkRange(int number){
-        if(number > 45 || number < 1){
+        if(number > MAX || number < MIN){
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
