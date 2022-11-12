@@ -8,7 +8,8 @@ public enum WinningPlace {
     SECOND_PLACE(5,1,30000000,"5개 번호 + 보너스 번호 일치"),
     THIRD_PLACE(5,0,1500000,"5개 번호 일치"),
     FOURTH_PLACE(4,0,50000,"4개 번호 일치"),
-    FIFTH_PLACE(3,0,5000,"3개 번호 일치");
+    FIFTH_PLACE(3,0,5000,"3개 번호 일치"),
+    NOT_IN_PLACE(0, 0, 0, "순위 안에 들지 못했습니다.");
 
     private Integer correspondingNumber;
     private Integer correspondingBonusNumber;
@@ -29,8 +30,11 @@ public enum WinningPlace {
                 .filter(winningPlace -> winningPlace.correspondingBonusNumber == correspondingBonusNumber)
                 .findAny();
 
-        return getWinningPlace
-                .orElseThrow(() -> new Exception(ErrorResponse.NOT_IN_WINNING_PLACE.getErrorMessage()));
+        if (!getWinningPlace.isPresent()) {
+            return NOT_IN_PLACE;
+        }
+
+        return getWinningPlace.get();
     }
 
     WinningPlace(Integer correspondingNumber, Integer correspondingBonusNumber, Integer winnings, String message) {
