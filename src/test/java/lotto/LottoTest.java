@@ -3,12 +3,13 @@ package lotto;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import lotto.controller.LottoMachineController;
+import lotto.controller.MainController;
 import lotto.model.Lotto;
 import lotto.model.LottoCompany;
 import lotto.model.LottoMachine;
 import lotto.model.LottoRanking;
 import lotto.model.PrizeChecker;
+import lotto.model.Wallet;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.List;
@@ -38,16 +39,16 @@ class LottoTest {
 	@Test
 	void createLottoMachine() {
 		// TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
-		assertThat(new LottoMachine(8532).getLottoBundle().size()).isEqualTo(8);
-		assertThat(new LottoMachine(1532).getLottoBundle().size()).isEqualTo(1);
+		Wallet wallet = new LottoMachine(8532).buyLotto();
 
+		assertThat(wallet.getMyLotto().size()).isEqualTo(8);
 	}
 
 	@DisplayName("지불 금액에 맞는 로또를 구매한다 (지불 금액이 없는 경우)")
 	@Test
 	void createLottoMachineNoMoney() {
 		// TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
-		assertThatThrownBy(() -> new LottoMachine(532))
+		assertThatThrownBy(() ->  new LottoMachine(532).buyLotto())
 			.isInstanceOf(IllegalArgumentException.class);
 	}
 
@@ -55,8 +56,9 @@ class LottoTest {
 	@Test
 	void LottoInformationViewTest() {
 		// TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
-		LottoMachineController lottoMachinController = new LottoMachineController(8523);
-		lottoMachinController.viewLotto();
+		MainController mainController = new MainController();
+		Wallet wallet = new LottoMachine(8000).buyLotto();
+		mainController.viewLotto(wallet.getMyLotto().size(), wallet.getMyLotto());
 	}
 
     @DisplayName("당첨번호와 일치 갯수 확인")
@@ -66,8 +68,8 @@ class LottoTest {
         LottoCompany lottoCompany = new LottoCompany(
             "8,21,23,41,42,43",
             "22");
-        LottoMachine lottoMachine = new LottoMachine(8000);
-        PrizeChecker prizeChecker = new PrizeChecker(lottoCompany, lottoMachine.getLottoBundle());
+		Wallet wallet = new LottoMachine(8000).buyLotto();
+        PrizeChecker prizeChecker = new PrizeChecker(lottoCompany, wallet.getMyLotto());
 		Method method = prizeChecker.getClass().getDeclaredMethod("countingMatch", List.class, List.class);
 		method.setAccessible(true);
 		int matchCount = 0;

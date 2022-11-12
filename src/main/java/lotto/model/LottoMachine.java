@@ -15,7 +15,7 @@ public class LottoMachine {
 	public final static String ERROR_PAY = "[ERROR] 지불 금액이 1000원 이하입니다.";
 
 	private final List<Lotto> lottoBundle = new ArrayList<>();
-	private final int purchaseAmount;
+	private int purchaseAmount = 0;
 
 	public LottoMachine(int Money) {
 		int purchaseCount = countPurchasesLotto(Money);
@@ -46,11 +46,7 @@ public class LottoMachine {
 			.collect(Collectors.toList());
 	}
 
-	public List<Lotto> getLottoBundle() {
-		return lottoBundle;
-	}
-
-	public int getPurchaseAmount() {
-		return purchaseAmount;
+	public Wallet buyLotto() {
+		return  new Wallet(this.lottoBundle, this.purchaseAmount);
 	}
 }
