@@ -1,15 +1,17 @@
 # 로또
 
 # 기능목록
-- [ ] 사용자 값을 입력받는다. 
-    - [ ] 구입 금액을 입력받는다. view/Input#getYourMoney
-    - [ ] 사용자가 정한 정답 번호를 입력받는다. view/Input#getAnswerNumbers
-    - [ ] 사용자가 정한 보너스 번호를 입력받는다. view/Input#getBonusNumber
+
+- [X] 사용자 값을 입력받는다.
+    - [X] 구입 금액을 입력받는다. view/Input#getYourMoney
+    - [X] 사용자가 정한 정답 번호를 입력받는다. view/Input#getAnswerNumbers
+    - [X] 사용자가 정한 보너스 번호를 입력받는다. view/Input#getBonusNumber
 - [ ] 로또 한 장에 해당하는 랜덤한 로또 번호를 만든다. model/Lotto/createLottoNumber
 - [ ] 사용자가 입력한 금액에 맞춰 일정 갯수의 로또를 생성한다. controller/Cashier#playLotto
 - [ ] 당첨 통계를 낸다. controller/Statistics#myStat
 
 # 🚀 기능 요구 사항
+
 로또 게임 기능을 구현해야 한다. 로또 게임은 아래와 같은 규칙으로 진행된다.
 
 - 로또 번호의 숫자 범위는 1~45까지이다.
@@ -28,6 +30,7 @@
       사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
 
 # 예외 사항
+
 예외 상황 시 에러 문구를 출력해야 한다. 단, 에러 문구는 "[ERROR]"로 시작해야 한다.
 
 - [ ] 구입 금액은 1,000원 단위로 입력 받으며 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다.
