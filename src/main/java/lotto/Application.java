@@ -21,14 +21,13 @@ public class Application {
         try {
             printCashInputBox();
             int cash = getUserCash(inputUserCash());
-            List<Lotto> lottoList = new ArrayList<>();
-            issueLottoNumbers(cash / 1000, lottoList);
-            showLotto(cash, lottoList);
+            List<Lotto> lottoTickets = new ArrayList<>();
+            issueLottoTickets(cash, lottoTickets);
             printWinningNumbersInputBox();
-            Lotto winningNumberList = new Lotto(getWinningNumbers(inputWinningNumbers()));
+            Lotto winningNumbers = new Lotto(getWinningNumbers(inputWinningNumbers()));
             printBonusNumberInputBox();
-            int bonusNumber = getBonusNumber(inputBonusNumber(), winningNumberList.getNumbers());
-            showStats(lottoList, winningNumberList.getNumbers(), bonusNumber, cash);
+            int bonusNumber = getBonusNumber(inputBonusNumber(), winningNumbers.getNumbers());
+            showStats(lottoTickets, winningNumbers.getNumbers(), bonusNumber, cash);
         } catch (IllegalArgumentException e) {
             System.out.println(error.getMessage());
         }
