@@ -25,6 +25,8 @@ public class LottoBuyer {
                         (lotto) -> lottoPrizeRecordingManager.setPrizeRecording(lottoSeller.checkMatchCount(lotto))
                 );
 
+        printController.print(lottoPrizeRecordingManager.getPrizeRecording());
+
     }
 
     public void checkRate() {
