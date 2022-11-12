@@ -23,5 +23,12 @@ public class LottoApplication {
             randomLottoLists.add(numbers);
             System.out.println(numbers);
         }
+
+        System.out.println("당첨 번호를 입력해 주세요.");
+        List<Integer> winningLotto = new ArrayList<>();
+        String[] split = Console.readLine().split(",");
+        for (int i = 0; i < split.length; i++) {
+            winningLotto.add(Integer.parseInt(split[i]));
+        }
     }
 }
