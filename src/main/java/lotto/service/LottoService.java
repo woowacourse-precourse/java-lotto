@@ -1,6 +1,6 @@
 package lotto.service;
 
-import static lotto.constant.LottoConstant.LOTTO_PRICE;
+import static lotto.domain.LottoConstant.LOTTO_PRICE;
 
 import java.util.List;
 import java.util.stream.Collectors;

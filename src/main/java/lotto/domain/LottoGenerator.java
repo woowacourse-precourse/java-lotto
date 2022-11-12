@@ -1,9 +1,9 @@
 package lotto.domain;
 
-import static lotto.constant.LottoConstant.LOTTO_NUMBER_LENGTH;
-import static lotto.constant.LottoConstant.LOTTO_NUMBER_MAX_VALUE;
-import static lotto.constant.LottoConstant.LOTTO_NUMBER_MIN_VALUE;
-import static lotto.constant.LottoConstant.LOTTO_PRICE;
+import static lotto.domain.LottoConstant.LOTTO_NUMBER_LENGTH;
+import static lotto.domain.LottoConstant.LOTTO_NUMBER_MAX_VALUE;
+import static lotto.domain.LottoConstant.LOTTO_NUMBER_MIN_VALUE;
+import static lotto.domain.LottoConstant.LOTTO_PRICE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
