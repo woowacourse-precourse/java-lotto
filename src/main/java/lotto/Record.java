@@ -14,7 +14,7 @@ public class Record {
     private static final String THREE_MATCHES_MESSAGE = "3개 일치 (5,000원) - ";
     private static final String FOUR_MATCHES_MESSAGE = "4개 일치 (50,000원) - ";
     private static final String FIVE_MATCHES_MESSAGE = "5개 일치 (1,500,000원) - ";
-    private static final String FIVE_BONUS_MATCHES_MESSAGE = "5개 일치, 보너스 볼 일치 (3,000,000원) - ";
+    private static final String FIVE_BONUS_MATCHES_MESSAGE = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
     private static final String SIX_MATCHES_MESSAGE = "6개 일치 (2,000,000,000원) - ";
     private static final String TOTAL_RETURN_MESSAGE = " 총 수익률은 ";
     private static final String COUNT_MESSAGE = "개";
@@ -32,49 +32,57 @@ public class Record {
     public static void printNumberError() {
         System.out.print(ERROR_NUMBER_MESSAGE);
     }
+
     public static void printPriceError() {
         System.out.print(ERROR_PRICE_MESSAGE);
     }
+
     public static void printMinimumError() {
         System.out.print(ERROR_MINIMUM_MESSAGE);
     }
+
     public static void printSizeError() {
         System.out.println(ERROR_SIZE_MESSAGE);
     }
+
     public static void printRangeError() {
         System.out.println(ERROR_RANGE_MESSAGE);
     }
+
     public static void printBonusDuplicateError() {
         System.out.println(ERROR_BONUS_DUPLICATE_MESSAGE);
     }
+
     public static void printDuplicateError() {
         System.out.println(ERROR_DUPLICATE_MESSAGE);
     }
 
-    public static void printBonusNumber() {
-        System.out.println(ENTER_BONUS_NUMBER_MESSAGE);
+    public static String getBonusNumber() {
+        return ENTER_BONUS_NUMBER_MESSAGE;
     }
 
-    public static void printWinningNumbers() {
-        System.out.println(ENTER_WINNING_NUMBER_MESSAGE);
+    public static String getWinningNumbers() {
+        return ENTER_WINNING_NUMBER_MESSAGE;
     }
 
-    public static void printBuyCounts(int counts) {
-        System.out.println(counts + BUY_MESSAGE);
+    public static String getBuyCounts(int counts) {
+        return counts + BUY_MESSAGE;
     }
 
-    public static void printLotto(Lotto lotto) {
+    public static String getLotto(Lotto lotto) {
         String lottoNumbers = lotto.getLotto();
-        System.out.println(lottoNumbers);
+        return lottoNumbers;
     }
 
     public static void printEnterPrice() {
         System.out.println(ENTER_MONEY_MESSAGE);
     }
 
-    public static void printWinningStats(LottoTickets lottoTickets) {
+    public static String getWinningStats(LottoTickets lottoTickets) {
 
-        System.out.println(WINNING_STATS_BORDER);
+        StringBuilder winningStats = new StringBuilder();
+
+        winningStats.append(WINNING_STATS_BORDER + ReferenceValue.LINE_BREAK);
 
         int matchesListSize = 6;
 
@@ -83,17 +91,15 @@ public class Record {
         for (int index = ReferenceValue.INDEX_THREE_MATCHES; index < matchesListSize; index++) {
             int matchesCount = matches.get(index);
             String matchesMessage = getMatchesMessage(index, matchesCount);
-            printEachWinning(matchesMessage);
+            winningStats.append(matchesMessage + COUNT_MESSAGE + ReferenceValue.LINE_BREAK);
         }
 
         double totalReturn = lottoTickets.getTotalReturn();
+        winningStats.append(TOTAL_RETURN_MESSAGE + totalReturn + PERCENT_MESSAGE + ReferenceValue.LINE_BREAK);
 
-        System.out.println(TOTAL_RETURN_MESSAGE + totalReturn + PERCENT_MESSAGE);
+        return winningStats.toString();
     }
 
-    public static void printEachWinning(String matchesMessage) {
-        System.out.println(matchesMessage + COUNT_MESSAGE);
-    }
 
     public static String getMatchesMessage(int index, int count) {
 

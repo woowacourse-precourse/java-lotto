@@ -31,4 +31,5 @@ public class ReferenceValue {
 
     public static final String IS_ERROR = "[ERROR]";
 
+    public static final String LINE_BREAK = "\n";
 }

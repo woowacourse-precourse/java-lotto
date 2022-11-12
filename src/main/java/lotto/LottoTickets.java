@@ -9,7 +9,7 @@ public class LottoTickets {
 
     private static int size;
     private static List<Lotto> lottoTickets = new ArrayList<>();
-    private static List<Result> lottoResults = new ArrayList<>();
+    private static List<LottoResult> lottoLottoResults = new ArrayList<>();
     private static List<Integer> lottoMatches = new ArrayList<>();
 
     public LottoTickets(List<Lotto> lottoTickets) {
@@ -17,8 +17,8 @@ public class LottoTickets {
         this.lottoTickets = lottoTickets;
     }
 
-    public void setLottoResults(List<Result> lottoResults) {
-        this.lottoResults = lottoResults;
+    public void setLottoResults(List<LottoResult> lottoLottoResults) {
+        this.lottoLottoResults = lottoLottoResults;
     }
 
     public Lotto getLotto(int index) {
@@ -33,9 +33,9 @@ public class LottoTickets {
         return lottoTickets;
     }
 
-    public Result getLottoResult(int resultIndex) {
-        Result result = lottoResults.get(resultIndex);
-        return result;
+    public LottoResult getLottoResult(int resultIndex) {
+        LottoResult lottoResult = lottoLottoResults.get(resultIndex);
+        return lottoResult;
     }
 
     public double getTotalReturn() {
@@ -90,8 +90,8 @@ public class LottoTickets {
         List<Integer> matches;
 
         for (int resultIndex = 0; resultIndex < size; resultIndex++) {
-            Result result = lottoResults.get(resultIndex);
-            int matchesIndex = getMatchesIndex(result);
+            LottoResult lottoResult = lottoLottoResults.get(resultIndex);
+            int matchesIndex = getMatchesIndex(lottoResult);
             int matchesCount = matchesDictionary.get(matchesIndex);
             matchesDictionary.replace(matchesIndex, matchesCount + 1);
         }
@@ -114,8 +114,8 @@ public class LottoTickets {
         return matchesDictionary;
     }
 
-    private static int getMatchesIndex(Result result) {
-        int size = result.size();
+    private static int getMatchesIndex(LottoResult lottoResult) {
+        int size = lottoResult.size();
 
         int matchesIndex = ReferenceValue.INDEX_OTHER_MATCHES;
 
@@ -124,7 +124,7 @@ public class LottoTickets {
         } else if (size == ReferenceValue.COUNT_FOUR_MATCHES) {
             matchesIndex = ReferenceValue.INDEX_FOUR_MATCHES;
         } else if (size == ReferenceValue.COUNT_FIVE_MATCHES) {
-            matchesIndex = checkBonusIndex(result);
+            matchesIndex = checkBonusIndex(lottoResult);
         } else if (size == ReferenceValue.COUNT_SIX_MATCHES) {
             matchesIndex = ReferenceValue.INDEX_SIX_MATCHES;
         }
@@ -132,9 +132,9 @@ public class LottoTickets {
         return matchesIndex;
     }
 
-    public static int checkBonusIndex(Result result) {
+    public static int checkBonusIndex(LottoResult lottoResult) {
         int matchesIndex = ReferenceValue.INDEX_FIVE_MATCHES;
-        boolean isBonus = result.getIsBonus();
+        boolean isBonus = lottoResult.getIsBonus();
 
         if (isBonus) {
             matchesIndex = ReferenceValue.INDEX_FIVE_BONUS_MATCHES;

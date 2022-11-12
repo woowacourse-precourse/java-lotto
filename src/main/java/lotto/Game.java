@@ -11,7 +11,7 @@ public class Game {
     static int bonus;
     static Lotto winningNumbers;
     static LottoTickets lottoTickets;
-
+    static StringBuilder totalLog = new StringBuilder();
     public static int price;
 
     Game(String input) {
@@ -27,29 +27,30 @@ public class Game {
             return;
         }
         setLottoResults();
-        Record.printWinningStats(lottoTickets);
+        totalLog.append(Record.getWinningStats(lottoTickets));
+        System.out.println(totalLog);
     }
 
     private static void setLottoResults() {
 
         int size = lottoTickets.getLottoTicketsSize();
 
-        List<Result> results = new ArrayList<>();
+        List<LottoResult> lottoResults = new ArrayList<>();
         for (int i = 0; i < size; i++) {
             Lotto lotto = lottoTickets.getLotto(i);
             List<Integer> result = lotto.getResult(winningNumbers, bonus);
-            Result lottoResult = new Result(result);
+            LottoResult lottoResult = new LottoResult(result);
 
-            results.add(lottoResult);
+            lottoResults.add(lottoResult);
         }
 
-        lottoTickets.setLottoResults(results);
+        lottoTickets.setLottoResults(lottoResults);
         lottoTickets.setMatches();
     }
 
     private static void enterLottoTickets() {
         int counts = price / ReferenceValue.LOTTO_PRICE;
-        Record.printBuyCounts(counts);
+        totalLog.append(Record.getBuyCounts(counts) + ReferenceValue.LINE_BREAK);
 
         List<Lotto> allLottery = new ArrayList<>();
         for (int i = 0; i < counts; i++) {
@@ -57,32 +58,29 @@ public class Game {
                     ReferenceValue.LOTTO_END_RANGE, ReferenceValue.LOTTO_SIZE);
 
             Lotto lotto = new Lotto(lottoNumbers);
-            Record.printLotto(lotto);
+            totalLog.append(Record.getLotto(lotto) + ReferenceValue.LINE_BREAK);
             allLottery.add(lotto);
         }
 
         lottoTickets = new LottoTickets(allLottery);
-        System.out.println();
+        totalLog.append(ReferenceValue.LINE_BREAK);
     }
 
     private static void enterWinningNumbers() {
         String winningInput = Console.readLine();
 
-        Record.printWinningNumbers();
-        System.out.println(winningInput);
+        totalLog.append(Record.getWinningNumbers() + ReferenceValue.LINE_BREAK);
+        totalLog.append(winningInput + ReferenceValue.LINE_BREAK + ReferenceValue.LINE_BREAK);
 
         List<Integer> numbers = Lotto.getLottoNumbers(winningInput);
         winningNumbers = new Lotto(numbers);
-
-        System.out.println();
     }
 
     private static void enterBonus() {
         String bonusInput = Console.readLine();
 
-        Record.printBonusNumber();
-        System.out.println(bonusInput);
-        System.out.println();
+        totalLog.append(Record.getBonusNumber() + ReferenceValue.LINE_BREAK);
+        totalLog.append(bonusInput + ReferenceValue.LINE_BREAK + ReferenceValue.LINE_BREAK);
 
         if (checkNumberError(bonusInput) || checkBonusDuplicateError(bonusInput) || checkBonusRangeError(bonusInput)) {
             throw new IllegalArgumentException();

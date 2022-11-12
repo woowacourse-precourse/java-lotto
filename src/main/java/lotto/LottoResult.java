@@ -2,12 +2,12 @@ package lotto;
 
 import java.util.List;
 
-public class Result {
+public class LottoResult {
 
     private final List<Integer> result;
     private final boolean isBonus;
 
-    public Result(List<Integer> result) {
+    public LottoResult(List<Integer> result) {
         this.isBonus = isBonusResult(result);
         this.result = splitBonusResult(result, isBonus);
     }
