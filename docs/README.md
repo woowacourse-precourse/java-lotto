@@ -3,6 +3,9 @@
 - [ ] 로또 구입 금액을 입력받는 기능 LottoShop.buyLotto
     - [ ] "구입금액을 입력해 주세요" 출력 LottoConsole.inputMoney 
     - [ ] 1000원 단위인지 확인하는 기능 LottoShop.checkMoney
+        - [ ] 입력받은 String값을 Integer값으로 변환하는 기능 LottoShop.changeStringToInteger
+          - [ ] 입력받은 값이 숫자값이 아닌경우 예외 처리 기능
+            - [ ] NumberFormatException 발생, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료
         - [ ] 1000원으로 나누어 떨어지지 않는 경우 예외 처리 기능
             - [ ] IllegalArgumentException 발생, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료
 - [ ] 구매한 갯수만큼 로또 수량 및 번호를 출력하는 기능 LottoShop.giveLottoList
