@@ -47,7 +47,7 @@ public class LottoGame {
 
         for (Lotto lotto: lottoes) {
             eLottoPlace place = matchLotto(lotto, winningLotto, bonus);
-            matches = appendLottoResult(matches, place);
+            matches = appendPlaceToResult(matches, place);
         }
         return matches;
     }
@@ -60,7 +60,7 @@ public class LottoGame {
                 matches += 1;
             }
         }
-        return checkPlace(matches, l1.getNumbers().contains(bonus));
+        return getLottoPlace(matches, l1.getNumbers().contains(bonus));
     }
 
     public static BigDecimal calcRateOfReturn(int[] matches, int money) {
@@ -86,7 +86,7 @@ public class LottoGame {
         return reward;
     }
 
-    private static eLottoPlace checkPlace(int matches, boolean isBonusMatch) {
+    private static eLottoPlace getLottoPlace(int matches, boolean isBonusMatch) {
         if (matches == 6)
             return eLottoPlace.FIRST_PLACE;
         if (matches == 5 && isBonusMatch)
@@ -104,7 +104,7 @@ public class LottoGame {
         return (Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
 
-    private static int[] appendLottoResult(int[] matches, eLottoPlace place) {
+    private static int[] appendPlaceToResult(int[] matches, eLottoPlace place) {
         if (place == eLottoPlace.FIRST_PLACE)
             matches[_first_place] += 1;
         if (place == eLottoPlace.SECOND_PLACE)

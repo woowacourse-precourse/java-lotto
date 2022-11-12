@@ -8,9 +8,9 @@ import java.util.NoSuchElementException;
 public class LottoInStream {
     private static final String _error_default_msg = "[ERROR]";
 
-    public static int readToBuyLotto() {
+    public static int readAmount() {
         LottoOutStream.askPurchaseAmount();
-        String line = readline();
+        String line = readlineWithoutException();
 
         if (isNullOrEmptyString(line)) {
             throw new IllegalArgumentException(_error_default_msg + " 빈 문자열은 입력할 수 없습니다.");
@@ -23,9 +23,9 @@ public class LottoInStream {
         }
     }
 
-    public static List<Integer> readToGetLottoNumbers() {
+    public static List<Integer> readLottoNumbers() {
         LottoOutStream.askWinningNumber();
-        String line = readline();
+        String line = readlineWithoutException();
 
         if (isNullOrEmptyString(line)) {
             throw new IllegalArgumentException(_error_default_msg + " 빈 문자열은 입력할 수 없습니다.");
@@ -33,22 +33,22 @@ public class LottoInStream {
         return convStrArrayToIntList(line.split(","));
     }
 
-    public static int readToGetLottoBonus(Lotto lotto) {
+    public static int readBonusNumber(Lotto lotto) {
         LottoOutStream.askBonusNumber();
-        String line = readline();
+        String line = readlineWithoutException();
 
         if (isNullOrEmptyString(line)) {
             throw new IllegalArgumentException(_error_default_msg + " 빈 문자열은 입력할 수 없습니다.");
         }
 
-        int number = convStringToInt(line);
+        int number = convStrToInt(line);
         if (lotto.hasNumber(number)) {
             throw new IllegalArgumentException(_error_default_msg + " 보너스 번호는 당첨 번호와 중복되는 번호를 가질 수 없습니다.");
         }
         return (number);
     }
 
-    private static String readline() {
+    private static String readlineWithoutException() {
         try {
             return (Console.readLine());
         } catch (NoSuchElementException ex) {
@@ -67,12 +67,12 @@ public class LottoInStream {
         List<Integer> numbers = new ArrayList<>();
 
         for (int i = 0; i < splitedLine.length; ++i) {
-            numbers.add(convStringToInt(splitedLine[i]));
+            numbers.add(convStrToInt(splitedLine[i]));
         }
         return numbers;
     }
 
-    private static int convStringToInt(String number) {
+    private static int convStrToInt(String number) {
         try {
             return Integer.parseInt(number);
         } catch (NumberFormatException ex) {
