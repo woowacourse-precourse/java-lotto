@@ -16,7 +16,7 @@ public class Game {
 		long purchaseAmount = new PurchaseAmount(player.receivePurchaseAmount()).toConvert();
 		int purchaseCount = new PurchaseCounter().countLotto(purchaseAmount);
 
-		LottoIssuer lottoIssuer = new LottoIssuer(purchaseCount);
+		new LottoIssuer(purchaseCount);
 
 		List<Integer> winningNumber = new WinningNumber(player.receiveWinningNumber()).toConvert();
 		int bonusNumber = new BonusNumber(player.receiveBonusNumber(), winningNumber).toConvert();
