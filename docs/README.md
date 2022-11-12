@@ -20,6 +20,16 @@
 - 등수없음은 2개이하의 번호가 일치하면 받을 수 있습니다.
 - 금액별 수익률을 정산할 수 있습니다.
 
+## 게임 진행 흐름
+
+```mermaid
+flowchart
+ LottoGame --> GenerateRandomLottoSystem -- LottoBundle --> LottoGame
+ LottoGame --> GenerateAnswerLottoSystem -- AnswerLotto --> LottoGame
+ LottoGame --> SettlementSystem -- Result --> LottoGame
+ 
+```
+
 ### 용어 정리
 
 | 용어   |                                                        설명 |      
@@ -62,4 +72,8 @@
     - [x] 현재 자신이 가지고 있는 점수에 맞는 등수를 반환합니다.
 - 로또 비교
     - [x] 두개의 로또를 비교해서 스코어를 반환합니다.
-    - [x] 보너스 번호가 일치하면 스코어의 1점을 추가합니다1
+    - [x] 보너스 번호가 일치하면 스코어의 1점을 추가합니다.
+
+- 돈
+    - [ ] 돈은 문자열을 통해서 만들어집니다.
+    - [ ] 돈은 0보다 큰 자연수로 이루어진 문자열만 입력이 가능하며 1000으로 나누어 떨여질 수 있습니다.
