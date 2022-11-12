@@ -13,9 +13,11 @@ public class Application {
 
         List<Integer> winnerNumber = inputWinnerNumber();
         System.out.println(winnerNumber);
+
+        int bonusNumber = inputBonusNumber();
     }
 
-    public static int checkBuyingPriceCondition(String input) {
+    public static int checkUserInputCondition(String input) {
         for (int i = 0; i < input.length(); i++) {
             if (!Character.isDigit(input.charAt(i))) {
                 throw new IllegalArgumentException(ErrorResponse.INPUT_CONTAINS_CHAR_ERROR.getErrorMessage());
@@ -48,7 +50,7 @@ public class Application {
         System.out.println("구입금액을 입력해 주세요.");
         String userInput = Console.readLine();
         System.out.println();
-        int buyingPrice = checkBuyingPriceCondition(userInput);
+        int buyingPrice = checkUserInputCondition(userInput);
         int ticketAmount = convertBuyingPriceIntoTicketAmount(buyingPrice);
         List<List<Integer>> lottoTickets = getLottoTickets(ticketAmount);
 
@@ -61,6 +63,7 @@ public class Application {
         for (List<Integer> lottoTicket : lottoTickets) {
             System.out.println(lottoTicket);
         }
+        System.out.println();
     }
 
     public static String validateWinnerNumberContainsComma(String userInput) {
@@ -109,5 +112,22 @@ public class Application {
         validateWinnerNumberRange(convertedWinnerNumber);
 
         return convertedWinnerNumber;
+    }
+
+    public static int validateBonusNumberRange(int bonusNumber) {
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalArgumentException(ErrorResponse.INPUT_BONUS_NUMBER_RANGE_ERROR.getErrorMessage());
+        }
+
+        return bonusNumber;
+    }
+
+    private static int inputBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String userInput = Console.readLine();
+        int bonusNumber = checkUserInputCondition(userInput);
+        bonusNumber = validateBonusNumberRange(bonusNumber);
+
+        return bonusNumber;
     }
 }
