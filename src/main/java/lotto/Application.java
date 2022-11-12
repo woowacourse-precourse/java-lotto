@@ -8,11 +8,13 @@ public class Application {
         try {
             mainController.inputCash();
             mainController.createMyLottos();
+            mainController.printMyLottos();
 
             mainController.inputWinningNumber();
             mainController.inputBonusNumber();
-
             mainController.calculateWinning();
+
+            mainController.printResult();
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] " + e.getMessage());
         }

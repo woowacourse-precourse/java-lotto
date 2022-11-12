@@ -1,26 +1,26 @@
 package lotto.Model;
 
 import lotto.Cash;
-import lotto.Prize;
+import lotto.Rank;
 
 public class CalculatorModel {
     private final static int MIN_UNIT = 1000;
 
-    public Prize givePrize(int matchNumber, boolean bonus) {
+    public Rank getRank(int matchNumber, boolean bonus) {
         if (matchNumber == 6) {
-            return Prize.FIRST;
+            return Rank.FIRST;
         } else if (matchNumber == 5) {
             if (bonus) {
-                return Prize.SECOND;
+                return Rank.SECOND;
             }
-            return Prize.THIRD;
+            return Rank.THIRD;
         } else if (matchNumber == 4) {
-            return Prize.FOURTH;
+            return Rank.FOURTH;
         } else if (matchNumber == 3) {
-            return Prize.FIFTH;
+            return Rank.FIFTH;
         }
 
-        return Prize.LAST;
+        return Rank.LAST;
     }
 
     public double getProfit(int totalPrize, int investmentCash) {

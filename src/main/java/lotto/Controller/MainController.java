@@ -96,10 +96,10 @@ public class MainController {
         for (Lotto myLotto : myLottos) {
             int match = myLotto.countMatch(winningLotto);
             boolean hasBonus = myLotto.hasBonusNumber(bonus);
-            Rank prize = calculator.getRank(match, hasBonus);
-            total += prize.getPrize();
-            int p = point.get(prize);
-            point.replace(prize, p + 1);
+            Rank rank = calculator.getRank(match, hasBonus);
+            total += rank.getPrize();
+            int p = point.get(rank);
+            point.replace(rank, p + 1);
         }
 
         profit = calculator.getProfit(total, cash.getCash());
