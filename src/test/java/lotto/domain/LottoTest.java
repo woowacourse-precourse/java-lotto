@@ -1,9 +1,10 @@
 package lotto.domain;
 
-import lotto.domain.Lotto;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Comparator;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -32,5 +33,32 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(Lotto.SCOPE_ERROR_MESSAGE);
     }
+
+    @Test
+    @DisplayName("수동 로또 번호가 오름차순으로 저장된다.")
+    void manualLottoAscendingOrderTest() {
+        Lotto lotto = new Lotto(List.of(6, 5, 4, 3, 2, 1));
+        Assertions.assertThat(lotto.getNumbers()).containsExactly(1, 2, 3, 4, 5, 6);
+    }
+
+    @Test
+    @DisplayName("자동 로또 번호가 오름차순으로 저장된다.")
+    void autoLottoAscendingOrderTest2() {
+        Lotto lotto = Lotto.createRandomNumbers();
+        List<Integer> list = lotto.getNumbers();
+        System.out.println("list = " + list);
+        Assertions.assertThat(isSorted(list)).isTrue();
+    }
+
+    public static boolean isSorted(List<Integer> list) {
+        for (int i = 0; i < list.size() - 1; i++)
+        {
+            if (list.get(i) > list.get(i+1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 }
