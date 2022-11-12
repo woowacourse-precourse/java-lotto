@@ -1,7 +1,6 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.exception.ErrorException;
 import lotto.exception.ErrorMessage;
 
 
@@ -18,11 +17,11 @@ public class InputView {
 
     private void isValidate(int money) {
         if (isLessThan1000(money)) {
-            throw new ErrorException(ErrorMessage.INVALID_INPUT);
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
         }
 
         if (isDivideBy1000(money)) {
-            throw new ErrorException(ErrorMessage.INVALID_INPUT);
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
         }
     }
 
@@ -30,7 +29,7 @@ public class InputView {
         try {
             return Integer.parseInt(money);
         } catch (NumberFormatException e) {
-            throw new ErrorException(ErrorMessage.INVALID_INPUT);
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
         }
     }
 
