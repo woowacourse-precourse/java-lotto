@@ -7,5 +7,18 @@ public class Application {
 
     }
 
+    public static void inputCash(){
 
+    }
+    public static void cashValidate(){
+
+    }
+
+    public static void createLottoMain(){
+
+    }
+
+    public static void createLottoBonus(){
+
+    }
 }
