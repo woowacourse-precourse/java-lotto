@@ -8,5 +8,14 @@ public class LottoApplication {
         this.lottoBuyer = new LottoBuyer();
     }
 
+    public void run() {
+
+
+        lottoBuyer.buyLotto();
+        lottoBuyer.checkWinStatics();
+        lottoBuyer.checkRate();
+
+    }
+
 
 }
