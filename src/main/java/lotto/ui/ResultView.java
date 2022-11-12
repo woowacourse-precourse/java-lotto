@@ -19,7 +19,13 @@ public class ResultView implements View{
         System.out.println("---");
     }
 
-    private void print3matches(){
+    private void print3Matches(){
         System.out.println("3개 일치 (5,000원) - "+ result.get(0) +"개");
     }
+
+    private void print4Matches(){
+        System.out.println("4개 일치 (50,000원) - " + result.get(1) + "개");
+    }
+
+
 }
