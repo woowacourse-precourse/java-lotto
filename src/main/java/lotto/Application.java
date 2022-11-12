@@ -19,7 +19,7 @@ public class Application {
         Lotto lotto = new Lotto(numberGenerator.computerLotto);
 
 
-        System.out.println(Constant.INPUT_BONUS_NUMBER);
+정        System.out.println("\n" + Constant.INPUT_BONUS_NUMBER);
         numberGenerator.enterBonusNumber();
         lotto.exceptionBonusNumberByDuplicatedLotto(numberGenerator.bonusNumber);
         lotto.exceptionBonusNumberOutOfRange(numberGenerator.bonusNumber);
