@@ -9,17 +9,7 @@ public class Buyer {
     public final int NUMBERS_OF_LOTTO = 6;
     public final int START_NUM = 1;
     public final int END_NUM = 45;
-
     public final int UNIT_OF_MONEY = 1000;
-
-    public int getPurchaseAmount() {
-        return purchaseAmount;
-    }
-
-    public void setPurchaseAmount(String purchaseAmount) {
-        new Validator(purchaseAmount);
-        this.purchaseAmount = Util.getInt(purchaseAmount);
-    }
 
     private int purchaseAmount;
     private int purchaseCount;
@@ -35,6 +25,22 @@ public class Buyer {
 
     public Buyer() {
         this.lottoWallet = new ArrayList<>();
+    }
+
+    public int getPurchaseAmount() {
+        return purchaseAmount;
+    }
+
+    public void setPurchaseAmount(String purchaseAmount) {
+        new Validator(purchaseAmount);
+        this.purchaseAmount = Util.getInt(purchaseAmount);
+    }
+    public int getPurchaseCount() {
+        return purchaseCount;
+    }
+
+    public void setPurchaseCount() {
+        this.purchaseCount = this.purchaseAmount / UNIT_OF_MONEY;
     }
 
     public void addLotto(int count){
