@@ -5,6 +5,7 @@ import lotto.domain.Lotto;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Computer {
@@ -35,13 +36,17 @@ public class Computer {
     }
 
     public void saveBonusNumber(String bonusNumber){
-        validateBonusNumber(Integer.parseInt(bonusNumber));
+        validateBonusNumber(bonusNumber);
         addBonusNumber(Integer.parseInt(bonusNumber));
     }
 
-    private void validateBonusNumber(int bonusNumber){
-        if(isOutOfBound(bonusNumber) || isAlreadyInLotto(bonusNumber))
+    private void validateBonusNumber(String bonusNumber){
+        if(isNotNumber(bonusNumber) || isOutOfBound(Integer.parseInt(bonusNumber)) || isAlreadyInLotto(Integer.parseInt(bonusNumber)))
             notValidBonusNumberException();
+    }
+
+    private boolean isNotNumber(String bonusNumber){
+        return !Pattern.matches("^[0-9]*$", bonusNumber);
     }
 
     private boolean isOutOfBound(int bonusNumber){
@@ -53,6 +58,7 @@ public class Computer {
     }
 
     private void notValidBonusNumberException(){
+        System.out.println(BONUS_NUMBER_EXCEPTION);
         throw new IllegalArgumentException(BONUS_NUMBER_EXCEPTION);
     }
 
