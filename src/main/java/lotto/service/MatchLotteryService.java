@@ -5,12 +5,12 @@ import lotto.model.Player;
 
 public class MatchLotteryService {
 
-    private Player player;
-    private Computer computer;
+    private final Player player;
+    private final Computer computer;
 
-    public MatchLotteryService(){
-        player = new Player();
-        computer = new Computer();
+    public MatchLotteryService(Player player, Computer computer){
+        this.player= player;
+        this.computer = computer;
     }
 
     public void matchPlayerWithComputer(){
