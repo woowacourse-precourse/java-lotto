@@ -1,43 +1,35 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
 import lotto.domain.Lotto;
+import lotto.domain.Prize;
 import lotto.domain.WinningLotto;
 
 public class LottoComparator {
 	private static final int MIN_WINNER_MATCH_NUMBER = 3;
-	private static final int FIFTH_PRIZE = 5000;
-	private static final int FOURTH_PRIZE = 50000;
-	private static final int THIRD_PRIZE = 1500000;
-	private static final int SECOND_PRIZE = 30000000;
-	private static final int FIRST_PRIZE = 2000000000;
+	private static final int FIRST_WINNER_MATCH_COUNT = 6;
+	private static final int SECOND_WINNER_MATCH_COUNT = 5;
+	private static final int FIRST_WINNER_INDEX = 4;
+	private static final int SECOND_WINNER_INDEX = 3;
+	private static final int INCREASE_VALUE = 1;
 	private static final int INIT = 0;
-	private static final int INIT_PRIZE_COUNT_SIZE = 5;
+	private static final int ADJUST_MATCH_NUMBER = 3;
 	private static List<Lotto> winner;
-	public static List<Integer> prizeCount;
-	// 0: 5등, 1: 4등, 2: 3등, 3: 2등, 4: 1등
-	public static List<Integer> prize;
-	// 0: 5등, 1: 4등, 2: 3등, 3: 2등, 4: 1등
 	public static int totalPrize;
 
 	public static void initWinnerAndPrize() {
 		winner = new ArrayList<>();
-		prizeCount = new ArrayList<>(Collections.nCopies(INIT_PRIZE_COUNT_SIZE, INIT));
-
-		totalPrize = 0;
-		prize = new ArrayList<>(List.of(FIFTH_PRIZE, FOURTH_PRIZE, THIRD_PRIZE, SECOND_PRIZE, FIRST_PRIZE));
-
+		totalPrize = INIT;
 	}
 
 	public static void compareNumbers(List<Lotto> lottos) {
 		initWinnerAndPrize();
 
 		for (Lotto lotto : lottos) {
-			int matchNumberCount = calculateMatchNumberCount(lotto);
+			int matchNumberCount = calculateMatchNumberCount(lotto, INIT);
 			lotto.setMatchNumberCount(matchNumberCount);
 
 			addWinner(lotto);
@@ -45,63 +37,97 @@ public class LottoComparator {
 
 	}
 
-	private static void addWinner(Lotto lotto) {
+	public static void addWinner(Lotto lotto) {
 		if (isWinner(lotto)) {
 			winner.add(lotto);
 		}
 	}
 
-	private static boolean isWinner(Lotto lotto) {
-		return lotto.matchNumberCount >= MIN_WINNER_MATCH_NUMBER;
+	public static boolean isWinner(Lotto lotto) {
+		return lotto.getMatchNumberCount() >= MIN_WINNER_MATCH_NUMBER;
 	}
 
-	private static int calculateMatchNumberCount(Lotto lotto) {
+	public static int calculateMatchNumberCount(Lotto lotto, int matchNumberCount) {
 		Set<Integer> numbers = lotto.getNumbers();
 		List<String> winningNumber = WinningLotto.getWinningNumber();
 		String bonusNumber = WinningLotto.getBonusNumber().get(0);
 
-		int matchNumberCount = INIT;
-
 		for (String number : winningNumber) {
-			if (numbers.contains(Integer.parseInt(number))) {
+			if (isContainsNumber(numbers, number)) {
 				matchNumberCount++;
 			}
 		}
 
-		if (matchNumberCount == 5 && numbers.contains(Integer.parseInt(bonusNumber))) {
-			lotto.setMatchBonusNumber(true);
-		}
+		setMatchBonusNumber(lotto, numbers, bonusNumber, matchNumberCount);
 
 		return matchNumberCount;
+	}
+
+	public static void setMatchBonusNumber(Lotto lotto, Set<Integer> numbers, String bonusNumber,
+		int matchNumberCount) {
+		if (matchNumberCount == SECOND_WINNER_MATCH_COUNT && isContainsNumber(numbers, bonusNumber)) {
+			lotto.setMatchBonusNumber(true);
+		}
+	}
+
+	public static boolean isContainsNumber(Set<Integer> numbers, String number) {
+		return numbers.contains(Integer.parseInt(number));
 	}
 
 	public static void createWinnerResult() {
 
 		for (Lotto lotto : winner) {
-			int matchCount = lotto.matchNumberCount;
+			int matchCount = lotto.getMatchNumberCount();
 
-			if (matchCount == 6 && !lotto.isMatchBonusNumber) {
-				prizeCount.set(4, prizeCount.get(4) + 1);
-				continue;
+			boolean isFirstWinner = checkFirstWinner(lotto, matchCount);
+			boolean isSecondWinner = checkSecondWinner(lotto, matchCount);
+
+			if (!isFirstWinner && !isSecondWinner) {
+				for(Prize prize : Prize.values()){
+					if(matchCount == prize.getMatchCount()){
+						prize.enhancePrizeCount();
+					}
+				}
 			}
-
-			if (matchCount == 5 && lotto.isMatchBonusNumber) {
-				prizeCount.set(3, prizeCount.get(3) + 1);
-				continue;
-			}
-
-			// 0 : 5등, 1: 4등, 2: 3등, 3:2등, 4:1등
-			int index = matchCount - 3;
-			prizeCount.set(index, prizeCount.get(index) + 1);
 		}
 
 	}
 
-	public static int calculateTotalPrize() {
-		int totalPrize = 0;
+	private static boolean checkSecondWinner(Lotto lotto, int matchCount) {
 
-		for (int index = 0; index < prizeCount.size(); index++) {
-			totalPrize += prize.get(index) * prizeCount.get(index);
+		if (isSecondWinner(lotto, matchCount)) {
+			Prize.SECOND_PRIZE.enhancePrizeCount();
+
+			return true;
+		}
+
+		return false;
+	}
+
+	private static boolean checkFirstWinner(Lotto lotto, int matchCount) {
+
+		if (isFirstWinner(lotto, matchCount)) {
+			Prize.FIRST_PRIZE.enhancePrizeCount();
+
+			return true;
+		}
+
+		return false;
+	}
+
+	public static boolean isSecondWinner(Lotto lotto, int matchCount) {
+		return matchCount == SECOND_WINNER_MATCH_COUNT && lotto.getIsMatchBonusNumber();
+	}
+
+	public static boolean isFirstWinner(Lotto lotto, int matchCount) {
+		return matchCount == FIRST_WINNER_MATCH_COUNT && !lotto.getIsMatchBonusNumber();
+	}
+
+	public static int calculateTotalPrize() {
+		int totalPrize = INIT;
+
+		for(Prize prize : Prize.values()){
+			totalPrize+=prize.getPrize()*prize.getPrizeCount();
 		}
 
 		return totalPrize;

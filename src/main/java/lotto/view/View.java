@@ -1,9 +1,9 @@
-package lotto;
+package lotto.view;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import lotto.domain.Lotto;
+import lotto.domain.Prize;
 
 public class View {
 	private static final String PURCHASE_INPUT_GUIDE_MESSAGE = "구입금액을 입력해 주세요.";
@@ -14,17 +14,7 @@ public class View {
 	private static final String WINNING_MESSAGE_GUIDE_MESSAGE = "당첨 통계";
 	private static final String YIELD_GUIDE_MESSAGE = "총 수익률은 ";
 	private static final String YIELD_GUIDE_MESSAGE_END = "입니다.";
-	private static final String NOT_MATCH = "미당첨";
-	private static final String FIFTH_WINNER = "3개 일치 (5,000원) - ";
-	private static final String FOURTH_WINNER = "4개 일치 (50,000원) - ";
-	private static final String THIRD_WINNER = "5개 일치 (1,500,000원) - ";
-	private static final String SECOND_WINNER = "5개 일치, 보너스 볼 일치 (30,000,000원) - ";
-	private static final String FIRST_WINNER = "6개 일치 (2,000,000,000원) - ";
-	private static final int FIFTH_WINNER_INDEX = 3;
-	private static final int FIRST_WINNER_INDEX = 7;
-
-	private static final List<String> winnerPrize = new ArrayList<>(List.of(
-		FIFTH_WINNER, FOURTH_WINNER, THIRD_WINNER, SECOND_WINNER, FIRST_WINNER));
+	private static final int INIT_INDEX = 0;
 
 	public static void showPurchaseInputGuideMessage() {
 		System.out.println(PURCHASE_INPUT_GUIDE_MESSAGE);
@@ -53,8 +43,8 @@ public class View {
 	public static void showWinnings() {
 		System.out.println(WINNING_MESSAGE_GUIDE_MESSAGE + "\n" + LINES);
 
-		for (int index = 0; index < winnerPrize.size(); index++) {
-			System.out.println(winnerPrize.get(index) + LottoComparator.prizeCount.get(index) + "개");
+		for (Prize prize : Prize.values()) {
+			System.out.println(prize.getMessage() + prize.getPrizeCount() + "개");
 		}
 
 	}

@@ -1,8 +1,9 @@
-package lotto;
+package lotto.checker;
 
 import java.util.Arrays;
 import java.util.List;
 
+import lotto.exception.Exception;
 import lotto.domain.WinningLotto;
 
 public class Checker {

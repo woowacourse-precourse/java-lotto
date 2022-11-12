@@ -2,10 +2,12 @@ package lotto.domain;
 
 import java.util.Set;
 
+import lotto.exception.Exception;
+
 public class Lotto {
 	private final Set<Integer> numbers;
-	public boolean isMatchBonusNumber;
-	public int matchNumberCount;
+	private boolean isMatchBonusNumber;
+	private int matchNumberCount;
 
 	public Lotto(Set<Integer> numbers) {
 		validate(numbers);
@@ -16,7 +18,7 @@ public class Lotto {
 
 	private void validate(Set<Integer> numbers) {
 		if (numbers.size() != 6) {
-			throw new IllegalArgumentException();
+			Exception.numberLengthException();
 		}
 	}
 
@@ -30,5 +32,13 @@ public class Lotto {
 
 	public void setMatchNumberCount(int matchNumberCount) {
 		this.matchNumberCount = matchNumberCount;
+	}
+
+	public boolean getIsMatchBonusNumber() {
+		return isMatchBonusNumber;
+	}
+
+	public int getMatchNumberCount() {
+		return matchNumberCount;
 	}
 }
