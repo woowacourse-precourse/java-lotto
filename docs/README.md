@@ -27,6 +27,10 @@
   - 로또 번호들을 반환해주는 함수
 
 
+- ErrorMessage getError()
+  - error를 반환하는 함수
+
+
 ## ✏️ Application Class
 
 ### 🚀 UI
