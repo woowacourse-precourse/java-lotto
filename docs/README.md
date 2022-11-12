@@ -72,10 +72,10 @@
 
     * askBonusNumber()
         * 예외 체크
-            - 1-45 사이 숫자가 아닐 경우
-                - 숫자가 아닐 경우
-                - 숫자이지만 1-45사이 숫자가 아닐 경우
-            - 입력 숫자 6개와 보너스 번호가 중복되는 경우
+            - 1-45 사이 숫자가 아닐 경우 
+                - 숫자가 아닐 경우  - UIAskBonusNumberTest#ShouldBeNumber()
+                - 숫자이지만 1-45사이 숫자가 아닐 경우 - UIAskBonusNumberTest#ShouldBeNumbersOneToFortyFive()
+            - 입력 숫자 6개와 보너스 번호가 중복되는 경우 - UIAskBonusNumberTest#NoDuplicateBonusNumber()
         
     * printNumberAll()
         - 발행한 로또 수량 및 번호 출력
