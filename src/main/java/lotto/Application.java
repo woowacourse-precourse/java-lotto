@@ -2,9 +2,10 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.machine.Lotto;
+import lotto.machine.Numbers;
+import lotto.machine.Tickets;
 import lotto.ui.Input;
-
-import static lotto.Constants.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -13,11 +14,8 @@ public class Application {
             Integer purchasePrice = Convertor.toPurchasePrice(payment);
             Integer purchaseQuantity = Convertor.toPurchaseQuantity(purchasePrice);
 
-            List<List<Integer>> lottoTickets = new ArrayList<>();
-            for (int i = 0; i < purchaseQuantity; i++) {
-                Lotto lotto = new Lotto(Numbers.generate());
-                lottoTickets.add(lotto.getLottoNumbers());
-            }
+            Tickets tickets = new Tickets(purchaseQuantity);
+            List<List<Integer>> lottoTickets = tickets.getTickets();
             Output.purchaseSuccessful(purchaseQuantity, lottoTickets);
 
             // Winner 클래스에 다시 넣어야 할 듯
