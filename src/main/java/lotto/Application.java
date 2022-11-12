@@ -7,7 +7,13 @@ public class Application {
     public static void main(String[] args) {
         // 구입 금액 입력
         UserInterface.printPurchaseMoneyMessage();
-        int purchaseMoney = UserInterface.inputPurchaseMoney();
+        int purchaseMoney = 0;
+        try {
+            purchaseMoney = UserInterface.inputPurchaseMoney();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
 
         // 로또 발행
         List<Lotto> lottoList = LottoGenerator.generateLotto(purchaseMoney / 1000);

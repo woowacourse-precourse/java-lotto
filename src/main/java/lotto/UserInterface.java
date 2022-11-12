@@ -12,8 +12,20 @@ public class UserInterface {
         System.out.println("구입금액을 입력해 주세요.");
     }
 
-    public static int inputPurchaseMoney() {
-        return Integer.parseInt(Console.readLine());
+    public static int inputPurchaseMoney() throws IllegalArgumentException {
+        int purchaseMoney;
+        try {
+            purchaseMoney = Integer.parseInt(Console.readLine());
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 정수여야 합니다.");
+        }
+        if (purchaseMoney < 0) {
+            throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 0보다 크거나 같아야 합니다.");
+        }
+        if (purchaseMoney % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1,000원 단위여야 합니다.");
+        }
+        return purchaseMoney;
     }
 
     public static void printWinNumbersMessage() {
