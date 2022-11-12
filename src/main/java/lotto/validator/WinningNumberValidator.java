@@ -2,11 +2,11 @@ package lotto.validator;
 
 import java.util.List;
 
-public class WinningNumberValidator {
-    private final int MINIMUM_LOTTO_NUMBER = 1;
-    private final int MAXIMUM_LOTTO_NUMBER = 45;
-    private final int RIGHT_LOTTO_SIZE = 6;
+import static lotto.utils.LottoConstant.MIN_LOTTO_NUMBER;
+import static lotto.utils.LottoConstant.MAX_LOTTO_NUMBER;
+import static lotto.utils.LottoConstant.RIGHT_LOTTO_SIZE;
 
+public class WinningNumberValidator {
     public void validateWinningNumbers(List<Integer> winningNumbers) {
         validateNumberRange(winningNumbers);
         validateNumberSize(winningNumbers);
@@ -28,7 +28,7 @@ public class WinningNumberValidator {
     }
 
     private boolean validRange(Integer number) {
-        return (MINIMUM_LOTTO_NUMBER <= number) && (number <= MAXIMUM_LOTTO_NUMBER);
+        return (MIN_LOTTO_NUMBER <= number) && (number <= MAX_LOTTO_NUMBER);
     }
 
     public void validateDuplicateNumber(List<Integer> lotto) {
