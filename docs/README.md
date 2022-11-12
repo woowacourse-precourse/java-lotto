@@ -9,13 +9,14 @@
   - [x] 사용자가 입력한 당첨 번호에 ','의 5개가 아닐 경우 IllegalArguemntException 예외 처리 구현 - checkBuyerInputIsNotFiveComma()
   - [x] 사용자가 입력한 당첨 번호가 6개가 아닐 경우 IllegalArguemntException 예외 처리 구현 - checkBuyerInputIsNotSixNumbers()
 
-- [ ] 로또 구매자 - Class LottoBuyer
+- [ ] 로또 구매자 - Class LottoBuyer머신
   - [x] 로또를 구매할 돈을 입력 구현 - inputMoney()
   - [x] 로또의 당첨 번호를 입력 구현 - inputLottoNumbers()
   - [x] 로또의 보너스 번호를 입력 구현 - inputLottoNumbers()
 
 - [ ] 복권 - Class Lotto
   - [ ] 로또 마킹 기능 구현
+  - [ ] 로또 마킹된곳 출력 기능 구현
 
 -[ ] 로또 기계 - Class Lottomachine
   - [ ] 랜덤 마킹 구현
