@@ -7,8 +7,8 @@ import java.util.Map;
 import static lotto.WinningNumber.*;
 
 public class CheckLotto {
-    private List<Integer> winningNumbers;
-    private int bonusNumber;
+    private final List<Integer> winningNumbers;
+    private final int bonusNumber;
 
     public CheckLotto(List<Integer> winningNumbers, int bonusNumber) {
         this.winningNumbers = winningNumbers;
