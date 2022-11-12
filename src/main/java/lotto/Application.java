@@ -97,11 +97,6 @@ public class Application {
         System.out.println("총 수익률은 " + surplusRate + "%입니다.");
     }
 
-    public static void printErrorAboutInteger() {
-
-        System.out.println("[ERROR] 입력된 값이 숫자가 아닙니다.");
-    }
-
     public static void printErrorAboutDuplicate() {
 
         System.out.println("[ERROR] 중복된 번호가 존재합니다.");
@@ -128,7 +123,6 @@ public class Application {
 
             if (input.charAt(i) < 48 || input.charAt(i) > 57) {
 
-                printErrorAboutInteger();
                 throw new IllegalArgumentException();
             }
         }
@@ -232,7 +226,6 @@ public class Application {
         for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) < 48 || input.charAt(i) > 57) {
 
-                printErrorAboutInteger();
                 throw new IllegalArgumentException();
             }
         }
