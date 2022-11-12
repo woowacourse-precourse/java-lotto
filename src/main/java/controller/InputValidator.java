@@ -41,4 +41,12 @@ public class InputValidator {
             throw new IllegalArgumentException("[ERROR] 동일한 로또 번호가 입력되었습니다.");
         }
     }
+
+    public void checkLottoNumberRange(List<Integer> lottonumber) {
+        for(int checklottonum : lottonumber) {
+            if(!(checklottonum >= Constant.MINLOTTOVALUE && checklottonum <= Constant.MAXLOTTOVALUE)) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1~45 사이의 숫자여야합니다.");
+            }
+        }
+    }
 }
