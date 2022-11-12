@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.logic.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,5 +24,10 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또가 6자리가 아니면 예외 발생")
+    @Test
+    void checkvalidate() {
+        assertThatThrownBy(()->new Lotto(List.of(1, 2, 2, 3, 3)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
