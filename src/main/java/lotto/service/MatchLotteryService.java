@@ -31,17 +31,17 @@ public class MatchLotteryService {
         player.addLottoRanking(convertCountToRanking(lottoEach, equalCount));
     }
 
+    private int countNumberIfContains(int numberEach){
+        if(computer.getComputerNumber().getNumbers().contains(numberEach)) return 1;
+        return 0;
+    }
+
     private int countContainingNumber(Lotto lottoEach){
         int countingResult = 0;
         for(int  numberEach : lottoEach.getNumbers()){
             countingResult += countNumberIfContains(numberEach);
         }
         return countingResult;
-    }
-
-    private int countNumberIfContains(int numberEach){
-        if(computer.getComputerNumber().getNumbers().contains(numberEach)) return 1;
-        return 0;
     }
 
     private Ranking convertCountToRanking(Lotto lottoEach, int equalCount){
