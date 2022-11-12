@@ -53,13 +53,16 @@
 
 ## 기능 구현 세부사항 List Up
 **Enum Class**
-- Winning
+- WinningPlace
   - 1등(FIRST_PLACE) : 6개 번호 일치
   - 2등(SECOND_PLACE) : 5개 번호 일치 + 보너스 번호
   - 3등(THIRD_PLACE) : 5개 번호 일치
   - 4등(FOURTH_PLACE) : 4개 번호 일치
   - 5등(FIFTH_PLACE) : 3개 번호 일치
-  - 각 value : 당첨금 반환
+  - ENUM_VALUE(correspondingNumber, correspondingBonusNumber, winnings, message)
+  - getWinnings() : 당첨금 반환
+  - getMessage() : 당첨 관련 메세지 반환
+  - getPlace() : 주어진 당첨 번호 일치 갯수와 보너스 번호 일치 에 해당하는 순위 반환
 - ErrorResponse
   - 사용자가 벗어난 범위의 당첨 번호, 보너스 번호 입력시 : "[Error] 로또 번호는 1부터 45 사이의 숫자여야 합니다."
   - 사용자가 벗어난 경우의 구매 금액 입력시 : "[Error] 1000으로 나누어지는 단위의 구입 금액을 입력해야 합니다."
