@@ -32,3 +32,22 @@ public class User extends Input {
     private List<Integer> create_nums(){
         return Randoms.pickUniqueNumbersInRange(1,45,6);
     }
+
+    public int TestReturnSize(){
+        this.lottery_count = 6;
+        create_Lottery_nums();
+        return this.lottery_nums.size();
+    }
+
+    public static void main(String[] args) {
+        User user = new User();
+        user.pay_Money();
+        user.create_Lottery_nums();
+        System.out.println(user.lottery_count);
+        for(List<Integer> list : user.lottery_nums){
+            System.out.println(list);
+        }
+    }
+
+
+}
