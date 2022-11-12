@@ -4,16 +4,20 @@ import java.util.List;
 
 public class ResultView implements View{
     private List<Integer> result;
+    private float yield;
 
-    ResultView(List<Integer> result){
+    ResultView(List<Integer> result, float yield){
         this.result = result;
+        this.yield = yield;
     }
 
     @Override
     public void makeView() {
+        print();
+    }
+    private void print(){
 
     }
-
     private void printDefaultMessage(){
         System.out.println("당첨 통계");
         System.out.println("---");
@@ -35,5 +39,7 @@ public class ResultView implements View{
     private void printAllMatches(){
         System.out.println("6개 일치 (2,000,000,000원) - " + result.get(4) + "개");
     }
-
+    private void printYield(){
+        System.out.println("총 수익률은 " + yield + "입니다.");
+    }
 }
