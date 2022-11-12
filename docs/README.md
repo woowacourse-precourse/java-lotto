@@ -21,9 +21,9 @@
     - [x] 각각의 숫자는 중복없는 수이다.
 
 
-- [ ] 로또 당첨 결과 확인 match()
-    - [ ] WinningNumber를 통해 몇 등인지 파악한다.
-    - [ ] 결과로 RewardEnum을 반환한다.
+- [x] 로또 당첨 결과 확인 match()
+    - [x] WinningNumber를 통해 몇개의 번호를 맞췄는지 계산한다.
+    - [x] 결과로 RewardEnum을 반환한다.
 
 
 - [x] 로또 정보 출력 toString()
