@@ -12,6 +12,10 @@ public class BonusNumber {
         this.bonusNumber = bonusNumber;
     }
 
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
     private void validateRange(int number) {
         if (number < MIN_NUMBER || number > MAX_NUMBER) {
             throw new IllegalArgumentException(RANGE_ERROR);
