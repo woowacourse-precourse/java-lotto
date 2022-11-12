@@ -3,22 +3,26 @@ package lotto;
 import java.util.List;
 
 public class BonusNumber {
-  public static int isValidBonusNumber(String number, List<Integer> winningNumber) {
-    if (number.length() > 2) {
-      throw new IllegalArgumentException("[ERROR] 하나의 숫자만 입력해 주세요.");
-    }
-    for (int i = 0; i < number.length(); i++) {
-      if (!Character.isDigit(number.charAt(i))) {
+  public static void isOnlyDigitBonusNumber(String bonusNumber) {
+    for (int i = 0; i < bonusNumber.length(); i++) {
+      if (!Character.isDigit(bonusNumber.charAt(i))) {
         throw new IllegalArgumentException(ErrorMessage.NOT_ONLY_DIGIT.getMessage());
       }
     }
-    int num = Integer.parseInt(number);
-    if (num < 1 || num > 45) {
+  }
+  public static void isInRangeBonusNumber(String bonusNumber) {
+    isOnlyDigitBonusNumber(bonusNumber);
+    int numbers = Integer.parseInt(bonusNumber);
+    if (numbers < 1 || numbers > 45) {
       throw new IllegalArgumentException(ErrorMessage.NOT_RANGE_MESSAGE.getMessage());
     }
-    if (winningNumber.contains(num))
-      throw new IllegalArgumentException("[ERROR] 당첨 번호와 중복되어 있습니다.");
-    // 당첨번호와 중복되지 않도록 기능 추가
-    return num;
+  }
+
+  public static int validBonusNumber(String bonusNumber, List<Integer> winningNumber) {
+    isInRangeBonusNumber(bonusNumber);
+    int validNumber = Integer.parseInt(bonusNumber);
+    if (winningNumber.contains(validNumber))
+      throw new IllegalArgumentException(ErrorMessage.NOT_ONLY_NUMBER.getMessage());
+    return validNumber;
   }
 }

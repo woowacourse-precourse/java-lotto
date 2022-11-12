@@ -19,7 +19,7 @@ public class Application { // 패키지 분리
         WinningNumber winningNumber = new WinningNumber(UserNumberScan.requestValue());
         List<Integer> numbers = winningNumber.getNumber();
         Message.requestBonusNumberMessage();
-        int validBonusNumber = BonusNumber.isValidBonusNumber(UserNumberScan.requestValue(), numbers);
+        int validBonusNumber = BonusNumber.validBonusNumber(UserNumberScan.requestValue(), numbers);
         MatchNumbers matchNumbers = new MatchNumbers();
 
         for (int j = 0; j < count; j++) {

@@ -30,7 +30,6 @@ public class Message {
 
   public static void matchMessage(Map<Integer, Integer> maps) {
     Ranking[] values = Ranking.values();
-    DecimalFormat decimalFormat = new DecimalFormat();
     for (Ranking value : values) {
       System.out.print(value.getMessage());
       System.out.println(maps.getOrDefault(value.getRank(), 0) + "개");
