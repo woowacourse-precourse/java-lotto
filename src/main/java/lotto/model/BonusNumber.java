@@ -7,24 +7,13 @@ public class BonusNumber {
 
     int bonusNumber;
 
-    public BonusNumber(Lotto lotto, String  inputString) {
-        int inputNumber = stringToInt(inputString);
-        validateContains(lotto, inputNumber);
-        this.bonusNumber = inputNumber;
+    public BonusNumber(Lotto lotto, int bonusNumber) {
+        validateContains(lotto,bonusNumber);
+        this.bonusNumber = bonusNumber;
     }
 
     public int getBonusNumber() {
         return bonusNumber;
-    }
-
-    private int stringToInt(String input) {
-        int inputNumber;
-        try {
-            inputNumber = Integer.valueOf(input);
-        } catch (Exception e) {
-            throw ErrorCode.NOT_NUMBER.getException();
-        }
-        return inputNumber;
     }
 
     private void validateContains(Lotto lotto, int bonusNumber) {

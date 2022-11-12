@@ -14,7 +14,7 @@ public class InputHandler {
     public void inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         try {
-            new Money(readLine());
+            new Money(stringToInt(readLine()));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -25,6 +25,17 @@ public class InputHandler {
         try {
             Lotto lotto = new Lotto(inputStrToNumbers(readLine()));
             return lotto;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    public BonusNumber inputBonus(Lotto lotto) {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        try {
+            BonusNumber bonusNumber = new BonusNumber(lotto, stringToInt(readLine()));
+            return bonusNumber;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -44,14 +55,13 @@ public class InputHandler {
         return lottoNumbers;
     }
 
-    public BonusNumber inputBonus(Lotto lotto) {
-        System.out.println("보너스 번호를 입력해 주세요.");
+    private int stringToInt(String input) {
+        int inputNumber;
         try {
-            BonusNumber bonusNumber = new BonusNumber(lotto, readLine());
-            return bonusNumber;
+            inputNumber = Integer.valueOf(input);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw ErrorCode.NOT_NUMBER.getException();
         }
-        return null;
+        return inputNumber;
     }
 }

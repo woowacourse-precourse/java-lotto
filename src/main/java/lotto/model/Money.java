@@ -6,20 +6,9 @@ public class Money {
 
     private int value;
 
-    public Money(String input) {
-        int inputNumber = stringToInt(input);
-        validateBill(inputNumber);
-        this.value = inputNumber;
-    }
-
-    private int stringToInt(String input) {
-        int inputNumber;
-        try {
-            inputNumber = Integer.valueOf(input);
-        } catch (Exception e) {
-            throw ErrorCode.NOT_NUMBER.getException();
-        }
-        return inputNumber;
+    public Money(int value) {
+        validateBill(value);
+        this.value = value;
     }
 
     private void validateBill(int input) {
