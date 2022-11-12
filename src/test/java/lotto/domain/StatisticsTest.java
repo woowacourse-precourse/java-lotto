@@ -41,4 +41,11 @@ public class StatisticsTest {
         assertThat(lottoStatistics.getLottosResult().get(Rank.FOURTH)).isEqualTo(1);
         assertThat(lottoStatistics.getLottosResult().get(Rank.FIFTH)).isEqualTo(1);
     }
+
+    @DisplayName("당첨된 로또들의 수익률 테스트")
+    @Test
+    void getYieldTest() {
+        Statistics lottoStatistics = new Statistics(lottos, winningLotto);
+        assertThat(String.format("%.1f", lottoStatistics.getYield(6000))).isEqualTo("33859250.0");
+    }
 }
