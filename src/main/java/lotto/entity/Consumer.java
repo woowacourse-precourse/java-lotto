@@ -42,7 +42,7 @@ public class Consumer {
         lottos.stream()
             .map(winningLotto::compare)
             .forEach(rank -> result.put(rank, result.getOrDefault(rank, 0) + 1));
-        return new Result(result);
+        return new Result(result, purchaseAmount);
     }
 
     private Map<Rank, Integer> initResultOfLottos() {
