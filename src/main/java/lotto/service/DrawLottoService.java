@@ -9,7 +9,7 @@ import lotto.domain.Rank;
 import lotto.util.ConversionArrayToList;
 
 public class DrawLottoService {
-    Map<Integer, Integer> correctNumberCountMap = new HashMap<>();
+    Map<Integer, Integer> correctNumberCount = new HashMap<>();
     ConversionArrayToList conversionArrayToList = new ConversionArrayToList();
 
     List<Integer> winingCount = new ArrayList<>();
@@ -37,7 +37,7 @@ public class DrawLottoService {
         }
         isFirstWiningLotto();
         isSecondWiningLotto(myLotto.getLotto(), bonusNumber);
-        correctNumberCountMap.put(correctCount, correctNumberCountMap.getOrDefault(correctCount, 0) + 1);
+        correctNumberCount.put(correctCount, correctNumberCount.getOrDefault(correctCount, 0) + 1);
     }
 
     private void isFirstWiningLotto() {
@@ -56,7 +56,7 @@ public class DrawLottoService {
 
     public void setWiningCount() {
         for (int i = 3; i <= 7; i++) {
-            winingCount.add(correctNumberCountMap.getOrDefault(i, 0));
+            winingCount.add(correctNumberCount.getOrDefault(i, 0));
         }
     }
 
@@ -66,7 +66,7 @@ public class DrawLottoService {
 
     public void setReward() {
         for (Rank i : Rank.values()) {
-            reward += correctNumberCountMap.getOrDefault(i.getCorrectCount(), 0) * i.getPrice();
+            reward += correctNumberCount.getOrDefault(i.getCorrectCount(), 0) * i.getPrice();
         }
     }
 
