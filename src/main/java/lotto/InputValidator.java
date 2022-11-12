@@ -14,10 +14,16 @@ public class InputValidator {
         validateIsSeparateByComma(input);
     }
 
-    public void validateInputBonusNumber(String input) {
+    public void validateInputBonusNumber(String input, Lotto winningNumber) {
         validateIsNumber(input);
         validateOutOfRange(Integer.parseInt(input));
+        validateIsContainWinningNumber(Integer.parseInt(input), winningNumber);
+    }
 
+    private void validateIsContainWinningNumber(int input, Lotto winningNumber) {
+        if(winningNumber.isContain(input)) {
+            throw new IllegalArgumentException("이미 당첨번호에 존재합니다.");
+        }
     }
 
     private void validateIsSeparateByComma(String input) {
