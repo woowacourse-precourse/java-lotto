@@ -1,19 +1,33 @@
 package lotto.controller;
 
-import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
+import lotto.model.Lotto;
+import lotto.model.LottoInput;
+import lotto.model.LottoMachine;
 import lotto.model.User;
 import lotto.view.GameMessage;
 
 public class GameController {
-    private GameMessage gameMessage = new GameMessage();
+    private final GameMessage gameMessage = new GameMessage();
+    private final LottoInput lottoInput = new LottoInput();
+    private LottoMachine lottoMachine = new LottoMachine();
     private User user;
 
     public void run() {
-        inputPurchaseAmount();
+        int purchaseAmount = inputPurchaseAmount();
+        publishUserLotto(purchaseAmount);
     }
 
-    public void inputPurchaseAmount() {
+    public int inputPurchaseAmount() {
         gameMessage.printInputPurchaseAmount();
-        user = new User(Console.readLine());
+        return lottoInput.inputPurchaseAmount();
     }
+
+    public void publishUserLotto(int purchaseAmount) {
+        int lottoTicketCount = lottoMachine.computeLottoTicketsCount(purchaseAmount);
+        List<Lotto> lottoTickets = lottoMachine.publishLottoTickets(lottoTicketCount);
+        user = new User(purchaseAmount, lottoTicketCount, lottoTickets);
+    }
+
+
 }

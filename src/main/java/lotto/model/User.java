@@ -1,20 +1,16 @@
 package lotto.model;
 
 
-import lotto.util.PurchaseAmountValidator;
+import java.util.List;
 
 public class User {
-    private final PurchaseAmountValidator purchaseAmountValidator = new PurchaseAmountValidator();
     private int purchaseAmount;
+    private int lottoTicketCount;
+    private List<Lotto> lottoTickets;
 
-    public User(String purchaseAmount) {
-        validate(purchaseAmount);
-        this.purchaseAmount = Integer.parseInt(purchaseAmount);
+    public User(int purchaseAmount, int lottoTicketCount, List<Lotto> lottoTickets) {
+        this.purchaseAmount = purchaseAmount;
+        this.lottoTicketCount = lottoTicketCount;
+        this.lottoTickets = lottoTickets;
     }
-
-    private void validate(String purchaseAmount) {
-        purchaseAmountValidator.validatePurchaseAmount(purchaseAmount);
-    }
-
-
 }
