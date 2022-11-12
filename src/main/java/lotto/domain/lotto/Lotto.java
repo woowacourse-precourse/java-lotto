@@ -13,7 +13,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("로또 번호는 6개의 숫자로 이루어져야 합니다.");
         }
 
         long correctNumberCount = numbers.stream()
@@ -22,7 +22,7 @@ public class Lotto {
                 .count();
 
         if (correctNumberCount != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 

@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static java.lang.String.*;
 import static java.util.stream.Collectors.toList;
 
 public class Money {
@@ -38,7 +39,9 @@ public class Money {
 
     private void exchangeValidate(Money exchanged) {
         if (this.value % exchanged.value != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                    format("%d원은 %d원으로 나누어 떨어지지 않습니다.", this.value, exchanged.value)
+            );
         }
     }
 
