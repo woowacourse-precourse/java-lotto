@@ -1,19 +1,14 @@
 package lotto.exception;
 
-import static lotto.util.LottoUtil.bonusNumberParser;
-import static lotto.util.LottoUtil.lottoNumbersParser;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class LottoException {
-
     private final static int PERMITTED_LOTTO_LENGTH = 6;
     private final static int MIN_LOTTO_NUMBER = 1;
     private final static int MAX_LOTTO_NUMBER = 45;
-    private static final String ONLY_NUMBER_REGEX = "^[1-9]{1}$|^[1-3]{1}[0-9]{1}$|^4{1}[0-5]{1}$+";
 
     public void validateLottoNumbers(List<Integer> numbers) {
         validateLottoNumbersLength(numbers);
@@ -59,5 +54,4 @@ public class LottoException {
             throw new IllegalArgumentException("[ERROR] 보너스 번호가 중복됩니다.");
         }
     }
-
 }
