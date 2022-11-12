@@ -36,7 +36,6 @@ public class LottoGenerator
     {
         List<Integer> lottoNumbers =
                 Randoms.pickUniqueNumbersInRange(LottoInfo.START_LOTTO_NUMBER,LottoInfo.END_LOTTO_NUMBER,LottoInfo.LOTTO_SIZE);
-        Collections.sort(lottoNumbers);
         return lottoNumbers;
     }
 
