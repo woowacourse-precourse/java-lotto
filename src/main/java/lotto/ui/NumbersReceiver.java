@@ -12,18 +12,26 @@ public class NumbersReceiver {
         return Integer.parseInt(Console.readLine());
     }
 
-    public List<Integer> setBasicNumbers() {
+    public List<Integer> setBasicNumbers() throws IllegalArgumentException {
         String[] correctNumbers = Console.readLine().split(",");
         List<Integer> result = new ArrayList<>();
 
-        for (String singleNumber : correctNumbers) {
-            result.add(Integer.parseInt(singleNumber));
+        try {
+            for (String singleNumber : correctNumbers) {
+                result.add(Integer.parseInt(singleNumber));
+            }
+        } catch (NumberFormatException numberFormatException) {
+            throw new IllegalArgumentException("[ERROR] 쉼표로 분리된 숫자만 입력 가능합니다.");
         }
 
         return result;
     }
 
     public int setBonusNumber() {
-        return Integer.parseInt(Console.readLine());
+        try {
+            return Integer.parseInt(Console.readLine());
+        } catch (NumberFormatException numberFormatException) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능 합니다.");
+        }
     }
 }
