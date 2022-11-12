@@ -23,4 +23,13 @@ public class LottoGeneratorTest {
         lotto=lottoGenerator.createLotto();
         assertThat(lotto.size()).isEqualTo(numberOfLottoNumbers);
     }
+    @Test
+    @DisplayName("구매한 로또의 수만큼 로또를 발행하는지 확인한다.")
+    public void generateLottoOfBuyerTest(){
+        int numberOfLotto=8;
+        List<List<Integer>> generatedLotto = new ArrayList<>();
+        LottoGenerator lottoGenerator = new LottoGenerator();
+        generatedLotto=lottoGenerator.generateLottoOfBuyer(numberOfLotto);
+        assertThat(generatedLotto.size()).isEqualTo(numberOfLotto);
+    }
 }
