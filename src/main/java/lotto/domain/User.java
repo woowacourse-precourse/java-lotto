@@ -42,6 +42,12 @@ public class User {
         }
     }
 
+    public void showBuyAmount() {
+        String message = BUY_AMOUNT.getMessage();
+        String param = String.valueOf(getBuyAmount());
+        ConsoleUtil.showParamMessage(message, param);
+    }
+
     public int getBuyAmount() {
         return lottos.size();
     }
