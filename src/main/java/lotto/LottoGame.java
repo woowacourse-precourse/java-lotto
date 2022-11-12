@@ -9,11 +9,11 @@ public class LottoGame {
 
     public void start() {
         Print.money();
-        int lottoTickets = Input.purchaseAmount();
-        Lottos lottos = purchaseLotto(lottoTickets);
+        LottoAmount amount = new LottoAmount(Input.purchaseAmount());
+        Lottos lottos = purchaseLotto(amount.makeLottoTickets());
         BonusLotto bonusLotto = makeWinningLotto();
         Map<LottoOperator, Integer> winningResult = findWinningResult(lottos, bonusLotto);
-        Print.winningResult(lottoTickets, winningResult);
+        Print.winningResult(amount.makeLottoTickets(), winningResult);
     }
 
     private Lottos purchaseLotto(int lottoTickets) {
