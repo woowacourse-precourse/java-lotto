@@ -54,5 +54,16 @@ public class Lotto {
         return String.valueOf(this.numbers);
     }
 
+    public Integer compareCount(Lotto lotto) {
+        var count = numbers.stream()
+                .filter(lotto::hasLottoNumber)
+                .count();
+
+        return Math.toIntExact(count);
+    }
+
+    public boolean hasLottoNumber(Integer lottoNumber) {
+        return numbers.contains(lottoNumber);
+    }
     // TODO: 추가 기능 구현
 }
