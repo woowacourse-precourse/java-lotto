@@ -1,6 +1,7 @@
 package lotto.views;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.utils.Constant;
 import lotto.utils.GameMessage;
 import lotto.utils.InputValidation;
 
@@ -16,7 +17,7 @@ public class Input {
         System.out.println(GameMessage.BUY_FOR_LOTTO);
 
         String question = Console.readLine();
-        inputValidation.checkNumber(question, "");
+        inputValidation.checkNumber(question, Constant.REGEX_INPUT);
         inputValidation.checkThousandMoney(question);
 
         return Integer.parseInt(question);
@@ -26,7 +27,7 @@ public class Input {
         System.out.print('\n' + GameMessage.INPUT_WINNING_NUMBER + '\n');
 
         String answer = Console.readLine();
-        inputValidation.checkNumber(answer, ",");
+        inputValidation.checkNumber(answer, Constant.REGEX_WINNING_NUMBER_INPUT);
     }
 
 }

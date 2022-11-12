@@ -20,7 +20,7 @@ class InputValidationTest {
     void checkInputIsNumber() {
         String input = "1000a";
 
-        assertThatThrownBy(() -> inputValidation.checkNumber(input, ""))
+        assertThatThrownBy(() -> inputValidation.checkNumber(input, Constant.REGEX_INPUT))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -38,7 +38,7 @@ class InputValidationTest {
     void checkWinningNumberIsNumeric() {
         String input = "1,2,3,4,a,6";
 
-        assertThatThrownBy(() -> inputValidation.checkNumber(input, ","))
+        assertThatThrownBy(() -> inputValidation.checkNumber(input, Constant.REGEX_WINNING_NUMBER_INPUT))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
