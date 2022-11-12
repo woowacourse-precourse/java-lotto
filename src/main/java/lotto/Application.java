@@ -108,6 +108,10 @@ public class Application {
         System.out.print(COMMON_ERROR_MESSAGE + " 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
 
+    static void print_user_lotto_error() {
+        System.out.print(COMMON_ERROR_MESSAGE + " 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+    }
+
     public static void main(String[] args) {
         ask_how_much_money();
 
@@ -149,6 +153,7 @@ public class Application {
         try {
             user_lotto = new Lotto(user_number);
         } catch (IllegalArgumentException e) {
+            print_user_lotto_error();
             return;
         }
     }
