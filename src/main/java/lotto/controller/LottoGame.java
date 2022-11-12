@@ -14,6 +14,9 @@ import java.util.List;
 import lotto.view.Message;
 
 public class LottoGame {
+    private static final int LOTTO_PRICE = 1000;
+    private static final int PERCENT = 100;
+    private static int winMoney = 0;
 
     public void start() {
         List<List<Integer>> lottos;
@@ -29,12 +32,19 @@ public class LottoGame {
     private static void getTotalResult() {
         Map<LottoRank, Integer> result = setToMap();
         LottoRank rank;
+        double purchasePrice = purchaseLottoCount * LOTTO_PRICE;
         System.out.println(Message.WINNING_STATS.getMessage());
         for (int i = 0; i < winningCount; i++) {
             rank = LottoRank.getRankResult(winningCount, bonus);
             result.put(rank, result.get(rank) + 1);
+            winMoney = rank.getMoney();
         }
         printWinningList(result);
+        System.out.printf("총 수익률은 " + String.format("%.1f", getWinningRate(purchasePrice)) + "%%입니다.");
+    }
+
+    private static double getWinningRate(double purchasePrice) {
+        return (winMoney / purchasePrice) * PERCENT;
     }
 
     private static void printWinningList(Map<LottoRank, Integer> result) {
