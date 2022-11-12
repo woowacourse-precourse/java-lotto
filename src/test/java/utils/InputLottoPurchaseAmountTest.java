@@ -3,6 +3,10 @@ package utils;
 import static org.assertj.core.api.Assertions.*;
 import static utils.InputLottoPurchaseAmount.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -15,21 +19,18 @@ public class InputLottoPurchaseAmountTest {
 		@Test
 		@DisplayName("구입금액 예외사항 테스트: 숫자가 아닌 입력")
 		void inputNonNumericLottoPurchaseAmount() {
-			// given, when
-			String lottoPurchaseAmountKorean = "1000ㄱ";
-			String lottoPurchaseAmountEnglish = "1s000";
-			String lottoPurchaseAmountSpecialCharacter = "~1000";
-			String lottoPurchaseAmountMix = "1r0ㄴ0!0";
+			// given, when: 한글이 섞인 입력
+			List<String> lottoPurchaseAmounts = List.of("1000ㄱ", "1s000", "~1000", "1r0ㄴ0!0");
 
-			// then
-			assertThatThrownBy(() -> validateNumeric(lottoPurchaseAmountKorean))
-					.isInstanceOf(IllegalArgumentException.class);
-			assertThatThrownBy(() -> validateNumeric(lottoPurchaseAmountEnglish))
-					.isInstanceOf(IllegalArgumentException.class);
-			assertThatThrownBy(() -> validateNumeric(lottoPurchaseAmountSpecialCharacter))
-					.isInstanceOf(IllegalArgumentException.class);
-			assertThatThrownBy(() -> validateNumeric(lottoPurchaseAmountMix))
-					.isInstanceOf(IllegalArgumentException.class);
+			for (String lottoPurchaseAmount : lottoPurchaseAmounts) {
+				readLine(lottoPurchaseAmount);
+				assertThatThrownBy(() -> readLottoPurchaseAmount()).isInstanceOf(IllegalArgumentException.class);
+			}
+		}
+
+		private void readLine(String lottoPurchaseAmount) {
+			InputStream in = new ByteArrayInputStream(lottoPurchaseAmount.getBytes());
+			System.setIn(in);
 		}
 
 		@Test
