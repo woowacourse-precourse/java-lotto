@@ -15,12 +15,9 @@ public class LotteryMachine {
     private static final String PURCHASED_LOTTERY_NUMBER_MESSAGE = "개를 구매했습니다.";
 
     public void purchaseLottery(User user) {
-        int userMoney;
-        int numberOfLotteries;
-        userMoney = getUserMoneyInput(user);
-        user.setMoney(userMoney);
-        numberOfLotteries = calculateNumOfLotteries(user);
-        user.setNumberOfLotteries(numberOfLotteries);
+        user.setMoney(getUserMoneyInput(user));
+        user.setNumberOfLotteries(calculateNumOfLotteries(user));
+        user.setLotteries(generateLotteries(user.getNumberOfLotteries()));
     }
 
     public int getUserMoneyInput(User user) {

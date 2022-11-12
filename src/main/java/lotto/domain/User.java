@@ -17,7 +17,7 @@ public class User {
         return money;
     }
 
-    public int getNumOfLotteries() {
+    public int getNumberOfLotteries() {
         return numberOfLotteries;
     }
 
@@ -33,9 +33,7 @@ public class User {
         this.numberOfLotteries = numberOfLotteries;
     }
 
-    public void setLotteries(LotteryMachine lotteryMachine) {
-        lotteries = lotteryMachine.generateLotteries(numberOfLotteries);
+    public void setLotteries(List<Lotto> lotteries) {
+        this.lotteries = lotteries;
     }
-
-
 }
