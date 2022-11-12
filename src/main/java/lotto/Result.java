@@ -7,8 +7,8 @@ import java.util.List;
 
 public class Result {
     public static final int PERCENT = 100;
-    public static final int ROUND_TWO = 100;
-    public static final double TWO_DECIMAL = 100.0;
+    public static final int ROUND_ONE = 10;
+    public static final double ONE_DECIMAL = 10.0;
 
     private static HashMap<MatchCount, Integer> totalMatchResult = new HashMap<>();
     private int totalPrizeMoney = 0;
