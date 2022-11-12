@@ -1,17 +1,18 @@
 package domain;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.sun.jdi.Value;
+
+import java.util.*;
 
 public class Banker {
     public Banker() {
     }
 
-    private Map<Victory, Integer> map = new HashMap<>();
+    public final int VICTORY_LOCATION = 0;
+    public final int BONUS_LOCATION = 1;
+    private Map<Victory, Integer> map = new LinkedHashMap<>();
     private List<Integer> winningNumber = new ArrayList<>();
-    private Integer bonusNumber;
+    private int bonusNumber;
 
     public void setWinningNumber(List<Integer> winningNumber) {
         this.winningNumber = winningNumber;
@@ -21,22 +22,58 @@ public class Banker {
         this.bonusNumber = bonusNumber;
     }
 
-    public Map<String, Integer> correctCount(List<Integer> lotto) {
-        Map<String,Integer> victoryNumber = new HashMap<>();
+    public int[] correctCount(Lotto lotto) {
+        int[] victoryNumber = new int[2];
         int result = 0;
         int resultBonus = 0;
-        for (int i = 0; i < lotto.size(); i++) {
-            if (lotto.contains(winningNumber.get(i))) {
+        for (int i = 0; i < lotto.getNumbers().size(); i++) {
+            if (lotto.getNumbers().contains(winningNumber.get(i))) {
                 result++;
             }
         }
-        if (lotto.contains(bonusNumber)) {
+        if (lotto.getNumbers().contains(bonusNumber)) {
             resultBonus++;
         }
-        victoryNumber.put("result", result);
-        victoryNumber.put("resultBonus", resultBonus);
+        victoryNumber[VICTORY_LOCATION] = result;
+        victoryNumber[BONUS_LOCATION] = resultBonus;
         return victoryNumber;
     }
 
+    public void setMap() {
+        for (int i = 0; i < Victory.values().length; i++) {
+            map.put(Victory.values()[i], 0);
+        }
+    }
 
+    public void compareCount(int[] victoruNumber) {
+        setMap();
+        for (int i = 0; i < map.size(); i++) {
+            if (isBonusCount(victoruNumber)) {
+                map.put(Victory.MATCH_BONUS, +1);
+                return;
+            }
+            if (victoruNumber[VICTORY_LOCATION] == Victory.values()[i].getMatchCount()) {
+                map.put(Victory.values()[i], +1);
+            }
+        }
+    }
+
+    public boolean isBonusCount(int[] victoruNumber) {
+        if (victoruNumber[VICTORY_LOCATION] == 5 && victoruNumber[BONUS_LOCATION] == 1) {
+            return true;
+        }
+        return false;
+    }
+
+    public Map<Victory, Integer> getMap() {
+        return map;
+    }
+
+    public List<Integer> getWinningNumber() {
+        return winningNumber;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }

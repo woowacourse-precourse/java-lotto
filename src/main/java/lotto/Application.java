@@ -1,12 +1,16 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import domain.Banker;
 import domain.User;
+import domain.Victory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class Application {
     public static void main(String[] args) {
@@ -37,6 +41,9 @@ public class Application {
     public static Integer getBonnusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
+        if (getWinningNumber().contains(input)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 숫자는 당첨번호와 달라야합니다.");
+        }
         if (input.length() < 1) {
             throw new IllegalArgumentException("[ERROR] 보너스 숫자를 입력해 주세요");
         }
