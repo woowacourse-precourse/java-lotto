@@ -21,18 +21,18 @@ public class InputWinningLottoValidator {
         validateZeroAtFirstPlaceExist(inputWinningLottoNumbers);
     }
     
-    private static void validateNullOrEmpty(final String inputPayment) {
-        InputValidator.validateNullOrEmpty(inputPayment);
+    private static void validateNullOrEmpty(final String inputWinningLottoNumbers) {
+        InputValidator.validateNullOrEmpty(inputWinningLottoNumbers);
     }
     
     private static void validateInputWinningLottoFormatMatching(final String inputWinningLottoNumbers) {
-        if (isNotMatchInputFormat(matcher(inputWinningLottoNumbers, WINNING_LOTTO_INPUT_FORM))) {
+        if (isNotMatchInputFormat(inputWinningLottoNumbers)) {
             throw new IllegalArgumentException(WINNING_LOTTO_INPUT_FORM_EXCEPTION_MESSAGE);
         }
     }
     
-    private static boolean isNotMatchInputFormat(final Matcher matcher) {
-        return !matcher.matches();
+    private static boolean isNotMatchInputFormat(final String inputWinningLottoNumbers) {
+        return !matcher(inputWinningLottoNumbers, WINNING_LOTTO_INPUT_FORM).matches();
     }
     
     private static void validateZeroAtFirstPlaceExist(final String inputWinningLottoNumbers) {
@@ -41,8 +41,8 @@ public class InputWinningLottoValidator {
         }
     }
     
-    private static boolean isExistZeroAtFirstPlace(final String inputPayment) {
-        return matcher(inputPayment, EXIST_ZERO_AT_FIRST_PLACE_FORM).find();
+    private static boolean isExistZeroAtFirstPlace(final String inputWinningLottoNumbers) {
+        return matcher(inputWinningLottoNumbers, EXIST_ZERO_AT_FIRST_PLACE_FORM).find();
     }
     
     private static Matcher matcher(final String inputWinningLottoNumbers, final String correctLottoNumbersForm) {
