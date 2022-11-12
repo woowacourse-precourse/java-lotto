@@ -8,26 +8,25 @@ public class Application {
     static final Integer FIVE = 5;
     static final Integer SIX = 6;
     public static void main(String[] args) {
-        Integer money = LottoUI.purchase();
+        try {
+            Integer money = LottoUI.purchase();
 
-        List<Lotto> lottos = Lotto.purchase(money);
-        PrintSortedLottos(lottos);
+            List<Lotto> lottos = Lotto.purchase(money);
+            PrintSortedLottos(lottos);
+            List<Integer> winNumbers = LottoUI.receiveWinNumbers();
+            Lotto winLotto = new Lotto(winNumbers);
+            Integer bonusNumber = LottoUI.receiveBonusNumber();
+            winLotto.setBonusNumber(bonusNumber);
 
-        List<Integer> winNumbers =  LottoUI.receiveWinNumbers();
-        Lotto winLotto = new Lotto(winNumbers);
-
-        Integer bonusNumber = LottoUI.receiveBonusNumber();
-        winLotto.setBonusNumber(bonusNumber);
-
-        Integer moneyEarned = matchLottos(winLotto, lottos);
-        double benefit = Lotto.calculateBenefit(money, moneyEarned);
-        LottoUI.printBenefit(benefit);
+            Integer moneyEarned = matchLottos(winLotto, lottos);
+            double benefit = Lotto.calculateBenefit(money, moneyEarned);
+            LottoUI.printBenefit(benefit);
+        } catch (IllegalArgumentException e) {}
     }
     private static void PrintSortedLottos(List<Lotto> lottos){
         LottoUI.numberOfLottoPurchased(lottos.size());
 
         for (Lotto lotto: lottos){
-            lotto.sort();
             LottoUI.printLotto(lotto);
         }
     }
