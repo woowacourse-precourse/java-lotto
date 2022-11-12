@@ -59,8 +59,7 @@ public class Draw {
             // 5개 + 보너스 번호가 일치한 경우
             else if (count == 5 && bonusCorrect.get(i)) {
                 result[3] += 1;
-            }
-            else if (count > 2) {
+            } else if (count > 2) {
                 result[count - 3] += 1;
             }
         }
