@@ -21,4 +21,11 @@ class BonusTest {
         assertThatThrownBy(() -> new Bonus(List.of(1, 2, 3, 4, 5, 6), 0))
             .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("보너스 번호가 당첨 번호에 포함되면 에러가 발생한다.")
+    @Test
+    void createBonusConsistedOfLotto() {
+        assertThatThrownBy(() -> new Bonus(List.of(1, 2, 3, 4, 5, 6), 5))
+            .isInstanceOf(IllegalArgumentException.class);
+    }
 }
