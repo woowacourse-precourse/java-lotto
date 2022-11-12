@@ -2,13 +2,13 @@ package lotto;
 
 import java.util.List;
 
-public class JudgeGrade {
+public class CountMatchNumber {
     private int winNumberMatchCount;
     private int bonusNumberMatchCount;
     private BuyLotto buyLotto;
     private WinningNumbers winningNumbers;
 
-    public JudgeGrade(BuyLotto buyLotto, WinningNumbers winningNumbers) {
+    public CountMatchNumber(BuyLotto buyLotto, WinningNumbers winningNumbers) {
         this.buyLotto = buyLotto;
         this.winningNumbers = winningNumbers;
         this.winNumberMatchCount = 0;
@@ -21,7 +21,7 @@ public class JudgeGrade {
                 winNumberMatchCount++;
             }
         }
-        
+
         return winNumberMatchCount;
     }
 
