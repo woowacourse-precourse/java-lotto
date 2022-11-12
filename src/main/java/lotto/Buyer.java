@@ -47,7 +47,6 @@ public class Buyer {
     }
 
     public void showLottos() {
-        System.out.println(lottoNum + "개를 구매했습니다.");
         printLottos(lottos);
     }
 
