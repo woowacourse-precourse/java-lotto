@@ -9,7 +9,7 @@ import java.util.Set;
 public class LottoValidator {
 	public static void validate(List<Integer> numbers) {
 		if (!isConsistOfSixNumbers(numbers)) {
-			throw new IllegalArgumentException(ERROR + "1000원 단위의 금액이어야 합니다.");
+			throw new IllegalArgumentException(ERROR + "중복되지 않은 6개의 숫자를 입력해 주세요.");
 		}
 		if (isDuplicatedNumbers(numbers)) {
 			throw new IllegalArgumentException(ERROR + "중복되지 않은 6개의 숫자를 입력해 주세요.");
@@ -20,11 +20,11 @@ public class LottoValidator {
 	}
 
 	private static boolean isValidRange(List<Integer> numbers) {
-		return numbers.stream().anyMatch(n->n < 1 && n > 45);
+		return numbers.stream().anyMatch(n->n >= 1 && n <= 45);
 	}
 
 	private static boolean isConsistOfSixNumbers(List<Integer> numbers) {
-		return numbers.size() != 6;
+		return numbers.size() == 6;
 	}
 
 	private static boolean isDuplicatedNumbers(List<Integer> numbers) {
