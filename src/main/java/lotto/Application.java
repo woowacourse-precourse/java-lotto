@@ -15,9 +15,9 @@ public class Application {
         PrintMessenger.askWinningNumber();
         List<Integer> winningNumber= createWinningNumber.makeWinningNumber(Console.readLine());
         PrintMessenger.askBonusNumber();
-        int bonus = bonusNumber.getBonusNumber(winningNumber, Console.readLine());
-        System.out.println(bonus);
+        bonusNumber.getBonusNumber(winningNumber, Console.readLine());
+        System.out.println(bonusNumber.bonus);
         Lotto lotto = new Lotto(winningNumber);
-        lotto.getResult(lottoStore.lottoPapers, lottoStore.validMoney, bonus);
+        lotto.getResult(lottoStore.lottoPapers, lottoStore.validMoney, bonusNumber.bonus);
     }
 }
