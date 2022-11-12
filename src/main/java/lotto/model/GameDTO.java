@@ -7,7 +7,8 @@ public class GameDTO {
     private int bonusNumber;
     private int[] winningCount = new int[5];
     private int winningAmount;
-    private int returnOfRate;
+    private double returnOfRate;
+    private int purchaseAmount;
 
     public void setWinningNumber(List<Integer> number) {
         this.winningNumber = new Lotto(number);
@@ -32,11 +33,11 @@ public class GameDTO {
         this.winningAmount = winningAmount;
     }
 
-    public int getReturnOfRate() {
+    public double getReturnOfRate() {
         return returnOfRate;
     }
 
-    public void setReturnOfRate(int returnOfRate) {
+    public void setReturnOfRate(double returnOfRate) {
         this.returnOfRate = returnOfRate;
     }
 
@@ -48,6 +49,15 @@ public class GameDTO {
         int arrayIndex = TypeWinning.valueOf(type).getTable1Value();
         this.winningCount[arrayIndex] += 1;
     }
+
+    public int getPurchaseAmount() {
+        return purchaseAmount;
+    }
+
+    public void setPurchaseAmount(int purchaseAmount) {
+        this.purchaseAmount = purchaseAmount;
+    }
+
     public enum TypeWinning {
         THREE(0,3),
         FOUR(1,4),

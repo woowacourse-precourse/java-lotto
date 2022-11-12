@@ -13,6 +13,7 @@ public class JudgeGame {
     public JudgeGame(UserDTO userDTO, GameDTO gameDTO) {
         this.userDTO = userDTO;
         this.gameDTO = gameDTO;
+        gameDTO.setPurchaseAmount(userDTO.getPurchaseAmount());
         judgeGame();
     }
     private void judgeGame() {

@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.controller.JudgeGame;
+import lotto.controller.ProcessingGameData;
 import lotto.model.GameDTO;
 import lotto.model.UserDTO;
 import lotto.view.InputManager;
@@ -18,6 +19,7 @@ public class RunGame {
             userSide();
             managerSide();
             judgeGame();
+            processingGameData();
         } catch(IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -34,6 +36,9 @@ public class RunGame {
 
     private void judgeGame() {
         JudgeGame judgeGame = new JudgeGame(this.userDTO, this.gameDTO);
-        System.out.println(gameDTO.getWinningCount()[3]);
+    }
+
+    private void processingGameData() {
+        ProcessingGameData process = new ProcessingGameData(this.gameDTO);
     }
 }
