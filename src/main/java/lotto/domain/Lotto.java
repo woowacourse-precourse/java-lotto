@@ -14,7 +14,17 @@ public class Lotto {
 
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            System.out.println("[ERROR} 복권 번호 개수는 6개이어야만 합니다.");
             throw new IllegalArgumentException("[ERROR] 잘못된 복권 번호 개수");
+        }
+    }
+    
+    private void validateRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (!(1 <= number && number <= 45)) {
+                System.out.println("[ERROR} 복권 번호의 범위는 1 ~ 45 사이어야만 합니다.");
+                throw new IllegalArgumentException("[ERROR] 잘못된 복권 번호 범위");
+            }
         }
     }
 
