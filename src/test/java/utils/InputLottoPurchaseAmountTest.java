@@ -31,6 +31,23 @@ public class InputLottoPurchaseAmountTest {
 			assertThatThrownBy(() -> validateNumeric(lottoPurchaseAmountMix))
 					.isInstanceOf(IllegalArgumentException.class);
 		}
+
+		@Test
+		@DisplayName("구입금액 예외사항 테스트: 1000원 미만 입력")
+		void inputOutOfRangeLottoPurchaseAmount() {
+			// given, when
+			int lottoPurchaseAmountOne = 999;
+			int lottoPurchaseAmountTwo = 0;
+			int lottoPurchaseAmountThree = -1;
+
+			// then
+			assertThatThrownBy(() -> validatePurchaseAmountRange(lottoPurchaseAmountOne))
+					.isInstanceOf(IllegalArgumentException.class);
+			assertThatThrownBy(() -> validatePurchaseAmountRange(lottoPurchaseAmountTwo))
+					.isInstanceOf(IllegalArgumentException.class);
+			assertThatThrownBy(() -> validatePurchaseAmountRange(lottoPurchaseAmountThree))
+					.isInstanceOf(IllegalArgumentException.class);
+		}
 	}
 
 	@Nested
