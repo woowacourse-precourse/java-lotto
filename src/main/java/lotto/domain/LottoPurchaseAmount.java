@@ -2,7 +2,8 @@ package lotto.domain;
 
 public class LottoPurchaseAmount {
     private static final String WRONG_PURCHASE_AMOUNT= "[ERROR] 1000원 단위로 입력하셔야 합니다.";
-    private int purchaseAmount;
+
+    private final int purchaseAmount;
 
     public LottoPurchaseAmount(int purchaseAmount) {
         validate(purchaseAmount);
@@ -13,5 +14,9 @@ public class LottoPurchaseAmount {
         if ((purchaseAmount % Lotto.LOTTO_PRICE) > 0) {
             throw new IllegalArgumentException(WRONG_PURCHASE_AMOUNT);
         }
+    }
+
+    public int getPurchaseAmount() {
+        return purchaseAmount;
     }
 }

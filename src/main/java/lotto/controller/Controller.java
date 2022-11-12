@@ -1,26 +1,29 @@
 package lotto.controller;
 
 import lotto.domain.LottoPurchaseAmount;
+import lotto.domain.WinningNumbers;
 import lotto.view.InputView;
 
 public class Controller {
-    public static void run() {
+    public void run() {
+        LottoPurchaseAmount lottoPurchaseAmount = inputMoney();
+        WinningNumbers winningNumbers = inputWinningNumbersAndBonusNumber();
 
     }
 
-    public static void inputMoney() {
-        LottoPurchaseAmount lottoPurchaseAmount = new LottoPurchaseAmount(InputView.inputAmount());
+    public LottoPurchaseAmount inputMoney() {
+        return new LottoPurchaseAmount(InputView.inputAmount());
     }
 
-    public static void inputWinningNumbers() {
+    public WinningNumbers inputWinningNumbersAndBonusNumber() {
+        return InputView.inputWinningNumbersAndBonus();
+    }
+
+    public void inputBonusNumber() {
 
     }
 
-    public static void inputBonusNumber() {
-
-    }
-
-    public static void createWinningStatistics() {
+    public void createWinningStatistics() {
 
     }
 }
