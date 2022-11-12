@@ -3,7 +3,7 @@ package lotto;
 public class Game {
 
     public void gameStart() {
-        PurchaseMachine newLotto = new PurchaseMachine();
+        LottoSeller newLotto = new LottoSeller();
         newLotto.getPayAmount();
         newLotto.countTicket(newLotto.payAmount);
 
