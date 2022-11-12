@@ -54,9 +54,15 @@ public class Check {
 
     public static void rightRange(List<String> numbers, int startNumber, int finishNumber) {
         for (int i = 0; i < numbers.size(); i++) {
-            if (Integer.parseInt(numbers.get(i)) < startNumber && Integer.parseInt(numbers.get(i)) > finishNumber) {
+            if (Integer.parseInt(numbers.get(i)) < startNumber || Integer.parseInt(numbers.get(i)) > finishNumber) {
                 throw new IllegalArgumentException("[ERROR] 범위를 벗어난 숫자입니다.");
             }
+        }
+    }
+
+    public static void rightRange(int number, int startNumber, int finishNumber) {
+        if (number < startNumber || number > finishNumber) {
+            throw new IllegalArgumentException("[ERROR] 범위를 벗어난 숫자입니다.");
         }
     }
 }
