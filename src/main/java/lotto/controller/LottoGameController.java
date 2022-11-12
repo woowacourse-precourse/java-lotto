@@ -10,7 +10,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoGameController {
     public void run() {
-        buyLottos();
+        final Lottos boughtLottos = buyLottos();
+        final Lotto winLotto = getWinLotto();
+    }
+
+    private Lotto getWinLotto() {
+        return UserInput.inputLottoWinNumber();
     }
 
     private Lottos buyLottos() {
