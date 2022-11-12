@@ -60,6 +60,15 @@
          * input: List<Integer> 다른 로또의 번호
          * output: int 해당 로또와 같은 숫자 갯수
    
+   * winLotto
+     - 당첨번호를 담고 있는 로또
+     - instance:
+       + Lotto lotto: 당첨번호를 가지고 있는 Lotto 객체
+     - methods:
+       + get()
+         * input: None
+         * output: Lotto 당첨 로또 객체
+   
    * Standard
       - 1 ~ 5등의 당첨 기준을 담는 Enum 객체
       - key: String 로또 등수 (FIRST, SECOND ...)
@@ -146,9 +155,6 @@
 3. Controllers
    * mainController
      - methods:
-       + static getLottoCount()
-         * input: int 입력된 돈
-         * output: int 만들 로또 갯수
        + static makeWinLotto()
          * input: List<Integer> 로또 숫자
          * output: Lotto 당첨 로또
