@@ -39,8 +39,7 @@ public class Application {
         return lottoTickets;
     }
 
-    public static String validateWinnerNumberContainsComma() {
-        String userInput = Console.readLine();
+    public static String validateWinnerNumberContainsComma(String userInput) {
         if (!userInput.contains(",")) {
             throw new IllegalArgumentException(ErrorResponse.INPUT_WITHOUT_COMMA_ERROR.getErrorMessage());
         }
@@ -73,5 +72,16 @@ public class Application {
                 throw new IllegalArgumentException(ErrorResponse.INPUT_LOTTO_RANGE_ERROR.getErrorMessage());
             }
         }
+    }
+
+    private static List<Integer> inputWinnerNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String userInput = Console.readLine();
+        String commaValidated = validateWinnerNumberContainsComma(userInput);
+        String sizeValidated = validateWinnerNumberSize(commaValidated);
+        List<Integer> convertedWinnerNumber = convertStringWinnerNumberIntoListWinnerNumber(sizeValidated);
+        validateWinnerNumberRange(convertedWinnerNumber);
+
+        return convertedWinnerNumber;
     }
 }
