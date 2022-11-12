@@ -14,8 +14,8 @@ public class LottoCollection {
 
     private final List<Lotto> lottoCollection;
 
-    public LottoCollection(int numOfLotto) {
-        lottoCollection = IntStream.range(START_INDEX, numOfLotto)
+    public LottoCollection(int numberOfLotto) {
+        lottoCollection = IntStream.range(START_INDEX, numberOfLotto)
                 .mapToObj(i -> new Lotto(createLottoNumbers()))
                 .collect(Collectors.toList());
     }
