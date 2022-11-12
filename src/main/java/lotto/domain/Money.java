@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 public class Money {
     private static final String ERROR_UNIT_COUNT = "[ERROR] 1000원 단위로만 입력 가능합니다";
