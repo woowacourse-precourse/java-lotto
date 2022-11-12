@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -39,6 +40,19 @@ public class InputTest extends NsTest {
                 assertThatThrownBy(() -> runException("23001"))
                         .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @DisplayName("로또 번호 입력시 정상적으로 리스트 반환되는지 확인")
+    @Test
+    void checkInputStringtoList() {
+        // given
+        InputController inputController = new InputController();
+        String lottonumber = "1,2,3,4,5,6";
+        InputStream in = new ByteArrayInputStream(lottonumber.getBytes());
+        System.setIn(in);
+        // when, then
+        List<Integer> lottonumberlist = Arrays.asList(1,2,3,4,5,6);
+        assertThat(inputController.insertLottoNumber()).isEqualTo(lottonumberlist);
     }
 
     @Override
