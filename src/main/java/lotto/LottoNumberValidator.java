@@ -1,5 +1,8 @@
 package lotto;
 
+import static lotto.Constant.ErrorMessage.DUPLICATED_INPUT;
+import static lotto.Constant.ErrorMessage.WRONG_RANGE;
+import static lotto.Constant.ErrorMessage.WRONG_SIZE;
 import static lotto.Constant.LottoValue.MAX_RANGE;
 import static lotto.Constant.LottoValue.MIN_RANGE;
 import static lotto.Constant.LottoValue.NUMBER_EA;
@@ -21,6 +24,14 @@ public class LottoNumberValidator {
         int numbersTypeCount = (int) numbers.stream().distinct().count();
 
         if (numbersTypeCount != numbers.size()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static boolean existDuplicate(List<Integer> numbers, int bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
             return true;
         }
 
@@ -49,5 +60,29 @@ public class LottoNumberValidator {
         }
 
         return true;
+    }
+
+    public static void validateNumbers(List<Integer> numbers) {
+        if (existDuplicate(numbers)) {
+            throw new IllegalArgumentException(DUPLICATED_INPUT);
+        }
+
+        if (isNotSameSize(numbers)) {
+            throw  new IllegalArgumentException(WRONG_SIZE);
+        }
+
+        if (isOutOfRange(numbers)) {
+            throw new IllegalArgumentException(WRONG_RANGE);
+        }
+    }
+
+    public static void validateBonusNumber(List<Integer> numbers, int bonusNumber) {
+        if (isOutOfRange(bonusNumber)) {
+            throw new IllegalArgumentException(WRONG_RANGE);
+        }
+
+        if (existDuplicate(numbers, bonusNumber)) {
+            throw new IllegalArgumentException(DUPLICATED_INPUT);
+        }
     }
 }
