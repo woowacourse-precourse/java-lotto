@@ -19,8 +19,8 @@ public class WinningStatistics {
         countRanks(rankCollection);
     }
 
-    public float computeTotalYield() {
-        return sumOfReward() / sumOfLottoPrice() * PERCENT_UNIT;
+    public double computeTotalYield() {
+        return (sumOfReward() / sumOfLottoPrice()) * PERCENT_UNIT;
     }
 
     private int sumOfLottoPrice() {
@@ -34,7 +34,7 @@ public class WinningStatistics {
     }
 
 
-    private float sumOfReward() {
+    private double sumOfReward() {
         return (float) rankAndRankCount.keySet()
                 .stream()
                 .map(this::sumOfOneRankReward)
