@@ -2,6 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import controller.InputController;
+import controller.InputValidator;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -53,6 +55,42 @@ public class InputTest extends NsTest {
         // when, then
         List<Integer> lottonumberlist = Arrays.asList(1,2,3,4,5,6);
         assertThat(inputController.insertLottoNumber()).isEqualTo(lottonumberlist);
+    }
+
+    @DisplayName("로또 번호 입력값이 숫자나 쉼표가 아닐 경우 예외 발생")
+    @Test
+    void checkInputStringNumber() {
+        InputValidator inputValidator = new InputValidator();
+        String lottonumber = "a,1,2,3,4,5";
+        assertThatThrownBy(() -> inputValidator.checkDigitNumber(lottonumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호 입력값이 6개의 숫자가 아닐 경우 예외 발생")
+    @Test
+    void checkLottoNumberQuantity() {
+        InputValidator inputValidator = new InputValidator();
+        List<Integer> lottonumber = Arrays.asList(1,2,3,4,5,6,7);
+        assertThatThrownBy(() -> inputValidator.checkNumberQuantity(lottonumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호 입력 값중 중복 숫자가 있는 경우 예외 발생")
+    @Test
+    void checkSameLottoNumber() {
+        InputValidator inputValidator = new InputValidator();
+        List<Integer> lottonumber = Arrays.asList(2,2,3,4,5,6);
+        assertThatThrownBy(() -> inputValidator.checkSameLottoNumber(lottonumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호 입력 값중 1~45 사이의 수가 아닌 숫자가 있는 경우 예외 발생")
+    @Test
+    void checkLottoNumberRange() {
+        InputValidator inputValidator = new InputValidator();
+        List<Integer> lottonumber = Arrays.asList(1,2,3,4,5,46);
+        assertThatThrownBy(() -> inputValidator.checkLottoNumberRange(lottonumber))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override

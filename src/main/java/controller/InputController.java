@@ -43,6 +43,7 @@ public class InputController {
         List<Integer> lottonumber = new ArrayList<>();
         String strlottonumber = Console.readLine();
         int numberidx = 0;
+        inputValidator.checkDigitNumber(strlottonumber);
         for(int i=0; i<strlottonumber.length(); i++) {
             if(strlottonumber.charAt(i) == ',') {
                 lottonumber.add(StringToIntNumber(strlottonumber,numberidx,i));
@@ -50,7 +51,8 @@ public class InputController {
             }
         }
         lottonumber.add(StringToIntNumber(strlottonumber,numberidx,strlottonumber.length()));
-        
+        inputValidator.checkWinNumber(lottonumber);
+
         return lottonumber;
     }
 
@@ -59,4 +61,5 @@ public class InputController {
         resultnumber = Integer.parseInt(strlottonumber.substring(firstidx,lastidx));
         return resultnumber;
     }
+
 }

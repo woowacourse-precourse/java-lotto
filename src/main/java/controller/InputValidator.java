@@ -21,6 +21,12 @@ public class InputValidator {
         }
     }
 
+    public void checkWinNumber(List<Integer> lottonumber) {
+        checkNumberQuantity(lottonumber);
+        checkSameLottoNumber(lottonumber);
+        checkLottoNumberRange(lottonumber);
+    }
+
     public void checkNumberQuantity(List<Integer> lottonumber) {
         if(lottonumber.size() != Constant.LOTTONUMBERQUANTITY) {
             throw new IllegalArgumentException("[ERROR] 로또 번호가 6개가 아닙니다.");
