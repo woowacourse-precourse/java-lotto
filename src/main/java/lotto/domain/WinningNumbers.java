@@ -35,4 +35,8 @@ public class WinningNumbers {
         BonusNumberException.checkBonusNumber(bonusNumberInput);
         return Integer.parseInt(bonusNumberInput);
     }
+
+    public List<Ranking> calculateRanking(Lottos userLottos) {
+        return userLottos.compareLotto(winningNumbers, bonusNumber);
+    }
 }

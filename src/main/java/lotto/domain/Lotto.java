@@ -39,12 +39,18 @@ public class Lotto {
         }
     }
 
-    public Integer countSameNumbers(Lotto winningLotto) {
+    public Ranking getRankingByRightCountAndHasBonusNumber(Lotto winningLotto, Integer bonusNumber) {
+        boolean hasBonusNumber = hasBonusNumberInNumbers(bonusNumber);
+        Integer rightCount = countSameNumbers(winningLotto);
+        return Ranking.findRankingByRightCountAndHasBonusNumber(rightCount, hasBonusNumber);
+    }
+
+    private Integer countSameNumbers(Lotto winningLotto) {
         numbers.retainAll(winningLotto.getNumbers());
         return numbers.size();
     }
 
-    public boolean hasBonusNumberInNumbers(Integer bonusNumber) {
+    private boolean hasBonusNumberInNumbers(Integer bonusNumber) {
         if (numbers.contains(bonusNumber)) {
             return true;
         }

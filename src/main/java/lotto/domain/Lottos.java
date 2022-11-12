@@ -33,6 +33,14 @@ public class Lottos {
         return lottoNumbers;
     }
 
+    public List<Ranking> compareLotto(Lotto winningLotto, Integer bonusNumber) {
+        List<Ranking> result = new ArrayList<>();
+        for (Lotto lottoNumber : lottoNumbers) {
+            result.add(lottoNumber.getRankingByRightCountAndHasBonusNumber(winningLotto, bonusNumber));
+        }
+        return result;
+    }
+
     @Override
     public String toString() {
         String quantityMessage = this.quantity + QUANTITY_NOTIFICATION_MESSAGE;
