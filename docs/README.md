@@ -1,10 +1,5 @@
 # 로또
 
-## 기능 목록
-1. 로또 구입 (금액 입력) : User class에서 input
-2. 번호 입력 : User class에서 입력 받는다
-3. 번호 비교 : Lotto class의 validation
-4. 당첨금 출력 : ?
 
 ## 기능 요구사항
 ### 규칙
@@ -23,3 +18,9 @@
 - 당첨 번호와 보너스 번호를 입력받는다.
 - 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 당첨 내역 및 수익률을 출력하고 로또 게임을 종료한다.
 - 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
+
+## 기능 목록
+1. 로또 구입 (금액 입력) : User class에서 input
+2. 번호 입력 : User class에서 입력 받는다
+3. 번호 비교 : Lotto class의 validation
+4. 당첨금 출력 : ?
