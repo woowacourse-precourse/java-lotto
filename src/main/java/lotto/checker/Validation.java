@@ -58,12 +58,12 @@ public class Validation {
 	public static void validateBonusNumberInput(List<String> bonusNumber) {
 		validateNumberOnlyException(bonusNumber);
 		validateLengthException(bonusNumber, MAX_BONUS_NUMBER_LENGTH);
-		validateSameNumberInWinningNumberException(bonusNumber);
+		validateSameNumberInWinningNumberException(WinningLotto.getWinningNumber(),bonusNumber);
 		validateNumberRangeException(bonusNumber);
 	}
 
-	public static void validateSameNumberInWinningNumberException(List<String> bonusNumber) {
-		if (WinningLotto.getWinningNumber().contains(bonusNumber.get(0))) {
+	public static void validateSameNumberInWinningNumberException(List<String> winningNumbers,List<String> bonusNumber) {
+		if (winningNumbers.contains(bonusNumber.get(0))) {
 			throw Exception.SAME_NUMBER_EXCEPTION.getException();
 		}
 	}
@@ -76,11 +76,11 @@ public class Validation {
 		}
 	}
 
-	private static boolean isMinNumberException(String number) {
+	public static boolean isMinNumberException(String number) {
 		return Integer.parseInt(number) < MIN_NUMBER;
 	}
 
-	private static boolean isMaxNumberException(String number) {
+	public static boolean isMaxNumberException(String number) {
 		return Integer.parseInt(number) > MAX_NUMBER;
 	}
 
@@ -102,7 +102,7 @@ public class Validation {
 
 	public static void validateLengthException(List<String> numbers, int maxLength) {
 		if (numbers.size() > maxLength) {
-			throw Exception.NUMBER_ONLY_EXCEPTION.getException();
+			throw Exception.LENGTH_EXCEPTION.getException();
 		}
 	}
 
