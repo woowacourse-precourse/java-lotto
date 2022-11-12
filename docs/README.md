@@ -15,9 +15,10 @@
 - 사용자로부터 금액을 입력받는다 [ x ] - LottoManager#getMoney()
 - 6자리 로또를 오름차순 정렬한다 [ x ] - LottoManager#sortLottoNumbers()
 - 금액에 맞는 양 만큼 로또를 발행한다 [ x ] - LottoManager#publishLottoForPrice()
+- 당첨금액 출력 [ x ] - LottoManager#printWinningMessage()
 
 
-- 당첨번호와 사용자가 가진 로또들을 비교할 수 있다 [ ] - Referee#compare()
+- 당첨번호와 사용자가 가진 로또들을 비교할 수 있다 [ x ] - Referee#compare()
   - 중복되는 숫자 개수를 카운트한다 [ x ] - Judgment#correctCount()
   - 보너스 번호가 있는지 카운트한다 [ x ] - Judgment#hasBonusNumber()
 
