@@ -19,7 +19,7 @@ public final class InputView {
     }
 
     public static int readAmount() {
-        printMessage(IOMessage.READ_AMOUNT_MESSAGE);
+        OutputView.printIOMessage(IOMessage.READ_AMOUNT_MESSAGE);
         String line = Console.readLine();
         moneyVerifier.check(line);
 
@@ -27,7 +27,7 @@ public final class InputView {
     }
 
     public static List<Integer> readWinningNumber() {
-        printMessage(IOMessage.READ_WINNING_NUM_MESSAGE);
+        OutputView.printIOMessage(IOMessage.READ_WINNING_NUM_MESSAGE);
         String line = Console.readLine();
         winnerNumberVerifier.check(line);
 
@@ -37,14 +37,10 @@ public final class InputView {
     }
 
     public static int readBonusNumber() {
-        printMessage(IOMessage.READ_BONUS_NUM_MESSAGE);
+        OutputView.printIOMessage(IOMessage.READ_BONUS_NUM_MESSAGE);
         String line = Console.readLine();
         bonusNumberVerifier.check(line);
         
         return Integer.parseInt(line);
-    }
-
-    private static void printMessage(IOMessage message) {
-        System.out.println(message.getMessage());
     }
 }

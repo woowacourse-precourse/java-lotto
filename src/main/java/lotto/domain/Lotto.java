@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.view.OutputView;
+
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -25,7 +27,7 @@ public class Lotto {
 
 
     public void printLottoInfo() {
-        System.out.println(numbers);
+        OutputView.printIOMessage(numbers.toString());
     }
 
     private void validate(List<Integer> numbers) {

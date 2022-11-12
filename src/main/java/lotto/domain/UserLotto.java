@@ -23,10 +23,7 @@ public class UserLotto {
     }
 
     private void printMyLotto() {
-        OutputView.printIOMessage(
-                IOMessage.WRITE_AMOUNT_MESSAGE
-                        .mergeAndGetMessage(String.valueOf(userLottery.size()))
-        );
+        OutputView.printIOMessage(userLottery.size() + IOMessage.WRITE_AMOUNT_MESSAGE);
         userLottery.printAllLotto();
     }
 
