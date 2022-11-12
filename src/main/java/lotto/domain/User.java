@@ -1,20 +1,25 @@
 package lotto.domain;
 
+import static lotto.utils.DynamicMessagesUtil.*;
+import static lotto.utils.MessagesUtil.*;
+
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
-import lotto.utils.ConsoleUtils;
-import lotto.utils.MessageConstant;
+import java.util.stream.Collectors;
+import lotto.utils.ConsoleUtil;
+import lotto.utils.MessagesUtil;
 import lotto.validate.NumberValidator;
 
 public class User {
     private int money;
+    private double benefit;
     private List<Lotto> lottos = new ArrayList<>();
     private NumberValidator validator = new NumberValidator();
 
     public void buyLotto() {
-        ConsoleUtils.showMessage(MessageConstant.INPUT_BUY_AMOUNT);
-        String input = ConsoleUtils.input();
+        ConsoleUtil.showMessage(INPUT_BUY_MONEY.getMessage());
+        String input = ConsoleUtil.input();
         validator.validateBuyMoney(input);
 
         money = Integer.parseInt(input);
@@ -41,4 +46,19 @@ public class User {
         return lottos.size();
     }
 
+    public void showNumbers() {
+        for (Lotto lotto : lottos) {
+            List<String> numbers = convertIntegerToString(lotto);
+
+            String param = String.join(", ", numbers);
+            String message = LOTTO_NUMBERS.getMessage();
+            ConsoleUtil.showParamMessage(message, param);
+        }
+    }
+
+    private List<String> convertIntegerToString(Lotto lotto) {
+        return lotto.getNumbers().stream()
+                .map(String::valueOf)
+                .collect(Collectors.toList());
+    }
 }
