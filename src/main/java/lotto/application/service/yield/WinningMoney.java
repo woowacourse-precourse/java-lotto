@@ -8,13 +8,13 @@ public enum WinningMoney {
     FIVE_BONUS(30000000),
     SIX(2000000000);
 
-    private final int value;
+    private final int money;
 
-    WinningMoney(int value) {
-        this.value = value;
+    WinningMoney(int money) {
+        this.money = money;
     }
 
     public int getWinningMoney() {
-        return value;
+        return money;
     }
 }
