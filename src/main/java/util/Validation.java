@@ -21,4 +21,10 @@ public class Validation {
         }
     }
 
+    // 당첨 번호에 ,가 처음과 끝에 없는지 검증하는 기능
+    public static void validateWinningNumberStartOrEndWithComma(String winningNumber) {
+        if (winningNumber.startsWith(COMMA) || winningNumber.endsWith(COMMA)) {
+            throw new IllegalArgumentException("[ERROR] 콤마는 처음과 끝이면 안됩니다.");
+        }
+    }
 }

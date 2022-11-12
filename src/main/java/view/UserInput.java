@@ -19,6 +19,7 @@ public class UserInput {
     public static List<Integer> winningNumberInput() {
         String winningNumber = Console.readLine();
         Validation.validateWinningNumberContainCommaAndNum(winningNumber);
+        Validation.validateWinningNumberStartOrEndWithComma(winningNumber);
         return stringListToIntegerList(splitString(winningNumber));
     }
 
