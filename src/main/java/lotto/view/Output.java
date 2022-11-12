@@ -5,14 +5,15 @@ import static lotto.constant.Rank.FIVE_MATCHES_WITH_BONUS;
 import static lotto.constant.Rank.FOUR_MATCHES;
 import static lotto.constant.Rank.SIX_MATCHES;
 import static lotto.constant.Rank.THREE_MATCHES;
-import static lotto.constant.SystemMessage.EARNINGS_RATE_NOTIFICATION;
-import static lotto.constant.SystemMessage.ERROR_PREFIX;
-import static lotto.constant.SystemMessage.PURCHASE_COUNT_NOTIFICATION;
-import static lotto.constant.SystemMessage.WINNING_STATISTICS;
 
 import java.util.List;
 
 public class Output {
+
+    private static final String ERROR_PREFIX = "[ERROR] ";
+    private static final String WINNING_STATISTICS = "\n당첨 통계\n---";
+    private static final String PURCHASE_COUNT_NOTIFICATION = "\n%d개를 구매했습니다.\n";
+    private static final String EARNINGS_RATE_NOTIFICATION = "총 수익률은 %.1f%%입니다.";
 
     public static void printError(String message) {
         System.out.println(ERROR_PREFIX + message);
