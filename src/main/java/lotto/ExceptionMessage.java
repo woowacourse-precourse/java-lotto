@@ -8,7 +8,7 @@ public enum ExceptionMessage {
     LOTTO_WRONG_NUMBER_OF_VALUE("[ERROR] 6개의 값을 쉼표로 구분해 작성해 주셔야 합니다."),
     LOTTO_OUT_OF_RANGE("[ERROR] 1 ~ 45 사이의 값만 입력해 주셔야 합니다."),
     LOTTO_DUPLICATE_VALUE("[ERROR] 서로 다른 숫자들을 입력해 주셔야 합니다."),
-    BONUS_OUT_OF_RANGE("[ERROR] 1 ~ 45 사이의 값만 입력해 주셔야 합니다."),
+    BONUS_OUT_OF_RANGE("[ERROR] 1 ~ 45 사이의 값을 입력해 주셔야 합니다."),
     BONUS_DUPLICATE_VALUE("[ERROR] 당첨 번호에 없는 번호를 입력해 주셔야 합니다.");
 
     private final String message;
