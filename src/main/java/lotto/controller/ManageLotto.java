@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class ManageLotto {
     private final static int LOTTOPRICE = 1000;
+    public int budget;
     public static int lottoNum;
     public List<Lotto> myLotto = new ArrayList<>();
 
@@ -24,6 +25,7 @@ public class ManageLotto {
     }
 
     public void numberOfLotto (String budget) {
-        lottoNum = Integer.valueOf(budget) / LOTTOPRICE;
+        this.budget = Integer.valueOf(budget);
+        lottoNum = this.budget / LOTTOPRICE;
     }
 }
