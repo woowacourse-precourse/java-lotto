@@ -5,9 +5,8 @@ import lotto.Bonus;
 import lotto.Cash;
 import lotto.Lotto;
 import lotto.Model.CalculatorModel;
-import lotto.Model.JudgmentModel;
 import lotto.Model.LottoGeneratorModel;
-import lotto.Prize;
+import lotto.Rank;
 import lotto.View.OutputView;
 
 import java.util.ArrayList;
@@ -15,17 +14,23 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MainController {
-    public MainController() {
-        point = new HashMap<Prize, Integer>();
-        point.put(Prize.FIRST, 0);
-        point.put(Prize.SECOND, 0);
-        point.put(Prize.THIRD, 0);
-        point.put(Prize.FOURTH, 0);
-        point.put(Prize.FIFTH, 0);
-        point.put(Prize.LAST, 0);
-    }
-
     private Cash cash;
+    private List<Lotto> myLottos;
+    private int lottoNumber;
+    private Lotto winningLotto;
+    private Bonus bonus;
+    HashMap<Rank, Integer> point;
+    double profit;
+
+    public MainController() {
+        point = new HashMap<Rank, Integer>();
+        point.put(Rank.FIRST, 0);
+        point.put(Rank.SECOND, 0);
+        point.put(Rank.THIRD, 0);
+        point.put(Rank.FOURTH, 0);
+        point.put(Rank.FIFTH, 0);
+        point.put(Rank.LAST, 0);
+    }
 
     public void inputCash() throws IllegalArgumentException {
         System.out.println("구입 금액을 입력해주세요.");
@@ -37,26 +42,23 @@ public class MainController {
             throw new IllegalArgumentException("입력 값이 올바르지 않습니다.");
         }
         cash = new Cash(integer);
-        lottoNumber = countLottoNumber(cash);
     }
 
-    private int lottoNumber;
+    public void createMyLottos() {
+        LottoGeneratorModel lottoGenerator = new LottoGeneratorModel();
+        lottoNumber = countLottoNumber(cash);
+        myLottos = lottoGenerator.createMyLottos(lottoNumber);
+    }
 
     private int countLottoNumber(Cash cash) throws IllegalArgumentException {
         CalculatorModel calculator = new CalculatorModel();
         return calculator.countLottoNumber(cash);
     }
 
-    private List<Lotto> myLottos;
-
-    public void createMyLottos() {
-        LottoGeneratorModel lottoGenerator = new LottoGeneratorModel();
-        myLottos = lottoGenerator.createMyLottos(lottoNumber);
+    public void printMyLottos(){
         OutputView outputView = new OutputView();
         outputView.printMyLottoInfo(myLottos);
     }
-
-    private Lotto winningLotto;
 
     public void inputWinningNumber() throws IllegalArgumentException {
         System.out.println("당첨 번호를 입력해 주세요.");
@@ -75,12 +77,9 @@ public class MainController {
         winningLotto = new Lotto(winningNumber);
     }
 
-    private Bonus bonus;
-
     public void inputBonusNumber() throws IllegalArgumentException {
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
-
         int bonusNumber;
         try {
             bonusNumber = Integer.parseInt(input);
@@ -91,21 +90,22 @@ public class MainController {
         bonus = new Bonus(bonusNumber, winningLotto);
     }
 
-    HashMap<Prize, Integer> point;
-
     public void calculateWinning() {
-        JudgmentModel judgment = new JudgmentModel();
         CalculatorModel calculator = new CalculatorModel();
         int total = 0;
         for (Lotto myLotto : myLottos) {
-            int match = judgment.compare(winningLotto, myLotto);
-            boolean hasBonus = judgment.hasBonusNumber(myLotto, bonus);
-            Prize prize = calculator.givePrize(match, hasBonus);
+            int match = myLotto.countMatch(winningLotto);
+            boolean hasBonus = myLotto.hasBonusNumber(bonus);
+            Rank prize = calculator.getRank(match, hasBonus);
             total += prize.getPrize();
             int p = point.get(prize);
             point.replace(prize, p + 1);
         }
-        double profit = calculator.getProfit(total, cash.getCash());
+
+        profit = calculator.getProfit(total, cash.getCash());
+    }
+
+    public void printResult(){
         OutputView outputView = new OutputView();
         outputView.printResult(point, profit);
     }

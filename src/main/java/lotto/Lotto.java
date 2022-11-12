@@ -27,6 +27,21 @@ public class Lotto {
         }
     }
 
+    public int countMatch(Lotto lotto) {
+        int match = 0;
+        for (int number : lotto.getNumbers()) {
+            if (numbers.contains(number)) {
+                match++;
+            }
+        }
+
+        return match;
+    }
+
+    public boolean hasBonusNumber(Bonus bonus) {
+        return numbers.contains(bonus.getBonus());
+    }
+
     public List<Integer> getNumbers() {
         return this.numbers;
     }
