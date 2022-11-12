@@ -1,7 +1,7 @@
 # 기능 목록
 
 ## 로또 사기
-- [ ] 구매 문구 출력 (`InputView`)
+- [x] 구매 문구 출력 (`InputView`)
 - [ ] `UserService`를 통해 User 생성
   - [ ] `Lotto` 클래스 `valiate` 구현
   - [ ] `Lotto` 를 상속받은 `LotteryTicket` 클래스 구현
