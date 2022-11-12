@@ -18,9 +18,8 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 잘못된 값 입력");
             }
         }
-
-
-
         // TODO: 추가 기능 구현
+
+
     }
 
