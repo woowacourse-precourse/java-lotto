@@ -64,7 +64,7 @@ List<Lotto>, Profit, Winning을 참조한다.
 ### Computer
 Lotto, BonusNumber를 참조한다. 
 1. saveWinningTicket : 문자열로 입력받은 값을 정수형 리스트로 바꾸어 저장한다. 
-   1. splitTicket : ','로 문자열을 나누어 문자열의 배열로 리턴한다. 
+   1. splitTicket : ','로 문자열을 나누어 정수형 리스트로 리턴한다. 
    2. createTicket : 정수형 리스트로 바꾸어 Lotto의 생성자에 입력변수로 사용해 저장한다. 
 2. saveBonusNumber
    1. validateBonusNumber : BonusNumberException.validate을 통해 예외처리한다. 
