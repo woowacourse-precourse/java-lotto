@@ -8,21 +8,19 @@ import java.util.List;
 
 public class LottoGameService {
 
-    private final Player player;
+    private Player player;
     private Answer answer;
 
-    public LottoGameService() {
-        this.player = new Player();
-    }
-
-    public LottosResponseDto purchaseLottos(int purchasePrice) {
-        int lottoCount = player.calculateLottoCount(purchasePrice);
-        Lottos lottos = player.purchaseLottos(purchasePrice, RandomLottoNumberCreator.createLottoNumber(lottoCount));
-        return lottos.toResponseDto();
+    public void createPlayer(int purchasePrice) {
+        player = new Player(LottosCreator.create(purchasePrice), purchasePrice);
     }
 
     public void createAnswer(List<Integer> answers, int bonusNumber) {
         answer = new Answer(answers, bonusNumber);
+    }
+
+    public LottosResponseDto getPurchaseLottos() {
+        return player.toLottosResponseDto();
     }
 
     public GameResultResponseDtos playGame() {

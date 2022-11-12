@@ -19,8 +19,8 @@ public class LottoGameController {
 
     public void run() {
         int purchasePrice = inputPurchasePrice();
-        LottosResponseDto lottosResponseDto = lottoGameService.purchaseLottos(purchasePrice);
-        printLottos(lottosResponseDto);
+        lottoGameService.createPlayer(purchasePrice);
+        printLottos(lottoGameService.getPurchaseLottos());
 
         List<Integer> answers = inputAnswerNumbers();
         int bonusNumber = inputBonusNumber();

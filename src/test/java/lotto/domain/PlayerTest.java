@@ -11,24 +11,17 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class PlayerTest {
 
-    private Player player;
-
-    @BeforeEach
-    void setUp() {
-        player = new Player();
-    }
-
     @DisplayName("10000원이 주어졌을 때 살수있는 로또의 개수는 10개")
     @Test
     void canByLottoCount() {
-        int count = player.calculateLottoCount(10000);
+        int count = LottosCreator.calculateLottoCount(10000);
         assertThat(count).isEqualTo(10);
     }
 
     @DisplayName("구임 금액이 1000으로 나누어 떨어지지 않으면 예외 발생")
     @Test
     void validatePrice() {
-        assertThatThrownBy(() -> player.calculateLottoCount(1350))
+        assertThatThrownBy(() -> LottosCreator.calculateLottoCount(1350))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 구입 금액은 1000으로 나누어 떨어져야 합니다.");
     }
@@ -36,7 +29,7 @@ public class PlayerTest {
     @DisplayName("주어진 금액 많큼 로또를 발행하는 기능")
     @Test
     void buyLottos() {
-        Lottos createLottos = player.purchaseLottos(3000, createLottoNumbers());
+        Lottos createLottos = LottosCreator.create(3000, createLottoNumbers());
 
         System.out.println(createLottos);
         assertThat(createLottos.size()).isEqualTo(3);
@@ -53,10 +46,8 @@ public class PlayerTest {
     @DisplayName("주어진 금액으로 살 수 있는 로또 개수와 로또 넘버의 개수가 같이 않는 경우 예외 발생")
     @Test
     void buyLottosDifferentSize() {
-        assertThatThrownBy(() -> player.purchaseLottos(4000, createLottoNumbers()))
+        assertThatThrownBy(() -> LottosCreator.create(4000, createLottoNumbers()))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 주어진 금액과 주어진 로또 번호의 개수가 일치하지 않습니다.");
     }
-
-
 }
