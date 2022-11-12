@@ -9,18 +9,19 @@ import java.util.Map;
 public class OutputView {
     private static final String PURCHASE_DETAILS_OUTPUT_MESSAGE = "개를 구매했습니다";
     private static final String RATE_OF_RETURN_OUTPUT_FORMAT = "총 수익률은 %.1f%%입니다";
+    private static final String WINNING_STATISTICS_OUTPUT_MESSAGE = "당첨 통계\n---";
 
     public void printPurchaseDetails(List<Lotto> lottoTickets) {
         int numberOfTickets = lottoTickets.size();
         System.out.println(numberOfTickets + PURCHASE_DETAILS_OUTPUT_MESSAGE);
-        for (int i = 0; i < numberOfTickets; i++) {
-            printLotto(lottoTickets.get(i));
+        for(Lotto lottoTicket : lottoTickets){
+            printLottoTicket(lottoTicket);
         }
     }
 
-    private void printLotto(Lotto lotto){
+    private void printLottoTicket(Lotto lottoTicket){
         String result = "[";
-        List<Integer> numbers = lotto.getNumbers();
+        List<Integer> numbers = lottoTicket.getNumbers();
         int lastIndex = numbers.size()-1;
         for(int i = 0; i <= lastIndex; i++){
             result += numbers.get(i);
@@ -38,10 +39,10 @@ public class OutputView {
     }
 
     public void printWinningStatistics(Map<Rank, Integer> winningStatistics){
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(WINNING_STATISTICS_OUTPUT_MESSAGE);
         for(int i = 0; i < winningStatistics.size(); i++){
-            String output = Rank.get(i).condition() + " (" + Rank.get(i).winningAmount() + "원) - " + winningStatistics.get(Rank.get(i)) + "개";
+            Rank rank = Rank.get(i);
+            String output = rank.condition() + " (" + rank.winningAmount() + "원) - " + winningStatistics.get(rank) + "개";
             System.out.println(output);
         }
     }
