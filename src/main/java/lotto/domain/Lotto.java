@@ -21,7 +21,7 @@ public class Lotto {
 		validDuplicated(numbers);
 	}
 
-	public WinnerCountDto countWinnerCount(WinnerNumberDto winnerNumberDto) {
+	public WinnerCountDto countWinnerNumber(WinnerNumberDto winnerNumberDto) {
 		int answerCount = countAnswer(winnerNumberDto.getAnswerNumbers());
 		int bonusCount = countBonus(winnerNumberDto.getBonusNumber());
 		return new WinnerCountDto(answerCount, bonusCount);

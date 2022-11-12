@@ -15,7 +15,7 @@ public class StatisticsService {
 	}
 
 	private void updateRank(WinnerNumberDto winnerNumberDto, Lotto lotto) {
-		WinnerCountDto winnerCountDto = lotto.countWinnerCount(winnerNumberDto);
+		WinnerCountDto winnerCountDto = lotto.countWinnerNumber(winnerNumberDto);
 		updateRankCount(winnerCountDto);
 	}
 
