@@ -13,7 +13,7 @@ public class Domain {
 
     private static List<String> rankStringMapper = Arrays.asList("FIRST", "SECOND", "THIRD", "FORTH", "FIFTH");
 
-    public boolean isValidPriceInput(String input) {
+    public boolean validatePriceInput(String input) { //함수명 변경하기
         if (!input.matches("^[0-9]+$")) {
             return false;
         }
@@ -39,24 +39,13 @@ public class Domain {
     public float getYield(List<Integer> ranks, int countOfLotto) {
         float sumWinnings = 0;
         for (int rank : ranks) {
-            sumWinnings += getreward(rank);
+            sumWinnings += getReward(rank);
         }
 
         return sumWinnings / countOfLotto;
     }
 
-    public int getreward(int rank) {
+    public int getReward(int rank) {
         return Rank.valueOf(rankStringMapper.get(rank)).getReward();
     }
-
-
-
-//    public static void main(String[] args) {
-//        Domain domain = new Domain();
-//        for (int i = 0; i < 50; i++) {
-//            System.out.println(domain.createRandomLottoNumber().getNumbers());
-//
-//        }
-//    }
-
 }
