@@ -13,7 +13,7 @@ public class LottoGame {
     private List<Lotto> lottos = new ArrayList<>();
     WinningLotto winningLotto;
 
-    public void start() throws Exception {
+    public void start() {
         try {
             final int money = new Money(new InputView().inputMoney()).getMoney();
             outputView.printPurchaseLottoCount(money);
