@@ -53,6 +53,7 @@ public class Mission {
 
         output.printTotalRate(rate);
 
+        System.exit(0);
     }
 
     private Money getMoney() {
