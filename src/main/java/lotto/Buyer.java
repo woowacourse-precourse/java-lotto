@@ -8,8 +8,8 @@ public class Buyer {
     private final String ERROR_NOT_INT = "[ERROR] 숫자만 입력 가능합니다.";
     private final String REGEX_INT = "^[0-9]+$";
     public int money;
-
-    public void getMoney() {
+    
+    public void setMoney() {
         String input = readLine();
         isValidMoneyInput(input);
         this.money = Integer.parseInt(input);
