@@ -29,4 +29,20 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("생성된 로또 번호는 중간에 다른 번호가 추가될 수 없다.")
+    @Test
+    void modifyLottoAddNumbers() {
+        Lotto lotto = Lotto.createRandomLotto();
+        assertThatThrownBy(() -> lotto.getNumbers().add(3))
+                .isInstanceOf(UnsupportedOperationException.class);
+    }
+
+    @DisplayName("생성된 로또 번호는 중간에 삭제가 일어날 수 없다.")
+    @Test
+    void modifyLottoRemoveNumbers() {
+        Lotto lotto = Lotto.createRandomLotto();
+        assertThatThrownBy(() -> lotto.getNumbers().remove(0))
+                .isInstanceOf(UnsupportedOperationException.class);
+    }
+
 }
