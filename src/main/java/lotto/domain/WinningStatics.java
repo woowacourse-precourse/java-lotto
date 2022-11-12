@@ -20,7 +20,7 @@ public class WinningStatics {
 
     public void calculateRateOfReturn(int purchaseMoney) {
         long prizeMoney = calculatePrizeMoney();
-        this.lateOfReturn =  Math.round((float) prizeMoney / purchaseMoney * 100);
+        this.lateOfReturn =  Math.round((float) prizeMoney / purchaseMoney * 1000) / 10f;
     }
 
     private long calculatePrizeMoney() {
