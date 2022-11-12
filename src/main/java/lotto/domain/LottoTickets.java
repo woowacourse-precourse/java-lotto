@@ -21,7 +21,7 @@ public class LottoTickets {
 
 	private void purchaseLottoTickets(int purchasingAmount) {
 		while (purchasingAmount != 0) {
-			lottoTickets.add(new LottoTicket(LottoNumberGenerator.generate()));
+			lottoTickets.add(new LottoTicket(LottoTicketNumberGenerator.generate()));
 			purchasingAmount -= MONEY_UNIT;
 		}
 	}

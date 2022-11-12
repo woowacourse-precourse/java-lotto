@@ -5,8 +5,8 @@ import static lotto.utils.Integer.*;
 
 public class LottoTicketsValidator {
 	public static final String ERROR = "[ERROR] ";
-	public static void checkValidityAndThrowException(String purchasingAmount) {
 
+	public static void checkValidityAndThrowException(String purchasingAmount) {
 		if (!isConsistValidCharacters(purchasingAmount)) {
 			throw new IllegalArgumentException(ERROR + "올바른 금액을 입력해 주세요.");
 		}
@@ -14,7 +14,6 @@ public class LottoTicketsValidator {
 			throw new IllegalArgumentException(ERROR + "올바른 금액을 입력해 주세요.");
 		}
 		if (!isValidUnit(purchasingAmount)) {
-			System.out.println(ERROR + "1000원 단위의 금액이어야 합니다.");
 			throw new IllegalArgumentException(ERROR + "1000원 단위의 금액이어야 합니다.");
 		}
 	}
