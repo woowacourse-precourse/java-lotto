@@ -9,9 +9,7 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Buyer buyer = new Buyer();
-        InputController.inputPurchaseAmount(buyer);
-        buyer.setPurchaseCount();
+        Buyer buyer = InputController.inputPurchaseAmount();
         buyer.addLotto();
         OutputView.printBuyerLotto(buyer);
     }
