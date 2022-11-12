@@ -24,4 +24,10 @@ public class Input {
         }
         return winningNums;
     }
+
+    public static int bonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        return Converter.stringToInt(input);
+    }
 }
