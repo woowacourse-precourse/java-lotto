@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Lotto {
@@ -34,6 +36,10 @@ public class Lotto {
                 throw new RuntimeException("[ERROR] 1 ~ 45 사이의 숫자만 입력해 주세요");
             }
         }
+    }
+
+    public List<Integer> value() {
+        return new ArrayList<>(numbers);
     }
 
     // TODO: 추가 기능 구현
