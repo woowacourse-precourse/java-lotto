@@ -46,3 +46,18 @@ public class PlayLotto extends Input {
     public void print_lottery_nums(){
         out.print_lottery(user);
     }
+    /*
+- [x] 당첨 번호 입력받기
+- [x] 보너스 번호 입력받기
+- [x] 사용자 번호와 당첨 번호 비교
+- [x] 3개 ~ 6개 결과 출력(당첨 통계)
+- [ ] 수익률 출력 단 소숫점 2째 자리 반올림
+     */
+    public void create_lotto(){ // 당첨 번호 입력받기
+        out.win_lottery_number();
+        this.lotto = new Lotto(returnList());
+    }
+    public void create_bonus(){ // 보너스 번호 입력받기
+        out.bonus_lottery_number();
+        this.bonus = returnInt();
+    }
