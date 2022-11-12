@@ -6,6 +6,7 @@ import lotto.view.OutputView;
 
 public class Game {
 
+    private static final int LOTTO_UNIT = 1000;
     private static LottoMachine lottoMachine;
     private static InputView inputView;
     private static OutputView outputView;
@@ -17,6 +18,8 @@ public class Game {
 
     public void start() {
         int money = inputView.inputMoney();
+        int lottoCount = money/LOTTO_UNIT;
+        outputView.printLottoCount(lottoCount);
     }
 
 }

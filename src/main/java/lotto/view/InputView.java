@@ -10,7 +10,7 @@ public class InputView {
     private static final String INPUT_NUMBER = "구입금액을 입력해 주세요.";
     Validator validator;
 
-    public InputView(){
+    public InputView() {
         validator = new Validator();
     }
 
@@ -18,6 +18,7 @@ public class InputView {
         System.out.println(INPUT_NUMBER);
         String money = Console.readLine();
         int moneyNumber = validator.moneyInputValidator(money);
+        System.out.println();
         return moneyNumber;
     }
 
