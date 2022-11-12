@@ -30,13 +30,13 @@ public class Lotto {
     }
 
     private HashMap<Integer, Integer> createLottoHashSet() {
-        return new HashMap<>(5) {{
-            put(3, 0);
-            put(4, 0);
-            put(5, 0);
-            put(7, 0); // 5개 일치 + 보너스 번호
-            put(6, 0);
-        }};
+        return new HashMap<>(Constant.LOTTO_WINNING_SIZE) {
+            {
+                for (int i = 3; i <= 7; i++) {
+                    put(i, 0);
+                }
+            }
+        };
     }
 
     private void printWinningStatistics(HashMap<Integer, Integer> matchingPair, int purchasePrice) {
@@ -56,13 +56,10 @@ public class Lotto {
 
     private double calculateTotalYield(double purchasePrice, HashMap<Integer, Integer> matchingPair) {
         int sum = 0;
-        sum += matchingPair.get(3) * 5000;
-        sum += matchingPair.get(4) * 50000;
-        sum += matchingPair.get(5) * 1500000;
-        sum += matchingPair.get(7) * 30000000;
-        sum += matchingPair.get(6) * 2000000000;
-
-        return (double) sum * 100.0 / purchasePrice;
+        for (CalculatorLottoType type : CalculatorLottoType.values()) {
+            sum += matchingPair.get(type.getMatchingCount()) * type.getMatchingCountMoney();
+        }
+        return (double) sum * Constant.YIELD_OPERAND / purchasePrice;
     }
 
     private void calculateWinningStatistics(List<List<Integer>> userLottos, int bonusNumber, HashMap<Integer, Integer> matchingPair) {
@@ -111,7 +108,7 @@ public class Lotto {
 
     private void exceptionLottoNumberOutOfRange(List<Integer> numbers) {
         for (Integer lottoNumber : numbers) {
-            if (lottoNumber > 45 || lottoNumber < 1) {
+            if (lottoNumber > Constant.LOTTO_MAX_RANGE || lottoNumber < Constant.LOTTO_MIN_RANGE) {
                 IllegalArgumentException e = new IllegalArgumentException();
                 System.out.println(Constant.ERROR_MESSAGE + "로또 번호는 1부터 45 사이의 숫자여야 합니다.");
                 throw e;
@@ -121,7 +118,7 @@ public class Lotto {
     }
 
     public void exceptionBonusNumberOutOfRange(int bonusNumber) {
-        if (bonusNumber > 45 || bonusNumber < 1) {
+        if (bonusNumber > Constant.LOTTO_MAX_RANGE || bonusNumber < Constant.LOTTO_MIN_RANGE) {
             IllegalArgumentException e = new IllegalArgumentException();
             System.out.println(Constant.ERROR_MESSAGE + "보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
             throw e;
