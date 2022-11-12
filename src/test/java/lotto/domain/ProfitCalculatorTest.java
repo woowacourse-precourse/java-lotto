@@ -8,6 +8,6 @@ class ProfitCalculatorTest {
 
     @Test
     void testProfitIsCorrect() {
-        assertEquals(ProfitCalculator.getProfit(8000, 5000), 62.5);
+        assertEquals( 62.5, ProfitCalculator.getProfit(8000, 5000));
     }
 }
