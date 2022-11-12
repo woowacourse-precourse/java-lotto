@@ -1,8 +1,8 @@
 ## 기능목록
 
 ### View - 화면에 보여지는 것을 담당하는 클래스.
-- [ ] 로또 거래 View - DealLottoView
-  - [ ] 돈을 지불하는 View
+- [ ] 로또 거래 View - BuyLottoView
+  - [X] 구입금액 입력 View
   - [ ] 구매한 로또의 정보를 보여주는 View
     - [ ] 구매한 로또의 개수를 보여주는 View
     - [ ] 구매한 로또의 번호를 보여주는 View
