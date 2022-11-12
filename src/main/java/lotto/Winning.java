@@ -1,25 +1,17 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Winning {
-    public static CheckLotto getWinningLottery() throws IllegalArgumentException {
+    public static CheckLotto getWinningLottery(String winningNumberInput, String bonusNumberInput) throws IllegalArgumentException {
         CheckLotto winningLottery;
-
-        Print.enterWinningNumberMessage();
-        String winningNumberInput = Console.readLine();
         List<String> splitWinningNumbers = splitInputByComma(winningNumberInput);
         List<Integer> winningNumbers = convertToNumbers(splitWinningNumbers);
 
-        Print.enterBonusNumberMessage();
-        String bonusNumberInput = Console.readLine();
         int bonusNumber = convertToNumber(winningNumbers, bonusNumberInput);
-
         winningLottery = new CheckLotto(winningNumbers, bonusNumber);
         return winningLottery;
     }

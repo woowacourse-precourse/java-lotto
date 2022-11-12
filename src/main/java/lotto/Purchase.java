@@ -1,6 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
@@ -8,10 +7,7 @@ import java.util.List;
 
 public class Purchase {
 
-    public static List<Lotto> lotto() {
-        Print.purchaseMessage();
-        String userInput = Console.readLine();
-
+    public static List<Lotto> lotto(String userInput) {
         int numberOfLotto = getNumberOfLotto(userInput);
         return getLotto(numberOfLotto);
     }
