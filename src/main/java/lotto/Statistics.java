@@ -30,20 +30,41 @@ public class Statistics {
         lotto.retainAll(WINNING_LOTTO);
         int duplicate = lotto.size();
 
-        if (duplicate==6) {
+        isFirstPlace(duplicate);
+        isSecondPlace(duplicate, bonus);
+        isThirdPlace(duplicate, bonus);
+        isFourthPlace(duplicate);
+        isFifthPlace(duplicate);
+    }
+
+    private void isFirstPlace(int duplicate) {
+        if (duplicate == 6) {
             first += 1;
         }
+    }
+
+    private void isSecondPlace(int duplicate, boolean bonus) {
         if (duplicate == 5 && bonus) {
             second += 1;
         }
+    }
+
+    private void isThirdPlace(int duplicate, boolean bonus) {
         if (duplicate == 5 && !bonus) {
             third += 1;
         }
+    }
+
+    private void isFourthPlace(int duplicate) {
         if (duplicate == 4) {
             fourth += 1;
         }
+    }
+
+    private void isFifthPlace(int duplicate) {
         if (duplicate == 3) {
             fifth += 1;
         }
     }
 }
+
