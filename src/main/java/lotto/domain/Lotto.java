@@ -32,6 +32,9 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        new LottoVerifier().check(numbers.toString());
+        String forCheck = numbers.toString();
+        forCheck = forCheck.substring(1, forCheck.length() - 1);
+        forCheck = forCheck.replaceAll(" ", "");
+        new LottoVerifier().check(forCheck.strip());
     }
 }
