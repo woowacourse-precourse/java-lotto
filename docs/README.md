@@ -13,10 +13,8 @@
 
 ### 🗓️ 개발 계획
 
-- `LottoGenerator` 클래스에서 담당한다.
 - `camp.nextstep.edu.missionutils.Randoms` 클래스에 정의된 `pickUniqueNumbersInRange()` 메소드를 이용해 무작위 수를 추출한다.
-- 이미 선택된 수가 추출되면 중복이 없을 때까지 추출을 반복한다.
-- 6개의 수가 추출된 이후에 오름차순으로 정렬한다.
+- `Lotto` 클래스에서 정적 메소드로 지원한다.
 - 추출된 수로  `Lotto` 를 생성하여 반환한다.
 
 
