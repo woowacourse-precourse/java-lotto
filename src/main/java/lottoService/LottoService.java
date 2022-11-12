@@ -24,6 +24,11 @@ public class LottoService {
         player.countLottoNumber();
     }
 
+    public void hasSixLottoNumber(String inputPlayerLottoPickNumbers){
+        if(inputPlayerLottoPickNumbers.split(",").length != 6)
+            throw new IllegalArgumentException(Constant.NOT_MATCH_PICK_NUMBER_EXCEPTION);
+    }
+
     public void isValidRange(List<Integer> winningLottoNumbers){
         for (Integer number : winningLottoNumbers) {
             if(Constant.LOTTO_START_NUMBER > number || Constant.LOTTO_END_NUMBER < number)
