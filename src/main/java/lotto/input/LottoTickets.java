@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class LottoTickets {
     private static final int PRICE = 1000;
-    private static int purchaseAmount;
+    private static int PURCHASE_AMOUNT;
 
     public int getPaid() {
         String input = Console.readLine();
@@ -14,8 +14,7 @@ public class LottoTickets {
 
     private int getMoney(String input) {
         int money = Integer.parseInt(input);
-        int purchaseAmount = money;
-        amount(purchaseAmount);
+        saveAmount(money);
         return money;
     }
 
@@ -23,11 +22,11 @@ public class LottoTickets {
         return money / PRICE;
     }
 
-    private void amount(int purchaseAmount) {
-        LottoTickets.purchaseAmount = purchaseAmount;
+    private void saveAmount(int purchaseAmount) {
+        LottoTickets.PURCHASE_AMOUNT = purchaseAmount;
     }
 
     public int getPrice() {
-        return purchaseAmount;
+        return PURCHASE_AMOUNT;
     }
 }
