@@ -2,45 +2,28 @@ package controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import domain.*;
+import vo.LottoRanking;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class LottoController {
     Validator validator = new Validator();
 
-    /**
-     * 로또 구입
-     * - 구입 금액 입력
-     * <p>
-     * 로또 발행
-     * - 구매 갯수 출력
-     * - 발행 번호 출력
-     * <p>
-     * 당첨 번호 입력
-     * - 당첨 번호 6자리 입력
-     * - 보너스 번호 입력
-     * <p>
-     * 당첨 통계, 총 수익률 출력
-     */
+    private static final String PURCHASE_MESSAGE = "";
+
 
     public void run() {
         int lottoCount = buyLotto();
-        System.out.println();
-
         ArrayList<Lotto> lottos = publishLotto(lottoCount);
 
         WinningNumbers winningNumbers = new WinningNumbers(inputWinningNumbers());
         BonusNumber bonusNumber = new BonusNumber(inputBonusNumber());
         validator.validateReference(winningNumbers.getWinningNumbers(), bonusNumber.getBonusNumber());
 
-        winningList(lottoCount, lottos, winningNumbers, bonusNumber);
-
+        HashMap<LottoRanking, Integer> winningList = makeWinningList(lottos, winningNumbers, bonusNumber);
+        printWinningList(winningList);
     }
-
-
 
     public int buyLotto() {
         System.out.println("구입 금액을 입력해 주세요.");
@@ -58,7 +41,9 @@ public class LottoController {
         for (int i = 0; i < count; i++) {
             Lotto lotto = lottoMaker.makeLotto();
             lottos.add(lotto);
-            System.out.println(lotto.getNumbers());
+            ArrayList<Integer> printNumbers = new ArrayList<>(lotto.getNumbers());
+            Collections.sort(printNumbers);
+            System.out.println(printNumbers);
         }
         return lottos;
     }
@@ -85,9 +70,50 @@ public class LottoController {
         return bonusNumber;
     }
 
-    public void winningList(int lottoCount, ArrayList<Lotto> lottos, WinningNumbers winningNumbers, BonusNumber bonusNumber) {
+    public HashMap<LottoRanking, Integer> makeWinningList(ArrayList<Lotto> lottos, WinningNumbers winningNumbers, BonusNumber bonusNumber) {
 
+        HashMap<LottoRanking, Integer> winningList = new HashMap<>();
+        for (LottoRanking lottoRanking : LottoRanking.values()) {
+            winningList.put(lottoRanking, 0);
+        }
+
+        for (Lotto lotto : lottos) {
+            List<Integer> numbers = lotto.getNumbers();
+            int matchWinningNumber = getWinningNumberScore(numbers, winningNumbers);
+            boolean matchBonusNumber = getBonusNumberScore(numbers, bonusNumber);
+
+            winningList.put(LottoRanking.getRanking(matchWinningNumber, matchBonusNumber), winningList.get(LottoRanking.getRanking(matchWinningNumber, matchBonusNumber)) + 1);
+        }
+        return winningList;
     }
+
+    public boolean getBonusNumberScore(List<Integer> numbers, BonusNumber bonusNumber) {
+        boolean matchBonusNumber = false;
+        if (numbers.contains(bonusNumber)) {
+            matchBonusNumber = true;
+        }
+        return matchBonusNumber;
+    }
+
+    public int getWinningNumberScore(List<Integer> numbers, WinningNumbers winningNumbers) {
+        int matchWinningNumber = 0;
+        for (int i = 0; i < winningNumbers.getWinningNumbers().size(); i++) {
+            List<Integer> winningNumber = winningNumbers.getWinningNumbers();
+            if (numbers.contains(winningNumber.get(i))) {
+                matchWinningNumber++;
+            }
+        }
+        return matchWinningNumber;
+    }
+
+    public void printWinningList(HashMap<LottoRanking, Integer> winningList) {
+        for (int i = 5; i >= 1; i--) {
+            System.out.printf("%s - %d개\n",
+                    LottoRanking.findByRanking(i).getMessage(),
+                    winningList.get(LottoRanking.findByRanking(i)));
+        }
+    }
+
 
 
 }
