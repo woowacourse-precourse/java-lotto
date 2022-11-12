@@ -52,4 +52,8 @@ public class LottoCalculate {
     int calculateWinMoney(LottoPrizeMoney prizeNumber) {
         return prizeNumber.prizeMoney;
     }
+
+    double calculatePercentageOfReturn(double money, double prizeMoneySum) {
+        return Math.round(prizeMoneySum / money * 1000) / 10.0;
+    }
 }

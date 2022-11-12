@@ -29,7 +29,7 @@
   - M [x] 로또 번호, 당첨 번호를 비교해 일치 개수를 계산한다 - LottoCalculate#countMatches()
   - M [x] 로또 번호, 보너스 번호를 비교해 일치 여부 확인한다 - LottoCalculate#checkBonusNumber()
 - M [x] 당첨 금액을 계산한다. - LottoCalculate#calculateWinMoney()
-- M [ ] 수익률을 계산한다. (소수점 둘째 자리에서 반올림.) - LottoCalculate#calculateWinPersentage()
+- M [x] 수익률을 계산한다. (소수점 둘째 자리에서 반올림.) - LottoCalculate#calculatePercentageOfReturn()
 - M [x] Lotto 객체에 상금, 등수 정보를 저장할 수 있도록 메서드, 변수를 설정한다. - Lotto
 - M [x] LottoCalculate 내 함수를 사용해 Lotto 객체에 로또 번호에 따른 등수 및 상금을 업데이트 한다. -LottoCalculate#totalCalculate()
 - M [x] LottoData 에 생성된 Lotto 객체에 등수, 상금 데이터를 추가한다 - LottoData#putDataToLotto()
