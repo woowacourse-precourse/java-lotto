@@ -2,13 +2,14 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.ui.Input;
 
 import static lotto.Constants.*;
 
 public class Application {
     public static void main(String[] args) {
-        String payment = Input.submit(ENTER_PURCHASE_PRICE);
         try {
+            String payment = Input.submitPayment();
             Integer purchasePrice = Convertor.getNumericValue(payment);
             Validator.checkIfInThousands(payment);
             Integer purchaseQuantity = purchasePrice / UNIT_PRICE;
@@ -21,9 +22,9 @@ public class Application {
             Output.purchaseSuccessful(purchasePrice, lottoTickets);
 
             // Winner 클래스에 다시 넣어야 할 듯
-            String winningNumbers = Input.submit(ENTER_WINNING_NUMBERS);
+            String winningNumbers = Input.submitWinningNumbers();
             List<Integer> winningNumbersConverted =  Convertor.separate(winningNumbers);
-            String bonusNumber = Input.submit(ENTER_BONUS_NUMBER);
+            String bonusNumber = Input.submitBonusNumber();
             Integer bonusNumberConverted = Convertor.getNumericValue(bonusNumber);
             Validator.checkIfBonusNumberIncludedInWinningNumbers(
                     winningNumbersConverted,
