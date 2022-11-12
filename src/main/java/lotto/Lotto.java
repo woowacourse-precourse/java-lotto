@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
@@ -12,6 +13,21 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
+    }
+
+
+    public void sort() {
+        numbers.sort(Comparator.naturalOrder());
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
+
+    private void validate(List<Integer> numbers) {
+        if (numbers.size() != LottoEnum.WINNING_NUMBERS.getValue()) {
+            throw new IllegalArgumentException(String.format("[ERROR] 로또 번호 개수는 %d 개만 가능합니다.", LottoEnum.WINNING_NUMBERS.getValue()));
+        }
     }
 
     public static Lotto create() {
@@ -35,19 +51,9 @@ public class Lotto {
         return purchasedLotto;
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
-    }
-
     private static void validatePurchaseAmount(final int amount) {
         if (amount % LottoEnum.PURCHASE_UNIT.getValue() != 0) {
             throw new IllegalArgumentException(String.format("[ERROR] %d 단위로 구입이 가능합니다.", LottoEnum.PURCHASE_UNIT.getValue()));
-        }
-    }
-
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != LottoEnum.WINNING_NUMBERS.getValue()) {
-            throw new IllegalArgumentException(String.format("[ERROR] 로또 번호 개수는 %d 개만 가능합니다.", LottoEnum.WINNING_NUMBERS.getValue()));
         }
     }
 }
