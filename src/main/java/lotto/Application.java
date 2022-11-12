@@ -36,6 +36,10 @@ public class Application {
         System.out.print(COMMON_ERROR_MESSAGE + " 구매 금액은 1000원으로 나누어 떨어져야 합니다.");
     }
 
+    static int how_many(String user_money) {
+        return Integer.parseInt(user_money) / 1000;
+    }
+
     static List<Lotto> make_lotto(int how_many_lotto) {
         List<Lotto> lottos = new ArrayList<Lotto>();
 
@@ -77,10 +81,13 @@ public class Application {
             print_money_error();
         }
 
+        int how_many_lotto;
+        how_many_lotto = how_many(user_money);
+
         List<Lotto> lottos;
-        lottos = make_lotto(Integer.parseInt(user_money) / 1000);
+        lottos = make_lotto(how_many_lotto);
 
         List<List<Integer>> bonus_numbers;
-        bonus_numbers = make_bonus_numbers(lottos, Integer.parseInt(user_money) / 1000);
+        bonus_numbers = make_bonus_numbers(lottos, how_many_lotto);
     }
 }
