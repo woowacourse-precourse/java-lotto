@@ -5,17 +5,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class LottoCollection {
+public class Lottos {
 
     private static final int LOTTO_NUMBER_MIN = 1;
     private static final int LOTTO_NUMBER_MAX = 45;
     private static final int LOTTO_NUMBER_SIZE = 6;
     private static final int START_INDEX = 0;
 
-    private final List<Lotto> lottoCollection;
+    private final List<Lotto> lottos;
 
-    public LottoCollection(int numberOfLotto) {
-        lottoCollection = IntStream.range(START_INDEX, numberOfLotto)
+    public Lottos(int numberOfLotto) {
+        lottos = IntStream.range(START_INDEX, numberOfLotto)
                 .mapToObj(i -> new Lotto(createLottoNumbers()))
                 .collect(Collectors.toList());
     }
@@ -25,17 +25,17 @@ public class LottoCollection {
     }
 
     public int size() {
-        return lottoCollection.size();
+        return lottos.size();
     }
 
     @Override
     public String toString() {
-        return lottoCollection.stream()
+        return lottos.stream()
                 .map(Lotto::toString)
                 .collect(Collectors.joining());
     }
 
     public List<Lotto> get() {
-        return lottoCollection;
+        return lottos;
     }
 }

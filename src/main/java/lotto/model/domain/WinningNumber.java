@@ -12,8 +12,6 @@ public class WinningNumber {
     private static final String WINNING_NUMBER_REGEX = "^[0-9]*,[0-9]*,[0-9]*,[0-9]*,[0-9]*,[0-9]*$";
     private static final String BONUS_NUMBER_REGEX = "^[0-9]*";
     private static final String WRONG_WINNING_NUMBER_FORM = "올바르지 않은 당첨 번호 형식 입니다.";
-    private static final String INVALID_WINNING_NUMBER_RANGE = "당첨 번호는 1이상 45 이어야 합니다.";
-    private static final String DUPLICATED_WINNING_NUMBER = "당첨 번호는 중복되지 않아야 합니다.";
     private static final String BONUS_NUMBER_IS_NOT_NUMBER = "보너스 번호는 숫자 이어야 합니다.";
     private static final String INVALID_BONUS_NUMBER_RANGE = "보너스 번호는 1이상 45 이어야 합니다.";
     private static final String DUPLICATED_BONUS_NUMBER = "보너스 번호는 당첨 번호와 중복되지 않아야 합니다.";
@@ -63,27 +61,7 @@ public class WinningNumber {
         if (!Pattern.matches(WINNING_NUMBER_REGEX, winningNumber)) {
             throw new IllegalArgumentException(WRONG_WINNING_NUMBER_FORM);
         }
-        List<Integer> numbers = parseWinningNumber(winningNumber);
-
-        if (!isValidAllLottoNumberRange(numbers)) {
-            throw new IllegalArgumentException(INVALID_WINNING_NUMBER_RANGE);
-        }
-        if (hasDuplicatedLottoNumber(numbers)) {
-            throw new IllegalArgumentException(DUPLICATED_WINNING_NUMBER);
-        }
         return winningNumber;
-    }
-
-    private boolean hasDuplicatedLottoNumber(List<Integer> numbers) {
-        return numbers.stream()
-                .distinct()
-                .count() != LOTTO_NUM_SIZE;
-    }
-
-    private boolean isValidAllLottoNumberRange(List<Integer> numbers) {
-        return numbers.stream()
-                .filter(this::isValidLottoNumberRange)
-                .count() == LOTTO_NUM_SIZE;
     }
 
     private boolean isValidLottoNumberRange(int num) {
@@ -97,8 +75,8 @@ public class WinningNumber {
                 .collect(Collectors.toList());
     }
 
-    public List<Rank> collectRanks(List<Lotto> lottoCollection) {
-        return lottoCollection.stream()
+    public List<Rank> collectRanks(List<Lotto> lottos) {
+        return lottos.stream()
                 .map(lotto -> computeRank(lotto))
                 .collect(Collectors.toList());
     }

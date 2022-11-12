@@ -12,11 +12,11 @@ public class WinningStatistics {
 
     private final Map<Rank, Integer> rankAndRankCount = new HashMap<>();
 
-    public WinningStatistics(List<Lotto> lottoCollection, WinningNumber winningNumber) {
-        List<Rank> rankCollection = winningNumber.collectRanks(lottoCollection);
+    public WinningStatistics(List<Lotto> lottos, WinningNumber winningNumber) {
+        List<Rank> ranks = winningNumber.collectRanks(lottos);
 
         initRankAndRankCount();
-        countRanks(rankCollection);
+        countRanks(ranks);
     }
 
     public double computeTotalYield() {
@@ -54,8 +54,8 @@ public class WinningStatistics {
         rankAndRankCount.put(Rank.FIRST, STATISTICS_INIT_NUM);
     }
 
-    private void countRanks(List<Rank> rankCollection) {
-        rankCollection.stream()
+    private void countRanks(List<Rank> ranks) {
+        ranks.stream()
                 .forEach(this::countRank);
     }
 

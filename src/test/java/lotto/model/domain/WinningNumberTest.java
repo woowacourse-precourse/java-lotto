@@ -17,9 +17,9 @@ class WinningNumberTest {
         Lotto thirdLotto = new Lotto(List.of(1, 2, 3, 4, 5, 8));
         Lotto secondLotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
         Lotto firstLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        List<Lotto> lottoCollection = List.of(nothingLotto, fifthLotto, fourthLotto, thirdLotto, secondLotto, firstLotto);
+        List<Lotto> lottos = List.of(nothingLotto, fifthLotto, fourthLotto, thirdLotto, secondLotto, firstLotto);
         WinningNumber winningNumber = new WinningNumber("1,2,3,4,5,6", "7");
-        WinningStatistics winningStatistics = new WinningStatistics(lottoCollection, winningNumber);
+        WinningStatistics winningStatistics = new WinningStatistics(lottos, winningNumber);
         Map<Rank, Integer> rankAndRankCount = winningStatistics.get();
 
         int nothingCount = rankAndRankCount.get(Rank.NOTHING);

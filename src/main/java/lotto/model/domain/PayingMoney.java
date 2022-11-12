@@ -14,16 +14,16 @@ public class PayingMoney {
 
     private final int money;
 
-    public PayingMoney(String requestMoney) {
-        money = validateMoney(requestMoney);
+    public PayingMoney(String money) {
+        this.money = validateMoney(money);
     }
 
-    private static int validateMoney(String requestMoney) {
-        requestMoney = Utils.deleteAllString(requestMoney);
-        if (!Pattern.matches(MONEY_REGEX, requestMoney)) {
+    private static int validateMoney(String money) {
+        money = Utils.deleteAllString(money);
+        if (!Pattern.matches(MONEY_REGEX, money)) {
             throw new IllegalArgumentException(MONEY_IS_ONLY_NUMBER);
         }
-        int parsedMoney = Integer.parseInt(requestMoney);
+        int parsedMoney = Integer.parseInt(money);
 
         if (parsedMoney < LOTTO_PRICE) {
             throw new IllegalArgumentException(MONEY_IS_MORE_THAN_1000);
@@ -34,9 +34,9 @@ public class PayingMoney {
         return parsedMoney;
     }
 
-    public LottoCollection createLottoCollection() {
+    public Lottos createLottos() {
         int numOfLotto = money / LOTTO_PRICE;
-        return new LottoCollection(numOfLotto);
+        return new Lottos(numOfLotto);
     }
 
 }

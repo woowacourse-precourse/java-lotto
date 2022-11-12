@@ -2,7 +2,7 @@ package lotto.controller;
 
 import java.util.List;
 import lotto.model.domain.Lotto;
-import lotto.model.domain.LottoCollection;
+import lotto.model.domain.Lottos;
 import lotto.model.domain.PayingMoney;
 import lotto.model.domain.WinningNumber;
 import lotto.model.domain.WinningStatistics;
@@ -12,19 +12,19 @@ import lotto.view.OutputView;
 public class LottoController {
 
     public void run() {
-        LottoCollection lottoCollection = buyLotto();
+        Lottos lottos = buyLotto();
         WinningNumber winningNumber = winnerAnnouncement();
 
-        computeWinningStatistics(lottoCollection.get(), winningNumber);
+        computeWinningStatistics(lottos.get(), winningNumber);
     }
 
-    private LottoCollection buyLotto() {
+    private Lottos buyLotto() {
         String money = InputView.requestMoney();
         PayingMoney payingMoney = new PayingMoney(money);
-        LottoCollection lottoCollection = payingMoney.createLottoCollection();
+        Lottos lottos = payingMoney.createLottos();
 
-        OutputView.printLottoCollection(lottoCollection);
-        return lottoCollection;
+        OutputView.printLottos(lottos);
+        return lottos;
     }
 
     private WinningNumber winnerAnnouncement() {
@@ -34,8 +34,8 @@ public class LottoController {
         return new WinningNumber(winningNumber, bonusNumber);
     }
 
-    private void computeWinningStatistics(List<Lotto> lottoCollection, WinningNumber winningNumber) {
-        WinningStatistics winningStatistics = new WinningStatistics(lottoCollection, winningNumber);
+    private void computeWinningStatistics(List<Lotto> lottos, WinningNumber winningNumber) {
+        WinningStatistics winningStatistics = new WinningStatistics(lottos, winningNumber);
 
         OutputView.printWinningStatistics(winningStatistics.get());
         OutputView.printTotalYield(winningStatistics.computeTotalYield());
