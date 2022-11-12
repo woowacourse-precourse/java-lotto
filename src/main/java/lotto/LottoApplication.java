@@ -68,5 +68,8 @@ public class LottoApplication {
             System.out.println(String.format("%d개 일치 (%,d원) - %d개",
                     lottoReward.getMatchingNumbers(), lottoReward.getReward(), lottoReward.getCount()));
         }
+
+        double yield = (double) sum / (double) money * 100;
+        System.out.println("총 수익률은 " + String.format("%.1f", yield) + "%입니다.");
     }
 }
