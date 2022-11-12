@@ -18,7 +18,22 @@ public class Lotto {
 		validDuplicated(numbers);
 	}
 
-	public List<Integer> getNumbers() {
-		return numbers;
+	public int countAnswer(List<Integer> answers) {
+		return (int)numbers.stream()
+			.filter(number -> answers.contains(number))
+			.count();
 	}
+
+	public int countBonus(Integer bonusNumber) {
+		int bonusCount = 0;
+		if (numbers.contains(bonusNumber)) {
+			bonusCount++;
+		}
+		return bonusCount;
+	}
+
+	public String toString() {
+		return numbers.toString();
+	}
+
 }

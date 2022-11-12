@@ -10,22 +10,10 @@ public class StatisticsService {
 
 	public void updateStatistics(UserLottoDto userLottoDto, List<Integer> answers, Integer bonusNumber) {
 		for (Lotto lotto : userLottoDto.getUserLotto()) {
-			updateRank(lotto.getNumbers(), answers, bonusNumber);
+			int answerCount = lotto.countAnswer(answers);
+			int bonusCount = lotto.countBonus(bonusNumber);
+			updateRankCount(answerCount, bonusCount);
 		}
-	}
-
-	private void updateRank(List<Integer> numbers, List<Integer> answers, Integer bonusNumber) {
-		int count = (int)numbers.stream().filter(number -> answers.contains(number)).count();
-		int bonusCount = getBonusCount(numbers, bonusNumber);
-		updateRankCount(count, bonusCount);
-	}
-
-	private int getBonusCount(List<Integer> numbers, Integer bonusNumber) {
-		int bonusCount = 0;
-		if (numbers.contains(bonusNumber)) {
-			bonusCount++;
-		}
-		return bonusCount;
 	}
 
 	private void updateRankCount(int count, int bonusCount) {

@@ -11,7 +11,7 @@ public class OutputView {
 
 	public void printUserLotto(List<Lotto> userLotto) {
 		for (Lotto lotto : userLotto) {
-			System.out.println(lotto.getNumbers());
+			System.out.println(lotto.toString());
 		}
 	}
 
