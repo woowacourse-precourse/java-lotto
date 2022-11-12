@@ -85,6 +85,26 @@ public class UserInterface {
         System.out.println(getFormedYield(statistics));
     }
 
+    /**
+     * 구매한 로또 번호들을 출력합니다.
+     * @param lotteries 로또번호들의 목록
+     */
+    public static void printBoughtLotteries(List<Lotto> lotteries) {
+        System.out.println("\n" + lotteries.size() + PrintConstants.BUY_COMPLETE);
+        for (Lotto lotto : lotteries) {
+            System.out.println(lotto.getNumbers());
+        }
+    }
+
+    /**
+     * 정해진 형태로 오류를 출력합니다.
+     * @param e
+     */
+    public static void printError(Exception e) {
+        System.out.println(ErrorConstants.ERROR_PREFIX + " " + e.getMessage());
+        e.printStackTrace();
+    }
+
     private static String getRankLine(LottoRank rank) {
         return rank.getDescription() + " (" + decimalFormat.format(rank.getPrize()) + "원) - ";
     }

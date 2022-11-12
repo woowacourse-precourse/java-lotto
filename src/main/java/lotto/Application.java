@@ -1,7 +1,6 @@
 package lotto;
 
 import config.ErrorConstants;
-import config.PrintConstants;
 import ui.UserInterface;
 
 import java.util.ArrayList;
@@ -13,12 +12,14 @@ public class Application {
         try {
             int payment = UserInterface.readPayment();
             List<Lotto> boughtLotteries = buyLotteries(payment / 1000);
+            UserInterface.printBoughtLotteries(boughtLotteries);
+
             LottoRound lottoRound = makeLottoRound();
             LottoStatistics statistics = makeStatistics(boughtLotteries, lottoRound);
+
             UserInterface.printStatistics(statistics);
         } catch (IllegalArgumentException e) {
-            System.out.println(ErrorConstants.ERROR_PREFIX + " " + e.getMessage());
-            e.printStackTrace();
+            UserInterface.printError(e);
         }
     }
 
@@ -27,15 +28,7 @@ public class Application {
         for (int i = 0; i < num; i++) {
             lotteries.add(Lotto.createRandomLotto());
         }
-        showBuyResult(lotteries);
         return lotteries;
-    }
-
-    private static void showBuyResult(List<Lotto> lotteries) {
-        System.out.println("\n" + lotteries.size() + PrintConstants.BUY_COMPLETE);
-        for (Lotto lotto : lotteries) {
-            System.out.println(lotto.getNumbers());
-        }
     }
 
     private static LottoRound makeLottoRound() throws IllegalArgumentException {
