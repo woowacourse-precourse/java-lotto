@@ -7,8 +7,8 @@ import java.util.Map;
 
 public class Amount {
     private final static int lottoPrice = 1000;
+    
     private final int inputAmount;
-
     private int purchasesQuantity;
     private double earningRate;
 

@@ -1,11 +1,13 @@
 package lotto.ui;
 
-import camp.nextstep.edu.missionutils.Console;
+
 import lotto.entity.Bug;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import java.util.stream.Collectors;
 
 public class Input {
@@ -18,10 +20,9 @@ public class Input {
             this.inputAmount = Integer.parseInt(Console.readLine());
             return this.inputAmount;
         } catch (NumberFormatException e) {
-            System.out.println(Bug.ERROR.getMessage() + Bug.AMOUNT_MUST_NUMBER.getMessage());
             throw new IllegalArgumentException(Bug.ERROR.getMessage() + Bug.AMOUNT_MUST_NUMBER.getMessage());
         }
-    }
+   }
 
     public List<Integer> getWinningNumbers() {
         List<String> beforeConversion = Arrays.asList(Console.readLine().split(","));
@@ -31,8 +32,8 @@ public class Input {
                     .collect(Collectors.toList());
             return this.winningNumbers;
         } catch (NumberFormatException e) {
-            System.out.println(Bug.ERROR.getMessage() + Bug.LOTTO_NO_OTHER_INPUT.getMessage());
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Bug.ERROR.getMessage()
+                    + Bug.LOTTO_NO_OTHER_INPUT.getMessage());
         }
     }
 

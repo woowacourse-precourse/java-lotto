@@ -26,6 +26,7 @@ public class LottoDomain {
         rank.countWinningRanks(lottoGenerator.getUserLottoTickets(), bonusNumber);
     }
 
+
     public int getPurchasesQuantity() {
         return amount.getPurchasesQuantity();
     }

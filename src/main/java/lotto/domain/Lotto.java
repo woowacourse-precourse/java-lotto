@@ -21,6 +21,7 @@ public class Lotto {
         outOfRangeNumbers.removeAll(Bug.ERROR.getRangeOfNumber());
 
         if (numbers.size() != 6) {
+            System.out.println(Bug.ERROR.getMessage());
             throw new IllegalArgumentException(Bug.ERROR.getMessage()
                     + Bug.LOTTO_MUST_RANGE_SIX.getMessage());
         }

@@ -18,6 +18,7 @@ public enum Place {
         this.words = words;
     }
 
+
     public long getPrizeMoney() {
         return this.prizeMoney;
     }

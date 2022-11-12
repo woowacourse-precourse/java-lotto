@@ -19,9 +19,11 @@ public class Output {
     public void guideInputAmount() {
         System.out.println(GUIDE_INPUT_AMOUNT);
     }
+
     public void guideInputWinningNumbers() {
         System.out.println(GUIDE_INPUT_WINNING_NUMBER);
     }
+
     public void guideInputBonusNumber() {
         System.out.println(GUIDE_INPUT_BONUS_NUMBER);
     }
@@ -29,11 +31,14 @@ public class Output {
     public void showPurchasesQuantity(int purchasesQuantity) {
         System.out.println(String.format(PURCHASING_QUANTITY, purchasesQuantity));
     }
+
+
     public void showBoughtLotto(List<List<Integer>> userLottoTickets) {
         for (List<Integer> userLottoTicket : userLottoTickets) {
             System.out.println(userLottoTicket);
         }
     }
+
     public void showWinningDetails(Map<Place, Integer> winningRanks) {
         System.out.println(WINNING_DETAILS);
         for (Place place : Place.values()) {
@@ -41,6 +46,7 @@ public class Output {
                     + String.format(WINNING_DETAILS_ARGUMENT, place.getPrizeMoney(), winningRanks.get(place)));
         }
     }
+
     public void showEarningRate(double earningRate) {
         System.out.println(String.format(EARNING_RATE, earningRate));
     }
