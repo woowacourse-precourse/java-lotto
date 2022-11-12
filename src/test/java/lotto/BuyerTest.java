@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -12,6 +13,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 
 public class BuyerTest {
+    @DisplayName("올바르지 않은 단위 입력 시 예외를 던진다.")
     @ParameterizedTest
     @ValueSource(ints = {1010, 1001, 1030, 2111})
     void 예외_올바르지_않은_단위(int money) {
@@ -19,6 +21,7 @@ public class BuyerTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("주어진 숫자로 로또를 정상적으로 발행한다.")
     @Test
     void 생성_올바른_로또() {
         assertRandomUniqueNumbersInRangeTest(
