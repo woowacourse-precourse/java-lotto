@@ -3,6 +3,7 @@ package lotto.domain.lotto_numbers;
 import static lotto.domain.lotto_numbers.Lotto.INVALID_RANGE_OF_LOTTO_NUMBER;
 import static lotto.domain.lotto_numbers.Lotto.INVALID_SIZE_OF_LOTTO_NUMBERS;
 import static lotto.domain.lotto_numbers.Lotto.NOT_ALLOW_DUPLICATED_LOTTO_NUMBER;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
@@ -35,5 +36,12 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(invalidNumber, 1, 2, 3, 4, 5)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INVALID_RANGE_OF_LOTTO_NUMBER);
+    }
+
+    @DisplayName("Lotto 인스턴스 생성 시, 정렬된 리스트가 할당된다.")
+    @Test
+    void createLottoAndSortedList() {
+        Lotto lotto = new Lotto(List.of(3, 5, 1, 6, 2, 4));
+        assertThat(lotto.toString()).contains("[1, 2, 3, 4, 5, 6]");
     }
 }

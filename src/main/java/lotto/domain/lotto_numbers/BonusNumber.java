@@ -13,7 +13,7 @@ public class BonusNumber {
         this.bonusNumber = bonusNumber;
     }
 
-    void validateRangeOfNumbers(int bonusNumber) {
+    private void validateRangeOfNumbers(int bonusNumber) {
         if (bonusNumber < MIN_NUMBER_OF_LOTTO || MAX_NUMBER_OF_LOTTO < bonusNumber) {
             throw new IllegalArgumentException(INVALID_RANGE_OF_LOTTO_NUMBER);
         }

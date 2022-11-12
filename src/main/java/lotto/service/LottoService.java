@@ -39,7 +39,7 @@ public class LottoService {
 
             makeWinningResults(purchasedLottoTickets, winningLotto);
         } catch (IllegalArgumentException e) {
-            lottoPrinter.printError(ERROR_MESSAGE_PREFIX + e.getMessage());
+            lottoPrinter.printMessage(ERROR_MESSAGE_PREFIX + e.getMessage());
         }
     }
 
@@ -50,11 +50,8 @@ public class LottoService {
 
     private PurchasedLottoTickets purchasedLottoTickets(String money) {
         PurchasedLottoTickets purchasedLottoTickets = lottoStore.lottoTickets(money);
-        lottoPrinter.printTheNumberOfPurchaseLottos(
-                purchasedLottoTickets.totalCounts(),
-                PURCHASED_SUFFIX
-        );
-        lottoPrinter.printLottoNumbers(purchasedLottoTickets.toString());
+        lottoPrinter.printMessage(purchasedLottoTickets.totalCounts() + PURCHASED_SUFFIX);
+        lottoPrinter.printMessage(purchasedLottoTickets.toString());
 
         return purchasedLottoTickets;
     }
@@ -77,6 +74,6 @@ public class LottoService {
                 lottoResults
         );
 
-        lottoPrinter.printWinningStatistics(winningStatistics);
+        lottoPrinter.printMessage(winningStatistics.toString());
     }
 }

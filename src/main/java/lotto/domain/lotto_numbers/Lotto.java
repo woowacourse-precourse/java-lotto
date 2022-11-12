@@ -4,11 +4,10 @@ import static lotto.domain.policy.LottoPolicy.COUNTS_OF_LOTTO_NUMBERS;
 import static lotto.domain.policy.LottoPolicy.MAX_NUMBER_OF_LOTTO;
 import static lotto.domain.policy.LottoPolicy.MIN_NUMBER_OF_LOTTO;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
 
@@ -22,7 +21,7 @@ public class Lotto {
         validate(numbers);
         validateDuplication(numbers);
         validateRangeOfNumbers(numbers);
-        this.numbers = numbers;
+        this.numbers = sortedList(numbers);
     }
 
     public boolean contains(int number) {
@@ -33,6 +32,12 @@ public class Lotto {
         return (int) numbers.stream()
                 .filter(lotto::contains)
                 .count();
+    }
+
+    private List<Integer> sortedList(List<Integer> numbers) {
+        return numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     private void validate(List<Integer> numbers) {
@@ -51,8 +56,7 @@ public class Lotto {
     private void validateRangeOfNumbers(List<Integer> numbers) {
         boolean presentInvalidNumber = numbers.stream()
                 .anyMatch(number ->
-                        number < MIN_NUMBER_OF_LOTTO || MAX_NUMBER_OF_LOTTO < number
-                );
+                        number < MIN_NUMBER_OF_LOTTO || MAX_NUMBER_OF_LOTTO < number);
 
         if (presentInvalidNumber) {
             throw new IllegalArgumentException(INVALID_RANGE_OF_LOTTO_NUMBER);
@@ -61,8 +65,6 @@ public class Lotto {
 
     @Override
     public String toString() {
-        List<Integer> copied = new ArrayList<>(numbers);
-        Collections.sort(copied);
-        return copied.toString();
+        return numbers.toString();
     }
 }
