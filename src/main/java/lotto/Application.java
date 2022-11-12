@@ -64,5 +64,21 @@ public class Application {
         return winNumber;
     }
 
+    // 당첨 개수 카운트
+    public static void countStat (int sameNumber) {
+
+        if(sameNumber == 3) {
+            SAME_STAT[0]++;
+        } else if (sameNumber == 4) {
+            SAME_STAT[1]++;
+        } else if (sameNumber == 5) {
+            SAME_STAT[2]++;
+        } else if (sameNumber == -1) {
+            SAME_STAT[3]++;
+        } else if (sameNumber == 6) {
+            SAME_STAT[4]++;
+        }
+
+    }
     }
 }
