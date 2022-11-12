@@ -19,7 +19,7 @@ public class Lotto {
         }
     }
 
-    public static List<Integer> crateRandomLottoNumber() {
+    public static List<Integer> createRandomLottoNumber() {
         List<Integer> createdRandomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         Collections.sort(createdRandomNumbers);
 

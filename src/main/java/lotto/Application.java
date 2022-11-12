@@ -30,7 +30,7 @@ public class Application {
         List<List<Integer>> lottoTickets = new ArrayList<>();
 
         for (int i = 0; i < ticketAmount; i++) {
-            List<Integer> ticket = Lotto.crateRandomLottoNumber();
+            List<Integer> ticket = Lotto.createRandomLottoNumber();
             lottoTickets.add(ticket);
         }
 
