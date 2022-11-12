@@ -45,6 +45,10 @@ public class Lotto {
                 .count()).intValue();
     }
 
+    public List<Integer> numbers() {
+        return this.numbers;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
