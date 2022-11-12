@@ -31,9 +31,9 @@ public class LottoMatcher {
     }
 
     private void matchLotto(Lotto lotto) {
-        // Lotto 번호들이 몇개의 winning lotto 번호를 가지는지 확인
-        // 5개가 맞으면 보너스 번호도 확인
-        // 결과값을 저장
+        int countOfMatchedNumbers = countWinningLottoNumbers(lotto.getNumbers());
+        boolean bonusNumberIsMatched = checkIfBonusNumberMatch(lotto.getNumbers());
+        saveResult(countOfMatchedNumbers, bonusNumberIsMatched);
     }
 
     private int countWinningLottoNumbers(List<Integer> lottoNumbers) {
