@@ -97,7 +97,7 @@ class UserInputHandlerTest{
         Supplier<Lotto> functionSupply = () -> inputHandler.getWinningNumbers();
 
         @Test
-        void getWinningNumbersTest_exception1(){
+        void getWinningNumbersTest_exception1_1(){
             String input = "1,2,3,4,5";
             beforeSetting(input);
             assertSimpleTest(() -> {
@@ -107,7 +107,7 @@ class UserInputHandlerTest{
         }
 
         @Test
-        void getWinningNumbersTest_exception2(){
+        void getWinningNumbersTest_exception1_2(){
             String input = "1,2,3,4,5,6,7,8";
             beforeSetting(input);
             assertSimpleTest(() -> {
@@ -117,7 +117,7 @@ class UserInputHandlerTest{
         }
 
         @Test
-        void getWinningNumbersTest_exception3(){
+        void getWinningNumbersTest_exception2_1(){
             String input = "1,2,3,4,4,5";
             beforeSetting(input);
             assertSimpleTest(() -> {
@@ -127,7 +127,7 @@ class UserInputHandlerTest{
         }
 
         @Test
-        void getWinningNumbersTest_exception4(){
+        void getWinningNumbersTest_exception3_1(){
             String input = "0,1,2,3,4,5";
             beforeSetting(input);
             assertSimpleTest(() -> {
@@ -137,7 +137,7 @@ class UserInputHandlerTest{
         }
 
         @Test
-        void getWinningNumbersTest_exception5(){
+        void getWinningNumbersTest_exception3_2(){
             String input = "41,42,43,44,45,46";
             beforeSetting(input);
             assertSimpleTest(() -> {
@@ -147,7 +147,7 @@ class UserInputHandlerTest{
         }
 
         @Test
-        void getWinningNumbersTest_exception6(){
+        void getWinningNumbersTest_exception4_1(){
             String input = "41,42,43,44,45,Hello";
             beforeSetting(input);
             assertSimpleTest(() -> {
@@ -157,7 +157,7 @@ class UserInputHandlerTest{
         }
 
         @Test
-        void getWinningNumbersTest_exception7(){
+        void getWinningNumbersTest_exception4_2(){
             String input = "40.41,42,43,44,45";
             beforeSetting(input);
             assertSimpleTest(() -> {
