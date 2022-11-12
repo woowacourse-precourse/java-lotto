@@ -1,5 +1,6 @@
 package lotto.view;
 
+import lotto.domain.ScoreInfo;
 import lotto.vo.Lotto;
 import lotto.vo.LottoAmount;
 
@@ -11,4 +12,6 @@ public interface OutputView {
 	void printLottos(List<Lotto> lottos);
 
 	void printErrorMessage(Exception e);
+
+	void printScoreMessage(ScoreInfo scoreInfo);
 }

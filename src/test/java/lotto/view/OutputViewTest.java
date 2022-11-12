@@ -1,7 +1,8 @@
 package lotto.view;
 
-import lotto.vo.Lotto;
+import lotto.domain.ScoreInfo;
 import lotto.system.LottoApplication;
+import lotto.vo.Lotto;
 import lotto.vo.LottoAmount;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -72,4 +73,26 @@ class OutputViewTest {
                 );
     }
 
+    @Test
+    @DisplayName("주어진 당첨 점보를 바탕으로 당첨 내역 메시지를 출력한다.")
+    void givenScoreInfo_whenRunningOutputView_thenPrintsScoreMessage() {
+        // given
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        ScoreInfo scoreInfo = new ScoreInfo();
+
+        // when
+        outputView.printScoreMessage(scoreInfo);
+
+        // then
+        assertThat(out.toString())
+                .isEqualTo("당첨 통계\n" +
+                        "---\n" +
+                        "3개 일치 (5,000원) - 0개\n" +
+                        "4개 일치 (50,000원) - 0개\n" +
+                        "5개 일치 (1,500,000원) - 0개\n" +
+                        "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개\n" +
+                        "6개 일치 (2,000,000,000원) - 0개\n"
+                );
+    }
 }
