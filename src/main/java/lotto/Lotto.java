@@ -2,10 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -18,9 +15,6 @@ public class Lotto {
     }
 
 
-    public void sort() {
-        numbers.sort(Comparator.naturalOrder());
-    }
 
     public Integer matchWithList(List<Lotto> lottos, Integer matchAmount) {
         Integer matchingLottos = 0;

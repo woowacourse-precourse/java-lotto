@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoUI {
     public static Integer purchase() {
@@ -18,15 +19,16 @@ public class LottoUI {
     }
 
     public static void printLotto(final Lotto lotto) {
-        System.out.println(lotto.getNumbers().toString());
+        List<Integer> sortedNumbers = lotto.getNumbers().stream().sorted().collect(Collectors.toList());
+        System.out.println(sortedNumbers);
     }
 
     public static void printWinHistory(final Integer machNumber, final Integer prizeMoney,final Integer winAmount) {
-        System.out.printf("%d개 일치 (%,d원) - %d 개\n", machNumber, prizeMoney, winAmount);
+        System.out.printf("%d개 일치 (%,d원) - %d개\n", machNumber, prizeMoney, winAmount);
     }
 
     public static void printWinHistoryWithBonus(final Integer machNumber, final Integer prizeMoney,final Integer winAmount) {
-        System.out.printf("%d개 일치, 보너스 볼 일치 (%,d원) - %d 개\n", machNumber, prizeMoney, winAmount);
+        System.out.printf("%d개 일치, 보너스 볼 일치 (%,d원) - %d개\n", machNumber, prizeMoney, winAmount);
     }
 
     public static List<Integer> receiveWinNumbers() {
@@ -58,7 +60,7 @@ public class LottoUI {
 
     public static void printBenefit(double benefit) {
         benefit *= 100;
-        System.out.printf("총 수익률은 %.1f%% 입니다.\n", benefit);
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", benefit);
     }
 
     private static <T> void amountValidate(T[] target) {
