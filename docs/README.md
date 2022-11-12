@@ -47,4 +47,4 @@
 
 ### CLASS DIAGRAM
 
-![lotto_class_diagram_3](https://user-images.githubusercontent.com/92911823/201154082-69b73c38-522c-4377-a4fa-7ffd043a0f8f.jpg)
+![lotto_class_diagram_4](https://user-images.githubusercontent.com/92911823/201475547-7387982c-9a69-4cad-ae06-6872a085a853.png)
