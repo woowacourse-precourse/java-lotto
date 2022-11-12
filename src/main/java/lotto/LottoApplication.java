@@ -30,5 +30,8 @@ public class LottoApplication {
         for (int i = 0; i < split.length; i++) {
             winningLotto.add(Integer.parseInt(split[i]));
         }
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int bonusNumber = Integer.parseInt(Console.readLine());
     }
 }
