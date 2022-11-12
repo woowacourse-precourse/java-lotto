@@ -39,7 +39,7 @@ public class Validation {
         }
     }
 
-    public static void checkNumberOfWinningNumber(List<String> numbers) {
+    public static void checkNumberOfWinningNumber(List<String> numbers) throws IllegalArgumentException {
         if (numbers.size() != NUMBER_OF_WINNING_NUMBERS) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.INVALID_WINNING_NUMBERS);
         }
