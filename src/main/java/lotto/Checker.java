@@ -8,26 +8,12 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Checker extends Kiosk {
-    static final int FIRST_PRIZE_COUNT = 6;
-    static final int THIRD_PRIZE_COUNT = 5;
-    static final int FOURTH_PRIZE_COUNT = 4;
-    static final int FIFTH_PRIZE_COUNT = 3;
-
-    static HashMap<Integer, RankIndex> countMatchingPrizes = new HashMap<>() {
-        {
-            put(FIRST_PRIZE_COUNT, RankIndex.FIRST);
-            put(THIRD_PRIZE_COUNT, RankIndex.THIRD);
-            put(FOURTH_PRIZE_COUNT, RankIndex.FOURTH);
-            put(FIFTH_PRIZE_COUNT, RankIndex.FIFTH);
-        }
-    };
-
-    public HashMap<Integer, Integer> createNumberMatchingRanks() {
-        HashMap<Integer, Integer> countMatchingPrizes = new HashMap<>();
+    public static HashMap<Integer, Enum> createNumberMatchingRanks() {
+        HashMap<Integer, Enum> countMatchingPrizes = new HashMap<>();
         for (RankNumber rank : RankNumber.values()) {
             countMatchingPrizes.put(
                     RankNumber.getRankNumber(rank),
-                    RankIndex.getRankIndex(rank.name())
+                    RankIndex.valueOf(rank.name())
             );
         }
         return countMatchingPrizes;
@@ -58,6 +44,7 @@ public class Checker extends Kiosk {
     }
 
     public static Enum getRank(int countSameNumbers) {
+        HashMap<Integer, Enum> countMatchingPrizes = createNumberMatchingRanks();
         return countMatchingPrizes.get(countSameNumbers);
     }
 
