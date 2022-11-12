@@ -7,9 +7,8 @@ import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
-    private final int lottoCount;
 
-    public Lotto(List<Integer> numbers, int lottoCount) {
+    public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
     }
