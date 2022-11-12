@@ -2,6 +2,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.exception.InputException;
+import lotto.resources.InputMessage;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -9,8 +10,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputView {
+    InputMessage inputMessage;
+
     public int enterPurchaseAmount() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(inputMessage.PURCHASE_AMOUNT.getMessage());
         String purchaseAmount = Console.readLine();
         InputException.validatePurchaseAmount(purchaseAmount);
         System.out.println();
@@ -18,7 +21,7 @@ public class InputView {
     }
 
     public List<Integer> enterWinningNumber() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(inputMessage.WINNING_NUMBER.getMessage());
         String[] numbers = Console.readLine().split(",");
         List<Integer> winningNumber = Arrays.stream(numbers)
                 .map(number -> Integer.valueOf(number))
@@ -30,7 +33,7 @@ public class InputView {
     }
 
     public int enterBonusNumber(List<Integer> winningNumber) {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(inputMessage.BONUS_NUMBER.getMessage());
         int bonusNumber = Integer.valueOf(Console.readLine());
         InputException.validateBonusNumber(bonusNumber, winningNumber);
         System.out.println();
