@@ -17,18 +17,11 @@ public class LottoDraw {
         for (int rank = 1; rank <= 5; rank++) {
             numberOfWins.put(String.valueOf(rank) + "등", 0);
         }
-        List<Integer> numbers = enterWinningNumber();
+        List<Integer> numbers = UI.enterWinningNumber();
         validate(numbers);
         validateDuplication(numbers);
         validateNumberRange(numbers);
         winningNumber = numbers;
-    }
-
-    public List<Integer> enterWinningNumber() {
-        String input = Console.readLine();
-        String[] split = input.split(",");
-        Integer[] numbers = Arrays.stream(split).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
-        return Arrays.asList(numbers);
     }
 
     private void validate(List<Integer> numbers) {
