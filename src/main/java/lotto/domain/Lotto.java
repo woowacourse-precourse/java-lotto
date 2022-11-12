@@ -24,4 +24,12 @@ public class Lotto {
         System.out.println(numbers);
     }
 
+    public static int calculate(String input){
+        int money = Integer.valueOf(input);
+        if(money % 1000 == 0){
+            return money / 1000;
+        }
+        throw new IllegalArgumentException("[ERROR]: 구입 금액은 1000원 단위만 가능합니다.");
+    }
+
 }
