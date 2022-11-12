@@ -9,12 +9,13 @@ public class LottoMachine {
     private final int purchasePrice;
 
     public LottoMachine(String inputPrice) {
-        validateRange(inputPrice);
+        validateType(inputPrice);
         this.purchasePrice = Integer.parseInt(inputPrice);
         validateUnit();
+
     }
 
-    public void validateRange(String inputPrice) {
+    public void validateType(String inputPrice) {
         if (!inputPrice.matches("^[0-9]*$")) {
             throw new IllegalArgumentException(TYPE_ERROR_MESSAGE);
         }
