@@ -1,6 +1,7 @@
 package lotto.machine;
 
 import java.util.Arrays;
+import lotto.util.Matcher;
 
 public enum Ranks {
     THREE_NUMBERS(3, 5_000, "3개 일치 (5,000원)"),
@@ -27,12 +28,14 @@ public enum Ranks {
         return message;
     }
 
-    public static int getPrizeMoneyBy(int myMatchingWinningNumberCount, int myMatchingBonusNumberCount) {
-        if (myMatchingWinningNumberCount == 5 && myMatchingBonusNumberCount == 1) {
+    public static int getPrizeMoneyBy(Matcher matcher) {
+        if (matcher.getMatchingWinningNumberCount() == 5
+                    && matcher.getMatchingBonusNumberCount() == 1) {
             return Ranks.BONUS_NUMBERS.prizeMoney;
         }
+
         for (Ranks ranks : Ranks.values()) {
-            if (myMatchingWinningNumberCount == ranks.matchingWinningNumberCount) {
+            if (matcher.getMatchingWinningNumberCount() == ranks.matchingWinningNumberCount) {
                 return ranks.prizeMoney;
             }
         }

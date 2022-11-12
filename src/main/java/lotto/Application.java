@@ -13,17 +13,13 @@ public class Application {
     public static void main(String[] args) {
         try {
             Integer purchasePrice = Convertor.toPurchasePrice(Input.payment());
-            Tickets tickets = new Tickets(purchasePrice);
-            List<List<Integer>> lottoTickets = tickets.getTickets();
-            Output.purchaseSuccessful(purchasePrice, lottoTickets);
+            Tickets lottoTickets = new Tickets(purchasePrice);
+            Output.purchaseSuccessful(purchasePrice, lottoTickets.getTickets());
 
-            Winner winner = new Winner(Input.winningNumbers(), Input.bonusNumber());
-            Profit profit = new Profit(
-                    lottoTickets,
-                    winner.getWinningNumbers(),
-                    winner.getBonusNumber()
-            );
-            Statistics statistics = new Statistics(profit.getProfit());
+            Winner winnerTicket = new Winner(Input.winningNumbers(), Input.bonusNumber());
+            Profit profit = new Profit(lottoTickets, winnerTicket);
+            Statistics statistics = new Statistics(profit);
+
             Output.lottoResult(purchasePrice, statistics.getStatistics());
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());

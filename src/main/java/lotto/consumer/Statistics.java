@@ -7,10 +7,12 @@ import lotto.machine.Ranks;
 
 public class Statistics {
     private final Map<Integer, Integer> statistics;
+    private final List<Integer> profit;
 
-    public Statistics(List<Integer> profit) {
+    public Statistics(Profit profit) {
+        this.profit = profit.getProfit();
         statistics = createStatistics();
-        updateStatistics(profit);
+        updateStatistics(this.profit);
     }
 
     public Map<Integer, Integer> getStatistics() {
