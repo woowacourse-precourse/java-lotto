@@ -9,15 +9,19 @@ import utils.OutputUtils;
 import utils.Validator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LottoController {
 
     private PurchaseAmount purchaseAmount;
     private List<Lotto> lottos;
+    private List<Integer> winNumbers;
 
     public LottoController() {
         lottos = new ArrayList<>();
+        winNumbers = new ArrayList<>();
     }
 
     private void generateLotteryNumbers() {
@@ -42,6 +46,15 @@ public class LottoController {
         OutputUtils.printPurchasedLottoNumbers(lottos);
     }
 
+    private void getWinNumbersFromUser() {
+        String userInput = InputUtils.getWinNumbersFromUser();
+        Validator.checkWinsNumberIsValid(userInput);
+
+        winNumbers = Arrays.stream(userInput.split(LottoConstants.SEPARATOR))
+                .map(Integer::valueOf)
+                .collect(Collectors.toList());
+    }
+
     public void start() {
         getLottoPurchaseAmountFromUser();
 
@@ -52,5 +65,7 @@ public class LottoController {
         }
 
         printPurchasedLottoNumbers();
+
+        getWinNumbersFromUser();
     }
 }
