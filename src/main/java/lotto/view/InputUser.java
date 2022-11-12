@@ -14,17 +14,14 @@ public class InputUser {
     public UserDTO makeUserData() {
         int amount;
 
-        getInput();
+        setInput();
         amount = inputPurchase(this.inputData);
         UserDTO userDTO = new UserDTO(amount);
         return userDTO;
     }
 
-    private void getInput() {
-        String inputData;
-
-        inputData = Console.readLine();
-        this.inputData = inputData;
+    private void setInput() {
+        this.inputData = Console.readLine();
     }
 
     private int inputPurchase(String inputData) {

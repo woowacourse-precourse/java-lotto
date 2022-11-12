@@ -7,8 +7,6 @@ import java.util.List;
 
 public class Print {
     private static final String PURCHASE_LIST = "개를 구매했습니다.";
-    private static final String WINNING_REQUEST = "당첨 번호를 입력해주세요.";
-    private static final String BONUS_REQUEST = "보너스 번호를 입력해주세요.";
     private static final String END_SENTENCE = "당첨 통계\n---";
     private static final String CORRECT_THREE = "3개 일치 (5,000원) - ";
     private static final String CORRECT_FOUR = "4개 일치 (20,000원) - ";
