@@ -1,6 +1,9 @@
 package lotto.model;
 
-import java.util.*;
+import lotto.utils.Validator;
+
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static lotto.model.LottoNumber.toLottoNumber;
@@ -10,6 +13,8 @@ public class UserLotto {
     private final LottoNumber bonus;
 
     public UserLotto(String inputNumbers, String bonus) {
+        Validator.isNumbers(inputNumbers);
+        Validator.isOneNumber(bonus);
         this.inputNumbers = inputNumbers;
         this.bonus = toLottoNumber(Integer.parseInt(bonus));
     }

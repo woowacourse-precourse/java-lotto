@@ -21,8 +21,8 @@ public class View {
         output.printOutput(REQUEST_PURCHASE_AMOUNT);
     }
 
-    public int getAmount() {
-        return Integer.parseInt(input.input());
+    public String getInput() {
+        return input.input();
     }
 
     public void showLotto(List<Lotto> lottos) {
@@ -40,10 +40,6 @@ public class View {
 
     public void requestBonus() {
         output.printOutput(GET_BONUS_NUMBER);
-    }
-
-    public String getNumber() {
-        return input.input();
     }
 
     public void printError(String message) {

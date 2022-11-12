@@ -1,13 +1,17 @@
 package lotto.model;
 
+import lotto.utils.Validator;
+
 public class Amount {
     private static final String WRONG_PURCHASE_AMOUNT = "[ERROR] 1000 단위만 입력할 수 있습니다.";
     private static final int LOTTO_AMOUNT = 1000;
     private final int purchaseAmount;
 
-    public Amount(int purchaseAmount) {
-        checkThousand(purchaseAmount);
-        this.purchaseAmount = purchaseAmount;
+    public Amount(String purchaseAmount) {
+        Validator.isOneNumber(purchaseAmount);
+        int amount = Integer.parseInt(purchaseAmount);
+        checkThousand(amount);
+        this.purchaseAmount = amount;
     }
 
     private void checkThousand(int inputAmount) {
