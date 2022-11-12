@@ -37,7 +37,7 @@ public class LottoController {
         lottoView.printPurchaseMoneyInputCommand();
         int purchaseMoney = inputPurchaseMoney();
         issuingMachine.issue(purchaseMoney);
-        lottoView.printIssuedLottoDetails(issuingMachine);
+        lottoView.printIssuedLottos(issuingMachine);
     }
 
     private int inputPurchaseMoney() {

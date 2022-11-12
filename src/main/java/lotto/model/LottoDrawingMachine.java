@@ -9,6 +9,14 @@ public class LottoDrawingMachine {
     private Lotto winningLotto;
     private Integer bonusNumber;
 
+    protected Lotto getWinningLotto() {
+        return winningLotto;
+    }
+
+    protected Integer getBonusNumber() {
+        return bonusNumber;
+    }
+
     public void draw(List<Integer> winningNumbers, Integer bonusNumber) {
         winningLotto = new Lotto(winningNumbers);
         validateBonusNumber(winningNumbers, bonusNumber);
@@ -22,13 +30,5 @@ public class LottoDrawingMachine {
         if (winningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_BONUS_NUMBER_DUPLICATION);
         }
-    }
-
-    protected Lotto getWinningLotto() {
-        return winningLotto;
-    }
-
-    protected Integer getBonusNumber() {
-        return bonusNumber;
     }
 }

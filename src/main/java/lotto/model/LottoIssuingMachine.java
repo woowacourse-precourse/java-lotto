@@ -15,15 +15,22 @@ public class LottoIssuingMachine {
         lottos = new ArrayList<>();
     }
 
+    protected List<Lotto> getLottos() {
+        return lottos;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append(lottos.size())
-                .append("개를 구매했습니다.\n");
         for (Lotto lotto : lottos) {
-            builder.append(lotto).append("\n");
+            builder.append(lotto)
+                    .append("\n");
         }
         return builder.toString();
+    }
+
+    public int getNumberOfIssuedLottos() {
+        return lottos.size();
     }
 
     public void issue(int purchaseMoney) {
@@ -50,9 +57,5 @@ public class LottoIssuingMachine {
             Lotto issuedLotto = new Lotto(numbers);
             if (!lottos.contains(issuedLotto)) return issuedLotto;
         }
-    }
-
-    protected List<Lotto> getLottos() {
-        return lottos;
     }
 }

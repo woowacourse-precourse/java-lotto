@@ -26,6 +26,10 @@ public class LottoWinningStatistics {
         winningCounts.put(MATCH_SIX_NUMBERS, 0);
     }
 
+    public double getEarningsRate() {
+        return earningsRate;
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -35,9 +39,6 @@ public class LottoWinningStatistics {
                     .append(winningCounts.get(winningStatus))
                     .append("개\n");
         }
-        builder.append("총 수익률은 ")
-                .append(String.format("%.1f", earningsRate))
-                .append("%입니다.");
         return builder.toString();
     }
 

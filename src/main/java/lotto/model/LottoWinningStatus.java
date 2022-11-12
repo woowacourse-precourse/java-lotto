@@ -17,6 +17,14 @@ public enum LottoWinningStatus {
         this.winningMoney = winningMoney;
     }
 
+    public int getNumberOfMatch() {
+        return numberOfMatch;
+    }
+
+    public long getWinningMoney() {
+        return winningMoney;
+    }
+
     public static LottoWinningStatus valueOf(int numberOfMatch, boolean hasBonusNumber) {
         if (numberOfMatch == NUMBER_OF_MATCH_WITH_BONUS_NUMBER) return valueOf(hasBonusNumber);
         for (LottoWinningStatus winningStatus : LottoWinningStatus.values()) {
@@ -38,13 +46,5 @@ public enum LottoWinningStatus {
         DecimalFormat formatter = new DecimalFormat("###,###");
         if (this == MATCH_FIVE_NUMBERS_WITH_BONUS_NUMBER) bonusPhrase = ", 보너스 볼 일치";
         return numberOfMatch + "개 일치" + bonusPhrase + " (" + formatter.format(winningMoney) + "원)";
-    }
-
-    public int getNumberOfMatch() {
-        return numberOfMatch;
-    }
-
-    public long getWinningMoney() {
-        return winningMoney;
     }
 }
