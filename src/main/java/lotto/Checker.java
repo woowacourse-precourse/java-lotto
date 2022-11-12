@@ -22,7 +22,7 @@ public class Checker extends Kiosk {
         }
     };
 
-    public HashMap<Integer, Integer> initializeNumberMatchingRanks() {
+    public HashMap<Integer, Integer> createNumberMatchingRanks() {
         HashMap<Integer, Integer> countMatchingPrizes = new HashMap<>();
         for (RankNumber rank : RankNumber.values()) {
             countMatchingPrizes.put(
