@@ -29,7 +29,7 @@ public class Play {
 
         System.out.println("\n"+total+CHECK_MESSAGE);
         lotto = lottoNumbers.printLotto(total);
-
+        lottoNumbers.displayLotto(lotto);
 
 
 

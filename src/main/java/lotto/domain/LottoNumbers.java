@@ -13,7 +13,6 @@ public class LottoNumbers {
         for(int i=0; i<total; i++){
             Lotto lottoNumber = new Lotto(generateLotto());
             lotto.add(lottoNumber);
-            System.out.println(i+" " + lotto);
         }
         return lotto;
     }
@@ -23,7 +22,12 @@ public class LottoNumbers {
     }
     public List<Integer> sortLotto(List<Integer> numbers){
         Collections.sort(numbers);
-        System.out.println(numbers);
         return numbers;
+    }
+    public void displayLotto(List<Lotto> numbers){
+        for(int i=0; i<numbers.size(); i++){
+            System.out.println(numbers.get(i).getLotto());
+        }
+
     }
 }

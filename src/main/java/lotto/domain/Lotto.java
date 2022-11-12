@@ -20,4 +20,7 @@ public class Lotto {
 
     // todo: 중복 확인
 
+    public List<Integer> getLotto(){
+        return numbers;
+    }
 }
