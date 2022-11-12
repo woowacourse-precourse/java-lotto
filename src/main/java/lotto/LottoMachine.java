@@ -2,17 +2,21 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class LottoMachine {
     public void inputWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String inputNumber = Console.readLine();
-        String[] winningNumber = splitNumber(inputNumber);
+        int[] winningNumber = splitNumber(inputNumber);
     }
 
-    public String[] splitNumber(String number) {
-        return number.split(",");
+    public int[] splitNumber(String number) {
+        String[] winningNumber = number.split(",");
+
+        //String형 배열을 int형 배열로 변환하여 return
+        return Arrays.stream(winningNumber).mapToInt(Integer::parseInt).toArray();
     }
 
     public void inputBonusNumber() {
