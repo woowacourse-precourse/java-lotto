@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.model.Lotto;
 import lotto.model.User;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -100,6 +101,42 @@ class ApplicationTest extends NsTest {
         int count = user.lottoCount("5000");
         assertThat(count).isEqualTo(5);
 
+    }
+
+    @Test
+    void 유효한_당첨번호_중복_입력() {
+        Lotto lotto = new Lotto();
+        List<Integer> num = List.of(1,2,3,4,5,6);
+        boolean result = lotto.isEqualNumber(num);
+        assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    void 유효하지않은_당첨번호_중복_입력() {
+        Lotto lotto = new Lotto();
+        List<Integer> num = List.of(1,2,3,4,5,5);
+        assertThatThrownBy(() -> {
+            lotto.isEqualNumber(num);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
+
+    @Test
+    void 유효한_당첨번호_범위_입력() {
+        Lotto lotto = new Lotto();
+        List<Integer> num = List.of(1,2,3,4,5,6);
+        boolean result = lotto.isRangeNumber(num);
+        assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    void 유효하지않은_당첨범호_범위_입력(){
+        Lotto lotto = new Lotto();
+        List<Integer> num = List.of(1,2,3,4,5,67);
+        assertThatThrownBy(() -> {
+            lotto.isRangeNumber(num);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
     }
 
     @Override
