@@ -13,6 +13,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public List<Integer> getLottoNumbers() {
+        return numbers;
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             Print.errorMessage("당첨번호의 길이가 올바르지 않습니다.");
@@ -20,7 +24,7 @@ public class Lotto {
         }
     }
 
-    private int getLottoCount(int price){
+    public int getLottoCount(int price){
         validatePrice(price);
         return price/1000;
     }

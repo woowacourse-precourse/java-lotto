@@ -25,8 +25,11 @@ public class Print {
         System.out.println(String.format("[ERROR] %s", message));
     }
 
-    public static void lottoNumber(List<Integer> lotto){
-        Collections.sort(lotto);
-        System.out.println(lotto);
+    public static void lottoNumber(List<List<Integer>> lottoes){
+        for (List<Integer> lotto : lottoes) {
+            Collections.sort(lotto);
+            System.out.println(lotto);
+        }
+
     }
 }

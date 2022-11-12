@@ -3,7 +3,9 @@ package InputOutput;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class Input {
@@ -37,7 +39,8 @@ public class Input {
 
     public List<Integer> inputWinningNumber() {
         String[] inputString = Console.readLine().split(",");
-        validateWinningNumber(inputString);
+        validateIntegerWinningNumber(inputString);
+        validateOverlapedWinningNumber(inputString);
         return Revert.revertStringArrayToIntegerList(inputString);
     }
 
@@ -49,10 +52,18 @@ public class Input {
     }
 
 
-    private void validateWinningNumber(String[] stringArray){
+    private void validateIntegerWinningNumber(String[] stringArray){
         for(String string: stringArray){
             validateInteger(string);
             validateRange(string);
+        }
+    }
+    private void validateOverlapedWinningNumber(String[] stringArray){
+        List<Integer> List= Revert.revertStringArrayToIntegerList(stringArray);
+        Set<Integer> numSet = new HashSet<>(List);
+        if(numSet.size()!=List.size()){
+            Print.errorMessage("중복되는 값이 있습니다.");
+            throw new IllegalArgumentException();
         }
     }
 
