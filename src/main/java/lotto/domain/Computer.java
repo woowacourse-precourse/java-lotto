@@ -49,4 +49,20 @@ public class Computer {
             exceptions.duplicationNumbers();
         }
     }
+
+    public int bonusNumber() {
+        int num = 0;
+        String bonusNum;
+        System.out.println("보너스 번호를 입력해 주세요.");
+        bonusNum = Console.readLine();
+        try {
+            num = Integer.parseInt(bonusNum);
+        } catch (Exception e) {
+            exceptions.inputPriceError();
+        }
+        if(num<1 || num>45){
+            exceptions.notScopeNumbers();
+        }
+        return num;
+    }
 }

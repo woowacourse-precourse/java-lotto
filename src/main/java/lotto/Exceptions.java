@@ -18,6 +18,6 @@ public class Exceptions {
     }
 
     public void duplicationNumbers() throws IllegalArgumentException {
-        throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
+        throw new IllegalArgumentException("[ERROR] 중복되지 않는 숫자 6개를 입력하지 않으셨습니다.");
     }
 }
