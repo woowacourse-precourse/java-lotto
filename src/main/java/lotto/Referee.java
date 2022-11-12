@@ -74,4 +74,8 @@ public class Referee {
                 .findAny()
                 .ifPresent(WinningStat::addCount);
     }
+
+    public List<WinningStat> getResult() {
+        return result;
+    }
 }
