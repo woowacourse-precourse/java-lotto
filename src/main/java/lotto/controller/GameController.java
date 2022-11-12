@@ -32,6 +32,7 @@ public class GameController {
 
     public void printLottoTicketDetail() {
         gameMessage.printLottoTicketCount(user.getLottoTicketCount());
+        gameMessage.printLottoTickets(user.getLottoTickets());
     }
 
 
