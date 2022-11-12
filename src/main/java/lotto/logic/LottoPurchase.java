@@ -13,9 +13,12 @@ public class LottoPurchase {
     }
 
     public int puchaseLotto() {
+        int result = 0;
         int amount = inputAmount();
         ExceptionValidation.validateException(amount);
-        return amount / 1000;
+        result = amount / 1000;
+        System.out.println(result+"개를 구매했습니다.");
+        return result;
     }
 }
 
