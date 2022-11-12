@@ -8,17 +8,24 @@ import lotto.domain.Lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 public class UserInput {
+    private static final String INPUT_MONEY = "구입금액을 입력해 주세요.";
+    private static final String INPUT_LOTTO_WIN_NUMBER = "당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+
     public static Integer inputMoney() {
+        System.out.println(INPUT_MONEY);
         return validateInputMoney(getInput());
     }
 
     public static Lotto inputLottoWinNumber() {
+        System.out.println(INPUT_LOTTO_WIN_NUMBER);
         final List<String> lottoWinNumber = stringToList(getInput());
 
         return validateLottoWinNumber(lottoWinNumber);
     }
 
     public static Integer inputBonusNumber() {
+        System.out.println(INPUT_BONUS_NUMBER);
         return validateBonusNumber(getInput());
     }
 
