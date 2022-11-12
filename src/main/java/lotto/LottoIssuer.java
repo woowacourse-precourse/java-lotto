@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.player.PurchaseAmount;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -14,15 +15,9 @@ public class LottoIssuer {
 	private static int purchasedLotto;
 	public static List<List<Integer>> issuedLottoes = new ArrayList<>();
 
-	public LottoIssuer(long totalAmount) {
-		countLotto(totalAmount);
+	public LottoIssuer(int purchasedLotto) {
+		this.purchasedLotto = purchasedLotto;
 		issueLotto();
-	}
-
-	private void countLotto(long totalAmount) {
-		int purchasedLotto = Math.toIntExact(totalAmount) / Setup.LOTTO_PRICE.getValue();
-		PrintNotificationMessage(purchasedLotto);
-		LottoIssuer.purchasedLotto = purchasedLotto;
 	}
 
 	private static void issueLotto() {

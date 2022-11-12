@@ -1,5 +1,6 @@
-package lotto.domain;
+package lotto.domain.player;
 
+import lotto.domain.ValidationConfig;
 import lotto.ui.ConsoleInput;
 
 import java.util.Arrays;
@@ -16,11 +17,10 @@ public class Player {
 	public static List<Integer> winningNumbers;
 	public static List<Integer> bonusNumber;
 
-	public long receiveTotalAmount() {
+	public String receivePurchaseAmount() {
 		PrintRequestMessage(REQUEST_TOTAL_AMOUNT);
 		String amountInput = ConsoleInput.readLine();
-		validateAmount(amountInput);
-		return (long) valueOf(amountInput);
+		return amountInput;
 	}
 
 	public Stream<Integer> receiveLottoNumber() {
@@ -39,49 +39,34 @@ public class Player {
 		return parseInt(bonusNumber);
 	}
 
-
-	private void validateAmount(String amountInput) {
-		if (Validation.isNotANumber(amountInput)) {
-			PrintErrorMessage(AMOUNT_NOT_A_NUMBER);
-		}
-
-		if (Validation.isLessThan1000(amountInput)) {
-			PrintErrorMessage(AMOUNT_LESS_THAN_1000);
-		}
-
-		if (!Validation.isAssignedCurrencyUnit(amountInput)) {
-			PrintErrorMessage(AMOUNT_NOT_ASSIGNED_CURRENCY_UNIT);
-		}
-	}
-
 	private void validateLottoNumber(String numberInput) {
-		if (!Validation.isLottoNumberCorrectlyFormatted(numberInput)) {
+		if (!ValidationConfig.isLottoNumberCorrectlyFormatted(numberInput)) {
 			PrintErrorMessage(LOTTO_NUMBER_NOT_CORRECTLY_FORMATTED);
 		}
 
-		if (!Validation.isLottoNumberCountCorrectlyProvided(numberInput)) {
+		if (!ValidationConfig.isLottoNumberCountCorrectlyProvided(numberInput)) {
 			PrintErrorMessage(LOTTO_NUMBER_NOT_CORRECTLY_COUNTED);
 		}
 
-		if (!Validation.isLottoNumberCorrectlyRanged(numberInput)) {
+		if (!ValidationConfig.isLottoNumberCorrectlyRanged(numberInput)) {
 			PrintErrorMessage(LOTTO_NUMBER_NOT_IN_BETWEEN_1_45);
 		}
 
-		if (Validation.isLottoNumberDuplicateExists(numberInput)) {
+		if (ValidationConfig.isLottoNumberDuplicateExists(numberInput)) {
 			PrintErrorMessage(LOTTO_NUMBER_DUPLICATED);
 		}
 	}
 
 	private void validateBonusNumber(String numberInput, Stream lottoNumbers) {
-		if (!Validation.isBonusNumberCorrectlyRanged(numberInput)) {
+		if (!ValidationConfig.isBonusNumberCorrectlyRanged(numberInput)) {
 			PrintErrorMessage(BONUS_NUMBER_NOT_IN_BETWEEN_1_45);
 		}
 
-		if (!Validation.isBonusNumberCountCorrectlyProvided(numberInput)) {
+		if (!ValidationConfig.isBonusNumberCountCorrectlyProvided(numberInput)) {
 			PrintErrorMessage(BONUS_NUMBER_NOT_CORRECTLY_COUNTED);
 		}
 
-		if (Validation.isBonusNumberDuplicateExists(numberInput, lottoNumbers)) {
+		if (ValidationConfig.isBonusNumberDuplicateExists(numberInput, lottoNumbers)) {
 			PrintErrorMessage(BONUS_NUMBER_DUPLICATED);
 		}
 	}
