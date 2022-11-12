@@ -2,6 +2,7 @@ package lotto;
 
 import utils.Output;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,10 +13,12 @@ public class Result {
 
     private static HashMap<MatchCount, Integer> totalMatchResult = new HashMap<>();
     private int totalPrizeMoney = 0;
+    private List<String> resultMessage = new ArrayList<>();
 
     public Result(List<Lotto> lottoTickets) {
         saveMatchResult(lottoTickets);
         showResult();
+        Output.showResult(resultMessage);
     }
 
     private void saveMatchResult(List<Lotto> lottoTickets) {
@@ -29,8 +32,8 @@ public class Result {
         List<Prize> allPrize = Prize.getAllPrize();
         for (Prize prize : allPrize) {
             int countPrize = getPrizeCount(prize.getWinningCount(), prize.getBonusCount());
-            System.out.println(prize.getMessage()+ " - " + countPrize+"개");
             sumPrizeMoney(prize.getPrizeMoney(), countPrize);
+            saveResultMessage(prize.getMessage(), countPrize);
         }
     }
 
@@ -45,5 +48,9 @@ public class Result {
     public void calculateReturnOfRate(int price) {
         double returnOfRate = Math.round(((double)totalPrizeMoney/price)*PERCENT* ROUND_ONE)/ ONE_DECIMAL;
         Output.showReturnOfRate(returnOfRate);
+    }
+
+    public void saveResultMessage(String message, int countPrize){
+        resultMessage.add(message+ " - " + countPrize+"개");
     }
 }

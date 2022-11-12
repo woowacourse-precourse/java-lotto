@@ -13,6 +13,10 @@ public class Output {
         }
     }
 
+    public static void showResult(List<String> resultMessage) {
+        resultMessage.stream().forEach(System.out::println);
+    }
+
     public static void showReturnOfRate(double returnOfRate) {
         System.out.println("총 수익률은 "+returnOfRate+"%입니다.");
     }
