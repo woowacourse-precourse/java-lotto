@@ -11,7 +11,7 @@
 
 ### Lotto Number Generate Strategy
 
-- [ ] 1부터 45 임의의 숫자 6개를 생성한다.
+- [x] 1부터 45 임의의 숫자 6개를 생성한다.
 
 ### Winning Lotto
 
