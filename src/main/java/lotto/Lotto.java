@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -52,9 +53,20 @@ public class Lotto {
         }
     }
 
-    public static List<Integer> getNumbers(String input){
+    public static List<Integer> getNumbers(){
         List<Integer> lottoNumbers = new ArrayList<>();
-
+        String input = readLine();
+        if (input.length() > 11){
+            throw new IllegalArgumentException("[ERROR] 숫자를 정확히 입력해주세요");
+        }
+        List<String> inputNumbers = Arrays.asList(input.split(","));
+        if(inputNumbers.size() != inputNumbers.stream().distinct().count()){
+            throw new IllegalArgumentException("[ERROR] 중복되지 않은 숫자를 입력해주세요");
+        }
+        for (String number: inputNumbers){
+            lottoNumbers.add(Integer.parseInt(number));
+        }
+        Collections.sort(lottoNumbers);
         return  lottoNumbers;
     }
 
