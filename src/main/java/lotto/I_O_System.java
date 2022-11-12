@@ -2,29 +2,33 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class I_O_System {
     static final int lottey_price = 1000;
+
     public static final String BAGIC_ERROR_MESSAGE = "[ERROR]";
     private static final String Sell_Messge = "개를 구매했습니다.";
     private static final String ERROR_Code_1 = " 숫자가 아닌 문자가 들어왔습니다.";
     private static final String ERROR_Code_2 = " 돈이 천원 단위로 나누어지지않습니다.";
+
+    private List<Integer> Winning_Number = new ArrayList<>();
     private String Enter_Number = "0";
     private int Money_Enter = 0;
 
     public void Enter_Price() {
         Enter_Number = Console.readLine();
-        Int_Changer();
-        left_money();
+        if (!Differnet_Error()) {
+            return;
+        }
+        Money_Enter = Integer.parseInt(Enter_Number);
+        if (!left_money()) {
+            return;
+        }
         Money_Enter /= lottey_price;
         System.out.println(Money_Enter + Sell_Messge);
 
-    }
-
-    private int Int_Changer() {
-        if (Differnet_Error()) {
-            Money_Enter = Integer.parseInt(Enter_Number);
-        }
-        return Money_Enter;
     }
 
     private boolean Differnet_Error() {
@@ -54,20 +58,11 @@ public class I_O_System {
         return true;
     }
 
-    public boolean Check_True() {
-        if (!Differnet_Error()) {
-            return false;
-        }
-        if (!left_money()) {
-            return false;
-        }
 
-        return true;
+    public void Enter_Number() {
+        Enter_Number = Console.readLine();
+
     }
-public void Enter_Number()
-{
-    Enter_Number =Console.readLine();
-}
 
 
 }
