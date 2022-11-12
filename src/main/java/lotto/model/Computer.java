@@ -53,8 +53,8 @@ public class Computer {
         throw new IllegalArgumentException(BONUS_NUMBER_EXCEPTION);
     }
 
-    private void addBonusNumber(){
-
+    private void addBonusNumber(int bonusNumber){
+        this.bonusNumber = new BonusNumber(bonusNumber);
     }
 
     public int getBonusNumber(){
