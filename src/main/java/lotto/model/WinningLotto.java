@@ -25,8 +25,10 @@ public class WinningLotto extends Lotto {
         }
     }
 
-    public int countMatchingLottoNumbers(List<Integer> lottoNumbers) {
+    public int countMatchingLottoNumbers(Lotto lotto) {
+        List<Integer> lottoNumbers = lotto.getLottoNumbers();
         int countMatching = 0;
+
         for (Integer lottoNumber : lottoNumbers) {
             if (winningNumbers.contains(lottoNumber)) {
                 countMatching += 1;
@@ -35,7 +37,8 @@ public class WinningLotto extends Lotto {
         return countMatching;
     }
 
-    public boolean matchBonusNumber(List<Integer> lottoNumbers) {
+    public boolean matchBonusNumber(Lotto lotto) {
+        List<Integer> lottoNumbers = lotto.getLottoNumbers();
         return lottoNumbers.contains(this.bonusNumber);
     }
 }

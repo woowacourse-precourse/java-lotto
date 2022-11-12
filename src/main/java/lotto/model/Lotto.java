@@ -44,5 +44,7 @@ public class Lotto {
         return false;
     }
 
-    // TODO: 추가 기능 구현
+    protected List<Integer> getLottoNumbers() {
+        return numbers;
+    }
 }
