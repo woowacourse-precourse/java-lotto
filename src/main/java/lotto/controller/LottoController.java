@@ -7,6 +7,7 @@ import lotto.model.Cash;
 import lotto.model.Lotto;
 import lotto.model.NumberValidator;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,6 +25,7 @@ public class LottoController {
 
 	private void purchase(){
 		addNewLotto();
+		OutputView.printLottos(lottos);
 	}
 
 	private void addNewLotto() {
