@@ -23,7 +23,8 @@ public class Controller {
         return new Lotto(winningLottoNumbers);
     }
 
-    public void getBonusNum() {
-
+    public int getBonusNum() {
+        String bonusNum = readLine();
+        return Integer.parseInt(bonusNum);
     }
 }
