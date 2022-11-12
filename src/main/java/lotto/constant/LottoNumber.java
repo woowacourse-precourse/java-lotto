@@ -1,4 +1,4 @@
-package lotto.enumType;
+package lotto.constant;
 
 public enum LottoNumber {
 

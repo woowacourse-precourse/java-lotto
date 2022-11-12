@@ -1,4 +1,4 @@
-package lotto.enumType;
+package lotto.constant;
 
 public enum InputMessage {
     PURCHASE_MSG("구입금액을 입력해 주세요.")
