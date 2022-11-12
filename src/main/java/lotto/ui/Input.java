@@ -7,12 +7,13 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
+
     public int getUserMoney() {
         try {
             int money = Integer.parseInt(Console.readLine());
             return money;
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(Error.INVAILD_INPUT_VALUE);
         }
     }
 
@@ -26,19 +27,16 @@ public class Input {
             }
             return winningNumbers;
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(Error.INVAILD_INPUT_VALUE);
         }
     }
 
     public int getBonusNumber() {
         try {
             int bonusNumber = Integer.parseInt(Console.readLine());
-            if (bonusNumber > 45 || bonusNumber < 1) {
-                throw new IllegalArgumentException("[ERROR]");
-            }
             return bonusNumber;
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(Error.INVAILD_INPUT_VALUE);
         }
     }
 }
