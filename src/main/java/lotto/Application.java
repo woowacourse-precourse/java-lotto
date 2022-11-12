@@ -71,13 +71,18 @@ public class Application {
         return bonus;
     }
 
-    public static boolean rangeError(String k) {
-        int tmp = Integer.parseInt(k);
-        if (tmp < 0 || tmp > 45) {
+    public static void rangeError(int bonus) {
+        if (bonus < 0 || bonus > 45) {
             System.out.println("[ERROR] 보너스 번호 입력 오류입니다.");
             throw new IllegalArgumentException();
         }
-        return true;
+    }
+
+    public static void duplicate(List<Integer> winNums, int bonus) {
+        if (winNums.contains(bonus)) {
+            System.out.println("[ERROR] 보너스 번호 입력 오류입니다.");
+           throw new IllegalArgumentException();
+        }
     }
 
     public static void buyLotto(int money, List<Lotto> lotto) {
