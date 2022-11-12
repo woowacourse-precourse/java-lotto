@@ -62,6 +62,12 @@ public class Validation {
             throw new IllegalArgumentException("[ERROR] 보너스 번호를 당첨번호와 중복되지 않게 입력해 주세요");
         }
     }
+    // 입력된 보너스 번호를 검증
+    public static void validateBonusNumber(List<Integer> winningNumbers, String bonusNumber) {
+        isDigit(bonusNumber);
+        isRightLottoNumber(Integer.parseInt(bonusNumber));
+        isBonusNumberDuplicatedWithWinningNumbers(winningNumbers, Integer.parseInt(bonusNumber));
+    }
 }
 
 
