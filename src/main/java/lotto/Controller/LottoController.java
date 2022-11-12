@@ -28,4 +28,13 @@ public class LottoController {
         }
         lottoData.setLottos(lottos);
     }
+
+    private void printLottoNumber(){
+        List<Lotto> lottos = lottoData.getLottos();
+        List<List<Integer>> lottoNumber = new ArrayList<List<Integer>>();
+        for(Lotto lotto : lottos){
+            lottoNumber.add(lotto.getLottoNumber());
+        }
+        output.showPurchasedLotto(lottoData.getCountOfLotto(), lottoNumber);
+    }
 }
