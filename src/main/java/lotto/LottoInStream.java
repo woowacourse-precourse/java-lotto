@@ -54,13 +54,6 @@ public class LottoInStream {
         return (number);
     }
 
-    private static boolean isNumber(char ch) {
-        if (ch >= '0' && ch <= '9') {
-            return true;
-        }
-        return false;
-    }
-
     private static String readline() {
         try {
             return (Console.readLine());
