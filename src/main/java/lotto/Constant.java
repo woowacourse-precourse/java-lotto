@@ -20,4 +20,5 @@ public class Constant {
     public static final String TOTAL_END = "%입니다.";
 
     public static final int LOTTO_SIZE = 6;
+    public static final int TEN_THOUSAND = 1000;
 }
