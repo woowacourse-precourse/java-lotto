@@ -23,6 +23,7 @@ public class LottoController {
         inputView.printRequest();
         lottoMoney.inputMoney(Console.readLine());
         lottos.buy(lottoMoney.getLottoQuantity());
+        inputView.printLottos(lottos.getLottos());
         inputView.printWinningNumber();
         winningNumber.inputWinningNumber(Console.readLine());
     }
