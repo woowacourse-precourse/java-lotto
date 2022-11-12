@@ -101,7 +101,7 @@ public class LottoGame {
     }
 
     private static List<Integer> makeUniqueLottoNumber() {
-        return (Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        return (Randoms.pickUniqueNumbersInRange(Lotto._min_lotto_number, Lotto._max_lotto_number, Lotto._lotto_length));
     }
 
     private static int[] appendPlaceToResult(int[] matches, eLottoPlace place) {
