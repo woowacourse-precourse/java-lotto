@@ -8,8 +8,4 @@ public class ExceptionMessage {
     public static final String CANNOT_CONVERT_NUMBER = "입력 값을 숫자로 변환할 수 없습니다.";
     public static final String INVALID_AMOUNT_UNIT = "금액은 1,000원 단위로 입력해주세요.";
     public static final String INVALID_WINNING_NUMBERS = "당첨 숫자는 쉼표로 구분된 6개의 숫자를 입력해야 합니다.";
-
-    public static void print(String exception) {
-        System.out.println(exception);
-    }
 }
