@@ -21,7 +21,7 @@ public class Lotto {
         int count = countSameNumber(answer);
 
         rank = getRank(count);
-        if (rank == 5 && numbers.contains(bonus)) {
+        if (count == 5 && numbers.contains(bonus)) {
             rank = 2;
         }
 
