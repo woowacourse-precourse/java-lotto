@@ -22,7 +22,7 @@ class LottoComparatorTest {
     @Test
     void judgeFirstTest() {
         LottoNumber winningLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
-        LottoNumber userLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
+        LottoNumber userLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 6, -1));
         WinningRank rank = judgeWinning(winningLotto, userLotto);
         assertThat(rank).isEqualTo(FIRST);
     }
@@ -33,7 +33,7 @@ class LottoComparatorTest {
     @Test
     void judgeSecondTest() {
         LottoNumber winningLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
-        LottoNumber userLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 8, 7));
+        LottoNumber userLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 7, -1));
         WinningRank rank = judgeWinning(winningLotto, userLotto);
         assertThat(rank).isEqualTo(SECOND);
     }
@@ -44,7 +44,7 @@ class LottoComparatorTest {
     @Test
     void judgeThirdTest() {
         LottoNumber winningLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
-        LottoNumber userLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 8, 9));
+        LottoNumber userLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 8, -1));
         WinningRank rank = judgeWinning(winningLotto, userLotto);
         assertThat(rank).isEqualTo(THIRD);
     }
@@ -90,7 +90,7 @@ class LottoComparatorTest {
         LottoNumber winningLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
         List<LottoNumber> userLotto = new ArrayList<>();
         userLotto.add(new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 6, 7)));
-        userLotto.add(new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 8, 7)));
+        userLotto.add(new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 7, -1)));
 
         WinningLotto result = judgeAllLotto(winningLotto, userLotto);
         assertThat(result.getTotalReward()).isEqualTo(2030000000);
