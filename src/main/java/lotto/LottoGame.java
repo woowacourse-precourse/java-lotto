@@ -62,7 +62,7 @@ public class LottoGame {
                 matches += 1;
             }
         }
-        return checkPlace(matches, l2.getNumbers().contains(bonus));
+        return checkPlace(matches, l1.getNumbers().contains(bonus));
     }
 
     public static BigDecimal calcRateOfReturn(int[] matches, int money) {
