@@ -1,5 +1,6 @@
 package lotto.model;
 
+import java.util.Collections;
 import java.util.List;
 import lotto.constants.ErrorMessage;
 
@@ -13,6 +14,7 @@ public class Lotto {
         validateSixDigits(numbers);
         validateRange(numbers);
         validateDuplicate(numbers);
+        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
