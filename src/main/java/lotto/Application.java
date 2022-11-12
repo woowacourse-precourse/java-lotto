@@ -2,10 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Application {
 
@@ -22,7 +19,7 @@ public class Application {
             chatbot.printUserLotto(lottoPrice / 1000, userNumber);
             Lotto lotto = new Lotto(chatbot.askLottoNumber());
             int bonus = validateLottoBonus(lotto, chatbot.askLottoBonus());
-            List<Integer> result = compareNumbers(userNumber, lotto, bonus);
+            List<Integer> result = getNumberOfWin(userNumber, lotto, bonus);
             float rate = calculateRate(lottoPrice, result);
             chatbot.printResult(rate, result);
         } catch (IllegalArgumentException e) {
@@ -70,20 +67,27 @@ public class Application {
         return bonus;
     }
 
-    public static List<Integer> compareNumbers(List<List<Integer>> userNumber, Lotto lotto, int bonus) {
-        //List<Integer> result = new ArrayList<Integer>();
+    public static List<Integer> getNumberOfWin(List<List<Integer>> userNumber, Lotto lotto, int bonus) {
+        List<Integer> result = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0, 0,0));
 
-        return null;
+        for (int i = 0; i < userNumber.size(); i++) {
+            int countSameNum = countSameNum(userNumber.get(i), lotto, bonus);
+            result.add(countSameNum, result.get(countSameNum) + 1);
+        }
+        return result;
     }
 
-    public static int countSameNum(List<Integer> userEachNumber, Lotto lotto) {
+    public static int countSameNum(List<Integer> userEachNumber, Lotto lotto, int bonus) {
         List<Integer> result = new ArrayList<Integer>();
         int count = 0;
 
         for (int i = 0; i < COUNT; i++) {
-            if(lotto.getLottoNumber().contains(userEachNumber.get(i))) {
+            if (lotto.getLottoNumber().contains(userEachNumber.get(i))) {
                 count++;
             }
+        }
+        if (count == 5 && userEachNumber.contains(bonus)) {
+            count=7;
         }
         return count;
     }
