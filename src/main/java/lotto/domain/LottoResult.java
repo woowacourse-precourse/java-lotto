@@ -22,4 +22,23 @@ public enum LottoResult {
         return prize;
     }
 
+    LottoResult getResult(int correctNum, boolean correctBonus) {
+        if(correctNum == 6) {
+            return FIRST;
+        }
+        if(correctNum == 5 && correctBonus) {
+            return SECOND;
+        }
+        if(correctNum == 5) {
+            return THIRD;
+        }
+        if(correctNum == 4) {
+            return FOURTH;
+        }
+        if(correctNum == 3) {
+            return FIFTH;
+        }
+        return NOTHING;
+    }
+
 }
