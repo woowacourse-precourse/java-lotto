@@ -5,17 +5,20 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 public class Lotto {
-    private final int LOTTERY_NUMBER_LIMIT = 6;
     private final List<Integer> numbers;
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
     }
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != LOTTERY_NUMBER_LIMIT) {
+        final int LIMIT_OF_SIZE = 6;
+        if (numbers.size() != LIMIT_OF_SIZE) {
             System.out.println("[ERROR] 당첨 번호는 정확히 6개를 입력하셔야 합니다.");
             throw new IllegalArgumentException();
         }
+        checkOverLap(numbers);
+    }
+    private void checkOverLap(List<Integer> numbers){
         Iterator itrForNumbers = numbers.iterator();
         int[] arrayForCheckOverLap = new int[46];
         while (itrForNumbers.hasNext()){
@@ -27,13 +30,13 @@ public class Lotto {
             arrayForCheckOverLap[checkIndex] = 1;
         }
     }
-    public ArrayList<BigInteger> checkLottoWinnings(ArrayList<ArrayList<Integer>> lotteryBundleArray, int bonusWinningNumber) {
-        ArrayList<BigInteger> countWinningNumbersCaseArray = new ArrayList<>();
-        BigInteger add1 = new BigInteger("1");
+    public ArrayList<BigInteger> checkLottoWinnings(ArrayList<ArrayList<Integer>> lotteryBundleArray, int bonusWinningNumber){
+        return countLotteryWinningNumber(lotteryBundleArray, bonusWinningNumber);
+    }
+    private ArrayList<BigInteger> countLotteryWinningNumber(ArrayList<ArrayList<Integer>> lotteryBundleArray ,int bonusWinningNumber){
         final int SET_TO_INDEX_VALUE = 3;
-        for (int index = 0; index < 5; index++){
-            countWinningNumbersCaseArray.add(new BigInteger("0"));
-        }
+        ArrayList<BigInteger> countWinningNumbersCaseArray = initializeArray();
+        BigInteger add1 = new BigInteger("1");
         for (ArrayList<Integer> lottery : lotteryBundleArray){
             int settedIndex = countWinningNumbers(lottery,bonusWinningNumber)-SET_TO_INDEX_VALUE;
             if (settedIndex >= 0) {
@@ -41,12 +44,15 @@ public class Lotto {
                 System.out.println(countWinningNumbersCaseArray.get(settedIndex));
             }
         }
-//        for (int index = 0; index < countWinningNumbersCaseArray.size(); index++){
-//            System.out.println(countWinningNumbersCaseArray.get(index));
-//        }
         return countWinningNumbersCaseArray;
     }
-
+    private ArrayList<BigInteger> initializeArray() {
+        ArrayList<BigInteger> countWinningNumbersCaseArray = new ArrayList<>();
+        for (int index = 0; index < 5; index++){
+            countWinningNumbersCaseArray.add(new BigInteger("0"));
+        }
+        return countWinningNumbersCaseArray;
+    }
     private int countWinningNumbers(ArrayList<Integer> lottery, int bonusWinningNumber){
         int countOfWinningNumbers = 0;
         for (int index = 0; index < lottery.size(); index++){
@@ -55,11 +61,10 @@ public class Lotto {
             }
         }
         if (lottery.contains(bonusWinningNumber)) {
-            countOfWinningNumbers+=2;
+            countOfWinningNumbers += 2;
         }
         return countOfWinningNumbers;
     }
-
     public void printLottoWinningsResult(ArrayList<BigInteger> resultArray, int buyingAmount){
         BigInteger sumOfWinAmount = new BigInteger("0");
         System.out.println("\n당첨 통계\n---");
@@ -70,33 +75,32 @@ public class Lotto {
         sumOfWinAmount = sumOfWinAmount.add(printCase6Correct(resultArray.get(3)));
         printPercentOfProfit(sumOfWinAmount, Integer.toString(buyingAmount));
     }
-
-    private BigInteger printCase3Correct(BigInteger countForCase) {
+    private BigInteger printCase3Correct(BigInteger countForCase){
         BigInteger tempInteger = new BigInteger("5000");
         System.out.println("3개 일치 (5,000원) - " + countForCase + "개");
         return tempInteger.multiply(countForCase);
     }
-    private BigInteger printCase4Correct(BigInteger countForCase) {
+    private BigInteger printCase4Correct(BigInteger countForCase){
         BigInteger tempInteger = new BigInteger("50000");
         System.out.println("4개 일치 (50,000원) - " + countForCase + "개");
         return tempInteger.multiply(countForCase);
     }
-    private BigInteger printCase5Correct(BigInteger countForCase) {
+    private BigInteger printCase5Correct(BigInteger countForCase){
         BigInteger tempInteger = new BigInteger("1500000");
         System.out.println("5개 일치 (1,500,000원) - " + countForCase + "개");
         return tempInteger.multiply(countForCase);
     }
-    private BigInteger printCase5BonusCorrect(BigInteger countForCase) {
+    private BigInteger printCase5BonusCorrect(BigInteger countForCase){
         BigInteger tempInteger = new BigInteger("30000000");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + countForCase + "개");
         return tempInteger.multiply(countForCase);
     }
-    private BigInteger printCase6Correct(BigInteger countForCase) {
+    private BigInteger printCase6Correct(BigInteger countForCase){
         BigInteger tempInteger = new BigInteger("2000000000");
         System.out.println("6개 일치 (2,000,000,000원) - " + countForCase + "개");
         return tempInteger.multiply(countForCase);
     }
-    private void printPercentOfProfit(BigInteger sumOfWinAmount, String buyingAmountString) {
+    private void printPercentOfProfit(BigInteger sumOfWinAmount, String buyingAmountString){
         BigInteger buyingAmount = new BigInteger(buyingAmountString);
 
         double percentOfProfit = sumOfWinAmount.doubleValue()/buyingAmount.doubleValue()*100;
