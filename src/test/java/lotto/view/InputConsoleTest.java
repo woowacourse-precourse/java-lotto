@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -58,7 +60,7 @@ class InputConsoleTest extends NsTest{
         run("숫자아님");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, inputConsole::enterPurchaseAmount);
+        Exception exception = assertThrows(NoSuchElementException.class, inputConsole::enterPurchaseAmount);
         assertEquals("[ERROR] 숫자를 입력 하세요.", exception.getMessage());
     }
 
@@ -168,7 +170,7 @@ class InputConsoleTest extends NsTest{
         run("한글");
 
         // expected
-        Exception exception = assertThrows(IllegalArgumentException.class, inputConsole::enterBonusNumber);
+        Exception exception = assertThrows(NoSuchElementException.class, inputConsole::enterBonusNumber);
         assertEquals("[ERROR] 숫자를 입력 하세요.", exception.getMessage());
     }
 
