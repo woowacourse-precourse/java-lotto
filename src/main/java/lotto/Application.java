@@ -23,9 +23,9 @@ public class Application {
         int number=Integer.valueOf(purchaseAmount)/1000;
 
 
-        System.out.printf("%d"+Message.TOTAL.getMessage(),number);
+        System.out.printf("%d"+Message.TOTAL.getMessage()+"\n",number);
 
-        ArrayList<Integer>[] userLotto= new ArrayList[number];
+        List<Integer>[] userLotto= new ArrayList[number];
         for(int i=0;i<number;i++){
             userLotto[i]=new ArrayList<Integer>();
         }
@@ -36,6 +36,10 @@ public class Application {
             for (int j = 0; j < randomNumbers.size(); j++) {
                 userLotto[i].add(randomNumbers.get(j));
             }
+        }
+
+        for(int i=0;i<number;i++) {
+            System.out.println(userLotto[i]);
         }
 
 
