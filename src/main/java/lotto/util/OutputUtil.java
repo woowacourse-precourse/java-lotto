@@ -13,6 +13,10 @@ public class OutputUtil {
         System.out.println(Message.INPUT_PURCHASE_AMOUNT_MESSAGE.getMessage());
     }
 
+    public static void printInputPurchaseAmountError() {
+        System.out.println(Message.NOT_THOUSAND_UNIT_INPUT_ERROR);
+    }
+
     public static void printUserLottoCount(int lottoCount) {
         System.out.println("" + lottoCount + "개를 구매했습니다.");
     }
