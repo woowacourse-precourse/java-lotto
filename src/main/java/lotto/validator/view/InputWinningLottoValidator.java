@@ -9,7 +9,7 @@ public class InputWinningLottoValidator {
     private static final String WINNING_LOTTO_INPUT_FORM_EXCEPTION_MESSAGE = "[ERROR] 로또 번호 입력 형식이 잘못 되었습니다.";
     private static final String EXIST_ZERO_AT_FIRST_PLACE_EXCEPTION_MESSAGE = "[ERROR] 숫자의 1번째 자리는 0일 수 없습니다.";
     private static final String WINNING_LOTTO_INPUT_FORM = "(\\d+,){5}\\d+";
-    private static final String EXIST_ZERO_AT_FIRST_PLACE_FORM = "0\\d+";
+    private static final String EXIST_ZERO_AT_FIRST_PLACE_FORM = "0\\d+,|,0\\d+";
     
     private InputWinningLottoValidator() {
         throw new UtilClassCreateException();
