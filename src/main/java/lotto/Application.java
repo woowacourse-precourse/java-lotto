@@ -58,6 +58,8 @@ public class Application {
             System.out.println(
                 "6개 일치 (" + WinningAmount.FIRST_PLACE.getAmountToDecimalFormatString() + "원) - "
                     + calculateResult.get(0) + "개");
+            System.out.println(
+                "총 수익률은 " + String.format("%.1f", getYield(lottoCount, calculateResult)) + "%입니다.");
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -121,5 +123,19 @@ public class Application {
         if (winningLotto.getLottoNumbers().contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 당첨 로또 번호와 보너스 번호 중복이 있습니다.");
         }
+    }
+
+    public static double getYield(int lottoCount, List<Integer> calculateResult) {
+        int purchaseAmount = lottoCount * 1000;
+        int sumOfWinningAmount = getSumOfWinningAmount(calculateResult);
+        return 100 + ((double) (sumOfWinningAmount - purchaseAmount) * 100 / purchaseAmount);
+    }
+
+    private static int getSumOfWinningAmount(List<Integer> calculateResult) {
+        return WinningAmount.FIRST_PLACE.getAmount() * calculateResult.get(0)
+            + WinningAmount.SECOND_PLACE.getAmount() * calculateResult.get(1)
+            + WinningAmount.THIRD_PLACE.getAmount() * calculateResult.get(2)
+            + WinningAmount.FOURTH_PLACE.getAmount() * calculateResult.get(3)
+            + WinningAmount.FIFTH_PLACE.getAmount() * calculateResult.get(4);
     }
 }
