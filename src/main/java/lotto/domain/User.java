@@ -33,4 +33,14 @@ public class User {
         Collections.sort(makeLotto);
         return makeLotto;
     }
+
+    public List<List<Integer>> showLotto(int countLotto) {
+        List<List<Integer>> userLotto = new ArrayList<>();
+        for (int i = 0; i < countLotto; i++) {
+            List<Integer> list = makeLotto();
+            System.out.println(list);
+            userLotto.add(list);
+        }
+        return userLotto;
+    }
 }
