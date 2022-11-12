@@ -1,10 +1,10 @@
 package lotto;
 
 abstract public class Exception extends Throwable {
-    public int checkNumeric(String input){
-        int number;
+    public long checkNumeric(String input){
+        long number;
         try{
-            number = Integer.parseInt(input);
+            number = Long.parseLong(input);
         }
         catch (NumberFormatException ex) {
             throw new IllegalArgumentException();
@@ -12,8 +12,8 @@ abstract public class Exception extends Throwable {
         return number;
     }
 
-    public void checkDivisible(int dividend, int divisor){
-        int remainder = dividend % divisor;
+    public void checkDivisible(long dividend, long divisor){
+        long remainder = dividend % divisor;
         if(remainder!=0) throw new IllegalArgumentException();
     }
 }
