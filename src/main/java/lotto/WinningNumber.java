@@ -9,12 +9,20 @@ import static lotto.constant.Constants.*;
 
 public class WinningNumber {
 
-    Lotto lotto;
-    int bonusNumber;
+    private Lotto lotto;
+    private int bonusNumber;
 
     public WinningNumber() {
         inputWinningNumber();
         inputBonusNumber();
+    }
+
+    public Lotto getLotto() {
+        return lotto;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 
     private void inputWinningNumber() {

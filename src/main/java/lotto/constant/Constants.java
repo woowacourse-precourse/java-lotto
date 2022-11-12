@@ -8,6 +8,19 @@ public final class Constants {
     public static final int LOTTO_COUNT = 6;
     public static final int LOTTO_PRICE = 1000;
 
+    public static final int NUM_TO_MATCH1TH = 6;
+    public static final int NUM_TO_MATCH2TH = 5;
+    public static final int NUM_TO_MATCH3TH = 5;
+    public static final int NUM_TO_MATCH4TH = 4;
+    public static final int NUM_TO_MATCH5TH = 3;
+
+    public static final int FIFTH_PLACE_PRIZE = 5000;
+    public static final int FOURTH_PLACE_PRIZE = 50000;
+    public static final int THIRD_PLACE_PRIZE = 1500000;
+    public static final int SECOND_PLACE_PRIZE = 30000000;
+    public static final int FIRST_PLACE_PRIZE = 2000000000;
+
+
     public static final String PURCHASE_MESSAGE = "구입금액을 입력해 주세요.";
     public static final String PURCHASE_CONFIRM_MESSAGE = "개를 구매했습니다.";
     public static final String WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
