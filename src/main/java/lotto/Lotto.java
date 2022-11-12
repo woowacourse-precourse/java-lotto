@@ -48,4 +48,17 @@ public class Lotto {
         }
     }
 
+    public int check_rank(List<Integer> lotto_nums){
+        int check = 0;
+        int num;
+        List<Integer> numbers = this.numbers;
+        for(int i=0;i<lotto_nums.size();i++){
+            num = lotto_nums.get(i);
+            if(numbers.contains(num)){
+                check++;
+            }
+        }
+        return check;
+    }
+
 }
