@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoUtil;
+import lotto.lottopaper.LottoPaper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -74,5 +75,31 @@ class LottoTest {
 
         // then
         assertThat(rank).isEqualTo(answerRank);
+    }
+
+    @DisplayName("로또 종이 결과 테스트")
+    @Test
+    void checkLottoPaperRank() {
+        // given
+        LottoPaper lottoPaper = generateTestLottos();
+        Integer bonus = 7;
+        List<Integer> userNumbers = List.of(8, 21, 23, 41, 42, 43);
+        List<Integer> answerRanks = List.of(3, 1, 0, 0, 0, 1);
+
+        // when
+        List<Integer> ranks = lottoPaper.checkLottos(userNumbers, bonus);
+
+        // then
+        assertThat(ranks).isEqualTo(answerRanks);
+    }
+
+    private static LottoPaper generateTestLottos() {
+        LottoPaper lottoPaper = new LottoPaper();
+        lottoPaper.addLotto(new Lotto(List.of(8, 21, 23, 41, 42, 43)));
+        lottoPaper.addLotto(new Lotto(List.of(3, 5, 11, 16, 32, 38)));
+        lottoPaper.addLotto(new Lotto(List.of(7, 11, 16, 35, 36, 44)));
+        lottoPaper.addLotto(new Lotto(List.of(1, 8, 11, 31, 41, 42)));
+        lottoPaper.addLotto(new Lotto(List.of(13, 14, 16, 38, 42, 45)));
+        return lottoPaper;
     }
 }
