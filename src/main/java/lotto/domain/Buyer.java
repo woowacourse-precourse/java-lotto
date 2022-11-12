@@ -8,6 +8,14 @@ public class Buyer {
     public final int START_NUM = 1;
     public final int END_NUM = 45;
 
+    public void setPurchaseAmount(int purchaseAmount) {
+        this.purchaseAmount = purchaseAmount;
+    }
+
+    public int getPurchaseAmount() {
+        return purchaseAmount;
+    }
+
     private int purchaseAmount;
     private int purchaseCount;
     private int winningAmount;
