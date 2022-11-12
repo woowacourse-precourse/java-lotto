@@ -11,8 +11,28 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        verifyNumberOverlap(numbers);
+        verifySixNumber(numbers);
+        verifyBetween1and45(numbers);
+    }
+
+    private void verifyNumberOverlap(List<Integer> numbers) {
+        if (!(numbers.size() == numbers.stream().distinct().count())) {
+            throw new RuntimeException("[ERROR] 중복인 숫자가 있습니다.");
+        }
+    }
+
+    private void verifySixNumber(List<Integer> numbers) {
+        if (!(numbers.size() == 6)) {
+            throw new RuntimeException("[ERROR] 6개의 숫자를 입력하세여");
+        }
+    }
+
+    private void verifyBetween1and45(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (!(1 <= number && number <= 45)) {
+                throw new RuntimeException("[ERROR] 1 ~ 45 사이의 숫자만 입력해 주세요");
+            }
         }
     }
 
