@@ -26,6 +26,10 @@ public class SystemValidator {
 		}
 	}
 
+	public static void validateLottoBonusNumber(String winningLottoBonusNumber) {
+		validateIsNumber(winningLottoBonusNumber);
+	}
+
 	protected static void validateIsNumber(String input) {
 		if (hasNothing(input)) {
 			throw new IllegalArgumentException(ERROR_EMPTY_INPUT);

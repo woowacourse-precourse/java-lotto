@@ -31,6 +31,7 @@ public class Reader {
 
 	public static int readWinningLottoBonusNumberFromUser() {
 		String winningLottoBonusNumber = Console.readLine();
+		SystemValidator.validateLottoBonusNumber(winningLottoBonusNumber);
 
 		return Integer.parseInt(winningLottoBonusNumber);
 	}
