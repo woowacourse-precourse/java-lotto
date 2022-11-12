@@ -20,5 +20,4 @@ class LottoRepositoryTest {
 
         assertThat(targetNumber).isEqualTo(lotto.getNumbers());
     }
-
 }
