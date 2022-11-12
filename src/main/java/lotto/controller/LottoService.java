@@ -52,4 +52,9 @@ public class LottoService {
         outputView.printPrize(winningTickets);
         return comparator;
     }
+
+    private void checkEarnedRate(Comparator comparator, int paidMoney) {
+        float earnedRate = comparator.calculateEarnedRate(paidMoney);
+        outputView.printRate(earnedRate);
+    }
 }
