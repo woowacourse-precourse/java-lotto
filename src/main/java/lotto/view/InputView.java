@@ -11,15 +11,16 @@ import java.util.stream.Collectors;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
-	private static final String INPUT_USER_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
 	private static final String DEFAULT_ERROR_MESSAGE = "[ERROR] ";
+	private static final String INPUT_USER_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
 	private static final String INPUT_MONEY_ERROR_MESSAGE = "구입금액은 숫자여야 합니다.";
 	private static final String VALID_MONEY_ERROR_MESSAGE = "구입 금액은 1000원 단위로 입력하셔야 합니다.";
 	private static final String INPUT_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
+	private static final String INPUT_WIN_NUMBER_ERROR_MESSAGE = "당첨 번호는 ,로 구분된 숫자(1,2,3,4,5,6)여야 합니다.";
+	private static final String VALID_WIN_NUMBER_ERROR_MESSAGE = "당첨 번호는 1~45의 범위를 가지며, 6개입니다.";
 	private static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해주세요";
-	private static final String INPUT_WIN_NUMBER_MESSAGE = "당첨 번호는 ,로 구분된 숫자(1,2,3,4,5,6)여야 합니다.";
-	private static final String VALID_WIN_NUMBER_MESSAGE = "당첨 번호는 1~45의 범위를 가지는 6개의 숫자여야 합니다.";
-	private static final String VALID_BONUS_NUMBER_MESSAGE = "보너스 번호는 1~45의 범위를 가지는 1개의 숫자여야 합니다.";
+	private static final String INPUT_BONUS_NUMBER_ERROR_MESSAGE = "보너스 번호는 숫자여야 합니다.";
+	private static final String VALID_BONUS_NUMBER_ERROR_MESSAGE = "보너스 번호는 1~45의 범위를 가지며, 1개입니다.";
 	private static final String INPUT_WIN_NUMBER_DIVIDE_STRING = ",";
 	private static final int DIVIDE_UNIT = 1000;
 	private static final int ZERO_NUMBER = 0;
@@ -56,46 +57,49 @@ public class InputView {
 			winNumbers = Arrays.stream(Console.readLine().split(INPUT_WIN_NUMBER_DIVIDE_STRING))
 				.map(Integer::parseInt).collect(Collectors.toList());
 		} catch (IllegalArgumentException e) {
-			System.out.println(DEFAULT_ERROR_MESSAGE + INPUT_WIN_NUMBER_MESSAGE);
+			System.out.println(DEFAULT_ERROR_MESSAGE + INPUT_WIN_NUMBER_ERROR_MESSAGE);
 		}
 		return winNumbers;
 	}
 
-	public void validWinningNumber(String userInput) {
-		if (isWrongSize(userInput) || isDuplicateNumber(userInput)
-			|| isWrongRangeWinningNumber(userInput)) {
-			throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + VALID_WIN_NUMBER_MESSAGE);
+	public void validWinningNumber(List<Integer> winNumbers) {
+		if (isWrongSize(winNumbers) || isDuplicateNumber(winNumbers)
+			|| isWrongRangeWinningNumber(winNumbers)) {
+			throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + VALID_WIN_NUMBER_ERROR_MESSAGE);
 		}
 	}
 
-	public String inputBonusNumber() {
+	private boolean isDuplicateNumber(List<Integer> winNumbers) {
+		return new HashSet<>(winNumbers).size() != DEFAULT_SIZE;
+	}
+
+	private boolean isWrongRangeWinningNumber(List<Integer> winNumbers) {
+		return winNumbers.stream().noneMatch(num -> MIN_VALUE <= num && num <= MAX_VALUE);
+	}
+
+	private boolean isWrongSize(List<Integer> winNumbers) {
+		return winNumbers.size() != DEFAULT_SIZE;
+	}
+
+	public int inputBonusNumber() {
+		int bonusNumber = 0;
 		System.out.println();
 		System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
-		return Console.readLine();
+		try {
+			bonusNumber = Integer.parseInt(Console.readLine());
+		} catch (IllegalArgumentException e) {
+			System.out.println(DEFAULT_ERROR_MESSAGE + INPUT_BONUS_NUMBER_ERROR_MESSAGE);
+		}
+		return bonusNumber;
 	}
 
-	public void validBonusNumber(String str) {
-		if (isWrongRangeBonusNumber(str)) {
-			throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + VALID_BONUS_NUMBER_MESSAGE);
+	public void validBonusNumber(int bonusNumber) {
+		if (isWrongRangeBonusNumber(bonusNumber)) {
+			throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + VALID_BONUS_NUMBER_ERROR_MESSAGE);
 		}
 	}
 
-	private boolean isWrongRangeBonusNumber(String str) {
-		int bonusNumber = Integer.parseInt(str);
+	private boolean isWrongRangeBonusNumber(int bonusNumber) {
 		return !(MIN_VALUE <= bonusNumber && bonusNumber <= MAX_VALUE);
-	}
-
-	private boolean isDuplicateNumber(String str) {
-		Set<String> notDuplicateNumbers = Arrays.stream(str.split(INPUT_WIN_NUMBER_DIVIDE_STRING)).collect(Collectors.toSet());
-		return notDuplicateNumbers.size() != DEFAULT_SIZE;
-	}
-
-	private boolean isWrongRangeWinningNumber(String str) {
-		return Arrays.stream(str.split(INPUT_WIN_NUMBER_DIVIDE_STRING))
-			.mapToInt(Integer::parseInt).noneMatch(num -> MIN_VALUE <= num && num <= MAX_VALUE);
-	}
-
-	private boolean isWrongSize(String str) {
-		return str.split(INPUT_WIN_NUMBER_DIVIDE_STRING).length != DEFAULT_SIZE;
 	}
 }

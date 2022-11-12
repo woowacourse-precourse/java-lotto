@@ -39,15 +39,13 @@ public class LottoController {
 	}
 
 	public void receiveWinningNumbers() {
-		String userInput = inputView.inputWinningNumber();
-		inputView.validWinningNumber(userInput);
-		winningNumbers = Arrays.stream(userInput.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+		winningNumbers = inputView.inputWinningNumber();
+		inputView.validWinningNumber(winningNumbers);
 	}
 
 	public void receiveBonusNumber() {
-		String userInput = inputView.inputBonusNumber();
-		inputView.validBonusNumber(userInput);
-		bonusNumber = Integer.parseInt(userInput);
+		bonusNumber = inputView.inputBonusNumber();
+		inputView.validBonusNumber(bonusNumber);
 
 	}
 
