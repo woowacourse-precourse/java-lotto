@@ -19,7 +19,7 @@ public class Lotto {
             throw new IllegalArgumentException("중복된 숫자를 입력할 수 없습니다");
         }
         int filteredCnt = (int) numbers.stream().filter(number -> 1 <= number)
-                .filter(number -> number < 45)
+                .filter(number -> number <= 45)
                 .count();
         if (filteredCnt != 6) {
             throw new IllegalArgumentException("1부터 45까지의 숫자를 입력해야 합니다");
@@ -34,4 +34,11 @@ public class Lotto {
     public boolean has(Integer number) {
         return numbers.contains(number);
     }
+
+    public Integer compare(Lotto winningNumber) {
+        //우승 자리와 한자리씩 비교한다
+        return (int) numbers.stream().filter(winningNumber::has)
+                .count();
+    }
+    // 비교하며 숫자가 있는지, 보너스 숫자에 있는지 저장해서 반환한다
 }
