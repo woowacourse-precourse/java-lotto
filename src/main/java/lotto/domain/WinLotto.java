@@ -16,6 +16,7 @@ public class WinLotto {
 
     private void validate(Lotto winLotto, int bonus) {
         WinLottoValidate winLottoValidate = new WinLottoValidate();
+        winLottoValidate.validate(winLotto, bonus);
     }
     public List<Integer> getWinNumbers(){
         return winNumbers;
