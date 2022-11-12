@@ -11,30 +11,22 @@ import lotto.domain.LottoResult;
 
 public class LottoView {
 
-    private static final String START_MESSAGE = "구입금액을 입력해 주세요.";
-    private static final String WINNINGS_NUMBERS_SETTING_MESSAGE = "당첨 번호를 입력해 주세요.";
-    private static final String BONUS_NUMBER_SETTING_MESSAGE = "보너스 번호를 입력해 주세요.";
-    private static final String LOTTO_NUMBER_MESSAGE = "개를 구매했습니다.";
-
-    private static final String PREFIX_YIELD_MESSAGE = "총 수익률은 ";
-    private static final String SUFFIX_YIELD_MESSAGE = "%입니다.";
-
-    private static final long RESULT_NUMBER_ZERO = 0L;
+    private final long LOTTO_RESULT_IS_ZERO = 0L;
 
     public void printStartMessage() {
-        System.out.println(START_MESSAGE);
+        System.out.println("구입금액을 입력해 주세요.");
     }
 
     public void printWinningNumbersSettingMessage() {
-        System.out.println(WINNINGS_NUMBERS_SETTING_MESSAGE);
+        System.out.println("당첨 번호를 입력해 주세요.");
     }
 
     public void printBonusNumberSettingMessage() {
-        System.out.println(BONUS_NUMBER_SETTING_MESSAGE);
+        System.out.println("보너스 번호를 입력해 주세요.");
     }
 
     public void printLottoBundleInfo(List<Lotto> lottoBundle) {
-        System.out.println(lottoBundle.size() + LOTTO_NUMBER_MESSAGE);
+        System.out.printf("%d개를 구매했습니다.\n", lottoBundle.size());
         lottoBundle.stream()
                 .map(Lotto::getNumbers)
                 .forEach(System.out::println);
@@ -47,13 +39,11 @@ public class LottoView {
 
         Arrays.stream(LottoResult.values())
                 .filter(lottoResult -> lottoResult.getPayout() != 0)
-                .map(lottoResult -> getResultMessage(lottoResult, numberOfEachLottoResult))
-                .forEach(System.out::println);
+                .forEach(lottoResult -> printResultMessage(lottoResult, numberOfEachLottoResult));
     }
 
     public void printYield(double yield) {
-        String yieldFormat = String.format("%.1f", yield);
-        System.out.println(PREFIX_YIELD_MESSAGE + yieldFormat + SUFFIX_YIELD_MESSAGE);
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", yield);
     }
 
     private void printResultInfoStartMessage() {
@@ -66,19 +56,20 @@ public class LottoView {
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     }
 
-    private String getResultMessage(LottoResult lottoResult,
+    private void printResultMessage(LottoResult lottoResult,
                                     Map<LottoResult, Long> numberOfEachLottoResult) {
-        return getResultMessagePrefix(lottoResult) +
-               numberOfEachLottoResult.getOrDefault(lottoResult, RESULT_NUMBER_ZERO) + "개";
-    }
-
-    private String getResultMessagePrefix(LottoResult lottoResult) {
         DecimalFormat df = new DecimalFormat("###,###");
-        String suffix = "(" + df.format(lottoResult.getPayout()) + "원) - ";
 
         if (lottoResult.equals(LottoResult.FIVE_WITH_BONUS)) {
-            return lottoResult.getNumberOfMatches() + "개 일치, 보너스 볼 일치 " + suffix;
+            System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n",
+                    lottoResult.getNumberOfMatches(),
+                    df.format(lottoResult.getPayout()),
+                    numberOfEachLottoResult.getOrDefault(lottoResult, LOTTO_RESULT_IS_ZERO));
+            return;
         }
-        return lottoResult.getNumberOfMatches() + "개 일치 " + suffix;
+        System.out.printf("%d개 일치 (%s원) - %d개\n",
+                lottoResult.getNumberOfMatches(),
+                df.format(lottoResult.getPayout()),
+                numberOfEachLottoResult.getOrDefault(lottoResult, LOTTO_RESULT_IS_ZERO));
     }
 }
