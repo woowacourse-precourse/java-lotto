@@ -98,6 +98,24 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @DisplayName("보너스 번호가 1부터 45 사이의 숫자가 아니면 예외가 발생한다.")
+    @Test
+    void createBonusOutOfScope() {
+        assertSimpleTest(() -> {
+            runException("7000", "1,2,3,4,5,6", "47");
+            assertThat(output()).contains("보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+        });
+    }
+
+    @DisplayName("보너스 번호가 당첨 번호와 중복된다면 예외가 발생한다.")
+    @Test
+    void createBonusByDuplicatedNumber() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "3");
+            assertThat(output()).contains("로또 번호와 보너스 번호는 중복되지 않아야 합니다.");
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
