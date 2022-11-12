@@ -340,13 +340,13 @@ public class Application {
         return number;
     }
 
-    public static Integer calculateForth(List<Lotto> lottoList, List<Integer> winningNumberList) {
+    public static Integer calculateForth(List<Lotto> lottoTickets, List<Integer> winningNumbers) {
 
         int number = 0;
 
-        for (Lotto lotto : lottoList) {
+        for (Lotto lotto : lottoTickets) {
 
-            number += compareLottoNumbersAndWinningNumbers(lotto, winningNumberList, 4);
+            number += compareLottoNumbersAndWinningNumbers(lotto, winningNumbers, 4);
         }
 
         return number;
