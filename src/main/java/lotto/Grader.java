@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Grader {
@@ -14,11 +15,20 @@ public class Grader {
     }
 
     public void grade() {
-        lottoList.forEach(lotto -> {
+        for (Lotto lotto: lottoList) {
             List<Integer> lottoNumbers = lotto.getNumbers();
             int matchNumber = getMatchNumber(lottoNumbers);
+            if (matchNumber < Rank.FIVE.getMatchNum()) continue; // 미당첨 처리
+            if (isRankTwo(matchNumber, lottoNumbers)) {
+                // 2,3등 구분 처리
+                matchNumber = Rank.TWO.getMatchNum();
+            }
+            Rank.getRank(matchNumber).plus();
+        }
+    }
 
-        });
+    private boolean isRankTwo(int matchNumber, List<Integer> lottoNumbers) {
+       return matchNumber == 5 && lottoNumbers.contains(bonusNumber);
     }
 
     public int getMatchNumber(List<Integer> lottoNumbers) {
