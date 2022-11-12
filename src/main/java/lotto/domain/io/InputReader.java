@@ -37,4 +37,11 @@ public class InputReader {
     duplicationValidator.validate(inputs);
     return inputs;
   }
+
+  public int readBonusNumber() {
+    String input = Console.readLine();
+    int inputToInt = numberValidator.validate(input);
+    rangeValidator.validate(inputToInt);
+    return inputToInt;
+  }
 }
