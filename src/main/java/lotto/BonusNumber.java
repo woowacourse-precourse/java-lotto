@@ -19,7 +19,7 @@ public class BonusNumber {
     private void validate(String number, Lotto lottoNumbers) {
         if (isStringEmpty(number) || !isDigit(number)) {
             throw new IllegalArgumentException(ExceptionMessage.BONUS_OUT_OF_RANGE.getMessage());
-        } else if (isBetweenLottoRange(convertStringToInt(number))) {
+        } else if (!isBetweenLottoRange(convertStringToInt(number))) {
             throw new IllegalArgumentException(ExceptionMessage.BONUS_OUT_OF_RANGE.getMessage());
         } else if (isNumberInLotto(convertStringToInt(number), lottoNumbers)) {
             throw new IllegalArgumentException(ExceptionMessage.BONUS_DUPLICATE_VALUE.getMessage());
