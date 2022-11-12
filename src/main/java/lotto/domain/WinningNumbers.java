@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 
+import lotto.utils.LottoInfo;
 import lotto.utils.Validator;
 
 public class WinningNumbers {
@@ -27,7 +28,7 @@ public class WinningNumbers {
 
     private void validate(List<Integer> numbers) {
         Validator.containDuplicate(numbers);
-        Validator.listLengthCheck(numbers, 6);
+        Validator.listLengthCheck(numbers, LottoInfo.LENGTH.getNumber());
         for (int number : numbers) {
             Validator.isInRange(number);
         }
