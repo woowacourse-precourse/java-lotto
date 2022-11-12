@@ -10,13 +10,12 @@ import java.util.stream.Collectors;
 public class Rate {
     private Map<Rank,Integer> winningStats;
     private Map<Rank,Integer> rankPrice;
-    private int price;
     private double earningRate;
 
-    public Rate(Map<Rank,Integer> winningStats){
+    public Rate(Map<Rank,Integer> winningStats, int price){
         this.winningStats = winningStats;
         setRankPrice();
-        setEarningRate(winningStats);
+        setEarningRate(winningStats, price);
 
     }
 
@@ -34,7 +33,7 @@ public class Rate {
         this.rankPrice = rankPrice;
     }
 
-    private void setEarningRate(Map<Rank,Integer> winningStats) {
+    private void setEarningRate(Map<Rank,Integer> winningStats, int price) {
         int earningPrice = calcEarning(winningStats);
         this.earningRate = Math.round((earningPrice / price) * 100 * 100) / 100.0;
     }
