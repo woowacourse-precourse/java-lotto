@@ -17,7 +17,8 @@
   - [] 숫자를 비교할 수 있는 기능을 구현하고, 그것을 정수형(일반 맞춘 개수, 보너스 맞춘 개수)로 반환한다. <3><4,5> Comparator#compareLotto
 
 - 당첨 내역에 따른 수익률 계산기를 만든다.
-  - [] 당첨된 숫자에 따른, 수익률을 계산하고 정수형(수익률)로 반환한다. <5><6> Calculater#caculateRevenue
+  - [] 수익률을 계산하기 위해, 수익을 먼저 계산한다. 그리고 수익을 반환한다.<5><7> Calculater#caculateRevenue
+  - [] 당첨된 숫자에 따른, 수익률을 계산하고 정수형(수익률)로 반환한다. <7><6> Calculater#caculateRevenuePercent
 
 - 당첨 내역과 수익률을 출력한다. 
   - [] 당첨 내역 출력기를 만든다. <4><> Printer#printWinList
