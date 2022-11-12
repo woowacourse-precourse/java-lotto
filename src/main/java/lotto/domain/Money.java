@@ -28,6 +28,10 @@ public class Money {
         return revenue.divide(investmentPrincipal).multiply(HUNDRED_BIG_DECIMAL).doubleValue();
     }
 
+    public int divide(Money lottoPrice) {
+        return Long.valueOf(this.money / lottoPrice.money).intValue();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.Objects;
 import lotto.exception.domain.LottoSizeException;
 import lotto.exception.domain.LottoNumberDuplicateException;
 
@@ -42,5 +43,22 @@ public class Lotto {
         return Long.valueOf(this.numbers.stream()
                 .filter(matchLotto.numbers::contains)
                 .count()).intValue();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Lotto lotto = (Lotto) o;
+        return this.numbers.equals(lotto.numbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numbers);
     }
 }

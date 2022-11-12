@@ -37,4 +37,8 @@ public class LottoNumber {
     public boolean equalNumber(Integer number) {
         return this.number == number;
     }
+
+    public int number() {
+        return this.number;
+    }
 }
