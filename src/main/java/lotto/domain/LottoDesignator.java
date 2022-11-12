@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -36,6 +37,21 @@ public class LottoDesignator {
         if(numbers.length != removeDuplication.size()) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복될 수 없습니다.");
         }
+    }
+
+    public void checkRange(String input) {
+        Integer[] numbers = Stream.of(removeComma(input))
+                .mapToInt(Integer::parseInt)
+                .boxed()
+                .toArray(Integer[]::new);
+        List<Integer> range = initRange();
+        List<Integer> lotto = Arrays.asList(numbers);
+        for(int lottoIndex = 0; lottoIndex<lotto.size(); lottoIndex++) {
+            if(!range.contains(lotto.get(lottoIndex))) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1 ~ 45 범위만 입력 가능합니다.");
+            }
+        }
+
     }
 
     private String[] removeComma(String input) {
