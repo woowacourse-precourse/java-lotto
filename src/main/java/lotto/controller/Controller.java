@@ -16,7 +16,6 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Controller {
 
-    private View view;
     private Shop shop;
     private Draw draw;
     private Rate rate;
