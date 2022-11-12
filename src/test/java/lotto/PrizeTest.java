@@ -3,6 +3,9 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class PrizeTest {
@@ -32,5 +35,23 @@ class PrizeTest {
 
         assertThat(threeMatch).isEqualTo(answer);
         assertThat(fiveBonusMatch).isEqualTo(answer2);
+    }
+
+    @DisplayName("당첨 결과 리스트 생성 테스트")
+    @Test
+    void makeResultMessageTest() {
+        HashMap<Prize, Integer> totalMatchResult = new HashMap<>();
+        totalMatchResult.put(Prize.FOUR_MATCH, 2);
+        totalMatchResult.put(Prize.FIVE_MATCH, 1);
+
+        List<String> messages = Prize.makeResultMessage(totalMatchResult);
+
+        List<String> answer = List.of(
+                "3개 일치 (5,000원) - 0개",
+                "4개 일치 (50,000원) - 2개",
+                "5개 일치 (1,500,000원) - 1개",
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+                "6개 일치 (2,000,000,000원) - 0개");
+        assertThat(messages).isEqualTo(answer);
     }
 }
