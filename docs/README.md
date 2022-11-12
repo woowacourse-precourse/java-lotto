@@ -29,9 +29,9 @@ Enum : Rank
 
 ### View
 ```
-- printLottoPayed() // (feat.8)
-- printWinningStats() // (feat.9)
-- printEarningRate() // (feat.10)
+- printLottoPayed(List<Lotto> lottoPayed) // (feat.8)
+- printWinningStats(Map<Rank, Integer> winningStats) // (feat.9)
+- printEarningRate(double earningRate) // (feat.10)
 ```
 
 ### Controller
