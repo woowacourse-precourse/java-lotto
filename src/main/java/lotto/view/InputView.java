@@ -23,7 +23,7 @@ public class InputView {
     public static List<Integer> winningNumbers() {
         System.out.println(WINNING_NUMBER_MESSAGE);
 
-        return convertStringToLotto(Console.readLine());
+        return convertStringToNumbers(Console.readLine());
     }
 
     public static int bonusNumber() {
@@ -41,7 +41,7 @@ public class InputView {
         }
     }
 
-    private static List<Integer> convertStringToLotto(String winningNumbers) {
+    private static List<Integer> convertStringToNumbers(String winningNumbers) {
         try {
             String[] lottoNumbers = winningNumbers.split(",");
             return Arrays.stream(lottoNumbers)
