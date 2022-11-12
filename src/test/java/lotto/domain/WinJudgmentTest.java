@@ -21,9 +21,9 @@ class WinJudgmentTest {
 
     @Test
     void 보너스_번호를_맞추었는지_판단() {
-        boolean bonusNum = winJudgment.matchBonusNumber(7,7);
+        boolean bonusNum = winJudgment.matchBonusNumber(List.of(1, 2, 3, 4, 5, 6),6);
         assertThat(bonusNum).isTrue();
-        bonusNum = winJudgment.matchBonusNumber(6,7);
+        bonusNum = winJudgment.matchBonusNumber(List.of(1, 2, 3, 4, 5, 6),7);
         assertThat(bonusNum).isFalse();
     }
 

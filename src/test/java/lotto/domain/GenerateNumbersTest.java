@@ -12,15 +12,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GenerateNumbersTest {
 
-    @DisplayName("6개의 숫자와 1개의 보너스 번호를 생성하는지 확인")
+    @DisplayName("6개의 숫자 생성하는지 확인")
     @Test
     void generateNumbers() {
         GenerateNumbers generateNumbers = new GenerateNumbers();
         List<Integer> checkNumbers = generateNumbers.getGenerateNumbers();
-        int checkBonusNumber = 0;
-        checkBonusNumber = generateNumbers.getBonusNumber();
 
         assertThat(checkNumbers.size()).isEqualTo(6);
-        assertThat(checkBonusNumber).isNotZero();
     }
 }
