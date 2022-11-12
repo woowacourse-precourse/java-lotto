@@ -3,6 +3,8 @@ package utils;
 import model.LottoStatus;
 
 import static model.ErrorMessage.*;
+import static model.LottoStatus.END;
+import static model.LottoStatus.START;
 
 public class Validator {
 
@@ -53,7 +55,7 @@ public class Validator {
         }
 
         for (String number : numbers) {
-            if (number.length() > LottoStatus.END.getDigitsSize()) {
+            if (number.length() > END.getDigitsSize()) {
                 throw new IllegalArgumentException(INCORRECT_LUCKY_NUMBER_SIZE.toString());
             }
         }
@@ -73,6 +75,15 @@ public class Validator {
         for (int index = 0; index < number.length(); index++) {
             if (!Character.isDigit(getDigit(number, index))) {
                 throw new IllegalArgumentException(INCORRECT_LUCKY_NUMBER_DIGIT.toString());
+            }
+        }
+    }
+
+    public void validateLuckyNumberRange(String input) {
+        for (String number : getNumbers(input)) {
+            int luckyNumber = Integer.parseInt(number);
+            if (luckyNumber < START.getValue() || luckyNumber > END.getValue()) {
+                throw new IllegalArgumentException(INCORRECT_LUCKY_NUMBER_RANGE.toString());
             }
         }
     }

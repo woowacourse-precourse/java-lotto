@@ -26,6 +26,8 @@ public class LottoController {
         String luckyNumber = inputView.inputLuckyNumber();
         validator.validateLuckyNumberSize(luckyNumber);
         validator.validateLuckyNumberDigit(luckyNumber);
+        validator.validateLuckyNumberRange(luckyNumber);
+
     }
 
     private void validatePurchasingAmount(String input) {

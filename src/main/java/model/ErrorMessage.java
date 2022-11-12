@@ -43,5 +43,11 @@ public enum ErrorMessage {
         public String toString() {
             return HEADER + "숫자를 입력하여야 합니다.";
         }
+    },
+    INCORRECT_LUCKY_NUMBER_RANGE{
+        @Override
+        public String toString() {
+            return HEADER + "로또 번호는 1부터 45사이의 숫자여야 합니다.";
+        }
     }
 }
