@@ -2,7 +2,6 @@ package lotto.Controller;
 
 import lotto.Model.Lotto;
 import lotto.Model.LottoSystem;
-import lotto.Model.Money;
 import lotto.Model.RandomLotto;
 import lotto.View.InputView;
 import lotto.View.OutputView;
@@ -14,14 +13,20 @@ public class LottoController {
 
         RandomLotto.BuyNewLotto();
 
-        InputView.printWinningNumberInput();
-
-        InputView.printBonusNumberInput();
+        inputNumbers();
 
         LottoSystem.lottoSystem(Lotto.getWinningNumbers(), Lotto.getBonusNumber());
 
-        OutputView.printResult();
+        printTotalResult();
+    }
 
-        Money.printYield();
+    private static void printTotalResult() {
+        OutputView.printResult();
+        OutputView.printYield();
+    }
+
+    private static void inputNumbers() {
+        InputView.printWinningNumberInput();
+        InputView.printBonusNumberInput();
     }
 }
