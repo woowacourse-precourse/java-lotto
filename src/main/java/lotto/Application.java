@@ -370,4 +370,8 @@ public class Application {
             lottoTickets.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
         }
     }
+
+    public static void setError(ErrorMessage errorMessage) {
+        error = errorMessage;
+    }
 }
