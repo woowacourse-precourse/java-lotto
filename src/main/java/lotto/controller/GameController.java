@@ -15,10 +15,10 @@ public class GameController {
 	public void run() {
 		Player player = new Player();
 		PurchaseAmount purchaseAmount = PurchaseAmount.from(player.receivePurchaseAmount());
-		int purchaseCount = new PurchaseCounter().countLotto(purchaseAmount);
+		PurchaseCounter purchasedLotto = PurchaseCounter.from(purchaseAmount);
 
 		LottoMachine lottoMachine = new LottoMachine();
-		lottoMachine.issueLotto(purchaseCount);
+		lottoMachine.issueLotto(purchasedLotto.valueOf());
 
 		List<Integer> winningNumber = new WinningNumber(player.receiveWinningNumber()).toConvert();
 		int bonusNumber = new BonusNumber(player.receiveBonusNumber(), winningNumber).toConvert();
