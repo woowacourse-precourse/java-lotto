@@ -9,11 +9,13 @@ public class Buyer {
     public Buyer() {}
 
     public long countLottos (long money) throws IllegalArgumentException {
-        if (money % 1000 != 0) {
+        final long lottoPrice = 1000;
+
+        if (money % lottoPrice != 0) {
             throw new IllegalArgumentException("[ERROR] 구매 금액은 1000원 단위만 가능합니다");
         }
 
-        return money / 1000;
+        return money / lottoPrice;
     }
 
     public List<List<Integer>> receiveLottos(long lottoNumbers) {
