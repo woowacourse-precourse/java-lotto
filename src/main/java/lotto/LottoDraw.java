@@ -54,6 +54,10 @@ public class LottoDraw {
         }
     }
 
+//    public int calculatePrizeMoney() {
+//
+//    }
+
     public int getTotalPrizeMoney() {
         return totalPrizeMoney;
     }
