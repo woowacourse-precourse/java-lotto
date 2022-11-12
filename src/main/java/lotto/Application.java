@@ -1,5 +1,8 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -21,5 +24,16 @@ public class Application {
         }
 
         return buyingPrice / 1000;
+    }
+
+    public static List<List<Integer>> getLottoTickets(int ticketAmount) {
+        List<List<Integer>> lottoTickets = new ArrayList<>();
+
+        for (int i = 0; i < ticketAmount; i++) {
+            List<Integer> ticket = Lotto.crateRandomLottoNumber();
+            lottoTickets.add(ticket);
+        }
+
+        return lottoTickets;
     }
 }
