@@ -56,12 +56,12 @@ public class InputWinningLottoValidator {
     }
     
     private static void validateDigitRangeOfOut(final String inputWinningLottoNumbers) {
-        if (isNumberExistDigitRangeOfOut(inputWinningLottoNumbers)) {
+        if (isNumberDigitOutOfRangeExist(inputWinningLottoNumbers)) {
             throw new IllegalArgumentException(DIGIT_OUT_OF_RANGE_EXCEPTION);
         }
     }
     
-    private static boolean isNumberExistDigitRangeOfOut(final String inputWinningLottoNumbers) {
+    private static boolean isNumberDigitOutOfRangeExist(final String inputWinningLottoNumbers) {
         return Arrays.stream(inputWinningLottoNumbers.split(COMMA_DELIMITER))
                 .anyMatch(InputWinningLottoValidator::isExistDigitRangeOfOut);
     }
