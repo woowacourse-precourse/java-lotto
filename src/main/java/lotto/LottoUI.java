@@ -21,6 +21,14 @@ public class LottoUI {
         System.out.println(lotto.getNumbers().toString());
     }
 
+    public static void printWinHistory(final Integer machNumber, final Integer prizeMoney,final Integer winAmount) {
+        System.out.printf("%d개 일치 (%,d원) - %d 개\n", machNumber, prizeMoney, winAmount);
+    }
+
+    public static void printWinHistoryWithBonus(final Integer machNumber, final Integer prizeMoney,final Integer winAmount) {
+        System.out.printf("%d개 일치, 보너스 볼 일치 (%,d원) - %d 개\n", machNumber, prizeMoney, winAmount);
+    }
+
     public static List<Integer> receiveWinNumbers() {
         System.out.println("당첨번호를 입력해 주세요.");
         final String input = Console.readLine();
