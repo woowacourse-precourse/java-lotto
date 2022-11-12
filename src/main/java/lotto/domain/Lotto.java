@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import lotto.domain.Guide;
 import java.util.regex.Pattern;
 import java.util.List;
 
@@ -9,6 +8,8 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validateSize(numbers);
+        validateRange(numbers);
+        validateDuplication(numbers);
         this.numbers = numbers;
     }
 
