@@ -73,4 +73,10 @@ class LottoTest {
         assertThat(Calculation.compareLotto(List.of(1, 2, 3, 4, 5, 6), 7, List.of(8, 9, 10, 11, 12, 13)))
                 .isEqualTo(0);
     }
+
+    @DisplayName("로또 당첨 결과 1, 0, 0, 0, 0으로 62.5% 수익인 경우 당첨 결과 테스트")
+    @Test
+    void notificationLottoResult() {
+        System.out.println(String.format(Notification.LOTTO_RESULT.getMessage(), 1, 0, 0, 0, 0, "62.5%"));
+    }
 }
