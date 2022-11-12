@@ -23,9 +23,9 @@ public class DrawLottoService {
     }
 
     public List<Integer> getListToWiningNumber(String winingLottoNUmber) {
-        String[] winingNUmber = winingLottoNUmber.split(",");
-        List<Integer> winingNumberList = conversionArrayToList.stringArrayToIntegerList(winingNUmber);
-        return winingNumberList;
+        String[] numbers = winingLottoNUmber.split(",");
+        List<Integer> winingNumber = conversionArrayToList.stringArrayToIntegerList(numbers);
+        return winingNumber;
     }
 
     public void compareLottoToWiningLotto(List<Integer> winingLotto, Lotto myLotto, int bonusNumber) {
