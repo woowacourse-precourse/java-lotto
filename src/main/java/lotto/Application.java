@@ -26,14 +26,14 @@ public class Application {
 
         // 3. 당첨 번호들을 입력받는다.
         System.out.println("당첨 번호를 입력해 주세요.");
-        PickLotto pickLotto = new PickLotto(Console.readLine());
+        WinningNumbers winningNumbers = new WinningNumbers(Console.readLine());
 
         // 4. 보너스 번호를 입력받는다.
         System.out.println("보너스 번호를 입력해 주세요.");
-        BonusNum bonusNum = new BonusNum(Console.readLine(), pickLotto.getNumbers());
+        BonusNumber bonusNumber = new BonusNumber(Console.readLine(), winningNumbers.getNumbers());
 
         // 5. 당첨 내역을 출력한다.
         Match match = new Match();
-        match.matchNumbers(lottos, pickLotto, bonusNum);
+        match.matchNumbers(lottos, winningNumbers, bonusNumber);
     }
 }

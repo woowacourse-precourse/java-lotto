@@ -5,10 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PickLotto {
+public class WinningNumbers {
     private final List<Integer> numbers;
 
-    public PickLotto(String input) {
+    public WinningNumbers(String input) {
         String[] split = input.split(",");
         numberValidate(split);
         countValidate(split);

@@ -14,12 +14,12 @@ public class Match {
         this.matches = map;
     }
 
-    public void matchNumbers(List<Lotto> lottos, PickLotto pickLotto, BonusNum bonusNum) {
+    public void matchNumbers(List<Lotto> lottos, WinningNumbers winningNumbers, BonusNumber bonusNumber) {
         // 5-1. 당첨 번호와 몇 개가 일치하는지 갯수를 구한다.
         for (Lotto lotto : lottos) {
             List<Integer> combineNumbers = new ArrayList<>(lotto.getNumbers());
-            combineNumbers.addAll(pickLotto.getNumbers());
-            combineNumbers.add(bonusNum.getNumber());
+            combineNumbers.addAll(winningNumbers.getNumbers());
+            combineNumbers.add(bonusNumber.getNumber());
             int matchNum = 13 - new HashSet<>(combineNumbers).size();
             // 5-2. 등수 별로 몇 개가 있는지 갯수를 구한다.
             if (3 <= matchNum && matchNum <= 6) {

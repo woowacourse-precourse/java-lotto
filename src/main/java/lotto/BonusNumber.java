@@ -2,10 +2,10 @@ package lotto;
 
 import java.util.List;
 
-public class BonusNum {
+public class BonusNumber {
     private final Integer number;
 
-    public BonusNum(String input, List<Integer> pickNumbers) {
+    public BonusNumber(String input, List<Integer> pickNumbers) {
         numberValidate(input);
         this.number = Integer.parseInt(input);
         duplicateValidate(pickNumbers);
