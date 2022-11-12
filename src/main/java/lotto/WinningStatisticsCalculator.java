@@ -16,10 +16,23 @@ public class WinningStatisticsCalculator {
             put(WinningHistory.FIFTH_PRIZE, 0);
             put(WinningHistory.BLANK, 0);
         }};
+
+        calculateNumberOfWins(lottos, winningNumbers, bonusNumber);
     }
 
     public HashMap<WinningHistory, Integer> getWinningHistory() {
         return winningHistory;
+    }
+
+    private void calculateNumberOfWins(List<Lotto> lottos, Lotto winningNumbers, int bonusNumber) {
+        for (Lotto lotto : lottos) {
+            increaseWinningHistoryType(getMatchNumbers(lotto, winningNumbers), isMatchBonusNumber(lotto, bonusNumber));
+        }
+    }
+
+    private void increaseWinningHistoryType(int matchNumber, boolean matchBonus) {
+        WinningHistory prizeType = WinningHistory.getWinningHistoryType(matchNumber, matchBonus);
+        winningHistory.put(prizeType, winningHistory.get(prizeType) + 1);
     }
 
     private int getMatchNumbers(Lotto lotto, Lotto winningNumbers) {
