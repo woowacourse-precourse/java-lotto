@@ -26,6 +26,6 @@ public class PurchaseTest {
     @Test
     void checkLottoAccordingToPurchase() {
         Purchase money = new Purchase("14000");
-        assertThat(money.lottoToGet()).isEqualTo(14);
+        assertThat(money.getLottoNumber()).isEqualTo(14);
     }
 }

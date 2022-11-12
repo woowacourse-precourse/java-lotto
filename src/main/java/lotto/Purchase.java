@@ -3,19 +3,25 @@ package lotto;
 public class Purchase {
 
     private int money;
+    private int lottoNumber;
 
-    public void purchaseGuild() {
+    public void printPurchase() {
         System.out.println("구입금액을 입력해 주세요.");
+    }
+
+    public void printConfirmPurchase() {
+        System.out.println(this.lottoNumber+"개를 구매했습니다.");
     }
 
     public Purchase(String money) {
         validateMoneyType(money);
         validateMoneyUnit(Integer.valueOf(money));
         this.money = Integer.valueOf(money);
+        this.lottoNumber = (this.money / 1000);
     }
 
-    public int lottoToGet() {
-        return (money / 1000);
+    public int getLottoNumber() {
+        return this.lottoNumber;
     }
 
     public void validateMoneyType(String money) {
