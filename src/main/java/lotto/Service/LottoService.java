@@ -1,5 +1,7 @@
 package lotto.Service;
 
+import lotto.Model.Lotto;
+
 import java.util.List;
 
 public interface LottoService {
@@ -8,5 +10,6 @@ public interface LottoService {
     void buyLottos();
     void generateLottos();
     List<Integer> generateRandomNum(int count);
-    String calcLotto();
+    String printResult();
+    String calcLottos(Lotto index);
 }

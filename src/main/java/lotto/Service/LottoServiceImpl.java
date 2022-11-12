@@ -53,11 +53,16 @@ public class LottoServiceImpl implements LottoService{
     }
 
     @Override
-    public String calcLotto() {
+    public String printResult() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("당첨 통계");
-        stringBuilder.append("---");
-
+        stringBuilder.append("당첨 통계 \n");
+        stringBuilder.append("--- \n");
+        lottos.stream().map(this::calcLottos).forEach(stringBuilder::append);
         return stringBuilder.toString();
+    }
+
+    @Override
+    public String calcLottos(Lotto lotto) {
+        return lotto.toString();
     }
 }
