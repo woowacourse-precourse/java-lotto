@@ -106,6 +106,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 보너스_번호_범위_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3,4,5,6", "77");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
     void validateCashIsIntegerTest() {
         assertThatThrownBy(() -> validateCashIsInteger("123A"))
                 .isInstanceOf(IllegalArgumentException.class);
