@@ -68,8 +68,8 @@ public class LottoGame {
     public static BigDecimal calcRateOfReturn(int[] matches, int money) {
         BigDecimal rateOfReturn = new BigDecimal(sumReward(matches));
 
-        rateOfReturn.divide(new BigDecimal(String.valueOf(money)));
-        rateOfReturn.multiply(new BigDecimal("100"));
+        rateOfReturn = rateOfReturn.divide(new BigDecimal(String.valueOf(money)), 3, RoundingMode.CEILING);
+        rateOfReturn = rateOfReturn.multiply(new BigDecimal("100"));
 
         return rateOfReturn.setScale(1, RoundingMode.HALF_UP);
     }
@@ -79,11 +79,11 @@ public class LottoGame {
         String[] rewardByPlace = {"2000000000", "30000000", "1500000", "50000", "5000"};
 
         for (int i = 0; i < matches.length; ++i) {
-            BigInteger now_reward = new BigInteger(rewardByPlace[i]);
+            BigInteger nowReward = new BigInteger(rewardByPlace[i]);
             BigInteger count = new BigInteger(String.valueOf(matches[i]));
 
-            now_reward.multiply(count);
-            reward.add(now_reward);
+            nowReward = nowReward.multiply(count);
+            reward = reward.add(nowReward);
         }
         return reward;
     }
