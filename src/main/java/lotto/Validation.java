@@ -22,6 +22,12 @@ public class Validation {
         isThousandUnit(Long.parseLong(purchaseAmount));
     }
 
+    // 1~45 사이의 숫자인지 검증
+    public static void isRightLottoNumber(int number) {
+        if (!(1 <= number && number <= 45)) {
+            throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해 주세요.");
+        }
+    }
 
 }
 
