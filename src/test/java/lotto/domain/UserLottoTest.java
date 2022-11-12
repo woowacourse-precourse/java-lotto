@@ -55,5 +55,16 @@ public class UserLottoTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(InputException.INPUT_INVALID_DIGIT_RANGE.message());
         }
+
+        @DisplayName("당천 번호에 중복이 있으면 예외를 터트린다.")
+        @Test
+        void lottoDuplicateException() {
+            String winNumbers = "1,1,3,4,10,8";
+            String bonusNumber = "2";
+
+            Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(InputException.INPUT_HAS_NOT_DUPLICATE_DIGIT.message());
+        }
     }
 }
