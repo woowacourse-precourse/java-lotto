@@ -26,4 +26,10 @@ public class WinningNumbers {
                 .collect(Collectors.toList());
         validate(distinctNumbers);
     }
+
+    public void checkInclusion(List<Integer> numbers, int bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

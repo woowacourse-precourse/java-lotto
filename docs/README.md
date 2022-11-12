@@ -22,6 +22,7 @@
   - [x] 보너스 번호 입력 - LottoManager# inputBonusNumber
     - [ ] 숫자인지 확인
     - [ ] 범위 확인 - WinningNumbers #checkScope
+  - [ ] 당첨번호가 보너스 번호를 포함하는지 확인 - WinningNumbers #checkInclusion
 - [ ] 로또 번호(6자리)와 당첨 번호(6자리, 보너스 번호 1개)를 비교한다. - LottoManager#compare
   - [x] 당첨번호 중 몇개의 숫자가 같은지 알 수 있다. - Judgement#correctCount
     - [x] 보너스 번호가 있는지 알 수 있다.(당첨번호 5자리가 같은 경우만) - Judgement#hasWinningNumber
