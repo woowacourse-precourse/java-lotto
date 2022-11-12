@@ -56,17 +56,17 @@ public class YieldCalculator {
     public double countMatchResult(Map<String, Integer> winInformation, int purchaseMoney) {
         int result = 0;
 
-        result += winInformation.get("three") * 5000;
-        result += winInformation.get("four") * 50000;
-        result += winInformation.get("five") * 1500000;
-        result += winInformation.get("FiveContainingBonusNumber") * 30000000;
-        result += winInformation.get("six") * 2000000000;
+        result += winInformation.get("three") * (WinningMoney.THREE.getWinningMoney());
+        result += winInformation.get("four") * (WinningMoney.FOUR.getWinningMoney());
+        result += winInformation.get("five") * (WinningMoney.FIVE.getWinningMoney());
+        result += winInformation.get("FiveContainingBonusNumber") * (WinningMoney.FIVE_BONUS.getWinningMoney());
+        result += winInformation.get("six") * (WinningMoney.SIX.getWinningMoney());
 
         return (double) result / (double) purchaseMoney * 100;
     }
 
-    public void getYield(Map<String, Integer> winInformation, int purchaseNumber) {
-        double yield = countMatchResult(winInformation, (purchaseNumber * 1000));
+    public void getYield(Map<String, Integer> statistic, int purchaseNumber) {
+        double yield = countMatchResult(statistic, (purchaseNumber * 1000));
         System.out.printf("총 수익률은 %s%%입니다.", Math.round(yield * 10) / 10.0);
     }
 }
