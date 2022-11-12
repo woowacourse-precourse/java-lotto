@@ -13,11 +13,12 @@ public class Application {
         int lottoCount = Purchase.getLottoCount(purchaseAmount);
         Generator generator = new Generator(lottoCount);
         List<List<Integer>> lottos = generator.createLotto();
-        System.out.println(lottos);
     }
 
     private static int askPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
-        return Integer.parseInt(Console.readLine());
+        int purchaseAmount = Integer.parseInt(Console.readLine());
+        System.out.println();
+        return purchaseAmount;
     }
 }
