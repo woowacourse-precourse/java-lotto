@@ -41,11 +41,14 @@ public class Manager {
         return numberOfMatches;
     }
 
-    public boolean hasBonusNumber(Lotto purchasedLotto, int bonunsNumber) {
-        return purchasedLotto.getNumbers().contains(bonunsNumber);
+    public boolean hasBonusNumber(Lotto lotto, int bonunsNumber) {
+        return lotto.getNumbers().contains(bonunsNumber);
     }
 
     public List<Integer> compareLottoTable(List<Lotto> lottoTable, Lotto winningLotto, int bonunsNumber) {
+        if (hasBonusNumber(winningLotto, bonunsNumber)) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i < lottoTable.size(); i++) {
             int numberOfMatches = 0;
