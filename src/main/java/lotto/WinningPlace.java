@@ -22,13 +22,12 @@ public enum WinningPlace {
         return this.message;
     }
 
-    public WinningPlace getPlace(int correspondingNumber, int correspondingBonusNumber) {
+    public static WinningPlace getPlace(int correspondingNumber, int correspondingBonusNumber) {
         return Arrays.stream(values())
                 .filter(winningPlace -> winningPlace.correspondingNumber == correspondingNumber)
                 .filter(winningPlace -> winningPlace.correspondingBonusNumber == correspondingBonusNumber)
                 .findAny()
                 .orElseThrow();
-//                .orElseThrow(new IllegalArgumentException("Wrong"));
     }
 
     WinningPlace(Integer correspondingNumber, Integer correspondingBonusNumber, Integer winnings, String message) {
