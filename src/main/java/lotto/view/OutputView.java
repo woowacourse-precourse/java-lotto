@@ -38,11 +38,11 @@ public class OutputView {
 		System.out.println("3개 일치 (5,000원) - " + prizeResult.get(LottoRanking.FIFTH) + "개");
 		System.out.println("4개 일치 (50,000원) - " + prizeResult.get(LottoRanking.FOURTH) + "개");
 		System.out.println("5개 일치 (1,500,000원) - " + prizeResult.get(LottoRanking.THIRD) + "개");
-		System.out.println("5개 일치, 보너스 불 일치 (30,000,000원) - " + prizeResult.get(LottoRanking.SECOND) + "개");
+		System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + prizeResult.get(LottoRanking.SECOND) + "개");
 		System.out.println("6개 일치 (2,000,000,000원) - " + prizeResult.get(LottoRanking.FIRST) + "개");
 	}
 
 	public void yield(double yield) {
-		System.out.println(String.format("총 수익률은 %.2f%%입니다", yield));
+		System.out.println("총 수익률은 " + (Math.round(yield*100)/100.0) + "%입니다.");
 	}
 }
