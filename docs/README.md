@@ -28,7 +28,7 @@
 
 - [X] 로또 번호 일치하는 개수를 확인하여 등수 선정 - Customer.createWinnings()
 - [X] 총 당첨금을 계산하기 -Customer.calculateWinnings()
-- [ ] 수익률 계산하기
+- [X] 수익률 계산하기 - Customer.calculateEarningRate()
 - [ ] 등수와 수익률을 출력할 문구 만들기
 
 ## 기타 및 추가사항
