@@ -14,5 +14,6 @@ public class Application {
         user = new User();
         String str = inputView.buyLotto();
         user.isNumber(str);
+        user.unitError(str);
     }
 }
