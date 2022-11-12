@@ -29,7 +29,11 @@ public class InputManager {
         return new Lotto(inputToList);
     }
 
-    public int inputBonusNumber() {
-        throw new UnsupportedOperationException();
+    public int inputBonusNumber(Lotto winningNumber) {
+        System.out.println(ConsoleMessage.REQUEST_BONUS_NUMBER);
+        String input = Console.readLine();
+        inputValidator.validateInputBonusNumber(input, winningNumber);
+
+        return Integer.parseInt(input);
     }
 }
