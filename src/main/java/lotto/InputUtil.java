@@ -16,6 +16,11 @@ public class InputUtil {
         return stringArrToIntList(commaSeparation(input));
     }
 
+    public int inputBonusNumber(){
+        String input = Console.readLine();
+        return Integer.valueOf(input);
+    }
+
     private String[] commaSeparation(String str){
         String[] arr = str.split(",");
         return arr;
