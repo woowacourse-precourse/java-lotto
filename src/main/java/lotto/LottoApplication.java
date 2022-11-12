@@ -8,11 +8,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoApplication {
-
     private RandomLotto randomLottos;
     private RandomLottoGenerator randomLottoGenerator;
+    private WinningLotto winningLotto;
 
     private List<Lotto> randomNumbers;
+    private int bonusNumber;
 
     public void run() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -27,14 +28,21 @@ public class LottoApplication {
         randomNumbers.forEach(random -> random.printNumbers());
 
         System.out.println("당첨 번호를 입력해 주세요.");
-        List<Integer> winningLotto = new ArrayList<>();
+        List<Integer> inputWinningLotto = new ArrayList<>();
         String[] split = Console.readLine().split(",");
-        for (int i = 0; i < split.length; i++) {
-            winningLotto.add(Integer.parseInt(split[i]));
-        }
 
+        for (int idx = 0; idx < split.length; idx++) {
+            if (inputWinningLotto.contains(Integer.parseInt(split[idx]))) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호가 중복됩니다.");
+            }
+            inputWinningLotto.add(Integer.parseInt(split[idx]));
+        }
+        Lotto inputLotto = new Lotto(inputWinningLotto);
+
+        // 보너스 숫자
         System.out.println("보너스 번호를 입력해 주세요.");
-        int bonusNumber = Integer.parseInt(Console.readLine());
+        bonusNumber = Integer.parseInt(Console.readLine());
+        winningLotto = new WinningLotto(inputLotto, bonusNumber);
 
         int sum = 0;
 //        for (List list : randomLottoLists) {
