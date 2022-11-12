@@ -13,13 +13,13 @@ public class LottoGenerator {
     static final int START_RANGE = 1;
     static final int FINAL_RANGE = 45;
 
-    public List<Integer> createRandomLotto() {
+    public static List<Integer> createRandomLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_RANGE, FINAL_RANGE, LOTTO_MAX_LEN);
         numbers = sortByNaturalOrder(numbers);
         return numbers;
     }
 
-    private List<Integer> sortByNaturalOrder(List<Integer> numbers) {
+    private static List<Integer> sortByNaturalOrder(List<Integer> numbers) {
         return numbers.stream()
                 .sorted()
                 .collect(Collectors.toList());
