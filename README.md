@@ -106,7 +106,7 @@ BUILD SUCCESSFUL in 0s
         - [x] `public HashMap<LottoRank, Integer> getWinResult()`
 - [ ] **CLASS 6.** `UserInterface`
     - **Class Methods:**
-        - [ ] `public static void printPurchaseMoneyMessage()`
+        - [x] `public static void printPurchaseMoneyMessage()`
         - [ ] `public static int inputPurchaseMoney`
         - [ ] `public static void printWinNumbersMessage()`
         - [ ] `public static List<Integer> inputWinNumbers()`
