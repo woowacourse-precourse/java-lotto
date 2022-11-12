@@ -14,13 +14,13 @@ public class LottosCreator {
 
     public static Lottos create(int purchasePrice, List<List<Integer>> lottoNumbers) {
         int lottoCount = calculateLottoCount(purchasePrice);
-        LottosValidationUtils.validateSize(lottoCount, lottoNumbers);
+        LottosCreatorValidUtils.validateSize(lottoCount, lottoNumbers);
 
         return new Lottos(mapToLotto(lottoNumbers));
     }
 
     public static int calculateLottoCount(int purchasePrice) {
-        LottosValidationUtils.validateCanPurchase(purchasePrice);
+        LottosCreatorValidUtils.validateCanPurchase(purchasePrice);
         return purchasePrice / Player.LOTTO_PRICE;
     }
 
