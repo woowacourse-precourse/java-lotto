@@ -1,7 +1,8 @@
-package lotto.lottoShop;
+package lotto.LottoShop;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static lotto.Enum.Constant.*;
@@ -21,9 +22,11 @@ public class LottoProvidingMachine {
     }
 
     private Lotto makeLotto(List<Lotto> lotto_group) {
-        List<Integer> random_lotto_num = pickUniqueNumbersInRange(
-                ZERO.getIntValue(), FOURTY_FIVE.getIntValue(), SIX.getIntValue()
-        );
+        List<Integer> random_lotto_num
+                = pickUniqueNumbersInRange(ZERO.getIntValue(), FOURTY_FIVE.getIntValue(), SIX.getIntValue())
+                        .stream()
+                        .sorted()
+                        .collect(Collectors.toList());
         return new Lotto(random_lotto_num);
     }
 
