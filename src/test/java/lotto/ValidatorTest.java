@@ -168,6 +168,7 @@ class ValidatorTest {
     class bonusNumberValidationTest {
 
         @Test
+        @DisplayName("보너스 번호 형태가 양의 정수가 아니면 예외를 던진다.")
         void isNotAPositiveInteger() {
             // given
             Validator validator = new Validator();
