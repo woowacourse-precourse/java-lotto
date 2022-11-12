@@ -20,6 +20,10 @@ public class LottoView {
         System.out.println(message);
     }
 
+    public void printBlankLine() {
+        System.out.println();
+    }
+
     public void printExceptionMessage(Exception exception) {
         System.out.println(ERROR + exception.getMessage());
     }

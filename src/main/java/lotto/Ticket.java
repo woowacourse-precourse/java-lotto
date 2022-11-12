@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Ticket {
     private static final int UNIT_PRICE = 1000;
+    private static final String PURCHASE_COMMENT = "개를 구매했습니다.";
 
     private final LottoView view;
     private int count;
@@ -25,6 +26,9 @@ public class Ticket {
     }
 
     public void printTickets() {
+        view.printBlankLine();
+        view.printMessage(String.valueOf(count) + PURCHASE_COMMENT);
+
         for (Lotto ticket : tickets) {
             view.printMessage(ticket.toString());
         }
