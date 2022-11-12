@@ -18,7 +18,12 @@ public enum LottoReward {
         this.reward = reward;
     }
 
-    public static LottoReward getRank(int numberOfMatch) {
+    public static LottoReward getRank(int numberOfMatch, boolean isContainsBonusNumber) {
+        // 5개가 일치하는데, 보너스 숫자도 맞을 때
+        if (numberOfMatch == SECOND.getMatchingNumbers() && isContainsBonusNumber) {
+            return SECOND;
+        }
+
         return Arrays.stream(values())
                 .filter(statistic -> statistic.matchingNumbers == numberOfMatch)
                 .findFirst()
