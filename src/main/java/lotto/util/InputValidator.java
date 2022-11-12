@@ -1,11 +1,10 @@
 package lotto.util;
 
-import java.util.Collections;
 import java.util.List;
 
 import static java.util.Arrays.asList;
 
-public class Validator {
+public class InputValidator {
 
     public static void checkUserInputMoney(String userInputMoney) {
         if(checkZeroInHead(userInputMoney)){

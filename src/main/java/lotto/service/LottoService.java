@@ -2,7 +2,7 @@ package lotto.service;
 
 import lotto.Lotto;
 import lotto.repository.LottoRepository;
-import lotto.util.Validator;
+import lotto.util.InputValidator;
 import lotto.utils.RandomUtils;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import static java.util.Arrays.asList;
 
 public class LottoService {
     public static Integer getTheNumberOfLotto(String userInputMoney) {
-        Validator.checkUserInputMoney(userInputMoney);
+        InputValidator.checkUserInputMoney(userInputMoney);
         return Integer.parseInt(userInputMoney) / 1000;
     }
 
@@ -32,7 +32,7 @@ public class LottoService {
     }
 
     public void createWinningLotto(String winningNumber) {
-        Validator.checkWinningNumber(winningNumber);
+        InputValidator.checkWinningNumber(winningNumber);
         Lotto winningLotto = new Lotto(asList(winningNumber.split(",")).stream()
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList()));
