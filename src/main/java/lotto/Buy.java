@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+import validate.Check;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,23 +23,28 @@ public class Buy {
     public static int orderTicket() {
         System.out.println("구입금액을 입력해 주세요.");
         String money = Console.readLine();
-        validate.Check.isNumber(money);
+        Check.isNumber(money);
 
 
         Long paperMoney = Long.parseLong(money);
-        int tickets = validate.Check.countLottoTicket(paperMoney);
+        int tickets = Check.countLottoTicket(paperMoney);
 
         System.out.println("\n" + tickets + "개를 구매했습니다.");
 
         return tickets;
     }
 
-    public static void inputWinningNumber() {
+    public static List<Integer> inputWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String numbers = Console.readLine();
+        List<Integer> winningNumbers = makeWinningNumbers(numbers);
 
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumbers = Integer.parseInt(Console.readLine());
+        Check.NumberDuplicate(winningNumbers, bonusNumbers);
+        winningNumbers.add(bonusNumbers);
+
+        return winningNumbers;
     }
 
     public static <T, U> List<U> transform(List<T> list,
