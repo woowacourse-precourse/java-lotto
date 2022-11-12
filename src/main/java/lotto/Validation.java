@@ -30,7 +30,14 @@ public class Validation {
             throw new IllegalArgumentException("[ERROR] 1~45 사이의 숫자를 입력해 주세요.");
         }
     }
-
+    // 당첨번호가 중복되지 않는지 검증
+    public static void isDuplicatedWinningNumbers(List<Integer> winningNumbers) {
+        for (Integer winningNumber : winningNumbers) {
+            if (winningNumbers.stream().filter(n -> n.equals(winningNumber)).count() != 1) {
+                throw new IllegalArgumentException("[ERROR] 당첨번호가 중복되지 않게 입력해 주세요");
+            }
+        }
+    }
 }
 
 
