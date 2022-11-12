@@ -26,14 +26,13 @@ public class LottoController {
         view.show();
 
         String response = view.getResponse();
-        validateInput("^(\\d+[0][0][0]){4,}$", response);
 
+        validateInput("^(\\d+[0][0][0]){4,}$", response);
         this.service.issueLotteryTicketsAs(parseInt(response));
     }
 
     public void showLottoPurchaseNumbers() {
-        List<Lotto> purchaseLotteries = List.of(new Lotto(Lotto.createNumbers())); //TODO
-
+        List<Lotto> purchaseLotteries = this.service.getIssueLotteryTickets();
         View view = new LottoPurchaseNumberView(purchaseLotteries);
         view.show();
     }
