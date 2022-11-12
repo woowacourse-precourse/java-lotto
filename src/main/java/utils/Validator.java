@@ -118,4 +118,11 @@ public class Validator {
         }
     }
 
+    public void validateBonusNumberDigit(String input) {
+        for (int index = 0; index < input.length(); index++) {
+            if (!Character.isDigit(getDigit(input, index))) {
+                throw new IllegalArgumentException(INCORRECT_BONUS_NUMBER_DIGIT.toString());
+            }
+        }
+    }
 }
