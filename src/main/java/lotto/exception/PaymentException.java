@@ -24,7 +24,6 @@ public class PaymentException {
     }
 
     private void paymentNotAcceptableException(){
-        System.out.println(NOT_RIGHT_PAYMENT_COMMENT);
         throw new IllegalArgumentException(NOT_RIGHT_PAYMENT_COMMENT);
     }
 }
