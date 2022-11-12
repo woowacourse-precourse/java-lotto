@@ -1,10 +1,8 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class LottoApplication {
@@ -45,25 +43,28 @@ public class LottoApplication {
         winningLotto = new WinningLotto(inputLotto, bonusNumber);
 
         int sum = 0;
-//        for (List list : randomLottoLists) {
-//            int cnt = 0;
-//            for (int i = 0; i < winningLotto.size(); i++) {
-//                if (list.contains(winningLotto.get(i))) {
-//                    cnt++;
-//                }
-//            }
-//            if (cnt < 3) continue;
-//
-//            boolean containsBonusNumber = false;
-//            if (cnt == 5) {
-//                if (list.contains(bonusNumber)) {
-//                    containsBonusNumber = true;
-//                }
-//            }
-//
-//            LottoReward.getRank(cnt, containsBonusNumber).plusCount();
-//            sum += LottoReward.getRank(cnt, containsBonusNumber).getReward();
-//        }
+        for (Lotto lotto : randomNumbers) {
+            int cnt = winningLotto.matchCount(lotto);
+            winningLotto.matchCount(lotto);
+
+            if (cnt < 3) continue;
+
+            boolean containsBonusNumber = false;
+            if (cnt == 5) {
+                if (winningLotto.isContainsBonusNumber(lotto, bonusNumber)) {
+                    containsBonusNumber = true;
+                }
+            }
+
+            /**
+             * FIRST, SECOND, THIRD, FOURTH, FIFTH
+             */
+            LottoReward rank = LottoReward.getRank(cnt, containsBonusNumber);
+            // 해당 rank 의 숫자를 더해준다
+            rank.plusCount();
+            // 해당 rank 의 상금을 더해준다
+            sum += rank.getReward();
+        }
 
         System.out.println("당첨 통계");
         System.out.println("---");
