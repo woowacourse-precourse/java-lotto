@@ -17,6 +17,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public boolean hasNumber(int number) {
+        return numbers.contains(number);
+    }
+
     private static void validateSize(List<Integer> numbers) {
         if (numbers.size() != SIZE) {
             throw new IllegalArgumentException("[ERROR] 로또는 숫자가 6개이어야 합니다.");
