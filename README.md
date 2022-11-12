@@ -236,11 +236,12 @@ public class Lotto {
   - [ ] 로또 번호를 뽑는다. - drawLotto()
 - [ ] 로또 당첨 번호를 정한다. - setWinningNumber()
 - [ ] 보너스 번호를 정한다. - setBonusNumber()
-- [ ] 당첨된 로또의 등수와 개수를 계산한다. - getRanking()
+- [ ] 당첨된 로또의 등수를 계산한다. - getRanking()
   - [ ] 일치하는 번호의 개수에 따라 등수를 계산한다. - calRank()
     - [ ] 뽑은 로또와 당첨 번호를 비교하여 몇개가 일치하는지 계산한다. - compareWithWinning()
       - [ ] 숫자가 5개 일치하면 보너스와 비교한다. - boolean containsBonus()
-- [ ] 수익을 계산한다. - calProfit()
+- [ ] 로또 하나의 수익을 계산한다. - calProfit()
+- [ ] 수익의 합을 구한다. - sumProfit()
 - [ ] 수익률을 계산한다. (소수점 둘째 자리에서 반올림한다.) - calProfitRate() 
 
 #### UI
