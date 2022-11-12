@@ -6,17 +6,18 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Controller {
     public String inputMoney() {
-        String money = readLine();
-        return money;
+        return readLine();
     }
 
     public String inputLottoNumber() {
-        String lottoNumbers = readLine();
-        return lottoNumbers;
+        return readLine();
     }
 
     public String inputBonusNumber() {
+        ErrorUtil errorUtil = new ErrorUtil();
         String bonusNumber = readLine();
+        errorUtil.errorInputBonusNumber(bonusNumber);
+        errorUtil.errorInputCountBonusNumber(bonusNumber);
         return bonusNumber;
     }
 
@@ -28,4 +29,6 @@ public class Controller {
             numbers.add(i);
         return numbers;
     }
+
+
 }

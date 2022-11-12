@@ -16,10 +16,17 @@ public class DataProcessing {
     }
 
     public int conversionMoney(String money) {
-        return Integer.parseInt(money);
+        ErrorUtil errorUtil = new ErrorUtil();
+        int conversion = Integer.parseInt(money);
+        errorUtil.errorInputMoney(conversion);
+        return conversion;
     }
 
     public String[] splitLottoNumber(String lottoNumbers) {
-        return lottoNumbers.split(",");
+        ErrorUtil errorUtil = new ErrorUtil();
+        String[] splitNumbers = lottoNumbers.split(",");
+        errorUtil.errorInputLottoNumber(splitNumbers);
+        errorUtil.errorInputCountLottoNumber(splitNumbers);
+        return splitNumbers;
     }
 }
