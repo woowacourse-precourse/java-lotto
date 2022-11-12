@@ -18,4 +18,6 @@ public class Constant {
 
     public static final String TOTAL_START = "총 수익률은 ";
     public static final String TOTAL_END = "%입니다.";
+
+    public static final int LOTTO_SIZE = 6;
 }
