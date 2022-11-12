@@ -21,6 +21,20 @@ public class Application {
         return Lottos;
     }
 
+    public static double compareMyLotto(Lotto lotto, List<Integer> winningNumber, Integer bonusNumber){
+        double count = 0;
+        for(Integer eachNumber: lotto.asList()){
+            if(winningNumber.contains(eachNumber)){
+                count += 1;
+            }
+        }
+
+        if(count == 5 || lotto.asList().contains(bonusNumber)){
+            count += 0.5;
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
