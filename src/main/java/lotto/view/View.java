@@ -14,13 +14,14 @@ public class View {
     private static final String GET_RESULT_MESSAGE = "%s - %d개%n";
     private static final String GET_PROFIT_RATES_MESSAGE = "총 수익률은 %.1f%%입니다.";
 
-    private static final String ERROR_MESSAGE = "[ERROR]";
-    private static final String NOT_INTEGER_MESSAGE = ERROR_MESSAGE + " 정수만 입력 가능합니다. 게임이 종료됩니다.";
-    private static final String NOT_LOTTO_PRICE_MESSAGE = ERROR_MESSAGE + " %d단위로만 입력 가능합니다. 게임이 종료됩니다.%n";
-    private static final String NOT_SEPARATED_BY_COMMA_MESSAGE = ERROR_MESSAGE + " 숫자는 콤마로 구분해 주세요. 게임이 종료됩니다.";
-    private static final String NOT_LOTTO_SIZE_MESSAGE = ERROR_MESSAGE + " %d개의 숫자만 입력 가능합니다. 게임이 종료됩니다.%n";
-    private static final String NOT_LOTTO_NUMBER_MESSAGE = ERROR_MESSAGE + " %d ~ %d 사이의 숫자만 입력 가능합니다. 게임이 종료됩니다.%n";
-    private static final String NOT_UNIQUE_NUMBER_MESSAGE = ERROR_MESSAGE + " 중복된 숫자는 입력할 수 없습니다. 게임이 종료됩니다.";
+    private static final String ERROR_MESSAGE = "[ERROR] ";
+    private static final String INPUT_IS_EMPTY_MESSAGE = ERROR_MESSAGE + "입력된 값이 없습니다. 게임이 종료됩니다.";
+    private static final String NOT_INTEGER_MESSAGE = ERROR_MESSAGE + "정수만 입력 가능합니다. 게임이 종료됩니다.";
+    private static final String NOT_LOTTO_PRICE_MESSAGE = ERROR_MESSAGE + "%d단위로만 입력 가능합니다. 게임이 종료됩니다.%n";
+    private static final String NOT_SEPARATED_BY_COMMA_MESSAGE = ERROR_MESSAGE + "숫자는 콤마로 구분해 주세요. 게임이 종료됩니다.";
+    private static final String NOT_LOTTO_SIZE_MESSAGE = ERROR_MESSAGE + "%d개의 숫자만 입력 가능합니다. 게임이 종료됩니다.%n";
+    private static final String NOT_LOTTO_NUMBER_MESSAGE = ERROR_MESSAGE + "%d ~ %d 사이의 숫자만 입력 가능합니다. 게임이 종료됩니다.%n";
+    private static final String NOT_UNIQUE_NUMBER_MESSAGE = ERROR_MESSAGE + "중복된 숫자는 입력할 수 없습니다. 게임이 종료됩니다.";
 
     public static void printInputMoney() {
         System.out.println(GET_MONEY_MESSAGE);
@@ -62,6 +63,10 @@ public class View {
 
     public static void printProfitRates(double profitRates) {
         System.out.printf(GET_PROFIT_RATES_MESSAGE, profitRates);
+    }
+
+    public static void printInputIsEmpty() {
+        System.out.println(INPUT_IS_EMPTY_MESSAGE);
     }
 
     public static void printNotInteger() {

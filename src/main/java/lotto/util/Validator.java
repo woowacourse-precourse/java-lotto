@@ -7,9 +7,13 @@ import lotto.constant.Constant;
 
 public class Validator {
 
-    public static boolean isInteger(String input) {
-        for (int i = 0; i < input.length(); i++) {
-            char needVerify = input.charAt(i);
+    public static boolean isEmpty(String numbers) {
+        return numbers.isEmpty();
+    }
+
+    public static boolean isInteger(String number) {
+        for (int i = 0; i < number.length(); i++) {
+            char needVerify = number.charAt(i);
 
             if (!Character.isDigit(needVerify)) {
                 return false;

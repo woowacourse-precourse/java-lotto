@@ -14,6 +14,11 @@ public class PlayerInput {
     public static int getInteger() {
         String input = Console.readLine();
 
+        if (Validator.isEmpty(input)) {
+            View.printInputIsEmpty();
+            throw new IllegalArgumentException();
+        }
+
         if (!Validator.isInteger(input)) {
             View.printNotInteger();
             throw new IllegalArgumentException();
@@ -24,6 +29,11 @@ public class PlayerInput {
     public static List<Integer> getLottoNumbers() {
         String input = Console.readLine();
         List<Integer> numbers;
+
+        if (Validator.isEmpty(input)) {
+            View.printInputIsEmpty();
+            throw new IllegalArgumentException();
+        }
 
         if (!input.contains(",")) {
             View.printNotComma();
