@@ -33,6 +33,8 @@ public class Application {
         List<Integer> ar = lotto.change(win);
         lotto.checkInput(ar);
 
+        inputView.bonusNumber();
+
 
     }
 

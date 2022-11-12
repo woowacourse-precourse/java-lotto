@@ -26,7 +26,6 @@ public class Lotto {
         for (int i = 0; i < splitStr.length; i++) {
             num.add(Integer.valueOf(splitStr[i]));
         }
-        System.out.println(num);
         return num;
     }
 
