@@ -1,15 +1,14 @@
 package lotto.domain;
 
-import java.util.ArrayList;
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.Collections;
 import java.util.List;
-
-import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoNumberGenerator {
 
     public static List<Integer> generate() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(Lotto.MINIMUM_NUMBER, Lotto.MAXIMUM_NUMBER, Lotto.NUMBER_SIZE);
         Collections.sort(numbers);
 
         return numbers;
