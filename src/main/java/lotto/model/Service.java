@@ -62,7 +62,7 @@ public class Service {
         double winningAmount = 0;
 
         for (int i = 0; i < lottoResult.length; i++) {
-            winningAmount = lottoResult[i] * WinnerInfo.values()[i].getPrizeInformation();
+            winningAmount += lottoResult[i] * WinnerInfo.values()[i].getPrizeInformation();
         }
         return (winningAmount / money) * 100;
     }
