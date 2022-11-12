@@ -34,6 +34,17 @@ public class UserLottoTest {
                     .hasMessageContaining(InputException.INPUT_INVALID_FORM.message());
         }
 
+        @DisplayName("당첨 번호가 6개가 아닐 경우 예외를 터트린다.")
+        @Test
+        void lottoInvalidCountException() {
+            String winNumbers = "1,2,3,5,8,9,10";
+            String bonusNumber = "2";
+
+            Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining(InputException.INPUT_INVALID_DIGIT_COUNT.message());
+        }
+
         @DisplayName("당천 번호가 1-45 숫자가 아닌 경우 예외를 터트린다.")
         @Test
         void lottoInvalidRangeException() {
