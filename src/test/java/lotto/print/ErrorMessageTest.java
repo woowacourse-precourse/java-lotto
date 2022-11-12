@@ -1,6 +1,6 @@
 package lotto.print;
 
-import lotto.exception.InputOver;
+import lotto.exception.InputOverException;
 import org.junit.jupiter.api.Test;
 
 
@@ -14,7 +14,7 @@ public class ErrorMessageTest {
 
     @Test
     void sendMessageTest() {
-        String message = ErrorMessage.sendMessage(new InputOver());
+        String message = ErrorMessage.sendMessage(new InputOverException());
         assertThat(message).contains(" 로또 입력 개수가 초과하였습니다.").contains("[ERROR]");
     }//sendMessageTest
 }//end class

@@ -3,10 +3,10 @@ package lotto.exception;
 
 import lotto.print.Print;
 
-public class NumberVerification {
-    public static Integer verify(String value) {
+public class NumberCheckException {
+    public static Integer check(String value) {
         if (!(isNumeric(value))) {
-            Print.sendError(new NumberVerification());
+            Print.sendError(new NumberCheckException());
             throw new IllegalArgumentException();
         }//if
         return Integer.parseInt(value);

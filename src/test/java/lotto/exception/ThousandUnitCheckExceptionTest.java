@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-public class ThousandUnitVerificationTest {
+public class ThousandUnitCheckExceptionTest {
     @Test
     public void unitVerifyTest() {
-        assertThat(ThousandUnitVerification.unitVerify(1000)).isEqualTo(1000);
-        assertThat(ThousandUnitVerification.unitVerify(1001));
+        assertThat(ThousandUnitCheckException.unitCheck(1000)).isEqualTo(1000);
+        assertThat(ThousandUnitCheckException.unitCheck(1001));
     }//UnitVerifyTest
 }// end class
