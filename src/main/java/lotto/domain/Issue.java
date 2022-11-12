@@ -32,4 +32,10 @@ public class Issue {
         return new Lotto(numbers);
     }
 
+    private List<Lotto> lotto(){
+        while (history.size() < amount){
+            history.add(createLottoNum());
+        }
+        return history;
+    }
 }
