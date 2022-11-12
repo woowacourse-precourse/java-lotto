@@ -61,4 +61,36 @@ public class Game {
     private double calculateProfitRate(int purchasedLottoPrice, long winningAmount) {
         return (double) winningAmount / (double) purchasedLottoPrice * Constant.PERCENTAGE;
     }
+
+    public void getGameResult() {
+        for (Lotto purchasedLottoNumber : purchasedLottoNumbers) {
+            setGameResult(purchasedLottoNumber.getLottoResult(this.winningLottoNumbers, this.bonusNumber));
+        }
+        Print.winningLotteryResult(
+                winningFifthCount, winningFourthCount, winningThirdCount, winningSecondCount, winningFirstCount);
+        Print.profitRate(calculateProfitRate(this.purchasedLottoPrice, this.winningAmount));
+    }
+
+    private void setGameResult(LottoResult lottoResult) {
+        if (lottoResult == LottoResult.FIFTH) {
+            winningFifthCount++;
+            winningAmount += LottoResult.FIFTH.getAmount();
+        }
+        if (lottoResult == LottoResult.FOURTH) {
+            winningFourthCount++;
+            winningAmount += LottoResult.FOURTH.getAmount();
+        }
+        if (lottoResult == LottoResult.THIRD) {
+            winningThirdCount++;
+            winningAmount += LottoResult.THIRD.getAmount();
+        }
+        if (lottoResult == LottoResult.SECOND) {
+            winningSecondCount++;
+            winningAmount += LottoResult.SECOND.getAmount();
+        }
+        if (lottoResult == LottoResult.FIRST) {
+            winningFirstCount++;
+            winningAmount += LottoResult.FIRST.getAmount();
+        }
+    }
 }
