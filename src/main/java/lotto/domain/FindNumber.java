@@ -5,17 +5,17 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class Rank {
+public class FindNumber {
 
-    public static List<Integer> makeRank(List<Lotto> lottoNumbers, List<Integer> winNumbers, int bonus) {
+    public static List<Integer> findSameNumber(List<Lotto> lottoNumbers, List<Integer> winNumbers, int bonus) {
         List<Integer> ranked = new ArrayList<>();
         for (Lotto lotto : lottoNumbers) {
-            ranked.add(rankNumber(lotto, winNumbers, bonus));
+            ranked.add(findNumber(lotto, winNumbers, bonus));
         }
         return ranked;
     }
 
-    private static int rankNumber(Lotto lotto, List<Integer> winNumbers, int bonus) {
+    private static int findNumber(Lotto lotto, List<Integer> winNumbers, int bonus) {
         int ranking = lotto.value().stream()
                 .filter(number -> winNumbers.stream()
                         .anyMatch(Predicate.isEqual(number)))
