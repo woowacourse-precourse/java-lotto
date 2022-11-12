@@ -23,20 +23,23 @@ public class PayingMoney {
         if (!Pattern.matches(MONEY_REGEX, money)) {
             throw new IllegalArgumentException(MONEY_IS_ONLY_NUMBER);
         }
-        int parsedMoney = Integer.parseInt(money);
+        return validateMoney(Integer.parseInt(money));
+    }
 
-        if (parsedMoney < LOTTO_PRICE) {
+    private static int validateMoney(int money) {
+        if (money < LOTTO_PRICE) {
             throw new IllegalArgumentException(MONEY_IS_MORE_THAN_1000);
         }
-        if (parsedMoney % LOTTO_PRICE != NOTHING) {
+        if (money % LOTTO_PRICE != NOTHING) {
             throw new IllegalArgumentException(MONEY_IS_FACTOR_OF_1000);
         }
-        return parsedMoney;
+        return money;
     }
 
     public Lottos createLottos() {
-        int numOfLotto = money / LOTTO_PRICE;
-        return new Lottos(numOfLotto);
+        int numberOfLotto = money / LOTTO_PRICE;
+
+        return new Lottos(numberOfLotto);
     }
 
 }
