@@ -2,8 +2,13 @@ package lotto.models;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -145,5 +150,27 @@ class WinningLottoTest {
 		// then : 5등을 반환하는지 확인
 		final Rank expected = Rank.FIFTH;
 		assertThat(result).isEqualTo(expected);
+	}
+
+	@ParameterizedTest(name = "사용자의 로또 번호가 1개 또는 2개만 일치하거나 아예 일치하는게 없을 경우 " +
+			"보너스 번호에 관계없이 Rank.NONE 를 가진다")
+	@MethodSource("generateLottoNumbers")
+	void checkRankNoneTest(Lotto winning, Lotto userLotto) {
+		WinningLotto winningLotto = new WinningLotto(winning, 45);
+
+		Rank result = winningLotto.compareTo(userLotto);
+
+		final Rank expected = Rank.NONE;
+		assertThat(result).isEqualTo(expected);
+	}
+
+	private static Stream<Arguments> generateLottoNumbers() {
+		final List<Integer> winning = List.of(1, 2, 3, 4, 5, 6);
+
+		return Stream.of(
+				Arguments.of(new Lotto(winning), new Lotto(List.of(1, 2, 13, 14, 15, 16))),
+				Arguments.of(new Lotto(winning), new Lotto(List.of(1, 12, 13, 14, 15, 16))),
+				Arguments.of(new Lotto(winning), new Lotto(List.of(11, 12, 13, 14, 15, 16)))
+		);
 	}
 }
