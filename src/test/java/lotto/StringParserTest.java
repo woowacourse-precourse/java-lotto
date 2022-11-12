@@ -9,7 +9,7 @@ import lotto.utils.StringParser;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class StringParserTest extends NsTest {
+public class StringParserTest {
 
     @DisplayName("로또는 콤마로 구별되어 List로 파싱된다.")
     @Test
@@ -18,9 +18,5 @@ public class StringParserTest extends NsTest {
         assertThat(StringParser.stringToIntegerList(input))
                 .containsExactly(1, 2, 3);
 
-    }
-    @Override
-    protected void runMain() {
-        Application.main(new String[]{});
     }
 }

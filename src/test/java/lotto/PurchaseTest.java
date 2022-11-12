@@ -8,7 +8,7 @@ import lotto.domain.PurchaseService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class PurchaseTest extends NsTest {
+public class PurchaseTest {
     @DisplayName("구매 금액이 숫자가 아닌 경우 에러 출력 테스트")
     @Test
     void 구매금액_숫자_아닌_경우_에러_테스트(){
@@ -43,8 +43,5 @@ public class PurchaseTest extends NsTest {
         );
     }
 
-    @Override
-    protected void runMain() {
-        Application.main(new String[]{});
-    }
+
 }
