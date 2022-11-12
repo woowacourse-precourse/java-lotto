@@ -14,12 +14,14 @@ class LottoMachineTest {
     class CountLottoTicketsTest {
         @Test
         void 로또_수량_테스트_1() {
-            assertThat(lottoMachine.countLottoTickets(8000)).isEqualTo(8);
+            assertThat(lottoMachine.computeLottoTicketsCount(8000)).isEqualTo(8);
         }
 
         @Test
         void 로또_수량_테스트_2() {
-            assertThat(lottoMachine.countLottoTickets(14000)).isEqualTo(14);
+            assertThat(lottoMachine.computeLottoTicketsCount(14000)).isEqualTo(14);
         }
     }
+
+
 }

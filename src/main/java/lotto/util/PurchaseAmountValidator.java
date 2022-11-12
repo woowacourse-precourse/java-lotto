@@ -1,6 +1,7 @@
 package lotto.util;
 
 import lotto.util.constants.GameConstants;
+import lotto.util.constants.LottoConstants;
 
 public class PurchaseAmountValidator {
 
@@ -27,7 +28,7 @@ public class PurchaseAmountValidator {
     }
 
     public boolean isDivisibleBy1000(String purchaseAmount) {
-        return Integer.parseInt(purchaseAmount) % GameConstants.LOTTO_TICKET_PRICE == 0;
+        return Integer.parseInt(purchaseAmount) % LottoConstants.LOTTO_TICKET_PRICE == 0;
     }
 
 }

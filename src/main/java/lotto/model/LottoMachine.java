@@ -1,9 +1,9 @@
 package lotto.model;
 
-import lotto.util.constants.GameConstants;
+import lotto.util.constants.LottoConstants;
 
 public class LottoMachine {
-    public int countLottoTickets(int purchaseAmount) {
-        return purchaseAmount / GameConstants.LOTTO_TICKET_PRICE;
+    public int computeLottoTicketsCount(int purchaseAmount) {
+        return purchaseAmount / LottoConstants.LOTTO_TICKET_PRICE;
     }
 }
