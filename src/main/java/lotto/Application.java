@@ -65,8 +65,19 @@ public class Application {
 
     public static Integer bonusNumInput() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        int bonus = Integer.parseInt(Console.readLine());
+        String tmp = Console.readLine();
+        //예외 확인
+        int bonus = Integer.parseInt(tmp);
         return bonus;
+    }
+
+    public static boolean rangeError(String k) {
+        int tmp = Integer.parseInt(k);
+        if (tmp < 0 || tmp > 45) {
+            System.out.println("[ERROR] 보너스 번호 입력 오류입니다.");
+            throw new IllegalArgumentException();
+        }
+        return true;
     }
 
     public static void buyLotto(int money, List<Lotto> lotto) {
