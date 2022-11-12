@@ -1,6 +1,5 @@
 package lotto.view;
 
-import lotto.constant.ErrorMessage;
 import lotto.validator.Validator;
 
 import java.util.Arrays;
@@ -23,7 +22,7 @@ public class LottoView {
 
     public int inputMoney() {
         int money = 0;
-        try {
+        try {   // TODO validate 내부로 넣을지 고민
             money = Integer.parseInt(readLine());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR_MONEY);
@@ -40,5 +39,11 @@ public class LottoView {
     public List<Integer> stringToList(String input) {
         List<String> numbers = Arrays.asList(input.split(","));
         return numbers.stream().map(number -> Integer.parseInt(number)).collect(Collectors.toList());
+    }
+
+    public int inputBonusNumber(List<Integer> winningNumbers) {
+        String input = readLine();
+        validator.validateBonusNumber(winningNumbers, input);
+        return Integer.parseInt(input);
     }
 }
