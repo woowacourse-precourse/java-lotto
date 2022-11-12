@@ -26,4 +26,8 @@ public class Statistics {
             throw new IllegalArgumentException(InputException.INPUT_MUST_DIVIDE_BY_LOTTO_UNIT.message());
         }
     }
+
+    public int getLottoPublishCount() {
+        return purchaseAmount / 1000;
+    }
 }
