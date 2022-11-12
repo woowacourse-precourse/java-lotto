@@ -12,14 +12,26 @@ import static camp.nextstep.edu.missionutils.Console.*;
 public class Application {
     public static void main(String[] args) {
         System.out.println("구입금액을 입력해 주세요.");
-        int lottoNum = userInputMoney();
+        UserMoney userMoney = userInputMoney();
 
-        List<Lotto> lottos = makeLotto(lottoNum);
+        List<Lotto> lottos = makeLotto(userMoney.getLottoNumber());
         System.out.println("당첨 번호를 입력해 주세요.");
         List<Integer> numbers = userInputNumbers();
-        int ranking[] = compareUserInputLottos(lottos, numbers);
         System.out.println("당첨 통계");
         System.out.println("---");
+        int ranking[] = compareUserInputLottos(lottos, numbers);
+        calculateEarnings(ranking, userMoney.getUserInputMoney());
+    }
+
+    private static void calculateEarnings(int[] ranking, int userInputMoney) {
+        int total=ranking[3]*5000
+                +ranking[4]*50000
+                +ranking[5]*150000
+                +ranking[7]*30000000
+                +ranking[6]*2000000000;
+        double earnings=total/(double)userInputMoney*100;
+        double roundedEarnings=(double)Math.round(earnings*10)/10;
+        System.out.println("총 수익률은 "+roundedEarnings+"%입니다.");
     }
 
     private static int[] compareUserInputLottos(List<Lotto> lottos, List<Integer> numbers) {
@@ -70,9 +82,13 @@ public class Application {
         ArrayList<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < lottoNum; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(numbers);
-            Lotto lotto = new Lotto(numbers);
-            printLotto(numbers);
+            ArrayList<Integer> a=new ArrayList<>();
+            for (int j = 0; j < numbers.size(); j++) {
+                a.add(numbers.get(j));
+            }
+            Collections.sort(a);
+            Lotto lotto = new Lotto(a);
+            printLotto(a);
             lottos.add(lotto);
         }
         return lottos;
@@ -83,16 +99,18 @@ public class Application {
         for (int i = 0; i < lottonumbers.size(); i++) {
             if (i == lottonumbers.size() - 1) {
                 System.out.print(lottonumbers.get(i) + "]");
+                break;
             }
             System.out.print(lottonumbers.get(i) + ", ");
         }
+        System.out.println();
     }
 
     //사용자 금액 입력
-    private static int userInputMoney() {
-        UserMoney userMoney = new UserMoney(Integer.parseInt(readLine()));
+    private static UserMoney userInputMoney() {
+        UserMoney userMoney = new UserMoney(readLine());
         System.out.println(userMoney.getLottoNumber() + "개를 구매했습니다.");
-        return userMoney.getLottoNumber();
+        return userMoney;
     }
 
 
