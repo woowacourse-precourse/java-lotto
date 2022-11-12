@@ -37,8 +37,12 @@ public class InputView {
         return lotto;
     }
 
-    public static String getBonusInput() {
+    public static int getBonusInput() {
         OutputView.printString(MESSAGE_BONUS_INPUT);
-        return Console.readLine();
+        String bonusInput = Console.readLine();
+        if (!bonusInput.matches(NUMBER_REGEX)) {
+            throw new IllegalArgumentException(ERROR_NUMBER_ONLY);
+        }
+        return Integer.parseInt(bonusInput);
     }
 }
