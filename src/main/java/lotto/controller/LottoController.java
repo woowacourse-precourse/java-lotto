@@ -45,13 +45,13 @@ public class LottoController {
 
     private LottoGroup createLottoGroup(int purchaseCount) {
         LotteryDrawMachine lotteryDrawMachine = new LotteryDrawMachine();
-        List<Lotto> lottos = new ArrayList<>();
+        List<Lotto> lotteries = new ArrayList<>();
         for (int count = 0; count < purchaseCount; count++) {
             Lotto lotto = createLotto(lotteryDrawMachine);
             Output.printLotteryNumbers(lotto.getNumbers());
-            lottos.add(lotto);
+            lotteries.add(lotto);
         }
-        return new LottoGroup(lottos);
+        return new LottoGroup(lotteries);
     }
 
     private Lotto createLotto(LotteryDrawMachine lotteryDrawMachine) {
