@@ -41,18 +41,26 @@ public class LottoManager {
         return numbers;
     }
 
-    public int getMoney() {
+    public int getMoney() throws IllegalArgumentException {
         System.out.println("구매금액을 입력해 주세요.");
         String inputMoney = Console.readLine();
 
-        if (inputMoney.contains("j")) {
-            throw new IllegalArgumentException("[ERROR]");
+        for (int i = 0; i < inputMoney.length(); i++) {
+            char charNum = inputMoney.charAt(i);
+
+            // 숫자가 아닐 경우 예외
+            int ascii = (int) charNum;
+            if (ascii < 48 || ascii > 57) {
+                System.out.println("[ERROR] 금액은 숫자로만 입력해 주세요.");
+                throw new IllegalArgumentException();
+            }
         }
 
         int money = Integer.parseInt(inputMoney);
 
         if (money%1000 != 0) {
-            throw new IllegalArgumentException("[ERROR]");
+            System.out.println("[ERROR] 금액은 1000으로 나누어 떨어져야 합니다.");
+            throw new IllegalArgumentException();
         }
 
         return money;

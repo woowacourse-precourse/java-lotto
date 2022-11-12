@@ -12,21 +12,28 @@ public class Application {
         List<Lotto> lottos;
         List<Integer> winningNumber;
 
-        LottoManager lottoManager = new LottoManager();
+        try {
+            LottoManager lottoManager = new LottoManager();
 
-        int userMoney = lottoManager.getMoney();
+            int userMoney = lottoManager.getMoney();
 
-        lottos = lottoManager.publishLottoForPrice(userMoney);
+            lottos = lottoManager.publishLottoForPrice(userMoney);
 
-        winningNumber = lottoManager.GenerateLottoNumbers();
+            winningNumber = lottoManager.GenerateLottoNumbers();
 
-        int bonusNumber = lottoManager.GenerateBonusNumber();
+            int bonusNumber = lottoManager.GenerateBonusNumber();
 
-        result = Referee.compare(bonusNumber, winningNumber, lottos);
+            result = Referee.compare(bonusNumber, winningNumber, lottos);
 
-        lottoManager.printWinningMessage(result);
+            lottoManager.printWinningMessage(result);
 
-        lottoManager.printProfit(userMoney, result);
+            lottoManager.printProfit(userMoney, result);
+
+        } catch (IllegalArgumentException e) {
+            return;
+        }
+
+
 
     }
 }
