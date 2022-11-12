@@ -11,7 +11,7 @@ public class LottoPrize {
 
     private final LottoWinningNumber winningNumInfo;
 
-    private final Integer BONUS_AVAILABLE_NUM = 5;
+    private static final Integer BONUS_AVAILABLE_NUM = 5;
 
     public LottoPrize(LottoWinningNumber lottoWinningNumber) {
         this.winningNumInfo = lottoWinningNumber;
