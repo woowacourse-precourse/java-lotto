@@ -28,15 +28,15 @@ public enum Prize {
         return List.of(Prize.values());
     }
 
-    public MatchCount getMatchCount() {
+    private MatchCount getMatchCount() {
         return matchCount;
     }
 
-    public int getPrizeMoney() {
+    private int getPrizeMoney() {
         return prizeMoney;
     }
 
-    public String getMessage() {
+    private String getMessage() {
         return message;
     }
 
