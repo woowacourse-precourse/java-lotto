@@ -49,4 +49,10 @@ public class LottoController {
         Lotto winnerNumberLotto = new Lotto(winnerNumber);
         lottoData.setWinnerNumber(winnerNumberLotto);
     }
+
+    private void inputBonusNumber(){
+        output.askBonusNumber();
+        int bonusNumber = Integer.parseInt(readLine());
+        lottoData.setBonusNumber(bonusNumber);
+    }
 }
