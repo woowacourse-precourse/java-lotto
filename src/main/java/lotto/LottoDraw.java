@@ -20,6 +20,7 @@ public class LottoDraw {
         List<Integer> numbers = enterWinningNumber();
         validate(numbers);
         validateDuplication(numbers);
+        validateNumberRange(numbers);
         winningNumber = numbers;
     }
 
@@ -44,6 +45,13 @@ public class LottoDraw {
         }
     }
 
+    private void validateNumberRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException("[ERROR] 로또 당첨 번호는 1 ~ 45 범위입니다.");
+            }
+        }
+    }
 
     public int getTotalPrizeMoney() {
         return totalPrizeMoney;
