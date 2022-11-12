@@ -13,6 +13,7 @@ public class Lotto {
     public static final int SIZE = 6;
     public static final String SIZE_ERROR_MESSAGE = "[ERROR]: 로또 번호가 " + SIZE + "개의 숫자가 아닙니다.\n";
     public static final String DUPLICATION_ERROR_MESSAGE = "[ERROR]: 로또 번호에 중복된 숫자가 있습니다.\n";
+    public static final String SCOPE_ERROR_MESSAGE = "[ERROR]: 로또 번호가 " + MIN_VALUE + "~" + MAX_VALUE + "사이 숫자가 아닙니다.\n";
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -23,6 +24,7 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         validateSize(numbers);
         validateDuplication(numbers);
+        validateNumberScope(numbers);
     }
 
     public static Lotto createRandomNumbers() {
@@ -48,6 +50,14 @@ public class Lotto {
         }
         if (numberSet.size() != SIZE) {
             throw new IllegalArgumentException(DUPLICATION_ERROR_MESSAGE);
+        }
+    }
+
+    public void validateNumberScope(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (!(number >= MIN_VALUE && number <= MAX_VALUE)) {
+                throw new IllegalArgumentException(SCOPE_ERROR_MESSAGE);
+            }
         }
     }
 }
