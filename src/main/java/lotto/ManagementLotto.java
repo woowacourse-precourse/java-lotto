@@ -48,12 +48,4 @@ public class ManagementLotto {
 
         return bonusNumber;
     }
-
-    public void calculateResult() {
-
-    }
-
-    public void calcROI() {
-
-    }
 }
