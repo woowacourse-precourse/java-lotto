@@ -2,19 +2,20 @@ package lotto.console;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Input {
 
-    public int inputCost() {
+    public static int inputCostNumber() throws IOException {
         return Integer.parseInt(Console.readLine());
     }
 
-    public List<Integer> inputWinningNumbers() {
-
+    public static List<Integer> inputWinningNumbers() {
         String[] s = Console.readLine().split(",");
+
         List<Integer> answer = Arrays.stream(s)
                 .mapToInt(Integer::parseInt)
                 .boxed()
@@ -23,7 +24,7 @@ public class Input {
         return answer;
     }
 
-    public int inputBonusNumber() {
+    public static int inputBonusNumber() {
         return Integer.parseInt(Console.readLine());
     }
 }

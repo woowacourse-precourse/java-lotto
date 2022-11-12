@@ -8,7 +8,6 @@ class BuyLottoControllerTest {
 
     @Test
     void costInput() {
-        assertEquals()
     }
 
     @Test

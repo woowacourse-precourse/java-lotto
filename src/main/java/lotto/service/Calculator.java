@@ -5,19 +5,19 @@ import java.util.List;
 public class Calculator {
 
 
-    int lottoNumbersPerCost(int cost) {
+    public static int lottoNumbersPerCost(int cost) {
+        return cost/1000;
+    }
+
+    public static void calculateRevenueRate() {
 
     }
 
-    double calculateRevenueRate() {
+    public static void countMatchedLotto(List<Integer> lst1, List<Integer> lst2) {
 
     }
 
-    int countMatchedLotto(List<Integer> lst1, List<Integer> lst2) {
-
-    }
-
-    boolean matchWithBonus() {
+    public static void matchWithBonus() {
 
     }
 }
