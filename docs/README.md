@@ -7,6 +7,7 @@
 - [x] 당첨 번호 입력 기능 (중복되지 않는 숫자 6개) -Lotto#lotto()
   - [x] 보너스 번호 입력 기능 -User#setBonusNum()
   - [x] 보너스 번호 출력 기능 -User#getBonusNum()
+  - [x] 당첨 번호 변환 기능 -Winning#winning()
 - [ ] 당첨 기능 -Winning#score()
   - [ ] 당첨 내역 출력 기능 
   - [ ] 수익률 계산 기능 -Winning#rate()
