@@ -2,7 +2,7 @@ package lotto;
 
 import java.util.List;
 
-public class matchUtil {
+public class MatchUtil {
     private int cnt,length=Constant.LOTTO_SIZE;
     public int matchWinningNumber(List<Integer> lotto, List<Integer> userNum){
         cnt = 0;
