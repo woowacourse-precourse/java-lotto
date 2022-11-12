@@ -6,14 +6,15 @@ import java.util.*;
 
 public class CreateRandomLotto {
 
-    public void randomLotto(long counts){
+    public List<LottoPaper> randomLotto(long counts){
         List<LottoPaper> lottoPaper= new ArrayList<>();
         for(int i = 0; i < counts; i++){
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(numbers);
+            List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(lotto);
             LottoPaper eachNumber = new LottoPaper();
-            eachNumber.setNumber(numbers);
+            eachNumber.setNumber(lotto);
             lottoPaper.add(eachNumber);
         }
+        return lottoPaper;
     }
 }
