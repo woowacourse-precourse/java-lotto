@@ -34,7 +34,6 @@ public class LottoGameView {
         InformationMessage.INPUT_WINNING_NUMBER.print();
         String winningNumbers = Console.readLine();
 
-        viewValidator.validateNumberCount(winningNumbers);
         viewValidator.validateNumbersType(winningNumbers);
 
         return convertWinningNumbers(winningNumbers);

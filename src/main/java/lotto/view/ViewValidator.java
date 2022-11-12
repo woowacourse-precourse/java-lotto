@@ -26,10 +26,4 @@ public class ViewValidator {
         Arrays.stream(numbers.split(","))
                 .forEach(this::validateNumberType);
     }
-
-    public void validateNumberCount(String numbers) {
-        if (numbers.split(",").length != LOTTO_NUMBER_COUNT) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_NUMBER_COUNT.getMessage());
-        }
-    }
 }

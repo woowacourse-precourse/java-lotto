@@ -9,10 +9,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WinningNumber {
+    private static final int LOTTO_NUMBER_COUNT = 6;
+
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
 
     public WinningNumber(List<Integer> winningNumbers, int bonusNumber) {
+        validateNumberCount(winningNumbers);
         validateNumbersRange(winningNumbers);
         validateNumberRange(bonusNumber);
         validateContainsInWinningNumber(winningNumbers, bonusNumber);
@@ -50,6 +53,12 @@ public class WinningNumber {
 
     public double getRateOfReturn(int money, int prizeMoney) {
         return ((double) prizeMoney / money) * 100;
+    }
+
+    public void validateNumberCount(List<Integer> winningNumbers) {
+        if (winningNumbers.size() != LOTTO_NUMBER_COUNT) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_NUMBER_COUNT.getMessage());
+        }
     }
 
     private void validateNumbersRange(List<Integer> winningNumbers) {
