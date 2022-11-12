@@ -14,4 +14,11 @@ public class LottoDraw {
         }
         return winNumber;
     }
+
+    private static boolean existBonusNumber(Lotto lotto, WinLotto winLotto) {
+        List<Integer> lottoNumbers = lotto.getLottoNumbers();
+        int bonusNumber = winLotto.getBonusNumber();
+        
+        return lottoNumbers.contains(bonusNumber);
+    }
 }
