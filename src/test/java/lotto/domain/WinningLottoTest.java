@@ -30,7 +30,7 @@ class WinningLottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("보너스 번호에 1~45 범위 이외의 숫자가 있으면 예외가 발생한다.")
+    @DisplayName("보너스 번호가 1~45 범위 이외의 숫자이면 예외가 발생한다.")
     @Test
     void createWinningLottoByInvalidRangeBonusNumber() {
         assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 100))
