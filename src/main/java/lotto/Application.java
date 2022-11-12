@@ -39,6 +39,7 @@ public class Application {
             manager.inputWinNumbers(test, basket, num2);
 
         } catch (IllegalArgumentException e) {
+            e.printStackTrace();
             System.out.println("[ERROR]");
         }
 
