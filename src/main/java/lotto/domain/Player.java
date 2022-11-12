@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.dto.GameResultResponseDtos;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,12 +13,14 @@ public class Player {
     public static final String ERROR_PRICE_COUNT_NOT_EQUAL_LOTTO_SIZE = "[ERROR] 주어진 금액과 주어진 로또 번호의 개수가 일치하지 않습니다.";
 
     private Lottos lottos;
+    private int purchasePrice;
 
     public Lottos purchaseLottos(int purchasePrice, List<List<Integer>> lottoNumbers) {
         int purchaseLottoCount = calculateLottoCount(purchasePrice);
         validateSize(purchaseLottoCount, lottoNumbers.size());
 
         lottos = new Lottos(createLottos(lottoNumbers));
+        this.purchasePrice = purchasePrice;
         return lottos;
     }
 
@@ -51,7 +55,12 @@ public class Player {
                 .collect(Collectors.toList());
     }
 
-    public List<LottoResult> play(Answer answer) {
+    public GameResultResponseDtos playLotto(Answer answer) {
+        List<LottoResult> lottoResults = play(answer);
+        return Referee.calculate(lottoResults, purchasePrice);
+    }
+
+    private List<LottoResult> play(Answer answer) {
         return answer.compare(lottos);
     }
 }

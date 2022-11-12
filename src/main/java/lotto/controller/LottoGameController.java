@@ -19,11 +19,14 @@ public class LottoGameController {
 
     public void run() {
         int purchasePrice = inputPurchasePrice();
-        printLottos(purchasePrice);
+        LottosResponseDto lottosResponseDto = lottoGameService.purchaseLottos(purchasePrice);
+        printLottos(lottosResponseDto);
 
-        lottoGameService.createAnswer(inputAnswerNumbers(), inputBonusNumber());
+        List<Integer> answers = inputAnswerNumbers();
+        int bonusNumber = inputBonusNumber();
+        lottoGameService.createAnswer(answers, bonusNumber);
 
-        printWinningResult(lottoGameService.playGame(purchasePrice));
+        printWinningResult(lottoGameService.playGame());
     }
 
     private int inputPurchasePrice() {
@@ -31,9 +34,8 @@ public class LottoGameController {
         return InputView.inputPurchasePrice();
     }
 
-    private void printLottos(int purchasePrice) {
+    private void printLottos(LottosResponseDto lottosResponseDto) {
         OutputView.printBlankLine();
-        LottosResponseDto lottosResponseDto = lottoGameService.purchaseLottos(purchasePrice);
         OutputView.printPurchaseLottos(lottosResponseDto);
     }
 
