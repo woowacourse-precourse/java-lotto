@@ -62,15 +62,15 @@ public class Application {
         System.out.println(quantity + "개를 구매했습니다.");
     }
 
-    public static void printLottoNumbers(List<Integer> lottoNumberList) {
+    public static void printLottoNumbers(List<Integer> lottoNumbers) {
 
         System.out.print("[");
 
-        for (int i = 0; i < lottoNumberList.size() - 1; i++) {
-            System.out.print(lottoNumberList.get(i) + ", ");
+        for (int i = 0; i < lottoNumbers.size() - 1; i++) {
+            System.out.print(lottoNumbers.get(i) + ", ");
         }
 
-        System.out.println(lottoNumberList.get(lottoNumberList.size() - 1) + "]");
+        System.out.println(lottoNumbers.get(lottoNumbers.size() - 1) + "]");
     }
 
     public static void printWinningNumbersInputBox() {
