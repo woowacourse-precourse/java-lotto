@@ -23,12 +23,16 @@ public class LottoGameController {
     private final Map<String, String> lottoWinningNumberAndBonusNumberMap = new HashMap<>();
 
     public void playGame() {
-        inputLottoPurchaseAmount();
-        printPurchaseLottoCount();
-        printIssuedLottoNumbers();
-        setWinningNumberAndBonusNumber();
-        decidePurchaseLottosRank();
-        printGameResult();
+        try {
+            inputLottoPurchaseAmount();
+            printPurchaseLottoCount();
+            printIssuedLottoNumbers();
+            setWinningNumberAndBonusNumber();
+            decidePurchaseLottosRank();
+            printGameResult();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void inputLottoPurchaseAmount() {
@@ -52,7 +56,6 @@ public class LottoGameController {
     }
 
     public void setWinningNumberAndBonusNumber() {
-        Map<String, String> lottoNumberMap = new HashMap<>();
         String lottoWinningNumbers = inputView.inputLottoWinningNumbers();
         lottoGameService.validateLottoWinningNumbers(lottoWinningNumbers);
         String bonusNumber = inputView.inputLottoBonusNumber();
