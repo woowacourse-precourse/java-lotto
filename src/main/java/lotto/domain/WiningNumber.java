@@ -45,6 +45,8 @@ public class WiningNumber {
     }
 
     public void setBonusNumber(int bonusNumber) {
+        validateBonusNumberRange(bonusNumber);
+        validateBonusNumberOverlap(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
