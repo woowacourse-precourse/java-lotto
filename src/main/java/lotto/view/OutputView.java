@@ -1,29 +1,40 @@
 package lotto.view;
 
 import lotto.domain.Lotto;
+import lotto.resources.LottoResultMessage;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 public class OutputView {
+    private final String WINNING_STATISTIC = "당첨통계\n----";
+    private final String FIRST_DECIMAL_PLACE = "%.1f";
+    private final String IS_NUMBER_OF_PURCHASE = "%d개를 구매했습니다.\n";
+    private final String NEWLINE = "";
+
     public void printLottoPurchaseInformation(List<Lotto> myLotto, int lottoIssueCount) {
-        System.out.println(lottoIssueCount + "개를 구매했습니다.");
+        System.out.printf(IS_NUMBER_OF_PURCHASE, lottoIssueCount);
 
         for (int count = 0; count < lottoIssueCount; count++) {
             System.out.println(myLotto.get(count).getLottoNumbers().toString());
         }
-        System.out.println();
+        System.out.println(NEWLINE);
     }
 
     public void printLottoResult(List<Integer> result, double earningsRate) {
-        BigDecimal rate = new BigDecimal(earningsRate);
-        System.out.println("당첨통계");
-        System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + result.get(5) + "개");
-        System.out.println("4개 일치 (50,000원) - " + result.get(4) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + result.get(3) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + result.get(2) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + result.get(1) + "개");
-        System.out.println("총 수익률은 " + String.format("%.1f", rate) + "%입니다.");
+        printWinningStatistic(result);
+        printTotalEarningsRate(earningsRate);
+    }
+
+    private void printTotalEarningsRate(double earningsRate) {
+        String rate = String.format(FIRST_DECIMAL_PLACE, new BigDecimal(earningsRate));
+        System.out.println("총 수익률은 " + rate + "%입니다.");
+    }
+
+    private void printWinningStatistic(List<Integer> result) {
+        System.out.println(WINNING_STATISTIC);
+        for (LottoResultMessage resultMessage : LottoResultMessage.values()) {
+            System.out.println(resultMessage.getMessage() + result.get(resultMessage.getRank()) + "개");
+        }
     }
 }
