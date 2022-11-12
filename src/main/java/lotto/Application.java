@@ -13,7 +13,7 @@ public class Application {
     static int BONUS_NUMBER;
     static int numberOfPurchasedLotto;
     static int totalRevenue;
-    static double revenuePercentage;
+    static String revenuePercentage;
     static int initialAmount;
     static List<Lotto> purchasedLotto =  new ArrayList<>();
     static List<Integer> trackEachPlace = new ArrayList<>();
@@ -24,6 +24,7 @@ public class Application {
     static final String BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
     static final String LOTTO_PURCHASE_MESSAGE = "개를 구매했습니다.";
     static final String ANNOUNCEMENT = "당첨 통계\n---";
+    static String closingStatement;
     enum places{
         FIRST_PLACE(2000000000,6, "6개 일치 (2,000,000,000원) - "),
         SECOND_PLACE(30000000, Integer.MAX_VALUE, "5개 일치, 보너스 볼 일치 (30,000,000원) - "),
@@ -47,8 +48,6 @@ public class Application {
         validateGivenNumbers();
         initializeBonusNumber();
         countMatchingNumber();
-        for (int i: trackEachPlace) System.out.println(i);
-        System.out.println("\n\n");
         showStatistics();
         calculatePercentage();
     }
@@ -135,17 +134,20 @@ public class Application {
         printAndAdd(places.THIRD_PLACE);
         printAndAdd(places.SECOND_PLACE);
         printAndAdd(places.FIRST_PLACE);
-        System.out.println("total revenue -> " + totalRevenue);
+        calculatePercentage();
+        System.out.println(closingStatement);
+
     }
 
     public static void printAndAdd(places place){
         int won = Collections.frequency(trackEachPlace, place.numberMatch);
-        System.out.println(place.message + won);
+        System.out.println(place.message + won + "개");
         totalRevenue += won * place.prize;
     }
 
     public static void calculatePercentage(){
-        revenuePercentage = Math.round(Double.valueOf(totalRevenue)/initialAmount*100);
+        revenuePercentage = String.format("%.1f", ((double) totalRevenue /initialAmount*100));
+        closingStatement = "총 수익률은 "+ revenuePercentage + "%입니다.";
     }
 
 }
