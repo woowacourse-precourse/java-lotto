@@ -12,10 +12,11 @@ public class Application {
 
         Print.printLotto(user.getUserLottos());
 
-        Print.printWinningNumber();
-
         WinningNumbers winningNumbers = new WinningNumbers();
-        winningNumbers.pickWinningNumbers();
 
+        Print.printWinningNumber();
+        winningNumbers.newWinningNumbers();
+        Print.printBonusNumber();
+        winningNumbers.newBonusNumber();
     }
 }

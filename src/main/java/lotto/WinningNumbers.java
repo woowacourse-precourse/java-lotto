@@ -9,12 +9,20 @@ public class WinningNumbers {
     private Lotto winningNumbers;
     private int bonusNumber;
 
-    public void pickWinningNumbers() {
+    public WinningNumbers() {}
+
+    public void newWinningNumbers() {
         List<Integer> inputs = Input.readListInteger(",");
         validateSize(inputs);
-        validateRange(inputs);
+        validatedLottoRange(inputs);
         validateDuplicate(inputs);
         winningNumbers = new Lotto(inputs);
+    }
+
+    public void newBonusNumber() {
+        int input = Input.readInteger();
+        validateNumberRange(input);
+        bonusNumber = input;
     }
 
     private void validateSize(List<Integer> inputs) {
@@ -23,11 +31,15 @@ public class WinningNumbers {
         }
     }
 
-    private void validateRange(List<Integer> inputs) {
+    private void validatedLottoRange(List<Integer> inputs) {
         for (Integer input : inputs) {
-            if ((input < 1) || (input > 45)) {
-                throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBER_RANGE.getValue());
-            }
+            validateNumberRange(input);
+        }
+    }
+
+    private void validateNumberRange(int number) {
+        if ((number < 1) || (number > 45)) {
+            throw new IllegalArgumentException(Error.ERROR_LOTTO_NUMBER_RANGE.getValue());
         }
     }
 
