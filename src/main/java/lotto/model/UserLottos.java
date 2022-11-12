@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import lotto.constant.PriceConstant;
+import lotto.view.OutputView;
 
 public class UserLottos {
     private List<Lotto> userLottos = new ArrayList<>();
@@ -15,9 +16,10 @@ public class UserLottos {
 
     private void setUserLottos(Integer price) {
         int lottoNums = calculateLottoNums(price);
+        OutputView.printUserLottoNums(lottoNums);
         for (int i = 0; i < lottoNums; i++) {
             userLottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6)));
-
+            OutputView.printUserLottos(userLottos.get(userLottos.size()-1));
         }
     }
 
