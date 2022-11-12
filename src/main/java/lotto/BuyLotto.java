@@ -1,6 +1,11 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class BuyLotto {
     public enum INPUT_SENTENCE {
@@ -26,10 +31,23 @@ public class BuyLotto {
         return Integer.parseInt(userPrice);
     }
 
-    public void buyLottoCount() {
+    private int buyLottoCount() {
         int userPrice = userPriceInput();
         int lottoCount = userPrice / 1000;
-        System.out.println("\n"+lottoCount+INPUT_SENTENCE.RESULT_COUNT.label());
+        System.out.print("\n"+lottoCount+INPUT_SENTENCE.RESULT_COUNT.label());
+        return lottoCount;
+    }
+
+    public List<List<Integer>> lottoNumberMaker() {
+        List<List<Integer>> lottoNumbers = new ArrayList<>();
+        int lottoCount = buyLottoCount();
+        for(int i=0; i<lottoCount; i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(numbers);
+            System.out.println(numbers);
+            lottoNumbers.add(numbers);
+        }
+        return lottoNumbers;
     }
 
 }
