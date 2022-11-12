@@ -14,6 +14,10 @@ public class Lotto {
         System.out.println(numbers.toString());
     }
 
+    public Boolean hasNumber(Integer number) {
+        return numbers.contains(number);
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
