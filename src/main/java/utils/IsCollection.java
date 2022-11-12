@@ -10,19 +10,23 @@ public class IsCollection {
         return text.chars().allMatch(ch -> (Character.isDigit(ch) || ch == ','));
     }
 
-    public static boolean isContainText(String text, String inText) {
-        return text.contains(inText);
+    public static boolean isDigitText(String text) {
+        return text.chars().allMatch(ch -> (Character.isDigit(ch)));
     }
 
     public static boolean isSetSize(List<Integer> numbers, int setSize) {
         return numbers.size() == setSize;
     }
 
-    public static boolean IsNumbersInRange(List<Integer> numbers, int start, int end) {
-        return numbers.stream().allMatch(number -> number >= start && number <= end);
+    public static boolean isNumbersInRange(List<Integer> numbers, int start, int end) {
+        return numbers.stream().allMatch(number -> isNumberInRange(number, start, end));
     }
 
-    public static boolean isDuplication(List<Integer> numbers){
+    public static boolean isNumberInRange(int number, int start, int end) {
+        return number >= start && number <= end;
+    }
+
+    public static boolean isDuplication(List<Integer> numbers) {
         return numbers.size() != numbers.stream().distinct().count();
     }
 
