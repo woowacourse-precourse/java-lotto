@@ -7,13 +7,13 @@ import java.util.List;
 
 public class Result {
     public static final int PERCENT = 100;
-    public static final int ROUND_ONE = 10;
-    public static final double ONE_DECIMAL = 10.0;
 
-    private static HashMap<Prize, Integer> totalMatchResult = new HashMap<>();
+    private final LottoNumber lottoNumber;
+    private HashMap<Prize, Integer> totalMatchResult = new HashMap<>();
     private int totalPrizeMoney = 0;
 
-    public Result(List<Lotto> lottoTickets) {
+    public Result(List<Lotto> lottoTickets, LottoNumber lottoNumber) {
+        this.lottoNumber = lottoNumber;
         saveMatchResult(lottoTickets);
         sumPrizeMoney();
         Output.showResult(Prize.makeResultMessage(totalMatchResult));
@@ -21,7 +21,7 @@ public class Result {
 
     private void saveMatchResult(List<Lotto> lottoTickets) {
         for (Lotto lotto : lottoTickets) {
-            Prize prize = Prize.findPrizeType(LottoNumber.getMatchResult(lotto));
+            Prize prize = Prize.findPrizeType(lottoNumber.getMatchResult(lotto));
             totalMatchResult.put(prize, totalMatchResult.getOrDefault(prize, 0) + 1);
         }
     }

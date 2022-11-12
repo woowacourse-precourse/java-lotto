@@ -8,8 +8,8 @@ import static constant.Constant.INITIAL_NUMBER;
 import static constant.Constant.LOTTO_SIZE;
 
 public class LottoNumber {
-    private static List<Integer> winningNumbers;
-    private static int bonusNumber;
+    private List<Integer> winningNumbers;
+    private int bonusNumber;
 
     public LottoNumber(String winningNumbers, String bonusNumber) {
         String[] split = winningNumbers.split(",");
@@ -17,7 +17,7 @@ public class LottoNumber {
         this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
-    public static MatchCount getMatchResult(Lotto lotto) {
+    public MatchCount getMatchResult(Lotto lotto) {
         int match = 0;
         int bonusMatch = 0;
         for (int idx = INITIAL_NUMBER; idx < LOTTO_SIZE; idx++) {
