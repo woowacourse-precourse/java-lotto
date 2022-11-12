@@ -41,14 +41,14 @@ public class InputView {
     public static Lotto inputWinningNumbers() {
         System.out.println(ASK_WINNING_NUMBERS);
         String winningNumbers = Console.readLine();
-
+        System.out.println();
         return new Lotto(convertToList(winningNumbers));
     }
 
     private static int inputBonusNumber() {
         System.out.println(ASK_BONUS_NUMBER);
         int bonusNumber = Integer.parseInt(Console.readLine());
-
+        System.out.println();
         return bonusNumber;
     }
 

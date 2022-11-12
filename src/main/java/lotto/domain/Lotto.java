@@ -7,7 +7,7 @@ public class Lotto {
     private static final String DUPLICATE_NUMBER_ERROR = "[ERROR] 숫자는 중복되지 않아야 합니다.";
     private static final String NUMBER_RANGE_ERROR = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     public static final int LOTTO_SIZE = 6;
-    static final int LOTTO_PRICE = 1000;
+    public static final int LOTTO_PRICE = 1000;
 
     private final List<Integer> numbers;
 
@@ -44,5 +44,9 @@ public class Lotto {
 
     public boolean containNumber(int number) {
         return numbers.contains(number);
+    }
+
+    public List<Integer> getLottoNumbers() {
+        return numbers;
     }
 }
