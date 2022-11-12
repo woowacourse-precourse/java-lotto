@@ -1,6 +1,8 @@
 package lotto.domain;
 
 import static lotto.constant.LottoConstant.LOTTO_NUMBER_LENGTH;
+import static lotto.constant.LottoConstant.LOTTO_NUMBER_MAX_VALUE;
+import static lotto.constant.LottoConstant.LOTTO_NUMBER_MIN_VALUE;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -38,10 +40,21 @@ public class Lotto {
         if (isDuplicate(numbers)) {
             throw new IllegalArgumentException();
         }
+
+        if (isWrongRange(numbers)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     }
 
     private boolean isDuplicate(List<Integer> numbers) {
         return new HashSet<>(numbers).size() != LOTTO_NUMBER_LENGTH;
+    }
+
+    private boolean isWrongRange(List<Integer> numbers) {
+        return numbers.stream()
+                .anyMatch(number -> number > LOTTO_NUMBER_MAX_VALUE || number < LOTTO_NUMBER_MIN_VALUE);
     }
 
 }
