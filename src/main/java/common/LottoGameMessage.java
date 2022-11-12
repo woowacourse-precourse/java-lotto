@@ -20,5 +20,7 @@ public class LottoGameMessage {
     public void printWinningNumberMessage(){
         System.out.println(WINNING_NUMBER_MESSAGE);
     }
-    
+    public void printBonusNumberMessage(){
+        System.out.println(BONUS_NUMBER_MESSAGE);
+    }
 }
