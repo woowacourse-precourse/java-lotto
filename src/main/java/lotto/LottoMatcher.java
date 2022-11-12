@@ -54,6 +54,8 @@ public class LottoMatcher {
             results.add(FOURTH_FOUR_MATCHED);
         } else if (numberOfMatchedLottoNumber == 3) {
             results.add(FIFTH_THREE_MATCHED);
+        } else if (numberOfMatchedLottoNumber < 3) {
+            results.add(NONE);
         }
     }
 
