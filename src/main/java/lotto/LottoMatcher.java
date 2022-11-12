@@ -23,10 +23,9 @@ public class LottoMatcher {
         this.publishedLottos = publishedLottos;
         this.winningLotto = winningLotto;
         results = new ArrayList<>();
-        matchAllLottos();
     }
 
-    private void matchAllLottos() {
+    public void matchAllLottos() {
         // 각각의 lotto 와 winning lotto 의 일치율을 확인
     }
 
