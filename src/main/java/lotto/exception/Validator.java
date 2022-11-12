@@ -9,20 +9,14 @@ import java.util.List;
 
 public class Validator {
 
-    public static final String NEED_TO_INPUT_NUMBER = "[ERROR] 숫자를 입력해주세요";
-    public static final String NEED_TO_INPUT_NUMBER_CAN_DIVIDE_BY_ONE_THOUSAND =
-            "[ERROR] 1000으로 나누어 떨어지는 숫자를 입력해주세요";
-    public static final String NEED_TO_INPUT_SIX_NUMBER = "[ERROR] 로또 번호는 6자리를 입력하여야 합니다.";
-    public static final String NEED_TO_INPUT_RIGHT_NUMBER_RANGE =
-            "[ERROR] 1 이상 45 이하의 숫자를 입력하여야 합니다.";
-    public static final String NEED_TO_USE_COMMA = "[ERROR] 콤마(,)를 통해 숫자를 구분해주세요";
-    public static final String NEED_TO_NOT_DUPLICATE = "[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.";
+    private static final String ERROR_MESSAGE_PREFIX = "[ERROR] ";
     
     public void validateMoney(String money) {
         validateValueIsNumber(money);
         validateValueCanDivideOneThousand(money);
     }
 
+    //TODO FOR 루프에 대한 고민
     public void validateWinningNumbers(String input) {
         validateValueUseComma(input);
         List<String> inputValues = Arrays.asList(input.split(","));
@@ -40,31 +34,31 @@ public class Validator {
 
     private void validateValueIsDuplicate(String input, List<Integer> winningNumbers) {
         if (winningNumbers.contains(Integer.parseInt(input))) {
-            throw new IllegalArgumentException(NEED_TO_NOT_DUPLICATE);
+            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + "보너스 번호가 당첨 번호와 중복됩니다.");
         }
     }
 
     private void validateValueIsNumber(String money) {
         if (!money.chars().allMatch(Character::isDigit)) {
-            throw new IllegalArgumentException(NEED_TO_INPUT_NUMBER);
+            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + "숫자를 입력해주세요.");
         }
     }
 
     private void validateValueCanDivideOneThousand(String money) {
         if (Integer.parseInt(money) % 1000 != 0) {
-            throw new IllegalArgumentException(NEED_TO_INPUT_NUMBER_CAN_DIVIDE_BY_ONE_THOUSAND);
+            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + "1000으로 나누어 떨어지는 숫자를 입력해주세요.");
         }
     }
 
     private void validateValueUseComma(String input) {
         if (!input.contains(",")) {
-            throw new IllegalArgumentException(NEED_TO_USE_COMMA);
+            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + "콤마(,)를 통해 숫자를 구분해주세요.");
         }
     }
 
     private void validateValueRange(String input) {
         if (isNotRightRangeNumber(input)) {
-            throw new IllegalArgumentException(NEED_TO_INPUT_RIGHT_NUMBER_RANGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + "1 이상 45 이하의 숫자를 입력하여야 합니다.");
         }
     }
 
@@ -75,7 +69,7 @@ public class Validator {
 
     private void validateNumberOfValue(List<String> inputValues) {
         if (inputValues.size() != LOTTO_NUMBER_LENGTH) {
-            throw new IllegalArgumentException(NEED_TO_INPUT_SIX_NUMBER);
+            throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + "로또 번호는 6자리를 입력하여야 합니다.");
         }
     }
 }
