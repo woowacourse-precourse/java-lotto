@@ -7,6 +7,8 @@ import static lotto.Application.*;
 public class Lotto {
     private final List<Integer> numbers;
 
+    private static ErrorMessage error;
+
     public Lotto(List<Integer> numbers) {
         validateNumbersSize(numbers);
         validateNumbersAreInRange(numbers);
