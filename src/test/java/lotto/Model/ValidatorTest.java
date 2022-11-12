@@ -1,22 +1,24 @@
-package lotto.domain;
+package lotto.Model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import org.junit.jupiter.api.Test;
 
-public class ExceptionTest {
+public class ValidatorTest {
 
     @Test
     void isValidAmout_입력받은_구매금액이_예외인지_판별() {
-        Exception exception = new Exception();
+
         String input1 = "$2,000";
         String input2 = "20210";
         String input3 = "2000";
+        Buyer buyer3 = new Buyer(input3);
 
-        assertThatThrownBy(() -> exception.isValidAmount(input1))
+        assertThatThrownBy(() -> new Buyer(input1))
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> exception.isValidAmount(input2))
+        assertThatThrownBy(() -> new Buyer(input2))
                 .isInstanceOf(IllegalArgumentException.class);
-        assertThat(exception.isValidAmount(input3)).isEqualTo(2000);
+        assertThat(buyer3.getPurchaseAmount()).isEqualTo(2000);
     }
 }

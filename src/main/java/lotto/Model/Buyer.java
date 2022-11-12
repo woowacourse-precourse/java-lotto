@@ -1,16 +1,14 @@
-package lotto.domain;
+package lotto.Model;
 
 import java.util.*;
+import lotto.Utils.Util;
+import lotto.Utils.Validator;
 
 public class Buyer {
 
     public final int NUMBERS_OF_LOTTO = 6;
     public final int START_NUM = 1;
     public final int END_NUM = 45;
-
-    public void setPurchaseAmount(int purchaseAmount) {
-        this.purchaseAmount = purchaseAmount;
-    }
 
     public int getPurchaseAmount() {
         return purchaseAmount;
@@ -28,14 +26,16 @@ public class Buyer {
     private List<List<Integer>> lottoWallet;
 
 
-    public Buyer() {
+    public Buyer(String purchaseAmount) {
+        new Validator(purchaseAmount);
+        this.purchaseAmount = Util.getInt(purchaseAmount);
         this.lottoWallet = new ArrayList<>();
     }
 
     public void addLotto(int count){
-        NumberGenerator generator = new NumberGenerator();
+        Util util = new Util();
         for(int i = 0; i< count; i++){
-            lottoWallet.add(generator.generateRandomNum(START_NUM, END_NUM, NUMBERS_OF_LOTTO));
+            lottoWallet.add(util.generateRandomNum(START_NUM, END_NUM, NUMBERS_OF_LOTTO));
         }
     }
 }
