@@ -5,6 +5,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import static lotto.Converter.convertToInteger;
 import static lotto.Converter.convertToIntegerList;
 
+import static lotto.Printer.printProfits;
+
 import java.util.List;
 
 
@@ -51,7 +53,7 @@ public class Application {
             addWinnings(buyer, winningLotto);
             buyer.showWinnings();
 
-            System.out.println("총 수익률은 " + buyer.getYield() + "%입니다.");
+            printProfits(buyer.getProfit());
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
         }
