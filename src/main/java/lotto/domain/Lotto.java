@@ -11,8 +11,12 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
+        ValidationInDomain validator = new ValidationInDomain();
+
         validate(numbers);
-        checkNumbersDuplication(numbers);
+        validator.checkNumbersDuplication(numbers);
+        validator.checkNumbersRange(numbers);
+
         this.numbers = numbers;
         sortInAscendingOrder();
     }
@@ -20,16 +24,6 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
-        }
-    }
-
-    private void checkNumbersDuplication(List<Integer> numbers) {
-        Set<Integer> validator = new HashSet<>();
-        for (int number : numbers){
-            if(validator.contains(number)){
-                throw new IllegalArgumentException();
-            }
-            validator.add(number);
         }
     }
 
