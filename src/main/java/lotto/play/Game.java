@@ -23,11 +23,12 @@ public class Game {
         startGame();
         OutputPrint.moneyToNumberPrint(player.getPurchaseNumber());
         generateNumbers(player.getPurchaseNumber());
+        OutputPrint.generatedLottoNumbersPrint(lottos);
     }
 
     private void startGame(){
         InputPrint.startInput();
-        player.inputString();
+        player.inputMoney();
     }
 
     private void generateNumbers(int count){
