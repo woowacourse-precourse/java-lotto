@@ -23,4 +23,10 @@ public class MoneyTest {
                 () -> assertDoesNotThrow(() -> new Money(1))
         );
     }
+
+    @DisplayName("수익률을 구한다.")
+    @Test
+    void calculateYield() {
+        assertThat(Money.yield(new Money(8000), new Money(5000))).isEqualTo(62.5);
+    }
 }
