@@ -28,4 +28,8 @@ public class LottoBuyer {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
         }
     }
+
+    private int changeInt(String input) {
+        return Integer.parseInt(input);
+    }
 }
