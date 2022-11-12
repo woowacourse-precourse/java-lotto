@@ -1,15 +1,15 @@
 package lotto.store;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Lotto {
+    private static final String DUPLICATION_ERROR = "[ERROR] 숫자에 중복이 있습니다.";
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         List<Integer> lottoNumbers = new ArrayList<>(numbers);
+        validateDuplication(lottoNumbers);
         Collections.sort(lottoNumbers);
         this.numbers = lottoNumbers;
     }
@@ -33,5 +33,11 @@ public class Lotto {
 
     public boolean compareBonusNumber(int bonusNumber) {
         return numbers.contains(bonusNumber);
+    }
+    
+    private void validateDuplication(List<Integer> lottoNumbers) {
+        if(new HashSet<>(lottoNumbers).size() != lottoNumbers.size()) {
+            throw new IllegalArgumentException(DUPLICATION_ERROR);
+        }
     }
 }
