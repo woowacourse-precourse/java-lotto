@@ -4,6 +4,8 @@ import static lotto.entity.LottoConstant.COUNT;
 import static lotto.entity.LottoConstant.RANGE_END;
 import static lotto.entity.LottoConstant.RANGE_START;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -51,8 +53,13 @@ public class Lotto {
         return numbers.contains(number);
     }
 
+    public List<Integer> cloneNumbers() {
+        return new ArrayList<>(numbers);
+    }
+
     @Override
     public String toString() {
+        Collections.sort(numbers);
         return numbers.toString();
     }
 
