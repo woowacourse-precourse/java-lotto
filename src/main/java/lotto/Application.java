@@ -14,19 +14,18 @@ public class Application {
         int money;
         System.out.println("구입금액을 입력해 주세요");
         input_money = Console.readLine();
-        if (input_money.isBlank()) throw new IllegalArgumentException();
+        if (input_money.isBlank()) throw new IllegalArgumentException("[ERROR] 구입금액은 0원일 수 없습니다.");
         try {
             money = Integer.parseInt(input_money);
         } catch (NumberFormatException ex) {
-            System.out.println("[ERROR] 구입금액은 숫자여야 합니다");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 구입금액은 숫자여야 합니다.");
         }
         return money;
     }
 
     static int money2chance(int money){
         int chance;
-        if(money % 1000 !=0) throw new IllegalArgumentException();
+        if(money % 1000 !=0) throw new IllegalArgumentException("[ERROR] 구입금액은 1000으로 나누어 떨어져야합니다.");
         chance = money/1000;
         System.out.println(chance + "개를 구매했습니다.");
         return chance;
@@ -56,8 +55,7 @@ public class Application {
                 num = Integer.parseInt(nums[i]);
                 winning_num.add(num);
             } catch (NumberFormatException ex) {
-                System.out.println("[ERROR] 당첨번호는 숫자여야 합니다.");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 당첨번호는 숫자여야 합니다.");
             }
         }
         return winning_num;
@@ -85,8 +83,7 @@ public class Application {
         try {
             bonus = Integer.parseInt(input_num);
         } catch (NumberFormatException ex) {
-            System.out.println("[ERROR] 보너스 번호는 숫자여야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.");
         }
         return bonus;
     }
@@ -97,14 +94,17 @@ public class Application {
         List<List<Integer>> lotto_nums;
         List<Integer> winning_num;
         int bonus;
+        try {
+            money = check_money();
+            chance = money2chance(money);
+            lotto_nums = buy_lotto(chance);
+            winning_num = read_winning();
+            System.out.println(winning_num);
+            Lotto lotto = new Lotto(winning_num);
 
-        money = check_money();
-        chance = money2chance(money);
-        lotto_nums = buy_lotto(chance);
-        winning_num = read_winning();
-        System.out.println(winning_num);
-        Lotto lotto = new Lotto(winning_num);
-
-        bonus = read_bonus();
+            bonus = read_bonus();
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 }
