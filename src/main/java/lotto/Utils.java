@@ -53,8 +53,26 @@ public class Utils {
     }
 
     public void validateInputNumbers(String inputNumbers) {
-        if (!Pattern.matches("[0-9]+", inputNumbers.replaceAll(",",""))) {
+        if (!Pattern.matches("[0-9]+", inputNumbers.replaceAll(",", ""))) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+    }
+
+    public int inputBonusNumber() {
+        systemMessage.inputBonusNumber();
+        String inputNumber = Console.readLine();
+        blankLine();
+        validateBonusNumber(inputNumber, winningNumbers);
+        int bonusNumber = Integer.parseInt(inputNumber);
+        return bonusNumber;
+    }
+
+    public void validateBonusNumber(String inputNumber, List<Integer> winningNumbers) {
+        if (!Pattern.matches("[0-9]+", inputNumber)
+                || Integer.parseInt(inputNumber) < 1
+                || Integer.parseInt(inputNumber) > 45
+                || winningNumbers.contains(Integer.parseInt(inputNumber))) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
 }

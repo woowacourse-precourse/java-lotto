@@ -14,6 +14,7 @@ public class Controller {
         int lottoTicket = utils.countTicket(money);
         createLotto(lottoTicket);
         setWinningNumbers();
+        setBonusNumber();
     }
 
     public void createLotto(int lottoTicket) {
@@ -25,5 +26,9 @@ public class Controller {
     public void setWinningNumbers() {
         List<Integer> winningNumbers = utils.inputWinningNumbers();
         new Lotto(winningNumbers);
+    }
+
+    public void setBonusNumber() {
+        int bonusNumbers = utils.inputBonusNumber();
     }
 }
