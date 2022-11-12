@@ -51,4 +51,14 @@ public class BuyerTest {
         Buyer buyer = new Buyer();
         assertThatThrownBy(()->buyer.validateProperLetters(purchaseAMount)).isInstanceOf(IllegalArgumentException.class);
     }
+    @Test
+    public void 구매_금액의_자료형_변환_확인하기(){
+        Buyer buyer = new Buyer();
+        List<String> purchaseAmounts = List.of("10000", "30000", "12000");
+        List<Integer> transformedPurchaseAmount = new ArrayList<>();
+        for(String purchaseAmount: purchaseAmounts){
+            transformedPurchaseAmount.add(buyer.changeType(purchaseAmount));
+        }
+        assertThat(transformedPurchaseAmount).containsExactly(10000, 30000, 12000);
+    }
 }
