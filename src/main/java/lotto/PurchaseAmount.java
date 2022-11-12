@@ -4,14 +4,20 @@ public class PurchaseAmount {
     private static final int ZERO = 0;
     private static final int THOUSAND_UNITS = 1000;
     private final int amount;
+    private final int numberOfLottoPurchased;
 
     public PurchaseAmount(String amount) {
         validate(amount);
         this.amount = convertStringToInt(amount);
+        this.numberOfLottoPurchased = calculateNumberOfLottoPurchasesByAmount(this.amount);
     }
 
     public int getAmount() {
         return amount;
+    }
+
+    public int getNumberOfLottoPurchased() {
+        return numberOfLottoPurchased;
     }
 
     private void validate(String amount) {
@@ -42,5 +48,9 @@ public class PurchaseAmount {
 
     private int convertStringToInt(String amount) {
         return Integer.parseInt(amount);
+    }
+
+    private int calculateNumberOfLottoPurchasesByAmount(int amount) {
+        return amount / THOUSAND_UNITS;
     }
 }
