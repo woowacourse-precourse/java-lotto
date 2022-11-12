@@ -1,6 +1,6 @@
 package lotto;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +13,7 @@ public class LottoGame {
         Lottos lottos = purchaseLotto(lottoTickets);
         BonusLotto bonusLotto = makeWinningLotto();
         Map<LottoOperator, Integer> winningResult = findWinningResult(lottos, bonusLotto);
+        Print.winningResult(lottoTickets, winningResult);
     }
 
     private Lottos purchaseLotto(int lottoTickets) {
@@ -33,10 +34,21 @@ public class LottoGame {
 
     private Map<LottoOperator, Integer> findWinningResult(Lottos lottos, BonusLotto bonusLotto) {
         List<LottoOperator> winningRanks = lottos.result(bonusLotto);
-        Map<LottoOperator, Integer> winningResult = new HashMap<>();
+        Map<LottoOperator, Integer> winningResult = resetWinningResult();
         for (LottoOperator rank : winningRanks) {
-            winningResult.put(rank, winningResult.getOrDefault(rank, 0) + 1);
+            winningResult.put(rank, winningResult.get(rank) + 1);
         }
+        return winningResult;
+    }
+
+    private static Map<LottoOperator, Integer> resetWinningResult() {
+        Map<LottoOperator, Integer> winningResult = new LinkedHashMap<>();
+        winningResult.put(LottoOperator.NO_LUCK, 0);
+        winningResult.put(LottoOperator.THREE, 0);
+        winningResult.put(LottoOperator.FOUR, 0);
+        winningResult.put(LottoOperator.FIVE, 0);
+        winningResult.put(LottoOperator.FIVE_BONUS, 0);
+        winningResult.put(LottoOperator.SIX, 0);
         return winningResult;
     }
 }

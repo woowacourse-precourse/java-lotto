@@ -37,4 +37,12 @@ public enum LottoOperator {
     private boolean matchCount(int count) {
         return this.count == count;
     }
+
+    public int getCount() {
+        return count;
+    }
+
+    public int getWinningAmount() {
+        return winningAmount;
+    }
 }

@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.Map;
+
 public class Print {
     public static void money() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -21,6 +23,25 @@ public class Print {
     public static void bonusNumber() {
         newLine();
         System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
+    public static void winningResult(int lottoTickets, Map<LottoOperator, Integer> winningResult) {
+        newLine();
+        System.out.println("당첨 통계\n" + "---");
+        for (LottoOperator lottoOperator : winningResult.keySet()) {
+            if (lottoOperator == LottoOperator.FIVE_BONUS) {
+                System.out.println(
+                        lottoOperator.getCount() + "개 일치, 보너스 볼 일치 (" +
+                                lottoOperator.getWinningAmount() + "원) - " +
+                                winningResult.get(lottoOperator) + "개");
+                continue;
+            }
+            System.out.println(
+                    lottoOperator.getCount() + "개 일치 (" +
+                            lottoOperator.getWinningAmount() + "원) - " +
+                            winningResult.get(lottoOperator) + "개"
+            );
+        }
     }
 
     private static void newLine() {
