@@ -5,9 +5,13 @@ import camp.nextstep.edu.missionutils.Console;
 public class UserInput {
 
     private String input;
+    private static final String INPUT_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
+    private static final String INPUT_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 
     //당첨번호 입력받기
     public String inputWinningNumber(){
+        System.out.println(INPUT_WINNING_NUMBER);
        input  = Console.readLine();
        validateWinningNumber(input);
        return input;
@@ -15,6 +19,7 @@ public class UserInput {
 
     //로또 구입 금액 입력받기
     public String inputMoney(){
+        System.out.println(INPUT_MONEY_MESSAGE);
         input = Console.readLine();
         validateIsDigit(input);
         return input;
@@ -22,6 +27,7 @@ public class UserInput {
 
     //보너스 번호 입력받기
     public String inputBonusNumber(){
+        System.out.println(INPUT_BONUS_NUMBER);
         input = Console.readLine();
         validateIsDigit(input);
         return input;
