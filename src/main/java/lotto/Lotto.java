@@ -7,6 +7,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        sort(numbers);
         this.numbers = numbers;
     }
 
@@ -14,6 +15,10 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private void sort(List<Integer> numbers) {
+        numbers.sort(Integer::compare);
     }
 
     // TODO: 추가 기능 구현
