@@ -27,6 +27,6 @@ public class ChangeLottoPriceService {
     }
 
     private boolean isSixMatch(Ranking ranking){
-        return false;
+        return ranking.equals(Ranking.SIX_MATCH);
     }
 }
