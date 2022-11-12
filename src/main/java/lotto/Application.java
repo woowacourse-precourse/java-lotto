@@ -22,5 +22,23 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+    // 사용자의 구매 금액 입력 (에러 판별)
+    public static int input(int inputMoney) {
+
+//        for(int i = 0; i < inputMoneyStr.length(); i++) {
+//            if(!(inputMoneyStr.charAt(i) >= '0' && inputMoneyStr.charAt(i) <= '9')) {
+//                throw new IllegalArgumentException("[ERROR]");
+//            }
+//        }
+
+        //int inputMoney = Integer.parseInt(inputMoneyStr);
+
+        if(inputMoney % 1000 != 0) {
+            System.out.println(ERROR_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
+
+        return inputMoney;
+    }
     }
 }
