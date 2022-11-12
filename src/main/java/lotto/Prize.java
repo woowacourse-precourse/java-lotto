@@ -38,8 +38,8 @@ public enum Prize {
 
     public static Prize findPrizeType(MatchCount matchCount) {
         return Arrays.stream(Prize.values())
-                .filter(prize -> prize.getMatchCount().equals(matchCount))
-                .findFirst()
+                .filter(prize -> prize.getMatchCount().isSameResult(matchCount))
+                .findAny()
                 .orElse(NONE);
     }
 

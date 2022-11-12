@@ -1,7 +1,5 @@
 package lotto;
 
-import java.util.Objects;
-
 public class MatchCount {
     private int winningCount;
     private int bonusCount;
@@ -11,18 +9,10 @@ public class MatchCount {
         this.bonusCount = bonusCount;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(winningCount, bonusCount);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof MatchCount)) {
-            return false;
+    public boolean isSameResult(MatchCount o) {
+        if (winningCount==o.winningCount && bonusCount<=o.bonusCount) {
+            return true;
         }
-        MatchCount matchCount = (MatchCount) obj;
-        return matchCount.winningCount == winningCount &&
-                matchCount.bonusCount == bonusCount;
+        return false;
     }
 }
