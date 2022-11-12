@@ -6,6 +6,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static lotto.constant.ErrorMessage.*;
 
 class ValidatorTest {
@@ -70,6 +73,26 @@ class ValidatorTest {
         String numbers = "1,2,3,4,46,7";
 
         Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validator.validateWinningNumbers(numbers))
+                .withMessage(ERROR_RANGE);
+    }
+
+    @DisplayName("보너스 번호와 당첨 번호가 중복되면 예외가 발생한다.")
+    @Test
+    public void validateBonusNumberByDuplicatedWinningNumbers() {
+        List<Integer> winningNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+        String bonusNumber = "3";
+
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validator.validateBonusNumber(winningNumbers, bonusNumber))
+                .withMessage(ERROR_DUPLICATE_BONUS);
+    }
+
+    @DisplayName("보너스 번호가 1 ~ 45 사이 숫자가 아닌 값이 있으면 예외가 발생한다.")
+    @Test
+    public void validateBonusNumberByRange() {
+        List<Integer> winningNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+        String bonusNumber = "46";
+
+        Assertions.assertThatIllegalArgumentException().isThrownBy(() -> validator.validateBonusNumber(winningNumbers, bonusNumber))
                 .withMessage(ERROR_RANGE);
     }
 }
