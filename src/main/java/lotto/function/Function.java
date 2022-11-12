@@ -112,4 +112,17 @@ public class Function {
         }
         return result;
     }
+    public static int calculateWinning(List<Integer> result){
+        int winningPrice = 0;
+        for (int i = 0; i < 5; i++){
+            winningPrice += Constants.winning.get(i) * result.get(i);
+        }
+        return winningPrice;
+    }
+    public static String calculateYield(int price, int winning){
+        if (winning == 0){
+            return String.valueOf(0.0);
+        }
+        return String.format("%.1f", (float)100 * price / winning);
+    }
 }
