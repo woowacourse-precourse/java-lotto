@@ -15,19 +15,19 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = Collections.unmodifiableList(numbers);
     }
     private void validate(List<Integer> numbers) {
         if(!validateConsistOfSixNumber(numbers)){
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자로 이루어져야 합니다.");
+            throw new IllegalArgumentException("로또 번호는 6개의 숫자로 이루어져야 합니다.");
         }
 
         if(!validateEachNumberInRange(numbers)){
-            throw new IllegalArgumentException("[ERROR] 로또 번호의 각 숫자는 1~45 사이의 값을 가져야 합니다.");
+            throw new IllegalArgumentException("로또 번호의 각 숫자는 1~45 사이의 값을 가져야 합니다.");
         }
 
         if(!validateEachNumberIsDistinct(numbers)){
-            throw new IllegalArgumentException("[ERROR] 로또 번호의 숫자들은 중복되어서는 안됩니다.");
+            throw new IllegalArgumentException("로또 번호의 숫자들은 중복되어서는 안됩니다.");
         }
     }
 
@@ -58,11 +58,8 @@ public class Lotto {
     }
 
 
-    public String getNumberInfo(){
-        List<Integer> copiedNumbers = new ArrayList<>(numbers);
-        Collections.sort(copiedNumbers);
-
-        return copiedNumbers.toString();
+    public List<Integer> getNumbers(){
+        return numbers;
     }
 
 }
