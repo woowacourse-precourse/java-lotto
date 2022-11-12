@@ -23,6 +23,12 @@ public class UserInput {
         return stringListToIntegerList(splitString(winningNumber));
     }
 
+    // 보너스 번호를 입력하는 기능
+    public static int bounusNumberInput() {
+        String bonusNumber = Console.readLine();
+        return Integer.parseInt(bonusNumber);
+    }
+
     // 문자열을 ,를 기준으로 분리하는 기능
     private static List<String> splitString(String input) {
         return Arrays.stream(input.split(","))
