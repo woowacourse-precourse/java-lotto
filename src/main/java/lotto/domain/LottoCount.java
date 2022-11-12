@@ -4,13 +4,13 @@ import java.util.regex.Pattern;
 
 public class LottoCount {
 	private int price = 0;
-	public int lottonum = 0;
+	public int lottoNum = 0;
 
 	public LottoCount(int price) {
 		this.price = price;
 		validateNumber(price);
 		validateDivideRight(price);
-		this.lottonum = price / 1000;
+		this.lottoNum = price / 1000;
 	}
 
 	public void validateNumber(int price) {
