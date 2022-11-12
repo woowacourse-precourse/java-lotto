@@ -37,7 +37,7 @@ public class Buyer {
 
 	}
 
-	private int lottoCount() {
+	public int lottoCount() {
 		return amount / ConstValue.LOTTO_PRICE;
 	}
 
