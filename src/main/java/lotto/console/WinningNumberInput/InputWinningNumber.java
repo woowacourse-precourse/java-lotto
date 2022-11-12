@@ -43,7 +43,7 @@ public class InputWinningNumber {
     }
 
     private void verifySixNumber(List<Integer> winningNumbers) {
-        if (winningNumbers.size() == 6) {
+        if (!(winningNumbers.size() == 6)) {
             throw new RuntimeException("[ERROR] 6개의 숫자를 입력하세여");
         }
     }
