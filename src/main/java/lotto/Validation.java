@@ -38,9 +38,8 @@ public class Validation {
             throw new IllegalArgumentException(Notification.ERROR_MESSAGE_MONEY_IS_NOT_MULTIPLE_1000.getMessage());
     }
 
-    public static boolean isBonusInLotto(List<Integer> numbers, int bonus) throws IllegalArgumentException {
+    public static void isBonusInLotto(List<Integer> numbers, int bonus) throws IllegalArgumentException {
         if (numbers.contains(bonus))
             throw new IllegalArgumentException(Notification.ERROR_MESSAGE_BONUS_IN_LOTTO.getMessage());
-        return true;
     }
 }
