@@ -75,4 +75,16 @@ public class LottoBuyer {
         }
     }
 
+    public BigInteger getMoney(){
+        return money;
+    }
+
+    public Lotto getLotto(){
+        return lotto;
+    }
+
+    public List<Lotto> getLottos(){
+        return lottos;
+    }
+
 }
