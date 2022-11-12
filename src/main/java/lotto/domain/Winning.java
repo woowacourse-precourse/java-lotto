@@ -1,8 +1,12 @@
 package lotto.domain;
 
+import static lotto.utils.MessagesUtil.INPUT_WINNING_NUMBERS;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import lotto.utils.ConsoleUtils;
+import java.util.stream.Collectors;
+import lotto.utils.ConsoleUtil;
 import lotto.validate.NumberValidator;
 
 public class Winning {
@@ -10,26 +14,25 @@ public class Winning {
     private NumberValidator validator = new NumberValidator();
 
     public void inputNumber() {
-        String input = ConsoleUtils.input();
-        String[] splitNumbers = input.split(",");
+        ConsoleUtil.showMessage(INPUT_WINNING_NUMBERS.getMessage());
+        String input = ConsoleUtil.input();
 
+        String[] splitNumbers = input.split(",");
         validateInputNumber(splitNumbers);
 
-        convertStringToInteger(splitNumbers);
+        numbers = convertStringToInteger(splitNumbers);
     }
 
     private void validateInputNumber(String[] splitNumbers) {
-        validator.validateSize(splitNumbers);
-
         for (String splitNumber : splitNumbers) {
             validator.validateInputNumber(splitNumber);
         }
     }
 
-    private void convertStringToInteger(String[] splitNumbers) {
-        for (String splitNumber : splitNumbers) {
-            numbers.add(Integer.parseInt(splitNumber));
-        }
+    private List<Integer> convertStringToInteger(String[] splitNumbers) {
+        return Arrays.stream(splitNumbers)
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     public List<Integer> getNumbers() {

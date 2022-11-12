@@ -10,8 +10,12 @@ public class NumberValidator {
         }
 
         if (Integer.parseInt(money) < 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorType.LOWER_MONEY.showMessage());
         }
+    }
+
+    public void validateInputNumber(String input) {
+
     }
 
 }
