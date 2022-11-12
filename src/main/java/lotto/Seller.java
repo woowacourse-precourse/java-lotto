@@ -8,7 +8,14 @@ public class Seller {
     private static final int LOTTO_PRICE = 1000;
 
     public List<Lotto> issueLottos(int money) {
+        validateNoRemainder(money);
         return issueRandomLottos(amountToIssue(money));
+    }
+
+    private void validateNoRemainder(int money) {
+        if (money % LOTTO_PRICE != 0) {
+            throw new IllegalArgumentException("금액이 나눠 떨어지지 않습니다");
+        }
     }
 
     private int amountToIssue(int money) {
