@@ -11,8 +11,8 @@ public class LottoView {
         this.validator = validator;
     }
 
-    public String printMessage(String message) {
-        return message;
+    public void printMessage(String message) {
+        System.out.println(message);
     }
 
     public int inputMoney() {
