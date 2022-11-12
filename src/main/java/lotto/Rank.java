@@ -34,4 +34,13 @@ public enum Rank {
     public int getPrizeMoney() {
         return this.prizeMoney;
     }
+
+    public int getHitCount() {
+        return this.hitCount;
+    }
+
+    public boolean getBonusHit() {
+        return this.bonusHit;
+    }
+
 }
