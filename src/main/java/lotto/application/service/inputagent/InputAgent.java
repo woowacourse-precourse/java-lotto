@@ -6,6 +6,8 @@ import lotto.application.service.inputvalidator.InputValidator;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.application.service.inputvalidator.InputValidator.winningNumberIsNumeric;
+
 public class InputAgent {
 
     public int inputUserMoney() {
@@ -15,13 +17,17 @@ public class InputAgent {
     }
 
     public List<Integer> inputWinningNumbers() {
-        String[] lottoNumbers = Console.readLine().split(",");
+        String lottoNumber = Console.readLine();
+        winningNumberIsNumeric(lottoNumber.substring(lottoNumber.length() - 1));
+
+        String[] lottoNumbers = lottoNumber.split(",");
         List<Integer> convertedLottoNumbers = new ArrayList<>();
         InputValidator.validateIntegerValue(lottoNumbers);
 
         for (String value : lottoNumbers) {
             convertedLottoNumbers.add(Integer.parseInt(value));
         }
+
         InputValidator.validateInputLottoNumber(convertedLottoNumbers);
         return convertedLottoNumbers;
     }
