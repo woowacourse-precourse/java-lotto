@@ -26,4 +26,12 @@ public class LottoService {
 
         return lottoTickets;
     }
+
+
+    private List<Integer> announceWinningNumbers() {
+        String numbersInput = inputView.inputWinningNumbers();
+        List<Integer> winningNumbers = validator.validateWinningNumbers(numbersInput);
+        new Lotto(winningNumbers);
+        return winningNumbers;
+    }
 }
