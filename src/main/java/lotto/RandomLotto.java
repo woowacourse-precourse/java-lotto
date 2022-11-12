@@ -18,11 +18,6 @@ public class RandomLotto {
         }
     }
 
-    private Lotto createRandomLotto() {
-        List<Integer> numbers = randomLottoGenerator.makeRandomLotto();
-        return new Lotto(numbers);
-    }
-
     public List<Lotto> makeRandomLottos(int money) {
         validate(money);
 
@@ -33,5 +28,10 @@ public class RandomLotto {
         return IntStream.rangeClosed(1, buyLottoNumber)
                 .mapToObj(c -> createRandomLotto())
                 .collect(Collectors.toList());
+    }
+
+    private Lotto createRandomLotto() {
+        List<Integer> numbers = randomLottoGenerator.makeRandomLotto();
+        return new Lotto(numbers);
     }
 }
