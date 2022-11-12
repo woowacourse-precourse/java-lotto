@@ -17,7 +17,7 @@
 - [ ] 복권 - Class Lotto
   - [ ] 로또 마킹 기능 구현
 
--[ ] 로또 판매자 - Class LottoSeller
+-[ ] 로또 기계 - Class Lottomachine
   - [ ] 랜덤 마킹 구현
 
 -[ ] 로또 통계 - Class Statistics
