@@ -17,18 +17,18 @@ public class I_O_System {
     private String Enter_Number = "0";
     private int Money_Enter = 0;
 
-    public void Enter_Price() {
+    public boolean Enter_Price() {
         Enter_Number = Console.readLine();
         if (!Differnet_Error()) {
-            return;
+            return false;
         }
         Money_Enter = Integer.parseInt(Enter_Number);
         if (!left_money()) {
-            return;
+            return false;
         }
         Money_Enter /= lottey_price;
         System.out.println(Money_Enter + Sell_Messge);
-
+        return true;
     }
 
     private boolean Differnet_Error() {
