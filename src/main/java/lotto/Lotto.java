@@ -24,6 +24,10 @@ public class Lotto {
         System.out.print(numbers + "\n");
     }
 
+    public boolean hasNumber(int number) {
+        return this.numbers.contains(number);
+    }
+
     private void validate(List<Integer> numbers) {
         if (isNumberNullOrEmpty(numbers)) {
             throw new IllegalArgumentException(_error_default_msg + " 로또 생성 시 빈 리스트는 사용할 수 없습니다.");

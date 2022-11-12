@@ -39,14 +39,19 @@ public class LottoInStream {
         return convStrArrayToIntList(line.split(","));
     }
 
-    public static int readToGetLottoBonus() {
+    public static int readToGetLottoBonus(Lotto lotto) {
         System.out.print(_input_bonus_number_str);
         String line = readline();
 
         if (isNullOrEmptyString(line)) {
             throw new IllegalArgumentException(_error_default_msg + " 빈 문자열은 입력할 수 없습니다.");
         }
-        return (convStringToInt(line));
+
+        int number = convStringToInt(line);
+        if (lotto.hasNumber(number)) {
+            throw new IllegalArgumentException(_error_default_msg + " 보너스 번호는 당첨 번호와 중복되는 번호를 가질 수 없습니다.");
+        }
+        return (number);
     }
 
     private static boolean isNumber(char ch) {

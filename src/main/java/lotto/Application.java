@@ -9,7 +9,7 @@ public class Application {
         LottoOutStream.outStreamLottoesNumber(lottoes);
 
         Lotto winningLotto = new Lotto(LottoInStream.readToGetLottoNumbers());
-        int bonusNumber = LottoInStream.readToGetLottoBonus();
+        int bonusNumber = LottoInStream.readToGetLottoBonus(winningLotto);
 
         int[] matches = LottoGame.getResultLotto(lottoes, winningLotto, bonusNumber);
 
