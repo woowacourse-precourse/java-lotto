@@ -34,4 +34,12 @@ public class LottoService {
         new Lotto(winningNumbers);
         return winningNumbers;
     }
+
+
+    private int announceBonusNumber(List<Integer> winningNumbers) {
+        String bonusInput = inputView.inputBonusNumber();
+        int bonusNumber = validator.validateBonusNumber(bonusInput);
+        new Bonus(winningNumbers, bonusNumber);
+        return bonusNumber;
+    }
 }
