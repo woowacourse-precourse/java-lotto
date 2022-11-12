@@ -15,6 +15,7 @@ public class LottoController {
 
         WinningStatistics winningStatistics = new WinningStatistics(lottoCollection.get(), winningNumber);
         OutputView.printWinningStatistics(winningStatistics.get());
+        OutputView.printTotalYield(winningStatistics.computeTotalYield());
 
     }
 

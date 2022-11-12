@@ -16,7 +16,7 @@ public class OutputView {
     private static final String THIRD_RANK = "5개 일치 (1,500,000원)- %d개\n";
     private static final String SECOND_RANK = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n";
     private static final String FIRST_RANK = "6개 일치 (2,000,000,000원) - %d개\n";
-    private static final String TOTAL_YIELD = "총 수익률은 %.1f입니다.\n";
+    private static final String TOTAL_YIELD = "총 수익률은 %.1f%%입니다.\n";
 
 
     public static void printRequestMoney() {
@@ -45,6 +45,8 @@ public class OutputView {
         System.out.printf(SECOND_RANK, rankAndRankCount.get(Rank.SECOND));
         System.out.printf(FIRST_RANK, rankAndRankCount.get(Rank.FIRST));
     }
-    //    총 수익률은 62.5%입니다.
 
+    public static void printTotalYield(double totalYield) {
+        System.out.printf(TOTAL_YIELD, totalYield);
+    }
 }
