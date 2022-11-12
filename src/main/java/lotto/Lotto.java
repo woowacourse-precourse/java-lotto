@@ -7,8 +7,6 @@ import static lotto.Application.*;
 public class Lotto {
     private final List<Integer> numbers;
 
-    private static ErrorMessage error;
-
     public Lotto(List<Integer> numbers) {
         validateNumbersSize(numbers);
         validateNumbersAreInRange(numbers);
@@ -56,11 +54,6 @@ public class Lotto {
     public List<Integer> getNumbers() {
 
         return numbers;
-    }
-
-    public ErrorMessage getError() {
-
-        return error;
     }
 
     // TODO: 추가 기능 구현
