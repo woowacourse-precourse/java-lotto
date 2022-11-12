@@ -3,6 +3,8 @@ package lotto;
 import java.util.List;
 
 public class BonusNumber {
+    private static final int LOTTO_GAME_START_NUMBER = 1;
+    private static final int LOTTO_GAME_END_NUMBER = 45;
     private final int bonusNumber;
 
     public BonusNumber(String bonusNumber, Lotto lottoNumbers) {
@@ -17,6 +19,8 @@ public class BonusNumber {
     private void validate(String number, Lotto lottoNumbers) {
         if (isStringEmpty(number) || !isDigit(number)) {
             throw new IllegalArgumentException(ExceptionMessage.BONUS_OUT_OF_RANGE.getMessage());
+        } else if (isBetweenLottoRange(convertStringToInt(number))) {
+            throw new IllegalArgumentException(ExceptionMessage.BONUS_OUT_OF_RANGE.getMessage());
         }
     }
 
@@ -26,5 +30,13 @@ public class BonusNumber {
 
     private boolean isDigit(String number) {
         return number.chars().allMatch(Character::isDigit);
+    }
+
+    private boolean isBetweenLottoRange(int number) {
+        return number >= LOTTO_GAME_START_NUMBER && number <= LOTTO_GAME_END_NUMBER;
+    }
+
+    private int convertStringToInt(String number) {
+        return Integer.parseInt(number);
     }
 }
