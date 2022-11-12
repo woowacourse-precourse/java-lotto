@@ -52,5 +52,15 @@ public class LottoGame {
         int calculation = totalPrizeMoney.calculation(number, countCheck);
         System.out.println("총값은:" + calculation);
 
+        YieldCalculation yieldCalculation = new YieldCalculation();
+
+        double revenue = yieldCalculation.revenue(calculation);
+        //double revenue = yieldCalculation.revenue(calculation, paid);
+
+        System.out.println("확인해보자:" + revenue);
+
+        System.out.println(String.format("%.1f", revenue));
+
+
     }
 }
