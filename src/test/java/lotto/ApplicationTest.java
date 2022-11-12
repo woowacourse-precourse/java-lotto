@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,6 +9,8 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -52,6 +55,32 @@ class ApplicationTest extends NsTest {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
+    }
+
+    @DisplayName("사용자가 입력한 금액이 1000단위가 아니면 예외가 발생한다.")
+    @Test
+    public void convertBuyingPriceIntoLotteriesTest() throws Exception{
+        //given
+        int buyingPrice = 14000;
+        int expectedValue = 14;
+
+        //when
+        int actualValue = Application.convertBuyingPriceIntoLotteries(buyingPrice);
+
+        //then
+        assertEquals(expectedValue, actualValue);
+    }
+
+    @DisplayName("사용자가 입력한 금액이 1000단위가 아니면 예외가 발생한다.")
+    @Test
+    public void convertBuyingPriceIntoLotteriesTest_ExceptionCase() throws Exception{
+        //given
+        int buyingPrice = 1410;
+        //when
+
+        //then
+        assertThatThrownBy(() -> Application.convertBuyingPriceIntoLotteries(buyingPrice))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
