@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import lotto.Lotto;
-
 import java.util.Arrays;
 
 public enum WinningCondition {
@@ -32,7 +30,7 @@ public enum WinningCondition {
     }
 
     private boolean hasCondition(int numberOfCorrected, boolean isBonusCorrected) {
-        if(numberOfCorrected == THIRD.numberOfCorrected) {
+        if (numberOfCorrected == THIRD.numberOfCorrected) {
             return isBonusCorrected == this.isBonusCorrected;
         }
         return numberOfCorrected == this.numberOfCorrected;
