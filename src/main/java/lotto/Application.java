@@ -59,10 +59,6 @@ public class Application {
 
 
     public static void compareLotto(List<List<Integer>> lotto_list, List<Integer> lotto_answer, Integer bonus_number) {
-//        System.out.println(lotto_list);
-//        System.out.println(lotto_answer);
-//        System.out.println(bonus_number);
-
         for(List<Integer> temp_user_lotto : lotto_list){
             List<Integer> temp_lotto_answer = new ArrayList<>(lotto_answer);
             String asdf = comparePrize(temp_user_lotto,temp_lotto_answer,bonus_number);
@@ -70,15 +66,6 @@ public class Application {
             sum_of_prize += prize.getWinLotteryPrize();
             prize.addWinLotteryCount();
         }
-
-        System.out.println("당첨통계");
-
-        System.out.println(Prize.first.getWinLotteryCount());
-        System.out.println(Prize.second.getWinLotteryCount());
-        System.out.println(Prize.third.getWinLotteryCount());
-        System.out.println(Prize.fourth.getWinLotteryCount());
-        System.out.println(Prize.fifth.getWinLotteryCount());
-
     }
 
     public static String comparePrize(List<Integer> user_lotto, List<Integer> temp_answer, Integer user_bonus){
