@@ -10,8 +10,6 @@ public class LottoComparison {
 
     public List<Integer> findNumber(Lotto answer, List<List<Integer>> randomLotto) {
         List<Integer> winning = answer.getNumbers();
-        System.out.println("당첨 번호: " + winning);
-        System.out.println("------------");
 
         List<Integer> result = new ArrayList<>();
 
