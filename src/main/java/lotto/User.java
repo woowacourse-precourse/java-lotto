@@ -16,7 +16,7 @@ public class User {
         checkThatPurchaseMoneyIsRightInput(money_str);
     }
 
-    public void checkThatPurchaseMoneyIsRightInput(String purchaseMoney) {
+    public static void checkThatPurchaseMoneyIsRightInput(String purchaseMoney) {
         int money = Exception.isInteger(purchaseMoney);
 
         if (Exception.isNotMultipleOfThousand(money)) {
