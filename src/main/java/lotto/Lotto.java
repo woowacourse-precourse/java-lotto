@@ -31,13 +31,13 @@ public class Lotto {
 
     }
 
-    public boolean validateNumbersAreDuplicate() {
+    private void validateNumbersAreDuplicate() {
         for (int i = 0; i < numbers.size() - 1; i++) {
             if (!checkNumbersAreDuplicate(numbers.get(i), i)) {
-                return false;
+                setError(ErrorMessage.DUPLICATE);
+                throw new IllegalArgumentException();
             }
         }
-        return true;
     }
 
     private boolean checkNumbersAreDuplicate(int number1, int index) {
