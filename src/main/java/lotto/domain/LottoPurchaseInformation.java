@@ -6,7 +6,7 @@ import java.util.*;
 
 public class LottoPurchaseInformation {
     private static final int THOUSAND = 1000;
-    private ValidationInDomain validator = new ValidationInDomain();
+    private final ValidationInDomain validator = new ValidationInDomain();
     private List<Lotto> lottoTickets = new ArrayList<>();
     private LottoGenerator lottoGenerator = new LottoGenerator();
     private Map<Rank, Integer> winningStatistics = new EnumMap<>(Rank.class);
@@ -72,14 +72,12 @@ public class LottoPurchaseInformation {
     }
 
     public void calculateRateOfReturn(){
-        double tmp = ((double)totalWinningAmount/purchaseAmount)*1000;
-        rateOfReturn = Math.round(tmp)/10.0;
+        final double DIVISOR = 10.0;
+        double tmp = ((double)totalWinningAmount/purchaseAmount)*THOUSAND;
+        rateOfReturn = Math.round(tmp)/DIVISOR;
     }
 
     public double getRateOfReturn(){
         return rateOfReturn;
     }
-
-
-
 }
