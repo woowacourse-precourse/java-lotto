@@ -14,13 +14,16 @@ public class LottoService {
     private final OutputView outputView = new OutputView();
     private final Validator validator = new Validator();
 
-    private List<List<Integer>> userTicket() {
+    private int payTicket() {
         String moneyInput = inputView.inputMoney();
         int money = validator.validateMoney(moneyInput);
-        PaidMoney paidMoney = new PaidMoney(money);
+        new PaidMoney(money);
+        return money;
+    }
 
-        int numOfTicket = paidMoney.buyNTicket();
-        Ticket ticket = new Ticket(numOfTicket);
+    private List<List<Integer>> userTicket(int paidMoney) {
+        Ticket ticket = new Ticket(paidMoney);
+        int numOfTicket = ticket.getNumOfTicket();
         List<List<Integer>> lottoTickets = ticket.purchaseTickets();
         outputView.printTickets(numOfTicket, lottoTickets);
 
