@@ -1,10 +1,10 @@
 package lotto.view;
 
-import static lotto.constant.Rank.FIVE_MATCHES_WITHOUT_BONUS;
-import static lotto.constant.Rank.FIVE_MATCHES_WITH_BONUS;
-import static lotto.constant.Rank.FOUR_MATCHES;
-import static lotto.constant.Rank.SIX_MATCHES;
-import static lotto.constant.Rank.THREE_MATCHES;
+import static lotto.domain.Rank.FIVE_MATCHES_WITHOUT_BONUS;
+import static lotto.domain.Rank.FIVE_MATCHES_WITH_BONUS;
+import static lotto.domain.Rank.FOUR_MATCHES;
+import static lotto.domain.Rank.SIX_MATCHES;
+import static lotto.domain.Rank.THREE_MATCHES;
 
 import java.util.List;
 
