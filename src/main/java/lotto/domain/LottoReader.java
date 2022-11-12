@@ -4,9 +4,17 @@ import java.util.List;
 
 public class LottoReader {
 
-    public int countMatchingNumber(Lotto lotto, Lotto compareLotto) {
+    public LottoResult getLottoResult(Lotto lotto, Lotto compareLotto, int bonusNumber) {
+        double matchingNumber = countMatchingNumber(lotto, compareLotto);
+        if (matchingNumber == LottoResult.THIRD.getSameNumber() && isIncludedNumber(lotto, bonusNumber)) {
+            matchingNumber += 0.5;
+        }
+        return LottoResult.getResult(matchingNumber);
+    }
+
+    public double countMatchingNumber(Lotto lotto, Lotto compareLotto) {
         List<Integer> lottoNumbers = lotto.getNumbers();
-        return (int)lottoNumbers.stream()
+        return (double) lottoNumbers.stream()
                 .filter((lottoNumber) -> isIncludedNumber(compareLotto, lottoNumber))
                 .count();
     }
