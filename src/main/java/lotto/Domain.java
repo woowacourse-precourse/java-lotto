@@ -24,17 +24,21 @@ public class Domain {
         }
     }
 
-    public void validateNumberRange(String input) {
+    static public void validateNumberRange(String input) {
         int tempNumber = Integer.parseInt(input);
         if (tempNumber < 1 || tempNumber > 45) {
             throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
-
-    public void validateOverlapping(List<String> input) {
+    static public void validateNumberRange(int input) {
+        if (input < 1 || input > 45) {
+            throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+    }
+    static public void validateOverlapping(List<?> input) {
         for (int i = 0; i < input.size(); i++) {
             for (int j = i + 1; j <input.size(); j++) {
-                if (input.get(i) == input.get(j)) {
+                if (input.get(i).equals(input.get(j))) {
                     throw new IllegalArgumentException("중복된 숫자 없이 입력해야 합니다.");
                 }
             }
