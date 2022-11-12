@@ -4,6 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -167,7 +169,14 @@ class ValidatorTest {
 
         @Test
         void isNotAPositiveInteger() {
+            // given
+            Validator validator = new Validator();
+            List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
 
+            // throws
+            assertThatThrownBy(() -> validator.validateBonusNumber("-45", winningNumbers))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR] 보너스 번호 입력이 잘못되었습니다.");
         }
 
         @Test
