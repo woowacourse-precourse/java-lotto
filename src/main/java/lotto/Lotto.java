@@ -57,5 +57,10 @@ public class Lotto {
         return numbers;
     }
 
+    public ErrorMessage getError() {
+
+        return error;
+    }
+
     // TODO: 추가 기능 구현
 }
