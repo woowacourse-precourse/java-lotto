@@ -26,4 +26,10 @@ public class Lotto {
 
         return winningNumberCount;
     }
+    private boolean haveBonusNumber(Integer bonusNumber){
+        if(numbers.contains(bonusNumber))
+            return true;
+
+        return false;
+    }
 }
