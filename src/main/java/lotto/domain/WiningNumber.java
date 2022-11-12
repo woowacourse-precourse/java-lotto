@@ -7,8 +7,11 @@ public class WiningNumber {
 
     private int bonusNumber;
 
-    public WiningNumber(List<Integer> winingNumber){
+    public WiningNumber(List<Integer> winingNumber) {
         this.winingNumber = winingNumber;
     }
 
+    public void setBonusNumber(int bonusNumber) {
+        this.bonusNumber = bonusNumber;
+    }
 }
