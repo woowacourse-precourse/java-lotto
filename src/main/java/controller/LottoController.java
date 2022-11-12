@@ -36,6 +36,8 @@ public class LottoController {
         BonusNumber bonusNumber = new BonusNumber(inputBonusNumber());
         validator.validateReference(winningNumbers.getWinningNumbers(), bonusNumber.getBonusNumber());
 
+        winningList(lottoCount, lottos, winningNumbers, bonusNumber);
+
     }
 
 
@@ -64,12 +66,12 @@ public class LottoController {
     public List<Integer> inputWinningNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String winningNumber = Console.readLine();
-        //구현해야함
-//        validationComma(winningNumber);
+        validator.validateWinningNumberComma(winningNumber);
+
         List<Integer> winningNumbers = Arrays.stream(Arrays.stream(winningNumber.split(","))
                         .mapToInt(Integer::parseInt).toArray())
                 .boxed().collect(Collectors.toList());
-        //검증식 넣기
+
         validator.validateWinningNumberSize(winningNumbers);
         validator.validateWinningNumberRange(winningNumbers);
         validator.validateWinningNumberReference(winningNumbers);
@@ -79,10 +81,13 @@ public class LottoController {
     public String inputBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요");
         String bonusNumber = Console.readLine();
-        // 검증식 넣기
         validator.validateBonusNumberRange(bonusNumber);
         return bonusNumber;
     }
-    
+
+    public void winningList(int lottoCount, ArrayList<Lotto> lottos, WinningNumbers winningNumbers, BonusNumber bonusNumber) {
+
+    }
+
 
 }
