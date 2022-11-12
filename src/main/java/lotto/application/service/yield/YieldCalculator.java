@@ -13,7 +13,7 @@ public class YieldCalculator {
         put("four", 0);
         put("five", 0);
         put("six", 0);
-        put("FiveContainingBonusNumber", 0);
+        put("fiveContainingBonusNumber", 0);
     }};
 
     public Map<String, Integer> extractStatistic(List<List<Integer>> matchResult) {
@@ -39,10 +39,10 @@ public class YieldCalculator {
     public Map<String, Integer> considerBonusNumber(List<Integer> bonusMatchingCount) {
         for (Integer integer : bonusMatchingCount) {
             if (integer == 1) {
-                winInformation.put("FiveContainingBonusNumber", (winInformation.get("FiveContainingBonusNumber") + 1));
+                winInformation.put("fiveContainingBonusNumber", (winInformation.get("fiveContainingBonusNumber") + 1));
             }
         }
-        winInformation.put("five", winInformation.get("five") - winInformation.get("FiveContainingBonusNumber"));
+        winInformation.put("five", winInformation.get("five") - winInformation.get("fiveContainingBonusNumber"));
         return winInformation;
     }
 
@@ -51,7 +51,7 @@ public class YieldCalculator {
         System.out.printf("3개 일치 (5,000원) - %d개\n", winInformation.get("three"));
         System.out.printf("4개 일치 (50,000원) - %d개\n", winInformation.get("four"));
         System.out.printf("5개 일치 (1,500,000원) - %d개\n", winInformation.get("five"));
-        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", winInformation.get("FiveContainingBonusNumber"));
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", winInformation.get("fiveContainingBonusNumber"));
         System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", winInformation.get("six"));
     }
 
@@ -61,7 +61,7 @@ public class YieldCalculator {
         result += winInformation.get("three") * (THREE.getWinningMoney());
         result += winInformation.get("four") * (FOUR.getWinningMoney());
         result += winInformation.get("five") * (FIVE.getWinningMoney());
-        result += winInformation.get("FiveContainingBonusNumber") * (FIVE_BONUS.getWinningMoney());
+        result += winInformation.get("fiveContainingBonusNumber") * (FIVE_BONUS.getWinningMoney());
         result += winInformation.get("six") * (SIX.getWinningMoney());
 
         return (double) result / (double) purchaseMoney * 100;
