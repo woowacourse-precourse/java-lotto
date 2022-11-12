@@ -1,8 +1,10 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class Manager {
     private List<List<Integer>> purchasedLottos;
@@ -34,5 +36,21 @@ public class Manager {
         if (amount % 1000 != 0) {
             throw new IllegalArgumentException("[Error] 로또 한 장은 1000원 입니다. 1000원 단위의 숫자를 입력해주세요.");
         }
+    }
+
+    private List<Integer> generateLottoNumber(int min, int max, int numCount) {
+        List<Integer> lotto = Randoms.pickUniqueNumbersInRange(min, max, numCount);
+        lotto.sort(Comparator.naturalOrder());
+        return lotto;
+    }
+
+    public void setPurchasedLottos(int lottoCount) {
+        for (int i = 0; i < lottoCount; i++) {
+            purchasedLottos.add(generateLottoNumber(MIN_NUM, MAX_NUM, TOTAL_NUM));
+        }
+    }
+
+    public List<List<Integer>> getPurchasedLottos() {
+        return purchasedLottos;
     }
 }
