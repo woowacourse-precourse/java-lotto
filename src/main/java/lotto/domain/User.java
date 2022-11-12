@@ -23,7 +23,7 @@ public class User {
     public int countLotto(int price){
         int countLotto = 0;
         if (price % 1000 > 0) {
-
+            exceptions.notDivisionPrice();
         }
         countLotto = price / 1000;
         return countLotto;
