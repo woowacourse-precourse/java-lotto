@@ -13,10 +13,7 @@ public class LottoContainer {
     }
 
     private void validate(List<Lotto> lottoBundle) {
-        // 이 로또 뭉치가 유효한지 검사. (개수만)
-//        for (int i = 0; i < lottoBundle.size(); i++) {
-//            System.out.println(lottoBundle.get(i));
-//        }
+
     }
 
     public void printLottoBundles(Output output) {

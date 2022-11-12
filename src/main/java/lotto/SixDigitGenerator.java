@@ -19,8 +19,4 @@ public class SixDigitGenerator {
         return Randoms.pickUniqueNumbersInRange(1,45,6);
         //it choose 6 numbers from 1~45 range
     }
-//    public static void checkDuplicateInDigits() {
-//        //duplicate check.
-//    }
-
 }
