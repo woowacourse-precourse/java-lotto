@@ -82,6 +82,13 @@ public class Application {
         System.out.println("당첨 번호를 입력해 주세요.");
     }
 
+    static String what_user_number() {
+        String user_number;
+        user_number = readLine();
+
+        return user_number;
+    }
+
     public static void main(String[] args) {
         ask_how_much_money();
 
@@ -92,6 +99,7 @@ public class Application {
             check_user_money(user_money);
         } catch (IllegalArgumentException e) {
             print_money_error();
+            return;
         }
 
         int how_many_lotto;
@@ -106,5 +114,8 @@ public class Application {
         print_lotto_info(lottos);
 
         ask_lotto_number();
+
+        String user_number;
+        user_number = what_user_number();
     }
 }
