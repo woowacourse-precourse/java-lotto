@@ -14,6 +14,10 @@ public class Bonus {
 		this.number = number;
 	}
 
+	public boolean isContained(List<Integer> lottoNumber) {
+		return lottoNumber.contains(this.number);
+	}
+
 	protected void validateBonus(int number, Lotto winningLotto) {
 		List<Integer> lottoNumber = winningLotto.getLottoNumber();
 
