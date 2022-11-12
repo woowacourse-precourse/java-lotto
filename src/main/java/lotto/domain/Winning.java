@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static lotto.utils.MessagesUtil.INPUT_BONUS_NUMBER;
 import static lotto.utils.MessagesUtil.INPUT_WINNING_NUMBERS;
 
 import java.util.ArrayList;
@@ -23,10 +24,23 @@ public class Winning {
         numbers = convertStringToInteger(splitNumbers);
     }
 
+    public void inputBonusNumber() {
+        ConsoleUtil.showMessage(INPUT_BONUS_NUMBER.getMessage());
+        String input = ConsoleUtil.input();
+
+        validateBonusNumber(input);
+
+        numbers.add(Integer.parseInt(input));
+    }
+
     private void validateInputNumber(String[] splitNumbers) {
         for (String splitNumber : splitNumbers) {
             validator.validateInputNumber(splitNumber);
         }
+    }
+
+    private void validateBonusNumber(String input) {
+        validator.validateInputNumber(input);
     }
 
     private List<Integer> convertStringToInteger(String[] splitNumbers) {
