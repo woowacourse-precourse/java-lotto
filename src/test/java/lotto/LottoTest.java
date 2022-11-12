@@ -54,4 +54,16 @@ class LottoTest {
                         .doesNotHaveDuplicates()
         );
     }
+
+    @DisplayName("주어진 당첨 번호를 저장한다.")
+    @Test
+    void saveWinNumber() {
+        LottoMachine lottoMachine = new LottoMachine();
+
+        List<String> inputWinNumber = List.of("1", "2", "3", "4", "5", "6");
+        lottoMachine.setWinNumber(inputWinNumber);
+
+        assertThat(new Lotto(List.of(1, 2, 3, 4, 5, 6)).getLotto()).isEqualTo(lottoMachine.winNumber.getLotto());
+
+    }
 }
