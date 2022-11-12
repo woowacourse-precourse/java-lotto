@@ -15,6 +15,14 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("6개의 숫자만 입력 가능합니다.");
         }
+        if (validateIsDuplicate(numbers))
+            throw new IllegalArgumentException("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.");
+    }
+
+    public boolean validateIsDuplicate(List<Integer> numbers) {
+        if (numbers.size() != numbers.stream().distinct().count())
+            return true;
+        return false;
     }
 
     public List<Integer> getLottoNumber () {
