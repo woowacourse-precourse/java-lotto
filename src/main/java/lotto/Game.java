@@ -2,11 +2,14 @@ package lotto;
 
 public class Game {
 
-    public void gameStart() {
+    public void buyLotto() {
         LottoSeller newLotto = new LottoSeller();
         newLotto.getPayAmount();
         newLotto.countTicket(newLotto.payAmount);
 
+        NumberGenerator newNumbers = new NumberGenerator(newLotto.numberOfTickets);
+        newNumbers.generateNumbers();
+        System.out.println(newNumbers.myLotto);
 
     }
 
@@ -17,7 +20,6 @@ public class Game {
 
         Lotto winningLotto = new Lotto(lottoDrawing.winningNumber);
     }
-
 
 
 
