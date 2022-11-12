@@ -11,6 +11,9 @@ public class Player {
         }catch (NumberFormatException e){
             throw new IllegalArgumentException("[ERROR] 정수를 입력해야 합니다.");
         }
+
+    }
+    public void checkDivideBy1000() {
         if(totalPayment % 1000 !=0){
             throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해야합니다.");
         }
