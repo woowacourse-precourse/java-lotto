@@ -13,8 +13,10 @@ import lotto.presentation.view.LottoGameReader;
 public class LottoGameController {
 
     public static void start() {
-        List<Lotto> lottos = LottoService.getLottos(LottoGameReader.readLottoAmount());
-        LottoGamePrinter.printLottos(lottos);
+        int lottoAmount = LottoGameReader.readLottoAmount();
+        LottoGamePrinter.printLottoCount(lottoAmount/1000);
+        List<Lotto> lottos = LottoService.getLottos(lottoAmount);
+        LottoGamePrinter.printLottosOrderByAsc(lottos);
 
         GeneralWinNumber generalWinNumber = new GeneralWinNumber(LottoGameReader.readWinNumber());
         BonusNumber bonusNumber = new BonusNumber(LottoGameReader.readBonusNumber());
