@@ -23,8 +23,8 @@ public class UserService {
     private void buyValidate(String input) {
         final String REGEX = "[0-9]+";
 
-//        if (!input.contains(REGEX)) throw new IllegalArgumentException();
-        if (Integer.valueOf(input) % 1000 != 0) throw new IllegalArgumentException();
+        if (!input.contains(REGEX)) throw new IllegalArgumentException("[ERROR] 숫자를 입력해 주세요.");
+        if (Integer.valueOf(input) % 1000 != 0) throw new IllegalArgumentException("[ERROR] 1,000원 단위로 입력해 주세요.");
     }
 
     public Lotto createPlayerNumbers(String inputNums, int bonusNum) {
@@ -47,8 +47,8 @@ public class UserService {
     public void validateInput(List<String> numbers) {
         final String REGEX = "[0-9]+";
 
-        if (numbers.size() != 6) throw new IllegalArgumentException();
-//        if (!numbers.contains(REGEX)) throw new IllegalArgumentException();
+        if (numbers.size() != 6) throw new IllegalArgumentException("[ERROR] 6개의 번호만 입력해 주세요.");
+        if (!numbers.contains(REGEX)) throw new IllegalArgumentException("[ERROR] 문자가 아닌 번호만 입력해 주세요.");
     }
 
     public Lotto getLotto() {

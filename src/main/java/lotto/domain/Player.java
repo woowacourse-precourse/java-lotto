@@ -18,7 +18,7 @@ public class Player extends Lotto {
 
     private void duplicateValidateBonus(List<Integer> numbers, int bonusNumber) {
         if(numbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 중복된 번호는 입력하실 수 없습니다.");
         }
     }
 
@@ -27,11 +27,11 @@ public class Player extends Lotto {
         int minNum = 1;
 
         if(bonusNumber < 1 || bonusNumber > 45)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 범위를 초과한 번호는 입력하실 수 없습니다.");
 
         for (int number:numbers) {
             if(number < 1 || number > 45)
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 범위를 초과한 번호는 입력하실 수 없습니다.");
         }
     }
 }
