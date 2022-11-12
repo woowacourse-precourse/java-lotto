@@ -21,8 +21,11 @@ class WinningLottoTest {
     void WINNING_LOTTO_값_접근_테스트(List<Integer> lottoSource, int bonusNumber) {
         Lotto lotto = new Lotto(lottoSource);
         WinningLotto winningLotto = new WinningLotto(lotto, bonusNumber);
-        assertThat(winningLotto.getWinningLotto()).isEqualTo(lotto);
-        assertThat(winningLotto.getBonusNumber()).isEqualTo(bonusNumber);
+        assertAll(
+                () -> assertThat(winningLotto.getWinningLotto()).isEqualTo(lotto),
+                () -> assertThat(winningLotto.getBonusNumber()).isEqualTo(bonusNumber)
+        );
+
     }
 
     @DisplayName("보너스 번호가 로또에 이미 존재할 경우 발생하는 예외 테스트")
