@@ -16,9 +16,14 @@ public class Lottos {
 
     public Lottos(int money) {
         validate(money);
-        int issuedCount = money / LOTTO_PRICE;
-        for (int i = 0; i < issuedCount; i++) {
+        purchaseRandomLottos(money);
+    }
+
+    private void purchaseRandomLottos(int money) {
+        int balance = money;
+        while (balance >= LOTTO_PRICE) {
             lottos.add(Lotto.creatRandom());
+            balance -= LOTTO_PRICE;
         }
     }
 
