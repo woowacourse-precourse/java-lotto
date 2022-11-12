@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,6 +58,7 @@ public enum LottoResult implements Comparable<LottoResult> {
 
     @Override
     public String toString() {
-        return countOfMatch + "개 일치" + printBonusMessage() + " (" + winningMoney + "원) - ";
+        DecimalFormat formatter = new DecimalFormat("###,###");
+        return countOfMatch + "개 일치" + printBonusMessage() + " (" + formatter.format(winningMoney) + "원) - ";
     }
 }
