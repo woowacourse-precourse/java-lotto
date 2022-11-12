@@ -7,6 +7,7 @@ import java.util.List;
 public class LottoStore {
     private final int lottoPrice = 1000;
     private long validMoney;
+    private List<LottoPaper> lottoPapers;
 
     public void insert() {
         PrintMessenger.askPriceToBuy();
@@ -20,7 +21,7 @@ public class LottoStore {
     }
     public void getLottoPaper(){
         CreateRandomLotto createRandomNumber = new CreateRandomLotto();
-        List<LottoPaper> lottoPapers = createRandomNumber.randomLotto(validMoney / lottoPrice);
+        lottoPapers = createRandomNumber.randomLotto(validMoney / lottoPrice);
         printLottoPapers(lottoPapers);
     }
     public void printLottoPapers(List<LottoPaper> lottoPapers) {
