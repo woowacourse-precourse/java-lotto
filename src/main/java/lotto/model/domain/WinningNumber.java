@@ -10,9 +10,15 @@ public class WinningNumber {
 
     private static final String NUMBER_SEPARATOR = ",";
     private static final String WINNING_NUMBER_REGEX = "^[0-9]*,[0-9]*,[0-9]*,[0-9]*,[0-9]*,[0-9]*$";
+    private static final String BONUS_NUMBER_REGEX = "^[0-9]*";
     private static final String WRONG_WINNING_NUMBER_FORM = "올바르지 않은 당첨 번호 형식 입니다.";
     private static final String INVALID_WINNING_NUMBER_RANGE = "당첨 번호는 1이상 45 이어야 합니다.";
     private static final String DUPLICATED_WINNING_NUMBER = "당첨 번호는 중복되지 않아야 합니다.";
+    private static final String BONUS_NUMBER_IS_NOT_NUMBER = "보너스 번호는 숫자 이어야 합니다.";
+    private static final String INVALID_BONUS_NUMBER_RANGE = "보너스 번호는 1이상 45 이어야 합니다.";
+    private static final String DUPLICATED_BONUS_NUMBER = "보너스 번호는 당첨 번호와 중복되지 않아야 합니다.";
+
+
     private static final int LOTTO_NUM_MIN = 1;
     private static final int LOTTO_NUM_MAX = 45;
     private static final int FIFTH_SCORE = 3;
@@ -29,7 +35,27 @@ public class WinningNumber {
         List<Integer> numbers = parseWinningNumber(winningNumber);
 
         lotto = new Lotto(numbers);
-        this.bonusNumber = Integer.parseInt(bonusNumber);
+        this.bonusNumber = validateBonusNumber(bonusNumber, numbers);
+    }
+
+    private int validateBonusNumber(String bonusNumber, List<Integer> numbers) {
+        bonusNumber = Utils.deleteAllString(bonusNumber);
+        if (!Pattern.matches(BONUS_NUMBER_REGEX, bonusNumber)) {
+            throw new IllegalArgumentException(BONUS_NUMBER_IS_NOT_NUMBER);
+        }
+        int parsedBonusNumber = Integer.parseInt(bonusNumber);
+
+        if (!isValidLottoNumberRange(parsedBonusNumber)) {
+            throw new IllegalArgumentException(INVALID_BONUS_NUMBER_RANGE);
+        }
+        if (isDuplicatedWithWinningNumber(parsedBonusNumber, numbers)) {
+            throw new IllegalArgumentException(DUPLICATED_BONUS_NUMBER);
+        }
+        return parsedBonusNumber;
+    }
+
+    private boolean isDuplicatedWithWinningNumber(int parsedBonusNumber, List<Integer> numbers) {
+        return numbers.contains(parsedBonusNumber);
     }
 
     private String validateWinningNumber(String winningNumber) {
