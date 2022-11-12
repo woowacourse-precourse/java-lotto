@@ -10,7 +10,7 @@ class WinningResultTest {
     @Test
     void testCompareWithLotto() {
         WinningResult result = new WinningResult(List.of(1, 2, 3, 4, 5, 6), 7);
-        result.checkTheResult(List.of(1, 2, 3, 12, 13, 14));
-        assertEquals(result.getAccordedNumbers(), 3);
+        Result gameResult = result.checkTheResult(List.of(1, 2, 3, 12, 13, 14));
+        assertEquals(gameResult.getAccordedNumbers(), 3);
     }
 }
