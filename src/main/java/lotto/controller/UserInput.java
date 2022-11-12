@@ -20,7 +20,7 @@ public class UserInput {
         return budget;
     }
 
-    public static void writeWinningNumber() {
+    public static List<Integer> writeWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String userInput = Console.readLine();
         System.out.println();
@@ -28,14 +28,18 @@ public class UserInput {
         hasOnlyNumberAndComma(userInput);
 
         List<Integer> winningNumber = stringToNumbers(userInput);
+        hasSixNumbers(winningNumber);
 
+        return winningNumber;
     }
 
     private static List<Integer> stringToNumbers(String input) {
         String[] stringNumbers = input.split(",");
         List<Integer> numbers = new ArrayList<>();
         for (String number: stringNumbers) {
-            numbers.add(Integer.valueOf(number));
+            int lottoNumber = Integer.valueOf(number);
+            validNumber(lottoNumber);
+            numbers.add(lottoNumber);
         }
 
         return numbers;
