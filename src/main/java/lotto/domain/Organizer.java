@@ -14,6 +14,7 @@ public class Organizer {
 
     public Organizer(String winningNumberInput, String bonusNumberInput) {
         this.winningNumbers = getWinningNumbersFromInput(winningNumberInput);
+        validateWinningNumbers(this.winningNumbers);
     }
 
     public List<Integer> getWinningNumbersFromInput(String input) {
@@ -22,11 +23,16 @@ public class Organizer {
         for (String element : splitInput) {
             ExceptionHandler.isStringNumeric(element);
             int number = Integer.parseInt(element);
-            ExceptionHandler.isWithinRange(number,
-                    LottoStatistic.MIN_NUMBER.getValue(), LottoStatistic.MAX_NUMBER.getValue());
             numbers.add(number);
         }
-        ExceptionHandler.isListCorrectSize(numbers, LottoStatistic.NUMBER_OF_LOTTERY_NUMBERS.getValue());
         return numbers;
+    }
+
+    private void validateWinningNumbers(List<Integer> winningNumbers) {
+        ExceptionHandler.isListCorrectSize(winningNumbers, LottoStatistic.NUMBER_OF_LOTTERY_NUMBERS.getValue());
+        for (int number : winningNumbers) {
+            ExceptionHandler.isWithinRange(number,
+                    LottoStatistic.MIN_NUMBER.getValue(), LottoStatistic.MAX_NUMBER.getValue());
+        }
     }
 }
