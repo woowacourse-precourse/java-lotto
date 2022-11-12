@@ -23,7 +23,8 @@ public class LottoComparator {
 		initWinnerAndPrize();
 
 		for (Lotto lotto : lottos) {
-			int countMatchNumber = calculateCountMatchNumber(lotto, INIT);
+			int countMatchNumber = calculateCountMatchNumber(lotto, INIT, WinningLotto.getWinningNumber(),
+				WinningLotto.getBonusNumber().get(0));
 			lotto.setCountMatchNumber(countMatchNumber);
 
 			addWinner(lotto);
@@ -38,13 +39,12 @@ public class LottoComparator {
 	}
 
 	public static boolean isWinner(Lotto lotto) {
-		return lotto.getMatchNumberCount() >= MIN_WINNER_MATCH_COUNT;
+		return lotto.getCountMatchNumber() >= MIN_WINNER_MATCH_COUNT;
 	}
 
-	public static int calculateCountMatchNumber(Lotto lotto, int countMatchNumber) {
+	public static int calculateCountMatchNumber(Lotto lotto, int countMatchNumber, List<String> winningNumber,
+		String bonusNumber) {
 		Set<Integer> numbers = lotto.getNumbers();
-		List<String> winningNumber = WinningLotto.getWinningNumber();
-		String bonusNumber = WinningLotto.getBonusNumber().get(0);
 
 		for (String number : winningNumber) {
 			if (isContainsNumber(numbers, number)) {
@@ -52,14 +52,13 @@ public class LottoComparator {
 			}
 		}
 
-		checkMatchBonusNumber(lotto, numbers, bonusNumber, countMatchNumber);
+		checkMatchBonusNumber(lotto, bonusNumber, countMatchNumber);
 
 		return countMatchNumber;
 	}
 
-	public static void checkMatchBonusNumber(Lotto lotto, Set<Integer> numbers, String bonusNumber,
-		int matchNumberCount) {
-		if (matchNumberCount == SECOND_WINNER_MATCH_COUNT && isContainsNumber(numbers, bonusNumber)) {
+	public static void checkMatchBonusNumber(Lotto lotto, String bonusNumber, int matchNumberCount) {
+		if (matchNumberCount == SECOND_WINNER_MATCH_COUNT && isContainsNumber(lotto.getNumbers(), bonusNumber)) {
 			lotto.setMatchBonusNumber(true);
 		}
 	}
@@ -68,10 +67,10 @@ public class LottoComparator {
 		return numbers.contains(Integer.parseInt(number));
 	}
 
-	public static void createWinnerResult() {
+	public static void calculatePrizeCount() {
 
 		for (Lotto lotto : winner) {
-			int matchCount = lotto.getMatchNumberCount();
+			int matchCount = lotto.getCountMatchNumber();
 
 			boolean isFirstWinner = checkFirstWinner(lotto, matchCount);
 			boolean isSecondWinner = checkSecondWinner(lotto, matchCount);
