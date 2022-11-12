@@ -76,10 +76,8 @@ public class WinningNumber {
 
     private boolean hasDuplicatedLottoNumber(List<Integer> numbers) {
         return numbers.stream()
-                .filter(this::isValidLottoNumberRange)
                 .distinct()
                 .count() != LOTTO_NUM_SIZE;
-
     }
 
     private boolean isValidAllLottoNumberRange(List<Integer> numbers) {

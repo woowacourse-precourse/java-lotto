@@ -1,23 +1,21 @@
 package lotto.view;
 
-import java.util.Scanner;
+import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
-    private static final Scanner SCANNER = new Scanner(System.in);
-
     public static String requestMoney() {
         OutputView.printRequestMoney();
-        return SCANNER.nextLine();
+        return Console.readLine();
     }
 
     public static String requestWinningNumber() {
         OutputView.printRequestWinningNumber();
-        return SCANNER.nextLine();
+        return Console.readLine();
     }
 
     public static String requestBonusNumber() {
         OutputView.printRequestBonusNumber();
-        return SCANNER.nextLine();
+        return Console.readLine();
     }
 }
