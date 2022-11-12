@@ -33,15 +33,18 @@ public class LottoServiceImpl implements LottoService{
         while(lottos.size() < cnt){
             lottos.add(new Lotto(generateRandomNum(6)));
         }
-
     }
 
     @Override
     public void generateLottos() {
         System.out.println("당첨 번호를 입력해 주세요");
-        ansLotto = new Lotto(generateRandomNum(6));
+        String ans_nums = readLine();
+        ansLotto = new Lotto(Arrays.stream(ans_nums.split(","))
+                                    .map(Integer::parseInt)
+                                    .collect(Collectors.toList()));
         System.out.println("보너스 번호를 입력해 주세요");
-        bonus = new BonusLotto(generateRandomNum(1).get(0));
+        String bonus_num = readLine();
+        bonus = new BonusLotto(Integer.parseInt(bonus_num));
     }
 
     @Override
