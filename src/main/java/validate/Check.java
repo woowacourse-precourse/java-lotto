@@ -31,7 +31,7 @@ public class Check {
         }
     }
 
-    public static void winningNumberSize(List<String> numbers) {
+    public static void numberCount(List<String> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 당첨번호 숫자는 6개를 입력해야 합니다.");
         }
