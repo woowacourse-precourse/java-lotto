@@ -21,4 +21,17 @@ public class Lotto {
     public int findLottoNumber(int index) {
         return numbers.get(index);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        sb.append(numbers.get(0));
+        for (int lottoIndex = 1; lottoIndex < numbers.size(); lottoIndex++) {
+            sb.append(", ");
+            sb.append(numbers.get(lottoIndex));
+        }
+        sb.append("]");
+        return sb.toString();
+    }
 }

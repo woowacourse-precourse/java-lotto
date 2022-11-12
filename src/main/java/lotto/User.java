@@ -30,4 +30,8 @@ public class User {
     public Lotto findLotto(int index) {
         return userLottos.get(index);
     }
+
+    public List<Lotto> getUserLottos() {
+        return userLottos;
+    }
 }

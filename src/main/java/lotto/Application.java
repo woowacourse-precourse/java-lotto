@@ -6,7 +6,10 @@ public class Application {
         User user = new User();
 
         Print.printInsertMoney();
+
         user.payMoney();
         user.buyLotto();
+
+        Print.printLotto(user.getUserLottos());
     }
 }
