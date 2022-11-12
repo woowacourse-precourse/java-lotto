@@ -29,7 +29,7 @@ public class Controller {
         return shop.getLottoPayed();
     }
 
-    public void getWinningNums() {
+    public void setWinningNums() {
         draw = new Draw(getWinningLotto(),getBonusNum());
     }
 
