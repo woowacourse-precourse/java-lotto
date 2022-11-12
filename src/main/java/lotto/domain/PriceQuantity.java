@@ -1,11 +1,11 @@
 package lotto.domain;
 
-public class LottoQuantity {
+public class PriceQuantity {
     public static final int UNIT = 1000;
     private int money;
     private int quantity;
 
-    LottoQuantity(int money) {
+    PriceQuantity(int money) {
         this.money = money;
     }
 
