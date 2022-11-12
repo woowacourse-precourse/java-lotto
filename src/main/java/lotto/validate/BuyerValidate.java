@@ -6,7 +6,7 @@ public class BuyerValidate {
     }
     private void priceUnitValidate(int buyPrice, int lottoPrice){
         if (buyPrice % lottoPrice != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 구입금액이 올바르지 않습니다.");
         }
     }
 }
