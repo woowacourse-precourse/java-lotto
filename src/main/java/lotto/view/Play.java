@@ -42,9 +42,11 @@ public class Play {
 
         System.out.println("\n"+INPUT_BONUS_MESSAGE);
         String bonus = Console.readLine();
+//
+//        System.out.println(result.calculateResult(lotto,winLotto,bonus));
+        System.out.println(Arrays.deepToString(result.convertLotto(lotto,winLotto,bonus)));
 
-
-
+        System.out.println("\n"+WINNING_MESSAGE);
 
 
     }
