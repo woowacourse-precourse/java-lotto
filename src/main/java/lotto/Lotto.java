@@ -5,6 +5,7 @@ import static lotto.LottoWinType.matchGameScoreAndLottoWinType;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.utils.Constant;
+import lotto.utils.ValidateUtils;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -15,9 +16,9 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != Constant.LOTTO_SIZE) {
-            throw new IllegalArgumentException();
-        }
+        ValidateUtils.checkDuplicateNumber(numbers);
+        ValidateUtils.checkArraySize(numbers.size(), Constant.LOTTO_SIZE);
+        ValidateUtils.checkRangeNumber(numbers);
     }
 
     public List<Integer> getNumbers() {

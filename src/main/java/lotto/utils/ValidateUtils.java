@@ -1,6 +1,8 @@
 package lotto.utils;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ValidateUtils {
     private static final String ERROR_MEESAGE_HEADER = "[ERROR] ";
@@ -46,6 +48,23 @@ public class ValidateUtils {
         if (number < Constant.NUMBER_START || number > Constant.NUMBER_END) {
             System.out.println(ERROR_MEESAGE_HEADER + VALIDATE_RANGE_ANSWER_NUMBER);
             throw new IllegalArgumentException(String.format(ERROR_MEESAGE_HEADER + VALIDATE_RANGE_ANSWER_NUMBER));
+        }
+    }
+
+    public static void checkRangeNumber(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (number < Constant.NUMBER_START || number > Constant.NUMBER_END) {
+                System.out.println(ERROR_MEESAGE_HEADER + VALIDATE_RANGE_ANSWER_NUMBER);
+                throw new IllegalArgumentException(String.format(ERROR_MEESAGE_HEADER + VALIDATE_RANGE_ANSWER_NUMBER));
+            }
+        }
+    }
+
+    public static void checkDuplicateNumber(List<Integer> numbers) {
+        Set<Integer> set = new HashSet<>(numbers);
+        if (set.size() != numbers.size()) {
+            System.out.println(ERROR_MEESAGE_HEADER + VALIDATE_DUPLICATE_NUMBER);
+            throw new IllegalArgumentException(String.format(ERROR_MEESAGE_HEADER + VALIDATE_DUPLICATE_NUMBER));
         }
     }
 
