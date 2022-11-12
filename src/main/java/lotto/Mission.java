@@ -2,6 +2,7 @@ package lotto;
 
 import static lotto.utils.Constant.LOTTO_PRICE;
 
+import java.util.EnumMap;
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMaker;
@@ -44,10 +45,13 @@ public class Mission {
 
         int priceMoney = repository.getTotalMoney();
 
-        getRate(money.getMoney(), priceMoney);
+        long rate = getRate(money.getMoney(), priceMoney);
 
+        output.printLottoResultTitle();
+        EnumMap<Rank, Integer> result = repository.getResult();
+        result.forEach((rank, count) -> callOutputAboutRank(rank, count));
 
-
+        output.printTotalRate(rate);
 
     }
 
@@ -79,5 +83,13 @@ public class Mission {
     private long getRate(int inputMoney, int priceMoney) {
         double result = (double) inputMoney / priceMoney;
         return Math.round(result);
+    }
+
+    private void callOutputAboutRank(Rank rank, Integer count) {
+        if (rank == Rank.SECOND) {
+            output.printLottoResultAboutRankWithBonus(rank.getCountOfMatch(), rank.getMoney(), count);
+            return;
+        }
+        output.printLottoResultAboutRank(rank.getCountOfMatch(), rank.getMoney(), count);
     }
 }

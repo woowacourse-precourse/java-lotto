@@ -12,9 +12,17 @@ public class ResultRepository {
         totalMoney = 0;
     }
 
+    public void setResult() {
+        result.put(Rank.FIFTH, 0);
+        result.put(Rank.FOURTH, 0);
+        result.put(Rank.THIRD, 0);
+        result.put(Rank.SECOND, 0);
+        result.put(Rank.FIRST, 0);
+    }
+
     public void add(Rank rank) {
         result.put(rank, result.getOrDefault(rank, 0) + 1);
-        totalMoney += rank.getMoney(rank);
+        totalMoney += rank.getMoney();
     }
 
     public Integer getResultAboutRank(Rank rank) {
@@ -23,6 +31,10 @@ public class ResultRepository {
 
     public int getTotalMoney() {
         return totalMoney;
+    }
+
+    public EnumMap<Rank, Integer> getResult() {
+        return result;
     }
 
 }

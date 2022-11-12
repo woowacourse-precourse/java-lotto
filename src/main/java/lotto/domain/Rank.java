@@ -50,7 +50,11 @@ public enum Rank {
         return false;
     }
 
-    public int getMoney(Rank rank) {
-        return rank.money;
+    public int getCountOfMatch() {
+        return countOfMatch;
+    }
+
+    public int getMoney() {
+        return money;
     }
 }
