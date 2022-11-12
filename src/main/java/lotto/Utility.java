@@ -12,4 +12,8 @@ public abstract class Utility {
         String input = Console.readLine();
         return input;
     }
+
+    public long calculateQuotient(long dividend, long divisor){
+        return dividend/divisor;
+    }
 }
