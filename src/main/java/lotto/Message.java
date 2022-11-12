@@ -35,6 +35,11 @@ public class Message {
         return String.join(DELIMITER,ERROR_HEADER,LOTTO_NUMBER_DUPLICATION_ERROR_MESSAGE_BODY);
     }
 
+    public static String getPurchaseLottoSizeMessage(List<Lotto> purchaseLotties)
+    {
+        return purchaseLotties.size() + "개를 구매했습니다.\n";
+    }
+
     public static String getLottiesNumberInfoMessage(List<Lotto> lotties)
     {
         StringBuilder sb = new StringBuilder();
@@ -65,7 +70,7 @@ public class Message {
 
     public static String getEarningMessage(double earnPercentage)
     {
-        return "수익률 : " + String.format("%.2f",earnPercentage) +"%\n";
+        return "총 수익률은 " + earnPercentage +"%입니다.\n";
     }
 
 }

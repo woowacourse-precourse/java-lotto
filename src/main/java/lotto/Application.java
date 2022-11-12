@@ -37,7 +37,9 @@ public class Application {
             try
             {
                 int price = Integer.parseInt(userInputForPrice);
-                return lottoGenerator.generateLotties(price);
+                List<Lotto> purchaseLotties = lottoGenerator.generateLotties(price);
+                consoleOutputManager.write(Message.getPurchaseLottoSizeMessage(purchaseLotties));
+                return purchaseLotties;
             }
             catch (NumberFormatException e) {
                 consoleOutputManager.write(Message.LOTTO_PURCHASE_RETRY_MESSAGE);
