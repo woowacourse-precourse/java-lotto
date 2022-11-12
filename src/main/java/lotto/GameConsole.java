@@ -17,6 +17,7 @@ public class GameConsole {
     }
 
     public void inputWinningNumber(){
+        notice(INPUT_WINNING_NUMBER_MESSAGE);
         String winningNumber = Console.readLine();
     }
 
@@ -25,6 +26,7 @@ public class GameConsole {
     }
 
     public void inputBonusNumber(){
+        notice(INPUT_BONUS_NUMBER_MESSAGE);
         String bonusNumber = Console.readLine();
     }
 
