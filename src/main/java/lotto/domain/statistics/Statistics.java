@@ -22,7 +22,6 @@ public class Statistics {
     }
 
     public static Statistics of(Money money, List<Rank> ranks) {
-
         Map<Rank, Long> result = ranks.stream()
                 .collect(Collectors.groupingBy(r -> r, counting()));
 

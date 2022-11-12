@@ -19,6 +19,7 @@ public class LottoApplicationConfig {
     public LottoController lottoController() {
         return new LottoController(lottoService());
     }
+
     public LottoService lottoService() {
         return new LottoService(pricePerLotto(), lottoGenerator());
     }

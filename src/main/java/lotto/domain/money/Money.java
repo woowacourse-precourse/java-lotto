@@ -32,6 +32,7 @@ public class Money {
         exchangeValidate(exchanged);
 
         int count = (this.value / exchanged.value);
+
         return IntStream.range(0, count)
                 .mapToObj(i -> Money.valueOf(exchanged.value))
                 .collect(toList());
