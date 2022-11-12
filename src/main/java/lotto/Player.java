@@ -37,9 +37,17 @@ public class Player {
         this.lottos = lottos;
     }
     public void setBonusNumber(int number){
+        isInDuplicateInWinning(number);
         isInRange(number);
         this.bonusNumber = number;
     }
+
+    private void isInDuplicateInWinning(int number) {
+        if (this.winningNumber.getNumbers().contains(number)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 겹치면 안됩니다..");
+        }
+    }
+
     private void isInRange(int number){
         if(number<1 || number>45){
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
