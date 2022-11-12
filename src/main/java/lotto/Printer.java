@@ -35,11 +35,14 @@ public class Printer {
         return formattedMoney;
     }
 
-
     public static void printLottos(List<Lotto> lottos) {
         System.out.printf(ResultMessage.LOTTO_NUM, lottos.size());
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
+    }
+
+    public static void printProfits(double profit) {
+        System.out.printf(ResultMessage.PROFIT, profit);
     }
 }
