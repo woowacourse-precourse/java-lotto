@@ -24,9 +24,12 @@ public class LottoCalculate {
     }
 
     int checkMatches(Collection<Integer> lottoNumbers, List<Integer> winNumbers) {
-        int matchCount = lottoNumbers.size();
-        lottoNumbers.removeAll(winNumbers);
-        matchCount -= lottoNumbers.size();
+        int matchCount = 0;
+        for (Integer winNumber : winNumbers) {
+            if (lottoNumbers.contains(winNumber)) {
+                matchCount++;
+            }
+        }
         return matchCount;
     }
 
