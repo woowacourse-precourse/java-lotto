@@ -66,4 +66,26 @@ public class Function {
             Display.displayError(e.getMessage());
         }
     }
+    public static String getBonus(){
+        Display.displayGettingBonus();
+        return Console.readLine();
+    }
+    public static int validBonus(String bonus, List<Integer> winNumber){
+        try{
+            int bonusNumber = Integer.parseInt(bonus);
+            if ((bonusNumber > Constants.upper_bound) || (bonusNumber < Constants.lower_bound)){
+                throw new IllegalArgumentException("보너스 번호는 1~45사이로 입력해야 합니다.");
+            }
+            if (winNumber.contains(bonusNumber)){
+                throw new IllegalArgumentException("보너스 번호는 당첨 번호와 달랴야 합니다.");
+            }
+            return bonusNumber;
+        } catch(NumberFormatException e){
+            String message = "보너스 번호로 숫자를 입력해 주세요.";
+            Display.displayError(message);
+        } catch(Exception e) {
+            Display.displayError(e.getMessage());
+        }
+        return 0;
+    }
 }
