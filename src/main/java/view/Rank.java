@@ -1,6 +1,6 @@
 package view;
 
-public enum Profit {
+public enum Rank {
     Five("3개 일치 (5,000원)", 5000),
     Four("4개 일치 (50,000원)", 50000),
     Three("5개 일치 (1,500,000원)", 1500000),
@@ -11,7 +11,7 @@ public enum Profit {
 
     private int prize;
 
-    Profit(String print, int prize) {
+    Rank(String print, int prize) {
         this.print = print;
         this.prize = prize;
     }
