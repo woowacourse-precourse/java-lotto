@@ -194,8 +194,16 @@ class ValidatorTest {
         }
 
         @Test
+        @DisplayName("보너스 번호가 45보다 크면 예외를 던진다.")
         void isOver45() {
+            // given
+            Validator validator = new Validator();
+            List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
 
+            // throws
+            assertThatThrownBy(() -> validator.validateBonusNumber("46", winningNumbers))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR] 보너스 번호 입력이 잘못되었습니다.");
         }
 
         @Test
