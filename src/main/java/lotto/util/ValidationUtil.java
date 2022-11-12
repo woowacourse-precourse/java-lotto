@@ -23,9 +23,9 @@ public class ValidationUtil {
      */
     public void validateWinningAmount(String input) {
         String[] winningAmounts = input.split(",");
-        validatedWinningCount(winningAmounts);
+        validateWinningCount(winningAmounts);
         validateBlank(winningAmounts);
-        validatedDuplicate(winningAmounts);
+        validateDuplicate(winningAmounts);
         validateWinningRange(winningAmounts);
     }
 
@@ -33,7 +33,7 @@ public class ValidationUtil {
      * 딩첨 번호를 6개 입력했는지 검증한다.
      * @param inputNums 당첨 번호 리스트
      */
-    private void validatedWinningCount(String[] inputNums) {
+    private void validateWinningCount(String[] inputNums) {
         if (inputNums.length != MAX_COUNT.getNumber()) {
             throw new IllegalArgumentException(NUMBER_COUNT);
         }
@@ -56,7 +56,7 @@ public class ValidationUtil {
      * 당첨 번호에 중복값이 존재하는지 검증한다.
      * @param inputNums 당첨 번호 리스트
      */
-    private void validatedDuplicate(String[] inputNums) {
+    private void validateDuplicate(String[] inputNums) {
         if (Arrays.stream(inputNums).distinct().count() != MAX_COUNT.getNumber()) {
             throw new IllegalArgumentException(NUMBER_DUPLICATE);
         }
