@@ -4,15 +4,17 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * 1등 부터 5등까지 몇 번을 했는지, 총 당첨금은 얼마인지를 저장하는 클래스입니다.
+ * 1등 부터 5등까지 몇 번을 했는지, 총 당첨금은 얼마인지, 몇 개의 로또를 샀는지를 저장하는 클래스입니다.
  */
 public class WinningLotto {
+    private int lottoNumber;
     private int totalReward;
     private List<Integer> winningNumbers;
 
     public WinningLotto() {
+        this.lottoNumber = 0;
         this.totalReward = 0;
-        this.winningNumbers = Arrays.asList(0, 0, 0, 0, 0);
+        this.winningNumbers = Arrays.asList(0, 0, 0, 0, 0, 0);
     }
 
     public int getTotalReward() {
@@ -30,5 +32,14 @@ public class WinningLotto {
     public void updateResult(WinningRank rank) {
         winningNumbers.set(rank.getRank(), winningNumbers.get(rank.getRank()) + 1);
         totalReward += rank.getReward();
+        lottoNumber++;
+    }
+
+    /**
+     * 수익률을 계산하여 반환합니다.
+     * @return 수익률
+     */
+    public double getRateOfRevenue() {
+        return (double) totalReward / ((double) lottoNumber * 1000.0) * 100.0;
     }
 }
