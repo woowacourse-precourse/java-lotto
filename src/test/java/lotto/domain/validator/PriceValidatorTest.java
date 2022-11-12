@@ -49,4 +49,37 @@ class PriceValidatorTest {
                 () -> validator.checkingDividable(inputMoney));
         assertThat(exception.getMessage()).isEqualTo(ErrorMessages.MONEY_UNDIVIDED.getMessage());
     }
+
+    @Order(3)
+    @DisplayName("구매 금액 입력값 통합 검사 ")
+    @Test
+    void moneyInputIntegrationTest(){
+        String inputMoney1 = "abcde";
+        String inputMoney2 = "1000004";
+        String inputMoney3 = "1";
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> validator.validateMoneyInput(inputMoney1))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        Exception exception1 = assertThrows(IllegalArgumentException.class,
+                () -> validator.validateMoneyInput(inputMoney1));
+        assertThat(exception1.getMessage()).isEqualTo(ErrorMessages.NOT_NUMBER_EXIST.getMessage());
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> validator.validateMoneyInput(inputMoney2))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        Exception exception2 = assertThrows(IllegalArgumentException.class,
+                () -> validator.validateMoneyInput(inputMoney2));
+        assertThat(exception2.getMessage()).isEqualTo(ErrorMessages.MONEY_UNDIVIDED.getMessage());
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> validator.validateMoneyInput(inputMoney3))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        Exception exception3 = assertThrows(IllegalArgumentException.class,
+                () -> validator.validateMoneyInput(inputMoney3));
+        assertThat(exception3.getMessage()).isEqualTo(ErrorMessages.BELOW_THE_PRICE_THRESHOLD.getMessage());
+    }
 }
