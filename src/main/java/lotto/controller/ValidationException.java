@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 public class ValidationException {
 
     public static boolean checkValidPrice(String userMoney) {
-        String regExp = "^[1-9]\\d+0{3}$";
+        String regExp = "^[1-9]\\d*0{3}$";
 
         if (Pattern.matches(regExp, userMoney)) {
             return true;
