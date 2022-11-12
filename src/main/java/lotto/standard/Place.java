@@ -10,7 +10,7 @@ public enum Place {
 
     private final int prizeMoney;
     private final int matchingNumber;
-    private final String words; //ui?
+    private final String words;
 
     private Place(int prizeMoney, int matchingNumber, String words) {
         this.prizeMoney = prizeMoney;

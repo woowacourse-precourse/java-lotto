@@ -18,20 +18,16 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         Set<Integer> uniqueNumbers = new HashSet<>(numbers);
         List<Integer> outOfRangeNumbers = new ArrayList<>(numbers);
-        outOfRangeNumbers.removeAll(Bug.ERROR.getRangeOfNumber());
+        outOfRangeNumbers.removeAll(Bug.getRangeOfNumber());
 
-        if (numbers.size() != 6) {
-            System.out.println(Bug.ERROR.getMessage());
-            throw new IllegalArgumentException(Bug.ERROR.getMessage()
-                    + Bug.LOTTO_MUST_RANGE_SIX.getMessage());
+        if (numbers.size() != Bug.RANGE) {
+            throw new IllegalArgumentException(Bug.ERROR + Bug.LOTTO_MUST_RANGE_SIX);
         }
         if (numbers.size() != uniqueNumbers.size()) {
-            throw new IllegalArgumentException(Bug.ERROR.getMessage()
-                    + Bug.LOTTO_MUST_EACH_UNIQUE.getMessage());
+            throw new IllegalArgumentException(Bug.ERROR + Bug.LOTTO_MUST_EACH_UNIQUE);
         }
-        if (outOfRangeNumbers.size() != 0) {
-            throw new IllegalArgumentException(Bug.ERROR.getMessage()
-                    + Bug.LOTTO_MUST_BETWEEN_ONE_AND_FORTY_FIVE.getMessage());
+        if (!outOfRangeNumbers.isEmpty()) {
+            throw new IllegalArgumentException(Bug.ERROR + Bug.LOTTO_MUST_BETWEEN_ONE_AND_FORTY_FIVE);
         }
     }
 

@@ -6,14 +6,24 @@ import lotto.standard.Place;
 import java.util.Map;
 
 public class Amount {
-    private final static int lottoPrice = 1000;
-    
+    private final static int lottoPrice = 1_000;
+
     private final int inputAmount;
     private int purchasesQuantity;
     private double earningRate;
 
     public Amount(int inputAmount) {
+        validate(inputAmount);
         this.inputAmount = inputAmount;
+    }
+
+    private void validate(int inputAmount) {
+        if (inputAmount % lottoPrice != 0) {
+            throw new IllegalArgumentException(Bug.ERROR + Bug.AMOUNT_DIVIDED_NO_REMAINING);
+        }
+        if (inputAmount < lottoPrice) {
+            throw new IllegalArgumentException(Bug.ERROR + Bug.AMOUNT_MORE_THAN_THOuSAND);
+        }
     }
 
     public int getPurchasesQuantity() {
@@ -23,10 +33,6 @@ public class Amount {
 
     private void calculatePurchasesQuantity() {
         int purchasesQuantity = inputAmount / lottoPrice;
-        if (inputAmount % lottoPrice != 0) {
-            throw new IllegalArgumentException(Bug.ERROR.getMessage()
-                    + Bug.AMOUNT_DIVIDED_NO_REMAINING.getMessage());
-        }
         this.purchasesQuantity = purchasesQuantity;
     }
 
@@ -42,7 +48,6 @@ public class Amount {
         }
         try {
             this.earningRate = (proceeds / (double) inputAmount) * 100;
-
         } catch (ArithmeticException e) {
             this.earningRate = 0;
         }

@@ -29,9 +29,8 @@ public class Rank {
             winningRanks.put(place, winningRanks.get(place) + 1);
         }
     }
-    
-    private Place determine(int matchingNumber, boolean checkBonus) {
 
+    private Place determine(int matchingNumber, boolean checkBonus) {
         for (Place place : Place.values()) {
             if (matchingNumber == place.getMatchingNumber() && checkBonus) {
                 return place.SECOND;

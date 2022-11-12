@@ -23,7 +23,6 @@ public class LottoDomain {
         rank.countWinningRanks(lottoGenerator.getUserLottoTickets(), bonusNumber);
     }
 
-
     public int getPurchasesQuantity() {
         return amount.getPurchasesQuantity();
     }
@@ -39,5 +38,4 @@ public class LottoDomain {
     public double getEarningRates() {
         return amount.getEarningRate(rank.winningRanks);
     }
-
 }
