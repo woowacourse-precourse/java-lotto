@@ -16,8 +16,8 @@ public class Store {
         this.winningNumber = winningNumber;
     }
 
-    public void sellLottoToCustomer() {
+    public static Customer sellLottoToCustomer() {
         int paidMoney = getPaidMoney(readUserPaidMoney());
-        new Customer(paidMoney);
+        return new Customer(paidMoney);
     }
 }
