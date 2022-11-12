@@ -151,13 +151,40 @@ class LottoTest {
         Lotto test5 = new Lotto(List.of(2, 5, 15, 23, 24, 35)); // 5등
         testLottos.add(test5);
 
-        Lotto testBlank = new Lotto(List.of(2, 5, 13, 25, 26, 35)); // 꽝
-
         List<Integer> winningNumbers = List.of(1, 4, 14, 23, 24, 35);
         int bonusNumber = 19;
 
         Map<Result, Integer> allResults = Application.getAllResults(testLottos, winningNumbers, bonusNumber);
         System.out.println(allResults.entrySet());
+
+    }
+
+    @DisplayName("로또 구입 결과 수익률을 연산한다.")
+    @Test
+    public void getRationOfProfitTest() {
+        List<Lotto> testLottos = new ArrayList<>();
+        Lotto test1 = new Lotto(List.of(8, 21, 23, 41, 42, 43));
+        testLottos.add(test1);
+        Lotto test2 = new Lotto(List.of(3, 5, 11, 16, 32, 38));
+        testLottos.add(test2);
+        Lotto test3 = new Lotto(List.of(7, 11, 16, 35, 36, 44));
+        testLottos.add(test3);
+        Lotto test4 = new Lotto(List.of(1, 8, 11, 31, 41, 42));
+        testLottos.add(test4);
+        Lotto test5 = new Lotto(List.of(13, 14, 16, 38, 42, 45));
+        testLottos.add(test5);
+        Lotto test6 = new Lotto(List.of(7, 11, 30, 40, 42, 43));
+        testLottos.add(test6);
+        Lotto test7 = new Lotto(List.of(2, 13, 22, 32, 38, 45));
+        testLottos.add(test7);
+        Lotto test8 = new Lotto(List.of(1, 3, 5, 14, 22, 45));
+        testLottos.add(test8);
+
+        List<Integer> winningNums = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNum = 7;
+        Map<Result, Integer> allResults = Application.getAllResults(testLottos, winningNums, bonusNum);
+        String ratioOfProfit = Application.getRatioOfProfit(8000, allResults);
+        assertThat(ratioOfProfit).isEqualTo("62.5");
 
     }
 

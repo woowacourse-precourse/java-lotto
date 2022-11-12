@@ -149,4 +149,14 @@ public class Application {
         }
     }
 
+    public static String getRatioOfProfit(int price, Map<Result, Integer> numOfEachResult) {
+        float totalPrize = 0F;
+        Set<Result> standards = numOfEachResult.keySet();
+        for (Result standard : standards) {
+            totalPrize += standard.getIntPrize() * numOfEachResult.get(standard);
+        }
+        float ratio = (totalPrize / (float) price) * 100;
+        return String.format("%.1f", ratio);
+    }
+
 }
