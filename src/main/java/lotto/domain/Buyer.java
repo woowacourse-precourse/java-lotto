@@ -22,7 +22,6 @@ public class Buyer {
     }
 
     private void validate(int buyPrice) {
-        BuyerValidate buyerValidate = new BuyerValidate();
-        buyerValidate.validate(buyPrice, LOTTO_PRICE.getValue());
+        new BuyerValidate().validate(buyPrice, LOTTO_PRICE.getValue());
     }
 }

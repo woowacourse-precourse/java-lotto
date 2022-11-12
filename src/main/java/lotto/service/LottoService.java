@@ -15,7 +15,9 @@ public class LottoService {
         Buyer buyer = new BuyerGenerate().generate();
         LottoRandomPeek lottoRandomPeek = new LottoRandomPeek(buyer.getBuyLottoCount());
         new LottoRandomPeekOutput().output(lottoRandomPeek.getRandomLottos());
+
         WinLotto winLotto = new WinLottoGenerate().generate();
+
         Statistics statistics = new Statistics(lottoRandomPeek.getRandomLottos());
         statistics.compareNumber(lottoRandomPeek.getRandomLottos(), winLotto);
         StatisticsOutput output = new StatisticsOutput();
