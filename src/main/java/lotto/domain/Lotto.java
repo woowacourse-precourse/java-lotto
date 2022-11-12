@@ -32,4 +32,9 @@ public class Lotto {
             throw new LottoNumberDuplicateException();
         }
     }
+
+    public boolean isContainNumber(LottoNumber bonusNumber) {
+        return this.numbers.stream()
+                .anyMatch(bonusNumber::equalNumber);
+    }
 }

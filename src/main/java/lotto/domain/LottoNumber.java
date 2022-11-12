@@ -33,4 +33,8 @@ public class LottoNumber {
             throw new LottoNumberRangeException(LOTTO_NUMBER_MIN, LOTTO_NUMBER_MAX);
         }
     }
+
+    public boolean equalNumber(Integer number) {
+        return this.number == number;
+    }
 }
