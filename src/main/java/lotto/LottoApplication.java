@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoApplication {
@@ -20,6 +21,7 @@ public class LottoApplication {
         for (int i = 0; i < num; i++) {
             List<Integer> numbers
                     = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(numbers);
             randomLottoLists.add(numbers);
             System.out.println(numbers);
         }
@@ -33,6 +35,21 @@ public class LottoApplication {
 
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = Integer.parseInt(Console.readLine());
+
+        int sum = 0;
+        for (List list : randomLottoLists) {
+            int cnt = 0;
+            for (int i = 0; i < winningLotto.size(); i++) {
+                if (list.contains(winningLotto.get(i))) {
+                    cnt++;
+                }
+            }
+            if (cnt < 3) continue;
+
+            System.out.println(cnt);
+            LottoReward.getRank(cnt).plusCount();
+            sum += LottoReward.getRank(cnt).getReward();
+        }
 
         System.out.println("당첨 통계");
         System.out.println("---");
