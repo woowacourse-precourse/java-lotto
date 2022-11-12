@@ -5,7 +5,11 @@ import lotto.Model.Lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class LottoServiceImpl implements LottoService{
 
@@ -19,8 +23,9 @@ public class LottoServiceImpl implements LottoService{
     }
 
     @Override
-    public void buyLottos(int price) {
+    public void buyLottos() {
         System.out.println("구입금액을 입력해 주세요.");
+        int price = Integer.parseInt(readLine());
         this.priceValidate(price);
         int cnt = price / 1000;
         System.out.println(cnt+"개를 구매했습니다.");
