@@ -15,7 +15,11 @@ public enum Rank {
         this.price = price;
     }
 
-    public int getCorrectCount(){
+    public int getCorrectCount() {
         return correctCount;
+    }
+
+    public int getPrice() {
+        return price;
     }
 }
