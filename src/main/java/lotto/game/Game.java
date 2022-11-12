@@ -37,4 +37,24 @@ public class Game {
         this.winningFirstCount = Constant.INITIAL_COUNT;
         this.winningAmount = Constant.INITIAL_AMOUNT;
     }
+
+    public void setWinningLottoNumbers(List<Integer> winningLottoNumbers) {
+        this.winningLottoNumbers.addAll(winningLottoNumbers);
+    }
+
+    public void setBonusNumber(int bonusNumber) {
+        validateBonusNumber(bonusNumber);
+        this.bonusNumber = bonusNumber;
+    }
+
+    private void validateBonusNumber(int bonusNumber) {
+        if (bonusNumber < Constant.LOTTO_NUMBER_MIN || bonusNumber > Constant.LOTTO_NUMBER_MAX) {
+            Print.lottoNumberException();
+            throw new IllegalArgumentException();
+        }
+        if (winningLottoNumbers.contains(bonusNumber)) {
+            Print.nonDuplicatedBonusNumberException();
+            throw new IllegalArgumentException();
+        }
+    }
 }
