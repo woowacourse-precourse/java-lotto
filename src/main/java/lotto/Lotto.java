@@ -1,9 +1,12 @@
 package lotto;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
+    private final static int TWO_LOTTERIES = 12;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -28,5 +31,12 @@ public class Lotto {
             System.out.println("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
             throw new IllegalArgumentException();
         }
+    }
+
+    public int getMatchCountWith(Lotto lotto) {
+        Set<Integer> uniqueNumbers = new HashSet<>(lotto.numbers);
+        uniqueNumbers.addAll(this.numbers);
+
+        return TWO_LOTTERIES - uniqueNumbers.size();
     }
 }

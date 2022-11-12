@@ -7,9 +7,9 @@ public enum LottoRank {
     FOURTH_PLACE(50000, 4, false),
     FIFTH_PLACE(5000, 3, false);
 
-    final int price;
-    final int matchNumberCount;
-    final boolean hasBonusNumber;
+    public final int price;
+    public final int matchNumberCount;
+    public final boolean hasBonusNumber;
 
     LottoRank(int price, int matchNumberCount, boolean hasBonusNumber) {
         this.price = price;
