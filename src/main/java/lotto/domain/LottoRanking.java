@@ -10,20 +10,24 @@ public enum LottoRanking {
     FIFTH(3,5000),
     NOTTING(0,0);
 
-    private int lottoCounts;
-    private int lottoWinningMoney;
+    private final int lottoCounts;
+    private final int lottoWinningMoney;
 
     LottoRanking(int counts, int money) {
         lottoCounts=counts;
         lottoWinningMoney=money;
     }
-    public LottoRanking getLottoRanking(int matchLottoCounts, boolean haveBonus){
+    public static LottoRanking getLottoRanking(int matchLottoCounts, boolean haveBonus){
         if(matchLottoCounts==SECOND.lottoCounts && !haveBonus)
             return THIRD;
         if(matchLottoCounts< FIFTH.lottoCounts)
             return NOTTING;
         return Arrays.stream(LottoRanking.values())
-                .filter(lottoRanking -> lottoRanking.lottoCounts==lottoCounts)
+                .filter(lottoRanking -> lottoRanking.isSameCounts(matchLottoCounts))
                 .findAny().get();
+    }
+
+    public boolean isSameCounts(int lottoCounts){
+        return this.lottoCounts==lottoCounts;
     }
 }
