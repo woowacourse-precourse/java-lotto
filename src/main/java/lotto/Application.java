@@ -15,6 +15,7 @@ public class Application {
         buyLotto(money, lotto);
         printLotto(lotto);
         List<Integer> winNums = winNumInput();
+        int bonusNum = bonusNumInput();
     }
 
     public static void moneyInputError(int money) {
@@ -31,6 +32,12 @@ public class Application {
         for (String e : tmpNums)
             winNums.add(Integer.parseInt(e));
         return winNums;
+    }
+
+    public static Integer bonusNumInput() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int bonus = Integer.parseInt(Console.readLine());
+        return bonus;
     }
 
     public static void buyLotto(int money, List<Lotto> lotto) {
