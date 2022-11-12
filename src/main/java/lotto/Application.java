@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Application {
@@ -29,6 +30,7 @@ public class Application {
     }
     static List<Integer> make_lotto_num(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
+        numbers.sort(Comparator.naturalOrder());
         return numbers;
     }
     static List<List<Integer>> buy_lotto(int chance){
@@ -48,5 +50,6 @@ public class Application {
         List<List<Integer>> lotto_nums;
         money = check_money();
         chance = money2chance(money);
+        lotto_nums = buy_lotto(chance);
     }
 }
