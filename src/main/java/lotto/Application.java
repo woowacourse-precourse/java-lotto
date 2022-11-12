@@ -69,6 +69,15 @@ public class Application {
         return bonus_numbers;
     }
 
+    static void print_lotto_info(List<Lotto> lottos) {
+        System.out.print(lottos.size());
+        System.out.println("개를 구매했습니다.");
+
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.sort());
+        }
+    }
+
     public static void main(String[] args) {
         ask_how_much_money();
 
@@ -89,5 +98,7 @@ public class Application {
 
         List<List<Integer>> bonus_numbers;
         bonus_numbers = make_bonus_numbers(lottos, how_many_lotto);
+
+        print_lotto_info(lottos);
     }
 }
