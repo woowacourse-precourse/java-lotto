@@ -16,11 +16,11 @@ public class InputView {
     }
 
     public static void printInputBonusNumber() {
-        System.out.println(INPUTBONUSNUMBER);
+        System.out.println("\n" + INPUTBONUSNUMBER);
     }
 
     public static void printWinResult() {
-        System.out.println(WINRESULT);
+        System.out.println("\n" + WINRESULT);
     }
 
     public static void printLine() {

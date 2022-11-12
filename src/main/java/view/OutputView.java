@@ -11,13 +11,14 @@ public class OutputView {
 
     public static void printBuyLottoNumber(LottoPurAmount lottoPurAmount) {
         String buynumber = "";
-        buynumber = lottoPurAmount.getLottopuramount().toString() + BUY;
-        System.out.println(buynumber);
+        int divideprice = lottoPurAmount.getLottopuramount()/1000;
+        buynumber = divideprice + BUY;
+        System.out.println("\n" + buynumber);
     }
 
-    public void printAllLottoNumber(List<List<Integer>> lottonumberlist) {
+    public static void printAllLottoNumber(List<List<Integer>> lottonumberlist) {
         for(int i=0; i<lottonumberlist.size(); i++) {
-            System.out.println(lottonumberlist.toString());
+            System.out.println(lottonumberlist.get(i).toString());
         }
     }
 }
