@@ -17,8 +17,6 @@ public class Yield {
         reward += match.getMatches().get("3등") * 1500000;
         reward += match.getMatches().get("4등") * 50000;
         reward += match.getMatches().get("5등") * 5000;
-        System.out.println("reward = " + reward);
-        System.out.println("this.price.getPrice() = " + this.price.getPrice());
         return Math.round(((double) reward / Integer.parseInt(this.price.getPrice()))*100) / 100.0;
     }
 }
