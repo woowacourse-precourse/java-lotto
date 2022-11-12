@@ -12,7 +12,7 @@ public class OutputView {
         System.out.println(Integer.toString(lottos.size()).concat(PURCHASE_PHRASE));
 
         for (Lotto lotto : lottos) {
-            lotto.printNumbers();
+            System.out.println(lotto.toString());
         }
     }
 
