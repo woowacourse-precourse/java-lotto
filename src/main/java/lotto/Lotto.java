@@ -1,8 +1,11 @@
 package lotto;
 
+import static util.Constant.*;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
 
@@ -10,6 +13,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        validateConsistOfNumBetween1And45(numbers);
         validateOverlap(numbers);
         this.numbers = numbers;
     }
@@ -25,6 +29,16 @@ public class Lotto {
         Set<Integer> lotto = new HashSet<>(numbers);
         if (numbers.size() != lotto.size()) {
             throw new IllegalArgumentException("[ERROR] 서로 다른 숫자로 구성되어 있지 않습니다.");
+        }
+    }
+
+    // 로또 숫자가 1부터 45사이의 수로 구성되어 있는지 검증하는 기능
+    private void validateConsistOfNumBetween1And45(List<Integer> numbers) {
+        List<Integer> lotto = numbers.stream()
+            .filter(num -> LOTTO_MIN_NUM <= num && num <= LOTTO_MAX_NUM)
+            .collect(Collectors.toList());
+        if (lotto.size() != LOTTO_SIZE) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호가 1과 45사이의 수로 구성되어 있지 않습니다.");
         }
     }
 }
