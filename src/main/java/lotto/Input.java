@@ -109,9 +109,9 @@ public class Input {
         return true;
     }
     
-    public List<Integer> getNumbers() {
-        return this.numbers;
-    }
+    public List<Integer> getNumbers() { return this.numbers; }
 
     public int getMoney() { return this.money; }
+
+    public int getBonusNumber() { return this.bonusNumber; }
 }
