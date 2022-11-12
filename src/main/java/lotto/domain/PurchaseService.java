@@ -1,9 +1,12 @@
 package lotto.domain;
 
 public class PurchaseService {
-    int purchaseAmount;
+
     private final static int PRICE = 1000;
     private final static int MIN = 0;
+
+    int purchaseAmount;
+
 
     public void parsePurchaseInput(String input){
         isInteger(input);
