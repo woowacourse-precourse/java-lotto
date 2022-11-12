@@ -57,14 +57,14 @@ public class Buyer {
         ranks.add(rank);
     }
 
-    public double getYield() {
+    public double getProfit() {
         int earn = ranks.stream()
                 .mapToInt(Rank::getPrizeMoney)
                 .sum();
 
-        double yield = (double) earn / money * 100;
+        double profit = (double) earn / money * 100;
 
-        return Math.round(yield * 10) / 10.0;
+        return Math.round(profit * 10) / 10.0;
     }
 
     public List<Lotto> getLottos() {
