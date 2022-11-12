@@ -26,10 +26,7 @@ public class LottoGame {
         Print.winningNumber();
         Lotto winningLotto = generator.makeLotto(Input.winningNumber());
         Print.bonusNumber();
-        int bonus = Input.bonus();
-
-        BonusLotto bonusLotto = new BonusLotto(winningLotto, bonus);
-        return bonusLotto;
+        return new BonusLotto(winningLotto, Input.bonus());
     }
 
     private Map<LottoOperator, Integer> findWinningResult(Lottos lottos, BonusLotto bonusLotto) {
