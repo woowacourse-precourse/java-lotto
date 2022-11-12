@@ -14,4 +14,6 @@ public interface OutputView {
 	void printErrorMessage(Exception e);
 
 	void printScoreMessage(ScoreInfo scoreInfo);
+
+    void printProfitPercentageMessage(double profit);
 }

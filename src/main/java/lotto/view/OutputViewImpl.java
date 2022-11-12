@@ -47,4 +47,9 @@ public class OutputViewImpl implements OutputView {
 	private String convertPriceToMoneyFormat(Integer price) {
 		return new DecimalFormat("###,###").format(price);
 	}
+
+	@Override
+	public void printProfitPercentageMessage(double profit) {
+		System.out.printf("총 수익률은 %.1f%%입니다.\n", profit);
+	}
 }

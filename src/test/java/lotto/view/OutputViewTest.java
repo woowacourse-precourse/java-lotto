@@ -95,4 +95,20 @@ class OutputViewTest {
                         "6개 일치 (2,000,000,000원) - 0개\n"
                 );
     }
+
+    @Test
+    @DisplayName("수익률 값이 주어지면 수익률 메시지를 출력한다.")
+    void givenProfitPercentage_whenRunningOutputView_thenPrintsProfitMessage() {
+        //given
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        double profit = 62.5f;
+
+        //when
+        outputView.printProfitPercentageMessage(profit);
+
+        //then
+        assertThat(out.toString())
+                .isEqualTo("총 수익률은 62.5%입니다.\n");
+    }
 }
