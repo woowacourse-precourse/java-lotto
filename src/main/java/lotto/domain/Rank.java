@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.function.Function;
 
 public enum Rank {
@@ -29,7 +30,7 @@ public enum Rank {
 
     private static Function<Rank, Rank> discriminateSecond(boolean bonusNumber) {
         return rank -> {
-            if (rank.matchNumber.equals(SECOND.getMatchNumber()) && bonusNumber) {
+            if (Objects.equals(rank.matchNumber, SECOND.getMatchNumber()) && bonusNumber) {
                 return SECOND;
             }
             return rank;

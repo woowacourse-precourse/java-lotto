@@ -13,8 +13,14 @@ class RankTest {
     }
 
     @Test
-    void if_matchNumber_five() {
+    void if_matchNumber_five_bonusNumberTrue() {
 
         assertEquals(Rank.SECOND, Rank.findRank(5, true));
+    }
+
+    @Test
+    void if_matchNumber_five_bonusNumber_false() {
+
+        assertEquals(Rank.THIRD, Rank.findRank(5, false));
     }
 }
