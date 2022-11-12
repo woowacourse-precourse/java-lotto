@@ -12,6 +12,8 @@
 - [x] 보너스 번호를 입력 한다. - bonusNumInput()
   - [ ] 예외 시 처리
 - [ ] 구매 번호와 당첨 번호를 비교한다.
+  - [x] 일치하는 번호 갯수를 센다. - Result.java -> matchCnt
+  - [x] 해당하는 당첨 금액을 반환한다. - Result.java -> winMoney()
 - [ ] 당첨 내역을 출력한다.
 - [ ] 수익률을 출력한다.
   - [ ] 소수 둘째 자리에서 반올림
@@ -114,13 +116,6 @@
 6. else/switch,case 문 사용 금지
 7. java Enum 적용
 8. 도메인 로직에 단위 테스트 구현(UI 로직 제외)
-9. Random 값 추출은 camp.nextstep.edu.missionutils.Randoms의 pickUniqueNumbersInRange()를 활용한다.
-10. 사용자가 입력하는 값은 camp.nextstep.edu.missionutils.Console의 readLine()을 활용한다.
-11. 제공된 Lotto 클래스 활용하여 작성
-   11-1. Lotto에 매개 변수가 없는 생성자를 추가할 수 없다.
-   11-2. numbers의 접근 제어자인 private을 변경할 수 없다.
-   11-3. Lotto에 필드(인스턴스 변수)를 추가할 수 없다. 
-   11-4. Lotto의 패키지 변경은 가능하다.
 
 
 ## 과제 진행 요구 사항
