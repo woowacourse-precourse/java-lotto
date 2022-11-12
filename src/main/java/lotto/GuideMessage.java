@@ -7,5 +7,8 @@ public class GuideMessage {
     public static final String ENTER_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     public static final String WINNING_STATISTICS = "당첨 통계";
     public static final String MATCH = "개 일치";
+    public static final String BONUS_BALL_MATCH = "보너스 볼 일치";
+    public static final String AMOUNT = " (%s원)";
     public static final String MATCH_NUMBER = " - %d개";
+    public static final String FINAL_REVENUE = "총 수익률은 %.1f%%입니다.";
 }
