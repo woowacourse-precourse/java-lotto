@@ -1,11 +1,13 @@
 package lotto.view;
 
+import static java.lang.Integer.valueOf;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Arrays;
 import java.util.List;
 import lotto.dto.LottoDto;
+import lotto.dto.PurchaseAmountDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -34,8 +36,10 @@ class InputValidatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"1000", "20000", "100000", "47000"})
-    void validatePurchaseAmount_메서드는_허용된_숫자형식의_문자열을_입력하면_예외가_발생하지_않는다(String amount) {
-        InputValidator.validatePurchaseAmount(amount);
+    void validatePurchaseAmount_메서드는_허용된_숫자형식의_문자열을_입력하면_PurchaseAmountDto를_반환한다(String amount) {
+        PurchaseAmountDto purchaseAmountDto = InputValidator.validatePurchaseAmount(amount);
+
+        assertThat(purchaseAmountDto.getPurchaseAmount()).isEqualTo(valueOf(amount));
     }
 
     @ParameterizedTest
@@ -66,7 +70,7 @@ class InputValidatorTest {
         LottoDto lottoDto = InputValidator.validateLottoNumber(winningNumbers, bonusNumber);
 
         assertThat(lottoDto.getWinningNumbers().size()).isEqualTo(6);
-        assertThat(lottoDto.getBonusNumber()).isEqualTo(Integer.valueOf(bonusNumber));
+        assertThat(lottoDto.getBonusNumber()).isEqualTo(valueOf(bonusNumber));
     }
 
     static List<Arguments> validLottoNumbers() {

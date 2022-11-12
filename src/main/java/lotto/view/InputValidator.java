@@ -1,15 +1,17 @@
 package lotto.view;
 
+import static java.text.MessageFormat.format;
 import static java.util.stream.Collectors.toList;
 
 import java.util.Arrays;
 import java.util.List;
 import lotto.dto.LottoDto;
+import lotto.dto.PurchaseAmountDto;
 
 class InputValidator {
     private static final int VALID_LOTTO_PRICE = 1000;
     private static final String INVALID_NUMBER_FORMAT_MESSAGE = "[ERROR] 올바르지 않은 숫자 형식입니다.";
-    private static final String INVALID_AMOUNT_MESSAGE = "[ERROR] 구입 금액은 " + VALID_LOTTO_PRICE + "원 단위여야 합니다.";
+    private static final String INVALID_AMOUNT_MESSAGE = "[ERROR] 구입 금액은 {0}원 단위여야 합니다.";
     private static final String WINNING_NUMBERS_DELIMITER = ",";
     private static final int VALID_LOTTO_NUMBER_LOWER_BOUND = 1;
     private static final int VALID_LOTTO_NUMBER_UPPER_BOUND = 45;
@@ -20,12 +22,13 @@ class InputValidator {
     private InputValidator() {
     }
 
-    public static void validatePurchaseAmount(String purchaseAmount) {
-        Integer amount = validateNumeric(purchaseAmount);
-        validateRange(amount);
+    public static PurchaseAmountDto validatePurchaseAmount(String inputAmount) {
+        Integer amount = toInteger(inputAmount);
+        validateAmountRange(amount);
+        return new PurchaseAmountDto(amount);
     }
 
-    private static Integer validateNumeric(String number) {
+    private static Integer toInteger(String number) {
         try {
             return Integer.valueOf(number);
         } catch (NumberFormatException e) {
@@ -33,23 +36,23 @@ class InputValidator {
         }
     }
 
-    private static void validateRange(Integer amount) {
+    private static void validateAmountRange(Integer amount) {
         if (amount < VALID_LOTTO_PRICE || amount % VALID_LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException(INVALID_AMOUNT_MESSAGE);
+            throw new IllegalArgumentException(format(INVALID_AMOUNT_MESSAGE, VALID_LOTTO_PRICE));
         }
     }
 
-    public static LottoDto validateLottoNumber(String winningInput, String bonusInput) {
-        List<Integer> winningNumbers = getDistinctWinningNumbers(winningInput);
+    public static LottoDto validateLottoNumber(String inputWinningNumbers, String inputBonusNumbers) {
+        List<Integer> winningNumbers = getDistinctWinningNumbers(inputWinningNumbers);
         validateWinningNumbers(winningNumbers);
-        Integer bonusNumber = validateNumeric(bonusInput);
+        Integer bonusNumber = toInteger(inputBonusNumbers);
         validateBonusNumber(winningNumbers, bonusNumber);
         return new LottoDto(winningNumbers, bonusNumber);
     }
 
     private static List<Integer> getDistinctWinningNumbers(String winningNumbers) {
         return Arrays.stream(winningNumbers.split(WINNING_NUMBERS_DELIMITER))
-                .map(InputValidator::validateNumeric)
+                .map(InputValidator::toInteger)
                 .filter(InputValidator::isValidLottoNumberRange)
                 .distinct()
                 .collect(toList());

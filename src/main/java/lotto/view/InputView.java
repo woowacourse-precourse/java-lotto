@@ -15,8 +15,7 @@ public enum InputView {
         System.out.println(INPUT_PURCHASE_AMOUNT_MESSAGE);
         String purchaseAmount = Console.readLine();
 
-        InputValidator.validatePurchaseAmount(purchaseAmount);
-        return new PurchaseAmountDto(Integer.valueOf(purchaseAmount));
+        return InputValidator.validatePurchaseAmount(purchaseAmount);
     }
 
     public LottoDto inputLottoNumbers() {
