@@ -36,7 +36,13 @@ public class Player {
         }
         this.lottos = lottos;
     }
-    public void setBonusNumber(int numbers){
-        this.bonusNumber = numbers;
+    public void setBonusNumber(int number){
+        isInRange(number);
+        this.bonusNumber = number;
+    }
+    private void isInRange(int number){
+        if(number<1 || number>45){
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
     }
 }
