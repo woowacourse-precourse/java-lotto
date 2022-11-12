@@ -9,7 +9,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validateNumbersSize();
-        validateNumbersAreInRange(numbers);
+        validateNumbersAreInRange();
         validateNumbersAreDuplicate(numbers);
         this.numbers = numbers;
     }
@@ -19,7 +19,7 @@ public class Lotto {
         return numbers.size() == 6;
     }
 
-    public boolean validateNumbersAreInRange(List<Integer> numbers) {
+    public boolean validateNumbersAreInRange() {
         for (Integer number : numbers) {
             if (number < 1 || number > 45) {
                 return false;
