@@ -28,7 +28,7 @@ public class ValidationUtil {
     }
 
     private static void makeNumbers(List<Integer> numbers, String str) {
-        if (!str.matches("[0-9]*")) {
+        if (str.isEmpty() || !str.matches("[0-9]*")) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_WIN_NUMBERS_INPUT.getValue());
         }
         numbers.add(Integer.parseInt(str));
