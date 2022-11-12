@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.enums.Co;
 import lotto.generate.BuyerGenerate;
 import lotto.generate.WinLottoGenerate;
 import lotto.output.LottoRandomPeekOutput;
@@ -12,10 +13,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Statistics {
-    private final int LOTTO_SIZE = 6;
-    private final int BONUS_INDEX = LOTTO_SIZE + 2;
     private final List<Integer> reward = List.of(5000, 50000, 1500000, 2000000000, 30000000);
-    private final List<Integer> rank = new ArrayList<>(Collections.nCopies(BONUS_INDEX, 0));
+    private final List<Integer> rank = new ArrayList<>(Collections.nCopies(Co.BONUS_SIZE.getValue(), 0));
     private final int randomlottosize;
 
     public Statistics(List<Lotto> randomLottos) {
@@ -23,8 +22,8 @@ public class Statistics {
     }
 
     public void compareNumber(List<Lotto> randomLottos, WinLotto winLotto) {
-        List<Integer> winNumbers = winLotto.getWinNumbers().stream().limit(LOTTO_SIZE).collect(Collectors.toList());
-        int bonus = winLotto.getWinNumbers().get(LOTTO_SIZE);
+        List<Integer> winNumbers = winLotto.getWinNumbers().stream().limit(Co.LOTTO_SIZE.getValue()).collect(Collectors.toList());
+        int bonus = winLotto.getWinNumbers().get(Co.LOTTO_SIZE.getValue());
         for (Lotto tmpLotto : randomLottos) {
             int countMatch = 0;
             List<Integer> tmpNumber = tmpLotto.getNumbers();
@@ -36,7 +35,7 @@ public class Statistics {
 
     private void checkHasBonus(int bonus, int count, List<Integer> tmpNumber) {
         if (tmpNumber.contains(bonus)) {
-            rank.set(BONUS_INDEX, rank.get(BONUS_INDEX) + 1);
+            rank.set(Co.BONUS_SIZE.getValue(), rank.get(Co.BONUS_SIZE.getValue()) + 1);
         }
         if (!tmpNumber.contains(bonus)) {
             rank.set(count, rank.get(count) + 1);
