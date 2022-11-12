@@ -31,7 +31,7 @@ class OutputViewTest {
 
     @Test
     void 로또_구매_개수_출력() {
-        String purchaseLottoCountMessage = "8개를 구매했습니다.\n";
+        String purchaseLottoCountMessage = "\n8개를 구매했습니다.\n";
         outputView.printPurchaseLottoCount(8);
 
         assertThat(output.toString()).isEqualTo(purchaseLottoCountMessage);
@@ -42,7 +42,7 @@ class OutputViewTest {
         List<List<Integer>> issuedLottoNumbers = List.of(List.of(1, 2, 3, 4, 5, 6), List.of(7, 8, 9, 10, 11, 12));
         outputView.printIssuedLottoNumbers(issuedLottoNumbers);
         String purchaseLottoCountMessage = "[1, 2, 3, 4, 5, 6]\n" +
-                "[7, 8, 9, 10, 11, 12]\n";
+                "[7, 8, 9, 10, 11, 12]\n\n";
 
         assertThat(output.toString()).isEqualTo(purchaseLottoCountMessage);
     }
@@ -56,7 +56,9 @@ class OutputViewTest {
         lottoWinningRankMap.put(LottoWinningRank.FOURTH, 0);
         lottoWinningRankMap.put(LottoWinningRank.FIFTH, 1);
         outputView.printLottoWinningStatistics(lottoWinningRankMap);
-        String lottoWinningStatisticsMessage = "3개 일치 (5,000원) - 1개\n" +
+        String lottoWinningStatisticsMessage = "\n당첨 통계\n" +
+                "---\n" +
+                "3개 일치 (5,000원) - 1개\n" +
                 "4개 일치 (50,000원) - 0개\n" +
                 "5개 일치 (1,500,000원) - 0개\n" +
                 "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개\n" +
