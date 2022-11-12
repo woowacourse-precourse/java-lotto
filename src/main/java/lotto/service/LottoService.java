@@ -58,17 +58,18 @@ public class LottoService {
     }
 
     public void printPlace(List<LottoRanking> lottoRankings) {
+
         DecimalFormat decFormat = new DecimalFormat("###,###");
         System.out.println("당첨 통계");
         System.out.println("---");
         for (int i = rankingList.size() - 2; i >= 0; i--) {
             LottoRanking lottoRank = rankingList.get(i);
-            if (lottoRank == LottoRanking.SECOND_PLACE && lottoRank != LottoRanking.LOSING) {
+            if (lottoRank == LottoRanking.SECOND_PLACE) {
                 System.out.println(lottoRank.getMatches() + "개 일치, 보너스 볼 일치 ("
                         + decFormat.format(lottoRank.getReward()) + "원) - " + Collections.frequency(lottoRankings, lottoRank) + "개");
             } else if (lottoRank != LottoRanking.LOSING) {
-                System.out.println(lottoRank.getMatches() + "개 일치 ("
-                        + decFormat.format(lottoRank.getReward()) + "원) - " + Collections.frequency(lottoRankings, lottoRank) + "개");
+                System.out.println(lottoRank.getMatches() + "개 일치 (" + decFormat.format(lottoRank.getReward()) + "원) - "
+                        + Collections.frequency(lottoRankings, lottoRank) + "개");
             }
         }
     }
