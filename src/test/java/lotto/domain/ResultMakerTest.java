@@ -6,10 +6,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class WinningResultTest {
+class ResultMakerTest {
     @Test
     void testCompareWithLotto() {
-        WinningResult result = new WinningResult(List.of(1, 2, 3, 4, 5, 6), 7);
+        ResultMaker result = new ResultMaker(List.of(1, 2, 3, 4, 5, 6), 7);
         Result gameResult = result.checkTheResult(List.of(1, 2, 3, 12, 13, 14));
         assertEquals(gameResult.getAccordedNumbers(), 3);
     }
