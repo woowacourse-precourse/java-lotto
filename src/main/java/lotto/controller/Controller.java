@@ -1,12 +1,8 @@
 package lotto.controller;
 
 import lotto.domain.Buyer;
-import lotto.domain.Lotto;
-import lotto.domain.Money;
 import lotto.service.LottoService;
 import lotto.view.View;
-
-import java.util.List;
 
 public class Controller {
     private final Buyer buyer;
@@ -24,5 +20,7 @@ public class Controller {
         view.printWelcomeMessage();
         String input = buyer.inputMoney();
         lottoService.getLottosByMoney(buyer, input);
+        view.printLottoCountMessage(buyer.getLottoCount());
+        view.printLottosInfoByBuyer(buyer.getLottos());
     }
 }
