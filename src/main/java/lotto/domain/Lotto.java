@@ -11,6 +11,7 @@ public class Lotto {
     public static final int MIN_VALUE = 1;
     public static final int MAX_VALUE = 45;
     public static final int SIZE = 6;
+    public static final String SIZE_ERROR_MESSAGE = "[ERROR]: 로또 번호가 " + SIZE + "개의 숫자가 아닙니다.\n";
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -19,9 +20,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+        validateSize(numbers);
     }
 
     public static Lotto createRandomNumbers() {
@@ -32,6 +31,12 @@ public class Lotto {
         }
         List<Integer> randomNumberList = new ArrayList<>(randomNumberSet);
         return new Lotto(randomNumberList);
+    }
+
+    public void validateSize(List<Integer> numbers) {
+        if (numbers.size() != SIZE) {
+            throw new IllegalArgumentException(SIZE_ERROR_MESSAGE);
+        }
     }
 
 }
