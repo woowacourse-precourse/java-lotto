@@ -21,4 +21,9 @@ public class Input {
         return Arrays.stream(input).mapToInt(Integer::valueOf).boxed().collect(Collectors.toList());
     }
 
+    protected static int returnInt(){// 정수형 반환
+        String input = Console.readLine();
+        return Integer.parseInt(input);
+    }
+
 }
