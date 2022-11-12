@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import lotto.ui.Error;
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.domain.Lotto;
 
 public class Manager {
     private List<Lotto> lottoTable = new ArrayList<>();
@@ -16,7 +16,7 @@ public class Manager {
 
     public int getAmount(int won) {
         if (won % Lotto.PRICE != 0 || won == 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Error.ENTER_IN_UNITS_OF_1000_WON);
         }
         return won / Lotto.PRICE;
     }
@@ -46,15 +46,23 @@ public class Manager {
         return lotto.getNumbers().contains(bonunsNumber);
     }
 
-    public List<Integer> compareLottoTable(List<Lotto> lottoTable, Lotto winningLotto, int bonunsNumber) {
-        if (hasBonusNumber(winningLotto, bonunsNumber)) {
-            throw new IllegalArgumentException("[ERROR]");
+    public void validateBounusNumber(Lotto winningLotto, int bonusNumber) {
+        if (bonusNumber > 45 || bonusNumber < 1) {
+            throw new IllegalArgumentException(Error.MUST_BE_NUMBERS_BETWEEN_1_TO_45);
         }
+        if (hasBonusNumber(winningLotto, bonusNumber)) {
+            throw new IllegalArgumentException(Error.HAD_DUPLICATE_NUMBER);
+        }
+    }
+
+
+    public List<Integer> compareLottoTable(List<Lotto> lottoTable, Lotto winningLotto, int bonusNumber) {
+        validateBounusNumber(winningLotto,bonusNumber);
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i < lottoTable.size(); i++) {
             int numberOfMatches = 0;
             numberOfMatches = compareLottoNumbers(lottoTable.get(i), winningLotto);
-            if (numberOfMatches == 5 && hasBonusNumber(lottoTable.get(i), bonunsNumber)) {
+            if (numberOfMatches == 5 && hasBonusNumber(lottoTable.get(i), bonusNumber)) {
                 numberOfMatches += 10;
             }
             result.add(numberOfMatches);
