@@ -14,6 +14,7 @@ public class Lotto {
     }
 
     public List<Integer> getLottoNumbers() {
+        Print.winningNumber();
         return numbers;
     }
 
@@ -25,6 +26,7 @@ public class Lotto {
     }
 
     public int getLottoCount(int price){
+        Print.buyLotto();
         validatePrice(price);
         return price/1000;
     }

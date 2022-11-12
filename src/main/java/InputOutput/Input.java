@@ -33,6 +33,7 @@ public class Input {
         return inputPrice;
     }
     public int getBonusNumber(){
+        Print.BonusNumber();
         return bonusNumber;
     }
 

@@ -12,19 +12,17 @@ public class Application {
         Input input = new Input();
         Lotto lotto = new Lotto(input.getWinningNumberList());
 
-        Print.buyLotto();
         int lottoCount= lotto.getLottoCount(input.getInputPrice());
-
         Print.lottoCount(lottoCount);
 
         LottoGenerator lottoGenerator = new LottoGenerator(lottoCount);
         List<List<Integer>> lottoNumbers = lottoGenerator.getlottoNumbers();
         Print.lottoNumber(lottoNumbers);
 
-        Print.BonusNumber();
+
         int bonusNumber = input.getBonusNumber();
 
-        Print.winningNumber();
+
         List<Integer> winningNumber =lotto.getLottoNumbers();
         List<Integer> winningList = new ArrayList<>();
 
