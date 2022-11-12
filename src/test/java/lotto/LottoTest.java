@@ -1,13 +1,12 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
-import lotto.object.Lotto;
+import lotto.playlotto.object.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -32,6 +31,7 @@ class LottoTest extends NsTest {
     void input_Win_Numbers_And_check_size(){
                     run("1,2,3,4,5,6");
                     assertThat(output()).contains("6");
+                    assertThat(output()).contains("[1, 2, 3, 4, 5, 6]");
     }
 
     @Override
