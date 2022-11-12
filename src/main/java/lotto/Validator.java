@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Validator {
 
-    User user = new User();
+
 
     public void ValidatorSix(List<Integer> ValidatorNumber){
         if(ValidatorNumber.size() != 6){
@@ -26,7 +26,7 @@ public class Validator {
     public void ValidatorRange(List<Integer> ValidatorNumber){
         for(Integer integer : ValidatorNumber){
             if(integer > 45 || integer < 0){
-                throw new IllegalArgumentException("[ERROR] 1부터~45의 수까지 입력가능합니다!")
+                throw new IllegalArgumentException("[ERROR] 1부터~45의 수까지 입력가능합니다!");
             }
         }
     }
@@ -44,4 +44,12 @@ public class Validator {
             }
         }
     }
+
+    public void ValidatorLottoInputList(String NumberInput){
+        List<Integer> InputList = InputList(NumberInput);
+        ValidatorSix(InputList);
+        ValidatorRepeatBan(InputList);
+        ValidatorRange(InputList);
+    }
+
 }

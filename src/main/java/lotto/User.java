@@ -11,6 +11,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
 
+    Validator val = new Validator();
+
     public List<List<Integer>> lottoRandomNumber(Integer number) {   //사용자 입력값을 받는 것
         List<List<Integer>> numberResult = new ArrayList<>();
         for (int i = 0; i < number; i++) {
