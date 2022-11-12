@@ -33,4 +33,8 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
+    public void printNumbers() {
+        System.out.println(numbers);
+    }
 }
