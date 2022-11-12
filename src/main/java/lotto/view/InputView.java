@@ -5,12 +5,17 @@ import lotto.util.LottoMessage;
 
 public class InputView {
     public static String purchasePrice() {
-        System.out.println(LottoMessage.PURCHASE_PRICE.getMessage());
+        System.out.println(LottoMessage.INPUT_PURCHASE_PRICE.getMessage());
         return getUserInput();
     }
 
     public static String inputWinningLotto() {
-        System.out.println(LottoMessage.WINNING_LOTTO.getMessage());
+        System.out.println(LottoMessage.INPUT_WINNING_LOTTO.getMessage());
+        return getUserInput();
+    }
+
+    public static String inputBonusNumber() {
+        System.out.println(LottoMessage.INPUT_BONUS_NUMBER.getMessage());
         return getUserInput();
     }
 

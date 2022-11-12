@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.model.Customer;
 import lotto.model.Lotto;
+import lotto.model.LottoNumber;
 import lotto.model.LottoNumberGenerator;
 import lotto.model.LottoSeller;
 import lotto.model.PurchasePrice;
@@ -30,5 +31,6 @@ public class Application {
         OutputView.printLottos(customer.getLottos());
 
         Lotto winningLotto = new WinningLotto(InputView.inputWinningLotto()).toLotto();
+        LottoNumber lottoNumber = new LottoNumber(InputView.inputBonusNumber());
     }
 }
