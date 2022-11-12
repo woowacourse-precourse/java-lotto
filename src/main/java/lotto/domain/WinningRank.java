@@ -10,6 +10,7 @@ public enum WinningRank {
     THIRD_RANK(3, 1_500_000, "5개 일치"),
     SECOND_RANK(2, 30_000_000, "5개 일치, 보너스 볼 일치"),
     FIRST_RANK(1, 2_000_000_000, "6개 일치");
+    // todo: 각각 (일치하는 번호 수, 보너스 번호 일치 여부) 로 당첨 true, false 반환 function 구현
 
 
     private static final String DECIMAL_FORMAT = "###,###";
