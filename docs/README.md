@@ -36,9 +36,9 @@ Enum : Rank
 
 ### Controller
 ```
-- getPrice() // (feat.1)
-- getWinningLotto() // (feat.3)
-- getBonusNum() // (feat.4)
+- int getPrice() // (feat.1)
+- Lotto getWinningLotto() // (feat.3)
+- int getBonusNum() // (feat.4)
 ```
 
 ### Lotto : 하나하나의 로또 
