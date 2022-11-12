@@ -19,6 +19,7 @@ public class LottoDraw {
         }
         List<Integer> numbers = enterWinningNumber();
         validate(numbers);
+        validateDuplication(numbers);
         winningNumber = numbers;
     }
 
@@ -32,6 +33,14 @@ public class LottoDraw {
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 당첨 번호는 6개입니다.");
+        }
+    }
+
+    private void validateDuplication(List<Integer> numbers) {
+        HashSet<Integer> numbersSet = new HashSet<>(numbers);
+
+        if (numbersSet.size() != numbers.size()) {
+            throw new IllegalArgumentException("[ERROR] 로또 당첨 번호는 중복될 수 없습니다.");
         }
     }
 
