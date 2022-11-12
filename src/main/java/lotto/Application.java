@@ -6,6 +6,8 @@ import lotto.model.LottoIssuingMachine;
 import lotto.model.LottoWinningStatistics;
 import lotto.view.LottoView;
 
+import static lotto.constant.LottoConstant.*;
+
 public class Application {
 
     public static void main(String[] args) {
@@ -13,7 +15,7 @@ public class Application {
         try {
             lottoGame.play();
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] " + e.getMessage());
+            System.out.println(ExceptionMessage.PREFIX + e.getMessage());
         }
     }
 

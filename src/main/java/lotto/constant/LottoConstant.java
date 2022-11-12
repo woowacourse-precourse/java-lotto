@@ -12,6 +12,7 @@ public class LottoConstant {
     public static class ExceptionMessage {
 
         private static final DecimalFormat formatter = new DecimalFormat("###,###");
+        public static final String PREFIX = "[ERROR] ";
         public static final String INVALID_INPUT_ONLY_NUMBER = "숫자만을 입력해야 합니다.";
         public static final String INVALID_INPUT_ONLY_NUMBER_COMMA = "숫자와 쉼표(,)만을 입력해야 합니다.";
         public static final String INVALID_LOTTO_NUMBER_COUNT = "로또 번호는 숫자 " + LOTTO_NUMBER_COUNT +"개이어야 합니다.";
