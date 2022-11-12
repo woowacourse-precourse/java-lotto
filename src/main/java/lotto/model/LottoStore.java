@@ -1,42 +1,36 @@
 package lotto.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import lotto.util.Validator;
 
 public class LottoStore {
-    private static final String MESSAGE_COUNT_BUY = "%d 개를 구매했습니다";
-    private static final int LOTTO_SIZE = 6;
+    private List<Integer> lotteryNumbers;
+    private int bonusNumber;
+    private Validator validator = new Validator();
 
-    private final List<Lotto> lottos;
-    private int lottoCount;
 
-    public LottoStore(int count) {
-        List<Lotto> lottos = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            lottos.add(makeLotto());
-        }
-        this.lottos = lottos;
-        this.lottoCount = count;
+    public LottoStore(List<Integer> numbers, int bonusNumber) {
+        validator.validateNumbers(numbers);
+        this.lotteryNumbers = numbers;
+        validator.validateBonusNumber(numbers, bonusNumber);
+        this.bonusNumber = bonusNumber;
     }
 
-    private Lotto makeLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(numbers);
-        return new Lotto(numbers);
+    public void compareLotto(Lotto inputLotto) {
+        int sameNumbers = countSameNumbers(inputLotto.getNumbers());
+        inputLotto.setSameNumbers(sameNumbers);
+
+        boolean sameBonusNumber = inputLotto.getNumbers().contains(bonusNumber);
+        inputLotto.setSameBonusNumber(sameBonusNumber);
     }
 
-    public void printBuyLottos() {
-        System.out.println(String.format(MESSAGE_COUNT_BUY, lottoCount));
-        for (Lotto lotto : lottos) {
-            System.out.println(lotto.getNumbers());
+    public int countSameNumbers(List<Integer> numbers) {
+        int count = 0;
+        for (int number : numbers) {
+            if (lotteryNumbers.contains(number)) {
+                count++;
+            }
         }
-    }
-
-    public void compareAllLottos(List<Integer> inputNumbers) {
-        for (Lotto lotto : lottos) {
-            lotto.compareLotto(inputNumbers);
-        }
+        return count;
     }
 }
