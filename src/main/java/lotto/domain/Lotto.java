@@ -1,4 +1,8 @@
-package lotto;
+package lotto.domain;
+
+import lotto.domain.io.DuplicationValidator;
+import lotto.domain.io.NumberLengthValidator;
+import lotto.domain.io.RangeValidator;
 
 import java.util.List;
 
@@ -11,10 +15,12 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
-    }
+        NumberLengthValidator numberLengthValidator = new NumberLengthValidator();
+        RangeValidator rangeValidator = new RangeValidator();
+        DuplicationValidator duplicationValidator = new DuplicationValidator();
 
-    // TODO: 추가 기능 구현
+        numberLengthValidator.validate(numbers);
+        rangeValidator.validate(numbers);
+        duplicationValidator.validate(numbers);
+    }
 }
