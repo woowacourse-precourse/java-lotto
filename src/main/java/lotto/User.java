@@ -21,6 +21,10 @@ public class User {
         return money;
     }
 
+    public List<Lotto> getLottoBundle() {
+        return lottoBundle;
+    }
+
     public void makeLottoBundle(int howManyLotto) {
         for (int lottoBundleIndex=0; lottoBundleIndex<howManyLotto; lottoBundleIndex++) {
             lottoBundle.add(lotteryTicketingMachine.ticketLotto());
