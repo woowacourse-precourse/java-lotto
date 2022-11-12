@@ -83,8 +83,7 @@ Lotto, BonusNumber를 참조한다.
       1. isFiveMatch : 같은 숫자의 개수가 5개면 참을 반환한다. 
       2. separateByBonusNumber
          1. containsBonusNumber : 로또가 보너스 넘버를 가지면 참을 반환한다.
-2. makePlayerLottoByPayment : 플레이어.checkPayment한다. 
-3. saveComputerNumber : 로또번호와 보너스 번호를 입력받아 컴퓨터 객체에 저장한다.
+2. 생성자 : 사용할 플레이어와 컴퓨터를 받아온다. 
 
 ### ChangeLottoPriceService
 1. changeRankingToPrice
