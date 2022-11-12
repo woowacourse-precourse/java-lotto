@@ -1,4 +1,7 @@
-package lotto;
+package lotto.domain;
+
+import lotto.Game;
+import lotto.check.Check;
 
 import java.util.List;
 
@@ -16,5 +19,8 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public static void myLotto(String cash){
+        int myLottoCount = Integer.parseInt(cash) / Check.UNIT;
+        Game.myAutoLotto(myLottoCount);
+    }
 }
