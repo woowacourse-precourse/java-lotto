@@ -5,6 +5,7 @@ import com.sun.jdi.Value;
 import java.util.*;
 
 public class Banker {
+    User user = User.getInstance;
     public Banker() {
     }
 
@@ -71,6 +72,14 @@ public class Banker {
         }
     }
 
+    public double getWinnerMoney() {
+        int sum = 0;
+        for (Map.Entry<Victory, Integer> entry : map.entrySet()) {
+            sum += entry.getKey().getWinningMoney() * entry.getValue();
+        }
+        double money = Math.round(sum / user.getMoney() *10)/10.0;
+        return money;
+    }
 
     public boolean isBonusCount(int[] victoruNumber) {
         if (victoruNumber[VICTORY_LOCATION] == 5 && victoruNumber[BONUS_LOCATION] == 1) {
