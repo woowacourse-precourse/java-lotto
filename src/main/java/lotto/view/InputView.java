@@ -10,13 +10,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputView {
+    private final String NEWLINE = "";
     InputMessage inputMessage;
 
     public int enterPurchaseAmount() {
         System.out.println(inputMessage.PURCHASE_AMOUNT.getMessage());
         String purchaseAmount = Console.readLine();
         InputException.validatePurchaseAmount(purchaseAmount);
-        System.out.println();
+        System.out.println(NEWLINE);
         return Integer.valueOf(purchaseAmount);
     }
 
@@ -28,7 +29,7 @@ public class InputView {
                 .collect(Collectors.toList());
         InputException.validateWinningNumber(winningNumber);
         Collections.sort(winningNumber);
-        System.out.println();
+        System.out.println(NEWLINE);
         return winningNumber;
     }
 
@@ -36,7 +37,7 @@ public class InputView {
         System.out.println(inputMessage.BONUS_NUMBER.getMessage());
         int bonusNumber = Integer.valueOf(Console.readLine());
         InputException.validateBonusNumber(bonusNumber, winningNumber);
-        System.out.println();
+        System.out.println(NEWLINE);
         return bonusNumber;
     }
 
