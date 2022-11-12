@@ -4,7 +4,6 @@ import lotto.LottoInputException;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class Lotto {
     private static final int MAX = 6;
