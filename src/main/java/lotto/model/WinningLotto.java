@@ -1,6 +1,5 @@
 package lotto.model;
 
-import java.util.Collections;
 import java.util.List;
 
 public class WinningLotto extends Lotto {
@@ -11,8 +10,8 @@ public class WinningLotto extends Lotto {
 
     public WinningLotto(List<Integer> winningNumbers, int bonusNumber) {
         super(winningNumbers);
-        validateBonusNumber(bonusNumber);
         this.winningNumbers = winningNumbers;
+        validateBonusNumber(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
