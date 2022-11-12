@@ -7,18 +7,18 @@ public class LottoTickets {
     private static int PURCHASE_AMOUNT;
 
     public int getPaid() {
-        String input = Console.readLine();
-        int money = getMoney(input);
-        return toLottosSize(money);
-    }
-
-    private int getMoney(String input) {
+        String input = getInput();
         int money = Integer.parseInt(input);
+
         saveAmount(money);
-        return money;
+        return sizeLottos(money);
     }
 
-    private int toLottosSize(int money) {
+    private String getInput() {
+        return Console.readLine();
+    }
+
+    public int sizeLottos(int money) {
         return money / PRICE;
     }
 

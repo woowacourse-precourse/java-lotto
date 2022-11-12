@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import lotto.Lotto;
 import lotto.constants.Rank;
 import lotto.input.AdditionalNumber;
@@ -10,19 +11,23 @@ import java.util.List;
 
 public class LottoGame {
 
-    public void run() {
-        LottoTickets lottoTickets = new LottoTickets();
-        int paid = lottoTickets.getPaid();
+    private final LottoTickets lottoTickets;
+    private final RandomLottoGenerator randomLottoGenerator;
+    private final WinningNumber winningNumber;
 
-        RandomLotto randomLotto = new RandomLotto();
-        List<List<Integer>> lists = randomLotto.randomGenerator(paid); // 랜덤 리스트
-        for (List<Integer> b : lists) {
-            System.out.println(b);
-        }
+    public LottoGame(LottoTickets lottoTickets, RandomLottoGenerator randomLottoGenerator, WinningNumber winningNumber) {
+        this.lottoTickets = lottoTickets;
+        this.randomLottoGenerator = randomLottoGenerator;
+        this.winningNumber = winningNumber;
+    }
 
-        System.out.println();
-        WinningNumber winningNumber = new WinningNumber();
-        Lotto lottoAnswer = winningNumber.getAnswer(); // 당첨되는 숫자들
+    public void setUp() {
+        int lottos = lottoTickets.getPaid();
+        List<List<Integer>> lists = randomLottoGenerator.createTicket(lottos);
+        Lotto lottoAnswer = winningNumber.getCorrect();
+
+
+
 
         LottoComparison lottoComparison = new LottoComparison();
         List<Integer> number = lottoComparison.findNumber(lottoAnswer, lists); // 결과 리스트
@@ -74,4 +79,6 @@ public class LottoGame {
         double revenue = yieldCalculation.revenue(calculation);
 
     }
+
+
 }

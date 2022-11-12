@@ -7,14 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WinningNumber {
-    public Lotto getAnswer() {
+    public Lotto getCorrect() {
         List<Integer> answerNumbers = new ArrayList<>();
         String input = Console.readLine();
 
-        for (String number : input.split(",")) {
-            int integer = Integer.parseInt(number);
-            answerNumbers.add(integer);
-        }
+        answerNumbers = numberConversion(answerNumbers, input);
         return new Lotto(answerNumbers);
+    }
+
+    public List<Integer> numberConversion(List<Integer> answerNumbers, String input) {
+        for (String word : input.split(",")) {
+            int number = Integer.parseInt(word);
+            answerNumbers.add(number);
+        }
+        return answerNumbers;
     }
 }
