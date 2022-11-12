@@ -16,6 +16,7 @@ public class Application {
             Lotto lotto = new Lotto(Arrays.asList(Console.readLine().split(",")).stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList()));
 
             getBonusNumberMessage();
+            Integer bonus = Integer.parseInt(Console.readLine());
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] "+e.getMessage());
         }
