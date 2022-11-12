@@ -14,19 +14,22 @@ public class LottoAnswer extends Lotto {
         return Integer.parseInt(bonus);
     }
 
-    public int checkInputBonusIsValid(String bonus) {
-        checkNumberFormat(bonus);
-        int bonusNum = Integer.parseInt(bonus);
-        checkNumberArea(bonusNum);
-        return bonusNum;
+    public void checkInputBonusIsValid(String bonus) {
+        try {
+            checkNumberFormatOrThrows(bonus);
+            int bonusNum = Integer.parseInt(bonus);
+            checkNumberArea(bonusNum);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            throw new IllegalArgumentException();
+        }
     }
 
-    private void checkNumberFormat(String bonus){
+    private void checkNumberFormatOrThrows(String bonus){
         try{
             Integer.parseInt(bonus);
         }catch (NumberFormatException e){
-            System.out.println("[ERROR] 보너스 번호 입력이 잘못 되었습니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 보너스 번호 입력이 잘못 되었습니다.");
         }
     }
 
