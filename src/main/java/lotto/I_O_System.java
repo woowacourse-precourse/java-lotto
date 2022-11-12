@@ -9,6 +9,8 @@ public class I_O_System {
     static final int lottey_price = 1000;
     public static final String BAGIC_ERROR_MESSAGE = "[ERROR]";
     private static final String Sell_Messge = "개를 구매했습니다.";
+    private static final String ERROR_Code_1 = " 숫자가 아닌 문자가 들어왔습니다.";
+    private static final String ERROR_Code_2 = " 돈이 천원 단위로 나누어지지않습니다.";
     private String Enter_Price = "0";
     private int Number = 0;
 
@@ -31,7 +33,7 @@ public class I_O_System {
     private boolean Differnet_Error() {
         try {
             if (!(Enter_Price != null && Enter_Price.matches("^[0-9]*$"))) {
-                throw new IllegalArgumentException(BAGIC_ERROR_MESSAGE);
+                throw new IllegalArgumentException(BAGIC_ERROR_MESSAGE + ERROR_Code_1);
             }
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
@@ -45,7 +47,7 @@ public class I_O_System {
         int Base_Number = 0;
         try {
             if ((Base_Number = Number % 1000) > 0) {
-                throw new IllegalArgumentException(BAGIC_ERROR_MESSAGE+ "Error2");
+                throw new IllegalArgumentException(BAGIC_ERROR_MESSAGE + ERROR_Code_2);
             }
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
