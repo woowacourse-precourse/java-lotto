@@ -9,7 +9,7 @@ import lotto.domain.Prize;
 import lotto.domain.WinningLotto;
 
 public class LottoComparator {
-	private static final int MIN_WINNER_MATCH_NUMBER = 3;
+	private static final int MIN_WINNER_MATCH_COUNT = 3;
 	private static final int FIRST_WINNER_MATCH_COUNT = 6;
 	private static final int SECOND_WINNER_MATCH_COUNT = 5;
 	private static final int INIT = 0;
@@ -38,7 +38,7 @@ public class LottoComparator {
 	}
 
 	public static boolean isWinner(Lotto lotto) {
-		return lotto.getMatchNumberCount() >= MIN_WINNER_MATCH_NUMBER;
+		return lotto.getMatchNumberCount() >= MIN_WINNER_MATCH_COUNT;
 	}
 
 	public static int calculateCountMatchNumber(Lotto lotto, int countMatchNumber) {
