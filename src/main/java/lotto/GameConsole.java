@@ -36,4 +36,8 @@ public class GameConsole {
             System.out.println(lotto.getNumbers());
         }
     }
+
+    public void outputWinningAmount(Result result) {
+        System.out.println(String.format("총 수익률은 %.1f%%입니다.", result.getWinningAmount()));
+    }
 }
