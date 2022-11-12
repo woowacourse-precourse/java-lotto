@@ -23,7 +23,7 @@ public class Lotto {
         }
     }
 
-    private void validateNumbersAreInRange(List<Integer> numbers) {
+    public void validateNumbersAreInRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (number < 1 || number > 45) {
                 error = ErrorMessage.RANGE;
