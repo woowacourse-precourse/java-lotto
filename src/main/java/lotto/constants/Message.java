@@ -1,6 +1,7 @@
 package lotto.constants;
 
 public class Message {
+
 	private Message() {}
 
 	public static final String ERROR_PREFIX = "[ERROR] ";
@@ -18,4 +19,10 @@ public class Message {
 			ERROR_PREFIX + "적어도 1개의 로또는 살 수 있는 금액이어야 합니다.";
 	public static final String ERROR_DONT_DIVIDED_BY_LOTTO_PRICE =
 			ERROR_PREFIX + "1000원 단위로 나누어 떨어지는 숫자를 입력하셔야 합니다.";
+
+
+	public static final String ASK_ENTER_THE_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
+	public static final String ASK_ENTER_THE_WINNING_LOTTO_NUMBER = "당첨 번호를 입력해 주세요.";
+	public static final String ASK_ENTER_THE_WINNING_LOTTO_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+
 }
