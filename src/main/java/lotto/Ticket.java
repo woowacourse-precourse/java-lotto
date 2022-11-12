@@ -12,4 +12,10 @@ public class Ticket {
         count = money / UNIT_PRICE;
         tickets = new ArrayList<>();
     }
+
+    public void purchase() {
+        for (int index = 0; index < count; index++) {
+            tickets.add(Lotto.createLottoNumbers());
+        }
+    }
 }
