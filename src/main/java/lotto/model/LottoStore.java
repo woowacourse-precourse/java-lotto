@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoStore {
+    private static final String MESSAGE_COUNT_BUY = "%d 개를 구매했습니다";
     private static final int LOTTO_SIZE = 6;
 
     private final List<Lotto> lottos;
@@ -26,7 +27,8 @@ public class LottoStore {
         return new Lotto(numbers);
     }
 
-    public void printLottos() {
+    public void printBuyLottos() {
+        System.out.println(String.format(MESSAGE_COUNT_BUY, lottoCount));
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
