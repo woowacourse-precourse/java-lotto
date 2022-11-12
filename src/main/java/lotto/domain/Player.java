@@ -42,23 +42,8 @@ public class Player {
         List<Integer> winningNumbers = organizer.getWinningNumbers();
         int bonusNumber = organizer.getBonusNumber();
         for (Lotto lotto : lottoTickets) {
-            int matchingCount = compareWinningNumbers(lotto, winningNumbers);
-            boolean doesBonusMatch = false;
-            if (matchingCount == LottoStatistic.NUMBER_OF_LOTTERY_NUMBERS.getValue() - 1) {
-                doesBonusMatch = lotto.doesContainNumber(bonusNumber);
-            }
-            long prizeAmount = PrizeStatistic.getPrizeAmount(matchingCount, doesBonusMatch);
+            long prizeAmount = PrizeCalculator.getResultForLotto(lotto, winningNumbers, bonusNumber);
             addToPrizeMoney(prizeAmount);
         }
-    }
-
-    public int compareWinningNumbers(Lotto lotto, List<Integer> winningNumbers) {
-        int count = 0;
-        for (int number : winningNumbers) {
-            if (lotto.doesContainNumber(number)) {
-                count++;
-            }
-        }
-        return count;
     }
 }
