@@ -10,6 +10,7 @@
 ### 입력시 예외처리
 - +[x] 금액 입력 시 예외처리  
   - +[x] 숫자가 아닐 경우 예외처리 - ValidationInView.checkNumericValue()  
+  - +[x] 숫자가 음수이거나 0일경우 예외처리 - ValidationInDomain.checkZero(), validationInDomain.checkNegativeNumber()   
   - +[x] 입력받은 숫자가 1000원 단위가 아닐 경우 예외처리 - ValidationInDomain.checkDividedByThousand()  
 - +[x] 당첨번호/보너스번호 입력시 예외처리  
   - +[x] 숫자가 아닌 문자를 입력한 경우 예외처리 - ValidationInView.checkNumericValue(), ValidationInView.checkNumericValueList()  
