@@ -110,6 +110,10 @@
   - 입력받은 당첨 번호 문자열에 대한 검사 함수가 수행되고 당첨 번호를 담은 리스트를 반환해주는 함수
 
 
+- List<Integer> changeWinningNumbersStringToList(String)
+  - 당첨 번호로 입력된 문자열을 Integer 값을 담은 리스트로 변환해주는 함수
+
+
 - Integer getBonusNumber(String, List<Integer>)
   - 입력받은 보너스 번호 문자열에 대한 검사 함수가 수행되고 이를 Integer 자료형으로 반환해주는 함수
   
