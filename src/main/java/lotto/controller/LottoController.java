@@ -8,7 +8,12 @@ public class LottoController {
     private static final Validator  validator= new Validator();
     public void lottoGame(){
         String input = view.startLottoView();
+        try{
         validator.validateInputAmount(input);
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            return;
+        }
     }
 
 }
