@@ -1,10 +1,11 @@
 package lotto.controller;
 
+import lotto.domain.LottoMachine;
 import lotto.view.InputView;
 
 public class LottoController {
 
     public void start() {
-        String input = InputView.inputPurchasePrice();
+        LottoMachine lottoMachine = new LottoMachine(InputView.inputPurchasePrice());
     }
 }
