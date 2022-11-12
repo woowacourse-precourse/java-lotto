@@ -7,7 +7,6 @@ public class LottoBuyer {
     public int getPay() {
         String input = Console.readLine();
         int money = changeInt(input);
-
         try {
             checkOnlyNumber(input);
             checkPayUnit(money);
@@ -15,7 +14,7 @@ public class LottoBuyer {
             System.out.println(e.getMessage());
         }
 
-        return money;
+        return Integer.parseInt(input);
     }
     public void checkPayUnit(int money) {
         if(money%1_000 != 0) {
