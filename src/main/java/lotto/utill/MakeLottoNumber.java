@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+
 public class MakeLottoNumber {
     private final List<Integer> numbers;
 
     public MakeLottoNumber() {
-        numbers = IntStream.rangeClosed(1, 45)
-                .boxed()
-                .collect(Collectors.toList());
+        numbers = pickUniqueNumbersInRange(1, 45, 6);
     }
 
     List<Integer> makeLottoNumbers() {
