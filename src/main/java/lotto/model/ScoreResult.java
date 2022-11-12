@@ -33,4 +33,11 @@ public class ScoreResult{
         }
         return Nothing;
     }
+
+    public MatchScore getScoreFiveAndBonus(List<Integer> computer, List<Integer> user, int bonus){
+        if(getScoreResult(computer, user)==Five && user.contains(bonus)){
+            return FiveAndBonus;
+        }
+        return getScoreResult(computer, user);
+    }
 }
