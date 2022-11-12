@@ -90,3 +90,12 @@ public class PlayLotto extends Input {
     public Boolean check_bonus(List<Integer> win_lottery, Integer bonus_num){
         return win_lottery.contains(bonus_num);
     }
+
+    public Boolean check_result(int count, int bonus){
+        int index = WinCondition.getIndex(count, bonus);
+        if(index != -1){
+            win_count.add(index, win_count.get(index)+1);
+            return true;
+        }
+        return false;
+    }
