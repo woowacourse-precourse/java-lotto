@@ -24,4 +24,18 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+
+    @DisplayName("로또 번호가 1부터 45사이 숫자가 아닌경우 예외가 발생한다.")
+    @Test
+    void createLottoByRangeNumbersOver() {
+        assertThatThrownBy(() -> new Lotto(List.of(0,2,5,8,12,46)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 1부터 45사이 숫자가 아닌경우 예외가 발생한다.")
+    @Test
+    void createLottoByRangeBonusOver() {
+        assertThatThrownBy(() -> new Lotto(List.of(1,2,10,23,34,36)).bonusBallCheck(46))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
