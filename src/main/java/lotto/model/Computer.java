@@ -27,8 +27,8 @@ public class Computer {
         return Arrays.stream(input.split(",")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
     }
 
-    private void createTicket(int[] numbers){
-
+    private void createTicket(List<Integer> numbers){
+        lotto = new Lotto(numbers);
     }
 
     public void saveBonusNumber(String bonusNumber){}
