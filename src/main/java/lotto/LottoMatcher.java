@@ -49,8 +49,18 @@ public class LottoMatcher {
         return lottoNumbers.contains(winningLotto.getBonusNumber());
     }
 
-    private void saveResult(int numberOfMatchedLottoNumber) {
-        // 일치하는 lotto 개수에 따라 결과를 판별하고 저장
+    private void saveResult(int numberOfMatchedLottoNumber, boolean bonus) {
+        if (numberOfMatchedLottoNumber == 6) {
+            results.add(FIRST_SIX_MATCHED);
+        } else if (numberOfMatchedLottoNumber == 5 && bonus) {
+            results.add(SECOND_FIVE_WITH_BONUS);
+        } else if (numberOfMatchedLottoNumber == 5) {
+            results.add(THIRD_FIVE_MATCHED);
+        } else if (numberOfMatchedLottoNumber == 4) {
+            results.add(FOURTH_FOUR_MATCHED);
+        } else if (numberOfMatchedLottoNumber == 3) {
+            results.add(FIFTH_THREE_MATCHED);
+        }
     }
 
     public List<Rank> getResults() {
