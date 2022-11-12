@@ -18,7 +18,7 @@ public class LottoResult {
         BigInteger totalWinning = new BigInteger("0");
 
         for (Rank rank : Rank.values()) {
-            totalWinning = totalWinning.add(BigInteger.valueOf(rank.getWinningMoney() * ranks.get(rank)));
+            totalWinning = totalWinning.add(BigInteger.valueOf(rank.getWinningMoney() * ranks.getOrDefault(rank, 0)));
         }
 
         ratio = totalWinning.divide(BigInteger.valueOf(buyPrice))
