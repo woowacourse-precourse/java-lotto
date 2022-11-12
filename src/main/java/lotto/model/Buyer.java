@@ -7,6 +7,9 @@ public class Buyer {
 
     public Buyer(int purchaseAmount){
         this.purchaseAmount=purchaseAmount;
+        calculateAmountOfTickets();
     }
-
+    private void calculateAmountOfTickets(){
+        ticketAmount=purchaseAmount/AMOUNT_UNIT;
+    }
 }
