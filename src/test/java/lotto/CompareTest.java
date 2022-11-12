@@ -15,4 +15,12 @@ public class CompareTest {
 
         assertThat(sameNumber).isEqualTo(3);
     }
+
+    @Test
+    void 숫자_일치_개수_출력() {
+        Compare compare = new Compare();
+        int sameNumber = compare.compareNumbers(Arrays.asList(1, 2, 3, 4, 5, 6, 31), Arrays.asList(1, 3, 5, 7, 9, 35));
+
+        assertThat(sameNumber).isEqualTo(3);
+    }
 }
