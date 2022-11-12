@@ -15,17 +15,22 @@ public class Organizer {
     public Organizer(String winningNumberInput, String bonusNumberInput) {
         this.winningNumbers = getWinningNumbersFromInput(winningNumberInput);
         validateWinningNumbers(this.winningNumbers);
+
     }
 
     public List<Integer> getWinningNumbersFromInput(String input) {
         List<String> splitInput = List.of(input.split(","));
         List<Integer> numbers = new ArrayList<>();
         for (String element : splitInput) {
-            ExceptionHandler.isStringNumeric(element);
-            int number = Integer.parseInt(element);
+            int number = getIntegerFromString(element);
             numbers.add(number);
         }
         return numbers;
+    }
+
+    public int getIntegerFromString(String input) {
+        ExceptionHandler.isStringNumeric(input);
+        return Integer.parseInt(input);
     }
 
     private void validateWinningNumbers(List<Integer> winningNumbers) {
