@@ -12,12 +12,12 @@
             - [x]  음수일때 `IllegalArgumentException`를 발생시키고 `[ERROR] 올바른 금액을 입력해 주세요.` 출력 후 종료
             - [x]  숫자 외의 다른 문자가 들어왔을 때 `IllegalArgumentException`를 발생시키고 `[ERROR] 올바른 금액을 입력해 주세요.` 출력 후 종료
             - [x]  사용자가 아무런 문자를 입력하지 않았을 때 `IllegalArgumentException`를 발생시키고 `[ERROR] 올바른 금액을 입력해 주세요.` 출력 후 종료
-    - [ ]  1~45까지의 중복되지 않는 6개의 숫자 입력받기
-        - [ ]  예외 사항
-            - [ ]  6개의 숫자가 아닐때 `IllegalArgumentException`를 발생시키고 `[ERROR] 6개의 숫자를 입력해 주세요.`출력 후 종료
-            - [ ]  중복된 숫자가 들어왔을때 `IllegalArgumentException`를 발생시키고 `[ERROR] 중복되지 않은 6개의 숫자를 입력해 주세요.` 출력 후 종료
-            - [ ]  1 ~ 45까지의 범위가 아닐때 `IllegalArgumentException`를 발생시키고 `[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.` 출력 후 종료
-            - [ ]  숫자, 공백, ‘,’ 외의 다른 문자가 들어왔을 때 `IllegalArgumentException`를 발생시키고 `[ERROR] 올바른 숫자를 입력해 주세요.` 출력 후 종료
+    - [x]  1~45까지의 중복되지 않는 6개의 숫자 입력받기
+        - [x]  예외 사항
+            - [x]  6개의 숫자가 아닐때 `IllegalArgumentException`를 발생시키고 `[ERROR] 6개의 숫자를 입력해 주세요.`출력 후 종료
+            - [x]  중복된 숫자가 들어왔을때 `IllegalArgumentException`를 발생시키고 `[ERROR] 중복되지 않은 6개의 숫자를 입력해 주세요.` 출력 후 종료
+            - [x]  1 ~ 45까지의 범위가 아닐때 `IllegalArgumentException`를 발생시키고 `[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.` 출력 후 종료
+            - [x]  숫자, 공백, ‘,’ 외의 다른 문자가 들어왔을 때 `IllegalArgumentException`를 발생시키고 `[ERROR] 올바른 숫자를 입력해 주세요.` 출력 후 종료
     - [ ]  1 ~ 45까지의 범위인 보너스 번호 한개 입력 받기
         - [ ]  예외 사항
             - [ ]  범위 안에 있지 않을때 `IllegalArgumentException`를 발생시키고 `[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.` 출력 후 종료
