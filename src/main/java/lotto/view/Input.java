@@ -4,12 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
 
-	public static String buyLotto() {
-
-		return Console.readLine();
-	}
-
-	public static String pickWinningNumbers() {
+	public static String numbers() {
 
 		return Console.readLine();
 	}
