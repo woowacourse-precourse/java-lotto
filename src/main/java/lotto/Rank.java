@@ -1,6 +1,11 @@
 package lotto;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
+
 
 public enum Rank {
     FIRST(6, false, 2_000_000_000),
@@ -29,6 +34,13 @@ public enum Rank {
                         && lottoResult.bonusHit == bonusHit)
                 .findAny()
                 .orElse(DEFAULT);
+    }
+
+    public static List<Rank> getNoDefault() {
+        return Arrays.stream(Rank.values())
+                .filter(rank -> !rank.bonusHit)
+                .sorted(Collections.reverseOrder())
+                .collect(Collectors.toList());
     }
 
     public int getPrizeMoney() {
