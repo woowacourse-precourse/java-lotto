@@ -269,6 +269,14 @@ public class Application {
         return bonusNumber;
     }
 
+    public static Integer changeBonusNumberStringToInteger(String input) {
+        int bonusNumber = 0;
+        for (int i = 0; i < input.length(); i++) {
+            bonusNumber = bonusNumber * 10 + input.charAt(i) - 48;
+        }
+        return bonusNumber;
+    }
+
     public static Double calculateSurplus(int first, int second, int third, int forth, int fifth, int cash) {
 
         int surplusSum = first * FIRST.getValue() + second * SECOND.getValue()
