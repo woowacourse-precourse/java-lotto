@@ -4,9 +4,7 @@ package lotto.service;
 import lotto.domain.Lotto;
 import lotto.domain.Player;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class UserService {
@@ -14,18 +12,19 @@ public class UserService {
     private Lotto lotto;
 
     public int buyLotto(String input) {
-
+        buyValidate(input);
         money = Integer.valueOf(input);
-
-        buyValidate(money);
         int count = money / 1000;
         System.out.println(count + "개를 구매했습니다.");
 
         return count;
     }
 
-    private void buyValidate(int money) {
-        if (money % 1000 != 0) throw new IllegalArgumentException();
+    private void buyValidate(String input) {
+        final String REGEX = "[0-9]+";
+
+//        if (!input.contains(REGEX)) throw new IllegalArgumentException();
+        if (Integer.valueOf(input) % 1000 != 0) throw new IllegalArgumentException();
     }
 
     public Lotto createPlayerNumbers(String inputNums, int bonusNum) {
@@ -38,27 +37,22 @@ public class UserService {
 
     private List<Integer> stringToList(String input) {
         String[] tmp = input.split(",");
-        List<String> validateNums = new ArrayList<>(Arrays.asList(tmp));
+        List<String> numbers = new ArrayList<>(Arrays.asList(tmp));
+        validateInput(numbers);
+        List<Integer> validateNums = numbers.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
 
-        validateInput(validateNums);
-
-        List<Integer> numbers = validateNums.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
-
-        return numbers;
+        return validateNums;
     }
 
-    public void validateInput(List<String> validateNums) {
+    public void validateInput(List<String> numbers) {
         final String REGEX = "[0-9]+";
 
-        if (validateNums.size() != 6) throw new IllegalArgumentException();
-        if (!validateNums.contains(REGEX)) throw new IllegalArgumentException();
+        if (numbers.size() != 6) throw new IllegalArgumentException();
+//        if (!numbers.contains(REGEX)) throw new IllegalArgumentException();
     }
 
     public Lotto getLotto() {
         return lotto;
     }
 
-    public int getMoney() {
-        return money;
-    }
 }

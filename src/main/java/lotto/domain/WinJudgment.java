@@ -19,8 +19,8 @@ public class WinJudgment {
         return matchNum;
     }
 
-    public boolean matchBonusNumber(int computerBonusNum, int playerBonusNum) {
-        if (computerBonusNum == playerBonusNum)
+    public boolean matchBonusNumber(List<Integer> computerNumbers, int playerBonusNum) {
+        if (computerNumbers.contains(playerBonusNum))
             return true;
 
         return false;
