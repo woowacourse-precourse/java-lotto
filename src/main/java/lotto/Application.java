@@ -13,7 +13,7 @@ public class Application {
         buyLotto(money, lotto);
         printLotto(lotto);
         List<Integer> winNums = winNumInput();
-        int bonusNum = bonusNumInput();
+        int bonusNum = bonusNumInput(winNums);
         List<Result> results = new ArrayList<>();
 /*
         int first = 0, second = 0, third = 0, fourth = 0, fifth = 0;
@@ -35,12 +35,7 @@ public class Application {
 
     public static int moneyInput() {
         String input = Console.readLine();
-        for (int i = 0; i < input.length(); i++) {
-            if (!Character.isDigit(input.charAt(i))) {
-                System.out.println("[ERROR] 로또 구입 금액은 숫자여야 합니다.");
-                throw new IllegalArgumentException();
-            }
-        }
+        inputTypeError(input);
         int money = Integer.parseInt(input);
         moneyInputError(money);
         return money;
@@ -62,18 +57,21 @@ public class Application {
         return winNums;
     }
 
-    public static Integer bonusNumInput() {
+    public static Integer bonusNumInput(List<Integer> winNums) {
         System.out.println("보너스 번호를 입력해 주세요.");
         String tmp = Console.readLine();
         //예외 확인
+        inputTypeError(tmp);
         int bonus = Integer.parseInt(tmp);
+        rangeError(bonus);
+        duplicate(winNums, bonus);
         return bonus;
     }
 
-    public static void typeError(String bonusInput) {
-        for (int i = 0; i < bonusInput.length(); i++)
-            if (!Character.isDigit(bonusInput.charAt(i))) {
-                System.out.println("[ERROR] 보너스 번호는 숫자를 입력해야 합니다.");
+    public static void inputTypeError(String input) {
+        for (int i = 0; i < input.length(); i++)
+            if (!Character.isDigit(input.charAt(i))) {
+                System.out.println("[ERROR] 숫자를 입력해야 합니다.");
                 throw new IllegalArgumentException();
             }
     }
