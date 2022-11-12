@@ -14,12 +14,12 @@ public enum Rank {
 
     private final int matchCount;
     private final boolean matchBonusNumber;
-    private final long reward;
+    private final Money reward;
 
     Rank(int matchCount, boolean matchBonusNumber, int reward) {
         this.matchCount = matchCount;
         this.matchBonusNumber = matchBonusNumber;
-        this.reward = reward;
+        this.reward = new Money(reward);
     }
 
     public static Rank result(int matchCount, boolean matchBonusNumber) {
