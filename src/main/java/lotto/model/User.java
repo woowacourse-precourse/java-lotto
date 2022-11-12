@@ -13,4 +13,17 @@ public class User {
         this.lottoTicketCount = lottoTicketCount;
         this.lottoTickets = lottoTickets;
     }
+
+    public int getPurchaseAmount() {
+        return purchaseAmount;
+    }
+
+    public int getLottoTicketCount() {
+        return lottoTicketCount;
+    }
+
+    public List<Lotto> getLottoTickets() {
+        return lottoTickets;
+    }
+
 }

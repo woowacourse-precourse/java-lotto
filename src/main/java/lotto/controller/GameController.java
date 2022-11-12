@@ -16,6 +16,7 @@ public class GameController {
     public void run() {
         int purchaseAmount = inputPurchaseAmount();
         publishUserLotto(purchaseAmount);
+        printLottoTicketDetail();
     }
 
     public int inputPurchaseAmount() {
@@ -27,6 +28,10 @@ public class GameController {
         int lottoTicketCount = lottoMachine.computeLottoTicketsCount(purchaseAmount);
         List<Lotto> lottoTickets = lottoMachine.publishLottoTickets(lottoTicketCount);
         user = new User(purchaseAmount, lottoTicketCount, lottoTickets);
+    }
+
+    public void printLottoTicketDetail() {
+        gameMessage.printLottoTicketCount(user.getLottoTicketCount());
     }
 
 
