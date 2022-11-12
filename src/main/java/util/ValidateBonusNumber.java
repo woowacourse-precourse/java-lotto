@@ -25,7 +25,7 @@ public class ValidateBonusNumber {
         try {
             bonusNumber = Integer.parseInt(inputBonusNumber);
         } catch (Exception e) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_BONUS_NOTNUMBER.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERROR_BONUS_NOT_NUMBER.getMessage());
         }
         return bonusNumber;
     }
