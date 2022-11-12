@@ -18,17 +18,17 @@ public class InputWinningNumber {
     }
 
 
-    public List<Integer> getWinningNumber() {
+    private List<Integer> getWinningNumber() {
         return parseWinningNumber(Console.readLine());
     }
 
-    public static List<Integer> parseWinningNumber(String winningNumber) {
+    private static List<Integer> parseWinningNumber(String winningNumber) {
         return Stream.of(winningNumber.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 
-    public void verifyBetween1and45(List<Integer> winningNumbers) {
+    private void verifyBetween1and45(List<Integer> winningNumbers) {
         for (int number : winningNumbers) {
             if (!(1 <= number && number <= 45)) {
                 throw new RuntimeException("[ERROR] 1 ~ 45 사이의 숫자만 입력해 주세요");
@@ -36,13 +36,13 @@ public class InputWinningNumber {
         }
     }
 
-    public void verifyDuplicateNumber(List<Integer> winningNumbers) {
+    private void verifyDuplicateNumber(List<Integer> winningNumbers) {
         if (!(winningNumbers.size() == winningNumbers.stream().distinct().count())) {
             throw new RuntimeException("[ERROR] 중복인 숫자가 있습니다.");
         }
     }
 
-    public void verifySixNumber(List<Integer> winningNumbers) {
+    private void verifySixNumber(List<Integer> winningNumbers) {
         if (winningNumbers.size() == 6) {
             throw new RuntimeException("[ERROR] 6개의 숫자를 입력하세여");
         }
