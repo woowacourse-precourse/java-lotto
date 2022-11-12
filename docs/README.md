@@ -1,6 +1,12 @@
 ##기능 명세
 - --
 
+### **Setting 클래스**
+- #### **환경 세팅**
+    - ```LOTTO_MIN_NUMBER``` : 로또 숫자 범위 최소
+    - ```LOTTO_MAX_NUMBER``` : 로또 숫자 범위 최대
+    - ```LOTTO_PRICE_PER_ONE``` : 로또 한장 당 가격
+
 ### **Output 클래스**
 - #### **출력 기능**
     - ```printInputMoney``` : 구입 금액 입력 멘트 출력
