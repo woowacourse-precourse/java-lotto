@@ -1,23 +1,43 @@
 package lotto;
 
-import static lotto.Rank.*;
-
+import java.text.DecimalFormat;
 import java.util.Collections;
 import java.util.List;
+import lotto.Constant.ResultMessage;
 
 
 
 public class Printer {
     public static void printWinnings(List<Rank> ranks) {
-        System.out.println("3개 일치 (5,000원) - " + Collections.frequency(ranks, FIFTH) + "개");
-        System.out.println("4개 일치 (50,000원) - " + Collections.frequency(ranks, FOURTH) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + Collections.frequency(ranks, THIRD) + "개");
-        System.out.println(
-                "5개 일치, 보너스 볼 일치 (30,000,000원) - " + Collections.frequency(ranks, SECOND) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + Collections.frequency(ranks, FIRST) + "개");
+        System.out.println(ResultMessage.RESULT_START);
+
+        for (Rank rank : Rank.getNoDefault()) {
+            System.out.printf(ResultMessage.RESULT_RANK,
+                    rank.getHitCount(), printIfBonusHit(rank),
+                    printFormatingMoney(rank.getPrizeMoney()),
+                    Collections.frequency(ranks, rank)
+            );
+        }
     }
 
+    public static String printIfBonusHit(Rank rank) {
+        if (rank.getBonusHit()) {
+            return ResultMessage.HIT_BONUS_NUMBER;
+        }
+
+        return " ";
+    }
+
+    public static String printFormatingMoney(int money) {
+        DecimalFormat moneyFormatter = new DecimalFormat("###,###");
+        String formattedMoney = moneyFormatter.format(money);
+
+        return formattedMoney;
+    }
+
+
     public static void printLottos(List<Lotto> lottos) {
+        System.out.printf(ResultMessage.LOTTO_NUM, lottos.size());
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
