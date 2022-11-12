@@ -37,38 +37,46 @@ public class Application {
         if (lottoPrice <= 0) {
             throw new IllegalArgumentException("입력값이 범위를 벗어났습니다.(1,000 이상 2,147,483,000 이하)");
         }
-        if (lottoPrice % 1000 != 0) {
+        if (lottoPrice % ONE_THOUSAND != 0) {
             throw new IllegalArgumentException("입력값이 1,000원으로 나누어 떨어지지 않습니다.");
         }
         return lottoPrice;
     }
 
     public static List<List<Integer>> issueUserLotto(int amount) {
-        List<List<Integer>> userNumber = new ArrayList(amount);
+        List<List<Integer>> userNumber = new ArrayList<>();
+
 
         for (int i = 0; i < amount; i++) {
-            userNumber.add(Randoms.pickUniqueNumbersInRange(STARTINCLUSIVE, ENDINCLUSIVE, COUNT));
+            List<Integer> tmpUserNumber=Randoms.pickUniqueNumbersInRange(STARTINCLUSIVE, ENDINCLUSIVE, COUNT);
+            List<Integer> list=new ArrayList<Integer>();
+
+
+            for(int j=0;j<COUNT;j++){
+                list.add(tmpUserNumber.get(j));
+            }
+
+            Collections.sort(list);
+            userNumber.add(list);
         }
         return userNumber;
     }
 
     public static int validateLottoBonus(Lotto lotto, int bonus) {
 
-        if (!(0 < bonus && bonus <= 45)) {
+        if (!(STARTINCLUSIVE <= bonus && bonus <= ENDINCLUSIVE)) {
             throw new IllegalArgumentException("보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
-
         for (int i = 0; i < lotto.getLottoNumber().size(); i++) {
             if (lotto.getLottoNumber().get(i).equals(bonus)) {
                 throw new IllegalArgumentException("로또 번호와 보너스 번호는 중복되지 않아야 합니다.");
             }
         }
-
         return bonus;
     }
 
     public static List<Integer> getNumberOfWin(List<List<Integer>> userNumber, Lotto lotto, int bonus) {
-        List<Integer> result = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0, 0,0));
+        List<Integer> result = new ArrayList<Integer>(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0));
 
         for (int i = 0; i < userNumber.size(); i++) {
             int countSameNum = countSameNum(userNumber.get(i), lotto, bonus);
