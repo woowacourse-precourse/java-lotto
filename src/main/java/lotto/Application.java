@@ -19,7 +19,9 @@ public class Application {
         ConsoleOutput.printNumOfLotto(purchaseAmount/LottoMaker.ONE_LOTTO_PRICE);
         ConsoleOutput.printLottos(lottos);
 
+        ConsoleOutput.printGuide(ConsoleOutput.WINNING_NUMBER);
         List<Integer> winningNumbers = ConsoleInput.getWinningNumbers();
+        ConsoleOutput.printGuide(ConsoleOutput.BONUS_NUMBER);
         int bonusNumber = ConsoleInput.getBonusNumber();
         ResultMaker resultMaker = new ResultMaker(winningNumbers, bonusNumber);
 
@@ -27,6 +29,6 @@ public class Application {
         for (Lotto lotto : lottos) {
             results.add(resultMaker.getTheResult(lotto.getNumbers()));
         }
-        ConsoleOutput.printWinningStatistics(results);
+        ConsoleOutput.printWinningStatistics(results, purchaseAmount);
     }
 }

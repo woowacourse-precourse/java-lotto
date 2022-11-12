@@ -18,10 +18,6 @@ public class LottoMaker {
             throw new IllegalArgumentException("[ERROR] 로또는 1000원 단위로 구매할 수 있습니다.");
     }
 
-    private static int getNumOfLotto(int price) {
-        return price/ONE_LOTTO_PRICE;
-    }
-
     private static List<Lotto> getLottos(int numOfLotto) {
         List<Lotto> result = new ArrayList<>();
         for (int i=0; i<numOfLotto; i++) {
@@ -33,4 +29,8 @@ public class LottoMaker {
     private static Lotto getLotto() {
         return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
+    private static int getNumOfLotto(int price) {
+        return price/ONE_LOTTO_PRICE;
+    }
+
 }

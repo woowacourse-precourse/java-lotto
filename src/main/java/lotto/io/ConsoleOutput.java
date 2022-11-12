@@ -45,14 +45,14 @@ public class ConsoleOutput {
         System.out.println("]");
     }
 
-    public static void printWinningStatistics(List<Result> results) {
+    public static void printWinningStatistics(List<Result> results, int purchaseAmount) {
         System.out.println("당첨 통계");
         System.out.println("---");
         for (WinningPrice winningPrice : WinningPrice.values()) {
             printWinningPrice(winningPrice);
             System.out.println(winningPrice.countMatchResult(results) + "개");
         }
-        System.out.printf("총 수익률은 %.1f%입니다.\n", ProfitCalculator.getProfit(results));
+        System.out.printf("총 수익률은 %.1f%입니다.\n", ProfitCalculator.getProfit(results, purchaseAmount));
     }
 
     private static void printWinningPrice(WinningPrice winningPrice) {

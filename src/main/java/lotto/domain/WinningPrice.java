@@ -31,7 +31,7 @@ public enum WinningPrice {
                 .count();
     }
 
-    private boolean isSameAsThis(Result result) {
+    public boolean isSameAsThis(Result result) {
         return result.getAccordedNumbers() == accordedNumber &&
                 result.isHitBonus() == shouldHitBonus;
     }
