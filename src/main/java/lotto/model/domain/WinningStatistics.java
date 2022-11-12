@@ -7,6 +7,8 @@ import java.util.Map;
 public class WinningStatistics {
 
     private static final int STATISTICS_INIT_NUM = 0;
+    private static final int LOTTO_PRICE = 1000;
+    private static final int PERCENT_UNIT = 100;
 
     private final Map<Rank, Integer> rankAndRankCount = new HashMap<>();
 
@@ -16,6 +18,34 @@ public class WinningStatistics {
         initRankAndRankCount();
         countRanks(rankCollection);
     }
+
+    public float computeTotalYield() {
+        return sumOfReward() / sumOfLottoPrice() * PERCENT_UNIT;
+    }
+
+    private int sumOfLottoPrice() {
+        int sumOfLottoCount = rankAndRankCount.keySet()
+                .stream()
+                .map(rankAndRankCount::get)
+                .reduce(Integer::sum)
+                .orElse(STATISTICS_INIT_NUM);
+
+        return sumOfLottoCount * LOTTO_PRICE;
+    }
+
+
+    private float sumOfReward() {
+        return (float) rankAndRankCount.keySet()
+                .stream()
+                .map(this::sumOfOneRankReward)
+                .reduce(Integer::sum)
+                .orElse(STATISTICS_INIT_NUM);
+    }
+
+    private int sumOfOneRankReward(Rank rank) {
+        return rank.getReward() * rankAndRankCount.get(rank);
+    }
+
 
     private void initRankAndRankCount() {
         rankAndRankCount.put(Rank.NOTHING, STATISTICS_INIT_NUM);
