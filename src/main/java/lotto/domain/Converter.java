@@ -1,13 +1,13 @@
 package lotto.domain;
 
-import static lotto.domain.Error.MONEY_NOT_NUMBER_ERROR;
+import static lotto.domain.ErrorMessages.MONEY_NUMBER_ERROR;
 
 public class Converter {
     public static int changeToInt(String input) {
         try {
             return Integer.parseInt(input);
-        } catch (Exception exception) {
-            throw new IllegalArgumentException(MONEY_NOT_NUMBER_ERROR.toString());
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException(MONEY_NUMBER_ERROR.toString());
         }
     }
 }
