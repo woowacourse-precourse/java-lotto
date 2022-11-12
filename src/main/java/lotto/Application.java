@@ -15,10 +15,13 @@ public class Application {
         Integer n = price.getLottoNum();
 
         // 2. 로또 번호를 n장 만큼 구한다.
+        System.out.println(n + "개를 구매했습니다.");
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             lottos.add(lotto);
+            // 2-3. 로또 수량 및 로또 번호를 n장 출력한다.
+            System.out.println(lotto.getNumbers());
         }
     }
 }
