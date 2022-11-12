@@ -16,7 +16,7 @@ public class Lottery {
     public List<Rank> ranks(Lotto winningLotto, List<Lotto> lottos) {
         return lottos.stream()
                 .map(lotto -> lotto.matchCountLotto(winningLotto))
-                .map(matchNum -> Arrays.stream(Rank.values()).filter(rank -> rank.getMatchNumber().equals(matchNum)).findFirst().orElseThrow())
+                .map(Rank::findRank)
                 .collect(Collectors.toList());
     }
 }
