@@ -13,7 +13,14 @@ public class Problem {
         printInputGuide();
         this.user=new User();
         this.winMoney=0;
+        initializeWinResult();
+    }
+    void initializeWinResult(){
         this.winResult=new EnumMap<Prize, Integer>(Prize.class);
+
+        for(Prize prize:Prize.values()){
+            winResult.put(prize,0);
+        }
     }
 
     void printInputGuide(){
@@ -24,6 +31,24 @@ public class Problem {
         setWinningLotto();
         findResult();
         calculateResult();
+        printAnswer();
+    }
+
+    void printAnswer(){
+        printAnswerComment();
+        printAllPrizeNumber();
+    }
+
+    void printAllPrizeNumber(){
+        for(Prize prize:Prize.values()){
+            System.out.println(prize.getPrintCondition()+" ("+prize.getPrintWinMoney()+"원) - "+winResult.get(prize)+"개");
+        }
+    }
+
+    void printAnswerComment(){
+        System.out.println();
+        System.out.println("당첨 통계");
+        System.out.println("---");
     }
 
     private void setUserLotto(){
@@ -82,9 +107,6 @@ public class Problem {
     }
 
     void addPrizeResult(Prize win){
-        if(winResult.get(win)==null){
-            winResult.put(win,0);
-        }
         winResult.put(win,winResult.get(win)+1);
     }
 
