@@ -46,7 +46,7 @@ public class LotteryController {
     }
 
     private String typeWinningBonusNumber(){
-        return "";
+        return computerView.getBonusNumber();
     }
 
     private void insertWinningBonusNumber(){
