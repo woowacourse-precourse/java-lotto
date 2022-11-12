@@ -18,11 +18,11 @@
             - [x]  중복된 숫자가 들어왔을때 `IllegalArgumentException`를 발생시키고 `[ERROR] 중복되지 않은 6개의 숫자를 입력해 주세요.` 출력 후 종료
             - [x]  1 ~ 45까지의 범위가 아닐때 `IllegalArgumentException`를 발생시키고 `[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.` 출력 후 종료
             - [x]  숫자, 공백, ‘,’ 외의 다른 문자가 들어왔을 때 `IllegalArgumentException`를 발생시키고 `[ERROR] 올바른 숫자를 입력해 주세요.` 출력 후 종료
-    - [ ]  1 ~ 45까지의 범위인 보너스 번호 한개 입력 받기
-        - [ ]  예외 사항
-            - [ ]  범위 안에 있지 않을때 `IllegalArgumentException`를 발생시키고 `[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.` 출력 후 종료
-            - [ ]  숫자가 하나가 아닐때 `IllegalArgumentException`를 발생시키고 `[ERROR] 보너스 번호는 하나만 입력해 주세요.` 출력 후 종료
-            - [ ]  숫자 외의 다른 문자가 들어왔을때 `IllegalArgumentException`를 발생시키고 `[ERROR] 올바른 숫자를 입력해 주세요.` 출력 후 종료
+    - [x]  1 ~ 45까지의 범위인 보너스 번호 한개 입력 받기
+        - [x]  예외 사항
+            - [x]  범위 안에 있지 않을때 `IllegalArgumentException`를 발생시키고 `[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.` 출력 후 종료
+            - [x]  숫자가 하나가 아닐때 `IllegalArgumentException`를 발생시키고 `[ERROR] 보너스 번호는 하나만 입력해 주세요.` 출력 후 종료
+            - [x]  숫자 외의 다른 문자가 들어왔을때 `IllegalArgumentException`를 발생시키고 `[ERROR] 올바른 숫자를 입력해 주세요.` 출력 후 종료
 - [ ]  사용자가 구매한 로또 번호와 당첨 번호를 비교
     - [ ]  당첨 내역 구하기
         - [ ]  번호 3개 일치시 5,000원 당첨

@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import static lotto.domain.LottoTickets.*;
-import static lotto.utils.Integer.*;
+import static lotto.utils.StringInteger.*;
 
 public class LottoTicketsValidator {
 	public static final String ERROR = "[ERROR] ";

@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import static lotto.domain.LottoTicketsValidator.*;
-import static lotto.utils.Integer.*;
+import static lotto.utils.StringInteger.*;
 
 import java.util.ArrayList;
 import java.util.List;
