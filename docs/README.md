@@ -1,13 +1,13 @@
 ## 🚀 기능 요구 사항
 
-- [ ] 로또 구입 금액을 입력받는 기능 LottoShop.buyLotto
-    - [ ] "구입금액을 입력해 주세요" 출력 LottoConsole.inputMoney 
-    - [ ] 1000원 단위인지 확인하는 기능 LottoShop.checkMoney
-        - [ ] 입력받은 String값을 Integer값으로 변환하는 기능 LottoShop.changeStringToInteger
-          - [ ] 입력받은 값이 숫자값이 아닌경우 예외 처리 기능
-            - [ ] NumberFormatException 발생, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료
-        - [ ] 1000원으로 나누어 떨어지지 않는 경우 예외 처리 기능
-            - [ ] IllegalArgumentException 발생, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료
+- [x] 로또 구입 금액을 입력받는 기능 LottoShop.buyLotto
+    - [x] "구입금액을 입력해 주세요" 출력 LottoConsole.inputMoney 
+    - [x] 1000원 단위인지 확인하는 기능 LottoShop.checkMoney
+        - [x] 입력받은 String값을 Integer값으로 변환하는 기능 LottoShop.changeStringToInteger
+          - [x] 입력받은 값이 숫자값이 아닌경우 예외 처리 기능
+            - [x] NumberFormatException 발생, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료
+        - [x] 1000원으로 나누어 떨어지지 않는 경우 예외 처리 기능
+            - [x] IllegalArgumentException 발생, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료
 - [ ] 구매한 갯수만큼 로또 수량 및 번호를 출력하는 기능 LottoShop.giveLottoList
     - [ ] "%d개를 구매했습니다." 출력 LottoConsole.outputLottoList
     - [ ] 1~45 범위의 중복되지 않는 랜덤한 숫자 6개를 오름차순 정렬하여 로또 갯수만큼 출력 LottoShop.generateLottoList
