@@ -63,4 +63,8 @@ public class WiningNumber {
             throw new IllegalArgumentException();
         }
     }
+
+    public List<Integer> getWiningNumber() {
+        return winingNumber;
+    }
 }
