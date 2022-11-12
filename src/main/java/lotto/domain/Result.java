@@ -4,6 +4,7 @@ import static lotto.Constant.LOTTO_PRICE;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,12 +15,7 @@ public class Result {
 
     public Result() {
         result = new HashMap<>();
-        result.put(Rank.FIRST, 0);
-        result.put(Rank.SECOND, 0);
-        result.put(Rank.THIRD, 0);
-        result.put(Rank.FOURTH, 0);
-        result.put(Rank.FIFTH, 0);
-        result.put(Rank.NOTHING, 0);
+        Arrays.stream(Rank.values()).forEach(rank -> result.put(rank, 0));
     }
 
     public void record(Integer duplicatedCnt, boolean hasBonusNumber) {
@@ -30,6 +26,7 @@ public class Result {
     @Override
     public String toString() {
         List<String> messages = new ArrayList<>();
+        // TODO 순서 보장되는 Map 있었음. 해당 방식 찾아보기 (NOTHING뺴고 돌려야함)
         messages.add(Rank.FIFTH + " - " + NumberFormatter.format(result.get(Rank.FIFTH)) + "개");
         messages.add(Rank.FOURTH + " - " + NumberFormatter.format(result.get(Rank.FOURTH)) + "개");
         messages.add(Rank.THIRD + " - " + NumberFormatter.format(result.get(Rank.THIRD)) + "개");
