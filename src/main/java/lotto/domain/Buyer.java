@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Buyer {
+    private static long ZERO = 0;
+    private static int roundIntConstatnt = 10;
+    private static double roundDoubleConstatnt = 10.0;
+
     private ArrayList<Lotto> purchasedLotteries = new ArrayList<>();
     private int purchaseAmount;
     private HashMap<Rank,Integer> lottoResult = new HashMap<>();
@@ -36,5 +40,17 @@ public class Buyer {
 
     public HashMap<Rank, Integer> getLottoResult() {
         return lottoResult;
+    }
+
+    public long getPrizeSum(){
+        long sum = ZERO;
+        for(Rank rank :lottoResult.keySet()){
+            sum += rank.getPrize() * lottoResult.get(rank);
+        }
+        return sum;
+    }
+
+    public double getYield(){
+        return Math.round(getPrizeSum()/(double)purchaseAmount * roundIntConstatnt)/roundDoubleConstatnt;
     }
 }
