@@ -23,7 +23,7 @@ public class CalculateProfitRate {
     }
 
     public double getProfitRate() {
-        return profitRate = Math.round((profits / principal) * 1000) / 10;
+        return Math.round(((profits * 100) / principal) * 10) / 10.0;
     }
 
 }
