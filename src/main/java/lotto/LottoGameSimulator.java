@@ -19,7 +19,7 @@ public class LottoGameSimulator {
     public void getInputOfMoney() {
         MessagePrinter.printMoneyInputRequest();
         String moneyInput = Inputter.readLine();
-        MoneyValidator.validateMoney(moneyInput);
+        MoneyValidator.validate(moneyInput);
         int money = Integer.parseInt(moneyInput);
         userMoney = new Money(money);
     }
