@@ -83,3 +83,10 @@ public class PlayLotto extends Input {
         }
         check_result(count, bonus);
     }
+
+    public Boolean check_num(List<Integer> win_lottery, Integer user_num){
+        return win_lottery.contains(user_num);
+    }
+    public Boolean check_bonus(List<Integer> win_lottery, Integer bonus_num){
+        return win_lottery.contains(bonus_num);
+    }
