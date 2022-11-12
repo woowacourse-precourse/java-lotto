@@ -41,13 +41,13 @@ public class Output {
         writeLine("---");
     }
 
-    public void writeMatchStatistic(int match, int reward, int count) {
+    public void writeMatchStatistic(int match, long reward, int count) {
         writeLine("%d개 일치 (%s원) - %d개", match,
                 formatThousandsSeparator(reward),
                 count);
     }
 
-    public void writeMatchStatisticWithBonus(int match, int reward, int count) {
+    public void writeMatchStatisticWithBonus(int match, long reward, int count) {
         writeLine("%d개 일치, 보너스 볼 일치 (%s원) - %d개", match,
                 formatThousandsSeparator(reward),
                 count);

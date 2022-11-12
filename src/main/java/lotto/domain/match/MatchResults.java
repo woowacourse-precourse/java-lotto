@@ -23,9 +23,9 @@ public class MatchResults {
         return counts;
     }
 
-    public int getTotalPrice() {
+    public long getTotalPrice() {
         return counts.entrySet().stream()
-                .mapToInt(entry -> entry.getKey().getReward() * entry.getValue())
+                .mapToLong(entry -> entry.getKey().getReward() * entry.getValue())
                 .sum();
     }
 

@@ -13,11 +13,11 @@ public enum Reward {
     FOURTH(4, 50_000, false),
     FIFTH(3, 5_000, false);
 
-    private final int reward;
+    private final long reward;
     private final int match;
     private final boolean requireBonus;
 
-    Reward(int match, int reward, boolean requireBonus) {
+    Reward(int match, long reward, boolean requireBonus) {
         this.reward = reward;
         this.match = match;
         this.requireBonus = requireBonus;
@@ -50,7 +50,7 @@ public enum Reward {
         return match;
     }
 
-    public int getReward() {
+    public long getReward() {
         return reward;
     }
 

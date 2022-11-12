@@ -5,7 +5,7 @@ import java.util.StringJoiner;
 
 class OutputFormatter {
 
-    static String formatThousandsSeparator(int money) {
+    static String formatThousandsSeparator(long money) {
         return String.format("%,d", money);
     }
 
