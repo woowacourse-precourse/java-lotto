@@ -23,4 +23,12 @@ public class User extends Input {
         this.lottery_count = money / 1000;
     }
 
-}
+    public void create_Lottery_nums(){ //lottery_nums에 복권 번호 저장
+        for(int i = 0; i < this.lottery_count; i++){
+            this.lottery_nums.add(create_nums());
+        }
+    }
+
+    private List<Integer> create_nums(){
+        return Randoms.pickUniqueNumbersInRange(1,45,6);
+    }
