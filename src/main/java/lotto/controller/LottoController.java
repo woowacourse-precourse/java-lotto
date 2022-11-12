@@ -33,7 +33,6 @@ public class LottoController {
         OutputView.printRequestBonusNumber();
         int bonusNumber = InputView.getBonusNumber();
 
-        List<Lotto> lottos = lottoGame.getUserLottos();
         winChecker = new WinChecker(winningNumber, bonusNumber);
     }
 
