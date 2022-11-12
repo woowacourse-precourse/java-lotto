@@ -50,8 +50,12 @@ public class Application {
         List<Integer> winning_num = new ArrayList<Integer>();
         int num;
         for (int i = 0;i < nums.length;i++){
-            num = Integer.parseInt(nums[i]);
-            winning_num.add(num);
+            try {
+                num = Integer.parseInt(nums[i]);
+                winning_num.add(num);
+            } catch (NumberFormatException ex) {
+                throw new IllegalArgumentException();
+            }
         }
         return winning_num;
     }
