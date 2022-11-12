@@ -23,7 +23,6 @@ public class InputValidator {
 
     public void checkWinNumber(List<Integer> lottonumber) {
         checkNumberQuantity(lottonumber);
-        checkSameLottoNumber(lottonumber);
         checkLottoNumberRange(lottonumber);
     }
 
@@ -38,13 +37,6 @@ public class InputValidator {
             if(!Character.isDigit(lottonumber.charAt(i)) && lottonumber.charAt(i) != ',') {
                 throw new IllegalArgumentException("[ERROR] 잘못된 당첨 번호 입력입니다.");
             }
-        }
-    }
-
-    public void checkSameLottoNumber(List<Integer> lottonumber) {
-        HashSet<Integer> setlottonumber = new HashSet<>(lottonumber);
-        if(setlottonumber.size() != lottonumber.size()) {
-            throw new IllegalArgumentException("[ERROR] 동일한 로또 번호가 입력되었습니다.");
         }
     }
 

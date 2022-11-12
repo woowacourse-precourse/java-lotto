@@ -75,15 +75,6 @@ public class InputTest extends NsTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 번호 입력 값중 중복 숫자가 있는 경우 예외 발생")
-    @Test
-    void checkSameLottoNumber() {
-        InputValidator inputValidator = new InputValidator();
-        List<Integer> lottonumber = Arrays.asList(2,2,3,4,5,6);
-        assertThatThrownBy(() -> inputValidator.checkSameLottoNumber(lottonumber))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
-
     @DisplayName("로또 번호 입력 값중 1~45 사이의 수가 아닌 숫자가 있는 경우 예외 발생")
     @Test
     void checkLottoNumberRange() {

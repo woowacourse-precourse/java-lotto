@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -11,8 +12,9 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        HashSet<Integer> setlottonumber = new HashSet<>(numbers);
+        if(setlottonumber.size() != numbers.size()) {
+            throw new IllegalArgumentException("[ERROR] 동일한 로또 번호가 입력되었습니다.");
         }
     }
 
