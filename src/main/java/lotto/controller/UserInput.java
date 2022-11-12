@@ -7,6 +7,7 @@ public class UserInput {
         System.out.println("구입금액을 입력해 주세요.");
         String userInput = Console.readLine();
         System.out.println();
+
         hasOnlyNumber(userInput);
         isStartedNotZero(userInput);
 
@@ -20,6 +21,8 @@ public class UserInput {
         System.out.println("당첨 번호를 입력해 주세요.");
         String userInput = Console.readLine();
         System.out.println();
+
+        hasOnlyNumberAndComma(userInput);
     }
 
     private void stringToNumbers(String numbers) {
@@ -29,6 +32,12 @@ public class UserInput {
     private static void hasOnlyNumber(String input) {
         if (!input.matches("[0-9]+")) {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.");
+        }
+    }
+
+    private static void hasOnlyNumberAndComma(String input) {
+        if (!input.matches("[0-9,]+")) {
+            throw new IllegalArgumentException("[ERROR] 쉼표로 구분되는 6개의 숫자만 입력해 주세요.");
         }
     }
 
