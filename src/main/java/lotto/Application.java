@@ -97,11 +97,6 @@ public class Application {
         System.out.println("총 수익률은 " + surplusRate + "%입니다.");
     }
 
-    public static void printErrorAboutDivisionByThousand() {
-
-        System.out.println("[ERROR] 입력된 값이 1,000으로 나누어 떨어지지 않습니다.");
-    }
-
     public static void printErrorAboutForm() {
 
         System.out.println("[ERROR] 올바른 형식으로 입력해야 합니다.");
@@ -126,14 +121,12 @@ public class Application {
     public static void validateCashIsDividedThousand(String input) {
 
         if (input.length() < 4) {
-            printErrorAboutDivisionByThousand();
             throw new IllegalArgumentException();
         }
 
         for (int i = input.length() - 3; i < input.length(); i++) {
 
             if (input.charAt(i) != 48) {
-                printErrorAboutDivisionByThousand();
                 throw new IllegalArgumentException();
             }
         }
