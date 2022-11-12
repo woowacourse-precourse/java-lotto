@@ -1,7 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.constant.Message;
+import lotto.constant.OutputMessage;
 
 public class InputView {
 	public String getPurchasingAmount() {
@@ -9,7 +9,7 @@ public class InputView {
 	}
 
 	private void printAskingPurchasingAmountMessage() {
-		System.out.println(Message.ASKING_PURCHASING_AMOUNT.message());
+		System.out.println(OutputMessage.ASKING_PURCHASING_AMOUNT.message());
 	}
 
 

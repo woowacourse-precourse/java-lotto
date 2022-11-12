@@ -1,6 +1,6 @@
 package lotto.constant;
 
-public enum Message {
+public enum OutputMessage {
 	ASKING_PURCHASING_AMOUNT("구입금액을 입력해 주세요."),
 	DISPLAYING_PURCHASING_QUANTITY("%d개를 구매했습니다."),
 	ASKING_WINNING_NUMBER("당첨 번호를 입력해 주세요."),
@@ -11,7 +11,7 @@ public enum Message {
 	COUNTING_PRIZE_WITH_BONUS("%d개 일치, 보너스 볼 일치 (%s원) - %d개"),
 	DISPLAYING_RATE_OF_PROFIT("총 수익률은 %f%입니다.");
 	private final String message;
-	Message(String message) {
+	OutputMessage(String message) {
 		this.message = message;
 	}
 
