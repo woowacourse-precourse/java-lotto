@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -10,7 +12,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         hasDuplicate(numbers);
-        this.numbers = numbers;
+        this.numbers = sortNumbers(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -24,6 +26,13 @@ public class Lotto {
         if (set.size() != numbers.size()) {
             throw new IllegalArgumentException(Errors.NOT_DUPLICATE_NUMBER.toString());
         }
+    }
+
+    private List<Integer> sortNumbers(List<Integer> numbers) {
+        List<Integer> target = new ArrayList<>();
+        target.addAll(numbers);
+        Collections.sort(target);
+        return target;
     }
 
     public void validateBonusNumber(int bonus) {
@@ -57,5 +66,10 @@ public class Lotto {
             return 5;
         }
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return this.numbers.toString();
     }
 }
