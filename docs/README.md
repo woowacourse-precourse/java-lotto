@@ -82,8 +82,8 @@
   - List<Integer> numbers : 사용자로부터 입력 받는 유효한 당첨 번호 목록 <br><br>
   
 - Method
-  - Lotto(List<Integer> numbers) : 사용자로부터 입력 받은 정수형 리스트를 매개 인자로 받아서 <br>
-    validate 메서드를 통해 유효성 검사를 실시한다. 이후, 멤버 변수인 numbers에 값을 저장한다. <br><br>
+  - Lotto(List<Integer> numbers) : 사용자로부터 입력 받은 정수형 리스트를 매개 인자로 받는 생성자이다. <br>
+    매개 인자에 대해 validate 메서드를 통해 유효성 검사를 실시한다. 이후, 멤버 변수인 numbers에 값을 저장한다. <br><br>
   - void validate(List<Integer> numbers) : 사용자로부터 입력 받은 정수를 매개 인자로 받아서 <br>
     예외 사항 1 ~ 3번을 검사한다. <br><br>
   - List<Integer> getNumbers() : 멤버 변수인 numbers를 반환한다.
@@ -92,15 +92,31 @@
 
 ### 3. 추첨 번호 생성
 ### 목표
-1) 사용자가 구매한 로또 수량만큼 당첨 번호를 생성한다.
-2) 생성한 로또 번호들은 각각 오름차순으로 정렬되어야 한다.
+1) 사용자가 구매한 로또 수량만큼 추첨 번호를 생성한다.
+2) 생성한 추첨 번호들은 각각 오름차순으로 정렬되어야 한다.
+3) 생성한 추첨 번호들은 로또 수량만큼 List형으로 출력한다.
+
+
+### 구현 내용
+< Class LotteryNumber >
+- Attribute
+  - ArrayList<ArrayList<Integer>> numbers : 무작위로 생성한 추첨 번호들의 목록 <br><br>
+
+- Method
+  - LotteryNumber(int money) : 구매 금액을 매개 인자로 받는 생성자이다. 매개 인자가 무조건 1,000으로 나누어 떨어지는 <br>
+    값으로 생각하여 따로 유효성 검사는 하지 않고, 그 값을 1,000으로 나눈 몫을 매개인자로 generateNumbers 메서드를 호출한다. <br><br>
+  - generateNumbers(int n) : 매개 인자 n번 만큼 pickUniqueNumbersInRange()의 호출을 반복한다. 생성된 난수 리스트는 <br>
+    sortElementNumbers() 메서드를 통해 정렬하여 멤버 변수 numbers에 넣는다. <br><br>
+  - sortElementsNumbers(List<Integer> list) : List<Integer>형의 리스트를 입력으로 받아서 오름차순으로 정렬된 <br>
+    ArrayList<Integer>형 리스트로 반환한다. <br><br>
+  - void informLotteryNumbers() : 멤버 변수 numbers의 내용을 출력한다.
 
 <br>
 
 ### 4. 당첨 내역 통지
 ### 목표
 1) 사용자가 입력한 당첨 번호와 컴퓨터가 생성한 추첨 번호를 비교하여 당첨 내역을 출력한다.
-2) 당첨 내역에 따른 수익률을 계산한다.
+2) 당첨 내역에 따른 수익률을 계산하여 출력한다.
 
 <br>
 
