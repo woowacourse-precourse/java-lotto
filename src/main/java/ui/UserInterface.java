@@ -2,6 +2,7 @@ package ui;
 
 import camp.nextstep.edu.missionutils.Console;
 import config.ErrorConstants;
+import config.PrintConstants;
 import lotto.Lotto;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class UserInterface {
      * @throws IllegalArgumentException 구입금액이 숫자가 아니거나, 1000의 배수가 아닌 경우 예외 발생
      */
     public static int readPayment() throws IllegalArgumentException {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(PrintConstants.INPUT_PAYMENT);
         String line = Console.readLine();
         try {
             int payment = Integer.parseInt(line);
@@ -35,7 +36,7 @@ public class UserInterface {
      * @throws IllegalArgumentException 숫자가 아니거나, 로또번호로 생성될 수 없는 경우 예외 발생
      */
     public static Lotto readLuckyNumbers() throws IllegalArgumentException {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(PrintConstants.INPUT_LUCKY_NUMBERS);
         String[] tokens = Console.readLine().split(",");
         List<Integer> numbers = new ArrayList<>();
         for (String token : tokens) {
@@ -47,5 +48,20 @@ public class UserInterface {
         }
 
         return new Lotto(numbers);
+    }
+
+    /**
+     * 보너스 번호를 입력 받습니다.
+     * @return 보너스 번호
+     * @throws IllegalArgumentException 숫자가 아닌 경우 예외 발생
+     */
+    public static int readBonusNumber() throws IllegalArgumentException {
+        System.out.println(PrintConstants.INPUT_BONUS_NUMBER);
+        String line = Console.readLine();
+        try {
+            return Integer.parseInt(line);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorConstants.NOT_NUMBER_INPUT);
+        }
     }
 }
