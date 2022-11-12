@@ -14,6 +14,6 @@ public class LottoController {
     }
 
     private void getTheNumberOfLotto(String userInputMoney) {
-        Integer numberOfLotto = LottoService.getTheNumberOfLotto(userInputMoney);
+        Integer numberOfLotto = lottoService.getTheNumberOfLotto(userInputMoney);
     }
 }
