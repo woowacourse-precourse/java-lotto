@@ -17,7 +17,5 @@ public class CommaAndNumberValidator {
     } catch (NumberFormatException e) {
       throw new IllegalArgumentException(ExceptionMessage.INPUT_IS_NOT_SEPARATED_BY_COMMAS.getMessage());
     }
-    NumberLengthValidator numberLengthValidator = new NumberLengthValidator();
-    numberLengthValidator.validate(digits);
   }
 }

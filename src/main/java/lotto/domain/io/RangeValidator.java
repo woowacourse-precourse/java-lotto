@@ -11,7 +11,5 @@ public class RangeValidator {
     if (!isWithinRange) {
       throw new IllegalArgumentException(ExceptionMessage.INPUT_NUMBER_RANGE_IS_NOT_CORRECT.getMessage());
     }
-    DuplicationValidator validator = new DuplicationValidator();
-    validator.validate(input);
   }
 }
