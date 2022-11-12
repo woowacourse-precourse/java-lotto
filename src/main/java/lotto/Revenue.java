@@ -29,7 +29,7 @@ public class Revenue {
     public void revenueCountTmp() {
         BuyLotto buy = new BuyLotto();
         List<List<Integer>> userLottoNumber = buy.lottoNumberMaker();
-        this.price = userLottoNumber.size();
+        this.price = userLottoNumber.size()*1000;
         List<Integer> winLottoNumber = buy.numbers();
         Lotto lotto = new Lotto(winLottoNumber);
         List<Integer> sameNumberCount = lotto.compareList(userLottoNumber, winLottoNumber);
@@ -53,9 +53,9 @@ public class Revenue {
     }
 
     private void revenueRateCalCulator() {
-        int sum = 0;
+        double sum = 0.0;
         sum += (threeCount*5000 + fourCount*50000 + fiveCount*1500000 + fiveBonusCount*30000000 + sixCount*2000000000);
-        this.revenueRate = (((float) sum / price * 100)*100)/100.0;
+        this.revenueRate = sum / price * 100.0;
     }
 
     public void revenuePrint() {
