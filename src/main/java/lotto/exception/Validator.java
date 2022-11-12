@@ -1,8 +1,8 @@
 package lotto.exception;
 
-import static lotto.domain.LottoGenerator.LOTTO_NUMBER_LENGTH;
-import static lotto.domain.LottoGenerator.LOTTO_NUMBER_MAX_VALUE;
-import static lotto.domain.LottoGenerator.LOTTO_NUMBER_MIN_VALUE;
+import static lotto.constant.LottoConstant.LOTTO_NUMBER_LENGTH;
+import static lotto.constant.LottoConstant.LOTTO_NUMBER_MAX_VALUE;
+import static lotto.constant.LottoConstant.LOTTO_NUMBER_MIN_VALUE;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,6 +1,6 @@
 package lotto.service;
 
-import static lotto.domain.LottoGenerator.LOTTO_PRICE;
+import static lotto.constant.LottoConstant.LOTTO_PRICE;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,7 +28,7 @@ public class LottoService {
                 .sum();
         int investment = lottoResults.size() * LOTTO_PRICE;
 
-        return (double) revenue / investment * MAKE_PERCENTAGE_SCALE;
+        return (double) revenue / investment  * MAKE_PERCENTAGE_SCALE;
     }
 
     public List<Lotto> buy(int money) {
