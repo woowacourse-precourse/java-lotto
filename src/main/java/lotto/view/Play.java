@@ -1,7 +1,13 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Lotto;
+import lotto.domain.LottoNumbers;
 import lotto.domain.Purchase;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Play {
     private static final String START_MESSAGE = "구입금액을 입력해 주세요.";
@@ -12,6 +18,8 @@ public class Play {
     private static final String RATE_MESSAGE = "총 수익률은 %f%입니다.";
 
     private Purchase purchase = new Purchase();
+    private LottoNumbers lottoNumbers = new LottoNumbers();
+    private List<Lotto> lotto = new ArrayList<>();
 
     public void startPlay(){
         System.out.println(START_MESSAGE);
@@ -20,9 +28,7 @@ public class Play {
         int total = purchase.calculateAmount(amount);
 
         System.out.println("\n"+total+CHECK_MESSAGE);
-
-
-
+        lotto = lottoNumbers.printLotto(total);
 
 
 

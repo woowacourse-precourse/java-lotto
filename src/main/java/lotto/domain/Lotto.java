@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.List;
 
 public class Lotto {
@@ -15,5 +17,7 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
+    // todo: 중복 확인
 
 }
