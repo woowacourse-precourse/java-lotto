@@ -16,13 +16,15 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Controller {
 
+    private View view = new View();
     private Shop shop;
     private Draw draw;
     private Rate rate;
+    private int price;
 
     // 요청 수행 method
     public List<Lotto> buyLotto() {
-        int price = getPrice();
+        this.price = getPrice();
         shop = new Shop(price);
         shop.getLottoPayed();
         return shop.getLottoPayed();
@@ -37,18 +39,20 @@ public class Controller {
     }
 
     public double getEarningRate(Map<Rank,Integer> winningStats) {
-        rate = new Rate(winningStats);
+        rate = new Rate(winningStats,price);
         return rate.getEarningRate();
     }
 
 
     // 입력 method
     public int getPrice() {
+        view.printInputPrice();
         String price = readLine();
         return Integer.parseInt(price);
     }
 
     public Lotto getWinningLotto() {
+        view.printInputWinningLotto();
         String winningLotto = readLine();
         List<Integer> winningLottoNumbers = Arrays.stream(winningLotto.split(","))
                 .map(w -> Integer.parseInt(w))
@@ -57,6 +61,7 @@ public class Controller {
     }
 
     public int getBonusNum() {
+        view.printInputBonusNum();
         String bonusNum = readLine();
         return Integer.parseInt(bonusNum);
     }
