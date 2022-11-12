@@ -73,7 +73,7 @@ public class Lotto {
                 .collect(Collectors.toList()));
     }
 
-    public static int compareNumbers(Lotto winningNumbers, Lotto lotto) {
+    int compareNumbers(Lotto winningNumbers, Lotto lotto) {
         int count = 0;
         for (Integer number : winningNumbers.numbers) {
             if (lotto.numbers.contains(number)) {
@@ -83,7 +83,7 @@ public class Lotto {
         return count;
     }
 
-    public static boolean hasBonusNumber(int bonusNumber, Lotto lotto) {
+    boolean hasBonusNumber(int bonusNumber, Lotto lotto) {
         return lotto.numbers.contains(bonusNumber);
     }
 
