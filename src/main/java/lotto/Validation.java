@@ -4,17 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Validation {
-    public Validation(List<Integer> numbers){
-        isLottoDuplicate(numbers);
-        isLottoBetween1And45(numbers);
-    }
-
-    public Validation(String number){
-        isIncludeNotNumber(number);
-        isMultipleOf1000(number);
-    }
-
-    private void isLottoBetween1And45(List<Integer> numbers) {
+    public static void isLottoBetween1And45(List<Integer> numbers) {
         for (int number : numbers) {
             isNumberBetween1And45(number);
         }
@@ -25,7 +15,7 @@ public class Validation {
             throw new IllegalArgumentException(Notification.ERROR_MESSAGE_NUMBER_IS_NOT_BETWEEN_1_AND_45.getMessage());
     }
 
-    private void isLottoDuplicate(List<Integer> numbers) throws IllegalArgumentException {
+    public static void isLottoDuplicate(List<Integer> numbers) throws IllegalArgumentException {
         HashSet<Integer> set = new HashSet<>(numbers);
         if (set.size() != 6)
             throw new IllegalArgumentException(Notification.ERROR_MESSAGE_NUMBER_IS_DUPLICATE.getMessage());
@@ -37,7 +27,7 @@ public class Validation {
             throw new IllegalArgumentException(Notification.ERROR_MESSAGE_INCLUDE_NON_NUMERIC.getMessage());
     }
 
-    private static void isMultipleOf1000(String number) throws IllegalArgumentException {
+    public static void isMultipleOf1000(String number) throws IllegalArgumentException {
         if (Long.parseLong(number) % 1000 != 0)
             throw new IllegalArgumentException(Notification.ERROR_MESSAGE_MONEY_IS_NOT_MULTIPLE_1000.getMessage());
     }
