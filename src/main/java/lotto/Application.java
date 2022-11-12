@@ -13,23 +13,28 @@ public class Application {
     public static void main(String[] args) {
 
         try {
-            int buyPrice = receiveBuyPrice();
-            int buyNum = buyPrice / LOTTERY_PRICE;
-
-            List<Lotto> lotteries = Lotto.generateLotteries(buyNum);
-
-            printBuyResult(lotteries);
-
-            List<Integer> winningNumbers = receiveWinningNumbers();
-            int bonusNumbers = receiveBonusNumber();
-
-            Map<LottoResult, Integer> result = compareLotteriesResult(lotteries, winningNumbers, bonusNumbers);
-
-            printResult(buyPrice, result);
+            game();
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
         }
 
+    }
+
+    /** 로또 게임을 진행하는 함수 */
+    private static void game() throws IllegalArgumentException {
+        int buyPrice = receiveBuyPrice();
+        int buyNum = buyPrice / LOTTERY_PRICE;
+
+        List<Lotto> lotteries = Lotto.generateLotteries(buyNum);
+
+        printBuyResult(lotteries);
+
+        List<Integer> winningNumbers = receiveWinningNumbers();
+        int bonusNumbers = receiveBonusNumber();
+
+        Map<LottoResult, Integer> result = compareLotteriesResult(lotteries, winningNumbers, bonusNumbers);
+
+        printResult(buyPrice, result);
     }
 
     /**
