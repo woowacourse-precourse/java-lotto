@@ -27,6 +27,14 @@ public class Player {
         this.lottoCount = this.lottoPrice/Constant.LOTTO_PRICE;
     }
 
+    public void addLottoCount(){
+        this.lottoCount++;
+    }
+
+    public void minusLottoCount(){
+        this.lottoCount--;
+    }
+
     public int getLottoPrice() {
         return lottoPrice;
     }
