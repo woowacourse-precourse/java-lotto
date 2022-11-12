@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import lotto.domain.BonusNumber;
 import lotto.domain.LottoRanking;
 import lotto.domain.LottoResult;
 import lotto.domain.LottoTicket;
@@ -44,9 +45,8 @@ public class LottoController {
 	}
 
 	public void receiveBonusNumber() {
-		bonusNumber = inputView.inputBonusNumber();
-		inputView.validBonusNumber(bonusNumber);
-
+		BonusNumber bonusNumber = new BonusNumber(inputView.inputBonusNumber());
+		bonusNumber.validBonusNumber();
 	}
 
 	public void winningNumberCount() {

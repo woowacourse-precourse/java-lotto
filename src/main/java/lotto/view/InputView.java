@@ -20,7 +20,6 @@ public class InputView {
 	private static final String VALID_WIN_NUMBER_ERROR_MESSAGE = "당첨 번호는 1~45의 범위를 가지며, 6개입니다.";
 	private static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해주세요";
 	private static final String INPUT_BONUS_NUMBER_ERROR_MESSAGE = "보너스 번호는 숫자여야 합니다.";
-	private static final String VALID_BONUS_NUMBER_ERROR_MESSAGE = "보너스 번호는 1~45의 범위를 가지며, 1개입니다.";
 	private static final String INPUT_WIN_NUMBER_DIVIDE_STRING = ",";
 	private static final int DIVIDE_UNIT = 1000;
 	private static final int ZERO_NUMBER = 0;
@@ -91,15 +90,5 @@ public class InputView {
 			System.out.println(DEFAULT_ERROR_MESSAGE + INPUT_BONUS_NUMBER_ERROR_MESSAGE);
 		}
 		return bonusNumber;
-	}
-
-	public void validBonusNumber(int bonusNumber) {
-		if (isWrongRangeBonusNumber(bonusNumber)) {
-			throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + VALID_BONUS_NUMBER_ERROR_MESSAGE);
-		}
-	}
-
-	private boolean isWrongRangeBonusNumber(int bonusNumber) {
-		return !(MIN_VALUE <= bonusNumber && bonusNumber <= MAX_VALUE);
 	}
 }
