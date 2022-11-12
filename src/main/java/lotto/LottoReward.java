@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto;
 
 import java.util.Arrays;
 
@@ -16,6 +16,17 @@ public enum LottoReward {
     LottoReward(int matchingNumbers, int reward) {
         this.matchingNumbers = matchingNumbers;
         this.reward = reward;
+    }
+
+    public static LottoReward getRank(int numberOfMatch) {
+        return Arrays.stream(values())
+                .filter(statistic -> statistic.matchingNumbers == numberOfMatch)
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
+    }
+
+    public void plusCount() {
+        this.count++;
     }
 
     public int getReward() {
