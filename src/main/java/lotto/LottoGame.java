@@ -1,15 +1,15 @@
 package lotto;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 import lotto.console.Input;
 import lotto.console.Output;
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.LottoSeller;
-import lotto.domain.match.Reward;
 import lotto.domain.match.Results;
+import lotto.domain.match.Reward;
 import lotto.domain.match.WinningNumbers;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class LottoGame {
 
@@ -62,16 +62,10 @@ public class LottoGame {
 
     private Results matchLottoWithWinningNumbers(List<Lotto> lottos,
             WinningNumbers winningNumbers) {
-        List<Reward> rewards = new ArrayList<>();
-
-        for (Lotto lotto : lottos) {
-            Reward reward = winningNumbers.match(lotto);
-            if (reward != null) {
-                rewards.add(reward);
-            }
-        }
-
-        return new Results(rewards);
+        return new Results(lottos.stream()
+                .map(winningNumbers::match)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList()));
     }
 
     private void printStatisticsWithBonus(Results results, Reward reward) {
