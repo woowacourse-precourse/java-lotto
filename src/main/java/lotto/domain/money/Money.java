@@ -15,8 +15,19 @@ public class Money {
 
         validateMoneyIsGreaterThanMinNumber(money);
         validateMoneyIsDivideMinNUmber(money);
-        this.amount = money;
 
+        this.amount = money;
+    }
+
+    /**
+     * ROI는 투자대비 수익률로 이익금액/원금 * 100을 나타냅니다.
+     *
+     * @param money
+     * @return
+     */
+    public Double calculateROI(Money amount) {
+        var ROI = ((double) amount.amount / this.amount) * 100;
+        return Math.round(ROI * 100) / 100.0;
     }
 
     private void validateMoneyIsDivideMinNUmber(Long money) {
