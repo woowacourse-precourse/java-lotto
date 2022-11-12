@@ -8,6 +8,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoApplication {
+
+    private RandomLotto randomLottos;
+    private RandomLottoGenerator randomLottoGenerator;
+
+    private List<Lotto> randomNumbers;
+
     public void run() {
         System.out.println("구입금액을 입력해 주세요.");
         int money = Integer.parseInt(Console.readLine());
@@ -15,16 +21,10 @@ public class LottoApplication {
             throw new IllegalArgumentException();
         }
 
-        int num = money / 1000;
-        System.out.println(num + "개를 구매했습니다.");
-        List<List> randomLottoLists = new ArrayList<>();
-        for (int i = 0; i < num; i++) {
-            List<Integer> numbers
-                    = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(numbers);
-            randomLottoLists.add(numbers);
-            System.out.println(numbers);
-        }
+        randomLottoGenerator = new RandomLottoGenerator();
+        randomLottos = new RandomLotto(randomLottoGenerator);
+        randomNumbers = randomLottos.makeRandomLottos(money);
+        randomNumbers.forEach(random -> random.printNumbers());
 
         System.out.println("당첨 번호를 입력해 주세요.");
         List<Integer> winningLotto = new ArrayList<>();
@@ -37,25 +37,25 @@ public class LottoApplication {
         int bonusNumber = Integer.parseInt(Console.readLine());
 
         int sum = 0;
-        for (List list : randomLottoLists) {
-            int cnt = 0;
-            for (int i = 0; i < winningLotto.size(); i++) {
-                if (list.contains(winningLotto.get(i))) {
-                    cnt++;
-                }
-            }
-            if (cnt < 3) continue;
-
-            boolean containsBonusNumber = false;
-            if (cnt == 5) {
-                if (list.contains(bonusNumber)) {
-                    containsBonusNumber = true;
-                }
-            }
-
-            LottoReward.getRank(cnt, containsBonusNumber).plusCount();
-            sum += LottoReward.getRank(cnt, containsBonusNumber).getReward();
-        }
+//        for (List list : randomLottoLists) {
+//            int cnt = 0;
+//            for (int i = 0; i < winningLotto.size(); i++) {
+//                if (list.contains(winningLotto.get(i))) {
+//                    cnt++;
+//                }
+//            }
+//            if (cnt < 3) continue;
+//
+//            boolean containsBonusNumber = false;
+//            if (cnt == 5) {
+//                if (list.contains(bonusNumber)) {
+//                    containsBonusNumber = true;
+//                }
+//            }
+//
+//            LottoReward.getRank(cnt, containsBonusNumber).plusCount();
+//            sum += LottoReward.getRank(cnt, containsBonusNumber).getReward();
+//        }
 
         System.out.println("당첨 통계");
         System.out.println("---");
