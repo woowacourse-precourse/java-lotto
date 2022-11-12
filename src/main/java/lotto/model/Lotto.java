@@ -43,6 +43,10 @@ public class Lotto {
         return numberOfMatch;
     }
 
+    public boolean hasNumber(Integer number) {
+        return numbers.contains(number);
+    }
+
     private void validate(List<Integer> numbers) {
         validateLottoLength(numbers);
         validateLottoRange(numbers);

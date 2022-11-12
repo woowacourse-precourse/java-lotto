@@ -22,7 +22,7 @@ public class LottoWinningStatistics {
         winningCounts.put(MATCH_THREE_NUMBERS, 0);
         winningCounts.put(MATCH_FOUR_NUMBERS, 0);
         winningCounts.put(MATCH_FIVE_NUMBERS, 0);
-        winningCounts.put(MATCH_FIVE_NUMBERS_WITH_BONUS_NUMBERS, 0);
+        winningCounts.put(MATCH_FIVE_NUMBERS_WITH_BONUS_NUMBER, 0);
         winningCounts.put(MATCH_SIX_NUMBERS, 0);
     }
 
@@ -44,14 +44,16 @@ public class LottoWinningStatistics {
     public void generate(LottoIssuingMachine issuingMachine, LottoDrawingMachine drawingMachine) {
         List<Lotto> issuedLottos = issuingMachine.getLottos();
         Lotto winningLotto = drawingMachine.getWinningLotto();
-        matchLottoNumbers(issuedLottos, winningLotto);
+        Integer bonusNumber = drawingMachine.getBonusNumber();
+        matchLottoNumbers(issuedLottos, winningLotto, bonusNumber);
         calculateEarningsRate(issuedLottos.size() * LOTTO_PRICE);
     }
 
-    private void matchLottoNumbers(List<Lotto> issuedLottos, Lotto winningLotto) {
+    private void matchLottoNumbers(List<Lotto> issuedLottos, Lotto winningLotto, Integer bonusNumber) {
         for (Lotto issuedLotto : issuedLottos) {
             int numberOfMatch = winningLotto.countNumberOfMatch(issuedLotto);
-            LottoWinningStatus winningStatus = LottoWinningStatus.valueOf(numberOfMatch);
+            boolean hasBonusNumber = issuedLotto.hasNumber(bonusNumber);
+            LottoWinningStatus winningStatus = LottoWinningStatus.valueOf(numberOfMatch, hasBonusNumber);
             winningCounts.computeIfPresent(winningStatus, (ws, wcnt) -> wcnt + 1);
         }
     }
