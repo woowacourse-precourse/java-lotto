@@ -1,6 +1,5 @@
 package lotto;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,13 +15,20 @@ public class Referee {
         for (int i = 0; i < userLotto.size(); i++) {
             Lotto lottoClass = userLotto.get(i);
             List<Integer> user = lottoClass.get();
+            System.out.println(user);
 
             int correctNumber = Judgment.correctCount(winningLotto, user);
-            if (Judgment.hasBonusNumber(bonusNumber, user)){
-                correctNumber += 1;
+
+            if (correctNumber == 6) {
+                result.replace(correctNumber + 1, result.get(correctNumber + 1) + 1);
+                continue;
             }
 
-            System.out.println(user);
+            if (correctNumber == 5 && Judgment.hasBonusNumber(bonusNumber, user)) {
+                result.replace(correctNumber + 1, result.get(correctNumber + 1) + 1);
+                continue;
+            }
+
             result.replace(correctNumber, result.get(correctNumber) + 1);
         }
 
