@@ -25,6 +25,11 @@ public class Lotto {
     }
     //2. 당첨에 대한 금액을 산정하는 함수
     //3. 입력 받은 금액이 1000원단위인지 확인하는 함수
+    public void moneyUnitCheck(int inputMoney){
+        if(inputMoney % 1000 != 0){
+            throw new IllegalArgumentException();
+        }
+    }
     //4. 당첨 번호와 보너스 번호를 입력받는 함수
     //5. 발행한 로또 번호를 정렬 하는 함수 (오름차순)
     //6. 당첨 내역을 출력하는 함수
