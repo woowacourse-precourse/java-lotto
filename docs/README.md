@@ -65,7 +65,11 @@ public class Lotto {
 > - 4개 적중 -> 4등 출력
 > - 3개 적중 -> 5등 출력
 
-####__4-1. agreementLotto (로또 당첨 등수 리턴)__
+####__4-1. bonusAgreement (보너스 번호 대조)__
+
++ bonusNum, lottoRandomNum 전달 받아서 bonusCount return
+
+####__4-2. agreementLotto (로또 당첨 등수 리턴)__
 
 + agreementCount -> 등수 리턴
 
