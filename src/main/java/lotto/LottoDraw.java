@@ -17,7 +17,9 @@ public class LottoDraw {
         for (int rank = 1; rank <= 5; rank++) {
             numberOfWins.put(String.valueOf(rank) + "등", 0);
         }
-        this.winningNumber = enterWinningNumber();
+        List<Integer> numbers = enterWinningNumber();
+        validate(numbers);
+        winningNumber = numbers;
     }
 
     public List<Integer> enterWinningNumber() {
@@ -26,6 +28,13 @@ public class LottoDraw {
         Integer[] numbers = Arrays.stream(split).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
         return Arrays.asList(numbers);
     }
+
+    private void validate(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 로또 당첨 번호는 6개입니다.");
+        }
+    }
+
 
     public int getTotalPrizeMoney() {
         return totalPrizeMoney;
