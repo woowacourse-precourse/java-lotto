@@ -29,7 +29,8 @@ public class OutputView {
         }
     }
 
-    public static void printEarningRate(int earningRate) {
-        System.out.printf("총 수익률은 %d입니다.", earningRate);
+    public static void printEarningRate(float earningRate) {
+        String earning = String.format("%.2f", earningRate);
+        System.out.printf("총 수익률은 %s입니다.", earning);
     }
 }
