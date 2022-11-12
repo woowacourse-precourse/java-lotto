@@ -37,6 +37,11 @@ public class LottoData {
 
     public void countPrize() {
         prize = new HashMap<>();
+        prize.put(1, 0);
+        prize.put(2, 0);
+        prize.put(3, 0);
+        prize.put(4, 0);
+        prize.put(5, 0);
         for (Lotto lotto : allLotto) {
             prize.merge(lotto.prize, 1, Integer::sum);
         }
