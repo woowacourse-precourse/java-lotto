@@ -74,23 +74,23 @@ public class LotteryMachine {
     private void validateWinningNumbers() {
         List<Integer> winningNumbers = winningLottery.getNumbers();
 
-        if(winningNumbers.size() != LottoConstant.NUMBER_COUNT.value) {
+        if(winningNumbers.size() != LottoConstant.NUMBER_COUNT.getValue()) {
             throw new IllegalArgumentException("[ERROR] 6개가 입력되지 않았습니다");
         }
 
-        if(new HashSet<Integer>(winningNumbers).size() != LottoConstant.NUMBER_COUNT.value) {
+        if(new HashSet<Integer>(winningNumbers).size() != LottoConstant.NUMBER_COUNT.getValue()) {
             throw new IllegalArgumentException("[ERROR] 중복된 값이 존재합니다");
         }
 
         for(Integer number : winningNumbers) {
-            if(number < LottoConstant.START_NUMBER.value || LottoConstant.END_NUMBER.value < number) {
+            if(number < LottoConstant.START_NUMBER.getValue() || LottoConstant.END_NUMBER.getValue() < number) {
                 throw new IllegalArgumentException("[ERROR] 숫자 범위를 벗어납니다");
             }
         }
     }
 
     private void validateBonus() {
-        if(bonus < LottoConstant.START_NUMBER.value || LottoConstant.END_NUMBER.value < bonus) {
+        if(bonus < LottoConstant.START_NUMBER.getValue() || LottoConstant.END_NUMBER.getValue() < bonus) {
             throw new IllegalArgumentException("[ERROR] 숫자 범위를 벗어납니다");
         }
 

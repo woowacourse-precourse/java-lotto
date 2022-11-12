@@ -17,11 +17,11 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != LottoConstant.NUMBER_COUNT.value) {
+        if (numbers.size() != LottoConstant.NUMBER_COUNT.getValue()) {
             throw new IllegalArgumentException("[ERROR] 6개가 입력되지 않았습니다");
         }
 
-        if (new HashSet<>(numbers).size() != LottoConstant.NUMBER_COUNT.value) {
+        if (new HashSet<>(numbers).size() != LottoConstant.NUMBER_COUNT.getValue()) {
             throw new IllegalArgumentException("[ERROR] 중복된 값이 존재합니다");
         }
     }

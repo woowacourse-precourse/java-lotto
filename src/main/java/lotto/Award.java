@@ -33,7 +33,7 @@ public class Award {
         for(Lotto lotto : myLotteries) {
             int compare = lotto.compare(winningLottery);
 
-            if(compare < LottoConstant.WINNING_STANDARD.value) {
+            if(compare < LottoConstant.WINNING_STANDARD.getValue()) {
                 continue;
             }
 
@@ -41,7 +41,7 @@ public class Award {
             prize.put(winning, Optional.ofNullable(prize.get(winning)).orElse(0) + 1);
         }
 
-        printResult(myLotteries.size() * LottoConstant.PRICE.value);
+        printResult(myLotteries.size() * LottoConstant.PRICE.getValue());
     }
 
     private void printResult(int money) {

@@ -45,7 +45,7 @@ public class Shop {
     }
 
     private void validate(int money) {
-        if (money % LottoConstant.PRICE.value > 0) {
+        if (money % LottoConstant.PRICE.getValue() > 0) {
             throw new IllegalArgumentException("[ERROR] 1,000원 단위로 나뉘지 않습니다");
         }
     }
@@ -56,12 +56,12 @@ public class Shop {
         while (money > 0) {
             lotteryTickets.add(
                     new Lotto(Randoms.pickUniqueNumbersInRange(
-                            LottoConstant.START_NUMBER.value,
-                            LottoConstant.END_NUMBER.value,
-                            LottoConstant.NUMBER_COUNT.value
+                            LottoConstant.START_NUMBER.getValue(),
+                            LottoConstant.END_NUMBER.getValue(),
+                            LottoConstant.NUMBER_COUNT.getValue()
                     )));
 
-            money -= LottoConstant.PRICE.value;
+            money -= LottoConstant.PRICE.getValue();
         }
 
         return lotteryTickets;

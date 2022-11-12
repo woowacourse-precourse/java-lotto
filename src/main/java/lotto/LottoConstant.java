@@ -8,9 +8,13 @@ public enum LottoConstant {
     PRICE(1000),
     WINNING_STANDARD(3);
 
-    public int value;
+    private int value;
 
     LottoConstant(int value) {
         this.value = value;
+    }
+
+    public int getValue() {
+        return value;
     }
 }
