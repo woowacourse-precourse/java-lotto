@@ -11,7 +11,6 @@ public class InputLottoNumbersHandler {
     PickRandomLotto pickRandomLotto = new PickRandomLotto();
     InputMoney inputMoney = new InputMoney();
     public List<Integer> checkException(List<Integer> lottoNumbers) {
-        checkIsNumber(lottoNumbers);
         checkSize(lottoNumbers);
         checkSameNumbers(lottoNumbers);
         checkInRange(lottoNumbers);
@@ -28,9 +27,9 @@ public class InputLottoNumbersHandler {
             throw new IllegalArgumentException(inputMoneyHandler.ERROR_ORDER);
         }
     }
-    private void checkIsNumber(List<Integer> lottoNumbers){
-        for(int index = 0; index < lottoNumbers.size(); index++){
-            boolean checkNumeric = String.valueOf(lottoNumbers.get(index)).matches("[+-]?\\d*(\\.\\d+)?");
+    public void checkIsNumber(String[] lottoNumbers){
+        for(int index = 0; index < lottoNumbers.length; index++){
+            boolean checkNumeric = lottoNumbers[index].matches("[+-]?\\d*(\\.\\d+)?");
 
             if(!checkNumeric){
                 throw new IllegalArgumentException(inputMoneyHandler.ERROR_ORDER);

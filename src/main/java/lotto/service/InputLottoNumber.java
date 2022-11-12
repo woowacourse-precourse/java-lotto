@@ -31,6 +31,7 @@ public class InputLottoNumber {
 
     private List<Integer> sendDataToList(String[] userLottoNumbers) {
         List<Integer> LottoList = new ArrayList<>();
+        inputLottoNumbersHandler.checkIsNumber(userLottoNumbers);
         for(int i = 0; i < userLottoNumbers.length ; i++){
             LottoList.add(Integer.valueOf(userLottoNumbers[i]));
         }
