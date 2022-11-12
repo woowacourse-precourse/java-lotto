@@ -28,8 +28,10 @@ public class LottoGameSimulator {
     }
 
     public void printGeneratedLotto() {
-        int countOfLotto = userMoney.getMoney() / 1000;
-        purchasedLottos = LottoGenerator.generateLottos(countOfLotto);
+        int lottoQuantity = userMoney.getMoney() / 1000;
+        purchasedLottos = LottoGenerator.generateLottos(lottoQuantity);
+        MessagePrinter.printGeneratedLottoQuantity(lottoQuantity);
+        MessagePrinter.printGeneratedLottoNumbers(purchasedLottos);
     }
 
     public void getInputOfWinningNumbers() {
