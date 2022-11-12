@@ -9,6 +9,6 @@ public class Application {
         User user = new User();
         LotteryMachine lotteryMachine = new LotteryMachine();
         lotteryMachine.purchaseLottery(user);
-        
+        lotteryMachine.drawLottery();
     }
 }

@@ -13,6 +13,9 @@ public class LotteryMachine {
     private static final int LOTTERY_PRICE = 1_000;
     private static final String USER_MONEY_INPUT_MESSAGE = "구입 금액을 입력해 주세요.";
     private static final String PURCHASED_LOTTERY_NUMBER_MESSAGE = "개를 구매했습니다.";
+    private static final String WINNING_LOTTERY_INPUT_MESSAGE = "당첨 번호를 입력해 주세요.";
+
+    private Lotto winningLotto;
 
     public void purchaseLottery(User user) {
         user.setMoney(getUserMoneyInput(user));
@@ -47,5 +50,13 @@ public class LotteryMachine {
         }
         System.out.println();
         return lotteries;
+    }
+
+    public void drawLottery() {
+        System.out.println(WINNING_LOTTERY_INPUT_MESSAGE);
+        String winningNumbersInput = readLine();
+
+        InputValidator validator = new InputValidator();
+        validator.validateWinningNumbers(winningNumbersInput);
     }
 }
