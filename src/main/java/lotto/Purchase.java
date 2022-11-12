@@ -13,6 +13,13 @@ public class Purchase {
         this.price = price;
     }
 
+    public static int buyLotto() {
+        System.out.println(GameMessage.PRICE_MESSAGE.getMessage());
+        String payPrice = Console.readLine();
+        Purchase purchaseLotto = new Purchase(payPrice);
+        return purchaseLotto.calculateCount();
+    }
+
     private void validatePrice(String payPrice) {
         for (int index = 0; index < payPrice.length(); index++) {
             if (!Character.isDigit(payPrice.charAt(index))) {
