@@ -98,8 +98,13 @@ public class Customer {
         return winnings.get();
     }
 
+    private double calculateEarningRate(long winnings) {
+        double earningRate = (winnings / (double)pay) * 100;
+        return Math.round(earningRate*10)/10.0;
+    }
+
     public String toResultString() {
-        return String.valueOf(calculateWinnings());
+        return String.valueOf(calculateEarningRate(calculateWinnings()));
     }
 
 }
