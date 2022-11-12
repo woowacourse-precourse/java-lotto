@@ -3,6 +3,7 @@ package domain;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,15 +16,17 @@ public class Game {
     private static List<Integer> winning_numbers;
 
 
-    public static void start(){
+    public static void start() {
         Game.read_buyingLottoAmount();
-        System.out.print(Game.getLottoCount() +"개를 구매했습니다.");
+        System.out.print(Game.getLottoCount() + "개를 구매했습니다.");
         Controller.lottoSpawner(getLottoCount());
         Controller.printLottoNumbers();
         changeToInt(read_WinningNumbers());
         read_bonusNumber();
+        System.out.println("당첨 통계");
 
     }
+
     public static void changeToInt(String numbers) {
         String[] str = numbers.split(",");
         List<String> number = List.of(str);
@@ -50,5 +53,12 @@ public class Game {
 
     public static int getLottoCount() {
         return paymentAmount / LottoPrice;
+    }
+
+    public static List<Integer> upperSort(List<Integer> numbers) {
+
+        Collections.sort(numbers);
+
+        return numbers;
     }
 }
