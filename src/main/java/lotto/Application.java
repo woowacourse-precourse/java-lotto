@@ -13,6 +13,12 @@ public class Application {
         String winningNumbers = lottoManager.inputWinningNumbers();
         int bonusNumber = lottoManager.inputBonusNumber();
         List<Integer> numbers = numberGenerator.createWinningNumbers(winningNumbers);
+        try {
+            WinningNumbers w = new WinningNumbers(numbers, bonusNumber);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
 //        Lotto[] lottos = new Lotto[countNumber];
 //        for (int i = 0; i < countNumber; i++) {
 //            lottos[i] = new Lotto(numberGenerator.createLottoNumbers());
