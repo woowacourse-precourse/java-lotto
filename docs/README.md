@@ -41,10 +41,11 @@
   - V [x] 당첨 번호를 입력해 주세요. - InputView#printInputWinNumber()
   - V [x] 보너스 번호를 입력해 주세요. - InputView#printInputBonusNumber()
 - V 출력을 위한 문구를 출력한다. - OutputView
-  - V [ ] %d개를 구매했 습니다. - OutputView#printPurchaseAmount()
-  - V [ ] 구매한 로또 번호 출력 - OutputView#printPurchaseLottoNumber()
-  - V [ ] 당첨 통계 출력 - OutputView#printPrize()
-  - V [ ] 수익률 출력 - OutputView#printWinPersentage()
+  - V [x] %d개를 구매했 습니다. - OutputView#printPurchaseAmount()
+  - V [x] 구매한 로또 번호 출력 - OutputView#printPurchaseLottoNumber()
+  - V [x] 당첨 통계 출력 - OutputView#printPrize()
+  - V [x] 수익률 출력 - OutputView#printWinPersentage()
+  - V [x] enum 을 통해 데이터를 가지고 올 수 있도록 변환해준다 - OutputView#getLottoPrizeMoney()
 - C M,V 를 활용해 데이터의 흐름 조절한다 - LottoController
   - C [ ] 구입 금액 입력 후 구매한 로또 번호 출력 - LottoController#buyLotto()
   - C [ ] 당첨, 보너스 번호 입력 후 당첨 통계, 수익률 출력 - LottoController#checkLottoResult()
