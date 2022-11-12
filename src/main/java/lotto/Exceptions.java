@@ -17,4 +17,7 @@ public class Exceptions {
         throw new IllegalArgumentException("[ERROR] 1~45까지의 숫자가 아닙니다.");
     }
 
+    public void duplicationNumbers() throws IllegalArgumentException {
+        throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
+    }
 }

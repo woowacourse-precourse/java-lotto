@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.Exceptions;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Computer {
@@ -40,5 +41,12 @@ public class Computer {
             }
         }
         return numbers;
+    }
+
+    public void checkDuplication(List<Integer> numbers){
+        HashSet<Integer> set = new HashSet<>(numbers);
+        if (set.size()<6) {
+            exceptions.duplicationNumbers();
+        }
     }
 }
