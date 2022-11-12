@@ -73,9 +73,11 @@ public class Application {
 		stringNumbers = Console.readLine();
 
 		validateSplit(stringNumbers); // 먼저 구분자로 입력값이 나누어지는지 확인
+
 		numbersArray = stringNumbers.split(","); // 구분자 ,로 입력값을 나눠서 numbersarray에 담기
 
 		validateLottoNumber(numbersArray); // numbersarray에 담긴 값들이 모두 1-45까지의 숫자인지 확인
+
 		for (String number : numbersArray) { // numbersarray값들(string)을 숫자로 바꿔서 numbers리스트에 담기
 			numbers.add(Integer.parseInt(number));
 		}
@@ -87,7 +89,6 @@ public class Application {
 	}
 
 	public static void validateSplit(String stringNumbers) {
-		String[] numbersarray;
 		if (!stringNumbers.contains(",")) {
 			throw new IllegalArgumentException("[ERROR] 값을 ,로 구분해서 입력하세요.");
 		}
@@ -95,10 +96,12 @@ public class Application {
 
 	public static void validateLottoNumber(String[] numbersArray) {
 		String pattern = "^[0-9]{1,2}$";
+
 		for (String number : numbersArray) {
 			if (!Pattern.matches(pattern, number)) {
 				throw new IllegalArgumentException("[ERROR] 1-45사이의 숫자만 입력하세요.");
 			}
+
 			if (Integer.parseInt(number) < 1 || Integer.parseInt(number) > 45) {
 				throw new IllegalArgumentException("[ERROR] 1-45사이의 숫자만 입력하세요.");
 			}

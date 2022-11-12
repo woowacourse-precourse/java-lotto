@@ -36,20 +36,25 @@ public class Print {
 
 	public void printNumberAll(List<List<Integer>> lottoNumbersAll, int lottoNum, int purchasePrice) {
 		System.out.printf("%d개를 구매했습니다.\n", lottoNum);
+
 		for (int i = 0; i < lottoNum; i++) {
 			System.out.println(lottoNumbersAll.get(i));
 		}
+
 		this.lottoNumbersAll = lottoNumbersAll;
 		this.lottoNum = lottoNum;
 		this.purchasePrice = purchasePrice;
+
 		System.out.println();
 	}
 
 	public void printWin() {
 		int rankNum = 5;
 		DecimalFormat df = new DecimalFormat("#,###");
+
 		System.out.println("당첨 통계");
 		System.out.println("---");
+
 		for (rank r : rank.values()) {
 			if (rankNum == 2) {
 				System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n", r.getValue(), df.format(r.getPrice()),
@@ -107,6 +112,7 @@ public class Print {
 		int rankNum = 5;
 		for (rank r : rank.values()) {
 			double price = 0;
+
 			price = rankmap.getOrDefault(rankNum, 0) * r.getPrice();
 			profit += price;
 			rankNum--;
@@ -117,7 +123,9 @@ public class Print {
 
 	public void printProfitRound(double profit) {
 		double profitResult = 0f;
+
 		profitResult = Math.round(profit * 10) / 10.0;
+
 		System.out.printf("총 수익률은 %.1f%%입니다.", profitResult);
 	}
 }
