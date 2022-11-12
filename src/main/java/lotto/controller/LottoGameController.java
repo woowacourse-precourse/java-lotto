@@ -23,16 +23,24 @@ public class LottoGameController {
     private final Map<String, String> lottoWinningNumberAndBonusNumberMap = new HashMap<>();
 
     public void playGame() {
-        purchaseLotto();
+        inputLottoPurchaseAmount();
+        printPurchaseLottoCount();
+        printIssuedLottoNumbers();
         setWinningNumberAndBonusNumber();
         decidePurchaseLottosRank();
         printGameResult();
     }
 
-    public void purchaseLotto() {
+    public void inputLottoPurchaseAmount() {
         lottoPurchaseAmount = inputView.inputLottoPurchaseAmount();
         lottoIssueCount = lottoGameService.getLottoIssueCount(lottoPurchaseAmount);
+    }
+
+    public void printPurchaseLottoCount() {
         outputView.printPurchaseLottoCount(lottoIssueCount);
+    }
+
+    public void printIssuedLottoNumbers() {
         generateLottoNumbers();
         outputView.printIssuedLottoNumbers(lottoGameService.getPurchaseLottoNumbers());
     }
