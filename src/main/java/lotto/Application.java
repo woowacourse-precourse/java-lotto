@@ -242,13 +242,14 @@ public class Application {
         }
     }
 
-    public static void validateBonusNumberIsDuplicate(String input, List<Integer> winningNumberList) {
+    public static void validateBonusNumberIsDuplicate(String input, List<Integer> winningNumbers) {
         int bonusNumber = 0;
 
         for (int i = 0; i < input.length(); i++) {
             bonusNumber = bonusNumber * 10 + input.charAt(i) - 48;
         }
-        if (winningNumberList.contains(bonusNumber)) {
+        if (winningNumbers.contains(bonusNumber)) {
+            error = ErrorMessage.DUPLICATE;
             throw new IllegalArgumentException();
         }
     }
