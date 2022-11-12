@@ -352,13 +352,13 @@ public class Application {
         return number;
     }
 
-    public static Integer calculateFifth(List<Lotto> lottoList, List<Integer> winningNumberList) {
+    public static Integer calculateFifth(List<Lotto> lottoTickets, List<Integer> winningNumbers) {
 
         int number = 0;
 
-        for (Lotto lotto : lottoList) {
+        for (Lotto lotto : lottoTickets) {
 
-            number += compareLottoNumbersAndWinningNumbers(lotto, winningNumberList, 3);
+            number += compareLottoNumbersAndWinningNumbers(lotto, winningNumbers, 3);
         }
 
         return number;
