@@ -43,7 +43,7 @@ class LottoReaderTest {
     @DisplayName("정답 로또와 보너스 번호를 입력했을 때 로또의 결과 값을 제대로 반환하는지 테스트")
     @ParameterizedTest
     @MethodSource("resultLottoSourceGetter")
-    void 로또_결과_반환_테스트(List<Integer> lottoSource, LottoResult expected) {
+    void 로또_결과_반환_테스트(List<Integer> lottoSource, LottoRanking expected) {
         Lotto compareLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Lotto lotto = new Lotto(lottoSource);
         int bonusNumber = 7;
@@ -58,15 +58,15 @@ class LottoReaderTest {
         Lotto compareLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonusNumber = 7;
         WinningLotto winningLotto = new WinningLotto(compareLotto, bonusNumber);
-        Map<LottoResult, Integer> result = LottoReader.getLottoResults(lottoSource, winningLotto);
+        Map<LottoRanking, Integer> result = LottoReader.getLottoResults(lottoSource, winningLotto);
 
         assertThat(result).contains(
-                entry(LottoResult.FIRST, 1),
-                entry(LottoResult.SECOND, 1),
-                entry(LottoResult.THIRD, 1),
-                entry(LottoResult.FOURTH, 1),
-                entry(LottoResult.FIFTH, 1),
-                entry(LottoResult.MISS, 3));
+                entry(LottoRanking.FIRST, 1),
+                entry(LottoRanking.SECOND, 1),
+                entry(LottoRanking.THIRD, 1),
+                entry(LottoRanking.FOURTH, 1),
+                entry(LottoRanking.FIFTH, 1),
+                entry(LottoRanking.MISS, 3));
     }
 
     private static Stream<Arguments> lottoSourceGetter() {
@@ -83,14 +83,14 @@ class LottoReaderTest {
 
     private static Stream<Arguments> resultLottoSourceGetter() {
         return Stream.of(
-                Arguments.of(List.of(1, 2, 3, 4, 5, 6), LottoResult.FIRST),
-                Arguments.of(List.of(1, 2, 3, 4, 5, 7), LottoResult.SECOND),
-                Arguments.of(List.of(1, 2, 3, 4, 5, 8), LottoResult.THIRD),
-                Arguments.of(List.of(1, 2, 3, 4, 8, 9), LottoResult.FOURTH),
-                Arguments.of(List.of(1, 2, 3, 8, 9, 10), LottoResult.FIFTH),
-                Arguments.of(List.of(1, 2, 8, 9, 10, 11), LottoResult.MISS),
-                Arguments.of(List.of(1, 8, 9, 10, 11, 12), LottoResult.MISS),
-                Arguments.of(List.of(8, 9, 10, 11, 12, 13), LottoResult.MISS)
+                Arguments.of(List.of(1, 2, 3, 4, 5, 6), LottoRanking.FIRST),
+                Arguments.of(List.of(1, 2, 3, 4, 5, 7), LottoRanking.SECOND),
+                Arguments.of(List.of(1, 2, 3, 4, 5, 8), LottoRanking.THIRD),
+                Arguments.of(List.of(1, 2, 3, 4, 8, 9), LottoRanking.FOURTH),
+                Arguments.of(List.of(1, 2, 3, 8, 9, 10), LottoRanking.FIFTH),
+                Arguments.of(List.of(1, 2, 8, 9, 10, 11), LottoRanking.MISS),
+                Arguments.of(List.of(1, 8, 9, 10, 11, 12), LottoRanking.MISS),
+                Arguments.of(List.of(8, 9, 10, 11, 12, 13), LottoRanking.MISS)
         );
     }
 
