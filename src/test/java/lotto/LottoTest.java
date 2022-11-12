@@ -37,7 +37,7 @@ class LottoTest extends NsTest {
     @DisplayName("지불한 금액에 따라 로또 발행 개수가 달라진다.")
     @Test
     void countNumberOfLotto() {
-        assertThat(Generator.countNumberOfLotto(12000)).isEqualTo(12);
+        assertThat(Generator.countLottos(12000)).isEqualTo(12);
     }
 
     @DisplayName("로또 번호가 오름차순으로 정렬된다.")
