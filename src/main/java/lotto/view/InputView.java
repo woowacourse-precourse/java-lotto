@@ -15,5 +15,9 @@ public class InputView {
     public InputView(){
     }
 
-
+    public String startInput(){
+        System.out.println(MoneyInput);
+        String input = Console.readLine();
+        return input;
+    }
 }
