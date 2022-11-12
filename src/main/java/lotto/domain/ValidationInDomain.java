@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.constant.ErrorMessage;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -12,7 +14,7 @@ public class ValidationInDomain {
 
     public void checkDividedByThousand(int value){
         if(value % THOUSAND != 0){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_DOES_NOT_DIVIDED_BY_THOUSAND);
         }
     }
 
@@ -20,7 +22,7 @@ public class ValidationInDomain {
         Set<Integer> validator = new HashSet<>();
         for (int number : numbers){
             if(validator.contains(number)){
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorMessage.INPUT_HAS_DUPLICATED_NUMBER);
             }
             validator.add(number);
         }
@@ -28,14 +30,14 @@ public class ValidationInDomain {
 
     public void checkNumberRange(int number){
         if(number < MIN_NUMBER || number > MAX_NUMBER){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_EXCEEDS_NORMAL_RANGE);
         }
     }
 
     public void checkNumbersRange(List<Integer> numbers){
         for(int number : numbers){
             if(number < MIN_NUMBER || number > MAX_NUMBER){
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ErrorMessage.NUMBER_EXCEEDS_NORMAL_RANGE);
             }
         }
     }
@@ -43,13 +45,13 @@ public class ValidationInDomain {
     public void checkBonusNumberDuplication(List<Integer> numbers, int bonusNumber){
         Set<Integer> validator = new HashSet<>(numbers);
         if(validator.contains(bonusNumber)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.INPUT_HAS_DUPLICATED_NUMBER);
         }
     }
 
     public void checkNumberOfNumbers(List<Integer> numbers) {
         if (numbers.size() != NUMBER_OF_LOTTO_NUMBERS) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_OF_NUMBERS_DOES_NOT_MATCH);
         }
     }
 

@@ -1,5 +1,7 @@
 package lotto.view;
 
+import lotto.constant.ErrorMessage;
+
 import java.util.List;
 
 public class ValidationInView {
@@ -7,7 +9,7 @@ public class ValidationInView {
 
     public void checkNumericValue(String value){
         if(!value.matches(NUMERIC_REGULAR_EXPRESSION)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.TYPE_IS_NOT_RIGHT);
         }
     }
 
