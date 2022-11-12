@@ -1,14 +1,9 @@
 package lotto;
 
-import java.util.Map;
-
 public class Calculate {
-    
-    public static String getProfitRate(long purchaseAmount, Map<LottoMatch, Long> winningDetails) {
-        long winningAmount = 0L;
-        for (Map.Entry<LottoMatch, Long> entry : winningDetails.entrySet()) {
-            winningAmount += entry.getKey().getValue() * entry.getValue();
-        }
+
+    // 수익률을 계산하는 기능
+    public static String getProfitRate(long purchaseAmount, long winningAmount) {
         return String.format("%.1f", (double) winningAmount / purchaseAmount * 100);
     }
 }
