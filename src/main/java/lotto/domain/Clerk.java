@@ -5,6 +5,10 @@ import java.util.List;
 public class Clerk {
     LottoGenerator lottoGenerator;
 
+    public Clerk() {
+        this.lottoGenerator = new LottoGenerator();
+    }
+
     public List<Lotto> issueLottos(int money) {
         int numberOfLottos = calculateNumberOfLottos(money);
         return lottoGenerator.generateLottos(numberOfLottos);
