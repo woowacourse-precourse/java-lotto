@@ -17,15 +17,11 @@ public class InputView {
 	private static final String VALID_MONEY_ERROR_MESSAGE = "구입 금액은 1000원 단위로 입력하셔야 합니다.";
 	private static final String INPUT_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
 	private static final String INPUT_WIN_NUMBER_ERROR_MESSAGE = "당첨 번호는 ,로 구분된 숫자(1,2,3,4,5,6)여야 합니다.";
-	private static final String VALID_WIN_NUMBER_ERROR_MESSAGE = "당첨 번호는 1~45의 범위를 가지며, 6개입니다.";
 	private static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해주세요";
 	private static final String INPUT_BONUS_NUMBER_ERROR_MESSAGE = "보너스 번호는 숫자여야 합니다.";
 	private static final String INPUT_WIN_NUMBER_DIVIDE_STRING = ",";
 	private static final int DIVIDE_UNIT = 1000;
 	private static final int ZERO_NUMBER = 0;
-	private static final int DEFAULT_SIZE = 6;
-	private static final int MAX_VALUE = 45;
-	private static final int MIN_VALUE = 1;
 
 	public int inputUserMoney() {
 		System.out.println(INPUT_USER_MONEY_MESSAGE);
@@ -59,25 +55,6 @@ public class InputView {
 			System.out.println(DEFAULT_ERROR_MESSAGE + INPUT_WIN_NUMBER_ERROR_MESSAGE);
 		}
 		return winNumbers;
-	}
-
-	public void validWinningNumber(List<Integer> winNumbers) {
-		if (isWrongSize(winNumbers) || isDuplicateNumber(winNumbers)
-			|| isWrongRangeWinningNumber(winNumbers)) {
-			throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + VALID_WIN_NUMBER_ERROR_MESSAGE);
-		}
-	}
-
-	private boolean isDuplicateNumber(List<Integer> winNumbers) {
-		return new HashSet<>(winNumbers).size() != DEFAULT_SIZE;
-	}
-
-	private boolean isWrongRangeWinningNumber(List<Integer> winNumbers) {
-		return winNumbers.stream().noneMatch(num -> MIN_VALUE <= num && num <= MAX_VALUE);
-	}
-
-	private boolean isWrongSize(List<Integer> winNumbers) {
-		return winNumbers.size() != DEFAULT_SIZE;
 	}
 
 	public int inputBonusNumber() {

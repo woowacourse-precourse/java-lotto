@@ -10,6 +10,7 @@ import lotto.domain.BonusNumber;
 import lotto.domain.LottoRanking;
 import lotto.domain.LottoResult;
 import lotto.domain.LottoTicket;
+import lotto.domain.WinningNumber;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -40,8 +41,8 @@ public class LottoController {
 	}
 
 	public void receiveWinningNumbers() {
-		winningNumbers = inputView.inputWinningNumber();
-		inputView.validWinningNumber(winningNumbers);
+		WinningNumber winningNumber = new WinningNumber(inputView.inputWinningNumber());
+		winningNumber.validWinningNumber();
 	}
 
 	public void receiveBonusNumber() {
