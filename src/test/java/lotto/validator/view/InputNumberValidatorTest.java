@@ -71,4 +71,13 @@ class InputNumberValidatorTest {
                 .isThrownBy(() -> InputNumberValidator.validate(input))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
+    
+    @DisplayName("예외 처리 : 9자리를 넘기는 경우")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {"1400000000", "1234567890", "12345678901234567890"})
+    void digitOutOfRangeException(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> InputNumberValidator.validate(input))
+                .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
+    }
 }

@@ -9,10 +9,10 @@ import java.util.regex.Pattern;
 public class InputWinningLottoValidator {
     private static final String WINNING_LOTTO_INPUT_FORM_EXCEPTION_MESSAGE = "[ERROR] 로또 번호 입력 형식이 잘못 되었습니다.";
     private static final String EXIST_ZERO_AT_FIRST_PLACE_EXCEPTION_MESSAGE = "[ERROR] 숫자의 1번째 자리는 0일 수 없습니다.";
-    private static final String DIGIT_RANGE_OF_OUT_EXCEPTION = "[ERROR] 숫자의 자릿수는 9자리를 초과할 수 없습니다.";
+    private static final String DIGIT_OUT_OF_RANGE_EXCEPTION = "[ERROR] 숫자의 자릿수는 9자리를 초과할 수 없습니다.";
     private static final String WINNING_LOTTO_INPUT_FORM = "(\\d+,){5}\\d+";
     private static final String EXIST_ZERO_AT_FIRST_PLACE_FORM = "0\\d+";
-    private static final String DIGIT_RANGE_OF_OUT_FORM = "\\d{10}";
+    private static final String DIGIT_OUT_OF_RANGE_FORM = "\\d{10}";
     private static final String COMMA_DELIMITER = ",";
     
     private InputWinningLottoValidator() {
@@ -57,7 +57,7 @@ public class InputWinningLottoValidator {
     
     private static void validateDigitRangeOfOut(final String inputWinningLottoNumbers) {
         if (isNumberExistDigitRangeOfOut(inputWinningLottoNumbers)) {
-            throw new IllegalArgumentException(DIGIT_RANGE_OF_OUT_EXCEPTION);
+            throw new IllegalArgumentException(DIGIT_OUT_OF_RANGE_EXCEPTION);
         }
     }
     
@@ -67,7 +67,7 @@ public class InputWinningLottoValidator {
     }
     
     private static boolean isExistDigitRangeOfOut(final String inputWinningLottoNumber) {
-        return matcher(inputWinningLottoNumber, DIGIT_RANGE_OF_OUT_FORM).find();
+        return matcher(inputWinningLottoNumber, DIGIT_OUT_OF_RANGE_FORM).find();
     }
     
     private static Matcher matcher(final String inputWinningLottoNumbers, final String correctLottoNumbersForm) {
