@@ -6,19 +6,19 @@ import java.util.Map;
 
 public class LottoReader {
 
-    public static Map<LottoResult, Integer> getLottoResults(List<Lotto> lottos, Lotto compareLotto, int bonusNumber) {
+    public static Map<LottoResult, Integer> getLottoResults(List<Lotto> lottos, WinningLotto winningLotto) {
         Map<LottoResult, Integer> result = new HashMap<>();
         for (Lotto lotto : lottos) {
-            LottoResult lottoResult = getLottoResult(lotto, compareLotto, bonusNumber);
-            result.computeIfPresent(lottoResult,(key, value) ->value + 1);
+            LottoResult lottoResult = getLottoResult(lotto, winningLotto);
+            result.computeIfPresent(lottoResult, (key, value) -> value + 1);
             result.computeIfAbsent(lottoResult, key -> 1);
         }
         return result;
     }
 
-    public static LottoResult getLottoResult(Lotto lotto, Lotto compareLotto, int bonusNumber) {
-        double matchingNumber = countMatchingNumber(lotto, compareLotto);
-        if (matchingNumber == LottoResult.THIRD.getSameNumber() && isIncludedNumber(lotto, bonusNumber)) {
+    public static LottoResult getLottoResult(Lotto lotto, WinningLotto winningLotto) {
+        double matchingNumber = countMatchingNumber(lotto, winningLotto.getWinningLotto());
+        if (matchingNumber == LottoResult.THIRD.getSameNumber() && isIncludedNumber(lotto, winningLotto.getBonusNumber())) {
             matchingNumber += 0.5;
         }
         return LottoResult.getResult(matchingNumber);
