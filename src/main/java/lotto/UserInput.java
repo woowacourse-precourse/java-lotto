@@ -44,7 +44,7 @@ public class UserInput {
         }
     }
 
-    Lotto inputWinningNumber() {
+    public Lotto inputWinningNumber() {
         String winningNumber = Console.readLine();
         List numbers = validateLotto(winningNumber);
         return new Lotto(numbers);
@@ -68,7 +68,7 @@ public class UserInput {
         }
     }
 
-    int inputBonus() {
+    public int inputBonus() {
         String bonus = Console.readLine();
         int result = validateBonus(bonus);
         return result;
