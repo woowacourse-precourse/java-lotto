@@ -3,6 +3,8 @@ package lotto;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.Map;
 import lotto.controller.MainController;
 import lotto.model.Lotto;
 import lotto.model.LottoCompany;
@@ -10,6 +12,7 @@ import lotto.model.LottoMachine;
 import lotto.model.LottoRanking;
 import lotto.model.PrizeChecker;
 import lotto.model.Wallet;
+import lotto.view.OutputView;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.List;
@@ -56,9 +59,9 @@ class LottoTest {
 	@Test
 	void LottoInformationViewTest() {
 		// TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
-		MainController mainController = new MainController();
 		Wallet wallet = new LottoMachine(8000).buyLotto();
-		mainController.viewLotto(wallet.getMyLotto().size(), wallet.getMyLotto());
+		OutputView outputView = OutputView.getInstance();
+		outputView.LottoInformation(wallet.getMyLotto().size(), wallet.getMyLotto());
 	}
 
     @DisplayName("당첨번호와 일치 갯수 확인")
@@ -100,16 +103,16 @@ class LottoTest {
 		PrizeChecker prizeChecker = new PrizeChecker(lottoCompany, lottos);
 		Method method = prizeChecker.getClass().getDeclaredMethod("checkBonus", int.class, List.class, int.class);
 		method.setAccessible(true);
-		int bonusNumber = 0;
+		boolean isBonus = false;
 
 		try {
-			bonusNumber = (int) method.invoke(prizeChecker, 5, List.of(11, 12, 13, 14, 15, 16), 16);
+			isBonus = (boolean) method.invoke(prizeChecker, 5, List.of(11, 12, 13, 14, 15, 16), 15);
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
 			throw new RuntimeException(e);
 		} finally {
-			assertThat(bonusNumber).isEqualTo(22);
+			assertThat(isBonus).isEqualTo(true);
 		}
 	}
 
@@ -177,6 +180,24 @@ class LottoTest {
 
 		assertThat(Yield).isEqualTo(62.5);
 	}
+
+	@DisplayName("로또 결고 출력 테스트")
+	@Test
+	void lottoResultTest() {
+		// TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+		Map<LottoRanking, Integer> prizeResult = new EnumMap<>(LottoRanking.class);
+		prizeResult.put(LottoRanking.FIRST, 2);
+		prizeResult.put(LottoRanking.SECOND, 3);
+		prizeResult.put(LottoRanking.FIFTH, 5);
+		prizeResult.put(LottoRanking.FOURTH, 0);
+		prizeResult.put(LottoRanking.THIRD, 0);
+		prizeResult.put(LottoRanking.EMPTY, 0);
+
+		OutputView outputView = OutputView.getInstance();
+		outputView.lottoResult(prizeResult);
+		outputView.yield(3.555);
+	}
+
 
 
 }
