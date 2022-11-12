@@ -11,9 +11,9 @@
 - [ ] 구매한 갯수만큼 로또 수량 및 번호를 출력하는 기능 LottoShop.giveLottoList
     - [ ] "%d개를 구매했습니다." 출력 LottoConsole.outputLottoList
     - [ ] 1~45 범위의 중복되지 않는 랜덤한 숫자 6개를 오름차순 정렬하여 로또 갯수만큼 출력 LottoShop.generateLottoList
-        - [ ] 로또를 생성하는 기능 LottoShop.generateLotto
-            - [ ] 랜덤한 숫자 6개를 생성하는 기능 LottoShop.generateRandomNumbers
-            - [ ] 랜덤한 숫자 6개를 오름차순 정렬하는 기능 LottoShop.sortLottoByAsc
+        - [x] 로또를 생성하는 기능 LottoShop.generateLotto
+            - [x] 랜덤한 숫자 6개를 생성하는 기능 LottoShop.generateRandomNumbers
+            - [x] 랜덤한 숫자 6개를 오름차순 정렬하는 기능 LottoShop.sortLottoByAsc
       - [ ] 랜덤한 숫자 6개를 로또 갯수만큼 출력하는 기능 LottoConsole.outputLottoList
 - [ ] 당첨 번호와 보너스 번호를 입력받는 기능 LottoConsole.inputLuckyNumbers
     - [ ] "당첨 번호를 입력해 주세요." 출력 

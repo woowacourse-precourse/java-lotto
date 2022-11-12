@@ -2,6 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoShop {
@@ -11,13 +13,17 @@ public class LottoShop {
         return checkMoney(lottoConsole.inputMoney());
     }
 
-
-    private void generateLotto(){
-
+    private Lotto generateLotto(){
+        return new Lotto(sortLottoByAsc(generateRandomNumbers()));
     }
 
     private List<Integer> generateRandomNumbers(){
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    }
+
+    private List<Integer> sortLottoByAsc(List<Integer> randomList){
+        Collections.sort(randomList);
+        return randomList;
     }
 
     private int checkMoney(String inputMoney){
