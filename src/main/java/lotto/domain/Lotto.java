@@ -3,6 +3,7 @@ package lotto.domain;
 import lotto.utils.ErrorMessage;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -10,9 +11,10 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        this.numbers = numbers;
         validateNumberSize(numbers);
         validateIsDistinct(numbers);
+        sortLottoNumbers(numbers);
+        this.numbers = numbers;
     }
 
     private void validateNumberSize(List<Integer> numbers) {
@@ -29,4 +31,7 @@ public class Lotto {
         }
     }
 
+    private void sortLottoNumbers(List<Integer> numbers) {
+        Collections.sort(numbers);
+    }
 }
