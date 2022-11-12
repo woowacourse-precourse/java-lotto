@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.domain.Money;
+import lotto.domain.RandomLotto;
 import lotto.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.ResultView;
@@ -19,7 +20,6 @@ public class LottoController {
 
     public void gameStart() {
         int inputAmount = inputView.getInputAmount();
-        lottoService.makeRandomLottoNumbers(new Money(inputAmount));
-
+        RandomLotto randomLotto = lottoService.makeRandomLottoNumbers(new Money(inputAmount));
     }
 }
