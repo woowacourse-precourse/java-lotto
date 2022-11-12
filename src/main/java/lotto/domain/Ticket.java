@@ -20,6 +20,10 @@ public class Ticket {
         }
     }
 
+    public int getNumOfTicket() {
+        return numOfTicket;
+    }
+
     public List<List<Integer>> purchaseTickets() {
         for (int i = 0; i < this.numOfTicket; i++) {
             List<Integer> tempTicket = pickUniqueNumbersInRange(MIN_NUM, MAX_NUM, COUNT);
