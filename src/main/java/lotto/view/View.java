@@ -10,7 +10,6 @@ import java.util.Map;
 public class View {
 
     public void printLottoPayed(List<Lotto> lottoPayed) {
-        System.out.println(Constant.inputPrice);
         System.out.printf(Constant.buyingFormat,lottoPayed.size());
         for (Lotto lotto : lottoPayed) {
             System.out.println(lotto.getNumbers());
@@ -32,6 +31,10 @@ public class View {
 
     public void printEarningRate(double earningRate) {
         System.out.printf(Constant.earningRateFormat,earningRate);
+    }
+
+    public void printInputPrice(){
+        System.out.println(Constant.inputPrice);
     }
 
     public void printInputWinningLotto(){
