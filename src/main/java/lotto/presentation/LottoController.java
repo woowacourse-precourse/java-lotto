@@ -2,6 +2,7 @@ package lotto.presentation;
 
 import lotto.application.LottoService;
 import lotto.application.ViewService;
+import lotto.presentation.dto.BonusNumber;
 import lotto.presentation.dto.PurchaseAmount;
 import lotto.presentation.dto.WinnerNumber;
 
@@ -19,17 +20,23 @@ public class LottoController {
     public void run(){
         viewService.printInputPurchaseAmountInformation();
     }
+    public void purchasedLotto(){
+        lottoService.purchasedLotto();
+    }
     public void saveCountLotto(PurchaseAmount purchaseAmount){
         lottoService.saveCountLotto(purchaseAmount);
-    }
-    public void inputWinnerNumberInformation(){
-        viewService.printInputWinnerNumberInformation();
     }
     public void saveWinnerNumber(WinnerNumber winnerNumber){
         lottoService.saveWinnerNumber(winnerNumber);
     }
-    public void purchasedLotto(){
-        lottoService.purchasedLotto();
+    public void saveBonusNumber(BonusNumber bonusNumber){
+        lottoService.saveBonusNumber(bonusNumber);
+    }
+    public void printInputWinnerNumber(){
+        viewService.printInputWinnerNumber();
+    }
+    public void printInputBonusNumber(){
+        viewService.printInputBonusNumber();
     }
     public void printCountLotto(){
         viewService.printCountLotto();
@@ -37,4 +44,5 @@ public class LottoController {
     public void printPurchasedLotto(){
         viewService.printPurchasedLotto();
     }
+
 }

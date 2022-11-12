@@ -3,6 +3,7 @@ package lotto.application;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 import lotto.domain.repository.LottoRepository;
+import lotto.presentation.dto.BonusNumber;
 import lotto.presentation.dto.PurchaseAmount;
 import lotto.presentation.dto.WinnerNumber;
 
@@ -30,6 +31,9 @@ public class LottoService {
     }
     public void saveWinnerNumber(WinnerNumber winnerNumber){
         lottoRepository.updateWinnerNumber(winnerNumber);
+    }
+    public void saveBonusNumber(BonusNumber bonusNumber){
+        lottoRepository.updateBonusNumber(bonusNumber);
     }
 
     public void purchasedLotto() {

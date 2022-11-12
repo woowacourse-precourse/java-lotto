@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.presentation.LottoController;
+import lotto.presentation.dto.BonusNumber;
 import lotto.presentation.dto.PurchaseAmount;
 import lotto.presentation.dto.WinnerNumber;
 
@@ -21,9 +22,13 @@ public class Application {
             //로또 발행 내역 출력
             lottoController.printPurchasedLotto();
             //당첨 번호 입력 시작
-            lottoController.inputWinnerNumberInformation();
+            lottoController.printInputWinnerNumber();
             //당첨 번호 저장
             lottoController.saveWinnerNumber(new WinnerNumber(Console.readLine()));
+            //보너스 번호 입력 시작
+            lottoController.printInputBonusNumber();
+            //보너스 번호 저장
+            lottoController.saveBonusNumber(new BonusNumber(Console.readLine()));
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
