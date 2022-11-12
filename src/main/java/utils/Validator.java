@@ -111,4 +111,11 @@ public class Validator {
             exist.put(luckyNumber, exist.getOrDefault(luckyNumber, 0) + 1);
         }
     }
+
+    public void validateBonusNumberSize(String input) {
+        if (input.length() < START.getDigitsSize() || input.length() > END.getDigitsSize()) {
+            throw new IllegalArgumentException(INCORRECT_BONUS_NUMBER_SIZE.toString());
+        }
+    }
+
 }

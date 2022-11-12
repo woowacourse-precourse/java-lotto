@@ -49,5 +49,11 @@ public enum ErrorMessage {
         public String toString() {
             return HEADER + "로또 번호는 1부터 45사이의 숫자여야 합니다.";
         }
+    },
+    INCORRECT_BONUS_NUMBER_SIZE{
+        @Override
+        public String toString() {
+            return HEADER + "보너스 번호는 1~45 사이의 번호여야 합니다.";
+        }
     }
 }
