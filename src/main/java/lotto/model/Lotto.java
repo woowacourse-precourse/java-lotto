@@ -37,4 +37,9 @@ public class Lotto {
     int getPrizeMoney() {
         return prizeMoney;
     }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }
