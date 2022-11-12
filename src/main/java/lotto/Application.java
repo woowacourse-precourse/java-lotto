@@ -195,18 +195,8 @@ public class Application {
 
     public static List<Integer> getWinningNumbers(String input) {
         validateWinningNumbersForm(input);
-        List<Integer> winningNumberList = new ArrayList<>();
-        int number = 0;
-        for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) == ',') {
-                winningNumberList.add(number);
-                number = 0;
-                continue;
-            }
-            number = number * 10 + input.charAt(i) - 48;
-        }
-        winningNumberList.add(number);
-        return winningNumberList;
+
+        return changeWinningNumbersStringToList(input);
     }
 
     public static List<Integer> changeWinningNumbersStringToList(String input) {
