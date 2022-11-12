@@ -12,6 +12,12 @@ public class LottoGameMessage {
     public void printPurchasePriceMessage(){
         System.out.println(PURCHASE_PRICE_MESSAGE);
     }
-    
+
+    public void printPurchaseCountMessage(int lottoCount){
+        System.out.println(lottoCount + PURCHASE_COUNT_MESSAGE);
+    }
+
+
+
 
 }
