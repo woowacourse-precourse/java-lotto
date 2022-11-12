@@ -9,7 +9,7 @@ public class LottoWithBonus {
     int bonusNumber;
 
     public LottoWithBonus(Lotto lotto, int bonusNumber) {
-        validateContains(lotto,bonusNumber);
+        validateContains(lotto, bonusNumber);
         this.lotto = lotto;
         this.bonusNumber = bonusNumber;
     }

@@ -6,42 +6,53 @@ import java.util.ArrayList;
 import java.util.List;
 import lotto.constants.ErrorCode;
 import lotto.domain.Compare;
-import lotto.model.BonusNumber;
+import lotto.domain.LottoVendingMachine;
 import lotto.model.Lotto;
+import lotto.model.LottoWithBonus;
 import lotto.model.Money;
 
-public class InputHandler {
+public class ViewHandler {
 
     Compare compare;
+    LottoVendingMachine lottoVendingMachine;
+    LottoWithBonus lottoWithBonus;
     Lotto lotto;
 
     public void inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         try {
-            compare = new Compare(new Money(stringToInt(readLine())));
+            lottoVendingMachine = new LottoVendingMachine(new Money(stringToInt(readLine())));
         } catch (Exception e) {
             throw e;
         }
     }
 
-    public void inputLotto() {
+    public void inputLottoWithBonus() {
+        inputLotto();
+        inputBonus();
+    }
+
+    private void inputLotto() {
         System.out.println("당첨 번호를 입력해 주세요.");
         try {
             lotto = new Lotto(stringToList(readLine()));
-            compare.setLotto(lotto);
         } catch (Exception e) {
             throw e;
         }
     }
 
-    public void inputBonus() {
+    private void inputBonus() {
         System.out.println("보너스 번호를 입력해 주세요.");
         try {
-            BonusNumber bonusNumber = new BonusNumber(lotto, stringToInt(readLine()));
-            compare.setBonusNumber(bonusNumber);
+            lottoWithBonus = new LottoWithBonus(lotto, stringToInt(readLine()));
         } catch (Exception e) {
             throw e;
         }
+        inputCompare();
+    }
+
+    private void inputCompare() {
+        compare = new Compare(lottoVendingMachine.getHaveLottoList(), lottoWithBonus);
     }
 
     private List<Integer> stringToList(String readLine) {

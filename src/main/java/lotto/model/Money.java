@@ -1,6 +1,7 @@
 package lotto.model;
 
 import lotto.constants.ErrorCode;
+import lotto.constants.LottoConstants;
 
 public class Money {
 
@@ -16,7 +17,7 @@ public class Money {
     }
 
     private void validateBill(int input) {
-        if (input % 1000 != 0) {
+        if (input % LottoConstants.LOTTO_PRICE != 0) {
             throw ErrorCode.NOT_BILL.getException();
         }
     }
