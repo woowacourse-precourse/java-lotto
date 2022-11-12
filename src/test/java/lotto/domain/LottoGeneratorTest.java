@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class LottoGeneratorTest {
     @DisplayName("뽑은 번호를 오름차순으로 정렬한다.")
     @Test
     void 로또_번호_오름차순() {
-        List<Integer> numbers = List.of(6,5,4,3,2,1);
+        List<Integer> numbers = Arrays.asList(6,5,4,3,2,1);
         List<Integer> sortNumbers = lottoGenerator.sortLotto(numbers);
         assertThat(List.of(1,2,3,4,5,6)).isEqualTo(sortNumbers);
     }
