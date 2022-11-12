@@ -39,4 +39,9 @@ public class BuyerTest {
         }
         assertThat(resultPurchaseAmounts).containsExactly(10, 12, 1, 3, 4, 4, 5);
     }
+    @ParameterizedTest
+    @ValueSource(ints={10500, 10010, 10001})
+    public void 구매_금액이_최소_구매_단위인지_확인하기(int purchaseAMount){
+        assertThatThrownBy(()->new Buyer(purchaseAMount)).isInstanceOf(IllegalArgumentException.class);
+    }
 }
