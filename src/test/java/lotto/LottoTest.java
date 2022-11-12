@@ -40,6 +40,30 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호가 숫자가 아닌 경우 예외가 발생한다.")
+    @Test
+    void createBonusNumberByNotNumber() {
+        Utils utils = new Utils();
+        assertThatThrownBy(() -> utils.validateBonusNumber("T", List.of(1,2,3,4,5,6)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 1부터 45까지의 숫자가 아니면 예외가 발생한다.")
+    @Test
+    void createBonusNumberByWrongRange() {
+        Utils utils = new Utils();
+        assertThatThrownBy(() -> utils.validateBonusNumber("47", List.of(1,2,3,4,5,6)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호가 당첨 번호와 중복인 경우 예외가 발생한다.")
+    @Test
+    void createBonusNumberByDuplicatedLotto() {
+        Utils utils = new Utils();
+        assertThatThrownBy(() -> utils.validateBonusNumber("6", List.of(1,2,3,4,5,6)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("입력된 구입금액이 1,000원 단위가 아닌 경우 예외가 발생한다.")
     @Test
     void inputMoneyWrongUnit() {
