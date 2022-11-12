@@ -27,4 +27,9 @@ public class PrintInputMessage {
         return inputWinningLottoNum;
     }
 
+    private static String getBonusLottoNumber() {
+        System.out.println(INPUT_BONUS_LOTTO_NUMBER);
+        return Console.readLine();
+    }
+
 }
