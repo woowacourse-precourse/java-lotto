@@ -56,6 +56,7 @@ class ApplicationTest extends NsTest {
                 List.of(8, 21, 23, 41, 42, 46)
         );
     }
+
     @Test
     void 기능_크기_예외_테스트() {
         assertRandomUniqueNumbersInRangeTest(
@@ -66,6 +67,7 @@ class ApplicationTest extends NsTest {
                 List.of(8, 21, 23, 41, 42, 44, 32)
         );
     }
+
     @Test
     void 기능_중복_예외_테스트() {
         assertRandomUniqueNumbersInRangeTest(
@@ -76,6 +78,28 @@ class ApplicationTest extends NsTest {
                 List.of(8, 21, 23, 41, 42, 42)
         );
     }
+
+    @Test
+    void 기능_문자_예외_테스트() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("1000", "a,2,3,4,5,6", "6");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                },
+                List.of(8, 21, 23, 41, 42, 43)
+        );
+    }
+
+    @Test
+    void 기능_보너스_예외_테스트() {
+        assertRandomUniqueNumbersInRangeTest(
+                () -> {
+                    run("1000", "1,2,3,4,5,6", "6");
+                    assertThat(output()).contains(ERROR_MESSAGE);
+                },
+                List.of(8, 21, 23, 41, 42, 43)
+        );
+    }
     @Test
     void 예외_테스트() {
         assertSimpleTest(() -> {
@@ -83,6 +107,7 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+
     @Test
     void 예외_천단위_가격_테스트() {
         assertSimpleTest(() -> {
@@ -90,6 +115,7 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+
     @Test
     void 예외_최소_가격_테스트() {
         assertSimpleTest(() -> {

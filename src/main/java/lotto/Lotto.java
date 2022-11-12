@@ -45,12 +45,19 @@ public class Lotto {
         for (int i = 0; i < LOTTO_SIZE; i++) {
             int current = numbers.get(i);
 
-            if (ReferenceValue.LOTTO_START_RANGE <= current
-                    && ReferenceValue.LOTTO_END_RANGE >= current) {
+            if (ReferenceValue.LOTTO_START_RANGE > current || ReferenceValue.LOTTO_END_RANGE < current) {
                 Record.printRangeError();
                 throw new IllegalArgumentException();
             }
         }
+    }
+
+    public boolean checkBonusDuplicate(int bonus) {
+        if (numbers.contains(bonus)) {
+            Record.printBonusDuplicateError();
+            return true;
+        }
+        return false;
     }
 
     public static List<Integer> getLottoNumbers(String input) {
@@ -58,6 +65,7 @@ public class Lotto {
         String[] numbers = input.split(",");
 
         for (int i = 0; i < ReferenceValue.LOTTO_SIZE; i++) {
+            Game.checkNumberError(numbers[i]);
             int number = Integer.valueOf(numbers[i]);
             lottoNumbers.add(number);
         }

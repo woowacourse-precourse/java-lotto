@@ -21,11 +21,11 @@ public class Game {
     public static void play() {
         try {
             enterLottoTickets();
+            enterWinningNumbers();
+            enterBonus();
         } catch (IllegalArgumentException e) {
             return;
         }
-        enterWinningNumbers();
-        enterBonus();
         setLottoResults();
         Record.printWinningStats(lottoTickets);
     }
@@ -50,12 +50,12 @@ public class Game {
     private static void enterLottoTickets() {
         int counts = price / ReferenceValue.LOTTO_PRICE;
         Record.printBuyCounts(counts);
+
         List<Lotto> allLottery = new ArrayList<>();
         for (int i = 0; i < counts; i++) {
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(ReferenceValue.LOTTO_START_RANGE,
                     ReferenceValue.LOTTO_END_RANGE, ReferenceValue.LOTTO_SIZE);
 
-            checkLottoNumbers(lottoNumbers);
             Lotto lotto = new Lotto(lottoNumbers);
             Record.printLotto(lotto);
             allLottery.add(lotto);
@@ -63,9 +63,6 @@ public class Game {
 
         lottoTickets = new LottoTickets(allLottery);
         System.out.println();
-    }
-
-    private static void checkLottoNumbers(List<Integer> lottoNumbers) {
     }
 
     private static void enterWinningNumbers() {
@@ -76,16 +73,40 @@ public class Game {
 
         List<Integer> numbers = Lotto.getLottoNumbers(winningInput);
         winningNumbers = new Lotto(numbers);
+
         System.out.println();
     }
 
     private static void enterBonus() {
         String bonusInput = Console.readLine();
 
-        bonus = Integer.valueOf(bonusInput);
         Record.printBonusNumber();
-        System.out.println(bonus);
+        System.out.println(bonusInput);
         System.out.println();
+
+        if (checkNumberError(bonusInput) || checkBonusDuplicateError(bonusInput) || checkBonusRangeError(bonusInput)) {
+            throw new IllegalArgumentException();
+        }
+
+        bonus = Integer.valueOf(bonusInput);
+    }
+
+    private static boolean checkBonusRangeError(String bonusInput) {
+
+        int bonus = Integer.valueOf(bonusInput);
+
+        if (bonus < ReferenceValue.LOTTO_START_RANGE
+                || bonus > ReferenceValue.LOTTO_END_RANGE) {
+            Record.printRangeError();
+            return true;
+        }
+
+        return false;
+    }
+
+    private static boolean checkBonusDuplicateError(String bonusInput) {
+        int bonus = Integer.valueOf(bonusInput);
+        return winningNumbers.checkBonusDuplicate(bonus);
     }
 
     public static String checkInputError() {
@@ -132,7 +153,7 @@ public class Game {
         return false;
     }
 
-    private static boolean checkNumberError(String input) {
+    public static boolean checkNumberError(String input) {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
