@@ -2,7 +2,6 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,7 +28,9 @@ public class Input {
         System.out.println(ENTER_WINNING_NUMBER_MESSAGE);
         try {
             List<Integer> winningNumber = stringToList(Console.readLine());
-
+            validateSize(winningNumber);
+            validateDuplicate(winningNumber);
+            validateNumberRange(winningNumber);
             return winningNumber;
         } catch (Exception e) {
             throw new IllegalArgumentException("[ERROR] Only enter numbers.");
@@ -42,5 +43,29 @@ public class Input {
                 .collect(toList());
     }
 
+    private static void validateSize(List<Integer> numbers) {
+        if (numbers.size() != LOTTO_SIZE) {
+            throw new IllegalArgumentException("[ERROR] Must enter 6 lottery winning numbers.");
+        }
+    }
+
+    private static void validateDuplicate(List<Integer> numbers) {
+        if (numbers.stream()
+                .distinct()
+                .count() != LOTTO_SIZE) {
+            throw new IllegalArgumentException("[ERROR] Must enter non-duplicate numbers.");
+        }
+    }
+
+    private static void validateNumberRange(List<Integer> numbers) {
+        if (numbers.stream()
+                .anyMatch(Input::inRange)) {
+            throw new IllegalArgumentException("[ERROR] Must enter a number from 1 to 45.");
+        }
+    }
+
+    private static boolean inRange(int number) {
+        return number < START_NUMBER || number > END_NUMBER;
+    }
 
 }
