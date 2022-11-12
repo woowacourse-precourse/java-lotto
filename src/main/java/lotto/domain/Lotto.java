@@ -50,8 +50,8 @@ public class Lotto {
 
     private int calculateCountOfMatchingNumbers(List<Integer> winningNumbers){
         int count = 0;
-        for(int i = 0; i < winningNumbers.size(); i++){
-            if(numbers.contains(winningNumbers.get(i))){
+        for(int winningNumber : winningNumbers){
+            if(numbers.contains(winningNumber)){
                 count++;
             }
         }
