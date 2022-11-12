@@ -21,9 +21,9 @@ public class Utils {
         return price / LOTTO_PRICE;
     }
 
-    public static List<Lotto> issueLotto(int amount) {
+    public static List<Lotto> issueLotto(int price) {
         List<Lotto> issuedLottos = new ArrayList<>();
-        for (int count = 0; count < amount ; count++) {
+        for (int count = 0; count < price ; count++) {
             List<Integer> picked = Randoms.pickUniqueNumbersInRange(MIN_NUM, MAX_NUM, NUMBER_OF_NUMS);
             issuedLottos.add(new Lotto(picked));
         }
