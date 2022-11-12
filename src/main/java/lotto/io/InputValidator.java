@@ -13,5 +13,7 @@ public class InputValidator {
         for (String number : numbers.trim().split(",")) {
             validateToParseInt(number);
         }
+        if (numbers.split(",").length != 6)
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개 입력해 주세요.");
     }
 }
