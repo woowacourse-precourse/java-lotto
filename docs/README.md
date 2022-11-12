@@ -29,10 +29,11 @@
 ## User
 - 사용자 객체 클래스
 - 해당 클래스에는 사용자가 입력한 로또 번호(6자리)가 저장됨
-- 인스턴스 변수: 사용자의 번호 목록을 저장하기 위한 `List<List<Integer>> numbers`
+- 인스턴스 변수: 사용자의 번호 목록을 저장하기 위한 `List<List<Integer>> userNumbers`
 
 ## Lotto (사전 정의)
 - 로또 번호 객체 클래스
+- 로또 번호를 관리
 - 해당 클래스에는 컴퓨터가 랜덤으로 생성한 로또 번호(6자리)가 저장됨
 - 인스턴스 변수: 당첨 번호를 저장하기 위한 `List<Integer> numbers`
 
@@ -49,7 +50,6 @@
   - 사용자가 입력한 번호의 개수가 6개보다 작거나 큰지?
 
 ## ManagementLottoNumber
-- 로또 번호를 관리하는 클래스
 - 로또 번호를 생성하는 `generateLottoNumber()` 메소드
 - 로또 당첨 여부를 확인하는 `checkLottoNumber()` 메소드
 - 수익률을 계산하는 `calcROI()` 메소드 / ROI = Return on investment
