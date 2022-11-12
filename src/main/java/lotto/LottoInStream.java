@@ -10,11 +10,21 @@ public class LottoInStream {
     private static final String _input_bonus_number_str = "보너스 번호를 입력해 주세요.\n";
 
     public static Integer readToBuyLotto(Integer money) {
+        System.out.print(_input_buy_str);
+        String line = readline();
 
+        if (isNullOrEmptyString(line)) {
+            throw new IllegalArgumentException();
+        }
+
+        try {
+            return Integer.parseInt(line);
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public static List<Integer> readToGetLottoNumbers() {
-
     }
 
     private static String readline() {
