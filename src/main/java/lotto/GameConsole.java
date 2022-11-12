@@ -14,20 +14,26 @@ public class GameConsole {
     public int inputPurchase(){
         notice(INPUT_PURCHASE_MESSAGE);
         String purchase = Console.readLine();
+        return Integer.parseInt(purchase);
     }
 
-    public void inputWinningNumber(){
+    public List<Integer> inputWinningNumber(){
         notice(INPUT_WINNING_NUMBER_MESSAGE);
         String winningNumber = Console.readLine();
+
+        return Arrays.stream(winningNumber.split(","))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     private static void notice(String inputMessage) {
         System.out.println(inputMessage);
     }
 
-    public void inputBonusNumber(){
+    public int inputBonusNumber(){
         notice(INPUT_BONUS_NUMBER_MESSAGE);
         String bonusNumber = Console.readLine();
+        return Integer.parseInt(bonusNumber);
     }
 
     public void outputLottos(int lottoCount, List<Lotto> lottos) {
