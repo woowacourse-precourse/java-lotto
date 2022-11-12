@@ -1,13 +1,17 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.object.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-class LottoTest {
+class LottoTest extends NsTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -21,6 +25,18 @@ class LottoTest {
         // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 클래스 당첨 번호 입력 받고 크기 확인")
+    @Test
+    void input_Win_Numbers_And_check_size(){
+                    run("1,2,3,4,5,6");
+                    assertThat(output()).contains("6");
+    }
+
+    @Override
+    protected void runMain() {
+        Lotto.main(new String[]{});
     }
 
     // 아래에 추가 테스트 작성 가능
