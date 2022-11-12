@@ -31,4 +31,12 @@ public class WinningNumberServiceTest{
         assertThatThrownBy(() -> winningNumberService.parseBonusNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("보너스 번호 범위 벗어난 경우 테스트")
+    @Test
+    void 보너스_범위_벗어난_경우_에러_테스트(){
+        String input = "60";
+        assertThatThrownBy(() -> winningNumberService.parseBonusNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
