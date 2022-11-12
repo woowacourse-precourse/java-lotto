@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import lotto.exception.lotto.LottoNumberDuplicateException;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -12,6 +13,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         validateSize(numbers);
+        validateDuplicate(numbers);
     }
 
     private void validateSize(List<Integer> numbers) {
@@ -20,5 +22,12 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void validateDuplicate(List<Integer> numbers) {
+        long distinctCount = numbers.stream()
+                .distinct()
+                .count();
+        if (numbers.size() != distinctCount) {
+            throw new LottoNumberDuplicateException();
+        }
+    }
 }
