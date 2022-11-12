@@ -16,11 +16,11 @@ public class Yield {
 
     private Integer reward() {
         Integer reward = 0;
-        reward += this.match.getMatches().get(Lanking.rank1) * 2000000000;
-        reward += this.match.getMatches().get(Lanking.rank2) * 30000000;
-        reward += this.match.getMatches().get(Lanking.rank3) * 1500000;
-        reward += this.match.getMatches().get(Lanking.rank4) * 50000;
-        reward += this.match.getMatches().get(Lanking.rank5) * 5000;
+        reward += this.match.getMatches().get(Lanking.rank1) * Lanking.rank1.getReward();
+        reward += this.match.getMatches().get(Lanking.rank2) * Lanking.rank2.getReward();
+        reward += this.match.getMatches().get(Lanking.rank3) * Lanking.rank3.getReward();
+        reward += this.match.getMatches().get(Lanking.rank4) * Lanking.rank4.getReward();
+        reward += this.match.getMatches().get(Lanking.rank5) * Lanking.rank5.getReward();
         return reward;
     }
 }
