@@ -1,12 +1,12 @@
-package lotto.domain;
+package lotto.view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import lotto.view.ErrorMessage;
-import lotto.view.Message;
+import lotto.domain.ErrorMessage;
+import lotto.domain.Lotto;
 
 public class LottoBuyer {
     public static int purchaseLottoCount;
