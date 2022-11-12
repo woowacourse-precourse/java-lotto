@@ -50,4 +50,11 @@ public class SystemController {
 
         statistics(myLotto, numbers, BonusNumber, purchaseMoney);
     }
+
+    private List<List<Integer>> purchaseLotto(Money money, String purchaseMoney){
+        System.out.print(money.howMany(purchaseMoney));
+        outputView.startInput_Output();
+        myLotto=countRandomLotto.calculate(money.howMany(purchaseMoney));
+        return myLotto;
+    }
 }
