@@ -3,10 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     static int check_money(){
@@ -87,7 +84,10 @@ public class Application {
         }
         return bonus;
     }
-    static boolean check_bouns(List<Integer>lotto_num, int bonus){
+    static void check_bonus(Lotto lotto,int bonus){
+        lotto.check_bonus(bonus);
+    }
+    static boolean check_second(List<Integer>lotto_num, int bonus){
         if(lotto_num.contains(bonus)) return true;
         return false;
     }
@@ -95,26 +95,40 @@ public class Application {
         float result;
         result = lotto.check_rank(lotto_num);
         if(result == 5f){
-            if(check_bouns(lotto_num,bonus)) result = result + 0.5f;
+            if(check_second(lotto_num,bonus)) result = result + 0.5f;
         }
         return result;
     }
     static void check_result(Lotto lotto,List<List<Integer>> lotto_nums,int bonus){
-        List<Float> result_rank = new ArrayList<Float>();
+        List<Integer> count_rank = new ArrayList<Integer>(Arrays.asList(0,0,0,0,0));
         float result;
-        int price;
+        int price = 0;
         List<Integer> temp;
         for (int i = 0;i < lotto_nums.size();i++){
             temp = lotto_nums.get(i);
             result = check_same_num(lotto,temp,bonus);
-            result_rank.add(result);
+            count_rank = count_result(count_rank,result);
+            price = calculate_price(price,result);
         }
-        System.out.println(result_rank);
     }
 
-//    static int calculate_price(float result){
-//
-//    }
+    static List<Integer> count_result (List<Integer> count_rank, float result){
+        for(RankType r: RankType.values()){
+            if(r.getNum()==result){
+                count_rank.set(r.check,count_rank.get(r.check)+1);
+            }
+        }
+        return count_rank;
+    }
+
+    static int calculate_price(int price,float result){
+        for(RankType r: RankType.values()){
+            if(r.getNum()==result){
+                price += r.getPrice();
+            }
+        }
+        return price;
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int money;
@@ -132,6 +146,7 @@ public class Application {
             System.out.println(winning_num);
             Lotto lotto = new Lotto(winning_num);
             bonus = read_bonus();
+            check_bonus(lotto,bonus);
             check_result(lotto, lotto_nums,bonus);
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
@@ -143,9 +158,17 @@ public class Application {
         RANk_THIRD(2,5,"5개 일치(1,500,000원)",1500000),
         RANK_SECOND(3,5.5f,"5개 일치,보너스 볼 일치(30,000,000원)",30000000),
         RANK_FIRST(4,6,"6개 일치 (2,000,000,000원)",2000000000);
+        final private int check;
         final private float num;
         final private String result;
         private final int price;
+
+        public int getCheck(){
+            return check;
+        }
+        public float getNum(){
+            return num;
+        }
         public String getResult(){
             return result;
         }
@@ -153,6 +176,7 @@ public class Application {
             return price;
         }
         private RankType(int check, float num, String result,int price){
+            this.check = check;
             this.num = num;
             this.result = result;
             this.price = price;
