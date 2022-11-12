@@ -18,6 +18,7 @@ class UserInputHandlerTest{
     OutputStream out;
     InputStream in;
     UserInputHandler inputHandler = new UserInputHandler();
+    private final int WINNING_NUMBER_SiZE = 6;
 
 
     void beforeSetting(String input){
@@ -127,6 +128,16 @@ class UserInputHandlerTest{
         }
 
         @Test
+        void getWinningNumbersTest_exception2_2(){
+            String input = "1,1,2,3,4,5";
+            beforeSetting(input);
+            assertSimpleTest(() -> {
+                exceptionRunning(functionSupply);
+                assertThat(out.toString().trim()).contains(ERROR_MESSAGE);
+            });
+        }
+
+        @Test
         void getWinningNumbersTest_exception3_1(){
             String input = "0,1,2,3,4,5";
             beforeSetting(input);
@@ -164,6 +175,44 @@ class UserInputHandlerTest{
                 exceptionRunning(functionSupply);
                 assertThat(out.toString().trim()).contains(ERROR_MESSAGE);
             });
+        }
+
+        @Test
+        void getWinningNumbersTest_exception4_3(){
+            String input = "40,41,42?43,44,45";
+            beforeSetting(input);
+            assertSimpleTest(() -> {
+                exceptionRunning(functionSupply);
+                assertThat(out.toString().trim()).contains(ERROR_MESSAGE);
+            });
+        }
+
+        @Test
+        void getWinningNumbersTest_case1_1(){
+            String input = "1,2,3,4,5,6";
+            beforeSetting(input);
+            assertThat(functionSupply.get()).isInstanceOf(Lotto.class);
+        }
+
+        @Test
+        void getWinningNumbersTest_case1_2() {
+            String input = "1,2,3,4,5,6";
+            beforeSetting(input);
+            assertThat(functionSupply.get().getNumbers().size()).isEqualTo(WINNING_NUMBER_SiZE);
+        }
+
+        @Test
+        void getWinningNumbersTest_case2_1(){
+            String input = "10,20,30,40,42,44";
+            beforeSetting(input);
+            assertThat(functionSupply.get()).isInstanceOf(Lotto.class);
+        }
+
+        @Test
+        void getWinningNumbersTest_case2_2() {
+            String input = "10,20,30,40,42,44";
+            beforeSetting(input);
+            assertThat(functionSupply.get().getNumbers().size()).isEqualTo(WINNING_NUMBER_SiZE);
         }
     }
 }
