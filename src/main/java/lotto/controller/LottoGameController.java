@@ -34,7 +34,6 @@ public class LottoGameController {
         OutputView.printBlankLine();
         LottosResponseDto lottosResponseDto = lottoGameService.purchaseLottos(purchasePrice);
         OutputView.printPurchaseLottos(lottosResponseDto);
-        OutputView.printBlankLine();
     }
 
     private List<Integer> inputAnswerNumbers() {
@@ -50,6 +49,7 @@ public class LottoGameController {
     }
 
     private void printWinningResult(GameResultResponseDtos gameResponseDto) {
+        OutputView.printBlankLine();
         OutputView.printWinningStatisticsMessage();
         OutputView.printWinningStatistics(gameResponseDto);
     }

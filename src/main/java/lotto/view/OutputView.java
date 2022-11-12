@@ -64,11 +64,11 @@ public class OutputView {
             result.append(createStatisticsString(dto));
         }
 
-        System.out.println(result);
+        System.out.print(result);
         printEarningRate(responseDto.getEarningRate());
     }
 
-    public static String createStatisticsString(GameResultResponseDto dto) {
+    public static StringBuilder createStatisticsString(GameResultResponseDto dto) {
         StringBuilder statistics = new StringBuilder();
 
         statistics.append(String.format(SAME_NUMBER_COUNT_MESSAGE, dto.getSameNumberCount()));
@@ -77,7 +77,7 @@ public class OutputView {
         }
         statistics.append(String.format(WINNER_PRICE_MESSAGE, toMoneyFormat(dto.getWinnerPrice())));
         statistics.append(String.format(TOTAL_COUNT_MESSAGE, dto.getTotalCount()));
-        return statistics.toString();
+        return statistics;
     }
 
     private static String toMoneyFormat(int money) {
