@@ -3,12 +3,12 @@ package lotto.domain;
 import java.util.Arrays;
 
 public enum LottoRanking {
-	noWin(0, 0, false),
 	winThree(5000, 3, false),
 	winFour(50000, 4, false),
 	winFive(1500000, 5, false),
 	winFiveBonus(30000000, 5, true),
-	winSix(2000000000, 6, false);
+	winSix(2000000000, 6, false),
+	noWin(0, 0, false);
 
 	private final int prizeMoney;
 	private final int winNumber;
