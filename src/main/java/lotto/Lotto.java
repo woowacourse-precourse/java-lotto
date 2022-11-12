@@ -70,7 +70,7 @@ public class Lotto {
     }
     //5. 발행한 로또 번호를 정렬 하는 함수 (오름차순)
     public void sortNumber(List<Integer> buyLottoNumber){
-        Collections.sort(buyLottoNumber);
+        buyLottoNumber.sort(Comparator.naturalOrder());
     }
     //6. 당첨 내역을 출력하는 함수
     public String winStatistics(){
