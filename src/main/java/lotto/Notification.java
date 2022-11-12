@@ -10,7 +10,8 @@ public enum Notification {
     ERROR_MESSAGE_MONEY_IS_NOT_MULTIPLE_1000("[ERROR] 로또 구매 금액은 1000원 단위여야 합니다."),
     ERROR_MESSAGE_NUMBER_IS_NOT_BETWEEN_1_AND_45("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."),
     ERROR_MESSAGE_NUMBER_IS_DUPLICATE("[ERROR] 로또 번호는 중복되지 않은 6개 숫자여야 합니다."),
-    ERROR_MESSAGE_BONUS_IN_LOTTO("[ERROR] 보너스 번호는 로또 번호에 없는 번호여야 합니다.");
+    ERROR_MESSAGE_BONUS_IN_LOTTO("[ERROR] 보너스 번호는 로또 번호에 없는 번호여야 합니다."),
+    ERROR_MESSAGE_INCLUDE_NON_NUMERIC("[ERROR] 숫자가 아닌 문자가 포함되어 있습니다.");
 
     private final String message;
 
