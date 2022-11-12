@@ -10,7 +10,7 @@ public class Buyer {
         validate(buyPrice);
         this.buyPrice = buyPrice;
     }
-
+    public int getBuyPrice(){return buyPrice;}
     public int getBuyLottoCount() {
         return buyPrice / LOTTO_PRICE;
     }

@@ -16,7 +16,7 @@ class BuyerGenerateTest {
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
-        assertThatThrownBy(()-> new BuyerGenerate())
+        assertThatThrownBy(()-> new BuyerGenerate().generate())
                 .isInstanceOf(IllegalArgumentException.class);
     }
     @Test
