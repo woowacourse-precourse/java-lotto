@@ -9,13 +9,13 @@ public class InputValidation {
 
         boolean result = Arrays.stream(split).allMatch((alphbet) -> alphbet.charAt(0) >= '0' && alphbet.charAt(0) <= '9');
         if (!result)
-            throw new IllegalArgumentException("[ERROR] 구매금액은 숫자여야만 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_INPUT_MUST_NUMBER);
     }
 
     public void checkThousandMoney(String input) {
         int price = Integer.parseInt(input);
 
         if (price % 1000 != 0)
-            throw new IllegalArgumentException("[ERROR] 구매금액은 1000원 단위여야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_MUST_THOUSAND_PRICE);
     }
 }
