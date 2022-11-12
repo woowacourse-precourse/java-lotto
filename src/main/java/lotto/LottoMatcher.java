@@ -37,8 +37,12 @@ public class LottoMatcher {
     }
 
     private int countWinningLottoNumbers(List<Integer> lottoNumbers) {
-        // Lotto 번호들에서 winning lotto 번호의 개수 count
-        return 0;
+        int countOfMatchedNumbers = 0;
+        List<Integer> winningNumbers = winningLotto.getWinningNumbers();
+        for (Integer winningNumber : winningNumbers) {
+            countOfMatchedNumbers += lottoNumbers.contains(winningNumber) ? 1 : 0;
+        }
+        return countOfMatchedNumbers;
     }
 
     private boolean checkIfBonusNumberMatch(List<Integer> lottoNumbers) {
