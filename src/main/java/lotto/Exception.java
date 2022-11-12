@@ -33,4 +33,8 @@ public class Exception {
         }
     }
 
+    public static boolean isOverlap(List<Integer> number) {
+        return number.size() != number.stream().distinct().count();
+    }
+
 }
