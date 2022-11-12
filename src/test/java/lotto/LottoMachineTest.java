@@ -1,9 +1,9 @@
 package lotto;
 
+import lotto.store.Lotto;
+import lotto.store.LottoMachine;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import store.Lotto;
-import store.LottoMachine;
 
 import java.lang.reflect.Method;
 import java.util.List;
