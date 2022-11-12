@@ -1,6 +1,7 @@
 package lotto.ui.text;
 
 public enum ErrorText {
+    INVALID_MONEY_UNIT("[ERROR] 1000단위로 입력해야 합니다."),
     INVALID_SIZE("[ERROR] List 크기는 6이여야 합니다."),
     INVALID_NUMBER_RANGE("[ERROR] 1 ~ 45 범위여야 합니다."),
     DUPLICATE_NUMBER("[ERROR] 중복된 수는 없어야 합니다."),
