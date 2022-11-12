@@ -10,7 +10,16 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = new ArrayList<>();
+        addLottoNumbers(numbers);
         this.numbers.sort(Comparator.naturalOrder());
+    }
+
+    private void addLottoNumbers(List<Integer> numbers) {
+        this.numbers.addAll(numbers);
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     private void validate(List<Integer> numbers) {
