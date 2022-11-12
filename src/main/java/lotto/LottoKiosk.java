@@ -65,6 +65,13 @@ public class LottoKiosk {
         System.out.println(howMany + Messages.HOW_MANY_SOLD.message);
     }
 
+    void sellLotto(){
+        calculateLottoAmount();
+        showHowManyLotto();
+        makeAllLotto();
+        printAllLottoNumber();
+    }
+
     List<Integer> makeUniqueSixLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
@@ -86,5 +93,11 @@ public class LottoKiosk {
 
     List<Lotto> showAllLotto(){
         return this.lottos.stream().map(o -> (Lotto)o).collect(Collectors.toList());
+    }
+
+    void printAllLottoNumber(){
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.showNumbers());
+        }
     }
 }
