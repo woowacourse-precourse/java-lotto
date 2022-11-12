@@ -11,12 +11,12 @@ public class WinningNumber {
     // 보너스 숫자
     private final int bonusNumber;
 
-    public WinningNumber(Lotto winningLotto, int bonusNumber) {
+    public WinningNumber(final Lotto winningLotto, final int bonusNumber) {
         this.winningLotto = winningLotto;
         this.bonusNumber = bonusNumber;
     }
 
-    public Rank judge(Lotto lotto) {
+    public Rank judge(final Lotto lotto) {
         int matchCount = winningLotto.countMatchNumbers(lotto);
         boolean matchBonus = lotto.contains(bonusNumber);
 

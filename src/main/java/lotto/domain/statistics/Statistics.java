@@ -16,12 +16,12 @@ public class Statistics {
     private final Map<Rank, Long> statistics;
     private final Yield yield;
 
-    private Statistics(Map<Rank, Long> statistics, Yield yield) {
+    private Statistics(final Map<Rank, Long> statistics, final Yield yield) {
         this.statistics = new EnumMap<>(statistics);
         this.yield = yield;
     }
 
-    public static Statistics of(Money money, List<Rank> ranks) {
+    public static Statistics of(final Money money, final List<Rank> ranks) {
         Map<Rank, Long> result = ranks.stream()
                 .collect(Collectors.groupingBy(r -> r, counting()));
 
@@ -36,9 +36,9 @@ public class Statistics {
         );
     }
 
-    public long count(Rank rank) {
+    public long count(final Rank rank) {
         if (statistics.get(rank) == null) {
-            return 0;
+            return 0L;
         }
         return statistics.get(rank);
     }

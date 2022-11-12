@@ -6,12 +6,12 @@ public class Lotto {
 
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    public Lotto(final List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validate(final List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("로또 번호는 6개의 숫자로 이루어져야 합니다.");
         }
@@ -41,14 +41,16 @@ public class Lotto {
                 .count();
     }
 
-    public boolean contains(int number) {
+    public boolean contains(final int number) {
         return this.numbers.contains(number);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
+
         numbers.forEach(i -> sb.append(", ").append(i));  // [, 1, 2, 3
+
         sb.append("]");
         return sb.toString().replaceFirst(", ", "");
     }

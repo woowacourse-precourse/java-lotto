@@ -19,13 +19,13 @@ public enum Rank {
     private final int matchCount;
     private final BiPredicate<Integer, Boolean> match;
 
-    Rank(int reward, int matchCount, BiPredicate<Integer, Boolean> match) {
+    Rank(final int reward, final int matchCount, final BiPredicate<Integer, Boolean> match) {
         this.reward = Money.valueOf(reward);
         this.matchCount = matchCount;
         this.match = match;
     }
 
-    public static Rank matchRank(int matchCount, boolean matchBonus) {
+    public static Rank matchRank(final int matchCount, final boolean matchBonus) {
         return Arrays.stream(Rank.values())
                 .filter(r -> r.match.test(matchCount, matchBonus))
                 .findAny()

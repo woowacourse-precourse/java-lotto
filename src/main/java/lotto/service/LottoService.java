@@ -16,15 +16,19 @@ public class LottoService {
 
     private final LottoSalesman lottoSalesman;
 
-    public LottoService(Money pricePerLotto, LottoGenerator generator) {
+    public LottoService(final Money pricePerLotto, final LottoGenerator generator) {
         this.lottoSalesman = new LottoSalesman(pricePerLotto, generator);
     }
 
-    public List<Lotto> purchaseLotto(Money payment) {
+    public List<Lotto> purchaseLotto(final Money payment) {
         return lottoSalesman.salesLotto(payment);
     }
 
-    public Statistics calculateWinning(Money principle, List<Lotto> lottos, WinningNumber winningNumber) {
+    public Statistics calculateWinning(
+            final Money principle,
+            final List<Lotto> lottos,
+            final WinningNumber winningNumber
+    ) {
         List<Rank> result = lottos.stream()
                 .map(winningNumber::judge)
                 .collect(toList());

@@ -12,7 +12,11 @@ public class CalculateWinningRequest {
     private final List<Lotto> lottos;
     private final WinningNumber winningNumber;
 
-    public CalculateWinningRequest(Money principle, List<Lotto> lottos, WinningNumber winningNumber) {
+    public CalculateWinningRequest(
+            final Money principle,
+            final List<Lotto> lottos,
+            final WinningNumber winningNumber
+    ) {
         this.principle = principle;
         this.lottos = lottos;
         this.winningNumber = winningNumber;

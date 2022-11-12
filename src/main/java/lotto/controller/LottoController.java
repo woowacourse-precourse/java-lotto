@@ -16,18 +16,18 @@ public class LottoController {
 
     private final LottoService lottoService;
 
-    public LottoController(LottoService lottoService) {
+    public LottoController(final LottoService lottoService) {
         this.lottoService = lottoService;
     }
 
-    public LottoPurchaseResult purchaseLotto(LottoPurchaseRequest request) {
+    public LottoPurchaseResult purchaseLotto(final LottoPurchaseRequest request) {
         Money payment = request.getPayment();
 
         List<Lotto> lottos = lottoService.purchaseLotto(payment);
         return new LottoPurchaseResult(lottos);
     }
 
-    public WinningResult calculateWinning(CalculateWinningRequest request) {
+    public WinningResult calculateWinning(final CalculateWinningRequest request) {
         Money principle = request.getPrinciple();
         List<Lotto> lottos = request.getLottos();
         WinningNumber winningNumber = request.getWinningNumber();

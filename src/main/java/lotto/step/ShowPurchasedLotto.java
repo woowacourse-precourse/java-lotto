@@ -4,7 +4,7 @@ import lotto.application.LottoApplicationContext;
 
 public class ShowPurchasedLotto extends LottoStep {
 
-    public ShowPurchasedLotto(LottoApplicationContext context) {
+    public ShowPurchasedLotto(final LottoApplicationContext context) {
         super(context);
     }
 

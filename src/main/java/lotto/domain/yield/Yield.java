@@ -8,7 +8,7 @@ public class Yield {
         this.percent = percent;
     }
 
-    public static Yield calculate(int principal, int totalReword) {
+    public static Yield calculate(final int principal, final int totalReword) {
         // 수익률은 (당첨금 / 원금) * 100
         return new Yield(((double)totalReword / principal) * 100);
     }

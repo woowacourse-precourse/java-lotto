@@ -6,7 +6,7 @@ public class LottoPurchaseRequest {
 
     private final Money payment;
 
-    public LottoPurchaseRequest(Money payment) {
+    public LottoPurchaseRequest(final Money payment) {
         this.payment = payment;
     }
 

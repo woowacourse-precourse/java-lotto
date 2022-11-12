@@ -17,7 +17,7 @@ public class Money {
         this.value = value;
     }
 
-    public static Money valueOf(int value) {
+    public static Money valueOf(final int value) {
         return new Money(value);
     }
 
@@ -28,7 +28,7 @@ public class Money {
      * @param exchanged 교환할 단위
      * @throws IllegalArgumentException 화폐가 정확히 교환되지 않고 나머지가 남는 경우 발생한다.
      */
-    public List<Money> exchangeFor(Money exchanged) {
+    public List<Money> exchangeFor(final Money exchanged) {
         exchangeValidate(exchanged);
 
         int count = (this.value / exchanged.value);
@@ -38,7 +38,7 @@ public class Money {
                 .collect(toList());
     }
 
-    private void exchangeValidate(Money exchanged) {
+    private void exchangeValidate(final Money exchanged) {
         if (this.value % exchanged.value != 0) {
             throw new IllegalArgumentException(
                     format("%d원은 %d원으로 나누어 떨어지지 않습니다.", this.value, exchanged.value)

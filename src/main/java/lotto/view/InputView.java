@@ -49,7 +49,7 @@ public class InputView {
         }
     }
 
-    private static List<Integer> toIntegers(String input) {
+    private static List<Integer> toIntegers(final String input) {
         return stream(input.split(","))
                 .map(Integer::parseInt)
                 .collect(toList());

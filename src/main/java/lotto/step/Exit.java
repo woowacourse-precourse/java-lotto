@@ -4,7 +4,7 @@ import lotto.application.LottoApplicationContext;
 
 public class Exit extends LottoStep {
 
-    public Exit(LottoApplicationContext context) {
+    public Exit(final LottoApplicationContext context) {
         super(context);
     }
 

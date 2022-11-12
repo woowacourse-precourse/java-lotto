@@ -6,7 +6,7 @@ public class LottoApplication {
 
     private final LottoApplicationContext context;
 
-    public LottoApplication(LottoApplicationConfig config) {
+    public LottoApplication(final LottoApplicationConfig config) {
         this.context = new LottoApplicationContext(config);
     }
 

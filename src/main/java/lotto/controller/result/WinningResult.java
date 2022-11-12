@@ -6,7 +6,7 @@ public class WinningResult {
 
     private final Statistics statistics;
 
-    public WinningResult(Statistics statistics) {
+    public WinningResult(final Statistics statistics) {
         this.statistics = statistics;
     }
 

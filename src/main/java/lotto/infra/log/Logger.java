@@ -9,9 +9,13 @@ public class Logger {
 
     public static final String ERROR_PREFIX = "[ERROR]";
 
-    public void error(String message, Class<? extends RuntimeException> exceptionClass) {
+    public void error(
+            final String message,
+            final Class<? extends RuntimeException> exceptionClass
+    ) {
         try {
-            Constructor<? extends RuntimeException> constructor = exceptionClass.getDeclaredConstructor(String.class);
+            Constructor<? extends RuntimeException> constructor =
+                    exceptionClass.getDeclaredConstructor(String.class);
 
             error(message);
 

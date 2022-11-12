@@ -29,7 +29,7 @@ public class LottoApplicationContext {
     private WinningResult winningResult;
     private LottoPurchaseResult purchaseResult;
 
-    public LottoApplicationContext(LottoApplicationConfig config) {
+    public LottoApplicationContext(final LottoApplicationConfig config) {
         this.lottoController = config.lottoController();
         this.step = new PurchaseLotto(this);
     }

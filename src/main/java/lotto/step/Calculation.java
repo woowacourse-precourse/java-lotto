@@ -4,7 +4,7 @@ import lotto.application.LottoApplicationContext;
 
 public class Calculation extends LottoStep {
 
-    public Calculation(LottoApplicationContext context) {
+    public Calculation(final LottoApplicationContext context) {
         super(context);
     }
 

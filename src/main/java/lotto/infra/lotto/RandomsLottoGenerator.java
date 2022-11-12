@@ -12,7 +12,7 @@ import static java.util.stream.Collectors.toList;
 public class RandomsLottoGenerator implements LottoGenerator {
 
     @Override
-    public List<Lotto> generateByCount(int count) {
+    public List<Lotto> generateByCount(final int count) {
         return IntStream.range(0, count)
                 .mapToObj(i -> new Lotto(generateNumbers()))
                 .collect(toList());

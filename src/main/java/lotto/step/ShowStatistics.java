@@ -4,7 +4,7 @@ import lotto.application.LottoApplicationContext;
 
 public class ShowStatistics extends LottoStep {
 
-    public ShowStatistics(LottoApplicationContext context) {
+    public ShowStatistics(final LottoApplicationContext context) {
         super(context);
     }
 

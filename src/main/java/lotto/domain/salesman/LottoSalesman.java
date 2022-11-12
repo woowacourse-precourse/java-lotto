@@ -11,12 +11,15 @@ public class LottoSalesman {
     private final Money pricePerLotto;
     private final LottoGenerator lottoGenerator;
 
-    public LottoSalesman(Money pricePerLotto, LottoGenerator lottoGenerator) {
+    public LottoSalesman(
+            final Money pricePerLotto,
+            final LottoGenerator lottoGenerator
+    ) {
         this.pricePerLotto = pricePerLotto;
         this.lottoGenerator = lottoGenerator;
     }
 
-    public List<Lotto> salesLotto(Money payment) {
+    public List<Lotto> salesLotto(final Money payment) {
         int salesCount = payment.exchangeFor(pricePerLotto).size();
         return lottoGenerator.generateByCount(salesCount);
     }

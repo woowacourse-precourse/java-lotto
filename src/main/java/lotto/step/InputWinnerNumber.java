@@ -4,7 +4,7 @@ import lotto.application.LottoApplicationContext;
 
 public class InputWinnerNumber extends LottoStep {
 
-    public InputWinnerNumber(LottoApplicationContext context) {
+    public InputWinnerNumber(final LottoApplicationContext context) {
         super(context);
     }
 

@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface LottoGenerator {
 
-    List<Lotto> generateByCount(int count);
+    List<Lotto> generateByCount(final int count);
 }
