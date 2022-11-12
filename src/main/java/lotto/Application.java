@@ -77,4 +77,17 @@ public class Application {
         }
         return number;
     }
+
+    public static int getBonusNumber(String string) throws IllegalArgumentException {
+        int number;
+        try {
+            number = Integer.parseInt(string);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호가 숫자 형식이 아닙니다.");
+        }
+        if (number < 1 || 45 < number) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호가 1부터 45 사이의 수가 아닙니다.");
+        }
+        return number;
+    }
 }
