@@ -12,7 +12,7 @@ import java.util.List;
 
 public class User {
     private List<Lotto> lottos;
-    private List<Winning> winnings;
+    private List<Rank> ranks;
     private int lottoNum;
     private int money;
     private int earn;
@@ -24,7 +24,7 @@ public class User {
         this.money = money;
         this.lottoNum = money / LOTTO_PRICE;
         generateLottos();
-        this.winnings = new ArrayList<>();
+        this.ranks = new ArrayList<>();
         this.earn = 0;
     }
 
@@ -52,16 +52,16 @@ public class User {
     }
 
     public void showWinnings() {
-        printWinnings(winnings);
+        printWinnings(ranks);
     }
 
-    public void addWinning(Winning winning) {
-        winnings.add(winning);
+    public void addWinning(Rank rank) {
+        ranks.add(rank);
     }
 
     public double getYield() {
-        int earn = winnings.stream()
-                .mapToInt(Winning::getPrizeMoney)
+        int earn = ranks.stream()
+                .mapToInt(Rank::getPrizeMoney)
                 .sum();
 
         double yield = (double) earn / money * 100;
