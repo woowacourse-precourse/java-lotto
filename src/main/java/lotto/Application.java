@@ -39,18 +39,14 @@ public class Application {
     }
 
     public static WinningLotto createWinningLotto() {
-        try {
-            System.out.println(INPUT_NUMBERS);
-            List<Integer> winningNumbers = convertToIntegerList(readLine());
-            LottoNumberValidator.validateNumbers(winningNumbers);
+        System.out.println(INPUT_NUMBERS);
+        List<Integer> winningNumbers = convertToIntegerList(readLine());
+        LottoNumberValidator.validateNumbers(winningNumbers);
 
-            System.out.println(INPUT_BONUS_NUMBER);
-            int bonusNumber = convertToInteger(readLine());
+        System.out.println(INPUT_BONUS_NUMBER);
+        int bonusNumber = convertToInteger(readLine());
 
-            return new WinningLotto(winningNumbers, bonusNumber);
-        } catch (Exception exception) {
-            throw exception;
-        }
+        return new WinningLotto(winningNumbers, bonusNumber);
     }
 
     public static void main(String[] args) {

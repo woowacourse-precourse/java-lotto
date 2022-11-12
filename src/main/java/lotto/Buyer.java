@@ -17,7 +17,6 @@ public class Buyer {
     private final List<Rank> ranks;
     private int lottoNum;
     private int money;
-    private int earn;
 
 
     public Buyer(int money) {
@@ -28,7 +27,6 @@ public class Buyer {
         this.lottos = new ArrayList<>(this.lottoNum);
         buyLottos();
         this.ranks = new ArrayList<>(this.lottoNum);
-        this.earn = 0;
     }
 
 
