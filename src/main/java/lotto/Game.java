@@ -16,7 +16,7 @@ public class Game {
     }
 
     public void start() {
-
+        int money = inputView.inputMoney();
     }
 
 }
