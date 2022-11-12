@@ -17,11 +17,12 @@ class LottoTest {
                 .hasMessageContaining(Lotto.SIZE_ERROR_MESSAGE);
     }
 
-    @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
     @Test
+    @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
     void createLottoByDuplicatedNumber() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(Lotto.DUPLICATION_ERROR_MESSAGE);
     }
 
 }
