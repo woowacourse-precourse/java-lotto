@@ -4,8 +4,8 @@ import java.util.List;
 
 public class LottoStatistics {
 
-    private int payment = 0;
-    private int totalPrize = 0;
+    private long payment = 0;
+    private long totalPrize = 0;
     private final int[] numRanks = new int[6];
 
     /**
@@ -41,12 +41,11 @@ public class LottoStatistics {
 
     /**
      * 1 ~ 5등별 당첨 횟수를 반환합니다.
-     * @param rank 0 ~ 5 범위의 숫자 (낙첨은 0)
+     * 0은 낙첨을 의미합니다.
+     * @param rank 얻고 싶은 등수
      * @return 당첨 횟수
      */
-    public int getNumOfRank(int rank) {
-        if (rank < 0 || rank >= numRanks.length)
-            throw new IllegalArgumentException();
-        return numRanks[rank - 1];
+    public int getNumOfRank(LottoRank rank) {
+        return numRanks[rank.getRank()];
     }
 }

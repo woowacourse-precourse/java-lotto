@@ -1,12 +1,13 @@
 package lotto;
 
 public enum LottoRank {
-    FIRST("6개 일치", 1, 2000000000),
-    SECOND("5개 일치, 보너스 볼 일치", 2, 30000000),
-    THIRD("5개 일치", 3, 1500000),
-    FOURTH("4개 일치", 4, 50000),
+
+    LOSE("꽝", 0, 0),
     FIFTH("3개 일치", 5, 5000),
-    LOSE("꽝", 0, 0);
+    FOURTH("4개 일치", 4, 50000),
+    THIRD("5개 일치", 3, 1500000),
+    SECOND("5개 일치, 보너스 볼 일치", 2, 30000000),
+    FIRST("6개 일치", 1, 2000000000);
 
     private final String description;
     private final int rank;
