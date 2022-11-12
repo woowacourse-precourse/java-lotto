@@ -46,6 +46,10 @@ public class Computer {
         return lotto.getNumbers().contains(bonusNumber);
     }
 
+    private void notValidBonusNumberException(){
+        throw new IllegalArgumentException(BONUS_NUMBER_EXCEPTION);
+    }
+
     private void addBonusNumber(){
 
     }
