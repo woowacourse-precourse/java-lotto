@@ -22,7 +22,7 @@ public class Validator {
     }
 
     public static void validatePrice(int price){
-        if (price%LOTTO_MIN_PRICE!=0)
+        if (price%LOTTO_MIN_PRICE!=0 || price==0)
             throw new IllegalArgumentException(" 구입 금액은 1,000원 단위로 입력해야 합니다.");
     }
 
