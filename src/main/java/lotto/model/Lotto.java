@@ -6,6 +6,7 @@ import lotto.util.LottoExceptionMessage;
 
 public class Lotto {
     public static final int PRICE = 1000;
+    public static final int NUMBERS_SIZE = 6;
     private final Set<LottoNumber> numbers;
 
     public Lotto(Set<LottoNumber> numbers) {
@@ -18,7 +19,7 @@ public class Lotto {
     }
 
     private void validate(Set<LottoNumber> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != NUMBERS_SIZE) {
             throw new IllegalArgumentException(LottoExceptionMessage.DUPLICATE_LOTTO_NUMBER.getMessage());
         }
     }
