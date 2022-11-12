@@ -32,4 +32,8 @@ public enum LottoRanking {
                 .findAny()
                 .orElse(LottoRanking.MISS);
     }
+
+    public static double getNumberScore(LottoRanking lottoRanking){
+        return lottoRanking.getSameNumber();
+    }
 }

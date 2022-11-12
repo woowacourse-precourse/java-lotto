@@ -1,13 +1,11 @@
 package lotto.controller;
 
-import lotto.domain.Lotto;
-import lotto.domain.LottoMaker;
-import lotto.domain.TicketMachine;
-import lotto.domain.WinningLotto;
+import lotto.domain.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 import java.util.List;
+import java.util.Map;
 
 public class LottoController {
 
@@ -18,6 +16,7 @@ public class LottoController {
         int ticket = getTicketFromUserByConsole();
         List<Lotto> lottos = getRandomLottoBy(ticket);
         WinningLotto winningLotto = getWinningLottoByUser();
+        printLottoResult(lottos, winningLotto);
     }
 
     private int getTicketFromUserByConsole() {
@@ -39,12 +38,17 @@ public class LottoController {
         return new WinningLotto(manualLotto, bonusNumber);
     }
 
+    private void printLottoResult(List<Lotto> lottos, WinningLotto winningLotto) {
+        Map<LottoRanking, Integer> lottoResult = LottoReader.getLottoResults(lottos, winningLotto);
+        OutputView.printLottoResult(lottoResult);
+    }
+
     private Lotto getManualLottoFromUserByConsole() {
         List<Integer> lottoNumbers = InputView.getManualLottoNumberFromUser();
         return lottoMaker.getManualLotto(lottoNumbers);
     }
 
-    private int getBonusNumberFromUserByConsole(){
+    private int getBonusNumberFromUserByConsole() {
         return InputView.getBonusNumberFromUser();
     }
 
