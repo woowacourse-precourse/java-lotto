@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -15,7 +14,6 @@ public class Lotto {
         validateSize(numbers);
         validateDuplicated(numbers);
         validateRange(numbers);
-        sortNumbers(numbers);
 
         this.numbers = numbers;
     }
@@ -36,10 +34,6 @@ public class Lotto {
         if (!numbers.stream().allMatch(n -> n >= LOTTO_NUMBER_START_INCLUSIVE && n <= LOTTO_NUMBER_END_INCLUSIVE)) {
             throw new IllegalArgumentException();
         }
-    }
-
-    public void sortNumbers(List<Integer> numbers) {
-        Collections.sort(numbers);
     }
 
     public List<Integer> getNumbers() {
