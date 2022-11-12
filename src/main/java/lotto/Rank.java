@@ -11,7 +11,6 @@ public enum Rank {
 
     Rank(String result) {
         this.result = result;
-
     }
 
     public String getValue() {

@@ -23,7 +23,7 @@ public class Buyer {
         Buyer.money = money;
     }
 
-    public void validateMoneyOnlyNumber(String inputMoney){
+    public void validateMoneyOnlyNumber(String inputMoney) {
         String pattern = "^[0-9]*$";
         if (!Pattern.matches(pattern, inputMoney)) {
             System.out.println("[ERROR] 금액은 숫자로만 입력해야 합니다.");
@@ -32,13 +32,13 @@ public class Buyer {
     }
 
     public void validateMoneyRange(int inputMoney) {
-        if(inputMoney<MIN_MONEY){
+        if (inputMoney < MIN_MONEY) {
             System.out.println("[ERROR] 1000원 이상 내셔야 로또 구매가 가능합니다.");
             throw new IllegalArgumentException();
         }
     }
 
-    public void validateMoneyUnit(int inputMoney){
+    public void validateMoneyUnit(int inputMoney) {
         if (inputMoney % MONEY_UNIT != 0) {
             System.out.println("[ERROR] 1000원 단위로 금액을 입력해야 합니다.");
             throw new IllegalArgumentException("[ERROR] 1000원 단위로 금액을 입력해야 합니다.");
