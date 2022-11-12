@@ -1,6 +1,6 @@
 package lotto;
 
-public enum LottoMessage {
+public enum GameMessage {
     LENGTH_ERROR_MESSAGE("[ERROR] 로또 번호는 6개여야 합니다."),
     RANGE_ERROR_MESSAGE("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."),
     DUPLICATE_ERROR_MESSAGE("[ERROR] 로또 번호는 중복되어선 안됩니다."),
@@ -24,7 +24,7 @@ public enum LottoMessage {
 
     private String Message;
 
-    LottoMessage(String Message) {
+    GameMessage(String Message) {
         this.Message = Message;
     }
 
