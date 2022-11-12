@@ -1,8 +1,8 @@
 package lotto.domain.lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.application.service.agent.InputAgent;
-import lotto.application.service.validator.ValueValidator;
+import lotto.application.service.inputagent.InputAgent;
+import lotto.application.service.inputvalidator.ValueValidator;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package lotto.application.service.validator;
+package lotto.application.service.inputvalidator;
 
 import java.util.List;
 import java.util.Stack;

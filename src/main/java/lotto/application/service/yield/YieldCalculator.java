@@ -1,4 +1,4 @@
-package lotto.application.service.calculator;
+package lotto.application.service.yield;
 
 import java.util.HashMap;
 import java.util.List;

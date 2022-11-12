@@ -1,6 +1,6 @@
 package lotto.domain.client;
 
-import lotto.application.service.agent.InputAgent;
+import lotto.application.service.inputagent.InputAgent;
 
 public class Client {
 

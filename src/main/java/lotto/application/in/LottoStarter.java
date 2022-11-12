@@ -1,8 +1,8 @@
-package lotto.application.in.starter;
+package lotto.application.in;
 
-import lotto.application.service.calculator.YieldCalculator;
+import lotto.application.service.yield.YieldCalculator;
 import lotto.domain.client.Client;
-import lotto.application.service.lotterymatch.LottoHost;
+import lotto.application.service.lottohost.LottoHost;
 import lotto.domain.lotto.Lotto;
 
 import java.util.List;

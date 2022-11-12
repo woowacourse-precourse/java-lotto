@@ -1,7 +1,7 @@
-package lotto.application.service.agent;
+package lotto.application.service.inputagent;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.application.service.validator.ValueValidator;
+import lotto.application.service.inputvalidator.ValueValidator;
 
 import java.util.ArrayList;
 import java.util.List;

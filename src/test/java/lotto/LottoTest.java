@@ -1,7 +1,7 @@
 package lotto;
 
-import lotto.application.service.validator.ValueValidator;
-import lotto.domain.Lotto;
+import lotto.application.service.inputvalidator.ValueValidator;
+import lotto.domain.lotto.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

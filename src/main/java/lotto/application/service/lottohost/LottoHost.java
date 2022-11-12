@@ -1,4 +1,4 @@
-package lotto.application.service.lotterymatch;
+package lotto.application.service.lottohost;
 
 import java.util.ArrayList;
 import java.util.List;
