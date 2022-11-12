@@ -1,8 +1,8 @@
 package lotto.domain;
 
 import java.util.List;
-import lotto.exception.lotto.LottoSizeException;
-import lotto.exception.lotto.LottoNumberDuplicateException;
+import lotto.exception.domain.LottoSizeException;
+import lotto.exception.domain.LottoNumberDuplicateException;
 
 public class Lotto {
     private static final int LOTTO_SIZE = 6;
