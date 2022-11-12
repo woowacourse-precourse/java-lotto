@@ -6,19 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConsoleInput {
-    public static int getPurchaseAmount() {
+    public static int getPurchaseAmount() throws Exception{
         String amount = Console.readLine();
         InputValidator.validateToParseInt(amount);
         return Integer.parseInt(amount);
     }
 
-    public static int getBonusNumber() {
+    public static int getBonusNumber() throws Exception {
         String number = Console.readLine();
         InputValidator.validateBonusNumber(number);
         return Integer.parseInt(number);
     }
 
-    public static List<Integer> getWinningNumbers() {
+    public static List<Integer> getWinningNumbers() throws Exception {
         String numbers = Console.readLine();
         InputValidator.validateWinningNumbers(numbers);
         return convertToNumbers(numbers);
