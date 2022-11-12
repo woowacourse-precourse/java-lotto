@@ -13,6 +13,8 @@ public class DrawLottoService {
 
     List<Integer> winingCount = new ArrayList<>();
 
+    private double reward;
+
     public int countBuyingLotto(int amount) {
         return amount / 1000;
     }
@@ -50,4 +52,6 @@ public class DrawLottoService {
     public List<Integer> getWiningCount() {
         return winingCount;
     }
+
+
 }
