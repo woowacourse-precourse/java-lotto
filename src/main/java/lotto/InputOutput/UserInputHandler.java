@@ -65,12 +65,23 @@ public class UserInputHandler {
     }
     private int validateBonusNumbers(Lotto winningLotto, String bonusNumberInput){
         int bonusNumber = validateLottoNumbers(bonusNumberInput);
+        validateBonusNumberIfDuplicate(bonusNumber,winningLotto);
+        validateBonusNumberInRange(bonusNumber);
+
+        return bonusNumber;
+    }
+    private void validateBonusNumberInRange(int bonusNumber){
+        if(!(1 <= bonusNumber && bonusNumber <= 45)){
+            System.out.println("[ERROR] 보너스 숫자는, 1에서 45 사이어야 합니다");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateBonusNumberIfDuplicate(int bonusNumber, Lotto winningLotto){
         boolean isBonusNumberDuplicate = winningLotto.getNumbers().contains(bonusNumber);
         if(isBonusNumberDuplicate){
             System.out.println("[ERROR] 보너스 숫자는, 당첨 번호와 중복된 숫자일 수 없습니다.");
             throw new IllegalArgumentException();
         }
-
-        return bonusNumber;
     }
 }

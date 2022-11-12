@@ -214,9 +214,21 @@ class UserInputHandlerTest{
         }
 
         @Test
-        void getBonusNumberTest_exception2_1(){
-            String input = "!@#";
-            getExceptionTest(input,functionalSupply);
+        void getBonusNumberTest_exception2_1() {
+            String input = "-43";
+            getExceptionTest(input, functionalSupply);
+        }
+
+        @Test
+        void getBonusNumberTest_exception2_2() {
+            String input = "50";
+            getExceptionTest(input, functionalSupply);
+        }
+
+        @Test
+        void getBonusNumberTest_exception2_3() {
+            String input = "0";
+            getExceptionTest(input, functionalSupply);
         }
     }
 }
