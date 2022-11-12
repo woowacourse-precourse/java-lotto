@@ -1,10 +1,10 @@
 package lotto.domain;
 
-public class BuyLotto {
+public class LottoPurchase {
     private static final int LOTTO_PRICE = 1000;
     private final int price;
 
-    public BuyLotto(final int price) {
+    public LottoPurchase(final int price) {
         validatePrice(price);
         this.price = price;
     }
