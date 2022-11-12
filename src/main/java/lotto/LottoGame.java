@@ -41,6 +41,16 @@ public class LottoGame {
         return lottoes;
     }
 
+    public static int[] getResultLotto(List<Lotto> lottoes, Lotto winningLotto, int bonus) {
+        int[] matches = {0, 0, 0, 0, 0};
+
+        for (Lotto lotto: lottoes) {
+            eLottoPlace place = matchLotto(lotto, winningLotto, bonus);
+            matches = appendLottoResult(matches, place);
+        }
+        return matches;
+    }
+
     public static eLottoPlace matchLotto(Lotto l1, Lotto l2, int bonus) {
         int matches = 0;
 
@@ -91,5 +101,19 @@ public class LottoGame {
 
     private static List<Integer> makeUniqueLottoNumber() {
         return (Randoms.pickUniqueNumbersInRange(1, 45, 6));
+    }
+
+    private static int[] appendLottoResult(int[] matches, eLottoPlace place) {
+        if (place == eLottoPlace.FIRST_PLACE)
+            matches[_first_place] += 1;
+        if (place == eLottoPlace.SECOND_PLACE)
+            matches[_second_place] += 1;
+        if (place == eLottoPlace.THIRD_PLACE)
+            matches[_third_place] += 1;
+        if (place == eLottoPlace.FOURTH_PLACE)
+            matches[_fourth_place] += 1;
+        if (place == eLottoPlace.FIFTH_PLACE)
+            matches[_fifth_place] += 1;
+        return matches;
     }
 }
