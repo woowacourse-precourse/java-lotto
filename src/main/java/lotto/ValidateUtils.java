@@ -25,30 +25,35 @@ public class ValidateUtils {
 
     public static void checkMoneyUnit(int money) {
         if (money % MONEY_UNIT != 0) {
+            System.out.println(ERROR_MEESAGE_HEADER + VALIDATE_MONEY_UNIT);
             throw new IllegalArgumentException(String.format(ERROR_MEESAGE_HEADER + VALIDATE_MONEY_UNIT));
         }
     }
 
     public static void checkDelimiter(int splitSize) {
         if (splitSize == 1) {
+            System.out.println(ERROR_MEESAGE_HEADER + VALIDATE_DELIMITER);
             throw new IllegalArgumentException(String.format(ERROR_MEESAGE_HEADER + VALIDATE_DELIMITER));
         }
     }
 
     public static void checkArraySize(int answersSize, int maxLength) {
         if (answersSize != maxLength) {
+            System.out.println(String.format(ERROR_MEESAGE_HEADER + VALIDATE_SIZE_INPUT, maxLength));
             throw new IllegalArgumentException(String.format(ERROR_MEESAGE_HEADER + VALIDATE_SIZE_INPUT, maxLength));
         }
     }
 
     public static void checkRangeNumber(int number) {
         if (number < 1 || number > 45) {
+            System.out.println(ERROR_MEESAGE_HEADER + VALIDATE_RANGE_ANSWER_NUMBER);
             throw new IllegalArgumentException(String.format(ERROR_MEESAGE_HEADER + VALIDATE_RANGE_ANSWER_NUMBER));
         }
     }
 
     public static void checkDuplicateNumber(List<Integer> numbers, int number) {
         if (numbers.contains(number)) {
+            System.out.println(ERROR_MEESAGE_HEADER + VALIDATE_DUPLICATE_NUMBER);
             throw new IllegalArgumentException(String.format(ERROR_MEESAGE_HEADER + VALIDATE_DUPLICATE_NUMBER));
         }
     }
