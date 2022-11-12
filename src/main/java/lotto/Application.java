@@ -18,7 +18,7 @@ public class Application {
 
         System.out.println(Message.START.getMessage());
         String purchaseAmount = Console.readLine();
-        String inputLottoNumber;
+        String winningNumber;
 
         int number=Integer.valueOf(purchaseAmount)/1000;
 
@@ -42,6 +42,15 @@ public class Application {
             System.out.println(userLotto[i]);
         }
 
+        System.out.println(Message.INPUT.getMessage());
+        winningNumber=Console.readLine();
+        String[] winningNumberSplit=winningNumber.split(",");
+
+        List<Integer> winningLottoNumber = new ArrayList<>();
+
+        for(int i=0;i<winningNumberSplit.length;i++){
+            winningLottoNumber.add(winningNumberSplit[i].charAt(0)-'0');
+        }
 
 
     }
