@@ -31,7 +31,14 @@ public class WinningManagerTest {
                                 new Lotto(List.of(9, 8, 7, 3, 2, 1))))
                         ,
                         List.of(1, 2, 3, 4, 5)
-                ));
+                ),
+                Arguments.of(
+                        Lottos.of(List.of(
+                                new Lotto(List.of(16, 15, 14, 13, 12, 11))
+                        ))
+                        ,List.of()
+                )
+        );
     }
 
     @ParameterizedTest
