@@ -12,6 +12,15 @@ public class LottoGameController {
     public void run() {
         final Lottos boughtLottos = buyLottos();
         final Lotto winLotto = getWinLotto();
+        final Integer bonusNumber = getBonusNumber(winLotto);
+    }
+
+    private Integer getBonusNumber(Lotto winLotto) {
+        final Integer bonusNumber = UserInput.inputBonusNumber();
+        if (winLotto.isContain(bonusNumber)) {
+            throw new IllegalArgumentException();
+        }
+        return bonusNumber;
     }
 
     private Lotto getWinLotto() {

@@ -18,6 +18,24 @@ public class UserInput {
         return validateLottoWinNumber(lottoWinNumber);
     }
 
+    public static Integer inputBonusNumber() {
+        return validateBonusNumber(getInput());
+    }
+
+    private static Integer validateBonusNumber(String inputBonusNumber) {
+        if (!inputBonusNumber.matches("^[0-9]+$")) {
+            throw new IllegalArgumentException();
+        }
+
+        final Integer bonusNumber = stringToInteger(inputBonusNumber);
+
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalArgumentException();
+        }
+
+        return bonusNumber;
+    }
+
     private static Integer validateInputMoney(String inputMoney) {
         if (!inputMoney.matches("^[0-9]+000$")) {
             throw new IllegalArgumentException();
