@@ -116,8 +116,16 @@ public class Application {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-    static List<Integer> what_user_bonus_number() {
-        List<Integer> user_bonus_number = pickUniqueNumbersInRange(1, 45, 1);
+    static int what_user_bonus_number() {
+        int user_bonus_number;
+
+        String read_user_bonus_number = readLine();
+
+        try {
+            user_bonus_number = Integer.parseInt(read_user_bonus_number);
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
 
         return user_bonus_number;
     }
@@ -169,6 +177,11 @@ public class Application {
 
         ask_bonus_number();
 
-        List<Integer> user_bonus_number = what_user_bonus_number();
+        int user_bonus_number;
+        try {
+            user_bonus_number = what_user_bonus_number();
+        } catch (IllegalArgumentException e) {
+            return;
+        }
     }
 }
