@@ -1,16 +1,17 @@
 package model;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import constant.Config;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static constant.Config.MAX_NUMBER;
+import static constant.Config.MIN_NUMBER;
+import static constant.Config.NUMBER_COUNT;
+import static constant.Config.PRICE;
+
 public class Lottos {
-    private static final int MIN_NUMBER = 1;
-    private static final int MAX_NUMBER = 45;
-    private static final int NUMBER_COUNT = 6;
     private final List<Lotto> lottos;
 
     public Lottos(Money money) {
@@ -33,7 +34,7 @@ public class Lottos {
     }
 
     private int getCount(Money money) {
-        return money.getMoney() / Config.PRICE;
+        return money.getMoney() / PRICE;
     }
 
     private List<Integer> getNumbers() {
