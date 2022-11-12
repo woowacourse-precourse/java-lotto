@@ -6,11 +6,10 @@ import java.util.stream.Collectors;
 
 public class WinningStatics {
     private final LinkedHashMap<LottoResult, Long> lottoResults = new LinkedHashMap<>();
-    private final float lateOfReturn;
+    private float lateOfReturn;
 
-    public WinningStatics(int purchaseMoney) {
+    public WinningStatics() {
         makeLottoResult();
-        this.lateOfReturn = calculateRateOfReturn(purchaseMoney);
     }
 
     private void makeLottoResult() {
@@ -19,9 +18,9 @@ public class WinningStatics {
                 .forEach(lottoResult -> lottoResults.put(lottoResult, 0L));
     }
 
-    private float calculateRateOfReturn(int purchaseMoney) {
+    public void calculateRateOfReturn(int purchaseMoney) {
         long prizeMoney = calculatePrizeMoney();
-        return Math.round((float) prizeMoney / purchaseMoney * 100);
+        this.lateOfReturn =  Math.round((float) prizeMoney / purchaseMoney * 100);
     }
 
     private long calculatePrizeMoney() {

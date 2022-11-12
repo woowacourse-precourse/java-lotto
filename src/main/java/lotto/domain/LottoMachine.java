@@ -39,11 +39,12 @@ public class LottoMachine {
     }
 
     public WinningStatics enterWinningLotto(WinningLotto winningLotto) {
-        WinningStatics winningStatics = new WinningStatics(purchaseMoney);
+        WinningStatics winningStatics = new WinningStatics();
         lottos.stream()
                 .map(winningLotto::makeResult)
                 .filter(LottoResult::isNotFailed)
                 .forEach(winningStatics::updateLottoResults);
+        winningStatics.calculateRateOfReturn(purchaseMoney);
         return winningStatics;
     }
 

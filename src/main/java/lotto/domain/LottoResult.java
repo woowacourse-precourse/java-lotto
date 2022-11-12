@@ -23,6 +23,7 @@ public enum LottoResult implements Comparable<LottoResult> {
         for (LottoResult lottoResult : values()) {
             BY_COUNT_OF_MATCH.put(lottoResult.countOfMatch, lottoResult);
         }
+        BY_COUNT_OF_MATCH.put(5, THIRD);
     }
 
     LottoResult(int countOfMatch, int winningMoney) {
