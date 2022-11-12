@@ -38,7 +38,7 @@ public enum Rank {
 
     public static List<Rank> getNoDefault() {
         return Arrays.stream(Rank.values())
-                .filter(rank -> !rank.bonusHit)
+                .filter(rank -> (!rank.name().equals("DEFAULT")))
                 .sorted(Collections.reverseOrder())
                 .collect(Collectors.toList());
     }
