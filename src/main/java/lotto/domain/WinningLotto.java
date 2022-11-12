@@ -14,7 +14,7 @@ public class WinningLotto extends Lotto {
         return bonusNumber;
     }
 
-    public boolean compareBonus(int bonusNumber) {
-        return bonusNumber == this.bonusNumber;
+    public boolean containsBonus(List<Integer> numbers) {
+        return numbers.contains(bonusNumber);
     }
 }
