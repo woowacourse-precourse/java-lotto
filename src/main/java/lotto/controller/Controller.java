@@ -11,27 +11,45 @@ import java.util.List;
 public class Controller {
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
-    private WinningInformation winningInformation = new WinningInformation();
+    private WinningInformation winningInformation;
     private LottoPurchaseInformation lottoPurchaseInformation;
 
     public void execute() {
-        String purchaseAmountInput = inputView.getPurchaseAmount();
-        lottoPurchaseInformation = new LottoPurchaseInformation(Integer.parseInt(purchaseAmountInput));
-        lottoPurchaseInformation.generateLottoTickets();
-        outputView.printPurchaseDetails(lottoPurchaseInformation.getLottoTickets());
-        List<String> winningNumbersInput = inputView.getWinningNumbers();
-        List<Integer> winningNumbers = new ArrayList<>();
-        for(int i = 0; i < winningNumbersInput.size(); i++){
-            winningNumbers.add(Integer.parseInt(winningNumbersInput.get(i)));
-        }
-        winningInformation.setWinningNumbers(winningNumbers);
-        String bonusNumberInput = inputView.getBonusNumber();
-        winningInformation.setBonusNumber(Integer.parseInt(bonusNumberInput));
-        lottoPurchaseInformation.compareLottoTicketsWith(winningNumbers, Integer.parseInt(bonusNumberInput));
-        outputView.printWinningStatistics(lottoPurchaseInformation.getWinningStatistics());
-        lottoPurchaseInformation.calculateTotalWinningAmount();
-        lottoPurchaseInformation.calculateRateOfReturn();
-        outputView.printRateOfReturn(lottoPurchaseInformation.getRateOfReturn());
+        createLottoPurchaseInformation();
+        showLottoPurchaseInformation();
+        createWinningInformation();
+        compareLottoPurchaseInformationAndWinningInformation();
+        showResult();
     }
 
+    private void createLottoPurchaseInformation(){
+        int purchaseAmount = Integer.parseInt(inputView.getPurchaseAmount());
+        lottoPurchaseInformation = new LottoPurchaseInformation(purchaseAmount);
+        lottoPurchaseInformation.generateLottoTickets();
+    }
+
+    private void showLottoPurchaseInformation(){
+        outputView.printPurchaseDetails(lottoPurchaseInformation.getLottoTickets());
+    }
+
+    private void createWinningInformation(){
+        List<String> winningNumbersInput = inputView.getWinningNumbers();
+        List<Integer> winningNumbers = new ArrayList<>();
+        for(String winningNumber : winningNumbersInput){
+            winningNumbers.add(Integer.parseInt(winningNumber));
+        }
+        int bonusNumber = Integer.parseInt(inputView.getBonusNumber());
+        winningInformation = new WinningInformation(winningNumbers, bonusNumber);
+    }
+
+    private void compareLottoPurchaseInformationAndWinningInformation(){
+        lottoPurchaseInformation.compareLottoTicketsWith(winningInformation.getWinningNumbers(), winningInformation.getBonusNumber());
+        lottoPurchaseInformation.calculateTotalWinningAmount();
+        lottoPurchaseInformation.calculateRateOfReturn();
+    }
+
+    private void showResult(){
+        outputView.printWinningStatistics(lottoPurchaseInformation.getWinningStatistics());
+        outputView.printRateOfReturn(lottoPurchaseInformation.getRateOfReturn());
+    }
 }
