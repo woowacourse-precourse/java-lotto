@@ -31,6 +31,16 @@ public class Application {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
         return numbers;
     }
+    static List<List<Integer>> buy_lotto(int chance){
+        List<List<Integer>> lotto_nums =new ArrayList<>();
+        List<Integer> lotto;
+        for(int i = 1 ; i <= chance ; i++){
+            lotto = make_lotto_num();
+            lotto_nums.add(lotto);
+        }
+
+        return lotto_nums;
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int money;
