@@ -39,6 +39,15 @@ public class LottoUI {
         return winNumbers;
     }
 
+    public static Integer receiveBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        final String input = Console.readLine();
+        numericValidate(input);
+        Integer number = Integer.parseInt(input);
+        lottoNumberRangeValidate(number);
+        return number;
+    }
+
     private static <T> void amountValidate(T[] target) {
         if (target.length != LottoEnum.WINNING_NUMBERS.getValue()) {
             throw new IllegalArgumentException(String.format("[ERROR] 쉼표 구분자를 정확히 입력해주세요."));
