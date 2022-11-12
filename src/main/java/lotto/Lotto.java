@@ -1,7 +1,6 @@
-package lotto.Model;
+package lotto;
 
-import lotto.Model.ExceptionMessage;
-
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +22,7 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
-        return numbers;
+        return Collections.unmodifiableList(numbers);
     }
 
     public void print() {
