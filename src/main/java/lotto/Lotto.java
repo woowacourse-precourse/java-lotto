@@ -30,12 +30,13 @@ public class Lotto {
         return true;
     }
 
-    public void validateNumbersAreDuplicate(List<Integer> numbers) {
+    public boolean validateNumbersAreDuplicate(List<Integer> numbers) {
         for (int i = 0; i < numbers.size() - 1; i++) {
-            for (int j = i + 1; j < numbers.size(); j++) {
-                checkNumbersAreDuplicate(numbers.get(i), numbers.get(j));
+            if (!checkNumbersAreDuplicate(numbers.get(i), i)) {
+                return false;
             }
         }
+        return true;
     }
 
     private boolean checkNumbersAreDuplicate(int number1, int index) {
