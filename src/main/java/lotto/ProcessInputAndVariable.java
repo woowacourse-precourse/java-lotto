@@ -25,9 +25,9 @@ public class ProcessInputAndVariable {
         // List<Integer> winLottoNumber = new ArrayList<>();
         List<Integer> inputNumberList = Arrays.stream(input.split(",")).map(Integer::parseInt)
                 .collect(Collectors.toList());
-        /*validInput.validInputLength(inputNumberList);
+        validInput.validInputLength(inputNumberList);
 
-        for (Integer number : inputNumberList) {
+        /*for (Integer number : inputNumberList) {
             validInput.validIsInputInRange(number);
         }
 
