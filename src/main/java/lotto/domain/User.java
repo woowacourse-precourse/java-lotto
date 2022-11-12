@@ -36,6 +36,7 @@ public class User {
 
     public List<List<Integer>> showLotto(int countLotto) {
         List<List<Integer>> userLotto = new ArrayList<>();
+        System.out.println(countLotto + "개를 구매했습니다.");
         for (int i = 0; i < countLotto; i++) {
             List<Integer> list = makeLotto();
             System.out.println(list);
