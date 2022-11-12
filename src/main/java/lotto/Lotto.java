@@ -2,7 +2,6 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Collections;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -32,12 +31,5 @@ public class Lotto {
 
     public List<Integer> get_numbers() {
         return numbers;
-    }
-
-    public List<Integer> sort() {
-        List<Integer> temp_numbers = numbers;
-        Collections.sort(temp_numbers);
-
-        return temp_numbers;
     }
 }

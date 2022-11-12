@@ -56,7 +56,7 @@ public class Application {
         System.out.println("개를 구매했습니다.");
 
         for (Lotto lotto : lottos) {
-            System.out.println(lotto.sort());
+            System.out.println(lotto.get_numbers());
         }
     }
 
