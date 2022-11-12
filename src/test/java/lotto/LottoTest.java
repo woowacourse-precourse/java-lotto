@@ -3,6 +3,7 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -120,9 +121,41 @@ class LottoTest {
     @DisplayName("각 로또 번호들에 대한 당첨 여부, 당첨된 등수를 저장한다.")
     @Test
     public void getAllResultsTest() {
-        List<Lotto> testLottos = Application.issueLotto(3);
-        List<Integer> winningNumbers = List.of(1, 23, 24, 35, 14, 4);
+        List<Lotto> testLottos = new ArrayList<>();
+        Lotto test1 = new Lotto(List.of(1, 4, 14, 23, 24, 35)); // 1등
+        testLottos.add(test1);
+        Lotto test11 = new Lotto(List.of(1, 4, 14, 23, 24, 35)); // 1등
+        testLottos.add(test11);
+        Lotto test111 = new Lotto(List.of(1, 4, 14, 23, 24, 35)); // 1등
+        testLottos.add(test111);
+
+        Lotto test2 = new Lotto(List.of(1, 4, 19, 23, 24, 35)); // 2등
+        testLottos.add(test2);
+
+        Lotto test3 = new Lotto(List.of(1, 4, 15, 23, 24, 35)); // 3등
+        testLottos.add(test3);
+        Lotto test33 = new Lotto(List.of(1, 4, 15, 23, 24, 35)); // 3등
+        testLottos.add(test33);
+
+        Lotto test4 = new Lotto(List.of(2, 5, 14, 23, 24, 35)); // 4등
+        testLottos.add(test4);
+        Lotto test44 = new Lotto(List.of(2, 5, 14, 23, 24, 35)); // 4등
+        testLottos.add(test44);
+        Lotto test444 = new Lotto(List.of(2, 5, 14, 23, 24, 35)); // 4등
+        testLottos.add(test444);
+        Lotto test4444 = new Lotto(List.of(2, 5, 14, 23, 24, 35)); // 4등
+        testLottos.add(test4444);
+        Lotto test44444 = new Lotto(List.of(2, 5, 14, 23, 24, 35)); // 4등
+        testLottos.add(test44444);
+
+        Lotto test5 = new Lotto(List.of(2, 5, 15, 23, 24, 35)); // 5등
+        testLottos.add(test5);
+
+        Lotto testBlank = new Lotto(List.of(2, 5, 13, 25, 26, 35)); // 꽝
+
+        List<Integer> winningNumbers = List.of(1, 4, 14, 23, 24, 35);
         int bonusNumber = 19;
+
         Map<Result, Integer> allResults = Application.getAllResults(testLottos, winningNumbers, bonusNumber);
         System.out.println(allResults.entrySet());
 
