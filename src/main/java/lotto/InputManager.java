@@ -11,7 +11,6 @@ public class InputManager {
     public static final int LOTTO_PRICE = 1_000;
 
     public int inputPurchaseAmount() {
-        System.out.println(ConsoleMessage.REQUEST_PURCHASE);
         String input = Console.readLine();
         inputValidator.validateInputPurchaseAmount(input);
 
@@ -19,7 +18,6 @@ public class InputManager {
     }
 
     public Lotto inputWinningNumbers() {
-        System.out.println(ConsoleMessage.REQUEST_WINNING_NUMBERS);
         String input = Console.readLine();
         inputValidator.validateInputWinningNumbers(input);
         List<Integer> inputToList = Arrays.stream(input.split(","))
@@ -30,7 +28,6 @@ public class InputManager {
     }
 
     public int inputBonusNumber(Lotto winningNumber) {
-        System.out.println(ConsoleMessage.REQUEST_BONUS_NUMBER);
         String input = Console.readLine();
         inputValidator.validateInputBonusNumber(input, winningNumber);
 
