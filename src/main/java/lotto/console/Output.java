@@ -20,6 +20,7 @@ public class Output {
         return br;
     }
 
+
     public static class BufferedRecorder {
 
         public void writeBuyLotto(int cnt) throws IOException {
@@ -38,12 +39,13 @@ public class Output {
             bw.write(String.format("%d개 일치, (%,d원) - %d개\n", correctCnt, 1000, cnt));
         }
 
-        public void writeGradingWithBonusNumber(int correctCnt, int cnt) throws IOException {
-            bw.write(String.format("%d개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", correctCnt, cnt));
+        public void writeGradingWithBonusNumber(int cnt) throws IOException {
+            bw.write(String.format("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", cnt));
         }
 
-        public void writeRevenueRate(double rate) throws IOException {
-            bw.write(String.format("총 수익률은 %.1f% 입니다.", rate));
+        public void writeRevenueRate(float rate) throws IOException {
+            bw.write(String.format("총 수익률은 %.1f", rate));
+            bw.write("% 입니다.");
         }
 
         public void writeNewLine() throws IOException{
@@ -61,7 +63,6 @@ public class Output {
         bw.flush();
     }
 
-
     public static void printWhenInputCost() throws IOException {
         bw.write("구입금액을 입력해 주세요.\n");
         bw.flush();
@@ -69,9 +70,5 @@ public class Output {
 
     public static void printBufferedStream() throws IOException {
         bw.flush();
-    }
-
-    public static void printError(String s) throws IOException {
-        bw.write(String.format("[Error] %s",s));
     }
 }

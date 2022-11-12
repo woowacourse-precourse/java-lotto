@@ -1,7 +1,6 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.console.Output;
 import lotto.console.Input;
 import lotto.domain.Lotto;
 import java.io.IOException;
@@ -17,7 +16,7 @@ public class BuyLottoController {
     public int costInput() throws IOException{
 
         getOutput().printWhenInputCost();
-        final int cost = Input.inputCostNumber();
+        int cost = Input.inputCostNumber();
 
         if (isUp(0, cost) && isMultiplesOf1000(cost)) {
             final int tmp = lottoNumbersPerCost(cost);
@@ -41,16 +40,20 @@ public class BuyLottoController {
             getBufferedRecorder().writeLotto(tmp.getLotto());
         }
 
+
         return lottoList;
     }
 
     public void printLottoNumber() throws IOException {
+        getBufferedRecorder().writeNewLine();
         getOutput().printBufferedStream();
     }
 
     public List<Lotto> runBuyLottoController() throws IOException{
+
         final List<Lotto> answer = createLottoNumber(costInput());
         printLottoNumber();
+
         return answer;
     }
 }

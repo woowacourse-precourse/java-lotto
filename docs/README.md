@@ -22,8 +22,8 @@
     - (x)writeBuyLotto : ~개를 구매했습니다. streamWriter 메소드 정의
     - (x)writeLotto : 로또 번호 1개 streamWriter 메소드
     - (x)writeStatistics : 당첨 통계 streamWriter 메소드
-    - (  )writeGrading : ~개 일치, ~원 streamWriter 메소드
-    - (  )writeGradingWithBonusNumber : 5개 일치, 보너스 볼 일치, ~원 streamWriter 메소드
+    - (x)writeGrading : ~개 일치, ~원 streamWriter 메소드
+    - (x)writeGradingWithBonusNumber : 5개 일치, 보너스 볼 일치, ~원 streamWriter 메소드
     - (x)writeRevenueRate : 총 수익률 streamWriter 메소드
     - (x)writeNewLine : 띄어쓰기 streamWriter 메소드
 
@@ -43,12 +43,13 @@
   - (x)runBuyLottoController : 해당 클래스의 로직 총 실행 메소드
 
 - WinningLottoController 클래스
-  - (  )inputWinningLotto : 당첨 번호에 대한 입력 메소드
-  - (  )createWinningLotto : 당첨 번호에 대한 당첨 로또 생성 메소드
-  - (  )inputBonusNumber : 보너스 번호에 대한 입력 메소드
-  - (  )recordBonusNumber : 보너스 번호 등록 메소드
-  - (  )printStatistics : 당첨 통계 출력 메소드
-  - (  )runWinningLottoController : 해당 클래스의 로직 총 실행 메소드
+  - (x)createWinningLotto : 당첨 번호에 대한 당첨 로또 생성 메소드
+  - (x)addBonusNumber : 보너스 번호에 대한 처리 메소드
+  - (x)circuitLotto : 랜덤 생성된 로또들을 순회 처리하는 메소드
+  - (x)updateStatistic : 통계치를 업데이트하는 메소드
+  - (x)writeStatistics : 통계치를 stream 에 담는 메소드
+  - (x)writeTotalRevenue : 총수익률을 stream 에 담는 메소드
+  - (x)runWinningLottoController : 해당 클래스의 로직 총 실행 메소드
 
 - - -
 

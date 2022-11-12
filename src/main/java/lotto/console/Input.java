@@ -21,6 +21,10 @@ public class Input {
                 .boxed()
                 .collect(Collectors.toList());
 
+        if(answer.size() != 6) {
+            throw new IllegalArgumentException("[Error] 당첨 번호를 잘못입력했습니다.");
+        }
+
         return answer;
     }
 
