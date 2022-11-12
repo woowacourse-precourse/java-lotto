@@ -8,7 +8,7 @@ public class Validation {
     private static final int LOTTO_END_NUMBER = 45;
 
     public static void isValidUnit(int amount) throws IllegalArgumentException {
-        if (amount % 1000 != 0) {
+        if (amount <= 0 || amount % 1000 != 0) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.INVALID_AMOUNT_UNIT);
         }
     }
