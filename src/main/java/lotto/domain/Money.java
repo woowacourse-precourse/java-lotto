@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.math.BigDecimal;
+import lotto.exception.domain.DivideZeroException;
 import lotto.exception.domain.MoneyMinimumException;
 
 public class Money {
@@ -28,7 +29,14 @@ public class Money {
         return revenue.divide(investmentPrincipal).multiply(HUNDRED_BIG_DECIMAL).doubleValue();
     }
 
-    public int divide(Money lottoPrice) {
-        return Long.valueOf(this.money / lottoPrice.money).intValue();
+    public int divide(Money money) {
+        validateNotZero(money);
+        return Long.valueOf(this.money / money.money).intValue();
+    }
+
+    private void validateNotZero(Money money) {
+        if (money.money == 0) {
+            throw new DivideZeroException();
+        }
     }
 }

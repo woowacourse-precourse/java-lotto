@@ -30,4 +30,12 @@ public class MoneyTest {
 
         assertThat(money.divide(new Money(1000))).isEqualTo(5);
     }
+
+    @DisplayName("돈을 0으로 나누면 에러를 반환한다.")
+    @Test
+    void divideZero() {
+        Money money = new Money(5000);
+
+        assertThatThrownBy(() -> money.divide(new Money(0))).isInstanceOf(IllegalArgumentException.class);
+    }
 }
