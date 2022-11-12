@@ -59,11 +59,15 @@ public class Application {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < amount; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(numbers);
-            System.out.println(numbers);
             lottos.add(new Lotto(numbers));
         }
         return lottos;
+    }
+
+    private static void printRandomLottos(List<Lotto> lottos) {
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.toString());
+        }
     }
 
     private static Lotto getLuckyNumbers() {
