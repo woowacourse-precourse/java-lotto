@@ -28,7 +28,12 @@ public class Lotto {
                 Error.error(Error.errMsg_ExistSameNumber);
         }
     }
+    public boolean CheckContainNumber(int num){
+        if(numbers.contains(num))
+            return true;
 
+        return false;
+    }
     public static List<Lotto> PurchaseLotto(int count){
         List<Lotto> lottos = GetRandomLotto(count);
         PrintLotto(lottos);

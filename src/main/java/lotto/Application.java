@@ -13,22 +13,80 @@ public class Application {
     private static final int lottoPrice = 1000;
     private static final String purchasingAmountWord = "구입금액을 입력해 주세요.";
     private static final String InputWinningNumber = "당첨 번호를 입력해 주세요.";
+    private static final String InputBonusNumber = "보너스 번호를 입력해 주세요.";
     //endregion
-    private static Lotto WinningLotto;
-    private static List<Lotto> lottos;
     //region 변수
-    public static int numberOfLotto;
+    public static int lottoNumber;
+    private static int BonusNumber;
+    private static Lotto winningLotto;
+    private static List<Lotto> lottos;
     //endregion
 
     //region 생성자
     public static void main(String[] args) {
         SalesLotto();
         GetWinningNumber();
+        GetBonusNumber();
     }
+
 
     //endregion
 
     //region 메서드
+
+    private static void GetBonusNumber() {
+        System.out.println(InputBonusNumber);
+        String userInput = getUserInputData();
+        if(!BonusValidate(userInput))
+            return;
+        BonusNumber = Integer.parseInt(userInput);
+    }
+
+    private static boolean BonusValidate(String userInput) {
+        String errorMessage = "";
+
+        errorMessage = CheckOnlyNumber(userInput);
+        if(!errorMessage.isEmpty())
+        {
+            Error.error(errorMessage);
+            return false;
+        }
+
+        errorMessage = CheckNumberSize(userInput);
+        if(!errorMessage.isEmpty())
+        {
+            Error.error(errorMessage);
+            return false;
+        }
+
+        errorMessage = CheckSameNumber(userInput);
+        if(!errorMessage.isEmpty())
+        {
+            Error.error(errorMessage);
+            return false;
+        }
+
+        return true;
+    }
+
+    private static String CheckSameNumber(String userInput) {
+        int num = Integer.parseInt(userInput);
+        if(winningLotto.CheckContainNumber(num))
+            return Error.errMsg_ExistSameNumber;
+
+        return EMPTY_STRING;
+    }
+
+    private static String CheckNumberSize(String userInput) {
+        int num = Integer.parseInt(userInput);
+        if(num < 1)
+            return Error.errMsg_WrongLottoNumber;
+
+        if(num > 45)
+            return Error.errMsg_WrongLottoNumber;
+
+        return EMPTY_STRING;
+    }
 
     private static void GetWinningNumber() {
         System.out.println(InputWinningNumber);
@@ -47,7 +105,7 @@ public class Application {
             }
             winningNumber.add(Integer.valueOf(commaSplit));
         }
-        WinningLotto = new Lotto(winningNumber);
+        winningLotto = new Lotto(winningNumber);
     }
 
 
@@ -62,12 +120,12 @@ public class Application {
         SalesValidate(userInput);
 
         calculateNumberLotto(userInput);
-        lottos = Lotto.PurchaseLotto(numberOfLotto);
+        lottos = Lotto.PurchaseLotto(lottoNumber);
     }
 
     public static void calculateNumberLotto(String userInput){
         int userPay = Integer.parseInt(userInput);
-        numberOfLotto = userPay / lottoPrice;
+        lottoNumber = userPay / lottoPrice;
     }
 
     private static boolean SalesValidate(String userInput) {
