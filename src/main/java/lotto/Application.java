@@ -112,6 +112,12 @@ public class Application {
         System.out.print(COMMON_ERROR_MESSAGE + " 로또 번호는 6개이고, 1부터 45 사이의 숫자여야 합니다.");
     }
 
+    static List<Integer> what_user_bonus_number() {
+        List<Integer> user_bonus_number = pickUniqueNumbersInRange(1, 45, 1);
+
+        return user_bonus_number;
+    }
+
     public static void main(String[] args) {
         ask_how_much_money();
 
@@ -156,5 +162,7 @@ public class Application {
             print_user_lotto_error();
             return;
         }
+
+        List<Integer> user_bonus_number = what_user_bonus_number();
     }
 }
