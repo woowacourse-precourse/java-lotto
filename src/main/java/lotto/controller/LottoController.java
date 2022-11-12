@@ -11,6 +11,7 @@ public class LottoController {
     private static final InputView inputView = new InputView();
     private static final OutputView outputView = new OutputView();
     private List<Lotto> lottoTicketList = new ArrayList<>();
+    private LottoStatistics lottoStatistics = new LottoStatistics();
 
     public static LottoController create(){
         return new LottoController();
@@ -19,9 +20,9 @@ public class LottoController {
         LottoPrice lottoPrice = buyLottoTicket();
         printTicketCount(lottoPrice);
         issueLotto(lottoPrice.lottoTicketCount());
-        LottoStatistics.calculation(lottoTicketList,inputLottoNumbers());
-        printStatistics(LottoStatistics.getLottoStatisticsList());
-        printEarning(LottoStatistics.calculateEarning(lottoPrice.getLottoPrice()));
+        lottoStatistics.calculation(lottoTicketList,inputLottoNumbers());
+        printStatistics(lottoStatistics.getLottoStatisticsList());
+        printEarning(lottoStatistics.calculateEarning(lottoPrice.getLottoPrice()));
     }
     private LottoPrice buyLottoTicket(){
         return new LottoPrice(inputView.inputPrice());
