@@ -1,5 +1,6 @@
 package lotto.views;
 
+import lotto.constants.Constant;
 import lotto.models.Lotto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -46,4 +47,14 @@ class PrinterTest {
 		assertThat(outputStream.toString()).isEqualTo(expected);
 	}
 
+	@DisplayName("사용자가 구매한 로또 개수를 출력하는 기능 테스트")
+	@Test
+	void checkUserLottoCountPrintTest() {
+		final int purchaseAmount = 3000;
+
+		Printer.showUserPurchasedLottoCount(purchaseAmount);
+
+		final String expected = (purchaseAmount / Constant.LOTTO_PRICE) + "개를 구매했습니다.\n";
+		assertThat(outputStream.toString()).isEqualTo(expected);
+	}
 }
