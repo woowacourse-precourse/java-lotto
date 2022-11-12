@@ -35,7 +35,7 @@ public class LottoGameSimulator {
     }
 
     public void getInputOfWinningNumbers() {
-
+        MessagePrinter.printWinningNumbersInputRequest();
     }
 
     public void getInputOfBonusNumber() {
