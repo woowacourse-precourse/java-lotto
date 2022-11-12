@@ -1,10 +1,19 @@
 package lotto;
 
+import lotto.domain.Lotteries;
+import lotto.domain.LottoStore;
+import lotto.domain.Money;
+import lotto.view.InputView;
+import lotto.view.outputView;
+
 public class Game {
-    private final LottoStore lottoStore = new LottoStore();
 
     public void play() {
-        lottoStore.payLotto();
-        lottoStore.buyLotto();
+        Money money = new Money(InputView.inputMoney());
+        Lotteries lotteries = LottoStore.buyLotto(money);
+
+        outputView.printBuyLotto(money);
+        outputView.printLotteries(lotteries);
+
     }
 }

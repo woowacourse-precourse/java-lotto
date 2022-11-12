@@ -1,4 +1,4 @@
-package lotto.console;
+package lotto.exception;
 
 public class InvalidInputException extends IllegalArgumentException {
     private static final String ERROR_MESSAGE = "[ERROR] %s";
