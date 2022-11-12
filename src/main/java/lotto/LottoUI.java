@@ -65,6 +65,7 @@ public class LottoUI {
 
     private static <T> void amountValidate(T[] target) {
         if (target.length != LottoEnum.WINNING_NUMBERS.getValue()) {
+            System.out.println("[ERROR] 쉼표 구분자를 정확히 입력해주세요.");
             throw new IllegalArgumentException(String.format("[ERROR] 쉼표 구분자를 정확히 입력해주세요."));
         }
     }
@@ -73,12 +74,14 @@ public class LottoUI {
         try {
             Integer.parseInt(str);
         } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 숫자로 변환할 수 없는 입력입니다.");
             throw new IllegalArgumentException("[ERROR] 숫자로 변환할 수 없는 입력입니다.");
         }
     }
 
     private static void lottoNumberRangeValidate(Integer num) {
         if (num < LottoEnum.MIN_NUMBER.getValue() || num > LottoEnum.MAX_NUMBER.getValue()) {
+            System.out.println("[ERROR] 로또 번호 범위 밖의 숫자입니다.");
             throw new IllegalArgumentException("[ERROR] 로또 번호 범위 밖의 숫자입니다.");
         }
     }
