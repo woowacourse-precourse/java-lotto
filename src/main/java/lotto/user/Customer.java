@@ -33,7 +33,7 @@ public class Customer {
     }
 
     private void validateNumeric(String readline) {
-        if (Pattern.matches("^\\d", readline)) {
+        if (!Pattern.matches("^[0-9]*$", readline)) {
             throw new IllegalArgumentException(NUMERIC_ERROR);
         }
     }
