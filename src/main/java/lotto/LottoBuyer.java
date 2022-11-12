@@ -17,11 +17,17 @@ public class LottoBuyer {
     private Integer bonusNumber;
 
     private List<Lotto> lottos;
-    public LottoBuyer(){
-        lotto = null;
-        money = null;
-        bonusNumber = null;
-        lottos = new ArrayList<Lotto>();
+    public LottoBuyer() throws IllegalArgumentException {
+        try {
+            lottos = new ArrayList<Lotto>();
+            setMoney();
+            LottoMachine.buyLotto(lottos, money);
+            setLottoNumbers();
+            setBonusNumber();
+        } catch(IllegalArgumentException iae){
+            throw iae;
+        }
+
     }
     public void setMoney() throws IllegalArgumentException{
         System.out.println("구입금액을 입력해주세요.");
@@ -53,6 +59,7 @@ public class LottoBuyer {
     }
 
     public void setBonusNumber() throws IllegalArgumentException{
+        System.out.println("보너스 번호를 입력해 주세요.");
         final String input = Console.readLine();
 
         try{
