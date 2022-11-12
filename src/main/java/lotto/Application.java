@@ -117,8 +117,6 @@ public class Application {
     }
 
     public static void Winnig(List winning) throws IOException {
-        //List<Integer> count = new ArrayList<>();
-
         for(int i = 0; i<winning.size();i++){
             if(winning.get(i).equals(6)) Rank.first.count++;
             else if(winning.get(i).equals(7)) Rank.second.count++;
@@ -126,7 +124,6 @@ public class Application {
             else if (winning.get(i).equals(4)) Rank.fourth.count++;
             else if (winning.get(i).equals(3)) Rank.fifth.count++;
         }
-        //count.add(fifth); count.add(fourth); count.add(third); count.add(second);count.add(first);
     }
 
     public static void printCount() throws IOException {
