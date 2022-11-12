@@ -36,4 +36,17 @@ class PriceValidatorTest {
                 () -> validator.checkingPurchasable(inputMoney));
         assertThat(exception.getMessage()).isEqualTo(ErrorMessages.BELOW_THE_PRICE_THRESHOLD.getMessage());
     }
+    @Order(2)
+    @DisplayName("나누어 떨어지지 않는 값 입력")
+    @Test
+    void undividedMoneyException() {
+        int inputMoney = 10_111;
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> validator.checkingDividable(inputMoney))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+        Exception exception = assertThrows(IllegalArgumentException.class,
+                () -> validator.checkingDividable(inputMoney));
+        assertThat(exception.getMessage()).isEqualTo(ErrorMessages.MONEY_UNDIVIDED.getMessage());
+    }
 }
