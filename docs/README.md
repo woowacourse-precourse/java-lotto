@@ -28,9 +28,15 @@
 [ERROR] 를 붙인 에러 문구도 출력해야한다.
 ```
 [UI 로직]
+입출력
 - 1번 : 입력값 1000으로 나누어 떨어지지 않으면 IllegalArgumentException
-- 5번 : 입력값 6개 모두 1~45 범위 내의 숫자이며 ,로 제대로 구분되어 있어야 함. 그렇지 않으면 IllegalArgumentException
-- 6번 : 입력값이 1~45 범위 내의 숫자가 아니면 IllegalArgumentException
+
+로또번호
+- 숫자 6개 모두 1~45 범위 내의 숫자여야 함. 그렇지 않으면 IllegalArgumentException
+- 로또번호가 총 6개가 아니라면 IllegalArgumentException
+- 로또번호에 중복이 있으면 IllegalArgumentException
+
+-
 ```
 <br>
 
