@@ -43,7 +43,7 @@
 - [ ] 로또 번호 저장하기
 - [ ] 로또 번호 비교하기
 - LottoNumberGenerator
-- [ ] 로또 번호 생성하기
+- [x] 로또 번호 생성하기
 - WinningLotto extends Lotto
 - [ ] 당첨 로또 번호 저장받기
 - [ ] 보너스 번호 저장받기
