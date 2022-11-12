@@ -20,8 +20,8 @@ public class Lotto {
         return this.numbers;
     }
 
-    public void show() {
-        System.out.print(numbers);
+    public void showNumbers() {
+        System.out.print(numbers + "\n");
     }
 
     private void validate(List<Integer> numbers) {
