@@ -1,10 +1,13 @@
 package lotto.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import lotto.constant.IntConstant;
 import lotto.constant.LottoResultConstant;
+import lotto.constant.StringConstant;
 import lotto.domain.Lotto;
 import lotto.service.LottoResultService;
 import lotto.service.UserLottoService;
@@ -29,6 +32,7 @@ public class LottoController {
      */
     public void lottoProcedure() {
         String userMoneyInput = getUserMoneyWithValidation();
+        printUserLottoMoneyResult(userMoneyInput);
         List<Lotto> userLotto = createUserLotto(userMoneyInput);
         printUserLottoResult(userLotto);
 
@@ -38,7 +42,16 @@ public class LottoController {
 
         Map<LottoResultConstant, Integer> result = lottoResultService.getResult(userLotto,
                 getWinningLotto(winningLotto), getBonusLotto(bonusLotto));
-        printUserLottoAndUserYield(result);
+        printUserLottoAndUserYield(result, Integer.parseInt(userMoneyInput));
+    }
+
+    private void printUserLottoMoneyResult(String userMoneyInput) {
+        int userMoney = Integer.parseInt(userMoneyInput);
+        int lottoCount = userMoney / IntConstant.LOTTO_MONEY_PER_ONE.getValue();
+        View moneyView = new UserLottoView();
+        List<String> lotto = new ArrayList<>(List.of(String.valueOf(lottoCount) + "개를 구매했습니다."));
+        moneyView.setPrintElement(lotto);
+        moneyView.show();
     }
 
     private String getWinningLottoWithValidation() {
@@ -156,9 +169,30 @@ public class LottoController {
         return Integer.parseInt(bonusLotto);
     }
 
-    public int printUserLottoAndUserYield(Map<LottoResultConstant, Integer> result) {
-        int yieldResult = yieldService.calculateYield(result);
-        return yieldResult;
+    private void printUserLottoAndUserYield(Map<LottoResultConstant, Integer> result, int userMoney) {
+        double yieldPercent = yieldService.calculateYield(result, userMoney);
+        String yieldPercentOneDot = String.format("%.1f", yieldPercent);
+        View userLottoView = new UserLottoView();
+        List<String> userResult = createResult(result, yieldPercentOneDot);
+        userResult.add("총 수익률은 " + yieldPercentOneDot + "%입니다.");
+        userLottoView.setPrintElement(userResult);
+        userLottoView.show();
+    }
+
+    private List<String> createResult(Map<LottoResultConstant, Integer> result, String yieldPercentOneDot) {
+        List<String> resultView = new ArrayList<>();
+        createResultView(resultView, LottoResultConstant.CORRECT_THREE, result);
+        createResultView(resultView, LottoResultConstant.CORRECT_FOUR, result);
+        createResultView(resultView, LottoResultConstant.CORRECT_FIVE, result);
+        createResultView(resultView, LottoResultConstant.CORRECT_FIVE_CORRECT_BONUS, result);
+        createResultView(resultView, LottoResultConstant.CORRECT_SIX, result);
+        return resultView;
+    }
+
+    private static void createResultView(List<String> resultView, LottoResultConstant lottoResultConstant,
+                                  Map<LottoResultConstant, Integer> result) {
+        resultView.add(
+                lottoResultConstant.getResultString() + result.get(lottoResultConstant)+"개");
     }
 
 }
