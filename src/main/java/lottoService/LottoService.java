@@ -30,6 +30,11 @@ public class LottoService {
         return new Lotto(inputLottoWinningNumbers());
     }
 
+    public Integer inputBonusNumber(Lotto winningLotto){
+        lottoGameMessage.printBonusNumberMessage();
+        return inputLottoBonusNumber(winningLotto);
+    }
+
     public List<Integer> inputLottoWinningNumbers(){
         List<Integer> lottoWinningNumbers = new ArrayList<>();
         String inputLottoPickNumbers = input().trim().replaceAll(" ","");
