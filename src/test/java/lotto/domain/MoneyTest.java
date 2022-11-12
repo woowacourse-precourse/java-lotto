@@ -29,4 +29,12 @@ public class MoneyTest {
     void calculateYield() {
         assertThat(Money.yield(new Money(8000), new Money(5000))).isEqualTo(62.5);
     }
+
+    @DisplayName("돈을 나눈 값을 반환한다.")
+    @Test
+    void divide() {
+        Money money = new Money(5000);
+
+        assertThat(money.divide(new Money(1000))).isEqualTo(5);
+    }
 }
