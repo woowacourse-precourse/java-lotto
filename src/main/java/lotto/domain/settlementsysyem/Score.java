@@ -23,12 +23,12 @@ public class Score {
         return bonus;
     }
 
-    public Score plusBonus() {
-        return new Score(normal + 1, bonus);
-    }
-
     public Ranking generateRank() {
         return Ranking.calculateScore(this);
+    }
+
+    public Score plusNormal() {
+        return new Score(this.normal + 1, this.bonus);
     }
 
     @Override
@@ -47,5 +47,9 @@ public class Score {
     @Override
     public int hashCode() {
         return Objects.hash(getNormal(), getBonus());
+    }
+
+    public Score plusBonus() {
+        return new Score(this.normal, this.bonus + 1);
     }
 }
