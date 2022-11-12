@@ -23,7 +23,9 @@ public enum Message {
     LOTTO_NUMBER_EXCEPTION("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."),
     PRICE_EXCEPTION("[ERROR] 구입 금액은 1,000으로 나누어 떨어져야 합니다."),
     SPLIT_BY_COMMA_INPUT_SIZE_EXCEPTION("[ERROR] ',' 로 구분되는 6개의 문자열이어야 합니다."),
-    NON_DUPLICATED_LOTTO_NUMBERS_EXCEPTION("[ERROR] 당첨 번호는 중복되지 않는 6개의 숫자여야 합니다.");
+    LOTTO_NUMBER_SIZE_EXCEPTION("[ERROR] 당첨 번호는 6개의 숫자여야 합니다."),
+    NON_DUPLICATED_LOTTO_NUMBERS_EXCEPTION("[ERROR] 당첨 번호는 중복되지 않는 6개의 숫자여야 합니다."),
+    NON_DUPLICATED_BONUS_NUMBER_EXCEPTION("[ERROR] 보너스 번호는 당첨 번호와 중복되지 않는 숫자여야 합니다.");
 
     private final String value;
 

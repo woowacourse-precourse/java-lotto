@@ -15,7 +15,9 @@ import static lotto.ui.Message.LOTTERY_RESULT_TITLE;
 import static lotto.ui.Message.LOTTO_NUMBER_DELIMITER;
 import static lotto.ui.Message.LOTTO_NUMBER_END;
 import static lotto.ui.Message.LOTTO_NUMBER_EXCEPTION;
+import static lotto.ui.Message.LOTTO_NUMBER_SIZE_EXCEPTION;
 import static lotto.ui.Message.LOTTO_NUMBER_START;
+import static lotto.ui.Message.NON_DUPLICATED_BONUS_NUMBER_EXCEPTION;
 import static lotto.ui.Message.NON_DUPLICATED_LOTTO_NUMBERS_EXCEPTION;
 import static lotto.ui.Message.NUMBER_EXCEPTION;
 import static lotto.ui.Message.PRICE_EXCEPTION;
@@ -90,5 +92,13 @@ public class Print {
 
     public static void nonDuplicatedLottoNumbersException() {
         System.out.println(NON_DUPLICATED_LOTTO_NUMBERS_EXCEPTION.getValue());
+    }
+
+    public static void lottoNumberSizeException() {
+        System.out.println(LOTTO_NUMBER_SIZE_EXCEPTION.getValue());
+    }
+
+    public static void nonDuplicatedBonusNumberException() {
+        System.out.println(NON_DUPLICATED_BONUS_NUMBER_EXCEPTION.getValue());
     }
 }
