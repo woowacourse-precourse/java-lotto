@@ -13,7 +13,7 @@ public class Lotto {
             overlap(numbers);
             overcheck(numbers);
         }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
+            throw new IllegalArgumentException(e.getMessage());
         }
         this.numbers = numbers;
     }
@@ -59,6 +59,9 @@ public class Lotto {
             }
         }
         return check;
+    }
+    public void check_bonus(int bonus){
+        if(numbers.contains(bonus)) throw new IllegalArgumentException("[ERROR] 보너스 번호와 당첨번호가 같을 수 없습니다");
     }
 
 }
