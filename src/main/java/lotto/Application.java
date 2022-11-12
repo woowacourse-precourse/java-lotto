@@ -2,8 +2,6 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.machine.Lotto;
-import lotto.machine.Numbers;
 import lotto.machine.Tickets;
 import lotto.ui.Input;
 

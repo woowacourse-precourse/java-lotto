@@ -11,7 +11,7 @@ public class Winner {
     private final Lotto winningNumbers;
 
     public Winner(List<Integer> winningNumbers, Integer bonusNumber) {
-        checkIfBonusNumberIncludedInWinningNumbers(winningNumbers, bonusNumber);
+        Validator.checkIfBonusNumberIncludedInWinningNumbers(winningNumbers, bonusNumber);
         this.winningNumbers = new Lotto(winningNumbers);
         this.bonusNumber = bonusNumber;
         Validator.checkRange(this.bonusNumber);
@@ -33,11 +33,5 @@ public class Winner {
 
     public Integer getBonusNumber() {
         return bonusNumber;
-    }
-
-    private void checkIfBonusNumberIncludedInWinningNumbers(List<Integer> winningNumbers, Integer bonusNumber) {
-        if (winningNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(ERROR_TITLE + DUPLICATE_NUMBERS);
-        }
     }
 }
