@@ -14,7 +14,6 @@ public class View {
 	private static final String WINNING_MESSAGE_GUIDE_MESSAGE = "당첨 통계";
 	private static final String YIELD_GUIDE_MESSAGE = "총 수익률은 ";
 	private static final String YIELD_GUIDE_MESSAGE_END = "입니다.";
-	private static final int INIT_INDEX = 0;
 
 	public static void showPurchaseInputGuideMessage() {
 		System.out.println(PURCHASE_INPUT_GUIDE_MESSAGE);

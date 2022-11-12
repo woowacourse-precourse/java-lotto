@@ -14,19 +14,17 @@ public class LottoComparator {
 	private static final int SECOND_WINNER_MATCH_COUNT = 5;
 	private static final int INIT = 0;
 	private static List<Lotto> winner;
-	public static int totalPrize;
 
 	public static void initWinnerAndPrize() {
 		winner = new ArrayList<>();
-		totalPrize = INIT;
 	}
 
 	public static void compareNumbers(List<Lotto> lottos) {
 		initWinnerAndPrize();
 
 		for (Lotto lotto : lottos) {
-			int matchNumberCount = calculateMatchNumberCount(lotto, INIT);
-			lotto.setMatchNumberCount(matchNumberCount);
+			int countMatchNumber = calculateCountMatchNumber(lotto, INIT);
+			lotto.setCountMatchNumber(countMatchNumber);
 
 			addWinner(lotto);
 		}
@@ -43,23 +41,23 @@ public class LottoComparator {
 		return lotto.getMatchNumberCount() >= MIN_WINNER_MATCH_NUMBER;
 	}
 
-	public static int calculateMatchNumberCount(Lotto lotto, int matchNumberCount) {
+	public static int calculateCountMatchNumber(Lotto lotto, int countMatchNumber) {
 		Set<Integer> numbers = lotto.getNumbers();
 		List<String> winningNumber = WinningLotto.getWinningNumber();
 		String bonusNumber = WinningLotto.getBonusNumber().get(0);
 
 		for (String number : winningNumber) {
 			if (isContainsNumber(numbers, number)) {
-				matchNumberCount++;
+				countMatchNumber++;
 			}
 		}
 
-		setMatchBonusNumber(lotto, numbers, bonusNumber, matchNumberCount);
+		checkMatchBonusNumber(lotto, numbers, bonusNumber, countMatchNumber);
 
-		return matchNumberCount;
+		return countMatchNumber;
 	}
 
-	public static void setMatchBonusNumber(Lotto lotto, Set<Integer> numbers, String bonusNumber,
+	public static void checkMatchBonusNumber(Lotto lotto, Set<Integer> numbers, String bonusNumber,
 		int matchNumberCount) {
 		if (matchNumberCount == SECOND_WINNER_MATCH_COUNT && isContainsNumber(numbers, bonusNumber)) {
 			lotto.setMatchBonusNumber(true);

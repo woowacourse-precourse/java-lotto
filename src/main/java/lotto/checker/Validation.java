@@ -3,10 +3,10 @@ package lotto.checker;
 import java.util.Arrays;
 import java.util.List;
 
-import lotto.exception.Exception;
 import lotto.domain.WinningLotto;
+import lotto.exception.Exception;
 
-public class Checker {
+public class Validation {
 	private static final int MAX_PRICE = 100000; //1인당 최대 복권 구매금액은 10만원이다.
 	private static final int MIN_PRICE = 1000;
 	private static final int MAX_WINNING_NUMBER_LENGTH = 6;
@@ -15,23 +15,23 @@ public class Checker {
 	private static final int MIN_NUMBER = 1;
 	private static final int ZERO = 0;
 
-	public static void checkPriceException(String userInput) {
-		checkNumberOnlyException(Arrays.asList(userInput));
-		checkPriceRangeException(userInput);
+	public static void validatePriceException(String userInput) {
+		validateNumberOnlyException(Arrays.asList(userInput));
+		validatePriceRangeException(userInput);
 	}
 
-	private static void checkPriceRangeException(String userInput) {
+	private static void validatePriceRangeException(String userInput) {
 
 		if (isMaxPriceException(userInput)) {
-			Exception.maxPriceException();
+			throw Exception.MAX_PRICE_EXCEPTION.getException();
 		}
 
 		if (isMinPriceException(userInput)) {
-			Exception.minPriceException();
+			throw Exception.MIN_PRICE_EXCEPTION.getException();
 		}
 
 		if (isPriceRangeException(userInput)) {
-			Exception.priceRangeException();
+			throw Exception.PRICE_RANGE_EXCEPTION.getException();
 		}
 
 	}
@@ -48,30 +48,30 @@ public class Checker {
 		return Integer.parseInt(userInput) > MAX_PRICE;
 	}
 
-	public static void checkWinningNumberInput(List<String> winningNumber) {
-		checkNumberOnlyException(winningNumber);
-		checkLengthException(winningNumber, MAX_WINNING_NUMBER_LENGTH);
-		checkSameNumberException(winningNumber);
-		checkNumberRangeException(winningNumber);
+	public static void validateWinningNumberInput(List<String> winningNumber) {
+		validateNumberOnlyException(winningNumber);
+		validateLengthException(winningNumber, MAX_WINNING_NUMBER_LENGTH);
+		validateSameNumberException(winningNumber);
+		validateNumberRangeException(winningNumber);
 	}
 
-	public static void checkBonusNumberInput(List<String> bonusNumber) {
-		checkNumberOnlyException(bonusNumber);
-		checkLengthException(bonusNumber, MAX_BONUS_NUMBER_LENGTH);
-		checkSameNumberInWinningNumberException(bonusNumber);
-		checkNumberRangeException(bonusNumber);
+	public static void validateBonusNumberInput(List<String> bonusNumber) {
+		validateNumberOnlyException(bonusNumber);
+		validateLengthException(bonusNumber, MAX_BONUS_NUMBER_LENGTH);
+		validateSameNumberInWinningNumberException(bonusNumber);
+		validateNumberRangeException(bonusNumber);
 	}
 
-	public static void checkSameNumberInWinningNumberException(List<String> bonusNumber) {
+	public static void validateSameNumberInWinningNumberException(List<String> bonusNumber) {
 		if (WinningLotto.getWinningNumber().contains(bonusNumber.get(0))) {
-			Exception.sameNumberException();
+			throw Exception.SAME_NUMBER_EXCEPTION.getException();
 		}
 	}
 
-	public static void checkNumberRangeException(List<String> numbers) {
+	public static void validateNumberRangeException(List<String> numbers) {
 		for (String number : numbers) {
 			if (isMaxNumberException(number) || isMinNumberException(number)) {
-				Exception.numberRangeException();
+				throw Exception.NUMBER_RANGE_EXCEPTION.getException();
 			}
 		}
 	}
@@ -92,27 +92,27 @@ public class Checker {
 		return isSameNumberExist;
 	}
 
-	public static void checkSameNumberException(List<String> winningNumber) {
+	public static void validateSameNumberException(List<String> winningNumber) {
 
 		if (isSameNumber(winningNumber)) {
-			Exception.sameNumberException();
+			throw Exception.SAME_NUMBER_EXCEPTION.getException();
 		}
 
 	}
 
-	public static void checkLengthException(List<String> numbers, int maxLength) {
+	public static void validateLengthException(List<String> numbers, int maxLength) {
 		if (numbers.size() > maxLength) {
-			Exception.numberLengthException();
+			throw Exception.NUMBER_ONLY_EXCEPTION.getException();
 		}
 	}
 
-	public static void checkNumberOnlyException(List<String> numbers) {
+	public static void validateNumberOnlyException(List<String> numbers) {
 		try {
 			for (String number : numbers) {
 				Integer.parseInt(number);
 			}
 		} catch (IllegalArgumentException e) {
-			Exception.numberOnlyException();
+			throw Exception.NUMBER_ONLY_EXCEPTION.getException();
 		}
 	}
 }

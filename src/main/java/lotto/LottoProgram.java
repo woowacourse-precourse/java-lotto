@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.checker.Checker;
+import lotto.checker.Validation;
 import lotto.domain.Lotto;
 import lotto.domain.Prize;
 import lotto.domain.WinningLotto;
@@ -69,7 +69,7 @@ public class LottoProgram {
 		String userInput = Input.userInput();
 
 		WinningLotto.createBonusNumber(userInput);
-		Checker.checkBonusNumberInput(WinningLotto.getBonusNumber());
+		Validation.validateBonusNumberInput(WinningLotto.getBonusNumber());
 	}
 
 	private static void selectWinningNumbers() {
@@ -77,13 +77,13 @@ public class LottoProgram {
 		String userInput = Input.userInput();
 
 		WinningLotto.createWinningNumber(userInput);
-		Checker.checkWinningNumberInput(WinningLotto.getWinningNumber());
+		Validation.validateWinningNumberInput(WinningLotto.getWinningNumber());
 	}
 
 	private void payForLotto() {
 		View.showPurchaseInputGuideMessage();
 		String userInput = Input.userInput();
-		Checker.checkPriceException(userInput);
+		Validation.validatePriceException(userInput);
 
 		lottoCount = Integer.parseInt(userInput) / PRICE_UNIT;
 	}
