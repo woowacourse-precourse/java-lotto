@@ -22,4 +22,12 @@ public class LottoDesignatorTest {
         assertThatThrownBy(() -> lottoDesignator.checkSixCipher(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("입력받은 로또번호가 중복 숫자가 있을 경우 예외가 발생한다.")
+    @Test
+    void 로또_번호_중복_예외() {
+        String input = "1,2,3,4,5,5";
+        assertThatThrownBy(() -> lottoDesignator.checkDuplication(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
