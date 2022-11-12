@@ -94,7 +94,7 @@ public class MainController {
     }
 
     HashMap<Rank, Integer> point;
-
+    double profit;
     public void calculateWinning() {
         CalculatorModel calculator = new CalculatorModel();
         int total = 0;
@@ -106,7 +106,11 @@ public class MainController {
             int p = point.get(rank);
             point.replace(rank, p + 1);
         }
-        double profit = calculator.getProfit(total, cash.getCash());
+        
+        profit = calculator.getProfit(total, cash.getCash());
+    }
+
+    public void printResult(){
         OutputView outputView = new OutputView();
         outputView.printResult(point, profit);
     }
