@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.domain.result.Result;
+import lotto.domain.result.ResultMaker;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

@@ -1,6 +1,10 @@
 package lotto;
 
-import lotto.domain.*;
+import lotto.domain.lotto.Lotto;
+import lotto.domain.lotto.LottoMaker;
+import lotto.domain.result.Result;
+import lotto.domain.result.ResultMaker;
+import lotto.domain.utils.ProfitCalculator;
 import lotto.io.ConsoleInput;
 import lotto.io.ConsoleOutput;
 

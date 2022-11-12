@@ -1,9 +1,8 @@
 package lotto.io;
 
-import lotto.domain.Lotto;
-import lotto.domain.ProfitCalculator;
-import lotto.domain.Result;
-import lotto.domain.WinningPrice;
+import lotto.domain.lotto.Lotto;
+import lotto.domain.result.Result;
+import lotto.domain.result.WinningPrice;
 
 import java.text.DecimalFormat;
 import java.util.List;

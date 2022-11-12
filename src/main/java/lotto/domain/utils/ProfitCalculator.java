@@ -1,4 +1,7 @@
-package lotto.domain;
+package lotto.domain.utils;
+
+import lotto.domain.result.Result;
+import lotto.domain.result.WinningPrice;
 
 import java.util.List;
 
