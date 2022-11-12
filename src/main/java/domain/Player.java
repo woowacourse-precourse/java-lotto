@@ -15,9 +15,16 @@ public class Player {
 
     private Map<LottoRank , Integer> winningLottoCount = new HashMap<>();
 
-    //로또 구입 금액 입력
     public void inputPurchaseLottoPrice(int purchaseLottoPrice){
         this.lottoPrice = purchaseLottoPrice;
+    }
+
+    public void canDivideThousand(){
+        if(this.lottoPrice% Constant.LOTTO_PRICE != 0)
+            throw new IllegalArgumentException(Constant.NOT_VALID_PRICE_EXCEPTION);
+    }
+    public void countLottoNumber(){
+        this.lottoCount = this.lottoPrice/Constant.LOTTO_PRICE;
     }
 
     public int getLottoPrice() {
