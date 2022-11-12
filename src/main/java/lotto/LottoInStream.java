@@ -9,13 +9,10 @@ public class LottoInStream {
     private static final int _lotto_number_length = 6;
     private static final int _lotto_bonus_length = 1;
     private static final int _bonus_index = 0;
-    private static final String _input_buy_str = "구입금액을 입력해 주세요.\n";
-    private static final String _input_numbers_str = "당첨 번호를 입력해 주세요.\n";
-    private static final String _input_bonus_number_str = "보너스 번호를 입력해 주세요.\n";
     private static final String _error_default_msg = "[ERROR]";
 
     public static int readToBuyLotto() {
-        System.out.print(_input_buy_str);
+        LottoOutStream.askPurchaseAmount();
         String line = readline();
 
         if (isNullOrEmptyString(line)) {
@@ -30,7 +27,7 @@ public class LottoInStream {
     }
 
     public static List<Integer> readToGetLottoNumbers() {
-        System.out.print(_input_numbers_str);
+        LottoOutStream.askWinningNumber();
         String line = readline();
 
         if (isNullOrEmptyString(line)) {
@@ -40,7 +37,7 @@ public class LottoInStream {
     }
 
     public static int readToGetLottoBonus(Lotto lotto) {
-        System.out.print(_input_bonus_number_str);
+        LottoOutStream.askBonusNumber();
         String line = readline();
 
         if (isNullOrEmptyString(line)) {

@@ -22,8 +22,6 @@ public class LottoGame {
     public static final int _third_place = 2;
     public static final int _fourth_place = 3;
     public static final int _fifth_place = 4;
-
-    private static final String _buy_msg = "개를 구매했습니다.\n";
     private static final String _error_default_msg = "[ERROR]";
 
     public static List<Lotto> buyLotto(int money) {
@@ -40,7 +38,7 @@ public class LottoGame {
         for (int i = 0; i < lottoCount; ++i) {
             lottoes.add(new Lotto(makeUniqueLottoNumber()));
         }
-        System.out.print(lottoCount + _buy_msg);
+        LottoOutStream.outStreamLottoCount(lottoCount);
         return lottoes;
     }
 
