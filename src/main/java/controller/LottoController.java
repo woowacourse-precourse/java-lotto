@@ -23,6 +23,7 @@ public class LottoController {
 
         HashMap<LottoRanking, Integer> winningList = makeWinningList(lottos, winningNumbers, bonusNumber);
         printWinningList(winningList);
+        printYield(lottoCount, winningList);
     }
 
     public int buyLotto() {
@@ -114,6 +115,14 @@ public class LottoController {
         }
     }
 
+    public void printYield(int lottoCount, HashMap<LottoRanking, Integer> winningList) {
+        double reward = 0;
+        for (int i = 1; i <= 5; i++) {
+            reward += (long) winningList.get(LottoRanking.findByRanking(i)) * LottoRanking.findByRanking(i).getReward();
+        }
+        double yieldMoney = reward / (lottoCount * 1000) * 100;
+        System.out.println("총 수익률은 " + String.format("%.1f", yieldMoney) + "%입니다.");
+    }
 
 
 }
