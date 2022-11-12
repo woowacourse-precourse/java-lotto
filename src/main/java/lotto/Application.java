@@ -20,6 +20,8 @@ public class Application {
 
         // 구매 개수에 맞게 로또를 발행하는 메서드 호출
         List<Lotto> lottos = purchaseLotto(purchaseNum);
+        for(Lotto l : lottos)
+            l.printElements();
 
         // 당첨 번호를 입력받는 메서드 호출
 
