@@ -1,13 +1,18 @@
 package lotto;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Lotto {
     private final List<Integer> numbers;
     private int bonus;
+
+    private Map<String, Integer> sameNumberMap = new HashMap<>();
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -25,7 +30,7 @@ public class Lotto {
     public List<Integer> buyLottoRandomNumber(){
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
-    //2. 당첨에 대한 금액을 산정하는 함수
+    //2. 당첨에 개수를 반환하는 함수
     public int sameNumberCheck(List<Integer> buyLottoNumber){
         int count = 0;
         for(int i = 0; i < 6; i++){
@@ -33,7 +38,23 @@ public class Lotto {
                 count++;
             }
         }
+        setSameNumberMap(count);
         return count;
+    }
+    // 2-1. 로또에서 3개 이상 당첨에 다른 개수 카운트
+    public void setSameNumberMap(int count){
+        if(count < 3){
+            return;
+        }
+        if(!sameNumberMap.containsKey(count+"개")){
+            sameNumberMap.put(count+"개", 1);
+        }
+        else if(count == 5 && !sameNumberMap.containsKey(count+"개+보너스")){
+            sameNumberMap.put(count+"개+보너스", 1);
+        }
+        else{
+            sameNumberMap.put(count+"개", sameNumberMap.get(count+"개")+1);
+        }
     }
     //3. 입력 받은 금액이 1000원단위인지 확인하는 함수
     public void moneyUnitCheck(int inputMoney){
