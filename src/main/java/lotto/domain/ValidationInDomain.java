@@ -12,10 +12,9 @@ public class ValidationInDomain {
         }
     }
 
-    public void checkDuplicatedNumber(List<Integer> numbers){
+    public void checkNumbersDuplication(List<Integer> numbers) {
         Set<Integer> validator = new HashSet<>();
-        for(int i = 0; i < numbers.size(); i++){
-            int number = numbers.get(i);
+        for (int number : numbers){
             if(validator.contains(number)){
                 throw new IllegalArgumentException();
             }
@@ -26,6 +25,14 @@ public class ValidationInDomain {
     public void checkNumberRange(int number){
         if(number < 1 || number > 45){
             throw new IllegalArgumentException();
+        }
+    }
+
+    public void checkNumbersRange(List<Integer> numbers){
+        for(int number : numbers){
+            if(number < 1 || number > 45){
+                throw new IllegalArgumentException();
+            }
         }
     }
 
