@@ -36,6 +36,28 @@ public class Application {
             System.out.println();
 
             validateWinningLottoAndBonusNumber(winningLotto, bonusNumber);
+
+            LottoComparator lottoComparator = new LottoComparator(lotteries, winningLotto,
+                bonusNumber);
+            List<Integer> calculateResult = lottoComparator.getCalculateResult();
+
+            System.out.println("당첨 통계");
+            System.out.println("---");
+            System.out.println(
+                "3개 일치 (" + WinningAmount.FIFTH_PLACE.getAmountToDecimalFormatString() + "원) - "
+                    + calculateResult.get(4) + "개");
+            System.out.println(
+                "4개 일치 (" + WinningAmount.FOURTH_PLACE.getAmountToDecimalFormatString() + "원) - "
+                    + calculateResult.get(3) + "개");
+            System.out.println(
+                "5개 일치 (" + WinningAmount.THIRD_PLACE.getAmountToDecimalFormatString() + "원) - "
+                    + calculateResult.get(2) + "개");
+            System.out.println(
+                "5개 일치, 보너스 볼 일치 (" + WinningAmount.SECOND_PLACE.getAmountToDecimalFormatString()
+                    + "원) - " + calculateResult.get(1) + "개");
+            System.out.println(
+                "6개 일치 (" + WinningAmount.FIRST_PLACE.getAmountToDecimalFormatString() + "원) - "
+                    + calculateResult.get(0) + "개");
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
