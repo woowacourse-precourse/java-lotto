@@ -14,8 +14,14 @@ public class Check {
         return tickets;
     }
 
-    public static void winningNumberDuplicate(List<String> numbers, String number) {
+    public static void NumberDuplicate(List<String> numbers, String number) {
 
+        if (numbers.contains(number)) {
+            throw new IllegalArgumentException("[ERROR] 중복된 숫자는 잘못된 입력값 입니다.");
+        }
+    }
+
+    public static void NumberDuplicate(List<Integer> numbers, int number) {
         if (numbers.contains(number)) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자는 잘못된 입력값 입니다.");
         }
@@ -29,7 +35,7 @@ public class Check {
 
     public static void isNumber(String number) {
         if (number.matches(".*[^0-9].*")) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException("[ERROR] 숫자와 콤마 이외의 문자는 입력할 수 없습니다.");
         }
     }
 }
