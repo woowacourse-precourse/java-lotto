@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 import static model.LottoStatus.END;
 import static model.LottoStatus.START;
 
@@ -10,6 +12,7 @@ public class WinningNumber {
     public WinningNumber(Lotto luckyNumber, int bonusNumber) {
         this.luckyNumber = luckyNumber;
         validateRange(bonusNumber);
+        validateDuplication(luckyNumber, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
@@ -21,5 +24,19 @@ public class WinningNumber {
 
     private boolean isOutOfRange(int bonusNumber) {
         return bonusNumber < START.getValue() || END.getValue() < bonusNumber;
+    }
+
+    private void validateDuplication(Lotto luckyNumber, int bonusNumber) {
+        if (isDuplicate(luckyNumber, bonusNumber)) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATION.toString());
+        }
+    }
+
+    private boolean isDuplicate(Lotto luckyNumber, int bonusNumber) {
+        return getLuckyNumber(luckyNumber).contains(bonusNumber);
+    }
+
+    private List<Integer> getLuckyNumber(Lotto luckyNumber) {
+        return luckyNumber.getNumbers();
     }
 }

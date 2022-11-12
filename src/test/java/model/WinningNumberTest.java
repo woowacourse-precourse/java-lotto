@@ -17,4 +17,12 @@ class WinningNumberTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.OUT_OF_RANGE.toString());
     }
+
+    @Test
+    @DisplayName("보너스 번호가 당첨 번호와 중복되면 예외 처리")
+    void createBonusNumberByDuplicatedNumber() {
+        assertThatThrownBy(() -> new WinningNumber(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 5))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.DUPLICATION.toString());
+    }
 }
