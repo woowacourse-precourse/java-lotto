@@ -15,5 +15,7 @@ public class LottoController {
     public void executeGame() {
         String lottoPrice = lottoConsole.inputLottoPrice();
         lottoService.storeLottoPrice(lottoPrice);
+
+        lottoService.publishLottos();
     }
 }
