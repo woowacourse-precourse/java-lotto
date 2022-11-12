@@ -1,7 +1,9 @@
 ## 구현 기능 목록
-- [x] 로또를 구입 기능 Customer#buyLotto()
+- [x] 로또 구입 기능 Customer#buyLotto()
   - [x] 구입 급액 입력 기능 Customer#payMoney()
     - 로또는 1개당 1000원 
+    - 예외 처리
+      - 1000원 단위로 입력되지 않을 경우
 - [ ] 구매한 로또 번호 발행 기능 Store#drawLottoNumber()
     - 랜덤으로 당첨 번호(6개)와 보너스 번호(1개) 발행
     - 당첨 번호는 중복 X
