@@ -32,6 +32,10 @@ public class Application {
         }
     }
 
+    static void print_money_error() {
+        System.out.print(COMMON_ERROR_MESSAGE + " 구매 금액은 1000원으로 나누어 떨어져야 합니다.");
+    }
+
     static List<Lotto> make_lotto(int how_many_lotto) {
         List<Lotto> lottos = new ArrayList<Lotto>();
 
@@ -43,8 +47,22 @@ public class Application {
         return lottos;
     }
 
-    static void print_money_error() {
-        System.out.print(COMMON_ERROR_MESSAGE + " 구매 금액은 1000원으로 나누어 떨어져야 합니다.");
+    static List<List<Integer>> make_bonus_numbers(List<Lotto> lottos, int how_many_lotto) {
+        List<List<Integer>> bonus_numbers = new ArrayList<List<Integer>>();
+        int temp_index = 0;
+
+        while (bonus_numbers.size() != how_many_lotto) {
+            List<Integer> bonus_number = pickUniqueNumbersInRange(1, 45, 1);
+
+            if (lottos.get(temp_index).get_numbers().contains(bonus_number.get(0))) {
+                continue;
+            }
+
+            temp_index = temp_index + 1;
+            bonus_numbers.add(bonus_number);
+        }
+
+        return bonus_numbers;
     }
 
     public static void main(String[] args) {
@@ -61,5 +79,8 @@ public class Application {
 
         List<Lotto> lottos;
         lottos = make_lotto(Integer.parseInt(user_money) / 1000);
+
+        List<List<Integer>> bonus_numbers;
+        bonus_numbers = make_bonus_numbers(lottos, Integer.parseInt(user_money) / 1000);
     }
 }
