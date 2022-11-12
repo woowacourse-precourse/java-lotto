@@ -19,7 +19,7 @@ class WinningNumbersTest {
 				WinningNumbers winningNumbers = new WinningNumbers(inputWinnerNumber);
 			});
 
-			String expectedMessage = "[ERROR] 당첨번호들은 숫자 6개와 쉼표로 구분되는 형식이어야 합니다.";
+			String expectedMessage = "[ERROR] 당첨번호들은 1~45 숫자 6개와 쉼표로 구분되는 형식이어야 합니다.";
 			assertThat(expectedMessage).isEqualTo(exception.getMessage());
 		}
 
@@ -31,7 +31,7 @@ class WinningNumbersTest {
 				WinningNumbers winningNumbers = new WinningNumbers(inputWinnerNumber);
 			});
 
-			String expectedMessage = "[ERROR] 당첨번호들은 숫자 6개와 쉼표로 구분되는 형식이어야 합니다.";
+			String expectedMessage = "[ERROR] 당첨번호들은 1~45 숫자 6개와 쉼표로 구분되는 형식이어야 합니다.";
 			assertThat(expectedMessage).isEqualTo(exception.getMessage());
 		}
 
@@ -43,7 +43,7 @@ class WinningNumbersTest {
 				WinningNumbers winningNumbers = new WinningNumbers(inputWinnerNumber);
 			});
 
-			String expectedMessage = "[ERROR] 당첨번호들은 숫자 6개와 쉼표로 구분되는 형식이어야 합니다.";
+			String expectedMessage = "[ERROR] 당첨번호들은 1~45 숫자 6개와 쉼표로 구분되는 형식이어야 합니다.";
 			assertThat(expectedMessage).isEqualTo(exception.getMessage());
 		}
 
@@ -55,7 +55,7 @@ class WinningNumbersTest {
 				WinningNumbers winningNumbers = new WinningNumbers(inputWinnerNumber);
 			});
 
-			String expectedMessage = "[ERROR] 당첨번호들은 숫자 6개와 쉼표로 구분되는 형식이어야 합니다.";
+			String expectedMessage = "[ERROR] 당첨번호들은 1~45 숫자 6개와 쉼표로 구분되는 형식이어야 합니다.";
 			assertThat(expectedMessage).isEqualTo(exception.getMessage());
 		}
 
@@ -67,20 +67,32 @@ class WinningNumbersTest {
 				WinningNumbers winningNumbers = new WinningNumbers(inputWinnerNumber);
 			});
 
-			String expectedMessage = "[ERROR] 당첨번호들은 숫자 6개와 쉼표로 구분되는 형식이어야 합니다.";
+			String expectedMessage = "[ERROR] 당첨번호들은 1~45 숫자 6개와 쉼표로 구분되는 형식이어야 합니다.";
 			assertThat(expectedMessage).isEqualTo(exception.getMessage());
 		}
 	}
 
 	@Test
 	@DisplayName("당첨번호중 제한 범위를 벗어난 경우 예외가 발생한다.")
-	void validateWinningNumbersBoundaryTest2() {
+	void validateWinningNumbersBoundaryTest1() {
 		String inputWinnerNumber = "45,23,44,33,46,12";
 		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
 			WinningNumbers winningNumbers = new WinningNumbers(inputWinnerNumber);
 		});
 
-		String expectedMessage = "[ERROR] 당첨번호들은 1~45의 숫자로만 구성되어야 합니다.";
+		String expectedMessage = "[ERROR] 당첨번호는 1~45의 숫자로만 구성되어야 합니다.";
+		assertThat(expectedMessage).isEqualTo(exception.getMessage());
+	}
+
+	@Test
+	@DisplayName("당첨번호중 두자리 숫자이며 첫번째 자리가 0이면 예외가 발생한다.")
+	void validateWinningNumbersBoundaryTest2() {
+		String inputWinnerNumber = "45,23,44,33,06,12";
+		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+			WinningNumbers winningNumbers = new WinningNumbers(inputWinnerNumber);
+		});
+
+		String expectedMessage = "[ERROR] 두자리 숫자인 당첨번호의 첫번째 자리는 0이 올 수 없습니다.";
 		assertThat(expectedMessage).isEqualTo(exception.getMessage());
 	}
 

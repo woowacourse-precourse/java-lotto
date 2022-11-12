@@ -33,13 +33,14 @@ class MoneyTest {
 
 	@Test
 	@DisplayName("첫째자리 숫자가 0인 경우 예외를 발생시킨다.")
-	void validateFirstDigitZeroTest() {
+	void validateFirstDigitZeroTest1() {
 		String inputMoney = "09000";
 		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
 			Money money = new Money(inputMoney);
 		});
 
-		String expectedMessage = "[ERROR] 숫자의 첫째자리로 0은 불가능합니다.";
+		String expectedMessage = "[ERROR] 숫자의 첫째자리에 0은 불가능합니다.";
+		;
 		assertThat(expectedMessage).isEqualTo(exception.getMessage());
 	}
 
