@@ -1,10 +1,13 @@
 package lotto.domain.lotto;
 
-public class LottoNumber {
+import java.util.Objects;
+
+public class LottoNumber implements Comparable<LottoNumber> {
     public static final String ERROR_NUMBER_LESS_THAN_MAX_NUMBER = "[ERROR] 로또 번호는 45보다 큰 숫자를 입력 할 수 없습니다";
     public static final String ERROR_NUMBER_GREATER_THAN_MIN_NUMBER = "[ERROR] 로또 번호는 1보다 작은 숫자를 입력 할 수 없습니다";
     private static final Integer MAX_SIZE = 45;
     private static final Integer MIN_SIZE = 1;
+
 
     private final Integer number;
 
@@ -27,4 +30,29 @@ public class LottoNumber {
     }
 
 
+    public Integer number() {
+        return this.number;
+    }
+
+    @Override
+    public int compareTo(LottoNumber o) {
+        return this.number.compareTo(o.number);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        LottoNumber that = (LottoNumber) o;
+        return Objects.equals(number, that.number);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number);
+    }
 }
