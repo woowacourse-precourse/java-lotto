@@ -41,5 +41,8 @@ public class Application {
         System.out.println("5개 일치 (1,500,000원) - " + match.getMatches().get("3등") + "개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + match.getMatches().get("2등") + "개");
         System.out.println("6개 일치 (2,000,000,000원) -  " + match.getMatches().get("1등") + "개");
+
+        Yield yield = new Yield(price, match);
+        System.out.println("총 수익률은 " + yield.getYield() + "%입니다.");
     }
 }

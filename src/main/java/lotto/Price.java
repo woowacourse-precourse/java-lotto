@@ -21,6 +21,10 @@ public class Price {
         if(Integer.parseInt(price) % 1000 != 0) throw new IllegalArgumentException();
     }
 
+    public String getPrice() {
+        return this.price;
+    }
+
     public Integer getLottoNum() {
         return Integer.parseInt(this.price) / 1000;
     }
