@@ -28,11 +28,11 @@ public class Application {
         return Rank.getWinning(hitCount, bonusHit);
     }
 
-    public static void addWinnings(User user, WinningLotto winningLotto) {
-        for (Lotto userLotto : user.getLottos()) {
+    public static void addWinnings(Buyer buyer, WinningLotto winningLotto) {
+        for (Lotto userLotto : buyer.getLottos()) {
             Rank rank = getWinning(userLotto, winningLotto);
 
-            user.addWinning(rank);
+            buyer.addWinning(rank);
         }
     }
 
@@ -40,18 +40,18 @@ public class Application {
         try {
             int money = convertToInteger(readLine());
 
-            User user = new User(money);
-            user.showLottos();
+            Buyer buyer = new Buyer(money);
+            buyer.showLottos();
 
             List<Integer> winningNumbers = convertToIntegerList(readLine());
             int bonusNumber = convertToInteger(readLine());
 
             WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
 
-            addWinnings(user, winningLotto);
-            user.showWinnings();
+            addWinnings(buyer, winningLotto);
+            buyer.showWinnings();
 
-            System.out.println("총 수익률은 " + user.getYield() + "%입니다.");
+            System.out.println("총 수익률은 " + buyer.getYield() + "%입니다.");
         } catch (Exception exception) {
             System.out.println(exception.getMessage());
         }

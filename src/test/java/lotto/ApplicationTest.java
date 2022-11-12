@@ -62,11 +62,11 @@ class ApplicationTest extends NsTest {
     void 출력_당첨_내역() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
-                    User user = new User(1000);
+                    Buyer buyer = new Buyer(1000);
                     WinningLotto winningLotto = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7);
 
-                    Application.addWinnings(user, winningLotto);
-                    user.showWinnings();
+                    Application.addWinnings(buyer, winningLotto);
+                    buyer.showWinnings();
 
                     assertThat(output()).contains(
                             "3개 일치 (5,000원) - 0개",

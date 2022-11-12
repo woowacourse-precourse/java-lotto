@@ -11,11 +11,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 
 
-public class UserTest {
+public class BuyerTest {
     @ParameterizedTest
     @ValueSource(ints = {1010, 1001, 1030, 2111})
     void 예외_올바르지_않은_단위(int money) {
-        assertThatThrownBy(() -> new User(money))
+        assertThatThrownBy(() -> new Buyer(money))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

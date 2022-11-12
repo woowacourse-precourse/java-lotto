@@ -10,7 +10,7 @@ import java.util.List;
 
 
 
-public class User {
+public class Buyer {
     private List<Lotto> lottos;
     private List<Rank> ranks;
     private int lottoNum;
@@ -18,7 +18,7 @@ public class User {
     private int earn;
 
 
-    public User(int money) {
+    public Buyer(int money) {
         validateMoney(money);
 
         this.money = money;
