@@ -14,4 +14,10 @@ public class UserInput {
             throw new IllegalArgumentException("숫자만 입력해주세요.");
         }
     }
+
+    private void isStartedNotZero(String input) {
+        if (input.charAt(0) == '0') {
+            throw new IllegalArgumentException("0으로 시작하는 금액을 입력하지 마세요");
+        }
+    }
 }
