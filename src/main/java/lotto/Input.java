@@ -13,4 +13,8 @@ public class Input {
         }
         return Integer.parseInt(inputValue);
     }
+
+    public static void inputWinningNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
 }

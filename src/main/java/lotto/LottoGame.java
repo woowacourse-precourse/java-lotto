@@ -20,6 +20,8 @@ public class LottoGame {
         validateInputMoney(moneyEntered);
         int lottoCnt = moneyEntered / 1000;
         List<Lotto> lottoes = lottoMachine.makeLottoes(lottoCnt);
+        Output.showLottoesPurchased(lottoes);
+        Input.inputWinningNumber();
     }
 
     protected void validateInputMoney(Integer moneyEntered) {
