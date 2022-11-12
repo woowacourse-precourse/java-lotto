@@ -16,13 +16,9 @@ public class Store {
 	void issueLottoTicket(){
 		NumberGenerator numberGenerator = new NumberGenerator();
 		lottoTicket= new ArrayList<>();
-
 		for (int index = 0 ; index < count ; index++){
 			Lotto lotto = new Lotto(numberGenerator.createRandomNumbers());
 			lottoTicket.add(lotto.get());
 		}
-
-		for (List<Integer> list : lottoTicket)
-			System.out.println(list);
 	}
 }
