@@ -30,6 +30,10 @@ public class Input {
         return this.answer;
     }
 
+    public int getBonus() {
+        return this.bonus;
+    }
+
     public int enterPrice() {
         System.out.println("구입금액을 입력해 주세요.");
         String price = Console.readLine();
