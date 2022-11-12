@@ -68,4 +68,12 @@ class StatisticsTest {
         Map map = statistics.countRank();
         Assertions.assertThat(map.get(Rank.NOTHING)).isNull();
     }
+
+    @Test
+    void testToString() {
+        Statistics statistics = new Statistics(lottos, winningLotto);
+
+        statistics.countRank();
+        Assertions.assertThat(statistics.toString()).isEqualTo(COMPARE_STATISTICS);
+    }
 }
