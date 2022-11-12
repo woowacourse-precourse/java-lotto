@@ -10,13 +10,9 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        this.numbers = numbers;
-    }
-
-    private void validate(List<Integer> numbers) {
         validateSize(numbers);
         validateDuplicate(numbers);
+        this.numbers = numbers;
     }
 
     private void validateSize(List<Integer> numbers) {
@@ -26,10 +22,7 @@ public class Lotto {
     }
 
     private void validateDuplicate(List<Integer> numbers) {
-        long distinctCount = numbers.stream()
-                .distinct()
-                .count();
-        if (numbers.size() != distinctCount) {
+        if (numbers.size() != numbers.stream().distinct().count()) {
             throw new LottoNumberDuplicateException();
         }
     }
