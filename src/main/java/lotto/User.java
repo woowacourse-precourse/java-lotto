@@ -7,6 +7,9 @@ import camp.nextstep.edu.missionutils.Console;
 public class User {
     private int money;
     private double earning = 0;
+    private List<Lotto> lottoBundle;
+
+    LotteryTicketingMachine lotteryTicketingMachine = new LotteryTicketingMachine();
 
     public void setMoney() {
         int money;
@@ -16,6 +19,12 @@ public class User {
 
     public int getMoney() {
         return money;
+    }
+
+    public void makeLottoBundle(int howManyLotto) {
+        for (int lottoBundleIndex=0; lottoBundleIndex<howManyLotto; lottoBundleIndex++) {
+            lottoBundle.add(lotteryTicketingMachine.ticketLotto());
+        }
     }
 
     public List<Integer> inputWinningNumber() {
