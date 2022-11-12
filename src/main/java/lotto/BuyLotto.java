@@ -23,7 +23,7 @@ public class BuyLotto {
         }
     }
 
-    private int userPriceInput() {
+    public int userPriceInput() {
         System.out.print(INPUT_SENTENCE.BUY.label());
         String userPrice = Console.readLine();
         if (userPrice.charAt(userPrice.length()-1) != '0' || userPrice.charAt(userPrice.length()-2) != '0' || userPrice.charAt(userPrice.length()-3) != '0') {
@@ -48,10 +48,11 @@ public class BuyLotto {
             System.out.println(numbers);
             lottoNumbers.add(numbers);
         }
+        System.out.println();
         return lottoNumbers;
     }
 
-    private List<Integer> numbers() {
+    public List<Integer> numbers() {
         System.out.print(INPUT_SENTENCE.WIN.label());
         String number = Console.readLine();
         List<String> winNumbers = new ArrayList<>(Arrays.asList(number.split("\\s*,\\s*")));
@@ -61,5 +62,4 @@ public class BuyLotto {
         }
         return winNumber;
     }
-
 }
