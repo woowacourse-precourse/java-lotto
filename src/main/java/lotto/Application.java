@@ -15,6 +15,7 @@ public class Application {
 
     public static void main(String[] args) {
         int buyPrice = enterAmount();
+        if (buyPrice == 0) return;
         List<Lotto> lottoList = buyLotto(buyPrice);
         checkLotto(lottoList);
         calculateProfit(buyPrice);
@@ -49,19 +50,22 @@ public class Application {
     private static int enterAmount() {
         System.out.println(AMOUNT_ENTER_MESSAGE);
         String money = Console.readLine();
-        isValidAmount(money);
+        if (!isValidAmount(money)) return 0;
         return Integer.parseInt(money);
     }
 
-    public static void isValidAmount(String enterValue) {
+    public static boolean isValidAmount(String enterValue) {
         for (int i = 0; i < enterValue.length(); i++) {
             if (!('0' <= enterValue.charAt(i) && enterValue.charAt(i) <= '9')) {
-                throw new IllegalArgumentException(NOT_NUMBER_ERROR_MESSAGE);
+                System.out.println(NOT_NUMBER_ERROR_MESSAGE);
+                return false;
             }
         }
         if (Integer.parseInt(enterValue) % 1000 != 0) {
-            throw new IllegalArgumentException(INVALID_AMOUNT_ERROR_MESSAGE);
+            System.out.println(INVALID_AMOUNT_ERROR_MESSAGE);
+            return false;
         }
+        return true;
     }
 
 }
