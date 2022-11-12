@@ -8,7 +8,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class LottoStoreTest {
-
     private LottoStore lottoStore;
 
     @BeforeEach
@@ -29,10 +28,10 @@ public class LottoStoreTest {
     void purchaseLotto() {
         List<Lotto> lottos = lottoStore.purchaseLotto(new Money(3000));
 
-        assertThat(lottos).isEqualTo(List.of(
+        assertThat(lottos).contains(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(1, 2, 3, 4, 5, 6))
-        ));
+        );
     }
 }
