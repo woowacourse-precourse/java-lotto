@@ -17,4 +17,13 @@ public class LottoBuyer {
         lottoPurchaseInfo = lottoSeller.sellLotto();
     }
 
+    public void checkWinStatics() {
+
+        lottoPurchaseInfo.getLottoNumbers()
+                .forEach(
+                        (lotto) -> lottoPrizeRecordingManager.setPrizeRecording(lottoSeller.checkMatchCount(lotto))
+                );
+
+    }
+
 }
