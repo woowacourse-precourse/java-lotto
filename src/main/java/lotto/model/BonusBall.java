@@ -1,6 +1,7 @@
 package lotto.model;
 
 import static lotto.constant.BonusBallConstants.EMPTY_BONUSBALL_MSG;
+import static lotto.constant.BonusBallConstants.INVALID_BONUSBALL_INPUT_MSG;
 
 public class BonusBall {
     private int value;
@@ -16,11 +17,24 @@ public class BonusBall {
 
     private void validate(String userInput) {
         isBlank(userInput);
+        isConsistsWithOnlyDigits(userInput);
     }
 
     private void isBlank(String userInput) {
         if (userInput.isBlank()) {
             throw new IllegalArgumentException(EMPTY_BONUSBALL_MSG);
+        }
+    }
+
+    private void isConsistsWithOnlyDigits(String userInput) {
+        for (char piece : userInput.toCharArray()) {
+            isDigit(piece);
+        }
+    }
+
+    private void isDigit(char piece) {
+        if (!Character.isDigit(piece)) {
+            throw new IllegalArgumentException(INVALID_BONUSBALL_INPUT_MSG);
         }
     }
 }
