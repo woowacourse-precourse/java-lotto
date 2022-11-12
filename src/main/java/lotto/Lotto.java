@@ -9,6 +9,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        overlap(numbers);
         this.numbers = numbers;
     }
 
