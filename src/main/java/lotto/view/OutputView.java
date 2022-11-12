@@ -67,9 +67,7 @@ public class OutputView {
     }
 
     private static void printOrderLottoResult(Map<LottoRanking, Integer> lottoResult) {
-        List<LottoRanking> orderedLottoRanking = Arrays.stream(LottoRanking.values())
-                .sorted(Comparator.comparing(LottoRanking::getNumberScore))
-                .collect(Collectors.toList());
+        List<LottoRanking> orderedLottoRanking = getOrderedLottoRanking();
         for (LottoRanking ranking : orderedLottoRanking) {
             Integer count = lottoResult.get(ranking);
             if (count == null) {
@@ -78,6 +76,12 @@ public class OutputView {
             }
             printLotto(ranking, count);
         }
+    }
+
+    private static List<LottoRanking> getOrderedLottoRanking() {
+        return Arrays.stream(LottoRanking.values())
+                .sorted(Comparator.comparing(LottoRanking::getNumberScore))
+                .collect(Collectors.toList());
     }
 
     private static void printLotto(LottoRanking lottoRanking, int count) {
