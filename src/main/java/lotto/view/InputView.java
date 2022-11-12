@@ -13,6 +13,16 @@ public class InputView {
         return readLine();
     }
 
+    public static String inputWinningLottoNumber(){
+        System.out.println("당첨 번호를 입력해 주세요.");
+        return readLine();
+    }
+
+    public static String inputWinningBonusNumber(){
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        return readLine();
+    }
+
     private static String readLine() {
         try {
             return camp.nextstep.edu.missionutils.Console.readLine();

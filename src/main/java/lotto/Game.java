@@ -15,5 +15,8 @@ public class Game {
         outputView.printBuyLotto(money);
         outputView.printLotteries(lotteries);
 
+        WinningNumber winningNumber = new WinningNumber(InputView.inputWinningLottoNumber(),
+                InputView.inputWinningBonusNumber());
+
     }
 }
