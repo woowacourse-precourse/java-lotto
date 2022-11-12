@@ -1,8 +1,8 @@
 package lotto.type;
 
 public enum NumberBoundaryType {
-    MINIMUM_INDEX(0),
-    MAXIMUM_INDEX(1);
+    MINIMUM_INDEX(1),
+    MAXIMUM_INDEX(45);
 
     private final int boundary;
 
