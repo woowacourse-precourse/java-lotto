@@ -21,6 +21,8 @@ public class BonusNumber {
             throw new IllegalArgumentException(ExceptionMessage.BONUS_OUT_OF_RANGE.getMessage());
         } else if (isBetweenLottoRange(convertStringToInt(number))) {
             throw new IllegalArgumentException(ExceptionMessage.BONUS_OUT_OF_RANGE.getMessage());
+        } else if (isNumberInLotto(convertStringToInt(number), lottoNumbers)) {
+            throw new IllegalArgumentException(ExceptionMessage.BONUS_DUPLICATE_VALUE.getMessage());
         }
     }
 
@@ -38,5 +40,9 @@ public class BonusNumber {
 
     private int convertStringToInt(String number) {
         return Integer.parseInt(number);
+    }
+
+    private boolean isNumberInLotto(int number, Lotto lottoNumbers) {
+        return lottoNumbers.getNumbers().contains(number);
     }
 }
