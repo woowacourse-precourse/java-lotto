@@ -3,9 +3,9 @@ package lotto;
 import java.util.Arrays;
 
 public enum Grade {
-    FIVE(3, 5_000, 5),
-    FOUR(4, 50_000, 4),
-    THREE(5, 1_500_000, 3),
+    FIFTH(3, 5_000, 5),
+    FOURTH(4, 50_000, 4),
+    THIRD(5, 1_500_000, 3),
     SECOND(5, 30_000_000, 2),
     FIRST(6, 2_000_000_000, 1);
 
@@ -20,8 +20,8 @@ public enum Grade {
     }
 
     public static Grade findingRank(int matchCount, int bonusCount) {
-        if ((THREE.matchCount == matchCount) && (bonusCount == 0)) {
-            return THREE;
+        if ((THIRD.matchCount == matchCount) && (bonusCount == 0)) {
+            return THIRD;
         }
         if ((SECOND.matchCount == matchCount) && (bonusCount == 1)) {
             return SECOND;
