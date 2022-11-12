@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoManager {
+    private final int LOTTO_PRICE = 1000;
+
     public List<Integer> GenerateLottoNumbers() {
         String inputLottoNumbers = Console.readLine();
         List<Integer> lottoNumbers = new ArrayList<>();
@@ -37,7 +39,16 @@ public class LottoManager {
         Collections.sort(lotto);
     }
 
-    public List<List<Integer>> publishLottoForPrice(int money) {
-        return List.of(List.of(1,2,3,4,5,6));
+    public List<Lotto> publishLottoForPrice(int money) {
+        List<Lotto> result = new ArrayList<>();
+        int numberOfLotto = money/LOTTO_PRICE;
+
+        for (int i = 0; i < numberOfLotto; i++) {
+            List<Integer> newLotto = GenerateRandomNumbers();
+            sortLottoNumbers(newLotto);
+            Lotto lotto = new Lotto(newLotto);
+            result.add(lotto);
+        }
+        return result;
     }
 }
