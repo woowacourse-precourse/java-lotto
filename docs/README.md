@@ -27,7 +27,7 @@
         * 사용자 입력 보너스 번호 리스트에 저장하는 기능 - BonusNumber#BonusNumber()
         * BonusNumber클래스에 저장된 bonusnumber를 main으로 가지고 오는 기능 - BonusNumber#getBonusNumber()
 
-            * 예외1 : 입력시 1-45 사이 숫자가 아닐 경우 IllegalArgumentException 발생 -  BonusNumber#validateBonusNumber()
+            * 예외1 : 1-45 사이 숫자가 아닐 경우 IllegalArgumentException 발생 -  BonusNumber#validateBonusNumber()
                 * 에러메시지([ERROR] 숫자만 입력하세요.) 
                 * 에러메시지([ERROR] 1-45사이의 숫자만 입력하세요.) 
           
@@ -44,10 +44,48 @@
 ------------
 ## 단위 테스트 구현(도메인에 작성)
 1. 핵심 로직
-    * 
+    
+    * countWin()
+        - 1-5등까지의 당첨조건에 각각 몇번 해당하는지 세어 주는 기능
+        * countRank() 
+            - enum을 활용해서 각각 몇번 해당하는지 세어주는 기능
+    
+    * printProfit()
+        - 수익률 구하기 위해서 전체 금액 합산 / 로또구입금액 계산하는 기능 구현
+
 2. UI 로직
-    * 예외 체크
-        * 
+
+    * askTotalPrice()
+        * 예외 체크
+            - 입력시 숫자가 아닐 경우 - Application#예외테스트
+            - 1000미만의 수 입력시 - UIAskTotalPriceTest#priceShouldBeLess1000
+            - 1000원으로 나누어 떨어지지 않는 수 입력시 - UIAskTotalPriceTest#priceShouldBeDividedBy1000
+
+    * askNumbers()
+        * 예외 체크
+            - 입력시 ,로 나누어지지 않았을 경우
+            - 1-45 사이의 숫자가 아닐 경우
+                - 숫자가 아닐 경우
+                - 숫자이지만 1-45사이 숫자가 아닐 경우
+            - 입력한 숫자의 개수가 6개가 아닐 경우
+            - 입력 숫자 6개 중 하나라도 중복되는 경우
+
+    * askBonusNumber()
+        * 예외 체크
+            - 1-45 사이 숫자가 아닐 경우
+                - 숫자가 아닐 경우
+                - 숫자이지만 1-45사이 숫자가 아닐 경우
+            - 입력 숫자 6개와 보너스 번호가 중복되는 경우
+        
+    * printNumberAll()
+        - 발행한 로또 수량 및 번호 출력
+
+    * printWin()
+        - 당첨 내역 출력
+
+    * printProfitRound()
+        - 수익률 계산한값을 소수점 둘째자리에서 반올림 해준다음 출력하는 기능 구현
+
 ------------
 ## 기능 요구 사항
 * 로또 번호 숫자 범위 1-45까지
