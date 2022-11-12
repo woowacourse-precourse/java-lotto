@@ -6,6 +6,10 @@ enum ErrorMessages {
 
     final private String message;
 
+    public String get() {
+        return message;
+    }
+    
     ErrorMessages(String message) {
         this.message = message;
     }
