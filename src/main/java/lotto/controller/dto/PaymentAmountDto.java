@@ -32,4 +32,8 @@ public class PaymentAmountDto {
         }
     }
 
+    public int getPaymentAmount() {
+        return this.paymentAmount;
+    }
+
 }
