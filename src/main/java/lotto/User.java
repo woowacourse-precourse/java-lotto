@@ -22,4 +22,12 @@ public class User {
             userLottos.add(newLotto);
         }
     }
+
+    public int getLottoCount() {
+        return userLottos.size();
+    }
+
+    public Lotto findLotto(int index) {
+        return userLottos.get(index);
+    }
 }

@@ -18,11 +18,6 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-
-    public void sortNumbers() {
-        Collections.sort(this.numbers);
-    }
-
     public int findLottoNumber(int index) {
         return numbers.get(index);
     }
