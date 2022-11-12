@@ -22,8 +22,9 @@ public class MatchLotteryService {
 
     public void matchPlayerWithComputer(){}
 
-    private int matchEachTicketWithComputer(Lotto lottoEach){
-        return (int)lottoEach.getNumbers().stream().map( s ->computer.getComputerNumber().getNumbers().contains(s)).count();
+    private void matchEachTicketWithComputer(Lotto lottoEach){
+        int equalCount = (int)lottoEach.getNumbers().stream().map( s ->computer.getComputerNumber().getNumbers().contains(s)).count();
+        player.addLottoRanking(convertCountToRanking(lottoEach, equalCount));
     }
 
     private Ranking convertCountToRanking(Lotto lottoEach, int equalCount){
