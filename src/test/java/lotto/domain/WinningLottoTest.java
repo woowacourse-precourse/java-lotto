@@ -36,9 +36,9 @@ public class WinningLottoTest {
                     .isInstanceOf(IllegalArgumentException.class);
         }
 
-        @DisplayName("당첨 번호 입력 개수가 6개가 넘은 경우")
+        @DisplayName("당첨 번호 입력 개수가 6개가 아닌 경우")
         @Test
-        void inputWinningNumberByOverSize() {
+        void inputWinningNumberByNoLottoSize() {
             assertThatThrownBy(() -> new WinningLotto(List.of("1", "2", "3", "4", "5", "6", "7")))
                     .isInstanceOf(IllegalArgumentException.class);
         }
