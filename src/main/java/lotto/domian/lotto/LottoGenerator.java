@@ -8,13 +8,21 @@ import java.util.List;
 public class LottoGenerator {
 
     List<Lotto> lottos = new ArrayList<>();
+    List<List<Integer>> lottosNumber = new ArrayList<>();
 
-    public List<Lotto> generateLotto(int count) {
+    public List<List<Integer>> generateLotto(int count) {
         while (lottos.size() < count) {
             lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
         }
         validateLottos(count, lottos);
-        return lottos;
+        getNumbersFromLottos(lottos);
+        return lottosNumber;
+    }
+
+    private void getNumbersFromLottos(List<Lotto> lottos) {
+        for (Lotto lotto: lottos) {
+            lottosNumber.add(lotto.getNumbers());
+        }
     }
 
     private void validateLottos(int count, List<Lotto> lottos) {
