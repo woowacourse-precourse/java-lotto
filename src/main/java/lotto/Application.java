@@ -30,6 +30,8 @@ public class Application {
         if ((test_user_money <= 0) || ((test_user_money % 1000) != 0)) {
             throw new IllegalArgumentException();
         }
+
+        System.out.println();
     }
 
     static void print_money_error() {
@@ -58,6 +60,8 @@ public class Application {
         for (Lotto lotto : lottos) {
             System.out.println(lotto.get_numbers());
         }
+
+        System.out.println();
     }
 
     static void ask_lotto_number() {
@@ -95,6 +99,7 @@ public class Application {
     }
 
     static void ask_bonus_number() {
+        System.out.println();
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
@@ -121,13 +126,53 @@ public class Application {
             throw new IllegalArgumentException();
         }
 
-        if (user_bonus_number < 0 || user_bonus_number  > 45) {
+        if (user_bonus_number < 0 || user_bonus_number > 45) {
             throw new IllegalArgumentException();
         }
+
+        System.out.println();
     }
 
     static void print_user_bonus_number_error() {
         System.out.print(COMMON_ERROR_MESSAGE + " 보너스 번호는 1개이고, 로또 번호와 중복되지 않는 1부터 45 사이의 숫자여야 합니다.");
+    }
+
+    static int check_number_equal(Lotto lotto, Lotto user_lotto) {
+        int number_equal = 0;
+
+        for (int user_number : user_lotto.get_numbers()) {
+            if (lotto.get_numbers().contains(user_number)) {
+                number_equal += 1;
+            }
+        }
+
+        return number_equal;
+    }
+
+    static int check_bonus_numer_equal(Lotto lotto, int user_bonus_number) {
+        if (lotto.get_numbers().contains(user_bonus_number)) {
+            return 1;
+        }
+
+        return 0;
+    }
+
+    static List<List<Integer>> check_computer_user_score(List<Lotto> lottos, Lotto user_lotto, int user_bonus_number) {
+        List<List<Integer>> scores = new ArrayList<List<Integer>>();
+
+        for (Lotto lotto : lottos) {
+            List<Integer> score = new ArrayList<>();
+
+            int number_equal = check_number_equal(lotto, user_lotto);
+            score.add(number_equal);
+
+            int bonus_number_equal = check_bonus_numer_equal(lotto, user_bonus_number);
+            score.add(bonus_number_equal);
+
+            scores.add(score);
+        }
+
+        return scores;
     }
 
 
@@ -189,5 +234,8 @@ public class Application {
             print_user_bonus_number_error();
             return;
         }
+
+        List<List<Integer>> scores = new ArrayList<List<Integer>>();
+        scores = check_computer_user_score(lottos, user_lotto, user_bonus_number);
     }
 }
