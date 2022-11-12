@@ -2,7 +2,7 @@ package lotto;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import static lotto.LottoConst.LOTTO_MAX_NUMBER;
+import static lotto.LottoConst.LOTTO_NUMBER_COUNT;
 
 public class Error {
     static void purchasePrice(int purchasePrice) {
@@ -11,13 +11,13 @@ public class Error {
         }
     }
 
-    static void duplicationWinnigNumber(List<Integer> winnigNumber) {
+    static void duplicationWinningNumber(List<Integer> winnigNumber) {
         List<Integer> removedDuplicationNumber =
                 winnigNumber.stream()
                         .distinct()
                         .collect(Collectors.toList());
 
-        if (removedDuplicationNumber.size() != LOTTO_MAX_NUMBER) {
+        if (removedDuplicationNumber.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException("[ERROR] 당첨번호에 중복된 숫자가 있습니다.");
         }
     }
@@ -42,6 +42,16 @@ public class Error {
 
         if (validRangeNumberCount != LottoConst.LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException("[ERROR] 유효하지 않은 로또 번호가 있습니다.");
+        }
+    }
+
+    static boolean checkTextError(String userAnswer)  throws IllegalArgumentException {
+        try{
+            Integer.parseInt(userAnswer);
+            return true;
+        } catch (Exception e) {
+            System.out.println("[ERROR] 유효하지 않은 입력입니다.");
+            throw new IllegalArgumentException();
         }
     }
 }
