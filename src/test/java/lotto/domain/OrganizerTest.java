@@ -15,6 +15,7 @@ public class OrganizerTest {
         assertThat(organizer.getWinningNumbersFromInput("1,2,3,4,5,6"))
                 .isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
+
     @Test
     @DisplayName("입력 문자열에 숫자가 아닌 문자를 포함하면 예외 처리한다.")
     void throwsExceptionWhenInputIncludesNonNumeric() {
@@ -22,6 +23,7 @@ public class OrganizerTest {
         assertThatThrownBy(() -> organizer.getWinningNumbersFromInput("1,2,3,b,5,6"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
     @Test
     @DisplayName("당첨 숫자 개수가 6이 아니면 예외 처리한다.")
     void throwsExceptionWhenInputIncludesMoreThan6() {
@@ -31,8 +33,15 @@ public class OrganizerTest {
 
     @Test
     @DisplayName("당첨 숫자 범위가 1~45 사이가 아니면 예외 처리한다.")
-    void throwsExceptionWhenInputNotInRange() {
+    void throwsExceptionWhenWinningNumbersNotInRange() {
         assertThatThrownBy(() -> new Organizer("1,2,3,4,99,6", ""))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("보너스 숫자 범위가 1~45 사이가 아니면 예외 처리한다.")
+    void throwsExceptionWhenBonusNotInRange() {
+        assertThatThrownBy(() -> new Organizer("1,2,3,4,5,6", "65"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

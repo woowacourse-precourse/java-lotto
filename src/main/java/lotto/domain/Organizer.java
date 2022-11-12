@@ -15,7 +15,9 @@ public class Organizer {
     public Organizer(String winningNumberInput, String bonusNumberInput) {
         this.winningNumbers = getWinningNumbersFromInput(winningNumberInput);
         validateWinningNumbers(this.winningNumbers);
-
+        this.bonusNumber = getIntegerFromString(bonusNumberInput);
+        ExceptionHandler.isWithinRange(bonusNumber,
+                LottoStatistic.MIN_NUMBER.getValue(), LottoStatistic.MAX_NUMBER.getValue());
     }
 
     public List<Integer> getWinningNumbersFromInput(String input) {
@@ -28,7 +30,7 @@ public class Organizer {
         return numbers;
     }
 
-    public int getIntegerFromString(String input) {
+    private int getIntegerFromString(String input) {
         ExceptionHandler.isStringNumeric(input);
         return Integer.parseInt(input);
     }
