@@ -231,9 +231,9 @@ public class Lotto {
 
 #### 도메인
 
-- [ ] 금액만큼의 로또를 구입한다. - buyLotto(int price)
-  - [ ] 금액에 따라 로또의 개수를 계산한다. - numberOfLotto()
-  - [ ] 로또 번호를 뽑는다. - drawLotto()
+- [x] 금액만큼의 로또를 구입한다. - buyLotto(int price)
+  - [x] 금액에 따라 로또의 개수를 계산한다. - numberOfLotto()
+  - [x] 로또 번호를 뽑는다. - drawLotto()
 - [ ] 로또 당첨 번호를 정한다. - setWinningNumber()
 - [ ] 보너스 번호를 정한다. - setBonusNumber()
 - [ ] 당첨된 로또의 등수를 계산한다. - getRanking()
@@ -256,9 +256,9 @@ public class Lotto {
 - [ ] 보너스 번호를 입력받는다.
 - [ ] 당첨 통계를 출력한다.
 
-#### 모델
+#### 사전 정의
 
-- [ ] 로또 등수에 대한 정의
+- [x] 로또 당첨 테이블
 
 ## 예외 사항
 
