@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import lotto.domain.ErrorMessage;
+
 public class WinningInput {
     private static int[] winningIntArr;
     public static String winningInput;

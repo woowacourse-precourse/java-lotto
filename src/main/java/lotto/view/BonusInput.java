@@ -5,6 +5,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import java.util.List;
 import java.util.stream.Stream;
 
+import lotto.domain.ErrorMessage;
+
 public class BonusInput {
     private static int bonusNumber;
     public static String bonusInput;
