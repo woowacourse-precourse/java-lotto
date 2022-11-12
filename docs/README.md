@@ -58,17 +58,17 @@
     * askTotalPrice()
         * 예외 체크
             - 입력시 숫자가 아닐 경우 - Application#예외테스트
-            - 1000미만의 수 입력시 - UIAskTotalPriceTest#priceShouldBeLess1000
-            - 1000원으로 나누어 떨어지지 않는 수 입력시 - UIAskTotalPriceTest#priceShouldBeDividedBy1000
+            - 1000미만의 수 입력시 - UIAskTotalPriceTest#PriceShouldBeLess1000
+            - 1000원으로 나누어 떨어지지 않는 수 입력시 - UIAskTotalPriceTest#PriceShouldBeDividedBy1000
 
     * askNumbers()
         * 예외 체크
-            - 입력시 ,로 나누어지지 않았을 경우
-            - 1-45 사이의 숫자가 아닐 경우
-                - 숫자가 아닐 경우
-                - 숫자이지만 1-45사이 숫자가 아닐 경우
-            - 입력한 숫자의 개수가 6개가 아닐 경우
-            - 입력 숫자 6개 중 하나라도 중복되는 경우
+            - 입력시 ,로 나누어지지 않았을 경우 - UIAskNumbersTest#ShouldBeSplitedByComma()
+            - 1-45 사이의 숫자가 아닐 경우 
+                - 숫자가 아닐 경우 - UIAskNumbersTest#ShouldBeNumber()
+                - 숫자이지만 1-45사이 숫자가 아닐 경우 - UIAskNumbersTest#ShouldBeNumbersOneToFortyFive()
+            - 입력한 숫자의 개수가 6개가 아닐 경우 - LottoTest#CreateLottoByOverSize()
+            - 입력 숫자 6개 중 하나라도 중복되는 경우 - LottoTest#createLottoByDuplicatedNumber()
 
     * askBonusNumber()
         * 예외 체크

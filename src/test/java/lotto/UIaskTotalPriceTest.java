@@ -12,7 +12,7 @@ class UIaskTotalPriceTest extends NsTest {
 	
 	@DisplayName("가격을 입력받을 때 가격이 1000이상의 숫자가 아니면 예외가 발생한다.")
 	@Test
-	void priceShouldBeLess1000() {
+	void PriceShouldBeLess1000() {
 		assertSimpleTest(() -> 
 			assertThatThrownBy(() -> runException("999"))
             	.isInstanceOf(IllegalArgumentException.class)
@@ -22,7 +22,7 @@ class UIaskTotalPriceTest extends NsTest {
 	
 	@DisplayName("가격을 입력받을 때 가격이 1000으로 나누어 떨어지지 않으면 예외가 발생한다.")
 	@Test
-	void priceShouldBeDividedBy1000() {
+	void PriceShouldBeDividedBy1000() {
 		assertSimpleTest(() -> 
 		assertThatThrownBy(() -> runException("1983"))
         	.isInstanceOf(IllegalArgumentException.class)
