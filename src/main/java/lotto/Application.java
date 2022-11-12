@@ -3,7 +3,10 @@ package lotto;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-
-        new Shop().sellLottos();
+        try {
+            new Shop().sellLottos();
+        } catch (IllegalArgumentException e) {
+            return;
+        }
     }
 }
