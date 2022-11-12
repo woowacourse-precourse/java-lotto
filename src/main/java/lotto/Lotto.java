@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -20,6 +21,11 @@ public class Lotto {
                 throw new IllegalArgumentException("[ERROR]");
             }
         }
+
+        HashSet<Integer> temp = new HashSet<Integer>(numbers);
+
+        if(numbers.size() != temp.size())
+            throw new IllegalArgumentException("[ERROR]");
     }
 
     public int compareLotto(Lotto answer, Integer bouns){

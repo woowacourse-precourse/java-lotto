@@ -37,13 +37,14 @@ public class Application {
         if(cost == null){
             throw new IllegalArgumentException("[ERROR]");
         }
-        for(int k=0; k<cost.length(); k++){
-            if(cost.charAt(k)<'0'||cost.charAt(k)>'9'){
-                throw new IllegalArgumentException();       //에러메시지 + 프로그렘 종료
-            }
+
+        int temp = 0;
+        try {
+            temp = Integer.parseInt(cost);
+        }catch (NumberFormatException e){
+            System.out.println("[ERROR]1");
         }
 
-        int temp = Integer.parseInt(cost);
         if(temp%1000 != 0)
             throw new IllegalArgumentException("[ERROR]");
 
