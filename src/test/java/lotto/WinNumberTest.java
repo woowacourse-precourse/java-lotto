@@ -20,4 +20,11 @@ public class WinNumberTest {
         assertThatThrownBy(() -> new WinNumber("1,2,3,4,5,a"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또 번호에 숫자가 아닌 문자가 포함되면 예외가 발생한다.")
+    @Test
+    void createWinNumberByDuplicate() {
+        assertThatThrownBy(() -> new WinNumber("1,2,3,4,5,5"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

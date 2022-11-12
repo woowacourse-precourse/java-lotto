@@ -1,7 +1,11 @@
 package lotto;
 
+import org.mockito.internal.configuration.IndependentAnnotationEngine;
+
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class WinNumber {
@@ -15,6 +19,7 @@ public class WinNumber {
     public WinNumber(String numbers) {
         List<Integer> tmpNumbers = validateNumberType(numbers);
         validateNumberLength(tmpNumbers);
+        validateNumberReplicate(tmpNumbers);
         this.numbers = tmpNumbers;
     }
 
@@ -32,6 +37,15 @@ public class WinNumber {
     public void validateNumberLength(List<Integer> numbers) {
         if (numbers.size() != 6) {
             System.out.println("[ERROR] 로또 당첨 번호는 6개여야 합니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void validateNumberReplicate(List<Integer> numbers) {
+        Set<Integer> independentNumbers = new HashSet<>(numbers);
+
+        if (independentNumbers.size() != numbers.size()) {
+            System.out.println("[ERROR] 로또 번호는 중복될 수 없습니다.");
             throw new IllegalArgumentException();
         }
     }
