@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import static lotto.domain.NumberParser.numbers;
+import static lotto.domain.WinningNumberParser.numbers;
 
 import lotto.domain.lotto_numbers.BonusNumber;
 import lotto.domain.lotto_numbers.Lotto;
