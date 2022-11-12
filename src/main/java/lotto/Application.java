@@ -27,9 +27,8 @@ public class Application { // 패키지 분리
             List<Integer> numbers1 = lotto.getNumbers();
             matchNumbers.matchCount(numbers1, numbers, validBonusNumber);
         }
-        System.out.println(matchNumbers.getMaps());
 
-        Message.winningStatic();
+        Message.winningStatics();
         Message.line();
         Message.matchMessage(matchNumbers.getMaps());
         Message.ratio(Money.percentage(matchNumbers.getMaps()));

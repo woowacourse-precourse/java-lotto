@@ -20,9 +20,9 @@ public class BonusNumber {
 
   public static int validBonusNumber(String bonusNumber, List<Integer> winningNumber) {
     isInRangeBonusNumber(bonusNumber);
-    int validNumber = Integer.parseInt(bonusNumber);
-    if (winningNumber.contains(validNumber))
+    int validBonusNumber = Integer.parseInt(bonusNumber);
+    if (winningNumber.contains(validBonusNumber))
       throw new IllegalArgumentException(ErrorMessage.NOT_ONLY_NUMBER.getMessage());
-    return validNumber;
+    return validBonusNumber;
   }
 }

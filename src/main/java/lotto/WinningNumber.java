@@ -3,7 +3,7 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WinningNumber {
+public class WinningNumber { // size가 6으로 고정되도록 기능 추가해야됨
   private List<Integer> number;
 
   public WinningNumber(String userNumber) {
@@ -16,6 +16,9 @@ public class WinningNumber {
     for (String num : number) {
       onlyDigit(num);
       numberInt.add(Integer.parseInt(num));
+    }
+    if (numberInt.size() != 6) {
+      throw new IllegalArgumentException(ErrorMessage.NOT_SIX_NUMBERS.getMessage());
     }
     return numberInt;
   }

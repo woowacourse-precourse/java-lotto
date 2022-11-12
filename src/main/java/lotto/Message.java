@@ -1,6 +1,5 @@
 package lotto;
 
-import java.text.DecimalFormat;
 import java.util.Map;
 
 public class Message {
@@ -20,7 +19,7 @@ public class Message {
     System.out.println("보너스 번호를 입력해 주세요.");
   }
 
-  public static void winningStatic() {
+  public static void winningStatics() {
     System.out.println("당첨 통계");
   }
 
