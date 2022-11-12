@@ -23,6 +23,21 @@ public class LottoService {
         player.canDivideThousand();
         player.countLottoNumber();
     }
+
+    public List<Integer> inputLottoWinningNumbers(){
+        List<Integer> lottoWinningNumbers = new ArrayList<>();
+        String inputLottoPickNumbers = input().trim().replaceAll(" ","");
+        hasSixLottoNumber(inputLottoPickNumbers);
+
+        String[] lottoPickNumbers = inputLottoPickNumbers.split(",");
+        for (String winningNumber : lottoPickNumbers) {
+            isNumber(winningNumber);
+            lottoWinningNumbers.add(Integer.parseInt(winningNumber));
+        }
+        Collections.sort(lottoWinningNumbers);
+        return lottoWinningNumbers;
+    }
+    
     public void isDuplicate(List<Integer> winningLottoNumbers){
         Set<Integer> checkDuplicateNumber = new HashSet<>();
 
