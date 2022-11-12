@@ -5,24 +5,25 @@ import java.util.StringJoiner;
 public class WinningStatistics {
 
     private final LottoResults lottoResults;
-    private final LottoPurchaser lottoPurchaser;
+    private final PurchasedLottoTickets purchasedLottoTickets;
     private double rateOfReturn;
 
-    public WinningStatistics(LottoPurchaser lottoPurchaser, LottoResults lottoResults) {
-        this.lottoPurchaser = lottoPurchaser;
+    public WinningStatistics(PurchasedLottoTickets purchasedLottoTickets,
+            LottoResults lottoResults) {
+        this.purchasedLottoTickets = purchasedLottoTickets;
         this.lottoResults = lottoResults;
         calculateRateOfReturn();
     }
 
     private void calculateRateOfReturn() {
         rateOfReturn = rateOfReturn(
-                lottoPurchaser.totalPricesOfPurchase(),
+                purchasedLottoTickets.totalPayment(),
                 lottoResults.totalWinnings()
         );
     }
 
-    private double rateOfReturn(double totalPrice, int totalWinnings) {
-        double rate = (double) totalWinnings / totalPrice * 100;
+    private double rateOfReturn(double totalPayment, int totalWinnings) {
+        double rate = (double) totalWinnings / totalPayment * 100;
         return (double) Math.round(rate * 10) / 10;
     }
 

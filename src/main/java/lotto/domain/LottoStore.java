@@ -10,19 +10,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import lotto.domain.lotto_numbers.Lotto;
-import lotto.domain.winning.LottoPurchaser;
+import lotto.domain.winning.PurchasedLottoTickets;
 
 public class LottoStore {
 
     static final String INVALID_VALUE_OF_MONEY = "1_000원 단위로만 입력해 주세요.";
 
-    public LottoPurchaser lottos(String strMoney) {
+    public PurchasedLottoTickets lottoTickets(String strMoney) {
         int money = Integer.parseInt(strMoney);
         validateMoney(money);
 
-        int quantityToBuy = money / PRICE_OF_LOTTO;
-        return new LottoPurchaser(
-                IntStream.range(0, quantityToBuy)
+        int quantityToPurchase = money / PRICE_OF_LOTTO;
+        return new PurchasedLottoTickets(
+                IntStream.range(0, quantityToPurchase)
                         .mapToObj(i -> newLotto())
                         .collect(Collectors.toList())
         );
