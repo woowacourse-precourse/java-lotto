@@ -49,4 +49,19 @@ public class Statistics {
         Rank rank = Rank.of(countOfMatching, hasBonusNumber);
         return rank;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder statistics = new StringBuilder();
+        Set<Rank> ranks = countRanks.keySet();
+        for (Rank rank: ranks) {
+            statistics.append(rank.toString() + getCountString(countRanks.get(rank)));
+            statistics.append("\n");
+        }
+        return statistics.toString();
+    }
+
+    private String getCountString(int count) {
+        return String.format(COUNT_STATE, count);
+    }
 }
