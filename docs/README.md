@@ -20,38 +20,44 @@
 > ㅁ(통합 테스트)-ㅁ(기능 구현 순서)-ㅁ(단위 테스트) ==> 최종 인수 테스트 진행
 
 __User__
-- BuyLotto : 로또 구입 금액 입력 __(1-2)__
-- SetWinNumber : 당첨 번호 설정 __(2-2)__
+- BuyLotto : 로또 구입 금액 입력 __(1-2-)__
+- SetWinNumber : 당첨 번호 설정 __(2-2-)__
   - ValidateWinNumberType : 당첨 번호에 숫자 이외의 문자가 포함되어 있는지 확인 __(2-2-1)__ - ValidateInputType
   - ValidateWinNumberReplicate : 당첨 번호에 중복 숫자가 포함되어 있는지 확인 __(2-2-2)__ - 오버로딩
   - ValidateWinNumberLength : 당첨 번호가 6자리인지 확인 __(2-2-3)__ - ValidateNumberLength
-- SetBonusNumber : 보너스 번호 설정 __(3-2)__
+- SetBonusNumber : 보너스 번호 설정 __(3-2-)__
   - ValidateBonusNumberType : 보너스 번호가 숫자가 아닌 문자인지 확인 __(3-2-1)__ - ValidateInputType
   - ValidateBonusNumberRange : 입력받은 보너스 번호가 1-45 사이의 값인지 확인 __(3-2-2)__ - ValidateNumberRange
   - ValidateBonusNumberReplicate : 보너스 번호가 당첨 번호와 중복되는지 확인 __(3-2-3)__ - 오버로딩
 
 __System__
-- PrintPurchaseGuide : 구입 금액을 입력해달라는 안내문 출력 __(1-1)__
-- PurchaseLotto : 구입 로또 개수 산출 __(1-3)__
+- PrintPurchaseGuide : 구입 금액을 입력해달라는 안내문 출력 __(1-1-)__
+- PurchaseLotto : 구입 로또 개수 산출 __(1-3-)__
   - ValidateMoneyType : 구입 금액에 숫자 이외의 문자가 포함되어 있는지 확인 __(1-3-1)__ - ValidateInputType
   - ValidateMoneyUnit : 구입 금액이 1,000원 단위인지 확인 __(1-3-2)__
-- PrintPurchaseLotto : 구입 로또 개수 출력 __(1-4)__
-- PrintWinNumberGuide : 당첨 번호를 입력해달라는 안내문 출력 __(2-1)__
-- PrintBonusNumberGuide : 보너스 번호를 입력해달라는 안내문 출력 __(3-1)__
-- CompareWithWinNumber : 당첨 번호와 로또 번호 비교 __(4-1)__
-- CompareWithBonusNumber : 보너스 번호와 로또 번호 비교 __(4-2)__
-- PrintStatistics : 당첨 통계 출력 __(4-3)__
-- CalculateProfit : 수익률 계산 __(5-2)__
+- PrintPurchaseLotto : 구입 로또 개수 출력 __(1-4-)__
+- PrintWinNumberGuide : 당첨 번호를 입력해달라는 안내문 출력 __(2-1-)__
+- PrintBonusNumberGuide : 보너스 번호를 입력해달라는 안내문 출력 __(3-1-)__
+- CompareWithWinNumber : 당첨 번호와 로또 번호 비교 __(4-1-)__
+- CompareWithBonusNumber : 보너스 번호와 로또 번호 비교 __(4-2-)__
+- PrintStatistics : 당첨 통계 출력 __(4-3-)__
+- CalculateProfit : 수익률 계산 __(5-2-)__
   - ProfitRondOff : 수익률 둘째 자리에서 반올림 __(5-2-1)__
-- PrintProfit : 수익률 출력 __(5-3)__
+- PrintProfit : 수익률 출력 __(5-3-)__
 
 __Enum__
-- Rank __(5-1)__
+- Rank __(5-1-)__
 
 __Module__
 - ValidateNumberRange : 입력받은 숫자가 1-45 사이의 값인지 확인
 - ValidateInputType : 입력받은 값에 숫자가 아닌 문자가 포함되어 있는지 확인
 - ValidateNumberLength : 입력받은 숫자의 개수가 입력받은 개수와 맞는지 확인
+
+### 브랜치 전략
+> __기능 분리__ 의 통합 테스트 단위로 Feature를 분리하여 브랜치를 생성 (feature/<Short Description>)<br>
+> `develop` 브랜치로 구현 기능 merge 후 최종 인수 테스트 진행<br>
+> '{my_github_id}' 브랜치를 릴리스 브랜치로 사용<br>
+
 
 ### 예외 처리
 > 예외 상황 시 `IllegalArgumentException`를 발생시키고, 포맷에 맞게 에러를 출력한 후 시스템을 종료한다.<br>
