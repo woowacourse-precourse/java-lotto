@@ -41,8 +41,8 @@ public class GameOutputHandler {
         totalEarnMoney = 0;
         System.out.print("당첨 통계\n---\n");
         for(int ranking = 5; ranking >= 1; ranking--){
-            int howManyNumbersCorrect = WinningPrize.findHowManyNumbers(ranking).getHowManyNumbersIncluded();
-            int winningMoney = WinningPrize.findWinningMoney(ranking).getWinningMoney();
+            int howManyNumbersCorrect = WinningPrize.findEnumByRank(ranking).getHowManyNumbersIncluded();
+            int winningMoney = WinningPrize.findEnumByRank(ranking).getWinningMoney();
             int amountOfThatRanking;
 
             try{

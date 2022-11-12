@@ -42,12 +42,16 @@ public enum WinningPrize {
         return -1;
     }
 
+    public static WinningPrize findEnumByRank(final int ranking){
+        Map<Integer, WinningPrize> forFindingEnumByRank = forFindingEnumByRank();
+        return forFindingEnumByRank.get(ranking);
+    }
+
     private static boolean isBonusNumberIncludedInPapers(Lotto lottoPapers, int bonusNumber){
         return lottoPapers.getNumbers().contains(bonusNumber);
     }
 
-
-    private static Map<Integer, WinningPrize> findHowManyNumbersByRank(){
+    private static Map<Integer, WinningPrize> forFindingEnumByRank(){
         // enum 순회 하면서, ranking 을 키로 하고, 들어있는 숫자를 value 로 하는 맵 만들기.
         Map<Integer, WinningPrize> howManyNumbers = new HashMap<>();
         for(WinningPrize prize : WinningPrize.values()){
@@ -55,24 +59,4 @@ public enum WinningPrize {
         }
         return howManyNumbers;
     }
-
-    public static WinningPrize findHowManyNumbers(final int ranking){
-        Map<Integer, WinningPrize> howManyNumbers = findHowManyNumbersByRank();
-        return howManyNumbers.get(ranking);
-    }
-
-
-    private static Map<Integer, WinningPrize> findWinningMoneyByRank(){
-        Map<Integer, WinningPrize> winningMoney = new HashMap<>();
-        for(WinningPrize prize : WinningPrize.values()){
-            winningMoney.put(prize.ranking, prize);
-        }
-        return winningMoney;
-    }
-
-    public static WinningPrize findWinningMoney(final int ranking){
-        Map<Integer, WinningPrize> winningMoney = findWinningMoneyByRank();
-        return winningMoney.get(ranking);
-    }
-
 }
