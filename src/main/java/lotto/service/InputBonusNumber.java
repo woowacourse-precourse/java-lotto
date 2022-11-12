@@ -9,9 +9,12 @@ import java.util.List;
 public class InputBonusNumber {
     InputBonusLottoNumberHandler inputBonusLottoNumberHandler = new InputBonusLottoNumberHandler();
     Output output = new Output();
-    public void inputBonusNumber(List<Integer> sixLottoNumbers) {
+    public Integer inputBonusNumber(List<Integer> sixLottoNumbers) {
         output.bonusLottoNumberOrder();
-        bonusLottoNumber(userReadLine(), sixLottoNumbers);
+
+        Integer bonusNumber = Integer.valueOf(userReadLine());
+        bonusLottoNumber(String.valueOf(bonusNumber), sixLottoNumbers);
+        return bonusNumber;
     }
     public String userReadLine() {
         String userLottoNumbers = Console.readLine();
@@ -19,7 +22,7 @@ public class InputBonusNumber {
         return userLottoNumbers;
     }
     public void bonusLottoNumber(String bonusNumber, List<Integer> sixLottoNumbers){
-        InputBonusLottoNumberHandler.checkBonusNumberException(bonusNumber);
-        InputBonusLottoNumberHandler.checkAllNumbersException(bonusNumber, sixLottoNumbers);
+        inputBonusLottoNumberHandler.checkBonusNumberException(bonusNumber);
+        inputBonusLottoNumberHandler.checkAllNumbersException(bonusNumber, sixLottoNumbers);
     }
 }

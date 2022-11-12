@@ -33,6 +33,7 @@ public class LottoGame {
         InputBonusNumber inputBonusNumber = new InputBonusNumber();
 
         List<Integer> sixLottoNumbers = inputLottoNumber.inputSixNumbers();
-        inputBonusNumber.inputBonusNumber(sixLottoNumbers);
+        sixLottoNumbers.add(inputBonusNumber.inputBonusNumber(sixLottoNumbers));
+        System.out.println(sixLottoNumbers);
     }
 }

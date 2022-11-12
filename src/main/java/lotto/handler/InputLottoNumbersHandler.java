@@ -17,12 +17,12 @@ public class InputLottoNumbersHandler {
         inputMoney.lineSkip();
         return lottoNumbers;
     }
-    private void checkSize(List<Integer> lottoNumbers){
+    public void checkSize(List<Integer> lottoNumbers){
         if(lottoNumbers.size() != pickRandomLotto.LIMIT_LOTTO) {
             throw new IllegalArgumentException(inputMoneyHandler.ERROR_ORDER);
         }
     }
-    private void checkSameNumbers(List<Integer> lottoNumbers){
+    public void checkSameNumbers(List<Integer> lottoNumbers){
         if(lottoNumbers.stream().distinct().count() != pickRandomLotto.LIMIT_LOTTO){
             throw new IllegalArgumentException(inputMoneyHandler.ERROR_ORDER);
         }
@@ -36,7 +36,7 @@ public class InputLottoNumbersHandler {
             }
         }
     }
-    private void checkInRange(List<Integer> lottoNumbers){
+    public void checkInRange(List<Integer> lottoNumbers){
         for(int index = 0; index < lottoNumbers.size(); index++){
             if(lottoNumbers.get(index) < 1 || lottoNumbers.get(index) > 45){
                 throw new IllegalArgumentException(inputMoneyHandler.ERROR_ORDER);
