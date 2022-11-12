@@ -22,6 +22,10 @@
     - 유저가 구매한 로또 금액이 1000 으로 나누어 떨어지지 않으면 IllegalArgumentException을 발생시킨다.
 
 ### 당첨 번호 입력 검증
+- [x] winningNumberIsNumeric()
+  - 당첨 번호가 정수형으로 끝나지 않으면 IllegalArgumentException을 발생시킨다.
+    - ex) 1,2,3,4,5,6,
+    - ex) 1,2,4,5,6,j
 - [x] validateInputLottoNumber()
   - [x] validateLottoNumbersLength()
     - 보너스 번호를 포함하지 않은 로또 당첨번호 입력값이 6보다 크다면 IllegalArgumentException을 발생시킨다.
