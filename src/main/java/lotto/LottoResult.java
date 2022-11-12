@@ -11,7 +11,11 @@ public enum LottoResult {
     public static LottoResult find(int matchCount, boolean bonus) {
 
         for(LottoResult result : values()) {
-            if(result.matchCount == matchCount && result.bonus == bonus) {
+            if(result.matchCount == matchCount && matchCount == Match5.matchCount && bonus == result.bonus) {
+                return result;
+            }
+
+            if(result.matchCount == matchCount && matchCount != Match5.matchCount) {
                 return result;
             }
         }
