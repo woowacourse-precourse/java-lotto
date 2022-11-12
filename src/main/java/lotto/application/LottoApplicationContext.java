@@ -79,6 +79,15 @@ public class LottoApplicationContext {
 
         this.winningNumber = new WinningNumber(winningLotto, bonusNumber);
     }
+
+    public void calculateWin() {
+        List<Rank> result = lottos.stream()
+                .map(winningNumber::judge)
+                .collect(toList());
+
+        this.statistics = Statistics.of(principal, result);
+    }
+
     private static int inputNumber() {
         try {
             return parseInt(readLine());
@@ -91,5 +100,40 @@ public class LottoApplicationContext {
         return stream(input.split(","))
                 .map(Integer::parseInt)
                 .collect(toList());
+    }
+
+    public void showStatistics() {
+        println("당첨 통계");
+        println("---");
+        RANKS.forEach(this::printRank);
+        printYield();
+    }
+
+    private void printRank(Rank rank) {
+        if (rank == SECOND) {
+            printSecondRank(rank);
+            return;
+        }
+        printDefaultRank(rank);
+    }
+
+    private void printDefaultRank(Rank rank) {
+        println(format(
+                "%d개 일치 (%s원) - %d개",
+                rank.getMatchCount(),
+                rank.getReward(),
+                statistics.count(rank)));
+    }
+
+    private void printSecondRank(Rank rank) {
+        println(format(
+                "%d개 일치, 보너스 볼 일치 (%s원) - %d개",
+                rank.getMatchCount(),
+                rank.getReward(),
+                statistics.count(rank)));
+    }
+
+    private void printYield() {
+        println(format("총 수익률은 %.1f%%입니다.", statistics.yield()));
     }
 }
