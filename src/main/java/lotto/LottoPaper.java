@@ -13,7 +13,7 @@ public class LottoPaper {
         if (this.number.contains(bonusNumber)) {
             this.number.retainAll(winningNumber);
             if (this.number.size() == 5) {
-                return 7; //보너스 얘외 처리
+                return 7; //보너스 예외 처리
             }
         }
         this.number.retainAll(winningNumber);
