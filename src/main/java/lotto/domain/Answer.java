@@ -13,8 +13,9 @@ public class Answer {
     private final int bonusNumber;
 
     public Answer(List<Integer> answers, int bonusNumber) {
+        LottoValidationUtils.validateDuplication(answers, bonusNumber);
+        LottoValidationUtils.validateEachRange(bonusNumber);
         this.answer = new Lotto(answers);
-        LottoValidationUtils.validateContains(answers, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 

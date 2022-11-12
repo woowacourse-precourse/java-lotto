@@ -42,4 +42,12 @@ class AnswerTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 로또 번호는 1~45 사이의 숫자 이어야 합니다.");
     }
+
+    @DisplayName("보너스 번호가 당첨 번호 중 같은 번호가 있으면 예외 발생")
+    @Test
+    void answerContainsBonusNumber() {
+        assertThatThrownBy(() -> new Answer(List.of(1, 2, 3, 4, 5, 6), 6))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 보너스 번호는 정답 번호와 중복되면 안됩니다.");
+    }
 }
