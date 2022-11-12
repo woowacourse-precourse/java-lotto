@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -17,6 +18,8 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validateLotto(numbers);
+
+        Collections.sort(numbers);
         this.numbers = numbers;
     }
 

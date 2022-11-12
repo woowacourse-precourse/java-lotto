@@ -1,10 +1,12 @@
 package model;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -44,5 +46,13 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(46, 1, 2, 3, 4, 5)))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 로또 번호는 1~45 범위여야 합니다.");
+    }
+
+    @Test
+    void 로또_번호를_오름차순으로_생성한다() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Lotto lotto = new Lotto(numbers);
+
+        assertThat(lotto.getNumbers()).isSorted();
     }
 }

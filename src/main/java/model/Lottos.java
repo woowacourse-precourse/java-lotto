@@ -39,7 +39,6 @@ public class Lottos {
 
     private List<Integer> getNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, NUMBER_COUNT);
-        Collections.sort(numbers);
         return numbers;
     }
 }
