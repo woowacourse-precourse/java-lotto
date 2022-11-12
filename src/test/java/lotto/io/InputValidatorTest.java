@@ -20,5 +20,9 @@ class InputValidatorTest {
         assertThrows(IllegalArgumentException.class, () -> {
             InputValidator.validateWinningNumbers("1,2,3");
         });
+        assertThrows(IllegalArgumentException.class, () -> {
+            InputValidator.validateWinningNumbers("1,2,3,4 ,5,6");
+        });
+        assertDoesNotThrow(() -> InputValidator.validateWinningNumbers("1,2,3,4,5,6"));
     }
 }
