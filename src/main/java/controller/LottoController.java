@@ -52,7 +52,6 @@ public class LottoController {
             Collections.sort(printNumbers);
             System.out.println(printNumbers);
         }
-
         return lottos;
     }
 
@@ -79,7 +78,6 @@ public class LottoController {
     }
 
     public HashMap<LottoRanking, Integer> makeWinningList(ArrayList<Lotto> lottos, WinningNumbers winningNumbers, BonusNumber bonusNumber) {
-
         HashMap<LottoRanking, Integer> winningList = new HashMap<>();
         for (LottoRanking lottoRanking : LottoRanking.values()) {
             winningList.put(lottoRanking, 0);
@@ -89,7 +87,6 @@ public class LottoController {
             List<Integer> numbers = lotto.getNumbers();
             int matchWinningNumber = getWinningNumberScore(numbers, winningNumbers);
             boolean matchBonusNumber = getBonusNumberScore(numbers, bonusNumber);
-
             winningList.put(LottoRanking.getRanking(matchWinningNumber, matchBonusNumber), winningList.get(LottoRanking.getRanking(matchWinningNumber, matchBonusNumber)) + 1);
         }
         return winningList;
@@ -97,6 +94,7 @@ public class LottoController {
 
     public boolean getBonusNumberScore(List<Integer> numbers, BonusNumber bonusNumber) {
         boolean matchBonusNumber = false;
+
         if (numbers.contains(bonusNumber)) {
             matchBonusNumber = true;
         }
@@ -105,6 +103,7 @@ public class LottoController {
 
     public int getWinningNumberScore(List<Integer> numbers, WinningNumbers winningNumbers) {
         int matchWinningNumber = 0;
+
         for (int i = 0; i < winningNumbers.getWinningNumbers().size(); i++) {
             List<Integer> winningNumber = winningNumbers.getWinningNumbers();
             if (numbers.contains(winningNumber.get(i))) {
@@ -130,6 +129,4 @@ public class LottoController {
         double yieldMoney = reward / (lottoCount * 1000) * 100;
         System.out.printf(PRINT_YIELD,yieldMoney);
     }
-
-
 }
