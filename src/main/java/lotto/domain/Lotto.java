@@ -43,8 +43,7 @@ public class Lotto {
         return numbers.contains(number);
     }
 
-    public Integer compare(Lotto winningNumber) {
-        //우승 자리와 한자리씩 비교한다
+    public Integer countOverlappingBalls(Lotto winningNumber) {
         return (int) numbers.stream().filter(winningNumber::has)
                 .count();
     }

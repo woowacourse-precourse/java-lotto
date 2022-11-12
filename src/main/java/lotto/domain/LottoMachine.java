@@ -46,7 +46,7 @@ public class LottoMachine {
         Result result = new Result();
         //로또번호를 한개씩 돌면서 결과를 반환한다
         for(int i=0;i<lottoes.size();i++ ){
-            Integer duplicatedCnt = lottoes.get(i).compare(winningNumber);
+            Integer duplicatedCnt = lottoes.get(i).countOverlappingBalls(winningNumber);
             boolean hasBonusNumber = lottoes.get(i).has(bonusNumber);
             result.record(duplicatedCnt, hasBonusNumber);
         }
