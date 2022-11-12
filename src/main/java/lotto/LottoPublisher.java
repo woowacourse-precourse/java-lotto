@@ -10,4 +10,7 @@ public class LottoPublisher {
         }
     }
 
+    private int affordableLotto(int money) {
+        return money / LOTTO_PRICE;
+    }
 }
