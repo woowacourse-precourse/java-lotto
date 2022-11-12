@@ -31,12 +31,22 @@ public class Lotto {
         }
     }
     private void validateOverNumber(List<Integer> numbers) {
-        if (numbers.stream().anyMatch(number -> outOfRange(number))) {
+        if (numbers.stream().anyMatch(this::outOfRange)) {
             throw new IllegalArgumentException("1이상 45이하의 숫자를 입력해주세요.");
         }
     }
 
     boolean outOfRange(int number) {
         return number>MAXIMUM_NUMBER || number<MINIMUM_NUMBER;
+    }
+
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
+
+    public Result play(WinningNumber winningNumber) {
+        return Result.valueOf(numbers.stream()
+                .filter(winningNumber::contains)
+                .count());
     }
 }
