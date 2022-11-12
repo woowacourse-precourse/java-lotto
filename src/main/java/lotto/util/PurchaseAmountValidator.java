@@ -11,7 +11,7 @@ public class PurchaseAmountValidator {
     }
 
     public boolean isDivisibleBy1000(String purchaseAmount) {
-        return Integer.parseInt(purchaseAmount) % 1000 != 0;
+        return Integer.parseInt(purchaseAmount) % 1000 == 0;
     }
 
 }
