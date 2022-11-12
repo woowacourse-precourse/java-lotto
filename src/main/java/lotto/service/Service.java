@@ -3,6 +3,7 @@ package lotto.service;
 import lotto.domain.Buyer;
 import lotto.domain.Lotto;
 import lotto.domain.LottoGame;
+import lotto.domain.Rank;
 import lotto.utils.Utils;
 import lotto.validation.Validation;
 import lotto.view.InputMessage;
@@ -98,5 +99,16 @@ public class Service {
 
     public boolean containsBonusNumber(Lotto lotto){
         return lotto.getNumbers().contains(lottoGame.getBonusNumber());
+    }
+
+    public Rank determineLottoRank(Lotto lotto){
+        int correctCount = countCorrectLottoNumbers(lotto);
+        boolean correctBonusNumber = containsBonusNumber(lotto);
+        for(Rank rank : Rank.values()){
+            if(correctCount == rank.getCount() && correctBonusNumber == rank.getIsBonus()){
+                return rank;
+            }
+        }
+        return Rank.NO_RANK;
     }
 }
