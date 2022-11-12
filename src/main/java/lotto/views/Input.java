@@ -16,7 +16,7 @@ public class Input {
         System.out.println(GameMessage.BUY_FOR_LOTTO);
 
         String question = Console.readLine();
-        inputValidation.checkNumber(question);
+        inputValidation.checkNumber(question, "");
         inputValidation.checkThousandMoney(question);
 
         return Integer.parseInt(question);
@@ -26,6 +26,7 @@ public class Input {
         System.out.print('\n' + GameMessage.INPUT_WINNING_NUMBER + '\n');
 
         String answer = Console.readLine();
+        inputValidation.checkNumber(answer, ",");
     }
 
 }
