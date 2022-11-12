@@ -30,6 +30,9 @@ public class LottoGame {
         List<Lotto> lottoes = new ArrayList<>();
         int lottoCount = money / _lotto_price;
 
+        if (money < _lotto_price) {
+            throw new IllegalArgumentException(_error_default_msg + " 로또의 최소 가격은 " + _lotto_price + "원 입니다.");
+        }
         if (money % _lotto_price != 0) {
             throw new IllegalArgumentException(_error_default_msg + " 로또는 천원 단위로 구매할 수 있습니다.");
         }
