@@ -33,7 +33,7 @@ public enum LottoResult {
     public static LottoResult of(Lotto lotto,
                                  List<Integer> winningNumbers,
                                  int bonusNumber) {
-        long numberOfMatches = lotto.compareWinningNumbers(winningNumbers);
+        long numberOfMatches = lotto.getNumberOfMatchesByWinningNumbers(winningNumbers);
 
         if (numberOfMatches == 5 && lotto.isContainBonusNumber(bonusNumber)) {
             return FIVE_WITH_BONUS;

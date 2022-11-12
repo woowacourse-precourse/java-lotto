@@ -16,12 +16,7 @@ public class Lotto {
         this.numbers = new ArrayList<>(numbers);
     }
 
-    //numbers의 불변을 유지하기 위해 Collections.unmodifiableList를 통해 반환
-    public List<Integer> getNumbers() {
-        return Collections.unmodifiableList(numbers);
-    }
-
-    public long compareWinningNumbers(List<Integer> winningNumbers) {
+    public long getNumberOfMatchesByWinningNumbers(List<Integer> winningNumbers) {
         return numbers.stream()
                 .filter(winningNumbers::contains)
                 .count();
@@ -29,6 +24,11 @@ public class Lotto {
 
     public boolean isContainBonusNumber(int bonusNumber) {
         return numbers.contains(bonusNumber);
+    }
+
+    //numbers의 불변을 유지하기 위해 Collections.unmodifiableList를 통해 반환
+    public List<Integer> getNumbers() {
+        return Collections.unmodifiableList(numbers);
     }
 
     private void validate(List<Integer> numbers) {
