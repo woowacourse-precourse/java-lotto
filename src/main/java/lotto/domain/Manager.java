@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.domain.enums.Message;
 import lotto.domain.enums.Number;
+import lotto.util.ExceptionHandler;
 import lotto.util.InputUtil;
 import lotto.util.OutputUtil;
 
@@ -15,7 +16,7 @@ public class Manager {
     private int bonusNumber;
 
     public void setWinningNumbers(String input) {
-        String[] numbers = input.split(InputUtil.COMMA);
+        String[] numbers = input.split(ExceptionHandler.COMMA);
         for (String number : numbers) {
             winningNumbers.add(Integer.parseInt(number));
         }
@@ -26,13 +27,13 @@ public class Manager {
     }
 
     public int changeLottoCount(int money) {
-        InputUtil.checkValidationMoney(String.valueOf(money));
+        ExceptionHandler.checkValidationMoney(String.valueOf(money));
 
         if (money >= 0) {
             return (money / 1000);
         }
 
-        throw InputUtil.makeIllegalArgumentException(Message.MINUS_INPUT_ERROR);
+        throw ExceptionHandler.makeIllegalArgumentException(Message.MINUS_INPUT_ERROR);
     }
 
     public int getCorrectCount(List<Integer> userLotto) {

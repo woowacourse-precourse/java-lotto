@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.domain.enums.Message;
 import lotto.domain.enums.Number;
+import lotto.util.ExceptionHandler;
 import lotto.util.InputUtil;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class Lotto {
             isSixNumbers(numbers);
             isAllDifferentNumbers(numbers);
         } catch (IllegalArgumentException illegalArgumentException) {
-            throw InputUtil.makeIllegalArgumentException(Message.NUMBER_RANGE_ERROR);
+            throw ExceptionHandler.makeIllegalArgumentException(Message.NUMBER_RANGE_ERROR);
         }
     }
 
