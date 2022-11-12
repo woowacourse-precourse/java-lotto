@@ -10,6 +10,16 @@ public class DynamicText {
         return String.format("%d개를 구매했습니다.\n", quantity);
     }
 
+    public static String totalLotto(List<Lotto> lottoList) {
+        StringBuilder text = new StringBuilder();
+
+        for (Lotto lotto : lottoList) {
+            text.append(lotto);
+            text.append("\n");
+        }
+        return text.toString();
+    }
+
     public static String statistics(Map<RewardEnum, Integer> statistics) {
         int earn = 0;
         int money = 0;
@@ -27,15 +37,5 @@ public class DynamicText {
                 statistics.get(RewardEnum.WIN_5), statistics.get(RewardEnum.WIN_5_BONUS),
                 statistics.get(RewardEnum.WIN_6), 100.00 * earn / money
         );
-    }
-
-    public static String totalLotto(List<Lotto> lottoList) {
-        StringBuilder text = new StringBuilder();
-
-        for (Lotto lotto : lottoList) {
-            text.append(lotto);
-            text.append("\n");
-        }
-        return text.toString();
     }
 }
