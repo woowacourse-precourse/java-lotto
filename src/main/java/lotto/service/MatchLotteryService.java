@@ -31,8 +31,9 @@ public class MatchLotteryService {
         return equalNumber == FIVE_MATCH;
     }
 
-    private void separateByBonusNumber(){
-
+    private Ranking separateByBonusNumber(Lotto lottoEach){
+        if(lottoEach.getNumbers().contains(computer.getBonusNumber())) return Ranking.FIVE_MATCH_WITH_BONUS;
+        return Ranking.FIVE_MATCH;
     }
 
     public void makePlayerLottoByPayment(String payment){
