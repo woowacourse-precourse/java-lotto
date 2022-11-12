@@ -85,9 +85,9 @@ BUILD SUCCESSFUL in 0s
         - [ ] `FOURTH(50000)`
         - [ ] `FIFTH(5000)`
         - [ ] `LOSE(0)`
-        - [ ] `private final int winPrice`
+        - [x] `private final int winPrice`
     - **Class Methods**
-        - [ ] `public LottoRank(int winPrice)`
+        - [x] `public LottoRank(int winPrice)`
         - [ ] `public int getWinPrice()`
 - [ ] **CLASS 5.** `User`
     - **Class Variables:**
