@@ -7,17 +7,23 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class LottoDraw {
+    private static final int BONUS_NUMBER_MATCHED = 100;
 
+    private final LottoBuyer lottoBuyer;
     private int totalPrizeMoney;
-    private Map<String, Integer> numberOfWins = new HashMap<>();
+    private Map<Integer, Integer> numberOfMatching = new HashMap<>();
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
 
-    public LottoDraw() {
+    public LottoDraw(LottoBuyer lottoBuyer) {
+        this.lottoBuyer = lottoBuyer;
+
         this.totalPrizeMoney = 0;
-        for (int rank = 1; rank <= 5; rank++) {
-            numberOfWins.put(String.valueOf(rank) + "등", 0);
+        for (int matched = 3; matched <= 6; matched++) {
+            numberOfMatching.put(matched , 0);
         }
+        numberOfMatching.put(BONUS_NUMBER_MATCHED, 0);
+
         winningNumbers = UI.enterWinningNumber();
         validate(winningNumbers);
 
@@ -51,12 +57,21 @@ public class LottoDraw {
         }
     }
 
+//    public List<Integer> compareLotteries() {
+//        List<Lotto> lotteries = lottoBuyer.getLotteries();
+//        for (Lotto lotto : lotteries) {
+//            List<Integer> lottoNumbers = lotto.getNumbers();
+//            lottoNumbers.retainAll(winningNumbers);
+//
+//        }
+//    }
+
     public int getTotalPrizeMoney() {
         return totalPrizeMoney;
     }
 
-    public Map<String, Integer> getNumberOfWins() {
-        return numberOfWins;
+    public Map<Integer, Integer> getNumberOfMatching() {
+        return numberOfMatching;
     }
 
     public List<Integer> getWinningNumbers() {
