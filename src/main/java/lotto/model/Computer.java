@@ -19,7 +19,7 @@ public class Computer {
     public Computer(){}
 
     public void saveWinningTicket(String lottoNumber){
-
+        createTicket(splitTicket(lottoNumber));
     }
 
     public Lotto getComputerNumber(){
