@@ -1,6 +1,7 @@
 package lotto.model;
 
 import java.util.Objects;
+import lotto.util.LottoExceptionMessage;
 
 public class LottoNumber implements Comparable<LottoNumber> {
     public static final int MIN_NUMBER = 1;
@@ -14,7 +15,7 @@ public class LottoNumber implements Comparable<LottoNumber> {
 
     private void validate(int number) {
         if (hasLottoNumberRange(number)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(LottoExceptionMessage.LOTTO_NUMBER_RANGE.getMessage());
         }
     }
 
