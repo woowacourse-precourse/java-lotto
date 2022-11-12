@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.EnumMap;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -133,6 +134,33 @@ class LottoTest {
     public void compareNumber(LottoMachine lottoMachine, Lotto lotto, WinPrize winPrize) {
         assertThat(lottoMachine.getWinPrize(lotto))
                 .isEqualTo(winPrize);
+    }
+
+    @DisplayName("당첨 통계를 기록한다.")
+    @Test
+    public void recordWinPrize() {
+
+        LottoMachine lottoMachine = new LottoMachine();
+        LottoPrizeRecordingManager lottoPrizeRecordingManager = new LottoPrizeRecordingManager();
+        lottoMachine.setWinNumber(List.of("11", "12", "13", "14", "15", "16"));
+        lottoMachine.setBonusNumber("17");
+
+        List<Lotto> lottoNumbers = List.of(
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 20, 21, 22)));
+
+        lottoNumbers.forEach(
+                (lotto) -> lottoPrizeRecordingManager
+                        .setPrizeRecording(lottoMachine.getWinPrize(lotto))
+        );
+
+        EnumMap<WinPrize, Long> prizeRecording = lottoPrizeRecordingManager.getPrizeRecording();
+
+        assertThat(prizeRecording.keySet().size()).isEqualTo(2);
+        assertThat(prizeRecording.get(WinPrize.ONE_GRADE)).isEqualTo(1);
+        assertThat(prizeRecording.get(WinPrize.FIVE_GRADE)).isEqualTo(1);
+
+
     }
 
 }
