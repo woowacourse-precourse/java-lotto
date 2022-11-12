@@ -12,6 +12,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validateSize(numbers);
+        validateDuplicate(numbers);
         this.numbers = numbers;
     }
 
@@ -27,6 +28,12 @@ public class Lotto {
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != LottoEnum.WINNING_NUMBERS.getValue()) {
             throw new IllegalArgumentException(String.format("[ERROR] 로또 번호 개수는 %d 개만 가능합니다.", LottoEnum.WINNING_NUMBERS.getValue()));
+        }
+    }
+
+    private void validateDuplicate(List<Integer> numbers) {
+        if(numbers.size() != numbers.stream().distinct().count()){
+            System.out.println("[ERROR]중복되는 번호는 입력할 수 없습니다.");
         }
     }
 
