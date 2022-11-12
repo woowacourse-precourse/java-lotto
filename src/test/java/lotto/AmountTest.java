@@ -18,6 +18,15 @@ public class AmountTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+    @DisplayName("구매 금액이 1000원 미만일 경우 예외가 발생한다")
+    @Test
+    void createLessThousandInput(){
+        assertSimpleTest(() -> {
+            runException("999");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
