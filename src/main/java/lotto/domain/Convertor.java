@@ -11,6 +11,10 @@ public class Convertor {
         return Integer.parseInt(input) / eachPrice;
     }
 
+    public static int getAmount(int quantity) {
+        return (quantity * eachPrice);
+    }
+
     public static List<Integer> getNumbers(String input) {
         return Arrays.stream(input.split(","))
                 .map(Integer::parseInt)

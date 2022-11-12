@@ -27,4 +27,8 @@ public class Rank {
         if(bonus) return true;
         return false;
     }
+
+    public long getTotalReward() {
+        return (reward * count);
+    }
 }

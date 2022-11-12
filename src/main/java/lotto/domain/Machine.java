@@ -14,6 +14,7 @@ public class Machine {
 
         List<Rank> ranks = RankGenerator.getRanks();
         CompareLotto.compare(ranks, lottos, winningNumbers, bonusNumber);
+        double yield = Calculator.getYield(ranks, quantity);
     }
 
 
