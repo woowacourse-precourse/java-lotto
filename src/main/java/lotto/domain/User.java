@@ -20,7 +20,13 @@ public class User {
         this.buyAmount = Integer.parseInt(buyAmount);
     }
 
-    public int getBuyAmount(){
+    private void validate(String buyAmount) {
+        validateBuyAmountForms();
+        validateBuyAmountFirstNumber();
+        validateBuyAmount();
+    }
+
+    public int getBuyAmount() {
         return buyAmount;
     }
 }
