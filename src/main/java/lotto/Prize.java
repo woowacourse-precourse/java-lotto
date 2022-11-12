@@ -19,8 +19,4 @@ public enum Prize {
     public int getPrize() {
         return this.prize;
     }
-
-    public String getPlace() {
-        return this.place;
-    }
 }

@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MainController {
-    public MainController(){
+    public MainController() {
         point = new HashMap<Prize, Integer>();
         point.put(Prize.FIRST, 0);
         point.put(Prize.SECOND, 0);
@@ -26,6 +26,7 @@ public class MainController {
     }
 
     private Cash cash;
+
     public void inputCash() throws IllegalArgumentException {
         System.out.println("구입 금액을 입력해주세요.");
         String input = Console.readLine();
@@ -40,12 +41,14 @@ public class MainController {
     }
 
     private int lottoNumber;
+
     private int countLottoNumber(Cash cash) throws IllegalArgumentException {
         Calculator calculator = new Calculator();
         return calculator.countLottoNumber(cash);
     }
 
     private List<Lotto> myLottos;
+
     public void createMyLottos() {
         LottoGenerator lottoGenerator = new LottoGenerator();
         myLottos = lottoGenerator.createMyLottos(lottoNumber);
@@ -54,6 +57,7 @@ public class MainController {
     }
 
     private Lotto winningLotto;
+
     public void inputWinningNumber() throws IllegalArgumentException {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
@@ -72,6 +76,7 @@ public class MainController {
     }
 
     private Bonus bonus;
+
     public void inputBonusNumber() throws IllegalArgumentException {
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
@@ -87,6 +92,7 @@ public class MainController {
     }
 
     HashMap<Prize, Integer> point;
+
     public void calculateWinning() {
         Judgment judgment = new Judgment();
         Calculator calculator = new Calculator();

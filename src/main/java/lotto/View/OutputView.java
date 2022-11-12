@@ -15,14 +15,14 @@ public class OutputView {
         }
     }
 
-    public void printResult(HashMap<Prize, Integer> state, double profit) {
+    public void printResult(HashMap<Prize, Integer> point, double profit) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println(String.format("3개 일치 (5,000원) - %d개", state.get(Prize.FIFTH)));
-        System.out.println(String.format("4개 일치 (50,000원) - %d개", state.get(Prize.FOURTH)));
-        System.out.println(String.format("5개 일치 (1,500,000원) - %d개", state.get(Prize.THIRD)));
-        System.out.println(String.format("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개", state.get(Prize.SECOND)));
-        System.out.println(String.format("6개 일치 (2,000,000,000원) - %d개", state.get(Prize.FIRST)));
+        System.out.println(String.format("3개 일치 (5,000원) - %d개", point.get(Prize.FIFTH)));
+        System.out.println(String.format("4개 일치 (50,000원) - %d개", point.get(Prize.FOURTH)));
+        System.out.println(String.format("5개 일치 (1,500,000원) - %d개", point.get(Prize.THIRD)));
+        System.out.println(String.format("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개", point.get(Prize.SECOND)));
+        System.out.println(String.format("6개 일치 (2,000,000,000원) - %d개", point.get(Prize.FIRST)));
         System.out.println("총 수익률은 " + profit + "%입니다.");
     }
 }
