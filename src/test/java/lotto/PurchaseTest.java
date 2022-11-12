@@ -32,6 +32,17 @@ public class PurchaseTest extends NsTest {
     }
 
 
+    @DisplayName("구매 금액이 1000의 배수가 아닌 경우 에러 출력 테스트")
+    @Test
+    void 구매금액_1000_배수_아닌_경우_에러_테스트(){
+        String input = "2400";
+        PurchaseService purchaseService = new PurchaseService();
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> purchaseService.parsePurchaseInput(input))
+                        .isInstanceOf(IllegalArgumentException.class)
+        );
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
