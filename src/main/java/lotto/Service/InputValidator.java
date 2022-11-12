@@ -1,8 +1,10 @@
 package lotto.Service;
 
+import lotto.Model.ValidNumbers;
+
 public class InputValidator {
 
-    public static final int MIN_COST = 1_000;
+    public static final int MIN_COST = ValidNumbers.valueOf("MIN_COST").getValue();
 
     public static final String ERROR_HEADER = "[ERROR]";
     public static final String NUMBER_FORMAT_MESSAGE = ERROR_HEADER + " 숫자만 입력 가능합니다.";
