@@ -11,11 +11,11 @@ public class LottoFactoryTest {
 
     private static Stream<Arguments> provideMoneyAndLottoCount() {
         return Stream.of(
-                Arguments.of(Money.of("1000"),1),
-                Arguments.of(Money.of("2000"),2),
-                Arguments.of(Money.of("5000"),5),
-                Arguments.of(Money.of("10000"),10),
-                Arguments.of(Money.of("1000000"),1000)
+                Arguments.of(Money.from("1000"),1),
+                Arguments.of(Money.from("2000"),2),
+                Arguments.of(Money.from("5000"),5),
+                Arguments.of(Money.from("10000"),10),
+                Arguments.of(Money.from("1000000"),1000)
         );
     }
 
