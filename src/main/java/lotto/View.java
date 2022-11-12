@@ -14,11 +14,11 @@ public class View {
         System.out.printf("5개 일치 (1,500,000원) - %d개\n", prizeRankings.get(Ranking.THIRD.getPrize()));
         System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", prizeRankings.get(Ranking.SECOND.getPrize()));
         System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", prizeRankings.get(Ranking.FIRST.getPrize()));
-        System.out.printf("총 수익률은 %.1f%%입니다.\n", totalProfit);
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", totalProfit*100);
     }
 
     public void printUncheckedLotto (List<List<Integer>> usersLottos) {
-        System.out.printf("%d개를 구입했습니다.\n", usersLottos.size());
+        System.out.printf("%d개를 구매했습니다.\n", usersLottos.size());
 
         for (List<Integer> lotto: usersLottos) {
             System.out.println(lotto);
