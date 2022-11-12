@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private View view = new View();
-    private RandomGenerator randomGenerator = new RandomGenerator();
-    private List<Lotto> lottoTickets = new ArrayList<>();
+    private final View view = new View();
+    private final RandomGenerator randomGenerator = new RandomGenerator();
+    private final List<Lotto> lottoTickets = new ArrayList<>();
+    private Lotto winningNumbers;
     private int validAmount;
 
     public Game() {
@@ -21,6 +22,7 @@ public class Game {
 
         getLottoNumbers(validAmount / 1000);
         printLottoNumbers();
+        getWinningNumbers();
 
     }
 
@@ -55,6 +57,12 @@ public class Game {
         for (count = 0; count < lottoTickets.size(); count++) {
             view.printEachLotto(lottoTickets.get(count).getNumbers());
         }
+    }
+
+    public void getWinningNumbers() {
+        view.printGetWinningNumber();
+        this.winningNumbers = new Lotto(view.getWinningNumber());
+
     }
 
 }

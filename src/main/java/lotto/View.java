@@ -2,7 +2,9 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class View {
 
@@ -16,7 +18,7 @@ public class View {
         input = Console.readLine();
 
         try {
-            validateInput(input);
+            validateAmountInput(input);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return -1;
@@ -33,15 +35,35 @@ public class View {
         System.out.println(numbers);
     }
 
-    public void validateInput(String input) {
-        if (isInteger(input)) {
+    public void printGetWinningNumber() {
+        System.out.println(GameConstant.GET_WINNING_NUMBER.getValue());
+    }
+
+    public List<Integer> getWinningNumber() {
+        List<Integer> winningNumber;
+        String[] commaSeparate;
+        String input;
+
+        input = Console.readLine();
+        commaSeparate = input.split(",");
+        validateWinningNumber(Arrays.asList(commaSeparate));
+
+        winningNumber = Arrays.asList(commaSeparate)
+                .stream()
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList());
+
+        return winningNumber;
+    }
+
+    public void validateAmountInput(String input) {
+        if (!isInteger(input)) {
             throw new IllegalArgumentException(GameConstant.TYPE_EXCEPTION.getValue());
         }
 
         if (isDivisible(input)) {
             throw new IllegalArgumentException(GameConstant.DIVISIBLE_EXCEPTION.getValue());
         }
-
     }
 
     public boolean isDivisible(String input) {
@@ -49,16 +71,23 @@ public class View {
     }
 
     public boolean isInteger(String input) {
-        char[] element = input.toCharArray();
-        int index;
+        return input.matches("[0-9.]+");
+    }
 
-        for (index = 0; index < element.length; index++) {
-            if (element[index] < 48 || element[index] > 57) {
-                return true;
+    public void validateWinningNumber(List<String> numbers) {
+        for (String element : numbers) {
+            if (!isInteger(element)) {
+                throw new IllegalArgumentException(GameConstant.TYPE_EXCEPTION.getValue());
+            }
+
+            if (checkBoundary(element)) {
+                throw new IllegalArgumentException(GameConstant.BOUNDARY_EXCEPTION.getValue());
             }
         }
+    }
 
-        return false;
+    public boolean checkBoundary(String input) {
+        return Integer.parseInt(input) < 1 || Integer.parseInt(input) > 45;
     }
 
 }

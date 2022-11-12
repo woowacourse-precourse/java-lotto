@@ -18,7 +18,7 @@ public class ViewTest {
     @Test
     @DisplayName("구입금액이 1,000원으로 나누어지지 않을때 예외")
     void amountNotDivisible() {
-        assertThatThrownBy(() -> view.validateInput("1005"))
+        assertThatThrownBy(() -> view.validateAmountInput("1005"))
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
@@ -26,7 +26,7 @@ public class ViewTest {
     @Test
     @DisplayName("구입금액이 숫자가 아닌 문자가 입력될 때 예외")
     void amountNotInteger() {
-        assertThatThrownBy(() -> view.validateInput("a1000"))
+        assertThatThrownBy(() -> view.validateAmountInput("a1000"))
                 .isInstanceOf(IllegalArgumentException.class);
 
     }

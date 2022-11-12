@@ -8,6 +8,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
@@ -17,11 +18,11 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(GameConstant.SIZE_EXCEPTION.getValue());
         }
 
         if (checkDuplicate(numbers)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(GameConstant.DUPLICATE_EXCEPTION.getValue());
         }
     }
 
