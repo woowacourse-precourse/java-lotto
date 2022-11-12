@@ -42,13 +42,16 @@ public class Lotto {
     }
 
     public Rank compareNumbersWith(List<Integer> winningNumbers, int bonusNumber){
+        final String MATCHING_STATEMENT = "개 일치";
+        final String BONUS_NUMBER_MATCHING_STATEMENT = ", 보너스 볼 일치";
+
         int count = calculateCountOfMatchingNumbers(winningNumbers);
-        String winningData = count + "개 일치";
+        String winningData = count + MATCHING_STATEMENT;
         if(count == 5 && contains(bonusNumber)){
-            winningData += " 보너스 볼 일치";
+            winningData += BONUS_NUMBER_MATCHING_STATEMENT;
         }
-        Rank rank = convertToRankFrom(winningData);
-        return rank;
+
+        return convertToRankFrom(winningData);
     }
 
     private Rank convertToRankFrom(String winningData){
