@@ -196,6 +196,14 @@ class UserInputHandlerTest{
         }
 
         @Test
+        void getBonusNumberTest_case2(){
+            String input = "45";
+            beforeSetting(input);
+            int output = Integer.parseInt(input);
+            assertThat(functionalSupply.get()).isEqualTo(output);
+        }
+
+        @Test
         void getBonusNumberTest_exception1_1(){
             String input = "I arrived at beach";
             getExceptionTest(input,functionalSupply);
@@ -228,6 +236,18 @@ class UserInputHandlerTest{
         @Test
         void getBonusNumberTest_exception2_3() {
             String input = "0";
+            getExceptionTest(input, functionalSupply);
+        }
+
+        @Test
+        void getBonusNumberTest_exception3_1() {
+            String input = "2";
+            getExceptionTest(input, functionalSupply);
+        }
+
+        @Test
+        void getBonusNumberTest_exception3_2() {
+            String input = "5";
             getExceptionTest(input, functionalSupply);
         }
     }
