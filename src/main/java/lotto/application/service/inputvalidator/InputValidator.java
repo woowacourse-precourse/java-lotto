@@ -3,7 +3,7 @@ package lotto.application.service.inputvalidator;
 import java.util.List;
 import java.util.Stack;
 
-public class ValueValidator {
+public class InputValidator {
 
     public static void validatePurchaseMoneyInteger(String lottoPurchaseMoney) {
         try {
