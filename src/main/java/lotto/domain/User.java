@@ -18,9 +18,14 @@ public class User {
         setNumOfLotto();
     }
 
-    public void checkInputMoneyIsValid(String money){
-        isNumeric(money);
-        isDivided(money);
+    public void shouldBeValidInput(String money){
+        try {
+            isNumericOrThrows(money);
+            isDividedOrThrows(money);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+            throw new NoSuchElementException();
+        }
     }
 
     private void isNumericOrThrows(String money) {
@@ -28,11 +33,11 @@ public class User {
            throw new IllegalArgumentException("[ERROR] 금액 입력이 잘못되었습니다.");
         }
     }
-    private void isDivided(String inputMoney) {
+
+    private void isDividedOrThrows(String inputMoney) {
         int money = Integer.parseInt(inputMoney);
         if(money%UNIT.value() != 0){
-            System.out.println("[ERROR] 금액은 1000원 단위로 나뉘어 떨어져야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 금액은 1000원 단위로 나뉘어 떨어져야 합니다.");
         }
     }
 
