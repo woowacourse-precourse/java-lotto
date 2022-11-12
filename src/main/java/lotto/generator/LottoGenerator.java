@@ -1,6 +1,7 @@
 package lotto.generator;
 
 import static lotto.constant.Constants.UNIT_OF_LOTTO_PURCHASE;
+import static lotto.validator.UserInputValidator.validateStringIsNumeric;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -9,6 +10,15 @@ import lotto.constant.LottoNumber;
 import lotto.domain.Lotto;
 
 public class LottoGenerator {
+
+    public static Lotto generateByNumbers(String numbers) {
+        return new Lotto(numbers);
+    }
+
+    public static List<Lotto> generateByMoney(String money) {
+        validateStringIsNumeric(money);
+        return generateByMoney(Integer.parseInt(money));
+    }
 
     public static List<Lotto> generateByMoney(int money) {
         int availableQuantity = calculateAvailableQuantity(money);
