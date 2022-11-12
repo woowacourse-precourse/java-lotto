@@ -20,7 +20,8 @@ public class LottoMachineTest {
     @ParameterizedTest
     @MethodSource("parameterProvider")
     void 당첨_로또_테스트(List<Integer> winningNumber, int bonusNumber, WinningLotto result) {
-        LottoMachine lottoMachine = new LottoMachine(winningNumber, bonusNumber);
+        WinningNumber winningNumbers = new WinningNumber(winningNumber, bonusNumber);
+        LottoMachine lottoMachine = new LottoMachine(winningNumbers);
 
         WinningLotto winningLotto = lottoMachine.isWinningLotto(lotto);
         assertThat(winningLotto).isEqualTo(result);
