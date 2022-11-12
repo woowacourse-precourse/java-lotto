@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -19,5 +20,10 @@ public class Lotto {
     // TODO: 추가 기능 구현
     public boolean containsNumber(int bonusNumber) {
         return numbers.contains(bonusNumber);
+    }
+
+    // TODO: 추가 기능 구현
+    public void printNumbers() {
+        System.out.println(numbers);
     }
 }
