@@ -1,6 +1,8 @@
 package lotto.ui.text;
 
+import java.util.List;
 import java.util.Map;
+import lotto.Lotto;
 import lotto.result.RewardEnum;
 
 public class DynamicText {
@@ -27,4 +29,13 @@ public class DynamicText {
         );
     }
 
+    public static String totalLotto(List<Lotto> lottoList) {
+        StringBuilder text = new StringBuilder();
+
+        for (Lotto lotto : lottoList) {
+            text.append(lotto);
+            text.append("\n");
+        }
+        return text.toString();
+    }
 }
