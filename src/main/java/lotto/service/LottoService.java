@@ -59,9 +59,16 @@ public class LottoService {
 
     public void printPlace(List<LottoRanking> lottoRankings) {
 
-        DecimalFormat decFormat = new DecimalFormat("###,###");
         System.out.println("당첨 통계");
         System.out.println("---");
+
+        printWinStat(lottoRankings);
+    }
+
+    public void printWinStat(List<LottoRanking> lottoRankings) {
+
+        DecimalFormat decFormat = new DecimalFormat("###,###");
+
         for (int i = rankingList.size() - 2; i >= 0; i--) {
             LottoRanking lottoRank = rankingList.get(i);
             if (lottoRank == LottoRanking.SECOND_PLACE) {
