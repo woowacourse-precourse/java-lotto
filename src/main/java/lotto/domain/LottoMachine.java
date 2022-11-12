@@ -2,6 +2,8 @@ package lotto.domain;
 
 import java.util.List;
 
+import lotto.Notice;
+
 public class LottoMachine {
 
 	private final List<Integer> winningNumbers;
@@ -24,7 +26,7 @@ public class LottoMachine {
 
 	private void checkException(List<Integer> lotto, int bonus) {
 		if (lotto.contains(bonus)) {
-			throw new IllegalArgumentException("[ERROR] 로또 번호와 다른 보너스 숫자를 입력해주세요.");
+			throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + "로또 번호와 다른 보너스 숫자를 입력해주세요.");
 		}
 	}
 }
