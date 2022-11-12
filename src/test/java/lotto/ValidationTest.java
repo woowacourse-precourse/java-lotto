@@ -42,4 +42,23 @@ public class ValidationTest {
         assertThatThrownBy(() -> validInput.validIsInputInRange(50))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("사용자의 입력에 중복이 존재하지 않는다.")
+    @Test
+    void isInputHasDuplicatedNumber() {
+        List<Integer> input = new ArrayList<>();
+        input.add(1);
+        input.add(2);
+        input.add(3);
+        input.add(4);
+        input.add(5);
+        input.add(6);
+
+        assertThatCode(() -> validInput.validInputHasDuplicatedNumber(input)).doesNotThrowAnyException();
+
+        input.add(1);
+
+        assertThatThrownBy(() -> validInput.validInputHasDuplicatedNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
