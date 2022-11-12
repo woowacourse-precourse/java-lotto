@@ -68,7 +68,7 @@ BUILD SUCCESSFUL in 0s
     - [x] `private void validateRangeOfNumbers(List<Integer> numbers)`
 - [ ] **CLASS 2.** `WinLotto extends Lotto`
   - **Class Variables:**
-    - [ ] `private final int bonusNumber`
+    - [x] `private final int bonusNumber`
   - **Class Methods:**
     - [ ] `public WinLotto(List<Inteber> winNumbers, int bonusNumber)`
     - [ ] `private void validateBonusNumber(List<Integer> winNumbers, int bonusNumber)`
