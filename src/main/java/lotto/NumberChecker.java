@@ -14,13 +14,11 @@ public class NumberChecker {
         this.myNumber = myNumber;
     }
 
-    public void compareNumber(){
-        for(int i = 0;i < myNumber.size();i++){
-            myNumber.get(i).retainAll(winningNumber);
-            numberOfCorrectNumbers.add(myNumber.get(i).size());
+    public void compareNumber() {
+        List<List<Integer>> myNumberTmp = myNumber;
+        for (int i = 0; i < myNumber.size(); i++) {
+            myNumberTmp.get(i).retainAll(winningNumber);
+            numberOfCorrectNumbers.add(myNumberTmp.get(i).size());
         }
     }
-
-
-    
 }
