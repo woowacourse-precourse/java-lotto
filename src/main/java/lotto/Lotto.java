@@ -40,11 +40,9 @@ public class Lotto {
         }
     }
 
-    private void checkNumbersAreDuplicate(int number1, int number2) {
-        if (number1 == number2) {
-            error = ErrorMessage.DUPLICATE;
-            throw new IllegalArgumentException();
-        }
+    private boolean checkNumbersAreDuplicate(int number1, int number2) {
+
+        return number1 != number2;
     }
 
     public boolean checkWinningNumberIsInLottoNumbers(int winningNumber) {
