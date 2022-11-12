@@ -1,11 +1,24 @@
 package lotto.view;
 
+import camp.nextstep.edu.missionutils.Console;
+import lotto.util.Validator;
+
 import java.util.List;
 
 public class InputView {
 
+    private static final String INPUT_NUMBER = "구입금액을 입력해 주세요.";
+    Validator validator;
+
+    public InputView(){
+        validator = new Validator();
+    }
+
     public int inputMoney() {
-        return 1;
+        System.out.println(INPUT_NUMBER);
+        String money = Console.readLine();
+        int moneyNumber = validator.moneyInputValidator(money);
+        return moneyNumber;
     }
 
     public List<Integer> inputWinningNumber() {
