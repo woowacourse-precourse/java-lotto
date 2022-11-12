@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class LottoInStream {
-    private static final int _lotto_number_max_length = 6;
-    private static final int _lotto_bonus_max_length = 1;
+    private static final int _lotto_number_length = 6;
+    private static final int _lotto_bonus_length = 1;
     private static final int _bonus_index = 0;
     private static final String _input_buy_str = "구입금액을 입력해 주세요.\n";
     private static final String _input_numbers_str = "당첨 번호를 입력해 주세요.\n";
@@ -36,9 +36,9 @@ public class LottoInStream {
         if (isNullOrEmptyString(line)) {
             throw new IllegalArgumentException(_error_default_msg + " 잘못된 입력 값 입니다.");
         }
-        if (line.length() != _lotto_number_max_length) {
+        if (line.length() != _lotto_number_length) {
             throw new IllegalArgumentException(
-                    _error_default_msg + " 당첨 번호는 " + _lotto_number_max_length + "개를 입력해야 합니다.");
+                    _error_default_msg + " 당첨 번호는 " + _lotto_number_length + "개를 입력해야 합니다.");
         }
         return convStrToIntList(line);
     }
@@ -50,9 +50,9 @@ public class LottoInStream {
         if (isNullOrEmptyString(line)) {
             throw new IllegalArgumentException(_error_default_msg + " 잘못된 입력 값 입니다.");
         }
-        if (line.length() != _lotto_bonus_max_length) {
+        if (line.length() != _lotto_bonus_length) {
             throw new IllegalArgumentException(
-                    _error_default_msg + " 당첨 번호는 " + _lotto_bonus_max_length + "개를 입력해야 합니다.");
+                    _error_default_msg + " 당첨 번호는 " + _lotto_bonus_length + "개를 입력해야 합니다.");
         }
         return (convCharToInt(line.charAt(_bonus_index)));
     }
