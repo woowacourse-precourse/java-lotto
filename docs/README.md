@@ -1,0 +1,22 @@
+### 기능 요구 사항
+
+- [ ] 로또 구입 금액 입력 받기(1,000 원 단위 입력)
+  - (e) 숫자 이외의 입력이 들어올 경우 예외처리(IllegalArgumentException)
+  - (e) 1000의 배수가 아닐경우 예외처리(IllegalArgumentException)
+- [ ] 당첨 번호 입력 받기(6개의 숫자)
+  - (e) 6개의 숫자를 초과하거나 미만이면 예외처리(IllegalArgumentException)
+  - (e) 숫자의 범위가 1~45사이가 아닌 경우 예외처리(IllegalArgumentException)
+  - (e) 쉼표(,)가 아닌 다른 구분자로 입력할 경우 예외처리(IllegalArgumentException)
+  - (e) 입력받은 숫자가 중복일 경우 예외처리(IllegalArgumentException)
+- [ ] 보너스 번호 입력 받기
+  - (e) 숫자가 아닌 경우 예외처리(IllegalArgumentException)
+  - (e) 숫자가 하나가 아닌경우 예외처리(IllegalArgumentException)
+  - (e) 숫자의 범위가 1~45사이가 아닌 경우 예외처리(IllegalArgumentException)
+  - (e) 보너스 번호가 당첨번호와 중복된다면 예외처리(IllegalArgumentException)
+- [ ] 발행한 로또 수량 및 번호 출력
+  - {구매한 수랭}개를 구매했습니다. 출력 후 오름차순으로 정렬된 로또들을 출력
+- [ ] 당첨 내역 출력
+  - 5등 -> 1등순으로 당첨된 내용에 관하여 출력
+    - 출력 형식 : {일치하는 개수}개 일치 {당첨 금액} - {당첨 개수}
+  - 수익률 출력(소수점 둘쨰 자리에서 반올림)
+    - 출력 형식 : 총 수익률은 {수익률}% 입니다.
