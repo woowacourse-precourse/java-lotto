@@ -103,7 +103,7 @@ public class Application {
     private static void printLottos(int money, List<Lotto> lottos) {
         System.out.printf("%d개를 구매했습니다.\n", money / 1000);
         for (Lotto lotto : lottos) {
-            System.out.println(lotto.getNumbers());
+            System.out.println(lotto.getSortedNumbers());
         }
     }
 

@@ -22,7 +22,7 @@ public class Lotto {
         }
     }
 
-    public List<Integer> getNumbers() {
+    public List<Integer> getSortedNumbers() {
         List<Integer> sortedNumbers = new ArrayList<>(numbers);
         sortedNumbers.sort(Comparator.naturalOrder());
         return sortedNumbers;
