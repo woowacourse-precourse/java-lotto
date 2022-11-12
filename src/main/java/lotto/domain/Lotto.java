@@ -27,5 +27,17 @@ public class Lotto {
         }
     }
 
+    private void validateNumbersRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            checkRange(number);
+        }
+    }
+
+    private void checkRange(int number) {
+        if (number < 1 || number > 45) {
+            System.out.println("[ERROR] 로또 번호는 1부터 45사이여야 합니다.");
+            throw new IllegalArgumentException();
+        }
+    }
 
 }
