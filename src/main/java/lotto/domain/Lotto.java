@@ -52,26 +52,6 @@ public class Lotto {
         }
     }
 
-    private void validateByOverlapForAddBonusNumber(int bonusNumber) {
-        HashSet<Integer> checkNumbers = new HashSet<>(numbers);
-        checkNumbers.add(bonusNumber);
-
-        if (checkNumbers.size() != NUMBER_OF_LOTTO + 1) {
-            Output.printErrorAndExit(ExceptionType.HAVE_OVERLAP.getMessage());
-            throw new IllegalArgumentException(ExceptionType.HAVE_OVERLAP.getMessage());
-        }
-    }
-
-    private void validateForBonusNumber(int number) {
-        validateNumberInLottoRange(number);
-        validateByOverlapForAddBonusNumber(number);
-    }
-
-    public void addBonusNumber(int number) {
-        validateForBonusNumber(number);
-        this.numbers.add(number);
-    }
-
     private PriorityQueue<Integer> sort() {
         PriorityQueue<Integer> sortingNumbers = new PriorityQueue<>(Comparator.naturalOrder());
         sortingNumbers.addAll(numbers);
@@ -90,5 +70,9 @@ public class Lotto {
         builder.append(sortingNumbers.poll()).append("]");
 
         return builder.toString();
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
