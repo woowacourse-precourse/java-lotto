@@ -27,10 +27,17 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+
     @Test
     void overLapTest(){
         List<Integer> test = Randoms.pickUniqueNumbersInRange(1,45,6);
         assertThat(test.size()).isEqualTo(test.stream().distinct().count());
+    }
+    @Test
+    void hitCountTest(){
+        Lotto lotto=new Lotto(List.of(11,12,13,42,37,10));
+
+        assertThat(lotto.get_hitCount(List.of(1,31,42,37,11,12))).isEqualTo(4);
     }
 
     // 아래에 추가 테스트 작성 가능
