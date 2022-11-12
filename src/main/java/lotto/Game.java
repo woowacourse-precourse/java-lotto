@@ -11,6 +11,24 @@ import lotto.utils.Constant;
 
 public class Game {
 
+    public void start() {
+        Print.printInputMoney();
+        int money = Input.inputUserPay();
+
+        List<Lotto> lottos = makeLottoNumbers(payDividedByUnit(money));
+        Print.printLottoNumberList(lottos);
+
+        Print.printInputWinLottoNumber();
+        List<Integer> numbers = Input.inputWinLottoNumbers();
+        Lotto winLottoNumbers = new Lotto(numbers);
+
+        Print.printInputBonusLottoNumber();
+        int bonusLottoNumber = Input.inputBonusLottoNumber();
+        GameScore gameScore = getGameScore(lottos, winLottoNumbers, bonusLottoNumber);
+
+        Print.printWinLottoStats(gameScore);
+    }
+
     public GameScore getGameScore(List<Lotto> lottos, Lotto winLottoNumbers, int bonusLottoNumber) {
         int totalPrizeMoney = 0;
         Map<LottoWinType, Integer> lottoWinTypeMap = initLottoWinTypeMap();
