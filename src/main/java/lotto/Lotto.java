@@ -1,5 +1,6 @@
 package lotto;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -26,7 +27,26 @@ public class Lotto {
             arrayForCheckOverLap[checkIndex] = 1;
         }
     }
-    public void checkLottoWinnings(ArrayList<int[]> lotteryBundleArray, int bonusWinningNumber) {
+    public void checkLottoWinnings(ArrayList<ArrayList<Integer>> lotteryBundleArray, int bonusWinningNumber) {
+        int [] countWinningNumbersCaseArray = new int [5];
+        final int SET_TO_INDEX_VALUE = 3;
+        for (ArrayList<Integer> lottery : lotteryBundleArray){
+            countWinningNumbersCaseArray[countWinningNumbers(lottery,bonusWinningNumber)-SET_TO_INDEX_VALUE]++;
+        }
 
     }
+
+    private int countWinningNumbers(ArrayList<Integer> lottery, int bonusWinningNumber){
+        int countOfWinningNumbers = 0;
+        for (int index = 0; index < lottery.size(); index++){
+            if (numbers.contains(lottery.get(index))){
+                countOfWinningNumbers++;
+            }
+        }
+        if (lottery.contains(bonusWinningNumber)) {
+            countOfWinningNumbers++;
+        }
+        return countOfWinningNumbers;
+    }
+
 }
