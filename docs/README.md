@@ -10,47 +10,47 @@
 - 클래스를 패키지로 묶어 가독성을 높이자
 ## 기능 목록
 - MVC Pattern을 적용해 문제를 해결합니다.M:Model, V:View, C:Controller E:ErrorCheck
-- M [x] 로또 구매 금액을 입력받는다. - InputLotto#inputMoney()
-  - E [x] 숫자를 입력했는지 확인한다. - validateNumber
-  - E [x] 1000으로 나워지는지 확인한다 -validateDivideThousand()
-- M [x] 구매 금액을 통해 구매할 로또 장수를 계산한다 - LottoData#LottoData() (생성자)
-- M [x] 당첨 번호를 입력받는다 - InputLotto#inputWinNumber()
-  - E [x] 쉼표를 기준으로 구분했는지, 숫자가 6개인지 확인한다. - validateSeparatorAndSize()
-  - E [x] 입력한게 숫자인지, 숫자가 1~45사이에 있는지 확인한다. - validateNumberInRange()
-  - ~~E [ ] 숫자가 총 6개인지 확인한다. - validateSize()~~
-  - E [x] 중복 숫자가 없는지 확인한다. - validateDuplicateNumber()
-- M [x] 보너스 번호를 입력받는다. - InputLotto#inputBonusNumber()
-  - E [x] 입력한게 숫자인지, 숫자가 1~45사이에 있는지 확인한다. - validateNumberInRange()
-  - ~~E [ ] 숫자가 1개인지 확인한다. - validateSize()~~
-  - E [x] 당첨 번호와 중복 없는지 확인한다. - validateDuplicateNumber()
-- M [x] 로또 번호를 랜덤으로 생성해 로또 객체를 생성하며 이 객체를 리스트에 담는다 - LottoData#makeLotto()
-- ~~M [ ] 로또 구매 장수 만큼 로또 객체 생성해 리스트에 담는다 - LottoData#makeLottoList()~~
-- M [x] ~~로또 객체의 번호와 당첨 번호, 보너스 번호를 비교해~~일치 개수, 보너스번호 일치 여부로 당첨 등수 산정한다. - LottoCalculate#calculatePrize()
-  - M [x] 로또 번호, 당첨 번호를 비교해 일치 개수를 계산한다 - LottoCalculate#countMatches()
-  - M [x] 로또 번호, 보너스 번호를 비교해 일치 여부 확인한다 - LottoCalculate#checkBonusNumber()
-- M [x] 당첨 금액을 계산한다. - LottoCalculate#calculateWinMoney()
-- M [x] 수익률을 계산한다. (소수점 둘째 자리에서 반올림.) - LottoCalculate#calculatePercentageOfReturn()
-- M [x] Lotto 객체에 상금, 등수 정보를 저장할 수 있도록 메서드, 변수를 설정한다. - Lotto
-- M [x] LottoCalculate 내 함수를 사용해 Lotto 객체에 로또 번호에 따른 등수 및 상금을 업데이트 한다. -LottoCalculate#totalCalculate()
-- M [x] LottoData 에 생성된 Lotto 객체에 등수, 상금 데이터를 추가한다 - LottoData#putDataToLotto()
-- M [x] Lotto에 추가된 등수, 상금 데이터를 모아 저장한다 - LottoData#countPrize(), LottoData#sumPrizeMoney()
-- M [x] Lotto 객체로 lottoNumber 를 출력할 수 있도록 toString 을 오버라이딩 한다 - Lotto#toString()
-- M [x] LottoData 객체를 사용해 수익률을 반환할 수 있도록 한다. - LottoData#percentageOfReturn()
-- M [x] Lotto 객체에 매개변수로 들어오는 numbers 가 중복이 없는지 확인한다 - Lotto#validateDuplicateNumber()
+- [x] M 로또 구매 금액을 입력받는다. - InputLotto#inputMoney()
+  - [x] E 숫자를 입력했는지 확인한다. - validateNumber
+  - [x] E 1000으로 나워지는지 확인한다 -validateDivideThousand()
+- [x] M 구매 금액을 통해 구매할 로또 장수를 계산한다 - LottoData#LottoData() (생성자)
+- [x] M 당첨 번호를 입력받는다 - InputLotto#inputWinNumber()
+  - [x] E 쉼표를 기준으로 구분했는지, 숫자가 6개인지 확인한다. - validateSeparatorAndSize()
+  - [x] E 입력한게 숫자인지, 숫자가 1~45사이에 있는지 확인한다. - validateNumberInRange()
+  - [ ] ~~E 숫자가 총 6개인지 확인한다. - validateSize()~~
+  - [x] E 중복 숫자가 없는지 확인한다. - validateDuplicateNumber()
+- [x] M 보너스 번호를 입력받는다. - InputLotto#inputBonusNumber()
+  - [x] E 입력한게 숫자인지, 숫자가 1~45사이에 있는지 확인한다. - validateNumberInRange()
+  - [ ] ~~E 숫자가 1개인지 확인한다. - validateSize()~~
+  - [x] E 당첨 번호와 중복 없는지 확인한다. - validateDuplicateNumber()
+- [x] M 로또 번호를 랜덤으로 생성해 로또 객체를 생성하며 이 객체를 리스트에 담는다 - LottoData#makeLotto()
+- [ ] ~~M 로또 구매 장수 만큼 로또 객체 생성해 리스트에 담는다 - LottoData#makeLottoList()~~
+- [x] M ~~로또 객체의 번호와 당첨 번호, 보너스 번호를 비교해~~일치 개수, 보너스번호 일치 여부로 당첨 등수 산정한다. - LottoCalculate#calculatePrize()
+  - [x] M 로또 번호, 당첨 번호를 비교해 일치 개수를 계산한다 - LottoCalculate#countMatches()
+  - [x] M 로또 번호, 보너스 번호를 비교해 일치 여부 확인한다 - LottoCalculate#checkBonusNumber()
+- [x] M 당첨 금액을 계산한다. - LottoCalculate#calculateWinMoney()
+- [x] M 수익률을 계산한다. (소수점 둘째 자리에서 반올림.) - LottoCalculate#calculatePercentageOfReturn()
+- [x] M Lotto 객체에 상금, 등수 정보를 저장할 수 있도록 메서드, 변수를 설정한다. - Lotto
+- [x] M LottoCalculate 내 함수를 사용해 Lotto 객체에 로또 번호에 따른 등수 및 상금을 업데이트 한다. -LottoCalculate#totalCalculate()
+- [x] M LottoData 에 생성된 Lotto 객체에 등수, 상금 데이터를 추가한다 - LottoData#putDataToLotto()
+- [x] M Lotto에 추가된 등수, 상금 데이터를 모아 저장한다 - LottoData#countPrize(), LottoData#sumPrizeMoney()
+- [x] M Lotto 객체로 lottoNumber 를 출력할 수 있도록 toString 을 오버라이딩 한다 - Lotto#toString()
+- [x] M LottoData 객체를 사용해 수익률을 반환할 수 있도록 한다. - LottoData#percentageOfReturn()
+- [x] M Lotto 객체에 매개변수로 들어오는 numbers 가 중복이 없는지 확인한다 - Lotto#validateDuplicateNumber()
 - V 입력을 위한 문구를 출력한다. - InputView
-  - V [x] 구입할 금액을 입력해주세요. - InputView#printHowMuch()
-  - V [x] 당첨 번호를 입력해 주세요. - InputView#printInputWinNumber()
-  - V [x] 보너스 번호를 입력해 주세요. - InputView#printInputBonusNumber()
+  - [x] V 구입할 금액을 입력해주세요. - InputView#printHowMuch()
+  - [x] V 당첨 번호를 입력해 주세요. - InputView#printInputWinNumber()
+  - [x] V 보너스 번호를 입력해 주세요. - InputView#printInputBonusNumber()
 - V 출력을 위한 문구를 출력한다. - OutputView
-  - V [x] %d개를 구매했 습니다. - OutputView#printPurchaseAmount()
-  - V [x] 구매한 로또 번호 출력 - OutputView#printPurchaseLottoNumber()
-  - V [x] 당첨 통계 출력 - OutputView#printPrize()
-  - V [x] 수익률 출력 - OutputView#printWinPersentage()
-  - V [x] enum 을 통해 데이터를 가지고 올 수 있도록 변환해준다 - OutputView#getLottoPrizeMoney()
+  - [x] V %d개를 구매했 습니다. - OutputView#printPurchaseAmount()
+  - [x] V 구매한 로또 번호 출력 - OutputView#printPurchaseLottoNumber()
+  - [x] V 당첨 통계 출력 - OutputView#printPrize()
+  - [x] V 수익률 출력 - OutputView#printWinPersentage()
+  - [x] V enum 을 통해 데이터를 가지고 올 수 있도록 변환해준다 - OutputView#getLottoPrizeMoney()
 - C M,V 를 활용해 데이터의 흐름 조절한다 - LottoController
-  - C [x] 구입 금액 입력 후 구매한 로또 번호 출력 - LottoController#buyLotto()
-  - C [x] 당첨, 보너스 번호 입력 후 당첨 통계, 수익률 출력 - LottoController#checkLottoResult()
-- **[x] Application 에서 최종 수행하기 - Application#main()**
+  - [x] C 구입 금액 입력 후 구매of 한 로또 번호 출력 - LottoController#buyLotto()
+  - [x] C 당첨, 보너스 번호 입력 후 당첨 통계, 수익률 출력 - LottoController#checkLottoResult()
+- [x] **Application 에서 최종 수행하기 - Application#main()**
 
 
 ## 기능 요구 사항
@@ -60,3 +60,15 @@
 4. 보너스 번호 입력받기
 5. 로또 번호와 당첨 번호, 보너스 번호 비교해 당첨 등수 산정 후 출력하기
 6. 당첨 금액 계산해 수익률 체크 후 출력하기 (수익률은 소수점 둘째자리에서 반올림)
+
+## 개선 필요 사항
+- [ ] **Lotto 클래스의 인스턴스 변수 삭제**
+  - [ ] prize 를 Lotto 클래스에 담지 말고, LottoData 클래스에 담기
+  - [ ] prizeMoney 를 Lotto 클래스에 담지 말고, LottoData 클래스에 누적시키기
+- [ ] error 검사 전용 클래스 생성
+- [ ] OutputView#getLottoPrizeMoney() 함수 클래스 이동
+- [ ] LottoInput 클래스 에 저장되는 데이터를 LottoData 클래스로 옮기기
+- [ ] enum 사용을 위한 LottoCalculate#calculatePrize() 메서드 간소화하기
+- [ ] LottoData#countPrize() 함수에서 map 초기값 입력 간소화 혹은 map 말고 다른 자료형 사용하기
+- [ ] OutputView#printPercentageOfReturn() 에서 퍼센트 값이 클 때 E사용 안하고 출력하기
+
