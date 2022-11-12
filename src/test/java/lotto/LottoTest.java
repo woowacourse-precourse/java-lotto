@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.lotto.Lotto;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -8,6 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -33,5 +35,18 @@ class LottoTest {
     void createLottoByOutOfRange(final int number) {
         assertThatThrownBy(() -> new Lotto(List.of(1, 45, number, 4, 5, 6)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("toString의 형식은 [1, 2, 3, 4, 5, 6] 이다.")
+    @Test
+    void toStringTest() {
+        // given
+        Lotto lotto = new Lotto(List.of(1, 24, 21, 12, 5, 6));
+
+        // when
+        String string = lotto.toString();
+
+        // then
+        assertThat(string).isEqualTo("[1, 24, 21, 12, 5, 6]");
     }
 }
