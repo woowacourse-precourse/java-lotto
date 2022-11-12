@@ -1,11 +1,13 @@
 package lotto;
 
+import java.util.LinkedList;
 import java.util.List;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Lotto {
     private final List<Integer> numbers;
+    private int bonus;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -31,6 +33,14 @@ public class Lotto {
         }
     }
     //4. 당첨 번호와 보너스 번호를 입력받는 함수
+    public void setWinAndBonusNumber(String[] winNumber, int bonusNumber){
+        List<Integer> winAndBonus = new LinkedList<>();
+        for(String value : winNumber) {
+            winAndBonus.add(Integer.parseInt(value));
+        }
+        new Lotto(winAndBonus);
+        this.bonus = bonusNumber;
+    }
     //5. 발행한 로또 번호를 정렬 하는 함수 (오름차순)
     //6. 당첨 내역을 출력하는 함수
     //7. 수익률을 계산하는 함수 (소수 두째자리에서 반올림)
