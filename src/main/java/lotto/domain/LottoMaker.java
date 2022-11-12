@@ -18,7 +18,7 @@ public class LottoMaker {
     }
 
     private static void validate(int price) {
-        if (price % ONE_LOTTO_PRICE != 0)
+        if (price % ONE_LOTTO_PRICE != 0 || price < 1000)
             throw new IllegalArgumentException("로또는 1000원 단위로 구매할 수 있습니다.");
     }
 }
