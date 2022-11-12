@@ -12,6 +12,9 @@ public class Checker extends LottoKiosk {
     }
 
     public static int drawFirstPrize(List<Integer> buyerNumbers, List<Integer> winningNumbers) {
+        if (buyerNumbers.equals(winningNumbers)) {
+            return 1;
+        }
         return 0;
     }
 
