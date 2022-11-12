@@ -13,6 +13,13 @@ public class Organizer {
 
     public Organizer() {
     }
+    public List<Integer> getWinningNumbers() {
+        return this.winningNumbers;
+    }
+
+    public int getBonusNumber() {
+        return this.bonusNumber;
+    }
 
     public void setWinningNumbersFromInput() {
         String winningNumberInput = Input.getInputWithMessage(GameMessage.ASK_FOR_WINNING_NUMBERS.getMessage());

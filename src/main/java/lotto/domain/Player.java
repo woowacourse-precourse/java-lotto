@@ -18,6 +18,10 @@ public class Player {
         this.prizeMoney = 0;
     }
 
+    private void addToPrizeMoney(long amount){
+        this.prizeMoney += amount;
+    }
+
     private void validate(long money) {
         ExceptionHandler.isMultipleOf(money, LottoStatistic.LOTTO_PRICE.getValue());
     }
@@ -34,19 +38,24 @@ public class Player {
         }
     }
 
-    /*public void checkResult(Organizer organizer) {
+    public void checkResult(Organizer organizer) {
         List<Integer> winningNumbers = organizer.getWinningNumbers();
         int bonusNumber = organizer.getBonusNumber();
         for (Lotto lotto : lottoTickets) {
             int matchingCount = compareWinningNumbers(lotto, winningNumbers);
-
+            boolean doesBonusMatch = false;
+            if (matchingCount == LottoStatistic.NUMBER_OF_LOTTERY_NUMBERS.getValue() - 1) {
+                doesBonusMatch = lotto.doesContainNumber(bonusNumber);
+            }
+            long prizeAmount = PrizeStatistic.getPrizeAmount(matchingCount, doesBonusMatch);
+            addToPrizeMoney(prizeAmount);
         }
-    }*/
+    }
 
     public int compareWinningNumbers(Lotto lotto, List<Integer> winningNumbers) {
         int count = 0;
         for (int number : winningNumbers) {
-            if (lotto.doesContainNumber(number)){
+            if (lotto.doesContainNumber(number)) {
                 count++;
             }
         }
