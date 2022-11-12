@@ -15,7 +15,7 @@ public class Application {
         FIVEANDBONUS(30000000),
         SIX(2000000000);
 
-        private final int grade;
+        public final int grade;
 
         Grade(int grade) {
             this.grade = grade;
@@ -125,9 +125,20 @@ public class Application {
     private static void calculateEarningRate(){
         int totalEarningMoney = 0;
         for(Grade grade : lottoStatistics.keySet()){
-            totalEarningMoney+=grade.ordinal()*lottoStatistics.get(grade);
+            totalEarningMoney+=grade.grade*lottoStatistics.get(grade);
         }
-        earningRate = (userLottoNum.size()*1000/totalEarningMoney)*100;
+        earningRate = ((double) totalEarningMoney/(userLottoNum.size()*1000))*100;
+    }
+
+    // 당첨 통계/수익률 출력
+    private static void printStatisticsAndEarningRate(){
+        System.out.println("당첨 통계\n---");
+        System.out.println("3개 일치 (5,000원) - "+lottoStatistics.getOrDefault(Grade.THREE,0)+"개");
+        System.out.println("4개 일치 (50,000원) - "+lottoStatistics.getOrDefault(Grade.FOUR,0)+"개");
+        System.out.println("5개 일치 (1,500,000원) - "+lottoStatistics.getOrDefault(Grade.FIVE,0)+"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+lottoStatistics.getOrDefault(Grade.FIVEANDBONUS,0)+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - "+lottoStatistics.getOrDefault(Grade.SIX,0)+"개");
+        System.out.println("총 수익률은 "+earningRate+"%입니다.");
     }
 
     public static void main(String[] args) {
@@ -151,5 +162,8 @@ public class Application {
 
         // 수익률 계산
         calculateEarningRate();
+
+        // 당첨 통계/수익률 출력
+        printStatisticsAndEarningRate();
     }
 }

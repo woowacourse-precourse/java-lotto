@@ -3,13 +3,14 @@ package lotto;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        this.numbers = numbers;
+    public Lotto(List<Integer> inputNumbers) {
+        validate(inputNumbers);
+        this.numbers=inputNumbers.stream().collect(Collectors.toList());
         sortNumberASC();
     }
 
