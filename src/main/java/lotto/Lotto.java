@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-
 import camp.nextstep.edu.missionutils.Console;
 
 public class Lotto {
@@ -50,18 +49,19 @@ public class Lotto {
         return bonusNum;
     }
 
-    public List<Integer> compareList() {
-        BuyLotto buy = new BuyLotto();
-        List<List<Integer>> userLottoNumber = buy.lottoNumberMaker();
-        List<Integer> winLottoNumber = this.numbers;
+    public List<Integer> compareList(List<List<Integer>> userLottoNumber, List<Integer> winLottoNumber) {
+        System.out.println();
+        int bonusNumber = bonus();
         List<Integer> sameCount = new ArrayList<>();
-        System.out.println("당첨 번호: " + winLottoNumber);
         for(int i=0; i<userLottoNumber.size(); i++) {
             List<Integer> result = userLottoNumber.get(i).stream()
                     .filter(old -> winLottoNumber.stream()
                             .anyMatch(Predicate.isEqual(old)))
                     .collect(Collectors.toList());
             sameCount.add(result.size());
+            if(result.size() == 5 && userLottoNumber.get(i).contains(bonusNumber) == true) {
+                sameCount.add(10);
+            }
         }
         return sameCount;
     }
