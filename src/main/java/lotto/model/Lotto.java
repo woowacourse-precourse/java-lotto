@@ -16,10 +16,7 @@ public class Lotto {
 
     public Lotto(String userInput) {
         validate(userInput);
-        List<Integer> numbers = Arrays.stream(userInput.split(","))
-                .mapToInt(Integer::parseInt)
-                .boxed()
-                .collect(Collectors.toList());
+        List<Integer> numbers = toList(userInput);
 
         hasDuplicateNumber(numbers);
         this.numbers=numbers;
@@ -35,6 +32,13 @@ public class Lotto {
         isBlank(userInput);
         canSplit(userInput);
         isConsistWithProperRange(userInput);
+    }
+    
+    private List<Integer> toList(String userInput) {
+        return Arrays.stream(userInput.split(","))
+                .mapToInt(Integer::parseInt)
+                .boxed()
+                .collect(Collectors.toList());
     }
 
     private void isValidSize(List<Integer> numbers) {
