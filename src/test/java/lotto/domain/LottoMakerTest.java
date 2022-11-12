@@ -10,6 +10,9 @@ class LottoMakerTest {
         assertThrows(IllegalArgumentException.class, () -> {
             LottoMaker.makeLotto(1101);
         });
+        assertThrows(IllegalArgumentException.class, () -> {
+            LottoMaker.makeLotto(0);
+        });
     }
 
     @Test
