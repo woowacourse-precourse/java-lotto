@@ -8,4 +8,10 @@ public class UserInput {
         String budget = Console.readLine();
         System.out.println();
     }
+
+    private void hasOnlyNumber(String input) {
+        if (!input.matches("[0-9]+")) {
+            throw new IllegalArgumentException("숫자만 입력해주세요.");
+        }
+    }
 }
