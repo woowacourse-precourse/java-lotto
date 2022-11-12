@@ -1,7 +1,13 @@
-# 미션 - 로또
+<p align="center">
+    <img src="./mainbanner.png" alt="메인배너" width="60%">
+</p>
+
+# 프리코스 3주차 미션 - 로또
+![Generic badge](https://img.shields.io/badge/language-java-green.svg)
+> 가상으로 해보는 로또! 로또! 로또!🤑
+<br>
 
 ## 기능 목록
-
 - ✅구입 금액을 입력값으로 받기
 - ✅구입 금액 저장
   - ✅구입 금액이 숫자가 아니면 예외 발생 및 에러 메시지 출력 후 종료
