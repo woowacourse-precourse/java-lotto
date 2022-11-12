@@ -61,3 +61,9 @@ public class PlayLotto extends Input {
         out.bonus_lottery_number();
         this.bonus = returnInt();
     }
+
+    public void compare_lottery(){
+        for(List<Integer> user_lottery : user.return_lottery_nums()){ //사용자 번호와 당첨 번호 비교
+            equal_count(lotto.returnNumbers(), user_lottery);
+        }
+    }
