@@ -27,6 +27,17 @@ public class Result {
         return profit;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder resultStatics = new StringBuilder();
+
+        for (Rank rank : Rank.values()) {
+            resultStatics.append(rank.getDescription()+" - "+result.get(rank)+"개\n");
+        }
+
+        return resultStatics.toString();
+    }
+
     private void initResult() {
         for (Rank rank : Rank.values()) {
             result.put(rank, 0);

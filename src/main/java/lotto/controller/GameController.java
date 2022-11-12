@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.model.Result;
 import lotto.service.GameService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -16,6 +17,7 @@ public class GameController {
             createMoney();
             generateLottosByMoney();
             createWinningInformation();
+            calculateResult();
         } catch (Exception e) {
             OutputView.announceError(e.getMessage());
         }
@@ -45,6 +47,13 @@ public class GameController {
     private void createBonusBall() {
         OutputView.announceBonusBallInputNotice();
         gameService.createBonusBall(InputView.getUserInput());
+    }
+
+    private void calculateResult() {
+        Result result = gameService.calculateResult();
+        String profitRate = gameService.calculateProfitRate();
+
+        OutputView.announceResult(result, profitRate);
     }
 
 

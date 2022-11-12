@@ -4,6 +4,7 @@ import lotto.model.BonusBall;
 import lotto.model.LottoFactory;
 import lotto.model.Lottos;
 import lotto.model.Money;
+import lotto.model.Result;
 import lotto.model.WinningManager;
 
 public class GameService {
@@ -11,6 +12,7 @@ public class GameService {
     private Lottos userLottos;
     private LottoFactory lottoFactory;
     private WinningManager winningManager;
+    private Result result;
 
     public GameService() {
         this.lottoFactory = new LottoFactory();
@@ -33,4 +35,11 @@ public class GameService {
         this.winningManager.initBonusBall(BonusBall.from(userInput));
     }
 
+    public Result calculateResult() {
+        return this.result = Result.of(winningManager.resultBy(userLottos));
+    }
+
+    public String calculateProfitRate() {
+        return this.userMoney.calculateProfitRate(result);
+    }
 }
