@@ -16,6 +16,11 @@ public class Manager {
         purchasedLottos = new ArrayList<>();
     }
 
+    /**
+     * Receives input of purchase amount
+     * @return number of lotto tickets
+     * @throws IllegalArgumentException if invalid user input
+     */
     private int purchase() throws IllegalArgumentException {
         System.out.println("구입 금액을 입력해주세요.");
         String amountInput = Console.readLine().trim();
@@ -23,6 +28,11 @@ public class Manager {
         return Integer.parseInt(amountInput) / 1000;
     }
 
+    /**
+     * Validates user input of purchasing amount
+     * @param amountInput user input of purchasing amount
+     * @throws IllegalArgumentException if input is not divisible by 1000 or not a number
+     */
     public void validateAmountInput(String amountInput) throws IllegalArgumentException {
 
         int amount;
@@ -38,22 +48,40 @@ public class Manager {
         }
     }
 
+    /**
+     * Generate a single lotto ticket containing numbers
+     * @param min min number of range
+     * @param max max number of range
+     * @param numCount number of digits to generate
+     * @return Sorted list containing 6 number
+     */
     private List<Integer> generateLottoNumber(int min, int max, int numCount) {
         List<Integer> lotto = Randoms.pickUniqueNumbersInRange(min, max, numCount);
         lotto.sort(Comparator.naturalOrder());
         return lotto;
     }
 
+    /**
+     * Save all lists of lottos
+     * @param lottoCount number of lottos purchased
+     */
     public void setPurchasedLottos(int lottoCount) {
         for (int i = 0; i < lottoCount; i++) {
             purchasedLottos.add(generateLottoNumber(MIN_NUM, MAX_NUM, TOTAL_NUM));
         }
     }
 
+    /**
+     * Returns List of purchased lottos
+     * @return purchased lottos
+     */
     public List<List<Integer>> getPurchasedLottos() {
         return purchasedLottos;
     }
 
+    /**
+     * Print all purchased lottos
+     */
     private void showPurchasedLottos() {
         System.out.println(purchasedLottos.size() + "개를 구매했습니다.");
         for (List<Integer> lotto : purchasedLottos) {
@@ -61,6 +89,9 @@ public class Manager {
         }
     }
 
+    /**
+     * Initiate purchase process
+     */
     public void start() {
         int lottoCount;
         try {
