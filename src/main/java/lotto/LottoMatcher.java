@@ -15,29 +15,22 @@ public class LottoMatcher {
             FOURTH_FOUR_MATCHED, 50_000,
             FIFTH_THREE_MATCHED, 5_000);
 
-    private List<Lotto> publishedLottos;
-    private WinningLotto winningLotto;
     private List<Rank> results;
 
-    public LottoMatcher(List<Lotto> publishedLottos, WinningLotto winningLotto) {
-        this.publishedLottos = publishedLottos;
-        this.winningLotto = winningLotto;
+    public void matchAllLottos(List<Lotto> publishedLottos, WinningLotto winningLotto) {
         results = new ArrayList<>();
-    }
-
-    public void matchAllLottos() {
         for (Lotto publishedLotto : publishedLottos) {
-            matchLotto(publishedLotto);
+            matchLotto(publishedLotto, winningLotto);
         }
     }
 
-    private void matchLotto(Lotto lotto) {
-        int countOfMatchedNumbers = countWinningLottoNumbers(lotto.getNumbers());
-        boolean bonusNumberIsMatched = checkIfBonusNumberMatch(lotto.getNumbers());
+    private void matchLotto(Lotto lotto, WinningLotto winningLotto) {
+        int countOfMatchedNumbers = countWinningLottoNumbers(lotto.getNumbers(), winningLotto);
+        boolean bonusNumberIsMatched = checkIfBonusNumberMatch(lotto.getNumbers(), winningLotto);
         saveResult(countOfMatchedNumbers, bonusNumberIsMatched);
     }
 
-    private int countWinningLottoNumbers(List<Integer> lottoNumbers) {
+    private int countWinningLottoNumbers(List<Integer> lottoNumbers, WinningLotto winningLotto) {
         int countOfMatchedNumbers = 0;
         List<Integer> winningNumbers = winningLotto.getWinningNumbers();
         for (Integer winningNumber : winningNumbers) {
@@ -46,7 +39,7 @@ public class LottoMatcher {
         return countOfMatchedNumbers;
     }
 
-    private boolean checkIfBonusNumberMatch(List<Integer> lottoNumbers) {
+    private boolean checkIfBonusNumberMatch(List<Integer> lottoNumbers, WinningLotto winningLotto) {
         return lottoNumbers.contains(winningLotto.getBonusNumber());
     }
 
