@@ -10,9 +10,11 @@ import java.util.List;
 public class Application {
     public static List<Integer> lotto_answer = new ArrayList<>();
     public static int lotto_bonus = 0;
-    public static int purchase_price = 0;
+    public static int purchase_price = 0, sum_of_prize = 0;
     public static int lotto_amount = 0;
     public static List<List<Integer>> lotto_list = new ArrayList<>();
+    public static int first = 0, second = 0, third = 0, fourth = 0, fifth = 0;
+
 
     public static void main(String[] args) {
         lotto_list.clear();
@@ -38,6 +40,7 @@ public class Application {
             Collections.sort(numbers);
             lotto_list.add(numbers);
         }
+        System.out.println("로또답 = " +lotto_list);
         getLottoAnswer();
 
     }
@@ -45,50 +48,58 @@ public class Application {
     public static void getLottoAnswer() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String read_answer = Console.readLine();
-
-        String[] split_answer = read_answer.split(",");
-        if (!checkValidLottoLength(split_answer)) {
-            System.out.println("로또답오류");
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자를 입력해주시기 바랍니다.");
+        List<String> temp = List.of(read_answer.split(","));
+        for(String a : temp){
+            lotto_answer.add(Integer.parseInt(a));
         }
-        for (String s : split_answer) {
-            int int_each_answer = Integer.parseInt(s);
-            if (!checkValidLottoRange(int_each_answer)) {
-                System.out.println("로또답오류");
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45사이의 숫자여야 합니다.");
-            }
-            if (lotto_answer.contains(int_each_answer)) {
-                System.out.println("로또답오류");
-                throw new IllegalArgumentException("[ERROR] 잘못된 값이 입력되었습니다.");
-            }
-
-            lotto_answer.add(int_each_answer);
-        }
-        getLottoAnswerBonus();
+        Lotto answer = new Lotto(lotto_answer);
+        lotto_bonus = answer.getLottoAnswerBonus();
+        compareLotto(lotto_list,lotto_answer,lotto_bonus);
     }
 
-    private static Boolean checkValidLottoLength(String[] split_answer) {
-        return split_answer.length == 6;
-    }
-
-    private static Boolean checkValidLottoRange(int number) {
-        return number >= 1 && number <= 45;
-    }
-
-    public static void getLottoAnswerBonus() {
-        System.out.println("보너스 번호를 입력해 주세요.");
-        lotto_bonus = Integer.parseInt(Console.readLine());
-        if (!checkValidLottoRange(lotto_bonus)) {
-            System.out.println("로또보너스오류");
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45사이의 숫자여야 합니다.");
-        }
-        compareLotto(lotto_list, lotto_answer, lotto_bonus);
-    }
 
     public static void compareLotto(List<List<Integer>> lotto_list, List<Integer> lotto_answer, Integer bonus_number) {
-        System.out.println(lotto_list);
-        System.out.println(lotto_answer);
-        System.out.println(bonus_number);
+//        System.out.println(lotto_list);
+//        System.out.println(lotto_answer);
+//        System.out.println(bonus_number);
+
+        for(List<Integer> temp_user_lotto : lotto_list){
+            List<Integer> temp_lotto_answer = new ArrayList<>(lotto_answer);
+            String asdf = comparePrize(temp_user_lotto,temp_lotto_answer,bonus_number);
+            Prize prize = Prize.valueOf(asdf);
+            sum_of_prize += prize.getWinLotteryPrize();
+            prize.addWinLotteryCount();
+        }
+
+        System.out.println("당첨통계");
+
+        System.out.println(Prize.first.getWinLotteryCount());
+        System.out.println(Prize.second.getWinLotteryCount());
+        System.out.println(Prize.third.getWinLotteryCount());
+        System.out.println(Prize.fourth.getWinLotteryCount());
+        System.out.println(Prize.fifth.getWinLotteryCount());
+
+    }
+
+    public static String comparePrize(List<Integer> user_lotto, List<Integer> temp_answer, Integer user_bonus){
+        temp_answer.removeAll(user_lotto);
+        if(temp_answer.size() == 0) {
+            return "first";
+        }
+        if(temp_answer.size() == 1 && user_lotto.contains(user_bonus)) {
+            return "second";
+        }
+        if(temp_answer.size() == 1) {
+            return "third";
+        }
+        if(temp_answer.size() == 2) {
+            return "fourth";
+        }
+        if(temp_answer.size() == 3) {
+            return "fifth";
+        }
+        return "nocount";
     }
 
 }
+
