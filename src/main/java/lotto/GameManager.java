@@ -16,9 +16,15 @@ public class GameManager {
     public void run() {
         int lottoPrice = input.getUserMoney();
         int numberOfPurchase = changeNumberOfLottoToBuy(lottoPrice);
+        purchaseLotto(numberOfPurchase);
+        wallet.printWallet();
     }
 
     public int changeNumberOfLottoToBuy(int lottoPrice) {
         return lottoPrice / Constant.LOTTO_PRICE;
+    }
+
+    public void purchaseLotto(int numberOfPurchase) {
+        wallet = new Wallet(numberOfPurchase);
     }
 }
