@@ -48,8 +48,8 @@ public class Lotto {
         }
     }
 
-    public int check_rank(List<Integer> lotto_nums){
-        int check = 0;
+    public float check_rank(List<Integer> lotto_nums){
+        float check = 0;
         int num;
         List<Integer> numbers = this.numbers;
         for(int i=0;i<lotto_nums.size();i++){
@@ -59,6 +59,10 @@ public class Lotto {
             }
         }
         return check;
+    }
+    public boolean check_bouns(int bonus){
+        if(numbers.contains(bonus)) return true;
+        return false;
     }
 
 }
