@@ -1,5 +1,7 @@
 package lotto;
 
+import config.ErrorConstants;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,11 +36,11 @@ public class LottoRound {
 
     private void validateBonusNumber() {
         if (bonusNumber < 0 || bonusNumber > 45) {
-            throw new IllegalArgumentException(LottoRankingErrorMessages.INVALID_BONUS_NUMBER_RANGE.message);
+            throw new IllegalArgumentException(ErrorConstants.INVALID_BONUS_NUMBER_RANGE);
         }
 
         if (luckyNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(LottoRankingErrorMessages.BONUS_NUMBER_DUPLICATED.message);
+            throw new IllegalArgumentException(ErrorConstants.BONUS_NUMBER_DUPLICATED);
         }
     }
     
@@ -59,17 +61,6 @@ public class LottoRound {
             }
         }
         return false;
-    }
-
-    enum LottoRankingErrorMessages {
-        INVALID_BONUS_NUMBER_RANGE("보너스 숫자는 1 ~ 45 범위여야 합니다."),
-        BONUS_NUMBER_DUPLICATED("보너스 숫자와 중복되는 당첨번호가 존재합니다.");
-
-        private final String message;
-
-        LottoRankingErrorMessages(String message) {
-            this.message = message;
-        }
     }
 
 }
