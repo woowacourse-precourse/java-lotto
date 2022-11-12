@@ -13,6 +13,14 @@ public class RandomLottoGenerator {
     public RandomLottoGenerator() {
     }
 
+    public List<Integer> makeRandomLotto() {
+        this.numbers
+                = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        validate(numbers);
+        Collections.sort(numbers);
+        return numbers;
+    }
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(String.format("[ERROR] 로또 번호 숫자가 6개가 아닙니다."));
