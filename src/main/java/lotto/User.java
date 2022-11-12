@@ -6,14 +6,12 @@ import java.util.List;
 public class User {
     private final int purchaseMoney;
     private final int incomeMoney;
-    private final List<Lotto> lottoList;
     private final HashMap<LottoRank, Integer> winResult;
 
     public User(int purchaseMoney, List<Lotto> lottoList, WinLotto winLotto) {
         validatePurchaseMoney(purchaseMoney);
         this.purchaseMoney = purchaseMoney;
         this.incomeMoney = getIncomeMoney(lottoList, winLotto);
-        this.lottoList = lottoList;
         this.winResult = getWinResult(lottoList, winLotto);
     }
 
