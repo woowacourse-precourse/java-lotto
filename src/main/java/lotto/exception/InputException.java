@@ -6,7 +6,7 @@ public class InputException {
     private static final String ERROR_FORM = "[ERROR] ";
     private static final String NOT_NUMBER = "숫자가 아닙니다.";
     private static final String NOT_SPLIT = "1000원으로 나누어 떨어지지 않습니다.";
-    private static final String LESS = "1000원 이하입니다.";
+    private static final String UNDER = "1000원 미만입니다.";
     private static final String NUMBER_REGEX = "^[0-9]*$";
 
     private InputException() {}
@@ -14,7 +14,7 @@ public class InputException {
     public static void validatesLottoAmount(String amount) {
         validateNumber(amount);
         validateSplit(amount);
-        validateLess(amount);
+        validateUnder(amount);
     }
 
     private static void validateNumber(String number) {
@@ -29,9 +29,9 @@ public class InputException {
         }
     }
 
-    private static void validateLess(String number) {
-        if(Integer.parseInt(number) <= 1000) {
-            exception(LESS);
+    private static void validateUnder(String number) {
+        if(Integer.parseInt(number) < 1000) {
+            exception(UNDER);
         }
     }
 
