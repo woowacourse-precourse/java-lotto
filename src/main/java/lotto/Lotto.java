@@ -39,4 +39,8 @@ public class Lotto {
 
         return TWO_LOTTERIES - uniqueNumbers.size();
     }
+
+    public boolean hasBonusNumber(int bonusNumber) {
+        return this.numbers.contains(bonusNumber);
+    }
 }
