@@ -24,11 +24,44 @@ class NumericConverterTest {
         assertThat(result).isEqualTo(number);
     }
 
-    @DisplayName("문자열이 숫자로 변환할 수 없으면 예외가 발생한다.")
+    @DisplayName("영문자는 숫자로 변환할 수 없으므로 예외가 발생한다.")
     @Test
-    void convertFail() {
+    void convertFailByEnglish() {
         //given
         String target = "12a";
+
+        //then
+        assertThatThrownBy(() -> converter.convert(target)).isInstanceOf(
+            IllegalArgumentException.class);
+    }
+
+    @DisplayName("한글은 숫자로 변환할 수 없으므로 예외가 발생한다.")
+    @Test
+    void convertFailByKorean() {
+        //given
+        String target = "12가";
+
+        //then
+        assertThatThrownBy(() -> converter.convert(target)).isInstanceOf(
+            IllegalArgumentException.class);
+    }
+
+    @DisplayName("특수 기호는 숫자로 변환할 수 없으므로 예외가 발생한다.")
+    @Test
+    void convertFailBySymbol() {
+        //given
+        String target = "12@";
+
+        //then
+        assertThatThrownBy(() -> converter.convert(target)).isInstanceOf(
+            IllegalArgumentException.class);
+    }
+
+    @DisplayName("공백은 숫자로 변환할 수 없으므로 예외가 발생한다.")
+    @Test
+    void convertFailByBlank() {
+        //given
+        String target = "12 ";
 
         //then
         assertThatThrownBy(() -> converter.convert(target)).isInstanceOf(
