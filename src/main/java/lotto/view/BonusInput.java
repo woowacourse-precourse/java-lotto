@@ -14,6 +14,7 @@ public class BonusInput {
         System.out.println(Message.BONUS_NUMBER_INPUT.getMessage());
         bonusInput = readLine();
         validateInputBonusNumber(bonusInput);
+        System.out.println();
     }
 
     public static void getBonusResult(List<List<Integer>> lottos) {
