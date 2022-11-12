@@ -31,7 +31,17 @@ public class UserInput {
             throw new IllegalArgumentException();
         }
 
-        return new Lotto(stringListToIntegerList(inputLottoWinNumber));
+        if (inputLottoWinNumber.size() != inputLottoWinNumber.stream().distinct().count()) {
+            throw new IllegalArgumentException();
+        }
+
+        final List<Integer> lottoWinNumber = stringListToIntegerList(inputLottoWinNumber);
+
+        if (!lottoWinNumber.stream().allMatch(n -> (n >= 1 && n <= 45))) {
+            throw new IllegalArgumentException();
+        }
+
+        return new Lotto(lottoWinNumber);
     }
 
     private static String getInput() {
