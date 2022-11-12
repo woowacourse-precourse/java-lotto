@@ -281,11 +281,11 @@ public class Application {
         return Math.round(surplusRate * 10) / 10.0;
     }
 
-    public static Integer compareLottoNumbersAndWinningNumbers(Lotto lotto, List<Integer> winningNumberList, int equalNum) {
+    public static Integer compareLottoNumbersAndWinningNumbers(Lotto lotto, List<Integer> winningNumbers, int equalNum) {
 
         int number = 0;
 
-        for (int winningNumber : winningNumberList) {
+        for (int winningNumber : winningNumbers) {
 
             if (lotto.checkWinningNumberIsInLottoNumbers(winningNumber)) {
 
