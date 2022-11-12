@@ -2,8 +2,13 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
+import lotto.domain.Rank;
+import lotto.domain.Result;
 
 public class GameConsole {
 
@@ -40,6 +45,23 @@ public class GameConsole {
         System.out.println(String.format("%d개를 구매했습니다.", lottoCount));
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
+        }
+    }
+
+    public void outputGameResult(Result result) {
+        Map<Rank, Integer> rankInfo = result.getRankInfo();
+        rankInfo.remove(Rank.NONE);
+        System.out.println("당첨 통계\n---");
+        List<Entry<Rank, Integer>> entries = rankInfo.entrySet()
+                .stream()
+                .sorted(Comparator.comparingInt(r -> r.getKey().getMatchCount()))
+                .collect(Collectors.toList());
+
+        for (Entry<Rank, Integer> entry : entries) {
+            System.out.println(String.format("%d개 일치 (%,d원) - %d개", entry.getKey().getMatchCount(), entry.getKey().getPrize(), rankInfo.get(entry.getKey())));
+            if (entry.getKey() == Rank.SECOND){
+                System.out.println(String.format("%d개 일치, 보너스 볼 일치 (%,d원) - %d개", entry.getKey().getMatchCount(), entry.getKey().getPrize(), rankInfo.get(entry.getKey())));
+            }
         }
     }
 
