@@ -14,7 +14,7 @@ public class Game {
     public void buyLotto() {
         LottoSeller lottoPurchase = new LottoSeller();
         lottoPurchase.getPayAmount();
-        lottoPurchase.countTicket(lottoPurchase.payAmount);
+        lottoPurchase.countTicket();
 
         NumberGenerator newNumbers = new NumberGenerator(lottoPurchase.numberOfTickets);
         newNumbers.generateNumbers();
