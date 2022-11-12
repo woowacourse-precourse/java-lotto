@@ -24,4 +24,15 @@ public class Game {
     private List<Integer> getRandomLottoNumbers() {
         return Randoms.pickUniqueNumbersInRange(Constant.NUMBER_START, Constant.NUMBER_END, Constant.LOTTO_SIZE);
     }
+
+    private Map<LottoWinType, Integer> initLottoWinTypeMap() {
+        Map<LottoWinType, Integer> map = new HashMap<>();
+        map.put(LottoWinType.FIRST_PLACE, 0);
+        map.put(LottoWinType.SECOND_PLACE, 0);
+        map.put(LottoWinType.THIRD_PLACE, 0);
+        map.put(LottoWinType.FOURTH_PLACE, 0);
+        map.put(LottoWinType.FIFTH_PLACE, 0);
+        map.put(LottoWinType.ELSE, 0);
+        return map;
+    }
 }
