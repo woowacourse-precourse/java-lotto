@@ -3,7 +3,8 @@ package lotto;
 
 import static lotto.Constant.ErrorMessage.WRONG_MONEY_UNIT;
 import static lotto.Constant.LottoValue.LOTTO_PRICE;
-import static lotto.Printer.*;
+import static lotto.Printer.printLottos;
+import static lotto.Printer.printWinnings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +12,8 @@ import java.util.List;
 
 
 public class Buyer {
-    private List<Lotto> lottos;
-    private List<Rank> ranks;
+    private final List<Lotto> lottos;
+    private final List<Rank> ranks;
     private int lottoNum;
     private int money;
     private int earn;
@@ -23,8 +24,9 @@ public class Buyer {
 
         this.money = money;
         this.lottoNum = money / LOTTO_PRICE;
+        this.lottos = new ArrayList<>(this.lottoNum);
         buyLottos();
-        this.ranks = new ArrayList<>();
+        this.ranks = new ArrayList<>(this.lottoNum);
         this.earn = 0;
     }
 
@@ -37,8 +39,6 @@ public class Buyer {
     }
 
     private void buyLottos() {
-        this.lottos = new ArrayList<Lotto>();
-
         for (int i = 0; i < this.lottoNum; i++) {
             final Lotto lotto = Lotto.generate();
 
