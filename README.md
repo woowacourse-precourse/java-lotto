@@ -1,3 +1,7 @@
+#
+- 금액 입력값 validation
+- Money getNumberOfLottoGame 메서드 검증
+
 # 로또 게임 기능 요구 사항 명세
 
 - 로또 번호의 숫자 범위는 1~45까지이다.

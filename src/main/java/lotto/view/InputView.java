@@ -10,9 +10,14 @@ public class InputView {
     private static final String INPUT_WINNING_NUM = "당첨 번호를 입력해 주세요.";
     private static final String INPUT_BONUS_NUM = "보너스 번호를 입력해 주세요.";
 
-    private int inputAmount() {
+    public int getInputAmount() {
         System.out.println(INPUT_PURCHASE_AMOUNT);
-        return parseInt(Console.readLine());
+        int inputAmount = parseInt(Console.readLine());
+        return validationInputAmount(inputAmount);
+    }
+
+    private int validationInputAmount(int inputAmount) {
+        return inputAmount;
     }
 
     private String inputWinningNum() {
