@@ -202,6 +202,66 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    @DisplayName("보너스 번호 검증 테스트 - 공백일 때 에러")
+    void getBonusNumber_1() {
+        // given
+        String string = "";
+
+        // when
+
+        // then
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5,6", string);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    @DisplayName("보너스 번호 검증 테스트 - 수 형식이 아닐 때 에러")
+    void getBonusNumber_2() {
+        // given
+        String string = "12c4";
+
+        // when
+
+        // then
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5,6", string);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    @DisplayName("보너스 번호 검증 테스트 - 범위를 벗어날 때 에러 1")
+    void getBonusNumber_3() {
+        // given
+        String string = "0";
+
+        // when
+
+        // then
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5,6", string);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    @DisplayName("보너스 번호 검증 테스트 - 범위를 벗어날 때 에러 2")
+    void getBonusNumber_4() {
+        // given
+        String string = "46";
+
+        // when
+
+        // then
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5,6", string);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
