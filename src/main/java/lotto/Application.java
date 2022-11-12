@@ -1,5 +1,7 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,5 +37,33 @@ public class Application {
         }
 
         return lottoTickets;
+    }
+
+    public static String inputWinnerNumber() {
+        String userInput = Console.readLine();
+        if (!userInput.contains(",")) {
+            throw new IllegalArgumentException(ErrorResponse.INPUT_WITHOUT_COMMA_ERROR.getErrorMessage());
+        }
+
+        return userInput;
+    }
+
+    public static String validateWinnerNumberSize(String userInput) {
+        String[] trimmedInput = userInput.split(",");
+
+        if (trimmedInput.length != 6) {
+            throw new IllegalArgumentException(ErrorResponse.INPUT_WRONG_SIZE_ERROR.getErrorMessage());
+        }
+
+        return userInput;
+    }
+
+    public static List<Integer> convertStringWinnerNumberIntoListWinnerNumber(String userInput) {
+        List<Integer> convertedNumber = new ArrayList<>();
+        for (int i = 0; i < userInput.length(); i++) {
+            convertedNumber.add(Integer.parseInt(String.valueOf(userInput.charAt(i))));
+        }
+
+        return convertedNumber;
     }
 }
