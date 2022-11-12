@@ -15,6 +15,10 @@ public class Lotto {
         return this.numbers;
     }
 
+    public void show() {
+        System.out.print(numbers);
+    }
+
     private void validate(List<Integer> numbers) {
         if (isNumberNullOrEmpty(numbers) || !hasSixNumbers(numbers)) {
             throw new IllegalArgumentException();
