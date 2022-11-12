@@ -19,5 +19,10 @@ public class RaffleNumberTest {
         List<Integer> raffleNumber = List.of(1,2,3,4,5,6,7);
         assertThatThrownBy(()->new RaffleNumber(raffleNumber)).isInstanceOf(IllegalArgumentException.class).hasMessageContaining(WRONG_QUANTITY_ERROR_MESSAGE);
     }
-
+    @Test
+    @DisplayName("추첨 번호 6개 중 중복이 발생한다면 에러를 출력한다.")
+    public void createDuplicatedRaffleNumberTest(){
+        List<Integer> raffleNumber = List.of(1,2,3,4,5,5);
+        assertThatThrownBy(()->new RaffleNumber(raffleNumber)).isInstanceOf(IllegalArgumentException.class).hasMessageContaining(DUPLICATE_ERROR_MESSAGE);
+    }
 }
