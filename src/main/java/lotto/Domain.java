@@ -63,7 +63,7 @@ public class Domain {
             sumWinnings += rankList.get(i) * getReward(i);
         }
 
-        return sumWinnings / numberOfLotto;
+        return sumWinnings / (numberOfLotto*1000);
     }
 
     public int getReward(int rank) {
