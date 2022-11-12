@@ -1,7 +1,6 @@
 package lotto.model;
 
 public class Buyer {
-
     private static final int AMOUNT_UNIT=1000;
     private static final String ENTER_WRONG_AMOUNT_MESSAGE="[ERROR] 금액의 최소 단위(1,000원)가 맞지 않습니다. 프로그램을 종료합니다.";
     private static final int PROPER_AMOUNT_CONDITION=0;
