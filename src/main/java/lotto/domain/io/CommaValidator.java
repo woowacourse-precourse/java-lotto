@@ -11,11 +11,13 @@ public class CommaValidator {
 
   public void validate(String input) {
     List<String> inputList = new ArrayList<>(Arrays.asList(input.split(",")));
+    List<Integer> digits;
     try {
-      inputList.stream().map(Integer::parseInt).collect(Collectors.toList());
-
+      digits = inputList.stream().map(Integer::parseInt).collect(Collectors.toList());
     } catch (NumberFormatException e) {
       throw new IllegalArgumentException(ExceptionMessage.INPUT_IS_NOT_SEPARATED_BY_COMMAS.getMessage());
     }
+    NumberLengthValidator numberLengthValidator = new NumberLengthValidator();
+    numberLengthValidator.validate(digits);
   }
 }
