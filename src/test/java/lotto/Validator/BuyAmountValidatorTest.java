@@ -17,14 +17,14 @@ public class BuyAmountValidatorTest {
     @DisplayName("1000으로 나누어떨어지지 않을 경우 예외가 발생한다.")
     @Test
     void validateIsDivideBy1000() {
-        assertThatThrownBy(() -> new BuyAmountValidator().validateDivideBy1000(999))
+        assertThatThrownBy(() -> new BuyAmountValidator().validateDivideBy1000("999"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("구입 금액이 음수일 경우 예외가 발생한다.")
     @Test
     void createByNegativeNumber() {
-        assertThatThrownBy(() -> new BuyAmountValidator().validatePositiveNumber(-1))
+        assertThatThrownBy(() -> new BuyAmountValidator().validatePositiveNumber("-1"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

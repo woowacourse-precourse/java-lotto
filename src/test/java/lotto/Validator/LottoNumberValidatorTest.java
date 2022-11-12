@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class WinningNumberValidatorTest {
+public class LottoNumberValidatorTest {
     WinningNumberValidator winningNumberValidator = new WinningNumberValidator();
 
     @DisplayName("당첨 번호에 중복된 값이 있다면 예외 처리한다.")
