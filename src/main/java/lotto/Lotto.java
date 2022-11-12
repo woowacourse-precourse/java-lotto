@@ -31,9 +31,10 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         // 입력받은 List를 Sort할 때 수정이 불가능한 List가 넘어오는 문제를 해결하기 위해 Copy
         List<Integer> copiedNumbers = new ArrayList<>(numbers);
+        this.numbers = copiedNumbers;
         validate(copiedNumbers);
         Collections.sort(copiedNumbers);
-        this.numbers = copiedNumbers;
+
     }
 
     /**
@@ -43,7 +44,7 @@ public class Lotto {
      * @param numbers 로또번호
      */
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != LOTTERY_NUMBER_LENGTH || hasDuplicated(numbers)) {
+        if (numbers.size() != LOTTERY_NUMBER_LENGTH || hasDuplicated()) {
             throw new IllegalArgumentException(String.format("[ERROR] 로또 번호는 중복되지 않는 %d ~ %d의 숫자 %d개로 구성되어야 합니다.", LOTTERY_START_NUMBER, LOTTERY_END_NUMBER, LOTTERY_NUMBER_LENGTH));
         }
 
@@ -55,7 +56,7 @@ public class Lotto {
      *
      * @return 중복된 값이 있으면 true, 없으면 false
      */
-    public boolean hasDuplicated(List<Integer> numbers) {
+    public boolean hasDuplicated() {
         return new HashSet<>(numbers).size() != numbers.size();
     }
 
