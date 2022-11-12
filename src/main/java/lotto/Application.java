@@ -1,6 +1,8 @@
 package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -11,6 +13,8 @@ public class Application {
     static int BONUS_NUMBER;
     static int numberOfPurchasedLotto;
     static int totalRevenue;
+    static double revenuePercentage;
+    static int initialAmount;
     static List<Lotto> purchasedLotto =  new ArrayList<>();
     static List<Integer> trackEachPlace = new ArrayList<>();
     static Lotto winning_number_lotto;
@@ -46,13 +50,14 @@ public class Application {
         for (int i: trackEachPlace) System.out.println(i);
         System.out.println("\n\n");
         showStatistics();
+        calculatePercentage();
     }
 
     public static void enterTheAmount(){
         System.out.println(ENTER_THE_AMOUNT);
-        int amount = Integer.parseInt(Console.readLine());
-        if(amount%LOTTO_PRICE!=0) throw new IllegalArgumentException();
-        numberOfPurchasedLotto = amount/LOTTO_PRICE;
+        initialAmount = Integer.parseInt(Console.readLine());
+        if(initialAmount%LOTTO_PRICE!=0) throw new IllegalArgumentException();
+        numberOfPurchasedLotto = initialAmount/LOTTO_PRICE;
     }
 
     public static Lotto generateSixNumbers(){
@@ -139,6 +144,8 @@ public class Application {
         totalRevenue += won * place.prize;
     }
 
-
+    public static void calculatePercentage(){
+        revenuePercentage = Math.round(Double.valueOf(totalRevenue)/initialAmount*100);
+    }
 
 }
