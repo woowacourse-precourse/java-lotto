@@ -8,6 +8,7 @@ import java.util.TreeSet;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.checker.Checker;
 import lotto.domain.Lotto;
+import lotto.domain.Prize;
 import lotto.domain.WinningLotto;
 import lotto.view.View;
 
@@ -17,9 +18,14 @@ public class LottoProgram {
 	private static final int MIN_LOTTO_NUMBER = 1;
 	private static final int MAX_LOTTO_NUMBER = 45;
 	private static final int LOTTO_NUMBER_COUNT = 6;
-	private static final double YIELD_UNIT =100.0;
+	private static final double YIELD_UNIT = 100.0;
 	private static int lottoCount;
-	private static List<Lotto> lottoList = new ArrayList<>();
+	private static List<Lotto> lottoList;
+
+	LottoProgram() {
+		lottoCount = 0;
+		lottoList = new ArrayList<>();
+	}
 
 	public void start() {
 		try {
@@ -47,8 +53,15 @@ public class LottoProgram {
 	}
 
 	private static void compareWithMyLottos() {
+		initMatchCount();
 		LottoComparator.compareNumbers(lottoList);
 		LottoComparator.createWinnerResult();
+	}
+
+	private static void initMatchCount() {
+		for (Prize prize : Prize.values()) {
+			prize.initPrizeCount();
+		}
 	}
 
 	private static void selectBonusNumbers() {

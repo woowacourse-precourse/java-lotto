@@ -12,11 +12,7 @@ public class LottoComparator {
 	private static final int MIN_WINNER_MATCH_NUMBER = 3;
 	private static final int FIRST_WINNER_MATCH_COUNT = 6;
 	private static final int SECOND_WINNER_MATCH_COUNT = 5;
-	private static final int FIRST_WINNER_INDEX = 4;
-	private static final int SECOND_WINNER_INDEX = 3;
-	private static final int INCREASE_VALUE = 1;
 	private static final int INIT = 0;
-	private static final int ADJUST_MATCH_NUMBER = 3;
 	private static List<Lotto> winner;
 	public static int totalPrize;
 
@@ -83,8 +79,8 @@ public class LottoComparator {
 			boolean isSecondWinner = checkSecondWinner(lotto, matchCount);
 
 			if (!isFirstWinner && !isSecondWinner) {
-				for(Prize prize : Prize.values()){
-					if(matchCount == prize.getMatchCount()){
+				for (Prize prize : Prize.values()) {
+					if (matchCount == prize.getMatchCount()) {
 						prize.enhancePrizeCount();
 					}
 				}
@@ -126,8 +122,8 @@ public class LottoComparator {
 	public static int calculateTotalPrize() {
 		int totalPrize = INIT;
 
-		for(Prize prize : Prize.values()){
-			totalPrize+=prize.getPrize()*prize.getPrizeCount();
+		for (Prize prize : Prize.values()) {
+			totalPrize += prize.getPrize() * prize.getPrizeCount();
 		}
 
 		return totalPrize;
