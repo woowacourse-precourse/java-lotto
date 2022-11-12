@@ -18,19 +18,14 @@ public class LottoComparator {
     public static WinningRank judgeWinning(LottoNumber winningLotto, LottoNumber userLotto) {
         int winningNumber = duplicateNumber(winningLotto.getGeneralLottoNumber().getNumbers(),
                 userLotto.getGeneralLottoNumber().getNumbers());
-        switch (winningNumber) {
-            case 6:
-                return FIRST;
-            case 5:
-                if (isSecond(winningLotto, userLotto)) return SECOND;
-                return THIRD;
-            case 4:
-                return FOURTH;
-            case 3:
-                return FIFTH;
-            default:
-                return LOSING_TICKET;
+        if (winningNumber == 6) return FIRST;
+        if (winningNumber == 5) {
+            if (isSecond(winningLotto, userLotto)) return SECOND;
+            return THIRD;
         }
+        if (winningNumber == 4) return FOURTH;
+        if (winningNumber == 3) return FIFTH;
+        return LOSING_TICKET;
     }
 
     /**
