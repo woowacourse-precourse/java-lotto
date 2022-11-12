@@ -37,4 +37,8 @@ public class Exception {
         return number.size() != number.stream().distinct().count();
     }
 
+    public static boolean isNotSixSize(List<Integer> number) {
+        return number.size() != 6;
+    }
+
 }
