@@ -20,22 +20,22 @@
   - [예외] 입력받은 당첨 번호의 개수가 6개가 아닌 경우  
     - *ValidationUtil#validatedWinningCount()*
   - [예외] 입력받은 당첨 번호에 공백값이 들어있는 경우 
-    - *ValidationUtil.validateBlank()*
+    - *ValidationUtil#validateBlank()*
   - [예외] 입력받은 당첨 번호에 중복된 값이 있는 경우 
-    - *ValidationUtil.validateDuplicate()*
+    - *ValidationUtil#validateDuplicate()*
   - [예외] 입력받은 당첨 번호가 1~45 사이의 값이 아닌 경우 
-    - *ValidationUtil.validateWinningRange()*
+    - *ValidationUtil#validateWinningRange()*
   - [예외] 입력받은 보너스 번호가 1~45 사이의 값이 아닌 경우 
-    - *ValidationUtil.validateBonusRange()*
+    - *ValidationUtil#validateBonusRange()*
 - 예외 사항에 대해서는 예외 메시지 출력 및 `IllegalArgumentException`를 발생시킨다.
 
 ### ☑️ 로또 번호 발행 기능
 - 1~45 사이의 값을 가지는 로또 번호 6개를 랜덤하게 생성하여 형식에 맞게 리턴한다.
-- *NumberGenerator.getLottoNumbers()*
+- *NumberGenerator#getLottoNumbers()*
 
-### ✔ 로또 당첨 경우 판단 기능
-- 발행한 로또 번호와 당첨 번호가 일치하는 개수를 계산하여 어떤 경우에 속하는지 리턴한다.
-  - 각 경우는 '3개 일치', '4개 일치', '5개 일치', '5개 일치, 보너스 볼 일치', '6개 일치'로 나뉜다.
+### ☑️ 로또 번호 비교 기능
+- 발행한 로또 번호와 당첨 번호가 일치하는 개수를 계산한다.
+- *LottoPrize#getMatchCount*
 
 ### ✔ 수익률 계산 기능
 - 사용자의 구입 금액과 당첨된 경우 받을 수 있는 금액에 대하여 수익률을 계산하여 리턴한다.
