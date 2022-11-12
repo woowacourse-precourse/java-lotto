@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.validator.Validator;
 import lotto.view.LottoView;
 
 import java.util.ArrayList;
@@ -13,16 +14,21 @@ public class Ticket {
     private int count;
     private List<Lotto> tickets;
 
-    public Ticket(int money, LottoView view) {
+    public Ticket(int count, List<Lotto> tickets, LottoView view) {
         this.view = view;
-        count = money / UNIT_PRICE;
-        tickets = new ArrayList<>();
+        this.count = count;
+        this.tickets = tickets;
     }
 
-    public void purchase() {
+    public static Ticket purchase(int money) {
+        List<Lotto> tickets = new ArrayList<>();
+        int count = money / UNIT_PRICE;
+
         for (int index = 0; index < count; index++) {
             tickets.add(Lotto.createLottoNumbers());
         }
+
+        return new Ticket(count, tickets, new LottoView(new Validator()));
     }
 
     public void printTickets() {
