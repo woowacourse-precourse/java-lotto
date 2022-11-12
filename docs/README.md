@@ -7,7 +7,14 @@
 - [ ] 당첨 번호 6개 입력 ( , 로 구분 ), 중복 x - Manager#inputWinNumbers()
 - [ ] 수익률 구하기 - Manager#calculateMoney()
   - [ ] 보너스 번호 1개 입력 - Manager#inputBonusNumber()
+  - [ ] 소수점 둘째자리에서 반올림 
 - [ ] 로또 숫자 중, 중복된 숫자 있으면 예외 발생 - Lotto#hasNumber()
+- [ ] 보너스 숫자 ( 2등 당첨 ) , 5개 숫자 ( 3등 당첨 ) 구분 - Manager#function()
+- [ ] 몇 등 당첨인지 구분할 수 있는 기능
+
+## 예외 목록
+- [ ] try - catch를 이용한 IllegalArgumentException 예외 발생 - main()
+- [ ] 
 
 
 
