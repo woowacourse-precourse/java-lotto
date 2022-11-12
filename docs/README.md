@@ -2,6 +2,7 @@
 
 ## 입력
 - 구입금액 입력 - inputPurchaseAmount()
+  - 천원 단위 체크 - checkAmount()
 - 당첨 번호 입력 - inputWinningNumber()
 - 보너스 번호 입력 - inputBonusNumber()
 ## 구현
