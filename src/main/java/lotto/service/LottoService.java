@@ -11,6 +11,11 @@ import java.util.stream.Collectors;
 
 public class LottoService {
 
+
+    private static final String LOTTO_NUMBER_MUST_SIX = "번호는 6개여야 합니다.";
+    private static final String LOTTO_NUMBER_NOT_DUPLICATE = "번호는 중복되면 안됩니다.";
+    private static final String NUMBER_RANGE_ONE_TO_FOUR_FIVE = "번호는 1~45사이의 숫자여야 합니다.";
+
     private static final int LOTTO_MINIMUN_NUM_SIZE = 1;
     private static final int LOTTO_MAXIMUN_NUM_SIZE = 45;
     private static final int LOTTO_NUMBER_SIZE = 6;
@@ -42,6 +47,7 @@ public class LottoService {
         String winningNumber = Input.inputWinningNumber();
         List<Integer> numbers = stringToList(winningNumber);
         validateLottoNumber(numbers);
+        validateBonusLottoNumberRange(numbers);
         validateLottoNumberDuplicate(numbers);
         return numbers;
     }
@@ -53,9 +59,17 @@ public class LottoService {
         return winningLotto;
     }
 
+    public void validateBonusLottoNumberRange(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (LOTTO_MINIMUN_NUM_SIZE > number || number > LOTTO_MAXIMUN_NUM_SIZE) {
+                throw new IllegalArgumentException(NUMBER_RANGE_ONE_TO_FOUR_FIVE);
+            }
+        }
+    }
+
     public void validateBonusNumberRange(Integer bonusNumber) {
         if (LOTTO_MINIMUN_NUM_SIZE > bonusNumber || bonusNumber > LOTTO_MAXIMUN_NUM_SIZE) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NUMBER_RANGE_ONE_TO_FOUR_FIVE);
         }
     }
 
@@ -68,13 +82,13 @@ public class LottoService {
 
     private void validateLottoNumber(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(LOTTO_NUMBER_MUST_SIX);
         }
     }
 
     private void validateLottoNumberDuplicate(List<Integer> numbers) {
         if (numbers.size() != new HashSet<>(numbers).size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(LOTTO_NUMBER_NOT_DUPLICATE);
         }
     }
 

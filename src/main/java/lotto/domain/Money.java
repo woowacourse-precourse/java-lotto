@@ -1,8 +1,6 @@
 package lotto.domain;
 
 
-import lotto.view.Output;
-
 public class Money {
 
     private static final Integer MONEY_UNIT = 1000;
@@ -27,14 +25,14 @@ public class Money {
 
     private void validateUnit(Integer money) {
         if (money % MONEY_UNIT > 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(MONEY_UNIT_ERROR_MESSAGE);
         }
     }
 
-    private void validateDigit(String money){
+    private void validateDigit(String money) {
         for (int index = 0; index < money.length(); index++) {
-            if(!Character.isDigit(money.charAt(index))){
-                throw new IllegalArgumentException("[ERROR] 에러");
+            if (!Character.isDigit(money.charAt(index))) {
+                throw new IllegalArgumentException(MONEY_MUST_DIGIT);
             }
         }
     }

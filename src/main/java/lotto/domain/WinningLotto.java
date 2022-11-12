@@ -1,51 +1,39 @@
 package lotto.domain;
 
 
-import java.util.HashSet;
 import java.util.List;
 
 public class WinningLotto {
+
+    private static final String BONUS_NUMBER_NOT_DUPLICATE = "보너스 번호는 로또 번호와 중복되면 안됩니다.";
+
     private final List<Integer> numbers;
 
     private final int bonusNumber;
 
     public WinningLotto(List<Integer> numbers, Integer bonusNumber) {
-        validate(numbers);
-        validateDuplicate(numbers);
         this.numbers = numbers;
         validateBonusNumber(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+    public void validateBonusNumber(Integer bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(BONUS_NUMBER_NOT_DUPLICATE);
         }
     }
 
-    private void validateDuplicate(List<Integer> numbers) {
-        if (numbers.size() != new HashSet<>(numbers).size()) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public void validateBonusNumber(Integer bonusNumber){
-        if(numbers.contains(bonusNumber)){
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public Integer checkMatchNumber(List<Integer> lottoNumbers){
+    public Integer checkMatchNumber(List<Integer> lottoNumbers) {
         int count = 0;
         for (Integer lottoNumber : lottoNumbers) {
-            if(numbers.contains(lottoNumber)){
+            if (numbers.contains(lottoNumber)) {
                 count++;
             }
         }
         return count;
     }
 
-    public boolean isThereBonusNumber(List<Integer> lottoNumber){
+    public boolean isThereBonusNumber(List<Integer> lottoNumber) {
         boolean bonus = lottoNumber.contains(bonusNumber);
         return bonus;
     }
