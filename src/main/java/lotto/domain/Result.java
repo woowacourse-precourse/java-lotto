@@ -41,25 +41,8 @@ public class Result {
     public void countWinningCase() {
         for (List<Integer> purchasedLotto : purchasedLotteries) {
             int winningCount = winningNumbers.countWinning(purchasedLotto);
-
-            if (winningCount == 6) {
-                resultMap.put(FIRST, resultMap.get(FIRST) + 1);
-            }
-            if (winningCount == 5) {
-                if (bonusNumber.checkContainBonusNumber(purchasedLotto)) {
-                    resultMap.put(SECOND, resultMap.get(SECOND) + 1);
-                }
-
-                if (bonusNumber.checkContainBonusNumber(purchasedLotto)) {
-                    resultMap.put(THIRD, resultMap.get(THIRD) + 1);
-                }
-            }
-            if (winningCount == 4) {
-                resultMap.put(FOURTH, resultMap.get(FOURTH) + 1);
-            }
-            if (winningCount == 3) {
-                resultMap.put(FIFTH, resultMap.get(FIFTH) + 1);
-            }
+            countResultByCount(winningCount);
+            countSecondOrThird(winningCount, purchasedLotto);
         }
     }
 
@@ -74,5 +57,34 @@ public class Result {
         return resultMap.keySet().stream()
                 .map(key -> Winning.getPrizeByLabel(key) * resultMap.get(key))
                 .reduce(0, Integer::sum);
+    }
+
+    private void countResultByCount(int winningCount) {
+        if (winningCount == 6) {
+            resultMap.put(FIRST, resultMap.get(FIRST) + 1);
+        }
+        if (winningCount == 4) {
+            resultMap.put(FOURTH, resultMap.get(FOURTH) + 1);
+        }
+        if (winningCount == 3) {
+            resultMap.put(FIFTH, resultMap.get(FIFTH) + 1);
+        }
+    }
+
+    private void countSecondOrThird(int winningCount, List<Integer> purchasedLotto) {
+        if (winningCount != 5) {
+            return;
+        }
+
+        if (isSecond(purchasedLotto)) {
+            resultMap.put(SECOND, resultMap.get(SECOND) + 1);
+            return;
+        }
+
+        resultMap.put(THIRD, resultMap.get(THIRD) + 1);
+    }
+
+    private boolean isSecond(List<Integer> purchasedLotto) {
+        return bonusNumber.checkContainBonusNumber(purchasedLotto);
     }
 }
