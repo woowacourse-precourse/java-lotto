@@ -37,9 +37,18 @@ public class Check {
         }
     }
 
-    public static void isNumber(String number) {
-        if (number.matches(".*[^0-9].*")) {
-            throw new IllegalArgumentException("[ERROR] 숫자와 콤마 이외의 문자는 입력할 수 없습니다.");
+    public static void isNumber(String numbers) {
+        if (!numbers.chars().allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
+        }
+    }
+
+    public static void isNumber(List<String> numbers) {
+        for (int i = 0; i < numbers.size(); i++) {
+            if (!numbers.get(i).chars().allMatch(Character::isDigit)) {
+                throw new IllegalArgumentException("[ERROR] 숫자만 입력해주세요.");
+            }
+
         }
     }
 }
