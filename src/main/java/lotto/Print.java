@@ -38,7 +38,7 @@ public class Print {
                 .collect(Collectors.toList())) {
             String amountMessage = getAmountMessage(winningNumber);
             System.out.printf(amountMessage + GuideMessage.MATCH_NUMBER,
-                    winningNumber.getNumberOfWinning(), winningNumber.getMoney(), matchCount.get(winningNumber));
+                    winningNumber.getNumberOfWinning(), insertComma(winningNumber.getMoney()), matchCount.get(winningNumber));
         }
     }
 
@@ -47,5 +47,10 @@ public class Print {
             return GuideMessage.MATCH + ", " + GuideMessage.BONUS_BALL_MATCH + GuideMessage.AMOUNT;
         }
         return GuideMessage.MATCH + GuideMessage.AMOUNT;
+    }
+
+    private static String insertComma(int money) {
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###,###,###");
+        return decimalFormat.format(money);
     }
 }
