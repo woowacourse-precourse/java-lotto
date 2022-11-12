@@ -56,7 +56,16 @@ class LottoServiceTest {
         }
     }
 
-    @Test
-    void storeLottoPrice() {
+    @Nested
+    @DisplayName("사용자 로또 생성 관련 테스트")
+    class UsersLottoFeature{
+
+        @Test
+        @DisplayName("특정 금액에 맞게 로또 리스트 생성됐는지 확인")
+        void publishLottos(){
+            userLottoInfo.setLottoPrice(8000);
+            lottoService.publishLottos();
+            assertThat(userLottoInfo.getUserLotto().size()).isEqualTo(8);
+        }
     }
 }
