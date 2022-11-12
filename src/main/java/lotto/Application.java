@@ -78,6 +78,10 @@ public class Application {
         }
     }
 
+    static void ask_lotto_number() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
+
     public static void main(String[] args) {
         ask_how_much_money();
 
@@ -100,5 +104,7 @@ public class Application {
         bonus_numbers = make_bonus_numbers(lottos, how_many_lotto);
 
         print_lotto_info(lottos);
+
+        ask_lotto_number();
     }
 }
