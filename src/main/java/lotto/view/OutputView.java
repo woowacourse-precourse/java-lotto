@@ -37,11 +37,13 @@ public class OutputView {
         System.out.println(String.format(LOTTO_FRAME, result));
     }
 
+    public static void printEmptyLine() {
+        System.out.println();
+    }
+
     private static void sortLottoNumbers(List<Integer> lottoNumbers) {
         Collections.sort(lottoNumbers);
     }
 
-    private static void printEmptyLine() {
-        System.out.println();
-    }
+
 }

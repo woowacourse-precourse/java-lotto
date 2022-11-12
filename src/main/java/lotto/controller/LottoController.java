@@ -36,6 +36,7 @@ public class LottoController {
     private WinningLotto getWinningLottoByUser() {
         Lotto manualLotto = getManualLottoFromUserByConsole();
         int bonusNumber = getBonusNumberFromUserByConsole();
+        return new WinningLotto(manualLotto, bonusNumber);
     }
 
     private Lotto getManualLottoFromUserByConsole() {
@@ -44,7 +45,7 @@ public class LottoController {
     }
 
     private int getBonusNumberFromUserByConsole(){
-        return 0;
+        return InputView.getBonusNumberFromUser();
     }
 
 
