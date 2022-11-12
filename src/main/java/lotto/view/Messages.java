@@ -6,7 +6,8 @@ public enum Messages {
     REQUEST_BONUS_NUMBER_INPUT("보너스 번호를 입력해 주세요."),
     ERROR_PREFIX("[ERROR] "),
     ERROR_NUMBER_ELEMENT("구입 금액은 0 이상의 숫자만 입력 받습니다."),
-    ERROR_MONEY("구입 금액은 1,000원 단위로 입력 받습니다.");
+    ERROR_MONEY("구입 금액은 1,000원 단위로 입력 받습니다."),
+    PURCHASED_TICKET_COUNTS("\n%d개를 구매했습니다.");
 
 
     private final String message;
