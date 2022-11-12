@@ -17,6 +17,7 @@ public class View {
     }
 
     public void printWinningStats(Map<Rank, Integer> winningStats) {
+        printInputWinningStat();
         System.out.printf(Constant.winningFormat,Constant.fifthRankNum
                 ,Constant.fifthRankPriceString,winningStats.get(Rank.fifth));
         System.out.printf(Constant.winningFormat,Constant.fourthRankNum
@@ -30,8 +31,8 @@ public class View {
     }
 
     public void printEarningRate(double earningRate) {
-        printInputWinningStat();
         System.out.printf(Constant.earningRateFormat,earningRate);
+        System.out.println(Constant.earningRateConcatFormat);
     }
 
     public void printInputPrice(){
