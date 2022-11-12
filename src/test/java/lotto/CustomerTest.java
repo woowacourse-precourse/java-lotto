@@ -83,4 +83,24 @@ public class CustomerTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("최종 통계를 출력한다.")
+    @Test
+    void case8_print_result() {
+        assertRandomUniqueNumbersInRangeTest(() -> {
+            Customer input = new Customer("2000");
+            input.createWinnings("1,2,3,4,5,7", "6");
+            String result = "당첨 통계\n" +
+                    "---\n" +
+                    "3개 일치 (5,000원) - 0개\n" +
+                    "4개 일치 (50,000원) - 1개\n" +
+                    "5개 일치 (1,500,000원) - 0개\n" +
+                    "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개\n" +
+                    "6개 일치 (2,000,000,000원) - 0개\n" +
+                    "총 수익률은 1502500.0%입니다.";
+
+            assertThat(input.toResultString())
+                    .isEqualTo(result);
+        }, List.of(1, 2, 3, 4, 5, 6), List.of(3, 4, 5, 6, 7, 8));
+    }
+
 }
