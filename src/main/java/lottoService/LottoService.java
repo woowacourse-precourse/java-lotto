@@ -70,6 +70,10 @@ public class LottoService {
 
     }
 
+    public void initializePlayerLottoCount(Player player){
+        player.initializeLottoCount();
+    }
+
     public List<Integer> inputLottoWinningNumbers(){
         List<Integer> lottoWinningNumbers = new ArrayList<>();
         String inputLottoPickNumbers = input().trim().replaceAll(" ","");
