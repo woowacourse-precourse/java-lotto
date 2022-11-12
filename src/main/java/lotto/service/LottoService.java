@@ -11,9 +11,6 @@ import lotto.view.output.LottoPrinter;
 
 public class LottoService {
 
-    private static final String PURCHASED_SUFFIX = "개를 구매했습니다.";
-    private static final String ERROR_MESSAGE_PREFIX = "[ERROR] ";
-
     private final LottoStore lottoStore;
     private final LottoMachine lottoMachine;
     private final LottoScanner lottoScanner;
@@ -39,7 +36,7 @@ public class LottoService {
 
             makeWinningResults(purchasedLottoTickets, winningLotto);
         } catch (IllegalArgumentException e) {
-            lottoPrinter.printMessage(ERROR_MESSAGE_PREFIX + e.getMessage());
+            lottoPrinter.printErrorMessage(e.getMessage());
         }
     }
 
@@ -50,8 +47,7 @@ public class LottoService {
 
     private PurchasedLottoTickets purchasedLottoTickets(String money) {
         PurchasedLottoTickets purchasedLottoTickets = lottoStore.lottoTickets(money);
-        lottoPrinter.printMessage(purchasedLottoTickets.totalCounts() + PURCHASED_SUFFIX);
-        lottoPrinter.printMessage(purchasedLottoTickets.toString());
+        lottoPrinter.printPurchasedLottoTickets(purchasedLottoTickets);
 
         return purchasedLottoTickets;
     }
@@ -74,6 +70,9 @@ public class LottoService {
                 lottoResults
         );
 
-        lottoPrinter.printMessage(winningStatistics.toString());
+        lottoPrinter.printWinningStatistics(
+                lottoResults.results(),
+                winningStatistics.rateOfReturn()
+        );
     }
 }

@@ -2,6 +2,7 @@ package lotto.domain.winning;
 
 import static lotto.domain.policy.LottoPolicy.PRICE_OF_LOTTO;
 
+import java.util.Collections;
 import java.util.List;
 import lotto.domain.lotto_numbers.Lotto;
 
@@ -17,7 +18,7 @@ public class PurchasedLottoTickets {
         return winningLotto.lottoResults(purchasedLottoTickets);
     }
 
-    public int totalPayment() {
+    int totalPayment() {
         return PRICE_OF_LOTTO * totalCounts();
     }
 
@@ -25,15 +26,7 @@ public class PurchasedLottoTickets {
         return purchasedLottoTickets.size();
     }
 
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Lotto purchasedLotto : purchasedLottoTickets) {
-            stringBuilder
-                    .append(purchasedLotto)
-                    .append("\n");
-        }
-
-        return stringBuilder.toString();
+    public List<Lotto> purchasedLottoTickets() {
+        return Collections.unmodifiableList(purchasedLottoTickets);
     }
 }

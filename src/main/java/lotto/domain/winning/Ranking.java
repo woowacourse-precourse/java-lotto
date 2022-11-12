@@ -1,11 +1,10 @@
 package lotto.domain.winning;
 
-import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-enum Ranking {
+public enum Ranking {
 
     FIFTH(
             3,
@@ -44,9 +43,9 @@ enum Ranking {
 
     private final int countOfMatchingNumber;
     private final boolean isMatchedBonusNumber;
-    private final int winnings;
+    private final long winnings;
 
-    Ranking(int countOfMatchingNumber, boolean isMatchedBonusNumber, int winnings) {
+    Ranking(int countOfMatchingNumber, boolean isMatchedBonusNumber, long winnings) {
         this.countOfMatchingNumber = countOfMatchingNumber;
         this.isMatchedBonusNumber = isMatchedBonusNumber;
         this.winnings = winnings;
@@ -66,24 +65,19 @@ enum Ranking {
                 && isMatchedBonusNumber;
     }
 
-    public int sumOfWinnings(int count) {
+    public long sumOfWinnings(int count) {
         return winnings * count;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(countOfMatchingNumber).append("개 일치");
+    public int countOfMatchingNumber() {
+        return countOfMatchingNumber;
+    }
 
-        if (isMatchedBonusNumber) {
-            stringBuilder.append(", 보너스 볼 일치");
-        }
+    public boolean isMatchedBonusNumber() {
+        return isMatchedBonusNumber;
+    }
 
-        stringBuilder
-                .append(" (")
-                .append(NumberFormat.getNumberInstance().format(winnings))
-                .append("원)");
-
-        return stringBuilder.toString();
+    public long winnings() {
+        return winnings;
     }
 }

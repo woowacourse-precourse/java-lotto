@@ -1,6 +1,7 @@
 package lotto.domain.winning;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.offset;
 
 import java.util.List;
 import java.util.Map;
@@ -41,8 +42,10 @@ class WinningStatisticsTest {
                 lottoResults
         );
 
-        String statistics = winningStatistics.toString();
-        assertThat(statistics).contains("62.5%");
+        double actual = winningStatistics.rateOfReturn();
+        double expect = 62.5;
+
+        assertThat(actual).isCloseTo(expect, offset(0.1));
     }
 
     @DisplayName("한 개도 당첨되지 않으면 수익률은 0.0%이다.")
@@ -69,7 +72,9 @@ class WinningStatisticsTest {
                 lottoResults
         );
 
-        String statistics = winningStatistics.toString();
-        assertThat(statistics).contains("0.0%");
+        double actual = winningStatistics.rateOfReturn();
+        double expect = 0.0;
+
+        assertThat(actual).isCloseTo(expect, offset(0.1));
     }
 }
