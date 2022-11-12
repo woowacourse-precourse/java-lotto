@@ -12,6 +12,15 @@ public class LottoService {
     private final OutputView outputView = new OutputView();
     private final Validator validator = new Validator();
 
+    public void start() {
+        int paidMoney = payTicket();
+        List<List<Integer>> lottoTickets = userTicket(paidMoney);
+        List<Integer> winningNumbers = announceWinningNumbers();
+        int bonusNumber = announceBonusNumber(winningNumbers);
+        Comparator comparator = compareUserTicket(lottoTickets, winningNumbers, bonusNumber);
+        checkEarnedRate(comparator, paidMoney);
+    }
+
     private int payTicket() {
         String moneyInput = inputView.inputMoney();
         int money = validator.validateMoney(moneyInput);
