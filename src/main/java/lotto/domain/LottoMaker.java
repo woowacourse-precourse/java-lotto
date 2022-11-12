@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoMaker {
-    private static final int ONE_LOTTO_PRICE = 1000;
+    public static final int ONE_LOTTO_PRICE = 1000;
     public static List<Lotto> makeLotto(int price) {
         validate(price);
         return getLottos(getNumOfLotto(price));

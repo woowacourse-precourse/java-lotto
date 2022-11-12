@@ -3,23 +3,23 @@ package lotto.domain;
 import java.util.List;
 
 public enum WinningPrice {
-   FIRST("2,000,000,000원", 6, false),
-    SECOND("30,000,000원", 5, true),
-    THIRD("1,500,000원", 5, false),
-    FOURTH("50,000원", 4, false),
-    FIFTH("5,000원", 3, false);
+   FIRST(2000000000, 6, false),
+    SECOND(30000000, 5, true),
+    THIRD(1500000, 5, false),
+    FOURTH(50000, 4, false),
+    FIFTH(5000, 3, false);
 
-    private final String price;
+    private final int price;
     private final int accordedNumber;
     private final boolean shouldHitBonus;
 
-    WinningPrice(final String price, int accordedNumber, boolean shouldHitBonus) {
+    WinningPrice(final int price, int accordedNumber, boolean shouldHitBonus) {
        this.price = price;
        this.accordedNumber = accordedNumber;
        this.shouldHitBonus = shouldHitBonus;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return this.price;
     }
     public int getAccordedNumber() { return this.accordedNumber; }
