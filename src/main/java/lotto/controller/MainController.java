@@ -1,6 +1,5 @@
 package lotto.controller;
 
-import camp.nextstep.edu.missionutils.Console;
 import lotto.model.LottoCompany;
 import lotto.model.LottoMachine;
 import lotto.model.PrizeChecker;
@@ -13,9 +12,9 @@ public class MainController {
 	private final OutputView outputView = OutputView.getInstance();
 
 	public void run() {
-		int purchaseAmountInput = Integer.parseInt(Console.readLine());
+		int purchaseAmount = inputView.createPurchaseAmount();
 		LottoCompany lottoCompany = inputView.createWinningLotto();
-		Wallet wallet = new LottoMachine(purchaseAmountInput).buyLotto();
+		Wallet wallet = new LottoMachine(purchaseAmount).buyLotto();
 		PrizeChecker prizeChecker;
 
 		outputView.LottoInformation(wallet.getMyLotto().size(), wallet.getMyLotto());
