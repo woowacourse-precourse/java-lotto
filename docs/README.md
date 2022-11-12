@@ -37,7 +37,7 @@
 # controller : 데이터 입력에 맞는 서비스를 선택하여 처리
 
 - BuyLottoController 클래스 
-  - (  )inputCost : 구입금액에 입력 메소드
+  - (  )costInput : 구입금액에 입력 메소드
   - (  )calculateLottoNumberPerCost : 구입금액에 대한 로또 개수 계산 메소드
   - (  )createLottoNumber : 구입금액에 대한 로또 번호 생성 메소드
   - (  )printLottoNumber : 구입금액에 대한 로또 번호 출력 메소드
