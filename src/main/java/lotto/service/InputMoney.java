@@ -2,13 +2,13 @@ package lotto.service;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.Data.UserMoney;
-import lotto.handler.UserInputMoney;
+import lotto.handler.InputMoneyHandler;
 import lotto.view.Output;
 
 public class InputMoney {
     public final int LOTTO_PRICE = 1000;
     public static int lottoCount;
-    UserInputMoney userInputMoney = new UserInputMoney();
+    InputMoneyHandler inputMoneyHandler = new InputMoneyHandler();
     Output output = new Output();
 
     public UserMoney InputMoney() {
@@ -16,7 +16,7 @@ public class InputMoney {
         output.inputMoneyOrder();
         String inputMoney = Console.readLine();
         lineSkip();
-        userInputMoney.checkException(inputMoney);
+        inputMoneyHandler.checkException(inputMoney);
         UserMoney userMoney = new UserMoney(stringToInteger(inputMoney));
 
         return userMoney;

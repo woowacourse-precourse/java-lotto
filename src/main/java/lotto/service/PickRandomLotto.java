@@ -1,6 +1,7 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.handler.InputMoneyHandler;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,6 +10,7 @@ import java.util.List;
 public class PickRandomLotto {
     private final int LIMIT_LOTTO = 6;
     InputMoney inputMoney = new InputMoney();
+    InputMoneyHandler inputMoneyHandler = new InputMoneyHandler();
     List<List<Integer>> randomLottoLists = new ArrayList<>();
     public void PickRandomNumber(int lottoPapers) {
         while(randomLottoLists.size() != lottoPapers)   {
@@ -19,7 +21,7 @@ public class PickRandomLotto {
     }
     public void switchAddOrReturn(List<Integer> sixLottoNumbers)    {
         if(sixLottoNumbers.stream().distinct().count() != LIMIT_LOTTO){
-            return;
+            throw new IllegalArgumentException(inputMoneyHandler.ERROR_ORDER);
         }
         if(sixLottoNumbers.stream().distinct().count() == LIMIT_LOTTO){
             Lotto lotto = new Lotto(sixLottoNumbers);

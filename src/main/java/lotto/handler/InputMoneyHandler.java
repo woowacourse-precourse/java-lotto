@@ -2,8 +2,8 @@ package lotto.handler;
 
 import lotto.service.InputMoney;
 
-public class UserInputMoney {
-    private final String ERROR_ORDER = "[ERROR]";
+public class InputMoneyHandler {
+    public final String ERROR_ORDER = "[ERROR]";
     public void checkException(String inputMoney) {
         checkIsNumber(inputMoney);
         checkIsNonzero(inputMoney);

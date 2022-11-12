@@ -1,10 +1,12 @@
 package lotto.service;
 
-import java.util.ArrayList;
+import lotto.handler.InputMoneyHandler;
+
 import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
+    InputMoneyHandler inputMoneyHandler = new InputMoneyHandler();
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -20,7 +22,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(inputMoneyHandler.ERROR_ORDER);
         }
     }
 }

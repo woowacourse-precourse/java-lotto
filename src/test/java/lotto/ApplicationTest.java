@@ -2,7 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.Data.UserMoney;
-import lotto.handler.UserInputMoney;
+import lotto.handler.InputMoneyHandler;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
-    UserInputMoney userInputMoney = new UserInputMoney();
+    InputMoneyHandler inputMoneyHandler = new InputMoneyHandler();
 
     @DisplayName("사용자의 입력 금액이 User에 저장 되었는지 확인 Test")
     @Test
@@ -32,7 +32,7 @@ class ApplicationTest extends NsTest {
         String inputMoney = "1000a";
 
         assertThatThrownBy(() -> {
-            userInputMoney.checkIsNumber(inputMoney);
+            inputMoneyHandler.checkIsNumber(inputMoney);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -42,7 +42,7 @@ class ApplicationTest extends NsTest {
         String inputMoney = "0";
 
         assertThatThrownBy(() -> {
-            userInputMoney.checkIsNonzero(inputMoney);
+            inputMoneyHandler.checkIsNonzero(inputMoney);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -52,7 +52,7 @@ class ApplicationTest extends NsTest {
         String inputMoney = "1001";
 
         assertThatThrownBy(() -> {
-            userInputMoney.checkIsValidMoney(inputMoney);
+            inputMoneyHandler.checkIsValidMoney(inputMoney);
         }).isInstanceOf(IllegalArgumentException.class);
     }
 
