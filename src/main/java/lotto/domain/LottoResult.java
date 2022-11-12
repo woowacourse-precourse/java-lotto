@@ -25,6 +25,10 @@ public class LottoResult {
         return reward;
     }
 
+    public int rankCount(Rank rank) {
+        return lottoResult.getOrDefault(rank, 0);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

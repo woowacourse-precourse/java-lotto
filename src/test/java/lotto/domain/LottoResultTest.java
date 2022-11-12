@@ -34,4 +34,15 @@ public class LottoResultTest {
 
         assertThat(lottoResult.reward()).isEqualTo(new Money(2_031_555_000));
     }
+
+    @DisplayName("순위 개수를 반환한다.")
+    @Test
+    void rankCount() {
+        LottoResult lottoResult = new LottoResult();
+        lottoResult.addResult(Rank.FIRST);
+        lottoResult.addResult(Rank.FIRST);
+        lottoResult.addResult(Rank.FIRST);
+
+        assertThat(lottoResult.rankCount(Rank.FIRST)).isEqualTo(3);
+    }
 }
