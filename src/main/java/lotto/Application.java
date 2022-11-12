@@ -8,8 +8,8 @@ public class Application {
 
     public static void main(String[] args) {
         try {
-            User user = new User();
             Store store = new Store();
+            User user = new User(enterMoney());
             user.buyLottoAll(store);
             user.printLotto();
 
@@ -18,6 +18,17 @@ public class Application {
         } catch (IllegalArgumentException e) {
             System.out.println(Constants.ERROR_PREFIX + e.getMessage());
         }
+    }
+
+    private static int enterMoney() {
+        System.out.println(Constants.CONSOLE_MONEY);
+
+        int money = Integer.parseInt(Console.readLine());
+        if (money % Constants.MONEY_TERMS != 0) {
+            throw new IllegalArgumentException(Constants.LOTTO_MONEY_EXCEPTION);
+        }
+
+        return money;
     }
 
     private static List<Integer> enterWinningNumbers() {

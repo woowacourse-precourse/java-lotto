@@ -8,19 +8,8 @@ public class User {
     private int money;
     private List<Lotto> lottos;
 
-    public User() {
-        this.money = enterMoney();
-    }
-
-    private static int enterMoney() {
-        System.out.println(Constants.CONSOLE_MONEY);
-
-        int money = Integer.parseInt(Console.readLine());
-        if (money % Constants.MONEY_TERMS != 0) {
-            throw new IllegalArgumentException(Constants.LOTTO_MONEY_EXCEPTION);
-        }
-
-        return money;
+    public User(int money) {
+        this.money = money;
     }
 
     public void buyLottoAll(Store store) {
