@@ -25,7 +25,6 @@ public class InputValidator {
         try {
             Integer.parseInt(inputValue);
         } catch (NumberFormatException exception) {
-            System.out.println("inputValue = " + inputValue);
             System.out.println("[ERROR] 보너스 로또 번호는 단 하나의 정수형을 입력하셔야 합니다.");
             throw new IllegalArgumentException("[ERROR] 보너스 로또 번호는 단 하나의 정수형을 입력하셔야 합니다.");
         }
