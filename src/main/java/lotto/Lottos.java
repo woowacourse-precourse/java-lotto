@@ -2,7 +2,6 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -13,8 +12,8 @@ public class Lottos {
 
     // Results
     private List<LottoStatus> lottosStatus;
-    private List<LottoResult> lottoResults;
-    private int totalWinningAmount;
+    private LottoResults lottoResults;
+    private float totalWinningAmount;
 
     // com Lottos
     private int lottoCount;
@@ -57,7 +56,7 @@ public class Lottos {
         return new LottoStatus(lotto, winningLotto, bonusNum);
     }
 
-    public int getTotalWinningAmount() {
+    public float getTotalWinningAmount() {
         return this.totalWinningAmount;
     }
 
@@ -68,13 +67,10 @@ public class Lottos {
     }
 
     private void createLottoResults() {
-        this.lottoResults = this.lottosStatus
-                .stream()
-                .map(status -> status.getResult())
-                .collect(Collectors.toList());
+        this.lottoResults = new LottoResults(this.lottosStatus);
     }
 
-    public List<LottoResult> getLottoResults() {
+    public LottoResults getLottoResults() {
         return lottoResults;
     }
 

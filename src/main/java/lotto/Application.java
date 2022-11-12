@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 public class Application {
-    static int amountToLottoCount(int userInput) {
+    static int amountToLottoCount(int userInput) throws IllegalArgumentException {
         Amount amount = new Amount(userInput);
         if (!amount.isValidateAmount()) {
-            ResultView.exit(new IllegalArgumentException("1,000원 단위로 입력해주세요."));
+            exit(new IllegalArgumentException("1,000원 단위로 입력해주세요."));
         }
         return amount.getLottoCount();
     }
@@ -21,11 +21,11 @@ public class Application {
     }
 
 
-    static Integer checkStringAndPalseInt(String string) {
+    static Integer checkStringAndPalseInt(String string) throws IllegalArgumentException {
         try {
             return Integer.parseInt(string);
         } catch (Exception e) {
-            ResultView.exit(new IllegalArgumentException("올바른 형태로 입력해주세요. ex) 1,2,3,4,5,6"));
+            exit(new IllegalArgumentException("올바른 형태로 입력해주세요. ex) 1,2,3,4,5,6"));
             return null;
         }
     }
@@ -38,32 +38,46 @@ public class Application {
         return lottos;
     }
 
-    static Lottos checkAndMakeLottos(int lottoCount) {
+    static Lottos checkAndMakeLottos(int lottoCount) throws IllegalArgumentException {
         try {
             return makeLottos(lottoCount);
         } catch (Exception e) {
-            ResultView.exit(e);
+            exit(e);
             return null;
         }
     }
 
-    static int checkStringIsInt(String inputString) {
+    static int checkStringIsInt(String inputString) throws IllegalArgumentException {
         try {
             return Integer.parseInt(inputString);
         } catch (Exception e) {
-            ResultView.exit(new IllegalArgumentException("숫자를 입력해주세요."));
+            exit(new IllegalArgumentException("숫자를 입력해주세요."));
             return 0;
         }
     }
 
-    static int calcYield(Lottos lottos, int lottoCount) {
-        return  lottos.getTotalWinningAmount() / (lottoCount*1000);
+    static float calcYield(Lottos lottos, int lottoCount) {
+        return  (lottos.getTotalWinningAmount() / (lottoCount*1000)) * 100;
     }
 
-    public static void main(String[] args) {
+    public static void exit(Throwable error) throws IllegalArgumentException {
+        String errMessage = "[ERROR] " + error.getMessage();
+        throw new IllegalArgumentException(errMessage);
+    }
+
+    static void run() {
         int lottoCount = amountToLottoCount(checkStringIsInt(InputView.receiveAmount()));
         Lottos lottos = checkAndMakeLottos(lottoCount);
         ResultView.printLottos(lottos);
+        ResultView.printResult(lottos.getLottoResults());
         ResultView.printYield(calcYield(lottos, lottoCount));
+    }
+
+    public static void main(String[] args) {
+        try {
+            run();
+        } catch (Exception e) {
+            ResultView.printErr(e);
+        }
     }
 }
