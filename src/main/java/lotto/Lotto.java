@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -16,5 +18,8 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public void printSortedNumbers() {
+        Collections.sort(numbers);
+        System.out.println(numbers.toString());
+    }
 }
