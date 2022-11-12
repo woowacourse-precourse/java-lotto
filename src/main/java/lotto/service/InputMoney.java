@@ -7,6 +7,7 @@ import lotto.view.Output;
 
 public class InputMoney {
     public final int LOTTO_PRICE = 1000;
+    public static int lottoCount;
     UserInputMoney userInputMoney = new UserInputMoney();
     Output output = new Output();
 
@@ -26,7 +27,7 @@ public class InputMoney {
         return number;
     }
     public void lottoCount(UserMoney inputMoney) {
-        int lottoCount = inputMoney.getMoney() / LOTTO_PRICE;
+        lottoCount = inputMoney.getMoney() / LOTTO_PRICE;
         output.purchaseLottoOrder(lottoCount);
     }
     public void lineSkip() {
