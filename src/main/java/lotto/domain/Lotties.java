@@ -21,4 +21,12 @@ public final class Lotties {
             lotties.add(Lotto.create());
         }
     }
+
+    public List<Lotto> getLotties() {
+        return new ArrayList<>(lotties);
+    }
+
+    public int getLottiesSize() {
+        return lotties.size();
+    }
 }
