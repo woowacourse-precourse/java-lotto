@@ -1,6 +1,8 @@
 package validate;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Check {
 
@@ -14,14 +16,16 @@ public class Check {
         return tickets;
     }
 
-    public static void NumberDuplicate(List<String> numbers, String number) {
+    public static void numberDuplicate(List<String> numbers) {
 
-        if (numbers.contains(number)) {
+        Set<String> checkDuplicate = new HashSet<>(numbers);
+
+        if (checkDuplicate.size() != numbers.size()) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자는 잘못된 입력값 입니다.");
         }
     }
 
-    public static void NumberDuplicate(List<Integer> numbers, int number) {
+    public static void numberDuplicate(List<Integer> numbers, int number) {
         if (numbers.contains(number)) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자는 잘못된 입력값 입니다.");
         }
