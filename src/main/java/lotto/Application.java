@@ -17,11 +17,16 @@ public class Application {
     private static final int SECOND_THIRD_PLACE_STANDARD = 5;
     private static final int FOURTH_PLACE_STANDARD = 4;
     private static final int FIFTH_PLACE_STANDARD = 3;
-    private static final Map<Result, Integer> numOfEachResult = new HashMap<>();
+    private static final Map<Result, Integer> WINNING_DATA = new HashMap<>();
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
     }
+
+    // 테스트용 setter(테스트 코드 실행시 주석 해제 처리, WINNING_DATA의 final 키워드 삭제 필요.)
+//    public static void setWinningData(Map<Result, Integer> testData) {
+//        Application.WINNING_DATA = testData;
+//    }
 
     public static void getPriceToBuy() {
         System.out.println("구입 금액을 입력해주세요.");
@@ -124,39 +129,56 @@ public class Application {
         }
     }
 
-    public static Map<Result, Integer> getAllResults(List<Lotto> issuedLottos, List<Integer> winningNums, int bonusNum) {
-        for (Lotto lotto : issuedLottos) {
+    public static Map<Result, Integer> getAllResults(List<Lotto> lottos, List<Integer> winningNums, int bonusNum) {
+        for (Lotto lotto : lottos) {
             int numOfMatching = (int) winningNums.stream().filter(lotto.getNumbers()::contains).count();
             getEachResult(lotto, winningNums, bonusNum);
         }
-        return numOfEachResult;
+        return WINNING_DATA;
     }
 
     private static void getEachResult(Lotto lotto, List<Integer> winningNums, int bonusNum) {
         List<Integer> numbers = lotto.getNumbers();
         int numOfMatching = (int) numbers.stream().filter(winningNums::contains).count();
-
         if (numOfMatching == FIRST_PLACE_STANDARD) {
-            numOfEachResult.merge(FIRST, 1, Integer::sum);
+            WINNING_DATA.merge(FIRST, 1, Integer::sum);
         } else if (numOfMatching == SECOND_THIRD_PLACE_STANDARD && numbers.contains(bonusNum)) {
-            numOfEachResult.merge(SECOND, 1, Integer::sum);
+            WINNING_DATA.merge(SECOND, 1, Integer::sum);
         } else if (numOfMatching == SECOND_THIRD_PLACE_STANDARD) {
-            numOfEachResult.merge(THIRD, 1, Integer::sum);
+            WINNING_DATA.merge(THIRD, 1, Integer::sum);
         } else if (numOfMatching == FOURTH_PLACE_STANDARD) {
-            numOfEachResult.merge(FOURTH, 1, Integer::sum);
+            WINNING_DATA.merge(FOURTH, 1, Integer::sum);
         } else if (numOfMatching == FIFTH_PLACE_STANDARD) {
-            numOfEachResult.merge(FIFTH, 1, Integer::sum);
+            WINNING_DATA.merge(FIFTH, 1, Integer::sum);
         }
+        setZeroForNull();
     }
 
-    public static String getRatioOfProfit(int price, Map<Result, Integer> numOfEachResult) {
+    public static String getRatioOfProfit(int price) {
         float totalPrize = 0F;
-        Set<Result> standards = numOfEachResult.keySet();
+        Set<Result> standards = WINNING_DATA.keySet();
         for (Result standard : standards) {
-            totalPrize += standard.getIntPrize() * numOfEachResult.get(standard);
+            totalPrize += standard.getIntPrize() * WINNING_DATA.get(standard);
         }
         float ratio = (totalPrize / (float) price) * 100;
         return String.format("%.1f", ratio);
+    }
+
+    private static void setZeroForNull() {
+        for (Result result : Result.values()) {
+            WINNING_DATA.putIfAbsent(result, 0);
+        }
+    }
+
+    public static void printStatistics(String ratio) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println(FIFTH.getStandard() + FIFTH.getStringPrize() + WINNING_DATA.get(FIFTH) + "개" );
+        System.out.println(FOURTH.getStandard() + FOURTH.getStringPrize() + WINNING_DATA.get(FOURTH) + "개" );
+        System.out.println(THIRD.getStandard() + THIRD.getStringPrize() + WINNING_DATA.get(THIRD) + "개" );
+        System.out.println(SECOND.getStandard() + SECOND.getStringPrize() + WINNING_DATA.get(SECOND) + "개" );
+        System.out.println(FIRST.getStandard() + FIRST.getStringPrize() + WINNING_DATA.get(FIRST) + "개" );
+        System.out.print("총 수익률은 " + ratio +"%입니다.");
     }
 
 }
