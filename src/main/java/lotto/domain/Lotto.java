@@ -47,4 +47,20 @@ public class Lotto {
                 .map(LottoNumber::valueOf)
                 .collect(toList());
     }
+
+    public LottoPrize check(Lotto winningNumbers, LottoNumber bonusNumber) {
+        int matchedCount = countMatchedNumbers(winningNumbers);
+        boolean bonusNumberMatched = isBonusNumberMatched(bonusNumber);
+        return LottoPrize.getEnum(matchedCount, bonusNumberMatched);
+    }
+
+    private int countMatchedNumbers(Lotto winningNumbers) {
+        return (int) winningNumbers.numbers.stream()
+                .filter(this.numbers::contains)
+                .count();
+    }
+
+    private boolean isBonusNumberMatched(LottoNumber bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
 }
