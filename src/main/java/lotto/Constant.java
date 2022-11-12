@@ -23,7 +23,8 @@ public class Constant {
     public static final String fifthRankPriceString = "5,000";
 
     // 출력 문자열 format
-    public static final String buyingFormat = "%d개를 구매했습니다.";
-    public static final String winningFormat = "%d개 일치 (%s원) - %d개";
-    public static final String earningRateFormat = "총 수익률은 %d%입니다.";
+    public static final String buyingFormat = "%d개를 구매했습니다.\n";
+    public static final String winningFormat = "%d개 일치 (%s원) - %d개\n";
+    public static final String winningFormatBonus = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
+    public static final String earningRateFormat = "총 수익률은 %d%입니다.\n";
 }
