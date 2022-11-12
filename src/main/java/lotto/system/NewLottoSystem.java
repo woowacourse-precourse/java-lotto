@@ -56,21 +56,25 @@ public class NewLottoSystem {
 		for (List<Integer> lottoGame : lottoGames) {
 			int count = 0;
 			count = getCount(lotto, lottoGame, count);
-			if (count == 6) {
-				firstPlace++;
-			}
-			if (count == 5 && lottoGame.contains(bonusNumber)) {
-				secondPlace++;
-			}
-			if (count == 5 && !lottoGame.contains(bonusNumber)) {
-				thirdPlace++;
-			}
-			if (count == 4) {
-				fourthPlace++;
-			}
-			if (count == 3) {
-				fifthPlace++;
-			}
+			getPlace(bonusNumber, lottoGame, count);
+		}
+	}
+
+	private void getPlace(int bonusNumber, List<Integer> lottoGame, int count) {
+		if (count == 6) {
+			firstPlace++;
+		}
+		if (count == 5 && lottoGame.contains(bonusNumber)) {
+			secondPlace++;
+		}
+		if (count == 5 && !lottoGame.contains(bonusNumber)) {
+			thirdPlace++;
+		}
+		if (count == 4) {
+			fourthPlace++;
+		}
+		if (count == 3) {
+			fifthPlace++;
 		}
 	}
 
