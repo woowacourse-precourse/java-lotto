@@ -5,9 +5,8 @@ public class LottoConstant {
     public static final int NUMBER_START = 1;
     public static final int NUMBER_END = 45;
 
-    public static final int ONE_LOTTO_PRICE = 1000;
-
-    public static final int LEAST_COMMA_POS = 1;
+    public static final int LOTTO_PRICE = 1000;
+    public static final int LEAST_COMMA_POSITION = 1;
 
 
 }

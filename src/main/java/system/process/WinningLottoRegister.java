@@ -14,9 +14,9 @@ public class WinningLottoRegister {
     private WinningLotto winningLotto;
 
     public WinningLottoRegister() {
-        this.winningLotto = new WinningLotto(
-                changeLottoNumbersInputToIntegers(inputSixLottoNumbers())
-                , changeBonusNumberInputToInteger(inputBonusNumber()));
+        List<Integer> sixLottoNumbers = changeLottoNumbersInputToIntegers(inputSixLottoNumbers());
+        int bonusNumber = changeBonusNumberInputToInteger(inputBonusNumber());
+        this.winningLotto = new WinningLotto(sixLottoNumbers, bonusNumber);
     }
 
     private String inputSixLottoNumbers() {
@@ -42,16 +42,25 @@ public class WinningLottoRegister {
     }
 
     private void validateCommaIndex(String numbersInput, int commaIndex) {
-        if (commaIndex < LottoConstant.LEAST_COMMA_POS
-                || !Character.isDigit(numbersInput.charAt(commaIndex - 1))) { // 여기 다시 고민해볼 것.
+        if (commaIndex < LottoConstant.LEAST_COMMA_POSITION) {
             IllegalArgument.handleException(IllegalArgument.WRONG_NUMBERS_INPUT.getMessage());
         }
+        if (Character.isDigit(numbersInput.charAt(commaIndex - 1))) {
+            return;
+        }
+        IllegalArgument.handleException(IllegalArgument.WRONG_NUMBERS_INPUT.getMessage());
     }
 
-    private void validateLastNumber(String numbersInput) {
-        if (numbersInput.isEmpty()) {
+    private void validateLastNumber(String numberInput) {
+        if (numberInput.isEmpty()) {
             IllegalArgument.handleException(IllegalArgument.WRONG_NUMBERS_INPUT.getMessage());
         }
+
+        if (IsCollection.isDigitText(numberInput)) {
+            return;
+        }
+        IllegalArgument.handleException(IllegalArgument.WRONG_NUMBERS_INPUT.getMessage());
+
     }
 
     private String inputBonusNumber() {
@@ -67,7 +76,7 @@ public class WinningLottoRegister {
     }
 
     private void validateDigit(String numberInput) {
-        if (IsCollection.isContainText(numberInput, ",")) {
+        if (numberInput.contains(",")) {
             IllegalArgument.handleException(IllegalArgument.WRONG_NUMBERS_INPUT.getMessage());
         }
     }

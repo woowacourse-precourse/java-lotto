@@ -53,9 +53,9 @@ public class LottoComparison {
     }
 
     public int rank() {
-        List<PrizeDivision> prizeDivision = Arrays.asList(PrizeDivision.values());
+        List<PrizeDivision> prizeDivisions = Arrays.asList(PrizeDivision.values());
 
-        for(PrizeDivision division : prizeDivision){
+        for(PrizeDivision division : prizeDivisions){
             if(division.getSameNumberCount() == sameNumberCount && division.getBonusCount() == bonusCount){
                 return division.getDivision();
             }

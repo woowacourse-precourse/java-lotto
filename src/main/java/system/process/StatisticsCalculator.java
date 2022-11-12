@@ -14,20 +14,20 @@ public class StatisticsCalculator {
     private Statistics statistics;
 
     public StatisticsCalculator(Buying boughtLottos, WinningLottoRegister winningLotto) {
-        this.boughtLottos = boughtLottos.getBuyingLottos();
+        this.boughtLottos = boughtLottos.getBoughtLottos();
         this.winningLotto = winningLotto.getWinningLotto();
         this.statistics = new Statistics();
+        calculateStatistics();
+        printStatistics();
     }
 
-    public void calculateStatistics() {
+    private void calculateStatistics() {
         LottoComparison lottoComparison = new LottoComparison(winningLotto);
 
         boughtLottos.getLottos().forEach((Lotto) -> {
             lottoComparison.startComparison(Lotto);
-            statistics.countDivision(lottoComparison.rank());
+            statistics.countDivisions(lottoComparison.rank());
         });
-
-        printStatistics();
     }
 
     private void printStatistics() {
@@ -36,17 +36,17 @@ public class StatisticsCalculator {
 
         List<PrizeDivision> prizeDivision = Arrays.asList(PrizeDivision.values());
 
-        long prizeAmountSummation = accumulatePrizeAmount(prizeDivision);
-        calculatePercent(prizeAmountSummation);
+        long prizeAmountSummation = printPrizeDivisionsAndAccumulatePrizeAmount(prizeDivision);
+        calculatePercentAndPrintPercent(prizeAmountSummation);
     }
 
-    private long accumulatePrizeAmount(List<PrizeDivision> prizeDivision) {
+    private long printPrizeDivisionsAndAccumulatePrizeAmount(List<PrizeDivision> prizeDivision) {
         long prizeAmountSummation = 0;
 
         for (int index = PrizeDivision.FIFTH.getDivision(); index >= PrizeDivision.FIRST.getDivision(); index--) {
             String matchingCount = prizeDivision.get(index).getMatchingCount();
             String prizeAmount = prizeDivision.get(index).getPrizeAmount();
-            int divisionCount = statistics.getDivisionCount().get(index);
+            int divisionCount = statistics.getDivisionsCount().get(index);
             
             prizeAmountSummation += Integer.parseInt(prizeAmount.replaceAll(",", "")) * divisionCount;
             /*중복 코드를 방지하기 위해 누적하면서 출력.*/
@@ -56,7 +56,7 @@ public class StatisticsCalculator {
         return prizeAmountSummation;
     }
 
-    private void calculatePercent(long prizeAmountSummation) {
+    private void calculatePercentAndPrintPercent(long prizeAmountSummation) {
         double rate = (double) prizeAmountSummation / (boughtLottos.getAmount() * 1000);
         double percent = (double) Math.round(rate * 1000) / 10;
         System.out.print("총 수익률은 " + percent + "%입니다.");

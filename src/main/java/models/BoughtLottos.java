@@ -25,9 +25,8 @@ public class BoughtLottos {
     }
 
     private Lotto createLottoNumbers() {
-        //immutable 오류로 인해 new로 생성하고 반환. (테스트 코드 오류 1 해결)
-        List<Integer> lottoNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(LottoConstant.NUMBER_START
-                , LottoConstant.NUMBER_END, LottoConstant.NUMBERS_SIZE));
+        List<Integer> lottoNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(
+                LottoConstant.NUMBER_START, LottoConstant.NUMBER_END, LottoConstant.NUMBERS_SIZE));
         return new Lotto(lottoNumbers);
     }
 
