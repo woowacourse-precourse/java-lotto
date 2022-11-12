@@ -2,8 +2,8 @@ package lotto.domain;
 
 import constants.ExceptionMessage;
 import constants.LottoGame;
-import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GeneralWinNumber {
 
@@ -23,7 +23,7 @@ public class GeneralWinNumber {
             throw new IllegalArgumentException(ExceptionMessage.WITHIN_RANGE);
         }
 
-        if (isDuplicateNumber(generalWinNumbers)) {
+        if (Set.copyOf(generalWinNumbers).size() != generalWinNumbers.size()) {
             throw new IllegalArgumentException(ExceptionMessage.DUPLICATE_NUMBERS);
         }
     }
@@ -41,11 +41,7 @@ public class GeneralWinNumber {
 
     private boolean isWithinRange(List<Integer> generalWinNumbers) {
         return generalWinNumbers.stream()
-                .anyMatch(number -> number < LottoGame.LOTTO_MIN_RANGE || number > LottoGame.LOTTO_MAX_RANGE);
-    }
-
-    private boolean isDuplicateNumber(List<Integer> generalWinNumbers) {
-        return new HashSet<>(generalWinNumbers).size() != generalWinNumbers.size();
+                .anyMatch(number -> !(number >= LottoGame.LOTTO_MIN_RANGE && number <= LottoGame.LOTTO_MAX_RANGE));
     }
 
 }

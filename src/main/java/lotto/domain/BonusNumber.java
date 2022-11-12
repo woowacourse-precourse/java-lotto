@@ -13,7 +13,7 @@ public class BonusNumber {
     }
 
     public void validate(int bonusNumber) {
-        if (bonusNumber < LottoGame.LOTTO_MIN_RANGE || bonusNumber > LottoGame.LOTTO_MAX_RANGE) {
+        if (!(bonusNumber >= LottoGame.LOTTO_MIN_RANGE && bonusNumber <= LottoGame.LOTTO_MAX_RANGE)) {
             throw new IllegalArgumentException(ExceptionMessage.WITHIN_RANGE);
         }
     }
