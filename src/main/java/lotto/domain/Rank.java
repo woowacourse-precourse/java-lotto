@@ -1,37 +1,46 @@
 package lotto.domain;
 
-import lotto.Lotto;
+import lotto.domain.chart.RankChart;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class Rank {
+public class Compensation {
 
-    public static List<Integer> makeRank(List<Lotto> lottoNumbers, List<Integer> winNumbers, int bonus) {
-        List<Integer> ranked = new ArrayList<>();
-        for (Lotto lotto : lottoNumbers) {
-            ranked.add(rankNumber(lotto, winNumbers, bonus));
+    public static List<Integer> li(List<Integer> ranking) {
+        List<Integer> li = new ArrayList<>();
+        for (int i : ranking) {
+            li.add(jk(i));
+
         }
-        return ranked;
+        return li;
     }
 
-    private static int rankNumber(Lotto lotto, List<Integer> winNumbers, int bonus) {
-        int ranking = lotto.value().stream()
-                .filter(number -> winNumbers.stream()
-                        .anyMatch(Predicate.isEqual(number)))
-                .collect(Collectors.toList()).size();
-        if (ranking == 5) {
-            ranking += matchBonus(lotto, bonus);
-        }
-        return ranking;
-    }
+    public static int jk(int i) {
+        if (i == RankChart.FirstPlace.getValue()) {
+            return RankChart.FirstPlace.getValue();
 
-    private static int matchBonus(Lotto lotto, int bonus) {
-        if (lotto.value().contains(bonus)) {
-            return 2;
+        }
+        if (i == RankChart.SecondPlace.getValue()) {
+            return RankChart.SecondPlace.getValue();
+
+        }
+        if (i == RankChart.ThirdPlace.getValue()) {
+            return RankChart.SecondPlace.getValue();
+
+        }
+        if (i == RankChart.FourthPlace.getValue()) {
+            return RankChart.FourthPlace.getValue();
+
+        }
+        if (i == RankChart.FifthPlace.getValue()) {
+            return RankChart.FifthPlace.getValue();
         }
         return 0;
     }
+
+
 }
+
+
+
