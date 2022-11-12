@@ -10,31 +10,43 @@ public class Buying {
 
     private BoughtLottos boughtLottos;
 
-    public Buying(String amountPaid) {
-        boughtLottos = proceedBuying(amountPaid);
+    public Buying() {
+        boughtLottos = proceedBuying(inputAmountPaid());
         boughtLottos.printLottoList();
     }
 
     private BoughtLottos proceedBuying(String amountPaid) {
-        return buyLottos(calculateAvailableAmount(amountPaid));
+        return new BoughtLottos(calculateAvailableAmount(amountPaid));
+    }
+
+    private String inputAmountPaid() {
+        printInputAmountPaidText();
+        String amountPaidInput = Input.input();
+
+        if (amountPaidInput.contains(",")) {
+            IllegalArgument.handleException(IllegalArgument.NOT_DIGIT_TEXT.getMessage());
+        }
+
+        return amountPaidInput;
     }
 
     int calculateAvailableAmount(String amountPaidInput) {
         int amountPaid = Integer.parseInt(amountPaidInput);
 
-        if (amountPaid % LottoConstant.ONE_LOTTO_PRICE != 0) {
-            IllegalArgument.handleException(IllegalArgument.NOT_DIVISION.getMessage());
+        if (amountPaid % LottoConstant.LOTTO_PRICE == 0) {
+            return amountPaid / LottoConstant.LOTTO_PRICE;
         }
 
-        return amountPaid / LottoConstant.ONE_LOTTO_PRICE;
+        IllegalArgument.handleException(IllegalArgument.NOT_DIVISION.getMessage());
+        return -1;
     }
 
-    private BoughtLottos buyLottos(int amount) {
-        return new BoughtLottos(amount);
-    }
-
-    public BoughtLottos getBuyingLottos() {
+    public BoughtLottos getBoughtLottos() {
         return boughtLottos;
+    }
+
+    public static void printInputAmountPaidText() {
+        System.out.println("구입 금액을 입력해 주세요.");
     }
 
 }
