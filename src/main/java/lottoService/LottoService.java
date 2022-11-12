@@ -15,6 +15,12 @@ public class LottoService {
 
     LottoGameMessage lottoGameMessage = new LottoGameMessage();
 
+    public void printPlayerLottoNumberAndCreateLottoNumber(Player player){
+        lottoGameMessage.printPurchaseCountMessage(player.getLottoCount());
+        createPlayerRandomLottoPickNumbers(player);
+        lottoGameMessage.printPlayerRandomLottoPickNumbers(player);
+    }
+
     public void isNumber(String number){
         try {
             Integer.parseInt(number);
