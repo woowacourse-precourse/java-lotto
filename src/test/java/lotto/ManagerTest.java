@@ -105,6 +105,15 @@ public class ManagerTest {
         assertThatThrownBy(() -> manager.compareLottoTable(lottoTable, winningLotto, bonunsNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또 결과 종합하기")
+    @Test
+    void sumUpResult() {
+        Manager manager = new Manager();
+        List<Integer> sumOfResult = manager.sumUpResult(List.of(0, 2, 3, 3, 5, 15, 6, 2, 0, 1));
+
+        assertThat(sumOfResult).isEqualTo(List.of(2, 0, 1, 1, 1));
+    }
 }
 
 
