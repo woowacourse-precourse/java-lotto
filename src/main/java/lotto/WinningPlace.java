@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 public enum WinningPlace {
     FIRST_PLACE(6,0,2000000000,"6개 번호 일치"),
@@ -22,12 +23,14 @@ public enum WinningPlace {
         return this.message;
     }
 
-    public static WinningPlace getPlace(int correspondingNumber, int correspondingBonusNumber) {
-        return Arrays.stream(values())
+    public static WinningPlace getPlace(int correspondingNumber, int correspondingBonusNumber) throws Exception {
+        Optional<WinningPlace> getWinningPlace = Arrays.stream(values())
                 .filter(winningPlace -> winningPlace.correspondingNumber == correspondingNumber)
                 .filter(winningPlace -> winningPlace.correspondingBonusNumber == correspondingBonusNumber)
-                .findAny()
-                .orElseThrow();
+                .findAny();
+
+        return getWinningPlace
+                .orElseThrow(() -> new Exception(ErrorResponse.NOT_IN_WINNING_PLACE.getErrorMessage()));
     }
 
     WinningPlace(Integer correspondingNumber, Integer correspondingBonusNumber, Integer winnings, String message) {
