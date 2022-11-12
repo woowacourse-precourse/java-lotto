@@ -12,6 +12,7 @@
   - [x] PurchaseAmount
   - [x] WinningLotto
   - [x] BonusNumber
+  - [x] ProfitRate
   - [x] Prize (Enum 으로 구현)
 
 
@@ -32,7 +33,7 @@
 
 - Service
   - [x] LottoResult
-  - [x] ProfitRate
+  - [x] ProfitRateService
 
 
 - Input

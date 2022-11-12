@@ -25,7 +25,7 @@ class LottoResultTest {
                 new Lotto(List.of(1, 2, 3, 4, 7, 8)),
                 new Lotto(List.of(1, 2, 3, 7, 8, 9)));
         WinningLotto winningLotto = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), new BonusNumber(45));
-        Map<Prize, Integer> statistics = LottoResult.getStatistics(lotteries, winningLotto);
+        Map<Prize, Integer> statistics = LottoResultService.getStatistics(lotteries, winningLotto);
         assertThat(statistics.get(Prize.FIRST)).isEqualTo(2);
         assertThat(statistics.get(Prize.SECOND)).isEqualTo(1);
         assertThat(statistics.get(Prize.THIRD)).isEqualTo(1);
@@ -43,7 +43,7 @@ class LottoResultTest {
         statistics.put(Prize.FOURTH, 1);
         statistics.put(Prize.FIFTH, 1);
         statistics.put(Prize.NONE, 100);
-        double prizeMoney = LottoResult.getPrizeMoney(statistics);
+        double prizeMoney = LottoResultService.getPrizeMoney(statistics);
         assertThat(prizeMoney).isEqualTo(2031555000L);
     }
 

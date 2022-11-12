@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LottoResult {
+public class LottoResultService {
     public static Map<Prize, Integer> getStatistics(List<Lotto> lotteries, WinningLotto winningNumbers) {
         Map<Prize, Integer> statistics = new HashMap<>();
         init(statistics);

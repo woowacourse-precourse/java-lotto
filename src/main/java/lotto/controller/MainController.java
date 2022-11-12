@@ -18,11 +18,12 @@ public class MainController {
         List<Integer> winningNumbers = InputWinningNumbers.input();
         BonusNumber bonusNumber = InputBonusNumber.input();
         WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
-        Map<Prize, Integer> statistics = LottoResult.getStatistics(ticket.getLotteries(), winningLotto);
+        Map<Prize, Integer> statistics = LottoResultService.getStatistics(ticket.getLotteries(), winningLotto);
         StatisticsView.outPut(statistics);
 
-        double prizeMoney = LottoResult.getPrizeMoney(statistics);
-        double rate = ProfitRate.calculate(purchaseAmount.getMoney(), prizeMoney);
-        ProfitRateView.outPut(rate);
+        double prizeMoney = LottoResultService.getPrizeMoney(statistics);
+        double rate = ProfitRateService.calculateRate(purchaseAmount.getMoney(), prizeMoney);
+        ProfitRate profitRate = new ProfitRate(rate);
+        ProfitRateView.outPut(profitRate);
     }
 }
