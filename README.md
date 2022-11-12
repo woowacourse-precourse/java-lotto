@@ -55,6 +55,63 @@ BUILD SUCCESSFUL in 0s
 - 사용자가 구매한 로또 번호와 당첨 번호를 비교하여 당첨 내역 및 수익률을 출력하고 로또 게임을 종료한다.
 - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
 
+### 🔥 구현 기능 목록
+
+- [ ] **CLASS 1.** `Lotto`
+  - **Class Variables:**
+    - [ ] `private final List<Integer> numbers`
+  - **Class Methods:**
+    - [ ] `public Lotto(List<Integer> numbers)`
+    - [ ] `private void validate(List<Integer> numbers)`
+    - [ ] `private void validateSizeOfNumbers(List<Integer> numbers)`
+    - [ ] `private void validateDuplicateNumbers(List<Integer> numbers)`
+    - [ ] `private void validateRangeOfNumbers(List<Integer> numbers)`
+- [ ] **CLASS 2.** `WinLotto extends Lotto`
+  - **Class Variables:**
+    - [ ] `private final int bonusNumber`
+  - **Class Methods:**
+    - [ ] `public WinLotto(List<Inteber> winNumbers, int bonusNumber)`
+- [ ] **CLASS 3.** `LottoDraw`
+  - **Class Methods:**
+    - [ ] `public static LottoRank getLottoRank(Lotto, WinLotto)`
+    - [ ] `private static int getWinNumber(Lotto, WinLotto)`
+    - [ ] `private static boolean existBonusNumber(Lotto, WinLotto)`
+- [ ] **CLASS 4.** `enum LottoRank`
+  - **Class Variables:**
+    - [ ] `FIRST(2000000000)`
+    - [ ] `SECOND(30000000)`
+    - [ ] `THIRD(1500000)`
+    - [ ] `FOURTH(50000)`
+    - [ ] `FIFTH(5000)`
+    - [ ] `LOSE(0)`
+    - [ ] `private final int winPrice`
+  - **Class Methods**
+    - [ ] `public LottoRank(int winPrice)`
+    - [ ] `public int getWinPrice()`
+- [ ] **CLASS 5.** `User`
+  - **Class Variables:**
+    - [ ] `private final int purchaseMoney`
+    - [ ] `private final int incomeMoney`
+    - [ ] `private final List<Lotto> lottoList`
+    - [ ] `private HashMap<LottoRank, Integer> winResult`
+  - **Class Methods:**
+    - [ ] `public User(purchaseMoney, List<Lotto> lottoList, WinLotto winLotto)`
+    - [ ] `private void validatePurchaseMoney(int purchaseMoney)`
+    - [ ] `private int getIncomeMoney(List<Lotto> lottoList, WinLotto winLotto)`
+    - [ ] `public float getIncomePercent()`
+    - [ ] `public HashMap<LottoRank, Integer> getWinResult()`
+- [ ] **CLASS 6.** `UserInterface`
+  - [ ] **Class Methods:**
+    - [ ] `public static void printPurchaseMoneyMessage()`
+    - [ ] `public static int inputPurchaseMoney`
+    - [ ] `public static void printWinNumbersMessage()`
+    - [ ] `public static List<Integer> inputWinNumbers()`
+    - [ ] `public static void printBonusNumberMessage()`
+    - [ ] `public static int inputBonusNumber()`
+    - [ ] `public static void printLottoList(List<Lotto lottoList)`
+    - [ ] `public static void printWinResult(HashMap<LottoRang, Integer>)`
+    - [ ] `public static void printIncomePercent(int incomePercent)`
+
 ### 입출력 요구 사항
 
 #### 입력
