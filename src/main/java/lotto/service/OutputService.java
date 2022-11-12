@@ -2,6 +2,7 @@ package lotto.service;
 
 import java.util.List;
 import lotto.entity.Lotto;
+import lotto.entity.Result;
 
 public class OutputService {
 
@@ -17,6 +18,12 @@ public class OutputService {
     public static void printGeneratedLottos(List<Lotto> lottos) {
         System.out.println(lottos.size() + PURCHASE_MESSAGE);
         lottos.forEach(System.out::println);
+    }
+
+    public static void printResult(Result result) {
+        System.out.println(WIN_STATUS_MESSAGE);
+        System.out.println(LINE);
+        System.out.println(result);
     }
 
     public static void printRateOfReturn(Double rate) {
