@@ -8,8 +8,8 @@ public class LottoGenerator {
     private static List<Lotto> lottos;
     private final int quantity;
 
-    public LottoGenerator(int quantity) {
-        this.quantity = quantity;
+    public LottoGenerator(int money) {
+        this.quantity = money / 1000;
     }
 
     public List<Lotto> generateLottos() {

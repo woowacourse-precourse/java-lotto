@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class InputMoney {
     private int money;
 
-    public int receiveInput() {
+    public int input() {
         isValidMoney(Console.readLine());
         return money;
     }

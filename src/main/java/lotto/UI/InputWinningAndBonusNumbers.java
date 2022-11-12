@@ -1,24 +1,21 @@
-package lotto.domain;
+package lotto.UI;
 
+import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
+import lotto.domain.Lotto;
 
-public class DrawLotto {
-    private final Lotto winningNumbers;
-    private final Integer bonusNumber;
+public class InputWinningAndBonusNumbers {
+    private Lotto winningNumbers;
+    private Integer bonusNumber;
 
-    public DrawLotto(String numbers, String number) {
-        winningNumbers = drawWinningNumbers(numbers);
-        bonusNumber = stringToInteger(number);
-        validateBonusNumber();
+    public void inputWinningNumbers() {
+        winningNumbers = drawWinningNumbers(Console.readLine());
+
     }
 
-    private Lotto drawWinningNumbers(String numbers) {
-        List<Integer> list = new ArrayList<>();
-        for (String s : numbers.trim().split(",")) {
-            list.add(stringToInteger(s));
-        }
-        return new Lotto(list);
+    public void inputBonusNumber() {
+        bonusNumber = stringToInteger(Console.readLine());
     }
 
     private Integer stringToInteger(String s) {
@@ -38,6 +35,14 @@ public class DrawLotto {
         if (bonusNumber < 1 || bonusNumber > 45) {
             throw new IllegalArgumentException("[Error] 보너스 번호는 1~45 사이의 숫자입니다.");
         }
+    }
+
+    private Lotto drawWinningNumbers(String numbers) {
+        List<Integer> list = new ArrayList<>();
+        for (String s : numbers.trim().split(",")) {
+            list.add(stringToInteger(s));
+        }
+        return new Lotto(list);
     }
 
     public Lotto getWinningNumbers() {
