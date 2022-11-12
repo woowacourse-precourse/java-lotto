@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class PayingMoneyTest {
-    
+
     @Test
     void 로또_구입_금액_정상적인_입력값_처리하기() {
         Assertions.assertThatCode(() -> new PayingMoney(" 1 0 0 0 "))
