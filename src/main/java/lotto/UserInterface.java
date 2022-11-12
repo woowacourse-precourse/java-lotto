@@ -57,6 +57,6 @@ public class UserInterface {
     }
 
     public static void printIncomePercent(float incomePercent) {
-        System.out.printf("총 수익률은 %.2f%%입니다.\n", incomePercent);
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", incomePercent);
     }
 }
