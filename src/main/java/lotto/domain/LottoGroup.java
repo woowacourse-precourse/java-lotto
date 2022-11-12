@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class LottoGroup {
@@ -11,11 +10,7 @@ public class LottoGroup {
         this.lottoGroup = lottoGroup;
     }
 
-    public List<List<Integer>> getLottoNumbers() {
-        List<List<Integer>> lottoNumbers = new ArrayList<>();
-        for (Lotto lotto : lottoGroup) {
-            lottoNumbers.add(lotto.getNumbers());
-        }
-        return lottoNumbers;
+    public List<Lotto> getLottoGroup() {
+        return lottoGroup;
     }
 }

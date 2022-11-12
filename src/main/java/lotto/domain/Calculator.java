@@ -17,16 +17,13 @@ public class Calculator {
 
     public List<Integer> calculateMatchResults(LottoGroup lottoGroup,
             WinningLotto winningLotto, BonusNumber bonusNumber) {
-        List<List<Integer>> groupOfUserLotteryNumbers = lottoGroup.getLottoNumbers();
-        List<Integer> winningNumbers = winningLotto.getNumbers();
-        int bonus = bonusNumber.getNumber();
         Comparator comparator = new Comparator();
         List<Integer> matchResults = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
         int matchCount = 0;
-        for (List<Integer> userLotteryNumbers : groupOfUserLotteryNumbers) {
-            matchCount = comparator.getMatchCount(userLotteryNumbers, winningNumbers);
+        for (Lotto lotto : lottoGroup.getLottoGroup()) {
+            matchCount = comparator.getMatchCount(lotto, winningLotto.getNumbers());
             if (matchCount == 5) {
-                setMatchResultsWithBonusNumber(bonus, comparator, matchResults, userLotteryNumbers);
+                setMatchResultsWithBonusNumber(bonusNumber.getNumber(), comparator, matchResults, lotto);
                 continue;
             }
             if (matchCount >= 3) {
@@ -52,13 +49,13 @@ public class Calculator {
     }
 
     private void setMatchResultsWithBonusNumber(int bonusNumber, Comparator comparator, List<Integer> matchResults,
-            List<Integer> userLotteryNumbers) {
-        int index = getIndexWithBonusNumber(bonusNumber, userLotteryNumbers, comparator);
+            Lotto lotto) {
+        int index = getIndexWithBonusNumber(bonusNumber, lotto, comparator);
         matchResults.set(index, matchResults.get(index) + 1);
     }
 
-    private int getIndexWithBonusNumber(int bonusNumber, List<Integer> userLotteryNumbers, Comparator comparator) {
-        if (!comparator.hasBonusNumber(userLotteryNumbers, bonusNumber)) {
+    private int getIndexWithBonusNumber(int bonusNumber, Lotto lotto, Comparator comparator) {
+        if (!comparator.hasBonusNumber(lotto, bonusNumber)) {
             return FIVE_MATCHES_WITHOUT_BONUS.getIndex();
         }
         return FIVE_MATCHES_WITH_BONUS.getIndex();
