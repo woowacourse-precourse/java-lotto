@@ -99,7 +99,7 @@ public class Application {
         }
         return result;
     }
-    static void check_result(Lotto lotto, List<List<Integer>> lotto_nums, int bonus){
+    static void check_result(Lotto lotto, List<List<Integer>> lotto_nums, int bonus,int money){
         List<Integer> count_rank = new ArrayList<Integer>(Arrays.asList(0,0,0,0,0));
         float result;
         int price = 0;
@@ -108,10 +108,11 @@ public class Application {
             temp = lotto_nums.get(i);
             result = check_same_num(lotto,temp,bonus);
             count_rank = count_result(count_rank,result);
-            price = calculate_price(price,result);
+            price = sum_price(price,result);
         }
 //        return count_rank;
         write_result(count_rank);
+        calculate_price(price,money);
     }
 
     static List<Integer> count_result (List<Integer> count_rank, float result){
@@ -123,7 +124,7 @@ public class Application {
         return count_rank;
     }
 
-    static int calculate_price(int price,float result){
+    static int sum_price(int price,float result){
         for(RankType r: RankType.values()){
             if(r.getNum()==result){
                 price += r.getPrice();
@@ -135,11 +136,17 @@ public class Application {
         System.out.println("당첨 통계");
         System.out.println("---");
         for(RankType r : RankType.values()){
-            System.out.print(r.getResult());
-            System.out.println(" - "+count_rank.get(r.getCheck()) +"개");
+            System.out.print(r.getResult() + " - "+count_rank.get(r.getCheck()) +"개\n");
+//            System.out.println(" - "+count_rank.get(r.getCheck()) +"개");
         }
+    }
+    static void calculate_price(int price,int money){
+        float result = ((float)price /(float)money) * 100;
+        System.out.println("총 수익률은 " + String.format("%.1f",result) + "%입니다.\n");
 
     }
+
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int money;
@@ -156,16 +163,16 @@ public class Application {
             Lotto lotto = new Lotto(winning_num);
             bonus = read_bonus();
             check_bonus(lotto,bonus);
-            check_result(lotto, lotto_nums,bonus);
+            check_result(lotto, lotto_nums,bonus,money);
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
     }
     public enum RankType{
-        RANK_FIFTH(0,3,"3개 일치(5,000원)",5000),
-        RANK_FOURTH(1,4,"4개 일치(50,000원)",50000),
-        RANk_THIRD(2,5,"5개 일치(1,500,000원)",1500000),
-        RANK_SECOND(3,5.5f,"5개 일치,보너스 볼 일치(30,000,000원)",30000000),
+        RANK_FIFTH(0,3,"3개 일치 (5,000원)",5000),
+        RANK_FOURTH(1,4,"4개 일치 (50,000원)",50000),
+        RANk_THIRD(2,5,"5개 일치 (1,500,000원)",1500000),
+        RANK_SECOND(3,5.5f,"5개 일치, 보너스 볼 일치 (30,000,000원)",30000000),
         RANK_FIRST(4,6,"6개 일치 (2,000,000,000원)",2000000000);
         final private int check;
         final private float num;
