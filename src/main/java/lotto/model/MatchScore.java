@@ -11,4 +11,5 @@ public enum MatchScore {
     private final String score;
 
     MatchScore(final String score) {this.score=score;}
+    public String getScore() { return score;}
 }
