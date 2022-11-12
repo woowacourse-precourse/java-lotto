@@ -113,7 +113,8 @@ public class Model {
     }
 
     private List<Integer> getLottoNumber() {
-        List<Integer> lottoNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        List<Integer> lottoNumbers = new ArrayList<>
+                (Randoms.pickUniqueNumbersInRange(1, 45, 6));
         Collections.sort(lottoNumbers);
 
         return lottoNumbers;
