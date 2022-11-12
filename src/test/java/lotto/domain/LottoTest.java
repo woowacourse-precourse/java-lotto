@@ -46,7 +46,6 @@ class LottoTest {
     void autoLottoAscendingOrderTest2() {
         Lotto lotto = Lotto.createRandomNumbers();
         List<Integer> list = lotto.getNumbers();
-        System.out.println("list = " + list);
         Assertions.assertThat(isSorted(list)).isTrue();
     }
 
