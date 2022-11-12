@@ -6,18 +6,27 @@ import java.util.List;
 import java.util.Map;
 
 public class OutputController {
-    public HashMap<Integer,Integer> correctnumber;
+    public HashMap<String,Integer> correctnumber;
 
-    public int calCorrectNumber(List<Integer> lottonumber, List<Integer> lottoanswer,int bonusnumber) {
-        int correctnumber;
+    public String calCorrectNumber(List<Integer> lottonumber, List<Integer> lottoanswer,int bonusnumber) {
+        String correctnumber;
         lottonumber.retainAll(lottoanswer);
 
+        correctnumber = numToString(lottonumber.size());
         if(lottonumber.size() == 5 && lottonumber.contains(bonusnumber)) {
-            correctnumber = 7;
+            correctnumber = "Bonus";
         }
-        correctnumber = lottonumber.size();
         return correctnumber;
     }
 
+    public String numToString(int number) {
+        switch (number) {
+            case 3: return "Three";
+            case 4: return "Four";
+            case 5: return "Five";
+            case 6: return "Six";
+        }
+        return "Zero";
+    }
 
 }
