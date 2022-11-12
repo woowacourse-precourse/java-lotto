@@ -20,9 +20,7 @@ public class Purchase {
         Validation.existOnlyNumber(userInput);
         amount = Integer.parseInt(userInput);
 
-        Validation.isValidRange(amount);
         Validation.isValidUnit(amount);
-
         return amount / 1000;
     }
 
