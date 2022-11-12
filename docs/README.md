@@ -1,13 +1,13 @@
-로또 게임 기능
+# 로또 게임 기능 list
 
 ### 로또(티켓)
 - 6개의 수를 가지고 있다.
 
 ### 로또 생성자
 - 로또 번호 랜덤 발행(o)
-    - 로또 번호의 숫자 범위는 1~45까지이다.
-    - 한개의 로또에는 중복되지 않는 6개의 수이다.
-    - camp.nextstep.edu.missionutils Library를 이용한다.
+    - 로또 번호의 숫자 범위는 1~45까지이다.(o)
+    - 한개의 로또에는 중복되지 않는 6개의 수이다.(o)
+    - camp.nextstep.edu.missionutils Library를 이용한다.(o)
 
 
 ### 사용자
@@ -27,3 +27,10 @@
 - 수익률 계산하기
     - 1등~5등 일치 개수 * 등수 별 수익금
 - 수익률과 일치번호 출력하기
+
+
+### Input/Output 
+- 입력
+  - camp.nextstep.edu.missionutils Library를 이용한다.(o)
+
+
