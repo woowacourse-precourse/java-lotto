@@ -55,6 +55,13 @@ public class Validation {
         }
         isDuplicatedWinningNumbers(winningNumbers.stream().map(Integer::parseInt).collect(Collectors.toList()));
     }
+
+    // 당첨번호와 중복되지 않는지 검증
+    public static void isBonusNumberDuplicatedWithWinningNumbers(List<Integer> winningNumbers, int bonusNumber) {
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호를 당첨번호와 중복되지 않게 입력해 주세요");
+        }
+    }
 }
 
 
