@@ -40,4 +40,10 @@ class MoneyTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 구입 금액은 1000원보다 커야합니다.");
     }
+
+    @Test
+    void 발행할_로또의_개수가_맞는지() {
+        Money money = new Money("8000");
+        assertThat(money.getTicketCount()).isEqualTo(8);
+    }
 }

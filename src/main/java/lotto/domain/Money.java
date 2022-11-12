@@ -29,4 +29,8 @@ public class Money {
     public int getMoney() {
         return money;
     }
+
+    public int getTicketCount() {
+        return money / MONEY_DIVIDE_UNIT;
+    }
 }
