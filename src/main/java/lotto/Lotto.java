@@ -16,7 +16,7 @@ public class Lotto {
 	}
 
 	private void validate(List<Integer> numbers) {
-		if (numbers.size() != 6) {
+		if (numbers.size() != Rule.LOTTO_NUMBER_DIGITS.getValue()) {
 			throw new IllegalArgumentException();
 		}
 
@@ -28,7 +28,7 @@ public class Lotto {
 	private boolean isDuplicateExists(List<Integer> numbers) {
 		Set<Integer> checkDuplicate = new HashSet<>(numbers);
 		checkDuplicate.retainAll(numbers);
-		return checkDuplicate.size() != 6;
+		return checkDuplicate.size() != Rule.LOTTO_NUMBER_DIGITS.getValue();
 	}
 
 	public List<Integer> getNumbers() {

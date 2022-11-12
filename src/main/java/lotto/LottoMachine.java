@@ -7,35 +7,32 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LottoIssuer {
+public class LottoMachine {
 
-	private static int purchasedLotto;
+
 	public static List<List<Integer>> issuedLottoes = new ArrayList<>();
 
-	public LottoIssuer(int purchasedLotto) {
-		LottoIssuer.purchasedLotto = purchasedLotto;
-		issueLotto();
-	}
+	public LottoMachine() {}
 
-	private static void issueLotto() {
+	public void issueLotto(int purchasedLotto) {
 		for (int i = 0; i < purchasedLotto; i++) {
 			Lotto lotto = new Lotto(generateLottoNumbers());
 			issuedLottoes.add(lotto.getNumbers());
 		}
 	}
 
-	private static List<Integer> generateLottoNumbers() {
-		return sortNumbers(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+	private List<Integer> generateLottoNumbers() {
+		return sortNumbers(Randoms.pickUniqueNumbersInRange(Rule.LOTTO_FIRST_NUMBER_INCLUSIVE.getValue(), Rule.LOTTO_LAST_NUMBER_INCLUSIVE.getValue(), Rule.LOTTO_NUMBER_DIGITS.getValue()));
 	}
 
-	private static List<Integer> sortNumbers(List<Integer> numbers) {
+	private List<Integer> sortNumbers(List<Integer> numbers) {
 		if (!isSortedAsc(numbers)) {    // 테스트로 설정된 List가 UnmodifiableList이면서 오름차순이기 때문에 이와 같은 수행을 더해준다
 			numbers.sort(Comparator.naturalOrder());
 		}
 		return numbers;
 	}
 
-	private static boolean isSortedAsc(List<Integer> numbers) {
+	private boolean isSortedAsc(List<Integer> numbers) {
 		return numbers.stream().sorted().collect(Collectors.toList()).equals(numbers);
 	}
 }
