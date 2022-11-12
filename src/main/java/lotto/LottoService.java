@@ -1,6 +1,9 @@
 package lotto;
 
 import java.util.List;
+import constant.*;
+
+import static constant.LottoNumber.REQUIRE_LOTTO_NUMBER_COUNT;
 
 public class LottoService {
     private final List<Integer> numbers;
@@ -11,7 +14,7 @@ public class LottoService {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() !=REQUIRE_LOTTO_NUMBER_COUNT.getValue()) {
             throw new IllegalArgumentException();
         }
 
