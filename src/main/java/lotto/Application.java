@@ -30,6 +30,10 @@ public class Application {
                 bonusNumberValidator);
         LottoApplication lottoApplication = new LottoApplication(inputView, resultView);
 
-        lottoApplication.run();
+        try {
+            lottoApplication.run();
+        } catch (IllegalArgumentException illegalArgumentException) {
+            System.out.println(illegalArgumentException.getMessage());
+        }
     }
 }
