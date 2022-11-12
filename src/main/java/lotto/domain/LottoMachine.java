@@ -12,9 +12,9 @@ public class LottoMachine {
 	public static void start() {
 		try {
 			buyTicket();
-			resultOfWinning();
+			getResultOfWinning();
 		} catch (IllegalArgumentException error) {
-			System.out.println(error.getMessage());
+			System.out.println(error);
 			return;
 		}
 	}
@@ -22,12 +22,12 @@ public class LottoMachine {
 	private static void buyTicket() {
 		money = new Money(Input.getPurchaseAmount());
 		lottoTicket = new LottoTicket(money.getNumberOfPurchases());
-		LottoTicketView.buyingLottoTicketView(money.getNumberOfPurchases(), lottoTicket.getTicket());
+		LottoTicketView.getLottoTicketView(money.getNumberOfPurchases(), lottoTicket.getTicket());
 		winningNumbers = new WinningNumbers(Input.getWinningNumber());
 		bonusNumber = new BonusNumber(Input.getBonusNumber(), winningNumbers.getNumbers());
 	}
 
-	private static void resultOfWinning() {
+	private static void getResultOfWinning() {
 		Checker checker = new Checker(lottoTicket.getTicket(), winningNumbers.getNumbers(), bonusNumber.getNumber());
 		Earning earning = new Earning(money.getMoney(), checker.getTotalCashPrize());
 		StatisticsView.getStatisticsView(checker.getWinGames(), earning.getEarningRate());

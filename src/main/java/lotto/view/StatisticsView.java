@@ -14,7 +14,7 @@ public class StatisticsView {
 		getEarningRateView(earningRate);
 	}
 
-	public static void getWinGamesView(Map<Grade, Integer> winGames) {
+	private static void getWinGamesView(Map<Grade, Integer> winGames) {
 		winGames.forEach((grade, count) -> {
 			String reward = getReward(grade, count);
 			System.out.println(reward);

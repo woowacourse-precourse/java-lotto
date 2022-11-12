@@ -6,15 +6,17 @@ public class Money {
 	private final String NOT_NUMBER = "[ERROR] 숫자만 입력이 가능합니다.";
 	private final String INVALID_FIRST_DIGIT_ZERO = "[ERROR] 숫자의 첫째자리로 0은 불가능합니다.";
 	private final String NOT_MULTIPLE_OF_THOUSAND = "[ERROR] 숫자는 1000이상부터 가능합니다.";
+	private final String OVER_MAX_NUMBER = "[ERROR] 최대 입력 가능 숫자는 2000000000입니다.";
+	private final long MAX_NUMBER = 2000000000;
 	private final int DEFAULT_UNIT = 1000;
-
-	private int money;
+	private long money;
 
 	public Money(String money) {
 		validateNumberRange(money);
 		validateFirstDigitZero(money);
 		validateMultipleOfThousand(money);
-		this.money = Integer.parseInt(money);
+		validateOverMaxNumber(money);
+		this.money = Long.parseLong(money);
 	}
 
 	private void validateNumberRange(String money) {
@@ -30,17 +32,24 @@ public class Money {
 	}
 
 	private void validateMultipleOfThousand(String money) {
-		int convertMoney = Integer.parseInt(money);
-		if (convertMoney % 1000 != 0) {
+		long convertMoney = Long.parseLong(money);
+		if (convertMoney % DEFAULT_UNIT != 0) {
 			throw new IllegalArgumentException(NOT_MULTIPLE_OF_THOUSAND);
 		}
 	}
 
-	public int getMoney() {
+	private void validateOverMaxNumber(String money) {
+		long convertMoney = Long.parseLong(money);
+		if (convertMoney > MAX_NUMBER) {
+			throw new IllegalArgumentException(OVER_MAX_NUMBER);
+		}
+	}
+
+	public long getMoney() {
 		return this.money;
 	}
 
-	public int getNumberOfPurchases() {
+	public long getNumberOfPurchases() {
 		return this.money / DEFAULT_UNIT;
 	}
 }

@@ -10,8 +10,8 @@ import java.util.Map;
 public class Checker {
 	private List<Lotto> lottoTicket;
 	private List<Integer> winningNumbers;
-	int bonusNumber;
-	Map<Grade, Integer> winGames = new EnumMap<>(Grade.class);
+	private int bonusNumber;
+	private Map<Grade, Integer> winGames = new EnumMap<>(Grade.class);
 
 	public Checker(List<Lotto> lottoTicket, List<Integer> winningNumbers, int bonusNumber) {
 		this.lottoTicket = lottoTicket;

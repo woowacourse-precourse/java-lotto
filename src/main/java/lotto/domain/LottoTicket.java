@@ -10,14 +10,14 @@ public class LottoTicket {
 	private final int LOTTO_NUMBER_LENGTH = 6;
 	private List<Lotto> ticket;
 
-	public LottoTicket(int numberOfLotto) {
+	public LottoTicket(long numberOfLotto) {
 		this.ticket = createLottoTicket(numberOfLotto);
 	}
 
-	private List<Lotto> createLottoTicket(int NumberOfLotto) {
+	private List<Lotto> createLottoTicket(long numberOfLotto) {
 		List<Lotto> lottoTicket = new ArrayList<>();
-		int createNumber = 0;
-		while (createNumber++ < NumberOfLotto) {
+		long createCount = 0;
+		while (createCount++ < numberOfLotto) {
 			Lotto lotto = new Lotto(createLottoNumbers());
 			lottoTicket.add(lotto);
 		}

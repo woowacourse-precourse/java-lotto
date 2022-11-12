@@ -66,4 +66,16 @@ class MoneyTest {
 		String expectedMessage = "[ERROR] 숫자는 1000이상부터 가능합니다.";
 		assertThat(expectedMessage).isEqualTo(exception.getMessage());
 	}
+
+	@Test
+	@DisplayName("2000000000보다 높은 수를 입력하면 예외를 발생시킨다.")
+	void validateOverMaxNumberTest() {
+		String inputMoney = "3000000000";
+		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+			Money money = new Money(inputMoney);
+		});
+
+		String expectedMessage = "[ERROR] 최대 입력 가능 숫자는 2000000000입니다.";
+		assertThat(expectedMessage).isEqualTo(exception.getMessage());
+	}
 }

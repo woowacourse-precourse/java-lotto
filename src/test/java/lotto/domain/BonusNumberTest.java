@@ -23,7 +23,7 @@ class BonusNumberTest {
 	}
 
 	@Test
-	@DisplayName("숫자가 입려되지 않은 경우 예외를 발생시킨다.")
+	@DisplayName("숫자외 다른 문자가 입력된 경우 예외를 발생시킨다.")
 	void bonusNumberBoundaryTest2() {
 		List<Integer> winningNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
 		String inputBonusNumber = "4a";
@@ -47,5 +47,4 @@ class BonusNumberTest {
 		String expectedMessage = "[ERROR] 보너스번호와 당첨번호에는 중복이 없어야 합니다.";
 		assertThat(expectedMessage).isEqualTo(exception.getMessage());
 	}
-
 }
