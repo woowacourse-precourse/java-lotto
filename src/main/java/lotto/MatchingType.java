@@ -15,13 +15,6 @@ public enum MatchingType {
     MatchingType(int matchCount) {
         this.matchCount = matchCount;
     }
-    public int getMatchCount() {
-        return matchCount;
-    }
-
-    public boolean isFiveMatch() {
-        return this.matchCount == FIVE_MATCH.getMatchCount();
-    }
 
     public static MatchingType findByCorrectCount(int correctCount) {
         return Arrays.stream(MatchingType.values())
@@ -29,6 +22,14 @@ public enum MatchingType {
                         correctCount == matchingType.getMatchCount())
                 .findAny()
                 .orElse(NOT_MATCH);
+    }
+
+    public int getMatchCount() {
+        return matchCount;
+    }
+
+    public boolean isFiveMatch() {
+        return this.matchCount == FIVE_MATCH.getMatchCount();
     }
 
     public boolean isWinningType() {

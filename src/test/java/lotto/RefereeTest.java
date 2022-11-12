@@ -213,7 +213,8 @@ class RefereeTest {
                 .collect(Collectors.toList());
 
         // then
-        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH, SIX_MATCH);
+        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH,
+                SIX_MATCH);
         assertThat(counts).containsExactly(1, 0, 0, 0, 0);
     }
 
@@ -237,7 +238,8 @@ class RefereeTest {
                 .collect(Collectors.toList());
 
         // then
-        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH, SIX_MATCH);
+        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH,
+                SIX_MATCH);
         assertThat(counts).containsExactly(0, 1, 0, 0, 0);
     }
 
@@ -261,7 +263,8 @@ class RefereeTest {
                 .collect(Collectors.toList());
 
         // then
-        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH, SIX_MATCH);
+        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH,
+                SIX_MATCH);
         assertThat(counts).containsExactly(0, 0, 1, 0, 0);
     }
 
@@ -285,7 +288,8 @@ class RefereeTest {
                 .collect(Collectors.toList());
 
         // then
-        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH, SIX_MATCH);
+        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH,
+                SIX_MATCH);
         assertThat(counts).containsExactly(0, 0, 0, 1, 0);
     }
 
@@ -309,7 +313,8 @@ class RefereeTest {
                 .collect(Collectors.toList());
 
         // then
-        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH, SIX_MATCH);
+        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH,
+                SIX_MATCH);
         assertThat(counts).containsExactly(0, 0, 0, 0, 1);
     }
 
@@ -333,7 +338,8 @@ class RefereeTest {
                 .collect(Collectors.toList());
 
         // then
-        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH, SIX_MATCH);
+        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH,
+                SIX_MATCH);
         assertThat(counts).containsExactly(0, 0, 0, 0, 0);
     }
 
@@ -355,7 +361,8 @@ class RefereeTest {
                 .collect(Collectors.toList());
 
         // then
-        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH, SIX_MATCH);
+        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH,
+                SIX_MATCH);
         assertThat(counts).containsExactly(1, 0, 0, 0, 0);
     }
 
@@ -377,7 +384,8 @@ class RefereeTest {
                 .collect(Collectors.toList());
 
         // then
-        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH, SIX_MATCH);
+        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH,
+                SIX_MATCH);
         assertThat(counts).containsExactly(0, 1, 0, 0, 0);
     }
 
@@ -399,7 +407,8 @@ class RefereeTest {
                 .collect(Collectors.toList());
 
         // then
-        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH, SIX_MATCH);
+        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH,
+                SIX_MATCH);
         assertThat(counts).containsExactly(0, 0, 1, 0, 0);
     }
 
@@ -421,7 +430,8 @@ class RefereeTest {
                 .collect(Collectors.toList());
 
         // then
-        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH, SIX_MATCH);
+        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH,
+                SIX_MATCH);
         assertThat(counts).containsExactly(0, 0, 0, 1, 0);
     }
 
@@ -443,7 +453,8 @@ class RefereeTest {
                 .collect(Collectors.toList());
 
         // then
-        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH, SIX_MATCH);
+        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH,
+                SIX_MATCH);
         assertThat(counts).containsExactly(0, 0, 0, 0, 1);
     }
 
@@ -465,7 +476,8 @@ class RefereeTest {
                 .collect(Collectors.toList());
 
         // then
-        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH, SIX_MATCH);
+        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH,
+                SIX_MATCH);
         assertThat(counts).containsExactly(0, 0, 0, 0, 0);
     }
 
@@ -499,7 +511,8 @@ class RefereeTest {
                 .collect(Collectors.toList());
 
         // then
-        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH, SIX_MATCH);
+        assertThat(matchingTypes).containsExactly(THREE_MATCH, FOUR_MATCH, FIVE_MATCH, FIVE_WITH_BONUS_MATCH,
+                SIX_MATCH);
         assertThat(counts).containsExactly(2, 2, 2, 2, 2);
     }
 }
