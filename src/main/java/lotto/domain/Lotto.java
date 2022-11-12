@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
+    private static final int LOTTO_NUMBER_COUNT = 6;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -14,13 +16,13 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException();
         }
     }
 
     private void validateDuplication(List<Integer> numbers) {
-        if (new HashSet<>(numbers).size() != 6) {
+        if (new HashSet<>(numbers).size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException();
         }
     }
