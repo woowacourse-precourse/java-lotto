@@ -8,6 +8,10 @@ public class Constants {
         public static final String STATISTICS = "당첨 통계\n---";
     }
 
+    public static class Util {
+        public static final String LOTTO_NUMBER_SEPARATOR = ",";
+    }
+
     public static class Digit {
         public static final int LOTTO_PRICE = 1000;
         public static final int LOTTO_NUMBER_COUNT = 6;
