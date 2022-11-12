@@ -15,8 +15,7 @@ public class ProfitRateCalculator {
 	}
 
 	private double calculateProfitRate(int prizeMoney, int purchaseAmount) {
-		double profitRate = (double)prizeMoney / purchaseAmount * 100;
-		return Math.round(profitRate * 10) / 10.0;
+		return (double)prizeMoney / purchaseAmount * 100;
 	}
 
 	private int calculatePrizeMoney(Map<Rank, Integer> getRanks) {
