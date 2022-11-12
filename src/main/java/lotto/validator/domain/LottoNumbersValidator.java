@@ -7,7 +7,7 @@ import java.util.List;
 public class LottoNumbersValidator extends NumberValidator {
     private static final String OUT_OF_LENGTH_EXCEPTION_MESSAGE = "[ERROR] 로또 번호의 개수는 6개여야 합니다.";
     private static final String DUPLICATE_NUMBER_EXIST_EXCEPTION_MESSAGE = "[ERROR] 중복된 숫자는 존재할 수 없습니다.";
-    public static final String OUT_OF_RANGE_EXCEPTION_MESSAGE = "[ERROR] 로또 번호는 1~45의 범위를 벗어날 수 없습니다.";
+    private static final String OUT_OF_RANGE_EXCEPTION_MESSAGE = "[ERROR] 로또 번호는 1~45의 범위를 벗어날 수 없습니다.";
     private static final int LENGTH_OF_LOTTO_NUMBERS = 6;
     
     private LottoNumbersValidator() {
