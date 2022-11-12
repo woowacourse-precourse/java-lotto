@@ -6,7 +6,7 @@ import lotto.Message;
 public class InputView {
 
 	public static String buyInput(){
-		System.out.println(Message.BEFORE_BYE);
+		System.out.println(Message.BEFORE_BUY.getMessage());
 		return Console.readLine();
 	}
 }
