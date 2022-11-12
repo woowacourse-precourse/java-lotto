@@ -9,7 +9,6 @@ import java.util.Set;
 
 public class Calculation {
 
-	private static int maxLottoMatch;
 	private static int fiveMatchAndBonusMatch;
 	private static final int[] countingMatches = new int[4];
 	private static int lottoMatch;
@@ -30,7 +29,6 @@ public class Calculation {
 
 		for (List<Integer> lotto : lottoes) {
 			getLottoMatch(lotto);
-			recordMaxMatch(lottoMatch);
 			getBonusMatch(lotto, lottoMatch);
 			countMatches(lottoMatch);
 		}
@@ -47,13 +45,6 @@ public class Calculation {
 		Set<Integer> checkLottoMatch = new HashSet<>(lotto);
 		checkLottoMatch.retainAll(Player.winningNumbers);
 		lottoMatch = checkLottoMatch.size();
-	}
-
-
-	private static void recordMaxMatch(int match) {
-		if (match > maxLottoMatch) {
-			maxLottoMatch = match;
-		}
 	}
 
 	private static void recordBonusMatch(int lottoMatch, int bonusMatch) {
@@ -82,7 +73,6 @@ public class Calculation {
 
 	private static double convertToDouble(String value){
 		return Double.parseDouble(value.replaceAll("[^0-9]",""));
-
 	}
 }
 
