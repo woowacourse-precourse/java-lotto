@@ -1,5 +1,6 @@
 package lotto.service;
 
+import lotto.domain.Lotto;
 import lotto.model.Computer;
 import lotto.model.Player;
 
@@ -13,12 +14,10 @@ public class MatchLotteryService {
         this.computer = computer;
     }
 
-    public void matchPlayerWithComputer(){
+    public void matchPlayerWithComputer(){}
 
-    }
-
-    private int matchEachTicketWithComputer(){
-        return 0;
+    private int matchEachTicketWithComputer(Lotto lottoEach){
+        return (int)lottoEach.getNumbers().stream().map( s ->computer.getComputerNumber().getNumbers().contains(s)).count();
     }
 
     private void convertCountToRanking(){
