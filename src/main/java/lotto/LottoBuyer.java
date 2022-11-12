@@ -15,10 +15,12 @@ public class LottoBuyer {
     private BigInteger money;
     private Integer bonusNumber;
 
+    private List<Lotto> lottos;
     public LottoBuyer(){
         lotto = null;
         money = null;
         bonusNumber = null;
+        lottos = null;
     }
     public void setMoney() throws IllegalArgumentException{
         System.out.println("구입금액을 입력해주세요.");
