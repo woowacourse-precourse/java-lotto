@@ -16,6 +16,8 @@ public class Application {
         printLotto(lotto);
         List<Integer> winNums = winNumInput();
         int bonusNum = bonusNumInput();
+        List<Result> results = new ArrayList<>();
+
     }
 
     public static void moneyInputError(int money) {
@@ -52,6 +54,17 @@ public class Application {
         System.out.println(lotto.size() + "개를 구매했습니다.");
         for (Lotto e : lotto)
             e.printNumbers();
+    }
+
+    public static void PrintEnd(Result result){
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000)원 - ~개");
+        System.out.println("4개 일치 (50,000)원 - ~개");
+        System.out.println("5개 일치 (1,500,000)원 - ~개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000)원 - ~개");
+        System.out.println("6개 일치 (2,000,000,000원) - ~개");
+        System.out.println("총 수익률은 ~~입니다.");
     }
 
 }
