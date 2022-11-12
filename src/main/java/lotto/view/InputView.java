@@ -17,6 +17,11 @@ public class InputView {
         return(Console.readLine());
     }
 
+    public static int requestBonusNumber(){
+        System.out.println(REQUEST_BONUS_NUMBER);
+        return StringToInt(Console.readLine());
+    }
+
     private static int StringToInt(String input){
         try{
             return Integer.parseInt(input);
