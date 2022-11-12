@@ -8,4 +8,10 @@ public class OutputView {
     public void printLottoPurchaseCompleteMessage(int lottoChance) {
         System.out.println(lottoChance + "개를 구매했습니다.");
     }
+
+    public void printLottoNumber(List<List<Integer>> allLottoNumber) {
+        for (List<Integer> lottoNumbers : allLottoNumber) {
+            System.out.println(lottoNumbers);
+        }
+    }
 }
