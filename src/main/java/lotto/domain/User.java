@@ -15,4 +15,8 @@ public class User {
     public List<Lotto> getMyLotto() {
         return myLotto;
     }
+
+    public void setBuyAmount(String buyAmount){
+        this.buyAmount = Integer.parseInt(buyAmount);
+    }
 }
