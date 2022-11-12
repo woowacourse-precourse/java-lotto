@@ -20,7 +20,7 @@ public class UserLottoTest {
 
             Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(InputException.INPUT_INVALID_DIGIT_RANGE.message());
+                    .hasMessageContaining(InputException.INPUT_INVALID_FORM.message());
         }
 
         @DisplayName("당첨 번호에 특수문자나 문자가 포함되어 있는 경우 예외를 터트린다.")
@@ -31,13 +31,13 @@ public class UserLottoTest {
 
             Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(InputException.INPUT_INVALID_DIGIT_RANGE.message());
+                    .hasMessageContaining(InputException.INPUT_INVALID_FORM.message());
         }
 
         @DisplayName("당천 번호가 1-45 숫자가 아닌 경우 예외를 터트린다.")
         @Test
         void lottoInvalidRangeException() {
-            String winNumbers = "1,66,13,4";
+            String winNumbers = "1,66,0,4,3,7";
             String bonusNumber = "2";
 
             Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
