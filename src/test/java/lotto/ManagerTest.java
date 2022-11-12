@@ -91,6 +91,20 @@ public class ManagerTest {
 
         assertThat(result).isEqualTo(List.of(6, 15, 5, 4, 3, 0));
     }
+
+    @DisplayName("로또 테이블 비교시 당첨번호에 보너스번호가 있으면 예외")
+    @Test
+    void compareLottoTableButException() {
+        Manager manager = new Manager();
+        List<Lotto> lottoTable = List.of(
+                new Lotto(List.of(1, 2, 3, 4, 5, 6))
+        );
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonunsNumber = 6;
+
+        assertThatThrownBy(() -> manager.compareLottoTable(lottoTable, winningLotto, bonunsNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
 
 
