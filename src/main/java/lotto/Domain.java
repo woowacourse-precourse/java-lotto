@@ -4,11 +4,14 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class Domain {
+
+    private static List<String> rankStringMapper = Arrays.asList("FIRST", "SECOND", "THIRD", "FORTH", "FIFTH");
 
     public boolean isValidPriceInput(String input) {
         if (!input.matches("^[0-9]+$")) {
@@ -40,6 +43,10 @@ public class Domain {
         }
 
         return sumWinnings / countOfLotto;
+    }
+
+    public int getreward(int rank) {
+        return Rank.valueOf(rankStringMapper.get(rank)).getReward();
     }
 
 

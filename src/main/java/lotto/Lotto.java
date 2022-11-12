@@ -25,6 +25,12 @@ public class Lotto {
         }
         return overlapCounter;
     }
+    private void validate(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public int getRank(List<Integer> numbers, int bonus) {
         int overlapCounter = getNumberOfOverlapping(numbers);
 
@@ -37,12 +43,4 @@ public class Lotto {
         }
         return 8 - overlapCounter;
     }
-
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    // TODO: 추가 기능 구현
 }
