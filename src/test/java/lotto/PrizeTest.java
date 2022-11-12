@@ -18,4 +18,19 @@ class PrizeTest {
         assertThat(threeMatch).isEqualTo(answer);
         assertThat(fiveBonusMatch).isEqualTo(answer2);
     }
+
+
+    @DisplayName("상금 계산 테스트")
+    @Test
+    void getPrizeMoneyTest() {
+        int count = 2;
+        int threeMatch = Prize.getPrizeMoney(Prize.THREE_MATCH, count);
+        int answer = 5000*count;
+
+        int fiveBonusMatch = Prize.getPrizeMoney(Prize.FIVE_BONUS_MATCH, count);
+        int answer2 = 30000000*count;
+
+        assertThat(threeMatch).isEqualTo(answer);
+        assertThat(fiveBonusMatch).isEqualTo(answer2);
+    }
 }
