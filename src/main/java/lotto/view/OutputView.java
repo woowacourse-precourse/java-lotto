@@ -13,7 +13,6 @@ public class OutputView {
     private static final String PURCHASE_LOTTO = "\n%d개를 구매했습니다.\n";
     private static final String SHOW_STATISTICS = "\n당첨 통계\n---";
     private static final String WINNING_RESULT = "%d개 일치%s (%s원) - %d개\n";
-    private static final String SECOND_WINNING_RESULT = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
     private static final String OPEN_BRACKET = "[";
     private static final String CLOSE_BRACKET = "]";
     private static final String SEPARATOR = ", ";
