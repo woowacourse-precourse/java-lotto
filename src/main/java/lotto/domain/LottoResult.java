@@ -5,6 +5,12 @@ import java.util.Optional;
 
 public class LottoResult {
 
+    public double getLottoResult(Map<LottoRanking, Integer> rankingData) {
+        int totalReward = getTotalReward(rankingData);
+        int totalTicket = getTotalTicket(rankingData);
+        return (double) totalReward / (totalTicket * TicketMachine.getTicketPrice());
+    }
+
     public int getTotalReward(Map<LottoRanking, Integer> rankingData) {
         Optional<Integer> result = rankingData.entrySet()
                 .stream()
