@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
+    private int bonusNum;
 
     public Lotto(List<Integer> numbers) {
         validateSize(numbers);
@@ -23,13 +24,19 @@ public class Lotto {
         if (isException)
             throw new IllegalArgumentException();
     }
-    
+
     private void validateDuplicate(List<Integer> numbers) {
         int nonDuplNum = (int)numbers.stream()
                 .distinct().count();
         if (nonDuplNum != numbers.size()){
             throw new IllegalArgumentException();
         }
+    }
+    public void addBonusNum(int bonusNum){
+        this.bonusNum = bonusNum;
+    }
+    public void compare(List<Integer> numbers){
+
     }
 
 
