@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
+    enum NumberType { WINNING, BONUS, NORMAL };
+
     public static void guideWinningNumberFormat() {
         System.out.print("당첨 번호 6개를 쉼표로 구분해 입력해주세요: ");
     }
@@ -56,13 +58,17 @@ public class Application {
             isWinningNumber[number] = true;
         }
     }
-    public static boolean[] checkWinningNumberByIndex(List<Integer> winningNumbers) {
-        boolean[] isWinningNumber = new boolean[46];
+
+    public static NumberType[] checkNumberTypeByIndex(List<Integer> winningNumbers) {
+        NumberType[] numberTypeCheck = new NumberType[46];
+        for (int number = 1; number <= 45; number++)
+            numberTypeCheck[number] = NumberType.NORMAL;
         for (int number : winningNumbers)
-            isWinningNumber[number] = true;
-        return isWinningNumber;
+            numberTypeCheck[number] = NumberType.WINNING;
+        return numberTypeCheck;
     }
-    public static boolean[] getWinningNumbers() {
+
+    public static NumberType[] getWinningNumbers() {
         guideWinningNumberFormat();
         String winningNumberInput = Console.readLine();
 
@@ -75,10 +81,10 @@ public class Application {
         List<Integer> winningNumbers = parseNumbers(splitNumbers);
         checkRange(winningNumbers);
         isDuplicated(winningNumbers);
-        return checkWinningNumberByIndex(winningNumbers);
+        return checkNumberTypeByIndex(winningNumbers);
     }
 
     public static void main(String[] args) {
-        boolean[] isWinningNumber = getWinningNumbers();
+        NumberType[] numberTypeCheck = getWinningNumbers();
     }
 }
