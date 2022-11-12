@@ -35,6 +35,10 @@ public class Player {
         this.lottoCount--;
     }
 
+    public void bonusNumberIncludedWinningLottoNumber(){
+        isBonusNumberIncludedWinningLottoNumber = true;
+    }
+
     public void initializeLottoCount(){
         lottoCount = 0;
         isBonusNumberIncludedWinningLottoNumber = false;
