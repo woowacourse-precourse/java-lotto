@@ -20,9 +20,9 @@ public class Validator {
         }
     }
 
-    public void validateWinningNumberComma(String winningNumbers){
+    public void validateWinningNumberComma(String winningNumbers) {
         String validateWinningNumbers = winningNumbers.replaceAll("[0-9]", "");
-        if(!(validateWinningNumbers.length()==5 && validateWinningNumbers.contains(","))){
+        if (!(validateWinningNumbers.length() == 5 && validateWinningNumbers.contains(","))) {
             throw new IllegalArgumentException("[ERROR] 로또 번호 6개를 ,로 구분하여 입력하여야 합니다.");
         }
     }

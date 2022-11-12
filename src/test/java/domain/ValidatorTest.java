@@ -12,19 +12,32 @@ class ValidatorTest {
 
     @DisplayName("로또 구입 값이 숫자가 아니라면 예외가 발생한다.")
     @Test
-    public void createUserMoneyByNotNumber() throws Exception{
+    public void createUserMoneyByNotNumber() throws Exception {
         Money money = new Money("1234asdf");
-        assertThatThrownBy(()->validator.validateMoneyNumber(money.getUserMoney())).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> validator.validateMoneyNumber(money.getUserMoney())).isInstanceOf(IllegalArgumentException.class);
 
     }
 
     @DisplayName("로또 구입 값이 1,000의 배수가 아니라면 예외가 발생한다.")
     @Test
-    public void createUserMoneyByWrongNumber(){
+    public void createUserMoneyByWrongNumber() {
         Money money = new Money("1234");
-        assertThatThrownBy(()->validator.validateMoneyUnit(money.getUserMoney())).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> validator.validateMoneyUnit(money.getUserMoney())).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("당첨 번호 입력이 ,(comma)로 구분되어 있지 않으면 예외가 발생한다.")
+    @Test
+    public void createWinningNumberByWrongSplit() {
+
+        String winningNumbers1 = "1!2!3!4!5!6";
+        String winningNumbers2 = "1,,2,,3,,4,,5,,6";
+
+        assertThatThrownBy(() -> validator.validateWinningNumberComma(winningNumbers1))
+                .isInstanceOf(IllegalArgumentException.class);
+
+        assertThatThrownBy(() -> validator.validateWinningNumberComma(winningNumbers2))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 
     @DisplayName("당첨 번호 개수가 6개가 아닐 경우 예외가 발생한다.")
@@ -42,7 +55,7 @@ class ValidatorTest {
     @DisplayName("잘못된 당첨 번호가 입력되면 예외가 발생한다.")
     @Test
     public void createWinningNumberByWrongNumber() {
-        WinningNumbers winningNumbers = new WinningNumbers(List.of(0,1,2,46,47,48));
+        WinningNumbers winningNumbers = new WinningNumbers(List.of(0, 1, 2, 46, 47, 48));
         assertThatThrownBy(() -> validator.validateWinningNumberRange(winningNumbers.getWinningNumbers()))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -51,7 +64,7 @@ class ValidatorTest {
     @DisplayName("당첨 번호 중 중복이 있다면 예외가 발생한다.")
     @Test
     public void createWinningNumberByReference() {
-        WinningNumbers winningNumbers = new WinningNumbers(List.of(1,1,2,3,4,5));
+        WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 1, 2, 3, 4, 5));
 
         assertThatThrownBy(() -> validator.validateWinningNumberReference(winningNumbers.getWinningNumbers()))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -73,10 +86,10 @@ class ValidatorTest {
 
     @DisplayName("당첨 번호와 보너스 번호가 중복된다면 예외가 발생한다.")
     @Test
-    public void createWinningNumber_BonusNumberByReference(){
-        WinningNumbers winningNumbers = new WinningNumbers(List.of(1,2,3,4,5,6));
+    public void createWinningNumber_BonusNumberByReference() {
+        WinningNumbers winningNumbers = new WinningNumbers(List.of(1, 2, 3, 4, 5, 6));
         BonusNumber bonusNumber = new BonusNumber("6");
-        assertThatThrownBy(()->validator.validateReference(winningNumbers.getWinningNumbers(), bonusNumber.getBonusNumber()))
+        assertThatThrownBy(() -> validator.validateReference(winningNumbers.getWinningNumbers(), bonusNumber.getBonusNumber()))
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
