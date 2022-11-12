@@ -4,24 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 import lotto.machine.Tickets;
 import lotto.machine.Winner;
+import lotto.util.Calculator;
 import lotto.util.Matcher;
 import lotto.machine.Ranks;
 
 public class Profit {
-    private final List<Integer> profit;
     private final List<Integer> winningNumbers;
     private final Integer bonusNumber;
+    private final List<Integer> profit;
 
     public Profit(Tickets lottoTickets, Winner winnerTicket) {
-        profit = new ArrayList<>();
         winningNumbers = winnerTicket.getWinningNumbers();
         bonusNumber = winnerTicket.getBonusNumber();
 
-        for (List<Integer> lottoTicket : lottoTickets.getTickets()) {
-            Matcher matcher = new Matcher(lottoTicket, winningNumbers, bonusNumber);
-            Integer prizeMoney = Ranks.getPrizeMoneyBy(matcher);
-            profit.add(prizeMoney);
-        }
+        profit = Calculator.produceProfit(
+                lottoTickets.getTickets(),
+                winningNumbers,
+                bonusNumber
+        );
     }
 
     public List<Integer> getProfit() {
