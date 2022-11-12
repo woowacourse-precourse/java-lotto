@@ -15,12 +15,16 @@ public class BonusNumber {
     }
 
     private void validate(String number, Lotto lottoNumbers) {
-        if (isStringEmpty(number)) {
+        if (isStringEmpty(number) || !isDigit(number)) {
             throw new IllegalArgumentException(ExceptionMessage.BONUS_OUT_OF_RANGE.getMessage());
         }
     }
 
-    private boolean isStringEmpty(String numbers) {
-        return numbers == null || numbers.isBlank();
+    private boolean isStringEmpty(String number) {
+        return number == null || number.isBlank();
+    }
+
+    private boolean isDigit(String number) {
+        return number.chars().allMatch(Character::isDigit);
     }
 }
