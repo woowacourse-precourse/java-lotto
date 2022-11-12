@@ -78,7 +78,7 @@ public class LottoGame {
     }
 
     protected void generateStatistics() {
-        //TODO: 로또 당첨 통계 내기, winningStatistics.generate(issuingMachine.getLottos(), drawingMachine.getWinningNumbers(), drawingMachine.getBonusNumber());
+        winningStatistics.generate(issuingMachine, drawingMachine);
         lottoView.printWinningStatistics(winningStatistics);
     }
 }

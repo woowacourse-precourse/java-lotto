@@ -1,18 +1,29 @@
 package lotto.model;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import static lotto.model.LottoWinningStatus.*;
 
 public class LottoWinningStatistics {
 
+    private static final int LOTTO_PRICE = 1000;
     private Map<LottoWinningStatus, Integer> winningCounts;
     private double earningsRate;
 
     public LottoWinningStatistics() {
         initWinningCounts();
         earningsRate = 0;
+    }
+
+    private void initWinningCounts() {
+        winningCounts = new LinkedHashMap<>();
+        winningCounts.put(MATCH_THREE_NUMBERS, 0);
+        winningCounts.put(MATCH_FOUR_NUMBERS, 0);
+        winningCounts.put(MATCH_FIVE_NUMBERS, 0);
+        winningCounts.put(MATCH_FIVE_NUMBERS_WITH_BONUS_NUMBERS, 0);
+        winningCounts.put(MATCH_SIX_NUMBERS, 0);
     }
 
     @Override
@@ -30,12 +41,28 @@ public class LottoWinningStatistics {
         return builder.toString();
     }
 
-    private void initWinningCounts() {
-        winningCounts = new LinkedHashMap<>();
-        winningCounts.put(MATCH_THREE_NUMBERS, 0);
-        winningCounts.put(MATCH_FOUR_NUMBERS, 0);
-        winningCounts.put(MATCH_FIVE_NUMBERS, 0);
-        winningCounts.put(MATCH_FIVE_NUMBERS_WITH_BONUS_NUMBERS, 0);
-        winningCounts.put(MATCH_SIX_NUMBERS, 0);
+    public void generate(LottoIssuingMachine issuingMachine, LottoDrawingMachine drawingMachine) {
+        List<Lotto> issuedLottos = issuingMachine.getLottos();
+        Lotto winningLotto = drawingMachine.getWinningLotto();
+        matchLottoNumbers(issuedLottos, winningLotto);
+        calculateEarningsRate(issuedLottos.size() * LOTTO_PRICE);
+    }
+
+    private void matchLottoNumbers(List<Lotto> issuedLottos, Lotto winningLotto) {
+        for (Lotto issuedLotto : issuedLottos) {
+            int numberOfMatch = winningLotto.countNumberOfMatch(issuedLotto);
+            LottoWinningStatus winningStatus = LottoWinningStatus.valueOf(numberOfMatch);
+            winningCounts.computeIfPresent(winningStatus, (ws, wcnt) -> wcnt + 1);
+        }
+    }
+
+    private void calculateEarningsRate(double lottoExpense) {
+        double lottoEarnings = 0;
+        for (LottoWinningStatus winningStatus : winningCounts.keySet()) {
+            Integer winningCount = winningCounts.get(winningStatus);
+            long winningMoney = winningStatus.getWinningMoney();
+            lottoEarnings += winningCount * winningMoney;
+        }
+        earningsRate = (lottoEarnings / lottoExpense) * 100;
     }
 }
