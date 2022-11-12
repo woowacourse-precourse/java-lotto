@@ -11,7 +11,7 @@ public class Result {
     public static final int ROUND_ONE = 10;
     public static final double ONE_DECIMAL = 10.0;
 
-    private static HashMap<MatchCount, Integer> totalMatchResult = new HashMap<>();
+    private static HashMap<Prize, Integer> totalMatchResult = new HashMap<>();
     private int totalPrizeMoney = 0;
     private List<String> resultMessage = new ArrayList<>();
 
@@ -23,8 +23,8 @@ public class Result {
 
     private void saveMatchResult(List<Lotto> lottoTickets) {
         for (Lotto lotto : lottoTickets) {
-            MatchCount matchResult = LottoNumber.getMatchResult(lotto);
-            totalMatchResult.put(matchResult, totalMatchResult.getOrDefault(matchResult, 0)+1);
+            Prize prize = Prize.findPrizeType(LottoNumber.getMatchResult(lotto));
+            totalMatchResult.put(prize, totalMatchResult.getOrDefault(prize, 0) + 1);
         }
     }
 

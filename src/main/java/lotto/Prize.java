@@ -1,8 +1,11 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.List;
 
 public enum Prize {
+
+    NONE(new MatchCount(-1, -1), 0, "없음"),
     THREE_MATCH(new MatchCount(3, 0), 5000, "3개 일치 (5,000원)"),
     FOUR_MATCH(new MatchCount(4, 0), 50000, "4개 일치 (50,000원)"),
     FIVE_MATCH(new MatchCount(5, 0), 1500000, "5개 일치 (1,500,000원)"),
@@ -35,4 +38,10 @@ public enum Prize {
         return message;
     }
 
+    public static Prize findPrizeType(MatchCount matchCount) {
+        return Arrays.stream(Prize.values())
+                .filter(prize -> prize.getMatchCount().equals(matchCount))
+                .findFirst()
+                .orElse(NONE);
+    }
 }
