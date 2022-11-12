@@ -35,4 +35,23 @@ public class Lotto {
         }
         System.out.println("]");
     }
+
+    // 보너스 번호 포함 여부 반환
+    public boolean isBonusNumber(int bonusNumber){
+        if(numbers.contains(bonusNumber)){
+            return true;
+        }
+        return false;
+    }
+
+    // 당첨 로또 번호 개수 반환(보너스 번호 제외)
+    public int getLottoNumber(List<Integer> lottoNumbers){
+        int cnt=0;
+        for(int number : numbers){
+            if(lottoNumbers.contains(number)){
+                cnt++;
+            }
+        }
+        return cnt;
+    }
 }
