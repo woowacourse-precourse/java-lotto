@@ -61,15 +61,14 @@ public class YieldCalculator {
     }
 
     public double extractYield(Map<String, Integer> winInformation, int purchaseMoney) {
-        int result = 0;
+        double result = 0;
 
-        result += winInformation.get("three") * (THREE.getWinningMoney());
         result += winInformation.get("four") * (FOUR.getWinningMoney());
         result += winInformation.get("five") * (FIVE.getWinningMoney());
         result += winInformation.get("fiveContainingBonusNumber") * (FIVE_BONUS.getWinningMoney());
         result += winInformation.get("six") * (SIX.getWinningMoney());
 
-        return (double) result / (double) purchaseMoney * 100;
+        return result / (double) purchaseMoney * 100;
     }
 
     public void showYield(Map<String, Integer> statistic, int purchaseNumber) {
