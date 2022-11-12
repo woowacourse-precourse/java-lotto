@@ -15,13 +15,7 @@ public class Buyer {
     private int purchaseCount;
     private int winningAmount;
     private double earningRatio;
-
-    public List<List<Integer>> getLottoWallet() {
-        return lottoWallet;
-    }
-
     private List<List<Integer>> lottoWallet;
-
 
     public Buyer() {
         this.lottoWallet = new ArrayList<>();
@@ -30,7 +24,6 @@ public class Buyer {
     public int getPurchaseAmount() {
         return purchaseAmount;
     }
-
     public void setPurchaseAmount(String purchaseAmount) {
         new Validator(purchaseAmount);
         this.purchaseAmount = Util.getInt(purchaseAmount);
@@ -38,12 +31,15 @@ public class Buyer {
     public int getPurchaseCount() {
         return purchaseCount;
     }
-
     public void setPurchaseCount() {
         this.purchaseCount = this.purchaseAmount / UNIT_OF_MONEY;
     }
+    public List<List<Integer>> getLottoWallet() {
+        return lottoWallet;
+    }
 
-    public void addLotto(int count){
+    public void addLotto(){
+        int count = getPurchaseCount();
         Util util = new Util();
         for(int i = 0; i< count; i++){
             lottoWallet.add(util.generateRandomNum(START_NUM, END_NUM, NUMBERS_OF_LOTTO));
