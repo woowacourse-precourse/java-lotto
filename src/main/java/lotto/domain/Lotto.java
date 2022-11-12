@@ -12,23 +12,27 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_DIGIT_CNT) {
             throw new IllegalArgumentException("여섯개의 숫자를 입력해야 합니다");
         }
-        if (new HashSet<>(numbers).size() != 6) {
+        if (isDuplicated(numbers)) {
             throw new IllegalArgumentException("중복된 숫자를 입력할 수 없습니다");
         }
-        int filteredCnt = (int) numbers.stream().filter(number -> 1 <= number)
-                .filter(number -> number <= 45)
-                .count();
-        if (filteredCnt != 6) {
+
+        if (isOutOfRange(numbers)) {
             throw new IllegalArgumentException("1부터 45까지의 숫자를 입력해야 합니다");
         }
     }
 
-    @Override
-    public String toString() {
-        return String.join(", ", numbers.toString());
+    private boolean isOutOfRange(List<Integer> numbers) {
+        int filteredCnt = (int) numbers.stream().filter(number -> BALL_MIN_RANGE <= number)
+                .filter(number -> number <= BALL_MAX_RANGE)
+                .count();
+        return filteredCnt != LOTTO_DIGIT_CNT;
+    }
+
+    private boolean isDuplicated(List<Integer> numbers) {
+        return new HashSet<>(numbers).size() != LOTTO_DIGIT_CNT;
     }
 
     public boolean has(Integer number) {
@@ -40,5 +44,9 @@ public class Lotto {
         return (int) numbers.stream().filter(winningNumber::has)
                 .count();
     }
-    // 비교하며 숫자가 있는지, 보너스 숫자에 있는지 저장해서 반환한다
+
+    @Override
+    public String toString() {
+        return String.join(", ", numbers.toString());
+    }
 }
