@@ -93,19 +93,19 @@
         - [ ] 입력은 항상 자연수이며 1,000으로 나누어 떨어진다.
         - [ ] 예외 사항에 대하여 `IllegalArgumentException`을 발생시킨다.
 
-- [ ] 당첨 번호 입력 readBasicWinningNumber()
+- [x] 당첨 번호 입력 readBasicWinningNumber()
     - [x] 입력 전 `당첨 번호를 입력해 주세요.`를 출력한다.
-    - [ ] `,`를 구분자로 1 ~ 45 범위에서 중복 없는 숫자 6자리를 입력 받는다.
+    - [x] `,`를 구분자로 1 ~ 45 범위에서 중복 없는 숫자 6자리를 입력 받는다.
     - 검증 사항
-        - [ ] `,`를 구분자로 나누었을 때 각각의 문자열은 모두 숫자이다.
-        - [ ] 예외 사항에 대하여 `IllegalArgumentException`을 발생시킨다.
+        - [x] `,`를 구분자로 나누었을 때 각각의 문자열은 모두 숫자이다.
+        - [x] 예외 사항에 대하여 `IllegalArgumentException`을 발생시킨다.
 
 
-- [ ] 당첨 번호 입력 readBonusWinningNumber()
+- [x] 당첨 번호 입력 readBonusWinningNumber()
     - [x] 입력 전 `당첨 번호를 입력해 주세요.`를 출력한다.
     - 검증 사항
-        - [ ] 입력은 숫자로 이루어져 있음
-        - [ ] 예외 사항에 대하여 `IllegalArgumentException`을 발생시킨다.
+        - [x] 입력은 숫자로 이루어져 있음
+        - [x] 예외 사항에 대하여 `IllegalArgumentException`을 발생시킨다.
 
 
 - 검토 사항
