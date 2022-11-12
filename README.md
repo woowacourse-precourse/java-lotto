@@ -99,7 +99,7 @@ BUILD SUCCESSFUL in 0s
         - [x] `private HashMap<LottoRank, Integer> winResult`
     - **Class Methods:**
         - [ ] `public User(purchaseMoney, List<Lotto> lottoList, WinLotto winLotto)`
-        - [ ] `private void validatePurchaseMoney(int purchaseMoney)`
+        - [x] `private void validatePurchaseMoney(int purchaseMoney)`
         - [ ] `private int getIncomeMoney(List<Lotto> lottoList, WinLotto winLotto)`
         - [ ] `public float getIncomePercent()`
         - [ ] `public HashMap<LottoRank, Integer> getWinResult()`
