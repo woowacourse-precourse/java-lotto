@@ -9,6 +9,7 @@
   - [x] 보너스 번호 출력 기능 -User#getBonusNum()
   - [x] 당첨 번호 변환 기능 -Winning#winning()
 - [ ] 당첨 기능 -Winning#score()
+  - [x] 당첨 번호 세기 -Winning#sameCount()
   - [ ] 당첨 내역 출력 기능 
   - [ ] 수익률 계산 기능 -Winning#rate()
 - [ ] 사용자 입력 예외 처리 기능
