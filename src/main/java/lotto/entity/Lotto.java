@@ -1,8 +1,8 @@
 package lotto.entity;
 
-import static lotto.entity.LottoConstant.COUNT;
-import static lotto.entity.LottoConstant.RANGE_END;
-import static lotto.entity.LottoConstant.RANGE_START;
+import static lotto.LottoApplication.COUNT;
+import static lotto.LottoApplication.RANGE_END;
+import static lotto.LottoApplication.RANGE_START;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,14 +18,13 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != COUNT.getValue()) {
+        if (numbers.size() != COUNT) {
             throw new IllegalArgumentException(
-                "로또는 " + COUNT.getValue() + "개를 가져야 합니다. 입력 : " + numbers.size());
+                "로또는 " + COUNT + "개를 가져야 합니다. 입력 : " + numbers.size());
         }
         if (hasOutOfRangeNumber(numbers)) {
             throw new IllegalArgumentException(
-                "로또 번호는 " + RANGE_START.getValue() + "부터 " + RANGE_END.getValue()
-                    + " 사이의 숫자여야 합니다. 입력 : " + numbers);
+                "로또 번호는 " + RANGE_START + "부터 " + RANGE_END + " 사이의 숫자여야 합니다. 입력 : " + numbers);
         }
         if (hasDuplication(numbers)) {
             throw new IllegalArgumentException("로또 번호는 중복된 숫자를 가지면 안됩니다. 입력 : " + numbers);
@@ -40,13 +39,13 @@ public class Lotto {
     }
 
     private boolean outOfRange(int number) {
-        return RANGE_START.getValue() > number || RANGE_END.getValue() < number;
+        return RANGE_START > number || RANGE_END < number;
     }
 
     private boolean hasDuplication(List<Integer> numbers) {
         return numbers.stream()
             .distinct()
-            .count() != COUNT.getValue();
+            .count() != COUNT;
     }
 
     public boolean contains(int number) {

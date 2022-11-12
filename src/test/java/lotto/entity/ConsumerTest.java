@@ -1,5 +1,6 @@
 package lotto.entity;
 
+import static lotto.LottoApplication.PRICE;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
@@ -11,7 +12,7 @@ class ConsumerTest {
     @Test
     void invalidPurchaseAmount() {
         //given
-        int purchaseAmount = LottoConstant.PRICE.getValue() / 2;
+        int purchaseAmount = PRICE / 2;
 
         //then
         assertThatThrownBy(() -> new Consumer(purchaseAmount)).isInstanceOf(

@@ -1,7 +1,7 @@
 package lotto.entity;
 
-import static lotto.entity.LottoConstant.RANGE_END;
-import static lotto.entity.LottoConstant.RANGE_START;
+import static lotto.LottoApplication.RANGE_END;
+import static lotto.LottoApplication.RANGE_START;
 
 import java.util.Arrays;
 
@@ -19,7 +19,7 @@ public class WinningLotto {
     private void validate(int bonus) {
         if (outOfRange(bonus)) {
             throw new IllegalArgumentException(
-                "보너스 번호는 " + RANGE_START.getValue() + "부터 " + RANGE_END.getValue()
+                "보너스 번호는 " + RANGE_START + "부터 " + RANGE_END
                     + " 사이의 숫자여야 합니다. 입력 : " + bonus);
         }
         if (winningLotto.contains(bonus)) {
@@ -28,7 +28,7 @@ public class WinningLotto {
     }
 
     private boolean outOfRange(int bonus) {
-        return RANGE_START.getValue() > bonus || RANGE_END.getValue() < bonus;
+        return RANGE_START > bonus || RANGE_END < bonus;
     }
 
     public Rank compare(Lotto lotto) {

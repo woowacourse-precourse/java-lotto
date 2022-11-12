@@ -11,6 +11,11 @@ import lotto.util.StringToNumbersConverter;
 
 public class LottoApplication {
 
+    public final static int COUNT = 6;
+    public final static int RANGE_START = 1;
+    public final static int RANGE_END = 45;
+    public final static int PRICE = 1000;
+
     private final StringToNumberConverter stringToNumberConverter;
     private final StringToNumbersConverter stringToNumbersConverter;
 
@@ -25,7 +30,8 @@ public class LottoApplication {
             Integer purchase = stringToNumberConverter.convert(purchaseInput);
             Consumer consumer = new Consumer(purchase);
             String winningNumberInput = InputService.readWinningNumber();
-            Lotto winningNumberLotto = new Lotto(stringToNumbersConverter.convert(winningNumberInput));
+            Lotto winningNumberLotto = new Lotto(
+                stringToNumbersConverter.convert(winningNumberInput));
             String bonusInput = InputService.readBonusNumber();
             Integer bonus = stringToNumberConverter.convert(bonusInput);
             WinningLotto winningLotto = new WinningLotto(winningNumberLotto, bonus);

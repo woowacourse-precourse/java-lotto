@@ -1,9 +1,9 @@
 package lotto.entity;
 
-import static lotto.entity.LottoConstant.COUNT;
-import static lotto.entity.LottoConstant.PRICE;
-import static lotto.entity.LottoConstant.RANGE_END;
-import static lotto.entity.LottoConstant.RANGE_START;
+import static lotto.LottoApplication.COUNT;
+import static lotto.LottoApplication.PRICE;
+import static lotto.LottoApplication.RANGE_END;
+import static lotto.LottoApplication.RANGE_START;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Arrays;
@@ -21,20 +21,19 @@ public class Consumer {
     private final int purchaseAmount;
 
     public Consumer(int purchaseAmount) {
-        if (purchaseAmount % PRICE.getValue() != 0) {
+        if (purchaseAmount % PRICE != 0) {
             throw new IllegalArgumentException(
-                "금액은 " + PRICE.getValue() + "원 단위로 입력해야 합니다. 입력 : " + purchaseAmount);
+                "금액은 " + PRICE + "원 단위로 입력해야 합니다. 입력 : " + purchaseAmount);
         }
         this.purchaseAmount = purchaseAmount;
         this.lottos = generateLottos();
     }
 
     private List<Lotto> generateLottos() {
-        List<Lotto> result = IntStream.range(0, purchaseAmount / PRICE.getValue())
+        List<Lotto> result = IntStream.range(0, purchaseAmount / PRICE)
             .mapToObj(
                 i -> new Lotto(
-                    Randoms.pickUniqueNumbersInRange(RANGE_START.getValue(), RANGE_END.getValue(),
-                        COUNT.getValue())))
+                    Randoms.pickUniqueNumbersInRange(RANGE_START, RANGE_END, COUNT)))
             .collect(Collectors.toList());
         OutputService.printGeneratedLottos(result);
         return result;
