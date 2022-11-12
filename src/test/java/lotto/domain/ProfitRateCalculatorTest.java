@@ -39,7 +39,7 @@ class ProfitRateCalculatorTest {
 			);
 			int purchaseAmount = 9000;
 			ProfitRateCalculator profitRateCalculator = new ProfitRateCalculator(ranks, purchaseAmount);
-			assertEquals(profitRateCalculator.getProfitRate(), 611.1);
+			assertEquals(profitRateCalculator.getProfitRate(), 611.1111111111111);
 		}
 
 		@Test
@@ -69,7 +69,7 @@ class ProfitRateCalculatorTest {
 			);
 			int purchaseAmount = 9000;
 			ProfitRateCalculator profitRateCalculator = new ProfitRateCalculator(ranks, purchaseAmount);
-			assertEquals(profitRateCalculator.getProfitRate(), 55.6);
+			assertEquals(profitRateCalculator.getProfitRate(), 55.55555555555556);
 		}
 	}
 }
