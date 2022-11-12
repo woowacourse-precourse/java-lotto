@@ -1,8 +1,5 @@
 package lotto.domain;
 
-import static lotto.constant.SystemMessage.BONUS_NUMBER_CONFLICT_ERROR;
-import static lotto.constant.SystemMessage.BONUS_NUMBER_RANGE_ERROR;
-import static lotto.constant.SystemMessage.BONUS_NUMBER_TYPE_ERROR;
 import static lotto.constant.SystemValue.MAXIMUM_LOTTERY_NUMBER;
 import static lotto.constant.SystemValue.MINIMUM_LOTTERY_NUMBER;
 
@@ -10,6 +7,9 @@ import java.util.List;
 
 public class BonusNumber {
 
+    public static final String BONUS_NUMBER_CONFLICT_ERROR = "보너스 번호는 당첨 번호와 중복될 수 없습니다";
+    public static final String BONUS_NUMBER_RANGE_ERROR = "보너스 번호는 1부터 45까지의 수여야 합니다";
+    public static final String BONUS_NUMBER_TYPE_ERROR = "보너스 번호에 문자가 포함될 수 없습니다";
     private int bonusNumber;
     private WinningLotto winningLotto;
 

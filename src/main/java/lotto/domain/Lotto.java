@@ -1,12 +1,13 @@
 package lotto.domain;
 
-import static lotto.constant.SystemMessage.USER_LOTTERY_NUMBERS_CONFLICT_ERROR;
-import static lotto.constant.SystemMessage.USER_LOTTERY_NUMBERS_SIZE_ERROR;
 import static lotto.constant.SystemValue.LOTTERY_NUMBERS_SIZE;
 
 import java.util.List;
 
 public class Lotto {
+
+    public static final String USER_LOTTERY_NUMBERS_SIZE_ERROR = "로또 번호는 6자리여야 합니다";
+    public static final String USER_LOTTERY_NUMBERS_CONFLICT_ERROR = "로또 번호에 중복이 포함될 수 없습니다";
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {

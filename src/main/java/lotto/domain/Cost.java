@@ -1,9 +1,10 @@
 package lotto.domain;
 
-import static lotto.constant.SystemMessage.PURCHASE_COST_TYPE_ERROR;
-import static lotto.constant.SystemMessage.PURCHASE_COST_UNIT_ERROR;
 
 public class Cost {
+
+    private static final String PURCHASE_COST_TYPE_ERROR = "구매 금액에 문자가 포함될 수 없습니다";
+    private static final String PURCHASE_COST_UNIT_ERROR = "구매 금액은 1000원 단위여야 합니다";
     private final int cost;
 
     public Cost(String cost) {
