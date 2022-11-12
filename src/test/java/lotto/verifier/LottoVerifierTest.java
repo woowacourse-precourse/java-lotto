@@ -8,8 +8,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class WinnerNumberVerifierTest {
-    WinnerNumberVerifier winnerNumberVerifier = new WinnerNumberVerifier();
+class LottoVerifierTest {
+    LottoVerifier lottoVerifier = new LottoVerifier();
 
     @Nested
     @DisplayName("유효한 개수가 입력되지 않았을 때")
@@ -24,7 +24,7 @@ class WinnerNumberVerifierTest {
                 "1,2,3,4,5,6,7"
         })
         void 유효한_개수가_입력되었는지_테스트한다(String target) {
-            assertThatThrownBy(() -> winnerNumberVerifier.check(target))
+            assertThatThrownBy(() -> lottoVerifier.check(target))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(ExceptionMessage.COUNT_NOT_EQUAL);
         }
@@ -41,7 +41,7 @@ class WinnerNumberVerifierTest {
                 "아,1,2,3,4,5"
         })
         void 각_원소가_숫자인지_테스트한다(String target) {
-            assertThatThrownBy(() -> winnerNumberVerifier.check(target))
+            assertThatThrownBy(() -> lottoVerifier.check(target))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(ExceptionMessage.EACH_NOT_NUMERIC);
         }
@@ -56,7 +56,7 @@ class WinnerNumberVerifierTest {
                 "1,2,3,4,5,9223372036854775808"
         })
         void 각_원소가_자료형의_범위를_넘지_않는지_테스트한다(String target) {
-            assertThatThrownBy(() -> winnerNumberVerifier.check(target))
+            assertThatThrownBy(() -> lottoVerifier.check(target))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(ExceptionMessage.NUMBER_OUT_OF_TYPE_RANGE);
         }
@@ -72,7 +72,7 @@ class WinnerNumberVerifierTest {
                 "46,47,48,49,50,51"
         })
         void 각_원소가_지정된_로또_값의_범위를_넘지_않는지_테스트한다(String target) {
-            assertThatThrownBy(() -> winnerNumberVerifier.check(target))
+            assertThatThrownBy(() -> lottoVerifier.check(target))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(ExceptionMessage.NUMBER_EACH_OUT_OF_RANGE);
         }
@@ -88,7 +88,7 @@ class WinnerNumberVerifierTest {
                 "43,43,43,45,45,45"
         })
         void 각_원소가_중복되지_않는지_테스트한다(String target) {
-            assertThatThrownBy(() -> winnerNumberVerifier.check(target))
+            assertThatThrownBy(() -> lottoVerifier.check(target))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining(ExceptionMessage.NUMBER_NOT_DISTINCT);
         }
