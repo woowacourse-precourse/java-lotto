@@ -103,7 +103,7 @@ public class InputView {
         }
     }
 
-    public int printLottoEarningMoney(List<Integer> lottoResult) {
+    public int calculrateLottoEarningMoney(List<Integer> lottoResult) {
         int earningMoney = 0;
         earningMoney += lottoResult.get(0) * 2000000000;
         earningMoney += lottoResult.get(1) * 30000000;
@@ -113,7 +113,12 @@ public class InputView {
         return earningMoney;
     }
 
-    public void printLottoEarningRate(int earningMoney, int purchaseMoney) {
-
+    public String calculrateLottoEarningRate(int earningMoney, int purchaseMoney) {
+        double earningRate = (double) earningMoney / purchaseMoney * 100;
+        String stringFormatResult = String.format("%.1f", earningRate);
+        return stringFormatResult;
     }
+
+
+
 }
