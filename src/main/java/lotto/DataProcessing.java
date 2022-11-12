@@ -6,14 +6,20 @@ import java.util.Collections;
 import java.util.List;
 
 public class DataProcessing {
-    public List<Integer> lottoNumbers() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return numbers;
+    public List<Integer> lottoRandomNumbers() {
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
-    public List<Integer> sortLottoNumbers() {
-        List<Integer> sortNumber = lottoNumbers();
-        Collections.sort(sortNumber);
-        return sortNumber;
+    public List<Integer> sortLottoNumbers(List<Integer> sortNumbers) {
+        Collections.sort(sortNumbers);
+        return sortNumbers;
+    }
+
+    public int conversionMoney(String money) {
+        return Integer.parseInt(money);
+    }
+
+    public String[] splitLottoNumber(String lottoNumbers) {
+        return lottoNumbers.split(",");
     }
 }

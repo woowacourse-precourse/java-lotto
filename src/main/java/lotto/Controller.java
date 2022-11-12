@@ -10,23 +10,19 @@ public class Controller {
         return money;
     }
 
-    public int conversionMoney() {
-        return Integer.parseInt(inputMoney());
-    }
-
     public String inputLottoNumber() {
-        String inputNumbers = readLine();
-        return inputNumbers;
+        String lottoNumbers = readLine();
+        return lottoNumbers;
     }
 
-    public String[] splitLottoNumber() {
-        String numbers = inputLottoNumber();
-        String[] arrayNumbers = numbers.split(",");
-        return arrayNumbers;
+    public String inputBonusNumber() {
+        String bonusNumber = readLine();
+        return bonusNumber;
     }
 
     public List<Integer> lottoNumber() {
-        String[] arrayNumbers = splitLottoNumber();
+        DataProcessing dataProcessing = new DataProcessing();
+        String[] arrayNumbers = dataProcessing.splitLottoNumber(inputLottoNumber());
         List<Integer> numbers = new ArrayList<>();
         for (int i=0;i<arrayNumbers.length;++i)
             numbers.add(i);
