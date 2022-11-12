@@ -4,12 +4,26 @@ import java.util.List;
 
 public class Wallet {
     private List<Lotto> myLottos;
-    private final int money;
+    private int money;
     private int profit;
 
-    Wallet(int money) {
+    Wallet() {
+        this.money = 0;
+        this.profit = 0;
+    }
+
+    public void setMoney(String input) {
+        System.out.println("구입금액을 입력해 주세요.\n" + input + "\n");
+
+        int money = c4fiberParser.getIntegerFromString(input);
+        validate(money);
         this.money = money;
-        profit = 0;
+    }
+
+    private void validate(int money) {
+        if (money < 0) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public int getMoney() {
