@@ -16,6 +16,7 @@ public class Application {
         Integer nums = inputMoney/lottoPrice;
 
 
+
     }
 
     static void validateMoney(Integer money){
