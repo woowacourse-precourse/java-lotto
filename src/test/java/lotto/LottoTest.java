@@ -38,4 +38,20 @@ class LottoTest {
                 (number) -> Assertions.assertTrue(1 <= number && number <= 45)
         );
     }
+
+    @DisplayName("여러 개의 로또를 구매할 수 있다.")
+    @Test
+    void createLottoByCount() {
+        long purchaseCount = 8L;
+        LottoMachine lottoMachine = new LottoMachine();
+
+        List<Lotto> lottoNumbers = lottoMachine.issueLottoNumbers(purchaseCount);
+
+        assertThat(lottoNumbers.size()).isEqualTo(purchaseCount);
+
+        lottoNumbers.stream().forEach(
+                (lottoNumber) -> assertThat(lottoNumber.getLotto())
+                        .doesNotHaveDuplicates()
+        );
+    }
 }
