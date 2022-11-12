@@ -12,13 +12,14 @@ public class LottoInStream {
     private static final String _input_buy_str = "구입금액을 입력해 주세요.\n";
     private static final String _input_numbers_str = "당첨 번호를 입력해 주세요.\n";
     private static final String _input_bonus_number_str = "보너스 번호를 입력해 주세요.\n";
+    private static final String _error_default_msg = "[ERROR]";
 
     public static Integer readToBuyLotto() {
         System.out.print(_input_buy_str);
         String line = readline();
 
         if (isNullOrEmptyString(line)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(_error_default_msg + " 잘못된 입력 값 입니다.");
         }
 
         try {
@@ -33,10 +34,11 @@ public class LottoInStream {
         String line = readline();
 
         if (isNullOrEmptyString(line)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(_error_default_msg + " 잘못된 입력 값 입니다.");
         }
         if (line.length() != _lotto_number_max_length) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                    _error_default_msg + " 당첨 번호는 " + _lotto_number_max_length + "개를 입력해야 합니다.");
         }
         return convStrToIntList(line);
     }
@@ -46,10 +48,11 @@ public class LottoInStream {
         String line = readline();
 
         if (isNullOrEmptyString(line)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(_error_default_msg + " 잘못된 입력 값 입니다.");
         }
         if (line.length() != _lotto_bonus_max_length) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(
+                    _error_default_msg + " 당첨 번호는 " + _lotto_bonus_max_length + "개를 입력해야 합니다.");
         }
         return (convCharToInt(line.charAt(_bonus_index)));
     }
@@ -87,7 +90,7 @@ public class LottoInStream {
             char ch = line.charAt(i);
 
             if (!isNumber(line.charAt(i))) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(_error_default_msg + " 숫자가 아닌 문자는 처리할 수 없습니다.");
             }
             numbers.add(charToDigit(ch));
         }
@@ -96,7 +99,7 @@ public class LottoInStream {
 
     private static int convCharToInt(char ch) {
         if (!isNumber(ch)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(_error_default_msg + " 숫자가 아닌 문자는 처리할 수 없습니다.");
         }
         return (charToDigit(ch));
     }
