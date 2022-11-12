@@ -14,8 +14,7 @@ public class InputView {
     public final int PRICE_PER_LOTTO = 1000;
     public final int LOTTO_NUMBER_SIZE = 6;
 
-    List<Integer> totalRank = Arrays.asList(0, 0, 0, 0, 0);
-
+    public List<Integer> lottoResult = Arrays.asList(0,0,0,0,0);
     public List<List<Integer>> allLottoNumber = new ArrayList<>();
 
 
@@ -67,27 +66,47 @@ public class InputView {
 
 
     public void compareWinningNumber(List<Integer> lottoNumbers, List<Integer> winningNumbers, int bonusNumber) {
-
+        /*
+        1. count 1 일때, 2등 // 보너스 포함 6개 맞춘거
+        2. count 2 일때, 4등 // 보너스 포함 5개 맞춘거
+        3. count 3 일때, 5등 // 보너스 포함 4개 맞춘거
+         */
         if(lottoNumbers.contains(bonusNumber)){ // 일단 여기에 걸리면 1등은 불가능
             List <Integer> result = lottoNumbers.stream()
                     .filter(lottoNumber -> winningNumbers.stream().noneMatch(Predicate.isEqual(lottoNumber)))
                     .collect(Collectors.toList());
-
-            System.out.println("여기 보너스 넘버 걸린 리스트임" +result);
+            judgeLottoRank(result, bonusNumber);
         }
-        // 여기에 걸리면 5,4,3,1등을 할 수 있다
+        /*
+        1. 1등, 3등, 4등, 5등 가능
+        2. count 0 일떄, 1등
+        3. count 1 일떄, 3등
+        4. count 2 일떄, 4등
+        5. count 3 일떄, 5등
+         */
         if(!lottoNumbers.contains(bonusNumber)){
             List <Integer> result = lottoNumbers.stream()
                     .filter(lottoNumber -> winningNumbers.stream().noneMatch(Predicate.isEqual(lottoNumber)))
                     .collect(Collectors.toList());
-
-            System.out.println("여기 보너스 넘버 안 걸린 리스트임" +result);
+            judgeLottoRank(result, bonusNumber);
         }
-
-
-
     }
-
-    // 당첨 번호를 입력하는 메소드
+    private void judgeLottoRank(List<Integer> result, int bonusNumber) {
+        if (result.size() == 0) {
+            lottoResult.set(0, lottoResult.get(0)+1);
+        }
+        if (result.size() == 1 && result.contains(bonusNumber)) {
+            lottoResult.set(1, lottoResult.get(1)+1);
+        }
+        if (result.size() == 1 && !result.contains(bonusNumber)) {
+            lottoResult.set(2, lottoResult.get(2)+1);
+        }
+        if (result.size() == 2) {
+            lottoResult.set(3, lottoResult.get(3)+1);
+        }
+        if (result.size() == 3) {
+            lottoResult.set(4, lottoResult.get(4)+1);
+        }
+    }
 
 }

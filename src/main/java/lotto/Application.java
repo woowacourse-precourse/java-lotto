@@ -27,6 +27,7 @@ public class Application {
         for (int i = 0; i < inputView.allLottoNumber.size(); i++) {
             inputView.compareWinningNumber(inputView.allLottoNumber.get(i),winningNumbers,bonusNumber);
         }
+        System.out.println(inputView.lottoResult);
 
 
         System.out.println("당첨 번호 : " + winningNumbers);
