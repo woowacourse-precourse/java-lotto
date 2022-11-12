@@ -1,11 +1,19 @@
 package lotto.domain;
 
+import lotto.resources.Rank;
+
 import java.util.List;
 
 public class Calculator {
-    private int totalEarnings;
+    private final int PERCENTAGE = 100;
+    private long totalEarnings;
     private double earningsRate;
-    private List<Integer> prizeMoney = List.of(0, 2000000000, 30000000, 1500000, 50000, 5000);
+    private List<Integer> prizeMoney = List.of(Rank.NOTHING.getPrizeMoney(),
+            Rank.FIRST_PLACE.getPrizeMoney(),
+            Rank.SECOND_PLACE.getPrizeMoney(),
+            Rank.THIRD_PLACE.getPrizeMoney(),
+            Rank.FOURTH_PLACE.getPrizeMoney(),
+            Rank.FIFTH_PLACE.getPrizeMoney());
 
     public void calculateTotalEarnings(List<Integer> result) {
         for (int i = 1; i < result.size(); i++) {
@@ -13,13 +21,12 @@ public class Calculator {
         }
     }
 
-    public int getTotalEarnings() {
+    public long getTotalEarnings() {
         return totalEarnings;
     }
 
     public void calculateEarningsRate(int purchaseAmount) {
-        earningsRate = (double) totalEarnings / purchaseAmount * 100;
-        earningsRate = Math.round(earningsRate * 10) / 10.0;
+        earningsRate = totalEarnings / (double) purchaseAmount * PERCENTAGE;
     }
 
     public double getEarningsRate() {
