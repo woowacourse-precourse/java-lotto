@@ -43,31 +43,37 @@ public class UserInput {
 
     private static void hasOnlyNumber(String input) {
         if (!input.matches("[0-9]+")) {
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.");
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자여야 합니다.");
         }
     }
 
     private static void hasOnlyNumberAndComma(String input) {
         if (!input.matches("[0-9,]+")) {
-            throw new IllegalArgumentException("[ERROR] 쉼표로 구분되는 6개의 숫자만 입력해 주세요.");
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자를 쉼표로 구분하여 입력해야 합니다.");
         }
     }
 
     private static void isStartedNotZero(String input) {
         if (input.charAt(0) == '0') {
-            throw new IllegalArgumentException("[ERROR] 0으로 시작하는 금액을 입력하지 마세요");
+            throw new IllegalArgumentException("[ERROR] 구입 금액이 0이 아닌 숫자로 시작해야 합니다");
         }
     }
 
     private static void isDividableBy1000(int budget) {
         if (budget % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 1000으로 나누어 떨어지는 금액을 입력해 주세요.");
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000으로 나누어 떨어져야 합니다.");
         }
     }
 
     private static void hasSixNumbers(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 6개의 숫자를 입력해 주세요.");
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개의 숫자를 가져야 합니다.");
+        }
+    }
+
+    private static void validNumber(int number) {
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException(("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."));
         }
     }
 }
