@@ -31,7 +31,9 @@ public class LottoUI {
         List<Integer> winNumbers = new ArrayList<>();
         for (String num : splitInput) {
             numericValidate(num);
-            winNumbers.add(Integer.parseInt(num));
+            Integer number = Integer.parseInt(num);
+            lottoNumberRangeValidate(number);
+            winNumbers.add(number);
         }
 
         return winNumbers;
@@ -48,6 +50,12 @@ public class LottoUI {
             Integer.parseInt(str);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 숫자로 변환할 수 없는 입력입니다.");
+        }
+    }
+
+    private static void lottoNumberRangeValidate(Integer num) {
+        if (num < LottoEnum.MIN_NUMBER.getValue() || num > LottoEnum.MAX_NUMBER.getValue()) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호 범위 밖의 숫자입니다.");
         }
     }
 }
