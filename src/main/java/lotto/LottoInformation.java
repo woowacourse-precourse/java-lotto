@@ -20,6 +20,10 @@ public enum LottoInformation {
         this.prizeMoney = prizeMoney;
     }
 
+    public long getWinnings(int count) {
+        return this.prizeMoney*count;
+    }
+
     public static LottoInformation makeLottoInformation(int matchNumber, boolean matchBonus) {
         return Arrays.stream(values())
                 .filter(lottoInformation -> lottoInformation.validateMatchNumber(matchNumber) && lottoInformation.validateMatchBonus(matchBonus))

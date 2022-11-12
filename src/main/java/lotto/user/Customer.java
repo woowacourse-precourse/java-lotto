@@ -7,6 +7,7 @@ import lotto.store.LottoMachine;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -16,6 +17,7 @@ public class Customer {
     private static final String DUPLICATION_ERROR = "[ERROR] 당첨 번호와 보너스 번호에 중복된 숫자가 있습니다.";
 
     private final List<Lotto> lotteries;
+    private final Map<LottoInformation, Integer> rankings = createRankings();
     private final int pay;
 
     public Customer(String readline) {
@@ -74,7 +76,6 @@ public class Customer {
 
     private Map<LottoInformation, Integer> inputRankings(List<Integer> matchNumbers, List<Boolean> matchBonus) {
         AtomicInteger startIndex = new AtomicInteger();
-        Map<LottoInformation, Integer> rankings = createRankings();
 
         while (startIndex.get() < matchNumbers.size()) {
             int matchNumber = matchNumbers.get(startIndex.get());
@@ -89,6 +90,16 @@ public class Customer {
         return new HashMap<>() {{
             Arrays.asList(LottoInformation.values()).forEach(lottoInformation -> put(lottoInformation, 0));
         }};
+    }
+
+    private long calculateWinnings() {
+        AtomicLong winnings = new AtomicLong();
+        rankings.forEach((ranking,count) -> winnings.addAndGet(ranking.getWinnings(count)));
+        return winnings.get();
+    }
+
+    public String toResultString() {
+        return String.valueOf(calculateWinnings());
     }
 
 }
