@@ -24,8 +24,7 @@ public class Application {
         Lotto winningNumberList = new Lotto(getWinningNumbers(inputWinningNumbers()));
         printBonusNumberInputBox();
         int bonusNumber = getBonusNumber(inputBonusNumber(), winningNumberList.getNumbers());
-        printStatsPhrase();
-        printGradeStats(lottoList, winningNumberList.getNumbers(), bonusNumber, cash);
+        showStats(lottoList, winningNumberList.getNumbers(), bonusNumber, cash);
     }
 
     public static void showLotto(int cash, List<Lotto> lottoList) {
@@ -34,6 +33,12 @@ public class Application {
         for (Lotto lotto : lottoList) {
             printLottoNumbers(lotto.getNumbers());
         }
+    }
+
+    public static void showStats(List<Lotto> lottoList, List<Integer> winningNumberList, int bonusNumber, int cash) {
+
+        printStatsPhrase();
+        printGradeStats(lottoList, winningNumberList, bonusNumber, cash);
     }
 
     public static void printLottoQuantity(int quantity) {
