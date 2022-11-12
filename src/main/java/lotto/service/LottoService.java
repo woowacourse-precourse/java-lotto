@@ -32,6 +32,7 @@ public class LottoService {
     }
 
     public void createWinningLotto(String winningNumber) {
+        Validator.checkWinningNumber(winningNumber);
         Lotto winningLotto = new Lotto(asList(winningNumber.split(",")).stream()
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList()));
