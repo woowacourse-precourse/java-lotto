@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import lotto.domain.Company;
+import lotto.domain.LottoMachine;
 import lotto.domain.Lotto;
 import lotto.service.LottoService;
 
@@ -44,17 +44,10 @@ class LottoTest {
                 .hasMessageContaining("[ERROR]");
     }
 
-    @DisplayName("로또 번호가 숫자가 아닌 경우 예외가 발생한다.")
-    @Test
-    void createLottoNotNumbers() {
-        assertThatThrownBy(() -> LottoService.convertStringToList("a,b,c,d,e,f"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR]");
-    }
     @DisplayName("로또 번호와 보너스 번호가 일치할 경우 예외가 발생한다.")
     @Test
     void createLottoByDuplicatedBonusNumber() {
-        assertThatThrownBy(() -> new Company(List.of(1,2,3,4,5,6), 4))
+        assertThatThrownBy(() -> new LottoMachine(List.of(1,2,3,4,5,6), 4))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]");
     }

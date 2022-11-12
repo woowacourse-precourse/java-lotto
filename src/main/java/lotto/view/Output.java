@@ -23,6 +23,11 @@ public class Output {
 		}
 	}
 	public static void printRateOfReturn(double rateOfReturn) {
-		System.out.println(Notice.profit.getNoticeMessage() + rateOfReturn + "%입니다.");
+		System.out.println(Notice.RATE_OF_RETURN.getNoticeMessage() + rateOfReturn + "%입니다.");
+
+	}
+
+	public static void printPublishLotteries(List<Integer> lotto) {
+		System.out.println(lotto);
 	}
 }

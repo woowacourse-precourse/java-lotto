@@ -4,7 +4,6 @@ import static lotto.service.LottoService.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import lotto.ExceptionHandler;
 import lotto.domain.Lotto;
@@ -13,6 +12,7 @@ import lotto.view.Input;
 import lotto.view.Output;
 
 public class LottoController {
+	/*
 	public static List<List<Integer>> publishLotteries(int quantity) {
 		List<List<Integer>> candidate = new ArrayList<>();
 
@@ -59,11 +59,11 @@ public class LottoController {
 			if (count == 6)
 				ranking.set(4, ranking.get(4) + 1);
 		}
-		 */
 		return LottoService.countWinningNumber(candidate, winningNumbers, bonusNumber);
 	}
 
 	public static double calculateProfit(List<Integer> winningCount, double money) {
 		return LottoService.getRateOfReturn(winningCount, money);
 	}
+			 */
 }

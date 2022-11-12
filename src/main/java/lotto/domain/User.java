@@ -2,11 +2,8 @@ package lotto.domain;
 
 import java.util.List;
 
-import lotto.ExceptionHandler;
-
 public class User {
 	private static int money;
-	private List<List<Integer>> lottoeris;
 	private double rateOfReturn;
 
 	public User(int money) {
@@ -24,9 +21,6 @@ public class User {
 		this.money = money;
 	}
 
-	public User(List<List<Integer>> lottoeris) {
-		this.lottoeris = lottoeris;
-	}
 	public static int getMoney() {
 		return money;
 	}
@@ -37,13 +31,5 @@ public class User {
 
 	public double getRateOfReturn() {
 		return rateOfReturn;
-	}
-
-	public void userLottoeris(List<List<Integer>> lottoeris) {
-		this.lottoeris = lottoeris;
-	}
-
-	public List<List<Integer>> getLottoeris() {
-		return lottoeris;
 	}
 }
