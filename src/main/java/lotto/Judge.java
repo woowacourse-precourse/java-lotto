@@ -45,4 +45,8 @@ public class Judge {
     public boolean inputValueIsNumber(String numbers, String num) {
         return allNumber(numbers) && isNumber(num);
     }
+
+    public boolean isNotContain(Lotto lotto, int bonus) {
+        return lotto.getNumbers().contains(bonus);
+    }
 }
