@@ -55,7 +55,8 @@ public class LottoController {
     }
 
     private int getBonusNumberFromUserByConsole() {
-        return InputView.getBonusNumberFromUser();
+        LottoNumber lottoNumber = new LottoNumber(InputView.getBonusNumberFromUser());
+        return lottoNumber.getValue();
     }
 
     private void printLottoRate(double returnRate) {
