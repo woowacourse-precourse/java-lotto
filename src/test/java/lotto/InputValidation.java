@@ -47,6 +47,18 @@ public class InputValidation {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.INVALID_WIN_NUMBERS_INPUT.getValue());
 
+        assertThatThrownBy(() -> ValidationUtil.isValidWinNumbers("1.2.3,4,-1"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.INVALID_WIN_NUMBERS_INPUT.getValue());
+
+        assertThatThrownBy(() -> ValidationUtil.isValidWinNumbers(""))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.INVALID_WIN_NUMBERS_INPUT.getValue());
+
+        assertThatThrownBy(() -> ValidationUtil.isValidWinNumbers("*"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorMessage.INVALID_WIN_NUMBERS_INPUT.getValue());
+
         assertThatThrownBy(() -> ValidationUtil.isValidWinNumbers("1,2,3,4,46"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.INVALID_NUMBER.getValue());
