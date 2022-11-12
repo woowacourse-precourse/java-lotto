@@ -128,5 +128,5 @@ class WinningNumberTest {
         Validator.validateForRange(winningNumber);
         return winningNumber;
     }
-    
+
 }

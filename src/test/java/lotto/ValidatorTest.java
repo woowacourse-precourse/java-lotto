@@ -82,4 +82,5 @@ class ValidatorTest {
             throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_COST_ERROR_MESSAGE);
         }
     }
+
 }

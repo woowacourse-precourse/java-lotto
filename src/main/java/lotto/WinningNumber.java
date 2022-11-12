@@ -55,5 +55,4 @@ public class WinningNumber {
         System.out.println();
     }
 
-
 }
