@@ -6,6 +6,7 @@ public class ErrorMessage {
     public static final String ERROR_COMMA_DELIMITER = "쉼표로 구분해야 합니다.";
     public static final String ERROR_DUPLICATE_SIZE = "중복없는 6개 숫자여야 합니다.";
     public static final String ERROR_RANGE = "1 ~ 45 숫자여야 합니다.";
+    public static final String ERROR_DUPLICATE_BONUS = "당첨번호와 다른 숫자여야 합니다.";
 
     private ErrorMessage() {}
 }

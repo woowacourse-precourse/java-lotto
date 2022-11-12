@@ -1,9 +1,8 @@
 package lotto.validator;
 
-import lotto.constant.ErrorMessage;
-
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static lotto.constant.ErrorMessage.*;
@@ -59,6 +58,37 @@ public class Validator {
             if (number < 1 || number > 45) {
                 return false;
             }
+        }
+
+        return true;
+    }
+
+    public void validateBonusNumber(List<Integer> winningNumbers, String bonusNumber) {
+
+        if (!isRange(bonusNumber)) {
+            throw new IllegalArgumentException(ERROR_RANGE);
+        }
+
+        if (isDuplicated(winningNumbers, Integer.parseInt(bonusNumber))) {
+            throw new IllegalArgumentException(ERROR_DUPLICATE_BONUS);
+        }
+    }
+
+    private boolean isDuplicated(List<Integer> winningNumbers, int bonusNumber) {
+        return winningNumbers.contains(bonusNumber);
+    }
+
+    private boolean isRange(String bonusNumber) {
+        int number = 0;
+
+        try {
+            number = Integer.parseInt(bonusNumber);
+        } catch (NumberFormatException e) {
+            return false;
+        }
+
+        if (number < 1 || number > 45) {
+            return false;
         }
 
         return true;
