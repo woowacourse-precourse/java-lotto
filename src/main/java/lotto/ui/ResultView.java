@@ -26,6 +26,9 @@ public class ResultView implements View{
     private void print4Matches(){
         System.out.println("4개 일치 (50,000원) - " + result.get(1) + "개");
     }
-
+    private void print5Matches(){
+        System.out.print("5개 일치 (1,500,000원) - " + result.get(2) + "개");
+    }
+  
 
 }
