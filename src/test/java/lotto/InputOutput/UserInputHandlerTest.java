@@ -1,7 +1,6 @@
 package lotto.InputOutput;
 
 import lotto.controller.Lotto;
-import lotto.controller.LottoCounting;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +9,6 @@ import java.util.NoSuchElementException;
 import java.util.function.Supplier;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 
 class UserInputHandlerTest{
