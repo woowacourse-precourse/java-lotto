@@ -115,7 +115,7 @@
 
 
 - ProfitRate
-  - [ ] 수익률이 너무 큰경우 지수(exponent)가 제거 되는지 테스트
+  - [x] 수익률이 너무 큰경우 지수(exponent)가 제거 되는지 테스트
 
 
 - LottoResultService

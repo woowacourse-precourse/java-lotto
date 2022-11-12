@@ -7,10 +7,6 @@ public class ProfitRate {
         this.profitRate = profitRate;
     }
 
-    public double getProfitRate() {
-        return profitRate;
-    }
-
     @Override
     public String toString() {
         return String.format("%,.1f", this.profitRate);
