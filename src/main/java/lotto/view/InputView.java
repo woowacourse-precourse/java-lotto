@@ -7,8 +7,8 @@ import lotto.view.message.MessagePrinter;
 public class InputView {
     public Integer askPrice() {
         MessagePrinter.printAskPriceMessage();
-        String InputValue = Console.readLine();
-        return validateValue(InputValue);
+        String inputValue = Console.readLine();
+        return validateValue(inputValue);
     }
 
     public Integer validateValue(String inputValue) {
