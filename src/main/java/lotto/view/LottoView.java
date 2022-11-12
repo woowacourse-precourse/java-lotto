@@ -1,14 +1,14 @@
 package lotto.view;
 
+import lotto.constant.ErrorMessage;
 import lotto.validator.Validator;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
+import static lotto.constant.ErrorMessage.*;
 
 public class LottoView {
     private final Validator validator;
@@ -22,8 +22,12 @@ public class LottoView {
     }
 
     public int inputMoney() {
-        // 입력값이 정수형태가 아닌경우 NumberFormatException
-        int money = Integer.parseInt(readLine());
+        int money = 0;
+        try {
+            money = Integer.parseInt(readLine());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ERROR_MONEY);
+        }
         validator.validateMoney(money);
         return money;
     }
