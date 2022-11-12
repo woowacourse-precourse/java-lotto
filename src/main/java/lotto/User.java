@@ -4,12 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class User {
 
-	public static void main(String[] args) {
-
-		int payment = getPayment();
-		System.out.println(payment);
-	}
-
 	public static int getPayment() {
 
 		int payment;
