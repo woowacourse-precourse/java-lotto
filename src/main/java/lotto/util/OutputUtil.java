@@ -39,6 +39,10 @@ public class OutputUtil {
         System.out.println(Message.INPUT_BONUS_NUMBER_MESSAGE.getMessage());
     }
 
+    public static void printInputBonusNumberError() {
+        System.out.println(Message.BONUS_NUMBER_INPUT_ERROR);
+    }
+
     public static void printResult(Map<Number, Integer> ranks) {
         System.out.println(Message.TOTAL_RESULT_MESSAGE);
         System.out.println(Message.RESULT_FIFTH.getMessage() + ranks.get(Number.FIVE) + "개");
