@@ -6,14 +6,13 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class LottoInStream {
-    private static final String _error_default_msg = "[ERROR]";
 
     public static int readAmount() {
         LottoOutStream.askPurchaseAmount();
         String line = readlineWithoutException();
 
         if (isNullOrEmptyString(line)) {
-            throw new IllegalArgumentException(_error_default_msg + " 빈 문자열은 입력할 수 없습니다.");
+            throw new IllegalArgumentException(Application._err_msg + " 빈 문자열은 입력할 수 없습니다.");
         }
 
         try {
@@ -28,7 +27,7 @@ public class LottoInStream {
         String line = readlineWithoutException();
 
         if (isNullOrEmptyString(line)) {
-            throw new IllegalArgumentException(_error_default_msg + " 빈 문자열은 입력할 수 없습니다.");
+            throw new IllegalArgumentException(Application._err_msg + " 빈 문자열은 입력할 수 없습니다.");
         }
         return convStrArrayToIntList(line.split(","));
     }
@@ -38,12 +37,12 @@ public class LottoInStream {
         String line = readlineWithoutException();
 
         if (isNullOrEmptyString(line)) {
-            throw new IllegalArgumentException(_error_default_msg + " 빈 문자열은 입력할 수 없습니다.");
+            throw new IllegalArgumentException(Application._err_msg + " 빈 문자열은 입력할 수 없습니다.");
         }
 
         int number = convStrToInt(line);
         if (lotto.hasNumber(number)) {
-            throw new IllegalArgumentException(_error_default_msg + " 보너스 번호는 당첨 번호와 중복되는 번호를 가질 수 없습니다.");
+            throw new IllegalArgumentException(Application._err_msg + " 보너스 번호는 당첨 번호와 중복되는 번호를 가질 수 없습니다.");
         }
         return (number);
     }
@@ -76,7 +75,7 @@ public class LottoInStream {
         try {
             return Integer.parseInt(number);
         } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException(_error_default_msg + " 숫자가 아닌 문자는 처리할 수 없습니다.");
+            throw new IllegalArgumentException(Application._err_msg + " 숫자가 아닌 문자는 처리할 수 없습니다.");
         }
     }
 }

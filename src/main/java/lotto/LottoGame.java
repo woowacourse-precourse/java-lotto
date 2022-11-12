@@ -22,17 +22,16 @@ public class LottoGame {
     public static final int _third_place = 2;
     public static final int _fourth_place = 3;
     public static final int _fifth_place = 4;
-    private static final String _error_default_msg = "[ERROR]";
 
     public static List<Lotto> buyLotto(int money) {
         List<Lotto> lottoes = new ArrayList<>();
         int lottoCount = money / _lotto_price;
 
         if (money < _lotto_price) {
-            throw new IllegalArgumentException(_error_default_msg + " 로또의 최소 가격은 " + _lotto_price + "원 입니다.");
+            throw new IllegalArgumentException(Application._err_msg + " 로또의 최소 가격은 " + _lotto_price + "원 입니다.");
         }
         if (money % _lotto_price != 0) {
-            throw new IllegalArgumentException(_error_default_msg + " 로또는 천원 단위로 구매할 수 있습니다.");
+            throw new IllegalArgumentException(Application._err_msg + " 로또는 천원 단위로 구매할 수 있습니다.");
         }
 
         for (int i = 0; i < lottoCount; ++i) {

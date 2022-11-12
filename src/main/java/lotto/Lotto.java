@@ -7,7 +7,6 @@ public class Lotto {
     public static final int _min_lotto_number = 1;
     public static final int _max_lotto_number = 45;
     public static final int _lotto_length = 6;
-    private static final String _error_default_msg = "[ERROR]";
 
     private final List<Integer> numbers;
 
@@ -31,17 +30,17 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (isNumberNullOrEmpty(numbers)) {
-            throw new IllegalArgumentException(_error_default_msg + " 로또 생성 시 빈 리스트는 사용할 수 없습니다.");
+            throw new IllegalArgumentException(Application._err_msg + " 로또 생성 시 빈 리스트는 사용할 수 없습니다.");
         }
         if (!hasSixNumbers(numbers)) {
-            throw new IllegalArgumentException(_error_default_msg + " 로또를 생성하기 위해선 6개의 번호가 필요합니다.");
+            throw new IllegalArgumentException(Application._err_msg + " 로또를 생성하기 위해선 6개의 번호가 필요합니다.");
         }
         for (int num : numbers) {
             if (hasDuplicateNumber(numbers, num)) {
-                throw new IllegalArgumentException(_error_default_msg + " 로또 생성 시 중복된 번호는 허용하지 않습니다.");
+                throw new IllegalArgumentException(Application._err_msg + " 로또 생성 시 중복된 번호는 허용하지 않습니다.");
             }
             if (!isNumberInRangeForLotto(num)) {
-                throw new IllegalArgumentException(_error_default_msg + " 범위를 벗어난 로또 번호는 허용하지 않습니다.");
+                throw new IllegalArgumentException(Application._err_msg + " 범위를 벗어난 로또 번호는 허용하지 않습니다.");
             }
         }
     }
