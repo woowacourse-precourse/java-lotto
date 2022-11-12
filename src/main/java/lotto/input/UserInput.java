@@ -7,14 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserInput {
-    public List<Integer> getBounsNumber(List<Integer> prizeNumbers) {
+    public Integer getBounsNumber(List<Integer> prizeNumbers) {
         //    보너스 번호 입력
         System.out.println("\n보너스 번호를 입력해 주세요.");
         String bonusValue = Console.readLine();
         Integer bounusNumber = Integer.parseInt(bonusValue);
         Validator.validateOutOfBound(bounusNumber);
-        prizeNumbers.add(bounusNumber);
-        return prizeNumbers;
+        return bounusNumber;
     }
 
     public List<Integer> getPrizeNumber() {
