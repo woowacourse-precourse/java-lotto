@@ -58,4 +58,14 @@ public class LottoDesignator {
                 .toArray(Integer[]::new);
         return Arrays.asList(numbers);
     }
+
+
+    private List<Integer> initRange() {
+        List<Integer> range = new ArrayList<>();
+        for(int rangeNum = 0; rangeNum<RANGE; rangeNum++) {
+            range.add(rangeNum+1);
+        }
+
+        return range;
+    }
 }
