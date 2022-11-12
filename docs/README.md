@@ -1,21 +1,22 @@
 
 ## 기능 구현 목록
-- [ ] 로또 번호 형식에 맞는지 검증한다. Lotto#validateNumberFormat()
-  - [x] 6자리인지 검증한다. Lotto#validateSize()
-  - [x] 입력받은 당첨 번호가 중복되지 않는지 검증한다. Lotto#validateDuplicateNumber()
-  - [x] 1부터 ~ 45사이의 숫자인지 확인한다. Lotto#validateNumbersInRange
+- [x] 6자리인지 검증한다. Lotto#validateSize()
+- [x] 입력받은 당첨 번호가 중복되지 않는지 검증한다. Lotto#validateDuplicateNumber()
+- [x] 1부터 ~ 45사이의 숫자인지 확인한다. Lotto#validateNumbersInRange
 - [ ] 발행한 로또 번호를 가능한 당첨 번호와 가장 많이 일치하는 갯수와 일치 금액을 계산 한다. Lotto#matchWinner()
 - [ ] 로또의 결과 추가한다. Lotto#addResult()
 - [ ] 로또의 결과를 가져온다. Lotto#getResult()
-- [ ] 로또 구입 금액을 입력 받는다. LottoMachine#setLottoPurchaseAmount()
+- [ ] 로또 구입 금액만큼 로또를 발행한다. LottoMachine#LottoForAmount()
+- [ ] 로또 구입 금액을 입력 받는다. MoneyInput#readLottoPurchaseAmount()
+- [ ] 1,000원으로 나누어 떨어지는지 검증한다. Money#validatePurchaseAmount()
+- [ ] 로또 구입 금액을 가져온다. Money#getMoney()
 - [ ] 구입 금액에 해당하는 만큼 로또를 발행한다. LottoMachine#issue()
-  - [ ] 1부터 ~ 45사이의 서로 다른 임의의 수 6개를 생성한다. LottoMachine#makeNumbers
-  - [ ] 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다. LottoMachine#validatePurchaseAmount()
-  - [ ] 발행한 로또 번호를 오름차순으로 정렬한다. LottoMachine#sortAscend()
+  - [ ] 로또 번호를 오름차순으로 정렬한다. LottoMachine#sortAscend()
 - [ ] 발행한 모든 로또를 가져온다. LottoMachine#getAllLottoes()
-- [ ] 당첨 번호를 입력 받는다. WinLotto#setWinningNumbers()
-- [ ] 보너스 번호를 입력 받는다. WinLotto#setBonusNumber()
-  - [ ] 당첨 번호는 쉼표를 기준으로 구분한다. WinLotto#splitWinningNumbers()
+- [ ] 당첨 번호를 입력 받는다. NumberInput#readWinningNumbers()
+  - [ ] 당첨 번호를 가져온다. NumberInput#getWinningNumbers()
+- [ ] 보너스 번호를 입력 받는다. NumberInput#readBonusNumber()
+  - [ ] 보너스 번호를 가져온다. NumberInput#validateNumber()
 - [ ] 발행 로또가 로또 당첨 번호를 몇 개 가지고 있는지 확인한다. NumberComparison#numberOfSameNumbers()
 - [ ] 발행 로또가 보너스 번호를 포함하는지 확인한다. NumberComparison#isContainBonusNumber()
 - [ ] 수익률을 가져온다. LottoStatistics#getPercentageOfProfit()
@@ -34,6 +35,9 @@
 - WinLotto: 당첨 관련
 - NumberComparison: 숫자 비교
 - Profit: 통계 관련
+- Money: 돈
+- MoneyInput: 돈 입력
+- NumberInput: 숫자 입력
 - RequestView: 요청 관련 UI
 - ResultView: 결과 관련 UI
 - LottoRule: 로또 관련 상수
