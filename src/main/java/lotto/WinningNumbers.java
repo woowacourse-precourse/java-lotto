@@ -10,6 +10,8 @@ public class WinningNumbers {
     public WinningNumbers(List<Integer> numbers, int bonusNumber) {
         validate(numbers);
         checkOverlap(numbers);
+        checkInclusion(numbers, bonusNumber);
+        checkScope(numbers);
         this.numbers = numbers;
         this.bonusNumber = bonusNumber;
     }
@@ -30,6 +32,14 @@ public class WinningNumbers {
     public void checkInclusion(List<Integer> numbers, int bonusNumber) {
         if (numbers.contains(bonusNumber)) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    public void checkScope(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 }
