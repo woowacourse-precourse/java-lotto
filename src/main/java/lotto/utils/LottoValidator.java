@@ -6,12 +6,9 @@ import lotto.domain.LottoNumber;
 import java.util.HashSet;
 import java.util.List;
 
+import static lotto.utils.Constants.*;
+
 public class LottoValidator {
-    public static final String ERROR_MESSAGE_NOT_VALID_LOTTO_SIZE = "[ERROR] 로또 번호는 단 6개만 입력 가능합니다.";
-    public static final String ERROR_MESSAGE_DUPLICATE_NUMBER = "[ERROR] 로또 번호는 중복된 숫자를 포함해서는 안됩니다.";
-    public static final String ERROR_MESSAGE_NOT_DIGIT = "[ERROR] 로또 번호는 숫자만 입력 가능합니다.";
-    public static final String ERROR_MESSAGE_NOT_VALID_LOTTO_NUMBER = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
-    public static final String ERROR_MESSAGE_DUPLICATE_BONUS_NUMBER = "[ERROR] 보너스 숫자는 당첨 번호와 중복되어서는 안됩니다.";
 
     public static void validateLotto(List<LottoNumber> numbers) {
         validateLottoSize(numbers.size());
@@ -30,13 +27,13 @@ public class LottoValidator {
     }
 
     private static void validateLottoSize(int lottoSize) {
-        if (lottoSize != Lotto.LOTTO_SIZE) {
+        if (lottoSize != LOTTO_SIZE) {
             throw new IllegalArgumentException(ERROR_MESSAGE_NOT_VALID_LOTTO_SIZE);
         }
     }
 
     private static void hasDuplicateLottoNumber(int lottoSize) {
-        if (lottoSize != Lotto.LOTTO_SIZE) {
+        if (lottoSize != LOTTO_SIZE) {
             throw new IllegalArgumentException(ERROR_MESSAGE_DUPLICATE_NUMBER);
         }
     }
@@ -49,12 +46,12 @@ public class LottoValidator {
         try {
             Integer.parseInt(number);
         } catch (Exception e) {
-            throw new IllegalArgumentException(ERROR_MESSAGE_NOT_DIGIT);
+            throw new IllegalArgumentException(ERROR_MESSAGE_NOT_DIGIT_LOTTO_NUMBER);
         }
     }
 
     private static void isValidLottoNumber(int lottoNumber) {
-        if (lottoNumber < Lotto.MIN_NUMBER || Lotto.MAX_NUMBER < lottoNumber) {
+        if (lottoNumber < MIN_NUMBER || MAX_NUMBER < lottoNumber) {
             throw new IllegalArgumentException(ERROR_MESSAGE_NOT_VALID_LOTTO_NUMBER);
         }
     }

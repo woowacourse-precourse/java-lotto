@@ -1,7 +1,5 @@
 package lotto.view;
 
-import lotto.utils.LottoValidator;
-import lotto.utils.UserInputValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -9,6 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
+import static lotto.utils.Constants.*;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,7 +20,7 @@ class InputViewTest {
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
         assertThatThrownBy(InputView::inputPurchaseAmount)
-                .hasMessage(UserInputValidator.ERROR_MESSAGE_NOT_DIGIT);
+                .hasMessage(ERROR_MESSAGE_NOT_DIGIT_PURCHASE_AMOUNT);
     }
 
     @DisplayName("구입 금액 - 1000원 단위만 입력 가능")
@@ -31,7 +30,7 @@ class InputViewTest {
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
         assertThatThrownBy(InputView::inputPurchaseAmount)
-                .hasMessage(UserInputValidator.ERROR_MESSAGE_NOT_VALID_UNIT_OF_MONEY);
+                .hasMessage(ERROR_MESSAGE_NOT_VALID_UNIT_OF_MONEY);
     }
 
     @DisplayName("구입 금액 - 정상 입력")
@@ -50,7 +49,7 @@ class InputViewTest {
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
         assertThatThrownBy(InputView::inputWinningNumber)
-                .hasMessage(LottoValidator.ERROR_MESSAGE_NOT_DIGIT);
+                .hasMessage(ERROR_MESSAGE_NOT_DIGIT_LOTTO_NUMBER);
     }
 
     @DisplayName("당첨 번호 - 6개만 입력 가능")
@@ -60,7 +59,7 @@ class InputViewTest {
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
         assertThatThrownBy(InputView::inputWinningNumber)
-                .hasMessage(LottoValidator.ERROR_MESSAGE_NOT_VALID_LOTTO_SIZE);
+                .hasMessage(ERROR_MESSAGE_NOT_VALID_LOTTO_SIZE);
     }
 
     @DisplayName("당첨 번호 - 중복 불가")
@@ -70,7 +69,7 @@ class InputViewTest {
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
         assertThatThrownBy(InputView::inputWinningNumber)
-                .hasMessage(LottoValidator.ERROR_MESSAGE_DUPLICATE_NUMBER);
+                .hasMessage(ERROR_MESSAGE_DUPLICATE_NUMBER);
     }
 
     @DisplayName("당첨 번호 - 1 ~ 45사이의 숫자")
@@ -80,7 +79,7 @@ class InputViewTest {
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
         assertThatThrownBy(InputView::inputWinningNumber)
-                .hasMessage(LottoValidator.ERROR_MESSAGE_NOT_VALID_LOTTO_NUMBER);
+                .hasMessage(ERROR_MESSAGE_NOT_VALID_LOTTO_NUMBER);
     }
 
     @DisplayName("당첨 번호 - 정상 입력")
@@ -99,7 +98,7 @@ class InputViewTest {
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
         assertThatThrownBy(InputView::inputBonusNumber)
-                .hasMessage(LottoValidator.ERROR_MESSAGE_NOT_DIGIT);
+                .hasMessage(ERROR_MESSAGE_NOT_DIGIT_LOTTO_NUMBER);
     }
 
     @DisplayName("보너스 번호 - 1 ~ 45사이의 숫자만 가능")
@@ -109,7 +108,7 @@ class InputViewTest {
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
         assertThatThrownBy(InputView::inputBonusNumber)
-                .hasMessage(LottoValidator.ERROR_MESSAGE_NOT_VALID_LOTTO_NUMBER);
+                .hasMessage(ERROR_MESSAGE_NOT_VALID_LOTTO_NUMBER);
     }
 
     @DisplayName("보너스 번호 - 1개의 숫자만 입력 가능")
@@ -119,7 +118,7 @@ class InputViewTest {
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
         assertThatThrownBy(InputView::inputBonusNumber)
-                .hasMessage(LottoValidator.ERROR_MESSAGE_NOT_DIGIT);
+                .hasMessage(ERROR_MESSAGE_NOT_DIGIT_LOTTO_NUMBER);
     }
 
     @DisplayName("보너스 번호 - 정상 입력")

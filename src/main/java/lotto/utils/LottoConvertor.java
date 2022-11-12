@@ -7,13 +7,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.utils.Constants.COMMA;
+
 public class LottoConvertor {
     public static Lotto mapToLotto(String userInput) {
         return new Lotto(mapToList(userInput));
     }
 
     private static List<LottoNumber> mapToList(String userInput) {
-        String[] lottoNumbers = userInput.split(",");
+        String[] lottoNumbers = userInput.split(COMMA);
         return Arrays.stream(lottoNumbers)
                 .map(LottoConvertor::mapToLottoNumber)
                 .collect(Collectors.toList());

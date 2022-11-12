@@ -1,12 +1,12 @@
 package lotto.domain;
 
-import lotto.utils.LottoValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static lotto.utils.Constants.ERROR_MESSAGE_DUPLICATE_BONUS_NUMBER;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,7 +24,7 @@ class WinningLottoTest {
     void 보너스_넘버_중복() {
         assertThatThrownBy(() -> new WinningLotto(new LottoNumber("1"), lotto))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(LottoValidator.ERROR_MESSAGE_DUPLICATE_BONUS_NUMBER);
+                .hasMessage(ERROR_MESSAGE_DUPLICATE_BONUS_NUMBER);
     }
 
     @DisplayName("정상 동작")

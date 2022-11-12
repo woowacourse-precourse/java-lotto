@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.stream.Collectors;
 
+import static lotto.utils.Constants.*;
+
 public class WinningStatics {
     private final LinkedHashMap<LottoResult, Long> lottoResults = new LinkedHashMap<>();
     private float lateOfReturn;
@@ -20,7 +22,7 @@ public class WinningStatics {
 
     public void calculateRateOfReturn(int purchaseMoney) {
         long prizeMoney = calculatePrizeMoney();
-        this.lateOfReturn =  Math.round((float) prizeMoney / purchaseMoney * 1000) / 10f;
+        this.lateOfReturn = Math.round((float) prizeMoney / purchaseMoney * 1000) / 10f;
     }
 
     private long calculatePrizeMoney() {
@@ -36,8 +38,8 @@ public class WinningStatics {
     @Override
     public String toString() {
         return lottoResults.entrySet().stream()
-                .map(entry -> entry.getKey().toString() + entry.getValue() + "개")
-                .collect(Collectors.joining("\n"))
-                + "\n총 수익률은 "+ lateOfReturn +"%입니다.\n";
+                .map(entry -> entry.getKey().toString() + entry.getValue() + COUNT_UNIT_MESSAGE)
+                .collect(Collectors.joining(LF))
+                + LF + TOTAL_RATE_OF_RETURN + lateOfReturn + UNIT_OF_RATE_OF_RETURN + LF;
     }
 }

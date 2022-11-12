@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static lotto.utils.Constants.LOTTO_SIZE;
+import static lotto.utils.Constants.LOTTO_TICKET_PRICE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoMachineTest {
@@ -24,7 +26,7 @@ class LottoMachineTest {
     void 로또의_수는_구입_수량과_동일() {
         List<Lotto> lottos = lottoMachine.getLottos();
 
-        assertThat(lottos.size()).isEqualTo(purchaseMoney / Lotto.LOTTO_TICKET_PRICE);
+        assertThat(lottos.size()).isEqualTo(purchaseMoney / LOTTO_TICKET_PRICE);
     }
 
     @Test
@@ -32,6 +34,6 @@ class LottoMachineTest {
     void 로또는_6개의_숫자() {
         List<Lotto> lottos = lottoMachine.getLottos();
 
-        assertThat(lottos.get(0).getLottoNumbers().size()).isEqualTo(Lotto.LOTTO_SIZE);
+        assertThat(lottos.get(0).getLottoNumbers().size()).isEqualTo(LOTTO_SIZE);
     }
 }

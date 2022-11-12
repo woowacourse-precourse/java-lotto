@@ -5,15 +5,9 @@ import lotto.utils.LottoValidator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Lotto {
-    public static final int MIN_NUMBER = 1;
-    public static final int MAX_NUMBER = 45;
-    public static final int LOTTO_SIZE = 6;
-    public static final int LOTTO_TICKET_PRICE = 1000;
-    private static final String COMMA = ", ";
-    private static final String OPEN_BRACKET = "[";
-    private static final String CLOSED_BRACKET = "]";
+import static lotto.utils.Constants.*;
 
+public class Lotto {
     private final List<LottoNumber> lottoNumbers;
 
     public Lotto(List<LottoNumber> lottoNumbers) {
@@ -39,6 +33,6 @@ public class Lotto {
     public String toString() {
         return OPEN_BRACKET + lottoNumbers.stream()
                 .map(LottoNumber::toString)
-                .collect(Collectors.joining(COMMA)) + CLOSED_BRACKET;
+                .collect(Collectors.joining(COMMA_WITH_BLANK)) + CLOSED_BRACKET;
     }
 }

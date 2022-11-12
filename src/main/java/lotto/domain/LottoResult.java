@@ -4,6 +4,8 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
+import static lotto.utils.Constants.*;
+
 public enum LottoResult implements Comparable<LottoResult> {
     FIFTH(3, 5_000), // 5등
     FOURTH(4, 50_000), // 4등
@@ -12,9 +14,7 @@ public enum LottoResult implements Comparable<LottoResult> {
     FIRST(6, 2_000_000_000), // 1등
     FAILED(0, 0);
 
-    private static final int WINNING_MIN_COUNT = 3;
     private static final Map<Integer, LottoResult> BY_COUNT_OF_MATCH = new HashMap<>();
-    private static final String BONUS_NUMBER_MESSAGE = ", 보너스 볼 일치";
 
     private final int countOfMatch;
     private final int winningMoney;
@@ -23,7 +23,7 @@ public enum LottoResult implements Comparable<LottoResult> {
         for (LottoResult lottoResult : values()) {
             BY_COUNT_OF_MATCH.put(lottoResult.countOfMatch, lottoResult);
         }
-        BY_COUNT_OF_MATCH.put(5, THIRD);
+        BY_COUNT_OF_MATCH.put(THIRD.countOfMatch, THIRD);
     }
 
     LottoResult(int countOfMatch, int winningMoney) {
@@ -59,7 +59,7 @@ public enum LottoResult implements Comparable<LottoResult> {
 
     @Override
     public String toString() {
-        DecimalFormat formatter = new DecimalFormat("###,###");
-        return countOfMatch + "개 일치" + printBonusMessage() + " (" + formatter.format(winningMoney) + "원) - ";
+        DecimalFormat formatter = new DecimalFormat(WINNING_MONEY_FORMAT);
+        return countOfMatch + COUNT_UNIT_MESSAGE + EQUALS_MESSAGE + printBonusMessage() + LEFT_PARENTHESIS + formatter.format(winningMoney) + WINNING_MONEY_UNIT_MESSAGE;
     }
 }
