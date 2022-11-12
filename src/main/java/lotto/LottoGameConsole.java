@@ -45,7 +45,7 @@ public class LottoGameConsole {
         return Arrays.stream(winningNumbers.split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
 
-    private int createBonusNumber() {
+    private int createBonusNumber(List<Integer> winningNumbers) {
         // 보너스 번호 안내
         // 보너스 번호 입력
         // 보너스 번호 검증
