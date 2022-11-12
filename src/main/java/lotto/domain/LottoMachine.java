@@ -50,7 +50,7 @@ public class LottoMachine {
 
     @Override
     public String toString() {
-        return purchaseMoney / LOTTO_TICKET_PRICE + OUTPUT_MESSAGE_TICKET_QUANTITY + LF +
+        return String.format(OUTPUT_MESSAGE_TICKET_QUANTITY, purchaseMoney / LOTTO_TICKET_PRICE) +
                 lottos.stream()
                         .map(Lotto::toString)
                         .collect(Collectors.joining(LF));

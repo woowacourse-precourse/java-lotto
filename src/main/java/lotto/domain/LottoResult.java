@@ -52,7 +52,7 @@ public enum LottoResult implements Comparable<LottoResult> {
 
     private String printBonusMessage() {
         if (this == SECOND) {
-            return BONUS_NUMBER_MESSAGE;
+            return OUTPUT_MESSAGE_BONUS_BALL;
         }
         return "";
     }
@@ -60,6 +60,6 @@ public enum LottoResult implements Comparable<LottoResult> {
     @Override
     public String toString() {
         DecimalFormat formatter = new DecimalFormat(WINNING_MONEY_FORMAT);
-        return countOfMatch + COUNT_UNIT_MESSAGE + EQUALS_MESSAGE + printBonusMessage() + LEFT_PARENTHESIS + formatter.format(winningMoney) + WINNING_MONEY_UNIT_MESSAGE;
+        return String.format(OUTPUT_MESSAGE_WINNING_RESULT, countOfMatch, printBonusMessage(), formatter.format(winningMoney));
     }
 }

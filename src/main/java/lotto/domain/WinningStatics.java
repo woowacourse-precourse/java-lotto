@@ -38,8 +38,8 @@ public class WinningStatics {
     @Override
     public String toString() {
         return lottoResults.entrySet().stream()
-                .map(entry -> entry.getKey().toString() + entry.getValue() + COUNT_UNIT_MESSAGE)
+                .map(entry -> entry.getKey().toString() + String.format(OUTPUT_MESSAGE_NUMBER_OF_WINNING_LOTTO, entry.getValue()))
                 .collect(Collectors.joining(LF))
-                + LF + TOTAL_RATE_OF_RETURN + lateOfReturn + UNIT_OF_RATE_OF_RETURN + LF;
+                + String.format(OUTPUT_MESSAGE_RATE_OF_RETURN, lateOfReturn);
     }
 }
