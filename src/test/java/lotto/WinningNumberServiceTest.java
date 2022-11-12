@@ -13,9 +13,9 @@ public class WinningNumberServiceTest{
 
     WinningNumberService winningNumberService = new WinningNumberService();
 
-    @DisplayName("숫자가 아닌 input 테스트")
+    @DisplayName("당첨번호 숫자가 아닌 input 테스트")
     @Test
-    void 숫자가_아닌_경우_에러_테스트(){
+    void 당첨번호_숫자가_아닌_경우_에러_테스트(){
 
         // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         String input = "숫자,아님,숫자,아님,숫자,아님";
@@ -24,4 +24,11 @@ public class WinningNumberServiceTest{
 
     }
 
+    @DisplayName("보너스 번호 숫자가 아닌 input 테스트")
+    @Test
+    void 보너스_숫자가_아닌_경우_에러_테스트(){
+        String input = "숫자 아님";
+        assertThatThrownBy(() -> winningNumberService.parseBonusNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
