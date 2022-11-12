@@ -67,5 +67,15 @@ class LottoExceptionMessageUtilsTest {
             assertThat(message).contains(EXCEPTION_MESSAGE_PREFIX);
             assertThat(message).contains(invalidInput);
         }
+
+        @ParameterizedTest
+        @ValueSource(strings = {"1,2,3,4,5", "12,23,34,21,24,123", "123,234,345,456,567,678"})
+        @DisplayName("만약 입력 값의 길이가 11(한 자릿수 6 + 구분자 5)에서 17(두 자릿수 12 + 구분자 6) 사이의 유효한 값이 아니라면 입력 값을 포함한 예외 메세지를 반환한다.")
+        void invalid_input_number_length_exception_message_test(String invalidInput) {
+            String message = LottoExceptionMessageUtils.INVALID_NUMBER_LENGTH.findExceptionMessage(invalidInput.length());
+
+            assertThat(message).contains(EXCEPTION_MESSAGE_PREFIX);
+            assertThat(message).contains(String.valueOf(invalidInput.length()));
+        }
     }
 }
