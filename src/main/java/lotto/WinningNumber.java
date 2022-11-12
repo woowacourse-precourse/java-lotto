@@ -19,6 +19,13 @@ public class WinningNumber {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorText.INVALID_SIZE.toString());
         }
+
+        Set<Integer> numberSet = new HashSet<>(numbers);
+        numberSet.add(bonus);
+        if(numberSet.size() != 7){
+            throw new IllegalArgumentException(ErrorText.DUPLICATE_NUMBER.toString());
+        }
+
     }
 
 
