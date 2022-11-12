@@ -58,6 +58,20 @@ public class Banker {
         }
     }
 
+    public void printWinner() {
+        for (Map.Entry<Victory,Integer> entry : map.entrySet()) {
+            if (entry.getKey().isBonus() == false) {
+                System.out.println(entry.getKey().getMatchCount() + "개 일치" +
+                        "("+entry.getKey().getWinningMoney()+")" + "-" + entry.getValue() + "개");
+            }
+            if (entry.getKey().isBonus() == true) {
+                System.out.println(entry.getKey().getMatchCount() + "개 일치, 보너스 볼 일치" +
+                        "(" + entry.getKey().getWinningMoney()+")" + "-" + entry.getValue() + "개");
+            }
+        }
+    }
+
+
     public boolean isBonusCount(int[] victoruNumber) {
         if (victoruNumber[VICTORY_LOCATION] == 5 && victoruNumber[BONUS_LOCATION] == 1) {
             return true;
