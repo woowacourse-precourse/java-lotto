@@ -8,7 +8,7 @@ import static lotto.application.service.yield.WinningMoney.*;
 
 public class YieldCalculator {
 
-    Map<String, Integer> winInformation = new HashMap<>() {{
+    private Map<String, Integer> winInformation = new HashMap<>() {{
         put("three", 0);
         put("four", 0);
         put("five", 0);
