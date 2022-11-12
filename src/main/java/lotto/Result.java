@@ -34,7 +34,7 @@ public class Result {
     }
 
     public void calculateReturnOfRate(int price) {
-        double returnOfRate = Math.round(((double) totalPrizeMoney / price) * PERCENT * ROUND_ONE) / ONE_DECIMAL;
+        double returnOfRate = (double) totalPrizeMoney/price*PERCENT;
         Output.showReturnOfRate(returnOfRate);
     }
 }
