@@ -107,3 +107,11 @@ public class PlayLotto extends Input {
     public void print_yeild(){
         out.print_revenue(cal_revenue());
     }
+
+    public Float cal_revenue(){
+        Float sum = 0f;
+        for(Reward reward : Reward.values()){
+            sum += reward.getValue() * win_count.get(reward.ordinal());
+        }
+        return sum / user.getMoney() * 100;
+    }
