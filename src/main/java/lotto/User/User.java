@@ -1,7 +1,7 @@
 package lotto.User;
 
+import camp.nextstep.edu.missionutils.Console;
 import lotto.BoughtLotto;
-import lotto.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,5 +41,10 @@ public class User {
 
     public List<BoughtLotto> getLottos() {
         return lottos;
+    }
+
+    private int inputMoney() {
+        System.out.println("구입금액을 입력해 주세요.");
+        return Integer.parseInt(Console.readLine());
     }
 }
