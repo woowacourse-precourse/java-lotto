@@ -4,9 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import validate.Check;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Buy {
@@ -40,20 +39,16 @@ public class Buy {
         List<Integer> winningNumbers = makeWinningNumbers(numbers);
 
         System.out.println("보너스 번호를 입력해 주세요.");
-        int bonusNumbers = Integer.parseInt(Console.readLine());
-        Check.NumberDuplicate(winningNumbers, bonusNumbers);
-        winningNumbers.add(bonusNumbers);
+        String temporaryBonusNumbers = Console.readLine();
+        Check.isNumber(temporaryBonusNumbers);
+        int bonusNumber = Integer.parseInt(temporaryBonusNumbers);
+        Check.rightRange(bonusNumber, START_NUMBER, FINAL_NUMBER);
+        Check.numberDuplicate(winningNumbers, bonusNumber);
+        winningNumbers.add(bonusNumber);
 
         return winningNumbers;
     }
 
-    public static <T, U> List<U> transform(List<T> list,
-                                           Function<T, U> function)
-    {
-        return list.stream()
-                .map(function)
-                .collect(Collectors.toList());
-    }
 
     public static List<Integer> makeWinningNumbers(String numbers) {
         List<String> temporaryWinningNumbers = Arrays.asList(numbers.split(","));
