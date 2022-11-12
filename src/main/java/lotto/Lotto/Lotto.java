@@ -7,10 +7,6 @@ import java.util.*;
 
 public class Lotto {
     private final List<Integer> lottoNumbers;
-    public static final Integer LOTTO_SIZE = 6;
-    public static final Integer START_LOTTO_NUMBER = 1;
-    public static final Integer END_LOTTO_NUMBER = 45;
-
     public Lotto(List<Integer> numbers) {
         LottoNumberValidator.validate(numbers);
         this.lottoNumbers = numbers;

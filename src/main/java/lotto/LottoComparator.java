@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.Lotto.Lotto;
+import lotto.Lotto.LottoInfo;
 import lotto.Lotto.WinningLotto;
 
 public class LottoComparator {
@@ -20,7 +21,7 @@ public class LottoComparator {
     {
         int correctCount = 0;
 
-        for (int myLottoNumberIndex = 0; myLottoNumberIndex < Lotto.LOTTO_SIZE; myLottoNumberIndex++)
+        for (int myLottoNumberIndex = 0; myLottoNumberIndex < LottoInfo.LOTTO_SIZE; myLottoNumberIndex++)
         {
             Integer myLottoNumber = myLotto.get(myLottoNumberIndex);
             if(winningLotto.isContain(myLottoNumber))

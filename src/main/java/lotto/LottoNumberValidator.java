@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.Lotto.Lotto;
+import lotto.Lotto.LottoInfo;
 
 import java.util.HashSet;
 import java.util.List;
@@ -16,7 +17,7 @@ public class LottoNumberValidator {
 
     public static void lottoSizeValidation(List<Integer> numbers)
     {
-        if (numbers.size() != Lotto.LOTTO_SIZE)
+        if (numbers.size() != LottoInfo.LOTTO_SIZE)
         {
             throw new IllegalArgumentException(Message.getLottoSizeErrorMessage());
         }
@@ -36,7 +37,7 @@ public class LottoNumberValidator {
 
     public static boolean isOutOfBound(Integer lottoNumber)
     {
-        if(lottoNumber < Lotto.START_LOTTO_NUMBER || Lotto.END_LOTTO_NUMBER < lottoNumber)
+        if(lottoNumber < LottoInfo.START_LOTTO_NUMBER || LottoInfo.END_LOTTO_NUMBER < lottoNumber)
         {
             return true;
         }
