@@ -66,4 +66,12 @@ public class Application {
 
         return convertedNumber;
     }
+
+    public static void validateWinnerNumberRange(List<Integer> winnerNumber) {
+        for (Integer eachNumber : winnerNumber) {
+            if (eachNumber < 1 || eachNumber > 45) {
+                throw new IllegalArgumentException(ErrorResponse.INPUT_LOTTO_RANGE_ERROR.getErrorMessage());
+            }
+        }
+    }
 }
