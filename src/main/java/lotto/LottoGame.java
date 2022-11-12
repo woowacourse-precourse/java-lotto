@@ -16,16 +16,20 @@ public class LottoGame {
     }
 
     public void start() {
-        Integer moneyEntered = Input.inputMoney();
-        validateInputMoney(moneyEntered);
-        int lottoCnt = moneyEntered / 1000;
-        List<Lotto> lottoes = lottoMachine.makeLottoes(lottoCnt);
-        Output.showLottoesPurchased(lottoes);
-        lottoMachine.makeWinningNumber(Input.inputWinningNumber());
-        lottoMachine.makeBonusNumber(Input.inputBonusNumber());
+        try {
+            Integer moneyEntered = Input.inputMoney();
+            validateInputMoney(moneyEntered);
+            int lottoCnt = moneyEntered / 1000;
+            List<Lotto> lottoes = lottoMachine.makeLottoes(lottoCnt);
+            Output.showLottoesPurchased(lottoes);
+            lottoMachine.makeWinningNumber(Input.inputWinningNumber());
+            lottoMachine.makeBonusNumber(Input.inputBonusNumber());
 
-        Result result = lottoMachine.returnResult(lottoes);
-        Output.showResult(result);
+            Result result = lottoMachine.returnResult(lottoes);
+            Output.showResult(result);
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] " + e.getMessage());
+        }
     }
 
     protected void validateInputMoney(Integer moneyEntered) {
