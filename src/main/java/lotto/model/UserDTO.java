@@ -6,14 +6,12 @@ public class UserDTO {
     private int purchaseAmount;
     private int gameCount;
     private List<Lotto> games;
-
-    public UserDTO(int purchaseAmount) {
+    public void setPurchaseAmount(int purchaseAmount) {
         checkMoney(purchaseAmount);
         this.purchaseAmount = purchaseAmount;
         this.gameCount = calculateGameCount(this.purchaseAmount);
         this.games = makeLottoGame(this.gameCount);
     }
-
     public int getPurchaseAmount() {
         return purchaseAmount;
     }
