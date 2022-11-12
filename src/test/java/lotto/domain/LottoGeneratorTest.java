@@ -33,7 +33,7 @@ public class LottoGeneratorTest {
     @Test
     void 로또_번호_발급() {
         int pages = 3;
-        List<Lotto> lotto = lottoGenerator.issueLotto(3);
+        List<Lotto> lotto = lottoGenerator.issueLotto(pages);
         assertThat(lotto.size()).isEqualTo(3);
     }
 }
