@@ -1,4 +1,4 @@
-package lotto.object;
+package lotto.playlotto.object;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.input_output.Input;
@@ -18,9 +18,12 @@ public class User extends Input {
     private List<List<Integer>> lottery_nums = new ArrayList<>();
     private Integer lottery_count;
 
+    private Integer money;
+
     public void pay_Money(){// 구입 금액 입력
-        int money = returnInt();
+        this.money = returnInt();
         this.lottery_count = money / 1000;
+        create_Lottery_nums();
     }
 
     public void create_Lottery_nums(){ //lottery_nums에 복권 번호 저장
@@ -36,6 +39,10 @@ public class User extends Input {
     public List<List<Integer>> return_lottery_nums(){
         return this.lottery_nums;
     }
+
+    public Integer getMoney(){ return this.money; }
+
+    public Integer getLottery_count(){ return this.lottery_count; }
 
     public int TestReturnSize(){
         this.lottery_count = 6;
