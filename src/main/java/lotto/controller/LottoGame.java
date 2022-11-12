@@ -50,4 +50,15 @@ public class LottoGame {
         }
     }
 
+    public static void rateOfReturn(Integer userMoney) {
+        Integer sum = 0;
+        LottoRanking[] grades = LottoRanking.values();
+        for (LottoRanking grade : grades) {
+            if (grade.count != 0) {
+                sum += grade.prizeMoney;
+            }
+        }
+        System.out.println("총 수익률은 " + Math.round(((sum * 100.0) / userMoney) * 10) / 10.0 + "%입니다.");
+    }
+
 }
