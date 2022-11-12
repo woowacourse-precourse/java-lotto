@@ -22,6 +22,7 @@ public class LottoBuyer {
             lottos = new ArrayList<Lotto>();
             setMoney();
             LottoMachine.buyLotto(lottos, money);
+            LottoMachine.printLottoLog(lottos);
             setLottoNumbers();
             setBonusNumber();
         } catch(IllegalArgumentException iae){
