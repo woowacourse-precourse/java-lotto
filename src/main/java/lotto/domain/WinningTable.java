@@ -37,7 +37,7 @@ public enum WinningTable {
 
     private boolean hasCondition(int numberOfCorrected, boolean isBonusCorrected) {
         if (numberOfCorrected == THIRD.numberOfCorrected) {
-            return isBonusCorrected == this.isBonusCorrected;
+            return isBonusCorrected != this.isBonusCorrected;
         }
         return numberOfCorrected == this.numberOfCorrected;
     }
