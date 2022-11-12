@@ -15,11 +15,11 @@ public class Controller {
     }
 
     public Set<Lotto> createLottos(int money) {
-        int count = money/MONEY_UNIT;
+        int count = money / MONEY_UNIT;
         Set<Lotto> lottoSet = new HashSet<>();
 
-        while(lottoSet.size() == count) {
-            Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6));
+        while (lottoSet.size() == count) {
+            Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             lottoSet.add(lotto);
         }
 
@@ -28,21 +28,34 @@ public class Controller {
 
 
     // 당첨된 로또 개수 맵 만들기 {등수:개수}
-    public void createResultMap(Set<Lotto> lottoSet, List<Integer> winningLotto, int bonusNumber) {
+    public Map<String, Integer> createResultMap(Set<Lotto> lottoSet, List<Integer> winningLotto, int bonusNumber) {
         Map<String, Integer> resultMap = new HashMap<>();
 
-        for(Lotto eachLotto : lottoSet){
+        for (Lotto eachLotto : lottoSet) {
             eachLotto.setRank(winningLotto, bonusNumber);
             String rank = eachLotto.getRank();
             addToResultMap(resultMap, rank);
         }
-
+        return resultMap;
     }
+
     //당첨 기준별 로또 개수 세기 기능.
     public void addToResultMap(Map<String, Integer> resultMap, String rank) {
         //putIfAbsent나 다른 것 사용해보기
         int winningCount = resultMap.getOrDefault(rank, 0);
-        resultMap.put(rank, winningCount+1);
+        resultMap.put(rank, winningCount + 1);
+    }
+
+    //수익률 계산하기
+    private final List<String> ranks = List.of("FITFH","FOURTH","THIRD","SECOND","FIRST");
+    public double calculateYield(double money, Map<String, Integer> resultMap) {
+        int totalPrize = 0;
+        for(String rank : ranks) {
+            int count = resultMap.getOrDefault(rank,0);
+            int prize = Rank.valueOf(rank).getPrize();
+            totalPrize += count*prize;
+        }
+        return Math.round(totalPrize/money*1000)/10.0;
     }
 
 }
