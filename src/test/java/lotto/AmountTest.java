@@ -27,6 +27,15 @@ public class AmountTest extends NsTest {
         });
     }
 
+    @DisplayName("구매 금액이 1000의 배수가 아닐경우 예외가 발생한다")
+    @Test
+    void createNonMultipleOfThousandsInput(){
+        assertSimpleTest(() -> {
+            runException("1200");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
