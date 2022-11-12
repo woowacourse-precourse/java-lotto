@@ -14,14 +14,11 @@ public class Input {
     private static final int END_NUMBER = 45;
     private static final String ENTER_PURCHASE_AMOUNT_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String ENTER_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private static final String ENTER_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
 
     public static int getAmount() {
-        try {
-            String amount = Console.readLine();
-            return Integer.parseInt(amount);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] Only enter numbers.");
-        }
+        System.out.println(ENTER_PURCHASE_AMOUNT_MESSAGE);
+        return getNumber();
     }
 
     public static List<Integer> getWinningNumber() {
@@ -32,6 +29,15 @@ public class Input {
             validateDuplicate(winningNumber);
             validateNumberRange(winningNumber);
             return winningNumber;
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR] Only enter numbers.");
+        }
+    }
+
+    public static int getNumber(){
+        try {
+            String number = Console.readLine();
+            return Integer.parseInt(number);
         } catch (Exception e) {
             throw new IllegalArgumentException("[ERROR] Only enter numbers.");
         }
