@@ -1,4 +1,4 @@
-package lotto.user;
+package lotto.store;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -11,7 +11,6 @@ public class LottoDraw {
     private static final String DUPLICATION_ERROR = "[ERROR] 입력된 숫자에 중복이 있습니다.";
     private static final String RANGE_ERROR = "[ERROR] 1~45 사이의 수를 입력해 주시기 바랍니다.";
     private static final String NUMERIC_ERROR = "[ERROR] 숫자를 입력해 주시기 바랍니다.";
-    private static final String SEPARATOR_ERROR = "[ERROR] 구분자 없이 하나의 숫자만 입력해 주시기 바랍니다.";
 
     private static LottoDraw lottoDraw;
 
@@ -35,7 +34,6 @@ public class LottoDraw {
     }
 
     public int pickBonusNumber(String readline) {
-        validateSeparator(readline);
         validateNumeric(new String[]{readline});
         int bonusNumber = Integer.parseInt(readline);
         validateRange(List.of(bonusNumber));
@@ -50,12 +48,6 @@ public class LottoDraw {
     private void validateComma(String readline) {
         if (readline.split(",").length != 6) {
             throw new IllegalArgumentException(COMMA_ERROR);
-        }
-    }
-
-    private void validateSeparator(String readline) {
-        if (readline.split("^\\d").length > 1) {
-            throw new IllegalArgumentException(SEPARATOR_ERROR);
         }
     }
 
