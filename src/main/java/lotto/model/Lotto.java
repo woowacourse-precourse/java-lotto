@@ -35,6 +35,14 @@ public class Lotto {
         return numbers.toString();
     }
 
+    public int countNumberOfMatch(Lotto comparedLotto) {
+        int numberOfMatch = 0;
+        for (Integer number : comparedLotto.numbers) {
+            if (this.numbers.contains(number)) numberOfMatch++;
+        }
+        return numberOfMatch;
+    }
+
     private void validate(List<Integer> numbers) {
         validateLottoLength(numbers);
         validateLottoRange(numbers);
