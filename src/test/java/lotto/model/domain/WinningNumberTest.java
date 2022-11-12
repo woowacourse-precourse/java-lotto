@@ -80,4 +80,23 @@ class WinningNumberTest {
                 .isEqualTo(500D, Offset.offset(1.0));
     }
 
+    @Test
+    void 당첨_번호_정상적인_입력값_처리하기() {
+        Assertions.assertThatCode(() -> new WinningNumber(" 1 , 2 , 3 , 4 , 5 , 6 ", "7"))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    void 당첨_번호_비정상적인_입력값_처리하기() {
+        Assertions.assertThatThrownBy(() -> new WinningNumber("1,2,,3,4,5,6", "7"))
+                .isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> new WinningNumber(",1,2,3,4,5,6", "7"))
+                .isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> new WinningNumber("0,2,3,4,5,6", "7"))
+                .isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> new WinningNumber("46,2,3,4,5,6", "7"))
+                .isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> new WinningNumber("6,2,3,4,5,6", "7"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
