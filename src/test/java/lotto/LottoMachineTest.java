@@ -31,4 +31,12 @@ class LottoMachineTest {
             System.out.println(lotto);
         }
     }
+
+    @DisplayName("구매해간 복권을 모두 출력합니다.")
+    @Test
+    void 복권_구매_리스트_테스트(){
+        List<Lotto> lottos = new ArrayList<>();
+        LottoMachine.buyLotto(lottos, BigInteger.valueOf(8000));
+        LottoMachine.printLottoLog(lottos);
+    }
 }
