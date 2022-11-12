@@ -2,7 +2,7 @@ package lotto.domain;
 
 public class Profit {
 
-    private PrizeCount prizeCount;
+    private final PrizeCount prizeCount;
 
     private float amount;
     private float rate;
@@ -17,7 +17,11 @@ public class Profit {
         }
     }
 
-    public float getAmount() {
-        return amount;
+    public void setRate(int purchaseAmount) {
+        rate = (amount / purchaseAmount) * 100;
+    }
+
+    public String getRate() {
+        return String.format("%.2f", rate);
     }
 }
