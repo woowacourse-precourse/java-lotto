@@ -113,6 +113,34 @@ class LottoTest {
 		}
 	}
 
+	@DisplayName("상금 계산 테스트")
+	@Test
+	void sumPrizeTest() throws NoSuchMethodException {
+		// TODO: 이 테스트가 통과할 수 있게 구현 코드 작성\
+		//given
+		LottoCompany lottoCompany = new LottoCompany(
+			"8,21,23,41,42,43",
+			"22"
+		);
+		List<Lotto> lottos = new ArrayList<>();
+		lottos.add(new Lotto(List.of(8, 21, 22, 41, 42, 43))); //2등
+		lottos.add(new Lotto(List.of(8, 21, 2, 41, 42, 43))); //3등
+		PrizeChecker prizeChecker = new PrizeChecker(lottoCompany, lottos);
+		Method method = prizeChecker.getClass().getDeclaredMethod("sumPrize", null);
+		method.setAccessible(true);
+		int totalPrizeMoney = 0;
+
+		try {
+			totalPrizeMoney = (int) method.invoke(prizeChecker);
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			throw new RuntimeException(e);
+		} finally {
+			assertThat(totalPrizeMoney).isEqualTo(31500000);
+		}
+	}
+
 	@DisplayName("로또 당첨기 확인")
 	@Test
 	void PrizeCheckerTest() {
@@ -131,5 +159,24 @@ class LottoTest {
 
 		assertThat(prizeChecker.getPrizeResult().get(LottoRanking.FIRST)).isEqualTo(2);
 	}
+
+
+	@DisplayName("수익률 테스트")
+	@Test
+	void calculationYieldTest() {
+		// TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
+		LottoCompany lottoCompany = new LottoCompany(
+			"8,21,23,41,42,43",
+			"22"
+		);
+		List<Lotto> lottos = new ArrayList<>();
+		lottos.add(new Lotto(List.of(8, 21, 2, 3, 4, 43))); //5등
+
+		PrizeChecker prizeChecker = new PrizeChecker(lottoCompany, lottos);
+		double Yield = prizeChecker.calculationYield(8000);
+
+		assertThat(Yield).isEqualTo(62.5);
+	}
+
 
 }

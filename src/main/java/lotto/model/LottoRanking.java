@@ -30,4 +30,8 @@ public enum LottoRanking {
 	private boolean isWin(int matchCount) {
 		return matchCount == this.ranking;
 	}
+
+	public int getReward() {
+		return reward;
+	}
 }
