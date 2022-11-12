@@ -16,12 +16,13 @@ class WinningNumbersTest {
     @Test
     void winningNumberInputTest() throws Exception {
         WinningNumbers winningNumbers = new WinningNumbers();
-        Field winningNumbersField = WinningNumbers.class.getDeclaredField("winningNumbers");
-        winningNumbersField.setAccessible(true);
-        Lotto winningLotto = (Lotto) winningNumbersField.get(winningNumbers);
 
         Integer[] input = {1,2,3,4,5,6};
         winningNumbers.newWinningNumbers(new ArrayList<>(List.of(input)));
+
+        Field winningNumbersField = WinningNumbers.class.getDeclaredField("winningNumbers");
+        winningNumbersField.setAccessible(true);
+        Lotto winningLotto = (Lotto) winningNumbersField.get(winningNumbers);
 
         for (int index = 0; index < input.length; index++) {
             assertThat(winningLotto.findLottoNumber(index))
@@ -49,6 +50,33 @@ class WinningNumbersTest {
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() ->
                 winningNumbers.newWinningNumbers(new ArrayList<>(List.of(input4))))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void bonusNumberInputTest() throws Exception {
+        WinningNumbers winningNumbers = new WinningNumbers();
+
+        int testNumber = 7;
+        winningNumbers.newBonusNumber(testNumber);
+
+        Field bonusNumberField = WinningNumbers.class.getDeclaredField("bonusNumber");
+        bonusNumberField.setAccessible(true);
+        int bonusNumber = (int) bonusNumberField.get(winningNumbers);
+
+        assertThat(bonusNumber).isEqualTo(testNumber);
+    }
+
+    @Test
+    void bonusNumberInputExceptionTest() throws Exception {
+        WinningNumbers winningNumbers = new WinningNumbers();
+
+        int testNumber1 = 0;
+        int testNumber2 = 50;
+
+        assertThatThrownBy(() -> winningNumbers.newBonusNumber(testNumber1))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> winningNumbers.newBonusNumber(testNumber2))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
