@@ -4,6 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.LottoGame;
 import lotto.domain.User;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         User user = new User();
@@ -17,5 +20,10 @@ public class Application {
         LottoGame lottoGame = new LottoGame();
         int lottoNumber = lottoGame.countLotto(lottoCost);
         System.out.println(lottoNumber+"개를 구매했습니다.");
+
+        List<Lotto> lotteries = lottoGame.createRandomLotto();
+        for (Lotto lotto:lotteries) {
+            System.out.println(lotto.toString());
+        }
     }
 }

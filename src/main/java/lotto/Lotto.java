@@ -16,5 +16,16 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public String toString() {
+        String sentence= "[";
+
+        for (int i = 0; i < numbers.size() - 1; i++) {
+            sentence += numbers.get(i) + ", ";
+        }
+
+        sentence += numbers.get(5);
+        sentence += "]";
+
+        return sentence;
+    }
 }
