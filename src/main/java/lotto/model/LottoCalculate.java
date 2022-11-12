@@ -4,23 +4,26 @@ import java.util.Collection;
 import java.util.List;
 
 public class LottoCalculate {
-    enum LottoPrizeMoney {
-        NONE(0, 0), FIRST(1, 2000000000), SECOND(2, 30000000), THIRD(3, 1500000), FOURTH(4, 50000), FIFTH(5, 5000);
+    enum LottoPrizeMoneyMatchCount {
+        NONE(0, 0, 0), FIRST(1, 2000000000, 6), SECOND(2, 30000000, 5), THIRD(3, 1500000, 5),
+        FOURTH(4, 50000, 4), FIFTH(5, 5000, 3);
         final int prize;
         final int prizeMoney;
+        final int matchCount;
 
-        LottoPrizeMoney(int prize, int prizeMoney) {
+        LottoPrizeMoneyMatchCount(int prize, int prizeMoney, int matchCount) {
             this.prize = prize;
             this.prizeMoney = prizeMoney;
+            this.matchCount = matchCount;
         }
     }
 
     void totalCalculate(Lotto lotto, List<Integer> winNumbers, int bonusNumber) {
         int matchCount = checkMatches(lotto.getNumbers(), winNumbers);
         boolean matchBonusNumber = checkBonusNumber(lotto.getNumbers(), bonusNumber);
-        LottoPrizeMoney lottoPrizeMoney = calculatePrize(matchCount, matchBonusNumber);
-        lotto.addPrize(lottoPrizeMoney.prize);
-        lotto.addPrizeMoney(lottoPrizeMoney.prizeMoney);
+        LottoPrizeMoneyMatchCount lottoPrizeMoneyMatchCount = calculatePrize(matchCount, matchBonusNumber);
+        lotto.addPrize(lottoPrizeMoneyMatchCount.prize);
+        lotto.addPrizeMoney(lottoPrizeMoneyMatchCount.prizeMoney);
     }
 
     int checkMatches(Collection<Integer> lottoNumbers, List<Integer> winNumbers) {
@@ -37,22 +40,22 @@ public class LottoCalculate {
         return lottoNumbers.contains(bonusNumber);
     }
 
-    LottoPrizeMoney calculatePrize(int matchCount, boolean checkBonusNumber) {
+    LottoPrizeMoneyMatchCount calculatePrize(int matchCount, boolean checkBonusNumber) {
         if (matchCount == 6) {
-            return LottoPrizeMoney.FIRST;
+            return LottoPrizeMoneyMatchCount.FIRST;
         } else if (matchCount == 5 & checkBonusNumber) {
-            return LottoPrizeMoney.SECOND;
+            return LottoPrizeMoneyMatchCount.SECOND;
         } else if (matchCount == 5) {
-            return LottoPrizeMoney.THIRD;
+            return LottoPrizeMoneyMatchCount.THIRD;
         } else if (matchCount == 4) {
-            return LottoPrizeMoney.FOURTH;
+            return LottoPrizeMoneyMatchCount.FOURTH;
         } else if (matchCount == 3) {
-            return LottoPrizeMoney.FIFTH;
+            return LottoPrizeMoneyMatchCount.FIFTH;
         }
-        return LottoPrizeMoney.NONE;
+        return LottoPrizeMoneyMatchCount.NONE;
     }
 
-    int calculateWinMoney(LottoPrizeMoney prizeNumber) {
+    int calculateWinMoney(LottoPrizeMoneyMatchCount prizeNumber) {
         return prizeNumber.prizeMoney;
     }
 

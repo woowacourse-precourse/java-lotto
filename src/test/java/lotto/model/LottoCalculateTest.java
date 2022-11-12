@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import lotto.model.LottoCalculate.LottoPrizeMoney;
+import lotto.model.LottoCalculate.LottoPrizeMoneyMatchCount;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -46,7 +46,7 @@ class LottoCalculateTest {
         int matchCount = lottoCalculate.checkMatches(l1, l2);
         boolean checkBonusNumber = lottoCalculate.checkBonusNumber(l1, bonusNumber);
 
-        assertThat(lottoCalculate.calculatePrize(matchCount, checkBonusNumber)).isEqualTo(LottoPrizeMoney.THIRD);
+        assertThat(lottoCalculate.calculatePrize(matchCount, checkBonusNumber)).isEqualTo(LottoPrizeMoneyMatchCount.THIRD);
     }
 
     @DisplayName(("로또번호(l1)가 당첨 숫자(l2)와5개가 일치하고, 보너스넘버가 일치하면 LottoPrizeMoney.SECOND 을 리턴한다"))
@@ -58,14 +58,14 @@ class LottoCalculateTest {
         int matchCount = lottoCalculate.checkMatches(l1, l2);
         boolean checkBonusNumber = lottoCalculate.checkBonusNumber(l1, bonusNumber);
 
-        assertThat(lottoCalculate.calculatePrize(matchCount, checkBonusNumber)).isEqualTo(LottoPrizeMoney.SECOND);
+        assertThat(lottoCalculate.calculatePrize(matchCount, checkBonusNumber)).isEqualTo(LottoPrizeMoneyMatchCount.SECOND);
     }
 
     @DisplayName("2등인 경우 상금 3천만 을 리턴한다.")
     @Test
     void checkWinMoneyTest() {
-        LottoPrizeMoney lottoPrizeMoney = lottoCalculate.calculatePrize(5, true);
-        assertThat(lottoCalculate.calculateWinMoney(lottoPrizeMoney)).isEqualTo(30000000);
+        LottoPrizeMoneyMatchCount lottoPrizeMoneyMatchCount = lottoCalculate.calculatePrize(5, true);
+        assertThat(lottoCalculate.calculateWinMoney(lottoPrizeMoneyMatchCount)).isEqualTo(30000000);
     }
 
     @DisplayName("로또 번호가 2등 당첨인 상황에서 Lotto 객체에 prize, prizeMoney 정보가 등수에 맞게 업데이트 된다.")
