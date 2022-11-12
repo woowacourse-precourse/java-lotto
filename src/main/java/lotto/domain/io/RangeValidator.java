@@ -6,6 +6,12 @@ import java.util.List;
 
 public class RangeValidator {
 
+  void validate(int input) {
+    if (input < 1 || input > 45) {
+      throw new IllegalArgumentException(ExceptionMessage.INPUT_NUMBER_RANGE_IS_NOT_CORRECT.getMessage());
+    }
+  }
+
   void validate(List<Integer> input) {
     boolean isWithinRange = input.stream().allMatch(it -> it < 46 && it > 0);
     if (!isWithinRange) {
