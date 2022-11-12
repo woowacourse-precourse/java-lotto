@@ -29,19 +29,15 @@ public class NewLottoSystem {
 	public void lottoLogic() {
 		try {
 			NewInputView input = new NewInputView();
-			System.out.println(MONEY_INPUT_MESSAGE);
 			input.getMoney();
 			getLottoCount(input.money);
 			System.out.println(lottoCount + PURCHASE_NOTIFICATION);
 			lottoGames = Lotto.generateLotto(lottoCount);
 			OutputView.printLotto(lottoGames);
-			System.out.println(WIN_INPUT_MESSAGE);
 			input.getWinNumbers();
-			System.out.println(BONUS_INPUT_MESSAGE);
 			input.getBonusNumber();
 			Lotto lotto = new Lotto(input.winNumbers);
 			compare(lotto.getNumbers(), lottoGames, input.bonusNumber);
-			fillPlaces();
 			OutputView.printStatistics(places, input.money);
 		} catch (Exception exception) {
 			System.out.println(exception.getMessage());
@@ -57,6 +53,7 @@ public class NewLottoSystem {
 			int count = 0;
 			count = getCount(lotto, lottoGame, count);
 			getPlace(bonusNumber, lottoGame, count);
+			fillPlaces();
 		}
 	}
 

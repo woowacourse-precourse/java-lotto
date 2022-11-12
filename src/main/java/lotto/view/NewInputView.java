@@ -17,6 +17,7 @@ public class NewInputView {
 	public int money;
 
 	public void getWinNumbers() {
+		System.out.println(WIN_INPUT_MESSAGE);
 		String[] inputNumbers = readNumbers();
 		for (String inputNumber : inputNumbers) {
 			Validator.isInRange(inputNumber);
@@ -38,6 +39,7 @@ public class NewInputView {
 	}
 
 	public void getBonusNumber() {
+		System.out.println(BONUS_INPUT_MESSAGE);
 		String inputNumber = Console.readLine();
 		Validator.isDuplicate(winNumbers, inputNumber);
 		Validator.isInRange(inputNumber);
@@ -49,6 +51,7 @@ public class NewInputView {
 	}
 
 	public void getMoney() {
+		System.out.println(MONEY_INPUT_MESSAGE);
 		String inputNumber = Console.readLine();
 		try {
 			money = Integer.parseInt(inputNumber);
