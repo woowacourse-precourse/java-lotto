@@ -34,7 +34,4 @@ public class Config {
 
     private static void checkRankAmount() {
     }
-
-    private static void checkLongerThenRank() {
-    }
 }

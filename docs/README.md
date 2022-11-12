@@ -20,7 +20,6 @@
       - [ ] 로또 길이보다 보너스 번호 길이가 긴지 확인 - checkLongerLottoThanBonus
       - [ ] 로또 길이 + 보너스 번호 길이가 숫자 범위 길이보다 큰지 확인 - checkLongerTotalThenNumber
       - [ ] 상위 등수가 하위 등수 금액보다 같거나 적은지 확인 - checkRankAmount
-      - [ ] 로또 길이 + 보너스 번호 길이가 당첨 등수 금액의 길이보다 큰지 확인 - checkLongerThenRank
 
 ## 로거(`Logger`)
 
