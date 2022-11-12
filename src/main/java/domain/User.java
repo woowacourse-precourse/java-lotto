@@ -3,18 +3,14 @@ package domain;
 import camp.nextstep.edu.missionutils.Console;
 
 public class User {
+    private int inputUserMoney;
 
-    public User() {
-
+    public User(int inputUserMoney) {
+        validateInputUserMoney(inputUserMoney);
+        this.inputUserMoney = inputUserMoney;
     }
 
-    private int inputUserMoney(){
-        System.out.println("구입금액을 입력해 주세요.");
-        String inputUser = Console.readLine();
-        return Integer.parseInt(inputUser);
-    }
-
-    private void validateInputUserMoney(int inputUserMoney){
+    public void validateInputUserMoney(int inputUserMoney){
         try {
             if (inputUserMoney % 1000 != 0)
                 throw new IllegalArgumentException();
