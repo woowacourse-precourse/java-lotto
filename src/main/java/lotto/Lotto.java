@@ -16,29 +16,27 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
-        for (int i=0;i<numbers.size();i++){
-            int number=numbers.get(i);
-            if (number<1 || number>45){
+        for (int number : numbers) {
+            if (number < 1 || number > 45) {
                 throw new IllegalArgumentException();
             }
         }
     }
 
-    public WinningStatistic produceWinningStatistic(Lotto answer, int bonusNum){
-        Set<Integer> answerNumSet=new HashSet<>(answer.numbers);
+    public WinningStatistic produceWinningStatistic(LottoTicket ticket){
+        Set<Integer> answerNumSet=new HashSet<>(numbers);
+        List<Integer> ticketNums=ticket.getNumbers();
         int numOfCorrectLottoNum=0;
         boolean bonusNumCorrect=false;
-        for (int number :numbers){
+        if(answerNumSet.contains(ticket.getBonusNum())){
+            bonusNumCorrect=true;
+        }
+        for (int number :ticket.getNumbers()){
             if(answerNumSet.contains(number)){
                 numOfCorrectLottoNum+=1;
                 answerNumSet.remove(number);
             }
-            if(number==bonusNum){
-                bonusNumCorrect=true;
-            }
         }
         return WinningStatistic.getInstance(numOfCorrectLottoNum,bonusNumCorrect);
     }
-
-    // TODO: 추가 기능 구현
 }
