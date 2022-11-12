@@ -5,6 +5,7 @@ import lotto.CheckInputException;
 import lotto.Util;
 
 import java.util.List;
+import java.util.Collections;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -17,6 +18,7 @@ public class Lotto {
             throw iae;
         }
         this.numbers = numbers;
+        Collections.sort(numbers);
     }
 
     private void validate(List<Integer> numbers) {
