@@ -1,7 +1,6 @@
 package lotto.domain.lotto;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,6 +18,10 @@ public class Lotto {
 
     public String formatString() {
         return Arrays.toString(numbers.toArray());
+    }
+
+    public boolean contains(int number) {
+        return numbers.contains(number);
     }
 
     private void validate(List<Integer> numbers) {

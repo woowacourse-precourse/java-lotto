@@ -1,7 +1,6 @@
 package lotto.domain.winningresult;
 
 import java.util.Arrays;
-import java.util.NoSuchElementException;
 
 public enum WinningResultType {
     FIFTH_PLACE(3,"3개 일치", 5_000),
@@ -20,7 +19,7 @@ public enum WinningResultType {
         this.reward = reward;
     }
 
-    public static WinningResultType getWinningResult(int matchedCount, boolean isBonusMatched) {
+    public static WinningResultType of(int matchedCount, boolean isBonusMatched) {
         if (isBonusMatched && matchedCount == 5) {
             return SECOND_PLACE;
         }

@@ -10,7 +10,7 @@ class WinningResultTypeTest {
         int matchedCount = 4;
         boolean isBonusMatched = false;
 
-        WinningResultType winningResultType = WinningResultType.getWinningResult(matchedCount, isBonusMatched);
+        WinningResultType winningResultType = WinningResultType.of(matchedCount, isBonusMatched);
 
         Assertions.assertThat(winningResultType).isEqualTo(WinningResultType.FOURTH_PLACE);
     }
@@ -22,7 +22,7 @@ class WinningResultTypeTest {
         int matchedCount = 5;
         boolean isBonusMatched = false;
 
-        WinningResultType winningResultType = WinningResultType.getWinningResult(matchedCount, isBonusMatched);
+        WinningResultType winningResultType = WinningResultType.of(matchedCount, isBonusMatched);
 
         Assertions.assertThat(winningResultType).isEqualTo(WinningResultType.THIRD_PLACE);
     }
@@ -33,7 +33,7 @@ class WinningResultTypeTest {
         int matchedCount = 5;
         boolean isBonusMatched = true;
 
-        WinningResultType winningResultType = WinningResultType.getWinningResult(matchedCount, isBonusMatched);
+        WinningResultType winningResultType = WinningResultType.of(matchedCount, isBonusMatched);
 
         Assertions.assertThat(winningResultType).isEqualTo(WinningResultType.SECOND_PLACE);
     }
@@ -45,7 +45,7 @@ class WinningResultTypeTest {
         boolean isBonusMatched = false;
 
         Assertions.assertThatThrownBy(() ->
-                WinningResultType.getWinningResult(matchedCount, isBonusMatched))
+                WinningResultType.of(matchedCount, isBonusMatched))
                 .isInstanceOf(Exception.class);
     }
 

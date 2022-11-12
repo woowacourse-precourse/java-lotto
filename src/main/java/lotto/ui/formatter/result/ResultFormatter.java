@@ -1,11 +1,11 @@
 package lotto.ui.formatter.result;
 
-import lotto.domain.result.Result;
+import lotto.domain.winningresult.WinningResults;
 import lotto.ui.formatter.OutputFormatter;
 
-public class ResultFormatter implements OutputFormatter<Result> {
+public class ResultFormatter implements OutputFormatter<WinningResults> {
 	@Override
-	public String outputFormat(Result result) {
+	public String outputFormat(WinningResults winningResults) {
 		return null;
 	}
 }
