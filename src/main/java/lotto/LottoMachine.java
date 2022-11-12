@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import view.InputView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoMachine {
@@ -23,6 +24,14 @@ public class LottoMachine {
             List<Integer> numbers =
                     Randoms.pickUniqueNumbersInRange(1, 45, 6);
             totalLotteries.add(numbers);
+        }
+        return totalLotteries;
+    }
+
+    public List<List<Integer>> sortLottoNumbers() {
+        List<List<Integer>> totalLotteries = createLotto();
+        for (List<Integer> lotto : totalLotteries) {
+            Collections.sort(lotto);
         }
         return totalLotteries;
     }

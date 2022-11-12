@@ -18,6 +18,5 @@ public class WinningLotto {
             int number = Integer.parseInt(winningStringNumbers.get(i));
             winningNumbers.add(number);
         }
-        System.out.println(winningNumbers);
     }
 }
