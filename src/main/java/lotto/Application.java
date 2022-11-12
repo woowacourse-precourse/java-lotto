@@ -20,6 +20,7 @@ public class Application {
         Integer bonusNumber = askBonusNumber();
         Draw draw = new Draw(winnerLotto, bonusNumber);
 
+        Integer winnings = draw.resultLottery(lottos);
 
     }
 
