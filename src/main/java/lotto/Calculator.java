@@ -1,15 +1,18 @@
 package lotto;
 
+import java.util.Map;
+
 public class Calculator {
-    private int[] winningCost = new int[]{5_000, 50_000, 1_500_000, 2_000_000_000, 30_000_000};
-    public int getProfit(int[] winningArray) {
+    public int getProfit(Map<WinningRank, Integer> winResult) {
+
         int result = 0;
-        for (int i = 0; i <winningArray.length ; i++) {
-            result += winningArray[i] * winningCost[i];
+        for (Map.Entry<WinningRank, Integer> entry : winResult.entrySet()) {
+            result += entry.getKey().calculateTotalMoneyByTheNumber(entry.getValue());
         }
+
         return result;
     }
-    public double getEarningsRate(int purchaseCost, int [] winningArray) {
-        return Math.round(((double) getProfit(winningArray) / (double) purchaseCost) * 1000) /10.0;
+    public double getEarningsRate(int purchaseCost, Map<WinningRank,Integer> winResult) {
+        return Math.round(((double) getProfit(winResult) / (double) purchaseCost) * 1000) /10.0;
     }
 }

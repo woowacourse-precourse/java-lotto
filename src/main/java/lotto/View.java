@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import java.util.Map;
 
 public class View {
 
@@ -22,14 +23,16 @@ public class View {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-    public void printWinningStatistics(int[] winnings) {
+    public void printWinningStatistics(Map<WinningRank,Integer> enumMap) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - "+winnings[0]+"개");
-        System.out.println("4개 일치 (50,000원) - "+winnings[1]+"개");
-        System.out.println("5개 일치 (1,500,000원) - "+winnings[2]+"개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+winnings[4]+"개");
-        System.out.print("6개 일치 (2,000,000,000원) - "+winnings[3]+"개");
+        System.out.println("3개 일치 (5,000원) - "+enumMap.getOrDefault(WinningRank.five,0)+"개");
+        System.out.println("4개 일치 (50,000원) - "+enumMap.getOrDefault(WinningRank.four,0)+"개");
+        System.out.println("5개 일치 (1,500,000원) - "
+                + enumMap.getOrDefault(WinningRank.three, 0) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "
+                +enumMap.getOrDefault(WinningRank.two,0)+"개");
+        System.out.print("6개 일치 (2,000,000,000원) - "+enumMap.getOrDefault(WinningRank.one,0)+"개");
     }
 
     public void printEarningsRate(double rate) {

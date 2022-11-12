@@ -47,12 +47,14 @@ public class Application {
         lotto.bonusNotIncludeWinningNumbers(bonus);
         Input input = new Input(bonus);
 
-        user.winningArray = lotto.getWinningArray(user.purchaseLottoList, input);
+        user.winResult = lotto.getWinningResult(user.purchaseLottoList, input);
+        System.out.printf(String.valueOf(user.winResult));
 
-        view.printWinningStatistics(user.winningArray);
 
+        view.printWinningStatistics(user.winResult);
+//
         Calculator calculator = new Calculator();
-        view.printEarningsRate(calculator.getEarningsRate(user.inputCost, user.winningArray));
+        view.printEarningsRate(calculator.getEarningsRate(user.inputCost, user.winResult));
     }
 
 

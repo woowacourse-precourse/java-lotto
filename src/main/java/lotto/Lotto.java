@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -16,10 +18,12 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+
     private static void duplicateCheck(List<Integer> result) {
-        if(result.stream().distinct().count()!=6){
+        if (result.stream().distinct().count() != 6) {
             throw new IllegalArgumentException("[ERROR] 입력 숫자가 중복되었습니다.");
-        };
+        }
+        ;
     }
 
     public ContainStatus isContainNumber(int LottoNumber) {
@@ -37,34 +41,48 @@ public class Lotto {
 
         return result;
     }
+
     public void bonusNotIncludeWinningNumbers(int bonus) {
         if (numbers.contains(bonus)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호가 이미 로또번호에 포함되어 있습니다.");
         }
     }
-    public int[] getWinningArray(List<List<Integer>> getPurchaseLottoList, Input input) {
-        int[] result = new int[]{0, 0, 0, 0, 0};
+
+    public Map<WinningRank, Integer> getWinningResult(List<List<Integer>> getPurchaseLottoList, Input input) {
+        Map<WinningRank, Integer> enumMap = new EnumMap<>(WinningRank.class);
+
         for (List<Integer> lotto : getPurchaseLottoList) {
-            int index = getWinningIndex(lotto,input);
-            if (index < 0) {
-                continue;
-            }
-            result[index]++;
+            WinningRank winningRank = getWinningRank(lotto, input);
+            enumMap.put(winningRank, enumMap.getOrDefault(winningRank, 0) + 1);
+
         }
-        return result;
+        return enumMap;
     }
 
-    public int getWinningIndex(List<Integer> lotto, Input input) {
+    public WinningRank getWinningRank(List<Integer> lotto, Input input) {
         int result = getMatchingNumber(lotto);
+
+        if (result == 6) {
+            return WinningRank.one;
+        }
         if (result == 5) {
             ContainStatus status = input.isBonus(lotto);
-            result += status.getContain1Value()*2;
+            result += status.getContain1Value();
         }
-        if (result < 3) {
-            return -1;
+        if (result == 6) {
+            return WinningRank.two;
         }
 
-        return result-3;
+        if (result == 5) {
+            return WinningRank.three;
+        }
+        if (result == 4) {
+            return WinningRank.four;
+        }
+        if (result == 3) {
+            return WinningRank.five;
+        }
+        return WinningRank.notThing;
     }
 
     // TODO: 추가 기능 구현

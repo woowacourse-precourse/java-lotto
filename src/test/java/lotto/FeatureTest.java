@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -74,16 +76,19 @@ public class FeatureTest {
                 List.of(1, 11, 12, 13, 14, 15),
                 List.of(11, 12, 13, 14, 15, 16)
         );
-        List<Integer> answer = List.of(3, 4, 2, 1, 0, -1, -1, -1);
+        List<WinningRank> answer = List.of(WinningRank.one, WinningRank.two, WinningRank.three
+                , WinningRank.four, WinningRank.five, WinningRank.notThing, WinningRank.notThing
+                , WinningRank.notThing
+        );
 
         for (int i = 0; i < user.size(); i++) {
-            assertThat(lotto.getWinningIndex(user.get(i), input)).isEqualTo(answer.get(i));
+            assertThat(lotto.getWinningRank(user.get(i), input)).isEqualTo(answer.get(i));
         }
 
     }
 
     @Test
-    void 당첨_배열_생성() {
+    void 당첨_맵_생성() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Input input = new Input(7);
         List<List<Integer>> user = List.of(
@@ -97,22 +102,31 @@ public class FeatureTest {
                 List.of(11, 12, 13, 14, 15, 16)
         );
         List<Integer> bonus = List.of(10, 6, 23, 11, 10, 10, 15, 15);
-        int[] answer = new int[]{1, 1, 1, 1, 1};
-        assertThat(lotto.getWinningArray(user, input)).isEqualTo(answer);
+
+        Map<WinningRank, Integer> enumMap = new EnumMap<WinningRank, Integer>(WinningRank.class);
+        enumMap.put(WinningRank.one, 1);
+        enumMap.put(WinningRank.two, 1);
+        enumMap.put(WinningRank.three, 1);
+        enumMap.put(WinningRank.four, 1);
+        enumMap.put(WinningRank.five, 1);
+        enumMap.put(WinningRank.notThing, 3);
+        assertThat(lotto.getWinningResult(user, input)).isEqualTo(enumMap);
     }
 
     @Test
     void 수익_계산() {
         Calculator calculator = new Calculator();
-        assertThat(calculator.getProfit(new int[]{0, 0, 0, 0, 1})).isEqualTo(30000000);
+        Map<WinningRank, Integer> enumMap = new EnumMap<WinningRank, Integer>(WinningRank.class);
+        enumMap.put(WinningRank.one, 1);
+        assertThat(calculator.getProfit(enumMap)).isEqualTo(WinningRank.one.getPrize());
     }
 
     @Test
     void 수익률_계산() {
         Calculator calculator = new Calculator();
-        assertThat(calculator.getEarningsRate(8000, new int[]{1, 0, 0, 0, 0})).isEqualTo(62.5);
-        assertThat(calculator.getEarningsRate(10000, new int[]{1, 0, 0, 0, 0})).isEqualTo(50.0);
-        assertThat(calculator.getEarningsRate(8000000, new int[]{1, 0, 0, 0, 0})).isEqualTo(0.1);
+        Map<WinningRank, Integer> enumMap = new EnumMap<WinningRank, Integer>(WinningRank.class);
+        enumMap.put(WinningRank.five, 1);
+        assertThat(calculator.getEarningsRate(8000, enumMap)).isEqualTo(62.5);
     }
 
     @Test
@@ -174,22 +188,24 @@ public class FeatureTest {
         );
 
     }
+
     @Test
     void 당첨통계_출력() {
         View view = new View();
 
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        int[] answer = new int[]{1, 1, 1, 1, 1};
-        view.printWinningStatistics(answer);
+        Map<WinningRank, Integer> enumMap = new EnumMap<WinningRank, Integer>(WinningRank.class);
+        enumMap.put(WinningRank.one, 1);
+        view.printWinningStatistics(enumMap);
         String output = out.toString();
         assertThat(output).contains(
                 "당첨 통계",
                 "---",
-                "3개 일치 (5,000원) - 1개",
-                "4개 일치 (50,000원) - 1개",
-                "5개 일치 (1,500,000원) - 1개",
-                "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개",
+                "3개 일치 (5,000원) - 0개",
+                "4개 일치 (50,000원) - 0개",
+                "5개 일치 (1,500,000원) - 0개",
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
                 "6개 일치 (2,000,000,000원) - 1개"
         );
     }

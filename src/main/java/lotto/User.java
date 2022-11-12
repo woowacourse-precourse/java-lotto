@@ -4,11 +4,12 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class User {
     public int inputCost;
     public List<List<Integer>> purchaseLottoList;
-    public int[] winningArray;
+    public Map<WinningRank, Integer> winResult;
 
     User(String inputCost) {
         valid(inputCost);
