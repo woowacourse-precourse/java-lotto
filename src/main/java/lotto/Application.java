@@ -14,10 +14,24 @@ public class Application {
     public static final String BONUS_NUMBER_ENTER_MESSAGE = "보너스 번호를 입력해 주세요.";
 
     public static void main(String[] args) {
-        Machine machine = new Machine();
-        List<Lotto> lottoList = machine.buy(enterAmount());
+        int buyPrice = enterAmount();
+        List<Lotto> lottoList = buyLotto(buyPrice);
+        checkLotto(lottoList);
+        calculateProfit(buyPrice);
+    }
+
+    private static void calculateProfit(int price) {
+        Calculator.calculate(price);
+    }
+
+    private static void checkLotto(List<Lotto> lottoList) {
         Grader grader = new Grader(lottoList, getAnswerNumber(), getBonusNumber());
         grader.grade();
+    }
+
+    private static List<Lotto> buyLotto(int price) {
+        Machine machine = new Machine();
+        return machine.buy(price);
     }
 
     private static int getBonusNumber() {
