@@ -1,11 +1,10 @@
 package lotto;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ProcessInputAndVariable {
+public class ProcessVariable {
     private static final Integer LOTTO_DIVIDE_PRICE = 1000;
     private final ValidInput validInput = new ValidInput();
     public Integer convertToInteger (String input) {
@@ -21,7 +20,7 @@ public class ProcessInputAndVariable {
         return price / LOTTO_DIVIDE_PRICE;
     }
 
-    public Lotto makeWinNumber(String input) {
+    public List<Integer> makeWinNumber(String input) {
         // List<Integer> winLottoNumber = new ArrayList<>();
         List<Integer> inputNumberList = Arrays.stream(input.split(",")).map(Integer::parseInt)
                 .collect(Collectors.toList());
@@ -31,8 +30,15 @@ public class ProcessInputAndVariable {
             validInput.validIsInputInRange(number);
         }
 
-        // validInput.validInputHasDuplicatedNumber(inputNumberList);
+        validInput.validInputHasDuplicatedNumber(inputNumberList);
 
-        return new Lotto(inputNumberList);
+        return inputNumberList;
+    }
+
+    public Integer makeBonusNumber(String input) {
+        Integer bonusNumber = Integer.parseInt(input);
+        validInput.validIsInputInRange(bonusNumber);
+
+        return bonusNumber;
     }
 }
