@@ -12,10 +12,10 @@ public class LottoNumbers {
     private List<List<Integer>> numbers;
 
     public LottoNumbers(String want) {
-        if (want.length() != 4) {
-            System.out.println("[ERROR]");
-            throw new IllegalArgumentException("[ERROR]");
-        }
+//        if (want.length() != 4) {
+//            System.out.println("[ERROR]");
+//            throw new IllegalArgumentException("[ERROR]");
+//        }
         int piece = Integer.parseInt(want);
         piece = piece / 1000;
         this.numbers = createRandomNumbers(piece);

@@ -42,9 +42,9 @@ public class Manager {
     private int myMoney = 0;
 
 
-    public void inputWinNumbers(List<List<Integer>> numbers, List<Integer> winNumber) {
+    public void inputWinNumbers(List<List<Integer>> numbers, List<Integer> winNumber, int bonusBall) {
         int count = 0;
-        myMoney = numbers.size();
+        myMoney = numbers.size(); // 내가 입력한 금액 ( 8000 )
         Map<String, Integer> winner = new LinkedHashMap<>();
         List<Integer> mapValue = new ArrayList<>();
         Map<String, Integer> mapTest = new LinkedHashMap<>();
@@ -55,7 +55,14 @@ public class Manager {
                     winner.put(numbers.get(i).toString(), winner.getOrDefault(numbers.get(i).toString(), count) + 1);
                 }
             }
+        } // 랜덤 로또값이랑 내가 입력한 번호랑 몇 개가 같은지 구하는 Map
+        
+        for (int i = 0; i < numbers.size(); i++) {
+            if(numbers.get(i).contains(bonusBall)) {
+                System.out.println("bonus = " + numbers.get(i));
+            }
         }
+        
         for (String s : winner.keySet()) {
             System.out.print("s = " + s + " ");
             System.out.print("/ winner = " + winner.get(s) + "개 일치");
@@ -63,20 +70,23 @@ public class Manager {
             if (winner.get(s) >= 3) {
                 mapValue.add(winner.get(s));
             }
-        }
+        } // 3개 이상 맞 춘 것만 따로 모오는 과정
         Collections.sort(mapValue);
+        if (mapValue.size() == 0) {
+            mapTest.put("3", 0);
+        }
+
 
 
         for (Integer integer : mapValue) {
-            int result = 0;
             mapTest.put("" + integer, mapTest.getOrDefault("" + integer, 0) + 1);
-        }
+        } // 3개 이상 맞춘 것만 정렬해서 출력후 몇 장인지 구하는 과정
         System.out.println("********************************");
         for (String s : mapTest.keySet()) {
-            System.out.println(s);
-            System.out.println(mapTest.get(s));
-        }
-        List<Integer> moneyTest = new ArrayList<>();
+            System.out.println("s는 몇 개 일치해 ? : "+s);
+            System.out.println("s일치하는 것 중 총 갯수는 몇 개야? : "+mapTest.get(s));
+        } 
+        List<Integer> moneyTest = new ArrayList<>(); // enum을 이용해서 차례대로 출력하는 것을 비교해서 뒤에 -개수 붙임
         for (Hi value : Hi.values()) {
             System.out.print(value.getHi());
             for (String s : mapTest.keySet()) {
@@ -101,16 +111,6 @@ public class Manager {
         myMoney = myMoney * 1000;
         System.out.println("myMoney = " + myMoney);
         Map<String, Integer> mapMoney = new LinkedHashMap<>();
-
-//        for (Integer integer : winMoney) {
-//            System.out.println("integer = " + integer);
-//        }
-//        for (Bye value : Bye.values()) {
-//            System.out.println("value = " + value.getBye());
-//            for (int i = 0; i < winMoney.size(); i++) {
-//                System.out.println("winMoney = " + winMoney);
-//            }
-//        }
 
         int count = 0;
         int total = 0;
