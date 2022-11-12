@@ -10,6 +10,7 @@ import static java.lang.Integer.parseInt;
 public class Input {
     private int money;
     private ArrayList<Integer> numbers = new ArrayList<>();
+    private int bonusNumber;
 
     public Input() {
         enterMoney();
@@ -31,6 +32,33 @@ public class Input {
         String userInput = Console.readLine();
         parseInputToInt(userInput);
         System.out.println(' ');
+    }
+    
+    public void enterBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String userInput = Console.readLine();
+        
+        if(validateBonusNumber(userInput)){
+            this.bonusNumber = Integer.parseInt(userInput);
+        }
+    }
+
+    private boolean validateBonusNumber(String userInput) {
+        try{
+            int tempNumber = Integer.parseInt(userInput);
+
+            if(tempNumber >= 1 && tempNumber <= 45)
+                throw new IllegalArgumentException("[Error] 보너스 번호 값의 범위가 1부터 45 사이의 값이 아닙니다.");
+
+        } catch (Exception e) {
+            if(e.equals(NumberFormatException.class))
+                throw new IllegalArgumentException("[Error] 보너스 번호로 숫자가 아닌 값이 입력 되었습니다.");
+
+            if(e.equals(IllegalArgumentException.class))
+                throw new IllegalArgumentException(e.getMessage());
+        }
+
+        return true;
     }
 
     private void parseInputToInt(String userInput) {
@@ -77,10 +105,10 @@ public class Input {
         } catch (Exception e) {
             throw new IllegalArgumentException("[Error] 당첨 번호 중에 숫자가 아닌 값이 존재합니다.");
         }
-
+        
         return true;
     }
-
+    
     public List<Integer> getNumbers() {
         return this.numbers;
     }

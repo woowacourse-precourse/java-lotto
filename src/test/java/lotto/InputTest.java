@@ -63,6 +63,10 @@ public class InputTest extends NsTest {
                     .hasMessage("[Error] 입력된 당첨 번호 값의 범위가 1부터 45 사이의 값이 아닙니다.");
         });
     }
+
+    @DisplayName("입력한 보너스 번호가 잘못된 입력인 경우에는 예외가 발생한다.")
+    @Test
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
