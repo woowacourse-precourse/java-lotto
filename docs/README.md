@@ -1,12 +1,13 @@
 # 로또
 
 # 기능목록
-- [ ] 사용자 값을 입력받는다.
-    - [ ] 구입 금액을 입력받는다.
-    - [ ] 사용자가 정한 정답 번호를 입력받는다.
-- [ ] 1장에 해당하는 랜덤한 로또 번호를 만든다.
-- [ ] 사용자가 입력한 금액에 맞춰 일정 갯수의 로또를 생성한다.
-- [ ] 당첨 통계를 낸다.
+- [ ] 사용자 값을 입력받는다. 
+    - [ ] 구입 금액을 입력받는다. view/Input#getYourMoney
+    - [ ] 사용자가 정한 정답 번호를 입력받는다. view/Input#getAnswerNumbers
+    - [ ] 사용자가 정한 보너스 번호를 입력받는다. view/Input#getBonusNumber
+- [ ] 로또 한 장에 해당하는 랜덤한 로또 번호를 만든다. model/Lotto/createLottoNumber
+- [ ] 사용자가 입력한 금액에 맞춰 일정 갯수의 로또를 생성한다. controller/Cashier#playLotto
+- [ ] 당첨 통계를 낸다. controller/Statistics#myStat
 
 # 🚀 기능 요구 사항
 로또 게임 기능을 구현해야 한다. 로또 게임은 아래와 같은 규칙으로 진행된다.
