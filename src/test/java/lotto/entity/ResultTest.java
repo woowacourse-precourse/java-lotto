@@ -18,7 +18,7 @@ class ResultTest {
         Map<Rank, Integer> rankMap = new HashMap<>();
         rankMap.put(Rank.FIRST, count);
         rankMap.put(Rank.SECOND, count);
-        Result result = new Result(rankMap, purchase);
+        Result result = new Result(rankMap);
         double total = Rank.FIRST.getPrize() * count + Rank.SECOND.getPrize() * count;
 
         //when

@@ -1,5 +1,9 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import lotto.entity.Consumer;
 import lotto.entity.Lotto;
 import lotto.entity.Result;
@@ -27,11 +31,12 @@ public class LottoApplication {
     public void play() {
         try {
             int purchase = getPurchase();
-            Consumer consumer = new Consumer(purchase);
+            Consumer consumer = new Consumer(buyLottos(purchase / PRICE));
             Lotto winningNumberLotto = getWinningNumberLotto();
             int bonus = getBonus();
             WinningLotto winningLotto = new WinningLotto(winningNumberLotto, bonus);
-            printResult(consumer.confirmResultOfLottos(winningLotto));
+            Result result = new Result(consumer.confirmResult(winningLotto));
+            printResult(result);
         } catch (IllegalArgumentException e) {
             OutputService.printErrorMessage(e.getMessage());
         }
@@ -39,7 +44,25 @@ public class LottoApplication {
 
     private int getPurchase() {
         String purchaseInput = InputService.readPurchase();
-        return numericConverter.convert(purchaseInput);
+        int purchase = numericConverter.convert(purchaseInput);
+        validatePurchase(purchase);
+        return purchase;
+    }
+
+    private void validatePurchase(int purchase) {
+        if (purchase % PRICE != 0) {
+            throw new IllegalArgumentException(
+                String.format("금액은 %d원 단위로 입력해야 합니다. 입력 : %s", PRICE, purchase));
+        }
+    }
+
+    private List<Lotto> buyLottos(int count) {
+        List<Lotto> lottos = IntStream.range(0, count)
+            .mapToObj(
+                i -> new Lotto(Randoms.pickUniqueNumbersInRange(RANGE_START, RANGE_END, COUNT)))
+            .collect(Collectors.toList());
+        OutputService.printGeneratedLottos(lottos);
+        return lottos;
     }
 
     private Lotto getWinningNumberLotto() {
