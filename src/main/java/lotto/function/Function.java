@@ -46,4 +46,24 @@ public class Function {
         }
         return 0;
     }
+    public static List<Integer> getWinningNumber(){
+        Display.displayGettingWinNumber();
+        String winningNumber = Console.readLine();
+        List<Integer> WinningNumber = new ArrayList<>();
+
+        String[] splits = winningNumber.split(",");
+        for (String split : splits) {
+            WinningNumber.add(Integer.parseInt(split));
+        }
+        return WinningNumber;
+    }
+    public static void validWinningNumber(List<Integer> WinningNumber){
+        try{
+            if (WinningNumber.size() != 6){
+                throw new IllegalArgumentException("당첨 번호는 6개의 숫자가 입력되어야 합니다.");
+            }
+        } catch (Exception e){
+            Display.displayError(e.getMessage());
+        }
+    }
 }
