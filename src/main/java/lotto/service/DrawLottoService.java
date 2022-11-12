@@ -61,5 +61,7 @@ public class DrawLottoService {
         reward += correctNumberCountMap.getOrDefault(7, 0) * 2000000000;
     }
 
-
+    public double getRevenue(int buyAmountLotto) {
+        return ((reward) / buyAmountLotto) * 100;
+    }
 }
