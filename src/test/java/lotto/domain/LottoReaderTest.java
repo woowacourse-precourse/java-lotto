@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -41,6 +40,16 @@ class LottoReaderTest {
         assertThat(lottoReader.countMatchingNumber(lotto, compareLotto)).isEqualTo(expected);
     }
 
+    @DisplayName("정답 로또와 보너스 번호를 입력했을 때 로또의 결과 값을 제대로 반환하는지 테스트")
+    @ParameterizedTest
+    @MethodSource("resultLottoSourceGetter")
+    void 로또_결과_반환_테스트(List<Integer> lottoSource, LottoResult expected) {
+        Lotto compareLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto lotto = new Lotto(lottoSource);
+        int bonusNumber = 7;
+        assertThat(lottoReader.getLottoResult(lotto, compareLotto, bonusNumber)).isEqualTo(expected);
+    }
+
     private static Stream<Arguments> lottoSourceGetter() {
         return Stream.of(
                 Arguments.of(List.of(7, 8, 9, 10, 11, 12), 0),
@@ -50,6 +59,19 @@ class LottoReaderTest {
                 Arguments.of(List.of(1, 2, 3, 4, 10, 11), 4),
                 Arguments.of(List.of(1, 2, 3, 4, 5, 11), 5),
                 Arguments.of(List.of(1, 2, 3, 4, 5, 6), 6)
+        );
+    }
+
+    private static Stream<Arguments> resultLottoSourceGetter() {
+        return Stream.of(
+                Arguments.of(List.of(1, 2, 3, 4, 5, 6), LottoResult.FIRST),
+                Arguments.of(List.of(1, 2, 3, 4, 5, 7), LottoResult.SECOND),
+                Arguments.of(List.of(1, 2, 3, 4, 5, 8), LottoResult.THIRD),
+                Arguments.of(List.of(1, 2, 3, 4, 8, 9), LottoResult.FOURTH),
+                Arguments.of(List.of(1, 2, 3, 8, 9, 10), LottoResult.FIFTH),
+                Arguments.of(List.of(1, 2, 8, 9, 10, 11), LottoResult.MISS),
+                Arguments.of(List.of(1, 8, 9, 10, 11, 12), LottoResult.MISS),
+                Arguments.of(List.of(8, 9, 10, 11, 12, 13), LottoResult.MISS)
         );
     }
 
