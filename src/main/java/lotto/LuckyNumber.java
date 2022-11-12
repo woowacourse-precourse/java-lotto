@@ -5,46 +5,41 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LuckyAndBonus {
-    public List<Integer> luckySix;
-    public int bonusNumber;
+public class LuckyNumber {
+    public static List<Integer> luckySix;
+    public static int luckyBonus;
 
-    public LuckyAndBonus(List<Integer> luckySix, int bonusNumber) {
-        List<Integer> tempNumbers = new ArrayList<>(luckySix);
-        tempNumbers.add(bonusNumber);
-        if (tempNumbers.size() != tempNumbers.stream().distinct().count()) {
-            throw new IllegalArgumentException(LottoMessage.LUCKY_DUPLICATE_ERROR_MESSAGE.getMessage());
-        }
-        this.luckySix = luckySix;
-        this.bonusNumber = bonusNumber;
-    }
-    public void luckySixInput() {
-        System.out.println(LottoMessage.LUCKY_NUMBER_MESSAGE.getMessage());
-        String inputNumbers = Console.readLine();
-        for (int index = 0; index < inputNumbers.length(); index++) {
-            char oneNumber = inputNumbers.charAt(index);
+    public static void pickSixNumber() {
+        System.out.println(GameMessage.LUCKY_NUMBER_MESSAGE.getMessage());
+        String inputSixNumber = Console.readLine();
+        for (int index = 0; index < inputSixNumber.length(); index++) {
+            char oneNumber = inputSixNumber.charAt(index);
             if (oneNumber == ',') {
                 continue;
             }
             if (!Character.isDigit(oneNumber)) {
-                throw new IllegalArgumentException(LottoMessage.INTEGER_ERROR_MESSAGE.getMessage());
+                throw new IllegalArgumentException(GameMessage.INTEGER_ERROR_MESSAGE.getMessage());
             }
             luckySix.add(Character.getNumericValue(oneNumber));
         }
+        Lotto luckyNumbers = new Lotto(luckySix);
     }
 
-    public void bonusInput() {
-        System.out.println(LottoMessage.BONUS_NUMBER_MESSAGE.getMessage());
-        String inputBonus = Console.readLine();
-        for (int index = 0; index < inputBonus.length(); index++) {
-            if (!Character.isDigit(inputBonus.charAt(index))) {
-                throw new IllegalArgumentException(LottoMessage.INTEGER_ERROR_MESSAGE.getMessage());
+    public static void pickBonusNumber() {
+        System.out.println(GameMessage.BONUS_NUMBER_MESSAGE.getMessage());
+        String inputBonusNumber = Console.readLine();
+        for (int index = 0; index < inputBonusNumber.length(); index++) {
+            if (!Character.isDigit(inputBonusNumber.charAt(index))) {
+                throw new IllegalArgumentException(GameMessage.INTEGER_ERROR_MESSAGE.getMessage());
             }
             if (index == 1) {
-                throw new IllegalArgumentException(LottoMessage.BONUS_ERROR_MESSAGE.getMessage());
+                throw new IllegalArgumentException(GameMessage.BONUS_ERROR_MESSAGE.getMessage());
             }
-            bonusNumber = Character.getNumericValue(inputBonus.charAt(index));
+            if (luckySix.contains(Character.getNumericValue(inputBonusNumber.charAt(index)))) {
+                throw new IllegalArgumentException(GameMessage.LUCKY_DUPLICATE_ERROR_MESSAGE.getMessage());
+            }
+            luckyBonus = Character.getNumericValue(inputBonusNumber.charAt(index));
         }
-        LuckyAndBonus finalLuckyNumbers = new LuckyAndBonus(luckySix, bonusNumber);
     }
+
 }
