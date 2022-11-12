@@ -8,13 +8,13 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validateNumbersSize(numbers);
+        validateNumbersSize();
         validateNumbersAreInRange(numbers);
         validateNumbersAreDuplicate(numbers);
         this.numbers = numbers;
     }
 
-    public boolean validateNumbersSize(List<Integer> numbers) {
+    public boolean validateNumbersSize() {
 
         return numbers.size() == 6;
     }
