@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.List;
+
 public class LottoMachine {
     private static final String TYPE_ERROR_MESSAGE = "[ERROR] 숫자만 입력 가능합니다.";
     private static final String UNIT_ERROR_MESSAGE = "[ERROR] 1,000 단위의 수만 입력 가능합니다.";
@@ -31,5 +33,9 @@ public class LottoMachine {
         if (purchasePrice % UNIT_PRICE != 0) {
             throw new IllegalArgumentException(UNIT_ERROR_MESSAGE);
         }
+    }
+
+    public int getRound() {
+        return purchasePrice / UNIT_PRICE;
     }
 }

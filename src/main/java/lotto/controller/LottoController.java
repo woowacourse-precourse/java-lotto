@@ -7,5 +7,6 @@ public class LottoController {
 
     public void start() {
         LottoMachine lottoMachine = new LottoMachine(InputView.inputPurchasePrice());
+        int round = lottoMachine.getRound();
     }
 }
