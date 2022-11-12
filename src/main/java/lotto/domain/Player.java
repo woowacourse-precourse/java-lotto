@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +10,7 @@ import lotto.util.number.LottoNumberConst;
 public class Player {
 
     private static final String LOTTO_COUNT_MESSAGE_FORMAT = "%d개를 구매했습니다.";
+    private static final String LINE_FEED = "\n";
 
     private final LottoPurchaseAmount lottoPurchaseAmount;
     private final List<Lotto> myLottos;
@@ -39,6 +41,10 @@ public class Player {
         myLottos.forEach(lotto -> lottoResult.addRankingCount(winningLotto.calculateLottoGrade(lotto, bonusNumber)));
     }
 
+    public BigDecimal calculateRevenuePercent(BigDecimal totalReward) {
+        return lottoPurchaseAmount.calculateRevenuePercent(totalReward);
+    }
+
     @Override
     public String toString() {
         StringBuilder playerMessage = new StringBuilder();
@@ -46,9 +52,9 @@ public class Player {
         playerMessage
                 .append(String.format(
                         LOTTO_COUNT_MESSAGE_FORMAT, lottoPurchaseAmount.calculatePurchaseLottoAmount()))
-                .append("\n");
+                .append(LINE_FEED);
 
-        myLottos.forEach(lotto -> playerMessage.append(lotto.toString()).append("\n"));
+        myLottos.forEach(lotto -> playerMessage.append(lotto.toString()).append(LINE_FEED));
 
         return playerMessage.toString();
     }

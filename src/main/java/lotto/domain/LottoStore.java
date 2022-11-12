@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.math.BigDecimal;
+
 public class LottoStore {
 
     private final Player player;
@@ -18,5 +20,9 @@ public class LottoStore {
 
         player.calculateLottoRanking(lottoResult, winningLotto, bonusNumber);
         return lottoResult;
+    }
+
+    public BigDecimal calculateRevenuePercent(LottoResult lottoResult) {
+        return player.calculateRevenuePercent(lottoResult.calculateTotalReward());
     }
 }

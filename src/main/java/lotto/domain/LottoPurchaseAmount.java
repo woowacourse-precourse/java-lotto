@@ -8,6 +8,8 @@ import lotto.util.message.LottoExceptionMessageUtils;
 public class LottoPurchaseAmount {
 
     private static final BigDecimal PRICE_OF_ONE = new BigDecimal("1000");
+    private static final BigDecimal PERCENT_UNIT = new BigDecimal("100");
+    private static final int PERCENT_SCALE = 1;
     private static final char VALID_NUMBER_START_CHARACTER = '0';
     private static final char VALID_NUMBER_END_CHARACTER = '9';
 
@@ -53,5 +55,11 @@ public class LottoPurchaseAmount {
 
     public BigInteger calculatePurchaseLottoAmount() {
         return playerPurchaseAmount.divide(PRICE_OF_ONE, RoundingMode.FLOOR).toBigInteger();
+    }
+
+    public BigDecimal calculateRevenuePercent(BigDecimal totalReward) {
+        return totalReward
+                .multiply(PERCENT_UNIT)
+                .divide(playerPurchaseAmount, PERCENT_SCALE, RoundingMode.HALF_UP);
     }
 }
