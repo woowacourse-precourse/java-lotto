@@ -11,7 +11,7 @@ public class LottoGameService {
     private final Player player;
     private Answer answer;
 
-    public LottoGameService(Player player) {
+    public LottoGameService() {
         this.player = new Player();
     }
 
