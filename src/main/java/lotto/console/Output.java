@@ -1,7 +1,10 @@
 package lotto.console;
 
+import static lotto.console.OutputFormatter.formatLottoNumbers;
+import static lotto.console.OutputFormatter.formatPercent;
+import static lotto.console.OutputFormatter.formatThousandsSeparator;
+
 import java.util.List;
-import java.util.StringJoiner;
 
 public class Output {
 
@@ -22,12 +25,7 @@ public class Output {
     }
 
     public void writeLottoNumbers(List<Integer> lottoNumbers) {
-        StringJoiner joiner = new StringJoiner(", ", "[", "]");
-        lottoNumbers.stream()
-                .map(number -> number + "")
-                .forEach(joiner::add);
-
-        writeLine(joiner.toString());
+        writeLine(formatLottoNumbers(lottoNumbers));
     }
 
     public void writeEnterWinningStandardNumbers() {
@@ -45,18 +43,18 @@ public class Output {
 
     public void writeMatchStatistic(int match, int reward, int count) {
         writeLine("%d개 일치 (%s원) - %d개", match,
-                OutputFormatter.formatThousandsSeparator(reward),
+                formatThousandsSeparator(reward),
                 count);
     }
 
     public void writeMatchStatisticWithBonus(int match, int reward, int count) {
         writeLine("%d개 일치, 보너스 볼 일치 (%s원) - %d개", match,
-                OutputFormatter.formatThousandsSeparator(reward),
+                formatThousandsSeparator(reward),
                 count);
     }
 
     public void writeYield(float yield) {
-        writeLine("총 수익률은 %s입니다.", OutputFormatter.formatPercent(yield));
+        writeLine("총 수익률은 %s입니다.", formatPercent(yield));
     }
 
     public void writeErrorMessage(String errorMessage) {
