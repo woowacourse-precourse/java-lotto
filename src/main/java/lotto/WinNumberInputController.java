@@ -4,6 +4,11 @@ import java.util.List;
 
 public class WinNumberInputController extends InputController {
 
+    public String input() {
+        System.out.println("당첨 번호를 입력해주세요");
+        return readLine();
+    }
+
     public void validate(Object input) {
 
         List<String> winNumber = (List<String>)input;

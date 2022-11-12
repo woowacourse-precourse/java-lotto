@@ -4,6 +4,11 @@ import java.util.List;
 
 public class BonusNumberInputController extends InputController {
 
+    public String input() {
+        System.out.println("보너스 번호를 입력해 주세요");
+        return readLine();
+    }
+
     public void validate(Object input) {
 
         validateNumber((String) input);

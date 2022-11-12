@@ -2,6 +2,11 @@ package lotto;
 
 public class MoneyInputController extends InputController {
 
+    public String input() {
+        System.out.println("구입금액을 입력해 주세요.");
+        return readLine();
+    }
+
     public void validate(Object input) {
 
         long price;
