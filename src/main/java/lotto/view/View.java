@@ -24,4 +24,11 @@ public class View {
         String input = Console.readLine();
         return input;
     }
+
+    public String bonusNumberInputView(){
+        System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
+        String input = Console.readLine();
+        return input;
+    }
+
 }
