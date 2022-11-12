@@ -26,7 +26,7 @@ public class Result {
         }
     }
 
-    public void sumPrizeMoney() {
+    private void sumPrizeMoney() {
         for (Prize prize : totalMatchResult.keySet()) {
             int count = totalMatchResult.get(prize);
             totalPrizeMoney += Prize.getPrizeMoney(prize, count);
