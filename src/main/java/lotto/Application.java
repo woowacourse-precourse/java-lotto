@@ -14,6 +14,14 @@ public class Application {
         int lottoNum=userInputMoney();
 
         List<Lotto> lottos=makeLotto(lottoNum);
+        System.out.println("당첨 번호를 입력해 주세요.");
+        List<Integer> numbers=userInputNumbers();
+    }
+
+    private static List<Integer> userInputNumbers() {
+        userNumbers userNumbers = new userNumbers(readLine());
+
+        return userNumbers.getNumbers();
     }
 
     private static List<Lotto> makeLotto(int lottoNum) {
