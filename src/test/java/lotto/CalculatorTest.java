@@ -25,7 +25,7 @@ class CalculatorTest {
             int matchNumber = 6;
             boolean bonus = false;
 
-            Rank actual = calculator.getRank(matchNumber, bonus);
+            Rank actual = Rank.getRank(matchNumber, bonus);
             Rank result = Rank.FIRST;
 
             assertThat(actual).isEqualTo(result);
@@ -37,7 +37,7 @@ class CalculatorTest {
             int matchNumber = 5;
             boolean bonus = true;
 
-            Rank actual = calculator.getRank(matchNumber, bonus);
+            Rank actual = Rank.getRank(matchNumber, bonus);
             Rank result = Rank.SECOND;
 
             assertThat(actual).isEqualTo(result);
@@ -49,7 +49,7 @@ class CalculatorTest {
             int matchNumber = 5;
             boolean bonus = false;
 
-            Rank actual = calculator.getRank(matchNumber, bonus);
+            Rank actual = Rank.getRank(matchNumber, bonus);
             Rank result = Rank.THIRD;
 
             assertThat(actual).isEqualTo(result);
@@ -61,7 +61,7 @@ class CalculatorTest {
             int matchNumber = 4;
             boolean bonus = false;
 
-            Rank actual = calculator.getRank(matchNumber, bonus);
+            Rank actual = Rank.getRank(matchNumber, bonus);
             Rank result = Rank.FOURTH;
 
             assertThat(actual).isEqualTo(result);
@@ -73,7 +73,7 @@ class CalculatorTest {
             int matchNumber = 3;
             boolean bonus = false;
 
-            Rank actual = calculator.getRank(matchNumber, bonus);
+            Rank actual = Rank.getRank(matchNumber, bonus);
             Rank result = Rank.FIFTH;
 
             assertThat(actual).isEqualTo(result);

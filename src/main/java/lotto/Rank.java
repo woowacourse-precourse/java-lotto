@@ -15,7 +15,23 @@ public enum Rank {
     private Rank(int prize) {
         this.prize = prize;
     }
-    
+
+    public static Rank getRank(int match, boolean bonus) {
+        if (match == 6) {
+            return Rank.FIRST;
+        } else if (match == 5) {
+            if (bonus) {
+                return Rank.SECOND;
+            }
+            return Rank.THIRD;
+        } else if (match == 4) {
+            return Rank.FOURTH;
+        } else if (match == 3) {
+            return Rank.FIFTH;
+        }
+
+        return Rank.LAST;
+    }
 
     public int getPrize() {
         return this.prize;

@@ -96,7 +96,7 @@ public class MainController {
         for (Lotto myLotto : myLottos) {
             int match = myLotto.countMatch(winningLotto);
             boolean hasBonus = myLotto.hasBonusNumber(bonus);
-            Rank rank = calculator.getRank(match, hasBonus);
+            Rank rank = Rank.getRank(match, hasBonus);
             total += rank.getPrize();
             int p = point.get(rank);
             point.replace(rank, p + 1);
