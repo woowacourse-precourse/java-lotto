@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ScoreInfo {
-    private final Map<Score, Integer> scoreInfo;
+    protected final Map<Score, Integer> scoreInfo;
 
     public ScoreInfo() {
         HashMap<Score, Integer> scoreInfo = new HashMap<>();

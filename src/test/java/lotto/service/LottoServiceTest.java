@@ -1,8 +1,9 @@
 package lotto.service;
 
 import lotto.domain.ScoreInfo;
-import lotto.vo.Lotto;
+import lotto.mock.MockScoreInfo;
 import lotto.system.LottoApplication;
+import lotto.vo.Lotto;
 import lotto.vo.LottoAmount;
 import lotto.vo.Score;
 import lotto.vo.Winning;
@@ -92,5 +93,35 @@ class LottoServiceTest {
 		assertThat(scoreInfo.get(Score.THIRD)).isEqualTo(1);
 		assertThat(scoreInfo.get(Score.FORTH)).isEqualTo(1);
 		assertThat(scoreInfo.get(Score.FIFTH)).isEqualTo(1);
+	}
+
+	@Test
+	@DisplayName("로또 구매 금액과 점수 정보를 분석하여 수익률을 백분율로 계산한다.")
+	void givenLottoAmountAndScoreInfo_whenCalculatingProfit_thenReturnsProfitAsPercentage() {
+	    //given
+		LottoAmount lottoAmount = new LottoAmount(8000);
+		MockScoreInfo mockScoreInfo = new MockScoreInfo();
+		mockScoreInfo.setMockScore(Score.FIFTH, 1);
+
+		//when
+		Double profit = lottoService.calculateProfitBy(lottoAmount, mockScoreInfo);
+
+	    //then
+		assertThat(profit).isEqualTo(62.5);
+	}
+
+	@Test
+	@DisplayName("로또 수익률은 소수점 둘째 자리에서 반올림한다.")
+	void givenLottoAmountAndScoreInfo_whenCalculatingProfit_thenReturnsProfitRoundedToFirstDigit() {
+	    //given
+		LottoAmount lottoAmount = new LottoAmount(3000);
+		MockScoreInfo mockScoreInfo = new MockScoreInfo();
+		mockScoreInfo.setMockScore(Score.FIFTH, 1);
+		mockScoreInfo.setMockScore(Score.THIRD, 1);
+	    //when
+		Double profit = lottoService.calculateProfitBy(lottoAmount, mockScoreInfo);
+
+	    //then
+		assertThat(profit).isEqualTo(50166.7);
 	}
 }
