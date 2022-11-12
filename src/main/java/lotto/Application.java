@@ -2,7 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.text.NumberFormat;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class Application {
@@ -92,13 +92,11 @@ public class Application {
         return count;
     }
 
-    public static String calculateRate(int price, List<Integer> result) {
-        NumberFormat numberFormat = NumberFormat.getInstance();
+    public static double calculateRate(int price, List<Integer> result) {
 
         long prizeMoney=result.get(3)*5000+result.get(4)*50000+result.get(5)*1500000+result.get(7)*30000000+result.get(6)*2000000000;
-        double rate=prizeMoney/(double)price*100;
-        String finalRate = numberFormat.format((int)(rate*10+0.5)/10f);
-
-        return finalRate;
+        double cal=prizeMoney/(double)price*100;
+        double rate=(int)(cal*10+0.5)/10d;
+        return rate;
     }
 }
