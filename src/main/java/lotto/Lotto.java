@@ -6,6 +6,10 @@ import java.util.List;
 public class Lotto {
     private final List<Integer> numbers;
 
+    public String getNumbersToString() {
+        return numbers.toString();
+    }
+
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;

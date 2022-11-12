@@ -16,8 +16,8 @@ public class MessagePrinter {
     }
 
     public void printPurchasedLotto(List<Lotto> lottoBundle) {
-        for (Lotto lotto : lottoBundle) {
-            System.out.println(lotto);
+        for (int lottoBundleIndex=0; lottoBundleIndex<lottoBundle.size(); lottoBundleIndex++) {
+            System.out.println(lottoBundle.get(lottoBundleIndex).getNumbersToString());
         }
     }
 
