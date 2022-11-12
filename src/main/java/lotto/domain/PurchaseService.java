@@ -2,6 +2,8 @@ package lotto.domain;
 
 public class PurchaseService {
     int purchaseAmount;
+    private final static int PRICE = 1000;
+    private final static int MIN = 0;
 
     public void parsePurchaseInput(String input){
         isInteger(input);
@@ -21,13 +23,13 @@ public class PurchaseService {
         }
     }
     private void isNegative(int input){
-        if(input < 0){
+        if(input < MIN){
             throw new IllegalArgumentException("[ERROR] 구매 금액은 0 이상의 1000의 배수여야 합니다.");
         }
     }
 
     private void isMultipleOf1000(int input){
-        if(input % 1000 != 0){
+        if(input % PRICE != 0){
             throw new IllegalArgumentException("[ERROR} 구매 금액은 1000의 배수여야 합니다");
         }
     }
