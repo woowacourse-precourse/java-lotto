@@ -10,20 +10,29 @@ public class LottoGame {
     public void start() {
         Print.money();
         int lottoTickets = Input.purchaseAmount();
+        Lottos lottos = purchaseLotto(lottoTickets);
+        BonusLotto bonusLotto = makeWinningLotto();
+        Map<LottoOperator, Integer> winningResult = findWinningResult(lottos, bonusLotto);
+    }
+
+    private Lottos purchaseLotto(int lottoTickets) {
         Lottos lottos = generator.makeLottos(lottoTickets);
         Print.purchaseLotto(lottoTickets, lottos);
+        return lottos;
+    }
 
+    private BonusLotto makeWinningLotto() {
         Print.winningNumber();
         Lotto winningLotto = generator.makeLotto(Input.winningNumber());
         Print.bonusNumber();
         int bonus = Input.bonus();
 
         BonusLotto bonusLotto = new BonusLotto(winningLotto, bonus);
-        List<Integer> matchCount = lottos.result(bonusLotto);
-        Map<LottoOperator, Integer> winningResult = findWinningResult(matchCount);
+        return bonusLotto;
     }
 
-    private Map<LottoOperator, Integer> findWinningResult(List<Integer> matchCount) {
+    private Map<LottoOperator, Integer> findWinningResult(Lottos lottos, BonusLotto bonusLotto) {
+        List<Integer> matchCount = lottos.result(bonusLotto);
         Map<LottoOperator, Integer> winningResult = new HashMap<>();
         for (Integer count : matchCount) {
             LottoOperator rank = LottoOperator.find(count);
