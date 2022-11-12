@@ -29,7 +29,7 @@ public class PublishedLottos {
         int correctCount = winningLotto.compare(playerLotto);
 
         if (correctCount == 5) {
-            return Rank.getRank(correctCount, winningLotto.hasBonusNumber(bonusNumber));
+            return Rank.getRank(correctCount, playerLotto.hasBonusNumber(bonusNumber));
         }
         rank = Rank.getRank(correctCount, false);
 
