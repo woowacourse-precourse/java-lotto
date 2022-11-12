@@ -3,6 +3,8 @@ package lotto.Utils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -58,7 +60,7 @@ class InputValidTest {
                 .isEqualTo(false);
     }
 
-    @DisplayName("로또 번호가 1~45사이가 아니면 false 리턴")
+    @DisplayName("로또 번호가 중복이 있으면 false 리턴")
     @Test
     void CreateLottoNumberDistinct(){
         assertThat(InputValid.checkLottoNumber("12,12,3,4,5,6"))
@@ -69,6 +71,31 @@ class InputValidTest {
     @Test
     void CreateLottoNumber(){
         assertThat(InputValid.checkLottoNumber("12,45,3,4,5,1"))
+                .isEqualTo(true);
+    }
+
+    @DisplayName("보너스 번호가 1~45사이 숫자가 아니면 false 리턴")
+    @Test
+    void CreateBonusNumberRight(){
+        assertThat(InputValid.checkBonusNumber("46", List.of(1, 2, 3, 4, 5, 6, 7)))
+                .isEqualTo(false);
+
+        assertThat(InputValid.checkBonusNumber("abc",List.of(1, 2, 3, 4, 5, 6, 7)))
+                .isEqualTo(false);
+    }
+
+    @DisplayName("보너스 번호가 로또 번호의 중복 이라면 false 리턴")
+    @Test
+    void CreateBonusNumberDistinct(){
+        assertThat(InputValid.checkBonusNumber("1", List.of(1, 2, 3, 4, 5, 6, 7)))
+                .isEqualTo(false);
+
+    }
+
+    @DisplayName("보너스 번호가 1~45사이로 정상적이면 true 리턴")
+    @Test
+    void CreateBonusNumber(){
+        assertThat(InputValid.checkBonusNumber("32",List.of(1, 2, 3, 4, 5, 6, 7)))
                 .isEqualTo(true);
     }
 }
