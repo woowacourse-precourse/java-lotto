@@ -4,6 +4,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import lotto.Computer;
 import lotto.Lotto;
@@ -56,65 +57,19 @@ class LottoServiceTest {
 
     private static Collection<Arguments> param3() {
         return Arrays.asList(
-            Arguments.of("1등이 한번 등장",
-                Arrays.asList(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6))),
-                Arrays.asList(1, 2, 3, 4, 5, 6), 7, Arrays.asList(1, 0, 0, 0, 0)),
-            Arguments.of("1등이 2번 등장",
-                Arrays.asList(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)),
-                    new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6))),
-                Arrays.asList(1, 2, 3, 4, 5, 6), 7, Arrays.asList(2, 0, 0, 0, 0)),
-            Arguments.of("1,5등 한번씩 등장",
-                Arrays.asList(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)),
-                    new Lotto(Arrays.asList(1, 2, 3, 24, 25, 26))),
-                Arrays.asList(1, 2, 3, 4, 5, 6), 7, Arrays.asList(1, 0, 0, 0, 1)),
-            Arguments.of("2,3등 빼고 한번씩 등장",
-                Arrays.asList(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)),
-                    new Lotto(Arrays.asList(1, 2, 3, 24, 25, 26)),
-                    new Lotto(Arrays.asList(1, 2, 3, 4, 25, 26))),
-                Arrays.asList(1, 2, 3, 4, 5, 6), 7, Arrays.asList(1, 0, 0, 1, 1)),
-            Arguments.of("2등 빼고 한번씩 등장",
-                Arrays.asList(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)),
-                    new Lotto(Arrays.asList(1, 2, 3, 24, 25, 26)),
-                    new Lotto(Arrays.asList(1, 2, 3, 4, 25, 26)),
-                    new Lotto(Arrays.asList(1, 2, 3, 4, 5, 26))),
-                Arrays.asList(1, 2, 3, 4, 5, 6), 7, Arrays.asList(1, 0, 1, 1, 1)),
-            Arguments.of("1등부터 5등까지 한번씩 등장",
-                Arrays.asList(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)),
-                    new Lotto(Arrays.asList(1, 2, 3, 24, 25, 26)),
-                    new Lotto(Arrays.asList(1, 2, 3, 4, 25, 26)),
-                    new Lotto(Arrays.asList(1, 2, 3, 4, 5, 26)),
-                    new Lotto(Arrays.asList(1, 2, 3, 4, 5, 7))),
-                Arrays.asList(1, 2, 3, 4, 5, 6), 7, Arrays.asList(1, 1, 1, 1, 1)),
-            Arguments.of("보너스만 맞춘건 노카운팅",
-                Arrays.asList(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)),
-                    new Lotto(Arrays.asList(21, 22, 23, 24, 25, 7))),
-                Arrays.asList(1, 2, 3, 4, 5, 6), 7, Arrays.asList(1, 0, 0, 0, 0)),
-            Arguments.of("보너스 한개와 당첨 숫자 1개를 맞춘건 노카운팅",
-                Arrays.asList(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)),
-                    new Lotto(Arrays.asList(21, 22, 23, 24, 5, 7))),
-                Arrays.asList(1, 2, 3, 4, 5, 6), 7, Arrays.asList(1, 0, 0, 0, 0)),
-            Arguments.of("보너스 한개와 당첨 숫자 2개를 맞춘건 노카운팅",
-                Arrays.asList(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)),
-                    new Lotto(Arrays.asList(21, 22, 23, 4, 5, 7))),
-                Arrays.asList(1, 2, 3, 4, 5, 6), 7, Arrays.asList(1, 0, 0, 0, 0)),
-            Arguments.of("보너스 한개와 당첨 숫자 2개를 맞춘건 노카운팅, 여러개 존재",
-                Arrays.asList(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)),
-                    new Lotto(Arrays.asList(21, 22, 23, 4, 5, 7)),
-                    new Lotto(Arrays.asList(21, 22, 23, 4, 5, 7)),
-                    new Lotto(Arrays.asList(21, 22, 23, 4, 5, 7))
-                ),
-                Arrays.asList(1, 2, 3, 4, 5, 6), 7, Arrays.asList(1, 0, 0, 0, 0))
+            Arguments.of("비어있는 로또와 당첨번호",
+                Collections.EMPTY_LIST,
+                Collections.EMPTY_LIST, 7)
         );
     }
 
     @ParameterizedTest(name = "{index}: {0}")
     @MethodSource("param3")
     @DisplayName("로또 서비스의 getResult 테스트")
-    void test3(String description, List<Lotto> lottos, List<Integer> win, int bonus,
-        List<Integer> result) {
+    void test3(String description, List<Lotto> lottos, List<Integer> win, int bonus) {
         ComputerSpy computerSpy = new ComputerSpy();
         LottoService service = new LottoService(new Validator(), computerSpy);
-        List<Integer> a = service.getResult(lottos, win, bonus);
+        service.getResult(lottos, win, bonus);
         Assertions.assertTrue(computerSpy.isCalled);
     }
 
