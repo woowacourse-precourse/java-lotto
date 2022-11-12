@@ -15,7 +15,8 @@ public class ValidationTest {
     @Test
     void inputCanDivideBy1000() {
         assertThatCode(() -> validInput.validCashAmount(100000, 1000)).doesNotThrowAnyException();
-        assertThatThrownBy(() -> validInput.validCashAmount(100500, 1000)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> validInput.validCashAmount(100500, 1000))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("사용자가 입력한 수가 6자리로 이뤄져 있다.")
@@ -38,6 +39,7 @@ public class ValidationTest {
     @Test
     void isNumberInRange() {
         assertThatCode(() -> validInput.validIsInputInRange(10)).doesNotThrowAnyException();
-        assertThatThrownBy(() -> validInput.validIsInputInRange(50)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> validInput.validIsInputInRange(50))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
