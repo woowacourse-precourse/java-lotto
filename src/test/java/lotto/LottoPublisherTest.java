@@ -17,4 +17,12 @@ class LottoPublisherTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("금액에 맞는 갯수의 로또를 발급받는다.")
+    @Test
+    void publishLotto10000() {
+        LottoPublisher lottoPublisher = new LottoPublisher();
+        lottoPublisher.publish(10000);
+
+        Assertions.assertThat(lottoPublisher.getLottos().size()).isEqualTo(10);
+    }
 }
