@@ -13,17 +13,20 @@ public class Application {
             long price = askPrice();
             List<Lotto> lottos = makeLotto(price);
             List<Integer> winningLotto = askWinning();
-            int bonusNumber = askBonus();
+            int bonusNumber = askBonus(winningLotto);
             Rank.calcRank(price, lottos, winningLotto, bonusNumber);
         } catch (IllegalArgumentException e) {
             System.out.println("[ERROR] 잘못된 값이 입력되었습니다.");
         }
     }
 
-    public static int askBonus() throws IllegalArgumentException{
+    public static int askBonus(List<Integer> winningLotto) throws IllegalArgumentException{
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = readLine();
         int num = validateNumber(input);
+        if(winningLotto.contains(num)) {
+            throw new IllegalArgumentException();
+        }
         return num;
     }
 
