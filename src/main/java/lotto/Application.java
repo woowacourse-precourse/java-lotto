@@ -30,6 +30,6 @@ public class Application {
 
         // 4. 보너스 번호를 입력받는다.
         System.out.println("보너스 번호를 입력해 주세요.");
-        BonusNum bonusNum = new BonusNum(Console.readLine());
+        BonusNum bonusNum = new BonusNum(Console.readLine(), pickLotto.getNumbers());
     }
 }

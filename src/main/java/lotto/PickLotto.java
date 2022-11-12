@@ -46,4 +46,8 @@ public class PickLotto {
             else numbers.add(Integer.parseInt(s));
         }
     }
+
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
 }
