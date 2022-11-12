@@ -23,6 +23,16 @@ public class Input {
         this.inputPrice = inputPrice();
         this.bonusNumber= inputBonusNumber();
     }
+    public List<Integer> getWinningNumberList(){
+        return winningNumberList;
+    }
+
+    public int getInputPrice(){
+        return inputPrice;
+    }
+    public int getBonusNumber(){
+        return bonusNumber;
+    }
 
 
     public List<Integer> inputWinningNumber() {
