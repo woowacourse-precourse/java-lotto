@@ -63,14 +63,14 @@
 
 ## Model Package
 
-### Lotto
+### Lotto (개발완료📌)
 - variable
   - List<Integer> numbers
 - function
   - Lotto(numbers) : 생성자
   - validate(numbers) : 리스트의 사이즈가 6인지 체크하는 함수
   - getNumbers() : numbers get Function
-### Rank (Enum Class)
+### Rank (Enum Class) (개발완료📌)
 - variables
   - int count
   - int bonus
@@ -80,7 +80,7 @@
   - getRank(count, bonus) : 당첨번호를 맞춘 개수와 보너스 번호를 맞춘 것에 따라서 value를 출력하는 함수
 
 ## Service Package
-### LottoNumberService
+### LottoNumberService (개발중✏️)
 - function
   - receiveLottoSheetsAmount() : 구매금액을 받아올 함수
   - checkDivideBy1000() : 구매금액이 1000원으로 나누었을 때 나누어 떨어지는지 확인하는 함수
@@ -128,3 +128,4 @@
 추가적으로 바뀐 사항을 간략하게 밑에 기록해놓겠습니다.
 
 📌 변경 사항 기록
+1. PrintView : Rename Function
