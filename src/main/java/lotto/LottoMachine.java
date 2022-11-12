@@ -4,6 +4,7 @@ import lotto.Lotto;
 import lotto.Util;
 import lotto.LottoBuyer;
 
+import java.util.Iterator;
 import java.math.BigInteger;
 import java.util.List;
 import java.util.ArrayList;
@@ -22,5 +23,6 @@ public class LottoMachine {
                 money = money.subtract(BigInteger.valueOf(1000));
             }
         }
+        System.out.println(lottos.size() + "개를 구매했습니다.");
     }
 }
