@@ -8,17 +8,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoMachine {
-    public int CalculateLottoCount() {
-        InputView inputView = new InputView();
-        int money = inputView.inputMoney();
-        int lottoCount = money / 1000;
-        System.out.println();
-        System.out.printf("%d개를 구매했습니다.\n", lottoCount);
-        return lottoCount;
-    }
 
     public List<List<Integer>> createLotto() {
-        int lottoCount = CalculateLottoCount();
+        LottoStore lottoStore = new LottoStore();
+        int lottoCount = lottoStore.calculateLottoCount();
         List<List<Integer>> totalLotteries = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
             List<Integer> numbers =
