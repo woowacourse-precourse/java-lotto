@@ -1,9 +1,11 @@
 package lotto;
 
 import lotto.model.Customer;
+import lotto.model.Lotto;
 import lotto.model.LottoNumberGenerator;
 import lotto.model.LottoSeller;
 import lotto.model.PurchasePrice;
+import lotto.model.WinningLotto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -27,6 +29,6 @@ public class Application {
         lottoSeller.sellLotteriesTo(customer);
         OutputView.printLottos(customer.getLottos());
 
-        String inputWinningLotto = InputView.inputWinningLotto();
+        Lotto winningLotto = new WinningLotto(InputView.inputWinningLotto()).toLotto();
     }
 }
