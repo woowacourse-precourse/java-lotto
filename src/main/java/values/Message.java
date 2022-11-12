@@ -8,10 +8,10 @@ public class Message {
 
     public String getTotalRevenueMessage(Double percent){
         StringBuffer message = new StringBuffer();
-        Double roundedPercent = (Math.round(percent*100)/100.0);
+        String roundedPercent = String.format("%.1f", percent);
 
         message.append("총 수익률은 ");
-        message.append(roundedPercent.toString());
+        message.append(roundedPercent);
         message.append("%입니다.");
 
         return message.toString();
