@@ -5,9 +5,13 @@ import java.util.List;
 import java.util.Set;
 
 public class ValidationInDomain {
+    private static final int MAX_NUMBER = 45;
+    private static final int MIN_NUMBER = 1;
+    private static final int NUMBER_OF_LOTTO_NUMBERS = 6;
+    private static final int THOUSAND = 1000;
 
     public void checkDividedByThousand(int value){
-        if(value % 1000 != 0){
+        if(value % THOUSAND != 0){
             throw new IllegalArgumentException();
         }
     }
@@ -23,31 +27,28 @@ public class ValidationInDomain {
     }
 
     public void checkNumberRange(int number){
-        if(number < 1 || number > 45){
+        if(number < MIN_NUMBER || number > MAX_NUMBER){
             throw new IllegalArgumentException();
         }
     }
 
     public void checkNumbersRange(List<Integer> numbers){
         for(int number : numbers){
-            if(number < 1 || number > 45){
+            if(number < MIN_NUMBER || number > MAX_NUMBER){
                 throw new IllegalArgumentException();
             }
         }
     }
 
     public void checkBonusNumberDuplication(List<Integer> numbers, int bonusNumber){
-        Set<Integer> validator = new HashSet<>();
-        for(int i = 0; i < numbers.size(); i++){
-            validator.add(numbers.get(i));
-        }
+        Set<Integer> validator = new HashSet<>(numbers);
         if(validator.contains(bonusNumber)){
             throw new IllegalArgumentException();
         }
     }
 
     public void checkNumberOfNumbers(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != NUMBER_OF_LOTTO_NUMBERS) {
             throw new IllegalArgumentException();
         }
     }
