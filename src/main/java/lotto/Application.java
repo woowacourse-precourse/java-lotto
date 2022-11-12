@@ -237,7 +237,7 @@ public class Application {
         }
 
         if (bonusNumber < 1 || bonusNumber > 45) {
-
+            error = ErrorMessage.RANGE;
             throw new IllegalArgumentException();
         }
     }
