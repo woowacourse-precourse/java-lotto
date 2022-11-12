@@ -6,9 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumberGenerator {
-
     public int numberOfLotto;
     List<List<Integer>> myLotto = new ArrayList<>();
+
+    List<Integer> list = new ArrayList<>();
 
     NumberGenerator(int numberOfLotto) {
         this.numberOfLotto = numberOfLotto;
@@ -17,8 +18,10 @@ public class NumberGenerator {
     public void generateNumbers() {
         for (int i = 0; i < this.numberOfLotto; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            this.myLotto.add(numbers);
+
+            Lotto lotto = new Lotto(numbers);
+            lotto.sortNumbers();
+            this.myLotto.add(lotto.getNumbers());
         }
     }
 }
-

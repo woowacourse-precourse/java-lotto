@@ -1,5 +1,8 @@
 package lotto;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import static lotto.Constant.*;
@@ -24,9 +27,14 @@ public class Lotto {
         }
     }
 
-    public List<Integer> getLotto(){
+    public void sortNumbers(){
+        Collections.sort(numbers);
+    }
+
+    public List<Integer> getNumbers(){
         return numbers;
     }
+
 
 
 
