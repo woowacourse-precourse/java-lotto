@@ -54,8 +54,23 @@
 
 ---
 
-- **Enum class**
-  - [ ] 다른 클래스에서 사용 될 상수 저장
+- **EnumRequestMessage class**
+  - [ ] 사용자의 입력을 받을 때 사용 될 상수 저장
+
+---
+
+- **EnumPatterns class**
+  - [ ] 정규식 패턴, 문자열 형식에 사용 될 상수 저장
+
+---
+
+- **EnumError class**
+  - [ ] 에러메세지에 사용 될 상수 저장
+
+---
+
+- **EnumNumeric class**
+  - [ ] 숫자에 사용 될 상수 저장
 
 ---
 
