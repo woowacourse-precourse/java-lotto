@@ -31,5 +31,9 @@ public class Application {
         // 4. 보너스 번호를 입력받는다.
         System.out.println("보너스 번호를 입력해 주세요.");
         BonusNum bonusNum = new BonusNum(Console.readLine(), pickLotto.getNumbers());
+
+        // 5. 당첨 내역을 출력한다.
+        Match match = new Match();
+        match.matchNumbers(lottos, pickLotto, bonusNum);
     }
 }

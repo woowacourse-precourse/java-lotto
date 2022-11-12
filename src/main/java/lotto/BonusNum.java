@@ -20,4 +20,8 @@ public class BonusNum {
         // 4-2. 보너스 번호가 당첨 번호와 중복되면 예외처리를 한다.
         if (pickNumbers.contains(number)) throw new IllegalArgumentException();
     }
+
+    public Integer getNumber() {
+        return this.number;
+    }
 }
