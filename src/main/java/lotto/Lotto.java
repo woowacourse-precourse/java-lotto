@@ -84,9 +84,22 @@ public class Lotto {
         return bonusNumber;
     }
 
-    public static int castLotto(List<List<Integer>> lottoTickets, List<Integer> lottoNumbers, int bonusNumber){
-        int result = 0;
-        System.out.println();
+    public static int[] castLotto(List<List<Integer>> lottoTickets, List<Integer> lottoNumbers, int bonusNumber){
+        int[] result = new int[5];
+        for (List<Integer> ticket: lottoTickets){
+            ticket.retainAll(lottoNumbers);
+            if (ticket.size() == 6){
+                result[0]++;
+            } else if (ticket.size() == 5 && lottoNumbers.contains(bonusNumber)) {
+                result[1]++;
+            } else if (ticket.size() == 5){
+                result[2]++;
+            } else  if (ticket.size() == 4){
+                result[3]++;
+            } else if (ticket.size() == 3){
+                result[4]++;
+            }
+        }
         return result;
     }
 
