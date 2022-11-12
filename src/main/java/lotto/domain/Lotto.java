@@ -31,13 +31,13 @@ public class Lotto {
         }
     }
 
-    public int matchCountLotto(Lotto winningLotto) {
-        return Math.toIntExact(numbers.stream().filter(winningLotto::matchCountLottoNumber).count());
+    public int matchCountLotto(Lotto comPareLotto) {
+        return Math.toIntExact(numbers.stream().filter(comPareLotto::matchCountLottoNumber).count());
 
     }
 
-    public boolean matchCountLottoNumber(LottoNumber compare) {
-        return numbers.stream().anyMatch(control -> control.equals(compare));
+    private boolean matchCountLottoNumber(LottoNumber compareNumber) {
+        return numbers.stream().anyMatch(controlNumber -> controlNumber.equals(compareNumber));
     }
 
     @Override

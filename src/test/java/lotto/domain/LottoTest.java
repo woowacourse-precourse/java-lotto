@@ -30,17 +30,6 @@ class LottoTest {
 
     @DisplayName("당첨 숫자를 받아 일치하는 개수를 센다.")
     @Test
-    void matchCount(){
-        LottoNumber lottoNumber = new LottoNumber(1);
-
-        List<LottoNumber> tempLottoNumber = new ConstantCreateStrategy().createTempLottoNumber();
-
-        Lotto purchaseLotto = new Lotto(tempLottoNumber);
-
-        assertThat(purchaseLotto.matchCountLottoNumber(lottoNumber)).isTrue();
-    }
-
-    @Test
     void matchCountLotto() {
         List<LottoNumber> lottoNumbers = List.of(new LottoNumber(1), new LottoNumber(2), new LottoNumber(3)
                 , new LottoNumber(23), new LottoNumber(24), new LottoNumber(25));
@@ -48,6 +37,6 @@ class LottoTest {
         List<LottoNumber> tempLottoNumber = new ConstantCreateStrategy().createTempLottoNumber();
         Lotto purchaseLotto = new Lotto(tempLottoNumber);
 
-        assertThat(purchaseLotto.matchCountLotto(winningLotto)).isEqualTo(Ranks.FIFTH.getMatchNumber());
+        assertThat(purchaseLotto.matchCountLotto(winningLotto)).isEqualTo(Rank.FIFTH.getMatchNumber());
     }
 }

@@ -1,8 +1,6 @@
 package lotto.domain;
 
-import lotto.domain.ConstantCreateStrategy;
-import lotto.domain.Lottery;
-import lotto.domain.Lotto;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -21,6 +19,24 @@ public class LotteryTest {
         List<Lotto> lottos = new Lottery().createLottery(buyLottos, testStrategy);
 
         assertThat(lottos).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("일치하는 수에 따라 랭크를 반환한다.")
+    void ranks() {
+
+        List<LottoNumber> lottoNumbers2 = List.of(new LottoNumber(1), new LottoNumber(2), new LottoNumber(3)
+                , new LottoNumber(4), new LottoNumber(41), new LottoNumber(43));
+        Lotto winningLotto = new Lotto(lottoNumbers2);
+
+        int buyLottos = 2;
+        ConstantCreateStrategy lottoCreateStrategy = new ConstantCreateStrategy();
+        List<Lotto> lottos = new Lottery().createLottery(buyLottos, lottoCreateStrategy);
+
+        Lottery lottery = new Lottery();
+        List<Rank> ranks = lottery.ranks(winningLotto,lottos);
+
+        assertThat(ranks).contains(Rank.FOURTH);
     }
 
 }
