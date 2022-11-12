@@ -7,13 +7,13 @@ import lotto.exception.BonusNumberException;
 import lotto.exception.WinningNumbersException;
 import lotto.view.InputView;
 
-public class Winning {
+public class WinningNumbers {
 
     private Lotto winningNumbers;
 
     private Integer bonusNumber;
 
-    public Winning() {
+    public WinningNumbers() {
         this.winningNumbers = new Lotto(getWinningNumbersByInput());
         this.bonusNumber = getBonusNumberByInput();
     }
