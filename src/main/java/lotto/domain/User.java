@@ -18,9 +18,10 @@ public class User {
         String amount = Console.readLine();
         validate(amount);
         setMoney(Integer.parseInt(amount));
+        createLotto();
     }
 
-    public void createLotto() throws IllegalArgumentException {
+    private void createLotto() throws IllegalArgumentException {
         lottos = new ArrayList<>();
         for (int lotto = 0; lotto < (money / lottoPrice); lotto++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
