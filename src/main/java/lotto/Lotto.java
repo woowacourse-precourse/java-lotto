@@ -14,7 +14,16 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        // 범위 검사
+        for (Integer num: numbers)
+            if (num > 45 || num < 1)
+                throw new IllegalArgumentException();
     }
+
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+
 
     // TODO: 추가 기능 구현
 }
