@@ -22,12 +22,23 @@ public class WinningNumber {
 
         Set<Integer> numberSet = new HashSet<>(numbers);
         numberSet.add(bonus);
-        if(numberSet.size() != 7){
+        if (numberSet.size() != 7) {
             throw new IllegalArgumentException(ErrorText.DUPLICATE_NUMBER.toString());
         }
 
+        if (isInvalidRange(numbers, bonus)) {
+            throw new IllegalArgumentException(ErrorText.INVALID_NUMBER_RANGE.toString());
+        }
     }
 
+    private boolean isInvalidRange(List<Integer> numbers, int bonus) {
+        for (int number : numbers) {
+            if (45 < number || number < 1) {
+                return true;
+            }
+        }
+        return 45 < bonus || bonus < 1;
+    }
 
     public boolean hasBonus(int number) {
         return bonus == number;
