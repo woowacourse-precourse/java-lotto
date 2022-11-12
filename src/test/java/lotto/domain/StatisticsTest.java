@@ -34,7 +34,7 @@ public class StatisticsTest {
 
             Assertions.assertThatThrownBy( () -> new Statistics(purchase))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(InputException.INPUT_NOT_DIGIT.message());
+                    .hasMessageContaining(InputException.MONEY_NOT_DIGIT.message());
         }
 
 
@@ -46,7 +46,7 @@ public class StatisticsTest {
 
             Assertions.assertThatThrownBy( () -> new Statistics(purchase))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(InputException.INPUT_MUST_DIVIDE_BY_LOTTO_UNIT.message());
+                    .hasMessageContaining(InputException.MONEY_NOT_DIVIDE_BY_LOTTO_UNIT.message());
         }
     }
 

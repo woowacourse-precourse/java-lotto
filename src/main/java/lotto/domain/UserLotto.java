@@ -27,13 +27,13 @@ public final class UserLotto {
 
     private void isDigitAndSplitByStandard(String winNumbers) {
         if (!winNumbers.matches(REG_XP_LOTTO)) {
-            throw new IllegalArgumentException(InputException.INPUT_INVALID_FORM.message());
+            throw new IllegalArgumentException(InputException.LOTTO_INVALID_FORM.message());
         }
     }
 
     private void isValidLottoCount(String winNumbers) {
         if (Arrays.stream(winNumbers.split(SPLIT_STANDARD)).count() != 6) {
-            throw new IllegalArgumentException(InputException.INPUT_INVALID_DIGIT_COUNT.message());
+            throw new IllegalArgumentException(InputException.LOTTO_INVALID_COUNT.message());
         }
     }
 
@@ -44,13 +44,13 @@ public final class UserLotto {
                 .count();
 
         if (count != 6) {
-            throw new IllegalArgumentException(InputException.INPUT_INVALID_DIGIT_RANGE.message());
+            throw new IllegalArgumentException(InputException.LOTTO_INVALID_RANGE.message());
         }
     }
 
     private void hasNotDuplicateLotto(String winNumbers) {
         if (Arrays.stream(winNumbers.split(SPLIT_STANDARD)).distinct().count() != 6) {
-            throw new IllegalArgumentException(InputException.INPUT_HAS_NOT_DUPLICATE_DIGIT.message());
+            throw new IllegalArgumentException(InputException.LOTTO_DUPLICATE_DIGIT.message());
         }
     }
 
@@ -63,7 +63,7 @@ public final class UserLotto {
     private void isValidBonusLottoRange(String bonusNumber) {
         if (bonusNumber.length() != 1 || !bonusNumber.matches(SPLIT_STANDARD)
                 || ( 1 > Integer.parseInt(bonusNumber) && Integer.parseInt(bonusNumber) > 45 )) {
-            throw new IllegalArgumentException(InputException.INPUT_INVALID_BONUS_LOTTO.message());
+            throw new IllegalArgumentException(InputException.BONUS_LOTTO_INVALID_FORM.message());
         }
     }
 }

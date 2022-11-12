@@ -20,7 +20,7 @@ public class UserLottoTest {
 
             Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(InputException.INPUT_INVALID_FORM.message());
+                    .hasMessageContaining(InputException.LOTTO_INVALID_FORM.message());
         }
 
         @DisplayName("당첨 번호에 특수문자나 문자가 포함되어 있는 경우 예외를 터트린다.")
@@ -31,7 +31,7 @@ public class UserLottoTest {
 
             Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(InputException.INPUT_INVALID_FORM.message());
+                    .hasMessageContaining(InputException.LOTTO_INVALID_FORM.message());
         }
 
         @DisplayName("당첨 번호가 6개가 아닐 경우 예외를 터트린다.")
@@ -42,7 +42,7 @@ public class UserLottoTest {
 
             Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(InputException.INPUT_INVALID_DIGIT_COUNT.message());
+                    .hasMessageContaining(InputException.LOTTO_INVALID_COUNT.message());
         }
 
         @DisplayName("당천 번호가 1-45 숫자가 아닌 경우 예외를 터트린다.")
@@ -53,7 +53,7 @@ public class UserLottoTest {
 
             Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(InputException.INPUT_INVALID_DIGIT_RANGE.message());
+                    .hasMessageContaining(InputException.LOTTO_INVALID_RANGE.message());
         }
 
         @DisplayName("당천 번호에 중복이 있으면 예외를 터트린다.")
@@ -64,7 +64,7 @@ public class UserLottoTest {
 
             Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(InputException.INPUT_HAS_NOT_DUPLICATE_DIGIT.message());
+                    .hasMessageContaining(InputException.LOTTO_DUPLICATE_DIGIT.message());
         }
     }
 
@@ -80,7 +80,7 @@ public class UserLottoTest {
 
             Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(InputException.INPUT_INVALID_BONUS_LOTTO.message());
+                    .hasMessageContaining(InputException.BONUS_LOTTO_INVALID_FORM.message());
         }
 
         @DisplayName("보너스 번호가 1 - 45 사이가 아니면 예외를 터트린다.")
@@ -91,7 +91,7 @@ public class UserLottoTest {
 
             Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(InputException.INPUT_INVALID_BONUS_LOTTO.message());
+                    .hasMessageContaining(InputException.BONUS_LOTTO_INVALID_FORM.message());
 
         }
 
@@ -103,7 +103,7 @@ public class UserLottoTest {
 
             Assertions.assertThatThrownBy( () -> new UserLotto(winNumbers, bonusNumber) )
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(InputException.INPUT_INVALID_BONUS_LOTTO.message());
+                    .hasMessageContaining(InputException.BONUS_LOTTO_INVALID_FORM.message());
         }
     }
 }
