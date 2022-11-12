@@ -66,6 +66,7 @@ public class NumberGenerator {
             throw e;
         }
     }
+
     private void exceptionDividedIntoThousands(int purchasePrice) {
         if (purchasePrice % 1000 != 0) {
             IllegalArgumentException e = new IllegalArgumentException();
