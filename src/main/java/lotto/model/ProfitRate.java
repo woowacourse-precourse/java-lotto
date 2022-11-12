@@ -1,7 +1,7 @@
 package lotto.model;
 
 public class ProfitRate {
-    final double profitRate;
+    private final double profitRate;
 
     public ProfitRate(double profitRate) {
         this.profitRate = profitRate;
