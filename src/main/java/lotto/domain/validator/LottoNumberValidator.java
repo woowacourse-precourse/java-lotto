@@ -22,10 +22,10 @@ public class LottoNumberValidator {
 
     // 1차 : 쉼표로 split했는데 다른 구분자 있을 때
     public void checkingSeparator(final String inputValue) {
-        String[] splitValues = inputValue.split(",");
+        String[] splitValues = inputValue.split("");
         for (String value : splitValues) {
             value = value.trim();
-            if (!value.matches("[0-9a-zA-Z]")) {
+            if (value.matches("[^0-9a-zA-Z,]")) {
                 throw new IllegalArgumentException(ErrorMessages.WRONG_SEPARATOR.getMessage());
             }
         }
@@ -36,7 +36,7 @@ public class LottoNumberValidator {
         String[] splitValues = inputValue.split(",");
         for (String value : splitValues) {
             value = value.trim();
-            if (!value.matches("[0-9]")) {
+            if (!value.matches("\\d{1,2}")) {
                 throw new IllegalArgumentException(ErrorMessages.NOT_NUMBER_EXIST.getMessage());
             }
         }
@@ -73,17 +73,17 @@ public class LottoNumberValidator {
     }
 
     public void checkingSingleNumber(final String inputValue) {
-        String[] splitValues = inputValue.split("");
+        String[] splitValues = inputValue.split("\\D");
         boolean alreadyFound = false;
         for (String value : splitValues) {
-            if (value.matches("[0-9]") && !alreadyFound) {
+            if (value.matches("\\d{1,2}") && !alreadyFound) {
                 alreadyFound = true;
                 continue;
             }
-            if (value.matches("[^0-9]")) {
-                throw new IllegalArgumentException(ErrorMessages.NOT_SINGLE_NUMBER.getMessage());
+            if (value.matches(" ")) {
+                continue;
             }
-            if (value.matches("[0-9]") && alreadyFound) {
+            if (value.matches("\\d{1,2}") && alreadyFound) {
                 throw new IllegalArgumentException(ErrorMessages.NOT_SINGLE_NUMBER.getMessage());
             }
         }
