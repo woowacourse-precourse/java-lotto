@@ -31,7 +31,7 @@ public class LottoCore {
 
     private Lotto createLotto() {
         Lotto lotto;
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         Collections.sort(numbers);
         lotto = new Lotto(numbers);
         return lotto;
@@ -49,24 +49,26 @@ public class LottoCore {
 
         Map<LottoPrize, Integer> winningList = new EnumMap<>(LottoPrize.class);
 
+        initWinningMap(winningList);
+
         for (int index = 0; index < lottos.size(); index++) {
             LottoPrize lottoPrize = lottos.get(index).compare(winnigLotto, bonusNum);
-
-            putInMapIfEmpty(winningList, lottoPrize);
 
             increasePrizeCount(winningList, lottoPrize);
         }
         return winningList;
     }
 
+    private void initWinningMap(Map<LottoPrize, Integer> winningList) {
+        LottoPrize[] valuse = LottoPrize.values();
+        for (int i = 0; i < valuse.length; i++) {
+            winningList.put(valuse[i], 0);
+        }
+    }
+
     private void increasePrizeCount(Map<LottoPrize, Integer> winningList, LottoPrize lottoPrize) {
         int prizeCount = winningList.get(lottoPrize);
         winningList.put(lottoPrize, prizeCount + 1);
-    }
-
-    private void putInMapIfEmpty(Map<LottoPrize, Integer> winningList, LottoPrize lottoPrize) {
-        if (winningList.get(lottoPrize) == null)
-            winningList.put(lottoPrize, 0);
     }
 
 }
