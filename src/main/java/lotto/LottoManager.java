@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,8 @@ public class LottoManager {
     }
 
     public List<Integer> GenerateRandomNumbers() {
-        return List.of(1,2,3,4,5,6);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return numbers;
     }
 
     public int getMoney() {
