@@ -27,6 +27,6 @@ public class LottoStarter {
 
         Map<String, Integer> statistic = yieldCalculator.extractStatistic(matchResult);
         yieldCalculator.showStatistic(statistic);
-        yieldCalculator.getYield(statistic, purchaseNumber);
+        yieldCalculator.showYield(statistic, purchaseNumber);
     }
 }
