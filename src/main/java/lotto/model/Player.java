@@ -7,6 +7,7 @@ import lotto.domain.Profit;
 import lotto.domain.Winning;
 import lotto.service.ChangeLottoPriceService;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,7 +17,9 @@ public class Player {
     private Winning playerWinning;
 
     public Player(){
-
+        playerLotto = new ArrayList<>();
+        playerProfit = new Profit();
+        playerWinning = new Winning();
     }
 
     public void buyTickets(long payment){
