@@ -6,8 +6,10 @@ import java.util.function.Predicate;
 
 public class WinningStatisticsCalculator {
     private final HashMap<WinningHistory, Integer> winningHistory;
+    private final double rateOfReturn;
+    private double totalPrizeMoney;
 
-    public WinningStatisticsCalculator(List<Lotto> lottos, Lotto winningNumbers, int bonusNumber) {
+    public WinningStatisticsCalculator() {
         this.winningHistory = new HashMap<>() {{
             put(WinningHistory.FIRST_PRIZE, 0);
             put(WinningHistory.SECOND_PRIZE, 0);
@@ -17,14 +19,19 @@ public class WinningStatisticsCalculator {
             put(WinningHistory.BLANK, 0);
         }};
 
-        calculateNumberOfWins(lottos, winningNumbers, bonusNumber);
+        rateOfReturn = 0;
+        totalPrizeMoney = 0;
     }
 
     public HashMap<WinningHistory, Integer> getWinningHistory() {
         return winningHistory;
     }
 
-    private void calculateNumberOfWins(List<Lotto> lottos, Lotto winningNumbers, int bonusNumber) {
+    public double getRateOfReturn() {
+        return rateOfReturn;
+    }
+
+    public void calculateNumberOfWins(List<Lotto> lottos, Lotto winningNumbers, int bonusNumber) {
         for (Lotto lotto : lottos) {
             increaseWinningHistoryType(getMatchNumbers(lotto, winningNumbers), isMatchBonusNumber(lotto, bonusNumber));
         }
@@ -33,6 +40,11 @@ public class WinningStatisticsCalculator {
     private void increaseWinningHistoryType(int matchNumber, boolean matchBonus) {
         WinningHistory prizeType = WinningHistory.getWinningHistoryType(matchNumber, matchBonus);
         winningHistory.put(prizeType, winningHistory.get(prizeType) + 1);
+        plusTotalPrizeMoney(prizeType.getPrizeMoney());
+    }
+
+    private void plusTotalPrizeMoney(int prizeMoney) {
+        totalPrizeMoney += prizeMoney;
     }
 
     private int getMatchNumbers(Lotto lotto, Lotto winningNumbers) {
@@ -43,5 +55,10 @@ public class WinningStatisticsCalculator {
 
     private boolean isMatchBonusNumber(Lotto lotto, int bonusNumber) {
         return lotto.getNumbers().contains(bonusNumber);
+    }
+
+    public double calculateRateOfReturn(int amount) {
+        totalPrizeMoney *= 1.0;
+        return (totalPrizeMoney / amount) * 100;
     }
 }
