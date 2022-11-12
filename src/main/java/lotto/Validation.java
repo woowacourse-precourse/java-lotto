@@ -14,10 +14,9 @@ public class Validation {
         isMultipleOf1000(number);
     }
 
-    private void isLottoBetween1And45(List<Integer> numbers) throws IllegalArgumentException {
+    private void isLottoBetween1And45(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number < 1 || number > 45)
-                throw new IllegalArgumentException(Notification.ERROR_MESSAGE_NUMBER_IS_NOT_BETWEEN_1_AND_45.getMessage());
+            isNumberBetween1And45(number);
         }
     }
 
