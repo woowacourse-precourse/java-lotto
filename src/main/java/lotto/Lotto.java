@@ -18,5 +18,6 @@ public class Lotto {
         checkNumber.validUserWinningNumber(numbers);
     }
 
+
     // TODO: 추가 기능 구현
 }
