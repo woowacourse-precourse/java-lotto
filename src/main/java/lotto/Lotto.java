@@ -36,6 +36,21 @@ public class Lotto {
         return false;
     }
 
+    public RewardEnum match(WinningNumber winningNumber) {
+        int matches = 0;
+        boolean hasBonus = false;
+        for (int number : numbers) {
+            if(winningNumber.hasNumber(number)){
+                matches += 1;
+            }
+            if(winningNumber.hasBonus(number)){
+                hasBonus = true;
+            }
+        }
+        return RewardEnum.getFromResult(matches, hasBonus);
+    }
+
+
     @Override
     public String toString() {
         return numbers.toString();
