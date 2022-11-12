@@ -21,7 +21,7 @@ public class Application {
         List<Integer> winningNumbers = numberGenerator.createWinningNumbers(lottoManager.inputWinningNumbers());
         WinningNumbers w = new WinningNumbers(winningNumbers);
         // 보너스 번호 입력
-        final int bonusNumber = numberGenerator.createBonusNumbers(lottoManager.inputBonusNumber());
+        final int bonusNumber = numberGenerator.createBonusNumbers(winningNumbers, lottoManager.inputBonusNumber());
 
     }
 }
