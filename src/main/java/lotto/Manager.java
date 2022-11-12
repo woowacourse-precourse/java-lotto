@@ -53,4 +53,23 @@ public class Manager {
     public List<List<Integer>> getPurchasedLottos() {
         return purchasedLottos;
     }
+
+    private void showPurchasedLottos() {
+        System.out.println(purchasedLottos.size() + "개를 구매했습니다.");
+        for (List<Integer> lotto : purchasedLottos) {
+            System.out.println(lotto);
+        }
+    }
+
+    public void start() {
+        int lottoCount;
+        try {
+            lottoCount = purchase();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+        setPurchasedLottos(lottoCount);
+        showPurchasedLottos();
+    }
 }
