@@ -20,4 +20,18 @@ class CashierImplTest {
 
     }
 
+    @Test
+    void calculateRateOfReturnTest() {
+        //given
+        int paymentAmount = 17000;
+        int totalPrizeMoney = 5000;
+
+        //when
+        double rateOfReturn = cashier.calculateRateOfReturn(paymentAmount, totalPrizeMoney);
+
+        //then
+        Assertions.assertThat(rateOfReturn).isEqualTo(29.4);
+
+    }
+
 }
