@@ -21,13 +21,14 @@ public class Lotto {
         }
     }
 
-    public boolean validateNumbersAreInRange() {
+    private void validateNumbersAreInRange() {
         for (Integer number : numbers) {
             if (number < 1 || number > 45) {
-                return false;
+                setError(ErrorMessage.RANGE);
+                throw new IllegalArgumentException();
             }
         }
-        return true;
+
     }
 
     public boolean validateNumbersAreDuplicate() {
