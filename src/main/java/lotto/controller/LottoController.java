@@ -19,25 +19,33 @@ public class LottoController {
     private List<Integer> winningNumber = new ArrayList<>();
     private List<Integer> result = new ArrayList<>();
 
+    private InputView inputView;
+    private OutputView outputView;
+
+    public LottoController(InputView inputView, OutputView outputView) {
+        this.inputView = inputView;
+        this.outputView = outputView;
+    }
+
     public void playLottoProgram() {
         try {
             savePurchaseAmount();
             saveLottoIssueCount();
             issueLottoSeveralTimes(lottoIssueCount, myLotto);
-            OutputView.printLottoPurchaseInformation(myLotto, lottoIssueCount);
+            outputView.printLottoPurchaseInformation(myLotto, lottoIssueCount);
             saveWinningNumber();
             saveBonusNumber();
             setResult(myLotto, winningNumber, bonusNumber);
             Calculator calculator = new Calculator();
             calculator.calculateTotalEarnings(result);
             calculator.calculateEarningsRate(purchaseAmount);
-            OutputView.printLottoResult(result, calculator.getEarningsRate());
+            outputView.printLottoResult(result, calculator.getEarningsRate());
         } catch (IllegalArgumentException exception) {
         }
     }
 
     private void savePurchaseAmount() {
-        this.purchaseAmount = InputView.enterPurchaseAmount();
+        this.purchaseAmount = inputView.enterPurchaseAmount();
     }
 
     public int getPurchaseAmount() {
@@ -57,11 +65,11 @@ public class LottoController {
     }
 
     private void saveWinningNumber() {
-        this.winningNumber = InputView.enterWinningNumber();
+        this.winningNumber = inputView.enterWinningNumber();
     }
 
     private void saveBonusNumber() {
-        this.bonusNumber = InputView.enterBonusNumber(winningNumber);
+        this.bonusNumber = inputView.enterBonusNumber(winningNumber);
     }
 
     private void setResult(List<Lotto> myLotto, List<Integer> winningNumber, int bonusNumber) {

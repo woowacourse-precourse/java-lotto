@@ -1,6 +1,9 @@
 package lotto.domain;
 
 import lotto.controller.LottoController;
+import lotto.view.InputView;
+import lotto.view.OutputView;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -16,12 +19,22 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class LottoControllerTest {
+    InputView inputView;
+    OutputView outputView;
+    LottoController lottoManager;
+
+    @BeforeEach
+    void prepareTest() {
+        inputView = new InputView();
+        outputView = new OutputView();
+        lottoManager = new LottoController(inputView, outputView);
+    }
+
     @DisplayName("발행 가능한 수만큼 로또를 발행하는 기능 테스트")
     @ParameterizedTest
     @ValueSource(ints = {3, 4, 5, 7, 8, 10})
     void issueLottoSeveralTimesTest(int lottoIssueCount) throws Exception {
         // Reflection Setting
-        LottoController lottoManager = new LottoController();
         Method privateMethod = lottoManager.getClass().getDeclaredMethod("issueLottoSeveralTimes", int.class, List.class);
         privateMethod.setAccessible(true);
 
@@ -39,7 +52,6 @@ public class LottoControllerTest {
     @MethodSource("compareMyLottoWithWinningNumberSource")
     void compareMyLottoWithWinningNumberTest(int resultOfSameCount, List<Integer> myLotto) throws Exception {
         // Reflection Setting
-        LottoController lottoManager = new LottoController();
         Method privateMethod = lottoManager.getClass().getDeclaredMethod("compareMyLottoWithWinningNumber", List.class, List.class);
         privateMethod.setAccessible(true);
 
@@ -69,7 +81,6 @@ public class LottoControllerTest {
     @CsvSource(value = {"0:0", "1:0", "2:0", "3:5", "4:4", "5:3", "6:1"}, delimiter = ':')
     void getRankTest(int sameNumberCount, int rank) throws Exception {
         // Reflection Setting
-        LottoController lottoManager = new LottoController();
         Method privateMethod = lottoManager.getClass().getDeclaredMethod("getRank", int.class);
         privateMethod.setAccessible(true);
 
@@ -80,7 +91,6 @@ public class LottoControllerTest {
     @CsvSource(value = {"5:true", "7:false", "35:true", "43:false"}, delimiter = ':')
     void checkBonusNumberTest(int bonusNumber, boolean result) throws Exception {
         // Reflection Setting
-        LottoController lottoManager = new LottoController();
         Method privateMethod = lottoManager.getClass().getDeclaredMethod("checkBonusNumber", List.class, int.class);
         privateMethod.setAccessible(true);
 
