@@ -2,7 +2,6 @@ package lotto.service;
 
 import lotto.model.Lotto;
 import lotto.model.Prize;
-import lotto.model.Ticket;
 import lotto.model.WinningLotto;
 
 import java.util.HashMap;
@@ -10,8 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoResultService {
-    public static Map<Prize, Integer> getStatistics(Ticket ticket, WinningLotto winningNumbers) {
-        List<Lotto> lotteries = ticket.getLotteries();
+    public static Map<Prize, Integer> getStatistics(List<Lotto> lotteries, WinningLotto winningNumbers) {
         Map<Prize, Integer> statistics = new HashMap<>();
         init(statistics);
 
