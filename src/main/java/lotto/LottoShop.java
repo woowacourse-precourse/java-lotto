@@ -21,6 +21,7 @@ public class LottoShop {
             lottoList.add(generateLotto());
             --numberOfLotto;
         }
+        lottoConsole.outputLottoList(lottoList);
         return lottoList;
     }
 
@@ -45,9 +46,9 @@ public class LottoShop {
         return money;
     }
 
-    private int changeStringToInteger(String s1){
+    private int changeStringToInteger(String str1){
         try {
-            int int1 = Integer.parseInt(s1);
+            int int1 = Integer.parseInt(str1);
             return int1;
         } catch(NumberFormatException exception){
             throw new NumberFormatException("[ERROR] 입력된 값이 숫자가 아닙니다.");
