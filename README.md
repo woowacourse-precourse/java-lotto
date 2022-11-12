@@ -102,10 +102,10 @@ BUILD SUCCESSFUL in 0s
         - [x] `private void validatePurchaseMoney(int purchaseMoney)`
         - [x] `private int getIncomeMoney(List<Lotto> lottoList, WinLotto winLotto)`
         - [x] `private HashMap<LottoRank, Integer> getWinResult(List<Lotto> lottoList, WinLotto, winLotto)`
-        - [ ] `public float getIncomePercent()`
+        - [x] `public float getIncomePercent()`
         - [ ] `public HashMap<LottoRank, Integer> getWinResult()`
 - [ ] **CLASS 6.** `UserInterface`
-    - [ ] **Class Methods:**
+    - **Class Methods:**
         - [ ] `public static void printPurchaseMoneyMessage()`
         - [ ] `public static int inputPurchaseMoney`
         - [ ] `public static void printWinNumbersMessage()`

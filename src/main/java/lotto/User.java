@@ -17,6 +17,11 @@ public class User {
         this.winResult = getWinResult(lottoList, winLotto);
     }
 
+    public float getIncomePercent() {
+        float incomePercent = (incomeMoney * 100) / (float) purchaseMoney;
+        return Math.round(incomePercent * 100) / 100f;
+    }
+
     private void validatePurchaseMoney(int purchaseMoney) {
         if (purchaseMoney < 0) {
             System.out.println("[ERROR] 로또 구입 금액은 0보다 크거나 같아야 합니다.");
