@@ -1,14 +1,23 @@
 package lotto;
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
-        int purchasedLottoNumber;
+        int Number_Of_Purchases;
+        List<List<Integer>> LottoNumbers;
 
-        purchasedLottoNumber = purchaseLotto();
+        Number_Of_Purchases = purchaseLotto();
         System.out.println();
-        System.out.println(purchasedLottoNumber+"개를 구매했습니다.");
+        System.out.println(Number_Of_Purchases+"개를 구매했습니다.");
+
+        LottoNumbers = createLottoNumber(Number_Of_Purchases);
+
+        printLottoNumber(LottoNumbers);
 
     }
     public static int purchaseLotto(){
@@ -26,4 +35,20 @@ public class Application {
         }
         return cost/1000;
     }
+
+    public static List<List<Integer>> createLottoNumber(int Number_Of_Purchases){
+        List<List<Integer>> LottoNumbers = new ArrayList<>();
+        while(Number_Of_Purchases>0){
+            LottoNumbers.add(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            Number_Of_Purchases--;
+        }
+        return LottoNumbers;
+    }
+
+    public static void printLottoNumber(List<List<Integer>> LottoNumbers){
+        for (List<Integer> lottoNumber : LottoNumbers) {
+            System.out.println(Arrays.toString(lottoNumber.stream().sorted().toArray()));
+        }
+    }
+
 }
