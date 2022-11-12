@@ -40,3 +40,9 @@ public class PlayLotto extends Input {
         out.buy_lottery();
         this.user.pay_Money();
     }
+    public void print_buy_lottery(){
+        out.print_buy_lottery(user.getLottery_count());
+    }
+    public void print_lottery_nums(){
+        out.print_lottery(user);
+    }
