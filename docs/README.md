@@ -20,8 +20,8 @@
   - [x] 로또 마킹된곳 출력 기능 구현 - @Override toString() 
   - [x] 로또 마킹 정보 반환 기능 구현 - getLottoInfo()
 
--[ ] 로또 기계 - Class Lottomachine
-  - [ ] 랜덤 마킹 구현
+-[x] 로또 기계 - Class Lottomachine
+  - [x] 랜덤 마킹 구현
 
 -[ ] 로또 통계 - Class Statistics
   - [ ] 사용자가 구매한 로또의 당첨 여부 구현
