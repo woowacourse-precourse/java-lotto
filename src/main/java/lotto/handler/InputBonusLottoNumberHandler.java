@@ -6,7 +6,7 @@ public class InputBonusLottoNumberHandler{
     private static final int BONUS_COUNT = 1;
     InputMoneyHandler inputMoneyHandler = new InputMoneyHandler();
     public void checkAllNumbersException(String bonusNumber, List<Integer> sixLottoNumbers) {
-        if(sixLottoNumbers.contains(bonusNumber)){
+        if(sixLottoNumbers.contains(Integer.parseInt(bonusNumber))) {
             throw new IllegalArgumentException(inputMoneyHandler.ERROR_ORDER);
         }
     }
