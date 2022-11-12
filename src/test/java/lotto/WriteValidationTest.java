@@ -8,9 +8,9 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class MemberWriteServiceTest {
+class WriteValidationTest {
 
-    private MemberWriteService service = new MemberWriteService();
+    private WriteValidation validation = new WriteValidation();
 
     @Test
     @DisplayName("유효한 금액 데이터를 입력하여 테스트 성공")
@@ -20,7 +20,7 @@ class MemberWriteServiceTest {
         int expectedPay = 8000;
 
         // when
-        int pay = service.writePay(writePay);
+        int pay = validation.writePay(writePay);
 
         // then
         assertThat(pay).isEqualTo(expectedPay);
@@ -33,7 +33,7 @@ class MemberWriteServiceTest {
         String writePay = "8000원";
 
         // when && then
-        assertThatThrownBy(() -> service.writePay(writePay))
+        assertThatThrownBy(() -> validation.writePay(writePay))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("This Lotto Number is Exception !!");
     }
@@ -49,7 +49,7 @@ class MemberWriteServiceTest {
         int expectedBonusNumber = 7;
 
         // when
-        WinningLottoNumber winningLottoNumber = service.writeWinningLottoNumbers(writeLottoNumber, writeBonusNumber);
+        WinningLottoNumber winningLottoNumber = validation.writeWinningLottoNumbers(writeLottoNumber, writeBonusNumber);
 
         // then
         assertThat(expectedLottoNumber).isEqualTo(winningLottoNumber.getWinningNumbers());
@@ -64,7 +64,7 @@ class MemberWriteServiceTest {
         String writeBonusNumber = "7";
 
         // when && then
-        assertThatThrownBy(() -> service.writeWinningLottoNumbers(writeLottoNumber, writeBonusNumber))
+        assertThatThrownBy(() -> validation.writeWinningLottoNumbers(writeLottoNumber, writeBonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("This Lotto Number is Duplicated Exception !!");
     }
@@ -77,7 +77,7 @@ class MemberWriteServiceTest {
         String writeBonusNumber = "7,1";
 
         // when && then
-        assertThatThrownBy(() -> service.writeWinningLottoNumbers(writeLottoNumber, writeBonusNumber))
+        assertThatThrownBy(() -> validation.writeWinningLottoNumbers(writeLottoNumber, writeBonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("This Lotto Number is Exception !!");
     }
@@ -90,7 +90,7 @@ class MemberWriteServiceTest {
         String writeBonusNumber = "46";
 
         // when && then
-        assertThatThrownBy(() -> service.writeWinningLottoNumbers(writeLottoNumber, writeBonusNumber))
+        assertThatThrownBy(() -> validation.writeWinningLottoNumbers(writeLottoNumber, writeBonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("This Lotto Number is Exception !!");
     }

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class LottoShop {
 
-    private final MemberWriteService memberWriteService = new MemberWriteService();
+    private final WriteValidation memberWriteService = new WriteValidation();
 
     public List<Lotto> createLottoForPayment(String pay) {
         int payMoney = memberWriteService.writePay(pay);

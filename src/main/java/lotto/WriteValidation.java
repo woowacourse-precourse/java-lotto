@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MemberWriteService {
+public class WriteValidation {
 
     // 금액 입력 기능
     public int writePay(String writePay) {
@@ -25,6 +25,10 @@ public class MemberWriteService {
 
     // 당첨 로또 입력 기능
     public WinningLottoNumber writeWinningLottoNumbers(String writeLottoNumber, String writeBonusNumber) {
+        if (writeLottoNumber.chars().anyMatch(value -> value == ' ') || writeBonusNumber.chars().anyMatch(value -> value == ' ')) {
+            throw new IllegalArgumentException();
+        }
+
         List<Integer> winningNumbers = Arrays.stream(writeLottoNumber.split(","))
                 .map(Integer::valueOf)
                 .collect(Collectors.toList());
