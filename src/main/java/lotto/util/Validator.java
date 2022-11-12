@@ -1,8 +1,10 @@
 package lotto.util;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.Pattern;
 
 public class Validator {
     private static final int MIN_BUY_UNIT = 1_000;
@@ -15,6 +17,9 @@ public class Validator {
     private static final String ERROR_SIZE = String.format("[ERROR] 당첨 번호는 %d개 입니다.", LOTTO_SIZE);
     private static final String ERROR_DUPLICATED = String.format("[ERROR] 당첨 번호는 %d개 입니다.", LOTTO_SIZE);
     private static final String ERROR_BONUS_DUPLICATED = "당첨 번호와 다른 값을 입력하세요.";
+    private static final String ERROR_NOT_INT = "[ERROR] 숫자만 입력 가능합니다.";
+    private static final String ERROR_NUMBERS = "[ERROR] 숫자,숫자 형식을 맞춰주세요.";
+    private static final String REGEX_INT = "^[0-9]+$";
 
     public void validateUnit(Integer money) {
         if (money % MIN_BUY_UNIT != 0) {
@@ -61,6 +66,24 @@ public class Validator {
     public void validateBonusDuplication(List<Integer> numbers, int bonusNumber) {
         if (numbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(ERROR_BONUS_DUPLICATED);
+        }
+    }
+
+
+    public void validateInput(String input) {
+        if (!isDigit(input)) {
+            throw new IllegalArgumentException(ERROR_NOT_INT);
+        }
+    }
+
+    public boolean isDigit(String input) {
+        return Pattern.matches(REGEX_INT, input);
+    }
+
+
+    public void validateInputNumbers(String input) {
+        if (!Arrays.stream(input.split(",")).allMatch(this::isDigit)) {
+            throw new IllegalArgumentException(ERROR_NUMBERS);
         }
     }
 }
