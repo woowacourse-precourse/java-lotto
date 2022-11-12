@@ -17,8 +17,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        Set<Integer> lotto = new HashSet<>(numbers);
-        InputConfig.checkPrizeLotto(lotto);
+        InputConfig.checkPrizeLotto(numbers);
     }
 
     @Override

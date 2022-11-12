@@ -41,10 +41,11 @@ public class ViewController {
 
     public long inputPurchaseAmount() {
         inputView.printInputPurchaseAmount();
-        String amount = Console.readLine();
-        inputView.printNewLine();
-
+        String input = Console.readLine();
+        String amount = input.trim();
         InputConfig.checkPurchaseInput(amount);
+
+        inputView.printNewLine();
         return Long.parseLong(amount) / LOTTO_PRICE;
     }
 
@@ -62,17 +63,21 @@ public class ViewController {
     private List<Integer> inputPrizeLottoNumber() {
         inputView.printInputPrizeLottoNumber();
         String input = Console.readLine();
-        inputView.printNewLine();
 
         List<Integer> prize = inputMapper.splitBy(input, SPLIT_REGEX);
+        InputConfig.checkPrizeLotto(prize);
+
+        inputView.printNewLine();
         return prize;
     }
 
     public int inputBonusNumber() {
         inputView.printInputBonusNumber();
         String input = Console.readLine();
-        inputView.printNewLine();
+        String bonus = input.trim();
+        InputConfig.checkBonusNumber(bonus);
 
-        return Integer.parseInt(input);
+        inputView.printNewLine();
+        return Integer.parseInt(bonus);
     }
 }

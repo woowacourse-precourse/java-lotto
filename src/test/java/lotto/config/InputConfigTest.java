@@ -27,8 +27,7 @@ class InputConfigTest {
     void purchase_input_test_more_than_long_range() {
         String input = "10000000000000000000000000000";
         assertThatThrownBy(() -> InputConfig.checkPurchaseInput(input))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageStartingWith(errorStartMsg);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
