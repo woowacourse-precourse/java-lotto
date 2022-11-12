@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.*;
@@ -11,11 +12,43 @@ import static camp.nextstep.edu.missionutils.Console.*;
 public class Application {
     public static void main(String[] args) {
         System.out.println("구입금액을 입력해 주세요.");
-        int lottoNum=userInputMoney();
+        int lottoNum = userInputMoney();
 
-        List<Lotto> lottos=makeLotto(lottoNum);
+        List<Lotto> lottos = makeLotto(lottoNum);
         System.out.println("당첨 번호를 입력해 주세요.");
-        List<Integer> numbers=userInputNumbers();
+        List<Integer> numbers = userInputNumbers();
+        int ranking[] = compareUserInputLottos(lottos, numbers);
+        System.out.println("당첨 통계");
+        System.out.println("---");
+    }
+
+    private static int[] compareUserInputLottos(List<Lotto> lottos, List<Integer> numbers) {
+        int[] ranking = new int[7];
+        for (int i = 0; i < lottos.size(); i++) {
+            int cnt = 0;
+            for (int j = 0; j < numbers.size() - 1; j++) {
+                cnt += compareNumbers(lottos.get(i), numbers.get(j));
+            }
+            if (cnt == 5) {
+                cnt += checkBonussNumber(lottos.get(i), numbers.get(numbers.size() - 1));
+            }
+            ranking[cnt]++;
+        }
+        return ranking;
+    }
+
+    private static int checkBonussNumber(Lotto lotto, Integer integer) {
+        if (lotto.getNumbers().contains(integer)) {
+            return 2;
+        }
+        return 0;
+    }
+
+    private static int compareNumbers(Lotto lotto, int numbers) {
+        if (lotto.getNumbers().contains(numbers)) {
+            return 1;
+        }
+        return 0;
     }
 
     private static List<Integer> userInputNumbers() {
@@ -35,19 +68,21 @@ public class Application {
         }
         return lottos;
     }
-    private static void printLotto(List<Integer> lottonumbers){
+
+    private static void printLotto(List<Integer> lottonumbers) {
         System.out.print("[");
         for (int i = 0; i < lottonumbers.size(); i++) {
-            if(i==lottonumbers.size()-1){
-                System.out.print(lottonumbers.get(i)+"]");
+            if (i == lottonumbers.size() - 1) {
+                System.out.print(lottonumbers.get(i) + "]");
             }
-            System.out.print(lottonumbers.get(i)+", ");
+            System.out.print(lottonumbers.get(i) + ", ");
         }
     }
+
     //사용자 금액 입력
     private static int userInputMoney() {
         UserMoney userMoney = new UserMoney(Integer.parseInt(readLine()));
-        System.out.println(userMoney.getLottoNumber()+"개를 구매했습니다.");
+        System.out.println(userMoney.getLottoNumber() + "개를 구매했습니다.");
         return userMoney.getLottoNumber();
     }
 
