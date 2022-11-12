@@ -23,4 +23,16 @@ class ValidationTest {
 
     }
 
+    @DisplayName("당첨 번호 입력에 숫자와 , 이외의 값이 들어가면 에러가 발생한다,")
+    @Test
+    void createWinningNumberByOtherThanNumAndComma() {
+        // given
+        String winningNumber = "r..absdc";
+
+        // when + then
+        assertThatThrownBy(() -> Validation.validateWinningNumberContainCommaAndNum(winningNumber))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(ERROR_MESSAGE);
+    }
+
 }
