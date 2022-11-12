@@ -7,6 +7,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        checkOutOfRange(numbers);
         this.numbers = numbers;
     }
 
@@ -16,5 +17,10 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void checkOutOfRange(List<Integer> numbers) {
+        if (numbers.get(0) < 1 || numbers.get(numbers.size() - 1) > 45) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
