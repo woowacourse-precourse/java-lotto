@@ -11,7 +11,7 @@ import lotto.domain.Lotto;
 import lotto.domain.WinningLotto;
 
 public class LottoResultService {
-    public void getResult(List<Lotto> userLotto, String winningLottoInput, String bonusLottoInput) {
+    public void getResult(List<Lotto> userLotto, List<Integer> winningLottoInput, int bonusLottoInput) {
         WinningLotto winningLotto = createWinningLotto(winningLottoInput, bonusLottoInput);
         Map<LottoResultConstant, Integer> winningStatistics = initWinningStatistics();
         for (Lotto lotto : userLotto) {
@@ -21,6 +21,21 @@ public class LottoResultService {
             winningStatistics.put(lottoResultConstantFromCorrectCountAndBonusCount,
                     winningStatistics.get(lottoResultConstantFromCorrectCountAndBonusCount) + 1);
         }
+    }
+
+    private WinningLotto createWinningLotto(List<Integer> winningLottoResult, int bonusLottoResult) {
+        return new WinningLotto(winningLottoResult, bonusLottoResult);
+    }
+
+    private Map<LottoResultConstant, Integer> initWinningStatistics() {
+        Map<LottoResultConstant, Integer> winningStatistics = new HashMap<>();
+        winningStatistics.put(LottoResultConstant.EMPTY, 0);
+        winningStatistics.put(LottoResultConstant.CORRECT_THREE, 0);
+        winningStatistics.put(LottoResultConstant.CORRECT_FOUR, 0);
+        winningStatistics.put(LottoResultConstant.CORRECT_FIVE, 0);
+        winningStatistics.put(LottoResultConstant.CORRECT_FIVE_CORRECT_BONUS, 0);
+        winningStatistics.put(LottoResultConstant.CORRECT_SIX, 0);
+        return winningStatistics;
     }
 
     private LottoResultConstant getLottoResultConstantFromCorrectCountAndBonusCount(int[] correctCountAndBonusCount) {
@@ -37,34 +52,6 @@ public class LottoResultService {
             return LottoResultConstant.CORRECT_SIX;
         }
         return LottoResultConstant.EMPTY;
-    }
-
-    private WinningLotto createWinningLotto(String winningLotto, String bonusLotto) {
-        List<Integer> winningLottoResult = getWinningLotto(winningLotto);
-        int bonusLottoResult = Integer.parseInt(bonusLotto);
-        return getWinningLotto(winningLottoResult, bonusLottoResult);
-    }
-
-    private List<Integer> getWinningLotto(String winningLotto) {
-        String[] userWinningLottoInput = winningLotto.split(",");
-        return Arrays.stream(userWinningLottoInput)
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-    }
-
-    private WinningLotto getWinningLotto(List<Integer> winningLottoResult, int bonusLottoResult) {
-        return new WinningLotto(winningLottoResult, bonusLottoResult);
-    }
-
-    private Map<LottoResultConstant, Integer> initWinningStatistics() {
-        Map<LottoResultConstant, Integer> winningStatistics = new HashMap<>();
-        winningStatistics.put(LottoResultConstant.EMPTY, 0);
-        winningStatistics.put(LottoResultConstant.CORRECT_THREE, 0);
-        winningStatistics.put(LottoResultConstant.CORRECT_FOUR, 0);
-        winningStatistics.put(LottoResultConstant.CORRECT_FIVE, 0);
-        winningStatistics.put(LottoResultConstant.CORRECT_FIVE_CORRECT_BONUS, 0);
-        winningStatistics.put(LottoResultConstant.CORRECT_SIX, 0);
-        return winningStatistics;
     }
 
 

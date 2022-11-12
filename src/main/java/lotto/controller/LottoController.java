@@ -33,7 +33,7 @@ public class LottoController {
 
         String bonusLotto = getBonusLottoWithValidation(winningLotto);
 
-        lottoResultService.getResult(userLotto, winningLotto, bonusLotto);
+        lottoResultService.getResult(userLotto, getWinningLotto(winningLotto), getBonusLotto(bonusLotto));
     }
 
     private String getWinningLottoWithValidation() {
@@ -138,6 +138,17 @@ public class LottoController {
                 .collect(Collectors.toList());
         userLottoView.setPrintElement(userLottoResult);
         userLottoView.show();
+    }
+
+    private List<Integer> getWinningLotto(String winningLotto) {
+        String[] userWinningLottoInput = winningLotto.split(",");
+        return Arrays.stream(userWinningLottoInput)
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
+
+    private int getBonusLotto(String bonusLotto) {
+        return Integer.parseInt(bonusLotto);
     }
 
 }
