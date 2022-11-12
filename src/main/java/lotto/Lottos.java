@@ -11,12 +11,22 @@ public class Lottos {
         this.lottos = lottos;
     }
 
-    public List<Integer> result(BonusLotto bonusLotto) {
-        List<Integer> counts = new ArrayList<>();
+    public List<LottoOperator> result(BonusLotto bonusLotto) {
+        List<LottoOperator> winningRanks = new ArrayList<>();
         for (Lotto lotto : lottos) {
-            counts.add(bonusLotto.match(lotto));
+            int count = bonusLotto.match(lotto);
+            boolean bonus = checkBonus(bonusLotto, lotto, count);
+            winningRanks.add(LottoOperator.find(count, bonus));
         }
-        return counts;
+        return winningRanks;
+    }
+
+    private boolean checkBonus(BonusLotto bonusLotto, Lotto lotto, int count) {
+        boolean bonus = false;
+        if (count == 5) {
+            bonus = bonusLotto.checkBonus(lotto);
+        }
+        return bonus;
     }
 
     private void checkSize(List<Lotto> lottos) {

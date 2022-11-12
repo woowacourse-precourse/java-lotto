@@ -32,10 +32,9 @@ public class LottoGame {
     }
 
     private Map<LottoOperator, Integer> findWinningResult(Lottos lottos, BonusLotto bonusLotto) {
-        List<Integer> matchCount = lottos.result(bonusLotto);
+        List<LottoOperator> winningRanks = lottos.result(bonusLotto);
         Map<LottoOperator, Integer> winningResult = new HashMap<>();
-        for (Integer count : matchCount) {
-            LottoOperator rank = LottoOperator.find(count);
+        for (LottoOperator rank : winningRanks) {
             winningResult.put(rank, winningResult.getOrDefault(rank, 0) + 1);
         }
         return winningResult;
