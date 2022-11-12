@@ -10,7 +10,7 @@ public class Calculator {
             totalReward += rank.getTotalReward();
         }
 
-        double yield = totalReward / Convertor.getAmount(quantity);
-        return (Math.round(yield * 100)/100.0);
+        double yield = totalReward / (double) Convertor.getAmount(quantity);
+        return (Math.round(yield * 10000)/100.0);
     }
 }
