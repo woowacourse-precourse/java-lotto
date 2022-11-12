@@ -38,7 +38,7 @@ public class LottoApplication {
     }
 
     private int getPurchase() {
-        String purchaseInput = InputService.readPurchaseAmount();
+        String purchaseInput = InputService.readPurchase();
         return numericConverter.convert(purchaseInput);
     }
 
