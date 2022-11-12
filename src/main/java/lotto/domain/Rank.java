@@ -4,21 +4,19 @@ import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public enum Rank {
-    FIRST(6, 2_000_000_000,0),
-    SECOND(5, 30_000_000,0),
-    THIRD(5, 1_500_000,0),
-    FOURTH(4, 50_000,0),
-    FIFTH(3, 5_000,0),
-    NONE(0, 0,0);
+    FIRST(6, 2_000_000_000),
+    SECOND(5, 30_000_000),
+    THIRD(5, 1_500_000),
+    FOURTH(4, 50_000),
+    FIFTH(3, 5_000),
+    NONE(0, 0);
 
     private final int matchCount;
     private final int prize;
-    protected int count;
 
-    Rank(int matchCount, int prize, int count) {
+    Rank(int matchCount, int prize) {
         this.matchCount = matchCount;
         this.prize = prize;
-        this.count = count;
     }
 
 
@@ -44,9 +42,5 @@ public enum Rank {
 
     public int getPrize() {
         return prize;
-    }
-
-    public int getCount() {
-        return count;
     }
 }
