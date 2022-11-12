@@ -101,7 +101,7 @@ BUILD SUCCESSFUL in 0s
         - [ ] `public User(purchaseMoney, List<Lotto> lottoList, WinLotto winLotto)`
         - [x] `private void validatePurchaseMoney(int purchaseMoney)`
         - [x] `private int getIncomeMoney(List<Lotto> lottoList, WinLotto winLotto)`
-        - [ ] `private HashMap<LottoRank, Integer> getWinResult(List<Lotto> lottoList, WinLotto, winLotto)`
+        - [x] `private HashMap<LottoRank, Integer> getWinResult(List<Lotto> lottoList, WinLotto, winLotto)`
         - [ ] `public float getIncomePercent()`
         - [ ] `public HashMap<LottoRank, Integer> getWinResult()`
 - [ ] **CLASS 6.** `UserInterface`

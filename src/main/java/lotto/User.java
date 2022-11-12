@@ -7,13 +7,14 @@ public class User {
     private final int purchaseMoney;
     private final int incomeMoney;
     private final List<Lotto> lottoList;
-    private HashMap<LottoRank, Integer> winResult;
+    private final HashMap<LottoRank, Integer> winResult;
 
     public User(int purchaseMoney, List<Lotto> lottoList, WinLotto winLotto) {
         validatePurchaseMoney(purchaseMoney);
         this.purchaseMoney = purchaseMoney;
-        this.lottoList = lottoList;
         this.incomeMoney = getIncomeMoney(lottoList, winLotto);
+        this.lottoList = lottoList;
+        this.winResult = getWinResult(lottoList, winLotto);
     }
 
     private void validatePurchaseMoney(int purchaseMoney) {
@@ -34,5 +35,14 @@ public class User {
             incomeMoney += rank.getWinPrice();
         }
         return incomeMoney;
+    }
+
+    private HashMap<LottoRank, Integer> getWinResult(List<Lotto> lottoList, WinLotto winLotto) {
+        HashMap<LottoRank, Integer> winResult = new HashMap<>();
+        for (Lotto lotto : lottoList) {
+            LottoRank rank = LottoDraw.getLottoRank(lotto, winLotto);
+            winResult.merge(rank, 1, Integer::sum);
+        }
+        return winResult;
     }
 }
