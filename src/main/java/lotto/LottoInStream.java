@@ -38,17 +38,8 @@ public class LottoInStream {
         if (line.length() != _lotto_number_max_length) {
             throw new IllegalArgumentException();
         }
-        List<Integer> numbers = new ArrayList<>();
 
-        for (int i = 0; i < line.length(); ++i) {
-            char ch = line.charAt(i);
-
-            if (!isNumber(line.charAt(i))) {
-                throw new IllegalArgumentException();
-            }
-            numbers.add(charToDigit(ch));
-        }
-        return numbers;
+        return convStrToIntList(line);
     }
 
     public static int readToGetLottoBonus() {
@@ -94,5 +85,19 @@ public class LottoInStream {
             return true;
         }
         return false;
+    }
+
+    private static List<Integer> convStrToIntList(String line) {
+        List<Integer> numbers = new ArrayList<>();
+
+        for (int i = 0; i < line.length(); ++i) {
+            char ch = line.charAt(i);
+
+            if (!isNumber(line.charAt(i))) {
+                throw new IllegalArgumentException();
+            }
+            numbers.add(charToDigit(ch));
+        }
+        return numbers;
     }
 }
