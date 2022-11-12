@@ -1,14 +1,17 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.exception.InputException;
+
+import java.util.List;
 
 public class Presenter {
-
-    public String inputWinLottoNumbers() {
-        return Console.readLine();
+    public static List<Integer> inputWinLottoNumber() {
+        String winLottoNumber = Console.readLine();
+        return InputException.validatesWinLottoNumber(winLottoNumber);
     }
 
-    public String inputBonusNumber() {
+    public static String inputBonusNumber() {
         return Console.readLine();
     }
 }

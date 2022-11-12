@@ -3,6 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
+import static lotto.constance.BasicConstance.NUMBER_LENGTH;
 import static lotto.constance.LottoConstance.*;
 
 public class Lotto {
@@ -19,7 +20,7 @@ public class Lotto {
     }
 
     private static List<Integer> createRandomNumbers() {
-        return Randoms.pickUniqueNumbersInRange(START_RANDOM_NUMBER, END_RANDOM_NUMBER, REPEATABLE);
+        return Randoms.pickUniqueNumbersInRange(START_RANDOM_NUMBER, END_RANDOM_NUMBER, NUMBER_LENGTH);
     }
 
     public List<Integer> getNumbers() {
