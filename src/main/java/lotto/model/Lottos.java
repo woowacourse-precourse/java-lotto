@@ -17,5 +17,7 @@ public class Lottos {
         return this.lottos.size();
     }
 
-
+    public List<Lotto> provideLottos() {
+        return this.lottos;
+    }
 }

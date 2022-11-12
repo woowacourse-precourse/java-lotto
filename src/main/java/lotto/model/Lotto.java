@@ -28,6 +28,13 @@ public class Lotto {
                 .count();
     }
 
+    public boolean contains(BonusBall bonusBall) {
+        if (this.numbers.contains(bonusBall.getValue())) {
+            return true;
+        }
+        return false;
+    }
+
     private void validate(List<Integer> numbers) {
         isValidSize(numbers);
         hasDuplicateNumber(numbers);

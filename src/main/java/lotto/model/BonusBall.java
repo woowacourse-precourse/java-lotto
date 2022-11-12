@@ -12,6 +12,10 @@ public class BonusBall {
         return new BonusBall(userInput);
     }
 
+    public int getValue() {
+        return this.value;
+    }
+
     private BonusBall(String userInput) {
         validate(userInput);
         this.value = Integer.parseInt(userInput);
