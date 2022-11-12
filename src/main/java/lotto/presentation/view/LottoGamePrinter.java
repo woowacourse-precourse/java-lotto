@@ -41,4 +41,14 @@ public class LottoGamePrinter {
         System.out.printf(writeMatch.resultMessage+System.lineSeparator(),count);
     }
 
+    public static void printProfit(double profit) {
+        String roundProfit = String.format("%.1f",profit);
+        System.out.printf(LottoGameMessage.PRINT_PROFIT,roundProfit);
+        lineBreak();
+    }
+
+    public static void lineBreak() {
+        System.out.println("");
+    }
+
 }

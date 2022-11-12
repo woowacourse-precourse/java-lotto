@@ -22,6 +22,9 @@ public class LottoGameController {
 
         List<Match> matches = LottoService.match(lottos,winNumber);
         LottoGamePrinter.printMatchResult(matches);
+
+        double profit = LottoService.calculateProfit(lottoAmount,Match.calculateTotalPrizeMonay(matches));
+        LottoGamePrinter.printProfit(profit);
     }
 
 }

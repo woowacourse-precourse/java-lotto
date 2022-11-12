@@ -27,4 +27,10 @@ public class LottoService {
                 .collect(Collectors.toList());
     }
 
+    public static double calculateProfit(int principal, long prizeMoney) {
+        return (prizeMoney * 100.0) / principal;
+    }
+
+
+
 }

@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.Arrays;
+import java.util.List;
 
 public enum Match {
     NO_MATCH(0L, 0, ""),
@@ -13,12 +14,12 @@ public enum Match {
 
     SIX_MATCH(2000000000L, 6, "6개 일치 (2,000,000,000원) - %d개");
 
-    private final long reward;
+    private final long prizeMoney;
     private final int matchCount;
     public final String resultMessage;
 
-    Match(long reward, int matchCount, String resultMessage) {
-        this.reward = reward;
+    Match(long prizeMoney, int matchCount, String resultMessage) {
+        this.prizeMoney = prizeMoney;
         this.matchCount = matchCount;
         this.resultMessage = resultMessage;
     }
@@ -33,6 +34,16 @@ public enum Match {
             return Match.FIVE_BONUS_MATCH;
         }
         return matchResult;
+    }
+
+    public static long calculateTotalPrizeMonay(List<Match> matches) {
+        return matches.stream()
+                .mapToLong(Match::getPrizeMoney)
+                .sum();
+    }
+
+    public long getPrizeMoney() {
+        return prizeMoney;
     }
 
 }
