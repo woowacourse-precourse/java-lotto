@@ -14,9 +14,11 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public boolean validateNumbersSize() {
-
-        return numbers.size() == 6;
+    private void validateNumbersSize() {
+        if (numbers.size() != 6) {
+            setError(ErrorMessage.SIZE);
+            throw new IllegalArgumentException();
+        }
     }
 
     public boolean validateNumbersAreInRange() {
