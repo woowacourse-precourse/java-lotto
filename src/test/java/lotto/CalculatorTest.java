@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.Model.Calculator;
+import lotto.Model.CalculatorModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -9,14 +9,14 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CalculatorTest {
-    private Calculator calculator;
+    private CalculatorModel calculator;
 
     @DisplayName("givPrize 메소드 테스트")
     @Nested
     class compareTest {
         @BeforeEach
         void setup() {
-            calculator = new Calculator();
+            calculator = new CalculatorModel();
         }
 
         @DisplayName("1등")
@@ -85,7 +85,7 @@ class CalculatorTest {
     class calculatorProfitTest {
         @BeforeEach
         void setup() {
-            calculator = new Calculator();
+            calculator = new CalculatorModel();
         }
 
         @Test
@@ -114,7 +114,7 @@ class CalculatorTest {
     class countPublicationLottoTest {
         @BeforeEach
         void setup() {
-            calculator = new Calculator();
+            calculator = new CalculatorModel();
         }
 
         @Test

@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.Model.Judgment;
+import lotto.Model.JudgmentModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.*;
 import java.util.List;
 
 class JudgmentTest {
-    private Judgment judgment;
+    private JudgmentModel judgment;
     private Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
     private Bonus bonus = new Bonus(7, winningLotto);
 
@@ -20,7 +20,7 @@ class JudgmentTest {
     class compareTest {
         @BeforeEach
         void setup() {
-            judgment = new Judgment();
+            judgment = new JudgmentModel();
         }
 
         @DisplayName("0개 매치")
@@ -69,7 +69,7 @@ class JudgmentTest {
     class hasBonusNumberTest {
         @BeforeEach
         void setup() {
-            judgment = new Judgment();
+            judgment = new JudgmentModel();
         }
 
         @DisplayName("매치하는 경우")

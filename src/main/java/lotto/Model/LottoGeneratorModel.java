@@ -6,7 +6,7 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 
-public class LottoGenerator {
+public class LottoGeneratorModel {
     public List<Lotto> createMyLottos(int lottoNumber) {
         List<Lotto> myLottos = new ArrayList<>();
         for (int i = 0; i < lottoNumber; i++) {

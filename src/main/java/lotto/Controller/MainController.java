@@ -4,9 +4,9 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.Bonus;
 import lotto.Cash;
 import lotto.Lotto;
-import lotto.Model.Calculator;
-import lotto.Model.Judgment;
-import lotto.Model.LottoGenerator;
+import lotto.Model.CalculatorModel;
+import lotto.Model.JudgmentModel;
+import lotto.Model.LottoGeneratorModel;
 import lotto.Prize;
 import lotto.View.OutputView;
 
@@ -43,14 +43,14 @@ public class MainController {
     private int lottoNumber;
 
     private int countLottoNumber(Cash cash) throws IllegalArgumentException {
-        Calculator calculator = new Calculator();
+        CalculatorModel calculator = new CalculatorModel();
         return calculator.countLottoNumber(cash);
     }
 
     private List<Lotto> myLottos;
 
     public void createMyLottos() {
-        LottoGenerator lottoGenerator = new LottoGenerator();
+        LottoGeneratorModel lottoGenerator = new LottoGeneratorModel();
         myLottos = lottoGenerator.createMyLottos(lottoNumber);
         OutputView outputView = new OutputView();
         outputView.printMyLottoInfo(myLottos);
@@ -94,8 +94,8 @@ public class MainController {
     HashMap<Prize, Integer> point;
 
     public void calculateWinning() {
-        Judgment judgment = new Judgment();
-        Calculator calculator = new Calculator();
+        JudgmentModel judgment = new JudgmentModel();
+        CalculatorModel calculator = new CalculatorModel();
         int total = 0;
         for (Lotto myLotto : myLottos) {
             int match = judgment.compare(winningLotto, myLotto);

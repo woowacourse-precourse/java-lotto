@@ -5,7 +5,7 @@ import lotto.Lotto;
 
 import java.util.List;
 
-public class Judgment {
+public class JudgmentModel {
     public int compare(Lotto winningLotto, Lotto myLotto) {
         int match = 0;
         List<Integer> winningNumber = winningLotto.getNumbers();

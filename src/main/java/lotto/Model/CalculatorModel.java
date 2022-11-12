@@ -3,7 +3,7 @@ package lotto.Model;
 import lotto.Cash;
 import lotto.Prize;
 
-public class Calculator {
+public class CalculatorModel {
     private final static int MIN_UNIT = 1000;
 
     public Prize givePrize(int matchNumber, boolean bonus) {
