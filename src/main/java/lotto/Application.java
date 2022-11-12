@@ -97,13 +97,14 @@ public class Application {
         System.out.println("---");
     }
 
-    public static void printGradeStats(List<Lotto> lottoList, List<Integer> winningNumberList, int bonusNumber, int cash) {
-        int first = calculateFirst(lottoList, winningNumberList);
-        int second = calculateSecond(lottoList, winningNumberList, bonusNumber);
-        int third = calculateThird(lottoList, winningNumberList, bonusNumber);
-        int forth = calculateForth(lottoList, winningNumberList);
-        int fifth = calculateFifth(lottoList, winningNumberList);
+    public static void printGradeStats(List<Lotto> lottoTickets, List<Integer> winningNumbers, int bonusNumber, int cash) {
+        int first = calculateFirst(lottoTickets, winningNumbers);
+        int second = calculateSecond(lottoTickets, winningNumbers, bonusNumber);
+        int third = calculateThird(lottoTickets, winningNumbers, bonusNumber);
+        int forth = calculateForth(lottoTickets, winningNumbers);
+        int fifth = calculateFifth(lottoTickets, winningNumbers);
         double surplusRate = calculateSurplus(first, second, third, forth, fifth, cash);
+
         System.out.println("3개 일치 (5,000원) - " + fifth + "개");
         System.out.println("4개 일치 (50,000원) - " + forth + "개");
         System.out.println("5개 일치 (1,500,000원) - " + third + "개");
