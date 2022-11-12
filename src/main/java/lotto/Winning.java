@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Winning {
-    private static List<Integer> winningResult = new ArrayList<>(List.of(0, 0, 0, 0, 0));
+    public static List<Integer> winningResult = new ArrayList<>(List.of(0, 0, 0, 0, 0));
 
     public static void checkWinning(int ticketAmount) {
         List<List<Integer>> lottos = DrawNumber.lottos;
