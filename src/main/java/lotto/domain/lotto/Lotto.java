@@ -44,4 +44,12 @@ public class Lotto {
     public boolean contains(int number) {
         return this.numbers.contains(number);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("[");
+        numbers.forEach(i -> sb.append(", ").append(i));  // [, 1, 2, 3
+        sb.append("]");
+        return sb.toString().replaceFirst(", ", "");
+    }
 }
