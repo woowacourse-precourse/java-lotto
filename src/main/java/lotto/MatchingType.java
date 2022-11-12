@@ -2,7 +2,7 @@ package lotto;
 
 import java.util.Arrays;
 
-public enum WinningType {
+public enum MatchingType {
     THREE_MATCH(3),
     FOUR_MATCH(4),
     FIVE_MATCH(5),
@@ -12,7 +12,7 @@ public enum WinningType {
 
     private final int matchCount;
 
-    WinningType(int matchCount) {
+    MatchingType(int matchCount) {
         this.matchCount = matchCount;
     }
     public int getMatchCount() {
@@ -23,10 +23,10 @@ public enum WinningType {
         return this.matchCount == FIVE_MATCH.getMatchCount();
     }
 
-    public static WinningType findByCorrectCount(int correctCount) {
-        return Arrays.stream(WinningType.values())
-                .filter(winningType ->
-                        correctCount == winningType.getMatchCount())
+    public static MatchingType findByCorrectCount(int correctCount) {
+        return Arrays.stream(MatchingType.values())
+                .filter(matchingType ->
+                        correctCount == matchingType.getMatchCount())
                 .findAny()
                 .orElse(NOT_MATCH);
     }

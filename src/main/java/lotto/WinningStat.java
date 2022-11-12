@@ -2,16 +2,16 @@ package lotto;
 
 public class WinningStat {
 
-    private final WinningType winningType;
+    private final MatchingType matchingType;
     private final int count;
 
-    public WinningStat(WinningType winningType, int count) {
-        this.winningType = winningType;
+    public WinningStat(MatchingType matchingType, int count) {
+        this.matchingType = matchingType;
         this.count = count;
     }
 
-    public WinningType getWinningType() {
-        return winningType;
+    public MatchingType getMatchingType() {
+        return matchingType;
     }
 
     public int getCount() {

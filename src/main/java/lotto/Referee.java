@@ -1,6 +1,6 @@
 package lotto;
 
-import static lotto.WinningType.FIVE_WITH_BONUS_MATCH;
+import static lotto.MatchingType.FIVE_WITH_BONUS_MATCH;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,26 +13,26 @@ public class Referee {
         judgement = new Judgement();
     }
 
-    public List<WinningType> compare(List<Lotto> lottos, List<Integer> player, int bonusNumber) {
-        List<WinningType> winningTypes = new ArrayList<>();
+    public List<MatchingType> compare(List<Lotto> lottos, List<Integer> player, int bonusNumber) {
+        List<MatchingType> matchingTypes = new ArrayList<>();
 
         for (Lotto lotto : lottos) {
             int correctCount = judgement.correctCount(lotto, player);
 
-            WinningType winningType = WinningType.findByCorrectCount(correctCount);
+            MatchingType matchingType = MatchingType.findByCorrectCount(correctCount);
 
-            if (checkBonusNumber(winningType, lotto, bonusNumber)) {
-                winningType = FIVE_WITH_BONUS_MATCH;
+            if (checkBonusNumber(matchingType, lotto, bonusNumber)) {
+                matchingType = FIVE_WITH_BONUS_MATCH;
             }
 
-            winningTypes.add(winningType);
+            matchingTypes.add(matchingType);
         }
 
-        return winningTypes;
+        return matchingTypes;
     }
 
-    public boolean checkBonusNumber(WinningType winningType, Lotto lotto, int bonusNumber) {
-        boolean fiveMatch = winningType.isFiveMatch();
+    public boolean checkBonusNumber(MatchingType matchingType, Lotto lotto, int bonusNumber) {
+        boolean fiveMatch = matchingType.isFiveMatch();
         boolean bonusNumberMatch = isBonusNumberMatch(lotto, bonusNumber);
 
         return fiveMatch && bonusNumberMatch;

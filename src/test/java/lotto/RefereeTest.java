@@ -1,6 +1,6 @@
 package lotto;
 
-import static lotto.WinningType.*;
+import static lotto.MatchingType.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
@@ -61,12 +61,12 @@ class RefereeTest {
     @Test
     void checkBonusNumber() {
         // given
-        WinningType winningType = FIVE_MATCH;
+        MatchingType matchingType = FIVE_MATCH;
         Lotto lotto = lottos.get(7);
         int bonusNumber = 45;
 
         // when
-        boolean checkBonusNumber = referee.checkBonusNumber(winningType, lotto, bonusNumber);
+        boolean checkBonusNumber = referee.checkBonusNumber(matchingType, lotto, bonusNumber);
 
         // then
         assertThat(checkBonusNumber).isTrue();
@@ -76,12 +76,12 @@ class RefereeTest {
     @Test
     void checkBonusNumberNotFiveMatch() {
         // given
-        WinningType winningType = FOUR_MATCH;
+        MatchingType matchingType = FOUR_MATCH;
         Lotto lotto = lottos.get(7);
         int bonusNumber = 45;
 
         // when
-        boolean checkBonusNumber = referee.checkBonusNumber(winningType, lotto, bonusNumber);
+        boolean checkBonusNumber = referee.checkBonusNumber(matchingType, lotto, bonusNumber);
 
         // then
         assertThat(checkBonusNumber).isFalse();
@@ -91,12 +91,12 @@ class RefereeTest {
     @Test
     void checkBonusNumberNotBonusMatch() {
         // given
-        WinningType winningType = FIVE_MATCH;
+        MatchingType matchingType = FIVE_MATCH;
         Lotto lotto = lottos.get(7);
         int bonusNumber = 44;
 
         // when
-        boolean checkBonusNumber = referee.checkBonusNumber(winningType, lotto, bonusNumber);
+        boolean checkBonusNumber = referee.checkBonusNumber(matchingType, lotto, bonusNumber);
 
         // then
         assertThat(checkBonusNumber).isFalse();
@@ -106,12 +106,12 @@ class RefereeTest {
     @Test
     void checkBonusNumberNoneMatch() {
         // given
-        WinningType winningType = FOUR_MATCH;
+        MatchingType matchingType = FOUR_MATCH;
         Lotto lotto = lottos.get(7);
         int bonusNumber = 44;
 
         // when
-        boolean checkBonusNumber = referee.checkBonusNumber(winningType, lotto, bonusNumber);
+        boolean checkBonusNumber = referee.checkBonusNumber(matchingType, lotto, bonusNumber);
 
         // then
         assertThat(checkBonusNumber).isFalse();
@@ -125,9 +125,9 @@ class RefereeTest {
         int bonusNumber = 7;
 
         // when
-        List<WinningType> compare = referee.compare(lottos, player, bonusNumber);
-        WinningType result = compare.stream()
-                .filter(winningType -> winningType == THREE_MATCH)
+        List<MatchingType> compare = referee.compare(lottos, player, bonusNumber);
+        MatchingType result = compare.stream()
+                .filter(matchingType -> matchingType == THREE_MATCH)
                 .findAny()
                 .orElseThrow();
 
@@ -143,9 +143,9 @@ class RefereeTest {
         int bonusNumber = 7;
 
         // when
-        List<WinningType> compare = referee.compare(lottos, player, bonusNumber);
-        WinningType result = compare.stream()
-                .filter(winningType -> winningType == FOUR_MATCH)
+        List<MatchingType> compare = referee.compare(lottos, player, bonusNumber);
+        MatchingType result = compare.stream()
+                .filter(matchingType -> matchingType == FOUR_MATCH)
                 .findAny()
                 .orElseThrow();
 
@@ -161,9 +161,9 @@ class RefereeTest {
         int bonusNumber = 7;
 
         // when
-        List<WinningType> compare = referee.compare(lottos, player, bonusNumber);
-        WinningType result = compare.stream()
-                .filter(winningType -> winningType == FIVE_MATCH)
+        List<MatchingType> compare = referee.compare(lottos, player, bonusNumber);
+        MatchingType result = compare.stream()
+                .filter(matchingType -> matchingType == FIVE_MATCH)
                 .findAny()
                 .orElseThrow();
 
@@ -179,9 +179,9 @@ class RefereeTest {
         int bonusNumber = 45;
 
         // when
-        List<WinningType> compare = referee.compare(lottos, player, bonusNumber);
-        WinningType result = compare.stream()
-                .filter(winningType -> winningType == FIVE_WITH_BONUS_MATCH)
+        List<MatchingType> compare = referee.compare(lottos, player, bonusNumber);
+        MatchingType result = compare.stream()
+                .filter(matchingType -> matchingType == FIVE_WITH_BONUS_MATCH)
                 .findAny()
                 .orElseThrow();
 
@@ -197,9 +197,9 @@ class RefereeTest {
         int bonusNumber = 7;
 
         // when
-        List<WinningType> compare = referee.compare(lottos, player, bonusNumber);
-        WinningType result = compare.stream()
-                .filter(winningType -> winningType == SIX_MATCH)
+        List<MatchingType> compare = referee.compare(lottos, player, bonusNumber);
+        MatchingType result = compare.stream()
+                .filter(matchingType -> matchingType == SIX_MATCH)
                 .findAny()
                 .orElseThrow();
 
@@ -215,30 +215,30 @@ class RefereeTest {
         int bonusNumber = 7;
 
         // when
-        List<WinningType> compare = referee.compare(lottos, player, bonusNumber);
+        List<MatchingType> compare = referee.compare(lottos, player, bonusNumber);
 
-        WinningType resultThreeMatch = compare.stream()
-                .filter(winningType -> winningType == THREE_MATCH)
+        MatchingType resultThreeMatch = compare.stream()
+                .filter(matchingType -> matchingType == THREE_MATCH)
                 .findAny()
                 .orElse(NOT_MATCH);
 
-        WinningType resultFourMatch = compare.stream()
-                .filter(winningType -> winningType == FOUR_MATCH)
+        MatchingType resultFourMatch = compare.stream()
+                .filter(matchingType -> matchingType == FOUR_MATCH)
                 .findAny()
                 .orElse(NOT_MATCH);
 
-        WinningType resultFiveMatch = compare.stream()
-                .filter(winningType -> winningType == FIVE_MATCH)
+        MatchingType resultFiveMatch = compare.stream()
+                .filter(matchingType -> matchingType == FIVE_MATCH)
                 .findAny()
                 .orElse(NOT_MATCH);
 
-        WinningType resultFiveMatchWithBonus = compare.stream()
-                .filter(winningType -> winningType == FIVE_WITH_BONUS_MATCH)
+        MatchingType resultFiveMatchWithBonus = compare.stream()
+                .filter(matchingType -> matchingType == FIVE_WITH_BONUS_MATCH)
                 .findAny()
                 .orElse(NOT_MATCH);
 
-        WinningType resultSixMatch = compare.stream()
-                .filter(winningType -> winningType == SIX_MATCH)
+        MatchingType resultSixMatch = compare.stream()
+                .filter(matchingType -> matchingType == SIX_MATCH)
                 .findAny()
                 .orElse(NOT_MATCH);
 
@@ -270,29 +270,29 @@ class RefereeTest {
         int bonusNumber = 7;
 
         // when
-        List<WinningType> compare = referee.compare(lottos, player, bonusNumber);
+        List<MatchingType> compare = referee.compare(lottos, player, bonusNumber);
 
-        WinningType resultThreeMatch = compare.stream()
-                .filter(winningType -> winningType == THREE_MATCH)
+        MatchingType resultThreeMatch = compare.stream()
+                .filter(matchingType -> matchingType == THREE_MATCH)
                 .findAny()
                 .orElseThrow();
 
-        WinningType resultFourMatch = compare.stream()
-                .filter(winningType -> winningType == FOUR_MATCH)
+        MatchingType resultFourMatch = compare.stream()
+                .filter(matchingType -> matchingType == FOUR_MATCH)
                 .findAny()
                 .orElseThrow();
 
-        WinningType resultFiveMatch = compare.stream()
-                .filter(winningType -> winningType == FIVE_MATCH)
+        MatchingType resultFiveMatch = compare.stream()
+                .filter(matchingType -> matchingType == FIVE_MATCH)
                 .findAny()
                 .orElseThrow();
 
-        WinningType resultFiveMatchWithBonus = compare.stream()
-                .filter(winningType -> winningType == FIVE_WITH_BONUS_MATCH)
+        MatchingType resultFiveMatchWithBonus = compare.stream()
+                .filter(matchingType -> matchingType == FIVE_WITH_BONUS_MATCH)
                 .findAny()
                 .orElseThrow();
 
-        WinningType resultSixMatch = compare.stream()
+        MatchingType resultSixMatch = compare.stream()
                 .filter(winningStat -> winningStat == SIX_MATCH)
                 .findAny()
                 .orElseThrow();
