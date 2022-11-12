@@ -69,17 +69,35 @@ public class Application {
 
         num = Console.readLine();
         nums = num.split(",");
+        winning_num = check_winning(nums);
 
         return winning_num;
+    }
+
+    static int read_bonus(){
+        String input_num;
+        int bonus;
+        System.out.println("보너스 번호를 입력해 주세요.");
+        input_num = Console.readLine();
+        try {
+            bonus = Integer.parseInt(input_num);
+        } catch (NumberFormatException ex) {
+            throw new IllegalArgumentException();
+        }
+        return bonus;
     }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         int money;
         int chance;
         List<List<Integer>> lotto_nums;
+        List<Integer> winning_num;
+        int bonus;
+
         money = check_money();
         chance = money2chance(money);
         lotto_nums = buy_lotto(chance);
-        List<Integer> winning_num;
+        winning_num = read_winning();
+        bonus = read_bonus();
     }
 }
