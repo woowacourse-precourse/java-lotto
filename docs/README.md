@@ -16,6 +16,7 @@
 - #### **환경 세팅**
     - ```LOTTO_MIN_NUMBER``` : 로또 숫자 범위 최소
     - ```LOTTO_MAX_NUMBER``` : 로또 숫자 범위 최대
+    - ```LOTTO_PICK_NUMBER``` : 뽑는 로또 개수
     - ```LOTTO_PRICE_PER_ONE``` : 로또 한장 당 가격
   
 ### **WinningEnum 클래스**
@@ -30,6 +31,17 @@
       - ```validateInputMoneyIsAllNumber``` : 2의 63승 이하 숫자인지 검증
       - ```validateInputMoneyIsRightUnit``` : 단위에 맞게 입력했는지 검증
     - ```boughtLottoCount``` : 구매한 로또 개수 반환
+
+### **PickLotto 클래스**
+- #### **로또 번호 및 보너스 번호 입력**
+    - ```lottoNumbers``` : 당첨 로또 번호 반환
+    - ```inputLottoNumber``` : 당첨 로또 번호 입력
+    - ```validateInputLottoNumber``` : 입력한 당첨 번호 검증 및 예외처리
+      - ```validateInputLottoNumberIsTotal``` : N개의 로또 번호 입력했는지 검증
+      - ```validateInputLottoNumberIsRightSeparator``` : 쉼표를 기준으로 숫자를 입력했는지 검증 
+      - ```validateInputLottoNumberIsBetween``` : 로또 추첨 번호 사이의 숫자를 입력했는지 검증
+    
+
 
 ### **Output 클래스**
 - #### **출력 기능**
