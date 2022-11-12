@@ -9,6 +9,7 @@ import java.util.List;
 public class Purchase {
 
     public static List<Lotto> lotto() {
+        Print.purchaseMessage();
         String userInput = Console.readLine();
 
         int numberOfLotto = getNumberOfLotto(userInput);
