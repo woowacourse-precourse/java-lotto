@@ -115,6 +115,9 @@ BUILD SUCCESSFUL in 0s
         - [x] `public static void printLottoList(List<Lotto> lottoList)`
         - [x] `public static void printWinResult(HashMap<LottoRank, Integer> winResult)`
         - [x] `public static void printIncomePercent(int incomePercent)`
+- [ ] **CLASS 7.** `LottoGenerator`
+    - **Class Methods:**
+        - [ ] `public static List<Lotto> generateLotto(int count)`
 
 ### 입출력 요구 사항
 
