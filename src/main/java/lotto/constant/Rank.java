@@ -27,4 +27,8 @@ public enum Rank {
     public Integer getPrize() {
         return this.prizeMoney;
     }
+
+    public Integer getIndex() {
+        return this.index;
+    }
 }
