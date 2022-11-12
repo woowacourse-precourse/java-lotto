@@ -42,6 +42,10 @@ public class Computer {
         return bonusNumber < MINIMUM_NUMBER_IN_RANGE || bonusNumber > MAXIMUM_NUMBER_IN_RANGE;
     }
 
+    private boolean isAlreadyInLotto(int bonusNumber){
+        return lotto.getNumbers().contains(bonusNumber);
+    }
+
     private void addBonusNumber(){
 
     }
