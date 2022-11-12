@@ -68,40 +68,43 @@ class LottoCalculateTest {
         assertThat(lottoCalculate.calculateWinMoney(lottoPrizeMoneyMatchCount)).isEqualTo(30000000);
     }
 
-    @DisplayName("로또 번호가 2등 당첨인 상황에서 Lotto 객체에 prize, prizeMoney 정보가 등수에 맞게 업데이트 된다.")
+    @DisplayName("로또 번호가 2등 당첨인 상황이면 lottoData 의 prize, prizeMoneySum 에 정보가 등수에 맞게 추가 된다.")
     @Test
     void totalCalculateTest1() {
         List<Integer> winNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
         int bonusNumber = 7;
         List<Integer> lottoNumbers = new ArrayList<>(Arrays.asList(2, 3, 4, 5, 6, 7));
+        LottoData lottoData = new LottoData(1000);
         Lotto lotto = new Lotto(lottoNumbers);
-        lottoCalculate.totalCalculate(lotto, winNumbers, bonusNumber);
-        assertThat(lotto.getPrize()).isEqualTo(2);
-        assertThat(lotto.getPrizeMoney()).isEqualTo(30000000);
+        lottoData.totalCalculate(lotto, winNumbers, bonusNumber);
+        assertThat(lottoData.prize.get(2)).isEqualTo(1);
+        assertThat(lottoData.prizeMoneySum).isEqualTo(30000000);
     }
 
-    @DisplayName("로또 번호가 4등 당첨인 상황에서 Lotto 객체에 prize, prizeMoney 정보가 등수에 맞게 업데이트 된다.")
+    @DisplayName("로또 번호가 4등 당첨인 상황이 lottoData 의 prize, prizeMoneySum 에 정보가 등수에 맞게 추가 된다.")
     @Test
     void totalCalculateTest2() {
         List<Integer> winNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
         int bonusNumber = 7;
         List<Integer> lottoNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 9, 10));
+        LottoData lottoData = new LottoData(1000);
         Lotto lotto = new Lotto(lottoNumbers);
-        lottoCalculate.totalCalculate(lotto, winNumbers, bonusNumber);
-        assertThat(lotto.getPrize()).isEqualTo(4);
-        assertThat(lotto.getPrizeMoney()).isEqualTo(50000);
+        lottoData.totalCalculate(lotto, winNumbers, bonusNumber);
+        assertThat(lottoData.prize.get(4)).isEqualTo(1);
+        assertThat(lottoData.prizeMoneySum).isEqualTo(50000);
     }
 
-    @DisplayName("로또 번호가 3등 당첨인 상황에서 Lotto 객체에 prize, prizeMoney 정보가 등수에 맞게 업데이트 된다.")
+    @DisplayName("로또 번호가 3등 당첨인 상황이면 lottoData 의 prize, prizeMoneySum 에 정보가 등수에 맞게 추가 된다.")
     @Test
     void totalCalculateTest3() {
         List<Integer> winNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
         int bonusNumber = 7;
         List<Integer> lottoNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 10));
+        LottoData lottoData = new LottoData(1000);
         Lotto lotto = new Lotto(lottoNumbers);
-        lottoCalculate.totalCalculate(lotto, winNumbers, bonusNumber);
-        assertThat(lotto.getPrize()).isEqualTo(3);
-        assertThat(lotto.getPrizeMoney()).isEqualTo(1500000);
+        lottoData.totalCalculate(lotto, winNumbers, bonusNumber);
+        assertThat(lottoData.prize.get(3)).isEqualTo(1);
+        assertThat(lottoData.prizeMoneySum).isEqualTo(1500000);
     }
 
     @DisplayName("구입금액: 10000, 상금: 12345 일 때 수익률은 123.5 이다.")

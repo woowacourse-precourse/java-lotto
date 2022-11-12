@@ -30,7 +30,7 @@ class LottoDataTest {
         assertThat(lottoData.allLotto.size()).isEqualTo(12);
     }
 
-    @DisplayName("로또가 절대 당첨될 수 없는 상황일 때 모든 로또의 등수, 상금이 0이다.")
+    @DisplayName("로또가 절대 당첨될 수 없는 상황일 때 누적 상금이 lottoData 의 prizeMoneySum 에 저장된다.")
     @Test
     void putDataToLottoTest1() {
         List<Integer> winNumbers = new ArrayList<>(Arrays.asList(46, 47, 48, 49, 50, 51));
@@ -39,13 +39,10 @@ class LottoDataTest {
         lottoData.makeLotto();
         lottoData.putDataToLotto(winNumbers, bonusNumber);
 
-        for (Lotto lotto : lottoData.allLotto) {
-            assertThat(lotto.getPrize()).isEqualTo(0);
-            assertThat(lotto.getPrizeMoney()).isEqualTo(0);
-        }
+        assertThat(lottoData.prizeMoneySum).isEqualTo(0d);
     }
 
-    @DisplayName("로또가 무조건 1등 당첨되는 상황일 때 모든 로또의 등수, 상금이 1등 이다.")
+    @DisplayName("로또가 무조건 1등 당첨되는 상황일 때 누적 상금이 lottoData 의 prizeMoneySum 에 저장된다.")
     @Test
     void putDataToLottoTest2() {
         List<Integer> winNumbers = new ArrayList<>(
@@ -56,10 +53,7 @@ class LottoDataTest {
         lottoData.makeLotto();
         lottoData.putDataToLotto(winNumbers, bonusNumber);
 
-        for (Lotto lotto : lottoData.allLotto) {
-            assertThat(lotto.getPrize()).isEqualTo(1);
-            assertThat(lotto.getPrizeMoney()).isEqualTo(2000000000);
-        }
+        assertThat(lottoData.prizeMoneySum).isEqualTo(24000000000d);
     }
 
     @DisplayName("로또가 절대 당첨될 수 없는 상황일 때 prize 의 0에 12개, prizeMoneySum 에 0이 저장된다.")
@@ -70,8 +64,6 @@ class LottoDataTest {
 
         lottoData.makeLotto();
         lottoData.putDataToLotto(winNumbers, bonusNumber);
-        lottoData.countPrize();
-        lottoData.sumPrizeMoney();
         assertThat(lottoData.prize.get(0)).isEqualTo(12);
         assertThat(lottoData.prizeMoneySum).isEqualTo(0);
     }
@@ -86,8 +78,6 @@ class LottoDataTest {
 
         lottoData.makeLotto();
         lottoData.putDataToLotto(winNumbers, bonusNumber);
-        lottoData.countPrize();
-        lottoData.sumPrizeMoney();
         assertThat(lottoData.prize.get(1)).isEqualTo(12);
         assertThat(lottoData.prizeMoneySum).isEqualTo(24000000000d);
     }

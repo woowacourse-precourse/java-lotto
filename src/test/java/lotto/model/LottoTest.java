@@ -24,20 +24,4 @@ class LottoTest {
         List<Integer> expect = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
         assertThat(lotto.getNumbers()).isEqualTo(expect);
     }
-
-    @DisplayName("Lotto 객체에 addPrize 로 1 추가시 prize가 1로 업데이트 되며, getPrize로 불러올 수 있다.")
-    @Test
-    void addPrizeTestTest() {
-        lotto.addPrize(1);
-        assertThat(lotto.prize).isEqualTo(1);
-        assertThat(lotto.getPrize()).isEqualTo(1);
-    }
-
-    @DisplayName("Lotto 객체에 addPrizeMoney로 5000 추가시 prizeMoney가 5000으로 업데이트 되며, getPirzeMoney로 불러올 수 있다.")
-    @Test
-    void addPrizeMoneyTest() {
-        lotto.addPrizeMoney(5000);
-        assertThat(lotto.prizeMoney).isEqualTo(5000);
-        assertThat(lotto.getPrizeMoney()).isEqualTo(5000);
-    }
 }
