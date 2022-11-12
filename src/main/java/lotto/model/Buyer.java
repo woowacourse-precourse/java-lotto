@@ -11,26 +11,28 @@ public class Buyer {
     private int purchaseAmount;
     private int ticketAmount;
 
-    public Buyer(int purchaseAmount){
-
-        this.purchaseAmount=purchaseAmount;
-        validateProperUnitAmount(this.purchaseAmount);
-        calculateAmountOfTickets();
+    public Buyer(){
     }
     private void calculateAmountOfTickets(){
         ticketAmount=purchaseAmount/AMOUNT_UNIT;
     }
-    private void validateProperUnitAmount(int purchaseAmount){
+    public void validateProperUnitAmount(int purchaseAmount){
         if(purchaseAmount%AMOUNT_UNIT!=PROPER_AMOUNT_CONDITION){
             throw new IllegalArgumentException(ENTER_WRONG_AMOUNT_MESSAGE);
         }
     }
-    private void validateProperLetters(String purchaseAmount) {
+    public void validateProperLetters(String purchaseAmount) {
         if (!purchaseAmount.replaceAll(NUMERIC, BLANK).equals(BLANK)) {
             throw new IllegalArgumentException(ENTER_WRONG_LETTERS_MESSAGE);
         }
     }
     private int changeType(String purchaseAmount){
         return Integer.parseInt(purchaseAmount);
+    }
+    public void buyTickets(String purchaseAmount){
+        validateProperLetters(purchaseAmount);
+        this.purchaseAmount=changeType(purchaseAmount);
+        validateProperUnitAmount(this.purchaseAmount);
+        calculateAmountOfTickets();
     }
 }
