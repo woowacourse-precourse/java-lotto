@@ -7,6 +7,7 @@ import static lotto.Constant.LottoValue.NUMBER_EA;
 import static lotto.LottoNumberValidator.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -3,6 +3,7 @@ package lotto;
 import static lotto.Constant.ErrorMessage.WRONG_INPUT;
 
 import java.util.List;
+
 import java.util.stream.Collectors;
 
 

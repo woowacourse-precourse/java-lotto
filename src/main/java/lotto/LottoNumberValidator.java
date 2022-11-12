@@ -68,7 +68,7 @@ public class LottoNumberValidator {
         }
 
         if (isNotSameSize(numbers)) {
-            throw  new IllegalArgumentException(WRONG_SIZE);
+            throw new IllegalArgumentException(WRONG_SIZE);
         }
 
         if (isOutOfRange(numbers)) {

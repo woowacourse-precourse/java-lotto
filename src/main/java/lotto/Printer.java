@@ -1,18 +1,24 @@
 package lotto;
 
+import static lotto.Constant.ResultMessage.HIT_BONUS_NUMBER;
+import static lotto.Constant.ResultMessage.LOTTO_NUM;
+import static lotto.Constant.ResultMessage.PROFIT;
+import static lotto.Constant.ResultMessage.RESULT_RANK;
+import static lotto.Constant.ResultMessage.RESULT_START;
+
 import java.text.DecimalFormat;
+
 import java.util.Collections;
 import java.util.List;
-import lotto.Constant.ResultMessage;
 
 
 
 public class Printer {
     public static void printWinnings(List<Rank> ranks) {
-        System.out.println(ResultMessage.RESULT_START);
+        System.out.println(RESULT_START);
 
         for (Rank rank : Rank.getNoDefault()) {
-            System.out.printf(ResultMessage.RESULT_RANK,
+            System.out.printf(RESULT_RANK,
                     rank.getHitCount(), printIfBonusHit(rank),
                     printFormatingMoney(rank.getPrizeMoney()),
                     Collections.frequency(ranks, rank)
@@ -22,7 +28,7 @@ public class Printer {
 
     public static String printIfBonusHit(Rank rank) {
         if (rank.getBonusHit()) {
-            return ResultMessage.HIT_BONUS_NUMBER;
+            return HIT_BONUS_NUMBER;
         }
 
         return " ";
@@ -36,13 +42,13 @@ public class Printer {
     }
 
     public static void printLottos(List<Lotto> lottos) {
-        System.out.printf(ResultMessage.LOTTO_NUM, lottos.size());
+        System.out.printf(LOTTO_NUM, lottos.size());
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getNumbers());
         }
     }
 
     public static void printProfits(double profit) {
-        System.out.printf(ResultMessage.PROFIT, profit);
+        System.out.printf(PROFIT, profit);
     }
 }

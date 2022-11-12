@@ -9,9 +9,9 @@ import static lotto.Printer.printProfits;
 
 import static lotto.Rank.calculateRank;
 
-import java.util.List;
-
 import lotto.Constant.RequestMessage;
+
+import java.util.List;
 
 
 

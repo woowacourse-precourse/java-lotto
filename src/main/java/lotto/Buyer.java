@@ -1,8 +1,8 @@
 package lotto;
 
-
 import static lotto.Constant.ErrorMessage.WRONG_MONEY_UNIT;
 import static lotto.Constant.LottoValue.LOTTO_PRICE;
+
 import static lotto.Printer.printLottos;
 import static lotto.Printer.printWinnings;
 
