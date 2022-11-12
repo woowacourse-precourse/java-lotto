@@ -7,6 +7,7 @@ public class Application {
     static final Integer FOUR = 4;
     static final Integer FIVE = 5;
     static final Integer SIX = 6;
+
     public static void main(String[] args) {
         try {
             Integer money = LottoUI.purchase();
@@ -21,16 +22,19 @@ public class Application {
             Integer moneyEarned = matchLottos(winLotto, lottos);
             double benefit = Lotto.calculateBenefit(money, moneyEarned);
             LottoUI.printBenefit(benefit);
-        } catch (IllegalArgumentException e) {}
+        } catch (IllegalArgumentException e) {
+        }
     }
-    private static void PrintSortedLottos(List<Lotto> lottos){
+
+    private static void PrintSortedLottos(List<Lotto> lottos) {
         LottoUI.numberOfLottoPurchased(lottos.size());
 
-        for (Lotto lotto: lottos){
+        for (Lotto lotto : lottos) {
             LottoUI.printLotto(lotto);
         }
     }
-    private static Integer matchLottos(Lotto winLotto, List<Lotto> lottos){
+
+    private static Integer matchLottos(Lotto winLotto, List<Lotto> lottos) {
         Integer matchThree = winLotto.matchWithList(lottos, THREE);
         LottoUI.printWinHistory(THREE, LottoEnum.MATCH_THREE_PRIZE.getValue(), matchThree);
         Integer matchFour = winLotto.matchWithList(lottos, FOUR);

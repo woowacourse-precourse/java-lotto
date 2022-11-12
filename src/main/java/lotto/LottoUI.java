@@ -23,11 +23,11 @@ public class LottoUI {
         System.out.println(sortedNumbers);
     }
 
-    public static void printWinHistory(final Integer machNumber, final Integer prizeMoney,final Integer winAmount) {
+    public static void printWinHistory(final Integer machNumber, final Integer prizeMoney, final Integer winAmount) {
         System.out.printf("%d개 일치 (%,d원) - %d개\n", machNumber, prizeMoney, winAmount);
     }
 
-    public static void printWinHistoryWithBonus(final Integer machNumber, final Integer prizeMoney,final Integer winAmount) {
+    public static void printWinHistoryWithBonus(final Integer machNumber, final Integer prizeMoney, final Integer winAmount) {
         System.out.printf("%d개 일치, 보너스 볼 일치 (%,d원) - %d개\n", machNumber, prizeMoney, winAmount);
     }
 

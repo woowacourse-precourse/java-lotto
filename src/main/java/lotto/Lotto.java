@@ -15,7 +15,6 @@ public class Lotto {
     }
 
 
-
     public Integer matchWithList(List<Lotto> lottos, Integer matchAmount) {
         Integer matchingLottos = 0;
         for (Lotto lotto : lottos) {
@@ -113,7 +112,7 @@ public class Lotto {
     }
 
     public static double calculateBenefit(final Integer payed, final Integer earned) {
-        return (double)earned / payed;
+        return (double) earned / payed;
     }
 
     private static void validatePurchaseAmount(final int amount) {
