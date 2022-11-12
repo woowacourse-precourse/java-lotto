@@ -1,6 +1,15 @@
 package lotto.domain;
 
+import java.util.List;
+
 public class Clerk {
+    LottoGenerator lottoGenerator;
+
+    public List<Lotto> issueLottos(int money) {
+        int numberOfLottos = calculateNumberOfLottos(money);
+        return lottoGenerator.generateLottos(numberOfLottos);
+    }
+
     public int calculateNumberOfLottos(int money) {
         validate(money);
         return money / 1000;
