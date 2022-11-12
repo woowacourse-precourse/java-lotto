@@ -20,6 +20,7 @@ public class LottoGenerator {
         for (int i = 0; i < amount / 1000; i++) {
             lottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
         }
+        showAllLottos(lottos);
         return lottos;
     }
 
