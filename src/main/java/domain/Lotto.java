@@ -1,7 +1,9 @@
-package lotto;
+package domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -9,10 +11,11 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        if (numbers.size() == numbers.stream().distinct().count()) {
+        Collections.sort(numbers);
+        if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException("[ERROR] 로또번호는 중복일 수 없습니다.");
         }
-            validate(numbers);
+        validate(numbers);
         this.numbers = numbers;
     }
 
@@ -23,5 +26,9 @@ public class Lotto {
     }
 
 
-    // TODO: 추가 기능 구현
+    @Override
+    public String toString() {
+        return " " + numbers;
+    }
+// TODO: 추가 기능 구현
 }
