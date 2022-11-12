@@ -49,4 +49,28 @@ public class InputValid {
             return Arrays.asList("");
         }
     }
+    public static boolean checkBonusNumber(String strBonusNumber,List<Integer> lottoNumber){
+        int bonusNumber=tryCheckBonusNumber(strBonusNumber);
+        if(!distinctBonusNumberOfLottoNumber(bonusNumber,lottoNumber)){
+            return false;
+        }
+
+        if(bonusNumber>=1&&bonusNumber<=45){
+            return true;
+        }
+        return false;
+    }
+
+    private static int tryCheckBonusNumber(String strBonusNumber){
+        try {
+            return Integer.parseInt(strBonusNumber);
+        }catch (Exception e){
+            return 0;
+        }
+    }
+
+    private static boolean distinctBonusNumberOfLottoNumber(int bonusNumber,List<Integer> lottoNumber)
+    {
+        return !lottoNumber.contains(bonusNumber);
+    }
 }
