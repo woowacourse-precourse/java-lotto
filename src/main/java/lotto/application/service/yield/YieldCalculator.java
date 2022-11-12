@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static lotto.application.service.yield.WinningMoney.*;
+
 public class YieldCalculator {
 
     Map<String, Integer> winInformation = new HashMap<>() {{
@@ -56,11 +58,11 @@ public class YieldCalculator {
     public double extractYield(Map<String, Integer> winInformation, int purchaseMoney) {
         int result = 0;
 
-        result += winInformation.get("three") * (WinningMoney.THREE.getWinningMoney());
-        result += winInformation.get("four") * (WinningMoney.FOUR.getWinningMoney());
-        result += winInformation.get("five") * (WinningMoney.FIVE.getWinningMoney());
-        result += winInformation.get("FiveContainingBonusNumber") * (WinningMoney.FIVE_BONUS.getWinningMoney());
-        result += winInformation.get("six") * (WinningMoney.SIX.getWinningMoney());
+        result += winInformation.get("three") * (THREE.getWinningMoney());
+        result += winInformation.get("four") * (FOUR.getWinningMoney());
+        result += winInformation.get("five") * (FIVE.getWinningMoney());
+        result += winInformation.get("FiveContainingBonusNumber") * (FIVE_BONUS.getWinningMoney());
+        result += winInformation.get("six") * (SIX.getWinningMoney());
 
         return (double) result / (double) purchaseMoney * 100;
     }
