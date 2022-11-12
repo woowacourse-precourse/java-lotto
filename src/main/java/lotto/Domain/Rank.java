@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Rank {
-    private int earningRate;
+    private float earningRate;
     private Map<RankType, Integer> rank = new EnumMap<RankType, Integer>(RankType.class);
 
     public void setEarningRate(int money) {
@@ -17,9 +17,9 @@ public class Rank {
                 total += rankType.getPrizeMoney();
             }
         }
-        this.earningRate = total / money * 100;
+        this.earningRate = total / (float)money * 100;
     }
-    public int getEarningRate() {
+    public float getEarningRate() {
         return this.earningRate;
     }
 

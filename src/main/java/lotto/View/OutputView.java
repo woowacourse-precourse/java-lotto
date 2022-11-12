@@ -17,7 +17,9 @@ public class OutputView {
     public static void printWinningStatistics(Map<RankType, Integer> rank, int earningRate) {
         System.out.println("당첨 통계");
         System.out.println("---");
+    }
 
+    public static void printRanking(Map<RankType, Integer> rank) {
         for (RankType rankType : rank.keySet()) {
             if (rankType == RankType.NOTHING) {
                 continue;
@@ -25,6 +27,9 @@ public class OutputView {
             String format = String.format("%,d", rankType.getPrizeMoney());
             System.out.printf("%s (%s원) - %d개", rankType.getResult(), format, rank.get(rankType));
         }
+    }
+
+    public static void printEarningRate(int earningRate) {
         System.out.printf("총 수익률은 %d입니다.", earningRate);
     }
 }
