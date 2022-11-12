@@ -34,6 +34,15 @@ public class Application {
         }
     }
 
+    public static void issueLottoTickets(int cash, List<Lotto> lottoTickets) {
+        try {
+            issueLottoNumbers(cash / 1000, lottoTickets);
+            showLotto(cash, lottoTickets);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     public static void showLotto(int cash, List<Lotto> lottoList) {
 
         printLottoQuantity(cash / 1000);
