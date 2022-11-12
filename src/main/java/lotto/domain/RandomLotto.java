@@ -3,6 +3,8 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class RandomLotto {
@@ -16,6 +18,11 @@ public class RandomLotto {
             }
             randomLotto.add(oneTicket);
         }
+
+        for (List<Integer> randomNumber : randomLotto) {
+            Collections.sort(randomNumber);
+        }
+
         return randomLotto;
     }
 }
