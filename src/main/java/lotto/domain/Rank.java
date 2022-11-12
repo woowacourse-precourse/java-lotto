@@ -30,6 +30,10 @@ public enum Rank {
         return standard <= count;
     }
 
+    public int getMoney() {
+        return money;
+    }
+
     @Override
     public String toString() {
         return message;
