@@ -10,24 +10,44 @@ public class WinnerNumber {
     private final List<Integer> winnerNumber;
 
     public WinnerNumber(String winnerNumber){
-        winnerNumber=firstValidate(winnerNumber);
-        this.winnerNumber=stringToList(winnerNumber);
+        List<String> result=firstValidate(winnerNumber);
+        this.winnerNumber=stringToList(result);
         lastValidate(this.winnerNumber);
     }
-    private String firstValidate(String target){
-        target=target.replace(",","");
-        Validator.checkInteger(target);
-        return target;
+    private List<String> firstValidate(String target){
+        List<String> result=parser(target);
+        for(String check:result) {
+            Validator.checkInteger(check);
+        }
+        return result;
+    }
+    private List<String> parser(String target){
+        List<String> parser=new ArrayList<>();
+        StringBuilder temp= new StringBuilder();
+        for(int i=0;i<target.length();i++){
+            append(target,i,temp,parser);
+        }
+        parser.add(temp.toString());
+        return parser;
+    }
+    private void append(String target,Integer index,StringBuilder builder,List<String> parser){
+        if(target.charAt(index)!=','){
+            builder.append(target.charAt(index));
+        }
+        if(target.charAt(index)==','){
+            parser.add(builder.toString());
+            builder.delete(0,builder.length());
+        }
     }
     private void lastValidate(List<Integer> target){
         Validator.checkNumericalRange(target);
         Validator.checkNumberOfDigit(NUMBER_OF_DIGIT,target);
         Validator.checkDuplicate(target);
     }
-    private List<Integer> stringToList(String target){
+    private List<Integer> stringToList(List<String> target){
         List<Integer> result=new ArrayList<>();
-        for(int i=0;i<target.length();i++){
-            result.add(target.charAt(i)-'0');
+        for (String s : target) {
+            result.add(Integer.parseInt(s));
         }
         return result;
     }

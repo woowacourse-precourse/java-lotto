@@ -51,6 +51,11 @@ public class Validator {
             throw new IllegalArgumentException(ERROR_MESSAGE+DUPLICATE_NUMBER);
         }
     }
+    public static void checkBonusDuplicate(Integer target,List<Integer> winNumber){
+        if(winNumber.contains(target)){
+            throw new IllegalArgumentException(ERROR_MESSAGE+DUPLICATE_NUMBER);
+        }
+    }
     private static Integer stringToInteger(String target){
         return Integer.parseInt(target);
     }
