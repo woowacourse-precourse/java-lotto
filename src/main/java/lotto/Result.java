@@ -17,7 +17,7 @@ public class Result {
 
     public Result(List<Lotto> lottoTickets) {
         saveMatchResult(lottoTickets);
-        showResult();
+        calculatePrizeMoney();
         Output.showResult(resultMessage);
     }
 
@@ -28,7 +28,7 @@ public class Result {
         }
     }
 
-    public void showResult() {
+    public void calculatePrizeMoney() {
         List<Prize> allPrize = Prize.getAllPrize();
         for (Prize prize : allPrize) {
             int countPrize = getPrizeCount(prize.getWinningCount(), prize.getBonusCount());
