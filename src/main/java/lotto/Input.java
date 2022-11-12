@@ -22,7 +22,7 @@ public class Input {
         String input = Console.readLine();
         List<String> digits = List.of(input.split(","));
         if (!digits.stream().allMatch(digit -> digit.matches(NUMBER_REGEX))) {
-            throw new IllegalArgumentException("숫자만 입력할 수 있습니다");
+            throw new IllegalArgumentException("1,2,3,4,5,6 과 같은 형태로 입력해야 합니다");
         }
         return digits.stream().map(digit -> Integer.parseInt(digit)).collect(Collectors.toList());
     }
