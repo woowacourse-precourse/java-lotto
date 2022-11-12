@@ -19,7 +19,7 @@ public abstract class Validation {
         errorView.show();
     }
 
-    private void throwError(String errorMessage) {
+    private void throwError(String errorMessage){
         throw new IllegalArgumentException(errorMessage);
     }
 
