@@ -36,5 +36,18 @@ public class SystemController {
     public SystemController(){
     }
 
+    public void startLotto(){
+        purchaseMoney=inputView.startInput();
+        Money money=new Money(purchaseMoney);
 
+        myLotto=purchaseLotto(money, purchaseMoney);
+        numbers=inputView.winningNumberInput();
+        Lotto lotto=new Lotto(numbers);
+
+        BonusNumber = Integer.parseInt(inputView.BonusNumberInput());
+        Bonus bonus = new Bonus(BonusNumber);
+        outputView.ResultLottoOutput();
+
+        statistics(myLotto, numbers, BonusNumber, purchaseMoney);
+    }
 }
