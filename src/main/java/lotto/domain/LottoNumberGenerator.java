@@ -13,8 +13,8 @@ public class LottoNumberGenerator {
     public static List<List<Integer>> generateLottoNumber(int count) {
         IntStream.range(0, count).forEach((__) -> {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            new Lotto(numbers);
-            randomLottoNumbers.add(numbers);
+            Lotto lotto = new Lotto(numbers);
+            randomLottoNumbers.add(lotto.getNumbers());
         });
         return randomLottoNumbers;
     }
