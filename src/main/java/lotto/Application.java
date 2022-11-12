@@ -13,7 +13,8 @@ public class Application {
             List<Lotto> lottoBundle = lottoUI.buy();
             lottoUI.printLottoBundle(lottoBundle);
             lottoUI.inputWinningNumbers();
-        } catch (IllegalArgumentException exception) {
+            lottoUI.printWinningStatistics(lottoBundle);
+        } catch (Exception exception) {
             System.out.println(Message.ERROR_MESSAGE + exception.getMessage());
         }
     }

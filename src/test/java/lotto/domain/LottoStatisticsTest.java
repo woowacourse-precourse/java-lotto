@@ -11,7 +11,7 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoStatisticsTest {
-    @DisplayName("등수가 제대로 나왔는지 확인")
+    @DisplayName("등수가 제대로 매겨졌는지 확인")
     @Test
     void TestRankIsCorrect() {
         Lotto lotto = new Lotto(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 42)));

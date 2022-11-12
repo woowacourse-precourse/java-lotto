@@ -29,9 +29,9 @@ public class LottoSystem {
         winningNumber.setBonusNumber(Integer.parseInt(number));
     }
 
-    public String getWinningStatistics(List<Lotto> lottoBundle) {
+    public LottoStatistics getWinningStatistics(List<Lotto> lottoBundle) {
         LottoStatistics statistics = new LottoStatistics(lottoBundle, winningNumber);
-        return "";
+        return statistics;
     }
 
     private void validateWinningNumbers(String input) {

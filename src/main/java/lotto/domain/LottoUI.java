@@ -36,5 +36,6 @@ public class LottoUI {
 
     public void printWinningStatistics(List<Lotto> lottoBundle) {
         System.out.println(Message.PRINT_WINNING_STATISTICS);
+        System.out.println(lottoSystem.getWinningStatistics(lottoBundle));
     }
 }
