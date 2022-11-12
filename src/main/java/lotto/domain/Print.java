@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -11,29 +11,31 @@ public class Print {
 	int lottonum = 0;
 	int bonusnumber = 0;
 	int purchaseprice = 0;
-	enum rank { 
-		FIFTH(3,5000), FOURTH(4,50000), THIRD(5,1500000), SECOND(5,30000000), FIRST(6,2000000000);
-		
+
+	enum rank {
+		FIFTH(3, 5000), FOURTH(4, 50000), THIRD(5, 1500000), SECOND(5, 30000000), FIRST(6, 2000000000);
+
 		private final int value;
 		private final int price;
-		
+
 		rank(int value, int price) {
 			this.value = value;
 			this.price = price;
-		} 
-		
+		}
+
 		public int getValue() {
 			return this.value;
 		}
-		
+
 		public int getPrice() {
 			return this.price;
 		}
 	};
+
 	HashMap<Integer, Integer> rankmap = new HashMap<>();
-	
+
 	public void printNumberAll(List<List<Integer>> lottonumbersall, int lottonum, int purchaseprice) {
-		System.out.printf("%d개를 구매했습니다.\n",lottonum);
+		System.out.printf("%d개를 구매했습니다.\n", lottonum);
 		for (int i = 0; i < lottonum; i++) {
 			System.out.println(lottonumbersall.get(i));
 		}
@@ -42,7 +44,7 @@ public class Print {
 		this.purchaseprice = purchaseprice;
 		System.out.println();
 	}
-	
+
 	public void printWin() {
 		int ranknum = 5;
 		DecimalFormat df = new DecimalFormat("#,###");
@@ -50,32 +52,34 @@ public class Print {
 		System.out.println("---");
 		for (rank r : rank.values()) {
 			if (ranknum == 2) {
-				System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n", r.getValue(), df.format(r.getPrice()), rankmap.getOrDefault(ranknum, 0));
+				System.out.printf("%d개 일치, 보너스 볼 일치 (%s원) - %d개\n", r.getValue(), df.format(r.getPrice()),
+						rankmap.getOrDefault(ranknum, 0));
 				ranknum--;
 				continue;
 			}
-			System.out.printf("%d개 일치 (%s원) - %d개\n", r.getValue(), df.format(r.getPrice()), rankmap.getOrDefault(ranknum, 0));
+			System.out.printf("%d개 일치 (%s원) - %d개\n", r.getValue(), df.format(r.getPrice()),
+					rankmap.getOrDefault(ranknum, 0));
 			ranknum--;
 		}
 	}
-	
+
 	public void countWin(List<Integer> inputnumbers, int bonusnumber) {
 		this.bonusnumber = bonusnumber;
-		HashSet<Integer> inputnumberset = new HashSet<>();  // 사용자 입력값들을 모두 inputnumberset에 담기
+		HashSet<Integer> inputnumberset = new HashSet<>(); // 사용자 입력값들을 모두 inputnumberset에 담기
 		inputnumberset.addAll(inputnumbers);
-		
-		for (int i =0; i < lottonum; i++) {
-			List<Integer> lotto = new ArrayList<Integer>();  
-			HashSet<Integer> lottoset = new HashSet<>();  
-			
+
+		for (int i = 0; i < lottonum; i++) {
+			List<Integer> lotto = new ArrayList<Integer>();
+			HashSet<Integer> lottoset = new HashSet<>();
+
 			lotto = lottonumbersall.get(i);
-			lottoset.addAll(lotto);  // 한번 할 때마다 나온 로또 값 6개를 lottoset에 담기
-			
+			lottoset.addAll(lotto); // 한번 할 때마다 나온 로또 값 6개를 lottoset에 담기
+
 			lottoset.retainAll(inputnumberset);
 			rankCount(lotto, lottoset);
 		}
 	}
-	
+
 	public void rankCount(List<Integer> lotto, HashSet<Integer> lottoset) {
 		int count = 0;
 		if (lottoset.size() == rank.FIFTH.getValue()) {
@@ -95,9 +99,9 @@ public class Print {
 		} else if (lottoset.size() == rank.FIRST.getValue()) {
 			count = rankmap.getOrDefault(1, 0) + 1;
 			rankmap.put(1, count);
-		} 
+		}
 	}
-	
+
 	public double printProfit() {
 		double profit = 0;
 		int ranknum = 5;
@@ -110,7 +114,7 @@ public class Print {
 		profit = profit / purchaseprice;
 		return profit * 100;
 	}
-	
+
 	public void printProfitRound(double profit) {
 		double profitresult = 0f;
 		profitresult = Math.round(profit * 10) / 10.0;
