@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.ui.LottoConsole;
+
 public class LottoController {
 
     private final LottoService lottoService;

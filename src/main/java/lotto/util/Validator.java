@@ -1,6 +1,6 @@
-package lotto;
+package lotto.util;
 
-import static lotto.ConsoleMessage.INVALID_INPUT_PRICE;
+import static lotto.ui.ConsoleMessage.INVALID_INPUT_PRICE;
 
 public class Validator {
     public static void validateLottoPrice(String lottoPrice){

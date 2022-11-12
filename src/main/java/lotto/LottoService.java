@@ -1,6 +1,8 @@
 package lotto;
 
-import static lotto.Validator.validateLottoPrice;
+import static lotto.util.Validator.validateLottoPrice;
+
+import lotto.domain.UserLottoInfo;
 
 public class LottoService {
     private final UserLottoInfo userLottoInfo;

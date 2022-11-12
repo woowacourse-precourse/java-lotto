@@ -1,4 +1,4 @@
-package lotto;
+package lotto.ui;
 
 public enum ConsoleMessage {
     INVALID_INPUT_PRICE("잘못된 형식의 금액을 입력하셨습니다.");
