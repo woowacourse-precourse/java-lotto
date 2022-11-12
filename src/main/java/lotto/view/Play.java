@@ -1,10 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.domain.Lotto;
-import lotto.domain.LottoNumbers;
-import lotto.domain.Purchase;
-import lotto.domain.WinningNumber;
+import lotto.domain.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,6 +20,7 @@ public class Play {
     private List<Lotto> lotto = new ArrayList<>();
     private WinningNumber winningNumber = new WinningNumber();
     private String[] savedWinningNumber = new String[6];
+    private Result result = new Result();
 
     public void startPlay(){
         System.out.println(START_MESSAGE);
@@ -39,6 +37,13 @@ public class Play {
 
         Lotto winningLotto = new Lotto(winningNumber.numberToString(winning));
         System.out.println(winningLotto.getLotto());
+
+        List<Integer> winLotto = winningNumber.numberToString(winning);
+
+        System.out.println("\n"+INPUT_BONUS_MESSAGE);
+        String bonus = Console.readLine();
+
+
 
 
 

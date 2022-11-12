@@ -1,6 +1,4 @@
 package lotto.domain;
 
-public class Result {
-
-
+public enum ResultType {
 }
