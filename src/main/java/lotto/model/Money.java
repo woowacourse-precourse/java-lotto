@@ -24,4 +24,8 @@ public class Money {
             throw new NoSuchElementException();
         }
     }
+
+    public int howMany(String purchase){
+        return Integer.parseInt(purchase)/1000;
+    }
 }
