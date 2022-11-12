@@ -28,7 +28,7 @@ public class Validation {
             throw new IllegalArgumentException(Notification.ERROR_MESSAGE_MONEY_IS_NOT_MULTIPLE_1000.getMessage());
     }
 
-    public static void isMultipleOf1000(String number) throws IllegalArgumentException {
+    private static void isMultipleOf1000(String number) throws IllegalArgumentException {
         if (Long.parseLong(number) % 1000 != 0)
             throw new IllegalArgumentException(Notification.ERROR_MESSAGE_MONEY_IS_NOT_MULTIPLE_1000.getMessage());
     }
