@@ -18,7 +18,6 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = sortAscending(numbers);
-        ;
     }
 
     private List<Integer> sortAscending(List<Integer> numbers) {
