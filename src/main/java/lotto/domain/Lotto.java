@@ -8,8 +8,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import lotto.view.ErrorMessage;
-
 public class Lotto {
     private final List<Integer> numbers;
     private static final int START_NUM = 1;
