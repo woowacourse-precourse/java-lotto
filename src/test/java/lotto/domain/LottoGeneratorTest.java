@@ -28,4 +28,12 @@ public class LottoGeneratorTest {
         List<Integer> sortNumbers = lottoGenerator.sortLotto(numbers);
         assertThat(List.of(1,2,3,4,5,6)).isEqualTo(sortNumbers);
     }
+
+    @DisplayName("구매자가 구매한 장수만큼 로또를 발급한다.")
+    @Test
+    void 로또_번호_발급() {
+        int pages = 3;
+        List<Lotto> lotto = lottoGenerator.issueLotto(3);
+        assertThat(lotto.size()).isEqualTo(3);
+    }
 }
