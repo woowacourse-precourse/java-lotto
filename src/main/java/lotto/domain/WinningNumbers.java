@@ -5,12 +5,8 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class WinningNumbers {
-	private static final int MIN_NUMBER = 1;
-	private static final int MAX_NUMBER = 45;
-	private static final String REGEX = "^[1-9]{1}$|^[1-3]{1}[0-9]{1}|^4{1}[0-5]{1}$";
+	private static final String REGEX = "^[1-9]$|^[1-3][0-9]|^4[0-5]$";
 	private static final Pattern numberPattern = Pattern.compile(REGEX);
-	private static final String REGEX_ERROR_MESSAGE = "[ERROR] %d ~ %d 사이의 자연수만 입력해주세요.";
-	private static final String BONUS_ERROR_MESSAGE = "[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.";
 
 	private final Lotto lottoNumbers;
 	private final int bonusNumber;
@@ -44,14 +40,15 @@ public class WinningNumbers {
 
 	private int validateREGEX(String userInput) {
 		if (!numberPattern.matcher(userInput).matches()) {
-			throw new IllegalArgumentException(String.format(REGEX_ERROR_MESSAGE, MIN_NUMBER, MAX_NUMBER));
+			throw new IllegalArgumentException(
+				String.format(ErrorMessage.NUMBER.getMessage(), Number.MIN.getValue(), Number.MAX.getValue()));
 		}
 		return Integer.parseInt(userInput);
 	}
 
 	private int validateBonus(int number) {
 		if (getWinningNumbers().contains(number)) {
-			throw new IllegalArgumentException(BONUS_ERROR_MESSAGE);
+			throw new IllegalArgumentException(ErrorMessage.BONUS.getMessage());
 		}
 		return number;
 	}
