@@ -10,7 +10,7 @@ public class Input {
     private static final String SEPARATOR = ",";
     private static final int LOTTO_MINIMUM_AMOUNT = 1000;
     private static final String NUMBER_FORMAT_ERROR = "[ERROR] 숫자를 입력해 주세요.";
-    private static final String SEPARATOR_ERROR = "[ERROR] 구분자 '"+ SEPARATOR +"' 를 입력해 주세요.";
+    private static final String SEPARATOR_ERROR = "[ERROR] 구분자 '" + SEPARATOR + "' 를 입력해 주세요.";
     private static final String AMOUNT_UNIT_ERROR = "[ERROR] " + LOTTO_MINIMUM_AMOUNT + "원 단위로 입력하세요.";
 
     public static int purchaseAmount() {
