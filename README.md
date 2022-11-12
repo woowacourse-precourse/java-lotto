@@ -98,7 +98,7 @@ BUILD SUCCESSFUL in 0s
         - [x] `private final List<Lotto> lottoList`
         - [x] `private HashMap<LottoRank, Integer> winResult`
     - **Class Methods:**
-        - [ ] `public User(purchaseMoney, List<Lotto> lottoList, WinLotto winLotto)`
+        - [x] `public User(purchaseMoney, List<Lotto> lottoList, WinLotto winLotto)`
         - [x] `private void validatePurchaseMoney(int purchaseMoney)`
         - [x] `private int getIncomeMoney(List<Lotto> lottoList, WinLotto winLotto)`
         - [x] `private HashMap<LottoRank, Integer> getWinResult(List<Lotto> lottoList, WinLotto, winLotto)`
