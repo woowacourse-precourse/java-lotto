@@ -7,11 +7,15 @@ public class WinningInformation {
     private List<Integer> winningNumbers;
     private int bonusNumber;
 
+    public WinningInformation(List<Integer> winningNumbers, int bonusNumber){
+        setWinningNumbers(winningNumbers);
+        setBonusNumber(bonusNumber);
+    }
     public List<Integer> getWinningNumbers() {
         return winningNumbers;
     }
 
-    public void setWinningNumbers(List<Integer> winningNumbers) {
+    private void setWinningNumbers(List<Integer> winningNumbers) {
         validator.checkNumberOfNumbers(winningNumbers);
         validator.checkNumbersDuplication(winningNumbers);
         for(int winningNumber : winningNumbers){
@@ -24,7 +28,7 @@ public class WinningInformation {
         return bonusNumber;
     }
 
-    public void setBonusNumber(int bonusNumber) {
+    private void setBonusNumber(int bonusNumber) {
         validator.checkNumberRange(bonusNumber);
         validator.checkBonusNumberDuplication(winningNumbers, bonusNumber);
         this.bonusNumber = bonusNumber;
