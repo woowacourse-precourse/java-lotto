@@ -4,12 +4,13 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class BuyLotto {
     public enum INPUT_SENTENCE {
-        BUY("구입금액을 입력해 주세요.\n"), RESULT_COUNT("개를 구매했습니다.\n");
+        BUY("구입금액을 입력해 주세요.\n"), RESULT_COUNT("개를 구매했습니다.\n"), WIN("당첨 번호를 입력해 주세요.\n");
 
         private final String label;
 
@@ -48,6 +49,17 @@ public class BuyLotto {
             lottoNumbers.add(numbers);
         }
         return lottoNumbers;
+    }
+
+    private List<Integer> numbers() {
+        System.out.print(INPUT_SENTENCE.WIN.label());
+        String number = Console.readLine();
+        List<String> winNumbers = new ArrayList<>(Arrays.asList(number.split("\\s*,\\s*")));
+        List<Integer> winNumber = new ArrayList<>();
+        for(int i = 0; i<winNumbers.size(); i++) {
+            winNumber.add(Integer.parseInt(winNumbers.get(i)));
+        }
+        return winNumber;
     }
 
 }
