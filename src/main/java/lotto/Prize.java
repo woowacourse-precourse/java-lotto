@@ -6,9 +6,9 @@ import java.util.*;
 public enum Prize
 {
     First("6개 일치",2_000_000_000),
-    Second("5개 일치, 보너스 볼 일치 ",30_000_000),
+    Second("5개 일치, 보너스 볼 일치",30_000_000),
     Third("5개 일치",1_500_000),
-    Fourth("4개 알치",50_000),
+    Fourth("4개 일치",50_000),
     Fifth("3개 일치",5_000);
 
     private static class Money
@@ -24,7 +24,7 @@ public enum Prize
         @Override
         public String toString()
         {
-            return "(" + priceFormat.format(money) +")";
+            return "(" + priceFormat.format(money) +"원)";
         }
     }
 
@@ -68,7 +68,7 @@ public enum Prize
 
     public static List<Prize> getValues()
     {
-        return List.of(First,Second,Third,Fourth,Fifth);
+        return List.of(Fifth,Fourth,Third,Second,First);
     }
 
     @Override
