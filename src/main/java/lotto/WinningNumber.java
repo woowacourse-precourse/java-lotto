@@ -40,7 +40,12 @@ public enum WinningNumber {
 
     private static WinningNumber getKey(Map<WinningNumber, Integer> amountCount, int winningCount, int bonusCount) {
         for (WinningNumber key : amountCount.keySet()) {
-            if (key.numberOfWinning == winningCount && key.numberOfBonus == bonusCount) {
+            if ((key.equals(FIVE_MATCHES) || key.equals(FIVE_AND_BONUS_BALL_MATCHES))
+                    && (key.numberOfWinning == winningCount && key.numberOfBonus == bonusCount)) {
+                return key;
+            }
+            if (!(key.equals(FIVE_MATCHES) || key.equals(FIVE_AND_BONUS_BALL_MATCHES))
+                    && key.numberOfWinning == winningCount) {
                 return key;
             }
         }
