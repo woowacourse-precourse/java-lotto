@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class LottoDesignatorTest {
-    private static final LottoDesignator = new LottoDesignator();
+    private static final LottoDesignator lottoDesignator = new LottoDesignator();
     @DisplayName("입력받은 로또번호가 숫자가 아닐 경우 예외가 발생한다.")
     @Test
     void 로또_번호가_숫자가_아닐_경우_예외() {
