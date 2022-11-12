@@ -26,4 +26,8 @@ public class LottoBuyer {
 
     }
 
+    public void checkRate() {
+        lottoPrizeRecordingManager.getPrizeRate(lottoPurchaseInfo.getPurchaseMoney());
+    }
+
 }
