@@ -247,6 +247,21 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    @DisplayName("당첨 로또 번호와 보너스 번호 검증 테스트 - 둘 사이에 중복이 존재한다면 에러")
+    void validateWinningLottoAndBonusNumber() {
+        // given
+        String string = "1";
+
+        // when
+
+        // then
+        assertSimpleTest(() -> {
+            runException("8000", "1,2,3,4,5,6", string);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
