@@ -38,7 +38,6 @@ public class Lotto {
 
     @Override
     public String toString() {
-        numbers.sort(Comparator.naturalOrder());
         return TO_STRING + this.numbers;
     }
 
@@ -58,6 +57,7 @@ public class Lotto {
         return Arrays.stream(userInput.split(","))
                 .mapToInt(Integer::parseInt)
                 .boxed()
+                .sorted(Comparator.naturalOrder())
                 .collect(Collectors.toList());
     }
 
