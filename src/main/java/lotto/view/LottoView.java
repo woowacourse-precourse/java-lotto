@@ -68,6 +68,7 @@ public class LottoView {
                     numberOfEachLottoResult.getOrDefault(lottoResult, LOTTO_RESULT_IS_ZERO));
             return;
         }
+
         System.out.printf("%d개 일치 (%s원) - %d개\n",
                 lottoResult.getNumberOfMatches(),
                 df.format(lottoResult.getPayout()),

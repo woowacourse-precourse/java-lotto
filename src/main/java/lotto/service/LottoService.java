@@ -14,6 +14,10 @@ public class LottoService {
 
     private LottoGenerator lottoGenerator = new LottoGenerator();
 
+    public List<Lotto> buy(int money) {
+        return lottoGenerator.createLottoBundle(money);
+    }
+
     public List<LottoResult> compareLottoNumbers(List<Lotto> lottoBundle,
                                                  List<Integer> winningNumbers,
                                                  int bonusNumber) {
@@ -30,9 +34,5 @@ public class LottoService {
         int investment = lottoResults.size() * LOTTO_PRICE;
 
         return (double) revenue / investment  * MAKE_PERCENTAGE_SCALE;
-    }
-
-    public List<Lotto> buy(int money) {
-        return lottoGenerator.createLottoBundle(money);
     }
 }
