@@ -24,6 +24,10 @@ public class Application {
         return money;
     }
 
+    public static int getPurchaseNum(int inputMoney) {
+        return inputMoney / 1000;
+    }
+
     public static Lotto getWinningNumber() {
         String winningNumberInput = Console.readLine();
 
