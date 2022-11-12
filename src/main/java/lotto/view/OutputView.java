@@ -27,4 +27,8 @@ public class OutputView {
         System.out.println("당첨 통게\n" + "---");
     }
 
+    public void printFifthCount(int count) {
+        System.out.println("3개 일치 (5,000원) - " + count + "개");
+    }
+
 }
