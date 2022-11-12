@@ -36,7 +36,9 @@ public class InputLotto {
 
     public List<Integer> toIntList(List<String> stringsNumberList){
         List<Integer> numberList = new ArrayList<>();
+        ExceptionHandling exceptionHandling = new ExceptionHandling();
         for(String stringsNumber : stringsNumberList){
+            exceptionHandling.outRangeLottoNumber(stringsNumber);
             numberList.add(toInts(stringsNumber));
         }
         return numberList;
