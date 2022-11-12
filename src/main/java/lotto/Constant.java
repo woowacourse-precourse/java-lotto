@@ -1,7 +1,10 @@
 package lotto;
 
 public class Constant {
+    public static final int LOTTO_WINNING_SIZE = 5;
     public static final int PRICE_UNIT = 1000;
+    public static final int LOTTO_MIN_RANGE = 1;
+    public static final int LOTTO_MAX_RANGE = 45;
     public static final double YIELD_OPERAND = 100.0;
 
     public static final String INPUT_MESSAGE = "구매금액을 입력해주세요.";
@@ -20,11 +23,3 @@ public class Constant {
 
     public static final String ERROR_MESSAGE = "[ERROR] ";
 }
-/**
-* 3개 일치 (5,000원) - 1개
-        * 4개 일치 (50,000원) - 0개
-        * 5개 일치 (1,500,000원) - 0개
-        * 5개 일치, 보너스 볼 일치 (30,000,000원) - 0개
-        * 6개 일치 (2,000,000,000원) - 0개
-        * 총 수익률은 62.5%입니다.
-        */
