@@ -11,6 +11,12 @@ public class WiningNumber {
         this.winingNumber = winingNumber;
     }
 
+    private void validateWiningNumber(List<Integer> numbers) {
+        validateNumbersSize(numbers);
+        validateOverlapNumbers(numbers);
+        validateNumbersRange(numbers);
+    }
+
     public void setBonusNumber(int bonusNumber) {
         this.bonusNumber = bonusNumber;
     }
