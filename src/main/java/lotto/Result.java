@@ -17,8 +17,8 @@ public class Result {
 
     public Result(List<Lotto> lottoTickets) {
         saveMatchResult(lottoTickets);
-        calculatePrizeMoney();
         Output.showResult(resultMessage);
+        sumPrizeMoney();
     }
 
     private void saveMatchResult(List<Lotto> lottoTickets) {
@@ -28,21 +28,11 @@ public class Result {
         }
     }
 
-    public void calculatePrizeMoney() {
-        List<Prize> allPrize = Prize.getAllPrize();
-        for (Prize prize : allPrize) {
-            int countPrize = getPrizeCount(prize.getMatchCount());
-            sumPrizeMoney(prize.getPrizeMoney(), countPrize);
-            saveResultMessage(prize.getMessage(), countPrize);
+    public void sumPrizeMoney() {
+        for (Prize prize : totalMatchResult.keySet()) {
+            int count = totalMatchResult.get(prize);
+            totalPrizeMoney += Prize.getPrizeMoney(prize, count);
         }
-    }
-
-    private int getPrizeCount(MatchCount matchCount) {
-        return totalMatchResult.getOrDefault(matchCount, 0);
-    }
-
-    public void sumPrizeMoney(int prizeMoney, int countPrize) {
-        totalPrizeMoney += prizeMoney*countPrize;
     }
 
     public void calculateReturnOfRate(int price) {

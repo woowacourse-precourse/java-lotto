@@ -44,4 +44,8 @@ public enum Prize {
                 .findFirst()
                 .orElse(NONE);
     }
+
+    public static int getPrizeMoney(Prize prize, int count) {
+        return prize.getPrizeMoney() * count;
+    }
 }
