@@ -9,7 +9,7 @@ public class DrawNumberGenerator {
     public static List<Lotto> Lottos;
 
     public void purchaseOutput() {
-        int lottoCount = ConsoleInput.purchaseCount;
+        int lottoCount = Purchase.calculate;
         System.out.println(Integer.toString(lottoCount) + LottoMessage.PURCHASE_MESSAGE.getMessage());
         for (int count = 0; count < lottoCount; count++) {
             List<Integer> oneLottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
