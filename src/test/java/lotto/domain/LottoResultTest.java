@@ -10,6 +10,7 @@ import lotto.helper.util.LottoResultTestUtils;
 import lotto.util.ranking.LottoRanking;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -91,6 +92,26 @@ class LottoResultTest {
             BigDecimal totalReward = lottoResult.calculateTotalReward();
 
             assertThat(totalReward).isEqualTo(lottoRanking.calculateTotalTargetLottoRankingReward(numberOfWins));
+        }
+    }
+
+    @Nested
+    @DisplayName("toString 메소드는")
+    class ToStringMethodTest {
+
+        @Test
+        @DisplayName("만약 호출되면 주어진 순서대로 당첨 통계 문자열을 반환한다.")
+        void success_test() {
+            LottoResult lottoResult = new LottoResult();
+
+            String actualString = lottoResult.toString();
+            assertThat(actualString).contains("당첨 통계");
+            assertThat(actualString).contains("---");
+            assertThat(actualString).contains("3개 일치 (5,000원) -");
+            assertThat(actualString).contains("4개 일치 (50,000원) -");
+            assertThat(actualString).contains("5개 일치 (1,500,000원) -");
+            assertThat(actualString).contains("5개 일치, 보너스 볼 일치 (30,000,000원) -");
+            assertThat(actualString).contains("6개 일치 (2,000,000,000원) -");
         }
     }
 }
