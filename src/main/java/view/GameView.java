@@ -1,8 +1,10 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
+import controller.LottoController;
 import controller.MoneyController;
 import controller.UserLottoController;
+import domain.Lotto;
 import domain.Money;
 import domain.UserLotto;
 
@@ -19,19 +21,23 @@ public class GameView {
     private static final String NUMBER_OF_MATCHES = "개";
     MoneyController moneyController = new MoneyController();
     UserLottoController userLottoController = new UserLottoController();
+    LottoController lottoController = new LottoController();
 
     public void start() {
         Money money = moneyController.getPurchaseAmount(inputPurchaseAmount());
 
         // 몇 장의 로또를 발행할 것인지 계산
         int purchaseNumber = moneyController.getAvailablePurchaseNumber(money);
-        System.out.println("\n" + purchaseNumber + NUMBER_OF_PURCHASE);
+        System.out.println("\n" + purchaseNumber + NUMBER_OF_PURCHASE + "\n");
 
         // 사용자에게 랜덤으로 로또 번호를 발행한다
         UserLotto userLotto = userLottoController.createUserLotto(purchaseNumber);
 
         // 구매한 로또 번호를 출력한다
         System.out.println(userLottoController.getUserLottoHistory(userLotto));
+
+        // 당첨 번호를 입력 한다
+        Lotto lotto = lottoController.createWinningNumber(inputWinningNumber());
     }
 
     public String inputPurchaseAmount() {
