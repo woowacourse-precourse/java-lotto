@@ -11,6 +11,9 @@ public class RandomLottoNumberCreator {
 
     public static final int CRITERION_ZERO = 0;
 
+    private RandomLottoNumberCreator() {
+    }
+
     public static List<Integer> createLottoNumber() {
         List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(
                 MINIMUM_LOTTO_NUMBER,

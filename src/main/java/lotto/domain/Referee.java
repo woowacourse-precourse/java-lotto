@@ -11,6 +11,9 @@ public class Referee {
     public static final int CRITERION_PERCENT_VALUE = 100;
     public static final int CRITERION_ROUND_VALUE = 10;
 
+    private Referee() {
+    }
+
     public static GameResultResponseDtos calculate(List<LottoResult> lottoResults, int purchasePrice) {
         double earningPrice = calculateEarningPrice(purchasePrice, LottoResult.sumWinnerPrice(lottoResults));
         Map<String, GameResultResponseDto> responseDtos = createResponseDtos(lottoResults);

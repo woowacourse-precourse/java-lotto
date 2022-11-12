@@ -8,6 +8,9 @@ public class LottosCreatorValidUtils {
     public static final String ERROR_PRICE_COUNT_NOT_EQUAL_LOTTO_SIZE = "[ERROR] 주어진 금액과 주어진 로또 번호의 개수가 일치하지 않습니다.";
     public static final int CRITERION_ZERO = 0;
 
+    private LottosCreatorValidUtils() {
+    }
+
     public static void validateCanPurchase(int purchasePrice) {
         if (!isDivided(purchasePrice)) {
             throw new IllegalArgumentException(ERROR_NOT_VALID_PRICE);
