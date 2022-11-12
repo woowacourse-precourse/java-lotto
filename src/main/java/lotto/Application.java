@@ -33,16 +33,12 @@ public class Application {
     private static Integer matchLottos(Lotto winLotto, List<Lotto> lottos){
         Integer matchThree = winLotto.matchWithList(lottos, THREE);
         LottoUI.printWinHistory(THREE, LottoEnum.MATCH_THREE_PRIZE.getValue(), matchThree);
-
         Integer matchFour = winLotto.matchWithList(lottos, FOUR);
         LottoUI.printWinHistory(FOUR, LottoEnum.MATCH_FOUR_PRIZE.getValue(), matchFour);
-
         Integer matchFive = winLotto.matchWithList(lottos, FIVE);
         LottoUI.printWinHistory(FIVE, LottoEnum.MATCH_FIVE_PRIZE.getValue(), matchFive);
-
         Integer matchFiveIncludeBonus = winLotto.matchWihListIncludeBonus(lottos, FIVE);
         LottoUI.printWinHistoryWithBonus(FIVE, LottoEnum.MATCH_FIVE_WITH_BONUS_PRIZE.getValue(), matchFiveIncludeBonus);
-
         Integer matchSix = winLotto.matchWithList(lottos, SIX);
         LottoUI.printWinHistory(SIX, LottoEnum.MATCH_SIX_PRIZE.getValue(), matchSix);
 
