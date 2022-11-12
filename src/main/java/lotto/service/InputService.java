@@ -16,4 +16,19 @@ public class InputService {
             .collect(Collectors.toList());
     }
 
+    public Integer getPurchaseAmount() {
+        System.out.println("구입 금액을 입력해 주세요.");
+        return getInteger();
+    }
+
+    public Integer getBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        return getInteger();
+    }
+
+    private static Integer getInteger() {
+        String input = readLine();
+        return Integer.valueOf(input);
+    }
+
 }
