@@ -27,7 +27,7 @@ public class LottoSeller {
         lottoMachine.inputWinNumber();
         lottoMachine.inputBonusNumber();
 
-        return new LottoPurchaseInfo(lottoNumbers, Long.parseLong("1"));
+        return new LottoPurchaseInfo(lottoNumbers, Long.parseLong(purchaseMoney));
 
     }
 
