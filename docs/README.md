@@ -86,11 +86,15 @@
          * input: None
          * output: Map winResult
 
-   * ErrorMessages
+   * Messages
      - 각종 입/출력에 필요한 메세지를 담는 Enum 객체
      - key: String 메세지 이름
      - value: String 메세지 내용
 
+   * ErrorMessages
+       - 각종 예외 처리에 필요한 메세지를 담는 Enum 객체
+       - key: String 메세지 이름
+       - value: String 메세지 내용
 
 2. Views
    * inputView
