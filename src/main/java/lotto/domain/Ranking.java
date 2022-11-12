@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.Arrays;
+
 public enum Ranking {
 
     FIFTH(3, 5_000, false),
@@ -17,5 +19,12 @@ public enum Ranking {
         this.rightCount = rightCount;
         this.prize = prize;
         this.hasBonusNumber = hasBonusNumber;
+    }
+
+    public static Ranking findRankingByRightCountAndHasBonusNumber(int rightCount, boolean hasBonusNumber) {
+        return Arrays.stream(Ranking.values())
+                .filter(ranking -> ranking.rightCount == rightCount && ranking.hasBonusNumber == hasBonusNumber)
+                .findAny()
+                .orElse(NOTHING);
     }
 }
