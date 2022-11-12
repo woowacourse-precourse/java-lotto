@@ -21,4 +21,9 @@ public class WinningNumbers {
                 .distinct()
                 .count();
     }
+
+    public boolean contains(int number) {
+        return winningNumbers.stream()
+                .anyMatch(winningNumber -> winningNumber.isSameValue(number));
+    }
 }

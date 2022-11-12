@@ -5,10 +5,11 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class WinningNumberSystem {
     public static final String REGULAR_EXPRESSION_FOR_WINNING_NUMBERS_INPUT = "\\d{1,2}\\,\\d{1,2}\\,\\d{1,2}\\,\\d{1,2}\\,\\d{1,2}\\,\\d{1,2}";
-    public static final String REGULAR_EXPRESSION_FOR_BONUS_NUMBER_INPUT = "\\d";
+    public static final String REGULAR_EXPRESSION_FOR_BONUS_NUMBER_INPUT = "\\d{1,2}";
 
     public WinningNumbers receiveWinningNumber() {
         String userInput = readUserInput(REGULAR_EXPRESSION_FOR_WINNING_NUMBERS_INPUT);
@@ -31,7 +32,13 @@ public class WinningNumberSystem {
 
     private void validateUserInput(String line, String regularExpression) {
         if (!line.matches(regularExpression)) {
-            throw new IllegalArgumentException("[ERROR] 여섯 개의 숫자를 \",\"로 구분해서 입력해야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 숫자 입력 형식이 맞지 않습니다.");
+        }
+    }
+
+    private void validateDuplication(int number, WinningNumbers winningNumbers) {
+        if (winningNumbers.contains(number)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨번호와 중복될 수 없습니다.");
         }
     }
 }

@@ -32,4 +32,8 @@ public class WinningNumber {
     public int hashCode() {
         return Objects.hash(number);
     }
+
+    public boolean isSameValue(int number) {
+        return this.number == number;
+    }
 }
