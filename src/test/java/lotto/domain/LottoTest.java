@@ -25,4 +25,12 @@ class LottoTest {
                 .hasMessageContaining(Lotto.DUPLICATION_ERROR_MESSAGE);
     }
 
+    @Test
+    @DisplayName("로또 번호가 1~45사이 번호아닌 경우 예외가 발생한다.")
+    void validateNumberScope() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 100)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(Lotto.SCOPE_ERROR_MESSAGE);
+    }
+
 }
