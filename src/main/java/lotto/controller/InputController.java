@@ -1,57 +1,56 @@
 package lotto.controller;
 
-import java.util.List;
-
-import lotto.service.InputService;
+import lotto.domain.UserPrice;
+import lotto.domain.WinnerNumber;
+import lotto.util.ValidUtil;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class InputController {
 
-	private final InputService inputService;
+	private final ValidUtil validUtil;
 	private final InputView inputView;
 	private final OutputView outputView;
 
-	public InputController(InputService inputService, InputView inputView, OutputView outputView) {
-		this.inputService = inputService;
+	public InputController(ValidUtil validUtil, InputView inputView, OutputView outputView) {
+		this.validUtil = validUtil;
 		this.inputView = inputView;
 		this.outputView = outputView;
 	}
 
-	public Integer getUserMoneyNumber() {
+	public UserPrice getUserMoneyNumber() {
 		String userMoney = inputView.printStart();
-		Integer userMoneyNumber;
+		UserPrice userPrice;
 		try {
-			userMoneyNumber = inputService.validateUserMoney(userMoney);
+			userPrice = new UserPrice(userMoney);
 		} catch (IllegalArgumentException e) {
 			outputView.printError(e.getMessage());
 			return null;
 		}
-		return userMoneyNumber;
+		return userPrice;
 	}
 
-	public List<Integer> getAnswerNumber() {
+	public WinnerNumber getAnswerNumber() {
 		String answer = inputView.printWinnerNumber();
-		List<Integer> answerNumber;
+		WinnerNumber winnerNumber;
 		try {
-			answerNumber = inputService.validAnswer(answer);
+			winnerNumber = new WinnerNumber(answer);
 		} catch (IllegalArgumentException e) {
 			outputView.printError(e.getMessage());
 			return null;
 		}
-		return answerNumber;
+		return winnerNumber;
 	}
 
-	public Integer getBonusNumber() {
+	public WinnerNumber getBonusNumber(WinnerNumber winnerNumber) {
 		String bonus = inputView.bonusNumber();
-		Integer bonusNumber;
 		try {
-			bonusNumber = inputService.validateBonus(bonus);
+			winnerNumber.updateBonusNumber(bonus);
 		} catch (IllegalArgumentException e) {
 			outputView.printError(e.getMessage());
 			return null;
 		}
-		return bonusNumber;
+		return winnerNumber;
 	}
 
 }
