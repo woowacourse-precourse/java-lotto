@@ -1,5 +1,7 @@
 package lotto.UI;
 
+import static lotto.CustomException.throwException;
+
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputMoney {
@@ -17,21 +19,22 @@ public class InputMoney {
         canBuyLotto(money);
     }
 
-    private boolean isNumber(String input) {
+    private boolean isNumber(String input) throws IllegalArgumentException {
         try {
             Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자 형식이 아닙니다.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] 숫자 형태의 입력이어야 합니다.");
+            throw e;
         }
         return true;
     }
 
-    private void canBuyLotto(int money) {
+    private void canBuyLotto(int money) throws IllegalArgumentException {
         if (money < 1000) {
-            throw new IllegalArgumentException("[ERROR] 1,000원 보다 커야합니다.");
+            throwException("[ERROR] 1,000원 보다 커야합니다.");
         }
         if (money / 100 % 10 != 0) {
-            throw new IllegalArgumentException("[ERROR] 1,000원 단위가 아닙니다.");
+            throwException("[ERROR] 1,000원 단위가 아닙니다.");
         }
     }
 }

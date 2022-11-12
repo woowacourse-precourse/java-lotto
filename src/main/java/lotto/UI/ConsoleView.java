@@ -12,7 +12,8 @@ public class ConsoleView {
     }
 
     public void printNumberOfLotto(int quantity) {
-        System.out.println("\n" + quantity + "개를 구매했습니다");
+        System.out.println();
+        System.out.println(quantity + "개를 구매했습니다.");
     }
 
     public void printLottos(List<Lotto> lottos) {
@@ -22,15 +23,18 @@ public class ConsoleView {
     }
 
     public void printRequestWinningNumbers() {
-        System.out.println("\n당첨 번호를 입력해 주세요");
+        System.out.println();
+        System.out.println("당첨 번호를 입력해 주세요.");
     }
 
     public void printRequestBonusNumber() {
-        System.out.println("\n보너스 번호를 입력해 주세요.");
+        System.out.println();
+        System.out.println("보너스 번호를 입력해 주세요.");
     }
 
     public void printTotalPrize(Map<String, Integer> totalPrize) {
-        System.out.println("\n당첨 통계");
+        System.out.println();
+        System.out.println("당첨 통계");
         System.out.println("---");
         for (PrizeRank value : PrizeRank.values()) {
             System.out.print(value.getDescription());
