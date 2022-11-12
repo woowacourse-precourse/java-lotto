@@ -44,3 +44,7 @@
 ---
 ### java enum 이용, 1등~5등까지 상금과 맞춘 숫자 갯수를 저장한다.
 - Enum 안에 `final static int prize` 와 `final static int matchedNumber` 을 작성한다.
+---
+### Exception을 throw 해야하는 경우에 수
+- 중복 숫자가 존재한다.
+- 숫자가 1보다 작고 45보다 크다.

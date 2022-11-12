@@ -49,6 +49,7 @@ public class Application {
         validateGivenNumbers();
         initializeBonusNumber();
         showStatistics();
+
     }
 
     public static void enterTheAmount() {
@@ -67,27 +68,31 @@ public class Application {
         return new Lotto(winningNumbers);
     }
 
-    public static boolean printTheErrorMessageIfNotInTheRange(List<Integer> numbers) {
+    public static boolean hasInvalidInput(List<Integer> numbers) {
         for (int number : numbers) {
-            if (number < 1 || number > 45) {
-                System.out.println(ERROR_MESSAGE);
-                return true;
-            }
+            if(isNotInRange(number)) return true;
         }
         return false;
     }
 
+    public static boolean isNotInRange(int number){
+        return number < 1 || number > 45;
+    }
+
     public static void validateGivenNumbers() {
-        do {
-            winning_number_lotto = generateSixNumbers();
-        } while (printTheErrorMessageIfNotInTheRange(winning_number_lotto.getNumbers()));
+        winning_number_lotto = generateSixNumbers();
+        if (hasInvalidInput(winning_number_lotto.getNumbers())) {
+            System.out.println(ERROR_MESSAGE);
+            throw new IllegalArgumentException();
+        }
+
     }
 
     public static void initializeBonusNumber() {
         System.out.println(BONUS_NUMBER_MESSAGE);
         do {
             BONUS_NUMBER = Integer.parseInt(Console.readLine());
-        } while (printTheErrorMessageIfNotInTheRange(List.of(BONUS_NUMBER)));
+        } while (hasInvalidInput(List.of(BONUS_NUMBER)));
     }
 
     public static Lotto generateRandomSixNumbers() {
