@@ -22,8 +22,12 @@ public class WinningNumber {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         WinningNumber that = (WinningNumber) o;
         return number == that.number;
     }
