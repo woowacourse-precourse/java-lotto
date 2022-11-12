@@ -33,7 +33,6 @@ public class WinningStatistics {
         return sumOfLottoCount * LOTTO_PRICE;
     }
 
-
     private double sumOfReward() {
         return (float) rankAndRankCount.keySet()
                 .stream()
@@ -45,7 +44,6 @@ public class WinningStatistics {
     private int sumOfOneRankReward(Rank rank) {
         return rank.getReward() * rankAndRankCount.get(rank);
     }
-
 
     private void initRankAndRankCount() {
         rankAndRankCount.put(Rank.NOTHING, STATISTICS_INIT_NUM);

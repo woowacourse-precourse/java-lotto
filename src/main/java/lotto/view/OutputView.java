@@ -17,7 +17,7 @@ public class OutputView {
     private static final String SECOND_RANK = "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n";
     private static final String FIRST_RANK = "6개 일치 (2,000,000,000원) - %d개\n";
     private static final String TOTAL_YIELD = "총 수익률은 %.1f%%입니다.\n";
-
+    private static final String ERROR_MESSAGE = "[ERROR] %s";
 
     public static void printRequestMoney() {
         System.out.println(REQUEST_MONEY);
@@ -48,5 +48,9 @@ public class OutputView {
 
     public static void printTotalYield(double totalYield) {
         System.out.printf(TOTAL_YIELD, totalYield);
+    }
+
+    public static void printErrorMessage(String errorMessage) {
+        System.out.printf(ERROR_MESSAGE, errorMessage);
     }
 }
