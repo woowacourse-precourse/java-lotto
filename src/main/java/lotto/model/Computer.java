@@ -58,6 +58,6 @@ public class Computer {
     }
 
     public int getBonusNumber(){
-        return 1;
+        return bonusNumber.getBonusNumber();
     }
 }
