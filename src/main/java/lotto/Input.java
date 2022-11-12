@@ -2,8 +2,10 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class Input {
+import java.util.ArrayList;
+import java.util.List;
 
+public class Input {
     public static String readString() {
         return Console.readLine();
     }
@@ -14,5 +16,19 @@ public class Input {
         } catch (Exception e) {
             throw new IllegalArgumentException(Error.ERROR_INPUT_PARSING_INT.getValue());
         }
+    }
+
+    public static List<Integer> readListInteger(String seperator) {
+        String input = readString();
+        String[] inputs = input.split(seperator);
+        List<Integer> separateInput = new ArrayList<>();
+        for (int inputIndex = 0; inputIndex < inputs.length; inputIndex++) {
+            try {
+                separateInput.add(Integer.parseInt(inputs[inputIndex]));
+            } catch (Exception e) {
+                throw new IllegalArgumentException(Error.ERROR_INPUT_PARSING_INT.getValue());
+            }
+        }
+        return separateInput;
     }
 }

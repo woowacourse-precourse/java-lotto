@@ -11,5 +11,11 @@ public class Application {
         user.buyLotto();
 
         Print.printLotto(user.getUserLottos());
+
+        Print.printWinningNumber();
+
+        WinningNumbers winningNumbers = new WinningNumbers();
+        winningNumbers.pickWinningNumbers();
+
     }
 }
