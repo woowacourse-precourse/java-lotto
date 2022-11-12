@@ -2,18 +2,25 @@ package lotto.ui;
 
 import java.util.List;
 
-public class LotteryView {
+public class LotteryView implements View {
+    private int lottoNumber;
+    private List<List<Integer>> lotteries;
 
-    public void makeLotteryView(int lottoNumber, List<List<Integer>> lotteries){
-        printNumberOfLotteries(lottoNumber);
-        printAllLotteries(lotteries);
+    public LotteryView(int lottoNumber, List<List<Integer>> lotteries){
+        this.lottoNumber = lottoNumber;
+        this.lotteries = lotteries;
+    }
+    @Override
+    public void makeView(){
+        printNumberOfLotteries();
+        printAllLotteries();
     }
 
-    private void printNumberOfLotteries(int lottoNumber){
+    private void printNumberOfLotteries(){
         System.out.println(lottoNumber + "개를 구매했습니다.");
     }
 
-    private void printAllLotteries(List<List<Integer>> lotteries){
+    private void printAllLotteries(){
         for(List<Integer> lottoNumbers: lotteries){
             System.out.println(lottoNumbers);
         }
