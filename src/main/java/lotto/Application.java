@@ -8,6 +8,23 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+
+        // 로또 구입 금액을 입력받는 메서드 호출
+        System.out.println("구입금액을 입력해 주세요.");
+        int inputMoney = getInputMoney();
+
+        // 금액에 따른 구매 개수를 구하는 메서드 호출
+        int purchaseNum = getPurchaseNum(inputMoney);
+        System.out.println(purchaseNum + "개를 구매했습니다.");
+
+        // 구매 개수에 맞게 로또를 발행하는 메서드 호출
+        // List<Lotto>
+
+        // 당첨 번호를 입력받는 메서드 호출
+
+        // 보너스 번호를 입력받는 메서드 호출
+
+        // 당첨 통계를 구하는 메서드 호출
     }
 
     public static int getInputMoney() {
