@@ -24,17 +24,20 @@ public class User {
         return numberResult;
     }
 
-        public int inputBuyPrice() {
+        public static int inputBuyPrice() {
             return Integer.parseInt(readLine());
         }
 
-        public void lottoDetailList () {
 
-            String lottoList = new String();
-            lottoList = readLine();
+
+        public static String lottoListSix(){
+            String Sixinput = readLine();
+            return Sixinput;
         }
 
-        public List<Integer> lottoToList (String UserIn){
+
+
+        public static List<Integer> lottoToList (String UserIn){
 
             String lottoList = new String();
             List<Integer> lottoToList1 = new ArrayList<>();
@@ -42,15 +45,19 @@ public class User {
 
             if (!lottoList.equals(UserIn)) {
                 lottoToList1.contains(lottoList);
+                System.out.println(repeatDestroy);
             }
+
 
             return (List<Integer>) repeatDestroy;
         }
 
-        public int bonusNumber() {
+        public static int bonusNumber() {
             Set<Integer> bonusNumber1 = new HashSet<>();
             String bonusNumberInput = new String(String.valueOf(bonusNumber1));
             return Integer.parseInt(readLine());
+
+
         }
 
 
