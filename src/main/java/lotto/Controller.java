@@ -34,15 +34,15 @@ public class Controller {
         for(Lotto eachLotto : lottoSet){
             eachLotto.setRank(winningLotto, bonusNumber);
             String rank = eachLotto.getRank();
+            addToResultMap(resultMap, rank);
         }
 
     }
-
     //당첨 기준별 로또 개수 세기 기능.
-    public void addToResultMap(Map<Integer, Integer> statistics, int matchCount) {
+    public void addToResultMap(Map<String, Integer> resultMap, String rank) {
         //putIfAbsent나 다른 것 사용해보기
-        int winningCount = statistics.getOrDefault(matchCount, 0);
-        statistics.put(matchCount, winningCount);
+        int winningCount = resultMap.getOrDefault(rank, 0);
+        resultMap.put(rank, winningCount+1);
     }
 
 }
