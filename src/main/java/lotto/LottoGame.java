@@ -13,7 +13,8 @@ public class LottoGame {
         Lottos lottos = purchaseLotto(amount.makeLottoTickets());
         BonusLotto bonusLotto = makeWinningLotto();
         Map<LottoOperator, Integer> winningResult = findWinningResult(lottos, bonusLotto);
-        Print.winningResult(amount.makeLottoTickets(), winningResult);
+        Print.winningResult(winningResult);
+        Print.yield(amount.makeLottoTickets(), winningResult);
     }
 
     private Lottos purchaseLotto(int lottoTickets) {

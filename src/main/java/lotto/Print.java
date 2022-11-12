@@ -26,9 +26,8 @@ public class Print {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-    public static void winningResult(int lottoTickets, Map<LottoOperator, Integer> winningResult) {
+    public static void winningResult(Map<LottoOperator, Integer> winningResult) {
         newLine();
-        double prizeMoney = 0;
         System.out.println("당첨 통계\n" + "---");
         for (LottoOperator lottoOperator : winningResult.keySet()) {
             if (lottoOperator == LottoOperator.NO_LUCK) {
@@ -36,17 +35,21 @@ public class Print {
             }
             if (lottoOperator == LottoOperator.FIVE_BONUS) {
                 printBonusResult(winningResult, lottoOperator);
-                prizeMoney += lottoOperator.getWinningAmount() * winningResult.get(lottoOperator);
                 continue;
             }
             printCommonResult(winningResult, lottoOperator);
-            prizeMoney += lottoOperator.getWinningAmount() * winningResult.get(lottoOperator);
         }
-        printYield(lottoTickets, prizeMoney);
     }
 
-    private static void printYield(int lottoTickets, double prizeMoney) {
+    public static void yield(int lottoTickets, Map<LottoOperator, Integer> winningResult) {
         int lottoAmount = lottoTickets * 1000;
+        double prizeMoney = 0;
+        for (LottoOperator lottoOperator : winningResult.keySet()) {
+            if (lottoOperator == LottoOperator.NO_LUCK) {
+                continue;
+            }
+            prizeMoney += lottoOperator.getWinningAmount() * winningResult.get(lottoOperator);
+        }
         String yield = String.format("%,.1f", (prizeMoney / lottoAmount) * 100);
         System.out.println("총 수익률은 " + yield + "%입니다.");
     }
