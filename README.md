@@ -113,7 +113,7 @@ BUILD SUCCESSFUL in 0s
         - [x] `public static void printBonusNumberMessage()`
         - [x] `public static int inputBonusNumber()`
         - [x] `public static void printLottoList(List<Lotto> lottoList)`
-        - [ ] `public static void printWinResult(HashMap<LottoRank, Integer> winResult)`
+        - [x] `public static void printWinResult(HashMap<LottoRank, Integer> winResult)`
         - [ ] `public static void printIncomePercent(int incomePercent)`
 
 ### 입출력 요구 사항

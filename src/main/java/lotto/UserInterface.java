@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class UserInterface {
@@ -41,5 +42,15 @@ public class UserInterface {
             List<Integer> numbers = lotto.getLottoNumbers();
             System.out.println(numbers);
         }
+    }
+
+    public static void printWinResult(HashMap<LottoRank, Integer> winResult) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.printf("3개 일치 (5,000원) - %d개\n", winResult.get(LottoRank.FIFTH));
+        System.out.printf("4개 일치 (50,000원) - %d개\n", winResult.get(LottoRank.FOURTH));
+        System.out.printf("5개 일치 (1,500,000원) - %d개\n", winResult.get(LottoRank.THIRD));
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", winResult.get(LottoRank.SECOND));
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", winResult.get(LottoRank.FIRST));
     }
 }
