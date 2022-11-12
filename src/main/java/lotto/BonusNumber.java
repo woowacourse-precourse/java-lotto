@@ -5,6 +5,8 @@ import java.util.List;
 public class BonusNumber {
     private static final int LOTTO_GAME_START_NUMBER = 1;
     private static final int LOTTO_GAME_END_NUMBER = 45;
+    private static final String COMMA = ",";
+    private static final String SPACE = " ";
     private final int bonusNumber;
 
     public BonusNumber(String bonusNumber, Lotto lottoNumbers) {
@@ -17,9 +19,11 @@ public class BonusNumber {
     }
 
     private void validate(String number, Lotto lottoNumbers) {
-        if (isStringEmpty(number) || !isDigit(number)) {
+        if (isStringEmpty(number)) {
             throw new IllegalArgumentException(ExceptionMessage.BONUS_OUT_OF_RANGE.getMessage());
-        } else if (!isBetweenLottoRange(convertStringToInt(number))) {
+        } else if (isSeparatorChar(number)) {
+            throw new IllegalArgumentException(ExceptionMessage.BONUS_IS_SEPARATE_CHAR.getMessage());
+        } else if (!isDigit(number) || !isBetweenLottoRange(convertStringToInt(number))) {
             throw new IllegalArgumentException(ExceptionMessage.BONUS_OUT_OF_RANGE.getMessage());
         } else if (isNumberInLotto(convertStringToInt(number), lottoNumbers)) {
             throw new IllegalArgumentException(ExceptionMessage.BONUS_DUPLICATE_VALUE.getMessage());
@@ -28,6 +32,10 @@ public class BonusNumber {
 
     private boolean isStringEmpty(String number) {
         return number == null || number.isBlank();
+    }
+
+    private boolean isSeparatorChar(String number) {
+        return number.contains(COMMA) || number.contains(SPACE);
     }
 
     private boolean isDigit(String number) {
