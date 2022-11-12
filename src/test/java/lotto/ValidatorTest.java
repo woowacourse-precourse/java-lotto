@@ -58,7 +58,7 @@ class ValidatorTest {
     @Test
     void test4() {
         //Given
-        String input = "l5000";
+        String input = "1000j";
 
         //When
         Throwable t = catchThrowable(() -> validateForIllegalInput(input));
@@ -66,20 +66,20 @@ class ValidatorTest {
         //Then
         assertThat(t)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(INVALID_INPUT_ERROR_MESSAGE);
+                .hasMessage(ERROR_MESSAGE + INVALID_INPUT_ERROR_MESSAGE);
     }
 
     private void validateForIllegalInput(String input) {
         Pattern pattern = Pattern.compile(REGEX_ONLY_NUMBER);
         Matcher matcher = pattern.matcher(input);
         if (!matcher.find()) {
-            throw new IllegalArgumentException(INVALID_INPUT_ERROR_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_INPUT_ERROR_MESSAGE);
         }
     }
 
     private void validateForDividedBy1000(int cost) {
         if (cost % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException(INVALID_COST_ERROR_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_COST_ERROR_MESSAGE);
         }
     }
 }

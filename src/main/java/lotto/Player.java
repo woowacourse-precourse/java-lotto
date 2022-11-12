@@ -13,16 +13,20 @@ public class Player {
     List<Lotto> lottoSet = new ArrayList<>();
 
     public Player() {
-        inputCostForLotto();
-        buyLotto();
-        printLottoNumber();
+        try {
+            inputCostForLotto();
+            buyLotto();
+            printLottoNumber();
+        } catch (IllegalArgumentException e) {
+
+        }
+
     }
 
     private void inputCostForLotto() {
         System.out.println(PURCHASE_MESSAGE);
         String input = Console.readLine();
         Validator.validateForIllegalInput(input);
-
         int cost = Integer.parseInt(input);
         Validator.validateForDividedBy1000(cost);
 

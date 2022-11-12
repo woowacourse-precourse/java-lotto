@@ -16,12 +16,12 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != LOTTO_COUNT) {
-            throw new IllegalArgumentException(INVALID_LENGTH_ERROR_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_LENGTH_ERROR_MESSAGE);
         }
 
         Set<Integer> lottoSet = new HashSet<>(numbers);
         if (lottoSet.size() != LOTTO_COUNT) {
-            throw new IllegalArgumentException(DUPLICATED_NUMBER_ERROR_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE + DUPLICATED_NUMBER_ERROR_MESSAGE);
         }
     }
 
