@@ -4,7 +4,7 @@ import lotto.utils.LottoValidator;
 
 import java.util.Objects;
 
-public class LottoNumber {
+public class LottoNumber implements Comparable<LottoNumber> {
     private final int lottoNumber;
 
     public LottoNumber(String lottoNumber) {
@@ -15,6 +15,11 @@ public class LottoNumber {
     public LottoNumber(int lottoNumber) {
         LottoValidator.validateLottoNumber(lottoNumber);
         this.lottoNumber = lottoNumber;
+    }
+
+    @Override
+    public int compareTo(LottoNumber o) {
+        return this.lottoNumber - o.lottoNumber;
     }
 
     @Override

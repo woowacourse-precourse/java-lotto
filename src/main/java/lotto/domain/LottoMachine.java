@@ -30,7 +30,7 @@ public class LottoMachine {
     }
 
     private List<LottoNumber> generateLottoNumbers() {
-        Set<LottoNumber> lotto = new HashSet<>();
+        SortedSet<LottoNumber> lotto = new TreeSet<>();
         while (lotto.size() < Lotto.LOTTO_SIZE) {
             LottoNumber lottoNumber = new LottoNumber(Randoms.pickNumberInRange(Lotto.MIN_NUMBER, Lotto.MAX_NUMBER));
             lotto.add(lottoNumber);
