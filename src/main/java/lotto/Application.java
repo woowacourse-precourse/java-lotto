@@ -97,11 +97,6 @@ public class Application {
         System.out.println("총 수익률은 " + surplusRate + "%입니다.");
     }
 
-    public static void printErrorAboutForm() {
-
-        System.out.println("[ERROR] 올바른 형식으로 입력해야 합니다.");
-    }
-
     public static void printErrorAboutSize() {
 
         System.out.println("[ERROR] 알맞은 개수의 숫자를 입력해야 합니다.");
@@ -167,7 +162,6 @@ public class Application {
 
         if ((character1 < 48 || character1 > 57) || (character2 < 48 || character2 > 57)) {
 
-            printErrorAboutForm();
             throw new IllegalArgumentException();
         }
 
@@ -178,7 +172,6 @@ public class Application {
         for (int i = 0; i < input.length(); i++) {
 
             if (input.charAt(i) != ',' && (input.charAt(i) < 48 || input.charAt(i) > 57)) {
-                printErrorAboutForm();
                 throw new IllegalArgumentException();
             }
             if (input.charAt(i) == ',') {
