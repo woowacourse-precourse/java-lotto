@@ -10,6 +10,7 @@ public class WinningLotto {
     private int lottoNumber;
     private int totalReward;
     private List<Integer> winningNumbers;
+    public static List<Integer> winningReward = Arrays.asList(2000000000, 30000000, 1500000, 50000, 5000, 0);
 
     public WinningLotto() {
         this.lottoNumber = 0;

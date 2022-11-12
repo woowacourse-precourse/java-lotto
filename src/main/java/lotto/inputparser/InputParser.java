@@ -28,6 +28,38 @@ public class InputParser {
     }
 
     /**
+     * 구입 금액 문자열이 정상적인 입력인지 확인하고, 정상적이면 구입 금액을 반환합니다.
+     * @param amount 구입 금액에 해당하는 문자열
+     * @return 구입 금액
+     */
+    public static int parsePurchaseAmount(String amount) {
+        if (!isNumber(amount)) {
+            alertError(IS_NOT_PURCHASE_NUMBER);
+        }
+        int purchaseAmount = Integer.parseInt(amount);
+        if (purchaseAmount < 0) {
+            alertError(INVALID_PURCHASE_AMOUNT);
+        }
+        return Integer.parseInt(amount);
+    }
+
+    /**
+     * 보너스 번호에 해당하는 문자열이 정상적인 번호인지 판단하고, 정상적인 경우 파싱된 결과를 반환합니다.
+     * @param number 보너스 번호에 해당하는 문자열
+     * @return 보너스 번호
+     */
+    public static int parseBonusNumber(String number) {
+        if (!isNumber(number)) {
+            alertError(IS_NOT_BONUS_NUMBER);
+        }
+        int bonusNumber = Integer.parseInt(number);
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            alertError(OUT_OF_RANGE);
+        }
+        return Integer.parseInt(number);
+    }
+
+    /**
      * 입력 문자열이 정상적인 입력인지 판단하는 기능을 담당합니다
      * 다음의 경우 예외가 발생합니다.
      *   1. 입력으로 받은 문자열이 쉼표와 숫자 로만 이루어지지 않은 경우

@@ -24,7 +24,20 @@ public enum InputLottoType {
     /**
      * 중복된 숫자를 포함한 비정상적인 문자열을 의미합니다.
      */
-    DUPLICATED_NUMBER("중복된 숫자를 입력할 수 없습니다.");
+    DUPLICATED_NUMBER("중복된 숫자를 입력할 수 없습니다."),
+    /**
+     * 구입 금액 입력시 비정상적인 금액을 입력했음을 의미합니다.
+     */
+    INVALID_PURCHASE_AMOUNT("유효하지 않은 구입금액입니다."),
+    /**
+     * 구입 금액 입력시 숫자를 입력하지 않았음을 의미합니다.
+     */
+    IS_NOT_PURCHASE_NUMBER("숫자를 입력해야 합니다."),
+    /**
+     * 보너스 번호 입력 시 숫자를 입력하지 않았음을 의미합니다.
+     */
+    IS_NOT_BONUS_NUMBER("숫자를 입력해야 합니다.")
+    ;
 
     private final String errorMessage;
 
