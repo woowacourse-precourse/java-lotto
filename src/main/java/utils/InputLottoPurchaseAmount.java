@@ -15,7 +15,8 @@ public class InputLottoPurchaseAmount {
 	private static long validate(String purchaseAmount) {
 		validateNumeric(purchaseAmount);
 		long purchaseAmountResult = Long.parseLong(purchaseAmount);
-		validatePurchaseAmountRange(purchaseAmountResult);
+		validateMinimumPurchaseAmount(purchaseAmountResult);
+		validateMaximumPurchaseAmount(purchaseAmountResult);
 		validatePurchaseAmountUnit(purchaseAmountResult);
 
 		return purchaseAmountResult;
@@ -28,14 +29,20 @@ public class InputLottoPurchaseAmount {
 		}
 	}
 
-	private static void validatePurchaseAmountRange(long purchaseAmoutResult) {
-		if (purchaseAmoutResult < 1000) {
-			throw new IllegalArgumentException("[ERROR] 로또 최소 구입금액은 1000원 입니다.");
+	private static void validateMinimumPurchaseAmount(long purchaseAmountResult) {
+		if (purchaseAmountResult < 1000) {
+			throw new IllegalArgumentException("[ERROR] 로또 최소 구입금액은 1,000원 입니다.");
 		}
 	}
 
-	private static void validatePurchaseAmountUnit(long purchaseAmoutResult) {
-		if (purchaseAmoutResult % 1000 != 0) {
+	private static void validateMaximumPurchaseAmount(long purchaseAmountResult) {
+		if (purchaseAmountResult > 8145060000L) {
+			throw new IllegalArgumentException("[ERROR] 로또 최대 구입금액은 8,145,060,000원 입니다.");
+		}
+	}
+
+	private static void validatePurchaseAmountUnit(long purchaseAmountResult) {
+		if (purchaseAmountResult % 1000 != 0) {
 			throw new IllegalArgumentException("[ERROR] 로또 구입금액은 1000원 단위여야 합니다.");
 		}
 	}
