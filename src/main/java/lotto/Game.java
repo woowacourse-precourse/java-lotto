@@ -9,6 +9,7 @@ public class Game {
     private final List<Lotto> lottoTickets = new ArrayList<>();
     private Lotto winningNumbers;
     private int validAmount;
+    private int bonusNumber;
 
     public Game() {
         view.printAmountInput();
@@ -23,6 +24,7 @@ public class Game {
         getLottoNumbers(validAmount / 1000);
         printLottoNumbers();
         getWinningNumbers();
+        getBonusNumber();
 
     }
 
@@ -63,6 +65,11 @@ public class Game {
         view.printGetWinningNumber();
         this.winningNumbers = new Lotto(view.getWinningNumber());
 
+    }
+
+    public void getBonusNumber() {
+        view.printGetBonusNumber();
+        this.bonusNumber = view.getBonusNumber();
     }
 
 }

@@ -8,7 +8,8 @@ public enum GameConstant {
     DUPLICATE_EXCEPTION("[ERROR] 중복된 숫자가 있습니다."),
     SIZE_EXCEPTION("[ERROR] 6개의 숫자만 허용됩니다."),
     NUMBER_OF_GAME("개를 구매했습니다."),
-    GET_WINNING_NUMBER("당첨 번호를 입력해 주세요.");
+    GET_WINNING_NUMBER("당첨 번호를 입력해 주세요."),
+    GET_BONUS_NUMBER("보너스 번호를 입력해 주세요.");
 
 
     private final String value;
