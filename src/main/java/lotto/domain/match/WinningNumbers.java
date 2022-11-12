@@ -1,5 +1,7 @@
 package lotto.domain.match;
 
+import java.util.Objects;
+import java.util.stream.Collectors;
 import lotto.domain.lotto.Lotto;
 
 import java.util.List;
@@ -41,10 +43,6 @@ public class WinningNumbers {
         }
     }
 
-    public Reward match(Lotto lotto) {
-        return Reward.find(getMatchedNumberCount(lotto), isMatchedBonus(lotto));
-    }
-
     private int getMatchedNumberCount(Lotto lotto) {
         return (int) lotto.value().stream()
                 .filter(standardNumbers::contains)
@@ -54,5 +52,16 @@ public class WinningNumbers {
     private boolean isMatchedBonus(Lotto lotto) {
         return lotto.value().stream()
                 .anyMatch(number -> number == bonusNumber);
+    }
+
+    private Reward match(Lotto lotto) {
+        return Reward.find(getMatchedNumberCount(lotto), isMatchedBonus(lotto));
+    }
+
+    public Results matchAll(List<Lotto> lottos) {
+        return new Results(lottos.stream()
+                .map(this::match)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList()));
     }
 }

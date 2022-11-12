@@ -1,8 +1,6 @@
 package lotto;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 import lotto.console.Input;
 import lotto.console.Output;
 import lotto.domain.lotto.Lotto;
@@ -60,14 +58,6 @@ public class LottoGame {
         return new WinningNumbers(standardNumbers, bonusNumber);
     }
 
-    private Results matchLottoWithWinningNumbers(List<Lotto> lottos,
-            WinningNumbers winningNumbers) {
-        return new Results(lottos.stream()
-                .map(winningNumbers::match)
-                .filter(Objects::nonNull)
-                .collect(Collectors.toList()));
-    }
-
     private void printStatisticsWithBonus(Results results, Reward reward) {
         output.writeMatchStatisticWithBonus(
                 reward.getMatch(),
@@ -112,7 +102,7 @@ public class LottoGame {
             printLottos(lottos);
 
             WinningNumbers winningNumbers = inputWinningNumbers();
-            Results results = matchLottoWithWinningNumbers(lottos, winningNumbers);
+            Results results = winningNumbers.matchAll(lottos);
 
             printStatistics(results);
             printYield(results, money);
