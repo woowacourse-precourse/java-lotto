@@ -3,13 +3,13 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 public class Lotto {
     private final List<Integer> numbers;
-    private Integer bonusNumber;
+    private Integer bonusNumber = null;
 
     public Lotto(List<Integer> numbers) {
         validateSize(numbers);
@@ -20,6 +20,44 @@ public class Lotto {
 
     public void sort() {
         numbers.sort(Comparator.naturalOrder());
+    }
+
+    public Integer matchWithList(List<Lotto> lottos, Integer matchAmount) {
+        Integer matchingLottos = 0;
+        for (Lotto lotto : lottos) {
+            if (Objects.equals(this.match(lotto), matchAmount) && !bonusMatch(lotto)) {
+                matchingLottos++;
+            }
+        }
+        return matchingLottos;
+    }
+
+    public Integer matchWihListIncludeBonus(List<Lotto> lottos, Integer matchAmount) {
+        Integer matchingLottos = 0;
+        for (Lotto lotto : lottos) {
+            if (Objects.equals(this.match(lotto), matchAmount) && bonusMatch(lotto)) {
+                matchingLottos++;
+            }
+        }
+        return matchingLottos;
+    }
+
+    public Integer match(Lotto lotto) {
+        Integer matchAmount = 0;
+
+        List<Integer> numbers = lotto.getNumbers();
+        for (Integer number : numbers) {
+            if (this.getNumbers().contains(number)) {
+                matchAmount++;
+            }
+        }
+
+        return matchAmount;
+    }
+
+    public boolean bonusMatch(Lotto lotto) {
+        checkBonusNumberSet();
+        return lotto.getNumbers().contains(this.bonusNumber);
     }
 
     public void setBonusNumber(Integer bonusNumber) {
@@ -44,8 +82,14 @@ public class Lotto {
     }
 
     private void validateBonusNumberDuplicate(Integer bonusNumber) {
-        if (this.numbers.contains(bonusNumber)){
+        if (this.numbers.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR]보너스 번호가 기존 당첨 번호와 중복됩니다.");
+        }
+    }
+
+    private void checkBonusNumberSet() {
+        if (this.bonusNumber == null) {
+            throw new IllegalArgumentException("[ERROR]보너스 번호가 입력되어 있지 않습니다.");
         }
     }
 
