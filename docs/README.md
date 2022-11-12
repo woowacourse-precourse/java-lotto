@@ -95,3 +95,14 @@
   - 로또 범위와 총 개수를 관리하는 Enum `LottoEnum`을 생성
   - 해당 Enum에는 START_NUM(1), END_NUM(45), SIZE(6)이 존재
   - 상수가 필요할때마다 해당 Enum을 호출해 상수를 받음
+
+- 이 다음은 사용자에게 당첨 번호를 입력받는 것이다.
+  - 역시나 `Console` 클래스의 `readLine()` 메소드를 이용해 값을 받은 뒤 해당값을 이용해 당첨 번호 객체를 생성해야 한다.
+  - 따라서 `inputWinNumber` 메소드를 생성했다.
+  - `inputWinNumber`에서 입력받은 문자열을 처리하기 위해 `ProcessVariable` 클래스를 생성한 뒤 `makeWinNumber` 메소드를 생성했다.
+  - 여기서 한 가지 문제점이 발생했는데 사용자가 입력하는 로또 당첨 번호는 보너스 번호도 입력된다는 것이다.
+  - 과제의 요구 사항에 `Lotto` 클래스에 인스턴스 변수를 생성하는 것을 제한했으므로 방법을 생각해내야 했다.
+  - 이를 위해 `Lotto` 클래스를 상속받는 `LottoWin` 클래스를 만들기로 했다.
+  - `makeWinNumber`에서 보너스 번호를 담당하려고 했으나 메소드 별로 역할을 최대한 잘게 쪼개기 위해
+  - `ProcessVariable` 클래스에 `makeBonusNumber` 메소드를 생성했다.
+  - 따라서 `inputWinNumber` 메소드는 `Lotto` 클래스를 상속받은 `LottoWin` 클래스 객체를 반환한다.
