@@ -15,6 +15,19 @@ public class LottoService {
 
     LottoGameMessage lottoGameMessage = new LottoGameMessage();
 
+    public void gameProgress(){
+        Player player = new Player();
+
+        inputPurchasePriceAndCheckException(player);
+        printPlayerLottoNumberAndCreateLottoNumber(player);
+        Lotto winningLotto = inputWinningLottoNumber();
+        Integer lottoBonusNumber = inputBonusNumber(winningLotto);
+        checkWinningNumberAndBonusNumber(winningLotto);
+
+        comparePlayerLottoNumberAndWinningLottoNumberLogic(player,winningLotto,lottoBonusNumber);
+        lookForPlayerLottoRevenue(player);
+        printPlayerLottoResult(player);
+    }
 
     public void inputPurchasePriceAndCheckException(Player player){
         lottoGameMessage.printPurchasePriceMessage();
@@ -128,7 +141,7 @@ public class LottoService {
 
     public void isDuplicate(List<Integer> winningLottoNumbers){
         Set<Integer> checkDuplicateNumber = new HashSet<>();
-9
+
         for (Integer winningLottoNumber : winningLottoNumbers) {
             if(checkDuplicateNumber.contains(winningLottoNumber))
                 throw new IllegalArgumentException(Constant.EXIST_DUPLICATE_NUMBER_EXCEPTION);
