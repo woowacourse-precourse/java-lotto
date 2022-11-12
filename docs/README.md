@@ -34,7 +34,7 @@
 - void printCashInputBox()
   - "구입금액을 입력해 주세요."를 출력하는 함수
   - 구입금액 입력 전 구입금액 입력이 이루어져야함을 알리는 함수
-
+  
 
 - void printLottoQuantity(int)
   - 발행한 로또 수량을 출력하는 함수
@@ -185,6 +185,14 @@
 
 - Double calculateSurplus(int, int, int, int, int, int)
   - 수익률을 계산하는 함수
+
+
+- void showLotto(int, List<Integer>)
+  - 발행된 로또와 관련된 정보에 대한 출력이 진행되는 함수
+
+
+- void showStats(List<Lotto>, List<Integer>, int, int)
+  - 로또 통계와 관련된 정보에 대한 출력이 진행되는 함수
 
 
 ## ✏️ GRADE enum
