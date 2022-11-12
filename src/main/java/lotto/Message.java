@@ -16,6 +16,14 @@ public class Message {
         }
     }
 
+    public void printPlsInputWinNumber() {
+        printMsg("당첨 번호를 입력해 주세요.");
+    }
+
+    public void printPlsInputBonusNumber() {
+        printMsg("보너스 번호를 입력해 주세요.");
+    }
+
     public void printMsg(String msg) {
         System.out.println(msg);
     }
