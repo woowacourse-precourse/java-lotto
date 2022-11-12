@@ -1,10 +1,12 @@
 package lotto;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -23,5 +25,17 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("발행된 하나의 로또의 숫자는 1 ~ 45의 값을 갖는 6개의 중복되지 않는 숫자이다.")
+    @Test
+    void createLottoByRangeNumber() {
+        LottoMachine lottoMachine = new LottoMachine();
+        List<Integer> lotto = lottoMachine.getLottoNumber();
+
+        assertThat(lotto.size()).isEqualTo(6);
+        assertThat(lotto).doesNotHaveDuplicates();
+
+        lotto.stream().forEach(
+                (number) -> Assertions.assertTrue(1 <= number && number <= 45)
+        );
+    }
 }
