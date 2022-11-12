@@ -22,6 +22,12 @@ public class Lotto {
         this.numbers=numbers;
     }
 
+    public int countContainedNumbersIn(Lotto another) {
+        return (int)this.numbers.stream()
+                .filter(number -> another.numbers.contains(number))
+                .count();
+    }
+
     private void validate(List<Integer> numbers) {
         isValidSize(numbers);
         hasDuplicateNumber(numbers);
@@ -33,7 +39,7 @@ public class Lotto {
         canSplit(userInput);
         isConsistWithProperRange(userInput);
     }
-    
+
     private List<Integer> toList(String userInput) {
         return Arrays.stream(userInput.split(","))
                 .mapToInt(Integer::parseInt)
