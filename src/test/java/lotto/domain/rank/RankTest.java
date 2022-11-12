@@ -2,6 +2,8 @@ package lotto.domain.rank;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -40,36 +42,29 @@ class RankTest {
                 .isEqualTo(reward);
     }
 
-    @Test
-    @DisplayName("4등 상금은 50,000 원이다.")
-    void fourthPlaceRewardIs2_000_000_000Won() {
-        // given
-        final int reward = 50_000;
-
-        // when, then
-        assertThat(Rank.FOURTH.getReward())
-                .isEqualTo(reward);
+    @ParameterizedTest(name = "{0}개의 번호가 일치하면 RANK는 {1}이다")
+    @CsvSource({
+            "6, FIRST",
+            "5, THIRD",
+            "4, FOURTH",
+            "3, FIFTH",
+            "2, UNWINNABLE",
+            "1, UNWINNABLE",
+            "0, UNWINNABLE"
+    })
+    void judgementRankByMatchNumberCount(final int matchCount, final String rank) {
+        assertThat(Rank.matchRank(matchCount, false))
+                .isEqualTo(Rank.valueOf(rank));
     }
-
     @Test
-    @DisplayName("5등 상금은 5,000 원이다.")
-    void fifthPlaceRewardIs2_000_000_000Won() {
+    @DisplayName("5개의 번호가 일치하고 보너스 번호가 일치하면 2등이다.")
+    void fiveMatchNumberAndBonusMatchIsSecond() {
         // given
-        final int reward = 5_000;
+        final int matchCount = 5;
+        final boolean matchBonus = true;
 
         // when, then
-        assertThat(Rank.FIFTH.getReward())
-                .isEqualTo(reward);
-    }
-
-    @Test
-    @DisplayName("당첨되지 않으면 상금은 없다")
-    void noneRewardIs0() {
-        // given
-        final int reward = 0;
-
-        // when, then
-        assertThat(Rank.UNWINNABLE.getReward())
-                .isEqualTo(reward);
+        assertThat(Rank.matchRank(matchCount, matchBonus))
+                .isEqualTo(Rank.SECOND);
     }
 }
