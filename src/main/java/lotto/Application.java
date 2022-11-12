@@ -10,7 +10,7 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
-    public static int checkInputCondition(String input) {
+    public static int checkBuyingPriceCondition(String input) {
         for (int i = 0; i < input.length(); i++) {
             if (!Character.isDigit(input.charAt(i))) {
                 throw new IllegalArgumentException(ErrorResponse.INPUT_CONTAINS_CHAR_ERROR.getErrorMessage());
@@ -20,7 +20,7 @@ public class Application {
         return Integer.parseInt(input);
     }
 
-    public static int convertBuyingPriceIntoLotteries(int buyingPrice) {
+    public static int convertBuyingPriceIntoTicketAmount(int buyingPrice) {
         if (buyingPrice % 1000 != 0) {
             throw new IllegalArgumentException(ErrorResponse.INPUT_BUYING_RANGE_ERROR.getErrorMessage());
         }
@@ -37,6 +37,25 @@ public class Application {
         }
 
         return lottoTickets;
+    }
+
+    private static List<List<Integer>> buyLotto() {
+        System.out.println("구입금액을 입력해 주세요.");
+        String userInput = Console.readLine();
+        System.out.println();
+        int buyingPrice = checkBuyingPriceCondition(userInput);
+        int ticketAmount = convertBuyingPriceIntoTicketAmount(buyingPrice);
+        List<List<Integer>> lottoTickets = getLottoTickets(ticketAmount);
+
+        return lottoTickets;
+    }
+
+    private static void printMyLottoTickets(List<List<Integer>> lottoTickets) {
+        int size = lottoTickets.size();
+        System.out.println(size + "개를 구매했습니다.");
+        for (List<Integer> lottoTicket : lottoTickets) {
+            System.out.println(lottoTicket);
+        }
     }
 
     public static String validateWinnerNumberContainsComma(String userInput) {
