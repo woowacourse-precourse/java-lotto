@@ -5,8 +5,6 @@ import lotto.*;
 import java.util.List;
 
 public class LottoCalculator {
-    private final static int LOTTOPRICE = 1000;
-
     public static int rankOfThisLotto (List<Integer> myLotto, List<Integer> winningLotto, int bonusNumber) {
         int count = 0;
         int remainNumber;
@@ -30,13 +28,9 @@ public class LottoCalculator {
         float prizeMoney = 0;
         int index = 1;
         RankOfLotto[] rankOfLotto = RankOfLotto.values();
-        for (int count: rankOfMyLotto) {
+        for (int count : rankOfMyLotto) {
             prizeMoney += count * rankOfLotto[index].getMoney();
         }
         return (prizeMoney / cost) * 100;
-    }
-
-    public static int numberOfLotto (int budget) {
-        return budget / LOTTOPRICE;
     }
 }

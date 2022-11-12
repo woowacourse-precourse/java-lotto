@@ -8,16 +8,22 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class ManageLotto {
-    public List<Lotto> makeMYLotto(int number) {
-        List<Lotto> myLotto = new ArrayList<>();
+    private final static int LOTTOPRICE = 1000;
+    public static int lottoNum;
+    public List<Lotto> myLotto = new ArrayList<>();
+
+    public void makeMyLotto(int number) {
+        myLotto.clear();
         for (int count = 0; count < number; count++) {
             myLotto.add(new Lotto(pickNumbers()));
         }
-
-        return myLotto;
     }
 
     public List<Integer> pickNumbers() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    }
+
+    public void numberOfLotto (String budget) {
+        lottoNum = Integer.valueOf(budget) / LOTTOPRICE;
     }
 }
