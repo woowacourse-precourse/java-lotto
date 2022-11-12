@@ -14,19 +14,19 @@ public class Generator {
     }
 
     public List<List<Integer>> createLotto() {
-        List<List<Integer>> lottos = new ArrayList<>();
+        List<List<Integer>> playerLotto = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
             List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Collections.sort(lotto);
-            lottos.add(lotto);
+            playerLotto.add(lotto);
         }
-        printLotto(lottos);
-        return lottos;
+        printLotto(playerLotto);
+        return playerLotto;
     }
 
-    private void printLotto(List<List<Integer>> lottos) {
+    private void printLotto(List<List<Integer>> playerLotto) {
         System.out.println(lottoCount + "개를 구매했습니다.");
-        for (List<Integer> lotto : lottos) {
+        for (List<Integer> lotto : playerLotto) {
             System.out.println(lotto);
         }
     }

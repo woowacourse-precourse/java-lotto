@@ -12,7 +12,7 @@ public class Application {
         int purchaseAmount = askPurchaseAmount();
         int lottoCount = Purchase.getLottoCount(purchaseAmount);
         Generator generator = new Generator(lottoCount);
-        List<List<Integer>> lottos = generator.createLotto();
+        List<List<Integer>> playerLotto = generator.createLotto();
     }
 
     private static int askPurchaseAmount() {
