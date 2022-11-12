@@ -10,18 +10,23 @@ public class LottoDraw {
 
     private int totalPrizeMoney;
     private Map<String, Integer> numberOfWins = new HashMap<>();
-    private final List<Integer> winningNumber;
+    private final List<Integer> winningNumbers;
+    private final int bonusNumber;
 
     public LottoDraw() {
         this.totalPrizeMoney = 0;
         for (int rank = 1; rank <= 5; rank++) {
             numberOfWins.put(String.valueOf(rank) + "등", 0);
         }
-        List<Integer> numbers = UI.enterWinningNumber();
-        validate(numbers);
-        validateDuplication(numbers);
-        validateNumberRange(numbers);
-        winningNumber = numbers;
+        winningNumbers = UI.enterWinningNumber();
+        validate(winningNumbers);
+
+        bonusNumber = UI.enterBonusNumber();
+        List<Integer> numbersWithBonusNumber = new ArrayList<>(winningNumbers);
+        numbersWithBonusNumber.add(bonusNumber);
+
+        validateDuplication(numbersWithBonusNumber);
+        validateNumberRange(numbersWithBonusNumber);
     }
 
     private void validate(List<Integer> numbers) {
@@ -54,7 +59,11 @@ public class LottoDraw {
         return numberOfWins;
     }
 
-    public List<Integer> getWinningNumber() {
-        return winningNumber;
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 }

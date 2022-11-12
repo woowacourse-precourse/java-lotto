@@ -15,6 +15,10 @@ public class UI {
         return Arrays.asList(numbers);
     }
 
+    public static Integer enterBonusNumber() {
+        return Integer.parseInt(Console.readLine());
+    }
+
     public static int getCost() {
         return cost;
     }

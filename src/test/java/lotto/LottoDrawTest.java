@@ -13,7 +13,7 @@ class LottoDrawTest {
 
     @Test
     void init() {
-        ByteArrayInputStream in = new ByteArrayInputStream("1,3,5,7,9,13".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream("1,3,5,7,9,13\n15".getBytes());
         System.setIn(in);
 
         LottoDraw lottoDraw = new LottoDraw();
@@ -26,12 +26,12 @@ class LottoDrawTest {
 
     @Test
     void enterWinningNumber() {
-        ByteArrayInputStream in = new ByteArrayInputStream("1,3,5,7,9,13".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream("1,3,5,7,9,13\n15".getBytes());
         System.setIn(in);
 
 
         LottoDraw lottoDraw = new LottoDraw();
-        assertThat(lottoDraw.getWinningNumber()).isEqualTo(List.of(1, 3, 5, 7, 9, 13));
+        assertThat(lottoDraw.getWinningNumbers()).isEqualTo(List.of(1, 3, 5, 7, 9, 13));
     }
 
     @Test
@@ -46,7 +46,7 @@ class LottoDrawTest {
 
     @Test
     void numberDuplicateValidation() {
-        ByteArrayInputStream in = new ByteArrayInputStream("1,3,5,3,9,11".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream("1,3,5,3,9,11\n12".getBytes());
         System.setIn(in);
 
         assertThatThrownBy(() -> new LottoDraw())
@@ -56,7 +56,37 @@ class LottoDrawTest {
 
     @Test
     void numberRangeValidation() {
-        ByteArrayInputStream in = new ByteArrayInputStream("1,2,46,3,9,11".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream("1,2,46,3,9,11\n12".getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(() -> new LottoDraw())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 로또 당첨 번호는 1 ~ 45 범위입니다.");
+    }
+
+    @Test
+    void enterBonusNumber() {
+        ByteArrayInputStream in = new ByteArrayInputStream("1,2,3,4,5,6\n7".getBytes());
+        System.setIn(in);
+
+        LottoDraw lottoDraw = new LottoDraw();
+
+        assertThat(lottoDraw.getBonusNumber()).isEqualTo(7);
+    }
+
+    @Test
+    void bonusNumberDuplicateValidation() {
+        ByteArrayInputStream in = new ByteArrayInputStream("1,2,3,4,5,6\n3".getBytes());
+        System.setIn(in);
+
+        assertThatThrownBy(() -> new LottoDraw())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 로또 당첨 번호는 중복될 수 없습니다.");
+    }
+
+    @Test
+    void bonusNumberRangeValidation() {
+        ByteArrayInputStream in = new ByteArrayInputStream("1,2,3,4,5,6\n0".getBytes());
         System.setIn(in);
 
         assertThatThrownBy(() -> new LottoDraw())
