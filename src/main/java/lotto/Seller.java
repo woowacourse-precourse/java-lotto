@@ -8,8 +8,15 @@ public class Seller {
     private static final int LOTTO_PRICE = 1000;
 
     public List<Lotto> issueLottos(int money) {
+        validateGreaterThanZero(money);
         validateNoRemainder(money);
         return issueRandomLottos(amountToIssue(money));
+    }
+
+    private void validateGreaterThanZero(int money) {
+        if (money < 0) {
+            throw new IllegalArgumentException("금액은 음수이면 안됩니다");
+        }
     }
 
     private void validateNoRemainder(int money) {

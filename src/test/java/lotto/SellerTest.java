@@ -23,4 +23,12 @@ public class SellerTest {
 
         assertThatIllegalArgumentException().isThrownBy(() -> seller.issueLottos(14123));
     }
+
+    @DisplayName("금액이 음수면 예외를 발생시킨다")
+    @Test
+    void negative_money_throws_IllegalArgumentException() {
+        Seller seller = new Seller();
+
+        assertThatIllegalArgumentException().isThrownBy(() -> seller.issueLottos(-1000));
+    }
 }
