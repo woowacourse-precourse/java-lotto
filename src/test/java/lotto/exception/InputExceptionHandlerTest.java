@@ -35,4 +35,48 @@ class InputExceptionHandlerTest {
 		).isInstanceOf(IllegalArgumentException.class);
 	}
 
+	@ParameterizedTest
+	@DisplayName("당첨번호가 중복되지 않은1~45숫자로 입력 받을 경우 예외 발생하지않음")
+	@ValueSource(strings = {"1,4,6,20,30,45"})
+	void checkWinningNumberFormTest(String input) {
+		assertThatCode(
+			() -> InputExceptionHandler.checkWinningNumberForm(input)
+		).doesNotThrowAnyException();
+	}
+
+	@ParameterizedTest
+	@DisplayName("당첨 번호가 중복 될 경우 예외 발생")
+	@ValueSource(strings = {"1,2,3,4,5,5", "1,2,2,2,2,2"})
+	void checkDuplicatedWinningNumberTest(String input) {
+		assertThatThrownBy(
+			() -> InputExceptionHandler.checkWinningNumberForm(input)
+		).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@ParameterizedTest
+	@DisplayName("당첨 번호입력이 숫자와 쉼표가 아닐 경우 예외 발생")
+	@ValueSource(strings = {"1.2.3.4.5.6", "a,b,3,4,5,6"})
+	void checkNumberAndRest(String input) {
+		assertThatThrownBy(
+			() -> InputExceptionHandler.checkWinningNumberForm(input)
+		).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@ParameterizedTest
+	@DisplayName("당첨 번호가 1~45 사이가 아닐 경우 예외 발생")
+	@ValueSource(strings = {"1,2,56,3,4,5", "0,1,2,3,4,5,6"})
+	void checkBetweenNumbersTest(String input) {
+		assertThatThrownBy(
+			() -> InputExceptionHandler.checkWinningNumberForm(input)
+		).isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@ParameterizedTest
+	@DisplayName("당첨 번호가 1~45 사이가 아닐 경우 예외 발생")
+	@ValueSource(strings = {"1,2,3,4,5,6,7", "0,1,2,3"})
+	void checkWinningNumberCountTest(String input) {
+		assertThatThrownBy(
+			() -> InputExceptionHandler.checkWinningNumberForm(input)
+		).isInstanceOf(IllegalArgumentException.class);
+	}
 }
