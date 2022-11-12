@@ -23,6 +23,16 @@ public class LottoService {
         player.canDivideThousand();
         player.countLottoNumber();
     }
+    public void isDuplicate(List<Integer> winningLottoNumbers){
+        Set<Integer> checkDuplicateNumber = new HashSet<>();
+
+        for (Integer winningLottoNumber : winningLottoNumbers) {
+            if(checkDuplicateNumber.contains(winningLottoNumber))
+                throw new IllegalArgumentException(Constant.EXIST_DUPLICATE_NUMBER_EXCEPTION);
+
+            checkDuplicateNumber.add(winningLottoNumber);
+        }
+    }
 
     public void hasSixLottoNumber(String inputPlayerLottoPickNumbers){
         if(inputPlayerLottoPickNumbers.split(",").length != 6)
@@ -35,7 +45,6 @@ public class LottoService {
                 throw new IllegalArgumentException(Constant.NOT_VALID_RANGE_EXCEPTION);
         }
     }
-
 
     public void printPlayerLottoNumberAndCreateLottoNumber(Player player){
         lottoGameMessage.printPurchaseCountMessage(player.getLottoCount());
