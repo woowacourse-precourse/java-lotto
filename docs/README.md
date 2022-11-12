@@ -178,6 +178,9 @@
   - 로또 통계와 관련된 정보에 대한 출력이 진행되는 함수
 
 
+- void setError(ErrorMessage)
+  - 에러 메세지를 설정하는 함수
+
 ## ✏️ GRADE enum
 
 
