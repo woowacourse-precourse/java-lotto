@@ -28,11 +28,11 @@ class WinningStatisticsTest {
 
         LottoResults lottoResults = new LottoResults(
                 Map.of(
-                        LottoRanking.FIFTH, 1,
-                        LottoRanking.FORTH, 0,
-                        LottoRanking.THIRD, 0,
-                        LottoRanking.SECOND, 0,
-                        LottoRanking.FIRST, 0
+                        Ranking.FIFTH, 1,
+                        Ranking.FORTH, 0,
+                        Ranking.THIRD, 0,
+                        Ranking.SECOND, 0,
+                        Ranking.FIRST, 0
                 )
         );
 
@@ -56,11 +56,11 @@ class WinningStatisticsTest {
 
         LottoResults lottoResults = new LottoResults(
                 Map.of(
-                        LottoRanking.FIFTH, 0,
-                        LottoRanking.FORTH, 0,
-                        LottoRanking.THIRD, 0,
-                        LottoRanking.SECOND, 0,
-                        LottoRanking.FIRST, 0
+                        Ranking.FIFTH, 0,
+                        Ranking.FORTH, 0,
+                        Ranking.THIRD, 0,
+                        Ranking.SECOND, 0,
+                        Ranking.FIRST, 0
                 )
         );
 

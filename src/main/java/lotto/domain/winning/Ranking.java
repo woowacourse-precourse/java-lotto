@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-enum LottoRanking {
+enum Ranking {
 
     FIFTH(
             3,
@@ -34,26 +34,36 @@ enum LottoRanking {
     ),
     ;
 
-    private static final Map<Integer, LottoRanking> LOTTO_RANKING_UNRELATED_TO_BONUS_NUMBER =
-            Arrays.stream(LottoRanking.values())
+    private static final Map<Integer, Ranking> RANKING_UNRELATED_TO_BONUS_NUMBER =
+            Arrays.stream(Ranking.values())
                     .filter(lottoRanking -> !lottoRanking.isMatchedBonusNumber)
                     .collect(Collectors.toUnmodifiableMap(
-                            lottoRanking -> lottoRanking.matchNumberCount,
+                            lottoRanking -> lottoRanking.countOfMatchingNumber,
                             lottoRanking -> lottoRanking)
                     );
 
-    private final int matchNumberCount;
+    private final int countOfMatchingNumber;
     private final boolean isMatchedBonusNumber;
     private final int winnings;
 
-    public static LottoRanking lottoRanking(int count) {
-        return LOTTO_RANKING_UNRELATED_TO_BONUS_NUMBER.get(count);
-    }
-
-    LottoRanking(int matchNumberCount, boolean isMatchedBonusNumber, int winnings) {
-        this.matchNumberCount = matchNumberCount;
+    Ranking(int countOfMatchingNumber, boolean isMatchedBonusNumber, int winnings) {
+        this.countOfMatchingNumber = countOfMatchingNumber;
         this.isMatchedBonusNumber = isMatchedBonusNumber;
         this.winnings = winnings;
+    }
+
+    public static Ranking ranking(int countsOfMatchingNumber, boolean isMatchedBonusNumber) {
+        if (isSecond(countsOfMatchingNumber, isMatchedBonusNumber)) {
+            return SECOND;
+        }
+
+        return RANKING_UNRELATED_TO_BONUS_NUMBER.get(countsOfMatchingNumber);
+    }
+
+    private static boolean isSecond(int countsOfMatchingNumber, boolean isMatchedBonusNumber) {
+        final int MATCH_NUMBER_FOR_SECOND_OR_THIRD = 5;
+        return countsOfMatchingNumber == MATCH_NUMBER_FOR_SECOND_OR_THIRD
+                && isMatchedBonusNumber;
     }
 
     public int sumOfWinnings(int count) {
@@ -63,7 +73,7 @@ enum LottoRanking {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(matchNumberCount).append("개 일치");
+        stringBuilder.append(countOfMatchingNumber).append("개 일치");
 
         if (isMatchedBonusNumber) {
             stringBuilder.append(", 보너스 볼 일치");

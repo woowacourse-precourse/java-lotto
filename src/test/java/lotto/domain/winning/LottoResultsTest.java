@@ -1,10 +1,10 @@
 package lotto.domain.winning;
 
-import static lotto.domain.winning.LottoRanking.FIFTH;
-import static lotto.domain.winning.LottoRanking.FIRST;
-import static lotto.domain.winning.LottoRanking.FORTH;
-import static lotto.domain.winning.LottoRanking.SECOND;
-import static lotto.domain.winning.LottoRanking.THIRD;
+import static lotto.domain.winning.Ranking.FIFTH;
+import static lotto.domain.winning.Ranking.FIRST;
+import static lotto.domain.winning.Ranking.FORTH;
+import static lotto.domain.winning.Ranking.SECOND;
+import static lotto.domain.winning.Ranking.THIRD;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Map;
@@ -16,7 +16,7 @@ class LottoResultsTest {
     @DisplayName("1,2,3등이 각각 한개씩 당첨됐을 경우, 총 당첨 금액은 2_031_500_000이다")
     @Test
     void totalWinnings() {
-        Map<LottoRanking, Integer> results = Map.of(
+        Map<Ranking, Integer> results = Map.of(
                 FIFTH, 0,
                 FORTH, 0,
                 THIRD, 1,

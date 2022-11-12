@@ -27,14 +27,14 @@ class WinningLottoTest {
                 .winningLotto("1,2,3,4,5,6", "7");
 
         LottoResults lottoResults = winningLotto.lottoResults(purchasedLottos);
-        Map<LottoRanking, Integer> actual = lottoResults.results();
+        Map<Ranking, Integer> actual = lottoResults.results();
 
-        Map<LottoRanking, Integer> expected = Map.of(
-                LottoRanking.FIFTH, 0,
-                LottoRanking.FORTH, 0,
-                LottoRanking.THIRD, 1,
-                LottoRanking.SECOND, 1,
-                LottoRanking.FIRST, 1
+        Map<Ranking, Integer> expected = Map.of(
+                Ranking.FIFTH, 0,
+                Ranking.FORTH, 0,
+                Ranking.THIRD, 1,
+                Ranking.SECOND, 1,
+                Ranking.FIRST, 1
         );
 
         assertThat(actual).containsAllEntriesOf(expected);

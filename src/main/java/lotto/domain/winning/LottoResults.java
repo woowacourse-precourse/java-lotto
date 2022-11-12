@@ -4,9 +4,9 @@ import java.util.Map;
 
 public class LottoResults {
 
-    private final Map<LottoRanking, Integer> results;
+    private final Map<Ranking, Integer> results;
 
-    public LottoResults(Map<LottoRanking, Integer> results) {
+    public LottoResults(Map<Ranking, Integer> results) {
         this.results = results;
     }
 
@@ -31,7 +31,7 @@ public class LottoResults {
     /**
      * 테스트용 메서드 입니다.
      */
-    Map<LottoRanking, Integer> results() {
+    Map<Ranking, Integer> results() {
         return Map.copyOf(results);
     }
 }

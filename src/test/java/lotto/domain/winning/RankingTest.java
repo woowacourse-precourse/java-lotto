@@ -5,35 +5,41 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class LottoRankingTest {
+class RankingTest {
 
     public static final String BONUS_FORMAT = "보너스 볼 일치";
 
     @DisplayName("matchBonusNumber가 true인 LottoRanking은 stringFormat에 '보너스 볼 일치'가 포함된다.")
     @Test
     void trueMatchBonusNumber() {
-        LottoRanking second = LottoRanking.SECOND;
+        Ranking second = Ranking.SECOND;
         assertThat(second.toString()).contains(BONUS_FORMAT);
     }
 
     @DisplayName("matchBonusNumber가 false인 LottoRanking은 toString에 '보너스 볼 일치'가 포함된다.")
     @Test
     void falseMatchBonusNumber() {
-        LottoRanking second = LottoRanking.FIRST;
+        Ranking second = Ranking.FIRST;
         assertThat(second.toString()).doesNotContain(BONUS_FORMAT);
     }
 
-    @DisplayName("bonus number와 관련 없는 랭킹 정보를 matchNumberCount로 찾을 수 있다.")
+    @DisplayName("6, false를 입력하면 FIRST 랭킹이 조회된다.")
     @Test
     void lottoRankingFindByMatchNumberCount1() {
-        LottoRanking lottoRanking = LottoRanking.lottoRanking(6);
-        assertThat(lottoRanking).isEqualTo(LottoRanking.FIRST);
+        Ranking ranking = Ranking.ranking(6, false);
+        assertThat(ranking).isEqualTo(Ranking.FIRST);
     }
 
-    @DisplayName("5를 입력 받으면 SECOND 랭킹이 아닌 THIRD 랭킹이 조회된다.")
+    @DisplayName("5, true를 입력하면 SECOND 랭킹이 조회된다.")
     @Test
     void lottoRankingFindByMatchNumberCount2() {
-        LottoRanking lottoRanking = LottoRanking.lottoRanking(5);
-        assertThat(lottoRanking).isEqualTo(LottoRanking.THIRD);
+        Ranking ranking = Ranking.ranking(5, true);
+        assertThat(ranking).isEqualTo(Ranking.SECOND);
+    }
+    @DisplayName("5, false를 입력하면 SECOND 랭킹이 아닌 THIRD 랭킹이 조회된다.")
+    @Test
+    void lottoRankingFindByMatchNumberCount3() {
+        Ranking ranking = Ranking.ranking(5, false);
+        assertThat(ranking).isEqualTo(Ranking.THIRD);
     }
 }
