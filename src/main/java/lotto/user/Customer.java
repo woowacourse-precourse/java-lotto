@@ -13,10 +13,10 @@ import java.util.stream.Collectors;
 
 public class Customer {
     private static final String NUMERIC_ERROR = "[ERROR] 숫자를 입력해 주시기 바랍니다.";
+    private static final String DUPLICATION_ERROR = "[ERROR] 당첨 번호와 보너스 번호에 중복된 숫자가 있습니다.";
     private static final String NUMBER_OF_PURCHASES_PHRASE = "개를 구매했습니다.";
     private static final String RESULT_PHRASE = "당첨 통계\n---";
     private static final String RESULT_EARNING_RATE_PHRASE = "총 수익률은 %.1f%%입니다.";
-    private static final String DUPLICATION_ERROR = "[ERROR] 당첨 번호와 보너스 번호에 중복된 숫자가 있습니다.";
 
     private final List<Lotto> lotteries;
     private final Map<LottoInformation, Integer> rankings = createRankings();
@@ -96,22 +96,22 @@ public class Customer {
 
     private long calculateWinnings() {
         AtomicLong winnings = new AtomicLong();
-        rankings.forEach((ranking,count) -> winnings.addAndGet(ranking.getWinnings(count)));
+        rankings.forEach((ranking, count) -> winnings.addAndGet(ranking.getWinnings(count)));
         return winnings.get();
     }
 
     private double calculateEarningRate(long winnings) {
-        double earningRate = (winnings / (double)pay) * 100;
-        return Math.round(earningRate*10)/10.0;
+        double earningRate = (winnings / (double) pay) * 100;
+        return Math.round(earningRate * 10) / 10.0;
     }
 
     public String toResultString() {
         StringJoiner resultAlert = new StringJoiner("\n");
         resultAlert.add(RESULT_PHRASE);
         Arrays.stream(LottoInformation.values())
-                .filter(lottoInformation -> lottoInformation.getMatchNumber()>= 3)
+                .filter(lottoInformation -> lottoInformation.getMatchNumber() >= 3)
                 .forEach(lottoInformation -> resultAlert.add(lottoInformation.getInformation(rankings.get(lottoInformation))));
-        resultAlert.add(String.format(RESULT_EARNING_RATE_PHRASE,calculateEarningRate(calculateWinnings())));
+        resultAlert.add(String.format(RESULT_EARNING_RATE_PHRASE, calculateEarningRate(calculateWinnings())));
         return resultAlert.toString();
     }
 
