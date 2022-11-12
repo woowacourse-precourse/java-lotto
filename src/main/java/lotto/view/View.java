@@ -18,4 +18,10 @@ public class View {
             System.out.println(lottoTickets.getLottoTickets().get(i).getLottoNumber());
         }
     }
+
+    public String winningNumberInputView(){
+        System.out.println(WINNING_NUMBER_INPUT_MESSAGE);
+        String input = Console.readLine();
+        return input;
+    }
 }
