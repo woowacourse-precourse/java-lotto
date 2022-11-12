@@ -3,15 +3,26 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 
 public class UserInput {
-    public static Integer inputMoney() {
-        final String input = getInput();
+    public Integer inputMoney() {
+        return validateInputMoney(getInput());
+    }
+
+    private static Integer validateInputMoney(String inputMoney) {
+        if (!inputMoney.matches("^[0-9]+000$")) {
+            throw new IllegalArgumentException();
+        }
+
+        return stringToInteger(inputMoney);
+    }
+
+    private static Integer stringToInteger(String inputMoney) {
+        return Integer.parseInt(inputMoney);
     }
 
     private static String getInput() {
         try {
             return Console.readLine();
         } catch (Exception exception) {
-            System.out.println("[ERROR] 빈 문자열을 입력할 수 없습니다");
             throw new IllegalArgumentException();
         }
     }
