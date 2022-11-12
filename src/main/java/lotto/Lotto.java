@@ -11,7 +11,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validate(List<Integer> numbers) throws IllegalArgumentException{
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("로또 숫자는 6개만 허용합니다");
         }
