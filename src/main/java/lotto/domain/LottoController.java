@@ -1,13 +1,24 @@
 package lotto.domain;
 
 public class LottoController {
-    LottoGenerator lottoGenerator;
+    private static LottoGenerator lottoGenerator;
+    private static WinningNumbers winningNumbers;
 
-    public LottoController() {
+    private LottoController() {
 
     }
 
-    public void run() {
+    public static void run() {
+        issueLottos();
+        extractWinningNumbers();
+    }
+
+    private static void issueLottos() {
         lottoGenerator = new LottoGenerator();
+
+    }
+
+    private static void extractWinningNumbers() {
+        winningNumbers = new WinningNumbers();
     }
 }
