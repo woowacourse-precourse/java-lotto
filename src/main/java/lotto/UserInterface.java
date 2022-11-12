@@ -30,4 +30,8 @@ public class UserInterface {
     public static void printBonusNumberMessage() {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
+
+    public static int inputBonusNumber() {
+        return Integer.parseInt(Console.readLine());
+    }
 }
