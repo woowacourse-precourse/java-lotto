@@ -1,5 +1,7 @@
 package lotto.LottoShop;
 
+import lotto.LottoManager.Lotto;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,8 +9,8 @@ import java.util.stream.Collectors;
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 import static lotto.Enum.Constant.*;
 
-public class LottoProvidingMachine {
-    public LottoProvidingMachine() {
+public class LottoPublishingMachine {
+    public LottoPublishingMachine() {
     }
 
     public List<Lotto> makeLottoGroup(int lotto_amount) {
@@ -23,7 +25,7 @@ public class LottoProvidingMachine {
 
     private Lotto makeLotto(List<Lotto> lotto_group) {
         List<Integer> random_lotto_num
-                = pickUniqueNumbersInRange(ZERO.getIntValue(), FOURTY_FIVE.getIntValue(), SIX.getIntValue())
+                = pickUniqueNumbersInRange(ONE.getIntValue(), FOURTY_FIVE.getIntValue(), SIX.getIntValue())
                         .stream()
                         .sorted()
                         .collect(Collectors.toList());

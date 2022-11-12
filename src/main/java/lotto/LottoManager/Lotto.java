@@ -1,4 +1,4 @@
-package lotto.LottoShop;
+package lotto.LottoManager;
 
 import java.util.List;
 
@@ -11,6 +11,10 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validateLottoNum(numbers);
         this.numbers = numbers;
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     private void validateLottoNum(List<Integer> numbers) {

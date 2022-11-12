@@ -1,4 +1,4 @@
-package lotto.lottoShop;
+package lotto.LottoShop;
 
 import static lotto.Enum.Constant.*;
 import static lotto.Enum.Error.*;

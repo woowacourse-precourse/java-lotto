@@ -2,6 +2,7 @@ package lotto.Enum;
 
 public enum Constant {
     ZERO("0"),
+    ONE("1"),
     SIX("6"),
     FOURTY_FIVE("45"),
     THOUSAND("1000"),

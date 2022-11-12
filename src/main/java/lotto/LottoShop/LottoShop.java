@@ -1,13 +1,13 @@
-package lotto.lottoShop;
+package lotto.LottoShop;
 
 public class LottoShop {
     private final MoneyValidator moneyValidator;
-    private final LottoProvidingMachine lottoProvidingMachine;
+    private final LottoPublishingMachine lottoProvidingMachine;
     private final Clerk clerk;
 
     private LottoShop() {
         this.moneyValidator = new MoneyValidator();
-        this.lottoProvidingMachine = new LottoProvidingMachine();
+        this.lottoProvidingMachine = new LottoPublishingMachine();
         this.clerk = new Clerk(moneyValidator, lottoProvidingMachine);
     }
 

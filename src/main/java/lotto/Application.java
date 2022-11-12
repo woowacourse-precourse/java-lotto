@@ -1,7 +1,8 @@
 package lotto;
 
 
-import lotto.lottoShop.LottoShop;
+import lotto.LottoManager.LottoDrawingMachine;
+import lotto.LottoShop.LottoShop;
 
 public class Application {
     public static void main(String[] args) {
@@ -10,6 +11,7 @@ public class Application {
         lottoShop.takeOneConsumer();
 
 //        추첨
+//        LottoDrawingMachine.drawLottoNumbers();
 
 //        당첨 확인
     }
