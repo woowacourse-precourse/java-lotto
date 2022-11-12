@@ -2,7 +2,6 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class LottoStore {
@@ -21,7 +20,12 @@ public class LottoStore {
     }
     public void getLottoPaper(){
         CreateRandomLotto createRandomNumber = new CreateRandomLotto();
-        List<LottoPaper> lottoPapers = new ArrayList<>();
-        createRandomNumber.randomLotto(validMoney / lottoPrice);
+        List<LottoPaper> lottoPapers = createRandomNumber.randomLotto(validMoney / lottoPrice);
+        printLottoPapers(lottoPapers);
+    }
+    public void printLottoPapers(List<LottoPaper> lottoPapers) {
+        for (LottoPaper lottoPaper : lottoPapers) {
+            System.out.println(lottoPaper.number);
+        }
     }
 }
