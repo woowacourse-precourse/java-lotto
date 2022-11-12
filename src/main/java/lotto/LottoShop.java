@@ -1,10 +1,23 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.List;
+
 public class LottoShop {
     LottoConsole lottoConsole = new LottoConsole();
 
     public int buyLotto(){
         return checkMoney(lottoConsole.inputMoney());
+    }
+
+
+    private void generateLotto(){
+
+    }
+
+    private List<Integer> generateRandomNumbers(){
+        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
     private int checkMoney(String inputMoney){
