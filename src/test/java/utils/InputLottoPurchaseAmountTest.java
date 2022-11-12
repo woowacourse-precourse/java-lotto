@@ -37,31 +37,26 @@ public class InputLottoPurchaseAmountTest {
 		@DisplayName("구입금액 예외사항 테스트: 1000원 미만 입력")
 		void inputOutOfRangeLottoPurchaseAmount() {
 			// given, when
-			int lottoPurchaseAmountOne = 999;
-			int lottoPurchaseAmountTwo = 0;
-			int lottoPurchaseAmountThree = -1;
+			List<String> lottoPurchaseAmounts = List.of("999", "0", "-1");
 
 			// then
-			assertThatThrownBy(() -> validatePurchaseAmountRange(lottoPurchaseAmountOne))
-					.isInstanceOf(IllegalArgumentException.class);
-			assertThatThrownBy(() -> validatePurchaseAmountRange(lottoPurchaseAmountTwo))
-					.isInstanceOf(IllegalArgumentException.class);
-			assertThatThrownBy(() -> validatePurchaseAmountRange(lottoPurchaseAmountThree))
-					.isInstanceOf(IllegalArgumentException.class);
+			for (String lottoPurchaseAmount : lottoPurchaseAmounts) {
+				readLine(lottoPurchaseAmount);
+				assertThatThrownBy(() -> readLottoPurchaseAmount()).isInstanceOf(IllegalArgumentException.class);
+			}
 		}
 
 		@Test
 		@DisplayName("구입금액 예외사항 테스트: 1000원 단위 아닌 입력")
 		void inputInvalidUnitLottoPurchaseAmount() {
 			// given, when
-			int lottoPurchaseAmountOne = 1001;
-			int lottoPurchaseAmountTwo = 1000000270;
+			List<String> lottoPurchaseAmounts = List.of("1001", "1000000270", "1234");
 
 			// then
-			assertThatThrownBy(() -> validatePurchaseAmountUnit(lottoPurchaseAmountOne))
-					.isInstanceOf(IllegalArgumentException.class);
-			assertThatThrownBy(() -> validatePurchaseAmountUnit(lottoPurchaseAmountTwo))
-					.isInstanceOf(IllegalArgumentException.class);
+			for (String lottoPurchaseAmount : lottoPurchaseAmounts) {
+				readLine(lottoPurchaseAmount);
+				assertThatThrownBy(() -> readLottoPurchaseAmount()).isInstanceOf(IllegalArgumentException.class);
+			}
 		}
 	}
 
