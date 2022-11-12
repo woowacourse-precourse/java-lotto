@@ -3,19 +3,19 @@
 ## ✏️ Lotto Class
 
 
-- void validateNumbersSize(List<Integer>)
+- boolean validateNumbersSize(List<Integer>)
   -  입력된 로또 번호들이 총 6개인지 검사하는 함수
 
 
-- void validateNumbersAreInRange(List<Integer>)
+- boolean validateNumbersAreInRange(List<Integer>)
   - 입력된 로또 번호들이 각각 1~45 사이의 수인지 검사하는 함수
 
 
-- void validateNumbersAreDuplicate(List<Integer>)
+- boolean validateNumbersAreDuplicate(List<Integer>)
   - 입력된 로또 번호들 중 중복되는 숫자가 있는지 검사하는 함수
 
 
-- void checkNumbersAreDuplicate(int, int)
+- boolean checkNumbersAreDuplicate(int, int)
   - 입력된 로또 번호가 중복되는지 실제로 검사하는 함수
 
 
