@@ -5,13 +5,14 @@ import java.util.List;
 
 public class LottoGame {
     private final Message message = new Message();
-    private final ProcessInputAndVariable processInputAndVariable = new ProcessInputAndVariable();
+    private final ProcessVariable processVariable = new ProcessVariable();
     private final ManagementLotto managementLotto = new ManagementLotto();
     public void start() {
         try {
             Integer purchasePrice = inputPurchasePrice();
             List<Lotto> lottos = purchaseLotto(purchasePrice);
             Lotto winNumber = inputWinNumber();
+
         } catch (IllegalArgumentException exception) {
             message.printMsg(exception.getMessage());
         }
@@ -21,21 +22,23 @@ public class LottoGame {
         message.printPurchaseMsg();
         String price = Console.readLine();
 
-        return processInputAndVariable.convertToInteger(price);
+        return processVariable.convertToInteger(price);
     }
 
     private List<Lotto> purchaseLotto(Integer price) {
-        Integer lottoAmount = processInputAndVariable.calculateLottoAmount(price);
+        Integer lottoAmount = processVariable.calculateLottoAmount(price);
         List<Lotto> lottos = managementLotto.purchase(lottoAmount);
         message.printPurchaseLotto(lottos);
 
         return lottos;
     }
 
-    private Lotto inputWinNumber() throws IllegalArgumentException {
+    private LottoWin inputWinNumber() throws IllegalArgumentException {
         message.printPlsInputWinNumber();
         String winNumber = Console.readLine();
+        message.printPlsInputBonusNumber();
+        String bonusNumber = Console.readLine();
 
-        return processInputAndVariable.makeWinNumber(winNumber);
+        return new LottoWin(managementLotto.makeWinNumber(winNumber), managementLotto.makeBonusNumber(bonusNumber));
     }
 }
