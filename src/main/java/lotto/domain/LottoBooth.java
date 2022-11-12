@@ -1,26 +1,16 @@
 package lotto.domain;
 
-import static lotto.view.InputView.inputMoney;
-
 import java.util.ArrayList;
 import java.util.List;
 import lotto.utils.RandomNumbersGenerator;
 
-public class LottoBuying {
-    private int money;
-    private int lottoCount;
-
-    LottoBuying() {
-        this.money = getMoney();
-        this.lottoCount = countBuyingLotto(this.money);
-    }
-
+public class LottoBooth {
     public static LottoTicket issueLottoTicket(int lottoCount) {
+        isPositiveInteger(lottoCount);
         List<Lotto> lottoTicket = new ArrayList<>();
 
         for(int issued=0; issued<lottoCount; issued++){
-            List<Integer> numbers = issueLotto();
-            lottoTicket.add(new Lotto(numbers));
+            lottoTicket.add(new Lotto(issueLotto()));
         }
         return new LottoTicket(lottoTicket);
     }
@@ -30,11 +20,9 @@ public class LottoBuying {
         return lotto;
     }
 
-    private int getMoney() {
-        return inputMoney();
-    }
-
-    private int countBuyingLotto(int money) {
-        return money / 1000;
+    private static void isPositiveInteger(int lottoCount) {
+        if (lottoCount <= 0) {
+            throw new IllegalArgumentException("[ERROR] 로또는 1개 이상 발급 가능합니다.");
+        }
     }
 }

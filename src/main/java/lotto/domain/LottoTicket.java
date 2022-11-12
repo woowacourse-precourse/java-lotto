@@ -13,11 +13,7 @@ public class LottoTicket {
     public List<String> getLottoTicket() {
         List<String> issuedLottoTicket = new ArrayList<>();
         for (Lotto lotto : this.lottoTicket) {
-            issuedLottoTicket
-                    .add(lotto.getNumbers()
-                            .stream()
-                            .sorted()
-                            .toString());
+            issuedLottoTicket.add(lotto.sortLottoNumbers().toString());
         }
         return issuedLottoTicket;
     }
