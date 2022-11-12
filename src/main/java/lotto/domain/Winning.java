@@ -59,4 +59,16 @@ public class Winning {
 
         return list;
     }
+
+    public List<Integer> score() {
+        List<Integer> score = new ArrayList<>();
+
+        score.add(win5);
+        score.add(win4);
+        score.add(win3);
+        score.add(win2);
+        score.add(win1);
+
+        return score;
+    }
 }
