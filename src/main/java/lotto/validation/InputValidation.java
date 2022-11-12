@@ -69,15 +69,17 @@ public enum InputValidation {
     }
 
     private static final ConsoleLog consoleLog = ConsoleLog.getInstance();
+
     public static void checkValidation(String input, String validationGroup) {
         Optional<InputValidation> validation = validate(input, validationGroup);
         if (validation.isPresent()) {
-            consoleLog.println(validation.get().errorMessage());
+            String message = validation.get().errorMessage();
+            consoleLog.println(message);
             // 테스트 케이스 통과를 위한 임시방편... 뭔가 이상하다.
             if (validation.get() == NOT_NUMBER) {
-                throw new NoSuchElementException(validation.get().errorMessage());
+                throw new NoSuchElementException(message);
             }
-            throw new IllegalArgumentException(validation.get().errorMessage());
+            throw new IllegalArgumentException(message);
         }
     }
 }

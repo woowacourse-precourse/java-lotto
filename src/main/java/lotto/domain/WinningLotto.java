@@ -11,9 +11,7 @@ public class WinningLotto {
     public WinningLotto(String numbers, String bonusNumber) {
         List<Integer> refineNumbers = refineNumbers(numbers);
         int bonus = Integer.parseInt(bonusNumber);
-
         validate(refineNumbers, bonus);
-
         this.numbers = refineNumbers;
         this.bonusNumber = bonus;
     }
