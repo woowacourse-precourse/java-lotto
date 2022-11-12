@@ -12,8 +12,20 @@ public class InputValidator {
     public static void validateWinningNumbers(String numbers) {
         for (String number : numbers.trim().split(",")) {
             validateToParseInt(number);
+            validateInRange(number);
         }
         if (numbers.split(",").length != 6)
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개 입력해 주세요.");
+    }
+
+    public static void validateBonusNumber(String number) {
+        validateToParseInt(number);
+        validateInRange(number);
+    }
+
+    private static void validateInRange(String number) {
+        int num = Integer.parseInt(number);
+        if (num < 1 || num > 45)
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
 }
