@@ -56,7 +56,7 @@ public class Application {
     }
 
     private static void checkWinning(int countOfLottery) {
-        ArrayList<int[]> lotteryBundleArray = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> lotteryBundleArray = new ArrayList<>();
         int cntForCreateLottery = 0;
         while (cntForCreateLottery < countOfLottery) {
             lotteryBundleArray.add(createAndPrintLottery());
@@ -68,15 +68,15 @@ public class Application {
 
 
 
-    private static int[] createAndPrintLottery() {
+    private static ArrayList<Integer> createAndPrintLottery() {
         List<Integer> tempLotteryArray = Randoms.pickUniqueNumbersInRange(1, 45, LOTTERY_NUMBER_LIMIT);
-        int[] lotteryNumberArray = new int[LOTTERY_NUMBER_LIMIT];
+        ArrayList<Integer> lotteryNumberArray = new ArrayList<>();
         Collections.sort(tempLotteryArray);
         System.out.println(tempLotteryArray);
         Iterator lotteryNumberItr = tempLotteryArray.iterator();
         int index = 0;
         while (lotteryNumberItr.hasNext()) {
-            lotteryNumberArray[index++] = (int) lotteryNumberItr.next();
+            lotteryNumberArray.add((int)lotteryNumberItr.next());
         }
         return lotteryNumberArray;
     }
@@ -96,7 +96,7 @@ public class Application {
         return Integer.parseInt(Console.readLine());
     }
 
-    private static void checkLottoWinnings(List<Integer> winningNumbers , int bonusWinningNumber, ArrayList<int[]> lotteryBundleArray){
+    private static void checkLottoWinnings(List<Integer> winningNumbers , int bonusWinningNumber, ArrayList<ArrayList<Integer>> lotteryBundleArray){
         Lotto lotto = new Lotto(winningNumbers);
         lotto.checkLottoWinnings(lotteryBundleArray, bonusWinningNumber);
     }
