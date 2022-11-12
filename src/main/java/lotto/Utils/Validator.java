@@ -7,12 +7,14 @@ public class Validator {
 
     public static final String ERROR = "[ERROR] ";
     public static final String NOT_INTEGER_STATE = "정수만 입력해야 합니다.";
+    public static final String NOT_NATURAL_STATE = "양수만 입력해야 합니다.";
     public static final String NOT_1000UNIT_STATE = "1000원 단위로 입력해야 합니다.";
 
     protected final String moneyString;
     public Validator(String moneyString){
         this.moneyString = moneyString;
         isInteger();
+        isNatural();
         is1000Unit();
     };
 
@@ -21,6 +23,12 @@ public class Validator {
             Util.getInt(moneyString);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ERROR + NOT_INTEGER_STATE);
+        }
+    }
+
+    private void isNatural(){
+        if(Util.getInt(moneyString) < 0){
+            throw new IllegalArgumentException(ERROR + NOT_NATURAL_STATE);
         }
     }
 
