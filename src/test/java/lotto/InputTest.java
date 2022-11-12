@@ -54,7 +54,7 @@ public class InputTest extends NsTest {
         });
     }
 
-    @DisplayName("입력된 당첨 번호 값들 중에서 1부터 45 사이아 값이 아닌 경우에는 예외가 발생한다.")
+    @DisplayName("입력된 당첨 번호 값들 중에서 1부터 45 사이의 값이 아닌 경우에는 예외가 발생한다.")
     @Test
     void enterLottoByInvalidRange() {
         assertSimpleTest(() -> {
@@ -71,6 +71,16 @@ public class InputTest extends NsTest {
             assertThatThrownBy(() -> runException("1000", "1,2,3,4,5,6", "a"))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage("[Error] 보너스 번호로 숫자가 아닌 값이 입력 되었습니다.");
+        });
+    }
+
+    @DisplayName("입력한 보너스 번호가 1부터 45 사이의 값이 아닌 경우에는 예외가 발생한다.")
+    @Test
+    void enterBonusNumberByInvalidRange() {
+        assertSimpleTest(() -> {
+            assertThatThrownBy(() -> runException("1000", "1,2,3,4,5,6", "99"))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage("[Error] 보너스 번호 값의 범위가 1부터 45 사이의 값이 아닙니다.");
         });
     }
 

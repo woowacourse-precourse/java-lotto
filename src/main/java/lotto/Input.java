@@ -47,7 +47,7 @@ public class Input {
         try{
             int tempNumber = Integer.parseInt(userInput);
 
-            if(tempNumber >= 1 && tempNumber <= 45)
+            if(!(tempNumber >= 1 && tempNumber <= 45))
                 throw new IllegalArgumentException("[Error] 보너스 번호 값의 범위가 1부터 45 사이의 값이 아닙니다.");
 
         } catch (Exception e) {
@@ -55,7 +55,7 @@ public class Input {
                 throw new IllegalArgumentException("[Error] 보너스 번호로 숫자가 아닌 값이 입력 되었습니다.");
 
             if(e.getClass() == IllegalArgumentException.class)
-                throw new IllegalArgumentException(e.getMessage());
+                throw e;
         }
 
         return true;
