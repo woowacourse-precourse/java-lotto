@@ -10,7 +10,7 @@ import java.util.List;
 
 public class BuyLotto {
     public enum INPUT_SENTENCE {
-        BUY("구입금액을 입력해 주세요.\n"), RESULT_COUNT("개를 구매했습니다.\n"), WIN("당첨 번호를 입력해 주세요.\n");
+        BUY("구입금액을 입력해 주세요.\n"), RESULT_COUNT("개를 구매했습니다.\n"), WIN("당첨 번호를 입력해 주세요.\n"),;
 
         private final String label;
 
@@ -22,18 +22,31 @@ public class BuyLotto {
             return label;
         }
     }
+    private static final String WRONG_NUMBER_ERROR = "[ERROR] 올바른 숫자를 입력해 주세요.";
 
-    public int userPriceInput() {
-        System.out.print(INPUT_SENTENCE.BUY.label());
-        String userPrice = Console.readLine();
-        if (userPrice.charAt(userPrice.length()-1) != '0' || userPrice.charAt(userPrice.length()-2) != '0' || userPrice.charAt(userPrice.length()-3) != '0') {
-            throw new IllegalArgumentException("[ERROR] 1000원 단위의 금액을 입력해 주세요.");
+    int userPrice = 0;
+    public void userPriceInput() {
+        try {
+            System.out.print(INPUT_SENTENCE.BUY.label());
+            String userPrice = Console.readLine();
+            validateUserPrice(userPrice);
+            this.userPrice = Integer.parseInt(userPrice);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
         }
-        return Integer.parseInt(userPrice);
+    }
+
+    static void validateUserPrice(String userPrice) throws IllegalArgumentException {
+        boolean isNumeric = userPrice.chars().allMatch( Character::isDigit );
+        if (userPrice.charAt(userPrice.length()-1) != '0' || userPrice.charAt(userPrice.length()-2) != '0' || userPrice.charAt(userPrice.length()-3) != '0'
+                ||isNumeric != true) {
+            throw new IllegalArgumentException(WRONG_NUMBER_ERROR);
+        }
     }
 
     private int buyLottoCount() {
-        int userPrice = userPriceInput();
+        userPriceInput();
+        int userPrice = this.userPrice;
         int lottoCount = userPrice / 1000;
         System.out.print("\n"+lottoCount+INPUT_SENTENCE.RESULT_COUNT.label());
         return lottoCount;
