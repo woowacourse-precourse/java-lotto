@@ -30,6 +30,7 @@ public class View {
     }
 
     public void printEarningRate(double earningRate) {
+        printInputWinningStat();
         System.out.printf(Constant.earningRateFormat,earningRate);
     }
 
