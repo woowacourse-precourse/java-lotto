@@ -12,12 +12,11 @@ public class LottoPlay {
 
     private final LottoWinningNumber lottoWinningNumber = new LottoWinningNumber();
 
-    private final LottoPrize lottoPrize = new LottoPrize();
-
     public void play() {
         messageUtil.printPurchaseInput();
         List<Lotto> userLottos = lottoPurchase.getPurchaseInfo();
-        LottoWinningNumber info = lottoWinningNumber.getWinningNumbersInfo();
+        LottoWinningNumber winningNumbersInfo = lottoWinningNumber.getWinningNumbersInfo();
+        LottoPrize lottoPrize = new LottoPrize(winningNumbersInfo);
 
     }
 
