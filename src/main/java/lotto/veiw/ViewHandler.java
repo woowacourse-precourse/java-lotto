@@ -12,39 +12,36 @@ import lotto.model.Money;
 
 public class InputHandler {
 
+    Compare compare;
+    Lotto lotto;
 
     public void inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
-        Money money;
         try {
-            money = new Money(stringToInt(readLine()));
-            new Compare(money.getTicketCount());
+            compare = new Compare(new Money(stringToInt(readLine())));
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw e;
         }
-
     }
 
-    public Lotto inputLotto() {
+    public void inputLotto() {
         System.out.println("당첨 번호를 입력해 주세요.");
         try {
-            Lotto lotto = new Lotto(stringToList(readLine()));
-            return lotto;
+            lotto = new Lotto(stringToList(readLine()));
+            compare.setLotto(lotto);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw e;
         }
-        return null;
     }
 
-    public BonusNumber inputBonus(Lotto lotto) {
+    public void inputBonus() {
         System.out.println("보너스 번호를 입력해 주세요.");
         try {
             BonusNumber bonusNumber = new BonusNumber(lotto, stringToInt(readLine()));
-            return bonusNumber;
+            compare.setBonusNumber(bonusNumber);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw e;
         }
-        return null;
     }
 
     private List<Integer> stringToList(String readLine) {
