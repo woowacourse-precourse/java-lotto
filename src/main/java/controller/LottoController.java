@@ -27,13 +27,25 @@ public class LottoController {
      */
 
     public void run() {
+        int lottoCount = buyLotto();
+        System.out.println();
+
 
 
     }
 
 
 
-    
+    public int buyLotto() {
+        System.out.println("구입 금액을 입력해 주세요.");
+        String userMoney = Console.readLine();
+        validator.validateMoneyNumber(userMoney);
+        validator.validateMoneyUnit(userMoney);
+        Money money = new Money(userMoney);
+        return money.getLottoCount();
+    }
+
+   
 
 
 }
