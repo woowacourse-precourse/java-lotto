@@ -17,7 +17,17 @@ public class Lotto {
         }
         checkNumber.validUserWinningNumber(numbers);
     }
-
+    public void getResult(List<LottoPaper> lottoPapers, long money, int bonusNumber){
+        long [] result = new long[8];
+        double yield;
+        GetRateOfReturn getRateOfReturn = new GetRateOfReturn();
+        for (LottoPaper lottoPaper : lottoPapers) {
+            result[lottoPaper.getResult(numbers, bonusNumber)]++;
+        }
+        PrintMessenger.winningResult(result);
+        yield = getRateOfReturn.calculateRate(result, money);
+        PrintMessenger.yieldOfLotto(yield);
+    }
 
     // TODO: 추가 기능 구현
 }

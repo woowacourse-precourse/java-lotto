@@ -6,8 +6,8 @@ import java.util.List;
 
 public class LottoStore {
     private final int lottoPrice = 1000;
-    private long validMoney;
-    private List<LottoPaper> lottoPapers;
+    public long validMoney;
+    public List<LottoPaper> lottoPapers;
 
     public void insert() {
         PrintMessenger.askPriceToBuy();
