@@ -3,12 +3,12 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
-import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
 import lotto.domain.LottoCount;
 import lotto.domain.NumberGenerator;
 import lotto.domain.Print;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 	public static void main(String[] args) {
