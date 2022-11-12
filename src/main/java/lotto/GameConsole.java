@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import lotto.domain.Rank;
 import lotto.domain.Result;
+import lotto.domain.Validator;
 
 public class GameConsole {
 
@@ -19,12 +20,15 @@ public class GameConsole {
     public int inputPurchase(){
         notice(INPUT_PURCHASE_MESSAGE);
         String purchase = Console.readLine();
+        Validator.purchase(purchase);
+
         return Integer.parseInt(purchase);
     }
 
     public List<Integer> inputWinningNumber(){
         notice(INPUT_WINNING_NUMBER_MESSAGE);
         String winningNumber = Console.readLine();
+        Validator.winningNumbers(winningNumber);
 
         return Arrays.stream(winningNumber.split(","))
                 .map(Integer::parseInt)
@@ -38,6 +42,8 @@ public class GameConsole {
     public int inputBonusNumber(){
         notice(INPUT_BONUS_NUMBER_MESSAGE);
         String bonusNumber = Console.readLine();
+        Validator.bonusNumber(bonusNumber);
+
         return Integer.parseInt(bonusNumber);
     }
 

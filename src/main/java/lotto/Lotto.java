@@ -1,19 +1,14 @@
 package lotto;
 
 import java.util.List;
+import lotto.domain.Validator;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        Validator.checkDuplicate(numbers);
         this.numbers = numbers;
-    }
-
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
     }
 
     public List<Integer> getNumbers() {
