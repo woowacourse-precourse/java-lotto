@@ -10,11 +10,13 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         overlap(numbers);
+        overcheck(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            System.out.println("[ERROR] 로또 번호는 6개여야 합니다.");
             throw new IllegalArgumentException();
         }
     }
@@ -29,15 +31,20 @@ public class Lotto {
             number.add(temp);
         }
         if (number.size() !=0 ){
+            System.out.println("[ERROR] 로또 번호는 중복 될 수 없습니다.");
             throw new IllegalArgumentException();
         }
     }
 
-    private void overnum(List<Integer> numbers){
+    private void overcheck(List<Integer> numbers){
         int temp;
         for(int i =0;i < numbers.size();i++){
             temp = numbers.get(i);
-            if(temp>45 || temp <1) throw new IllegalArgumentException();
+            if(temp>45 || temp <1) {
+                System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+                throw new IllegalArgumentException();
+            }
         }
     }
+
 }

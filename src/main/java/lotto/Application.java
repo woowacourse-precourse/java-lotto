@@ -18,6 +18,7 @@ public class Application {
         try {
             money = Integer.parseInt(input_money);
         } catch (NumberFormatException ex) {
+            System.out.println("[ERROR] 구입금액은 숫자여야 합니다");
             throw new IllegalArgumentException();
         }
         return money;
@@ -55,6 +56,7 @@ public class Application {
                 num = Integer.parseInt(nums[i]);
                 winning_num.add(num);
             } catch (NumberFormatException ex) {
+                System.out.println("[ERROR] 당첨번호는 숫자여야 합니다.");
                 throw new IllegalArgumentException();
             }
         }
@@ -83,6 +85,7 @@ public class Application {
         try {
             bonus = Integer.parseInt(input_num);
         } catch (NumberFormatException ex) {
+            System.out.println("[ERROR] 보너스 번호는 숫자여야 합니다.");
             throw new IllegalArgumentException();
         }
         return bonus;
