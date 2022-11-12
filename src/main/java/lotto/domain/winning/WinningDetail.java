@@ -1,11 +1,10 @@
 package lotto.domain.winning;
 
 import java.util.List;
-import java.util.Optional;
 import lotto.domain.ball.Ball;
 
 public class WinningDetail {
-    private WinningRank rank;
+    private final WinningRank rank;
     private final List<Ball> balls;
     
     public WinningDetail(WinningRank rank, List<Ball> balls) {
@@ -13,12 +12,8 @@ public class WinningDetail {
         this.balls = balls;
     }
     
-    public WinningDetail(List<Ball> balls) {
-        this.balls = balls;
-    }
-    
-    public Optional<WinningRank> getRank() {
-        return Optional.ofNullable(rank);
+    public WinningRank getRank() {
+        return rank;
     }
     
     public List<Ball> getBalls() {
