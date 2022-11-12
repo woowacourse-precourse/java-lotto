@@ -8,11 +8,11 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class PurchaseNumberTest {
+public class TicketTest {
     @DisplayName("데이터 삽입")
     @Test
     void insert() {
-        PurchaseNumber dao = PurchaseNumber.newInstance();
+        Ticket dao = Ticket.newInstance();
 
         assertThat(dao.insert(new Lotto(Lotto.createNumbers()))).isTrue();
     }
@@ -20,7 +20,7 @@ public class PurchaseNumberTest {
     @DisplayName("최근 데이터 가져오기")
     @Test
     void getLatest() {
-        PurchaseNumber dao = PurchaseNumber.newInstance();
+        Ticket dao = Ticket.newInstance();
         dao.insert(new Lotto(Lotto.createNumbers()));
 
         assertThat(dao.getLatest()).isInstanceOf(Lotto.class);
@@ -29,7 +29,7 @@ public class PurchaseNumberTest {
     @DisplayName("데이터 모두 가져오기")
     @Test
     void getAll() {
-        PurchaseNumber dao = PurchaseNumber.newInstance();
+        Ticket dao = Ticket.newInstance();
         dao.insert(new Lotto(Lotto.createNumbers()));
         dao.insert(new Lotto(Lotto.createNumbers()));
 
@@ -41,7 +41,7 @@ public class PurchaseNumberTest {
     @DisplayName("DB가 비어있다면 패스")
     @Test
     void isEmpty() {
-        PurchaseNumber dao = PurchaseNumber.newInstance();
+        Ticket dao = Ticket.newInstance();
 
         assertThat(dao.isEmpty()).isTrue();
     }
@@ -49,7 +49,7 @@ public class PurchaseNumberTest {
     @DisplayName("데이터 삭제")
     @Test
     void delete() {
-        PurchaseNumber dao = PurchaseNumber.newInstance();
+        Ticket dao = Ticket.newInstance();
         dao.insert(new Lotto(Lotto.createNumbers()));
         Lotto lotto = dao.getLatest();
 

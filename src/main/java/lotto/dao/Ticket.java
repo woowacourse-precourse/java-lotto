@@ -2,31 +2,30 @@ package lotto.dao;
 
 import lotto.vo.Lotto;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-public class PurchaseNumber {
-    private static PurchaseNumber purchaseNumber;
+public class Ticket {
+    private static Ticket ticket;
 
     private final List<Lotto> database = new LinkedList<>();
 
-    private PurchaseNumber() {
+    private Ticket() {
 
     }
 
-    public static PurchaseNumber getInstance() {
-        if (purchaseNumber == null) {
-            purchaseNumber = new PurchaseNumber();
+    public static Ticket getInstance() {
+        if (ticket == null) {
+            ticket = new Ticket();
         }
 
-        return purchaseNumber;
+        return ticket;
     }
 
-    public static PurchaseNumber newInstance() {
-        purchaseNumber = new PurchaseNumber();
-        return purchaseNumber;
+    public static Ticket newInstance() {
+        ticket = new Ticket();
+        return ticket;
     }
 
     public boolean insert(Lotto lotto) {

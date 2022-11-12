@@ -1,16 +1,15 @@
 package lotto.service;
 
-import lotto.dao.PurchaseNumber;
+import lotto.dao.Ticket;
 import lotto.vo.Lotto;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class LottoService {
-    private final PurchaseNumber purchaseNumberDao;
+    private final Ticket ticketDao;
 
     public LottoService() {
-        this.purchaseNumberDao = PurchaseNumber.getInstance();
+        this.ticketDao = Ticket.getInstance();
     }
 
     public void issueLotteryTicketsAs(int money) {
@@ -21,12 +20,12 @@ public class LottoService {
         int numberOfLotteries = (money / 1000);
 
         for (int count = 0; count < numberOfLotteries; count++) {
-            this.purchaseNumberDao.insert(new Lotto(Lotto.createNumbers()));
+            this.ticketDao.insert(new Lotto(Lotto.createNumbers()));
         }
     }
 
     public List<Lotto> getIssueLotteryTickets() {
-        return this.purchaseNumberDao.getAll();
+        return this.ticketDao.getAll();
     }
 
 
