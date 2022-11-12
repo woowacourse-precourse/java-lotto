@@ -64,7 +64,7 @@ class ApplicationTest extends NsTest {
         //when
 
         //then
-        assertThatThrownBy(() -> Application.checkInputCondition(input))
+        assertThatThrownBy(() -> Application.checkUserInputCondition(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -76,7 +76,7 @@ class ApplicationTest extends NsTest {
         int expectedValue = 14;
 
         //when
-        int actualValue = Application.convertBuyingPriceIntoLotteries(buyingPrice);
+        int actualValue = Application.convertBuyingPriceIntoTicketAmount(buyingPrice);
 
         //then
         assertEquals(expectedValue, actualValue);
@@ -90,7 +90,7 @@ class ApplicationTest extends NsTest {
         //when
 
         //then
-        assertThatThrownBy(() -> Application.convertBuyingPriceIntoLotteries(buyingPrice))
+        assertThatThrownBy(() -> Application.convertBuyingPriceIntoTicketAmount(buyingPrice))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
