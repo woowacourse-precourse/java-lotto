@@ -1,11 +1,11 @@
 package lotto.domain;
 
-import lotto.Calculation;
 import lotto.LottoIssuer;
 import lotto.domain.player.BonusNumber;
 import lotto.domain.player.Player;
 import lotto.domain.player.PurchaseAmount;
 import lotto.domain.player.WinningNumber;
+import lotto.domain.result.Result;
 
 import java.util.List;
 
@@ -19,10 +19,10 @@ public class Game {
 		LottoIssuer lottoIssuer = new LottoIssuer(purchaseCount);
 
 		List<Integer> winningNumber = new WinningNumber(player.receiveWinningNumber()).toConvert();
-		List<Integer> bonusNumber = new BonusNumber(player.receiveBonusNumber(), winningNumber).toConvert();
+		int bonusNumber = new BonusNumber(player.receiveBonusNumber(), winningNumber).toConvert();
 
-		Calculation.findMatch();
-		Calculation.calculateResult();
-		Calculation.calculateProfit(purchaseAmount);
+		Result result = new Result(winningNumber, bonusNumber);
+		result.calculateLottoRank();
+		result.calculateTotalProfit(purchaseAmount);
 	}
 }
