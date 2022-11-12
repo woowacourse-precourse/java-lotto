@@ -22,6 +22,7 @@ public class Application {
         if(buyingAmount != STOP_VALUE){
             final int countOfLottery = buyingAmount / AMOUNT_UNIT;
             System.out.println("\n" + countOfLottery + "개를 구매했습니다.");
+            checkWinning(countOfLottery);
         }
     }
     private static int inputBuyingAmount(){
@@ -51,6 +52,27 @@ public class Application {
             return STOP_VALUE;
         }
         return buyingAmount;
+    }
+
+    private static void checkWinning(int countOfLottery){
+        ArrayList<int[]> lotteryBundleArray = new ArrayList<>();
+        int cntForCreateLottery = 0;
+        while (cntForCreateLottery < countOfLottery) {
+            lotteryBundleArray.add(createAndPrintLottery());
+            cntForCreateLottery++;
+        }
+    }
+    private static int[] createAndPrintLottery(){
+        List<Integer> tempLotteryArray = Randoms.pickUniqueNumbersInRange(1,45,LOTTERY_NUMBER_LIMIT);
+        int[] lotteryNumberArray = new int[LOTTERY_NUMBER_LIMIT];
+        Collections.sort(tempLotteryArray);
+        System.out.println(tempLotteryArray);
+        Iterator lotteryNumberItr = tempLotteryArray.iterator();
+        int index=0;
+        while (lotteryNumberItr.hasNext()){
+            lotteryNumberArray[index++] = (int)lotteryNumberItr.next();
+        }
+        return lotteryNumberArray;
     }
 
 }
