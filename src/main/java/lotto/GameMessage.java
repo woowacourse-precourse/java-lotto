@@ -19,7 +19,7 @@ public enum GameMessage {
     WINNING_5BONUS_RESULT_MESSAGE("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
     WINNING_6_RESULT_MESSAGE("6개 일치 (2,000,000,000원) - "),
     PROFIT_HEAD_MESSAGE("총 수익률은 "),
-    PROFIT_TAIL_MESSAGE("입니다."),
+    PROFIT_TAIL_MESSAGE("%입니다."),
     COUNT_MESSAGE("개");
 
     private String Message;
