@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Draw;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
 import lotto.domain.NumberGenerator;
@@ -17,6 +18,7 @@ public class Application {
 
         Lotto winnerLotto = askWinnerLotto();
         Integer bonusNumber = askBonusNumber();
+        Draw draw = new Draw(winnerLotto, bonusNumber);
 
 
     }
