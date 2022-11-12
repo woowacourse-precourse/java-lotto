@@ -21,4 +21,11 @@ public class LottoResultJudge {
         }
         return correctNumber;
     }
+
+    private boolean correspondBonus(List<Integer> userLotto, int bonus) {
+        if(userLotto.contains(bonus)) {
+            return true;
+        }
+        return false;
+    }
 }
