@@ -34,7 +34,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_NUMBER_LENGTH) {
+        if (isWrongNumberOfValues(numbers)) {
             throw new IllegalArgumentException();
         }
         if (isDuplicate(numbers)) {
@@ -46,6 +46,8 @@ public class Lotto {
         }
     }
 
+    private boolean isWrongNumberOfValues(List<Integer> numbers) {
+        return numbers.size() != LOTTO_NUMBER_LENGTH;
     }
 
     private boolean isDuplicate(List<Integer> numbers) {
