@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 import lotto.util.ErrorMessages;
 
 public class LottoNumberValidator {
-    public void validateFomula(final String inputValue) {
+    public void validateFomula(String inputValue) {
         checkingSeparator(inputValue);
         checkingNotNumber(inputValue);
         checkingRange(inputValue);
@@ -13,7 +13,7 @@ public class LottoNumberValidator {
         checkingOverlap(inputValue);
     }
 
-    public void validateBonus(final String inputValue) {
+    public void validateBonus(String inputValue) {
         checkingSingleNumber(inputValue);
         checkingNotNumber(inputValue);
         checkingRange(inputValue);
@@ -21,7 +21,7 @@ public class LottoNumberValidator {
 
 
     // 1차 : 쉼표로 split했는데 다른 구분자 있을 때
-    public void checkingSeparator(final String inputValue) {
+    public void checkingSeparator(String inputValue) {
         String[] splitValues = inputValue.split("");
         for (String value : splitValues) {
             value = value.trim();
@@ -32,7 +32,7 @@ public class LottoNumberValidator {
     }
 
     // 2차 : 숫자값이 맞는지
-    public void checkingNotNumber(final String inputValue) {
+    public void checkingNotNumber(String inputValue) {
         String[] splitValues = inputValue.split(",");
         for (String value : splitValues) {
             value = value.trim();
@@ -43,7 +43,7 @@ public class LottoNumberValidator {
     }
 
     // 3차 : 1~45 범위가 맞는지
-    public void checkingRange(final String inputValue) {
+    public void checkingRange(String inputValue) {
         String[] splitValues = inputValue.split(",");
         for (String value : splitValues) {
             value = value.trim();
@@ -55,7 +55,7 @@ public class LottoNumberValidator {
     }
 
     // 4차 : 6개가 맞는지
-    public void checkingQuantity(final String inputValue) {
+    public void checkingQuantity(String inputValue) {
         String[] splitValues = inputValue.split(",");
         if (splitValues.length > 6) {
             throw new IllegalArgumentException(ErrorMessages.MORE_THAN_SIX.getMessage());
@@ -65,14 +65,14 @@ public class LottoNumberValidator {
     }
 
     // 5차 : 중복값 여부 - 중복값 제거했는데 6개 미만일 때
-    public void checkingOverlap(final String inputValue) {
+    public void checkingOverlap(String inputValue) {
         Stream<String> deduplicatedNumbers = Arrays.stream(inputValue.split(",")).distinct();
         if (deduplicatedNumbers.count() < 6) {
             throw new IllegalArgumentException(ErrorMessages.HAS_OVERLAP_NUMBER.getMessage());
         }
     }
 
-    public void checkingSingleNumber(final String inputValue) {
+    public void checkingSingleNumber(String inputValue) {
         String[] splitValues = inputValue.split("\\D");
         boolean alreadyFound = false;
         for (String value : splitValues) {

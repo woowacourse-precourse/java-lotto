@@ -10,9 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestMethodOrder;
 
 @DisplayName("로또 번호 입력 유효성 검사 테스트")
@@ -141,11 +139,11 @@ class LottoNumberValidatorTest {
     @DisplayName("validateFomula 통합 테스트")
     @Test
     void fomulaNumberIntegrationTest() {
-        String inputValue1="1,2,3,4.5.6"; // 구분자 오류
-        String inputValue2="1,2,3,4,5,a"; // 숫자 여부
-        String inputValue3="1,2,3,4,5,47"; // 범위 준수 여부
-        String inputValue4="1,2,3,4,5,6,7"; // 숫자 갯수 준수 여부
-        String inputValue5="1,2,2,3,4,5"; // 중복 값 여부
+        String inputValue1 = "1,2,3,4.5.6"; // 구분자 오류
+        String inputValue2 = "1,2,3,4,5,a"; // 숫자 여부
+        String inputValue3 = "1,2,3,4,5,47"; // 범위 준수 여부
+        String inputValue4 = "1,2,3,4,5,6,7"; // 숫자 갯수 준수 여부
+        String inputValue5 = "1,2,2,3,4,5"; // 중복 값 여부
 
         Exception exception1 = assertThrows(IllegalArgumentException.class,
                 () -> validator.validateFomula(inputValue1));
@@ -174,7 +172,7 @@ class LottoNumberValidatorTest {
     void bonusNumberIntegrationTest() {
         String inputValue1 = "4   23";
         String inputValue2 = "a";
-        String inputValue3 = "47" ;
+        String inputValue3 = "47";
         Exception exception1 = assertThrows(IllegalArgumentException.class,
                 () -> validator.validateBonus(inputValue1));
         assertThat(exception1.getMessage()).isEqualTo(ErrorMessages.NOT_SINGLE_NUMBER.getMessage());
