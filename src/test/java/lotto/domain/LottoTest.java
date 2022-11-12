@@ -1,10 +1,14 @@
 package lotto.domain;
 
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -33,5 +37,26 @@ class LottoTest {
                 () -> assertThat(lotto.isContainNumber(LottoNumber.of(4))).isTrue(),
                 () -> assertThat(lotto.isContainNumber(LottoNumber.of(7))).isFalse()
         );
+    }
+
+    private static Stream<Arguments> provideForLottoResult() {
+        return Stream.of(
+                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 6),
+                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 7)), 5),
+                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 5, 8)), 5),
+                Arguments.of(new Lotto(List.of(1, 2, 3, 4, 9, 10)), 4),
+                Arguments.of(new Lotto(List.of(1, 2, 3, 9, 10, 11)), 3),
+                Arguments.of(new Lotto(List.of(1, 2, 9, 10, 11, 12)), 2),
+                Arguments.of(new Lotto(List.of(1, 9, 10, 11, 12, 13)), 1),
+                Arguments.of(new Lotto(List.of(9, 10, 11, 12, 13, 14)), 0)
+        );
+    }
+
+    @ParameterizedTest(name = "로또 번호가 몇개 일치하는지 반환한다.")
+    @MethodSource("provideForLottoResult")
+    void matchCount(Lotto matchLotto, int count) {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        assertThat(lotto.matchCount(matchLotto)).isEqualTo(count);
     }
 }
