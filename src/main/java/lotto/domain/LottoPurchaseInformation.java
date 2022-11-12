@@ -44,11 +44,7 @@ public class LottoPurchaseInformation {
         initializeWinningStatistics();
         for(int i = 0; i < lottoTickets.size(); i++) {
             Lotto lotto = lottoTickets.get(i);
-            int count = lotto.calculateCountOfMatchingNumbers(winningNumbers);
-            String winningData = count + "개 일치";
-            if(count == 5 && lotto.contains(bonusNumber)){
-                winningData += " 보너스 볼 일치";
-            }
+            String winningData = lotto.compareNumbersWith(winningNumbers,bonusNumber);
             renewWinningStatistics(winningData);
         }
     }
