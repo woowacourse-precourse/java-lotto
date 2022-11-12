@@ -9,10 +9,16 @@ public class MoneyCheck {
         if (!isMoney(money)) {
             throw new IllegalArgumentException(Const.NUM_ERRMSG);
         }
-        if (Integer.parseInt(money) % 1000 != 0) {
+        if (!changes(money)) {
             throw new IllegalArgumentException(Const.MONEY_ERRMSG);
         }
         return Integer.parseInt(money);
+    }
+
+    private static boolean changes(String money){
+        int m = Integer.parseInt(money);
+        if (m % 1000 != 0) return false;
+        return true;
     }
 
     private static boolean isMoney(String money) {
