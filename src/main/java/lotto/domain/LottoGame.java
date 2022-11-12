@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import java.util.ArrayList;
+import jdk.dynalink.linker.ConversionComparator.Comparison;
 import lotto.Lotto;
 import lotto.constants.Rank;
 import lotto.input.AdditionalNumber;
@@ -22,26 +22,26 @@ public class LottoGame {
     }
 
     public void setUp() {
-        int lottos = lottoTickets.getPaid();
-        List<List<Integer>> lists = randomLottoGenerator.createTicket(lottos);
-        Lotto lottoAnswer = winningNumber.getCorrect();
+        int lottos = lottoTickets.getPaid(); // 티켓 받기
+        List<List<Integer>> randomLotto = randomLottoGenerator.createTicket(lottos); // 랜덤 받기
+        Lotto lottoAnswer = winningNumber.getCorrect(); // 정답 받기
+
+        LottoAndWinningNumber lottoAndWinningNumber = new LottoAndWinningNumber();
+        List<Integer> sameNumberCount = lottoAndWinningNumber.comparison(randomLotto, lottoAnswer); // 결과 받기
 
 
 
 
-        LottoComparison lottoComparison = new LottoComparison();
-        List<Integer> number = lottoComparison.findNumber(lottoAnswer, lists); // 결과 리스트
 
-        System.out.println();
         AdditionalNumber additionalNumber = new AdditionalNumber();
         int bonus = additionalNumber.getBonus(); // 보너스 입력 값
 
         BonusBallUsedLottery bonusBallUsedLottery = new BonusBallUsedLottery();
-        List<Integer> bonusNumbers = bonusBallUsedLottery.getLocations(lottoAnswer, lists, number,
+        List<Integer> bonusNumbers = bonusBallUsedLottery.getLocations(lottoAnswer, randomLotto, sameNumberCount,
                 bonus); // 보너스 위치
 
         WinningStatistics winningStatistics = new WinningStatistics();
-        List<Integer> countCheck = winningStatistics.countCheck(number, bonusNumbers);
+        List<Integer> countCheck = winningStatistics.countCheck(sameNumberCount, bonusNumbers);
 
 
         for (int i = 0; i < countCheck.size(); i++) {
@@ -72,7 +72,7 @@ public class LottoGame {
         }
 
         TotalPrizeMoney totalPrizeMoney = new TotalPrizeMoney();
-        int calculation = totalPrizeMoney.calculation(number, countCheck);
+        int calculation = totalPrizeMoney.calculation(sameNumberCount, countCheck);
 
         YieldCalculation yieldCalculation = new YieldCalculation();
 
