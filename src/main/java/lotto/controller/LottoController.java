@@ -42,7 +42,9 @@ public class LottoController {
         return inputDevice.sendBonusNumber(winningNumbers);
     }
 
-    private List<LottoResult> getLottoResult(List<Lotto> lottoTickets, List<Integer> winningNumbers, int bonusNumber) {
+    private List<LottoResult> getLottoResult(List<Lotto> lottoTickets,
+                                             List<Integer> winningNumbers,
+                                             int bonusNumber) {
         List<LottoResult> lottoResults = lottoService.compareLottoNumbers(lottoTickets, winningNumbers, bonusNumber);
         lottoView.printLottoResult(lottoResults);
         return lottoResults;

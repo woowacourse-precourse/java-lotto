@@ -17,7 +17,6 @@ public enum LottoResult {
     private int payout;
     private int numberOfMatches;
 
-
     LottoResult(int payout, int numberOfMatches) {
         this.payout = payout;
         this.numberOfMatches = numberOfMatches;

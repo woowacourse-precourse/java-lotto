@@ -26,6 +26,7 @@ public class LottoService {
         int revenue = lottoResults.stream()
                 .mapToInt(LottoResult::getPayout)
                 .sum();
+
         int investment = lottoResults.size() * LOTTO_PRICE;
 
         return (double) revenue / investment  * MAKE_PERCENTAGE_SCALE;

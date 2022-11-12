@@ -27,6 +27,7 @@ public class LottoView {
 
     public void printLottoBundleInfo(List<Lotto> lottoBundle) {
         System.out.printf("%d개를 구매했습니다.\n", lottoBundle.size());
+
         lottoBundle.stream()
                 .map(Lotto::getNumbers)
                 .forEach(System.out::println);
