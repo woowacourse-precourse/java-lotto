@@ -11,12 +11,31 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 	private static final String INPUT_USER_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
+	private static final String DEFAULT_ERROR_MESSAGE = "[ERROR] ";
+	private static final String INPUT_MONEY_ERROR_MESSAGE = "구입금액은 숫자여야 합니다.";
+	private static final String IN_MONEY_ERROR_MESSAGE = "구입 금액은 1000원 단위로 입력하셔야 합니다.";
 	private static final String INPUT_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
 	private static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해주세요";
 
-	public String inputUserMoney() {
+	public int inputUserMoney() {
 		System.out.println(INPUT_USER_MONEY_MESSAGE);
-		return Console.readLine();
+		int money = 0;
+		try {
+			money = Integer.parseInt(Console.readLine());
+		} catch (IllegalArgumentException e) {
+			System.out.println(DEFAULT_ERROR_MESSAGE + INPUT_MONEY_ERROR_MESSAGE);
+		}
+		return money;
+	}
+
+	public void validMoney(int money) {
+		if (isNotDividedInto1000Units(money)) {
+			throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + IN_MONEY_ERROR_MESSAGE);
+		}
+	}
+
+	private boolean isNotDividedInto1000Units (int money) {
+		return money % 1000 != 0;
 	}
 
 	public String inputWinningNumber() {
@@ -32,7 +51,7 @@ public class InputView {
 	}
 
 	public void validBonusNumber(String str) {
-		if (isNotNumber(str) || isWrongRangeBonusNumber(str)) {
+		if (isWrongRangeBonusNumber(str)) {
 			throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45의 범위를 가지는 1개의 숫자여야 합니다.");
 		}
 	}
@@ -43,7 +62,7 @@ public class InputView {
 	}
 
 	public void validWinningNumber(String userInput) {
-		if (notExistInputValue(userInput) ||  isWrongSize(userInput) || isDuplicateNumber(userInput)
+		if (isWrongSize(userInput) || isDuplicateNumber(userInput)
 			|| isWrongRangeWinningNumber(userInput)) {
 			throw new IllegalArgumentException("[ERROR] 당첨 번호는 1~45의 범위를 가지는 6개의 숫자여야 합니다.");
 		}
@@ -60,29 +79,5 @@ public class InputView {
 
 	private boolean isWrongSize(String str) {
 		return str.split(",").length != 6;
-	}
-
-	public void validMoney(String str) {
-		if (notExistInputValue(str) || isFirstLetterZero(str) || isNotNumber(str) || isNotDividedInto1000Units(str)) {
-			throw new IllegalArgumentException("[ERROR] 구입 금액은 1000으로 나누어 떨어지는 1000원 이상의 숫자여야 합니다.");
-		}
-	}
-
-	private boolean notExistInputValue(String str) {
-		return str.isEmpty();
-	}
-
-	private boolean isFirstLetterZero(String str) {
-		return str.charAt(0) == '0';
-	}
-
-	private boolean isNotNumber(String str) {
-		String REGEX = "\\d+";
-		return !str.matches(REGEX);
-	}
-
-	private boolean isNotDividedInto1000Units (String str) {
-		int userNumbers = Integer.parseInt(str);
-		return userNumbers % 1000 != 0;
 	}
 }

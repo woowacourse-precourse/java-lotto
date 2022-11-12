@@ -29,9 +29,8 @@ public class LottoController {
 	}
 
 	public void chargeLottoPurchaseAmount() {
-		String userInput = inputView.inputUserMoney();
-		inputView.validMoney(userInput);
-		userMoney = Integer.parseInt(userInput);
+		int userMoney = inputView.inputUserMoney();
+		inputView.validMoney(userMoney);
 		int ticketNumber = userMoney / 1000;
 		LottoTicket lottoTicket = new LottoTicket(ticketNumber);
 		lottoTickets = lottoTicket.createLottoTickets();
