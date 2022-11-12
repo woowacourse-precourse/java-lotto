@@ -12,7 +12,6 @@ public class Application {
     public static void main(String[] args) {
         try {
             System.out.println("구입금액을 입력해 주세요.");
-
             int lottoCount = getLottoCount(Console.readLine());
             System.out.println();
 
@@ -29,8 +28,11 @@ public class Application {
             System.out.println();
 
             System.out.println("당첨 번호를 입력해 주세요.");
-
             Lotto winningLotto = getWinningLotto(Console.readLine());
+            System.out.println();
+
+            System.out.println("보너스 번호를 입력해 주세요.");
+            int bonusNumber = getBonusNumber(Console.readLine());
             System.out.println();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
