@@ -1,13 +1,16 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class PlayerLotto {
+
     private List<Lotto> lottos;
 
-    public void issueLottos(int money) {
-        int number = money /1000;
+    public void issueLottos(PlayerMoney playerMoney) {
+        int number = playerMoney.getMoney() / PlayerMoney.lottoPrice;
 
+        lottos = new ArrayList<>();
         for (int i = 0; i < number; i++) {
             List<Integer> lottoNumbers = LottoNumberGenerator.generate();
             lottos.add(new Lotto(lottoNumbers));
