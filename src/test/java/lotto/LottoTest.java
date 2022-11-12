@@ -113,4 +113,26 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
 
     }
+
+    @DisplayName("당첨 번호와 일치하는 번호의 개수를 계산한다.")
+    @Test
+    public void countMatchingNumber() {
+        LottoMachine lottoMachine = new LottoMachine();
+
+        lottoMachine.setWinNumber(List.of("11", "12", "13", "14", "15", "16"));
+        lottoMachine.setBonusNumber("17");
+
+        compareNumber(lottoMachine, new Lotto(List.of(11, 12, 13, 14, 15, 16)), WinPrize.ONE_GRADE);
+        compareNumber(lottoMachine, new Lotto(List.of(11, 12, 13, 14, 15, 17)), WinPrize.TWO_GRADE);
+        compareNumber(lottoMachine, new Lotto(List.of(11, 12, 13, 14, 15, 20)), WinPrize.THREE_GRADE);
+        compareNumber(lottoMachine, new Lotto(List.of(11, 12, 13, 14, 19, 31)), WinPrize.FOUR_GRADE);
+        compareNumber(lottoMachine, new Lotto(List.of(11, 12, 13, 30, 31, 32)), WinPrize.FIVE_GRADE);
+
+    }
+
+    public void compareNumber(LottoMachine lottoMachine, Lotto lotto, WinPrize winPrize) {
+        assertThat(lottoMachine.getWinPrize(lotto))
+                .isEqualTo(winPrize);
+    }
+
 }
