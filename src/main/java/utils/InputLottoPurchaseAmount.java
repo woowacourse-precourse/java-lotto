@@ -20,4 +20,10 @@ public class InputLottoPurchaseAmount {
 			throw new IllegalArgumentException("[ERROR] 로또 구입금액은 숫자만 입력해야 합니다.");
 		}
 	}
+
+	public static void validatePurchaseAmountRange(int purchaseAmoutResult) {
+		if (purchaseAmoutResult < 1000) {
+			throw new IllegalArgumentException("[ERROR] 로또 최소 구입금액은 1000원 입니다.");
+		}
+	}
 }
