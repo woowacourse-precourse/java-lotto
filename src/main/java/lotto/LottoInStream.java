@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -25,6 +26,37 @@ public class LottoInStream {
     }
 
     public static List<Integer> readToGetLottoNumbers() {
+        System.out.print(_input_numbers_str);
+        String line = readline();
+
+        if (isNullOrEmptyString(line)) {
+            throw new IllegalArgumentException();
+        }
+        if (line.length() != 6) {
+            throw new IllegalArgumentException();
+        }
+        List<Integer> numbers = new ArrayList<>();
+
+        for (int i = 0; i < line.length(); ++i) {
+            char ch = line.charAt(i);
+
+            if (!isNumber(line.charAt(i))) {
+                throw new IllegalArgumentException();
+            }
+            numbers.add(charToDigit(ch));
+        }
+        return numbers;
+    }
+
+    private static boolean isNumber(char ch) {
+        if (ch >= '0' && ch <= '9') {
+            return true;
+        }
+        return false;
+    }
+
+    private static int charToDigit(char ch) {
+        return ch - '0';
     }
 
     private static String readline() {
