@@ -34,4 +34,8 @@ public class LottoCollection {
                 .map(Lotto::toString)
                 .collect(Collectors.joining());
     }
+
+    public List<Lotto> get() {
+        return lottoCollection;
+    }
 }

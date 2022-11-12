@@ -24,7 +24,13 @@ public class WinningNumber {
         this.bonusNumber = Integer.parseInt(bonusNumber);
     }
 
-    public Rank computeRank(Lotto lotto) {
+    public List<Rank> collectRanks(List<Lotto> lottoCollection) {
+        return lottoCollection.stream()
+                .map(lotto -> computeRank(lotto))
+                .collect(Collectors.toList());
+    }
+
+    private Rank computeRank(Lotto lotto) {
         int numOfMatch = this.lotto.countMatch(lotto);
         boolean isBonusMatch = lotto.contains(bonusNumber);
 
