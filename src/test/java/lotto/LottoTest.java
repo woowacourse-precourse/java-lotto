@@ -68,6 +68,7 @@ class LottoTest extends NsTest {
                 List.of(1, 3, 5, 14, 22, 45)
         );
     }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
