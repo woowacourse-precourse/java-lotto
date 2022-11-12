@@ -22,4 +22,12 @@ public class LottoService {
             throw new IllegalArgumentException(Constant.NOT_NUMBER_EXCEPTION);
         }
     }
+
+    public void createPlayerRandomLottoPickNumbers(Player player){
+        for (int lottoNum = 0; lottoNum < player.getLottoCount(); lottoNum++) {
+            Lotto playerLotto = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            Collections.sort(playerLotto.getNumbers());
+            player.getPlayerLottoPickNumbers().add(playerLotto);
+        }
+    }
 }
