@@ -11,4 +11,5 @@ public class LottoConstants {
     public static final int LOTTO_SIZE = 6;
     public static final int MIN_VALID_LOTTO_VALUE=1;
     public static final int MAX_VALID_LOTTO_VALUE=45;
+    public static final String TO_STRING="";
 }

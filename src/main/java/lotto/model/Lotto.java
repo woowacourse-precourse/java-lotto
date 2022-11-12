@@ -3,6 +3,7 @@ package lotto.model;
 import static lotto.constant.LottoConstants.*;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,6 +34,12 @@ public class Lotto {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        numbers.sort(Comparator.naturalOrder());
+        return TO_STRING + this.numbers;
     }
 
     private void validate(List<Integer> numbers) {
@@ -114,6 +121,4 @@ public class Lotto {
             throw new IllegalArgumentException(INVALID_RANGED_LOTTO_INPUT);
         }
     }
-
-
 }

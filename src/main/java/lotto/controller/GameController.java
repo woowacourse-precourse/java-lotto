@@ -14,6 +14,7 @@ public class GameController {
     public void play() {
         try {
             createMoney();
+            generateLottosByMoney();
         } catch (Exception e) {
             OutputView.announceError(e.getMessage());
         }
@@ -24,6 +25,10 @@ public class GameController {
         OutputView.announcePayNotice();
 
         gameService.createMoney(InputView.getUserInput());
+    }
+
+    private void generateLottosByMoney() {
+        OutputView.announceLottos(gameService.generateLottosByMoney());
     }
 
 
