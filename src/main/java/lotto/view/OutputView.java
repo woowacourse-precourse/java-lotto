@@ -44,7 +44,7 @@ public class OutputView {
     }
 
     public void printFirstCount(int count) {
-        System.out.println("6개 일치 2,000,000,000원) - " + count + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + count + "개");
     }
 
     public void printRevenue(double revenue) {
