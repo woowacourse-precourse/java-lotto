@@ -8,29 +8,9 @@ import java.util.stream.Collectors;
 
 public class Application {
 
-    static String NUMBER_REG = "^[0-9]+$";
-    static String LOTTO_NUMBER_REG = "^[1-9]{1}$|^[1-3]{1}[0-9]{1}$|^4{1}[0-5]{1}$";
     public static void main(String[] args) {
-        // TODO: Java Enum 만들기
-        /*- 1. 로또 구입 금액을 입력 받는다.
-            - 1000원 단위로 입력, 1000원으로 나누어 떨어지지 않을 시 예외 발생
-            - 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
-          - 2. 로또 구입 금액에 해당하는 만큼 로또 발행
-            - 숫자 범위는 1~45
-            - 중복되지 않는 숫자 6개
-          - 3. 발행한 로또 수량 및 번호를 출력한다.
-            - 로또 번호는 오름차순으로 정렬하여 보여준다.
-          - 4. 당첨 번호를 입력 받는다.
-            - 중복되지 않는 숫자 6개 (번호는 (,) 기준으로 구분한다.)
-            - 사용자가 잘못된 당첨 번호를 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
-            - 보너스 숫자 1개
-            - 사용자가 잘못된 보너스 숫자를 입력할 경우 IllegalArgumentException를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
-          - 5. 당첨 내역을 출력한다.
-            - n개 일치 (당첨 금액) - 해당 금액 총 당첨 개수
-            - 총 수익률 (소수점 둘째 자리에서 반올림)*/
-
         // 1.
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(UiValue.BUY_MONEY_INPUT.getUiValue());
         String inputMoney = Console.readLine();
         int money = validateInputMoney(inputMoney);
 
@@ -41,11 +21,11 @@ public class Application {
         printLottos(money, lottos);
 
         // 4.
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(UiValue.WINNIG_NUMBERS_INPUT.getUiValue());
         String inputWinningNums = Console.readLine();
         validateInputWinningNums(inputWinningNums);
 
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(UiValue.BONUS_NUMBER_INPUT.getUiValue());
         String inputBonusNum = Console.readLine();
         validateInputBonusNum(inputBonusNum);
 
@@ -59,7 +39,7 @@ public class Application {
     }
 
     private static int validateInputMoney(String inputMoney) {
-        if (!inputMoney.matches(NUMBER_REG)) {
+        if (!inputMoney.matches(RegValue.NUMBER_REG.getReg())) {
             System.out.println("[ERROR] 숫자만 입력 가능합니다.");
             throw new NoSuchElementException("[ERROR] 숫자만 입력 가능합니다.");
         } else if (Integer.parseInt(inputMoney) % 1000 != 0) {
@@ -77,14 +57,14 @@ public class Application {
             throw new IllegalArgumentException("[ERROR] 숫자 6개를 입력해야 합니다.");
         }
         for (String s : inputWinningNumsArr) {
-            if (!s.matches(LOTTO_NUMBER_REG)) {
+            if (!s.matches(RegValue.LOTTO_NUMBER_REG.getReg())) {
                 throw new IllegalArgumentException("[ERROR] 숫자는 1~45까지만 입력할 수 있습니다.");
             }
         }
     }
 
     private static void validateInputBonusNum(String inputBonusNum) {
-        if (!inputBonusNum.matches(NUMBER_REG)) {
+        if (!inputBonusNum.matches(RegValue.NUMBER_REG.getReg())) {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
         }
     }
@@ -101,7 +81,7 @@ public class Application {
     }
 
     private static void printLottos(int money, List<Lotto> lottos) {
-        System.out.printf("%d개를 구매했습니다.\n", money / 1000);
+        System.out.printf(UiValue.BUY_LOTTO_CNT.getUiValue(), money / 1000);
         for (Lotto lotto : lottos) {
             System.out.println(lotto.getSortedNumbers());
         }
@@ -116,7 +96,7 @@ public class Application {
 
     private static Map<String, Integer> checkWinningCnt (List<Lotto> lottos, List<Integer> winningNums, int bonusNum) {
         Map<String, Integer> winningCnt;
-        winningCnt = new HashMap<>(Map.of("1등", 0, "2등", 0, "3등", 0, "4등", 0, "5등", 0));
+        winningCnt = new HashMap<>(Map.of(RankValue.FST_RANK.getRank(), 0, RankValue.SCD_RANK.getRank(), 0, RankValue.THD_RANK.getRank(), 0, RankValue.FOUR_RANK.getRank(), 0, RankValue.FIVE_RANK.getRank(), 0));
 
         for (Lotto lotto: lottos) {
             String rank = lotto.checkWinningNums(winningNums, bonusNum);
@@ -128,21 +108,21 @@ public class Application {
     }
 
     private static String calcurateYield(int money, Map<String, Integer> winningCnt) {
-        double winningMoney = 2000000000 * winningCnt.get("1등")
-            + 30000000 * winningCnt.get("2등")
-            + 1500000 * winningCnt.get("3등")
-            + 50000 * winningCnt.get("4등")
-            + 5000  * winningCnt.get("5등");
+        double winningMoney = 2000000000 * winningCnt.get(RankValue.FST_RANK.getRank())
+            + 30000000 * winningCnt.get(RankValue.SCD_RANK.getRank())
+            + 1500000 * winningCnt.get(RankValue.THD_RANK.getRank())
+            + 50000 * winningCnt.get(RankValue.FOUR_RANK.getRank())
+            + 5000  * winningCnt.get(RankValue.FIVE_RANK.getRank());
         return String.valueOf(Math.round(((winningMoney /money) * 100) * 100) / 100.0).concat("%");
     }
 
     private static void printYield(Map<String, Integer> winningCnt, String yield) {
-        System.out.println("당첨 통계\n---");
-        System.out.printf("3개 일치 (5,000원) - %d개\n", winningCnt.get("5등"));
-        System.out.printf("4개 일치 (50,000원) - %d개\n", winningCnt.get("4등"));
-        System.out.printf("5개 일치 (1,500,000원) - %d개\n", winningCnt.get("3등"));
-        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", winningCnt.get("2등"));
-        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", winningCnt.get("1등"));
-        System.out.printf("총 수익률은 %s입니다.", yield);
+        System.out.println(UiValue.WINNING_YIELD_OUTPUT.getUiValue());
+        System.out.printf(UiValue.FIVE_RANK.getUiValue(), winningCnt.get(RankValue.FIVE_RANK.getRank()));
+        System.out.printf(UiValue.FOUR_RANK.getUiValue(), winningCnt.get(RankValue.FOUR_RANK.getRank()));
+        System.out.printf(UiValue.THD_RANK.getUiValue(), winningCnt.get(RankValue.THD_RANK.getRank()));
+        System.out.printf(UiValue.SCD_RANK.getUiValue(), winningCnt.get(RankValue.SCD_RANK.getRank()));
+        System.out.printf(UiValue.FST_RANK.getUiValue(), winningCnt.get(RankValue.FST_RANK.getRank()));
+        System.out.printf(UiValue.YIELD_OUTPUT.getUiValue(), yield);
     }
 }

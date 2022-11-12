@@ -34,16 +34,16 @@ public class Lotto {
             .collect(Collectors.toList());
 
         if (differentNums.isEmpty()) {
-            return "1등";
+            return RankValue.FST_RANK.getRank();
         } else if (differentNums.size() == 1 && differentNums.get(0).equals(bonusNum)) {
-            return "2등";
+            return RankValue.SCD_RANK.getRank();
         } else if (differentNums.size() == 1 && !differentNums.get(0).equals(bonusNum)) {
-            return "3등";
+            return RankValue.THD_RANK.getRank();
         } else if (differentNums.size() == 2) {
-            return "4등";
+            return RankValue.FOUR_RANK.getRank();
         } else if (differentNums.size() == 3) {
-            return "5등";
+            return RankValue.FIVE_RANK.getRank();
         }
-        return "당첨 X";
+        return RankValue.NOTHING.getRank();
     }
 }
