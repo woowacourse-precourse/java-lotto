@@ -19,6 +19,9 @@ public class Play {
         String amount = Console.readLine();
         int total = purchase.calculateAmount(amount);
 
+        System.out.println("\n"+total+CHECK_MESSAGE);
+
+
 
 
 
