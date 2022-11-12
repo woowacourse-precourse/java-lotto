@@ -8,6 +8,7 @@ public class Message {
 	public static final String ERROR_HAS_DUPLICATED_LOTTO_NUMBER = ERROR_PREFIX + "중복된 로또 번호 입니다.";
 	public static final String ERROR_INVALID_LOTTO_LENGTH = ERROR_PREFIX + "유효하지 않는 로또번호 개수 입니다.";
 	public static final String ERROR_HAS_INVALID_LOTTO_NUMBER_VALUE = ERROR_PREFIX + "로또 번호는 1~45 사이어야 합니다.";
+	public static final String ERROR_EXISTED_LOTTO_BONUS_NUMBER = ERROR_PREFIX + "이미 당첨로또 번호인 숫자는 보너스 숫자가 될 수 없습니다.";
 
 	public static final String ERROR_EMPTY_INPUT = ERROR_PREFIX + "빈 문자열을 입력하면 안됩니다.";
 	public static final String ERROR_IS_NOT_NUMERIC_VALUE = ERROR_PREFIX + "숫자만 입력해야 합니다.";
