@@ -16,7 +16,8 @@ public class LottoGameService {
     }
 
     public LottosResponseDto purchaseLottos(int purchasePrice) {
-        Lottos lottos = player.purchaseLottos(purchasePrice, RandomLottoNumberCreator.createLottoNumber(purchasePrice));
+        int lottoCount = player.calculateLottoCount(purchasePrice);
+        Lottos lottos = player.purchaseLottos(purchasePrice, RandomLottoNumberCreator.createLottoNumber(lottoCount));
         return lottos.toResponseDto();
     }
 
