@@ -53,5 +53,38 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("당첨 번호 개수가 6개가 아니면 예외처리")
+    @Test
+    void inputWinningNumbersByOverSize() {
+        String input = "1,2,3,4,5,6,7";
+        assertThatThrownBy(() -> new WinningNumber().inputWinningNum(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨번호를 로또의 범위 1~45에서 벗어나면 예외처리")
+    @Test
+    void inputWinningNumberByRange() {
+        String input = "1,46,2,3,4,5";
+        assertThatThrownBy(() -> new WinningNumber().inputWinningNum(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호를 로또의 범위 1~45에서 벗어나면 예외처리")
+    @Test
+    void inputBonusByRange() {
+        String input = "56";
+        assertThatThrownBy(() -> new WinningNumber().inputBonusNum(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 번호 입력시 숫자가 아니면 예외처리")
+    @Test
+    void inputBonusCheck() {
+        String input = "보너스";
+        assertThatThrownBy(() -> new WinningNumber().inputBonusNum(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 
 }
