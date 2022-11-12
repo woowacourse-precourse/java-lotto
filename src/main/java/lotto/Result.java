@@ -31,14 +31,14 @@ public class Result {
     public void calculatePrizeMoney() {
         List<Prize> allPrize = Prize.getAllPrize();
         for (Prize prize : allPrize) {
-            int countPrize = getPrizeCount(prize.getWinningCount(), prize.getBonusCount());
+            int countPrize = getPrizeCount(prize.getMatchCount());
             sumPrizeMoney(prize.getPrizeMoney(), countPrize);
             saveResultMessage(prize.getMessage(), countPrize);
         }
     }
 
-    private int getPrizeCount(int winningCount, int bonusCount) {
-        return totalMatchResult.getOrDefault(new MatchCount(winningCount, bonusCount), 0);
+    private int getPrizeCount(MatchCount matchCount) {
+        return totalMatchResult.getOrDefault(matchCount, 0);
     }
 
     public void sumPrizeMoney(int prizeMoney, int countPrize) {
