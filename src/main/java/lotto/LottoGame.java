@@ -29,6 +29,8 @@ public class LottoGame {
     }
 
     private void showStatistics(List<Lotto> lottos, WinningLotto winningLotto) {
+        Statistics lottoStatistics = new Statistics(lottos, winningLotto);
+        outputView.printStatistics(lottoStatistics);
     }
 
     private WinningLotto inputWinningAndBonusNumber() {
