@@ -2,6 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Lotto {
@@ -20,19 +22,32 @@ public class Lotto {
         ));
     }
 
+
+    public static List<Lotto> purchase(final int num) {
+        validatePurchaseAmount(num);
+
+        List<Lotto> purchasedLotto = new ArrayList<>();
+
+        int amount = num / LottoEnum.PURCHASE_UNIT.getValue();
+        for(int i = 0; i < amount; i++){
+            purchasedLotto.add(create());
+        }
+        return purchasedLotto;
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    private static void validatePurchaseAmount(final int amount) {
+        if (amount % LottoEnum.PURCHASE_UNIT.getValue() != 0) {
+            throw new IllegalArgumentException(String.format("[ERROR] %d 단위로 구입이 가능합니다.", LottoEnum.PURCHASE_UNIT.getValue()));
+        }
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
-        }
-    }
-
-    private void validatePurchaseAmount(int amount) {
-        if (amount % LottoEnum.PURCHASE_UNIT.getValue() != 0) {
-            throw new IllegalArgumentException(String.format("[ERROR] %d 단위로 구입이 가능합니다.", LottoEnum.PURCHASE_UNIT.getValue()));
         }
     }
 }
