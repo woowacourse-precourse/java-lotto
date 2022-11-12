@@ -19,7 +19,7 @@ public class LottoController {
 	int userMoney;
 	List<List<Integer>> lottoTickets;
 	List<Integer> winningNumbers;
-	HashMap<String, Integer> prizeCount;
+	HashMap<String, Integer> prizeResult;
 	int bonusNumber;
 
 	public void run() {
@@ -27,7 +27,6 @@ public class LottoController {
 		receiveWinningNumbers();
 		receiveBonusNumber();
 		winningNumberCount();
-		calculateRateReturn();
 	}
 
 	public void chargeLottoPurchaseAmount() {
@@ -51,21 +50,11 @@ public class LottoController {
 	}
 
 	public void winningNumberCount() {
-		LottoResult lottoResult = new LottoResult(lottoTickets, winningNumbers, bonusNumber);
-		prizeCount = lottoResult.countWin();
-		OutputView.printPrize(prizeCount);
-	}
-
-	public void calculateRateReturn() {
-		long sum = 0L;
 		double result;
-		sum += prizeCount.get("firstPrize") * 200000000 ;
-		sum += prizeCount.get("secondPrize") * 30000000;
-		sum += prizeCount.get("thirdPrize") * 1500000;
-		sum += prizeCount.get("fourthPrize") * 50000;
-		sum += prizeCount.get("fifthPrize") * 5000;
-
-		result = (double)sum / userMoney * 100;
+		LottoResult lottoResult = new LottoResult(lottoTickets, winningNumbers, bonusNumber);
+		result = lottoResult.calculateRateReturn(userMoney);
+		prizeResult = lottoResult.getPrizeResult();
+		OutputView.printPrize(prizeResult);
 		OutputView.printRateReturn(result);
 	}
 }

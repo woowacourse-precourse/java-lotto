@@ -1,52 +1,50 @@
 package lotto.domain;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class LottoResult {
+	private static final String NO_WIN = "noWin";
+	private final HashMap<String, Integer> prizeResult;
 	private final List<List<Integer>> lottoTickets;
 	private final List<Integer> winningNumber;
 	private final int bonusNumber;
+	private long winResult = 0;
 
 	public LottoResult(List<List<Integer>> lottoTickets, List<Integer> winningNumber, int bonusNumber) {
 		this.lottoTickets = lottoTickets;
 		this.winningNumber = winningNumber;
 		this.bonusNumber = bonusNumber;
+		prizeResult = new HashMap<>() {{
+			put("winThree", 0);
+			put("winFour", 0);
+			put("winFive", 0);
+			put("winFiveBonus", 0);
+			put("winSix", 0);
+		}};
 	}
 
-	public HashMap<String, Integer> countWin() {
-		HashMap<String, Integer> prize = new HashMap<>() {{
-			put("firstPrize" ,0);
-			put("secondPrize" ,0);
-			put("thirdPrize" ,0);
-			put("fourthPrize" ,0);
-			put("fifthPrize" ,0);
-		}};
+	public double calculateRateReturn(int userMoney) {
+		calculatePrizeMoney();
+		return (double)winResult / userMoney * 100;
+	}
 
+	private void calculatePrizeMoney() {
 		for (List<Integer> lottoTicket : lottoTickets) {
-			int count = 0;
-			for (Integer i : lottoTicket) {
-				if (winningNumber.contains(i)) {
-					count++;
-				}
-			}
-			if (count == 6) {
-				prize.put("firstPrize", prize.get("firstPrize") + 1);
-			}
-			if (count == 5 && lottoTicket.contains(bonusNumber)) {
-				prize.put("secondPrize", prize.get("secondPrize") + 1);
-			}
-			if (count == 5 && !lottoTicket.contains(bonusNumber)){
-				prize.put("thirdPrize", prize.get("thirdPrize") + 1);
-			}
-			if (count == 4){
-				prize.put("fourthPrize", prize.get("fourthPrize") + 1);
-			}
-			if (count == 3) {
-				prize.put("fifthPrize", prize.get("fifthPrize") + 1);
-			}
+			int winCount = (int)winningNumber.stream().filter(lottoTicket::contains).count();
+			LottoRanking lottoRanking = LottoRanking.findLottoRank(winCount, lottoTicket.contains(bonusNumber));
+			winResult += lottoRanking.getPrizeMoney();
+			updatePrizeResult(lottoRanking.name());
 		}
-		return prize;
+	}
+
+	private void updatePrizeResult(String prize) {
+		if (!prize.equals(NO_WIN)) {
+			prizeResult.put(prize, prizeResult.get(prize) + 1);
+		}
+	}
+
+	public HashMap<String, Integer> getPrizeResult() {
+		return prizeResult;
 	}
 }
