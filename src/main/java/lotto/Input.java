@@ -11,13 +11,12 @@ import java.util.stream.Stream;
 
 public class Input {
     private final int MONEY_UNIT = 1000;
-    private final int LOTTO_NUMBER = 6;
     private final String INPUT_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
     private final String INPUT_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
     private final String INPUT_BONUS_MESSAGE = "보너스 번호를 입력해 주세요.";
     public int getMoney() {
         System.out.println(INPUT_MONEY_MESSAGE);
-        String input = Console.readLine();
+        String input = Console.readLine().trim();
 
         if(!isValidMoney(input)){
             throw new IllegalArgumentException();
@@ -67,4 +66,11 @@ public class Input {
         return winningNumbers;
     }
 
+    public int getBonusNumber() {
+        System.out.println(INPUT_BONUS_MESSAGE);
+        String input = Console.readLine().trim();
+
+        isNumber(input);
+        return Integer.parseInt(input);
+    }
 }
