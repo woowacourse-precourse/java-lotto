@@ -36,8 +36,7 @@ public class Application {
     public static int moneyInput() {
         String input = Console.readLine();
         for (int i = 0; i < input.length(); i++) {
-            char tmp = input.charAt(i);
-            if (!Character.isDigit(tmp)) {
+            if (!Character.isDigit(input.charAt(i))) {
                 System.out.println("[ERROR] 로또 구입 금액은 숫자여야 합니다.");
                 throw new IllegalArgumentException();
             }
@@ -71,6 +70,14 @@ public class Application {
         return bonus;
     }
 
+    public static void typeError(String bonusInput) {
+        for (int i = 0; i < bonusInput.length(); i++)
+            if (!Character.isDigit(bonusInput.charAt(i))) {
+                System.out.println("[ERROR] 보너스 번호는 숫자를 입력해야 합니다.");
+                throw new IllegalArgumentException();
+            }
+    }
+
     public static void rangeError(int bonus) {
         if (bonus < 0 || bonus > 45) {
             System.out.println("[ERROR] 보너스 번호 입력 오류입니다.");
@@ -81,7 +88,7 @@ public class Application {
     public static void duplicate(List<Integer> winNums, int bonus) {
         if (winNums.contains(bonus)) {
             System.out.println("[ERROR] 보너스 번호 입력 오류입니다.");
-           throw new IllegalArgumentException();
+            throw new IllegalArgumentException();
         }
     }
 
