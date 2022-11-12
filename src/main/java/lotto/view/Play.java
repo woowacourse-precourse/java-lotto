@@ -10,7 +10,7 @@ public class Play {
 
     public void startPlay(){
         System.out.println(START_MESSAGE);
-        
+
     }
 
 }
