@@ -1,9 +1,6 @@
 package lotto.controller;
 
-import lotto.domain.Lotto;
-import lotto.domain.LottoTicket;
-import lotto.domain.PurchaseAmount;
-import lotto.domain.WinningBonusNumber;
+import lotto.domain.*;
 import lotto.view.Input;
 
 import java.util.ArrayList;
@@ -19,7 +16,7 @@ public class LottoController {
         // 당첨 번호 입력 받음
         WinningBonusNumber winningBonusNumber = inputWinningBonusNumber();
         // 결과 생성
-
+        Result result = getResult(lottoTicket, winningBonusNumber);
         // 결과 출력
     }
 
@@ -60,6 +57,13 @@ public class LottoController {
         }
 
         return numbers;
+    }
+
+    private Result getResult(LottoTicket lottoTicket, WinningBonusNumber winningBonusNumber) {
+        List<Ranking> rankingResults = Calculator.calculateTicketRankings(lottoTicket, winningBonusNumber);
+        Result result = new Result(rankingResults);
+
+        return result;
     }
 
 }
