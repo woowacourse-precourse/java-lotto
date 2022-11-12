@@ -9,15 +9,21 @@ import lotto.ui.text.ErrorText;
 import lotto.ui.text.InputText;
 
 public class ConsoleParameterInput implements ParameterInput {
-
-    @Override
-    public String read() {
-        return Console.readLine();
-    }
-
     @Override
     public int readQuantityFromMoney() {
-        return 0;
+        try {
+            int money = Integer.parseInt(Console.readLine());
+            validateMoney(money);
+            return money / 1000;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorText.NOT_NUMBER.toString());
+        }
+    }
+
+    private void validateMoney(int money) {
+        if (money % 1000 != 0) {
+            throw new IllegalArgumentException(ErrorText.INVALID_MONEY_UNIT.toString());
+        }
     }
 
     public WinningNumber readWinningNumber() {
@@ -40,8 +46,7 @@ public class ConsoleParameterInput implements ParameterInput {
                     .stream(basicNumberString.split(","))
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
-        }
-        catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorText.NOT_NUMBER.toString());
         }
     }
@@ -53,8 +58,7 @@ public class ConsoleParameterInput implements ParameterInput {
             String bonusNumber = Console.readLine();
 
             return Integer.parseInt(bonusNumber);
-        }
-        catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorText.NOT_NUMBER.toString());
         }
     }

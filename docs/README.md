@@ -85,13 +85,13 @@
     - 구현 조건에 외부 라이브러리를 사용하므로 인터페이스와 구현체를 분리해서 의존도를 낮추기 위해 나눔
 
 
-- [ ] 금액 입력 readQuantityFromMoney()
+- [x] 금액 입력 readQuantityFromMoney()
     - [x] 입력 전 `구입금액을 입력해 주세요.`를 출력한다.
-    - [ ] 구입 금액은 1장 가격 1,000원 단위로 입력 받는다.
-    - [ ] 입력된 값을 1,000으로 나누어 로또 구매 수량 반환
+    - [x] 구입 금액은 1장 가격 1,000원 단위로 입력 받는다.
+    - [x] 입력된 값을 1,000으로 나누어 로또 구매 수량 반환
     - 검증 사항
-        - [ ] 입력은 항상 자연수이며 1,000으로 나누어 떨어진다.
-        - [ ] 예외 사항에 대하여 `IllegalArgumentException`을 발생시킨다.
+        - [x] 입력은 항상 자연수이며 1,000으로 나누어 떨어진다.
+        - [x] 예외 사항에 대하여 `IllegalArgumentException`을 발생시킨다.
 
 - [x] 당첨 번호 입력 readBasicWinningNumber()
     - [x] 입력 전 `당첨 번호를 입력해 주세요.`를 출력한다.
@@ -109,7 +109,7 @@
 
 
 - 검토 사항
-    - [ ] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
+    - [x] `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용
 
 <br/>
 
