@@ -30,4 +30,15 @@ public class Input {
         }
     }
 
+    public int getBonusNumber() {
+        try {
+            int bonusNumber = Integer.parseInt(Console.readLine());
+            if (bonusNumber > 45 || bonusNumber < 1) {
+                throw new IllegalArgumentException("[ERROR]");
+            }
+            return bonusNumber;
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
+    }
 }
