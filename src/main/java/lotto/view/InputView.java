@@ -21,6 +21,7 @@ public class InputView {
     
     public static Payment inputPayment() {
         final String inputPayment = Console.readLine();
+        
         InputNumberValidator.validate(inputPayment);
         return new Payment(Integer.parseInt(inputPayment));
     }
