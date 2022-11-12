@@ -1,18 +1,22 @@
 package lotto.domain.player;
 
-import lotto.domain.Validator;
+import lotto.domain.util.Validator;
 
 public class PurchaseAmount {
 	Validator validator = new Validator();
 
-	private static String purchaseAmount;
+	private final String purchaseAmount;
 
-	public PurchaseAmount(String amountInput) {
+	private PurchaseAmount(String amountInput) {
 		validator.validateAmount(amountInput);
 		this.purchaseAmount = amountInput;
 	}
 
-	public long toConvert() {
+	public long valueOf() {
 		return Long.parseLong(purchaseAmount);
+	}
+
+	public static PurchaseAmount from(String amountInput){
+		return new PurchaseAmount(amountInput);
 	}
 }

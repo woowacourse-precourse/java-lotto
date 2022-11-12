@@ -1,6 +1,6 @@
-package lotto.domain.controller;
+package lotto.controller;
 
-import lotto.LottoMachine;
+import lotto.domain.lotto.LottoMachine;
 import lotto.domain.player.PurchaseCounter;
 import lotto.domain.player.BonusNumber;
 import lotto.domain.player.Player;
@@ -14,7 +14,7 @@ public class GameController {
 
 	public void run() {
 		Player player = new Player();
-		long purchaseAmount = new PurchaseAmount(player.receivePurchaseAmount()).toConvert();
+		PurchaseAmount purchaseAmount = PurchaseAmount.from(player.receivePurchaseAmount());
 		int purchaseCount = new PurchaseCounter().countLotto(purchaseAmount);
 
 		LottoMachine lottoMachine = new LottoMachine();
@@ -25,6 +25,6 @@ public class GameController {
 
 		Result result = new Result(winningNumber, bonusNumber);
 		result.calculateLottoRank();
-		result.calculateTotalProfit(purchaseAmount);
+		result.calculateTotalProfit(purchaseAmount.valueOf());
 	}
 }
