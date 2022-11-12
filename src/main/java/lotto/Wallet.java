@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Wallet {
@@ -10,6 +11,7 @@ public class Wallet {
     Wallet() {
         this.money = 0;
         this.profit = 0;
+        this.myLottos = Collections.emptyList();
     }
 
     public void setMoney(String input) {
