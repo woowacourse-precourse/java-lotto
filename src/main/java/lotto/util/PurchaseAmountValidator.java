@@ -1,6 +1,6 @@
 package lotto.util;
 
-import lotto.GameConstants;
+import lotto.util.constants.GameConstants;
 
 public class PurchaseAmountValidator {
 

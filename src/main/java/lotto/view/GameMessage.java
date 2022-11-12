@@ -1,7 +1,9 @@
 package lotto.view;
 
+import lotto.util.constants.GameConstants;
+
 public class GameMessage {
-    public void print(String message) {
-        System.out.println(message);
+    public void printInputPurchaseAmount() {
+        System.out.println(GameConstants.INPUT_PURCHASE_AMOUNT);
     }
 }

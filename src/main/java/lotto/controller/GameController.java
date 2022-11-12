@@ -1,7 +1,6 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.GameConstants;
 import lotto.model.User;
 import lotto.view.GameMessage;
 
@@ -10,7 +9,11 @@ public class GameController {
     private User user;
 
     public void run() {
-        gameMessage.print(GameConstants.INPUT_PURCHASE_AMOUNT);
+        inputPurchaseAmount();
+    }
+
+    public void inputPurchaseAmount() {
+        gameMessage.printInputPurchaseAmount();
         user = new User(Console.readLine());
     }
 }
