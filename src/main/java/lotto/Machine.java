@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Machine {
@@ -28,7 +29,13 @@ public class Machine {
 
     private void print(List<Lotto> lottoList) {
         System.out.println(lottoList.size() + "개를 구매했습니다.");
-        lottoList.forEach(lotto -> System.out.println(lotto.getNumbers()));
+        lottoList.forEach(lotto -> System.out.println(sortNumber(lotto.getNumbers())));
+    }
+
+    private List<Integer> sortNumber(List<Integer> numbers) {
+        List<Integer> result = new ArrayList<>(numbers);
+        result.sort(Comparator.naturalOrder());
+        return result;
     }
 
     private List<Integer> createLottoNumbers() {

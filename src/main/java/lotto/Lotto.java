@@ -30,7 +30,6 @@ public class Lotto {
     }
 
     public List<Integer> getNumbers() {
-        numbers.sort(Comparator.naturalOrder());
         return numbers;
     }
 }
