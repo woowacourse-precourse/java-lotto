@@ -40,6 +40,19 @@ public class LottoService {
         isValidRange(winningLotto.getNumbers());
     }
 
+    public void comparePlayerLottoNumberAndWinningLottoNumberLogic(Player player , Lotto winningLotto , Integer lottoBonusNumber){
+        List<Integer> lottoWinningNumbers = winningLotto.getNumbers();
+        Iterator<Lotto> playerLottoNumberIterator = player.getPlayerLottoPickNumbers().iterator();
+
+        while (playerLottoNumberIterator.hasNext()){
+            initializePlayerLottoCount(player);
+            Lotto playerRandomLottoNumbers = playerLottoNumberIterator.next();
+
+            comparePlayerLottoNumberAndWinningLottoNumber(lottoWinningNumbers,playerRandomLottoNumbers,player,lottoBonusNumber);
+            saveLottoResult(player);
+        }
+    }
+
     public void comparePlayerLottoNumberAndWinningLottoNumber(List<Integer> lottoWinningNumbers , Lotto playerRandomLottoNumbers , Player player , Integer lottoBonusNumber){
         for (Integer lottoWinningNumber : lottoWinningNumbers) {
             if(playerRandomLottoNumbers.getNumbers().contains(lottoWinningNumber))
