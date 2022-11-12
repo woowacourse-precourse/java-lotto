@@ -10,7 +10,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class InputView {
-    public static int lottoMoney = 0;
+    public static int lottoPurchaseMoney = 0;
     public final int PRICE_PER_LOTTO = 1000;
     public final int LOTTO_NUMBER_SIZE = 6;
 
@@ -26,13 +26,13 @@ public class InputView {
     }
 
     public int inputLottoPurchaseMoney() {
-        lottoMoney = Integer.parseInt(Console.readLine());
-        validateMoneyInput(lottoMoney);
-        return lottoMoney;
+        lottoPurchaseMoney = Integer.parseInt(Console.readLine());
+        validateMoneyInput(lottoPurchaseMoney);
+        return lottoPurchaseMoney;
     }
 
     public int getLottoChance(int money) {
-        return lottoMoney / PRICE_PER_LOTTO;
+        return lottoPurchaseMoney / PRICE_PER_LOTTO;
     }
 
     public List<Integer> createWinningNumber() {
@@ -64,26 +64,19 @@ public class InputView {
         return allLottoNumber;
     }
 
-
+    /**
+     * 한 게임의 로또 번호와 당첨번호, 보너스 번호를 받아서 당첨 여부를 확인하는 메소드
+     * @param lottoNumbers
+     * @param winningNumbers
+     * @param bonusNumber
+     */
     public void compareWinningNumber(List<Integer> lottoNumbers, List<Integer> winningNumbers, int bonusNumber) {
-        /*
-        1. count 1 일때, 2등 // 보너스 포함 6개 맞춘거
-        2. count 2 일때, 4등 // 보너스 포함 5개 맞춘거
-        3. count 3 일때, 5등 // 보너스 포함 4개 맞춘거
-         */
-        if(lottoNumbers.contains(bonusNumber)){ // 일단 여기에 걸리면 1등은 불가능
+        if(lottoNumbers.contains(bonusNumber)){
             List <Integer> result = lottoNumbers.stream()
                     .filter(lottoNumber -> winningNumbers.stream().noneMatch(Predicate.isEqual(lottoNumber)))
                     .collect(Collectors.toList());
             judgeLottoRank(result, bonusNumber);
         }
-        /*
-        1. 1등, 3등, 4등, 5등 가능
-        2. count 0 일떄, 1등
-        3. count 1 일떄, 3등
-        4. count 2 일떄, 4등
-        5. count 3 일떄, 5등
-         */
         if(!lottoNumbers.contains(bonusNumber)){
             List <Integer> result = lottoNumbers.stream()
                     .filter(lottoNumber -> winningNumbers.stream().noneMatch(Predicate.isEqual(lottoNumber)))
@@ -91,6 +84,7 @@ public class InputView {
             judgeLottoRank(result, bonusNumber);
         }
     }
+
     private void judgeLottoRank(List<Integer> result, int bonusNumber) {
         if (result.size() == 0) {
             lottoResult.set(0, lottoResult.get(0)+1);
@@ -109,4 +103,17 @@ public class InputView {
         }
     }
 
+    public int printLottoEarningMoney(List<Integer> lottoResult) {
+        int earningMoney = 0;
+        earningMoney += lottoResult.get(0) * 2000000000;
+        earningMoney += lottoResult.get(1) * 30000000;
+        earningMoney += lottoResult.get(2) * 1500000;
+        earningMoney += lottoResult.get(3) * 50000;
+        earningMoney += lottoResult.get(4) * 5000;
+        return earningMoney;
+    }
+
+    public void printLottoEarningRate(int earningMoney, int purchaseMoney) {
+
+    }
 }
