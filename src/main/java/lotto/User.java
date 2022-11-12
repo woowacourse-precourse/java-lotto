@@ -9,14 +9,15 @@ import java.util.List;
 
 public class User {
     String money_str;
+    int money;
 
-    User() {
+    public void inputPurchaseMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         money_str = Console.readLine();
-        checkThatPurchaseMoneyIsRightInput(money_str);
+        money = checkThatPurchaseMoneyIsRightInput(money_str);
     }
 
-    public static void checkThatPurchaseMoneyIsRightInput(String purchaseMoney) {
+    public int checkThatPurchaseMoneyIsRightInput(String purchaseMoney) {
         int money = Exception.isInteger(purchaseMoney);
 
         if (Exception.isNotMultipleOfThousand(money)) {
@@ -26,12 +27,6 @@ public class User {
             throw new IllegalArgumentException("[ERROR] 구입 금액은 양수여야 합니다.");
         }
 
+        return money;
     }
-
-
-//    public void purchaseLotto() {
-//        check
-//    }
-
-
 }

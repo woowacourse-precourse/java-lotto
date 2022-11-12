@@ -10,11 +10,12 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 
 class UserTest {
+    User user = new User();
     @DisplayName("입력된 구입 금액이 0보다 작거나 같으면 예외가 발생한다.")
     @Test
     void createMoneyNotPositive() {
         assertThatThrownBy(
-                () -> User.checkThatPurchaseMoneyIsRightInput("-12"))
+                () -> user.checkThatPurchaseMoneyIsRightInput("-12"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -22,7 +23,7 @@ class UserTest {
     @Test
     void createMoneyNotMultipleOfThousand() {
         assertThatThrownBy(
-                () -> User.checkThatPurchaseMoneyIsRightInput("1234"))
+                () -> user.checkThatPurchaseMoneyIsRightInput("1234"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
