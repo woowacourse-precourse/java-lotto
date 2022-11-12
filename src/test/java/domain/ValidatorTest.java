@@ -15,7 +15,6 @@ class ValidatorTest {
     public void createUserMoneyByNotNumber() throws Exception {
         Money money = new Money("1234asdf");
         assertThatThrownBy(() -> validator.validateMoneyNumber(money.getUserMoney())).isInstanceOf(IllegalArgumentException.class);
-
     }
 
     @DisplayName("로또 구입 값이 1,000의 배수가 아니라면 예외가 발생한다.")
@@ -59,7 +58,6 @@ class ValidatorTest {
         assertThatThrownBy(() -> validator.validateWinningNumberRange(winningNumbers.getWinningNumbers()))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
 
     @DisplayName("당첨 번호 중 중복이 있다면 예외가 발생한다.")
     @Test

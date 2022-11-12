@@ -16,6 +16,6 @@ public class Money {
 
     public int getLottoCount() {
         int totalMoney = Integer.parseInt(userMoney);
-        return totalMoney/LottoInfo.PRICE;
+        return totalMoney / LottoInfo.PRICE;
     }
 }

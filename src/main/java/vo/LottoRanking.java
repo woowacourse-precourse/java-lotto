@@ -3,12 +3,12 @@ package vo;
 import java.util.Arrays;
 
 public enum LottoRanking {
-    FIRST(1, 6, 2_000_000_000, "6개 일치 (2,000,000,000원)",false),
-    SECOND(2, 5, 30_000_000, "5개 일치, 보너스 볼 일치 (30,000,000원)",true),
-    THIRD(3, 5, 1_500_000, "5개 일치 (1,500,000원)",false),
-    FOURTH(4, 4, 50_000, "4개 일치 (50,000원)",false),
-    FIFTH(5, 3, 5_000, "3개 일치 (5,000원)",false),
-    OUT(6, 0, 0, "",false);
+    FIRST(1, 6, 2_000_000_000, "6개 일치 (2,000,000,000원)", false),
+    SECOND(2, 5, 30_000_000, "5개 일치, 보너스 볼 일치 (30,000,000원)", true),
+    THIRD(3, 5, 1_500_000, "5개 일치 (1,500,000원)", false),
+    FOURTH(4, 4, 50_000, "4개 일치 (50,000원)", false),
+    FIFTH(5, 3, 5_000, "3개 일치 (5,000원)", false),
+    OUT(6, 0, 0, "", false);
 
     private final int ranking;
     private final int correct;
