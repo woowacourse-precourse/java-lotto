@@ -101,8 +101,17 @@ class InputWinningLottoValidatorTest {
     
     @DisplayName("예외 처리 : 숫자의 사이에 쉼표가 여러개 붙어있는 경우")
     @ParameterizedTest(name = "{displayName} => {0}")
-    @ValueSource(strings = {"1,,2,3,4,5,45", "1,2,3,,,4,5,6", "1,,2,3,4,5,,6"})
+    @ValueSource(strings = {"1,,2,3,4,5,45", "1,2,3,,,4,5,6", "1,2,3,4,5,,6"})
     void duplicateCommaException(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> InputWinningLottoValidator.validate(input))
+                .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
+    }
+    
+    @DisplayName("예외 처리 : 가장자리에 숫자가 비어있는 경우")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {",2,3,4,5,45", "1,2,3,4,45,", " ,2,3,4,5,6", "1,2,3,4,5, "})
+    void numberAtEdgeEmptyException(String input) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> InputWinningLottoValidator.validate(input))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
