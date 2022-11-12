@@ -30,4 +30,14 @@ public class UserLotto {
         return count;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for(Lotto lotto : lottos) {
+            sb.append("[");
+            sb.append(lotto.toString()).append("]\n");
+        }
+        return sb.toString();
+    }
+
 }
