@@ -51,12 +51,8 @@ public class Domain {
             throw new IllegalArgumentException("여섯 개의 숫자를 ,로 구분하여 입력해야 합니다.");
         }
         validateOverlapping(winningNumbers);
-        try {
-            for (String number : winningNumbers) {
-                validateNumberRange(number);
-            }
-        } catch (IllegalArgumentException e) {
-            throw e;
+        for (String number : winningNumbers) {
+            validateNumberRange(number);
         }
     }
 
