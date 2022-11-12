@@ -8,7 +8,7 @@
 - 당첨 내역 출력
 
 ## 클래스 정리
-- LottoService
+- LottoServiceMachine
     - 로또 당첨 번호 입력 및 보너스 번호 입력
     - 사용자 로또 번호 비교 및 등수 출력
     - 당첨금 출력
