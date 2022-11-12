@@ -3,12 +3,14 @@ package lotto.exception;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 
 public class ThousandUnitCheckExceptionTest {
     @Test
-    public void unitVerifyTest() {
+    public void unitCheckTest() {
         assertThat(ThousandUnitCheckException.unitCheck(1000)).isEqualTo(1000);
-        assertThat(ThousandUnitCheckException.unitCheck(1001));
-    }//UnitVerifyTest
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> ThousandUnitCheckException.unitCheck(1001));
+    }//unitCheckTest
 }// end class

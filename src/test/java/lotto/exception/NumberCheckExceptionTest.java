@@ -3,19 +3,22 @@ package lotto.exception;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 
 public class NumberCheckExceptionTest {
     @Test
     public void isNumericTest() {
         assertThat(NumberCheckException.isNumeric("123")).isTrue();
-        assertThat(NumberCheckException.isNumeric("asd")).isFalse();
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> NumberCheckException.isNumeric("abc"));
     }//isNumericTest
 
     @Test
-    public void verifyTest() {
+    public void checkTest() {
         assertThat(NumberCheckException.check("123")).isEqualTo(123);
-        assertThat(NumberCheckException.check("asd"));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> NumberCheckException.check("abc"));
     }//verifyTest
 
 }// end class
