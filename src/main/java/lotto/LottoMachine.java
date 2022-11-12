@@ -6,12 +6,12 @@ import java.util.List;
 
 public class LottoMachine {
     public void requestWantBuyAmountInputMessage() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(GameMessage.START_GAME.getMessage());
     }
 
     public void canBuyAmountMessage(int canBuyAmount) {
         System.out.println();
-        System.out.println(canBuyAmount + "개를 구매했습니다.");
+        System.out.println(canBuyAmount + GameMessage.BUY_COUNT.getMessage());
     }
 
     public int canBuyAmount(int wantBuyAmountInput) {
@@ -19,6 +19,7 @@ public class LottoMachine {
     }
 
     public List<Integer> makeUserRandomLottoNumbers() {
+
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
@@ -28,7 +29,7 @@ public class LottoMachine {
 
     public void requestWinningNumbersMessage() {
         System.out.println();
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(GameMessage.REQUEST_WINNING_NUMBERS.getMessage());
     }
 
     public List<Lotto> lottoList(int canBuyAmount) {
@@ -43,12 +44,12 @@ public class LottoMachine {
 
     public void requestBonusNumbersMessage() {
         System.out.println();
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(GameMessage.REQUEST_BONUS_NUMBER.getMessage());
     }
 
     public void scoreBoardMessage() {
         System.out.println();
-        System.out.println("당첨 통계");
+        System.out.println(GameMessage.WINNING_SCORE.getMessage());
         System.out.println("---");
     }
 
