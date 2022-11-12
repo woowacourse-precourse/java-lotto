@@ -18,8 +18,7 @@ public class Player {
     }
 
     public GameResultResponseDtos playLotto(Answer answer) {
-        List<LottoResult> lottoResults = play(answer);
-        return Referee.calculate(lottoResults, purchasePrice);
+        return Referee.calculate(play(answer), purchasePrice);
     }
 
     private List<LottoResult> play(Answer answer) {
