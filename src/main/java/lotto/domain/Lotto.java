@@ -1,15 +1,16 @@
 package lotto.domain;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
-    private ValidationInDomain validator = new ValidationInDomain();
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        validator.checkDuplicatedNumber(numbers);
+        checkNumbersDuplication(numbers);
         this.numbers = numbers;
         sortInAscendingOrder();
     }
@@ -17,6 +18,16 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    private void checkNumbersDuplication(List<Integer> numbers) {
+        Set<Integer> validator = new HashSet<>();
+        for (int number : numbers){
+            if(validator.contains(number)){
+                throw new IllegalArgumentException();
+            }
+            validator.add(number);
         }
     }
 
