@@ -4,7 +4,7 @@ import lotto.Profit;
 
 public class CheckProfit implements Verifiable<Profit>{
     @Override
-    public Profit check(Profit input) {
+    public Integer checkWithValue(Profit input) {
         return null;
     }
 
