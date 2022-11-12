@@ -41,6 +41,10 @@ public enum Rank {
                 .orElse(Rank.NOTHING);
     }
 
+    public int computePrice(int numberOfWinningLotto) {
+        return price * numberOfWinningLotto;
+    }
+
     @Override
     public String toString() {
         return getMatchingState() + getPriceState();
