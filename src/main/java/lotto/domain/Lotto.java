@@ -9,14 +9,14 @@ public class Lotto {
 	private final int NUMBERS_SIZE = 6;
 	private final int INIT = 0;
 	private boolean isMatchBonusNumber;
-	private int matchNumberCount;
+	private int countMatchNumber;
 
 	public Lotto(Set<Integer> numbers) {
 		validate(numbers);
 
 		this.numbers = numbers;
 		this.isMatchBonusNumber = false;
-		this.matchNumberCount = INIT;
+		this.countMatchNumber = INIT;
 	}
 
 	private void validate(Set<Integer> numbers) {
@@ -34,14 +34,14 @@ public class Lotto {
 	}
 
 	public void setCountMatchNumber(int matchNumberCount) {
-		this.matchNumberCount = matchNumberCount;
+		this.countMatchNumber = matchNumberCount;
 	}
 
 	public boolean getIsMatchBonusNumber() {
 		return isMatchBonusNumber;
 	}
 
-	public int getMatchNumberCount() {
-		return matchNumberCount;
+	public int getCountMatchNumber() {
+		return countMatchNumber;
 	}
 }
