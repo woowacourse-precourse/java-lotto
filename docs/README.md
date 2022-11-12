@@ -18,7 +18,8 @@
 
 
 - 당첨번호와 사용자가 가진 로또들을 비교할 수 있다 [ ] - Referee#compare()
-  - 중복되는 숫자 개수를 카운트한다 [ ] - Judgment#correctCount()
+  - 중복되는 숫자 개수를 카운트한다 [ x ] - Judgment#correctCount()
+  - 보너스 번호가 있는지 카운트한다 [ x ] - Judgment#hasBonusNumber()
 
 
 - 총 수익률 구하기
