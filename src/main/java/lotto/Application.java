@@ -20,7 +20,7 @@ public class Application {
 
     private static List<Integer> userInputNumbers() {
         userNumbers userNumbers = new userNumbers(readLine());
-
+        userNumbers.addBonusNumber(Integer.parseInt(readLine()));
         return userNumbers.getNumbers();
     }
 

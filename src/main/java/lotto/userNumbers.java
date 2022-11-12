@@ -40,4 +40,14 @@ public class userNumbers {
         }
     }
 
+    public void addBonusNumber(int bonusNumber){
+        errorCheckBonusNumber(bonusNumber);
+        this.numbers.add(bonusNumber);
+    }
+
+    private void errorCheckBonusNumber(int bonusNumber) {
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalArgumentException("[ERROR]");
+        }
+    }
 }
