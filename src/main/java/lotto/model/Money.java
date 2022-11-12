@@ -11,6 +11,10 @@ public class Money {
         this.value = value;
     }
 
+    public int getMoney() {
+        return value;
+    }
+
     private void validateBill(int input) {
         if (input % 1000 != 0) {
             throw ErrorCode.NOT_BILL.getException();

@@ -5,19 +5,24 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.constants.ErrorCode;
+import lotto.domain.Compare;
 import lotto.model.BonusNumber;
 import lotto.model.Lotto;
 import lotto.model.Money;
 
 public class InputHandler {
 
+
     public void inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
+        Money money;
         try {
-            new Money(stringToInt(readLine()));
+            money = new Money(stringToInt(readLine()));
+            new Compare(money.getTicketCount());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
     }
 
     public Lotto inputLotto() {
