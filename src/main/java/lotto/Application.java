@@ -16,9 +16,17 @@ public class Application {
         }
         return money;
     }
+
+    static int money2chance(int money){
+        int chance;
+        chance = money/1000;
+        return chance;
+    }
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        check_money();
-
+        int money;
+        int chance;
+        money = check_money();
+        chance = money2chance(money);
     }
 }
