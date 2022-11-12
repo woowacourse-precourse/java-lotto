@@ -2,6 +2,7 @@ package view;
 
 import model.Lotto;
 import model.Lottos;
+import model.Money;
 import model.Win;
 import model.WinningResult;
 
@@ -14,6 +15,7 @@ public class OutputView {
     public static final String MATCH_COUNT = "%d개 일치";
     public static final String BONUS_BALL = ", 보너스 볼 일치";
     public static final String WINNING_AMOUNT_AND_COUNT = " (%,d원) - %d개" + System.lineSeparator();
+    public static final String EARNINGS_RATE = "총 수익률은 %.1f%%입니다.";
 
     public static void printLottos(Lottos inputLottos) {
         List<Lotto> lottos = inputLottos.getLottos();
@@ -46,5 +48,9 @@ public class OutputView {
         }
 
         return result.toString();
+    }
+
+    public static void printEarningsRate(WinningResult winningResult, Money money) {
+        System.out.println(String.format(EARNINGS_RATE, winningResult.getEarningsRate(money)));
     }
 }
