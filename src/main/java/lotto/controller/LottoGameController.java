@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.domain.LottoValidationUtils;
 import lotto.dto.GameResultResponseDtos;
 import lotto.dto.LottosResponseDto;
 import lotto.service.LottoGameService;
@@ -39,7 +40,9 @@ public class LottoGameController {
     private List<Integer> inputAnswerNumbers() {
         OutputView.printBlankLine();
         OutputView.printInputAnswerNumbers();
-        return InputView.inputAnswerNumbers();
+        List<Integer> answers = InputView.inputAnswerNumbers();
+        LottoValidationUtils.validate(answers);
+        return answers;
     }
 
     private int inputBonusNumber() {

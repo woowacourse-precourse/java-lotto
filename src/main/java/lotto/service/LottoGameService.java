@@ -26,8 +26,7 @@ public class LottoGameService {
     }
 
     public GameResultResponseDtos playGame(int purchasePrice) {
-        Lottos lottos = player.getLottos();
-        List<LottoResult> lottoResults = answer.play(lottos);
+        List<LottoResult> lottoResults = player.play(answer);
         return Referee.calculate(lottoResults, purchasePrice);
     }
 }

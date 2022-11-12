@@ -19,14 +19,14 @@ public class Answer {
         this.bonusNumber = bonusNumber;
     }
 
-    public List<LottoResult> play(Lottos lottos) {
+    public List<LottoResult> compare(Lottos lottos) {
         return IntStream.range(CRITERION_ZERO, lottos.size())
                 .mapToObj(lottos::get)
-                .map(this::play)
+                .map(this::compare)
                 .collect(Collectors.toList());
     }
 
-    public LottoResult play(Lotto lotto) {
+    public LottoResult compare(Lotto lotto) {
         int countResult = answer.countContainsNumber(lotto);
         boolean bonusResult = calculateBonus(lotto, countResult);
 

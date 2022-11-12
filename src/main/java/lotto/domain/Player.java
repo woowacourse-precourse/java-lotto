@@ -51,7 +51,7 @@ public class Player {
                 .collect(Collectors.toList());
     }
 
-    public Lottos getLottos() {
-        return lottos;
+    public List<LottoResult> play(Answer answer) {
+        return answer.compare(lottos);
     }
 }
