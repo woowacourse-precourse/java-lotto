@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Validation {
 
@@ -38,6 +40,13 @@ public class Validation {
             }
         }
     }
+    // 번호를 쉼표로 구분했는지 검증
+    public static void isSplitedWithComma(String winningNumbersWithComma) {
+        if (winningNumbersWithComma.split(",").length != 6) {
+            throw new IllegalArgumentException("[ERROR] 당첨번호는 쉼표로 구분해서 입력해 주세요");
+        }
+    }
+
 }
 
 
