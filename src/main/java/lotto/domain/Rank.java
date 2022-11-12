@@ -23,6 +23,6 @@ public enum Rank {
 
     public String getMessage(int count){
         DecimalFormat decFormat = new DecimalFormat("###,###");
-        return String.format(this.message,decFormat.format(prize),count);
+        return String.format(this.message,decFormat.format(this.prize),count);
     }
 }
