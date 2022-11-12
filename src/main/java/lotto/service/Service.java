@@ -95,4 +95,8 @@ public class Service {
     public int countCorrectLottoNumbers(Lotto lotto){
         return Utils.countSameElements(lottoGame.getWinningNumbers(),lotto.getNumbers());
     }
+
+    public boolean containsBonusNumber(Lotto lotto){
+        return lotto.getNumbers().contains(lottoGame.getBonusNumber());
+    }
 }
