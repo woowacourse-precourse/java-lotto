@@ -11,7 +11,7 @@ import lotto.domain.Lotto;
 import lotto.domain.WinningLotto;
 
 public class LottoResultService {
-    public void getResult(List<Lotto> userLotto, List<Integer> winningLottoInput, int bonusLottoInput) {
+    public Map<LottoResultConstant, Integer> getResult(List<Lotto> userLotto, List<Integer> winningLottoInput, int bonusLottoInput) {
         WinningLotto winningLotto = createWinningLotto(winningLottoInput, bonusLottoInput);
         Map<LottoResultConstant, Integer> winningStatistics = initWinningStatistics();
         for (Lotto lotto : userLotto) {
@@ -21,6 +21,7 @@ public class LottoResultService {
             winningStatistics.put(lottoResultConstantFromCorrectCountAndBonusCount,
                     winningStatistics.get(lottoResultConstantFromCorrectCountAndBonusCount) + 1);
         }
+        return winningStatistics;
     }
 
     private WinningLotto createWinningLotto(List<Integer> winningLottoResult, int bonusLottoResult) {
@@ -47,7 +48,7 @@ public class LottoResultService {
             if (correctCountAndBonusCount[1] == 1) {
                 return LottoResultConstant.CORRECT_FIVE_CORRECT_BONUS;
             }
-            return LottoResultConstant.CORRECT_FOUR;
+            return LottoResultConstant.CORRECT_FIVE;
         } else if (correctCountAndBonusCount[0] == 6) {
             return LottoResultConstant.CORRECT_SIX;
         }

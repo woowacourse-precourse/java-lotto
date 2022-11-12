@@ -34,6 +34,7 @@ public class LottoController {
         String bonusLotto = getBonusLottoWithValidation(winningLotto);
 
         lottoResultService.getResult(userLotto, getWinningLotto(winningLotto), getBonusLotto(bonusLotto));
+
     }
 
     private String getWinningLottoWithValidation() {
