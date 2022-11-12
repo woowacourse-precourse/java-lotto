@@ -45,9 +45,11 @@ public class Shop {
 
     private void priceValidate(int price) {
         if (price % Constant.lottoAmount != 0) {
-            System.err.println("[ERROR] price is invalid");
+            System.err.println("[ERROR] price is invalid(cannot be divided by 1000)");
             throw new IllegalArgumentException();
         }
     }
+
+
 
 }

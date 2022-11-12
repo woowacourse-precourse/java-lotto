@@ -1,6 +1,5 @@
 package lotto.controller;
 
-import lotto.Validation;
 import lotto.enums.Rank;
 import lotto.model.Draw;
 import lotto.model.Lotto;
@@ -18,7 +17,6 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 public class Controller {
 
     private View view = new View();
-    private Validation validation = new Validation();
     private Shop shop;
     private Draw draw;
     private Rate rate;
@@ -50,7 +48,7 @@ public class Controller {
     public int getPrice() throws IllegalArgumentException{
         view.printInputPrice();
         String price = readLine();
-        validation.validatePriceFormat(price);
+        validatePriceFormat(price);
         return Integer.parseInt(price);
     }
 
@@ -67,5 +65,16 @@ public class Controller {
         view.printInputBonusNum();
         String bonusNum = readLine();
         return Integer.parseInt(bonusNum);
+    }
+
+    public void validatePriceFormat(String price) {
+        char[] charNumbers = price.toCharArray();
+
+        for (char charNumber : charNumbers) {
+            if (!Character.isDigit(charNumber)) {
+                System.out.println("[ERROR] price is invalid(is not digit)");
+                throw new IllegalArgumentException();
+            }
+        }
     }
 }
