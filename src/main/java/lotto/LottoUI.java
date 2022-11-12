@@ -12,11 +12,15 @@ public class LottoUI {
         return Integer.parseInt(input);
     }
 
-    public static boolean isNumeric(String str){
+    public static void numberOfLottoPurchased(final int num) {
+        System.out.printf("%d개를 구매했습니다.", num);
+    }
+
+    public static boolean isNumeric(String str) {
         try {
             Integer.parseInt(str);
             return true;
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             return false;
         }
     }
