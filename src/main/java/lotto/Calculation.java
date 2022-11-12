@@ -1,10 +1,9 @@
 package lotto;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Calculation {
-    public static String profitRate(int cost, int earn) {
+    public static String getProfitRate(long cost, long earn) {
         double rate = (double) earn / (double) cost * 100;
         return String.format("%.1f%%", rate);
     }
