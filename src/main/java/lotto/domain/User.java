@@ -18,6 +18,7 @@ public class User {
     }
 
     public void setBuyAmount(String buyAmount) {
+        validate(buyAmount);
         this.buyAmount = Integer.parseInt(buyAmount);
     }
 
