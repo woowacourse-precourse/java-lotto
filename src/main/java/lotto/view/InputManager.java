@@ -48,8 +48,10 @@ public class InputManager {
         return winNumberList;
     }
     private void checkDuplicate(List<Integer> winNumberList) {
+        int[] checklist = new int[46];
         for (int i = 0; i < winNumberList.size(); i++) {
-            if (winNumberList.contains(winNumberList.get(i))) {
+            checklist[winNumberList.get(i)] += 1;
+            if (checklist[winNumberList.get(i)] > 1) {
                 throw new IllegalArgumentException("[ERROR]중복된 숫자는 사용할수 없습니다");
             }
         }
