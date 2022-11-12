@@ -17,7 +17,6 @@
 
 ### <span style = "color:skyblue" >getUserNumber</span> : 당첨 번호 입력
 - 🟩 **`getUserNumber`** → 문자입력을 쉼표를 기준으로 구분하여 리스트 저장
-- 🟩 **`isValidCommas`** → 쉼표로 구분되어 있지 않으면 예외처리
 - 🟩 **`isUnique`** : 중복인 경우
 - 🟩 **`isNumeric`** : 숫자가 아닌 경우
 - 🟩 **`isValidRange`** : 숫자 범위 초과
@@ -41,7 +40,6 @@
 ### +) 예외상황
 - 🟩 **`isNumeric`** : 숫자가 아닌 경우
 - 🟩 **`isMutipleOfThousand`** : 1000원으로 나누어 떨어지지 않는 경우
-- 🟩 **`isValidCommas`** : 쉼표로 구분되지 않았을 때
 - 🟩 **`isValidRange`** : 숫자 범위 초과
 - 🟩 **`isUnique`** : 중복인 경우
 - 🟩 **`isValidLength`** : 필요한 개수와 다를 때

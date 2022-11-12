@@ -1,15 +1,35 @@
 package lotto.utils;
 
+import lotto.entity.LottoInfo;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Validation {
 
     public static boolean validatePurchaseAmount(String input) {
         if (!isMultipleOfThousand(input)) {
-            throwException("1000원 단위의 금액을 입력해주세요.");
+            throwException("1000원 단위의 금액을 입력해 주세요.");
         }
-        if (!isNumeric(input)) {
-            throwException("숫자를 입력해주세요.");
+        if (isNumeric(input)) {
+            throwException("숫자를 입력해 주세요.");
         }
         return true;
+    }
+
+    public static void validateSeperatedNumbers(String[] seperated) {
+        if (!isUnique(seperated)) {
+            throwException("중복된 번호는 입력할 수 없습니다.");
+        }
+        for (String s : seperated) {
+            if (isNumeric(s)) {
+                throwException("콤마로 구분한 숫자를 입력해 주세요.");
+            }
+            if (!isValidRange(s)) {
+                throwException(LottoInfo.START+"~"+LottoInfo.END+"사이의 번호를 입력해주세요");
+            }
+        }
     }
 
 
@@ -20,20 +40,17 @@ public class Validation {
         throw new IllegalArgumentException(message);
     }
     public static boolean isNumeric(String input) {
-        return input.chars()
+        return !input.chars()
                 .allMatch(Character::isDigit);
     }
-    public static boolean isValidCommas(String input) {
-
-        return true;
+    public static boolean isValidRange(String input) {
+        int intInput = Parser.convertStringToInt(input);
+        return intInput >= LottoInfo.START && intInput <= LottoInfo.END;
     }
-    public static boolean isValidRange(int input) {
-
-        return true;
-    }
-    public static boolean isUnique(int input) {
-
-        return true;
+    public static boolean isUnique(String[] input) {
+        List<String> inputList = Parser.ArrayToList(input);
+        Set<String> numberSet = new HashSet<>(inputList);
+        return numberSet.size() == inputList.size();
     }
     public static boolean isValidLength(int input) {
 

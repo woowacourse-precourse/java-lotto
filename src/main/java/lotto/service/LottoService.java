@@ -2,6 +2,7 @@ package lotto.service;
 
 import lotto.entity.GeneratedLottos;
 import lotto.entity.Lotto;
+import lotto.entity.LottoInfo;
 import lotto.entity.User;
 import lotto.utils.Parser;
 import lotto.utils.RandomUtils;
@@ -13,18 +14,15 @@ import java.util.List;
 
 
 public class LottoService {
-    public static int START = 1;
-    public static int END = 45;
-    public static int COUNT = 6;
 
     Lotto lotto;
     GeneratedLottos generatedLottos = new GeneratedLottos();
     User user = new User();
 
-    public void getPurchaseAmount() {
+    public void getPurchaseMoney() {
         String input = UserRequest.userInput();
         if (Validation.validatePurchaseAmount(input)) {
-            user.setPurchaseAmount(Parser.convertStringToInt(input));
+            user.setPurchaseMoney(Parser.convertStringToInt(input));
         }
     }
     public void getLottoCount(int amount) {
@@ -39,9 +37,15 @@ public class LottoService {
     public List<Lotto> generateLottos(int lottoCount) {
         List<Lotto> allLottos = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
-            allLottos.add(new Lotto(RandomUtils.getRandomLottoNumber(START, END, COUNT)));
+            allLottos.add(new Lotto(RandomUtils.getRandomLottoNumber(LottoInfo.START, LottoInfo.END, LottoInfo.COUNT)));
         }
         return allLottos;
     }
+    public void getUserNumber() {
+        String input = UserRequest.userInput();
+        user.setUserNumber(Parser.seperateCommas(input));
+    }
+
+
 
 }

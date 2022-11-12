@@ -1,25 +1,27 @@
 package lotto.entity;
 
+import java.util.List;
+
 public class User {
-    private int purchaseAmount;
-    private int userNumber;
+    private int purchaseMoney;
+    private List<Integer> userNumber;
     private int lottoAmount;
     public User(){}
 
-    public int getUserNumber() {
+    public List<Integer> getUserNumber() {
         return userNumber;
     }
 
-    public void setUserNumber(int userNumber) {
+    public void setUserNumber(List<Integer> userNumber) {
         this.userNumber = userNumber;
     }
 
-    public int getPurchaseAmount() {
-        return purchaseAmount;
+    public int getPurchaseMoney() {
+        return purchaseMoney;
     }
 
-    public void setPurchaseAmount(int purchaseAmount) {
-        this.purchaseAmount = purchaseAmount;
+    public void setPurchaseMoney(int purchaseMoney) {
+        this.purchaseMoney = purchaseMoney;
     }
 
     public int getLottoAmount() {
