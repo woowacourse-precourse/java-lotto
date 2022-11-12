@@ -4,6 +4,9 @@ import static lotto.exception.ValidatorTest.WINNING_NUMBERS;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import lotto.domain.Lotto;
 import lotto.domain.LottoResult;
 import org.junit.jupiter.api.DisplayName;
@@ -26,7 +29,6 @@ public class LottoServiceTest {
             new Lotto(List.of(40, 41, 42, 43, 44, 45))
     );
 
-
     @DisplayName("compareLottoNumbers - 반환 갯수 테스트")
     @Test
     void test1() {
@@ -34,45 +36,17 @@ public class LottoServiceTest {
                 .compareLottoNumbers(lottoBundle, WINNING_NUMBERS, BONUS_NUMBER);
         assertThat(lottoResults.size()).isEqualTo(lottoBundle.size());
 
-        assertThat(lottoResults.stream()
-                .filter(LottoResult.SIX::equals)
-                .count()
-        ).isEqualTo(1);
+        Map<LottoResult, Long> LottoResultToNumber = lottoResults.stream()
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-        assertThat(lottoResults.stream()
-                .filter(LottoResult.FIVE::equals)
-                .count()
-        ).isEqualTo(1);
-
-        assertThat(lottoResults.stream()
-                .filter(LottoResult.FIVE_WITH_BONUS::equals)
-                .count()
-        ).isEqualTo(1);
-
-        assertThat(lottoResults.stream()
-                .filter(LottoResult.FOUR::equals)
-                .count()
-        ).isEqualTo(1);
-
-        assertThat(lottoResults.stream()
-                .filter(LottoResult.THREE::equals)
-                .count()
-        ).isEqualTo(1);
-
-        assertThat(lottoResults.stream()
-                .filter(LottoResult.TWO::equals)
-                .count()
-        ).isEqualTo(1);
-
-        assertThat(lottoResults.stream()
-                .filter(LottoResult.ONE::equals)
-                .count()
-        ).isEqualTo(1);
-
-        assertThat(lottoResults.stream()
-                .filter(LottoResult.ZERO::equals)
-                .count()
-        ).isEqualTo(1);
+        assertThat(LottoResultToNumber.get(LottoResult.SIX)).isEqualTo(1);
+        assertThat(LottoResultToNumber.get(LottoResult.FIVE_WITH_BONUS)).isEqualTo(1);
+        assertThat(LottoResultToNumber.get(LottoResult.FIVE)).isEqualTo(1);
+        assertThat(LottoResultToNumber.get(LottoResult.FOUR)).isEqualTo(1);
+        assertThat(LottoResultToNumber.get(LottoResult.THREE)).isEqualTo(1);
+        assertThat(LottoResultToNumber.get(LottoResult.TWO)).isEqualTo(1);
+        assertThat(LottoResultToNumber.get(LottoResult.ONE)).isEqualTo(1);
+        assertThat(LottoResultToNumber.get(LottoResult.ZERO)).isEqualTo(1);
     }
 
     @DisplayName("calculateYield - 반환값 테스트")
