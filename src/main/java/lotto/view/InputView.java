@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+import static camp.nextstep.edu.missionutils.Console.*;
 import static java.lang.Integer.parseInt;
 
 public class InputView {
@@ -15,27 +16,27 @@ public class InputView {
 
     public int getInputAmount() {
         System.out.println(INPUT_PURCHASE_AMOUNT);
-        int inputAmount = parseInt(Console.readLine());
+        int inputAmount = parseInt(readLine());
         return validationInputAmount(inputAmount);
     }
 
     private int validationInputAmount(int inputAmount) {
+        //TODO: validation 구현 필요
         return inputAmount;
     }
 
     public List<Integer> getWinningNums() {
         System.out.println(INPUT_WINNING_NUM);
-        String read = Console.readLine();
-        String[] strings = read.split(",");
-        List<Integer> list = new ArrayList<>();
-        for (String string : strings) {
-            list.add(Integer.parseInt(string));
+        List<Integer> winningNums = new ArrayList<>();
+        for (String winningNum : readLine().split(",")) {
+            winningNums.add(Integer.parseInt(winningNum));
         }
-        return list;
+        return winningNums;
     }
 
     public int getBonusNum() {
         System.out.println(INPUT_BONUS_NUM);
-        return parseInt(Console.readLine());
+        //TODO : validation 추가 필요
+        return parseInt(readLine());
     }
 }
