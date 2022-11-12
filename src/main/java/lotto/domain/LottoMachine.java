@@ -4,8 +4,8 @@ import java.util.List;
 
 public class LottoMachine {
 
-	private List<Integer> winningNumbers;
-	private int bonusNumber;
+	private final List<Integer> winningNumbers;
+	private final int bonusNumber;
 
 	public LottoMachine(List<Integer> winningNumbers, int bonusNumber) {
 		checkException(winningNumbers, bonusNumber);

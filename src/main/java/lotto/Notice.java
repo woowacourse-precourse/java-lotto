@@ -9,7 +9,7 @@ public enum Notice {
 	STATISTICS("당첨 통계\n---"),
 	RATE_OF_RETURN("총 수익률은 ");
 
-	private String noticeMessage;
+	private final String noticeMessage;
 
 	Notice(String noticeMessage) {
 		this.noticeMessage = noticeMessage;

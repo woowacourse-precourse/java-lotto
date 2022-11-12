@@ -14,7 +14,7 @@ import lotto.view.Input;
 import lotto.view.Output;
 
 public class RunController {
-	public static void getMoney() {
+	public static void start() {
 		Output.printNotice(Notice.START.getNoticeMessage());
 
 		int money = checkMoney();
@@ -22,37 +22,44 @@ public class RunController {
 		if (money != 0) {
 			User user = new User(money);
 
-			start(user.getMoney());
+			List<Integer> prizeMoney = getMoney(user.getMoney());
+
+			user.setRateOfReturn(getRateOfReturn(prizeMoney,money));
+
+			Output.printNotice(Notice.STATISTICS.getNoticeMessage());
+			Output.printRateOfReturn(user.getRateOfReturn());
 		}
 	}
 
-	private static void start(int money) {
-		LottoStore seller = new LottoStore(money);
+	private static double getRateOfReturn(List<Integer> prizeMoney, int money) {
+		return calculateProfit(prizeMoney, money);
+	}
 
-		seller.setLotto(publishLotteries(seller.getQuantity()));
-
-		Output.printResult(seller.getQuantity(), Notice.PURCHASE.getNoticeMessage());
+	private static List<Integer> getMoney(int money) {
+		LottoStore seller = publishLottoByQuantity(money);
 
 		LottoMachine machine = getThisRoundLotto();
 
 		List<Integer> prizeMoney = getPrizeMoney(seller.getLotto(), machine.getWinningNumbers(), machine.getBonusNumber());
 
-		User user = new User(money);
-
-		user.setRateOfReturn(calculateProfit(prizeMoney, money));
-
-		Output.printNotice(Notice.STATISTICS.getNoticeMessage());
-		Output.printRateOfReturn(user.getRateOfReturn());
+		return prizeMoney;
 	}
 
+	private static LottoStore publishLottoByQuantity(int money) {
+		LottoStore seller = new LottoStore(money);
+
+		seller.setLotto(publishLotteries(seller.getQuantity()));
+		Output.printResult(seller.getQuantity(), Notice.PURCHASE.getNoticeMessage());
+
+		return seller;
+	}
 	private static LottoMachine getThisRoundLotto() {
 		Output.printNotice(Notice.WINNING_NUMBERS.getNoticeMessage());
 		Lotto lotto = new Lotto(pickWinningNumbers());
 
 		Output.printNotice(Notice.BONUS_NUMBER.getNoticeMessage());
-		LottoMachine machine = new LottoMachine(lotto.getNumbers(), pickBonusNumbers());
 
-		return machine;
+		return new LottoMachine(lotto.getNumbers(), pickBonusNumbers());
 	}
 
 	private static List<Integer> getPrizeMoney(List<List<Integer>> candidate, List<Integer> lotto, int bonus) {

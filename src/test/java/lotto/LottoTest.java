@@ -28,14 +28,6 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
-    @DisplayName("숫자를 쉼표로 구분하지 않았을 경우 예외가 발생한다.")
-    @Test
-    void createLottoByNotSeparatedComma() {
-        assertThatThrownBy(() -> ExceptionHandler.checkSpilt("123456"))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR]");
-    }
-
     @DisplayName("로또 번호가 범위 안에 있지 않을 경우 예외가 발생한다. ")
     @Test
     void createLottoOutOfLange() {

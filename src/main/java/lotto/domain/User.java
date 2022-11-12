@@ -1,9 +1,9 @@
 package lotto.domain;
 
-import java.util.List;
+import lotto.Notice;
 
 public class User {
-	private static int money;
+	private int money;
 	private double rateOfReturn;
 
 	public User(int money) {
@@ -13,15 +13,13 @@ public class User {
 	}
 
 	private void checkMoney(int money) {
-		try {
-			money /= 1000;
-		} catch (Exception e) {
-			System.out.println("[ERROR]");
+		if (money % 1000 != 0) {
+			throw new IllegalArgumentException(Notice.ERROR.getNoticeMessage() + "1000원 단위로 입력해 주세요");
 		}
-		this.money = money;
+		this.money = money / 1000;
 	}
 
-	public static int getMoney() {
+	public int getMoney() {
 		return money;
 	}
 
