@@ -5,8 +5,8 @@ public class Draw {
     private final Integer bonusNumber;
 
     public Draw(Lotto winnerNumbers, Integer bonusNumber) {
-        validate(bonusNumber);
         this.winnerNumbers = winnerNumbers;
+        validate(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
@@ -14,7 +14,6 @@ public class Draw {
         if (!isCorrectRange(bonusNumber)) {
             throw new IllegalArgumentException();
         }
-
         if (winnerNumbers.hasNumber(bonusNumber)) {
             throw new IllegalArgumentException();
         }

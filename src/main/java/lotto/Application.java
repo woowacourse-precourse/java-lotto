@@ -23,7 +23,6 @@ public class Application {
 
     }
 
-    @SuppressWarnings("unchecked")
     public static List<Lotto> generateLottos(int count) {
         NumberGenerator generator = new NumberGenerator();
         List<Lotto> lottos = new ArrayList<>();
