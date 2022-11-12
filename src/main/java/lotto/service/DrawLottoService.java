@@ -14,6 +14,8 @@ public class DrawLottoService {
 
     List<Integer> winingCount = new ArrayList<>();
 
+    private int correctCount;
+
     private double reward;
 
     public int countBuyingLotto(int amount) {
@@ -27,21 +29,29 @@ public class DrawLottoService {
     }
 
     public void compareLottoToWiningLotto(List<Integer> winingLotto, Lotto myLotto, int bonusNumber) {
-        int correctCount = 0;
+        correctCount = 0;
         for (int i = 0; i < winingLotto.size(); i++) {
             if (myLotto.getLotto().contains(winingLotto.get(i))) {
                 correctCount++;
             }
         }
+        isFirstWiningLotto();
+        isSecondWiningLotto(myLotto.getLotto(), bonusNumber);
+        correctNumberCountMap.put(correctCount, correctNumberCountMap.getOrDefault(correctCount, 0) + 1);
+    }
+
+    private void isFirstWiningLotto() {
         if (correctCount == 6) {
             correctCount++;
         }
+    }
+
+    private void isSecondWiningLotto(List<Integer> myLotto, int bonusNumber) {
         if (correctCount == 5) {
-            if (myLotto.getLotto().contains(bonusNumber)) {
+            if (myLotto.contains(bonusNumber)) {
                 correctCount++;
             }
         }
-        correctNumberCountMap.put(correctCount, correctNumberCountMap.getOrDefault(correctCount, 0) + 1);
     }
 
     public void setWiningCount() {
