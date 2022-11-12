@@ -22,6 +22,6 @@ public class Profit {
     }
 
     public String getRate() {
-        return String.format("%.2f", rate);
+        return String.format("%.1f", rate);
     }
 }
