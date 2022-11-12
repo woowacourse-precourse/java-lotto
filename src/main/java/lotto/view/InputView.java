@@ -36,8 +36,7 @@ public class InputView {
         try {
             return Integer.parseInt(number);
         } catch (NumberFormatException e) {
-            System.out.println(NUMBER_FORMAT_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NUMBER_FORMAT_ERROR_MESSAGE);
         }
     }
 
@@ -48,8 +47,7 @@ public class InputView {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {
-            System.out.println(NUMBER_FORMAT_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NUMBER_FORMAT_ERROR_MESSAGE);
         }
     }
 }

@@ -14,8 +14,7 @@ public class LottoPurchaseMoney {
 
     private void validate(int money) {
         if (money % LOTTO_PRICE != 0) {
-            System.out.println(LOTTO_PURCHASE_MONEY_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(LOTTO_PURCHASE_MONEY_ERROR_MESSAGE);
         }
     }
 

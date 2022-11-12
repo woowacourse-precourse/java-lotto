@@ -27,23 +27,20 @@ public class Lotto {
     private void validateRange(List<Integer> numbers) {
         if (numbers.stream()
                 .anyMatch(number -> number < MINIMUM_NUMBER || number > MAXIMUM_NUMBER)) {
-            System.out.println(LOTTO_NUMBER_RANGE_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(LOTTO_NUMBER_RANGE_ERROR_MESSAGE);
         }
     }
 
     private void validateDuplicate(List<Integer> numbers) {
         Set<Integer> numberStorage = new HashSet<>(numbers);
         if (numberStorage.size() != NUMBER_SIZE) {
-            System.out.println(LOTTO_NUMBER_DUPLICATE_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(LOTTO_NUMBER_DUPLICATE_ERROR_MESSAGE);
         }
     }
 
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != NUMBER_SIZE) {
-            System.out.println(LOTTO_NUMBER_SIZE_ERROR_MESSAGE);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(LOTTO_NUMBER_SIZE_ERROR_MESSAGE);
         }
     }
 

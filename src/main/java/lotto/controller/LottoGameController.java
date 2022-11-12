@@ -11,21 +11,35 @@ import java.util.List;
 public class LottoGameController {
 
     public void playGame() {
-        LottoPurchaseMoney lottoPurchaseMoney = createLottoPurchaseMoney();
+        try {
+            LottoPurchaseMoney lottoPurchaseMoney = createLottoPurchaseMoney();
 
-        PlayerLotto playerLotto = createPlayerLotto(lottoPurchaseMoney);
-        printPlayerLotto(playerLotto);
+            PlayerLotto playerLotto = createPlayerLotto(lottoPurchaseMoney);
+            printPlayerLotto(playerLotto);
 
-        WinningLotto winningLotto = createWinningLotto();
+            WinningLotto winningLotto = createWinningLotto();
+        } catch (RuntimeException e) {
+            return;
+        }
     }
 
     private LottoPurchaseMoney createLottoPurchaseMoney() {
-        int money = InputView.lottoPurchaseMoney();
-        return new LottoPurchaseMoney(money);
+        try {
+            int money = InputView.lottoPurchaseMoney();
+            return new LottoPurchaseMoney(money);
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorMessage(e.getMessage());
+            throw new RuntimeException();
+        }
     }
 
     private PlayerLotto createPlayerLotto(LottoPurchaseMoney lottoPurchaseMoney) {
-        return new PlayerLotto(lottoPurchaseMoney);
+        try {
+            return new PlayerLotto(lottoPurchaseMoney);
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorMessage(e.getMessage());
+            throw new RuntimeException();
+        }
     }
 
     private void printPlayerLotto(PlayerLotto playerLotto) {
@@ -33,9 +47,14 @@ public class LottoGameController {
     }
 
     private WinningLotto createWinningLotto() {
-        List<Integer> winningNumbers = InputView.winningNumbers();
-        int bonusNumber = InputView.bonusNumber();
+        try {
+            List<Integer> winningNumbers = InputView.winningNumbers();
+            int bonusNumber = InputView.bonusNumber();
 
-        return new WinningLotto(winningNumbers, bonusNumber);
+            return new WinningLotto(winningNumbers, bonusNumber);
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorMessage(e.getMessage());
+            throw new RuntimeException();
+        }
     }
 }
