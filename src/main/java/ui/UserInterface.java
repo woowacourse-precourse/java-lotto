@@ -2,6 +2,10 @@ package ui;
 
 import camp.nextstep.edu.missionutils.Console;
 import config.ErrorConstants;
+import lotto.Lotto;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserInterface {
 
@@ -22,5 +26,26 @@ public class UserInterface {
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(ErrorConstants.NOT_NUMBER_INPUT);
         }
+    }
+
+    /**
+     * 사용자로부터 당첨 번호를 입력받는다.
+     * 각 번호는 ','로 구분되며 6개의 정수를 입력하여야 한다.
+     * @return 당첨번호
+     * @throws IllegalArgumentException 숫자가 아니거나, 로또번호로 생성될 수 없는 경우 예외 발생
+     */
+    public static Lotto readLuckyNumbers() throws IllegalArgumentException {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String[] tokens = Console.readLine().split(",");
+        List<Integer> numbers = new ArrayList<>();
+        for (String token : tokens) {
+            try {
+                numbers.add(Integer.parseInt(token));
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException(ErrorConstants.NOT_NUMBER_INPUT);
+            }
+        }
+
+        return new Lotto(numbers);
     }
 }
