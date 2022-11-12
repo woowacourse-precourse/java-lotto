@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 public class ResultTest {
 
     Result result = new Result();
-    Printer printer = new Printer();
     int bonus;
 
     private Lotto makeTestLotto(int one, int two, int three, int four, int five, int six){
