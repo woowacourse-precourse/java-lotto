@@ -16,9 +16,15 @@ public class Lotto {
         this.numbers = numbers;
     }
     private void validate(List<Integer> numbers){
+        validateNull(numbers);
         validateDuplicate(numbers);
         validateLength(numbers);
         validateOutRange(numbers);
+    }
+    private void validateNull(List<Integer> numbers){
+        if(numbers.isEmpty()){
+            throw new IllegalArgumentException();
+        }
     }
     private void validateLength(List<Integer> numbers) {
         if (numbers.size() != 6) {
