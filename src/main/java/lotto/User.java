@@ -8,8 +8,8 @@ import camp.nextstep.edu.missionutils.Console;
 public class User {
     private int money;
     private double earning = 0;
-    private List<Lotto> lottoBundle;
-    private List<Integer> winningNumber;
+    private List<Lotto> lottoBundle = new ArrayList<>();
+    private List<Integer> winningNumber = new ArrayList<>();
     private int bonusNumber;
     private Map<String,Integer> winningNumberCounting= Map.of(
             "first",0,
