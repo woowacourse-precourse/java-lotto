@@ -26,6 +26,7 @@ public class UserInput {
     // 보너스 번호를 입력하는 기능
     public static int bounusNumberInput() {
         String bonusNumber = Console.readLine();
+        Validation.validateBonusNumberConsistOfNum(bonusNumber);
         return Integer.parseInt(bonusNumber);
     }
 

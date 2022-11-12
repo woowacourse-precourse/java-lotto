@@ -27,4 +27,11 @@ public class Validation {
             throw new IllegalArgumentException("[ERROR] 콤마는 처음과 끝이면 안됩니다.");
         }
     }
+
+    // 보너스 번호가 숫자로 구성되어있는지 검증하는 기능
+    public static void validateBonusNumberConsistOfNum(String bonusNumber) {
+        if (!bonusNumber.matches(BONUS_NUMBER_REGEX)) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.");
+        }
+    }
 }

@@ -8,5 +8,6 @@ public class Constant {
 
     public static final String WINNING_NUMBER_REGEX = "^[1-9,]*$";
     public static final String COMMA = ",";
+    public static final String BONUS_NUMBER_REGEX = "^[1-9]*$";
 
 }
