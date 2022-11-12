@@ -18,11 +18,7 @@ public class WinningTicket {
     }
 
     public void validateNumberRange(List<Integer> winnings) throws IllegalArgumentException {
-        try {
-            winnings.forEach(this::checkRange);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(e.getMessage());
-        }
+        winnings.forEach(this::checkRange);
     }
 
     public void checkRange(int num) throws IllegalArgumentException {
