@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 public class PriceCalculatorTest {
     @Test
-    void 수익률_계산_테스트(){
+    void 수익률_계산_테스트() {
         //given
         Map<Rank, Integer> winStatus = Map.of(
                 Rank.FIFTH, 3
@@ -17,7 +17,7 @@ public class PriceCalculatorTest {
         float realYield = 150.0f;
 
         //when
-        float testYield = PriceCalculator.getyield(winStatus,purchaseMoney);
+        float testYield = PriceCalculator.getyield(winStatus, purchaseMoney);
 
         //then
         assertThat(testYield).isEqualTo(realYield);

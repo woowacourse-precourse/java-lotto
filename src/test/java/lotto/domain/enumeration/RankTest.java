@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 public class RankTest {
     @Test
-    void 올바른_등수_체크(){
+    void 올바른_등수_체크() {
         //given
         int count = 5;
         boolean bonus = true;
