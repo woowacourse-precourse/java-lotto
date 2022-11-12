@@ -10,23 +10,29 @@ import java.util.stream.Collectors;
 public class InputView {
 
     public static final String CRITERION_SPLIT = ",";
+    public static final String ERROR_INVALID_INPUT_NUMBER = "[ERROR] 입력 값은 숫자만 가능합니다.";
 
     public static int inputPurchasePrice() {
         return inputOneNumber();
     }
 
     private static int inputOneNumber() {
-        String stringNumber = Console.readLine();
-        if (!Pattern.matches("^[0-9]*$", stringNumber)) {
-            throw new IllegalArgumentException("[ERROR] 입력 값은 숫자만 가능합니다.");
+        try {
+            String stringNumber = Console.readLine();
+            return Integer.parseInt(stringNumber);
+        } catch (RuntimeException e) {
+            throw new IllegalArgumentException(ERROR_INVALID_INPUT_NUMBER);
         }
-        return Integer.parseInt(stringNumber);
     }
 
     public static List<Integer> inputAnswerNumbers() {
-        String answerNumbers = Console.readLine();
-        String[] splitAnswerNumbers = answerNumbers.split(CRITERION_SPLIT);
-        return mapToInteger(splitAnswerNumbers);
+        try {
+            String answerNumbers = Console.readLine();
+            String[] splitAnswerNumbers = answerNumbers.split(CRITERION_SPLIT);
+            return mapToInteger(splitAnswerNumbers);
+        } catch (RuntimeException e) {
+            throw new IllegalArgumentException("[ERROR] 잘못 된 형식의 로또 번호 입력 값입니다.");
+        }
     }
 
     private static List<Integer> mapToInteger(String[] split) {
