@@ -13,16 +13,16 @@ public class WinnerNumber {
 		this.answerNumbers = validAnswer(answerNumbers);
 	}
 
+	public void updateBonusNumber(String bonus) {
+		this.bonusNumber = validateBonus(bonus);
+	}
+
 	public List<Integer> getAnswerNumbers() {
 		return answerNumbers;
 	}
 
 	public Integer getBonusNumber() {
 		return bonusNumber;
-	}
-
-	public void updateBonusNumber(String bonus) {
-		this.bonusNumber = validateBonus(bonus);
 	}
 
 }

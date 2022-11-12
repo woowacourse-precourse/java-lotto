@@ -1,22 +1,21 @@
 package lotto.service;
 
-import java.util.List;
-
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
+import lotto.domain.WinnerNumber;
 import lotto.repository.dto.UserLottoDto;
 
 public class StatisticsService {
 
-	public void updateStatistics(UserLottoDto userLottoDto, List<Integer> answers, Integer bonusNumber) {
+	public void updateStatistics(UserLottoDto userLottoDto, WinnerNumber winnerNumber) {
 		for (Lotto lotto : userLottoDto.getUserLotto()) {
-			updateRank(answers, bonusNumber, lotto);
+			updateRank(winnerNumber, lotto);
 		}
 	}
 
-	private void updateRank(List<Integer> answers, Integer bonusNumber, Lotto lotto) {
-		int answerCount = lotto.countAnswer(answers);
-		int bonusCount = lotto.countBonus(bonusNumber);
+	private void updateRank(WinnerNumber winnerNumber, Lotto lotto) {
+		int answerCount = lotto.countAnswer(winnerNumber.getAnswerNumbers());
+		int bonusCount = lotto.countBonus(winnerNumber.getBonusNumber());
 		updateRankCount(answerCount, bonusCount);
 	}
 

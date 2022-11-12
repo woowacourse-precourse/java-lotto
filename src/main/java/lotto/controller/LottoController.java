@@ -43,8 +43,7 @@ public class LottoController {
 			return;
 		}
 
-		statisticsService.updateStatistics(userLottoDto, winnerNumber.getAnswerNumbers(),
-			winnerNumber.getBonusNumber());
+		statisticsService.updateStatistics(userLottoDto, winnerNumber);
 		outputView.printUserStatistics(userPrice.getInputPrice());
 
 	}
