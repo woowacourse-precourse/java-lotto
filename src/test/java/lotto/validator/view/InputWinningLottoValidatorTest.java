@@ -89,4 +89,13 @@ class InputWinningLottoValidatorTest {
                 .isThrownBy(() -> InputWinningLottoValidator.validate(input))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
+    
+    @DisplayName("예외 처리 : 숫자 5개, 쉼표 5개인 경우")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {"1,2,3,4,45,", ",1,2,3,4,6", "1,2,3,,4,6"})
+    void countOfNumberException(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> InputWinningLottoValidator.validate(input))
+                .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
+    }
 }
