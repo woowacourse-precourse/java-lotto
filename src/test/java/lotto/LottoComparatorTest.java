@@ -35,8 +35,7 @@ public class LottoComparatorTest extends NsTest {
 	@Test
 	void checkMatchBonusNumber_메서드_테스트() {
 		Set<Integer> numbers = new TreeSet<>(List.of(1, 2, 3, 4, 5, 6));
-		List<String> winningNumber = new ArrayList<>(List.of("1", "2", "3", "4", "11", "13"));
-		String bonusNumber = "33";
+		String bonusNumber = "6";
 
 		Lotto lotto = new Lotto(numbers);
 		LottoComparator.checkMatchBonusNumber(lotto, bonusNumber, 5);
