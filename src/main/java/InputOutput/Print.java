@@ -1,5 +1,6 @@
 package InputOutput;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Print {
@@ -25,6 +26,7 @@ public class Print {
     }
 
     public static void lottoNumber(List<Integer> lotto){
+        Collections.sort(lotto);
         System.out.println(lotto);
     }
 }
