@@ -1,16 +1,27 @@
 package lotto.util;
 
+import java.util.List;
+
 public class Validator {
 
     private static final int UNIT_STANDARD = 1000;
     private static final int ZERO = 0;
+    private static final int PLAYER_NUMBERS_COUNT_STANDARD = 6;
 
     private static final String PURCHASE_AMOUNT_UNIT_ERROR_MESSAGE = "구입금액은 1,000원 단위여야 합니다.";
+    private static final String PLAYER_NUMBERS_COUNT_STANDARD_ERROR_MESSAGE = "당첨 번호는 6개를 입력해야 합니다.";
 
     public static void validateUnitStandard(int purchaseAmount) {
         boolean isPurchaseAmountNotFollowUnitStandard = purchaseAmount % UNIT_STANDARD != ZERO;
         if (isPurchaseAmountNotFollowUnitStandard) {
             throw new IllegalArgumentException(PURCHASE_AMOUNT_UNIT_ERROR_MESSAGE);
+        }
+    }
+
+    public static void validatePlayNumbersCount(List<Integer> playerNumbers) {
+        int size = playerNumbers.size();
+        if (size != PLAYER_NUMBERS_COUNT_STANDARD) {
+            throw new IllegalArgumentException(PLAYER_NUMBERS_COUNT_STANDARD_ERROR_MESSAGE);
         }
     }
 }
