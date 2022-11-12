@@ -26,4 +26,9 @@ public class Lotto {
         }
         return count;
     }
+
+    // 보너스번호와 발행된 로또를 비교하는 기능
+    public boolean compareWithBonusNumber(int bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
 }
