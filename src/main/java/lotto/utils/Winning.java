@@ -17,6 +17,10 @@ public enum Winning {
         this.prize = prize;
     }
 
+    public String getLabel() {
+        return label;
+    }
+
     public static String getCountByLabel(String label) {
         String count = null;
         for (Winning win : Winning.values()) {
