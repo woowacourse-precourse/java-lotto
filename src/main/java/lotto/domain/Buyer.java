@@ -42,7 +42,7 @@ public class Buyer {
 	}
 
 	public List<Lotto> getLotto() {
-		return lottos;
+		return new ArrayList<>(lottos);
 	}
 
 	public double getAmount() {
