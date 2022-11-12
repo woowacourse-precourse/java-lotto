@@ -36,10 +36,10 @@ public class LottoIssuingMachine {
 
     private void validate(int purchaseMoney) {
         if (purchaseMoney < LOTTO_PRICE) {
-            throw new IllegalArgumentException("[ERROR] 로또 최소 구입 금액은 1,000원입니다.");
+            throw new IllegalArgumentException("로또 최소 구입 금액은 1,000원입니다.");
         }
         if (purchaseMoney % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1,000원 단위이어야 합니다.");
+            throw new IllegalArgumentException("로또 구입 금액은 1,000원 단위이어야 합니다.");
         }
     }
 

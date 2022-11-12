@@ -42,7 +42,7 @@ public class LottoGame {
         try {
             return Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자만을 입력해야 합니다.");
+            throw new IllegalArgumentException("숫자만을 입력해야 합니다.");
         }
     }
 
@@ -65,7 +65,7 @@ public class LottoGame {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 쉼표(,)와 숫자만을 입력해야 합니다.");
+            throw new IllegalArgumentException("쉼표(,)와 숫자만을 입력해야 합니다.");
         }
     }
 
@@ -73,7 +73,7 @@ public class LottoGame {
         try {
             return Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자만을 입력해야 합니다.");
+            throw new IllegalArgumentException("숫자만을 입력해야 합니다.");
         }
     }
 

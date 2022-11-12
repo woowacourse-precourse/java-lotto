@@ -55,14 +55,14 @@ public class Lotto {
 
     private void validateLottoLength(List<Integer> numbers) {
         if (numbers.size() != LOTTO_LENGTH) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 숫자 6개이어야 합니다.");
+            throw new IllegalArgumentException("로또 번호는 숫자 6개이어야 합니다.");
         }
     }
 
     private void validateLottoRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (number < LOTTO_RANGE_MIN || number > LOTTO_RANGE_MAX) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호의 숫자 범위는 1~45까지여야 합니다.");
+                throw new IllegalArgumentException("로또 번호의 숫자 범위는 1~45까지여야 합니다.");
             }
         }
     }
@@ -72,7 +72,7 @@ public class Lotto {
             List<Integer> comparedNumbers = numbers.subList(i + 1, numbers.size());
             Integer number = numbers.get(i);
             if (comparedNumbers.contains(number)) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호 각각은 서로 중복될 수 없습니다.");
+                throw new IllegalArgumentException("로또 번호 각각은 서로 중복될 수 없습니다.");
             }
         }
     }
