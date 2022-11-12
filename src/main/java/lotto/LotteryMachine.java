@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 public class LotteryMachine {
 
     private static LotteryMachine lotteryMachine;
-    private static Lotto winningLottery;
-    private static int bonus;
+    private Lotto winningLottery;
+    private int bonus;
 
     private LotteryMachine() {}
 
@@ -58,11 +58,11 @@ public class LotteryMachine {
         validateBonus();
     }
 
-    private List<Integer> convert(String winningStr) {
-        return Arrays.stream(winningStr.split(","))
-                .map(number -> {
+    private List<Integer> convert(String winningNumbers) {
+        return Arrays.stream(winningNumbers.split(","))
+                .map(winningNumber -> {
                     try{
-                        return Integer.parseInt(number);
+                        return Integer.parseInt(winningNumber.trim());
                     } catch(NumberFormatException e) {
                         throw new IllegalArgumentException("[ERROR] 숫자가 아닙니다");
                     }
@@ -74,23 +74,23 @@ public class LotteryMachine {
     private void validateWinningNumbers() {
         List<Integer> winningNumbers = winningLottery.getNumbers();
 
-        if(winningNumbers.size() != 6) {
+        if(winningNumbers.size() != LottoConstant.LOTTO_NUMBER_COUNT.value) {
             throw new IllegalArgumentException("[ERROR] 6개가 입력되지 않았습니다");
         }
 
-        if(new HashSet<Integer>(winningNumbers).size() != 6) {
+        if(new HashSet<Integer>(winningNumbers).size() != LottoConstant.LOTTO_NUMBER_COUNT.value) {
             throw new IllegalArgumentException("[ERROR] 중복된 값이 존재합니다");
         }
 
         for(Integer number : winningNumbers) {
-            if(number < 1 || 45 < number) {
+            if(number < LottoConstant.LOTTO_START.value || LottoConstant.LOTTO_END.value < number) {
                 throw new IllegalArgumentException("[ERROR] 숫자 범위를 벗어납니다");
             }
         }
     }
 
     private void validateBonus() {
-        if(bonus < 1 || 45 < bonus) {
+        if(bonus < LottoConstant.LOTTO_START.value || LottoConstant.LOTTO_END.value < bonus) {
             throw new IllegalArgumentException("[ERROR] 숫자 범위를 벗어납니다");
         }
 
