@@ -11,7 +11,7 @@ public class LottoGame {
         try {
             Integer purchasePrice = inputPurchasePrice();
             List<Lotto> lottos = purchaseLotto(purchasePrice);
-
+            Lotto winNumber = inputWinNumber();
         } catch (IllegalArgumentException exception) {
             message.printMsg(exception.getMessage());
         }
@@ -30,5 +30,12 @@ public class LottoGame {
         message.printPurchaseLotto(lottos);
 
         return lottos;
+    }
+
+    private Lotto inputWinNumber() throws IllegalArgumentException {
+        message.printPlsInputWinNumber();
+        String winNumber = Console.readLine();
+
+        return processInputAndVariable.makeWinNumber(winNumber);
     }
 }
