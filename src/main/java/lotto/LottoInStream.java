@@ -6,9 +6,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class LottoInStream {
-    private static final int _lotto_number_length = 6;
-    private static final int _lotto_bonus_length = 1;
-    private static final int _bonus_index = 0;
     private static final String _error_default_msg = "[ERROR]";
 
     public static int readToBuyLotto() {
