@@ -28,12 +28,15 @@ public class Simulation {
 
     private static List<Integer> getResult(List<Lotto> trial) {
         String[] winNumbers = Function.getWinningNumber();
-        List<Integer> winNumber = Function.validWinningNumber(winNumbers);
+        List<Integer> winNumber = Function.changeTypeofWinningNumber(winNumbers);
+        Function.validWinningNumber(winNumber);
         String bonus_s = Function.getBonus();
         int bonus = Function.validBonus(bonus_s, winNumber);
         List<Integer> result = new ArrayList<>(List.of(0, 0, 0, 0, 0));
+        int count;
         for (Lotto lotto : trial) {
-            List<Integer> temp_result = Function.winLotto(lotto, winNumber, bonus);
+            count = Function.countMatching(lotto, winNumber, bonus);
+            List<Integer> temp_result = Function.winLotto(count);
             for (int j = 0; j < 5; j++) {
                 result.set(j, result.get(j) + temp_result.get(j));
             }
@@ -43,6 +46,6 @@ public class Simulation {
 
     private static String calculateWinning(List<Integer> result) {
         int winning = Function.calculateWinning(result);
-        return Function.calculateYield(winning, prices);
+        return Function.calculateYield(prices, winning);
     }
 }

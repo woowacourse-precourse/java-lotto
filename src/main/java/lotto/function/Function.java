@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.display.Display;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -12,6 +13,20 @@ class Constants {
     public static final int upper_bound = 45;
     public static final int counts = 6;
     public static final List<Integer> winning = List.of(5000, 50000, 1500000, 30000000, 2000000000);
+
+    enum Rank {
+        first(4), second(3), third(2), fourth(1), fifth(0);
+
+        private final int value;
+
+        Rank(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+    }
 }
 
 public class Function {
@@ -69,7 +84,7 @@ public class Function {
         return winningNumber.split(",");
     }
 
-    public static List<Integer> validWinningNumber(String[] WinningNumbers) {
+    public static List<Integer> changeTypeofWinningNumber(String[] WinningNumbers) {
         try {
             if (!isInteger(WinningNumbers)) {
                 throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자가 입력되어야 합니다.");
@@ -78,10 +93,38 @@ public class Function {
             for (String split : WinningNumbers) {
                 WinningNumber.add(Integer.parseInt(split));
             }
+            return WinningNumber;
+        } catch (Exception e) {
+            Display.displayError(e.getMessage());
+            throw e;
+        }
+    }
+
+    private static Boolean isInRange(List<Integer> list) {
+        for (Integer l : list) {
+            if ((l > Constants.upper_bound) || (l < Constants.lower_bound)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static Boolean isInRange(Integer l) {
+        return (l <= Constants.upper_bound) && (l >= Constants.lower_bound);
+    }
+
+    public static void validWinningNumber(List<Integer> WinningNumber) {
+        try {
             if (WinningNumber.size() != 6) {
                 throw new IllegalArgumentException("당첨 번호는 6개의 숫자가 입력되어야 합니다.");
             }
-            return WinningNumber;
+            HashSet<Integer> set = new HashSet<>(WinningNumber);
+            if (set.size() != WinningNumber.size()) {
+                throw new IllegalArgumentException("당첨 번호는 다른 숫자를 입력해야 합니다.");
+            }
+            if (!isInRange(WinningNumber)) {
+                throw new IllegalArgumentException("당첨 번호는 1~45사이로 입력해야 합니다.");
+            }
         } catch (Exception e) {
             Display.displayError(e.getMessage());
             throw e;
@@ -99,7 +142,7 @@ public class Function {
                 throw new IllegalArgumentException("보너스 번호로 숫자를 입력해 주세요.");
             }
             int bonusNumber = Integer.parseInt(bonus);
-            if ((bonusNumber > Constants.upper_bound) || (bonusNumber < Constants.lower_bound)) {
+            if (!isInRange(bonusNumber)) {
                 throw new IllegalArgumentException("보너스 번호는 1~45사이로 입력해야 합니다.");
             }
             if (winNumber.contains(bonusNumber)) {
@@ -112,8 +155,7 @@ public class Function {
         }
     }
 
-    public static List<Integer> winLotto(Lotto lotto, List<Integer> winning, int bonus) {
-        List<Integer> result = new ArrayList<>(List.of(0, 0, 0, 0, 0));
+    public static Integer countMatching(Lotto lotto, List<Integer> winning, int bonus) {
         int count = 0;
         List<Integer> numbers = lotto.getNumbers();
         for (Integer number : numbers) {
@@ -121,18 +163,18 @@ public class Function {
                 count += 1;
             }
         }
-        if (count == 5) {
-            if (numbers.contains(bonus)) {
-                result.set(3, result.get(3) + 1);
-                return result;
+        if ((count == 6) || ((count == 5) && (numbers.contains(bonus)))) {
+            count += 1;
+        }
+        return count;
+    }
+
+    public static List<Integer> winLotto(int count) {
+        List<Integer> result = new ArrayList<>(List.of(0, 0, 0, 0, 0));
+        for (Constants.Rank i : Constants.Rank.values()) {
+            if (i.getValue() == count - 3) {
+                result.set(i.getValue(), result.get(i.getValue()) + 1);
             }
-        }
-        if (count == 6) {
-            result.set(4, result.get(4) + 1);
-            return result;
-        }
-        if (count > 2) {
-            result.set(count - 3, result.get(count - 3) + 1);
         }
         return result;
     }
@@ -149,6 +191,6 @@ public class Function {
         if (winning == 0) {
             return String.valueOf(0.0);
         }
-        return String.format("%.1f", (float) 100 * price / winning);
+        return String.format("%.1f", (float) 100 * winning / price);
     }
 }

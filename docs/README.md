@@ -30,7 +30,11 @@
     * if the input is not sufficient for the conditions, throw error
 * **getWinningNumber()**
     * get inputs for winning numbers
-    * if inputs have same numbers or have not equal to 6 numbers, throw error
+* **changeTypeofWinningNumber()**
+    * change type of WinningNumber from string to list
+    * if string consist of non-integer, throw error
+* **isInRange()**
+    * check whether inputs are in valid range
 * **validWinningNumber()**
     * check inputs are valid for Winning Numbers
     * if the input is not sufficient for the conditions, throw error
@@ -40,6 +44,8 @@
 * **validBonus()**
     * check inputs are valid for bonus number
     * if the input is not sufficient for the conditions, throw error
+* **countMatching()**
+    * count how many numbers are matched between lotto and WinningNumbers
 * **winLotto()**
     * get results for all Lotto instances
 * **calculateWinning()**
