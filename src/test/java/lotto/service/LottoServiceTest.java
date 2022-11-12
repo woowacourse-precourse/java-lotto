@@ -29,9 +29,16 @@ public class LottoServiceTest {
             new Lotto(List.of(40, 41, 42, 43, 44, 45))
     );
 
-    @DisplayName("compareLottoNumbers - 반환 갯수 테스트")
+    @DisplayName("buy - 로또 생성 갯수 테스트")
     @Test
     void test1() {
+        List<Lotto> lottoBundle = lottoService.buy(8000);
+        assertThat(lottoBundle.size()).isEqualTo(8);
+    }
+
+    @DisplayName("compareLottoNumbers - 반환 갯수 테스트")
+    @Test
+    void test2() {
         List<LottoResult> lottoResults = lottoService
                 .compareLottoNumbers(lottoBundle, WINNING_NUMBERS, BONUS_NUMBER);
 
@@ -51,7 +58,7 @@ public class LottoServiceTest {
 
     @DisplayName("calculateYield - 반환값 테스트")
     @Test
-    void test2() {
+    void test3() {
         List<LottoResult> results = List.of(
                 LottoResult.ONE,
                 LottoResult.ONE,
