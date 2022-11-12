@@ -34,6 +34,7 @@ public class BonusBallUsedLottery {
                         cont++; // 있다면 카운트
                         break;
                     }
+                    checkIndex = 0;
                 }
             }
             result.add(cont);
