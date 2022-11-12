@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
@@ -67,5 +68,17 @@ public class Domain {
 
     public int getReward(int rank) {
         return Rank.valueOf(rankStringMapper.get(rank)).getReward();
+    }
+
+    public List<Integer> getRankList(List<Lotto> lottos, List<Integer> winningNumbers, int bonus) {
+        List<Integer> rankList = new ArrayList<>(6);
+        Collections.fill(rankList, 0);
+
+        for (Lotto lotto : lottos) {
+            int tempRank = lotto.getRank(winningNumbers, bonus);
+            rankList.set(tempRank, rankList.get(tempRank) + 1);
+        }
+
+        return rankList;
     }
 }
