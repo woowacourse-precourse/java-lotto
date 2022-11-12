@@ -15,9 +15,14 @@ public class Validator {
 
     public void isValidWinnings(String in) {
         String[] split = in.split(",");
+        for (int i = 0; i < split.length; i++) {
+            isNumber(split[i], Error.NUMBER);
+        }
         Set<Integer> collect = Arrays.stream(split).map(Integer::parseInt)
             .collect(Collectors.toSet());
         require(collect.size() != 6, Error.FORMAT);
+        collect.stream().forEach(i -> require(i<1, Error.SIZE));
+        collect.stream().forEach(i -> require(i>45, Error.SIZE));
     }
 
     private void require(final boolean condition, final Error error) {
