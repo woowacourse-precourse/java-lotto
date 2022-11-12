@@ -16,7 +16,10 @@ public class LotteryController {
     private final RankingView rankingView = new RankingView();
 
 
-    public void createPlayer(){}
+    public void createPlayer(){
+        makeLottoForPlayer(takePlayersMoney());
+        giveLottoToPlayer();
+    }
 
     private String takePlayersMoney(){
         return playerView.payMoney();
