@@ -12,4 +12,8 @@ public class LottoPrize {
                 .count();
     }
 
+    public double computeEarningRate(int purchaseAmount, int winningAmount) {
+        return (double)(purchaseAmount / winningAmount) * 100;
+    }
+
 }
