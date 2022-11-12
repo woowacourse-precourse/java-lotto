@@ -38,4 +38,12 @@ public class LottoDesignatorTest {
         assertThatThrownBy(() -> lottoDesignator.checkRange(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("입력받은 보너스 번호가 숫자가 아닐 경우 예외가 발생한다.")
+    @Test
+    void 보너스_번호_숫자_아닐_경우_예외() {
+        String input = "a";
+        assertThatThrownBy(() -> lottoDesignator.checkOnlyNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
