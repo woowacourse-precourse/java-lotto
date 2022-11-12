@@ -27,7 +27,7 @@ public class PurchaseAmountValidator {
     }
 
     public boolean isDivisibleBy1000(String purchaseAmount) {
-        return Integer.parseInt(purchaseAmount) % GameConstants.LOTTO_AMOUNT_UNIT == 0;
+        return Integer.parseInt(purchaseAmount) % GameConstants.LOTTO_TICKET_PRICE == 0;
     }
 
 }
