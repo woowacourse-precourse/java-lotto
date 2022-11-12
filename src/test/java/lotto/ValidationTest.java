@@ -39,4 +39,15 @@ class ValidationTest {
                 .hasMessage("[ERROR] 로또 당첨 번호는 1 ~ 45 범위입니다.");
     }
 
+    @Test
+    void costValidation() {
+        ByteArrayInputStream in = new ByteArrayInputStream("12100".getBytes());
+        System.setIn(in);
+
+        UI.setCost();
+        assertThatThrownBy(() -> new LottoBuyer(UI.getCost()))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 로또 구입 금액은 1,000원 단위로 입력 가능합니다.");
+    }
+
 }

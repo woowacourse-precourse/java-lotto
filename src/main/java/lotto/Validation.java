@@ -26,4 +26,10 @@ public class Validation {
             }
         }
     }
+
+    public static void costValidate(int cost) {
+        if (cost % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1,000원 단위로 입력 가능합니다.");
+        }
+    }
 }

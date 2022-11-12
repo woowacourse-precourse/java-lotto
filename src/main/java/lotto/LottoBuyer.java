@@ -12,7 +12,7 @@ public class LottoBuyer {
     private final List<Lotto> lotteries = new ArrayList<>();
 
     public LottoBuyer(int cost) {
-        costValidate(cost);
+        Validation.costValidate(cost);
         this.cost = cost;
 
         int totalLottoCount = this.cost / 1000;
@@ -23,7 +23,7 @@ public class LottoBuyer {
     }
 
     public LottoBuyer(int cost, List<List<Integer>> numbersList) {
-        costValidate(cost);
+        Validation.costValidate(cost);
         this.cost = cost;
 
         int totalLottoCount = this.cost / 1000;
@@ -33,13 +33,6 @@ public class LottoBuyer {
             lotteries.add(buyLotto(numbers));
         }
 
-    }
-
-
-    public void costValidate(int cost) {
-        if (cost % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1,000원 단위로 입력 가능합니다.");
-        }
     }
 
     public Lotto buyRandomLotto() {

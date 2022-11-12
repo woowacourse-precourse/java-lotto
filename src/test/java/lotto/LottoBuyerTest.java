@@ -25,18 +25,6 @@ class LottoBuyerTest {
     }
 
     @Test
-    void costValidation() {
-        ByteArrayInputStream in = new ByteArrayInputStream("12100".getBytes());
-        System.setIn(in);
-
-        UI.setCost();
-        assertThatThrownBy(() -> new LottoBuyer(UI.getCost()))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 로또 구입 금액은 1,000원 단위로 입력 가능합니다.");
-
-    }
-
-    @Test
     void buyRandomLotto() {
         LottoBuyer lottoBuyer = new LottoBuyer(12000);
 

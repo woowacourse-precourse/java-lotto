@@ -50,7 +50,7 @@ class LottoDrawTest {
 
         assertThatThrownBy(() -> new LottoDraw(new LottoBuyer(1000)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 로또 당첨 번호는 중복될 수 없습니다.");
+                .hasMessage("[ERROR] 로또 번호는 중복될 수 없습니다.");
     }
 
     @Test
