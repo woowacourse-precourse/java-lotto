@@ -7,7 +7,8 @@ public enum ConsoleMessage {
     REQUEST_BONUS_NUMBER("보너스 번호를 입력해 주세요."),
     WINNING_STATISTICS("당첨통계\n---"),
     STATISTICS_ELEMENT_FORMAT("%s - %d 개"),
-    RESPONSE_YIELD("총 수익률은 %lf% 입니다.");
+    RESPONSE_YIELD("총 수익률은 %lf% 입니다."),
+    NEW_LINE("\n");
 
     private final String message;
 
