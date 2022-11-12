@@ -1,5 +1,6 @@
 package lotto;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -43,5 +44,27 @@ class WinningNumberTest {
     void createLottoByOverRange2() {
         assertThatThrownBy(() -> new WinningNumber(List.of(1, 2, 3, 4, 5, 55), 8))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호의 번호 체크")
+    @Test
+    void hasNumberInList() {
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 2, 3, 4, 5, 6), 8);
+
+        assertThat(winningNumber.hasNumber(3)).isTrue();
+        assertThat(winningNumber.hasNumber(4)).isTrue();
+        assertThat(winningNumber.hasNumber(8)).isFalse();
+        assertThat(winningNumber.hasNumber(16)).isFalse();
+    }
+
+    @DisplayName("당첨 번호의 보너스 번호 체크")
+    @Test
+    void hasBonus() {
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 2, 3, 4, 5, 6), 8);
+
+        assertThat(winningNumber.hasBonus(3)).isFalse();
+        assertThat(winningNumber.hasBonus(4)).isFalse();
+        assertThat(winningNumber.hasBonus(8)).isTrue();
+        assertThat(winningNumber.hasBonus(16)).isFalse();
     }
 }
