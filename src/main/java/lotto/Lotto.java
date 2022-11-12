@@ -11,8 +11,13 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+       sizeValidate(numbers);
+
+    }
+
+    private void sizeValidate(List<Integer> numbers){
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[Error] 로또 번호 개수는 6개여야 합니다.");
         }
     }
 
