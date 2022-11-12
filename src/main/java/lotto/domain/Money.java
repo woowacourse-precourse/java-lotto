@@ -22,6 +22,7 @@ public class Money {
     }
 
     public static double yield(Money investmentPrincipalMoney, Money revenueMoney) {
+        validateNotZero(investmentPrincipalMoney);
         return calculateYield(new BigDecimal(investmentPrincipalMoney.money), new BigDecimal(revenueMoney.money));
     }
 
@@ -34,7 +35,7 @@ public class Money {
         return Long.valueOf(this.money / money.money).intValue();
     }
 
-    private void validateNotZero(Money money) {
+    private static void validateNotZero(Money money) {
         if (money.money == 0) {
             throw new DivideZeroException();
         }

@@ -23,6 +23,13 @@ public class MoneyTest {
         assertThat(Money.yield(new Money(8000), new Money(5000))).isEqualTo(62.5);
     }
 
+    @DisplayName("투자 원금이 0이면 에러를 반환한다.")
+    @Test
+    void calculateYieldInvestPrincipalZero() {
+        assertThatThrownBy(() -> Money.yield(new Money(0), new Money(5000)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("돈을 나눈 값을 반환한다.")
     @Test
     void divide() {
