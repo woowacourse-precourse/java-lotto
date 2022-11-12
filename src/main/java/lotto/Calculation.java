@@ -34,4 +34,13 @@ public class Calculation {
             return 1;
         return 0;
     }
+
+    public static long getProfit(int[] counts) {
+        int[] prices = {0, 5000, 50000, 1500000, 30000000, 2000000000};
+        long sum = 0;
+        for (int i = 0; i < counts.length; i++) {
+            sum += counts[i] * prices[i];
+        }
+        return sum;
+    }
 }
