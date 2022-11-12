@@ -40,6 +40,10 @@ public class OutputView {
         System.out.println(String.format(LOTTO_RETURN_RATE_MESSAGE, result));
     }
 
+    public static void printErrorMessage(String errorMessage) {
+        System.out.println(errorMessage);
+    }
+
     public static void printEmptyLine() {
         System.out.println();
     }

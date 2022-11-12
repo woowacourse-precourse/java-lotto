@@ -14,10 +14,14 @@ public class LottoController {
     private LottoResult lottoResult = new LottoResult();
 
     public void process() {
-        int ticket = getTicketFromUserByConsole();
-        List<Lotto> lottos = getRandomLottoBy(ticket);
-        WinningLotto winningLotto = getWinningLottoByUser();
-        printLottoResult(lottos, winningLotto);
+        try {
+            int ticket = getTicketFromUserByConsole();
+            List<Lotto> lottos = getRandomLottoBy(ticket);
+            WinningLotto winningLotto = getWinningLottoByUser();
+            printLottoResult(lottos, winningLotto);
+        } catch (IllegalArgumentException error) {
+            OutputView.printErrorMessage(error.getMessage());
+        }
     }
 
     private int getTicketFromUserByConsole() {
