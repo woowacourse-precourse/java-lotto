@@ -3,6 +3,7 @@ package lotto.service;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class PickRandomLotto {
@@ -22,8 +23,11 @@ public class PickRandomLotto {
         }
     }
     public void checkRandomLottoLists() {
-        for(int i=0; i<randomLottoLists.size(); i++){
-            System.out.println(randomLottoLists.get(i).toString());
+        Iterator<List<Integer>> iterator = randomLottoLists.iterator();
+
+        while(iterator.hasNext()) {
+            List<Integer> values = iterator.next();
+            System.out.println(values);
         }
         inputMoney.lineSkip();
     }
