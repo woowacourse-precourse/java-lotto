@@ -19,6 +19,7 @@ public class Application {
 
         List<Integer> winningNumbers = inputView.createWinningNumber();
         int bonusNumber = inputView.inputBonusNumber();
+        System.out.println("당첨 번호 : " + winningNumbers);
 
         inputView.allLottoNumber = inputView.createAllGameLottoNumber(lottoChance);
         outputView.printLottoPurchaseCompleteMessage(lottoChance);
@@ -28,9 +29,8 @@ public class Application {
             inputView.compareWinningNumber(inputView.allLottoNumber.get(i),winningNumbers,bonusNumber);
         }
         System.out.println(inputView.lottoResult);
+        outputView.printLottoRankResult(inputView.lottoResult);
 
-
-        System.out.println("당첨 번호 : " + winningNumbers);
     }
 
 
