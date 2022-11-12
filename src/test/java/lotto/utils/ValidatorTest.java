@@ -33,7 +33,7 @@ class ValidatorTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> validator.isValidMoney(input));
         //then
         assertThat(exception.getMessage()).isEqualTo(ErrorMessage.MONEY_IS_ZERO.getMessage());
-    }}
+    }
 
     @Test
     public void 입력한_금액이_없는_경우() {
