@@ -16,7 +16,11 @@ public class User {
         return myLotto;
     }
 
-    public void setBuyAmount(String buyAmount){
+    public void setBuyAmount(String buyAmount) {
         this.buyAmount = Integer.parseInt(buyAmount);
+    }
+
+    public int getBuyAmount(){
+        return buyAmount;
     }
 }
