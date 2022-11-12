@@ -125,4 +125,13 @@ class InputWinningLottoValidatorTest {
                 .isThrownBy(() -> InputWinningLottoValidator.validate(input))
                 .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
     }
+    
+    @DisplayName("예외 처리 : 쉽표 5개만 입력하는 경우")
+    @ParameterizedTest(name = "{displayName} => {0}")
+    @ValueSource(strings = {",,,,,", " ,,,,,", ",,,,, ", ",,,, ,", ", ,,,,"})
+    void onlyFiveCommaInputException(String input) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> InputWinningLottoValidator.validate(input))
+                .withMessageStartingWith(ErrorMessageConstant.ERROR_MESSAGE);
+    }
 }
