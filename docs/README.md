@@ -22,3 +22,8 @@
     1. 구매한 로또 번호 생성 전략
   - RandomLottoGenerateStrategy
     1. 구매한 로또 번호 랜덤 생성 전략
+- view
+  - UserInput :
+    1. 유저의 입력 값을 받는 기능
+  - PrintResult :
+    1. 특정 결과를 화면에 출력하는 기능
