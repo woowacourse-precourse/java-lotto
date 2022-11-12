@@ -1,10 +1,10 @@
 package lotto.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
-import static lotto.dto.LottoResponseDtos.*;
+import static lotto.dto.LottoResponseDtos.LottoResponseDto;
 
 public class Lotto {
 
@@ -32,6 +32,6 @@ public class Lotto {
     }
 
     private void sort() {
-        Collections.sort(numbers);
+        numbers.sort(Comparator.naturalOrder());
     }
 }
