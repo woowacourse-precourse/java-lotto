@@ -1,8 +1,8 @@
 package lotto.util;
 
-public class InputValueValidator {
+public class PurchaseAmountValidator {
 
-    private boolean isNumber(String purchaseAmount) {
+    public boolean isNumber(String purchaseAmount) {
         return purchaseAmount.chars().allMatch(Character::isDigit);
     }
 
