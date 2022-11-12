@@ -31,37 +31,31 @@ public class Application {
     {
         consoleOutputManager.write(Message.LOTTO_PURCHASE_REQUEST_MESSAGE);
         String userInputForPrice = consoleInputManager.readLine();
-
-        while(true)
+        List<Lotto> purchaseLotties = null;
+        try
         {
-            try
-            {
-                int price = Integer.parseInt(userInputForPrice);
-                List<Lotto> purchaseLotties = lottoGenerator.generateLotties(price);
-                consoleOutputManager.write(Message.getPurchaseLottoSizeMessage(purchaseLotties));
-                return purchaseLotties;
-            }
-            catch (NumberFormatException e) {
-                consoleOutputManager.write(Message.LOTTO_PURCHASE_RETRY_MESSAGE);
-            }
+            int price = Integer.parseInt(userInputForPrice);
+            purchaseLotties = lottoGenerator.generateLotties(price);
+            consoleOutputManager.write(Message.getPurchaseLottoSizeMessage(purchaseLotties));
         }
+        catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Message.INPUT_INVALID_MESSAGE);
+        }
+        return purchaseLotties;
     }
 
     private WinningLotto inputWinningLotto()
     {
-        while(true)
+        try
         {
-            try
-            {
-                List<Integer>winningNumbers = inputWinningLottoNumbers();
-                consoleOutputManager.write(Message.BONUS_NUMBER_REQUEST_MESSAGE);
-                int specialNumber = inputSpecialNumber();
-                return new WinningLotto(winningNumbers,specialNumber);
-            }
-            catch (NumberFormatException e)
-            {
-                consoleOutputManager.write(Message.WINNING_LOTTO_NUMBERS_INPUT_RETRY_MESSAGE);
-            }
+            List<Integer>winningNumbers = inputWinningLottoNumbers();
+            consoleOutputManager.write(Message.BONUS_NUMBER_REQUEST_MESSAGE);
+            int specialNumber = inputSpecialNumber();
+            return new WinningLotto(winningNumbers,specialNumber);
+        }
+        catch (NumberFormatException e)
+        {
+            throw new IllegalArgumentException(Message.INPUT_INVALID_MESSAGE);
         }
     }
 

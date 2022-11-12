@@ -11,9 +11,8 @@ public class Message {
     public static final String GAME_END_MESSAGE = "게임 종료\n";
 
     public static final String LOTTO_PURCHASE_REQUEST_MESSAGE = "로또 구매 금액을 입력해주세요(1장에 1000원) : ";
-    public static final String LOTTO_PURCHASE_RETRY_MESSAGE = "입력 형식이 맞지 않습니다. 다시 입력해주세요.\n";
+    public static final String INPUT_INVALID_MESSAGE = "[ERROR] 입력 형식이 맞지 않습니다. 게임을 종료합니다.\n";
     public static final String WINNING_LOTTO_NUMBERS_INPUT_REQUEST_MESSAGE = "당첨 번호를 ','로 구분하여 입력해 주세요 : ";
-    public static final String WINNING_LOTTO_NUMBERS_INPUT_RETRY_MESSAGE = "당첨 번호는 ','로 구분되며 숫자만 입력해 주세요.\n";
     public static final String BONUS_NUMBER_REQUEST_MESSAGE = "보너스 번호를 입력해 주세요 : ";
     private static final String ERROR_HEADER = "[ERROR]";
     private static final String DELIMITER = " ";
