@@ -1,5 +1,6 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.Map;
 
 public enum WinningNumber {
@@ -19,15 +20,15 @@ public enum WinningNumber {
         this.money = money;
     }
 
-    public int getNumberOfWinning() {
+    private int getNumberOfWinning() {
         return numberOfWinning;
     }
 
-    public int getNumberOfBonus() {
+    private int getNumberOfBonus() {
         return numberOfBonus;
     }
 
-    public int getMoney() {
+    private int getMoney() {
         return money;
     }
 
@@ -50,5 +51,26 @@ public enum WinningNumber {
             }
         }
         return null;
+    }
+
+    public static void printNumberOfMatch(String amountMessage, WinningNumber winningNumber) {
+        System.out.printf(amountMessage, winningNumber.getNumberOfWinning(), insertComma(winningNumber.getMoney()));
+    }
+
+    private static String insertComma(int money) {
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###,###,###");
+        return decimalFormat.format(money);
+    }
+
+    public static void printNumberOfLotto(String guideMessage, WinningNumber winningNumber, int matchCount) {
+        System.out.printf(guideMessage, matchCount);
+    }
+
+    public static int multiply(WinningNumber winningNumber, Map<WinningNumber, Integer> matchCount) {
+        return winningNumber.getMoney() * matchCount.get(winningNumber);
+    }
+
+    public static boolean isEqualToBonusNumber(WinningNumber winningNumber) {
+        return winningNumber.getNumberOfBonus() == WinningNumber.FIVE_AND_BONUS_BALL_MATCHES.getNumberOfBonus();
     }
 }

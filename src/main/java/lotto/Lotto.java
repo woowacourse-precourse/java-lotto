@@ -1,4 +1,6 @@
-package lotto;
+package lotto.Model;
+
+import lotto.Model.ExceptionMessage;
 
 import java.util.List;
 import java.util.stream.Collectors;

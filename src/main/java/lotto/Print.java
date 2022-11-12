@@ -1,6 +1,5 @@
 package lotto;
 
-import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -36,23 +35,17 @@ public class Print {
                 .stream()
                 .sorted()
                 .collect(Collectors.toList())) {
-            String amountMessage = getAmountMessage(winningNumber);
-            System.out.printf(amountMessage + GuideMessage.MATCH_NUMBER,
-                    winningNumber.getNumberOfWinning(), insertComma(winningNumber.getMoney()), matchCount.get(winningNumber));
+            WinningNumber.printNumberOfMatch(getAmountMessage(winningNumber), winningNumber);
+            WinningNumber.printNumberOfLotto(GuideMessage.MATCH_NUMBER, winningNumber, matchCount.get(winningNumber));
         }
         System.out.printf(GuideMessage.FINAL_REVENUE, calculateYield(numberOfLotto, getRevenue(matchCount)));
     }
 
     private static String getAmountMessage(WinningNumber winningNumber) {
-        if (winningNumber.getNumberOfBonus() == WinningNumber.FIVE_AND_BONUS_BALL_MATCHES.getNumberOfBonus()) {
+        if (WinningNumber.isEqualToBonusNumber(winningNumber)) {
             return GuideMessage.MATCH + ", " + GuideMessage.BONUS_BALL_MATCH + GuideMessage.AMOUNT;
         }
         return GuideMessage.MATCH + GuideMessage.AMOUNT;
-    }
-
-    private static String insertComma(int money) {
-        DecimalFormat decimalFormat = new DecimalFormat("###,###,###,###,###");
-        return decimalFormat.format(money);
     }
 
     private static int getRevenue(Map<WinningNumber, Integer> matchCount) {
@@ -61,7 +54,7 @@ public class Print {
                 .stream()
                 .sorted()
                 .collect(Collectors.toList())) {
-            sum += winningNumber.getMoney() * matchCount.get(winningNumber);
+            sum += WinningNumber.multiply(winningNumber, matchCount);
         }
         return sum;
     }
