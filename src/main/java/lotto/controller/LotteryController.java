@@ -27,7 +27,7 @@ public class LotteryController {
     }
 
     private void giveLottoToPlayer(){
-
+        playerView.showPlayersLotto(player.getPlayerLotto());
     }
 
     public void insertWinningNumbers(){
