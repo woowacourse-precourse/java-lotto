@@ -6,6 +6,7 @@ import lotto.Lotto;
 
 import java.util.List;
 import java.math.BigInteger;
+import java.util.ArrayList;
 
 import camp.nextstep.edu.missionutils.Console;
 
@@ -20,7 +21,7 @@ public class LottoBuyer {
         lotto = null;
         money = null;
         bonusNumber = null;
-        lottos = null;
+        lottos = new ArrayList<Lotto>();
     }
     public void setMoney() throws IllegalArgumentException{
         System.out.println("구입금액을 입력해주세요.");
