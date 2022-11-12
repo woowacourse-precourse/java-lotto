@@ -18,6 +18,6 @@ class PrintTest {
         prizeIntegerEnumMap.put(Prize.THIRD, 2);
         prizeIntegerEnumMap.put(Prize.FOURTH, 0);
         prizeIntegerEnumMap.put(Prize.FIFTH, 22);
-        print.out(prizeIntegerEnumMap);
+        print.statics(prizeIntegerEnumMap);
     }
 }

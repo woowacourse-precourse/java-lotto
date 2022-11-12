@@ -2,7 +2,6 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import constant.Prize;
-import constant.LottoText;
 
 import java.util.List;
 import java.util.Map;
@@ -26,12 +25,12 @@ public class LottoSimulate {
             Map<Prize, Integer> lottoStatics = getLottoStatics(winLotto, lottos);
             calculateYield(purchasePrice, lottoStatics);
         } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            print.out(e.getMessage());
         }
     }
 
     private int inputPurchasePrice() throws IllegalArgumentException {
-        print.out(LottoText.REQUEST_PURCHASE_PRICE);
+        print.requestPurchasePrice();
         String input = Console.readLine();
         return convert.toInt(input);
     }
@@ -39,33 +38,30 @@ public class LottoSimulate {
     private List<Lotto> buyLottos(int purchasePrice) {
         int lottoCount = convert.toLottoCount(purchasePrice);
         List<Lotto> lottos = lottoShop.buy(lottoCount);
-
-        print.out(LottoText.PURCHASE_COUNT, lottoCount);
-        print.out(lottos);
-
+        print.lottoNumbers(lottos);
         return lottos;
     }
 
     private List<Integer> inputWinLottoNumbers() {
-        print.out(LottoText.REQUEST_WIN_LOTTO_NUMBER);
+        print.requestWinLottoNumber();
         String input = Console.readLine();
         return convert.toWinLottoNumbers(input);
     }
 
     private int inputWinLottoBonusNumber() {
-        print.out(LottoText.REQUEST_BONUS_NUMBER);
+        print.requestBonusNumber();
         String input = Console.readLine();
         return convert.toWinLottoBonusNumber(input);
     }
 
     private Map<Prize,Integer> getLottoStatics(WinLotto winLotto, List<Lotto> lottos) {
         Map<Prize,Integer> lottoStatics = statistics.produce(winLotto, lottos);
-        print.out(lottoStatics);
+        print.statics(lottoStatics);
         return lottoStatics;
     }
 
     private void calculateYield(int purchasePrice, Map<Prize, Integer> lottoStatics) {
-        double percent = calculate.yield(purchasePrice, lottoStatics);
-        print.yield(percent);
+        double profits = calculate.yield(purchasePrice, lottoStatics);
+        print.yield(profits);
     }
 }
