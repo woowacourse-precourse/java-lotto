@@ -6,9 +6,8 @@ import lotto.Constant.ErrorMessage;
 
 
 
-
 public class Converter {
-    public static int convertMoneyInput(String input) {
+    public static int convertToInteger(String input) {
         try {
             return Integer.parseInt(input);
         } catch (Exception exception) {
@@ -16,7 +15,7 @@ public class Converter {
         }
     }
 
-    public static List<Integer> convertNumbersInput(String input) {
+    public static List<Integer> convertToIntegerList(String input) {
         List<String> splitedInput = List.of(input.split(","));
 
         try {
@@ -25,15 +24,6 @@ public class Converter {
                     .collect(Collectors.toList());
 
             return numbers;
-        } catch (Exception exception) {
-            throw new IllegalArgumentException(ErrorMessage.WRONG_INPUT);
-        }
-
-    }
-
-    public static int convertBonusNumberInput(String input) {
-        try {
-            return Integer.parseInt(input);
         } catch (Exception exception) {
             throw new IllegalArgumentException(ErrorMessage.WRONG_INPUT);
         }

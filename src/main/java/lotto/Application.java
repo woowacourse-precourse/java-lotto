@@ -34,13 +34,13 @@ public class Application {
 
     public static void main(String[] args) {
         try {
-            int money = Converter.convertMoneyInput(readLine());
+            int money = Converter.convertToInteger(readLine());
 
             User user = new User(money);
             user.showLottos();
 
-            List<Integer> winningNumbers = Converter.convertNumbersInput(readLine());
-            int bonusNumber = Converter.convertBonusNumberInput(readLine());
+            List<Integer> winningNumbers = Converter.convertToIntegerList(readLine());
+            int bonusNumber = Converter.convertToInteger(readLine());
 
             WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
 
