@@ -80,5 +80,23 @@ public class Application {
         }
 
     }
+
+    // 당첨 통계 출력
+    public static void calculateStat(int inputMoney) {
+        int sum = 0;
+        double calculateStat;
+
+        for(int i = 0; i < PLACE.length; i++) {
+            System.out.print(PLACE[i]);
+            System.out.println(SAME_STAT[i] + "개");
+            sum += SAME_STAT[i] * PAY[i];
+        }
+        calculateStat = ((double)sum / inputMoney) * 100;
+
+        System.out.print("총 수익률은 ");
+        System.out.print(String.format("%.1f", calculateStat));
+        System.out.println("%입니다.");
+
     }
+
 }
