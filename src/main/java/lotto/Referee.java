@@ -1,26 +1,41 @@
 package lotto;
 
 import static lotto.MatchingType.FIVE_WITH_BONUS_MATCH;
+import static lotto.MatchingType.NOT_MATCH;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Referee {
 
+    private static final int ZERO = 0;
+
     private final Judgement judgement;
+    private final List<WinningStat> result;
 
     public Referee() {
         judgement = new Judgement();
+        result = initializingResult();
     }
 
-    public List<MatchingType> compare(List<Lotto> lottos, List<Integer> player, int bonusNumber) {
-        List<MatchingType> result = new ArrayList<>();
+    public List<WinningStat> initializingResult() {
+        List<WinningStat> result = new ArrayList<>();
 
+        Arrays.stream(MatchingType.values())
+                .filter(matchingType -> matchingType != NOT_MATCH)
+                .forEach(matchingType ->
+                        result.add(new WinningStat(matchingType, ZERO)));
+
+        return result;
+    }
+
+    public List<WinningStat> compare(List<Lotto> lottos, List<Integer> player, int bonusNumber) {
         for (Lotto lotto : lottos) {
             MatchingType matchingType = createMatchingType(lotto, player, bonusNumber);
 
             if (matchingType.isWinningType()) {
-                result.add(matchingType);
+                calculateStat(matchingType);
             }
         }
 
@@ -50,5 +65,13 @@ public class Referee {
         List<Integer> lottoNumbers = lotto.getNumbers();
 
         return lottoNumbers.contains(bonusNumber);
+    }
+
+    public void calculateStat(MatchingType matchingType) {
+        result.stream()
+                .filter(winningStat ->
+                        winningStat.getMatchingType() == matchingType)
+                .findAny()
+                .ifPresent(WinningStat::addCount);
     }
 }

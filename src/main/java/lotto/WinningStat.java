@@ -3,7 +3,7 @@ package lotto;
 public class WinningStat {
 
     private final MatchingType matchingType;
-    private final int count;
+    private int count;
 
     public WinningStat(MatchingType matchingType, int count) {
         this.matchingType = matchingType;
@@ -16,5 +16,9 @@ public class WinningStat {
 
     public int getCount() {
         return count;
+    }
+
+    public void addCount() {
+        this.count++;
     }
 }
