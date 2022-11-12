@@ -10,6 +10,7 @@ import java.util.List;
 public class InputView {
     private final static String REQUEST_PURCHASE_PRICE = "구입금액을 입력해 주세요.";
     private final static String REQUEST_WINNING_LOTTO = "당첨 번호를 입력해 주세요.";
+    private final static String REQUEST_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 
     public int readPurchasePrice() {
         System.out.println(REQUEST_PURCHASE_PRICE);
@@ -32,8 +33,20 @@ public class InputView {
             InputException.validateIsNumber(lottoNumber);
             winningLotto.add(Integer.parseInt(lottoNumber));
         }
+        printNewLine();
         new WinningLottoException().validate(winningLotto);
 
         return winningLotto;
+    }
+
+    public int readBonusNumber() {
+        System.out.println(REQUEST_BONUS_NUMBER);
+        String bonusNumberInput = Console.readLine();
+        InputException.validateIsNumber(bonusNumberInput);
+
+        int bonusNumber = Integer.parseInt(bonusNumberInput);
+        new WinningLottoException().validateLottoNumberRange(bonusNumber);
+
+        return bonusNumber;
     }
 }
