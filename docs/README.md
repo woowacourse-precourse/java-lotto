@@ -65,7 +65,7 @@
 - [ ] **Lotto 클래스의 인스턴스 변수 삭제**
   - [ ] prize 를 Lotto 클래스에 담지 말고, LottoData 클래스에 담기
   - [ ] prizeMoney 를 Lotto 클래스에 담지 말고, LottoData 클래스에 누적시키기
-- [ ] error 검사 전용 클래스 생성
+- [x] error 검사 전용 클래스 생성
 - [ ] OutputView#getLottoPrizeMoney() 함수 클래스 이동
 - [ ] LottoInput 클래스 에 저장되는 데이터를 LottoData 클래스로 옮기기
 - [ ] enum 사용을 위한 LottoCalculate#calculatePrize() 메서드 간소화하기

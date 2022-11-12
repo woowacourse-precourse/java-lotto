@@ -1,31 +1,19 @@
 package lotto.model;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import lotto.ErrorControl;
 
 public class Lotto {
     private final List<Integer> numbers;
     int prize;
     int prizeMoney;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
-        validateDuplicateNumber(numbers);
-        this.numbers = numbers;
-    }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
-    }
-    private void validateDuplicateNumber(List<Integer> numbers) {
-        Set<Integer> numbersToCheck = new HashSet<>(numbers);
-        if (numbers.size() != numbersToCheck.size()) {
-            System.out.println("[ERROR] 로또 번호는 중복된 값을 가질 수 없습니다.");
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 중복된 값을 가질 수 없습니다.");
-        }
+    public Lotto(List<Integer> numbers) {
+        ErrorControl errorControl = new ErrorControl();
+        errorControl.validate(numbers);
+        errorControl.validateDuplicateNumber(numbers);
+        this.numbers = numbers;
     }
 
     void addPrize(int prize) {
