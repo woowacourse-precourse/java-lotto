@@ -8,18 +8,18 @@ public class LottoSeller {
     private final int ZERO = 0;
     private final int UNIT = 1000; // ENUM 고려?
     private MoneyInputController moneyInputController;
-
+    private PrintController printController;
 
     public LottoSeller() {
         lottoMachine = new LottoMachine();
         moneyInputController = new MoneyInputController();
-
     }
 
 
     public LottoPurchaseInfo sellLotto() {
 
-
+        String purchaseMoney = moneyInputController.input();
+        moneyInputController.validate(purchaseMoney);
 
         List<Lotto> lottoNumbers = lottoMachine.issueLottoNumbers(1);
 
