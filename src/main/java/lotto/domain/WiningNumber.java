@@ -47,4 +47,11 @@ public class WiningNumber {
     public void setBonusNumber(int bonusNumber) {
         this.bonusNumber = bonusNumber;
     }
+
+    private void validateBonusNumberRange(int number) {
+        if (number < 1 || number > 45) {
+            System.out.println("[ERROR] 보너스 번호는 1부터45사이여야 합니다.");
+            throw new IllegalArgumentException();
+        }
+    }
 }
