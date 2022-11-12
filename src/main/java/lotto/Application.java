@@ -1,17 +1,12 @@
 package lotto;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
-
-import lotto.constants.ErrorMessage;
-import lotto.model.Money;
+import lotto.veiw.InputHandler;
 
 public class Application {
 
     public static void main(String[] args) {
-        try {
-            new Money(readLine());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        InputHandler inputHandler = new InputHandler();
+
+        inputHandler.inputMoney();
     }
 }
