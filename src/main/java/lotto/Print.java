@@ -28,7 +28,7 @@ public class Print {
         System.out.printf(GuideMessage.ENTER_BONUS_NUMBER);
     }
 
-    public static void matchResult(Map<WinningNumber, Integer> matchCount) {
+    public static void matchResult(Map<WinningNumber, Integer> matchCount, int numberOfLotto) {
         System.out.printf(GuideMessage.WINNING_STATISTICS);
         System.out.println(contour);
 
@@ -40,6 +40,7 @@ public class Print {
             System.out.printf(amountMessage + GuideMessage.MATCH_NUMBER,
                     winningNumber.getNumberOfWinning(), insertComma(winningNumber.getMoney()), matchCount.get(winningNumber));
         }
+        System.out.printf(GuideMessage.FINAL_REVENUE, calculateYield(numberOfLotto, getRevenue(matchCount)));
     }
 
     private static String getAmountMessage(WinningNumber winningNumber) {
@@ -52,5 +53,20 @@ public class Print {
     private static String insertComma(int money) {
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###,###,###");
         return decimalFormat.format(money);
+    }
+
+    private static int getRevenue(Map<WinningNumber, Integer> matchCount) {
+        int sum = 0;
+        for (WinningNumber winningNumber : matchCount.keySet()
+                .stream()
+                .sorted()
+                .collect(Collectors.toList())) {
+            sum += winningNumber.getMoney() * matchCount.get(winningNumber);
+        }
+        return sum;
+    }
+
+    private static double calculateYield(int numberOfLotto, int revenue) {
+        return (double) revenue / (numberOfLotto * 1000) * 100;
     }
 }
