@@ -57,4 +57,8 @@ public class Game {
             throw new IllegalArgumentException();
         }
     }
+
+    private double calculateProfitRate(int purchasedLottoPrice, long winningAmount) {
+        return (double) winningAmount / (double) purchasedLottoPrice * Constant.PERCENTAGE;
+    }
 }
