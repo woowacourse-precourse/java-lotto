@@ -11,7 +11,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
 
-    Validator val = new Validator();
+    static Validator val = new Validator();
 
     public List<List<Integer>> lottoRandomNumber(Integer number) {   //사용자 입력값을 받는 것
         List<List<Integer>> numberResult = new ArrayList<>();
@@ -27,6 +27,7 @@ public class User {
     }
 
         public static int inputBuyPrice() {
+            String Sixinput = readLine();
             return Integer.parseInt(readLine());
         }
 
@@ -34,6 +35,7 @@ public class User {
 
         public static String lottoListSix(){
             String Sixinput = readLine();
+            val.ValidatorLottoInputList(Sixinput);
             return Sixinput;
         }
 

@@ -24,7 +24,7 @@ public class Application {
         Lotto.bonusSay();
         int bonusNumber = User.bonusNumber();
 
-        Lotto.toResult();
+
 
 
     }
