@@ -20,6 +20,7 @@ public class Output {
         for(Lotto tempLotto: buyLottos){
             System.out.println(tempLotto.getNumbers());
         }
+        System.out.println();
     }
     public static void askWinNumber(){
         System.out.println(WIN_NUMBER_MESSAGE);

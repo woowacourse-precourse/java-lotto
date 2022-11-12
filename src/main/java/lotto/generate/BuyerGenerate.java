@@ -10,7 +10,7 @@ public class BuyerGenerate {
         char[] inputArray = input.toCharArray();
         for (char tmp : inputArray) {
             if (!Character.isDigit(tmp)) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 입력값이 숫자가 아닙니다.");
             }
         }
     }

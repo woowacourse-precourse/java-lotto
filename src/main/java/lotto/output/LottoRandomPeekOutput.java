@@ -10,4 +10,5 @@ public class LottoRandomPeekOutput {
     public void output(List<Lotto> randomLottos){
         Output.checkBuyLotto(randomLottos);
     }
+
 }
