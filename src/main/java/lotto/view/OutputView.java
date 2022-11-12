@@ -9,21 +9,9 @@ import java.util.stream.Collectors;
 import lotto.domain.Lotto;
 import lotto.domain.LottoResult;
 
-public class LottoView {
+public class OutputView {
 
     private final long LOTTO_RESULT_IS_ZERO = 0L;
-
-    public void printStartMessage() {
-        System.out.println("구입금액을 입력해 주세요.");
-    }
-
-    public void printWinningNumbersSettingMessage() {
-        System.out.println("당첨 번호를 입력해 주세요.");
-    }
-
-    public void printBonusNumberSettingMessage() {
-        System.out.println("보너스 번호를 입력해 주세요.");
-    }
 
     public void printLottoBundleInfo(List<Lotto> lottoBundle) {
         System.out.printf("%d개를 구매했습니다.\n", lottoBundle.size());

@@ -6,27 +6,34 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lotto.exception.InputValidator;
 
-public class InputDevice {
+
+public class InputView {
 
     private InputValidator validator = new InputValidator();
 
     public int sendMoney() {
+        System.out.println("구입금액을 입력해 주세요.");
         String money = Console.readLine();
         validator.validateMoney(money);
+
         return Integer.parseInt(money);
     }
 
     public List<Integer> sendWinningNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         validator.validateWinningNumbers(input);
+
         return Arrays.stream(input.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
 
     public int sendBonusNumber(List<Integer> winningNumbers) {
+        System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
         validator.validateBonusNumber(input, winningNumbers);
+
         return Integer.parseInt(input);
     }
 }
