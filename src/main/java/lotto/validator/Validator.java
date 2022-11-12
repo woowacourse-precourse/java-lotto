@@ -1,5 +1,8 @@
 package lotto.validator;
 
+import java.util.Arrays;
+import java.util.Set;
+import java.util.stream.Collectors;
 import lotto.common.Error;
 
 public class Validator {
@@ -8,6 +11,13 @@ public class Validator {
         isNumber(in, Error.NUMBER);
         require(Integer.parseInt(in) < 1000, Error.MINUS);
         require(Integer.parseInt(in) % 1000 != 0, Error.THOUSAND);
+    }
+
+    public void isValidWinnings(String in) {
+        String[] split = in.split(",");
+        Set<Integer> collect = Arrays.stream(split).map(Integer::parseInt)
+            .collect(Collectors.toSet());
+        require(collect.size() != 6, Error.FORMAT);
     }
 
     private void require(final boolean condition, final Error error) {
