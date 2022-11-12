@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
+import lotto.domain.WinningLotto;
 import lotto.util.AutoLottoGenerator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -17,6 +18,7 @@ public class LottoController {
     public void play() {
         List<Lotto> lottos = issueUserBoughtLotto();
         showIssuedLottos(lottos);
+        WinningLotto winningLotto = issueWinningLotto();
     }
 
     private List<Lotto> issueUserBoughtLotto() {
@@ -40,6 +42,12 @@ public class LottoController {
         return lottos.stream()
                 .map(Lotto::getSortedNumbers)
                 .collect(Collectors.toList());
+    }
+
+    private WinningLotto issueWinningLotto() {
+        Lotto lotto = new Lotto(InputView.requestWinningNumber());
+        int bonusNumber = InputView.requestBonusNumber();
+        return new WinningLotto(lotto, bonusNumber);
     }
 
 }
