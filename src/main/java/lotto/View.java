@@ -2,6 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+
 public class View {
 
     public void printAmountInput() {
@@ -21,6 +23,14 @@ public class View {
         }
 
         return Integer.parseInt(input);
+    }
+
+    public void printNumberOfLotto(int number) {
+        System.out.println(number + GameConstant.NUMBER_OF_GAME.getValue());
+    }
+
+    public void printEachLotto(List<Integer> numbers) {
+        System.out.println(numbers);
     }
 
     public void validateInput(String input) {
