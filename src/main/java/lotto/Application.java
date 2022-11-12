@@ -144,5 +144,12 @@ public class Application {
             print_integer_error();
             return;
         }
+
+        Lotto user_lotto;
+        try {
+            user_lotto = new Lotto(user_number);
+        } catch (IllegalArgumentException e) {
+            return;
+        }
     }
 }
