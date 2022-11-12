@@ -4,12 +4,12 @@ import java.util.Collection;
 import java.util.List;
 
 public class LottoCalculate {
-    enum LottoPrizeMoneyMatchCount {
+    public enum LottoPrizeMoneyMatchCount {
         NONE(0, 0, 0), FIRST(1, 2000000000, 6), SECOND(2, 30000000, 5), THIRD(3, 1500000, 5),
         FOURTH(4, 50000, 4), FIFTH(5, 5000, 3);
-        final int prize;
-        final int prizeMoney;
-        final int matchCount;
+        public final int prize;
+        public final int prizeMoney;
+        public final int matchCount;
 
         LottoPrizeMoneyMatchCount(int prize, int prizeMoney, int matchCount) {
             this.prize = prize;

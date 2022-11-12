@@ -5,17 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputLotto {
-    double money;
-    List<Integer> winNumbers;
-    int bonusNumber;
+    public double money;
+    public List<Integer> winNumbers;
+    public int bonusNumber;
 
-    void inputMoney() {
+    public void inputMoney() {
         String input = Console.readLine();
         validateNumber(input);
         money = validateDivideThousand(Double.parseDouble(input));
     }
 
-    void inputWinNumber() {
+    public void inputWinNumber() {
         String input = Console.readLine();
         winNumbers = convertToWinNumbers(input);
     }
@@ -32,7 +32,7 @@ public class InputLotto {
         return winNumbers;
     }
 
-    void inputBonusNumber(List<Integer> winNumbers) {
+    public void inputBonusNumber(List<Integer> winNumbers) {
         String input = Console.readLine();
         bonusNumber = convertToBonusNumber(input, winNumbers);
     }

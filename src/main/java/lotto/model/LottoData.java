@@ -8,18 +8,18 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoData {
-    int lottoAmount;
-    double prizeMoneySum;
-    Map<Integer, Integer> prize;
-    List<Lotto> allLotto;
+    public int lottoAmount;
+    public double prizeMoneySum;
+    public Map<Integer, Integer> prize;
+    public List<Lotto> allLotto;
     LottoCalculate lottoCalculate = new LottoCalculate();
 
-    LottoData(double money) {
+    public LottoData(double money) {
         this.lottoAmount = (int) (money / 1000);
         allLotto = new ArrayList<>(lottoAmount);
     }
 
-    void makeLotto() {
+    public void makeLotto() {
         List<Integer> lottoNumbers;
         while (allLotto.size() != lottoAmount) {
             lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
@@ -29,20 +29,20 @@ public class LottoData {
         }
     }
 
-    void putDataToLotto(List<Integer> winNumbers, int bonusNumber) {
+    public void putDataToLotto(List<Integer> winNumbers, int bonusNumber) {
         for (Lotto lotto : allLotto) {
             lottoCalculate.totalCalculate(lotto, winNumbers, bonusNumber);
         }
     }
 
-    void countPrize() {
+    public void countPrize() {
         prize = new HashMap<>();
         for (Lotto lotto : allLotto) {
             prize.merge(lotto.prize, 1, Integer::sum);
         }
     }
 
-    void sumPrizeMoney() {
+    public void sumPrizeMoney() {
         prizeMoneySum = 0d;
         for (Lotto lotto : allLotto) {
             prizeMoneySum += lotto.getPrizeMoney();
