@@ -26,7 +26,9 @@ public class LottoMatcher {
     }
 
     public void matchAllLottos() {
-        // 각각의 lotto 와 winning lotto 의 일치율을 확인
+        for (Lotto publishedLotto : publishedLottos) {
+            matchLotto(publishedLotto);
+        }
     }
 
     private void matchLotto(Lotto lotto) {
