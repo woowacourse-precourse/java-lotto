@@ -28,7 +28,7 @@ public class Controller {
     public void getWinningNums() {
         draw = new Draw(getWinningLotto(),getBonusNum());
     }
-    
+
 
     // 입력 method
     public int getPrice() {
