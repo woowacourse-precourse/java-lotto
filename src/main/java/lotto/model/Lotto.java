@@ -28,6 +28,7 @@ public class Lotto {
     private void validateNumRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (!(number >= 1 && number <= 45)) {
+                System.err.println("[ERROR] number range is invalid");
                 throw new IllegalArgumentException();
             }
         }
@@ -36,6 +37,7 @@ public class Lotto {
     private void validateNumOverlap(List<Integer> numbers) {
         Set<Integer> numberCollect = numbers.stream().collect(Collectors.toSet());
         if (numbers.size() != numberCollect.size()) {
+            System.err.println("[ERROR] numbers are overlapped");
             throw new IllegalArgumentException();
         }
     }

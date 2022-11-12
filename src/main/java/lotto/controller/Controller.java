@@ -23,35 +23,35 @@ public class Controller {
     private int price;
 
     // 요청 수행 method
-    public List<Lotto> buyLotto() {
+    public List<Lotto> buyLotto() throws IllegalArgumentException{
         this.price = getPrice();
         shop = new Shop(price);
         shop.getLottoPayed();
         return shop.getLottoPayed();
     }
 
-    public void setWinningNums() {
+    public void setWinningNums() throws IllegalArgumentException{
         draw = new Draw(getWinningLotto(),getBonusNum());
     }
 
-    public Map<Rank,Integer> getWinningStat(List<Lotto> lottoPaper) {
+    public Map<Rank,Integer> getWinningStat(List<Lotto> lottoPaper) throws IllegalArgumentException{
         return draw.getWinningStats(lottoPaper);
     }
 
-    public double getEarningRate(Map<Rank,Integer> winningStats) {
+    public double getEarningRate(Map<Rank,Integer> winningStats) throws IllegalArgumentException{
         rate = new Rate(winningStats,price);
         return rate.getEarningRate();
     }
 
 
     // 입력 method
-    public int getPrice() {
+    public int getPrice() throws IllegalArgumentException{
         view.printInputPrice();
         String price = readLine();
         return Integer.parseInt(price);
     }
 
-    public Lotto getWinningLotto() {
+    public Lotto getWinningLotto() throws IllegalArgumentException{
         view.printInputWinningLotto();
         String winningLotto = readLine();
         List<Integer> winningLottoNumbers = Arrays.stream(winningLotto.split(","))
@@ -60,7 +60,7 @@ public class Controller {
         return new Lotto(winningLottoNumbers);
     }
 
-    public int getBonusNum() {
+    public int getBonusNum() throws IllegalArgumentException{
         view.printInputBonusNum();
         String bonusNum = readLine();
         return Integer.parseInt(bonusNum);

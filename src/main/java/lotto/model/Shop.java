@@ -43,6 +43,7 @@ public class Shop {
 
     private void priceValidate(int price) {
         if (price % 1000 != 0) {
+            System.err.println("[ERROR] price is invalid");
             throw new IllegalArgumentException();
         }
     }

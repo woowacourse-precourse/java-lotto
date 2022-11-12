@@ -100,12 +100,14 @@ public class Draw {
     
     private void validateBonusNumRange(int bonusNum) {
         if (!(bonusNum >= 1 && bonusNum <= 45)) {
+            System.err.println("[ERROR] bonus number range is invalid");
             throw new IllegalArgumentException();
         }
     }
 
     private void validateBonusNumAndLottoOverlap(Lotto winningLotto, int bonusNum) {
         if(winningLotto.getNumbers().contains(bonusNum)) {
+            System.err.println("[ERROR] numbers and bonus number are overlapped");
             throw new IllegalArgumentException();
         }
     }

@@ -12,16 +12,22 @@ public class Application {
     public static void main(String[] args) {
         Controller controller = new Controller();
         View view = new View();
+        Map<Rank, Integer> winningStat;
+        double earningRate;
 
-        List<Lotto> lottoPayed = controller.buyLotto();
-        view.printLottoPayed(lottoPayed);
+        try {
+            List<Lotto> lottoPayed = controller.buyLotto();
+            view.printLottoPayed(lottoPayed);
 
-        controller.setWinningNums();
+            controller.setWinningNums();
 
-        Map<Rank, Integer> winningStat = controller.getWinningStat(lottoPayed);
-        double earningRate = controller.getEarningRate(winningStat);
+            winningStat = controller.getWinningStat(lottoPayed);
+            earningRate = controller.getEarningRate(winningStat);
 
-        view.printWinningStats(winningStat);
-        view.printEarningRate(earningRate);
+            view.printWinningStats(winningStat);
+            view.printEarningRate(earningRate);
+        } catch (IllegalArgumentException e) {
+            return;
+        }
     }
 }
