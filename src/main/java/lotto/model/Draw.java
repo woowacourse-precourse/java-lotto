@@ -9,8 +9,8 @@ import java.util.Map;
 public class Draw {
     private Lotto winningLotto;
     private int bonusNum;
-    private Map<Rank, Integer> winningStats;
-    private Map<Integer,Rank> rankClassification;
+    private Map<Rank, Integer> winningStats; // <Rank, 결과 수> Map
+    private Map<Integer,Rank> rankClassification; // <로또 일치 번호 수,Rank> Map
 
     public Draw(Lotto winningLotto, int bonusNum){
         validateBonusNumRange(bonusNum);
@@ -21,6 +21,7 @@ public class Draw {
         this.bonusNum = bonusNum;
     }
 
+    // lottoPaper에 적힌 로또 번호를 winningLotto와 비교하여 winningStats에 결과 저장
     public Map<Rank,Integer> getWinningStats(List<Lotto> lottoPaper) {
         Map<Rank, Integer> winningStats = this.winningStats;
         Rank rank;
@@ -35,6 +36,7 @@ public class Draw {
         return winningStats;
     }
 
+    // rankClassification 초기화
     private void setRankClassification(){
         Map<Integer,Rank> rankClassification = new HashMap<>();
         rankClassification.put(6,Rank.first);
@@ -47,6 +49,7 @@ public class Draw {
         this.rankClassification = rankClassification;
     }
 
+    // winningStats 초기화
     private void setWinningStats(){
         Map<Rank,Integer> winningStats = new HashMap<>();
         winningStats.put(Rank.first,0);
@@ -57,6 +60,7 @@ public class Draw {
         this.winningStats = winningStats;
     }
 
+    // 개별 Lotto별 Rank 판별
     private Rank tryLottoRank(Lotto tryLotto) {
         int winningCount = winningNumSize(tryLotto);
         boolean bonusExist = isBonusExist(this.bonusNum);
@@ -70,6 +74,7 @@ public class Draw {
         return rank;
     }
 
+    // tryLotto에서 winningLotto와 일치하는 번호의 개수 계산
     private int winningNumSize(Lotto tryLotto) {
         int winningCount = 0;
         Lotto winningLotto = this.winningLotto;
@@ -85,6 +90,7 @@ public class Draw {
         return winningCount;
     }
 
+    // tryLotto에서 bonusNum가 있는지 확인
     private boolean isBonusExist(int bonusNum) {
         Lotto winningLotto = this.winningLotto;
         List<Integer> winningLottoNumbers = winningLotto.getNumbers();
@@ -94,7 +100,7 @@ public class Draw {
         }
         return false;
     }
-
+    
     private void validateBonusNumRange(int bonusNum) {
         if (!(bonusNum >= 1 && bonusNum <= 45)) {
             throw new IllegalArgumentException();
@@ -106,7 +112,5 @@ public class Draw {
             throw new IllegalArgumentException();
         }
     }
-
-
 
 }
