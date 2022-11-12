@@ -9,4 +9,10 @@ public class CashierImpl implements Cashier {
     public int checkPublishLottoCount(int paymentAmount) {
         return paymentAmount / lottoPrice;
     }
+
+    @Override
+    public double calculateRateOfReturn(int paymentAmount, int totalPrizeMoney) {
+        double rateOfReturn = (double) totalPrizeMoney / (double) paymentAmount * 100;
+        return  Math.round(rateOfReturn * 10) / 10.0;
+    }
 }
