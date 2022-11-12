@@ -12,6 +12,7 @@ import java.util.StringTokenizer;
 public class Input {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
+    static List<Integer> luckyNumber;
     Scanner sc = new Scanner(System.in);
 
     public Input() {
@@ -32,11 +33,12 @@ public class Input {
     }
 
     public List<Integer> getLuckyNumber() throws IOException {
-        List<Integer> luckyNumber = new ArrayList<>();
+        luckyNumber = new ArrayList<>();
         String line = sc.nextLine();
         String[] str = line.split(",");
         for(int i = 0; i < str.length; i++){
             if(luckyNumber.contains(Integer.parseInt(str[i]))) {
+                System.out.println("[ERROR] 중복 번호 입력 에러 발생");
                 throw new IllegalArgumentException();
             }
             luckyNumber.add(Integer.parseInt(str[i].trim()));
@@ -46,6 +48,10 @@ public class Input {
 
     public int getBonusNumber() throws IOException {
         int bonusNumber = Integer.parseInt(br.readLine());
+        if(luckyNumber.contains(bonusNumber)) {
+            System.out.println("[ERROR] 당첨 번호와 보너스 번호 입력 에러 발생");
+            throw new IllegalArgumentException();
+        }
         return bonusNumber;
     }
 }
