@@ -10,7 +10,11 @@ public class Application {
 
     public static void main(String[] args) {
         LottoGame lottoGame = getLottoGame();
-        lottoGame.play();
+        try {
+            lottoGame.play();
+        } catch (IllegalArgumentException e) {
+            System.out.println("[ERROR] " + e.getMessage());
+        }
     }
 
     private static LottoGame getLottoGame() {
