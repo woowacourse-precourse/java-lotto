@@ -10,7 +10,7 @@ import static lotto.constant.Constants.*;
 public class Player {
 
     int lottoCount;
-    List<Lotto> lottoSet = new ArrayList<>();
+    List<Lotto> lottoNumbers = new ArrayList<>();
 
     public Player() {
         try {
@@ -20,7 +20,6 @@ public class Player {
         } catch (IllegalArgumentException e) {
 
         }
-
     }
 
     private void inputCostForLotto() {
@@ -35,15 +34,15 @@ public class Player {
 
     private void buyLotto() {
         for (int i = 0; i < lottoCount; i++) {
-            lottoSet.add(new Lotto(Lotto.createLottoNumber()));
+            lottoNumbers.add(new Lotto(Lotto.createLottoNumber()));
         }
         System.out.println();
         System.out.println(lottoCount + PURCHASE_CONFIRM_MESSAGE);
     }
 
     private void printLottoNumber() {
-        for (int i = 0; i < lottoSet.size(); i++) {
-            lottoSet.get(i).printSortedLottoNumber();
+        for (int i = 0; i < lottoNumbers.size(); i++) {
+            lottoNumbers.get(i).printSortedLottoNumber();
         }
         System.out.println();
     }
