@@ -33,15 +33,25 @@ public class LottoPlay {
     }
 
     private void getPurchaseInfo(int purchaseAmount) {
-        int purchaseCount = purchaseAmount / LottoNumber.PURCHASE_AMOUNT_COND.getNumber();
-        messageUtil.printPurchaseCount(purchaseCount);
+        int purchaseCount = getPurchaseCount(purchaseAmount);
 
         for (int i = 0; i < purchaseCount; i++) {
-            List<Integer> lottoNumbers = numberGenerator.getLottoNumbers();
-            Lotto lotto = new Lotto(lottoNumbers);
-            messageUtil.printPurchaseInfo(lotto.getLottoNumbers());
+            Lotto lotto = generateLottoNumbers();
             userLottos.add(lotto);
         }
+    }
+
+    private Lotto generateLottoNumbers() {
+        List<Integer> lottoNumbers = numberGenerator.getLottoNumbers();
+        Lotto lotto = new Lotto(lottoNumbers);
+        messageUtil.printPurchaseInfo(lotto.getLottoNumbers());
+        return lotto;
+    }
+
+    private int getPurchaseCount(int purchaseAmount) {
+        int purchaseCount = purchaseAmount / LottoNumber.PURCHASE_AMOUNT_COND.getNumber();
+        messageUtil.printPurchaseCount(purchaseCount);
+        return purchaseCount;
     }
 
 }
