@@ -9,12 +9,10 @@ import java.util.stream.IntStream;
 public class LottoMachine {
 
     private static final String OUTPUT_MESSAGE_TICKET_QUANTITY = "개를 구매했습니다.";
-
     private static final String LF = "\n";
 
     private final int purchaseMoney;
     private final List<Lotto> lottos;
-    private Map<LottoResult, Long> lottoResults;
 
     public LottoMachine(int purchaseMoney) {
         this.purchaseMoney = purchaseMoney;
@@ -40,11 +38,12 @@ public class LottoMachine {
         return new ArrayList<>(lotto);
     }
 
-    public void enterWinningLotto(WinningLotto winningLotto) {
-        this.lottoResults = lottos.stream()
+    public WinningStatics enterWinningLotto(WinningLotto winningLotto) {
+        Map<LottoResult, Long> lottoResults = lottos.stream()
                 .map(winningLotto::makeResult)
                 .filter(LottoResult::isNotFailed)
                 .collect(Collectors.groupingBy(lottoResult -> lottoResult, Collectors.counting()));
+        return new WinningStatics(lottoResults, purchaseMoney);
     }
 
     public List<Lotto> getLottos() {

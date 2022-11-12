@@ -42,4 +42,13 @@ public enum LottoResult {
     public boolean isNotFailed() {
         return this != LottoResult.FAILED;
     }
+
+    public long calculatePrizeMoney(long numberOfWinningLotto) {
+        return (long) this.winningMoney * numberOfWinningLotto;
+    }
+
+    @Override
+    public String toString() {
+        return countOfMatch + "개 일치 (" + winningMoney + "원) - ";
+    }
 }
