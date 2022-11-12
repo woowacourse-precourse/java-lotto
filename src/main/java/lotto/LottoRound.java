@@ -3,20 +3,20 @@ package lotto;
 import java.util.HashSet;
 import java.util.Set;
 
-public class LottoRanking {
+public class LottoRound {
 
     private final Lotto winningLotto;
     private final Set<Integer> luckyNumbers;
     private final int bonusNumber;
 
-    private LottoRanking(Lotto winningLotto, int bonusNumber) {
+    private LottoRound(Lotto winningLotto, int bonusNumber) {
         this.winningLotto = winningLotto;
         this.bonusNumber = bonusNumber;
         this.luckyNumbers = new HashSet<>(winningLotto.getNumbers());
         validateBonusNumber();
     }
 
-    public LottoRank compare(Lotto selectedNumber) {
+    public LottoRank getRank(Lotto selectedNumber) {
         int sameNumbers = getSameNumbers(selectedNumber);
         if (sameNumbers == 6) {
             return LottoRank.FIRST;
