@@ -1,6 +1,9 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 import util.Validation;
 
 public class UserInput {
@@ -12,4 +15,15 @@ public class UserInput {
         return Integer.parseInt(money);
     }
 
+    // 당첨 번호를 입력하는 기능
+    public static List<Integer> winningNumberInput() {
+        String winningNumber = Console.readLine();
+
+        List<String> winningNumberSplit = Arrays.stream(winningNumber.split(","))
+            .collect(Collectors.toList());
+
+        return winningNumberSplit.stream()
+            .map(Integer::parseInt)
+            .collect(Collectors.toList());
+    }
 }
