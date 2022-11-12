@@ -42,6 +42,15 @@ public class Lotto {
         return winNumber;
     }
 
+    private int bonus() {
+        System.out.print(Lotto.INPUT_SENTENCE.BONUS.label());
+        int bonusNumber = Integer.parseInt(Console.readLine());
+        if(bonusNumber< 1 || bonusNumber> 45) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+       return bonusNumber;
+    }
+
     private void validateCount(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개여야 합니다.");
