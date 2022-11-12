@@ -4,6 +4,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
+    private static final int _min_lotto_number = 1;
+    private static final int _max_lotto_number = 45;
+    private static final String _error_default_msg = "[ERROR]";
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -21,11 +25,17 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (isNumberNullOrEmpty(numbers) || !hasSixNumbers(numbers)) {
+        if (isNumberNullOrEmpty(numbers)) {
             throw new IllegalArgumentException();
         }
-        for (Integer num : numbers) {
+        if (!hasSixNumbers(numbers)) {
+            throw new IllegalArgumentException();
+        }
+        for (int num : numbers) {
             if (hasDuplicateNumber(numbers, num)) {
+                throw new IllegalArgumentException();
+            }
+            if (!isNumberInRangeForLotto(num)) {
                 throw new IllegalArgumentException();
             }
         }
@@ -47,6 +57,13 @@ public class Lotto {
 
     private boolean hasDuplicateNumber(List<Integer> numbers, Integer number) {
         if (Collections.frequency(numbers, number) != 1) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isNumberInRangeForLotto(int num) {
+        if (num >= _min_lotto_number && num <= _max_lotto_number) {
             return true;
         }
         return false;
