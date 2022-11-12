@@ -53,5 +53,13 @@ public class DrawLottoService {
         return winingCount;
     }
 
+    public void setReward() {
+        reward += correctNumberCountMap.getOrDefault(3, 0) * 5000;
+        reward += correctNumberCountMap.getOrDefault(4, 0) * 50000;
+        reward += correctNumberCountMap.getOrDefault(5, 0) * 1500000;
+        reward += correctNumberCountMap.getOrDefault(6, 0) * 30000000;
+        reward += correctNumberCountMap.getOrDefault(7, 0) * 2000000000;
+    }
+
 
 }
