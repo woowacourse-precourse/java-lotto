@@ -184,13 +184,13 @@ public class Application {
         for (int i = 0; i < input.length(); i++) {
 
             if (input.charAt(i) != ',' && (input.charAt(i) < 48 || input.charAt(i) > 57)) {
+                error = ErrorMessage.FORM;
                 throw new IllegalArgumentException();
             }
             if (input.charAt(i) == ',') {
                 validateNumbersBetweenComma(input.charAt(i - 1), input.charAt(i + 1));
             }
         }
-
     }
 
     public static List<Integer> getWinningNumbers(String input) {
