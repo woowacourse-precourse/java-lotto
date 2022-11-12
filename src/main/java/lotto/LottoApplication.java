@@ -46,9 +46,15 @@ public class LottoApplication {
             }
             if (cnt < 3) continue;
 
-            System.out.println(cnt);
-            LottoReward.getRank(cnt).plusCount();
-            sum += LottoReward.getRank(cnt).getReward();
+            boolean containsBonusNumber = false;
+            if (cnt == 5) {
+                if (list.contains(bonusNumber)) {
+                    containsBonusNumber = true;
+                }
+            }
+
+            LottoReward.getRank(cnt, containsBonusNumber).plusCount();
+            sum += LottoReward.getRank(cnt, containsBonusNumber).getReward();
         }
 
         System.out.println("당첨 통계");
