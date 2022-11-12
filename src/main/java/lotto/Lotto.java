@@ -7,6 +7,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        validateInRange(numbers);
         this.numbers = numbers;
     }
 
@@ -16,5 +17,14 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void validateInRange(List<Integer> numbers) {
+        Integer maxNumber = 45;
+        Integer minNumber = 1;
+
+        for (Integer number : numbers) {
+            if (maxNumber.compareTo(number) == 1 || minNumber.compareTo(number) == -1) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }
