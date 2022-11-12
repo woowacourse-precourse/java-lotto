@@ -13,9 +13,18 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != 6 || numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException();
         }
+        for (int i = 0; i < numbers.size(); i++) {
+            if (numbers.get(i) < 1 || numbers.get(i) > 45){
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     // TODO: 추가 기능 구현
