@@ -1,8 +1,8 @@
 package lotto;
 
 public class RateOfReturn {
-    public static double makeRateOfReturn(int purchasePrice,int winningPrice){
-        double dived = (double)winningPrice/purchasePrice;
+    public double makeRateOfReturn(int purchasePrice,int totalPrice){
+        double dived = (double)totalPrice/purchasePrice;
         double rounded = Math.round(dived * 1000);
         double rateOfReturn =  rounded/10;
         return rateOfReturn;
