@@ -45,4 +45,12 @@ public class Validator {
     public void validateBonusNumber(String bonusNumber, List<Integer> winningNumbers) {
 
     }
+
+    private void bonusNumberIsValidNumber(String bonusNumber) {
+
+    }
+
+    private void bonusNumberIsNotDuplicated(int bonusNumber, List<Integer> winningNumbers) {
+
+    }
 }
