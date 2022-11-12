@@ -12,6 +12,7 @@ public class PickLotto {
         String[] split = input.split(",");
         numberValidate(split);
         rangeValidate(split);
+        duplicateValidate(split);
         this.numbers = Arrays.stream(split)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
@@ -28,6 +29,15 @@ public class PickLotto {
         // 3-2. 쉼표를 기준으로 나눈 숫자가 숫자 범위 1~45 사이에 없으면 예외처리를 한다.
         for (String s : split) {
             if (!(1<= Integer.parseInt(s) && Integer.parseInt(s) <= 45)) throw new IllegalArgumentException();
+        }
+    }
+
+    private void duplicateValidate(String[] split) {
+        // 3-3. 쉼표를 기준으로 나눈 숫자가 중복되면 예외처리를 한다.
+        List<Integer> numbers = new ArrayList<>();
+        for (String s : split) {
+            if (numbers.contains(Integer.parseInt(s))) throw new IllegalArgumentException();
+            else numbers.add(Integer.parseInt(s));
         }
     }
 }

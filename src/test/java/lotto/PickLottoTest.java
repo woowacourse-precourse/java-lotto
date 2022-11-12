@@ -15,12 +15,6 @@ class PickLottoTest {
 
     }
 
-    @DisplayName("쉼표를 기준으로 나누었을때 숫자이면 정상이다.")
-    @Test
-    void createPickLottoByNumber() {
-        assertThatCode(() -> { new PickLotto("1,2,3"); }).doesNotThrowAnyException();
-    }
-
     @DisplayName("쉼표를 기준으로 나눈 숫자가 숫자 범위 1~45 사이에 없으면 예외처리를 한다.")
     @Test
     void createPickLottoByNotRange() {
@@ -31,9 +25,16 @@ class PickLottoTest {
 
     }
 
-    @DisplayName("쉼표를 기준으로 나눈 숫자가 숫자 범위 1~45 사이이면 정상이다.")
+    @DisplayName("쉼표를 기준으로 나눈 숫자가 중복되면 예외처리를 한다.")
     @Test
-    void createPickLottoByRange() {
+    void createPickLottoByDuplicate() {
+        assertThatThrownBy(() -> new PickLotto("1,1,2"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("정상일 때")
+    @Test
+    void createPickLottoByNumber() {
         assertThatCode(() -> { new PickLotto("1,2,3"); }).doesNotThrowAnyException();
     }
 }
