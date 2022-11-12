@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class NumberAdapter {
-    public static List<Integer> getWinningNumber(String beforeWinningNumber) {
+    public static List<Integer> fitWinningNumber(String beforeWinningNumber) {
         hasValidType(beforeWinningNumber);
         String[] tempLotteryNumbers = beforeWinningNumber.split(LOTTERY_NUMBER_SEPARATOR);
         int[] afterLotteryNumbers = Arrays.stream(tempLotteryNumbers).mapToInt(Integer::parseInt).toArray();
@@ -17,11 +17,11 @@ public class NumberAdapter {
                 .collect(Collectors.toList());
     }
 
-    public static int getBonusNumber(String beforeBonusNumber) {
+    public static int fitBonusNumber(String beforeBonusNumber) {
         return Integer.parseInt(beforeBonusNumber);
     }
 
-    public static List<Integer> getWinningNumberWithBonusNumber(List<Integer> winningNumber, int bonusNumber) {
+    public static List<Integer> fitWinningNumberWithBonusNumber(List<Integer> winningNumber, int bonusNumber) {
         winningNumber.add(bonusNumber);
         return winningNumber;
     }
