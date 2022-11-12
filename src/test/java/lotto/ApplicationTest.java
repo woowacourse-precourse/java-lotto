@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.model.User;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -91,6 +92,14 @@ class ApplicationTest extends NsTest {
             user.unitError("3300");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
+    }
+
+    @Test
+    void 로또_갯수() {
+        User user = new User();
+        int count = user.lottoCount("5000");
+        assertThat(count).isEqualTo(5);
+
     }
 
     @Override
