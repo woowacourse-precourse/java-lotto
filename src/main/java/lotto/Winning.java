@@ -11,7 +11,7 @@ public class Winning {
 
     public Winning(List<Integer> numbers, int bonusNumber) {
         numbersValidate(numbers);
-        validateBonusForBetween(bonusNumber);
+        bonusNumberValidate(numbers, bonusNumber);
         this.numbers = numbers;
         this.bonusNumber = bonusNumber;
     }
@@ -22,9 +22,21 @@ public class Winning {
         SystemValid.validateForUnique(numbers, ErrorType.WINNING);
     }
 
-    private void validateBonusForBetween(int bonusNumber){
-        if (bonusNumber < SystemValue.MINIMUM_RANGE || bonusNumber > SystemValue.MAXIMUM_RANGE){
-            throw new IllegalArgumentException("[ERROR]" + ErrorType.BONUS + " 입력값은 지정된 범위의 값이 아닙니다.");
+    private void bonusNumberValidate(List<Integer> numbers, int bonusNumber) {
+        validateDuplicateEachNumbersAndBonusNumber(numbers, bonusNumber);
+        validateBonusForBetween(bonusNumber);
+    }
+
+    private void validateDuplicateEachNumbersAndBonusNumber(List<Integer> numbers, int bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(
+                    "[ERROR]" + ErrorType.BONUS.getName() + " 입력값이 " + ErrorType.WINNING.getName() + "과 중복됩니다.");
+        }
+    }
+
+    private void validateBonusForBetween(int bonusNumber) {
+        if (bonusNumber < SystemValue.MINIMUM_RANGE || bonusNumber > SystemValue.MAXIMUM_RANGE) {
+            throw new IllegalArgumentException("[ERROR]" + ErrorType.BONUS.getName() + " 입력값은 지정된 범위의 값이 아닙니다.");
         }
     }
 
