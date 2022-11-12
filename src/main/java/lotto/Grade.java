@@ -30,7 +30,11 @@ public enum Grade {
         return Arrays.stream(values()).filter(grade -> grade.matchCount == matchCount)
                 .findAny().orElseThrow(() -> new IllegalArgumentException("[ERROR] 미당첨입니다."));
     }
-    
+
+    public int getRanking() {
+        return ranking;
+    }
+
     public int getPrizeMoney() {
         return prizeMoney;
     }
