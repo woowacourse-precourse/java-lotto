@@ -31,14 +31,14 @@ public class UserInput {
 
     void generateRandomLotto(long quantity) {
         for (int i = 0; i < quantity; i++) {
-            List<Integer> tmpLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> tmpLotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             tmpLotto.sort(Comparator.naturalOrder());
             lotteries.add(tmpLotto);
         }
     }
 
     void printLotto() {
-        Iterator it = lotteries.iterator();
+        Iterator<List<Integer>> it = lotteries.iterator();
         while (it.hasNext()) {
             System.out.println(it.next());
         }
