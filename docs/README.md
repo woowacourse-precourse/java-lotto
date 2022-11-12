@@ -41,6 +41,8 @@
   * display results
 * **displayYield()**
   * display yield
+* **displayLotto**
+  * display purchased lottos
 
 ## function.Lotto.java
 

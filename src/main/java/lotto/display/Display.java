@@ -1,5 +1,7 @@
 package lotto.display;
 
+import lotto.function.Lotto;
+
 import java.util.List;
 
 class Message{
@@ -14,6 +16,7 @@ class Message{
 
 public class Display {
     public static void displayResult(List<Integer> results){
+        System.out.println();
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println(Message.fifth + results.get(0) + "개");
@@ -25,5 +28,31 @@ public class Display {
 
     public static void displayYield(String yield){
         System.out.println(Message.yield_head + yield + Message.yield_tail);
+    }
+
+    public static void displayLotto(List<Lotto> trial){
+        System.out.println();
+        System.out.println(trial.size() + "개를 구매했습니다.");
+        for (Lotto lotto : trial) {
+            System.out.println(lotto.getNumbers());
+        }
+    }
+
+    public static void displayStart(){
+        System.out.println("구입금액을 입력해 주세요.");
+    }
+
+    public static void displayGettingWinNumber(){
+        System.out.println();
+        System.out.println("당첨 번호를 입력해 주세요.");
+    }
+
+    public static void displayGettingBonus(){
+        System.out.println();
+        System.out.println("보너스 번호를 입력해 주세요.");
+    }
+
+    public static void displayError(String errorMessage){
+        System.out.println("[ERROR] "+ errorMessage);
     }
 }
