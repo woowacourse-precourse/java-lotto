@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Buyer {
-    private static long ZERO = 0;
-    private static int roundIntConstatnt = 10;
-    private static double roundDoubleConstatnt = 10.0;
+    private static final long ZERO = 0;
+    private static final double PERCENT = 100;
 
-    private ArrayList<Lotto> purchasedLotteries = new ArrayList<>();
-    private int purchaseAmount;
-    private HashMap<Rank,Integer> lottoResult = new HashMap<>();
+    private final ArrayList<Lotto> purchasedLotteries = new ArrayList<>();
+    private final int purchaseAmount;
+    private final HashMap<Rank,Integer> lottoResult = new HashMap<>();
 
     public Buyer(int purchaseAmount){
         this.purchaseAmount = purchaseAmount;
@@ -51,6 +50,6 @@ public class Buyer {
     }
 
     public double getYield(){
-        return Math.round(getPrizeSum()/(double)purchaseAmount * roundIntConstatnt)/roundDoubleConstatnt;
+        return (getPrizeSum() / (double)purchaseAmount) * PERCENT;
     }
 }
