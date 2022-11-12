@@ -4,7 +4,13 @@
   
 ## simulation.Simulation.java
 * **simulateLotto()**
-  * Do simulation about buying lottos
+  * simulate whole processes
+* **buyLotto()**
+  * simulate related to buying lotto
+* **getResult()**
+  * simulate related to get results
+* **calculateWinning()**
+  * calculate winning prices from result
 
 ## function.Function.java
 * **generateLotto()**
