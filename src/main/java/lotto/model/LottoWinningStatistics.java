@@ -19,11 +19,11 @@ public class LottoWinningStatistics {
 
     private void initWinningCounts() {
         winningCounts = new LinkedHashMap<>();
-        winningCounts.put(MATCH_THREE_NUMBERS, 0);
-        winningCounts.put(MATCH_FOUR_NUMBERS, 0);
-        winningCounts.put(MATCH_FIVE_NUMBERS, 0);
-        winningCounts.put(MATCH_FIVE_NUMBERS_WITH_BONUS_NUMBER, 0);
-        winningCounts.put(MATCH_SIX_NUMBERS, 0);
+        winningCounts.put(THREE_NUMBERS_MATCH, 0);
+        winningCounts.put(FOUR_NUMBERS_MATCH, 0);
+        winningCounts.put(FIVE_NUMBERS_MATCH, 0);
+        winningCounts.put(FIVE_NUMBERS_WITH_BONUS_NUMBER_MATCH, 0);
+        winningCounts.put(SIX_NUMBERS_MATCH, 0);
     }
 
     public double getEarningsRate() {

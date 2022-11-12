@@ -4,9 +4,9 @@ import java.text.DecimalFormat;
 
 public enum LottoWinningStatus {
 
-    MATCH_THREE_NUMBERS(3, 5000L), MATCH_FOUR_NUMBERS(4, 50000L),
-    MATCH_FIVE_NUMBERS(5, 1500000L), MATCH_FIVE_NUMBERS_WITH_BONUS_NUMBER(5, 30000000L),
-    MATCH_SIX_NUMBERS(6, 2000000000L), NOT_WINNING_STATUS(0, 0);
+    THREE_NUMBERS_MATCH(3, 5000L), FOUR_NUMBERS_MATCH(4, 50000L),
+    FIVE_NUMBERS_MATCH(5, 1500000L), FIVE_NUMBERS_WITH_BONUS_NUMBER_MATCH(5, 30000000L),
+    SIX_NUMBERS_MATCH(6, 2000000000L), NOT_WINNING_STATUS(0, 0);
 
     private static final int NUMBER_OF_MATCH_WITH_BONUS_NUMBER = 5;
     private final int numberOfMatch;
@@ -36,15 +36,15 @@ public enum LottoWinningStatus {
     }
 
     private static LottoWinningStatus valueOf(boolean hasBonusNumber) {
-        if (hasBonusNumber) return MATCH_FIVE_NUMBERS_WITH_BONUS_NUMBER;
-        return MATCH_FIVE_NUMBERS;
+        if (hasBonusNumber) return FIVE_NUMBERS_WITH_BONUS_NUMBER_MATCH;
+        return FIVE_NUMBERS_MATCH;
     }
 
     @Override
     public String toString() {
         String bonusPhrase = "";
         DecimalFormat formatter = new DecimalFormat("###,###");
-        if (this == MATCH_FIVE_NUMBERS_WITH_BONUS_NUMBER) bonusPhrase = ", 보너스 볼 일치";
+        if (this == FIVE_NUMBERS_WITH_BONUS_NUMBER_MATCH) bonusPhrase = ", 보너스 볼 일치";
         return numberOfMatch + "개 일치" + bonusPhrase + " (" + formatter.format(winningMoney) + "원)";
     }
 }
