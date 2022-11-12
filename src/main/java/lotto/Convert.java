@@ -1,6 +1,6 @@
 package lotto;
 
-import constant.LottoText;
+import constant.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class Convert {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(LottoText.ERROR + "입력값을 정수로 변환할 수 없습니다.");
+            throw new IllegalArgumentException(Text.ERROR + "입력값을 정수로 변환할 수 없습니다.");
         }
     }
 
