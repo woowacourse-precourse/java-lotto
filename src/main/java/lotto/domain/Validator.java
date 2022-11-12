@@ -6,7 +6,7 @@ import java.util.List;
 
 import static lotto.view.Constants.*;
 
-public class InputValidator {
+public class Validator {
     public Integer validateMoney(String input) {
         return validateNumeric(input);
     }

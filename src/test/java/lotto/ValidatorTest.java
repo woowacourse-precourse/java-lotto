@@ -1,13 +1,13 @@
 package lotto;
 
-import lotto.domain.InputValidator;
+import lotto.domain.Validator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class InputValidatorTest {
-    InputValidator inputValidator = new InputValidator();
+public class ValidatorTest {
+    Validator inputValidator = new Validator();
 
     @DisplayName("구입 금액이 숫자가 아니면 예외가 발생한다.")
     @Test
