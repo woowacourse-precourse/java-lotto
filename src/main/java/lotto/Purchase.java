@@ -6,7 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Purchase {
-
+    private static final int LOTTO_PRICE = 1000;
+    
     public static List<Lotto> lotto(String userInput) {
         int numberOfLotto = getNumberOfLotto(userInput);
         return getLotto(numberOfLotto);
@@ -18,7 +19,7 @@ public class Purchase {
         amount = Integer.parseInt(userInput);
 
         Validation.isValidUnit(amount);
-        return amount / 1000;
+        return amount / LOTTO_PRICE;
     }
 
     private static List<Lotto> getLotto(int numberOfLotto) {
