@@ -23,20 +23,20 @@ public class Buyer {
 
         this.money = money;
         this.lottoNum = money / LOTTO_PRICE;
-        generateLottos();
+        buyLottos();
         this.ranks = new ArrayList<>();
         this.earn = 0;
     }
 
 
-    private void validateMoney(int money) {
+    private void validate(int money) {
         if (money % LOTTO_PRICE != 0) {
             System.out.println(WRONG_MONEY_UNIT);
             throw new IllegalArgumentException();
         }
     }
 
-    private void generateLottos() {
+    private void buyLottos() {
         this.lottos = new ArrayList<Lotto>();
 
         for (int i = 0; i < this.lottoNum; i++) {
