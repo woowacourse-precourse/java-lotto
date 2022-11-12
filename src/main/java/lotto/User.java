@@ -13,8 +13,7 @@ public class User {
         validatePurchaseMoney(purchaseMoney);
         this.purchaseMoney = purchaseMoney;
         this.lottoList = lottoList;
-        // TODO: initializing incomeMoney
-        this.incomeMoney = 0;
+        this.incomeMoney = getIncomeMoney(lottoList, winLotto);
     }
 
     private void validatePurchaseMoney(int purchaseMoney) {
@@ -26,5 +25,14 @@ public class User {
             System.out.println("[ERROR] 로또 구입 금액은 1,000원 단위여야 합니다.");
             throw new IllegalArgumentException();
         }
+    }
+
+    private int getIncomeMoney(List<Lotto> lottoList, WinLotto winLotto) {
+        int incomeMoney = 0;
+        for (Lotto lotto : lottoList) {
+            LottoRank rank = LottoDraw.getLottoRank(lotto, winLotto);
+            incomeMoney += rank.getWinPrice();
+        }
+        return incomeMoney;
     }
 }
