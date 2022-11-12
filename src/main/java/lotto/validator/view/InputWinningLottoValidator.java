@@ -12,6 +12,7 @@ public class InputWinningLottoValidator {
     private static final String DIGIT_RANGE_OF_OUT_EXCEPTION = "[ERROR] 숫자의 자릿수는 9자리를 초과할 수 없습니다.";
     private static final String WINNING_LOTTO_INPUT_FORM = "(\\d+,){5}\\d+";
     private static final String EXIST_ZERO_AT_FIRST_PLACE_FORM = "0\\d+";
+    private static final String DIGIT_RANGE_OF_OUT_FORM = "\\d{10}";
     private static final String COMMA_DELIMITER = ",";
     
     private InputWinningLottoValidator() {
@@ -66,7 +67,7 @@ public class InputWinningLottoValidator {
     }
     
     private static boolean isExistDigitRangeOfOut(final String inputWinningLottoNumber) {
-        return matcher(inputWinningLottoNumber, "\\d{10}").find();
+        return matcher(inputWinningLottoNumber, DIGIT_RANGE_OF_OUT_FORM).find();
     }
     
     private static Matcher matcher(final String inputWinningLottoNumbers, final String correctLottoNumbersForm) {
