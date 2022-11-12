@@ -11,8 +11,19 @@ import java.io.InputStream;
 
 public class StatisticsTest {
 
-    @Nested
+    @DisplayName("구입 금액을 로또 하나 금액으로 나눠 총 몇개를 발행할지 구한다.")
+    @Test
+    void getLottoPublishCount_함수_테스트() {
+        String purchaseCount = "20000";
+
+        Statistics statistics = new Statistics(purchaseCount);
+        int lottoPublishCount = statistics.getLottoPublishCount();
+
+        Assertions.assertThat(lottoPublishCount).isEqualTo(20);
+    }
+
     @DisplayName("구입 금액 예외 처리 테스트")
+    @Nested
     class Exception {
 
         @DisplayName("구입 금액이 숫자가 아닌 경우 예외를 터트린다.")
