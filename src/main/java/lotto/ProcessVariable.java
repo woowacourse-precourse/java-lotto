@@ -19,26 +19,4 @@ public class ProcessVariable {
         validInput.validCashAmount(price, LOTTO_DIVIDE_PRICE);
         return price / LOTTO_DIVIDE_PRICE;
     }
-
-    public List<Integer> makeWinNumber(String input) {
-        // List<Integer> winLottoNumber = new ArrayList<>();
-        List<Integer> inputNumberList = Arrays.stream(input.split(",")).map(Integer::parseInt)
-                .collect(Collectors.toList());
-        validInput.validInputLength(inputNumberList);
-
-        for (Integer number : inputNumberList) {
-            validInput.validIsInputInRange(number);
-        }
-
-        validInput.validInputHasDuplicatedNumber(inputNumberList);
-
-        return inputNumberList;
-    }
-
-    public Integer makeBonusNumber(String input) {
-        Integer bonusNumber = Integer.parseInt(input);
-        validInput.validIsInputInRange(bonusNumber);
-
-        return bonusNumber;
-    }
 }
