@@ -1,9 +1,6 @@
 package lotto;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
@@ -72,6 +69,9 @@ public class Lotto {
         this.bonus = bonusNumber;
     }
     //5. 발행한 로또 번호를 정렬 하는 함수 (오름차순)
+    public void sortNumber(List<Integer> buyLottoNumber){
+        Collections.sort(buyLottoNumber);
+    }
     //6. 당첨 내역을 출력하는 함수
     //7. 수익률을 계산하는 함수 (소수 두째자리에서 반올림)
     //8. 예외처리 에러 문구 출력 함수 (단, [ERROR] 로 시작)
