@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import lotto.ui.Input;
 import org.junit.jupiter.api.Test;
 
 public class ValidationTest {
