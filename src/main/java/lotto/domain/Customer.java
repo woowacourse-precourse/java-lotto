@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Customer {
 
     private static final String INPUT_MONEY = "구입 금액을 입력해주세요.";
+    private static final String BUY_LOTTO_NUMBER = "개를 구매했습니다.";
     private static final int LOTTO_PRICE = 1000;
     private static final int REMAINDER = 0;
 
@@ -30,6 +31,7 @@ public class Customer {
 
     public void buyLotto() {
         hasLotto = getMoney() / LOTTO_PRICE;
+        System.out.println(hasLotto + BUY_LOTTO_NUMBER);
     }
 
     public int getHasLotto() {
