@@ -77,7 +77,7 @@ BUILD SUCCESSFUL in 0s
 - [ ] **CLASS 3.** `LottoDraw`
     - **Class Methods:**
         - [ ] `public static LottoRank getLottoRank(Lotto lotto, WinLotto winLotto)`
-        - [ ] `private static int getWinNumber(Lotto lotto, WinLotto winLotto)`
+        - [x] `private static int getWinNumber(Lotto lotto, WinLotto winLotto)`
         - [ ] `private static boolean existBonusNumber(Lotto lotto, WinLotto winLotto)`
 - [x] **CLASS 4.** `enum LottoRank`
     - **Class Variables:**
