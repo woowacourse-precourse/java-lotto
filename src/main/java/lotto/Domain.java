@@ -13,15 +13,14 @@ public class Domain {
 
     private static List<String> rankStringMapper = Arrays.asList("FIRST", "SECOND", "THIRD", "FORTH", "FIFTH");
 
-    public boolean validatePriceInput(String input) { //함수명 변경하기
+    public void validatePriceInput(String input) {
         if (!input.matches("^[0-9]+$")) {
-            return false;
+            throw new IllegalArgumentException("숫자로 입력해야 합니다.");
         }
         int inputPrice = Integer.parseInt(input);
         if (inputPrice % 1000 != 0) {
-            return false;
+            throw new IllegalArgumentException("금액은 1000 단위로 입력해야 합니다.");
         }
-        return true;
     }
 
     public void validateWinningNumberInput(String input) {
