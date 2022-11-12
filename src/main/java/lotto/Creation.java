@@ -1,7 +1,9 @@
 package lotto;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -11,8 +13,7 @@ public class Creation {
         return sortLotto(numbers);
     }
 
-    public static List<Integer> sortLotto(List<Integer> numbers) {
-        Collections.sort(numbers);
-        return numbers;
+    private static List<Integer> sortLotto(List<Integer> numbers) {
+        return numbers.stream().sorted().collect(Collectors.toList());
     }
 }
