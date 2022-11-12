@@ -1,12 +1,11 @@
 package lotto;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 
 public class Application {
     static final int LOTTO_PRICE = 1000;
@@ -15,7 +14,7 @@ public class Application {
     static int totalRevenue;
     static String revenuePercentage;
     static int initialAmount;
-    static List<Lotto> purchasedLotto =  new ArrayList<>();
+    protected static List<Lotto> purchasedLotto = new ArrayList<>();
     static List<Integer> trackEachPlace = new ArrayList<>();
     static Lotto winning_number_lotto;
     static final String ENTER_THE_AMOUNT = "구입금액을 입력해 주세요.";
@@ -25,89 +24,92 @@ public class Application {
     static final String LOTTO_PURCHASE_MESSAGE = "개를 구매했습니다.";
     static final String ANNOUNCEMENT = "당첨 통계\n---";
     static String closingStatement;
-    enum places{
-        FIRST_PLACE(2000000000,6, "6개 일치 (2,000,000,000원) - "),
+
+    enum places {
+        FIRST_PLACE(2000000000, 6, "6개 일치 (2,000,000,000원) - "),
         SECOND_PLACE(30000000, Integer.MAX_VALUE, "5개 일치, 보너스 볼 일치 (30,000,000원) - "),
         THIRD_PLACE(1500000, 5, "5개 일치 (1,500,000원) - "),
         FOURTH_PLACE(50000, 4, "4개 일치 (50,000원) - "),
-        FIFTH_PLACE(5000,3, "3개 일치 (5,000원) - ");
+        FIFTH_PLACE(5000, 3, "3개 일치 (5,000원) - ");
 
         final int numberMatch;
         final int prize;
         final String message;
 
 
-        places(int prize, int numberMatch, String message){
+        places(int prize, int numberMatch, String message) {
             this.prize = prize;
             this.numberMatch = numberMatch;
             this.message = message;
         }
     }
+
     public static void main(String[] args) {
         printLottoNumbers();
         validateGivenNumbers();
         initializeBonusNumber();
-        countMatchingNumber();
         showStatistics();
-        calculatePercentage();
     }
 
-    public static void enterTheAmount(){
+    public static void enterTheAmount() {
         System.out.println(ENTER_THE_AMOUNT);
         initialAmount = Integer.parseInt(Console.readLine());
-        if(initialAmount%LOTTO_PRICE!=0) throw new IllegalArgumentException();
-        numberOfPurchasedLotto = initialAmount/LOTTO_PRICE;
+        if (initialAmount % LOTTO_PRICE != 0) throw new IllegalArgumentException();
+        numberOfPurchasedLotto = initialAmount / LOTTO_PRICE;
     }
 
-    public static Lotto generateSixNumbers(){
+    public static Lotto generateSixNumbers() {
         System.out.println(ENTER_WINNING_NUMBER);
         String inputNumbers = Console.readLine();
         String[] winningNumbersAsString = inputNumbers.split(",");
         List<Integer> winningNumbers = new ArrayList<>();
-        for (String number: winningNumbersAsString) winningNumbers.add(Integer.parseInt(number));
+        for (String number : winningNumbersAsString) winningNumbers.add(Integer.parseInt(number));
         return new Lotto(winningNumbers);
     }
 
-    public static boolean printTheErrorMessageIfNotInTheRange(List<Integer> numbers){
-        for(int number: numbers){
-            if(number<1 || number>45){
+    public static boolean printTheErrorMessageIfNotInTheRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < 1 || number > 45) {
                 System.out.println(ERROR_MESSAGE);
-                return false;
+                return true;
             }
         }
-        return true;
-    }
-    public static void validateGivenNumbers(){
-        do{
-            winning_number_lotto = generateSixNumbers();
-        } while(!printTheErrorMessageIfNotInTheRange(winning_number_lotto.getNumbers()));
-    }
-    public static void initializeBonusNumber(){
-        System.out.println(BONUS_NUMBER_MESSAGE);
-        do{
-            BONUS_NUMBER = Integer.parseInt(Console.readLine());
-        } while(!printTheErrorMessageIfNotInTheRange(List.of(BONUS_NUMBER)));
+        return false;
     }
 
-    public static Lotto generateRandomSixNumbers(){
-        List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+    public static void validateGivenNumbers() {
+        do {
+            winning_number_lotto = generateSixNumbers();
+        } while (printTheErrorMessageIfNotInTheRange(winning_number_lotto.getNumbers()));
+    }
+
+    public static void initializeBonusNumber() {
+        System.out.println(BONUS_NUMBER_MESSAGE);
+        do {
+            BONUS_NUMBER = Integer.parseInt(Console.readLine());
+        } while (printTheErrorMessageIfNotInTheRange(List.of(BONUS_NUMBER)));
+    }
+
+    public static Lotto generateRandomSixNumbers() {
+        List<Integer> lottoNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        Collections.sort(lottoNumbers);
         return new Lotto(lottoNumbers);
     }
 
-    public static void printLottoNumbers(){
+    public static void printLottoNumbers() {
         enterTheAmount();
         System.out.println(numberOfPurchasedLotto + LOTTO_PURCHASE_MESSAGE);
-        for(int index=0; index<numberOfPurchasedLotto; index++){
+        for (int index = 0; index < numberOfPurchasedLotto; index++) {
             purchasedLotto.add(generateRandomSixNumbers());
-            Collections.sort(purchasedLotto.get(index).getNumbers());
             System.out.println(purchasedLotto.get(index).getNumbers().toString());
         }
     }
-    public static void countMatchingNumber(){
-        for(Lotto lotto: purchasedLotto){
+
+    public static void countMatchingNumber() {
+        for (Lotto lotto : purchasedLotto) {
             int matchedNumber = returnMatchedNumber(lotto);
             boolean containsBonusNumber = containsBonusNumber(lotto);
-            if(containsBonusNumber && matchedNumber==places.THIRD_PLACE.numberMatch){
+            if (containsBonusNumber && matchedNumber == places.THIRD_PLACE.numberMatch) {
                 trackEachPlace.add(Integer.MAX_VALUE);
                 continue;
             }
@@ -115,19 +117,20 @@ public class Application {
         }
     }
 
-    public static int returnMatchedNumber(Lotto lotto){
+    public static int returnMatchedNumber(Lotto lotto) {
         int count = 0;
-        for(int number: winning_number_lotto.getNumbers()){
-            if(lotto.containsTheNumber(number)) count++;
+        for (int number : winning_number_lotto.getNumbers()) {
+            if (lotto.containsTheNumber(number)) count++;
         }
         return count;
     }
 
-    public static boolean containsBonusNumber(Lotto lotto){
+    public static boolean containsBonusNumber(Lotto lotto) {
         return lotto.containsTheNumber(BONUS_NUMBER);
     }
 
-    public static void showStatistics(){
+    public static void showStatistics() {
+        countMatchingNumber();
         System.out.println(ANNOUNCEMENT);
         printAndAdd(places.FIFTH_PLACE);
         printAndAdd(places.FOURTH_PLACE);
@@ -139,15 +142,14 @@ public class Application {
 
     }
 
-    public static void printAndAdd(places place){
+    public static void printAndAdd(places place) {
         int won = Collections.frequency(trackEachPlace, place.numberMatch);
         System.out.println(place.message + won + "개");
         totalRevenue += won * place.prize;
     }
 
-    public static void calculatePercentage(){
-        revenuePercentage = String.format("%.1f", ((double) totalRevenue /initialAmount*100));
-        closingStatement = "총 수익률은 "+ revenuePercentage + "%입니다.";
+    public static void calculatePercentage() {
+        revenuePercentage = String.format("%.1f", ((double) totalRevenue / initialAmount * 100));
+        closingStatement = "총 수익률은 " + revenuePercentage + "%입니다.";
     }
-
 }

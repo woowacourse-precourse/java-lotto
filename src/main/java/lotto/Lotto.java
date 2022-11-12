@@ -1,5 +1,10 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -19,7 +24,9 @@ public class Lotto {
     public List<Integer> getNumbers(){
         return numbers;
     }
+
     public boolean containsTheNumber(int number){
         return numbers.contains(number);
     }
+
 }
