@@ -8,7 +8,7 @@ public class LottoOutStream {
     private static final String _input_numbers_str = "당첨 번호를 입력해 주세요.\n";
     private static final String _input_bonus_number_str = "보너스 번호를 입력해 주세요.\n";
     public static void showLottoResult (int[] matches) {
-        System.out.print("당첨 통계\n---\n");
+        System.out.print("\n" + "당첨 통계\n---\n");
         System.out.print("3개 일치 (5,000원) - " + matches[LottoGame._fifth_place] + "개\n");
         System.out.print("4개 일치 (50,000원) - " + matches[LottoGame._fourth_place] + "개\n");
         System.out.print("5개 일치 (1,500,000원) - " + matches[LottoGame._third_place] + "개\n");
@@ -27,7 +27,7 @@ public class LottoOutStream {
     }
 
     public static void outStreamLottoCount(int lottoCount) {
-        System.out.print(lottoCount + "개를 구매했습니다.\n");
+        System.out.print("\n" + lottoCount + "개를 구매했습니다.\n");
     }
 
     public static void askPurchaseAmount() {
@@ -35,10 +35,10 @@ public class LottoOutStream {
     }
 
     public static void askWinningNumber() {
-        System.out.print("당첨 번호를 입력해 주세요.\n");
+        System.out.print("\n" + "당첨 번호를 입력해 주세요.\n");
     }
 
     public static void askBonusNumber() {
-        System.out.print("보너스 번호를 입력해 주세요.\n");
+        System.out.print("\n" + "보너스 번호를 입력해 주세요.\n");
     }
 }
