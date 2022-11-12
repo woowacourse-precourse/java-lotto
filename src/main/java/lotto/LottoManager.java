@@ -27,7 +27,9 @@ public class LottoManager {
     }
 
     public int getMoney() {
-        return 10000;
+        System.out.println("구매금액을 입력해 주세요.");
+        String inputMoney = Console.readLine();
+        return Integer.parseInt(inputMoney);
     }
 
     public void sortLottoNumbers(List<Integer> lotto) {
