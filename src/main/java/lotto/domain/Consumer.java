@@ -8,11 +8,10 @@ import java.util.List;
 
 public class Consumer {
     private final static int PURCHASE_UNIT = 1000;
+    private final InputView input = new InputView();
+    private List<Lotto> lotteries;
 
-    private final List<Lotto> lotteries;
-
-    public Consumer() {
-        InputView input = new InputView();
+    public void purchaseLotto() {
         int purchasePrice = input.readPurchasePrice();
         validatePrice(purchasePrice);
         this.lotteries = getLotteries(purchasePrice);
@@ -35,6 +34,10 @@ public class Consumer {
             purchasePrice -= PURCHASE_UNIT;
         }
 
+        return lotteries;
+    }
+
+    public List<Lotto> lotteries() {
         return lotteries;
     }
 }
