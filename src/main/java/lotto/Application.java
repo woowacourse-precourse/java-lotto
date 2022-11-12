@@ -7,7 +7,12 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+//        Skeleton code for main
+        List<List<Integer>> myLottoTickets = buyLotto();
+        printMyLottoTickets(myLottoTickets);
+
+        List<Integer> winnerNumber = inputWinnerNumber();
+        System.out.println(winnerNumber);
     }
 
     public static int checkBuyingPriceCondition(String input) {
@@ -78,8 +83,10 @@ public class Application {
 
     public static List<Integer> convertStringWinnerNumberIntoListWinnerNumber(String userInput) {
         List<Integer> convertedNumber = new ArrayList<>();
-        for (int i = 0; i < userInput.length(); i++) {
-            convertedNumber.add(Integer.parseInt(String.valueOf(userInput.charAt(i))));
+
+        String[] trimmedInput = userInput.split(",");
+        for (String inputNumber : trimmedInput) {
+            convertedNumber.add(Integer.parseInt(inputNumber));
         }
 
         return convertedNumber;
