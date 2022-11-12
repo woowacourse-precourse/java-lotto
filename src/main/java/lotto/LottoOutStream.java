@@ -12,4 +12,8 @@ public class LottoOutStream {
         System.out.print("5개 일치, 보너스 볼 일치 (30,000,000원) - " + matches[LottoGame._second_place] + "개\n");
         System.out.print("6개 일치 (2,000,000,000원) - " + matches[LottoGame._first_place] + "개\n");
     }
+
+    public static void outStreamRateOfReturn(BigDecimal rateOfReturn) {
+        System.out.print("총 수익률은 " + rateOfReturn + "%입니다.");
+    }
 }
