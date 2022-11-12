@@ -36,7 +36,10 @@ public class Computer {
 
     public void saveBonusNumber(String bonusNumber){}
 
-    private void validateBonusNumber(int bonusNumber){}
+    private void validateBonusNumber(int bonusNumber){
+        if(isOutOfBound(bonusNumber) || isAlreadyInLotto(bonusNumber))
+            notValidBonusNumberException();
+    }
 
     private boolean isOutOfBound(int bonusNumber){
         return bonusNumber < MINIMUM_NUMBER_IN_RANGE || bonusNumber > MAXIMUM_NUMBER_IN_RANGE;
