@@ -7,11 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static lotto.constant.NumberConstant.GET_FIRST_RANKING_PRIZE;
-import static lotto.constant.NumberConstant.GET_SECOND_RANKING_PRIZE;
-import static lotto.constant.NumberConstant.GET_THIRD_RANKING_PRIZE;
-import static lotto.constant.NumberConstant.GET_FOURTH_RANKING_PRIZE;
-import static lotto.constant.NumberConstant.GET_FIFTH_RANKING_PRIZE;
 import static lotto.constant.NumberConstant.LOTTO_BONUS_LENGTH;
 import static lotto.domain.LottoResult.FOUR;
 import static lotto.domain.LottoResult.THREE;
@@ -21,6 +16,15 @@ import static lotto.domain.LottoResult.SIX;
 import static lotto.domain.LottoResult.LOSING;
 
 public class LottoStatistics {
+    private static final int numberThree = 3;
+    private static final int numberFour = 4;
+    private static final int numberFive = 5;
+    private static final int numberSix = 6;
+    private static final int GET_FIFTH_RANKING_PRIZE = 5000;
+    private static final int GET_FOURTH_RANKING_PRIZE = 50000;
+    private static final int GET_THIRD_RANKING_PRIZE = 1500000;
+    private static final int GET_SECOND_RANKING_PRIZE = 30000000;
+    private static final int GET_FIRST_RANKING_PRIZE = 2000000000;
 
     private final Map<LottoResult,Integer> lottoResultMap = new LinkedHashMap<>();
     private void initLottoResultMap(){
@@ -56,11 +60,11 @@ public class LottoStatistics {
     }
     
     private static LottoResult findRanking(List<Integer> count, Lotto oneLottoTicket){
-        if (count.get(0)+count.get(1) == 3) oneLottoTicket.setLottoResult(THREE);
-        else if (count.get(0)+count.get(1) == 4) oneLottoTicket.setLottoResult(FOUR);
-        else if (count.get(0)+count.get(1) == 5) oneLottoTicket.setLottoResult(FIVE);
-        else if (count.get(0) == 6) oneLottoTicket.setLottoResult(SIX);
-        else if (count.get(0)==5 && count.get(1)== LOTTO_BONUS_LENGTH) oneLottoTicket.setLottoResult(FIVE_BONUS);
+        if (count.get(0)+count.get(1) == numberThree) oneLottoTicket.setLottoResult(THREE);
+        else if (count.get(0)+count.get(1) == numberFour) oneLottoTicket.setLottoResult(FOUR);
+        else if (count.get(0)+count.get(1) == numberFive) oneLottoTicket.setLottoResult(FIVE);
+        else if (count.get(0) == numberSix) oneLottoTicket.setLottoResult(SIX);
+        else if (count.get(0)==numberFive && count.get(1)== LOTTO_BONUS_LENGTH) oneLottoTicket.setLottoResult(FIVE_BONUS);
         return oneLottoTicket.getLottoResult();
     }
 
