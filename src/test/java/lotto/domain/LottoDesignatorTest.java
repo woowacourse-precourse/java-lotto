@@ -55,4 +55,12 @@ public class LottoDesignatorTest {
         assertThatThrownBy(() -> lottoDesignator.checkBonusDuplication(lotto, bonus))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("입력받은 보너스 번호가 1 ~ 45 범위를 벗어날 경우 예외가 발생한다.")
+    @Test
+    void 보너스번호_범위_예외() {
+        String bonus = "70";
+        assertThatThrownBy(() -> lottoDesignator.checkRange(bonus))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
