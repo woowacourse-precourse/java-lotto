@@ -5,6 +5,7 @@ import lotto.domain.Draw;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
 import lotto.domain.NumberGenerator;
+import lotto.ui.Exception;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,17 +45,21 @@ public class Application {
 
     private static Integer askMoney() {
         System.out.println("구입금액을 입력해 주세요.");
-        Integer temp = Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
+        Exception.validateInputLottoNumber(input);
+        Integer temp = Integer.parseInt(input);
         System.out.println();
         return temp;
     }
 
     public static Lotto askWinnerLotto() {
         System.out.println("당첨 번호를 입력해 주세요.");
-        String[] dividedNumbers = Console.readLine().split(",");
+        String input = Console.readLine();
+        String[] dividedNumbers = input.split(",");
         System.out.println();
         List<Integer> temp = new ArrayList<>();
         for (String dividedNumber : dividedNumbers) {
+            Exception.validateInputLottoNumber(dividedNumber);
             temp.add(Integer.parseInt(dividedNumber));
         }
 
@@ -63,7 +68,9 @@ public class Application {
 
     public static Integer askBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        Integer temp = Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
+        Exception.validateInputLottoNumber(input);
+        Integer temp = Integer.parseInt(input);
         System.out.println();
         return temp;
     }
