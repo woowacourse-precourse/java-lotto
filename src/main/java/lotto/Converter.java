@@ -1,7 +1,9 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Converter {
 
@@ -23,5 +25,9 @@ public class Converter {
             output.add(num);
         }
         return output;
+    }
+
+    public static Set<Integer> listToSet(List<Integer> arr) {
+        return new HashSet<>(arr);
     }
 }
