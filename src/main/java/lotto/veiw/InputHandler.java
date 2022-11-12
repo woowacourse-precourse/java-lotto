@@ -23,7 +23,7 @@ public class InputHandler {
     public Lotto inputLotto() {
         System.out.println("당첨 번호를 입력해 주세요.");
         try {
-            Lotto lotto = new Lotto(inputStrToNumbers(readLine()));
+            Lotto lotto = new Lotto(stringToList(readLine()));
             return lotto;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -42,7 +42,7 @@ public class InputHandler {
         return null;
     }
 
-    private List<Integer> inputStrToNumbers(String readLine) {
+    private List<Integer> stringToList(String readLine) {
         List<String> inputs = List.of(readLine.split(","));
         List<Integer> lottoNumbers = new ArrayList<>();
         for (String input : inputs) {
