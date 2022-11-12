@@ -41,6 +41,10 @@ public class Input {
                 System.out.println("[ERROR] 중복 번호 입력 에러 발생");
                 throw new IllegalArgumentException();
             }
+            if(Integer.parseInt(str[i]) > 45){
+                System.out.println("[ERROR] 범위 밖 번호 입력 에러 발생");
+                throw new IllegalArgumentException();
+            }
             luckyNumber.add(Integer.parseInt(str[i].trim()));
         }
         return luckyNumber;
@@ -50,6 +54,10 @@ public class Input {
         int bonusNumber = Integer.parseInt(br.readLine());
         if(luckyNumber.contains(bonusNumber)) {
             System.out.println("[ERROR] 당첨 번호와 보너스 번호 입력 에러 발생");
+            throw new IllegalArgumentException();
+        }
+        if(bonusNumber > 45){
+            System.out.println("[ERROR] 범위 밖 번호 입력 에러 발생");
             throw new IllegalArgumentException();
         }
         return bonusNumber;

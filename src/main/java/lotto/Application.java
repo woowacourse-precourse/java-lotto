@@ -4,8 +4,6 @@ import lotto.UI.Input;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static lotto.Generator.createRandomLotto;
@@ -20,8 +18,8 @@ import static lotto.Generator.createRandomLotto;
 
         // [X] 발행한 로또 수량 및 번호를 출력한다. 로또 번호는 오름 차순으로 정렬
         // [X] 당첨 내역 출력
-        // [] 수익률은 소수점 둘째 자리에서 반올림
-        // [] 예외 상황 시 에러 문구 출력
+        // [X] 수익률은 소수점 둘째 자리에서 반올림
+        // [X] 예외 상황 시 에러 문구 출력
  */
 
 public class Application {
@@ -53,7 +51,8 @@ public class Application {
         System.out.println("당첨 통계");
         System.out.println("---");
         price = Lotto.getResult(exceptBonusResultList, BonusResultList);
-        // 수익률 출력
-
+        int baseMoney = haveLottoCount * 1000;
+        double upPercent = price * 100 / baseMoney;
+        System.out.println("총 수익률은 " + upPercent + "%입니다." );
     }
 }
