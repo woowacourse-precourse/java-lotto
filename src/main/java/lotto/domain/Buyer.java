@@ -15,6 +15,10 @@ public class Buyer {
         this.lottos = lottos;
     }
 
+    public Lottos getLottos() {
+        return this.lottos;
+    }
+
     public int getLottoCount() {
         return this.lottos.getLottoCount();
     }
