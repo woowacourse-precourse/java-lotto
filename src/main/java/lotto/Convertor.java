@@ -10,7 +10,7 @@ public class Convertor {
         Validator.checkIfNumeric(arg);
         Validator.checkIfInThousands(arg);
 
-        Integer purchasePrice = getNumericValue(arg);
+        Integer purchasePrice = toNumericValue(arg);
         return purchasePrice;
     }
 

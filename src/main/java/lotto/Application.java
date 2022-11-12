@@ -19,21 +19,13 @@ public class Application {
             Integer bonusNumber = Convertor.toNumericValue(Input.bonusNumber());
             Winner winner = new Winner(winningNumbers, bonusNumber);
 
-            List<Integer> profits = new ArrayList<>();
-            for (List<Integer> myLotto : lottoTickets) {
-                Matcher matcher = new Matcher(
-                        myLotto,
-                        winner.getWinningNumbers(),
-                        winner.getBonusNumber()
-                );
-                Integer prizeMoney = Ranks.getPrizeMoneyBy(
-                        matcher.getMatchingWinningNumberCount(),
-                        matcher.getMatchingBonusNumberCount()
-                );
-                profits.add(prizeMoney);
-            }
+            Profit profit = new Profit(
+                    lottoTickets,
+                    winner.getWinningNumbers(),
+                    winner.getBonusNumber()
+            );
 
-            Result matchingResult = new Result(profits);
+            Result matchingResult = new Result(profit.getProfit());
             Output.statistics(purchasePrice, matchingResult.getStatistics());
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());
