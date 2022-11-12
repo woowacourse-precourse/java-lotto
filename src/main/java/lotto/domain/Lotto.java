@@ -1,17 +1,18 @@
 package lotto.domain;
 
+import static lotto.domain.constant.IntValueConstant.LOTTO_MAXIMUM_NUMBER;
+import static lotto.domain.constant.IntValueConstant.LOTTO_MINIMUM_NUMBER;
+import static lotto.domain.constant.IntValueConstant.LOTTO_NUMBER_OF_DIGITS;
+import static lotto.exception.ErrorMessagePrinter.ILLEGAL_RANGE;
+import static lotto.exception.ErrorMessagePrinter.INPUT_SIX_DIGITS;
+import static lotto.exception.ErrorMessagePrinter.OVERLAP_NUMBER;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * 제공된 Lotto 클래스를 활용해 구현해야 한다. O
- * Lotto에 매개 변수가 없는 생성자를 추가할 수 없다. O
- * numbers의 접근 제어자인 private을 변경할 수 없다. O
- * Lotto에 필드(인스턴스 변수)를 추가할 수 없다. O
- * Lotto의 패키지 변경은 가능하다. O
- */
 public class Lotto {
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -23,15 +24,15 @@ public class Lotto {
         validateRangeNumbers(numbers);
         validateOverlapNumbers(numbers);
 
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6자리 수가 입력 되어야 합니다.");
+        if (numbers.size() != LOTTO_NUMBER_OF_DIGITS.getValue()) {
+            INPUT_SIX_DIGITS.error();
         }
     }
 
     private void validateRangeNumbers(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if (number < 1 || number > 45) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            if (number < LOTTO_MINIMUM_NUMBER.getValue() || number > LOTTO_MAXIMUM_NUMBER.getValue()) {
+                ILLEGAL_RANGE.error();
             }
         }
     }
@@ -39,8 +40,8 @@ public class Lotto {
     private void validateOverlapNumbers(List<Integer> numbers) {
         Set<Integer> pickedUniqueNumbersInRange = new HashSet<>(numbers);
 
-        if (pickedUniqueNumbersInRange.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 중복된 수는 로또 번호로 사용할 수 없습니다.");
+        if (pickedUniqueNumbersInRange.size() != LOTTO_NUMBER_OF_DIGITS.getValue()) {
+            OVERLAP_NUMBER.error();
         }
     }
 
