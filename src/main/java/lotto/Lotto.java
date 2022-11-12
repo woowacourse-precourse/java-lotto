@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -39,7 +40,10 @@ public class Lotto {
     }
 
     public void sortNumbers(List<Integer> numbers) {
-        numbers.sort(Comparator.naturalOrder());
+        Collections.sort(numbers);
     }
 
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
 }
