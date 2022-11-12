@@ -2,6 +2,9 @@ package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserInput {
     public static int writeBudget() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -25,8 +28,14 @@ public class UserInput {
         hasOnlyNumberAndComma(userInput);
     }
 
-    private void stringToNumbers(String numbers) {
-        String[] stringNumbers = numbers.split(",");
+    private List<Integer> stringToNumbers(String input) {
+        String[] stringNumbers = input.split(",");
+        List<Integer> numbers = new ArrayList<>();
+        for (String number: stringNumbers) {
+            numbers.add(Integer.valueOf(number));
+        }
+
+        return numbers;
     }
 
     private static void hasOnlyNumber(String input) {

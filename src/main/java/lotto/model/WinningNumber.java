@@ -8,7 +8,6 @@ public class WinningNumber {
     private int bonusNumber;
 
     public WinningNumber(String numbers) {
-
     }
 
     public void setBonusNumber(int number) {
