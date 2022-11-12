@@ -7,6 +7,8 @@ public class LottoControllerString {
     public static String INPUT_LOTTO_NUMBRES = "당첨 번호를 입력해 주세요.";
     public static String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     public static String WINNING_STATISTICS = "당첨 통계\n ---";
+    public static String NUMBER_RANGE_ERROR = "[ERROR] 로또 번호는 6자리 1부터 45 사이의 숫자만으로 구성되어야 합니다.";
+    
     public static String purchaserMessage(int price){
         return String.format("%d개를 구매했습니다.", price);
     }
