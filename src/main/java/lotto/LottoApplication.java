@@ -1,6 +1,5 @@
 package lotto;
 
-import lotto.domain.Lotto;
 import lotto.domain.LottoGenerator;
 import lotto.domain.LottoSummary;
 import lotto.domain.LottoTickets;
@@ -18,22 +17,37 @@ public class LottoApplication {
     public void run() {
         try {
             Money money = new Money(InputView.inputPurchaseAmount());
+            LottoTickets lottoTickets = buyLottoTickets(money);
 
-            LottoTickets lottoTickets = LottoGenerator.generateTickets(money);
-            OutputView.printLottoTickets(lottoTickets);
+            WinningLotto winningLotto = getWinningLotto();
 
-            List<Integer> winningNumbers = InputView.inputWinningNumbers();
-            int bonusNumber = InputView.inputBonusNumber();
-            WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
-
-            List<Rank> ranks = lottoTickets.getLottos().stream()
-                    .map(winningLotto::match)
-                    .collect(Collectors.toList());
-            LottoSummary summary = new LottoSummary(ranks, money);
-            OutputView.printSummary(summary);
+            summaryLotto(money, lottoTickets, winningLotto);
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e.getMessage());
-            throw e;
         }
+    }
+
+    private LottoTickets buyLottoTickets(Money money) {
+        LottoTickets lottoTickets = LottoGenerator.generateTickets(money);
+        OutputView.printLottoTickets(lottoTickets);
+        return lottoTickets;
+    }
+
+    private WinningLotto getWinningLotto() {
+        List<Integer> winningNumbers = InputView.inputWinningNumbers();
+        int bonusNumber = InputView.inputBonusNumber();
+        return new WinningLotto(winningNumbers, bonusNumber);
+    }
+
+    private void summaryLotto(Money money, LottoTickets lottoTickets, WinningLotto winningLotto) {
+        List<Rank> ranks = getRanks(lottoTickets, winningLotto);
+        LottoSummary summary = new LottoSummary(ranks, money);
+        OutputView.printSummary(summary);
+    }
+
+    private List<Rank> getRanks(LottoTickets lottoTickets, WinningLotto winningLotto) {
+        return lottoTickets.getLottos().stream()
+                .map(winningLotto::match)
+                .collect(Collectors.toList());
     }
 }
