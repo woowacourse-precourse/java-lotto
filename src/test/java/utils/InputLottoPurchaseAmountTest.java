@@ -48,6 +48,20 @@ public class InputLottoPurchaseAmountTest {
 			assertThatThrownBy(() -> validatePurchaseAmountRange(lottoPurchaseAmountThree))
 					.isInstanceOf(IllegalArgumentException.class);
 		}
+		
+		@Test
+		@DisplayName("구입금액 예외사항 테스트: 1000원 단위 아닌 입력")
+		void inputInvalidUnitLottoPurchaseAmount() {
+			// given, when
+			int lottoPurchaseAmountOne = 1001;
+			int lottoPurchaseAmountTwo = 1000000270;
+
+			// then
+			assertThatThrownBy(() -> validatePurchaseAmountUnit(lottoPurchaseAmountOne))
+					.isInstanceOf(IllegalArgumentException.class);
+			assertThatThrownBy(() -> validatePurchaseAmountUnit(lottoPurchaseAmountTwo))
+					.isInstanceOf(IllegalArgumentException.class);
+		}
 	}
 
 	@Nested
