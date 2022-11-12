@@ -7,6 +7,7 @@ public class Application {
         // TODO: 프로그램 구현
             if(!IO.Enter_Price())
                 return;
+        IO.Enter_WinningNumber();
     }
 
 }

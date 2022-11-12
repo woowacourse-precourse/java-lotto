@@ -13,7 +13,6 @@ public class I_O_System {
     private static final String ERROR_Code_1 = " 숫자가 아닌 문자가 들어왔습니다.";
     private static final String ERROR_Code_2 = " 돈이 천원 단위로 나누어지지않습니다.";
 
-    private List<Integer> Winning_Number = new ArrayList<>();
     private String Enter_Number = "0";
     private int Money_Enter = 0;
 
@@ -59,8 +58,18 @@ public class I_O_System {
     }
 
 
-    public void Enter_Number() {
+    public void Enter_WinningNumber() {
         Enter_Number = Console.readLine();
+
+        String[] arrayIn = Enter_Number.split(",");
+        List<Integer> Winning_Number = new ArrayList<>();
+        for (int i = 0; i < arrayIn.length; i++) {
+            Winning_Number.add(Integer.parseInt(arrayIn[i]));
+        }
+
+        Lotto lotto = new Lotto(Winning_Number);
+
+
 
     }
 
