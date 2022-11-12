@@ -28,13 +28,13 @@ public class LottoStore {
 
 	private void validateUnit(String userInput) {
 		if (!numberPattern.matcher(userInput).matches()) {
-			throw new IllegalArgumentException(String.format(ErrorMessage.UNIT.getMessage(), Number.UNIT.getValue()));
+			throw new IllegalArgumentException(String.format(Error.UNIT.getMessage(), Number.UNIT.getValue()));
 		}
 	}
 
 	private void validateZero(int purchaseAmount) {
 		if (purchaseAmount == 0) {
-			throw new IllegalArgumentException(String.format(ErrorMessage.ZERO.getMessage(), Number.UNIT.getValue()));
+			throw new IllegalArgumentException(String.format(Error.ZERO.getMessage(), Number.UNIT.getValue()));
 		}
 	}
 }

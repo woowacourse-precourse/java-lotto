@@ -1,6 +1,6 @@
 package lotto.domain;
 
-public enum ErrorMessage {
+public enum Error {
 	SIZE("로또 번호는 %d개만 가능합니다."),
 	DUPLICATE("로또 번호들은 중복될 수 없습니다."),
 	UNIT("%d 단위 숫자만 입력해주세요."),
@@ -13,7 +13,7 @@ public enum ErrorMessage {
 
 	private final String message;
 
-	ErrorMessage(String message) {
+	Error(String message) {
 		this.message = message;
 	}
 

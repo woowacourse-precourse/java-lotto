@@ -21,14 +21,14 @@ public class Lotto {
 
 	private void validateSize(List<Integer> numbers) {
 		if (numbers.size() != Number.SIZE.getValue()) {
-			throw new IllegalArgumentException(String.format(ErrorMessage.SIZE.getMessage(), Number.SIZE.getValue()));
+			throw new IllegalArgumentException(String.format(Error.SIZE.getMessage(), Number.SIZE.getValue()));
 		}
 	}
 
 	private void validateDuplicate(List<Integer> numbers) {
 		Set<Integer> nonDuplicateNumbers = new HashSet<>(numbers);
 		if (nonDuplicateNumbers.size() != Number.SIZE.getValue()) {
-			throw new IllegalArgumentException(ErrorMessage.DUPLICATE.getMessage());
+			throw new IllegalArgumentException(Error.DUPLICATE.getMessage());
 		}
 	}
 

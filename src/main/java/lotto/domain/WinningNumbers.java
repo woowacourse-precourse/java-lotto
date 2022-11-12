@@ -41,14 +41,14 @@ public class WinningNumbers {
 	private int validateNumber(String userInput) {
 		if (!numberPattern.matcher(userInput).matches()) {
 			throw new IllegalArgumentException(
-				String.format(ErrorMessage.NUMBER.getMessage(), Number.MIN.getValue(), Number.MAX.getValue()));
+				String.format(Error.NUMBER.getMessage(), Number.MIN.getValue(), Number.MAX.getValue()));
 		}
 		return Integer.parseInt(userInput);
 	}
 
 	private int validateBonus(int number) {
 		if (getWinningNumbers().contains(number)) {
-			throw new IllegalArgumentException(ErrorMessage.BONUS.getMessage());
+			throw new IllegalArgumentException(Error.BONUS.getMessage());
 		}
 		return number;
 	}
