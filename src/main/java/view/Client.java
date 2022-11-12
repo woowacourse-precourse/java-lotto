@@ -2,6 +2,10 @@ package view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Client {
 
     private static final int LOTTO_PRICE = 1000;
@@ -20,5 +24,14 @@ public class Client {
 
     private Boolean isDivideBy1000(String money){
         return Integer.parseInt(money) % LOTTO_PRICE != 0;
+    }
+
+    public List<Integer> getWinLottoNumber(){
+        String[] needOfChange = Console.readLine().split(",");
+        List<Integer> winLottoNumber = new ArrayList<>();
+        for(String winNumber:needOfChange){
+            winLottoNumber.add(Integer.parseInt(winNumber));
+        }
+        return winLottoNumber;
     }
 }
