@@ -35,9 +35,9 @@ public class UserInput {
         }
     }
 
-    private static void validIsDigit(String price) {
+    private static void validIsDigit(String num) {
         try {
-            Integer.parseInt(price);
+            Integer.parseInt(num);
         } catch (IllegalArgumentException e) {
             System.out.println(NOT_NUMBER);
             throw new IllegalArgumentException(NOT_NUMBER);

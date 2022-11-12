@@ -1,47 +1,40 @@
 package lotto;
 
+import utils.Output;
+
 import java.util.HashMap;
 import java.util.List;
 
 public class Result {
     public static final int PERCENT = 100;
-    public static final int ROUND_TWO = 100;
-    public static final double TWO_DECIMAL = 100.0;
+    public static final int ROUND_ONE = 10;
+    public static final double ONE_DECIMAL = 10.0;
 
-    private static HashMap<MatchCount, Integer> totalMatchResult = new HashMap<>();
+    private static HashMap<Prize, Integer> totalMatchResult = new HashMap<>();
     private int totalPrizeMoney = 0;
 
     public Result(List<Lotto> lottoTickets) {
         saveMatchResult(lottoTickets);
-        showResult();
+        sumPrizeMoney();
+        Output.showResult(Prize.makeResultMessage(totalMatchResult));
     }
 
-    public void saveMatchResult(List<Lotto> lottoTickets) {
+    private void saveMatchResult(List<Lotto> lottoTickets) {
         for (Lotto lotto : lottoTickets) {
-            MatchCount matchResult = LottoNumber.getMatchResult(lotto);
-            totalMatchResult.put(matchResult, totalMatchResult.getOrDefault(matchResult, 0)+1);
+            Prize prize = Prize.findPrizeType(LottoNumber.getMatchResult(lotto));
+            totalMatchResult.put(prize, totalMatchResult.getOrDefault(prize, 0) + 1);
         }
     }
 
-    public void showResult() {
-        List<Prize> allPrize = Prize.getAllPrize();
-        for (Prize prize : allPrize) {
-            int countPrize = getPrizeCount(prize.getWinningCount(), prize.getBonusCount());
-            System.out.println(prize.getMessage()+ " - " + countPrize+"개");
-            sumPrizeMoney(prize.getPrizeMoney(), countPrize);
+    private void sumPrizeMoney() {
+        for (Prize prize : totalMatchResult.keySet()) {
+            int count = totalMatchResult.get(prize);
+            totalPrizeMoney += Prize.getPrizeMoney(prize, count);
         }
-    }
-
-    private int getPrizeCount(int winningCount, int bonusCount) {
-        return totalMatchResult.getOrDefault(new MatchCount(winningCount, bonusCount), 0);
-    }
-
-    public void sumPrizeMoney(int prizeMoney, int countPrize) {
-        totalPrizeMoney += prizeMoney*countPrize;
     }
 
     public void calculateReturnOfRate(int price) {
-        double returnOfRate = Math.round(((double)totalPrizeMoney/price)*PERCENT*ROUND_TWO)/TWO_DECIMAL;
-        System.out.println("총 수익률은 "+returnOfRate+"%입니다.");
+        double returnOfRate = Math.round(((double) totalPrizeMoney / price) * PERCENT * ROUND_ONE) / ONE_DECIMAL;
+        Output.showReturnOfRate(returnOfRate);
     }
 }
