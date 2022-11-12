@@ -12,8 +12,8 @@ public class YieldCalculator {
         put("three", 0);
         put("four", 0);
         put("five", 0);
-        put("six", 0);
         put("fiveContainingBonusNumber", 0);
+        put("six", 0);
     }};
 
     public Map<String, Integer> extractStatistic(List<List<Integer>> matchResult) {
