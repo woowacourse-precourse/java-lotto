@@ -20,30 +20,28 @@ public class Lotto {
     // TODO: 추가 기능 구현
 
     // sorting numbers
-    public void sortNumbers(){
-        Collections.sort(numbers);
+
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     @Override
     public String toString() {
-        return "[" + numbers +"]";
+        return numbers.toString();
     }
 
     // match checking
-    public LottoPrice matchResult(List<Integer> list, int wildCard, int[] result){
+    public void matchResult(List<Integer> list, int wildCard, int[] result){
         // Exception 처리
         // 1. 서로 크기가 다른 경우
-        LottoPrice res;
         int _cnt = 0;
-        for(int here : numbers){
-            for(int there : list){
-                if(here == there) _cnt++;
-            }
+        for(int w : numbers){
+            if(list.contains(w)) _cnt++;
         }
-        res = LottoPrice.valueOfMatchCounts(_cnt);
-        if(_cnt == 5 && numbers.contains(wildCard)) res = LottoPrice.SECOND;
-        result[res.ordinal()]++;
-        return res;
+        int idx = _cnt;
+        if(idx == 5 && !numbers.contains(wildCard)) idx--;
+        result[idx]++;
     }
 
     // for bonus card checking
