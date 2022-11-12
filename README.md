@@ -57,15 +57,15 @@ BUILD SUCCESSFUL in 0s
 
 ### 🔥 구현 기능 목록
 
-- [ ] **CLASS 1.** `Lotto`
+- [x] **CLASS 1.** `Lotto`
   - **Class Variables:**
     - [x] `private final List<Integer> numbers`
   - **Class Methods:**
     - [x] `public Lotto(List<Integer> numbers)`
-    - [ ] `private void validate(List<Integer> numbers)`
+    - [x] `private void validate(List<Integer> numbers)`
     - [x] `private void validateSizeOfNumbers(List<Integer> numbers)`
     - [x] `private void validateDuplicateNumbers(List<Integer> numbers)`
-    - [ ] `private void validateRangeOfNumbers(List<Integer> numbers)`
+    - [x] `private void validateRangeOfNumbers(List<Integer> numbers)`
 - [ ] **CLASS 2.** `WinLotto extends Lotto`
   - **Class Variables:**
     - [ ] `private final int bonusNumber`
