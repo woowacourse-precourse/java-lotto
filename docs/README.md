@@ -58,30 +58,31 @@
 - `Lotto`의 패키지 변경은 가능하다.
 ### Lotto
 - numbers : private final List<Integer>
-- Lotto(List<Integer> numbers) : public constructor
-- validate(List<Integer> numbers) : private void
+- Lotto(List\<Integer> numbers) : public constructor
+- validate(List\<Integer> numbers) : private void
 ### LottoPurchaser
-- purchaseAmount : private int
-- purchase() : public void
+- purchaseAmount : private final int
+- LottoPurchaser() : public constructor
+- purchase() : private int
 - validate(int purchaseAmount) : private void
-- getter / setter
+- getter
 ### LottoGenerator
 - LOTTO_SIZE : static final int
 - LOTTO_PRICE : static final int
-- numberOfLotto : private int
-- lottos : private List<Lotto>
+- numberOfLotto : private final int
+- lottos : private final List\<Lotto>
 - LottoGenerator(int purchaseAmount) : public constructor
-- generate() : private Lotto
-- getter / setter
+- generate() : private List\<Lotto> 
+- getter
 ### WinningNumbers
-- numbers : private List<Integer>
-- bonus : private int
+- numbers : private final List<Integer>
+- bonus : private final int
 - WinningNumbers() : public constructor
-- initializeNumbers() : private void
-- initializeBonus() : private void
+- initializeNumbers() : private List\<Integer>
+- initializeBonus() : private int
 - validateNumbers() : private void
 - validateBonus() : private void
-- getter / setter
+- getter
 ### Statistics
 - winningCount : private int[]
 - earningRate : private int
@@ -89,7 +90,7 @@
 - compare() : private void
 - calculateEarningRate() : private void
 - calculateEarning() : private int
-- getter / setter
+- getter
 - toString() : public String
 ### WinningClass
 - FIRST("6개 일치", 2000000000)
@@ -112,4 +113,4 @@
 - END_OF_EARNING_RATE : "%입니다."
 ### Unit
 - MONEY : "원"
-- THING : "개"
+- NUMBER : "개"
