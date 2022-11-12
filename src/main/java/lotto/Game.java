@@ -16,5 +16,6 @@ public class Game {
         inputLottoAmountMessage();
         int amount = buyer.inputLottoAmount();
         buyer.buyLottos(amount);
+        inputWinLottoNumberMessage();
     }
 }
