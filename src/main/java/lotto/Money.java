@@ -4,6 +4,7 @@ import java.util.Map;
 
 public class Money {
   private static int money;
+  // 입력된 money가 숫자로만 이루어져 있는지.
   private static boolean checkMoneyIsDigit(String userMoney) {
     for (int i = 0; i < userMoney.length(); i++)
     {
@@ -14,8 +15,9 @@ public class Money {
     return true;
   }
 
+  // 입력된 money가 1000원 단위로 나누어 떨어지는지
   private static boolean checkDividableMoney(String userMoney) {
-    int money = Integer.parseInt(userMoney);
+    money = Integer.parseInt(userMoney);
 
     if (money % 1000 != 0) {
       throw new IllegalArgumentException(ErrorMessage.NOT_1000.getMessage());
@@ -23,6 +25,7 @@ public class Money {
     return true;
   }
 
+  //위의 두 사항을 만족시켰다면 1000원으로 나눠서 구매할 로또의 개수 반환
   public static int countLotto(String userMoney) {
     money = Integer.parseInt(userMoney);
 
@@ -33,13 +36,13 @@ public class Money {
   }
 
   public static double percentage(Map<Integer, Integer> maps) {
-    int third = maps.getOrDefault(Ranking.THREE_MATCH.getRank(), 0) * Ranking.THREE_MATCH.getMoney();
-    int forth = maps.getOrDefault(Ranking.FOUR_MATCH.getRank(), 0) * Ranking.FOUR_MATCH.getMoney();
-    int fifth = maps.getOrDefault(Ranking.FIVE_MATCH.getRank(), 0) * Ranking.FIVE_MATCH.getMoney();
-    int fifthBonus = maps.getOrDefault(Ranking.FIVE_AND_BONUS.getRank(), 0) * Ranking.FIVE_AND_BONUS.getMoney();
-    int sixth = maps.getOrDefault(Ranking.SIX_MATCH.getRank(), 0) * Ranking.SIX_MATCH.getMoney();
+    int threeMatchMoney = maps.getOrDefault(Ranking.THREE_MATCH.getRank(), 0) * Ranking.THREE_MATCH.getMoney();
+    int fourMatchMoney = maps.getOrDefault(Ranking.FOUR_MATCH.getRank(), 0) * Ranking.FOUR_MATCH.getMoney();
+    int fiveMatchMoney = maps.getOrDefault(Ranking.FIVE_MATCH.getRank(), 0) * Ranking.FIVE_MATCH.getMoney();
+    int fiveBonusMatchMoney = maps.getOrDefault(Ranking.FIVE_AND_BONUS.getRank(), 0) * Ranking.FIVE_AND_BONUS.getMoney();
+    int sixMatchMoney = maps.getOrDefault(Ranking.SIX_MATCH.getRank(), 0) * Ranking.SIX_MATCH.getMoney();
 
-    double sumAll = third + forth + fifth + fifthBonus + sixth + 0.0;
+    double sumAll = threeMatchMoney + fourMatchMoney + fiveMatchMoney + fiveBonusMatchMoney + sixMatchMoney + 0.0;
     double result = sumAll / money;
     return Math.round(result * 1000) / 10.0;
   }

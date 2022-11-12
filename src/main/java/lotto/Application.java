@@ -13,7 +13,6 @@ public class Application { // 패키지 분리
         for (int j = 0; j < count; j++) {
             Lotto lotto = countLotto.get(j);
             List<Integer> numbers = lotto.getNumbers();
-            //Collections.sort(numbers);
             System.out.println(numbers);
         }
 
