@@ -21,12 +21,14 @@ public class ValidationUtil {
      * 당첨 번호에 대한 모든 검증을 진행한다.
      * @param input 입력한 당첨 번호
      */
-    public void validateWinningAmount(String input) {
+    public String[] validateWinningAmount(String input) {
         String[] winningAmounts = input.split(",");
         validateWinningCount(winningAmounts);
         validateBlank(winningAmounts);
         validateDuplicate(winningAmounts);
         validateWinningRange(winningAmounts);
+
+        return winningAmounts;
     }
 
     /**
