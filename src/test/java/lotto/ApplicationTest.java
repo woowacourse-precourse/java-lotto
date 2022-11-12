@@ -117,6 +117,15 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    @DisplayName("보너스 번호가 당첨번호 리스트에 존재하면 IllegalArgumentException 발생한다.")
+    void 보너스번호_중복이면_예외발생() {
+        assertSimpleTest(() -> {
+            new WinningTicket(Arrays.asList(1, 2, 3, 4, 5, 6), 6);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
