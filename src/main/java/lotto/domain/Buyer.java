@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
 import lotto.view.OutputView;
 
 import java.util.ArrayList;
@@ -24,11 +23,11 @@ public class Buyer {
 
     public void buyLottos(int amount) {
         int count = countOfLottos(amount);
-        for(int i=0; i<=count; i++) {
+        for(int i=1; i<=count; i++) {
             lottos.add(Lotto.generateLotto());
         }
 
-        OutputView.printPurchase(count);
+        OutputView.printPurchase(count, lottos);
     }
 
     private int countOfLottos(int amount) {
