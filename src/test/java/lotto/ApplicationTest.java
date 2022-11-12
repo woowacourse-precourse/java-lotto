@@ -98,6 +98,15 @@ class ApplicationTest extends NsTest {
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }
+
+    @Test
+    @DisplayName("당첨 번호의 숫자 리스트 길이가 6이 아니면 IllegalArgumentException 발생한다.")
+    void 당첨번호리스트_길이가_6을_벗어나면_예외발생() {
+        assertSimpleTest(() -> {
+            new WinningTicket(Arrays.asList(1, 2, 3, 4, 5, 6, 7), 8);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
     @Override
     public void runMain() {
         Application.main(new String[]{});
