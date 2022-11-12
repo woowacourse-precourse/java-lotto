@@ -1,22 +1,27 @@
-package lotto.model;
+package lotto.util;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
-import lotto.util.Convertor;
 import lotto.view.View;
 
 /*
- * player의 입력을 담당하는 객체
+ * player의 입력을 담당하는 클래스
  */
 
-public class Player {
+public class PlayerInput {
 
-    public String input() {
-        return Console.readLine();
+    public static int getInteger() {
+        String input = Console.readLine();
+
+        if (!InputVerifier.isInteger(input)) {
+            View.printNotInteger();
+            throw new IllegalArgumentException();
+        }
+        return Integer.parseInt(input);
     }
 
-    public List<Integer> inputLottoNumbers() {
+    public static List<Integer> getLottoNumbers() {
         String input = Console.readLine();
         List<Integer> numbers;
 
