@@ -30,5 +30,7 @@ public class Buyer {
             throw new IllegalArgumentException(ENTER_WRONG_LETTERS_MESSAGE);
         }
     }
-
+    private int changeType(String purchaseAmount){
+        return Integer.parseInt(purchaseAmount);
+    }
 }
