@@ -11,7 +11,7 @@ public class Manager {
     private List<Lotto> lottoTable = new ArrayList<>();
 
     public List<Integer> getRandomNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return new ArrayList<Integer>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
 
     public int getAmount(int won) {
