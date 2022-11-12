@@ -49,8 +49,14 @@ public class Winning {
                 .collect(Collectors.toList());
     }
 
-    public List<Integer> getNumbers() {
-        return numbers;
+    public List<Integer> getWinningNumbers() {
+        return numbers.stream()
+                .filter(i -> i <= 6)
+                .collect(Collectors.toList());
+    }
+
+    public int getBonusNumber() {
+        return numbers.get(6);
     }
 
 }
