@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
@@ -50,6 +51,23 @@ class LottoReaderTest {
         assertThat(lottoReader.getLottoResult(lotto, compareLotto, bonusNumber)).isEqualTo(expected);
     }
 
+    @DisplayName("정답 로또와 보너스 번호를 입력했을 때 로또 여러장의 결과 값을 제대로 반환하는지 테스트")
+    @ParameterizedTest
+    @MethodSource("resultsLottoSourceGetter")
+    void 여러개의_로또_결과_반환_테스트(List<Lotto> lottoSource) {
+        Lotto compareLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+        Map<LottoResult, Integer> result = lottoReader.getLottoResults(lottoSource, compareLotto, bonusNumber);
+
+        assertThat(result).contains(
+                entry(LottoResult.FIRST, 1),
+                entry(LottoResult.SECOND, 1),
+                entry(LottoResult.THIRD, 1),
+                entry(LottoResult.FOURTH, 1),
+                entry(LottoResult.FIFTH, 1),
+                entry(LottoResult.MISS, 3));
+    }
+
     private static Stream<Arguments> lottoSourceGetter() {
         return Stream.of(
                 Arguments.of(List.of(7, 8, 9, 10, 11, 12), 0),
@@ -73,6 +91,22 @@ class LottoReaderTest {
                 Arguments.of(List.of(1, 8, 9, 10, 11, 12), LottoResult.MISS),
                 Arguments.of(List.of(8, 9, 10, 11, 12, 13), LottoResult.MISS)
         );
+    }
+
+    private static Stream<Arguments> resultsLottoSourceGetter() {
+        return Stream.of(
+                Arguments.of(List.of(
+                        new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                        new Lotto(List.of(1, 2, 3, 4, 5, 7)),
+                        new Lotto(List.of(1, 2, 3, 4, 5, 8)),
+                        new Lotto(List.of(1, 2, 3, 4, 8, 9)),
+                        new Lotto(List.of(1, 2, 3, 8, 9, 10)),
+                        new Lotto(List.of(1, 2, 8, 9, 10, 11)),
+                        new Lotto(List.of(1, 8, 9, 10, 11, 12)),
+                        new Lotto(List.of(8, 9, 10, 11, 12, 13))
+                )));
+
+
     }
 
 }
