@@ -32,60 +32,108 @@ public class Application {
 
             bonusNumber = getBonusNumber(user, winningNumber);
 
-            System.out.println("당첨 통계");
-            System.out.println("---");
-            for (Lotto lotto : lottoList) {
-                for (int i = 0; i < lotto.getNumbers().size(); i++) {
-                    if (winningNumber.contains(lotto.getNumbers().get(i))) {
-                        count += 1;
-                    }
-                }
-
-                if (count == 6) {
-                    totalWinningAmount += Winnings.이십억.winnings();
-                    winningHistory.setRank1Number(winningHistory.getRank1Number() + 1);
-                    continue;
-                }
-
-                if (count == 5 && lotto.getNumbers().contains(bonusNumber)) {
-                    totalWinningAmount += Winnings.삼천만.winnings();
-                    winningHistory.setRank2Number(winningHistory.getRank2Number() + 1);
-                    continue;
-                }
-
-                if (count == 5) {
-                    totalWinningAmount += Winnings.삼천만.winnings();
-                    winningHistory.setRank2Number(winningHistory.getRank3Number() + 1);
-                    continue;
-                }
-
-                if (count == 4) {
-                    totalWinningAmount += Winnings.오만.winnings();
-                    winningHistory.setRank4Number(winningHistory.getRank4Number() + 1);
-                    continue;
-                }
-
-                if (count == 3) {
-                    totalWinningAmount += Winnings.오천.winnings();
-                    winningHistory.setRank5Number(winningHistory.getRank5Number() + 1);
-                    continue;
-                }
-
-                count = 0;
-            }
-
-            System.out.println("3개 일치 (5,000원) - " + winningHistory.getRank5Number() + "개");
-            System.out.println("4개 일치 (50,000원) - " + winningHistory.getRank4Number() + "개");
-            System.out.println("5개 일치 (1,500,000원) - " + winningHistory.getRank3Number() + "개");
-            System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + winningHistory.getRank2Number() + "개");
-            System.out.println("6개 일치 (2,000,000,000원) - " + winningHistory.getRank1Number() + "개");
-
-            double yield = (double) totalWinningAmount / (double) amount * 100;
-            System.out.println("총 수익률은 " + Math.round(yield * 10) / 10.0 + "%입니다.");
+            winningHistoryOutput((double) amount, count, totalWinningAmount, lottoList, winningNumber, bonusNumber, winningHistory);
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private static void winningHistoryOutput(double amount, int count, int totalWinningAmount, List<Lotto> lottoList,
+                                             List<Integer> winningNumber, int bonusNumber, WinningHistory winningHistory) {
+
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        totalWinningAmount = getTotalWinningAmount(count, totalWinningAmount, lottoList, winningNumber, bonusNumber, winningHistory);
+
+        System.out.println("3개 일치 (5,000원) - " + winningHistory.getRank5Number() + "개");
+        System.out.println("4개 일치 (50,000원) - " + winningHistory.getRank4Number() + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + winningHistory.getRank3Number() + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + winningHistory.getRank2Number() + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + winningHistory.getRank1Number() + "개");
+
+        double yield = (double) totalWinningAmount / amount * 100;
+        System.out.println("총 수익률은 " + Math.round(yield * 10) / 10.0 + "%입니다.");
+    }
+
+    private static int getTotalWinningAmount(int count, int totalWinningAmount, List<Lotto> lottoList,
+                                             List<Integer> winningNumber, int bonusNumber, WinningHistory winningHistory) {
+
+        totalWinningAmount = lottoListCheck(count, totalWinningAmount, lottoList, winningNumber, bonusNumber, winningHistory);
+        return totalWinningAmount;
+    }
+
+    private static int lottoListCheck(int count, int totalWinningAmount, List<Lotto> lottoList, List<Integer> winningNumber, int bonusNumber, WinningHistory winningHistory) {
+        for (Lotto lotto : lottoList) {
+            count = countWinningNumbers(count, winningNumber, lotto);
+
+            if (count == 6) {
+                totalWinningAmount = rank1Win(totalWinningAmount, winningHistory);
+                continue;
+            }
+
+            if (count == 5 && lotto.getNumbers().contains(bonusNumber)) {
+                totalWinningAmount = rank2Win(totalWinningAmount, winningHistory);
+                continue;
+            }
+
+            if (count == 5) {
+                totalWinningAmount = rank3Win(totalWinningAmount, winningHistory);
+                continue;
+            }
+
+            if (count == 4) {
+                totalWinningAmount = rank4Win(totalWinningAmount, winningHistory);
+                continue;
+            }
+
+            if (count == 3) {
+                totalWinningAmount = rank5Win(totalWinningAmount, winningHistory);
+                continue;
+            }
+
+            count = 0;
+        }
+        return totalWinningAmount;
+    }
+
+    private static int rank5Win(int totalWinningAmount, WinningHistory winningHistory) {
+        totalWinningAmount += Winnings.오천.winnings();
+        winningHistory.setRank5Number(winningHistory.getRank5Number() + 1);
+        return totalWinningAmount;
+    }
+
+    private static int rank4Win(int totalWinningAmount, WinningHistory winningHistory) {
+        totalWinningAmount += Winnings.오만.winnings();
+        winningHistory.setRank4Number(winningHistory.getRank4Number() + 1);
+        return totalWinningAmount;
+    }
+
+    private static int rank3Win(int totalWinningAmount, WinningHistory winningHistory) {
+        totalWinningAmount += Winnings.백오십만.winnings();
+        winningHistory.setRank3Number(winningHistory.getRank3Number() + 1);
+        return totalWinningAmount;
+    }
+
+    private static int rank2Win(int totalWinningAmount, WinningHistory winningHistory) {
+        totalWinningAmount += Winnings.삼천만.winnings();
+        winningHistory.setRank2Number(winningHistory.getRank2Number() + 1);
+        return totalWinningAmount;
+    }
+
+    private static int rank1Win(int totalWinningAmount, WinningHistory winningHistory) {
+        totalWinningAmount += Winnings.이십억.winnings();
+        winningHistory.setRank1Number(winningHistory.getRank1Number() + 1);
+        return totalWinningAmount;
+    }
+
+    private static int countWinningNumbers(int count, List<Integer> winningNumber, Lotto lotto) {
+        for (int i = 0; i < lotto.getNumbers().size(); i++) {
+            if (winningNumber.contains(lotto.getNumbers().get(i))) {
+                count += 1;
+            }
+        }
+        return count;
     }
 
     private static void lotteryNumberOutput(int amount, List<Lotto> lottoList, Lotto[] lottos) {
