@@ -7,7 +7,6 @@ public class Application {
     public static void main(String[] args) {
         try {
             LottoController controller = new LottoController();
-
             controller.showIntroduce();
             controller.showMoneyInput();
             controller.showLottoPurchaseNumbers();
@@ -17,7 +16,6 @@ public class Application {
 
         } catch (IllegalArgumentException exception) {
             View.printLine("[ERROR ]" + exception.getMessage());
-
             throw exception;
         }
     }

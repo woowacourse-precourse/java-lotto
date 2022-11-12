@@ -10,24 +10,30 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 public class LottoController {
+    private final LottoService service;
+
+    public LottoController() {
+        this.service = new LottoService();
+    }
+
     public void showIntroduce() {
         View view = new IntroduceView();
         view.show();
     }
 
-    public String showMoneyInput() {
+    public void showMoneyInput() {
         View view = new MoneyInputView();
         view.show();
 
         String response = view.getResponse();
         validateInput("^(\\d+[0][0][0]){4,}$", response);
 
-        return response;
+        this.service.issueLotteryTicketsAs(parseInt(response));
     }
 
-    public void showLottoPurchaseNumbers(String input) {
-        LottoService service = new LottoService();
-        List<Lotto> purchaseLotteries = service.buyLotteriesAs(parseInt(input));
+    public void showLottoPurchaseNumbers() {
+        List<Lotto> purchaseLotteries = List.of(new Lotto(Lotto.createNumbers())); //TODO
+
         View view = new LottoPurchaseNumberView(purchaseLotteries);
         view.show();
     }
