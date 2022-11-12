@@ -34,6 +34,8 @@ public class Application {
             System.out.println("보너스 번호를 입력해 주세요.");
             int bonusNumber = getBonusNumber(Console.readLine());
             System.out.println();
+
+            validateWinningLottoAndBonusNumber(winningLotto, bonusNumber);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -95,7 +97,7 @@ public class Application {
 
     public static void validateWinningLottoAndBonusNumber(Lotto winningLotto, int bonusNumber) {
         if (winningLotto.getLottoNumbers().contains(bonusNumber)) {
-            throw new IllegalArgumentException("당첨 로또 번호와 보너스 번호 중복이 있습니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨 로또 번호와 보너스 번호 중복이 있습니다.");
         }
     }
 }
