@@ -11,14 +11,14 @@ import org.junit.jupiter.api.Test;
 class BonusNumberTest {
 
     @Test
-    void getBonusNumber_7_7() throws Exception {
+    void getBonusNumber_7_7() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         BonusNumber bonusNumber = new BonusNumber(lotto, 7);
         assertThat(bonusNumber.getBonusNumber()).isEqualTo(7);
     }
 
     @Test
-    void validateContains_exception_message_test() throws Exception {
+    void validateContains_exception_message_test() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
             new BonusNumber(lotto, 6);

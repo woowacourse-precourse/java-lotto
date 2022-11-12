@@ -7,8 +7,8 @@ public class BonusNumber {
 
     int bonusNumber;
 
-    public BonusNumber(Lotto lotto, int bonusNumber) throws Exception {
-        validateContains(lotto,bonusNumber);
+    public BonusNumber(Lotto lotto, int bonusNumber) {
+        validateContains(lotto, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
@@ -16,7 +16,7 @@ public class BonusNumber {
         return bonusNumber;
     }
 
-    private void validateContains(Lotto lotto, int bonusNumber) throws Exception {
+    private void validateContains(Lotto lotto, int bonusNumber) {
         List<Integer> lottoNumbers = lotto.getLottoNumbers();
 
         if (lottoNumbers.contains(bonusNumber)) {

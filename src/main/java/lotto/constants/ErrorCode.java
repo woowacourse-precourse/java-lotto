@@ -20,7 +20,7 @@ public enum ErrorCode {
         errorMessage = ERROR_BEGIN + message;
     }
 
-    public Exception getException() {
+    public RuntimeException getException() {
         return new IllegalArgumentException(errorMessage);
     }
 

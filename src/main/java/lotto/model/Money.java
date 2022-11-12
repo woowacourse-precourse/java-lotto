@@ -6,13 +6,13 @@ public class Money {
 
     private int value;
 
-    public Money(String input) throws Exception {
+    public Money(String input) {
         int inputNumber = stringToInt(input);
         validateBill(inputNumber);
         this.value = inputNumber;
     }
 
-    private int stringToInt(String input) throws Exception {
+    private int stringToInt(String input) {
         int inputNumber;
         try {
             inputNumber = Integer.valueOf(input);
@@ -22,7 +22,7 @@ public class Money {
         return inputNumber;
     }
 
-    private void validateBill(int input) throws Exception {
+    private void validateBill(int input) {
         if (input % 1000 != 0) {
             throw ErrorCode.NOT_BILL.getException();
         }

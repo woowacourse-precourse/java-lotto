@@ -1,7 +1,5 @@
 package lotto.model;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import lotto.constants.ErrorCode;
 
@@ -11,7 +9,7 @@ public class Lotto {
     private static final int LOTTO_NUMBER_END = 45;
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) throws Exception {
+    public Lotto(List<Integer> numbers) {
         validateSixDigits(numbers);
         validateRange(numbers);
         validateDuplicate(numbers);
@@ -22,13 +20,13 @@ public class Lotto {
         return numbers;
     }
 
-    private void validateSixDigits(List<Integer> numbers) throws Exception {
+    private void validateSixDigits(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw ErrorCode.NOT_SIX_DIGITS.getException();
         }
     }
 
-    private void validateRange(List<Integer> numbers) throws Exception {
+    private void validateRange(List<Integer> numbers) {
         for (int number : numbers) {
             if (number < LOTTO_NUMBER_START || number > LOTTO_NUMBER_END) {
                 throw ErrorCode.NOT_IN_RANGE.getException();
@@ -36,7 +34,7 @@ public class Lotto {
         }
     }
 
-    private void validateDuplicate(List<Integer> numbers) throws Exception {
+    private void validateDuplicate(List<Integer> numbers) {
         for (int index = 0; index < numbers.size(); index++) {
             if (isDuplicate(numbers, index)) {
                 throw ErrorCode.NOT_DUPLICATE.getException();
