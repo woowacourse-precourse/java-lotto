@@ -14,7 +14,7 @@ import java.util.List;
 class JudgmentTest {
     private Judgment judgment;
     private Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-
+    private Bonus bonus = new Bonus(7, winningLotto);
     @DisplayName("compare 메소드 테스트")
     @Nested
     class compareTest {
@@ -75,9 +75,9 @@ class JudgmentTest {
         @DisplayName("매치하는 경우")
         @Test
         void case1() {
-            Bonus bonus = new Bonus(6);
+            Lotto myLotto = new Lotto(List.of(7,8,9,10,11,12));
             boolean result = true;
-            boolean actual = judgment.hasBonusNumber(winningLotto, bonus);
+            boolean actual = judgment.hasBonusNumber(myLotto, bonus);
 
             assertThat(actual).isEqualTo(result);
         }
@@ -85,9 +85,9 @@ class JudgmentTest {
         @DisplayName("매치하지 않는 경우")
         @Test
         void case2() {
-            Bonus bonus = new Bonus(7);
+            Lotto myLotto = new Lotto(List.of(8,9,10,11,12,13));
             boolean result = false;
-            boolean actual = judgment.hasBonusNumber(winningLotto, bonus);
+            boolean actual = judgment.hasBonusNumber(myLotto, bonus);
 
             assertThat(actual).isEqualTo(result);
         }

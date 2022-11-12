@@ -77,7 +77,7 @@ public class MainController {
             throw new IllegalArgumentException("입력 값이 올바르지 않습니다.");
         }
 
-        bonus = new Bonus(bonusNumber);
+        bonus = new Bonus(bonusNumber, winningLotto);
     }
 
     public void calculateWinning() {
