@@ -20,8 +20,8 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         validateRange(numbers);
-        validateDuplicate(numbers);
         validateSize(numbers);
+        validateDuplication(numbers);
     }
 
     private void validateRange(List<Integer> numbers) {
@@ -31,16 +31,16 @@ public class Lotto {
         }
     }
 
-    private void validateDuplicate(List<Integer> numbers) {
-        Set<Integer> numberStorage = new HashSet<>(numbers);
-        if (numberStorage.size() != NUMBER_SIZE) {
-            throw new IllegalArgumentException(LOTTO_NUMBER_DUPLICATE_ERROR_MESSAGE);
-        }
-    }
-
     private void validateSize(List<Integer> numbers) {
         if (numbers.size() != NUMBER_SIZE) {
             throw new IllegalArgumentException(LOTTO_NUMBER_SIZE_ERROR_MESSAGE);
+        }
+    }
+
+    private void validateDuplication(List<Integer> numbers) {
+        Set<Integer> numberStorage = new HashSet<>(numbers);
+        if (numberStorage.size() != NUMBER_SIZE) {
+            throw new IllegalArgumentException(LOTTO_NUMBER_DUPLICATE_ERROR_MESSAGE);
         }
     }
 

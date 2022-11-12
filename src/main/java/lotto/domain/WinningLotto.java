@@ -18,7 +18,7 @@ public class WinningLotto {
 
     private void validateBonusNumber(int bonusNumber) {
         validateRange(bonusNumber);
-        validateDuplicateWithWiningNumbers(bonusNumber);
+        validateDuplicationWithWiningNumbers(bonusNumber);
     }
 
     private void validateRange(int bonusNumber) {
@@ -27,7 +27,7 @@ public class WinningLotto {
         }
     }
 
-    private void validateDuplicateWithWiningNumbers(int bonusNumber) {
+    private void validateDuplicationWithWiningNumbers(int bonusNumber) {
         if (winningNumbers.getNumbers()
                 .stream()
                 .anyMatch(number -> number == bonusNumber)) {
