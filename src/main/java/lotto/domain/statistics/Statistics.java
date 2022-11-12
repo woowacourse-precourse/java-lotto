@@ -38,6 +38,9 @@ public class Statistics {
     }
 
     public long count(Rank rank) {
+        if (statistics.get(rank) == null) {
+            return 0;
+        }
         return statistics.get(rank);
     }
 
