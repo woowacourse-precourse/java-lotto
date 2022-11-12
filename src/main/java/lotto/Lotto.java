@@ -16,5 +16,11 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void validateRange() {}
+    private void validateDuplicate() {}
+    private void validateSize() {}
+
+    public List<Integer> generateRandomNumbers() {
+        return List<Integer> = null;
+    }
 }

@@ -6,16 +6,17 @@
 
 ## 기능 구현 목록
 ### 로또 용지 - Lotto
-- [ ] 지정된 번호로 로또를 생성한다. - randomGenerate
-- [ ] 생성된 로또를 검증한다. - valid
-  - 로또 번호의 숫자 범위는 1~45까지이다. - validCondition1
-  - 1개의 로또를 발행할 때 중복되지 않는 6개의 숫자를 뽑는다. - validCondition2
+- [ ] 지정된 번호로 로또를 생성한다. - generateRandomNumbers
+- [ ] 생성된 로또를 검증한다. - validate
+  - 로또 번호의 숫자 범위는 1~45까지이다. - validateRange
+  - 1개의 로또를 발행할 때 번호가 중복되면 안된다. - validateDuplicate
+  - 총 6개의 숫자를 뽑는다. - validateSize
   - 잘못된 값이 들어온 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다. 
 ### 구매자 - Buyer
 - [ ] 로또 구입 금액을 입력하면 구입 금액에 해당하는 만큼 로또를 발행해야 한다. - buyLotto
-  - [ ] 로또 구입 금액을 입력 받는다. - setSeedMoney
-    - 로도 구입 금액을 검증한다. - valid
-      - 구입 금액은 1,000원 단위로 입력 받으며 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다. - valid1000Unit
+  - [ ] 로또 구입 금액을 입력 받는다. - inputSeedMoney
+    - 로도 구입 금액을 검증한다. - validateSeedMoney
+      - 구입 금액은 1,000원 단위로 입력 받으며 1,000원으로 나누어 떨어지지 않는 경우 예외 처리한다.
       - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`를 발생시키고, "[ERROR]"로 시작하는 에러 메시지를 출력 후 종료한다.
 - [ ] 당첨 내역을 출력한다. - checkPrize
   - 당첨 통계 확인 ... - requestPrizeToStore
@@ -46,9 +47,9 @@
     - 당첨 번호 입력시 "당첨 번호를 입력해주세요." 메세지가 표시된다. - printInputWinningNumbers
   - [ ] 보너스 번호를 입력 받는다. - inputBonusNumber
       - 보너스 번호 입력시 "보너스 번호를 입력해주세요." 메세지가 표시된다. - printInputBonusNumber
-  - [ ] 당첨 번호를 검증한다. - valid
-    - 당첨 번호 추첨 시 중복되지 않는 숫자 6개와 - validWinningNumbers
-    - 중복되지 않는 보너스 번호 1개를 뽑는다. - validBounsNumber
+  - [ ] 당첨 번호를 검증한다. - validateGameNumbers
+    - 당첨 번호 추첨 시 중복되지 않는 숫자 6개와 - validateWinningNumbers
+    - 중복되지 않는 보너스 번호 1개를 뽑는다. - validateBonusNumber
 
 <br/>
 
