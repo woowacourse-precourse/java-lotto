@@ -1,4 +1,4 @@
-package lotto;
+package lotto.utils;
 
 public class OutputNonEnumMessage {
     public static final String INPUT_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
