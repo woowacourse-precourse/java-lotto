@@ -18,6 +18,7 @@ public class UserInput {
     // 당첨 번호를 입력하는 기능
     public static List<Integer> winningNumberInput() {
         String winningNumber = Console.readLine();
+        Validation.validateWinningNumberContainCommaAndNum(winningNumber);
         return stringListToIntegerList(splitString(winningNumber));
     }
 
