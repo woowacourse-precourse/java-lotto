@@ -310,17 +310,17 @@ public class Application {
         return number;
     }
 
-    public static Integer calculateSecond(List<Lotto> lottoList, List<Integer> winningNumberList, int bonusNumber) {
+    public static Integer calculateSecond(List<Lotto> lottoTickets, List<Integer> winningNumbers, int bonusNumber) {
 
         int number = 0;
 
-        for (Lotto lotto : lottoList) {
+        for (Lotto lotto : lottoTickets) {
 
             if (!lotto.checkWinningNumberIsInLottoNumbers(bonusNumber)) {
 
                 continue;
             }
-            number += compareLottoNumbersAndWinningNumbers(lotto, winningNumberList, 5);
+            number += compareLottoNumbersAndWinningNumbers(lotto, winningNumbers, 5);
         }
         return number;
     }
