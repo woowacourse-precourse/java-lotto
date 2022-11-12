@@ -2,7 +2,7 @@ package lotto;
 
 import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.Lottos;
-import lotto.domain.result.Result;
+import lotto.domain.winningresult.WinningResults;
 import lotto.ui.InputView;
 import lotto.ui.ResultView;
 import lotto.ui.formatter.OutputFormatter;
@@ -19,7 +19,7 @@ public class Application {
         // TODO: 프로그램 구현
         OutputFormatter<Lotto> lottoOutputFormatter = new LottoFormatter();
         OutputFormatter<Lottos> lottosOutputFormatter = new LottosFormatter(lottoOutputFormatter);
-        OutputFormatter<Result> resultOutputFormatter = new ResultFormatter();
+        OutputFormatter<WinningResults> resultOutputFormatter = new ResultFormatter();
 
         Validator lottoPurchasedAmountValidator = new LottoPurchasedAmountValidator();
         Validator winNumbersValidator = new WinNumbersValidator();
