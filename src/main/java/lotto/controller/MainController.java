@@ -22,7 +22,7 @@ public class MainController {
         StatisticsView.outPut(statistics);
 
         double prizeMoney = LottoResult.getPrizeMoney(statistics);
-        double rate = ProfitRateCalculator.calculate(purchaseAmount.getMoney(), prizeMoney);
+        double rate = ProfitRate.calculate(purchaseAmount.getMoney(), prizeMoney);
         ProfitRateView.outPut(rate);
     }
 }
