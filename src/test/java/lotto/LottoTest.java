@@ -44,4 +44,18 @@ class LottoTest {
         assertThatThrownBy(() -> new Validation(List.of(0, 2, 3, 4, 5, 45)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("구매 금액 8000원, 수익금 5000원의 수익률 계산 테스트")
+    @Test
+    void calculateRate1() {
+        assertThat(Calculation.getProfitRate(8000, 5000))
+                .isEqualTo("62.5%");
+    }
+
+    @DisplayName("구매 금액 5000, 수익금 5000원의 수익률 계산 테스트")
+    @Test
+    void calculateRate2() {
+        assertThat(Calculation.getProfitRate(5000, 5000))
+                .isEqualTo("100.0%");
+    }
 }
