@@ -11,6 +11,18 @@ public class Lottos {
         this.lottos = lottos;
     }
 
+    public LottoResult result(WinningLotto winningLotto) {
+        LottoResult lottoResult = new LottoResult();
+        setLottoResult(winningLotto, lottoResult);
+        return lottoResult;
+    }
+
+    private void setLottoResult(WinningLotto winningLotto, LottoResult lottoResult) {
+        lottos.stream()
+                .map(winningLotto::rank)
+                .forEach(lottoResult::addResult);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
