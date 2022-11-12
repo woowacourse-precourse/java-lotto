@@ -1,14 +1,38 @@
 package lotto.model;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.text.NumberFormat;
+import java.util.List;
+import java.util.stream.Stream;
 import lotto.constant.MoneyConstants;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class MoneyTest {
+
+    private static Stream<Arguments> provideMoneyAndResultAndRateAnswer() {
+        return Stream.of(
+                Arguments.of(Money.from("8000"), Result.of(List.of(5)),62.5),
+                Arguments.of(Money.from("344000"), Result.of(List.of(5)),1.5),
+                Arguments.of(Money.from("20000"), Result.of(List.of(5)),25.0),
+                Arguments.of(Money.from("13000"), Result.of(List.of(5)),38.5),
+                Arguments.of(Money.from("10000"), Result.of(List.of(5)),50.0),
+                Arguments.of(Money.from("1000"), Result.of(List.of(5)),500.0),
+                Arguments.of(Money.from("1000"), Result.of(List.of(5)),500.0),
+                Arguments.of(Money.from("1000"), Result.of(List.of(5)),500.0),
+                Arguments.of(Money.from("1000"), Result.of(List.of(4)),5000.0),
+                Arguments.of(Money.from("1000"), Result.of(List.of(3)),150000.0),
+                Arguments.of(Money.from("1000"), Result.of(List.of(2)),3000000.0),
+                Arguments.of(Money.from("1000"), Result.of(List.of(1)),200000000.0)
+        );
+    }
+
     @DisplayName("로또 구매 금액이 비어있으면 이유를 나타내는 메세지를 포함한 예외가 발생한다.")
     @Test
     void createMoneyByEmptyInput() {
@@ -43,5 +67,14 @@ public class MoneyTest {
         assertThatThrownBy(() -> Money.from(userInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(MoneyConstants.REMAINDER_IN_MONEY_MSG);
+    }
+
+    @DisplayName("로또로 얻은 수익에 대한 수익률을 계산한다")
+    @ParameterizedTest
+    @MethodSource("provideMoneyAndResultAndRateAnswer")
+    void calculateProfitRateByResult(Money money, Result result, double rateAnswer) {
+        //given
+        //when
+        assertThat(money.calculateProfitRate(result)).isEqualTo(rateAnswer);
     }
 }

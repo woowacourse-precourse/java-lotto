@@ -19,6 +19,10 @@ public class Money {
         return this.money / LOTTO_PRICE;
     }
 
+    public double calculateProfitRate(Result result) {
+        return Math.round((double)result.calculateProfit()/this.money *TO_PERCENTAGE*TO_ROUND)/TO_ROUND;
+    }
+
     private void validate(String userInput){
         isBlank(userInput);
         isConsistsWithOnlyDigits(userInput);
