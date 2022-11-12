@@ -22,4 +22,10 @@ public class LottoGenerator {
         }
         return lottos;
     }
+
+    private void showAllLottos(List<Lotto> lottoList) {
+        for(Lotto lotto : lottoList) {
+            lotto.printSortedNumbers();
+        }
+    }
 }

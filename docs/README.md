@@ -54,7 +54,7 @@
   - [x] 로또 번호가 6자리 인지 확인한다.
   - [x] 중복되는 로또 번호가 있는지 확인한다.
 - [ ] 발급받은 로또 번호와 입력받은 당첨 번호를 비교한다. - Manager#compare()
-  - [ ] 몇 개의 숫자가 있는지 알 수 있다. - Judge#containCount()  
+  - [x] 몇 개의 숫자가 있는지 알 수 있다. - Judge#containCount()  
 - [ ] 입력한 당첨 번호, 보너스 번호가 숫자들로 이뤄져 있는지 확인한다. - Judge#isNumber()
 - [x] 입력한 당첨 번호, 보너스 번호가 1 - 45 범위에 있는지 확인한다. - Lotto#isCorrectRange()
 - [ ] 보너스 번호가 당첨 번호와 겹치지 않는지 확인한다. - Judge#notContain()
