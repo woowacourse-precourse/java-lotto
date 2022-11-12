@@ -17,4 +17,12 @@ public class LottoBuyerTest {
         assertThatThrownBy(() -> lottoBuyer.checkPayUnit(pay))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("구매 금액이 숫자가 아닐 경우 예외가 발생한다.")
+    @Test
+    void 구매_금액_숫자가_아닐_경우_예외() {
+        String input = "12a00";
+        assertThatThrownBy(() -> lottoBuyer.checkOnlyNumber(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
