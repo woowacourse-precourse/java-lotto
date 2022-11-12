@@ -15,5 +15,12 @@ public class LottoCalculator {
         }
         return matchCount;
     }
+    public boolean checkMatchBonus(Lotto lotto, int bonus){
+        List<Integer> lottoNum = lotto.getNumbers();
+        if(lottoNum.contains(bonus)){
+            return true;
+        }
+        return false;
+    }
 
 }
