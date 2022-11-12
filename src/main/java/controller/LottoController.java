@@ -5,14 +5,20 @@ import constants.LottoConstants;
 import lotto.Lotto;
 import utils.InputUtils;
 import user.PurchaseAmount;
+import utils.OutputUtils;
 import utils.Validator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LottoController {
 
     private PurchaseAmount purchaseAmount;
     private List<Lotto> lottos;
+
+    public LottoController() {
+        lottos = new ArrayList<>();
+    }
 
     private void generateLotteryNumbers() {
         List<Integer> lotteryNumbers = Randoms.pickUniqueNumbersInRange(
@@ -31,6 +37,11 @@ public class LottoController {
         purchaseAmount = new PurchaseAmount(Integer.parseInt(userInput));
     }
 
+    private void printPurchasedLottoNumbers() {
+        OutputUtils.printLottoPurchaseCount(purchaseAmount.getPurchaseCount());
+        OutputUtils.printPurchasedLottoNumbers(lottos);
+    }
+
     public void start() {
         getLottoPurchaseAmountFromUser();
 
@@ -39,5 +50,7 @@ public class LottoController {
             generateLotteryNumbers();
             purchaseCount--;
         }
+
+        printPurchasedLottoNumbers();
     }
 }
