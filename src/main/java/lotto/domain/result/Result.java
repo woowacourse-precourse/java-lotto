@@ -1,5 +1,6 @@
 package lotto.domain.result;
 
+import lotto.domain.player.PurchaseAmount;
 import lotto.ui.ConsoleOutput;
 
 import java.util.List;
@@ -16,8 +17,8 @@ public class Result {
 		ConsoleOutput.PrintResultMessage(fiveMatchAndBonusMatch, countingMatches);
 	}
 
-	public void calculateTotalProfit(long purchaseAmount){
+	public void calculateTotalProfit(PurchaseAmount purchaseAmount){
 		TotalProfit.countPrize();
-		ConsoleOutput.PrintProfitMessage(TotalProfit.computeProfit(purchaseAmount));
+		ConsoleOutput.PrintProfitMessage(TotalProfit.computeProfit(purchaseAmount.toMoney()));
 	}
 }

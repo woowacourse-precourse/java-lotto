@@ -12,11 +12,11 @@ public class PurchaseAmount {
 		this.purchaseAmount = amountInput;
 	}
 
-	public long valueOf() {
-		return Long.parseLong(purchaseAmount);
-	}
-
 	public static PurchaseAmount from(String amountInput){
 		return new PurchaseAmount(amountInput);
+	}
+
+	public long toMoney() {
+		return Long.parseLong(purchaseAmount);
 	}
 }

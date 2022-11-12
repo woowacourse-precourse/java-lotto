@@ -1,6 +1,8 @@
-package lotto;
+package lotto.domain.lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.player.PurchaseCount;
+import lotto.domain.util.Rule;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -14,8 +16,8 @@ public class LottoMachine {
 
 	public LottoMachine() {}
 
-	public void issueLotto(int purchasedLotto) {
-		for (int i = 0; i < purchasedLotto; i++) {
+	public void issueLotto(PurchaseCount purchaseCount) {
+		for (int i = 0; i < purchaseCount.toLotto(); i++) {
 			Lotto lotto = new Lotto(generateLottoNumbers());
 			issuedLottoes.add(lotto.getNumbers());
 		}
