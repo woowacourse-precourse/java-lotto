@@ -14,8 +14,8 @@ public class Application {
 
 
         System.out.println("금액 입력");
-        int lottoMoney = inputView.inputLottoPurchaseMoney();
-        int lottoChance = inputView.getLottoChance(lottoMoney);
+        int lottoPurchaseMoney = inputView.inputLottoPurchaseMoney();
+        int lottoChance = inputView.getLottoChance(lottoPurchaseMoney);
 
         List<Integer> winningNumbers = inputView.createWinningNumber();
         int bonusNumber = inputView.inputBonusNumber();
@@ -30,11 +30,11 @@ public class Application {
         }
         System.out.println(inputView.lottoResult);
         outputView.printLottoRankResult(inputView.lottoResult);
-
+        System.out.println("로또 구매 금액 : " + lottoPurchaseMoney);
+        int lottoEarningMoney = inputView.calculrateLottoEarningMoney(inputView.lottoResult);
+        System.out.println("로또 당첨 금액 : " + lottoEarningMoney);
+        String lottoEarningRate = inputView.calculrateLottoEarningRate(lottoEarningMoney, lottoPurchaseMoney);
+        System.out.println("로또 총 수익률 : " + lottoEarningRate);
+        outputView.printLottoEarningRate(lottoEarningRate);
     }
-
-
-
-
-
 }
