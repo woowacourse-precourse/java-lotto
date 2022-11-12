@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.Arrays;
+
 public enum Grade {
     FIVE(3, 5_000),
     FOUR(4, 50_000),
@@ -13,5 +15,17 @@ public enum Grade {
     Grade(int matchCount, int prizeMoney) {
         this.matchCount = matchCount;
         this.prizeMoney = prizeMoney;
+    }
+
+    public static Grade findingRank(int matchCount, int bonusCount) {
+        if ((THREE.matchCount == matchCount) && (bonusCount == 0)) {
+            return THREE;
+        }
+        if ((SECOND.matchCount == matchCount) && (bonusCount == 1)) {
+            return SECOND;
+        }
+
+        return Arrays.stream(values()).filter(grade -> grade.matchCount == matchCount)
+                .findAny().orElseThrow(() -> new IllegalArgumentException("[ERROR] 미당첨입니다."));
     }
 }
