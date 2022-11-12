@@ -137,6 +137,11 @@ public class Application {
         System.out.print(COMMON_ERROR_MESSAGE + " 보너스 번호는 1개이고, 로또 번호와 중복되지 않는 1부터 45 사이의 숫자여야 합니다.");
     }
 
+    static void alert_print_score() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+    }
+
     static int check_number_equal(Lotto lotto, Lotto user_lotto) {
         int number_equal = 0;
 
@@ -149,7 +154,7 @@ public class Application {
         return number_equal;
     }
 
-    static int check_bonus_numer_equal(Lotto lotto, int user_bonus_number) {
+    static int check_bonus_number_equal(Lotto lotto, int user_bonus_number) {
         if (lotto.get_numbers().contains(user_bonus_number)) {
             return 1;
         }
@@ -166,7 +171,7 @@ public class Application {
             int number_equal = check_number_equal(lotto, user_lotto);
             score.add(number_equal);
 
-            int bonus_number_equal = check_bonus_numer_equal(lotto, user_bonus_number);
+            int bonus_number_equal = check_bonus_number_equal(lotto, user_bonus_number);
             score.add(bonus_number_equal);
 
             scores.add(score);
@@ -234,6 +239,8 @@ public class Application {
             print_user_bonus_number_error();
             return;
         }
+
+        alert_print_score();
 
         List<List<Integer>> scores = new ArrayList<List<Integer>>();
         scores = check_computer_user_score(lottos, user_lotto, user_bonus_number);
