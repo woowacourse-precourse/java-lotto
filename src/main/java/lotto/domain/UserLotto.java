@@ -17,6 +17,7 @@ public final class UserLotto {
 
     public UserLotto(String winNumbers, String bonusNumber) {
         isDigitAndSplitByStandard(winNumbers);
+        isValidLottoCount(winNumbers);
         isValidLottoRange(winNumbers);
         this.winNumbers = List.copyOf(mapToList(winNumbers));
         this.bonusNumber = Integer.parseInt(bonusNumber);
@@ -25,6 +26,12 @@ public final class UserLotto {
     private void isDigitAndSplitByStandard(String winNumbers) {
         if (!winNumbers.matches(REG_XP_LOTTO)) {
             throw new IllegalArgumentException(InputException.INPUT_INVALID_FORM.message());
+        }
+    }
+
+    private void isValidLottoCount(String winNumbers) {
+        if (Arrays.stream(winNumbers.split(SPLIT_STANDARD)).count() != 6) {
+            throw new IllegalArgumentException(InputException.INPUT_INVALID_DIGIT_COUNT.message());
         }
     }
 
