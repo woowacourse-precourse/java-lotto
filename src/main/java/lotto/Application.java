@@ -18,20 +18,22 @@ public class Application {
     static final String ERROR_MESSAGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     static final String BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
     static final String LOTTO_PURCHASE_MESSAGE = "개를 구매했습니다.";
+    static final String ANNOUNCEMENT = "당첨 통계\n---";
     enum places{
-        FIRST_PLACE(2000000000, 6),
-        SECOND_PLACE(30000000, 5),
-        THIRD_PLACE(1500000, 5),
-        FOURTH_PLACE(50000, 4),
-        FIFTH_PLACE(5000, 3);
+        FIRST_PLACE(6, "6개 일치 (2,000,000,000원) - "),
+        SECOND_PLACE(5, "5개 일치, 보너스 볼 일치 (30,000,000원) - "),
+        THIRD_PLACE( 5, "5개 일치 (1,500,000원) - "),
+        FOURTH_PLACE( 4, "4개 일치 (50,000원) - "),
+        FIFTH_PLACE(3, "3개 일치 (5,000원) - ");
 
-        final long price;
         final int numberMatch;
 
+        final String message;
 
-        places(long price, int numberMatch){
-            this.price = price;
+
+        places(int numberMatch, String message){
             this.numberMatch = numberMatch;
+            this.message = message;
         }
     }
     public static void main(String[] args) {
@@ -40,6 +42,8 @@ public class Application {
         initializeBonusNumber();
         countMatchingNumber();
         for (int i: trackEachPlace) System.out.println(i);
+        System.out.println("\n\n");
+        showStatistics();
     }
 
     public static void enterTheAmount(){
@@ -113,4 +117,14 @@ public class Application {
     public static boolean containsBonusNumber(Lotto lotto){
         return lotto.containsTheNumber(BONUS_NUMBER);
     }
+
+    public static void showStatistics(){
+        System.out.println(ANNOUNCEMENT);
+        System.out.println(places.FIFTH_PLACE.message + Collections.frequency(trackEachPlace, places.FIFTH_PLACE.numberMatch));
+        System.out.println(places.FOURTH_PLACE.message + Collections.frequency(trackEachPlace, places.FOURTH_PLACE.numberMatch));
+        System.out.println(places.THIRD_PLACE.message + Collections.frequency(trackEachPlace, places.THIRD_PLACE.numberMatch));
+        System.out.println(places.SECOND_PLACE.message + Collections.frequency(trackEachPlace, Integer.MAX_VALUE));
+        System.out.println(places.FIRST_PLACE.message + Collections.frequency(trackEachPlace, places.FIRST_PLACE.numberMatch));
+    }
+
 }
