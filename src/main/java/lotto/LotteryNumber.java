@@ -42,5 +42,7 @@ public class LotteryNumber {
         for(List list : numbers){
             System.out.println(list);
         }
+
+        System.out.println(' ');
     }
 }

@@ -22,12 +22,15 @@ public class Input {
         if(validate(userInput)) {
             this.money = parseInt(userInput);
         }
+
+        System.out.println(' ');
     }
 
     public void enterNumbers() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String userInput = Console.readLine();
         parseInputToInt(userInput);
+        System.out.println(' ');
     }
 
     private void parseInputToInt(String userInput) {
