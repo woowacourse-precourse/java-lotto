@@ -21,14 +21,13 @@ public class GenerateLottoNumbers {
         for (int i = 0; i < quantity; i++) {
             List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             lottos.add(new UserLotto(sortedList(lottoNumbers)));
-
         }
         return lottos;
     }
 
     public static List<Integer> sortedList(List<Integer> unsortedList) {
         List<Integer> sortedList = new ArrayList<>();
-        for(int number : unsortedList) {
+        for (int number : unsortedList) {
             sortedList.add(number);
         }
         Collections.sort(sortedList);
