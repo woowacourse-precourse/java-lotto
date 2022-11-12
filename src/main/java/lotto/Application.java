@@ -1,6 +1,5 @@
 package lotto;
 
-import config.ErrorConstants;
 import ui.UserInterface;
 
 import java.util.ArrayList;

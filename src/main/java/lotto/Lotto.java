@@ -33,13 +33,13 @@ public class Lotto {
         validateDuplicate(numbers);
     }
 
-    private void validateSize(List<Integer> numbers) {
+    private void validateSize(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorConstants.INVALID_NUMBERS_SIZE);
         }
     }
 
-    private void validateRange(List<Integer> numbers) {
+    private void validateRange(List<Integer> numbers) throws IllegalArgumentException {
         for (int n : numbers) {
             if (n < 1 || n > 45) {
                 throw new IllegalArgumentException(ErrorConstants.INVALID_RANGE);
@@ -47,7 +47,7 @@ public class Lotto {
         }
     }
 
-    private void validateDuplicate(List<Integer> numbers) {
+    private void validateDuplicate(List<Integer> numbers) throws IllegalArgumentException {
         boolean[] used = new boolean[46];
         for (int n : numbers) {
             if (used[n]) {

@@ -34,7 +34,7 @@ public class LottoRound {
         return LottoRank.LOSE;
     }
 
-    private void validateBonusNumber() {
+    private void validateBonusNumber() throws IllegalArgumentException {
         if (bonusNumber < 0 || bonusNumber > 45) {
             throw new IllegalArgumentException(ErrorConstants.INVALID_BONUS_NUMBER_RANGE);
         }

@@ -31,8 +31,9 @@ public class LottoStatistics {
     /**
      * 수익률 (%)을 반환합니다.
      * @return 수익률
+     * @throws IllegalArgumentException 수익률을 계산할 로또 구입내역이 존재하지 않을 때 발생합니다.
      */
-    public double getYield() {
+    public double getYield() throws IllegalArgumentException {
         if (payment == 0) {
             throw new IllegalArgumentException("최소 한 번의 결과가 존재해야 합니다.");
         }
