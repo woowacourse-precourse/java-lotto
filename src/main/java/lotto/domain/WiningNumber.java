@@ -8,6 +8,7 @@ public class WiningNumber {
     private int bonusNumber;
 
     public WiningNumber(List<Integer> winingNumber) {
+        validateWiningNumber(winingNumber);
         this.winingNumber = winingNumber;
     }
 
