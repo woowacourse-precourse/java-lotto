@@ -4,17 +4,17 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputLottoPurchaseAmount {
 
-	public static int readLottoPurchaseAmount() {
+	public static long readLottoPurchaseAmount() {
 		System.out.println("구입금액을 입력해 주세요.");
 		String purchaseAmount = Console.readLine();
-		int purchaseAmountResult = validate(purchaseAmount);
+		long purchaseAmountResult = validate(purchaseAmount);
 
 		return purchaseAmountResult;
 	}
 
-	private static int validate(String purchaseAmount) {
+	private static long validate(String purchaseAmount) {
 		validateNumeric(purchaseAmount);
-		int purchaseAmountResult = Integer.parseInt(purchaseAmount);
+		long purchaseAmountResult = Long.parseLong(purchaseAmount);
 		validatePurchaseAmountRange(purchaseAmountResult);
 		validatePurchaseAmountUnit(purchaseAmountResult);
 
@@ -28,13 +28,13 @@ public class InputLottoPurchaseAmount {
 		}
 	}
 
-	private static void validatePurchaseAmountRange(int purchaseAmoutResult) {
+	private static void validatePurchaseAmountRange(long purchaseAmoutResult) {
 		if (purchaseAmoutResult < 1000) {
 			throw new IllegalArgumentException("[ERROR] 로또 최소 구입금액은 1000원 입니다.");
 		}
 	}
 
-	private static void validatePurchaseAmountUnit(int purchaseAmoutResult) {
+	private static void validatePurchaseAmountUnit(long purchaseAmoutResult) {
 		if (purchaseAmoutResult % 1000 != 0) {
 			throw new IllegalArgumentException("[ERROR] 로또 구입금액은 1000원 단위여야 합니다.");
 		}
