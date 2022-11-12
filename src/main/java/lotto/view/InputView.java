@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class InputView {
@@ -15,7 +16,11 @@ public class InputView {
     }
 
     private static int inputOneNumber() {
-        return Integer.parseInt(Console.readLine());
+        String stringNumber = Console.readLine();
+        if (!Pattern.matches("^[0-9]*$", stringNumber)) {
+            throw new IllegalArgumentException("[ERROR] 입력 값은 숫자만 가능합니다.");
+        }
+        return Integer.parseInt(stringNumber);
     }
 
     public static List<Integer> inputAnswerNumbers() {
