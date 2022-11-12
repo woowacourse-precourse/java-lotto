@@ -3,37 +3,46 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.IntStream;
 
 public class LottoRandomPeek {
-    private static final int LOTTO_SIZE =6;
-    private static final int START_NUMBER = 1; // 나중에 enum으로 lottoValidate와 같이 빼기
+    private static final int LOTTO_SIZE = 6;
+    private static final int START_NUMBER = 1;
     private static final int LAST_NUMBER = 45;
+
     private final List<Lotto> randomLottos;
 
     public LottoRandomPeek(int countLotto) {
         randomLottos = new ArrayList<>();
-        for(int peekIndex = 0;peekIndex<countLotto;peekIndex++){
+        for (int peekIndex = 0; peekIndex < countLotto; peekIndex++) {
             drawLotto();
         }
     }
 
     public void drawLotto() {
-        List<Integer> randomNumbers = new ArrayList<>();
-        while(randomNumbers.size()<LOTTO_SIZE){
-            int randomNumber = Randoms.pickNumberInRange(START_NUMBER, LAST_NUMBER);
-            if(!randomNumbers.contains(randomNumber)){
-                randomNumbers.add(randomNumber);
+        List<Integer> randomNumbers =Randoms.pickUniqueNumbersInRange(START_NUMBER,LAST_NUMBER,LOTTO_SIZE);
+        randomLottos.add(new Lotto(sortList(randomNumbers)));
+    }
+
+    private List<Integer> sortList(List<Integer> randomNumbers) {
+        for(int i = 0; i< randomNumbers.size()-1; i++){
+            int idx = i;
+            for(int j = i+1; j< randomNumbers.size(); j++){
+                if(randomNumbers.get(idx)> randomNumbers.get(j)){
+                    idx = j;
+                }
+            }
+            if(i!=idx){
+                int tmp = randomNumbers.get(idx);
+                randomNumbers.set(idx, randomNumbers.get(i));
+                randomNumbers.set(i,tmp);
             }
         }
-        Collections.sort(randomNumbers);
-        randomLottos.add(new Lotto(randomNumbers));
+        return randomNumbers;
     }
-    public List<Lotto> getRandomLottos(){
+
+    public List<Lotto> getRandomLottos() {
         return randomLottos;
     }
 
