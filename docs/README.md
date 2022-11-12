@@ -8,8 +8,9 @@
     - [x] (예외처리)금액 입력 시 0원을 입력한 경우
 
 
-- [ ] 구매 갯수만큼 로또를 출력 printLotto
-    - [ ] 로또 번호 내 숫자를 오름 차순 출력 sortNumberInAscendingOrder
+- [x] 구매 갯수만큼 로또를 출력 printLotto
+    - [x] 로또 번호를 생성 Lotto#create
+    - [x] 각 숫자별 오름 차순 출력 
 
 
 - [ ] 당첨번호를 입력받는 기능 inputWinningNumber
