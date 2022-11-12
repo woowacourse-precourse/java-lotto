@@ -1,11 +1,13 @@
 package lotto.controller;
 
 import lotto.domain.LottoQuantity;
+import lotto.domain.LottoRanking;
 import lotto.domain.Lottos;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 import java.util.List;
+import java.util.Map;
 
 public class LottoController {
     public List<Integer> userLottoNumbers;
@@ -13,6 +15,7 @@ public class LottoController {
     public int userLottoMoney;
     public Lottos lottos=new Lottos(userLottoQuantity);
     public LottoQuantity lottoQuantity=new LottoQuantity();
+    public Map<LottoRanking, Integer> lottoRanking;
     public void startLotto() {
         getUserMoney();
         printLottoQuantity();
@@ -20,6 +23,8 @@ public class LottoController {
         getUserLottoNumbers();
         getUserBonusNumber();
         System.out.println("userLottoNumbers: "+userLottoNumbers);
+        compareLottos();
+        System.out.println("ranking: "+lottoRanking);
     }
 
     public void getUserMoney() {
@@ -47,6 +52,6 @@ public class LottoController {
     }
 
     public void compareLottos(){
-        lottos.calculateLottos(userLottoNumbers);
+        lottoRanking=lottos.calculateLottos(userLottoNumbers);
     }
 }
