@@ -84,19 +84,12 @@ public class User {
         }
     }
 
-    public void calculateEarning(int howManyWinningNumber, boolean isBonusNumberCorrect) {
-        if (howManyWinningNumber==6) {
-            earning+=WinningNumberAndEarningPair.CORRECT_6.getEarning();
-        } else if (howManyWinningNumber==5) {
-            if (isBonusNumberCorrect) {
-                earning+=WinningNumberAndEarningPair.CORRECT_5_BONUS.getEarning();
-            }
-            earning+=WinningNumberAndEarningPair.CORRECT_5.getEarning();
-        } else if (howManyWinningNumber==4) {
-            earning+=WinningNumberAndEarningPair.CORRECT_4.getEarning();
-        } else if (howManyWinningNumber==3) {
-            earning += WinningNumberAndEarningPair.CORRECT_3.getEarning();
-        }
+    public void calculateEarning() {
+        earning+=winningNumberCounting.get("first")*WinningNumberAndEarningPair.CORRECT_6.getEarning();
+        earning+=winningNumberCounting.get("second")*WinningNumberAndEarningPair.CORRECT_5_BONUS.getEarning();
+        earning+=winningNumberCounting.get("third")*WinningNumberAndEarningPair.CORRECT_5.getEarning();
+        earning+=winningNumberCounting.get("fourth")*WinningNumberAndEarningPair.CORRECT_4.getEarning();
+        earning+=winningNumberCounting.get("fifth")* WinningNumberAndEarningPair.CORRECT_3.getEarning();
     }
 
     public double calculateEarningRate() {
