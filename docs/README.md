@@ -69,6 +69,14 @@
 
 <br/>
 
+### 로또 결과 ResultEnum
+
+- [x] 보상금 반환 getReward()
+- [x] Lotto 매칭 결과로 구체적인 로또 결과 반환 getFromResult()
+
+<br/>
+
+
 <hr>
 
 ### 입력 Input
