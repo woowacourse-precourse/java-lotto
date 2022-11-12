@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.domain.YieldCalculator.getYield;
+
 import java.util.List;
 import lotto.console.Input;
 import lotto.console.Output;
@@ -86,7 +88,7 @@ public class LottoGame {
     }
 
     private void printYield(Results results, int money) {
-        output.writeYield(results.getYield(money));
+        output.writeYield(getYield(results, money));
     }
 
     private List<Lotto> buyLottos(int money) {

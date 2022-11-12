@@ -23,15 +23,10 @@ public class Results {
         return counts;
     }
 
-    public float getYield(int buyMoney) {
-        int totalReward = 0;
-
-        for (Reward reward : Reward.values()) {
-            int count = counts.getOrDefault(reward, 0);
-            totalReward += reward.getReward() * count;
-        }
-
-        return (float) totalReward / buyMoney;
+    public int getTotalPrice() {
+        return counts.entrySet().stream()
+                .mapToInt(entry -> entry.getKey().getReward() * entry.getValue())
+                .sum();
     }
 
     public int getCount(Reward reward) {
