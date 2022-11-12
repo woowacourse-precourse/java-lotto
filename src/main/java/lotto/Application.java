@@ -125,14 +125,15 @@ public class Application {
     }
 
     public static void validateCashIsDividedThousand(String input) {
-
         if (input.length() < 4) {
+            error = ErrorMessage.DIVIDE;
             throw new IllegalArgumentException();
         }
 
         for (int i = input.length() - 3; i < input.length(); i++) {
 
             if (input.charAt(i) != 48) {
+                error = ErrorMessage.DIVIDE;
                 throw new IllegalArgumentException();
             }
         }
