@@ -21,6 +21,7 @@ public class Application {
         int buyingAmount = inputBuyingAmount();
         if(buyingAmount != STOP_VALUE){
             final int countOfLottery = buyingAmount / AMOUNT_UNIT;
+            System.out.println("\n" + countOfLottery + "개를 구매했습니다.");
         }
     }
     private static int inputBuyingAmount(){
