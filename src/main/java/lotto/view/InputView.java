@@ -18,6 +18,7 @@ public class InputView {
     }
 
     public void printWinningNumber() {
+        System.out.println();
         System.out.println(WINNING_NUMBER);
     }
 }
