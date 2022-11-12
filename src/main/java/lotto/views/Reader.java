@@ -1,6 +1,7 @@
 package lotto.views;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.models.Bonus;
 import lotto.models.Lotto;
 import lotto.validation.SystemValidator;
 
@@ -26,6 +27,12 @@ public class Reader {
 		List<Integer> winningLotto = parsingLottoNumber(userWinningLottoInput);
 
 		return new Lotto(winningLotto);
+	}
+
+	public static int readWinningLottoBonusNumberFromUser() {
+		String winningLottoBonusNumber = Console.readLine();
+
+		return Integer.parseInt(winningLottoBonusNumber);
 	}
 
 	private static List<Integer> parsingLottoNumber(String lottoWinningNumber) {
