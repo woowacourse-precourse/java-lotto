@@ -1,12 +1,14 @@
 package lotto.view;
 
-import static lotto.domain.Rank.FIVE_MATCHES_WITHOUT_BONUS;
-import static lotto.domain.Rank.FIVE_MATCHES_WITH_BONUS;
-import static lotto.domain.Rank.FOUR_MATCHES;
-import static lotto.domain.Rank.SIX_MATCHES;
-import static lotto.domain.Rank.THREE_MATCHES;
+import static lotto.domain.result.Rank.FIVE_MATCHES_WITHOUT_BONUS;
+import static lotto.domain.result.Rank.FIVE_MATCHES_WITH_BONUS;
+import static lotto.domain.result.Rank.FOUR_MATCHES;
+import static lotto.domain.result.Rank.SIX_MATCHES;
+import static lotto.domain.result.Rank.THREE_MATCHES;
 
 import java.util.List;
+import java.util.Map;
+import lotto.domain.result.Result;
 
 public class Output {
 
@@ -19,13 +21,14 @@ public class Output {
         System.out.println(ERROR_PREFIX + message);
     }
 
-    public static void printWinningStatistics(List<Integer> matchResults) {
+    public static void printWinningStatistics(Result result) {
+        Map<Integer, Integer> matchResult = result.getResult();
         System.out.println(WINNING_STATISTICS);
-        System.out.println(THREE_MATCHES.getRank(matchResults));
-        System.out.println(FOUR_MATCHES.getRank(matchResults));
-        System.out.println(FIVE_MATCHES_WITHOUT_BONUS.getRank(matchResults));
-        System.out.println(FIVE_MATCHES_WITH_BONUS.getRank(matchResults));
-        System.out.println(SIX_MATCHES.getRank(matchResults));
+        System.out.println(THREE_MATCHES.getRank(matchResult));
+        System.out.println(FOUR_MATCHES.getRank(matchResult));
+        System.out.println(FIVE_MATCHES_WITHOUT_BONUS.getRank(matchResult));
+        System.out.println(FIVE_MATCHES_WITH_BONUS.getRank(matchResult));
+        System.out.println(SIX_MATCHES.getRank(matchResult));
     }
 
     public static void printLotteryNumbers(List<Integer> lotteryNumbers) {

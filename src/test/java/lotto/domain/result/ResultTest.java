@@ -1,17 +1,20 @@
-package lotto.domain;
+package lotto.domain.result;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import lotto.domain.BonusNumber;
+import lotto.domain.Lotto;
+import lotto.domain.LottoGroup;
+import lotto.domain.WinningLotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class CalculatorTest {
+class ResultTest {
 
     @Test
     @DisplayName("로또 번호들 중 당첨의 수를 카운트합니다")
     void calculateMatchResults() {
-        Calculator calculator = new Calculator();
         List<Lotto> lottos = List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(4, 6, 8, 14, 25, 36)),
@@ -22,33 +25,15 @@ class CalculatorTest {
         LottoGroup lottoGroup = new LottoGroup(lottos);
         WinningLotto winningLotto = new WinningLotto("4,6,14,25,36,41");
         BonusNumber bonusNumber = new BonusNumber("8", winningLotto);
+        Result result = new Result(lottoGroup, winningLotto, bonusNumber);
+
         List<Integer> answer = List.of(1, 0, 1, 1, 1);
 
-        List<Integer> matchResults = calculator.calculateMatchResults(lottoGroup, winningLotto,
+        List<Integer> matchResults = result.calculateMatchResults(lottoGroup, winningLotto,
                 bonusNumber);
 
         assertThat(matchResults)
                 .isEqualTo(answer);
     }
 
-    @Test
-    @DisplayName("총 수익을 계산합니다")
-    void calculateProfit() {
-        Calculator calculator = new Calculator();
-        List<Integer> matchResults = List.of(1, 0, 1, 0, 0);
-
-        assertThat(calculator.calculateProfit(matchResults))
-                .isEqualTo(1505000);
-    }
-
-    @Test
-    @DisplayName("수익률을 계산합니다")
-    void calculateEarningsRate() {
-        Calculator calculator = new Calculator();
-        int purchaseCost = 8000;
-        int profit = 5000;
-
-        assertThat(calculator.calculateEarningsRate(purchaseCost, profit))
-                .isEqualTo(62.5);
-    }
 }

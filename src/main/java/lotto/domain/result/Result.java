@@ -1,18 +1,37 @@
-package lotto.domain;
+package lotto.domain.result;
 
-import static lotto.domain.Rank.FIVE_MATCHES_WITHOUT_BONUS;
-import static lotto.domain.Rank.FIVE_MATCHES_WITH_BONUS;
-import static lotto.domain.Rank.FOUR_MATCHES;
-import static lotto.domain.Rank.SIX_MATCHES;
-import static lotto.domain.Rank.THREE_MATCHES;
+import static lotto.domain.result.Rank.FIVE_MATCHES_WITHOUT_BONUS;
+import static lotto.domain.result.Rank.FIVE_MATCHES_WITH_BONUS;
+import static lotto.domain.result.Rank.FOUR_MATCHES;
+import static lotto.domain.result.Rank.SIX_MATCHES;
+import static lotto.domain.result.Rank.THREE_MATCHES;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Map;
+import lotto.domain.BonusNumber;
+import lotto.domain.Comparator;
+import lotto.domain.Lotto;
+import lotto.domain.LottoGroup;
+import lotto.domain.WinningLotto;
 
-public class Calculator {
+public class Result {
+
+    private final Map<Integer, Integer> result = new HashMap<>();
+
+    public Result(LottoGroup lottoGroup,
+            WinningLotto winningLotto, BonusNumber bonusNumber) {
+        List<Integer> matchResults = calculateMatchResults(lottoGroup, winningLotto, bonusNumber);
+        for (int rank = 0; rank < matchResults.size(); rank++) {
+            result.put(rank, matchResults.get(rank));
+        }
+    }
+
+    public Map<Integer, Integer> getResult() {
+        return result;
+    }
 
     public List<Integer> calculateMatchResults(LottoGroup lottoGroup,
             WinningLotto winningLotto, BonusNumber bonusNumber) {
@@ -39,12 +58,12 @@ public class Calculator {
 
     private int getIndex(int matchCount) {
         if (matchCount == 3) {
-            return THREE_MATCHES.getIndex();
+            return THREE_MATCHES.getKey();
         }
         if (matchCount == 4) {
-            return FOUR_MATCHES.getIndex();
+            return FOUR_MATCHES.getKey();
         }
-        return SIX_MATCHES.getIndex();
+        return SIX_MATCHES.getKey();
     }
 
     private void setMatchResultsWithBonusNumber(int bonusNumber, Comparator comparator, List<Integer> matchResults,
@@ -55,26 +74,8 @@ public class Calculator {
 
     private int getIndexWithBonusNumber(int bonusNumber, Lotto lotto, Comparator comparator) {
         if (!comparator.hasBonusNumber(lotto, bonusNumber)) {
-            return FIVE_MATCHES_WITHOUT_BONUS.getIndex();
+            return FIVE_MATCHES_WITHOUT_BONUS.getKey();
         }
-        return FIVE_MATCHES_WITH_BONUS.getIndex();
-    }
-
-    public int calculateProfit(List<Integer> matchResults) {
-        int profit = 0;
-        List<Integer> prizeMoneys = Stream.of(Rank.values())
-                .map(Rank::getPrize)
-                .collect(Collectors.toList());
-        for (int index = 0; index < matchResults.size(); index++) {
-            if (matchResults.get(index) > 0) {
-                profit += (matchResults.get(index) * prizeMoneys.get(index));
-            }
-        }
-        return profit;
-    }
-
-    public double calculateEarningsRate(int purchaseCost, int profit) {
-        double earningsRate = ((double) profit / purchaseCost) * 100;
-        return (double) Math.round(earningsRate * 10) / 10;
+        return FIVE_MATCHES_WITH_BONUS.getKey();
     }
 }
