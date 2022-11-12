@@ -34,7 +34,7 @@ public class Validation {
     public static void isIncludeNotNumber(String number) throws IllegalArgumentException {
         String result = number.replaceAll("[0-9]", "");
         if (result.length() != 0)
-            throw new IllegalArgumentException(Notification.ERROR_MESSAGE_MONEY_IS_NOT_MULTIPLE_1000.getMessage());
+            throw new IllegalArgumentException(Notification.ERROR_MESSAGE_INCLUDE_NON_NUMERIC.getMessage());
     }
 
     private static void isMultipleOf1000(String number) throws IllegalArgumentException {
