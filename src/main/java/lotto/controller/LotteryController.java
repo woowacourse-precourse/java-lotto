@@ -54,7 +54,8 @@ public class LotteryController {
     }
 
     private void matchPlayerLottoWithWinningNumbers(){
-
+        MatchLotteryService matchLotteryService = new MatchLotteryService(player, computer);
+        matchLotteryService.matchPlayerWithComputer();
     }
 
     private void showPlayersResult(){
