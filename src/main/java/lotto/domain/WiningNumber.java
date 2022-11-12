@@ -17,6 +17,13 @@ public class WiningNumber {
         validateNumbersRange(numbers);
     }
 
+    private void validateNumbersSize(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            System.out.println("[ERROR] 로또 번호는 6자리여야 합니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
     public void setBonusNumber(int bonusNumber) {
         this.bonusNumber = bonusNumber;
     }
