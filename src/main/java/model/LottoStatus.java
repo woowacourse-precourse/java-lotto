@@ -17,7 +17,7 @@ public enum LottoStatus {
         return value;
     }
 
-    public int getMinimumDigits() {
+    public int getDigitsSize() {
         return Integer.toString(value).length();
     }
 }

@@ -7,7 +7,7 @@ import static model.ErrorMessage.INCORRECT_PURCHASING_AMOUNT;
 public class Validator {
 
     public void validateSize(String input) {
-        if (input.length() < LottoStatus.SIZE.getMinimumDigits()) {
+        if (input.length() < LottoStatus.PRICE.getDigitsSize()) {
             throw new IllegalArgumentException(INCORRECT_PURCHASING_AMOUNT.toString());
         }
     }
