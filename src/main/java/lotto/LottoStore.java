@@ -44,7 +44,11 @@ public class LottoStore {
         }
     }
 
-    public void setBonusNumber(int number) {
+    public void setBonusNumber(String input) {
+        System.out.println("보너스 번호를 입력해 주세요.\n" + input + "\n");
+
+        Integer number = c4fiberParser.getIntegerFromString(input);
+        validateBonusNumber(number);
         this.bonusNumber = number;
     }
 
