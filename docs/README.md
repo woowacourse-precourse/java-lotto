@@ -31,14 +31,14 @@
 
     <br/>
 
-- [ ] 로또 목록 기능
-    - [ ] 로또 티켓을 랜덤으로 생성하는 기능
+- [x] 로또 목록 기능
+    - [x] 로또 티켓을 랜덤으로 생성하는 기능
 
       _LottoMachine #createAutoTickets()_
 
-    - [ ] 로또 숫자 정렬하는 기능
+    - [x] 로또 숫자 정렬하는 기능
 
-    - [ ] 생성된 티켓 목록을 출력하는 기능
+    - [x] 생성된 티켓 목록을 출력하는 기능
 
       _OutputView #outputPurchasedTicketList(LottoTickets)_
 
