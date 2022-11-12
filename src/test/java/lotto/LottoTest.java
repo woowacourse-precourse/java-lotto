@@ -1,8 +1,10 @@
 package lotto;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -36,4 +38,11 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("로또 번호를 오름차순으로 정렬한다.")
+    @Test
+    void createLottoNumberOrderByDescending() {
+        Lotto lotto = new Lotto(Arrays.asList(6,5,4,3,2,1));
+        System.out.println(lotto.getNumbers().toString());
+        Assertions.assertThat(lotto.getNumbers().toString()).isEqualTo(List.of(1, 2, 3, 4, 5, 6).toString());
+    }
 }
