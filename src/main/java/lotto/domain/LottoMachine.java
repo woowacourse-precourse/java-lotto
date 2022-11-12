@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class LottoMachine {
     private static final int LOTTO_PRICE = 1000;
