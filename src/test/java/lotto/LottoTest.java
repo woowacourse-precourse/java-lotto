@@ -58,4 +58,31 @@ class LottoTest {
         assertThat(lotto.match(winningNumber)).isEqualTo(RewardEnum.WIN_5_BONUS);
     }
 
+    @DisplayName("로또 번호 결과 매칭 기능3")
+    @Test
+    void matchLottoAndWinningNumber3(){
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 8, 7));
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 2, 3, 4, 5, 6), 7);
+
+        assertThat(lotto.match(winningNumber)).isEqualTo(RewardEnum.WIN_4);
+    }
+
+    @DisplayName("로또 번호 결과 매칭 기능4")
+    @Test
+    void matchLottoAndWinningNumber4(){
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 8, 9, 7));
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 2, 3, 4, 5, 6), 7);
+
+        assertThat(lotto.match(winningNumber)).isEqualTo(RewardEnum.WIN_3);
+    }
+
+    @DisplayName("로또 번호 결과 매칭 기능5")
+    @Test
+    void matchLottoAndWinningNumber5(){
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+        WinningNumber winningNumber = new WinningNumber(List.of(1, 2, 8, 9, 10, 11), 7);
+
+        assertThat(lotto.match(winningNumber)).isEqualTo(RewardEnum.NONE);
+    }
+
 }
