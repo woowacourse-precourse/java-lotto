@@ -53,6 +53,7 @@
 - 당첨 통계 메시지를 출력하는 기능[o]
 - 당첨 내역을 출력하는 기능[o]
 - 수익률을 출력하는 기능[o]
+- 빈줄을 출력하는 기능[o]
 
 ### 입력 기능
 - 구입 금액을 입력하는 기능[o]
@@ -62,12 +63,10 @@
 To do list
 1. 입력 기능 다 구현[o]
 2. controller 구현[0]
-3. application test 확인
+3. application test 확인[o]
 4. 보너스 번호 예외 처리
 5. service에 getter 없애기
 6. gameResult list 반환하는 로직 정렬해서 반환하는 로직으로 리팩토링
 7. Player validation 로직 분리할지
 8. OutView 메시지 따로 분리할지
-
-fix
-랜덤값 가격이 아니라 번호대로 만드는 걸로 수정
+9. LottoGameController에 purchasePrice 로컬변수 없애기

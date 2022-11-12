@@ -23,6 +23,10 @@ public class OutputView {
     public static final String MONEY_DECIMAL_FORMAT = "###,###,###,###";
     public static final String EARNING_RATE_MESSAGE = "총 수익률은 %.1f%%입니다.";
 
+    public static void printBlankLine() {
+        System.out.println();
+    }
+
     public static void printInputPurchasePrice() {
         System.out.println(INPUT_PURCHASE_PRICE_MESSAGE);
     }
