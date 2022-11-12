@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LuckyNumber {
-    public static List<Integer> luckySix;
+    public static List<Integer> luckySix = new ArrayList<>();
     public static int luckyBonus;
 
     public static void pickSixNumber() {
