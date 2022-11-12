@@ -16,7 +16,11 @@ public class NumberGenerator {
     }
 
     public int createBonusNumbers(String inputNumber) {
-        return Integer.parseInt(inputNumber);
+        int bonusNumber = Integer.parseInt(inputNumber);
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            throw new IllegalArgumentException();
+        }
+        return bonusNumber;
     }
 
     public List<Integer> createLottoNumbers() {

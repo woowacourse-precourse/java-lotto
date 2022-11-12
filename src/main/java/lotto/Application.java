@@ -1,8 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import lotto.view.LottoManager;
 
@@ -21,11 +18,10 @@ public class Application {
         lottoManager.printLottoNumbers(lottos);
 
         // 당첨번호 입력
-        String winningNumbers = lottoManager.inputWinningNumbers();
-        List<Integer> numbers = numberGenerator.createWinningNumbers(winningNumbers);
-        WinningNumbers w = new WinningNumbers(numbers);
-
-        int bonusNumber = lottoManager.inputBonusNumber();
+        List<Integer> winningNumbers = numberGenerator.createWinningNumbers(lottoManager.inputWinningNumbers());
+        WinningNumbers w = new WinningNumbers(winningNumbers);
+        // 보너스 번호 입력
+        final int bonusNumber = numberGenerator.createBonusNumbers(lottoManager.inputBonusNumber());
 
     }
 }

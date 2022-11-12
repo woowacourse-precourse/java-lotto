@@ -9,9 +9,6 @@ public class LottoManager {
         if (purchaseMoney % 1000 > 0) {
             throw new IllegalArgumentException();
         }
-//        if (purchaseMoney.chars().allMatch(Character::isDigit)) {
-//            throw new IllegalArgumentException();
-//        }
         return purchaseMoney / 1000;
     }
 
@@ -26,8 +23,8 @@ public class LottoManager {
         return Console.readLine();
     }
 
-    public int inputBonusNumber() {
+    public String inputBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        return Integer.parseInt(Console.readLine());
+        return Console.readLine();
     }
 }
