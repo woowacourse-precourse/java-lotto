@@ -79,12 +79,12 @@ BUILD SUCCESSFUL in 0s
         - [ ] `private static boolean existBonusNumber(Lotto, WinLotto)`
 - [ ] **CLASS 4.** `enum LottoRank`
     - **Class Variables:**
-        - [ ] `FIRST(2000000000)`
-        - [ ] `SECOND(30000000)`
-        - [ ] `THIRD(1500000)`
-        - [ ] `FOURTH(50000)`
-        - [ ] `FIFTH(5000)`
-        - [ ] `LOSE(0)`
+        - [x] `FIRST(2000000000)`
+        - [x] `SECOND(30000000)`
+        - [x] `THIRD(1500000)`
+        - [x] `FOURTH(50000)`
+        - [x] `FIFTH(5000)`
+        - [x] `LOSE(0)`
         - [x] `private final int winPrice`
     - **Class Methods**
         - [x] `public LottoRank(int winPrice)`
