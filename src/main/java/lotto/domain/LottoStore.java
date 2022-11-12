@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -13,10 +12,10 @@ public class LottoStore {
         this.lottoNumberGenerateStrategy = lottoNumberGenerateStrategy;
     }
 
-    public List<Lotto> purchaseLotto(Money money) {
-        return IntStream.range(0, money.divide(LOTTO_PRICE))
+    public Lottos purchaseLotto(Money money) {
+        return new Lottos(IntStream.range(0, money.divide(LOTTO_PRICE))
                 .mapToObj(number -> createLotto())
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
     }
 
     private Lotto createLotto() {

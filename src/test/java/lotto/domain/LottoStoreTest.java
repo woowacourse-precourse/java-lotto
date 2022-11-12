@@ -27,12 +27,14 @@ public class LottoStoreTest {
     @DisplayName("로또 구입 금액을 입력하면 구입 금액에 해당하는 만큼 로또를 발행한다")
     @Test
     void purchaseLotto() {
-        List<Lotto> lottos = lottoStore.purchaseLotto(new Money(3000));
+        Lottos lottos = lottoStore.purchaseLotto(new Money(3000));
 
-        assertThat(lottos).contains(
-                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
-                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
-                new Lotto(List.of(1, 2, 3, 4, 5, 6))
+        assertThat(lottos).isEqualTo(
+                new Lottos(List.of(
+                        new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                        new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                        new Lotto(List.of(1, 2, 3, 4, 5, 6))
+                ))
         );
     }
 }
