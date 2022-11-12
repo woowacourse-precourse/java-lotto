@@ -30,6 +30,16 @@ public class Lotto {
         return this.numbers;
     }
 
+    public int getSameNumCount(List<Integer> otherNumbers) {
+        int sameNumCount = 0;
+
+        for (Integer num: numbers) {
+            if (otherNumbers.contains(num)) {
+                sameNumCount ++;
+            }
+        }
+        return sameNumCount;
+    }
 
     // TODO: 추가 기능 구현
 }
