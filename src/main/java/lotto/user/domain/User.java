@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-
-    private static final int UNIT_MONEY = 1000; // 단위 100원
     private final int inputMoney;
     private int purchaseAmount;
-    private int ticketAmount;
+    private int ticketAmount; // 롯도 장수
     private List<List<Integer>> lottos;
 
     public User(int inputMoney) {
         this.inputMoney = inputMoney;
+        this.ticketAmount = inputMoney;
+        this.purchaseAmount = inputMoney;
         this.lottos = new ArrayList<>();
     }
 
@@ -22,6 +22,24 @@ public class User {
 
     public List<List<Integer>> getLottos() {
         return lottos;
+    }
+    public int getInputMoney() {
+        return inputMoney;
+    }
+    public void setpurchaseAmount(int amount) {
+        this.purchaseAmount = amount;
+    }
+    public void setTicketAmount(int amount)
+    {
+        this.ticketAmount = amount ;
+    }
+
+    public int getPurchaseAmount() {
+        return purchaseAmount;
+    }
+
+    public int getTicketAmount(){
+        return ticketAmount;
     }
 
 }
