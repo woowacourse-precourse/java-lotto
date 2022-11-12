@@ -16,6 +16,11 @@ public class Money {
         return lottoCount;
     }
 
+    public void viewYield(Integer winnings) {
+        String yield = String.format("%.1f", winnings.doubleValue() * 100 / myMoney);
+        System.out.println("총 수익률은 " + yield + "%입니다.");
+    }
+
     private void validate(Integer money) {
         if (money < 1000) {
             throw new IllegalArgumentException();
