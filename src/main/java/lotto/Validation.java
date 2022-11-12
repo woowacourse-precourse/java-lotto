@@ -48,6 +48,7 @@ public class Validation {
     }
     // 입력된 당첨번호를 검증
     public static void validateWinningLottoNumbers(String winningNumbersWithComma) {
+        isSplitedWithComma(winningNumbersWithComma);
         List<String> winningNumbers = Arrays.stream(winningNumbersWithComma.split(",")).collect(Collectors.toList());
         for (String winningNumber : winningNumbers) {
             isDigit(winningNumber);
