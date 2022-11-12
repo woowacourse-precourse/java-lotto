@@ -105,11 +105,11 @@ public class Application {
     }
 
     static void print_integer_error() {
-        System.out.print(COMMON_ERROR_MESSAGE + " 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        System.out.print(COMMON_ERROR_MESSAGE + " 로또 번호는 6개이고, 1부터 45 사이의 숫자여야 합니다.");
     }
 
     static void print_user_lotto_error() {
-        System.out.print(COMMON_ERROR_MESSAGE + " 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        System.out.print(COMMON_ERROR_MESSAGE + " 로또 번호는 6개이고, 1부터 45 사이의 숫자여야 합니다.");
     }
 
     public static void main(String[] args) {
