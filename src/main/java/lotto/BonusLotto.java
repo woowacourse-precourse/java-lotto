@@ -1,6 +1,9 @@
 package lotto;
 
 public class BonusLotto {
+    private static final int LOTTO_START = 1;
+    private static final int LOTTO_END = 45;
+
     private final Lotto lotto;
     private final int bonus;
 
@@ -22,7 +25,7 @@ public class BonusLotto {
     }
 
     private void checkLottoRange(int bonus) {
-        if (bonus < 1 || bonus > 45) {
+        if (bonus < LOTTO_START || bonus > LOTTO_END) {
             throw new IllegalArgumentException("[ERROR] 로또 숫자 1 ~ 45 를 입력해 주세요.");
         }
     }

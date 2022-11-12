@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lottos {
+    private static final int MINIMUM_LOTTOS_SIZE = 1;
+    private static final int BONUS_CHECK_CONDITION = 5;
+
     private final List<Lotto> lottos;
 
     public Lottos(List<Lotto> lottos) {
@@ -23,14 +26,14 @@ public class Lottos {
 
     private boolean checkBonus(BonusLotto bonusLotto, Lotto lotto, int count) {
         boolean bonus = false;
-        if (count == 5) {
+        if (count == BONUS_CHECK_CONDITION) {
             bonus = bonusLotto.checkBonus(lotto);
         }
         return bonus;
     }
 
     private void checkSize(List<Lotto> lottos) {
-        if (lottos.size() < 1) {
+        if (lottos.size() < MINIMUM_LOTTOS_SIZE) {
             throw new IllegalArgumentException("[ERROR] 로또 개수가 1 미만일 수 없어요.");
         }
     }

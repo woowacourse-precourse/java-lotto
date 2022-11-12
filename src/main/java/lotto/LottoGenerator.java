@@ -6,11 +6,15 @@ import java.util.Collections;
 import java.util.List;
 
 public class LottoGenerator {
+    private static final int LOTTO_START = 1;
+    private static final int LOTTO_END = 45;
+    private static final int LOTTO_SIZE = 6;
+
     public Lottos makeLottos(int lottoTickets) {
         checkPositive(lottoTickets);
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < lottoTickets; i++) {
-            List<Integer> random = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> random = Randoms.pickUniqueNumbersInRange(LOTTO_START, LOTTO_END, LOTTO_SIZE);
             Collections.sort(random);
             lottos.add(new Lotto(random));
         }
