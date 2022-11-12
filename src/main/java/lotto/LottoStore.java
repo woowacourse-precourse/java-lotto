@@ -58,13 +58,4 @@ public class LottoStore {
             throw new IllegalArgumentException();
         }
     }
-    private static boolean isParsable(String input) {
-        try {
-            Integer.parseInt(input);
-            return true;
-        } catch (NumberFormatException e) {
-            System.out.println("[ERROR] Can't parse to Int");
-            return false;
-        }
-    }
 }
