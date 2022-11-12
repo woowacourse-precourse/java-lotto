@@ -1,7 +1,7 @@
 package lotto.utils;
 
 import static lotto.utils.NumberAdapter.getBonusNumber;
-import static lotto.utils.NumberAdapter.getLotteryNumbers;
+import static lotto.utils.NumberAdapter.getWinningNumber;
 import static lotto.utils.NumberAdapter.getWinningNumberWithBonusNumber;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -18,7 +18,7 @@ public class NumberAdapterTest {
         String validInput = "1,2,3,4,5,6";
 
         //when
-        List<Integer> result = getLotteryNumbers(validInput);
+        List<Integer> result = getWinningNumber(validInput);
 
         //then
         assertThat(result).isEqualTo(List.of(1, 2, 3, 4, 5, 6));

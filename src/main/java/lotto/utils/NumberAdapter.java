@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class NumberAdapter {
-    public static List<Integer> getLotteryNumbers(String beforeLotteryNumbers) {
-        hasValidType(beforeLotteryNumbers);
-        String[] tempLotteryNumbers = beforeLotteryNumbers.split(LOTTERY_NUMBER_SEPARATOR);
+    public static List<Integer> getWinningNumber(String beforeWinningNumber) {
+        hasValidType(beforeWinningNumber);
+        String[] tempLotteryNumbers = beforeWinningNumber.split(LOTTERY_NUMBER_SEPARATOR);
         int[] afterLotteryNumbers = Arrays.stream(tempLotteryNumbers).mapToInt(Integer::parseInt).toArray();
         return Arrays.stream(afterLotteryNumbers)
                 .boxed()
