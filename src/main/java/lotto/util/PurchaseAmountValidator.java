@@ -10,4 +10,8 @@ public class PurchaseAmountValidator {
         return Integer.parseInt(purchaseAmount) > 0;
     }
 
+    public boolean isDivisibleBy1000(String purchaseAmount) {
+        return Integer.parseInt(purchaseAmount) % 1000 != 0;
+    }
+
 }
