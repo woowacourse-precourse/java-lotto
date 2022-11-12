@@ -21,6 +21,10 @@ public class Comparator {
         this.lottoTickets = lottoTickets;
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
+
+        for (Prize prize: Prize.values()) {
+            this.winningTickets.put(prize, 0);
+        }
     }
 
     public LinkedHashMap<Prize, Integer> countWinningTickets() {
