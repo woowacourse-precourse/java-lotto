@@ -24,6 +24,12 @@ public class WiningNumber {
         }
     }
 
+    private void validateOverlapNumbers(List<Integer> numbers){
+        if (numbers.stream().distinct().count()!=6){
+            System.out.println("[ERROR] 로또 번호에 중복이 있으면 안됩니다.");
+        }
+    }
+
     public void setBonusNumber(int bonusNumber) {
         this.bonusNumber = bonusNumber;
     }
