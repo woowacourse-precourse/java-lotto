@@ -56,13 +56,14 @@ public class Output {
         }
     }
 
-    public int calcProfitRate() {
-        int entirePurchaseLotto = input.getNumber() * unitPrice;
-        int entireProfit = 0;
+    public double calcProfitRate(int number) {
+        double entirePurchaseLotto = number * unitPrice;
+        double entireProfit = 0;
         for (int i = 0; i < rank.length; i++) {
             entireProfit += rankNumber.get(i) * rank[i].getPrize();
         }
-        return (entireProfit / entirePurchaseLotto) * changePercent;
+        String profitRateRaw = String.format("%.1f",(entireProfit/entirePurchaseLotto)*100);
+        return Double.parseDouble(profitRateRaw);
     }
 
     public void printProfitRate(int number) {
