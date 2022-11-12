@@ -48,12 +48,7 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 번호의 발행에서 예외가 발생한다.")
-    @Test
-    void issueLottoByException() {
-        assertThatThrownBy(() -> new Issue(1000).createLottoNum())
-                .isInstanceOf(IllegalArgumentException.class);
-    }
+
 
     // 아래에 추가 테스트 작성 가능
 }
