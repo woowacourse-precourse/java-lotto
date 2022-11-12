@@ -28,4 +28,13 @@ public class InputReader {
     multiple1000Validator.validate(inputToInt);
     return inputToInt;
   }
+
+  public List<Integer> readWinningNumber() {
+    String input = Console.readLine();
+    List<Integer> inputs = commaAndNumberValidator.validate(input);
+    numberLengthValidator.validate(inputs);
+    rangeValidator.validate(inputs);
+    duplicationValidator.validate(inputs);
+    return inputs;
+  }
 }
