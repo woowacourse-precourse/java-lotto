@@ -9,12 +9,24 @@ import java.util.List;
 
 public class Application {
     public enum Grade {
-        THREE, THREEANDBONUS, FOUR, FOURANDBONUS, FIVE, FIVEANDBONUS, SIX, SIXANDBONUS
+        THREE(5000),
+        FOUR(50000),
+        FIVE(1500000),
+        FIVEANDBONUS(30000000),
+        SIX(2000000000);
+
+        private final int grade;
+
+        Grade(int grade) {
+            this.grade = grade;
+        }
     }
-    private static List<Lotto> userLottoNum = new ArrayList<>();
-    private static List<Integer> lottoNumbers = new ArrayList<>();
-    private static int lottoBonusNumber;
-    private static HashMap<Grade,Integer> lottoStatistics = new HashMap<>();
+
+    private static List<Lotto> userLottoNum = new ArrayList<>(); // 사용자 구매 로또 번호
+    private static List<Integer> lottoNumbers = new ArrayList<>(); // 당첨 번호 6개 숫자
+    private static int lottoBonusNumber; // 보너스 번호
+    private static HashMap<Grade,Integer> lottoStatistics = new HashMap<>(); // 당첨 정보
+    private static double earningRate; // 수익률
 
     // 구입금액 입력
     private static int inputBuyMoney(){
@@ -82,7 +94,7 @@ public class Application {
             boolean checkBonus = userLotto.isBonusNumber(lottoBonusNumber);
             int sameCnt = userLotto.getLottoNumber(lottoNumbers);
             if(checkBonus){
-                saveCalculateLottoIncludeBonus(sameCnt+1);
+                saveCalculateLottoIncludeBonus(sameCnt);
             } else if(checkBonus==false){
                 saveCalculateLottoNotIncludeBonus(sameCnt);
             }
@@ -91,14 +103,8 @@ public class Application {
 
     // 당첨 내역 저장 - 보너스 번호 있는 경우
     private static void saveCalculateLottoIncludeBonus(int sameCnt){
-        if(sameCnt==3){
-            lottoStatistics.put(Grade.THREEANDBONUS, lottoStatistics.getOrDefault(Grade.THREEANDBONUS,0)+1);
-        } else if(sameCnt==4){
-            lottoStatistics.put(Grade.FOURANDBONUS, lottoStatistics.getOrDefault(Grade.FOURANDBONUS,0)+1);
-        } else if(sameCnt==5){
+        if(sameCnt==5){
             lottoStatistics.put(Grade.FIVEANDBONUS, lottoStatistics.getOrDefault(Grade.FIVEANDBONUS,0)+1);
-        } else if(sameCnt==6){
-            lottoStatistics.put(Grade.SIXANDBONUS, lottoStatistics.getOrDefault(Grade.SIXANDBONUS,0)+1);
         }
     }
 
@@ -113,6 +119,15 @@ public class Application {
         } else if(sameCnt==6){
             lottoStatistics.put(Grade.SIX, lottoStatistics.getOrDefault(Grade.SIX,0)+1);
         }
+    }
+
+    // 수익률 계산
+    private static void calculateEarningRate(){
+        int totalEarningMoney = 0;
+        for(Grade grade : lottoStatistics.keySet()){
+
+        }
+        earningRate = (userLottoNum.size()*1000/totalEarningMoney)*100;
     }
 
     public static void main(String[] args) {
@@ -133,5 +148,8 @@ public class Application {
 
         // 당첨 통계 저장
         calculateLottoGrade();
+
+        // 수익률 계산
+
     }
 }
