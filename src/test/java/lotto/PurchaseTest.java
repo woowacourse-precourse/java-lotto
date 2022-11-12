@@ -21,4 +21,11 @@ public class PurchaseTest {
         assertThatThrownBy(() -> new Purchase("14500"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("구입 금액에 따른 로또 개수를 확인한다.")
+    @Test
+    void checkLottoAccordingToPurchase() {
+        Purchase money = new Purchase("14000");
+        assertThat(money.lottoToGet()).isEqualTo(14);
+    }
 }
