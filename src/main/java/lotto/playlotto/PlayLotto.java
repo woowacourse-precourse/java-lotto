@@ -67,3 +67,19 @@ public class PlayLotto extends Input {
             equal_count(lotto.returnNumbers(), user_lottery);
         }
     }
+
+    public void equal_count(List<Integer> win_lottery, List<Integer> user_lottery){
+
+        int count = 0;
+        int bonus = 0;
+        for(int i = 0; i < Size.LOTTERY_SIZE.getSize(); i++){
+
+            if(check_num(win_lottery, user_lottery.get(i))){ //기본 번호 체크
+                count += 1;
+            }
+            if(check_bonus(win_lottery, this.bonus)){  //보너스 번호 체크
+                bonus += 1;
+            }
+        }
+        check_result(count, bonus);
+    }
