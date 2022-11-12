@@ -17,7 +17,8 @@ public class LottoGameMessage {
         System.out.println(lottoCount + PURCHASE_COUNT_MESSAGE);
     }
 
-
-
-
+    public void printWinningNumberMessage(){
+        System.out.println(WINNING_NUMBER_MESSAGE);
+    }
+    
 }
