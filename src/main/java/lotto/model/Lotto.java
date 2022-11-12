@@ -21,4 +21,11 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 6개의 숫자를 입력해주세요");
         }
     }
+
+    private void NotDuplicate(List<Integer> numbers) {
+        Set<Integer> set = new HashSet<Integer>(numbers);
+        if(set.size()!=numbers.size()){
+            throw new IllegalArgumentException("[ERROR] 서로 다른 숫자를 입력해주세요");
+        }
+    }
 }
