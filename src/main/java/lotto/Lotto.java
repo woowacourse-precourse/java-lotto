@@ -21,6 +21,13 @@ public class Lotto {
         }
     }
 
+    private boolean hasSixNumbers(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            return false;
+        }
+        return true;
+    }
+
     private boolean hasDuplicateNumber(List<Integer> numbers, Integer number) {
         if (Collections.frequency(numbers, number) != 1) {
             return true;
