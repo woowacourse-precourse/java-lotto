@@ -5,14 +5,14 @@
 - +[x] 로또 구입 금액을 입력받는 기능  
 - +[x] 당첨번호를 입력받는 기능  
   - +[x] 입력된 당첨번호들을 파싱하는 기능  
-  - +[ ] 파싱된 당첨번호들의 앞뒤 공백을 제거하는 기능
+  - +[x] 파싱된 당첨번호들의 앞뒤 공백을 제거하는 기능
 - +[x] 보너스 번호를 입력받는 기능  
 ### 입력시 예외처리
 - +[x] 금액 입력 시 예외처리  
-  - +[x] 숫자가 아닐 경우 예외처리 - ValidationInController.checkNumericValue()  
+  - +[x] 숫자가 아닐 경우 예외처리 - ValidationInView.checkNumericValue()  
   - +[x] 입력받은 숫자가 1000원 단위가 아닐 경우 예외처리 - ValidationInDomain.checkDividedByThousand()  
 - +[x] 당첨번호/보너스번호 입력시 예외처리  
-  - +[x] 숫자가 아닌 문자를 입력한 경우 예외처리 - ValidationInController.checkNumericValue(), ValidationInController.checkNumericValueList()  
+  - +[x] 숫자가 아닌 문자를 입력한 경우 예외처리 - ValidationInView.checkNumericValue(), ValidationInView.checkNumericValueList()  
   - +[x] 1~45가 아닌 번호를 입력한 경우 예외처리 - ValidationInDomain.checkNumberRange()  
   - +[x] 6개의 수 중 중복인 수가 있을 경우 예외처리 - ValidationInDomain.checkDuplicatedNumber()  
   - +[x] 보너스번호가 당첨번호와 중복될 경우 예외처리 - ValidationInDomain.checkBonusNumberDuplication()  
