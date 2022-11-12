@@ -1,8 +1,11 @@
 package lotto;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -32,5 +35,31 @@ class LottoTest {
 
         MakeLottoNumber makeLottoNumber = new MakeLottoNumber();
         Lotto lotto = new Lotto(makeLottoNumber.returnLottoNumber());
+    }
+
+    @DisplayName("input 값이 숫자가 아니면 예외처리")
+    @Test
+    void isCashInt() {
+        String input = "ABBD";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        Cash cash = new Cash();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            cash.Input();
+        });
+    }
+
+    @DisplayName("1000원 단위로 입력되지 않으면 예외처리")
+    @Test
+    void isCashCheck() {
+        String input = "7999";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        Cash cash = new Cash();
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            cash.Input();
+        });
     }
 }
