@@ -13,7 +13,5 @@ public class User {
 
     }
 
-    private boolean isNumber(String purchaseAmount) {
-        return purchaseAmount.chars().allMatch(Character::isDigit);
-    }
+
 }
