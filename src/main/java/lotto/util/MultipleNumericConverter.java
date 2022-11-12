@@ -3,7 +3,6 @@ package lotto.util;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import lotto.service.OutputService;
 
 public class MultipleNumericConverter implements Converter<String, List<Integer>> {
 
@@ -13,16 +12,15 @@ public class MultipleNumericConverter implements Converter<String, List<Integer>
     @Override
     public List<Integer> convert(String target) {
         return Arrays.stream(target.split(REGEX))
-            .map(this::convertToNumber)
+            .map(this::convertToNumeric)
             .collect(Collectors.toList());
     }
 
-    private Integer convertToNumber(String target) {
+    private Integer convertToNumeric(String target) {
         try {
             return Integer.parseInt(target);
         } catch (NumberFormatException e) {
-            OutputService.printErrorMessage(ERROR_MESSAGE + target);
-            throw new IllegalArgumentException(e);
+            throw new IllegalArgumentException(ERROR_MESSAGE + target, e);
         }
     }
 
