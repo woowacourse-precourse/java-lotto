@@ -1,10 +1,13 @@
 package lotto.service;
 
+import lotto.Ranking;
 import lotto.domain.Lotto;
 import lotto.model.Computer;
 import lotto.model.Player;
 
 public class MatchLotteryService {
+
+    private static final int FIVE_MATCH = 5;
 
     private final Player player;
     private final Computer computer;
@@ -24,8 +27,8 @@ public class MatchLotteryService {
 
     }
 
-    private boolean isFiveMatch(){
-        return false;
+    private boolean isFiveMatch(int equalNumber){
+        return equalNumber == FIVE_MATCH;
     }
 
     private void separateByBonusNumber(){
