@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputLotto {
-    int money;
+    double money;
     List<Integer> winNumbers;
     int bonusNumber;
 
     void inputMoney() {
         String input = Console.readLine();
         validateNumber(input);
-        money = validateDivideThousand(Integer.parseInt(input));
+        money = validateDivideThousand(Double.parseDouble(input));
     }
 
     void inputWinNumber() {
@@ -82,7 +82,7 @@ public class InputLotto {
         }
     }
 
-    int validateDivideThousand(int money) {
+    double validateDivideThousand(double money) {
         if (money % 1000 != 0) {
             System.out.println("[ERROR] 1000단위의 숫자를 입력해 주세요.");
             throw new IllegalArgumentException();

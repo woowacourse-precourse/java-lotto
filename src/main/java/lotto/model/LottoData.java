@@ -10,8 +10,8 @@ public class LottoData {
     List<Lotto> allLotto;
     LottoCalculate lottoCalculate = new LottoCalculate();
 
-    LottoData(int money) {
-        this.lottoAmount = money / 1000;
+    LottoData(double money) {
+        this.lottoAmount = (int) (money / 1000);
         allLotto = new ArrayList<>(lottoAmount);
     }
 
