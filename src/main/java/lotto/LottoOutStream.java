@@ -16,4 +16,10 @@ public class LottoOutStream {
     public static void outStreamRateOfReturn(BigDecimal rateOfReturn) {
         System.out.print("총 수익률은 " + rateOfReturn + "%입니다.");
     }
+
+    public static void outStreamLottoesNumber(List<Lotto> lottoes) {
+        for (Lotto lotto: lottoes) {
+            lotto.showNumbers();
+        }
+    }
 }
