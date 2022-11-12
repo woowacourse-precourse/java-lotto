@@ -18,11 +18,11 @@ public class Amount {
     }
 
     private void validate(int inputAmount) {
-        if (inputAmount % lottoPrice != 0) {
-            throw new IllegalArgumentException(Bug.ERROR + Bug.AMOUNT_DIVIDED_NO_REMAINING);
-        }
         if (inputAmount < lottoPrice) {
             throw new IllegalArgumentException(Bug.ERROR + Bug.AMOUNT_MORE_THAN_THOuSAND);
+        }
+        if (inputAmount % lottoPrice != 0) {
+            throw new IllegalArgumentException(Bug.ERROR + Bug.AMOUNT_DIVIDED_NO_REMAINING);
         }
     }
 

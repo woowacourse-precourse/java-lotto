@@ -17,9 +17,16 @@ public class AmountTest {
     @DisplayName("1000원으로 나누어 떨어지지 않으면 예외가 발생한다")
     @Test
     void inputNumberDividedBy1000RemainingNumber() {
-        amount = new Amount(12344);
 
-        assertThatThrownBy(() -> amount.getPurchasesQuantity())
+        assertThatThrownBy(() -> new Amount(12344))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("1000원보다 적은 금액을 넣으면 예외가 발생한다")
+    @Test
+    void inputNumberRatherThan1000() {
+
+        assertThatThrownBy(() -> new Amount(567))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -31,6 +38,7 @@ public class AmountTest {
         assertThat(amount.getPurchasesQuantity()).isEqualTo(10);
     }
 
+    @DisplayName("8000원을 투입하고 5등하면 수익률은 62.5%다")
     @Test
     void doCalculateEarningRate() {
         amount = new Amount(8000);
