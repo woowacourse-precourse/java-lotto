@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 
 public class Converter {
+    private static String SEPARATOR_REGEX = ",";
     public static int convertToInteger(String input) {
         try {
             return Integer.parseInt(input);
@@ -18,7 +19,7 @@ public class Converter {
     }
 
     public static List<Integer> convertToIntegerList(String input) {
-        List<String> splitedInput = List.of(input.split(","));
+        List<String> splitedInput = List.of(input.split(SEPARATOR_REGEX));
 
         try {
             List<Integer> numbers = splitedInput.stream()
