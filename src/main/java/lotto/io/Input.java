@@ -1,4 +1,4 @@
-package lotto.ui;
+package lotto.io;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
@@ -7,12 +7,14 @@ import lotto.ValidateUtils;
 
 public class Input {
 
-     public void inputUserPay() {
+     public static int inputUserPay() {
          String money = Console.readLine().trim();
+         ValidateUtils.checkTypeNumber(money);
          ValidateUtils.checkMoneyUnit(Integer.parseInt(money));
+         return Integer.parseInt(money);
      }
 
-     public List<Integer> inputWinLottoNumbers() {
+     public static List<Integer> inputWinLottoNumbers() {
          String answerList = Console.readLine().trim();
          String[] answers = answerList.split(",");
          ValidateUtils.checkDelimiter(answers.length);
@@ -27,9 +29,11 @@ public class Input {
          return answerLotto;
      }
 
-     public void inputBonusLottoNumber() {
+     public static int inputBonusLottoNumber() {
          String bonus = Console.readLine().trim();
-         ValidateUtils.checkArraySize(1, 6);
+         ValidateUtils.checkTypeNumber(bonus);
+         ValidateUtils.checkArraySize(bonus.length(), 1);
          ValidateUtils.checkRangeNumber(Integer.parseInt(bonus));
+         return Integer.parseInt(bonus);
      }
 }
