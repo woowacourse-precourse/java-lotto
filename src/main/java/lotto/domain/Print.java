@@ -81,11 +81,11 @@ public class Print {
 			lottoset.addAll(lotto); // 한번 할 때마다 나온 로또 값 6개를 lottoset에 담기
 
 			lottoset.retainAll(inputnumberset);
-			rankCount(lotto, lottoset);
+			countRank(lotto, lottoset);
 		}
 	}
 
-	public void rankCount(List<Integer> lotto, HashSet<Integer> lottoSet) {
+	public void countRank(List<Integer> lotto, HashSet<Integer> lottoSet) {
 		int count = 0;
 		if (lottoSet.size() == rank.FIFTH.getValue()) {
 			count = rankmap.getOrDefault(5, 0) + 1;

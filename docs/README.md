@@ -6,7 +6,7 @@
     * 로또 번호 오름차순 정렬하는 기능 - NumberGenerator#ascendingOrder()
 * 입력
     1. 로또 구입 금액 입력 - Application#askTotalPrice()
-        * 로또 구입 금액/1000 을 하여 로또 개수 구하는 기능 - LottoCount#LottoCount()
+        * 로또 구입 금액/1000 을 하여 로또 개수 구하는 기능 - CountLotto#CountLotto()
 
             * 예외1 : 입력시 숫자가 아닐 경우 에러메시지([ERROR] 금액(숫자)를 입력해주세요.) 하고 while구문을 통해서 다시 입력받도록 함 - Application#validateNumber()
             * 예외2 : 1000미만의 수 입력시 IllegalArgumentException 발생, 에러메시지([ERROR] 1000원 이상의 금액만 입력하세요.) - LottoCount#validateNumber()
@@ -21,7 +21,7 @@
                 * 에러메시지([ERROR] 숫자만 입력하세요.) 
                 * 에러메시지([ERROR] 1-45사이의 숫자만 입력하세요.) 
             * 예외3 : 입력한 숫자의 개수가 6개가 아닐 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 숫자의 개수가 6개가 아닙니다.) - Lotto#validate()
-            * 예외4 : 입력 숫자 6개 중 하나라도 중복되는 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 서로 다른 숫자 6개를 입력하세요.) - Lotto#numbersNoRepeat()
+            * 예외4 : 입력 숫자 6개 중 하나라도 중복되는 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 서로 다른 숫자 6개를 입력하세요.) - Lotto#noRepeatNumber()
         
     3. 보너스 번호 입력  - Application#askBonusNumber()
         * 사용자 입력 보너스 번호 리스트에 저장하는 기능 - BonusNumber#BonusNumber()
@@ -31,17 +31,23 @@
                 * 에러메시지([ERROR] 숫자만 입력하세요.) 
                 * 에러메시지([ERROR] 1-45사이의 숫자만 입력하세요.) 
           
-            * 예외2 : 입력 숫자 6개와 보너스 번호가 중복되는 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 보너스 번호가 입력된 당첨 번호 6개와 중복됩니다.) - BonusNumber#bonusNoRepeat()
+            * 예외2 : 입력 숫자 6개와 보너스 번호가 중복되는 경우 IllegalArgumentException 발생, 에러메시지([ERROR] 보너스 번호가 입력된 당첨 번호 6개와 중복됩니다.) - BonusNumber#noBonusRepeat()
        
 * 출력
     1. 발행한 로또 수량 및 번호 출력 - Print#printNumberAll()
     2. 당첨 내역 출력 - Print#printWin()
         * 1-5등까지의 당첨조건에 각각 몇번 해당하는지 세어 주는 기능 - Print#countWin()
-            * enum을 활용해서 각각 몇번 해당하는지 세어주는 기능 - Print#rankCount()
+            * enum을 활용해서 각각 몇번 해당하는지 세어주는 기능 - Print#countRank()
     3. 수익률 구하기 위해서 전체 금액 합산 / 로또구입금액 계산하는 기능 구현 - Print#printProfit()
         * 수익률 계산한값을 소수점 둘째자리에서 반올림 해준다음 출력하는 기능 구현 - Print#printProfitRound()
     
-
+------------
+## 단위 테스트 구현(도메인에 작성)
+1. 핵심 로직
+    * 
+2. UI 로직
+    * 예외 체크
+        * 
 ------------
 ## 기능 요구 사항
 * 로또 번호 숫자 범위 1-45까지

@@ -2,11 +2,11 @@ package lotto.domain;
 
 import java.util.regex.Pattern;
 
-public class LottoCount {
+public class CountLotto {
 	private int price = 0;
 	public int lottoNum = 0;
 
-	public LottoCount(int price) {
+	public CountLotto (int price) {
 		this.price = price;
 
 		validateNumber(price);

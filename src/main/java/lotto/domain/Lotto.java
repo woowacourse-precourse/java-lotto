@@ -8,7 +8,7 @@ public class Lotto {
 
 	public Lotto(List<Integer> numbers) { // 사용자 입력 숫자 6개를 받아서 numbers 인스턴스 final 변수에 저장
 		validate(numbers);
-		numbersNoRepeat(numbers);
+		noRepeatNumbers(numbers);
 		this.numbers = numbers;
 	}
 
@@ -18,7 +18,7 @@ public class Lotto {
 		}
 	}
 
-	public void numbersNoRepeat(List<Integer> numbers) { // 숫자가 중복되는지 확인하기
+	public void noRepeatNumbers(List<Integer> numbers) { // 숫자가 중복되는지 확인하기
 		HashSet<Integer> numbersSet = new HashSet<>();
 		numbersSet.addAll(numbers);
 

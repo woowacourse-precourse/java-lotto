@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
-import lotto.domain.LottoCount;
+import lotto.domain.CountLotto;
 import lotto.domain.NumberGenerator;
 import lotto.domain.Print;
 import camp.nextstep.edu.missionutils.Console;
@@ -20,7 +20,7 @@ public class Application {
 
 		purchasePrice = askTotalPrice(); // 사용자 입력으로 금액 입력받기
 
-		LottoCount lottocount = new LottoCount(purchasePrice);
+		CountLotto lottocount = new CountLotto(purchasePrice);
 		lottoNum = lottocount.lottoNum; // 사용자 입력으로 받은 금액 / 1000을 해서 로또 개수 구하기
 
 		NumberGenerator numbergenerator = new NumberGenerator();
