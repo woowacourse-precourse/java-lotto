@@ -15,12 +15,15 @@ public class Application {
             throw new IllegalArgumentException("문자를 입력하십시오.");
     }
 
+    public static boolean isComma(char charAtIndex) { return charAtIndex == ','; }
+    public static boolean isNumber(char charAtIndex) { return (charAtIndex >= '0' && charAtIndex <= '9'); }
+
     public static void isCommaAndNumber(String winningNumberInput) {
         int inputLength = winningNumberInput.length();
         for (int index = 0; index < inputLength; index++) {
             char charAtIndex = winningNumberInput.charAt(index);
-            if (charAtIndex >= '0' && charAtIndex <= '9') continue;
-            if (charAtIndex == ',') continue;
+            if (isComma(charAtIndex)) continue;
+            if (isNumber(charAtIndex)) continue;
             throw new IllegalArgumentException("쉼표와 숫자 외 다른 문자는 입력이 불가합니다.");
         }
     }
