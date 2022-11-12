@@ -1,7 +1,10 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.stream.Stream;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -28,7 +31,10 @@ public class LottoInputOutput {
         try {
             interger = Integer.parseInt(string);
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
+            System.out.println("[ERROR] 숫자를 입력해주세요.");
+            throw new NoSuchElementException();
+            //TODO: 출력 후 종료
+            //throw new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
         }
         return interger;
     }
@@ -88,6 +94,27 @@ public class LottoInputOutput {
         String bonusNumString = Console.readLine();
         int bonusNum = stringToIntAndCheckError(winningNumber, bonusNumString);
         return bonusNum;
+    }
+
+    public void printWinningList(Map<LottoPrize, Integer> prizeList) {
+        LottoPrize[] prizeValues = LottoPrize.values();
+
+        for(int i =prizeValues.length -2;i>=0;i--)
+        {
+            String str = prizeValues[i].getDescription();
+            System.out.println(str + " - " + prizeList.get(prizeValues[i]) + "개");
+        }
+    }
+
+    public void printWinningRate(int winMoney, int money) {
+        DecimalFormat roundBySecond = new DecimalFormat("##.#");
+        double winRate = ((double)winMoney/(double)money) * 100;
+
+        System.out.println("총 수익률은 " + roundBySecond.format(winRate) +"%입니다.");
+    }
+
+    public void printLottoCount(int lottoCount) {
+        System.out.println(lottoCount + "개를 구매했습니다.");
     }
 
 }
