@@ -33,6 +33,20 @@ public class UserInput {
         return winningNumber;
     }
 
+    public static int writeBonusNumber(List<Integer> winningNumber) {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String userInput = Console.readLine();
+        System.out.println();
+
+        hasOnlyNumber(userInput);
+
+        int bonusNumber = Integer.valueOf(userInput);
+        validNumber(bonusNumber);
+        hasSameNumber(bonusNumber, winningNumber);
+
+        return bonusNumber;
+    }
+
     private static List<Integer> stringToNumbers(String input) {
         String[] stringNumbers = input.split(",");
         List<Integer> numbers = new ArrayList<>();

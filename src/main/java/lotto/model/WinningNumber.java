@@ -7,7 +7,8 @@ public class WinningNumber {
     private List<Integer> numbers = new ArrayList<>();
     private int bonusNumber;
 
-    public WinningNumber(String numbers) {
+    public WinningNumber(List<Integer> numbers) {
+        this.numbers = numbers;
     }
 
     public void setBonusNumber(int number) {
