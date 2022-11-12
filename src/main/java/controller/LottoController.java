@@ -30,6 +30,8 @@ public class LottoController {
         int lottoCount = buyLotto();
         System.out.println();
 
+        ArrayList<Lotto> lottos = publishLotto(lottoCount);
+
 
 
     }
@@ -43,6 +45,18 @@ public class LottoController {
         validator.validateMoneyUnit(userMoney);
         Money money = new Money(userMoney);
         return money.getLottoCount();
+    }
+
+    public ArrayList<Lotto> publishLotto(int count) {
+        ArrayList<Lotto> lottos = new ArrayList<>();
+        System.out.printf("%d개를 구매했습니다.\n", count);
+        LottoMaker lottoMaker = new LottoMaker();
+        for (int i = 0; i < count; i++) {
+            Lotto lotto = lottoMaker.makeLotto();
+            lottos.add(lotto);
+            System.out.println(lotto.getNumbers());
+        }
+        return lottos;
     }
 
    
