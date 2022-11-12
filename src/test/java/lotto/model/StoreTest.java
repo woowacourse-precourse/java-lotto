@@ -32,11 +32,11 @@ public class StoreTest {
     @DisplayName("유효한 당첨번호와 보너스 번호를 입력받고 유효성 검사를 통과한다.")
     void checkPickWinningNumberWithBonusNumberByValidInput() {
         //given
-        String validInput = "1,2,3,4,5,6\n7";
-        InputStream in = new ByteArrayInputStream(validInput.getBytes());
-        System.setIn(in);
+        String beforeWinningNumber = "1,2,3,4,5,6";
+        String beforeBonusNumber = "7";
 
         //when, then
-        assertThatNoException().isThrownBy(()->testStore.pickWinningNumberWithBonusNumber());
+        assertThatNoException().isThrownBy(
+                () -> testStore.pickWinningNumberWithBonusNumber(beforeWinningNumber, beforeBonusNumber));
     }
 }
