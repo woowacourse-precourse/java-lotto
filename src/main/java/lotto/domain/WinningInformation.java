@@ -3,7 +3,7 @@ package lotto.domain;
 import java.util.List;
 
 public class WinningInformation {
-    private ValidationInDomain validator = new ValidationInDomain();
+    private final ValidationInDomain validator = new ValidationInDomain();
     private List<Integer> winningNumbers;
     private int bonusNumber;
 
@@ -14,8 +14,8 @@ public class WinningInformation {
     public void setWinningNumbers(List<Integer> winningNumbers) {
         validator.checkNumberOfNumbers(winningNumbers);
         validator.checkNumbersDuplication(winningNumbers);
-        for(int i = 0; i < winningNumbers.size(); i++){
-            validator.checkNumberRange(winningNumbers.get(i));
+        for(int winningNumber : winningNumbers){
+            validator.checkNumberRange(winningNumber);
         }
         this.winningNumbers = winningNumbers;
     }
