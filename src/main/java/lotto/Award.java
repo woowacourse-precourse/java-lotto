@@ -7,12 +7,12 @@ import java.util.Optional;
 public class Award {
     private static Award award;
 
-    private final int prizeStandard = 3;
     private HashMap<Winning, Integer> prize;
     private final LotteryMachine lotteryMachine = LotteryMachine.getInstance();
 
     private Award() {
         prize = new HashMap<>();
+
         for(Winning winning : Winning.values()) {
             prize.put(winning, 0);
         }
@@ -33,7 +33,7 @@ public class Award {
         for(Lotto lotto : myLotteries) {
             int compare = lotto.compare(winningLottery);
 
-            if(compare < 3) {
+            if(compare < LottoConstant.WINNING_STANDARD.value) {
                 continue;
             }
 
@@ -41,7 +41,7 @@ public class Award {
             prize.put(winning, Optional.ofNullable(prize.get(winning)).orElse(0) + 1);
         }
 
-        printResult(myLotteries.size() * 1000);
+        printResult(myLotteries.size() * LottoConstant.PRICE.value);
     }
 
     private void printResult(int money) {

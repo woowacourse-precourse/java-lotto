@@ -8,7 +8,6 @@ import java.util.List;
 
 public class Shop {
 
-    private static final int LOTTO_PRICE = 1000;
     private static Shop shop;
 
     private Shop() {}
@@ -46,7 +45,7 @@ public class Shop {
     }
 
     private void validate(int money) {
-        if (money % LOTTO_PRICE > 0) {
+        if (money % LottoConstant.PRICE.value > 0) {
             throw new IllegalArgumentException("[ERROR] 1,000원 단위로 나뉘지 않습니다");
         }
     }
@@ -57,12 +56,12 @@ public class Shop {
         while (money > 0) {
             lotteryTickets.add(
                     new Lotto(Randoms.pickUniqueNumbersInRange(
-                            LottoConstant.LOTTO_START.value,
-                            LottoConstant.LOTTO_END.value,
-                            LottoConstant.LOTTO_NUMBER_COUNT.value
+                            LottoConstant.START_NUMBER.value,
+                            LottoConstant.END_NUMBER.value,
+                            LottoConstant.NUMBER_COUNT.value
                     )));
 
-            money -= LOTTO_PRICE;
+            money -= LottoConstant.PRICE.value;
         }
 
         return lotteryTickets;
