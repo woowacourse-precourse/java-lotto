@@ -48,6 +48,26 @@ public class LottoInStream {
         return numbers;
     }
 
+    public static int readToGetLottoBonus() {
+        System.out.print(_input_bonus_number_str);
+
+        String line = readline();
+
+        if (isNullOrEmptyString(line)) {
+            throw new IllegalArgumentException();
+        }
+        if (line.length() != 1) {
+            throw new IllegalArgumentException();
+        }
+
+        char ch = line.charAt(0);
+
+        if (!isNumber(ch)) {
+            throw new IllegalArgumentException();
+        }
+        return (charToDigit(ch));
+    }
+
     private static boolean isNumber(char ch) {
         if (ch >= '0' && ch <= '9') {
             return true;
