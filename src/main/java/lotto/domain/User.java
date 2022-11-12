@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static lotto.domain.Rank.*;
 
@@ -12,7 +13,7 @@ public class User {
     private List<Lotto> lottos = new ArrayList<>();
 
     public User(String userMoney) {
-        checkInputMoneyIsValid(userMoney);
+        shouldBeValidInput(userMoney);
         this.userMoney =  Integer.parseInt(userMoney);
         setNumOfLotto();
     }
@@ -22,13 +23,9 @@ public class User {
         isDivided(money);
     }
 
-    private void isNumeric(String money) {
-        try {
-            if (!(money != null && money.matches("[-+]?\\d*\\.?\\d+"))) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] 금액 입력이 잘못되었습니다.");
+    private void isNumericOrThrows(String money) {
+        if (!(money != null && money.matches("[-+]?\\d*\\.?\\d+"))) {
+           throw new IllegalArgumentException("[ERROR] 금액 입력이 잘못되었습니다.");
         }
     }
     private void isDivided(String inputMoney) {
