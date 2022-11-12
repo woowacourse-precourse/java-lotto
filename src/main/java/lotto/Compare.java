@@ -3,22 +3,32 @@ package lotto;
 import java.util.List;
 
 // 로또 번호 비교
-public class compareNumbers {
+public class Compare {
 
-    public static List<Integer> userNumber;
-    public static List<Integer> lottoNumber;
+    public static final int NUMBER_SIZE = 6;
 
-    public static final String FIRST_PLACE = "6개 일치 (2,000,000,000원)";
-    public static final String SECOND_PLACE = "5개 일치, 보너스 볼 일치 (30,000,000원)";
-    public static final String THIRD_PLACE = "5개 일치 (1,500,000원)";
-    public static final String FOURTH_PLACE = "4개 일치 (50,000원)";
-    public static final String FIFTH_PLACE = "3개 일치 (5,000원)";
+    public Compare() {
 
-    public compareNumbers(List<Integer> userNumber, List<Integer> lottoNumber) {
-        this.userNumber = userNumber;
-        this.lottoNumber = lottoNumber;
     }
 
-    
+    public int compareNumbers(List<Integer> winNumber, List<Integer> lottoNumber) {
+        int sameNumber = 0;
+        int sameBonusNumber = -1;
+
+        for(int i = 0; i < NUMBER_SIZE; i++) {
+            if(lottoNumber.contains(winNumber.get(i))) {
+                sameNumber++;
+            }
+        }
+
+        // '5개 일치, 보너스 볼 일치 (30,000,000원)'일 때 -1 리턴
+        if(sameNumber == NUMBER_SIZE - 1) {
+            if(lottoNumber.contains(winNumber.get(6))) {
+                return sameBonusNumber;
+            }
+        }
+
+        return sameNumber;
+    }
 
 }
