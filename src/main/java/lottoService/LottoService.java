@@ -96,6 +96,11 @@ public class LottoService {
         player.addLottoRevenue(countWinningLottoSix * LottoReward.REWARD_LOTTO_6.getReward());
     }
 
+    public void printPlayerLottoResult(Player player){
+        lottoGameMessage.printLottoWinningStatistics(player);
+        lottoGameMessage.printPlayerLottoYield(player);
+    }
+
     public void initializePlayerLottoCount(Player player){
         player.initializeLottoCount();
     }
