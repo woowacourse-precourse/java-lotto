@@ -13,10 +13,9 @@ public class Application {
     private static final int lottoPrice = 1000;
     private static final String purchasingAmountWord = "구입금액을 입력해 주세요.";
     private static final String InputWinningNumber = "당첨 번호를 입력해 주세요.";
-    private static final String ErrorPrice = "로또 구입 금액은 1,000원 단위로 입력하셔야 합니다.";
-    private static final String ErrorSalesAmount = "구매 금액에 숫자가 아닌것이 포함되어 있습니다.";
     //endregion
-    private static Lotto Winning;
+    private static Lotto WinningLotto;
+    private static List<Lotto> lottos;
     //region 변수
     public static int numberOfLotto;
     //endregion
@@ -48,7 +47,7 @@ public class Application {
             }
             winningNumber.add(Integer.valueOf(commaSplit));
         }
-        Winning = new Lotto(winningNumber);
+        WinningLotto = new Lotto(winningNumber);
     }
 
 
@@ -63,7 +62,7 @@ public class Application {
         SalesValidate(userInput);
 
         calculateNumberLotto(userInput);
-        Lotto.SalesLotto(numberOfLotto);
+        lottos = Lotto.PurchaseLotto(numberOfLotto);
     }
 
     public static void calculateNumberLotto(String userInput){
@@ -93,7 +92,7 @@ public class Application {
         int userPay = Integer.parseInt(userInput);
 
         if(userPay % lottoPrice != 0)
-            return ErrorPrice;
+            return Error.errMsg_WrongPurchaseAmount;
 
         return EMPTY_STRING;
     }
@@ -101,7 +100,7 @@ public class Application {
 
     public static String CheckOnlyNumber(String str){
         if(!str.matches(REGEX))
-            return ErrorSalesAmount;
+            return Error.errMsg_ExistNotNumber;
 
         return EMPTY_STRING;
     }

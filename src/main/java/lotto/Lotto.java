@@ -11,9 +11,6 @@ public class Lotto {
     private static final String printSalesLottoAmount = "%d개를 구매했습니다.";
     private final List<Integer> numbers;
 
-
-    private static List<List<Integer>> salesLottos;
-
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
@@ -32,22 +29,28 @@ public class Lotto {
         }
     }
 
-    public static void SalesLotto(int count){
-        salesLottos = new ArrayList<>();
+    public static List<Lotto> PurchaseLotto(int count){
+        List<Lotto> lottos = GetRandomLotto(count);
+        PrintLotto(lottos);
+        return lottos;
+    }
+
+    public static void PrintLotto(List<Lotto> lottos){
+        System.out.println(String.format(printSalesLottoAmount, lottos.size()));
+
+        for(Lotto lotto : lottos){
+            System.out.println(lotto.numbers.toString());
+        }
+    }
+
+    private static List<Lotto> GetRandomLotto(int count){
+        List<Lotto> lottos = new ArrayList<>();
         for(int i =0; i < count; i++){
-            salesLottos.add(GetRandomLotto());
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(lottoStart, lottoEnd, lottoCount);
+            lottos.add(new Lotto(numbers));
         }
-        Lotto.PrintSalesLotto();
+        return lottos;
     }
 
-    public static void PrintSalesLotto(){
-        System.out.println(String.format(printSalesLottoAmount, salesLottos.size()));
-        for(List<Integer> saleLotto : salesLottos){
-            System.out.println(saleLotto.toString());
-        }
-    }
 
-    private static List<Integer> GetRandomLotto(){
-        return Randoms.pickUniqueNumbersInRange(lottoStart, lottoEnd, lottoCount);
-    }
 }
