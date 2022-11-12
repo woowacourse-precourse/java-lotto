@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class LottoManager {
     }
 
     public void sortLottoNumbers(List<Integer> lotto) {
-        System.out.println("test");
+        Collections.sort(lotto);
     }
 
     public List<List<Integer>> publishLottoForPrice(int money) {
