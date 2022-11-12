@@ -1,12 +1,11 @@
 package lotto.domain;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedHashMap;
 import java.util.stream.Collectors;
 
 public class WinningStatics {
-    private final Map<LottoResult, Long> lottoResults = new HashMap<>();
+    private final LinkedHashMap<LottoResult, Long> lottoResults = new LinkedHashMap<>();
     private final float lateOfReturn;
 
     public WinningStatics(int purchaseMoney) {

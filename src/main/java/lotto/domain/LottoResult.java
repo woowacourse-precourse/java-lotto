@@ -5,11 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum LottoResult implements Comparable<LottoResult> {
-    FIRST(6, 2_000_000_000), // 1등
-    SECOND(5, 30_000_000), // 2등
-    THIRD(5, 1_500_000), // 3등
-    FOURTH(4, 50_000), // 4등
     FIFTH(3, 5_000), // 5등
+    FOURTH(4, 50_000), // 4등
+    THIRD(5, 1_500_000), // 3등
+    SECOND(5, 30_000_000), // 2등
+    FIRST(6, 2_000_000_000), // 1등
     FAILED(0, 0);
 
     private static final int WINNING_MIN_COUNT = 3;
@@ -50,7 +50,7 @@ public enum LottoResult implements Comparable<LottoResult> {
     }
 
     private String printBonusMessage() {
-        if (this == THIRD) {
+        if (this == SECOND) {
             return BONUS_NUMBER_MESSAGE;
         }
         return "";
