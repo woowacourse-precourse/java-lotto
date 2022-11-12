@@ -10,12 +10,12 @@ import static lotto.domain.ErrorMessage.NUMBER_FORMAT_ERROR_MESSAGE;
 
 public class InputView {
 
-    private static final String PLAYER_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
+    private static final String LOTTO_PURCHASE_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
     private static final String BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
 
-    public static int playerMoney() {
-        System.out.println(PLAYER_MONEY_MESSAGE);
+    public static int lottoPurchaseMoney() {
+        System.out.println(LOTTO_PURCHASE_MONEY_MESSAGE);
 
         return convertStringToInteger(Console.readLine());
     }
