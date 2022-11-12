@@ -93,10 +93,10 @@ BUILD SUCCESSFUL in 0s
         - [x] `public int getWinPrice()`
 - [ ] **CLASS 5.** `User`
     - **Class Variables:**
-        - [ ] `private final int purchaseMoney`
-        - [ ] `private final int incomeMoney`
-        - [ ] `private final List<Lotto> lottoList`
-        - [ ] `private HashMap<LottoRank, Integer> winResult`
+        - [x] `private final int purchaseMoney`
+        - [x] `private final int incomeMoney`
+        - [x] `private final List<Lotto> lottoList`
+        - [x] `private HashMap<LottoRank, Integer> winResult`
     - **Class Methods:**
         - [ ] `public User(purchaseMoney, List<Lotto> lottoList, WinLotto winLotto)`
         - [ ] `private void validatePurchaseMoney(int purchaseMoney)`
