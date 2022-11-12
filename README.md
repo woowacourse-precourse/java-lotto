@@ -91,7 +91,7 @@ BUILD SUCCESSFUL in 0s
     - **Class Methods**
         - [x] `public LottoRank(int winPrice)`
         - [x] `public int getWinPrice()`
-- [ ] **CLASS 5.** `User`
+- [x] **CLASS 5.** `User`
     - **Class Variables:**
         - [x] `private final int purchaseMoney`
         - [x] `private final int incomeMoney`
@@ -103,7 +103,7 @@ BUILD SUCCESSFUL in 0s
         - [x] `private int getIncomeMoney(List<Lotto> lottoList, WinLotto winLotto)`
         - [x] `private HashMap<LottoRank, Integer> getWinResult(List<Lotto> lottoList, WinLotto, winLotto)`
         - [x] `public float getIncomePercent()`
-        - [ ] `public HashMap<LottoRank, Integer> getWinResult()`
+        - [x] `public HashMap<LottoRank, Integer> getWinResult()`
 - [ ] **CLASS 6.** `UserInterface`
     - **Class Methods:**
         - [ ] `public static void printPurchaseMoneyMessage()`

@@ -22,6 +22,10 @@ public class User {
         return Math.round(incomePercent * 100) / 100f;
     }
 
+    public HashMap<LottoRank, Integer> getWinResult() {
+        return this.winResult;
+    }
+
     private void validatePurchaseMoney(int purchaseMoney) {
         if (purchaseMoney < 0) {
             System.out.println("[ERROR] 로또 구입 금액은 0보다 크거나 같아야 합니다.");
