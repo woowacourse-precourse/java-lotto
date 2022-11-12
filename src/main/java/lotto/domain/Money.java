@@ -22,7 +22,6 @@ public class Money {
             if (Math.floorMod(Math.round(money), STANDARD_WON) != 0) {
                 throw new IllegalArgumentException(NOT_MOD_ZERO_MESSAGE);
             }
-
             return money;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());

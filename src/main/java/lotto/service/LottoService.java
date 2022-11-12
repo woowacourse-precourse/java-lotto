@@ -1,10 +1,9 @@
 package lotto.service;
 
-import lotto.Lotto;
+import lotto.domain.Lotto;
 import lotto.domain.NumberGenerator;
 
 import java.util.List;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
