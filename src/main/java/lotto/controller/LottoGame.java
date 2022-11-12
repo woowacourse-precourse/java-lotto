@@ -1,12 +1,32 @@
 package lotto.controller;
 
-import java.util.List;
-
+import lotto.UI.User;
 import lotto.enums.LottoRanking;
 
+import java.util.List;
+
+import static lotto.domain.Lotto.makeLottos;
+import static lotto.domain.Lotto.printLotto;
 import static lotto.enums.LottoRanking.*;
 
 public class LottoGame {
+
+    public static void startGame() {
+        User user = new User();
+
+        Integer userMoney = user.checkMonetaryUnit(user.askPurchaseAmount());
+        List<List<Integer>> randomLottoNumbers = makeLottos(userMoney);
+        printLotto(randomLottoNumbers);
+        List<Integer> userNumbers = user.lottoNumberReceiveInput();
+        Integer userBonusNumber = user.bonusNumberRangeCheck(user.inputBonusNumber());
+
+        for (int size = 0; size < randomLottoNumbers.size(); size++) {
+            statisticsInput(compareLottoNumber(userNumbers, randomLottoNumbers.get(size), userBonusNumber));
+        }
+        System.out.println("당첨 통계\n---");
+        statisticalOutput();
+        rateOfReturn(userMoney);
+    }
 
     public static Integer compareLottoNumber(List<Integer> user, List<Integer> computer, Integer bonusNumber) {
         int sameNumber = 0;
