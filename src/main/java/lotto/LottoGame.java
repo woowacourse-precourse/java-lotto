@@ -2,7 +2,6 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import lotto.dto.Lotto;
 
 public class LottoGame {
     private final Message message = new Message();
@@ -12,6 +11,7 @@ public class LottoGame {
         try {
             Integer purchasePrice = inputPurchasePrice();
             List<Lotto> lottos = purchaseLotto(purchasePrice);
+
         } catch (IllegalArgumentException exception) {
             message.printMsg(exception.getMessage());
         }
@@ -27,6 +27,7 @@ public class LottoGame {
     private List<Lotto> purchaseLotto(Integer price) {
         Integer lottoAmount = processInputAndVariable.calculateLottoAmount(price);
         List<Lotto> lottos = managementLotto.purchase(lottoAmount);
+        message.printPurchaseLotto(lottos);
 
         return lottos;
     }
