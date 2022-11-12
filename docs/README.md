@@ -70,8 +70,8 @@ To do list
 3. application test 확인[o]
 4. 보너스 번호 예외 처리[0]
 5. service에 getter 없애기[o]
-5. purchasePrice Player에 필드로 넣기[]
+5. purchasePrice Player에 필드로 넣기[o]
 6. gameResult list 반환하는 로직 정렬해서 반환하는 로직으로 리팩토링
-7. Player validation 로직 분리할지
+7. Player validation 로직 분리할지[o]
 8. OutView 메시지 따로 분리할지
-9. LottoGameController에 purchasePrice 로컬변수 없애기
+9. LottoGameController에 purchasePrice 로컬변수 없애기[o]

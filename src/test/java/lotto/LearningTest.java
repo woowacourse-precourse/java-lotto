@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.view.OutputView;
+import lotto.view.OutputMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -43,7 +43,7 @@ public class LearningTest {
     @DisplayName("%가 들어간 문장 출력 확인 테스트")
     @Test
     void percentFormat() {
-        System.out.printf(OutputView.EARNING_RATE_MESSAGE, 62.5);
+        System.out.printf(OutputMessage.EARNING_RATE_MESSAGE.getMessage(), 62.5);
     }
 
     @DisplayName("정규 표현식 숫자 이외의 입력 값 결과 false 테스트")
