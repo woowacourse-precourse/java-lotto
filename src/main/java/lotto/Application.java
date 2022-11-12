@@ -18,16 +18,20 @@ public class Application {
     }
 
     public static void playLottoGame() {
-        printCashInputBox();
-        int cash = getUserCash(inputUserCash());
-        List<Lotto> lottoList = new ArrayList<>();
-        issueLottoNumbers(cash / 1000, lottoList);
-        showLotto(cash, lottoList);
-        printWinningNumbersInputBox();
-        Lotto winningNumberList = new Lotto(getWinningNumbers(inputWinningNumbers()));
-        printBonusNumberInputBox();
-        int bonusNumber = getBonusNumber(inputBonusNumber(), winningNumberList.getNumbers());
-        showStats(lottoList, winningNumberList.getNumbers(), bonusNumber, cash);
+        try {
+            printCashInputBox();
+            int cash = getUserCash(inputUserCash());
+            List<Lotto> lottoList = new ArrayList<>();
+            issueLottoNumbers(cash / 1000, lottoList);
+            showLotto(cash, lottoList);
+            printWinningNumbersInputBox();
+            Lotto winningNumberList = new Lotto(getWinningNumbers(inputWinningNumbers()));
+            printBonusNumberInputBox();
+            int bonusNumber = getBonusNumber(inputBonusNumber(), winningNumberList.getNumbers());
+            showStats(lottoList, winningNumberList.getNumbers(), bonusNumber, cash);
+        } catch (IllegalArgumentException e) {
+            System.out.println(error.getMessage());
+        }
     }
 
     public static void showLotto(int cash, List<Lotto> lottoList) {
