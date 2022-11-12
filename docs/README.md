@@ -120,36 +120,39 @@
 ## 📜기능목록
 
 ### Lotto Class
-- [x] lotto 번호 생성자 - Lotto#Lotto()
-- [x] 로또번호 길이 검사 - Lotto#validata()
-- [x] 로또번호 반환 - Lotto#getnumbers()
+`로또 Number를 지니고, 그와 관련된 기능을 지니는 클래스`
+- [x] 로또 번호 생성자 - public Lotto(List<Integer> numbers)
+- [x] 로또 번호 생성자 - public Lotto(String numbers)
+  - String으로도 lotto 번호를 생성할 수 있도록 하는 생성자
+- [x] String 타입 로또를 List<Integer>로 변경 - public List<Integer> makeLotto(String inputLottoNumber) 
+- [x] 로또번호 길이 검사 - private void validate(List<Integer> numbers)
+- [x] 로또번호 검사 - public void checkInputNumberIsValid(String inputLottoNumber)
+  - String 로또 번호를 매개변수로 받고, 문제점이 없는지 검사한다.
+
+### LottoAnswer Class
+`Lotto Class를 상속하며, 보너스 번호에 대한 정보를 추가적으로 지니는 클래스`
+- [x] String으로 받은 보너스 번호 int로 변경 - public int makeBonus(String bonus)
+- [x] 보너스 번호가 문제 없는지 검사 -  public int checkInputBonusIsValid(String bonus)
 
 ### NumberGenerator Class
-- [x] 길이 6의 로또 번호 생성 (범위는 1 ~ 45) - NumberGenerator#makeNumber()
-- [x] 정답 로또 입력 받기 - NumberGenerator#readLotto()
-  - [x] 잘못된 값 입력 검사 - NumberGenerator#validDataInputLottoNumber()
-    - [x] 입력형태가 잘못된 경우 - NumberGenerator#unValidShape()
-    - [x] 숫자가 중복되는 경우 - NumberGenerator#duplicatedNumber()
-    - [x] 숫자 범위에 속하지 않는 경우 - NumberGenerator#checkNumberArea()
-- [x] 정답 보너스 번호 입력 받기 - NumberGenerator#readBonus()
-  - [x] 보너스 번호 검증 - NumberGenerator#validDataBonusNumber()
-- [x] 정답 로또값을 List<Integer>로 변경 - NumberGenerator#convertLottoNumber()
+`로또 번호를 생성하는 클래스`
+- [x] 길이 6의 로또 번호 생성 (범위는 1 ~ 45) - public List<Integer> makeNumber()
 
 ### User Class
-- [x] 사용자 금액 입력 받기 - User#readMoney()
-  - [x] 사용자 금액 잘못된 값 입력 검사 - User#validDataInputNumber()
+`유저(구매자)가 지니는 금액과 로또를 관리하는 클래스`
+- [x] 사용자 금액 설정 생성자 - public User(String userMoney)
+- [x] 사용자 금액 잘못 되었는지 검사 - public void shouldBeValidInput(String money)
+- [x] 사용자 로또를 생성 - public void makeLottos()
+- [x] 로또 목록에 로또 추가하기 - public void addLotto(List<Integer> lottoNumber)
 
-- [x] 로또 목록에 로또 추가하기 - User#addLotto()
-- [x] 사용자 로또 번호 출력 - User#showLottos()
-- [x] 사용자의 로또 개수 설정 - User#setnumOfLotto()
-
-- [x] 당첨 확인 - Comparator#checkCount()
-  - [x] 로또 번호 비교 Comparator#compareLottoNumber()
-  - [x] 보너스 번호 비교 Comparator#compareBonusNumber()
-- [x] 값 초기화 - Comparator#clearCount()
+### Calculator Class
+`로또 개수가 몇개 맞았는지 검사하는 클래스`
+- [x] 로또 몇개를 맞췄는지 검사하는 기능 - public void clearCount()
 
 ### Result Class
-- [x] 총 당첨결과를 계산함 - Result#checkRanks()
-- [x] 총 당첨결과 금액을 계산함 - Result#calcResultMoney()
-- [x] 총 당첨 결과 출력 - Result#showResult()
+`총 결과를 기록하는 클래스`
+- [x] 총 당첨결과를 계산함 - public void checkRanks(Calculator calculator)
+- [x] 총 결과를 계산함 - public void calcAllResult()
+  - [x] 총 금액을 계산함 - public void calcResultMoney()
+  - [x] 총 수익률을 계산함 -  public void calcEarningRate()
 - [x] 수익률 계산 - Result#calcEarningRate()
