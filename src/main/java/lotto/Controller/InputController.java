@@ -2,14 +2,14 @@ package lotto.Controller;
 
 import lotto.Model.Buyer;
 import lotto.View.InputView;
+import lotto.View.OutputView;
 
 public class InputController {
-    public static Buyer getPurchaseAmount(){
-        try {
-            return new Buyer(InputView.purchaseAmountInput());
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            return getPurchaseAmount();
+    public static void inputPurchaseAmount(Buyer buyer){
+        try{
+            buyer.setPurchaseAmount(InputView.purchaseAmountInput());
+        } catch (IllegalArgumentException e){
+            OutputView.printError(e.getMessage());
         }
     }
 }

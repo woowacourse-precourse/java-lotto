@@ -10,8 +10,15 @@ public class Buyer {
     public final int START_NUM = 1;
     public final int END_NUM = 45;
 
+    public final int UNIT_OF_MONEY = 1000;
+
     public int getPurchaseAmount() {
         return purchaseAmount;
+    }
+
+    public void setPurchaseAmount(String purchaseAmount) {
+        new Validator(purchaseAmount);
+        this.purchaseAmount = Util.getInt(purchaseAmount);
     }
 
     private int purchaseAmount;
@@ -26,9 +33,7 @@ public class Buyer {
     private List<List<Integer>> lottoWallet;
 
 
-    public Buyer(String purchaseAmount) {
-        new Validator(purchaseAmount);
-        this.purchaseAmount = Util.getInt(purchaseAmount);
+    public Buyer() {
         this.lottoWallet = new ArrayList<>();
     }
 
