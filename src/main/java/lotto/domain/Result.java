@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +38,7 @@ public class Result {
         String str = "3개 일치 (5,000원) - "+result.get(1)+"개\n";
         str += "4개 일치 (50,000원) - "+result.get(2)+"개\n";
         str += "5개 일치 (1,500,000원) - "+result.get(3)+"개\n";
-        str += "5개 일치 (30,000,000원) - "+result.get(4)+"개\n";
+        str += "5개 일치, 보너스 볼 일치 (30,000,000원) - "+result.get(4)+"개\n";
         str += "6개 일치 (2,000,000,000원) - "+result.get(5)+"개\n";
         return str;
     }
