@@ -1,10 +1,10 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.InformationMessage;
 import lotto.domain.Lotto;
 import lotto.LottoRank;
 import lotto.WinningResultMessage;
-
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -14,14 +14,14 @@ import java.util.stream.Collectors;
 
 public class LottoGameView {
 
-    private ViewValidator viewValidator;
+    private final ViewValidator viewValidator;
 
     public LottoGameView(ViewValidator viewValidator) {
         this.viewValidator = viewValidator;
     }
 
     public int inputMoney() {
-        System.out.println("구매금액을 입력해 주세요.");
+        InformationMessage.INPUT_PRICE.print();
         String money = Console.readLine();
 
         viewValidator.validateNumberType(money);
@@ -31,7 +31,7 @@ public class LottoGameView {
     }
 
     public List<Integer> inputWinningNumbers() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        InformationMessage.INPUT_WINNING_NUMBER.print();
         String winningNumbers = Console.readLine();
 
         viewValidator.validateNumberCount(winningNumbers);
@@ -47,7 +47,7 @@ public class LottoGameView {
     }
 
     public int inputBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        InformationMessage.INPUT_BONUS_NUMBER.print();
         String inputNumber = Console.readLine();
 
         viewValidator.validateNumberType(inputNumber);
@@ -55,7 +55,7 @@ public class LottoGameView {
         return Integer.parseInt(inputNumber);
     }
     public void printLottos(List<Lotto> lottos) {
-        System.out.println(lottos.size() + "개를 구매했습니다.");
+        System.out.println(lottos.size() + InformationMessage.PRINT_PURCHASE_COUNT.getMessage());
         lottos.forEach(lotto -> printSortedLotto(lotto.getNumbers()));
     }
 
@@ -66,14 +66,14 @@ public class LottoGameView {
     public void printWinningResult(List<LottoRank> ranks) {
         Map<LottoRank, Integer> rankCount = getRankCount(ranks);
 
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        InformationMessage.PRINT_WINNING_RESULT.print();
+        InformationMessage.DIVISOR.print();
         Arrays.stream(WinningResultMessage.values())
                 .forEach(message -> message.print(rankCount.getOrDefault(message.getLottoRank(), 0)));
     }
 
     public void printRateOfReturn(double rateOfReturn) {
-        System.out.println("총 수익률은 " + String.format("%.1f", rateOfReturn) + "%입니다.");
+        InformationMessage.PRINT_RATE_OF_RETURN.print(rateOfReturn);
     }
 
     private List<Integer> getSortedByAscend(List<Integer> lotto) {
