@@ -7,14 +7,16 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class Input {
     private final int MONEY_UNIT = 1000;
     private final int LOTTO_NUMBER = 6;
-    private final String INPUT_MESSAGE = "구입금액을 입력해 주세요.";
-
+    private final String INPUT_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
+    private final String INPUT_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private final String INPUT_BONUS_MESSAGE = "보너스 번호를 입력해 주세요.";
     public int getMoney() {
-        System.out.println(INPUT_MESSAGE);
+        System.out.println(INPUT_MONEY_MESSAGE);
         String input = Console.readLine();
 
         if(!isValidMoney(input)){
@@ -24,20 +26,16 @@ public class Input {
         return Integer.parseInt(input);
     }
 
-    public void createLottos(int money) {
-        int count = money/MONEY_UNIT;
-        Set<Lotto> lottoSet = new HashSet<>();
-
-        while(lottoSet.size() == count) {
-            Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6));
-            lottoSet.add(lotto);
-        }
-    }
-
-
     //Validator 클래스
     public boolean isNumber(String input) {
-        return input.chars().allMatch(Character::isDigit);
+//        return input.chars().allMatch(Character::isDigit);
+        //방법2
+        try {
+            Integer.parseInt(input);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException();
+        }
+        return true;
     }
 
     public boolean isValidMoney(String input) {
@@ -47,6 +45,26 @@ public class Input {
 
         int money = Integer.parseInt(input);
         return money%MONEY_UNIT ==0;
+    }
+
+
+
+    public List<Integer> getWinningNumbers() {
+        System.out.println(INPUT_NUMBER_MESSAGE);
+        String input = Console.readLine();
+
+        if(!input.contains(",")){
+            throw new IllegalArgumentException();
+        }
+
+        List<Integer> winningNumbers = new ArrayList<>();
+
+        for(String number : input.split(",")){
+            isNumber(number);
+            winningNumbers.add(Integer.valueOf(number));
+            }
+
+        return winningNumbers;
     }
 
 }
