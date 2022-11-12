@@ -45,14 +45,14 @@
 - [ ] 사용자에게 입력을 받고 List로 변환 List<Integer> winNumbers = InputLotto#InputValueToLst()
 - [ ] String형식의 번호를 입력 받고 List로 변환 List<Integer> winNumbers = InputLotto#InputStringToLst()
   - [x] 사용자에게 값을 입력 받는다. String userValue = InputLotto#inputValueOfUser()
-  - [ ] 문자열을 ,(쉼표)를 기준으로 나누기 - String[] numbers = InputLotto#splitStrings(String numbers)
+  - [x] 문자열을 ,(쉼표)를 기준으로 나누기 - String[] numbers = InputLotto#splitCommas(String numbers)
   - [ ] 당첨 번호 모두를 int로 변환 - List<Integer> winNumbers = InputLotto#allToInts(String[] numbers)
     - [x] 문자열을 long으로 변환 - int number = InputLotto#toLongs(String number)
 
 - [x] 숫자만 입력되었는지 검사한다. - ExceptionHandling#isNumeric(String value)
 - [x] 입력한 금액이 1,000원 단위로 나누어떨어지는지 검사한다. - ExceptionHandling#notDivideException(long amount)
 - [ ] 입력한 당첨 번호가 입력 규칙에 유효한지 검사한다. - ExceptionHandling#lottoNumberRuleException(String lottoNumber)
-  - [ ] 문자열을 ,(쉼표)를 기준으로 나누기 - String[] numbers = InputLotto#splitStrings(String numbers)
+  - [x] 문자열을 ,(쉼표)를 기준으로 나누기 - String[] numbers = InputLotto#splitStrings(String numbers)
   - [x] 문자열을 long으로 변환 - int number = InputLotto#toLongs(String number)
 - [ ] 입력한 숫자가 1 ~ 45의 숫자인지 검사한다. - ExceptionHandling#bonusNumberException(int bonusNumber)
 
@@ -64,5 +64,5 @@
 - [ ] "6개 일치 (2,000,000,000원) - n개"를 출력한다. - WinStatistics#showWinMessage(int number)
 
 ## 예외 처리
-- [ ] 로또를 구매하는 금액이 1000으로 나누어지지 않는 경우 || 0이하인 경우 || 숫자가 아닌 경우
+- [x] 로또를 구매하는 금액이 1000으로 나누어지지 않는 경우 || 0이하인 경우 || 숫자가 아닌 경우
 - [ ] 로또(보너스) 번호를 입력 받을 때 숫자 범위(1 ~ 45)를 벗어나는 입력을 한 경우 || 숫자가 아닌 경우
