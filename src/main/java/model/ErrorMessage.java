@@ -61,5 +61,11 @@ public enum ErrorMessage {
         public String toString() {
             return HEADER + "당첨 번호는 숫자를 입력하여야 합니다.";
         }
+    },
+    INCORRECT_BONUS_NUMBER_RANGE{
+        @Override
+        public String toString() {
+            return HEADER + "보너스 번호는 1부터 45사이의 숫자여야 합니다.";
+        }
     }
 }

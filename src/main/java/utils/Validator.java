@@ -125,4 +125,11 @@ public class Validator {
             }
         }
     }
+
+    public void validateBonusNumberRange(String input) {
+        int bonusNumber = Integer.parseInt(input);
+        if (bonusNumber < START.getValue() || bonusNumber > END.getValue()) {
+            throw new IllegalArgumentException(INCORRECT_BONUS_NUMBER_RANGE.toString());
+        }
+    }
 }

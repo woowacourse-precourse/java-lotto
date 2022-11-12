@@ -29,6 +29,7 @@ public class LottoController {
         String bonusNumber = inputView.inputBonusNumber();
         validator.validateBonusNumberSize(bonusNumber);
         validator.validateBonusNumberDigit(bonusNumber);
+        validator.validateBonusNumberRange(bonusNumber);
 
     }
 
