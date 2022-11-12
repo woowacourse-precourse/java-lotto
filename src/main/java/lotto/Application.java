@@ -5,6 +5,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import java.util.*;
 
 public class Application {
+    private static final String COMMON_ERROR_MESSAGE = "[ERROR]";
+
     static void ask_how_much_money() {
         System.out.println("구입금액을 입력해 주세요.");
     }
@@ -30,6 +32,10 @@ public class Application {
         }
     }
 
+    static void print_money_error() {
+        System.out.print(COMMON_ERROR_MESSAGE + " 구매 금액은 1000원으로 나누어 떨어져야 합니다.");
+    }
+
     public static void main(String[] args) {
         ask_how_much_money();
 
@@ -39,6 +45,7 @@ public class Application {
         try {
             check_user_money(user_money);
         } catch (IllegalArgumentException e) {
+            print_money_error();
         }
     }
 }
