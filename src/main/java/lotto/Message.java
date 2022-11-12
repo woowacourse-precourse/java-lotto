@@ -25,11 +25,11 @@ public class Message {
 
     public static void lankings(Match match) {
         System.out.println("당첨 통계\n---");
-        System.out.println("3개 일치 (5,000원) - " + match.getMatches().get("5등") + "개");
-        System.out.println("4개 일치 (50,000원) - " + match.getMatches().get("4등") + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + match.getMatches().get("3등") + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + match.getMatches().get("2등") + "개");
-        System.out.println("6개 일치 (2,000,000,000원) -  " + match.getMatches().get("1등") + "개");
+        System.out.println("3개 일치 (5,000원) - " + match.getMatches().get(Lanking.rank5) + "개");
+        System.out.println("4개 일치 (50,000원) - " + match.getMatches().get(Lanking.rank4) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + match.getMatches().get(Lanking.rank3) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + match.getMatches().get(Lanking.rank2) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) -  " + match.getMatches().get(Lanking.rank1) + "개");
     }
 
     public static void yield(Double yield) {
