@@ -52,16 +52,16 @@ public class UserInput {
 
     private List validateLotto(String winningNumber) {
         String[] splitInput = winningNumber.split(",");
-        List<Integer> result = new ArrayList();
-        validateLottoType(splitInput, result);
+        List<Integer> numbers = new ArrayList<>();
+        validateLottoType(splitInput, numbers);
 
-        return result;
+        return numbers;
     }
 
-    private void validateLottoType(String[] splitInput, List result) {
+    private void validateLottoType(String[] splitInput, List<Integer> numbers) {
         try {
             for (int i = 0; i < splitInput.length; i++) {
-                result.add(Integer.parseInt(splitInput[i]));
+                numbers.add(Integer.parseInt(splitInput[i]));
             }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(Message.ERROR_INPUT_NUMBER.printError());
