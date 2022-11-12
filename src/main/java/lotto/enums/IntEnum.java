@@ -1,6 +1,6 @@
 package lotto.enums;
 
-public enum ConstantInteger {
+public enum IntEnum {
     LOTTO_SIZE(6),
     BONUS_SIZE(8),
     LOTTO_PRICE(1000),
@@ -9,7 +9,7 @@ public enum ConstantInteger {
 
     private final int value;
 
-    private ConstantInteger(int value) {
+    private IntEnum(int value) {
 
         this.value = value;
     }

@@ -1,11 +1,9 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.domain.Lotto;
-import lotto.enums.ConstantInteger;
+import lotto.enums.IntEnum;
 
 import java.util.*;
-import java.util.stream.IntStream;
 
 public class LottoRandomPeek {
     private final List<Lotto> randomLottos;
@@ -19,7 +17,7 @@ public class LottoRandomPeek {
 
     public void drawLotto() {
         List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(
-                ConstantInteger.START_NUMBER.getValue(), ConstantInteger.LAST_NUMBER.getValue(), ConstantInteger.LOTTO_SIZE.getValue());
+                IntEnum.START_NUMBER.getValue(), IntEnum.LAST_NUMBER.getValue(), IntEnum.LOTTO_SIZE.getValue());
         randomLottos.add(new Lotto(sortList(randomNumbers)));
     }
 

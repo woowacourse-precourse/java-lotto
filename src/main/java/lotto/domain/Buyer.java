@@ -1,13 +1,12 @@
 package lotto.domain;
 
-import lotto.enums.ConstantInteger;
+import lotto.enums.IntEnum;
 import lotto.validate.BuyerValidate;
 
-import static lotto.enums.ConstantInteger.*;
+import static lotto.enums.IntEnum.*;
 
 public class Buyer {
     private final int buyPrice;
-
 
     public Buyer(int buyPrice) {
         validate(buyPrice);
@@ -19,7 +18,7 @@ public class Buyer {
     }
 
     public int getBuyLottoCount() {
-        return buyPrice / ConstantInteger.LOTTO_PRICE.getValue();
+        return buyPrice / IntEnum.LOTTO_PRICE.getValue();
     }
 
     private void validate(int buyPrice) {
