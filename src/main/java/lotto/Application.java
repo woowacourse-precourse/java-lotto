@@ -50,10 +50,10 @@ public class Application {
         }
     }
 
-    public static void showStats(List<Lotto> lottoList, List<Integer> winningNumberList, int bonusNumber, int cash) {
+    public static void showStats(List<Lotto> lottoTickets, List<Integer> winningNumbers, int bonusNumber, int cash) {
 
         printStatsPhrase();
-        printGradeStats(lottoList, winningNumberList, bonusNumber, cash);
+        printGradeStats(lottoTickets, winningNumbers, bonusNumber, cash);
     }
 
     public static void printLottoQuantity(int quantity) {
