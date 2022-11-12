@@ -1,5 +1,6 @@
 package lotto.util;
 
+import java.util.Comparator;
 import java.util.List;
 
 import static lotto.constant.InputMessage.*;
@@ -25,6 +26,7 @@ public class MessageUtil {
     }
 
     public void printPurchaseInfo(List<Integer> lottoNums) {
+        lottoNums.sort(Comparator.naturalOrder());
         StringBuilder lottoNum = new StringBuilder("");
 
         lottoNum.append("[");
