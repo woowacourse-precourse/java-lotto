@@ -8,14 +8,7 @@ public class WinningNumber {
     private int bonusNumber;
 
     public WinningNumber(String numbers) {
-        stringToNumbers(numbers);
-    }
 
-    private void stringToNumbers(String numbers) {
-        String[] stringNumbers = numbers.split(",");
-        for (String number: stringNumbers) {
-            this.numbers.add(Integer.valueOf(number));
-        }
     }
 
     public void setBonusNumber(int number) {

@@ -16,6 +16,16 @@ public class UserInput {
         return budget;
     }
 
+    public static void writeWinningNumber() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String userInput = Console.readLine();
+        System.out.println();
+    }
+
+    private void stringToNumbers(String numbers) {
+        String[] stringNumbers = numbers.split(",");
+    }
+
     private static void hasOnlyNumber(String input) {
         if (!input.matches("[0-9]+")) {
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요.");
