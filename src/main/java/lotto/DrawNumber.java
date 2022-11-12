@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Collections;
 
 public class DrawNumber {
-    public static List<Lotto> Lottos;
+    public static List<List<Integer>> lottos;
 
     public static void generateNumber(int ticketAmount) {
         System.out.println(Integer.toString(ticketAmount) + GameMessage.PURCHASE_MESSAGE.getMessage());
@@ -14,13 +14,13 @@ public class DrawNumber {
             List<Integer> oneTicketNumber = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Collections.sort(oneTicketNumber);
             Lotto oneLotto = new Lotto(oneTicketNumber);
-            Lottos.add(oneLotto);
+            lottos.add(oneTicketNumber);
         }
     }
 
     public static void printNumber(int ticketAmount) {
         for (int count = 0; count < ticketAmount; count++) {
-            System.out.println(Lottos.get(count));
+            System.out.println(lottos.get(count));
         }
     }
 }
