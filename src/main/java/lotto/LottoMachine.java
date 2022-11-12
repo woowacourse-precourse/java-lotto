@@ -14,4 +14,9 @@ public class LottoMachine {
     public String[] splitNumber(String number) {
         return number.split(",");
     }
+
+    public void inputBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String bonusNumber = Console.readLine();
+    }
 }

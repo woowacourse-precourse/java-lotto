@@ -10,5 +10,6 @@ public class Application {
         user.inputPurchaseMoney();
         user.purchaseLotto();
         lottoMachine.inputWinningNumber();
+        lottoMachine.inputBonusNumber();
     }
 }
