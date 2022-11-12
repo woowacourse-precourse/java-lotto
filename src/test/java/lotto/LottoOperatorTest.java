@@ -11,14 +11,20 @@ class LottoOperatorTest {
     @ParameterizedTest
     @DisplayName("발행 로또와 당첨 번호 비교 카운트 등수 확인")
     @CsvSource(value = {
-            "1,NO_LUCK",
-            "2,NO_LUCK",
-            "3,THREE",
-            "4,FOUR",
-            "5,FIVE",
-            "6,SIX"
+            "1,false,NO_LUCK",
+            "1,true,NO_LUCK",
+            "2,false,NO_LUCK",
+            "2,true,NO_LUCK",
+            "3,false,THREE",
+            "3,true,THREE",
+            "4,false,FOUR",
+            "4,true,FOUR",
+            "5,false,FIVE",
+            "5,true,FIVE_BONUS",
+            "6,false,SIX",
+            "6,true,SIX"
     })
-    void matchLottoRank(int count, LottoOperator findRank) {
-        assertThat(LottoOperator.find(count)).isEqualTo(findRank);
+    void matchLottoRank(int count, boolean bonus, LottoOperator findRank) {
+        assertThat(LottoOperator.find(count, bonus)).isEqualTo(findRank);
     }
 }
