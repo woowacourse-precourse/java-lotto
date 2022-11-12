@@ -28,7 +28,7 @@ public class BuyLotto {
 
     private List<Lotto> drawLottos(int count) {
         List<Lotto> list = new ArrayList<>();
-        for(int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++) {
             Lotto lotto = new Lotto(drawLotto());
             list.add(lotto);
         }
