@@ -35,7 +35,7 @@ public class Rate {
 
     private void setEarningRate(Map<Rank,Integer> winningStats, int price) {
         int earningPrice = calcEarning(winningStats);
-        this.earningRate = Math.round((earningPrice / price) * 100 * 100) / 100.0;
+        this.earningRate = Math.round((earningPrice / (double)price) * 100 * 10) / 10.0;
     }
 
     private int calcEarning(Map<Rank,Integer> winningStats) {
