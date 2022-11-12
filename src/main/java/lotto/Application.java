@@ -75,6 +75,8 @@ public class Application {
 
         String number = readLine();
 
+        bonusNumberErrorCheck(number);
+
         Integer bonusNumber = Integer.valueOf(number);
 
         return bonusNumber;
@@ -95,5 +97,14 @@ public class Application {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
 
+    }
+    public static void bonusNumberErrorCheck(String number){
+        String numberPattern = "^[0-9]*$";
+        if(!Pattern.matches(numberPattern, number))
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자를 입력해야 합니다.");
+
+        int num = Integer.parseInt(number);
+        if( num > 45 || num < 1 )
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
 }
