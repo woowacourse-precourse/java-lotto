@@ -15,5 +15,10 @@ public class SystemMessage {
         for (int i = 0; i < lottoNumbers.size(); i++) {
             System.out.println(lottoNumbers.get(i));
         }
+        System.out.println();
+    }
+
+    public void inputWinningNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요.");
     }
 }
