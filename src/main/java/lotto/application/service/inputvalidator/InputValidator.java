@@ -9,8 +9,8 @@ public class InputValidator {
         try {
             Integer.parseInt(lottoPurchaseMoney);
         } catch (NumberFormatException exception) {
-            System.out.println("[ERROR] 구매 금액은 정수로만 입력이 가능하며, 범위는 최대 2,147,483,647 까지 입니다.");
-            throw new IllegalArgumentException("[ERROR] 구매 금액은 정수로만 입력이 가능하며, 범위는 최대 2,147,483,647 까지 입니다.");
+            System.out.println("[ERROR] 구매 금액은 정수형으로, 입력 범위는 최대 2,147,483,647 까지 입니다.");
+            throw new IllegalArgumentException("[ERROR] 구매 금액은 정수형으로, 입력 범위는 최대 2,147,483,647 까지 입니다.");
         }
     }
 
@@ -59,9 +59,16 @@ public class InputValidator {
         }
     }
 
+    public static void winningNumberIsNumeric(String s) {
+        if (!s.chars().allMatch(Character::isDigit)) {
+            System.out.println("[ERROR] 로또 당첨 번호는 \",\"를 구분자로 하는 6개의 정수만을 허용합니다.");
+            throw new IllegalArgumentException("[ERROR] 로또 당첨 번호는 \",\"를 구분자로 하는 6개의 정수만을 허용합니다.");
+        }
+    }
+
     public static void validateLottoNumbersRange(int number) {
         if (number < 1 || number > 45) {
-            System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            System.out.println("[ERROR] 로또 당첨 번호는 1부터 45 사이의 숫자여야 합니다.");
             throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
         }
     }
