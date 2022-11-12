@@ -17,12 +17,11 @@ public class LottoCalculateService {
     private static final int PRICE_OF_THIRD = 5000;
     private final OutputView outputView = new OutputView();
     private Map<Winning, Integer> countOfWinning = new HashMap<>();
-    private int totalPrice = 0;
 
     public void calculateWinning(User user, Lotto lotto) {
         countLottoWinningCount(user, lotto);
         outputView.responseWinningHistory(countOfWinning);
-        double yieldOfLotto = getYieldOfLotto(user, totalPrice);
+        double yieldOfLotto = getYieldOfLotto(user, user.getWinningPrice());
         outputView.responseYieldOfLotto(yieldOfLotto);
     }
 
@@ -36,44 +35,44 @@ public class LottoCalculateService {
         List<UserLotto> userLottos = user.getLottos();
         for (UserLotto userLotto : userLottos) {
             List<Integer> userLottoNumbers = userLotto.getNumbers();
-            countEqualsSix(userLottoNumbers, lotto);
-            countEqualsFive(userLottoNumbers, lotto);
-            countEqualsFour(userLottoNumbers, lotto);
-            countEqualsThird(userLottoNumbers, lotto);
+            countEqualsSix(user, userLottoNumbers, lotto);
+            countEqualsFive(user, userLottoNumbers, lotto);
+            countEqualsFour(user, userLottoNumbers, lotto);
+            countEqualsThird(user, userLottoNumbers, lotto);
         }
     }
 
-    public void countEqualsSix(List<Integer> numbers, Lotto lotto) {
+    public void countEqualsSix(User user, List<Integer> numbers, Lotto lotto) {
         if (numbers.equals(lotto.getNumbers())) {
             inputWinning(Winning.SIXTH);
-            totalPrice += PRICE_OF_SIXTH;
+            user.addWinningPrice(PRICE_OF_SIXTH);
         }
     }
 
-    public void countEqualsFive(List<Integer> numbers, Lotto lotto) {
+    public void countEqualsFive(User user, List<Integer> numbers, Lotto lotto) {
         if (containsNumCount(numbers, lotto.getNumbers()) == 5 && numbers.contains(lotto.getBonusNumber())) {
             inputWinning(Winning.FIFTH_WITH_BONUS);
-            totalPrice += PRICE_OF_FIFTH_WITH_BONUS;
+            user.addWinningPrice(PRICE_OF_FIFTH_WITH_BONUS);
             return;
         }
 
         if (containsNumCount(numbers, lotto.getNumbers()) == 5) {
             inputWinning(Winning.FIFTH);
-            totalPrice += PRICE_OF_FIFTH;
+            user.addWinningPrice(PRICE_OF_FIFTH);
         }
     }
 
-    public void countEqualsFour(List<Integer> numbers, Lotto lotto) {
+    public void countEqualsFour(User user, List<Integer> numbers, Lotto lotto) {
         if (containsNumCount(numbers, lotto.getNumbers()) == 4) {
             inputWinning(Winning.FOURTH);
-            totalPrice += PRICE_OF_FOURTH;
+            user.addWinningPrice(PRICE_OF_FOURTH);
         }
     }
 
-    public void countEqualsThird(List<Integer> numbers, Lotto lotto) {
+    public void countEqualsThird(User user, List<Integer> numbers, Lotto lotto) {
         if (containsNumCount(numbers, lotto.getNumbers()) == 3) {
             inputWinning(Winning.THIRD);
-            totalPrice += PRICE_OF_THIRD;
+            user.addWinningPrice(PRICE_OF_THIRD);
         }
     }
 

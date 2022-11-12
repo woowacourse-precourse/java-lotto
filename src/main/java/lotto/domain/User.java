@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private final int buyingPrice;
-    private final int winningPrice;
+    private int buyingPrice;
+    private int winningPrice;
     private List<UserLotto> lottos;
 
     public User(int buyingPrice) {
@@ -31,5 +31,9 @@ public class User {
 
     public int getWinningPrice() {
         return winningPrice;
+    }
+
+    public void addWinningPrice(int money) {
+        winningPrice += money;
     }
 }
