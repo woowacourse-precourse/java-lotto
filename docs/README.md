@@ -12,8 +12,9 @@
 ## UI 계층
 1. 구입 금액을 입력받는 메서드 : getInputMoney()
 2. 구입한 로또의 번호를 출력하는 메서드 : printLottoNumbers()
-3. 당첨 로또 번호를 입력받는 메서드 : getWinningNumbers()
-4. 당첨 통계를 출력하는 메서드 : printWinningStats()
+3. 당첨 로또 번호를 입력받는 메서드 : getInputWinningNumbers()
+4. 보너스 번호를 입력받는 메서드 : getInputBonusNumber()
+5. 당첨 통계를 출력하는 메서드 : printWinningStats()
 
 ## 도메인 계층
 1. Lotto 클래스
@@ -23,7 +24,8 @@
 
 2. 일치 개수 별로 저장하는 Enum - 멤버로 일치 개수와 당첨금액?
 3. 구입 금액의 유효성 판단하는 메서드 - 유효하지 않을 경우 IllegalArgumentException 반환
-4. 6개의 수로 구성된 로또 번호 List 반환하는 메서드
-5. 입력받은 당첨 로또 번호를 List로 변환하는 메서드
-6. 수익률 계산하는 메서드
+4. 당첨 번호의 유효성을 판단하는 메서드 - validateWinningNumberInput()
+5. 6개의 수로 구성된 로또 번호 List 반환하는 메서드
+6. 입력받은 당첨 로또 번호를 List로 변환하는 메서드
+7. 수익률 계산하는 메서드
  - 당첨 등수 별로 상금 계산하는 메서드 - getReward()

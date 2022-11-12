@@ -24,6 +24,19 @@ public class Domain {
         return true;
     }
 
+    public void validateWinningNumberInput(String input) {
+        List<String> winningNumbers = new ArrayList<>(Arrays.asList(input.split(",")));
+        if (winningNumbers.size() != 6) {
+            throw new IllegalArgumentException("여섯 개의 숫자를 ,로 구분하여 입력해야합니다.");
+        }
+        for (String number : winningNumbers) {
+            int tempNumber = Integer.parseInt(number);
+            if (tempNumber < 1 || tempNumber > 45) {
+                throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+            }
+        }
+    }
+
     public List<Integer> trimLottoNumberInput(String lottoNumberInput) {
         List<Integer> result = new ArrayList<>();
         for (String charNumber : lottoNumberInput.split(",")) {
