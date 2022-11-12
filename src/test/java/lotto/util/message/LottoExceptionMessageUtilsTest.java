@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -76,6 +77,17 @@ class LottoExceptionMessageUtilsTest {
 
             assertThat(message).contains(EXCEPTION_MESSAGE_PREFIX);
             assertThat(message).contains(String.valueOf(invalidInput.length()));
+        }
+
+        @Test
+        @DisplayName("만약 유효하지 않은 당첨 등수를 입력하면 입력 값을 포함한 예외 메세지를 반환한다.")
+        void invalid_lotto_ranking_exception_message_test() {
+            String invalidRankingName = "?등";
+
+            String message = LottoExceptionMessageUtils.INVALID_RANKING.findExceptionMessage(invalidRankingName);
+
+            assertThat(message).contains(EXCEPTION_MESSAGE_PREFIX);
+            assertThat(message).contains(invalidRankingName);
         }
     }
 }
