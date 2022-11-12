@@ -35,10 +35,10 @@ public class MessagePrinter {
         System.out.println(Message.WINNING_RESULT_MESSAGE_4CORRECT.getPrintingMessage()+correct4+"개");
         System.out.println(Message.WINNING_RESULT_MESSAGE_5CORRECT.getPrintingMessage()+correct5+"개");
         System.out.println(Message.WINNING_RESULT_MESSAGE_5BONUS_CORRECT.getPrintingMessage()+correctBonus5+"개");
-        System.out.println(Message.WINNING_RESULT_MESSAGE_6CORRECT.getPrintingMessage()+correct6);
+        System.out.println(Message.WINNING_RESULT_MESSAGE_6CORRECT.getPrintingMessage()+correct6+"개");
     }
 
     public void printEarningsRate(double earningRate) {
-        System.out.println("총 수익률은 "+String.format("%.1f",earningRate)+"%입니다.");
+        System.out.println("총 수익률은 "+String.format("%.1f",earningRate*100)+"%입니다.");
     }
 }
