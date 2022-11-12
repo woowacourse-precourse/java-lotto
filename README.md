@@ -74,9 +74,9 @@ BUILD SUCCESSFUL in 0s
         - [x] `public WinLotto(List<Inteber> winNumbers, int bonusNumber)`
         - [x] `private void validateBonusNumber(List<Integer> winNumbers, int bonusNumber)`
         - [x] `public int getBonusNumber()`
-- [ ] **CLASS 3.** `LottoDraw`
+- [x] **CLASS 3.** `LottoDraw`
     - **Class Methods:**
-        - [ ] `public static LottoRank getLottoRank(Lotto lotto, WinLotto winLotto)`
+        - [x] `public static LottoRank getLottoRank(Lotto lotto, WinLotto winLotto)`
         - [x] `private static int getWinNumber(Lotto lotto, WinLotto winLotto)`
         - [x] `private static boolean existBonusNumber(Lotto lotto, WinLotto winLotto)`
 - [x] **CLASS 4.** `enum LottoRank`
