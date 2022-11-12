@@ -2,21 +2,18 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem {
     WinningLotto winningLotto;
     User user;
-    int []prize;
+    Map<Prize,Integer> winResult;
     long winMoney;
     Problem(){
         printInputGuide();
         this.user=new User();
-        this.prize=new int[5];
         this.winMoney=0;
+        this.winResult=new EnumMap<Prize, Integer>(Prize.class);
     }
 
     void printInputGuide(){
@@ -26,6 +23,7 @@ public class Problem {
         setUserLotto();
         setWinningLotto();
         findResult();
+        calculateResult();
     }
 
     private void setUserLotto(){
@@ -34,6 +32,12 @@ public class Problem {
         this.user.printLottoQunantity();
         this.user.buyingLotto();
         this.user.printAllBuyingLotto();
+    }
+
+    void calculateResult(){
+        for(Prize key:winResult.keySet()){
+            winMoney+=(key.getWinMoney()*winResult.get(key));
+        }
     }
 
     private void setWinningLotto(){
@@ -46,15 +50,6 @@ public class Problem {
         for(Lotto lotto:user.lottos){
             checkPrize(lotto);
         }
-        addPrize();
-    }
-
-    void addPrize(){
-        winMoney+=prize[0]*200000000l;
-        winMoney+=prize[1]*30000000l;
-        winMoney+=prize[2]*1500000l;
-        winMoney+=prize[3]*50000l;
-        winMoney+=prize[4]*5000l;
     }
 
     void checkPrize(Lotto lotto){
@@ -70,17 +65,35 @@ public class Problem {
     }
 
     void winPrize(int winCount,Lotto lotto){
-        int index=6-winCount;
-        if(winCount==5){
-            if(!lotto.getNumbers().contains(this.winningLotto.bonusNumber)){
-                index++;
-            }
+        Prize win=null;
+        if(winCount==6){
+            win=Prize.FIRST;
         }
-        else if(winCount>5){
-            index++;
+        else if(winCount==5){
+            win=checkWinBonus(lotto);
         }
+        else if(winCount==4){
+            win=Prize.FOURTH;
+        }
+        else if(winCount==3){
+            win=Prize.FIFTH;
+        }
+        addPrizeResult(win);
+    }
 
-        prize[index]++;
+    void addPrizeResult(Prize win){
+        if(winResult.get(win)==null){
+            winResult.put(win,0);
+        }
+        winResult.put(win,winResult.get(win)+1);
+    }
+
+    Prize checkWinBonus(Lotto lotto){
+        Prize win=Prize.THIRD;
+        if(lotto.getNumbers().contains(winningLotto.bonusNumber)){
+            win=Prize.SECOND;
+        }
+        return win;
     }
 
     private void printWinningNumberInputGuide(){
