@@ -7,15 +7,27 @@ import static lotto.utils.Messages.ERROR_MESSAGE;
 public class Validator {
     static final int LOTTO_LOWER_BOUND = 1;
     static final int LOTTO_UPPER_BOUND = 45;
-    public void validateInputAmount(String input){
-        validateNumeric(input);
-        validateGraterThousand(input);
-        validateMultipleOfThousands(input);
+    public boolean validateInputAmount(String input){
+        try{
+            validateNumeric(input);
+            validateGraterThousand(input);
+            validateMultipleOfThousands(input);
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
     }
 
-    public void validateBonusNumber(String input){
-        validateNumeric(input);
-        validateLottoNumberBound(input);
+    public boolean validateBonusNumber(String input){
+        try{
+            validateNumeric(input);
+            validateLottoNumberBound(input);
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
     }
 
     public void validateNumeric(String input){
