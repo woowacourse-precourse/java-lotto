@@ -15,13 +15,13 @@ public class WinningNumbersValidator {
             MIN_WINNING_NUMBER, MAX_WINNING_NUMBER);
     private static String DUPLICATE_ERROR_MESSAGE = "입력한 숫자들 중 중복되는 값이 있습니다";
 
-    private static boolean isSixNumbers(List<String> winningNumbers) {
-        return winningNumbers.size() == WINNING_NUMBERS_SIZE;
+    private static boolean isSixInputs(List<String> parsedInputs) {
+        return parsedInputs.size() == WINNING_NUMBERS_SIZE;
     }
 
-    private static boolean isAllNumeric(List<String> winningNumbers) {
-        for (String number : winningNumbers) {
-            if (!isNumeric(number)) {
+    private static boolean isAllNumeric(List<String> parsedInputs) {
+        for (String input : parsedInputs) {
+            if (!isNumeric(input)) {
                 return false;
             }
         }
@@ -37,19 +37,19 @@ public class WinningNumbersValidator {
         return true;
     }
 
-    private static boolean isInValidRange(List<String> winningNumbers) {
-        for (String number : winningNumbers) {
-            int num = Integer.parseInt(number);
-            if (num < MIN_WINNING_NUMBER || MAX_WINNING_NUMBER < num) {
+    private static boolean isInValidRange(List<String> parsedInputs) {
+        for (String input : parsedInputs) {
+            int number = Integer.parseInt(input);
+            if (number < MIN_WINNING_NUMBER || MAX_WINNING_NUMBER < number) {
                 return false;
             }
         }
         return true;
     }
 
-    private static boolean isDuplicate(List<String> winningNumbers) {
-        for (String number : winningNumbers) {
-            if (Collections.frequency(winningNumbers, number) > 1) {
+    private static boolean isDuplicate(List<String> parsedInputs) {
+        for (String input : parsedInputs) {
+            if (Collections.frequency(parsedInputs, input) > 1) {
                 return true;
             }
         }
@@ -57,17 +57,17 @@ public class WinningNumbersValidator {
     }
 
     public static void validate(String winningNumberInput) {
-        List<String> winningNumbers = Arrays.asList(winningNumberInput.split(","));
-        if (!isAllNumeric(winningNumbers)) {
+        List<String> parsedInputs = Arrays.asList(winningNumberInput.split(","));
+        if (!isAllNumeric(parsedInputs)) {
             throw new IllegalArgumentException(ALL_NUMERIC_ERROR_MESSAGE);
         }
-        if (!isInValidRange(winningNumbers)) {
+        if (!isInValidRange(parsedInputs)) {
             throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
         }
-        if (isDuplicate(winningNumbers)) {
+        if (isDuplicate(parsedInputs)) {
             throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
         }
-        if (!isSixNumbers(winningNumbers)) {
+        if (!isSixInputs(parsedInputs)) {
             throw new IllegalArgumentException(SIX_NUMBERS_ERROR_MESSAGE);
         }
     }
