@@ -1,4 +1,4 @@
-package lotto.output;
+package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,6 @@ import lotto.domain.BonusBallCaseCheck;
 public class WinningStatistics {
 
     public List<Integer> countCheck(List<Integer> number, List<Integer> bonusNumber) {
-        BonusBallCaseCheck bonusBallCaseCheck = new BonusBallCaseCheck();
 
         List<Integer> statistics = new ArrayList<>();
 
