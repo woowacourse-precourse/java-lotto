@@ -20,7 +20,11 @@ public class MatchLotteryService {
         this.computer = computer;
     }
 
-    public void matchPlayerWithComputer(){}
+    public void matchPlayerWithComputer(){
+        for(Lotto lottoEach : player.getPlayerLotto()){
+            matchEachTicketWithComputer(lottoEach);
+        }
+    }
 
     private void matchEachTicketWithComputer(Lotto lottoEach){
         int equalCount = (int)lottoEach.getNumbers().stream().map( s ->computer.getComputerNumber().getNumbers().contains(s)).count();
