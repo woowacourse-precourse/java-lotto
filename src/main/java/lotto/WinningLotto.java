@@ -2,6 +2,8 @@ package lotto;
 
 import java.util.List;
 
+import lotto.Util.LottoNumberValidator;
+
 
 
 public class WinningLotto extends Lotto {

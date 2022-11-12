@@ -1,4 +1,4 @@
-package lotto;
+package lotto.Util;
 
 import static lotto.Constant.ErrorMessage.WRONG_INPUT;
 

@@ -4,7 +4,7 @@ import static lotto.Constant.LottoValue.MAX_RANGE;
 import static lotto.Constant.LottoValue.MIN_RANGE;
 import static lotto.Constant.LottoValue.NUMBER_EA;
 
-import static lotto.LottoNumberValidator.*;
+import static lotto.Util.LottoNumberValidator.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
 

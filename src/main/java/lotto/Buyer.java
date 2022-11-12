@@ -1,10 +1,11 @@
 package lotto;
 
 import static lotto.Constant.ErrorMessage.WRONG_MONEY_UNIT;
+
 import static lotto.Constant.LottoValue.LOTTO_PRICE;
 
-import static lotto.Printer.printLottos;
-import static lotto.Printer.printWinnings;
+import static lotto.Util.Printer.printLottos;
+import static lotto.Util.Printer.printWinnings;
 
 import java.util.ArrayList;
 import java.util.List;

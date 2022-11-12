@@ -1,4 +1,4 @@
-package lotto;
+package lotto.Util;
 
 import static lotto.Constant.ResultMessage.HIT_BONUS_NUMBER;
 import static lotto.Constant.ResultMessage.LOTTO_NUM;
@@ -10,6 +10,8 @@ import java.text.DecimalFormat;
 
 import java.util.Collections;
 import java.util.List;
+import lotto.Lotto;
+import lotto.Rank;
 
 
 
