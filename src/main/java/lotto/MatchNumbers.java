@@ -11,7 +11,7 @@ public class MatchNumbers {
     this.maps = new HashMap<>();
   }
 
-  public void match(List<Integer> lottoNumber, List<Integer> winningNumber, int bonus) {
+  public void matchCount(List<Integer> lottoNumber, List<Integer> winningNumber, int bonus) {
     int count = 0;
     for (Integer integer : winningNumber) {
       if (lottoNumber.contains(integer)) {

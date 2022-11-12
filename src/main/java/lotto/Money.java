@@ -5,34 +5,28 @@ import java.util.Map;
 public class Money {
   private static int money;
   // 입력된 money가 숫자로만 이루어져 있는지.
-  private static boolean checkMoneyIsDigit(String userMoney) {
+  private static void checkMoneyIsDigit(String userMoney) {
     for (int i = 0; i < userMoney.length(); i++)
     {
       if (!Character.isDigit(userMoney.charAt(i))) {
         throw new IllegalArgumentException(ErrorMessage.NOT_ONLY_DIGIT.getMessage());
       }
     }
-    return true;
   }
 
   // 입력된 money가 1000원 단위로 나누어 떨어지는지
-  private static boolean checkDividableMoney(String userMoney) {
-    money = Integer.parseInt(userMoney);
-
+  private static void checkDividableMoney() {
     if (money % 1000 != 0) {
       throw new IllegalArgumentException(ErrorMessage.NOT_1000.getMessage());
     }
-    return true;
   }
 
-  //위의 두 사항을 만족시켰다면 1000원으로 나눠서 구매할 로또의 개수 반환
+  //1000원으로 나눠서 구매할 로또의 개수 반환
   public static int countLotto(String userMoney) {
+    checkMoneyIsDigit(userMoney);
     money = Integer.parseInt(userMoney);
-
-    if (checkDividableMoney(userMoney) && checkMoneyIsDigit(userMoney)) {
-      return (money / 1000);
-    }
-    return -1;
+    checkDividableMoney();
+    return (money / 1000);
   }
 
   public static double percentage(Map<Integer, Integer> maps) {

@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Application { // 패키지 분리
@@ -26,7 +25,7 @@ public class Application { // 패키지 분리
         for (int j = 0; j < count; j++) {
             Lotto lotto = countLotto.get(j);
             List<Integer> numbers1 = lotto.getNumbers();
-            matchNumbers.match(numbers1, numbers, validBonusNumber);
+            matchNumbers.matchCount(numbers1, numbers, validBonusNumber);
         }
         System.out.println(matchNumbers.getMaps());
 
