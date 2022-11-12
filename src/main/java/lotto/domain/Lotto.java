@@ -7,6 +7,7 @@ import lotto.exception.domain.LottoNumberDuplicateException;
 
 public class Lotto {
     private static final int LOTTO_SIZE = 6;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -34,9 +35,9 @@ public class Lotto {
         }
     }
 
-    public boolean isContainNumber(LottoNumber bonusNumber) {
+    public boolean isContainNumber(LottoNumber lottoNumber) {
         return this.numbers.stream()
-                .anyMatch(bonusNumber::equalNumber);
+                .anyMatch(lottoNumber::equalNumber);
     }
 
     public int matchCount(Lotto matchLotto) {
