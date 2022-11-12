@@ -28,4 +28,11 @@ public class Lotto {
         System.out.println(numbers);
     }
 
+    public int getNum(int index) {
+        return numbers.get(index);
+    }
+
+    public List<Integer> getNums() {
+        return numbers;
+    }
 }
