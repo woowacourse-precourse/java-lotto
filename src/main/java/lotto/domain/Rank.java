@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.function.Function;
 
 public enum Rank {
+    NONE(0, 0),
     FIFTH(3, 5000),
     FOURTH(4, 50_000),
     THIRD(5, 1_500_000),
@@ -23,7 +24,7 @@ public enum Rank {
                 .filter(rank -> rank.getMatchNumber().equals(matchNum))
                 .map(discriminateSecond(bonusNumber))
                 .findFirst()
-                .orElseThrow();
+                .orElse(NONE);
     }
 
     private static Function<Rank, Rank> discriminateSecond(boolean bonusNumber) {
