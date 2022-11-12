@@ -5,7 +5,7 @@ public enum LottoMessage {
     RANGE_ERROR_MESSAGE("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."),
     DUPLICATE_ERROR_MESSAGE("[ERROR] 로또 번호는 중복되어선 안됩니다."),
     INTEGER_INPUT_ERROR_MESSAGE("[ERROR] 숫자를 입력해야 합니다."),
-    NUMBERS_INPUT_ERROR_MESSAGE("[ERROR] 쉼표로 구분된 숫자를 입력해야 합니다."),
+    BONUS_INPUT_ERROR_MESSAGE("[ERROR] 보너스 번호는 1개만 입력해야 합니다."),
     PRICE_ERROR_MESSAGE("[ERROR] 구입 금액은 1000원 단위로 입력해야 합니다."),
     START_MESSAGE("구입금액을 입력해 주세요."),
     PURCHASE_MESSAGE("개를 구매했습니다."),
