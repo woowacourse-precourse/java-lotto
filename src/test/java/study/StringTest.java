@@ -36,7 +36,7 @@ class StringTest {
 		assertAll(
 			() -> assertThat(input.charAt(0)).isEqualTo('a'),
 			() -> assertThat(input.charAt(1)).isEqualTo('b'),
-			() -> assertThatThrownBy(() -> input.charAt(3)).isEqualTo('d')
+			() -> assertThatThrownBy(() -> input.charAt(3))
 				.isInstanceOf(StringIndexOutOfBoundsException.class)
 		);
 	}
