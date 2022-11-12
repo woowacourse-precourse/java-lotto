@@ -21,22 +21,32 @@ public class Revenue {
     }
 
     BuyLotto buy = new BuyLotto();
-    Lotto lotto = new Lotto(buy.numbers());
+
     int threeCount = 0, fourCount = 0, fiveCount = 0, fiveBonusCount = 0, sixCount = 0;
     double revenueRate = 0;
+    int price = 0;
 
-    private void revenueCountTmp() {
-        List<Integer> sameNumberCount = lotto.compareList();
-        for(int i=0; i<sameNumberCount.size(); i++) {
-            if(sameNumberCount.get(i) == 3) {
+    public void revenueCountTmp() {
+        BuyLotto buy = new BuyLotto();
+        List<List<Integer>> userLottoNumber = buy.lottoNumberMaker();
+        this.price = userLottoNumber.size();
+        List<Integer> winLottoNumber = buy.numbers();
+        Lotto lotto = new Lotto(winLottoNumber);
+        List<Integer> sameNumberCount = lotto.compareList(userLottoNumber, winLottoNumber);
+        for (int i = 0; i < sameNumberCount.size(); i++) {
+            if (sameNumberCount.get(i) == 3) {
                 this.threeCount += 1;
-            } if (sameNumberCount.get(i) == 4) {
+            }
+            if (sameNumberCount.get(i) == 4) {
                 this.fourCount += 1;
-            } if (sameNumberCount.get(i) == 5) {
-                this.fiveCount += 1 ;
-            } if (sameNumberCount.get(i) == 10) {
+            }
+            if (sameNumberCount.get(i) == 5) {
+                this.fiveCount += 1;
+            }
+            if (sameNumberCount.get(i) == 10) {
                 this.fiveBonusCount += 1;
-            }if (sameNumberCount.get(i) == 6) {
+            }
+            if (sameNumberCount.get(i) == 6) {
                 this.sixCount += 1;
             }
         }
@@ -45,12 +55,13 @@ public class Revenue {
     private void revenueRateCalCulator() {
         int sum = 0;
         sum += (threeCount*5000 + fourCount*50000 + fiveCount*1500000 + fiveBonusCount*30000000 + sixCount*2000000000);
-        this.revenueRate = (((float) sum / buy.userPriceInput() * 100)*100)/100.0;
+        this.revenueRate = (((float) sum / price * 100)*100)/100.0;
     }
 
     public void revenuePrint() {
         revenueCountTmp();
         revenueRateCalCulator();
+        System.out.println();
         System.out.println("당첨 통계\n---");
         System.out.println(revenueCount.THREE.label() + threeCount + "개");
         System.out.println(revenueCount.FOUR.label() + fourCount + "개");
