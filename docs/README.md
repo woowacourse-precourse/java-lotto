@@ -67,7 +67,10 @@ Lotto, BonusNumber를 참조한다.
    1. splitTicket : ','로 문자열을 나누어 정수형 리스트로 리턴한다. 
    2. createTicket : 정수형 리스트로 바꾸어 Lotto의 생성자에 입력변수로 사용해 저장한다. 
 2. saveBonusNumber
-   1. validateBonusNumber : BonusNumberException.validate을 통해 예외처리한다. 
+   1. validateBonusNumber : 
+      1. isOutOfBound : 숫자가 1보다 작거나 45보다 크면 참을 반환한다. 
+      2. isAlreadyInLotto : 로또에 이미 존재하면 참을 반환한다. 
+      3. notValidBonusNumberException : '보너스 넘버는 1부터 45까지 로또에 존재하지 않는 숫자여야 합니다.'라는 문구로 예외처리한다. 
    2. addBonusNumber : BonusNumber에 입력변수값을 정수형 변수로 저장한다.
 3. getComputerNumber : 컴퓨터의 당첨번호를 Lotto타입으로 반환한다. 
 4. getBonusNumber : 보너스 넘버를 정수형으로 반환한다. 
