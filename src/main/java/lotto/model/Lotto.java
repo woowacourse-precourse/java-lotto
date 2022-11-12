@@ -28,4 +28,12 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 서로 다른 숫자를 입력해주세요");
         }
     }
+
+    private void validateNumbers(List<Integer> numbers) {
+        for(int i=0; i<numbers.size(); i++){
+            if(!Integer.toString(numbers.get(i)).matches(REGEX)){
+                throw new IllegalArgumentException("[ERROR] 1~45까지의 숫자를 입력해주세요");
+            }
+        }
+    }
 }
