@@ -30,7 +30,7 @@ public class Lotto {
         Set<Integer> number = new HashSet<Integer>();
         int temp;
         for(int i =0; i < numbers.size();i++){
-            temp = numbers.get(0);
+            temp = numbers.get(i);
             number.add(temp);
         }
         if (number.size() !=6 ){
