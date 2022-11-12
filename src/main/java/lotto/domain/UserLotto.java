@@ -19,6 +19,7 @@ public final class UserLotto {
         isDigitAndSplitByStandard(winNumbers);
         isValidLottoCount(winNumbers);
         isValidLottoRange(winNumbers);
+        hasNotDuplicateLotto(winNumbers);
         this.winNumbers = List.copyOf(mapToList(winNumbers));
         this.bonusNumber = Integer.parseInt(bonusNumber);
     }
@@ -43,6 +44,12 @@ public final class UserLotto {
 
         if (count != 6) {
             throw new IllegalArgumentException(InputException.INPUT_INVALID_DIGIT_RANGE.message());
+        }
+    }
+
+    private void hasNotDuplicateLotto(String winNumbers) {
+        if (Arrays.stream(winNumbers.split(SPLIT_STANDARD)).distinct().count() != 6) {
+            throw new IllegalArgumentException(InputException.INPUT_HAS_NOT_DUPLICATE_DIGIT.message());
         }
     }
 
