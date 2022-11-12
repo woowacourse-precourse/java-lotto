@@ -2,10 +2,11 @@ package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class LottoData {
     public int lottoAmount;
@@ -23,8 +24,9 @@ public class LottoData {
         List<Integer> lottoNumbers;
         while (allLotto.size() != lottoAmount) {
             lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            lottoNumbers.sort(Comparator.naturalOrder());
-            Lotto lotto = new Lotto(lottoNumbers);
+            int[] integerNumbers = lottoNumbers.stream().mapToInt(number -> number).toArray();
+            Arrays.sort(integerNumbers);
+            Lotto lotto = new Lotto(Arrays.stream(integerNumbers).boxed().collect(Collectors.toList()));
             allLotto.add(lotto);
         }
     }
