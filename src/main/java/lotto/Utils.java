@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 
 public class Utils {
     SystemMessage systemMessage = new SystemMessage();
+    List<Integer> winningNumbers = new ArrayList<>();
 
     public int inputMoney() {
         systemMessage.inputMoney();
@@ -38,7 +39,6 @@ public class Utils {
     }
 
     public List<Integer> inputWinningNumbers() {
-        List<Integer> winningNumbers = new ArrayList<>();
         systemMessage.inputWinningNumbers();
         String inputNumbers = Console.readLine();
         blankLine();
