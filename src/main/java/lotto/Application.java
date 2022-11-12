@@ -173,7 +173,7 @@ public class Application {
     public static void validateNumbersBetweenComma(char character1, char character2) {
 
         if ((character1 < 48 || character1 > 57) || (character2 < 48 || character2 > 57)) {
-
+            error = ErrorMessage.FORM;
             throw new IllegalArgumentException();
         }
 
