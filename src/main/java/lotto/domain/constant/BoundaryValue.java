@@ -9,4 +9,6 @@ public enum BoundaryValue {
   BoundaryValue(int value) {
     this.value = value;
   }
+
+  public int getBoundaryValue() { return value; }
 }
