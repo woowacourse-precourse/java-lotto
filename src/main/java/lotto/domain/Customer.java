@@ -13,12 +13,25 @@ import java.util.List;
 public class Customer {
     private List<Lotto> lottos;
 
+    public void buyLotto(LottoStore lottoStore) {
+        int fee = pay();
+        this.lottos = lottoStore.sellLotto(fee);
+        checkNumbersOfLottos(this.lottos);
+    }
+
     public int pay() {
         System.out.print("구입금액을 입력해 주세요: ");
         String fee = readLine();
         validateNumeric(fee);
         validateMultiplesOf1000(fee);
         return Integer.parseInt(fee);
+    }
+
+    private void checkNumbersOfLottos(List<Lotto> lottos) {
+        System.out.println(lottos.size() + "개를 구매했습니다.");
+        for (Lotto lotto : lottos) {
+            System.out.println(lotto.getNumbers().toString());
+        }
     }
 
     private void validateNumeric(String stringNumber) {
