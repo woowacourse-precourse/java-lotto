@@ -44,9 +44,9 @@ public class Lotto {
         return inputLottoNumbers;
     }
 
-    public int inputWinningBonusNumber(List<Integer> numbers) {
+    public int inputWinningLottoBonusNumber(List<Integer> winningLottoNumbers) {
         InputAgent inputAgent = new InputAgent();
         System.out.println("\n보너스 번호를 입력해주세요.");
-        return inputAgent.inputWinningBonusNumber(numbers);
+        return inputAgent.inputBonusNumber(winningLottoNumbers);
     }
 }
