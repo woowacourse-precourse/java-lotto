@@ -8,12 +8,12 @@ import java.util.List;
 import lotto.constants.ErrorCode;
 import org.junit.jupiter.api.Test;
 
-class BonusNumberTest {
+class LottoWithBonusTest {
 
     @Test
     void getBonusNumber_7_7() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        BonusNumber bonusNumber = new BonusNumber(lotto, 7);
+        LottoWithBonus bonusNumber = new LottoWithBonus(lotto, 7);
         assertThat(bonusNumber.getBonusNumber()).isEqualTo(7);
     }
 
@@ -21,7 +21,7 @@ class BonusNumberTest {
     void validateContains_exception_message_test() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-            new BonusNumber(lotto, 6);
+            new LottoWithBonus(lotto, 6);
         });
         assertEquals(ErrorCode.NOT_CONTAINS_IN_LOTTO.getErrorMessage(), exception.getMessage());
     }
