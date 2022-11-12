@@ -10,8 +10,12 @@ import java.util.stream.Collectors;
 public class LottoController {
     Validator validator = new Validator();
 
-    private static final String PURCHASE_MESSAGE = "";
-
+    private static final String PURCHASE_MESSAGE = "구입 금액을 입력해 주세요.";
+    private static final String PRINT_PURCHASE_MESSAGE = "%d개를 구매했습니다.\n";
+    private static final String INPUT_WINNING_NUMBER_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요";
+    private static final String PRINT_WINNING_LIST = "%s - %d개\n";
+    private static final String PRINT_YIELD = "총 수익률은 %.1f%%입니다.\n";
 
     public void run() {
         int lottoCount = buyLotto();
@@ -27,7 +31,7 @@ public class LottoController {
     }
 
     public int buyLotto() {
-        System.out.println("구입 금액을 입력해 주세요.");
+        System.out.println(PURCHASE_MESSAGE);
         String userMoney = Console.readLine();
         validator.validateMoneyNumber(userMoney);
         validator.validateMoneyUnit(userMoney);
@@ -36,9 +40,11 @@ public class LottoController {
     }
 
     public ArrayList<Lotto> publishLotto(int count) {
+        System.out.printf(PRINT_PURCHASE_MESSAGE, count);
+
         ArrayList<Lotto> lottos = new ArrayList<>();
-        System.out.printf("%d개를 구매했습니다.\n", count);
         LottoMaker lottoMaker = new LottoMaker();
+
         for (int i = 0; i < count; i++) {
             Lotto lotto = lottoMaker.makeLotto();
             lottos.add(lotto);
@@ -46,11 +52,12 @@ public class LottoController {
             Collections.sort(printNumbers);
             System.out.println(printNumbers);
         }
+
         return lottos;
     }
 
     public List<Integer> inputWinningNumbers() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(INPUT_WINNING_NUMBER_MESSAGE);
         String winningNumber = Console.readLine();
         validator.validateWinningNumberComma(winningNumber);
 
@@ -65,7 +72,7 @@ public class LottoController {
     }
 
     public String inputBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요");
+        System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
         String bonusNumber = Console.readLine();
         validator.validateBonusNumberRange(bonusNumber);
         return bonusNumber;
@@ -109,7 +116,7 @@ public class LottoController {
 
     public void printWinningList(HashMap<LottoRanking, Integer> winningList) {
         for (int i = 5; i >= 1; i--) {
-            System.out.printf("%s - %d개\n",
+            System.out.printf(PRINT_WINNING_LIST,
                     LottoRanking.findByRanking(i).getMessage(),
                     winningList.get(LottoRanking.findByRanking(i)));
         }
@@ -121,7 +128,7 @@ public class LottoController {
             reward += (long) winningList.get(LottoRanking.findByRanking(i)) * LottoRanking.findByRanking(i).getReward();
         }
         double yieldMoney = reward / (lottoCount * 1000) * 100;
-        System.out.println("총 수익률은 " + String.format("%.1f", yieldMoney) + "%입니다.");
+        System.out.printf(PRINT_YIELD,yieldMoney);
     }
 
 
