@@ -52,8 +52,6 @@ public class Mission {
         result.forEach((rank, count) -> callOutputAboutRank(rank, count));
 
         output.printTotalRate(rate);
-
-        System.exit(0);
     }
 
     private Money getMoney() {
