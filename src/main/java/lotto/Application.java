@@ -83,8 +83,23 @@ public class Application {
     }
 
     static String what_user_number() {
-        String user_number;
-        user_number = readLine();
+        String user_numbers;
+        user_numbers = readLine();
+
+        return user_numbers;
+    }
+
+    static List<Integer> split_user_number(String user_numbers) {
+        List<Integer> user_number = new ArrayList<>();
+
+        String[] split_numbers = user_numbers.split(",");
+        for (String split_number : split_numbers) {
+            try {
+                user_number.add(Integer.parseInt(split_number));
+            } catch (Exception e) {
+                throw new IllegalArgumentException();
+            }
+        }
 
         return user_number;
     }
@@ -115,7 +130,14 @@ public class Application {
 
         ask_lotto_number();
 
-        String user_number;
-        user_number = what_user_number();
+        String user_numbers;
+        user_numbers = what_user_number();
+
+        List<Integer> user_number;
+        try {
+            user_number = split_user_number(user_numbers);
+        } catch (IllegalArgumentException e) {
+            return;
+        }
     }
 }
