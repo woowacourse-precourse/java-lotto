@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class WinningNumber {
-    private List<Integer> winningNumbers;
-    private int bonusNumber;
+    private final List<Integer> winningNumbers;
+    private final int bonusNumber;
 
     public WinningNumber(List<Integer> winningNumbers, int bonusNumber) {
         validateNumbersRange(winningNumbers);
