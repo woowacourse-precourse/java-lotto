@@ -18,7 +18,7 @@ public class LottoController {
         List<Lotto> lottoBundle = buyLotto();
         List<Integer> winningNumbers = getWinningNumbers();
         int bonusNumber = getBonusNumber(winningNumbers);
-        List<LottoResult> lottoResults = getLottoResult(lottoBundle, winningNumbers, bonusNumber);
+        List<LottoResult> lottoResults = getLottoResults(lottoBundle, winningNumbers, bonusNumber);
         printYield(lottoResults);
     }
 
@@ -42,9 +42,9 @@ public class LottoController {
         return inputDevice.sendBonusNumber(winningNumbers);
     }
 
-    private List<LottoResult> getLottoResult(List<Lotto> lottoTickets,
-                                             List<Integer> winningNumbers,
-                                             int bonusNumber) {
+    private List<LottoResult> getLottoResults(List<Lotto> lottoTickets,
+                                              List<Integer> winningNumbers,
+                                              int bonusNumber) {
         List<LottoResult> lottoResults = lottoService.compareLottoNumbers(lottoTickets, winningNumbers, bonusNumber);
         lottoView.printLottoResult(lottoResults);
         return lottoResults;
