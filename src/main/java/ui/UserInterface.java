@@ -79,8 +79,7 @@ public class UserInterface {
         for (LottoRank rank : LottoRank.values()) {
             if (rank.getRank() == 0)
                 continue;
-            String line = getRankLine(rank) + statistics.getNumOfRank(rank) + "개";
-            System.out.println(line);
+            System.out.println(getFormedRankLine(rank, statistics.getNumOfRank(rank)));
         }
         System.out.println(getFormedYield(statistics.getYield()));
     }
@@ -90,7 +89,7 @@ public class UserInterface {
      * @param lotteries 로또번호들의 목록
      */
     public static void printBoughtLotteries(List<Lotto> lotteries) {
-        System.out.println("\n" + lotteries.size() + PrintConstants.BUY_COMPLETE);
+        System.out.println("\n" + String.format(PrintConstants.BUY_COMPLETE, lotteries.size()));
         for (Lotto lotto : lotteries) {
             System.out.println(lotto.getNumbers());
         }
@@ -108,13 +107,14 @@ public class UserInterface {
 
     /**
      * 각 로또 등수의 정보에 대해서 문자열 형태로 반환합니다.
-     * ex) 6개 일치 (2,000,000,000원) -
-     * ex) 5개 일치, 보너스 볼 일치 (30,000,000원) -
+     * ex) 6개 일치 (2,000,000,000원) - 1개
+     * ex) 5개 일치, 보너스 볼 일치 (30,000,000원) - 0개
      * @param rank 로또 등수
+     * @param nums 등수별 당첨 횟수
      * @return 로또 등수 정보
      */
-    private static String getRankLine(LottoRank rank) {
-        return rank.getDescription() + " (" + decimalFormat.format(rank.getPrize()) + "원) - ";
+    private static String getFormedRankLine(LottoRank rank, int nums) {
+        return String.format(PrintConstants.RANK_INFORMATION, rank.getDescription(), decimalFormat.format(rank.getPrize()), nums);
     }
 
     /**
@@ -124,6 +124,6 @@ public class UserInterface {
      * @return 소수점 1의 자리까지 반올림된 수익률과 기타 포맷
      */
     private static String getFormedYield(double yield) {
-        return PrintConstants.PRINT_YIELD_START + String.format("%.1f", yield) + PrintConstants.PRINT_YIELD_END;
+        return String.format(PrintConstants.PRINT_YIELD_FORMAT, yield);
     }
 }
