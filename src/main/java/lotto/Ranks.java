@@ -22,11 +22,7 @@ public enum Ranks {
     SIX_NUMBERS(
             6,
             2_000_000_000,
-            "6개 일치 (2,000,000,000원)"),
-    NONE(
-            0,
-            0,
-            "3개 이상 일치하는 공이 없습니다.");
+            "6개 일치 (2,000,000,000원)");
 
     private final int matchingWinningNumberCount;
     private final int prizeMoney;
@@ -46,21 +42,23 @@ public enum Ranks {
         return message;
     }
 
-    public static Ranks getRankBy(int myMatchingWinningNumberCount, int myMatchingBonusNumberCount) {
+    public static int getPrizeMoneyBy(int myMatchingWinningNumberCount, int myMatchingBonusNumberCount) {
         if (myMatchingWinningNumberCount == 5 && myMatchingBonusNumberCount == 1) {
-            return Ranks.BONUS_NUMBERS;
+            return Ranks.BONUS_NUMBERS.prizeMoney;
         }
-        return Arrays.stream(Ranks.values())
-                .filter(rank -> rank.matchingWinningNumberCount == myMatchingWinningNumberCount)
-                .findFirst()
-                .orElse(Ranks.NONE);
+        for (Ranks ranks : Ranks.values()) {
+            if (myMatchingWinningNumberCount == ranks.matchingWinningNumberCount) {
+                return ranks.prizeMoney;
+            }
+        }
+        return 0;
     }
 
     public static Ranks getRankBy(Integer prizeMoney) {
         return Arrays.stream(Ranks.values())
                 .filter(rank -> rank.prizeMoney == prizeMoney)
                 .findFirst()
-                .orElse(NONE);
+                .orElse(null);
     }
 }
 

@@ -46,4 +46,10 @@ public class Validator {
             throw new IllegalArgumentException(ERROR_TITLE + NO_COMMAS_FOUND);
         }
     }
+
+    public static void checkIfBonusNumberIncludedInWinningNumbers(List<Integer> winningNumbers, Integer bonusNumber) {
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(ERROR_TITLE + DUPLICATE_NUMBERS);
+        }
+    }
 }

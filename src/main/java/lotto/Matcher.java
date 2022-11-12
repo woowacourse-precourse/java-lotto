@@ -21,8 +21,8 @@ public class Matcher {
 
     private int compare(List<Integer> consumerNumbers, List<Integer> winningNumbers) {
         int matchingCount = 0;
-        for (int index = 0; index < winningNumbers.size(); index++) {
-            if (consumerNumbers.contains(winningNumbers.get(index))) {
+        for (int i = 0; i < winningNumbers.size(); i++) {
+            if (consumerNumbers.contains(winningNumbers.get(i))) {
                 matchingCount++;
             }
         }

@@ -1,6 +1,10 @@
 package lotto;
 
 public class Constants {
+    public final static String ENTER_PURCHASE_PRICE = "구입금액을 입력해 주세요.";
+    public final static String ENTER_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
+    public final static String ENTER_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+
     public final static String ERROR_TITLE = "[ERROR] ";
     public final static String NON_NUMERIC = "숫자 이외의 값이 입력되었습니다. 문자나 띄어쓰기 등이 들어갔는지 확인해주세요.";
     public final static String NOT_IN_THOUSANDS = "금액은 천 원 단위로만 입력할 수 있습니다.";

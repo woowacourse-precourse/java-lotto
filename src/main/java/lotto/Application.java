@@ -6,10 +6,6 @@ import java.util.List;
 import static lotto.Constants.*;
 
 public class Application {
-    private final static String ENTER_PURCHASE_PRICE = "구입금액을 입력해 주세요.";
-    private final static String ENTER_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
-    private final static String ENTER_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
-
     public static void main(String[] args) {
         String payment = Input.submit(ENTER_PURCHASE_PRICE);
         try {
@@ -24,23 +20,32 @@ public class Application {
             }
             Output.purchaseSuccessful(purchasePrice, lottoTickets);
 
+            // Winner 클래스에 다시 넣어야 할 듯
             String winningNumbers = Input.submit(ENTER_WINNING_NUMBERS);
             List<Integer> winningNumbersConverted =  Convertor.separate(winningNumbers);
             String bonusNumber = Input.submit(ENTER_BONUS_NUMBER);
             Integer bonusNumberConverted = Convertor.getNumericValue(bonusNumber);
-            Winner winner = new Winner(winningNumbersConverted, bonusNumberConverted);
+            Validator.checkIfBonusNumberIncludedInWinningNumbers(
+                    winningNumbersConverted,
+                    bonusNumberConverted
+            );
 
             List<Integer> profits = new ArrayList<>();
-            for (List<Integer> lotto : lottoTickets) {
-                Matcher matcher = new Matcher(lotto, winner.getWinningNumbers(), winner.getBonusNumber());
-                int matchingWinningNumberCount = matcher.getMatchingWinningNumberCount();
-                int matchingBonusNumberCount = matcher.getMatchingBonusNumberCount();
-                Prize prize = new Prize(matchingWinningNumberCount, matchingBonusNumberCount);
-                profits.add(prize.getMoney());
+            for (List<Integer> myLotto : lottoTickets) {
+                Matcher matcher = new Matcher(
+                        myLotto,
+                        winningNumbersConverted,
+                        bonusNumberConverted
+                );
+                Integer prizeMoney = Ranks.getPrizeMoneyBy(
+                        matcher.getMatchingWinningNumberCount(),
+                        matcher.getMatchingBonusNumberCount()
+                );
+                profits.add(prizeMoney);
             }
 
-            Roi roi = new Roi(profits, purchasePrice);
-            Output.statistics(purchasePrice, roi.getStatistics());
+            Result matchingResult = new Result(profits);
+            Output.statistics(purchasePrice, matchingResult.getStatistics());
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());
         }
