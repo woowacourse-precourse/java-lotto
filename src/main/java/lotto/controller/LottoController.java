@@ -29,7 +29,10 @@ public class LottoController {
     }
 
     private void setWinningLotto() {
+        ConsoleView.printBlankLine();
         List<Integer> numbers = ConsoleView.inputWinningLotto();
-        winningLotto = new WinningLotto(numbers);
+        ConsoleView.printBlankLine();
+        int bonusNumber = ConsoleView.inputBonusNumber();
+        winningLotto = new WinningLotto(numbers, bonusNumber);
     }
 }

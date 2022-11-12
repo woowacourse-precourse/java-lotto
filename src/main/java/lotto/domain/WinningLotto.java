@@ -13,6 +13,10 @@ public class WinningLotto extends Lotto {
         this.bonusNumber = bonusNumber;
     }
 
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
+
     private void validate(int bonusNumber) {
         super.getNumbers().forEach(InputValidator::validateNumberRange);
         InputValidator.validateNumberRange(bonusNumber);

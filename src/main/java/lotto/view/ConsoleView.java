@@ -21,13 +21,19 @@ public class ConsoleView {
     public static int inputPurchasePrice() {
         System.out.println(ConsoleMessage.INPUT_PURCHASE_PRICE.getMessage());
         String input = Console.readLine();
-        return InputValidator.changeStringToInt(input);
+        return InputValidator.changeInputToInt(input);
     }
 
     public static List<Integer> inputWinningLotto() {
         System.out.println(ConsoleMessage.INPUT_WINNING_NUMBERS.getMessage());
         String input = Console.readLine();
         return InputValidator.changeInputToIntegerList(input);
+    }
+
+    public static int inputBonusNumber() {
+        System.out.println(ConsoleMessage.INPUT_BONUS_NUMBER.getMessage());
+        String input = Console.readLine();
+        return InputValidator.changeInputToInt(input);
     }
 
     public static void printPurchaseAmount(int amount) {

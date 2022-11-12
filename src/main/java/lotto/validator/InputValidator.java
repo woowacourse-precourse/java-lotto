@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class InputValidator {
     private static final String INPUT_DELIMITER = ",";
 
-    public static int changeStringToInt(String input) {
+    public static int changeInputToInt(String input) {
         if (!isNumeric(input)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_DIGIT.getMessage());
         }
@@ -27,7 +27,7 @@ public class InputValidator {
     public static List<Integer> changeInputToIntegerList(String input) {
         List<String> splitElements = Arrays.asList(input.split(INPUT_DELIMITER));
         List<Integer> numbers = splitElements.stream()
-                .map(InputValidator::changeStringToInt)
+                .map(InputValidator::changeInputToInt)
                 .collect(Collectors.toList());
 
         return numbers;
