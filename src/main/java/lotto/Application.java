@@ -104,6 +104,10 @@ public class Application {
         return user_number;
     }
 
+    static void print_integer_error() {
+        System.out.print(COMMON_ERROR_MESSAGE + " 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+    }
+
     public static void main(String[] args) {
         ask_how_much_money();
 
@@ -137,6 +141,7 @@ public class Application {
         try {
             user_number = split_user_number(user_numbers);
         } catch (IllegalArgumentException e) {
+            print_integer_error();
             return;
         }
     }
