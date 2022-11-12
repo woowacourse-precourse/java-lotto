@@ -17,49 +17,49 @@ public class InputNumberValidator {
         throw new UtilClassCreateException();
     }
     
-    public static void validate(final String inputPayment) {
-        validateNullOrEmpty(inputPayment);
-        validateInputNumberFormatMatching(inputPayment);
-        validateZeroAtFirstPlaceExist(inputPayment);
-        validateDigitRangeOfOut(inputPayment);
+    public static void validate(final String inputNumber) {
+        validateNullOrEmpty(inputNumber);
+        validateInputNumberFormatMatching(inputNumber);
+        validateZeroAtFirstPlaceExist(inputNumber);
+        validateDigitRangeOfOut(inputNumber);
     }
     
-    private static void validateNullOrEmpty(final String inputPayment) {
-        InputValidator.validateNullOrEmpty(inputPayment);
+    private static void validateNullOrEmpty(final String inputNumber) {
+        InputValidator.validateNullOrEmpty(inputNumber);
     }
     
-    private static void validateInputNumberFormatMatching(final String inputPayment) {
-        if (isNonNumericCharactersExist(inputPayment)) {
+    private static void validateInputNumberFormatMatching(final String inputNumber) {
+        if (isNonNumericCharactersExist(inputNumber)) {
             throw new IllegalArgumentException(NON_NUMERIC_CHARACTERS_EXCEPTION_MESSAGE);
         }
     }
     
-    private static boolean isNonNumericCharactersExist(final String inputPayment) {
-        return matcher(inputPayment, INPUT_NON_NUMBER_FORM).find();
+    private static boolean isNonNumericCharactersExist(final String inputNumber) {
+        return matcher(inputNumber, INPUT_NON_NUMBER_FORM).find();
     }
     
-    private static void validateZeroAtFirstPlaceExist(final String inputPayment) {
-        if (isExistZeroAtFirstPlace(inputPayment)) {
+    private static void validateZeroAtFirstPlaceExist(final String inputNumber) {
+        if (isExistZeroAtFirstPlace(inputNumber)) {
             throw new IllegalArgumentException(EXIST_ZERO_AT_FIRST_PLACE_EXCEPTION_MESSAGE);
         }
     }
     
-    private static boolean isExistZeroAtFirstPlace(final String inputPayment) {
-        return matcher(inputPayment, EXIST_ZERO_AT_FIRST_PLACE_FORM).matches();
+    private static boolean isExistZeroAtFirstPlace(final String inputNumber) {
+        return matcher(inputNumber, EXIST_ZERO_AT_FIRST_PLACE_FORM).matches();
     }
     
-    private static void validateDigitRangeOfOut(final String inputPayment) {
-        if (isNumberDigitOutOfRange(inputPayment)) {
+    private static void validateDigitRangeOfOut(final String inputNumber) {
+        if (isNumberDigitOutOfRange(inputNumber)) {
             throw new IllegalArgumentException(DIGIT_OUT_OF_RANGE_EXCEPTION);
         }
     }
     
-    private static boolean isNumberDigitOutOfRange(final String inputPayment) {
-        return matcher(inputPayment, DIGIT_OUT_OF_RANGE_FORM).find();
+    private static boolean isNumberDigitOutOfRange(final String inputNumber) {
+        return matcher(inputNumber, DIGIT_OUT_OF_RANGE_FORM).find();
     }
     
-    private static Matcher matcher(final String inputPayment, final String correctInputForm) {
-        return compiler(correctInputForm).matcher(inputPayment);
+    private static Matcher matcher(final String inputNumber, final String correctInputForm) {
+        return compiler(correctInputForm).matcher(inputNumber);
     }
     
     private static Pattern compiler(final String correctInputForm) {
