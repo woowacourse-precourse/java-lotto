@@ -22,6 +22,24 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+
+        System.out.println("구입금액을 입력해 주세요");
+        int inputMoney = input(Integer.parseInt(Console.readLine()));
+
+        QUANTITY = inputMoney / 1000;
+
+        System.out.println(QUANTITY + "개를 구매했습니다.");
+        List<List<Integer>> numbers = new ArrayList<>();
+        for(int i = 0; i < QUANTITY; i++) {
+            // n개의 로또 번호 생성
+            CreateLottoNumbers lottoNumbers = new CreateLottoNumbers();
+            numbers.add(lottoNumbers.numbers);
+            System.out.println(numbers.get(i));
+        }
+
+        // 사용자의 당첨 번호 & 보너스 번호 입력
+        List winNumber = inputWinNumber();
+
     // 사용자의 구매 금액 입력 (에러 판별)
     public static int input(int inputMoney) {
 
