@@ -13,6 +13,6 @@ public class Player {
     }
 
     public String selectBonusNumber() {
-        return "";
+        return Console.readLine();
     }
 }
