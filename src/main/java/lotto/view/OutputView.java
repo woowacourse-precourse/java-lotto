@@ -48,18 +48,18 @@ public class OutputView {
         final List<List<Integer>> lottos = lottosDTO.getLottos();
         
         printNumberOfPurchases(lottos);
-        printLottosIssuanceResults(lottos);
-    }
-    
-    private static void printLottosIssuanceResults(final List<List<Integer>> lottos) {
-        System.out.println(parseLottosIssuanceResults(lottos));
+        printLottosNumbersResults(lottos);
     }
     
     private static void printNumberOfPurchases(final List<List<Integer>> lottos) {
         System.out.printf(NUMBER_OF_PURCHASES_FORMAT, lottos.size());
     }
     
-    private static String parseLottosIssuanceResults(final List<List<Integer>> lottos) {
+    private static void printLottosNumbersResults(final List<List<Integer>> lottos) {
+        System.out.println(parseLottosNumbersResults(lottos));
+    }
+    
+    private static String parseLottosNumbersResults(final List<List<Integer>> lottos) {
         return lottos.stream()
                 .map(OutputView::parseLottoIssuanceResults)
                 .collect(Collectors.joining(NEW_LINE_DELIMITER));
