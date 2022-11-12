@@ -6,6 +6,12 @@ import static lotto.utils.Messages.ERROR_MESSAGE;
 
 public class Validator {
 
+    public void validateInputAmount(String input){
+        validateNumeric(input);
+        validateGraterThousand(input);
+        validateMultipleOfThousands(input);
+    }
+
     public void validateNumeric(String input){
         String numericPattern = "^[0-9]*$";
         if(!Pattern.matches(numericPattern, input)){
