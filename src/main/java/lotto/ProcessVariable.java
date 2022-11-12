@@ -1,9 +1,5 @@
 package lotto;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class ProcessVariable {
     private static final Integer LOTTO_DIVIDE_PRICE = 1000;
     private final ValidInput validInput = new ValidInput();
