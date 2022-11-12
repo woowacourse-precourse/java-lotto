@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 public class InputView {
     public static int lottoPurchaseMoney = 0;
     public final int PRICE_PER_LOTTO = 1000;
-    public final int LOTTO_NUMBER_SIZE = 6;
 
     public List<Integer> lottoResult = Arrays.asList(0,0,0,0,0);
     public List<List<Integer>> allLottoNumber = new ArrayList<>();
@@ -20,7 +19,6 @@ public class InputView {
 
     public void validateMoneyInput(int money) {
         if (money % 1000 != 0) {
-
             throw new IllegalArgumentException("[ERROR]");
         }
     }
@@ -52,12 +50,11 @@ public class InputView {
     // 한 게임의 로또 번호를 자동으로 생성해서 Integer List를 반환
     public List<Integer> createLottoOneGameNumber() {
         List<Integer> oneGameNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        oneGameNumbers.sort(Integer::compareTo);
         return oneGameNumbers;
     }
 
     public List<List<Integer>> createAllGameLottoNumber(int chance) {
-        List<List<Integer>> allLottoNumber = new ArrayList<>();
+        allLottoNumber = new ArrayList<>();
         for (int i = 0; i < chance; i++) {
             allLottoNumber.add(createLottoOneGameNumber());
         }
