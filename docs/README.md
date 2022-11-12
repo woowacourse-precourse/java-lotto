@@ -1,11 +1,23 @@
 # 🎖️ 3주차 과제
 - 클래스 분리로 Model, Controller, Service, View로 나누어서 기능 구현.
+
+
 - 데이터 관련 검증은 Model에서, 입력 관련 검증은 Input에서, 컨트롤러에서는 검증하지 않는다.
+
+
 - 테스트 코드는 도메인 로직에 단위 테스트로 구현. 
+
+
 - Model은 Model계층 끼리만 의존성이 허용된다.(Service, View, Controller에 의존하면 안됨)
+
+
 - View는 Model에만 의존한다.
+
+
 - Controller는 Model, View를 이용해 UI를 만든다.
-- Service는 Model의 데이터를 가져와 원하는 형태로 데이터를 바꾼다.
+
+
+- Service는 Model의 데이터를 가져와 원하는 Controller에 원하는 형태로 데이터를 가공한다.
 
 ---
 ## 🚀 구현 기능 목록
@@ -21,12 +33,15 @@
 
 
 - Controller
-  - [x] 구입 금액 입력
-  - [x] Ticket 출력
-  - [x] 당첨 번호 입력
-  - [x] 보너스 번호 입력
-  - [x] 당첨 통계 출력
-  - [x] 수익률 출력
+  - [x] PurchaseController
+    - [x] 구입 금액 입력
+    - [x] Ticket 출력
+  - [x] StatisticsController
+    - [x] 당첨 번호 입력
+    - [x] 보너스 번호 입력
+    - [x] 당첨 통계 출력
+  - [x] ProfitRateController
+    - [x] 수익률 출력
 
 
 - View
