@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.constant.LottoEnum;
-import lotto.dto.Lotto;
 
 public class ManagementLotto {
     public List<Lotto> purchase(Integer amount) {
@@ -17,7 +16,7 @@ public class ManagementLotto {
         return lottos;
     }
     public Lotto generateLottoNumber() {
-        List<Integer> lottoNumber = new ArrayList<>();
+        List<Integer> lottoNumber;
         lottoNumber = Randoms.pickUniqueNumbersInRange(
                 LottoEnum.START_NUM.getValue(), LottoEnum.END_NUM.getValue(), LottoEnum.SIZE.getValue());
         lottoNumber.sort(Integer::compareTo);
@@ -25,7 +24,11 @@ public class ManagementLotto {
         return new Lotto(lottoNumber);
     }
 
-    public void checkLottooNumber() {
+    public void makeWinNumber() {
+
+    }
+
+    public void checkLottoNumber() {
 
     }
 
