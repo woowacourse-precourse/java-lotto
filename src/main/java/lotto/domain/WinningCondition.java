@@ -22,7 +22,7 @@ public enum WinningCondition {
         this.isBonusCorrected = isBonusCorrected;
     }
 
-    public WinningCondition getRank(int numberOfCorrected, boolean isBonusCorrected) {
+    public static WinningCondition getRank(int numberOfCorrected, boolean isBonusCorrected) {
         return Arrays.stream(WinningCondition.values())
                 .filter(wc -> wc.hasCondition(numberOfCorrected, isBonusCorrected))
                 .findAny()
