@@ -11,6 +11,7 @@ public class NumberGenerator {
 
     public static List<Integer> getNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_RANGE, MAX_RANGE, COUNT);
+        OutputView.printCreatedNumbers(numbers);
         return numbers;
     }
 
