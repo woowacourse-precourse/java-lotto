@@ -34,6 +34,7 @@ public class InputValidation {
     @Test
     void inputWinNumberTest() {
         ValidationUtil.isValidWinNumbers("1,2,3,4,5,6");
+        ValidationUtil.isValidWinNumbers("1, 2, 3 ,4 ,5 , 6");
 
         assertThatThrownBy(() -> ValidationUtil.isValidWinNumbers("1,,3,4,5"))
                 .isInstanceOf(IllegalArgumentException.class)

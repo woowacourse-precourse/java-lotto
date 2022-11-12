@@ -14,11 +14,10 @@ public class ValidationUtil {
     }
 
     public static List<Integer> isValidWinNumbers(String input) {
-        String str = input.trim();
-        String[] splits = str.split(",");
+        String[] splits = input.split(",");
         List<Integer> numbers = new ArrayList<>();
         for (String split : splits) {
-            makeNumbers(numbers, split);
+            makeNumbers(numbers, split.trim());
         }
         isValidNumber(numbers);
         isValidCount(numbers);
