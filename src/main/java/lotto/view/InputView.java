@@ -1,18 +1,20 @@
 package lotto.view;
 
-import static lotto.domain.Error.NOT_NUMBER_ERROR;
+import static camp.nextstep.edu.missionutils.Console.readLine;
 
-import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Converter;
 
 public class InputView {
     private static final String ENTER_PURCHASE_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
 
     public static int inputPurchaseMoney() {
         System.out.println(ENTER_PURCHASE_MONEY_MESSAGE);
+        int money = 0;
         try {
-            return Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(NOT_NUMBER_ERROR.toString());
+            money = Converter.changeToInt(readLine());
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
         }
+        return money;
     }
 }
