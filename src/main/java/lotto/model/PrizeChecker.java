@@ -15,16 +15,25 @@ public class PrizeChecker {
 	public PrizeChecker(LottoCompany lottoCompany, List<Lotto> lottoBundle) {
 		List<Integer> winningNumber = lottoCompany.getWinningNumber();
 		int bonusNumber = lottoCompany.getBonusNumber();
+		initPrizeResult();
 
 		for (Lotto lotto : lottoBundle) {
 			List<Integer> lottoNumber = lotto.getNumbers();
 			int countMatch = countingMatch(winningNumber, lottoNumber);
-			countMatch = checkBonus(countMatch, lottoNumber, bonusNumber);
+			boolean isBonus = checkBonus(countMatch, lottoNumber, bonusNumber);
 
-			LottoRanking lottoRanking = LottoRanking.findByLottoRanking(countMatch);
-			prizeResult.put(lottoRanking, prizeResult.getOrDefault(lottoRanking, 0) + 1);
+			LottoRanking lottoRanking = LottoRanking.findByLottoRanking(countMatch, isBonus);
+			this.prizeResult.put(lottoRanking, this.prizeResult.getOrDefault(lottoRanking, 0) + 1);
 		}
 		this.prizeMoney = sumPrize();
+	}
+
+	private void initPrizeResult() {
+		this.prizeResult.put(LottoRanking.FIRST, 0);
+		this.prizeResult.put(LottoRanking.SECOND, 0);
+		this.prizeResult.put(LottoRanking.THIRD, 0);
+		this.prizeResult.put(LottoRanking.FOURTH, 0);
+		this.prizeResult.put(LottoRanking.FIFTH, 0);
 	}
 
 	private int countingMatch(List<Integer> lotto, List<Integer> winningNumber) {
@@ -33,11 +42,8 @@ public class PrizeChecker {
 			.count();
 	}
 
-	private int checkBonus(int countMatch, List<Integer> lotto, int bonusNumber) {
-		if (countMatch == 5 && hasBonus(lotto, bonusNumber)) {
-			return LottoRanking.SECOND_RANKING;
-		}
-		return countMatch;
+	private boolean checkBonus(int countMatch, List<Integer> lotto, int bonusNumber) {
+		return (countMatch == 5 && hasBonus(lotto, bonusNumber));
 	}
 
 	private boolean hasBonus(List<Integer> lotto, int bonusNumber) {
