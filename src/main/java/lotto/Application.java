@@ -24,9 +24,9 @@ public class Application {
 
         List<Lotto> lottos = getLottos(amountMoney / 1000);
         System.out.println("당첨 번호를 입력해주세요.");
-        List<Integer> answer = null;
+        Lotto answer = null;
         try {
-            answer = Arrays.stream(Console.readLine().split(",")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList());
+            answer = new Lotto(Arrays.stream(Console.readLine().split(",")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList()));
         } catch(Exception e) {
             showError(e);
         }
@@ -49,7 +49,7 @@ public class Application {
         for(int i = 0 ; i < repeat ; i += 1) System.out.println(lottos.get(i).getNumbers());
         return lottos;
     }
-    public static void getResults(List<Integer> answer, int bonus, List<Lotto> lottos, int amountMoney) {
+    public static void getResults(Lotto answer, int bonus, List<Lotto> lottos, int amountMoney) {
         int[] lottoCount = new int[5];
         for(Lotto lotto : lottos) {
             int correctCount = getCorrectCount(answer, lotto);
@@ -61,10 +61,10 @@ public class Application {
         }
         showResults(lottoCount, amountMoney);
     }
-    public static int getCorrectCount(List<Integer> answer, Lotto lotto) {
+    public static int getCorrectCount(Lotto answer, Lotto lotto) {
         int count = 0;
         for(int i : lotto.getNumbers()) {
-            if(answer.contains(i)) count++;
+            if(answer.getNumbers().contains(i)) count++;
         }
         return count;
     }
@@ -83,7 +83,7 @@ public class Application {
         return lottoCount[0] * 5_000 + lottoCount[1] * 50_000 + lottoCount[2] * 1_500_000 + lottoCount[4] * 30_000_000 + lottoCount[3] * 2_000_000_000;
     }
 
-    private static void showError(Exception e) {
+    public static void showError(Exception e) {
         try {
             throw new IllegalArgumentException();
         } catch(IllegalArgumentException exception) {
