@@ -1,4 +1,4 @@
-package lotto;
+package lotto.Domain;
 
 import lotto.Domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
