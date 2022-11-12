@@ -35,6 +35,7 @@
 - M [x] LottoData 에 생성된 Lotto 객체에 등수, 상금 데이터를 추가한다 - LottoData#putDataToLotto()
 - M [x] Lotto에 추가된 등수, 상금 데이터를 모아 저장한다 - LottoData#countPrize(), LottoData#sumPrizeMoney()
 - M [x] Lotto 객체로 lottoNumber 를 출력할 수 있도록 toString 을 오버라이딩 한다 - Lotto#toString()
+- M [x] LottoData 객체를 사용해 수익률을 반환할 수 있도록 한다. - LottoData#percentageOfReturn()
 - V 입력을 위한 문구를 출력한다. - InputView
   - V [x] 구입할 금액을 입력해주세요. - InputView#printHowMuch()
   - V [x] 당첨 번호를 입력해 주세요. - InputView#printInputWinNumber()
@@ -43,7 +44,7 @@
   - V [ ] %d개를 구매했 습니다. - OutputView#printPurchaseAmount()
   - V [ ] 구매한 로또 번호 출력 - OutputView#printPurchaseLottoNumber()
   - V [ ] 당첨 통계 출력 - OutputView#printPrize()
-  - V [ ] 수익률 출력 - - OutputView#printWinPersentage()
+  - V [ ] 수익률 출력 - OutputView#printWinPersentage()
 - C M,V 를 활용해 데이터의 흐름 조절한다 - LottoController
   - C [ ] 구입 금액 입력 후 구매한 로또 번호 출력 - LottoController#buyLotto()
   - C [ ] 당첨, 보너스 번호 입력 후 당첨 통계, 수익률 출력 - LottoController#checkLottoResult()

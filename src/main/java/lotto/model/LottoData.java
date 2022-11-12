@@ -48,4 +48,8 @@ public class LottoData {
             prizeMoneySum += lotto.getPrizeMoney();
         }
     }
+
+    public double percentageOfReturn() {
+        return lottoCalculate.calculatePercentageOfReturn(lottoAmount * 1000.0, prizeMoneySum);
+    }
 }
