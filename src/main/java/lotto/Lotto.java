@@ -18,6 +18,7 @@ public class Lotto {
 
     private void validateNumbersSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            error = ErrorMessage.SIZE;
             throw new IllegalArgumentException();
         }
     }
