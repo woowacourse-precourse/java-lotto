@@ -5,8 +5,8 @@ import java.util.List;
 
 public class WinningLotto {
 	private static final String WINNING_NUMBER_DELIMITER = ",";
-	public static List<String> winningNumber;
-	public static List<String> bonusNumber;
+	private static List<String> winningNumber;
+	private static List<String> bonusNumber;
 
 	public static void createWinningNumber(String userInput) {
 		winningNumber = Arrays.asList(userInput.split(WINNING_NUMBER_DELIMITER));

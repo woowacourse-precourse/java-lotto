@@ -89,7 +89,7 @@ public class LottoProgram {
 		lottoCount = Integer.parseInt(userInput) / PRICE_UNIT;
 	}
 
-	public void createLottos(int lottoCount) {
+	private void createLottos(int lottoCount) {
 
 		while (lottoCount >= MIN_LOTTO_UNIT) {
 			List<Integer> lottoNumbers = createLottoNumbers();
@@ -108,11 +108,7 @@ public class LottoProgram {
 		return Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER, LOTTO_NUMBER_COUNT);
 	}
 
-	public static List<Lotto> getLottoList() {
-		return lottoList;
-	}
-
-	public static String calculateYield() {
+	private static String calculateYield() {
 		double totalPrice = lottoCount * PRICE_UNIT;
 		double totalPrize = LottoComparator.calculateTotalPrize();
 

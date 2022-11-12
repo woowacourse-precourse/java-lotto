@@ -15,7 +15,7 @@ public class LottoComparator {
 	private static final int INIT = 0;
 	private static List<Lotto> winner;
 
-	public static void initWinnerAndPrize() {
+	private static void initWinnerAndPrize() {
 		winner = new ArrayList<>();
 	}
 
@@ -38,7 +38,7 @@ public class LottoComparator {
 		}
 	}
 
-	public static boolean isWinner(Lotto lotto) {
+	private static boolean isWinner(Lotto lotto) {
 		return lotto.getCountMatchNumber() >= MIN_WINNER_MATCH_COUNT;
 	}
 
@@ -108,11 +108,11 @@ public class LottoComparator {
 		return false;
 	}
 
-	public static boolean isSecondWinner(Lotto lotto, int matchCount) {
+	private static boolean isSecondWinner(Lotto lotto, int matchCount) {
 		return matchCount == SECOND_WINNER_MATCH_COUNT && lotto.getIsMatchBonusNumber();
 	}
 
-	public static boolean isFirstWinner(Lotto lotto, int matchCount) {
+	private static boolean isFirstWinner(Lotto lotto, int matchCount) {
 		return matchCount == FIRST_WINNER_MATCH_COUNT && !lotto.getIsMatchBonusNumber();
 	}
 
