@@ -1,12 +1,10 @@
 package lotto.controller;
 
-import lotto.domain.Bonus;
-import lotto.domain.Lotto;
-import lotto.domain.PaidMoney;
-import lotto.domain.Ticket;
+import lotto.domain.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class LottoService {
@@ -30,7 +28,6 @@ public class LottoService {
         return lottoTickets;
     }
 
-
     private List<Integer> announceWinningNumbers() {
         String numbersInput = inputView.inputWinningNumbers();
         List<Integer> winningNumbers = validator.validateWinningNumbers(numbersInput);
@@ -38,11 +35,21 @@ public class LottoService {
         return winningNumbers;
     }
 
-
     private int announceBonusNumber(List<Integer> winningNumbers) {
         String bonusInput = inputView.inputBonusNumber();
         int bonusNumber = validator.validateBonusNumber(bonusInput);
         new Bonus(winningNumbers, bonusNumber);
         return bonusNumber;
+    }
+
+    private Comparator compareUserTicket(
+            List<List<Integer>> lottoTickets,
+            List<Integer> winningNumbers,
+            int bonusNumber
+    ) {
+        Comparator comparator = new Comparator(lottoTickets, winningNumbers, bonusNumber);
+        LinkedHashMap<Prize, Integer> winningTickets = comparator.countWinningTickets();
+        outputView.printPrize(winningTickets);
+        return comparator;
     }
 }
