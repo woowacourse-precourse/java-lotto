@@ -71,6 +71,7 @@ BUILD SUCCESSFUL in 0s
     - [ ] `private final int bonusNumber`
   - **Class Methods:**
     - [ ] `public WinLotto(List<Inteber> winNumbers, int bonusNumber)`
+    - [ ] `private void validateBonusNumber(List<Integer> winNumbers, int bonusNumber)`
 - [ ] **CLASS 3.** `LottoDraw`
   - **Class Methods:**
     - [ ] `public static LottoRank getLottoRank(Lotto, WinLotto)`
