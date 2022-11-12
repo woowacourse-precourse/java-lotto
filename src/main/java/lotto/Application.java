@@ -19,6 +19,7 @@ public class Application {
 
     static int money2chance(int money){
         int chance;
+        if(money % 1000 !=0) throw new IllegalArgumentException();
         chance = money/1000;
         return chance;
     }
