@@ -1,7 +1,5 @@
 package lotto;
 
-import java.util.List;
-
 public enum Rank {
     FIFTH(5_000),
     FOURTH(50_000),

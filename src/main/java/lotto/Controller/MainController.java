@@ -14,14 +14,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MainController {
-    private Cash cash;
-    private List<Lotto> myLottos;
-    private int lottoNumber;
-    private Lotto winningLotto;
-    private Bonus bonus;
-    HashMap<Rank, Integer> point;
-    double profit;
-
     public MainController() {
         point = new HashMap<Rank, Integer>();
         point.put(Rank.FIRST, 0);
@@ -31,6 +23,8 @@ public class MainController {
         point.put(Rank.FIFTH, 0);
         point.put(Rank.LAST, 0);
     }
+
+    private Cash cash;
 
     public void inputCash() throws IllegalArgumentException {
         System.out.println("구입 금액을 입력해주세요.");
@@ -42,23 +36,26 @@ public class MainController {
             throw new IllegalArgumentException("입력 값이 올바르지 않습니다.");
         }
         cash = new Cash(integer);
+        lottoNumber = countLottoNumber(cash);
     }
 
-    public void createMyLottos() {
-        LottoGeneratorModel lottoGenerator = new LottoGeneratorModel();
-        lottoNumber = countLottoNumber(cash);
-        myLottos = lottoGenerator.createMyLottos(lottoNumber);
-    }
+    private int lottoNumber;
 
     private int countLottoNumber(Cash cash) throws IllegalArgumentException {
         CalculatorModel calculator = new CalculatorModel();
         return calculator.countLottoNumber(cash);
     }
 
-    public void printMyLottos(){
+    private List<Lotto> myLottos;
+
+    public void createMyLottos() {
+        LottoGeneratorModel lottoGenerator = new LottoGeneratorModel();
+        myLottos = lottoGenerator.createMyLottos(lottoNumber);
         OutputView outputView = new OutputView();
         outputView.printMyLottoInfo(myLottos);
     }
+
+    private Lotto winningLotto;
 
     public void inputWinningNumber() throws IllegalArgumentException {
         System.out.println("당첨 번호를 입력해 주세요.");
@@ -77,9 +74,12 @@ public class MainController {
         winningLotto = new Lotto(winningNumber);
     }
 
+    private Bonus bonus;
+
     public void inputBonusNumber() throws IllegalArgumentException {
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
+
         int bonusNumber;
         try {
             bonusNumber = Integer.parseInt(input);
@@ -89,6 +89,8 @@ public class MainController {
 
         bonus = new Bonus(bonusNumber, winningLotto);
     }
+
+    HashMap<Rank, Integer> point;
 
     public void calculateWinning() {
         CalculatorModel calculator = new CalculatorModel();
@@ -101,11 +103,7 @@ public class MainController {
             int p = point.get(rank);
             point.replace(rank, p + 1);
         }
-
-        profit = calculator.getProfit(total, cash.getCash());
-    }
-
-    public void printResult(){
+        double profit = calculator.getProfit(total, cash.getCash());
         OutputView outputView = new OutputView();
         outputView.printResult(point, profit);
     }
