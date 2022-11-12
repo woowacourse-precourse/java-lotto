@@ -12,7 +12,7 @@ public class Customer {
     private float earnedMoney = 0;
     private float earnedRate;
     private final int paidMoney;
-    private final int numOfTicket;
+    private int numOfTicket;
     private final List<List<Integer>> tickets = new ArrayList<>();
     private final LinkedHashMap<Prize, Integer> winningTickets = new LinkedHashMap<>();
 
@@ -20,39 +20,41 @@ public class Customer {
         validateNoMoney(paidMoney);
         validateWrongMoney(paidMoney);
         this.paidMoney = paidMoney;
-        this.numOfTicket = this.paidMoney / 1000;
-        purchaseLottery();
 
         for (Prize prize: Prize.values()) {
             this.winningTickets.put(prize, 0);
         }
     }
 
-    public int getNumOfTicket() {
+    public int countTickets() {
+        this.numOfTicket = this.paidMoney / 1000;
         return this.numOfTicket;
     }
 
-    public List<List<Integer>> getTickets() {
+    public List<List<Integer>> purchaseTickets() {
+        for (int i = 0; i < this.numOfTicket; i++) {
+            List<Integer> tempTicket = pickUniqueNumbersInRange(MIN_NUM, MAX_NUM, COUNT);
+            List<Integer> ticket = new ArrayList<>(tempTicket);
+            Collections.sort(ticket);
+            this.tickets.add(ticket);
+        }
         return this.tickets;
     }
 
-    public LinkedHashMap<Prize, Integer> getWinningTickets() {
-        return this.winningTickets;
-    }
-
-    public float getEarnedRate() {
-        return this.earnedRate;
-    }
-
-    public void compareTickets(List<Integer> winningNumbers, int bonusNumber) {
+    public LinkedHashMap<Prize, Integer> countWinningTickets(
+            List<Integer> winningNumbers,
+            int bonusNumber
+    ) {
         for (List<Integer> ticket: this.tickets) {
             compareNumbers(ticket, winningNumbers, bonusNumber);
         }
+        return winningTickets;
     }
 
-    public void calculateEarnedRate() {
+    public float calculateEarnedRate() {
         calculateEarnedMoney();
         this.earnedRate = (this.earnedMoney / this.paidMoney) * 100;
+        return this.earnedRate;
     }
 
     private void calculateEarnedMoney() {
@@ -81,31 +83,17 @@ public class Customer {
     }
 
     private void countSameNumber(int same, boolean bonus) {
-        if (same < 3) {
-            return;
+        List<Prize> ranks = new ArrayList<>(List.of(Prize.values()));
+        List<Integer> sameCount = new ArrayList<>(Prize.getSameValues());
+        List<Boolean> acceptBonus = new ArrayList<>(Prize.getBonusValues());
+
+        for (int i = 0; i < ranks.size(); i++) {
+            if (same == sameCount.get(i) && bonus == acceptBonus.get(i)) {
+                Prize rank = ranks.get(i);
+                int count = winningTickets.get(rank);
+                winningTickets.put(rank, count + 1);
+            }
         }
-        if (same == 3 && !bonus) {
-            int count = winningTickets.get(Prize.FIFTH);
-            this.winningTickets.put(Prize.FIFTH, count + 1);
-            return;
-        }
-        if (same == 4 && !bonus) {
-            int count = winningTickets.get(Prize.FOURTH);
-            this.winningTickets.put(Prize.FOURTH, count + 1);
-            return;
-        }
-        if (same == 5 && !bonus) {
-            int count = winningTickets.get(Prize.THIRD);
-            this.winningTickets.put(Prize.THIRD, count + 1);
-            return;
-        }
-        if (same == 5) {
-            int count = winningTickets.get(Prize.SECOND);
-            this.winningTickets.put(Prize.SECOND, count + 1);
-            return;
-        }
-        int count = winningTickets.get(Prize.FIRST);
-        this.winningTickets.put(Prize.FIRST, count + 1);
     }
 
     private void validateNoMoney(int paidMoney) {
@@ -119,15 +107,6 @@ public class Customer {
         if (paidMoney % 1000 != 0) {
             System.out.println(NOT_DIVISIBLE_BY_THOUSAND);
             throw new IllegalArgumentException();
-        }
-    }
-
-    private void purchaseLottery() {
-        for (int i = 0; i < this.numOfTicket; i++) {
-            List<Integer> tempTicket = pickUniqueNumbersInRange(MIN_NUM, MAX_NUM, COUNT);
-            List<Integer> ticket = new ArrayList<>(tempTicket);
-            Collections.sort(ticket);
-            this.tickets.add(ticket);
         }
     }
 }
