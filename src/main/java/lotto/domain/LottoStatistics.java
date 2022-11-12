@@ -29,14 +29,14 @@ public class LottoStatistics {
     }
 
     /**
-     * 수익률을 반환합니다.
+     * 수익률 (%)을 반환합니다.
      * @return 수익률
      */
     public double getYield() {
         if (payment == 0) {
             throw new IllegalArgumentException("최소 한 번의 결과가 존재해야 합니다.");
         }
-        return (double) totalPrize / payment;
+        return (double) totalPrize / payment * 100;
     }
 
     /**
