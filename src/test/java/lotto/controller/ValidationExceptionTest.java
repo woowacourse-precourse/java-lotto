@@ -13,7 +13,7 @@ class ValidationExceptionTest {
     @Test
     @DisplayName("1,000원 단위 체크")
     void correctInput() {
-        assertThat(ValidationException.checkValidPrice("22000")).isEqualTo(true);
+        assertThat(ValidationException.checkValidPrice("200000")).isEqualTo(true);
     }
 
     @ParameterizedTest

@@ -28,6 +28,15 @@ class LottoGeneratorTest {
             System.out.println("lotto.getLotto() = " + lotto.getLotto());
         }
         assertThat(lottos.size()).isEqualTo(6);
-        
+    }
+
+    @Test
+    @DisplayName("구입 금액만큼 로또 생성")
+    void generateLottoByPrice() {
+        List<Lotto> lottos = LottoGenerator.startLottoGenerate("5000");
+        for (Lotto lotto : lottos) {
+            System.out.println("lotto.getLotto() = " + lotto.getLotto());
+        }
+        assertThat(lottos.size()).isEqualTo(Integer.parseInt("5000")/1000);
     }
 }
