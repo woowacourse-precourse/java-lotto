@@ -24,7 +24,7 @@ public class Lotto {
         }
     }
 
-    private WinningStatistic produceWinningStatistic(Lotto answer, int bonusNum){
+    public WinningStatistic produceWinningStatistic(Lotto answer, int bonusNum){
         Set<Integer> answerNumSet=new HashSet<>(answer.numbers);
         int numOfCorrectLottoNum=0;
         boolean bonusNumCorrect=false;
@@ -39,7 +39,6 @@ public class Lotto {
         }
         return WinningStatistic.getInstance(numOfCorrectLottoNum,bonusNumCorrect);
     }
-
 
     // TODO: 추가 기능 구현
 }
