@@ -39,7 +39,7 @@ public class Lotto {
     public static List<Integer> inputWinningLottoNumbers() {
         InputAgent inputAgent = new InputAgent();
         List<Integer> inputLottoNumbers = new ArrayList<>();
-        System.out.println("당첨 번호를 입력해주세요.");
+        System.out.println("\n당첨 번호를 입력해주세요.");
         inputLottoNumbers.addAll(inputAgent.inputWinningNumbers());
         return inputLottoNumbers;
     }
