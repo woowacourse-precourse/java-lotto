@@ -7,14 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User extends Input {
-    /*
-    ### User
 
-- [x] 구입 금액 입력
-- [x] 1000원 당 6자리 로또 발행
-- [x] 발행한 로또 추가하는 함수
-
-     */
     private List<List<Integer>> lottery_nums = new ArrayList<>();
     private Integer lottery_count;
 

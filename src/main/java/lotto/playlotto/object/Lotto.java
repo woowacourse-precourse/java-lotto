@@ -19,11 +19,7 @@ public class Lotto extends Input {
         }
     }
 
-    // TODO: 추가 기능 구현
-    /*
-    - 당첨 번호 입력 받아 numbers에 저장
-    - 자기 로또 번호 반환
-     */
+
     public List<Integer> returnNumbers(){
         return this.numbers;
     }
