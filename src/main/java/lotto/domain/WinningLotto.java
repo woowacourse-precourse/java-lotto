@@ -5,7 +5,6 @@ import java.util.List;
 
 public class WinningLotto {
 	private static final String WINNING_NUMBER_DELIMITER = ",";
-
 	public static List<String> winningNumber;
 	public static List<String> bonusNumber;
 

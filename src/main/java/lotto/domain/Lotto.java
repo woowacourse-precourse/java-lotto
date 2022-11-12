@@ -7,6 +7,7 @@ import lotto.exception.Exception;
 public class Lotto {
 	private final Set<Integer> numbers;
 	private final int NUMBERS_SIZE = 6;
+	private final int INIT = 0;
 	private boolean isMatchBonusNumber;
 	private int matchNumberCount;
 
@@ -15,7 +16,7 @@ public class Lotto {
 
 		this.numbers = numbers;
 		this.isMatchBonusNumber = false;
-		this.matchNumberCount = 0;
+		this.matchNumberCount = INIT;
 	}
 
 	private void validate(Set<Integer> numbers) {

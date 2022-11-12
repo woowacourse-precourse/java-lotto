@@ -18,12 +18,13 @@ public class LottoProgram {
 	private static final int MIN_LOTTO_NUMBER = 1;
 	private static final int MAX_LOTTO_NUMBER = 45;
 	private static final int LOTTO_NUMBER_COUNT = 6;
+	private static final int INIT = 0;
 	private static final double YIELD_UNIT = 100.0;
 	private static int lottoCount;
 	private static List<Lotto> lottoList;
 
 	LottoProgram() {
-		lottoCount = 0;
+		lottoCount = INIT;
 		lottoList = new ArrayList<>();
 	}
 
