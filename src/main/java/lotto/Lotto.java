@@ -16,8 +16,13 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (isNumberNullOrEmpty(numbers) || hasSixNumbers(numbers)) {
             throw new IllegalArgumentException();
+        }
+        for (Integer num : numbers) {
+            if (hasDuplicateNumber(numbers, num)) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
