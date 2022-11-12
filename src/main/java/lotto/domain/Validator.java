@@ -12,6 +12,12 @@ public class Validator {
             throw new IllegalArgumentException(ERROR_MESSAGE + "숫자형식이 아닙니다");
         }
     }
+    public void validateGraterThousand(String input){
+        int amount = Integer.parseInt(input);
+        if(amount < 1000){
+            throw new IllegalArgumentException(ERROR_MESSAGE + "1,000원 미만입니다.");
+        }
+    }
 
     public void validateMultipleOfThousands(String input){
         int amount = Integer.parseInt(input);
@@ -19,4 +25,5 @@ public class Validator {
             throw new IllegalArgumentException(ERROR_MESSAGE + "1,000의 단위가 아닙니다.");
         }
     }
+
 }
