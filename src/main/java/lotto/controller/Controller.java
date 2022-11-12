@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.enums.Rank;
 import lotto.model.Draw;
 import lotto.model.Lotto;
 import lotto.model.Rate;
@@ -8,6 +9,7 @@ import lotto.view.View;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -19,6 +21,7 @@ public class Controller {
     private Draw draw;
     private Rate rate;
 
+    // 요청 수행 method
     public List<Lotto> buyLotto() {
         int price = getPrice();
         shop = new Shop(price);
@@ -28,6 +31,10 @@ public class Controller {
 
     public void getWinningNums() {
         draw = new Draw(getWinningLotto(),getBonusNum());
+    }
+
+    public Map<Rank,Integer> getWinningStat(List<Lotto> lottoPaper) {
+        return draw.getWinningStats(lottoPaper);
     }
 
 
