@@ -26,4 +26,8 @@ public class UserInterface {
         }
         return winNumbers;
     }
+
+    public static void printBonusNumberMessage() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+    }
 }

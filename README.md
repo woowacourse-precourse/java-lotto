@@ -110,7 +110,7 @@ BUILD SUCCESSFUL in 0s
         - [x] `public static int inputPurchaseMoney()`
         - [x] `public static void printWinNumbersMessage()`
         - [x] `public static List<Integer> inputWinNumbers()`
-        - [ ] `public static void printBonusNumberMessage()`
+        - [x] `public static void printBonusNumberMessage()`
         - [ ] `public static int inputBonusNumber()`
         - [ ] `public static void printLottoList(List<Lotto lottoList)`
         - [ ] `public static void printWinResult(HashMap<LottoRang, Integer>)`
