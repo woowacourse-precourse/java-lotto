@@ -14,15 +14,17 @@ public class LottoDesignator {
     private static final int CIPHER = 6;
     private static final int RANGE = 45;
 
+    private String lottoInput;
+
     public List<Integer> inputLotto() {
-        String input = Console.readLine();
-        List<Integer> lotto = changeList(input);
+        lottoInput = Console.readLine();
+        List<Integer> lotto = changeList(lottoInput);
 
         try {
-            checkOnlyNumber(input);
-            checkSixCipher(input);
-            checkRange(input);
-            checkDuplication(input);
+            checkOnlyNumber(lottoInput);
+            checkSixCipher(lottoInput);
+            checkRange(lottoInput);
+            checkDuplication(lottoInput);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -36,6 +38,7 @@ public class LottoDesignator {
         try {
             checkOnlyNumber(input);
             checkRange(input);
+            checkBonusDuplication(lottoInput, input);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
