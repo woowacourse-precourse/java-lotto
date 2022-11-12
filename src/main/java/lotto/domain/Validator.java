@@ -8,37 +8,40 @@ import static lotto.view.Constants.*;
 
 public class Validator {
     public Integer validateMoney(String input) {
-        return validateNumeric(input);
+        validateNumeric(input);
+        return stringToInteger(input);
     }
 
     public List<Integer> validateWinningNumbers(String input) {
         List<Integer> numbers = new ArrayList<>();
         List<String> splitForm = splitInput(input);
         for (String piece: splitForm) {
-            int number = validateLotteryNumber(piece);
+            validateNumeric(piece);
+            int number = stringToInteger(piece);
+            validateRange(number);
             numbers.add(number);
         }
         return numbers;
     }
 
     public int validateBonusNumber(String input) {
-        return validateLotteryNumber(input);
-    }
-
-    private int validateLotteryNumber(String input) {
-        int number = validateNumeric(input);
+        validateNumeric(input);
+        int number = stringToInteger(input);
         validateRange(number);
         return number;
     }
 
-
-    private Integer validateNumeric(String input) {
+    private void validateNumeric(String input) {
         try {
-            return Integer.parseInt(input);
+            Integer.parseInt(input);
         } catch (NumberFormatException e) {
             System.out.println(NOT_NUMERIC);
             throw new IllegalArgumentException();
         }
+    }
+
+    private int stringToInteger(String input) {
+        return Integer.parseInt(input);
     }
 
     private void validateRange(int number) {
