@@ -64,25 +64,56 @@
   - getMessage() : 당첨 관련 메세지 반환
   - getPlace() : 주어진 당첨 번호 일치 갯수와 보너스 번호 일치 에 해당하는 순위 반환
 - ErrorResponse
-  - 사용자가 벗어난 범위의 당첨 번호, 보너스 번호 입력시 : "[Error] 로또 번호는 1부터 45 사이의 숫자여야 합니다."
-  - 사용자가 벗어난 경우의 구매 금액 입력시 : "[Error] 1000으로 나누어지는 단위의 구입 금액을 입력해야 합니다."
-  - 사용자가 쉽표(,)를 사용하지 않고 당첨 번호 입력시 : "[Error] 당첨번호는 쉼표(,)로 구분하여 입력해야 합니다"
-  - 각 경우에 대한 에러 메세지 반환
+  - INPUT_LOTTO_RANGE_ERROR
+    - "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다."
+  - INPUT_BONUS_NUMBER_RANGE_ERROR
+    - "[Error] 보너스 번호는 1부터 45 사이의 숫자여야 합니다."
+  - INPUT_WRONG_SIZE_ERROR
+    - "[ERROR] 로또 당첨 번호느 6개의 수여야 합니다."
+  - INPUT_BUYING_RANGE_ERROR
+    - "[ERROR] 1000으로 나누어지는 단위의 구입 금액을 입력해야 합니다."
+  - INPUT_WITHOUT_COMMA_ERROR
+    - "[ERROR] 당첨번호는 쉽표(,)로 구분하여 입력해야 합니다."
+  - INPUT_CONTAINS_CHAR_ERROR
+    - "[ERROR] 입력은 문자를 포함할 수 없습니다."
+  - NOT_IN_WINNING_PLACE
+    - "[ERROR] 일치하는 등수에 존재하지 않습니다."
 - BaseResponse(고민중)
   - 사용자가 구입금액을 입력하고 검증이 된 경우 : "N개를 구매했습니다."
   - 보너스 번호까지 입력이 완료된 경우 : "당첨 통게 --- ..."
 
 **Application Class**
-- 사용자 입력 구매금액 검증 : validateBuyingPrice(int buyingPrice)
-  - 1000으로 나누어지는 단위인지 확인
+- 사용자 입력 구매금액 숫자만으로 구성되어있는지 검증 : checkUserInputCondition(String input)
+  - Character.isDigit() 활용해서 숫자로만 구성되어있는지 검증
+- 사용자 입력 구매금액 검증하고 변환: convertBuyingPriceIntoTicketAmount(int buyingPrice)
+  - 1000으로 나누어지는 단위인지 확인하고 변환
   - 1000으로 나누어지지 않는 단위이면
   ```java
   throw new IllegalArgumentException();
   ```
+- 사용자 당첨번호 입력 : inputWinnerNumber()
+- 사용자 입력 당첨번호 개수 검증: validateWinnerNumberSize(String userInput)
+  - 쉽표(,)로 구분 된 로또 번호가 6개인지 확인
+  - 6개가 아닐 시 throw new IllegalArgumentException
+  - ErrorResponse : INPUT_WRONG_SIZE_ERROR
+- 사용자 입력 당첨번호 쉽표 구성 검증: validateWinnerNumberContainsComma()
+  - 사용자 입력이 쉽표로 구분되어 입력되는지 검증
+  - 아닐 시에 throw new IllegalArgumentException
+  - ErrorResponse : INPUT_WITHOUT_COMMA_ERROR
 
-- 사용자 입력 당첨번호 검증 : validateWinnerNumber(List[Integer] winnerNumber)
+- 사용자 입력 당첨번호 범위 검증 : validateWinnerNumberRange(List[Integer] winnerNumber)
   - winnerNumber의 수가 1~45 사이의 수인지 확인.
-  - 보너스 번호 검증 또한 동일한 함수 사용
+  - 범위 벗어날 시 throw IllegalArgumentException
+- 사용자 입력 보너스번호 검증 : validateBonusNumber(int bonusNumber)
+  - bonusNumber가 1~45 사이의 수인지 확인.
+  - 범위 벗어날 시 throw IllegalArgumentException
+- 검증된 구매가격에 맞게 랜덤의 로또 번호 발행
+  - ArrayList[ArrayList[Integer]] 형태로 저장
+- 사용자 당첨번호 입력 모듈 : inputWinnerNumber()
+  - 앞서 정의된 검증 함수 및 입출력 형식 코드 구성
+- 사용자 보너스 번호 입력 모듈 : inputBonusNumebr()
+  - validateBonusNumberRange() : 보너스번호 범휘 검증
+  - 앞서 정의된 검증 함수 및 입출력 형식 코드 구성
 
 - 수익률 계산 : calculateEarningRate(int buyingPrice, Winning winningPlace)
   - int buyingPrice : 사용자의 구매
