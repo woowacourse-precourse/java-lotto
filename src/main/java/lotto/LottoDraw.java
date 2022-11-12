@@ -32,16 +32,7 @@ public class LottoDraw {
         numbersWithBonusNumber.add(bonusNumber);
 
         Validation.validateDuplication(numbersWithBonusNumber);
-        validateNumberRange(numbersWithBonusNumber);
-    }
-
-
-    private void validateNumberRange(List<Integer> numbers) {
-        for (Integer number : numbers) {
-            if (number < 1 || number > 45) {
-                throw new IllegalArgumentException("[ERROR] 로또 당첨 번호는 1 ~ 45 범위입니다.");
-            }
-        }
+        Validation.validateNumberRange(numbersWithBonusNumber);
     }
 
     public void compareLotteries() {

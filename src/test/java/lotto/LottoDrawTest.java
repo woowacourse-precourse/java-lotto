@@ -34,16 +34,6 @@ class LottoDrawTest {
     }
 
     @Test
-    void numberRangeValidation() {
-        ByteArrayInputStream in = new ByteArrayInputStream("1,2,46,3,9,11\n12".getBytes());
-        System.setIn(in);
-
-        assertThatThrownBy(() -> new LottoDraw(new LottoBuyer(1000)))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 로또 당첨 번호는 1 ~ 45 범위입니다.");
-    }
-
-    @Test
     void enterBonusNumber() {
         ByteArrayInputStream in = new ByteArrayInputStream("1,2,3,4,5,6\n7".getBytes());
         System.setIn(in);
