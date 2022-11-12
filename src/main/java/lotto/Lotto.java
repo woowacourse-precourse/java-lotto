@@ -10,6 +10,7 @@ import java.util.Set;
  * 한장의 로또 티켓 정보를 관리하는 클래스
  */
 public class Lotto {
+    public final static int LOTTO_COST = 1000;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -57,7 +58,7 @@ public class Lotto {
     }
 
 
-    public String toString(){
+    public String getNumberInfo(){
         List<Integer> copiedNumbers = new ArrayList<>(numbers);
         Collections.sort(copiedNumbers);
 
