@@ -5,8 +5,8 @@
 ---
 
 ### <span style = "color:skyblue" >getPurchaseAmount</span> : 로또 구입 금액 입력
-- 🟩 **`convertStringToInt`** → 문자입력을 숫자로 변환 
-- 🟩 **`isMultipleOfThousand`** → 1000원으로 나누어 떨어지지 않으면 예외처리
+- ✅ **`convertStringToInt`** → 문자입력을 숫자로 변환 
+- ✅ **`isMultipleOfThousand`** → 1000원으로 나누어 떨어지지 않으면 예외처리
 
 ### <span style = "color:skyblue" >getLottoCount</span> : 로또 개수 저장
 - 🟩 **`getLottoAmount`** → 구입 금액과 로또 금액을 나눈 값을 저장

@@ -2,7 +2,15 @@ package lotto.utils;
 
 public class Validation {
 
-    public static boolean validate;
+    public static boolean validatePurchaseAmount(String input) {
+        if (!isMultipleOfThousand(input)) {
+            throwException("1000원 단위의 금액을 입력해주세요.");
+        }
+        if (!isNumeric(input)) {
+            throwException("숫자를 입력해주세요.");
+        }
+        return true;
+    }
 
 
     public static boolean isMultipleOfThousand(String input) {
