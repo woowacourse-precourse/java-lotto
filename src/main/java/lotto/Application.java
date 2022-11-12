@@ -125,7 +125,7 @@ public class Application {
     private static void calculateEarningRate(){
         int totalEarningMoney = 0;
         for(Grade grade : lottoStatistics.keySet()){
-
+            totalEarningMoney+=grade.ordinal()*lottoStatistics.get(grade);
         }
         earningRate = (userLottoNum.size()*1000/totalEarningMoney)*100;
     }
@@ -150,6 +150,6 @@ public class Application {
         calculateLottoGrade();
 
         // 수익률 계산
-
+        calculateEarningRate();
     }
 }
