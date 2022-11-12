@@ -48,7 +48,7 @@ public class Validator {
     }
 
     private void validateFormOfBonusNumber(String bonusNumber) {
-        if (!bonusNumber.matches("[1-9][0-9]*") && !(Integer.parseInt(bonusNumber) <= 45)) {
+        if (!bonusNumber.matches("[1-9][0-9]*") || !(Integer.parseInt(bonusNumber) <= 45)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호 입력이 잘못되었습니다.");
         }
     }
