@@ -1,6 +1,7 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.Lotto;
 import lotto.domain.Money;
 import lotto.domain.RandomLotto;
 
@@ -19,5 +20,9 @@ public class LottoService {
             randomLotto.getRandomLottoNumbersList().add(randomNumbers);
         }
         return randomLotto;
+    }
+
+    public void makeWinningResult(RandomLotto randomLotto, Lotto lotto) {
+
     }
 }
