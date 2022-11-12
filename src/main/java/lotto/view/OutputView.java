@@ -31,4 +31,8 @@ public class OutputView {
         System.out.println("3개 일치 (5,000원) - " + count + "개");
     }
 
+    public void printFourthCount(int count) {
+        System.out.println("4개 일치 (50,000원) - " + count + "개");
+    }
+
 }
