@@ -52,7 +52,7 @@ public class Validator {
         }
     }
 
-    private void bonusNumberIsNotDuplicated(int bonusNumber, List<Integer> winningNumbers) {
+    private void validateDuplicationOfBonusNumber(int bonusNumber, List<Integer> winningNumbers) {
         if (winningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 중복되었습니다.");
         }
