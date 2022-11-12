@@ -43,6 +43,9 @@ public class User {
         return bonusNumber;
     }
 
+    public Map<String,Integer> getWinningNumberCounting() {
+        return winningNumberCounting;
+    }
     public void makeLottoBundle(int howManyLotto) {
         for (int lottoBundleIndex=0; lottoBundleIndex<howManyLotto; lottoBundleIndex++) {
             lottoBundle.add(lotteryTicketingMachine.ticketLotto());
