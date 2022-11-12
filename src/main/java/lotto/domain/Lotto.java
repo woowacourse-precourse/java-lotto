@@ -24,7 +24,7 @@ public class Lotto {
         }
     }
 
-    private Lotto createRandomNumbers() {
+    public static Lotto createRandomNumbers() {
         Set<Integer> randomNumberSet = new HashSet<>();
         while (randomNumberSet.size() != SIZE) {
             int randomNumber = Randoms.pickNumberInRange(MIN_VALUE, MAX_VALUE);
