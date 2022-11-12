@@ -90,4 +90,12 @@ class CheckInputExceptionTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
+
+    @Test
+    @DisplayName("리스트에 중복된 값이 있으면 예외 처리 확인")
+    void 구매자_중복_입력시_예외_처리_테스트(){
+        assertThatThrownBy(() -> CheckInputException.checkDuplicateNumbers(List.of(1,2,3,4,5,5)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
 }
