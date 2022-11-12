@@ -3,7 +3,7 @@ package lotto;
 import java.util.HashMap;
 import java.util.List;
 
-public class Checker extends LottoKiosk {
+public class Checker extends Kiosk {
     static final int FIRST_PRIZE_COUNT = 6;
     static final int THIRD_PRIZE_COUNT = 5;
     static final int FOURTH_PRIZE_COUNT = 4;
@@ -29,7 +29,7 @@ public class Checker extends LottoKiosk {
     }
 
     public static boolean hasBonusNumber(Lotto lotto) {
-        return lotto.contains(winningBonusNumber);
+        return lotto.contains(bonusNumber);
     }
 
     public static int countSameNumbers(Lotto lotto) {
@@ -44,6 +44,44 @@ public class Checker extends LottoKiosk {
 
     public static Enum getRank(int countSameNumbers) {
         return countMatchingPrizes.get(countSameNumbers);
+    }
+
+//    public static float getYield(int payment) {
+//        return
+//    }
+
+    public static int getTotalWinnings() {
+        int totalWinnings =0;
+        for (int prizeCount : resultStatistics) {
+
+        }
+        return totalWinnings;
+    }
+
+    public HashMap<PrizeRank, Integer> initializeWinnings() {
+        HashMap<PrizeRank, Integer> winnings = new HashMap<>();
+        for (PrizeRank rank : PrizeRank.values()) {
+            winnings.put(rank, Winnings.getAmount(rank.name()));
+        }
+        return winnings;
+    }
+}
+
+enum Winnings {
+    FIRST(2000000000),
+    SECOND(30000000),
+    THIRD(1500000),
+    FOURTH(50000),
+    FIFTH(5000);
+
+    private final int amount;
+
+    Winnings(int amount) {
+        this.amount = amount;
+    }
+
+    static public int getAmount(String rank) {
+        return Winnings.valueOf(rank).amount;
     }
 }
 
