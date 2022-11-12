@@ -45,4 +45,8 @@ public class Lotto {
     //6. 당첨 내역을 출력하는 함수
     //7. 수익률을 계산하는 함수 (소수 두째자리에서 반올림)
     //8. 예외처리 에러 문구 출력 함수 (단, [ERROR] 로 시작)
+    //9. 보너스 볼이 일치하는지 확인하는 함수
+    public boolean bonusBallCheck(List<Integer> buyLottoNumber){
+        return buyLottoNumber.contains(bonus);
+    }
 }
