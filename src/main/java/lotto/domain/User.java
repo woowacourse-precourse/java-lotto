@@ -1,7 +1,12 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Exceptions;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class User {
     public int inputPrice() {
@@ -21,5 +26,11 @@ public class User {
         }
         countLotto = price / 1000;
         return countLotto;
+    }
+
+    public List<Integer> makeLotto() {
+        List<Integer> makeLotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Collections.sort(makeLotto);
+        return makeLotto;
     }
 }
