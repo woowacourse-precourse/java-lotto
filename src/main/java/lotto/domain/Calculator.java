@@ -53,4 +53,17 @@ public class Calculator {
         return lotto.getNumbers().contains(winningNumbers.getBonusNumber());
     }
 
+    public int getTotalPrice() {
+        int total = 0;
+        for (Rank rank : Rank.values()) {
+            int count = getCount(rank);
+            total += count * rank.getPrice().getMoney();
+        }
+        return total;
+    }
+
+    public Integer getCount(Rank rank) {
+        return this.rankCounts.get(rank);
+    }
+
 }
