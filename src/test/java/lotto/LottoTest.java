@@ -1,9 +1,13 @@
 package lotto;
 
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -24,4 +28,14 @@ class LottoTest {
     }
 
     // 아래에 추가 테스트 작성 가능
+    @Test
+    void print() {
+        List<List<Integer>> a = new ArrayList<List<Integer>>();
+        for (int i = 0; i < 4; i++) {
+            a.add(List.of(1, 2, 3, 4, 5));
+        }
+        a.stream().map((w)->w.toString())
+                .collect(Collectors.toList())
+                .forEach(System.out::println);
+    }
 }
