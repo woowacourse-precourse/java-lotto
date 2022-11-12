@@ -1,5 +1,8 @@
 package lotto;
 
+import lotto.io.Inputter;
+import lotto.io.MessagePrinter;
+
 public class LottoGameSimulator {
     private Money money;
     public LottoGameSimulator() {
@@ -16,6 +19,7 @@ public class LottoGameSimulator {
     public void getInputOfMoney() {
         MessagePrinter.printMoneyInputRequest();
         String moneyInput = Inputter.readLine();
+        MoneyValidator.validateMoney(moneyInput);
     }
 
     public void printGeneratedLotto() {
