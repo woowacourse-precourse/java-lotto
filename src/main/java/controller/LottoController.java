@@ -32,7 +32,9 @@ public class LottoController {
 
         ArrayList<Lotto> lottos = publishLotto(lottoCount);
 
-
+        WinningNumbers winningNumbers = new WinningNumbers(inputWinningNumbers());
+        BonusNumber bonusNumber = new BonusNumber(inputBonusNumber());
+        validator.validateReference(winningNumbers.getWinningNumbers(), bonusNumber.getBonusNumber());
 
     }
 
@@ -59,7 +61,28 @@ public class LottoController {
         return lottos;
     }
 
-   
+    public List<Integer> inputWinningNumbers() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String winningNumber = Console.readLine();
+        //구현해야함
+//        validationComma(winningNumber);
+        List<Integer> winningNumbers = Arrays.stream(Arrays.stream(winningNumber.split(","))
+                        .mapToInt(Integer::parseInt).toArray())
+                .boxed().collect(Collectors.toList());
+        //검증식 넣기
+        validator.validateWinningNumberSize(winningNumbers);
+        validator.validateWinningNumberRange(winningNumbers);
+        validator.validateWinningNumberReference(winningNumbers);
+        return winningNumbers;
+    }
 
+    public String inputBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요");
+        String bonusNumber = Console.readLine();
+        // 검증식 넣기
+        validator.validateBonusNumberRange(bonusNumber);
+        return bonusNumber;
+    }
+    
 
 }
