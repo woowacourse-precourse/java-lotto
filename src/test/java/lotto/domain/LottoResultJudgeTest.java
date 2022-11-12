@@ -18,4 +18,44 @@ public class LottoResultJudgeTest {
         int bonus = 7;
         assertThat(lottoResultJudge.judgeLotto(userLotto, lotto, bonus)).isEqualTo(LottoResult.FIRST);
     }
+
+    @Test
+    void 일치하는_개수_2등() {
+        List<Integer> userLotto = Arrays.asList(1,2,3,4,5,7);
+        List<Integer> lotto = Arrays.asList(1,2,3,4,5,6);
+        int bonus = 7;
+        assertThat(lottoResultJudge.judgeLotto(userLotto, lotto, bonus)).isEqualTo(LottoResult.SECOND);
+    }
+
+    @Test
+    void 일치하는_개수_3등() {
+        List<Integer> userLotto = Arrays.asList(1,2,3,4,5,8);
+        List<Integer> lotto = Arrays.asList(1,2,3,4,5,6);
+        int bonus = 7;
+        assertThat(lottoResultJudge.judgeLotto(userLotto, lotto, bonus)).isEqualTo(LottoResult.THIRD);
+    }
+
+    @Test
+    void 일치하는_개수_4등() {
+        List<Integer> userLotto = Arrays.asList(1,2,3,4,8,9);
+        List<Integer> lotto = Arrays.asList(1,2,3,4,5,6);
+        int bonus = 7;
+        assertThat(lottoResultJudge.judgeLotto(userLotto, lotto, bonus)).isEqualTo(LottoResult.FOURTH);
+    }
+
+    @Test
+    void 일치하는_개수_5등() {
+        List<Integer> userLotto = Arrays.asList(1,2,3,8,9,10);
+        List<Integer> lotto = Arrays.asList(1,2,3,4,5,6);
+        int bonus = 7;
+        assertThat(lottoResultJudge.judgeLotto(userLotto, lotto, bonus)).isEqualTo(LottoResult.FIFTH);
+    }
+
+    @Test
+    void 일치하는_개수_NOTHING() {
+        List<Integer> userLotto = Arrays.asList(8,9,10,11,12,13);
+        List<Integer> lotto = Arrays.asList(1,2,3,4,5,6);
+        int bonus = 7;
+        assertThat(lottoResultJudge.judgeLotto(userLotto, lotto, bonus)).isEqualTo(LottoResult.NOTHING);
+    }
 }
