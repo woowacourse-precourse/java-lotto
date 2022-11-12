@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.WinningNumber;
+import lotto.ui.text.ErrorText;
 import lotto.ui.text.InputText;
 
 public class ConsoleParameterInput implements ParameterInput {
@@ -30,21 +31,31 @@ public class ConsoleParameterInput implements ParameterInput {
     }
 
     private List<Integer> readBasicWinningNumber() {
-        System.out.println(InputText.INPUT_BASIC_WINNING_NUMBER);
+        try {
+            System.out.println(InputText.INPUT_BASIC_WINNING_NUMBER);
 
-        String basicNumberString = Console.readLine();
+            String basicNumberString = Console.readLine();
 
-        return Arrays
-                .stream(basicNumberString.split(","))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+            return Arrays
+                    .stream(basicNumberString.split(","))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        }
+        catch (NumberFormatException e){
+            throw new IllegalArgumentException(ErrorText.NOT_NUMBER.toString());
+        }
     }
 
     private int readBonusWinningNumber() {
-        System.out.println(InputText.INPUT_BONUS_WINNING_NUMBER);
+        try {
+            System.out.println(InputText.INPUT_BONUS_WINNING_NUMBER);
 
-        String bonusNumber = Console.readLine();
+            String bonusNumber = Console.readLine();
 
-        return Integer.parseInt(bonusNumber);
+            return Integer.parseInt(bonusNumber);
+        }
+        catch (NumberFormatException e){
+            throw new IllegalArgumentException(ErrorText.NOT_NUMBER.toString());
+        }
     }
 }
