@@ -14,6 +14,7 @@ public class Answer {
 
     public Answer(List<Integer> answers, int bonusNumber) {
         this.answer = new Lotto(answers);
+        LottoValidationUtils.validateContains(answers, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
