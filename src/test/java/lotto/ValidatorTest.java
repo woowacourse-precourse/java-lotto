@@ -207,8 +207,16 @@ class ValidatorTest {
         }
 
         @Test
+        @DisplayName("보너스 번호가 당첨 번호들과 중복되면 예외를 던진다.")
         void isDuplicatedWithWinningNumbers() {
+            // given
+            Validator validator = new Validator();
+            List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
 
+            // throws
+            assertThatThrownBy(() -> validator.validateBonusNumber("1", winningNumbers))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR] 보너스 번호가 당첨 번호와 중복되었습니다.");
         }
     }
 }
