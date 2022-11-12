@@ -236,7 +236,7 @@ public class Lotto {
   - [x] 로또 번호를 뽑는다. - drawLotto()
 - [x] 로또 당첨 번호를 정한다. - setWinningNumber()
 - [x] 보너스 번호를 정한다. - setBonusNumber()
-- [ ] 당첨된 로또의 등수를 계산한다. - getRanking()
+- [x] 당첨된 로또의 등수를 계산한다. - getRanking()
   - [x] 일치하는 번호의 개수에 따라 등수를 계산한다. - calRank()
     - [x] 뽑은 로또와 당첨 번호를 비교하여 몇개가 일치하는지 계산한다. - compareNumbers()
     - [x] 뽑은 로또가 보너스 번호를 맞췄는지 계산한다.

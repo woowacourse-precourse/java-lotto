@@ -10,11 +10,10 @@ public class Winning {
         this.wLotto = wLotto;
     }
 
-    public void calMyScore() {
+    public WinningTable calMyScore() {
        int correctedCount = wLotto.compareNumbers(lotto.getNumbers());
        boolean containsBonus = wLotto.containsBonus(lotto.getNumbers());
 
-       WinningCondition w = WinningCondition.getRank(correctedCount, containsBonus);
-
+       return WinningTable.getRank(correctedCount, containsBonus);
     }
 }
