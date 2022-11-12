@@ -103,3 +103,7 @@ public class PlayLotto extends Input {
     public void print_result(List<Integer> win_count){
         out.print_result(win_count);
     }
+
+    public void print_yeild(){
+        out.print_revenue(cal_revenue());
+    }
