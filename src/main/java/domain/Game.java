@@ -14,6 +14,16 @@ public class Game {
     public static int paymentAmount;
     private static List<Integer> winning_numbers;
 
+
+    public static void start(){
+        Game.read_buyingLottoAmount();
+        System.out.print(Game.getLottoCount() +"개를 구매했습니다.");
+        Controller.lottoSpawner(getLottoCount());
+        Controller.printLottoNumbers();
+        changeToInt(read_WinningNumbers());
+        read_bonusNumber();
+
+    }
     public static void changeToInt(String numbers) {
         String[] str = numbers.split(",");
         List<String> number = List.of(str);
@@ -30,6 +40,7 @@ public class Game {
     public static void read_buyingLottoAmount() {
         System.out.print("구입 금액을 입력해주세요." + "\n");
         paymentAmount = Integer.parseInt(Console.readLine());
+        if (paymentAmount % LottoPrice != 0) throw new IllegalArgumentException();
     }
 
     public static void read_bonusNumber() {
