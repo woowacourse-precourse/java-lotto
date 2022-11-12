@@ -45,12 +45,11 @@ public class User {
         }
     }
 
-
     private void setMoney(int money) {
         this.money = money;
     }
 
-    private void setLottos(List<Lotto> lottos) {
-        this.lottos = lottos;
+    public List<Lotto> getLottos() {
+        return lottos;
     }
 }
