@@ -23,7 +23,7 @@ public class Application {
     }
 
     private static int[] compareUserInputLottos(List<Lotto> lottos, List<Integer> numbers) {
-        int[] ranking = new int[7];
+        int[] ranking = new int[8];
         for (int i = 0; i < lottos.size(); i++) {
             int cnt = 0;
             for (int j = 0; j < numbers.size() - 1; j++) {
@@ -34,7 +34,16 @@ public class Application {
             }
             ranking[cnt]++;
         }
+        printRanking(ranking);
         return ranking;
+    }
+
+    private static void printRanking(int[] ranking) {
+        System.out.println("3개 일치 (5,000원) - "+ranking[3]+"개");
+        System.out.println("4개 일치 (50,000원) - "+ranking[4]+"개");
+        System.out.println("5개 일치 (1,500,000원) - " + ranking[5] + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+ranking[7]+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + ranking[6] + "개");
     }
 
     private static int checkBonussNumber(Lotto lotto, Integer integer) {
