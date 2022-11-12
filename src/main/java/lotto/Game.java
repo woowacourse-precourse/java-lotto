@@ -24,6 +24,8 @@ public class Game {
         Check.checkCach(cash);
         Lotto.myLotto(cash);
         cashAmount = Integer.parseInt(cash);
+        luckyNumber = Lotto.getLuckyNumber();
+        int bonus = Lotto.getBonusNumber();
 
     }
 
