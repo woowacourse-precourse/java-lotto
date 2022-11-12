@@ -19,6 +19,6 @@ public class GameManager {
     }
 
     public int changeNumberOfLottoToBuy(int lottoPrice) {
-        return lottoPrice % Constant.LOTTO_PRICE;
+        return lottoPrice / Constant.LOTTO_PRICE;
     }
 }
