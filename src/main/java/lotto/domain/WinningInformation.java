@@ -12,10 +12,11 @@ public class WinningInformation {
     }
 
     public void setWinningNumbers(List<Integer> winningNumbers) {
+        validator.checkNumberOfNumbers(winningNumbers);
+        validator.checkNumbersDuplication(winningNumbers);
         for(int i = 0; i < winningNumbers.size(); i++){
             validator.checkNumberRange(winningNumbers.get(i));
         }
-        validator.checkNumbersDuplication(winningNumbers);
         this.winningNumbers = winningNumbers;
     }
 

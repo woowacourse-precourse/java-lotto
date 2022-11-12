@@ -46,4 +46,10 @@ public class ValidationInDomain {
         }
     }
 
+    public void checkNumberOfNumbers(List<Integer> numbers) {
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
