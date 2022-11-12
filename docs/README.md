@@ -82,6 +82,10 @@
   - 로또 게임을 시작하는 함수
 
 
+- void issueLottoTickets(int, List<Lotto>)
+  - 로또 번호를 발행하고 이에 대한 정보를 출력이 진행되는 함수
+
+
 - List<Integer> issueLottoNumbers()
   - 로또 번호를 발행하는 함수
 
