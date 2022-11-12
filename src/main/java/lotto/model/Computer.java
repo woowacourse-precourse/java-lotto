@@ -34,7 +34,10 @@ public class Computer {
         lotto = new Lotto(numbers);
     }
 
-    public void saveBonusNumber(String bonusNumber){}
+    public void saveBonusNumber(String bonusNumber){
+        validateBonusNumber(Integer.parseInt(bonusNumber));
+        addBonusNumber(Integer.parseInt(bonusNumber));
+    }
 
     private void validateBonusNumber(int bonusNumber){
         if(isOutOfBound(bonusNumber) || isAlreadyInLotto(bonusNumber))
