@@ -1,7 +1,9 @@
 package lotto;
 
 import java.util.List;
+import java.util.Map;
 import lotto.domain.Lotto;
+import lotto.domain.Rank;
 import lotto.domain.Result;
 
 public class Output {
