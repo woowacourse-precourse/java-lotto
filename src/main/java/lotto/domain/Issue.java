@@ -8,12 +8,12 @@ import java.util.List;
 public class Issue {
     List<Lotto> history;
     int amount;
-    public Issue(){
+    public Issue(int money){
         history = new ArrayList<>();
-
+        amount = getAmount(money);
     }
 
-    public int getAmount(int money){
+    private int getAmount(int money){
         if(money%1000 != 0){
             throw new IllegalArgumentException();
         }

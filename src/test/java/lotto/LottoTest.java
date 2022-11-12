@@ -44,7 +44,7 @@ class LottoTest {
     @ParameterizedTest
     @CsvSource({"900", "1100", "3", "2001"})
     void convertMoneyByWrongUnit(String input) {
-        assertThatThrownBy(() -> new Issue().getAmount(Integer.parseInt(input)))
+        assertThatThrownBy(() -> new Issue(Integer.parseInt(input)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
