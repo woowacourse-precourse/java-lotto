@@ -6,6 +6,11 @@
     - ```LOTTO_MIN_NUMBER``` : 로또 숫자 범위 최소
     - ```LOTTO_MAX_NUMBER``` : 로또 숫자 범위 최대
     - ```LOTTO_PRICE_PER_ONE``` : 로또 한장 당 가격
+  
+### **WinningEnum 클래스**
+- #### **로또 당첨 세팅**
+    - ```FIRST``` ```SECOND``` ```THIRD``` ```FOURTH``` ```FIFTH```
+    - 등수, 일치하는 번호 개수, 보너스볼 일치 여부, 당첨금
 
 ### **Output 클래스**
 - #### **출력 기능**
