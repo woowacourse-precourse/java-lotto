@@ -20,8 +20,10 @@ public class Application {
             Lotto lotto = new Lotto(chatbot.askLottoNumber());
             int bonus = validateLottoBonus(lotto, chatbot.askLottoBonus());
             List<Integer> result = getNumberOfWin(userNumber, lotto, bonus);
-            float rate = calculateRate(lottoPrice, result);
-            chatbot.printResult(rate, result);
+            System.out.println("aaa");
+            System.out.println(result);
+/*            float rate = calculateRate(lottoPrice, result);
+            chatbot.printResult(rate, result);*/
         } catch (IllegalArgumentException e) {
             System.out.println(ERROR_MESSAGE + " " + e.getMessage());
         }
@@ -72,7 +74,7 @@ public class Application {
 
         for (int i = 0; i < userNumber.size(); i++) {
             int countSameNum = countSameNum(userNumber.get(i), lotto, bonus);
-            result.add(countSameNum, result.get(countSameNum) + 1);
+            result.set(countSameNum, result.get(countSameNum) + 1);
         }
         return result;
     }
@@ -89,6 +91,7 @@ public class Application {
         if (count == 5 && userEachNumber.contains(bonus)) {
             count=7;
         }
+        System.out.println(userEachNumber);
         return count;
     }
 
