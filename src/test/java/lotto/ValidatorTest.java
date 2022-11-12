@@ -181,8 +181,16 @@ class ValidatorTest {
         }
 
         @Test
+        @DisplayName("보너스 번호가 0으로 시작하면 예외를 던진다.")
         void startsWithZero() {
+            // given
+            Validator validator = new Validator();
+            List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
 
+            // throws
+            assertThatThrownBy(() -> validator.validateBonusNumber("015", winningNumbers))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR] 보너스 번호 입력이 잘못되었습니다.");
         }
 
         @Test
