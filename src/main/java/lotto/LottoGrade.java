@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * 가능한 로또 등수 정보를 관리하는 Enum
@@ -12,11 +13,10 @@ public enum LottoGrade {
     FOURTH(4, 4, 50_000, false),
     FIFTH(5, 3, 5_000, false),
     FAIL(6, 0, 0, false);
-
-    private final int grade;
-    private final int matchNumberCount;
-    private final int prize;
-    private final boolean hasBonusNumber;
+    public final int grade;
+    public final int matchNumberCount;
+    public final int prize;
+    public final boolean hasBonusNumber;
 
     LottoGrade(int grade, int matchNumberCount, int prize, boolean hasBonusNumber) {
         this.grade = grade;
@@ -28,5 +28,9 @@ public enum LottoGrade {
     public static LottoGrade getMatchGrade(int matchNumberCount, boolean hasBonusNumber) {
         return Arrays.stream(LottoGrade.values()).filter((grade) -> grade.hasBonusNumber == hasBonusNumber)
                 .filter((grade) -> grade.matchNumberCount == matchNumberCount).findFirst().orElse(FAIL);
+    }
+
+    public static List<LottoGrade> getLottoGradesWithoutFail(){
+        return List.of(FIRST,SECOND,THIRD,FOURTH,FIFTH);
     }
 }
