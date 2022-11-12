@@ -66,6 +66,14 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 당첨_번호_형식_예외_테스트() {
+        assertSimpleTest(() -> {
+            runException("1000", "1,2,3!4,5,6");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
     void validateCashIsIntegerTest() {
         assertThatThrownBy(() -> validateCashIsInteger("123A"))
                 .isInstanceOf(IllegalArgumentException.class);
