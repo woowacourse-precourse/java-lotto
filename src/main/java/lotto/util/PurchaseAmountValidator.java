@@ -6,4 +6,8 @@ public class PurchaseAmountValidator {
         return purchaseAmount.chars().allMatch(Character::isDigit);
     }
 
+    public boolean isPositiveNumber(String purchaseAmount) {
+        return Integer.parseInt(purchaseAmount) > 0;
+    }
+
 }
