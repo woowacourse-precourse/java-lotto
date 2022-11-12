@@ -1,5 +1,8 @@
 package lotto.console;
 
+import java.util.List;
+import java.util.StringJoiner;
+
 public class Output {
 
     public void writeLine(String line, Object... args) {
@@ -16,6 +19,15 @@ public class Output {
 
     public void writeBuyCount(int buyCount) {
         writeLine("%d개를 구매했습니다.", buyCount);
+    }
+
+    public void writeLottoNumbers(List<Integer> lottoNumbers) {
+        StringJoiner joiner = new StringJoiner(", ", "[", "]");
+        lottoNumbers.stream()
+                .map(number -> number + "")
+                .forEach(joiner::add);
+
+        writeLine(joiner.toString());
     }
 
     public void writeEnterWinningStandardNumbers() {

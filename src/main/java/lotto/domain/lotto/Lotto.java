@@ -1,7 +1,6 @@
 package lotto.domain.lotto;
 
 import java.util.List;
-import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 public class Lotto {
@@ -50,15 +49,5 @@ public class Lotto {
 
     public List<Integer> value() {
         return numbers;
-    }
-
-    @Override
-    public String toString() {
-        StringJoiner joiner = new StringJoiner(", ", "[", "]");
-        numbers.stream()
-                .map(number -> number + "")
-                .forEach(joiner::add);
-
-        return joiner.toString();
     }
 }

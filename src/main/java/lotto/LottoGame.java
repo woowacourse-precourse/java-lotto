@@ -32,7 +32,7 @@ public class LottoGame {
     private void printLottos(List<Lotto> lottos) {
         output.writeBuyCount(lottos.size());
         for (Lotto lotto : lottos) {
-            output.writeLine(lotto.toString());
+            output.writeLottoNumbers(lotto.value());
         }
         output.writeEmptyLine();
     }
