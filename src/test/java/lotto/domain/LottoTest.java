@@ -7,6 +7,8 @@ import java.util.stream.IntStream;
 import lotto.helper.util.LottoTestUtils;
 import lotto.util.message.LottoExceptionMessageUtils;
 import lotto.util.number.LottoNumberConst;
+import lotto.util.number.LottoNumberFactory;
+import lotto.util.ranking.LottoRanking;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
@@ -15,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -164,6 +167,25 @@ class LottoTest {
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(LottoExceptionMessageUtils.INVALID_NUMBER_SIZE
                             .findExceptionMessage(numberCount));
+        }
+    }
+
+    @Nested
+    @DisplayName("calculateLottoGrade 메소드는")
+    class CalculateLottoGradeMethodTest {
+
+        private final Lotto playerLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+
+        @ParameterizedTest
+        @MethodSource("lotto.domain.argument.LottoTestArgument#calculateLottoGradeArgument")
+        @DisplayName("만약 당첨 번호와 보너스 번호를 입력하면 대상 로또가 몇 등인지 계산해 반환한다.")
+        void success_test(String winningNumbers, int bonusNumber, LottoRanking expectedLottoRanking) {
+            Lotto winningLotto = new Lotto(winningNumbers);
+
+            LottoRanking actualLottoRanking = winningLotto
+                    .calculateLottoGrade(playerLotto, LottoNumberFactory.numberOf(bonusNumber));
+
+            assertThat(actualLottoRanking).isSameAs(expectedLottoRanking);
         }
     }
 
