@@ -1,6 +1,7 @@
-package lotto;
+package lotto.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -17,4 +18,14 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+
+    private void validateOverlapNumbers(List<Integer> numbers) {
+        numbers.stream().distinct().collect(Collectors.toList());
+        if (numbers.size() != 6) {
+            System.out.println("[ERROR] 로또 번호는 중복이 불가합니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
+
 }
