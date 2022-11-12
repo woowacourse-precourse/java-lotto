@@ -14,12 +14,10 @@ public class LottoNumberManagement {
   private List<Integer> numbers;
 
   public LottoNumberManagement() {
-    numbers = new ArrayList<>();
   }
 
-  public List<Integer> generateRandomNumbers() {
-    numbers = Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_NUMBERS_SIZE);
-    return numbers;
+  public void setRandomNumbers() {
+    this.numbers = Randoms.pickUniqueNumbersInRange(LOTTO_START_NUMBER, LOTTO_END_NUMBER, LOTTO_NUMBERS_SIZE);
   }
   private List<Integer> sortNumbers(List<Integer> numbers) {
     Collections.sort(numbers);
