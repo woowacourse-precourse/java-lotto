@@ -97,11 +97,6 @@ public class Application {
         System.out.println("총 수익률은 " + surplusRate + "%입니다.");
     }
 
-    public static void printErrorAboutDuplicate() {
-
-        System.out.println("[ERROR] 중복된 번호가 존재합니다.");
-    }
-
     public static void printErrorAboutDivisionByThousand() {
 
         System.out.println("[ERROR] 입력된 값이 1,000으로 나누어 떨어지지 않습니다.");
@@ -251,7 +246,6 @@ public class Application {
             bonusNumber = bonusNumber * 10 + input.charAt(i) - 48;
         }
         if (winningNumberList.contains(bonusNumber)) {
-            printErrorAboutDuplicate();
             throw new IllegalArgumentException();
         }
     }
