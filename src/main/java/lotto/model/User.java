@@ -1,7 +1,10 @@
 package lotto.model;
 
 
+import lotto.util.PurchaseAmountValidator;
+
 public class User {
+    private final PurchaseAmountValidator purchaseAmountValidator = new PurchaseAmountValidator();
     private int purchaseAmount;
 
     public User(String purchaseAmount) {
@@ -10,7 +13,7 @@ public class User {
     }
 
     private void validate(String purchaseAmount) {
-
+        purchaseAmountValidator.validatePurchaseAmount(purchaseAmount);
     }
 
 
