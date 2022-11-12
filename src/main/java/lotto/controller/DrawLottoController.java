@@ -69,4 +69,8 @@ public class DrawLottoController {
         outputView.printSecondCount(winingCount.get(3));
         outputView.printFirstCount(winingCount.get(4));
     }
+    private double getRevenue(){
+        drawLottoService.setReward();
+        return drawLottoService.getRevenue(user.getBuyAmount());
+    }
 }
