@@ -50,4 +50,8 @@ public class LottoIssuingMachine {
             if (!lottos.contains(issuedLotto)) return issuedLotto;
         }
     }
+
+    protected List<Lotto> getLottos() {
+        return lottos;
+    }
 }
