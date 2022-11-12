@@ -37,7 +37,7 @@ public class ConsoleUserInputTest {
 
     @DisplayName("6개의 숫자가 1~45 범위 내에서 입력됐는지 확인한다.")
     @Test
-    void checkSizeOfSixWinningNumbers(){
+    void checkRangeOfSixWinningNumbers(){
         var consoleUserInput = new ConsoleUserInput();
         String input = "1,2,3,4,0,5";
 
@@ -46,4 +46,16 @@ public class ConsoleUserInputTest {
                 .hasMessage(ErrorStatements.SHOUT_NUMBER_RANGE_ERROR.alarmed());
     }
 
+    @DisplayName("6개의 숫자가 숫자가 아닌 다른 문자로 입력됐는지 확인한다.")
+    @Test
+    void checkInvalidInput(){
+        var consoleUserInput = new ConsoleUserInput();
+        InputStream in = testUserInput("나는 숫자가 아니야~:) 😗 ");
+        System.setIn(in);
+        scanner = new Scanner(System.in);
+
+        assertThatThrownBy(()-> consoleUserInput.inputWinningNumbers())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(ErrorStatements.SHOUT_NOT_NUMBER_ERROR.alarmed());
+    }
 }
