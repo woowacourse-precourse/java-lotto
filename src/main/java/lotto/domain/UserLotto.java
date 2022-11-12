@@ -7,7 +7,7 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class UserLotto {
-    private final LottoWrapper lottoSet = new LottoWrapper();
+    private final LottoWrapper userLottery = new LottoWrapper();
 
     public UserLotto() {
         buyLotto();
@@ -15,25 +15,25 @@ public class UserLotto {
     }
 
     public int size() {
-        return lottoSet.size();
+        return userLottery.size();
     }
 
     public Lotto getLottoAt(int index) {
-        return lottoSet.get(index);
+        return userLottery.get(index);
     }
 
     private void printMyLotto() {
         OutputView.printIOMessage(
                 IOMessage.WRITE_AMOUNT_MESSAGE
-                        .mergeAndGetMessage(String.valueOf(lottoSet.size()))
+                        .mergeAndGetMessage(String.valueOf(userLottery.size()))
         );
-        lottoSet.printAllLotto();
+        userLottery.printAllLotto();
     }
 
     private void buyLotto() {
         long count = readMoney() / Constant.MONEY_UNIT;
         while (count-- > 0) {
-            lottoSet.add(makeLotto());
+            userLottery.add(makeLotto());
         }
     }
 
