@@ -7,6 +7,8 @@ public class Application {
 
     	int payment = User.getPayment();
     	int purchaseQuantity = payment / Constant.PAYMENT_UNIT.value;
-    	System.out.println(purchaseQuantity);
+
+    	Lotto lotto = Lotto.newLotto();
+		System.out.println(lotto.getNumbers());
     }
 }
