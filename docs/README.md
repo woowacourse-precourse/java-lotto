@@ -132,5 +132,4 @@ Lotto, BonusNumber를 참조한다.
    4. insertWinningBonusNumber : Computer.saveBonusNumber으로 입력받은 문자열을 정수로 저장한다. 
 3. matchPlayerLottoWithWinningNumbers
    1. savePlayersScore : 플레이어와 컴퓨터를 MatchLotteryService의 생성자에 넣어 MatchLotteryService.matchPlayerWithComputer를 통해 플레이어에 랭킹결과를 저장한다. 
-4. showPlayersResult
-   1. showGameResult : 전역변수 Player를 RankingView.showWinningResult에 넣어 결과를 출력받는다. 
+4. showPlayersResult : 전역변수 Player를 RankingView.showWinningResult에 넣어 결과를 출력받는다. 

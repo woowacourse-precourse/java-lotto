@@ -53,12 +53,12 @@ public class LotteryController {
         computer.saveBonusNumber(bonusNumber);
     }
 
-    private void matchPlayerLottoWithWinningNumbers(){
+    public void matchPlayerLottoWithWinningNumbers(){
         MatchLotteryService matchLotteryService = new MatchLotteryService(player, computer);
         matchLotteryService.matchPlayerWithComputer();
     }
 
-    private void showPlayersResult(){
-
+    public void showPlayersResult(){
+        rankingView.showWinningResult(player);
     }
 }
