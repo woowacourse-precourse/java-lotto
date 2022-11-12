@@ -17,11 +17,12 @@ public class LottoMatcher {
 
     private List<Rank> results;
 
-    public void matchAllLottos(List<Lotto> publishedLottos, WinningLotto winningLotto) {
+    public List<Rank> matchAllLottos(List<Lotto> publishedLottos, WinningLotto winningLotto) {
         results = new ArrayList<>();
         for (Lotto publishedLotto : publishedLottos) {
             matchLotto(publishedLotto, winningLotto);
         }
+        return results;
     }
 
     private void matchLotto(Lotto lotto, WinningLotto winningLotto) {
@@ -57,9 +58,5 @@ public class LottoMatcher {
         } else if (numberOfMatchedLottoNumber < 3) {
             results.add(NONE);
         }
-    }
-
-    public List<Rank> getResults() {
-        return results;
     }
 }

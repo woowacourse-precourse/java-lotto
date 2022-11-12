@@ -31,11 +31,10 @@ class LottoMatcherTest {
         WinningLotto winningLotto = new WinningLotto(Arrays.asList(33, 15, 29, 42, 28, 11), 10);
 
         // when
-        matcher.matchAllLottos(publishedLottos, winningLotto);
+        List<Rank> actualResults = matcher.matchAllLottos(publishedLottos, winningLotto);
         List<Rank> expectedResults = Arrays.asList(
                 FOURTH_FOUR_MATCHED, FIRST_SIX_MATCHED, NONE, FIFTH_THREE_MATCHED, NONE,
                 NONE, SECOND_FIVE_WITH_BONUS, NONE, NONE, THIRD_FIVE_MATCHED);
-        List<Rank> actualResults = matcher.getResults();
 
         // then
         assertThat(actualResults).isEqualTo(expectedResults);
