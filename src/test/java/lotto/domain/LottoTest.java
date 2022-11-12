@@ -36,6 +36,7 @@ class LottoTest {
             List<Integer> list = new ArrayList<>(List.of(1,2,3,4,5,6));
             Lotto lotto = new Lotto(list);
             list.add(7);
+
             assertThat(lotto.getNumbers().size()).isEqualTo(6);
         }
 
@@ -44,6 +45,7 @@ class LottoTest {
         void test2() {
             List<Integer> list = new ArrayList<>(List.of(1,2,3,4,5,6));
             Lotto lotto = new Lotto(list);
+
             assertThatThrownBy(() -> lotto.getNumbers().add(7))
                     .isInstanceOf(UnsupportedOperationException.class);
         }
@@ -56,7 +58,6 @@ class LottoTest {
         @DisplayName("당첨번호가 6개인 경우")
         @Test
         void test1() {
-
             Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             assertThat(lotto.compareWinningNumbers(WINNING_NUMBERS)).isEqualTo(6);
         }

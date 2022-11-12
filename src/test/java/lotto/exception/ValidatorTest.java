@@ -27,12 +27,12 @@ public class ValidatorTest {
     public static final String INPUT_WINNING_NUMBERS_RIGHT_VALUE = "1,2,3,4,5,6";
     public static final String INPUT_BONUS_MONEY_RIGHT_VALUE = "7";
 
-
     private Validator validator = new Validator();
 
     @Nested
     @DisplayName("validateMoney method")
     class Class1 {
+
         @DisplayName("숫자가 아니면 예외를 반환한다")
         @Test
         void test1() {
@@ -98,8 +98,7 @@ public class ValidatorTest {
         @Test
         void test5() {
             assertThatNoException()
-                    .isThrownBy(() -> validator
-                            .validateWinningNumbers(INPUT_WINNING_NUMBERS_RIGHT_VALUE));
+                    .isThrownBy(() -> validator.validateWinningNumbers(INPUT_WINNING_NUMBERS_RIGHT_VALUE));
         }
     }
 
@@ -107,12 +106,10 @@ public class ValidatorTest {
     @DisplayName("validateBonusNumber method")
     class Class3 {
 
-
         @DisplayName("숫자가 아니면 예외를 반환한다")
         @Test
         void test1() {
-            assertThatThrownBy(() ->
-                    validator.validateBonusNumber(VALUE_IS_NOT_NUMBER, WINNING_NUMBERS))
+            assertThatThrownBy(() -> validator.validateBonusNumber(VALUE_IS_NOT_NUMBER, WINNING_NUMBERS))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("숫자를 입력해주세요.");
         }

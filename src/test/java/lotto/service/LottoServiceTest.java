@@ -34,11 +34,11 @@ public class LottoServiceTest {
     void test1() {
         List<LottoResult> lottoResults = lottoService
                 .compareLottoNumbers(lottoBundle, WINNING_NUMBERS, BONUS_NUMBER);
-        assertThat(lottoResults.size()).isEqualTo(lottoBundle.size());
 
         Map<LottoResult, Long> LottoResultToNumber = lottoResults.stream()
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
+        assertThat(lottoResults.size()).isEqualTo(lottoBundle.size());
         assertThat(LottoResultToNumber.get(LottoResult.SIX)).isEqualTo(1);
         assertThat(LottoResultToNumber.get(LottoResult.FIVE_WITH_BONUS)).isEqualTo(1);
         assertThat(LottoResultToNumber.get(LottoResult.FIVE)).isEqualTo(1);
@@ -61,5 +61,4 @@ public class LottoServiceTest {
         double yield = lottoService.calculateYield(results);
         assertThat(yield).isEqualTo(125.0);
     }
-
 }
