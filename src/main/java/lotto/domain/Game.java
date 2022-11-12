@@ -2,10 +2,12 @@ package lotto.domain;
 
 import lotto.Calculation;
 import lotto.LottoIssuer;
+import lotto.domain.player.BonusNumber;
 import lotto.domain.player.Player;
 import lotto.domain.player.PurchaseAmount;
+import lotto.domain.player.WinningNumber;
 
-import java.util.stream.Stream;
+import java.util.List;
 
 public class Game {
 
@@ -15,8 +17,9 @@ public class Game {
 		int purchaseCount = new PurchaseCounter().countLotto(purchaseAmount);
 
 		LottoIssuer lottoIssuer = new LottoIssuer(purchaseCount);
-		Stream<Integer> lottoNumbers = player.receiveLottoNumber();
-		player.receiveBonusNumber(lottoNumbers);
+
+		List<Integer> winningNumber = new WinningNumber(player.receiveWinningNumber()).toConvert();
+		List<Integer> bonusNumber = new BonusNumber(player.receiveBonusNumber(), winningNumber).toConvert();
 
 		Calculation.findMatch();
 		Calculation.calculateResult();
