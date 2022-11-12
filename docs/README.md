@@ -111,11 +111,11 @@
 ### PrintView Class
 - function
   - printStartMessage : 구입 금액을 입력하라고 출력하는 함수
-  - printPurchaseCountMessage : 몇 개를 구매했는지 출력하는 함수
+  - printLottoSheetCountMessage : 몇 개를 구매했는지 출력하는 함수
   - printLottoNumber : 자동으로 배정된 로또 한 장을 출력하는 함수
-  - printInputWinningNumberMessage : 당첨 번호를 입력하라고 출력하는 함수
-  - printBonusMessage : 보너스 번호를 입력하라고 출력하는 함수
-  - printLottoResultMessage : 당첨 통계에 대하여 출력하는 함수
+  - printWinningNumberMessage : 당첨 번호를 입력하라고 출력하는 함수
+  - printBonusNumberMessage : 보너스 번호를 입력하라고 출력하는 함수
+  - printWinningResultMessage : 당첨 통계에 대하여 출력하는 함수
   - printYieldMessage : 수익률을 출력하는 함수
 
 ## Controller Package
