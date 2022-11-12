@@ -19,7 +19,6 @@ public class WinLottoGenerate {
     }
 
     private void winNumberValidate(String[] winNumber) {
-        lottoSizeValidate(winNumber);
         isDigit(winNumber);
     }
 
@@ -28,12 +27,6 @@ public class WinLottoGenerate {
             if (!number.chars().allMatch(Character::isDigit)) {
                 throw new IllegalArgumentException();
             }
-        }
-    }
-
-    private void lottoSizeValidate(String[] winNumber) {
-        if (winNumber.length != LOTTO_SIZE) {
-            throw new IllegalArgumentException();
         }
     }
 
