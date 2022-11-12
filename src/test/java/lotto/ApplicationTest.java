@@ -4,7 +4,9 @@ import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -29,6 +31,49 @@ class ApplicationTest extends NsTest {
         assertThatThrownBy(() -> Application.parseWinningNumbers("1,2,3,4,5")).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> Application.parseWinningNumbers("1,2,3,4,5,A")).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> Application.parseWinningNumbers("1 2 3 4 5 6")).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("당첨 결과를 비교하는 기능 테스트")
+    void compareLotteriesResult() {
+        List<Lotto> lotteries = List.of(
+                new Lotto(List.of(1, 2, 7, 8, 9, 10)),
+                new Lotto(List.of(1, 2, 3, 7, 8, 9)),
+                new Lotto(List.of(1, 2, 3, 4, 7, 8)),
+                new Lotto(List.of(1, 2, 3, 4, 5, 7)),
+                new Lotto(List.of(1, 2, 3, 4, 5, 6))
+        );
+
+        Map<LottoResult, Integer> actual = Application.compareLotteriesResult(lotteries, List.of(1, 2, 3, 4, 5, 6), 7);
+
+        assertThat(actual.containsKey(LottoResult.Match3)).isEqualTo(true);
+        assertThat(actual.containsKey(LottoResult.Match4)).isEqualTo(true);
+        assertThat(actual.containsKey(LottoResult.Match5AndBonus)).isEqualTo(true);
+        assertThat(actual.containsKey(LottoResult.Match6)).isEqualTo(true);
+        assertThat(actual.containsKey(LottoResult.None)).isEqualTo(false);
+        assertThat(actual.containsKey(LottoResult.Match5)).isEqualTo(false);
+
+        assertThat(actual.get(LottoResult.Match3)).isEqualTo(1);
+        assertThat(actual.get(LottoResult.Match4)).isEqualTo(1);
+        assertThat(actual.get(LottoResult.Match5AndBonus)).isEqualTo(1);
+        assertThat(actual.get(LottoResult.Match6)).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("로또 당첨 결과를 출력하는 기능 테스트")
+    void printResultTest() {
+        Map<LottoResult, Integer> lotteryResult = new HashMap<>();
+        lotteryResult.put(LottoResult.Match3, 1);
+
+        Application.printResult(8000, lotteryResult);
+        assertThat(output()).contains(
+                "3개 일치 (5,000원) - 1개",
+                "4개 일치 (50,000원) - 0개",
+                "5개 일치 (1,500,000원) - 0개",
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개",
+                "6개 일치 (2,000,000,000원) - 0개",
+                "총 수익률은 62.5%입니다."
+        );
     }
 
     @Test

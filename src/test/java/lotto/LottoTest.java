@@ -26,10 +26,27 @@ class LottoTest {
     @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
     @Test
     void createLottoByDuplicatedNumber() {
-        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 번호를 오름차순 문자열로 변환한다.")
+    @Test
+    void toStringTest() {
+        assertThat(new Lotto(List.of(1, 2, 3, 4, 5, 6)).toString()).isEqualTo("[1, 2, 3, 4, 5, 6]");
+    }
+
+    @DisplayName("로또 당첨 결과를 비교하고 LottoResult를 반환한다.")
+    @Test
+    void compareWinningNumbersTest() {
+        assertThat(new Lotto(List.of(1, 2, 3, 4, 5, 6)).compareWinningNumbers(List.of(1, 2, 3, 7, 8, 9), 10)).isEqualTo(LottoResult.Match3);
+        assertThat(new Lotto(List.of(1, 2, 3, 4, 5, 6)).compareWinningNumbers(List.of(1, 2, 3, 7, 8, 9), 4)).isEqualTo(LottoResult.Match3);
+        assertThat(new Lotto(List.of(1, 2, 3, 4, 5, 6)).compareWinningNumbers(List.of(1, 2, 3, 4, 8, 9), 10)).isEqualTo(LottoResult.Match4);
+        assertThat(new Lotto(List.of(1, 2, 3, 4, 5, 6)).compareWinningNumbers(List.of(1, 2, 3, 4, 8, 9), 5)).isEqualTo(LottoResult.Match4);
+        assertThat(new Lotto(List.of(1, 2, 3, 4, 5, 6)).compareWinningNumbers(List.of(1, 2, 3, 4, 5, 9), 10)).isEqualTo(LottoResult.Match5);
+        assertThat(new Lotto(List.of(1, 2, 3, 4, 5, 6)).compareWinningNumbers(List.of(1, 2, 3, 4, 5, 9), 6)).isEqualTo(LottoResult.Match5AndBonus);
+        assertThat(new Lotto(List.of(1, 2, 3, 4, 5, 6)).compareWinningNumbers(List.of(1, 2, 3, 4, 5, 6), 10)).isEqualTo(LottoResult.Match6);
+        assertThat(new Lotto(List.of(1, 2, 3, 4, 5, 6)).compareWinningNumbers(List.of(11, 12, 13, 14, 15, 16), 10)).isEqualTo(LottoResult.None);
+    }
+
 }
