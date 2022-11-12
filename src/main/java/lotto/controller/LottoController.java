@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.domain.Lotto;
 import lotto.domain.Money;
 import lotto.domain.RandomLotto;
 import lotto.service.LottoService;
@@ -26,7 +27,5 @@ public class LottoController {
         resultView.showNumberOfLottoPurchase(randomLotto);
         resultView.showAllRandomLottoNumbers(randomLotto);
 
-        List<Integer> winningNums = inputView.getWinningNums();
-        inputView.getBonusNum();
     }
 }

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
-import static java.util.Arrays.*;
 
 public class InputView {
 
