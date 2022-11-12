@@ -13,6 +13,7 @@ public class LottoSeller {
     public LottoSeller() {
         lottoMachine = new LottoMachine();
         moneyInputController = new MoneyInputController();
+        printController = new PrintController();
     }
 
 
@@ -21,11 +22,10 @@ public class LottoSeller {
         String purchaseMoney = moneyInputController.input();
         moneyInputController.validate(purchaseMoney);
 
-        List<Lotto> lottoNumbers = lottoMachine.issueLottoNumbers(1);
+        List<Lotto> lottoNumbers = lottoMachine.issueLottoNumbers(Long.parseLong(purchaseMoney) / UNIT);
 
-
-
-
+        lottoMachine.inputWinNumber();
+        lottoMachine.inputBonusNumber();
 
         return new LottoPurchaseInfo(lottoNumbers, Long.parseLong("1"));
 

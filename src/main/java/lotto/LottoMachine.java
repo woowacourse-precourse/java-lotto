@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,11 +40,27 @@ public class LottoMachine {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
+    public void inputWinNumber() {
+
+        List<String> inputLottoNumber = Arrays.asList(winNumberInputController.input().split(","));
+
+        setWinNumber(inputLottoNumber);
+    }
+
     public void setWinNumber(List<String> inputLottoNumber) {
 
         winNumberInputController.validate(inputLottoNumber);
 
         winNumber = new Lotto(convertInteger(inputLottoNumber));
+    }
+
+    public void inputBonusNumber() {
+
+        String inputBonusNumber = bonusNumberInputController.input();
+
+        bonusNumberInputController.validate(inputBonusNumber);
+
+        bonusNumber = Integer.parseInt(inputBonusNumber);
     }
 
     public List<Integer> convertInteger(List<String> inputLottoNumber) {
@@ -100,6 +117,7 @@ public class LottoMachine {
         return buyerLotto.getLotto().stream()
                 .anyMatch(number -> number == getBonusNumber());
     }
+
 
 
 }
