@@ -10,6 +10,7 @@ import lotto.view.InputMessage;
 import lotto.view.OutputMessage;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
@@ -110,5 +111,13 @@ public class Service {
             }
         }
         return Rank.NO_RANK;
+    }
+
+    public void checkBuyerLotteries(){
+        HashMap<Rank,Integer> result = buyer.getLottoResult();
+        for(Lotto lotto : buyer.getPurchasedLotteries()){
+            Rank rank = determineLottoRank(lotto);
+            result.put(rank,result.getOrDefault(rank,0)+1);
+        }
     }
 }

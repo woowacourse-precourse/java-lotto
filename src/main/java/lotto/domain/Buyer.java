@@ -1,15 +1,25 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Buyer {
     private ArrayList<Lotto> purchasedLotteries = new ArrayList<>();
     private int purchaseAmount;
-    private long winningAmount=0;
-    private double yield=0;
+    private HashMap<Rank,Integer> lottoResult = new HashMap<>();
 
     public Buyer(int purchaseAmount){
         this.purchaseAmount = purchaseAmount;
+        initLottoResult();
+    }
+
+    private void initLottoResult(){
+        lottoResult.put(Rank.FIRST,0);
+        lottoResult.put(Rank.SECOND,0);
+        lottoResult.put(Rank.THIRD,0);
+        lottoResult.put(Rank.FOURTH,0);
+        lottoResult.put(Rank.FIFTH,0);
+        lottoResult.put(Rank.NO_RANK,0);
     }
 
     public void buyLotto(Lotto lotto){
@@ -24,15 +34,7 @@ public class Buyer {
         return purchaseAmount;
     }
 
-    public void setPurchaseAmount(int purchaseAmount){
-        this.purchaseAmount = purchaseAmount;
-    }
-
-    public long getWinningAmount() {
-        return winningAmount;
-    }
-
-    public double getYield() {
-        return yield;
+    public HashMap<Rank, Integer> getLottoResult() {
+        return lottoResult;
     }
 }
