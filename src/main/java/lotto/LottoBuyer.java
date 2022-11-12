@@ -87,4 +87,8 @@ public class LottoBuyer {
         return lottos;
     }
 
+    public Integer getBonusNumber(){
+        return bonusNumber;
+    }
+
 }
