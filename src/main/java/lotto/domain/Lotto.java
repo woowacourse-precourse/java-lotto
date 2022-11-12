@@ -41,6 +41,11 @@ public class Lotto {
                 .count();
         return matchNum;
     }
+    public boolean hasBonusNum(List<Integer> numbers){
+        if(numbers.contains(bonusNum))
+            return true;
+        return false;
+    }
 
 
 
