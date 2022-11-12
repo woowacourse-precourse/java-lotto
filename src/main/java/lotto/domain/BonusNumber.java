@@ -3,13 +3,13 @@ package lotto.domain;
 import lotto.view.InputView;
 
 public class BonusNumber {
-    private long bonusNumber;
+    private int bonusNumber;
 
     public BonusNumber() {
           makeBonusNumber();
     }
     
-    public long getBonusNumber() {
+    public int getBonusNumber() {
         return bonusNumber;
     }
 
@@ -17,7 +17,7 @@ public class BonusNumber {
         bonusNumber = readBonusNumber();
     }
 
-    private long readBonusNumber() {
+    private int readBonusNumber() {
         return InputView.readBonusNumber();
     }
 }

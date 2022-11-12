@@ -15,6 +15,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
+
     public int compare(Lotto another) {
         return another.compareRealValue(this.numbers);
     }
