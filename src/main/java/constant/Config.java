@@ -7,4 +7,6 @@ public class Config {
     public static final int MAX_NUMBER = 45;
     public static final int NUMBER_COUNT = 6;
     public static final String ERROR = "[ERROR]";
+    public static final String RANGE_ERROR = String.format("%s 로또 번호는 %d~%d 범위여야 합니다.", ERROR, MIN_NUMBER, MAX_NUMBER);
+
 }
