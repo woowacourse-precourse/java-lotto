@@ -10,13 +10,13 @@ public class Application {
     public static void main(String[] args) {
         NumberGenerator numberGenerator = new NumberGenerator();
         LottoManager lottoManager = new LottoManager();
-        String count = Console.readLine();
-        int countNumber = Integer.parseInt(count);
-        Lotto[] lottos = new Lotto[countNumber];
-        for (int i = 0; i < countNumber; i++) {
-            lottos[i] = new Lotto(numberGenerator.createLottoNumbers());
-        }
-        lottoManager.printLottoNumbers(lottos);
+        String winningNumbers = lottoManager.inputWinningNumbers();
+        int bonusNumber = lottoManager.inputBonusNumber();
+        List<Integer> numbers = numberGenerator.createWinningNumbers(winningNumbers);
+//        Lotto[] lottos = new Lotto[countNumber];
+//        for (int i = 0; i < countNumber; i++) {
+//            lottos[i] = new Lotto(numberGenerator.createLottoNumbers());
+//        }
 
     }
 }

@@ -18,7 +18,13 @@ public class LottoManager {
         }
     }
 
-    public void printRateOfReturn() { // 수익률 출력
+    public String inputWinningNumbers() {
+        System.out.println("당첨번호를 입력해주세요.");
+        return Console.readLine();
+    }
 
+    public int inputBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        return Integer.parseInt(Console.readLine());
     }
 }
