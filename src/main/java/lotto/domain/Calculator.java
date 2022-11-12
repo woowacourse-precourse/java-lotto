@@ -4,6 +4,10 @@ import java.util.List;
 
 public class Calculator {
 
+    public Calculator(WinningNumbers winningNumbers, List<Lotto> lottos) {
+        calculate(winningNumbers, lottos);
+    }
+
     private void calculate(WinningNumbers winningNumbers, List<Lotto> lottos) {
         for (Lotto lotto : lottos) {
             calculateCount(winningNumbers, lotto);
@@ -17,7 +21,16 @@ public class Calculator {
                 count += 1;
             }
         }
+        if (count == 5 && hasBonus(winningNumbers, lotto)) {
+
+        }
         return count;
     }
+
+
+    public static boolean hasBonus(WinningNumbers winningNumbers, Lotto lotto) {
+        return lotto.getNumbers().contains(winningNumbers.getBonusNumber());
+    }
+
 
 }
