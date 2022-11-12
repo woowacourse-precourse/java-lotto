@@ -46,4 +46,12 @@ class ValidationTest {
             .hasMessageContaining(ERROR_MESSAGE);
     }
 
+    @DisplayName("보너스 번호 입력에 숫자가 아니면 에러가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"ㄱㄶ","1,ㅇ","asb","!@G"})
+    void createBonusNumberByOtherThanNum(String bonusNumber) {
+        assertThatThrownBy(() -> Validation.validateBonusNumberConsistOfNum(bonusNumber))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessageContaining(ERROR_MESSAGE);
+    }
 }
