@@ -20,13 +20,8 @@ public class LottoStatistics {
     private static final int numberFour = 4;
     private static final int numberFive = 5;
     private static final int numberSix = 6;
-    private static final int GET_FIFTH_RANKING_PRIZE = 5000;
-    private static final int GET_FOURTH_RANKING_PRIZE = 50000;
-    private static final int GET_THIRD_RANKING_PRIZE = 1500000;
-    private static final int GET_SECOND_RANKING_PRIZE = 30000000;
-    private static final int GET_FIRST_RANKING_PRIZE = 2000000000;
 
-    private final Map<LottoResult,Integer> lottoResultMap = new LinkedHashMap<>();
+    private static final Map<LottoResult,Integer> lottoResultMap = new LinkedHashMap<>();
 
     protected void initLottoResultMap(){
         lottoResultMap.put(THREE,0);
@@ -77,20 +72,9 @@ public class LottoStatistics {
         return lottoStatisticsList;
     }
 
-    public float calculateEarning(int lottoPrice){
-        return ((float)addPrize()/(float)lottoPrice) *100;
+    public static Map<LottoResult,Integer> getLottoResultMap(){
+        return lottoResultMap;
     }
 
-    private int addPrize(){
-        int total = 0;
-        for ( LottoResult key : lottoResultMap.keySet() ) {
-            if (key == THREE) total+= GET_FIFTH_RANKING_PRIZE * lottoResultMap.get(key);
-            else if (key == FOUR) total += GET_FOURTH_RANKING_PRIZE * lottoResultMap.get(key);
-            else if (key == FIVE) total += GET_THIRD_RANKING_PRIZE * lottoResultMap.get(key);
-            else if (key == FIVE_BONUS) total += GET_SECOND_RANKING_PRIZE * lottoResultMap.get(key);
-            else if (key == SIX) total += GET_FIRST_RANKING_PRIZE * lottoResultMap.get(key);
-        }
-        return total;
-    }
 
 }
