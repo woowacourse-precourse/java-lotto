@@ -163,4 +163,26 @@ class LottoTest {
 
     }
 
+    @DisplayName("수익률을 계산한다.")
+    @Test
+    public void calculatePrizeRate() {
+
+        LottoMachine lottoMachine = new LottoMachine();
+        LottoPrizeRecordingManager lottoPrizeRecordingManager = new LottoPrizeRecordingManager();
+        lottoMachine.setWinNumber(List.of("11", "12", "13", "14", "15", "16"));
+        lottoMachine.setBonusNumber("17");
+
+        List<Lotto> lottoNumbers = List.of(
+                new Lotto(List.of(11, 12, 13, 14, 15, 16)),
+                new Lotto(List.of(11, 12, 13, 20, 21, 22)));
+
+        lottoNumbers.forEach(
+                (lotto) -> lottoPrizeRecordingManager
+                        .setPrizeRecording(lottoMachine.getWinPrize(lotto))
+        );
+
+        assertThat(lottoPrizeRecordingManager.getPrizeRate(2000))
+                .isEqualTo(lottoPrizeRecordingManager.getTotalPrizeMoney() / 2000);
+    }
+
 }
