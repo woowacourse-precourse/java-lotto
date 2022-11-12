@@ -2,7 +2,6 @@ package lotto;
 
 import lotto.ui.ConsoleOutput;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -12,7 +11,6 @@ public class Lotto {
 
 	public Lotto(List<Integer> numbers) {
 		validate(numbers);
-		sortNumbers(numbers);
 		this.numbers = numbers;
 		ConsoleOutput.PrintIssuedLotto(numbers);
 	}
@@ -25,10 +23,6 @@ public class Lotto {
 		if (isDuplicateExists(numbers)) {
 			throw new IllegalArgumentException();
 		}
-	}
-
-	private void sortNumbers(List<Integer> numbers) {
-		Collections.sort(numbers);
 	}
 
 	private boolean isDuplicateExists(List<Integer> numbers) {
