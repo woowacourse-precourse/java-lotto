@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public enum LottoOperator {
     NO_LUCK(0, 0),
-    THIRD(3, 10),
+    THREE(3, 10),
     FOUR(4, 10),
     FIVE(5, 10),
     SIX(6, 10);
