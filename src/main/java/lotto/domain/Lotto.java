@@ -28,6 +28,15 @@ public class Lotto {
         }
     }
 
+    private void validateDuplication(List<Integer> numbers) {
+        for (int index = 0; index < numbers.size(); index++) {
+            if (numbers.indexOf(numbers.get(index)) != index) {
+                System.out.println("[ERROR} 복권 번호는 중복이 허용되지 않습니다.");
+                throw new IllegalArgumentException("[ERROR] 복권 번호의 중복");
+            }
+        }
+    }
+
     public void validateIsNumeric(List<String> numbers) {
         String pattern = "^[0-9]*$";
         for (String number : numbers) {
