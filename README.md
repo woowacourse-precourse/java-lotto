@@ -107,7 +107,7 @@ BUILD SUCCESSFUL in 0s
 - [ ] **CLASS 6.** `UserInterface`
     - **Class Methods:**
         - [x] `public static void printPurchaseMoneyMessage()`
-        - [ ] `public static int inputPurchaseMoney`
+        - [x] `public static int inputPurchaseMoney()`
         - [ ] `public static void printWinNumbersMessage()`
         - [ ] `public static List<Integer> inputWinNumbers()`
         - [ ] `public static void printBonusNumberMessage()`
