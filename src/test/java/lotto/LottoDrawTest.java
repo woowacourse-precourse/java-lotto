@@ -29,7 +29,6 @@ class LottoDrawTest {
         ByteArrayInputStream in = new ByteArrayInputStream("1,3,5,7,9,13\n15".getBytes());
         System.setIn(in);
 
-
         LottoDraw lottoDraw = new LottoDraw(new LottoBuyer(1000));
         assertThat(lottoDraw.getWinningNumbers()).isEqualTo(List.of(1, 3, 5, 7, 9, 13));
     }
@@ -94,19 +93,28 @@ class LottoDrawTest {
                 .hasMessage("[ERROR] 로또 당첨 번호는 1 ~ 45 범위입니다.");
     }
 
-//    @Test
-//    void compareLotteries() {
-//        ByteArrayInputStream in = new ByteArrayInputStream("10,20,31,42,15,6\n12".getBytes());
-//        System.setIn(in);
-//
-//        LottoBuyer lottoBuyer = new LottoBuyer(1000);
-//        LottoDraw lottoDraw = new LottoDraw(lottoBuyer);
-//
-//        List<Lotto> lotteries = lottoBuyer.getLotteries();
-//        for (Lotto lotto : lotteries) {
-//            System.out.println(lotto.getNumbers());
-//        }
-//
-//        System.out.println(lottoDraw.getNumberOfMatching());
-//    }
+    @Test
+    void compareLotteries() {
+        ByteArrayInputStream in = new ByteArrayInputStream("1,2,3,4,5,6\n7".getBytes());
+        System.setIn(in);
+
+        LottoBuyer lottoBuyer = new LottoBuyer(10000, List.of(
+                List.of(10, 20, 30, 40, 42, 17),
+                List.of(1, 20, 30, 40, 42, 17),
+                List.of(1, 2, 30, 40, 42, 17),
+                List.of(1, 2, 3, 40, 42, 17),
+                List.of(1, 2, 30, 4, 42, 17),
+                List.of(1, 2, 30, 40, 42, 7),
+                List.of(1, 2, 3, 4, 42, 17),
+                List.of(1, 2, 3, 4, 5, 17),
+                List.of(1, 2, 3, 4, 5, 7),
+                List.of(1, 2, 3, 4, 5, 6)
+                ));
+
+        LottoDraw lottoDraw = new LottoDraw(lottoBuyer);
+        lottoDraw.compareLotteries();
+
+        assertThat(lottoDraw.getNumberOfMatching())
+                .contains(entry(3, 2), entry(4, 1), entry(100, 1), entry(5, 1), entry(6, 1));
+    }
 }
