@@ -1,6 +1,10 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.model.User;
+import lotto.view.InputView;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,6 +12,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -52,6 +57,40 @@ class ApplicationTest extends NsTest {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
+    }
+
+    @Test
+    void 유효한_숫자_입력() {
+        User user = new User();
+        boolean result = user.isNumber("12345");
+        assertThat(result).isEqualTo(true);
+    }
+
+    @DisplayName("숫자가 아닌 값을 입력하면 예외가 발생한다.")
+    @Test
+    void 유효하지않는_숫자_입력() {
+        User user = new User();
+        assertThatThrownBy(() -> {
+            user.isNumber("hello");
+        }).isInstanceOf(IllegalArgumentException.class)
+                        .hasMessageContaining(ERROR_MESSAGE);
+    }
+
+    @Test
+    void 유효한_단위_입력() {
+        User user = new User();
+        boolean result = user.unitError("3000");
+        assertThat(result).isEqualTo(true);
+    }
+
+    @DisplayName("1000원 단위가 아닌 값을 입력하면 예외가 발생한다.")
+    @Test
+    void 유효하지않는_단위_입력() {
+        User user = new User();
+        assertThatThrownBy(() -> {
+            user.unitError("3300");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
     }
 
     @Override
