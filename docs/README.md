@@ -30,7 +30,9 @@
 - [x] 당첨 번호, 나의 번호, 보너스 번호를 입력받는다. - LottoResult
 - [x] 나의 번호와 당첨번호 중 겹치는 개수를 구한다. - LottoResult#calculateMatch()
 - [x] 나의 번호에 보너스 번호가 포함되는 지 구한다. - LottoResult#calculateBonusMatch()
-- [ ] 당첨 내역을 출력한다.
+
+**로또 순위 계산**
+- [x] 겹치는 번호 개수, 보너스 여부로 순위를 구한다. - Statistics
 
 **수익률 계산**
 

@@ -7,6 +7,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoResult;
 import lotto.domain.Player;
 import lotto.domain.Purchase;
+import lotto.domain.Statistics;
 import lotto.view.InputView;
 
 public class LottoController {
@@ -33,6 +34,9 @@ public class LottoController {
         LottoResult result = new LottoResult(winningNumbers, allPlayerNumbers, bonusNumber);
         List<Integer> matches = result.getMatches();
         List<Boolean> bonusMatches = result.getBonusMatches();
+
+        // Statistics
+        Statistics statistics = new Statistics(matches, bonusMatches);
     }
 
     private static void validateDuplicates() {
