@@ -2,7 +2,10 @@ package lotto;
 
 public class Application {
     public static void main(String[] args) {
-        ConsoleInput firstInput = new ConsoleInput();
-        firstInput.priceInput();
+        int ticketAmount = Purchase.buyLotto();
+        DrawNumber.generateNumber(ticketAmount);
+        DrawNumber.printNumber(ticketAmount);
+        LuckyNumber.pickSixNumber();
+        LuckyNumber.pickBonusNumber();
     }
 }
