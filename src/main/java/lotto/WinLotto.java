@@ -12,6 +12,10 @@ public class WinLotto extends Lotto {
         this.bonusNumber = bonusNumber;
     }
 
+    public int getBonusNumber() {
+        return this.bonusNumber;
+    }
+
     private void validateBonusNumber(List<Integer> winNumbers, int bonusNumber) {
         if (winNumbers.contains(bonusNumber)) {
             System.out.println("[ERROR] 보너스 번호는 당첨 번호와 중복되지 않은 숫자여야 합니다.");

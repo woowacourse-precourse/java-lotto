@@ -66,14 +66,14 @@ BUILD SUCCESSFUL in 0s
         - [x] `private void validateSizeOfNumbers(List<Integer> numbers)`
         - [x] `private void validateDuplicateNumbers(List<Integer> numbers)`
         - [x] `private void validateRangeOfNumbers(List<Integer> numbers)`
-        - [ ] `public List<Integer> getLottoNumbers()`
+        - [x] `public List<Integer> getLottoNumbers()`
 - [x] **CLASS 2.** `WinLotto extends Lotto`
     - **Class Variables:**
         - [x] `private final int bonusNumber`
     - **Class Methods:**
         - [x] `public WinLotto(List<Inteber> winNumbers, int bonusNumber)`
         - [x] `private void validateBonusNumber(List<Integer> winNumbers, int bonusNumber)`
-        - [ ] `public int getBonusNumber()`
+        - [x] `public int getBonusNumber()`
 - [ ] **CLASS 3.** `LottoDraw`
     - **Class Methods:**
         - [ ] `public static LottoRank getLottoRank(Lotto lotto, WinLotto winLotto)`
