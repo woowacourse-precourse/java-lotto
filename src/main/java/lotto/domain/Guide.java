@@ -1,7 +1,5 @@
 package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Console;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,11 +15,11 @@ public class Guide {
     }
 
     public static void printGetWinningNumber() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println("\n당첨 번호를 입력해 주세요.");
     }
 
     public static void printGetBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println("\n보너스 번호를 입력해 주세요.");
     }
 
     public static int convertStringToInt(String Number) {
@@ -37,5 +35,11 @@ public class Guide {
     public static List<Integer> convertStringListToIntegerList(List<String> lottoNumbers) {
         return lottoNumbers.stream().map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    public void printBoughtLottoList(List<Lotto> boughtLotto) {
+        for (Lotto lotto : boughtLotto) {
+            System.out.println(lotto.getLotto());
+        }
     }
 }
