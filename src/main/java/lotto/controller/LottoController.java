@@ -20,6 +20,7 @@ public class LottoController {
         OutputView.printGameCount(user.getUserGameCnt());
 
         lotto=new Lotto(InputView.getLottoNumber());
+        lotto.setBonusNumber(InputView.getBonusNumber(lotto.getNumbers()));
     }
 
     private void inIt(){

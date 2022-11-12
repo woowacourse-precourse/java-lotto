@@ -11,13 +11,17 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public void setBonusNumber(int bonusNumber) {
-        this.bonusNumber = bonusNumber;
-    }
-
     private void validate(List<Integer> numbers) {
         if (numbers.stream().distinct().count() != 6) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public void setBonusNumber(int bonusNumber) {
+        this.bonusNumber = bonusNumber;
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
