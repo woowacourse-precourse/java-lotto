@@ -26,7 +26,7 @@ public class Game {
         numberDrawing.getWinningNumber();
         numberDrawing.getBonusNumber();
 
-        Lotto winningNumbers = new Lotto(numberDrawing.winningNumber);
+        Lotto winningNumbers = new Lotto(numberDrawing.winningNumbers);
         winningLottoNumbers = winningNumbers.getNumbers();
         bonusNumber = numberDrawing.bonusNumber;
     }

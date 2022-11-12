@@ -11,7 +11,7 @@
     - [x] 천원단위 아닐 경우 예외처리한다.
 - [x] 입력 받은 금액 만큼의 로또를 랜덤으로 발행한다. NumberGenerator#generateNumbers()
 - [x] 당첨번호와 보너스 번호를 입력받는다. LottoDrawing#getWinningNumber(),getBonusNumber()
-  - [ ] 당첨번호 오름차순 아닐수도 있음
+  - [x] 당첨번호 오름차순 아닐수도 있음
 - [x] 구매번호와 당첨번호를 비교하여 일치하는 숫자가 몇개인지 구한다. NumberChecker#compareResult()
 - [ ] 수익률을 구한다. LottoResult#getRateOfReturn()
   - [ ] LottoResult enum 을 이용하여 수익률을 계산한다. 

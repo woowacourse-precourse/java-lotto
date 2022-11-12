@@ -8,7 +8,7 @@ import java.util.List;
 import static lotto.Constant.*;
 
 public class LottoDrawing {
-    List<Integer> winningNumber = new ArrayList<>();
+    List<Integer> winningNumbers = new ArrayList<>();
     Lotto winningLotto;
     int bonusNumber;
     public void getWinningNumber(){
@@ -16,9 +16,9 @@ public class LottoDrawing {
         String winningNumber = Console.readLine();
         String[] winningNumbers = winningNumber.split(",");
         for(String number: winningNumbers){
-            this.winningNumber.add(Integer.parseInt(number));
+            this.winningNumbers.add(Integer.parseInt(number));
         }
-        winningLotto = new Lotto(this.winningNumber);
+        winningLotto = new Lotto(this.winningNumbers);
     }
     public void getBonusNumber(){
         System.out.println(MESSAGE_INPUT_BONUS_NUMBER);

@@ -20,7 +20,6 @@ public class NumberGenerator {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 
             Lotto lotto = new Lotto(numbers);
-            lotto.sortNumbers();
             this.myLotto.add(lotto.getNumbers());
         }
     }
