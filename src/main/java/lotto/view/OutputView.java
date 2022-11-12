@@ -42,6 +42,9 @@ public class OutputView {
         System.out.println(WINNING_STATISTICS_OUTPUT_MESSAGE);
         for(int i = 0; i < winningStatistics.size(); i++){
             Rank rank = Rank.get(i);
+            if(rank.condition().equals("꽝")){
+                continue;
+            }
             String output = rank.condition() + " (" + rank.winningAmount() + "원) - " + winningStatistics.get(rank) + "개";
             System.out.println(output);
         }
