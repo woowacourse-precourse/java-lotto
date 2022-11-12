@@ -14,4 +14,8 @@ public class Buyer {
     public void buyLottos(Lottos lottos) {
         this.lottos = lottos;
     }
+
+    public int getLottoCount() {
+        return this.lottos.getLottoCount();
+    }
 }
