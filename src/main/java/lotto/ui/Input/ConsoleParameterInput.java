@@ -26,6 +26,7 @@ public class ConsoleParameterInput implements ParameterInput {
         }
     }
 
+    @Override
     public WinningNumber readWinningNumber() {
         List<Integer> basicNumbers = readBasicWinningNumber();
 
