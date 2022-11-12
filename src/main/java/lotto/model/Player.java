@@ -51,7 +51,8 @@ public class Player {
     }
 
     public void addLottoRanking(Ranking lottoRanking){
-
+        addPlayersTicketRank(lottoRanking);
+        addPriceOfTicket(lottoRanking);
     }
 
     private void addPlayersTicketRank(Ranking lottoRanking){
