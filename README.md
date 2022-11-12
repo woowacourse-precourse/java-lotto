@@ -74,9 +74,9 @@ BUILD SUCCESSFUL in 0s
         - [x] `private void validateBonusNumber(List<Integer> winNumbers, int bonusNumber)`
 - [ ] **CLASS 3.** `LottoDraw`
     - **Class Methods:**
-        - [ ] `public static LottoRank getLottoRank(Lotto, WinLotto)`
-        - [ ] `private static int getWinNumber(Lotto, WinLotto)`
-        - [ ] `private static boolean existBonusNumber(Lotto, WinLotto)`
+        - [ ] `public static LottoRank getLottoRank(Lotto lotto, WinLotto winLotto)`
+        - [ ] `private static int getWinNumber(Lotto lotto, WinLotto winLotto)`
+        - [ ] `private static boolean existBonusNumber(Lotto lotto, WinLotto winLotto)`
 - [x] **CLASS 4.** `enum LottoRank`
     - **Class Variables:**
         - [x] `FIRST(2000000000)`
