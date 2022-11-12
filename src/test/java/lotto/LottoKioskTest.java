@@ -13,6 +13,9 @@ import static org.assertj.core.api.Assertions.*;
 
 class LottoKioskTest {
     private final String ERROR_MESSAGE = "[ERROR]";
+    private final int LOTTO_START_NUM = 1;
+    private final int LOTTO_END_NUM = 45;
+    private final int LOTTO_NUM_COUNT = 6;
 
     @DisplayName("[오류 테스트] 입력에 숫자가 아닌 것이 존재")
     @Test
@@ -103,9 +106,7 @@ class LottoKioskTest {
     @Test
     void makeUniqueSixLottoNumbers() {
         //given
-        final int LOTTO_START_NUM = 1;
-        final int LOTTO_END_NUM = 45;
-        final int LOTTO_NUM_COUNT = 6;
+
         LottoKiosk lottoKiosk = new LottoKiosk();
         //when
         List<Integer> sixLottoNumbers = lottoKiosk.makeUniqueSixLottoNumbers();
@@ -126,5 +127,68 @@ class LottoKioskTest {
         List<Integer> sortedLottoNumbers = lottoKiosk.sortUniqueSixLottoNumbers(sixLottoNumbers);
         //then
         assertThat(sortedLottoNumbers).isSortedAccordingTo(Comparator.naturalOrder());
+    }
+
+    @DisplayName("[오류 테스트] 로또 숫자가 6개보다 적음")
+    @Test
+    void lessThanSixNumbersInLotto() {
+        //given
+        LottoKiosk lottoKiosk = new LottoKiosk();
+        List<Integer> numbers = List.of(1, 3, 4, 7, 9);
+        //when
+        //then
+        assertThatThrownBy(() -> lottoKiosk.makeLotto(numbers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
+
+    @DisplayName("[오류 테스트] 로또 숫자가 6개보다 많음")
+    @Test
+    void moreThanSixNumbersInLotto() {
+        //given
+        LottoKiosk lottoKiosk = new LottoKiosk();
+        List<Integer> numbers = List.of(1, 3, 4, 7, 9, 11, 13);
+        //when
+        //then
+        assertThatThrownBy(() -> lottoKiosk.makeLotto(numbers))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
+
+    @DisplayName("로또에 6개의 숫자 존재")
+    @Test
+    void makeLotto() {
+        //given
+        LottoKiosk lottoKiosk = new LottoKiosk();
+        //when
+        List<Integer> numbers = List.of(1, 3, 4, 7, 9, 11);
+        Lotto lotto = lottoKiosk.makeLotto(numbers);
+        //then
+        assertThat(lotto.showNumbers().size()).isEqualTo(LOTTO_NUM_COUNT);
+        assertThat(lotto.showNumbers()).allSatisfy(o -> assertThat(o).isBetween(LOTTO_START_NUM, LOTTO_END_NUM));
+        assertThat(lotto.showNumbers()).containsExactly(1, 3, 4, 7, 9, 11);
+    }
+
+    @DisplayName("투입한 금액만큼의 로또가 생성")
+    @Test
+    void makeAllLotto() {
+        //입력값 정의
+        String input = "10000";
+        ByteArrayInputStream byteInput = new ByteArrayInputStream(input.getBytes());
+        System.setIn(byteInput);
+        //given
+        LottoKiosk lottoKiosk = new LottoKiosk();
+        //when
+        lottoKiosk.insertMoney();
+        lottoKiosk.calculateLottoAmount();
+        lottoKiosk.makeAllLotto();
+        //then
+        List<Lotto> allLotto = lottoKiosk.showAllLotto();
+        assertThat(allLotto.size()).isEqualTo(lottoKiosk.showHowMany());
+        allLotto.forEach(lotto -> {
+            List<Integer> numbers = lotto.showNumbers();
+            assertThat(numbers.size()).isEqualTo(LOTTO_NUM_COUNT);
+            assertThat(numbers).allSatisfy(num -> assertThat(num).isBetween(LOTTO_START_NUM, LOTTO_END_NUM));
+        });
     }
 }
