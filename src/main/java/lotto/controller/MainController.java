@@ -1,0 +1,39 @@
+package lotto.controller;
+
+import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.Lotto;
+import lotto.domain.Money;
+import lotto.view.InputView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainController {
+    public static void run() {
+        Money money = new Money(InputView.inputMoney());
+        
+    }
+
+    private static List<Lotto> makeLotto(int count) {
+        List<List<Integer>> lottoNumList = generateNum(count);
+        List<Lotto> lottoList = new ArrayList<>();
+
+        for (List<Integer> lottoNum : lottoNumList) {
+            lottoList.add(new Lotto(lottoNum));
+        }
+        return lottoList;
+    }
+
+    private static List<List<Integer>> generateNum(int count) {
+        List<List<Integer>> lottoNumList = new ArrayList<>();
+
+        while (lottoNumList.size() < 8) {
+            List<Integer> lottoNum = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            if (!lottoNumList.contains(lottoNum)) {
+                lottoNumList.add(lottoNum);
+            }
+        }
+
+        return lottoNumList;
+    }
+}

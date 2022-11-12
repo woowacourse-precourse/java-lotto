@@ -23,4 +23,8 @@ public class Money {
             throw new IllegalArgumentException(ErrorMessages.MONEY_NOT_DIVIDED_BY_1000.get());
         }
     }
+
+    public int getLottoCount() {
+        return money / 1000;
+    }
 }
