@@ -53,8 +53,12 @@ public class Domain {
         return result;
     }
 
-    public Lotto createRandomLottoNumber() {
-        return new Lotto(pickUniqueNumbersInRange(1, 45, 6));
+    public List<Lotto> createRandomLottoNumbers(int numberOfLottos) {
+        List<Lotto> lottos = new ArrayList<>();
+        for (int i = 0; i < numberOfLottos; i++) {
+            lottos.add(new Lotto(pickUniqueNumbersInRange(1, 45, 6)));
+        }
+        return lottos;
     }
 
     public float getYield(List<Integer> rankList, int numberOfLotto) {

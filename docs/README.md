@@ -25,7 +25,7 @@
 2. 일치 개수 별로 저장하는 Enum - 멤버로 일치 개수와 당첨금액?
 3. 구입 금액의 유효성 판단하는 메서드 - 유효하지 않을 경우 IllegalArgumentException 반환
 4. 당첨 번호의 유효성을 판단하는 메서드 - validateWinningNumberInput()
-5. 6개의 수로 구성된 로또 번호 List 반환하는 메서드
+5. 구매한 로또 개수를 입력받아 Lotto 객체 List 반환하는 메서드 - createRandomLottoNumbers()
 6. 입력받은 당첨 로또 번호를 List로 변환하는 메서드
 7. 로또 번호 리스트와 당첨 번호로부터 각 등수의 개수를 계산해 반환하는 메서드 - getRankList();
 8. 수익률 계산하는 메서드
