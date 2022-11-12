@@ -32,10 +32,10 @@ public class LottoGameConsole {
         return lottos;
     }
 
-    private void createWinningLotto() {
-        // 당첨 번호 생성
-        // 보너스 번호 생성
-        return; // 당첨 번호 + 보너스 번호
+    private WinningLotto createWinningLotto() {
+        List<Integer> winningNumbers = createWinningNumbers();
+        int bonusNumber = createBonusNumber(winningNumbers);
+        return new WinningLotto(winningNumbers, bonusNumber);
     }
 
     private List<Integer> createWinningNumbers() {
