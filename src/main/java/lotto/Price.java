@@ -16,4 +16,8 @@ public class Price {
         // 1-2. 1000원 단위로 나누어 떨어지지 않으면 예외처리를 한다.
         if(Integer.parseInt(price) % 1000 != 0) throw new IllegalArgumentException();
     }
+
+    public Integer getLottoNum() {
+        return Integer.parseInt(this.price) / 1000;
+    }
 }
