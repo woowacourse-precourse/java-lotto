@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import lotto.constant.IntConstant;
 import lotto.constant.LottoResultConstant;
 import lotto.controller.LottoController;
 import lotto.domain.Lotto;
@@ -16,6 +17,7 @@ import org.junit.jupiter.api.Test;
 class LottoResultServiceTest {
 
     LottoResultService lottoResultService = new LottoResultService();
+    LottoController lottoController = new LottoController();
 //
 //    @DisplayName("WinningLotto 생성 잘 되는지 확인")
 //    @Test
@@ -49,6 +51,9 @@ class LottoResultServiceTest {
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_FIVE_CORRECT_BONUS)).isEqualTo(0);
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_SIX)).isEqualTo(0);
 
+        Assertions.assertThat(lottoController.printUserLottoAndUserYield(result))
+                .isEqualTo(IntConstant.THREE_CORRECT_MONEY.getValue());
+
     }
 
     @DisplayName("LottoResultService가 의도한대로 동작하는지 확인2")
@@ -75,6 +80,8 @@ class LottoResultServiceTest {
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_FIVE_CORRECT_BONUS)).isEqualTo(0);
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_SIX)).isEqualTo(1);
 
+        Assertions.assertThat(lottoController.printUserLottoAndUserYield(result))
+                .isEqualTo(IntConstant.THREE_CORRECT_MONEY.getValue() + IntConstant.SIX_CORRECT_MONEY.getValue());
     }
 
     @DisplayName("LottoResultService가 의도한대로 동작하는지 확인3")
@@ -101,6 +108,9 @@ class LottoResultServiceTest {
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_FIVE_CORRECT_BONUS)).isEqualTo(1);
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_SIX)).isEqualTo(0);
 
+        Assertions.assertThat(lottoController.printUserLottoAndUserYield(result))
+                .isEqualTo(
+                        IntConstant.THREE_CORRECT_MONEY.getValue() + IntConstant.FIVE_CORRECT_BONUS_CORRECT.getValue());
     }
 
     @DisplayName("LottoResultService가 의도한대로 동작하는지 확인4")
@@ -126,6 +136,9 @@ class LottoResultServiceTest {
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_FIVE)).isEqualTo(1);
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_FIVE_CORRECT_BONUS)).isEqualTo(0);
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_SIX)).isEqualTo(0);
+
+        Assertions.assertThat(lottoController.printUserLottoAndUserYield(result))
+                .isEqualTo(IntConstant.THREE_CORRECT_MONEY.getValue() + IntConstant.FIVE_CORRECT_MONEY.getValue());
 
     }
 
@@ -153,6 +166,8 @@ class LottoResultServiceTest {
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_FIVE_CORRECT_BONUS)).isEqualTo(0);
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_SIX)).isEqualTo(0);
 
+        Assertions.assertThat(lottoController.printUserLottoAndUserYield(result))
+                .isEqualTo(IntConstant.THREE_CORRECT_MONEY.getValue() + IntConstant.FOUR_CORRECT_MONEY.getValue());
     }
 
     @DisplayName("LottoResultService가 의도한대로 동작하는지 확인6")
@@ -179,5 +194,7 @@ class LottoResultServiceTest {
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_FIVE_CORRECT_BONUS)).isEqualTo(0);
         Assertions.assertThat(result.get(LottoResultConstant.CORRECT_SIX)).isEqualTo(0);
 
+        Assertions.assertThat(lottoController.printUserLottoAndUserYield(result))
+                .isEqualTo(IntConstant.THREE_CORRECT_MONEY.getValue() + IntConstant.FIVE_CORRECT_MONEY.getValue() * 2);
     }
 }
