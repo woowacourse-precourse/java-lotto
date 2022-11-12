@@ -2,11 +2,15 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
+import camp.nextstep.edu.missionutils.Console;
 
 public class User {
     private int money;
     private double earning = 0;
-    public void setMoney(int money) {
+
+    public void setMoney() {
+        int money;
+        money = Integer.parseInt(Console.readLine());
         this.money = money;
     }
 
@@ -14,8 +18,10 @@ public class User {
         return money;
     }
 
-    public List<Integer> inputWinningNumber(String inputtedWinningNumber) {
+    public List<Integer> inputWinningNumber() {
         int convertedWinningNumber;
+        String inputtedWinningNumber;
+        inputtedWinningNumber = Console.readLine();
         List<Integer> winningNumber = new ArrayList<>();
         String[] unconvertedWinningNumber = inputtedWinningNumber.split(",");
         for (String unconvertedWinningNumberContent : unconvertedWinningNumber) {
@@ -25,7 +31,9 @@ public class User {
         return winningNumber;
     }
 
-    public int inputBonusNumber(String inputtedBonusNumber) {
+    public int inputBonusNumber() {
+        String inputtedBonusNumber;
+        inputtedBonusNumber = Console.readLine();
         return Integer.parseInt(inputtedBonusNumber);
     }
 
