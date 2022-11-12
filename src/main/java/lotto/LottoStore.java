@@ -29,7 +29,10 @@ public class LottoStore {
         return lottos;
     }
 
-    public void setWinNumbers(List<Integer> numbers) {
+    public void setWinNumbers(String input) {
+        System.out.println("당첨 번호를 입력해 주세요.\n" + input + "\n");
+
+        List<Integer> numbers = c4fiberParser.getIntegerListFromString(input);
         validateWinNumbers(numbers);
         this.winNumbers = numbers;
     }
