@@ -41,25 +41,17 @@ class LottoTest {
     @Test
     void isCashInt() {
         String input = "ABBD";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
-        Cash cash = new Cash();
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            cash.Input();
-        });
+        assertThatThrownBy(() -> new Cash().Input(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("1000원 단위로 입력되지 않으면 예외처리")
     @Test
     void isCashCheck() {
         String input = "7999";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
-
-        Cash cash = new Cash();
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            cash.Input();
-        });
+        assertThatThrownBy(() -> new Cash().Input(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
+
+
 }

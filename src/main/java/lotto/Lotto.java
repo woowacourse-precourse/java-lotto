@@ -27,6 +27,7 @@ public class Lotto {
     private void lowerNumCheck(List<Integer> numbers, int i, int tmp) {
         for(int j = i+1; j<numbers.size(); j++) {
             if(tmp == numbers.get(j)) {
+                System.out.println("[ERROR] 중복된 숫자가 존재합니다");
                 throw new IllegalArgumentException();
             }
         }
