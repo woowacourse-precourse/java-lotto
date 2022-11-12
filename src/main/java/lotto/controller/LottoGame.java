@@ -1,9 +1,12 @@
 package lotto.controller;
 
 import lotto.Data.UserMoney;
+import lotto.service.InputBonusNumber;
 import lotto.service.InputLottoNumber;
 import lotto.service.InputMoney;
 import lotto.service.PickRandomLotto;
+
+import java.util.List;
 
 public class LottoGame {
     InputMoney inputMoney = new InputMoney();
@@ -27,8 +30,9 @@ public class LottoGame {
 
     public void inputLottoNumbers() {
         InputLottoNumber inputLottoNumber = new InputLottoNumber();
+        InputBonusNumber inputBonusNumber = new InputBonusNumber();
 
-        inputLottoNumber.inputSixNumbers();
-        inputLottoNumber.inputBonusNumber();
+        List<Integer> sixLottoNumbers = inputLottoNumber.inputSixNumbers();
+        inputBonusNumber.inputBonusNumber(sixLottoNumbers);
     }
 }
