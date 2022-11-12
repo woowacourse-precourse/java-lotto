@@ -1,14 +1,22 @@
 package lotto;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class Inputer {
 
     public int inputMoney(){
-        return 0;
+
+        Scanner scanner = new Scanner(System.in);
+
+        int userInputMoney = scanner.nextInt();
+
+        return userInputMoney;
     }
 
-    public List<Integer> inputLottoWinNumber (){
+    public List<Integer> createLottoWinNumber (){
+
+
         return null;
     }
 
