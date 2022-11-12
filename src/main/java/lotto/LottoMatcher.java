@@ -46,8 +46,7 @@ public class LottoMatcher {
     }
 
     private boolean checkIfBonusNumberMatch(List<Integer> lottoNumbers) {
-        // Lotto 번호들에서 보너스 번호가 있는지 확인
-        return false;
+        return lottoNumbers.contains(winningLotto.getBonusNumber());
     }
 
     private void saveResult(int numberOfMatchedLottoNumber) {
