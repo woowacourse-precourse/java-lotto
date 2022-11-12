@@ -32,10 +32,10 @@ public class MatchLotteryService {
     }
 
     private Ranking convertCountToRanking(Lotto lottoEach, int equalCount){
-        if(equalCount == THREE_MATCH) return Ranking.THREE_MATCH;
-        if(equalCount == FOUR_MATCH) return Ranking.FOUR_MATCH;
-        if(equalCount == FIVE_MATCH) return separateByBonusNumber(lottoEach);
         if(equalCount == SIX_MATCH) return Ranking.SIX_MATCH;
+        if(equalCount == FIVE_MATCH) return separateByBonusNumber(lottoEach);
+        if(equalCount == FOUR_MATCH) return Ranking.FOUR_MATCH;
+        if(equalCount == THREE_MATCH) return Ranking.THREE_MATCH;
         return Ranking.NOTHING;
     }
 
