@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class PurchaseAmountValidatorTest {
-    PurchaseAmountValidator validator = new PurchaseAmountValidator();
+    private PurchaseAmountValidator validator = new PurchaseAmountValidator();
 
     @Nested
-    @DisplayName("구매 금액은 숫자이다.")
+    @DisplayName("구입 금액은 숫자이다.")
     class IsNumberTest {
         @Test
         void 숫자일_경우() {
@@ -25,6 +25,25 @@ class PurchaseAmountValidatorTest {
         @Test
         void 문자일_경우() {
             assertThat(validator.isNumber("aaa")).isEqualTo(false);
+        }
+    }
+
+    @Nested
+    @DisplayName("구입 금액은 양수이다.")
+    class IsPositiveNumberTest {
+        @Test
+        void 양수일_경우() {
+            assertThat(validator.isPositiveNumber("123")).isEqualTo(true);
+        }
+
+        @Test
+        void 음수일_경우() {
+            assertThat(validator.isPositiveNumber("-1000")).isEqualTo(false);
+        }
+
+        @Test
+        void 값이_0일_경우() {
+            assertThat(validator.isPositiveNumber("0")).isEqualTo(false);
         }
     }
 }
