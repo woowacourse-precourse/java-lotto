@@ -18,5 +18,17 @@ public class Function {
     public static List<Integer> generateLotto(){
         return Randoms.pickUniqueNumbersInRange(Constants.lower_bound, Constants.upper_bound, Constants.counts);
     }
-    
+    public static String getMoney(){
+        Display.displayStart();
+        return Console.readLine();
+    }
+    public static List<Lotto> purchaseLotto(int price){
+        int number = price / 1000;
+        List<Lotto> trial = new ArrayList<>();
+        for (int i = 0; i < number; i++){
+            Lotto lotto = new Lotto(generateLotto());
+            trial.add(lotto);
+        }
+        return trial;
+    }
 }
