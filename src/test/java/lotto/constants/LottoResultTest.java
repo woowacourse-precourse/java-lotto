@@ -9,7 +9,7 @@ class LottoResultTest {
 
 
     @Test
-    void getPrize_CoinIsTrue() {
-        assertThat((LottoResult.getPrizeByCorrectCount(6))).isEqualTo(2_000_000_000);
+    void getPrizeByCorrectCount_3_5000() {
+        assertThat((LottoResult.getPrizeByCorrectCount(3))).isEqualTo(5_000);
     }
 }
