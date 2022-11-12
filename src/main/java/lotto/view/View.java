@@ -29,8 +29,8 @@ public class View {
                 ,Constant.firstRankPriceString,winningStats.get(Rank.first));
     }
 
-    public void printEarningRate() {
-
+    public void printEarningRate(double earningRate) {
+        System.out.printf(Constant.earningRateFormat,earningRate);
     }
 
 }
