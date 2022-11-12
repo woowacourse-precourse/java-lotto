@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Validator {
 
-    private static final String ERROR_MESSAGE_PREFIX = "[ERROR] ";
+    public static final String ERROR_MESSAGE_PREFIX = "[ERROR] ";
     
     public void validateMoney(String money) {
         validateValueIsNumber(money);
