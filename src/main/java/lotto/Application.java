@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class Application {
         System.out.println(purchaseNum + "개를 구매했습니다.");
 
         // 구매 개수에 맞게 로또를 발행하는 메서드 호출
-        // List<Lotto>
+        List<Lotto> lottos = purchaseLotto(purchaseNum);
 
         // 당첨 번호를 입력받는 메서드 호출
 
@@ -78,5 +79,18 @@ public class Application {
         if (bonus < 1 || bonus > 45) throw new IllegalArgumentException("[ERROR]Bonus input error");
 
         return bonus;
+    }
+
+    public static List<Lotto> purchaseLotto(int purchaseNum) {
+
+        List<Lotto> lottos = new ArrayList<>();
+
+        for(int i=0; i<purchaseNum; i++) {
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Lotto l = new Lotto(numbers);
+            lottos.add(l);
+        }
+
+        return lottos;
     }
 }
