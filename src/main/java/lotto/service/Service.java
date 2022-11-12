@@ -32,7 +32,9 @@ public class Service {
 
     public int getInputAmount(){
         InputMessage.inputAmount();
-        int amount = Integer.parseInt(readLine().trim());
+        String userInput = readLine().trim();
+        Validation.validateStringToInteger(userInput);
+        int amount = Integer.parseInt(userInput);
         Validation.validateMultipleNumber(amount, LOTTO_LEAST_AMOUNT);
         Validation.validateExceedNumber(amount, LOTTO_MAX_AMOUNT);
         return amount;
