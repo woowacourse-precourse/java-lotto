@@ -36,13 +36,7 @@ public class LottoInStream {
         if (isNullOrEmptyString(line)) {
             throw new IllegalArgumentException(_error_default_msg + " 빈 문자열은 입력할 수 없습니다.");
         }
-
-        String removedCommaLine = String.join("", line.split(","));
-        if (removedCommaLine.length() != _lotto_number_length) {
-            throw new IllegalArgumentException(
-                    _error_default_msg + " 당첨 번호는 " + _lotto_number_length + "개를 입력해야 합니다.");
-        }
-        return convStrToIntList(removedCommaLine);
+        return convStrArrayToIntList(line.split(","));
     }
 
     public static int readToGetLottoBonus() {
@@ -52,11 +46,7 @@ public class LottoInStream {
         if (isNullOrEmptyString(line)) {
             throw new IllegalArgumentException(_error_default_msg + " 빈 문자열은 입력할 수 없습니다.");
         }
-        if (line.length() != _lotto_bonus_length) {
-            throw new IllegalArgumentException(
-                    _error_default_msg + " 당첨 번호는 " + _lotto_bonus_length + "개를 입력해야 합니다.");
-        }
-        return (convCharToInt(line.charAt(_bonus_index)));
+        return (convStringToInt(line));
     }
 
     private static boolean isNumber(char ch) {
@@ -64,10 +54,6 @@ public class LottoInStream {
             return true;
         }
         return false;
-    }
-
-    private static int charToDigit(char ch) {
-        return ch - '0';
     }
 
     private static String readline() {
@@ -85,24 +71,20 @@ public class LottoInStream {
         return false;
     }
 
-    private static List<Integer> convStrToIntList(String line) {
+    private static List<Integer> convStrArrayToIntList(String[] splitedLine) {
         List<Integer> numbers = new ArrayList<>();
 
-        for (int i = 0; i < line.length(); ++i) {
-            char ch = line.charAt(i);
-
-            if (!isNumber(line.charAt(i))) {
-                throw new IllegalArgumentException(_error_default_msg + " 숫자가 아닌 문자는 처리할 수 없습니다.");
-            }
-            numbers.add(charToDigit(ch));
+        for (int i = 0; i < splitedLine.length; ++i) {
+            numbers.add(convStringToInt(splitedLine[i]));
         }
         return numbers;
     }
 
-    private static int convCharToInt(char ch) {
-        if (!isNumber(ch)) {
+    private static int convStringToInt(String number) {
+        try {
+            return Integer.parseInt(number);
+        } catch (NumberFormatException ex) {
             throw new IllegalArgumentException(_error_default_msg + " 숫자가 아닌 문자는 처리할 수 없습니다.");
         }
-        return (charToDigit(ch));
     }
 }
