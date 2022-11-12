@@ -27,10 +27,17 @@ public class User {
         validateBuyAmount();
     }
 
-    private void validateBuyAmountForms(String buyAmount){
-        if (!buyAmount.matches("^[0-9]*$")){
+    private void validateBuyAmountForms(String buyAmount) {
+        if (!buyAmount.matches("^[0-9]*$")) {
             System.out.println("[ERROR] 금액은 숫자로만 이루어져야 합니다.");
             throw new NoSuchElementException();
+        }
+    }
+
+    private void validateBuyAmountFirstNumber(String buyAmount) {
+        if (buyAmount.charAt(0) == '0') {
+            System.out.println("[ERROR] 금액의 첫자리가 0이면 안됩니다.");
+            throw new IllegalArgumentException();
         }
     }
 
