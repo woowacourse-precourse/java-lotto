@@ -11,15 +11,17 @@ public class Game {
     private static InputView inputView;
     private static OutputView outputView;
 
-    public Game(){
+    public Game() {
         inputView = new InputView();
         outputView = new OutputView();
     }
 
     public void start() {
         int money = inputView.inputMoney();
-        int lottoCount = money/LOTTO_UNIT;
+        int lottoCount = money / LOTTO_UNIT;
+        lottoMachine = new LottoMachine(lottoCount);
         outputView.printLottoCount(lottoCount);
+        outputView.printLottoNumbers(lottoMachine.getLottosNumberList());
     }
 
 }

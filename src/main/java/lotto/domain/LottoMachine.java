@@ -26,7 +26,6 @@ public class LottoMachine {
         List<Lotto> lottos = new ArrayList<Lotto>();
         IntStream.range(0, count)
                 .forEach((w) -> lottos.add(createRandomNumbers()));
-        System.out.println("lottos = " + lottos);
         return lottos;
     }
 
@@ -51,6 +50,16 @@ public class LottoMachine {
             return false;
         }
         return true;
+    }
+
+    public List<List<Integer>> getLottosNumberList() {
+        List<Lotto> lottos = lottoGroups.getLottos();
+        List<List<Integer>> lottosNumbers = new ArrayList<>();
+        lottos.stream()
+                .forEach((lotto) -> {
+                    lottosNumbers.add(lotto.getNumbers());
+                });
+        return lottosNumbers;
     }
 
     public List<Integer> getWinningList() {

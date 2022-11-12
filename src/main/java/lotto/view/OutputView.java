@@ -12,16 +12,13 @@ public class OutputView {
         System.out.println(count+PRINT_LOTTO_COUNT);
     }
 
-    public void printLottoNumber(String number) {
-
-    }
-
     public void printWinningHistory() {
 
     }
 
-    public void printLottoNumber(List<List<Integer>> numbers) {
-
+    public void printLottoNumbers(List<List<Integer>> numbers) {
+        numbers.stream()
+                .forEach(System.out::println);
     }
 
     public void printWinningList(List<Integer> winningList) {
