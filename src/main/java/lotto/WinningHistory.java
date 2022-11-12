@@ -1,8 +1,10 @@
 package lotto;
 
+import java.util.Arrays;
+
 public enum WinningHistory {
     FIRST_PRIZE(6, 2_000_000_000),
-    SECOND_PRIZE(5, 30000000),
+    SECOND_PRIZE(5, 30_000_000),
     THIRD_PRIZE(5, 1_500_000),
     FOURTH_PRIZE(4, 50_000),
     FIFTH_PRIZE(3, 5_000),
@@ -24,19 +26,36 @@ public enum WinningHistory {
         return prizeMoney;
     }
 
-    public WinningHistory getWinningHistoryType(int matchNumbers, boolean matchBonus) {
-        if (matchNumbers == FIRST_PRIZE.getMatchNumbers()) {
-            return FIRST_PRIZE;
-        } else if (matchNumbers == SECOND_PRIZE.getMatchNumbers() && matchBonus) {
-            return SECOND_PRIZE;
-        } else if (matchNumbers == THIRD_PRIZE.getMatchNumbers() && !matchBonus || matchNumbers == FOURTH_PRIZE.getMatchNumbers() && matchBonus) {
-            return THIRD_PRIZE;
-        } else if (matchNumbers == FOURTH_PRIZE.getMatchNumbers() && !matchBonus || matchNumbers == FIFTH_PRIZE.getMatchNumbers() && matchBonus) {
-            return FOURTH_PRIZE;
-        } else if (matchNumbers == FIFTH_PRIZE.getMatchNumbers() && !matchBonus || matchNumbers == BLANK.getMatchNumbers() && matchBonus) {
-            return FIFTH_PRIZE;
+    public static WinningHistory getWinningHistoryType(int matchNumbers, boolean matchBonus) {
+        return Arrays.stream(WinningHistory.values())
+                .filter(rankData -> rankData.isRankData(rankData, matchNumbers, matchBonus))
+                .findAny().orElse(BLANK);
+    }
+
+    private boolean isRankData(WinningHistory rankData, int matchNumbers, boolean matchBonus) {
+        if (isSecondPrize(rankData) && isSameSecondPrizeData(matchNumbers, matchBonus)) {
+            return matchNumberWithoutBonus(rankData.matchNumbers, matchNumbers);
+        } else if (!rankData.isSecondPrize(rankData) && !rankData.isSameSecondPrizeData(matchNumbers, matchBonus)) {
+            return matchBonus && matchNumberWithBonus(this.matchNumbers, matchNumbers)
+                    || matchNumberWithoutBonus(this.matchNumbers, matchNumbers);
         }
 
-        return BLANK;
+        return false;
+    }
+
+    private boolean isSecondPrize(WinningHistory rankData) {
+        return rankData == SECOND_PRIZE;
+    }
+
+    private boolean isSameSecondPrizeData(int matchNumbers, boolean matchBonus) {
+        return matchBonus && (matchNumbers == SECOND_PRIZE.getMatchNumbers());
+    }
+
+    private boolean matchNumberWithBonus(int winningMatchNumbers, int matchNumbers) {
+        return winningMatchNumbers == matchNumbers + 1;
+    }
+
+    private boolean matchNumberWithoutBonus(int winningMatchNumbers, int matchNumbers) {
+        return winningMatchNumbers == matchNumbers;
     }
 }
