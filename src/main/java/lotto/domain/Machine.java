@@ -10,6 +10,8 @@ public class Machine {
     public void start() {
         int quantity = Convertor.getQuantity(InputView.amount());
         List<Lotto> lottos = LottoGenerator.getLottos(quantity);
+        OutputView.showLottoNumber(lottos);
+
         List<Integer> winningNumbers = Convertor.getNumbers(InputView.winningNumbers());
         int bonusNumber = Convertor.getNumber(InputView.bonusNumber());
 

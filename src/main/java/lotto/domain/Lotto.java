@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -36,7 +37,9 @@ public class Lotto {
     }
 
     public String toString() {
-        Collections.sort(numbers);
+        List<Integer> cloneNumber = new ArrayList<>();
+        cloneNumber.addAll(numbers);
+        Collections.sort(cloneNumber);
         return numbers.toString();
     }
 }

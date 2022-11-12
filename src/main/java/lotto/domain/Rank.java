@@ -36,7 +36,12 @@ public class Rank {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(match).append("개 일치 (").append(NumberFormat.getInstance().format(reward))
+        sb.append(match).append("개 일치");
+        if(bonus) {
+            sb.append(", 보너스 볼 일치");
+        }
+
+        sb.append(" (").append(NumberFormat.getInstance().format(reward))
                 .append("원) - ").append(count).append("개");
         return sb.toString();
     }

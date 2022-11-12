@@ -19,7 +19,7 @@ public class OutputView {
     public static void result(List<Rank> ranks, double yield) {
 
         for (Rank rank : ranks) {
-            System.out.println(rank.toString());
+            System.out.print(rank.toString());
         }
 
         StringBuilder sb = new StringBuilder();
