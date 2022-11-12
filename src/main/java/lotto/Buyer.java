@@ -33,8 +33,7 @@ public class Buyer {
 
     private void validate(int money) {
         if (money % LOTTO_PRICE != 0) {
-            System.out.println(WRONG_MONEY_UNIT);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(WRONG_MONEY_UNIT);
         }
     }
 
