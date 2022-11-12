@@ -1,7 +1,7 @@
 package lotto.model;
 
 import java.util.List;
-import lotto.util.InputVerifier;
+import lotto.util.Validator;
 import lotto.view.View;
 
 /*
@@ -24,21 +24,21 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (!InputVerifier.isValidSize(numbers)) {
+        if (!Validator.isValidSize(numbers)) {
             View.printNotLottoSize();
             throw new IllegalArgumentException();
         }
     }
 
     private void validateNumberRange(List<Integer> numbers) {
-        if (!InputVerifier.isValidNumbers(numbers)) {
+        if (!Validator.isValidNumbers(numbers)) {
             View.printNotLottoNumber();
             throw new IllegalArgumentException();
         }
     }
 
     private void validateUnique(List<Integer> numbers) {
-        if (!InputVerifier.isUniqueNumber(numbers)) {
+        if (!Validator.isUniqueNumber(numbers)) {
             View.printNotUniqueNumber();
             throw new IllegalArgumentException();
         }

@@ -1,6 +1,6 @@
 package lotto.model;
 
-import lotto.util.InputVerifier;
+import lotto.util.Validator;
 import lotto.view.View;
 
 /*
@@ -21,7 +21,7 @@ public class Money {
     }
 
     private void validatePrice(int money) {
-        if (!InputVerifier.isLottoPrice(money)) {
+        if (!Validator.isLottoPrice(money)) {
             View.printNotLottoPrice();
             throw new IllegalArgumentException();
         }

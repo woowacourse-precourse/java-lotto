@@ -1,6 +1,6 @@
 package lotto.model;
 
-import lotto.util.InputVerifier;
+import lotto.util.Validator;
 import lotto.view.View;
 
 /*
@@ -21,7 +21,7 @@ public class BonusNumber {
     }
 
     private void validateNumberRange(int number) {
-        if (!InputVerifier.isValidNumber(number)) {
+        if (!Validator.isValidNumber(number)) {
             View.printNotLottoNumber();
             throw new IllegalArgumentException();
         }

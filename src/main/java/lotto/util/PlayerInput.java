@@ -14,7 +14,7 @@ public class PlayerInput {
     public static int getInteger() {
         String input = Console.readLine();
 
-        if (!InputVerifier.isInteger(input)) {
+        if (!Validator.isInteger(input)) {
             View.printNotInteger();
             throw new IllegalArgumentException();
         }
