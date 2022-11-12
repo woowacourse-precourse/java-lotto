@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -51,6 +52,10 @@ public class Application {
             List<List<Integer>> userLottoNumbers = app.makeUserLottoNumbers(amount);
             Lotto lotto = new Lotto(app.winningNumber());
             int bonus = lotto.bonus();
+            Map<Integer,Integer> result = lotto.rankCount(userLottoNumbers,bonus);
+            int sumMoney = lotto.viewResult(result);
+            System.out.printf("총 수익률은 %s%%입니다.",lotto.yield(amount,sumMoney));
+
         } catch (IllegalArgumentException e) {
             System.out.printf("[ERROR] %s\n", e.getMessage());
         }
