@@ -21,7 +21,7 @@ public class OutputView {
     public static final String WINNER_PRICE_MESSAGE = " (%s원) ";
     public static final String TOTAL_COUNT_MESSAGE = "- %d개\n";
     public static final String MONEY_DECIMAL_FORMAT = "###,###,###,###";
-    public static final String EARNING_RATE_MESSAGE = "총 수익률은 %f%%입니다.";
+    public static final String EARNING_RATE_MESSAGE = "총 수익률은 %.1f%%입니다.";
 
     public static void printInputPurchasePrice() {
         System.out.println(INPUT_PURCHASE_PRICE_MESSAGE);
@@ -76,7 +76,7 @@ public class OutputView {
         return statistics.toString();
     }
 
-    public static String toMoneyFormat(int money) {
+    private static String toMoneyFormat(int money) {
         DecimalFormat dc = new DecimalFormat(MONEY_DECIMAL_FORMAT);
         return dc.format(money);
     }
