@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import lotto.machine.Ranks;
+import lotto.util.Calculator;
 
 public class Statistics {
     private final Map<Integer, Integer> statistics;
@@ -12,7 +13,6 @@ public class Statistics {
     public Statistics(Profit profit) {
         this.profit = profit.getProfit();
         statistics = createStatistics();
-        updateStatistics(this.profit);
     }
 
     public Map<Integer, Integer> getStatistics() {
@@ -26,15 +26,7 @@ public class Statistics {
         for (Ranks ranks : Ranks.values()) {
             initialStatistics.put(ranks.getPrizeMoney(), initialWinCount);
         }
+        Calculator.updateProfit(initialStatistics, profit);
         return initialStatistics;
-    }
-
-    private void updateStatistics(List<Integer> profit) {
-        for (Integer prizeMoney : profit) {
-            if (statistics.containsKey(prizeMoney)) {
-                int winCount = statistics.get(prizeMoney);
-                statistics.replace(prizeMoney, winCount + 1);
-            }
-        }
     }
 }
