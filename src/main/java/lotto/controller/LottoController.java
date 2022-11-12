@@ -23,6 +23,7 @@ public class LottoController {
 
 
 
+
     public Integer getPrice() {
         return this.price;
     }

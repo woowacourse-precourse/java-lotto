@@ -1,6 +1,9 @@
 package lotto.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+import lotto.model.Lotto;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -19,5 +22,14 @@ class ExceptionHandlerTest {
         assertThatThrownBy(() -> ExceptionHandler.validateInputPriceOfString("1234"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+
+    @Test
+    void 입력_당첨_번호_테스트() {
+        assertThatThrownBy(() -> ExceptionHandler.validateWinningNum("1,2,dd,6,3,4"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 
 }
