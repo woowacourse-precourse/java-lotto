@@ -9,7 +9,7 @@ public class Application {
         LotteryMachine lotteryMachine = LotteryMachine.getInstance();
         Award award = Award.getInstance();
 
-        List<Lotto> myLotteries = shop.purchaseLottery();
+        List<Lotto> myLotteries = shop.saleLottery();
         lotteryMachine.setWinning();
         award.compileStatistics(myLotteries);
     }

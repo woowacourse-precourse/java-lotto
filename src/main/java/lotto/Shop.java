@@ -14,23 +14,23 @@ public class Shop {
     private Shop() {}
 
     public static Shop getInstance() {
-        if(shop == null) {
+        if (shop == null) {
             shop = new Shop();
         }
 
         return shop;
     }
 
-    public List<Lotto> purchaseLottery() {
-        List<Lotto> lotteryTickets = publishLotteryTicket(getMoney());
+    public List<Lotto> saleLottery() {
+        List<Lotto> lotteryTickets = publishLotteryTicket(chargeMoney());
 
-        printLotteryTickets(lotteryTickets);
+        showLotteryTickets(lotteryTickets);
 
         return lotteryTickets;
     }
 
-    private int getMoney() {
-        int money;
+    private int chargeMoney() {
+        int money = 0;
 
         System.out.println("구입금액을 입력해 주세요.");
 
@@ -54,19 +54,25 @@ public class Shop {
     private List<Lotto> publishLotteryTicket(int money) {
         List<Lotto> lotteryTickets = new ArrayList<>();
 
-        while(money > 0) {
-            lotteryTickets.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
+        while (money > 0) {
+            lotteryTickets.add(
+                    new Lotto(Randoms.pickUniqueNumbersInRange(
+                            LottoConstant.LOTTO_START.value,
+                            LottoConstant.LOTTO_END.value,
+                            LottoConstant.LOTTO_NUMBER_COUNT.value
+                    )));
+
             money -= LOTTO_PRICE;
         }
 
         return lotteryTickets;
     }
 
-    private void printLotteryTickets(List<Lotto> lotteryTickets) {
+    private void showLotteryTickets(List<Lotto> lotteryTickets) {
         System.out.println();
         System.out.println(lotteryTickets.size() + "개를 구매했습니다.");
 
-        for(Lotto lotto : lotteryTickets) {
+        for (Lotto lotto : lotteryTickets) {
             System.out.println(lotto.getNumbers());
         }
     }
