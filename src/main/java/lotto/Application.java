@@ -8,8 +8,9 @@ import java.util.List;
 
 public class Application {
     public static Winning getWinning(Lotto userLotto, WinningLotto winningLotto) {
-        List<Integer> userNumbers = userLotto.getNumbers();
-        List<Integer> winningNumbers = winningLotto.getNumbers();
+        // 메소드 호출로 필드의 객체를 반환 -> 필드 값이 변경되어서는 안됨
+        final List<Integer> userNumbers = userLotto.getNumbers();
+        final List<Integer> winningNumbers = winningLotto.getNumbers();
         int bonusNumber = winningLotto.getBonusNumber();
 
         int hitCount = ((int) userNumbers.stream()

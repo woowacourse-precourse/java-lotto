@@ -20,7 +20,7 @@ public class Lotto {
 
     public static Lotto generate() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Lotto lotto = new Lotto(numbers);
+        final Lotto lotto = new Lotto(numbers);
 
         return lotto;
     }

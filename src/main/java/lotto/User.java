@@ -37,7 +37,7 @@ public class User {
         this.lottos = new ArrayList<Lotto>();
 
         for (int i = 0; i < this.lottoNum; i++) {
-            Lotto lotto = Lotto.generate();
+            final Lotto lotto = Lotto.generate();
 
             lottos.add(lotto);
         }
@@ -61,7 +61,6 @@ public class User {
                 .mapToInt(Winning::getPrizeMoney)
                 .sum();
 
-        System.out.println(earn);
         double yield = (double) earn / money * 100;
 
         return Math.round(yield * 10) / 10.0;
