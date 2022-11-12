@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.text.DecimalFormat;
+import java.util.regex.Pattern;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -43,5 +44,19 @@ public class LearningTest {
     @Test
     void percentFormat() {
         System.out.printf(OutputView.EARNING_RATE_MESSAGE, 62.5);
+    }
+
+    @DisplayName("정규 표현식 숫자 이외의 입력 값 결과 false 테스트")
+    @Test
+    void validateInputNumberFalse() {
+        String str = "1000j";
+        assertThat(Pattern.matches("^[0-9]*$", str)).isFalse();
+    }
+
+    @DisplayName("정규 표현식 숫자 이외의 입력 값 결과 true 테스트")
+    @Test
+    void validateInputNumberTrue() {
+        String str = "1000";
+        assertThat(Pattern.matches("^[0-9]*$", str)).isTrue();
     }
 }
