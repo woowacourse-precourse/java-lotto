@@ -10,7 +10,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validateNumbersSize();
         validateNumbersAreInRange();
-        validateNumbersAreDuplicate(numbers);
+        validateNumbersAreDuplicate();
         this.numbers = numbers;
     }
 
@@ -28,7 +28,7 @@ public class Lotto {
         return true;
     }
 
-    public boolean validateNumbersAreDuplicate(List<Integer> numbers) {
+    public boolean validateNumbersAreDuplicate() {
         for (int i = 0; i < numbers.size() - 1; i++) {
             if (!checkNumbersAreDuplicate(numbers.get(i), i)) {
                 return false;
