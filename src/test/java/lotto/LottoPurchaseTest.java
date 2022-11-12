@@ -9,8 +9,8 @@ class LottoPurchaseTest {
 
     @Test
     void 구입금액에따른로또개수테스트(){
-        LottoPurchase purchase = new LottoPurchase();
+        PurchaseMachine purchase = new PurchaseMachine();
         purchase.countTicket(8000);
-        assertThat(purchase.numberOfTicket).isEqualTo(8);
+        assertThat(purchase.numberOfTickets).isEqualTo(8);
     }
 }

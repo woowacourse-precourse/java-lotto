@@ -2,11 +2,12 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static lotto.Constant.*;
+import static lotto.Constant.ERROR_INPUT_PAY_AMOUNT;
+import static lotto.Constant.MESSAGE_INPUT_PAY_AMOUNT;
 
-public class LottoPurchase {
+public class LottoSeller {
     int payAmount;
-    int numberOfTicket;
+    int numberOfTickets;
 
     public void getPayAmount() {
         System.out.println(MESSAGE_INPUT_PAY_AMOUNT);
@@ -15,10 +16,12 @@ public class LottoPurchase {
 
     public void countTicket(int payAmount) {
         if (payAmount % 1000 == 0) {
-            this.numberOfTicket = payAmount / 1000;
+            this.numberOfTickets = payAmount / 1000;
+            System.out.println(this.numberOfTickets + "개를 구매했습니다.");
         }
         if (payAmount % 1000 != 0) {
             throw new IllegalArgumentException(ERROR_INPUT_PAY_AMOUNT);
         }
     }
+
 }

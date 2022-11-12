@@ -7,18 +7,13 @@ import java.util.Arrays;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        /*LottoPurchase purchase = new LottoPurchase();
-        purchase.getPayAmount();*/
+        Game game = new Game();
 
-        /*NumberGenerator ng = new NumberGenerator(1);
+        game.gameStart();
 
-        Lotto lotto = new Lotto(ng.generateNumbers());
-        System.out.println(lotto.getLotto());*/
+        game.drawLotto();
 
-        String s = Console.readLine();
-        String[] st = s.split(",");
-        System.out.println(s);
-        System.out.println(Arrays.toString(st));
+
 
 
     }
