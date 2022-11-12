@@ -16,13 +16,16 @@ public class Validator {
         validateValueCanDivideOneThousand(money);
     }
 
-    //TODO FOR 루프에 대한 고민
     public void validateWinningNumbers(String input) {
         validateValueUseComma(input);
+
         List<String> inputValues = Arrays.asList(input.split(","));
         validateNumberOfValue(inputValues);
-        inputValues.forEach(this::validateValueIsNumber);
-        inputValues.forEach(this::validateValueRange);
+
+        for (String inputValue : inputValues) {
+            validateValueIsNumber(inputValue);
+            validateValueRange(inputValue);
+        }
     }
 
     public void validateBonusNumber(String input,
