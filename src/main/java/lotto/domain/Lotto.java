@@ -2,21 +2,31 @@ package lotto.domain;
 
 import lotto.utils.ErrorMessage;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
         this.numbers = numbers;
+        validateNumberSize(numbers);
+        validateIsDistinct(numbers);
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validateNumberSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_SIX);
         }
     }
 
-    // TODO: 추가 기능 구현
+    private void validateIsDistinct(List<Integer> numbers) {
+        long distinctCount = numbers.stream().distinct().count();
+
+        if (numbers.size() != distinctCount) {
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_DISTINCT);
+        }
+    }
+
 }
