@@ -16,6 +16,10 @@ public class LottoUI {
         System.out.printf("%d개를 구매했습니다.", num);
     }
 
+    public static void printLotto(final Lotto lotto) {
+        System.out.println(lotto.getNumbers().toString());
+    }
+
     public static boolean isNumeric(String str) {
         try {
             Integer.parseInt(str);
