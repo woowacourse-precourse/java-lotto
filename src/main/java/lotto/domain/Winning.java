@@ -3,10 +3,9 @@ package lotto.domain;
 import lotto.Ranking;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class Winning {
-    private HashMap<Ranking, Integer> score;
+    private final HashMap<Ranking, Integer> score = new HashMap<>();
 
     public Winning(){
         initializeScore();
@@ -22,7 +21,7 @@ public class Winning {
     }
 
     private void initializeScore(){
-        score = new HashMap<>();
+        score.put(Ranking.NOTHING, 0);
         score.put(Ranking.THREE_MATCH, 0);
         score.put(Ranking.FOUR_MATCH, 0);
         score.put(Ranking.FIVE_MATCH, 0);
