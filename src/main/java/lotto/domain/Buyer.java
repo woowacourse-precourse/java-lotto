@@ -2,13 +2,16 @@ package lotto.domain;
 
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
 
 public class Buyer {
 
-    Long money;
+    private Long money;
+    private List<Lotto> lottoNumbers;
+
 
     public void buyLotto() {
-        LottoPublisher.publishLotto(this);
+        this.lottoNumbers = LottoPublisher.publishLotto(this);
     }
 
     public void readyForBuyLotto() {

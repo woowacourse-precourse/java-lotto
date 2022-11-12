@@ -1,7 +1,7 @@
 # Solution - bunsung92
 - [x] 로또를 구매한다. - Buyer#buyLotto()
-- [ ] 로또를 발행한다. - LottoPublisher#publishLotto()
-  - [ ] 적합한 금액인지 검증한다. - LottoPublisher#validateCorrectAmount() 
+- [x] 로또를 발행한다. - LottoPublisher#publishLotto()
+  - [x] 적합한 금액인지 검증한다. - LottoPublisher#validateCorrectAmount() 
 - [ ] 로또 번호를 검증한다. - Lotto#valid()
   - [ ] 숫자 범위를 검증한다. - Lotto#validateRangeNumbers()
   - [ ] 로또 번호의 중복을 검증한다. - Lotto#validateOverlapNumbers()
