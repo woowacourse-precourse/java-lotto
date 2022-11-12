@@ -5,8 +5,8 @@ import java.util.StringJoiner;
 
 class OutputFormatter {
 
-    static String formatThousandsSeparator(long money) {
-        return String.format("%,d", money);
+    static String formatThousandsSeparator(long number) {
+        return String.format("%,d", number);
     }
 
     static String formatPercent(float number) {
