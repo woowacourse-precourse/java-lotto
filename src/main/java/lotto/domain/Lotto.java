@@ -1,7 +1,7 @@
 package lotto.domain;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.domain.errorenum.Error;
 import lotto.domain.lottoenum.LottoCondition;
 
@@ -10,11 +10,16 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
     public List<Integer> getSortedNumbers() {
+        return numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+    public List<Integer> getNumbers() {
         return numbers;
     }
 

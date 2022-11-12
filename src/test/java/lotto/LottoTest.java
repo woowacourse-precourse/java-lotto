@@ -63,14 +63,28 @@ class LottoTest {
         );
     }
 
-    @DisplayName("로또 번호가 생성되면 오름차순으로 정렬된다")
+    @DisplayName("로또 번호를 오름차순으로 정렬하여 가져온다")
     @Test
-    void checkLottoGenerationSorted() {
-        List<Integer> origin = new ArrayList<>(List.of(6, 45, 44, 4, 15, 10));
+    void checkLottoSortedList() {
+        List<Integer> origin = List.of(6, 45, 44, 4, 15, 10);
         List<Integer> sortedResult = List.of(4, 6, 10, 15, 44, 45);
 
         List<Integer> sortedNumbers = new Lotto(origin).getSortedNumbers();
 
         assertThat(sortedNumbers).isEqualTo(sortedResult);
+    }
+
+    @DisplayName("로또 객체 내부의 번호 자체의 정렬은 변하지 않아야 한다")
+    @Test
+    void checkLottoNumbersUnchanged() {
+        //given
+        List<Integer> origin = List.of(45, 40, 44, 1, 29, 16);
+        Lotto lotto = new Lotto(origin);
+
+        //when
+        List<Integer> sorted = lotto.getSortedNumbers();
+
+        //then
+        assertThat(lotto.getNumbers()).isEqualTo(origin);
     }
 }

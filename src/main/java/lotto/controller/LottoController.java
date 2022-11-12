@@ -2,6 +2,7 @@ package lotto.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
 import lotto.util.AutoLottoGenerator;
@@ -36,11 +37,9 @@ public class LottoController {
     }
 
     private List<List<Integer>> transferLottoToNumbers(List<Lotto> lottos) {
-        List<List<Integer>> lottoNumbers = new ArrayList<>();
-        for (Lotto lotto : lottos) {
-            lottoNumbers.add(lotto.getSortedNumbers());
-        }
-        return lottoNumbers;
+        return lottos.stream()
+                .map(Lotto::getSortedNumbers)
+                .collect(Collectors.toList());
     }
 
 }
