@@ -15,8 +15,7 @@ public class WinningNumber {
 	}
 
 	public void validWinningNumber() {
-		if (isWrongSize(winningNumber) || isDuplicateNumber(winningNumber)
-			|| isWrongRangeWinningNumber(winningNumber)) {
+		if (isWrongSize(winningNumber) || isDuplicateNumber(winningNumber) || isWrongRangeWinningNumber(winningNumber)) {
 			throw new IllegalArgumentException(VALID_WIN_NUMBER_ERROR_MESSAGE);
 		}
 	}
@@ -26,7 +25,7 @@ public class WinningNumber {
 	}
 
 	private boolean isWrongRangeWinningNumber(List<Integer> winNumbers) {
-		return winNumbers.stream().noneMatch(num -> MIN_VALUE <= num && num <= MAX_VALUE);
+		return !winNumbers.stream().allMatch(num -> MIN_VALUE <= num && num <= MAX_VALUE);
 	}
 
 	private boolean isWrongSize(List<Integer> winNumbers) {
