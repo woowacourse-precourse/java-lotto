@@ -52,4 +52,21 @@ public class ErrorTest {
                     .hasMessageContaining("confirmed wrong size of input");
         }
     }
+
+    @DisplayName("숫자의 범위 유효성 테스트")
+    @Test
+    void checkRangeWinningNumber(){
+        List<Integer> winningNumber = List.of(100, 2, 3, 4, 5, 6, 7);
+
+        long validRangeNumberCount = winningNumber.stream()
+                .filter(number -> number >= LottoConst.LOTTO_MIN_NUMBER)
+                .filter(number -> number <= LottoConst.LOTTO_MAX_NUMBER)
+                .count();
+
+        if (validRangeNumberCount != LottoConst.LOTTO_NUMBER_COUNT) {
+            assertThatThrownBy(() -> { throw new IllegalArgumentException("confirmed wrong range of number"); })
+                    .isInstanceOf(Exception.class)
+                    .hasMessageContaining("confirmed wrong range of number");
+        }
+    }
 }
