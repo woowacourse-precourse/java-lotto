@@ -8,15 +8,15 @@ import java.util.List;
 
 public class Bonus {
 
-    private static Lotto bonusLotto;
+    private static Lotto bonusLotto; //lotto없어도 됨.
 
-    public static void inputBonus(Input input, Output output, Lotto answer) {
+    public static Lotto inputBonus(Input input, Output output, Lotto answer) {
         String bonusInput = input.getInput(Sentence.INPUTBONUS.getValue(), output);
         bonusLotto = inputValidity(bonusInput, answer);
+        return bonusLotto;
     }
 
     private static Lotto inputValidity(String input, Lotto answer) {
-        //input이 숫자가 맞는지, 로또 정답이랑 맞는지 비교한다.
         checkBonusNum(input);
         return (checkBonusNotInWinning(checkBonusInRange(input), answer));
     }

@@ -3,6 +3,7 @@ package lotto;
 import io.Output;
 import java.util.List;
 import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -18,9 +19,9 @@ public class Lotto {
         }
     }
 
-    public void indexedForEach(BiConsumer<Integer, Integer> consumer) {
-        for (int i = 0; i < numbers.size(); i++) {
-            consumer.accept(numbers.get(i), i);
+    public void indexedForEach(Consumer<Integer> consumer) {
+        for (Integer number : numbers) {
+            consumer.accept(number);
         }
     }
 

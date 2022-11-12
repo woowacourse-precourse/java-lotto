@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class SixDigitGenerator {
@@ -16,7 +17,9 @@ public class SixDigitGenerator {
         return lottoSet;
     }
     public static List<Integer> selectLottoDigits() {
-        return Randoms.pickUniqueNumbersInRange(1,45,6);
+        List<Integer> generated = Randoms.pickUniqueNumbersInRange(1,45,6);
+        Collections.sort(generated);
+        return generated;
         //it choose 6 numbers from 1~45 range
     }
 }

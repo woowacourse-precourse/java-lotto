@@ -2,6 +2,8 @@ package lotto;
 
 import io.Input;
 import io.Output;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
     private static Input input;
@@ -21,9 +23,18 @@ public class Game {
         output.printOutput("\n");
 
         Lotto answer = new Lotto(Answer.InputAnswer(input, output));
-        Bonus.inputBonus(input, output, answer);
+        Lotto bonus = Bonus.inputBonus(input, output, answer);
 
+
+        //TotalResultMaker totalResultMaker = new TotalResultMaker(answer, output);
         //당첨 통계
+        List<Integer> answerCompareResult =  lottoBox.getAnswerCompareResult(answer);
+        List<Integer> bonusCompareResult = lottoBox.getBonusCompareResult(bonus);
+
+        //TotalResultMaker.
+
+        System.out.println("!!!   :   " + answerCompareResult);
+        System.out.println("!!!   :   " + bonusCompareResult);
 
 
 

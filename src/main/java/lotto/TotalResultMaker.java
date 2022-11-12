@@ -1,7 +1,17 @@
 package lotto;
 
+import io.Output;
+
 public class TotalResultMaker {
 
+
+    private final Answer answer;
+    private final Output output;
+
+    TotalResultMaker(Answer answer, Output output) {
+        this.answer = answer;
+        this.output = output;
+    }
     public void printLottoResult() {
         //통계를 보여준다. -> 이거 쉽지 않을 수도
     }
