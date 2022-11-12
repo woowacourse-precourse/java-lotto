@@ -1,13 +1,18 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.domain.Money;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -50,6 +55,35 @@ class ApplicationTest extends NsTest {
     void 예외_테스트() {
         assertSimpleTest(() -> {
             runException("1000j");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @Test
+    @DisplayName("구입금액 0 입력시 IllegalArgumentException테스트")
+    void 로또구입금액_0으로인해_예외발생_테스트() {
+        assertSimpleTest(() -> {
+            new Money("0");
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @ParameterizedTest
+    @DisplayName("구입 금액이 1000원으로 나누어 떨어지지 않기 때문에 IllegalArgumentException테스트")
+    @ValueSource(strings = {"1005", "20001", "500", "2", "200"})
+    void 로또구입금액으로인해_예외발생_테스트(String input) {
+        assertSimpleTest(() -> {
+            new Money(input);
+            assertThat(output()).contains(ERROR_MESSAGE);
+        });
+    }
+
+    @ParameterizedTest
+    @DisplayName("구입 금액 입력값이 숫자가 아니기 때문에 IllegalArgumentException테스트")
+    @ValueSource(strings = {"10000a", "!avb10", "zxcffs", "5000!", "a", "1000."})
+    void 로또구입금액_숫자가아니기때문에_예외발생_테스트(String input) {
+        assertSimpleTest(() -> {
+            new Money(input);
             assertThat(output()).contains(ERROR_MESSAGE);
         });
     }

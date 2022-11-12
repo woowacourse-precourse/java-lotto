@@ -1,14 +1,10 @@
 package lotto;
 
-import lotto.domain.Money;
 import lotto.domain.NumberGenerator;
 import lotto.service.LottoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -36,41 +32,5 @@ public class LottoServiceTest {
     void 랜덤으로_중복되지않는_숫자리스트_생성_테스트() {
         Set<Integer> set = new HashSet<>(generator.createDuplicateNumbers());
         assertThat(set.size()).isEqualTo(6);
-    }
-
-    @Test
-    @DisplayName("구입금액 0 입력시 IllegalArgumentException테스트")
-    void 로또구입금액_0으로인해_예외발생_테스트() {
-        assertThatIllegalArgumentException()
-                .as("[ERROR] 실패하는 입력값이 존재합니다.")
-                .isThrownBy(() -> new Money("0"));
-    }
-
-
-    @ParameterizedTest
-    @DisplayName("구입 금액이 1000원으로 나누어 떨어지지 않기 때문에 IllegalArgumentException테스트")
-    @ValueSource(strings = {"1005", "20001", "500", "2", "200"})
-    void 로또구입금액으로인해_예외발생_테스트(String input) {
-        assertThatIllegalArgumentException()
-                .as("[ERROR] 실패하는 입력값이 존재합니다.")
-                .isThrownBy(() -> new Money(input));
-    }
-
-    @ParameterizedTest
-    @DisplayName("구입 금액 입력값이 숫자가 아니기 때문에 IllegalArgumentException테스트")
-    @ValueSource(strings = {"10000a", "!avb10", "zxcffs", "5000!", "a", "1000."})
-    void 로또구입금액_숫자가아니기때문에_예외발생_테스트(String input) {
-        assertThatIllegalArgumentException()
-                .as("[ERROR] 실패하는 입력값이 존재합니다.")
-                .isThrownBy(() -> new Money(input));
-    }
-
-    @ParameterizedTest
-    @DisplayName("구입 금액에 따라 로또 개수는 금액의 % 1000 과 같아야 한다.")
-    @CsvSource(value = {"5000:5", "1000:1", "10000:10", "20000:20"}, delimiter = ':')
-    void 로또구입금액_5000원일때_로또개수5개_테스트(int input, int expected) {
-        assertThat(lottoService.publishLotto(Math.floorDiv(input, 1000)).size())
-                .as("잘못된 예상 개수입니다.")
-                .isEqualTo(expected);
     }
 }
