@@ -5,14 +5,6 @@ import lotto.domain.Buyer;
 import lotto.output.Output;
 
 public class BuyerGenerate {
-    private final int buyPrice;
-
-    public BuyerGenerate() {
-        Output.askBuyPrice();
-        String input = Console.readLine();
-        digitValidate(input);
-        buyPrice = Integer.parseInt(input);
-    }
 
     private void digitValidate(String input) {
         char[] inputArray = input.toCharArray();
@@ -22,7 +14,12 @@ public class BuyerGenerate {
             }
         }
     }
-    public Buyer generate(){
+
+    public Buyer generate() {
+        Output.askBuyPrice();
+        String input = Console.readLine();
+        digitValidate(input);
+        int buyPrice = Integer.parseInt(input);
         return new Buyer(buyPrice);
     }
 }
