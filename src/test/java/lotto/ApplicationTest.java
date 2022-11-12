@@ -57,6 +57,17 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    public void checkInputConditionTest() throws Exception{
+        //given
+        String input = "1000j";
+        //when
+
+        //then
+        assertThatThrownBy(() -> Application.checkInputCondition(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("사용자가 입력한 금액이 1000단위가 아니면 예외가 발생한다.")
     @Test
     public void convertBuyingPriceIntoLotteriesTest() throws Exception{
