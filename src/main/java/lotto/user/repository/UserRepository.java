@@ -27,6 +27,7 @@ public class UserRepository {
         user.setpurchaseAmount(ticketAmount * UNIT_MONEY);
     }
 
+<<<<<<< refs/remotes/origin/chosunghyun18
     public static int inputMoney() {
         String userInputs = Console.readLine();
         if (!checkMoneyOnlyNUmber(userInputs)) {
@@ -34,11 +35,24 @@ public class UserRepository {
         }
         if (!checkMoneyMinAmount(userInputs)) {
             return INIT_NUMBER;
+=======
+    public static int inputNumbers() {
+        String userInputs = Console.readLine();
+        if (!checkMoney(userInputs)) {
+            return 0;
+        }
+        if (!checkMoney2(userInputs)) {
+            return 0;
+>>>>>>> feat(user): add the feature the user input
         }
         return Integer.parseInt(userInputs);
     }
 
+<<<<<<< refs/remotes/origin/chosunghyun18
     private static boolean checkMoneyOnlyNUmber(String userInput) {
+=======
+    private static boolean checkMoney(String userInput) {
+>>>>>>> feat(user): add the feature the user input
         try {
             ValidateUser.validateOnlyNumber(userInput);
             return true;
@@ -47,8 +61,12 @@ public class UserRepository {
             return false;
         }
     }
+<<<<<<< refs/remotes/origin/chosunghyun18
 
     private static boolean checkMoneyMinAmount(String userInput) {
+=======
+    private static boolean checkMoney2(String userInput) {
+>>>>>>> feat(user): add the feature the user input
         try {
             ValidateUser.validateMinAmount(Integer.parseInt(userInput));
             return true;
