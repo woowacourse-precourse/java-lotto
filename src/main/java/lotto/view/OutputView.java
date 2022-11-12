@@ -6,10 +6,10 @@ import java.util.List;
 
 public class OutputView {
 
-    private final static String LOTTO_SIZE_MESSAGE = "개를 구매했습니다.";
-    private final static String LOTTO_PREFIX = "[";
-    private final static String LOTTO_SUFFIX = "]";
-    private final static String SEPARATOR = ", ";
+    private static final String LOTTO_SIZE_MESSAGE = "개를 구매했습니다.";
+    private static final String LOTTO_PREFIX = "[";
+    private static final String LOTTO_SUFFIX = "]";
+    private static final String SEPARATOR = ", ";
 
     public static void printLottos(List<Lotto> lottos) {
         printLottoSize(lottos.size());
