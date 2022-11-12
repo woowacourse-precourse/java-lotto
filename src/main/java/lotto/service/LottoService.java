@@ -21,8 +21,13 @@ public class LottoService {
         int numberOfLotteries = (money / 1000);
 
         for (int count = 0; count < numberOfLotteries; count++) {
-            Lotto lottery = new Lotto(Lotto.createNumbers());
-            this.purchaseNumberDao.insert(lottery);
+            this.purchaseNumberDao.insert(new Lotto(Lotto.createNumbers()));
         }
     }
+
+    public List<Lotto> getIssueLotteryTickets() {
+        return this.purchaseNumberDao.getAll();
+    }
+
+
 }
