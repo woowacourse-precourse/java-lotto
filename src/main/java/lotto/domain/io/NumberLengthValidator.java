@@ -9,5 +9,7 @@ public class NumberLengthValidator {
     if (input.size() != 6) {
       throw new IllegalArgumentException(ExceptionMessage.INPUT_IS_NOT_SIX_NUMBERS.getMessage());
     }
+    RangeValidator validator = new RangeValidator();
+    validator.validate(input);
   }
 }
