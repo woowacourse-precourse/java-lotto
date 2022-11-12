@@ -13,8 +13,10 @@ class LottoNumberGeneratorTest {
     LottoNumberGenerator lottoNumberGenerator;
 
     @BeforeEach
-    void init() {
+    void clearLottoNumbers() {
         lottoNumberGenerator = new LottoNumberGenerator();
+        List<List<Integer>> lottoNumbers = lottoNumberGenerator.generateLottoNumber(0);
+        lottoNumbers.clear();
     }
     @DisplayName("로또 구입 수만큼 번호 생성되는지 테스트")
     @Test
