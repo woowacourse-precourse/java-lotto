@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public enum Prize {
@@ -47,5 +49,18 @@ public enum Prize {
 
     public static int getPrizeMoney(Prize prize, int count) {
         return prize.getPrizeMoney() * count;
+    }
+
+    public static List<String> makeResultMessage(HashMap<Prize, Integer> totalMatchResult) {
+        List<String> resultMessages = new ArrayList<>();
+
+        for (Prize prize : Prize.values()) {
+            if (prize == NONE) {
+                continue;
+            }
+            int count = totalMatchResult.getOrDefault(prize, 0);
+            resultMessages.add(prize.getMessage() + " - " + count + "개");
+        }
+        return resultMessages;
     }
 }
