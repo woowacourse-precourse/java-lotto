@@ -92,4 +92,10 @@ public class Application {
         }
         return number;
     }
+
+    public static void validateWinningLottoAndBonusNumber(Lotto winningLotto, int bonusNumber) {
+        if (winningLotto.getLottoNumbers().contains(bonusNumber)) {
+            throw new IllegalArgumentException("당첨 로또 번호와 보너스 번호 중복이 있습니다.");
+        }
+    }
 }
