@@ -23,6 +23,7 @@ public class Lotto {
     }
 
     public void setBonusNumber(Integer bonusNumber) {
+        validateBonusNumberDuplicate(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
