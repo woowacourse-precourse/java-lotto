@@ -11,6 +11,10 @@ public class InputView {
     public static final String CRITERION_SPLIT = ",";
 
     public static int inputPurchasePrice() {
+        return inputOneNumber();
+    }
+
+    private static int inputOneNumber() {
         return Integer.parseInt(Console.readLine());
     }
 
@@ -24,5 +28,9 @@ public class InputView {
         return Arrays.stream(split)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    public static int inputBonusNumber() {
+        return inputOneNumber();
     }
 }
