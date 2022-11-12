@@ -1,8 +1,6 @@
 package lotto;
 
-import lotto.domain.Lotto;
-import lotto.domain.Money;
-import lotto.domain.WinningLotto;
+import lotto.domain.*;
 import lotto.service.LottoService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,7 +10,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -43,7 +41,7 @@ class LottoTest {
 
     @DisplayName("입력 금액의 단위에 맞는 개수의 로또 생성")
     @Test
-    void creatLottosSizeCheck(){
+    void creatLottosSizeCheck() {
         LottoService lottoService = new LottoService();
         List<Lotto> lottos = lottoService.purchaseLottos(5);
         assertThat(lottos.size())
@@ -52,7 +50,7 @@ class LottoTest {
 
     @DisplayName("당첨 번호 입력시 중복이면 예외 발생")
     @Test
-    void inputWinningNumberByDuplicate(){
+    void inputWinningNumberByDuplicate() {
         InputStream in = new ByteArrayInputStream("1,2,3,4,5,5".getBytes());
         System.setIn(in);
 
@@ -63,7 +61,7 @@ class LottoTest {
 
     @DisplayName("당첨 번호가 6개가 넘어가면 예외 발생")
     @Test
-    void inputWinningNumberByOverSize(){
+    void inputWinningNumberByOverSize() {
         InputStream in = new ByteArrayInputStream("1,2,3,4,5,6,7".getBytes());
         System.setIn(in);
 
@@ -74,7 +72,7 @@ class LottoTest {
 
     @DisplayName("보너스 번호가 범위를 벗어나면 예외가 발생")
     @Test
-    void bonusNumberRangeTest(){
+    void bonusNumberRangeTest() {
         LottoService lottoService = new LottoService();
         int bonusNumber = 46;
         assertThatThrownBy(() -> lottoService.validateBonusNumberRange(bonusNumber))
@@ -83,10 +81,24 @@ class LottoTest {
 
     @DisplayName("보너스 번호가 당첨 번호와 중복되는 값이면 예외발생")
     @Test
-    void bonusNumberDuplicateWithWinningNumber(){
+    void bonusNumberDuplicateWithWinningNumber() {
         List<Integer> winningNumber = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
         Integer bonusNumber = 6;
         assertThatThrownBy(() -> new WinningLotto(winningNumber, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("6개 일치시 당첨")
+    @Test
+    void winLottoTest() {
+        LottoService lottoService = new LottoService();
+        WinningLotto winningLotto = new WinningLotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6)), 7);
+
+        Lotto lotto = new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6)));
+        List<Lotto> lottos = new ArrayList<>(List.of(lotto));
+        LottoResult lottoResult = lottoService.lottoResult(winningLotto, lottos);
+        System.out.println("lottoResult = " + lottoResult.getResult());
+
+        assertThat(lottoResult.getResult().get(Rank.FIRST)).isEqualTo(1);
     }
 }
