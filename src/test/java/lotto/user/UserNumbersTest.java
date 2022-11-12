@@ -16,7 +16,7 @@ public class UserNumbersTest {
     void inputLottoNumbers() {
         //given
         String userInput = "1,2,3,4,5,6";
-        List<Integer> numbers = List.of(1,2,3,4,5,6);
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
         InputStream in = new ByteArrayInputStream(userInput.getBytes());
         System.setIn(in);
 
