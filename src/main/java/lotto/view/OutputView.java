@@ -9,6 +9,10 @@ import java.util.List;
 import static lotto.view.Constants.*;
 
 public class OutputView {
+    final String BOUGHT_NOTICE = "%d개를 구매했습니다.";
+    final String WIN_STAT = "당첨 통계\n---";
+    final String EARNED_RATE = "총 수익률은 %.1f%%입니다.";
+
     public void printTickets(int numOfTickets, List<List<Integer>> purchasedTickets) {
         String purchased = String.format(BOUGHT_NOTICE, numOfTickets);
         System.out.println();
