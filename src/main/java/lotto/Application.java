@@ -25,6 +25,19 @@ public class Application {
 
         System.out.printf("%d"+Message.TOTAL.getMessage(),number);
 
+        ArrayList<Integer>[] userLotto= new ArrayList[number];
+        for(int i=0;i<number;i++){
+            userLotto[i]=new ArrayList<Integer>();
+        }
+
+        for(int i=0;i<number;i++) {
+            List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER, LOTTO_SIZE);
+            Collections.sort(randomNumbers);
+            for (int j = 0; j < randomNumbers.size(); j++) {
+                userLotto[i].add(randomNumbers.get(j));
+            }
+        }
+
 
 
     }
