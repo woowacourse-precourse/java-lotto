@@ -2,11 +2,23 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class InputView {
+import java.util.List;
 
-    public int requestUserAmount(){
-        String userInput = Console.readLine();
-        //validate
-        return Integer.parseInt(userInput);
+public class InputView {
+    public static String requestUserAmount(){
+
+        return Console.readLine();
+    }
+
+    public static String requestWinNumbers(){
+        return(Console.readLine());
+    }
+
+    private static int StringToInt(String input){
+        try{
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e){
+            throw new IllegalArgumentException()
+        }
     }
 }
