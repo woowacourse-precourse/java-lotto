@@ -19,7 +19,7 @@ public class Buyer {
 
 
     public Buyer(int money) {
-        validateMoney(money);
+        validate(money);
 
         this.money = money;
         this.lottoNum = money / LOTTO_PRICE;
