@@ -37,4 +37,20 @@ public class BuyLotto {
     public int numberOfLottoCount() {
         return price / INPUT_UNIT;
     }
+
+    public List<List<Integer>> issue() {
+        LottoNumbers lottoNumbers = new LottoNumbers();
+
+        List<List<Integer>> allLottoNumbers = new ArrayList<>();
+        inputPrice();
+
+        for (int issueNumberIndex = 0; issueNumberIndex < numberOfLottoCount(); issueNumberIndex++) {
+            Lotto lotto = new Lotto(lottoNumbers.generator());
+            allLottoNumbers.add(lotto.setLotto());
+            lotto.ascendingOrderSort();
+            lotto.printLotto();
+        }
+
+        return allLottoNumbers;
+    }
 }
