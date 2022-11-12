@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThatNoException;
 class InputNumberValidatorTest {
     @DisplayName("숫자만 입력 시")
     @ParameterizedTest(name = "{displayName} => {0}")
-    @ValueSource(strings = {"14000", "1", "45"})
+    @ValueSource(strings = {"14000", "1", "45", "4000512", "40005120"})
     void correctPaymentInputForm(String input) {
         assertThatNoException()
                 .isThrownBy(() -> InputNumberValidator.validate(input));
