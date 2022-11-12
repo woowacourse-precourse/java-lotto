@@ -42,10 +42,10 @@ public class Application {
         }
     }
 
-    public static void showLotto(int cash, List<Lotto> lottoList) {
+    public static void showLotto(int cash, List<Lotto> lottoTickets) {
 
         printLottoQuantity(cash / 1000);
-        for (Lotto lotto : lottoList) {
+        for (Lotto lotto : lottoTickets) {
             printLottoNumbers(lotto.getNumbers());
         }
     }
