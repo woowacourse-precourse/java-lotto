@@ -2,6 +2,7 @@ package lotto.domain;
 
 import static lotto.utils.Constant.NUMBER_OF_LOTTO;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
 import lotto.utils.ExceptionType;
@@ -41,11 +42,10 @@ public class WinningLotto {
         }
     }
 
-    public Lotto getWinningLotto() {
-        return winning;
-    }
-
-    public int getBonusNumber() {
-        return bonusNumber;
+    public List<? extends Serializable> match(Lotto lotto) {
+        int mainMatching = (int) lotto.getNumbers().stream().
+                filter(number -> winning.getNumbers().contains(number)).count();
+        boolean bonusMatching = lotto.getNumbers().contains(bonusNumber);
+        return List.of(mainMatching, bonusMatching);
     }
 }
