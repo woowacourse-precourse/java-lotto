@@ -14,14 +14,13 @@ import static org.assertj.core.api.Assertions.*;
 
 
 class LottoReaderTest {
-    LottoReader lottoReader = new LottoReader();
 
     @DisplayName("로또에 숫자가 포함되어 있는지 판단하는 기능 테스트")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 3, 4, 5, 6})
     void 로또에_해당_숫자가_포함되어_있는지_판단하는_기능_테스트(int intArg) {
         Lotto testLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        assertThat(lottoReader.isIncludedNumber(testLotto, intArg)).isTrue();
+        assertThat(LottoReader.isIncludedNumber(testLotto, intArg)).isTrue();
     }
 
     @DisplayName("로또에 숫자가 포함되지 않았다고 판단하는 기능 테스트")
@@ -29,7 +28,7 @@ class LottoReaderTest {
     @ValueSource(ints = {-1, 500, 9, 10, 11, 2000})
     void 로또에_해당_숫자가_포함되지_않았다고_판단하는_기능_테스트(int intArg) {
         Lotto testLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        assertThat(lottoReader.isIncludedNumber(testLotto, intArg)).isFalse();
+        assertThat(LottoReader.isIncludedNumber(testLotto, intArg)).isFalse();
     }
 
     @DisplayName("로또 두 개를 입력받아서 몇개의 숫자가 같은지 반환하는 기능 테스트")
@@ -38,7 +37,7 @@ class LottoReaderTest {
     void 두개의_로또에서_같은_숫자의_갯수를_반환하는_기능_테스트(List<Integer> lottoSource, int expected) {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Lotto compareLotto = new Lotto(lottoSource);
-        assertThat(lottoReader.countMatchingNumber(lotto, compareLotto)).isEqualTo(expected);
+        assertThat(LottoReader.countMatchingNumber(lotto, compareLotto)).isEqualTo(expected);
     }
 
     @DisplayName("정답 로또와 보너스 번호를 입력했을 때 로또의 결과 값을 제대로 반환하는지 테스트")
@@ -48,7 +47,7 @@ class LottoReaderTest {
         Lotto compareLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         Lotto lotto = new Lotto(lottoSource);
         int bonusNumber = 7;
-        assertThat(lottoReader.getLottoResult(lotto, compareLotto, bonusNumber)).isEqualTo(expected);
+        assertThat(LottoReader.getLottoResult(lotto, compareLotto, bonusNumber)).isEqualTo(expected);
     }
 
     @DisplayName("정답 로또와 보너스 번호를 입력했을 때 로또 여러장의 결과 값을 제대로 반환하는지 테스트")
@@ -57,7 +56,7 @@ class LottoReaderTest {
     void 여러개의_로또_결과_반환_테스트(List<Lotto> lottoSource) {
         Lotto compareLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         int bonusNumber = 7;
-        Map<LottoResult, Integer> result = lottoReader.getLottoResults(lottoSource, compareLotto, bonusNumber);
+        Map<LottoResult, Integer> result = LottoReader.getLottoResults(lottoSource, compareLotto, bonusNumber);
 
         assertThat(result).contains(
                 entry(LottoResult.FIRST, 1),
