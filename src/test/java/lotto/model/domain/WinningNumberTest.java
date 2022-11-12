@@ -99,4 +99,24 @@ class WinningNumberTest {
         Assertions.assertThatThrownBy(() -> new WinningNumber("6,2,3,4,5,6", "7"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 보너스_번호_정상적인_입력값_처리하기() {
+        Assertions.assertThatCode(() -> new WinningNumber("1,2,3,4,5,6", " 7 "))
+                .doesNotThrowAnyException();
+    }
+
+    @Test
+    void 보너스_번호_비정상적인_입력값_처리하기() {
+        Assertions.assertThatThrownBy(() -> new WinningNumber("1,2,3,4,5,6", "10a"))
+                .isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> new WinningNumber("1,2,3,4,5,6", "a"))
+                .isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> new WinningNumber("1,2,3,4,5,6", "0"))
+                .isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> new WinningNumber("1,2,3,4,5,6", "46"))
+                .isInstanceOf(IllegalArgumentException.class);
+        Assertions.assertThatThrownBy(() -> new WinningNumber("1,2,3,4,5,6", "1"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
