@@ -1,20 +1,43 @@
 package lotto;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateNumberLength(numbers);
+        validateNumberReplicate(numbers);
+        validateNumberRange(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    public void validateNumberLength(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            System.out.println("[ERROR] 로또 당첨 번호는 6개여야 합니다.");
             throw new IllegalArgumentException();
         }
     }
 
-    // TODO: 추가 기능 구현
+    public void validateNumberReplicate(List<Integer> numbers) {
+        Set<Integer> independentNumbers = new HashSet<>(numbers);
+
+        if (independentNumbers.size() != numbers.size()) {
+            System.out.println("[ERROR] 로또 번호는 중복될 수 없습니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void validateNumberRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < 1 || number > 45) {
+                System.out.println("[ERROR] 로또 번호는 1~45 사이의 숫자여야 합니다.");
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }
