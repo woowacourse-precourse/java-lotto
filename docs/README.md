@@ -13,6 +13,9 @@
 - (LottoStore) 당첨번호를 입력받는 기능 작성
 - (LottoStore) 보너스번호를 입력받는 기능 작성
 
+- (c4fiberParser) String에서 Integer를 추출하는 기능 작성
+- (c4fiberParser) String에서 List<Integer>를 추출하는 기능 작성
+
 - (LottoStore) 전달받은 Lotto가 몇등에 당첨되었는지 반환하는 기능 작성
 - (LottoStore) 전달받은 Lotto에 따라 당첨금을 반환하는 기능 작성
 
