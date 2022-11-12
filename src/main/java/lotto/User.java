@@ -24,10 +24,10 @@ public class User {
 
 	public static void checkPaymentUnit(int payment) {
 
-		boolean isThousandUnits = payment % 1000 == 0;
+		boolean isThousandUnits = payment % Constant.PAYMENT_UNIT.value == 0;
 
 		if (!isThousandUnits) {
-			throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해야 합니다.");
+			throw new IllegalArgumentException("[ERROR] " + Constant.PAYMENT_UNIT.value + "원 단위로 입력해야 합니다.");
 		}
 	}
 }

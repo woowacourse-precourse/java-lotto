@@ -6,7 +6,7 @@ public class Application {
         // TODO: 프로그램 구현
 
     	int payment = User.getPayment();
-    	int purchaseQuantity = payment / 1000;
+    	int purchaseQuantity = payment / Constant.PAYMENT_UNIT.value;
     	System.out.println(purchaseQuantity);
     }
 }
