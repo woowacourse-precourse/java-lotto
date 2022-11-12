@@ -22,4 +22,7 @@ class LottoControllerTest {
         Integer result = lottoController.getPrice();
         assertThat(price).isEqualTo(result);
     }
+
+
+
 }

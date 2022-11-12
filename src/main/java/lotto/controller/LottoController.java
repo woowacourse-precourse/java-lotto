@@ -6,6 +6,7 @@ import lotto.view.InputView;
 public class LottoController {
     private Integer price;
     private UserLottos userLottos;
+
     public LottoController() {
         this.price = 0;
     }
@@ -18,8 +19,9 @@ public class LottoController {
 
     public void setUserLottos() {
         this.userLottos = new UserLottos(this.price);
-
     }
+
+
 
     public Integer getPrice() {
         return this.price;
