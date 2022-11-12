@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class Application {
@@ -21,32 +20,38 @@ public class Application {
     static List<Integer> wins;
 
     public static void main(String[] args) {
-        System.out.println(Sentences.PRICE.value());
-        int amount = getPurchasePrice();
-        System.out.println();
 
-        System.out.println(Sentences.getPurchase(amount));
-        List<Lotto> lottos = getRandomLottos(amount);
-        System.out.println();
+        try {
+            System.out.println(Sentences.PRICE.value());
+            int amount = getPurchasePrice();
+            System.out.println();
 
-        System.out.println(Sentences.LUCKY.value());
-        Lotto lucky = getLuckyNumbers();
-        System.out.println();
+            System.out.println(Sentences.getPurchase(amount));
+            List<Lotto> lottos = getRandomLottos(amount);
+            printRandomLottos(lottos);
+            System.out.println();
 
-        System.out.println(Sentences.BONUS.value());
-        int bonus = getBonusNumber();
-        lucky.validateBonusNumber(bonus);
-        System.out.println();
+            System.out.println(Sentences.LUCKY.value());
+            Lotto lucky = getLuckyNumbers();
+            System.out.println();
 
-        wins = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
-        getResult(lottos, lucky, bonus);
+            System.out.println(Sentences.BONUS.value());
+            int bonus = getBonusNumber();
+            lucky.validateBonusNumber(bonus);
+            System.out.println();
 
-        System.out.println(Sentences.STATS.value());
-        System.out.println(Sentences.LINE.value());
-        printResult();
+            wins = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
+            getResult(lottos, lucky, bonus);
 
-        String earningRate = calculateEarningRate(amount);
-        System.out.println(Sentences.getRate(earningRate));
+            System.out.println(Sentences.STATS.value());
+            System.out.println(Sentences.LINE.value());
+            printResult();
+
+            String earningRate = calculateEarningRate(amount);
+            System.out.println(Sentences.getRate(earningRate));
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private static int getPurchasePrice() {
