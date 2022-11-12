@@ -17,5 +17,13 @@ public class Validation {
             throw new IllegalArgumentException("1000원 단위로 입력해 주세요.");
         }
     }
+    // 로또 구입 금액을 검증하는 기능
+    public static void validateLottoPurchaseAmount(String purchaseAmount) {
+        isDigit(purchaseAmount);
+        isThousandUnit(purchaseAmount);
+    }
+
+
+
 
 }
