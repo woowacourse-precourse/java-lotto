@@ -10,8 +10,8 @@ class ConsoleInputTest {
     @Test
     void testGettingPurchaseAmount() {
 
-        assertThrows(ParseException.class, () -> {
-            InputValidator.validateToParseInt(String str);
+        assertThrows(IllegalArgumentException.class, () -> {
+            InputValidator.validateToParseInt("a12");
         });
     }
 }
