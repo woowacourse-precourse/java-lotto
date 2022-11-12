@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class InputView {
-    public static int enterPurchaseAmount() {
+    public int enterPurchaseAmount() {
         System.out.println("구입금액을 입력해 주세요.");
         String purchaseAmount = Console.readLine();
         InputException.validatePurchaseAmount(purchaseAmount);
@@ -17,7 +17,7 @@ public class InputView {
         return Integer.valueOf(purchaseAmount);
     }
 
-    public static List<Integer> enterWinningNumber() {
+    public List<Integer> enterWinningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String[] numbers = Console.readLine().split(",");
         List<Integer> winningNumber = Arrays.stream(numbers)
@@ -29,7 +29,7 @@ public class InputView {
         return winningNumber;
     }
 
-    public static int enterBonusNumber(List<Integer> winningNumber) {
+    public int enterBonusNumber(List<Integer> winningNumber) {
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonusNumber = Integer.valueOf(Console.readLine());
         InputException.validateBonusNumber(bonusNumber, winningNumber);

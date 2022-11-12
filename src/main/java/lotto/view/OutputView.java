@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class OutputView {
-    public static void printLottoPurchaseInformation(List<Lotto> myLotto, int lottoIssueCount) {
+    public void printLottoPurchaseInformation(List<Lotto> myLotto, int lottoIssueCount) {
         System.out.println(lottoIssueCount + "개를 구매했습니다.");
 
         for (int count = 0; count < lottoIssueCount; count++) {
@@ -15,7 +15,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printLottoResult(List<Integer> result, double earningsRate) {
+    public void printLottoResult(List<Integer> result, double earningsRate) {
         BigDecimal rate = new BigDecimal(earningsRate);
         System.out.println("당첨통계");
         System.out.println("---");
