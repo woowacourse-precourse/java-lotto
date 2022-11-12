@@ -102,7 +102,7 @@ public class Model {
         return 0;
     }
 
-    public List<List<Integer>> repeatGetLottoNumber(int moneyNumber) {
+    public List<List<Integer>> repeatGettingLottoNumber(int moneyNumber) {
         List<List<Integer>> usersLottos = new ArrayList<>();
 
         for (int temp = 0; temp < moneyNumber; temp++) {
