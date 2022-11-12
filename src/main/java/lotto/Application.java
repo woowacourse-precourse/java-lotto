@@ -9,7 +9,7 @@ public class Application {
     public static void main(String[] args) {
         LottoGenerator lottoGenerator = new LottoGenerator();
         String amount = Console.readLine();
-        List<Lotto> lottoList = lottoGenerator.createLottoNumbers(Integer.parseInt(amount));
+        List<Lotto> lottoList = lottoGenerator.createLottoNumbers(amount);
 
     }
 }

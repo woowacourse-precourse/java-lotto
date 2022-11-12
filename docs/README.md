@@ -50,14 +50,15 @@
 
 ## 기능 목록
 - [x] 구입 금액이 1000으로 나누어 떨어지는지 확인하는 기능. - Judge#correctAmount()
+- [x] 입력한 당첨 번호, 보너스 번호가 숫자들로 이뤄져 있는지 확인한다. - Judge#allNumber()
+- [x] 입력한 당첨 번호, 보너스 번호가 1 - 45 범위에 있는지 확인한다. - Lotto#isCorrectRange()
 - [x] 로또를 발급한다. - LottoGenerator#createLottoNumbers()
   - [x] 로또 번호가 6자리 인지 확인한다.
   - [x] 중복되는 로또 번호가 있는지 확인한다.
 - [ ] 발급받은 로또 번호와 입력받은 당첨 번호를 비교한다. - Manager#compare()
-  - [x] 몇 개의 숫자가 있는지 알 수 있다. - Judge#containCount()  
-- [x] 입력한 당첨 번호, 보너스 번호가 숫자들로 이뤄져 있는지 확인한다. - Judge#allNumber()
-- [x] 입력한 당첨 번호, 보너스 번호가 1 - 45 범위에 있는지 확인한다. - Lotto#isCorrectRange()
-- [ ] 보너스 번호가 당첨 번호와 겹치지 않는지 확인한다. - Judge#notContain()
+  - [x] 몇 개의 숫자가 있는지 알 수 있다. - Judge#containCount()
+  - [ ] 맞은 개수에 따른 결과를 분리한다.
+- [x] 보너스 번호가 당첨 번호와 겹치지 않는지 확인한다. - Judge#notContain()
 - [x] 발행한 로또 수량 및 번호를 출력한다.
   - [x] 로또 번호는 오름차순으로 정렬해 보여준다.
 - [ ] 당첨 내역을 출력한다.

@@ -5,8 +5,11 @@ import java.util.List;
 
 public class Judge {
 
-    public boolean correctAmount(int amount) {
-        return amount % 1000 == 0;
+    public boolean correctAmount(String amount) {
+        if(!isNumber(amount)) {
+            throw new IllegalArgumentException();
+        }
+        return Integer.parseInt(amount) % 1000 == 0;
     }
 
     public int containCount(List<Integer> lotto, List<Integer> winningNumbers) {
