@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Convertor {
-    private final static Integer UNIT_PRICE = 1000;
     private final static String COMMA = ",";
 
     public static Integer toPurchasePrice(String input) {
@@ -13,10 +12,6 @@ public class Convertor {
 
         Integer purchasePrice = getNumericValue(input);
         return purchasePrice;
-    }
-
-    public static Integer toPurchaseQuantity(Integer purchasePrice) {
-        return purchasePrice / UNIT_PRICE;
     }
 
     public static List<Integer> separate(String input) {

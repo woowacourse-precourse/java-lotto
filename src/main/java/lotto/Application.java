@@ -12,11 +12,10 @@ public class Application {
         try {
             String payment = Input.submitPayment();
             Integer purchasePrice = Convertor.toPurchasePrice(payment);
-            Integer purchaseQuantity = Convertor.toPurchaseQuantity(purchasePrice);
 
-            Tickets tickets = new Tickets(purchaseQuantity);
+            Tickets tickets = new Tickets(purchasePrice);
             List<List<Integer>> lottoTickets = tickets.getTickets();
-            Output.purchaseSuccessful(purchaseQuantity, lottoTickets);
+            Output.purchaseSuccessful(purchasePrice, lottoTickets);
 
             // Winner 클래스에 다시 넣어야 할 듯
             String winningNumbers = Input.submitWinningNumbers();
