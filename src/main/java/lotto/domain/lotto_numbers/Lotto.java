@@ -35,12 +35,6 @@ public class Lotto {
                 .count();
     }
 
-    public List<Integer> numbers() {
-        List<Integer> copied = new ArrayList<>(numbers);
-        Collections.sort(copied);
-        return Collections.unmodifiableList(copied);
-    }
-
     private void validate(List<Integer> numbers) {
         if (numbers.size() != COUNTS_OF_LOTTO_NUMBERS) {
             throw new IllegalArgumentException(INVALID_SIZE_OF_LOTTO_NUMBERS);
@@ -63,5 +57,12 @@ public class Lotto {
         if (presentInvalidNumber) {
             throw new IllegalArgumentException(INVALID_RANGE_OF_LOTTO_NUMBER);
         }
+    }
+
+    @Override
+    public String toString() {
+        List<Integer> copied = new ArrayList<>(numbers);
+        Collections.sort(copied);
+        return copied.toString();
     }
 }

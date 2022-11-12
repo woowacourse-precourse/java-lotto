@@ -29,7 +29,7 @@ public class LottoPurchaser {
         StringBuilder stringBuilder = new StringBuilder();
         for (Lotto purchasedLotto : purchasedLottos) {
             stringBuilder
-                    .append(purchasedLotto.numbers())
+                    .append(purchasedLotto)
                     .append("\n");
         }
 
