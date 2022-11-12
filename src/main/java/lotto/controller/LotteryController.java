@@ -22,8 +22,8 @@ public class LotteryController {
         return playerView.payMoney();
     }
 
-    private void makeLottoForPlayer(){
-
+    private void makeLottoForPlayer(String playerMoney){
+        player.buyTickets(Long.parseLong(playerMoney));
     }
 
     private void giveLottoToPlayer(){
