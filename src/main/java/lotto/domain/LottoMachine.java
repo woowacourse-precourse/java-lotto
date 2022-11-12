@@ -15,19 +15,19 @@ public class LottoMachine {
         validateUnit();
     }
 
-    public void validateType(String inputPrice) {
+    private void validateType(String inputPrice) {
         if (!inputPrice.matches("^[0-9]*$")) {
             throw new IllegalArgumentException(TYPE_ERROR_MESSAGE);
         }
     }
 
-    public void validateRange() {
+    private void validateRange() {
         if (purchasePrice < UNIT_PRICE) {
             throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
         }
     }
 
-    public void validateUnit() {
+    private void validateUnit() {
         if (purchasePrice % UNIT_PRICE != 0) {
             throw new IllegalArgumentException(UNIT_ERROR_MESSAGE);
         }
