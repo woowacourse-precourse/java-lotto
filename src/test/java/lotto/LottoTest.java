@@ -1,6 +1,5 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -32,7 +31,7 @@ class LottoTest {
     void createLottoByDuplicatedNumberThenThrowException() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(DUPLICATED_NUMBER_ERROR_MESSAGE);
+                .hasMessage(ERROR_MESSAGE + DUPLICATED_NUMBER_ERROR_MESSAGE);
     }
 
     @DisplayName("중복된 숫자가 있을 시에 오류 반환 - validatedForDuplicatedNumber 메서드 테스트")
@@ -49,7 +48,7 @@ class LottoTest {
         Throwable t = catchThrowable(() -> {
             for (int i = 0; i < 100; i++) {
                 Lotto lotto = new Lotto(createLottoNumber());
-                System.out.println(lotto.toString());
+                System.out.println(lotto.getNumbers());
             }
         });
         assertThat(t).doesNotThrowAnyException();
@@ -68,13 +67,13 @@ class LottoTest {
         });
         assertThat(t)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(DUPLICATED_NUMBER_ERROR_MESSAGE);
+                .hasMessage(ERROR_MESSAGE + DUPLICATED_NUMBER_ERROR_MESSAGE);
     }
 
     private void validateForDuplicatedNumber(List<Integer> lotto) {
         Set<Integer> lottoSet = new HashSet<>(lotto);
         if (lottoSet.size() != LOTTO_COUNT) {
-            throw new IllegalArgumentException(DUPLICATED_NUMBER_ERROR_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE + DUPLICATED_NUMBER_ERROR_MESSAGE);
         }
     }
 

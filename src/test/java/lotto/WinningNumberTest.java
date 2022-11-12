@@ -37,7 +37,7 @@ class WinningNumberTest {
         //Then
         assertThat(t)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(OUT_OF_RANGE_ERROR_MESSAGE);
+                .hasMessage(ERROR_MESSAGE + OUT_OF_RANGE_ERROR_MESSAGE);
     }
 
     @DisplayName("사용자 입력 확인 테스트 - 정상 테스트")
@@ -48,9 +48,9 @@ class WinningNumberTest {
 
         //When
         List<Integer> list = inputWinningNumber(input);
+
         //Then
         assertThat(list).isEqualTo(List.of(2, 6, 15, 22, 33, 34));
-
     }
 
     @DisplayName("사용자 입력 확인 테스트 - 문자 오류")
@@ -61,12 +61,11 @@ class WinningNumberTest {
 
         //When
         Throwable t = catchThrowable(() -> inputWinningNumber(input));
+
         //Then
         assertThat(t)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(INVALID_INPUT_ERROR_MESSAGE);
-
-
+                .hasMessage(ERROR_MESSAGE + INVALID_INPUT_ERROR_MESSAGE);
     }
 
     @DisplayName("사용자 입력 확인 테스트 - 범위 오류")
@@ -77,10 +76,11 @@ class WinningNumberTest {
 
         //When
         Throwable t = catchThrowable(() -> inputWinningNumber(input));
+
         //Then
         assertThat(t)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(OUT_OF_RANGE_ERROR_MESSAGE);
+                .hasMessage(ERROR_MESSAGE + OUT_OF_RANGE_ERROR_MESSAGE);
 
     }
 
@@ -111,7 +111,7 @@ class WinningNumberTest {
         //Then
         assertThat(t)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(DUPLICATED_NUMBER_ERROR_MESSAGE);
+                .hasMessage(ERROR_MESSAGE + DUPLICATED_NUMBER_ERROR_MESSAGE);
     }
 
     private List<Integer> inputWinningNumber(String input) {
@@ -128,6 +128,5 @@ class WinningNumberTest {
         Validator.validateForRange(winningNumber);
         return winningNumber;
     }
-
-
+    
 }

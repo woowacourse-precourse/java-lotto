@@ -20,7 +20,7 @@ class PlayerTest {
 
         assertThat(t)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(INVALID_INPUT_ERROR_MESSAGE);
+                .hasMessage(ERROR_MESSAGE + INVALID_INPUT_ERROR_MESSAGE);
     }
 
     @DisplayName("올바르지 않은 금액 입력 - 1000으로 안나눠짐")
@@ -31,7 +31,7 @@ class PlayerTest {
 
         assertThat(t)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(INVALID_COST_ERROR_MESSAGE);
+                .hasMessage(ERROR_MESSAGE + INVALID_COST_ERROR_MESSAGE);
     }
 
     @DisplayName("올바른 금액 입력")
@@ -47,8 +47,10 @@ class PlayerTest {
     void test4() {
         String input = "9000";
         int lottoCount = inputCostForLotto(input);
-        List<Lotto> lottoSet = buyLotto(lottoCount);
-        printLottoNumber(lottoSet);
+        List<Lotto> lottoNumbers
+                = buyLotto(lottoCount);
+        printLottoNumber(lottoNumbers
+        );
     }
 
     private int inputCostForLotto(String input) {
@@ -64,19 +66,26 @@ class PlayerTest {
     }
 
     private List<Lotto> buyLotto(int lottoCount) {
-        List<Lotto> lottoSet = new ArrayList<>();
+        List<Lotto> lottoNumbers
+                = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
-            lottoSet.add(new Lotto(Lotto.createLottoNumber()));
+            lottoNumbers
+                    .add(new Lotto(Lotto.createLottoNumber()));
         }
         System.out.println();
         System.out.println(lottoCount + PURCHASE_CONFIRM_MESSAGE);
-        return lottoSet;
+        return lottoNumbers
+                ;
     }
 
-    private void printLottoNumber(List<Lotto> lottoSet) {
-        for (int i = 0; i < lottoSet.size(); i++) {
-            System.out.println(lottoSet.get(i));
+    private void printLottoNumber(List<Lotto> lottoNumbers
+    ) {
+        for (int i = 0; i < lottoNumbers
+                .size(); i++) {
+            System.out.println(lottoNumbers
+                    .get(i));
         }
         System.out.println();
     }
+
 }
