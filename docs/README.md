@@ -6,11 +6,13 @@
 ## Buyer Generate
 - [x] 로또 구입 금액 ask 출력
 - [x] 로또 구입 금액 입력
+- [x] 입력된 값이 숫자인지 확인 예외시 Exception
 - [x] 입력된 구입 금액으로 Buyer 클래스 생성 
 
 ## Lotto Random Peek
 - [x] 금액에 맞는 횟수만큼 복권발행
 - [x] 1~45 사이의 중복되지 않는 숫자 6개 뽑기
+- [ ] 로또 번호 오름차순으로 정렬
 - [x] 발행된 랜덤복권 반환
 
 ## Lotto Random Peek Output
@@ -32,7 +34,6 @@
 - [x] 당첨 번호 "," 기준으로 스플릿
 - [x] 보너스 번호 ask 출력
 - [x] 보너스 번호 입력
-- [x] 당첨번호 6자리 인지 확인 예외시 Exception
 - [x] 당첨번호 모두 숫자인지 확인 예외시 Exception
 - [x] 보너스 번호 숫자인지 확인 예외시 Exception
 - [x] 입력된 당첨번호, 보너스 번호로 Win Lotto 클래스 생성
