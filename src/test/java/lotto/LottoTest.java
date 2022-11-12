@@ -31,4 +31,11 @@ class LottoTest {
         assertThat(new Lotto(List.of(1, 2, 3, 4, 5, 6)).getLottoInfo())
                 .isEqualTo(List.of(1,2,3,4,5,6));
     }
+
+    @DisplayName("List를 제대로 출력하는지 확인")
+    @Test
+    void 로또_번호_출력_테스트(){
+        assertThat(new Lotto(List.of(1,2,3,4,5,6)).toString())
+                .isEqualTo(List.of(1,2,3,4,5,6).toString());
+    }
 }
