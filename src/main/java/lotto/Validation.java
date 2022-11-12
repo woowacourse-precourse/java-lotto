@@ -9,4 +9,6 @@ public class Validation {
             throw new IllegalArgumentException("[ERROR] 로또 당첨 번호는 6개입니다.");
         }
     }
+
+    
 }

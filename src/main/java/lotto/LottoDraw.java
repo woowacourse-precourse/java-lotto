@@ -25,7 +25,7 @@ public class LottoDraw {
         numberOfMatching.put(BONUS_NUMBER_MATCHED, 0);
 
         winningNumbers = UI.enterWinningNumber();
-        validate(winningNumbers);
+        Validation.validate(winningNumbers);
 
         bonusNumber = UI.enterBonusNumber();
         List<Integer> numbersWithBonusNumber = new ArrayList<>(winningNumbers);
@@ -33,12 +33,6 @@ public class LottoDraw {
 
         validateDuplication(numbersWithBonusNumber);
         validateNumberRange(numbersWithBonusNumber);
-    }
-
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 로또 당첨 번호는 6개입니다.");
-        }
     }
 
     private void validateDuplication(List<Integer> numbers) {
@@ -65,7 +59,6 @@ public class LottoDraw {
             boolean bonusNumberMatched = lottoNumbers.contains(bonusNumber);
             lottoNumbers.retainAll(winningNumbers);
             int matched = lottoNumbers.size();
-            System.out.println(matched);
 
             if (matched == 5 && bonusNumberMatched) {
                 matched = BONUS_NUMBER_MATCHED;

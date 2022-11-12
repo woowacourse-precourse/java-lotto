@@ -34,16 +34,6 @@ class LottoDrawTest {
     }
 
     @Test
-    void numberCountValidation() {
-        ByteArrayInputStream in = new ByteArrayInputStream("1,3,5,7,9,11,13".getBytes());
-        System.setIn(in);
-
-        assertThatThrownBy(() -> new LottoDraw(new LottoBuyer(1000)))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 로또 당첨 번호는 6개입니다.");
-    }
-
-    @Test
     void numberDuplicateValidation() {
         ByteArrayInputStream in = new ByteArrayInputStream("1,3,5,3,9,11\n12".getBytes());
         System.setIn(in);
