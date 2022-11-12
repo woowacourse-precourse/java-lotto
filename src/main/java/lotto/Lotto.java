@@ -30,6 +30,8 @@ public class Lotto {
         int bonusNumber = Integer.parseInt(Console.readLine());
         if (bonusNumber>45 || bonusNumber<1) {
             throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        } else if (numbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException("보너스 번호는 입력한 로또 넘버에 포함되지 않는 숫자여야 합니다.");
         }
 
         return bonusNumber;
@@ -43,12 +45,12 @@ public class Lotto {
                 50,0,
                 6,0
         );
-//        for (List<Integer> lottoNumber : userLottoNumbers) {
-//            long commonNumbers = numbers.stream().filter(lottoNumber::contains).count();
-//            if () {
-//
-//            }
-//        }
+        for (List<Integer> lottoNumber : userLottoNumbers) {
+            long commonNumbers = numbers.stream().filter(lottoNumber::contains).count();
+            if (commonNumbers == 5 && numbers.contains(bonus)) {
+                rankNumbers.put(50,rankNumbers.get(50)+1);
+            }
+        }
         return rankNumbers;
     }
 }
