@@ -10,7 +10,10 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static lotto.domain.lottomachine.winningnumber.WinningNumberSystem.REGULAR_EXPRESSION_FOR_WINNING_NUMBERS_INPUT;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -68,7 +71,7 @@ class WinningNumberSystemTest {
 
         } catch (InvocationTargetException e) {
             assertThat(e.getTargetException()).isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("[ERROR] 여섯 개의 숫자를 \",\"로 구분해서 입력해야 합니다.");
+                    .hasMessageContaining("[ERROR] 숫자 입력 형식이 맞지 않습니다.");
         }
     }
 
@@ -120,5 +123,26 @@ class WinningNumberSystemTest {
         WinningNumbers winningNumbers = winningNumberSystem.receiveWinningNumber();
 
         assertThat(winningNumbers).isInstanceOf(WinningNumbers.class);
+    }
+
+    @DisplayName("validateDuplication 메소드에서 숫자와 WinningNumbers가 중복될 때 오류가 발생하는지 확인")
+    @ParameterizedTest()
+    @ValueSource(ints = {1, 2, 5})
+    void validateDuplication_test(int number) throws NoSuchMethodException, IllegalAccessException {
+        List<WinningNumber> numbers = Stream.iterate(1, n -> n + 1)
+                .limit(6)
+                .map(WinningNumber::new)
+                .collect(Collectors.toList());
+        WinningNumbers winningNumbers = new WinningNumbers(numbers);
+        Method method = winningNumberSystem.getClass().getDeclaredMethod("validateDuplication", int.class, WinningNumbers.class);
+        method.setAccessible(true);
+
+        try {
+            method.invoke(winningNumberSystem, number, winningNumbers);
+
+        } catch (InvocationTargetException e) {
+            assertThat(e.getTargetException()).isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR] 보너스 번호는 당첨번호와 중복될 수 없습니다.");
+        }
     }
 }
