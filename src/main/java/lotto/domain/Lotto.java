@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.verifier.LottoVerifier;
 import lotto.view.OutputView;
 
 import java.util.List;
@@ -31,8 +32,6 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+        new LottoVerifier().check(numbers.toString());
     }
 }

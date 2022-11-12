@@ -6,7 +6,7 @@ import lotto.util.ExceptionMessage;
 import java.math.BigInteger;
 import java.util.Arrays;
 
-public class WinnerNumberVerifier implements Verifier {
+public class LottoVerifier implements Verifier {
     @Override
     public void check(String input) {
         checkNumberCount(input);
