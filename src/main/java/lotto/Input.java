@@ -22,12 +22,19 @@ public class Input {
         if (!Validation.lottoLength(winningNums)) {
             throw new IllegalArgumentException(Error.WINNING_NUMS_LENGTH.getDesc());
         }
+        if (!Validation.lottoNumDuplicated(winningNums)) {
+            throw new IllegalArgumentException(Error.DUPLICATED_NUM.getDesc());
+        }
         return winningNums;
     }
 
-    public static int bonusNumber() {
+    public static int bonusNumber(List<Integer> winningNums) {
         System.out.println("보너스 번호를 입력해 주세요.");
         String input = Console.readLine();
-        return Converter.stringToInt(input);
+        int num = Converter.stringToInt(input);
+        if (winningNums.contains(num)) {
+            throw new IllegalArgumentException(Error.DUPLICATED_NUM.getDesc());
+        }
+        return num;
     }
 }
