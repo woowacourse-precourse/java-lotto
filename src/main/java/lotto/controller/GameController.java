@@ -1,12 +1,12 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.Computer;
 import lotto.Lotto;
+import lotto.LottoResult;
 import lotto.common.Msg;
 import lotto.service.LottoService;
 import lotto.validator.Validator;
@@ -14,46 +14,39 @@ import lotto.validator.Validator;
 public class GameController {
 
     private final LottoService service = new LottoService(new Validator(), new Computer());
-    private List<Lotto> lottos = new ArrayList<>();
-    private String input = "";
-    private List<Integer> winns = new ArrayList<>();
-    private int bonus;
 
     public void start() {
         welcome();
-        input();
-        buyLottos();
-        if (isEmptyLottos()) {
+        String money = inputMoney();
+        List<Lotto> lottos = buyLottos(money);
+        if (isEmpty(lottos)) {
             return;
         }
-
-        printNumberOfLotto();
-        printLottos();
-
-        inputWinnings();
-
-        inputBonus();
-
-        printResult();
+        printNumberOfLotto(lottos);
+        printLottos(lottos);
+        String wins = inputWinnings();
+        String bonus = inputBonus();
+        printResult(lottos, wins, bonus);
     }
 
     private void welcome() {
         System.out.println(Msg.WELCOME.getMsg());
     }
 
-    private void input() {
-        input = Console.readLine();
+    private String inputMoney() {
+        return Console.readLine();
     }
 
-    private void buyLottos() {
+    private List<Lotto> buyLottos(String money) {
         try {
-            lottos = service.buy(input);
+            return service.buy(money);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        return Collections.EMPTY_LIST;
     }
 
-    private boolean isEmptyLottos() {
+    private boolean isEmpty(List<Lotto> lottos) {
         return lottos.isEmpty();
     }
 
@@ -61,12 +54,12 @@ public class GameController {
         System.out.println();
     }
 
-    private void printNumberOfLotto() {
+    private void printNumberOfLotto(List<Lotto> lottos) {
         printLn();
         System.out.println(lottos.size() + "개를 구매했습니다.");
     }
 
-    private void printLottos() {
+    private void printLottos(List<Lotto> lottos) {
         lottos.forEach(i -> {
             List<Integer> numbers = i.getNumbers().stream().sorted().collect(Collectors.toList());
             System.out.print("[");
@@ -78,23 +71,23 @@ public class GameController {
         });
     }
 
-    private void inputWinnings() {
+    private String  inputWinnings() {
         printLn();
         System.out.println(Msg.WINNING.getMsg());
-        String s = Console.readLine();
-        String[] split = s.split(",");
-        winns = Arrays.stream(split).map(Integer::parseInt).collect(Collectors.toList());
+        return Console.readLine();
     }
 
-    private void inputBonus() {
+    private String inputBonus() {
         printLn();
         System.out.println(Msg.BONUS.getMsg());
-        String s = Console.readLine();
-        bonus = Integer.parseInt(s);
+        return Console.readLine();
     }
 
-    private void printResult() {
+    private void printResult(List<Lotto> lottos, String wins, String bonus) {
         printLn();
-        System.out.println(Msg.RESULT.getMsg());
+        System.out.print(Msg.RESULT.getMsg());
+        LottoResult lottoResult = service.getResult(lottos, wins, bonus);
+        String result = lottoResult.getResult();
+        System.out.println(result);
     }
 }
