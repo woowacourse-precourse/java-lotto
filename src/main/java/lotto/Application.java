@@ -223,7 +223,7 @@ public class Application {
 
         for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) < 48 || input.charAt(i) > 57) {
-
+                error = ErrorMessage.INTEGER;
                 throw new IllegalArgumentException();
             }
         }
