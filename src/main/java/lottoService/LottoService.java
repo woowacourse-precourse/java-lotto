@@ -15,6 +15,7 @@ public class LottoService {
 
     LottoGameMessage lottoGameMessage = new LottoGameMessage();
 
+
     public void printPlayerLottoNumberAndCreateLottoNumber(Player player){
         lottoGameMessage.printPurchaseCountMessage(player.getLottoCount());
         createPlayerRandomLottoPickNumbers(player);
@@ -35,5 +36,9 @@ public class LottoService {
             Collections.sort(playerLotto.getNumbers());
             player.getPlayerLottoPickNumbers().add(playerLotto);
         }
+    }
+
+    private String input(){
+        return Console.readLine().trim().replaceAll(" ","");
     }
 }
