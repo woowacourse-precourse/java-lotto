@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 import java.util.function.Predicate;
+import lotto.domain.lottery.Lotto;
 
 public class Comparator {
 

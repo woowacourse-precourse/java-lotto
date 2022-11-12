@@ -11,11 +11,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import lotto.domain.BonusNumber;
+import lotto.domain.lottery.BonusNumber;
 import lotto.domain.Comparator;
-import lotto.domain.Lotto;
-import lotto.domain.LottoGroup;
-import lotto.domain.WinningLotto;
+import lotto.domain.lottery.Lotto;
+import lotto.domain.lottery.LottoGroup;
+import lotto.domain.lottery.WinningLotto;
 
 public class Result {
 

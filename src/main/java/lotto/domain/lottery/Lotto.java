@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.lottery;
 
 import static lotto.constant.SystemValue.LOTTERY_NUMBERS_SIZE;
 

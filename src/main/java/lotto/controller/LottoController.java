@@ -2,12 +2,12 @@ package lotto.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.domain.BonusNumber;
+import lotto.domain.lottery.BonusNumber;
 import lotto.domain.Cost;
-import lotto.domain.LotteryDrawMachine;
-import lotto.domain.Lotto;
-import lotto.domain.LottoGroup;
-import lotto.domain.WinningLotto;
+import lotto.domain.lottery.LotteryDrawMachine;
+import lotto.domain.lottery.Lotto;
+import lotto.domain.lottery.LottoGroup;
+import lotto.domain.lottery.WinningLotto;
 import lotto.domain.result.Profit;
 import lotto.domain.result.Result;
 import lotto.view.Input;

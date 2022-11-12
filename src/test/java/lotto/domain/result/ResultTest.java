@@ -3,10 +3,10 @@ package lotto.domain.result;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
-import lotto.domain.BonusNumber;
-import lotto.domain.Lotto;
-import lotto.domain.LottoGroup;
-import lotto.domain.WinningLotto;
+import lotto.domain.lottery.BonusNumber;
+import lotto.domain.lottery.Lotto;
+import lotto.domain.lottery.LottoGroup;
+import lotto.domain.lottery.WinningLotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package lotto.domain;
+package lotto.domain.lottery;
 
 import static lotto.constant.SystemValue.MAXIMUM_LOTTERY_NUMBER;
 import static lotto.constant.SystemValue.MINIMUM_LOTTERY_NUMBER;
