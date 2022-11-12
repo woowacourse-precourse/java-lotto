@@ -187,7 +187,7 @@
   - 수익률을 계산하는 함수
 
 
-- void showLotto(int, List<Integer>)
+- void showLotto(int, List<Lotto>)
   - 발행된 로또와 관련된 정보에 대한 출력이 진행되는 함수
 
 
