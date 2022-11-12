@@ -18,6 +18,7 @@ public class Input {
         return Integer.parseInt(input);
     }
 
+
     //Validator 클래스
     public boolean isNumber(String input) {
         return input.chars().allMatch(Character::isDigit);
