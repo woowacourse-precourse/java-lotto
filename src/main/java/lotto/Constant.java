@@ -22,6 +22,12 @@ public class Constant {
     public static final String fourthRankPriceString = "50,000";
     public static final String fifthRankPriceString = "5,000";
 
+    // 출력 문자열
+    public static final String inputPrice = "구입금액을 입력해 주세요.";
+    public static final String inputWinningLotto = "당첨 번호를 입력해 주세요.";
+    public static final String inputBonusNum = "보너스 번호를 입력해 주세요.";
+    public static final String inputWinningStats = "당첨 통계";
+
     // 출력 문자열 format
     public static final String buyingFormat = "%d개를 구매했습니다.\n";
     public static final String winningFormat = "%d개 일치 (%s원) - %d개\n";
