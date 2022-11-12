@@ -6,45 +6,50 @@ import java.util.List;
 
 public class InputBonusNumber {
 
+
+
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 45;
     static int bonusNumber;
-    public static void inputBonusNumber(){
-        System.out.println("보너스 번호를 입력해주세요.");
+
+    public static void inputBonusNumber() {
+        OutputView.printInputBonus();
         String inputBonusNumber = Console.readLine();
         validateBonusNumber(inputBonusNumber);
     }
 
-    public static void validateBonusNumber(String inputBonusNumber){
-        int bonusNumber=0;
+    public static void validateBonusNumber(String inputBonusNumber) {
+        int bonusNumber = 0;
         bonusNumber = convertInteger(inputBonusNumber);
 
         isInRange(bonusNumber);
 
-        isBonusNumberInWinningList(bonusNumber);
+        isBonusNumberInWinningTicket(bonusNumber);
 
     }
 
     private static int convertInteger(String inputBonusNumber) {
 
-        try{
-           bonusNumber = Integer.parseInt(inputBonusNumber);
-       }
-       catch (Exception e){
-           throw new IllegalArgumentException(ErrorMessage.ERROR_BONUS_NOTNUMBER.getMessage());
-       }
+        try {
+            bonusNumber = Integer.parseInt(inputBonusNumber);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(ErrorMessage.ERROR_BONUS_NOTNUMBER.getMessage());
+        }
         return bonusNumber;
     }
 
     private static void isInRange(int bonusNumber) {
-        if(bonusNumber <1 || bonusNumber >45){
+        if (bonusNumber < MIN_NUMBER || bonusNumber > MAX_NUMBER) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_BONUS_OVERRANGE.getMessage());
         }
     }
 
-    public static void isBonusNumberInWinningList(int bonusNumber) {
-        List<Integer> lottoList = InputWinningLottoNumber.getWinningLottoList();
+    public static void isBonusNumberInWinningTicket(int bonusNumber) {
+        List<Integer> lottoTicket = InputWinningLottoNumber.getWinningLottoTicket();
         int rightBonusNumber = bonusNumber;
-        if(lottoList.stream().anyMatch(n -> rightBonusNumber == n)) {
-            throw new IllegalArgumentException(ErrorMessage.ERROR_BONUS_DUPLICATE_WINNING.getMessage());
+        if (lottoTicket.stream().anyMatch(n -> rightBonusNumber == n)) {
+            throw new IllegalArgumentException(
+                ErrorMessage.ERROR_BONUS_DUPLICATE_WINNING.getMessage());
         }
     }
 

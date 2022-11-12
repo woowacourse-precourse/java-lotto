@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class Lotto {
+    private static final int MAX_NUMBER=45;
+    private static final int MIN_NUMBER=1;
+    private static final int TICKET_SIZE=6;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -25,11 +28,11 @@ public class Lotto {
     }
 
     private boolean isInCorrectSize(List<Integer> numbers) {
-        return numbers.size() != 6;
+        return numbers.size() != TICKET_SIZE;
     }
 
     private boolean isOverRange(List<Integer> numbers) {
-        return numbers.stream().anyMatch(number -> number < 1 || number > 45);
+        return numbers.stream().anyMatch(number -> number < MIN_NUMBER || number > MAX_NUMBER);
     }
 
     private boolean isDuplicated(List<Integer> numbers) {

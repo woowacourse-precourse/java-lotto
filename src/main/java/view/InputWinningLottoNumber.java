@@ -9,28 +9,30 @@ import java.util.List;
 public class InputWinningLottoNumber {
 
 
-
-    static List<Integer> winningLottoList = new ArrayList<>();
+    private static final int MAX_NUMBER = 45;
+    private static final int MIN_NUMBER =1;
+    private static final int TICKET_SIZE=6;
+    static List<Integer> winningLottoTicket = new ArrayList<>();
 
     public static void inputWinningLottoNumber(){
         OutputView.printInputLotto();
         String Lotto = Console.readLine();
-        winningLottoList = setWinningLotto(Lotto);
-        Lotto lotto = new Lotto(winningLottoList);
+        winningLottoTicket = setWinningLottoTicket(Lotto);
+        Lotto lotto = new Lotto(winningLottoTicket);
     }
 
-    private static List<Integer> setWinningLotto(String winningLotto) {
+    private static List<Integer> setWinningLottoTicket(String winningLotto) {
         String[] split = winningLotto.split(",");
 
         for (String number : split) {
             validateSplitNumber(number);
-            winningLottoList.add(Integer.parseInt(number));
+            winningLottoTicket.add(Integer.parseInt(number));
         }
 
-        if(winningLottoList.size()!=6){
+        if(winningLottoTicket.size()!=TICKET_SIZE){
             throw new IllegalArgumentException(ErrorMessage.ERROR_INCORRECT_SIZE.getMessage());
         }
-        return winningLottoList;
+        return winningLottoTicket;
     }
 
     public static void validateSplitNumber(String splitedNumber) {
@@ -42,13 +44,13 @@ public class InputWinningLottoNumber {
             throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_NUMBER.getMessage());
         }
 
-        if(convertSplitedNumber<1 || convertSplitedNumber >45){
+        if(convertSplitedNumber<MIN_NUMBER || convertSplitedNumber >MAX_NUMBER){
             throw new IllegalArgumentException(ErrorMessage.ERROR_OVERRANGE.getMessage());
         }
     }
 
-    public static List<Integer> getWinningLottoList() {
-        return winningLottoList;
+    public static List<Integer> getWinningLottoTicket() {
+        return winningLottoTicket;
     }
 
 }

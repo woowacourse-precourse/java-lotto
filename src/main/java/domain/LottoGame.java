@@ -12,29 +12,33 @@ public class LottoGame {
 
 
     static final Integer BONUS = 7;
-    static final int MINIMUM_WINNING=3;
-    static final List<Integer> moneyRankedList = Arrays.asList(5000, 50000, 1500000, 2000000000, 30000000);
-    List<List<Integer>> buyLottoList = new ArrayList<>();
-    List<Integer> winningLottoList = new ArrayList<>();
-    List<Integer> matchCountList = new ArrayList<>();
-    static List<Integer> rankedList = new ArrayList<>();
+    static final int MINIMUM_WINNING = 3;
+    static final int THIRD_RANK=5;
+
+    static final List<Integer> moneyRanks = Arrays.asList(5000, 50000, 1500000, 2000000000,
+        30000000);
+
+    static List<Integer> rankedBox = new ArrayList<>();
+    List<List<Integer>> buyLottoTickets = new ArrayList<>();
+    List<Integer> winningLottoTicket = new ArrayList<>();
+    List<Integer> matchCountBox = new ArrayList<>();
     int bonusNumber;
     static long sumMoney;
     static float yield;
 
-    public static List<Integer> getRankedList() {
-        return rankedList;
+    public static List<Integer> getRankedBox() {
+        return rankedBox;
     }
 
     public void Game() {
 
         setting();
-        for (int index = 0; index < buyLottoList.size(); index++) {
-            List<Integer> nowLottoList = buyLottoList.get(index);
-            matchCountList.add(matchCount(winningLottoList, nowLottoList, bonusNumber));
+        for (int index = 0; index < buyLottoTickets.size(); index++) {
+            List<Integer> nowLottoTicket = buyLottoTickets.get(index);
+            matchCountBox.add(matchCount(winningLottoTicket, nowLottoTicket, bonusNumber));
         }
 
-        calculate(matchCountList);
+        calculate(matchCountBox);
         OutputView.printStatistics();
 
     }
@@ -47,9 +51,9 @@ public class LottoGame {
         return yield;
     }
 
-    private  void calculate(List<Integer> matchCountList) {
-        countingRank(matchCountList);
-        sumMoney = calculateSumMoney(rankedList);
+    private void calculate(List<Integer> matchCountBox) {
+        countingRank(matchCountBox);
+        sumMoney = calculateSumMoney(rankedBox);
         yield = setYield((float) sumMoney);
 
     }
@@ -59,43 +63,43 @@ public class LottoGame {
         return yield;
     }
 
-    private long calculateSumMoney(List<Integer> rankedList) {
-        long sumGetMoney=0;
-        for(int i=0; i<rankedList.size(); i++){
-            Integer nowRankMoney = moneyRankedList.get(i);
-            Integer howManyRanked = rankedList.get(i);
+    private long calculateSumMoney(List<Integer> rankedBox) {
+        long sumGetMoney = 0;
+        for (int index = 0; index < rankedBox.size(); index++) {
+            Integer nowRankMoney = moneyRanks.get(index);
+            Integer howManyRanked = rankedBox.get(index);
             sumGetMoney += nowRankMoney * howManyRanked;
         }
 
         return sumGetMoney;
     }
 
-    private void countingRank(List<Integer> matchCountList) {
-        for(int j=MINIMUM_WINNING; j<=BONUS; j++){
-            int finalJ = j;
-            rankedList.add((int) matchCountList.stream().filter(n -> n == finalJ).count());
+    private void countingRank(List<Integer> matchCountBox) {
+        for (int index = MINIMUM_WINNING; index <= BONUS; index++) {
+            int finalJ = index;
+            rankedBox.add((int) matchCountBox.stream().filter(n -> n == finalJ).count());
         }
     }
 
     public void setting() {
-        this.buyLottoList = BuyLottoList.getBuyLottoList();
-        this.winningLottoList = InputWinningLottoNumber.getWinningLottoList();
+        this.buyLottoTickets = BuyLottoTickets.getBuyLottoTickets();
+        this.winningLottoTicket = InputWinningLottoNumber.getWinningLottoTicket();
         this.bonusNumber = InputBonusNumber.getBonusNumber();
     }
 
-    public static Integer matchCount(List<Integer> winningLottoList,
-        List<Integer> nowBuyLottoList, int bonusNumber) {
-        long count = winningLottoList.stream().filter(n -> nowBuyLottoList.contains(n)).count();
-        if(count==5){
-            if(isInBonusNumber(nowBuyLottoList, bonusNumber)){
+    public static Integer matchCount(List<Integer> winningLottoTicket,
+        List<Integer> nowBuyLottoTicket, int bonusNumber) {
+        long count = winningLottoTicket.stream().filter(n -> nowBuyLottoTicket.contains(n)).count();
+        if (count == THIRD_RANK) {
+            if (isInBonusNumber(nowBuyLottoTicket, bonusNumber)) {
                 return BONUS;
             }
         }
         return Math.toIntExact(count);
     }
 
-    public static boolean isInBonusNumber(List<Integer> nowBuyLottoList, int bonusNumber){
-        return nowBuyLottoList.contains(bonusNumber);
+    public static boolean isInBonusNumber(List<Integer> nowBuyLottoTicket, int bonusNumber) {
+        return nowBuyLottoTicket.contains(bonusNumber);
     }
 
 

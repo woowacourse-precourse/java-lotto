@@ -3,18 +3,22 @@ package view;
 
 import camp.nextstep.edu.missionutils.Console;
 import constant.ErrorMessage;
-import constant.ExceptionNumber;
 import java.util.stream.IntStream;
 
 public class InputUserMoney {
 
+
+    private static final int EXCEPTION_CODE=-1;
+    private static final char MIN_NUMBER_CHAR ='0';
+    private static final char MAX_NUMBER_CHAR ='9';
+    private static final int CURRENCY_UNIT=1000;
     static int userMoney;
 
     public static int inputMoney(){
         String input_money = Console.readLine();
 
         if(!validateMoney(input_money)){
-            return ExceptionNumber.EXCEPTION_CODE.getCode();
+            return EXCEPTION_CODE;
         }
         userMoney = Integer.parseInt(input_money);
         return userMoney;
@@ -56,14 +60,14 @@ public class InputUserMoney {
         return false;
     }
     private static void isCorrectMoney(int money){
-        if(money %1000>0){
+        if(money % CURRENCY_UNIT>0){
             throw new IllegalArgumentException(ErrorMessage.ERROR_INCORRECT_MONEY.getMessage());
         }
     }
 
     private static void isNumber(String input_money){
         IntStream chars = input_money.chars();
-        if(chars.anyMatch(c ->  (c<'0' || c>'9'))){
+        if(chars.anyMatch(c ->  (c< MIN_NUMBER_CHAR || c> MAX_NUMBER_CHAR))){
             throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_NUMBER.getMessage());
         }
     }
