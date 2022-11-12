@@ -14,21 +14,29 @@ public class Referee {
     }
 
     public List<MatchingType> compare(List<Lotto> lottos, List<Integer> player, int bonusNumber) {
-        List<MatchingType> matchingTypes = new ArrayList<>();
+        List<MatchingType> result = new ArrayList<>();
 
         for (Lotto lotto : lottos) {
-            int correctCount = judgement.correctCount(lotto, player);
+            MatchingType matchingType = createMatchingType(lotto, player, bonusNumber);
 
-            MatchingType matchingType = MatchingType.findByCorrectCount(correctCount);
-
-            if (checkBonusNumber(matchingType, lotto, bonusNumber)) {
-                matchingType = FIVE_WITH_BONUS_MATCH;
+            if (matchingType.isWinningType()) {
+                result.add(matchingType);
             }
-
-            matchingTypes.add(matchingType);
         }
 
-        return matchingTypes;
+        return result;
+    }
+
+    public MatchingType createMatchingType(Lotto lotto, List<Integer> player, int bonusNumber) {
+        int correctCount = judgement.correctCount(lotto, player);
+
+        MatchingType matchingType = MatchingType.findByCorrectCount(correctCount);
+
+        if (checkBonusNumber(matchingType, lotto, bonusNumber)) {
+            matchingType = FIVE_WITH_BONUS_MATCH;
+        }
+
+        return matchingType;
     }
 
     public boolean checkBonusNumber(MatchingType matchingType, Lotto lotto, int bonusNumber) {

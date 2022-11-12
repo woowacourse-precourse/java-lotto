@@ -30,4 +30,9 @@ public enum MatchingType {
                 .findAny()
                 .orElse(NOT_MATCH);
     }
+
+    public boolean isWinningType() {
+        return THREE_MATCH.matchCount <= this.matchCount && this.matchCount <= SIX_MATCH.matchCount;
+    }
+
 }
