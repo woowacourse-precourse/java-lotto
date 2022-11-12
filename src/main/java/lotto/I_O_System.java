@@ -2,37 +2,34 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.IllformedLocaleException;
-import java.util.List;
-
 public class I_O_System {
     static final int lottey_price = 1000;
     public static final String BAGIC_ERROR_MESSAGE = "[ERROR]";
     private static final String Sell_Messge = "개를 구매했습니다.";
     private static final String ERROR_Code_1 = " 숫자가 아닌 문자가 들어왔습니다.";
     private static final String ERROR_Code_2 = " 돈이 천원 단위로 나누어지지않습니다.";
-    private String Enter_Price = "0";
-    private int Number = 0;
+    private String Enter_Number = "0";
+    private int Money_Enter = 0;
 
     public void Enter_Price() {
-        Enter_Price = Console.readLine();
+        Enter_Number = Console.readLine();
         Int_Changer();
         left_money();
-        Number /= lottey_price;
-        System.out.println(Number + Sell_Messge);
+        Money_Enter /= lottey_price;
+        System.out.println(Money_Enter + Sell_Messge);
 
     }
 
     private int Int_Changer() {
         if (Differnet_Error()) {
-            Number = Integer.parseInt(Enter_Price);
+            Money_Enter = Integer.parseInt(Enter_Number);
         }
-        return Number;
+        return Money_Enter;
     }
 
     private boolean Differnet_Error() {
         try {
-            if (!(Enter_Price != null && Enter_Price.matches("^[0-9]*$"))) {
+            if (!(Enter_Number != null && Enter_Number.matches("^[0-9]*$"))) {
                 throw new IllegalArgumentException(BAGIC_ERROR_MESSAGE + ERROR_Code_1);
             }
         } catch (IllegalArgumentException ex) {
@@ -46,12 +43,11 @@ public class I_O_System {
     private boolean left_money() {
         int Base_Number = 0;
         try {
-            if ((Base_Number = Number % 1000) > 0) {
+            if ((Base_Number = Money_Enter % 1000) > 0) {
                 throw new IllegalArgumentException(BAGIC_ERROR_MESSAGE + ERROR_Code_2);
             }
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
-            System.out.println(Base_Number);
             return false;
         }
 
@@ -68,6 +64,10 @@ public class I_O_System {
 
         return true;
     }
+public void Enter_Number()
+{
+    Enter_Number =Console.readLine();
+}
 
 
 }
