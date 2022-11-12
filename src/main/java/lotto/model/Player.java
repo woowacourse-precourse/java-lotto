@@ -13,21 +13,12 @@ import lotto.view.View;
 
 public class Player {
 
-    public int inputSingleNumber() {
-        String input = input();
-        int number;
-
-        try {
-            number = Integer.parseInt(input);
-        } catch (IllegalArgumentException ie) {
-            View.printNotInteger();
-            throw ie;
-        }
-        return number;
+    public String input() {
+        return Console.readLine();
     }
 
     public List<Integer> inputLottoNumbers() {
-        String input = input();
+        String input = Console.readLine();
         List<String> checkComma;
         List<Integer> numbers;
 
@@ -35,19 +26,16 @@ public class Player {
             checkComma = new ArrayList<>(Arrays.asList(input.split("\\s*,\\s*")));
         } catch (IllegalArgumentException ie) {
             View.printNotComma();
-            throw ie;
+            throw new IllegalArgumentException();
         }
 
         try {
             numbers = Convertor.StringToInteger(checkComma);
         } catch (IllegalArgumentException ie) {
             View.printNotInteger();
-            throw ie;
+            throw new IllegalArgumentException();
         }
         return numbers;
     }
 
-    private static String input() {
-        return Console.readLine();
-    }
 }

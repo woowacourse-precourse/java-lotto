@@ -13,28 +13,26 @@ public class Service {
         return money / 1000;
     }
 
-    public static double getProfitRates(String money, int[] lottoResult) {
+    public static double getProfitRates(int money, int[] lottoResult) {
         double winningAmount = 0;
 
         for (int i = 0; i < lottoResult.length; i++) {
             winningAmount = lottoResult[i] * WinnerInfo.values()[i].getPrizeInformation();
         }
-        return (winningAmount / Integer.parseInt(money)) * 100;
+        return (winningAmount / money) * 100;
     }
 
     // TODO: 리팩토링 필요
     public static int[] getLottoResult(
-            int lottoAmount, List<List<Integer>> lottoNumbers, List<String> playerLottoNumbers,
+            int lottoAmount, List<List<Integer>> lottoNumbers, List<Integer> playerLottoNumbers,
             int playerBonusNumber) {
-
-        List<Integer> playerLotteryNumbers = Convertor.StringToInteger(playerLottoNumbers); // TODO: 변수명 변경 고려
 
         int[] result = new int[Constant.WINNER_NUMBER];
         Arrays.fill(result, 0);
 
         for (int i = 0; i < lottoAmount; i++) {
             List<Integer> lotto = Convertor.ExtractList(lottoNumbers, i);
-            int index = getOneLottoResult(lotto, playerLotteryNumbers, playerBonusNumber);
+            int index = getOneLottoResult(lotto, playerLottoNumbers, playerBonusNumber);
 
             if (index == 0 || index == -1) {
                 continue;

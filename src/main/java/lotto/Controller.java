@@ -13,23 +13,57 @@ public class Controller {
     Player player = new Player();
 
     public void run() {
-        setGame();
+        try {
+            setGame();
+        } catch (IllegalArgumentException ie) {
+            return;
+        }
     }
 
-    private void setGame() {
+    public void setGame() {
         View.printInputPurchaseAmount();
-        String money = getMoney();
+        String input = player.input();
 
-        int lottoAmount = getLottoAmount(money);
-        List<List<Integer>> lottoNumbers = getLottoNumbers(lottoAmount);
-        List<Integer> bonusNumbers = getBonusNumbers(lottoAmount);
+        try {
+            InputVerifier.checkMoney(input);
+        } catch (IllegalArgumentException ie) {
+            return;
+        }
+
+        int money = Integer.parseInt(input);
+        int lottoAmount = Service.getLottoAmount(money);
+
+        List<List<Integer>> lottoNumbers;
+
+        try {
+            lottoNumbers = new ArrayList<>(buyLotto(lottoAmount));
+        } catch (IllegalArgumentException ie) {
+            return;
+        }
+
+        List<Integer> bonusNumbers = getBonusNumbers(lottoAmount);  // TODO: BONUS 넘버 검증
         View.printPurchaseInformation(lottoAmount, lottoNumbers);
 
         View.printInputLottoNumber();
-        List<String> playerLottoNumbers = guessLottoNumbers();
+        List<Integer> playerLottoNumbers;
+
+        try {
+            playerLottoNumbers = player.inputLottoNumbers();
+            Lotto lotto = new Lotto(playerLottoNumbers);
+        } catch (IllegalArgumentException ie) {
+            return;
+        }
 
         View.printInputBonusNumber();
-        int playerBonusNumber = guessBonusNumbers();
+        input = player.input();
+
+        try {
+            InputVerifier.checkBonusNumber(input);
+        } catch (IllegalArgumentException ie) {
+            return;
+        }
+
+        int playerBonusNumber = Integer.parseInt(input);
 
         int[] lottoResult = Service.getLottoResult(lottoAmount, lottoNumbers, playerLottoNumbers, playerBonusNumber);
         View.printResult(lottoResult);
@@ -38,22 +72,14 @@ public class Controller {
         View.printProfitRate(profitRates);
     }
 
-    private String getMoney() {
-        String money = player.getInput();
-        InputVerifier.checkMoney(money);
 
-        return money;
-    }
-
-    private int getLottoAmount(String money) {
-        return Service.countLottoAmount(money);
-    }
-
-    private List<List<Integer>> getLottoNumbers(int lottoAmount) {
+    private List<List<Integer>> buyLotto(int lottoAmount) {
         List<List<Integer>> lottoNumbers = new ArrayList<>();
 
         for (int i = 0; i < lottoAmount; i++) {
-            lottoNumbers.add(LottoGenerator.generateLottoNumbers());
+            List<Integer> checkValid = LottoGenerator.generateLottoNumbers();
+            Lotto lotto = new Lotto(checkValid);
+            lottoNumbers.add(checkValid);
         }
         return lottoNumbers;
     }
@@ -67,16 +93,11 @@ public class Controller {
         return bonusNumbers;
     }
 
-    private List<String> guessLottoNumbers() {
-        List<String> lottoNumbers = player.guessLottoNumbers();
-        InputVerifier.checkLottoNumber(lottoNumbers);
-        return lottoNumbers;
-    }
+//    private int guessBonusNumbers() {
+//        String bonusNumbers = player.inputSingleNumber();
+//        InputVerifier.checkBonusNumber(bonusNumbers);
+//        return Integer.parseInt(bonusNumbers);
+//    }
 
-    private int guessBonusNumbers() {
-        String bonusNumbers = player.getInput();
-        InputVerifier.checkBonusNumber(bonusNumbers);
-        return Integer.parseInt(bonusNumbers);
-    }
 
 }
