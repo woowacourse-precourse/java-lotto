@@ -3,6 +3,9 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.Exceptions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Computer {
     Exceptions exceptions = new Exceptions();
 
@@ -22,11 +25,13 @@ public class Computer {
         return splitNum;
     }
 
-    public void checkNumbers(String[] splitNum) {
+    public List<Integer> checkNumbers(String[] splitNum) {
+        List<Integer> numbers= new ArrayList<>();
         int num = 0;
         for (String str : splitNum) {
             try {
                 num = Integer.parseInt(str);
+                numbers.add(num);
             } catch (Exception e) {
                 exceptions.inputPriceError();
             }
@@ -34,5 +39,6 @@ public class Computer {
                 exceptions.notScopeNumbers();
             }
         }
+        return numbers;
     }
 }
