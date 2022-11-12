@@ -3,7 +3,7 @@ package lotto.domain.io;
 import lotto.domain.constant.ExceptionMessage;
 
 public class NumberValidator {
-  int validate(String input) {
+  public int validate(String input) {
     int inputToInt;
     try {
       inputToInt = Integer.parseInt(input);
