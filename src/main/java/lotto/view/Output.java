@@ -6,6 +6,7 @@ public class Output {
     public void inputMoneyOrder() {
         System.out.println(INPUTMONEY_ORDER);
     }
+
     public void purchaseLottoOrder(int lottoCount) {
         System.out.println(lottoCount+PURCHASE_LOTTO_ORDER);
     }

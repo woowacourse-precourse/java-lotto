@@ -9,18 +9,23 @@ public class InputMoneyHandler {
         checkIsNonzero(inputMoney);
         checkIsValidMoney(inputMoney);
     }
+
     public void checkIsNumber(String inputMoney) {
         boolean checkNumeric = inputMoney.matches("[+-]?\\d*(\\.\\d+)?");
+
         if(!checkNumeric){
             throw new IllegalArgumentException(ERROR_ORDER);
         }
     }
+
     public void checkIsNonzero(String inputMoney) {
         int money = Integer.parseInt(inputMoney);
+
         if(money == 0) {
             throw new IllegalArgumentException(ERROR_ORDER);
         }
     }
+
     public void checkIsValidMoney(String inputMoney) {
         InputMoney userLottoService = new InputMoney();
         int money = Integer.parseInt(inputMoney);

@@ -12,7 +12,6 @@ public class InputMoney {
     Output output = new Output();
 
     public UserMoney InputMoney() {
-
         output.inputMoneyOrder();
         String inputMoney = Console.readLine();
         lineSkip();
@@ -21,6 +20,7 @@ public class InputMoney {
 
         return userMoney;
     }
+
     public int stringToInteger(String value) {
         int number = Integer.parseInt(value);
 
@@ -30,6 +30,7 @@ public class InputMoney {
         lottoCount = inputMoney.getMoney() / LOTTO_PRICE;
         output.purchaseLottoOrder(lottoCount);
     }
+
     public void lineSkip() {
         System.out.println();
     }

@@ -12,9 +12,11 @@ public class LottoGame {
         countLottoPapers(userMoney);
         pickRandomLottos(inputMoney.lottoCount);
     }
+
     public void countLottoPapers(UserMoney userMoney) {
         inputMoney.lottoCount(userMoney);
     }
+
     public void pickRandomLottos(int lottoPapers) {
         pickRandomLotto.PickRandomNumber(lottoPapers);
     }
