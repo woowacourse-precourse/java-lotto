@@ -5,23 +5,14 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 
 public class ConsoleInput {
-    public static int purchaseCount;
-    public static List<Integer> luckySix;
-    public static int bonusNumber;
-
-    public void priceInput() {
-        System.out.println(LottoMessage.START_MESSAGE.getMessage());
-        String purchaseAmount = Console.readLine();
-        for (int index = 0; index < purchaseAmount.length(); index++) {
-            if (!Character.isDigit(purchaseAmount.charAt(index))) {
-                throw new IllegalArgumentException(LottoMessage.INTEGER_ERROR_MESSAGE.getMessage());
-            }
-        }
-        Purchase userPurchase = new Purchase(Integer.parseInt(purchaseAmount));
-        purchaseCount = userPurchase.calculateCount();
+    public static int buyLotto() {
+        System.out.println(GameMessage.PRICE_MESSAGE.getMessage());
+        String payPrice = Console.readLine();
+        Purchase purchaseLotto = new Purchase(payPrice);
+        return purchaseLotto.calculateCount();
     }
 
-    public void luckySixInput() {
+    /*public static void luckySixInput() {
         System.out.println(LottoMessage.LUCKY_NUMBER_MESSAGE.getMessage());
         String inputNumbers = Console.readLine();
         for (int index = 0; index < inputNumbers.length(); index++) {
@@ -34,20 +25,6 @@ public class ConsoleInput {
             }
             luckySix.add(Character.getNumericValue(oneNumber));
         }
-    }
+    }*/
 
-    public void bonusInput() {
-        System.out.println(LottoMessage.BONUS_NUMBER_MESSAGE.getMessage());
-        String inputBonus = Console.readLine();
-        for (int index = 0; index < inputBonus.length(); index++) {
-            if (!Character.isDigit(inputBonus.charAt(index))) {
-                throw new IllegalArgumentException(LottoMessage.INTEGER_ERROR_MESSAGE.getMessage());
-            }
-            if (index == 1) {
-                throw new IllegalArgumentException(LottoMessage.BONUS_ERROR_MESSAGE.getMessage());
-            }
-            bonusNumber = Character.getNumericValue(inputBonus.charAt(index));
-        }
-        LuckyAndBonus finalLuckyNumbers = new LuckyAndBonus(luckySix, bonusNumber);
-    }
 }
