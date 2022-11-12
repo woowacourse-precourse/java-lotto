@@ -1,6 +1,12 @@
 package lotto;
 
 public class Constant {
+    // 로또 관련 수
+    public static final int lottoNumSize = 6;
+    public static final int lottoRangeStartNum = 1;
+    public static final int lottoRangeEndNum = 45;
+    public static final int lottoAmount = 1000;
+
     // 당첨 랭크별 일치 수
     public static final int firstRankNum = 6;
     public static final int secondRankNum = 5;

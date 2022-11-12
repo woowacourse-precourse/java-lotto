@@ -1,5 +1,7 @@
 package lotto.model;
 
+import lotto.Constant;
+
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -16,7 +18,7 @@ public class Lotto {
 
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != Constant.lottoNumSize) {
             throw new IllegalArgumentException();
         }
     }
@@ -27,7 +29,7 @@ public class Lotto {
 
     private void validateNumRange(List<Integer> numbers) {
         for (int number : numbers) {
-            if (!(number >= 1 && number <= 45)) {
+            if (!(number >= Constant.lottoRangeStartNum && number <= Constant.lottoRangeEndNum)) {
                 System.err.println("[ERROR] number range is invalid");
                 throw new IllegalArgumentException();
             }

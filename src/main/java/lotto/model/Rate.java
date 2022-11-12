@@ -1,5 +1,6 @@
 package lotto.model;
 
+import lotto.Constant;
 import lotto.enums.Rank;
 
 import java.util.HashMap;
@@ -21,11 +22,11 @@ public class Rate {
     // rankPrice 초기화
     private void setRankPrice(){
         Map<Rank,Integer> rankPrice = new HashMap<>();
-        rankPrice.put(Rank.first,2000000000);
-        rankPrice.put(Rank.second,30000000);
-        rankPrice.put(Rank.third,1500000);
-        rankPrice.put(Rank.fourth,50000);
-        rankPrice.put(Rank.fifth,5000);
+        rankPrice.put(Rank.first, Constant.firstRankPrice);
+        rankPrice.put(Rank.second,Constant.secondRankPrice);
+        rankPrice.put(Rank.third,Constant.thirdRankPrice);
+        rankPrice.put(Rank.fourth,Constant.fourthRankPrice);
+        rankPrice.put(Rank.fifth,Constant.fifthRankPrice);
         this.rankPrice = rankPrice;
     }
 

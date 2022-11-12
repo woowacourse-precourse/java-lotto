@@ -1,5 +1,6 @@
 package lotto.model;
 
+import lotto.Constant;
 import lotto.enums.Rank;
 
 import java.util.HashMap;
@@ -39,10 +40,10 @@ public class Draw {
     // rankClassification 초기화
     private void setRankClassification(){
         Map<Integer,Rank> rankClassification = new HashMap<>();
-        rankClassification.put(6,Rank.first);
-        rankClassification.put(5,Rank.third);
-        rankClassification.put(4,Rank.fourth);
-        rankClassification.put(3,Rank.fifth);
+        rankClassification.put(Constant.firstRankNum,Rank.first);
+        rankClassification.put(Constant.thirdRankNum,Rank.third);
+        rankClassification.put(Constant.fourthRankNum,Rank.fourth);
+        rankClassification.put(Constant.fifthRankNum,Rank.fifth);
         rankClassification.put(2,Rank.none);
         rankClassification.put(1,Rank.none);
         rankClassification.put(0,Rank.none);
@@ -99,7 +100,7 @@ public class Draw {
     }
     
     private void validateBonusNumRange(int bonusNum) {
-        if (!(bonusNum >= 1 && bonusNum <= 45)) {
+        if (!(bonusNum >= Constant.lottoRangeStartNum && bonusNum <= Constant.lottoRangeEndNum)) {
             System.err.println("[ERROR] bonus number range is invalid");
             throw new IllegalArgumentException();
         }

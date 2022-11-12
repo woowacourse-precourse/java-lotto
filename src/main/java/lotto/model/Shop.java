@@ -1,6 +1,7 @@
 package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.Constant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class Shop {
 
     private int calcLottoSize(int price) {
         priceValidate(price);
-        return (price / 1000);
+        return (price / Constant.lottoAmount);
     }
 
     // lottoSize 만큼의 Lotto 객체를 생성 후 List에 저장
@@ -38,11 +39,12 @@ public class Shop {
     }
 
     private Lotto getRandomLotto(){
-        return new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6));
+        return new Lotto(Randoms.pickUniqueNumbersInRange(Constant.lottoRangeStartNum,
+                Constant.lottoRangeEndNum,Constant.lottoNumSize));
     }
 
     private void priceValidate(int price) {
-        if (price % 1000 != 0) {
+        if (price % Constant.lottoAmount != 0) {
             System.err.println("[ERROR] price is invalid");
             throw new IllegalArgumentException();
         }
