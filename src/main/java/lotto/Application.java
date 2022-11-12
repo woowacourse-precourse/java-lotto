@@ -209,6 +209,21 @@ public class Application {
         return winningNumberList;
     }
 
+    public static List<Integer> changeWinningNumbersStringToList(String input) {
+        List<Integer> winningNumbers = new ArrayList<>();
+        int number = 0;
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == ',') {
+                winningNumbers.add(number);
+                number = 0;
+                continue;
+            }
+            number = number * 10 + input.charAt(i) - 48;
+        }
+        winningNumbers.add(number);
+        return winningNumbers;
+    }
+
     public static String inputBonusNumber() {
 
         return Console.readLine();
