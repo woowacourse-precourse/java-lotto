@@ -14,7 +14,13 @@ public class FeatureTest {
     @Test
     void 입력을_숫자로_변환() {
         String input = "1";
-        assertThat(Input.getInputToInt(input)).isEqualTo(1400);
+        assertThat(Input.getInputToInt(input)).isEqualTo(1);
+    }
+
+    @Test
+    void 입력을_숫자로_변환_예외_처리() {
+        String input = "46";
+        assertThatThrownBy(() -> Input.getInputToInt(input)).hasMessage("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
 
     @Test

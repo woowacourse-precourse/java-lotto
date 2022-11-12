@@ -2,7 +2,7 @@ package lotto;
 
 public enum ContainStatus {
 
-    Contain(1,true),
+    Contain(1, true),
     NotContain(0, false);
 
     private int contain1Value;
@@ -13,9 +13,18 @@ public enum ContainStatus {
         this.contain2Value = contain2Value;
     }
 
+    public static ContainStatus setContainStatus(boolean contain2Value) {
+        if (contain2Value) {
+            return ContainStatus.Contain;
+        }
+        return ContainStatus.NotContain;
+
+    }
+
     public int getContain1Value() {
         return contain1Value;
     }
+
     public boolean getContain2Value() {
         return contain2Value;
     }

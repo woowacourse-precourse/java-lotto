@@ -12,9 +12,7 @@ public class User {
 
     User(String inputCost) {
         valid(inputCost);
-        int tempCost = Integer.parseInt(inputCost);
-
-        this.inputCost = tempCost;
+        this.inputCost = Integer.parseInt(inputCost);
     }
 
     private void valid(String inputCost) {

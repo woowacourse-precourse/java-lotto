@@ -23,12 +23,8 @@ public class Lotto {
     }
 
     public ContainStatus isContainNumber(int LottoNumber) {
-        if(numbers.contains(LottoNumber))
-        {
-            return ContainStatus.Contain;
-        }
 
-        return ContainStatus.NotContain;
+        return ContainStatus.setContainStatus(numbers.contains(LottoNumber));
     }
 
     public int getMatchingNumber(List<Integer> LottoNumbers) {
