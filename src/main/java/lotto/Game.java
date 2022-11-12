@@ -13,6 +13,7 @@ public class Game {
     }
 
     public void start() throws IllegalArgumentException {
-        ui.inputBalance();
+        String balance = ui.inputBalance();
+        int lottoAmount = service.getLottoAmount(balance);
     }
 }
