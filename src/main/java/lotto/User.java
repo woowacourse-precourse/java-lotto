@@ -9,7 +9,7 @@ public class User {
 
 	public static int getPayment() {
 
-		int payment;
+		int payment = 0;
 
 		System.out.println("구입금액을 입력해 주세요.");
 		try {
@@ -19,10 +19,15 @@ public class User {
 		}
 
 		catch (NumberFormatException e) {
-			throw new IllegalArgumentException("[ERROR] 숫자만 입력해야 합니다.");
+			throwNonNumericException();
 		}
 
 		return payment;
+	}
+
+	public static void throwNonNumericException() {
+
+		throw new IllegalArgumentException("[ERROR] 숫자만 입력해야 합니다.");
 	}
 
 	public static void checkPaymentUnit(int payment) {
@@ -41,41 +46,41 @@ public class User {
 		System.out.println("\n당첨 번호를 입력해 주세요.");
 		String[] numbers = Console.readLine().split(",");
 
-		List<Integer> winningNumbers = converToNumber(numbers);
+		List<Integer> winningNumbers = transformNumbers(numbers);
 
 		verifyNumbers(winningNumbers);
 		return winningNumbers;
 	}
 
-	public static List<Integer> converToNumber(String[] numbers) {
+	public static List<Integer> transformNumbers(String[] numbers) {
 
-		List<Integer> result = new ArrayList<Integer>(Constant.LOTTO_LENGTH.value);
-		
+		List<Integer> winningNumbers = new ArrayList<Integer>(Constant.LOTTO_NUMBER_LENGTH.value);
+
 		for (String number : numbers) {
-			
+
 			try {
 				Integer _number = Integer.valueOf(number);
-				result.add(_number);
+				winningNumbers.add(_number);
 			}
-			
+
 			catch (NumberFormatException e) {
-				throw new IllegalArgumentException("[ERROR] 숫자만 입력해야 합니다.");
+				throwNonNumericException();
 			}
 		}
-		
-		return result;
+
+		return winningNumbers;
 	}
 
-	public static void verifyNumbers(List<Integer> numbers) {
+	public static void verifyNumbers(List<Integer> winningNumbers) {
 
-		verifyLength(numbers);
-		verifyRange(numbers);
-		verifyOverlap(numbers);
+		verifyLength(winningNumbers);
+		verifyRange(winningNumbers);
+		verifyOverlap(winningNumbers);
 	}
 
-	public static void verifyLength(List<Integer> numbers) {
+	public static void verifyLength(List<Integer> winningNumbers) {
 
-		boolean isValid = numbers.size() == Constant.LOTTO_LENGTH.value;
+		boolean isValid = winningNumbers.size() == Constant.LOTTO_NUMBER_LENGTH.value;
 		if (!isValid) {
 
 			String message = "[ERROR] '1,2,3,4,5,6' 형식으로 번호 6개를 입력해야 합니다.";
@@ -99,17 +104,47 @@ public class User {
 		}
 	}
 
-	public static void verifyOverlap(List<Integer> numbers) {
+	public static void verifyOverlap(List<Integer> winningNumbers) {
 
-		List<Integer> uniqueNumbers = new ArrayList<Integer>(Constant.LOTTO_LENGTH.value);
+		List<Integer> uniqueNumbers = new ArrayList<Integer>(Constant.LOTTO_NUMBER_LENGTH.value);
 
-		for (Integer number : numbers) {
+		for (Integer number : winningNumbers) {
 
 			if (uniqueNumbers.contains(number)) {
 				throw new IllegalArgumentException("[ERROR] 중복되지 않는 숫자들로 입력해야 합니다.");
 			}
 
 			uniqueNumbers.add(number);
+		}
+	}
+
+	public static Integer getBonusNumber(List<Integer> winningNumbers) {
+
+		System.out.println("\n보너스 번호를 입력해 주세요.");
+		Integer number = 0;
+
+		try {
+			number = Integer.valueOf(Console.readLine());
+		}
+
+		catch (NumberFormatException e) {
+			throwNonNumericException();
+		}
+
+		verifyNumber(number, winningNumbers);
+		
+		return number;
+	}
+	
+	public static void verifyNumber(Integer bonusNumber, List<Integer> winningNumbers) {
+		
+		List<Integer> transformedNumber = new ArrayList<Integer>(1);
+		transformedNumber.add(bonusNumber);
+		verifyRange(transformedNumber);
+		
+		boolean isOverlap = winningNumbers.contains(bonusNumber);
+		if (isOverlap) {
+			throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 다른 숫자를 입력해야 합니다.");
 		}
 	}
 }
