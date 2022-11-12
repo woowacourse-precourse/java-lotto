@@ -18,19 +18,19 @@ public class Lotto {
 
     private void validateLength(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBER_SIZE) {
-            throw new IllegalArgumentException(LottoMessage.LOTTO_LENGTH_ERROR.getErrorMessage());
+            throw new IllegalArgumentException(LottoMessage.LENGTH_ERROR_MESSAGE.getMessage());
         }
     }
 
     private void validateRange(List<Integer> numbers) {
         if (numbers.stream().anyMatch(number -> number < MIN_NUMBER || number > MAX_NUMBER)) {
-            throw new IllegalArgumentException(LottoMessage.LOTTO_RANGE_ERROR.getErrorMessage());
+            throw new IllegalArgumentException(LottoMessage.RANGE_ERROR_MESSAGE.getMessage());
         }
     }
 
     private void validateDuplicate(List<Integer> numbers) {
         if (numbers.size() != numbers.stream().distinct().count()) {
-            throw new IllegalArgumentException(LottoMessage.LOTTO_DUPLICATE_ERROR.getErrorMessage());
+            throw new IllegalArgumentException(LottoMessage.DUPLICATE_ERROR_MESSAGE.getMessage());
         }
     }
 }
