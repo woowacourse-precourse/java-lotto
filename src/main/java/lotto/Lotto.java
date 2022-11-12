@@ -70,9 +70,18 @@ public class Lotto {
         return  lottoNumbers;
     }
 
-    public static int getBonusNumber(String input){
+    public static int getBonusNumber(){
+        String input = readLine();
+        String regex = "\\d+";
+
+        if (input.length() > 1){
+            throw new IllegalArgumentException("[ERROR] 한 자리 숫자만 입력해주세요");
+        }
+        if (!input.matches(regex)){
+            throw new IllegalArgumentException("[ERROR] 한 자리 숫자만 입력해주세요");
+        }
         int bonusNumber = Integer.valueOf(input);
-        return  bonusNumber;
+        return bonusNumber;
     }
 
     public static int castLotto(List<List<Integer>> lottoTickets, List<Integer> lottoNumbers, int bonusNumber){
