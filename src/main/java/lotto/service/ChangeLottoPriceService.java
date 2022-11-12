@@ -19,7 +19,7 @@ public class ChangeLottoPriceService {
     }
 
     private boolean isFiveMatch(Ranking ranking){
-        return false;
+        return return ranking.equals(Ranking.FIVE_MATCH);
     }
 
     private boolean isFiveMatchWithBonusNumber(Ranking ranking){
