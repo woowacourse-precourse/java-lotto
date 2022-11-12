@@ -114,6 +114,10 @@ public class Lotto {
         return purchasedLotto;
     }
 
+    public static double calculateBenefit(final Integer payed, final Integer earned) {
+        return (double)earned / payed;
+    }
+
     private static void validatePurchaseAmount(final int amount) {
         if (amount % LottoEnum.PURCHASE_UNIT.getValue() != 0) {
             throw new IllegalArgumentException(String.format("[ERROR] %d 단위로 구입이 가능합니다.", LottoEnum.PURCHASE_UNIT.getValue()));

@@ -56,6 +56,11 @@ public class LottoUI {
         return number;
     }
 
+    public static void printBenefit(double benefit) {
+        benefit *= 100;
+        System.out.printf("총 수익률은 %.1f%% 입니다.\n", benefit);
+    }
+
     private static <T> void amountValidate(T[] target) {
         if (target.length != LottoEnum.WINNING_NUMBERS.getValue()) {
             throw new IllegalArgumentException(String.format("[ERROR] 쉼표 구분자를 정확히 입력해주세요."));
