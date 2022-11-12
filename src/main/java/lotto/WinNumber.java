@@ -20,6 +20,7 @@ public class WinNumber {
         List<Integer> tmpNumbers = validateNumberType(numbers);
         validateNumberLength(tmpNumbers);
         validateNumberReplicate(tmpNumbers);
+        validateNumberRange(tmpNumbers);
         this.numbers = tmpNumbers;
     }
 
@@ -47,6 +48,15 @@ public class WinNumber {
         if (independentNumbers.size() != numbers.size()) {
             System.out.println("[ERROR] 로또 번호는 중복될 수 없습니다.");
             throw new IllegalArgumentException();
+        }
+    }
+
+    public void validateNumberRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < 1 || number > 45) {
+                System.out.println("[ERROR] 로또 번호는 1~45 사이의 숫자여야 합니다.");
+                throw new IllegalArgumentException();
+            }
         }
     }
 }

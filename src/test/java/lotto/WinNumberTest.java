@@ -27,4 +27,13 @@ public class WinNumberTest {
         assertThatThrownBy(() -> new WinNumber("1,2,3,4,5,5"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또 번호에 1~45 이외의 숫자가 포함되면 예외가 발생한다.")
+    @Test
+    void createWinNumberWithInvalidNumber() {
+        assertThatThrownBy(() -> new WinNumber("1,2,3,4,5,46"))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new WinNumber("1,2,3,4,5,0"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
