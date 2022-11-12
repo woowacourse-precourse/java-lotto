@@ -25,4 +25,12 @@ public class InputValidator {
             throw new IllegalArgumentException("[ERROR] 로또 번호가 6개가 아닙니다.");
         }
     }
+
+    public void checkDigitNumber(String lottonumber) {
+        for(int i=0; i<lottonumber.length(); i++) {
+            if(!Character.isDigit(lottonumber.charAt(i)) && lottonumber.charAt(i) != ',') {
+                throw new IllegalArgumentException("[ERROR] 잘못된 당첨 번호 입력입니다.");
+            }
+        }
+    }
 }
