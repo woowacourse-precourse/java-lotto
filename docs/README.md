@@ -23,6 +23,13 @@
     - [ ] 로또 숫자가 몇개 당첨되었는지 판단함
 
 
-- LottoSetting
+- LottoApplicationSetting
+  - LottoSetting
     - [ ] 변경 가능한 정보들을 enum 값으로 담고 있음
-    - [ ] 해당 정보에 따라 객체를 생성
+    - [ ] 해당 정보에 따라 객체(Lotto)를 생성
+  - WinningNumberSetting
+    - [ ] 당첨 번호에 대한 정보를 저장하고 있음 (enum)
+    - [ ] 해당 정보에 따라 객체(WinningNumber)를 생성
+  - LottoRewardSetting
+    - [ ] 각 상금 조건과 상금 정보를 가지고 있음 (enum)
+    - [ ] 
