@@ -19,7 +19,7 @@ public class LottoInStream {
         String line = readline();
 
         if (isNullOrEmptyString(line)) {
-            throw new IllegalArgumentException(_error_default_msg + " 잘못된 입력 값 입니다.");
+            throw new IllegalArgumentException(_error_default_msg + " 빈 문자열은 입력할 수 없습니다.");
         }
 
         try {
@@ -34,7 +34,7 @@ public class LottoInStream {
         String line = readline();
 
         if (isNullOrEmptyString(line)) {
-            throw new IllegalArgumentException(_error_default_msg + " 잘못된 입력 값 입니다.");
+            throw new IllegalArgumentException(_error_default_msg + " 빈 문자열은 입력할 수 없습니다.");
         }
         if (line.length() != _lotto_number_length) {
             throw new IllegalArgumentException(
@@ -48,7 +48,7 @@ public class LottoInStream {
         String line = readline();
 
         if (isNullOrEmptyString(line)) {
-            throw new IllegalArgumentException(_error_default_msg + " 잘못된 입력 값 입니다.");
+            throw new IllegalArgumentException(_error_default_msg + " 빈 문자열은 입력할 수 없습니다.");
         }
         if (line.length() != _lotto_bonus_length) {
             throw new IllegalArgumentException(
