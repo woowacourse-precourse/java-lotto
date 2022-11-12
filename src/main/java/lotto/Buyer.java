@@ -1,9 +1,5 @@
 package lotto;
 
-import static lotto.view.BuyerView.inputBonusNumber;
-import static lotto.view.BuyerView.inputMoney;
-import static lotto.view.BuyerView.inputNumbers;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,15 +15,9 @@ public class Buyer {
     private static final String ERROR_SIZE = String.format("[ERROR] 당첨 번호는 %d개 입니다.", LOTTO_SIZE);
     private static final String ERROR_DUPLICATED = String.format("[ERROR] 당첨 번호는 %d개 입니다.", LOTTO_SIZE);
 
-    public int money;
-    public List<Integer> numbers;
-    public int bonusNumber;
-
-    public Buyer() {
-        this.money = getMoney();
-        this.numbers = getNumbers();
-        this.bonusNumber = getBonusNumber();
-    }
+    private int money;
+    private List<Integer> numbers;
+    private int bonusNumber;
 
     public Buyer(int money, List<Integer> numbers, int bonusNumber) {
         validateUnit(money);
@@ -38,16 +28,16 @@ public class Buyer {
         this.bonusNumber = bonusNumber;
     }
 
-    private int getMoney() {
-        return inputMoney();
+    public int getMoney() {
+        return this.money;
     }
 
-    private List<Integer> getNumbers() {
-        return inputNumbers();
+    public List<Integer> getNumbers() {
+        return this.numbers;
     }
 
-    private int getBonusNumber() {
-        return inputBonusNumber();
+    public int getBonusNumber() {
+        return this.bonusNumber;
     }
 
     private void validateUnit(Integer money) {
