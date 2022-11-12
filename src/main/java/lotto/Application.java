@@ -3,9 +3,12 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Application {
+    static HashMap<WinningPlace, Integer> winningHistory = new HashMap<>();
+
     public static void main(String[] args) {
 //        Skeleton code for main
         List<List<Integer>> myLottoTickets = buyLotto();
@@ -129,5 +132,21 @@ public class Application {
         bonusNumber = validateBonusNumberRange(bonusNumber);
 
         return bonusNumber;
+    }
+
+    public static void getWinningPlaceByTicket(List<Integer> winnerNumber, List<List<Integer>> lottoTickets, int bonusNumber) throws Exception {
+        for (List<Integer> lottoTicket : lottoTickets) {
+            WinningPlace winningPlace = Lotto.countCorrespondingNumbers(winnerNumber, lottoTicket, bonusNumber);
+            addToHistory(winningPlace);
+        }
+    }
+
+    private static void addToHistory(WinningPlace winningPlace) {
+        if (!winningHistory.containsKey(winningPlace)) {
+            winningHistory.put(winningPlace, 0);
+        }
+
+        Integer prevHistory = winningHistory.get(winningPlace);
+        winningHistory.put(winningPlace, prevHistory + 1);
     }
 }
