@@ -1,12 +1,15 @@
 package lotto.lottocomparator;
 
 import lotto.lottonumber.LottoNumber;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
+import static lotto.lottocomparator.LottoComparator.judgeAllLotto;
 import static lotto.lottocomparator.LottoComparator.judgeWinning;
 import static lotto.lottocomparator.WinningRank.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * LottoComparator 클래스에 관련된 테스트 클래스입니다.
@@ -21,7 +24,7 @@ class LottoComparatorTest {
         LottoNumber winningLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
         LottoNumber userLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
         WinningRank rank = judgeWinning(winningLotto, userLotto);
-        Assertions.assertThat(rank).isEqualTo(FIRST);
+        assertThat(rank).isEqualTo(FIRST);
     }
 
     /**
@@ -32,7 +35,7 @@ class LottoComparatorTest {
         LottoNumber winningLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
         LottoNumber userLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 8, 7));
         WinningRank rank = judgeWinning(winningLotto, userLotto);
-        Assertions.assertThat(rank).isEqualTo(SECOND);
+        assertThat(rank).isEqualTo(SECOND);
     }
 
     /**
@@ -43,7 +46,7 @@ class LottoComparatorTest {
         LottoNumber winningLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
         LottoNumber userLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 8, 9));
         WinningRank rank = judgeWinning(winningLotto, userLotto);
-        Assertions.assertThat(rank).isEqualTo(THIRD);
+        assertThat(rank).isEqualTo(THIRD);
     }
 
     /**
@@ -54,7 +57,7 @@ class LottoComparatorTest {
         LottoNumber winningLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
         LottoNumber userLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 8, 9, 7));
         WinningRank rank = judgeWinning(winningLotto, userLotto);
-        Assertions.assertThat(rank).isEqualTo(FOURTH);
+        assertThat(rank).isEqualTo(FOURTH);
     }
 
     /**
@@ -65,7 +68,7 @@ class LottoComparatorTest {
         LottoNumber winningLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
         LottoNumber userLotto = new LottoNumber(Arrays.asList(1, 2, 3, 8, 9, 10, 7));
         WinningRank rank = judgeWinning(winningLotto, userLotto);
-        Assertions.assertThat(rank).isEqualTo(FIFTH);
+        assertThat(rank).isEqualTo(FIFTH);
     }
 
     /**
@@ -76,6 +79,22 @@ class LottoComparatorTest {
         LottoNumber winningLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
         LottoNumber userLotto = new LottoNumber(Arrays.asList(1, 2, 8, 9, 10, 11, 7));
         WinningRank rank = judgeWinning(winningLotto, userLotto);
-        Assertions.assertThat(rank).isEqualTo(LOSING_TICKET);
+        assertThat(rank).isEqualTo(LOSING_TICKET);
+    }
+
+    /**
+     * 여러 개의 로또를 모두 비교하여 총 결과를 반환하는 테스트입니다.
+     */
+    @Test
+    void judgeAllLottoTest() {
+        LottoNumber winningLotto = new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
+        List<LottoNumber> userLotto = new ArrayList<>();
+        userLotto.add(new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 6, 7)));
+        userLotto.add(new LottoNumber(Arrays.asList(1, 2, 3, 4, 5, 8, 7)));
+
+        WinningLotto result = judgeAllLotto(winningLotto, userLotto);
+        assertThat(result.getTotalReward()).isEqualTo(2030000000);
+        assertThat(result.getWinningNumbers().get(0)).isEqualTo(1);
+        assertThat(result.getWinningNumbers().get(1)).isEqualTo(1);
     }
 }

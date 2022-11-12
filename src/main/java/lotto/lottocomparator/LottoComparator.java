@@ -34,6 +34,20 @@ public class LottoComparator {
     }
 
     /**
+     * 사용자가 구매한 모든 복권에 대해 당첨 여부를 판단하고, 총 결과를 반환합니다.
+     * @param winningLotto 당첨 복권
+     * @param userLotto 사용자가 구매한 모든 복권
+     * @return 1등부터 5등까지 몇 번 했는지, 총 당첨금은 얼만인지를 저장하는 클래스
+     */
+    public static WinningLotto judgeAllLotto(LottoNumber winningLotto, List<LottoNumber> userLotto) {
+        WinningLotto winningResult = new WinningLotto();
+        for (LottoNumber lotto : userLotto) {
+            winningResult.updateResult(judgeWinning(winningLotto, lotto));
+        }
+        return winningResult;
+    }
+
+    /**
      * 당첨 로또와 사용자 로또 간 몇 개의 숫자가 일치하는지를 반환합니다.
      * @param winningLotto 당첨 로또의 일반 번호
      * @param userLotto 사용자 로또의 일반 번호
