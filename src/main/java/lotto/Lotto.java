@@ -2,12 +2,14 @@ package lotto;
 
 import InputOutput.Print;
 
+
 import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
+    private final int lottoCount;
 
-    public Lotto(List<Integer> numbers) {
+    public Lotto(List<Integer> numbers, int lottoCount) {
         validate(numbers);
         this.numbers = numbers;
     }
