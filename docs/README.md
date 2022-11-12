@@ -19,6 +19,7 @@ _예외 상황 시 에러 문구를 출력해야 한다. 단, 에러 문구는 "
 3. 보너스 번호의 숫자 범위가 1~45인가?
 4. 로또 구입 금액이 1000으로 나누어 떨어지는가?
 5. 보너스 번호와 당첨 번호가 겹치지 않는가?
+6. 당첨번호가 서로 다른 수인가?
 
 ## 구조화(MVC)
 [ MVC 패턴 ]<br>
@@ -29,15 +30,26 @@ Enum : Rank
 
 ### View
 ```
-- printLottoPayed(List<Lotto> lottoPayed) // (feat.8)
-- printWinningStats(Map<Rank, Integer> winningStats) // (feat.9)
-- printEarningRate(double earningRate) // (feat.10)
+- printLottoPayed(List<Lotto> lottoPayed)   // (feat.8)
+- printWinningStats(Map<Rank, Integer> winningStats)    // (feat.9)
+- printEarningRate(double earningRate)  // (feat.10)
+- printInputPrice() // input view
+- printInputWinningLotto()  // input view
+- printInputBonusNum()  // input view
+- printInputWinningStat()   // input view
 ```
 
 ### Controller
 ```
-- int getPrice() // (feat.1)
-- Lotto getWinningLotto() // (feat.3)
+// 요청 수행 method
+- public List<Lotto> buyLotto()
+- public void setWinningNums()
+- public Map<Rank,Integer> getWinningStat(List<Lotto> lottoPaper)
+- public double getEarningRate(Map<Rank,Integer> winningStats)
+
+// 입력 method
+- int getPrice()    // (feat.1)
+- Lotto getWinningLotto()   // (feat.3)
 - int getBonusNum() // (feat.4)
 ```
 
@@ -49,8 +61,9 @@ Enum : Rank
 [constructor]<br>
 - Lotto(List<Integer> numbers)<br>
   - this.
-  - validate(numbers) // (valid.2)
-  - validateNumRange(numbers) // (valid.1)
+  - validate(numbers)   // (valid.2)
+  - validateNumRange(numbers)   // (valid.1)
+  - validateNumOverlap(numbers) // (valid.6)
 
 [method]<br>
 - public List<Integer> getNumbers() // numbers Getter
@@ -64,7 +77,7 @@ Enum : Rank
 [Field]<br>
 - int price // 로또 구입 금액
 - int lottoSize // 로또 구입 개수
-- List<Lotto> lottoPayed // 구입한 로또 리스트
+- List<Lotto> lottoPayed    // 구입한 로또 리스트
 
 [constructor]<br>
 - Shop(int price)
@@ -72,11 +85,11 @@ Enum : Rank
   - setLottoPayed()
 
 [method]<br>
-- public List<Lotto> getlottoPayed() // lottoPayed Getter
-- private int calcLottoSize(int price) // (feat.2)
-- private List<Lotto> setLottoPayed(int lottoSize) // (feat.5)
+- public List<Lotto> getlottoPayed()    // lottoPayed Getter
+- private int calcLottoSize(int price)  // (feat.2)
+- private List<Lotto> setLottoPayed(int lottoSize)  // (feat.5)
 - private void priceValidate(int price) // (valid.4)
-- private Lotto getRandomLotto() // 랜덤한 숫자로 로또 생성
+- private Lotto getRandomLotto()    // 랜덤한 숫자로 로또 생성
 ```
 
 ### Draw : 로또 당첨을 비교하는 로또 본사
@@ -84,9 +97,11 @@ Enum : Rank
 [Field]<br>
 - Lotto winningLotto
 - int bonusNum
+- Map<Rank, Integer> winningStats
+- Map<Integer,Rank> rankClassification
 
 [constructor]<br>
-- Draw(Lotto winningLotto, int bonusNum) // (feat.3,feat.4)
+- Draw(Lotto winningLotto, int bonusNum)    // (feat.3,feat.4)
   - validateBonusNumRange(bonusNum)
   - validateBonusNumAndLottoOverlap(Lotto winningLotto, int bonusNum)
   - setRankClassification()
@@ -94,35 +109,32 @@ Enum : Rank
   - this.
 
 [method]<br>
-- public Map<Rank,Integer> getWinningStats(List<Lotto> lottoPaper) // (feat.6)
-- private void setRankClassifiction() // Rank Map 초기화
-- private void setWinningStats() // 로또 결과 Map 초기화
-- private Rank tryLottoRank() // 로또 랭크 설정
-- private int winningNumSize(Lotto tryLotto) // 개개인의 로또 비교후 맞는 숫자 출력
-- private boolean isBonusExist(int bonusNum) // 보너스 번호가 있는지 확인
-- private void validateBonusNumRange(int bonusNum) // (valid.3)
-- private void validateBonusNumAndLottoOverlap(Lotto winningLotto, int bonusNum) // (valid.5)
+- public Map<Rank,Integer> getWinningStats(List<Lotto> lottoPaper)  // (feat.6)
+- private void setRankClassifiction()   // Rank Map 초기화
+- private void setWinningStats()    // 로또 결과 Map 초기화
+- private Rank tryLottoRank()   // 로또 랭크 설정
+- private int winningNumSize(Lotto tryLotto)    // 개개인의 로또 비교후 맞는 숫자 출력
+- private boolean isBonusExist(int bonusNum)    // 보너스 번호가 있는지 확인
+- private void validateBonusNumRange(int bonusNum)  // (valid.3)
+- private void validateBonusNumAndLottoOverlap(Lotto winningLotto, int bonusNum)    // (valid.5)
 ```
 
 ### Rate : 수익률을 계산해주는 회사
 ```
 [Field]<br>
-- Map<Rank,Integer> winningStats
 - Map<Rank,Integer> rankPrice
-- int price
 - double earningRate
 
 [constructor]<br>
-- Rate(Map<Rank,Integer> winningStats)
-  - this.
+- Rate(Map<Rank,Integer> winningStats, int price)
   - setRankPrice();
   - setEarningRate(winningStats)
 
 [method]<br>
-- public double getEarningRate() // earningRate Getter 
-- private void setRankPrice() // rankPrice 초기화 
-- private void setEarningRate(Map<Rank,Integer> winningStats) // (feat.7)
-- private int calcEarning(Map<Rank,Integer> winningStats) // 총 수익 계산
+- public double getEarningRate()    // earningRate Getter 
+- private void setRankPrice()   // rankPrice 초기화 
+- private void setEarningRate(Map<Rank,Integer> winningStats)   // (feat.7)
+- private int calcEarning(Map<Rank,Integer> winningStats)   // 총 수익 계산
 ```
 
 ## 추가 제약 사항
