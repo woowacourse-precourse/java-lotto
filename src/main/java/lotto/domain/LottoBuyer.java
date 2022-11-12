@@ -15,13 +15,20 @@ public class LottoBuyer {
         List<List<Integer>> lottos = new ArrayList<>();
         System.out.println(Message.PURCHASE_PRICE.getMessage());
         String purchasePrice = readLine();
+        System.out.println();
         purchaseLottoCount = Integer.parseInt(purchasePrice) / 1000;
         validateDivideNumber(purchasePrice);
         System.out.println(purchaseLottoCount + Message.PURCHASE_COUNT.getMessage());
+        printLottos(lottos);
+        return lottos;
+    }
+
+    private static void printLottos(List<List<Integer>> lottos) {
         for (int i = 0; i < purchaseLottoCount; i++) {
             lottos.add(Lotto.createLotto().getNumbers());
+            System.out.println(lottos.get(i));
         }
-        return lottos;
+        System.out.println();
     }
 
     private static void validateDivideNumber(String purchasePrice) {
