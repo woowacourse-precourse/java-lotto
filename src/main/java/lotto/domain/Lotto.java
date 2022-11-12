@@ -25,7 +25,7 @@ public class Lotto {
                 .count();
     }
 
-    public boolean isContainBonusNumber(int bonusNumber) {
+    public boolean containBonusNumber(int bonusNumber) {
         return numbers.contains(bonusNumber);
     }
 
@@ -38,6 +38,7 @@ public class Lotto {
         if (isWrongNumberOfValues(numbers)) {
             throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + "로또 번호의 갯수는 6개여야합니다.");
         }
+
         if (isDuplicate(numbers)) {
             throw new IllegalArgumentException(ERROR_MESSAGE_PREFIX + "로또 번호가 중복됩니다.");
         }

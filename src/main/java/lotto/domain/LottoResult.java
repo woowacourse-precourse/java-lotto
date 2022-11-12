@@ -35,7 +35,7 @@ public enum LottoResult {
                                  int bonusNumber) {
         long numberOfMatches = lotto.getNumberOfMatchesByWinningNumbers(winningNumbers);
 
-        if (numberOfMatches == 5 && lotto.isContainBonusNumber(bonusNumber)) {
+        if (numberOfMatches == 5 && lotto.containBonusNumber(bonusNumber)) {
             return FIVE_WITH_BONUS;
         }
 

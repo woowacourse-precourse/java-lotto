@@ -138,14 +138,14 @@ class LottoTest {
         @Test
         void test1() {
             Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
-            assertThat(lotto.isContainBonusNumber(BONUS_NUMBER)).isTrue();
+            assertThat(lotto.containBonusNumber(BONUS_NUMBER)).isTrue();
         }
 
         @DisplayName("보너스 번호가 일치하지 않는 경우")
         @Test
         void test2() {
             Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-            assertThat(lotto.isContainBonusNumber(BONUS_NUMBER)).isFalse();
+            assertThat(lotto.containBonusNumber(BONUS_NUMBER)).isFalse();
         }
     }
 
