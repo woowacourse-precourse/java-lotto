@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import camp.nextstep.edu.missionutils.Console;
@@ -11,13 +12,13 @@ public class User {
     private List<Lotto> lottoBundle = new ArrayList<>();
     private List<Integer> winningNumber = new ArrayList<>();
     private int bonusNumber;
-    private Map<String,Integer> winningNumberCounting= Map.of(
-            "first",0,
-            "second",0,
-            "third",0,
-            "fourth",0,
-            "fifth",0
-    );
+    private Map<String,Integer> winningNumberCounting= new HashMap<>(){{
+        put("first",0);
+        put("second",0);
+        put("third",0);
+        put("fourth",0);
+        put("fifth",0);
+    }};
 
     LotteryTicketingMachine lotteryTicketingMachine = new LotteryTicketingMachine();
 
