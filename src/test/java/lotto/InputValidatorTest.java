@@ -9,10 +9,10 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class InputValidatorTest {
     InputValidator inputValidator = new InputValidator();
 
-    @DisplayName("입력값이 숫자가 아니면 예외가 발생한다.")
+    @DisplayName("구입 금액이 숫자가 아니면 예외가 발생한다.")
     @Test
     void createMoneyByString() {
-        assertThatThrownBy(() -> inputValidator.validateNumeric("fff"))
+        assertThatThrownBy(() -> inputValidator.validateMoney("fff"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
