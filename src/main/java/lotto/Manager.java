@@ -68,27 +68,6 @@ public class Manager {
             }
         }
 
-        // winnerMap에 저장한 key값들을 어떻게 하면 bonusBall이랑 비교할 수 있을까?
-        // [13, 18, 24, 35, 38] -> key
-        // bonusBall을 int?로 받을까? String으로 받아서 비교할까?
-
-        /* 보류
-        for (String s : winner.keySet()) {
-            System.out.println("이거 값 먼데? = " + s.charAt(0));
-            System.out.println("이거 값value  먼데 = " + winner.get(s));
-
-            if (winner.get(s) == 5) {
-                System.out.println("s = " + s);
-                winner.put(s, 4);
-            }
-        }
-        */
-
-//        for (int i = 0; i < numbers.size(); i++) {
-//            if(numbers.get(i).contains(bonusBall)) {
-//                System.out.println("bonus = " + numbers.get(i));
-//            }
-//        }
 
         for (Hi value : Hi.values()) {
             mapTest.put(value.getHi(), 0);
@@ -103,22 +82,6 @@ public class Manager {
                 mapValue.add(winner.get(s));
             }
         } // 3개 이상 맞 춘 것만 따로 모오는 과정
-//        Collections.sort(mapValue);
-//        if (mapValue.size() == 0) {
-//            mapTest.put("0", 0);
-//        }
-        /*
-        for (Integer integer : mapValue) {
-            System.out.println("mapValue : " + integer);
-        }
-        for (Hi value : Hi.values()) {
-            System.out.println("제발 0,6 서브스트링 : "+value.getHi().substring(0, 6));
-            if (value.getHi().substring(0,6).equals(mapValue.get(0)+"개 일치,")) {
-                System.out.println("5개잋치,,,,,,");
-            } else if (value.getHi().substring(0,5).equals(mapValue.get(0)+"개 일치")) {
-                System.out.println("5개만");
-            }
-        }*/
 
 
         for (Integer integer : mapValue) {
@@ -142,60 +105,9 @@ public class Manager {
             System.out.print(" - " + mapTest.get(s) + "개");
             System.out.println();
         }
-//        for (String s : mapTest.keySet()) {
-//            System.out.print(s);
-//            System.out.print(" - " + mapTest.get(s) + "개");
-//            System.out.println();
-//        }
         System.out.println("********************************");
-//        for (String s : mapTest.keySet()) {
-//            System.out.println("s는 몇 개 일치해 ? : " + s);
-//            System.out.println("s일치하는 것 중 총 갯수는 몇 개야? : " + mapTest.get(s));
-//        }
 
-        
-        
-            /* 이게 진짜임 */
-//        for (String s : mapTest.keySet()) {
-//            for (Hi value : Hi.values()) {
-//                if (value.getHi().substring(0, 5).equals(s)) {
-//                    System.out.print(value.getHi());
-//                    System.out.print(" - " + mapTest.get(s) + "개");
-//                    System.out.println();
-//                }
-//            }
-//        }
-
-        List<Integer> moneyTest = new ArrayList<>(); // enum을 이용해서 차례대로 출력하는 것을 비교해서 뒤에 -개수 붙임
-        for (Hi value : Hi.values()) {
-//            System.out.print(value.getHi());
-            for (String s : mapTest.keySet()) {
-//                System.out.println();
-//                System.out.println("s = " + s);
-//                System.out.print("mapTest.get(s) = " + mapTest.get(s));
-
-                if (mapTest.get(s) != 0) {
-                    if (value.getHi().substring(0,5).equals(s)) {
-//                        System.out.print(" - " + mapTest.get(s) + "개");
-                    } else {
-//                        System.out.print(" - 0개");
-                    }
-                }
-
-                if (value.getHi().substring(0, 5).equals(s)) {
-//                    System.out.print(" - " + mapTest.get(s) + "개");
-                    moneyTest.add(mapTest.get(s));
-                } else if (!(value.getHi().substring(0, 6).equals(s))) {
-//                    System.out.print(" - 0개");
-                    moneyTest.add(0);
-                }
-            }
-            System.out.println();
-        }
         System.out.println("***********수익률 구하기**************");
-//        for (Integer integer : moneyTest) {
-//            System.out.println("moneyTest " + integer);
-//        }
         List<Integer> testList = new ArrayList<>();
         for (String s : mapTest.keySet()) {
             testList.add(mapTest.get(s));
