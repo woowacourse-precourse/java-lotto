@@ -27,4 +27,21 @@ public class RankTest {
     void result(int matchCount, boolean matchBonusNumber, Rank rank) {
         assertThat(Rank.result(matchCount, matchBonusNumber)).isEqualTo(rank);
     }
+
+    private static Stream<Arguments> provideForReward() {
+        return Stream.of(
+                Arguments.of(Rank.FIRST, new Money(2_000_000_000)),
+                Arguments.of(Rank.SECOND, new Money(30_000_000)),
+                Arguments.of(Rank.THIRD, new Money(1_500_000)),
+                Arguments.of(Rank.FOURTH, new Money(50_000)),
+                Arguments.of(Rank.FIFTH, new Money(5_000)),
+                Arguments.of(Rank.MISS, new Money(0))
+        );
+    }
+
+    @ParameterizedTest(name = "순위의 상금을 반환한다.")
+    @MethodSource("provideForReward")
+    void result(Rank rank, Money reward) {
+        assertThat(rank.reward()).isEqualTo(reward);
+    }
 }
