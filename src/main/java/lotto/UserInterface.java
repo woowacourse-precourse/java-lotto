@@ -52,7 +52,7 @@ public class UserInterface {
     public static void printLottoList(List<Lotto> lottoList) {
         System.out.printf("%d개를 구매했습니다.\n", lottoList.size());
         for (Lotto lotto : lottoList) {
-            List<Integer> numbers = lotto.getLottoNumbers();
+            List<Integer> numbers = new ArrayList<>(lotto.getLottoNumbers());
             Collections.sort(numbers);
             System.out.println(numbers);
         }
