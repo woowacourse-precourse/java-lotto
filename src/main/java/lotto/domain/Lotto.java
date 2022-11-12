@@ -17,6 +17,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        InputValidator.validateLottoSize(numbers);
         numbers.forEach(InputValidator::validateNumberRange);
         InputValidator.validateOverlappingNumbers(numbers);
     }

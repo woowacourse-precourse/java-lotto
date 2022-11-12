@@ -2,23 +2,26 @@ package lotto.domain;
 
 import lotto.validator.InputValidator;
 
-import java.util.List;
-
-public class WinningLotto extends Lotto {
+public class WinningLotto {
+    private final Lotto lotto;
     private final int bonusNumber;
 
-    public WinningLotto(List<Integer> numbers, int bonusNumber) {
-        super(numbers);
-        validate(bonusNumber);
+    public WinningLotto(Lotto lotto, int bonusNumber) {
+        validate(lotto, bonusNumber);
+        this.lotto = lotto;
         this.bonusNumber = bonusNumber;
+    }
+
+    public Lotto getLotto() {
+        return lotto;
     }
 
     public int getBonusNumber() {
         return bonusNumber;
     }
 
-    private void validate(int bonusNumber) {
+    private void validate(Lotto lotto, int bonusNumber) {
         InputValidator.validateNumberRange(bonusNumber);
-        InputValidator.validateOverlappingBonusNumbers(getNumbers(), bonusNumber);
+        InputValidator.validateOverlappingBonusNumbers(lotto.getNumbers(), bonusNumber);
     }
 }

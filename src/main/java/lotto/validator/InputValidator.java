@@ -18,6 +18,12 @@ public class InputValidator {
         return Integer.parseInt(input);
     }
 
+    public static void validateLottoSize(List<Integer> numbers) {
+        if (numbers.size() != LottoCondition.COUNT.getNumber()) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_LOTTO_SIZE.getMessage());
+        }
+    }
+
     public static void validateNumberRange(int number) {
         if (number < LottoCondition.MIN_NUMBER.getNumber() || number > LottoCondition.MAX_NUMBER.getNumber()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_RANGE.getMessage());

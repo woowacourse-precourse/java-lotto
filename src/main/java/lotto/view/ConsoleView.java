@@ -24,7 +24,7 @@ public class ConsoleView {
         return InputValidator.changeInputToInt(input);
     }
 
-    public static List<Integer> inputWinningLotto() {
+    public static List<Integer> inputWinningNumbers() {
         System.out.println(ConsoleMessage.INPUT_WINNING_NUMBERS.getMessage());
         String input = Console.readLine();
         return InputValidator.changeInputToIntegerList(input);

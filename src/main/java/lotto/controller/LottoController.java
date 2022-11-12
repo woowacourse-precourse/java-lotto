@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.domain.Lotto;
 import lotto.domain.PurchasedLottos;
 import lotto.domain.WinningLotto;
 import lotto.view.ConsoleView;
@@ -29,10 +30,19 @@ public class LottoController {
     }
 
     private void setWinningLotto() {
+        Lotto lotto = createWinningNumbers();
+        int bonusNumber = createBonusNumber();
+        winningLotto = new WinningLotto(lotto, bonusNumber);
+    }
+
+    private Lotto createWinningNumbers() {
         ConsoleView.printBlankLine();
-        List<Integer> numbers = ConsoleView.inputWinningLotto();
+        List<Integer> numbers = ConsoleView.inputWinningNumbers();
+        return new Lotto(numbers);
+    }
+
+    private int createBonusNumber() {
         ConsoleView.printBlankLine();
-        int bonusNumber = ConsoleView.inputBonusNumber();
-        winningLotto = new WinningLotto(numbers, bonusNumber);
+        return ConsoleView.inputBonusNumber();
     }
 }
