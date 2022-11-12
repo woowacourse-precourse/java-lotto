@@ -22,6 +22,12 @@ public class Validation {
             throw new IllegalArgumentException(Notification.ERROR_MESSAGE_NUMBER_IS_DUPLICATE.getMessage());
     }
 
+    private static void isIncludeNotNumber(String number) {
+        String result = number.replaceAll("[0-9]", "");
+        if (result.length() != 0)
+            throw new IllegalArgumentException(Notification.ERROR_MESSAGE_MONEY_IS_NOT_MULTIPLE_1000.getMessage());
+    }
+
     public static boolean isMultipleOf1000(long number) throws IllegalArgumentException {
         if (number % 1000 != 0)
             throw new IllegalArgumentException(Notification.ERROR_MESSAGE_MONEY_IS_NOT_MULTIPLE_1000.getMessage());
