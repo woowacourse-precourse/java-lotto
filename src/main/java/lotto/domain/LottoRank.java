@@ -28,4 +28,8 @@ public enum LottoRank {
                 .findFirst()
                 .orElse(FAILED);
     }
+
+    public int getRewardMoney() {
+        return rewardMoney;
+    }
 }
