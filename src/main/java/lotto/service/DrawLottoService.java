@@ -3,6 +3,7 @@ package lotto.service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import lotto.domain.Lotto;
 import lotto.util.ConversionArrayToList;
 
 public class DrawLottoService {
@@ -18,5 +19,23 @@ public class DrawLottoService {
         String[] winingNUmber = winingLottoNUmber.split(",");
         List<Integer> winingNumberList = conversionArrayToList.stringArrayToIntegerList(winingNUmber);
         return winingNumberList;
+    }
+
+    public void compareLottoToWiningLotto(List<Integer> winingLotto, Lotto myLotto, int bonusNumber) {
+        int correctCount = 0;
+        for (int i = 0; i < winingLotto.size(); i++) {
+            if (myLotto.getLotto().contains(winingLotto.get(i))) {
+                correctCount++;
+            }
+        }
+        if (correctCount == 6) {
+            correctCount++;
+        }
+        if (correctCount == 5) {
+            if (myLotto.getLotto().contains(bonusNumber)) {
+                correctCount++;
+            }
+        }
+        correctNumberCountMap.put(correctCount, correctNumberCountMap.getOrDefault(correctCount, 0) + 1);
     }
 }
