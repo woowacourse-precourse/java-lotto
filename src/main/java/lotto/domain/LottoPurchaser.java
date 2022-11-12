@@ -12,15 +12,23 @@ public class LottoPurchaser {
     private int purchase(){
         System.out.println(Message.PURCHASE_AMOUNT_REQUEST);
 
-        String purchaseAmount = Console.readLine();
+        String purchaseAmountInput = Console.readLine();
 
-        validate(purchaseAmount);
-
-        return Integer.parseInt(purchaseAmount);
+        return validate(purchaseAmountInput);
     }
 
-    private void validate(String purchaseAmount){
+    private int validate(String purchaseAmountInput){
+        try{
+            int purchaseAmount = Integer.parseInt(purchaseAmountInput);
 
+            if(purchaseAmount % LottoGenerator.LOTTO_PRICE != 0){
+                throw new IllegalArgumentException(String.format("[ERROR] 구입금액은 %d원 단위여야 합니다.", LottoGenerator.LOTTO_PRICE));
+            }
+
+            return purchaseAmount;
+        }catch (NumberFormatException e){
+            throw new IllegalArgumentException("[ERROR] 구입금액은 숫자여야 합니다.");
+        }
     }
 
     public int getPurchaseAmount() {
