@@ -65,7 +65,7 @@ class ApplicationTest extends NsTest {
                     Buyer buyer = new Buyer(1000);
                     WinningLotto winningLotto = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7);
 
-                    Application.addWinnings(buyer, winningLotto);
+                    Application.calculateRanks(buyer, winningLotto);
                     buyer.showWinnings();
 
                     assertThat(output()).contains(

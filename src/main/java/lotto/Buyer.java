@@ -53,7 +53,7 @@ public class Buyer {
         printWinnings(ranks);
     }
 
-    public void addWinning(Rank rank) {
+    public void addRank(Rank rank) {
         ranks.add(rank);
     }
 

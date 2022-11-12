@@ -20,7 +20,7 @@ public class WinningLottoTest {
         @Test
         void winFirstPlace() {
             Lotto userLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-            Rank rank = Application.getWinning(userLotto, winningLotto);
+            Rank rank = Application.calculateRank(userLotto, winningLotto);
 
             assertThat(rank.name()).isEqualTo("FIRST");
         }
@@ -28,7 +28,7 @@ public class WinningLottoTest {
         @Test
         void winSecondPlace() {
             Lotto userLotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
-            Rank rank = Application.getWinning(userLotto, winningLotto);
+            Rank rank = Application.calculateRank(userLotto, winningLotto);
 
             assertThat(rank.name()).isEqualTo("SECOND");
         }
@@ -36,7 +36,7 @@ public class WinningLottoTest {
         @Test
         void winThirdPlace() {
             Lotto userLotto = new Lotto(List.of(1, 2, 3, 4, 5, 9));
-            Rank rank = Application.getWinning(userLotto, winningLotto);
+            Rank rank = Application.calculateRank(userLotto, winningLotto);
 
             assertThat(rank.name()).isEqualTo("THIRD");
         }
@@ -44,7 +44,7 @@ public class WinningLottoTest {
         @Test
         void winFourthPlace() {
             Lotto userLotto = new Lotto(List.of(1, 2, 3, 4, 10, 11));
-            Rank rank = Application.getWinning(userLotto, winningLotto);
+            Rank rank = Application.calculateRank(userLotto, winningLotto);
 
             assertThat(rank.name()).isEqualTo("FOURTH");
         }
@@ -52,7 +52,7 @@ public class WinningLottoTest {
         @Test
         void winFifthPlace() {
             Lotto userLotto = new Lotto(List.of(1, 2, 3, 10, 11, 12));
-            Rank rank = Application.getWinning(userLotto, winningLotto);
+            Rank rank = Application.calculateRank(userLotto, winningLotto);
 
             assertThat(rank.name()).isEqualTo("FIFTH");
         }
@@ -60,7 +60,7 @@ public class WinningLottoTest {
         @Test
         void winNoPlace() {
             Lotto userLotto = new Lotto(List.of(10, 11, 12, 13, 14, 15));
-            Rank rank = Application.getWinning(userLotto, winningLotto);
+            Rank rank = Application.calculateRank(userLotto, winningLotto);
 
             assertThat(rank.name()).isEqualTo("DEFAULT");
         }

@@ -12,7 +12,7 @@ import java.util.List;
 
 
 public class Application {
-    public static Rank getWinning(Lotto userLotto, WinningLotto winningLotto) {
+    public static Rank calculateRank(Lotto userLotto, WinningLotto winningLotto) {
         // 메소드 호출로 필드의 객체를 반환 -> 필드 값이 변경되어서는 안됨
         final List<Integer> userLottoNumbers = userLotto.getNumbers();
         final List<Integer> winningLottoNumbers = winningLotto.getNumbers();
@@ -30,11 +30,11 @@ public class Application {
         return Rank.getWinning(hitCount, bonusHit);
     }
 
-    public static void addWinnings(Buyer buyer, WinningLotto winningLotto) {
+    public static void calculateRanks(Buyer buyer, WinningLotto winningLotto) {
         for (Lotto userLotto : buyer.getLottos()) {
-            Rank rank = getWinning(userLotto, winningLotto);
+            Rank rank = calculateRank(userLotto, winningLotto);
 
-            buyer.addWinning(rank);
+            buyer.addRank(rank);
         }
     }
 
@@ -50,7 +50,7 @@ public class Application {
 
             WinningLotto winningLotto = new WinningLotto(winningNumbers, bonusNumber);
 
-            addWinnings(buyer, winningLotto);
+            calculateRanks(buyer, winningLotto);
             buyer.showWinnings();
 
             printProfits(buyer.getProfit());
