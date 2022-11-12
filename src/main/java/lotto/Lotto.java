@@ -11,7 +11,7 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateSize(numbers);
         this.numbers = numbers;
     }
 
@@ -24,7 +24,7 @@ public class Lotto {
         return numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validateSize(List<Integer> numbers) {
         if (numbers.size() != LottoEnum.WINNING_NUMBERS.getValue()) {
             throw new IllegalArgumentException(String.format("[ERROR] 로또 번호 개수는 %d 개만 가능합니다.", LottoEnum.WINNING_NUMBERS.getValue()));
         }
@@ -45,7 +45,7 @@ public class Lotto {
         List<Lotto> purchasedLotto = new ArrayList<>();
 
         int amount = num / LottoEnum.PURCHASE_UNIT.getValue();
-        for(int i = 0; i < amount; i++){
+        for (int i = 0; i < amount; i++) {
             purchasedLotto.add(create());
         }
         return purchasedLotto;
