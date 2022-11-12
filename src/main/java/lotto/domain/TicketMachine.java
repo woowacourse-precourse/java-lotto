@@ -9,6 +9,10 @@ public class TicketMachine {
         return payment / TICKET_PRICE;
     }
 
+    public static Integer getTicketPrice() {
+        return TICKET_PRICE;
+    }
+
     private void validatePayment(int payment) {
         if (validatePositive(payment) && validatePrice(payment)) {
             return;
@@ -24,7 +28,7 @@ public class TicketMachine {
     }
 
     private boolean validatePrice(int payment) {
-        if (payment%TICKET_PRICE==0){
+        if (payment % TICKET_PRICE == 0) {
             return true;
         }
         return false;
