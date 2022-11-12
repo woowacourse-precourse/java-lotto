@@ -2,10 +2,10 @@ package lotto.ui;
 
 import camp.nextstep.edu.missionutils.Console;
 
-public class PurchaseView {
+public class PurchaseView implements View{
     String purchaseInput;
 
-    public void makePurchaseView(){
+    public void makeView(){
         purchasePrint();
         getPurchaseInput();
     }
