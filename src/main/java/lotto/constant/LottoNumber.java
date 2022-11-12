@@ -4,6 +4,7 @@ public enum LottoNumber {
 
     FIRST_RANGE(1)
     , LAST_RANGE(45)
+    , MAX_COUNT(6)
     , PURCHASE_AMOUNT_COND(1000)
     ;
 
