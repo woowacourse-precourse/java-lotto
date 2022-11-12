@@ -42,7 +42,13 @@ public class Mission {
             repository.add(rank);
         }
 
-        int totalMoney = repository.getTotalMoney();
+        int priceMoney = repository.getTotalMoney();
+
+        getRate(money.getMoney(), priceMoney);
+
+
+
+
     }
 
     private Money getMoney() {
@@ -68,5 +74,10 @@ public class Mission {
     private int addBonusNumber() {
         output.pringGetWinningBonusNumber();
         return input.getWinningBonusNumber();
+    }
+
+    private long getRate(int inputMoney, int priceMoney) {
+        double result = (double) inputMoney / priceMoney;
+        return Math.round(result);
     }
 }
