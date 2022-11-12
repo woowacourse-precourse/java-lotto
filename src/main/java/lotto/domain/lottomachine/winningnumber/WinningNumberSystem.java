@@ -36,6 +36,12 @@ public class WinningNumberSystem {
         }
     }
 
+    public WinningNumber receiveBonusNumber(WinningNumbers winningNumbers) {
+        int number = Integer.parseInt(readUserInput(REGULAR_EXPRESSION_FOR_BONUS_NUMBER_INPUT));
+        validateDuplication(number, winningNumbers);
+        return new WinningNumber(number);
+    }
+
     private void validateDuplication(int number, WinningNumbers winningNumbers) {
         if (winningNumbers.contains(number)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨번호와 중복될 수 없습니다.");
