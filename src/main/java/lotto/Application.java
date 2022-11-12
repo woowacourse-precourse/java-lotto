@@ -24,7 +24,7 @@ public class Application {
         if (buyingAmount != STOP_VALUE) {
             final int countOfLottery = buyingAmount / AMOUNT_UNIT;
             System.out.println("\n" + countOfLottery + "개를 구매했습니다.");
-            checkWinning(countOfLottery);
+            checkWinning(countOfLottery, buyingAmount);
         }
     }
 
@@ -55,15 +55,16 @@ public class Application {
         return buyingAmount;
     }
 
-    private static void checkWinning(int countOfLottery) {
+    private static void checkWinning(int countOfLottery, int buyingAmount) {
         ArrayList<ArrayList<Integer>> lotteryBundleArray = new ArrayList<>();
         int cntForCreateLottery = 0;
         while (cntForCreateLottery < countOfLottery) {
             lotteryBundleArray.add(createAndPrintLottery());
             cntForCreateLottery++;
         }
-        checkLottoWinnings(inputWinningNumbers(),inputBonusWinningNumber(), lotteryBundleArray);
-
+        Lotto lotto = new Lotto(inputWinningNumbers());
+        int[] resultArray = lotto.checkLottoWinnings(lotteryBundleArray, inputBonusWinningNumber());
+        lotto.printLottoWinningsResult(resultArray, buyingAmount);
     }
 
 
@@ -96,8 +97,5 @@ public class Application {
         return Integer.parseInt(Console.readLine());
     }
 
-    private static void checkLottoWinnings(List<Integer> winningNumbers , int bonusWinningNumber, ArrayList<ArrayList<Integer>> lotteryBundleArray){
-        Lotto lotto = new Lotto(winningNumbers);
-        lotto.checkLottoWinnings(lotteryBundleArray, bonusWinningNumber);
-    }
+
 }

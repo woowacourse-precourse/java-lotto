@@ -27,13 +27,16 @@ public class Lotto {
             arrayForCheckOverLap[checkIndex] = 1;
         }
     }
-    public void checkLottoWinnings(ArrayList<ArrayList<Integer>> lotteryBundleArray, int bonusWinningNumber) {
-        int [] countWinningNumbersCaseArray = new int [5];
+    public int[] checkLottoWinnings(ArrayList<ArrayList<Integer>> lotteryBundleArray, int bonusWinningNumber) {
+        int [] countWinningNumbersCaseArray = new int[6];
         final int SET_TO_INDEX_VALUE = 3;
         for (ArrayList<Integer> lottery : lotteryBundleArray){
-            countWinningNumbersCaseArray[countWinningNumbers(lottery,bonusWinningNumber)-SET_TO_INDEX_VALUE]++;
+            int settedIndex = countWinningNumbers(lottery,bonusWinningNumber)-SET_TO_INDEX_VALUE;
+            if (settedIndex >= 0) {
+                countWinningNumbersCaseArray[settedIndex]++;
+            }
         }
-
+        return countWinningNumbersCaseArray;
     }
 
     private int countWinningNumbers(ArrayList<Integer> lottery, int bonusWinningNumber){
@@ -44,9 +47,12 @@ public class Lotto {
             }
         }
         if (lottery.contains(bonusWinningNumber)) {
-            countOfWinningNumbers++;
+            countOfWinningNumbers+=2;
         }
         return countOfWinningNumbers;
     }
+
+
+
 
 }
