@@ -140,4 +140,62 @@ class ReaderTest {
 				.isInstanceOf(IllegalArgumentException.class)
 				.hasMessageContaining(Message.ERROR_HAS_DUPLICATED_LOTTO_NUMBER);
 	}
+
+	@DisplayName("당첨로또의 보너스 번호로 숫자만 들어올 경우 정상적으로 처리됨 => 예외를 던지지 않는다.")
+	@Test
+	void checkValidLottoBonusNumberNoExceptionTest() {
+		final String input = "9";
+		InputStream inputStream = generateInputStream(input);
+		System.setIn(inputStream);
+
+		assertThatNoException().isThrownBy(Reader::readWinningLottoBonusNumberFromUser);
+	}
+
+	@DisplayName("당첨로또의 보너스 번호로 숫자만 들어올 경우 그 값을 확인하는 테스트")
+	@Test
+	void checkValidLottoBonusNumberValueTest() {
+		final String input = "9";
+		InputStream inputStream = generateInputStream(input);
+		System.setIn(inputStream);
+
+		int result = Reader.readWinningLottoBonusNumberFromUser();
+		final int expected = Integer.parseInt(input);
+		assertThat(result).isEqualTo(expected);
+	}
+
+	@DisplayName("당첨로또 보너스 번호로 숫자가 아닌 문자(알파벳 등)이 들어왔을 때 '숫자가 아니다' 라는 오류 메세지 출력")
+	@Test
+	void checkLottoBonusNumberIsNotNumericTest() {
+		final String input = " a ";
+		InputStream inputStream = generateInputStream(input);
+		System.setIn(inputStream);
+
+		assertThatThrownBy(Reader::readWinningLottoBonusNumberFromUser)
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(Message.ERROR_IS_NOT_NUMERIC_VALUE);
+	}
+
+	@DisplayName("당첨로또 보너스 번호로 white space 만 들어왔을 때 '빈 문자열을 입력하면 안됩니다' 라는 오류 메세지 출력")
+	@Test
+	void checkLottoBonusNumberIsBlankTest() {
+		final String input = "   ";
+		InputStream inputStream = generateInputStream(input);
+		System.setIn(inputStream);
+
+		assertThatThrownBy(Reader::readWinningLottoBonusNumberFromUser)
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(Message.ERROR_EMPTY_INPUT);
+	}
+
+	@DisplayName("당첨로또 보너스 번호로 모두 숫자이지만 앞에 0이 왔을 경우에 '맨 첫 숫자는 0이면 안됩니다.' 라는 오류 메세지 출력")
+	@Test
+	void checkLottoBonusNumberFirstCharIsZeroTest() {
+		final String input = "011";
+		InputStream inputStream = generateInputStream(input);
+		System.setIn(inputStream);
+
+		assertThatThrownBy(Reader::readWinningLottoBonusNumberFromUser)
+				.isInstanceOf(IllegalArgumentException.class)
+				.hasMessageContaining(Message.ERROR_FIRST_CHAR_IS_ZERO);
+	}
 }
