@@ -5,7 +5,7 @@ import lotto.constant.ErrorMessage;
 import java.util.List;
 
 public class ValidationInView {
-    private static final String NUMERIC_REGULAR_EXPRESSION = "^[0-9]+$";
+    private static final String NUMERIC_REGULAR_EXPRESSION = "^[-]?[0-9]+$";
 
     public void checkNumericValue(String value){
         if(!value.matches(NUMERIC_REGULAR_EXPRESSION)){

@@ -18,6 +18,8 @@ public class LottoPurchaseInformation {
 
     public LottoPurchaseInformation(int purchaseAmount){
         validator.checkDividedByThousand(purchaseAmount);
+        validator.checkNegativeNumber(purchaseAmount);
+        validator.checkZero(purchaseAmount);
         this.purchaseAmount = purchaseAmount;
         this.numberOfTickets = this.purchaseAmount/THOUSAND;
     }

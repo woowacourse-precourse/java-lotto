@@ -55,4 +55,15 @@ public class ValidationInDomain {
         }
     }
 
+    public void checkNegativeNumber(int number){
+        if(number < 0){
+            throw new IllegalArgumentException(ErrorMessage.INPUT_HAS_NEGATIVE_NUMBER_OR_ZERO);
+        }
+    }
+
+    public void checkZero(int number){
+        if(number == 0){
+            throw new IllegalArgumentException(ErrorMessage.INPUT_HAS_NEGATIVE_NUMBER_OR_ZERO);
+        }
+    }
 }
