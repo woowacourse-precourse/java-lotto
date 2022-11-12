@@ -7,7 +7,8 @@ public enum InputException {
     INPUT_INVALID_FORM("[ERROR] 당첨 번호는 숫자만 가능하며 쉼표로만 구분되어 있어야 합니다."),
     INPUT_INVALID_DIGIT_RANGE("[ERROR] 당첨 번호는 1 - 45 까지의 숫자만 가능합니다."),
     INPUT_INVALID_DIGIT_COUNT("[ERROR] 당첨 번호는 6개까지만 가능합니다."),
-    INPUT_HAS_NOT_DUPLICATE_DIGIT("[ERROR] 당첨 번호는 중복이 존재할 수 없습니다.");
+    INPUT_HAS_NOT_DUPLICATE_DIGIT("[ERROR] 당첨 번호는 중복이 존재할 수 없습니다."),
+    INPUT_INVALID_BONUS_LOTTO("[ERROR] 보너스 번호는 1-45의 숫자 1개만 가능합니다.");
 
     private final String message;
 

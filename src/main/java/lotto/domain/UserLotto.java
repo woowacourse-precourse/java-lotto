@@ -20,6 +20,7 @@ public final class UserLotto {
         isValidLottoCount(winNumbers);
         isValidLottoRange(winNumbers);
         hasNotDuplicateLotto(winNumbers);
+        isValidBonusLottoRange(bonusNumber);
         this.winNumbers = List.copyOf(mapToList(winNumbers));
         this.bonusNumber = Integer.parseInt(bonusNumber);
     }
@@ -57,5 +58,12 @@ public final class UserLotto {
         return Arrays.stream(winNumbers.split(SPLIT_STANDARD))
                 .map(Integer::valueOf)
                 .collect(Collectors.toList());
+    }
+
+    private void isValidBonusLottoRange(String bonusNumber) {
+        if (bonusNumber.length() != 1 || !bonusNumber.matches(SPLIT_STANDARD)
+                || ( 1 > Integer.parseInt(bonusNumber) && Integer.parseInt(bonusNumber) > 45 )) {
+            throw new IllegalArgumentException(InputException.INPUT_INVALID_BONUS_LOTTO.message());
+        }
     }
 }
