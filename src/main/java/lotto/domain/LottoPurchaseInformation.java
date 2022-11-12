@@ -33,6 +33,7 @@ public class LottoPurchaseInformation {
     }
 
     private void initializeWinningStatistics(){
+        winningStatistics.put(Rank.NOTHING, 0);
         winningStatistics.put(Rank.FIFTH, 0);
         winningStatistics.put(Rank.FOURTH, 0);
         winningStatistics.put(Rank.THIRD, 0);
@@ -43,16 +44,16 @@ public class LottoPurchaseInformation {
     public void compareLottoTicketsWith(List<Integer> winningNumbers, int bonusNumber){
         initializeWinningStatistics();
         for(int i = 0; i < lottoTickets.size(); i++) {
-            Lotto lotto = lottoTickets.get(i);
-            String winningData = lotto.compareNumbersWith(winningNumbers,bonusNumber);
-            renewWinningStatistics(winningData);
+            Lotto lottoTicket = lottoTickets.get(i);
+            Rank ticketRank = lottoTicket.compareNumbersWith(winningNumbers,bonusNumber);
+            renewWinningStatistics(ticketRank);
         }
     }
 
-    private void renewWinningStatistics(String winningData){
+    private void renewWinningStatistics(Rank ticketRank){
         for(int i =  0; i < Rank.size(); i++) {
             Rank winningRank = Rank.get(i);
-            if (winningData.equals(winningRank.condition())) {
+            if (ticketRank.condition().equals(winningRank.condition())) {
                 winningStatistics.replace(winningRank, winningStatistics.get(winningRank) + 1);
                 return;
             }
@@ -65,7 +66,7 @@ public class LottoPurchaseInformation {
 
     public void calculateTotalWinningAmount(){
         totalWinningAmount = 0;
-        for(int i = 0; i < 5; i++){
+        for(int i = 0; i < Rank.size(); i++){
             totalWinningAmount += winningStatistics.get(Rank.get(i)) * Rank.get(i).winningAmount();
         }
     }

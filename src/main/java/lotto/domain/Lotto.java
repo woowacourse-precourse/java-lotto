@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.constant.Rank;
+
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -39,13 +41,24 @@ public class Lotto {
         Collections.sort(numbers);
     }
 
-    public String compareNumbersWith(List<Integer> winningNumbers, int bonusNumber){
+    public Rank compareNumbersWith(List<Integer> winningNumbers, int bonusNumber){
         int count = calculateCountOfMatchingNumbers(winningNumbers);
         String winningData = count + "개 일치";
         if(count == 5 && contains(bonusNumber)){
             winningData += " 보너스 볼 일치";
         }
-        return winningData;
+        Rank rank = convertToRankFrom(winningData);
+        return rank;
+    }
+
+    private Rank convertToRankFrom(String winningData){
+        for(int i =  0; i < Rank.size(); i++) {
+            Rank winningRank = Rank.get(i);
+            if (winningData.equals(winningRank.condition())) {
+                return winningRank;
+            }
+        }
+        return Rank.NOTHING;
     }
 
     private int calculateCountOfMatchingNumbers(List<Integer> winningNumbers){
