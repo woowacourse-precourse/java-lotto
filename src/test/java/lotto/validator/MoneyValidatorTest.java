@@ -1,6 +1,6 @@
 package lotto.validator;
 
-import static lotto.validator.ErrorMessages.INVALID_PAID_MONEY_MESSAGE;
+import static lotto.validator.ErrorMessages.INVALID_PAID_MONEY_ERROR_MESSAGE;
 import static lotto.validator.MoneyValidator.hasValidPaidMoney;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -17,6 +17,6 @@ public class MoneyValidatorTest {
         //when, then
         assertThatThrownBy(() -> hasValidPaidMoney(invalidPaidMoney))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(INVALID_PAID_MONEY_MESSAGE);
+                .hasMessageContaining(INVALID_PAID_MONEY_ERROR_MESSAGE);
     }
 }
