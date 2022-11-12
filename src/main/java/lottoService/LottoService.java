@@ -40,6 +40,15 @@ public class LottoService {
         isValidRange(winningLotto.getNumbers());
     }
 
+    public void comparePlayerLottoNumberAndWinningLottoNumber(List<Integer> lottoWinningNumbers , Lotto playerRandomLottoNumbers , Player player , Integer lottoBonusNumber){
+        for (Integer lottoWinningNumber : lottoWinningNumbers) {
+            if(playerRandomLottoNumbers.getNumbers().contains(lottoWinningNumber))
+                player.addLottoCount();
+        }
+        if(playerRandomLottoNumbers.getNumbers().contains(lottoBonusNumber))
+            player.bonusNumberIncludedWinningLottoNumber();
+    }
+
     public List<Integer> inputLottoWinningNumbers(){
         List<Integer> lottoWinningNumbers = new ArrayList<>();
         String inputLottoPickNumbers = input().trim().replaceAll(" ","");
