@@ -34,11 +34,10 @@ public class Application {
         return Integer.parseInt(money)/1000;
     }
     public static void moneyErrorCheck(String money){
-        for(int i = 0 ; i < money.length() ;i++){
-            if(!Character.isDigit(money.charAt(i))){
-                throw new IllegalArgumentException("[ERROR] 숫자를 입력해야합니다.");
-            }
-        }
+        String numberPattern = "^[0-9]{1,}$";
+        if(!Pattern.matches(numberPattern, money))
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력해야합니다.");
+
         if((Integer.parseInt(money) % 1000) != 0)
             throw new IllegalArgumentException("[ERROR] 구입금액은 1000으로 나누어 떨어져야합니다.");
     }
@@ -85,7 +84,7 @@ public class Application {
         if(numbers.size() != 6)
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 6개여야 합니다.");
 
-        String numberPattern = "^[0-9]{1,2}$";
+        String numberPattern = "^[0-9]{1,}$";
         for(int i=0 ; i < numbers.size() ; i++)
             if(!Pattern.matches(numberPattern, numbers.get(i)))
                 throw new IllegalArgumentException("[ERROR] 로또 당첨 번호는 숫자를 입력해야 합니다.");
@@ -99,7 +98,7 @@ public class Application {
 
     }
     public static void bonusNumberErrorCheck(String number){
-        String numberPattern = "^[0-9]*$";
+        String numberPattern = "^[0-9]{1,}$";
         if(!Pattern.matches(numberPattern, number))
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자를 입력해야 합니다.");
 
