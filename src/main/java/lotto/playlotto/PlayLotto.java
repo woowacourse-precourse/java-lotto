@@ -35,3 +35,8 @@ public class PlayLotto extends Input {
         this.out = new Output();
         this.win_count = new ArrayList<>(List.of(0,0,0,0,0));
     }
+
+    public void buy_lottery(){ //사용자에게 복권 당첨 금액 입력받기
+        out.buy_lottery();
+        this.user.pay_Money();
+    }
