@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class WinningNumbersValidator {
@@ -12,6 +13,7 @@ public class WinningNumbersValidator {
     private static String ALL_NUMERIC_ERROR_MESSAGE = "숫자들을 띄어쓰기없이 쉼표로 구분해서 입력해야 합니다";
     private static String RANGE_ERROR_MESSAGE = String.format("%d ~ %d 사이의 숫자들로 입력해야 합니다",
             MIN_WINNING_NUMBER, MAX_WINNING_NUMBER);
+    private static String DUPLICATE_ERROR_MESSAGE = "입력한 숫자들 중 중복되는 값이 있습니다";
 
     private static boolean isSixNumbers(List<String> winningNumbers) {
         return winningNumbers.size() == WINNING_NUMBERS_SIZE;
@@ -45,6 +47,15 @@ public class WinningNumbersValidator {
         return true;
     }
 
+    private static boolean isDuplicate(List<String> winningNumbers) {
+        for (String number : winningNumbers) {
+            if (Collections.frequency(winningNumbers, number) > 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void validate(String winningNumberInput) {
         List<String> winningNumbers = Arrays.asList(winningNumberInput.split(","));
         if (!isAllNumeric(winningNumbers)) {
@@ -52,6 +63,9 @@ public class WinningNumbersValidator {
         }
         if (!isInValidRange(winningNumbers)) {
             throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
+        }
+        if (isDuplicate(winningNumbers)) {
+            throw new IllegalArgumentException(DUPLICATE_ERROR_MESSAGE);
         }
         if (!isSixNumbers(winningNumbers)) {
             throw new IllegalArgumentException(SIX_NUMBERS_ERROR_MESSAGE);
