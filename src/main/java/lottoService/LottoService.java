@@ -49,6 +49,27 @@ public class LottoService {
             player.bonusNumberIncludedWinningLottoNumber();
     }
 
+    public void saveLottoResult(Player player){
+        if(player.getIsWinningLottoNumberBonusNumber())
+            player.minusLottoCount();
+
+        if(LottoRank.WIN_LOTTO_3.getCount() == player.getLottoCount())
+            player.getWinningLottoCount().put(LottoRank.WIN_LOTTO_3 , player.getWinningLottoCount().getOrDefault(LottoRank.WIN_LOTTO_3,0) + 1);
+
+        if(LottoRank.WIN_LOTTO_4.getCount() == player.getLottoCount())
+            player.getWinningLottoCount().put(LottoRank.WIN_LOTTO_4 , player.getWinningLottoCount().getOrDefault(LottoRank.WIN_LOTTO_4,0) + 1);
+
+        if(LottoRank.WIN_LOTTO_5_BONUS.getCount() == player.getLottoCount() && player.getIsWinningLottoNumberBonusNumber())
+            player.getWinningLottoCount().put(LottoRank.WIN_LOTTO_5_BONUS , player.getWinningLottoCount().getOrDefault(LottoRank.WIN_LOTTO_5_BONUS,0) + 1);
+
+        if(LottoRank.WIN_LOTTO_5.getCount() == player.getLottoCount())
+            player.getWinningLottoCount().put(LottoRank.WIN_LOTTO_5 , player.getWinningLottoCount().getOrDefault(LottoRank.WIN_LOTTO_5,0) + 1);
+
+        if(LottoRank.WIN_LOTTO_6.getCount() == player.getLottoCount())
+            player.getWinningLottoCount().put(LottoRank.WIN_LOTTO_6 , player.getWinningLottoCount().getOrDefault(LottoRank.WIN_LOTTO_6,0) + 1);
+
+    }
+
     public List<Integer> inputLottoWinningNumbers(){
         List<Integer> lottoWinningNumbers = new ArrayList<>();
         String inputLottoPickNumbers = input().trim().replaceAll(" ","");
