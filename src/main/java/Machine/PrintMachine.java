@@ -13,19 +13,19 @@ public class Print {
         System.out.println(String.format("%d개를 구입했습니다.", count));
     }
 
-    public static void winningNumber(){
+    public static void winningNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
     }
 
-    public static void BonusNumber(){
+    public static void BonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
 
-    public static void errorMessage(String message){
+    public static void errorMessage(String message) {
         System.out.println(String.format("[ERROR] %s", message));
     }
 
-    public static void lottoNumber(List<List<Integer>> lottoes){
+    public static void lottoNumber(List<List<Integer>> lottoes) {
         for (List<Integer> lotto : lottoes) {
             Collections.sort(lotto);
             System.out.println(lotto);
