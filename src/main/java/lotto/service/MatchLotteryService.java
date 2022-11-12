@@ -39,6 +39,11 @@ public class MatchLotteryService {
         return countingResult;
     }
 
+    private int countNumberIfContains(int numberEach){
+        if(computer.getComputerNumber().getNumbers().contains(numberEach)) return 1;
+        return 0;
+    }
+
     private Ranking convertCountToRanking(Lotto lottoEach, int equalCount){
         if(equalCount == SIX_MATCH) return Ranking.SIX_MATCH;
         if(equalCount == FIVE_MATCH) return separateByBonusNumber(lottoEach);
