@@ -23,7 +23,7 @@
   - 보너스 번호가 있는지 카운트한다 [ x ] - Judgment#hasBonusNumber()
 
 
-- 총 수익률 구하기
+- 총 수익률 출력 [ x ] - LottoManager#printProfit()
 
 
 
