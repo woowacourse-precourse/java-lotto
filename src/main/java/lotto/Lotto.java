@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validateSize(numbers);
         validateDuplicated(numbers);
+        sortNumbers(numbers);
         this.numbers = numbers;
     }
 
@@ -25,5 +27,9 @@ public class Lotto {
         if (!numbers.stream().allMatch(new HashSet<>()::add)) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public void sortNumbers(List<Integer> numbers) {
+        numbers.sort(Comparator.naturalOrder());
     }
 }
