@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.Constant.LOTTO_PRICE;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,15 +38,16 @@ public class Result {
         return String.join("\n", messages);
     }
 
-    public double calculateYield() {
+    public Double calculateYield() {
         Integer totalOutcome = 0;
         Integer totalInput = 0;
-        for(int i=0; i<result.size();i++ ){
-            totalOutcome += result.get(i) * money.get(i);
-            totalInput += result.get(i) * 1000;
+        for (Rank rank : result.keySet()) {
+            Integer rankCnt = result.get(rank);
+            totalOutcome += rank.getMoney() * rankCnt;
+            totalInput += LOTTO_PRICE * rankCnt;
         }
-
-        double yield = ((double) totalOutcome / totalInput) * 100;
-        return Math.round(yield * 100) / 100.0;
+        return Double.valueOf(totalOutcome) / totalInput * 100;
     }
+
+
 }

@@ -36,6 +36,10 @@ public enum Rank {
         return matchBallCnt;
     }
 
+    public Integer getMoney() {
+        return money;
+    }
+
     @Override
     public String toString() {
         String str = matchBallCnt + "개 일치";

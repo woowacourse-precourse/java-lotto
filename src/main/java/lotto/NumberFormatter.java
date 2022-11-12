@@ -12,4 +12,9 @@ public class NumberFormatter {
     public static String format(Integer number) {
         return decFormat.format(number);
     }
+
+    public static String format(Double number) {
+        return decFormat.format(number);
+    }
+
 }
