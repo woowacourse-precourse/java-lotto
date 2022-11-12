@@ -15,7 +15,7 @@ public class WinningNumbers {
 		List<Integer> numbers = stringToList(inputWinningNumbers);
 		this.lottoNumbers = new Lotto(numbers);
 
-		int bonusNumber = validateREGEX(inputBonusNumber);
+		int bonusNumber = validateNumber(inputBonusNumber);
 		this.bonusNumber = validateBonus(bonusNumber);
 	}
 
@@ -32,13 +32,13 @@ public class WinningNumbers {
 		List<Integer> list = new ArrayList<>();
 
 		for (String splitString : splitUserInput) {
-			int number = validateREGEX(splitString);
+			int number = validateNumber(splitString);
 			list.add(number);
 		}
 		return list;
 	}
 
-	private int validateREGEX(String userInput) {
+	private int validateNumber(String userInput) {
 		if (!numberPattern.matcher(userInput).matches()) {
 			throw new IllegalArgumentException(
 				String.format(ErrorMessage.NUMBER.getMessage(), Number.MIN.getValue(), Number.MAX.getValue()));

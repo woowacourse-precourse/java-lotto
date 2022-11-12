@@ -10,7 +10,7 @@ public class LottoStore {
 	private final int numberOfTickets;
 
 	public LottoStore(String scanPurchaseAmount) {
-		validateREGEX(scanPurchaseAmount);
+		validateUnit(scanPurchaseAmount);
 		int purchaseAmount = Integer.parseInt(scanPurchaseAmount);
 		validateZero(purchaseAmount);
 
@@ -26,7 +26,7 @@ public class LottoStore {
 		return numberOfTickets;
 	}
 
-	private void validateREGEX(String userInput) {
+	private void validateUnit(String userInput) {
 		if (!numberPattern.matcher(userInput).matches()) {
 			throw new IllegalArgumentException(String.format(ErrorMessage.UNIT.getMessage(), Number.UNIT.getValue()));
 		}
