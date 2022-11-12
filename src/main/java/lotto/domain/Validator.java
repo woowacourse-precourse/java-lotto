@@ -20,7 +20,10 @@ public class Validator {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 쉼표로 구분하여 입력해야 합니다.");
         }
         Arrays.stream(winningNumbers.split(","))
-                .forEach(Validator::checkNumber);
+                .forEach(winningNumber -> {
+                    checkNumber(winningNumber);
+                    isGreaterThanOneAndLessThanFortyFive(winningNumber);
+                });
         checkDuplicate(winningNumbers.split(","));
     }
 
