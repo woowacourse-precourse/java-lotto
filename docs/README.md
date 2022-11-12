@@ -25,7 +25,7 @@
 
     <br/>
 
-- [ ] 구매한 로또 개수 출력하는 기능
+- [x] 구매한 로또 개수 출력하는 기능
 
   _OutputView #outputPurchasedTicketCounts(String.format())_
 
