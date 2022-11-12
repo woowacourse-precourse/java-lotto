@@ -19,4 +19,12 @@ public class WinningLotto {
             throw new IllegalArgumentException();
         }
     }
+
+    public int matchCount(Lotto compareLotto){
+        return compareLotto.countMatchingNumber(lotto);
+    }
+
+    public boolean isContainsBonusNumber(Lotto compareLotto, int bonusNumber) {
+        return compareLotto.containsNumber(bonusNumber);
+    }
 }
