@@ -7,8 +7,8 @@ public enum LottoResultMessage {
     FIVE_MATCHES_AND_BONUS_MATCHES("5개 일치, 보너스 볼 일치 (30,000,000원) - ", 2),
     SIX_MATCHES("6개 일치 (2,000,000,000원) - ", 1);
 
-    String message;
-    int rank;
+    private String message;
+    private int rank;
 
     LottoResultMessage(String message, int rank) {
         this.message = message;
