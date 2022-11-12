@@ -97,11 +97,6 @@ public class Application {
         System.out.println("총 수익률은 " + surplusRate + "%입니다.");
     }
 
-    public static void printErrorAboutSize() {
-
-        System.out.println("[ERROR] 알맞은 개수의 숫자를 입력해야 합니다.");
-    }
-
     public static void validateCashIsInteger(String input) {
 
         for (int i = 0; i < input.length(); i++) {
