@@ -1,10 +1,10 @@
 ## 기능 목록
-- [ ] 로또 구입
-  - [ ] 구입 금액 입력 요청 메세지 출력 : "구입금액을 입력해 주세요."
-  - [ ] 구입 금액 입력 받기 -> camp.nextstep.edu.missionutils.Console의 readLine() 사용
+- [x] 로또 구입
+  - [x] 구입 금액 입력 요청 메세지 출력 : "구입금액을 입력해 주세요."
+  - [x] 구입 금액 입력 받기 -> camp.nextstep.edu.missionutils.Console의 readLine() 사용
     - 입력 조건
       - 1000원으로 나누어 떨어지는 숫자
-    - [ ] 입력 조건에 맞지 않는 입력에 대해 예외 처리 : IllegalArgumentException("[ERROR] 에러 메시지")
+    - [x] 입력 조건에 맞지 않는 입력에 대해 예외 처리 : IllegalArgumentException("[ERROR] 에러 메시지")
 - [ ] 로또 발행
   - [ ] 로또 개수 계산 : 구입 금액 / 로또 한장 가격(1000원)
   - [ ] 로또 발행 메시지 출력 : "(로또 개수)개를 구매했습니다."
