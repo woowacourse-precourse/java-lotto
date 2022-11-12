@@ -18,6 +18,8 @@ public class GameManager {
         int numberOfPurchase = changeNumberOfLottoToBuy(lottoPrice);
         purchaseLotto(numberOfPurchase);
         wallet.printWallet();
+
+        input.getWinningNumber();
     }
 
     public int changeNumberOfLottoToBuy(int lottoPrice) {

@@ -22,4 +22,10 @@ public class Input {
         return Integer.parseInt(question);
     }
 
+    public void getWinningNumber() {
+        System.out.print('\n' + GameMessage.INPUT_WINNING_NUMBER + '\n');
+
+        String answer = Console.readLine();
+    }
+
 }
