@@ -17,4 +17,13 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public int howManyWinningNumbers(List<Integer> winningNumber){
+        int winningNumberCount = 0;
+
+        for(int i = 0 ; i < winningNumber.size() ; i++)
+            if(numbers.contains(winningNumber.get(i)))
+                winningNumberCount++;
+
+        return winningNumberCount;
+    }
 }
