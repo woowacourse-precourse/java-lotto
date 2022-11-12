@@ -1,7 +1,6 @@
 package lotto;
 
 import lotto.domain.Lotto;
-import lotto.domain.LottoStand;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -25,19 +24,8 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
+}
     // 아래에 추가 테스트 작성 가능
 
-    @Test
-    @DisplayName("로또판매대")
-    public void 로또판매대() throws Exception {
-        //given
-        LottoStand lottoStand = new LottoStand();
-        int money = 50000;
-        //when
-        int ticket = lottoStand.salesPerson(money);
-        //then
-        System.out.print("티켓 :" + ticket);
-    }
-}
+
 

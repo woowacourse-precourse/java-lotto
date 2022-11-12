@@ -15,14 +15,12 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    //로또 번호에 중복된 숫자가 있으면 예외가 발생한다
-    private void duplicateNumber(List<Integer> numbers) {
-
+            throw new IllegalArgumentException("[ERROR] 잘못된 값 입력");
             }
+        }
+
+
+
         // TODO: 추가 기능 구현
     }
 
