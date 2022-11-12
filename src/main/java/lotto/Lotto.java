@@ -26,5 +26,9 @@ public class Lotto {
         int price_of_lotto = Integer.parseInt(Console.readLine());
     }
 
+    private void calculateNumOfLotto(int price_of_lotto){
+        number_of_lotto = price_of_lotto / 1000;
+    }
+
 
 }
