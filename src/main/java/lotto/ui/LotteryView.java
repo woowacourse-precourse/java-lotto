@@ -10,12 +10,16 @@ public class LotteryView implements View {
         this.lottoNumber = lottoNumber;
         this.lotteries = lotteries;
     }
+
     @Override
     public void makeView(){
+        print();
+    }
+
+    private void print(){
         printNumberOfLotteries();
         printAllLotteries();
     }
-
     private void printNumberOfLotteries(){
         System.out.println(lottoNumber + "개를 구매했습니다.");
     }
