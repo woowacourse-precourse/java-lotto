@@ -30,12 +30,10 @@ public class LottoMachine {
     }
 
     private List<LottoNumber> generateLottoNumbers() {
-        SortedSet<LottoNumber> lotto = new TreeSet<>();
-        while (lotto.size() < Lotto.LOTTO_SIZE) {
-            LottoNumber lottoNumber = new LottoNumber(Randoms.pickNumberInRange(Lotto.MIN_NUMBER, Lotto.MAX_NUMBER));
-            lotto.add(lottoNumber);
-        }
-        return new ArrayList<>(lotto);
+        return Randoms.pickUniqueNumbersInRange(Lotto.MIN_NUMBER, Lotto.MAX_NUMBER, Lotto.LOTTO_SIZE).stream()
+                .map(LottoNumber::new)
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     public WinningStatics enterWinningLotto(WinningLotto winningLotto) {
