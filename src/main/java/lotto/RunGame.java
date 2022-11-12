@@ -1,20 +1,26 @@
 package lotto;
 
 import lotto.model.UserDTO;
-import lotto.view.InputPurchase;
+import lotto.view.InputUser;
 import lotto.view.Print;
 
 public class RunGame {
-    private InputPurchase inputPurchase = new InputPurchase();
-    private Print print = new Print();
-    public void runGame() {
-        UserDTO userDTO;
+    private static InputUser inputUser = new InputUser();
+    private static Print print = new Print();
+    private UserDTO userDTO;
+    public RunGame() {
         try {
-            userDTO = inputPurchase.makeUserData();
-            print.printGames(userDTO);
+            userSide();
+            managerSide();
         } catch(IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            return ;
         }
+    }
+    private void userSide() {
+            this.userDTO = inputUser.makeUserData();
+            print.printGames(this.userDTO);
+    }
+    private void managerSide() {
+
     }
 }

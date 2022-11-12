@@ -3,11 +3,11 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.model.UserDTO;
 
-public class InputPurchase {
+public class InputUser {
     private static final String PURCHASE_REQUEST = "구입금액을 입력해 주세요.";
 
     private String inputData;
-    public InputPurchase() {
+    public InputUser() {
         System.out.println(PURCHASE_REQUEST);
     }
 
