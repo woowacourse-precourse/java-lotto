@@ -14,6 +14,7 @@ import java.util.List;
 class BankerTest {
     Banker banker = new Banker();
     int[] victory = new int[2];
+    User user = User.getInstance;
 
     @Test
     void compareCount() {
@@ -37,5 +38,16 @@ class BankerTest {
 
     @Test
     void testCompareCount() {
+    }
+
+
+    @Test
+    void getWinnerMoney() {
+        user.setMoney(10000);
+        banker.setMap();
+        for (int i = 0; i < banker.getMap().size(); i++) {
+            banker.getMap().put(Victory.values()[i], 1);
+        }
+        System.out.println(banker.getWinnerMoney());
     }
 }
