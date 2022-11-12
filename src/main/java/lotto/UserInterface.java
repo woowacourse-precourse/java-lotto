@@ -53,4 +53,8 @@ public class UserInterface {
         System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", winResult.get(LottoRank.SECOND));
         System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", winResult.get(LottoRank.FIRST));
     }
+
+    public static void printIncomePercent(float incomePercent) {
+        System.out.printf("총 수익률은 %.2f%%입니다.\n", incomePercent);
+    }
 }

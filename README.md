@@ -104,7 +104,7 @@ BUILD SUCCESSFUL in 0s
         - [x] `private HashMap<LottoRank, Integer> getWinResult(List<Lotto> lottoList, WinLotto, winLotto)`
         - [x] `public float getIncomePercent()`
         - [x] `public HashMap<LottoRank, Integer> getWinResult()`
-- [ ] **CLASS 6.** `UserInterface`
+- [x] **CLASS 6.** `UserInterface`
     - **Class Methods:**
         - [x] `public static void printPurchaseMoneyMessage()`
         - [x] `public static int inputPurchaseMoney()`
@@ -114,7 +114,7 @@ BUILD SUCCESSFUL in 0s
         - [x] `public static int inputBonusNumber()`
         - [x] `public static void printLottoList(List<Lotto> lottoList)`
         - [x] `public static void printWinResult(HashMap<LottoRank, Integer> winResult)`
-        - [ ] `public static void printIncomePercent(int incomePercent)`
+        - [x] `public static void printIncomePercent(int incomePercent)`
 
 ### 입출력 요구 사항
 
