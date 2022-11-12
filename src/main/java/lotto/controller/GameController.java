@@ -17,11 +17,11 @@ public class GameController {
             createMoney();
             generateLottosByMoney();
             createWinningInformation();
-            calculateResult();
-        } catch (Exception e) {
+        } catch (IllegalArgumentException e) {
             OutputView.announceError(e.getMessage());
+            return;
         }
-
+        calculateResult();
     }
 
     private void createMoney() {
@@ -55,7 +55,6 @@ public class GameController {
 
         OutputView.announceResult(result, profitRate);
     }
-
 
 
 }
