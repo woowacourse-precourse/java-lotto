@@ -7,4 +7,9 @@ public class OutputView{
     public void startInput_Output(){
         System.out.println(MoneyOutput);
     }
+
+    public void ResultLottoOutput(){
+        System.out.println(NumberOutput);
+        System.out.println("---");
+    }
 }
