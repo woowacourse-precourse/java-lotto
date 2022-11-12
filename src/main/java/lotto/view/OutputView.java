@@ -27,15 +27,14 @@ public class OutputView {
 	}
 
 	public static void printWinningResult(Map<Rank, Integer> getRanks) {
-		System.out.println("당첨 통계");
-		System.out.println("---");
+		System.out.println("당첨 통계\n---");
 
 		List<Rank> rankValue = List.of(Rank.FIFTH, Rank.FOURTH, Rank.THIRD, Rank.SECOND, Rank.FIRST);
 		for (Rank ranking : rankValue) {
 			System.out.printf(
 				createWinningResultMessage(ranking),
 				ranking.getHitNumberCount(),
-				setComma(ranking.getPrizeMoney()),
+				ranking.getPrizeMoneyWithComma(),
 				getRanks.get(ranking));
 		}
 	}
@@ -49,12 +48,6 @@ public class OutputView {
 			return "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
 		}
 		return WINNING_RESULT_MESSAGE;
-	}
-
-	private static String setComma(int prizeMoney) {
-		String money = Integer.toString(prizeMoney);
-		money = money.replaceAll("\\B(?=(\\d{3})+(?!\\d))", ",");
-		return money;
 	}
 
 }

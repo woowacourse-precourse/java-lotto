@@ -37,4 +37,9 @@ public enum Rank {
 		return prizeMoney;
 	}
 
+	public String getPrizeMoneyWithComma() {
+		String money = Integer.toString(prizeMoney);
+		return money.replaceAll("\\B(?=(\\d{3})+(?!\\d))", ",");
+	}
+
 }
