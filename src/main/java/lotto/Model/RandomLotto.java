@@ -1,4 +1,3 @@
-
 package lotto.Model;
 
 import java.util.ArrayList;
@@ -22,7 +21,6 @@ public class RandomLotto {
         System.out.println(BUY_SENTENCE);
         for(int i = 0; i < lottoCount; i++) {
             List<Integer> lottoNumbers = pickUniqueNumbersInRange(1, 45, 6);
-            System.out.println(lottoNumbers);
             bundleOfLottoNumbers.add(lottoNumbers);
         }
     }

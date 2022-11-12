@@ -3,8 +3,10 @@ package lotto.View;
 import lotto.Model.LottoSystem;
 
 import java.util.Collections;
+import java.util.List;
 
 import static lotto.Model.Money.getInputMoney;
+import static lotto.Model.RandomLotto.getBundleOfLottoNumbers;
 import static lotto.Model.Ranking.findRanking;
 
 
@@ -15,6 +17,10 @@ public class OutputView {
     private static final int COUNT_OF_THIRD = 5;
     private static final int COUNT_OF_FOURTH = 4;
     private static final int COUNT_OF_FIFTH = 3;
+
+    public static void printBundleOfLottoNumbers() {
+        for(List<Integer> lottoNumbers: getBundleOfLottoNumbers()) System.out.println(lottoNumbers);
+    }
 
     public static void printResult() {
         System.out.println("당첨 통계");

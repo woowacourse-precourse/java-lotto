@@ -13,6 +13,8 @@ public class LottoController {
 
         RandomLotto.BuyNewLotto();
 
+        OutputView.printBundleOfLottoNumbers();
+
         inputNumbers();
 
         LottoSystem.lottoSystem(Lotto.getWinningNumbers(), Lotto.getBonusNumber());

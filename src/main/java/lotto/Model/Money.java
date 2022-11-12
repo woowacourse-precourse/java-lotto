@@ -11,9 +11,9 @@ public class Money {
     private static int inputMoney;
 
     public static void setInputMoney(String inputMoney) {
-        int temp = convertToInt(inputMoney);
-        checkUnit(temp);
-        Money.inputMoney = temp;
+        int tempMoney = convertToInt(inputMoney);
+        checkUnit(tempMoney);
+        Money.inputMoney = tempMoney;
     }
 
     private static int convertToInt(String input) {
