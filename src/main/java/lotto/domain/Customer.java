@@ -2,6 +2,8 @@ package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import static lotto.config.BaseValidation.INVALID_PAY_MONEY;
+
 public class Customer {
 
     private static final String INPUT_MONEY = "구입 금액을 입력해주세요.";
@@ -13,16 +15,15 @@ public class Customer {
     private int hasLotto;
 
     public void payMoney() {
-        try {
-            System.out.println(INPUT_MONEY);
-            this.money = Integer.parseInt(Console.readLine());
 
-            if ((getMoney() % LOTTO_PRICE) != REMAINDER) {
-                throw new IllegalArgumentException();
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] : 급액은 1,000원 단위로 입력하시오.");
+        System.out.println(INPUT_MONEY);
+        this.money = Integer.parseInt(Console.readLine());
+
+        if ((getMoney() % LOTTO_PRICE) != REMAINDER) {
+            System.out.println(INVALID_PAY_MONEY.getMessage());
+            throw new IllegalArgumentException();
         }
+
     }
 
     public int getMoney() {
