@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 
 public class WinningLotto {
     private static final int LOTTO_NUMBER_SIZE = 6;
+    private static final int MIN_LOTTO_NUMBER = 1;
+    private static final int MAX_LOTTO_NUMBER = 45;
     private static final String ERROR_NO_POSITIVE_INTEGER = "[ERROR] 숫자를 입력해주세요.";
     private static final String ERROR_NO_LOTTO_NUMBER = "[ERROR] 정수 1 ~ 45를 입력해주세요.";
     private static final String ERROR_WRONG_LOTTO_SIZE = "[ERROR] 당첨 번호 6개를 입력해주세요.";
@@ -54,6 +56,10 @@ public class WinningLotto {
             throw new IllegalArgumentException(e.getMessage());
         }
 
+        checkLottoNumberSize(unDuplicateNumbers);
+    }
+
+    private void checkLottoNumberSize(Set<Integer> unDuplicateNumbers) {
         if (unDuplicateNumbers.size() != LOTTO_NUMBER_SIZE) {
             throw new IllegalArgumentException(ERROR_WRONG_LOTTO_SIZE);
         }
@@ -66,7 +72,7 @@ public class WinningLotto {
     }
 
     private void validateLottoNumber(int number) {
-        if (number < 1 || 45 < number) {
+        if (number < MIN_LOTTO_NUMBER || MAX_LOTTO_NUMBER < number) {
             throw new IllegalArgumentException(ERROR_NO_LOTTO_NUMBER);
         }
     }
