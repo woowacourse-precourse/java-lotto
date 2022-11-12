@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WinningNumbers {
     private final List<Integer> numbers;
@@ -8,6 +9,7 @@ public class WinningNumbers {
 
     public WinningNumbers(List<Integer> numbers, int bonusNumber) {
         validate(numbers);
+        checkOverlap(numbers);
         this.numbers = numbers;
         this.bonusNumber = bonusNumber;
     }
@@ -16,5 +18,12 @@ public class WinningNumbers {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private void checkOverlap(List<Integer> numbers) {
+        List<Integer> distinctNumbers = numbers.stream()
+                .distinct()
+                .collect(Collectors.toList());
+        validate(distinctNumbers);
     }
 }
