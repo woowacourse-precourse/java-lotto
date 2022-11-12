@@ -9,19 +9,27 @@ import static lotto.Constant.*;
 
 public class LottoDrawing {
     List<Integer> winningNumbers = new ArrayList<>();
-    Lotto winningLotto;
     int bonusNumber;
-    public void getWinningNumber(){
+    public List<Integer> getWinningNumber(){
         System.out.println(MESSAGE_INPUT_WINNING_NUMBER);
-        String winningNumber = Console.readLine();
-        String[] winningNumbers = winningNumber.split(",");
-        for(String number: winningNumbers){
-            this.winningNumbers.add(Integer.parseInt(number));
+
+        String winningNumberInput = Console.readLine();
+        String[] WinningNumberInputs = winningNumberInput.split(",");
+        List<Integer> tempNumbers = new ArrayList<>();
+        for(String number: WinningNumberInputs){
+            tempNumbers.add(Integer.parseInt(number));
         }
-        winningLotto = new Lotto(this.winningNumbers);
+
+        Lotto winningLotto = new Lotto(tempNumbers);
+        winningNumbers = winningLotto.getNumbers();
+
+        return winningLotto.getNumbers();
     }
-    public void getBonusNumber(){
+
+    public int getBonusNumber(){
         System.out.println(MESSAGE_INPUT_BONUS_NUMBER);
         bonusNumber = Integer.parseInt(Console.readLine());
+
+        return bonusNumber;
     }
 }
