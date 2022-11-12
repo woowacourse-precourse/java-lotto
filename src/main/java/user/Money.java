@@ -44,10 +44,16 @@ public class Money {
     }
 
     private boolean isMoneyPositive(int money) {
+        if (money < 0) {
+            throw new IllegalArgumentException();
+        }
         return money >= 0;
     }
 
-    public boolean isMoneyThousandMultiple(int money) {
+    private boolean isMoneyThousandMultiple(int money) {
+        if (money % BASE_MONEY != 0) {
+            throw new IllegalArgumentException();
+        }
         return money % BASE_MONEY == 0;
     }
 
