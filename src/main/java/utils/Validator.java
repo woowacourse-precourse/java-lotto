@@ -27,5 +27,15 @@ public class Validator {
         }
     }
 
+    public static void isValidInput(String input){
+        IllegalArgumentException exit_Program
+                = new IllegalArgumentException(ErrorStatements.SHOUT_NOT_NUMBER_ERROR.alarmed());
+        char[] inputCharacters = input.toCharArray();
+        for(int i=0; i<inputCharacters.length; i+=2) {
+            if ((int) inputCharacters[i] < 48 || (int) inputCharacters[i] > 57) {
+                throw exit_Program;
+            }
+        }
+    }
 
 }

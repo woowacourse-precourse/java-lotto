@@ -19,6 +19,7 @@ public class ConsoleUserInput {
     public String inputWinningNumbers(){
         String userInput = Console.readLine();
         Validator.isValidFormatWithComma(userInput);
+        Validator.isValidInput(userInput);
         return userInput;
     }
 

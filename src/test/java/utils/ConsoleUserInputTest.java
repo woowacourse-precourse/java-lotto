@@ -50,7 +50,7 @@ public class ConsoleUserInputTest {
     @Test
     void checkInvalidInput(){
         var consoleUserInput = new ConsoleUserInput();
-        InputStream in = testUserInput("나는 숫자가 아니야~:) 😗 ");
+        InputStream in = testUserInput("나,는,숫,자,가, 아니야~:) 😗 ");
         System.setIn(in);
         scanner = new Scanner(System.in);
 
