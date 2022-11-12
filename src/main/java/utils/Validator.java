@@ -2,6 +2,8 @@ package utils;
 
 import model.LottoStatus;
 
+import java.util.HashMap;
+
 import static model.ErrorMessage.*;
 import static model.LottoStatus.END;
 import static model.LottoStatus.START;
@@ -85,6 +87,28 @@ public class Validator {
             if (luckyNumber < START.getValue() || luckyNumber > END.getValue()) {
                 throw new IllegalArgumentException(INCORRECT_LUCKY_NUMBER_RANGE.toString());
             }
+        }
+    }
+
+    public void validateLuckyNumberDuplication(String input) {
+        HashMap<Integer, Integer> exist = new HashMap<>();
+        addExist(input, exist);
+        checkExist(input, exist);
+    }
+
+    private void checkExist(String input, HashMap<Integer, Integer> exist) {
+        for (String number : getNumbers(input)) {
+            int luckyNumber = Integer.parseInt(number);
+            if (exist.get(luckyNumber) > LottoStatus.LIMIT.getValue()) {
+                throw new IllegalArgumentException("로또 번호는 중복되지 않아야 합니다.");
+            }
+        }
+    }
+
+    private void addExist(String input, HashMap<Integer, Integer> exist) {
+        for (String number : getNumbers(input)) {
+            int luckyNumber = Integer.parseInt(number);
+            exist.put(luckyNumber, exist.getOrDefault(luckyNumber, 0) + 1);
         }
     }
 }

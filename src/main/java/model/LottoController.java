@@ -24,10 +24,14 @@ public class LottoController {
         outputView.outputLotto(lottoService.issueLotto(Integer.parseInt(money)));
 
         String luckyNumber = inputView.inputLuckyNumber();
+        validateLuckyNumber(luckyNumber);
+    }
+
+    private void validateLuckyNumber(String luckyNumber) {
         validator.validateLuckyNumberSize(luckyNumber);
         validator.validateLuckyNumberDigit(luckyNumber);
         validator.validateLuckyNumberRange(luckyNumber);
-
+        validator.validateLuckyNumberDuplication(luckyNumber);
     }
 
     private void validatePurchasingAmount(String input) {
