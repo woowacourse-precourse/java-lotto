@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.type.Rank;
 
+import java.util.EnumMap;
 import java.util.List;
 
 public class LottoGame {
@@ -15,7 +16,12 @@ public class LottoGame {
 
     public LottoResult play() {
         List<Rank> ranks = publishedLottos.calculateResultRanks(bonusNumber);
+        EnumMap<Rank, Integer> ranksResult = new EnumMap<>(Rank.class);
 
-        return new LottoResult(ranks);
+        for (Rank rank :ranks) {
+            ranksResult.put(rank, ranksResult.getOrDefault(rank,0) + 1);
+        }
+
+        return new LottoResult(ranksResult);
     }
 }
