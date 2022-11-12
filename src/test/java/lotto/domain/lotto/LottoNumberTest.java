@@ -24,4 +24,22 @@ class LottoNumberTest {
         Assertions.assertThatIllegalArgumentException().isThrownBy(() -> new LottoNumber(input))
                 .withMessageContaining(LottoNumber.ERROR_NUMBER_GREATER_THAN_MIN_NUMBER);
     }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5})
+    void 로또번호는_값만_같은면_같은_숫자입니다(final Integer input) {
+        var original = new LottoNumber(input);
+        var target = new LottoNumber(input);
+
+        Assertions.assertThat(original).isEqualTo(target);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3, 4, 5})
+    void 로또번호는_값이_다르면_다른_값입니다(final Integer input) {
+        var original = new LottoNumber(input);
+        var target = new LottoNumber(input + 1);
+
+        Assertions.assertThat(original).isNotEqualTo(target);
+    }
 }
