@@ -22,7 +22,7 @@ public class LottoCalculator {
     public double getProfit(List<Integer> winnings){
         int total_income = 0;
 
-        for (int i=0; i<winnings.size(); i++){
+        for (int i=0; i<winnings.size()-1; i++){
             total_income += winnings.get(i) * PRIZE.get(i);
         }
 

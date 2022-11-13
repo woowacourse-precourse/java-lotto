@@ -32,13 +32,13 @@ public class InputView {
         return splitInput;
     }
 
-    public static String writeBonusNumber(){
+    public static int writeBonusNumber(){
         System.out.println("보너스 번호를 입력해 주세요.");
         String userInput = SCANNER.nextLine();
 
         validateInteger(userInput);
 
-        return userInput;
+        return Integer.valueOf(userInput);
     }
 
     private static List<String> splitWinningNumbers(String userInput){

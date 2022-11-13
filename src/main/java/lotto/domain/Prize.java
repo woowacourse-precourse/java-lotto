@@ -5,25 +5,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 enum Prize {
-    FIRST("2,000,000,000", 1, 7),
-    SECOND("30,000,000", 2, 6),
-    THIRD("1,500,000", 3, 5),
-    FORTH("50,000", 4, 4),
-    FIFTH("5,000", 5, 3),
-    NOTHING("0", 6, 0);
+    FIRST(4, 7),
+    SECOND(3, 6),
+    THIRD(2, 5),
+    FORTH(1, 4),
+    FIFTH(0, 3),
+    NOTHING(5, 0);
 
-    private final String prize;
     private final int name;
     private final int count;
 
-    Prize(String money, int name, int count){
-        this.prize = money;
+    Prize(int name, int count){
         this.name = name;
         this.count = count;
-    }
-
-    public String getPrize(){
-        return prize;
     }
 
     public int getName(){
