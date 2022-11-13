@@ -23,5 +23,6 @@ public class Application {
         if (winningLottoNumbers == ERROR) return;
 
         Map<Ranking,Integer> rankResult = Lotto.compareLottosWithLottoNumbers(lottos, winningLottoNumbers);
+        output.printResults(PURCHASE_MONEY,rankResult);
     }
 }
