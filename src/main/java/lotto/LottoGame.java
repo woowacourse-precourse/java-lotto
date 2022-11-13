@@ -11,8 +11,8 @@ public class LottoGame {
         Print.money();
         LottoAmount amount = new LottoAmount(Input.purchaseAmount());
         Lottos lottos = purchaseLotto(amount.makeLottoTickets());
-        BonusLotto bonusLotto = makeWinningLotto();
-        Map<LottoOperator, Integer> winningResult = findWinningResult(lottos, bonusLotto);
+        WinningLotto winningLotto = makeWinningLotto();
+        Map<LottoOperator, Integer> winningResult = findWinningResult(lottos, winningLotto);
         Print.winningResult(winningResult);
         Print.yield(amount.makeLottoTickets(), winningResult);
     }
@@ -23,14 +23,15 @@ public class LottoGame {
         return lottos;
     }
 
-    private BonusLotto makeWinningLotto() {
+    private WinningLotto makeWinningLotto() {
         Print.winningNumber();
-        Lotto winningLotto = generator.makeLotto(Input.winningNumber());
+        List<Integer> winningNumber = Input.winningNumber();
         Print.bonusNumber();
-        return new BonusLotto(winningLotto, Input.bonus());
+        int bonus = Input.bonus();
+        return generator.makeLotto(winningNumber, bonus);
     }
 
-    private Map<LottoOperator, Integer> findWinningResult(Lottos lottos, BonusLotto bonusLotto) {
+    private Map<LottoOperator, Integer> findWinningResult(Lottos lottos, WinningLotto bonusLotto) {
         List<LottoOperator> winningRanks = lottos.result(bonusLotto);
         Map<LottoOperator, Integer> winningResult = resetWinningResult();
         for (LottoOperator rank : winningRanks) {

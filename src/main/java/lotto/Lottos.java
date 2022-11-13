@@ -14,17 +14,17 @@ public class Lottos {
         this.lottos = lottos;
     }
 
-    public List<LottoOperator> result(BonusLotto bonusLotto) {
+    public List<LottoOperator> result(WinningLotto bonusLotto) {
         List<LottoOperator> winningRanks = new ArrayList<>();
         for (Lotto lotto : lottos) {
-            int count = bonusLotto.match(lotto);
+            int count = lotto.count(bonusLotto);
             boolean bonus = checkBonus(bonusLotto, lotto, count);
             winningRanks.add(LottoOperator.find(count, bonus));
         }
         return winningRanks;
     }
 
-    private boolean checkBonus(BonusLotto bonusLotto, Lotto lotto, int count) {
+    private boolean checkBonus(WinningLotto bonusLotto, Lotto lotto, int count) {
         boolean bonus = false;
         if (count == BONUS_CHECK_CONDITION) {
             bonus = bonusLotto.checkBonus(lotto);

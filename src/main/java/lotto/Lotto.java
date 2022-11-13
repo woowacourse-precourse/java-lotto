@@ -35,7 +35,7 @@ public class Lotto {
         }
     }
 
-    private void checkLottoRange(Integer number) {
+    protected void checkLottoRange(Integer number) {
         if (number < LOTTO_START || number > LOTTO_END) {
             throw new IllegalArgumentException();
         }

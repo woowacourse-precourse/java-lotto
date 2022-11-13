@@ -21,8 +21,8 @@ public class LottoGenerator {
         return new Lottos(lottos);
     }
 
-    public Lotto makeLotto(List<Integer> winningNumber) {
-        return new Lotto(winningNumber);
+    public WinningLotto makeLotto(List<Integer> winningNumber, int bonus) {
+        return new WinningLotto(winningNumber, bonus);
     }
 
     private void checkPositive(int lottoTickets) {
