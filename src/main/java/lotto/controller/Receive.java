@@ -6,7 +6,7 @@ import lotto.console.InputMoney;
 import lotto.console.InputWinningNumber;
 import lotto.domain.AutoLottoSeller;
 import lotto.domain.Lotto;
-import lotto.domain.chart.NumberChart;
+import lotto.service.NumberChart;
 
 import java.util.List;
 

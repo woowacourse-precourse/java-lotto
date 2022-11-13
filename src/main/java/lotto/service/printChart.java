@@ -1,4 +1,4 @@
-package lotto.domain.chart;
+package lotto.service;
 
 public enum printChart {
     ASK_PURCHASE("구입금액을 입력해 주세요."),

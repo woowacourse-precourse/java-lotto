@@ -1,4 +1,4 @@
-package lotto.domain.chart;
+package lotto.service;
 
 public enum RewardChart {
     First(2_000_000_000),

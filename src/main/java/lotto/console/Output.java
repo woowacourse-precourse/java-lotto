@@ -1,8 +1,8 @@
 package lotto.console;
 
 import lotto.domain.Lotto;
-import lotto.domain.chart.ErrorPrint;
-import lotto.domain.chart.printChart;
+import lotto.service.ErrorPrint;
+import lotto.service.printChart;
 
 import java.util.List;
 

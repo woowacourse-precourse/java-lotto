@@ -1,4 +1,4 @@
-package lotto.domain.chart;
+package lotto.service;
 
 public enum NumberChart {
     MIN_NUMBER(1),

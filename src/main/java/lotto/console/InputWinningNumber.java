@@ -1,8 +1,8 @@
 package lotto.console;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.domain.chart.ErrorPrint;
-import lotto.domain.chart.NumberChart;
+import lotto.service.ErrorPrint;
+import lotto.service.NumberChart;
 
 import java.util.List;
 import java.util.stream.Collectors;

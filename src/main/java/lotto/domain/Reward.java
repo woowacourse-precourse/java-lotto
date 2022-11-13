@@ -1,7 +1,7 @@
 package lotto.domain;
 
-import lotto.domain.chart.RankChart;
-import lotto.domain.chart.RewardChart;
+import lotto.service.RankChart;
+import lotto.service.RewardChart;
 
 import java.util.ArrayList;
 import java.util.List;

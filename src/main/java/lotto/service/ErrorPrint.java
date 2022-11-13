@@ -1,4 +1,4 @@
-package lotto.domain.chart;
+package lotto.service;
 
 public enum ErrorPrint {
     ERROR_1_AND_45(" 1부터 45 사이의 숫자를 입력해주세요"),

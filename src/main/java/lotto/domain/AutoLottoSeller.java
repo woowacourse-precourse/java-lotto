@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.domain.chart.NumberChart;
+import lotto.service.NumberChart;
 
 import java.util.ArrayList;
 import java.util.List;
