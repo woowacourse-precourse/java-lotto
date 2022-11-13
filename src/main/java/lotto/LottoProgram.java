@@ -4,8 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Stream;
 import lotto.domain.Buyer;
 
 public class LottoProgram {
@@ -37,6 +39,12 @@ public class LottoProgram {
         }
 
 
+        Integer[] numberArray = convertToInteger(winningNumbers);
+        HashSet<Integer> removeDuplicatedNumbers = new HashSet<Integer>(List.of(numberArray));
+        if (removeDuplicatedNumbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 중복 숫자가 존재하지 않아야 합니다.");
+        }
+
 
     }
 
@@ -49,5 +57,19 @@ public class LottoProgram {
             System.out.println(purchasedLottoNumber);
             buyer.setLottoPurchased(new Lotto(purchasedLottoNumber));
         }
+    }
+
+    private static Integer[] convertToInteger(String inputNumber) {
+        return Stream.of(inputNumber.split(","))
+                .mapToInt((number) -> {
+                    try {
+                        int parsedInt = Integer.parseInt(number);
+                        return parsedInt;
+                    } catch (NumberFormatException e) {
+                        throw new IllegalArgumentException();
+                    }
+                })
+                .boxed()
+                .toArray(Integer[]::new);
     }
 }
