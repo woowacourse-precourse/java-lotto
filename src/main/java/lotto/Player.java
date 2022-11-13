@@ -18,5 +18,12 @@ public class Player {
 
         return input;
     }
+
+    public String getBonusNumberInput() {
+        String input = Console.readLine();
+        exception.checkBonusNumberInput(input);
+
+        return input;
+    }
 }
 
