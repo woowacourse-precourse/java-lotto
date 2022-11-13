@@ -4,6 +4,9 @@ import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
+    private final int START_LOTTO_NUMBER = 1;
+    private final int END_LOTTO_NUMBER = 45;
+    private final int LOTTO_NUMBERS_LENGTH = 6;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -31,19 +34,10 @@ public class Lotto {
     }
 
     private boolean isValidRange(List<Integer> numbers) {
-        return numbers.stream().noneMatch(number -> number < 1 || 45 < number);
+        return numbers.stream().noneMatch(number -> number < START_LOTTO_NUMBER || END_LOTTO_NUMBER < number);
     }
 
     private boolean isValidUnique(List<Integer> numbers) {
-        return numbers.stream().distinct().count() == 6;
+        return numbers.stream().distinct().count() == LOTTO_NUMBERS_LENGTH;
     }
-    public static boolean isDiff(int number) {
-
-        return false;
-    }
-
-    private boolean isDifferent(int number) {
-        return ! numbers.contains(number);
-    }
-
 }

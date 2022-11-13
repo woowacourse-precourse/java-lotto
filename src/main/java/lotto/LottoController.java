@@ -7,7 +7,6 @@ public class LottoController {
     public void start() {
         try {
             InputView inputView = new InputView();
-
             LottoAmount lottoAmount = inputAmount(inputView.getPurchaseAmount());
             List<List<Integer>> lotto = lottoAmount.buyLotto();
             Lotto winningLotto = inputLotto(inputView.getWinningNumbers());
@@ -19,15 +18,15 @@ public class LottoController {
             System.out.println(errorMessage);
         }
     }
-    private LottoAmount inputAmount(int input) {
-        return new LottoAmount(input);
+    private LottoAmount inputAmount(int number) {
+        return new LottoAmount(number);
     }
 
-    private Lotto inputLotto(List<Integer> input) {
-        return new Lotto(input);
+    private Lotto inputLotto(List<Integer> numbers) {
+        return new Lotto(numbers);
     }
 
-    private BonusNumber inputBonusNumber(int input) {
-        return new BonusNumber(input);
+    private BonusNumber inputBonusNumber(int number) {
+        return new BonusNumber(number);
     }
 }
