@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class UI {
 
     public Integer money(){
+        System.out.println("구입금액을 입력해 주세요.");
         String Input = Console.readLine();
         Money_Validate(Input);
         Integer money = Integer.valueOf(Input);
