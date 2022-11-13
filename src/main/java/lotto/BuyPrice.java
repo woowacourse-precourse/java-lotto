@@ -13,6 +13,7 @@ public class BuyPrice {
 
     public BuyPrice(String cost){
         this.cost = cost;
+        checkPrice();
     }
     // 구입 가격 입력
     public int checkPrice(){
@@ -22,7 +23,7 @@ public class BuyPrice {
 
     private int checkUnit(int costs) {
         if(costs%thousand != zero ){
-            new Exceptions();
+            new Exceptions("1000원으로 나눠져야 한다");
         }
         return costs/1000;
     }

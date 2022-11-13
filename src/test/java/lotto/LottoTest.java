@@ -31,7 +31,7 @@ class LottoTest {
     @DisplayName("예외 처리 에러가 IllegalArgumentException 인지 확인하는 테스트")
     @Test
     void exceptionsTest(){
-        assertThatThrownBy(()->new Exceptions())
+        assertThatThrownBy(()->new Exceptions("IllegalArgumentException 가 뜬다"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -55,11 +55,36 @@ class LottoTest {
 
 
     // 로또 번호 생성 관련 테스트
-    @DisplayName("로또 번호 생성 테스트")
+    @DisplayName("로또 번호 세트는 티켓의 갯수만큼 생성되어야 한다")
     @Test
     void checkTheTicket(){
         TicketNumbers ticketNumbers = new TicketNumbers(3);
         ticketNumbers.collectTickets();
     }
+
+    // 당첨 번호 입력 테스트
+    @DisplayName("당첨번호는 숫자로만 이뤄져야한다")
+    @Test
+    void winningNumberMustbeNumber(){
+        assertThatThrownBy(()-> new WinningNumber("1,2,3,4,5,a"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨번호의 길이는 6이어야 한다")
+    @Test
+    void winningnumbersizetest(){
+        assertThatThrownBy(()-> new WinningNumber("1,2,3,4,5,6,7"))
+                .isInstanceOf(IllegalArgumentException.class);
+//        assertThatThrownBy(()-> new WinningNumber("1,2,3,4,5"))
+//                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("중복 번호가 존재하면 안된다")
+    @Test
+    void winningnumberDuplicateCheck(){
+        assertThatThrownBy(()-> new WinningNumber("1,1,1,1,1,1"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 
 }
