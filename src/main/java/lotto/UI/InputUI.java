@@ -22,19 +22,14 @@ public class InputUI {
         return Integer.parseInt(money);
     }
 
-    public void getWinningNumbers() {
-        getNormalNumbers();
-        getBonusNumbers();
-    }
-
-    private String getNormalNumbers() {
+    public String getNormalNumbers() {
         outputUI.printMessage(NORMAL_NUMBER_INPUT_MESSAGE);
         String normalNumbers = Console.readLine();
         validator.validateNormalNumbers(normalNumbers);
         return normalNumbers;
     }
 
-    private String getBonusNumbers() {
+    public String getBonusNumbers() {
         outputUI.printMessage(BONUS_NUMBER_INPUT_MESSAGE);
         String bonusNumber = Console.readLine();
         validator.validateBonusNumber(bonusNumber);
