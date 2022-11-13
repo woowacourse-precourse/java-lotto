@@ -6,19 +6,15 @@ import lotto.domain.view.LottoGuide;
 
 public class LottoGame {
     private LottoGuide lottoGuide;
-    private LottoIssuer lottoIssuer;
 
     public LottoGame() {
         lottoGuide = new LottoGuide();
-        lottoIssuer = new LottoIssuer();
     }
 
     public void playLottoGame() {
         int purchaseAmount = lottoGuide.getPurchaseAmount();
 
-        int numberOfLottos = purchaseAmount / 1000;
-
-        List<Lotto> lottos = lottoIssuer.issueLottos(numberOfLottos);
+        List<Lotto> lottos = LottoIssuer.issueLottos(purchaseAmount);
 
         lottoGuide.informIssuedLottos(lottos);
     }

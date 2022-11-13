@@ -8,9 +8,11 @@ import java.util.List;
 import lotto.domain.model.Lotto;
 
 public class LottoIssuer {
+    public static final int PRICE_OF_LOTTO = 1000;
 
-    public static List<Lotto> issueLottos(int numberOfLottos) {
+    public static List<Lotto> issueLottos(int purchaseAmount) {
         List<Lotto> lottos = new ArrayList<>();
+        int numberOfLottos = purchaseAmount / PRICE_OF_LOTTO;
 
         for (int i = 0; i < numberOfLottos; i++) {
             Lotto oneLotto = issueOneLotto();
