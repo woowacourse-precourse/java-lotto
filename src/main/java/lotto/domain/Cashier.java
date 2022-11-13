@@ -6,6 +6,12 @@ import lotto.ui.UserInterface;
 public class Cashier {
     private List<Lotto> lottos;
     private Account account;
+    private WinningCalculator winningCalculator;
+
+    public Cashier() {
+        this.account = new Account();
+        this.winningCalculator = new WinningCalculator();
+    }
 
     public void buyLottos() {
         String inputMoneyRaw = UserInterface.getInputMoney();
@@ -19,6 +25,10 @@ public class Cashier {
 
     public void getResultInAccount() {
         this.account.getResult();
+    }
+
+    public void setWinningRule() {
+        this.winningCalculator.setWinningRule();
     }
 
     private int convertStringToInt(String numberRaw) {

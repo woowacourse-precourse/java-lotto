@@ -6,28 +6,28 @@ import java.util.stream.Collectors;
 import lotto.ui.UserInterface;
 
 public class WinningCalculator {
-    private static List<Integer> numbers;
-    private static int bonusNumber;
+    private List<Integer> numbers;
+    private int bonusNumber;
 
-    public static void setWinningRule() {
+    public void setWinningRule() {
         setNumbersFromUser();
         setBonusNumberFromUser();
     }
 
-    private static void setNumbersFromUser() {
+    private void setNumbersFromUser() {
         String numbersRaw = UserInterface.getWinningNumbers();
         List<Integer> winningNumbers = convertStringToIntegerList(numbersRaw);
         numbers = winningNumbers;
     }
 
-    private static List<Integer> convertStringToIntegerList(String numbersRaw) {
+    private List<Integer> convertStringToIntegerList(String numbersRaw) {
         List<Integer> numbersConverted = Arrays.asList(numbersRaw.split(",")).stream()
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
         return numbersConverted;
     }
 
-    private static void setBonusNumberFromUser() {
+    private void setBonusNumberFromUser() {
         String bonusNumberRaw = UserInterface.getBonusNumber();
         int bonusNumberConverted = Integer.parseInt(bonusNumberRaw);
         bonusNumber = bonusNumberConverted;
