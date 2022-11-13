@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.function.LongToDoubleFunction;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -91,5 +92,14 @@ class LottoTest {
 
         assertThatThrownBy(() -> lotto1.bonusMatch(lotto2))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("입력한 가격에 상응하는 로또를 발행한다.")
+    @Test
+    void lottoPurchase() {
+        Integer money = 3000;
+
+        List<Lotto> purchasedLottos = Lotto.purchase(3000);
+        assertThat(purchasedLottos.size()).isEqualTo(3000 / LottoEnum.PURCHASE_UNIT.getValue());
     }
 }
