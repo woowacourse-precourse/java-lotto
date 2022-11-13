@@ -1,11 +1,11 @@
 package lotto.domain;
 
-import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.model.Check;
 import lotto.model.Lotto;
 import lotto.global.Exception;
 import lotto.model.Rank;
+import lotto.view.Input;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ public class Service {
 
     public static int getMoney() {
         System.out.println("구입금액을 입력해 주세요.");
-        String money = Console.readLine();
+        String money = Input.inputMoney();
         Exception.verifyMoney(money);
 
         return Integer.parseInt(money);
@@ -43,9 +43,8 @@ public class Service {
 
     public static String getJackpotNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
-        String jackpot = Console.readLine();
 
-        return jackpot;
+        return Input.inputJackpotNumber();
     }
 
     public static String[] getJackpotNumberToArr(String jackpotNumber) {
@@ -56,7 +55,7 @@ public class Service {
 
     public static int getBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        int bonusNum = Integer.parseInt(Console.readLine());
+        int bonusNum = Input.inputBonusNumber();
 
         return bonusNum;
     }
