@@ -36,15 +36,15 @@ public class Output {
 
     public void printLottoResultAboutRank(int matchNumber, int priceMoney, int countOfMatch) {
         String money = makeNumberForamt(priceMoney);
-        System.out.println(matchNumber + "개 일치 (" + money + ") - " + countOfMatch + "개");
+        System.out.println(matchNumber + "개 일치 (" + money + "원) - " + countOfMatch + "개");
     }
 
     public void printLottoResultAboutRankWithBonus(int matchNumber, int priceMoney, int countOfMatch) {
         String money = makeNumberForamt(priceMoney);
-        System.out.println(matchNumber + "개 일치, 보너스 볼 일치 (" + money + ") - " + countOfMatch + "개");
+        System.out.println(matchNumber + "개 일치, 보너스 볼 일치 (" + money + "원) - " + countOfMatch + "개");
     }
 
-    public void printTotalRate(double totalRate) {
+    public void printTotalRate(String totalRate) {
         System.out.println("총 수익률은 " + totalRate + "%입니다.");
     }
 
