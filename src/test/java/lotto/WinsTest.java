@@ -27,4 +27,19 @@ class WinsTest {
         assertThat(Wins.getWinningStats())
                 .isEqualTo(String.format(result, 2, 1, 0, 1, 0));
     }
+
+    @DisplayName("구입 금액에 따른 수익률을 얻는다.")
+    @Test
+    void 구입_금액이_주어지면_수익률을_얻는데_성공한다() {
+        // given
+        int purchaseAmount = 60000;
+        Wins.countWinningLotto(4, false);
+        double expected = 0.8;
+
+        // when
+        double actual = Wins.getProfitRate(purchaseAmount);
+
+        // then
+        assertThat(String.format("%.1f", actual)).isEqualTo(String.format("%.1f", expected));
+    }
 }
