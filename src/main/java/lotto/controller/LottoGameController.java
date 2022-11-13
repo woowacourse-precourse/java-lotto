@@ -2,6 +2,7 @@ package lotto.controller;
 
 public class LottoGameController {
 
-    public void inputMoney(String userInput) {
+    public int inputMoney(String userInput) {
+        return 0;
     }
 }
