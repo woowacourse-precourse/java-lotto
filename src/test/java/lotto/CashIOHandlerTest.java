@@ -47,7 +47,7 @@ public class CashIOHandlerTest extends IOTest {
 
     @Test
     @DisplayName("000 단위에 대한 예외 처리가 되는지")
-    void validateCommaTest_thousand_IllegalArgumentException(){
+    void validateInput_thousand_IllegalArgumentException(){
         String input = "168219125";
         assertThatThrownBy(()->cashier.validateInput(input))
                 .isInstanceOf(IllegalArgumentException.class)

@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class LottoIOHandlerTest extends IOTest {
     private static LottoIOHandler lottoIOHandler;
@@ -21,4 +22,14 @@ public class LottoIOHandlerTest extends IOTest {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6);
         assertThat(lottoIOHandler.getLottoAnswer()).isEqualTo(list);
     }
+
+    @Test
+    @DisplayName("잘못된 당첨 번호 예외처리 검증")
+    void validateInputTest_notInputComma_IllegalArgumentException(){
+        String input = "123456";
+        assertThatThrownBy(() -> lottoIOHandler.validateInput(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR] ',' 구분자를 통해 1~45사이의 수 6개를 입력해주세요");
+    }
+
 }
