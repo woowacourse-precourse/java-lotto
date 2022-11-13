@@ -34,8 +34,8 @@ public class Result {
         }
     }
 
-    public static int getTotalPrize() {
-        int totalPrize = fifth * 5000 + fourth * 50000 + third * 1500000 + second * 30000000 + first * 2000000000;
+    public static long getTotalPrize() {
+        long totalPrize = fifth * 5000 + fourth * 50000 + third * 1500000 + second * 30000000 + first * 2000000000;
         return totalPrize;
     }
 }

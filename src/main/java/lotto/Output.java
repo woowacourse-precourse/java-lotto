@@ -30,7 +30,7 @@ public class Output {
     }
 
     public static void printEnd() {
-        float revenue = Result.getTotalPrize() / (float) StartLotto.payment;
+        double revenue = Result.getTotalPrize() / (double) StartLotto.payment;
 
         System.out.println("당첨 통계");
         System.out.println("---");
