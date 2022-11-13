@@ -16,6 +16,8 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 입력한 번호가 6자리가 아닙니다.");
         } else if (duplicateCheck(numbers)) {
             throw new IllegalArgumentException("[ERROR] 입력한 번호 중 중복하는 번호가 있습니다.");
+        } else if (limitCheck(numbers)) {
+            throw new IllegalArgumentException("[ERROR] 입력한 번호 중 1~45 범위를 벗어나는 번호가 있습니다.");
         }
     }
 
@@ -26,6 +28,15 @@ public class Lotto {
             if(!tempNumbers.contains(numbers.get(i))) {
                 tempNumbers.add(numbers.get(i));
             } else {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean limitCheck(List<Integer> numbers) {
+        for(int i = 0; i < numbers.size(); i++) {
+            if(numbers.get(i) > 45 || numbers.get(i) < 1) {
                 return true;
             }
         }
