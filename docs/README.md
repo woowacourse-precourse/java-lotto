@@ -7,7 +7,7 @@
 - [ ] 로또의 결과 추가한다. Lotto#addResult()
 - [ ] 로또의 결과를 가져온다. Lotto#getResult()
 - [ ] 로또 구입 금액만큼 로또를 발행한다. LottoMachine#LottoForAmount()
-- [ ] 로또 구입 금액을 입력 받는다. MoneyInput#getPurchaseAmount()
+- [x] 로또 구입 금액을 입력 받는다. MoneyInput#getPurchaseAmount()
 - [ ] 숫자만으로 이루어져 있는지 판별한다. MoneyInput#validateConvertingMoney()
 - [x] 1,000원으로 나누어 떨어지는지 검증한다. Money#validatePurchaseAmount()
 - [ ] 로또 구입 금액을 가져온다. Money#getMoney()
