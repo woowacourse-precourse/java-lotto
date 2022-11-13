@@ -36,4 +36,12 @@ class LottoTest {
             List.of(1, 2, 3, 4, 5, 6)
         );
     }
+
+    @DisplayName("에러 코드가 올바르게 출력되는지 확인한다.")
+    @Test
+    void checkErrorMessage() {
+        String expectedResult = "[Error] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
+
+        assertThat(ErrorCode.OUT_RANGE.getErrorMessage()).isEqualTo(expectedResult);
+    }
 }
