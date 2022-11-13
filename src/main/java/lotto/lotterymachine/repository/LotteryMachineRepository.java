@@ -10,27 +10,40 @@ import lotto.lotterymachine.validate.ValidateLotteryMachine;
 
 public class LotteryMachineRepository {
     private static final int INIT_NUMBER = 0;
-    private static final List<Integer> INIT_NUMBERS =Collections.singletonList(INIT_NUMBER);
-    public void setTargetNumbers(LotteryMachine lotteryMachine) {
+    private static final List<Integer> INIT_NUMBERS = Collections.singletonList(INIT_NUMBER);
+
+    public boolean setTargetNumbers(LotteryMachine lotteryMachine) {
         System.out.println("당첨 번호를 입력해 주세요.");
-        lotteryMachine.setTargetNumbers(setInputTargetNumbers());
+        List<Integer> inputNumbers = setInputTargetNumbers();
+        if (inputNumbers.equals(INIT_NUMBERS)) {
+            return false;
+        }
+        lotteryMachine.setTargetNumbers(inputNumbers);
+        return true;
     }
 
-    public void setTargetBonusNumber(LotteryMachine lotteryMachine) {
+    public boolean setTargetBonusNumber(LotteryMachine lotteryMachine) {
         System.out.println("보너스 번호를 입력해 주세요.");
-        lotteryMachine.setTargetBonusNumber(setInputTargetBonusNumber());
+        int inputTargetNumber = setInputTargetBonusNumber();
+        if (inputTargetNumber == 0) {
+            return false;
+        }
+        lotteryMachine.setTargetBonusNumber(inputTargetNumber);
+        return true;
     }
-    public List<Integer> setInputTargetNumbers(){
+
+    public List<Integer> setInputTargetNumbers() {
         String userInputs = Console.readLine();
         if (!checkInputOnlyNumbers(userInputs)) {
             return INIT_NUMBERS;
         }
-        if(!checkInputNumbersSize(userInputs)) {
+        if (!checkInputNumbersSize(userInputs)) {
             return INIT_NUMBERS;
         }
 
         return Arrays.stream(userInputs.split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
+
     public int setInputTargetBonusNumber() {
         String userInputs = Console.readLine();
         if (!checkInputOnlyNumber(userInputs)) {

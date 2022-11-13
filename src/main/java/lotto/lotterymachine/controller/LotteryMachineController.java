@@ -22,7 +22,7 @@ public class LotteryMachineController {
     public boolean startGame() {
         System.out.println("구입금액을 입력해 주세요.");
         if(initUser() == 0) return false;
-        LotteryMachine lotteryMachine = initLotteryMachine();
+        if(!initLotteryMachine()) return false;
         lotteryMachineService.matchNumber(user,lotteryMachine);
         return true;
     }
@@ -39,12 +39,14 @@ public class LotteryMachineController {
         return userInput;
     }
 
-    public LotteryMachine initLotteryMachine() {
-        lotteryMachineRepository.setTargetNumbers(lotteryMachine);
+    public boolean initLotteryMachine() {
+        if(!lotteryMachineRepository.setTargetNumbers(lotteryMachine))
+            return false;
         System.out.println(lotteryMachine.getTargetNumbers());
-        lotteryMachineRepository.setTargetBonusNumber(lotteryMachine);
+        if(!lotteryMachineRepository.setTargetBonusNumber(lotteryMachine))
+            return false;
         System.out.println(lotteryMachine.getTargetBonusNumber());
-        return lotteryMachine;
+        return true;//ok
     }
 
 }
