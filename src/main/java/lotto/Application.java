@@ -14,11 +14,21 @@ public class Application {
 
     static NumberType[] numberTypeCheck = new NumberType[46];
     static public Map<Places, Integer> noOfLottoWinAt = new EnumMap<>(Places.class);
+    static public Map<Places, Long> prizesAt = new EnumMap<>(Places.class);
     static int noOfLottos;
 
     public static void initializeNoOfLottoWinAt() {
         for (Places place: Places.values())
             noOfLottoWinAt.put(place, 0);
+    }
+
+    public static void initializePrizesAtPlaces() {
+        prizesAt.put(Places.FIFTH, 5_000L);
+        prizesAt.put(Places.FOURTH, 50_000L);
+        prizesAt.put(Places.THIRD, 1_500_000L);
+        prizesAt.put(Places.SECOND, 30_000_000L);
+        prizesAt.put(Places.FIRST, 2_000_000_000L);
+        prizesAt.put(Places.NONE, 0L);
     }
 
     public static void guideWinningNumberFormat() { System.out.print("당첨 번호 6개를 쉼표로 구분해 입력해주세요: "); }
@@ -179,12 +189,26 @@ public class Application {
                 noOfLottoWinAt.get(Places.FIRST));
     }
 
+    public static long sumWinningPrizes() {
+        long totalWinningPrizes = 0;
+        for (Places place: Places.values())
+            totalWinningPrizes += (long)noOfLottoWinAt.get(place) * prizesAt.get(place);
+        return totalWinningPrizes;
+    }
+
+    public static double getEarningsRate() {
+        long totalWinningPrizes = sumWinningPrizes();
+        return (double)totalWinningPrizes / (noOfLottos * 1000);
+    }
+
     public static void printEarningsRate() {
-        // TODO: implement method to print earnings rate
+        double earningsRate = getEarningsRate();
+        System.out.printf("총 수익률은 %.1f%%입니다.", earningsRate);
     }
 
     public static void main(String[] args) {
         initializeNoOfLottoWinAt();
+        initializePrizesAtPlaces();
 
         getWinningNumbers();
         getBonusNumber();
