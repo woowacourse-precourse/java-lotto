@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -25,6 +26,9 @@ public class Domain {
     }
 
     static public void validateNumberRange(String input) {
+        if (!input.matches("^[0-9]+$")) {
+            throw new IllegalArgumentException("숫자로 입력해야 합니다.");
+        }
         int tempNumber = Integer.parseInt(input);
         if (tempNumber < 1 || tempNumber > 45) {
             throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
@@ -86,11 +90,10 @@ public class Domain {
     }
 
     public List<Integer> getRankList(List<Lotto> lottos, List<Integer> winningNumbers, int bonus) {
-        List<Integer> rankList = new ArrayList<>(6);
-        Collections.fill(rankList, 0);
-
+        List<Integer> rankList = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0));
         for (Lotto lotto : lottos) {
             int tempRank = lotto.getRank(winningNumbers, bonus);
+
             rankList.set(tempRank, rankList.get(tempRank) + 1);
         }
 
