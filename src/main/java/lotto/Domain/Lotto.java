@@ -1,4 +1,6 @@
-package lotto.Input;
+package lotto.Domain;
+
+import lotto.Input.PrintError;
 
 import java.util.HashSet;
 import java.util.List;
@@ -39,5 +41,5 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
-    // TODO: 추가 기능 구현
+
 }

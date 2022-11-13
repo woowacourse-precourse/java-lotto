@@ -7,17 +7,9 @@ import java.util.List;
 
 public class InputNumber {
 
-    public int insertMoney() {
+    public String insertMoney() {
         PrintInstruction.BUY.printMessage();
-        String userMoney = Console.readLine();
-        try {
-            if (Integer.parseInt(userMoney) % 1000 != 0) {
-                throw new IllegalArgumentException(PrintError.OUT_OF_MONEY_UNIT.getMessage());
-            }
-        }catch (NumberFormatException e) {
-            throw new IllegalArgumentException((PrintError.NOT_A_NUMBER.getMessage()));
-        }
-        return Integer.parseInt(userMoney)/1000;
+        return Console.readLine();
     }
 
     public List<Integer> insertSixNum() {
@@ -36,17 +28,10 @@ public class InputNumber {
         return lottoSixNum;
     }
 
-    public int insertOneNum() {
+    public String insertOneNum() {
         PrintInstruction.ENTER_BONUS.printMessage();
 
-        int userInput;
-        try {
-            userInput = Integer.parseInt(Console.readLine());
-        } catch (NullPointerException e) {
-            throw new IllegalArgumentException(PrintError.NOT_A_NUMBER.getMessage());
-        }
-
-        return userInput;
+        return Console.readLine();
     }
 
 

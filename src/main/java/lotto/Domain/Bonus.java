@@ -1,17 +1,24 @@
-package lotto.Input;
+package lotto.Domain;
 
+
+import lotto.Input.PrintError;
 
 import java.util.List;
 
 public class Bonus {
     private final int number;
-    private final List<Integer> sixNum;
 
-    public Bonus(int number, List<Integer> sixNum) {
+    public Bonus(String bonus, List<Integer> sixNum) {
+        int number;
+        try {
+            number = Integer.parseInt(bonus);
+        } catch(NumberFormatException e) {
+            throw new IllegalArgumentException(PrintError.NOT_A_NUMBER.getMessage());
+        }
+
         validateOverlap(number, sixNum);
         validateOutOfRange(number);
         this.number = number;
-        this.sixNum = sixNum;
     }
 
 
@@ -28,7 +35,6 @@ public class Bonus {
             throw new IllegalArgumentException(PrintError.OUT_OF_NUMBER_RANGE.getMessage());
         }
     }
-
     public int getNumber() {
         return number;
     }
