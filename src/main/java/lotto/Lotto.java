@@ -3,7 +3,7 @@ package lotto;
 import java.util.HashSet;
 import java.util.List;
 
-public class Lotto {
+public class Lotto { // Lotto-create-001
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -20,7 +20,11 @@ public class Lotto {
     @Override
     public boolean equals(Object obj) {
         Lotto lotto = (Lotto) obj;
-        return new HashSet<>(lotto.numbers).containsAll(this.numbers);
+        return new HashSet<>(this.numbers).containsAll(lotto.numbers);
+    }
+
+    public List<Integer> getNumbers(){ // Lotto-print-001
+        return this.numbers;
     }
     // TODO: 추가 기능 구현
 }
