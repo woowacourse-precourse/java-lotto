@@ -3,6 +3,7 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
+import lotto.messages;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,10 +12,10 @@ import java.util.List;
 // UI 로직
 public class UserIO {
 
-    private List<Lotto> userLottoList;
+    private List<Lotto> userLotto;
 
     public UserIO() {
-        userLottoList = new ArrayList<>();
+        userLotto = new ArrayList<>();
     }
 
     // 구입 금액 입력
@@ -22,16 +23,12 @@ public class UserIO {
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
         if (checkInvalidMoney(input)) {
-            System.out.println("[ERROR] 로또 구입 금액은 숫자로 입력해 주세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(messages.INVALID_FORMAT_MONEY.getErrorMsg());
         }
-
         int money = Integer.valueOf(input);
         System.out.println(money + "\n");
-
         if (money % 1000 != 0) {
-            System.out.println("[ERROR] 로또 구입 금액은 1,000원 단위로 입력해 주세요.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(messages.INVALID_NUMBER_MONEY.getErrorMsg());
         }
         return money;
     }
@@ -50,7 +47,7 @@ public class UserIO {
             List<Integer> arrayNumbers = new ArrayList<>(numbers);
             Collections.sort(arrayNumbers);
             Lotto lotto = new Lotto(arrayNumbers);
-            this.userLottoList.add(lotto);
+            this.userLotto.add(lotto);
         }
     }
 
@@ -63,13 +60,13 @@ public class UserIO {
 
     // 사용자가 구입한 로또번호 출력
     public void printLotto() {
-        for (Lotto lotto : userLottoList) {
+        for (Lotto lotto : userLotto) {
             lotto.printNumbers();
         }
         System.out.println();
     }
 
     public List<Lotto> getUserLottoList() {
-        return this.userLottoList;
+        return this.userLotto;
     }
 }
