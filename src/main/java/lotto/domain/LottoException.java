@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 public enum LottoException {
     SIZE_EXCEPTION("[ERROR] 로또 번호는 총 6개 입니다."),
