@@ -2,7 +2,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import static lotto.utils.InputMessages.*;
+import static lotto.utils.ViewMessages.*;
 
 public class InputView {
     private InputView() {
@@ -19,7 +19,7 @@ public class InputView {
     }
 
     public static String bonusBallNumber() {
-        System.out.println(BONUS_BALL_NUMBER);
+        System.out.println(BONUS_NUMBER_NUMBER);
         return Console.readLine();
     }
 }
