@@ -36,7 +36,7 @@
 
 - [ ]  로또 구입 금액 입력 메시지를 출력한다. OutputUI#printMessage()
 - [ ]  로또 구입 금액을 입력받는다. InputUI#getMoney()
-    - [ ]  1000원 단위인지 검증한다. InputUI#validateMoney()
+    - [ ]  1000원 단위인지 검증한다. Validator#validateMoney()
 - [ ]  발행할 로또 갯수만큼 로또 용지를 발급한다. LottoMachine#createLottoWithMoney()
     - [ ]  로또 용지를 발급한다. LottoMachine#createLotto()
 - [ ]  발행 받은 로또 용지를 출력한다. OutputUI#printLottos()
