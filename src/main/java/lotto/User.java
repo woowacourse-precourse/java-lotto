@@ -14,6 +14,10 @@ public class User {
         this.lottoPrice = sc.nextInt();
     }
 
+    public int getLottoPrice(){
+        return this.lottoPrice;
+    }
+
     public void userNumbers(){
 
     }

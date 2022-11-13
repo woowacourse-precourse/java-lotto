@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
+    private static User user;
+    public static int lotto;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -16,5 +18,13 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public void buyer(User user){
+        this.user = user;
+    }
+
+    private void printLotto(){
+        int lottoPrice = user.getLottoPrice();
+        this.lotto = lottoPrice / 1000;
+        System.out.println(lotto + "개를 구매했습니다.");
+    }
 }
