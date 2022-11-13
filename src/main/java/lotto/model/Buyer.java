@@ -45,4 +45,8 @@ public class Buyer {
             System.out.println(lotto.getNumbers());
         }
     }
+
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
 }

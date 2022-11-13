@@ -15,4 +15,12 @@ public class LottoStore {
         validator.validateBonusNumber(numbers, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
+
+    public List<Integer> getLotteryNumbers() {
+        return lotteryNumbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
+    }
 }
