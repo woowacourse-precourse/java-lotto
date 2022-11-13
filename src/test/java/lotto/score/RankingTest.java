@@ -1,4 +1,4 @@
-package lotto.domain.settlementsysyem;
+package lotto.score;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,13 +17,13 @@ class RankingTest {
 
         for (var rankingAndCount : list.entrySet()) {
             stringBuilder.append(rankingAndCount.getKey().result()).append("\n");
-        }
-        var expected = "3개 일치 (5,000) \n"
-                + "4개 일치 (50,000) \n"
-                + "5개 일치 (15,000,000) \n"
-                + "5개 일치, 보너스 볼 일치 (300,000,000) \n"
-                + "6개 일치 (20,000,000)";
 
+        }
+        var expected = "3개 일치 (5,000원)\n"
+                + "4개 일치 (50,000원)\n"
+                + "5개 일치 (1,500,000원)\n"
+                + "5개 일치, 보너스 볼 일치 (30,000,000원)\n"
+                + "6개 일치 (2,000,000,000원)";
         assertThat(stringBuilder.toString().trim()).isEqualTo(expected);
     }
 }
