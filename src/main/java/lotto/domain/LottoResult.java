@@ -2,9 +2,8 @@ package lotto.domain;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import static lotto.dto.GameResultResponseDtos.*;
+import static lotto.dto.GameResultResponseDtos.GameResultResponseDto;
 
 public enum LottoResult {
 
@@ -49,12 +48,6 @@ public enum LottoResult {
 
     private static int getWinnerPrice(LottoResult lottoResult) {
         return lottoResult.winnerPrice;
-    }
-
-    public static List<LottoResult> valuesExcludeElse() {
-        return Arrays.stream(LottoResult.values())
-                .filter(gameResult -> !gameResult.isElse())
-                .collect(Collectors.toList());
     }
 
     public GameResultResponseDto toResponseDto(int totalCount) {

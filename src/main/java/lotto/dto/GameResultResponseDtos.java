@@ -1,15 +1,11 @@
 package lotto.dto;
 
-import lotto.domain.LottoResult;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class GameResultResponseDtos {
 
     private final double earningRate;
-    private final Map<String, GameResultResponseDto> gameResultResponseDtos;
+    private final List<GameResultResponseDto> gameResultResponseDtos;
 
     public static class GameResultResponseDto {
 
@@ -42,7 +38,7 @@ public class GameResultResponseDtos {
         }
     }
 
-    public GameResultResponseDtos(double earningRate, Map<String, GameResultResponseDto> gameResultResponseDtos) {
+    public GameResultResponseDtos(double earningRate, List<GameResultResponseDto> gameResultResponseDtos) {
         this.earningRate = earningRate;
         this.gameResultResponseDtos = gameResultResponseDtos;
     }
@@ -52,32 +48,6 @@ public class GameResultResponseDtos {
     }
 
     public List<GameResultResponseDto> getGameResultResponseDtos() {
-        List<GameResultResponseDto> dtos = new ArrayList<>();
-        dtos.add(getFifthDto());
-        dtos.add(getFourthDto());
-        dtos.add(getThirdDto());
-        dtos.add(getSecondDto());
-        dtos.add(getFirstDto());
-        return dtos;
-    }
-
-    private GameResultResponseDto getFirstDto() {
-        return gameResultResponseDtos.get(LottoResult.FIRST.name());
-    }
-
-    private GameResultResponseDto getSecondDto() {
-        return gameResultResponseDtos.get(LottoResult.SECOND.name());
-    }
-
-    private GameResultResponseDto getThirdDto() {
-        return gameResultResponseDtos.get(LottoResult.THIRD.name());
-    }
-
-    private GameResultResponseDto getFourthDto() {
-        return gameResultResponseDtos.get(LottoResult.FOURTH.name());
-    }
-
-    private GameResultResponseDto getFifthDto() {
-        return gameResultResponseDtos.get(LottoResult.FIFTH.name());
+        return gameResultResponseDtos;
     }
 }
