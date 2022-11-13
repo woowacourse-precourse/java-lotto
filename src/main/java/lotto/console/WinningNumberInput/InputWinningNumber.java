@@ -1,6 +1,7 @@
 package lotto.console.WinningNumberInput;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.chart.ErrorPrint;
 import lotto.domain.chart.NumberChart;
 
 import java.util.List;
@@ -32,28 +33,29 @@ public class InputWinningNumber {
     private void verifyBetween1and45(List<Integer> winningNumbers) {
         for (int number : winningNumbers) {
             if (!(NumberChart.MIN_NUMBER.getValue() <= number && number <= NumberChart.MAX_NUMBER.getValue())) {
-                throw new IllegalArgumentException(" 1 ~ 45 사이의 숫자만 입력해 주세요");
+                throw new IllegalArgumentException(ErrorPrint.ERROR_1_AND_45.getValue());
             }
         }
     }
 
     private void verifyDuplicateNumber(List<Integer> winningNumbers) {
         if (!(winningNumbers.size() == winningNumbers.stream().distinct().count())) {
-            throw new IllegalArgumentException(" 중복인 숫자가 있습니다.");
+            throw new IllegalArgumentException(ErrorPrint.ERROR_WIN_DUPLICATE.getValue());
         }
     }
 
     private void verifySixNumber(List<Integer> winningNumbers) {
         if (!(winningNumbers.size() == NumberChart.LOTTO_SIZE.getValue())) {
-            throw new IllegalArgumentException(" 6개의 숫자를 입력하세여");
+            throw new IllegalArgumentException(ErrorPrint.ERROR_WIN_SIX.getValue());
         }
     }
-    private void verifyNumber(List<Integer> winningNumbers){
+
+    private void verifyNumber(List<Integer> winningNumbers) {
         String regex = "[0-9]+";
-        for(int number : winningNumbers){
+        for (int number : winningNumbers) {
             String num = Integer.toString(number);
-            if(!(num.matches(regex))){
-                throw new IllegalArgumentException(" 숫자만 입력하세여");
+            if (!(num.matches(regex))) {
+                throw new IllegalArgumentException(ErrorPrint.ERROR_ONLY_NUMBER.getValue());
             }
         }
     }

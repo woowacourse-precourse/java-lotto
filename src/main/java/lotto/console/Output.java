@@ -1,6 +1,7 @@
 package lotto.console;
 
 import lotto.domain.Lotto;
+import lotto.domain.chart.ErrorPrint;
 import lotto.domain.chart.printChart;
 
 import java.util.List;
@@ -42,30 +43,30 @@ public class Output {
     }
 
     public void printThree(int threeNumber) {
-        System.out.println(printChart.PRINT_THREE.getValue() + threeNumber+printChart.PRINT_GE.getValue());
+        System.out.println(printChart.PRINT_THREE.getValue() + threeNumber + printChart.PRINT_GE.getValue());
     }
 
     public void printFour(int fourNumber) {
-        System.out.println(printChart.PRINT_FOUR.getValue() + fourNumber+printChart.PRINT_GE.getValue());
+        System.out.println(printChart.PRINT_FOUR.getValue() + fourNumber + printChart.PRINT_GE.getValue());
     }
 
     public void printFive(int fiveNumber) {
-        System.out.println(printChart.PRINT_FIVE.getValue() + fiveNumber+printChart.PRINT_GE.getValue());
+        System.out.println(printChart.PRINT_FIVE.getValue() + fiveNumber + printChart.PRINT_GE.getValue());
     }
 
     public void printFiveFlus(int fiveFlusNumber) {
-        System.out.println(printChart.PRINT_FIVE_FLUS.getValue() + fiveFlusNumber+printChart.PRINT_GE.getValue());
+        System.out.println(printChart.PRINT_FIVE_FLUS.getValue() + fiveFlusNumber + printChart.PRINT_GE.getValue());
     }
 
     public void printSix(int sixNumber) {
-        System.out.println(printChart.PRINT_SIX.getValue() + sixNumber+printChart.PRINT_GE.getValue());
+        System.out.println(printChart.PRINT_SIX.getValue() + sixNumber + printChart.PRINT_GE.getValue());
     }
 
     public void reportRateOfReturn(double totalReturn) {
         System.out.println(printChart.REPORT_RATE.getValue() + totalReturn + printChart.PRINT_PERCENT.getValue());
     }
 
-    public void printErrorMessage(String message){
-        System.out.println("[ERROR]"+ message);
+    public void printErrorMessage(String message) {
+        System.out.println(ErrorPrint.ERROR.getValue() + message);
     }
 }
