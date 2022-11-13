@@ -3,10 +3,11 @@ package lotto;
 import lotto.domain.Money;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static lotto.utils.ErrorMessages.*;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 public class MoneyTest {
     @DisplayName("구입 금액이 숫자가 아니면 예외가 발생한다.")
@@ -34,5 +35,13 @@ public class MoneyTest {
         assertThatThrownBy(() -> new Money(money))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(MONEY_NOT_DIVIDE_UNIT);
+    }
+
+    @DisplayName("구입 금액을 정수형으로 변환한다.")
+    @ParameterizedTest
+    @CsvSource({"1000,1000", "10000,10000", "7000,7000"})
+    void MoneyToInteger(String inputMoney, int expected) {
+        Money money = new Money(inputMoney);
+        assertThat(money.getMoney()).isEqualTo(expected);
     }
 }
