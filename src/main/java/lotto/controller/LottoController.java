@@ -24,12 +24,7 @@ public class LottoController {
 
     public void start() {
         purchaseLotto();
-
-        OutputView.printInputWinningNumber();
-        List<Integer> winningLottoNumber = InputView.inputWinningNumber();
-
-        OutputView.printInputBonusNumber();
-        Integer bonusLottoNumber = InputView.inputBonusNumber();
+        prepareLottoNumber();
     }
 
     private void purchaseLotto() {
@@ -38,5 +33,13 @@ public class LottoController {
 
         LottoTicketDTO lottoTicketDTO = lottoService.purchaseLottoByPaidAmount(paidAmount);
         OutputView.printPaidLotto(paidAmount, lottoTicketDTO);
+    }
+
+    private void prepareLottoNumber() {
+        OutputView.printInputWinningNumber();
+        List<Integer> winningLottoNumber = InputView.inputWinningNumber();
+
+        OutputView.printInputBonusNumber();
+        Integer bonusLottoNumber = InputView.inputBonusNumber();
     }
 }
