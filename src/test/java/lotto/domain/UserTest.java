@@ -22,4 +22,12 @@ public class UserTest {
         assertThatThrownBy(() -> user.setBuyAmount("01000"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("금액이 1000원단위가 아니면 예외가 발생한다.")
+    @Test
+    void createBuyAmountByWrongSize() {
+        User user = new User();
+        assertThatThrownBy(() -> user.setBuyAmount("1200"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
