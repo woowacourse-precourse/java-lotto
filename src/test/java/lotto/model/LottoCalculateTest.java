@@ -60,23 +60,24 @@ class LottoCalculateTest {
 
         assertThat(lottoCalculate.calculatePrize(matchCount, checkBonusNumber)).isEqualTo(LottoPrizeMoneyMatchCount.SECOND);
     }
-
-    @DisplayName("2등인 경우 상금 3천만 을 리턴한다.")
-    @Test
-    void checkWinMoneyTest() {
-        LottoPrizeMoneyMatchCount lottoPrizeMoneyMatchCount = lottoCalculate.calculatePrize(5, true);
-        assertThat(lottoCalculate.calculateWinMoney(lottoPrizeMoneyMatchCount)).isEqualTo(30000000);
-    }
+//    Test 함수 삭제로 인한 Test 삭제
+//    @DisplayName("2등인 경우 상금 3천만 을 리턴한다.")
+//    @Test
+//    void checkWinMoneyTest() {
+//        LottoPrizeMoneyMatchCount lottoPrizeMoneyMatchCount = lottoCalculate.calculatePrize(5, true);
+//        assertThat(lottoCalculate.calculateWinMoney(lottoPrizeMoneyMatchCount)).isEqualTo(30000000);
+//    }
 
     @DisplayName("로또 번호가 2등 당첨인 상황이면 lottoData 의 prize, prizeMoneySum 에 정보가 등수에 맞게 추가 된다.")
     @Test
     void totalCalculateTest1() {
-        List<Integer> winNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
-        int bonusNumber = 7;
-        List<Integer> lottoNumbers = new ArrayList<>(Arrays.asList(2, 3, 4, 5, 6, 7));
         LottoData lottoData = new LottoData(1000);
+        lottoData.winNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        lottoData.bonusNumber = 7;
+        List<Integer> lottoNumbers = new ArrayList<>(Arrays.asList(2, 3, 4, 5, 6, 7));
         Lotto lotto = new Lotto(lottoNumbers);
-        lottoData.totalCalculate(lotto, winNumbers, bonusNumber);
+        lottoData.allLotto.add(lotto);
+        lottoData.calculateAllData();
         assertThat(lottoData.prize.getPrize().get(2)).isEqualTo(1);
         assertThat(lottoData.prizeMoneySum).isEqualTo(30000000);
     }
@@ -84,12 +85,13 @@ class LottoCalculateTest {
     @DisplayName("로또 번호가 4등 당첨인 상황이 lottoData 의 prize, prizeMoneySum 에 정보가 등수에 맞게 추가 된다.")
     @Test
     void totalCalculateTest2() {
-        List<Integer> winNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
-        int bonusNumber = 7;
-        List<Integer> lottoNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 9, 10));
         LottoData lottoData = new LottoData(1000);
+        lottoData.winNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        lottoData.bonusNumber = 7;
+        List<Integer> lottoNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 9, 10));
         Lotto lotto = new Lotto(lottoNumbers);
-        lottoData.totalCalculate(lotto, winNumbers, bonusNumber);
+        lottoData.allLotto.add(lotto);
+        lottoData.calculateAllData();
         assertThat(lottoData.prize.getPrize().get(4)).isEqualTo(1);
         assertThat(lottoData.prizeMoneySum).isEqualTo(50000);
     }
@@ -97,12 +99,13 @@ class LottoCalculateTest {
     @DisplayName("로또 번호가 3등 당첨인 상황이면 lottoData 의 prize, prizeMoneySum 에 정보가 등수에 맞게 추가 된다.")
     @Test
     void totalCalculateTest3() {
-        List<Integer> winNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
-        int bonusNumber = 7;
-        List<Integer> lottoNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 10));
         LottoData lottoData = new LottoData(1000);
+        lottoData.winNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+        lottoData.bonusNumber = 7;
+        List<Integer> lottoNumbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 10));
         Lotto lotto = new Lotto(lottoNumbers);
-        lottoData.totalCalculate(lotto, winNumbers, bonusNumber);
+        lottoData.allLotto.add(lotto);
+        lottoData.calculateAllData();
         assertThat(lottoData.prize.getPrize().get(3)).isEqualTo(1);
         assertThat(lottoData.prizeMoneySum).isEqualTo(1500000);
     }

@@ -25,7 +25,7 @@ public class LottoController {
         inputLotto.inputWinNumber(lottoData);
         inputView.printInputBonusNumber();
         inputLotto.inputBonusNumber(lottoData, lottoData.winNumbers);
-        lottoData.putDataToLotto(lottoData.winNumbers, lottoData.bonusNumber);
+        lottoData.calculateAllData();
         outputView.printPrize(lottoData.prize.getPrize());
         outputView.printPercentageOfReturn(lottoData.percentageOfReturn());
     }

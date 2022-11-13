@@ -47,8 +47,13 @@ public class LottoCalculate {
         return LottoPrizeMoneyMatchCount.NONE;
     }
 
-    int calculateWinMoney(LottoPrizeMoneyMatchCount prizeNumber) {
-        return prizeNumber.prizeMoney;
+    void totalCalculate(Lotto lotto, LottoData lottoData) {
+        int matchCount = checkMatches(lotto.getNumbers(), lottoData.winNumbers);
+        boolean matchBonusNumber = checkBonusNumber(lotto.getNumbers(), lottoData.bonusNumber);
+        LottoPrizeMoneyMatchCount lottoPrizeMoneyMatchCount = lottoCalculate.calculatePrize(matchCount,
+                matchBonusNumber);
+        lottoData.prize.addPrizeCount(lottoPrizeMoneyMatchCount.prize);
+        lottoData.prizeMoneySum += lottoPrizeMoneyMatchCount.prizeMoney;
     }
 
     float calculatePercentageOfReturn(double money, double prizeMoneySum) {

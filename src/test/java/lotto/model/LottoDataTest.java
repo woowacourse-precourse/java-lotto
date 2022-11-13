@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -33,11 +32,11 @@ class LottoDataTest {
     @DisplayName("로또가 절대 당첨될 수 없는 상황일 때 누적 상금이 lottoData 의 prizeMoneySum 에 저장된다.")
     @Test
     void putDataToLottoTest1() {
-        List<Integer> winNumbers = new ArrayList<>(Arrays.asList(46, 47, 48, 49, 50, 51));
-        int bonusNumber = 52;
+        lottoData.winNumbers = new ArrayList<>(Arrays.asList(46, 47, 48, 49, 50, 51));
+        lottoData.bonusNumber = 52;
 
         lottoData.makeLotto();
-        lottoData.putDataToLotto(winNumbers, bonusNumber);
+        lottoData.calculateAllData();
 
         assertThat(lottoData.prizeMoneySum).isEqualTo(0d);
     }
@@ -45,13 +44,13 @@ class LottoDataTest {
     @DisplayName("로또가 무조건 1등 당첨되는 상황일 때 누적 상금이 lottoData 의 prizeMoneySum 에 저장된다.")
     @Test
     void putDataToLottoTest2() {
-        List<Integer> winNumbers = new ArrayList<>(
+        lottoData.winNumbers = new ArrayList<>(
                 Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,
                         26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45));
-        int bonusNumber = 52;
+        lottoData.bonusNumber = 52;
 
         lottoData.makeLotto();
-        lottoData.putDataToLotto(winNumbers, bonusNumber);
+        lottoData.calculateAllData();
 
         assertThat(lottoData.prizeMoneySum).isEqualTo(24000000000d);
     }
@@ -59,11 +58,11 @@ class LottoDataTest {
     @DisplayName("로또가 절대 당첨될 수 없는 상황일 때 prize 의 0에 12개, prizeMoneySum 에 0이 저장된다.")
     @Test
     void countPrizeAndSumPrizeMoneyTest1() {
-        List<Integer> winNumbers = new ArrayList<>(Arrays.asList(46, 47, 48, 49, 50, 51));
-        int bonusNumber = 52;
+        lottoData.winNumbers = new ArrayList<>(Arrays.asList(46, 47, 48, 49, 50, 51));
+        lottoData.bonusNumber = 52;
 
         lottoData.makeLotto();
-        lottoData.putDataToLotto(winNumbers, bonusNumber);
+        lottoData.calculateAllData();
         assertThat(lottoData.prize.getPrize().get(0)).isEqualTo(12);
         assertThat(lottoData.prizeMoneySum).isEqualTo(0);
     }
@@ -71,13 +70,13 @@ class LottoDataTest {
     @DisplayName("로또가 무조건 1등 당첨되는 상황일 때 prize 의 1에 12, prizeMoneySum 에 240억이 저장된다.")
     @Test
     void countPrizeAndSumPrizeMoneyTest2() {
-        List<Integer> winNumbers = new ArrayList<>(
+        lottoData.winNumbers = new ArrayList<>(
                 Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,
                         26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45));
-        int bonusNumber = 52;
+        lottoData.bonusNumber = 52;
 
         lottoData.makeLotto();
-        lottoData.putDataToLotto(winNumbers, bonusNumber);
+        lottoData.calculateAllData();
         assertThat(lottoData.prize.getPrize().get(1)).isEqualTo(12);
         assertThat(lottoData.prizeMoneySum).isEqualTo(24000000000d);
     }

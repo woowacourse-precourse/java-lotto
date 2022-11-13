@@ -36,19 +36,11 @@ public class LottoData {
         }
     }
 
-    public void putDataToLotto(List<Integer> winNumbers, int bonusNumber) {
+    public void calculateAllData(){
         for (Lotto lotto : allLotto) {
-            totalCalculate(lotto, winNumbers, bonusNumber);
+            lottoCalculate.totalCalculate(lotto,this);
         }
-    }
 
-    void totalCalculate(Lotto lotto, List<Integer> winNumbers, int bonusNumber) {
-        int matchCount = lottoCalculate.checkMatches(lotto.getNumbers(), winNumbers);
-        boolean matchBonusNumber = lottoCalculate.checkBonusNumber(lotto.getNumbers(), bonusNumber);
-        LottoPrizeMoneyMatchCount lottoPrizeMoneyMatchCount = lottoCalculate.calculatePrize(matchCount,
-                matchBonusNumber);
-        prize.addPrizeCount(lottoPrizeMoneyMatchCount.prize);
-        prizeMoneySum += lottoPrizeMoneyMatchCount.prizeMoney;
     }
 
     public float percentageOfReturn() {
