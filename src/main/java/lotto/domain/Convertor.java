@@ -24,6 +24,6 @@ public class Convertor {
     }
 
     public static int getNumber(String input) {
-        return Integer.parseInt(input);
+        return LottoException.validateNumber(input);
     }
 }

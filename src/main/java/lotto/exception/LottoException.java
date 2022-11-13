@@ -34,6 +34,27 @@ public class LottoException {
         return numbers;
     }
 
+    public static int validateNumber(String input) {
+        int number = getNumber(input);
+
+        if(!isAccurateRange(List.of(number))) {
+            StringBuilder message = new StringBuilder(ERROR_MESSAGE);
+            message.append(1).append("부터 ").append(45).append(RANGE_EXCEPTION_MESSAGE);
+            throw new IllegalArgumentException(message.toString());
+        }
+
+        return number;
+    }
+
+    private static int getNumber(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            StringBuilder message = new StringBuilder(ERROR_MESSAGE);
+            throw new IllegalArgumentException(message.append(NUMERIC_EXCEPTION_MESSAGE).toString());
+        }
+    }
+
     private static List<Integer> getNumbers(String input) {
         try {
             return Arrays.stream(input.split(","))
