@@ -1,10 +1,10 @@
 package lotto.domain;
 
 import static lotto.ui.ConsoleMessage.INVALID_INPUT_PRICE;
+import static lotto.ui.LottoConsole.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import lotto.ui.LottoConsole;
 
 public class UserLottoInfo {
 
@@ -18,11 +18,11 @@ public class UserLottoInfo {
 
     private void validateLottoPrice(String lottoPrice) {
         if (!isLottoPriceNumeric(lottoPrice)) {
-            LottoConsole.printErrorMessage(INVALID_INPUT_PRICE.toString());
+            printErrorMessage(INVALID_INPUT_PRICE.toString());
             throw new IllegalArgumentException();
         }
         if (!isLottoPriceMultiplesof1000(Integer.parseInt(lottoPrice))) {
-            LottoConsole.printErrorMessage(INVALID_INPUT_PRICE.toString());
+            printErrorMessage(INVALID_INPUT_PRICE.toString());
             throw new IllegalArgumentException();
         }
     }

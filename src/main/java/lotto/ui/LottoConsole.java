@@ -20,6 +20,10 @@ public class LottoConsole {
         System.out.println("[ERROR]: " + errorMessage);
     }
 
+    public static void printLottoCount(String lottoCount){
+        System.out.println(lottoCount + "개를 구매했습니다.");
+    }
+
     public static void printLottoResult(List<Integer> lottoNumbers){
         System.out.println(lottoNumbers);
     }
