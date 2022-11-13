@@ -8,7 +8,7 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
     private static final String ERROR_MESSAGE = "[ERROR] ";
-    private static final String ERROR_NUMBER_MESSAGE = "구입금액은 숫자여야 합니다.";
+    private static final String ERROR_AMOUNT_NUMBER_MESSAGE = "구입금액은 숫자여야 합니다.";
     private static final String ERROR_AMOUNT_MESSAGE = "구입금액은 1000원 단위여야 합니다.";
     private static final String ERROR_LOTTO_NUMBER_MESSAGE = "로또번호는 숫자여야 합니다.";
     private static final Integer LOTTO_PRICE = 1000;
@@ -33,7 +33,7 @@ public class InputView {
 
     private static void validateNumber(String amountString) {
 	if (!isNumeric(amountString)) {
-	    throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_NUMBER_MESSAGE);
+	    throw new IllegalArgumentException(ERROR_MESSAGE + ERROR_AMOUNT_NUMBER_MESSAGE);
 	}
     }
 
