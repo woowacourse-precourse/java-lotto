@@ -112,7 +112,7 @@ public class Lotto {
         win_lotto = new ArrayList<>(number_of_lotto);
 
         for (int i = 0;i<number_of_lotto;i++){
-            int count = getCountOfSameNumbers(0, i);
+            int count = getCountOfSameNumbers(i);
             setPrize(count, purchased_lotto_numbers.get(i));
 
             int index = win_lotto.get(i).index;
@@ -123,7 +123,8 @@ public class Lotto {
         }
     }
 
-    private int getCountOfSameNumbers(int count, int i) {
+    private int getCountOfSameNumbers(int i) {
+        int count = 0;
         for (int j = 0; j < 6;j++){
             if (numbers.contains(purchased_lotto_numbers.get(i).get(j))){
                 count++;
