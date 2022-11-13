@@ -3,25 +3,35 @@ package lotto;
 import java.util.List;
 
 public class LottoBank {
+    private WinningLotto winningLotto;
+    private LottoMachine lottoMachine;
+    private int containsCount = 0;
 
-    public void compareLottoNumber() {
-        WinningLotto winningLotto = new WinningLotto();
-        LottoMachine lottoMachine = new LottoMachine();
-        List<Integer> winningNumbers = winningLotto.creteWinningNumbers();
+    public void LottoNumberCompareResult() {
         List<List<Integer>> totalLotteries = lottoMachine.sortLottoNumbers();
-        String rank = "";
+        int[] rankCount = new int[8];
         for (List<Integer> lotto : totalLotteries) {
-            int sameNumberCount = isContainsNumber(lotto, winningNumbers);
+            for (int number : lotto) {
+                countContainsNumber(number);
+            }
+            for (int i=0; i<containsCount; i++) {
+                rankCount[containsCount]++;
+            }
+            containsCount = 0;
         }
     }
 
-    public int isContainsNumber(List<Integer> lotto, List<Integer> winningNumbers) {
-        int sameNumberCount = 0;
-        for (int number : lotto) {
-            if (winningNumbers.contains(number)) {
-                sameNumberCount++;
-            }
+    public void countContainsNumber(int number) {
+        if (isContainNumber(number)) {
+            containsCount++;
         }
-        return sameNumberCount;
+    }
+
+    public boolean isContainNumber(int number) {
+        List<Integer> winningNumbers = winningLotto.creteWinningNumbers();
+        if (winningNumbers.contains(number)) {
+            return true;
+        }
+        return false;
     }
 }
