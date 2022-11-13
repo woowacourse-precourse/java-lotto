@@ -9,25 +9,33 @@ import java.util.List;
 
 public class Lotto {
     enum statistics {
-        prize1(1,2000000000),
-        prize2(2,30000000),
-        prize3(3,1500000),
-        prize4(4,50000),
-        prize5(5,5000),
-        noprize(0,0);
+        prize1(1, 6, 4,"2,000,000,000"),
+        prize2(2,5, 3,"30,000,000"),
+        prize3(3,5, 2,"1,500,000"),
+        prize4(4, 4,1,"50,000"),
+        prize5(5,3,0,"5,000"),
+        noprize(0,0,-1,"0");
 
+        // 순위
         private int rank;
-        private int money;
+        // 상금
+        private String money;
+        // 일치하는 번호 개수
+        private int count;
+        // 통계를 저장할 통계 리스트 인덱스
+        private int index;
 
-        statistics(int rank, int money){
+        statistics(int rank, int count,int index, String money){
             this.rank = rank;
             this.money = money;
+            this.count = count;
+            this.index = index;
         }
     }
     private static int number_of_lotto;
     private static List<List<Integer>> purchased_lotto_numbers;
     private static int bonus_number = 0;
-    private static statistics win_lotto;
+    private static List<statistics> win_lotto;
     private static ArrayList<Integer> status_of_win = new ArrayList<>(5);
 
     private final List<Integer> numbers;
@@ -77,21 +85,21 @@ public class Lotto {
         int count = 0;
         for (int i = 0;i<purchased_lotto_numbers.size();i++){
             for (int j = 0; j<purchased_lotto_numbers.get(i).size();j++){
-                if (numbers.contains(purchased_lotto_numbers.get(i).get(j)){
+                if (numbers.contains(purchased_lotto_numbers.get(i).get(j))){
                     count++;
                 }
             }
+            setPrize(count,purchased_lotto_numbers.get(i),win_lotto.get(i));
 
-            setPrize(count,purchased_lotto_numbers.get(i));
-
-            if (win_lotto.rank!=0){
+            if (win_lotto.get(i).rank!=0){
                 // 로또 당첨 통계를 계산해 status_of_win 리스트에 저장
-                status_of_win.add(count-1,status_of_win.get(count-1)+1);
+                status_of_win.set(win_lotto.get(i).index,status_of_win.get(win_lotto.get(i).index)+1);
             }
+
         }
     }
 
-    private void setPrize(int count, List<Integer> my_lotto) {
+    private void setPrize(int count, List<Integer> my_lotto, statistics win_lotto) {
         if (count==5){
             if (my_lotto.contains(bonus_number)){
                 win_lotto = statistics.prize2;
@@ -116,7 +124,13 @@ public class Lotto {
     }
 
 
-
+    private void printStatisticsForLotto(){
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        for (int i = 0; i < 6; i++){
+            System.out.println(win_lotto.get(i).count+"개 일치 ("+win_lotto.get(i).money+"원) - "+status_of_win.get(i)+"개");
+        }
+    }
 
 
 
