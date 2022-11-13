@@ -112,7 +112,6 @@ public class Application {
         }
         Collections.sort(winningNumber);
         inputWinningNumberException();
-
     }
 
     public static void inputWinningNumberException(){
@@ -138,7 +137,21 @@ public class Application {
 
     public static void inputBonus(){
         System.out.println("보너스 번호를 입력해 주세요.");
-        bonus = Integer.parseInt(Console.readLine());
+        String checkBonus = Console.readLine();
+        bonusException(checkBonus);
+        bonus = Integer.parseInt(checkBonus);
+        if(bonus<1||bonus>45)
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45사이여야 합니다");
+    }
+
+    public static void bonusException(String checkBonus){
+        char[] check = checkBonus.toCharArray();
+        for(int i=0;i<check.length;i++){
+            if(!Character.isDigit(check[i]))
+                throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자이어야 합니다.");
+            if(winningNumber.contains(Character.getNumericValue(check[i])))
+                throw new IllegalArgumentException("[ERROR] 보너스 번호는 로또 번호와 달라야 합니다.");
+        }
     }
 
     public static void compareNumber(List<List<Integer>> allLottoNumbers){
