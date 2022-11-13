@@ -33,12 +33,78 @@ public class Application {
         }
     }
 
+    /*
+     * 구입금액 관련
+     */
+    public static String inputUserCash() {
+
+        return Console.readLine();
+    }
+
+    public static void validateCashIsInteger(String input) {
+
+        for (int i = 0; i < input.length(); i++) {
+
+            if (input.charAt(i) < 48 || input.charAt(i) > 57) {
+                error = ErrorMessage.INTEGER;
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    public static void validateCashIsDividedThousand(String input) {
+        if (input.length() < 4) {
+            error = ErrorMessage.DIVIDE;
+            throw new IllegalArgumentException();
+        }
+
+        for (int i = input.length() - 3; i < input.length(); i++) {
+
+            if (input.charAt(i) != 48) {
+                error = ErrorMessage.DIVIDE;
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    public static Integer changeCashStringToInteger(String input) {
+        int inputCash = 0;
+
+        for (int i = 0; i < input.length(); i++) {
+
+            int number = input.length() - i;
+            inputCash += Math.pow(10, number - 1) * (input.charAt(i) - 48);
+        }
+
+        return inputCash;
+
+    }
+
+    public static Integer getUserCash(String input) {
+
+        validateCashIsInteger(input);
+        validateCashIsDividedThousand(input);
+
+        return changeCashStringToInteger(input);
+    }
+
+
+    /*
+     * 로또 번호 발행 관련
+     */
     public static void issueLottoTickets(int cash, List<Lotto> lottoTickets) {
         try {
             issueLottoNumbers(cash / 1000, lottoTickets);
             showLotto(cash, lottoTickets);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    public static void issueLottoNumbers(int buyNumber, List<Lotto> lottoTickets) {
+
+        for (int i = 0; i < buyNumber; i++) {
+            lottoTickets.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
         }
     }
 
@@ -50,6 +116,121 @@ public class Application {
         }
     }
 
+    /*
+     * 당첨 번호 관련
+     */
+    public static String inputWinningNumbers() {
+
+        return Console.readLine();
+    }
+
+    public static void validateNumbersBetweenComma(char character1, char character2) {
+
+        if ((character1 < 48 || character1 > 57) || (character2 < 48 || character2 > 57)) {
+            error = ErrorMessage.FORM;
+            throw new IllegalArgumentException();
+        }
+
+    }
+
+    public static void validateWinningNumbersForm(String input) {
+
+        for (int i = 0; i < input.length(); i++) {
+
+            if (input.charAt(i) != ',' && (input.charAt(i) < 48 || input.charAt(i) > 57)) {
+                error = ErrorMessage.FORM;
+                throw new IllegalArgumentException();
+            }
+            if (input.charAt(i) == ',') {
+                validateNumbersBetweenComma(input.charAt(i - 1), input.charAt(i + 1));
+            }
+        }
+    }
+
+    public static List<Integer> changeWinningNumbersStringToList(String input) {
+        List<Integer> winningNumbers = new ArrayList<>();
+        int number = 0;
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == ',') {
+                winningNumbers.add(number);
+                number = 0;
+                continue;
+            }
+            number = number * 10 + input.charAt(i) - 48;
+        }
+        winningNumbers.add(number);
+        return winningNumbers;
+    }
+
+    public static List<Integer> getWinningNumbers(String input) {
+        validateWinningNumbersForm(input);
+
+        return changeWinningNumbersStringToList(input);
+    }
+
+    /*
+     * 보너스 번호 관련
+     */
+    public static String inputBonusNumber() {
+
+        return Console.readLine();
+    }
+
+    public static void validateBonusNumberIsInteger(String input) {
+
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) < 48 || input.charAt(i) > 57) {
+                error = ErrorMessage.INTEGER;
+                throw new IllegalArgumentException();
+            }
+        }
+    }
+
+    public static void validateBonusNumberIsInRange(String input) {
+        int bonusNumber = 0;
+
+        for (int i = 0; i < input.length(); i++) {
+            bonusNumber = bonusNumber * 10 + input.charAt(i) - 48;
+        }
+
+        if (bonusNumber < 1 || bonusNumber > 45) {
+            error = ErrorMessage.RANGE;
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void validateBonusNumberIsDuplicate(String input, List<Integer> winningNumbers) {
+        int bonusNumber = 0;
+
+        for (int i = 0; i < input.length(); i++) {
+            bonusNumber = bonusNumber * 10 + input.charAt(i) - 48;
+        }
+        if (winningNumbers.contains(bonusNumber)) {
+            error = ErrorMessage.DUPLICATE;
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static Integer changeBonusNumberStringToInteger(String input) {
+        int bonusNumber = 0;
+        for (int i = 0; i < input.length(); i++) {
+            bonusNumber = bonusNumber * 10 + input.charAt(i) - 48;
+        }
+        return bonusNumber;
+    }
+
+    public static Integer getBonusNumber(String input, List<Integer> winningNumbers) {
+
+        validateBonusNumberIsInteger(input);
+        validateBonusNumberIsInRange(input);
+        validateBonusNumberIsDuplicate(input, winningNumbers);
+
+        return changeBonusNumberStringToInteger(input);
+    }
+
+    /*
+     * 출력 관련
+     */
     public static void showStats(List<Lotto> lottoTickets, List<Integer> winningNumbers, int bonusNumber, int cash) {
 
         printStatsPhrase();
@@ -113,174 +294,9 @@ public class Application {
         System.out.println("총 수익률은 " + surplusRate + "%입니다.");
     }
 
-    public static void validateCashIsInteger(String input) {
-
-        for (int i = 0; i < input.length(); i++) {
-
-            if (input.charAt(i) < 48 || input.charAt(i) > 57) {
-                error = ErrorMessage.INTEGER;
-                throw new IllegalArgumentException();
-            }
-        }
-    }
-
-    public static void validateCashIsDividedThousand(String input) {
-        if (input.length() < 4) {
-            error = ErrorMessage.DIVIDE;
-            throw new IllegalArgumentException();
-        }
-
-        for (int i = input.length() - 3; i < input.length(); i++) {
-
-            if (input.charAt(i) != 48) {
-                error = ErrorMessage.DIVIDE;
-                throw new IllegalArgumentException();
-            }
-        }
-    }
-
-    public static Integer changeCashStringToInteger(String input) {
-        int inputCash = 0;
-
-        for (int i = 0; i < input.length(); i++) {
-
-            int number = input.length() - i;
-            inputCash += Math.pow(10, number - 1) * (input.charAt(i) - 48);
-        }
-
-        return inputCash;
-
-    }
-
-    public static String inputUserCash() {
-
-        return Console.readLine();
-    }
-
-    public static Integer getUserCash(String input) {
-
-        validateCashIsInteger(input);
-        validateCashIsDividedThousand(input);
-
-        return changeCashStringToInteger(input);
-    }
-
-    public static String inputWinningNumbers() {
-
-        return Console.readLine();
-    }
-
-    public static void validateNumbersBetweenComma(char character1, char character2) {
-
-        if ((character1 < 48 || character1 > 57) || (character2 < 48 || character2 > 57)) {
-            error = ErrorMessage.FORM;
-            throw new IllegalArgumentException();
-        }
-
-    }
-
-    public static void validateWinningNumbersForm(String input) {
-
-        for (int i = 0; i < input.length(); i++) {
-
-            if (input.charAt(i) != ',' && (input.charAt(i) < 48 || input.charAt(i) > 57)) {
-                error = ErrorMessage.FORM;
-                throw new IllegalArgumentException();
-            }
-            if (input.charAt(i) == ',') {
-                validateNumbersBetweenComma(input.charAt(i - 1), input.charAt(i + 1));
-            }
-        }
-    }
-
-    public static List<Integer> getWinningNumbers(String input) {
-        validateWinningNumbersForm(input);
-
-        return changeWinningNumbersStringToList(input);
-    }
-
-    public static List<Integer> changeWinningNumbersStringToList(String input) {
-        List<Integer> winningNumbers = new ArrayList<>();
-        int number = 0;
-        for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) == ',') {
-                winningNumbers.add(number);
-                number = 0;
-                continue;
-            }
-            number = number * 10 + input.charAt(i) - 48;
-        }
-        winningNumbers.add(number);
-        return winningNumbers;
-    }
-
-    public static String inputBonusNumber() {
-
-        return Console.readLine();
-    }
-
-    public static void validateBonusNumberIsInteger(String input) {
-
-        for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) < 48 || input.charAt(i) > 57) {
-                error = ErrorMessage.INTEGER;
-                throw new IllegalArgumentException();
-            }
-        }
-    }
-
-    public static void validateBonusNumberIsInRange(String input) {
-        int bonusNumber = 0;
-
-        for (int i = 0; i < input.length(); i++) {
-            bonusNumber = bonusNumber * 10 + input.charAt(i) - 48;
-        }
-
-        if (bonusNumber < 1 || bonusNumber > 45) {
-            error = ErrorMessage.RANGE;
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public static void validateBonusNumberIsDuplicate(String input, List<Integer> winningNumbers) {
-        int bonusNumber = 0;
-
-        for (int i = 0; i < input.length(); i++) {
-            bonusNumber = bonusNumber * 10 + input.charAt(i) - 48;
-        }
-        if (winningNumbers.contains(bonusNumber)) {
-            error = ErrorMessage.DUPLICATE;
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public static Integer getBonusNumber(String input, List<Integer> winningNumbers) {
-
-        validateBonusNumberIsInteger(input);
-        validateBonusNumberIsInRange(input);
-        validateBonusNumberIsDuplicate(input, winningNumbers);
-
-        return changeBonusNumberStringToInteger(input);
-    }
-
-    public static Integer changeBonusNumberStringToInteger(String input) {
-        int bonusNumber = 0;
-        for (int i = 0; i < input.length(); i++) {
-            bonusNumber = bonusNumber * 10 + input.charAt(i) - 48;
-        }
-        return bonusNumber;
-    }
-
-    public static Double calculateSurplus(int first, int second, int third, int forth, int fifth, int cash) {
-
-        int surplusSum = first * FIRST.getValue() + second * SECOND.getValue()
-                + third * THIRD.getValue() + forth * FORTH.getValue() + fifth * FIFTH.getValue();
-
-        double surplusRate = 100.0 * (double) surplusSum / (double) cash;
-
-        return Math.round(surplusRate * 10) / 10.0;
-    }
-
+    /*
+     * 당첨 내역 계산 관련
+     */
     public static Integer compareLottoNumbersAndWinningNumbers(Lotto lotto, List<Integer> winningNumbers, int equalNum) {
 
         int number = 0;
@@ -364,13 +380,19 @@ public class Application {
         return number;
     }
 
-    public static void issueLottoNumbers(int buyNumber, List<Lotto> lottoTickets) {
+    public static Double calculateSurplus(int first, int second, int third, int forth, int fifth, int cash) {
 
-        for (int i = 0; i < buyNumber; i++) {
-            lottoTickets.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
-        }
+        int surplusSum = first * FIRST.getValue() + second * SECOND.getValue()
+                + third * THIRD.getValue() + forth * FORTH.getValue() + fifth * FIFTH.getValue();
+
+        double surplusRate = 100.0 * (double) surplusSum / (double) cash;
+
+        return Math.round(surplusRate * 10) / 10.0;
     }
 
+    /*
+     * 에러 메세지 관련
+     */
     public static void setError(ErrorMessage errorMessage) {
         error = errorMessage;
     }
