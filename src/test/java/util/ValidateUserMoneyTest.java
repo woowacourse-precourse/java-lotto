@@ -51,7 +51,6 @@ class ValidateUserMoneyTest {
         }
         Assertions.assertThat(message).contains("[ERROR]");
 
-
     }
 
 

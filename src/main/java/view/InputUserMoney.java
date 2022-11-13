@@ -14,9 +14,7 @@ public class InputUserMoney {
     public static int inputMoney(){
         String input_money = Console.readLine();
 
-        if(!ValidateUserMoney.validateMoney(input_money)){
-            return EXCEPTION_CODE;
-        }
+        ValidateUserMoney.validateMoney(input_money);
         userMoney = Integer.parseInt(input_money);
         return userMoney;
     }

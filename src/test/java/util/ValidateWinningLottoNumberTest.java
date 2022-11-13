@@ -27,6 +27,10 @@ class ValidateWinningLottoNumberTest {
             }
         }).isInstanceOf(IllegalArgumentException.class);
 
+       Assertions.assertThatThrownBy(()->{
+           ValidateWinningLottoNumber.setWinningLottoTicket("1,3,4,5,6,7,8");
+       }).isInstanceOf(IllegalArgumentException.class);
+
     }
 
     @Test
@@ -42,8 +46,11 @@ class ValidateWinningLottoNumberTest {
                     throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_NUMBER.getMessage());
                 }
             }
-
         ).isInstanceOf(IllegalArgumentException.class);
+
+        Assertions.assertThatThrownBy(()->{
+            ValidateWinningLottoNumber.validateSplitNumber(wrongSplitedNumber);
+        }).isInstanceOf(IllegalArgumentException.class);
 
     }
 
@@ -61,6 +68,10 @@ class ValidateWinningLottoNumberTest {
             if (convertSplitedNumber < 1 || convertSplitedNumber > 45) {
                 throw new IllegalArgumentException(ErrorMessage.ERROR_OVERRANGE.getMessage());
             }
+        }).isInstanceOf(IllegalArgumentException.class);
+
+        Assertions.assertThatThrownBy(()->{
+            ValidateWinningLottoNumber.validateSplitNumber(wrongSplitedNumber);
         }).isInstanceOf(IllegalArgumentException.class);
 
     }

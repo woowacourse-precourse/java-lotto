@@ -8,18 +8,20 @@ import view.InputUserMoney;
 import view.OutputView;
 
 public class Application {
-    public static void main(String[] args) throws IllegalArgumentException{
+    public static void main(String[] args) {
         // TODO: 프로그램 구현
-        final int EXCEPTION_CODE=-1;
-        BuyLottoTickets buyLottoTickets = new BuyLottoTickets();
-        OutputView.printButMoney();
-        int money = InputUserMoney.inputMoney();
-        if(money== EXCEPTION_CODE){
-            return;
+
+        try {
+            BuyLottoTickets buyLottoTickets = new BuyLottoTickets();
+            OutputView.printButMoney();
+            int money = InputUserMoney.inputMoney();
+            inputValues(buyLottoTickets, money);
+            LottoGame game = new LottoGame();
+            game.Game();
         }
-        inputValues(buyLottoTickets, money);
-        LottoGame game = new LottoGame();
-        game.Game();
+        catch (IllegalArgumentException e){
+            OutputView.printException(e);
+        }
 
     }
 

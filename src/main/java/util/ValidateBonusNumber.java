@@ -40,8 +40,7 @@ public class ValidateBonusNumber {
         List<Integer> lottoTicket = InputWinningLottoNumber.getWinningLottoTicket();
         int rightBonusNumber = bonusNumber;
         if (lottoTicket.stream().anyMatch(n -> rightBonusNumber == n)) {
-            throw new IllegalArgumentException(
-                ErrorMessage.ERROR_BONUS_DUPLICATE_WINNING.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.ERROR_BONUS_DUPLICATE_WINNING.getMessage());
         }
     }
 

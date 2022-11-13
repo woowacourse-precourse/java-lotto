@@ -56,7 +56,6 @@ class ApplicationTest extends NsTest {
             runException("1000j");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
-
     }
 
     @Test
@@ -66,7 +65,6 @@ class ApplicationTest extends NsTest {
             runException("1200");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
-
     }
 
     @Override

@@ -8,6 +8,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import view.InputWinningLottoNumber;
+import view.OutputView;
 
 class ValidateBonusNumberTest {
 
@@ -27,6 +28,10 @@ class ValidateBonusNumberTest {
             }
         }).isInstanceOf(IllegalArgumentException.class);
 
+        Assertions.assertThatThrownBy(()->{
+            ValidateBonusNumber.validateBonusNumber("2j");
+        }).isInstanceOf(IllegalArgumentException.class);
+
     }
 
     @Test
@@ -37,6 +42,10 @@ class ValidateBonusNumberTest {
             if (wrongBonusNumber < 1 || wrongBonusNumber > 45) {
                 throw new IllegalArgumentException(ErrorMessage.ERROR_BONUS_OVERRANGE.getMessage());
             }
+        }).isInstanceOf(IllegalArgumentException.class);
+
+        Assertions.assertThatThrownBy(()->{
+            ValidateBonusNumber.validateBonusNumber("47");
         }).isInstanceOf(IllegalArgumentException.class);
 
     }
@@ -54,6 +63,7 @@ class ValidateBonusNumberTest {
         Assertions.assertThatThrownBy(()->{
             int rightBonusNumber=bonusNumber;
             if (lottoTicket.stream().anyMatch(n -> rightBonusNumber == n)) {
+                System.out.println("rightBonusNumber = " + rightBonusNumber);
             throw new IllegalArgumentException(
                 ErrorMessage.ERROR_BONUS_DUPLICATE_WINNING.getMessage());
         }
