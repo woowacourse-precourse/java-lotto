@@ -1,5 +1,17 @@
 # 미션 - 로또
 
+## 📚 기능 목록
+
+- [v] 받은 돈을 계산하여 몇 개의 6자리 수열을 만들지 계산한다. - Store#countLines 
+  - [v] 받은 돈이 1000원 단위로 떨어지는지 확인한다. - Store#validate
+  - [ ] 6자리의 중복이 없는 수열들을 생성한다. - Store#makeNumbers
+- [ ] 구매한 로또의 당첨내역을 계산한다. - Lotto#confirmNumbers
+- [ ] 입력받은 당첨번호로 구매한 로또의 당첨내역을 판단하고 수익률을 계산한다. - Judge#countTotal
+     - [ ] 당첨내역으로 총 당첨금을 계산한다. - Judge#countPrizeMoney
+     - [ ] 당청금과 구매금으로 수익률을 계산한다. - Judge#countEarningsRate
+
+
+
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
