@@ -14,7 +14,7 @@ public class LottoMachineTest {
 
     @Test
     void 생성자는_로또당첨번호와_보너스번호를_입력받는다() {
-        LottoMachine lottoMachine = new LottoMachine(List.of(1, 2, 3, 4, 5, 6), 7);
+        LottoMachine lottoMachine = new LottoMachine(new Lotto(List.of(1, 2, 3, 4, 5, 6)), LottoNumber.valueOf(7));
         assertThat(lottoMachine).isInstanceOf(LottoMachine.class);
     }
 }
