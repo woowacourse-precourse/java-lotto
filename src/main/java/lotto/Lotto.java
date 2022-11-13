@@ -28,5 +28,5 @@ public class Lotto {
         }
     }
     
-    
+    public Integer numOfTickets
 }
