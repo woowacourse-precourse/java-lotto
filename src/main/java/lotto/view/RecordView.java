@@ -6,7 +6,7 @@ public class RecordView {
 
     }
 
-    public static void printYeild() {
+    public static void printYield() {
 
     }
 
