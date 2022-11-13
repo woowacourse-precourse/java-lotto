@@ -8,6 +8,8 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import java.lang.reflect.Method;
+import java.lang.reflect.InvocationTargetException;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -68,6 +70,28 @@ class ApplicationTest extends NsTest {
             runException("10001");
             assertThat(output()).contains(ERROR_MESSAGE);
         });
+    }
+
+    Lotto generateRandomLotto() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Object ret;
+        Class app = Application.class;
+        Method method = app.getDeclaredMethod("buyLotto");
+
+        method.setAccessible(true);
+        ret = method.invoke(null);
+        return (Lotto) ret;
+    }
+
+    @Test
+    void 랜덤_로또_객체_생성_테스트() {
+        assertRandomUniqueNumbersInRangeTest(
+            () -> {
+                Lotto lotto = generateRandomLotto();
+                lotto.printNumbers();
+                assertThat(output()).contains("[1, 2, 3, 4, 5, 6]");
+            },
+            List.of(1, 2, 3, 4, 5, 6)
+        );
     }
 
     @Override
