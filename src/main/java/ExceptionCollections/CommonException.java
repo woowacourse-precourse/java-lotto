@@ -33,4 +33,10 @@ public class CommonException {
             throw new IllegalArgumentException(Exceptions.getMessage(Exceptions.WRONG_NUMBER_LENGTH));
         }
     }
+
+    public static void hasSameNumber(List<Integer> numbers, int number) {
+        if (numbers.contains(number)) {
+            throw new IllegalArgumentException(Exceptions.getMessage(Exceptions.HAS_DUPLICATED_NUMBER));
+        }
+    }
 }
