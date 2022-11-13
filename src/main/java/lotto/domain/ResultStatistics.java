@@ -54,4 +54,8 @@ public class ResultStatistics {
     public int getTotalProfit() {
         return totalProfit;
     }
+
+    public int getMatchCount(ResultStatus status) {
+        return map.get(status);
+    }
 }

@@ -23,7 +23,7 @@ public class OutputView {
         System.out.println("---");
     }
 
-    private static List<Result> getResults(List<Lotto> generatedLottos, WinLotto winLotto) {
+    protected static List<Result> getResults(List<Lotto> generatedLottos, WinLotto winLotto) {
         List<Result> results = new ArrayList<>();
 
         for (Lotto lotto : generatedLottos) {
@@ -33,7 +33,7 @@ public class OutputView {
         return results;
     }
 
-    private static ResultStatistics printResultStatistics(List<Result> results) {
+    protected static ResultStatistics printResultStatistics(List<Result> results) {
         ResultStatistics statistics = new ResultStatistics(results);
         System.out.println(statistics.printResultStatistics());
         return statistics;

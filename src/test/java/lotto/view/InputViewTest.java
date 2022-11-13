@@ -1,4 +1,4 @@
-package lotto;
+package lotto.view;
 
 import lotto.enums.ErrorMessage;
 import lotto.util.ValidationUtil;
@@ -6,10 +6,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class InputValidation {
-
+class InputViewTest {
     @DisplayName("사용자가 입력한 가격을 검증한다.")
     @Nested
     class InputAmountTest {
@@ -99,4 +98,5 @@ public class InputValidation {
                     .hasMessage(ErrorMessage.INVALID_NUMBER.getValue());
         }
     }
+
 }
