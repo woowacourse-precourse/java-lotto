@@ -21,6 +21,10 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
 
+        if(numbers.contains(number)){
+            throw new IllegalArgumentException();
+        }
+
         numbers.add(number);
     }
 }
