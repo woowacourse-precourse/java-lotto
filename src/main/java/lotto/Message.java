@@ -38,4 +38,8 @@ public enum Message {
         System.out.println(this.msg + count + "개");
         System.out.println();
     }
+
+    void print() {
+        System.out.println(msg);
+    }
 }
