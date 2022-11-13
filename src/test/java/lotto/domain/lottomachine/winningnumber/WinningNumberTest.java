@@ -2,8 +2,13 @@ package lotto.domain.lottomachine.winningnumber;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -82,5 +87,23 @@ class WinningNumberTest {
         WinningNumber winningNumber = new WinningNumber(number);
 
         assertThat(winningNumber.isSameValue(sameNumber)).isFalse();
+    }
+
+    @DisplayName("countSameValue 메소드에 숫자 리스트를 입력하였을 때 포함 여부를 String으로 반환하는지 확인")
+    @ParameterizedTest()
+    @MethodSource("provideArgumentsForCountSameValueTest")
+    void countSameValue_test(List<Integer> numbers, int number, String expected) {
+        WinningNumber bonusNumber = new WinningNumber(number);
+
+        String count = bonusNumber.countSameValue(numbers);
+
+        assertThat(count).isEqualTo(expected);
+    }
+
+    static Stream<Arguments> provideArgumentsForCountSameValueTest() {
+        return Stream.of(
+                Arguments.of(List.of(1,2,3,4,5,6), 7, ""),
+                Arguments.of(List.of(1,2,3,4,5,6), 6, "B")
+        );
     }
 }
