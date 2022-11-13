@@ -7,6 +7,9 @@ import static lotto.engine.NextstepNumberGenerator.START_RANGE_NUMBER;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class WinningNumber {
@@ -25,6 +28,43 @@ public class WinningNumber {
     private WinningNumber(List<Integer> numbers, int bonusNumber) {
         this.numbers = numbers;
         this.bonusNumber = bonusNumber;
+    }
+
+    public Optional<Winning> compareToWinningNumber(Lotto lotto) {
+        if (lotto == null) {
+            throw new IllegalArgumentException();
+        }
+        AtomicInteger correctNumber = new AtomicInteger();
+        AtomicBoolean bonus = new AtomicBoolean();
+
+        lotto.iterate(n -> {
+            if (numbers.contains(n)) {
+                correctNumber.getAndIncrement();
+            }
+            if (n == bonusNumber) {
+                bonus.getAndSet(true);
+            }
+        });
+
+        return getWinning(correctNumber.get(), bonus.get());
+    }
+
+    private Optional<Winning> getWinning(int correctNumber, boolean bonus) {
+        switch (correctNumber) {
+            case 3:
+                return Optional.of(Winning.THREE);
+            case 4:
+                return Optional.of(Winning.FOUR);
+            case 5:
+                if (bonus) {
+                    return Optional.of(Winning.FIVE_BONUS);
+                }
+                return Optional.of(Winning.FIVE);
+            case 6:
+                return Optional.of(Winning.SIX);
+            default:
+                return Optional.empty();
+        }
     }
 
     public static WinningNumber of(String userInputNumber, String userInputBonusNumber) {
