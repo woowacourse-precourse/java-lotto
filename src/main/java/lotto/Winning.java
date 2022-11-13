@@ -10,6 +10,8 @@ public class Winning {
 
     private List<Integer> winnings;
 
+    private Integer bonus;
+
     public void setWinnings(String input) {
         List<Integer> check = new ArrayList<>();
         String[] str = input.split(",");
@@ -48,4 +50,35 @@ public class Winning {
         return winnings;
     }
 
+    public void setBonus(String s){
+        Integer check = checkBonusNum(s);
+        try {
+            if(checkBonusRange(check)){
+                bonus = check;
+            }
+        }catch (IllegalArgumentException e){
+            ERRORUI.getErrorRange();
+        }
+    }
+
+    private Integer checkBonusNum(String s){
+        Integer bonus = null;
+        try {
+            bonus = Integer.parseInt(s);
+        }catch (IllegalArgumentException e){
+            ERRORUI.getErrorInputNum();
+        }
+        return bonus;
+    }
+
+    private boolean checkBonusRange(Integer bonus){
+        if(bonus <1 || bonus >45){
+            throw new IllegalArgumentException();
+        }
+        return true;
+    }
+
+    public Integer getBonus(){
+        return bonus;
+    }
 }

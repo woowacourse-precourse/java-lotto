@@ -21,4 +21,13 @@ public class WinningTest {
         winning.setWinnings(str);
         assertThat(winning.getWinnings()).isEqualTo(num);
     }
+
+    @DisplayName("당첨 보너스 값이 잘 들어가는지 체크")
+    @Test
+    void getWinningBonusTest() {
+        String str = "6";
+        Winning winning = new Winning();
+        winning.setBonus(str);
+        assertThat(winning.getBonus()).isEqualTo(6);
+    }
 }
