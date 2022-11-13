@@ -2,6 +2,7 @@ package lotto.domain;
 
 public class Money {
 	private int value;
+	private int tickets;
 
     public Money(final Money money) {
         this(money.value);
@@ -11,6 +12,7 @@ public class Money {
         this.value = value;
         validateOverThousand(this.value);
         validateDivideThousand(this.value);
+        this.tickets = value/1000;
     }
 
     private void validateOverThousand(final int value) {
@@ -22,5 +24,8 @@ public class Money {
     	if (value % 1000 != 0) {
     		throw new IllegalArgumentException("[ERROR] 돈 입력은 1000원으로 나누어 떨어져야합니다.");
     	}
+    }
+    public int getTickets() {
+    	return tickets;
     }
 }
