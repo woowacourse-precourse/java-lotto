@@ -20,18 +20,22 @@ public class Result {
     }
 
     private void put(Rank rank) {
-        result.merge(rank, 1, (v1, v2) -> v1 + v2);
+        result.merge(rank, 1, Integer::sum);
+    }
+
+    public Map<Rank,Integer> get(){
+        return result;
     }
 
     public int getRankCount(Rank rank) {
         return result.getOrDefault(rank, 0);
     }
 
-    public long getPrize(){
-        long prize = 0;
-        for(Rank rank : result.keySet()){
-            prize += rank.getPrize() * result.get(rank);
+    public long getPrize() {
+        long sum = 0;
+        for (Rank rank : result.keySet()) {
+            sum += (long) rank.getPrize().get() * result.get(rank);
         }
-        return prize;
+        return sum;
     }
 }
