@@ -6,6 +6,7 @@ import lotto.io.MessagePrinter;
 import java.util.List;
 
 public class LottoGameSimulator {
+    private LottoGameResult lottoGameResult;
     private List<Lotto> purchasedLottos;
     private WinningNumbers winningNumbers;
     private BonusNumber bonusNumber;
@@ -51,6 +52,7 @@ public class LottoGameSimulator {
     }
 
     public void printResult() {
-
+        lottoGameResult = LottoGameResultGenerator.generateLottoGameResult(purchasedLottos,
+                winningNumbers, bonusNumber);
     }
 }
