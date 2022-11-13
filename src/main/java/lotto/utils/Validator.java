@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Validator {
-    public static final int WINNINGNUMS = 6
+    public static final int WINNINGNUMS = 6;
     public static void validateInteger(String input){
         if (! input.matches("[0-9]+")) {
             throw new IllegalArgumentException("숫자가 아닙니다.");
