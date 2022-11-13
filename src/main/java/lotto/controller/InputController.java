@@ -44,7 +44,7 @@ public class InputController {
 	}
 
 	public WinnerNumberDto getBonusNumber(WinnerNumberDto winnerNumberDto) {
-		String bonus = inputView.bonusNumber();
+		String bonus = inputView.printBonusNumber();
 		try {
 			winnerNumberDto.setBonusNumber(inputValidService.validateBonus(bonus));
 		} catch (IllegalArgumentException e) {
