@@ -32,7 +32,7 @@ public class Controller {
      */
     public void inputWinningNumber() {
         List<String> input = view.inputWinNumber();
-        this.exceptionController.validateWinNumber(input);
+        this.exceptionController.validateWinNumIsInt(input);
         this.model.setWinningLotto(input);
     }
 
