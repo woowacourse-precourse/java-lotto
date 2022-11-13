@@ -16,7 +16,7 @@
     - [x] 판매된 로또 티켓을 저장하는 `LotteryTicketRepository` 싱글톤으로 구현
     - [x] 로또 티켓 생성 기능
     - [x] User의 구매 금액 만큼 로또 사기
-- [ ] 구매 로또 출력 (`OutputView`)
+- [x] 구매 로또 출력 (`OutputView`)
 - [ ] `UserController` 의 로또 구매 부분 구현
 
 ## 로또 추첨
