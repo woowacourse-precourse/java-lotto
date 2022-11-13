@@ -31,6 +31,18 @@ public class LottoResult {
         return countOfWinning;
     }
 
+    public double getProfitRate(Map<Winning, Integer> resultMap, long payment) {
+        long sumProfit = 0;
+
+        for (Winning current : resultMap.keySet()) {
+            long winnings = current.getWinnings();
+            int count = resultMap.get(current);
+            sumProfit += winnings * count;
+        }
+
+        return (double) sumProfit / payment;
+    }
+
     private Optional<Winning> getWinning(WinningLotto target, Lotto lotto) {
         int sameCount = compareForSame(target, lotto);
         int bonusCount = compareForBonus(target, lotto);
