@@ -35,7 +35,6 @@ public class Lotto {
         validateWinningNumbers(winningNumbers);
 
         List<LottoNumber> numbers = Arrays.stream(winningNumbers.split(NUMBER_INPUT_SEPARATOR))
-                .map(Integer::parseInt)
                 .distinct()
                 .map(LottoNumberFactory::numberOf)
                 .collect(Collectors.toList());
