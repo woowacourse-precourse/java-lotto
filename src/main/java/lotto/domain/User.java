@@ -7,7 +7,7 @@ public class User {
     private int totalNumberOflotties;
     private int purchaseMoney;
     private int prizeMoney;
-    private ArrayList<Integer> winningNumbers;
+    private Lotto winningNumbers;
     private int bonusNumber;
     private ArrayList<Integer> numberOfWinningTypes;
 
@@ -54,11 +54,11 @@ public class User {
         this.prizeMoney = prizeMoney;
     }
 
-    public ArrayList<Integer> getWinningNumbers() {
+    public Lotto getWinningNumbers() {
         return winningNumbers;
     }
 
-    public void setWinningNumbers(ArrayList<Integer> winningNumbers) {
+    public void setWinningNumbers(Lotto winningNumbers) {
         this.winningNumbers = winningNumbers;
     }
 
