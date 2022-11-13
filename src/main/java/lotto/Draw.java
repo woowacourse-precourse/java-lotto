@@ -32,6 +32,25 @@ public class Draw {
         }
     }
 
+    public void startForTest(String payAmountForTest) {
+        System.out.println("구입금액을 입력해 주세요.");
+        int payAmount = 0;
+        try {
+            payAmount = Integer.parseInt(payAmountForTest);
+            if(payAmount % 1_000 != 0) {
+                System.out.println("[ERROR] 구입 금액은 1,000원 단위로 입력해야 합니다.");
+                throw new IllegalArgumentException();
+            }
+            publish(payAmount / 1_000);
+            Lotto lotto = new Lotto(pickWinnerNumbers());
+            lotto.getResult(payAmount, pickBonusNumber(), publishedLottos);
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 구입 금액은 1,000원 단위의 숫자로 이뤄져야 합니다.");
+            throw new IllegalArgumentException();
+
+        }
+    }
+
     private void publish(int amount) {
         System.out.println("\n" + amount + "개를 구매했습니다.");
         for(int i=0; i<amount; i++) {
@@ -62,6 +81,23 @@ public class Draw {
             }
         } catch (NumberFormatException e) {
             System.out.println("[ERROR] 로또 번호는 숫자로 이뤄져야 합니다.");
+            throw new IllegalArgumentException();
+        }
+        return bonus;
+    }
+
+    public Integer pickBonusNumberForTest(String bonusForTest) {
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        int bonus = 0;
+        try {
+            bonus = Integer.parseInt(bonusForTest);
+            if(bonus < 1 || bonus > 45) {
+                System.out.println("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+                throw new IllegalArgumentException();
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 로또 번호는 숫자로 이뤄져야 합니다.");
+            throw new IllegalArgumentException();
         }
         return bonus;
     }
