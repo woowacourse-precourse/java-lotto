@@ -45,7 +45,7 @@ public class InputController {
             try {
                 InputView.pushBonusNumber();
                 String number = Console.readLine();
-
+                int bonusNumber = Validator.validateBonusNumber(number);
             } catch (IllegalArgumentException e) {
                 System.out.println();
             }
