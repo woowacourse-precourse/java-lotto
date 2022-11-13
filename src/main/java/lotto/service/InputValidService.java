@@ -9,9 +9,9 @@ import lotto.util.ErrorConst;
 public class InputValidService {
 
 	public Integer validateBonus(String bonus) {
-		checkAnswer(bonus);
+		checkIsNumber(bonus);
 		Integer bonusNumber = Integer.valueOf(bonus);
-		validBonusRange(bonusNumber);
+		validNumberRange(bonusNumber);
 		return bonusNumber;
 	}
 
@@ -23,19 +23,19 @@ public class InputValidService {
 	}
 
 	public Integer validateUserMoney(String userMoney) {
-		checkAnswer(userMoney);
+		checkIsNumber(userMoney);
 		Integer userMoneyNumber = Integer.valueOf(userMoney);
 		validNumberDividedByThousand(userMoneyNumber);
 		return userMoneyNumber;
 	}
 
-	private void validBonusRange(Integer bonusNumber) {
+	private void validNumberRange(Integer bonusNumber) {
 		if (1 > bonusNumber || 45 < bonusNumber) {
 			throw new IllegalArgumentException(ErrorConst.OUT_OF_BONUS_RANGE_ERROR);
 		}
 	}
 
-	private void checkAnswer(String inputNumber) {
+	private void checkIsNumber(String inputNumber) {
 		List<Integer> numbers = inputNumber.chars().mapToObj(i -> i - 48).collect(Collectors.toList());
 		int count = (int)numbers.stream().filter(i -> 0 > i || 9 < i).count();
 		if (count != 0) {
@@ -45,7 +45,9 @@ public class InputValidService {
 
 	private void validAnswers(String[] answers) {
 		for (String input : answers) {
-			checkAnswer(input);
+			checkIsNumber(input);
+			Integer bonusNumber = Integer.valueOf(input);
+			validNumberRange(bonusNumber);
 		}
 	}
 
