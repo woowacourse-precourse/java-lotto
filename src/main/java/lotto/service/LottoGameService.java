@@ -1,5 +1,6 @@
 package lotto.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 import lotto.Lotto;
@@ -42,5 +43,13 @@ public class LottoGameService {
                     ErrorMessage.LOTTO_NUMBER_NOT_NUMBER.getErrorMessage());
             }
         }
+    }
+
+    public List<Lotto> saveLottoTickets(final int lottoTicketCount) {
+        List<Lotto> lottoTickets = new ArrayList<>();
+        for (int i = 0; i < lottoTicketCount; i++) {
+            lottoTickets.add(Lotto.issueLottoTicket());
+        }
+        return lottoTickets;
     }
 }

@@ -24,10 +24,17 @@ public class LottoGame {
         lottoTicketCount = lottoGameController.buyLottoTickets(userInput);
 
         System.out.println(lottoTicketCount + GameMessage.NUMBER_OF_PURCHASES.getMessage());
-        lottoGameController.printLottoTickets(lottoTicketCount);
+        userLottoTickets = lottoGameController.saveLottoTickets(lottoTicketCount);
+        printLottoTickets();
 
         System.out.println(GameMessage.WINNING_NUMBER.getMessage());
         userInput = Console.readLine();
         winningNumbers = lottoGameController.pickWinningNumbers(userInput);
+    }
+
+    private void printLottoTickets() {
+        for (Lotto lotto : userLottoTickets) {
+            System.out.println(lotto.getNumbers());
+        }
     }
 }

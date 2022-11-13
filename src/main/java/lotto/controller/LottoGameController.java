@@ -16,11 +16,8 @@ public class LottoGameController {
         return lottoGameService.buyLottoTickets(purchaseAmount);
     }
 
-    public void printLottoTickets(final int lottoTicketCount) {
-        for (int i = 0; i < lottoTicketCount; i++) {
-            Lotto lotto = Lotto.issueLottoTicket();
-            System.out.println(lotto.getNumbers());
-        }
+    public List<Lotto> saveLottoTickets(final int lottoTicketCount) {
+        return lottoGameService.saveLottoTickets(lottoTicketCount);
     }
 
     public Lotto pickWinningNumbers(final String winningNumbers) {
