@@ -21,14 +21,14 @@ public class OutputView {
     }
 
     public void printLottos(List<Lotto> lottos) {
-        System.out.println();
         for (Lotto lotto : lottos) {
             System.out.println(lotto);
         }
     }
 
-    public void printOutputNumberOfPurchaseLotto() {
-        print(OutputConstants.OUTPUT_NUMBER_OF_PURCHASE_LOTTO);
+    public void printOutputNumberOfPurchaseLotto(int numberOfLotto) {
+        String output = String.format(OutputConstants.OUTPUT_NUMBER_OF_PURCHASE_LOTTO, numberOfLotto);
+        print(output);
     }
 
     public void printInputWinningNumbersSentence() {
@@ -50,5 +50,9 @@ public class OutputView {
     public void printOutputEarningRate(double earningRate) {
         String earning = String.format(OutputConstants.OUTPUT_EARNING_RATE, earningRate);
         print(earning);
+    }
+
+    public void printNewLine() {
+        print("");
     }
 }
