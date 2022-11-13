@@ -1,11 +1,9 @@
 package lotto;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -37,6 +35,19 @@ class LottoTest {
         assertThat(lotto.validatePayment(validPayment)).isEqualTo(true);
         assertThat(lotto.validatePayment(inValidPayment)).isInstanceOf(IllegalArgumentException.class);
 
+    }
+
+    @DisplayName("두 개의 숫자가 일치하는지 여부를 리턴한다.")
+    @Test
+    void checkNumbersMatch() {
+        int target = 1;
+        int matchCase = 1;
+        int notMatchCase = 2;
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+
+        assertThat(lotto.checkNumberMatch(target, matchCase)).isEqualTo(1);
+        assertThat(lotto.checkNumberMatch(target, notMatchCase)).isEqualTo(0);
     }
 
     @DisplayName("각 로또의 점수를 계산한 뒤 매칭된 숫자와 보너스 일치 여부를 배열에 담아 리턴한다.")
