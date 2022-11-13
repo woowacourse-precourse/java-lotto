@@ -1,6 +1,6 @@
 package lotto;
 
-import lotto.domain.LottoGameMachine;
+import lotto.domain.menu.LottoGameMachine;
 import lotto.domain.RandomLottoGenerator;
 import lotto.input.LottoTickets;
 import lotto.input.WinningNumber;
