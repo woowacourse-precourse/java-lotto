@@ -28,7 +28,7 @@ public class LottoHandler {
         Map<LottoGrade, Integer> resultOfLotto = getResultOfLotto(bonusNumber, winningNumbers, lotteries);
         Long rateOfReturn = getRateOfReturn(resultOfLotto, purchaseAmount);
 
-        // TODO : View에 대한 로직 추가
+        // TODO : OutputView에 대한 로직 추가
     }
 
     private static Long getRateOfReturn(Map<LottoGrade, Integer> resultOfLotto, Integer purchaseAmount) {
