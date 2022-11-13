@@ -14,15 +14,6 @@ public class Validation {
         }
     }
 
-    public void validatePrice(String input) {
-        validateNumber(input);
-
-        int price = Integer.parseInt(input);
-        if (price % 1000 != 0) {
-            throw new IllegalArgumentException(Errors.NOT_DIVIDE_BY_1000.toString());
-        }
-    }
-
     public void validateNumberRange(int number) {
         if (number < 1 || number > 45) {
             throw new IllegalArgumentException(Errors.OUT_OF_RANGE.toString());

@@ -22,8 +22,9 @@ public class Application {
     public static void main(String[] args) {
 
         try {
-            String price = io.getPrice();
-            int amount = getPurchasePrice(price);
+            String priceInput = io.getPrice();
+            Price price = new Price(priceInput);
+            int amount = price.amount;
 
             List<Lotto> lottos = getRandomLottos(amount);
             io.printLottos(amount, lottos);
@@ -42,11 +43,6 @@ public class Application {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    private static int getPurchasePrice(String input) {
-        validation.validatePrice(input);
-        return Integer.parseInt(input) / 1000;
     }
 
     private static List<Lotto> getRandomLottos(int amount) {
