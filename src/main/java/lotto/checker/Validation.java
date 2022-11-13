@@ -15,12 +15,12 @@ public class Validation {
 	private static final int MIN_NUMBER = 1;
 	private static final int ZERO = 0;
 
-	public static void validatePriceException(String userInput) {
-		validateNumberOnlyException(Arrays.asList(userInput));
-		validatePriceRangeException(userInput);
+	public static void validatePrice(String userInput) {
+		validateNumberOnly(Arrays.asList(userInput));
+		validatePriceRange(userInput);
 	}
 
-	private static void validatePriceRangeException(String userInput) {
+	private static void validatePriceRange(String userInput) {
 
 		if (isMaxPriceException(userInput)) {
 			throw Exception.MAX_PRICE_EXCEPTION.getException();
@@ -48,27 +48,27 @@ public class Validation {
 		return Integer.parseInt(userInput) > MAX_PRICE;
 	}
 
-	public static void validateWinningNumberInput(List<String> winningNumber) {
-		validateNumberOnlyException(winningNumber);
-		validateLengthException(winningNumber, MAX_WINNING_NUMBER_LENGTH);
-		validateSameNumberException(winningNumber);
-		validateNumberRangeException(winningNumber);
+	public static void validateWinningNumber(List<String> winningNumber) {
+		validateNumberOnly(winningNumber);
+		validateLength(winningNumber, MAX_WINNING_NUMBER_LENGTH);
+		validateSameNumber(winningNumber);
+		validateNumberRange(winningNumber);
 	}
 
-	public static void validateBonusNumberInput(List<String> bonusNumber) {
-		validateNumberOnlyException(bonusNumber);
-		validateLengthException(bonusNumber, MAX_BONUS_NUMBER_LENGTH);
-		validateSameNumberInWinningNumberException(WinningLotto.getWinningNumber(),bonusNumber);
-		validateNumberRangeException(bonusNumber);
+	public static void validateBonusNumber(List<String> bonusNumber) {
+		validateNumberOnly(bonusNumber);
+		validateLength(bonusNumber, MAX_BONUS_NUMBER_LENGTH);
+		validateSameNumberInWinningNumber(WinningLotto.getWinningNumber(),bonusNumber);
+		validateNumberRange(bonusNumber);
 	}
 
-	public static void validateSameNumberInWinningNumberException(List<String> winningNumbers,List<String> bonusNumber) {
+	public static void validateSameNumberInWinningNumber(List<String> winningNumbers,List<String> bonusNumber) {
 		if (winningNumbers.contains(bonusNumber.get(0))) {
 			throw Exception.SAME_NUMBER_EXCEPTION.getException();
 		}
 	}
 
-	public static void validateNumberRangeException(List<String> numbers) {
+	public static void validateNumberRange(List<String> numbers) {
 		for (String number : numbers) {
 			if (isMaxNumberException(number) || isMinNumberException(number)) {
 				throw Exception.NUMBER_RANGE_EXCEPTION.getException();
@@ -92,7 +92,7 @@ public class Validation {
 		return isSameNumberExist;
 	}
 
-	public static void validateSameNumberException(List<String> winningNumber) {
+	public static void validateSameNumber(List<String> winningNumber) {
 
 		if (isSameNumber(winningNumber)) {
 			throw Exception.SAME_NUMBER_EXCEPTION.getException();
@@ -100,13 +100,13 @@ public class Validation {
 
 	}
 
-	public static void validateLengthException(List<String> numbers, int maxLength) {
+	public static void validateLength(List<String> numbers, int maxLength) {
 		if (numbers.size() > maxLength) {
 			throw Exception.LENGTH_EXCEPTION.getException();
 		}
 	}
 
-	public static void validateNumberOnlyException(List<String> numbers) {
+	public static void validateNumberOnly(List<String> numbers) {
 		try {
 			for (String number : numbers) {
 				Integer.parseInt(number);

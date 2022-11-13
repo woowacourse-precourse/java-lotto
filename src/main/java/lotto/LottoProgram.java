@@ -70,7 +70,7 @@ public class LottoProgram {
 		String userInput = Input.userInput();
 
 		WinningLotto.createBonusNumber(userInput);
-		Validation.validateBonusNumberInput(WinningLotto.getBonusNumber());
+		Validation.validateBonusNumber(WinningLotto.getBonusNumber());
 	}
 
 	private static void selectWinningNumbers() {
@@ -78,13 +78,13 @@ public class LottoProgram {
 		String userInput = Input.userInput();
 
 		WinningLotto.createWinningNumber(userInput);
-		Validation.validateWinningNumberInput(WinningLotto.getWinningNumber());
+		Validation.validateWinningNumber(WinningLotto.getWinningNumber());
 	}
 
 	private void payForLotto() {
 		View.showPurchaseInputGuideMessage();
 		String userInput = Input.userInput();
-		Validation.validatePriceException(userInput);
+		Validation.validatePrice(userInput);
 
 		lottoCount = Integer.parseInt(userInput) / PRICE_UNIT;
 	}
