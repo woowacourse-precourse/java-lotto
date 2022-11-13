@@ -7,6 +7,7 @@ import java.util.List;
 import lotto.Buyer;
 import lotto.Lotto;
 import lotto.Winning;
+import lotto.system.SystemMessage;
 import lotto.system.SystemValue;
 
 public class LottoService {
@@ -18,14 +19,14 @@ public class LottoService {
         for (int i = 0; i < lottoQuantity; i++) {
             purchaseLottos.add(Issuance());
         }
-
+        System.out.println();
         return new Buyer(purchaseLottos);
     }
 
     private int calculationForLotto(int money) {
         validateForMoney(money);
         int lottoQuantity = (money / SystemValue.LOTTO_PRICE);
-        System.out.println(lottoQuantity + "개를 구매했습니다.");
+        SystemMessage.purchaseQuantity(lottoQuantity);
         return lottoQuantity;
     }
 
@@ -58,4 +59,5 @@ public class LottoService {
 
         return winningNumbers;
     }
+
 }
