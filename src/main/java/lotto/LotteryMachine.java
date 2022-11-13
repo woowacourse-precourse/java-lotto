@@ -18,11 +18,13 @@ public class LotteryMachine {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
 
-    public void makeWinningLottoNum() {
-        System.out.println();
+    public String[] inputWiningLottoNum() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String inputWinningNum = Console.readLine();
-        String[] spiltWinningNum = inputWinningNum.split(",");
+        return inputWinningNum.split(",");
+    }
+
+    public void makeWinningLottoNum(String[] spiltWinningNum) {
         List<Integer> winningNum = new ArrayList<>();
 
         for (String num : spiltWinningNum) {
