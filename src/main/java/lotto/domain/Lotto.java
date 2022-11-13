@@ -40,4 +40,8 @@ public class Lotto {
             throw new IllegalArgumentException(LOTTO_NUMBERS_OUT_OF_RANGE);
         }
     }
+
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
 }
