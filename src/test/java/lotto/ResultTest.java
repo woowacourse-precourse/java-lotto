@@ -129,6 +129,29 @@ public class ResultTest {
 
         // then
         assertThat(result.getWinBoard().get(6f)).isEqualTo(2);
-        assertThat(result.getReward(6)).isEqualTo(4_000_000_000);
+        assertThat(result.getReward(6f)).isEqualTo(4_000_000_000L);
+    }
+
+    @DisplayName("총 당첨금 반환")
+    @Test
+    void allPrize() {
+        // given
+        Result result = new Result();
+        Lotto firstLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto secondLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto thirdLotto = new Lotto(List.of(1, 2, 3, 4, 7, 8));
+        Customer customer = new Customer();
+
+        // when
+        customer.inputWinningNumber("1,2,3,4,5,6");
+        customer.inputBonusNumber("10");
+        result.compare(customer, firstLotto);
+        result.compare(customer, secondLotto);
+        result.compare(customer, thirdLotto);
+
+        // then
+        assertThat(result.getWinBoard().get(6f)).isEqualTo(2);
+        assertThat(result.getWinBoard().get(4f)).isEqualTo(1);
+        assertThat(result.getTotalReward()).isEqualTo(4_000_050_000L);
     }
 }
