@@ -6,11 +6,22 @@ import java.util.Arrays;
 import java.util.List;
 
 public class DrawingMachine {
-    public final List<Integer> winningNumber;
-    public final Integer bonusNumber;
+    private List<Integer> winningNumber;
+    private Integer bonusNumber;
 
-    DrawingMachine() {
+    public void setWinningNumber() {
         winningNumber = InputView.getWinningNumber();
+    }
+
+    public void setBonusNumber() {
         bonusNumber = InputView.getBonusNumber();
+    }
+
+    public List<Integer> getWinningNumber() {
+        return winningNumber;
+    }
+
+    public Integer getBonusNumber() {
+        return bonusNumber;
     }
 }
