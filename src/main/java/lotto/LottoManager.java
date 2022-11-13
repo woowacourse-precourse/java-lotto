@@ -1,10 +1,17 @@
 package lotto;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import camp.nextstep.edu.missionutils.Randoms;
 
 // 로또 발행 및 통계 담당
 public class LottoManager {
+
+    public static final int LOTTO_LENGTH = 6;
+    public static final int MIN_NUMBER = 1;
+    public static final int MAX_NUMBER = 45;
 
     /**
      * 로또 발행
@@ -13,8 +20,14 @@ public class LottoManager {
      * @return 발행된 로또 List
      */
     public static List<List<Integer>> generateLotto(int numberOfLotto) {
-        List<List<Integer>> lotto = new ArrayList<>();
-        return lotto;
+        List<List<Integer>> lottos = new ArrayList<>();
+        List<Integer> lotto;
+        for (int i = 0; i < numberOfLotto; i++) {
+            lotto = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_LENGTH);
+            Collections.sort(lotto);
+            lottos.add(lotto);
+        }
+        return lottos;
     }
 
     /**
