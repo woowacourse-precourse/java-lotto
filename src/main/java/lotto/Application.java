@@ -21,13 +21,16 @@ public class Application {
             }
 
             Arrays.sort(lottoArray[i]);
-
-            System.out.print("[");
-            for(int j = 0; j < lottoArray[i].length - 1; j++){
-                System.out.print(lottoArray[i][j] + ", ");
-            }
-            System.out.println(lottoArray[i][5] + "]");
+            lottoNumberPrinter(lottoArray[i]);
         }
+    }
+
+    public static void lottoNumberPrinter(int[] lottoArray){
+        System.out.print("[");
+        for(int j = 0; j < lottoArray.length - 1; j++){
+            System.out.print(lottoArray[j] + ", ");
+        }
+        System.out.println(lottoArray[5] + "]");
     }
 
     public static void numberCompare(int lottoCount, int[][] lottoArray, int[] userInputLottoNumber, int userInputBonusNumber, int purchasedValue){
