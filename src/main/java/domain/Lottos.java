@@ -6,24 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lottos {
-    private List<List<Integer>> lottos;
+    private final List<List<Integer>> lottos;
 
-    private NumberGenerator numberGenerator;
-
-    private int numberOfLotto;
+    private final int numberOfLotto;
 
     public Lottos(int number) {
-        lottos = new ArrayList<>();
-        numberGenerator = new NumberGenerator();
         numberOfLotto = number;
+        lottos = new ArrayList<>();
+        generateLottos();
     }
 
     public List<List<Integer>> getLottos() {
         return this.lottos;
-    }
-
-    public NumberGenerator getNumberGenerator() {
-        return this.numberGenerator;
     }
 
     public int getNumberOfLotto() {

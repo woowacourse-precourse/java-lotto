@@ -8,16 +8,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class NumberGenerator {
-    private Lotto lotto;
-    private List<Integer> lottoValue;
+    private final Lotto lotto;
 
     public NumberGenerator() {
-        lottoValue = generateLotto();
-        lotto = new Lotto(lottoValue);
-    }
-
-    public List<Integer> getLottoValue() {
-        return this.lottoValue;
+        lotto = new Lotto(generateLotto());
     }
 
     public Lotto getLotto() {
@@ -25,9 +19,9 @@ public class NumberGenerator {
     }
 
     public List<Integer> generateLotto() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        Collections.sort(numbers);
-        return numbers;
+        List<Integer> generateLotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        Collections.sort(generateLotto);
+        return generateLotto;
     }
 
 }

@@ -6,9 +6,19 @@ import java.util.HashSet;
 public class Valid {
     private static final int unitPrice = 1000;
 
-    public static boolean isNotMultiple(int price) {
+    public static boolean isNotNumber(String price) {
+        boolean isNotNumber = false;
+        price = price.replaceAll("[0-9]", "");
+        if (price.length() != 0) {
+            isNotNumber = true;
+        }
+        return isNotNumber;
+    }
+
+    public static boolean isEnterValid(String price) {
         boolean isNotMultiple = false;
-        if(price % unitPrice != 0) {
+        int priceNum = Integer.parseInt(price);
+        if(priceNum % unitPrice != 0) {
             isNotMultiple = true;
         }
         return isNotMultiple;
@@ -62,7 +72,7 @@ public class Valid {
     public static boolean isRepeatWithAnswer(String bonus, String[] answer) {
         boolean isRepeat = false;
         for (int i = 0; i < answer.length; i++) {
-            if (bonus == answer[i]) {
+            if (bonus.equals(answer[i])) {
                 isRepeat = true;
             }
         }

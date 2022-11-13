@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -7,10 +8,8 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validateLength(numbers);
-        validateRepeat(numbers);
-        validateOver(numbers);
-        this.numbers = numbers;
+        checkValidateLotto(numbers);
+        this.numbers = new ArrayList<>(numbers);
     }
 
     public List<Integer> getNumbers() {
@@ -37,5 +36,11 @@ public class Lotto {
                 throw new IllegalArgumentException("[ERROR] 로또 숫자는 1부터 46까지의 수 중 하나입니다");
             }
         }
+    }
+
+    private void checkValidateLotto(List<Integer> numbers) {
+        validateLength(numbers);
+        validateRepeat(numbers);
+        validateOver(numbers);
     }
 }
