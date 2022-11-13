@@ -1,7 +1,9 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -30,6 +32,15 @@ public class User {
         return num;
     }
 
-
+    public List<Integer> lotto() {
+        List<Integer> lotto = new ArrayList<>();
+        while (lotto.size() < 6) {
+            int randomNumber = Randoms.pickNumberInRange(1, 45);
+            if (!lotto.contains(randomNumber)) {
+                lotto.add(randomNumber);
+            }
+        }
+        return lotto;
+    }
 
 }
