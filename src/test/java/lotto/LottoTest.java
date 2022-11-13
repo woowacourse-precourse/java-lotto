@@ -24,10 +24,24 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
     // 아래에 추가 테스트 작성 가능
-
     @DisplayName("toString 호출시 로또 형식에 맞게 문자열이 반환됨")
     @Test
     void printLotto() {
         assertThat(new Lotto(List.of(1, 2, 3, 4, 5, 6)).toString()).isEqualTo("[1, 2, 3, 4, 5, 6]");
+    }
+
+    @DisplayName("당첨 번호와 로또 번호를 비교해 등수를 반환함")
+    @Test
+    void compareLottoWithWinnumber() {
+        //given
+        List<Integer> winNumber = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+
+        //when
+        int prize = lotto.compareWithAnswer(winNumber,bonusNumber);
+
+        //then
+        assertThat(prize).isEqualTo(2);
     }
 }
