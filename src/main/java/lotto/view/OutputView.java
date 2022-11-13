@@ -60,4 +60,9 @@ public class OutputView {
         System.out.printf(FIRST_PLACE.toString(), FIRST_PRIZE, firstPlaceCount);
         System.out.println();
     }
+
+    public static void printProfitRate(float profitRate) {
+        System.out.printf(PROFIT_RATE.toString(), profitRate);
+        System.out.println();
+    }
 }
