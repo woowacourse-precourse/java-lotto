@@ -10,6 +10,7 @@ public class GameInput {
         String userInput = Console.readLine();
         //예외처리
         User.setUserInputMoney(userInput);
+        User.setLottoAmount();
     }
 
     public static void getUserNumberInput() {

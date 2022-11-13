@@ -1,37 +1,44 @@
 package lotto.mainframe;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class User {
 
-    private static String userInputMoney;
-    private static String userInputNumber;
-    private static String userInputBonusNumber;
+    private static int userInputMoney;
+    private static List<Integer> userInputNumber;
+    private static int userInputBonusNumber;
     private static int lottoAmount;
 
     public static void setUserInputMoney(String userInput) {
-        userInputMoney = userInput;
+        userInputMoney = Integer.parseInt(userInput);
     }
 
     public static void setUserInputNumber(String userInput) {
-        userInputNumber = userInput;
+        List<String> list = Arrays.asList(userInput.split(","));
+        userInputNumber = list.stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
     }
 
     public static void setUserInputBonusNumber(String userInput) {
-        userInputBonusNumber = userInput;
+        userInputBonusNumber = Integer.parseInt(userInput);
     }
 
     public static void setLottoAmount() {
-        lottoAmount = Integer.parseInt(userInputMoney) / 1000;
+        lottoAmount = userInputMoney / 1000;
     }
 
-    public static String getUserInputMoney() {
+    public static int getUserInputMoney() {
         return userInputMoney;
     }
 
-    public static String getUserInputNumber() {
+    public static List<Integer> getUserInputNumber() {
         return userInputNumber;
     }
 
-    public static String getUserInputBonusNumber() {
+    public static int getUserInputBonusNumber() {
         return userInputBonusNumber;
     }
 
