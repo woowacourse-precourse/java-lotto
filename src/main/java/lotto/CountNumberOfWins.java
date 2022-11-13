@@ -62,4 +62,24 @@ public class CountNumberOfWins {
                     , countMatchNumber.setBonusNumberMatchCount(lottoNumbers, bonusNumber)).getRanking());
         }
     }
+
+    public int getFirstPlace() {
+        return firstPlace;
+    }
+
+    public int getSecondPlace() {
+        return secondPlace;
+    }
+
+    public int getThirdPlace() {
+        return thirdPlace;
+    }
+
+    public int getFourthPlace() {
+        return fourthPlace;
+    }
+
+    public int getFifthPlace() {
+        return fifthPlace;
+    }
 }
