@@ -13,10 +13,10 @@ public class GradeTest {
     @Test
     void countCorrectNumbers() {
         // given
-        Grade grade = new Grade();
+        Grade grade = new Grade(List.of(1, 2, 3, 10, 22, 12));
 
         // when
-        int count = grade.countCorrectNumbers(List.of(1, 2, 3, 10, 22, 12), List.of(1, 2, 3, 4, 5, 6));
+        int count = grade.countCorrectNumbers(List.of(1, 2, 3, 4, 5, 6));
 
         // then
         assertThat(count).isEqualTo(3);
@@ -26,7 +26,7 @@ public class GradeTest {
     @Test
     void checkLottoNumbersContainBonusNumber() {
         // given
-        Grade grade = new Grade();
+        Grade grade = new Grade(List.of(1, 2, 3, 4, 5, 6));
 
         // when
         String result = grade.checkLottoNumbersContainBonusNumber(List.of(1, 2, 3, 10, 22, 12), 3);
@@ -39,7 +39,7 @@ public class GradeTest {
     @Test
     void checkLottoGrade() {
         // given
-        Grade grade = new Grade();
+        Grade grade = new Grade(List.of(1, 2, 3, 4, 5, 6));
 
         // when
         String result = grade.checkLottoGrade(6);
@@ -52,10 +52,10 @@ public class GradeTest {
     @Test
     void returnLottoGrade() {
         // given
-        Grade grade = new Grade();
+        Grade grade = new Grade(List.of(1, 2, 3, 4, 5, 6));
 
         // when
-        String result = grade.returnLottoGrade(List.of(1, 2, 3, 4, 5, 6), List.of(1, 2, 3, 4, 5, 7), 7);
+        String result = grade.returnLottoGrade(List.of(1, 2, 3, 4, 5, 7), 7);
 
         // then
         assertThat(result).isEqualTo("SECOND");

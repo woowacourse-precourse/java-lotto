@@ -4,8 +4,14 @@ import java.util.List;
 
 public class Grade {
 
-    public String returnLottoGrade(List<Integer> winningNumbers, List<Integer> lottoNumbers, int bonusNumber) {
-        int correctNumbers = countCorrectNumbers(winningNumbers, lottoNumbers);
+    List<Integer> winningNumbers;
+
+    public Grade(List<Integer> winningNumbers) {
+        this.winningNumbers = winningNumbers;
+    }
+
+    public String returnLottoGrade(List<Integer> lottoNumbers, int bonusNumber) {
+        int correctNumbers = countCorrectNumbers(lottoNumbers);
         if (correctNumbers == 5) {
             return checkLottoNumbersContainBonusNumber(lottoNumbers, bonusNumber);
         }
@@ -32,7 +38,7 @@ public class Grade {
         return "THIRD";
     }
 
-    public int countCorrectNumbers(List<Integer> winningNumbers, List<Integer> lottoNumbers) {
+    public int countCorrectNumbers(List<Integer> lottoNumbers) {
         int correctNumbers = 0;
         for (int lottoNumber : lottoNumbers) {
             if (winningNumbers.contains(lottoNumber)) {
