@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.exception.NumberException;
 import lotto.mainframe.User;
 
 public class GameInput {
@@ -8,7 +9,7 @@ public class GameInput {
     public static void getUserMoneyInput() {
         GameOutput.printMoneyInput();
         String userInput = Console.readLine();
-        //예외처리
+        NumberException.checkUserInputMoney(userInput);
         User.setUserInputMoney(userInput);
         User.setLottoAmount();
     }
@@ -16,14 +17,13 @@ public class GameInput {
     public static void getUserNumberInput() {
         GameOutput.printNumberInput();
         String userInput = Console.readLine();
-        //예외처리
+        NumberException.checkUserInputNumber(userInput);
         User.setUserInputNumber(userInput);
     }
 
     public static void getUserBonusNumberInput() {
         GameOutput.printBonusNumberInput();
         String userInput = Console.readLine();
-        //예외처리
         User.setUserInputBonusNumber(userInput);
     }
 }
