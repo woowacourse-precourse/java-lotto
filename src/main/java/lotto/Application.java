@@ -2,18 +2,21 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     private int moneyToBuy;
-    private List<Lotto> purchasedLottoTickets;
+    private final List<Lotto> purchasedLottoTickets = new ArrayList<>();
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Application newRound = new Application();
         newRound.askForMoney();
         newRound.buyLotto();
+        newRound.printLottoList();
     }
 
     public void askForMoney() {
@@ -41,7 +44,23 @@ public class Application {
             this.purchasedLottoTickets.add(createLotto());
         }
     }
-    private Lotto createLotto(){
+
+    private Lotto createLotto() {
         return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+    }
+
+    public void printLottoList() {
+        printNumberOfLotto();
+        for (Lotto ticket : purchasedLottoTickets) {
+            printLottoNumbers(ticket);
+        }
+    }
+
+    private void printNumberOfLotto() {
+        System.out.println(this.purchasedLottoTickets.size() + "개를 구매했습니다.");
+    }
+
+    private void printLottoNumbers(Lotto ticket) {
+            System.out.println(ticket.getLottoNumbers());
     }
 }
