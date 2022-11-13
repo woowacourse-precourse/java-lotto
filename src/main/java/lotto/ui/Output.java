@@ -1,19 +1,21 @@
 package lotto.ui;
 
+import lotto.domain.Lotto;
+
 import java.util.List;
 
 public class Output {
     // 구입 금액
-    public void moneyMsg(){
+    public void moneyInform(){
         System.out.println(Phrases.MONEY);
     }
     // 구입 수량
-    public void amountMsg(String amount){
+    public void amount(String amount){
         System.out.println(amount + Phrases.BUY_AMOUNT);
     }
 
-    public void lottoHistory(List<List<Integer>> history){
-        for(List<Integer>numbers : history){
+    public void lottoHistory(List<Lotto> history){
+        for(Lotto numbers : history){
             System.out.println(numbers);
         }
     }
