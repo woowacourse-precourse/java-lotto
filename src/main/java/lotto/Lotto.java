@@ -22,4 +22,12 @@ public class Lotto {
 
         numbers.stream().forEach(s -> LottoValidator.checkRange(s));
     }
+
+    public int size() {
+        return numbers.size();
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
