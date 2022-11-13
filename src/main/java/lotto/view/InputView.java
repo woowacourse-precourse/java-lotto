@@ -10,12 +10,12 @@ public class InputView {
         System.out.println("구입금액을 입력해 주세요.");
         int money = convertInteger(Console.readLine());
 
-        isValidate(money);
+        isValidationForMoney(money);
 
         return money;
     }
 
-    private void isValidate(int money) {
+    private void isValidationForMoney(int money) {
         if (isLessThan1000(money)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
         }
