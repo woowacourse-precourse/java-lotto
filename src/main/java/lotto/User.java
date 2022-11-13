@@ -41,6 +41,9 @@ public class User {
         Collections.sort(numbers);
         return numbers;
     }
-
-
+    public void printNumbersOfLottos(){
+        for (Lotto lotto: this.lottos) {
+            lotto.printNumbers();
+        }
+    }
 }
