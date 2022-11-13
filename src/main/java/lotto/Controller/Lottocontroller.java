@@ -15,6 +15,7 @@ public class Lottocontroller {
 
         Paper paper = convertMoney(money);
         Numbers numbers = new_numbers();
+        Lotto lotto = new_lotto(numbers);
     }
 
     private Money inputMoney(){
@@ -27,6 +28,10 @@ public class Lottocontroller {
 
     private Numbers new_numbers(){
         return new Numbers();
+    }
+
+    private Lotto new_lotto(Numbers numbers){
+        return new Lotto(numbers.Get_Numbers());
     }
     //method
 }
