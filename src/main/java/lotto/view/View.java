@@ -14,6 +14,18 @@ public class View {
     private static final String BONUS_NUMBER_INPUT_REQUEST = "보너스 번호를 입력해 주세요.";
     private static final String NUMBER_INPUT_FEEDBACK = "당첨 통계" + LINE_SEPARATOR + "---";
 
+    private static class ViewHolder {
+        private static final View INSTANCE = new View();
+    }
+
+    private View() {
+
+    }
+
+    public static View getInstance() {
+        return ViewHolder.INSTANCE;
+    }
+
     public void printStart() {
         System.out.println(GAME_START);
     }
