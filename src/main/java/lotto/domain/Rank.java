@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.Arrays;
 
@@ -11,9 +11,9 @@ public enum Rank {
     LOSE(0, 0); // 꽝
 
     private final int matchCount;
-    private final int winningMoney;
+    private final double winningMoney;
 
-    Rank(int matchCount, int winningMoney) {
+    Rank(int matchCount, double winningMoney) {
         this.matchCount = matchCount;
         this.winningMoney = winningMoney;
     }
@@ -22,7 +22,7 @@ public enum Rank {
         return matchCount;
     }
 
-    public int getWinningMoney() {
+    public double getWinningMoney() {
         return winningMoney;
     }
 
