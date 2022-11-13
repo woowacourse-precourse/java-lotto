@@ -1,6 +1,9 @@
 package lotto.view;
 
+import static lotto.model.Constant.NUMBER_RANGE_END;
+import static lotto.model.Constant.NUMBER_RANGE_START;
 import static lotto.model.InputErrorMessage.BONUS_NUMBER_IS_NOT_NUMBER;
+import static lotto.model.InputErrorMessage.BONUS_NUMBER_OUT_OF_RANGE;
 import static lotto.model.InputErrorMessage.INVALID_FORMAT_MONEY;
 import static lotto.model.InputErrorMessage.INVALID_LOTTO_NUMBERS;
 import static lotto.model.InputErrorMessage.MONEY_IS_NOT_DIVIDED;
@@ -33,6 +36,7 @@ public class LottoInputView {
         System.out.println(INPUT_BONUS_NUMBER);
         String bonusNumber = Console.readLine();
         validateBonusIsNumber(bonusNumber);
+        validateBonusNumberRange(bonusNumber);
         return bonusNumber;
     }
 
@@ -73,6 +77,13 @@ public class LottoInputView {
     public void validateBonusIsNumber(String uncheckedInput) {
         if(!isNumberString(uncheckedInput)) {
             throw new IllegalArgumentException(BONUS_NUMBER_IS_NOT_NUMBER.getErrorMessage());
+        }
+    }
+
+    public void validateBonusNumberRange(String uncheckedInput) {
+        int bonusNumber = Integer.parseInt(uncheckedInput);
+        if(bonusNumber < NUMBER_RANGE_START || bonusNumber > NUMBER_RANGE_END) {
+            throw new IllegalArgumentException(BONUS_NUMBER_OUT_OF_RANGE.getErrorMessage());
         }
     }
 }
