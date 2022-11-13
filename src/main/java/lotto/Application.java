@@ -35,7 +35,6 @@ public class Application { // 패키지 분리
             matchNumbers.matchCount(numbers1, numbers, validBonusNumber);
         }
 
-        Message.winningStatics();
         Message.matchMessage(matchNumbers.getMaps());
         Message.ratio(Money.percentage(matchNumbers.getMaps()));
     }

@@ -31,11 +31,12 @@ public class WinningNumber {
     }
   }
 
-  public void sizeIsSix(List<Integer> numberInt) {
+  public static void sizeIsSix(List<Integer> numberInt) {
     if (numberInt.size() != 6) {
       throw new IllegalArgumentException(ErrorMessage.NOT_SIX_NUMBERS.getMessage());
     }
   }
+  
 // 유효성 검사
   public void winningNumberisDigits(String num) {
     for (int i = 0; i < num.length(); i++) {

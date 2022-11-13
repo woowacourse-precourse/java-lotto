@@ -27,6 +27,7 @@ public class Message {
   }
 
   public static void matchMessage(Map<Integer, Integer> maps) {
+    Message.winningStatics();
     Ranking[] values = Ranking.values();
     for (Ranking value : values) {
       System.out.print(value.getMessage());
