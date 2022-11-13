@@ -33,6 +33,10 @@ public class LottoCalculator {
 
     public double sumOfPrizeMoney() {
         double sum = 0;
+        Rank[] ranks = Rank.values();
+        for (int i = 0; i < rankCount.size(); i++) {
+            sum += ranks[i].getPrizeMoney(rankCount.get(i));
+        }
         return sum;
     }
 
