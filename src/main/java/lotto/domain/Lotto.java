@@ -18,8 +18,12 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
 
-    public boolean contains(int value) {
+    public boolean contains(Object value) {
         return numbers.contains(value);
+    }
+
+    public int get(Object index) {
+        return numbers.get((Integer) index);
     }
 
     @Override
