@@ -50,6 +50,8 @@ public class InputOutputView {
 
     public void saveResult(List<Integer> grades) {
         MoneyEnumClass moneyEnumClass = new MoneyEnumClass();
+        System.out.println("당첨 통계");
+        System.out.println("---");
         moneyEnumClass.setResult(MoneyEnumClass.MoneyEnum.FIFTH, "3개 일치 (5,000원) - ");
         moneyEnumClass.setResult(MoneyEnumClass.MoneyEnum.FOURTH, "4개 일치 (50,000원) - ");
         moneyEnumClass.setResult(MoneyEnumClass.MoneyEnum.THIRD, "5개 일치 (1,500,000원) - ");
