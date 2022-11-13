@@ -3,6 +3,30 @@ package lotto;
 import java.util.Scanner;
 
 public class Application {
+    public static void makeLottoNumber(int lottoCount){
+        int[][] lottoArray = new int[lottoCount][6];
+
+        for(int i = 0; i < lottoCount; i++){
+            for(int j = 0; j < lottoArray[i].length; j++){
+                int number = (int)(Math.random() * 45) + 1;
+                lottoArray[i][j] = number;
+
+                for(int k = 0; k < j; k++){
+                    if (lottoArray[i][k] == number){
+                        j--;
+                        break;
+                    }
+                }
+            }
+
+            System.out.print("[");
+            for(int j = 0; j < lottoArray[i].length - 1; j++){
+                System.out.print(lottoArray[i][j] + ", ");
+            }
+            System.out.println(lottoArray[i][5] + "]");
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Scanner scanner = new Scanner(System.in);
@@ -23,7 +47,7 @@ public class Application {
         int lottoCount = purchasedValue / 1000;
         System.out.println("\n" +lottoCount+ "개를 구매했습니다.");
 
-        // TODO: 로또 구매 갯수만큼 로또 생성
+        makeLottoNumber(lottoCount);
 
         System.out.println("당첨 번호를 입력해 주세요.");
         userInputLotto = scanner.nextLine();
