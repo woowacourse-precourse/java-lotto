@@ -1,7 +1,6 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
@@ -14,25 +13,29 @@ public class LottoManager {
     public static final int MAX_NUMBER = 45;
 
     public enum Reward {
-        first(2000000000),
-        second(30000000),
-        third(1500000),
+        fifth(5000),
         fourth(50000),
-        fifth(5000);
+        third(1500000),
+        second(30000000),
+        first(2000000000);
 
         private final int rewardPrice;
 
         Reward(int rewardPrice) {
             this.rewardPrice = rewardPrice;
         }
+
+        public int getRewardPrice() {
+            return rewardPrice;
+        }
     }
 
     public enum Rank {
-        first(6, 4),
-        second(5, 3),
-        third(5, 2),
+        fifth(3, 0),
         fourth(4, 1),
-        fifth(3, 0);
+        third(5, 2),
+        second(5, 3),
+        first(6, 4);
 
         private final int numberOfSameLottoNumber;
         private final int indexInRankResult;
@@ -44,6 +47,10 @@ public class LottoManager {
 
         public int getNumberOfSameLottoNumber() {
             return numberOfSameLottoNumber;
+        }
+
+        public int getIndexInRankResult() {
+            return indexInRankResult;
         }
     }
 
@@ -59,7 +66,6 @@ public class LottoManager {
         List<Integer> lotto;
         for (int i = 0; i < numberOfLotto; i++) {
             lotto = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_LENGTH);
-            Collections.sort(lotto);
             lottos.add(lotto);
         }
         return lottos;
@@ -128,7 +134,7 @@ public class LottoManager {
         for (Rank rank : Rank.values()) {
             revenue += lottoRankResult[rank.indexInRankResult] * Reward.valueOf(rank.toString()).rewardPrice;
         }
-        return (float) Math.round(revenue / price);
+        return (revenue / price) * 100;
     }
 
 }
