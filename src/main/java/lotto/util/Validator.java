@@ -14,6 +14,7 @@ public class Validator {
     private static final String PLAYER_NUMBERS_RANGE_ERROR_MESSAGE = "당첨 번호는 1부터 45 사이의 숫자여야 합니다.";
     private static final String PLAYER_NUMBERS_DUPLICATION_ERROR_MESSAGE = "당첨 번호에 중복된 번호가 존재합니다.";
     private static final String BONUS_NUMBER_RANGE_ERROR_MESSAGE = "[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.";
+    private static final String BONUS_NUMBER_DUPLICATION_ERROR_MESSAGE = "당첨 번호에 중복된 번호가 존재합니다.";
 
     public static void validateUnitStandard(int purchaseAmount) {
         boolean isPurchaseAmountNotFollowUnitStandard = purchaseAmount % UNIT_STANDARD != ZERO;
@@ -59,6 +60,12 @@ public class Validator {
 
         if (!isBonusNumberInRange) {
             throw new IllegalArgumentException(BONUS_NUMBER_RANGE_ERROR_MESSAGE);
+        }
+    }
+
+    public static void validateBonusNumberDuplicationInPlayerNumbers(int bonusNumber, List<Integer> playerNumbers) {
+        if (playerNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(BONUS_NUMBER_DUPLICATION_ERROR_MESSAGE);
         }
     }
 }
