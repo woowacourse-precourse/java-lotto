@@ -2,7 +2,7 @@ package lotto.view;
 
 import lotto.domain.constant.GuideMessage;
 
-public class GuideView implements View{
+public class GuideView extends View{
 
   @Override
   public void print(String output) {

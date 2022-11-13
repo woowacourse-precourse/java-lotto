@@ -2,7 +2,7 @@ package lotto.view;
 
 import lotto.domain.constant.RateOfReturnMessage;
 
-public class RateOfReturnView implements View{
+public class RateOfReturnView extends View{
 
   @Override
   public void print(String output) {

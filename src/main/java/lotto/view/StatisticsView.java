@@ -1,6 +1,6 @@
 package lotto.view;
 
-public class StatisticsView implements View{
+public class StatisticsView extends View{
   @Override
   public void print(String output) {
 
