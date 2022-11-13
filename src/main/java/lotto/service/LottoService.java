@@ -6,11 +6,11 @@ import lotto.domain.Money;
 import lotto.domain.RandomLotto;
 import lotto.domain.Winning;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static java.util.Collections.*;
+import static java.util.Collections.sort;
 
 public class LottoService {
 
@@ -19,7 +19,7 @@ public class LottoService {
         RandomLotto randomLotto = new RandomLotto(numberOfLottoGame);
 
         for (int i = 0; i < numberOfLottoGame; i++) {
-            List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> randomNumbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             sort(randomNumbers);
             randomLotto.getRandomLottoNumbers().add(randomNumbers);
         }

@@ -49,7 +49,7 @@ public class ResultView {
         for (Winning winning : Winning.values()) {
             yield += winning.getPrizeMoney() * winningResult.getWinningResultMap().get(winning);
         }
-        String format = format(PROFIT_MESSAGE_FORMAT, yield / inputAmount);
+        String format = format(PROFIT_MESSAGE_FORMAT, yield / inputAmount * 100);
         System.out.println(format);
     }
 }
