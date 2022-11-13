@@ -18,6 +18,7 @@ public class LottoGameController {
         int ticketCnt = new Ticket().count(money);
         List<Lotto> lottoList = lottoGameService.pickLottos(ticketCnt);
         Lotto winningNumbers = new Lotto(inputView.inputWinningNumbers());
+        int bonusNumber = inputView.inputBonusNumber();
     }
 
 
