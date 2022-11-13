@@ -32,4 +32,22 @@ public class CountNumberOfWins {
     private int setBonusNumber() {
         return winningNumbers.inputBonusNumber();
     }
+
+    private void numberOfWins(int ranking) {
+        if (ranking == Grade.FIRST.getRanking()) {
+            firstPlace++;
+        }
+        if (ranking == Grade.SECOND.getRanking()) {
+            secondPlace++;
+        }
+        if (ranking == Grade.THIRD.getRanking()) {
+            thirdPlace++;
+        }
+        if (ranking == Grade.FOURTH.getRanking()) {
+            fourthPlace++;
+        }
+        if (ranking == Grade.FIFTH.getRanking()) {
+            fifthPlace++;
+        }
+    }
 }
