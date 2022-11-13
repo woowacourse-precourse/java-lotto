@@ -3,6 +3,7 @@ package lotto.service;
 import java.util.List;
 import lotto.domain.Lottery;
 import lotto.domain.WinningNumbers;
+import lotto.domain.Rank;
 
 public class LottoService {
     private WinningNumbers winningNumbers;
@@ -17,6 +18,7 @@ public class LottoService {
     }
 
     public void calculateRank() {
+        Rank.clearCount();
         lottery.calculateRankWithWinningNumbers(winningNumbers);
     }
 
