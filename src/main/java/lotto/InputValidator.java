@@ -1,9 +1,5 @@
 package lotto;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 public class InputValidator {
     public void validateInputPurchaseAmount(String input) {
         validateIsNumber(input);
@@ -12,13 +8,6 @@ public class InputValidator {
 
     public void validateInputWinningNumbers(String input) {
         validateIsSeparateByComma(input);
-    }
-
-    public void validateWinningNumbers(List<Integer> numbers) {
-        Set<Integer> set = new HashSet<>(numbers);
-        if (set.size() != numbers.size()) {
-            throw new IllegalArgumentException(ErrorMessage.OVERLAP.getMessage());
-        }
     }
 
     public void validateInputBonusNumber(String input, Lotto winningNumber) {
