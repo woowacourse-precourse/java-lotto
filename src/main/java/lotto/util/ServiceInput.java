@@ -30,7 +30,10 @@ public class ServiceInput {
 
         String inputWinningNumbers = Console.readLine();
 
-        // TODO: 예외처리 구현
+        if (Validator.isEmpty(inputWinningNumbers)){
+            Message.printInputErrorEmpty();
+            throw new IllegalArgumentException();
+        }
 
         return inputWinningNumbers;
     }
