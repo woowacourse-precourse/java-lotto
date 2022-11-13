@@ -19,6 +19,7 @@ public class Purchase {
     public static void buyLotto() {
         inputAmount();
         createLottos();
+        printLottos(lottos);
     }
 
     /**
