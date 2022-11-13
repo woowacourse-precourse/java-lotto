@@ -17,32 +17,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class ManagerTest {
-    @DisplayName("로또 수량 확인")
-    @Test
-    void getAmountFromPrice() {
-        Manager manager = new Manager();
-        int result = manager.getAmount(20000);
-
-        assertThat(result).isEqualTo(20);
-    }
-
-    @DisplayName("잘못된 금액일경우 예외발생")
-    @ParameterizedTest(name = "{displayName} ({0}원)")
-    @ValueSource(ints = {15500, 900, 0})
-    void getAmountFromPriceButException(int won) {
-        Manager manager = new Manager();
-
-        assertThatThrownBy(() -> manager.getAmount(won)).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @DisplayName("로또 구매 확인")
-    @Test
-    void purchaseLotto() {
-        Manager manager = new Manager();
-        manager.purchaseLotto(5);
-
-        assertThat(manager.getLottoTable().size()).isEqualTo(5);
-    }
 
     @DisplayName("로또 번호 비교하기")
     @ParameterizedTest(name = "{displayName} {0} {1}개 일치")
@@ -119,8 +93,9 @@ public class ManagerTest {
     @DisplayName("수익률 계산하기")
     @Test
     void getRateOfReturn() {
+        LottoMachine lottoMachine = new LottoMachine();
         Manager manager = new Manager();
-        manager.purchaseLotto(8);
+        lottoMachine.purchaseLottoTable(8000);
         float result = manager.getRateOfReturn(List.of(1,0,0,0,0));
 
         assertThat(result).isEqualTo(62.5f);
