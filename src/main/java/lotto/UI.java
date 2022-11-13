@@ -4,11 +4,14 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class UI {
-    private static int cost;
+    private static final int BONUS_NUMBER_MATCHED = 7;
 
     public static List<Integer> enterWinningNumber() {
+        System.out.println();
+        System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         String[] split = input.split(",");
         Integer[] numbers = Arrays.stream(split).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
@@ -29,16 +32,24 @@ public class UI {
         }
     }
 
+//    public static void printWinningHistory(Map<Integer, Integer> numberOfMatching) {
+//        System.out.println();
+//        System.out.println("당첨 통계");
+//        System.out.println("---");
+//        Prizecut[] prizecuts = Prizecut.values();
+//        for (int idx = 3; idx <=5; idx++) {
+//            System.out.println(idx + "개 일치 " + prizecuts[idx-3].getPrizePhrase() + " - " + numberOfMatching.get(idx) + "개");
+//        }
+//
+//        System.out.println("5개 일치, 보너스 볼 일치 " + Prizecut.SECOND.getPrizePhrase() + " - " + numberOfMatching.get(BONUS_NUMBER_MATCHED) + "개");
+//        System.out.println("6개 일치 " + Prizecut.FIRST.getPrizePhrase() + " - " + numberOfMatching.get(6) + "개");
+//    }
+
     public static Integer enterBonusNumber() {
+        System.out.println();
+        System.out.println("보너스 번호를 입력해 주세요.");
         return Integer.parseInt(Console.readLine());
     }
 
-    public static int getCost() {
-        return cost;
-    }
-
-    public static void setCost() {
-        cost = Integer.parseInt(Console.readLine());
-    }
 
 }

@@ -5,5 +5,7 @@ public class Application {
         LottoBuyer lottoBuyer = new LottoBuyer();
 
         UI.printBuyingLotto(lottoBuyer.getCost()/1000, lottoBuyer.getLotteries());
+
+        LottoDraw lottoDraw = new LottoDraw(lottoBuyer);
     }
 }

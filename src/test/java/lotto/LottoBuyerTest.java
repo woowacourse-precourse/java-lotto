@@ -17,8 +17,7 @@ class LottoBuyerTest {
         ByteArrayInputStream in = new ByteArrayInputStream("12000".getBytes());
         System.setIn(in);
 
-        UI.setCost();
-        LottoBuyer lottoBuyer = new LottoBuyer(UI.getCost());
+        LottoBuyer lottoBuyer = new LottoBuyer();
         int cost = lottoBuyer.getCost();
 
         assertThat(cost).isEqualTo(12000);

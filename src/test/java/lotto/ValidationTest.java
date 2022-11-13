@@ -44,8 +44,8 @@ class ValidationTest {
         ByteArrayInputStream in = new ByteArrayInputStream("12100".getBytes());
         System.setIn(in);
 
-        UI.setCost();
-        assertThatThrownBy(() -> new LottoBuyer(UI.getCost()))
+
+        assertThatThrownBy(() -> new LottoBuyer())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 로또 구입 금액은 1,000원 단위로 입력 가능합니다.");
     }

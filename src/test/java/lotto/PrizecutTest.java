@@ -19,6 +19,6 @@ class PrizecutTest {
         assertThat(values).contains(Prizecut.FIRST, Prizecut.SECOND, Prizecut.THIRD, Prizecut.FOURTH, Prizecut.FIFTH);
 
         assertThat(Prizecut.THIRD.getPrizeMoney()).isEqualTo(1500000);
-        assertThat(Prizecut.THIRD.getPrizePhrase()).isEqualTo("1,500,000원");
+        assertThat(Prizecut.THIRD.getPrizePhrase()).isEqualTo("(1,500,000원)");
     }
 }
