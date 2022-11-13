@@ -2,7 +2,6 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public class UserInteraction {
@@ -41,16 +40,6 @@ public class UserInteraction {
         }
         return resultNumbers;
     }
-    public void checkNumbers(List<Integer> numbers){
-        HashSet<Integer> tempSet = new HashSet<>(numbers);
-        if (tempSet.size()!=6){
-            throw new IllegalArgumentException("[ERROR] 서로 다른 6자리의 숫자를 입력해야 합니다.");
-        }
-        for (int number: tempSet) {
-            if (number<=0 && number>45){
-                throw new IllegalArgumentException("[ERROR] 1~45 사이의 숫자를 입력 해야만 합니다.");
-            }
-        }
-    }
+
 
 }

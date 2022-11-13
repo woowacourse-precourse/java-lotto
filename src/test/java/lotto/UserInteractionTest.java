@@ -47,12 +47,6 @@ class UserInteractionTest {
     void tryParseIntegers_test(){
         String testInput="1,2, 3, 4,5,6";
         List<Integer> result = testUserInteraction.tryParseIntegers(testInput);
-        assertThat(result).isEqualTo(List.of(1,2,3,4,5,6));
-    }
-    @DisplayName("(checkNumbers) 입력 문자열이 1~45 사이의 서로 다른 숫자인지 확인")
-    @Test
-    void checkNumbers_exception_test(){
-        assertThatThrownBy(() -> testUserInteraction.checkNumbers(List.of(1,2,3)))
-                .isInstanceOf(IllegalArgumentException.class);
+        assertThat(result).isEqualTo(List.of(1,2,3,4,5,46));
     }
 }
