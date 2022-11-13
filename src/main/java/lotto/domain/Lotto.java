@@ -24,6 +24,11 @@ public class Lotto {
                 .count()) {
             throw new IllegalArgumentException(LOTTO_NUMBER_RANGE_EXCEPTION.toString());
         }
+        if (LOTTO_NUMBER_LENGTH != numbers.stream()
+                .distinct()
+                .count()) {
+            throw new IllegalArgumentException(LOTTO_NUMBER_DUPLICATED_EXCEPTION.toString());
+        }
     }
 
     @Override
