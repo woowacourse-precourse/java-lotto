@@ -1,6 +1,8 @@
 package lotto.model;
 
 import java.util.List;
+import lotto.util.constants.GameConstants;
+import lotto.util.constants.LottoConstants;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -15,10 +17,18 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        validateSize(numbers);
+    }
+
+    private void validateSize(List<Integer> numbers) {
+        if (!isSameSizeAsLotto(numbers.size())) {
+            throw new IllegalArgumentException(GameConstants.ERROR_IS_NOT_SAME_LOTTO_SIZE);
         }
     }
 
-    // TODO: 추가 기능 구현
+    private boolean isSameSizeAsLotto(int numberSize) {
+        return numberSize != LottoConstants.LOTTO_TICKET_SIZE;
+    }
+
+
 }
