@@ -34,16 +34,6 @@ public class InputView {
 		return money;
 	}
 
-	public static void validMoney(int money) {
-		if (isNotDividedInto1000Units(money)) {
-			throw new IllegalArgumentException(DEFAULT_ERROR_MESSAGE + VALID_MONEY_ERROR_MESSAGE);
-		}
-	}
-
-	private static boolean isNotDividedInto1000Units (int money) {
-		return money % DIVIDE_UNIT != ZERO_NUMBER;
-	}
-
 	public static List<Integer> inputWinningNumber() {
 		List<Integer> winNumbers = new ArrayList<>();
 		System.out.println();

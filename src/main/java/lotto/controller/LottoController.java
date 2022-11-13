@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import lotto.domain.BonusNumber;
+import lotto.domain.LottoAmount;
 import lotto.domain.LottoResult;
 import lotto.domain.LottoTicket;
 import lotto.domain.WinningNumber;
@@ -11,12 +12,10 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class LottoController {
-	int userMoney;
 
 	public void run() {
-		userMoney = InputView.inputUserMoney();
-		InputView.validMoney(userMoney);
-		List<List<Integer>> lottoTickets = chargeLottoPurchaseAmount(userMoney / 1000);
+		LottoAmount lottoAmount = new LottoAmount(InputView.inputUserMoney());
+		List<List<Integer>> lottoTickets = chargeLottoPurchaseAmount();
 		List<Integer> winningNumbers = receiveWinningNumbers();
 		int bonusNumber = receiveBonusNumber();
 		winningNumberCount(lottoTickets, winningNumbers, bonusNumber);
