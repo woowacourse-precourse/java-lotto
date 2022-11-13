@@ -17,8 +17,7 @@ import java.util.List;
 
 import static lotto.Enum.ErrorMessage.*;
 import static lotto.Enum.StatisticMessage.TOTAL_YIELD;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class LottoTest extends NsTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -37,8 +36,18 @@ class LottoTest extends NsTest {
     }
 
     @DisplayName("금액을 입력하고 로또의 갯수를 확인한다.")
+    @Test
     void countLottoByInputProperMoney() {
+        LottoShop shop = new LottoShop();
 
+        String inputMoney = "1000";
+        run(inputMoney, "1,2,3,4,5,6", "7");
+        assertThat(shop.soldLottoList.size()).isEqualTo(1);
+
+        shop.soldLottoList = new ArrayList<>();
+        inputMoney = "10000";
+        run(inputMoney, "1,2,3,4,5,6", "7");
+        assertThat(shop.soldLottoList.size()).isEqualTo(10);
     }
 
     @DisplayName("올바르지 않은 금액을 입력했을때 예외를 확인한다.")
