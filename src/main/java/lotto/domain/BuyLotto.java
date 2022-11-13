@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.constants.ErrorText;
+import lotto.constants.ErrorMessages;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +48,7 @@ public class BuyLotto {
 
     private void validatePrice(int price) {
         if (price % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException(ErrorText.PRICE);
+            throw new IllegalArgumentException(ErrorMessages.PRICE);
         }
     }
 }
