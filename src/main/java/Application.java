@@ -1,5 +1,3 @@
-package lotto;
-
 import system.LottoGameSystem;
 
 public class Application {
