@@ -36,7 +36,7 @@
    2. [X] 로또 추가
    3. [X] 수익 계산
    4. [X] 통계 정보 정리 기능
-5. LottoSystem
+5. User
    1. [X] 수익률 계산
    2. [X] random 로또를 수량만큼 추가
 6. LottoStatus

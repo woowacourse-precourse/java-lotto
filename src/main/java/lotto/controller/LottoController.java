@@ -6,13 +6,13 @@ import static lotto.model.Changer.stringToIntegers;
 import java.util.List;
 import lotto.model.InputValidator;
 import lotto.model.Lotto;
-import lotto.model.LottoSystem;
+import lotto.model.User;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class LottoController {
 
-    private final LottoSystem lottoSystem = new LottoSystem();
+    private final User user = new User();
 
     public LottoController() {
     }
@@ -31,10 +31,10 @@ public class LottoController {
     }
 
     private void printPurchaseDetails(int money) {
-        lottoSystem.setUsedMoney(money);
+        user.addMoney(money);
         int count = moneyToQuantityChanger(money);
-        lottoSystem.addRandomLotto(count);
-        OutputView.printPurchaseDetails(count, lottoSystem.getPurchaseDetails());
+        user.addRandomLotto(count);
+        OutputView.printPurchaseDetails(count, user.getPurchaseDetails());
         System.out.println();
         requestTargetLottoNumbers();
     }
@@ -60,11 +60,11 @@ public class LottoController {
     }
 
     private void printResult(Lotto targetLotto, int bonusNumber) {
-        OutputView.printResult(lottoSystem.getResult(targetLotto, bonusNumber));
+        OutputView.printResult(user.getResult(targetLotto, bonusNumber));
         printProfitRate(targetLotto, bonusNumber);
     }
 
     private void printProfitRate(Lotto targetLotto, int bonusNumber) {
-        OutputView.printProfitRate(lottoSystem.getProfitRage(targetLotto, bonusNumber));
+        OutputView.printProfitRate(user.getProfitRage(targetLotto, bonusNumber));
     }
 }

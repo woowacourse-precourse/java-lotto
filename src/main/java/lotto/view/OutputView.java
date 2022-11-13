@@ -4,13 +4,13 @@ public class OutputView {
 
     public static final String PRINT_PURCHASE_DETAILS_DESCRIPTION = "개를 구매했습니다.";
     public static final String PRINT_RESULT_DESCRIPTION = "당첨 통계\n---";
-    public static final String PRINT_PROFIT_RATE_DESCRIPTION = "총 수익률은 %s입니다.%n";
+    public static final String PRINT_PROFIT_RATE_DESCRIPTION = "총 수익률은 %.1f%%입니다.%n";
 
     private OutputView() {
     }
 
-    public static void printPurchaseDetails(int count,String purchaseDetails){
-        System.out.println(count+ PRINT_PURCHASE_DETAILS_DESCRIPTION);
+    public static void printPurchaseDetails(int count, String purchaseDetails) {
+        System.out.println(count + PRINT_PURCHASE_DETAILS_DESCRIPTION);
         System.out.println(purchaseDetails);
     }
 
@@ -19,7 +19,7 @@ public class OutputView {
         System.out.println(result);
     }
 
-    public static void printProfitRate(String profitRate) {
+    public static void printProfitRate(float profitRate) {
         System.out.printf(PRINT_PROFIT_RATE_DESCRIPTION, profitRate);
     }
 }

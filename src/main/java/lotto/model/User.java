@@ -1,13 +1,13 @@
 package lotto.model;
 
-public class LottoSystem {
+public class User {
 
-    public static final int PERCENTAGE_CONVERSION_NUMBER = 100;
-    public static final String PROFIT_RATE_FORMAT = "%.1f%%";
+    public static final float PERCENTAGE_CONVERSION_NUMBER = 100f;
+
     private final LottoNumbers lottoNumbers;
     private int usedMoney;
 
-    public LottoSystem() {
+    public User() {
         this.lottoNumbers = new LottoNumbers();
     }
 
@@ -15,13 +15,12 @@ public class LottoSystem {
         lottoNumbers.addRandomLotto(n);
     }
 
-    public void setUsedMoney(int usedMoney) {
-        this.usedMoney = usedMoney;
+    public void addMoney(int usedMoney) {
+        this.usedMoney += usedMoney;
     }
 
-    public String getProfitRage(Lotto targetLotto, int bonusNumber) {
-        return String.format(PROFIT_RATE_FORMAT,
-                ((float) lottoNumbers.getProfitSum(targetLotto,bonusNumber) * PERCENTAGE_CONVERSION_NUMBER) / usedMoney);
+    public float getProfitRage(Lotto targetLotto, int bonusNumber) {
+        return lottoNumbers.getProfitSum(targetLotto,bonusNumber) * PERCENTAGE_CONVERSION_NUMBER / usedMoney;
     }
 
     public String getPurchaseDetails() {
