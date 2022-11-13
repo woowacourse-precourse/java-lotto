@@ -15,7 +15,7 @@
         - 1,000원으로 나누어 떨어지지 않는경우
         - int형 범위를 벗어난 경우
 
-    - Lotto-create-001 : 구입 금액에 따라 로또를 발급, 저장한다
+    - Lotto-create-001 : 구입 금액에 따라 로또를 발급, 정렬해서 저장한다
         - 요구사항의 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다
     - Lotto-print-001 : 발급한 로또들을 출력한다
 
