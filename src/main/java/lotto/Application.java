@@ -10,11 +10,15 @@ public class Application {
     private static final String ERROR_MESSAGE = "[ERROR]";
     private static final String PRICE_MESSAGE = "값이 1000으로 나누어지지 않습니다.";
     private static final String ANSWER_MESSAGE = "번호가 6개가 아닙니다";
+    private static final String LUCKY_NUMBER_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
+    private static final String OUT_OF_RANGE_MESSAGE = "숫자가 범위 밖에 있습니다.";
+
 
     public static void main(String[] args) {
         int myPrice = priceInput();
         List<Integer> lottoNumbers = lottoNumAnswerInput();
         Lotto myLotto = new Lotto(lottoNumbers);
+        int luckyNumber = getLuckyNumber();
     }
 
     public static void validatePrice(int price) {
@@ -56,5 +60,19 @@ public class Application {
             lottoNumbers.add(Integer.valueOf(num));
         }
         return lottoNumbers;
+    }
+
+    public static int getLuckyNumber() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(LUCKY_NUMBER_INPUT_MESSAGE);
+        int luckyNum = scanner.nextInt();
+        isValidateNumber(luckyNum);
+        return luckyNum;
+    }
+
+    public static void isValidateNumber(int number) {
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException(ERROR_MESSAGE + OUT_OF_RANGE_MESSAGE);
+        }
     }
 }
