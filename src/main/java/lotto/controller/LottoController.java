@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -112,13 +113,14 @@ public class LottoController {
 
     private void printUserLottoAndUserYield(Map<LottoResultConstant, Integer> result, Money userMoney) {
         double yieldPercent = yieldService.calculateYield(result, userMoney);
-        String yieldPercentOneDot = String.format("%.1f", yieldPercent);
-        List<String> viewResult = createResult(result, yieldPercentOneDot);
-        viewResult.add("총 수익률은 " + yieldPercentOneDot + "%입니다.");
+        DecimalFormat format = new DecimalFormat("###,###.#");
+        String percentString = format.format(yieldPercent);
+        List<String> viewResult = createResult(result);
+        viewResult.add("총 수익률은 " + percentString + "%입니다.");
         View.printView(viewResult);
     }
 
-    private List<String> createResult(Map<LottoResultConstant, Integer> result, String yieldPercentOneDot) {
+    private List<String> createResult(Map<LottoResultConstant, Integer> result) {
         List<String> resultView = new ArrayList<>();
         createResultView(resultView, LottoResultConstant.CORRECT_THREE, result);
         createResultView(resultView, LottoResultConstant.CORRECT_FOUR, result);
