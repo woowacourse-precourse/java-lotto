@@ -5,6 +5,8 @@ import utils.Validator;
 import view.InputView;
 import view.OutputView;
 
+import java.util.List;
+
 public class LottoController {
     private final InputView inputView;
     private final OutputView outputView;
@@ -24,20 +26,25 @@ public class LottoController {
         String money = inputView.inputMoney();
         validatePurchasingAmount(money);
 
-        outputView.outputLotto(lottoService.issueLotto(Integer.parseInt(money)));
+        List<Lotto> issuedLotteries = lottoService.issueLotto(Integer.parseInt(money));
+        outputView.outputLotto(issuedLotteries);
 
-        String luckyNumber = inputView.inputLuckyNumber();
-        validateLuckyNumber(luckyNumber);
+        String luckyNumberInput = inputView.inputLuckyNumber();
+        validateLuckyNumber(luckyNumberInput);
+        List<Integer> luckyNumber = converter.convertToLuckyNumber(luckyNumberInput);
 
-        String bonusNumber = inputView.inputBonusNumber();
-        validateBonusNumber(luckyNumber, bonusNumber);
+        String bonusNumberInput = inputView.inputBonusNumber();
+        validateBonusNumber(luckyNumber, bonusNumberInput);
+
+        WinningNumber winningNumber = new WinningNumber(new Lotto(luckyNumber), Integer.parseInt(bonusNumberInput));
+        outputView.outputWinningStatistics(winningNumber.checkLotto(issuedLotteries));
     }
 
-    private void validateBonusNumber(String luckyNumber, String bonusNumber) {
+    private void validateBonusNumber(List<Integer> luckyNumber, String bonusNumber) {
         validator.validateBonusNumberSize(bonusNumber);
         validator.validateBonusNumberDigit(bonusNumber);
         validator.validateBonusNumberRange(bonusNumber);
-        validator.validateDuplication(converter.convertToLuckyNumber(luckyNumber), bonusNumber);
+        validator.validateDuplication(luckyNumber, bonusNumber);
     }
 
     private void validateLuckyNumber(String luckyNumber) {

@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Arrays;
+
 public enum WinningNumberStatus {
     FIRST(6, 1, 2_000_000_000),
     SECOND(5, 2, 30_000_000),
@@ -32,4 +34,12 @@ public enum WinningNumberStatus {
     public static int getOrderOverTHIRD(int count) {
         return 8 - count;
     }
+
+    public static WinningNumberStatus getWinningNumberStatusByOrder(int order) {
+        return Arrays.stream(values())
+                .filter(winningNumberStatus -> order == winningNumberStatus.getOrder())
+                .findFirst()
+                .get();
+    }
+
 }

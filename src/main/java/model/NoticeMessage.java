@@ -24,5 +24,11 @@ public enum NoticeMessage {
         public String toString() {
             return "보너스 번호를 입력해 주세요.";
         }
+    },
+    ADDITIONAL_SECOND{
+        @Override
+        public String toString() {
+            return ", 보너스 볼 일치";
+        }
     }
 }
