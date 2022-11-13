@@ -13,6 +13,11 @@ public class MoneyCalculator {
 
         return receivedMoney;
     }
-
+    private void validateInputMoney(int receivedMoney) {
+        if (receivedMoney % 1000 != 0)
+            throw new IllegalArgumentException(ErrorMessages.INPUT_MONEY_IS_NOT_THOUSAND_UNITS.getMessage());
+        if (receivedMoney < 0)
+            throw new IllegalArgumentException(ErrorMessages.INPUT_MONEY_IS_NOT_UP_ZERO.getMessage());
+    }
 
 }
