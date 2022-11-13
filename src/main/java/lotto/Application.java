@@ -10,8 +10,7 @@ public class Application {
     public static void main(String[] args) {
         // 금액 입력 문장 출력
         guide.printInputPriceGuide();
-        // 사용자 입력 -> 로또 개수 반환
-        long lottoCount = userInput.getLottoCount();
+        int lottoCount = userInput.getLottoCount();
 
         // 사용자 로또 개수 출력
         guide.printLottoCount(lottoCount);

@@ -32,7 +32,7 @@ class UserInputTest {
                 String input = "1000";
                 // when
                 setSetIn(input);
-                long lottoCount =  userInput.getLottoCount();
+                int lottoCount =  userInput.getLottoCount();
                 // then
                 assertThat(lottoCount).isEqualTo(1);
             }
@@ -44,7 +44,7 @@ class UserInputTest {
                 String input = "10000";
                 // when
                 setSetIn(input);
-                long lottoCount =  userInput.getLottoCount();
+                int lottoCount =  userInput.getLottoCount();
                 // then
                 assertThat(lottoCount).isEqualTo(10);
             }
@@ -56,7 +56,7 @@ class UserInputTest {
                 String input = "160000";
                 // when
                 setSetIn(input);
-                long lottoCount =  userInput.getLottoCount();
+                int lottoCount =  userInput.getLottoCount();
                 // then
                 assertThat(lottoCount).isEqualTo(160);
             }
@@ -66,7 +66,7 @@ class UserInputTest {
         @DisplayName("비정상 입력")
         class InValidateInput{
             @Test
-            @DisplayName("1000원 단위가 아닌 입력")
+            @DisplayName("1000원 단위가 아닌 입력은 예외 발생")
             void 천원_단위_검증(){
                 // given
                 String input = "1600";
@@ -78,7 +78,7 @@ class UserInputTest {
             }
 
             @Test
-            @DisplayName("음수 입력")
+            @DisplayName("음수 입력은 예외 발생")
             void 음수_검증(){
                 // given
                 String input = "-10000";
