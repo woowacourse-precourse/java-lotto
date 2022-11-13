@@ -38,7 +38,7 @@ public class LottoController {
         // 당첨 통계
         output.printStatistics();
         lottoResult statistics = new lottoResult(groupLotto, winLotto, bonusNum);
-        System.out.println(statistics.getWinResult());
+        output.printWinResult(statistics.getWinResult());
 
 
     }
