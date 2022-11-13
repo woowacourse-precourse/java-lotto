@@ -27,4 +27,9 @@ public class RankingService {
             this.rank.setRank(rankType);
         }
     }
+
+    public void getEarningRate() {
+        this.rank.setEarningRate(player.getMoney());
+    }
+
 }
