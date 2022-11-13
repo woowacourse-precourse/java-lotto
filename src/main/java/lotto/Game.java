@@ -6,17 +6,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static lotto.WinningLogic.calculateRate;
 import static lotto.view.InputView.*;
 import static lotto.view.OutputView.*;
 
 public class Game {
     public static List<Lotto> lottos = new ArrayList<>();
-    private static String input;
-
+    public static String input;
     public static Integer count;
-
     public static List<Integer> winning = new ArrayList<>();
     public static Integer bonusNumber;
+    public static Float rate;
     public Game(){
     }
 
@@ -30,6 +30,8 @@ public class Game {
         bonusNumber = Integer.parseInt(inputBonusView());
         WinningLogic.addScore();
         ResultView();
+        calculateRate();
+        rateView(rate);
     }
     private static Lotto getRandoms(){
         Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6));

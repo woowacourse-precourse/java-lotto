@@ -1,19 +1,23 @@
 package lotto;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static lotto.Game.*;
 
 public class WinningLogic {
     private static Integer match;
     private static Boolean bonus;
+    private static float total = 0.0F;
     public static void addScore(){
         lottos.stream().forEach(lotto -> {
             int countMatch = countMatch(lotto);
             checkBonus(lotto);
             countWinning();
         });
+    }
+    public static void calculateRate(){
+        for(Winning winning: Winning.values()){
+                    total += (float) winning.price * winning.count;
+        }
+        rate = total/Float.parseFloat(input) * 100;
     }
     private static void countWinning(){
         for(Winning winning: Winning.values()){

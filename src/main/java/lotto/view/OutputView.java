@@ -2,9 +2,6 @@ package lotto.view;
 
 import lotto.Winning;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static lotto.Game.count;
 import static lotto.Game.lottos;
 
@@ -38,5 +35,8 @@ public class OutputView{
     private static void resultTitleView(){
         System.out.println("당첨 통계");
         System.out.println("---");
+    }
+    public static void rateView(Float rate){
+        System.out.printf("총 수익률은 %.1f%s입니다.",rate,"%");
     }
 }
