@@ -8,6 +8,7 @@ public class LottoRepository {
 
     private static List<Lotto> lastUserLottoGroup;
     private static Lotto lastWinningLotto;
+    private static Integer lastBonusNumber;
 
     public static void saveUserLotto(List<Lotto> userLottoGroup) {
         lastUserLottoGroup = userLottoGroup;
@@ -23,5 +24,9 @@ public class LottoRepository {
 
     public static List<Lotto> getLastUserLottoGroup() {
         return lastUserLottoGroup;
+    }
+
+    public static void saveBonusNumber(int bonusNumber) {
+        lastBonusNumber = bonusNumber;
     }
 }

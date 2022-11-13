@@ -42,4 +42,15 @@ public class LottoService {
     private void saveWinningLotto(Lotto winningLotto) {
         LottoRepository.saveWinningLotto(winningLotto);
     }
+
+    public void createBonusNumber(String bonusNumber) {
+        InputValidator.checkBonusNumber(bonusNumber);
+        saveBonusNumber(Integer.parseInt(bonusNumber));
+    }
+
+    private void saveBonusNumber(int bonusNumber) {
+        LottoRepository.saveBonusNumber(bonusNumber);
+    }
+
+
 }

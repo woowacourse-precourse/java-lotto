@@ -82,4 +82,31 @@ public class InputValidator {
         }
         return false;
     }
+
+    public static void checkBonusNumber(String bonusNumber) {
+        if(checkIsNumber(bonusNumber)){
+            throw new IllegalArgumentException("숫자가 아닙니다.");
+        }
+        if(checkNumberBoundary(bonusNumber)){
+            throw new IllegalArgumentException("올바르지 않은 범위입니다.");
+        }
+
+    }
+
+    private static boolean checkNumberBoundary(String bonusNumber) {
+        Integer checkNumber = Integer.parseInt(bonusNumber);
+        if(checkNumber < 1 || checkNumber > 45){
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean checkIsNumber(String bonusNumber) {
+        try{
+            Integer.parseInt(bonusNumber);
+        }catch (NumberFormatException exception){
+            return true;
+        }
+        return false;
+    }
 }

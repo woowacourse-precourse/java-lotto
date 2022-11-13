@@ -34,7 +34,16 @@ public class LottoController {
     private void createWinningNumber() {
         String winningNumber = View.printUserInputWinningNumber();
         lottoService.createWinningLotto(winningNumber);
+        getBonusNumber();
     }
+
+    private void getBonusNumber() {
+        String bonusNumber = View.printUserInputBonusNumber();
+        lottoService.createBonusNumber(bonusNumber);
+
+    }
+
+
 
 
 }
