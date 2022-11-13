@@ -18,6 +18,11 @@ public class RateOfReturn {
         this.view = view;
     }
 
+    public RateOfReturn(Win win, int money) {
+        this.win = win;
+        this.money = money;
+    }
+
     public void printRate(double rate) {
         StringBuilder context = new StringBuilder();
 
