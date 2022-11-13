@@ -7,10 +7,16 @@ import java.util.Map;
 import java.util.Optional;
 
 public class LotteryTicketRepository {
+    private static LotteryTicketRepository instance = new LotteryTicketRepository();
+
     private Map<String, LotteryTicket> store;
 
-    public LotteryTicketRepository() {
+    private LotteryTicketRepository() {
         store = new HashMap<>();
+    }
+
+    public static LotteryTicketRepository getInstance() {
+        return instance;
     }
 
     public void addLotteryTicket (LotteryTicket lotteryTicket) {
@@ -23,5 +29,10 @@ public class LotteryTicketRepository {
 
     public int getSize() {
         return store.size();
+    }
+
+    // 테스트용 메서드
+    public void clearStore() {
+        store.clear();
     }
 }
