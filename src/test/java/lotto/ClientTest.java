@@ -4,6 +4,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 class ClientTest {
 
     @DisplayName("로또 구입시 문자열 5000을 입력받으면 숫자 5000이 반환된다")
@@ -23,6 +25,26 @@ class ClientTest {
     @Test
     void buyLottoString5123ThenIllegalArgumentException() {
         Assertions.assertThatThrownBy(() -> new Client(()->"5123").buy())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("1,2,3,4,5,6을 마킹한다면 List형 {1, 2, 3, 4, 5, 6}을 반환한다")
+    @Test
+    void mark123456SplitWithCommaThenReturnIntegerList() {
+        Assertions.assertThat(new Client(()->"1,2,3,4,5,6").mark()).isEqualTo(List.of(1,2,3,4,5,6));
+    }
+
+    @DisplayName("123456을 마킹하면 IllegalArgumentException을 발생시킨다")
+    @Test
+    void mark123456ThenIllegalArgumentException() {
+        Assertions.assertThatThrownBy(() -> new Client(()->"123456").mark())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("일이삼사오육을 마킹하면 IllegalArgumentException을 발생시킨다")
+    @Test
+    void markOneTwoThreeFourFiveSixSplitWithCommaThenIllegalArgumentException() {
+        Assertions.assertThatThrownBy(() -> new Client(()->"일이삼사오육").mark())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
