@@ -18,18 +18,18 @@ public class Lotto {
             throw new IllegalArgumentException(ErrorText.INVALID_SIZE.toString());
         }
 
-        if(new HashSet<>(numbers).size() != 6){
+        if (new HashSet<>(numbers).size() != 6) {
             throw new IllegalArgumentException(ErrorText.DUPLICATE_NUMBER.toString());
         }
 
-        if(isInvalidRange(numbers)){
+        if (isInvalidRange(numbers)) {
             throw new IllegalArgumentException(ErrorText.INVALID_NUMBER_RANGE.toString());
         }
     }
 
-    private boolean isInvalidRange(List<Integer> numbers){
+    private boolean isInvalidRange(List<Integer> numbers) {
         for (int number : numbers) {
-            if(45 < number || number < 1){
+            if (45 < number || number < 1) {
                 return true;
             }
         }
@@ -40,10 +40,10 @@ public class Lotto {
         int matches = 0;
         boolean hasBonus = false;
         for (int number : numbers) {
-            if(winningNumber.hasNumber(number)){
+            if (winningNumber.hasNumber(number)) {
                 matches += 1;
             }
-            if(winningNumber.hasBonus(number)){
+            if (winningNumber.hasBonus(number)) {
                 hasBonus = true;
             }
         }
