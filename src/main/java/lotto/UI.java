@@ -51,6 +51,7 @@ public class UI {
     private void setBonusNumber() {
         System.out.println(BONUS_INPUT_MESSAGE);
         String bonusInput = Console.readLine();
+        Validation.validateBonusInput(bonusInput, this.lottoLogic.getPrizeNumbers());
 
         this.lottoLogic.setBonusNumber(Integer.parseInt(bonusInput));
     }

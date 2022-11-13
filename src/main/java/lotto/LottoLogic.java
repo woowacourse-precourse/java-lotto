@@ -45,6 +45,10 @@ public class LottoLogic {
         return this.buyLottoList;
     }
 
+    public List<Integer> getPrizeNumbers() {
+        return this.prizeNumbers;
+    }
+
     public void setPrizeNumbers(List<Integer> prizeNumbers) {
         this.prizeNumbers = prizeNumbers;
     }
