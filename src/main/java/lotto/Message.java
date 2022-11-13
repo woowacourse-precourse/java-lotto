@@ -10,13 +10,7 @@ public enum Message {
     CORRECT_FOUR("4개 일치 (50,000원) - "),
     CORRECT_FIVE("5개 일치 (1,500,000원) - "),
     CORRECT_FIVE_BONUS("5개 일치, 보너스 볼 일치 (30,000,000원) - "),
-    CORRECT_SIX("6개 일치 (2,000,000,000원) - "),
-    ERROR("[ERROR]"),
-    ERROR_INPUT_NUMBER("숫자를 입력해야 합니다."),
-    ERROR_INPUT_1000("1000원 단위로 입력해야 합니다."),
-    ERROR_INPUT_SIX("숫자를 여섯개 입력해야 합니다."),
-    ERROR_INPUT_DUPLICATE("중복되지 않은 숫자를 입력해야 합니다."),
-    ERROR_INPUT_RANGE("1부터 45사이의 숫자를 입력해야 합니다.");
+    CORRECT_SIX("6개 일치 (2,000,000,000원) - ");
 
 
     final String msg;
@@ -28,10 +22,6 @@ public enum Message {
     @Override
     public String toString() {
         return msg;
-    }
-
-    String printError() {
-        return Message.ERROR.msg + " " + msg;
     }
 
     void printResult(long count) {
