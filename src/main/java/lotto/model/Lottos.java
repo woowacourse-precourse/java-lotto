@@ -35,4 +35,9 @@ public class Lottos {
     public static Lottos purchaseLottos(int money) {
         return new Lottos(money);
     }
+
+    public void printAll() {
+        System.out.println(lottos.size() + "개를 구매했습니다.");
+        lottos.forEach(lotto -> System.out.println(lotto.toString()));
+    }
 }
