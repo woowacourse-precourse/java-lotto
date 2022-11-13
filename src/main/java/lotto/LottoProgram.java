@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
+import lotto.Constants.ERROR;
 import lotto.Constants.REGEX;
 import lotto.domain.Buyer;
 import lotto.domain.Generator;
@@ -23,7 +24,7 @@ public class LottoProgram {
         String purchaseAmout = Console.readLine();
         String purchaseRegex = REGEX.PAYMENT;
         if (!Pattern.matches(purchaseRegex, purchaseAmout)) {
-            throw new IllegalArgumentException("[ERROR] 숫자를 입력해 주세요");
+            throw new IllegalArgumentException(ERROR.PURCHASE_FORMAT);
         }
         int purchaseAmoutCash = Integer.parseInt(purchaseAmout);
 
@@ -39,14 +40,14 @@ public class LottoProgram {
 
         String winningNumberRegex = REGEX.WINNING_NUMBERS;
         if (!Pattern.matches(winningNumberRegex, winningNumbers)) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 1-45사이의 숫자를 콤마로 구분하여 입력해주세요.");
+            throw new IllegalArgumentException(ERROR.WINNING_NUMBER_FORMAT);
         }
 
 
         Integer[] numberArray = convertToInteger(winningNumbers);
         HashSet<Integer> removeDuplicatedNumbers = new HashSet<Integer>(List.of(numberArray));
         if (removeDuplicatedNumbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 중복 숫자가 존재하지 않아야 합니다.");
+            throw new IllegalArgumentException(ERROR.WINNING_NUMBER_DUPLICATE);
         }
 
         Lotto.setWinningNumbers(Arrays.asList(numberArray));
@@ -55,10 +56,10 @@ public class LottoProgram {
         String bonusNumber = Console.readLine();
         String bonusNumberRegex = REGEX.BONUS_NUMBER;
         if (!Pattern.matches(bonusNumberRegex, bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1-45사이의 숫자여야 합니다.");
+            throw new IllegalArgumentException(ERROR.BONUS_NUMBER_RANGE);
         }
         if (Lotto.getWinningNumbers().contains(Integer.parseInt(bonusNumber))) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호에 존재할 수 없습니다.");
+            throw new IllegalArgumentException(ERROR.BONUS_NUMBER_IN_WINNING_NUMBER);
         }
 
         Lotto.setBonusNumber(Integer.parseInt(bonusNumber));
