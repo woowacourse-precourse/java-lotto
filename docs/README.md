@@ -85,6 +85,7 @@
 - [x]  입력을 처리하는 InputView 추가
 - [x]  출력을 처리하는 OutputView 추가
     - [x] 로또 결과를 출력하는 printLottoResult 메서드 추가
+    - [x] 에러 메시지를 출력하는 printErrorMessage 메서드 추가
 - [x]  요청을 처리하는 LottoController 클래스 추가
 - [x]  비즈니스 로직을 처리하는 LottoService 클래스 추가
     - [x] 로또 구매 로직을 처리하는 메서드 추가

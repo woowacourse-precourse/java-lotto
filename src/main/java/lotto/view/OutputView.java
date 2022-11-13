@@ -79,5 +79,9 @@ public enum OutputView {
                 String.format(PROFIT_RATIO_ONE_DECIMAL_PLACE_FORMAT, profitRatio)
         );
     }
+
+    public void printErrorMessage(String message) {
+        System.out.println(message);
+    }
 }
 
