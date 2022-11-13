@@ -31,17 +31,13 @@ public class LottoRound {
      */
     public LottoRank getRank(Lotto selectedNumber) {
         int sameNumbers = getSameNumbers(selectedNumber);
-        if (sameNumbers == 6)
-            return LottoRank.FIRST;
+        if (sameNumbers == 6) return LottoRank.FIRST;
         if (sameNumbers == 5) {
-            if (haveBonusNumber(selectedNumber))
-                return LottoRank.SECOND;
+            if (haveBonusNumber(selectedNumber)) return LottoRank.SECOND;
             return LottoRank.THIRD;
         }
-        if (sameNumbers == 4)
-            return LottoRank.FOURTH;
-        if (sameNumbers == 3)
-            return LottoRank.FIFTH;
+        if (sameNumbers == 4) return LottoRank.FOURTH;
+        if (sameNumbers == 3) return LottoRank.FIFTH;
         return LottoRank.LOSE;
     }
 

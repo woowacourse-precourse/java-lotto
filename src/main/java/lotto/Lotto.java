@@ -22,9 +22,7 @@ public class Lotto {
      * @return 6개의 수로 이루어진 Lotto 클래스
      */
     public static Lotto createRandomLotto() {
-        return new Lotto(
-                Randoms.pickUniqueNumbersInRange(1, 45, 6)
-        );
+        return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
 
     /**
