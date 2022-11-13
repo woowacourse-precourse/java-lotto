@@ -25,22 +25,10 @@ public class LottoApplication {
         randomNumbers = randomLottos.makeRandomLottos(money);
         randomNumbers.forEach(random -> random.printNumbers());
 
-        System.out.println("당첨 번호를 입력해 주세요.");
-        List<Integer> inputWinningLotto = new ArrayList<>();
-        String[] split = Console.readLine().split(",");
-
-        for (int idx = 0; idx < split.length; idx++) {
-            if (inputWinningLotto.contains(Integer.parseInt(split[idx]))) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호가 중복됩니다.");
-            }
-            inputWinningLotto.add(Integer.parseInt(split[idx]));
-        }
-        Lotto inputLotto = new Lotto(inputWinningLotto);
-
         // 보너스 숫자
-        System.out.println("보너스 번호를 입력해 주세요.");
-        bonusNumber = Integer.parseInt(Console.readLine());
-        winningLotto = new WinningLotto(inputLotto, bonusNumber);
+
+        // 로또 당첨번호
+        winningLotto = new WinningLotto(inputAndGetLotto(), inputBonusNumber());
 
         // 총 상금
         int sum = 0;
@@ -51,6 +39,29 @@ public class LottoApplication {
 
         // 수익률 출력
         printYield((double) money, (double) sum);
+    }
+
+    private int inputBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        bonusNumber = Integer.parseInt(Console.readLine());
+        return bonusNumber;
+    }
+
+    private Lotto inputAndGetLotto() {
+        System.out.println("당첨 번호를 입력해주세요.");
+        List<Integer> inputWinningLotto = new ArrayList<>();
+        String[] split = Console.readLine().split(",");
+
+        for (int idx = 0; idx < split.length; idx++) {
+            if (inputWinningLotto.contains(Integer.parseInt(split[idx]))) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호가 중복됩니다.");
+            }
+            inputWinningLotto.add(Integer.parseInt(split[idx]));
+        }
+
+        Lotto inputLotto = new Lotto(inputWinningLotto);
+
+        return inputLotto;
     }
 
     private void printYield(double money, double sum) {
