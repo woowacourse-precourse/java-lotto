@@ -30,13 +30,16 @@ public class LottoStatus {
         if(comparedWinningNumber.contains(bonusNumber)){
             return 2;
         }
-        return 4;
+        return 3;
     }
 
     private static int resultMatchCount(List<Integer> comparedWinningNumber, Integer bonusNumber){
         int matchedCount = 6 - comparedWinningNumber.size();
         if(matchedCount == 5){
             return compareBonusNumber(comparedWinningNumber, bonusNumber);
+        }
+        if(matchedCount == 6){
+            return 4;
         }
         return matchedCount-3;
     }
