@@ -10,7 +10,6 @@ import static lotto.domain.Rank.FOURTH;
 import static lotto.domain.Rank.NOTHING;
 import static lotto.domain.Rank.SECOND;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class LottoSummaryTest {
 
@@ -27,7 +26,7 @@ class LottoSummaryTest {
                 "총 수익률은 500.0%입니다.";
 
         //when
-        String summary = new LottoSummary(ranks, money).toString();
+        String summary = new LottoSummary(ranks, money).summaryLottoResult();
 
         //then
         assertThat(summary).isEqualTo(expect);
@@ -46,7 +45,7 @@ class LottoSummaryTest {
                 "총 수익률은 51,500,125.0%입니다.";
 
         //when
-        String summary = new LottoSummary(ranks, money).toString();
+        String summary = new LottoSummary(ranks, money).summaryLottoResult();
 
         //then
         assertThat(summary).isEqualTo(expect);
@@ -65,7 +64,7 @@ class LottoSummaryTest {
                 "총 수익률은 2,625.0%입니다.";
 
         //when
-        String summary = new LottoSummary(ranks, money).toString();
+        String summary = new LottoSummary(ranks, money).summaryLottoResult();
 
         //then
         assertThat(summary).isEqualTo(expect);
@@ -84,7 +83,7 @@ class LottoSummaryTest {
                 "총 수익률은 62.0%입니다.";
 
         //when
-        String summary = new LottoSummary(ranks, money).toString();
+        String summary = new LottoSummary(ranks, money).summaryLottoResult();
 
         //then
         assertThat(summary).isEqualTo(expect);

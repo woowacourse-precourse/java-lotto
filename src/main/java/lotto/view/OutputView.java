@@ -21,7 +21,7 @@ public class OutputView {
     }
 
     public static void printSummary(LottoSummary summary) {
-        System.out.println(summary);
+        System.out.println(summary.summaryLottoResult());
     }
 
     public static void printErrorMessage(String errorMessage) {

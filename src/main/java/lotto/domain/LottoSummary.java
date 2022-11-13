@@ -72,7 +72,7 @@ public class LottoSummary {
         sb.append(String.format(PROFIT, profitSummary));
     }
 
-    @Override
+    public String summaryLottoResult() {
     public String toString() {
         return summary;
     }
