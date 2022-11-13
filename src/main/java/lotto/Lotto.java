@@ -80,14 +80,41 @@ public class Lotto {
                     CountNumber[4]++;
                 }
             }
+            return CountNumber;
         }
 
 
+        public int[] TotalNumber(List<Integer> correct, List<Boolean> BonusCorrect){
+
+
+            int[] totalNumber = {};
+
+            for(int index = 0; index < correct.size(); index++){
+                    if(correct.get(index) == 3){
+                        totalNumber[0]+=5000;
+                    }
+                    if(correct.get(index) == 4){
+                        totalNumber[1]+=50000;
+                    }
+                    if(correct.get(index) == 5 && !BonusCorrect.get(index)){
+                        totalNumber[2]+=1500000;
+                    }
+                    if(correct.get(index) == 5 && BonusCorrect.get(index)){
+                        totalNumber[3]+=30000000;
+                    }
+                    if(correct.get(index) == 6){
+                        totalNumber[4]+=2000000000;
+                    }
+            }
+
+        return totalNumber;
+
     }
+}
 
 
 
 
 
     // TODO: 추가 기능 구현
-}
+
