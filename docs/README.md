@@ -36,7 +36,7 @@
   - [ ] 로또의 각 번호가 중복되는지 검증 Lotto#validateHasDuplicate(List<Integer> numbers)
   - [ ] 로또 번호 리스트를 오름차순으로 정렬 Lotto#ascendingSort(List<Integer> numbers)
 - [ ] 로또 1장 가격 상수 처리 (1000) 
-- [ ] 로또 번호 리스트 사이즈 상수 처리 (6)
+- [X] 로또 번호 리스트 사이즈 상수 처리 (6)
 - [ ] 로또 각 번호 숫자 범위 상수 처리 (1~45)
 - [ ] 로또 번호 리스트에 보너스 번호가 포함되어 있는지 확인 Lotto#containsBonusNumber(int bonusNumber)
 - [ ] 로또 번호 리스트 반환 Lotto#getNumbers()
