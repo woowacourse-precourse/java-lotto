@@ -6,8 +6,9 @@
 
 ## 기능 구현 목록
 ### 로또 용지 - Lotto
-- [ ] 지정된 번호로 로또를 생성한다. - generateRandomNumbers
-- [ ] 생성된 로또를 검증한다. - validate
+- [x] 지정된 번호로 로또를 생성한다. - Lotto#generateLotto
+- [x] 중복되지 않는 6개의 랜덤번호를 생성한다. - generateRandomNumbers
+- [x] 생성된 로또를 검증한다. - validate
   - 로또 번호의 숫자 범위는 1~45까지이다. - validateRange
   - 1개의 로또를 발행할 때 번호가 중복되면 안된다. - validateDuplicate
   - 총 6개의 숫자를 뽑는다. - validateSize
