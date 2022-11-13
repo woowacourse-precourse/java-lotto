@@ -10,10 +10,7 @@ public class LottoManager {
     
     // 전체 동작을 구현하는 메소드
     public void run(){
-        // 로또 구입 금액 입력
-        String stringMoney = readLine();
-        //
-        insertMoney(stringMoney);
+        insertMoneyUI();
     }
     // 로또 구입 금액 입력이 유효한지 확인
     // 1. 숫자가 아닌 값 입력 시
@@ -39,5 +36,12 @@ public class LottoManager {
         }
 
         this.money = Integer.parseInt(stringMoney);
+    }
+
+    // 사용자로부터 로또 구입 금액 입력받는 메소드
+    public void insertMoneyUI(){
+        System.out.println("구입 금액을 입력해 주세요.");
+        String stringMoney = readLine();
+        insertMoney(stringMoney);
     }
 }
