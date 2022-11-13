@@ -31,4 +31,8 @@ public class Lotto {
 			throw new IllegalArgumentException();
 		}
 	}
+	
+	public List<Integer> getLotto() {
+		return numbers;
+	}
 }
