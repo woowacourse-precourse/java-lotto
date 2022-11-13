@@ -66,7 +66,7 @@ public class BuyLotto {
         return lottoNumbers;
     }
 
-    public List<Integer> numbers() {
+    public static List<Integer> numbers() {
         System.out.print(INPUT_SENTENCE.WIN.label());
         String number = Console.readLine();
         List<String> winNumbers = new ArrayList<>(Arrays.asList(number.split("\\s*,\\s*")));
