@@ -49,4 +49,15 @@ public class DomainTest {
         domain.validateWinningNumberInput("1,2,3,4,5,6");
     }
 
+    @DisplayName("input을 Integer List 형태로 trim 테스트")
+    @Test
+    void trimLottoNumberInputTest() {
+        List<Integer> result = Arrays.asList(1, 2, 3, 4, 5, 6);
+        assertThat(domain.trimLottoNumberInput("1,2,3,4,5,6").containsAll(result));
+
+        result = Arrays.asList(11, 22, 33, 44, 43, 42);
+        assertThat(domain.trimLottoNumberInput("11,22,33,44,43,42").containsAll(result));
+
+    }
+
 }
