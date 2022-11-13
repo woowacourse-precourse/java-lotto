@@ -9,21 +9,17 @@ public class WinningTicket {
     private static final String OVERLAP_MESSAGE = "[ERROR] 중복되는 숫자가 존재합니다.";
     private static final String OVERLAP_BONUS_NUMBER_MESSAGE = "[ERROR] 보너스 숫자가 당첨번호에 존재합니다.";
     private static final int MAX_SIZE = 6;
-    private List<Integer> winnings;
-    private int bonusNumber;
+    private final List<Integer> winnings;
+    private final int bonusNumber;
 
-    public WinningTicket(List<Integer> winnings, int bonusNumber) {
-        try {
-            validateNumberRange(winnings);
-            validateLength(winnings);
-            validateOverlap(winnings);
-            checkRange(bonusNumber);
-            validateBonusNumberOverlap(winnings, bonusNumber);
-            this.winnings = winnings;
-            this.bonusNumber = bonusNumber;
-        } catch(IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+    public WinningTicket(List<Integer> winnings, int bonusNumber) throws IllegalArgumentException {
+        validateNumberRange(winnings);
+        validateLength(winnings);
+        validateOverlap(winnings);
+        checkRange(bonusNumber);
+        validateBonusNumberOverlap(winnings, bonusNumber);
+        this.winnings = winnings;
+        this.bonusNumber = bonusNumber;
     }
 
     public void validateNumberRange(List<Integer> winnings) throws IllegalArgumentException {
