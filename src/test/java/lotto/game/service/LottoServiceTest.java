@@ -25,13 +25,14 @@ class LottoServiceTest {
         // given
         Money money = Money.of(10000);
 
-        // then
+        // when
         List<Lotto> lottos = lottoService.buyLotto(money);
 
-        // when
+        // then
         assertThat(lottos.size())
                 .isEqualTo(10);
     }
+
 
     @Test
     @DisplayName("로또 번호가 3개 같으면 5등이어야 한다")
