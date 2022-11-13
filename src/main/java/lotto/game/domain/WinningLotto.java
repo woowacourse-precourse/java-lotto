@@ -4,7 +4,6 @@ import static lotto.game.ExceptionHandler.*;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -63,22 +62,5 @@ public class WinningLotto {
 
     public Integer getBonusNumber() {
         return bonusNumber;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof WinningLotto)) {
-            return false;
-        }
-        WinningLotto that = (WinningLotto) o;
-        return Objects.equals(lotto, that.lotto) && Objects.equals(bonusNumber, that.bonusNumber);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(lotto, bonusNumber);
     }
 }
