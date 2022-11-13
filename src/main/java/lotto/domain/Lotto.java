@@ -17,7 +17,7 @@ public class Lotto {
 
 	private void validate(List<Integer> numbers) {
 		validNumbersSize(numbers);
-		validLottoRange(numbers);
+		validLottoNumberRange(numbers);
 		validDuplicated(numbers);
 	}
 
@@ -47,7 +47,7 @@ public class Lotto {
 		}
 	}
 
-	private void validLottoRange(List<Integer> numbers) {
+	private void validLottoNumberRange(List<Integer> numbers) {
 		//범위 1부터 45 까지
 		int count = (int)numbers.stream().filter(i -> 1 <= i && i <= 45).count();
 		if (count != 6) {
