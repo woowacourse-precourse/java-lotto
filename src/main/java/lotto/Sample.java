@@ -65,4 +65,21 @@ public class Sample {
             }
         }
     }
+
+    public int getBonusNumber(String line){
+        try{
+            int bonusNumber = Integer.parseInt(line);
+            validBonusNumber(bonusNumber);
+            return bonusNumber;
+        } catch (NumberFormatException e){
+            System.out.println(ILLEGAL_ARGUMENT_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
+        }
+    }
+    public void validBonusNumber(int bonusNumber){
+        if (bonusNumber < 1 || bonusNumber > 45){
+            System.out.println(ILLEGAL_ARGUMENT_ERROR_MESSAGE);
+            throw new IllegalArgumentException();
+        }
+    }
 }

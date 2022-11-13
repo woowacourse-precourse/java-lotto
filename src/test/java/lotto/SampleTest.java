@@ -97,4 +97,16 @@ class SampleTest {
         assertThatThrownBy(() -> sample.getWinningNumber("1,2,3,4,6"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void getBonusNumberTest1(){
+        assertThat(sample.getBonusNumber("4"))
+                .isEqualTo(4);
+    }
+
+    @Test
+    void getBonusNumberTest2(){
+        assertThatThrownBy(() -> sample.getBonusNumber("0"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
