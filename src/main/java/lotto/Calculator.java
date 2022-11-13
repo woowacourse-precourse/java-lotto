@@ -28,11 +28,12 @@ public class Calculator {
                 .forEach(s -> income += s.prize);
     }
 
-    static void printResult() {
+    void printResult() {
         Message.CORRECT_THREE.printResult(placesCount[5]);
         Message.CORRECT_FOUR.printResult(placesCount[4]);
         Message.CORRECT_FIVE.printResult(placesCount[3]);
         Message.CORRECT_FIVE_BONUS.printResult(placesCount[2]);
         Message.CORRECT_SIX.printResult(placesCount[1]);
+        System.out.printf("총 수익률은 %.1f입니다", (double) income / money);
     }
 }
