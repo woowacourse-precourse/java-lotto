@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.model.LottoCount;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 import static lotto.view.InputView.requestUserAmount;
 
@@ -14,7 +15,8 @@ public class LottoController {
         try{
             return new LottoCount(InputView.requestUserAmount());
         } catch (IllegalArgumentException e){
-            return requestUserAmount();
+            OutputView.printException(e);
         }
+        return new LottoCount(0);
     }
 }
