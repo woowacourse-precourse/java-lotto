@@ -10,21 +10,23 @@ public class WinningsCalculator {
 
     public WinningsCalculator(List<Lotto> lottos, WinningLotto winningLotto) {
         this.winningLotto = winningLotto;
-        numberOfRankedLottos = countRankedLottos(lottos);
+        init();
+        countRankedLottos(lottos);
+    }
+
+    private void init() {
+        numberOfRankedLottos = new EnumMap<Ranking, Integer>(Ranking.class);
+        for (Ranking ranking : Ranking.values()) {
+            numberOfRankedLottos.put(ranking, 0);
+        }
     }
 
     private  Map<Ranking, Integer> countRankedLottos(List<Lotto> lottos) {
-        Map<Ranking, Integer> numberOfRankedLottos = new EnumMap<>(Ranking.class);
-
         for (Lotto lotto : lottos) {
             int numberOfMatchNumbers = winningLotto.countMatchNumber(lotto);
             boolean bonusNumberMatch = winningLotto.checkBonusNumber(lotto);
             Ranking ranking = Ranking.getRank(numberOfMatchNumbers, bonusNumberMatch);
-
-            int currentCount = 0;
-            if (numberOfRankedLottos.containsKey(ranking)) {
-                currentCount = numberOfRankedLottos.get(ranking);
-            }
+            int currentCount = numberOfRankedLottos.get(ranking);
 
             numberOfRankedLottos.put(ranking, currentCount + 1);
         }
