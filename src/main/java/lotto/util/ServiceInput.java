@@ -35,6 +35,11 @@ public class ServiceInput {
             throw new IllegalArgumentException();
         }
 
+        if (Validator.isNotComma(inputWinningNumbers)){
+            Message.printInputErrorIsNotComma();
+            throw new IllegalArgumentException();
+        }
+
         return inputWinningNumbers;
     }
 }

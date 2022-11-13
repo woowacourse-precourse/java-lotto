@@ -12,11 +12,17 @@ public class Message {
 
     private static final String ERROR_MESSAGE = "[ERROR] ";
     private static final String INPUT_ERROR_EMPTY_MESSAGE = ERROR_MESSAGE + "빈 값이 입력되었습니다. 게임을 종료합니다.";
+    private static final String INPUT_ERROR_IS_NOT_COMMA_MESSAGE = ERROR_MESSAGE + "%d개가 아닌 개수로 입력되었습니다. 게임을 종료합니다.%n";
     private static final String INPUT_ERROR_USER_MONEY_MESSAGE = ERROR_MESSAGE + "%d단위로만 입력 가능합니다. 게임을 종료합니다.%n";
 
     public static void printInputErrorEmpty(){
         System.out.println(INPUT_ERROR_EMPTY_MESSAGE);
     }
+
+    public static void printInputErrorIsNotComma() {
+        System.out.printf(INPUT_ERROR_IS_NOT_COMMA_MESSAGE, Constant.LOTTO_SIZE);
+    }
+
     public static void printInputUserMoney(){
         System.out.println(INPUT_USER_MONEY_MESSAGE);
     }
@@ -38,4 +44,6 @@ public class Message {
     public static void printInputServiceWinningNumbers(){
         System.out.println(INPUT_SERVICE_WINNING_NUMBERS_MESSAGE);
     }
+
+
 }
