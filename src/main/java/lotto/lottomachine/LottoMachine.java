@@ -22,7 +22,7 @@ public class LottoMachine {
     public void start() {
         buyLotto();
         LottoPaper lottoPaper = GeneratorLottoPaper.generateLottoPaper(lottoPrice);
-        List<Integer> userNumbers = inputUserNumbers();
+        List<Integer> userNumbers = inputLottoNumbers();
     }
 
     public void buyLotto() {
@@ -37,10 +37,14 @@ public class LottoMachine {
         }
     }
 
-    public List<Integer> inputUserNumbers() {
+    public List<Integer> inputLottoNumbers() {
         if (!machineStatus) {
             return Collections.emptyList();
         }
+        return inputUserNumbers();
+    }
+
+    public List<Integer> inputUserNumbers() {
         try {
             List<Integer> userLottoNumbers = User.inputLottoNumbers();
             LottoNumbersValidation.validateLottoNumbers(userLottoNumbers);
