@@ -56,7 +56,7 @@
 ### 기능
 
 - [ ] 당첨과 보너스 번호를 추첨 - draw
-    - [ ] 번호 리스트 혹은 번호 입력 - inputNumber
+    - [x] 번호 리스트 혹은 번호 입력 - inputNumber
     - [ ] 문자열 번호를 숫자 형식으로 변환 - formatStringToNumber
         - [ ] 숫자 문자열인지 확인 - checkNumericString
     - [ ] 이미 추첨한 번호인지 확인 - checkAlreadyExistedNumber
