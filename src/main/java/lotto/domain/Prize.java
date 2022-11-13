@@ -7,7 +7,7 @@ import java.util.List;
 
 public enum Prize {
 
-    NONE(new MatchCount(-1, -1), 0, "없음"),
+    NONE(new MatchCount(0, 0), 0, "없음"),
     THREE_MATCH(new MatchCount(3, 0), 5000, "3개 일치 (5,000원)"),
     FOUR_MATCH(new MatchCount(4, 0), 50000, "4개 일치 (50,000원)"),
     FIVE_MATCH(new MatchCount(5, 0), 1500000, "5개 일치 (1,500,000원)"),
