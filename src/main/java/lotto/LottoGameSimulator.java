@@ -7,6 +7,7 @@ import java.util.List;
 
 public class LottoGameSimulator {
     private List<Lotto> purchasedLottos;
+    private WinningNumbers winningNumbers;
     private Money userMoney;
     public LottoGameSimulator() {
     }
@@ -38,6 +39,7 @@ public class LottoGameSimulator {
         MessagePrinter.printWinningNumbersInputRequest();
         String winningNumbersInput = Inputter.readLine();
         WinningNumbersValidator.validate(winningNumbersInput);
+        winningNumbers = WinningNumbersGenerator.generateWinningNumbers(winningNumbersInput);
     }
 
     public void getInputOfBonusNumber() {
