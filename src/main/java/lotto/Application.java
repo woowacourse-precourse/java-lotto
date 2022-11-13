@@ -13,7 +13,7 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
-    public List<Integer> createLotto(int money) {
+    public List<Integer> createLotto() {
         List<Integer> lottoNumber;
 
         while (true) {
@@ -34,6 +34,10 @@ public class Application {
         Set<Integer> reuslt = new HashSet<>(number);
 
         return number.size() == reuslt.size();
+    }
+
+    public void saveLotto(int money) {
+
     }
 
     private void validMoney(int money) {
