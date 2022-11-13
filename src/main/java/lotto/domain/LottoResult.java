@@ -14,6 +14,10 @@ public class LottoResult {
         }
     }
 
+    public Map<Rank, Integer> getLottoResult() {
+        return lottoResult;
+    }
+
     public void addMatchRankCount(Lottos lottos, WinningNumbers winningNumbers) {
         for (Lotto lotto : lottos.getLottos()) {
             Rank matchedRank = lotto.getRank(winningNumbers);
@@ -24,7 +28,7 @@ public class LottoResult {
     public double getLottoYield(LottoPurchaseAmount lottoPurchaseAmount) {
         double lottoReward = getTotalLottoReward();
 
-        return Math.round((lottoReward / lottoPurchaseAmount.getPurchaseAmount()) * 10) / 10.0;
+        return Math.round((lottoReward / lottoPurchaseAmount.getPurchaseAmount() * 100) * 10) / 10.0;
     }
 
     public double getTotalLottoReward() {
