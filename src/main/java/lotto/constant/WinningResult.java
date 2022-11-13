@@ -1,6 +1,6 @@
 package lotto.constant;
 
-public enum WinningRule {
+public enum WinningResult {
     RANK_1("1등", 2_000_000_000, "6개 일치 (2,000,000,000원)"),
     RANK_2("2등", 30_000_000, "5개 일치, 보너스 볼 일치 (30,000,000원)"),
     RANK_3("3등", 1_500_000, "5개 일치 (1,500,000원)"),
@@ -13,7 +13,7 @@ public enum WinningRule {
     private final int money;
     private final String announcement;
 
-    WinningRule(String rank, int money, String announcement) {
+    WinningResult(String rank, int money, String announcement) {
         this.rank = rank;
         this.money = money;
         this.announcement = announcement;
