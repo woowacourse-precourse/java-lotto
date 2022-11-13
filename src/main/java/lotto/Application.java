@@ -8,6 +8,11 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
+    static final int MIN_NUMBER = 1;
+    static final int MAX_NUMBER = 45;
+    static final int LOTTO_SIZE = 6;
+    static final int PRICE_OF_LOTTO = 1000;
+
     private int moneyToBuy;
     private final List<Lotto> purchasedLottoTickets = new ArrayList<>();
     private Lotto winningNumber;
@@ -40,17 +45,17 @@ public class Application {
     }
 
     private boolean checkDivisibleNumber(String answer) {
-        return (Integer.parseInt(answer) % 1000 != 0);
+        return (Integer.parseInt(answer) % PRICE_OF_LOTTO != 0);
     }
 
     public void buyLotto() {
-        for (int count = 0; count < this.moneyToBuy; count += 1000) {
+        for (int count = 0; count < this.moneyToBuy; count += PRICE_OF_LOTTO) {
             this.purchasedLottoTickets.add(createLotto());
         }
     }
 
     private Lotto createLotto() {
-        return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        return new Lotto(Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_SIZE));
     }
 
     public void printLottoList() {
@@ -112,7 +117,8 @@ public class Application {
     }
 
     private boolean checkOutOfRange(String answerBonusNumber) {
-        return (Integer.parseInt(answerBonusNumber) > 45 || Integer.parseInt(answerBonusNumber) < 1);
+        return (Integer.parseInt(answerBonusNumber) > MAX_NUMBER
+                || Integer.parseInt(answerBonusNumber) < MIN_NUMBER);
     }
 
     private boolean checkOverlapWinningNumber(String answerBonusNumber) {

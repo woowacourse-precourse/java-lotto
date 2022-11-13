@@ -19,7 +19,8 @@ public class Lotto {
     }
 
     private boolean checkSize(List<Integer> numbers) {
-        return numbers.size() != 6;
+        return numbers.size() != Application.LOTTO_SIZE;
+
     }
 
     private boolean checkOverlap(List<Integer> numbers) {
@@ -29,7 +30,7 @@ public class Lotto {
 
     private boolean checkOutOfRange(List<Integer> numbers) {
         for (Integer number : numbers) {
-            if (number > 45 || number < 1) {
+            if (number > Application.MAX_NUMBER || number < Application.MIN_NUMBER) {
                 return true;
             }
         }
