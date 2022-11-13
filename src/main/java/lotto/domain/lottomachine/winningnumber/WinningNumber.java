@@ -1,5 +1,6 @@
 package lotto.domain.lottomachine.winningnumber;
 
+import java.util.List;
 import java.util.Objects;
 
 public class WinningNumber {
@@ -39,5 +40,12 @@ public class WinningNumber {
 
     public boolean isSameValue(int number) {
         return this.number == number;
+    }
+
+    public String countSameValue(List<Integer> numbers) {
+        if (numbers.contains(number)) {
+            return "B";
+        }
+        return "";
     }
 }
