@@ -5,7 +5,7 @@ import java.util.List;
 public class BonusNumberInputController extends InputController {
 
     public String input() {
-        System.out.println("보너스 번호를 입력해 주세요");
+        printController.printBonusNumberMessage();
         return readLine();
     }
 

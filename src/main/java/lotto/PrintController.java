@@ -31,4 +31,18 @@ public class PrintController {
         // 소수점 둘째 자리에서 반올림
         System.out.println(String.format("총 수익률은 %.1f%%입니다.", prizeRate * 100));
     }
+
+    public void printPurchaseMoneyMessage() {
+        System.out.println(InputMessage.PURCHASE_MONEY_MESSAGE.message);
+    }
+
+    public void printWinNumberMessage() {
+        System.out.println(InputMessage.WIN_NUMBER_MESSAGE.message);
+    }
+
+    public void printBonusNumberMessage() {
+        System.out.println(InputMessage.BONUS_NUMBER_MESSAGE.message);
+    }
+
+
 }

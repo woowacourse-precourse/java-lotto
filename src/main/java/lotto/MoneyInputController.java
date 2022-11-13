@@ -3,7 +3,7 @@ package lotto;
 public class MoneyInputController extends InputController {
 
     public String input() {
-        System.out.println("구입금액을 입력해 주세요.");
+        printController.printPurchaseMoneyMessage();
         return readLine();
     }
 
