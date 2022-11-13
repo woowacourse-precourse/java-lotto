@@ -1,6 +1,8 @@
-package lotto;
+package lotto.domain;
 
+import java.util.Arrays;
 import lotto.domain.Lotto;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -24,5 +26,12 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @DisplayName("로또 정답 확인 테스트")
+    @Test
+    void countHitNumberTest() {
+        Assertions.assertThat(new Lotto(Arrays.asList(1,2,3,4,5,6))
+                .countHitNumber(new Lotto(Arrays.asList(1,2,3,4,5,6)))).isEqualTo(6);
+    }
+
+
 }
