@@ -20,8 +20,7 @@ class LottoDrawTest {
         LottoDraw lottoDraw = new LottoDraw(new LottoBuyer(1000));
 
         assertThat(lottoDraw.getTotalPrizeMoney()).isEqualTo(0);
-        assertThat(lottoDraw.getNumberOfMatching())
-                .hasSize(5);
+        assertThat(lottoDraw.getNumberOfMatching()).hasSize(5);
     }
 
     @Test
@@ -68,15 +67,10 @@ class LottoDrawTest {
         ByteArrayInputStream in = new ByteArrayInputStream("1,2,3,4,5,6\n7".getBytes());
         System.setIn(in);
 
-        LottoBuyer lottoBuyer = new LottoBuyer(10000, List.of(
-                List.of(10, 20, 30, 40, 42, 17),
-                List.of(1, 20, 30, 40, 42, 17),
-                List.of(1, 2, 30, 40, 42, 17),
-                List.of(1, 2, 3, 40, 42, 17),
+        LottoBuyer lottoBuyer = new LottoBuyer(5000, List.of(
                 List.of(1, 2, 30, 4, 42, 17),
                 List.of(1, 2, 30, 40, 42, 7),
                 List.of(1, 2, 3, 4, 42, 17),
-                List.of(1, 2, 3, 4, 5, 17),
                 List.of(1, 2, 3, 4, 5, 7),
                 List.of(1, 2, 3, 4, 5, 6)
                 ));
@@ -85,7 +79,7 @@ class LottoDrawTest {
         lottoDraw.compareLotteries();
 
         assertThat(lottoDraw.getNumberOfMatching())
-                .contains(entry(3, 2), entry(4, 1), entry(100, 1), entry(5, 1), entry(6, 1));
+                .contains(entry(3, 1), entry(4, 1), entry(5, 0), entry(6, 1), entry(7, 1));
     }
 
     @Test
@@ -93,19 +87,34 @@ class LottoDrawTest {
         ByteArrayInputStream in = new ByteArrayInputStream("1,2,3,4,5,6\n7".getBytes());
         System.setIn(in);
 
-        LottoBuyer lottoBuyer = new LottoBuyer(6000, List.of(
+        LottoBuyer lottoBuyer = new LottoBuyer(4000, List.of(
                 List.of(1, 2, 30, 40, 42, 17),
-                List.of(1, 2, 3, 40, 42, 17),
                 List.of(1, 2, 3, 4, 42, 17),
                 List.of(1, 2, 3, 4, 5, 17),
-                List.of(1, 2, 3, 4, 5, 7),
-                List.of(1, 2, 3, 4, 5, 6)
+                List.of(1, 2, 3, 4, 5, 7)
         ));
 
         LottoDraw lottoDraw = new LottoDraw(lottoBuyer);
         lottoDraw.compareLotteries();
         lottoDraw.calculatePrizeMoney();
 
-        assertThat(lottoDraw.getTotalPrizeMoney()).isEqualTo(2031555000);
+        assertThat(lottoDraw.getTotalPrizeMoney()).isEqualTo(31550000);
+    }
+
+    @Test
+    void calculateProfit() {
+        ByteArrayInputStream in = new ByteArrayInputStream("1,2,3,4,5,6\n7".getBytes());
+        System.setIn(in);
+
+        LottoBuyer lottoBuyer = new LottoBuyer(2000, List.of(
+                List.of(1, 2, 30, 40, 42, 17),
+                List.of(1, 2, 3, 40, 42, 17)
+        ));
+
+        LottoDraw lottoDraw = new LottoDraw(lottoBuyer);
+        lottoDraw.compareLotteries();
+        lottoDraw.calculatePrizeMoney();
+
+        assertThat(lottoDraw.calculateProfit()).isEqualTo(250.0);
     }
 }

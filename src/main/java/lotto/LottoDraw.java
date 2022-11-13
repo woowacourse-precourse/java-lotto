@@ -61,6 +61,11 @@ public class LottoDraw {
         }
     }
 
+    public double calculateProfit() {
+        double profitRate = (double) totalPrizeMoney / lottoBuyer.getCost() * 100;
+        return Math.round(profitRate * 10) / 10.0;
+    }
+
     public int getTotalPrizeMoney() {
         return totalPrizeMoney;
     }
