@@ -1,9 +1,13 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import lotto.domain.Lotto;
 import lotto.domain.Money;
 import lotto.util.InputChecker;
 import lotto.view.InputView;
 import lotto.view.OutputView;
+
+import java.util.List;
 
 public class LottoGame {
     private Money money;
@@ -18,6 +22,7 @@ public class LottoGame {
     }
     public void startGame(){
         getMoneyInput();
+        getLottoNumberList();
     }
     public void getMoneyInput(){
         String input=inputView.inputMoney();
@@ -25,5 +30,8 @@ public class LottoGame {
             money=new Money(Integer.parseInt(input));
             System.out.printf("%d%s\n", money.getLottoCount(), outputView.printLottoPurchaseCount());
         }
+    }
+    public void getLottoNumberList(){
+        Lotto lotto=new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
 }
