@@ -51,4 +51,12 @@ public class Validator {
         }
         return true;
     }
+
+    public static void validateRange(List<Integer> numbers) {
+        numbers.forEach(number -> {
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException(ExceptionType.LOTTO_RANGE_EXCEPTION.getMessage());
+            }
+        });
+    }
 }
