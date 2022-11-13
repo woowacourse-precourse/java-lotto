@@ -41,6 +41,10 @@ public class Lottos {
         return result;
     }
 
+    public Double calculateProfit(Double totalPrize) {
+        return totalPrize / price * 100;
+    }
+
     @Override
     public String toString() {
         String quantityMessage = price / LOTTO_PRICE + QUANTITY_NOTIFICATION_MESSAGE;
