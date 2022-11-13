@@ -21,7 +21,7 @@ class JudgementTest {
     @Test
     void correctBonus() {
         Judgement judgement = new Judgement();
-        int result = judgement.correctBonus(List.of(1, 2, 3, 4, 5, 6), 7);
-        assertThat(result).isEqualTo(0);
+        boolean result = judgement.correctBonus(List.of(1, 2, 3, 4, 5, 6), 6);
+        assertThat(result).isEqualTo(true);
     }
 }
