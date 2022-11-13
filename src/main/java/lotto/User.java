@@ -1,7 +1,7 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import camp.nextstep.edu.missionutils.Console;
@@ -12,13 +12,13 @@ public class User {
     private List<Lotto> lottoBundle = new ArrayList<>();
     private List<Integer> winningNumber = new ArrayList<>();
     private int bonusNumber;
-    private Map<String,Integer> winningNumberCounting= new HashMap<>(){{
-        put("first",0);
-        put("second",0);
-        put("third",0);
-        put("fourth",0);
-        put("fifth",0);
-    }};
+    private List<Integer> winningNumberCounting= new ArrayList<>(8);
+
+    public User() {
+        for (int i=0; i<8; i++) {
+            winningNumberCounting.add(0);
+        }
+    }
 
     LotteryTicketingMachine lotteryTicketingMachine = new LotteryTicketingMachine();
 
@@ -49,7 +49,7 @@ public class User {
         return bonusNumber;
     }
 
-    public Map<String,Integer> getWinningNumberCounting() {
+    public List<Integer> getWinningNumberCounting() {
         return winningNumberCounting;
     }
 
@@ -84,27 +84,20 @@ public class User {
     }
 
     public void countWinningNumber (int howManyWinningNumber, boolean isBonusNumberCorrect) {
-        if (howManyWinningNumber==6) {
-            winningNumberCounting.put("first",winningNumberCounting.get("first")+1);
-        } else if (howManyWinningNumber==5) {
-            if (isBonusNumberCorrect) {
-                winningNumberCounting.put("second",winningNumberCounting.get("second")+1);
-                return;
+        if (howManyWinningNumber>=5) {
+            howManyWinningNumber++;
+            if (!isBonusNumberCorrect) {
+                howManyWinningNumber--;
             }
-                winningNumberCounting.put("third",winningNumberCounting.get("third")+1);
-        } else if (howManyWinningNumber==4) {
-            winningNumberCounting.put("fourth",winningNumberCounting.get("fourth")+1);
-        } else if (howManyWinningNumber==3) {
-            winningNumberCounting.put("fifth",winningNumberCounting.get("fifth")+1);
+        } else if (howManyWinningNumber<3) {
+            howManyWinningNumber=2;
         }
+        winningNumberCounting.set(howManyWinningNumber,winningNumberCounting.get(howManyWinningNumber)+1);
     }
 
     public void calculateEarning() {
-        earning+=winningNumberCounting.get("first")*WinningNumberAndEarningPair.CORRECT_6.getEarning();
-        earning+=winningNumberCounting.get("second")*WinningNumberAndEarningPair.CORRECT_5_BONUS.getEarning();
-        earning+=winningNumberCounting.get("third")*WinningNumberAndEarningPair.CORRECT_5.getEarning();
-        earning+=winningNumberCounting.get("fourth")*WinningNumberAndEarningPair.CORRECT_4.getEarning();
-        earning+=winningNumberCounting.get("fifth")* WinningNumberAndEarningPair.CORRECT_3.getEarning();
+        Arrays.stream(WinningNumberAndEarningPair.values())
+            .forEach(tmp -> earning=earning+tmp.getEarning()*winningNumberCounting.get(tmp.ordinal()+2));
     }
 
     public double calculateEarningRate() {
