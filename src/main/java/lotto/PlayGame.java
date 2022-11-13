@@ -2,8 +2,9 @@ package lotto;
 
 import user.BuyLotto;
 
-import java.util.List;
 import java.util.Scanner;
+
+import static message.Message.*;
 
 public class PlayGame {
     Scanner sc = new Scanner(System.in);
@@ -11,19 +12,19 @@ public class PlayGame {
 
 
     public void run() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(INPUT_MONEY);
         int money = sc.nextInt();
 
         int lottoCnt = buyLotto.countHowMany(money);
-        System.out.println(lottoCnt+"개를 구매했습니다.");
+        System.out.println(lottoCnt +""+ COUNT_LOTTO);
 
-        System.out.println("당첨 번호를 입력해주세요.");
+        System.out.println(INPUT_LOTTO_NUMBER);
         String userInput = sc.nextLine();
 
-        System.out.println("보너스 번호를 입력해주세요");
+        System.out.println(INPUT_BONUS_NUMBER);
         int bonusNum = sc.nextInt();
 
-        System.out.println("당첨통계\n---");
+        System.out.println(STATISTICS);
         System.out.println();
     }
 }

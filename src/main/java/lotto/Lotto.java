@@ -1,12 +1,9 @@
 package lotto;
 
 
-import camp.nextstep.edu.missionutils.Randoms;
-
-import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.ErrorMessage.*;
+import static message.ErrorMessage.*;
 
 public class Lotto {
     private final List<Integer> numbers;
