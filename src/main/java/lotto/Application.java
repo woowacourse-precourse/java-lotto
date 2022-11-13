@@ -4,7 +4,7 @@ import handler.InputHandler;
 import handler.OutputHandler;
 import handler.console.ConsoleInput;
 import handler.console.ConsoleOutput;
-import lotto.domain.LottoMachine;
+import lotto.domain.LottoWinningSystem;
 import lotto.domain.PickNumbers;
 import lotto.domain.RandomPicker;
 import lotto.view.InputView;
@@ -22,8 +22,8 @@ public class Application {
         PickNumbers pickNumbers = new RandomPicker();
 
         try {
-            LottoMachine lottoMachine = new LottoMachine(inputView, outputView, pickNumbers);
-            lottoMachine.run();
+            LottoWinningSystem lottoWinningSystem = new LottoWinningSystem(inputView, outputView, pickNumbers);
+            lottoWinningSystem.run();
         } catch (IllegalArgumentException e) {
             outputHandler.println(ERROR_PREFIX + e.getMessage());
         }

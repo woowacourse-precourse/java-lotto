@@ -3,12 +3,12 @@ package lotto.domain;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
-public final class LottoMachine {
+public final class LottoWinningSystem {
     private final InputView inputView;
     private final OutputView outputView;
     private final PickNumbers pickNumbers;
 
-    public LottoMachine(InputView inputView, OutputView outputView, PickNumbers pickNumbers) {
+    public LottoWinningSystem(InputView inputView, OutputView outputView, PickNumbers pickNumbers) {
         validateInput(inputView);
         validateOutput(outputView);
         validatePickNumbers(pickNumbers);
