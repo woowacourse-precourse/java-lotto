@@ -16,7 +16,7 @@ public class LottoTicketing {
         return theNumberOfTickets;
     }
 
-    public List<Integer> getValidLottoNumbers(){
+    public static List<Integer> getValidLottoNumbers(){
         List<Integer> lottoNumbers;
         lottoNumbers=Randoms.pickUniqueNumbersInRange(1,45,6);
         Set<Integer>lottoNumbersWithoutDuplication=checkDuplicatedNumbers(lottoNumbers);
@@ -33,7 +33,7 @@ public class LottoTicketing {
         return lottoNumbersWithoutDuplication;
     }
 
-    public List<List<Integer>> giveLottoTickets(int howManyTickets){
+    public static List<List<Integer>> giveLottoTickets(int howManyTickets){
         List<List<Integer>> lottoTickets = new ArrayList<>();
         for(int howManyTimes=0; howManyTimes<howManyTickets; howManyTimes++) {
             lottoTickets.add(getValidLottoNumbers());

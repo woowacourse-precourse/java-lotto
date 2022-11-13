@@ -16,7 +16,7 @@ public class ConsoleUserInput {
 
     }
 
-    public String inputWinningNumbers(){
+    public static String inputWinningNumbers(){
         String userInput = Console.readLine();
         String useTrim = new String();
         userInput=useTrim.trim();
@@ -40,7 +40,7 @@ public class ConsoleUserInput {
         return sixWinningNumbers;
     }
 
-    public int inputBonusNumber(){
+    public static int inputBonusNumber(){
         String bonusNumber = Console.readLine();
         if(bonusNumber.length()>2){
             Validator.isValidLength(bonusNumber,2);
@@ -51,7 +51,7 @@ public class ConsoleUserInput {
         return bonus;
     }
 
-    public int inputMoneyForLottos(){
+    public static int inputMoneyForLottos(){
         String moneyForLottos = Console.readLine();
         Validator.isValidUnitForPayment(moneyForLottos);
         Validator.isValidInputForPayment(moneyForLottos);
