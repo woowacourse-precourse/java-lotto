@@ -7,4 +7,8 @@ public class View {
         return Console.readLine();
     }
 
+    public static void Output(String message) {
+        System.out.println(message);
+    }
+
 }
