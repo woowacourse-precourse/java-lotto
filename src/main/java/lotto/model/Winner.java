@@ -4,6 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.*;
 
+import static lotto.constValue.Constants.ExceptionMessage.LOTTO_WINNING_NUMBER_BAD_FORMAT_ERROR_MESSAGE;
+import static lotto.constValue.Constants.ExceptionMessage.LOTTO_WINNING_NUMBER_OVER_RANGE_ERROR_MESSAGE;
+
 public class Winner {
 
     private final List<Integer> lottoWinningNumber;
@@ -45,14 +48,14 @@ public class Winner {
         if (lottoNumberParsing >= 1 && lottoNumberParsing <= 45) {
             return;
         }
-        throw new IllegalArgumentException("[ERROR] : 당첨 번호의 범위를 벗어났습니다.");
+        throw new IllegalArgumentException(LOTTO_WINNING_NUMBER_OVER_RANGE_ERROR_MESSAGE);
     }
 
     private static void checkLottoWinningNumberFormat(String lottoNumber) {
         if (isLottoNumberFormat(lottoNumber)) {
             return;
         }
-        throw new IllegalArgumentException("[ERROR] : 당첨 번호 형식에 맞지 않습니다.");
+        throw new IllegalArgumentException(LOTTO_WINNING_NUMBER_BAD_FORMAT_ERROR_MESSAGE);
     }
 
     private static boolean isLottoNumberFormat(String lottoNumber) {

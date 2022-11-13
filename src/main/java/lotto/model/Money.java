@@ -3,8 +3,8 @@ package lotto.model;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static lotto.constValue.Constants.ExceptionMessage.MONEY_Input_Number_ERROR_MESSAGE;
-import static lotto.constValue.Constants.ExceptionMessage.MONEY_Input_THOUSAND_ERROR_MESSAGE;
+import static lotto.constValue.Constants.ExceptionMessage.MONEY_INPUT_NON_Number_ERROR_MESSAGE;
+import static lotto.constValue.Constants.ExceptionMessage.MONEY_INPUT_NON_THOUSAND_ERROR_MESSAGE;
 
 public class Money {
 
@@ -24,7 +24,7 @@ public class Money {
         if(isMoneyInputNumberCheck(moneyInput)){
             return;
         }
-        throw new IllegalArgumentException(MONEY_Input_Number_ERROR_MESSAGE);
+        throw new IllegalArgumentException(MONEY_INPUT_NON_Number_ERROR_MESSAGE);
     }
 
     private static boolean isMoneyInputNumberCheck(String moneyInput){
@@ -44,7 +44,7 @@ public class Money {
         if(isMoneyInputThousand(moneyInput)){
             return;
         }
-        throw new IllegalArgumentException(MONEY_Input_THOUSAND_ERROR_MESSAGE);
+        throw new IllegalArgumentException(MONEY_INPUT_NON_THOUSAND_ERROR_MESSAGE);
     }
 
     private static boolean isMoneyInputThousand(String moneyInput){

@@ -2,7 +2,6 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.controller.LottoController;
-import lotto.exception.LottoException;
 import lotto.model.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;

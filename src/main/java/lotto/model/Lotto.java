@@ -28,7 +28,7 @@ public class Lotto {
     private void checkLottoNumberRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (number < 1 || number > 45) {
-                throw new IllegalArgumentException(LOTTO_NUMBER_RANGE_ERROR_MESSAGE);
+                throw new IllegalArgumentException(LOTTO_NUMBER_OVER_RANGE_ERROR_MESSAGE);
             }
         }
     }
