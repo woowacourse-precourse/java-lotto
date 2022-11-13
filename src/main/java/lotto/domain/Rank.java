@@ -1,26 +1,36 @@
 package lotto.domain;
 
 public enum Rank {
-    FIRST(1), SECOND(2), THIRD(3), FOURTH(4), FIFTH(5), NO_LUCK(6);
+    FIRST(1, Lotto.NUMBER_SIZE, false),
+    SECOND(2, Lotto.NUMBER_SIZE - 1, true),
+    THIRD(3, Lotto.NUMBER_SIZE - 1, false),
+    FOURTH(4, Lotto.NUMBER_SIZE - 2, false),
+    FIFTH(5, Lotto.NUMBER_SIZE - 3, false);
 
+    private static final int NO_LUCK = -1;
     private final int rank;
-    Rank(int rank) {
+    private final int jackpotCnt;
+    private final boolean hasBonus;
+
+    Rank(int rank, int jackpotCnt, boolean hasBonus) {
         this.rank = rank;
+        this.jackpotCnt = jackpotCnt;
+        this.hasBonus = hasBonus;
     }
 
     public static int of(int jackpotCnt, boolean hasBonus) {
-        if (jackpotCnt == Lotto.NUMBER_SIZE) {
-            return FIRST.rank;
-        } else if ((jackpotCnt == Lotto.NUMBER_SIZE - 1) && hasBonus) {
-            return SECOND.rank;
-        } else if (jackpotCnt == Lotto.NUMBER_SIZE - 1) {
-            return THIRD.rank;
-        } else if (jackpotCnt == Lotto.NUMBER_SIZE - 2) {
-            return FOURTH.rank;
-        } else if (jackpotCnt == Lotto.NUMBER_SIZE - 3) {
-            return FIFTH.rank;
+        for (Rank instance : Rank.values()) {
+            if (jackpotCnt == SECOND.jackpotCnt && hasBonus) {
+                return SECOND.rank;
+            } else if (jackpotCnt == THIRD.jackpotCnt) {
+                return THIRD.rank;
+            }
+
+            if (jackpotCnt == instance.jackpotCnt) {
+                return instance.rank;
+            }
         }
 
-        return NO_LUCK.rank;
+        return NO_LUCK;
     }
 }

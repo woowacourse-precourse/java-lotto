@@ -18,12 +18,12 @@ public class JackpotBonusTest {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> {new JackpotBonus(jackpotNumbers, bonusNumber);});
     }
-    @DisplayName("당첨 번호가 3개 미만으로 일치하면 6을 반환한다")
+    @DisplayName("당첨 번호가 3개 미만으로 일치하면 -1을 반환한다")
     @Test
     void rank6By2Jackpot() {
         Lotto lotto = new Lotto(List.of(1, 2, 7, 8, 9, 10));
         assertThat(jackpotBonus.getRankOf(lotto))
-                .isEqualTo(6);
+                .isEqualTo(-1);
     }
 
     @DisplayName("당첨 번호가 3개 일치하면 5를 반환한다")
