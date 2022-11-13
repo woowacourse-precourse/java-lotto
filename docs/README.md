@@ -109,26 +109,27 @@
 
 - Lotto 모델
     - [ ] 몇등짜리 로또인지 추첨한다. `Lotto#draw`
+    - [ ✔ ] 로또 번호 리스트의 문자열을 반환한다. `Lotto#toString`
     - [ ] 유효한 로또인지 검사한다. `Lotto#validate`
-    - [ ] 로또 번호 리스트의 문자열을 반환한다. `Lotto#toString`
+
 
 - LottoMachine 모델
-    - [ ] 금액에 맞게 로또를 발행한다. `LottoMachine#publish`
+    - [ ✔ ] 금액에 맞게 로또를 발행한다. `LottoMachine#publish`
     - [ ] 입력된 모든 로또를 추첨하고 로또의 기록을 반환한다. `LottoMachine#drawAll`
-    - [ ] 당첨 번호와 보너스번호를 저장한다. `LottoMachind#setLuckyNumber`
+    - [ ] 당첨 번호와 보너스번호를 저장한다. `LottoMachine#setLuckyNumber`
+    - [ ] 당첨 번호와 보너스번호, 입력된 돈을 유효성검사한다. `LottoMachine#validate`
 
 - WinningRecord 모델
-    - [ ] 당첨 내역을 저장한다. `WinningRecord#setWinningHistory`
     - [ ] 당첨 기록을 반환한다. `WinningRecord#getWinningHistory`
     - [ ] 수익률을 반환한다. `WinningRecord#getYield`
 
 #### View
 
 - CommonView
-    - [ ] 예외 상황 시 에러 문구를 출력해야 한다. `Commontview#printExceptionMessage`
-    - [ ] 당첨 번호 입력 문구를 출력한다. `CommonView#printInputAnswerMessage`
-    - [ ] 보너스 번호 입력 문구를 출력한다. `CommonView#printInputBonusMessage`
-    - [ ] 구입금액 입력 문구를 출력한다. `CommonView#printInputMoneyMessage`
+    - [ ✔ ] 예외 상황 시 에러 문구를 출력해야 한다. `Commontview#printExceptionMessage`
+    - [ ✔ ] 당첨 번호 입력 문구를 출력한다. `CommonView#printInputAnswerMessage`
+    - [ ✔ ] 보너스 번호 입력 문구를 출력한다. `CommonView#printInputBonusMessage`
+    - [ ✔ ] 구입금액 입력 문구를 출력한다. `CommonView#printInputMoneyMessage`
 
 - PublishView
     - [ ] 발행한 로또 수량 및 번호를 출력한다. `PublishView#printPublishInformation`
@@ -142,6 +143,7 @@
 - [ ] 로또 애플리케이션을 시작한다. `LottoController#play`
 - [ ] 로또를 구매하도록 중개한다. `LottoController#buyLotto`
 - [ ] 당첨 번호와 보너스 번호를 입력하도록 중개한다. `Lottocontroller#setAnswer`
-- [ ] 결과를 출력하도록 중개한다. `Lottocontroller#getResult`
+- [ ] 결과를 출력하도록 중개한다. `LottoController#getResult`
+- [ ] 입력값을 유효성검사한다. `LottoController#validateInput`
 
 
