@@ -1,11 +1,16 @@
 package lotto.verifiable;
 
-import lotto.Grade;
 import lotto.Prize;
+import lotto.Profit;
 
 import java.util.*;
 
 public class CheckPrize implements Verifiable<Prize>{
+    @Override
+    public Integer checkWithValue(Profit input) {
+        return null;
+    }
+
     @Override
     public Integer checkWithValue(Prize input) {
         List<Integer> numbersWithBonus = input.getNumberWithBonusNumber();
@@ -19,9 +24,9 @@ public class CheckPrize implements Verifiable<Prize>{
         return cnt;
     }
 
-    public Map<Grade, Integer> checkPrizes(List<List<Integer>> numbers, List<Integer> prizeNumber, Integer bonusNumber){
+    public Map<PrizeMoney, Integer> checkPrizes(List<List<Integer>> numbers, List<Integer> prizeNumber, Integer bonusNumber){
         Verifiable<Prize> check = new CheckPrize();
-        Map<Grade, Integer> gradeCount = new EnumMap<>(Grade.class);
+        Map<PrizeMoney, Integer> gradeCount = new EnumMap<>(PrizeMoney.class);
         initialMap(gradeCount);
 
         List<Integer> bonus = new ArrayList<>();
@@ -35,29 +40,29 @@ public class CheckPrize implements Verifiable<Prize>{
         return gradeCount;
     }
 
-    private Map<Grade, Integer> recordGrade(Integer prizeCount, Map<Grade, Integer> gradeCount, Integer bonusCount) {
+    private Map<PrizeMoney, Integer> recordGrade(Integer prizeCount, Map<PrizeMoney, Integer> gradeCount, Integer bonusCount) {
         if(prizeCount.equals(6)) {
-            Integer integer = gradeCount.get(Grade.FIRST);
-            gradeCount.put(Grade.FIRST, integer+1);
+            Integer integer = gradeCount.get(PrizeMoney.FIRST);
+            gradeCount.put(PrizeMoney.FIRST, integer+1);
         } else if(prizeCount.equals(5) && bonusCount.equals(1)){
-            Integer integer = gradeCount.get(Grade.SECOND);
-            gradeCount.put(Grade.SECOND, integer+1);
+            Integer integer = gradeCount.get(PrizeMoney.SECOND);
+            gradeCount.put(PrizeMoney.SECOND, integer+1);
         } else if (prizeCount.equals(5)) {
-            Integer integer = gradeCount.get(Grade.THIRD);
-            gradeCount.put(Grade.THIRD, integer+1);
+            Integer integer = gradeCount.get(PrizeMoney.THIRD);
+            gradeCount.put(PrizeMoney.THIRD, integer+1);
         } else if (prizeCount.equals(4)) {
-            Integer integer = gradeCount.get(Grade.FOUR);
-            gradeCount.put(Grade.FOUR, integer+1);
+            Integer integer = gradeCount.get(PrizeMoney.FOUR);
+            gradeCount.put(PrizeMoney.FOUR, integer+1);
         } else if (prizeCount.equals(3)) {
-            Integer integer = gradeCount.get(Grade.FIVE);
-            gradeCount.put(Grade.FIVE, integer+1);
+            Integer integer = gradeCount.get(PrizeMoney.FIVE);
+            gradeCount.put(PrizeMoney.FIVE, integer+1);
         }
         return gradeCount;
     }
 
-    private void initialMap(Map<Grade, Integer> gradeCount) {
-        Grade[] rankings = Grade.values();
-        for (Grade ranking : rankings) {
+    private void initialMap(Map<PrizeMoney, Integer> gradeCount) {
+        PrizeMoney[] rankings = PrizeMoney.values();
+        for (PrizeMoney ranking : rankings) {
             gradeCount.put(ranking, 0);
         }
     }

@@ -29,6 +29,7 @@ public class UserInput {
         Validator.validateOutOfSize(prizeNumbers);
         Validator.validateOutOfBoundList(prizeNumbers);
         Validator.validateDuplicateData(prizeNumbers);
+
         return prizeNumbers;
     }
 
@@ -36,9 +37,9 @@ public class UserInput {
         //    구매 금액 입력
         System.out.println("구입금액을 입력해 주세요.");
         String purchasePrice = Console.readLine();
+        Validator.validateContainString(purchasePrice);
         Validator.validateModIsZero(Integer.parseInt(purchasePrice));
         Integer purchaseAmount = Integer.parseInt(purchasePrice) / 1000;
         return purchaseAmount;
     }
-
 }

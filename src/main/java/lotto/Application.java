@@ -2,9 +2,11 @@ package lotto;
 
 import lotto.input.UserInput;
 import lotto.verifiable.CheckPrize;
+import lotto.verifiable.CheckProfit;
+import lotto.verifiable.Grade;
+import lotto.verifiable.PrizeMoney;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -19,23 +21,25 @@ public class Application {
 
         for (int i = 0; i < prizeAmount; i++) {
             List<Integer> integers = Lotto.generateRandomValue();
-            System.out.println("integers = " + integers);
+            System.out.println(integers);
             purchaseNumbers.add(integers);
         }
         List<Integer> prizeNumber = userInput.getPrizeNumber();
         Integer bounsNumber = userInput.getBounsNumber(prizeNumber);
 
-        Map<Grade, Integer> gradeIntegerMap = prize.checkPrizes(purchaseNumbers, prizeNumber, bounsNumber);
+        Map<PrizeMoney, Integer> gradeIntegerMap = prize.checkPrizes(purchaseNumbers, prizeNumber, bounsNumber);
         printGrade(gradeIntegerMap);
+        CheckProfit.printBenefit(gradeIntegerMap,prizeAmount);
     }
 
-    private static void printGrade(Map<Grade, Integer> gradeIntegerMap) {
+
+    private static void printGrade(Map<PrizeMoney, Integer> gradeIntegerMap) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + gradeIntegerMap.get(Grade.FIVE) + "개");
-        System.out.println("4개 일치 (50,000원) - " + gradeIntegerMap.get(Grade.FOUR) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + gradeIntegerMap.get(Grade.THIRD) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + gradeIntegerMap.get(Grade.SECOND) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + gradeIntegerMap.get(Grade.FIRST) + "개");
+        System.out.println("3개 일치 (5,000원) - " + gradeIntegerMap.get(PrizeMoney.FIVE) + "개");
+        System.out.println("4개 일치 (50,000원) - " + gradeIntegerMap.get(PrizeMoney.FOUR) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + gradeIntegerMap.get(PrizeMoney.THIRD) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + gradeIntegerMap.get(PrizeMoney.SECOND) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + gradeIntegerMap.get(PrizeMoney.FIRST) + "개");
     }
 }
