@@ -7,6 +7,7 @@ import lotto.View.OutputView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,6 +55,23 @@ public class LottoController {
         output.askBonusNumber();
         int bonusNumber = Integer.parseInt(readLine());
         lottoData.setBonusNumber(bonusNumber);
+    }
+
+    private void countLottoPrize(){
+        List<Lotto> lottos = lottoData.getLottos();
+        final int noPrize = 0;
+        HashMap<Integer, Integer> numberOfWins = new HashMap<Integer, Integer>();
+        initCountPrize(numberOfWins);
+        for(Lotto lotto : lottos){
+            int lottoPrize = getLottoPrize(lotto);
+            if(lottoPrize != noPrize) numberOfWins.put(lottoPrize, numberOfWins.get(lottoPrize));
+        }
+        lottoData.setNumberOfWins(numberOfWins);
+    }
+    private void initCountPrize(HashMap<Integer, Integer> countPrize){
+        for(LottoData.LottoPrize prize : LottoData.LottoPrize.values()){
+            countPrize.put(prize.getValue(), 0);
+        }
     }
     private int getLottoPrize(Lotto userNumberLotto){
         Lotto winnerNumberLotto = lottoData.getWinnerNumber();
