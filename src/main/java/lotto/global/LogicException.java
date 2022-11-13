@@ -7,29 +7,26 @@ import java.util.NoSuchElementException;
 
 public class LogicException {
 
-    public static final String ERROR = "[ERROR]";
-    public static final String NUM_ERROR = "숫자만 입력해야 합니다.";
-
     public static void verifyMoney(String money) {
         if (!money.matches("^\\d*")) {
-            System.out.println(ERROR + " 올바르지 않은 입력입니다.");
+            System.out.println(ExceptionCode.NUM_ERROR.getMessage());
 //            throw new IllegalArgumentException(ERROR + " " + NUM_ERROR);
-            throw new NoSuchElementException(NUM_ERROR);
+            throw new NoSuchElementException(ExceptionCode.NUM_ERROR.getMessage());
         }
         if(Integer.parseInt(money) % 1000 != 0 || Integer.parseInt(money) == 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionCode.MUST_DIVIDE_UNIT_PRICE.getMessage());
         }
     }
 
     public static void verifyLottoListVolume(List<Lotto> lottoList, int volume) {
         if(lottoList.size() != volume) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionCode.NOT_CORRECT_VOLUME.getMessage());
         }
     }
 
     public static void verifyBonusNum(int bonusNum) {
         if(bonusNum < 1 || bonusNum > 45) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ExceptionCode.NOT_CORRECT_BONUS_NUM_RANGE.getMessage());
         }
     }
 
@@ -37,7 +34,7 @@ public class LogicException {
         for(int i = 0; i < jackpotNumArr.length; i++) {
             int jackpotNum = Integer.parseInt(jackpotNumArr[i]);
             if(jackpotNum == bonusNum) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException(ExceptionCode.NOT_CORRECT_BONUS_NUM.getMessage());
             }
         }
     }

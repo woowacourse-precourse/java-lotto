@@ -71,7 +71,6 @@ class LottoTest {
     void checkLottoNumber() {
         List<Integer> lotto = List.of(1,2,3,4,5,7);
         String[] jackpotArr = new String[]{"1","2","3","4","5","6"};
-        Check check = new Check(0, false);
         int bonusNum = 7;
         List<Check> checkList = Service.checkLotto(lotto, jackpotArr, bonusNum);
         assertThat(checkList.get(0).getBonus()).isTrue();
