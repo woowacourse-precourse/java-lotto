@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import lotto.message.Const;
 import lotto.message.ErrorMessage;
+import lotto.util.Util;
 
 public class LottoGameService {
 
@@ -26,7 +27,18 @@ public class LottoGameService {
         }
     }
 
-    public List<Integer> pickWinningNumbers(String winningNumbers) {
+    public List<Integer> pickWinningNumbers(final String winningNumbers) {
+        validWinningNumbers(winningNumbers);
+        return Util.stringToIntegerList(winningNumbers);
+    }
 
+    private void validWinningNumbers(final String numbers) {
+        String[] winningNumbers = numbers.split(",");
+        for (String number : winningNumbers) {
+            if (!Pattern.matches("^[0-9]*$", number)) {
+                throw new IllegalArgumentException(
+                    ErrorMessage.LOTTO_NUMBER_NOT_NUMBER.getErrorMessage());
+            }
+        }
     }
 }
