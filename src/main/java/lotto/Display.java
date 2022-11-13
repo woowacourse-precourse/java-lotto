@@ -30,6 +30,23 @@ public class Display {
         System.out.println(PRINT.INPUT_BONUS_NUMBER);
     }
 
+    private static void print2ndRankCount(Ranking rank, int rankCount) {
+        System.out.printf(
+                PRINT.BONUS_CORRECT_FORMAT,
+                rank.getWinningCount(),
+                rank.getPrizeLabel(),
+                rankCount
+        );
+    }
+
+    private static void printRankCountExcept2nd(Ranking rank, int rankCount) {
+        System.out.printf(
+                PRINT.GENERAL_CORRECT_FORMAT,
+                rank.getWinningCount(), rank.getPrizeLabel(),
+                rankCount
+        );
+    }
+
     private static void countRanking(Buyer buyer) {
         System.out.println(PRINT.WINNING_RESULTS);
         List<Ranking> rankings = Ranking.getAll();
@@ -37,19 +54,12 @@ public class Display {
         rankings.stream()
                 .forEach(rank -> {
                     int rankCount = winningSummary.get(rank.getLabel());
+                    buyer.setTotalWinningPrize(rank.getPrize() * rankCount);
                     if (rank.getLabel().equals(Ranking.SECOND.getLabel())) {
-                        buyer.setTotalWinningPrize(rank.getPrize() * rankCount);
-                        System.out.printf(
-                                PRINT.BONUS_CORRECT_FORMAT,
-                                rank.getWinningCount(), rank.getPrizeLabel(),
-                                rankCount);
+                        print2ndRankCount(rank, rankCount);
                         return;
                     }
-                    buyer.setTotalWinningPrize(rank.getPrize() * rankCount);
-                    System.out.printf(
-                            PRINT.GENERAL_CORRECT_FORMAT,
-                            rank.getWinningCount(), rank.getPrizeLabel(),
-                            rankCount);
+                    printRankCountExcept2nd(rank, rankCount);
                 });
     }
 
