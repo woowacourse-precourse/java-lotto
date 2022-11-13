@@ -9,14 +9,23 @@ public class BonusNumber {
     private static final int MAX_NUMBER = 45;
 
     public int inputBonusNumber() {
-        int input = Integer.parseInt(Console.readLine());
+        String input = Console.readLine();
         validateNumber(input);
-        return input;
+        validateNumberRange(Integer.parseInt(input));
+        return Integer.parseInt(input);
     }
 
-    private void validateNumber(int number) {
+    private void validateNumberRange(int number) {
         if ((number < MIN_NUMBER) || (number > MAX_NUMBER)) {
             throw new IllegalArgumentException("[ERROR] 입력된 로또 보너스 번호가 1 ~ 45 사이가 아닙니다.");
+        }
+    }
+
+    private void validateNumber(String price) {
+        for (char c : price.toCharArray()) {
+            if (!Character.isDigit(c)) {
+                throw new IllegalArgumentException("[ERROR] 입력된 로또 보너스 번호가 숫자가 아닙니다.");
+            }
         }
     }
 
