@@ -11,10 +11,10 @@ public class InputViewValidation {
 
     static final String ERROR_NOT_INTEGER_FORMAT = "[ERROR] 숫자만 입력해주세요.";
     static final String ERROR_NOT_1000 = "[ERROR] 1000단위 숫자만 입력해주세요.";
-    static final String ERROR_LOTTO_SIZE = "[ERROR] 6개의 당첨 번호를 입력해주세요.";
-    static final String ERROR_LOTTO_NUMBER_RANGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
+    static public final String ERROR_LOTTO_SIZE = "[ERROR] 6개의 당첨 번호를 입력해주세요.";
+    static public final String ERROR_LOTTO_NUMBER_RANGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     static final String ERROR_INPUT_FORMAT = "[ERROR] 입력 형식이 지켜지지 않았습니다.";
-    static final String ERROR_DUPLICATE_NUMBER = "[ERROR] 중복된 수가 입력되었습니다.";
+    static public final String ERROR_DUPLICATE_NUMBER = "[ERROR] 중복된 수가 입력되었습니다.";
     static final Pattern NUMBER_PATTERN = Pattern.compile("^[0-9]*$");
 
 
