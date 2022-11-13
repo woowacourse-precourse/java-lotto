@@ -14,7 +14,7 @@ public class ValidationConfig {
 	private static final String NUMBER_INPUT_FORMAT_REGEX = "^([a-z0-9]+,)+[a-z0-9]+$"; // "<시작문자><쉼표><종료문자>" 형식을 표현한다
 	private static final String NUMBER_INPUT_COUNT_REGEX = "^([a-z0-9]+,){5}([a-z0-9]+)$"; // "(<시작문자><쉼표>)X5<종료문자>" 형식을 표현한다
 	private static final String NUMBER_IN_BETWEEN_1_AND_45 = "(^[1-9]$|^[1-3][0-9]$|^4[0-5]$)"; // "1~45" 숫자 형식을 표현한다
-	private static final String BONUS_NUMBER_INPUT_COUNT_REGEX = "^(.+)$"; // 1개의 문자 형식을 표현한다
+	private static final String BONUS_NUMBER_INPUT_COUNT_REGEX = "^([a-z0-9]+)$"; // 1개의 문자 형식을 표현한다
 
 	protected static boolean isInputEmpty(String input){
 		return input.isEmpty();

@@ -43,16 +43,16 @@ public class Validator {
 	}
 
 	public static void validateBonusNumber(String bonusNumberInput, List<Integer> winningNumber) {
-		if (!ValidationConfig.isBonusNumberCorrectlyRanged(bonusNumberInput)) {
-			ExceptionHandler.handlePlayer(ValidationException.BONUS_NUMBER_NOT_IN_BETWEEN_1_45);
-		}
-
 		if (!ValidationConfig.isBonusNumberCountCorrectlyProvided(bonusNumberInput)) {
 			ExceptionHandler.handlePlayer(ValidationException.BONUS_NUMBER_NOT_CORRECTLY_COUNTED);
 		}
 
 		if (ValidationConfig.isBonusNumberDuplicateExists(bonusNumberInput, winningNumber)) {
 			ExceptionHandler.handlePlayer(ValidationException.BONUS_NUMBER_DUPLICATED);
+		}
+
+		if (!ValidationConfig.isBonusNumberCorrectlyRanged(bonusNumberInput)) {
+			ExceptionHandler.handlePlayer(ValidationException.BONUS_NUMBER_NOT_IN_BETWEEN_1_45);
 		}
 	}
 
