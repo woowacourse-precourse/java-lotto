@@ -34,8 +34,18 @@ public class Validator {
         return eachNumberIsUnique(winningNumbers);
     }
 
-    public static void bonusNumberIsValid() {
-
+    public static int bonusNumberIsValid(String userInput, List<Integer> winningNumber) {
+        isNumber(userInput);
+        int bonusNumber = Integer.parseInt(userInput);
+        if(!isValidRange(bonusNumber, 1, 45)) {
+            IOProcessor.printErrorMessage("입력한 값의 범위가 올바르지 않습니다.");
+            throw new IllegalArgumentException();
+        }
+        if(winningNumber.contains(bonusNumber)) {
+            IOProcessor.printErrorMessage("입력한 보너스 번호가 이미 당첨번호에 있습니다.");
+            throw new IllegalArgumentException();
+        }
+        return bonusNumber;
     }
 
     private static boolean isNumber(String userInput) {

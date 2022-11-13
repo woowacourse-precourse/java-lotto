@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ValidatorTest {
@@ -40,6 +41,22 @@ public class ValidatorTest {
         assertThatThrownBy(() -> Validator.winningNumberIsValid(longLength))
                 .isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> Validator.winningNumberIsValid(invalidFormat))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("입력한 보너스 번호가 유효한 지 검증하는 기능 테스트")
+    void bonus_number_validation_test() {
+        List<Integer> winningNumber = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+        String validBonusNumber = "10";
+        String invalidRange = "97";
+        String duplicateNumber = "3";
+
+        assertThat(Validator.bonusNumberIsValid(validBonusNumber, winningNumber))
+                .isEqualTo(Integer.parseInt(validBonusNumber));
+        assertThatThrownBy(() -> Validator.bonusNumberIsValid(invalidRange, winningNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> Validator.bonusNumberIsValid(duplicateNumber, winningNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
