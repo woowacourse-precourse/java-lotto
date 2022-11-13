@@ -7,12 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoProgramManager {
+    private Lotto answer;
     private List<Lotto> lottoBought;
 
     public void runProgram() {
         int lottoNum = buyLotto();
 
         generateLotto(lottoNum);
+
+        makeAnswer();
     }
 
     private int buyLotto() {
@@ -35,5 +38,9 @@ public class LottoProgramManager {
         }
 
         IOManager.printLottoList(lottoBought);
+    }
+
+    private void makeAnswer() {
+        answer = new Lotto(IOManager.scanAnswer());
     }
 }
