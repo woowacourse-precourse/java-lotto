@@ -100,7 +100,6 @@
   - converToInteger() : 당첨번호 문자열을 숫자리스트로 바꿀 함수
 ### CalculateResultService
 - variable
-  - List<Rank> RankList
   - Map<Rank, Integer> lottoCount
 - function
   - compare(winningNumberList, bonusNumber, lottoSheetsList)

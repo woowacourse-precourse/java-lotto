@@ -2,6 +2,7 @@ package lotto.View;
 
 import lotto.Model.Rank;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -28,18 +29,24 @@ public class PrintView {
     }
 
     public static void printWinningResultMessage(Map<Rank, Integer> lottoResult) {
-        String str = String.format("\n당첨 통계\n" +
-                        "---\n" +
-                        "3개 일치 (5,000원) - %d개\n" +
-                        "4개 일치 (50,000원) - %d개\n" +
-                        "5개 일치 (1,500,000원) - %d개\n" +
-                        "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n" +
-                        "6개 일치 (2,000,000,000원) - %d개\n",
-                lottoResult.get(Rank.THREE),
-                lottoResult.get(Rank.FOUR),
-                lottoResult.get(Rank.FIVE),
-                lottoResult.get(Rank.BONUS),
-                lottoResult.get(Rank.SIX));
+        String str = "\n당첨 통계\n" +
+                "---\n";
+        for (Rank rank : Rank.values()) {
+            if (rank.equals(Rank.LOSING_TICKET))
+                continue;
+            if(rank.equals(Rank.BONUS)){
+                str += String.format( "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n" ,
+                        rank.getCount(),
+                        getPrizeMoney(rank),
+                        getWinningCount(lottoResult.get(rank)));
+                continue;
+            }
+
+            str += String.format( "%d개 일치 (%s원) - %d개\n" ,
+                    rank.getCount(),
+                    getPrizeMoney(rank),
+                    getWinningCount(lottoResult.get(rank)));
+        }
         System.out.println(str);
     }
 
@@ -48,4 +55,14 @@ public class PrintView {
         System.out.println(str);
     }
 
+    public static String getPrizeMoney(Rank rank){
+        DecimalFormat decimalFormat = new DecimalFormat("###,###");
+        return decimalFormat.format(rank.getPrizeMoney());
+    }
+    public static Integer getWinningCount(Integer count){
+        if(count==null){
+            return 0;
+        }
+        return count;
+    }
 }

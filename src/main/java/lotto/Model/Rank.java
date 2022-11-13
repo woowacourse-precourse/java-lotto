@@ -3,7 +3,7 @@ package lotto.Model;
 import java.util.Arrays;
 public enum Rank {
     LOSING_TICKET(0,0,0),
-    THREE(3, 0, 5000),
+    THREE(3, 0, 5_000),
     FOUR(4, 0, 50_000),
     FIVE(5, 0, 1_500_000),
     BONUS(5, 1, 30_000_000),
@@ -28,5 +28,17 @@ public enum Rank {
                 .filter(rank -> rank.count == count)
                 .filter(rank -> rank.bonus == bonus)
                 .findFirst().get();
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public int getBonus(int count) {
+        return bonus;
+    }
+
+    public int getPrizeMoney() {
+        return prizeMoney;
     }
 }
