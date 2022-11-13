@@ -26,7 +26,12 @@ public class Application {
         winningNumbers.newBonusNumber(newBonusNumber);
 
         Judgment judgment = new Judgment(user, winningNumbers);
+
         RankCounter rankCounter = judgment.calculateRank();
         Print.printRankCounter(rankCounter);
+
+        double yield = judgment.calculateYield();
+        Print.printYield(yield);
+
     }
 }

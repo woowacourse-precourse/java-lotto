@@ -1,5 +1,6 @@
 package lotto;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ public class Print {
     private static String MESSAGE_WINNING_NUMBER = "당첨 번호를 입력해주세요.";
     private static String MESSAGE_BONUS_NUMBER = "보너스 번호를 입력해주세요.";
     private static String MESSAGE_RANK_COUNTER_START = "당첨 통계\n---";
+    private static String MESSAGE_TOTAL_YIELD = "총 수익률은 %s입니다.";
 
     public static void printInsertMoney() {
         System.out.println(MESSAGE_INSERT_MONEY);
@@ -32,5 +34,12 @@ public class Print {
     public static void printRankCounter(RankCounter rankCounter) {
         System.out.println(MESSAGE_RANK_COUNTER_START);
         System.out.println(rankCounter);
+    }
+
+    public static void printYield(double yield) {
+        DecimalFormat yieldFormat = new DecimalFormat("###,###.0%");
+        String yieldRound = yieldFormat.format(yield);
+        System.out.printf(MESSAGE_TOTAL_YIELD, yieldRound);
+        System.out.println();
     }
 }
