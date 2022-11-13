@@ -192,16 +192,28 @@ v2 release
 
 추가 리팩토링 to do
 
-0. [ ] 예외처리를 메서드별로 발생시킬 때 try catch를 개별적으로 사용하는 방식에 대한 고려가 필요하다.<br>
-
+0. [x] 예외처리를 메서드별로 발생시킬 때 try catch를 개별적으로 사용하는 방식에 대한 고려가 필요하다.<br>
+=> 내부적으로 try and catch를 해버리면 프로그램이 종료가 되지 않고 다음 단계로 진행이 되는 문제가 발생. 
+=> Controller에서 처리하는 것으로 결론 
+=> 내부 Exception 클래스(Handler와 분야별 Exception) 생성하여 기능 분리
 
 1. [ ] 통계를 매기는 과정에서 일정 부분이 하드코딩 되어 있어 enum 클래스를 좀 더 효율적으로 사용하는 방법을 고민해본다.<br>
+=> Enum 클래스 통합으로 호출 방식 간소화
+=> 카운팅 로직 전체에 대한 더 좋은 방식으로의 개선 고려 
 
-
-2. [ ] 출력클래스도 상수들이 집약되어 있는데 효율적인 방식이 맞는지 고민해본다.<br>
-
+2. [x] 출력클래스도 상수들이 집약되어 있는데 효율적인 방식이 맞는지 고민해본다.<br>
+=> Error(Exception) 관련 메시지들은 별도의 Exception 처리 클래스에서 관리
 
 3. [ ] 기능별 테스트 코드 작성 필요.
+
+
+쟁점 사항 
+- Exception 처리를 위한 Validation을 한 곳에서 처리하도록 기능을 집약했다. 그런데 이때의 문제점은 여러 군데에서 호출을 받는다는 것이다. 이럼으로써 생성자를 각각 매번 호출을 시키던지 static으로 변환해서 사용하던지 결정을 해야 하는 상황에 놓인다. 
+현재의 상황에서는 static 처리를 했다. (e.g ConsolInput -> readLine -> Validator.validateInputNotEmpty)
+- LottoMachine에서 발생하는 오류룰 IllegalArgument에러로 볼것인지의 문제가 있다. 객체의 현 상태가 메서드 호출을 처리하기 적절지 않다는 의미에서 IllegalStateException을 고려했다. 
+=> 인자의 값이 적절하지 않다는 의미에서 IllegalArgumentException 고수. 
+- Controller에서 예외를 잡아줄 때 IllegalArgumentException으로 특정 짓는 것이 맞는가의 문제가 있다. 지정한 오류는 전부 해당 에러가 맞지만, 특정하지 않은 (내가 모르는) 오류가 발생할 경우 이를 캐치하고 메시지를 보려고 한다면 exception 전체를 잡아야 하는 것인가 하는 의문이 든다.
+=> 그렇다 하더라도 현재는 메시지를 발생시키지는 않고 있으므로 IllegalArgumentException을 잡는 것으로 고수.
 
 </details>
 
