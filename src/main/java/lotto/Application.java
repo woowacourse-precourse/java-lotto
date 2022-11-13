@@ -10,7 +10,8 @@ public class Application {
         int numberOfGame = Input.budgetInput();
         ArrayList<Object> userNumber = Lotto.randomNumberGenerate(numberOfGame);
         System.out.println(userNumber);
-
+        ArrayList<Integer> winningNumber=Input.winningNumberInput();
+        System.out.println(winningNumber);
 
     }
 }
