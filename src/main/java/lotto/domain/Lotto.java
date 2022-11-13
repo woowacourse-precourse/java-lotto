@@ -65,15 +65,15 @@ public class Lotto {
         return sum/totalMoney;
     }
 
-    public Map<WinningNumbers, Integer> countWinningCase(List<Integer> normalNumbers, List<Boolean> bonusNumbers) {
-        Map<WinningNumbers, Integer> result = new EnumMap<WinningNumbers, Integer>(WinningNumbers.class);
+    public Map<WinningNumbers, Long> countWinningCase(List<Integer> normalNumbers, List<Boolean> bonusNumbers) {
+        Map<WinningNumbers, Long> result = new EnumMap<>(WinningNumbers.class);
 
         for (int singleLotto = 0; singleLotto < normalNumbers.size(); singleLotto++) {
             int match = normalNumbers.get(singleLotto);
             boolean bonus = bonusNumbers.get(singleLotto);
             WinningNumbers keyEnum = WinningNumbers.getEnum(match,bonus);
 
-            result.put(keyEnum,result.getOrDefault(keyEnum,0) + 1);
+            result.put(keyEnum,result.getOrDefault(keyEnum,0L) + 1L);
         }
 
         return result;

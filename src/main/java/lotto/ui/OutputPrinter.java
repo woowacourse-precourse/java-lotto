@@ -26,7 +26,7 @@ public class OutputPrinter {
             WinningNumbers key = allWinningNumbers[winningNumberIndex];
             int matches = key.getMatch();
             long reward = key.getReward();
-            int winningCounter = winningCase.get(key);
+            long winningCounter = winningCase.get(key);
             DecimalFormat commaInMoney = new DecimalFormat("###,###");
 
             System.out.println(matches + "개 일치 (" + commaInMoney.format(reward) + "원) - " + winningCounter + "개");
