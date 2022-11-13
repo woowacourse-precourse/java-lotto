@@ -18,7 +18,15 @@ public class LottoController {
     public void init(){
         this.inputController = new InputController(new LottoInput());
     }
-    
+
+
+
+    private void printLottoStatistics() {
+        LottoStatistics.calculateRank();
+        ResultView.printStatistics();
+    }
+
+
     private void createLotto() {
         LottoResult.lottos = new ArrayList<>();
         for(int i=0 ; i<LottoResult.count;i++) {
@@ -27,5 +35,7 @@ public class LottoController {
         }
         LottoResult.printLottoList();
     }
+
+
 
 }
