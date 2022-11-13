@@ -17,9 +17,9 @@ class WinningCountTest {
 
     @Test
     void 당첨금액_테스트() {
-        winningCount.addWinningResult("3",false);
-        winningCount.addWinningResult("4",false);
-        winningCount.addWinningResult("5",true);
+        winningCount.addWinningResult("3", false);
+        winningCount.addWinningResult("4", false);
+        winningCount.addWinningResult("5", true);
 
         assertThat(winningCount.getProfitSum()).isEqualTo(30055000);
     }

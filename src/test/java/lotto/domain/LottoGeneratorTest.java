@@ -10,10 +10,12 @@ import static org.assertj.core.api.Assertions.*;
 
 class LottoGeneratorTest {
     LottoGenerator lottoGenerator;
+
     @BeforeEach
-    void setUp(){
+    void setUp() {
         lottoGenerator = new LottoGenerator();
     }
+
     @Test
     void 로또묶음_개수_테스트() {
         List<Lotto> lottoBundle = lottoGenerator.generateLottoBundle(3000);
@@ -27,7 +29,7 @@ class LottoGeneratorTest {
     }
 
     @Test
-    void 영원이하_오류_테스트(){
+    void 영원이하_오류_테스트() {
         assertThatThrownBy(() -> lottoGenerator.generateLottoBundle(0))
                 .isInstanceOf(IllegalArgumentException.class);
 

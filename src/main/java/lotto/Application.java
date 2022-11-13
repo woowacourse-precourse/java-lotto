@@ -26,10 +26,10 @@ public class Application {
         WinningCount winningCount = new WinningCount();
         for (Lotto lotto : userLotto.getUserLotto()) {
             int lottoResult = lottoChecker.lottoCompare(lotto, winningLotto);
-            winningCount.addWinningResult(Integer.toString(lottoResult),lottoChecker.bonusCompare(lotto,winningLotto));
+            winningCount.addWinningResult(Integer.toString(lottoResult), lottoChecker.bonusCompare(lotto, winningLotto));
         }
 
         view.showWinCase(winningCount);
-        view.showProfitRate(lottoChecker.profitRate(price,winningCount.getProfitSum()));
+        view.showProfitRate(lottoChecker.profitRate(price, winningCount.getProfitSum()));
     }
 }

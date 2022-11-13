@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.Constant;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,11 +10,11 @@ public class WinningCount {
 
     public WinningCount() {
         count = new HashMap<>();
-        count.put("3", 0);
-        count.put("4", 0);
-        count.put("5", 0);
-        count.put("6", 0);
-        count.put("bonus", 0);
+        count.put(Constant.FIRST_PLACE, 0);
+        count.put(Constant.SECOND_PLACE, 0);
+        count.put(Constant.THIRD_PLACE, 0);
+        count.put(Constant.FOURTH_PLACE, 0);
+        count.put(Constant.FIFTH_PLACE, 0);
     }
 
     public Map<String, Integer> getCount() {

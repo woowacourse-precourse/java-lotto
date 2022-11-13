@@ -7,11 +7,10 @@ import lotto.domain.WinningCount;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 public class View {
     public int askPrice() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(Constant.ASK_PRICE);
         try {
             int price = Integer.parseInt(Console.readLine());
             return price;
@@ -21,7 +20,7 @@ public class View {
     }
 
     public void buyLottoList(int price, List<Lotto> lottoBundle) {
-        System.out.println(price / 1000 + "개를 구매했습니다.");
+        System.out.println(price / 1000 + Constant.SHOW_BUY_COUNT);
         for (Lotto lotto : lottoBundle) {
             List<Integer> temporaryLotto = new ArrayList<>();
             temporaryLotto.addAll(lotto.getNumbers());
@@ -33,7 +32,7 @@ public class View {
 
     public List<Integer> askWinningNumber() {
         List<Integer> winningLotto = new ArrayList<>();
-        System.out.println("당첨 번호를 입력해 주세요.");
+        System.out.println(Constant.ASK_WINNING_NUMBER);
         String number = Console.readLine();
         System.out.println();
         number = number.replaceAll(" ", "");
@@ -46,20 +45,20 @@ public class View {
     }
 
     public int askBonusNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(Constant.ASK_BONUS_NUMBER);
         String bonusNumber = Console.readLine();
         System.out.println();
         return Integer.parseInt(bonusNumber);
     }
 
     public void showWinCase(WinningCount winningCount) {
-        System.out.println("당첨 통계");
+        System.out.println(Constant.WINNING_STATS);
         System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - " + winningCount.getCount().get("3") + "개");
-        System.out.println("4개 일치 (50,000원) - " + winningCount.getCount().get("4") + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + winningCount.getCount().get("5") + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + winningCount.getCount().get("bonus") + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + winningCount.getCount().get("6") + "개");
+        System.out.println(Constant.THREE_MATCH + winningCount.getCount().get(Constant.FIFTH_PLACE) + Constant.PIECE);
+        System.out.println(Constant.FOUR_MATCH + winningCount.getCount().get(Constant.FOURTH_PLACE) + Constant.PIECE);
+        System.out.println(Constant.FIVE_MATCH + winningCount.getCount().get(Constant.THIRD_PLACE) + Constant.PIECE);
+        System.out.println(Constant.FIVE_BONUS_MATCH + winningCount.getCount().get(Constant.SECOND_PLACE) + Constant.PIECE);
+        System.out.println(Constant.SIX_MATCH + winningCount.getCount().get(Constant.FIRST_PLACE) + Constant.PIECE);
     }
 
     public void showProfitRate(double rate) {

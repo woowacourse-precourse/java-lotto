@@ -16,7 +16,7 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(Error.OVER_NUMBER_COUNT.getMessage());
         }
-        if(numbers.size() != numbers.stream().distinct().count()){
+        if (numbers.size() != numbers.stream().distinct().count()) {
             throw new IllegalArgumentException(Error.DUPLICATE_LOTTO_NUMBER.getMessage());
         }
     }

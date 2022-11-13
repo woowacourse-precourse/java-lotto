@@ -25,9 +25,9 @@ class LottoCheckerTest {
 
     @Test
     void 당첨_개수_비교() {
-        Lotto userLotto = new Lotto(new ArrayList<>(List.of(1,2,3,4,5,6)));
-        WinningLotto winningLotto = new WinningLotto(new Lotto(new ArrayList<>(List.of(3,4,5,6,7,8))), 10);
-        assertThat(lottoChecker.lottoCompare(userLotto,winningLotto)).isEqualTo(4);
+        Lotto userLotto = new Lotto(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6)));
+        WinningLotto winningLotto = new WinningLotto(new Lotto(new ArrayList<>(List.of(3, 4, 5, 6, 7, 8))), 10);
+        assertThat(lottoChecker.lottoCompare(userLotto, winningLotto)).isEqualTo(4);
     }
 
 }
