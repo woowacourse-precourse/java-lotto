@@ -1,6 +1,5 @@
-package lotto;
+package lotto.lotto;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import lotto.ui.InputView;
 import lotto.ui.OutputView;
 

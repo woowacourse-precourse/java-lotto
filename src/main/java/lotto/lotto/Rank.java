@@ -1,6 +1,4 @@
-package lotto;
-
-import java.util.Arrays;
+package lotto.lotto;
 
 public enum Rank {
 

@@ -1,6 +1,6 @@
 package lotto.ui;
 
-import lotto.Rank;
+import lotto.lotto.Rank;
 
 import java.util.List;
 import java.util.Map;

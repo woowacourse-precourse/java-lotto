@@ -1,6 +1,6 @@
-package lotto;
+package lotto.lotto;
 
-import org.junit.jupiter.api.Assertions;
+import lotto.lotto.Rank;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;

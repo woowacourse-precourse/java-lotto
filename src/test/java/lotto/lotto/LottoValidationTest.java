@@ -1,14 +1,12 @@
-package lotto;
+package lotto.lotto;
 
-import lotto.ui.InputViewValidation;
+import lotto.lotto.LottoValidation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 class LottoValidationTest {
     @DisplayName("당첨 번호와 보너스 번호가 중복될 시 예외 처리")
