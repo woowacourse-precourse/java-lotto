@@ -34,6 +34,12 @@ public class Application {
 
         user.setBonusNum(Integer.parseInt(Console.readLine()));
 
-        
+        winning.score(list, lotto.getNumbers(), user.getBonusNum());
+
+        List<Integer> score = winning.score();
+
+        double rate = winning.rate(score, Integer.parseInt(amount));
+
+        System.out.println(rate);
     }
 }

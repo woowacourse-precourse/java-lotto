@@ -15,10 +15,15 @@ public class Winning {
             int count = sameCount(userNum.get(i), winNum);
 
             switch (count) {
-                case 3 : win5++ ;
-                case 4 : win4++ ;
-                case 5 : bonusCount(userNum.get(i), bonusNum) ;
-                case 6 : win1++ ;
+                case 3 : win5++;
+                break;
+                case 4 : win4++;
+                break;
+                case 5 : bonusCount(userNum.get(i), bonusNum);
+                break;
+                case 6 : win1++;
+                break;
+                default: break;
             }
         }
     }
@@ -44,7 +49,7 @@ public class Winning {
         win3++;
     }
 
-    public double rate() {
+    public double rate(List<Integer> score, int amount) {
         return 0;
     }
 
