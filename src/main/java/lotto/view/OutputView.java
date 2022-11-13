@@ -45,7 +45,6 @@ public class OutputView {
         System.out.println("총 수익률은 " + yieldOfLotto + "%입니다.");
     }
 
-
     public int getQuantity(User user) {
         return user.getBuyingPrice() / 1000;
     }
