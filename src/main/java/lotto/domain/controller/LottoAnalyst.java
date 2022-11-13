@@ -13,6 +13,7 @@ public class LottoAnalyst {
     private Map<RankingInformation, Integer> statistics;
     private WinningLotto winningLotto;
     private Lotto lottoBeingChecked;
+    private int purchaseAmount;
 
     public LottoAnalyst() {
         initStatistics();
@@ -29,11 +30,17 @@ public class LottoAnalyst {
     public Map<RankingInformation, Integer> makeWinningStatistics(List<Lotto> lottos,
             WinningLotto winningLotto) {
 
+        savePurchaseAmount(lottos.size());
+
         this.winningLotto = winningLotto;
 
         checkEachLottoWithWinningLotto(lottos);
 
         return statistics;
+    }
+
+    private void savePurchaseAmount(int numberOfLottos) {
+        this.purchaseAmount = numberOfLottos * LottoIssuer.PRICE_OF_LOTTO;
     }
 
     private void checkEachLottoWithWinningLotto(List<Lotto> lottos) {
@@ -99,4 +106,17 @@ public class LottoAnalyst {
         return isContained;
     }
 
+    public double calculateRateOfReturn() {
+        int amountOfReturn = 0;
+
+        for (Map.Entry<RankingInformation, Integer> oneRank : statistics.entrySet()) {
+            amountOfReturn += oneRank.getKey().getAmountOfReturn() * oneRank.getValue();
+        }
+
+        double rateOfReturn = (double) amountOfReturn / (double) purchaseAmount;
+        rateOfReturn = rateOfReturn * 100;
+        rateOfReturn = Math.round(rateOfReturn * 10) / 10.0;
+
+        return rateOfReturn;
+    }
 }
