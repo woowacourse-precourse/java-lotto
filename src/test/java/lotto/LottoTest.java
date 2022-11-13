@@ -4,7 +4,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -36,6 +38,17 @@ class LottoTest {
 
         assertThat(lotto.validatePayment(validPayment)).isEqualTo(true);
         assertThat(lotto.validatePayment(inValidPayment)).isInstanceOf(IllegalArgumentException.class);
+
+    }
+
+    @DisplayName("서로 다른 6자리의 로또 번호를 생성한다.")
+    @Test
+    void generateLottoNumber() {
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Set<Integer> numberSet = new HashSet<>(lotto.generateLottoNumber());
+
+        assertThat(numberSet.size()).isEqualTo(6);
 
     }
 
