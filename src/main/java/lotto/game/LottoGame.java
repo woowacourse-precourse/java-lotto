@@ -3,7 +3,9 @@ package lotto.game;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import lotto.domain.Lotto;
+import lotto.domain.LottoWinningResult;
 import lotto.domain.WinningLotto;
+import lotto.domain.WinningStatistics;
 import lotto.generator.LottoGenerator;
 import lotto.generator.WinningLottoGenerator;
 import lotto.validator.LottoPurchaseValidator;
@@ -17,6 +19,13 @@ public class LottoGame {
         int inputMoney = receiveMoney();
         List<Lotto> purchasedLottos = purchaseLotto(inputMoney);
         WinningLotto winningLotto = generateWinningLotto();
+        LottoWinningResult lottoWinningResult = checkWinning(purchasedLottos, winningLotto);
+        WinningStatistics userWinningStatistics = new WinningStatistics(
+                lottoWinningResult.getTotalWinningMoney(),
+                inputMoney
+        );
+        UserOutputView.printWinningResult(lottoWinningResult.getNumberOfWinningEachRanks());
+        UserOutputView.printRateOfReturn(userWinningStatistics.getRateOfReturn());
     }
 
     private int receiveMoney() {
@@ -45,4 +54,8 @@ public class LottoGame {
         return WinningLottoGenerator.generate(winningLotto, bonusNumber);
     }
 
+    private LottoWinningResult checkWinning(List<Lotto> purchasedLottos, WinningLotto winningLotto) {
+        LottoWinningChecker lottoWinningChecker = new LottoWinningChecker(winningLotto);
+        return lottoWinningChecker.checkWinning(purchasedLottos);
+    }
 }
