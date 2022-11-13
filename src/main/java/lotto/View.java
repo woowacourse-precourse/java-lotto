@@ -1,11 +1,11 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.Model.Lotto;
 import lotto.domain.WinningCount;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class View {

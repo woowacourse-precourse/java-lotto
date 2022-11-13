@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import lotto.Error;
-import lotto.Lotto;
+import lotto.Model.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;

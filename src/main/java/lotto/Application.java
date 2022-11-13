@@ -1,5 +1,8 @@
 package lotto;
 
+import lotto.Model.Lotto;
+import lotto.Model.User;
+import lotto.Model.WinningLotto;
 import lotto.domain.LottoChecker;
 import lotto.domain.LottoGenerator;
 import lotto.domain.WinningCount;

@@ -1,7 +1,7 @@
 package lotto.domain;
 
-import lotto.Lotto;
-import lotto.WinningLotto;
+import lotto.Model.Lotto;
+import lotto.Model.WinningLotto;
 
 import java.util.List;
 
