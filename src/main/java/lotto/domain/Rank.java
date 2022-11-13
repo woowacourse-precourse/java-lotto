@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 public enum Rank {
     FIFTH(5, 3, 5000, "5,000원"),

@@ -1,4 +1,4 @@
-package lotto.UI;
+package lotto.ui;
 
 import java.util.ArrayList;
 import java.util.List;

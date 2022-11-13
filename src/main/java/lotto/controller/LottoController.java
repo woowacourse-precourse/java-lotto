@@ -1,7 +1,9 @@
-package lotto;
+package lotto.controller;
 
-import lotto.UI.InputUI;
-import lotto.UI.OutputUI;
+import lotto.domain.*;
+import lotto.domain.lottoMachine.LottoMachine;
+import lotto.ui.InputUI;
+import lotto.ui.OutputUI;
 
 import java.util.List;
 

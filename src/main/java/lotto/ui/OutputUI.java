@@ -1,8 +1,8 @@
-package lotto.UI;
+package lotto.ui;
 
-import lotto.Lotto;
-import lotto.Rank;
-import lotto.ResultLotto;
+import lotto.domain.Lotto;
+import lotto.domain.Rank;
+import lotto.domain.ResultLotto;
 
 import java.util.List;
 
@@ -16,6 +16,7 @@ public class OutputUI {
     }
 
     public void printLottos(List<Lotto> lottos) {
+        System.out.println(String.format("%d개를 구매했습니다.", lottos.size()));
         for (Lotto lotto : lottos) {
             List<Integer> lottoNumbers = lotto.getNumbers();
             System.out.println(lottoNumbers);

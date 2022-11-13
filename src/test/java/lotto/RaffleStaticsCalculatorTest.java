@@ -1,11 +1,10 @@
 package lotto;
 
+import lotto.domain.RaffleStaticsCalculator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class RaffleStaticsCalculatorTest {
 
