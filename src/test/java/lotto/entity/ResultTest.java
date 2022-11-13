@@ -1,5 +1,6 @@
 package lotto.entity;
 
+import static lotto.LottoApplication.PRICE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.HashMap;
@@ -14,7 +15,7 @@ class ResultTest {
     void calculateRateOfReturn() {
         //given
         int count = 2;
-        int purchase = 10000;
+        int purchase = PRICE * count * 2;
         Map<Rank, Integer> rankMap = new HashMap<>();
         rankMap.put(Rank.FIRST, count);
         rankMap.put(Rank.SECOND, count);
