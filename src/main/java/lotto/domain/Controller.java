@@ -19,6 +19,13 @@ public class Controller {
         createLotto(lottoTicket);
         setWinningNumbers();
         setBonusNumber();
+        winningResult();
+    }
+
+    public void winningResult() {
+        Judgment judgment = new Judgment(lottoNumbers, winningNumbers, bonusNumber);
+        List<Integer> winningResult = judgment.result();
+        systemMessage.printResult(winningResult);
     }
 
     public void createLotto(int lottoTicket) {
