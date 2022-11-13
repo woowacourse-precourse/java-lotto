@@ -31,12 +31,12 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 번호를 오름차순 정렬한다.")
+    @DisplayName("로또 번호는 오름차순으로 정렬된다.")
     @Test
     void getSortedLottoNumbers() {
         Lotto lotto = new Lotto(List.of(5, 6, 1, 3, 2, 4));
-        List<Integer> sortedLottoNumbers = lotto.getSortedLottoNumbers();
-        assertThat(sortedLottoNumbers).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
+        boolean actual = lotto.equals(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        assertThat(actual).isTrue();
     }
 
     @DisplayName("로또 번호에 존재하는 숫자인지 확인한다.")
