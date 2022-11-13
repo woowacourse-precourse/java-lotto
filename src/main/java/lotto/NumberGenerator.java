@@ -10,7 +10,7 @@ public class NumberGenerator {
     static final int COUNT = 6;
 
     public static List<Integer> creatNumber() {
-        List<Integer> bundle = Randoms.pickUniqueNumbersInRange(STARTNUMBER, ENDNUMBER, 6);
+        List<Integer> bundle = Randoms.pickUniqueNumbersInRange(STARTNUMBER, ENDNUMBER, COUNT);
         Collections.sort(bundle);
         return bundle;
     }
