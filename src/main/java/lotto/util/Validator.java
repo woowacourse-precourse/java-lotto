@@ -4,12 +4,15 @@ import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public class Validator {
+    private static final int START = 1;
+    private static final int END = 45;
+    private static final int COUNT = 6;
 
     public void validateWinningNumber(String[] winningNumber) {
         if (Arrays.stream(winningNumber).distinct().count() != winningNumber.length) {
             throw new IllegalArgumentException("[error]");
         }
-        if (winningNumber.length != 6) {
+        if (winningNumber.length != COUNT) {
             throw new IllegalArgumentException("[error]");
         }
         for (String number : winningNumber) {
@@ -29,6 +32,6 @@ public class Validator {
     }
 
     public boolean isRangeNumber(int number) {
-        return number >= 1 && number <= 45;
+        return number >= START && number <= END;
     }
 }
