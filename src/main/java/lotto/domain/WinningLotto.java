@@ -14,6 +14,12 @@ public class WinningLotto extends Lotto {
         this.bonusNumber = bonusNumber;
     }
 
+    public WinningLotto(Lotto referenceLotto, int bonusNumber) {
+        super(referenceLotto);
+        validateBonusNumber(bonusNumber);
+        this.bonusNumber = bonusNumber;
+    }
+
     private void validateBonusNumber(int bonusNumberInput) {
         if (bonusNumberInput < MIN_NUMBER || bonusNumberInput > MAX_NUMBER) {
             throw new IllegalArgumentException(NUMBER_INPUT_RANGE_ERROR_MESSAGE);

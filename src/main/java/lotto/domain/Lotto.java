@@ -26,6 +26,10 @@ public class Lotto {
         this.numbers = sortedNumbers;
     }
 
+    public Lotto(Lotto referenceLotto) {
+        this.numbers = List.copyOf(referenceLotto.getNumbers());
+    }
+
     private void validate(List<Integer> numbers) {
         Set<Integer> nonDuplicatedNumbers = new HashSet<>(numbers);
         if (nonDuplicatedNumbers.size() != 6) {
