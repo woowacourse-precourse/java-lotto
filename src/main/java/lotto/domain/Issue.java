@@ -21,7 +21,7 @@ public class Issue {
     }
 
 
-    private Lotto createLottoNum(){
+    private Lotto lottoNum(){
         List<Integer> numbers = new ArrayList<>();
         while (numbers.size() < 6) {
             int randomNumber = Randoms.pickNumberInRange(1, 45);
@@ -34,7 +34,7 @@ public class Issue {
 
     public List<Lotto> lotto(){
         while (history.size() < amount){
-            history.add(createLottoNum());
+            history.add(lottoNum());
         }
         return history;
     }
