@@ -3,6 +3,8 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class LottoManager {
@@ -17,6 +19,8 @@ public class LottoManager {
         int amount = inputManager.getPurchasingAmount();
         int count = countBuyableLotto(amount);
         lottos = buyLotto(count);
+        printLottoCount(count);
+        printLottos(lottos);
     }
 
     public int countBuyableLotto(int amount) {
@@ -35,5 +39,16 @@ public class LottoManager {
             lottos.add(lotto);
         }
         return lottos;
+    }
+
+    public void printLottoCount(int count) {
+        System.out.println(count + "개를 구매했습니다.");
+    }
+
+    public void printLottos(List<Lotto> lottos) {
+        for (Lotto lotto : lottos) {
+            Collections.sort(lotto.getNumbers());
+            System.out.println(Arrays.toString(lotto.getNumbers().toArray()));
+        }
     }
 }
