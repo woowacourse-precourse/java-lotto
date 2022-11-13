@@ -26,4 +26,12 @@ public class WinningNumbers {
         return winningNumbers.stream()
                 .anyMatch(winningNumber -> winningNumber.isSameValue(number));
     }
+
+    public String countSameValue(List<Integer> numbers) {
+        long count = winningNumbers.stream()
+                .filter(winningNumber -> numbers.stream()
+                        .anyMatch(winningNumber::isSameValue))
+                .count();
+        return String.valueOf(count);
+    }
 }
