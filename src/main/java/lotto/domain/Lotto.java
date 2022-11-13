@@ -2,6 +2,8 @@ package lotto.domain;
 
 import lotto.ui.Error;
 
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,8 +14,7 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        Collections.sort(numbers);
-        this.numbers = numbers;
+        this.numbers = sort(numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -28,6 +29,12 @@ public class Lotto {
                 throw new IllegalArgumentException(Error.MUST_BE_NUMBERS_BETWEEN_1_TO_45);
             }
         }
+    }
+
+    private List<Integer> sort(List<Integer> unsortedNumbers){
+        List<Integer> numbers = new ArrayList<>(unsortedNumbers);
+        Collections.sort(numbers);
+        return numbers;
     }
 
     public List<Integer> getNumbers() {
