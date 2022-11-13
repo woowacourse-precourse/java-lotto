@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class StatisticsTest {
 
-    Statistics statistics;
+    private Statistics statistics;
 
     @BeforeEach
     void init() {
@@ -47,5 +47,16 @@ public class StatisticsTest {
         int totalWinAmount = statistics.findTotalWinAmount();
 
         Assertions.assertThat(totalWinAmount).isEqualTo(30010000);
+    }
+
+    @DisplayName("당첨 금액에 대한 총 수익률을 구한다.")
+    @Test
+    void getLottoYield() {
+        int purchaseAmount = 1000;
+        int totalWinAmount = statistics.findTotalWinAmount();
+        double lottoYield = statistics.findLottoYield(purchaseAmount);
+
+        Assertions.assertThat(totalWinAmount).isEqualTo(30010000);
+        Assertions.assertThat(lottoYield).isEqualTo(3001000.0);
     }
 }
