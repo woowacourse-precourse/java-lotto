@@ -32,7 +32,7 @@ public class Machine {
         lottoList.forEach(lotto -> System.out.println(sortNumber(lotto.getNumbers())));
     }
 
-    private List<Integer> sortNumber(List<Integer> numbers) {
+    public List<Integer> sortNumber(List<Integer> numbers) {
         List<Integer> result = new ArrayList<>(numbers);
         result.sort(Comparator.naturalOrder());
         return result;
