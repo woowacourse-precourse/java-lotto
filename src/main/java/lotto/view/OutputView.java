@@ -1,11 +1,16 @@
 package lotto.view;
 
+import lotto.Lotto;
 import lotto.Winning;
+
+import java.util.Comparator;
+import java.util.List;
 
 import static lotto.Game.count;
 import static lotto.Game.lottos;
 
 public class OutputView{
+    private static List<Integer> sortedList;
     private static void changeLine(){
         System.out.println();
     }
@@ -14,10 +19,9 @@ public class OutputView{
         changeLine();
     }
     public static void lottoView(){
-        lottos.stream().forEach(lotto -> lotto.printNumbers());
+        lottos.stream().forEach(lotto -> System.out.println(lotto.sortedNumbers()));
         changeLine();
     }
-
     public static void ResultView(){
         resultTitleView();
         for(Winning winning: Winning.values()){
