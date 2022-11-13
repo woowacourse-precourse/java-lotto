@@ -91,4 +91,25 @@ class ValidatorTest {
         // expected
         Validator.validatePlayNumbersDuplication(playerNumbers);
     }
+
+    @DisplayName("보너스 번호가 범위 안의 값인지 확인 - 따르지 않음")
+    @Test
+    void validateBonusNumberRangeNotFollow() {
+        // given
+        int bonusNumber = 0;
+
+        // expected
+        assertThatThrownBy(() -> Validator.validateBonusNumberRange(bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호가 범위 안의 값인지 확인 - 따름")
+    @Test
+    void validateBonusNumberRangeFollow() {
+        // given
+        int bonusNumber = 45;
+
+        // expected
+        Validator.validateBonusNumberRange(bonusNumber);
+    }
 }
