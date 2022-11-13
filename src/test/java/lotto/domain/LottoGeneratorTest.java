@@ -1,22 +1,22 @@
 package lotto.domain;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.RepeatedTest;
 
 import java.util.List;
 
+import static lotto.domain.LottoGenerator.LOTTO_NUMBER_COUNT;
+import static lotto.domain.LottoGenerator.MAX_LOTTO_NUMBER;
+import static lotto.domain.LottoGenerator.MINIMUM_LOTTO_NUMBER;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoGeneratorTest {
 
 
-    @Test
+    @RepeatedTest(10)
     @DisplayName("generate 테스트")
     void test() {
         //given
-        int expectMinNum = 1;
-        int expectMaxNum = 45;
-        int expectSize = 6;
         Money money = new Money(5000);
 
         //when
@@ -29,11 +29,11 @@ class LottoGeneratorTest {
         for (Lotto lottoTicket : res) {
             List<Integer> numbers = lottoTicket.getNumbers();
 
-            assertThat(numbers.size()).isEqualTo(expectSize);
+            assertThat(numbers.size()).isEqualTo(LOTTO_NUMBER_COUNT);
 
             for (Integer num : numbers) {
-                assertThat(num).isGreaterThanOrEqualTo(expectMinNum);
-                assertThat(num).isLessThanOrEqualTo(expectMaxNum);
+                assertThat(num).isGreaterThanOrEqualTo(MINIMUM_LOTTO_NUMBER);
+                assertThat(num).isLessThanOrEqualTo(MAX_LOTTO_NUMBER);
             }
         }
     }
