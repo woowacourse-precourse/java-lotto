@@ -1,7 +1,8 @@
-package lotto.enums;
+package lottoMachine.enums;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import lottoMachine.enums.Numbers;
 import org.junit.jupiter.api.Test;
 
 public class NumbersTest {

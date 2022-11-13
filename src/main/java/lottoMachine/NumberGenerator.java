@@ -1,8 +1,8 @@
-package lotto;
+package lottoMachine;
 
-import static lotto.enums.Numbers.LOTTO_NUMBER_START;
-import static lotto.enums.Numbers.LOTTO_NUMBER_END;
-import static lotto.enums.Numbers.WINNING_NUMBER_SIZE;
+import static lottoMachine.enums.Numbers.LOTTO_NUMBER_START;
+import static lottoMachine.enums.Numbers.LOTTO_NUMBER_END;
+import static lottoMachine.enums.Numbers.WINNING_NUMBER_SIZE;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Collections;

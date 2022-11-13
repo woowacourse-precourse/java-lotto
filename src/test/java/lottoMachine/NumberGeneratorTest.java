@@ -1,8 +1,9 @@
-package lotto;
+package lottoMachine;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import lottoMachine.NumberGenerator;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

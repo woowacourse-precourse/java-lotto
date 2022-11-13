@@ -1,10 +1,11 @@
-package lotto;
+package lottoMachine;
 
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import lottoMachine.BanknoteSlot;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

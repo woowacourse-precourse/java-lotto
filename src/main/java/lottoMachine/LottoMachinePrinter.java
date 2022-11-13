@@ -1,10 +1,11 @@
-package lotto;
+package lottoMachine;
 
-import static lotto.enums.Messages.RECEIVE_PRICE_MESSAGE;
-import static lotto.enums.Messages.RESULT_OF_PURCHASE_MESSAGE;
+import static lottoMachine.enums.Messages.RECEIVE_PRICE_MESSAGE;
+import static lottoMachine.enums.Messages.RESULT_OF_PURCHASE_MESSAGE;
 
 import java.text.MessageFormat;
 import java.util.List;
+import lotto.Lotto;
 
 public class LottoMachinePrinter {
 

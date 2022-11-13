@@ -1,9 +1,10 @@
-package lotto;
+package lottoMachine;
 
-import static lotto.enums.Numbers.LOTTO_PRICE;
+import static lottoMachine.enums.Numbers.LOTTO_PRICE;
 
 import java.util.ArrayList;
 import java.util.List;
+import lotto.Lotto;
 
 public class LottoMachine {
 

@@ -1,9 +1,10 @@
-package lotto;
+package lottoMachine;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.Application;
 import org.junit.jupiter.api.Test;
 
 public class LottoMachineTest extends NsTest {

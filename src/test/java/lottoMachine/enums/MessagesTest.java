@@ -1,10 +1,10 @@
-package lotto.enums;
+package lottoMachine.enums;
 
-import static lotto.enums.Messages.ERROR_MESSAGE_PREFIX;
-import static lotto.enums.Messages.PRICE_ERROR_MESSAGE;
-import static lotto.enums.Messages.RATE_OF_RETURN_MESSAGE;
-import static lotto.enums.Messages.RESULT_OF_PURCHASE_MESSAGE;
-import static lotto.enums.Messages.WINNING_STATISTICS_MESSAGE;
+import static lottoMachine.enums.Messages.ERROR_MESSAGE_PREFIX;
+import static lottoMachine.enums.Messages.PRICE_ERROR_MESSAGE;
+import static lottoMachine.enums.Messages.RATE_OF_RETURN_MESSAGE;
+import static lottoMachine.enums.Messages.RESULT_OF_PURCHASE_MESSAGE;
+import static lottoMachine.enums.Messages.WINNING_STATISTICS_MESSAGE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.text.MessageFormat;

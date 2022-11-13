@@ -1,4 +1,4 @@
-package lotto.enums;
+package lottoMachine.enums;
 
 public enum Messages {
     RECEIVE_PRICE_MESSAGE("구입 금액을 입력해 주세요."),

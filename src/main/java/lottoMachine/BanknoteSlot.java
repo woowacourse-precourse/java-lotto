@@ -1,11 +1,11 @@
-package lotto;
+package lottoMachine;
 
-import static lotto.enums.Messages.ERROR_MESSAGE_PREFIX;
-import static lotto.enums.Messages.PRICE_ERROR_MESSAGE;
-import static lotto.enums.Messages.PRICE_RANGE_ERROR_MESSAGE;
-import static lotto.enums.Numbers.LOTTO_PRICE;
-import static lotto.enums.Numbers.LOTTO_PRICE_MAX;
-import static lotto.enums.Numbers.LOTTO_PRICE_MIN;
+import static lottoMachine.enums.Messages.ERROR_MESSAGE_PREFIX;
+import static lottoMachine.enums.Messages.PRICE_ERROR_MESSAGE;
+import static lottoMachine.enums.Messages.PRICE_RANGE_ERROR_MESSAGE;
+import static lottoMachine.enums.Numbers.LOTTO_PRICE;
+import static lottoMachine.enums.Numbers.LOTTO_PRICE_MAX;
+import static lottoMachine.enums.Numbers.LOTTO_PRICE_MIN;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.regex.Pattern;
