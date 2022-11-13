@@ -189,6 +189,12 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void changeBonusNumberStringToIntegerTest() {
+
+        assertThat(33).isEqualTo(changeBonusNumberStringToInteger("33"));
+    }
+
+    @Test
     void getBonusNumberTest() {
 
         assertThat(33).isEqualTo(getBonusNumber("33", List.of(1, 2, 3, 4, 5, 6)));
