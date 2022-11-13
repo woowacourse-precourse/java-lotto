@@ -18,7 +18,7 @@ public final class OutputView {
         printIOMessage("6개 일치 (2,000,000,000원) - " + Collections.frequency(awards, Award.SIX) + "개");
     }
 
-    public static void printRate(float rate) {
+    public static void printYield(float rate) {
         DecimalFormat formatter = new DecimalFormat("###,###.#");
 
         String roundedRate = String.format("%.1f", rate);
