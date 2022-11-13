@@ -1,15 +1,14 @@
 package lotto;
 
-import lotto.domain.Lotto;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import lotto.domain.Lotto;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import java.util.List;
 
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -22,7 +21,6 @@ class LottoTest {
     @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
     @Test
     void createLottoByDuplicatedNumber() {
-        // TODO: 이 테스트가 통과할 수 있게 구현 코드 작성
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -32,5 +30,12 @@ class LottoTest {
     void calculateLottoCount() {
         String purchasePrice = "2100";
         assertThat(Integer.parseInt(purchasePrice) % 1000 != 0).isTrue();
+    }
+
+    @DisplayName("로또 번호 범위 1~45의 숫자가 아닐 경우 예외 발생")
+    @Test
+    void createLottoByRange() {
+        assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 70)))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
