@@ -26,7 +26,7 @@
 - 랜덤 생성된 개별 로또 번호를 관리한다.
 ### IOManager
 - UI를 통한 사용자 입출력 처리를 담당한다.
-### ErrorCode
-- 에러 메세지를 저장하는 enum 타입.
+### message/ErrorCode
+- enum 타입으로 에러 메세지를 저장한다.
 ### config/LottoConfig
 - 설정 상수값들을 저장한다.
