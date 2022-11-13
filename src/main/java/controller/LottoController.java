@@ -26,21 +26,32 @@ public class LottoController {
         winNumbers = new ArrayList<>();
     }
 
-    private void generateLotteryNumbers() {
-        List<Integer> lotteryNumbers = Randoms.pickUniqueNumbersInRange(
-                LottoConstants.MIN_LOTTO_VALUE,
-                LottoConstants.MAX_LOTTO_VALUE,
-                LottoConstants.LOTTO_NUM);
+    private void getLottoPurchaseAmountFromUser() {
+        try {
+            String userInput = InputUtils.getMoneyFromUser();
 
-        lottos.add(new Lotto(lotteryNumbers));
+            Validator.checkLottoPurchaseAmountIsValid(userInput);
+
+            purchaseAmount = new PurchaseAmount(Integer.parseInt(userInput));
+        } catch (IllegalArgumentException e) {
+            OutputUtils.printException(e);
+            getLottoPurchaseAmountFromUser();
+        }
     }
 
-    private void getLottoPurchaseAmountFromUser() {
-        String userInput = InputUtils.getMoneyFromUser();
+    private void generateLotteryNumbers() {
+        int purchaseCount = purchaseAmount.getPurchaseCount();
 
-        Validator.checkLottoPurchaseAmountIsValid(userInput);
+        while (purchaseCount > 0) {
+            List<Integer> lotteryNumbers = Randoms.pickUniqueNumbersInRange(
+                    LottoConstants.MIN_LOTTO_VALUE,
+                    LottoConstants.MAX_LOTTO_VALUE,
+                    LottoConstants.LOTTO_NUM);
 
-        purchaseAmount = new PurchaseAmount(Integer.parseInt(userInput));
+            lottos.add(new Lotto(lotteryNumbers));
+            purchaseCount--;
+        }
+        printPurchasedLottoNumbers();
     }
 
     private void printPurchasedLottoNumbers() {
@@ -64,34 +75,38 @@ public class LottoController {
         bonusNumber = Integer.parseInt(userInput);
     }
 
-    private void calculateWinningRate() {
-        OutputUtils.printCalculateWins();
+    private String calculateWinningRate() {
         for (Lotto lotto : lottos) {
             lotto.countMatchingNumber(winNumbers, bonusNumber);
         }
-        OutputUtils.printWinningStats(Wins.getWinningStats());
+        return Wins.getWinningStats();
     }
 
-    private void calculateProfitRate() {
-        double profitRate = Wins.getProfitRate(purchaseAmount.getPurchaseAmount());
+    private double calculateProfitRate() {
+        return Wins.getProfitRate(purchaseAmount.getPurchaseAmount());
+    }
+
+    private void printResult(String winningStats, double profitRate) {
+        OutputUtils.printWinningStats(winningStats);
         OutputUtils.printCalculatedProfitRate(profitRate);
     }
 
     public void start() {
         getLottoPurchaseAmountFromUser();
 
-        int purchaseCount = purchaseAmount.getPurchaseCount();
-        while (purchaseCount > 0) {
-            generateLotteryNumbers();
-            purchaseCount--;
+        generateLotteryNumbers();
+
+        try {
+            getWinNumbersFromUser();
+            getBonusNumberFromUser();
+        } catch (IllegalArgumentException e) {
+            OutputUtils.printException(e);
+            return;
         }
 
-        printPurchasedLottoNumbers();
+        String winningStats = calculateWinningRate();
+        double profitRate = calculateProfitRate();
 
-        getWinNumbersFromUser();
-        getBonusNumberFromUser();
-
-        calculateWinningRate();
-        calculateProfitRate();
+        printResult(winningStats, profitRate);
     }
 }

@@ -20,15 +20,16 @@ public class OutputUtils {
         }
     }
 
-    public static void printCalculateWins() {
-        System.out.println(WINNING_STATS);
-    }
-
     public static void printWinningStats(String winningStats) {
+        System.out.println(WINNING_STATS);
         System.out.println(winningStats);
     }
 
     public static void printCalculatedProfitRate(double profitRate) {
         System.out.println(String.format(PROFIT_RATE_MESSAGE, profitRate));
+    }
+
+    public static void printException(Exception e) {
+        System.out.println(e.getMessage());
     }
 }
