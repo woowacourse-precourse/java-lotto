@@ -12,6 +12,16 @@ public class LottoManager {
     private static final int LOTTO_PRICE = 1000;
     private static final int[] PROFIT = {5000, 50000, 1500000, 30000000, 2000000000};
 
+    public enum PrizeMoney {
+        WIN_5(5000), WIN_4(50000), WIN_3(1500000), WIN_2(30000000), WIN_1(2000000000);
+
+        private int prizeMoney;
+
+        PrizeMoney(int prizeMoney) {
+            this.prizeMoney = prizeMoney;
+        }
+    }
+
     public enum StatisticMessage {
         WIN_5("3개 일치 (5,000원) - "),
         WIN_4("4개 일치 (50,000원) - "),
@@ -23,6 +33,10 @@ public class LottoManager {
 
         StatisticMessage(String message) {
             this.message = message;
+        }
+
+        public static void printTotalPrizeRate(double totalRate) {
+            System.out.printf("총 수익률은 %.1f%%입니다.", totalRate);
         }
     }
 
@@ -106,11 +120,13 @@ public class LottoManager {
 
     public void printProfit(int userMoney, Map<Integer, Integer> result) {
         //{0=3, 1=4, 2=1, 3=0, 4=0, 5=0, 6=0, 7=0}
-        int totalProfit = 0;
-        for (int i = 3; i < 8; i++) {
-            totalProfit += PROFIT[i-3] * result.get(i);
+        int totalProfit = 0, index = 3;
+        for (PrizeMoney prize : PrizeMoney.values()) {
+            totalProfit += prize.prizeMoney * result.get(index);
+            index++;
         }
+
         double totalRate = ((double) totalProfit/userMoney)*100;
-        System.out.printf("총 수익률은 %.1f%%입니다.", totalRate);
+        StatisticMessage.printTotalPrizeRate(totalRate);
     }
 }
