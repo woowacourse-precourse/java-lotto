@@ -94,10 +94,7 @@
   - generateBonusNumber() : 보너스 넘버를 받아올 함수
   - checkNotEqualWinningNumber(bonusNumber) : 보너스 숫자를 인자로 받아 당첨번호와 다른지 확인하는 함수
   - checkBonusRange(bonusNumber) : 보너스 숫자를 받아 보너스 숫자가 1~45 사이의 숫자인지 확인하는 함수
-### WinningNumberService
-- variable
-  - delemiter : 구분자
-  - List<Integer> winningNumberList : 당첨 번호를 받을 리스트
+### WinningNumberService (개발완료📌️)
 - function
   - generateWinningNumber() : 당첨 번호를 받아올 함수
   - converToInteger() : 당첨번호 문자열을 숫자리스트로 바꿀 함수
