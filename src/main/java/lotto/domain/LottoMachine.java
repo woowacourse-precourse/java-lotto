@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoMachine {
+    private static final String ERROR_MESSAGE = "[ERROR]";
     private final int LOTTO_PRICE = 1000;
     private final int[] PRIZE = { 0, 2000000000, 30000000, 1500000, 50000, 5000};
     private int paid;
@@ -25,8 +26,10 @@ public class LottoMachine {
     }
 
     private void validateMoney(String input){
-        if(input.matches("[^0-9]")){
+        if(!input.matches("[0-9]+")){
+            System.out.println("[ERROR]");
             throw new IllegalArgumentException("[ERROR] 숫자만 입력해 주세요");
+
         }
         int money = Integer.parseInt(input);
 
@@ -37,16 +40,15 @@ public class LottoMachine {
 
     public List<Lotto> createLottoNumber(){
         int cnt = paid / LOTTO_PRICE;
-        System.out.println(cnt+" 개 ");
         for(int i=0; i<cnt; i++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
         }
-        System.out.println("com");
         return lottos;
     }
     public void printLottos(){
+        System.out.println(paid/LOTTO_PRICE +"개를 구매했습니다.");
         for(Lotto lotto:lottos){
             System.out.println(lotto.getNumbers());
         }
@@ -57,7 +59,7 @@ public class LottoMachine {
         for(Lotto lotto:lottos){
             boolean isBonusNum= false;
             int rank =0;
-            List<Integer> numbers = lotto.getNumbers();
+            ArrayList<Integer> numbers =  new ArrayList<>(lotto.getNumbers());
             if(numbers.contains(bonusNum)) {
                 isBonusNum = true;
             }
@@ -90,7 +92,7 @@ public class LottoMachine {
         System.out.println("5개 일치 (1,500,000원) - "+ result[3]+"개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+result[2]+"개");
         System.out.println("6개 일치 (2,000,000,000원) - "+result[1]+"개");
-        System.out.println("총 수익률은 " + revenue + "%입니다.");
+        System.out.println("총 수익률은 " + (double) revenue*100/paid + "%입니다.");
     }
 
 
