@@ -3,8 +3,8 @@ package lotto;
 import java.util.*;
 
 public class WinningStats {
-    static double earningReturn;
-    static final String PrintEarningRate = "총 수익률은 %f입니다.";
+    static double earningRate;
+    static final String PrintEarningRate = "총 수익률은 %.1f%%입니다.";
     public static class Winning{
         int rank;
         int number;
@@ -49,7 +49,7 @@ public class WinningStats {
         }
     }
     public void PrintEarningRate(){
-        System.out.println(String.format(PrintEarningRate, earningReturn));
+        System.out.println(String.format(PrintEarningRate, earningRate));
     }
 
     private void AccumulateWinning(int sameCount, Boolean existBonus){
@@ -64,6 +64,6 @@ public class WinningStats {
         for(Winning c : collection){
             sum += c.number * c.reward;
         }
-        earningReturn = Math.round(sum / amount * 10) / 10.0;
+        earningRate = (sum * 100.0) / amount;
     }
 }
