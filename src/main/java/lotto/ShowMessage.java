@@ -15,16 +15,18 @@ public class ShowMessage {
     }
 
     public static void showHowManyBuy(long number) {
+        System.out.println();
         System.out.println(number + HOW_MANY_BUY_MESSAGE);
     }
 
-    public static void showLottoNumber(List<List<Integer>> lottoNumbers) {
-        for (List<Integer> lottoNumber : lottoNumbers) {
-            System.out.println(lottoNumber);
+    public static void showLottoNumber(List<Lotto> lottoNumbers) {
+        for (Lotto lottoNumber : lottoNumbers) {
+            System.out.println(lottoNumber.getLottoNumbers());
         }
     }
 
     public static void showInputLottoNumber() {
+        System.out.println();
         System.out.println(INPUT_LOTTO_NUMBER_MESSAGE);
     }
 
