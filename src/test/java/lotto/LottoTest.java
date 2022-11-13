@@ -2,6 +2,7 @@ package lotto;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.HashSet;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,15 +32,9 @@ class LottoTest {
     }
 
 
-    @DisplayName("6개의 로또 번호를 생성해주는지")
-    @Test
-    void randomLottoNumberGeneration(){
 
-        Generator generator = new Generator();
 
-        assertEquals(generator.generateRandomLottoNumber().size(),6);
 
-    }
 
 
 
