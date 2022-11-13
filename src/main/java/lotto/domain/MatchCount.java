@@ -10,7 +10,10 @@ public class MatchCount {
     }
 
     public boolean isSameResult(MatchCount o) {
-        if (winningCount==o.winningCount && bonusCount<=o.bonusCount) {
+        if (winningCount != o.winningCount) {
+            return false;
+        }
+        if (winningCount!=5 || bonusCount==o.bonusCount) {
             return true;
         }
         return false;
