@@ -7,8 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ResultTest {
 
     Result result;
@@ -128,7 +126,7 @@ class ResultTest {
     void getPrizeTest2() {
         Prize prize = result.getPrize(Rank.third);
 
-        Assertions.assertThat(prize).isEqualTo(Prize.thirdPrice);
+        Assertions.assertThat(prize).isEqualTo(Prize.thirdPrize);
     }
 
     @DisplayName("상금 조회 테스트")
