@@ -1,15 +1,21 @@
 package lotto.utils;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.Application;
 import lotto.views.Input;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
+import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 
-class InputValidationTest {
+class InputValidationTest extends NsTest {
 
     private InputValidation inputValidation;
 
@@ -54,5 +60,20 @@ class InputValidationTest {
         Input input = new Input();
 
         assertThat(input.convertToList(answer)).isEqualTo(result);
+    }
+
+    @DisplayName("입력받은 당첨번호는 개수가 총 6개여야 한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"1000:1,2,3,4,5,6,7", "1000:1,2,3,4"} ,delimiter = ':')
+    void checkWinningNumberSize(String firstInput, String secondInput) {
+        assertSimpleTest(() -> {
+            runException(firstInput, secondInput);
+            assertThat(output()).contains(ErrorMessage.LOTTO_NUMBER_IS_SIX);
+        });
+    }
+
+    @Override
+    public void runMain() {
+        Application.main(new String[]{});
     }
 }
