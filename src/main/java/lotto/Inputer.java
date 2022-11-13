@@ -1,11 +1,14 @@
 package lotto;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Inputer {
 
-    public int inputMoney(){
+    public int inputMoney() {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -14,14 +17,20 @@ public class Inputer {
         return userInputMoney;
     }
 
-    public List<Integer> createLottoWinNumber (){
+    public String createLottoWinNumber() {
+        Scanner scanner = new Scanner(System.in);
 
+        String lottoWin = scanner.next();
 
-        return null;
+        return lottoWin;
     }
 
-    public int inputLottoBonusNumber(){
-        return 0;
+    public int inputLottoBonusNumber() {
+        Scanner scanner = new Scanner(System.in);
+
+        int bonusNumber = scanner.nextInt();
+
+        return bonusNumber;
     }
 
 }
