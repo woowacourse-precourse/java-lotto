@@ -13,8 +13,8 @@ public enum LottoResultConstant {
     CORRECT_SIX("6개 일치 (" + IntConstant.SIX_CORRECT_MONEY.getMoneyValue() + "원) - ",
             IntConstant.SIX_CORRECT_MONEY.getValue());
 
-    private String resultString;
-    private int resultMoney;
+    private final String resultString;
+    private final int resultMoney;
 
 
     LottoResultConstant(String resultString, int resultMoney) {
