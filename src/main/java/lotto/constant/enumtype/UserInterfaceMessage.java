@@ -12,7 +12,9 @@ public enum UserInterfaceMessage {
     MATCH_COUNT("%d개 일치"),
     TOTAL_EARNINGS_RATE("총 수익률은 '%,.1%%'입니다."),
     ERROR_INPUT_BUY_INFO("로또 구입 금액을 1,000원 단위로 입력해주세요."),
-    ERROR_NUMBER_INCLUSIVE("로또 번호는 %d부터 %d 사이의 숫자여야 합니다.");
+    ERROR_NUMBER_INCLUSIVE("로또 번호는 %d부터 %d 사이의 숫자여야 합니다."),
+    ERROR_INPUT_BONUS_NUMBER_DUPLICATED("보너스 번호는 입력하신 당첨번호와 중복될 수 없습니다."),
+    ERROR_INPUT_BONUS_NUMBER_INCLUSIVE("보너스 번호는 %d부터 %d 사이의 숫자여야 합니다.");
 
     private String value;
     UserInterfaceMessage(String value) {

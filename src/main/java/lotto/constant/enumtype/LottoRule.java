@@ -1,7 +1,7 @@
 package lotto.constant.enumtype;
 
 public enum LottoRule {
-    LOTTO_PRICE(1000);
+    LOTTO_PRICE(1000), LOTTO_MAX_COUNT(6);
 
     private Integer value;
 
