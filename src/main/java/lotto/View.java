@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.WinningCount;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -17,7 +18,8 @@ public class View {
     public void buyLottoList(int price, List<Lotto> lottoBundle) {
         System.out.println(price / 1000 + "개를 구매했습니다.");
         for (Lotto lotto : lottoBundle) {
-            lotto.getNumbers().sort(Comparator.naturalOrder());
+            //lotto.getNumbers().sort(Comparator.naturalOrder());
+            Collections.sort(lotto.getNumbers());
             System.out.println(lotto.getNumbers().toString());
         }
         System.out.println();
