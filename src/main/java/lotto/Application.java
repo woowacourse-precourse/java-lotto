@@ -1,7 +1,14 @@
 package lotto;
 
+import lotto.domain.Cashier;
+import lotto.domain.WinningCalculator;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        Cashier cashier = new Cashier();
+        cashier.buyLottos();
+        WinningCalculator.setNumbers();
+        cashier.saveResultInAccount();
+        cashier.getResultInAccount();
     }
 }
