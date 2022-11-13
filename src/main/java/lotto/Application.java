@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
@@ -8,8 +9,8 @@ public class Application {
         Controller controller = new Controller();
         int money = console.inputMoney();
         int count = controller.getCount(money);
-        List<Integer>[] issuedList = controller.issueLotto(count);
-
+        ArrayList<Lotto> issuedList = controller.issueLotto(count);
+        
         // 금액 100
     }
 }

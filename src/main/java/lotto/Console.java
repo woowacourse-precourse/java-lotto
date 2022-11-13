@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Console {
