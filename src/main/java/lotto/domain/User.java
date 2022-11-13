@@ -1,6 +1,6 @@
 package lotto.domain;
 
-import lotto.domain.lotto.LottoWithBonusNum;
+import lotto.domain.lotto.WinningLotto;
 import lotto.io.InputControl;
 
 public class User {
@@ -9,7 +9,7 @@ public class User {
         return new PurchaseAmount(InputControl.readInt());
     }
 
-    public LottoWithBonusNum inputLottoNum() {
-        return new LottoWithBonusNum(InputControl.readInts(","));
+    public WinningLotto inputLottoNum() {
+        return new WinningLotto(InputControl.readInts(","));
     }
 }

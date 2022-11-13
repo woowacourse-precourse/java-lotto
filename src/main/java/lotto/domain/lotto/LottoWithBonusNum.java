@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 
 public class LottoWithBonusNum {
-    private final Lotto lotto;
-    private final BonusNum bonusNum;
+    protected final Lotto lotto;
+    protected final BonusNum bonusNum;
 
     public LottoWithBonusNum() {
         this(Randoms.pickUniqueNumbersInRange(1, 45, 7));
