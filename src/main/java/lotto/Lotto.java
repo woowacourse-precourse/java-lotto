@@ -8,6 +8,7 @@ import java.util.List;
 public class Lotto {
     private static int number_of_lotto;
     private static List<List<Integer>> purchased_lotto_numbers;
+    private static int bonus_number = 0;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -45,6 +46,10 @@ public class Lotto {
         for (int lotto = 0; lotto < purchased_lotto_numbers.size(); lotto++){
             System.out.println(purchased_lotto_numbers.get(lotto));
         }
+    }
+
+    private void enterBonusNumber() {
+        bonus_number = Integer.parseInt(Console.readLine());
     }
 
 
