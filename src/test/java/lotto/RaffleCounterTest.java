@@ -18,7 +18,7 @@ class RaffleCounterTest {
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6);
         int bonusNumber = 7;
 
-        List<Integer> winnerResult = raffleCounter.countWinner(lotto, winningNumbers, bonusNumber);
+        Integer winnerResult = raffleCounter.countWinner(lotto, winningNumbers, bonusNumber);
 
         Assertions.assertThat(winnerResult).isEqualTo(List.of(6, 0));
     }

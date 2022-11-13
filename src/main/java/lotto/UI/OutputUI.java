@@ -28,12 +28,11 @@ public class OutputUI {
 
     private void printWinnerResult(List<Integer> winnerCounts) {
         //TODO: ENUM으로 Refactoring 예정
-        System.out.println("3개 일치 (5,000원) - 1개");
-        System.out.println("4개 일치 (50,000원) - 0개\n");
+        System.out.println("3개 일치 (5,000원) - 0개");
+        System.out.println("4개 일치 (50,000원) - 0개");
         System.out.println("5개 일치 (1,500,000원) - 0개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - 0개");
-        System.out.println("6개 일치 (2,000,000,000원) - 0개\n" +
-                "총 수익률은 62.5%입니다.");
+        System.out.println("6개 일치 (2,000,000,000원) - 0개");
     }
 
     private void printReturnReate(double returnRate) {
