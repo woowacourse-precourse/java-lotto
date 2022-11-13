@@ -1,9 +1,11 @@
 package lotto.util;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 import static lotto.constant.InputMessage.*;
+import static lotto.constant.LottoResult.FIVE_COUNT_WITH_BONUS;
 import static lotto.constant.OutputMessage.*;
 
 
@@ -26,14 +28,17 @@ public class MessageUtil {
     }
 
     public void printPurchaseInfo(List<Integer> lottoNums) {
-        lottoNums.sort(Comparator.naturalOrder());
+        // 테스트 시 받은 리스트는 불변 객체이기 때문에 정렬을 위해 따로 받아서 처리
+        List<Integer> sortLottoNums = new ArrayList<>(lottoNums);
+        sortLottoNums.sort(Comparator.naturalOrder());
+
         StringBuilder lottoNum = new StringBuilder("");
 
         lottoNum.append("[");
-        for (Integer number : lottoNums) {
-            lottoNum.append(number).append(",");
+        for (Integer number : sortLottoNums) {
+            lottoNum.append(number).append(", ");
         }
-        lottoNum.deleteCharAt(lottoNum.lastIndexOf(",")).append("]");
+        lottoNum.delete(lottoNum.length()-2, lottoNum.length()).append("]");
 
         System.out.println(lottoNum);
     }
@@ -43,7 +48,12 @@ public class MessageUtil {
     }
 
     public void printWinningStatsResult(int number, int price, int matchCount) {
-        System.out.printf(WINNING_STATS_RESULT.getMessage(), number, price, matchCount);
+        String priceWithComma = String.format("%,d", price);
+        if (number == FIVE_COUNT_WITH_BONUS.getNumber()) {
+            System.out.printf(WINNING_STATS_BONUS_RESULT.getMessage(), priceWithComma, matchCount);
+            return;
+        }
+        System.out.printf(WINNING_STATS_RESULT.getMessage(), number, priceWithComma, matchCount);
     }
 
     public void printEarningRate(Double rate) {
