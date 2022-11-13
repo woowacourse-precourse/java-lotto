@@ -62,10 +62,10 @@ public class LottoKiosk {
     }
 
     void showHowManyLotto() {
-        System.out.println(howMany + Messages.HOW_MANY_SOLD.message);
+        System.out.println("\n" + howMany + Messages.HOW_MANY_SOLD.message);
     }
 
-    void sellLotto(){
+    void sellLotto() {
         calculateLottoAmount();
         showHowManyLotto();
         makeAllLotto();
@@ -87,15 +87,15 @@ public class LottoKiosk {
         }
     }
 
-    Lotto makeLotto(List<Integer> numbers){
+    Lotto makeLotto(List<Integer> numbers) {
         return new Lotto(numbers);
     }
 
-    List<Lotto> showAllLotto(){
-        return this.lottos.stream().map(o -> (Lotto)o).collect(Collectors.toList());
+    List<Lotto> showAllLotto() {
+        return this.lottos.stream().map(o -> (Lotto) o).collect(Collectors.toList());
     }
 
-    void printAllLottoNumber(){
+    void printAllLottoNumber() {
         for (Lotto lotto : lottos) {
             System.out.println(lotto.showNumbers());
         }
