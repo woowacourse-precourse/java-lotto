@@ -10,7 +10,6 @@ public class Application {
 
         System.out.printf("%d%s%n%n", calc.quantity, Message.PURCHASE);
         user.generateRandomLotto(calc.quantity);
-        user.printLotto();
 
         Lotto lotto = user.inputWinningNumber();
         int bonus = lotto.inputBonus();

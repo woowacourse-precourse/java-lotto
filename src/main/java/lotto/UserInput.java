@@ -35,18 +35,16 @@ public class UserInput {
 
     void generateRandomLotto(long quantity) {
         for (int i = 0; i < quantity; i++) {
-            List<Integer> tmpLotto =
+            List<Integer> randomLotto =
                     new ArrayList<>(Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, NUMBER_COUNT));
-            tmpLotto.sort(Comparator.naturalOrder());
-            lotteries.add(tmpLotto);
+            randomLotto.sort(Comparator.naturalOrder());
+            lotteries.add(randomLotto);
+            printLotto(randomLotto);
         }
     }
 
-    void printLotto() {
-        Iterator<List<Integer>> it = lotteries.iterator();
-        while (it.hasNext()) {
-            System.out.println(it.next());
-        }
+    void printLotto(List randomLotto) {
+        System.out.println(randomLotto);
     }
 
     public Lotto inputWinningNumber() {
