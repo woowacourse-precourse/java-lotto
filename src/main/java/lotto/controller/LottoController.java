@@ -32,8 +32,7 @@ public class LottoController {
         if (money.isEmpty()) {
             return;
         }
-        int lottoCount = calculateLottoCountWithOutputView(money.get());
-        List<Lotto> userLotto = createUserLottoWithOutputView(lottoCount);
+        List<Lotto> userLotto = createUserLottoWithOutputView(calculateLottoCountWithOutputView(money.get()));
         Optional<Lotto> winningLotto = getWinningLottoWithValidation();
         if (winningLotto.isEmpty()) {
             return;
@@ -43,9 +42,7 @@ public class LottoController {
         if (lotteryWinningNumber.isEmpty()) {
             return;
         }
-        Map<LottoResultConstant, Integer> result = lottoResultService.getResult(userLotto,
-                lotteryWinningNumber.get());
-        printUserLottoAndUserYield(result, money.get());
+        printResult(money.get(), userLotto, lotteryWinningNumber.get());
     }
 
     private Optional<Money> getUserMoneyWithValidation() {
@@ -110,6 +107,12 @@ public class LottoController {
             throw new IllegalArgumentException(
                     StringConstant.BONUS_LOTTO_INPUT_NUMBER_BETWEEN_ERROR_MESSAGE.getMessage());
         }
+    }
+
+    private void printResult(Money money, List<Lotto> userLotto, WinningLotto lotteryWinningNumber) {
+        Map<LottoResultConstant, Integer> result = lottoResultService.getResult(userLotto,
+                lotteryWinningNumber);
+        printUserLottoAndUserYield(result, money);
     }
 
     private void printUserLottoAndUserYield(Map<LottoResultConstant, Integer> result, Money userMoney) {
