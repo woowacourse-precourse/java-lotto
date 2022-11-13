@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class UserInterface {
 
     public String getUserInput(String changeWord) {
-        System.out.println(changeWord + "을 입력해 주세요.");
+        System.out.println(changeWord);
         return Console.readLine();
     }
 
