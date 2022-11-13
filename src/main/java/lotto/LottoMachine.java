@@ -15,8 +15,20 @@ public class LottoMachine {
 
     public String getMoney() {
         System.out.println("구매금액을 입력해주세요.");
-        String money = Console.readLine();
-        return money;
+        String input = Console.readLine();
+        return input;
     }
 
+    public void validate(String input) {
+        int money;
+        try {
+            money = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 입력값이 숫자가 아닙니다.");
+        }
+
+        if(money % 1000 > 0) {
+            throw new IllegalArgumentException("[ERROR] 구매금액은 1000원 단위가 아닙니다.");
+        }
+    }
 }
