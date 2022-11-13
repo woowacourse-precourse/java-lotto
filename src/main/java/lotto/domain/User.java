@@ -8,12 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import lotto.utils.ConsoleUtil;
-import lotto.utils.MessagesUtil;
+import lotto.utils.RankUtil;
 import lotto.validate.NumberValidator;
 
 public class User {
     private int money;
-    private double benefit;
     private List<Lotto> lottos = new ArrayList<>();
     private NumberValidator validator = new NumberValidator();
 
@@ -31,28 +30,13 @@ public class User {
         }
     }
 
-    public void validateBuyMoney(String money) {
-        validator.validateBuyMoney(money);
-    }
-
-    public void compare(List<Integer> winningLottoNumbers) {
-        for (Lotto lotto : lottos) {
-            int count = lotto.correctCount(winningLottoNumbers);
-            boolean isMatch = lotto.isMatchBonusNumber(winningLottoNumbers);
-        }
-    }
-
     public void showBuyAmount() {
         String message = BUY_AMOUNT.getMessage();
         String param = String.valueOf(getBuyAmount());
         ConsoleUtil.showParamMessage(message, param);
     }
 
-    public int getBuyAmount() {
-        return lottos.size();
-    }
-
-    public void showNumbers() {
+    public void showNumbers() { // 리팩토링 대상. Lotto 번호를 왜 직접 처리? (getNumbers())
         for (Lotto lotto : lottos) {
             List<String> numbers = convertIntegerToString(lotto);
 
@@ -66,5 +50,45 @@ public class User {
         return lotto.getNumbers().stream()
                 .map(String::valueOf)
                 .collect(Collectors.toList());
+    }
+
+    public void validateBuyMoney(String money) {
+        validator.validateBuyMoney(money);
+    }
+
+    public void showWinningResult(Winning winning) {
+        WinningResult result = new WinningResult();
+
+        for (Lotto lotto : lottos) {
+            result.addRank(compare(lotto, winning));
+        }
+
+        result.show();
+    }
+
+    public RankUtil compare(Lotto lotto, Winning winning) {
+        int count = lotto.correctCount(winning.getWinningNumbers());
+        boolean isMatch = lotto.isMatchBonusNumber(winning.getBonusNumber());
+
+        return getRank(count, isMatch);
+    }
+
+    private RankUtil getRank(int count, boolean isMatch) {
+        if (count == 6) {
+            return RankUtil.FIRST;
+        } else if (count == 5 && isMatch) {
+            return RankUtil.SECOND;
+        } else if (count == 5) {
+            return RankUtil.THIRD;
+        } else if (count == 4) {
+            return RankUtil.FOURTH;
+        } else if (count == 3) {
+            return RankUtil.FIFTH;
+        }
+        return RankUtil.MISS;
+    }
+
+    public int getBuyAmount() {
+        return lottos.size();
     }
 }

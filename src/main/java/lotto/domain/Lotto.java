@@ -28,8 +28,8 @@ public class Lotto {
         return count;
     }
 
-    public boolean isMatchBonusNumber(List<Integer> winningLottoNumbers) {
-        return numbers.contains(winningLottoNumbers.get(6));
+    public boolean isMatchBonusNumber(int bonusNumber) {
+        return numbers.contains(bonusNumber);
     }
 
     public List<Integer> getNumbers() {
