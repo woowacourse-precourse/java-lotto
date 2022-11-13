@@ -11,7 +11,6 @@ public class Input {
 		int budget = Integer.parseInt(Console.readLine());
 		validateBudget(budget);
 		int numberOfGame = budget/1000;
-		System.out.println("구매한 게임횟수는 "+numberOfGame+"회");
 		return numberOfGame;
 	}
 	public static ArrayList<Integer> winningNumberInput() {

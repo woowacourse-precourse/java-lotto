@@ -12,7 +12,6 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
-        System.out.println(this.numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -21,7 +20,6 @@ public class Lotto {
         }
     }
     public static ArrayList<Object> randomNumberGenerate(int numberOfGame){
-        System.out.println(numberOfGame+"회시작");
         int i = 0;
         ArrayList<Object> userNumber = new ArrayList<>();
         do{
