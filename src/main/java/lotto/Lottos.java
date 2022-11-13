@@ -6,6 +6,7 @@ import java.util.List;
 public class Lottos {
     private static final int MINIMUM_LOTTOS_SIZE = 1;
     private static final int BONUS_CHECK_CONDITION = 5;
+    private static final String PUBLISHED_LOTTO_AMOUNT_ERROR = "[ERROR] 로또 개수가 1 미만일 수 없어요.";
 
     private final List<Lotto> lottos;
 
@@ -34,7 +35,7 @@ public class Lottos {
 
     private void checkSize(List<Lotto> lottos) {
         if (lottos.size() < MINIMUM_LOTTOS_SIZE) {
-            throw new IllegalArgumentException("[ERROR] 로또 개수가 1 미만일 수 없어요.");
+            throw new IllegalArgumentException(PUBLISHED_LOTTO_AMOUNT_ERROR);
         }
     }
 
