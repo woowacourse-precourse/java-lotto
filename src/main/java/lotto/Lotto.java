@@ -30,4 +30,12 @@ public class Lotto {
     public List<Integer> getNumbers() {
         return numbers;
     }
+
+    public boolean isContain(int num) {
+        if (numbers.contains(num)) {
+            return true;
+        }
+
+        return false;
+    }
 }
