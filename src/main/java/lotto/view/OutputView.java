@@ -1,5 +1,8 @@
 package lotto.view;
 
+import lotto.Winning;
+
+import java.util.Arrays;
 import java.util.List;
 
 import static lotto.Game.count;
@@ -16,5 +19,24 @@ public class OutputView{
     public static void lottoView(){
         lottos.stream().forEach(lotto -> lotto.printNumbers());
         changeLine();
+    }
+
+    public static void ResultView(){
+        resultTitleView();
+        for(Winning winning: Winning.values()){
+            printResultView(winning);
+            changeLine();
+        }
+    }
+    private static void printResultView(Winning winning){
+        if(winning.bonus){
+            System.out.printf("%d개 일치, 보너스 볼 일치 (%s) - %d개", winning.match,winning.priceText,winning.count);
+            return;
+        }
+        System.out.printf("%d개 일치 (%s) - %d개", winning.match,winning.priceText,winning.count);
+    }
+    private static void resultTitleView(){
+        System.out.println("당첨 통계");
+        System.out.println("---");
     }
 }
