@@ -2,13 +2,14 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
 public class LottoController {
 
     public void readUserMoney(String userMoney) {
         isDigit(userMoney);
-        validate(userMoney);
+        validateUserMoney(userMoney);
     }
 
     private void isDigit(String userInput) {
@@ -18,7 +19,7 @@ public class LottoController {
         }
     }
 
-    private void validate(String userInput) {
+    private void validateUserMoney(String userInput) {
         int money = Integer.parseInt(userInput);
 
         if (money == 0) {
