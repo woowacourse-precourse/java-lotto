@@ -11,20 +11,24 @@ public class Lotto {
 		validate(numbers);
 		this.numbers = numbers;
 	}
-
+	
 	private void validate(List<Integer> numbers) {
-		
-		Set<Integer> numberSet = new HashSet<>();
-		for(int number : numbers) {
-			numberSet.add(number);
-		}
-		
-		if (numberSet.size() != 6) {
+		if (numbers.size() != 6) {
 			throw new IllegalArgumentException();
 		}
-	}
-	
-	public List<Integer> getLotto() {
-		return numbers;
+
+		Set<Integer> duplicateCheck = new HashSet<>();
+		
+		for (int number : numbers) {
+			if(number < 1 || 45 < number) {
+				throw new IllegalArgumentException();
+			}
+			
+			duplicateCheck.add(number);
+		}
+		
+		if (duplicateCheck.size() != 6) {
+			throw new IllegalArgumentException();
+		}
 	}
 }
