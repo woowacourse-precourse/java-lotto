@@ -31,7 +31,7 @@ public class Game {
     }
 
     private static void countMoney(){
-        count = Integer.parseInt(input);
+        count = Integer.parseInt(input)/1000;
     }
 
     private static void makeLottos(){
