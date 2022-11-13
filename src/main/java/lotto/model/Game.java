@@ -12,7 +12,7 @@ public class Game {
 
     private Integer budget = 0;
     private List<Lotto> lottos = new ArrayList<>();
-    private List<Integer> winningNumbers = new ArrayList<>();
+    private Lotto winningLotto;
 
     public Game(){
 
@@ -35,12 +35,12 @@ public class Game {
         return lottos;
     }
 
-    public List<Integer> getWinningNumbers(){
-        return winningNumbers;
+    public Lotto getWinningLotto() {
+        return winningLotto;
     }
 
-    public void setWinningNumbers(List<Integer> winningNumbers){
-        this.winningNumbers = winningNumbers;
+    public void setWinningLotto(List<Integer> winningNumbers){
+        winningLotto = new Lotto(winningNumbers);
     }
 
     private void validateBudget(Integer budget){
