@@ -30,7 +30,7 @@ public class LottoGame {
         System.out.println("보너스 번호를 입력해 주세요");
         String bonusInput = Console.readLine();
         bonusNumber = Integer.parseInt(bonusInput);
-        checkBonus();
+        checkBonus(bonusNumber);
 
     }
 
@@ -46,7 +46,7 @@ public class LottoGame {
             winningNumber.add(Integer.parseInt(s));
 
         validate(winningNumber);
-        checkSame();
+        checkSame(winningNumber);
     }
 
     // 당첨 번호가 6개인지 확인하는 함수
@@ -57,7 +57,7 @@ public class LottoGame {
     }
 
     // 당첨 번호에 중복이 있는지 확인하는 함수
-    private void checkSame() {
+    private void checkSame(List<Integer> winningNumber) {
         Set<Integer> checkSet = new HashSet<>(winningNumber);
 
         if(winningNumber.size() != checkSet.size())
@@ -65,7 +65,7 @@ public class LottoGame {
     }
 
     // 보너스 번호가 당첨 번호와 중복되는지 확인하는 함수
-    private void checkBonus() {
+    private void checkBonus(int bonusNumber) {
         for(int n : winningNumber) {
             if(n == bonusNumber)
                 throw new IllegalArgumentException();
