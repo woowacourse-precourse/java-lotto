@@ -8,7 +8,8 @@ public class Cashier {
     private Account account;
 
     public void buyLottos() {
-        int inputMoney = UserInterface.getInputMoney();
+        String inputMoneyRaw = UserInterface.getInputMoney();
+        int inputMoney = convertStringToInt(inputMoneyRaw);
         this.lottos = LottoMachine.publish(inputMoney);
     }
 
@@ -18,6 +19,10 @@ public class Cashier {
 
     public void getResultInAccount() {
         this.account.getResult();
+    }
+
+    private int convertStringToInt(String numberRaw) {
+        return Integer.parseInt(numberRaw);
     }
 
 }
