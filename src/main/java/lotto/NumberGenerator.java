@@ -5,11 +5,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class NumberGenerator {
     List<List<Integer>> autoLotto;
     List<Integer> computerLotto;
-    int bonusNumber;
 
     public NumberGenerator() {
         computerLotto = new ArrayList<>();
@@ -20,20 +20,18 @@ public class NumberGenerator {
     }
 
     public int enterPurchasePrice() {
-        int purchasePrice = exceptionInvalidPurchasePrice();
-        exceptionDividedIntoThousands(purchasePrice);
-        return purchasePrice;
+        String purchasePrice = Console.readLine();
+        int purchasePriceInt = exceptionInvalidPurchasePrice(purchasePrice);
+        exceptionDividedIntoThousands(purchasePriceInt);
+        return purchasePriceInt;
     }
 
     public void enterLottoNumbers() {
-        exceptionInvalidLottoNumber();
+        String lottoNumber = Console.readLine();
+        exceptionInvalidLottoNumber(lottoNumber);
     }
 
-    public void enterBonusNumber() {
-        bonusNumber = exceptionInvalidBonusNumber();
-    }
-
-    private List<Integer> addComputerNumber(List<String> computerLottoString) {
+    public List<Integer> addComputerNumber(List<String> computerLottoString) {
         return convertedLottoNumbers(computerLottoString);
     }
 
@@ -51,13 +49,12 @@ public class NumberGenerator {
 
     public void printLottos(List<List<Integer>> autoLotto) {
         for (List<Integer> lotto : autoLotto) {
-            Collections.sort(lotto);
-            System.out.println(Arrays.toString(lotto.toArray()));
+            Stream<Integer> sorted = Collections.unmodifiableCollection(lotto).stream().sorted();
+            System.out.println(Arrays.toString(sorted.toArray()));
         }
     }
 
-    private int exceptionInvalidPurchasePrice() {
-        String purchasePrice = Console.readLine();
+    private int exceptionInvalidPurchasePrice(String purchasePrice) {
         try {
             return Integer.parseInt(purchasePrice);
         } catch (NumberFormatException exception) {
@@ -67,7 +64,7 @@ public class NumberGenerator {
         }
     }
 
-    private void exceptionDividedIntoThousands(int purchasePrice) {
+    public void exceptionDividedIntoThousands(int purchasePrice) {
         if (purchasePrice % 1000 != 0) {
             IllegalArgumentException e = new IllegalArgumentException();
             System.out.println(Constant.ERROR_MESSAGE + "구매금액은 1,000원으로 나누어 떨어져야 합니다.");
@@ -75,23 +72,13 @@ public class NumberGenerator {
         }
     }
 
-    private void exceptionInvalidLottoNumber() {
+    private void exceptionInvalidLottoNumber(String lottoNumber) {
         try {
-            String[] lottoNumbers = Console.readLine().split(",");
+            String[] lottoNumbers = lottoNumber.split(",");
             computerLotto = addComputerNumber(new ArrayList<>(Arrays.asList(lottoNumbers)));
         } catch (NumberFormatException exception) {
             IllegalArgumentException e = new IllegalArgumentException();
             System.out.println(Constant.ERROR_MESSAGE + "로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-            throw e;
-        }
-    }
-
-    private int exceptionInvalidBonusNumber() {
-        try {
-            return Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException exception) {
-            IllegalArgumentException e = new IllegalArgumentException();
-            System.out.println(Constant.ERROR_MESSAGE + "보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
             throw e;
         }
     }
