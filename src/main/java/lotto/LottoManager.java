@@ -88,8 +88,7 @@ public class LottoManager {
     }
 
     public List<Integer> GenerateRandomNumbers() {
-        List<Integer> numbers = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-        return numbers;
+        return new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
 
     public int getMoney() throws IllegalArgumentException {
@@ -100,8 +99,7 @@ public class LottoManager {
             char charNum = inputMoney.charAt(i);
 
             // 숫자가 아닐 경우 예외
-            int ascii = (int) charNum;
-            if (ascii < 48 || ascii > 57) {
+            if ((int) charNum < 48 || (int) charNum > 57) {
                 Error.TYPE.print();
                 throw new IllegalArgumentException();
             }
@@ -109,7 +107,7 @@ public class LottoManager {
 
         int money = Integer.parseInt(inputMoney);
 
-        if (money%1000 != 0) {
+        if (money % 1000 != 0) {
             Error.REMAINDER.print();
             throw new IllegalArgumentException();
         }
@@ -124,7 +122,7 @@ public class LottoManager {
 
     public List<Lotto> publishLottoForPrice(int money) {
         List<Lotto> result = new ArrayList<>();
-        int numberOfLotto = money/LOTTO_PRICE;
+        int numberOfLotto = money / LOTTO_PRICE;
         System.out.println(numberOfLotto + "개를 구매했습니다.");
 
         for (int i = 0; i < numberOfLotto; i++) {
@@ -138,7 +136,7 @@ public class LottoManager {
         return result;
     }
 
-    public void  printWinningMessage(Map<Integer, Integer> result) {
+    public void printWinningMessage(Map<Integer, Integer> result) {
         //{0=3, 1=4, 2=1, 3=0, 4=0, 5=0, 6=0, 7=0} = {-,-,-,5등, 4등, 3등, 2등, 1등}
         Information.STATISTIC_MESSAGE.printMessage();
 
@@ -157,7 +155,7 @@ public class LottoManager {
             index++;
         }
 
-        double totalRate = ((double) totalProfit/userMoney)*100;
+        double totalRate = ((double) totalProfit / userMoney) * 100;
         StatisticMessage.printTotalPrizeRate(totalRate);
     }
 }
