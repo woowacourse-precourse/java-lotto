@@ -70,7 +70,7 @@ public class LottoExceptionCaseImpl implements LottoExceptionCase {
             if (seq == winningNumber.length() - 1) {
                 break;
             }
-            validateDuplicateComma(winningNumber.charAt(seq), winningNumber.charAt(seq+1));
+            validateDuplicateComma(winningNumber.charAt(seq), winningNumber.charAt(seq + 1));
         }
     }
 

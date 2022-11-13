@@ -3,18 +3,23 @@ package lotto;
 public class LotteryExceptionCaseImpl implements LotteryExceptionCase {
 
     @Override
-    public void validateInputType(String amount) {
-        for (int seq = 0; seq < amount.length(); seq++) {
-            characterCheck(amount.charAt(seq));
+    public void characterCheck(char sequence) {
+        if (47 >= sequence || 58 <= sequence) {
+            throw new IllegalArgumentException();
         }
     }
 
     @Override
-    public void characterCheck(char inputSequence) {
+    public void validateInputType(String amount) {
+        for (int seq = 0; seq < amount.length(); seq++) {
+            validateCharacter(amount.charAt(seq));
+        }
+    }
+
+    @Override
+    public void validateCharacter(char inputSequence) {
         try {
-            if (47 >= inputSequence || 58 <= inputSequence) {
-                throw new IllegalArgumentException();
-            }
+            characterCheck(inputSequence);
         } catch (IllegalArgumentException exception) {
             System.out.println("[ERROR] 금액은 숫자로만 입력할 수 있습니다.");
         }
@@ -55,11 +60,9 @@ public class LotteryExceptionCaseImpl implements LotteryExceptionCase {
     }
 
     @Override
-    public void characterCheck(String amount) {
+    public void validateCharacter(String amount) {
         for (int seq = 0; seq < amount.length(); seq++) {
-            if (47 >= amount.charAt(seq) || 58 <= amount.charAt(seq)) {
-                throw new IllegalArgumentException();
-            }
+            characterCheck(amount.charAt(seq));
         }
     }
 

@@ -14,7 +14,7 @@ public class EarningsRate {
 
     public String calculationEarningsRate(String amount) {
         LotteryExceptionCase exceptionCase = new LotteryExceptionCaseImpl();
-        exceptionCase.characterCheck(amount);
+        exceptionCase.validateCharacter(amount);
         exceptionCase.amountInputEmptyCheck(amount);
         exceptionCase.convertStringToInteger(amount);
         exceptionCase.validateAmountForEarnings(Integer.parseInt(amount));
