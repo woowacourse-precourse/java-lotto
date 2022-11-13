@@ -48,6 +48,7 @@
 ### 랜덤 번호 생성
 - [X] 중복 되지 않는 6개의 숫자 
 - [X] 범위는 1~45
+- [X] 순서대로 정렬
 - `Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_MINIMUM, LOTTO_NUMBER_MAXIMUM, LOTTO_SIZE);사용`
 ### 당첨 확인
 - [ ] 입력받은 번호와 생성한 번호 비교
