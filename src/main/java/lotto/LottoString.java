@@ -1,14 +1,15 @@
-package lotto.controller;
+package lotto;
 
 import lotto.WinningStatus;
 
-public class LottoControllerString {
+public class LottoString {
     public static String INPUT_PURCHASE_PRICE =  "구입금액을 입력해 주세요.";
     public static String INPUT_LOTTO_NUMBRES = "당첨 번호를 입력해 주세요.";
     public static String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     public static String WINNING_STATISTICS = "당첨 통계\n---";
     public static String UNMATCH_PRICE_UNIT = "[ERROR] 구입 금액은 천원 단위의 숫자 입니다.";
-    public static String NUMBER_INPUT_ERROR = "[ERROR] 로또 번호는 6자리 1부터 45 사이의 숫자만으로 구성되어야 합니다.";
+    public static String NUMBER_INPUT_ERROR = "[ERROR] 로또 번호는 6자리 1부터 45 사이의 숫자만으로 ,로 구분되어야 합니다.";
+    public static String NUMBER_MAKER_ERROR = "[ERROR] 로또 번호는 6자리 1부터 45 사이의 숫자만으로 구성 되어야 합니다.";
     public static String purchaserMessage(int price){
         return String.format("%d개를 구매했습니다.", price);
     }
@@ -32,5 +33,4 @@ public class LottoControllerString {
     public static String winningRateMessage(double winningRate){
         return String.format("총 수익률은 %.1f% 입니다.",winningRate);
     }
-
 }
