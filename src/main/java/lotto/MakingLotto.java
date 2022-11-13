@@ -5,7 +5,8 @@ import java.util.List;
 public class MakingLotto {
 
     public int getLottoCount(int money){
-        return 0;
+        int lottoCount=money/1000;
+        return lottoCount;
     }
 
     public List<Integer> makeLotto(){
