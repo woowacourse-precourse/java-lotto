@@ -20,28 +20,15 @@ public class Lotto {
         }
     }
 
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+
     public static List<Integer> createRandomLottoNumber() {
         List<Integer> createdNumbersFromRandoms = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         ArrayList<Integer> createdRandomNumbers = new ArrayList<>(createdNumbersFromRandoms);
         Collections.sort(createdRandomNumbers);
 
         return createdRandomNumbers;
-    }
-
-    public static WinningPlace countCorrespondingNumbers(List<Integer> winnerNumber, List<Integer> checkTargetNumber, int bonusNumber) throws Exception {
-        int correspondingNumber = 0;
-        int correspondingBonusNumber = 0;
-
-        for (Integer targetNumber : checkTargetNumber) {
-            if (winnerNumber.contains(targetNumber)) {
-                correspondingNumber++;
-            }
-        }
-
-        if (checkTargetNumber.contains(bonusNumber)) {
-            correspondingBonusNumber++;
-        }
-
-        return WinningPlace.getPlace(correspondingNumber, correspondingBonusNumber);
     }
 }
