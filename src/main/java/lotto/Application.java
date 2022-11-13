@@ -40,4 +40,17 @@ public class Application {
         }
         return true;
     }
+
+    private static boolean checkInputBonus(List<Integer> winNumbers, String inputBonus) {
+        try {
+            Validation.isIncludeNotNumber(inputBonus);
+            int bonus = Integer.parseInt(inputBonus);
+            Validation.isNumberBetween1And45(bonus);
+            Validation.isBonusInLotto(winNumbers, bonus);
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+        return true;
+    }
 }
