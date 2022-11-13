@@ -9,14 +9,8 @@ public class Application {
     public static int inputpurchase(){
         System.out.println("구입금액을 입력해 주세요.");
         String userInput = Console.readLine();
-        try{
-            int returnData = Integer.valueOf(userInput);
-        }catch(NumberFormatException e){
-            System.out.println("[ERROR]잘못된 입력입니다.");
-        }
         int returnData = Integer.valueOf(userInput);
         return returnData;
-
     }
     //사용자가 로또는 몇개를 구매했는지 확인하는 메서드
     public static int countBuyGame(int buyMoney){
@@ -66,13 +60,17 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        int purchaseAmont = inputpurchase();
-        int buyGameCnt = countBuyGame(purchaseAmont);
-        Lotto[] buyGames = buyLotto(buyGameCnt);
-        printLottoNum(buyGames);
-        calProfitRateRun(buyGames);
-        printStatus();
-        LottoWin lottoWin = LottoWin.getInstance();
-        lottoWin.profitRateCal();
+        try {
+            int purchaseAmont = inputpurchase();
+            int buyGameCnt = countBuyGame(purchaseAmont);
+            Lotto[] buyGames = buyLotto(buyGameCnt);
+            printLottoNum(buyGames);
+            calProfitRateRun(buyGames);
+            printStatus();
+            LottoWin lottoWin = LottoWin.getInstance();
+            lottoWin.profitRateCal();
+        }catch ( NumberFormatException e){
+            System.out.println("[ERROR]");
+        }
     }
 }
