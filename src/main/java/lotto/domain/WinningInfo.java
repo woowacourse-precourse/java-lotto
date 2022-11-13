@@ -7,7 +7,7 @@ public class WinningInfo extends Lotto {
 
     private int bonusNumber;
 
-    public WinningInfo(List<Integer> numbers, int bonusNumber) {
+    public WinningInfo(List<Integer> numbers, int bonusNumber) throws IllegalArgumentException {
         super(numbers);
         Validator.validateBonusNumber(numbers, bonusNumber);
         this.bonusNumber = bonusNumber;
