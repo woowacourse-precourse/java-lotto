@@ -13,7 +13,7 @@ public class Application {
         int[] statistics = new int[5];
         double profit = 0;
         List<Integer> win_numbers;
-        List<Lotto> buy_numbers = new ArrayList<>();
+        List<Lotto> buy_lists = new ArrayList<>();
 
         System.out.println("구입금액을 입력해 주세요.");
 
@@ -23,10 +23,10 @@ public class Application {
         System.out.println("\n" + num + "개를 구매했습니다.");
 
         for (int i = 0; i < num; i++) {
-            buy_numbers.add(new Lotto(Lotto.buy_lotto()));
+            buy_lists.add(new Lotto(Lotto.buy_lotto()));
         }
 
-        for (Lotto list : buy_numbers) {
+        for (Lotto list : buy_lists) {
             list.sort();
             System.out.println(list.getList());
         }
@@ -41,10 +41,10 @@ public class Application {
 
         bonus = Integer.parseInt(Console.readLine());
 
-        for (Lotto nums : buy_numbers) {
+        for (Lotto buy_numbers : buy_lists) {
             boolean match = false;
-            match = Lotto.check_bonus(nums, bonus);
-            int match_num = Lotto.check_win(win_numbers, nums);
+            match = Lotto.check_bonus(buy_numbers, bonus);
+            int match_num = Lotto.check_win(win_numbers, buy_numbers);
             if (match_num == 3) {
                 statistics[0]++;
             }

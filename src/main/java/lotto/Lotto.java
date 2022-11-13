@@ -31,8 +31,8 @@ public class Lotto {
         return numbers;
     }
 
-    public static boolean check_bonus(Lotto nums, int bonus) {
-        if (nums.getList().contains(bonus)) {
+    public static boolean check_bonus(Lotto buy_numbers, int bonus) {
+        if (buy_numbers.getList().contains(bonus)) {
             return true;
         }
         return false;
