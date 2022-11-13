@@ -5,14 +5,18 @@ import lotto.domain.lotto.LottoBundle;
 import lotto.system.IoSystem;
 
 public class RandomLottoSystem {
+    private final IoSystem io;
 
+    public RandomLottoSystem(IoSystem ioSystem) {
+        this.io = ioSystem;
+    }
 
     public LottoBundle generateLottoBundle(List<List<Integer>> numbers) {
-        IoSystem.println(numbers.size() + "개를 구매했습니다.");
+        io.println(numbers.size() + "개를 구매했습니다.");
 
         var lottoBundle = new LottoBundle(numbers);
 
-        IoSystem.println(lottoBundle.listUpLotto());
+        io.println(lottoBundle.listUpLotto());
 
         return lottoBundle;
     }
