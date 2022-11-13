@@ -1,4 +1,4 @@
-package lotto.domain.view.constant;
+package lotto.global.constant;
 
 public class UserServiceConstants {
     public static final String PRIZE = "prize";

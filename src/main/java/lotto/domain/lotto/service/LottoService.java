@@ -4,14 +4,14 @@ import lotto.domain.lotto.domain.Lotto;
 import lotto.domain.lotto.domain.type.PriceNumberCount;
 import lotto.domain.view.InputView;
 import lotto.domain.view.OutputView;
-import lotto.domain.view.constant.UserServiceConstants;
+import lotto.global.constant.UserServiceConstants;
 import lotto.global.util.Util;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static lotto.domain.view.constant.UserServiceConstants.*;
+import static lotto.global.constant.UserServiceConstants.*;
 
 public class LottoService {
 
@@ -31,7 +31,6 @@ public class LottoService {
         return InputView.getInputBonusNumber(prizeLotto);
     }
 
-    // TODO
     public void compareNumbers(List<Lotto> lottos, Lotto prizeLotto, int bonusNumber) {
         Map<String, Integer> result = new HashMap<>();
         for (Lotto lotto : lottos) {

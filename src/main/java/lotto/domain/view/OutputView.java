@@ -6,7 +6,7 @@ import lotto.global.util.Util;
 
 import java.util.Map;
 
-import static lotto.domain.view.constant.OutputViewConstants.*;
+import static lotto.global.constant.OutputViewConstants.*;
 
 
 public class OutputView {
@@ -43,12 +43,12 @@ public class OutputView {
             String printResult = null;
             isI6SaveBonus1OrElseSaveBonus0(i);
 
+            Map<String, String> message = createMessage(i);
             int proxy = getProxyNumber(i);
-            String message = createMessage(i);
 
-            printResult = String.format(message, result.get(String.format(matchCount, proxy)));
+            printResult = String.format(message.get("message"), message.get("benefit"), result.get(String.format(matchCount, proxy)));
             if (result.get(String.format(matchCount, proxy)) == null) {
-                printResult = String.format(message, 0);
+                printResult = String.format(message.get("message"), message.get("benefit"), 0);
             }
             System.out.println(printResult);
         }
@@ -73,8 +73,8 @@ public class OutputView {
         return proxy;
     }
 
-    private static String createMessage(int i) {
-        assert OutputResult.getMessage(i, BONUS) != null;
-        return OutputResult.getMessage(i, BONUS);
+    private static Map<String, String> createMessage(int prize) {
+        assert OutputResult.getMessage(prize, BONUS) != null;
+        return OutputResult.getMessage(prize, BONUS);
     }
 }

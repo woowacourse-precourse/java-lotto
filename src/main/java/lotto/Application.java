@@ -28,5 +28,8 @@ public class Application {
 
         OutputView.printDividingLine();
         lottoController.compareNumbers(user.getLottos(), prizeLotto, bonusNumber);
+
+        // 수익률 = 수익 / 로또 산 돈 * 100
+//        userController.getBenefit(benefit, userMoney);
     }
 }
