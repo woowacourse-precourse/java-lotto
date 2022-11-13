@@ -262,6 +262,13 @@ public class Application {
         return winning_amout;
     }
 
+    static void print_yield(String user_money, int winning_amount) {
+        double yield;
+        yield = winning_amount / Double.parseDouble(user_money) * 100.0;
+
+        System.out.print("총 수익률은 " + String.format("%.1f", yield) + "%입니다.");
+    }
+
     public static void main(String[] args) {
         ask_how_much_money();
 
@@ -335,5 +342,7 @@ public class Application {
 
         int winning_amount;
         winning_amount = calculate_winning_amount(save_score);
+
+        print_yield(user_money, winning_amount);
     }
 }
