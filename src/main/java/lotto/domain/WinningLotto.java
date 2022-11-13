@@ -61,4 +61,8 @@ public class WinningLotto {
         return count;
     }
 
+    public Ranking calculateRanking(Lotto lotto) {
+        return Ranking.getRanking(countMatchingWinningNumbers(lotto),containsBonusNumber(lotto));
+    }
+
 }
