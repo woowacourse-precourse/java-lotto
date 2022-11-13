@@ -53,4 +53,8 @@ public enum LottoReward {
     public boolean isSatisfyMatchingCondition(int currentMatch, int currentBonusMatch) {
         return currentMatch >= countMatch && currentBonusMatch >= bonusMatch;
     }
+
+    public long getPrize() {
+        return prize;
+    }
 }

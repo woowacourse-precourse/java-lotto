@@ -17,8 +17,7 @@
 
 
 - RewardCoordinator
-    - [ ] WinningNumber를 생성
-    - [ ] 해당 로또가 당첨되었는지를 판단
+    - [x] 해당 로또가 당첨되었는지를 판단하도 결과를 출력
 
 
 - WinningNumber
