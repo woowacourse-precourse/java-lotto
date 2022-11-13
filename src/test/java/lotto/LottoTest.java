@@ -26,16 +26,16 @@ class LottoTest {
 
     @DisplayName("당첨 번호와 일치하는 번호의 수를 확인한다.")
     @Test
-    void testNumberOfMatched(){
+    void testCountMatched(){
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
         List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 7);
         Lotto lotto = new Lotto(numbers);
-        assertThat(lotto.numberOfMatched(winningNumbers)).isEqualTo(5);
+        assertThat(lotto.countMatched(winningNumbers)).isEqualTo(5);
     }
 
     @DisplayName("보너스 번호와 일치하는 로또 번호의 수를 확인한다.")
     @Test
-    void testNumberOfBonus(){
+    void testContains(){
         Integer bonus = 1;
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
         assertThat(lotto.contains(bonus)).isEqualTo(true);
