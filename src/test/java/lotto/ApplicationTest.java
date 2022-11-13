@@ -210,6 +210,16 @@ class ApplicationTest extends NsTest {
         assertThat(winDetail).isEqualTo(WinDetail.Fifth);
     }
 
+    @Test
+    void 당첨번호_개수_계산(){
+        WinCalculation winCalculation = new WinCalculation();
+        List<Integer> win = List.of(1,2,3,4,5,6);
+        List<Integer> number = List.of(6,4,7,8,1,9);
+        int count = winCalculation.WinCount(win,number);
+        assertThat(count).isEqualTo(3);
+
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
