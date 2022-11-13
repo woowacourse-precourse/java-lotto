@@ -7,6 +7,7 @@ public class Controller {
     private static final String PURCHASE_LOTTO = "구입금액을 입력해 주세요.";
     private static final String NOT_NUMBER = "숫자가 아닙니다.";
     private static final String NOT_INSEPARABLE = "구입 금액이 1000원 단위가 아닙니다.";
+    private static final String PURCHASE_LOTTO_AMOUNT = "개를 구매했습니다.";
 
     public void start() {
         String amount;
@@ -19,6 +20,7 @@ public class Controller {
         isValidatePurchase(amount);
 
         lottoTicketNumber = lottoTicketNumber(amount);
+        ticketPurchaseMessage(lottoTicketNumber);
     }
 
     public void isValidatePurchase(String userInput) {
@@ -45,5 +47,9 @@ public class Controller {
 
     public void purchaseMessage() {
         System.out.println(PURCHASE_LOTTO);
+    }
+
+    public void ticketPurchaseMessage(int ticket) {
+        System.out.println(ticket+PURCHASE_LOTTO_AMOUNT);
     }
 }
