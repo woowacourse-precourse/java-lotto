@@ -1,7 +1,9 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 
 public class Output {
 
@@ -12,7 +14,9 @@ public class Output {
     }
 
     public static void printNumbers(Lotto lotto) {
-        List<Integer> numberForPrint = lotto.getNums();
+        List<Integer> numberForPrint = new ArrayList<>();
+        for (int e : lotto.getNums())
+            numberForPrint.add(e);
         Collections.sort(numberForPrint);
         System.out.println(numberForPrint);
     }
