@@ -35,6 +35,12 @@ public class Lotto {
         return matchCount;
     }
 
+    public boolean hasBonusNumber(int bonusNumber) {
+
+        return numbers.contains(bonusNumber);
+    }
+
+
     //로또의 유효성 검사
     private boolean isValidLotto(List<Integer> numbers) {
         return isCorrectSize(numbers) && isInRange(numbers) && isNotDuplicated(numbers);
