@@ -7,12 +7,14 @@ public class LottoGame {
     private final Message message = new Message();
     private final ProcessVariable processVariable = new ProcessVariable();
     private final ManagementLotto managementLotto = new ManagementLotto();
+    private final CalculateLotto calculateLotto = new CalculateLotto();
     public void start() {
         try {
             Integer purchasePrice = inputPurchasePrice();
             List<Lotto> lottos = purchaseLotto(purchasePrice);
-            Lotto winNumber = inputWinNumber();
-
+            LottoWin winNumber = inputWinNumber();
+            calculateLotto.calculateResult(lottos, winNumber);
+            calculateLotto.calculateROI();
         } catch (IllegalArgumentException exception) {
             message.printError(exception.getMessage());
         }
