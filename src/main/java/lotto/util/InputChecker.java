@@ -18,10 +18,6 @@ public class InputChecker {
         return true;
     }
     public boolean checkInputMoney(String input) throws IllegalArgumentException{
-        /*
-        1. 숫자 인지 체크
-        2. 숫자면 1000으로 나누어 떨어지는지 체크
-         */
         if(!isDigit(input) || isMultipleThousand(Integer.parseInt(input))){
             return false;
         }
