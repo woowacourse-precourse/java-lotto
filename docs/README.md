@@ -5,3 +5,6 @@
 
 - Store Class
 1. 정상적인 로또를 발행
+
+- Customer Class
+1. 로또를 구매하는 기능
