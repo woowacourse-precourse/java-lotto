@@ -38,7 +38,7 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 번호를 당첨 번호와 비교하여 일치하는 개수를 반환한다")
+    @DisplayName("로또 번호를 당첨 번호와 비교하여 일치하는 개수를 반환한다.")
     @ParameterizedTest
     @MethodSource("provideLottoNumbersForCountNumbersIncluded")
     void countNumbersIncluded(Integer expectedNumber, List<Integer> lottoNumbers) {
@@ -47,7 +47,7 @@ class LottoTest {
         assertThat(countNumbers).isEqualTo(expectedNumber);
     }
 
-    @DisplayName("일치하는 로또 번호 개수에 따라 당첨 등수를 반환한다")
+    @DisplayName("일치하는 로또 번호 개수에 따라 당첨 등수를 반환한다.")
     @ParameterizedTest
     @MethodSource("provideLottoNumbersForGetLottoGrade")
     void getLottoGrade(LottoGrade expectedGrade, Boolean containsBonusNumber, List<Integer> lottoNumbers) {
@@ -55,6 +55,14 @@ class LottoTest {
         Integer numberOfMatches = lotto.countNumbersIncluded(winningNumbers);
         LottoGrade lottoGrade = lotto.getLottoGrade(numberOfMatches, containsBonusNumber);
         assertThat(lottoGrade).isEqualTo(expectedGrade);
+    }
+
+    @DisplayName("로또 번호 중에 보너스 번호가 포함되어 있으면 true를 반환한다.")
+    @Test
+    void containsBonusNumber() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Integer bonusNumber = 5;
+        assertThat(lotto.containsBonusNumber(bonusNumber)).isTrue();
     }
 
     private static Stream<Arguments> provideLottoNumbersForCountNumbersIncluded() {

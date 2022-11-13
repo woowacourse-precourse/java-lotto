@@ -32,4 +32,8 @@ public class Lotto {
         if (numberOfMatches == 3) return LottoGrade.FIFTH;
         return LottoGrade.NOTHING;
     }
+
+    public Boolean containsBonusNumber(Integer bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
 }
