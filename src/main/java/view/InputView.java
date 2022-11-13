@@ -12,7 +12,7 @@ public class InputView {
     }
 
     public static void printInputLottoNumber() {
-        System.out.println(INPUTLOTTONUMBER);
+        System.out.println("\n" + INPUTLOTTONUMBER);
     }
 
     public static void printInputBonusNumber() {
@@ -21,9 +21,6 @@ public class InputView {
 
     public static void printWinResult() {
         System.out.println("\n" + WINRESULT);
-    }
-
-    public static void printLine() {
         System.out.println(LINE);
     }
 
