@@ -13,7 +13,7 @@ public class LottoController {
     LottoOutputView lottoOutputView = new LottoOutputView();
     LottoGenerator lottoGenerator = new LottoGenerator();
 
-    public void LottoSimulationInit() {
+    public void LottoSimulationStart() {
         LottoBuyer lottoBuyer = new LottoBuyer(lottoInputView.inputBuyAmount());
         lottoOutputView.printBuyAmount(lottoBuyer);
 

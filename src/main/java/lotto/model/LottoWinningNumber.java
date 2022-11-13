@@ -13,7 +13,6 @@ public class LottoWinningNumber {
     public LottoWinningNumber(List<Integer> winningNumbers, int bonusNumber) {
         new LottoNumberValidator().validateLottoNumbers(winningNumbers);
         validateBonusNumber(winningNumbers, bonusNumber);
-        
         this.lottoWinningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
     }

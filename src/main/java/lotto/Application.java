@@ -5,7 +5,7 @@ import lotto.controller.LottoController;
 public class Application {
     public static void main(String[] args) throws IllegalArgumentException {
         try {
-            new LottoController().LottoSimulationInit();
+            new LottoController().LottoSimulationStart();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

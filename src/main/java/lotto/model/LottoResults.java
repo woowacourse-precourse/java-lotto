@@ -13,15 +13,25 @@ public class LottoResults {
         lottoResults.put("FIFTH_PLACE", 0);
     }
 
-    public HashMap<String, Integer> getLottoResults() {
-        return lottoResults;
-    }
-
     public void add(String place, int i) {
         lottoResults.put(place, lottoResults.get(place) + i);
     }
 
     public int getLottoPrizeCount(String place) {
         return lottoResults.get(place);
+    }
+
+    public void addLottoCount(int lottoCount, boolean isBonus) {
+        if (lottoCount == 3) {
+            add("FIFTH_PLACE", 1);
+        } else if (lottoCount == 4) {
+            add("FOURTH_PLACE", 1);
+        } else if (lottoCount == 5 && !isBonus) {
+            add("THIRD_PLACE", 1);
+        } else if (lottoCount == 5 && isBonus) {
+            add("SECOND_PLACE", 1);
+        } else if (lottoCount == 6) {
+            add("FIRST_PLACE", 1);
+        }
     }
 }

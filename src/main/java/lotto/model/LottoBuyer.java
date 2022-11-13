@@ -3,11 +3,12 @@ package lotto.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.utils.LottoConstant.ERROR_MESSAGE_PREFIX;
 import static lotto.utils.LottoConstant.LOTTO_PRICE;
 
 public class LottoBuyer {
     List<Lotto> lottoTickets = new ArrayList<>();
+    LottoResults lottoResults = new LottoResults();
+
     private final int totalLottoTickets;
     private final int payment;
     private long totalWinnings;
@@ -39,5 +40,9 @@ public class LottoBuyer {
 
     public long getTotalWinnings() {
         return totalWinnings;
+    }
+
+    public LottoResults getLottoResults() {
+        return lottoResults;
     }
 }
