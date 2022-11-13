@@ -21,7 +21,7 @@ public class Application {
         List<Integer> winningNumbers = Input.insertWinningNumbers();
         answer.setWinningNumbers(winningNumbers);
         // 보너스 번호 입력
-        int bonusNumber = Input.insertBonusNumber(winningNumbers);
+        int bonusNumber = Input.insertBonusNumber();
         answer.setBonusNumber(bonusNumber);
         // 당첨 통계 출력
         Statistics statistics = new Statistics(ticket, answer);

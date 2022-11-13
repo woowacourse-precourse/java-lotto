@@ -12,7 +12,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    public static void validate(List<Integer> numbers) {
         LottoValidator.checkSixNumbers(numbers);
         LottoValidator.checkLottoNumbers(numbers);
         LottoValidator.checkDuplicateNumber(numbers);

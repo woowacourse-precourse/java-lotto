@@ -27,8 +27,7 @@ public class Answer {
     }
 
     private void winningNumbersValidate(List<Integer> numbers) {
-        LottoValidator.checkLottoNumbers(numbers);
-        LottoValidator.checkDuplicateNumber(numbers);
+        Lotto.validate(numbers);
     }
 
     private void bonusNumberValidate(int number) {
