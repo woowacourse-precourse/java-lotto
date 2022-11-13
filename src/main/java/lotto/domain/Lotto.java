@@ -1,8 +1,13 @@
 package lotto.domain;
 
+import lotto.validation.Validation;
 import java.util.List;
 
 public class Lotto {
+    private static final int LOTTO_START_NUMBER=1;
+    private static final int LOTTO_LAST_NUMBER=45;
+    private static final int LOTTO_LENGTH=6;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -15,10 +20,8 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+        Validation.validateLengthOfList(numbers, LOTTO_LENGTH);
+        Validation.validateDuplicationList(numbers);
+        Validation.validateListNumberInRange(numbers, LOTTO_START_NUMBER, LOTTO_LAST_NUMBER);
     }
-
-    // TODO: 추가 기능 구현
 }

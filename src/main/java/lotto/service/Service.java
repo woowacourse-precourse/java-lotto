@@ -7,11 +7,9 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoGame;
 import lotto.domain.Rank;
 import lotto.utils.Utils;
-import lotto.validation.Validation;
 import lotto.view.InputMessage;
 import lotto.view.OutputMessage;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -20,7 +18,6 @@ public class Service {
     private static final int LOTTO_LAST_NUMBER=45;
     private static final int LOTTO_LENGTH=6;
     private static final int LOTTO_LEAST_AMOUNT=1_000;
-    private static final int LOTTO_MAX_AMOUNT = 100_000;
     private static final int COUNT_ZERO = 0;
     private static final int COUNT_ONE = 1;
 
@@ -34,11 +31,7 @@ public class Service {
     public int getInputAmount(){
         InputMessage.inputAmount();
         String userInput = readLine().trim();
-        Validation.validateStringToInteger(userInput);
-        int amount = Integer.parseInt(userInput);
-        Validation.validateMultipleNumber(amount, LOTTO_LEAST_AMOUNT);
-        Validation.validateExceedNumber(amount, LOTTO_MAX_AMOUNT);
-        return amount;
+        return Utils.stringToInteger(userInput);
     }
 
     public void buyOneLotto(){
@@ -62,40 +55,23 @@ public class Service {
 
     public Lotto generateLottoNumber(){
         List<Integer> numbers = new ArrayList<>(Utils.randomUniqueNumberGenerate(LOTTO_START_NUMBER, LOTTO_LAST_NUMBER, LOTTO_LENGTH));
-
-        Validation.validateLengthOfList(numbers, LOTTO_LENGTH);
-        Validation.validateDuplicationList(numbers);
-        Validation.validateListNumberInRange(numbers, LOTTO_START_NUMBER, LOTTO_LAST_NUMBER);
-
         Utils.sortListNaturalOrder(numbers);
         return new Lotto(numbers);
     }
 
     public List<Integer> getInputWinningNumbers(){
         InputMessage.inputWinningNumbers();
-        String userInput = readLine().trim();
-        Validation.validateListStringToInteger(Arrays.asList(userInput.split(",")));
-        List<Integer> winningNumbers = Utils.stringToIntegerList(userInput);
-        Validation.validateLengthOfList(winningNumbers,LOTTO_LENGTH);
-        Validation.validateDuplicationList(winningNumbers);
-        Validation.validateListNumberInRange(winningNumbers, LOTTO_START_NUMBER, LOTTO_LAST_NUMBER);
-        return winningNumbers;
+        return Utils.stringToIntegerList(readLine().trim());
     }
 
     public int getInputBonusNumber(){
         InputMessage.inputBonusNumber();
-        String userInput = readLine().trim();
-        Validation.validateStringToInteger(userInput);
-        int bonusNumber = Integer.parseInt(userInput);
-        Validation.validateNumberInRange(bonusNumber, LOTTO_START_NUMBER, LOTTO_LAST_NUMBER);
-        return bonusNumber;
+        return Utils.stringToInteger(readLine().trim());
     }
 
     public void playLottoGame(){
         lottoGame = new LottoGame(getInputWinningNumbers());
-        int bonusNumber = getInputBonusNumber();
-        Validation.validateDuplicatedNumberInList(lottoGame.getWinningNumbers(),bonusNumber);
-        lottoGame.setBonusNumber(bonusNumber);
+        lottoGame.setBonusNumber(getInputBonusNumber());
     }
 
     public int countCorrectLottoNumbers(Lotto lotto){
