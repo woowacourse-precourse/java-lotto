@@ -3,43 +3,28 @@ package lotto.exception;
 import java.util.List;
 
 public class LottoNumberException {
+    private static final String LIST_SIZE = "[ERROR] 크기가 6이 아닙니다.";
+    private static final String MAX_AND_MIN = "[ERROR] 로또의 최대 최소 값이 맞지 않습니다.";
+    private static final String DUPLICATED = "[ERROR] 중복된 값이 있습니다.";
     public void lottoNumberSize(List<Integer> numbers) {
-        try {
-            if (numbers.size() != 6) {
-                throw new IllegalArgumentException("[ERROR] 크기가 6이 아닙니다.");
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-            throw e;
+        if (numbers.size() != 6) {
+            throw new IllegalArgumentException(LIST_SIZE);
         }
     }
 
     public void lottoNumberMaxMin(List<Integer> numbers) {
-        try {
-            for (Integer num : numbers) {
-                if (num > 45 || num < 1) {
-                    throw new IllegalArgumentException("[ERROR] 로또의 최대 최소 값이 맞지 않습니다.");
-                }
+        for (Integer num : numbers) {
+            if (num > 45 || num < 1) {
+                throw new IllegalArgumentException(MAX_AND_MIN);
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-            throw e;
         }
     }
 
     public void lottoNumberDuplicated(List<Integer> numbers) {
-        try {
-            for (Integer num : numbers) {
-                if (numbers.indexOf(num) != numbers.lastIndexOf(num)) {
-                    throw new IllegalArgumentException("[ERROR] 중복된 값이 있습니다.");
-                }
+        for (Integer num : numbers) {
+            if (numbers.indexOf(num) != numbers.lastIndexOf(num)) {
+                throw new IllegalArgumentException(DUPLICATED);
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-            throw e;
         }
     }
 
@@ -50,13 +35,7 @@ public class LottoNumberException {
     }
 
     public void bonusNumber(List<Integer> winningNumbers, int bonusNumber) {
-        try {
-            if (winningNumbers.contains(bonusNumber))
-                throw new IllegalArgumentException("[ERROR] 보너스 숫자가 이미 있는 번호입니다.");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-            throw e;
-        }
+        if (winningNumbers.contains(bonusNumber))
+            throw new IllegalArgumentException(DUPLICATED);
     }
 }
