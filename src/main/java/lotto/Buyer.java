@@ -3,8 +3,6 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,10 +10,12 @@ public class Buyer {
 
     private List<Lotto> lottos = new ArrayList<>();
 
-    public int inputBuyLottoMoney() {
+    public String inputBuyLottoMoney() {
         System.out.println("구입금액을 입력해 주세요");
-        String inputBuyMoney = Console.readLine();
+        return Console.readLine();
+    }
 
+    public int validateBuyLottoMoney(String inputBuyMoney) {
 
         Error.validateInputIsNotNum(inputBuyMoney);
 
