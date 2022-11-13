@@ -102,7 +102,7 @@ class InputValidationTest extends NsTest {
     @DisplayName("입력받은 당첨번호는 정렬이 되어있어야 한다.")
     @Test
     void checkWinningNumberSorted() {
-        List<Integer> result = List.of(1,2,3,4,5,6);
+        List<Integer> result = List.of(1, 2, 3, 4, 5, 6);
         InputStream in = new ByteArrayInputStream("6,5,4,3,2,1".getBytes());
         System.setIn(in);
 
@@ -116,9 +116,19 @@ class InputValidationTest extends NsTest {
     @ParameterizedTest
     @CsvSource(value = {"1000:1,2,0,4,5,6", "1000:46,1,2,3,4,5"}, delimiter = ':')
     void checkWinningNumberInRange(String firstInput, String secondInput) {
-        assertSimpleTest(() ->{
+        assertSimpleTest(() -> {
             runException(firstInput, secondInput);
             assertThat(output()).contains(ErrorMessage.LOTTO_NUMBER_IN_RANGE);
+        });
+    }
+
+    @DisplayName("입력받은 보너스 번호는 숫자여야 한다.")
+    @ParameterizedTest
+    @CsvSource(value = {"1000:1,2,3,4,5,6:a", "1000:1,2,3,4,5,6:2a"}, delimiter = ':')
+    void checkBonusNumberInRange(String firstInput, String secondInput, String thirdInput) {
+        assertSimpleTest(() -> {
+            runException(firstInput, secondInput, thirdInput);
+            assertThat(output()).contains(ErrorMessage.LOTTO_INPUT_MUST_NUMBER);
         });
     }
 
