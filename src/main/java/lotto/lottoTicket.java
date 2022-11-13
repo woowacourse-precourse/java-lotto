@@ -9,10 +9,9 @@ public class lottoTicket {
         return price;
     }
 
-    public static int countLotteryTickets() {
+    public static int countLotteryTickets(int totalCash) {
         int ticketPrice = 1000;
         int ticketCount;
-        int totalCash = getLotteryTicketPrice();
         if (totalCash % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 잔돈이 발생합니다.");
         }
