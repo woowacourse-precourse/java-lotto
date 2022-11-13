@@ -32,4 +32,13 @@ public enum Rank {
         return status;
     }
 
+    public static Rank getRank(int total, boolean isBonus) {
+        if (total == 6) return WIN_SIX;
+        if (total == 5 && isBonus) return WIN_FIVE_WITH_BONUS5;
+        if (total == 5) return WIN_FIVE;
+        if (total == 4) return WIN_FOUR;
+        if (total == 3) return WIN_THREE;
+        return MISS;
+    }
+
 }
