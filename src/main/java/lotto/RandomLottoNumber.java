@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.TreeSet;
 
 import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
@@ -21,8 +23,14 @@ public class RandomLottoNumber {
     }
   }
 
-  public TreeSet<Integer> getRandomNumber() {
-    return lotto;
-  }
+  public ArrayList<Integer> getRandomNumber() {
+    ArrayList<Integer> lotto_arr = new ArrayList<>();
+    Iterator<Integer> iter = lotto.iterator();
 
+    while (iter.hasNext()) {
+      lotto_arr.add(iter.next());
+    }
+
+    return lotto_arr;
+  }
 }
