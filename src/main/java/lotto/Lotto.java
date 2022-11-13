@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import org.assertj.core.util.Sets;
@@ -26,8 +27,14 @@ public class Lotto {
 
     @Override
     public String toString() {
-        Collections.sort(numbers);
-        return numbers.toString();
+        ArrayList<Integer> temp = new ArrayList<>();
+
+        for (int n : numbers) {
+            temp.add(n);
+        }
+        Collections.sort(temp);
+
+        return temp.toString();
     }
 
     public int size() {
