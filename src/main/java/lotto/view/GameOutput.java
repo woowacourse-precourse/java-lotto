@@ -60,8 +60,8 @@ public class GameOutput {
         System.out.printf(TOTAL_RATE_OF_RETURN, rate);
     }
 
-    public static void printLottoNumbers(List<List<Integer>> lotto){
-        lotto.stream()
+    public static void printLottoNumbers(List<List<Integer>> lotteries){
+        lotteries.stream()
                 .forEach(System.out::println);
     }
 }

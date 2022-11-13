@@ -40,19 +40,19 @@ public class User {
         return userInputMoney;
     }
 
-    public static List<Integer> getUserInputNumber() {
+    public List<Integer> getUserInputNumber() {
         return userInputNumber;
     }
 
-    public static int getUserInputBonusNumber() {
+    public int getUserInputBonusNumber() {
         return userInputBonusNumber;
     }
 
-    public static int getLottoAmount() {
+    public int getLottoAmount() {
         return lottoAmount;
     }
 
-    public static List<List<Integer>> getLotteries() {
+    public List<List<Integer>> getLotteries() {
         return lotteries;
     }
 }
