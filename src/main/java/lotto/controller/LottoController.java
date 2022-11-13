@@ -10,11 +10,16 @@ import java.util.List;
 
 public class LottoController {
     private final LottoService lottoService = new LottoService();
-    private final LottoMessage lottoManager = new LottoMessage();
+    private final LottoMessage lottoMessage = new LottoMessage();
 
     public void purchase() {
-        lottoManager.printPurchaseMessage();
+        lottoMessage.printPurchaseMessage();
         Money money = new Money(Console.readLine());
-        List<Lotto> lotteries = lottoService.purchase(money);
+        lottoService.purchase(money);
+    }
+
+    public void showPurchaseLotteries() {
+        List<Lotto> purchaseLotteries = lottoService.getPurchaseLotteries();
+        lottoMessage.printPurchasedLotteries(purchaseLotteries);
     }
 }
