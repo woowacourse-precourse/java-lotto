@@ -17,10 +17,10 @@ public class Lotto {
      * Receives user input of winning numbers
      * @return list of winning lotto numbers
      */
-    private static List<Integer> inputWinningNumber(){
-        System.out.println("당첨 번호를 입력해 주세요.");
+    public static List<Integer> inputWinningNumber(){
+        System.out.println("\n당첨 번호를 입력해 주세요.");
         List<Integer> winningLotto = new ArrayList<>();
-        String input = Console.readLine().trim();
+        String input = Console.readLine().trim(); // TODO: 전체 공백 잡기
         for (String num : input.split(",")) {
             winningLotto.add(Integer.parseInt(num));
         }
@@ -34,14 +34,14 @@ public class Lotto {
      */
     private void validateWinningNumberInput(List<Integer> winningNumber) throws IllegalArgumentException{
         if (winningNumber.size() != 6) {
-            throw new IllegalArgumentException("[Error] 당첨번호는 총 6개여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 당첨번호는 총 6개여야 합니다.");
         }
         for (int i = 0; i < winningNumber.size() - 1; i++) {
             if (winningNumber.subList(i + 1, winningNumber.size()).contains(winningNumber.get(i))) {
-                throw new IllegalArgumentException("[Error] 당첨번호에는 중복되는 숫자가 있어선 안됩니다.");
+                throw new IllegalArgumentException("[ERROR] 당첨번호에는 중복되는 숫자가 있어선 안됩니다.");
             }
             if (winningNumber.get(i) < 1 || winningNumber.get(i) > 45) {
-                throw new IllegalArgumentException("[Error] 당첨번호는 1 에서 45 사이의 정수여야 합니다.");
+                throw new IllegalArgumentException("[ERROR] 당첨번호는 1 에서 45 사이의 정수여야 합니다.");
             }
         }
     }
@@ -52,6 +52,7 @@ public class Lotto {
      * @throws IllegalArgumentException if input is invalid
      */
     private int getBonusNumber() throws IllegalArgumentException {
+        System.out.println("\n보너스 번호를 입력해 주세요.");
         String bonusNumber = Console.readLine();
         validateBonusNumber(bonusNumber);
         return Integer.parseInt(bonusNumber);
@@ -63,12 +64,14 @@ public class Lotto {
      * @throws IllegalArgumentException if bonus number is not a number between 1 and 45 or is not a number
      */
     public void validateBonusNumber(String bonusNumInput) throws IllegalArgumentException {
-        int bonusNum = Integer.parseInt(bonusNumInput);
-        if (bonusNum < 1 || bonusNum > 45) {
-            throw new IllegalArgumentException("[Error] 보너스 번호는 1 에서 45 사이의 정수여야 합니다.");
+        int bonusNum;
+        try {
+            bonusNum = Integer.parseInt(bonusNumInput);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 숫자여야 합니다.");
         }
-        if (!Character.isDigit(bonusNum)) {
-            throw new IllegalArgumentException("[Error] 보너스 번호는 숫자여야 합니다.");
+        if (bonusNum < 1 || bonusNum > 45) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1 에서 45 사이의 정수여야 합니다.");
         }
     }
 
