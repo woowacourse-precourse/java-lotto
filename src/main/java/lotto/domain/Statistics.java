@@ -36,6 +36,12 @@ public class Statistics {
         return winAmount;
     }
 
+    public double findLottoYield(int purchaseAmount) {
+        double quotient = (double) winAmount / (double) purchaseAmount;
+        String result = String.format("%.1f", quotient * 100);
+        return Double.parseDouble(result);
+    }
+
     public Map<LottoRank, Integer> getWinLottoInfoMap() {
         return new HashMap<>(winLottoInfo);
     }
