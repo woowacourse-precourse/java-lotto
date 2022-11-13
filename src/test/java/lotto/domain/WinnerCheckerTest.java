@@ -76,4 +76,13 @@ public class WinnerCheckerTest {
         assertThatThrownBy(() -> winnerChecker.compareLottoTable(lottoTable, winningLotto, bonunsNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또 결과 종합하기")
+    @Test
+    void sumUpResult() {
+        WinnerChecker winnerChecker = new WinnerChecker();
+        List<Integer> sumOfResult = winnerChecker.sumUpResult(List.of(0, 2, 3, 3, 5, 15, 6, 2, 0, 1));
+
+        assertThat(sumOfResult).isEqualTo(List.of(2, 0, 1, 1, 1));
+    }
 }
