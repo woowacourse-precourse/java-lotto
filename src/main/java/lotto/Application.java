@@ -53,9 +53,15 @@ public class Application {
     	return result;
     }
     
-    public static String getBonusNumber() {
+    public static int getBonusNumber() {
     	System.out.println("보너스 번호를 입력해 주세요.");
-    	return Console.readLine();
+    	String input = Console.readLine();
+    	int result = Integer.parseInt(input);
+    	
+    	if(result<1 || result>46)
+			throw new IllegalArgumentException("[ERROR]");
+    	
+    	return result;
     }
     
     public static String getFromUser() {
