@@ -2,18 +2,20 @@ package lotto.domain.prize;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Prize {
-    private static final String INPUT_BONUS_NUMBER_ERROR = "[ERROR] 보너스 번호는 1~45 사이의 숫자여야 합니다.";
+    private static final String PRIZE_NUMBER_FORMAT_ERROR = "[ERROR] 당첨 번호는 6개의 숫자와 ','로 구분되어야 합니다.";
+    private static final String INPUT_NUMBER_RANGE_ERROR = "[ERROR] 숫자는 1~45까지의 정수여야 합니다.";
+    private static final String DUPLICATED_NUMBER_ERROR = "[ERROR] 당첨 번호는 중복될 수 없습니다.";
+    private static final String NOT_INTEGER_ERROR = "[ERROR] 정수 값이 입력되어야 합니다.";
     private final List<Integer> numbers = new ArrayList<>();
     private final int bonusNumber;
 
     public Prize(String numbers, int bonusNumber) {
-        //TODO: 입력 값에 대한 validation
-
         setNumbers(numbers);
 
-        validateBonusNumber(bonusNumber);
+        validateNumberRange(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
@@ -26,17 +28,48 @@ public class Prize {
     }
 
     private void setNumbers(String input) {
+        validateSixNumbers(input);
+
         String[] numbers = input.split(",");
 
         for (String number : numbers) {
+            validateInteger(number);
+            validateNumberRange(Integer.parseInt(number));
+            validateDuplicatedNumber(Integer.parseInt(number));
+
             this.numbers.add(Integer.parseInt(number));
         }
     }
 
-    private void validateBonusNumber(int bonusNumber) {
+    private void validateInteger(String input) {
+        String regex = "^[0-9]+$";
+
+        if (!input.matches(regex)) {
+            System.out.println(NOT_INTEGER_ERROR);
+            throw new NoSuchElementException(NOT_INTEGER_ERROR);
+        }
+    }
+
+    private void validateDuplicatedNumber(int number) {
+        if (this.numbers.contains(number)) {
+            System.out.println(DUPLICATED_NUMBER_ERROR);
+            throw new IllegalArgumentException(DUPLICATED_NUMBER_ERROR);
+        }
+    }
+
+    private void validateSixNumbers(String input) {
+        String[] number = input.split(",");
+
+        if (number.length != 6) {
+            System.out.println(PRIZE_NUMBER_FORMAT_ERROR);
+            throw new IllegalArgumentException(PRIZE_NUMBER_FORMAT_ERROR);
+        }
+    }
+
+    private void validateNumberRange(int bonusNumber) {
         if (bonusNumber < 1 || bonusNumber > 45) {
-            System.out.println(INPUT_BONUS_NUMBER_ERROR);
-            throw new IllegalArgumentException(INPUT_BONUS_NUMBER_ERROR);
+            System.out.println(INPUT_NUMBER_RANGE_ERROR);
+            throw new IllegalArgumentException(INPUT_NUMBER_RANGE_ERROR);
         }
     }
 }
