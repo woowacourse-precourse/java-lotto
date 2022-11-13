@@ -16,14 +16,11 @@ public class LottoGame {
     private static final String MONEY_INPUT_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String BONUS_NUMBER_INPUT_MESSAGE = "보너스 번호를 입력해 주세요.";
     private static final String WINNING_NUMBER_INPUT_MESSAGE = "당첨 번호를 입력해 주세요.";
+    private static final String RESULT_INFO_MESSAGE = "당첨 통계\n---";
     private static final Integer[] winningPrizes = {2000000000, 30000000, 1500000, 50000, 5000};
 
     private Lotto winningNumbers;
     private int bonusNumber;
-
-    public int getBonusNumber(){
-        return this.bonusNumber;
-    }
 
     public void setBonusNumbers() {
         System.out.println(BONUS_NUMBER_INPUT_MESSAGE);
@@ -35,10 +32,6 @@ public class LottoGame {
         }
         this.bonusNumber = bonusNumber;
         System.out.println();
-    }
-
-    public Lotto getwinningNumbers(){
-        return this.winningNumbers;
     }
 
     public void setWinningNumbers() {
@@ -94,8 +87,7 @@ public class LottoGame {
         List<Integer> result = lottoSet.checkWinning(this.winningNumbers.getNumbers(), this.bonusNumber);
         int inputMoney = lottoSet.getInputMoney();
 
-        System.out.println("당첨 통계");
-        System.out.println("---");
+        System.out.println(RESULT_INFO_MESSAGE);
         for (int index = result.size() - 1; index >= 0; index--) {
             int ranking = index + 1;
             int count = result.get(index);
