@@ -4,20 +4,21 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class User {
-    public static Integer askTicketsNumber() {
+    public static Integer askTicketNumber() {
         Integer tickets;
 
         System.out.println(Constant.ASK_PRICE);
         String input = Console.readLine();
 
-        tickets = validate(input);
+        tickets = validateAskedTicketNumber(input);
         return tickets;
     }
 
-    public static Integer validate(String input) {
+    public static Integer validateAskedTicketNumber(String input) {
         Integer price = 0;
         try {
             price = Integer.valueOf(input);
@@ -49,10 +50,23 @@ public class User {
 
     public static List<Integer> askWinNumbers() {
         System.out.println(Constant.ASK_WIN_NUMBERS);
-        String inputWin = Console.readLine();
-        List<Integer> numbers = winNumbers(inputWin);
+        String input = Console.readLine();
+        List<String> commaSeparatedInput = Arrays.asList(input.split(",", -1));
+        List<Integer> numbers = validateAskedWinNumbers(commaSeparatedInput);
+        return numbers;
+    }
 
-        return null;
+    public static List<Integer> validateAskedWinNumbers(List<String> commaSeparatedInput) {
+        List<Integer> numbers = new ArrayList<>();
+
+        for (String element : commaSeparatedInput) {
+            try {
+                numbers.add(Integer.valueOf(element));
+            } catch (NumberFormatException e) {
+                throw new IllegalArgumentException(Constant.ERROR + " 당첨 번호를 쉼표로 구분된 숫자들로 입력해주세요.");
+            }
+        }
+        return numbers;
     }
 
     public static Integer askBonusNumbers() {
