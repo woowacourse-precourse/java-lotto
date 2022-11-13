@@ -11,6 +11,7 @@ public class Change {
         checkAnyWord(winningNumber);
         checkManyDot(winningNumber);
         checkFirstWord(winningNumber);
+        checkLastWord(winningNumber);
         List<String> newWinningNumber = Arrays.asList(winningNumber.split(","));
         List<Integer> result = new ArrayList<>();
         for (String number : newWinningNumber) {
@@ -44,8 +45,15 @@ public class Change {
     }
 
     private static void checkFirstWord(String winningNumber) {
-        if (!String.valueOf(winningNumber.charAt(0)).matches(REGEX)){
+        if (!String.valueOf(winningNumber.charAt(0)).matches(REGEX)) {
             System.out.println("[ERROR] 당첨번호를 다시 입력해주세요. - 첫번째에 문자 입력");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void checkLastWord(String winningNumber) {
+        if (!String.valueOf(winningNumber.charAt(winningNumber.length() - 1)).matches(REGEX)) {
+            System.out.println("[ERROR] 당첨번호를 다시 입력해주세요. - 마지막에 문자 입력");
             throw new IllegalArgumentException();
         }
     }
