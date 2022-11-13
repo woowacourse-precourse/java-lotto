@@ -7,6 +7,7 @@ public class Application {
         User user = new User();
         Lotto lotto;
         int lottoCount;
+        int bonusNum;
 
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
@@ -20,5 +21,6 @@ public class Application {
 
         System.out.println("보너스 번호를 입력해 주세요.");
         String inputBonusNum = Console.readLine();
+        bonusNum = UserMissChecking.bonusNumberChecking(inputBonusNum);
     }
 }

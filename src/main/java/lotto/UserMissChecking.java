@@ -29,4 +29,12 @@ public class UserMissChecking {
             throw new IllegalArgumentException();
         }
     }
+
+    public static int bonusNumberChecking(String input){
+        numberChecking(input);
+        int bonusNum = Integer.parseInt(input);
+        thousandChecking(bonusNum);
+        numberLimitChecking(bonusNum);
+        return bonusNum;
+    }
 }
