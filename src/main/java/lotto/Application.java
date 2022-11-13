@@ -99,4 +99,19 @@ public class Application {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 정수여야 합니다.");
         }
     }
+
+    static void validateBonusNumbers(List<Integer> lottoNumbers, int bonusNumber) {
+        validateNumber1To45(bonusNumber);
+        exceptDuplicatedNumber(lottoNumbers, bonusNumber);
+    }
+
+    static void validateNumber1To45(int bonusNumber) {
+        if (bonusNumber < 1 || bonusNumber > 45)
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45까지의 숫자입니다.");
+    }
+
+    static void exceptDuplicatedNumber(List<Integer> lottoNumbers, int bonusNumber) {
+        if (lottoNumbers.contains(bonusNumber))
+            throw new IllegalArgumentException("[ERROR] 보너스 번호가 중복된 숫자입니다.");
+    }
 }
