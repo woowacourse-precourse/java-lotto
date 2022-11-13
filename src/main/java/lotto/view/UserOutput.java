@@ -51,9 +51,9 @@ public class UserOutput {
 
         if (winRank.equals(WinRank.SECOND)) {
             return SECOND_PRIZE_MESSAGE + PRIZE_WITH_COMMA + WON_MESSAGE
-                    + prizeResult.get(winRank) + COUNT_MESSAGE;
+                    + prizeResult.get(winRank).toString() + COUNT_MESSAGE;
         }
         return winRank.getMatched() + PRIZE_MESSAGE + PRIZE_WITH_COMMA + WON_MESSAGE
-                + prizeResult.get(winRank) + COUNT_MESSAGE;
+                + prizeResult.get(winRank).toString() + COUNT_MESSAGE;
     }
 }
