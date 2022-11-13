@@ -28,4 +28,18 @@ class LottoCalculatorTest {
 
         assertThat(lottoCalculator.getRankCount()).isEqualTo(Arrays.asList(0, 1, 0, 0, 2));
     }
+
+    @Test
+    void sumOfPrizeMoney() {
+        LottoCalculator lottoCalculator = new LottoCalculator();
+        lottoCalculator.addRankCount(0);
+        lottoCalculator.addRankCount(1);
+        lottoCalculator.addRankCount(2);
+        lottoCalculator.addRankCount(3);
+        lottoCalculator.addRankCount(4);
+
+        double expected = 2031555000;
+
+        assertThat(lottoCalculator.sumOfPrizeMoney()).isEqualTo(expected);
+    }
 }

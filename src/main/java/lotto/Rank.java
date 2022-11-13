@@ -1,11 +1,11 @@
 package lotto;
 
 public enum Rank {
-    FIRST(2000000000) { double getPrizeMoney(int count) { return count * RANK_MONEY; }},
-    SECOND(30000000) { double getPrizeMoney(int count) { return count * RANK_MONEY; }},
-    THIRD(1500000)  { double getPrizeMoney(int count) { return count * RANK_MONEY; }},
+    FIFTH(5000)     { double getPrizeMoney(int count) { return count * RANK_MONEY; }},
     FOURTH(50000)    { double getPrizeMoney(int count) { return count * RANK_MONEY; }},
-    FIFTH(5000)     { double getPrizeMoney(int count) { return count * RANK_MONEY; }};
+    THIRD(1500000)  { double getPrizeMoney(int count) { return count * RANK_MONEY; }},
+    SECOND(30000000) { double getPrizeMoney(int count) { return count * RANK_MONEY; }},
+    FIRST(2000000000) { double getPrizeMoney(int count) { return count * RANK_MONEY; }};
 
     protected final double RANK_MONEY;
 
