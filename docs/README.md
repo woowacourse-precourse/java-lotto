@@ -9,7 +9,7 @@
 
 ##기능 목록
 - [x] 로또 개수 입력 - LottoManager # inputLottoCount
-  - [] 숫자인지 확인
+  - [ ] 숫자인지 확인
   - [x] 1000 원  위 확인
 - [x] 1부터 45까지 서로 다른 수로 이루어진 6개의 로또번호 생성 - NumberGenerator#createLottoNumber
   - [x] 사이즈 확인 - Lotto#validate
@@ -28,8 +28,8 @@
 - [x] 일치하는 수에 해당하는 인덱스에 추가한다.
   - [x] 당첨번호 중 몇개의 숫자가 같은지 알 수 있다. - Judgement#correctCount
     - [x] 보너스 번호가 있는지 알 수 있다.(당첨번호 5자리가 같은 경우만) - Judgement#hasWinningNumber
-  - [ ] 수익률 계산 - LottoCalculator #getRateOfReturn
+  - [x] 수익률 계산 - LottoCalculator #getRateOfReturn
     - [x] 총 상금 합산 - LottoCalculator #sumOfPrizeMoney
-  - [ ] 당첨 내역 출력 - LottoManager #printWinningDetails
-  - [ ] 수익률 출력 - LottoManager #printRateOfReturn
+  - [x] 당첨 내역 출력 - LottoManager #printWinningDetails
+  - [x] 수익률 출력 - LottoManager #printRateOfReturn
     

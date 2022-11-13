@@ -6,8 +6,8 @@ import lotto.view.LottoManager;
 public class Application {
     public static void main(String[] args) {
         final LottoManager lottoManager = new LottoManager();
-        final int lottoCount = lottoManager.inputLottoCount();
-        System.out.println(lottoCount + "개를 구매했습니다.");
+        final int lottoCount = lottoManager.inputPurchaseMoney();
+        lottoManager.printLottoCount(lottoCount);
 
         final NumberGenerator numberGenerator = new NumberGenerator();
         Lotto[] lottos = new Lotto[lottoCount];

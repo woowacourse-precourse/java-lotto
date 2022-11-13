@@ -7,13 +7,17 @@ import lotto.LottoCalculator;
 public class LottoManager {
     private int purchaseMoney;
 
-    public int inputLottoCount() {
+    public int inputPurchaseMoney() {
         System.out.println("구입금액을 입력해 주세요.");
         purchaseMoney = Integer.parseInt(Console.readLine());
         if (purchaseMoney % 1000 > 0) {
             throw new IllegalArgumentException();
         }
         return purchaseMoney / 1000;
+    }
+
+    public void printLottoCount(int lottoCount) {
+        System.out.println(lottoCount + "개를 구매했습니다.");
     }
 
     public void printLottoNumbers(Lotto[] lottos) {
