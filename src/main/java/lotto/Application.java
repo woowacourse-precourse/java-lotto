@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
+import camp.nextstep.edu.missionutils.Console;
 
 public class Application {
 //사용자가 로또는 몇개를 구매했는지 확인하는 메서드
@@ -13,17 +15,35 @@ public class Application {
         return returnData;
     }
 
+    public static int[] convertStringToInt(String input){
+        String[] inputSplit = input.split(",");
+        int[] returnData = new int[inputSplit.length];
+
+        for(int index = 0; index < inputSplit.length; index++){
+            returnData[index] = Integer.valueOf(inputSplit[index]);
+        }
+
+        return returnData;
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
-        LottoWin a = LottoWin.getInstance();
-        int[] b_1 = {1000,1900};
-        int[] b_2 = {1000,2000};
-        int[] b_3 = {1000,2000};
-        List<int[]> b = List.of(b_1,b_2,b_3);
+//        LottoWin a = LottoWin.getInstance();
+//        int[] b_1 = {1000,1900};
+//        int[] b_2 = {1000,2000};
+//        int[] b_3 = {1000,2000};
+//        List<int[]> b = List.of(b_1,b_2,b_3);
+//
+//        a.profitRateCal(b);
+//        System.out.println(a.getLottoNum());
 
-        a.profitRateCal(b);
-        System.out.println(a.getLottoNum());
+
+//        String a = "1,24,35,45,23";
+//        int[] c = convertStringToInt(a);
+//        for(int i = 0; i < c.length; i++){
+//            System.out.println(c[i]);
+//        }
 
     }
 }
