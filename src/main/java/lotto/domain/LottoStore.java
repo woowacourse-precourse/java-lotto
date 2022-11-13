@@ -10,11 +10,14 @@ import java.util.List;
 public class LottoStore {
     public List<Lotto> sellLotto(int fee) {
         List<Lotto> lottos = new ArrayList<>();
-        int theNumberOfLottos = fee/1000;
-        for (int i = 0; i < theNumberOfLottos; i++) {
+        for (int i = 0; i < caculateTheNumberOfLottos(fee); i++) {
             lottos.add(printLotto());
         }
         return lottos;
+    }
+
+    private int caculateTheNumberOfLottos(int fee) {
+        return fee/1000;
     }
 
     private Lotto printLotto() {
