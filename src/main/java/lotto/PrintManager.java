@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import java.util.Map;
 
 public class PrintManager {
     public void printRequestPrice() {
@@ -22,16 +23,21 @@ public class PrintManager {
         System.out.print(ConsoleMessage.NEW_LINE);
     }
 
-    public void printWinningStatus() {
-        printWinningList();
-        printYield();
+    public void printWinningStatus(Map<LottoGrade, Integer> analyze, double yield) {
+        analyze.remove(LottoGrade.BANG);
+        printWinningList(analyze);
+        printYield(yield);
     }
 
-    private void printWinningList() {
-
+    private void printWinningList(Map<LottoGrade, Integer> analyze) {
+        analyze.forEach((key, value) -> {
+            System.out.printf(String.valueOf(ConsoleMessage.STATISTICS_ELEMENT_FORMAT), key, value);
+            System.out.print(ConsoleMessage.NEW_LINE);
+        });
     }
 
-    private void printYield() {
-
+    private void printYield(double yield) {
+        System.out.printf(String.valueOf(ConsoleMessage.RESPONSE_YIELD),
+                Math.round(yield*100)/100.0);
     }
 }
