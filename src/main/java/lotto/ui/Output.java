@@ -16,7 +16,7 @@ public class Output {
 
     public void lottoHistory(List<Lotto> history){
         for(Lotto numbers : history){
-            System.out.println(numbers);
+            System.out.println(numbers.getNumbers());
         }
     }
     public void winningNum(){
