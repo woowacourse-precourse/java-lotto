@@ -7,6 +7,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoGenerator;
 import lotto.domain.PurchasingAmount;
 import lotto.domain.WinningAndBonusNumbers;
+import lotto.domain.WinningStatisticsCompiler;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -22,6 +23,7 @@ public class LottoController {
 		issueLotteries();
 		receiveWinningNumbers();
 		receiveBonusNumbers();
+		compileWinningStatistics();
 	}
 
 	void calculateNumberOfTickets() {
@@ -45,6 +47,11 @@ public class LottoController {
 
 	void receiveBonusNumbers() {
 		winningAndBonusNumbers = new WinningAndBonusNumbers(Integer.parseInt(inputView.getBonusNumber()));
+	}
+
+	void compileWinningStatistics() {
+		WinningStatisticsCompiler winningStatisticsCompiler = new WinningStatisticsCompiler(lotteries, winningAndBonusNumbers);
+		outputView.printWinningStatistics(winningStatisticsCompiler.getCountsOfWins());
 	}
 
 	List<Lotto> getLotteries() {
