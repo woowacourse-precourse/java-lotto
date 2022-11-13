@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.Lotto;
+import lotto.domain.LottoMachine;
 import lotto.domain.Manager;
 import lotto.ui.Input;
 import lotto.ui.Ouput;
@@ -9,6 +10,7 @@ import java.util.List;
 
 public class Operator {
     Manager manager = new Manager();
+    LottoMachine lottoMachine = new LottoMachine();
     Input input = new Input();
     Ouput ouput = new Ouput();
 
@@ -16,9 +18,9 @@ public class Operator {
         ouput.notifyHowMuchInput();
         int money = input.getUserMoney();
         System.out.println();
-        int amount = manager.getAmount(money);
-        manager.purchaseLotto(amount);
-        ouput.notifyPurchasedLottoTable(manager.getLottoTable());
+
+        lottoMachine.purchaseLottoTable(money);
+        ouput.notifyPurchasedLottoTable(lottoMachine.getLottoTable());
         System.out.println();
     }
 
@@ -29,7 +31,7 @@ public class Operator {
         ouput.notifyBonusNumberInput();
         int bounusNumber = input.getBonusNumber();
         System.out.println();
-        List<Integer> result = manager.compareLottoTable(manager.getLottoTable(), winningLotto, bounusNumber);
+        List<Integer> result = manager.compareLottoTable(lottoMachine.getLottoTable(), winningLotto, bounusNumber);
         return manager.sumUpResult(result);
     }
 

@@ -8,29 +8,6 @@ import lotto.ui.Error;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Manager {
-    private List<Lotto> lottoTable = new ArrayList<>();
-
-    public List<Integer> getRandomNumbers() {
-        return new ArrayList<Integer>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-    }
-
-    public int getAmount(int won) {
-        if (won % Lotto.PRICE != 0 || won == 0) {
-            throw new IllegalArgumentException(Error.ENTER_IN_UNITS_OF_1000_WON);
-        }
-        return won / Lotto.PRICE;
-    }
-
-    public void purchaseLotto(int amount) {
-        for (int i = 0; i < amount; i++) {
-            Lotto lotto = new Lotto(getRandomNumbers());
-            lottoTable.add(lotto);
-        }
-    }
-
-    public List<Lotto> getLottoTable() {
-        return lottoTable;
-    }
 
     public int compareLottoNumbers(Lotto purchasedLotto, Lotto winningLotto) {
         int numberOfMatches = 0;
@@ -55,9 +32,8 @@ public class Manager {
         }
     }
 
-
     public List<Integer> compareLottoTable(List<Lotto> lottoTable, Lotto winningLotto, int bonusNumber) {
-        validateBounusNumber(winningLotto,bonusNumber);
+        validateBounusNumber(winningLotto, bonusNumber);
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i < lottoTable.size(); i++) {
             int numberOfMatches = 0;
@@ -87,7 +63,7 @@ public class Manager {
         for (int i = 0; i < sumOfResult.size(); i++) {
             sum += sumOfResult.get(i) * prizeMoney[i];
         }
-        return sum / (getLottoTable().size() * Lotto.PRICE) * 100;
+        return sum / (8 * Lotto.PRICE) * 100;
     }
 }
 
