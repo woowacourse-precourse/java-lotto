@@ -16,6 +16,7 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         validateNumberSize(numbers);
         validateDuplicateNumbers(numbers);
+        validateNumberRange(numbers);
     }
 
     private void validateNumberSize(List<Integer> numbers) {
@@ -35,6 +36,19 @@ public class Lotto {
                         .count()
         ) {
             throw new IllegalArgumentException(DUPLICATION_ERROR_MESSAGE);
+        }
+    }
+
+    private void validateNumberRange(List<Integer> numbers) {
+        final int MIN_NUMBER = 1;
+        final int MAX_NUMBER = 45;
+        final String RANGE_ERROR_MESSAGE = "[ERROR] 로또 번호는 1이상 45이하의 숫자만 가능합니다.";
+        long overRangeCount = numbers.stream()
+                .filter(number -> number < MIN_NUMBER || number > MAX_NUMBER)
+                .count();
+
+        if (overRangeCount > 0){
+            throw new IllegalArgumentException(RANGE_ERROR_MESSAGE);
         }
     }
 
