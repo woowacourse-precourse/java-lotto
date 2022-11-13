@@ -222,10 +222,8 @@ class ApplicationTest extends NsTest {
     @Test
     void 보너스번호_적용_2등(){
         WinCalculation winCalculation = new WinCalculation();
-        List<Integer> win = List.of(1,2,3,4,5,6);
         List<Integer> number = List.of(2,3,4,5,6,7);
         int bonus = 7;
-        winCalculation.WinCount(win,number);
         boolean check = winCalculation.bonusNumber(bonus,number);
         assertThat(check).isEqualTo(true);
     }
@@ -233,10 +231,8 @@ class ApplicationTest extends NsTest {
     @Test
     void 보너스번호_적용_3등(){
         WinCalculation winCalculation = new WinCalculation();
-        List<Integer> win = List.of(1,2,3,4,5,6);
         List<Integer> number = List.of(2,3,4,5,6,7);
         int bonus = 9;
-        winCalculation.WinCount(win,number);
         boolean check = winCalculation.bonusNumber(bonus,number);
         assertThat(check).isEqualTo(false);
     }

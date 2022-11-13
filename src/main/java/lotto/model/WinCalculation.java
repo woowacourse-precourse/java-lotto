@@ -33,10 +33,4 @@ public class WinCalculation {
         return false;
     }
 
-    public void checkBonusNumber(int bonus, List<Integer>number) {
-        if(count == 5) {
-            bonusNumber(bonus, number);
-        }
-    }
-
 }

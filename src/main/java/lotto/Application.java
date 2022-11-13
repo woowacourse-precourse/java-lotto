@@ -54,7 +54,10 @@ public class Application {
         String bonus = inputView.bonusNumber();
         int bn = bonusNumber.checkBonusNumber(numbers, bonus);
         int num = winCalculation.WinCount(ar,numbers);
-        boolean check = winCalculation.bonusNumber(bn, ar);
+        boolean check=true;
+        if(num == 5) {
+            check = winCalculation.bonusNumber(bn, ar);
+        }
         System.out.println(check);
         WinDetail winDetail = WinDetail.findRankBy(num,check);
         System.out.println(winDetail);
