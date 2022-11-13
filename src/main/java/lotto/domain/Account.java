@@ -19,13 +19,13 @@ public class Account {
         this.results.put(WinningResult.RANK_3, 0);
         this.results.put(WinningResult.RANK_2, 0);
         this.results.put(WinningResult.RANK_1, 0);
-        this.winningAmount = 0;
     }
 
     public void saveResult(List<Lotto> lottos) {
         this.count = lottos.size();
         lottos.stream()
                 .forEach(lotto -> saveOneLotto(lotto));
+        calculateWinningAmount();
     }
 
     private void saveOneLotto(Lotto lotto) {
@@ -33,5 +33,12 @@ public class Account {
         int previousCount = results.get(result);
         int nextCount = previousCount + 1;
         results.put(result, nextCount);
+    }
+
+    private void calculateWinningAmount() {
+        this.winningAmount = 0;
+        for (WinningResult result: results.keySet()) {
+            this.winningAmount += results.get(result) * result.getMoney();
+        }
     }
 }
