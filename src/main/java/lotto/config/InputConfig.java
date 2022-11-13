@@ -10,10 +10,10 @@ import java.util.regex.Pattern;
 public class InputConfig {
     public static final String ERROR_MESSAGE = "[ERROR]";
 
-    private static final String ERROR_INVALID_PRICE = ERROR_MESSAGE + " %d 단위로 입력해 주세요.";
+    private static final String ERROR_INVALID_PRICE = ERROR_MESSAGE + " %d단위로 입력해 주세요.";
     private static final String ERROR_NOT_POSITIVE_NUMBER = ERROR_MESSAGE + " 양수인 값만 입력해 주세요.";
     private static final String ERROR_RANGE_OVERFLOW = ERROR_MESSAGE + " 입력 가능한 범위를 초과했습니다. %d~%d 사이의 값을 입력해 주세요.";
-    private static final String ERROR_NOT_LOTTO_LENGTH = ERROR_MESSAGE + " %d 개의 숫자를 입력해 주세요.";
+    private static final String ERROR_NOT_LOTTO_LENGTH = ERROR_MESSAGE + " %d개의 숫자를 입력해 주세요.";
     private static final String ERROR_OVERLAPPED_BONUS_NUMBER = ERROR_MESSAGE + " 당첨 번호와 보너스 번호가 중복됩니다.";
     private static final String NUMBER_PATTERN = "^[0-9]+$";
 
@@ -72,7 +72,7 @@ public class InputConfig {
     }
 
     private static void isNumber(String input) {
-        if(!Pattern.matches(NUMBER_PATTERN, input)) {
+        if (!Pattern.matches(NUMBER_PATTERN, input)) {
             System.out.println(ERROR_NOT_POSITIVE_NUMBER);
             throw new IllegalArgumentException(ERROR_NOT_POSITIVE_NUMBER);
             //throw new NoSuchElementException(ERROR_NOT_POSITIVE_NUMBER);
