@@ -42,15 +42,15 @@
 - [X] 로또 번호 리스트 반환 Lotto#getNumbers()
 
 
-#### BonusNumber
-- [X] 보너스 번호 생성 - BonusNumber#BonusNumber(int number)
-  - [X] 보너스 번호가 1~45 범위 내의 수인지 검증 - BonusNumber#validateNumberInRange(int number)
-- [X] 보너스 번호 값 반환 - BonusNumber#getNumber()
+#### Bonus
+- [X] 보너스 번호 생성 - Bonus#Bonus(int number)
+  - [X] 보너스 번호가 1~45 범위 내의 수인지 검증 - Bonus#validateNumberInRange(int number)
+- [X] 보너스 번호 값 반환 - Bonus#getNumber()
 
 
 #### WinningLotto
-- [X] 로또 당첨 정보(로또 번호 + 보너스 번호) 생성 WinningLotto#WinningLotto(Lotto winningLotto, BonusNumber bonusNumber)
-  - [X] 보너스 번호가 로또 당첨 번호에 포함되어 있는지 검증 - WinningLotto#validateWinningLottoContainsBonusNumber(Lotto winningLotto, BonusNumber bonusNumber)
+- [X] 로또 당첨 정보(로또 번호 + 보너스 번호) 생성 WinningLotto#WinningLotto(Lotto winningLotto, Bonus bonus)
+  - [X] 보너스 번호가 로또 당첨 번호에 포함되어 있는지 검증 - WinningLotto#validateWinningLottoContainsBonusNumber(Lotto winningLotto, Bonus bonus)
 - [X] 당첨 로또 번호 리스트 반환 - WinningLotto#getWinningLottoNumbers() 
 - [X] 보너스 번호 반환 - WinningLotto#getBonusNumber() 
 
@@ -61,7 +61,7 @@
 
 
 #### Judgement
-- [ ] 로또 번호 리스트와 당첨 로또 번호 리스트 + 보너스 번호 비교 후 몇 등인지 확인 - Judgement#getLottoRank(Lotto lotto, Lotto winningLotto)
+- [X] 로또 번호 리스트와 당첨 로또 번호 리스트 + 보너스 번호 비교 후 몇 등인지 확인 - Judgement#getLottoRank(Lotto lotto, Lotto winningLotto)
   - [X] 로또 번호 리스트 중 당첨 번호와 다른 번호만 추출 한 것을 포함하고 있는 리스트 생성 - Judgement#compare(Lotto lotto, Lotto winningLotto)
 
 
