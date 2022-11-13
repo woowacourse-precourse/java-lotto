@@ -67,5 +67,5 @@ public class calculateLotto {
         System.out.println(getPrizeMoney);
         return (getPrizeMoney / (numberOflottos*1000))*100;
     }
-    
+
 }
