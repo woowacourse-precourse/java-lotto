@@ -4,6 +4,7 @@ import java.util.EnumMap;
 import java.util.List;
 import lotto.controller.LottoController;
 import lotto.controller.MoneyController;
+import lotto.controller.ResultController;
 import lotto.controller.WinningController;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMaker;
@@ -22,6 +23,7 @@ public class Mission {
     MoneyController moneyController;
     WinningController winningController;
     LottoController lottoController;
+    ResultController resultController;
 
     Mission() {
         output = new Output();
@@ -45,10 +47,8 @@ public class Mission {
 
         WinningLotto winningLotto = winningController.getWinningLotto();
 
-        for (Lotto lotto : lottos) {
-            Rank rank = winningLotto.match(lotto);
-            repository.add(rank);
-        }
+        resultController = new ResultController(winningLotto, lottos);
+        resultController.sratchLottos();
 
         int priceMoney = repository.getTotalMoney();
 
