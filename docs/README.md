@@ -62,7 +62,7 @@
 
 #### Judgement
 - [ ] 로또 번호 리스트와 당첨 로또 번호 리스트 + 보너스 번호 비교 후 몇 등인지 확인 - Judgement#getLottoRank(Lotto lotto, Lotto winningLotto)
-  - [ ] 로또 번호 리스트 중 당첨 로또 번호와 다른 번호만 추출 후 리스트 생성 - Judgement#compare(Lotto lotto, Lotto winningLotto)
+  - [X] 로또 번호 리스트 중 당첨 번호와 다른 번호만 추출 한 것을 포함하고 있는 리스트 생성 - Judgement#compare(Lotto lotto, Lotto winningLotto)
 
 
 #### Statistics
