@@ -46,15 +46,15 @@ public class Config {
     private static void checkIllegalLotto() {
     }
 
-    private static void checkLongerLottoThanBonus() {
-        if (LOTTO_LENGTH < BONUS_LOTTO_LENGTH) {
-            throw new IllegalArgumentException();
-        }
+    private static boolean isLongerLottoThanBonus() {
+        return LOTTO_LENGTH >= BONUS_LOTTO_LENGTH;
     }
 
-    private static void checkLongerTotalThenNumber() {
+    private static boolean isLongerTotalThenNumber() {
+        return true;
     }
 
-    private static void checkRankAmount() {
+    private static boolean isRankAmount() {
+        return true;
     }
 }
