@@ -16,7 +16,7 @@ public class DomainTest {
 
     @DisplayName("구입 가격 형식 검증 테스트")
     @Test
-    void validatePriceInput() {
+    void validatePriceInputTest() {
         Assertions.assertThrows(RuntimeException.class, () -> {
             domain.validatePriceInput("9");
         });
@@ -29,4 +29,24 @@ public class DomainTest {
             domain.validatePriceInput("3001");
         });
     }
+
+    @DisplayName("로또 당첨 번호 유효성 검사 테스트")
+    @Test
+    void validateWinningNumberInputTest() {
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            domain.validateWinningNumberInput("1,2,3,4,5,5");
+        });
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            domain.validateWinningNumberInput("1,2,3,4,5,6,7");
+        });
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            domain.validateWinningNumberInput("1,-1,3,4,5,6");
+        });
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            domain.validateWinningNumberInput("a,2,3,4,5,6");
+        });
+
+        domain.validateWinningNumberInput("1,2,3,4,5,6");
+    }
+
 }
