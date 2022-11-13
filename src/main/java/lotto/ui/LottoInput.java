@@ -13,6 +13,7 @@ public class LottoInput {
     private String readInput() {
         String userInput = Console.readLine();
 
+        System.out.println(userInput);
         return userInput;
     }
 
