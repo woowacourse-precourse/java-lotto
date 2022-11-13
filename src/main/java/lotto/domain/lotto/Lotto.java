@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Lotto {
     private static final String NOT_SIX_NUMBERS = "[ERROR] 로또 번호는 6개의 수로만 이루어져야 합니다.";
+
     private final List<Integer> numbers;
 
     public List<Integer> getNumbers() {

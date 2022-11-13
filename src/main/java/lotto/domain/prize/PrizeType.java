@@ -35,7 +35,15 @@ public enum PrizeType {
                 .orElseThrow(NoSuchElementException::new);
     }
 
-    public String getNumOfMatched() {
+    public int getNumOfMatched() {
+        return numOfMatched;
+    }
+
+    public int getPrizeMoney() {
+        return prizeMoney;
+    }
+
+    public String printNumOfMatched() {
 
         if (this.equals(SECOND)) {
             return numOfMatched + "개 일치, 보너스 볼 일치 ";
@@ -43,7 +51,7 @@ public enum PrizeType {
         return numOfMatched + "개 일치 ";
     }
 
-    public String getPrizeMoney() {
+    public String printPrizeMoney() {
         DecimalFormat decimalFormat = new DecimalFormat("###,###");
 
         return "(" + decimalFormat.format(prizeMoney) + "원)";
