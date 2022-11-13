@@ -10,7 +10,7 @@ public class InputOutput {
         LOTTERY_PRICE = lotteryPrice;
     }
 
-    public int moneyInput() {
+    public int getMoney() {
         int money;
 
         try {

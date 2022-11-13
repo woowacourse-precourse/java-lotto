@@ -10,7 +10,7 @@ public class Application {
         InputOutput inputOutput = new InputOutput(LOTTERY_PRICE);
         LottoPublisher lottoPublisher = new LottoPublisher(LOTTERY_PRICE);
 
-        int money = inputOutput.moneyInput();
+        int money = inputOutput.getMoney();
         List<Lotto> lottos = lottoPublisher.publish(money);
 
         inputOutput.printLottos(lottos);
