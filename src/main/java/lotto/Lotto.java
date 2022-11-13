@@ -110,6 +110,17 @@ public class Lotto {
         return totalNumber;
 
     }
+
+        public void decimalPointCirculator(int decimalpoint1, int decimalpoint2){
+
+        double filed  = ((double)decimalpoint1 / decimalpoint2) * 100;
+        filed = Math.round(filed*100);
+
+
+        System.out.println("총 수익률은"+filed/100 +"%입니다.");
+
+        }
+
 }
 
 
