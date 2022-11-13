@@ -10,7 +10,6 @@ public class LottoGenerate {
     private static final int NUM_LENGTH = 6;
     public static Lotto generateLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_NUM, MAX_NUM, NUM_LENGTH);
-
         return new Lotto(numbers);
     }
 }
