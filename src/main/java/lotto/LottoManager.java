@@ -19,6 +19,8 @@ public class LottoManager {
 
     List<Integer> winningNumber;
 
+    int bonusNumber;
+
     // 전체 동작을 구현하는 메소드
     public void run() {
         insertMoneyUI();
@@ -155,5 +157,38 @@ public class LottoManager {
         System.out.println("당첨 번호를 입력해 주세요.");
         String stringWinningNumber = readLine();
         insertWinningNumber(stringWinningNumber);
+    }
+
+
+    // 보너스 번호 입력값 검증을 하는 메소드
+    public void validateInsertBonusNumber(String stringBonusNumber) {
+        try {
+            int bonusNumber = Integer.parseInt(stringBonusNumber);
+
+            if (!(1 <= bonusNumber && bonusNumber <= 45)) {
+                throw new IllegalArgumentException("[ERROR] 보너스 번호는 1~45 의 자연수여야 합니다.");
+            }
+
+            if (winningNumber.contains(bonusNumber)) {
+                throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 중복될 수 없습니다.");
+            }
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 정수를 입력해야 합니다.");
+        }
+    }
+
+    // 보너스 번호를 입력받는 메소드
+    public void insertBonusNumber(String stringBonusNumber) {
+        validateInsertBonusNumber(stringBonusNumber);
+
+        // 보너스 번호 추가
+        bonusNumber = Integer.parseInt(stringBonusNumber);
+    }
+
+    // 보너스 번호를 입력받는 UI 메소드
+    public void insertBonusNumberUI() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String stringBonusNumber = readLine();
+        insertBonusNumber(stringBonusNumber);
     }
 }
