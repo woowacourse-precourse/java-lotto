@@ -5,7 +5,8 @@ public enum WinningPrize {
     FIVEWITHBONUS(30000000),
     FIVE(1500000),
     FOUR(50000),
-    THREE(5000);
+    THREE(5000),
+    OTHER(0);
 
     private final int winningRank;
     WinningPrize(int winningRank){
