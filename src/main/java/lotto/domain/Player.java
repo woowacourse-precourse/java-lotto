@@ -5,6 +5,7 @@ import lotto.Util.OutputPrint;
 import lotto.valid.Validation;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,6 +25,7 @@ public class Player {
         prizeNumbers = Arrays.stream(InputPrint.prizeNumberInput().split(","))
                 .map(num -> Integer.parseInt(num))
                 .collect(Collectors.toList());
+        Collections.sort(prizeNumbers);
         Validation.prizeNumbersValid(prizeNumbers);
     }
 
