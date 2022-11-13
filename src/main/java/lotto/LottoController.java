@@ -25,7 +25,7 @@ public class LottoController {
         try {
             buyLotto();
             setAnswer();
-
+            getResult();
         } catch (Exception err) {
             CommonView.printExceptionMessage(err);
         }

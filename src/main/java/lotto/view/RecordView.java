@@ -21,6 +21,7 @@ public class RecordView {
     }
 
     public static void printYield(WinningRecord winningRecord) {
-
+        double yield = Math.round(winningRecord.getYield());
+        System.out.println("총 수익률은 " + yield + "%입니다.");
     }
 }
