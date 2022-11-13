@@ -21,9 +21,16 @@ public class LottoAnswer extends Lotto {
             checkNumberFormatOrThrows(bonus);
             int bonusNum = Integer.parseInt(bonus);
             checkNumberArea(bonusNum);
+            checkDuplicatedNumberOrThrows(bonusNum);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             throw new NoSuchElementException();
+        }
+    }
+
+    protected void checkDuplicatedNumberOrThrows(int bonus){
+        if(numbers.contains(bonus)){
+            throw new IllegalArgumentException("[ERROR] 숫자는 중복될 수 없습니다.");
         }
     }
 
