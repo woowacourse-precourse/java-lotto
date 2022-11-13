@@ -1,12 +1,19 @@
-package lotto;
+package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import constant.Prize;
-
 import java.util.List;
 import java.util.Map;
+import lotto.model.Lotto;
+import lotto.model.Prize;
+import lotto.model.WinLotto;
+import lotto.service.Calculate;
+import lotto.service.Convert;
+import lotto.service.LottoShop;
+import lotto.service.Statistics;
+import lotto.view.Print;
 
 public class LottoSimulate {
+
     private final Print print = new Print();
 
     private final Convert convert = new Convert();
@@ -54,8 +61,8 @@ public class LottoSimulate {
         return convert.toWinLottoBonusNumber(input);
     }
 
-    private Map<Prize,Integer> getLottoStatics(WinLotto winLotto, List<Lotto> lottos) {
-        Map<Prize,Integer> lottoStatics = statistics.produce(winLotto, lottos);
+    private Map<Prize, Integer> getLottoStatics(WinLotto winLotto, List<Lotto> lottos) {
+        Map<Prize, Integer> lottoStatics = statistics.produce(winLotto, lottos);
         print.statics(lottoStatics);
         return lottoStatics;
     }

@@ -1,4 +1,4 @@
-package constant;
+package lotto.model;
 
 public enum LottoRule {
     SIZE(6),

@@ -1,11 +1,11 @@
-package lotto;
+package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import constant.LottoRule;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import lotto.model.Lotto;
+import lotto.model.LottoRule;
 
 public class LottoShop {
 

@@ -1,14 +1,15 @@
 package lotto;
 
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.List;
+import lotto.service.Validate;
+import org.junit.jupiter.api.Test;
 
 class ValidateTest {
+
     private final Validate validate = new Validate();
 
     @Test
@@ -27,7 +28,7 @@ class ValidateTest {
 
     @Test
     public void 로또_형태() {
-        assertThatCode(() -> validate.validWinLottoForm(new String[] {"1", "4", "7", "14", "28", "37"}))
+        assertThatCode(() -> validate.validWinLottoForm(new String[]{"1", "4", "7", "14", "28", "37"}))
                 .doesNotThrowAnyException();
     }
 
@@ -35,7 +36,7 @@ class ValidateTest {
     public void 로또_형태_아님() {
         Throwable exception =
                 assertThrows(IllegalArgumentException.class, () ->
-                        validate.validWinLottoForm(new String[] {"1", "4", "7", "14", "28"}));
+                        validate.validWinLottoForm(new String[]{"1", "4", "7", "14", "28"}));
         assertThat(exception.getMessage()).contains("입력값을 로또 형태로 전환할 수 없습니다.");
     }
 

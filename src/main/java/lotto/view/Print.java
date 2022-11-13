@@ -1,14 +1,16 @@
-package lotto;
-
-import constant.Prize;
+package lotto.view;
 
 import java.util.List;
 import java.util.Map;
+import lotto.model.Lotto;
+import lotto.model.Prize;
 
 public class Print {
+
     public void requestPurchasePrice() {
         out("구입금액을 입력해 주세요.");
     }
+
     public void lottoNumbers(List<Lotto> lottos) {
         blank();
         out(lottos.size() + "개를 구매했습니다.");

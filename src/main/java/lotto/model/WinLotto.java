@@ -1,8 +1,9 @@
-package lotto;
+package lotto.model;
 
 import java.util.List;
 
 public class WinLotto extends Lotto {
+
     private final int bonusNumber;
 
     public WinLotto(List<Integer> numbers, int bonusNumber) {

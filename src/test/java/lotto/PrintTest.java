@@ -1,13 +1,12 @@
 package lotto;
 
-import constant.Prize;
+import java.util.EnumMap;
+import lotto.model.Prize;
+import lotto.view.Print;
 import org.junit.jupiter.api.Test;
 
-import java.util.EnumMap;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class PrintTest {
+
     private Print print = new Print();
 
     @Test

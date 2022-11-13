@@ -1,22 +1,24 @@
-package lotto;
-
-import constant.LottoRule;
-import constant.Prize;
+package lotto.service;
 
 import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import lotto.model.Lotto;
+import lotto.model.LottoRule;
+import lotto.model.Prize;
+import lotto.model.WinLotto;
 
 public class Statistics {
+
     private static final int DEFAULT_VALUE = 0;
 
     public Map<Prize, Integer> produce(WinLotto winLotto, List<Lotto> lottos) {
         Map<Prize, Integer> output = getDefaultOutput();
         Set<Integer> winNumbers = new HashSet<>(winLotto.getNumbers());
-        int bonusNumber = winLotto.getBonusNumber(); 
-        
+        int bonusNumber = winLotto.getBonusNumber();
+
         for (Lotto lotto : lottos) {
             pileUpOutput(output, winNumbers, bonusNumber, lotto);
         }
@@ -25,7 +27,7 @@ public class Statistics {
     }
 
     private EnumMap<Prize, Integer> getDefaultOutput() {
-        return new EnumMap<>(Prize.class){{
+        return new EnumMap<>(Prize.class) {{
             for (Prize prize : Prize.values()) {
                 put(prize, DEFAULT_VALUE);
             }

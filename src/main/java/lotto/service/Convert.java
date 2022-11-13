@@ -1,9 +1,10 @@
-package lotto;
+package lotto.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Convert {
+
     private static final int UNIT_LOTTO_PRICE = 1_000;
 
     private final Validate validate = new Validate();

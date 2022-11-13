@@ -1,12 +1,14 @@
 package lotto;
 
-import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import lotto.service.Convert;
+import org.junit.jupiter.api.Test;
 
 class ConvertTest {
+
     private final Convert convert = new Convert();
 
     @Test

@@ -1,9 +1,8 @@
-package constant;
+package model;
 
+import lotto.model.Prize;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PrizeTest {
 
