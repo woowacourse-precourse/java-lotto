@@ -5,6 +5,9 @@ import java.util.Map;
 
 public class WinningStatistics {
 
+    private static final int AT_LEAST_THIRD_PLACE = 5;
+    private static final int PERCENTAGE = 100;
+
     public static Map<WinningRank, Integer> getWinningDetails(Lottos lottos, WinningLotto winningLotto) {
         Map<WinningRank, Integer> winningDetails = WinningRank.generateWinningDetails();
         for (Lotto lotto : lottos.getLottos()) {
@@ -25,7 +28,7 @@ public class WinningStatistics {
     }
 
     private static boolean compareNumbersWithBonusNumber(Lotto lotto, WinningLotto winningLotto, int matchingCount) {
-        if (matchingCount != 5) {
+        if (matchingCount != AT_LEAST_THIRD_PLACE) {
             return false;
         }
         List<Integer> numbers = lotto.getNumbers();
@@ -35,9 +38,8 @@ public class WinningStatistics {
 
     public static double getLottoYield(Map<WinningRank, Integer> winningDetails, int money) {
         long winningAmount = winningDetails.entrySet().stream()
-                .filter(entry -> entry.getValue() != 0)
                 .mapToLong(entry -> (long) entry.getKey().getWinningPrice() * entry.getValue())
                 .sum();
-        return 100 + (double) (winningAmount - money) / money * 100;
+        return PERCENTAGE + (double) (winningAmount - money) / money * PERCENTAGE;
     }
 }
