@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
@@ -16,5 +17,10 @@ public class Lotto {
         }
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        Lotto lotto = (Lotto) obj;
+        return new HashSet<>(lotto.numbers).containsAll(this.numbers);
+    }
     // TODO: 추가 기능 구현
 }
