@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.object.WinningHistory;
 
 import java.util.List;
 
@@ -20,5 +21,9 @@ public class View {
 
     public static void printLottoNumbers(List<List<Integer>> lottos) {
         lottos.stream().forEach(System.out::println);
+    }
+
+    public static void printWinningHistory(WinningHistory history) {
+        System.out.println(history);
     }
 }
