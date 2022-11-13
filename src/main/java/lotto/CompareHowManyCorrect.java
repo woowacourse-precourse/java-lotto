@@ -15,11 +15,22 @@ public class CompareHowManyCorrect {
             List<Integer> gatherNumbers = new ArrayList<>();
             gatherNumbers.addAll(user.get(i));
             gatherNumbers.addAll(winNumber);
-            int removeDuplicationSize = new HashSet(gatherNumbers).size();
-            int duplicationNumber = gatherNumbers.size() - removeDuplicationSize;
-            correctNumberEachLotto.add(duplicationNumber);
+            correctNumberEachLotto.add(caculateDuplication(gatherNumbers));
         }
 
         return correctNumberEachLotto;
     }
+
+    public int caculateDuplication(List<Integer> gather){
+
+        int removeDuplicationSize = new HashSet(gather).size();
+        int duplicationNumber = gather.size() - removeDuplicationSize;
+
+        return duplicationNumber;
+    }
+
+
+
+
+
 }
