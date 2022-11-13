@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -21,7 +22,7 @@ public class Lotto {
     }
 
     public List<Integer> asSortedList(){
-        List<Integer> sorted = this.numbers;
+        List<Integer> sorted = new ArrayList<>(this.numbers);
         Collections.sort(sorted);
         return sorted;
     }

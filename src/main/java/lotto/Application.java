@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.printUI.*;
+
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
@@ -8,9 +10,15 @@ import java.util.List;
 import java.util.Map;
 
 public class Application {
-    public static void validationCheck(int money) {
-        if(money % 1000 != 0){
-            throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
+    public static void moneyValidationCheck(String userMoney) throws IllegalArgumentException{
+        try{
+            Integer.parseInt(userMoney);
+            if(Integer.parseInt(userMoney) % 1000 != 0){
+                throw new Exception();
+            }
+
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
         }
     }
 
@@ -71,28 +79,18 @@ public class Application {
         return winningNumbers;
     }
 
-    public static void printResult(Map<String,Integer> allResult){
-        System.out.println("3개 일치 (5,000원) - " + allResult.get("3") + "개");
-        System.out.println("4개 일치 (50,000원) - " + allResult.get("4") + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + allResult.get("5") + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + allResult.get("7") + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + allResult.get("6") + "개");
-    }
-
-    public static void printProfitRate(Map<String,Integer> allResult , int money){
-        int totalProfit = allResult.get("3") * 5000 +
-                allResult.get("4") * 50000 +
-                allResult.get("5") * 1500000 +
-                allResult.get("7") * 30000000 +
-                allResult.get("6") * 2000000000;
-        System.out.println("총 수익률은 " + ((double)totalProfit / money * 100) + "%입니다.");
-    }
-
     public static void main(String[] args) {
-        System.out.println("구입금액을 입력해주세요.");
-        int money = Integer.parseInt(Console.readLine());
+        printMoneyInputMessage();
+        String userMoney = Console.readLine();
+        try{
+            moneyValidationCheck(userMoney);
+        } catch (Exception e){
+            System.out.println("[ERROR]잘못된 입력입니다.");
+            return;
+        }
 
-        validationCheck(money);
+        int money = Integer.parseInt(userMoney);
+
         List<Lotto> Lottos = createLottos(money);
 
         System.out.println("\n" + Lottos.size() + "개를 구매했습니다.");
@@ -100,11 +98,12 @@ public class Application {
             System.out.println(lotto.asSortedList());
         }
 
-        System.out.println("\n" +"당첨 번호를 입력해주세요.");
+        printWinningNumberInputMessage();
         List<Integer> winningNumbers = getWinningNumbers();
 
-        System.out.println("\n" +"보너스 번호를 입력해주세요.");
+        printBonusNumberInputMessage();
         Integer bonusNumber = Integer.parseInt(Console.readLine());
+
         if(winningNumbers.contains(bonusNumber)){
             throw new IllegalArgumentException("[ERROR]잘못된 입력입니다.");
         }
@@ -116,8 +115,7 @@ public class Application {
 
         Map<String,Integer> allResult = getAllResult(counts);
 
-        System.out.println("당첨 통계\n___");
-        //
+        printAnalysisMessage();
         printResult(allResult);
         printProfitRate(allResult, money);
     }
