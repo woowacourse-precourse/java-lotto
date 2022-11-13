@@ -6,17 +6,14 @@ public class LottoBuyer {
     private static final String INT_REGEX = "^[0-9]*$";
     public int getPay() {
         String input = Console.readLine();
-        int money = changeInt(input);
-        try {
-            checkOnlyNumber(input);
-            checkPayUnit(money);
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
+
+        checkOnlyNumber(input);
+        checkPayUnit(input);
 
         return Integer.parseInt(input);
     }
-    public void checkPayUnit(int money) {
+    public void checkPayUnit(String input) {
+        int money = changeInt(input);
         if(money%1_000 != 0) {
             throw new IllegalArgumentException("[ERROR] 구매 금액은 1,000 단위로만 입력 가능합니다.");
         }
@@ -30,5 +27,9 @@ public class LottoBuyer {
 
     private int changeInt(String input) {
         return Integer.parseInt(input);
+    }
+
+    private void exit() {
+        return;
     }
 }

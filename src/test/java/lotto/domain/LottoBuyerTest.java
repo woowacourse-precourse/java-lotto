@@ -11,7 +11,7 @@ public class LottoBuyerTest {
     @DisplayName("구매 금액 지불 시 1,000원 단위로 지불하지 않은 경우 예외가 발생한다.")
     @Test
     void 구매_금액_지불_단위_예외() {
-        int input = 10_500;
+        String input = "10500";
         assertThatThrownBy(() -> lottoBuyer.checkPayUnit(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }

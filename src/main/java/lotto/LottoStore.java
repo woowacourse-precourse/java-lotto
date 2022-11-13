@@ -14,7 +14,14 @@ public class LottoStore {
 
     public static void startLotto() {
         System.out.println("구입금액을 입력해 주세요.");
-        int money = lottoBuyer.getPay();
+        int money = 0;
+        try {
+            money = lottoBuyer.getPay();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return;
+        }
+
 
         int pages = lottoSeller.getSellPages(money);
         System.out.println("\n" + pages + "개를 구매했습니다.");
