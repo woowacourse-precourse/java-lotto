@@ -1,8 +1,10 @@
 package lotto;
 
+import static lotto.domain.constant.IntValueConstant.BONUS_NUMBER_IDX;
 import static lotto.domain.constant.IntValueConstant.LOTTO_MAXIMUM_NUMBER;
 import static lotto.domain.constant.IntValueConstant.LOTTO_MINIMUM_NUMBER;
 import static lotto.domain.constant.IntValueConstant.LOTTO_NUMBER_OF_DIGITS;
+import static lotto.domain.constant.IntValueConstant.SECOND_PLACE;
 import static lotto.exception.ExceptionHandler.ILLEGAL_RANGE;
 import static lotto.exception.ExceptionHandler.ILLEGAL_VALUE;
 import static lotto.exception.ExceptionHandler.INPUT_SIX_DIGITS;
@@ -88,7 +90,7 @@ public class Application {
             Set<Integer> winningNumbers) {
 
         for (Integer winningNumber : winningNumbers) {
-            if (Objects.equals(winningNumber, bonusNumber.get(0))) {
+            if (Objects.equals(winningNumber, bonusNumber.get(BONUS_NUMBER_IDX.getValue()))) {
                 OVERLAP_NUMBER.error();
             }
         }
@@ -113,7 +115,7 @@ public class Application {
             if (Objects.equals(lottoNumbers.get(i)
                                            .getNumbers()
                                            .get(i), bonusNumber.get(0)) && lottoGameResults.get(i)
-                                                                                           .size() == 7) {
+                                                                                           .size() == SECOND_PLACE.getValue()) {
                 //TODO: 이 친구는 2등이다.
             }
         }
