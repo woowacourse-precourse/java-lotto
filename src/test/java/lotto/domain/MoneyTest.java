@@ -33,6 +33,16 @@ class MoneyTest {
                 .hasMessage("[ERROR] 1,000원 단위로 입력해야 합니다.");
     }
 
+    @DisplayName("로또 구입 금액 8000원으로 로또 8개를 살 수 있다.")
+    @Test
+    void calculateQunatity() {
+        Money money = new Money(8000);
+
+        int quantity = money.calculateQuantity();
+
+        assertThat(quantity).isEqualTo(8);
+    }
+
     @DisplayName("8000원어치 로또를 사서 5등 하나만 당첨되면 수익률은 62.5%이다.")
     @Test
     void calculateYield() {
