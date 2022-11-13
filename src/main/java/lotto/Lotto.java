@@ -46,5 +46,8 @@ public class Lotto {
         return new ArrayList<Integer>(List.of(countWin, countBonus));
     }
 
+    public void printNumbers(){
+        System.out.println(numbers);
+    }
     // TODO: 추가 기능 구현
 }
