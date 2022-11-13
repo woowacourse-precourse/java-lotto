@@ -1,4 +1,4 @@
-package lotto.domain.settlementsysyem;
+package lotto.score;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -95,11 +95,9 @@ class ScoreTest {
     class ScoreGenerator {
         public Score generate(final Integer normalCount, final Integer bonusCount) {
             var score = Score.generateEmptyScore();
-            for (int i = 0; i < normalCount; i++) {
-                score = score.plusNormal();
-            }
+            score = score.plusNormal(normalCount);
 
-            for (int i = 0; i < bonusCount; i++) {
+            if (bonusCount.equals(1)) {
                 score = score.plusBonus();
             }
             return score;
