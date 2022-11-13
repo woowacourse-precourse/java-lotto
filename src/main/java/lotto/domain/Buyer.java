@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 public class Buyer {
 
     private Lottos lottos;
+    private Money money;
 
 
     public String inputMoney() {
@@ -19,7 +20,15 @@ public class Buyer {
         return this.lottos;
     }
 
+    public void setMoney(Money money) {
+        this.money = money;
+    }
+
+    public int getMoney() {
+        return this.money.getMoney();
+    }
+
     public int getLottoCount() {
-        return this.lottos.getLottoCount();
+        return this.money.getLottoCount();
     }
 }
