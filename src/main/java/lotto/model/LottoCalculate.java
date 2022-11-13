@@ -51,7 +51,7 @@ public class LottoCalculate {
         return prizeNumber.prizeMoney;
     }
 
-    double calculatePercentageOfReturn(double money, double prizeMoneySum) {
-        return Math.round(prizeMoneySum / money * 1000) / 10.0;
+    float calculatePercentageOfReturn(double money, double prizeMoneySum) {
+        return (float) (Math.round(prizeMoneySum / money * 1000) / 10.0);
     }
 }

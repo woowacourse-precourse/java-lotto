@@ -58,7 +58,7 @@ public class LottoData {
         prizeMoneySum += lottoPrizeMoneyMatchCount.prizeMoney;
     }
 
-    public double percentageOfReturn() {
+    public float percentageOfReturn() {
         return lottoCalculate.calculatePercentageOfReturn(money, prizeMoneySum);
     }
 
