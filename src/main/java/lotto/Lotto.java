@@ -36,8 +36,7 @@ public class Lotto {
     }
 
     public List<Integer> getLotto() {
-        List<Integer> numbers = this.numbers.stream().collect(Collectors.toList());
-        Collections.sort(numbers);
+        List<Integer> numbers = this.numbers.stream().sorted().collect(Collectors.toList());
         return numbers;
     }
 }
