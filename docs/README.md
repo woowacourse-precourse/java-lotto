@@ -25,7 +25,11 @@
 
 ##### (2) 당첨번호 로또 클래스(WinningNumberLotto)
 ##### 당첨번호를 의미하는 로또 클래스
-- 중복값이 있는지 확인하는 함수
+- bonusNumber의 값을 리턴하는 함수(getter)
+- bonusNumber의 값을 수정하는 함수(private setter)
+- bonusNumber를 입력받는 함수
+- bonusNumber가 정상적으로 동작하는지 확인하는 함수
+- bonusNumber의 입력 문구를 출력하는 함수
 
 #### 3. 로또 번호에 따른 수익률 계산 클래스(YieldMachine)
 ##### 당첨 번호와 사용자가 구매한 로또 번호를 확인해 수익률을 분석하는 클래스
