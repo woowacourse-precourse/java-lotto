@@ -5,7 +5,7 @@ public class PurchaseMoney {
     private final int MAX_RANGE = 100_000;
     private final int MIN_RANGE = 1000;
 
-    private int purchaseMoney;
+    private final int purchaseMoney;
 
     public PurchaseMoney(String purchaseMoney) {
         validate(purchaseMoney);
@@ -35,7 +35,7 @@ public class PurchaseMoney {
 
     private void checkUnit(int money) {
         if (money % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 " + LOTTO_PRICE + "단위로 가능합니다");
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 " + LOTTO_PRICE + "원 단위로 가능합니다");
         }
     }
 

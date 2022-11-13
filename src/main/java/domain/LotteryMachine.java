@@ -3,6 +3,7 @@ package domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class LotteryMachine {
@@ -18,5 +19,9 @@ public class LotteryMachine {
         List <Integer> newLotto = new ArrayList <>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
         Lotto lotto = new Lotto(newLotto);
         lottos.add(lotto.getNumbers());
+    }
+
+    public List<List<Integer>> getLottos(){
+        return Collections.unmodifiableList(lottos);
     }
 }
