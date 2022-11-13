@@ -1,5 +1,8 @@
 package lotto.view;
 
+import lotto.domain.LottoRank;
+
+import java.util.EnumMap;
 import java.util.List;
 
 public class OutputView {
@@ -10,7 +13,9 @@ public class OutputView {
     private final String CLOSING_BRACKET = ")";
     private final String ONE_SPACE = " ";
     private final String COMMA = ",";
+    private final String NUMBER_OF_THING = "개";
 
+    public LottoRank lottoRank;
     public void printPriceInputMessage() {
         System.out.println(LOTTO_PURCHASE_PRICE_INPUT_MESSAGE);
     }
@@ -24,13 +29,12 @@ public class OutputView {
             System.out.println(lottoNumbers);
         }
     }
-
     public void printLottoRankResult(List<Integer> lottoResult) {
-        System.out.println("3개 일치 (5,000원) - " + lottoResult.get(4) + "개");
-        System.out.println("4개 일치 (50,000원) - " + lottoResult.get(3) + "개");
-        System.out.println("5개 일치 (1,500,000원) - " + lottoResult.get(2) + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + lottoResult.get(1) + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + lottoResult.get(0) + "개");
+        System.out.println(LottoRank.FIFTH.getResultMessage() + lottoResult.get(4) + NUMBER_OF_THING);
+        System.out.println(LottoRank.FOURTH.getResultMessage() + lottoResult.get(3) + NUMBER_OF_THING);
+        System.out.println(LottoRank.THIRD.getResultMessage() + lottoResult.get(2) + NUMBER_OF_THING);
+        System.out.println(LottoRank.SECOND.getResultMessage() + lottoResult.get(1) + NUMBER_OF_THING);
+        System.out.println(LottoRank.FIRST.getResultMessage() + lottoResult.get(0) + NUMBER_OF_THING);
     }
 
     public void printLottoEarningRate(String earningRate) {
