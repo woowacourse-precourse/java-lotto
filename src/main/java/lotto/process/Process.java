@@ -52,11 +52,11 @@ public class Process {
     public String sumUp(User user) {
         List<Integer> history = lottoLogic.getHistory();
         return IOResolve.joinStrings(
-                String.format("3개 일치 (5,000원) - %d 개\n", history.get(5)),
-                String.format("4개 일치 (50,000원) - %d 개\n", history.get(4)),
-                String.format("5개 일치 (1,500,000원) - %d 개\n", history.get(3)),
-                String.format("5개 일치, 보너스 볼 일치 (30,000,000원) - %d 개\n", history.get(2)),
-                String.format("6개 일치 (2,000,000,000원) - %d 개\n", history.get(1)),
+                String.format("3개 일치 (5,000원) - %d개\n", history.get(5)),
+                String.format("4개 일치 (50,000원) - %d개\n", history.get(4)),
+                String.format("5개 일치 (1,500,000원) - %d개\n", history.get(3)),
+                String.format("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n", history.get(2)),
+                String.format("6개 일치 (2,000,000,000원) - %d개\n", history.get(1)),
                 String.format("총 수익률은 %.1f%%입니다.\n", userLogic.userYield(user)));
     }
 
