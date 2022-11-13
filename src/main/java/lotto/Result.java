@@ -13,7 +13,7 @@ public enum Result {
         this.value = value;
     }
 
-    public int getName() {
+    public int get_value() {
         return value;
     }
 }

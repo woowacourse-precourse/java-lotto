@@ -250,6 +250,18 @@ public class Application {
         return six;
     }
 
+    static int calculate_winning_amount(List<Integer> save_score) {
+        int winning_amout = 0;
+
+        winning_amout += save_score.get(0) * Result.THREE.get_value();
+        winning_amout += save_score.get(1) * Result.FOUR.get_value();
+        winning_amout += save_score.get(2) * Result.FIVE.get_value();
+        winning_amout += save_score.get(3) * Result.FIVE_BONUS.get_value();
+        winning_amout += save_score.get(4) * Result.SIX.get_value();
+
+        return winning_amout;
+    }
+
     public static void main(String[] args) {
         ask_how_much_money();
 
@@ -320,5 +332,8 @@ public class Application {
         save_score.add(print_score_five(scores));
         save_score.add(print_score_five_bonus(scores));
         save_score.add(print_score_six(scores));
+
+        int winning_amount;
+        winning_amount = calculate_winning_amount(save_score);
     }
 }
