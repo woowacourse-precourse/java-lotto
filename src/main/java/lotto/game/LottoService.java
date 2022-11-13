@@ -23,7 +23,6 @@ public class LottoService {
                 .sequential()
                 .map(Integer::parseInt)
                 .peek(LottoService::validateLottoNumber)
-                .distinct()
                 .collect(Collectors.toList());
         Lotto lotto = new Lotto(numbers);
         Integer bonusNumber = convertInputToBonusNumber(numberInput);

@@ -7,12 +7,22 @@ public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
-        validate(numbers);
+        validateSize(numbers);
+        validateDuplicate(numbers);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
+    private void validateSize(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 로또의 숫자가 6개가 아닙니다.");
+        }
+    }
+
+    private void validateDuplicate(List<Integer> numbers) {
+        long noDuplicateCount = numbers.stream()
+                .distinct()
+                .count();
+        if (noDuplicateCount != 6) {
             throw new IllegalArgumentException("[ERROR] 중복된 숫자가 있습니다.");
         }
     }
