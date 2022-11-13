@@ -17,6 +17,11 @@ public class Service {
 
     private static final int PERCENTAGE = 100;
     private static final int UNIT_PRICE = 1000;
+    private static final int FIFTH_VALUE = 3;
+    private static final int FOURTH_VALUE = 4;
+    private static final int THIRD_VALUE = 5;
+    private static final int SECOND_VALUE = 5;
+    private static final int FIRST_VALUE = 6;
 
     public static int getMoney() {
         Output.outputPurchaseAmount();
@@ -97,19 +102,19 @@ public class Service {
         for(int i = 0; i < checkList.size(); i++) {
             int count = checkList.get(i).getCount();
             boolean bonus = checkList.get(i).getBonus();
-            if (count == 3) {
+            if (count == FIFTH_VALUE) {
                 rank.addFifth();
             }
-            if (count == 4) {
+            if (count == FOURTH_VALUE) {
                 rank.addFourth();
             }
-            if (count == 5 && bonus) {
+            if (count == SECOND_VALUE && bonus) {
                 rank.addSecond();
             }
-            if (count == 5 && !bonus) {
+            if (count == THIRD_VALUE && !bonus) {
                 rank.addThird();
             }
-            if (count == 6) {
+            if (count == FIRST_VALUE) {
                 rank.addFirst();
             }
         }
