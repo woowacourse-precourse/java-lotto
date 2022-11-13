@@ -5,7 +5,9 @@ import camp.nextstep.edu.missionutils.Console;
 
 import java.util.regex.Pattern;
 
-import static camp.nextstep.edu.missionutils.Console.readLine;
+import static lotto.utils.ErrorMessage.INVALID_BONUS_NUMBER;
+import static lotto.utils.ErrorMessage.INVALID_MONEY_UNIT;
+import static lotto.utils.ErrorMessage.INVALID_WINNING_NUMBERS;
 
 public class InputImpl implements Input{
 
@@ -36,19 +38,19 @@ public class InputImpl implements Input{
 
     private void validateMoneyInput(String userInput){
         if (!Pattern.matches(MONEY_PATTERN,userInput)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_MONEY_UNIT.message);
         }
     }
 
     private void validateWinningNumbersInput(String systemInput){
         if (!Pattern.matches(WINNING_NUMBERS_PATTERN,systemInput)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_WINNING_NUMBERS.message);
         }
     }
 
     private void validateBonusNumberInput(String systemInput){
         if (!Pattern.matches(BONUS_NUMBER_PATTERN,systemInput)){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(INVALID_BONUS_NUMBER.message);
         }
     }
 }
