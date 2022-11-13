@@ -9,24 +9,39 @@ public class LottoMachine {
     static Generator generator = new Generator();
 
     private List<Lotto> lottos;
-    private List<Integer> winningNumbers;
+    private Lotto winningLotto;
     private int bonusNumber;
-    private int money;
-    private int amount;
 
     public void start() {
-        money = userInput.getMoney();
-        amount = userInput.getAmount(money);
+        int money = userInput.getMoney();
+        int amount = userInput.getAmount(money);
 
-        lottos = generateLottos();
+        lottos = generateLottos(amount);
         printLottos();
 
-        winningNumbers = userInput.getWinningNumbers();
-        bonusNumber = userInput.BonusNumber(winningNumbers);
-        printResult();
+        winningLotto = userInput.getWinningLotto();
+        bonusNumber = userInput.getBonusNumber(winningLotto);
+
+        printResult(money);
     }
 
-    private List<Lotto> generateLottos() {
+    private void printResult(int money) {
+        System.out.println("당첨 통계");
+        System.out.println("---");
+
+        int totalPrize = 0;
+        for (int i = Prize.values().length - PRIZE_OFFSET; i >= 0; i--) {
+            Prize prize = Prize.values()[i];
+            int winningCount = getWinningCount(prize);
+            totalPrize += winningCount * prize.getPrizeMoney();
+            String result = prize.getResultFormat(winningCount);
+            System.out.println(result);
+        }
+
+        System.out.printf("총 수익률은 %.1f%%입니다.", getRate(money, totalPrize));
+    }
+
+    private List<Lotto> generateLottos(int amount) {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < amount; i++) {
             lottos.add(generator.generateLotto());
@@ -40,22 +55,6 @@ public class LottoMachine {
             System.out.println(lotto.getNumbers());
         }
         System.out.println();
-    }
-
-    private void printResult() {
-        System.out.println("당첨 통계");
-        System.out.println("---");
-
-        int totalPrize = 0;
-        for (int i = Prize.values().length - PRIZE_OFFSET; i >= 0; i--) {
-            Prize prize = Prize.values()[i];
-            int winningCount = getWinningCount(prize);
-            totalPrize += winningCount * prize.getPrizeMoney();
-            String result = String.format(prize.getResultFormat(winningCount));
-            System.out.println(result);
-        }
-
-        System.out.printf("총 수익률은 %.1f%%입니다.\n", getRate(totalPrize));
     }
 
     private int getWinningCount(Prize prize) {
@@ -73,7 +72,7 @@ public class LottoMachine {
     private int getMatchCount(Lotto lotto) {
         int matchCount = 0;
         for (int number : lotto.getNumbers()) {
-            if (winningNumbers.contains(number)) {
+            if (winningLotto.getNumbers().contains(number)) {
                 matchCount++;
             }
         }
@@ -84,7 +83,7 @@ public class LottoMachine {
         return lotto.getNumbers().contains(bonusNumber);
     }
 
-    private float getRate(int totalPrize) {
+    private float getRate(int money, int totalPrize) {
         return (float) totalPrize / money * 100;
     }
 }
