@@ -2,7 +2,7 @@ package lotto.domain;
 
 public class PurchaseAmount {
 
-    private long amount;
+    private final long amount;
 
     public PurchaseAmount(long inputAmount) {
         validate(inputAmount);
