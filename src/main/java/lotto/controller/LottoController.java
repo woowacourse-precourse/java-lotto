@@ -7,7 +7,9 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoResult;
 import lotto.domain.Player;
 import lotto.domain.Purchase;
+import lotto.domain.Rank;
 import lotto.domain.Ranking;
+import lotto.domain.Statistics;
 import lotto.view.InputView;
 
 public class LottoController {
@@ -41,6 +43,7 @@ public class LottoController {
         Ranking ranking = new Ranking(matches, bonusMatches);
 
         // 당첨 통계 계산
+        Statistics statistics = new Statistics(ranking.getRankings());
 
     }
 
