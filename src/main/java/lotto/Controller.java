@@ -9,10 +9,12 @@ import java.util.List;
 
 public class Controller {
     Purchase purchase;
+    List<Integer> lottoAnswer = new ArrayList<>();
+    String bonusNumber;
+
     public void buyLotto(){
         purchase = new Purchase(Console.readLine());
 
-        List<Integer> lottoAnswer = new ArrayList<>();
         String inputAnswer = Console.readLine();
         for(int i=0; i<inputAnswer.length(); i++){
             if(inputAnswer.charAt(i)>=48 && inputAnswer.charAt(i)<=57) {
@@ -21,16 +23,15 @@ public class Controller {
         }
 
         Lotto lotto = new Lotto(lottoAnswer);
-        lotto.getLottoBonusNumber(Console.readLine());
+        bonusNumber = Console.readLine();
+        lotto.getLottoBonusNumber(bonusNumber);
     }
 
     public void publishLotto(){
         User user = new User();
         user.getUserLotto(purchase.price);
         user.printUserLotto(purchase.price);
-    }
-
-    public void resultLotto(){
-
+        user.printWinningResult(lottoAnswer,bonusNumber);
+        user.printWinningRatio(user.correctLottoNum,purchase.price);
     }
 }

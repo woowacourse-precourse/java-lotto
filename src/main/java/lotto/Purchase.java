@@ -15,7 +15,7 @@ public class Purchase {
             throw new IllegalArgumentException("[ERROR] 잘못된 입력 값 숫자로만 입력");
         }
         if(Integer.parseInt(price)%1000 ==0){
-            return true;
+            return ;
         }
         throw new IllegalArgumentException("[ERROR] 잘못된 입력 값 1000원 단위로 입력");
     }
