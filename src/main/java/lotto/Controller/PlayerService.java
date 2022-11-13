@@ -17,6 +17,11 @@ public class PlayerService {
         this.player = player;
     }
 
+    public void winningNumberService() throws IllegalArgumentException {
+        getWinningNumber();
+        getBonusNumber();
+    }
+
     public void getWinningNumber() throws IllegalArgumentException {
         String winnerNumbers = InputView.requestWinnerNumber();
         isValidWinningNumber(winnerNumbers);
