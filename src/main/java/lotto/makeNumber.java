@@ -10,7 +10,11 @@ import org.junit.platform.commons.logging.LoggerFactory;
 
 public class makeNumber {
 
-    public makeNumber(){}
+    private static final String ERROR_LOTTO_RANGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
+    private static final String ERROR_LOTTO_DUPLICATE = "[ERROR] 로또 당첨 번호는 중복이 있으면 안됩니다.";
+
+    public makeNumber() {
+    }
 
     public static String getAmountInput() {
         String money;
@@ -25,6 +29,7 @@ public class makeNumber {
         winningNumber = Console.readLine();
         return winningNumber;
     }
+
     public static String getBonusNumber() {
         String bonusNumber;
         System.out.println("보너스 번호를 입력해주세요.");
@@ -32,43 +37,47 @@ public class makeNumber {
         checkRange(Integer.parseInt(bonusNumber));
         return bonusNumber;
     }
-    public static Set<Integer> makeWinningNumber(String winningNumber,String bonusNumber){
-        Set<Integer> winner=new HashSet<>();
-        addNumber(winningNumber,bonusNumber,winner);
+
+    public static Set<Integer> makeWinningNumber(String winningNumber, String bonusNumber) {
+        Set<Integer> winner = new HashSet<>();
+        addNumber(winningNumber, bonusNumber, winner);
         return winner;
     }
-    public static void addNumber(String winningNumber,String bonusNumber,Set<Integer> winner){
-        for(String str:winningNumber.split(",")){
+
+    public static void addNumber(String winningNumber, String bonusNumber, Set<Integer> winner) {
+        for (String str : winningNumber.split(",")) {
             checkRange(Integer.parseInt(str));
-            checkDuplicate(winner,Integer.parseInt(str));
+            checkDuplicate(winner, Integer.parseInt(str));
             winner.add(Integer.parseInt(str));
         }
-        checkDuplicate(winner,Integer.parseInt(bonusNumber));
+        checkDuplicate(winner, Integer.parseInt(bonusNumber));
         winner.add(Integer.parseInt(bonusNumber));
     }
-    public static void checkRange(int number){
-        if(number<1||number>45){
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
-        }
-    }
-    public static void checkDuplicate(Set<Integer> winner,int number){
-        if(winner.contains(number)){
-            throw new IllegalArgumentException("[ERROR] 로또 당첨 번호는 중복이 있으면 안됩니다.");
-        }
-    }
-    public static int buyLotto(String money){
-        int lotto=Integer.parseInt(money)/1000;
 
-        System.out.println(lotto+"개를 구매했습니다.");
+    public static void checkRange(int number) {
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException(ERROR_LOTTO_RANGE);
+        }
+    }
+
+    public static void checkDuplicate(Set<Integer> winner, int number) {
+        if (winner.contains(number)) {
+            throw new IllegalArgumentException(ERROR_LOTTO_DUPLICATE);
+        }
+    }
+
+    public static int buyLotto(String money) {
+        int lotto = Integer.parseInt(money) / 1000;
+
+        System.out.println(lotto + "개를 구매했습니다.");
         return lotto;
     }
 
-    public static List<Integer> randomLotto(){
-        List<Integer> number=new ArrayList<>();
-       return  number= Randoms.pickUniqueNumbersInRange(1,45,6);
+    public static List<Integer> randomLotto() {
+        List<Integer> number = new ArrayList<>();
+        return number = Randoms.pickUniqueNumbersInRange(1, 45, 6);
 
     }
-
 
 
 }
