@@ -1,11 +1,13 @@
 package lotto;
 
+import lotto.randomNumber.RandomNumber;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class BoughtLotto extends Lotto{
     public BoughtLotto() {
-        super(new ArrayList<>(List.of(1, 2, 3, 4, 5, 6)));
+        super(RandomNumber.createNumber());
     }
 
     private List<Integer> createLottoNumber() {
