@@ -2,6 +2,7 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserInteraction {
@@ -20,5 +21,19 @@ public class UserInteraction {
         }
     }
 
-   
+    public List<Integer> winningNumbers() {
+        List<Integer> winNumbers = new ArrayList<>();
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        String[] numbers = numberValid(input);
+        return winNumbers;
+    }
+
+    private String[] numberValid(String input) {
+        String[] inputs = input.split(",");
+        if(inputs.length != 6){
+            throw new IllegalArgumentException();
+        }
+        return inputs;
+    }
 }
