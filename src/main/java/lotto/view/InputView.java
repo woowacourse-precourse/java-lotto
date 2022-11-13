@@ -9,6 +9,7 @@ public class InputView {
 
   private String purchaseMoney;
   private String winningNumbers;
+  private String bonusNumber;
 
   public int enterPurchaseMoney() {
     this.purchaseMoney = Console.readLine();
@@ -19,6 +20,11 @@ public class InputView {
   public List<Integer> enterWinningNumbers() {
     this.winningNumbers = Console.readLine();
     return changeTypeForSystem(replaceComma(winningNumbers));
+  }
+
+  public int enterBonusNumber() {
+    this.bonusNumber = Console.readLine();
+    return Integer.parseInt(bonusNumber);
   }
 
   private String replaceComma(String winningNumbers) {
