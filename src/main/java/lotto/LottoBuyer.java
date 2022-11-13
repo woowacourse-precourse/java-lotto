@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
 
 import static constant.LottoNumber.LOTTO_PRICE;
 import static constant.LottoNumber.MIN_LOTTO_NUMBER;
@@ -14,14 +14,18 @@ import static constant.LottoNumber.REQUIRE_LOTTO_NUMBER_COUNT;
 
 public class LottoBuyer {
     private int money;
-    private List<Lotto> buyersLotto;
+    private final List<Lotto> buyersLotto;
     public LottoBuyer(){
         buyersLotto = new ArrayList<>();
+    }
+    public List<Lotto> giveLotto(){
+        return buyersLotto;
     }
     public void getMoney(){
         String moneyInput = Console.readLine();
         InputUtility.isDigit(moneyInput);
         Integer buyerMoney = InputUtility.convertToInteger(moneyInput);
+        isNotMinus(buyerMoney);
         canDivMoneyByPrice(buyerMoney);
         this.money = buyerMoney;
     }
@@ -37,6 +41,11 @@ public class LottoBuyer {
                 MAX_LOTTO_NUMBER.getValue(), REQUIRE_LOTTO_NUMBER_COUNT.getValue());
         lottoNumber.sort(null);
         return lottoNumber;
+    }
+    private void isNotMinus(Integer number){
+        if(number<0){
+            throw new IllegalArgumentException("[ERROR] : money의 값이 음수입니다.");
+        }
     }
     private void canDivMoneyByPrice(Integer money){
         if(money % LOTTO_PRICE.getValue() != 0){
