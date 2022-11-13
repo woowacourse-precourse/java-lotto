@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import lotto.aspect.Validator;
+import lotto.aspect.PaymentValidator;
 import lotto.domain.Lotto;
 
 public class LottoMachine {
@@ -24,7 +24,7 @@ public class LottoMachine {
     }
 
     public List<Lotto> generateLottos(long payment) throws IllegalArgumentException {
-        Validator.validateDivisiblePayment(payment, PRICE);
+        PaymentValidator.validatePayment(payment, PRICE);
         List<Lotto> lottos = new ArrayList<>();
 
         for (long i = payment / PRICE; i > 0; i--) {

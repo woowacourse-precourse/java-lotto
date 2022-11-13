@@ -1,7 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
-import lotto.aspect.Validator;
+import lotto.aspect.LottoValidator;
 
 public class WinningInfo extends Lotto {
 
@@ -9,7 +9,7 @@ public class WinningInfo extends Lotto {
 
     public WinningInfo(List<Integer> numbers, int bonusNumber) throws IllegalArgumentException {
         super(numbers);
-        Validator.validateBonusNumber(numbers, bonusNumber);
+        LottoValidator.validateBonusNumber(numbers, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
