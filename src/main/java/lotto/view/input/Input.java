@@ -7,4 +7,6 @@ public interface Input {
     int inputPaymentAmount();
 
     List<String> inputWinningNumbers();
+
+    int inputBonusNumber();
 }

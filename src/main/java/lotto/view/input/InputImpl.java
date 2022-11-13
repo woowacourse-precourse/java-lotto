@@ -28,6 +28,15 @@ public class InputImpl implements Input {
         return null;
     }
 
+    @Override
+    public int inputBonusNumber() {
+        int bonusNumber = Integer.parseInt(Console.readLine());
+        if (isLottoNumber(bonusNumber)) {
+            return bonusNumber;
+        }
+        return 0;
+    }
+
     private boolean isOverMinimumPaymentAmount(int paymentAmount) {
         if (paymentAmount < MIN_PAYMENT_AMOUNT) {
             throw new IllegalArgumentException("[ERROR] 최소 로또 구매 금액은 1000원입니다.");
@@ -43,7 +52,7 @@ public class InputImpl implements Input {
     }
 
     private boolean isAllowedWinningNumbers(List<String> winningNumbers) {
-        if (winningNumbers.size() != 6 || isDuplicatedNumber(winningNumbers) || !isLottoNumber(winningNumbers)) {
+        if (winningNumbers.size() != 6 || isDuplicatedNumber(winningNumbers) || !isAllowedLottoNumber(winningNumbers)) {
             throw new IllegalArgumentException("[ERROR] 당첨 번호는 서로다른 6개 숫자를 입력해야합니다.");
         }
         return true;
@@ -58,13 +67,20 @@ public class InputImpl implements Input {
         return true;
     }
 
-    private boolean isLottoNumber(List<String> winningNumbers) {
+    private boolean isAllowedLottoNumber(List<String> winningNumbers) {
         for (String winningNumber : winningNumbers) {
             int number = Integer.parseInt(winningNumber);
-            if (number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER) {
+            if (isLottoNumber(number)) {
                 return false;
             }
         }
         return true;
+    }
+
+    private boolean isLottoNumber(int number) {
+        if (number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER) {
+            return true;
+        }
+        return false;
     }
 }
