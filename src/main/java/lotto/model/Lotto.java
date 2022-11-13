@@ -15,8 +15,4 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
-
-    public Integer countIssueingLotto(int PurchaseAmount) {
-        return PurchaseAmount / 1000;
-    }
 }
