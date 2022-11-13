@@ -78,4 +78,13 @@ public class Lotto {
         }
         return "5";
     }
+    public void calcuate(List<String> winNum){
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        System.out.println("3개 일치 (5,000원) - " + Collections.frequency(winNum,"3")+"개");
+        System.out.println("4개 일치 (50,000원) - " + Collections.frequency(winNum,"4")+"개");
+        System.out.println("5개 일치 (1,500,000원) - " + Collections.frequency(winNum,"5")+"개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + Collections.frequency(winNum,"5b")+"개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + Collections.frequency(winNum,"6")+"개");
+    }
 }
