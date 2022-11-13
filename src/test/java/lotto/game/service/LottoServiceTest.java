@@ -6,7 +6,6 @@ import java.util.List;
 import lotto.game.domain.Lotto;
 import lotto.game.domain.LottoGrade;
 import lotto.game.domain.Money;
-import lotto.game.domain.TotalResult;
 import lotto.game.domain.WinningLotto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -108,70 +107,62 @@ class LottoServiceTest {
     }
 
     @Test
-    @DisplayName("로또를 10000원치 구매하고 5등이 1개면 수익률은 50.0% 여야한다")
-    void buyLotto10000WonAndFifthGradeThenProfitRateMust_50Percent() {
+    @DisplayName("로또를 10000원치 구매하고 수익금이 5,000원이면 수익률은 50.0% 여야한다")
+    void buyLotto10000WonAnd5_000ProfitThenProfitRateMust_50Percent() {
         // given
-        Money money = Money.of(10000);
-        TotalResult totalResult = TotalResult.of(List.of(LottoGrade.FIFTH));
+        Money spentMoney = Money.of(10_000L);
+        Money totalProfit = Money.of(5_000L);
 
         // expect
-        assertThat(lottoService.calculateProfitPercent(money, totalResult.getTotalProfit()))
+        assertThat(lottoService.calculateProfitPercent(spentMoney, totalProfit))
                 .isEqualTo("50.0%");
     }
 
     @Test
-    @DisplayName("로또를 10000원치 구매하고 1등이 1개면 수익률은 20,000,000.0% 여야한다")
-    void buyLotto10000WonAndFirstGradeThenProfitRateMust_2_000_000Percent() {
+    @DisplayName("로또를 만원치 구매하고 수익금이 20억이면 수익률은 20,000,000.0% 여야한다")
+    void buyLotto10000WonAnd20BillionProfitThenProfitRateMust_2_000_000Percent() {
         // given
-        Money money = Money.of(10000);
-        TotalResult totalResult = TotalResult.of(List.of(LottoGrade.FIRST));
+        Money spentMoney = Money.of(10_000);
+        Money totalProfit = Money.of(2_000_000_000L);
 
         // expect
-        assertThat(lottoService.calculateProfitPercent(money, totalResult.getTotalProfit()))
+        assertThat(lottoService.calculateProfitPercent(spentMoney, totalProfit))
                 .isEqualTo("20,000,000.0%");
     }
 
     @Test
-    @DisplayName("로또를 1000000원치 구매하고 5등이 1개면 수익률은 0.5% 여야한다")
-    void buyLotto1000000WonAndFirstGradeThenProfitRateMust_2_000_000Percent() {
+    @DisplayName("로또를 1,000,000원치 구매하고 수익금이 5,000원이면 수익률은 0.5% 여야한다")
+    void buyLotto1_000_000WonAnd5_000ProfitThenProfitRateMust_0_5Percent() {
         // given
-        Money money = Money.of(1_000_000);
-        TotalResult totalResult = TotalResult.of(List.of(LottoGrade.FIFTH));
+        Money spentMoney = Money.of(1_000_000L);
+        Money totalProfit = Money.of(5_000L);
 
         // expect
-        assertThat(lottoService.calculateProfitPercent(money, totalResult.getTotalProfit()))
+        assertThat(lottoService.calculateProfitPercent(spentMoney, totalProfit))
                 .isEqualTo("0.5%");
     }
 
     @Test
-    @DisplayName("로또를 10000원치 구매하고 등수가 없으면 수익률은 0.0% 여야한다")
-    void buyLotto10000WonAndNothingThenProfitRateMust_0Percent() {
+    @DisplayName("로또를 10,000원치 구매하고 수익금이 없으면 수익률은 0.0% 여야한다")
+    void buyLotto10_000WonAnd0ProfitThenProfitRateMust_0Percent() {
         // given
-        Money money = Money.of(10000);
-        TotalResult totalResult = TotalResult.of(List.of());
+        Money spentMoney = Money.of(10_000L);
+        Money totalProfit = Money.NO_MONEY;
 
         // expect
-        assertThat(lottoService.calculateProfitPercent(money, totalResult.getTotalProfit()))
+        assertThat(lottoService.calculateProfitPercent(spentMoney, totalProfit))
                 .isEqualTo("0.0%");
     }
 
     @Test
-    @DisplayName("로또를 10000원치 구매하고 5등이 3개, 4등이 1개, 3등이 1개면 수익률은 15,650.0% 여야한다")
-    void buyLotto10000WonAndMixGradeThenProfitRateMust_0Percent() {
+    @DisplayName("로또를 10,000원치 구매하고 수익금이 1,565,000원이면 수익률은 15,650.0% 여야한다")
+    void buyLotto10_000WonAnd1_565_000ProfitThenProfitRateMust_15_650_0Percent() {
         // given
-        Money money = Money.of(10000);
-        TotalResult totalResult = TotalResult.of(
-                List.of(
-                        LottoGrade.FIFTH,
-                        LottoGrade.FIFTH,
-                        LottoGrade.FIFTH,
-                        LottoGrade.FOURTH,
-                        LottoGrade.THIRD
-                )
-        );
+        Money spentMoney = Money.of(10_000L);
+        Money totalProfit = Money.of(1_565_000L);
 
         // expect
-        assertThat(lottoService.calculateProfitPercent(money, totalResult.getTotalProfit()))
+        assertThat(lottoService.calculateProfitPercent(spentMoney, totalProfit))
                 .isEqualTo("15,650.0%");
     }
 }
