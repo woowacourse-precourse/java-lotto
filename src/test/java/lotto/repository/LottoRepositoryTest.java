@@ -6,17 +6,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lotto.domain.Lotto;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 
 class LottoRepositoryTest {
     private final LottoRepository lottoRepository = LottoRepository.getInstance();
-
-    @BeforeEach
-    void clearRepository() {
-        lottoRepository.clearStore();
-    }
 
     @DisplayName("1개의 로또 생성시 중복 없는지 반복 테스트")
     @RepeatedTest(100)
