@@ -85,4 +85,11 @@ class InputViewValidationTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("보너스 번호 입력은 1이상 45미만의 숫자가 오지 않으면 예외처리한다.")
+    @Test
+    void validateByBonusNumberNotInteger() {
+        assertThatThrownBy(() -> InputViewValidation.validateBonusNumberRange("46"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
