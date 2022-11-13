@@ -19,4 +19,8 @@ public class LottoTicket {
         Collections.sort(numberList);
         return numberList;
     }
+    
+    public boolean contains(int lottoNumber) {
+        return lottoNumbers.contains(lottoNumber);
+    }
 }
