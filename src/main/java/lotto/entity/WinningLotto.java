@@ -17,18 +17,25 @@ public class WinningLotto {
     }
 
     private void validate(int bonus) {
+        validateRange(bonus);
+        validateDuplication(bonus);
+    }
+
+    private void validateRange(int bonus) {
         if (outOfRange(bonus)) {
             throw new IllegalArgumentException(
-                "보너스 번호는 " + RANGE_START + "부터 " + RANGE_END
-                    + " 사이의 숫자여야 합니다. 입력 : " + bonus);
-        }
-        if (winningLotto.contains(bonus)) {
-            throw new IllegalArgumentException("보너스 번호는 로또 번호와 중복된 숫자를 가지면 안됩니다. 입력 : " + bonus);
+                "보너스 번호는 " + RANGE_START + "부터 " + RANGE_END + " 사이의 숫자여야 합니다. 입력 : " + bonus);
         }
     }
 
     private boolean outOfRange(int bonus) {
         return RANGE_START > bonus || RANGE_END < bonus;
+    }
+
+    private void validateDuplication(int bonus) {
+        if (winningLotto.contains(bonus)) {
+            throw new IllegalArgumentException("보너스 번호는 로또 번호와 중복된 숫자를 가지면 안됩니다. 입력 : " + bonus);
+        }
     }
 
     public Rank compare(Lotto lotto) {
@@ -41,9 +48,9 @@ public class WinningLotto {
     }
 
     private int getMatchCount(Lotto lotto) {
-        return (int) winningLotto.cloneNumbers()
+        return (int) lotto.cloneNumbers()
             .stream()
-            .filter(lotto::contains)
+            .filter(winningLotto::contains)
             .count();
     }
 
