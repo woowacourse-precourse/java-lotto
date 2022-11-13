@@ -6,7 +6,7 @@ import java.util.List;
 public class LotteryShop {
     private static final int LOTTO_PRICE = 1000;
 
-    private int countLotto(int totalPayment) {
+    public int countLotto(int totalPayment) {
         validate(totalPayment);
         return totalPayment / LOTTO_PRICE;
     }
