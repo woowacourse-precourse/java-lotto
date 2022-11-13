@@ -4,8 +4,14 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Collections;
 import java.util.List;
 import lotto.model.Constant;
+import lotto.view.LottoInputView;
 
-public class LottoGame {
+public class LottoController {
+    private LottoInputView lottoInputView;
+
+    public void start() {
+
+    }
 
     private List<Integer> makeRandomLottoNumbers() {
         List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange
