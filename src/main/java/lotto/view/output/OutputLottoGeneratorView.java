@@ -2,9 +2,9 @@ package lotto.view.output;
 
 import java.util.List;
 
-public class LottoGeneratorView {
+public class OutputLottoGeneratorView {
 
-    public LottoGeneratorView(List<List<Integer>> lottos) {
+    public OutputLottoGeneratorView(List<List<Integer>> lottos) {
         System.out.println("\n" + lottos.size() + "개를 구매했습니다.");
 
         for (List<Integer> lotto : lottos) {
