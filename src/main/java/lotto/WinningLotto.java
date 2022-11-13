@@ -7,7 +7,7 @@ public class WinningLotto extends Lotto {
 
     public WinningLotto(List<Integer> winningNumber, int bonus) {
         super(winningNumber);
-        if (this.checkBonus(bonus)) {
+        if (this.checkContains(bonus)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호랑 중복될 수 없어요.");
         }
         this.checkLottoRange(bonus);
@@ -15,6 +15,6 @@ public class WinningLotto extends Lotto {
     }
 
     public boolean checkBonus(Lotto lotto) {
-        return lotto.checkBonus(bonus);
+        return lotto.checkContains(bonus);
     }
 }

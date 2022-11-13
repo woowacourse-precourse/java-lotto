@@ -16,14 +16,20 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public boolean checkBonus(int bonus) {
+    public int count(Lotto other) {
+        return (int) other.numbers.stream()
+                .filter(this::checkContains)
+                .count();
+    }
+
+    protected boolean checkContains(int bonus) {
         return numbers.contains(bonus);
     }
 
-    public int count(Lotto other) {
-        return (int) other.numbers.stream()
-                .filter(this::checkBonus)
-                .count();
+    protected void checkLottoRange(Integer number) {
+        if (number < LOTTO_START || number > LOTTO_END) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void validate(List<Integer> numbers) {
@@ -32,12 +38,6 @@ public class Lotto {
         for (Integer number : copyNumbers) {
             checkDuplicateNumber(copyNumbers, number);
             checkLottoRange(number);
-        }
-    }
-
-    protected void checkLottoRange(Integer number) {
-        if (number < LOTTO_START || number > LOTTO_END) {
-            throw new IllegalArgumentException();
         }
     }
 
