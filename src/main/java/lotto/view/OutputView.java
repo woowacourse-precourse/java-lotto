@@ -21,4 +21,8 @@ public class OutputView {
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+numbers.get(3)+"개");
         System.out.println("6개 일치 (2,000,000,000원) - "+numbers.get(4)+"개");
     }
+
+    public static void writeProfit(double profit){
+        System.out.println("총 수익률은 "+ profit + "%입니다.");
+    }
 }
