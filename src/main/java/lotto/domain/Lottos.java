@@ -11,6 +11,10 @@ public class Lottos {
     private static final int LOTTO_PRICE = 1000;
     public static final int DIVISIBLE = 0;
     public static final int DEFAULT_COUNT = 0;
+    public static final int PERCENTAGE_CONVERTER = 100;
+    public static final int NO_AMOUNT = 0;
+    public static final String NEW_LINE = "\n";
+    public static final int ADD_COUNT = 1;
 
     private final List<Lotto> lottos = new ArrayList<>();
 
@@ -51,14 +55,14 @@ public class Lottos {
         int winningAmount = getWinningAmount(winningLotto, bonusNumber);
         int money = getMoney();
 
-        return (double) winningAmount / money * 100;
+        return (double) winningAmount / money * PERCENTAGE_CONVERTER;
     }
 
     public Map<LottoResult, Integer> getWinningCounts(Lotto winningLotto, int bonusNumber) {
         HashMap<LottoResult, Integer> winningCounts = getEmptyWinningCounts();
         for (Lotto lotto : lottos) {
             LottoResult lottoResult = lotto.getResult(winningLotto, bonusNumber);
-            Integer winningCount = winningCounts.getOrDefault(lottoResult, 0) + 1;
+            Integer winningCount = winningCounts.getOrDefault(lottoResult, DEFAULT_COUNT) + ADD_COUNT;
             winningCounts.put(lottoResult, winningCount);
         }
         return winningCounts;
@@ -77,7 +81,7 @@ public class Lottos {
     }
 
     private int getWinningAmount(Lotto winningLotto, int bonusNumber) {
-        int winningAmount = 0;
+        int winningAmount = NO_AMOUNT;
         for (Lotto lotto : lottos) {
             LottoResult lottoResult = lotto.getResult(winningLotto, bonusNumber);
             winningAmount += lottoResult.getAmount();
@@ -90,7 +94,7 @@ public class Lottos {
         StringBuilder message = new StringBuilder();
 
         for (Lotto lotto : lottos) {
-            message.append(lotto).append("\n");
+            message.append(lotto).append(NEW_LINE);
         }
         return message.toString();
     }
