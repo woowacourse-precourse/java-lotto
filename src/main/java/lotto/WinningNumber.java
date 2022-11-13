@@ -32,7 +32,8 @@ public class WinningNumber {
     private void validateSlice(String slice, String type) {
         for (int i = 0; i < slice.length(); i++) {
             if (!Character.isDigit(slice.charAt(i))) {
-                throw new IllegalArgumentException("[ERROR] " + type + " 입력 형식이 잘못되었습니다.");
+                System.out.println("[ERROR] " + type + " 입력 형식이 잘못되었습니다.");
+                throw new IllegalArgumentException();
             }
         }
     }
@@ -41,7 +42,12 @@ public class WinningNumber {
         validateSlice(input, "보너스 번호");
         bonusNumber = Integer.parseInt(input);
         if (bonusNumber < 1 || bonusNumber > 45) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호 범위가 올바르지 않습니다.");
+            System.out.println("[ERROR] 보너스 번호 범위가 올바르지 않습니다.");
+            throw new IllegalArgumentException();
+        }
+        if (winningNumberSet.contains(bonusNumber)) {
+            System.out.println("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.");
+            throw new IllegalArgumentException();
         }
     }
 
