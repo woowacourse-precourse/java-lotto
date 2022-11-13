@@ -1,7 +1,7 @@
 package controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.Lotto;
+import domain.Lotto;
 
 import java.util.ArrayList;
 import java.util.List;

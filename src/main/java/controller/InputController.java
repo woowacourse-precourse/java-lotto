@@ -1,5 +1,6 @@
 package controller;
 
+import domain.WinningNumber;
 import view.InputView;
 import camp.nextstep.edu.missionutils.Console;
 
@@ -7,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputController {
+    public WinningNumber winningNumber = new WinningNumber(List.of());
+
     public int inputMoney() {
         while (true) {
             try {
@@ -29,11 +32,15 @@ public class InputController {
                 String[] pureNumbers = numbers.split(",");
                 Validator.validateWinningNumber(pureNumbers);
                 List<Integer> winningNumbers = splitOneByOne(pureNumbers);
+                winningNumber = new WinningNumber(winningNumbers);
+                return winningNumber.getWinningNumbers();
             }  catch (IllegalArgumentException e) {
                 System.out.println();
             }
         }
     }
+
+
 
     public List<Integer> splitOneByOne(String[] pureNumbers) {
         List<Integer> pureWinningNumbers = new ArrayList<>();
