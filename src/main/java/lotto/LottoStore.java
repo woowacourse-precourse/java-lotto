@@ -42,7 +42,7 @@ public class LottoStore {
         HashMap<WinningHistory, Integer> winningHistories = winningStatisticsCalculator.getWinningHistory();
         String rateOfReturn = winningStatisticsCalculator.calculateRateOfReturn(amount);
 
-        printWinningStatics(winningHistories);
+        OutputView.printStatics(winningHistories);
         OutputView.printRateOfReturn(rateOfReturn);
     }
 
@@ -65,12 +65,5 @@ public class LottoStore {
 
     private BonusNumber setBonusNumbers(Lotto winningNumbers) {
         return new BonusNumber(InputView.enterBonusNumber(), winningNumbers);
-    }
-
-    private void printWinningStatics(HashMap<WinningHistory, Integer> winningHistories) {
-        OutputView.printStartStatics();
-        for (WinningHistory winningHistory : WinningHistory.getValues()) {
-            OutputView.printStatics(winningHistory.getStaticsMessage(winningHistories.get(winningHistory)));
-        }
     }
 }

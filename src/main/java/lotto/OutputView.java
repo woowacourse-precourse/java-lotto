@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class OutputView {
@@ -17,12 +18,12 @@ public class OutputView {
         }
     }
 
-    public static void printStartStatics() {
+    public static void printStatics(HashMap<WinningHistory, Integer> winningHistories) {
         System.out.println(START_WINNING_STATICS_MESSAGE);
-    }
 
-    public static void printStatics(String message) {
-        System.out.println(message);
+        for (WinningHistory winningHistory : WinningHistory.getValues()) {
+            System.out.println(winningHistory.getStaticsMessage(winningHistories.get(winningHistory)));
+        }
     }
 
     public static void printRateOfReturn(String rateOfReturn) {
