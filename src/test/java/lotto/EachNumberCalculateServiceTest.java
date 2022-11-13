@@ -15,7 +15,7 @@ public class EachNumberCalculateServiceTest {
     EachNumberCalculateServiceTest(){
         List<Integer> lotteryNumbers = new LinkedList<>(List.of(1, 2, 3, 4, 5, 6));
         Lotto lottery = new Lotto(lotteryNumbers);
-        eachNumberCalculateService = new EachNumberCalculateService(lottery);
+        eachNumberCalculateService = new EachNumberCalculateService(lottery, 45);
     }
 
     @DisplayName("로또 숫자 0개 일치 테스트")
