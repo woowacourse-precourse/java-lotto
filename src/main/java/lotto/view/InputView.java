@@ -39,6 +39,16 @@ public class InputView {
         return toNumbers(winningNumbers);
     }
 
+    public int inputBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+
+        String bonusNumber = Console.readLine();
+
+        Validator.validateBonusNumber(bonusNumber);
+
+        return Integer.parseInt(bonusNumber);
+    }
+
     private List<Integer> toNumbers(String winningNumbers) {
         List<Integer> numbers = Arrays.stream(winningNumbers.split(","))
                 .mapToInt(Integer::parseInt)
