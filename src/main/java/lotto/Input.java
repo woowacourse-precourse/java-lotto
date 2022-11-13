@@ -4,6 +4,8 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
 
+    private static final int THOUSAND=1000;
+
     public int setMoney(){
         String inputMoney=Console.readLine();
         checkMoney(inputMoney);
@@ -11,8 +13,14 @@ public class Input {
         return money;
     }
 
-    public boolean checkMoney(String inputMoney){
-        return false;
+    public void checkMoney(String inputMoney){
+        if(!inputMoney.matches("[+-]?\\d*(\\.\\d+)?")) {
+            throw new IllegalArgumentException("[ERROR] 로또 구입 금액에 숫자만 입력하세요.");
+        }
+        int money=Integer.parseInt(inputMoney);
+        if(money%THOUSAND!=0){
+            throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 천원으로 나누어 떨어져야 합니다.");
+        }
     }
 
     public String setWinningLotto(){
