@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoMachine {
+    public static int PRIZE_OFFSET = 2;
     static UserInput userInput = new UserInput();
     static Generator generator = new Generator();
 
@@ -36,7 +37,7 @@ public class LottoMachine {
     private void printLottos() {
         System.out.println(lottos.size() + "개를 구매했습니다.");
         for (Lotto lotto : lottos) {
-            lotto.printNumbers();
+            System.out.println(lotto.getNumbers());
         }
         System.out.println();
     }
@@ -46,16 +47,15 @@ public class LottoMachine {
         System.out.println("---");
 
         int totalPrize = 0;
-        for (int i = Prize.values().length - 1; i >= 0; i--) {
+        for (int i = Prize.values().length - PRIZE_OFFSET; i >= 0; i--) {
             Prize prize = Prize.values()[i];
             int winningCount = getWinningCount(prize);
             totalPrize += winningCount * prize.getPrizeMoney();
-            String result = String.format("%d개 일치 (%s) - %d개",
-                    prize.getMatchCount(), prize.getPrizeString(), winningCount);
+            String result = String.format(prize.getResultFormat(winningCount));
             System.out.println(result);
         }
 
-        System.out.printf("총 수익률은 %.1f%%입니다.\n", (float) totalPrize / money * 100);
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", getRate(totalPrize));
     }
 
     private int getWinningCount(Prize prize) {
@@ -82,5 +82,9 @@ public class LottoMachine {
 
     private boolean isMatchBonus(Lotto lotto) {
         return lotto.getNumbers().contains(bonusNumber);
+    }
+
+    private float getRate(int totalPrize) {
+        return (float) totalPrize / money * 100;
     }
 }

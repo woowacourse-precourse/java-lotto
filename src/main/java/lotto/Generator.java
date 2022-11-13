@@ -11,12 +11,10 @@ public class Generator {
 
     public Lotto generateLotto() {
         List<Integer> numbers = generateNumbers();
-        Lotto lotto = new Lotto(numbers);
-        return lotto;
+        return new Lotto(numbers);
     }
 
     private List<Integer> generateNumbers() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(START_RANGE, END_RANGE, NUMBER_COUNT);
-        return numbers;
+        return Randoms.pickUniqueNumbersInRange(START_RANGE, END_RANGE, NUMBER_COUNT);
     }
 }

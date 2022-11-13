@@ -22,11 +22,9 @@ public class UserInput {
     }
 
     public int BonusNumber(List<Integer> winningNumbers) {
-        System.out.println("보너스 번호를 입력해 주세요.");
-        String numberString = Console.readLine();
-        System.out.println();
+        String userInput = getUserInput("보너스 번호를 입력해 주세요.");
 
-        int number = safeStringToInt(numberString);
+        int number = safeStringToInt(userInput);
         validateNumberRange(number);
         validateDuplicate(winningNumbers, number);
 
@@ -34,11 +32,9 @@ public class UserInput {
     }
 
     public List<Integer> getWinningNumbers() {
-        System.out.println("당첨 번호를 입력해 주세요.");
-        String numberString = Console.readLine();
-        System.out.println();
+        String userInput = getUserInput("당첨 번호를 입력해 주세요.");
 
-        String[] numbersArray = numberString.split(",");
+        String[] numbersArray = userInput.split(",");
         List<Integer> numbers = new ArrayList<>();
         for (String number : numbersArray) {
             numbers.add(safeStringToInt(number));
@@ -49,15 +45,20 @@ public class UserInput {
     }
 
     public int getMoney() {
-        System.out.println("구입금액을 입력해 주세요.");
-        String moneyString = Console.readLine();
-        System.out.println();
+        String userInput = getUserInput("구입금액을 입력해 주세요.");
 
-        moneyString = moneyString.replaceAll(",", "");
-        int money = safeStringToInt(moneyString);
+        userInput = userInput.replaceAll(",", "");
+        int money = safeStringToInt(userInput);
         validateMoney(money);
 
         return money;
+    }
+
+    private String getUserInput(String placeholder) {
+        System.out.println(placeholder);
+        String input = Console.readLine();
+        System.out.println();
+        return input;
     }
 
     private static int safeStringToInt(String number) {

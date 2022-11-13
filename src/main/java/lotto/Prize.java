@@ -6,33 +6,29 @@ package lotto;
 //- 4등: 4개 번호 일치 / 50,000원
 //- 5등: 3개 번호 일치 / 5,000원
 public enum Prize {
-    FIRST(6, 2_000_000_000, "2,000,000,000원"),
-    SECOND(5, 30_000_000, "30,000,000원"),
-    THIRD(5, 1_500_000, "1,500,000원"),
-    FOURTH(4, 50_000, "50,000원"),
-    FIFTH(3, 5_000, "5,000원"),
-    NOTHING(0, 0, "0원");
+    FIRST(6, 2_000_000_000, "6개 일치 (2,000,000,000원) - %d개"),
+    SECOND(5, 30_000_000, "5개 일치, 보너스 볼 일치 (30,000,000원) - %d개"),
+    THIRD(5, 1_500_000, "5개 일치 (1,500,000원) - %d개"),
+    FOURTH(4, 50_000, "4개 일치 (50,000원) - %d개"),
+    FIFTH(3, 5_000, "3개 일치 (5,000원) - %d개"),
+    NOTHING(0, 0, "");
 
     private int matchCount;
     private int prizeMoney;
-    private String prizeString;
+    private String resultFormat;
 
-    private Prize(int matchCount, int prizeMoney, String prizeString) {
+    private Prize(int matchCount, int prizeMoney, String resultFormat) {
         this.matchCount = matchCount;
         this.prizeMoney = prizeMoney;
-        this.prizeString = prizeString;
-    }
-
-    public int getMatchCount() {
-        return matchCount;
+        this.resultFormat = resultFormat;
     }
 
     public int getPrizeMoney() {
         return prizeMoney;
     }
 
-    public String getPrizeString() {
-        return prizeString;
+    public String getResultFormat(int count) {
+        return String.format(resultFormat, count);
     }
 
     public static Prize getPrize(int matchCount, boolean matchBonus) {
