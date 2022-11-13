@@ -51,31 +51,31 @@ public class LottoAnalystTest {
     @Test
     @DisplayName("당첨통계 - 3개가 일치하면 5등이 1 증가한다.")
     void makeWinningStatistics_FifthRankTest() {
-        statisticsTest(ExampleLottosAndRanks.FIFTH_RANK);
+        statisticsTest(ExampleLottosAndRanks.FIFTH_PLACE);
     }
 
     @Test
     @DisplayName("당첨통계 - 4개가 일치하면 4등이 1 증가한다.")
     void makeWinningStatistics_FourthRankTest() {
-        statisticsTest(ExampleLottosAndRanks.FOURTH_RANK);
+        statisticsTest(ExampleLottosAndRanks.FOURTH_PLACE);
     }
 
     @Test
     @DisplayName("당첨통계 - 5개가 일치하면 3등이 1 증가한다.")
     void makeWinningStatistics_ThirdRankTest() {
-        statisticsTest(ExampleLottosAndRanks.THIRD_RANK);
+        statisticsTest(ExampleLottosAndRanks.THIRD_PLACE);
     }
 
     @Test
     @DisplayName("당첨통계 - 5개와 보너스 번호가 일치하면 2등이 1 증가한다.")
     void makeWinningStatistics_SecondRankTest() {
-        statisticsTest(ExampleLottosAndRanks.SECOND_RANK);
+        statisticsTest(ExampleLottosAndRanks.SECOND_PLACE);
     }
 
     @Test
     @DisplayName("당첨통계 - 6개가 일치하면 1등이 1 증가한다.")
     void makeWinningStatistics_FirstRankTest() {
-        statisticsTest(ExampleLottosAndRanks.FIRST_RANK);
+        statisticsTest(ExampleLottosAndRanks.FIRST_PLACE);
     }
 
     void statisticsTest(ExampleLottosAndRanks exampleLottosAndRanks) {
