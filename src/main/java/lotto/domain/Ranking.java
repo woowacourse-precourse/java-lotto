@@ -7,11 +7,11 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public enum Ranking {
-    FIRST_PLACE(2_000_000_000, 6),
-    SECOND_PLACE(30_000_000, 5),
-    THIRD_PLACE(1_500_000, 5),
-    FOURTH_PLACE(50_000, 4),
     FIFTH_PLACE(5_000, 3),
+    FOURTH_PLACE(50_000, 4),
+    THIRD_PLACE(1_500_000, 5),
+    SECOND_PLACE(30_000_000, 5),
+    FIRST_PLACE(2_000_000_000, 6),
     NOT_RANKED(0, 0);
 
     private final int reward;
@@ -43,5 +43,9 @@ public enum Ranking {
 
     public int getReward() {
         return reward;
+    }
+
+    public int getNumberOfMatchNumbers() {
+        return numberOfMatchNumbers;
     }
 }
