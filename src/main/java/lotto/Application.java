@@ -15,4 +15,17 @@ public class Application {
         }
         return true;
     }
+
+    private static boolean checkInputWinNumbers(String inputWinNumbers) {
+        try {
+            for (String inputWinNumber : inputWinNumbers.split(",")) {
+                Validation.isIncludeNotNumber(inputWinNumber);
+                Validation.isNumberBetween1And45(Integer.parseInt(inputWinNumber));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+        return true;
+    }
 }
