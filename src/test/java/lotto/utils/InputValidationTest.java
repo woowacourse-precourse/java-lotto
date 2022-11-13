@@ -156,6 +156,16 @@ class InputValidationTest extends NsTest {
                 .hasMessageContaining(ErrorMessage.LOTTO_NUMBER_IN_RANGE);
     }
 
+    @DisplayName("입력받은 보너스 번호가 당첨번호와 중복이 되선 안된다.")
+    @ParameterizedTest
+    @CsvSource(value = {"1000:1,2,3,4,5,6:1", "1000:1,2,3,4,5,6:6"}, delimiter = ':')
+    void checkBonusNumberDistinctWinningNumber(String firstInput, String secondInput, String thirdInput) {
+        assertSimpleTest(() -> {
+            runException(firstInput, secondInput, thirdInput);
+            assertThat(output()).contains(ErrorMessage.BONUS_DISTINCT_WINNING_NUMBER);
+        });
+    }
+
     @Override
     public void runMain() {
         Application.main(new String[]{});
