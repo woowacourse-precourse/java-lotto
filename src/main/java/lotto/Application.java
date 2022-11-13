@@ -20,6 +20,7 @@ public class Application {
     private static int bonusNumber;
     private static Lotto winningLotto;
     private static List<Lotto> lottos;
+    private static WinningStats winningStats;
     //endregion
 
     //region 생성자
@@ -28,6 +29,7 @@ public class Application {
         GetWinningNumber();
         GetBonusNumber();
         CheckWinning();
+        CheckEarningRate();
     }
 
 
@@ -35,8 +37,14 @@ public class Application {
     //endregion
 
     //region 메서드
+
+    private static void CheckEarningRate() {
+        winningStats.CalculateEarningRate(lottoNumber * lottoPrice);
+        winningStats.PrintEarningRate();
+    }
+
     private static void CheckWinning() {
-        WinningStats winningStats = new WinningStats(lottos, winningLotto, bonusNumber);
+        winningStats = new WinningStats(lottos, winningLotto, bonusNumber);
         winningStats.PrintWinningStats();
     }
 
