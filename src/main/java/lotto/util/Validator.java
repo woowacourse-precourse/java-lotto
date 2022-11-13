@@ -45,7 +45,7 @@ public class Validator {
 	}
 
 	public static void validateFormOfWinningNumbers(String winningNumbers) {
-		Pattern pattern = Pattern.compile("^[1-45]+,[1-45]+,[1-45]+,[1-45]+,[1-45]+,[1-45]+$");
+		Pattern pattern = Pattern.compile("^\\d{0,2},\\d{0,2},\\d{0,2},\\d{0,2},\\d{0,2},\\d{0,2}$");
 		Matcher matcher = pattern.matcher(winningNumbers);
 		if (!matcher.matches()) {
 			throw new IllegalArgumentException("[ERROR] 당첨 번호의 형식이 올바르지 않습니다. 올바른 예) 1,2,3,4,5,6");

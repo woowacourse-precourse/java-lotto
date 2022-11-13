@@ -50,7 +50,8 @@ public class LottoController {
 	}
 
 	void compileWinningStatistics() {
-		WinningStatisticsCompiler winningStatisticsCompiler = new WinningStatisticsCompiler(lotteries, winningAndBonusNumbers);
+		WinningStatisticsCompiler winningStatisticsCompiler = new WinningStatisticsCompiler(lotteries,
+			winningAndBonusNumbers);
 		outputView.printWinningStatistics(winningStatisticsCompiler.getCountsOfWins());
 	}
 

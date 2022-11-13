@@ -27,11 +27,13 @@ public class InputView {
 	}
 
 	private void printAskingBonusNumberMessage() {
-		System.out.println(OutputMessage.ASKING_BONUS_NUMBER);
+		System.out.println();
+		System.out.println(OutputMessage.ASKING_BONUS_NUMBER.message());
 	}
 
 	private void printAskingWinningNumbersMessage() {
-		System.out.println(OutputMessage.ASKING_WINNING_NUMBERS);
+		System.out.println();
+		System.out.println(OutputMessage.ASKING_WINNING_NUMBERS.message());
 	}
 
 	private void printAskingPurchasingAmountMessage() {
