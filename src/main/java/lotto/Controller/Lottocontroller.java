@@ -20,19 +20,21 @@ public class Lottocontroller {
     public void run(){
         Money money = inputMoney();
 
-        Paper paper = convertMoney(money);
-        Lottos lottos = new_Lottos(paper.Get_Paper());
-        outputview.Out_lottos(lottos, paper);
+        if (money.Get_money() > 0) {
+            Paper paper = convertMoney(money);
+            Lottos lottos = new_Lottos(paper.Get_Paper());
+            outputview.Out_lottos(lottos, paper);
 
-        Lucky lucky = new_Lucky();
-        Bonusnumber bonusnumber = new_Bonus();
+            Lucky lucky = new_Lucky();
+            Bonusnumber bonusnumber = new_Bonus();
 
-        Score score = new_score();
-        Rating_start(score, paper, lottos, lucky, bonusnumber);
+            Score score = new_score();
+            Rating_start(score, paper, lottos, lucky, bonusnumber);
 
-        Earning earning = new_earning(score);
-        earning.Set_percent(money.Get_money());
-        outputview.Out_result(score, earning.Get_percent());
+            Earning earning = new_earning(score);
+            earning.Set_percent(money.Get_money());
+            outputview.Out_result(score, earning.Get_percent());
+        }
     }
 
     private Money inputMoney(){

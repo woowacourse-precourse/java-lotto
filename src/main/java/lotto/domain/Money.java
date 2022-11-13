@@ -1,17 +1,25 @@
 package lotto.domain;
 
 public class Money {
+    private static final String Input_Money_Nope = "[ERROR] Input only number";
     private static final String ONLY_NUMBER = "[0-9]+";
-    private final int money;
+    private int money;
 
     public Money(String money){
-        if(validateMony(money))
-            money = "0";
-        this.money = convertToInt(money);
+        this.money = -1;
+        if (validateMoney(money))
+            this.money = convertToInt(money);
     }
 
-    public Boolean validateMony(String money){
-        return  !money.matches(ONLY_NUMBER);
+    private void Input_Nope(){
+        System.out.println(Input_Money_Nope);
+    }
+    public  boolean validateMoney(String money){
+        if (!money.matches(ONLY_NUMBER)) {
+            Input_Nope();
+            return false;
+        }
+        return true;
     }
 
     private static int convertToInt(String input) {
