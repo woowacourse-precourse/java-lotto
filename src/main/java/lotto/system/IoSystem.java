@@ -1,19 +1,13 @@
 package lotto.system;
 
 
-import camp.nextstep.edu.missionutils.Console;
+public interface IoSystem {
 
-public class IoSystem {
+    String input();
 
-    public String input() {
-        return Console.readLine();
-    }
+    void print(final Object message);
 
-    public void print(final Object message) {
-        System.out.print(message);
-    }
+    void println(final Object message);
 
-    public void println(final Object message) {
-        System.out.println(message);
-    }
+    void printBeforeNextLine(final Object message);
 }
