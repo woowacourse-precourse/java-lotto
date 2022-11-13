@@ -10,9 +10,15 @@ public class Controller {
 
     public void start() {
         String amount;
+        int lottoTicketNumber;
+
+        purchaseMessage();
         amount = readLine();
+
         isValidateNumber(amount);
         isValidatePurchase(amount);
+
+        lottoTicketNumber = lottoTicketNumber(amount);
     }
 
     public void isValidatePurchase(String userInput) {
@@ -29,5 +35,15 @@ public class Controller {
         }catch(NumberFormatException e) {
             throw new IllegalArgumentException(ERROR_MESSAGE + NOT_NUMBER);
         }
+    }
+
+    public int lottoTicketNumber(String userInput) {
+        int ticket = Integer.parseInt(userInput);
+
+        return ticket / 1000;
+    }
+
+    public void purchaseMessage() {
+        System.out.println(PURCHASE_LOTTO);
     }
 }
