@@ -2,7 +2,6 @@ package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.exception.InputException;
-import lotto.exception.WinningLottoException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +29,9 @@ public class InputView {
         List<Integer> winningLotto = new ArrayList<>();
 
         for (String lottoNumber : Console.readLine().split(",")) {
-            InputException.validateIsNumber(lottoNumber);
-            winningLotto.add(Integer.parseInt(lottoNumber));
+            winningLotto.add(InputException.validateIsNumber(lottoNumber));
         }
         printNewLine();
-        new WinningLottoException().validate(winningLotto);
 
         return winningLotto;
     }
@@ -43,11 +40,7 @@ public class InputView {
         System.out.println(REQUEST_BONUS_NUMBER);
         String bonusNumberInput = Console.readLine();
         printNewLine();
-        InputException.validateIsNumber(bonusNumberInput);
 
-        int bonusNumber = Integer.parseInt(bonusNumberInput);
-        new WinningLottoException().validateLottoNumberRange(bonusNumber);
-
-        return bonusNumber;
+        return InputException.validateIsNumber(bonusNumberInput);
     }
 }
