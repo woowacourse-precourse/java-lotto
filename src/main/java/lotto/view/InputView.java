@@ -15,7 +15,7 @@ public class InputView {
 
 	private static void validateInteger(String string) {
 		if (!string.chars().allMatch(Character::isDigit)) {
-			throw new IllegalArgumentException("정수만 입력 가능합니다.");
+			throw new IllegalArgumentException("[ERROR] 정수만 입력 가능합니다.");
 		}
 	}
 }
