@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import static lotto.domain.Rank.*;
 
 public class Lotto {
-    private final List<Integer> numbers;
+    protected final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -58,8 +58,7 @@ public class Lotto {
 
     protected void checkNumberArea(int number){
         if(number > LOTTO_MAX_SIZE.value() || number < LOTTO_MIN_SIZE.value()){
-            System.out.println("[ERROR] 숫자는 1이상 45 이하의 숫자로 구성되어야 합니다.");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 숫자는 1이상 45 이하의 숫자로 구성되어야 합니다.");
         }
     }
 
