@@ -13,13 +13,8 @@ public class LottoStatus {
         int result[] = new int[5];
         for(int i=0; i<lottoCount; i++) {
             List<Integer> comparedWinningNumber = compareWinningNumber(lotto.get(i), winningNumber);
-            int matchCount = resultMatchCount(comparedWinningNumber);
-            if(matchCount == 5){
-                result[compareBonusNumber(comparedWinningNumber, bonusNumber)]++;
-            }
-            if(matchCount >= 3){
-                result[matchCount-3]++;
-            }
+            int matchCountIndex = resultMatchCount(comparedWinningNumber, bonusNumber);
+            result[matchCountIndex]++;
         }
         return result;
     }
@@ -38,8 +33,11 @@ public class LottoStatus {
         return 4;
     }
 
-    private static int resultMatchCount(List<Integer> comparedWinningNumber){
+    private static int resultMatchCount(List<Integer> comparedWinningNumber, Integer bonusNumber){
         int matchedCount = 6 - comparedWinningNumber.size();
-        return matchedCount;
+        if(matchedCount == 5){
+            return compareBonusNumber(comparedWinningNumber, bonusNumber);
+        }
+        return matchedCount-3;
     }
 }
