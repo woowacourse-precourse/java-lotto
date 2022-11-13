@@ -39,4 +39,12 @@ public class View {
         String input = Console.readLine();
         return Arrays.asList(input.split(","));
     }
+
+    /**
+     * @return String - input bonus number from user
+     */
+    public String inputBonus() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        return Console.readLine();
+    }
 }

@@ -147,6 +147,35 @@ class ApplicationTest extends NsTest {
                 "[ERROR] Please input 1~45 numbers"
         );
     }
+    @ParameterizedTest
+    @DisplayName("로또 보너스 예외 테스트 ( 숫자 )")
+    @ValueSource(strings = {"a", "b"})
+    void 보너스_숫자_테스트(String bonus) {
+        run("8000", "1,2,3,4,5,6", bonus);
+        assertThat(output()).contains(
+                "[ERROR] please input only numbers"
+        );
+    }
+
+    @ParameterizedTest
+    @DisplayName("로또 보너스 예외 테스트 ( 범위 )")
+    @ValueSource(strings = {"0", "46"})
+    void 보너스_범위_테스트(String bonus) {
+        run("8000", "1,2,3,4,5,6", bonus);
+        assertThat(output()).contains(
+                "[ERROR] Please input 1~45 numbers"
+        );
+    }
+
+    @ParameterizedTest
+    @DisplayName("로또 보너스 예외 테스트 ( 중복 )")
+    @ValueSource(strings = {"5", "4"})
+    void 보너스_중복_테스트(String bonus) {
+        run("8000", "1,2,3,4,5,6", bonus);
+        assertThat(output()).contains(
+                "[ERROR] Please input not duplicated with winning numbers"
+        );
+    }
 
 
     @Override

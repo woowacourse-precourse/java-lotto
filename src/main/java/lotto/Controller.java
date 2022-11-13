@@ -35,4 +35,13 @@ public class Controller {
         this.exceptionController.validateWinNumber(input);
         this.model.setWinningLotto(input);
     }
+
+    /**
+     * input bonus number
+     */
+    public void inputBonusNumber() {
+        String input = this.view.inputBonus();
+        this.exceptionController.validateBonus(input);
+        this.model.setBonus(Integer.parseInt(input));
+    }
 }

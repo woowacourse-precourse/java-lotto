@@ -20,4 +20,8 @@ public class Lotto {
     public String toString() {
         return this.numbers.toString();
     }
+
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
 }

@@ -10,6 +10,7 @@ public class Model {
 
     private final List<Lotto> lottoList; // save computer generated Lotto numbers
     private Lotto winningLotto; // save user input Lotto numbers
+    private int bonus;
     private double returnRate; // rate of return by Model.userMoney
     private int userMoney; // user input value
 
@@ -56,6 +57,15 @@ public class Model {
             winNumbers.add(Integer.parseInt(item));
         }
         this.winningLotto = new Lotto(winNumbers);
+    }
+
+    /**
+     * set bonus number with duplicate check
+     * @param bonus
+     */
+    public void setBonus(int bonus) {
+        ExceptionController.validateDuplicateBonusWithWin(this.winningLotto, bonus);
+        this.bonus = bonus;
     }
 }
 
