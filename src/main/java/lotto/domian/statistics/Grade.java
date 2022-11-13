@@ -4,6 +4,14 @@ import java.util.List;
 
 public class Grade {
 
+    public String returnLottoGrade(List<Integer> winningNumbers, List<Integer> lottoNumbers, int bonusNumber) {
+        int correctNumbers = countCorrectNumbers(winningNumbers, lottoNumbers);
+        if (correctNumbers == 5) {
+            return checkLottoNumbersContainBonusNumber(lottoNumbers, bonusNumber);
+        }
+        return checkLottoGrade(correctNumbers);
+    }
+
     public String checkLottoGrade(int correctNumbers) {
         if (correctNumbers == 6) {
             return "FIRST";
