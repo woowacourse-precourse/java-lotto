@@ -8,6 +8,8 @@ public class ProgramManager {
     public static final int LOTTO_PRICE = 1000;
 
     private static final String ASK_PRICE = "구입금액을 입력해 주세요.";
+    private static final String NUMBER_OF_LOTTO_MESSAGE = "개를 구매했습니다.";
+
     private static final String ASK_PREDICT_LOTTO_NUMBER = "당첨 번호를 입력해 주세요.";
     private static final String ASK_PREDICT_LOTTO_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
 
@@ -38,9 +40,14 @@ public class ProgramManager {
         System.out.println(ASK_PRICE);
         price = UserManager.getInput_price();
         numberOfLotto = price / LOTTO_PRICE;
+        System.out.println("\n" + numberOfLotto + NUMBER_OF_LOTTO_MESSAGE);
     }
 
     private static void printLotto() {
+        for (int i = 0; i < numberOfLotto; i++) {
+            System.out.println(lotto.get(i));
+        }
+        System.out.println();
     }
 
     private static void getUserPredictLottoNumbers() {
