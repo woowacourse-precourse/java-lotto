@@ -100,8 +100,8 @@ public class Lotto {
     }
 
     private void exceptionLottoByDuplicatedNumber(List<Integer> numbers) {
-        HashSet<Integer> lottoNoneDuplicated = new HashSet<Integer>(numbers);
-        if (lottoNoneDuplicated.size() != 6) {
+        HashSet<Integer> lottoSetUniqueNumber = new HashSet<Integer>(numbers);
+        if (lottoSetUniqueNumber.size() != 6) {
             IllegalArgumentException e = new IllegalArgumentException();
             System.out.println(Constant.ERROR_MESSAGE + "로또 번호는 중복될 수 없습니다.");
             throw e;
