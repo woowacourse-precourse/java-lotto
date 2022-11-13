@@ -8,6 +8,7 @@ import lotto.model.Price;
 import lotto.model.Scores;
 import lotto.model.UserLottos;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoController {
     private Price price;
@@ -27,9 +28,9 @@ public class LottoController {
         bonus = new Bonus();
         scores.compare(userLottos,winningNum,bonus);
         Integer sumOfScores = scores.getSumofScores();
-        double yield = sumOfScores.doubleValue() / price.getPrice().doubleValue();
-        double roundYield = Math.round(yield*100)/100.0;
-
+        double yield = sumOfScores.doubleValue() / price.getPrice().doubleValue()*100;
+        double roundYield = Math.round(yield*100) / 100.00;
+        OutputView.printStatistics(this.scores,roundYield);
     }
 
 

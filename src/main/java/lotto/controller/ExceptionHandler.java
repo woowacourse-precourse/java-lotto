@@ -18,6 +18,7 @@ public class ExceptionHandler {
         if (isMatchWithPattern) {
             return;
         }
+        System.out.println(ValidationMessage.ERROR + ValidationMessage.NOT_1000_MULTI);
         throw new IllegalArgumentException(ValidationMessage.ERROR + ValidationMessage.NOT_1000_MULTI);
     }
 
@@ -26,6 +27,7 @@ public class ExceptionHandler {
         if (isMatchWithPattern) {
             return;
         }
+        System.out.println(ValidationMessage.ERROR + ValidationMessage.NOT_NUM);
         throw new IllegalArgumentException(ValidationMessage.ERROR + ValidationMessage.NOT_NUM);
     }
 
@@ -39,6 +41,7 @@ public class ExceptionHandler {
         if (isInRange1to45) {
             return;
         }
+        System.out.println(ValidationMessage.ERROR + ValidationMessage.NOT_IN_RANGE);
         throw  new IllegalArgumentException(ValidationMessage.ERROR + ValidationMessage.NOT_IN_RANGE);
     }
 
@@ -51,6 +54,7 @@ public class ExceptionHandler {
         if (isInRange1to45) {
             return;
         }
+        System.out.println(ValidationMessage.ERROR + ValidationMessage.NOT_IN_RANGE);
         throw new IllegalArgumentException(ValidationMessage.ERROR + ValidationMessage.NOT_IN_RANGE);
     }
 
