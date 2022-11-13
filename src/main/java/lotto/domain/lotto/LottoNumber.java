@@ -17,6 +17,24 @@ public class LottoNumber implements Comparable<LottoNumber> {
         this.number = input;
     }
 
+    public LottoNumber(final String input) {
+        validateInputIsNumber(input);
+
+        var number = Integer.parseInt(input);
+        validateNumberLessThanMaxSize(number);
+        validateNumberMoreThanMinSize(number);
+        this.number = number;
+    }
+
+    private void validateInputIsNumber(String input) {
+        try {
+            Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 숫자만 입력할 수 있습니다.");
+        }
+
+    }
+
     private void validateNumberMoreThanMinSize(Integer input) {
         if (input < MIN_SIZE) {
             throw new IllegalArgumentException(ERROR_NUMBER_GREATER_THAN_MIN_NUMBER);
