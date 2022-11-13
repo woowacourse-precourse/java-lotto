@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,15 +23,15 @@ public class Lotto {
     }
 
 
-    public void isValidLotto(List<Integer> numbers){
-        if(!isDuplicatedNumberAndInRange(numbers)){
-            throw new IllegalArgumentException(Message.OUT_OF_SIZE.getMessage());
+    public void isValidLotto(List<Integer> numbers) {
+        if (!isDuplicatedNumberAndInRange(numbers)) {
+            throw new IllegalArgumentException(ErrorMessage.OUT_OF_SIZE.getMessage());
         }
     }
 
     public void userLottoNumbers(String num) {
         if (!isValidUserLottoNumber(num)) {
-            throw new IllegalArgumentException(Message.LOTTO_NUMBER_ERROR.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_ERROR.getMessage());
         }
     }
 
@@ -44,7 +44,7 @@ public class Lotto {
         return isDuplicatedNumberAndInRange(onlyNumbers);
     }
 
-    private boolean isDuplicatedNumberAndInRange(List<Integer> onlyNumbers){
+    private boolean isDuplicatedNumberAndInRange(List<Integer> onlyNumbers) {
         for (int number : onlyNumbers) {
             int num = isNumberAndInRange(number);
             isDuplicated(num);
@@ -75,7 +75,7 @@ public class Lotto {
 
     public int isNumberAndInRange(int number) {
         if (!isInNumberRange(number)) {
-            throw new IllegalArgumentException(Message.LOTTO_NUMBER_ERROR.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_ERROR.getMessage());
         }
         return number;
     }
@@ -83,13 +83,13 @@ public class Lotto {
     private void isNumber(String number) {
         String regex = "[0-9]*$";
         if (!number.matches(regex)) {
-            throw new IllegalArgumentException(Message.LOTTO_NUMBER_ERROR.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_ERROR.getMessage());
         }
     }
 
     private void isDuplicated(int number) {
         if (numbers.contains(number)) {
-            throw new IllegalArgumentException(Message.LOTTO_NUMBER_ERROR.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_ERROR.getMessage());
         }
         numbers.add(number);
     }

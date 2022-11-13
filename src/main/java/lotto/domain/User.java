@@ -1,6 +1,5 @@
-package lotto;
+package lotto.domain;
 
-import java.util.Collections;
 import java.util.List;
 
 public class User {
@@ -8,10 +7,10 @@ public class User {
     Lotto userNumbers;
     int bonusNumber;
 
-    User() {
+    public User() {
         this.purchaseAmount = 0;
         this.bonusNumber = 0;
-        this.userNumbers = new Lotto(List.of(1,2,3,4,5,6));
+        this.userNumbers = new Lotto(List.of(1, 2, 3, 4, 5, 6));
     }
 
     public int getPurchaseAmount() {
@@ -20,8 +19,8 @@ public class User {
 
     private void isNumber(String number) {
         String regex = "[0-9]*$";
-        if (!number.matches(regex)){
-            throw new IllegalArgumentException(Message.LOTTO_NUMBER_ERROR.getMessage());
+        if (!number.matches(regex)) {
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_ERROR.getMessage());
         }
     }
 
@@ -47,14 +46,14 @@ public class User {
             this.purchaseAmount = divide;
             return divide;
         }
-        throw new IllegalArgumentException(Message.AMOUNT_ERROR.getMessage());
+        throw new IllegalArgumentException(ErrorMessage.AMOUNT_ERROR.getMessage());
     }
 
     public int isNumberAndInRange(String number) {
         isNumber(number);
         int num = Integer.parseInt(number);
         if (!isInNumberRange(num)) {
-            throw new IllegalArgumentException(Message.LOTTO_NUMBER_ERROR.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_ERROR.getMessage());
         }
         return num;
     }
