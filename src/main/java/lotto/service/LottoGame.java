@@ -1,6 +1,8 @@
 package lotto.service;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.domain.Lotto;
 import lotto.repository.LottoAutomatonRepository;
 
@@ -17,6 +19,10 @@ public class LottoGame {
     public List<Lotto> createLottoTickets(String amount) {
         automatonRepository = new LottoAutomatonRepository();
         return automatonRepository.createTickets(calculateQuantity(amount));
+    }
+
+    public List<Integer> toList(String input) {
+        return Arrays.stream(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
 
     public void compare() {

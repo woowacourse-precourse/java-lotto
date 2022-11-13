@@ -4,6 +4,8 @@ import java.util.List;
 import lotto.domain.Lotto;
 import lotto.service.LottoGame;
 import lotto.view.input.AmountInput;
+import lotto.view.input.BonusInput;
+import lotto.view.input.WinningInput;
 import lotto.view.print.PrintGuideMessage;
 
 public class LottoGameController {
@@ -17,6 +19,8 @@ public class LottoGameController {
         String amount = getAmount();
         List<Lotto> tickets = game.createLottoTickets(amount);
         printTickets(amount, tickets);
+        List<Integer> winnings = getWinnings();
+        String bonus = getBonus(winnings);
     }
 
     public String getAmount() {
@@ -32,12 +36,16 @@ public class LottoGameController {
         }
     }
 
-    public void getWinnings() {
-        //당첨 번호 입력받기
+    public List<Integer> getWinnings() {
+        PrintGuideMessage.printWinningsGuide();
+        WinningInput input = new WinningInput();
+        return game.toList(input.getInput());
     }
 
-    public void getBonus() {
-        // 보너스 번호 입력받기
+    public String getBonus(List<Integer> winnings) {
+        PrintGuideMessage.printBonusGuide();
+        BonusInput input = new BonusInput(winnings);
+        return input.getInput();
     }
 
     public void printStatistics() {
