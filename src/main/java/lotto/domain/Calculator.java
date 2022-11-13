@@ -27,6 +27,7 @@ public class Calculator {
 
     public void calculateEarningsRate(int purchaseAmount) {
         earningsRate = totalEarnings / (double) purchaseAmount * PERCENTAGE;
+        earningsRate = Math.round(earningsRate * 10) / 10.0;
     }
 
     public double getEarningsRate() {
