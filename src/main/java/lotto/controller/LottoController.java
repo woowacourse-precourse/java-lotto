@@ -1,10 +1,13 @@
 package lotto.controller;
 
+import lotto.model.Lotto;
 import lotto.model.LottoCount;
 import lotto.model.LottoTicket;
+import lotto.model.LuckyNumbers;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
+import static lotto.view.InputView.requestBonusNumber;
 import static lotto.view.InputView.requestUserAmount;
 
 public class LottoController {
@@ -19,7 +22,7 @@ public class LottoController {
         } catch (IllegalArgumentException e){
             OutputView.printException(e);
         }
-        return new LottoCount(0);
+        return null;
     }
 
     private LottoTicket buyTickets(LottoCount amount){
@@ -28,5 +31,14 @@ public class LottoController {
         LottoTicket lottoTicket = new LottoTicket(ticketCount);
         OutputView.printLottoTickets(lottoTicket);
         return lottoTicket;
+    }
+
+    private LuckyNumbers getInputLuckyNumbers(){
+        try{
+            return new LuckyNumbers(new Lotto(InputView.requestWinNumbers()), requestBonusNumber());
+        } catch(IllegalArgumentException e){
+            OutputView.printException(e);
+        }
+        return null;
     }
 }
