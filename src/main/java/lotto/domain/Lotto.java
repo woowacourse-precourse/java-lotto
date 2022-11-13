@@ -8,10 +8,13 @@ import java.util.Set;
 public class Lotto {
 
     private static final String DUPLICATION_NUMBER_EXCEPTION_MESSAGE = "[ERROR] 중복되지 않은 숫자만 입력 가능합니다.";
+    public static final int MIN_LOTTO_NUMBER = 1;
+    public static final int MAX_LOTTO_NUMBER = 45;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        duplicateNumbersRange(numbers);
         this.numbers = duplicateValidate(numbers);
     }
 
@@ -27,6 +30,14 @@ public class Lotto {
             return numbers;
         }
         throw new IllegalArgumentException(DUPLICATION_NUMBER_EXCEPTION_MESSAGE);
+    }
+
+    private static void duplicateNumbersRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < MIN_LOTTO_NUMBER && MAX_LOTTO_NUMBER < number) {
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
     public int getHitCount(Lotto buyingLotto) {
