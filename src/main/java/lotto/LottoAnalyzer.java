@@ -12,21 +12,17 @@ public class LottoAnalyzer {
     private final List<Integer> winningNumbers;
     private final int bonusNumber;
 
-    private int firstCount;
-    private int secondCount;
-    private int thirdCount;
-    private int fourthCount;
-    private int fifthCount;
+    private int firstCount = 0;
+    private int secondCount = 0;
+    private int thirdCount = 0;
+    private int fourthCount = 0;
+    private int fifthCount = 0;
 
     public LottoAnalyzer(List<Lotto> lottoTickets, List<Integer> winningNumbers, int bonusNumber) {
         this.lottoTickets = lottoTickets;
         this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
-        this.firstCount = 0;
-        this.secondCount = 0;
-        this.thirdCount = 0;
-        this.fourthCount = 0;
-        this.fifthCount = 0;
+        compareLottoTickets();
     }
 
     public void compareLottoTickets() {
