@@ -20,6 +20,8 @@ public class LottoNumberGenerator {
     }
 
     public static Lotto createOneLotto() {
-	return new Lotto(Randoms.pickUniqueNumbersInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER, RANGE_NUMBER));
+        List<Integer> randomNumbers = new ArrayList<>();
+        randomNumbers.addAll(Randoms.pickUniqueNumbersInRange(MINIMUM_NUMBER, MAXIMUM_NUMBER, RANGE_NUMBER));
+	return new Lotto(randomNumbers);
     }
 }
