@@ -6,6 +6,10 @@
 
 - Raise 'IllegalArgumentException' if cash divided by 1000 is not '0'
 
+#### Validate winning lotto number
+
+- Raise 'IllegalArgumentException' if winning number is not valid
+
 #### Generate lotto number
 
 - Generate lotto cases
