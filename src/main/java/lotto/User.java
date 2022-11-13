@@ -1,8 +1,4 @@
 package lotto;
-//- 사용자
-//        - 사용자는 지불한 돈을 저장한다.
-//        - 사용자는 뽑은 로또를 객체배열로 저장하고 있다.
-//        - 사용자는 뽑은 등수별로 당첨된 로또개수를 배열로 저장하고 있다.
 
 import java.util.List;
 
@@ -10,14 +6,16 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class User {
   private int ticket;
+  private int money;
   private List<Lotto> lottos;
+  private LottoWinRank win_rank;
 
   public User() {
     setTicket();
   }
 
   private void setTicket() {
-    int money;
+//    int money;
 
     System.out.println("구입금액을 입력해 주세요.");
     money = Integer.parseInt(readLine());
@@ -34,5 +32,11 @@ public class User {
   }
 
 
+
+  public void printResult(LottoAnswer lottoAnswer) {
+    win_rank = new LottoWinRank(lottos, lottoAnswer);
+    win_rank.printWinRank();
+    System.out.println("총 수익률은 " + MathUtils.calcYield(win_rank.calcWinMoney(), money) + "%입니다.");
+  }
 
 }
