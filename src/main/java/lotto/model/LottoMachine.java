@@ -29,6 +29,6 @@ public class LottoMachine {
 
 
     public WinningRecord drawAll() {
-        return new WinningRecord();
+        return null;
     }
 }
