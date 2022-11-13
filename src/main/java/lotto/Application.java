@@ -65,6 +65,11 @@ public class Application {
     public static void buyLotto() {
         System.out.println("구입금액을 입력해 주세요.");
         pay = Integer.parseInt(Console.readLine());
+        buyException(pay);
+    }
+    public static void buyException(int pay){
+        if(pay%1000!=0)
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원으로 나누어 떨어져야 합니다.");
     }
 
     public static int ticketCal(int pay){
@@ -99,14 +104,30 @@ public class Application {
         System.out.println("당첨 번호를 입력해 주세요.");
 
         inputNumber = Console.readLine();
+        inputNumberException();
         processNumber = inputNumber.split(",");
 
         for(int i=0;i<processNumber.length;i++){
             winningNumber.add(Integer.parseInt(processNumber[i]));
         }
-
         Collections.sort(winningNumber);
+        inputWinningNumberException();
+
     }
+
+    public static void inputWinningNumberException(){
+        for(int i=0;i<winningNumber.size();i++){
+            if(winningNumber.get(i)<1||winningNumber.get(i)>45)
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+        for(int i=0;i<winningNumber.size()-1;i++){
+            if(winningNumber.get(i)==winningNumber.get(i+1))
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 중복 되어서는 안됩니다.");
+        }
+    }
+
+    public static void inputNumberException(){}
+
 
     public static void inputBonus(){
         System.out.println("보너스 번호를 입력해 주세요.");
@@ -164,6 +185,4 @@ public class Application {
         String result = String.format("%.1f",winRate);
         System.out.println("총 수익률은 " + result + "%입니다.");
     }
-
-
 }
