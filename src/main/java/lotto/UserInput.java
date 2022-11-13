@@ -13,6 +13,7 @@ public class UserInput {
     List<List<Integer>> lotteries = new ArrayList<>();
 
     public long inputMoney() {
+        Message.INPUT_MONEY.print();
         String input = Console.readLine();
         validateMoney(input);
         return Long.parseLong(input);
@@ -45,6 +46,7 @@ public class UserInput {
     }
 
     public Lotto inputWinningNumber() {
+        Message.INPUT_LOTTERY_NUMBER.print();
         String winningNumber = Console.readLine();
         List numbers = validateLotto(winningNumber);
         return new Lotto(numbers);
@@ -69,6 +71,7 @@ public class UserInput {
     }
 
     public int inputBonus() {
+        Message.INPUT_BONUS_NUMBER.print();
         String bonus = Console.readLine();
         int result = validateBonus(bonus);
         return result;
