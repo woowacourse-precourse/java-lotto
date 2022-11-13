@@ -51,6 +51,6 @@ public class Controller {
         Lotto lotto = new Lotto(lottoNumber);
         int bonusNumber = inputBonusNumber(lottoNumber);
         List<Integer> countWin = dataProcessing.countWinLotto(lottoNumber, boxRandomNumber, countLotto, bonusNumber);
-        dataProcessing.resultWinLotto(countWin);
+        outputView.printWinResultLotto(dataProcessing.resultWinLotto(countWin));
     }
 }
