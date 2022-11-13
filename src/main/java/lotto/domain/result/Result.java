@@ -1,5 +1,6 @@
 package lotto.domain.result;
 
+import lotto.domain.lotto.LottoTickets;
 import lotto.domain.player.BonusNumber;
 import lotto.domain.player.PurchaseAmount;
 import lotto.domain.player.WinningNumber;
@@ -9,8 +10,8 @@ import static lotto.domain.result.MatchCalculator.*;
 
 public class Result {
 
-	public Result(WinningNumber winningNumber, BonusNumber bonusNumber) {
-		MatchCalculator.findMatch(winningNumber.toNumbers(), bonusNumber.toNumber());
+	public Result(WinningNumber winningNumber, BonusNumber bonusNumber, LottoTickets lottoTickets) {
+		MatchCalculator.findMatch(winningNumber, bonusNumber, lottoTickets);
 	}
 
 	public void calculateLottoRank() {

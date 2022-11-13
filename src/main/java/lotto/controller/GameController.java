@@ -1,6 +1,8 @@
 package lotto.controller;
 
+import lotto.domain.lotto.Lotto;
 import lotto.domain.lotto.LottoMachine;
+import lotto.domain.lotto.LottoTickets;
 import lotto.domain.player.BonusNumber;
 import lotto.domain.player.Player;
 import lotto.domain.player.PurchaseAmount;
@@ -19,12 +21,12 @@ public class GameController {
 			PurchaseCount purchaseCount = PurchaseCount.from(purchaseAmount);
 
 			LottoMachine lottoMachine = new LottoMachine();
-			lottoMachine.issueLotto(purchaseCount);
+			LottoTickets lottoTickets = LottoTickets.setsOf(lottoMachine.issueLotto(purchaseCount));
 
 			WinningNumber winningNumber = WinningNumber.from(player.receiveWinningNumber());
 			BonusNumber bonusNumber = BonusNumber.from(player.receiveBonusNumber(), winningNumber);
 
-			Result result = new Result(winningNumber, bonusNumber);
+			Result result = new Result(winningNumber, bonusNumber, lottoTickets);
 			result.calculateLottoRank();
 			result.calculateTotalProfit(purchaseAmount);
 		} catch (IllegalArgumentException e) {

@@ -1,6 +1,9 @@
 package lotto.domain.result;
 
-import lotto.domain.lotto.LottoMachine;
+import lotto.domain.lotto.Lotto;
+import lotto.domain.lotto.LottoTickets;
+import lotto.domain.player.BonusNumber;
+import lotto.domain.player.WinningNumber;
 
 import java.util.HashSet;
 import java.util.List;
@@ -12,25 +15,23 @@ public class MatchCalculator {
 	protected static int fiveMatchAndBonusMatch;
 	protected static final int[] countingMatches = new int[4];
 
-	public static void findMatch(List<Integer> winningNumber, int bonusNumber) {
-		List<List<Integer>> issuedLottoes = LottoMachine.issuedLottoes;
-
-		for (List<Integer> lotto : issuedLottoes) {
-			getLottoMatch(lotto, winningNumber);
-			getBonusMatch(lotto, lottoMatch, bonusNumber);
+	public static void findMatch(WinningNumber winningNumber, BonusNumber bonusNumber, LottoTickets lottoTickets) {
+		for (Lotto lotto : lottoTickets.getLottoTickets()) {
+			getLottoMatch(lotto, winningNumber.toNumbers());
+			getBonusMatch(lotto, lottoMatch, bonusNumber.toNumber());
 			countMatches(lottoMatch);
 		}
 	}
 
-	private static void getLottoMatch(List<Integer> lotto, List<Integer> winningNumber) {
-		Set<Integer> checkLottoMatch = new HashSet<>(lotto);
+	private static void getLottoMatch(Lotto lotto, List<Integer> winningNumber) {
+		Set<Integer> checkLottoMatch = new HashSet<>(lotto.getNumbers());
 		checkLottoMatch.retainAll(winningNumber);
 		lottoMatch = checkLottoMatch.size();
 	}
 
-	private static void getBonusMatch(List<Integer> lotto, int lottoMatch, int bonusNumber) {
+	private static void getBonusMatch(Lotto lotto, int lottoMatch, int bonusNumber) {
 		bonusMatch = 0;
-		if (lotto.contains(bonusNumber)) {
+		if ((lotto.getNumbers().contains(bonusNumber))) {
 			bonusMatch = 1;
 		}
 		recordBonusMatch(lottoMatch, bonusMatch);

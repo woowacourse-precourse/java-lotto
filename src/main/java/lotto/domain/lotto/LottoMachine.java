@@ -10,13 +10,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoMachine {
-	public static List<List<Integer>> issuedLottoes = new ArrayList<>();
 
-	public void issueLotto(PurchaseCount purchaseCount) {
+	public List<Lotto>  issueLotto(PurchaseCount purchaseCount) {
+		List<Lotto> lottoTickets = new ArrayList<>();
+
 		for (int i = 0; i < purchaseCount.toLotto(); i++) {
 			Lotto lotto = new Lotto(generateLottoNumbers());
-			issuedLottoes.add(lotto.getNumbers());
+			lottoTickets.add(lotto);
 		}
+
+		return lottoTickets;
 	}
 
 	private List<Integer> generateLottoNumbers() {
