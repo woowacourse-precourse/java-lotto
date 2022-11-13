@@ -44,6 +44,8 @@ public class LottoController {
         Statistics statistics = new Statistics(ranking.getRankings());
 
         OutputView.printStatistics();
+
+
     }
 
     private static void validateDuplicates() {
