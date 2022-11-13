@@ -11,4 +11,8 @@ public class RequestView {
     public void displayEnterWinnerNumber() {
         System.out.println(LottoMessage.ENTER_WINNER_NUMBER);
     }
+
+    public void displayEnterBonusNumber() {
+        System.out.println(LottoMessage.ENTER_BONUS_NUMBER);
+    }
 }

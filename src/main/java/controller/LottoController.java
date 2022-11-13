@@ -14,4 +14,8 @@ public class LottoController {
         requestView.displayEnterWinnerNumber();
     }
 
+    public void bonusNumber() {
+        requestView.displayEnterBonusNumber();
+    }
+
 }
