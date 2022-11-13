@@ -20,7 +20,7 @@ public class UI {
 
     public static int enterCost() {
         System.out.println("구입금액을 입력해 주세요.");
-        return Integer.parseInt(Console.readLine());
+        return Validation.validateCostType(Console.readLine());
     }
 
     public static void printBuyingLotto(int count, List<Lotto> lotteries) {

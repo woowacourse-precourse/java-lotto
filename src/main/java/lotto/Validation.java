@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Validation {
 
@@ -30,6 +31,16 @@ public class Validation {
     public static void costValidate(int cost) {
         if (cost % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1,000원 단위로 입력 가능합니다.");
+        }
+    }
+
+    public static int validateCostType(String costInput) {
+        try {
+            return Integer.parseInt(costInput);
+        } catch (NumberFormatException e) {
+            IllegalArgumentException illegalArgumentException = new IllegalArgumentException("[ERROR] 숫자를 입력해주세요.");
+            System.out.println(illegalArgumentException.getMessage());
+            throw new NoSuchElementException("프로그램 종료");
         }
     }
 }
