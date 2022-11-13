@@ -15,7 +15,7 @@ public class CustomerTest {
         Customer customer = new Customer();
 
         // when
-        int sheet = customer.buy(8000);
+        int sheet = customer.buy("8000");
 
         // then
         assertThat(sheet).isEqualTo(8);
@@ -28,8 +28,8 @@ public class CustomerTest {
         Customer customer = new Customer();
 
         // then
-        assertThatThrownBy(customer.buy(8100))
+        assertThatThrownBy(() -> customer.buy("8100"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(ErrorPhrase.WRONG_PAY);
+                .hasMessageContaining(ErrorPhrase.WRONG_PAY.toString());
     }
 }

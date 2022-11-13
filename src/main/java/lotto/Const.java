@@ -1,7 +1,8 @@
 package lotto;
 
 public enum Const {
-    SIZE(6);
+    SIZE(6),
+    BILL(1000);
 
     private final int number;
 
@@ -11,5 +12,9 @@ public enum Const {
 
     public boolean equals(int compareNumber) {
         return this.number == compareNumber;
+    }
+
+    public int getNumber() {
+        return this.number;
     }
 }
