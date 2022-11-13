@@ -35,4 +35,8 @@ public class Statistics {
         }
         return winAmount;
     }
+
+    public Map<LottoRank, Integer> getWinLottoInfoMap() {
+        return new HashMap<>(winLottoInfo);
+    }
 }
