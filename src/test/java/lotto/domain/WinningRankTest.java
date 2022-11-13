@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class WinningRankTest {
 
 
-    @ParameterizedTest(name = "isWin 테스트 {index}: {0} return {3}")
+    @ParameterizedTest(name = "당첨조건 확인 테스트 [{index}] : {0} return {3}")
     @CsvSource(value = {"FIRST_RANK,6,false,true",
             "FIRST_RANK,5,true,false",
             "SECOND_RANK,5,true,true",
@@ -27,7 +27,7 @@ class WinningRankTest {
         assertThat(rank.isWin(duplicatedCount, isContainBonusNumber)).isEqualTo(expected);
     }
 
-    @ParameterizedTest(name = "findByWinningCondition 테스트 {index} : {2}")
+    @ParameterizedTest(name = "당첨 조건으로 Rank 얻기 테스트 [{index}] : {2}")
     @CsvSource(value = {"6,false,FIRST_RANK",
             "5,true,SECOND_RANK",
             "5,false,THIRD_RANK",
@@ -39,7 +39,7 @@ class WinningRankTest {
         assertThat(actualRank).isEqualTo(expectedRank);
     }
 
-    @ParameterizedTest(name = "잘못된 당첨 조건 테스트 {index}: {0}개 일치")
+    @ParameterizedTest(name = "잘못된 당첨 조건 입력시 예외 발생 테스트 [{index}] : {0}개 일치 입력")
     @CsvSource(value = {"7,false", "-1,true"})
     void wrongWinningConditionTest(int duplicatedNumberCount, boolean isContainBonusNumber) {
         assertThatThrownBy(() -> WinningRank.findByWinningCondition(duplicatedNumberCount, isContainBonusNumber))

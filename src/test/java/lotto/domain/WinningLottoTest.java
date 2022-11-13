@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -16,16 +17,18 @@ class WinningLottoTest {
         lottoNumbers = List.of(1, 2, 3, 4, 5, 6);
     }
 
+    @DisplayName("1~45외 보너스번호 입력시 예외 발생 테스트")
     @Test
-    void 범위_외_보너스번호_예외_테스트() {
+    void createWinningLottoByBonusNumberOutOfRange() {
         int bonusNumber = 47;
         assertThatThrownBy(() -> new WinningLotto(lottoNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(WinningLotto.NUMBER_INPUT_RANGE_ERROR_MESSAGE);
     }
 
+    @DisplayName("중복되는 보너스 번호 입력시 예외 발생 테스트")
     @Test
-    void 중복되는_보너스_번호_예외_테스트() {
+    void createWinningLottoByDuplicatedBonusNumber() {
         int bonusNumber = 4;
         assertThatThrownBy(() -> new WinningLotto(lottoNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class)

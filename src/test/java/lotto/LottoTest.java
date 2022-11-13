@@ -31,7 +31,7 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @ParameterizedTest(name = "1~45외의 숫자로 로또 생성시 예외 발생 {index}")
+    @ParameterizedTest(name = "1~45외의 숫자로 로또 생성시 예외 발생 테스트 [{index}] : {5} 입력")
     @CsvSource(value = {"1,2,3,4,5,47", "1,2,3,4,5,0"})
     void createLottoByNumbersOutOfRange(int num1, int num2, int num3, int num4, int num5, int num6) {
         assertThatThrownBy(() -> new Lotto(List.of(num1, num2, num3, num4, num5, num6)))
@@ -39,16 +39,17 @@ class LottoTest {
                 .hasMessageContaining(Lotto.NUMBER_INPUT_RANGE_ERROR_MESSAGE);
     }
 
+    @DisplayName("로또 toString() 형식 테스트")
     @Test
-    void 로또_toString_테스트() {
+    void toStringTest() {
         Lotto lotto = makeBasicLottoForTest();
         String expectedToString = "[1, 2, 3, 4, 5, 6]";
         assertThat(lotto.toString()).isEqualTo(expectedToString);
     }
 
-    @ParameterizedTest(name = "로또 번호 포함 테스트 {index}: {0} - {1}")
+    @ParameterizedTest(name = "로또 번호 포함 테스트 [{index}] : {1} 반환")
     @CsvSource(value = {"3,true", "9,false"})
-    void 로또_번호_포함_테스트(int number, boolean expected) {
+    void isContainNumberTest(int number, boolean expected) {
         Lotto lotto = makeBasicLottoForTest();
         assertThat(lotto.isContainNumber(number)).isEqualTo(expected);
     }

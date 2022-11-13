@@ -13,8 +13,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ProfitCalculatorTest {
 
+    @DisplayName(value = "총 수익 계산 테스트")
     @Test
-    @DisplayName(value = "총 수익 테스트")
     void totalProfitTest() {
         Map<WinningRank, Integer> winLottoCount = new HashMap<>();
         winLottoCount.put(WinningRank.THIRD_RANK, 1);
@@ -26,7 +26,7 @@ class ProfitCalculatorTest {
         assertThat(actualTotalProfit).isEqualTo(expectedTotalProfit);
     }
 
-    @ParameterizedTest(name = "수익률 테스트 {index} : {2}%")
+    @ParameterizedTest(name = "수익률 계산 테스트 [{index}] : {2}%")
     @CsvSource(value = {"15_000,70_000,21.4", "87_000,7_000,1242.9"})
     void profitRateTest(int profit, int purchaseAmount, double expectedProfitRate) {
         double actualProfitRate = ProfitCalculator.calculateProfitRate(profit, purchaseAmount);
