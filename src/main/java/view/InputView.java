@@ -17,6 +17,10 @@ public class InputView {
     private static final String BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
     private static final String TYPE_ERROR = ERROR + " 숫자를 입력해야 합니다.";
 
+    private InputView() {
+        
+    }
+
     public static Money inputPurchaseAmount() {
         System.out.println(PURCHASE_AMOUNT);
 

@@ -18,6 +18,10 @@ public class OutputView {
     public static final String WINNING_AMOUNT_AND_COUNT = " (%,d원) - %d개" + System.lineSeparator();
     public static final String EARNINGS_RATE = "총 수익률은 %.1f%%입니다.";
 
+    private OutputView() {
+
+    }
+
     public static void printLottos(Lottos inputLottos) {
         List<Lotto> lottos = inputLottos.getLottos();
         System.out.println(lottos.size() + LOTTOS_COUNT);
