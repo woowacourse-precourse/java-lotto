@@ -1,7 +1,5 @@
 package lotto;
 
-import constant.Text;
-
 import java.util.List;
 
 public class WinLotto extends Lotto {
@@ -15,8 +13,7 @@ public class WinLotto extends Lotto {
 
     private void validate(List<Integer> numbers, int bonusNumber) {
         if (numbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(
-                    Text.ERROR + "보너스 번호가 당첨 번호와 중복되었습니다.");
+            throw new IllegalArgumentException("보너스 번호가 당첨 번호와 중복되었습니다.");
         }
     }
 

@@ -25,7 +25,7 @@ public class LottoSimulate {
             Map<Prize, Integer> lottoStatics = getLottoStatics(winLotto, lottos);
             calculateYield(purchasePrice, lottoStatics);
         } catch (IllegalArgumentException e) {
-            print.out(e.getMessage());
+            print.out("[ERROR] " + e.getMessage());
         }
     }
 
