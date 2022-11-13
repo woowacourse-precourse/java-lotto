@@ -10,6 +10,7 @@ import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
+import java.io.ByteArrayInputStream;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
@@ -92,6 +93,29 @@ class ApplicationTest extends NsTest {
             },
             List.of(1, 2, 3, 4, 5, 6)
         );
+    }
+
+    Lotto getWinningNumbers() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Object ret;
+        Class app = Application.class;
+        Method method = app.getDeclaredMethod("getWinningNumbers");
+
+        method.setAccessible(true);
+        ret = method.invoke(null);
+        return (Lotto) ret;
+    }
+
+    void stdInput(String... args) {
+        byte[] buf = String.join("\n", args).getBytes();
+        System.setIn(new ByteArrayInputStream(buf));
+    }
+
+    @Test
+    void 당첨_번호_입력_테스트() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        stdInput("1,2,3,4,5,6");
+        Lotto lotto = getWinningNumbers();
+        lotto.printNumbers();
+        assertThat(output()).contains("[1, 2, 3, 4, 5, 6]");
     }
 
     @Override
