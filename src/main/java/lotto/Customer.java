@@ -1,12 +1,11 @@
 package lotto;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.StringTokenizer;
 
 import static lotto.Const.BILL;
+import static lotto.ErrorPhrase.DUPLICATE;
 import static lotto.ErrorPhrase.WRONG_PAY;
 import static lotto.ErrorPhrase.WRONG_INPUT;
 import static lotto.ErrorPhrase.WRONG_RANGE;
@@ -51,6 +50,13 @@ public class Customer {
     private void bonusNumberValidate(String input) {
         isContainNumber(input);
         isNotWrongRange(input);
+        isDuplicate(input);
+    }
+
+    private void isDuplicate(String input) {
+        if (this.winningNumber.getNumbers().contains(Integer.parseInt(input))) {
+            throw new IllegalArgumentException(DUPLICATE.toString());
+        }
     }
 
     private void payValidate(String input) {
