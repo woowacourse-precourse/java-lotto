@@ -40,7 +40,7 @@ public class Lotto {
         }
     }
 
-    private int bonus() {
+    private static int bonus() {
         System.out.print(BONUS_INPUT_SENTENCE);
         int bonusNum = Integer.parseInt(Console.readLine());
         if(bonusNum< 1 || bonusNum> 45) {
@@ -49,7 +49,7 @@ public class Lotto {
         return bonusNum;
     }
 
-    public List<Integer> compareList(List<List<Integer>> userLottoNumber, List<Integer> winLottoNumber) {
+    public static List<Integer> compareList(List<List<Integer>> userLottoNumber, List<Integer> winLottoNumber) {
         System.out.println();
         int bonusNumber = bonus();
         List<Integer> sameCount = new ArrayList<>();
