@@ -33,7 +33,7 @@ class LottoTest {
 
     @DisplayName("로또 번호의 숫자가 오름차순으로 입력하지 않아도, 오름차순으로 변경된다.")
     @Test
-    void createLottoByOutOfRangeasdf() {
+    void createLottoByAscendSort() {
         Lotto lotto = new Lotto(List.of(6, 5, 4, 3, 2, 1));
         assertThat(lotto.getNumbers()).isEqualTo(List.of(1, 2, 3, 4, 5, 6));
     }
