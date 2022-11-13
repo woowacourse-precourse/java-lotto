@@ -10,18 +10,23 @@ public class OutputView {
 		System.out.println();
 		System.out.println(OutputMessage.WINNING_STATISTICS_BEGINNING.message());
 		System.out.println(OutputMessage.DIVISION_LINE.message());
+		printCountsOfWins(countsOfWins);
+	}
+
+	private void printCountsOfWins(EnumMap<WinningRating, Integer> countsOfWins) {
 		countsOfWins.forEach((rating, countOfWins) -> {
-			if (rating != WinningRating.SECOND) {
-				System.out.printf(OutputMessage.COUNTING_PRIZE_WITHOUT_BONUS.message(),
-					rating.getCountOfMatchedNumber(), rating.getPrizeMoney(), countOfWins);
-				System.out.println();
+			if (rating != WinningRating.MISS && rating != WinningRating.SECOND) {
+				printCountingPrizeMessage(OutputMessage.COUNTING_PRIZE_WITHOUT_BONUS.message(), rating, countOfWins);
 			}
 			if (rating == WinningRating.SECOND) {
-				System.out.printf(OutputMessage.COUNTING_PRIZE_WITH_BONUS.message(), rating.getCountOfMatchedNumber(),
-					rating.getPrizeMoney(), countOfWins);
-				System.out.println();
+				printCountingPrizeMessage(OutputMessage.COUNTING_PRIZE_WITH_BONUS.message(), rating, countOfWins);
 			}
 		});
+	}
+
+	private void printCountingPrizeMessage(String message, WinningRating rating, int countOfWins) {
+		System.out.printf(message, rating.getCountOfMatchedNumber(), rating.getPrizeMoney(), countOfWins);
+		System.out.println();
 	}
 
 	public void printNumberOfTickets(int numberOfTickets) {
