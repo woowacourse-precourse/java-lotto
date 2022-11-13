@@ -13,7 +13,7 @@
 
 ### 기능
 - [ ] 설정값이 적절하게 지정되어 있는지 확인 - validate
-    - [ ] 숫자 범위가 올바르게 되어있는지 확인 - checkRangeNumber
+    - [x] 숫자 범위가 올바르게 되어있는지 확인 - checkRangeNumber
     - [ ] 자연수로 지정된 설정 중에 올바르게 되어있는지 확인 - checkNaturalNumber
     - [ ] 0이 포함된 자연수로 지정된 설정 중에 올바르게 되어있는지 확인 - checkZeroAndNaturalNumber
     - [ ] 논리적 오류 확인 - checkIllegalLotto
