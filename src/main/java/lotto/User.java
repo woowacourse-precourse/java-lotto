@@ -16,12 +16,21 @@ public class User {
     setTicket();
   }
 
-  public void setTicket() {
+  private void setTicket() {
     int money;
 
     System.out.println("구입금액을 입력해 주세요.");
     money = Integer.parseInt(readLine());
     ticket = MathUtils.numberOfLotto(money);
+  }
+
+  public void setLottos() {
+    System.out.println(ticket + "개를 구매했습니다.");
+    for (int i = 0; i < ticket; i++) {
+      RandomLottoNumber randomLottoNumber = new RandomLottoNumber();
+      lottos.add(new Lotto(randomLottoNumber.getRandomNumber()));
+      lottos.get(i).printLottoNumbers();
+    }
   }
 
 
