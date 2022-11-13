@@ -24,6 +24,10 @@ public enum LottoGrade {
         return matchCount;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     public boolean isMatchBonus() {
         return isMatchBonus;
     }
