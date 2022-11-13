@@ -1,7 +1,11 @@
 package lotto.ui;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class InputViewValidation {
 
@@ -10,6 +14,7 @@ public class InputViewValidation {
     static final String ERROR_LOTTO_SIZE = "[ERROR] 6개의 당첨 번호를 입력해주세요.";
     static final String ERROR_LOTTO_NUMBER_RANGE = "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.";
     static final String ERROR_INPUT_FORMAT = "[ERROR] 입력 형식이 지켜지지 않았습니다.";
+    static final String ERROR_DUPLICATE_NUMBER = "[ERROR] 중복된 수가 입력되었습니다.";
     static final Pattern NUMBER_PATTERN = Pattern.compile("^[0-9]*$");
 
 
@@ -58,10 +63,17 @@ public class InputViewValidation {
     public static void validateWinningNumbersRange(String input) {
         String[] winningNumbers = input.split(",");
         for (String number : winningNumbers) {
-            System.out.println(number);
             if (Integer.parseInt(number) > 45 || Integer.parseInt(number) < 1) {
                 throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_RANGE);
             }
+        }
+    }
+
+    public static void validateWinningNumbersUnique(String input) {
+        List<Integer> winningNumbers = Arrays.stream(input.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        HashSet<Integer> hashSet = new HashSet<>(winningNumbers);
+        if (hashSet.size() != 6){
+            throw new IllegalArgumentException(ERROR_DUPLICATE_NUMBER);
         }
     }
 }

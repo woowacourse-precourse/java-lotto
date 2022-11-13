@@ -26,6 +26,7 @@ public class InputView {
         InputViewValidation.validateWinningNumbersSize(winningNumbers);
         InputViewValidation.validateWinningNumbersInteger(winningNumbers);
         InputViewValidation.validateWinningNumbersRange(winningNumbers);
+        InputViewValidation.validateWinningNumbersUnique(winningNumbers);
 
         return Arrays.stream(winningNumbers.split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
