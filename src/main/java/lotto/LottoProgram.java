@@ -1,5 +1,7 @@
 package lotto;
 
+import static lotto.domain.model.ErrorMessage.printErrorMessage;
+
 import lotto.domain.controller.LottoController;
 import lotto.domain.view.InputData;
 
@@ -17,10 +19,15 @@ public class LottoProgram {
     }
 
     public void start(){
-        purchase();
-        inputFirstPlace();
-        inputBonus();
-        calculateResult();
+        try{
+            purchase();
+            inputFirstPlace();
+            inputBonus();
+            calculateResult();
+        } catch (IllegalArgumentException exception){
+            printErrorMessage(exception);
+        }
+
 
     }
     private void purchase(){
