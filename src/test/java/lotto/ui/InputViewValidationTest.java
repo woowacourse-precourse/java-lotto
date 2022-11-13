@@ -71,4 +71,11 @@ class InputViewValidationTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("당첨 번호 입력은 1이상 45미만의 숫자가 오지 않으면 예외처리한다.")
+    @Test
+    void validateByNumberInvalidRange() {
+        assertThatThrownBy(() -> InputViewValidation.validateWinningNumbersRange("1,2,3,4,0,6"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
