@@ -56,8 +56,8 @@ public class Lotto {
     }
 
     public boolean hasBonusNum(Lotto numbers) {
-        int target = numbers.getBonusNumbers();
-        return numbers.getNumbers().contains(target);
+        bonusNum = numbers.getBonusNumbers();
+        return this.numbers.contains(bonusNum);
     }
 
     // TODO: 추가 기능 구현
