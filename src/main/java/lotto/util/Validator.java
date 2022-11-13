@@ -1,5 +1,8 @@
 package lotto.util;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import lotto.constant.ErrorLog;
 import lotto.constant.LottoConstant;
 
@@ -12,6 +15,14 @@ public class Validator {
 	public static void validateIntegerOrNot(String input) {
 		if (input.chars().anyMatch(letter -> letter < '0' || letter > '9')) {
 			throw new IllegalArgumentException(ErrorLog.NOT_INTEGER_INPUT_ERROR.log());
+		}
+	}
+
+	public static void validateFormOfWinningNumbers(String winningNumbers) {
+		Pattern pattern = Pattern.compile("^[1-45]+,[1-45]+,[1-45]+,[1-45]+,[1-45]+,[1-45]+$");
+		Matcher matcher = pattern.matcher(winningNumbers);
+		if (!matcher.matches()) {
+			throw new IllegalArgumentException("[ERROR] 당첨 번호의 형식이 올바르지 않습니다. 올바른 예) 1,2,3,4,5,6");
 		}
 	}
 }

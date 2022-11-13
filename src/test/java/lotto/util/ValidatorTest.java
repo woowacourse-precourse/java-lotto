@@ -10,7 +10,7 @@ class ValidatorTest {
 	@Test
 	@DisplayName("당첨 번호 입력의 형식이 올바른지 검증한다.")
 	void v1alidateIntegerInput() {
-		assertThatThrownBy(() -> Validator.validateWinningNumbers("12,3,4,5,5")).isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> Validator.validateFormOfWinningNumbers("12,3,4,5,5")).isInstanceOf(IllegalArgumentException.class);
 	}
 
 	@Test

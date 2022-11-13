@@ -14,7 +14,9 @@ public class InputView {
 	
 	public String getWinningNumbers() {
 		printAskingWinningNumbersMessage();
-		return Console.readLine();
+		String winningNumbers = Console.readLine();
+		Validator.validateFormOfWinningNumbers(winningNumbers);
+		return winningNumbers;
 	}
 
 	private void printAskingWinningNumbersMessage() {
