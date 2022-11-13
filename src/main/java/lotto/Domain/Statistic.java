@@ -1,63 +1,76 @@
 package lotto.Domain;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
-import static lotto.Enum.LottoProperty.HIGHEST_WINNING_RANK;
-import static lotto.Enum.LottoProperty.LOWEST_WINNING_RANK;
-import static lotto.Enum.StatisticMessage.*;
+import static lotto.Enum.LottoProperty.*;
 
 public class Statistic extends LottoShop {
+    private int lowestRank;
+    private int highestRank;
+
     private HashMap<Integer, Integer> RankDistributionMap;
-    private long accumulatedWinning = 0;
+    private HashMap<Integer, Integer> winningMoneyPerRank;
+    public long accumulatedWinningMoney;
 
-    private int lowestRank = LOWEST_WINNING_RANK.getValue();
-    private int highestRank = HIGHEST_WINNING_RANK.getValue();
+    public Statistic() {
+        lowestRank = LOWEST_WINNING_RANK.getValue();
+        highestRank = HIGHEST_WINNING_RANK.getValue();
 
-    public void ShowStatistic() {
-        RankDistributionMap = new HashMap<>();
-        calculateRank();
-        showRankResult();
-        showYield();
+        this.RankDistributionMap = new HashMap<>();
+        this.winningMoneyPerRank = new HashMap<>();
+
+        List<Integer> winningMoneyList = List.of(
+                RANK1_WINNING_MONEY.getValue(),
+                RANK2_WINNING_MONEY.getValue(),
+                RANK3_WINNING_MONEY.getValue(),
+                RANK4_WINNING_MONEY.getValue(),
+                RANK5_WINNING_MONEY.getValue()
+        );
+
+        for (int rank = lowestRank; rank >= highestRank; rank--) {
+            this.RankDistributionMap.put(rank, 0);
+
+            int winningMoney = winningMoneyList.get(rank - 1);
+            this.winningMoneyPerRank.put(rank, winningMoney);
+        }
+
+        this.accumulatedWinningMoney = 0;
     }
 
-    private void calculateRank() {
-        for (int rank = lowestRank; rank <= highestRank; rank++) {
-            searchRankByNumber(rank);
+    public void analyze() {
+        for (List<Integer> soldNumberList : soldLottoList) {
+            List<Integer> matchedNumberList = removeUnmatchedNumbers(soldNumberList);
+
+            int rank = inspection.getRankByMatchNumberList(matchedNumberList, bonusNumber);
+
+            if(rank == 0){
+                continue;
+            }
+
+            int rankCount = RankDistributionMap.get(rank);
+            rankCount++;
+            RankDistributionMap.put(rank, rankCount);
+
+            accumulatedWinningMoney += winningMoneyPerRank.get(rank);
         }
     }
 
-    private void searchRankByNumber(int rank) {
-        // TODO: 당첨번호와 모든 구입번호를 비교하여 등수 별로 맵에 담는다.
-    }
+    private List<Integer> removeUnmatchedNumbers(List<Integer> soldNumberList) {
+        List<Integer> removedList = new ArrayList<>();
 
-    private void showRankResult() {
-        for (int rank = highestRank; rank >= lowestRank; rank--) {
-            int count = RankDistributionMap.get(rank);
-            String message = getMessage(rank, count);
-
-            System.out.println(message);
-        }
-    }
-
-    private String getMessage(int rank, int count) {
-        String message;
-
-        if (rank == 5) {
-            message = WINNING_5RANK.getMessage(count);
-        } else if (rank == 4) {
-            message = WINNING_4RANK.getMessage(count);
-        } else if (rank == 3) {
-            message = WINNING_3RANK.getMessage(count);
-        } else if (rank == 2) {
-            message = WINNING_2RANK.getMessage(count);
-        } else {
-            message = WINNING_1RANK.getMessage(count);
+        for (int checkNumber : soldNumberList) {
+            if (winningNumbers.contains(checkNumber)) {
+                removedList.add(checkNumber);
+            }
         }
 
-        return message;
+        return removedList;
     }
 
-    public void showYield() {
-
+    public int getRankCount(int rank) {
+        return RankDistributionMap.get(rank);
     }
+
 }
