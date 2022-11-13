@@ -18,7 +18,9 @@ public class ConsoleUserInput {
 
     public String inputWinningNumbers(){
         String userInput = Console.readLine();
-        Validator.isValidLength(userInput, 6);
+        String useTrim = new String();
+        userInput=useTrim.trim();
+        Validator.isValidLength(userInput, 11);
         Validator.isValidFormatWithComma(userInput);
         Validator.isValidInput(userInput);
         return userInput;
@@ -38,4 +40,17 @@ public class ConsoleUserInput {
         return sixWinningNumbers;
     }
 
+    public int inputBonusNumber(String bonusNumber){
+        int bonus;
+        if(bonusNumber.length()>2){
+            Validator.isValidLength(bonusNumber,2);
+        }
+        Validator.isValidInput(bonusNumber);
+        if(bonusNumber.length()==2) {
+            bonus = Integer.parseInt(bonusNumber);
+        }
+        Validator.isInValidRange(Integer.parseInt(bonusNumber));
+        bonus = Integer.parseInt(bonusNumber);
+        return bonus;
+    }
 }

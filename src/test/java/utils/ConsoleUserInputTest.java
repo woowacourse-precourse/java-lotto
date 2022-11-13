@@ -22,7 +22,7 @@ public class ConsoleUserInputTest {
         return new ByteArrayInputStream(userInput.getBytes());
     }
 
-    @DisplayName("입력한 인자의 개수가 ','를 제외하고 6개인지 확인한다.")
+    @DisplayName("입력한 인자의 개수가 의도한 개수인지 확인한다.")
     @Test
     void checkValidLength(){
         InputStream in = testUserInput("1,2,3,4,5,6 7");
@@ -66,5 +66,49 @@ public class ConsoleUserInputTest {
         assertThatThrownBy(()-> consoleUserInput.inputWinningNumbers())
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorStatements.SHOUT_NOT_NUMBER_ERROR.alarmed());
+    }
+
+    @DisplayName("보너스 숫자의 입력값이 없는지 확인한다.")
+    @Test
+    void checkBonusNumberIsNothing(){
+        InputStream in = testUserInput("");
+        System.setIn(in);
+        scanner = new Scanner(System.in);
+
+        assertThatThrownBy(()-> consoleUserInput.inputWinningNumbers())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 숫자의 입력값이 공백인지 확인한다.")
+    @Test
+    void checkBonusNumberIsVacant(){
+        InputStream in = testUserInput(" ");
+        System.setIn(in);
+        scanner = new Scanner(System.in);
+
+        assertThatThrownBy(()-> consoleUserInput.inputWinningNumbers())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 숫자의 입력값이 숫자인지 확인한다.")
+    @Test
+    void checkBonusNumberIsNumber(){
+        InputStream in = testUserInput("t");
+        System.setIn(in);
+        scanner = new Scanner(System.in);
+
+        assertThatThrownBy(()-> consoleUserInput.inputWinningNumbers())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("보너스 숫자의 입력값이 1~45 범위내에 있는지 확인한다.")
+    @Test
+    void checkBonusNumberIsInRange(){
+        InputStream in = testUserInput("77");
+        System.setIn(in);
+        scanner = new Scanner(System.in);
+
+        assertThatThrownBy(()-> consoleUserInput.inputWinningNumbers())
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
