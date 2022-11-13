@@ -8,14 +8,15 @@ public class Player {
     private final LottoBot lottoBot = new LottoBot();
 
     public int getLottoCountPurchased() {
-        String input = getMoneyPurchased();
-        return Integer.parseInt(input) / LOTTO_PRICE;
+        int money = getMoneyPurchased();
+        lottoBot.saveInitialMoney(money);
+        return money / LOTTO_PRICE;
     }
 
-    private String getMoneyPurchased() {
-        String input = Console.readLine();
-        exception.checkPurchaseInput(input);
-        return input;
+    private int getMoneyPurchased() {
+        String money = Console.readLine();
+        exception.checkPurchaseInput(money);
+        return Integer.parseInt(money);
     }
 
     public void selectWinningNumbers() {
