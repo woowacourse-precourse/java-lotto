@@ -31,7 +31,7 @@ public class UI {
         String Input = Console.readLine();
         String[] Input_Array = Input.split(",");
         for (int index = 0; index < Input_Array.length; index++) {
-            number_validate(Input_Array[index]);
+            Answer_number_validate(Input_Array[index]);
             Integer number = Integer.valueOf(Input_Array[index]);
             Answer_numbers.add(number);
         }
@@ -57,13 +57,23 @@ public class UI {
         return Bonus_Number;
     }
 
+    private void Bonus_number_validate(String Input) {
+        try {
+            Integer number = Integer.valueOf(Input);
+            if (number < 1 || number > 45) {
+                throw new IllegalArgumentException();}
+        }catch(Exception e){
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+        }
+
+    }
 
 
 
 
 //    public static void main(String[] args) {
 //        UI UI = new UI();
-//        UI.Bonus_Number();
+//        System.out.println(UI.Bonus_Number());
 //    }
 //
 //}
