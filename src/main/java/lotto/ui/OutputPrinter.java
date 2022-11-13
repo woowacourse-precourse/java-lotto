@@ -17,7 +17,7 @@ public class OutputPrinter {
         }
     }
 
-    public void printWinningStatistics(Map<WinningNumbers, Integer> winningCase) {
+    public void printWinningStatistics(Map<WinningNumbers, Long> winningCase) {
         System.out.println("당첨 통계");
         System.out.println("---");
 
