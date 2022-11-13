@@ -7,4 +7,10 @@ public class OutputView {
     public static void printPurchaseAmountMessage() {
         System.out.println(INPUT_PURCHASE_AMOUNT);
     }
+
+    public static void printPurchaseQuantity(int purchaseQuantity) {
+        System.out.println();
+        System.out.printf(PURCHASE_QUANTITY.toString(), purchaseQuantity);
+        System.out.println();
+    }
 }
