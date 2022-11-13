@@ -1,11 +1,7 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.test.Assertions;
 import camp.nextstep.edu.missionutils.test.NsTest;
-import lotto.model.Lotto;
-import lotto.model.LottoCount;
-import lotto.model.LottoGenerator;
-import lotto.view.OutputView;
+import lotto.model.LottoTicket;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -60,8 +56,8 @@ class ApplicationTest extends NsTest {
 
     @Test
     void 로또_수량_구하기_테스트(){
-        LottoCount lottoCount = new LottoCount();;
-        int count = lottoCount.countLotto("14000");
+        LottoTicket lottoTicket = new LottoTicket();;
+        int count = lottoTicket.countLotto("14000");
         assertThat(count).isEqualTo(14);
     }
 
