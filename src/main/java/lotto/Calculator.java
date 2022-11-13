@@ -12,10 +12,10 @@ public class Calculator {
     private HashMap<Integer, Integer> rankCount = new HashMap<>();
     private double yield;
 
-    public Calculator(WinningNumber winningNumber, User user) {
-        this.winningNum = winningNumber.getWinningNum();
-        this.bonusNum = winningNumber.getBonusNum();
-        this.lotto = user.getLotto();
+    public Calculator(List<Integer> winningNum, int bonusNum, List<Lotto> lotto) {
+        this.winningNum = winningNum;
+        this.bonusNum = bonusNum;
+        this.lotto = lotto;
         calcWinningStat();
         calcYield();
     }

@@ -70,7 +70,7 @@ public class GamController {
 
         WinningNumber winningNumber = inputWinningNumAndBonusNum();
 
-        Calculator calc = new Calculator(winningNumber, user);
+        Calculator calc = new Calculator(winningNumber.getWinningNum(), winningNumber.getBonusNum(),user.getLotto());
         printWinningStat(calc);
         printYield(calc);
     }
