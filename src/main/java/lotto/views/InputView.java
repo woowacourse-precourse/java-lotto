@@ -9,4 +9,8 @@ public class InputView {
         System.out.println(InputMessage.INPUT_PRICE);
         return Console.readLine();
     }
+
+    public void printInputPriceAgain() {
+        System.out.println(InputMessage.INVALID_INPUT_PRICE);
+    }
 }
