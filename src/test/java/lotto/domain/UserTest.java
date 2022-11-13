@@ -17,7 +17,7 @@ public class UserTest {
 
     @DisplayName("금액의 첫부분이 0으로 시작하면 예외가 발생한다.")
     @Test
-    void createLottoByOverSize() {
+    void createBuyAmountByStartZero() {
         User user = new User();
         assertThatThrownBy(() -> user.setBuyAmount("01000"))
                 .isInstanceOf(IllegalArgumentException.class);
