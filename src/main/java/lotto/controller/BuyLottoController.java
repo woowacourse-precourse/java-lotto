@@ -1,28 +1,30 @@
 package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import lotto.console.Input;
 import lotto.domain.Lotto;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static lotto.service.Validation.*;
 import static lotto.service.Calculator.*;
 import static lotto.console.Output.*;
+import static lotto.console.Input.*;
+import static lotto.console.Output.BufferedRecorder.*;
+
 
 public class BuyLottoController {
 
-    public int costInput() throws IOException{
-
-        getOutput().printWhenInputCost();
-        int cost = Input.inputCostNumber();
+    private int inputCost() throws IOException{
+        printInputCost();
+        int cost = inputNumber();
 
         if (isUp(0, cost) && isMultiplesOf1000(cost)) {
-            final int tmp = lottoNumbersPerCost(cost);
+            int tmp = lottoNumbersPerCost(cost);
 
-            getBufferedRecorder().writeNewLine();
-            getBufferedRecorder().writeBuyLotto(tmp);
+            writeNewLine();
+            writeBuyLotto(tmp);
 
             return tmp;
         }
@@ -30,28 +32,27 @@ public class BuyLottoController {
         throw new IllegalArgumentException("[Error] 잘못된 비용을 지불했습니다.");
     }
 
-    public List<Lotto> createLottoNumber(int lottoNumber) throws IOException {
-        final List<Lotto> lottoList = new ArrayList<>(6);
+    private List<Lotto> createLottoNumber(int lottoNumber) throws IOException {
+        List<Lotto> lottoList = new ArrayList<>();
+        List<Integer> tmp;
 
         for(int i=0; i < lottoNumber; i++) {
-            Lotto tmp = new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-            lottoList.add(tmp);
-
-            getBufferedRecorder().writeLotto(tmp.getLotto());
+            tmp = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(tmp);
+            lottoList.add(new Lotto(tmp));
+            writeLotto(lottoList.get(i).getNumbers());
         }
-
 
         return lottoList;
     }
 
-    public void printLottoNumber() throws IOException {
-        getBufferedRecorder().writeNewLine();
-        getOutput().printBufferedStream();
+    private void printLottoNumber() throws IOException {
+        writeNewLine();
+        printBufferedStream();
     }
 
-    public List<Lotto> runBuyLottoController() throws IOException{
-
-        final List<Lotto> answer = createLottoNumber(costInput());
+    public List<Lotto> runBuyLottoController() throws IOException {
+        List<Lotto> answer = createLottoNumber(inputCost());
         printLottoNumber();
 
         return answer;

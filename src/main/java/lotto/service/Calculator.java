@@ -5,6 +5,7 @@ import java.util.Set;
 import java.util.HashSet;
 
 public class Calculator {
+
     private static int costMemory;
 
     public static int getCost() {
@@ -16,14 +17,26 @@ public class Calculator {
         return cost/1000;
     }
 
+    public static int scalingStatisticIndex(int cnt, boolean containBonus){
+        if(containBonus && cnt<6) {
+            cnt-=1;
+        }
+        if(!containBonus && cnt==6) {
+            cnt+=1;
+        }
+        return cnt;
+    }
+
     public static float calculateRevenueRate(int revenue, int cost) {
+        if(cost==0) {
+            throw new IllegalArgumentException("[Error] 0으로 나눌 수 없습니다.");
+        }
         return ((float)revenue)/((float)cost);
     }
 
-    public static int countIntersection(List<Integer> lst1, List<Integer> lst2) {
+    public static Set<Integer> intersection(List<Integer> lst1, List<Integer> lst2) {
         Set<Integer> s1 = new HashSet<>(lst1);
-        Set<Integer> s2 = new HashSet<>(lst2);
-        s1.retainAll(s2);
-        return s1.size();
+        s1.retainAll(lst2);
+        return s1;
     }
 }
