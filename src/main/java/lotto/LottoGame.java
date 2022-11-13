@@ -35,6 +35,7 @@ public class LottoGame {
 
     public void start() {
         try {
+            process.init();
             play();
         } catch (IllegalArgumentException e) {
             output.printError(e.getMessage());

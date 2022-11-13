@@ -2,6 +2,7 @@ package lotto.process;
 
 import lotto.domain.Result;
 import lotto.domain.User;
+import lotto.domain.Win;
 import lotto.logic.LottoLogic;
 import lotto.logic.UserLogic;
 import lotto.screen.IOResolve;
@@ -25,6 +26,10 @@ public class Process {
 
     public void setUserLogic(UserLogic userLogic) {
         this.userLogic = userLogic;
+    }
+
+    public void init(){
+        Win.initializeCount();
     }
 
     public void compareNumbers(User user, List<Integer> winningNumbers, Integer bonusNumber) {
@@ -52,7 +57,7 @@ public class Process {
                 String.format("5개 일치 (1,500,000원) - %d 개\n", history.get(3)),
                 String.format("5개 일치, 보너스 볼 일치 (30,000,000원) - %d 개\n", history.get(2)),
                 String.format("6개 일치 (2,000,000,000원) - %d 개\n", history.get(1)),
-                String.format("총 수익률은 %.2f%%입니다.\n", userLogic.userYield(user)));
+                String.format("총 수익률은 %.1f%%입니다.\n", userLogic.userYield(user)));
     }
 
     public String lottoNumbers(User user) {
