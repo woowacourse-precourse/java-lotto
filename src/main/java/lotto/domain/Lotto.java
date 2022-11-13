@@ -1,7 +1,9 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.constant.IntConstant;
 import lotto.constant.StringConstant;
 import lotto.validation.IntegerValidation;
@@ -16,7 +18,14 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         isLottoLength(numbers);
         isLottoBetween(numbers);
+        isLottoNumberOverlapping(numbers);
         this.numbers = numbers;
+    }
+
+    private void isLottoNumberOverlapping(List<Integer> numbers) {
+        if (numbers.size() != new HashSet<>(numbers).size()) {
+            throw new IllegalArgumentException(StringConstant.LOTTO_INPUT_NUMBER_OVERLAPPING_ERROR_MESSAGE.getMessage());
+        }
     }
 
     // TODO: 추가 기능 구현
@@ -42,8 +51,6 @@ public class Lotto {
             throw new IllegalArgumentException(StringConstant.LOTTO_INPUT_NUMBER_BETWEEN_ERROR_MESSAGE.getMessage());
         }
     }
-
-
 
     public int[] compareToWinningLotto(WinningLotto winningLotto) {
         int[] result = new int[2];
