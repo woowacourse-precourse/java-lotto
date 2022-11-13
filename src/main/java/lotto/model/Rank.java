@@ -26,11 +26,11 @@ public enum Rank {
                 .orElse(NONE);
     }
 
-    public static Rank findRankWithcount(int count) {
+    public static Rank findRankWithCount(int count) {
         return find(e -> Objects.equals(e.count, count));
     }
 
-    public static int findcountWithRank(Rank rank) {
+    public static int findCountWithRank(Rank rank) {
         return rank.count;
     }
 }

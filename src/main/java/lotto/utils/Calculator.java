@@ -3,8 +3,8 @@ package lotto.utils;
 import static lotto.constants.LottoConstant.VALID_LOTTERY_NUMBER_LENGTH;
 import static lotto.model.Rank.SECOND_PLACE;
 import static lotto.model.Rank.THIRD_PLACE;
-import static lotto.model.Rank.findRankWithcount;
-import static lotto.model.Rank.findcountWithRank;
+import static lotto.model.Rank.findCountWithRank;
+import static lotto.model.Rank.findRankWithCount;
 
 import java.util.List;
 import lotto.model.Lotto;
@@ -13,10 +13,10 @@ import lotto.model.Rank;
 public class Calculator {
     public static Rank calculateLottoRank(Lotto customerLotto, List<Integer> winningNumber, int bonusNumber) {
         int count = calculateDuplicateNumberCount(customerLotto, winningNumber);
-        if (count == findcountWithRank(THIRD_PLACE) && isLottoContainBonusNumber(customerLotto, bonusNumber)) {
+        if (count == findCountWithRank(THIRD_PLACE) && isLottoContainBonusNumber(customerLotto, bonusNumber)) {
             return SECOND_PLACE;
         }
-        return findRankWithcount(count);
+        return findRankWithCount(count);
     }
 
     private static int calculateDuplicateNumberCount(Lotto customerLotto, List<Integer> winningNumber) {
