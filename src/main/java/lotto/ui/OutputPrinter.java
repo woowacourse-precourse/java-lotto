@@ -32,4 +32,8 @@ public class OutputPrinter {
             System.out.println(matches + "개 일치 (" + commaInMoney.format(reward) + "원) - " + winningCounter + "개");
         }
     }
+
+    public void printRewardRate(double rawRatio) {
+        System.out.println("총 수익률은 "+ String.format("%.1f", rawRatio) + "%입니다.");
+    }
 }
