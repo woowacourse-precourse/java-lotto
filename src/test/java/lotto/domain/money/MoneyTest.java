@@ -15,21 +15,21 @@ class MoneyTest {
     @ParameterizedTest
     @ValueSource(strings = {"ㄱ", "ㄴ", "", "  ", "aa", "#", "$"})
     void 금액은_숫자만_입력이_가능합니다(final String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> new Money(input))
+        assertThatIllegalArgumentException().isThrownBy(() -> Money.generatePurchaseLottoMoney(input))
                 .withMessageContaining(Money.ERROR_MONEY_IS_NUMBER);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"-1", "0", "1", "2", "3", "999"})
     void 금액은_최소금액보다_커야합니다(final String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> new Money(input))
+        assertThatIllegalArgumentException().isThrownBy(() -> Money.generatePurchaseLottoMoney(input))
                 .withMessageContaining(Money.ERROR_MONEY_GREATER_THAN_MIN_NUMBER);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"1001", "2222", "33333", "444444", "5555555", "99999999"})
     void 금액은_최소금액으로_나누어_떨어져야합니다(final String input) {
-        assertThatIllegalArgumentException().isThrownBy(() -> new Money(input))
+        assertThatIllegalArgumentException().isThrownBy(() -> Money.generatePurchaseLottoMoney(input))
                 .withMessageContaining(Money.ERROR_MONEY_DIVIDE_MIN_NUMBER);
     }
 
@@ -40,9 +40,9 @@ class MoneyTest {
             "10000:4000:40.0",
             "20000:3000:15.0"
     }, delimiterString = ":")
-    void 금액의_수익률을_구할_수_있습니다(final String principleInput, final String profitInput, final Double percentInput) {
-        var principle = new Money(principleInput);
-        var profit = new Money(profitInput);
+    void 금액의_수익률을_구할_수_있습니다(final Long principleInput, final Long profitInput, final Double percentInput) {
+        var principle = Money.generateMoney(principleInput);
+        var profit = Money.generateMoney(profitInput);
 
         var actual = principle.calculateROI(profit);
         Assertions.assertThat(actual).isEqualTo(percentInput);
