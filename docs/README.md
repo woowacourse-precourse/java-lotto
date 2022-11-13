@@ -27,6 +27,7 @@
 - [ ] Output class : 결과를 출력하는 클래스
 - [ ] Compare class : 로또 번호를 비교하는 클래스
 - [ ] Calculator class : 계산 기능 클래스
+- [ ] Exception class : 예외 처리 클래스
 
 ### 추가 요구 사항
 
