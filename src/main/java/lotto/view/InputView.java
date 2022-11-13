@@ -12,7 +12,7 @@ public class InputView {
     public static final int PROPER_SIZE = 6;
 
     public static int insertMoney() {
-        System.out.println("구입금액을 입력해 주세요.");
+        GuidanceMessage.informToInsertMoney();
         String money = Console.readLine();
         validateMoney(money);
 
@@ -33,7 +33,7 @@ public class InputView {
     }
 
     public static List<Integer> insertWinningNumbers() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+        GuidanceMessage.informToInsertWinningNumbers();
         String numbersWithSeparator = Console.readLine();
         validateWinningNumbers(numbersWithSeparator);
 
@@ -64,7 +64,7 @@ public class InputView {
     }
 
     public static int insertBounsNumber() {
-        System.out.println("보너스 번호를 입력해 주세요.");
+        GuidanceMessage.informToInsertBonusNumber();
         String bonusNumber = Console.readLine();
 
         return Integer.parseInt(bonusNumber);
