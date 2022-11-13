@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class LottoResult {
+    //3
     public List<Integer> inputLottoNumber() {
         System.out.println("당첨 번호를 입력해 주세요.");
         String lottoNumberInput = readLine();
@@ -29,6 +30,7 @@ public class LottoResult {
         }
     }
 
+    //4
     public int inputBonusNumber(List<Integer> numbers) {
         System.out.println("보너스 번호를 입력해 주세요.");
         String bonus = readLine();

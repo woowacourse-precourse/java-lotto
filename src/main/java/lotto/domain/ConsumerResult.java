@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.assertj.core.util.Arrays;
 
 public class ConsumerResult {
 
@@ -29,15 +30,15 @@ public class ConsumerResult {
         for(int index=0;index<5;index++){
             income+= totalResult.get(index)*winmoney.get(index);
         }
-        System.out.printf("총 수익률은 %f%입니다.\n",myIncome(money,income));
+        System.out.printf("총 수익률은 %3.1f",profit(money,income));
+        System.out.println("%입니다.");
     }
 
     public float profit(int money, int income){
         return (income*100.0f)/money;
     }
 
-    private List<Integer> myIncome(int lottoCount, int bonusCount){
-        List<Integer> income = new ArrayList<>(5);
+    private List<Integer> myIncome(int lottoCount, int bonusCount,List<Integer> income){
         if(lottoCount==3){
             income.set(0,income.get(0)+1);
         }if(lottoCount==4){
@@ -46,18 +47,22 @@ public class ConsumerResult {
             income.set(2,income.get(2)+1);
         }if(lottoCount==5 && bonusCount==1){
             income.set(3,income.get(3)+1);
-        }if(lottoCount==6){
-            income.set(4,income.get(4)+1);
-        }
-        return income;
+        }if(lottoCount==6) {
+            income.set(4, income.get(4) + 1);
+        }return income;
     }
     public List<Integer> winLotto(List<Integer> jionCount){
         int lottoCount=jionCount.size()/2;
-        List<Integer> totalResult = new ArrayList<>(5);
-        for(int count=0;count<lottoCount;count++){
-            totalResult.set(count,myIncome(jionCount.get(count),jionCount.get(count+lottoCount)).get(count));
+        List<Integer> totalResult = new ArrayList<>();
+        List<Integer> income = new ArrayList<Integer>();
+        for(int i=0;i<5;i++){
+            income.add(0);
         }
-        return totalResult;
+        for(int count=0;count<lottoCount;count++){
+            income=myIncome(jionCount.get(count), jionCount.get(count + lottoCount),income);
+
+        }
+        return income;
     }
     //5
     public void printResult(List<Integer> totalResult){
