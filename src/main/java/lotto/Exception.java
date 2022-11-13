@@ -65,11 +65,12 @@ public class Exception {
     }
 
     public static void validateNumber(String inputBonusNumber) {
-        try{
-            Integer number = Integer.parseInt(inputBonusNumber);
-        }
-        catch (IllegalArgumentException e){
-            System.out.println("[ERROR] 숫자만 입력해주세요.");
+        for (int i = 0; i < inputBonusNumber.length(); i++) {
+            char oneNumber = inputBonusNumber.charAt(i);
+            if (!Character.isDigit(oneNumber)) {
+                System.out.println("[ERROR]");
+                throw new IllegalArgumentException();
+            }
         }
     }
 }

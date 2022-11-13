@@ -15,7 +15,6 @@ public class User {
         String stringLottoMoney = Console.readLine();
         Exception.UserContainExceptNumber(stringLottoMoney);
 
-
         this.lottoCount = Integer.parseInt(stringLottoMoney);
         Exception.UserMoneyDivide1000(lottoCount);
         this.lottoCount /= 1000;
