@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
+    private final Validator validator = Context.getValidator();
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -24,6 +25,11 @@ public class Lotto {
         }
         if (new HashSet(numbers).size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또번호에 중복이 없어야만 합니다.");
+        }
+        boolean valid = numbers.stream()
+                .allMatch(validator::isBetween1And45);
+        if(!valid){
+            throw new IllegalArgumentException("[ERROR] 로또번호는 1과 45사이의 값이어야 합니다.");
         }
     }
 
