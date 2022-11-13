@@ -21,7 +21,7 @@ public class LottoResult {
         return lottoNumber;
     }
 
-    public void numberCheck(List<Integer> numbers) {
+    private void numberCheck(List<Integer> numbers) {
         for (int index = 0; index < numbers.size(); index++) {
             if (numbers.get(index) < 1 || numbers.get(index) > 45) {
                 throw new IllegalArgumentException("[ERROR] 로또 숫자를 확인 하세요.");
@@ -37,7 +37,7 @@ public class LottoResult {
         return bonusNumber;
     }
 
-    public void bonusNumberCheck(List<Integer> numbers, int bonusNumber) {
+    private void bonusNumberCheck(List<Integer> numbers, int bonusNumber) {
         if (bonusNumber < 1 || bonusNumber > 45 || numbers.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호를 확인 하세요.");
         }
