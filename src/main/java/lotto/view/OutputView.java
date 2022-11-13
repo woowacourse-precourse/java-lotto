@@ -2,6 +2,7 @@ package lotto.view;
 
 import lotto.domain.Lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class OutputView {
@@ -11,6 +12,9 @@ public class OutputView {
 
     public static void printPurchase(int count, List<Lotto> lottos) {
         System.out.println(count + PURCHASE);
-        lottos.forEach(lotto -> System.out.println(lotto.getNumbers()));
+        lottos.forEach(lotto -> {
+            Collections.sort(lotto.getNumbers());
+            System.out.println(lotto.getNumbers());
+        });
     }
 }
