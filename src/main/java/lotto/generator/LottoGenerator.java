@@ -24,11 +24,15 @@ public class LottoGenerator {
         int availableQuantity = calculateAvailableQuantity(money);
         List<Lotto> purchasedLottos = new ArrayList<>();
         for (int purchasingQuantity = 0; purchasingQuantity < availableQuantity; purchasingQuantity++) {
-            purchasedLottos.add(new Lotto(Randoms.pickUniqueNumbersInRange(
-                    LottoNumber.START_NUMBER_OF_LOTTO.getNumber(),
-                    LottoNumber.END_NUMBER_OF_LOTTO.getNumber(),
-                    availableQuantity
-            )));
+            purchasedLottos.add(
+                    new Lotto(
+                            Randoms.pickUniqueNumbersInRange(
+                                    LottoNumber.START_NUMBER_OF_LOTTO.getNumber(),
+                                    LottoNumber.END_NUMBER_OF_LOTTO.getNumber(),
+                                    LottoNumber.NUMBER_OF_LOTTO_NUMBERS.getNumber()
+                            )
+                    )
+            );
         }
 
         return purchasedLottos;
