@@ -41,8 +41,7 @@ public class LottoException {
     }
 
     private static boolean isMoneyInputThousand(String moneyInput){
-        String thousand = moneyInput.substring(moneyInput.length()-3,moneyInput.length());
-        if(thousand.equals("000")){
+        if(moneyInput.equals("000")){
             return true;
         }
         return false;
