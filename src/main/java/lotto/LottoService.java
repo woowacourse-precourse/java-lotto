@@ -18,15 +18,19 @@ public class LottoService {
     }
 
     /**
-     * 1-45 범위의 6자리 랜덤 숫자를 만들어 Lotto 객체를 반환
+     * 1-45 범위의 6자리 랜덤 숫자를 만들어 Lotto 객체를 size 크기만큼 반환
+     * @param size : 발급할 로또의 개수
      * @return 랜덤 숫자가 부여된 Lotto 객체
      */
-    public Lotto generateLotto(){
-        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1,45,6);
-        randomNumbers.sort(null);
-        Lotto lotto = new Lotto(randomNumbers);
-
-        return lotto;
+    public List<Lotto> generateLottoList(int size){
+        List<Lotto> generatedLottos = new ArrayList<>();
+        for (int index = 0; index < size; index ++){
+            List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1,45,6);
+            randomNumbers.sort(null);
+            Lotto lotto = new Lotto(randomNumbers);
+            generatedLottos.add(lotto);
+        }
+        return generatedLottos;
     }
 
     /**
