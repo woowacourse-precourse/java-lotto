@@ -15,7 +15,7 @@ public class WinningNumberMaker {
     private List<Integer> winningNumbers;
     private int bonusNumber;
 
-    void make() {
+    void make() throws IllegalArgumentException{
         requestWinningNumber();
         getWinningNumberInput();
         divideByComma();
@@ -71,7 +71,7 @@ public class WinningNumberMaker {
         return new ArrayList<>(this.winningNumbers);
     }
 
-    void makeBonusNumber() {
+    void makeBonusNumber() throws IllegalArgumentException {
         requestBonusNumber();
         getBonusNumberInput();
         validateBonusNumberInput();
