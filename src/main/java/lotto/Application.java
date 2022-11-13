@@ -1,10 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.domain.Change;
-import lotto.domain.Generator;
-import lotto.domain.Lotto;
-import lotto.domain.Purchase;
+import lotto.domain.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,7 +20,6 @@ public class Application {
 
         int prizeMoney = lotto.getPrizeMoney(playerLotto, bonusNumber);
         lotto.showWinningStatistics();
-
     }
 
     private static int askPurchaseAmount() {
