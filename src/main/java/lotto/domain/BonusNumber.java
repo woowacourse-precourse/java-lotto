@@ -17,7 +17,7 @@ public class BonusNumber {
         }
     }
 
-    private int getNumber() {
+    public int getNumber() {
         return number;
     }
 }
