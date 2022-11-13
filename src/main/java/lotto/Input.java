@@ -1,7 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
-public class budgetInput {
+public class Input {
 	public static int budgetInput() {
 		System.out.println("게임을 구매하실 금액을 입력해주세요");
 		int budget = Integer.parseInt(Console.readLine());
