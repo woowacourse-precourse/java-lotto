@@ -14,17 +14,18 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class LottoMachine {
 
-    public static void buyLotto(List<Lotto> lottos, BigInteger money){
+    public static int buyLotto(List<Lotto> lottos, final BigInteger money){
         BigInteger tmpMoney = new BigInteger(money.toString());
+
         while(tmpMoney.equals(BigInteger.ZERO) != true){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             if (Util.isDuplicate(numbers) == false){
-                Collections.sort(numbers);
                 lottos.add(new Lotto(numbers));
                 tmpMoney = tmpMoney.subtract(BigInteger.valueOf(1000));
             }
         }
-        System.out.println(lottos.size() + "개를 구매했습니다.");
+        int buyCount = lottos.size();
+        return buyCount;
     }
 
     public static void printLottoLog(List<Lotto> lottos){
