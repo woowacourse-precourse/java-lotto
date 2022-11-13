@@ -6,7 +6,6 @@ import lotto.WinningStatistic;
 import lotto.Wins;
 
 import java.text.DecimalFormat;
-import java.util.Arrays;
 import java.util.Map;
 
 public class OutputUtils {
@@ -34,19 +33,26 @@ public class OutputUtils {
         Map<Wins, Integer> winningResult = winningStat.getWinningResult();
 
         System.out.println(WINNING_STATS_GUIDE);
+
+        generateResultStatistic(result, winningResult);
+
+        System.out.print(result);
+    }
+
+    private static void generateResultStatistic(StringBuilder result, Map<Wins, Integer> winningResult) {
         for (Wins win : Wins.values()) {
-            if (win == Wins.OTHER) { continue; }
+            if (win == Wins.OTHER) {
+                continue;
+            }
 
             result.append(String.format(MATCH_COUNT, win.getCount()));
             if (win.isBonus()) {
-                result.append(String.format(MATCH_COUNT, win.getCount()));
+                result.append(String.format(MATCH_BONUS, win.getCount()));
             }
             String formattedWinnings = decFormat.format(win.getWinnings());
             int count = winningResult.get(win);
             result.append(String.format(WINNINGS_AND_COUNT, formattedWinnings, count));
         }
-
-        System.out.println(result);
     }
 
     public static void printCalculatedProfitRate(double profitRate) {
