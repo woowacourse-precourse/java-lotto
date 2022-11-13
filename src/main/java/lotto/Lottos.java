@@ -17,4 +17,15 @@ public class Lottos {
         return lotto;
 
     }
+
+    public List<List<Integer>> createRandomLottos() {
+        int purchase = inputPurchase();
+        int n= purchase/1000;
+        List<List<Integer>> lottos = new ArrayList<>();
+
+        for(int i=0;i<n;i++){
+            lottos.add(createSingleRandomLotto());
+        }
+        return lottos;
+    }
 }
