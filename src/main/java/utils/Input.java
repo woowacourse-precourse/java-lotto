@@ -12,7 +12,7 @@ public class Input {
             IllegalArgument.handleException(IllegalArgument.EMPTY_INPUT.getMessage());
         }
 
-        if (IsCollection.isDigitOrCommaText(textInput) || textInput.isEmpty()) {
+        if (IsCollection.isDigitOrCommaText(textInput)) {
             return textInput;
         }
         IllegalArgument.handleException(IllegalArgument.NOT_DIGIT_OR_COMMA_TEXT.getMessage());
