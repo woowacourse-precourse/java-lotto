@@ -35,8 +35,9 @@ public class User {
         System.out.println("\n" + number + "개를 구매했습니다.");
 
         for (int i = 0; i < number; i++) {
-            myLotto.add(new Lotto(getOneLotto()));
-            System.out.println(getOneLotto());
+            List<Integer> lotto = getOneLotto();
+            myLotto.add(new Lotto(lotto));
+            System.out.println(lotto);
         }
     }
 
