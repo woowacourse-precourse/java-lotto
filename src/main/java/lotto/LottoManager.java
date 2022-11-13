@@ -78,6 +78,8 @@ public class LottoManager {
     }
 
     public float calculateEarningRate() {
-        return (float) calculateTotalReward() / (float) buyingMoney;
+        System.out.println("calculateTotalReward() = " + calculateTotalReward());
+        System.out.println("buyingMoney = " + buyingMoney);
+        return (float) calculateTotalReward() / (float) buyingMoney *100f;
     }
 }
