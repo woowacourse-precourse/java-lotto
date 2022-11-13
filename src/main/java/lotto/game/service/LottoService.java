@@ -22,7 +22,7 @@ public class LottoService {
     public List<LottoGrade> confirmAllLottos(WinningLotto winningLotto, List<Lotto> lottos) {
         List<LottoGrade> winnings = new ArrayList<>();
         for (Lotto lotto : lottos) {
-            LottoGrade lottoGrade = winningConfirm(winningLotto, lotto);
+            LottoGrade lottoGrade = confirmWinning(winningLotto, lotto);
             if (lottoGrade != LottoGrade.NOTHING) {
                 winnings.add(lottoGrade);
             }
@@ -30,7 +30,7 @@ public class LottoService {
         return winnings;
     }
 
-    public LottoGrade winningConfirm(WinningLotto winningLotto, Lotto lotto) {
+    public LottoGrade confirmWinning(WinningLotto winningLotto, Lotto lotto) {
         boolean bonusMatch = lotto.getNumbers().contains(winningLotto.getBonusNumber());
         int matchCount = 0;
         List<Integer> winningNumbers = winningLotto.getNumbers();

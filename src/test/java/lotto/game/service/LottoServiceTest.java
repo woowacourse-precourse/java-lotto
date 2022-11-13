@@ -42,7 +42,7 @@ class LottoServiceTest {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 8, 9, 10));
 
         // expect
-        assertThat(lottoService.winningConfirm(winningLotto, lotto))
+        assertThat(lottoService.confirmWinning(winningLotto, lotto))
                 .isEqualTo(LottoGrade.FIFTH);
     }
 
@@ -54,7 +54,7 @@ class LottoServiceTest {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 7, 8, 9));
 
         // expect
-        assertThat(lottoService.winningConfirm(winningLotto, lotto))
+        assertThat(lottoService.confirmWinning(winningLotto, lotto))
                 .isEqualTo(LottoGrade.FOURTH);
     }
 
@@ -66,7 +66,7 @@ class LottoServiceTest {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 9, 10));
 
         // expect
-        assertThat(lottoService.winningConfirm(winningLotto, lotto))
+        assertThat(lottoService.confirmWinning(winningLotto, lotto))
                 .isEqualTo(LottoGrade.FOURTH);
     }
 
@@ -78,7 +78,7 @@ class LottoServiceTest {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 10));
 
         // expect
-        assertThat(lottoService.winningConfirm(winningLotto, lotto))
+        assertThat(lottoService.confirmWinning(winningLotto, lotto))
                 .isEqualTo(LottoGrade.THIRD);
     }
 
@@ -90,7 +90,7 @@ class LottoServiceTest {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
         // expect
-        assertThat(lottoService.winningConfirm(winningLotto, lotto))
+        assertThat(lottoService.confirmWinning(winningLotto, lotto))
                 .isEqualTo(LottoGrade.FIRST);
     }
 
@@ -102,7 +102,7 @@ class LottoServiceTest {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
 
         // expect
-        assertThat(lottoService.winningConfirm(winningLotto, lotto))
+        assertThat(lottoService.confirmWinning(winningLotto, lotto))
                 .isEqualTo(LottoGrade.SECOND);
     }
 
