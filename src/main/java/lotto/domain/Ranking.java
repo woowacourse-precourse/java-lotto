@@ -29,11 +29,11 @@ public enum Ranking {
                 .orElse(NOTHING);
     }
 
-    public static List<Ranking> makeRankingList(Ranking ranking) {
+    public static List<Ranking> makeRankingList() {
         List<Ranking> rankingList = new ArrayList<>();
         Ranking[] rankingArr = Ranking.values();
 
-        for (int i = 0; i < rankingArr.length - 1; i++) {
+        for (int i = 4; i >= 0; i--) {
             rankingList.add(rankingArr[i]);
         }
 
