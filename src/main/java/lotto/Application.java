@@ -5,10 +5,10 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         printInputMoney();
-        int money = getInputMoneyFromUser();
+        int money = getMoneyInputFromUser();
     }
 
-    private static int getInputMoneyFromUser() {
+    private static int getMoneyInputFromUser() {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         //TODO: 구입금액 입력 검증
