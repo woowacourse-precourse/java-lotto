@@ -6,7 +6,7 @@ public enum RankType {
     FOURTH(50000, 4, "4개 일치"),
     THIRD(1500000, 3, "5개 일치"),
     SECOND(30000000, 2, "5개 일치, 보너스 볼 일치"),
-    FIRST(200000000, 1, "6개 일치");
+    FIRST(2000000000, 1, "6개 일치");
 
     private int prizeMoney;
     private int rank;
