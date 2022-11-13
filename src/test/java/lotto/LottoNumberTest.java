@@ -49,7 +49,7 @@ public class LottoNumberTest extends NsTest{
     @Test
     void 구입금액_성공_테스트() {
         assertSimpleTest(() -> {
-            run("5000");
+            run("5000", "1,2,3,4,5,6","7");
             assertThat(output()).contains("5개를 구매했습니다.");
         });
     }
@@ -57,7 +57,7 @@ public class LottoNumberTest extends NsTest{
     void 로또_정렬_테스트() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
-                    run("3000");
+                    run("3000","1,2,3,4,5,6","7");
                     assertThat(output()).contains(
                             "3개를 구매했습니다.",
                             "[8, 21, 23, 41, 42, 43]",
