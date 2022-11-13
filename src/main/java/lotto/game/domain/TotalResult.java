@@ -32,7 +32,7 @@ public class TotalResult {
 
     private static Money calculateTotalProfit(List<LottoGrade> grades) {
         return grades.stream()
-                .map(Money::of)
+                .map(LottoGrade::getPrize)
                 .reduce(Money::add)
                 .orElse(Money.ZERO);
     }

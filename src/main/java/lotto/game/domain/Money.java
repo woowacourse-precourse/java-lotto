@@ -26,10 +26,6 @@ public class Money {
         return Money.of(Long.parseLong(input));
     }
 
-    public static Money of(LottoGrade grade) {
-        return Money.of(grade.getPrize());
-    }
-
     private void validate(long value) {
         if (value % 1000 == 0) {
             return;

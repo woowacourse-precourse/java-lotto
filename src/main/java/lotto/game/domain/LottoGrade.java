@@ -14,8 +14,8 @@ public enum LottoGrade {
         this.prize = money;
     }
 
-    public long getPrize() {
-        return prize.getValue();
+    public Money getPrize() {
+        return prize;
     }
 
     public static LottoGrade confirmWinning(int winningCount, boolean bonusMatch) {
