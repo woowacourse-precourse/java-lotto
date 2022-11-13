@@ -8,10 +8,10 @@ public class LottoStatsDTO {
     private final Integer matchFiveNumbers;
     private final Integer matchFiveNumbersAndBonus;
     private final Integer matchSixNumbers;
-    private final Integer yieldPercent;
+    private final double yieldPercent;
 
     public LottoStatsDTO(Integer matchThreeNumbers, Integer matchFourNumbers, Integer matchFiveNumbers,
-	Integer matchFiveNumbersAndBonus, Integer matchSixNumbers, Integer yieldPercent) {
+	Integer matchFiveNumbersAndBonus, Integer matchSixNumbers, double yieldPercent) {
 	this.matchThreeNumbers = matchThreeNumbers;
 	this.matchFourNumbers = matchFourNumbers;
 	this.matchFiveNumbers = matchFiveNumbers;
@@ -40,7 +40,7 @@ public class LottoStatsDTO {
 	return matchSixNumbers;
     }
 
-    public Integer getYieldPercent() {
+    public double getYieldPercent() {
 	return yieldPercent;
     }
 }
