@@ -10,6 +10,8 @@ import lotto.utils.Logger.LogType;
 public class LottoMachine {
     private static final String INPUT_NUMBER_SIZE_ERROR_MESSAGE = "필요한 번호 개수만큼 입력하지 않았습니다.";
     private static final String NUMERIC_STRING_ERROR_MESSAGE = "숫자 리스트 혹은 숫자 형식으로 입력해 주세요.";
+    private static final String ALREADY_EXISTED_NUMBER_ERROR_MESSAGE = "번호가 중복되어 입력되었습니다.";
+
     public List<Integer> draw(int length) {
         if(length > 0) {
             List<String> inputs = inputNumber(length);
@@ -44,6 +46,10 @@ public class LottoMachine {
     }
 
     private void checkAlreadyExistedNumber(List<Integer> numbers, int number) {
+        if(numbers.contains(number)){
+            Logger.log(ALREADY_EXISTED_NUMBER_ERROR_MESSAGE, LogType.ERROR);
+            throw new IllegalArgumentException();
+        }
     }
 
     public List<Integer> publish() {

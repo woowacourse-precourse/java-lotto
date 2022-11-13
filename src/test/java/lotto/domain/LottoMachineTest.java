@@ -43,4 +43,17 @@ public class LottoMachineTest {
                 formatStringToNumberMethod.invoke(lottoMachine, numericStrings))
                 .isEqualTo(List.of(1, 2, 3));
     }
+
+    @DisplayName("이미 추첨한 번호일 때 예외를 발생한다.")
+    @Test
+    void testAlreadyExistedNumber() throws Exception {
+        Method checkAlreadyExistedNumberMethod = LottoMachine.class.getDeclaredMethod("checkAlreadyExistedNumber", List.class, int.class);
+        checkAlreadyExistedNumberMethod.setAccessible(true);
+
+        List<Integer> numbers = List.of(1, 2, 3);
+        int number = 1;
+
+        assertThatThrownBy(() -> checkAlreadyExistedNumberMethod.invoke(lottoMachine, numbers, number)).getCause()
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
