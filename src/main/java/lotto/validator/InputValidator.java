@@ -48,6 +48,27 @@ public class InputValidator {
         if (isDuplicatedNumber(List.of(inputWinningNumber.split(COMMA)))) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.DUPLICATED_NUMBER);
         }
+        if (isOutOfBounds(List.of(inputWinningNumber.split(COMMA)))) {
+            throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.OUT_OF_BOUNDS);
+        }
+    }
+
+    private boolean isOutOfBounds(List<String> splitInputWinningNumber) {
+        return getMaximumNumber(splitInputWinningNumber) > MAXIMUM_NUMBER || getMinimumNumber(splitInputWinningNumber) < MINIMUM_NUMBER;
+    }
+
+    private static int getMinimumNumber(List<String> splitInputWinningNumber) {
+        return splitInputWinningNumber.stream()
+                .map(Integer::parseInt)
+                .min(Integer::compareTo)
+                .get();
+    }
+
+    private static int getMaximumNumber(List<String> splitInputWinningNumber) {
+        return splitInputWinningNumber.stream()
+                .map(Integer::parseInt)
+                .max(Integer::compareTo)
+                .get();
     }
 
     private boolean isDuplicatedNumber(List<String> splitInputWinningNumber) {
