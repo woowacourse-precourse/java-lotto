@@ -8,7 +8,7 @@
 - ~~상수 Values 정의~~
     - 번호 자리수
     - 담첨 금액
-- User 클래스 정의
+- ~~User 클래스 정의~~
     - List<Lotto> lotteries
     - List<List<Result>> results
     - Integer lotteryCount
