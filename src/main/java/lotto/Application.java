@@ -31,7 +31,12 @@ public class Application {
     // 구입금액 입력
     private static int inputBuyMoney(){
         System.out.println("구입금액을 입력해 주세요.");
-        int money = Integer.parseInt(Console.readLine());
+        int money;
+        try{
+            money = Integer.parseInt(Console.readLine());
+        } catch (IllegalArgumentException exception){
+            throw new IllegalArgumentException("[ERROR] 로또 구매 금액은 숫자를 입력해야 합니다.");
+        }
 
         if(money%1000!=0){
             throw new IllegalArgumentException("[ERROR] 로또 구매 금액은 1000원 단위로 입력해야 합니다.");
@@ -142,28 +147,33 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        // 구입금액 입력
-        int lottoCnt = inputBuyMoney()/1000;
+        try{
+            // 구입금액 입력
+            int lottoCnt = inputBuyMoney()/1000;
 
-        // 로또 번호 생성
-        generateLottoNumbers(lottoCnt);
+            // 로또 번호 생성
+            generateLottoNumbers(lottoCnt);
 
-        // 로또 번호 출력
-        printLottoNumbers();
+            // 로또 번호 출력
+            printLottoNumbers();
 
-        // 당첨 번호 입력
-        inputLottoNumbers();
+            // 당첨 번호 입력
+            inputLottoNumbers();
 
-        // 보너스 번호 입력
-        inputLottoBonusNumber();
+            // 보너스 번호 입력
+            inputLottoBonusNumber();
 
-        // 당첨 통계 저장
-        calculateLottoGrade();
+            // 당첨 통계 저장
+            calculateLottoGrade();
 
-        // 수익률 계산
-        calculateEarningRate();
+            // 수익률 계산
+            calculateEarningRate();
 
-        // 당첨 통계/수익률 출력
-        printStatisticsAndEarningRate();
+            // 당첨 통계/수익률 출력
+            printStatisticsAndEarningRate();
+        } catch (IllegalArgumentException exception){
+            System.out.println("[ERROR] 프로그램 종료");
+        }
+
     }
 }

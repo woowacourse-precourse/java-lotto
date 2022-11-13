@@ -1,22 +1,31 @@
 package lotto;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> inputNumbers) {
-        validate(inputNumbers);
+        validateLength(inputNumbers);
+        validateDuplication(inputNumbers);
         this.numbers=inputNumbers.stream().collect(Collectors.toList());
         sortNumberASC();
     }
 
-    private void validate(List<Integer> numbers) {
+    // 로또 숫자 개수 검증
+    private void validateLength(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 로또 자동 생성 번호는 6개 숫자로 구성되어야 합니다.");
+        }
+    }
+
+    // 로또 숫자 개수 검증
+    private void validateDuplication(List<Integer> numbers) {
+        Set<Integer> set = new HashSet<>(numbers);
+
+        if(numbers.size()!=set.size()){
+            throw new IllegalArgumentException("[ERROR] 로또 자동 생성 번호는 서로 다른 6개의 숫자로 구성되어야 합니다.");
         }
     }
 
