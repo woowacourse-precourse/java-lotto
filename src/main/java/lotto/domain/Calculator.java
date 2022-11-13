@@ -27,7 +27,7 @@ public class Calculator {
 
     public void calculateEarningsRate(int purchaseAmount) {
         earningsRate = totalEarnings / (double) purchaseAmount * PERCENTAGE;
-        earningsRate = Math.round(earningsRate * 10) / 10.0;
+        earningsRate = Math.round(earningsRate * 10) / 10.0;    // 소숫점 둘째자리에서 반올림
     }
 
     public double getEarningsRate() {

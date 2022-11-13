@@ -19,6 +19,7 @@ public enum Rank {
     public int getPrizeMoney() {
         return prizeMoney;
     }
+
     public int getRank() {
         return rank;
     }

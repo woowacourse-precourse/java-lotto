@@ -97,7 +97,7 @@ public class LottoController {
 
     private int getRank(int sameNumberCount) {
         if (sameNumberCount == 6) {
-            return Rank.FIFTH_PLACE.getRank();
+            return Rank.FIRST_PLACE.getRank();
         }
         if (sameNumberCount == 5) {
             return Rank.THIRD_PLACE.getRank();
