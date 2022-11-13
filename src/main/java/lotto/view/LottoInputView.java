@@ -3,7 +3,7 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.utils.StringSeparator;
 import lotto.validator.BuyAmountValidator;
-import lotto.validator.WinningNumberValidator;
+import lotto.validator.LottoNumberValidator;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public class LottoInputView {
     private static String INPUT_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
 
     StringSeparator stringSeparator = new StringSeparator();
-    WinningNumberValidator winningNumberValidator = new WinningNumberValidator();
+    LottoNumberValidator lottoNumberValidator = new LottoNumberValidator();
     BuyAmountValidator buyAmountValidator = new BuyAmountValidator();
 
     public int inputBuyAmount() {
@@ -27,7 +27,7 @@ public class LottoInputView {
         System.out.println(INPUT_WINNING_NUMBERS_MESSAGE);
         String inputWinningNumbers = Console.readLine();
         List<Integer> winningNumbers = stringSeparator.separateStringToList(inputWinningNumbers);
-        winningNumberValidator.validateWinningNumbers(winningNumbers);
+        lottoNumberValidator.validateLottoNumbers(winningNumbers);
 
         return winningNumbers;
     }
@@ -36,7 +36,7 @@ public class LottoInputView {
         System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
         String inputBonusNumber = Console.readLine();
         int bonusNumber = Integer.parseInt(inputBonusNumber);
-        winningNumberValidator.validateBonusNumber(bonusNumber);
+        lottoNumberValidator.validateBonusNumber(bonusNumber);
         return bonusNumber;
     }
 
