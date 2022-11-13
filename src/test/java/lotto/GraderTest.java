@@ -16,6 +16,8 @@ class GraderTest {
 
     @BeforeEach
     void setup() {
+        Arrays.stream(Rank.values())
+                .forEach(rank -> rank.initCount());
         grader = new Grader(lottoList, Arrays.asList(1, 2, 3, 4, 5, 6), bonusNumber);
     }
 

@@ -1,10 +1,19 @@
 package lotto;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.*;
 
 class RankTest {
+
+    @BeforeEach
+    void setUp() {
+        Arrays.stream(Rank.values())
+                .forEach(rank -> rank.initCount());
+    }
 
     @Test
     void 카운트_플러스() {

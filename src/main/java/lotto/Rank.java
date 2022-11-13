@@ -50,4 +50,8 @@ public enum Rank {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("당첨되지 않았습니다."));
     }
+
+    public void initCount() {
+        this.count = 0;
+    }
 }

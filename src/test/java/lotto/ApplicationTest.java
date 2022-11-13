@@ -2,8 +2,10 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
@@ -13,6 +15,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest extends NsTest {
     private static final String ERROR_MESSAGE = "[ERROR]";
+
+    @BeforeEach
+    void setUp() {
+        Arrays.stream(Rank.values())
+                .forEach(rank -> rank.initCount());
+    }
 
     @Test
     void 금액은_숫자만_입력하지_않으면_종료() {
