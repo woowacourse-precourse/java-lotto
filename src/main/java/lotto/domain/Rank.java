@@ -4,12 +4,12 @@ import java.util.Arrays;
 import lotto.NumberFormatter;
 
 public enum Rank {
-    NOTHING(0,0),
-    FIFTH(3,5_000),
-    FOURTH(4,50_000),
-    THIRD(5,1_500_000),
-    SECOND(5,30_000_000),
-    FIRST(6,2_000_000_000);
+    NOTHING(0, 0),
+    FIFTH(3, 5_000),
+    FOURTH(4, 50_000),
+    THIRD(5, 1_500_000),
+    SECOND(5, 30_000_000),
+    FIRST(6, 2_000_000_000);
 
     private Integer matchBallCnt;
     private Integer money;
@@ -20,15 +20,13 @@ public enum Rank {
     }
 
     public static Rank valueOf(Integer matchBallCnt, boolean hasBonusNumber) {
-        if(matchBallCnt == 5) {
-             if (hasBonusNumber) {
-                 return Rank.SECOND;
-             }
+        if (matchBallCnt == 5) {
+            if (hasBonusNumber) {
+                return Rank.SECOND;
+            }
             return Rank.THIRD;
         }
-        return Arrays.stream(Rank.values())
-                .filter(rank -> rank.getMatchBallCnt() == matchBallCnt)
-                .findAny()
+        return Arrays.stream(Rank.values()).filter(rank -> rank.getMatchBallCnt() == matchBallCnt).findAny()
                 .orElse(NOTHING);
     }
 
@@ -43,7 +41,7 @@ public enum Rank {
     @Override
     public String toString() {
         String str = matchBallCnt + "개 일치";
-        if(this == Rank.SECOND) {
+        if (this == Rank.SECOND) {
             str += ", 보너스 볼 일치";
         }
         return str + " (" + NumberFormatter.format(money) + "원)";

@@ -46,6 +46,7 @@ class LottoTest {
             Assertions.assertThatThrownBy(() -> new Lotto(List.of(44, 3, 0, 7, 34, 1)))
                     .isInstanceOf(IllegalArgumentException.class);
         }
+
         @Test
         @DisplayName("중복값을 넣으면 예외를 반환한다")
         void test6() {

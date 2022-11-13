@@ -10,7 +10,7 @@ import lotto.domain.Result;
 public class Output {
 
     public static void showLottoesPurchased(List<Lotto> lottoes) {
-        System.out.println("\n"+NumberFormatter.format(lottoes.size()) + "개를 구매했습니다.");
+        System.out.println("\n" + NumberFormatter.format(lottoes.size()) + "개를 구매했습니다.");
         lottoes.stream().forEach(System.out::println);
     }
 

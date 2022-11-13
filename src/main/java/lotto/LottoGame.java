@@ -9,6 +9,7 @@ import lotto.domain.Result;
 
 public class LottoGame {
     private static LottoMachine lottoMachine;
+
     private LottoGame() {
     }
 
@@ -42,7 +43,7 @@ public class LottoGame {
     }
 
     protected void validateInputMoney(Integer moneyEntered) {
-        if(moneyEntered % LOTTO_PRICE != 0) {
+        if (moneyEntered % LOTTO_PRICE != 0) {
             throw new IllegalArgumentException("1000으로 나누어 떨어지는 숫자를 입력하세요");
         }
         if (moneyEntered < LOTTO_PRICE) {

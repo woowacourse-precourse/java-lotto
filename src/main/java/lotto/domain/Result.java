@@ -27,7 +27,7 @@ public class Result {
             totalOutcome += rank.getMoney() * rankCnt;
             totalInput += LOTTO_PRICE * rankCnt;
         }
-        Double yield =  Double.valueOf(totalOutcome) / totalInput * 100;
+        Double yield = Double.valueOf(totalOutcome) / totalInput * 100;
         return Math.round(yield * 10) / 10.0;
     }
 
