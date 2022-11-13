@@ -40,15 +40,15 @@
     - [ ] 1 ~ 45 범위를 벗어난 경우
     - [ ] 번호는 ,(쉼표) 기준으로 구분됨
 - 입력
-    - [ ] 1,000원 이상
-    - [ ] 1,000원 단위
+    - [X] 1,000원 이상
+    - [X] 1,000원 단위
 
 - [ ] 위의 두 경우 모두, `IllegalArgument Exception` 발생, 에러 메세지는 `[ERROR]`로 시작
 
 ### 랜덤 번호 생성
-- [ ] 중복 되지 않는 6개의 숫자
-- [ ] 범위는 1~45
-
+- [X] 중복 되지 않는 6개의 숫자 
+- [X] 범위는 1~45
+- `Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_MINIMUM, LOTTO_NUMBER_MAXIMUM, LOTTO_SIZE);사용`
 ### 당첨 확인
 - [ ] 입력받은 번호와 생성한 번호 비교
   
