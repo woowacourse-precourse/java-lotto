@@ -11,4 +11,8 @@ public class Cashier {
         int inputMoney = UserInterface.getInputMoney();
         this.lottos = LottoMachine.publish(inputMoney);
     }
+
+    public void saveResultInAccount() {
+        this.account.saveResult(lottos);
+    }
 }
