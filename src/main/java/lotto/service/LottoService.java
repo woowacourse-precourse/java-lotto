@@ -4,6 +4,11 @@ import static lotto.LottoConstant.INPUT_IS_NOT_FALL_APART_ERROR_MESSAGE;
 import static lotto.LottoConstant.INPUT_IS_NOT_NUMBER_ERROR_MESSAGE;
 import static lotto.LottoConstant.INPUT_IS_TOO_LOW_TO_BUY_LOTTO_ERROR_MESSAGE;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.List;
+import lotto.domain.Lotto;
+
 public class LottoService {
 
     private LottoService() {
@@ -26,5 +31,16 @@ public class LottoService {
 
     public static int getLottoPurchaseCount(int amount) {
         return amount / 1000;
+    }
+
+    private Lotto generateLottoNumber() {
+        List<Integer> numbers = new ArrayList<>();
+        while (numbers.size() < 6) {
+            int randomNumber = Randoms.pickNumberInRange(1, 45);
+            if (!numbers.contains(randomNumber)) {
+                numbers.add(randomNumber);
+            }
+        }
+        return new Lotto(numbers);
     }
 }
