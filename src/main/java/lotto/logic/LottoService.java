@@ -23,7 +23,7 @@ public class LottoService {
         return LottoServiceHolder.INSTANCE;
     }
 
-    public Map<Rank, Integer> getResult(WinningInfo target, List<Lotto> lottos) {
+    public Map<Rank, Integer> getResult(List<Lotto> lottos, WinningInfo target) {
         Map<Rank, Integer> countOfWinning = new EnumMap<>(Rank.class);
 
         lottos.forEach(lotto -> {
