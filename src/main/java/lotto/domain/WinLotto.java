@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.domain.message.ErrorMessages;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.domain.Messages;
+import lotto.domain.message.Messages;
 
 public class InputView {
     public static String inputMoney() {

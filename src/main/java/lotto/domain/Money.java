@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.domain.message.ErrorMessages;
+
 public class Money {
     private long money;
 
