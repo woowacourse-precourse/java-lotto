@@ -52,6 +52,7 @@ public class LottoGameView {
 
         return Integer.parseInt(inputNumber);
     }
+
     public void printLottos(List<Lotto> lottos) {
         System.out.println(lottos.size() + InformationMessage.PRINT_PURCHASE_COUNT.getMessage());
         lottos.forEach(this::printSortedLotto);
@@ -61,9 +62,7 @@ public class LottoGameView {
         System.out.println(lotto.getSortedByAscend());
     }
 
-    public void printWinningResult(List<LottoRank> ranks) {
-        Map<LottoRank, Integer> rankCount = getRankCount(ranks);
-
+    public void printWinningResult(Map<LottoRank, Integer> rankCount) {
         InformationMessage.PRINT_WINNING_RESULT.print();
         InformationMessage.DIVISOR.print();
         Arrays.stream(WinningResultMessage.values())
@@ -72,11 +71,5 @@ public class LottoGameView {
 
     public void printRateOfReturn(double rateOfReturn) {
         InformationMessage.PRINT_RATE_OF_RETURN.print(rateOfReturn);
-    }
-
-    private Map<LottoRank, Integer> getRankCount(List<LottoRank> ranks) {
-        Map<LottoRank, Integer> rankCount = new HashMap<>();
-        ranks.forEach(lottoRank -> rankCount.put(lottoRank, rankCount.getOrDefault(lottoRank, 0) + 1));
-        return rankCount;
     }
 }

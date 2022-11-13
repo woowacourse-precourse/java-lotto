@@ -26,15 +26,21 @@ public class LottoGame {
             List<Lotto> lottos = customer.purchaseLottos(money);
 
             lottoGameView.printLottos(lottos);
+            List<LottoRank> ranks = getLottoRanks(lottos);
 
-            WinningNumber winningNumber = lottoCompany.generate(lottoGameView.inputWinningNumbers(), lottoGameView.inputBonusNumber());
-            List<LottoRank> ranks = winningNumber.getRanks(lottos);
-            double rateOfReturn = lottoCompany.getRateOfReturn(money, lottoCompany.getTotalPrizeMoney(ranks));
-
-            lottoGameView.printWinningResult(ranks);
-            lottoGameView.printRateOfReturn(rateOfReturn);
+            lottoGameView.printWinningResult(lottoCompany.getRankCount(ranks));
+            lottoGameView.printRateOfReturn(lottoCompany.getRateOfReturn(money, lottoCompany.getTotalPrizeMoney(ranks)));
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private List<LottoRank> getLottoRanks(List<Lotto> lottos) {
+        List<Integer> winningNumbers = lottoGameView.inputWinningNumbers();
+        int bonusNumber = lottoGameView.inputBonusNumber();
+
+        return lottoCompany
+                .generate(winningNumbers, bonusNumber)
+                .getRanks(lottos);
     }
 }

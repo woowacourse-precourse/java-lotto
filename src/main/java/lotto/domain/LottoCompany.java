@@ -1,8 +1,9 @@
 package lotto.domain;
 
 import lotto.LottoRank;
-
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class LottoCompany {
 
@@ -18,5 +19,11 @@ public class LottoCompany {
         return ranks.stream()
                 .mapToInt(LottoRank::getPrizeMoney)
                 .sum();
+    }
+
+    public Map<LottoRank, Integer> getRankCount(List<LottoRank> ranks) {
+        Map<LottoRank, Integer> rankCount = new HashMap<>();
+        ranks.forEach(lottoRank -> rankCount.put(lottoRank, rankCount.getOrDefault(lottoRank, 0) + 1));
+        return rankCount;
     }
 }
