@@ -11,6 +11,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public boolean isExistNumber(int bonus) {
+        return numbers.contains(bonus);
+    }
+
     public List<Integer> getSortedLottoNumbers() {
         return numbers.stream()
                 .sorted()
