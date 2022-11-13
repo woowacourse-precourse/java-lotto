@@ -12,7 +12,7 @@ public class User {
 
     User(int purchaseAmount) {
         this.purchaseAmount = purchaseAmount;
-        for(Rank rank : Rank.values()) {
+        for (Rank rank : Rank.values()) {
             ranks.put(rank, 0);
         }
     }

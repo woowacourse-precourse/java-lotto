@@ -8,13 +8,13 @@ import java.util.List;
 
 public class LotteryDrawMachine {
     User user;
-    List<Lotto> lottos = new ArrayList<>();;
+    List<Lotto> lottos = new ArrayList<>();
 
     public LotteryDrawMachine(User user) {
         this.user = user;
     }
 
-    // 유저 금액만큼
+    // 유저 금액만큼 로또 생성
     public List<Lotto> generateLotto() {
         for (int i = 0; i < user.numOfPurchasableLotto(); i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LotteryRules.START_INCLUSIVE.getNumber(),
@@ -22,6 +22,14 @@ public class LotteryDrawMachine {
             Lotto lotto = new Lotto(numbers);
             lottos.add(lotto);
         }
+        return lottos;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public List<Lotto> getLottos() {
         return lottos;
     }
 }
