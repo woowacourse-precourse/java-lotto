@@ -7,4 +7,9 @@ public class InputView {
         System.out.println(ViewMessage.INPUT_MONEY);
         return Console.readLine();
     }
+
+    public String inputNumbers() {
+        System.out.println(ViewMessage.INPUT_NUMBERS);
+        return Console.readLine();
+    }
 }

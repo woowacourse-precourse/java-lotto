@@ -3,6 +3,11 @@ package lotto.service;
 import lotto.domain.User;
 import lotto.exception.InputException;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.StringTokenizer;
+
 public class InputService {
     User user;
 
@@ -13,8 +18,26 @@ public class InputService {
         return Integer.parseInt(inputMoney);
     }
 
+    private List<Integer> inputNumbersToList(String inputNumbers) {
+        List<Integer> numbers = new ArrayList<>(Collections.emptyList());
+        return numbers;
+    }
+
+    private List<Integer> toList(String inputNumbers) {
+        List<Integer> numbers = new ArrayList<>(Collections.emptyList());
+        StringTokenizer st = new StringTokenizer(inputNumbers, ",");
+        while (st.hasMoreTokens()) {
+            numbers.add(Integer.parseInt(st.nextToken()));
+        }
+        return numbers;
+    }
+
     public void setMoneyToUser(String inputMoney) {
         user = new User(inputMoneyToInteger(inputMoney));
+    }
+
+    public void setNumbersToUser(String inputNumbers) {
+        user.setNumbers(inputNumbersToList(inputNumbers));
     }
 
     public User getUser() {
