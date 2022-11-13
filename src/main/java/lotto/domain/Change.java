@@ -32,35 +32,37 @@ public class Change {
             }
             dotCount++;
             if (dotCount >= 2) {
-                System.out.println("[ERROR] 당첨번호를 다시 입력해주세요. - ,2개");
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 당첨번호를 다시 입력해주세요. - ,2개");
             }
-
         }
     }
 
     private static void checkAnyWord(String winningNumber) {
         if (!(winningNumber.matches(REGEX) || winningNumber.contains(","))) {
-            System.out.println("[ERROR] 당첨번호를 다시 입력해주세요. - 유효하지 않은 문자 입력");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 당첨번호를 다시 입력해주세요. - 유효하지 않은 문자 입력");
         }
     }
 
     private static void checkFirstWord(String winningNumber) {
         if (!String.valueOf(winningNumber.charAt(0)).matches(REGEX)) {
-            System.out.println("[ERROR] 당첨번호를 다시 입력해주세요. - 첫번째에 문자 입력");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 당첨번호를 다시 입력해주세요. - 첫번째에 문자 입력");
         }
     }
 
     private static void checkLastWord(String winningNumber) {
         if (!String.valueOf(winningNumber.charAt(winningNumber.length() - 1)).matches(REGEX)) {
-            System.out.println("[ERROR] 당첨번호를 다시 입력해주세요. - 마지막에 문자 입력");
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 당첨번호를 다시 입력해주세요. - 마지막에 문자 입력");
         }
     }
 
     public static int number(String purchaseAmount) {
+        checkWord(purchaseAmount);
         return Integer.parseInt(purchaseAmount);
+    }
+
+    private static void checkWord(String purchaseAmount){
+        if (!purchaseAmount.matches(REGEX)){
+            throw new IllegalArgumentException("[ERROR] 구입금액을 다시 입력해주세요. - 문자 포함");
+        }
     }
 }
