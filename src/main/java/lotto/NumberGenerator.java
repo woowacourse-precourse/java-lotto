@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Collections;
 import java.util.List;
 
-public class GenerateNumber {
+public class NumberGenerator {
     static final int STARTNUMBER = 1;
     static final int ENDNUMBER = 45;
     static final int COUNT = 6;
