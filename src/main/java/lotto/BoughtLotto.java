@@ -10,10 +10,6 @@ public class BoughtLotto extends Lotto{
         super(RandomNumber.createNumber());
     }
 
-    private List<Integer> createLottoNumber() {
-        return new ArrayList<>();
-    }
-
     public void printLottoNumber() {
 
     }
