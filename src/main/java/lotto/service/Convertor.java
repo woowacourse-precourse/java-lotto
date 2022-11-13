@@ -9,15 +9,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Convertor {
-    private static final int eachPrice = LottoStatus.eachPrice.getValue();
 
     public static int getQuantity(String input) {
         AmountException.validateAmount(input);
-        return Integer.parseInt(input) / eachPrice;
+        return Integer.parseInt(input) / LottoStatus.eachPrice.getValue();
     }
 
     public static int getAmount(int quantity) {
-        return (quantity * eachPrice);
+        return (quantity * LottoStatus.eachPrice.getValue());
     }
 
     public static List<Integer> getNumbers(String input) {

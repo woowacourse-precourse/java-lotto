@@ -36,6 +36,6 @@ public class Lotto {
         List<Integer> cloneNumber = new ArrayList<>();
         cloneNumber.addAll(numbers);
         Collections.sort(cloneNumber);
-        return numbers.toString();
+        return cloneNumber.toString();
     }
 }
