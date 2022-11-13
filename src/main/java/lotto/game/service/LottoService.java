@@ -60,9 +60,9 @@ public class LottoService {
         totalWinnings.put(grade, 1);
     }
 
-    public double calculateProfitPercent(Money money, List<LottoGrade> totalWinnings) {
+    public String calculateProfitPercent(Money money, List<LottoGrade> totalWinnings) {
         Money profit = calculateTotalProfit(totalWinnings);
-        return (double) profit.getValue() / money.getValue() * 100;
+        return String.format("%,.1f%%", (double) profit.getValue() / money.getValue() * 100);
     }
 
     private Money calculateTotalProfit(List<LottoGrade> totalWinnings) {

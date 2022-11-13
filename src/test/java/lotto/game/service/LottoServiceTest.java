@@ -107,7 +107,7 @@ class LottoServiceTest {
     }
 
     @Test
-    @DisplayName("로또를 10000원치 구매하고 5등이 1개면 수익률은 50% 여야한다")
+    @DisplayName("로또를 10000원치 구매하고 5등이 1개면 수익률은 50.0% 여야한다")
     void buyLotto10000WonAndFifthGradeThenProfitRateMust_50Percent() {
         // given
         Money money = Money.of(10000);
@@ -115,11 +115,11 @@ class LottoServiceTest {
 
         // expect
         assertThat(lottoService.calculateProfitPercent(money, winnings))
-                .isEqualTo(50.0);
+                .isEqualTo("50.0%");
     }
 
     @Test
-    @DisplayName("로또를 10000원치 구매하고 1등이 1개면 수익률은 20,000,000% 여야한다")
+    @DisplayName("로또를 10000원치 구매하고 1등이 1개면 수익률은 20,000,000.0% 여야한다")
     void buyLotto10000WonAndFirstGradeThenProfitRateMust_2_000_000Percent() {
         // given
         Money money = Money.of(10000);
@@ -127,11 +127,11 @@ class LottoServiceTest {
 
         // expect
         assertThat(lottoService.calculateProfitPercent(money, winnings))
-                .isEqualTo(20_000_000.0);
+                .isEqualTo("20,000,000.0%");
     }
 
     @Test
-    @DisplayName("로또를 1000000원치 구매하고 1등이 1개면 수익률은 20,000,000% 여야한다")
+    @DisplayName("로또를 1000000원치 구매하고 5등이 1개면 수익률은 0.5% 여야한다")
     void buyLotto1000000WonAndFirstGradeThenProfitRateMust_2_000_000Percent() {
         // given
         Money money = Money.of(1_000_000);
@@ -139,11 +139,11 @@ class LottoServiceTest {
 
         // expect
         assertThat(lottoService.calculateProfitPercent(money, winnings))
-                .isEqualTo(0.5);
+                .isEqualTo("0.5%");
     }
 
     @Test
-    @DisplayName("로또를 10000원치 구매하고 등수가 없으면 수익률은 0% 여야한다")
+    @DisplayName("로또를 10000원치 구매하고 등수가 없으면 수익률은 0.0% 여야한다")
     void buyLotto10000WonAndNothingThenProfitRateMust_0Percent() {
         // given
         Money money = Money.of(10000);
@@ -151,11 +151,11 @@ class LottoServiceTest {
 
         // expect
         assertThat(lottoService.calculateProfitPercent(money, winnings))
-                .isEqualTo(0);
+                .isEqualTo("0.0%");
     }
 
     @Test
-    @DisplayName("로또를 10000원치 구매하고 5등이 3개, 4등이 1개, 3등이 1개면 수익률은 15,650% 여야한다")
+    @DisplayName("로또를 10000원치 구매하고 5등이 3개, 4등이 1개, 3등이 1개면 수익률은 15,650.0% 여야한다")
     void buyLotto10000WonAndMixGradeThenProfitRateMust_0Percent() {
         // given
         Money money = Money.of(10000);
@@ -169,6 +169,6 @@ class LottoServiceTest {
 
         // expect
         assertThat(lottoService.calculateProfitPercent(money, winnings))
-                .isEqualTo(15650.0);
+                .isEqualTo("15,650.0%");
     }
 }
