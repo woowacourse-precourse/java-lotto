@@ -4,22 +4,22 @@
 
 ### VIEW
 
-- Money
+- MoneyView
 
-- [x] 구입금액을 입력 Money#get()
-- [x] 구입금액이 유효한 지 확인 Money#check()
+- [x] 구입금액을 입력 MoneyView.get()
+- [x] 구입금액이 유효한 지 확인 MoneyView.check()
 
-- Lotto
+- LottoView
 
-- [ ] 발행된 로또 출력 Lotto#print()
-- [ ] 당첨 결과 출력 Lotto#printResult()
+- [x] 발행된 로또 출력 LottoView.print()
+- [ ] 당첨 결과 출력 LottoView.printResult()
 
-- Number
+- NumberView
 
-- [ ] 당첨번호 입력 Number#getWinNumbers()
-- [ ] 당첨 번호가 유효한 지 확인 Number#checkWinNumbers()
-- [ ] 보너스 번호 입력 Number#getBonusNumber()
-- [ ] 보너스 번호가 유효한 지 확인 Number#checkBonusNumber()
+- [ ] 당첨번호 입력 NumberView#getWinNumbers()
+- [ ] 당첨 번호가 유효한 지 확인 NumberView#checkWinNumbers()
+- [ ] 보너스 번호 입력 NumberView#getBonusNumber()
+- [ ] 보너스 번호가 유효한 지 확인 NumberView#checkBonusNumber()
 
 ### DOMAIN
 

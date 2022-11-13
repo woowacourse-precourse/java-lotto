@@ -1,6 +1,6 @@
 package lotto.view;
 
-public class Number {
+public class NumberView {
     int getWinNumbers() {
         return 0;
     }

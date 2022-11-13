@@ -1,12 +1,10 @@
 package lotto.view;
-import camp.nextstep.edu.missionutils.Console;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
-public class Money {
-    int money;
-
-    public int get() {
+public class MoneyView {
+    static int money;
+    public static int get() {
         System.out.println("구입금액을 입력해 주세요.");
         String input = readLine();
         try {
@@ -18,7 +16,7 @@ public class Money {
         return money;
     }
 
-    private void check() {
+    private static void check() {
         if (money % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 금액은 1000원 단위여야합니다.");
         }
