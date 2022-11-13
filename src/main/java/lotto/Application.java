@@ -1,8 +1,10 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,6 +19,7 @@ public class Application {
     private static final String THIRD_PLACE_SENTENCE = "5개 일치 (1,500,000원)";
     private static final String SECOND_PLACE_SENTENCE = "5개 일치, 보너스 볼 일치 (30,000,000원)";
     private static final String FIRST_PLACE_SENTENCE = "6개 일치 (2,000,000,000원)";
+
     public static void main(String[] args) {
         inputPrice();
         inputWinningNumbers();
@@ -41,10 +44,17 @@ public class Application {
                 .collect(Collectors.toList());
         System.out.println();
     }
+
     public static void inputBonusNumber() {
         // 보너스 번호 입력
         System.out.println(INPUT_BONUS_NUMBER_SENTENCE);
         int bonus = Integer.parseInt(Console.readLine());
         System.out.println();
+    }
+
+    public static List<Integer> generateSortedRandomNumbers() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        Collections.sort(numbers);
+        return numbers;
     }
 }
