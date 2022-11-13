@@ -42,14 +42,27 @@ class WinningNumbersTest {
     @DisplayName("contains 메소드에 WinningNumber 리스트가 입력되면 중복 여부를 반환하는지 확인")
     @ParameterizedTest()
     @MethodSource("provideListForErrorTest")
-    void contains_test(List<Integer> numbers, int number, boolean actualValue) {
+    void contains_test(List<Integer> numbers, int number, boolean expected) {
         WinningNumbers winningNumbers = new WinningNumbers(numbers.stream()
                 .map(WinningNumber::new)
                 .collect(Collectors.toList()));
 
-        boolean expectedValue = winningNumbers.contains(number);
+        boolean actual = winningNumbers.contains(number);
 
-        assertThat(expectedValue).isEqualTo(actualValue);
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @DisplayName("contains 메소드에 WinningNumber 리스트가 입력되면 중복 여부를 반환하는지 확인")
+    @ParameterizedTest()
+    @MethodSource("provideTwoListForCountTest")
+    void countSameValue_test(List<Integer> numbers, List<Integer> inputNumbers, String expected) {
+        WinningNumbers winningNumbers = new WinningNumbers(numbers.stream()
+                .map(WinningNumber::new)
+                .collect(Collectors.toList()));
+
+        String actual = winningNumbers.countSameValue(inputNumbers);
+
+        assertThat(actual).isEqualTo(expected);
     }
 
     static Stream<Arguments> provideNonDuplicateListForTest() {
@@ -73,6 +86,14 @@ class WinningNumbersTest {
                 Arguments.of(List.of(1,2,3,4,5,6), 1, true),
                 Arguments.of(List.of(45,6,44,19,34,25), 1, false),
                 Arguments.of(List.of(1,2,5,24,45,16), 5, true)
+        );
+    }
+
+    static Stream<Arguments> provideTwoListForCountTest() {
+        return Stream.of(
+                Arguments.of(List.of(1,2,3,4,5,6), List.of(1,2,3,4,5,6), "6"),
+                Arguments.of(List.of(45,6,44,19,34,25), List.of(45,6,44,19,2,1), "4"),
+                Arguments.of(List.of(1,2,5,24,45,16), List.of(43,6,44,19,34,25), "0")
         );
     }
 }
