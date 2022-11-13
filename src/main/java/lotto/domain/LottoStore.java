@@ -8,7 +8,7 @@ import java.util.List;
 
 public class LottoStore {
 
-    private final int PRICE = 1000; // 로또의 가격
+    static final int PRICE = 1000; // 로또의 가격
 
     private final List<Lotto> lottoBoard; // 발행한 로또정보
 
