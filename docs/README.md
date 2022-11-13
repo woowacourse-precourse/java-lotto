@@ -20,7 +20,8 @@
 - [x] 당첨번호 입력의 형식 확인 NumberView.getWinNumbersFormat()
 - [x] 당첨 번호가 유효한 지 확인 NumberView.checkWinNumbers()
 - [x] 보너스 번호 입력 NumberView.getBonusNumber()
-- [ ] 보너스 번호가 유효한 지 확인 NumberView.checkBonusNumber()
+- [x] 보너스 번호가 유효한 지 확인 NumberView.checkBonusNumber()
+- [x] 번호가 1~45사이에 있는지 확인 NumberView.checkRange()
 
 ### DOMAIN
 
