@@ -18,7 +18,7 @@
 2. Player
     - [x]  로또 구입 금액 저장 기능 → setPurchaseAmount
     - [x]  구입한 로또 개수 저장 기능 → setLottoCount
-    - [ ]  구매한 로또 번호 저장 기능 → setLottoNumbers
+    - [x]  구매한 로또 번호 저장 기능 → setLottoNumbers
     - [ ]  당첨 내역 저장 기능 → setWinningResult
     - [ ]  수익률 저장 기능 → setLottoYield
 3. Seller
