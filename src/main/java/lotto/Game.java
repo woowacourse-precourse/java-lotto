@@ -17,6 +17,6 @@ public class Game {
                 InputView.inputWinningBonusNumber());
         LottoResult lottoResult = lotteries.checkLottoResult(winningNumber);
 
-        outputView.printLottoResult(lottoResult);
+        outputView.printLottoResult(lottoResult, lottoResult.calculateProfit(money));
     }
 }
