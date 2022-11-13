@@ -36,4 +36,11 @@ public class ValidatorTest {
         assertThatThrownBy(() -> inputValidator.validateBonusNumber("fff"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("보너스 번호 중 0 이하 또는 46 이상의 번호가 존재하면 예외가 발생한다.")
+    @Test
+    void createBonusNumbersByOutsideRange() {
+        assertThatThrownBy(() -> inputValidator.validateBonusNumber("47"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
