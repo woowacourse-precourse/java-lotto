@@ -13,8 +13,8 @@ public class LottoGenerator {
     private static final int LOTTO_NUMBER_QUANTITY = 6;
     private static final String MONEY_SHOULD_BE_DIVIDED_BY_ONE_THOUSAND = "[ERROR] 구입 금액은 1,000원 단위로만 받을 수 있습니다.";
 
-    private List<Lotto> lottos = new ArrayList<>();
-    private int lottoQuantity;
+    private final List<Lotto> lottos = new ArrayList<>();
+    private final int lottoQuantity;
 
     public LottoGenerator(int money) {
         validateMoney(money);
