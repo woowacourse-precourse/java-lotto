@@ -44,13 +44,13 @@ public class LottoGame {
 
     private void play() {
         // 예수금 입력
-        Integer money = (Integer) input.input("구매 금액을 입력해 주세요.\n",
+        Integer money = (Integer) input.input("구입금액을 입력해 주세요.\n",
                 IOResolve::toInteger);
         User user = process.createUser(money);
 
         //로또번호 생성
         Integer lottoCounts = process.makeLottoNumbers(user);
-        output.printMessage("%d개를 구입했습니다.\n", lottoCounts);
+        output.printMessage("%d개를 구매했습니다.\n", lottoCounts);
 
         // 로또 번호 출력
         output.output(() -> process.lottoNumbers(user));
