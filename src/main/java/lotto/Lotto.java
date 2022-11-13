@@ -2,12 +2,14 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
     private static User user;
     public static int lottoEA;
+    public static ArrayList<List<Integer>> lotteryOfUser;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -33,8 +35,13 @@ public class Lotto {
     private void printRandomNumbers(){
         for(int ea=1; ea<lottoEA; ea++){
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
+            lotteryOfUser.add(numbers);
             System.out.println(numbers);
         }
+    }
+
+    public ArrayList<List<Integer>> getLotteryOfUser(){
+        return lotteryOfUser;
     }
 
 
