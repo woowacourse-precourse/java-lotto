@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class Lotto {
+    private static final int LOTTO_SIZE = 6;
+    private static final int START_NUMBER = 1;
+    private static final int END_NUMBER = 45;
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -14,7 +18,7 @@ public class Lotto {
     }
 
     private static void validateSize(List<Integer> numbers) {
-        if (numbers.size() != Number.LOTTO.size()) {
+        if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException("[ERROR] Must enter 6 lottery winning numbers.");
         }
     }
@@ -22,7 +26,7 @@ public class Lotto {
     private static void validateDuplicate(List<Integer> numbers) {
         if (numbers.stream()
                 .distinct()
-                .count() != Number.LOTTO.size()) {
+                .count() != LOTTO_SIZE) {
             throw new IllegalArgumentException("[ERROR] Must enter non-duplicate numbers.");
         }
     }
@@ -35,7 +39,7 @@ public class Lotto {
     }
 
     private static boolean inRange(int number) {
-        return number < Number.START_RANGE.size()|| number > Number.END_RANGE.size();
+        return number < START_NUMBER || number > END_NUMBER;
     }
 
     @Override
