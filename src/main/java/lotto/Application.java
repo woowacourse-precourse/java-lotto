@@ -1,6 +1,6 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.Lotto;
 import lotto.domain.LottoGame;
 import lotto.domain.User;
 import lotto.domain.WinningLotto;
@@ -32,5 +32,9 @@ public class Application {
 
         System.out.println("보너스 번호를 입력해 주세요.");
         winningLotto.receiveBonusNumber();
+
+        System.out.println("당첨 통계\n" +
+                "---");
+        lottoGame.compareEachLotto(winningLotto);
     }
 }

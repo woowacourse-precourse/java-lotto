@@ -30,6 +30,30 @@ public class WinningLotto {
         checkBonusInWinning();
     }
 
+    public int compareLotto(Lotto lotto) {
+        List<Integer> lottoNumbers = lotto.getNumbers();
+        List<Integer> winningNumbers = winningNumber.getNumbers();
+        int correctCount = 0;
+
+        for (int lottoNumber:lottoNumbers) {
+            if (winningNumbers.contains(lottoNumber)) {
+                correctCount++;
+            }
+        }
+
+        return correctCount;
+    }
+
+    public boolean isBonusInLotto(Lotto lotto) {
+        List<Integer> lottoNumbers = lotto.getNumbers();
+
+        if (lottoNumbers.contains(bonusNumber)) {
+            return true;
+        };
+
+        return false;
+    }
+
     private List<Integer> stringArrayToIntegerList(String[] words) {
         List<Integer> result = new ArrayList<>();
 
@@ -41,6 +65,7 @@ public class WinningLotto {
 
         return result;
     }
+
 
     private void judgeIsDigitOfString(String sentence) {
         for (int i = 0; i < sentence.length(); i++) {

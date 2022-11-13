@@ -1,4 +1,4 @@
-package lotto;
+package lotto.domain;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -12,6 +12,10 @@ public class Lotto {
         validate(numbers);
         this.numbers = numbers;
         sort();
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     private void validate(List<Integer> numbers) {
