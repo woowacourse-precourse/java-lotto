@@ -1,14 +1,12 @@
 package lotto.domain;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import java.util.Arrays;
-import lotto.domain.Lotto;
+import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -26,12 +24,17 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 정답 확인 테스트")
+    @DisplayName("정답 로또와 랜덤 로또 비교 테스트")
     @Test
     void countHitNumberTest() {
         Assertions.assertThat(new Lotto(Arrays.asList(1,2,3,4,5,6))
                 .countHitNumber(new Lotto(Arrays.asList(1,2,3,4,5,6)))).isEqualTo(6);
     }
 
-
+    @DisplayName("로또 숫자의 범위 테스트")
+    @Test
+    void validateNumbersRangeTest() {
+        Assertions.assertThatThrownBy(() -> new Lotto(Arrays.asList(1, 2, 3, 4, 5, 46)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
