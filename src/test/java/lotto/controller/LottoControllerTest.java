@@ -1,6 +1,7 @@
-package lotto.domain;
+package lotto.controller;
 
 import lotto.controller.LottoController;
+import lotto.domain.Lotto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 import org.junit.jupiter.api.BeforeEach;
