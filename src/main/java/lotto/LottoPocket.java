@@ -17,18 +17,30 @@ public class LottoPocket {
     }
 
     public ScratchResult getScratchResult(WinningLotto winningLotto) {
-        return null;
+        Map<LottoGrade, Integer> numberOfWinsByGrade = getNumberOfWinsByGrade(winningLotto);
+        long totalEarning = getTotalEarning(numberOfWinsByGrade);
+        double earningRate = getEarningRate(totalEarning);
+
+        return new ScratchResult(numberOfWinsByGrade, totalEarning, earningRate);
     }
 
     private Map<LottoGrade, Integer> getNumberOfWinsByGrade(WinningLotto winningLotto) {
-        return null;
+        Map<LottoGrade, Integer> numberOfWinsByGrade = new LinkedHashMap();
+
+        lottoGroup.forEach((lotto) -> {
+            LottoGrade grade = winningLotto.getCompareResult(lotto);
+            numberOfWinsByGrade.put(grade, numberOfWinsByGrade.getOrDefault(grade, 0) + 1);
+        });
+
+        return Collections.unmodifiableMap(numberOfWinsByGrade);
     }
 
     private long getTotalEarning(Map<LottoGrade, Integer> numberOfWinsByGrade) {
-        return 0;
+        return numberOfWinsByGrade.keySet().stream().mapToLong((grade) -> numberOfWinsByGrade.get(grade) * grade.prize)
+                .reduce(Long::sum).orElse(0);
     }
 
     private double getEarningRate(double totalEarning) {
-        return 0;
+        return (totalEarning * 100) / (lottoGroup.size() * Lotto.LOTTO_COST);
     }
 }
