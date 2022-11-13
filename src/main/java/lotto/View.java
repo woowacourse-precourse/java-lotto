@@ -18,9 +18,10 @@ public class View {
     public void buyLottoList(int price, List<Lotto> lottoBundle) {
         System.out.println(price / 1000 + "개를 구매했습니다.");
         for (Lotto lotto : lottoBundle) {
-            //lotto.getNumbers().sort(Comparator.naturalOrder());
-            Collections.sort(lotto.getNumbers());
-            System.out.println(lotto.getNumbers().toString());
+            List<Integer> temporaryLotto = new ArrayList<>();
+            temporaryLotto.addAll(lotto.getNumbers());
+            Collections.sort(temporaryLotto);
+            System.out.println(temporaryLotto.toString());
         }
         System.out.println();
     }
