@@ -1,8 +1,9 @@
 package lotto.game.view;
 
+import static java.util.stream.Collectors.*;
+
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
-import java.util.stream.Collectors;
 import lotto.game.domain.Lotto;
 import lotto.game.domain.LottoGrade;
 import lotto.game.domain.TotalResult;
@@ -24,7 +25,7 @@ public class UI {
         lottos.stream()
                 .map(lotto -> lotto.getNumbers().stream()
                                 .sorted()
-                                .collect(Collectors.toList()))
+                                .collect(toList()))
                 .forEach(System.out::println);
         System.out.println();
     }

@@ -1,11 +1,11 @@
 package lotto.game.domain;
 
+import static java.util.stream.Collectors.*;
 import static lotto.game.ExceptionConst.*;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class WinningLotto extends Lotto {
     private static final Pattern lottoPattern = Pattern.compile("^([1-9]\\d?,){5}[1-9]\\d?$");
@@ -38,7 +38,7 @@ public class WinningLotto extends Lotto {
     private static List<Integer> parseStringNumbers(String numbersInput) {
         return Arrays.stream(numbersInput.split(","))
                 .map(Integer::parseInt)
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     private static Integer parseStringBonusNumber(String bonusNumber) {
