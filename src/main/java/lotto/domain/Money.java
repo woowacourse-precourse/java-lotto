@@ -31,7 +31,7 @@ public class Money {
 
     private boolean isCalculator(String money) {
         int convertMoney = convertToInt(money);
-        if (convertMoney % 1000 != 0 || convertMoney < 0) {
+        if (convertMoney % LOTTO_PRICE != 0) {
             return false;
         }
         return true;
