@@ -77,7 +77,7 @@ class LottoCalculateTest {
         LottoData lottoData = new LottoData(1000);
         Lotto lotto = new Lotto(lottoNumbers);
         lottoData.totalCalculate(lotto, winNumbers, bonusNumber);
-        assertThat(lottoData.prize.get(2)).isEqualTo(1);
+        assertThat(lottoData.prize.getPrize().get(2)).isEqualTo(1);
         assertThat(lottoData.prizeMoneySum).isEqualTo(30000000);
     }
 
@@ -90,7 +90,7 @@ class LottoCalculateTest {
         LottoData lottoData = new LottoData(1000);
         Lotto lotto = new Lotto(lottoNumbers);
         lottoData.totalCalculate(lotto, winNumbers, bonusNumber);
-        assertThat(lottoData.prize.get(4)).isEqualTo(1);
+        assertThat(lottoData.prize.getPrize().get(4)).isEqualTo(1);
         assertThat(lottoData.prizeMoneySum).isEqualTo(50000);
     }
 
@@ -103,7 +103,7 @@ class LottoCalculateTest {
         LottoData lottoData = new LottoData(1000);
         Lotto lotto = new Lotto(lottoNumbers);
         lottoData.totalCalculate(lotto, winNumbers, bonusNumber);
-        assertThat(lottoData.prize.get(3)).isEqualTo(1);
+        assertThat(lottoData.prize.getPrize().get(3)).isEqualTo(1);
         assertThat(lottoData.prizeMoneySum).isEqualTo(1500000);
     }
 
