@@ -10,11 +10,12 @@ import lotto.userinterface.Output;
 public class Player {
     private final long initialMoney;
     private List<Lotto> lottoTickets;
-    private PrizeCalculator prizeCalculator;
+    private final PrizeCalculator prizeCalculator;
 
     public Player(long initialMoney) {
         validate(initialMoney);
         this.initialMoney = initialMoney;
+        prizeCalculator = new PrizeCalculator();
     }
 
     private void validate(long money) {
@@ -39,5 +40,6 @@ public class Player {
         for (Lotto lotto : lottoTickets) {
             prizeCalculator.getResultForLotto(lotto, winningNumbers, bonusNumber);
         }
+        prizeCalculator.printPrizeResult();
     }
 }

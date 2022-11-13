@@ -20,5 +20,7 @@ public class Application {
         Organizer organizer = new Organizer();
         organizer.setWinningNumbersFromInput();
         organizer.setBonusNumberFromInput();
+
+        player.checkResult(organizer);
     }
 }

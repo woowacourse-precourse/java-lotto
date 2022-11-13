@@ -4,18 +4,20 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
+import lotto.constant.GameMessage;
 import lotto.constant.LottoStatistic;
 import lotto.constant.PrizeStatistic;
+import lotto.userinterface.Output;
 
 public class PrizeCalculator {
     private long totalPrizeAmount;
-    private Map<PrizeStatistic, Integer> prizeCount;
+    private final Map<PrizeStatistic, Integer> prizeCount;
 
     public PrizeCalculator() {
         this.totalPrizeAmount = 0;
         this.prizeCount = new EnumMap<>(PrizeStatistic.class);
-        for (PrizeStatistic prize : PrizeStatistic.values()) {
-            prizeCount.put(prize, 0);
+        for (PrizeStatistic prizeType : PrizeStatistic.values()) {
+            prizeCount.put(prizeType, 0);
         }
     }
 
@@ -40,17 +42,22 @@ public class PrizeCalculator {
 
     public long getPrizeAmount(int numberOfMatches, boolean doesBonusMatch) {
         long prizeAmount = 0;
-        for (PrizeStatistic prize : PrizeStatistic.values()) {
-            if (prize.getMatchingNumbers() == numberOfMatches && prize.geBonus() == doesBonusMatch){
-                prizeCount.merge(prize, 1, Integer::sum);
-                prizeAmount = prize.getPrizeAmount();
+        for (PrizeStatistic prizeType : PrizeStatistic.values()) {
+            if (prizeType.getMatchingNumbers() == numberOfMatches && prizeType.geBonus() == doesBonusMatch){
+                prizeCount.merge(prizeType, 1, Integer::sum);
+                prizeAmount = prizeType.getPrizeAmount();
                 return prizeAmount;
             }
         }
         return prizeAmount;
     }
 
-    /*public void printPrizeResult() {
-
-    }*/
+    public void printPrizeResult() {
+        Output.printMessage(GameMessage.RESULT_HEADER.getMessage());
+        for (Map.Entry<PrizeStatistic, Integer> prizeEntry : prizeCount.entrySet()) {
+            PrizeStatistic prizeType = prizeEntry.getKey();
+            int count = prizeEntry.getValue();
+            Output.printMessage(GameMessage.RESULT_BODY.getMessage(prizeType, count));
+        }
+    }
 }

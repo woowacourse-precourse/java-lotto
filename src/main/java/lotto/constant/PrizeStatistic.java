@@ -28,6 +28,4 @@ public enum PrizeStatistic {
     public long getPrizeAmount() {
         return this.prizeAmount;
     }
-
-
 }
