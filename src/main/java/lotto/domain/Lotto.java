@@ -1,7 +1,6 @@
 package lotto.domain;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -9,11 +8,13 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        checkSameCount(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
+            System.out.println("[ERROR] 로또 번호는 6자리의 숫자여야 합니다.");
             throw new IllegalArgumentException();
         }
     }
@@ -58,6 +59,14 @@ public class Lotto {
         System.out.println("---");
         for (Rank value : Rank.values()) {
             System.out.println(value.getText() + rank[value.getIndex()] + "개");
+        }
+    }
+
+    private void checkSameCount(List<Integer> numbers){
+        Set<Integer> uniqueNumber = new HashSet<>(numbers);
+        if (uniqueNumber.size() != 6){
+            System.out.println("[ERROR] 로또 번호는 중복되는 값이 없어야 합니다.");
+            throw new IllegalArgumentException();
         }
     }
 }
