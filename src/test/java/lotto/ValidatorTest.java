@@ -15,5 +15,10 @@ public class ValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-
+    @DisplayName("당첨 번호에 중복이 존재하면 예외가 발생한다")
+    @Test
+    void winningNumberDuplicateValidation() {
+        assertThatThrownBy(() -> winningNumberDuplicate(new Integer[] {1,2,3,4,5,5}))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
