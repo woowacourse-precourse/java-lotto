@@ -51,7 +51,7 @@ public class Config {
     }
 
     private static boolean isLongerTotalThenNumber() {
-        return true;
+        return LOTTO_LENGTH + BONUS_LOTTO_LENGTH <= LOTTO_RANGE_END_NUMBER - LOTTO_RANGE_START_NUMBER + 1;
     }
 
     private static boolean isRankAmount() {
