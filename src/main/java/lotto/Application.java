@@ -27,6 +27,24 @@ public class Application {
         }
     }
 
+    public static void numberCompare(int lottoCount, int[][] lottoArray, int[] userInputLottoNumber, int userInputBonusNumber, int purchasedValue){
+        int[] correctCount = new int[5];
+
+        for(int i = 0; i < lottoCount; i++){
+            int countTmp = 0;
+
+            for(int j = 0; j < 6; j++){
+
+
+                for(int k = 0; k < 6; k++) {
+                    if (lottoArray[i][j] == userInputLottoNumber[k]) {
+                        countTmp++;
+                    }
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Scanner scanner = new Scanner(System.in);
@@ -35,6 +53,7 @@ public class Application {
         String[] userInputLottoTmp;
         int[] userInputLottoNumber = new int[6];
         int userInputBonusNumber;
+        int[][] lottoArray = new int[][];
 
         System.out.println("구입금액을 입력해 주세요.");
         purchasedValue = scanner.nextInt();
@@ -59,7 +78,7 @@ public class Application {
         System.out.println("보너스 번호를 입력해 주세요.");
         userInputBonusNumber = scanner.nextInt();
 
-        // TODO: 사용자가 입력한 당첨 번호, 보너스 번호와 생성한 당첨 번호 비교
+        numberCompare(lottoCount, lottoArray, userInputLottoNumber, userInputBonusNumber, purchasedValue);
 
         // TODO: 비교값에 따라 당첨 내역 출력
 
