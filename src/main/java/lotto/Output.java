@@ -17,8 +17,16 @@ public class Output {
 		}
 	}
 	public static void winningResultOutput(ArrayList<List<Integer>> userNumber, ArrayList<Integer> winningNumber, int bonusNumber) {
-		calculateResult(userNumber, winningNumber, bonusNumber);
+		HashMap<String,Integer> result = calculateResult(userNumber, winningNumber, bonusNumber);
+		System.out.println("3개 일치 (5,000원) - "+result.get("three")+"개");
+		System.out.println("4개 일치 (50,000원) - "+result.get("four")+"개");
+		System.out.println("5개 일치 (1,500,000원) - "+result.get("five")+"개");
+		System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+result.get("bonus")+"개");
+		System.out.println("6개 일치 (2,000,000,000원) - "+result.get("six")+"개");
+
 	}
+
+
 
 	public static HashMap<String, Integer> calculateResult(ArrayList<List<Integer>> userNumber, ArrayList<Integer> winningNumber, int bonusNumber){
 		HashMap<String,Integer> result = new HashMap<String,Integer>();
