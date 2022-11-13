@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import lotto.aspect.PaymentValidator;
 import lotto.domain.Lotto;
 import lotto.domain.Rank;
 import lotto.domain.WinningInfo;
@@ -34,9 +35,11 @@ public class Game {
         outputResult(payment, lottos, target);
     }
 
-    private long inputPayment() {
+    private long inputPayment() throws IllegalArgumentException {
         view.printStart();
-        return Long.parseLong(Console.readLine());
+        String payment = Console.readLine();
+        PaymentValidator.validateNumberFormat(payment);
+        return Long.parseLong(payment);
     }
 
     private List<Lotto> createLottos(long payment) throws IllegalArgumentException {
