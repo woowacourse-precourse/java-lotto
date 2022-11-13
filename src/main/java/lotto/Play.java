@@ -19,7 +19,7 @@ public class Play {
         List<Lotto> lottoTickets = createLottoTickets(numOfLotto);
         Output.showLottoTickets(lottoTickets);
 
-        LottoNumber lottoNumber = UserInput.inputWinningNumbers();
+        LottoNumber lottoNumber = UserInput.inputLottoNumbers();
         Result result = new Result(lottoTickets, lottoNumber);
         result.calculateReturnOfRate(numOfLotto*MONEY_UNIT);
     }
@@ -31,5 +31,4 @@ public class Play {
         }
         return lottoTickets;
     }
-
 }

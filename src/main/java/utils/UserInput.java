@@ -17,7 +17,7 @@ public class UserInput {
         return calculateNumOfLotto(Integer.parseInt(price));
     }
 
-    public static LottoNumber inputWinningNumbers() {
+    public static LottoNumber inputLottoNumbers() {
         System.out.println(INPUT_WINNING_NUM_MESSAGE);
         String winningNumbers = Console.readLine();
 
