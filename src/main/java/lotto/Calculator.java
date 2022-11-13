@@ -103,7 +103,7 @@ public class Calculator {
                 profit += rankCount.get(prize.place) * prize.prize;
             }
         }
-        yield = profit/(1000*lotto.size());
+        yield = (profit/(1000*lotto.size()))*100;
     }
 
     public double getYield() {

@@ -58,7 +58,7 @@ public class GamController {
     }
 
     private void printYield(Calculator calc) {
-        System.out.printf("총 수익률은 %.1f입니다.", calc.getYield());
+        System.out.printf("총 수익률은 %.1f%%입니다.", calc.getYield());
     }
 
     public void run() {
