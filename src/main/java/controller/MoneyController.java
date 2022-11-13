@@ -6,8 +6,8 @@ import service.MoneyService;
 import java.util.regex.Pattern;
 
 public class MoneyController {
-    MoneyService moneyService = new MoneyService();
     private final static String FORMAT = "^[0-9]*$";
+    private final MoneyService moneyService = new MoneyService();
 
     public Money getPurchaseAmount(String purchaseAmount) {
         if (!isNumber(purchaseAmount))
