@@ -1,11 +1,14 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
+    static int bonusNumber;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -22,8 +25,15 @@ public class Lotto {
         }
     }
 
+    public void enterBonusNumber() {
+        String bonusNumberString = Console.readLine();
+        bonusNumber = exceptionInvalidBonusNumber(bonusNumberString);
+        exceptionBonusNumberOutOfRange(bonusNumber);
+        exceptionBonusNumberByDuplicatedLotto(bonusNumber);
+    }
+
     // TODO: 추가 기능 구현
-    public void processLotto(List<List<Integer>> userLottos, int bonusNumber, int purchasePrice) {
+    public void processLotto(List<List<Integer>> userLottos, int purchasePrice) {
         HashMap<Integer, Integer> matchingPair = createLottoHashSet();
         calculateWinningStatistics(userLottos, bonusNumber, matchingPair);
         printWinningStatistics(matchingPair, purchasePrice);
@@ -112,8 +122,17 @@ public class Lotto {
                 IllegalArgumentException e = new IllegalArgumentException();
                 System.out.println(Constant.ERROR_MESSAGE + "로또 번호는 1부터 45 사이의 숫자여야 합니다.");
                 throw e;
-
             }
+        }
+    }
+
+    private int exceptionInvalidBonusNumber(String bonusNumber) {
+        try {
+            return Integer.parseInt(bonusNumber);
+        } catch (NumberFormatException exception) {
+            IllegalArgumentException e = new IllegalArgumentException();
+            System.out.println(Constant.ERROR_MESSAGE + "보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
+            throw e;
         }
     }
 
