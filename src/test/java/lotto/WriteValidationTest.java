@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.dto.WinningLottoNumber;
+import lotto.service.WriteValidation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

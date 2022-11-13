@@ -1,4 +1,6 @@
-package lotto;
+package lotto.service;
+
+import lotto.dto.WinningLottoNumber;
 
 import java.util.Arrays;
 import java.util.List;

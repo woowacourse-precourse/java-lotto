@@ -1,17 +1,29 @@
-package lotto;
+package lotto.view;
+
+import lotto.domain.Rank;
+import lotto.dto.ResponseRankAggregation;
+import lotto.service.YieldService;
 
 import java.text.DecimalFormat;
 
 public class WinningHistoryView {
 
     private static DecimalFormat decimalFormat = new DecimalFormat("###,###");
+    private static YieldService yieldService = new YieldService();
 
-    public static void showRankAggregation(ResponseRankAggregation responseRankCombine) {
-        showFifthRankCount(responseRankCombine.getFifthRankCount());
-        showFourthRankCount(responseRankCombine.getFourthRankCount());
-        showThirdRankCount(responseRankCombine.getThirdRankCount());
-        showSecondRankCount(responseRankCombine.getSecondRankCount());
-        showFirstRankCount(responseRankCombine.getFirstRankCount());
+    public static void showRankAggregation(ResponseRankAggregation responseRankAggregation, String pay) {
+        showAggregationForm();
+        showFifthRankCount(responseRankAggregation.getFifthRankCount());
+        showFourthRankCount(responseRankAggregation.getFourthRankCount());
+        showThirdRankCount(responseRankAggregation.getThirdRankCount());
+        showSecondRankCount(responseRankAggregation.getSecondRankCount());
+        showFirstRankCount(responseRankAggregation.getFirstRankCount());
+        showYield(responseRankAggregation, pay);
+    }
+
+    private static void showAggregationForm() {
+        System.out.println("당첨 통계");
+        System.out.println("---");
     }
 
     private static void showFirstRankCount(int firstRankCount) {
@@ -32,5 +44,9 @@ public class WinningHistoryView {
 
     private static void showFifthRankCount(int fifthRankCount) {
         System.out.printf("%d개 일치 (%s원) - %d개\n", Rank.FIFTH.getMatchCount(), decimalFormat.format(Rank.FIFTH.getWinningMoney()), fifthRankCount);
+    }
+
+    private static void showYield(ResponseRankAggregation responseRankAggregation, String pay) {
+        yieldService.calculate(responseRankAggregation, pay);
     }
 }

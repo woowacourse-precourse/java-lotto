@@ -1,4 +1,10 @@
-package lotto;
+package lotto.service;
+
+import lotto.domain.Lotto;
+import lotto.domain.Rank;
+import lotto.dto.ResponseRankAggregation;
+import lotto.dto.WinningLottoNumber;
+import lotto.dto.WinningNumberCount;
 
 import java.util.List;
 

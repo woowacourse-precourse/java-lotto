@@ -1,5 +1,8 @@
 package lotto;
 
+import lotto.domain.Lotto;
+import lotto.dto.WinningLottoNumber;
+import lotto.dto.WinningNumberCount;
 import lotto.exception.PayMoneyException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

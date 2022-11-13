@@ -1,6 +1,8 @@
-package lotto;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.dto.WinningLottoNumber;
+import lotto.dto.WinningNumberCount;
 import lotto.exception.PayMoneyException;
 
 import java.util.ArrayList;

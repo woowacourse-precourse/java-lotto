@@ -1,16 +1,18 @@
-package lotto;
+package lotto.domain;
 
+import lotto.dto.WinningLottoNumber;
 import lotto.exception.PayMoneyException;
+import lotto.service.WriteValidation;
 
 import java.util.Collections;
 import java.util.List;
 
 public class LottoShop {
 
-    private final WriteValidation memberWriteService = new WriteValidation();
+    private final WriteValidation validation = new WriteValidation();
 
     public List<Lotto> createLottoForPayment(String pay) {
-        int payMoney = memberWriteService.writePay(pay);
+        int payMoney = validation.writePay(pay);
         try {
             int quantity = Lotto.moneyOfQuantity(payMoney);
 
@@ -22,7 +24,7 @@ public class LottoShop {
     }
 
     public WinningLottoNumber createWinningLottoNumberFor(String writeLottoNumber, String writeBonusNumber) {
-        return memberWriteService.writeWinningLottoNumbers(writeLottoNumber, writeBonusNumber);
+        return validation.writeWinningLottoNumbers(writeLottoNumber, writeBonusNumber);
     }
 
 }
