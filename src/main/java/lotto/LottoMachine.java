@@ -15,7 +15,13 @@ public class LottoMachine {
         lottoTickets = new ArrayList<>();
     }
 
+    public void startLottoGame() {
+        receiveMoney();
+        createLottoTickets();
+    }
+
     public void receiveMoney() {
+        LottoMachinePrinter.printReceivePriceMessage();
         banknoteSlot.receiveMoney();
     }
 
@@ -25,13 +31,8 @@ public class LottoMachine {
             Lotto lotto = new Lotto(NumberGenerator.createRandomNumber());
             lottoTickets.add(lotto);
         }
-    }
-
-    public List<Lotto> getLottoTickets() {
-        return lottoTickets;
-    }
-
-    public void printLottoTickets() {
+        LottoMachinePrinter.printPurchaseAmount(numberOfLotto);
+        LottoMachinePrinter.printLottoTickets(lottoTickets);
     }
 
     private int getNumberOfLotto() {
