@@ -36,9 +36,13 @@ public class LotteryMachine {
         this.winningLotto = new Lotto(winningNum);
     }
 
-    public void makeBonusNum(List<Integer> lottoNum) {
+    public String inputBonusNum() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        String inputBonusNum = Console.readLine();
+        return Console.readLine();
+    }
+
+    public void makeBonusNum(List<Integer> lottoNum, String inputBonusNum) {
+
 
         Error.validateInputIsNotNum(inputBonusNum);
 
@@ -100,16 +104,19 @@ public class LotteryMachine {
         System.out.println("6개 일치 (2,000,000,000원) - " + sameNumCount[4] + "개");
     }
 
-    public void printRateOfReturn(int[] lottoResult, int buyMoney) {
+    public double calculateRateOfReturn(int[] lottoResult, int buyMoney) {
         double money = 0;
 
         for (int index = 0; index < lottoResult.length; index++) {
             money += (long) lottoResult[index] * proceeds[index];
         }
+        return(money / buyMoney) * 100.0;
+    }
 
-        double rateOfReturn = (money / buyMoney) * 100.0;
+    public void printRateOfReturn(double rateOfReturn) {
         System.out.println("총 수익률은 "+ rateOfReturn +"%입니다.");
     }
+
 
     public Lotto getLotto() {
         return winningLotto;
