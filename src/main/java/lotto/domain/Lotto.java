@@ -46,4 +46,8 @@ public class Lotto {
             throw new IllegalArgumentException(ERROR_PREFIX_MASSAGE + ERROR_DUPLICATE_MASSAGE);
         }
     }
+
+    public List<Integer> getLottoNumbers() {
+        return lottoNumbers;
+    }
 }
