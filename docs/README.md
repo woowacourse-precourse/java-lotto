@@ -15,10 +15,6 @@
   - 입력된 로또 번호들 중 중복되는 숫자가 있는지 검사하는 함수
 
 
-- void checkNumbersAreDuplicate(int, int)
-  - 입력된 로또 번호가 중복되는지 실제로 검사하는 함수
-
-
 - boolean checkWinningNumberIsInLottoNumbers(int)
   - 당첨 번호가 로또 번호 안에 존재하는지 확인하는 함수
 
