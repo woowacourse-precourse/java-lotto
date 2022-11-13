@@ -15,7 +15,9 @@ public class Calculation {
         for (int number : lotto) {
             if (winNumbers.contains(number)) {
                 result[0]++;
-            } else if (number == bonus) {
+                continue;
+            }
+            if (number == bonus) {
                 result[1]++;
             }
         }
