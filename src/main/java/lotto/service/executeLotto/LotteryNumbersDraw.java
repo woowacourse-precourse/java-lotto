@@ -18,4 +18,8 @@ public class LotteryNumbersDraw {
         return Arrays.stream(deletedBlankSpaceString.split(","))
                 .map(Integer::parseInt).sorted().collect(Collectors.toList());
     }
+
+    public int getBonusNumber(int bonus) {
+        return bonus;
+    }
 }
