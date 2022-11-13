@@ -15,9 +15,6 @@ import lotto.domain.WinningLotto;
 import lotto.service.LottoResultService;
 import lotto.service.UserLottoService;
 import lotto.service.YieldService;
-import lotto.validation.BonusLottoValidation;
-import lotto.validation.Validation;
-import lotto.view.PrintResultView;
 import lotto.view.View;
 
 public class LottoController {
@@ -33,8 +30,7 @@ public class LottoController {
         if (money.isEmpty()) {
             return;
         }
-        Money userMoney = money.get();
-        int lottoCount = calculateLottoCountWithOutputView(userMoney);
+        int lottoCount = calculateLottoCountWithOutputView(money.get());
         List<Lotto> userLotto = createUserLottoWithOutputView(lottoCount);
         Optional<Lotto> winningLotto = getWinningLottoWithValidation();
         if (winningLotto.isEmpty()) {
@@ -42,10 +38,12 @@ public class LottoController {
         }
         Optional<WinningLotto> lotteryWinningNumber = getBonusLottoWithValidationAndCreateWinningLotto(
                 winningLotto.get());
-
-//        Map<LottoResultConstant, Integer> result = lottoResultService.getResult(userLotto,
-//                getWinningLotto(winningLotto), getBonusLotto(bonusLotto));
-//        printUserLottoAndUserYield(result, Integer.parseInt(userMoneyInput));
+        if (lotteryWinningNumber.isEmpty()) {
+            return;
+        }
+        Map<LottoResultConstant, Integer> result = lottoResultService.getResult(userLotto,
+                lotteryWinningNumber.get());
+        printUserLottoAndUserYield(result, money.get());
     }
 
     private Optional<Money> getUserMoneyWithValidation() {
@@ -94,7 +92,7 @@ public class LottoController {
     }
 
     private Optional<WinningLotto> getBonusLottoWithValidationAndCreateWinningLotto(Lotto winningLotto) {
-        String userInput = PrintResultView.printViewWithUserInput(StringConstant.BONUS_LOTTO_INPUT_MESSAGE.getMessage());
+        String userInput = View.printViewWithUserInput(StringConstant.BONUS_LOTTO_INPUT_MESSAGE.getMessage());
         try {
             return Optional.of(new WinningLotto(winningLotto, getBonusLotto(userInput)));
         } catch (IllegalArgumentException e) {
@@ -112,30 +110,12 @@ public class LottoController {
         }
     }
 
-    private static List<Integer> createLottoNumber(String userInput) {
-        String[] userWinningLottoInput = userInput.split(",");
-        return Arrays.stream(userWinningLottoInput)
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-
-    }
-
-    private List<Integer> getWinningLotto(String winningLotto) {
-        String[] userWinningLottoInput = winningLotto.split(",");
-        return Arrays.stream(userWinningLottoInput)
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-    }
-
-
-    private void printUserLottoAndUserYield(Map<LottoResultConstant, Integer> result, int userMoney) {
+    private void printUserLottoAndUserYield(Map<LottoResultConstant, Integer> result, Money userMoney) {
         double yieldPercent = yieldService.calculateYield(result, userMoney);
         String yieldPercentOneDot = String.format("%.1f", yieldPercent);
-        View userLottoView = new UserLottoView();
-        List<String> userResult = createResult(result, yieldPercentOneDot);
-        userResult.add("총 수익률은 " + yieldPercentOneDot + "%입니다.");
-        userLottoView.setPrintElement(userResult);
-        userLottoView.show();
+        List<String> viewResult = createResult(result, yieldPercentOneDot);
+        viewResult.add("총 수익률은 " + yieldPercentOneDot + "%입니다.");
+        View.printView(viewResult);
     }
 
     private List<String> createResult(Map<LottoResultConstant, Integer> result, String yieldPercentOneDot) {

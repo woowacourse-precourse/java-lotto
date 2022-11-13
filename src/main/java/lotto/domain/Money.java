@@ -18,6 +18,10 @@ public class Money {
         return this.money / divisor;
     }
 
+    public double yield (int earning) {
+        return earning * 100.0 / money;
+    }
+
     private void numericFormat(String userInput) {
         if (!(IntegerValidation.isNumeric(userInput, IntConstant.ZERO_ASCII_CODE.getValue(),
                 IntConstant.NINE_ASCII_CODE.getValue()))) {
