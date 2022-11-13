@@ -1,12 +1,17 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
 public class Input {
 
     public int setMoney(){
-        return 0;
+        String inputMoney=Console.readLine();
+        checkMoney(inputMoney);
+        int money=Integer.parseInt(inputMoney);
+        return money;
     }
 
-    public boolean checkMoney(){
+    public boolean checkMoney(String inputMoney){
         return false;
     }
 
