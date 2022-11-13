@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 public enum WinRank {
     FIRST(2_000_000_000, 6),
@@ -30,16 +29,16 @@ public enum WinRank {
     public static WinRank calculateRankOfLotto(Lotto lotto, Lotto winLotto, Integer bonusNumber) {
         final Integer matched = getMatchedOfLotto(lotto, winLotto);
 
-        if (matched.equals(SECOND.matched) && lotto.isContain(bonusNumber)) {
-            return SECOND;
+        if (matched.equals(SECOND.matched) && !lotto.isContain(bonusNumber)) {
+            return THIRD;
         }
 
         return Arrays.stream(WinRank.values())
                 .filter(rank -> rank.matched.equals(matched))
-                .findAny().orElse(FAIL);
+                .findFirst().orElse(FAIL);
     }
 
-    public static Integer getMatchedOfLotto(Lotto lotto, Lotto winLotto) {
+    private static Integer getMatchedOfLotto(Lotto lotto, Lotto winLotto) {
         return (int) winLotto.getLotto().stream()
                 .filter(lotto.getLotto()::contains).count();
     }
