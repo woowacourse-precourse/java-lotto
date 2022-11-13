@@ -22,9 +22,9 @@ public class InputException {
     public static void isValidDivide(int input) {
         if (input % DIVIDENUMBER != 0) {
             try {
-                throw new IllegalArgumentException("구입 금액을 확인해 주세요");
+                throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해 주세요");
             } catch (IllegalArgumentException illegalArgumentException) {
-                System.out.println("[ERROR] " + illegalArgumentException.getMessage());
+                System.out.println(illegalArgumentException.getMessage());
                 throw illegalArgumentException;
             }
         }
