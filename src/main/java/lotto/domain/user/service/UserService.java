@@ -7,8 +7,7 @@ import lotto.global.util.Util;
 
 public class UserService {
     public int inputMoney() {
-        InputMoneyVerifier.inputMoneyVerifier(InputView.getInputMoney());
-        int inputMoney = Util.stringToInt(InputView.getInputMoney());
+        int inputMoney = Util.stringToInt(InputMoneyVerifier.inputMoneyVerifier(InputView.getInputMoney()));
         OutputView.enter();
         return inputMoney;
     }

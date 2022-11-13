@@ -20,11 +20,11 @@ public class Util {
     }
 
     public static List<Integer> getRandomNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
 
     public static List<Integer> orderByDescForList(List<Integer> randomNumbers) {
-        Collections.sort(randomNumbers);
+        randomNumbers.sort(Comparator.naturalOrder());
         return randomNumbers;
     }
 

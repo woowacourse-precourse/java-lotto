@@ -5,6 +5,8 @@ import lotto.domain.lotto.domain.Lotto;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import static lotto.global.constant.VerifierConstants.*;
+
 public class InputNumberVerifier {
 
     public static void prizeNumberVerifier(List<Integer> inputPrizeNumbers) {
@@ -15,7 +17,7 @@ public class InputNumberVerifier {
 
     private static void isList6Size(List<Integer> inputPrizeNumbers) {
         if (inputPrizeNumbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR] 6개의 숫자만 입력할 수 있습니다.");
+            throw new IllegalArgumentException(ERROR + ONLY_INPUT_NUMBER_COUNT_6);
         }
     }
 
@@ -25,14 +27,14 @@ public class InputNumberVerifier {
                 .count() != inputPrizeNumbers.size();
 
         if (duplicated) {
-            throw new IllegalArgumentException("[ERROR] 중복되는 수는 입력할 수 없습니다.");
+            throw new IllegalArgumentException(ERROR + INPUT_NUMBER_DONT_DUPLICATE);
         }
     }
 
     private static void isNumberFrom1To45(List<Integer> prizeLottoNumbers) {
         for (Integer prizeLottoNumber : prizeLottoNumbers) {
             if (prizeLottoNumber < 1 || prizeLottoNumber > 45) {
-                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.");
+                throw new IllegalArgumentException(ERROR + NUMBER_BETWEEN_1_AND_5);
             }
         }
     }
@@ -46,7 +48,7 @@ public class InputNumberVerifier {
     private static void isDuplicatedAlreadyExistsLottoNumber(Lotto prizeLotto, String bonusNumber) {
         for (int number : prizeLotto.getNumbers()) {
             if (number == Integer.parseInt(bonusNumber)) {
-                throw new IllegalArgumentException("[ERROR] 당첨 번호와 보너스 번호는 중복될 수 없습니다.");
+                throw new IllegalArgumentException(ERROR + WINNING_NUMBER_AND_BONUS_NUMBER_DONT_DUPLICATE);
             }
         }
     }
@@ -54,7 +56,7 @@ public class InputNumberVerifier {
     private static void isInputBonusNumberOnly1(String bonusNumber) {
         StringTokenizer st = new StringTokenizer(bonusNumber, ",");
         if (st.countTokens() != 1) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1개의 숫자만 입력할 수 있습니다.");
+            throw new IllegalArgumentException(ERROR + INPUT_BONUS_NUMBER_ONLY_1);
         }
     }
 }
