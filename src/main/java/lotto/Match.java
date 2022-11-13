@@ -27,39 +27,34 @@ public class Match {
         match5Bonus = 0;
     }
 
-    private void countWinning(int match) {
-        if (match == 3) {
+    private void countWinning(Lotto lotto, int bonus, int matchCount) {
+        if (matchCount == 3) {
             match3 += 1;
-        } else if (match == 4) {
+        } else if (matchCount == 4) {
             match4 += 1;
-        } else if (match == 5) {
+        } else if (!(lotto.matchBonus(bonus)) && (matchCount == 5)) {
             match5 += 1;
-        } else if (match == 6) {
-            match6 += 1;
-        }
-    }
-
-    private void countBonus(Lotto lotto, int bonus, int match) {
-        if ((lotto.matchBonus(bonus)) && (match == 5)) {
+        } else if ((lotto.matchBonus(bonus)) && (matchCount == 5)) {
             match5Bonus += 1;
+        } else if (matchCount == 6) {
+            match6 += 1;
         }
     }
 
     public void count(List<Lotto> lottos, List<Integer> winning, int bonus) {
         for (Lotto lotto : lottos) {
-            int match = lotto.matchWinning(winning);
-            countWinning(match);
-            countBonus(lotto, bonus, match);
+            int matchCount = lotto.matchWinning(winning);
+            countWinning(lotto, bonus, matchCount);
         }
     }
 
-    public HashMap<String, Integer> bundle(){
-        HashMap<String, Integer> result=new HashMap<>();
-        result.put("match3",match3);
-        result.put("match4",match4);
-        result.put("match5",match5);
-        result.put("match6",match6);
-        result.put("match5Bonus",match5Bonus);
+    public HashMap<String, Integer> bundle() {
+        HashMap<String, Integer> result = new HashMap<>();
+        result.put("match3", match3);
+        result.put("match4", match4);
+        result.put("match5", match5);
+        result.put("match6", match6);
+        result.put("match5Bonus", match5Bonus);
         return result;
     }
 }

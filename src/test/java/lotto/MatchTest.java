@@ -23,4 +23,19 @@ public class MatchTest {
         answer.match5=1;
         assertThat(result.bundle()).isEqualTo(answer.bundle());
     }
+
+    @DisplayName("로또 번호와 당첨 번호+보너스 번호를 비교한다.")
+    @Test
+    void compareWinningBonus() {
+        List<Integer> winning = List.of(1, 2, 3, 4, 5, 6);
+        int bonus = 7;
+        List<Lotto> lottos = new ArrayList<>();
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 8, 9)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 7)));
+        Match result = new Match(lottos, winning, bonus);
+        Match answer = new Match();
+        answer.match4=1;
+        answer.match5Bonus=1;
+        assertThat(result.bundle()).isEqualTo(answer.bundle());
+    }
 }
