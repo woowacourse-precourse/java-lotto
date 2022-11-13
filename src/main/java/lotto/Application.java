@@ -17,7 +17,7 @@ public class Application {
     //endregion
     //region 변수
     public static int lottoNumber;
-    private static int BonusNumber;
+    private static int bonusNumber;
     private static Lotto winningLotto;
     private static List<Lotto> lottos;
     //endregion
@@ -27,19 +27,26 @@ public class Application {
         SalesLotto();
         GetWinningNumber();
         GetBonusNumber();
+        CheckWinning();
     }
+
 
 
     //endregion
 
     //region 메서드
+    private static void CheckWinning() {
+        WinningStats winningStats = new WinningStats(lottos, winningLotto, bonusNumber);
+        winningStats.PrintWinningStats();
+    }
+
 
     private static void GetBonusNumber() {
         System.out.println(InputBonusNumber);
         String userInput = getUserInputData();
         if(!BonusValidate(userInput))
             return;
-        BonusNumber = Integer.parseInt(userInput);
+        bonusNumber = Integer.parseInt(userInput);
     }
 
     private static boolean BonusValidate(String userInput) {

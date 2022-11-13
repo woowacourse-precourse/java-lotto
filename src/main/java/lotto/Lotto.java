@@ -57,5 +57,19 @@ public class Lotto {
         return lottos;
     }
 
+    public static int CountSameNumber(Lotto target, Lotto winning){
+        int count = 0;
+        for(int num : target.numbers){
+            if(winning.numbers.contains(num))
+                count++;
+        }
+        return count;
+    }
 
+    public static boolean CheckBonus(Lotto target, int bonus){
+        if(target.numbers.contains(bonus))
+            return true;
+
+        return false;
+    }
 }
