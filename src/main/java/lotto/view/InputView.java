@@ -12,7 +12,7 @@ public class InputView {
 
 	private static final String BUY_SENTENCE = "구입금액을 입력해 주세요.";
 	private static final String INPUT_WINNING_NUMBERS_SENTENCE = "당첨 번호를 입력해 주세요.";
-	private static final String INPUT_BONUS_NUMBER_SENTENCE = "보너스 볼을 입력해 주세요.";
+	private static final String INPUT_BONUS_NUMBER_SENTENCE = "보너스 번호를 입력해 주세요.";
 	private static final Pattern PATTERN = Pattern.compile("([0-9])+");
 
 	public static int inputMoney() {
