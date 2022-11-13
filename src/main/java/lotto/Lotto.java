@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class Lotto {
@@ -14,7 +15,10 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
+        numbers.sort(Comparator.naturalOrder());
     }
 
-    // TODO: 추가 기능 구현
+    public void printNumbers(){
+        System.out.println(numbers);
+    }
 }
