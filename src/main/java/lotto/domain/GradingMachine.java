@@ -20,12 +20,11 @@ public class GradingMachine {
         this.bonusNumber = validateBonusBallRange(bonusNumber);
     }
 
-    private int validateContainBonusNumber(Lotto winnerLotto, int bonusNumber) {
-        if (!winnerLotto.getLotto().contains(bonusNumber)) {
-            return bonusNumber;
+    private void validateContainBonusNumber(Lotto winnerLotto, int bonusNumber) {
+        if (winnerLotto.getLotto().contains(bonusNumber)) {
+            Output.printExceptionMessage(BONUS_NUMBER_CONTAIN_EXCEPTION);
+            throw new IllegalArgumentException();
         }
-        Output.printExceptionMessage(BONUS_NUMBER_CONTAIN_EXCEPTION);
-        throw new IllegalArgumentException();
     }
 
     private int validateBonusBallRange(int bonusNumber) {
