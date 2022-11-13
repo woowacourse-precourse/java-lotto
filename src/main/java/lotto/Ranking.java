@@ -1,6 +1,8 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public enum Ranking {
     FIRST("1ST", 6, 0, 2_000_000_000L, "2,000,000,000"),
@@ -36,6 +38,17 @@ public enum Ranking {
                         && rank.bonusCount == 0)
                 .findAny()
                 .orElse(LOSE);
+    }
+
+    public static List<Ranking> getAll() {
+        return new ArrayList<Ranking>(
+                Arrays.asList(
+                        Ranking.FIFTH,
+                        Ranking.FOURTH,
+                        Ranking.THIRD,
+                        Ranking.SECOND,
+                        Ranking.FIRST)
+        );
     }
 
     public String getLabel() {
