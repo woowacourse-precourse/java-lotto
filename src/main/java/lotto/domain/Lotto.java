@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static lotto.domain.LottoGenerator.LOTTO_NUMBER_COUNT;
-import static lotto.domain.LottoGenerator.MAX_LOTTO_NUMBER;
+import static lotto.domain.LottoGenerator.MAXIMUM_LOTTO_NUMBER;
 import static lotto.domain.LottoGenerator.MINIMUM_LOTTO_NUMBER;
 
 public class Lotto {
@@ -26,7 +26,7 @@ public class Lotto {
     }
 
     private void validateNumberRange(Integer number) {
-        if (number < MINIMUM_LOTTO_NUMBER || MAX_LOTTO_NUMBER < number) {
+        if (number < MINIMUM_LOTTO_NUMBER || MAXIMUM_LOTTO_NUMBER < number) {
             throw new IllegalArgumentException(OUT_OF_RANGE_NUMBER_ERROR);
         }
     }

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.RepeatedTest;
 import java.util.List;
 
 import static lotto.domain.LottoGenerator.LOTTO_NUMBER_COUNT;
-import static lotto.domain.LottoGenerator.MAX_LOTTO_NUMBER;
+import static lotto.domain.LottoGenerator.MAXIMUM_LOTTO_NUMBER;
 import static lotto.domain.LottoGenerator.MINIMUM_LOTTO_NUMBER;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -33,7 +33,7 @@ class LottoGeneratorTest {
 
             for (Integer num : numbers) {
                 assertThat(num).isGreaterThanOrEqualTo(MINIMUM_LOTTO_NUMBER);
-                assertThat(num).isLessThanOrEqualTo(MAX_LOTTO_NUMBER);
+                assertThat(num).isLessThanOrEqualTo(MAXIMUM_LOTTO_NUMBER);
             }
         }
     }
