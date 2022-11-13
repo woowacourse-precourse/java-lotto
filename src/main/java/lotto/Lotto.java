@@ -22,10 +22,7 @@ public class Lotto {
         Collections.sort(numbers);
     }
 
-    @Override
-    public String toString() {
-        return "Lotto{" +
-                "numbers=" + numbers +
-                '}';
+    public List<Integer> getNumbers() {
+        return this.numbers;
     }
 }
