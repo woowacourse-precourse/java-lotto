@@ -2,7 +2,9 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
@@ -15,11 +17,15 @@ public class LottoManager {
 
     List<Lotto> lottoList;
 
+    List<Integer> winningNumber;
+
     // 전체 동작을 구현하는 메소드
     public void run() {
         insertMoneyUI();
         createLottoUI();
+        insertWinningNumberUI();
     }
+
 
     // 로또 구입 금액 입력이 유효한지 확인
     // 1. 숫자가 아닌 값 입력 시
@@ -91,8 +97,63 @@ public class LottoManager {
         // 로또 리스트 생성
         createLottoList();
 
-        for(Lotto lotto : lottoList){
+        for (Lotto lotto : lottoList) {
             System.out.println(lotto);
         }
+    }
+
+    // 당첨 번호 입력값 검증을 하는 메소드
+    // 1. ,로 구분하였을 때 6자리가 아닌 경우
+    // 2. - 각 구분된 값들이 1~45의 자연수가 아닌 경우
+    public void validateWinningNumber(String stringWinningNumber) {
+        String splitList[] = stringWinningNumber.split(",");
+
+        if (splitList.length != 6) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호 6개를 입력해야 합니다.");
+        }
+
+        for (String stringNumber : splitList) {
+            try {
+                int intNumber = Integer.parseInt(stringNumber);
+
+                if (!(1 <= intNumber && intNumber <= 45)) {
+                    throw new IllegalArgumentException("[ERROR] 각 당첨 번호는 1~45 자연수여야 합니다.");
+                }
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException("[ERROR] 각 당첨 번호는 1~45 자연수여야 합니다.");
+            }
+        }
+    }
+
+    public void duplicateWinningNumberCheck(String stringWinningNumber) {
+        List<String> splitList = Arrays.asList(stringWinningNumber.split(","));
+
+        List<String> uniqueList = splitList.stream().distinct().collect(Collectors.toList());
+        if (uniqueList.size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 각 당첨 번호는 중복되지 않는 값이여야 합니다.");
+        }
+    }
+
+    // 당첨 번호를 입력받는 메소드
+    public void insertWinningNumber(String stringWinningNumber) {
+        // 리스트 생성
+        winningNumber = new ArrayList<>();
+
+        // 입력값 체크
+        validateWinningNumber(stringWinningNumber);
+        duplicateWinningNumberCheck(stringWinningNumber);
+
+        // 당첨번호 리스트에 원소 추가
+        List<String> splitList = Arrays.asList(stringWinningNumber.split(","));
+        for (String stringNumber : splitList) {
+            winningNumber.add(Integer.parseInt(stringNumber));
+        }
+    }
+
+    // 당첨 번호를 입력받는 UI 메소드
+    public void insertWinningNumberUI() {
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String stringWinningNumber = readLine();
+        insertWinningNumber(stringWinningNumber);
     }
 }
