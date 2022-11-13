@@ -6,6 +6,7 @@ import lotto.utils.Converter;
 import lotto.utils.Generator;
 
 public class BusinessProgram {
+
     public List<Lotto> generateUserLotto(int money) {
         int ticket = Converter.moneyToTicket(money);
         return generateLottoByTicket(ticket);

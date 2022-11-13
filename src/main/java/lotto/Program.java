@@ -14,6 +14,5 @@ public class Program {
     public void run() {
         int money = consoleProgram.requestMoney();
         List<Lotto> userLotto = businessProgram.generateUserLotto(money);
-        
     }
 }
