@@ -3,6 +3,8 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ExceptionHandlingTest {
@@ -28,6 +30,14 @@ class ExceptionHandlingTest {
     void outRangeLottoNumber(){
         ExceptionHandling exceptionHandling = new ExceptionHandling();
         assertThatThrownBy(()->exceptionHandling.outRangeLottoNumber("46"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("리스트 내의 중복 값 체크")
+    @Test
+    void removeDuplicateNumber(){
+        ExceptionHandling exceptionHandling = new ExceptionHandling();
+        assertThatThrownBy(()->exceptionHandling.removeDuplicateNumber(List.of(23, 12, 24, 34, 12, 32)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
