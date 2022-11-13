@@ -1,14 +1,19 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.List;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class Application {
     private int moneyToBuy;
-
+    private List<Lotto> purchasedLottoTickets;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Application newRound = new Application();
         newRound.askForMoney();
+        newRound.buyLotto();
     }
 
     public void askForMoney() {
@@ -31,5 +36,12 @@ public class Application {
         return (Integer.parseInt(answer) % 1000 != 0);
     }
 
-
+    public void buyLotto() {
+        for (int count = 0; count < this.moneyToBuy; count += 1000) {
+            this.purchasedLottoTickets.add(createLotto());
+        }
+    }
+    private Lotto createLotto(){
+        return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+    }
 }
