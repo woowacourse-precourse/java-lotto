@@ -38,7 +38,6 @@ public class IOManager {
     }
 
     public static void printLottoList(List<Lotto> lottoList) {
-        System.out.println(String.valueOf(lottoList.size()) + IOMessage.LOTTO_BUY_NUM.getMessage());
         for(Lotto lotto : lottoList) {
             printLotto(lotto);
         }
