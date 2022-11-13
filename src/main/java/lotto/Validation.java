@@ -24,12 +24,15 @@ public class Validation {
     }
 
     public static void checkWinningNumbersDuplication(List<String> numbers) throws IllegalArgumentException {
-        if (numbers.size() != numbers.stream().distinct().count()) {
+        if (numbers.size() != numbers.stream()
+                                     .distinct()
+                                     .count()) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.DUPLICATE_NUMBER);
         }
     }
 
-    public static void checkBonusNumberDuplication(List<Integer> winningNumbers, String bonusNumberInput) throws IllegalArgumentException {
+    public static void checkBonusNumberDuplication(List<Integer> winningNumbers,
+                                                   String bonusNumberInput) throws IllegalArgumentException {
         if (winningNumbers.contains(Integer.parseInt(bonusNumberInput))) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.DUPLICATE_NUMBER);
         }

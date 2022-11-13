@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Winning {
-    public static CheckLotto getWinningLottery(String winningNumberInput, String bonusNumberInput) throws IllegalArgumentException {
+    public static CheckLotto getWinningLottery(String winningNumberInput,
+                                               String bonusNumberInput) throws IllegalArgumentException {
         CheckLotto winningLottery;
         List<String> splitWinningNumbers = splitInputByComma(winningNumberInput);
         List<Integer> winningNumbers = convertToNumbers(splitWinningNumbers);
@@ -17,7 +18,8 @@ public class Winning {
     }
 
     private static List<String> splitInputByComma(String userInput) throws IllegalArgumentException {
-        List<String> splitNumber = Arrays.stream(userInput.split(",")).collect(Collectors.toList());
+        List<String> splitNumber = Arrays.stream(userInput.split(","))
+                                         .collect(Collectors.toList());
         Validation.checkWinningNumbersDuplication(splitNumber);
         return splitNumber;
     }
@@ -35,7 +37,8 @@ public class Winning {
         return winningNumbers;
     }
 
-    private static int convertToNumber(List<Integer> winningNumbers, String bonusNumberInput) throws IllegalArgumentException {
+    private static int convertToNumber(List<Integer> winningNumbers,
+                                       String bonusNumberInput) throws IllegalArgumentException {
         Validation.checkBonusNumberDuplication(winningNumbers, bonusNumberInput);
         return Integer.parseInt(bonusNumberInput);
     }

@@ -25,14 +25,17 @@ public class CheckLotto {
             winningCount += getWinningCount(lotto);
             bonusCount += getBonusCount(lotto);
 
-            WinningNumber.count(amountCount, Long.valueOf(winningCount).intValue(), Long.valueOf(bonusCount).intValue());
+            WinningNumber.count(amountCount,
+                                Long.valueOf(winningCount).intValue(),
+                                Long.valueOf(bonusCount).intValue());
         }
         return amountCount;
     }
 
     private Map<WinningNumber, Integer> initMatchCount() {
         Map<WinningNumber, Integer> amountCount = new HashMap<>();
-        List<WinningNumber> amounts = List.of(THREE_MATCHES, FOUR_MATCHES, FIVE_MATCHES, FIVE_AND_BONUS_BALL_MATCHES, SIX_MATCHES);
+        List<WinningNumber> amounts = List.of(THREE_MATCHES, FOUR_MATCHES, FIVE_MATCHES,
+                                              FIVE_AND_BONUS_BALL_MATCHES, SIX_MATCHES);
 
         for (WinningNumber amount : amounts) {
             amountCount.put(amount, 0);
