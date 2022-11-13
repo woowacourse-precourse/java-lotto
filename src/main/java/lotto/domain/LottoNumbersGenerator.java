@@ -14,7 +14,7 @@ public class LottoNumbersGenerator {
 
     private List<Integer> generateLottoNumbers() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return null;
+        return numbers;
     }
 
     private List<Integer> sortLottoNumbers(List<Integer> numbers) {
