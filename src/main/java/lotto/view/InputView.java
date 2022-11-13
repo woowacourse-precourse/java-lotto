@@ -7,7 +7,7 @@ import static lotto.utils.ExceptionMessage.*;
 import static lotto.utils.Message.*;
 
 public class InputView {
-    public static int requestUserAmount(){
+    public static long requestUserAmount(){
         System.out.println(REQUEST_USER_AMOUNT);
         try{
             return StringToInt(Console.readLine());
@@ -23,14 +23,14 @@ public class InputView {
         return(Console.readLine());
     }
 
-    public static int requestBonusNumber(){
+    public static long requestBonusNumber(){
         System.out.println(REQUEST_BONUS_NUMBER);
         return StringToInt(Console.readLine());
     }
 
-    private static int StringToInt(String input){
+    private static long StringToInt(String input){
         try{
-            return Integer.parseInt(input);
+            return Long.parseLong(input);
         } catch (NumberFormatException e){
             throw new IllegalArgumentException(USER_INPUT_NOT_NUMBER_EXCEPTION);
         }
