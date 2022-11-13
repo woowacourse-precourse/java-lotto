@@ -27,4 +27,15 @@ class LottoTest {
     public void createLottoByRandomUniqueNumber() {
         assertThat(Lotto.createLottoNumbers()).isInstanceOf(Lotto.class);
     }
+
+    @DisplayName("로또 번호에 주어진 번호가 있는지 확인한다.")
+    @Test
+    public void checkLottoHasTheNumber() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int includedNumber = 5;
+        int excludedNumber = 45;
+
+        assertThat(lotto.contains(includedNumber)).isTrue();
+        assertThat(lotto.contains(excludedNumber)).isFalse();
+    }
 }
