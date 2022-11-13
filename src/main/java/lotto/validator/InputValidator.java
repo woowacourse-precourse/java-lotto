@@ -31,6 +31,6 @@ public class InputValidator {
     }
 
     private boolean isNotValidPrice(int inputPrice) {
-        return inputPrice % LOTTO_PRICE == NOTHING;
+        return inputPrice % LOTTO_PRICE != NOTHING;
     }
 }
