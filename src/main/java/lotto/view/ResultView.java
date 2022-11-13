@@ -33,6 +33,7 @@ public class ResultView {
     public void showWinningResult(WinningResult winningResult) {
         System.out.println(PRE_SCORE_MESSAGE);
         DecimalFormat decimalFormat = new DecimalFormat(MONEY_FORMAT);
+
         for (Map.Entry<Winning, Integer> winningIntegerEntry : winningResult.getWinningResultMap().entrySet()) {
             Winning key = winningIntegerEntry.getKey();
             String format = String.format(SCORE_MESSAGE_FORMAT,

@@ -5,8 +5,8 @@ import java.util.List;
 
 public class RandomLotto {
 
-    private List<List<Integer>> randomLottoNumbers = new ArrayList<>();
-    private int numberOfLottoGame;
+    private final List<List<Integer>> randomLottoNumbers = new ArrayList<>();
+    private final int numberOfLottoGame;
 
     public RandomLotto(int numberOfLottoGame) {
         this.numberOfLottoGame = numberOfLottoGame;
