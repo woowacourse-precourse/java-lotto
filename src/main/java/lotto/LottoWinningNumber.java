@@ -20,7 +20,6 @@ public class LottoWinningNumber {
 
     private Integer bonusNum;
 
-
     public LottoWinningNumber getWinningNumbersInfo() {
         this.winningNums = getWinningNumbers();
         this.bonusNum = getBonusNumbers();
