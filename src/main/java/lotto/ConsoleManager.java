@@ -17,6 +17,8 @@ public class ConsoleManager {
         printLottosInformation(lottos);
         List<Integer> winningNumbers = readWinningNumbers();
         Integer bonusNumber = readBonusNumber();
+        if(winningNumbers.contains(bonusNumber))
+            throw new IllegalArgumentException("[ERROR] 보너스 번호가 다른번호와 중복됩니다.");
         Map<Rank, Integer> result = lottoService.calculateResult(lottos, winningNumbers, bonusNumber);
         printStatistic(result);
         printYield(result, purchaseAmount);
@@ -66,7 +68,8 @@ public class ConsoleManager {
     }
 
     public static List<Integer> readNextIntegers(String delimiter) {
-        return Stream.of(readLine().split(delimiter))
+        String line = readLine();
+        return Stream.of(line.split(delimiter))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
     }
