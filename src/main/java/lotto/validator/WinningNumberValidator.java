@@ -38,7 +38,6 @@ public class WinningNumberValidator {
 		return winningBalls.stream().allMatch(a -> a > 0 && a < 46);
 	}
 
-	//	예비자리 - 문자열 리스트로 만들기
 	public List<Integer> inputNumbersToLottoBalls(String numbers) {
 		List<String> inputNumbers = Arrays.asList(numbers.split(","));
 		return inputNumbers.stream().map(Integer::parseInt).collect(Collectors.toList());

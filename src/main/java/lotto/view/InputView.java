@@ -21,7 +21,7 @@ public class InputView {
 		this.bonusNumberValidator = bonusNumberValidator;
 	}
 
-	public Integer inputMoney() {
+	public int inputMoney() {
 		String data = readLine();
 		return moneyInputValidator.runMoneyInputValidator(data);
 	}
