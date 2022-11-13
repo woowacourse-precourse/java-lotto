@@ -13,12 +13,14 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-//        int purchaseAmount = askPurchaseAmount();
-//        int lottoCount = Purchase.getLottoCount(purchaseAmount);
-//        Generator generator = new Generator(lottoCount);
-//        List<List<Integer>> playerLotto = generator.createLotto();
-        System.out.println(askWinningNumber());
+        int purchaseAmount = askPurchaseAmount();
+        int lottoCount = Purchase.getLottoCount(purchaseAmount);
+        Generator generator = new Generator(lottoCount);
+        List<List<Integer>> playerLotto = generator.createLotto();
+        Lotto lotto = new Lotto(askWinningNumber());
 
+        int bonusNumber = askBonusNumber();
+        System.out.println(bonusNumber);
     }
 
     private static int askPurchaseAmount() {
@@ -33,5 +35,12 @@ public class Application {
         List<Integer> winningNumber = Change.lottoNumber(Console.readLine());
         System.out.println();
         return winningNumber;
+    }
+
+    private static int askBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int bonusNumber = Integer.parseInt(Console.readLine());
+        System.out.println();
+        return bonusNumber;
     }
 }
