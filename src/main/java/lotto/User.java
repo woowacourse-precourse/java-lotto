@@ -43,4 +43,12 @@ public class User {
         return lotto;
     }
 
+    public List<List<Integer>> generate_lotto(int num) {
+        List<List<Integer>> all_lotto = new ArrayList<>();
+        while (all_lotto.size() < num) {
+            all_lotto.add(lotto());
+        }
+        return all_lotto;
+    }
+
 }
