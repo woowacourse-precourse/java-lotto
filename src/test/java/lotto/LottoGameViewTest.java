@@ -15,10 +15,11 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 public class LottoGameViewTest extends NsTest {
+
     private static IoView lottoGameView;
 
     @BeforeAll
-    private static void initialize(){
+    private static void initialize() {
         lottoGameView = LottoGameView.getInstance();
     }
 
@@ -143,13 +144,8 @@ public class LottoGameViewTest extends NsTest {
                 ScratchResult result = new ScratchResult(lottoGradeIntegerMap, totalEarning, earningRate);
                 lottoGameView.printScratchResult(result);
 
-                assertThat(output()).contains(
-                        "당첨 통계",
-                        "---",
-                        "총 수익률은 10.0%입니다.",
-                        "6개 일치 (2,000,000,000원) - 1개",
-                        "5개 일치, 보너스 볼 일치 (30,000,000원) - 2개"
-                );
+                assertThat(output()).contains("당첨 통계", "---", "총 수익률은 10.0%입니다.", "6개 일치 (2,000,000,000원) - 1개",
+                        "5개 일치, 보너스 볼 일치 (30,000,000원) - 2개");
             }
         }
     }

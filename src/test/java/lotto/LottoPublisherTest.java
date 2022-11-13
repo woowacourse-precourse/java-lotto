@@ -37,16 +37,14 @@ public class LottoPublisherTest extends NsTest {
         void publish_random_Lotto() {
             assertRandomUniqueNumbersInRangeTest(() -> {
                 List<Lotto> lottos = LottoPublisher.publishLottos(Lotto.LOTTO_COST * 2);
-                List<Lotto> wantLottos = List.of(
-                        new Lotto(List.of(1, 2, 3, 4, 5, 6)),
-                        new Lotto(List.of(6, 7, 8, 9, 10, 11)),
-                        new Lotto(List.of(1, 3, 5, 6, 9, 11)));
+                List<Lotto> wantLottos = List.of(new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                        new Lotto(List.of(6, 7, 8, 9, 10, 11)), new Lotto(List.of(1, 3, 5, 6, 9, 11)));
 
                 for (int i = 0; i < lottos.size(); i++) {
                     assertThat(lottos.get(i).getCountOfMatchNumber(wantLottos.get(i))).isEqualTo(6);
                 }
 
-            }, List.of(1, 2, 3, 4, 5, 6), List.of(6, 7, 8, 9, 10, 11),List.of(1, 3, 5, 6, 9, 11));
+            }, List.of(1, 2, 3, 4, 5, 6), List.of(6, 7, 8, 9, 10, 11), List.of(1, 3, 5, 6, 9, 11));
         }
     }
 

@@ -32,11 +32,10 @@ class LottoTest {
             @Test
             @DisplayName("숫자가 6개보다 적은 경우 예외가 발생한다.")
             void createLottoLessThanSixNumber() {
-                assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5)))
-                        .isInstanceOf(IllegalArgumentException.class);
+                assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5))).isInstanceOf(
+                        IllegalArgumentException.class);
 
-                assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4)))
-                        .isInstanceOf(IllegalArgumentException.class);
+                assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4))).isInstanceOf(IllegalArgumentException.class);
             }
         }
 
@@ -80,12 +79,9 @@ class LottoTest {
             void returnCountOfMatchNumber() {
                 Lotto lottoA = new Lotto(List.of(1, 2, 3, 4, 5, 6));
 
-                Assertions.assertThat(lottoA.getCountOfMatchNumber(new Lotto(List.of(6, 5, 4, 3, 2, 1))))
-                        .isEqualTo(6);
-                Assertions.assertThat(lottoA.getCountOfMatchNumber(new Lotto(List.of(1, 3, 5, 7, 9, 11))))
-                        .isEqualTo(3);
-                Assertions.assertThat(lottoA.getCountOfMatchNumber(new Lotto(List.of(11, 9, 7, 5, 3, 1))))
-                        .isEqualTo(3);
+                Assertions.assertThat(lottoA.getCountOfMatchNumber(new Lotto(List.of(6, 5, 4, 3, 2, 1)))).isEqualTo(6);
+                Assertions.assertThat(lottoA.getCountOfMatchNumber(new Lotto(List.of(1, 3, 5, 7, 9, 11)))).isEqualTo(3);
+                Assertions.assertThat(lottoA.getCountOfMatchNumber(new Lotto(List.of(11, 9, 7, 5, 3, 1)))).isEqualTo(3);
                 Assertions.assertThat(lottoA.getCountOfMatchNumber(new Lotto(List.of(6, 7, 8, 9, 10, 11))))
                         .isEqualTo(1);
                 Assertions.assertThat(lottoA.getCountOfMatchNumber(new Lotto(List.of(7, 8, 9, 10, 11, 12))))

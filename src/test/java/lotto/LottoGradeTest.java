@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("LottoGrade Enum의")
 public class LottoGradeTest {
+
     @Nested
     @DisplayName("getMatchGrade 메서드는")
     class describe_getNumberFromUser {
@@ -18,13 +19,13 @@ public class LottoGradeTest {
             @Test
             @DisplayName("알맞은 등수 객체를 반환한다.")
             void return_number_when_receive_right_input() {
-                Assertions.assertThat(LottoGrade.getMatchGrade(6,false)).isEqualTo(LottoGrade.FIRST);
-                Assertions.assertThat(LottoGrade.getMatchGrade(5,true)).isEqualTo(LottoGrade.SECOND);
-                Assertions.assertThat(LottoGrade.getMatchGrade(5,false)).isEqualTo(LottoGrade.THIRD);
-                Assertions.assertThat(LottoGrade.getMatchGrade(4,false)).isEqualTo(LottoGrade.FOURTH);
-                Assertions.assertThat(LottoGrade.getMatchGrade(3,false)).isEqualTo(LottoGrade.FIFTH);
-                Assertions.assertThat(LottoGrade.getMatchGrade(2,false)).isEqualTo(LottoGrade.FAIL);
-                Assertions.assertThat(LottoGrade.getMatchGrade(2,true)).isEqualTo(LottoGrade.FAIL);
+                Assertions.assertThat(LottoGrade.getMatchGrade(6, false)).isEqualTo(LottoGrade.FIRST);
+                Assertions.assertThat(LottoGrade.getMatchGrade(5, true)).isEqualTo(LottoGrade.SECOND);
+                Assertions.assertThat(LottoGrade.getMatchGrade(5, false)).isEqualTo(LottoGrade.THIRD);
+                Assertions.assertThat(LottoGrade.getMatchGrade(4, false)).isEqualTo(LottoGrade.FOURTH);
+                Assertions.assertThat(LottoGrade.getMatchGrade(3, false)).isEqualTo(LottoGrade.FIFTH);
+                Assertions.assertThat(LottoGrade.getMatchGrade(2, false)).isEqualTo(LottoGrade.FAIL);
+                Assertions.assertThat(LottoGrade.getMatchGrade(2, true)).isEqualTo(LottoGrade.FAIL);
             }
         }
     }

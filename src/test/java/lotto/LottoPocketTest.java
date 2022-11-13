@@ -47,7 +47,8 @@ public class LottoPocketTest {
                 long expectedTotalEarning = LottoGrade.SECOND.prize + LottoGrade.FIFTH.prize * 2;
 
                 assertThat(info.getTotalEarning()).isEqualTo(expectedTotalEarning);
-                assertThat(info.getEarningRate()).isEqualTo((double)expectedTotalEarning * 100 / lottos.size() / Lotto.LOTTO_COST);
+                assertThat(info.getEarningRate()).isEqualTo(
+                        (double) expectedTotalEarning * 100 / lottos.size() / Lotto.LOTTO_COST);
 
                 assertThat(info.getCountOfGrade(LottoGrade.FIRST)).isEqualTo(0);
                 assertThat(info.getCountOfGrade(LottoGrade.SECOND)).isEqualTo(1);

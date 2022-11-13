@@ -28,18 +28,18 @@ public class WinningLottoTest {
             @Test
             @DisplayName("보너스 번호가 로또 번호 안에 있는 경우 예외가 발생한다.")
             void createWinningLottoBonusNumInLottoNumbers() {
-                assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 5))
-                        .isInstanceOf(IllegalArgumentException.class);
+                assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 5)).isInstanceOf(
+                        IllegalArgumentException.class);
             }
 
             @Test
             @DisplayName("보너스 번호가 [1,45] 범위를 벗어난 경우 예외가 발생한다.")
             void createWinningLottoBonusNumOutOfRange() {
-                assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 46))
-                        .isInstanceOf(IllegalArgumentException.class);
+                assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 46)).isInstanceOf(
+                        IllegalArgumentException.class);
 
-                assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 0))
-                        .isInstanceOf(IllegalArgumentException.class);
+                assertThatThrownBy(() -> new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 0)).isInstanceOf(
+                        IllegalArgumentException.class);
             }
         }
 

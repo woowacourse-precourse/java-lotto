@@ -8,6 +8,7 @@ import java.util.List;
  * 한장의 로또 티켓 정보를 관리하는 클래스
  */
 public class Lotto {
+
     public final static int LOTTO_COST = 1000;
     private final List<Integer> numbers;
 
@@ -15,35 +16,36 @@ public class Lotto {
         validate(numbers);
         this.numbers = Collections.unmodifiableList(numbers);
     }
+
     private void validate(List<Integer> numbers) {
-        if(!validateConsistOfSixNumber(numbers)){
+        if (!validateConsistOfSixNumber(numbers)) {
             throw new IllegalArgumentException("로또 번호는 6개의 숫자로 이루어져야 합니다.");
         }
 
-        if(!validateEachNumberInRange(numbers)){
+        if (!validateEachNumberInRange(numbers)) {
             throw new IllegalArgumentException("로또 번호의 각 숫자는 1~45 사이의 값을 가져야 합니다.");
         }
 
-        if(!validateEachNumberIsDistinct(numbers)){
+        if (!validateEachNumberIsDistinct(numbers)) {
             throw new IllegalArgumentException("로또 번호의 숫자들은 중복되어서는 안됩니다.");
         }
     }
 
-    private boolean validateEachNumberInRange(List<Integer> numbers){
+    private boolean validateEachNumberInRange(List<Integer> numbers) {
         return numbers.stream().allMatch((number) -> 1 <= number && number <= 45);
     }
 
-    private boolean validateConsistOfSixNumber(List<Integer> numbers){
+    private boolean validateConsistOfSixNumber(List<Integer> numbers) {
         return numbers.size() == 6;
     }
 
-    private boolean validateEachNumberIsDistinct(List<Integer> numbers){
+    private boolean validateEachNumberIsDistinct(List<Integer> numbers) {
         return numbers.stream().distinct().count() == 6;
     }
 
     // TODO: 추가 기능 구현
 
-    public int getCountOfMatchNumber(Lotto otherLotto){
+    public int getCountOfMatchNumber(Lotto otherLotto) {
         List<Integer> copiedNumber = new ArrayList<>(numbers);
         copiedNumber.retainAll(otherLotto.numbers);
 
@@ -51,12 +53,12 @@ public class Lotto {
     }
 
 
-    public boolean hasNumber(Integer number){
+    public boolean hasNumber(Integer number) {
         return numbers.contains(number);
     }
 
 
-    public List<Integer> getNumbers(){
+    public List<Integer> getNumbers() {
         return numbers;
     }
 

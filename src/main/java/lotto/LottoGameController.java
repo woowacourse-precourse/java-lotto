@@ -9,12 +9,14 @@ import java.util.List;
  * 로또 게임을 진행하는 클래스
  */
 public class LottoGameController {
+
     private IoView lottoGameView;
     private LottoPocket lottoPocket;
 
-    public LottoGameController(IoView ioView){
+    public LottoGameController(IoView ioView) {
         this.lottoGameView = ioView;
     }
+
     public void run() {
         try {
             int bill = lottoGameView.getBillFromUser();
