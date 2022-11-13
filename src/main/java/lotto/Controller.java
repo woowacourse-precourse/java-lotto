@@ -1,8 +1,6 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -32,5 +30,4 @@ public class Controller {
         return winningLotto;
     }
 
-//    public void getResult(List<Integer>[] issuedList)
 }

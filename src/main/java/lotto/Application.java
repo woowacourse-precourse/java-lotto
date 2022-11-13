@@ -14,6 +14,6 @@ public class Application {
         Lotto winningLotto = controller.issueWinningNumber(numbers);
         int plusNumber = console.inputPlusNumber();
         winningLotto.checkPlusNumber(plusNumber);
-//        controller.getResult(issuedList, winningLotto, plusNumber);
+        List<Integer> result = winningLotto.getResult(issuedList, plusNumber);
     }
 }
