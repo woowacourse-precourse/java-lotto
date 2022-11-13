@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -37,4 +38,27 @@ class LottoTest {
         assertThat(lotto.validatePayment(inValidPayment)).isInstanceOf(IllegalArgumentException.class);
 
     }
+
+    @DisplayName("각 로또의 점수를 계산한 뒤 매칭된 숫자와 보너스 일치 여부를 배열에 담아 리턴한다.")
+    @Test
+    void calculateLottoResult() {
+
+        List<Integer> winningNumber = List.of(1, 2, 3, 4, 5, 6);
+        int bonusNumber = 7;
+
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+
+        List<Integer> sixNumbersMatch = List.of(1, 2, 3, 4, 5, 6);
+        List<Integer> fiveAndBonusNumbersMatch = List.of(1, 2, 3, 4, 5, 7);
+        List<Integer> fiveNumbersMatch = List.of(1, 2, 3, 4, 5, 9);
+        List<Integer> fourNumbersMatch = List.of(1, 2, 3, 4, 10, 11);
+        List<Integer> threeNumbersMatch = List.of(1, 2, 3, 12, 13, 14);
+        List<List<Integer>> purchaseRecord = List.of(sixNumbersMatch, fiveNumbersMatch, fiveAndBonusNumbersMatch, fourNumbersMatch, threeNumbersMatch);
+
+        List<Integer> winningRecord = List.of(0, 0, 0, 0, 0); // 3, 4, 5, 5 + bonus, 6
+
+        assertThat(lotto.calculateLottoResult(purchaseRecord, winningRecord)).isEqualTo(List.of(1, 1, 1, 1, 1));
+
+    }
+
 }
