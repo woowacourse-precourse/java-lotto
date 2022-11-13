@@ -1,5 +1,6 @@
 package lotto.util;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -7,6 +8,12 @@ import lotto.constant.ErrorLog;
 import lotto.constant.LottoConstant;
 
 public class Validator {
+	public static void validateNumberRange(List<Integer> numbers) {
+		if (numbers.stream().anyMatch(number -> number < LottoConstant.MINIMUM_LOTTO_NUMBER || number > LottoConstant.MAXIMUM_LOTTO_NUMBER)) {
+			throw new IllegalArgumentException("[ERROR] 1부터 45사이의 숫자만 가능합니다.");
+		}
+	}
+
 	public static void validateDivisibility(int amount) {
 		if (amount % LottoConstant.PRICE_OF_LOTTO != 0) {
 			throw new IllegalArgumentException(ErrorLog.INDIVISIBLE_PURCHASING_AMOUNT_ERROR.log());
