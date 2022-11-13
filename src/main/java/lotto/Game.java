@@ -16,6 +16,14 @@ public class Game {
             System.out.println(lottoNumbers);
         }
     }
+
+    public void Bonus(){
+        System.out.println("보너스 번호를 입력해 주세요.");
+        String Bonus = Console.readLine();
+        int BonusNumber = Integer.parseInt(Bonus);
+        System.out.println(BonusNumber);
+    }
+
     public void Jackpot(){
         System.out.println("당첨 번호를 입력해 주세요.");
         String str1 = Console.readLine();
