@@ -1,11 +1,11 @@
 package lotto.model;
 
 public enum Reward {
-    FIRST("2,000,000,000", 1, "6개 일치"),
-    SECOND("30,000,000", 2, "5개 일치, 보너스 볼 일치"),
-    THIRD("1,500,000", 3, "5개 일치"),
+    FIFTH("5,000", 5, "3개 일치"),
     FOURTH("50,000", 4, "4개 일치"),
-    FIFTH("5,000", 5, "3개 일치");
+    THIRD("1,500,000", 3, "5개 일치"),
+    SECOND("30,000,000", 2, "5개 일치, 보너스 볼 일치"),
+    FIRST("2,000,000,000", 1, "6개 일치");
 
     private final String amount;
     private final String condition;
