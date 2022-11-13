@@ -36,7 +36,7 @@ public class InputView {
         System.out.println(REQUEST_BONUS_NUMBER);
         String bonusNumber = Console.readLine();
         InputViewValidation.validateIsInteger(bonusNumber);
-        InputViewValidation.validateWinningNumbersUnique(bonusNumber);
+        InputViewValidation.validateBonusNumberRange(bonusNumber);
 
         return Integer.parseInt(bonusNumber);
     }
