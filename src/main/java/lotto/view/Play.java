@@ -47,8 +47,7 @@ public class Play {
         System.out.println(Arrays.deepToString(result.convertLotto(lotto,winLotto,bonus)));
 
         System.out.println("\n"+WINNING_MESSAGE);
-
-
+        System.out.println(result.calculateRate(8000,5000));
     }
 
 
