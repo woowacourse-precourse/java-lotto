@@ -15,6 +15,7 @@ public class LottoGameController {
 
     private int lottoIssueCount;
     private String lottoPurchaseAmount;
+    private String earningsRatio;
 
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
@@ -30,6 +31,7 @@ public class LottoGameController {
             printIssuedLottoNumbers();
             setWinningNumberAndBonusNumber();
             decidePurchaseLottosRank();
+            calculateEarningsRatio();
             printGameResult();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -77,8 +79,12 @@ public class LottoGameController {
         }
     }
 
+    public void calculateEarningsRatio() {
+        earningsRatio = lottoGameService.getEarningsRatio(lottoPurchaseAmount);
+    }
+
     public void printGameResult() {
         outputView.printLottoWinningStatistics(lottoGameService.getLottoWinningRankMap());
-        outputView.printEarningsRatio(lottoGameService.getEarningsRatio(lottoPurchaseAmount));
+        outputView.printEarningsRatio(earningsRatio);
     }
 }
