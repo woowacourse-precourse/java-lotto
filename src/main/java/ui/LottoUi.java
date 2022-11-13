@@ -93,4 +93,8 @@ public class LottoUi {
         return winningNumbers;
     }
 
+    public static int getBonusNumber(){
+        int bonusNumber = Integer.parseInt(Console.readLine());
+        return bonusNumber;
+    }
 }

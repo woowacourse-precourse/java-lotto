@@ -33,4 +33,11 @@ public class Lotto {
         List<Integer> winningNumbers = LottoUi.getWinningNumbers();
         return new Lotto(winningNumbers);
     }
+
+    public static int generateBonusNumber(){
+        int bonusNumber = LottoUi.getBonusNumber();
+        validate(bonusNumber);
+
+        return bonusNumber;
+    }
 }
