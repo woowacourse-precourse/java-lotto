@@ -9,7 +9,7 @@ import static lotto.constant.LottoConstants.*;
 public class Computer {
 
     public static Lotto issueLotto() {
-        List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_NUMBER_LENGTH);
-        return new Lotto(lottoNumber);
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_NUMBER_LENGTH);
+        return new Lotto(numbers);
     }
 }
