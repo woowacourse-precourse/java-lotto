@@ -55,4 +55,5 @@ public class User {
     }
 
     public Integer getCntLotto(){return cntLotto;}
+
 }

@@ -34,4 +34,14 @@ public class Lotto {
     public List<Integer> getLotto(){
         return numbers;
     }
+
+    public String toStringLotto(){
+        String str="[";
+        for(int i=0; i<numbers.size()-1; i++){
+            str+=numbers.get(i);
+            str+=", ";
+        }
+        str+=(numbers.get(numbers.size()-1)+"]");
+        return str;
+    }
 }

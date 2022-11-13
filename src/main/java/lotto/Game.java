@@ -16,6 +16,9 @@ public class Game {
         String input = Console.readLine();
         user.purchaseLotto(input);
         System.out.println(user.getCntLotto() + BaseLotto.PURCHASE.getDescription());
+        for(Lotto lotto: user.getLottos()){
+            System.out.println(lotto.toStringLotto());
+        }
         System.out.println(BaseLotto.INPUTWINNING.getDescription());
         String inputWinning = Console.readLine();
         winning.setWinnings(inputWinning);
