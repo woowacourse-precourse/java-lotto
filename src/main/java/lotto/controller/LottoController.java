@@ -14,6 +14,7 @@ public class LottoController {
     public void start(){
         LottoCount amount = requestUserAmount();
         LottoTicket lottoTicket = buyTickets(amount);
+        LuckyNumbers luckyNumbers = getInputLuckyNumbers();
     }
 
     private LottoCount requestUserAmount(){
