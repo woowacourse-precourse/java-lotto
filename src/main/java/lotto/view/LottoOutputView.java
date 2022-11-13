@@ -13,7 +13,6 @@ public class LottoOutputView {
     private static String BUY_AMOUNT_MESSAGE = "%d개를 구매했습니다.\n";
     private static String STATISTIC_MESSAGE = "당첨 통계\n---";
     private static String PROFIT_RATE_MESSAGE = "총 수익률은 %.1f%%입니다.\n";
-    src/main/java/lotto/view/LottoOutputView.java
 
     LottoProfitRate lottoProfitRate = new LottoProfitRate();
     LottoStatistics lottoStatistics = new LottoStatistics();
