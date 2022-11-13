@@ -72,4 +72,10 @@ public class Lotto {
         }
         return flag;
     }
+    public String checkWin(boolean flag){
+        if(flag == true) {
+            return "5b";
+        }
+        return "5";
+    }
 }
