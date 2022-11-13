@@ -27,7 +27,11 @@ public class WinningNumberLotto extends Lotto {
     }
 
     private void validateBonusNumber(String input) {
-
+        try {
+            Integer.parseInt(input);
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void printBonusMessage() {
