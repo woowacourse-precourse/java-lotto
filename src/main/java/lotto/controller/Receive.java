@@ -1,9 +1,9 @@
 package lotto.controller;
 
-import lotto.console.BonusNumberInput.InputBonusNumber;
+import lotto.console.InputBonusNumber;
 import lotto.console.Output;
-import lotto.console.PurchaseAmountInput.InputMoney;
-import lotto.console.WinningNumberInput.InputWinningNumber;
+import lotto.console.InputMoney;
+import lotto.console.InputWinningNumber;
 import lotto.domain.AutoLottoSeller;
 import lotto.domain.Lotto;
 import lotto.domain.chart.NumberChart;

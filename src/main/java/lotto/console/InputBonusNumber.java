@@ -1,4 +1,4 @@
-package lotto.console.BonusNumberInput;
+package lotto.console;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.chart.ErrorPrint;

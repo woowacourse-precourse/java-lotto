@@ -20,8 +20,7 @@ public class LottoPlay {
             int bonusNumber = receive.receiveAndPrintBonusNumber(winningNumbers);
 
             processing.printAndDataProcessing(lotto, winningNumbers, bonusNumber, money);
-        }
-        catch (IllegalArgumentException exception){
+        } catch (IllegalArgumentException exception) {
             output.printErrorMessage(exception.getMessage());
         }
     }

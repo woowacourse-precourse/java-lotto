@@ -8,7 +8,7 @@ public class Calculator {
         double moneys = money;
         double total = totalRewardmoney(rewardList);
 
-        return (double) Math.round(((total / moneys) * 100)*10) / 10.0;
+        return (double) Math.round(((total / moneys) * 100) * 10) / 10.0;
     }
 
     private int totalRewardmoney(List<Integer> rewardList) {
