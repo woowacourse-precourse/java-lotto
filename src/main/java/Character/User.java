@@ -21,13 +21,13 @@ public class User {
         }
     }
 
-    public void setMoney() throws IllegalArgumentException {
+    public void setMoney() {
         int money;
         try {
             money = Integer.parseInt(Console.readLine());
             this.money=money;
         } catch (NumberFormatException e) {
-            System.out.println("[ERROR] 잘못된 입력입니다.");
+            System.out.println("[ERROR] 잘못된 입력 형식입니다.");
         }
     }
 
@@ -58,23 +58,41 @@ public class User {
     }
 
     public void inputWinningNumber() throws IllegalArgumentException  {
-        List<Integer> winningNumber = new ArrayList<>();
+        List<Integer> winningNumber;
         try {
-            String[] unconvertedWinningNumber = Console.readLine().split(",");
-            for (String unconvertedWinningNumberContent : unconvertedWinningNumber) {
-               winningNumber.add(Integer.parseInt(unconvertedWinningNumberContent));
-            }
-            this.winningNumber = winningNumber;
+            winningNumber = splitStringToIntegerArray(Console.readLine());
         } catch(NumberFormatException e) {
             System.out.println("[ERROR] 잘못된 입력입니다.");
             throw new IllegalArgumentException();
         }
+        this.winningNumber=winningNumber;
+    }
+
+    public List<Integer> splitStringToIntegerArray(String inputtedWinningNumber) {
+        List<Integer> listedWinningNumber = new ArrayList<>();
+        String[] unconvertedWinningNumber = inputtedWinningNumber.split(",");
+        for (String unconvertedWinningNumberContent : unconvertedWinningNumber) {
+            listedWinningNumber.add(Integer.parseInt(unconvertedWinningNumberContent));
+        }
+        return listedWinningNumber;
     }
     
-    public void inputBonusNumber() {
-        String inputtedBonusNumber;
-        inputtedBonusNumber = Console.readLine();
-        this.bonusNumber = Integer.parseInt(inputtedBonusNumber);
+    public void inputBonusNumber() throws IllegalArgumentException {
+        try{
+            int inputtedBonusNumber = Integer.parseInt(Console.readLine());
+            bonusNumber = inputtedBonusNumber;
+            checkBonusNumberRange(inputtedBonusNumber);
+        } catch (NumberFormatException e) {
+            System.out.println("[ERROR] 숫자를 입력해야 합니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public void checkBonusNumberRange(int bonusNumber) throws IllegalArgumentException {
+        if (bonusNumber<1||bonusNumber>45) {
+            System.out.println("[ERROR] 숫자의 범위는 1 이상 45 이하여야 합니다.");
+            throw new IllegalArgumentException();
+        }
     }
 
     public void countWinningNumber (int howManyWinningNumber, boolean isBonusNumberCorrect) {
