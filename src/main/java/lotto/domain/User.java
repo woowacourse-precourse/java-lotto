@@ -39,6 +39,6 @@ public class User {
     }
 
     public double getYield() {
-        return benefit / MONEY * 100;
+        return (double) benefit / MONEY * 100;
     }
 }
