@@ -49,7 +49,7 @@
 
 
 #### WinningLotto
-- [ ] 로또 당첨 정보(로또 번호 + 보너스 번호) 생성 WinningLotto#WinningLotto(Lotto winningLotto, BonusNumber bonusNumber)
+- [X] 로또 당첨 정보(로또 번호 + 보너스 번호) 생성 WinningLotto#WinningLotto(Lotto winningLotto, BonusNumber bonusNumber)
   - [ ] 보너스 번호가 로또 당첨 번호에 포함되어 있는지 검증 - WinningLotto#validateWinningLottoContainsBonusNumber(Lotto winningLotto, BonusNumber bonusNumber)
 - [ ] 로또 당첨 번호 리스트 반환 - WinningLotto#getWinningLottoNumbers() 
 - [ ] 보너스 번호 반환 - WinningLotto#getBonusNumber() 
