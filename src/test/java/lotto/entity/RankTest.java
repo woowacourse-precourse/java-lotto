@@ -176,32 +176,4 @@ class RankTest {
         assertThat(result).isTrue();
     }
 
-    @DisplayName("보너스 볼과 관계 없는 등수인 경우 보너스 볼 정보 없이 출력한다.")
-    @Test
-    void printRank() {
-        //given
-        Rank rank = Rank.FIRST;
-        String output = String.format("%d개 일치 (%,d원)", rank.getCount(), rank.getPrize());
-
-        //when
-        String result = rank.toString();
-
-        //then
-        assertThat(result).isEqualTo(output);
-    }
-
-    @DisplayName("보너스 볼과 관계 있는 등수인 경우 보너스 볼 정보 포함해서 출력한다.")
-    @Test
-    void printRankWithBonus() {
-        //given
-        Rank rank = Rank.SECOND;
-        String output = String.format("%d개 일치, 보너스 볼 일치 (%,d원)", rank.getCount(), rank.getPrize());
-
-        //when
-        String result = rank.toString();
-
-        //then
-        assertThat(result).isEqualTo(output);
-    }
-
 }
