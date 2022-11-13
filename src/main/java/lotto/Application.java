@@ -9,7 +9,7 @@ public class Application {
             LottoGameController lottoGameController = new LottoGameController();
             lottoGameController.run();
         } catch (IllegalArgumentException exception) {
-            System.out.println("[ERROR]");
+            System.out.println("[ERROR] " + exception.getMessage());
         }
     }
 }
