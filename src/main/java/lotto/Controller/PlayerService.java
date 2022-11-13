@@ -25,6 +25,11 @@ public class PlayerService {
         player.setPlayerLotto(lotto);
     }
 
+    public void getBonusNumber() {
+        String bonusBall = InputView.requestBonusNumber();
+        isValidBonusNumber(bonusBall, player.getPlayerLotto());
+        player.setPlayerBonusNumber(Integer.parseInt(bonusBall));
+    }
 
     public void isValidWinningNumber(String input) {
         final String COMMA_ERROR_MESSAGE = "[ERROR] 번호는 쉼표로 구분해야 합니다.";
@@ -46,5 +51,18 @@ public class PlayerService {
         }
 
         return playerInputs;
+    }
+
+    public void isValidBonusNumber(String bonusBall, List<Integer> lottoNumbers) {
+        final String ERROR_MESSAGE = "[ERROR] 1~45 사이의 숫자를 입력해야 합니다.";
+        final String UNIQUE_ERROR_MESSAGE = "[ERROR] 입력하신 당첨 번호와 중복됩니다.";
+
+        if (!InputUtils.isDigit(bonusBall) || !InputUtils.isNumberInLottoRange(bonusBall)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE);
+        }
+
+        if (!RandomUtils.isUniqueBonusNumber(Integer.parseInt(bonusBall), lottoNumbers)) {
+            throw new IllegalArgumentException(UNIQUE_ERROR_MESSAGE);
+        }
     }
 }
