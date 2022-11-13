@@ -20,7 +20,8 @@ public class Application {
         Lotto lotto = new Lotto(askWinningNumber());
 
         int bonusNumber = askBonusNumber();
-        System.out.println(bonusNumber);
+
+
     }
 
     private static int askPurchaseAmount() {
