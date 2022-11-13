@@ -67,15 +67,21 @@ public class LottoService {
         Set uniqueFormerNumbers = new HashSet(former);
         Set uniqueLetterNumbers = new HashSet(latter);
         uniqueFormerNumbers.retainAll(uniqueLetterNumbers);
-
         return uniqueFormerNumbers.size();
     }
 
     public void setWinningNumbers(List<Integer> winningNumbers) {
+        Set<Integer> uniqueWinningNumbers = new HashSet<>(winningNumbers);
+        if (winningNumbers.size() < 6){
+            throw new IllegalArgumentException("중복된 숫자가 포함되어 있습니다.");
+        }
         this.winningNumbers = winningNumbers;
     }
 
     public void setBonusNumber(int bonusNumber) {
+        if (winningNumbers.contains(bonusNumber)){
+            throw new IllegalArgumentException("보너수 숫자가 당첨숫자에 포함되어 있습니다.");
+        }
         this.bonusNumber = bonusNumber;
     }
 }
