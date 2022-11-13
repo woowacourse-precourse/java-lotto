@@ -1,6 +1,6 @@
 package lotto.valid;
 
-import lotto.domain.LottoMachine;
+import lotto.domain.LottoSalesman;
 
 public enum InputValidator {
     INSTANCE;
@@ -8,7 +8,7 @@ public enum InputValidator {
 
     public static void validateMoney(String moneyInput) {
         int money = convertStringToInteger(moneyInput, MONEY_ERROR_MESSAGE);
-        if (money < 0 || money % LottoMachine.MONEY_UNIT != 0) {
+        if (money < 0 || money % LottoSalesman.MONEY_UNIT != 0) {
             throw new IllegalArgumentException(MONEY_ERROR_MESSAGE);
         }
     }

@@ -1,6 +1,6 @@
 package lotto.domain;
 
-public enum LottoMachine {
+public enum LottoSalesman {
     INSTANCE;
     public static final int MONEY_UNIT = 1000;
 
