@@ -15,7 +15,7 @@ class GuideTest {
     @DisplayName("로또 통계 메시지 출력")
     @Test
     void printLottoStatisticsMessage() {
-        List<Integer> lottoResult = new ArrayList<Integer>(List.of(1,2,3,4,5));
+        List<Integer> lottoResult = new ArrayList<Integer>(List.of(1, 2, 3, 4, 5));
         Guide.printLottoStatistics(Guide.createLottoStatisticsMessage(lottoResult));
     }
 

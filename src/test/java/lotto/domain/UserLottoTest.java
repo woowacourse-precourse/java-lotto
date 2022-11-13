@@ -30,7 +30,7 @@ class UserLottoTest {
         boughtLotto.add(lotto4);
         boughtLotto.add(lotto5);
 
-        assertThat(UserLotto.createUserLottoResult(boughtLotto, winningNumbers, bonusNumber)).
+        assertThat(UserLotto.createLottoResult(boughtLotto, winningNumbers, bonusNumber)).
                 isEqualTo(new ArrayList<Integer>(List.of(1, 1, 1, 0, 1)));
     }
 }

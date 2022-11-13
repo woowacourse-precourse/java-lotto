@@ -35,12 +35,12 @@ public class UserLotto {
         }
     }
 
-    public static List<Integer> createUserLottoResult(List<Lotto> boughtLotto, List<Integer> winningNumbers,
-                                                        int bonusNumber) {
+    public static List<Integer> createLottoResult(List<Lotto> boughtLotto,
+                                                  List<Integer> winningNumbers, int bonusNumber) {
         List<Integer> lottoResult = new ArrayList<>(List.of(0,0,0,0,0)); // 1등, 2등 ... 5등
         for (Lotto lotto : boughtLotto) {
             int matchingCount = Judgment.getCorrectLottoNumberCount(lotto, winningNumbers);
-            boolean bonusMatching = Judgment.checkBonusNumberCorrect(bonusNumber, lotto.getLotto());
+            boolean bonusMatching = Judgment.checkBonusCorrect(bonusNumber, lotto.getLotto());
             Prize prize = Prize.getPrize(matchingCount, bonusMatching);
             int resultIndex = prize.ordinal();
             if (prize.equals(Prize.NONE)) { // 꽝은 결과에 필요없음
