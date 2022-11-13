@@ -43,8 +43,8 @@ public class Lotto {
         return Arrays.toString(numberList);
     }
 
-    public ArrayList<Integer> getLotto(){
-        ArrayList<Integer> lottos=new ArrayList<>(numbers);
+    public ArrayList<Integer> getLotto() {
+        ArrayList<Integer> lottos = new ArrayList<>(numbers);
         Collections.sort(lottos);
         return lottos;
     }

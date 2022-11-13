@@ -6,8 +6,12 @@ public enum SayMessage {
     BONUS("보너스 번호를 입력해 주세요.");
 
     private final String sayMessage;
-    SayMessage(String sayMessage){
+
+    SayMessage(String sayMessage) {
         this.sayMessage = sayMessage;
     }
-    public String getSayMessage(){ return sayMessage;}
+
+    public String getSayMessage() {
+        return sayMessage;
+    }
 }

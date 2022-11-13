@@ -1,7 +1,9 @@
 package lotto;
+
 import lotto.Domain.ErrorMessage;
 import lotto.Domain.SayMessage;
 import lotto.Domain.WinningPrize;
+
 import java.util.List;
 
 public class Application {
@@ -20,7 +22,7 @@ public class Application {
         this.bonus = bonus;
     }
 
-    private int bonus=0;
+    private int bonus = 0;
 
     public Application() {
         lottoClerk = new LottoClerk();
@@ -38,9 +40,9 @@ public class Application {
         if (app.systemError)
             return;
         app.bonusLotto();
-        if(app.systemError)
+        if (app.systemError)
             return;
-        List<WinningPrize> winningPrizes = lottoMachine.makeStatistics(app.getBonus(),app.getAnswerValue());
+        List<WinningPrize> winningPrizes = lottoMachine.makeStatistics(app.getBonus(), app.getAnswerValue());
         lottoClerk.sayResult(winningPrizes, app.getMoney());
     }
 
@@ -90,8 +92,7 @@ public class Application {
     public void bonusLotto() {
         try {
             bonus = Integer.parseInt(lottoClerk.sayPleaseInput(SayMessage.BONUS));
-            if(bonus<1||bonus>45)
-            {
+            if (bonus < 1 || bonus > 45) {
                 throw new IllegalArgumentException();
             }
         } catch (Exception e) {

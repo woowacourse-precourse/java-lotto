@@ -2,14 +2,15 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Domain.WinningPrize;
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class LottoMachine {
     ArrayList<Lotto> lottoReceipt = new ArrayList<>();
 
-    int count =0;
+    int count = 0;
+
     //makeProcess
     public int makeLottoCount(int money) {
         count = money / 1000;
@@ -28,42 +29,38 @@ public class LottoMachine {
         return lottoReceipt;
     }
 
-    public List<WinningPrize> makeStatistics(int bonus,Lotto answerValue){
+    public List<WinningPrize> makeStatistics(int bonus, Lotto answerValue) {
         ArrayList<WinningPrize> prize = new ArrayList<>();
-        for(Lotto lotto:lottoReceipt)
-        {
-            prize.add(calculateLotto(answerValue,lotto,bonus));
+        for (Lotto lotto : lottoReceipt) {
+            prize.add(calculateLotto(answerValue, lotto, bonus));
         }
         return prize;
     }
 
-    public WinningPrize calculateLotto(Lotto answer,Lotto lotto,int bonus)
-    {
-        int lottoCount=0;
+    public WinningPrize calculateLotto(Lotto answer, Lotto lotto, int bonus) {
+        int lottoCount = 0;
         boolean getBonus = false;
-        ArrayList<Integer> answerValue= answer.getLotto();
-        ArrayList<Integer> lottoValue= lotto.getLotto();
-        for(Integer lottoNumber:lottoValue)
-        {
-            if(answerValue.contains(lottoNumber))
+        ArrayList<Integer> answerValue = answer.getLotto();
+        ArrayList<Integer> lottoValue = lotto.getLotto();
+        for (Integer lottoNumber : lottoValue) {
+            if (answerValue.contains(lottoNumber))
                 lottoCount++;
-            if(lottoNumber==bonus)
+            if (lottoNumber == bonus)
                 getBonus = true;
         }
-        return judgeLotto(lottoCount,getBonus);
+        return judgeLotto(lottoCount, getBonus);
     }
 
-    public WinningPrize judgeLotto(int lottoCount,boolean getBonus)
-    {
-        if(lottoCount==6)
+    public WinningPrize judgeLotto(int lottoCount, boolean getBonus) {
+        if (lottoCount == 6)
             return WinningPrize.SIX;
-        if(lottoCount==5 && getBonus)
+        if (lottoCount == 5 && getBonus)
             return WinningPrize.FIVEWITHBONUS;
-        if(lottoCount==5)
+        if (lottoCount == 5)
             return WinningPrize.FIVE;
-        if(lottoCount==4)
+        if (lottoCount == 4)
             return WinningPrize.FOUR;
-        if(lottoCount==3)
+        if (lottoCount == 3)
             return WinningPrize.THREE;
         return WinningPrize.OTHER;
     }

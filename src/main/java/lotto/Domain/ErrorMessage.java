@@ -5,8 +5,12 @@ public enum ErrorMessage {
     NOTTHOUSANDSNUMBER(" 입력된 돈은 1000 단위 숫자여야 합니다.");
 
     private final String errorMessage;
-    ErrorMessage(String errorMessage){
+
+    ErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
-    public String getErrorMessage(){ return errorMessage;}
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
 }

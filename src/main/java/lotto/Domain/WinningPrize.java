@@ -9,8 +9,12 @@ public enum WinningPrize {
     OTHER(0);
 
     private final int winningRank;
-    WinningPrize(int winningRank){
+
+    WinningPrize(int winningRank) {
         this.winningRank = winningRank;
     }
-    public int getPrize(){ return winningRank;}
+
+    public int getPrize() {
+        return winningRank;
+    }
 }
