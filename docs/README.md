@@ -8,7 +8,7 @@
 - play : 각 로또와 WinningNumber를 비교하여 Result를 반환한다.
 
 ## 2. WinningNumber
-- Lotto를 포함하고 보너스 값을 가진다.
+- Lotto를 상송받고 보너스 값을 가진다.
 
 ## 3. Buyer
 - buyLotto : Lotto 혹은 List를 입력받는다.
@@ -22,3 +22,20 @@
 ## 5. History
 - Buyer의 play의 결과로 당첨 내역을 HashTable로 갖는다.
 - calculateProfit : 수익률을 반환한다. 
+
+# Viewer
+
+## 1. inputView
+- 모든 안내 문구를 상수로 정의한다.
+- controller에서 받은 구매한 로또 수량을 출력한다.
+- 입력받은 로또 번호를 정렬하여 []으로 감싸서 출력한다.
+- 당첨 번호와 보너스 번호를 입력받는다.
+## 2. outputView
+- 모든 안내 문구를 상수로 정의한다.
+- domain에서 계산된 history를 이용하여 내역과 수익률을 출력한다.
+
+# Controller
+
+## 1. Controller
+- 구입 금액이 1000원 이상일시 예외처리한다.
+- domain과 Viewer를 이용하여 application을 구현한다.
