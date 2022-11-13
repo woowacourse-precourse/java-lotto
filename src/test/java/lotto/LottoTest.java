@@ -110,4 +110,13 @@ class LottoTest {
         int money = 1000;
         assertThat(Service.getEarningsRate(winningPrice, money)).isEqualTo(3000000.0);
     }
+
+    @DisplayName("당첨번호 배열의 길이는 6이어야 한다")
+    @Test
+    void checkJackpot() {
+        String jackpotNum = "1,2,3,4,5";
+        String[] jackpotNumArr = Service.getJackpotNumberToArr(jackpotNum);
+        assertThatThrownBy(() -> LogicException.verifyJackpotNum(jackpotNumArr))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

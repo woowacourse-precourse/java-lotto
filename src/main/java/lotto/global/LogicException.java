@@ -26,4 +26,10 @@ public class LogicException {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void verifyJackpotNum(String[] jackpotNumArr) {
+        if(jackpotNumArr.length != 6) {
+            throw new IllegalArgumentException();
+        }
+    }
 }

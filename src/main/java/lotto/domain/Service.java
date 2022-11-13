@@ -55,6 +55,7 @@ public class Service {
 
     public static String[] getJackpotNumberToArr(String jackpotNumber) {
         String[] jackpotArr = jackpotNumber.split(",");
+        LogicException.verifyJackpotNum(jackpotArr);
 
         return jackpotArr;
     }
