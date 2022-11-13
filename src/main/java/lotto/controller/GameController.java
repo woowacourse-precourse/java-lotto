@@ -35,7 +35,7 @@ public class GameController {
     }
 
     private List<Lotto> issueLotto(int tickets) {
-        return new LottoFactory.createLotto(tickets);
+        return LottoFactory.createLotto(tickets);
     }
 
     private Statistic makeStatistic(List<Lotto> userLotto, LuckyNumbers luckyNumbers) {
