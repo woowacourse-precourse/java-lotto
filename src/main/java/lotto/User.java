@@ -10,7 +10,7 @@ public class User {
     private List<Lotto> lottos = new ArrayList<>();
     private int money;
 
-    public void boyLotto() {
+    public void buyLotto() {
         System.out.println("구입금액을 입력해 주세요.");
         money = toInteger(Console.readLine());
         int lottoSheetCount = money / 1000;
@@ -21,7 +21,7 @@ public class User {
         }
     }
 
-    private int toInteger(String input) {
+    public int toInteger(String input) {
         int money = Integer.parseInt(input);
         if (money < 1000) {
             throw new IllegalArgumentException("[ERROR] 1,000원 이상을 입력해 주세요.");
@@ -32,5 +32,9 @@ public class User {
         }
 
         return money;
+    }
+
+    public int getLottoSheetCount() {
+        return lottos.size();
     }
 }
