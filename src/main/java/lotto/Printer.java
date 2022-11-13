@@ -24,7 +24,7 @@ public class Printer {
         return lotto.printLotto();
     }
 
-    public void printResult(int[] winning, double yield) {
+    public void printResult(int[] winning, double earnRate) {
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.printf("%s(%,d원) - %d개\n", Rank.FIFTH.getValue(), new Result().FIFTH_PRIZE, winning[0]);
@@ -32,6 +32,6 @@ public class Printer {
         System.out.printf("%s(%,d원) - %d개\n", Rank.THIRD.getValue(), new Result().THIRD_PRIZE, winning[2]);
         System.out.printf("%s(%,d원) - %d개\n", Rank.SECOND.getValue(), new Result().SECOND_PRIZE, winning[3]);
         System.out.printf("%s(%,d원) - %d개\n", Rank.FIRST.getValue(), new Result().FIRST_PRIZE, winning[4]);
-        System.out.print("총 수익률은 " + String.format("%,.1f", yield) + "%입니다.");
+        System.out.print("총 수익률은 " + String.format("%,.1f", earnRate) + "%입니다.");
     }
 }
