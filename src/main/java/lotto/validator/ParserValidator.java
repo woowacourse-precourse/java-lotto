@@ -6,14 +6,10 @@ import static lotto.util.Const.*;
 
 public class ParserValidator {
 
-    public static final String SEPARATOR = ",";
-
-    public static void check(String inputString) throws IllegalArgumentException {
-        String[] splitNumbers = inputString.split(SEPARATOR);
-
-        checkSize(splitNumbers);
-        checkNumberCondition(splitNumbers);
-        checkUnique(splitNumbers);
+    public static void check(String[] inputString) throws IllegalArgumentException {
+        checkSize(inputString);
+        checkNumberCondition(inputString);
+        checkUnique(inputString);
     }
 
     private static void checkSize(String[] splitNumbers) {
