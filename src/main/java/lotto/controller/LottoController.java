@@ -13,4 +13,8 @@ public class LottoController {
         String input = LottoView.getLottoPurchaseAmount();
         return LottoService.amountInputToInteger(input);
     }
+
+    public static int getLottoPurchaseCount(int amount) {
+        return LottoService.getLottoPurchaseCount(amount);
+    }
 }

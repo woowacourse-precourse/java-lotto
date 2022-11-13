@@ -23,4 +23,8 @@ public class LottoService {
 
         return amount;
     }
+
+    public static int getLottoPurchaseCount(int amount) {
+        return amount / 1000;
+    }
 }
