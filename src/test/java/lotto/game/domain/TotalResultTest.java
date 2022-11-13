@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class TotalWinningTest {
+class TotalResultTest {
     @Test
     @DisplayName("5등이 3개, 4등이 1개, 3등이 1개일 경우 갯수가 맞아야한다")
     void LottoGrade3to3And4to1And3to1MustCorrect() {
