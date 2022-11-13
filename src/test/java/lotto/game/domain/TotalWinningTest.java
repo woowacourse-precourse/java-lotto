@@ -20,18 +20,18 @@ class TotalWinningTest {
                 LottoGrade.THIRD
         );
         // when
-        TotalWinning totalWinning = TotalWinning.of(winnings);
+        TotalResult totalResult = TotalResult.of(winnings);
 
         // then
-        assertThat(totalWinning.getCount(LottoGrade.FIFTH))
+        assertThat(totalResult.getCount(LottoGrade.FIFTH))
                 .isEqualTo(3);
-        assertThat(totalWinning.getCount(LottoGrade.FOURTH))
+        assertThat(totalResult.getCount(LottoGrade.FOURTH))
                 .isEqualTo(1);
-        assertThat(totalWinning.getCount(LottoGrade.THIRD))
+        assertThat(totalResult.getCount(LottoGrade.THIRD))
                 .isEqualTo(1);
-        assertThat(totalWinning.getCount(LottoGrade.SECOND))
+        assertThat(totalResult.getCount(LottoGrade.SECOND))
                 .isEqualTo(0);
-        assertThat(totalWinning.getCount(LottoGrade.FIRST))
+        assertThat(totalResult.getCount(LottoGrade.FIRST))
                 .isEqualTo(0);
     }
 
@@ -57,18 +57,18 @@ class TotalWinningTest {
         }
 
         // when
-        TotalWinning totalWinning = TotalWinning.of(winnings);
+        TotalResult totalResult = TotalResult.of(winnings);
 
         // then
-        assertThat(totalWinning.getCount(LottoGrade.FIFTH))
+        assertThat(totalResult.getCount(LottoGrade.FIFTH))
                 .isEqualTo(100);
-        assertThat(totalWinning.getCount(LottoGrade.FOURTH))
+        assertThat(totalResult.getCount(LottoGrade.FOURTH))
                 .isEqualTo(50);
-        assertThat(totalWinning.getCount(LottoGrade.THIRD))
+        assertThat(totalResult.getCount(LottoGrade.THIRD))
                 .isEqualTo(30);
-        assertThat(totalWinning.getCount(LottoGrade.SECOND))
+        assertThat(totalResult.getCount(LottoGrade.SECOND))
                 .isEqualTo(20);
-        assertThat(totalWinning.getCount(LottoGrade.FIRST))
+        assertThat(totalResult.getCount(LottoGrade.FIRST))
                 .isEqualTo(10);
     }
 
@@ -78,18 +78,18 @@ class TotalWinningTest {
         // given
         List<LottoGrade> winnings = List.of();
         // when
-        TotalWinning totalWinning = TotalWinning.of(winnings);
+        TotalResult totalResult = TotalResult.of(winnings);
 
         // then
-        assertThat(totalWinning.getCount(LottoGrade.FIFTH))
+        assertThat(totalResult.getCount(LottoGrade.FIFTH))
                 .isEqualTo(0);
-        assertThat(totalWinning.getCount(LottoGrade.FOURTH))
+        assertThat(totalResult.getCount(LottoGrade.FOURTH))
                 .isEqualTo(0);
-        assertThat(totalWinning.getCount(LottoGrade.THIRD))
+        assertThat(totalResult.getCount(LottoGrade.THIRD))
                 .isEqualTo(0);
-        assertThat(totalWinning.getCount(LottoGrade.SECOND))
+        assertThat(totalResult.getCount(LottoGrade.SECOND))
                 .isEqualTo(0);
-        assertThat(totalWinning.getCount(LottoGrade.FIRST))
+        assertThat(totalResult.getCount(LottoGrade.FIRST))
                 .isEqualTo(0);
     }
 }

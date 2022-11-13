@@ -4,19 +4,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TotalWinning {
+public class TotalResult {
     private final Map<LottoGrade, Integer> lottoGrades;
 
-    private TotalWinning(Map<LottoGrade, Integer> totalWinnings) {
+    private TotalResult(Map<LottoGrade, Integer> totalWinnings) {
         this.lottoGrades = totalWinnings;
     }
 
-    public static TotalWinning of(List<LottoGrade> grades) {
+    public static TotalResult of(List<LottoGrade> grades) {
         Map<LottoGrade, Integer> totalWinnings = new HashMap<>();
         for (LottoGrade grade : grades) {
             addWinning(totalWinnings, grade);
         }
-        return new TotalWinning(totalWinnings);
+        return new TotalResult(totalWinnings);
     }
 
     private static void addWinning(Map<LottoGrade, Integer> totalWinnings, LottoGrade grade) {

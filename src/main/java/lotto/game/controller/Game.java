@@ -4,7 +4,7 @@ import static lotto.game.view.UI.*;
 
 import java.util.List;
 import lotto.game.domain.Lotto;
-import lotto.game.domain.TotalWinning;
+import lotto.game.domain.TotalResult;
 import lotto.game.domain.WinningLotto;
 import lotto.game.domain.LottoGrade;
 import lotto.game.service.LottoService;
@@ -34,9 +34,9 @@ public class Game {
         WinningLotto winningLotto = WinningLotto.of(winningNumbersInput, bonusNumberInput);
 
         List<LottoGrade> lottoGrades = lottoService.confirmAllLottos(winningLotto, lottos);
-        TotalWinning totalWinning = TotalWinning.of(lottoGrades);
+        TotalResult totalResult = TotalResult.of(lottoGrades);
 
-        ui.printTotalResult(totalWinning);
+        ui.printTotalResult(totalResult);
         ui.printProfitRate(lottoService.calculateProfitPercent(money, lottoGrades));
     }
 }
