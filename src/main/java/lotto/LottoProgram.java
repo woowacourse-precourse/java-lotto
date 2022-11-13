@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 import lotto.domain.Buyer;
+import lotto.domain.Lotto;
 
 public class LottoProgram {
 

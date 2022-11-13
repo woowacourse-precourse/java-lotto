@@ -3,7 +3,6 @@ package lotto.domain;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import lotto.Lotto;
 
 public class Buyer {
     private int totalPurchaseAmout = 0;
