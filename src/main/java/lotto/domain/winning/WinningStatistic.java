@@ -68,7 +68,7 @@ public class WinningStatistic {
     }
     
     private String formatRating(Double target) {
-        return new DecimalFormat("###,###.0").format(target) + "%";
+        return new DecimalFormat("###,##0.0").format(target) + "%";
     }
     
     private String formatPrice(Integer target) {
