@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 import lotto.Constants.ERROR;
+import lotto.Constants.PRINT;
 import lotto.Constants.REGEX;
 import lotto.domain.Buyer;
 import lotto.domain.Generator;
@@ -20,7 +21,7 @@ public class LottoProgram {
 
     private static Buyer buyer = new Buyer();
     public static void init() throws IllegalArgumentException {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(PRINT.INPUT_PAYMENT);
         String purchaseAmout = Console.readLine();
         String purchaseRegex = REGEX.PAYMENT;
         if (!Pattern.matches(purchaseRegex, purchaseAmout)) {
@@ -32,10 +33,10 @@ public class LottoProgram {
 
         int numbersOfLotto = purchaseAmoutCash / 1000;
         buyer.setLottoPurchasedCount(numbersOfLotto);
-        System.out.println(buyer.getLottoPurchasedCount() + "개를 구매했습니다.");
+        System.out.println(buyer.getLottoPurchasedCount() + PRINT.BUYED_LOTTO);
 
         purchasedLottoSave();
-        System.out.println("당첨 번호를 입력해주세요.");
+        System.out.println(PRINT.INPUT_WINNING_NUMBERS);
         String winningNumbers = Console.readLine();
 
         String winningNumberRegex = REGEX.WINNING_NUMBERS;
@@ -52,7 +53,7 @@ public class LottoProgram {
 
         Lotto.setWinningNumbers(Arrays.asList(numberArray));
 
-        System.out.println("보너스 번호를 입력해 주세요.");
+        System.out.println(PRINT.INPUT_BONUS_NUMBER);
         String bonusNumber = Console.readLine();
         String bonusNumberRegex = REGEX.BONUS_NUMBER;
         if (!Pattern.matches(bonusNumberRegex, bonusNumber)) {
@@ -68,7 +69,7 @@ public class LottoProgram {
 
         System.out.println(buyer.getWinningSummary().entrySet());
 
-        System.out.println("당첨 통계\n---");
+        System.out.println(PRINT.WINNING_RESULTS);
         HashMap<String, Integer> winningSummary = buyer.getWinningSummary();
         List<Ranking> rankings = new ArrayList<Ranking>(
                 Arrays.asList(
@@ -85,14 +86,14 @@ public class LottoProgram {
                     if (rank.getLabel().equals(Lotto.RANK_SECOND)) {
                         buyer.setTotalWinningPrize(rank.getPrize() * rankCount);
                         System.out.printf(
-                                "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n",
+                                PRINT.BONUS_CORRECT_FORMAT,
                                 rank.getWinningCount(), rank.getPrizeLabel(),
                                 rankCount);
                         return;
                     }
                     buyer.setTotalWinningPrize(rank.getPrize() * rankCount);
                     System.out.printf(
-                            "%d개 일치 (%s원) - %d개\n",
+                            PRINT.GENERAL_CORRECT_FORMAT,
                             rank.getWinningCount(), rank.getPrizeLabel(),
                             rankCount);
                 });
@@ -100,7 +101,7 @@ public class LottoProgram {
         double totalPrize = Generator.profitCalculate(
                 buyer.getTotalPurchaseAmout(), buyer.getTotalWinningPrize());
 
-        System.out.printf("총 수익률은 %.1f%%입니다.", totalPrize);
+        System.out.printf(PRINT.PROFIT_FORMAT, totalPrize);
 
     }
 

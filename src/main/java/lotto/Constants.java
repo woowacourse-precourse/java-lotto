@@ -18,4 +18,15 @@ public final class Constants {
         public static final String  BONUS_NUMBER_RANGE = "[ERROR] 보너스 번호는 1-45사이의 숫자여야 합니다.";
         public static final String  BONUS_NUMBER_IN_WINNING_NUMBER = "[ERROR] 보너스 번호는 당첨 번호에 존재할 수 없습니다.";
     }
+
+    public final class PRINT {
+        public static final String INPUT_PAYMENT = "구입금액을 입력해 주세요.";
+        public static final String BUYED_LOTTO = "개를 구매했습니다.";
+        public static final String INPUT_WINNING_NUMBERS = "당첨 번호를 입력해주세요.";
+        public static final String INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+        public static final String WINNING_RESULTS = "당첨 통계\n---";
+        public static final String BONUS_CORRECT_FORMAT = "%d개 일치, 보너스 볼 일치 (%s원) - %d개\n";
+        public static final String GENERAL_CORRECT_FORMAT = "%d개 일치 (%s원) - %d개\n";
+        public static final String PROFIT_FORMAT = "총 수익률은 %.1f%%입니다.";
+    }
 }
