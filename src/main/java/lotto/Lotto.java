@@ -36,12 +36,16 @@ public class Lotto {
     public Wins countMatchingNumber(WinNumber winNumber, BonusNumber bonusNumber) {
         List<Integer> winNumbers = winNumber.getWinNumber();
         int matchingCount = 0;
-        boolean isBonusMatched = numbers.contains(bonusNumber.getBonusNumber());
 
         for (int number : numbers) {
             if (winNumbers.contains(number)) {
                 matchingCount++;
             }
+        }
+
+        boolean isBonusMatched = false;
+        if (matchingCount == 5) {
+            isBonusMatched = numbers.contains(bonusNumber.getBonusNumber());
         }
 
         return Wins.getWins(matchingCount, isBonusMatched);
