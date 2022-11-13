@@ -1,12 +1,13 @@
-package lotto;
+package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.text.CollationElementIterator;
 import java.util.*;
 
-public class NumberService {
+public class NumberGenerator {
 
-    public static Set<Integer> GenerateNumbers(){
+    public static List<Integer> GenerateNumbers(){
         Set<Integer> result = new HashSet<>();
 
         while (result.size() < 7){
@@ -14,6 +15,9 @@ public class NumberService {
             result.add(number);
         }
 
-        return result;
+        List<Integer> sortedResult = new ArrayList<>(result);
+        Collections.sort(sortedResult);
+
+        return sortedResult;
     }
 }

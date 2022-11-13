@@ -11,8 +11,8 @@ public class LottoCalculator {
 
     private final int budget;
 
-    public LottoCalculator(String budget){
-        this.budget = Integer.valueOf(budget);
+    public LottoCalculator(int budget){
+        this.budget = budget;
     }
 
     public int getTicketSize(){

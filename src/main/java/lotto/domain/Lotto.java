@@ -1,4 +1,6 @@
-package lotto;
+package lotto.domain;
+
+import lotto.domain.Prize;
 
 import java.util.List;
 
@@ -17,7 +19,11 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    public int countMatch(List<Integer> winningNumbers) {
+
+    public List<Integer> getNumbers(){
+        return numbers;
+    }
+    private int countMatch(List<Integer> winningNumbers) {
         int count = 0;
 
         for (Integer number: winningNumbers){

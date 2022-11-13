@@ -1,13 +1,15 @@
 package lotto.view;
 
+import lotto.domain.Lotto;
+
 import java.util.List;
 
 public class OutputView {
 
-    public static void writeLottoTickets(List<List<String>> tickets){
+    public static void writeLottoTickets(List<Lotto> tickets){
         System.out.println(tickets.size()+"개를 구매했습니다.");
-        for (List<String> ticket : tickets){
-            System.out.println(ticket);
+        for (Lotto ticket : tickets){
+            System.out.println(ticket.getNumbers());
         }
         System.out.println();
     }
