@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Lotto {
     private static final String LACK_OF_NUMBER = "[ERROR] 6개의 숫자를 입력해주세요.";
@@ -48,5 +49,21 @@ public class Lotto {
 
     public List<Integer> getLottoNumbers() {
         return numbers;
+    }
+
+    public Rank getRank(WinningNumbers winningNumbers) {
+        int matchCount = getMatchCount(winningNumbers.getLotto());
+        boolean hitBonusNumber = false;
+        if (matchCount == 5) {
+            hitBonusNumber = numbers.contains(winningNumbers.getBonusNumber());
+        }
+
+        return Rank.valueOf(matchCount, hitBonusNumber);
+    }
+
+    private int getMatchCount(Lotto purchasedlLotto) {
+        return (int) numbers.stream()
+                .filter(num -> purchasedlLotto.getLottoNumbers().stream().anyMatch(Predicate.isEqual(num)))
+                .count();
     }
 }
