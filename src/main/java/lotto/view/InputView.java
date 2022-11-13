@@ -3,6 +3,7 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -11,7 +12,7 @@ public class InputView {
     private final static String GET_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String NUMBER_REGEX = "^[0-9]*$";
     private static final String GET_WIN_LOTTO_MESSAGE = "당첨 번호를 입력해 주세요.";
-    private static final String WIN_LOTTO_REGEX = "^[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+,[\\d]+$";
+    private static final String WIN_LOTTO_REGEX = "^\\d+,\\d+,\\d+,\\d+,\\d+,\\d+$";
     private static final String SPLIT_REGEX = ",";
     private static final String GET_BONUS_MESSAGE = "보너스 번호를 입력해 주세요.";
 
@@ -24,7 +25,7 @@ public class InputView {
 
     private static void validate(String input) {
         if (!Pattern.matches(NUMBER_REGEX, input)) {
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 숫자여야 합니다.");
+            throw new IllegalArgumentException();
         }
     }
 
