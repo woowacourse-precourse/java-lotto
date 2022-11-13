@@ -11,6 +11,10 @@ public class GameMessage {
         print(GameConstants.INPUT_PURCHASE_AMOUNT);
     }
 
+    public void printInputWinningNumber() {
+        print(GameConstants.INPUT_WINNING_NUMBER);
+    }
+
     public void printLottoTicketCount(int lottoTicketCount) {
         print("\n" + lottoTicketCount + GameConstants.OUTPUT_PURCHASE_LOTTO_COUNT);
     }
