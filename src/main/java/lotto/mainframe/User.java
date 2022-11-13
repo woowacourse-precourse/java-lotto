@@ -1,5 +1,6 @@
 package lotto.mainframe;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,6 +11,7 @@ public class User {
     private static List<Integer> userInputNumber;
     private static int userInputBonusNumber;
     private static int lottoAmount;
+    private static List<List<Integer>> lotteries = new ArrayList<>();
 
     public static void setUserInputMoney(String userInput) {
         userInputMoney = Integer.parseInt(userInput);
@@ -28,6 +30,10 @@ public class User {
 
     public static void setLottoAmount() {
         lottoAmount = userInputMoney / 1000;
+    }
+
+    public static void setLotteries(List<Integer> lotto) {
+        lotteries.add(lotto);
     }
 
     public static int getUserInputMoney() {
