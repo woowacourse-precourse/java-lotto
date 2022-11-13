@@ -21,19 +21,21 @@ public class UserInput {
     }
 
     private void validateMoney(String input) {
+        long money;
         try {
-            long money = Long.parseLong(input);
-            if (money % 1000 != 0 || money == 0) {
-                throw new IllegalArgumentException(Message.ERROR_INPUT_1000.printError());
-            }
+            money = Long.parseLong(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(Message.ERROR_INPUT_NUMBER.printError());
+        }
+        if (money % 1000 != 0 || money == 0) {
+            throw new IllegalArgumentException(Message.ERROR_INPUT_1000.printError());
         }
     }
 
     void generateRandomLotto(long quantity) {
         for (int i = 0; i < quantity; i++) {
-            List<Integer> tmpLotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            List<Integer> tmpLotto =
+                    new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             tmpLotto.sort(Comparator.naturalOrder());
             lotteries.add(tmpLotto);
         }
