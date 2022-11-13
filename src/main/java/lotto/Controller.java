@@ -1,8 +1,20 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
+import lotto.constant.Constant;
+import lotto.model.BonusNumber;
+import lotto.model.Lotto;
+import lotto.model.Money;
 import lotto.model.Service;
+import lotto.util.LottoGenerator;
+import lotto.util.PlayerInput;
+import lotto.util.WinnerInfo;
 import lotto.view.View;
+
+/*
+ * 로또 게임의 전체 로직을 담당하는 객체
+ */
 
 public class Controller {
 
@@ -15,25 +27,62 @@ public class Controller {
     }
 
     public void setGame() {
-        View.printInputMoney();
-        int money = Service.getMoney();
-        int lottoAmount = Service.getLottoAmount(money);
+        Service service;
 
-        List<List<Integer>> lottoNumbers = Service.getLottoNumbers(lottoAmount);
-        List<Integer> bonusNumbers = Service.getBonusNumber(lottoAmount);
+        int money = getMoney();
+        int lottoAmount = getLottoAmount(money);
+        List<List<Integer>> lottoNumbers = getLottoNumbers(lottoAmount);
         View.printPurchaseInformation(lottoAmount, lottoNumbers);
 
-        View.printInputLottoNumbers();
-        List<Integer> winningLottoNumber = Service.getWinningLottoNumber();
+        List<Integer> winningLottoNumber = getWinningLottoNumber();
+        int winningBonusNumber = getWinningBonusNumber();
 
-        View.printInputBonusNumber();
-        int winningBonusNumber = Service.getWinningBonusNumber();
-
-        int[] lottoResult = Service.getLottoResult(lottoAmount, lottoNumbers, winningLottoNumber, winningBonusNumber);
+        service = new Service(lottoAmount, lottoNumbers, winningLottoNumber, winningBonusNumber);
+        int[] lottoResult = service.getLottoResult();
+        double profitRates = getProfitRates(money, lottoResult);
         View.printResult(lottoResult);
-
-        double profitRates = Service.getProfitRates(money, lottoResult);
         View.printProfitRates(profitRates);
+    }
+
+    private int getMoney() {
+        View.printInputMoney();
+        Money money = new Money(PlayerInput.getInteger());
+        return money.getMoney();
+    }
+
+    private int getLottoAmount(int money) {
+        return money / Constant.LOTTO_PRICE;
+    }
+
+    private List<List<Integer>> getLottoNumbers(int lottoAmount) {
+        List<List<Integer>> lottoNumbers = new ArrayList<>();
+
+        for (int i = 0; i < lottoAmount; i++) {
+            Lotto lotto = new Lotto(LottoGenerator.generateLottoNumbers());
+            lottoNumbers.add(lotto.getNumbers());
+        }
+        return lottoNumbers;
+    }
+
+    private List<Integer> getWinningLottoNumber() {
+        View.printInputLottoNumbers();
+        Lotto lotto = new Lotto(PlayerInput.getLottoNumbers());
+        return lotto.getNumbers();
+    }
+
+    private int getWinningBonusNumber() {
+        View.printInputBonusNumber();
+        BonusNumber bonusNumber = new BonusNumber(PlayerInput.getInteger());
+        return bonusNumber.getNumber();
+    }
+
+    private double getProfitRates(int money, int[] lottoResult) {
+        double winningAmount = 0;
+
+        for (int i = 0; i < lottoResult.length; i++) {
+            winningAmount += lottoResult[i] * WinnerInfo.values()[i].getPrizeInformation();
+        }
+        return (winningAmount / money) * 100;
     }
 
 }
