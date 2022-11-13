@@ -9,7 +9,7 @@ public enum Error {
 	BONUS("보너스 번호는 당첨 번호와 중복될 수 없습니다.")
 	;
 
-	private static final String error = "[ERROR] ";
+	private static final String ERROR = "[ERROR] ";
 
 	private final String message;
 
@@ -18,6 +18,6 @@ public enum Error {
 	}
 
 	public String getMessage() {
-		return error + message;
+		return ERROR + message;
 	}
 }
