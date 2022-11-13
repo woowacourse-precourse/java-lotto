@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.inputNumber.InputNumber;
 
 import java.util.ArrayList;
 
@@ -9,7 +10,9 @@ public class WinningNumberLotto extends Lotto {
     private int bonusNumber;
 
     public WinningNumberLotto() {
-        super(new ArrayList<>());
+        super(InputNumber.createNumber());
+        int number = inputBonusNumber();
+        setBonusNumber(number);
     }
 
     public int getBonusNumber() {
