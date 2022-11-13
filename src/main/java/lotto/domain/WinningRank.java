@@ -6,7 +6,7 @@ import java.util.function.BiFunction;
 
 public enum WinningRank {
     NONE_RANKED(0, "",
-            (duplicatedNumberCount, isContainBonusNumber) -> (duplicatedNumberCount < 3)),
+            (duplicatedNumberCount, isContainBonusNumber) -> (duplicatedNumberCount >= 0 && duplicatedNumberCount < 3)),
     FIFTH_RANK(5_000, "3개 일치",
             (duplicatedNumberCount, isContainBonusNumber) -> (duplicatedNumberCount == 3)),
     FOURTH_RANK(50_000, "4개 일치",
