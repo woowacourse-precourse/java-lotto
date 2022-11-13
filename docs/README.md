@@ -58,7 +58,7 @@
     - [ ] 보너스 번호 포함 여부 확인
     - [ ] 해당하는 등수 확인
 
-### (enum) WinningRule : 당첨 관련 규칙 상수 집합
+### (enum) WinningResult : 당첨 관련 규칙 상수 집합
 - [x] 구현하기
 
 ### LottoRule : 로또 발행 관련 규칙 상수 저장
