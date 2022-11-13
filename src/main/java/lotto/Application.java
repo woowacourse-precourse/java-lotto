@@ -44,6 +44,7 @@ public class Application {
             }
 
             winningStatisticsMaker(lottoArray[i], userInputBonusNumber, correctCount, countTmp);
+            yieldCalculation(correctCount, purchasedValue);
         }
     }
 
@@ -70,6 +71,21 @@ public class Application {
         else if (countTmp == 6) {
             correctCount[5]++;
         }
+    }
+
+    public static void yieldCalculation(int[] correctCount, int purchasedValue){
+        int[] profit = new int[]{5000,50000,1500000,30000000,2000000000};
+
+        int grossIncome = 0;
+        for (int i = 0; i < 5; i++){
+            grossIncome += profit[i] * correctCount[i];
+        }
+
+        double yield = (double) grossIncome / (double) purchasedValue;
+
+        System.out.print("총 수익률은 ");
+        System.out.print(String.format("%.1f", yield));
+        System.out.println("%입니다.");
     }
 
     public static void main(String[] args) {
