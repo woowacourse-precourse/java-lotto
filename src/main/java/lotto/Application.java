@@ -1,7 +1,6 @@
 package lotto;
 
 import lotto.domain.Cashier;
-import lotto.domain.WinningCalculator;
 
 public class Application {
     public static void main(String[] args) {
