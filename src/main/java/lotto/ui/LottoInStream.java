@@ -14,31 +14,22 @@ public class LottoInStream {
 
     public static int readAmount() {
         System.out.print(_input_purchase_amount_msg);
-        String line = readlineWithoutException();
-
-        if (isNullOrEmptyString(line)) {
-            Application.lottoError("빈 문자열은 입력할 수 없습니다.");
-        }
+        String line = readline();
+        
         return convStrToInt(line);
     }
 
     public static List<Integer> readLottoNumbers() {
         System.out.print(_input_winning_lotto_msg);
-        String line = readlineWithoutException();
-
-        if (isNullOrEmptyString(line)) {
-            Application.lottoError("빈 문자열은 입력할 수 없습니다.");
-        }
+        String line = readline();
+        
         return convStrArrayToIntList(line.split(","));
     }
 
     public static int readBonusNumber(Lotto lotto) {
         System.out.print(_input_bonus_number_msg);
-        String line = readlineWithoutException();
-
-        if (isNullOrEmptyString(line)) {
-            Application.lottoError("빈 문자열은 입력할 수 없습니다.");
-        }
+        String line = readline();
+        
         int number = convStrToInt(line);
         if (lotto.hasNumber(number)) {
             Application.lottoError("보너스 번호는 당첨 번호와 중복되는 번호를 가질 수 없습니다.");
@@ -49,19 +40,12 @@ public class LottoInStream {
         return (number);
     }
 
-    private static String readlineWithoutException() {
+    private static String readline() {
         try {
             return (Console.readLine());
         } catch (NoSuchElementException ex) {
-            return "";
+            throw new IllegalArgumentException("[ERROR] 잘못된 입력 값 입니다.");
         }
-    }
-
-    private static boolean isNullOrEmptyString(String line) {
-        if (line == null || line.isEmpty()) {
-            return true;
-        }
-        return false;
     }
 
     private static List<Integer> convStrArrayToIntList(String[] splitedLine) {
