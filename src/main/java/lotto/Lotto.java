@@ -12,12 +12,12 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    private void validateCount(List<Integer> numbers) {
+    private void validateCount(List<Integer> numbers) throws IllegalArgumentException {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException("[ERROR] 6개 이하 수 입력");
         }
     }
-    private void validateDup(List<Integer> numbers) {
+    private void validateDup(List<Integer> numbers) throws IllegalArgumentException {
         for(int i=0; i<numbers.size(); i++){
             int check = numbers.get(i);
             if(numbers.contains(check)&& numbers.indexOf(check)!=i){
@@ -28,11 +28,12 @@ public class Lotto {
 
     // TODO: 추가 기능 구현
     public void getLottoBonusNumber(String bonusNumber)throws IllegalArgumentException{
-        validateBonusNumber(bonusNumber);
+        validateBonusNumberRange(bonusNumber);
+        validateBonusNumberDup(bonusNumber);
         this.numbers.add(Integer.parseInt(bonusNumber));
     }
 
-    public void validateBonusNumber(String bonusNumber)throws IllegalArgumentException{
+    private void validateBonusNumberRange(String bonusNumber)throws IllegalArgumentException{
         for(int i=0; i<bonusNumber.length(); i++){
             if(bonusNumber.charAt(i)>=48 && bonusNumber.charAt(i)<=57){
                 continue;
@@ -41,7 +42,14 @@ public class Lotto {
         }
     }
 
+    private void validateBonusNumberDup(String bonusNumber)throws IllegalArgumentException{
+        if(numbers.contains(Integer.parseInt(bonusNumber))) {
+            throw new IllegalArgumentException("[ERROR] 잘못된 입력 값 로또 번호 중복");
+        }
+    }
+
     public List<Integer> printLottoNumber(){
         return numbers;
     }
+
 }

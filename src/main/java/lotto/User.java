@@ -43,7 +43,8 @@ public class User {
     }
     public void printUserLotto(int price){
         int lottoCount = price/1000;
-        System.out.println("\n"+lottoCount+"개를 구매했습니다.");
+        Message.printLottoCountMessage(lottoCount);
+
         for(int i=0; i<lottoCount; i++){
             List<Integer> printList = userLotto.get(i).printLottoNumber();
             System.out.println(printList);
@@ -66,13 +67,7 @@ public class User {
                 correctLottoNum += score.getMoney();
             }
         }
-        System.out.println("\n당첨 통계");
-        System.out.println("---");
-        System.out.println("3개 일치 (5,000원) - "+ hm.get(Score.third) +"개");
-        System.out.println("4개 일치 (50,000원) - "+ hm.get(Score.fourth) +"개");
-        System.out.println("5개 일치 (1,500,000원) - "+ hm.get(Score.fifth) +"개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+ hm.get(Score.fifthBonus) +"개");
-        System.out.println("6개 일치 (2,000,000,000원) - "+ hm.get(Score.six) +"개");
+        Message.printResultMessage(hm);
     }
 
     public Score calculatorResult(List<Integer> userLottoCase,List<Integer> lottoAnswer,String bonusNumber){
@@ -90,6 +85,6 @@ public class User {
         return Score.getWinValue(count);
     }
     public void printWinningRatio(int correctLottoNum,int purchasePrice){
-        System.out.println("총 수익률은 "+String.format("%.1f",(double)correctLottoNum/purchasePrice*100)+"%입니다.");
+        Message.printWinningRatioMessage(((double)correctLottoNum/purchasePrice*100));
     }
 }

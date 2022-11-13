@@ -12,25 +12,30 @@ public class Controller {
     List<Integer> lottoAnswer = new ArrayList<>();
     String bonusNumber;
 
-    public void buyLotto(){
-        System.out.println("구입 금액을 입력해주세요.");
+    public void buyLotto() throws IllegalArgumentException{
+        Message.startMessage();
         purchase = new Purchase(Console.readLine());
 
-        System.out.println("\n당첨번호를 입력해주세요.");
+        Message.inputNumberMessage();
         String inputAnswer = Console.readLine();
-        for(int i=0; i<inputAnswer.length(); i++){
-            if(inputAnswer.charAt(i)>=48 && inputAnswer.charAt(i)<=57) {
-                lottoAnswer.add(inputAnswer.charAt(i)-'0');
+
+        String[] inputSplitAnswer = inputAnswer.split(",");
+        for(int i=0; i<inputSplitAnswer.length; i++){
+            int num = Integer.parseInt(inputSplitAnswer[i]);
+            if(num>=0 && num<=45) {
+                lottoAnswer.add(Integer.parseInt(inputSplitAnswer[i]));
+                continue;
             }
+            throw new IllegalArgumentException("[ERROR] 범위 외의 값 입력");
         }
 
         Lotto lotto = new Lotto(lottoAnswer);
-        System.out.println("\n보너스 번호를 입력해 주세요.");
+        Message.inputBonusNumberMessage();
         bonusNumber = Console.readLine();
         lotto.getLottoBonusNumber(bonusNumber);
     }
 
-    public void publishLotto(){
+    public void publishLotto() throws IllegalArgumentException{
         User user = new User();
         user.getUserLotto(purchase.price);
         user.printUserLotto(purchase.price);
