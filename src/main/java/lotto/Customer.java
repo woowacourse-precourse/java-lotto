@@ -79,7 +79,7 @@ public class Customer {
     }
 
     private void isNotWrongLength(StringTokenizer delimitedInput) {
-        if (SIZE.equals(delimitedInput.countTokens())) {
+        if (!SIZE.equals(delimitedInput.countTokens())) {
             throw new IllegalArgumentException(WRONG_LENGTH.toString());
         }
     }
@@ -88,7 +88,7 @@ public class Customer {
         isContainNumber(input);
         int stringToInt = Integer.parseInt(input);
 
-        if (1 <= stringToInt && stringToInt <= 45) {
+        if (!(1 <= stringToInt && stringToInt <= 45)) {
             throw new IllegalArgumentException(WRONG_RANGE.toString());
         }
     }
