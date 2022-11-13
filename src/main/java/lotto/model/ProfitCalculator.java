@@ -17,7 +17,6 @@ public class ProfitCalculator {
     }
 
     public BigDecimal getWinningMoneyAmount(Map<LottoRank, Integer> lottoResultCount) {
-//        double result = 0;
         BigDecimal result = new BigDecimal(0);
         for (Map.Entry<LottoRank, Integer> lottoRankEntry : lottoResultCount.entrySet()) {
             LottoRank rank = lottoRankEntry.getKey();

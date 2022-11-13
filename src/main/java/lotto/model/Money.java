@@ -16,11 +16,11 @@ public class Money {
     }
 
     public void validateMoneyInput(String moneyInput){
-        checkMoneyInputNumber(moneyInput);
-        checkMoneyInputThousand(moneyInput);
+        validateMoneyInputNumber(moneyInput);
+        validateMoneyInputThousand(moneyInput);
     }
 
-    private static void checkMoneyInputNumber(String moneyInput){
+    private static void validateMoneyInputNumber(String moneyInput){
         if(isMoneyInputNumberCheck(moneyInput)){
             return;
         }
@@ -40,7 +40,7 @@ public class Money {
         return found;
     }
 
-    private static void checkMoneyInputThousand(String moneyInput){
+    private static void validateMoneyInputThousand(String moneyInput){
         if(isMoneyInputThousand(moneyInput)){
             return;
         }

@@ -3,12 +3,15 @@ package lotto.model;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static lotto.constValue.Constants.ExceptionMessage.BONUS_NUMBER_BAD_FORMAT_ERROR_MESSAGE;
+import static lotto.constValue.Constants.ExceptionMessage.BONUS_NUMBER_OVER_RANGE_ERROR_MESSAGE;
+
 public class Bonus {
 
     private int bonusNumber;
     
     public Bonus(String bonusNumber){
-        checkBonus(bonusNumber);
+        validateBonus(bonusNumber);
         this.bonusNumber = getParseInt(bonusNumber);
     }
 
@@ -20,24 +23,24 @@ public class Bonus {
         return Integer.parseInt(bonusNumber);
     }
 
-    public void checkBonus(String bonusNumber){
-        checkBonusNumber(bonusNumber);
-        checkBonusRange(bonusNumber);
+    public void validateBonus(String bonusNumber){
+        validateBonusNumber(bonusNumber);
+        validateBonusRange(bonusNumber);
     }
 
-    public void checkBonusRange(String bonusNumber){
+    public void validateBonusRange(String bonusNumber){
         int bonus = getParseInt(bonusNumber);
         if(bonus>=1 && bonus<=45){
             return;
         }
-        throw new IllegalArgumentException("[ERROR] : 보너스 번호의 범위에 벗어났습니다.");
+        throw new IllegalArgumentException(BONUS_NUMBER_OVER_RANGE_ERROR_MESSAGE);
     }
 
-    public void checkBonusNumber(String bonusNumber){
+    public void validateBonusNumber(String bonusNumber){
         if(isBonusNumber(bonusNumber)){
             return;
         }
-        throw new IllegalArgumentException("[ERROR] : 보너스 번호는 숫자만 가능합니다.");
+        throw new IllegalArgumentException(BONUS_NUMBER_BAD_FORMAT_ERROR_MESSAGE);
     }
 
     public boolean isBonusNumber(String bonusNumber){

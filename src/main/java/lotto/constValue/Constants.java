@@ -9,6 +9,8 @@ public final class Constants {
         public static final String LOTTO_NUMBER_DUPLICATE_ERROR_MESSAGE = "[ERROR] : 로또 번호에 중복 숫자가 없어야 합니다.";
         public static final String LOTTO_WINNING_NUMBER_OVER_RANGE_ERROR_MESSAGE = "[ERROR] : 당첨 번호의 범위를 벗어났습니다.";
         public static final String LOTTO_WINNING_NUMBER_BAD_FORMAT_ERROR_MESSAGE = "[ERROR] : 당첨 번호 형식에 맞지 않습니다.";
+        public static final String BONUS_NUMBER_OVER_RANGE_ERROR_MESSAGE = "[ERROR] : 보너스 번호의 범위에 벗어났습니다.";
+        public static final String BONUS_NUMBER_BAD_FORMAT_ERROR_MESSAGE = "[ERROR] : 보너스 번호는 숫자만 가능합니다.";
     }
 
     public class LottoInfo{

@@ -12,7 +12,7 @@ public class Winner {
     private final List<Integer> lottoWinningNumber;
 
     public Winner(String lottoWinningNumber) {
-        checkLottoWinningNumber(lottoWinningNumber);
+        validateLottoWinningNumber(lottoWinningNumber);
         this.lottoWinningNumber = getLottoWinningNumberParsing(lottoWinningNumber);
     }
 
@@ -30,13 +30,13 @@ public class Winner {
         return lottoWinningNumber;
     }
 
-    public void checkLottoWinningNumber(String lottoNumber) {
-        checkLottoWinningNumberFormat(lottoNumber);
-        checkLottoWinningNumberRange(lottoNumber);
+    public void validateLottoWinningNumber(String lottoNumber) {
+        validateLottoWinningNumberFormat(lottoNumber);
+        validateLottoWinningNumberRange(lottoNumber);
     }
 
 
-    private static void checkLottoWinningNumberRange(String lottoNumber) {
+    private static void validateLottoWinningNumberRange(String lottoNumber) {
         String[] lottoNumbersOnly = lottoNumber.split(",");
         for (String lottoNumberOnly : lottoNumbersOnly) {
             int lottoNumberParsing = Integer.parseInt(lottoNumberOnly);
@@ -51,7 +51,7 @@ public class Winner {
         throw new IllegalArgumentException(LOTTO_WINNING_NUMBER_OVER_RANGE_ERROR_MESSAGE);
     }
 
-    private static void checkLottoWinningNumberFormat(String lottoNumber) {
+    private static void validateLottoWinningNumberFormat(String lottoNumber) {
         if (isLottoNumberFormat(lottoNumber)) {
             return;
         }

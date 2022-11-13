@@ -12,8 +12,8 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        checkDuplicatedLottoNumber(numbers);
-        checkLottoNumberRange(numbers);
+        validateDuplicatedLottoNumber(numbers);
+        validateLottoNumberRange(numbers);
         this.numbers = numbers.stream().sorted().collect(Collectors.toList());
 
     }
@@ -25,7 +25,7 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    private void checkLottoNumberRange(List<Integer> numbers) {
+    private void validateLottoNumberRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (number < 1 || number > 45) {
                 throw new IllegalArgumentException(LOTTO_NUMBER_OVER_RANGE_ERROR_MESSAGE);
@@ -33,7 +33,7 @@ public class Lotto {
         }
     }
 
-    private void checkDuplicatedLottoNumber(List<Integer> numbers) {
+    private void validateDuplicatedLottoNumber(List<Integer> numbers) {
         Set<Integer> notDuplicatedNumber = getNotDuplicatedNumber(numbers);
         if (numbers.size() == notDuplicatedNumber.size()) {
             return;
