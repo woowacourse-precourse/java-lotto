@@ -7,7 +7,11 @@ import static camp.nextstep.edu.missionutils.Randoms.pickUniqueNumbersInRange;
 
 public class LotteryTicketingMachine {
 
-    public int ticketHowManyLotto(int money) {
+    public int ticketHowManyLotto (int money) throws IllegalArgumentException {
+        if (money%1000!=0) {
+            System.out.println("[ERROR] 입력 값은 1000으로 나누어 떨어져야 합니다.");
+            throw new IllegalArgumentException();
+        }
         int howManyLotto;
         howManyLotto = money/1000;
         return howManyLotto;
