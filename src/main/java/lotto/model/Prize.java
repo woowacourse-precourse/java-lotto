@@ -11,6 +11,14 @@ public enum Prize {
     SECOND(30_000_000, judgeSecond(), "5개 일치, 보너스 볼 일치 (30,000,000원) - "),
     FIRST(2_000_000_000, judgeFirst(), "6개 일치 (2,000,000,000원) - ");
 
+    public static final int FIFTH_PRIZE_CRITERION_FOR_WINNING_MATCH = 3;
+    public static final int FOURTH_PRIZE_CRITERION_FOR_WINNING_MATCH = 4;
+    public static final int THIRD_PRIZE_CRITERION_FOR_WINNING_MATCH = 5;
+    public static final int THIRD_PRIZE_CRITERION_FOR_BONUS_MATCH = 0;
+    public static final int SECOND_PRIZE_CRITERION_FOR_WINNING_MATCH = 5;
+    public static final int SECOND_PRIZE_CRITERION_FOR_BONUS_MATCH = 1;
+    public static final int FIRST_PRIZE_CRITERION_FOR_WINNING_MATCH = 6;
+
     private final int money;
     private final BiPredicate<Integer, Integer> judge;
     private final String message;
@@ -22,27 +30,53 @@ public enum Prize {
     }
 
     private static BiPredicate<Integer, Integer> judgeNone() {
-        return (winningMatches, bonusMatches) -> winningMatches < 3;
+        return (winningMatches, bonusMatches) -> isNone(winningMatches);
+    }
+
+    private static boolean isNone(Integer winningMatches) {
+        return winningMatches < FIFTH_PRIZE_CRITERION_FOR_WINNING_MATCH;
     }
 
     private static BiPredicate<Integer, Integer> judgeFifth() {
-        return (winningMatches, bonusMatches) -> winningMatches == 3;
+        return (winningMatches, bonusMatches) -> isFifth(winningMatches);
+    }
+
+    private static boolean isFifth(Integer winningMatches) {
+        return winningMatches == FIFTH_PRIZE_CRITERION_FOR_WINNING_MATCH;
     }
 
     private static BiPredicate<Integer, Integer> judgeFourth() {
-        return (winningMatches, bonusMatches) -> winningMatches == 4;
+        return (winningMatches, bonusMatches) -> isFourth(winningMatches);
+    }
+
+    private static boolean isFourth(Integer winningMatches) {
+        return winningMatches == FOURTH_PRIZE_CRITERION_FOR_WINNING_MATCH;
     }
 
     private static BiPredicate<Integer, Integer> judgeThird() {
-        return (winningMatches, bonusMatches) -> winningMatches == 5 && bonusMatches == 0;
+        return (winningMatches, bonusMatches) -> isThird(winningMatches, bonusMatches);
+    }
+
+    private static boolean isThird(Integer winningMatches, Integer bonusMatches) {
+        return winningMatches == THIRD_PRIZE_CRITERION_FOR_WINNING_MATCH
+                && bonusMatches == THIRD_PRIZE_CRITERION_FOR_BONUS_MATCH;
     }
 
     private static BiPredicate<Integer, Integer> judgeSecond() {
-        return (winningMatches, bonusMatches) -> winningMatches == 5 && bonusMatches == 1;
+        return (winningMatches, bonusMatches) -> isSecond(winningMatches, bonusMatches);
+    }
+
+    private static boolean isSecond(Integer winningMatches, Integer bonusMatches) {
+        return winningMatches == SECOND_PRIZE_CRITERION_FOR_WINNING_MATCH
+                && bonusMatches == SECOND_PRIZE_CRITERION_FOR_BONUS_MATCH;
     }
 
     private static BiPredicate<Integer, Integer> judgeFirst() {
-        return (winningMatches, bonusMatches) -> winningMatches == 6;
+        return (winningMatches, bonusMatches) -> isFirst(winningMatches);
+    }
+
+    private static boolean isFirst(Integer winningMatches) {
+        return winningMatches == FIRST_PRIZE_CRITERION_FOR_WINNING_MATCH;
     }
 
     public static Prize judge(int winningMatches, int bonusMatches) {
