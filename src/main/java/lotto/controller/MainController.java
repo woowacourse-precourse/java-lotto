@@ -10,7 +10,6 @@ import lotto.view.ProfitRateView;
 import lotto.view.StatisticsView;
 import lotto.view.TicketView;
 
-import java.util.List;
 import java.util.Map;
 
 public class MainController {
@@ -22,7 +21,9 @@ public class MainController {
         Map<Prize, Integer> statistics = LottoResultService.getStatistics(ticket, winningLotto);
         StatisticsView.outPut(statistics);
 
-        double rate = ProfitRateService.calculateRate(ticket.getPurchaseAmount(), LottoResultService.getPrizeMoney(statistics));
+        int purchaseAmount = ticket.getPurchaseAmount();
+        double prizeMoney = LottoResultService.getPrizeMoney(statistics);
+        double rate = ProfitRateService.calculateRate(purchaseAmount, prizeMoney);
         ProfitRate profitRate = new ProfitRate(rate);
         ProfitRateView.outPut(profitRate);
     }
