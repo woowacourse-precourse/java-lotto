@@ -165,4 +165,17 @@ class LottoControllerTest {
         //then
         assertEquals(true, exceptionCatch);
     }
+
+    @Test
+    void getLottoRankResults(){
+        //given
+        List<Integer> result = null;
+        //when
+        List<Lotto> lottos = lottoController.purchaseLotto("1000");
+        Lotto lotto = lottos.get(0);
+        lottoService.setWinningNumbers(lotto.getNumbers());
+        result = lottoController.getLottoRankResults();
+        //then
+        assertEquals(List.of(0,0,0,0,1),result);
+    }
 }
