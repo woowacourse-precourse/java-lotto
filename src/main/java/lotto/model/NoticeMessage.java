@@ -1,4 +1,4 @@
-package model;
+package lotto.model;
 
 public enum NoticeMessage {
     PURCHASING_AMOUNT{

@@ -1,7 +1,7 @@
 package lotto;
 
-import model.ErrorMessage;
-import model.Lotto;
+import lotto.model.ErrorMessage;
+import lotto.model.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

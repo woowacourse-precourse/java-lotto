@@ -1,4 +1,4 @@
-package model;
+package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-
-import static model.WinningNumberStatus.*;
 
 public class LottoService {
     public List<Lotto> issueLotto(int money) {
@@ -42,8 +40,8 @@ public class LottoService {
 
     public double getEarning(HashMap<Integer, Integer> count) {
         double earning = 0;
-        for (int rank = FIRST.getOrder(); rank <= FIFTH.getOrder(); rank++) {
-            WinningNumberStatus winningNumberStatus = getWinningNumberStatusByOrder(rank);
+        for (int rank = WinningNumberStatus.FIRST.getOrder(); rank <= WinningNumberStatus.FIFTH.getOrder(); rank++) {
+            WinningNumberStatus winningNumberStatus = WinningNumberStatus.getWinningNumberStatusByOrder(rank);
             earning += count.get(rank) * winningNumberStatus.getMoney();
         }
         return earning;

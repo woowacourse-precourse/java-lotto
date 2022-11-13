@@ -1,17 +1,15 @@
-package view;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import model.NoticeMessage;
-
-import static model.NoticeMessage.*;
+import lotto.model.NoticeMessage;
 
 public class InputView {
     public String inputMoney() {
-        return printMessage(PURCHASING_AMOUNT);
+        return printMessage(NoticeMessage.PURCHASING_AMOUNT);
     }
 
     public String inputLuckyNumber() {
-        return printMessage(LUCKY_NUMBER);
+        return printMessage(NoticeMessage.LUCKY_NUMBER);
     }
 
     private String printMessage(NoticeMessage luckyNumber) {
@@ -22,6 +20,6 @@ public class InputView {
     }
 
     public String inputBonusNumber() {
-        return printMessage(BONUS_NUMBER);
+        return printMessage(NoticeMessage.BONUS_NUMBER);
     }
 }

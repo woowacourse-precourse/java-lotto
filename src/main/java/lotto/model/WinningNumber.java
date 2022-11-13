@@ -1,12 +1,11 @@
-package model;
+package lotto.model;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
-import static model.LottoStatus.END;
-import static model.LottoStatus.START;
-import static model.WinningNumberStatus.*;
+import static lotto.model.LottoStatus.END;
+import static lotto.model.LottoStatus.START;
 
 public class WinningNumber {
     private final Lotto luckyNumber;
@@ -56,18 +55,18 @@ public class WinningNumber {
     }
 
     private void addResult(HashMap<Integer, Integer> result, List<Integer> numbers, int count) {
-        if (count == FIRST.getCount()) {
-            result.put(FIRST.getOrder(), result.get(FIRST.getOrder()) + 1);
+        if (count == WinningNumberStatus.FIRST.getCount()) {
+            result.put(WinningNumberStatus.FIRST.getOrder(), result.get(WinningNumberStatus.FIRST.getOrder()) + 1);
             return;
         }
 
-        if (count == SECOND.getCount() && numbers.contains(bonusNumber)) {
-            result.put(SECOND.getOrder(), result.get(SECOND.getOrder()) + 1);
+        if (count == WinningNumberStatus.SECOND.getCount() && numbers.contains(bonusNumber)) {
+            result.put(WinningNumberStatus.SECOND.getOrder(), result.get(WinningNumberStatus.SECOND.getOrder()) + 1);
             return;
         }
 
-        if (FIFTH.getCount() <= count && count <= THIRD.getCount()) {
-            result.put(getOrderOverTHIRD(count), result.get(getOrderOverTHIRD(count)) + 1);
+        if (WinningNumberStatus.FIFTH.getCount() <= count && count <= WinningNumberStatus.THIRD.getCount()) {
+            result.put(WinningNumberStatus.getOrderOverTHIRD(count), result.get(WinningNumberStatus.getOrderOverTHIRD(count)) + 1);
         }
     }
 
@@ -92,7 +91,7 @@ public class WinningNumber {
     }
 
     private void initResult(HashMap<Integer, Integer> result) {
-        for (int rank = FIRST.getOrder(); rank <= FIFTH.getOrder(); rank++) {
+        for (int rank = WinningNumberStatus.FIRST.getOrder(); rank <= WinningNumberStatus.FIFTH.getOrder(); rank++) {
             result.put(rank, 0);
         }
     }

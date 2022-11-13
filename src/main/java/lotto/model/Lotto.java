@@ -1,9 +1,9 @@
-package model;
+package lotto.model;
 
 import java.util.HashMap;
 import java.util.List;
 
-import static model.ErrorMessage.*;
+import static lotto.model.ErrorMessage.*;
 
 public class Lotto {
     private final List<Integer> numbers;

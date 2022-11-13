@@ -1,14 +1,13 @@
-package view;
+package lotto.view;
 
-import model.Lotto;
-import model.WinningNumberStatus;
+import lotto.model.WinningNumberStatus;
+import lotto.model.Lotto;
 
 import java.util.HashMap;
 import java.util.List;
 
-import static model.NoticeMessage.ADDITIONAL_SECOND;
-import static model.NoticeMessage.LOTTO_COUNT;
-import static model.WinningNumberStatus.*;
+import static lotto.model.NoticeMessage.ADDITIONAL_SECOND;
+import static lotto.model.NoticeMessage.LOTTO_COUNT;
 
 public class OutputView {
 
@@ -23,8 +22,8 @@ public class OutputView {
     public void outputWinningStatistics(HashMap<Integer, Integer> result) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        for (int rank = FIFTH.getOrder(); rank >= FIRST.getOrder(); rank--) {
-            WinningNumberStatus winningNumberStatus = getWinningNumberStatusByOrder(rank);
+        for (int rank = WinningNumberStatus.FIFTH.getOrder(); rank >= WinningNumberStatus.FIRST.getOrder(); rank--) {
+            WinningNumberStatus winningNumberStatus = WinningNumberStatus.getWinningNumberStatusByOrder(rank);
             System.out.println(winningNumberStatus.getCount() + "개 일치" + getAdditionalSecondNotice(rank)
                     + " (" + getProcessedMoney(winningNumberStatus.getMoney())+ "원) - " + result.get(rank) + "개");
         }
@@ -51,7 +50,7 @@ public class OutputView {
     }
 
     private String getAdditionalSecondNotice(int rank) {
-        if (rank == SECOND.getOrder()) {
+        if (rank == WinningNumberStatus.SECOND.getOrder()) {
             return ADDITIONAL_SECOND.toString();
         }
         return "";

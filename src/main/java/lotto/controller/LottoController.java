@@ -1,9 +1,12 @@
-package model;
+package lotto.controller;
 
-import utils.Converter;
-import utils.Validator;
-import view.InputView;
-import view.OutputView;
+import lotto.model.Lotto;
+import lotto.model.LottoService;
+import lotto.model.WinningNumber;
+import lotto.view.OutputView;
+import lotto.utils.Converter;
+import lotto.utils.Validator;
+import lotto.view.InputView;
 
 import java.util.HashMap;
 import java.util.List;

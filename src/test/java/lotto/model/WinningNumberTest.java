@@ -1,5 +1,9 @@
-package model;
+package lotto.model;
 
+import lotto.model.ErrorMessage;
+import lotto.model.Lotto;
+import lotto.model.WinningNumber;
+import lotto.model.WinningNumberStatus;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
