@@ -110,4 +110,21 @@ class LottoTest {
         assertEquals(compareHowManyCorrect.gatherTwoLists(userNumber,winNumber),gatherList);
 
     }
+
+    @DisplayName("리스트안에 특정 숫자가 있으면 참을 반환한다.")
+    @Test
+    void checkBonusNumber() {
+        int bonusNumber = 10;
+        List<Integer> userNumber1 = new ArrayList<>(Arrays.asList(1,4,7,10,14,30));
+        List<Integer> userNumber2 = new ArrayList<>(Arrays.asList(1,4,7,13,14,30));
+
+        CompareHowManyCorrect compareHowManyCorrect = new CompareHowManyCorrect();
+
+        assertAll(
+                ()-> assertTrue(compareHowManyCorrect.checkBonus(userNumber1,bonusNumber)),
+                ()-> assertTrue(!compareHowManyCorrect.checkBonus(userNumber2,bonusNumber))
+        );
+
+
+    }
 }
