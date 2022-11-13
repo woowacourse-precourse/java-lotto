@@ -2,6 +2,8 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.List;
+
 /**
  * 사용자에게 로또 구입과 발행을 관리
  *
@@ -9,6 +11,12 @@ import camp.nextstep.edu.missionutils.Console;
  * @author chlskreh2
  */
 public class LottoStore {
+    private final LottoNumberCreator lottoNumberCreator;
+
+    public LottoStore(LottoNumberCreator lottoNumberCreator) {
+        this.lottoNumberCreator = lottoNumberCreator;
+    }
+
     /**
      * 사용자에게 로또 구입금액을 입력해 달라는 문구 출력
      */
@@ -17,13 +25,34 @@ public class LottoStore {
     }
 
     /**
+     * 구입금액에 맞게 로또 구매
+     */
+    public List<Lotto> buyLotto() {
+        int buyAmount = inputBuyAmount();
+        int lottoQuantity = buyAmount / 1000;
+        List<Lotto> lotteries = lottoNumberCreator.createLottoNumber(lottoQuantity);
+        printLottoAmountAndNumber(lotteries);
+        return lotteries;
+    }
+
+    /**
      * 사용자에게 로또 구입금액 입력 받기
      */
-    public int inputBuyAmount() {
+    private int inputBuyAmount() {
         String buyAmountBill = Console.readLine();
         int buyAmount = validateConvertNumber(buyAmountBill);
         validateThousandUnits(buyAmount);
         return buyAmount;
+    }
+
+    /**
+     * 로또 수량과 로또 번호 출력 하기
+     */
+    private void printLottoAmountAndNumber(List<Lotto> lotteries) {
+        System.out.println(lotteries.size() + "개를 구매했습니다.");
+        for (Lotto lottery : lotteries) {
+            System.out.println(lottery.toString());
+        }
     }
 
     private int validateConvertNumber(String buyAmountBill) {
