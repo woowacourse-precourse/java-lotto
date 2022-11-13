@@ -6,8 +6,6 @@ import java.util.List;
 
 public class Lottos {
 
-    public static final int PRICE = 1000;
-
     private final List<Lotto> lottos;
     private final long count;
 
