@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import java.util.Arrays;
+
 public enum Rank {
     ZERO(0,0,false),
     THREE(3, 5_000, false),
@@ -16,5 +18,18 @@ public enum Rank {
         this.countOfMatch = countOfMatch;
         this.reward = reward;
         this.isMatchedBonus = isMatchedBonus;
+    }
+
+    public static Rank makeRank(int countOfMatch, boolean isMatchedBonus) {
+        return Arrays.stream(Rank.values())
+                .filter(rank -> rank.countOfMatch == countOfMatch)
+                .filter(rank -> {
+                    if (rank.countOfMatch != 5) {
+                        return true;
+                    }
+                    return rank.isMatchedBonus == isMatchedBonus;
+                })
+                .findAny()
+                .orElse(ZERO);
     }
 }
