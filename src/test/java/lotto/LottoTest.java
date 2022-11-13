@@ -1,18 +1,24 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.io.*;
-import java.util.List;
-
-import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
-import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import camp.nextstep.edu.missionutils.test.NsTest;
 
-class LottoTest {
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.List;
+
+import static camp.nextstep.edu.missionutils.test.Assertions.*;
+import static lotto.Lotto.enterTheAmount;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+
+class LottoTest extends NsTest {
+
+    private static final String ERROR_MESSAGE = "[ERROR]";
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
     @Test
     void createLottoByOverSize() {
@@ -30,4 +36,19 @@ class LottoTest {
 
     // 아래에 추가 테스트 작성 가능
 
+    @DisplayName("구입 금액이 로또 금액인 1000으로 나누어지지 않으면 예외 발생.")
+    @Test
+    void validateTheEnteredAmount(){
+        final String INVALID_NUMBER = "1234";
+        InputStream in = new ByteArrayInputStream(INVALID_NUMBER.getBytes());
+        System.setIn(in);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> {
+            enterTheAmount();
+        });
+    }
+
+
+
+    @Override
+    protected void runMain() {Lotto.main(new String[]{});}
 }
