@@ -19,7 +19,7 @@ public class LottoMachine {
     }
 
     private void validateNumber(int number) {
-        if (number > 45 || number < 1) throw new IllegalArgumentException("번호는 1이상 45이하 입니다.");
+        if (number > 45 || number < 1) throw new IllegalArgumentException("로또 번호는 1부터 45 사이의 숫자여야 합니다.");
     }
 
     private void validateOverlap(List<Integer> answer) {
