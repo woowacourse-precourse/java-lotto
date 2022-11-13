@@ -1,4 +1,7 @@
-package lotto.utils;
+package lotto.validation;
+
+import lotto.utils.Constant;
+import lotto.utils.ErrorMessage;
 
 import java.util.Arrays;
 import java.util.List;

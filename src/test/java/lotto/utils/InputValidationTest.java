@@ -2,6 +2,7 @@ package lotto.utils;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.Application;
+import lotto.validation.InputValidation;
 import lotto.views.Input;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

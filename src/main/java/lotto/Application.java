@@ -1,6 +1,5 @@
 package lotto;
 
-import lotto.utils.InputValidation;
 import lotto.views.Input;
 
 public class Application {
