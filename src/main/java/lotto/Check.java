@@ -2,11 +2,11 @@ package lotto;
 
 import java.util.List;
 
-public class Result {
+public class Check {
     private int matchCnt;
     private boolean bonusMatch;
 
-    public Result(Lotto lotto, List<Integer> winNums, int bonusNum) {
+    public Check(Lotto lotto, List<Integer> winNums, int bonusNum) {
         this.matchCnt = 0;
         for (int e : lotto.getNums()) {
             if (winNums.contains(e))

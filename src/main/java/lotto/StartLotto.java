@@ -15,7 +15,7 @@ public class StartLotto {
         printLotto(lotto);
         List<Integer> winNums = winNumInput();
         int bonusNum = bonusNumInput(winNums);
-        List<Result> results = new ArrayList<>();
+        List<Check> checks = new ArrayList<>();
 /*
         int first = 0, second = 0, third = 0, fourth = 0, fifth = 0;
         for (Result e : results) {
