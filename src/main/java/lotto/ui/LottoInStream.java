@@ -61,8 +61,7 @@ public class LottoInStream {
         try {
             return Integer.parseInt(number);
         } catch (NumberFormatException ex) {
-            Application.lottoError("숫자가 아닌 문자는 처리할 수 없습니다.");
-            return -1;
+            throw new IllegalArgumentException("[ERROR] 잘못된 입력 값 입니다." + "-> \"" + number + "\"");
         }
     }
 }
