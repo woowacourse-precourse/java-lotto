@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,17 +23,10 @@ public class ValidationTest {
     @DisplayName("사용자가 입력한 수가 6자리로 이뤄져 있다.")
     @Test
     void inputAmountIsSix() {
-        List<Integer> input = new ArrayList<>();
-        input.add(1);
-        input.add(2);
-        input.add(3);
-        input.add(4);
-        input.add(5);
-        input.add(6);
-
+        List<Integer> input = Arrays.asList(1, 2, 3, 4, 5, 6);
         assertThatCode(() -> validInput.validInputLength(input)).doesNotThrowAnyException();
-        input.remove(5);
-        assertThatThrownBy(() -> validInput.validInputLength(input)).isInstanceOf(IllegalArgumentException.class);
+        List<Integer> input2 = Arrays.asList(1, 2, 3, 4, 5);
+        assertThatThrownBy(() -> validInput.validInputLength(input2)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("사용자가 입력한 수가 범위 내에 있다.")
@@ -46,19 +40,11 @@ public class ValidationTest {
     @DisplayName("사용자의 입력에 중복이 존재하지 않는다.")
     @Test
     void isInputHasDuplicatedNumber() {
-        List<Integer> input = new ArrayList<>();
-        input.add(1);
-        input.add(2);
-        input.add(3);
-        input.add(4);
-        input.add(5);
-        input.add(6);
-
+        List<Integer> input = Arrays.asList(1, 2, 3, 4, 5, 6);
         assertThatCode(() -> validInput.validInputHasDuplicatedNumber(input)).doesNotThrowAnyException();
 
-        input.add(1);
-
-        assertThatThrownBy(() -> validInput.validInputHasDuplicatedNumber(input))
+        List<Integer> input2 = Arrays.asList(1, 2, 3, 4, 5, 6, 1);
+        assertThatThrownBy(() -> validInput.validInputHasDuplicatedNumber(input2))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
