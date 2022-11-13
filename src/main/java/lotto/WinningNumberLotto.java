@@ -1,5 +1,7 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
 
 public class WinningNumberLotto extends Lotto {
@@ -18,11 +20,13 @@ public class WinningNumberLotto extends Lotto {
         this.bonusNumber = bonusNumber;
     }
 
-    private void inputBonusNumber() {
-
+    private int inputBonusNumber() {
+        String input = Console.readLine();
+        validateBonusNumber(input);
+        return Integer.parseInt(input);
     }
 
-    private void validateBonusNumber() {
+    private void validateBonusNumber(String input) {
 
     }
 
