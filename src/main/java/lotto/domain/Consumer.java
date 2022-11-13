@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import lotto.Lotto;
 import lotto.LottoRank;
 import lotto.view.InputView;
 
@@ -11,6 +10,7 @@ import java.util.List;
 
 public class Consumer {
     private final static int PURCHASE_UNIT = 1000;
+    private int purchasePrice;
     private List<Lotto> lotteries;
     private final HashMap<LottoRank, Integer> rankStatics = new HashMap<>();
 
@@ -21,7 +21,7 @@ public class Consumer {
     }
 
     public void purchaseLotto() {
-        int purchasePrice = new InputView().readPurchasePrice();
+        purchasePrice = new InputView().readPurchasePrice();
         validatePrice(purchasePrice);
         this.lotteries = getLotteries(purchasePrice);
     }
@@ -50,7 +50,7 @@ public class Consumer {
         return lotteries;
     }
 
-    public void rankLotteries(Lotto winningLotto, int bonusNumber) {
+    public HashMap<LottoRank, Integer> rankLotteries(Lotto winningLotto, int bonusNumber) {
         for (Lotto lotto : lotteries) {
             int matchCount = lotto.getMatchCountWith(winningLotto);
             boolean hasBonusNumber = lotto.hasBonusNumber(bonusNumber);
@@ -58,8 +58,21 @@ public class Consumer {
                     .filter(lottoRank -> lottoRank.matchNumberCount == matchCount)
                     .filter(lottoRank -> lottoRank.hasBonusNumber == hasBonusNumber)
                     .forEach(lottoRank -> {
-                       rankStatics.put(lottoRank, this.rankStatics.get(lottoRank));
+                        int currentRankCount = rankStatics.get(lottoRank);
+                        rankStatics.put(lottoRank, ++currentRankCount);
                     });
         }
+
+        return rankStatics;
+    }
+
+    public float estimateRateOfProfit() {
+        float profit = 0;
+        for (LottoRank lottoRank : LottoRank.values()) {
+            profit += rankStatics.get(lottoRank) * lottoRank.price;
+        }
+        float rateOfProfit = (profit / purchasePrice) * 100;
+
+        return Math.round(rateOfProfit * 10) / 10.0f;
     }
 }

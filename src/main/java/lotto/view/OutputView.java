@@ -1,6 +1,6 @@
 package lotto.view;
 
-import lotto.Lotto;
+import lotto.domain.Lotto;
 import lotto.LottoRank;
 
 import java.text.DecimalFormat;
@@ -12,6 +12,7 @@ public class OutputView {
     private final static String WIN_STATICS = "당첨 통계\n---";
     private final static String WIN_RESULT = "%d개 일치 (%s원) - %d개";
     private final static String SECOND_PLACE_RESULT = "%d개 일치, 보너스 볼 일치 (%s원) - %d개";
+    private final static String RATE_OF_PROFIT = "총 수익률은 %.1f%%입니다.";
 
     public void printLotteries(List<Lotto> lotteries) {
         String purchaseLog = String.format(PURCHASE_LOG, lotteries.size());
@@ -35,5 +36,9 @@ public class OutputView {
 
     private void printNewLine() {
         System.out.println();
+    }
+
+    public void printRateOfProfit(float rateOfProfit) {
+        System.out.printf(RATE_OF_PROFIT, rateOfProfit);
     }
 }
