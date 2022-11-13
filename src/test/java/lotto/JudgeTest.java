@@ -24,4 +24,18 @@ class JudgeTest {
         List<Integer> result = List.of(0, 6, 0, 0, 0, 0);
         assertThat(judge.rankCount).isEqualTo(result);
     }
+
+    @DisplayName("총 복권 당첨금을 계산한다.")
+    @Test
+    void createTotalPriceMoney() {
+        List<Lotto> lotteries = new ArrayList<>();
+        List<Integer> example = List.of(1, 2, 3, 4, 5, 6);
+        for (int i = 0; i < 6; i++)
+            lotteries.add(new Lotto(example));
+        List<Integer> winningNumbers = List.of(1, 2, 3, 4, 5, 6, 7);
+        Judge judge = new Judge();
+        judge.setRankCount(lotteries, winningNumbers);
+        long result = (long) 2000000000 * 6;
+        assertThat(judge.countPrizeMoney()).isEqualTo(result);
+    }
 }
