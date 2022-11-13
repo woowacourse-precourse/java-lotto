@@ -1,6 +1,7 @@
 package lotto.ui;
 
 import lotto.domain.lotto.Lottos;
+import lotto.domain.winningresult.WinningResultType;
 import lotto.domain.winningresult.WinningResults;
 import lotto.ui.formatter.OutputFormatter;
 
@@ -19,5 +20,10 @@ public class ResultView {
 	public void printDrawnLottos(Lottos lottos) {
 		System.out.print(LINE_BREAK);
 		System.out.println(lottosOutputFormatter.outputFormat(lottos));
+	}
+
+	public void printWinningResult(WinningResults winningResults) {
+		System.out.print(LINE_BREAK);
+		System.out.println(resultOutputFormatter.outputFormat(winningResults));
 	}
 }

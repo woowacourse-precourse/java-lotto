@@ -31,4 +31,8 @@ public class Lottos {
     public Stream<Lotto> lottoStream() {
         return lottos.stream();
     }
+
+    public int purchasedLottosAmount() {
+        return lottos.size() * AMOUNT_PER_LOTTO;
+    }
 }

@@ -21,7 +21,6 @@ public class LottoDraw {
     public WinningResultType match(Lotto lotto) {
         int matchedCount = calculateMatchedCount(lotto);
         boolean isBonusMatched = isBonusNumberMatched(lotto);
-
         return WinningResultType.of(matchedCount, isBonusMatched);
     }
 

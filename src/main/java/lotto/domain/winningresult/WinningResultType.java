@@ -29,4 +29,12 @@ public enum WinningResultType {
                 .findFirst()
                 .orElseThrow();
     }
+
+    public String getContent() {
+        return content;
+    }
+
+    public int getReward() {
+        return reward;
+    }
 }

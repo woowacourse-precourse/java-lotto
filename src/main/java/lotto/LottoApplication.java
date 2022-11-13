@@ -24,6 +24,8 @@ public class LottoApplication {
 		resultView.printDrawnLottos(lottos);
 		LottoDraw lottoDraw = inputView.getLottoDraw();
 		WinningResults winningResults = WinningResults.of(lottos, lottoDraw);
+
+		resultView.printWinningResult(winningResults);
 	}
 
 	private Lottos generateLottos(int purchasedAmount) {
