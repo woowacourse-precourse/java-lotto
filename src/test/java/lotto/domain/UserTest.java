@@ -3,6 +3,7 @@ package lotto.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -44,5 +45,21 @@ public class UserTest {
 
         //then
         assertThat(buyAmount).isEqualTo(user.getBuyAmount());
+    }
+
+    @DisplayName("금액 설정하기.")
+    @Test
+    void setMyLotto() {
+        //given
+        final int myLottoCount = 1;
+        User user = new User();
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+        Lotto lotto = new Lotto(numbers);
+
+        //when
+        user.setMyLotto(lotto);
+
+        //then
+        assertThat(user.getMyLotto().size()).isEqualTo(myLottoCount);
     }
 }
