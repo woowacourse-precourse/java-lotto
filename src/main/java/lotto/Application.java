@@ -17,7 +17,8 @@ public class Application {
         List<Integer> userNumbers = inputNumbers();
         Lotto userLotto = new Lotto(userNumbers);
 
-        int bouns = inputBouns();
+        int bonus = inputBouns();
+        Bonus userBonus = new Bonus(bonus);
     }
 
     private static int inputUserPrice(){
