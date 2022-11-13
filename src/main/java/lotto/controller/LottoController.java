@@ -7,7 +7,6 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoResult;
 import lotto.domain.Player;
 import lotto.domain.Purchase;
-import lotto.domain.Rank;
 import lotto.domain.Ranking;
 import lotto.domain.Statistics;
 import lotto.view.InputView;
@@ -36,15 +35,11 @@ public class LottoController {
 
         // 로또 결과 계산
         LottoResult result = new LottoResult(winningNumbers, allPlayerNumbers, bonusNumber);
-        List<Integer> matches = result.getMatches();
-        List<Boolean> bonusMatches = result.getBonusMatches();
+        List<Integer> matches = result.getMatches(); // [3, 1, 5, 5, 3]
+        List<Boolean> bonusMatches = result.getBonusMatches(); // [true, false, true, false, false]
 
         // 로또 순위 계산
-        Ranking ranking = new Ranking(matches, bonusMatches);
-
-        // 당첨 통계 계산
-        Statistics statistics = new Statistics(ranking.getRankings());
-
+        Ranking ranking = new Ranking(matches, bonusMatches); // [FIFTH, NONE, SECOND, THIRD, FIFTH]
     }
 
     private static void validateDuplicates() {
