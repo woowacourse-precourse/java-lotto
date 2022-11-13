@@ -5,7 +5,7 @@ import java.util.Map;
 public class Money {
   private static int money;
   // 입력된 money가 숫자로만 이루어져 있는지.
-  private static void checkMoneyIsDigit(String userMoney) {
+  public static void checkMoneyIsDigit(String userMoney) {
     for (int i = 0; i < userMoney.length(); i++)
     {
       if (!Character.isDigit(userMoney.charAt(i))) {
@@ -15,7 +15,7 @@ public class Money {
   }
 
   // 입력된 money가 1000원 단위로 나누어 떨어지는지
-  private static void checkDividableMoney() {
+  public static void checkDividableMoney() {
     if (money % 1000 != 0) {
       throw new IllegalArgumentException(ErrorMessage.NOT_1000.getMessage());
     }

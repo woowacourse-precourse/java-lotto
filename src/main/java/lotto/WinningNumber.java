@@ -3,14 +3,14 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WinningNumber { // size가 6으로 고정되도록 기능 추가해야됨
+public class WinningNumber {
   private List<Integer> number;
 
   public WinningNumber(String userNumber) {
-    this.number = splitNumber(userNumber);
+    this.number = splitWinningNumber(userNumber);
   }
   // ','를 기준으로 split 시행
-  public List<Integer> splitNumber(String userNumber) {
+  public List<Integer> splitWinningNumber(String userNumber) {
     String[] number = userNumber.split(",");
     List<Integer> numberInt = new ArrayList<>();
     for (String num : number) {

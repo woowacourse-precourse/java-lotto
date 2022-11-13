@@ -21,9 +21,6 @@ public class Message {
 
   public static void winningStatics() {
     System.out.println("당첨 통계");
-  }
-
-  public static void line() {
     System.out.println("---");
   }
 

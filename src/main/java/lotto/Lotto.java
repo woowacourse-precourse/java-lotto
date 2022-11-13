@@ -14,7 +14,7 @@ public class Lotto {
         return numbers;
     }
 
-    private void validate(List<Integer> numbers) { // 로또 번호 valid 아직 안돈다..!!!!!
+    private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }

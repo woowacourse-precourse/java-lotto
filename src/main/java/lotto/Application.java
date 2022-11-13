@@ -29,7 +29,6 @@ public class Application { // 패키지 분리
         }
 
         Message.winningStatics();
-        Message.line();
         Message.matchMessage(matchNumbers.getMaps());
         Message.ratio(Money.percentage(matchNumbers.getMaps()));
     }
