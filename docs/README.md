@@ -48,26 +48,31 @@
 
 # controller
 - [receive]
-  - [  ] 1
-      - [  ] 구입금액 입력 문구
-      - [  ] 구입금액 input
-      - [  ] emptyline
+  - [ o ] 1
+      - [ o ] 구입금액 입력 문구
+      - [ o ] 구입금액 input
+      - [ o ] emptyline
       - return -> int 구입금액
-    - [  ] 2
-        - [  ] 몇개 구매했는지
-        - [  ] autolottoseller 동작
-        - [  ] lotto 출력
-        - [  ] empty line
+    - [ o ] 2
+        - [ o ] 몇개 구매했는지
+        - [ o ] autolottoseller 동작
+        - [ o ] lotto 출력
+        - [ o ] empty line
         - return -> List<Lotto> 로또
-    - [  ] 3
-        - [  ]당첨 번호 입력 문구
-        - [  ]당첨번호 input
-        - [  ] empty line
+    - [ o ] 3
+        - [ o ]당첨 번호 입력 문구
+        - [ o ]당첨번호 input
+        - [ o ] empty line
         - return -> List<Integer> 당첨번호
-    - [  ] 4
-        - [  ]보너스 번호 입력 문구
-        - [  ] 보너스 번호 input
-        - [  ] empty line
+    - [ o ] 4
+        - [ o ]보너스 번호 입력 문구
+        - [ o ] 보너스 번호 input
+        - [ o ] empty line
         - return -> int 보너스 번호
 
-- [processing]
+- [processing] 
+  - [  ] findNumber 함수를 이요해서 각로또가 몇개 맞았는지 리스트로 출력
+  - [  ] rank 함수를 이용해서 맞은 갯수 만큼 등수 매기기
+  - [  ] 등수 마다 얼마 줄지 측정 
+  - [  ] 등수 마다 몇등에 몇개 있는지 카운트
+  
