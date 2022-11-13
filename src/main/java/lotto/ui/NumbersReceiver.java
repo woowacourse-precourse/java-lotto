@@ -9,10 +9,12 @@ public class NumbersReceiver {
     NumbersReceiver() {}
 
     public int insertMoney() {
+        System.out.println("구입금액을 입력해 주세요.");
         return Integer.parseInt(Console.readLine());
     }
 
     public List<Integer> setBasicNumbers() throws IllegalArgumentException {
+        System.out.println("당첨 번호를 입력해 주세요.");
         String[] correctNumbers = Console.readLine().split(",");
         List<Integer> result = new ArrayList<>();
 
@@ -28,6 +30,7 @@ public class NumbersReceiver {
     }
 
     public int setBonusNumber() {
+        System.out.println("보너스 번호를 입력해 주세요.");
         try {
             return Integer.parseInt(Console.readLine());
         } catch (NumberFormatException numberFormatException) {
