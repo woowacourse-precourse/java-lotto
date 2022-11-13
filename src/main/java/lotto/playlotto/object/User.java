@@ -50,11 +50,6 @@ public class User extends Input {
         this.money = money;
     }
 
-    public int TestReturnSize(){
-        this.lottery_count = 6;
-        create_Lottery_nums();
-        return this.lottery_nums.size();
-    }
 
     public static void main(String[] args) {
         User user = new User();
