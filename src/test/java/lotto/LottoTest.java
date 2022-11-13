@@ -186,7 +186,7 @@ class LottoTest {
         );
 
         assertThat(lottoPrizeRecordingService.getPrizeRate(2000))
-                .isEqualTo(lottoPrizeRecordingService.getTotalPrizeMoney() / 2000);
+                .isEqualTo((double)lottoPrizeRecordingService.getTotalPrizeMoney() / 2000);
     }
 
 }
