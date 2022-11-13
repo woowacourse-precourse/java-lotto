@@ -12,7 +12,7 @@ public final class Util {
     }
 
     public static String formatFloat(float target, int precision)  {
-        DecimalFormat formatter = new DecimalFormat("###,###.#");
+        DecimalFormat formatter = new DecimalFormat("###,##0.0");
         String roundedYield = String.format("%." + precision + "f", target);
         return formatter.format(Float.parseFloat(roundedYield));
     }
