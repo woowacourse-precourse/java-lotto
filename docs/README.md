@@ -8,6 +8,11 @@
     - [x] 구입 금액이 음수이면 예외 처리한다.
 - [x] 구입 금액을 1,000원으로 나누어 발행할 로또 수를 구한다.
 
+**로또 발행**
+
+- [x] 구입한 로또 수 만큼 랜덤으로 숫자를 뽑는다. - Player#createAllPlayerNumbers(ticketNumber)
+    - [x] 로또 번호는 오름차순으로 정렬한다. - Player#sortInAscendingOrders()
+
 **당첨 번호 생성**
 
 - [x] 6개의 당첨 번호를 입력받는다. - Lotto
@@ -20,11 +25,6 @@
     - [x] 보너스 번호가 1~45 사이의 숫자가 아니면 예외 처리한다. - Util#verifyRangeOfLottoNumber()
 - [x] 보너스 번호가 당첨번호와 중복되면 예외 처리한다. - LottoController#validateDuplicates()
 
-**로또 발행**
-
-- [x] 구입한 로또 수 만큼 랜덤으로 숫자를 뽑는다. - Player#createAllPlayerNumbers(ticketNumber)
-    - [x] 로또 번호는 오름차순으로 정렬한다. - Player#sortInAscendingOrders()
-
 **로또 결과 계산**
 
 - [x] 당첨 번호, 나의 번호, 보너스 번호를 입력받는다. - LottoResult
@@ -32,7 +32,13 @@
 - [x] 나의 번호에 보너스 번호가 포함되는 지 구한다. - LottoResult#calculateBonusMatch()
 
 **로또 순위 계산**
-- [x] 겹치는 번호 개수, 보너스 여부로 순위를 구한다. - Statistics
+
+- [x] 겹치는 번호 개수, 보너스 여부로 순위를 구한다. - Ranking#findRanking()
+
+**당첨 통계 계산**
+
+- [ ] 나의 당첨 내역을 받아 각 순위별 개수를 구한다. - Statistics
+- [ ] 당첨 통계를 출력한다.
 
 **수익률 계산**
 

@@ -7,7 +7,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoResult;
 import lotto.domain.Player;
 import lotto.domain.Purchase;
-import lotto.domain.Statistics;
+import lotto.domain.Ranking;
 import lotto.view.InputView;
 
 public class LottoController {
@@ -17,26 +17,31 @@ public class LottoController {
     private static int bonusNumber;
 
     public static void run() {
-        // buy tickets and get player numbers
+        // 로또 구입
         Purchase purchase = new Purchase(InputView.inputCash());
         ticketNumber = purchase.get();
+
+        // 로또 발행
         Player player = new Player(ticketNumber);
         allPlayerNumbers = player.get();
 
-        // set winning numbers, bonus number
+        // 당첨 번호 생성
         Lotto lotto = new Lotto(InputView.inputWinningNumbers());
         Bonus bonus = new Bonus(InputView.inputBonusNumber());
         winningNumbers = lotto.get();
         bonusNumber = bonus.get();
         validateDuplicates();
 
-        // calculate result
+        // 로또 결과 계산
         LottoResult result = new LottoResult(winningNumbers, allPlayerNumbers, bonusNumber);
         List<Integer> matches = result.getMatches();
         List<Boolean> bonusMatches = result.getBonusMatches();
 
-        // Statistics
-        Statistics statistics = new Statistics(matches, bonusMatches);
+        // 로또 순위 계산
+        Ranking ranking = new Ranking(matches, bonusMatches);
+
+        // 당첨 통계 계산
+
     }
 
     private static void validateDuplicates() {
