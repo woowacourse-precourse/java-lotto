@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import lotto.model.BonusNumber;
 import lotto.model.Lotto;
 import lotto.model.User;
 import lotto.view.InputView;
@@ -135,6 +136,41 @@ class ApplicationTest extends NsTest {
         List<Integer> num = List.of(1,2,3,4,5,67);
         assertThatThrownBy(() -> {
             lotto.isRangeNumber(num);
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
+
+    @Test
+    void 유효한_보너스번호_입력(){
+        BonusNumber bonusNumber = new BonusNumber();
+        boolean result = bonusNumber.isNumber("1");
+        assertThat(result).isEqualTo(true);
+    }
+
+    @Test
+    void 유효하지않은_보너스번호_입력(){
+        BonusNumber bonusNumber = new BonusNumber();
+        assertThatThrownBy(() -> {
+            bonusNumber.isNumber("hello");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
+
+    @Test
+    void 유효하지않은_보너스번호_범위_입력(){
+        BonusNumber bonusNumber = new BonusNumber();
+        assertThatThrownBy(() -> {
+            bonusNumber.RangeNumber("65");
+        }).isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ERROR_MESSAGE);
+    }
+
+    @Test
+    void 유효하지않은_보너스번호_중복_입력(){
+        List<Integer> num = List.of(1,2,3,4,5,67);
+        BonusNumber bonusNumber = new BonusNumber();
+        assertThatThrownBy(() -> {
+            bonusNumber.isEqualNumber("1",num);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
