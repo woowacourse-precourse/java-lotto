@@ -8,15 +8,15 @@ import java.util.List;
 
 public class Bonus {
 
-    private static Lotto bonusLotto; //lotto없어도 됨.
+    private static Lotto bonusLotto;
 
     public static Lotto inputBonus(Input input, Output output, Lotto answer) {
-        String bonusInput = input.getInput(Sentence.INPUTBONUS.getValue(), output);
+        String bonusInput = input.getInput(Sentence.INPUT_BONUS.getValue(), output);
         bonusLotto = inputValidity(bonusInput, answer);
         return bonusLotto;
     }
 
-    private static Lotto inputValidity(String input, Lotto answer) {
+    public static Lotto inputValidity(String input, Lotto answer) {
         checkBonusNum(input);
         return (checkBonusNotInWinning(checkBonusInRange(input), answer));
     }
@@ -26,13 +26,13 @@ public class Bonus {
             .filter(Character::isDigit)
             .count();
         if (count != input.length()) {
-            throw new IllegalArgumentException("Bonus input is not numeric");
+            throw new IllegalArgumentException("[ERROR] Bonus input is not numeric");
         }
     }
 
     private static int checkBonusInRange(String input) {
         if (!(Integer.parseInt(input) >= 1 && Integer.parseInt(input) <= 45)) {
-            throw new IllegalArgumentException("Bonus input is out of range");
+            throw new IllegalArgumentException("[ERROR] Bonus input is out of range");
         }
         return Integer.parseInt(input);
     }
@@ -45,7 +45,7 @@ public class Bonus {
         }
         Lotto bonusLotto = new Lotto(wrappedBonus);
         if (LottoCalculator.getCountOfSameNumber(bonusLotto, answer) == 1) {
-            throw new IllegalArgumentException("Bonus input is included in answer");
+            throw new IllegalArgumentException("[ERROR] Bonus input is included in answer");
         }
         return bonusLotto;
     }
