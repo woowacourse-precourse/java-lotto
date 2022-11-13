@@ -27,5 +27,19 @@ public class Lotto {
         return numbers;
     }
 
+    public int isMatch(int number){
+        if (numbers.contains(number)){
+            return 1;
+        }
+        return 0;
+    }
 
+    public int howManyMatch(Lotto lotto){
+        int countOfMatch = 0;
+
+        for (int number : numbers){
+            countOfMatch += Lotto.isMatch(number);
+        }
+        return countOfMatch;
+    }
 }
