@@ -12,4 +12,12 @@ public class WinningStatistics {
     public int countWonLottosByRank(Rank rank) {
         return statistics.getOrDefault(rank, 0);
     }
+
+    public long calculateTotalPrize() {
+        long totalPrize = 0;
+        for (Rank rank : Rank.values()) {
+            totalPrize += rank.getPrize() * countWonLottosByRank(rank);
+        }
+        return totalPrize;
+    }
 }
