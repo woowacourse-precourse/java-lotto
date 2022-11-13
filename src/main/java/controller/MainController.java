@@ -2,8 +2,10 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import model.Compare;
 import model.Lotto;
 import model.Purchase;
+import model.Result;
 import model.User;
 import model.WinLotto;
 import view.PrintView;
@@ -16,11 +18,26 @@ public class MainController {
             Purchase usersPurchase = purchaseLotto();
             User user = purchaseInfo(usersPurchase);
             WinLotto winLotto = winLottoWithBonus();
+            List<Result> results = getResults(user, winLotto);
         } catch (IllegalArgumentException exception) {
             PrintView.error(exception.getMessage());
         }
 
     }
+
+    private List<Result> getResults(User user, WinLotto winLotto) {
+        List<Lotto> boughtLottos = user.getBoughtLottos();
+
+        List<Result> results = new ArrayList<>();
+        for (Lotto boughtLotto : boughtLottos) {
+            Compare compare = new Compare(boughtLotto.getNumbers(), winLotto);
+            Result result = compare.compute();
+            results.add(result);
+        }
+
+        return results;
+    }
+
 
     private Purchase purchaseLotto() {
         PrintView.purchaseLotto();
