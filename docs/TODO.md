@@ -8,6 +8,9 @@
 - ~~상수 Values 정의~~
     - 번호 자리수
     - 담첨 금액
+- ~~Game 클래스 정의~~
+  - public void run
+  - private void play
 - ~~User 클래스 정의~~
     - List<Lotto> lotteries
     - List<List<Result>> results
