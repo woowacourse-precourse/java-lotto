@@ -1,6 +1,8 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public enum Ranking {
     FIRST(6, 2_000_000_000, false),
@@ -25,6 +27,17 @@ public enum Ranking {
                 .filter(ranking -> ranking.count == sameNumberCount && ranking.hasBonusNumber == hasBonusNumber)
                 .findAny()
                 .orElse(NOTHING);
+    }
+
+    public static List<Ranking> makeRankingList(Ranking ranking) {
+        List<Ranking> rankingList = new ArrayList<>();
+        Ranking[] rankingArr = Ranking.values();
+
+        for (int i = 0; i < rankingArr.length - 1; i++) {
+            rankingList.add(rankingArr[i]);
+        }
+
+        return rankingList;
     }
 
     public int getMoney() {
