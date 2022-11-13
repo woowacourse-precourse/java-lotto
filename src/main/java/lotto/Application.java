@@ -22,4 +22,10 @@ public class Application {
 
         return money / 1000;
     }
+
+    private static Lotto buyLotto() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+
+        return new Lotto(numbers);
+    }
 }
