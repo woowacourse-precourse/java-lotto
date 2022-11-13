@@ -1,8 +1,6 @@
 package lotto.domain;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -12,6 +10,7 @@ public class Lotto {
         validate(numbers);
         numbers.forEach(this::rangeCheck);
         isDuplicate(numbers);
+        Collections.sort(numbers);
         this.numbers = numbers;
     }
 
