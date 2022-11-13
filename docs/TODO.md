@@ -23,3 +23,5 @@
 - ~~Result 클래스 정의~~
     - Lotto lottery
     - Integer winningCount
+- ~~WinningLotto 클래스 정의~~
+    - extends Lotto
