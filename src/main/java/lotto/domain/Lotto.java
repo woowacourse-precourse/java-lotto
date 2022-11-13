@@ -40,9 +40,9 @@ public class Lotto {
 
     public static List<List<Integer>> makeLottos(Integer money) {
         List<List<Integer>> lottos = new ArrayList<>();
-        System.out.printf("%s개를 구매했습니다.\n", (money / 1000));
+        System.out.printf("%s개를 구매했습니다.", (money / 1000));
         for (int ticket = 0; ticket < money / 1000; ticket++) {
-            List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> lotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
             Collections.sort(lotto);
             lottos.add(lotto);
             lotto = new ArrayList<>();
@@ -55,6 +55,5 @@ public class Lotto {
             System.out.println(lottoNumber);
         }
     }
-
-
+    
 }
