@@ -1,7 +1,13 @@
-package lotto;
+package lotto.view;
+
+import lotto.controller.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static lotto.model.GameMessage.*;
+import static lotto.model.GameNumber.THOUSAND;
+import static lotto.model.WinningPrize.*;
 
 public class GameSystem {
     private InputUtil inputUtil = new InputUtil();
@@ -12,31 +18,28 @@ public class GameSystem {
     private List<Integer> winningNumber;
     private List<List<Integer>> lottos = new ArrayList<>();
     public void gameStart(){
-        System.out.println(Constant.INPUT_PURCHASE_PRICE);
         purchasePrice = inputUtil.inputPurchasePrice();
 
-        System.out.println(divide(purchasePrice)+Constant.OUTPUT_PURCHASE_QUANTITY);
+        System.out.println(divide(purchasePrice)+OUTPUT_PURCHASE_QUANTITY.getMessage());
         outputPurchaseQuantity();
 
-        System.out.println(Constant.INPUT_WINNING_NUMBER);
         winningNumber = inputUtil.inputWinningNumber();
 
-        System.out.println(Constant.INPUT_BONUS_NUMBER);
         bonusNumber = inputUtil.inputBonusNumber();
 
-        System.out.println(Constant.WINNING_STATICS);
-        System.out.println(Constant.DASH);
+        System.out.println(WINNING_STATICS.getMessage());
+        System.out.println(DASH.getMessage());
         winningStatics();
-        System.out.println(Constant.THREE_CORRECT+three+Constant.COUNT);
-        System.out.println(Constant.FOUR_CORRECT+four+Constant.COUNT);
-        System.out.println(Constant.FIVE_CORRECT+five+Constant.COUNT);
-        System.out.println(Constant.FIVE_AND_BONUS_CORRECT+fiveAndBonus+Constant.COUNT);
-        System.out.println(Constant.SIX_CORRECT+six+Constant.COUNT);
-        System.out.println(Constant.TOTAL_START+rateOfReturn.makeRateOfReturn(purchasePrice,totalPrice)+Constant.TOTAL_END);
+        System.out.println(THREE_CORRECT.getMessage()+three+COUNT.getMessage());
+        System.out.println(FOUR_CORRECT.getMessage()+four+COUNT.getMessage());
+        System.out.println(FIVE_CORRECT.getMessage()+five+COUNT.getMessage());
+        System.out.println(FIVE_AND_BONUS_CORRECT.getMessage()+fiveAndBonus+COUNT.getMessage());
+        System.out.println(SIX_CORRECT.getMessage()+six+COUNT.getMessage());
+        System.out.println(TOTAL_START.getMessage()+rateOfReturn.makeRateOfReturn(purchasePrice,totalPrice)+TOTAL_END.getMessage());
     }
 
     private int divide(int inputPurchasePrice){
-        int divided = Math.floorDiv(inputPurchasePrice,Constant.THOUSAND);
+        int divided = Math.floorDiv(inputPurchasePrice,THOUSAND.getNumber());
         return divided;
     }
 
@@ -45,8 +48,8 @@ public class GameSystem {
         for(int i=0;i<divide(purchasePrice);i++){
             List<Integer> list = randomUtil.makeRandomNumber();
             lotto = new Lotto(list);
-            System.out.println(lotto.toPrint());
-            lottos.add(lotto.toPrint());
+            System.out.println(lotto.getNumbers());
+            lottos.add(lotto.getNumbers());
         }
     }
 
@@ -60,27 +63,27 @@ public class GameSystem {
 
     private void correctNumber(int cntWinning,int cntBonus){
         if(cntWinning==3){
-            totalPrice += Constant.FIVE_THOUSAND;
+            totalPrice += FIVE_THOUSAND.getPrize();
             three++;
             return;
         }
         if(cntWinning==4){
-            totalPrice += Constant.FIFTY_THOUSAND;
+            totalPrice += FIFTY_THOUSAND.getPrize();
             four++;
             return;
         }
         if(cntWinning==5){
-            totalPrice += Constant.FIFTEEN;
+            totalPrice += FIFTEEN.getPrize();
             five++;
             return;
         }
         if(cntWinning==5 && cntBonus==1){
-            totalPrice += Constant.THIRTY;
+            totalPrice += THIRTY.getPrize();
             fiveAndBonus++;
             return;
         }
         if(cntWinning==6){
-            totalPrice += Constant.TWO_HUNDRED;
+            totalPrice += TWO_HUNDRED.getPrize();
             six++;
         }
     }

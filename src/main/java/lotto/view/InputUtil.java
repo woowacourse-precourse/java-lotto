@@ -1,11 +1,11 @@
-package lotto;
+package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.CheckUtil.*;
+import static lotto.controller.CheckUtil.*;
 import static lotto.model.GameMessage.*;
 
 public class InputUtil {
@@ -22,18 +22,20 @@ public class InputUtil {
         }
     }
 
-    private static void printErrorMessage(IllegalArgumentException e) {
-        System.out.println(e.getMessage());
-    }
-
     public List<Integer> inputWinningNumber(){
+        System.out.println(INPUT_WINNING_NUMBER.getMessage());
         String input = Console.readLine();
         return stringArrToIntList(commaSeparation(input));
     }
 
     public int inputBonusNumber(){
+        System.out.println(INPUT_BONUS_NUMBER.getMessage());
         String input = Console.readLine();
         return Integer.valueOf(input);
+    }
+
+    private static void printErrorMessage(IllegalArgumentException e) {
+        System.out.println(e.getMessage());
     }
 
     private String[] commaSeparation(String str){
@@ -42,10 +44,10 @@ public class InputUtil {
     }
 
     private List<Integer> stringArrToIntList(String[] input){
-        List<Integer> list = new ArrayList<>();
+        List<Integer> winning = new ArrayList<>();
         for(String s:input){
-            list.add(Integer.valueOf(s));
+            winning.add(Integer.valueOf(s));
         }
-        return list;
+        return winning;
     }
 }

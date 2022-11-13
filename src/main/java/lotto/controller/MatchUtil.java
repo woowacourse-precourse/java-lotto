@@ -1,9 +1,11 @@
-package lotto;
+package lotto.controller;
 
 import java.util.List;
 
+import static lotto.model.GameNumber.LOTTO_SIZE;
+
 public class MatchUtil {
-    private int cnt,length=Constant.LOTTO_SIZE;
+    private int cnt,length=LOTTO_SIZE.getNumber();
     public int matchWinningNumber(List<Integer> lotto, List<Integer> userNum){
         cnt = 0;
         for(int i=0;i<length;i++){

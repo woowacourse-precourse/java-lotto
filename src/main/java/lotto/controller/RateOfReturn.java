@@ -1,4 +1,4 @@
-package lotto;
+package lotto.controller;
 
 public class RateOfReturn {
     public double makeRateOfReturn(int purchasePrice,int totalPrice){
