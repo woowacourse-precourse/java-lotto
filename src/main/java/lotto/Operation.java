@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Operation {
@@ -27,6 +28,7 @@ public class Operation {
                 numbers.add(random);
             }
         }
+        Collections.sort(numbers);
         return numbers;
     }
 
@@ -46,5 +48,20 @@ public class Operation {
         return earningRate;
     }
 
+    static void playGame(){
+        Print.getPurchaseAmount();
+        int purchaseAmount = Input.getPurchaseAmount();
+        List<Lotto> lottos = Operation.buyLotto(purchaseAmount);
+
+        Print.userLottos(purchaseAmount);
+        Print.getWinningNumbers();
+
+        List<Integer> winning = Input.getWinningNumbers();
+        Print.getBonusNumber();
+        int bonus = Input.getBonusNumber();
+
+        Match match= new Match(lottos, winning, bonus);
+        Print.result(purchaseAmount,match);
+    }
 
 }
