@@ -21,3 +21,7 @@
 ## 🤔 의문점
 - `IllegalArgumentException` <-> `InvalidParameterException`
     - 입력값의 오류인데 invalidParam 이 아닌 illegalArgument?
+    - Coupling of List as Parameter
+        - 이번, 이전 과제에서 List를 Parameter로 전달하는 경우 多
+        - 이번 과제까지는 List를 Deep Copy해서 기존 객체를 보존했지만
+        - 이걸 Call by Value 구현이라 볼 수 있나?
