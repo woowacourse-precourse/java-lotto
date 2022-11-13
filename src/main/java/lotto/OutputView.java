@@ -26,6 +26,6 @@ public class OutputView {
     }
 
     public void printRateOfReturn(double rateOfReturn) {
-        System.out.printf((RATE_OF_RETURN_MESSAGE) + "%n", rateOfReturn);
+        System.out.printf(RATE_OF_RETURN_MESSAGE, rateOfReturn);
     }
 }
