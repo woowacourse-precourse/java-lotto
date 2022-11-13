@@ -18,6 +18,11 @@ public class InputView {
         return Integer.parseInt(money);
     }
 
+    public static String inputWinningNumbers() {
+        System.out.println(WINNING_NUMBER_INPUT_MESSAGE);
+        return Console.readLine();
+    }
+
     private static void isDigit(String money){
         for(int i=0; i<money.length(); i++){
             if(!Character.isDigit(money.charAt(i))){
@@ -25,5 +30,4 @@ public class InputView {
             }
         }
     }
-
 }
