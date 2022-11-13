@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -22,6 +23,8 @@ public class Application {
 
     public static void main(String[] args) {
         int payment = inputPrice();
+        purchaseLotteries(payment);
+
         inputWinningNumbers();
         inputBonusNumber();
     }
@@ -57,5 +60,20 @@ public class Application {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         Collections.sort(numbers);
         return numbers;
+    }
+
+    public static List<Lotto> purchaseLotteries(int payment) {
+        List<Lotto> lotteries = new ArrayList<>(); // 로또들을 저장할 list 생성
+
+        int amount = payment / 1000;
+        System.out.println(amount + PURCHASE_SENTENCE);
+        for (int i = 0; i < amount; i++) {
+            List<Integer> numbers = generateSortedRandomNumbers();
+            System.out.println(numbers.toString());
+            Lotto lotto = new Lotto(numbers);
+            lotteries.add(lotto);
+        }
+        System.out.println();
+        return lotteries;
     }
 }
