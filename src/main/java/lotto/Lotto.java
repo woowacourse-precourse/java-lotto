@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import org.assertj.core.util.Sets;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -12,9 +13,13 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
         }
-    }
 
-    // TODO: 추가 기능 구현
+        if (Sets.newHashSet(numbers).size() != numbers.size()) {
+            throw new IllegalArgumentException("[ERROR} 로또 번호는 모두 달라야 합니다.");
+        }
+
+        numbers.stream().forEach(s -> LottoValidator.checkRange(s));
+    }
 }
