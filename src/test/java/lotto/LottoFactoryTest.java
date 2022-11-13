@@ -3,8 +3,6 @@ package lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 class LottoFactoryTest {
@@ -16,7 +14,7 @@ class LottoFactoryTest {
         int lottoCount = 10;
 
         //when
-        List<Lotto> lottos = lottoFactory.create(lottoCount);
+        Lottos lottos = lottoFactory.create(lottoCount);
         lottos.forEach(System.out::println);
         //then
         assertThat(lottos.size()).isEqualTo(lottoCount);

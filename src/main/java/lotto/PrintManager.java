@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.List;
 import java.util.Map;
 
 public class PrintManager {
@@ -16,7 +15,7 @@ public class PrintManager {
         System.out.println(ConsoleMessage.REQUEST_BONUS_NUMBER);
     }
 
-    public void printLottoList(List<Lotto>lottos) {
+    public void printLottoList(Lottos lottos) {
         System.out.printf(String.valueOf(ConsoleMessage.RESPONSE_PURCHASE), lottos.size());
         System.out.print(ConsoleMessage.NEW_LINE);
         lottos.forEach(System.out::println);

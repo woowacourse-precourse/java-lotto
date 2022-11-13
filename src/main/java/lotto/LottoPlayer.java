@@ -10,7 +10,7 @@ public class LottoPlayer {
     private final LottoAnalyst lottoAnalyst= new LottoAnalyst();
 
     private int lottoCount;
-    private List<Lotto> lottos;
+    private Lottos lottos;
     private LottoMatcher lottoMatcher;
 
     public void play() {

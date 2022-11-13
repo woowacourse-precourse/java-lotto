@@ -29,4 +29,5 @@ public class LottoAnalyst {
 
         return (double)atomicProfit.get()/atomicInvest.get() * 100;
     }
+
 }

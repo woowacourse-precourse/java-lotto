@@ -12,8 +12,8 @@ public class LottoMatcher {
         this.bonusNumber = bonusNumber;
     }
 
-    public List<LottoGrade> matchAll(List<Lotto> lottos) {
-        return lottos.stream()
+    public List<LottoGrade> matchAll(Lottos lottos) {
+        return lottos.getLottos().stream()
                 .map(this::matchOne)
                 .collect(Collectors.toList());
     }
