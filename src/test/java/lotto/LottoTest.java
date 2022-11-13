@@ -4,11 +4,12 @@ import lotto.Domain.Lotto;
 import lotto.Domain.LottoShop;
 import lotto.Domain.Statistic;
 import lotto.Utils.LottoInspector;
-import lotto.Utils.Printer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.List;
 
@@ -32,7 +33,38 @@ class LottoTest {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-    // 아래에 추가 테스트 작성 가능
+
+    @DisplayName("금액을 입력하고 로또의 갯수를 확인한다.")
+    void countLottoByInputProperMoney() {
+        List<Integer> sampleInputProperMoneyList = List.of(
+                1000,
+                5000,
+                70000,
+                210000000
+        );
+    }
+
+    @DisplayName("올바르지 않은 금액을 입력했을때 예외를 확인한다.")
+    @Test
+    void inputInvalidMoney() {
+        LottoShop shop = new LottoShop();
+        String input;
+
+        input = "1000j";
+        InputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+
+        assertThatThrownBy(() -> shop.purchase())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NOT_INPUT_INTEGER_VALUE.toMessage());
+
+        input = "100";
+        inputStream = new ByteArrayInputStream(input.getBytes());
+        System.setIn(inputStream);
+        assertThatThrownBy(() -> shop.purchase())
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(NOT_PROPER_PAY_MONEY.toMessage());
+    }
 
     @DisplayName("당첨번호를 입력할때 예외를 확인한다.")
     @Test
@@ -58,6 +90,11 @@ class LottoTest {
         assertThatThrownBy(() -> inspector.winningNumberToList(input04))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NOT_INPUT_INTEGER_VALUE.toMessage());
+    }
+
+    @DisplayName("보너스번호의 입력을 확인한다.")
+    void inputBonusNumber() {
+
     }
 
     @DisplayName("당첨시 수익률을 확인한다.(구매금액을 제외하지 않는다.)")
@@ -91,7 +128,7 @@ class LottoTest {
         for (int i = 0; i < expectedYieldPercentList.size(); i++) {
             consoleOutput.reset();
 
-            shop.soldLottoList = List.of( sampleLottoList.get(i));
+            shop.soldLottoList = List.of(sampleLottoList.get(i));
             statistic.analyze();
 
             double expectedYieldPercent = expectedYieldPercentList.get(i);
