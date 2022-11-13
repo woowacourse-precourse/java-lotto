@@ -8,7 +8,7 @@ public class RaffleCounter {
     public RaffleCounter() {
     }
 
-    public List<Integer> countWinner(Lotto lotto, List<Integer> normalNumbers, Integer bonusNumber) {
+    public Integer countWinner(Lotto lotto, List<Integer> normalNumbers, Integer bonusNumber) {
         // TODO: Winner 반환 리팩터 필요
         int normalNumberCount = 0;
         int bonusNumberCount = 0;
@@ -19,8 +19,12 @@ public class RaffleCounter {
         List<Integer> winnerResult = new ArrayList<>();
         winnerResult.add(normalNumberCount);
         winnerResult.add(bonusNumberCount);
-        return winnerResult;
+
+        Integer rank = decideRank(winnerResult);
+
+        return rank;
     }
+
 
 
     private int countNormalNumbers(Lotto lotto, List<Integer> normalNumbers) {
@@ -50,5 +54,22 @@ public class RaffleCounter {
         return 0;
     }
 
+    private Integer decideRank(List<Integer> winnerResult) {
+        if (winnerResult.get(0) == 6) {
+            return 1;
+        }
+        if (winnerResult.get(0) == 5 && winnerResult.get(1) == 1) {
+            return 2;
+        }
+        if (winnerResult.get(0) == 5) {
+            return 3;
+        }
+        if (winnerResult.get(0) == 4) {
+            return 4;
+        }
+        if (winnerResult.get(0) == 3) {
+            return 5;
+        }
+    }
 
 }
