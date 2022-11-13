@@ -14,6 +14,7 @@ public class Application {
     private List<Set<Integer>> publishedLottos;
 
     public static void main(String[] args) {
+        try {
         Application application = new Application();
         application.get_SixNum_BonusNum_PublishedLotto();
         //통계 내용출력
@@ -23,13 +24,16 @@ public class Application {
         //
         Profit profit = new Profit();
         profit.printProfit(winningMap,application.getPublishedLottos().size()*1000);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
 
 
 
     }
 
 
-    public void get_SixNum_BonusNum_PublishedLotto() {
+    public void get_SixNum_BonusNum_PublishedLotto() throws IllegalArgumentException {
         InputNumber inputNumber = new InputNumber();
         Money money = new Money(inputNumber.insertMoney());
         int userMoneyLottoNum = money.getUserlottonum();

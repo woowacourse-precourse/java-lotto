@@ -12,7 +12,7 @@ public class InputNumber {
         return Console.readLine();
     }
 
-    public List<Integer> insertSixNum() {
+    public List<Integer> insertSixNum() throws IllegalArgumentException {
         List<Integer> lottoSixNum = new ArrayList<>();
         PrintInstruction.ENTER_NUM.printMessage();
         String[] userInputs = Console.readLine().split(",");

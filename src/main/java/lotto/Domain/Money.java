@@ -9,7 +9,7 @@ public class Money {
         this.userlottonum = validateAndConvert(userInput);
     }
 
-    public int validateAndConvert(String userInput) {
+    public int validateAndConvert(String userInput) throws IllegalArgumentException {
         try {
             if (Integer.parseInt(userInput) % 1000 != 0) {
                 throw new IllegalArgumentException(PrintError.OUT_OF_MONEY_UNIT.getMessage());

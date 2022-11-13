@@ -8,7 +8,7 @@ import java.util.List;
 public class Bonus {
     private final int number;
 
-    public Bonus(String bonus, List<Integer> sixNum) {
+    public Bonus(String bonus, List<Integer> sixNum) throws IllegalArgumentException{
         int number;
         try {
             number = Integer.parseInt(bonus);
@@ -22,7 +22,7 @@ public class Bonus {
     }
 
 
-    private void validateOverlap(int inputNumber, List<Integer> sixNum) {
+    private void validateOverlap(int inputNumber, List<Integer> sixNum) throws IllegalArgumentException{
         for(Integer lottoNum : sixNum) {
             if(inputNumber == lottoNum) {
                 throw new IllegalArgumentException(PrintError.OVERLAP_WITH_LOTTONUM.getMessage());
@@ -30,7 +30,7 @@ public class Bonus {
         }
     }
 
-    private void validateOutOfRange(int number) {
+    private void validateOutOfRange(int number) throws IllegalArgumentException {
         if(number<1 || 45<number) {
             throw new IllegalArgumentException(PrintError.OUT_OF_NUMBER_RANGE.getMessage());
         }
