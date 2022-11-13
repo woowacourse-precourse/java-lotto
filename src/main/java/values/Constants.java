@@ -18,6 +18,15 @@ public class Constants {
 
         public static final int FIRST_PLACE = 1;
         public static final int SECOND_PLACE = 2;
+        public static final int THIRD_PLACE = 3;
+        public static final int FOURTH_PLACE = 4;
+        public static final int FIFTH_PLACE = 5;
+
+        public static final int FIRST_PLACE_PRIZE = 2000000000;
+        public static final int SECOND_PLACE_PRIZE = 30000000;
+        public static final int THIRD_PLACE_PRIZE = 1500000;
+        public static final int FOURTH_PLACE_PRIZE = 50000;
+        public static final int FIFTH_PLACE_PRIZE = 5000;
     }
 
     public static class Error {
@@ -26,3 +35,4 @@ public class Constants {
         public static final String SIZE_ERROR = "[ERROR] 로또 번호는 6개여야 합니다.";
     }
 }
+

@@ -7,6 +7,7 @@ import domain.Rank;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static values.Constants.Digit.*;
@@ -21,7 +22,7 @@ public class LottoUtils {
         validateNumbersRange(numbers);
     }
 
-    public static void validate(int bonusNumber){
+    public static void validate(int bonusNumber) {
         if (!(bonusNumber >= 1 && bonusNumber <= 45)) {
             throw new IllegalArgumentException(RANGE_ERROR);
         }
@@ -71,12 +72,11 @@ public class LottoUtils {
         lottos.forEach(System.out::println);
     }
 
-    public String getTotalProfitMessage(Double percent) {
+    public String getTotalProfitMessage(String percent) {
         StringBuilder message = new StringBuilder();
-        String roundedPercent = String.format("%.1f", percent);
 
         message.append("총 수익률은 ");
-        message.append(roundedPercent);
+        message.append(percent);
         message.append("%입니다.");
 
         return message.toString();
@@ -95,19 +95,19 @@ public class LottoUtils {
         return winningNumbers;
     }
 
-    public static int getBonusNumber(){
+    public static int getBonusNumber() {
         int bonusNumber = Integer.parseInt(Console.readLine());
         return bonusNumber;
     }
 
-    public static Rank compareLottoNumber(Lotto winningNumber, int bonusNumber, List<Lotto> lottos){
+    public static Rank compareLottoNumber(Lotto winningNumber, int bonusNumber, List<Lotto> lottos) {
         LinkedHashMap<Integer, Integer> ranking = new LinkedHashMap<>();
         List<Integer> winningLottoNumbers = winningNumber.getLottoNumbers();
         List<Integer> rightNumbers = new ArrayList<>();
         List<Integer> wrongNumbers = new ArrayList<>();
         lottos.forEach(lotto -> {
             List<Integer> lottoNumbers = lotto.getLottoNumbers();
-            for(int i = 0;i < LOTTO_NUMBER_COUNT; i++) {
+            for (int i = 0; i < LOTTO_NUMBER_COUNT; i++) {
                 if (lottoNumbers.get(i) == winningLottoNumbers.get(i)) {
                     rightNumbers.add(lottoNumbers.get(i));
                     continue;
@@ -115,30 +115,52 @@ public class LottoUtils {
                 wrongNumbers.add(lottoNumbers.get(i));
             }
             //checkFirstPlace
-            if(rightNumbers.size() == LOTTO_NUMBER_COUNT){
-                if(!ranking.containsKey(FIRST_PLACE)){
+            if (rightNumbers.size() == LOTTO_NUMBER_COUNT) {
+                if (!ranking.containsKey(FIRST_PLACE)) {
                     ranking.put(FIRST_PLACE, 1);
                     return;
                 }
-                ranking.put(FIRST_PLACE,ranking.get(FIRST_PLACE)+1);
+                ranking.put(FIRST_PLACE, ranking.get(FIRST_PLACE) + 1);
             }
             //checkSecondPlace
-            if(rightNumbers.size() == 5 && wrongNumbers.contains(bonusNumber)){
-                if(!ranking.containsKey(SECOND_PLACE)){
+            if (rightNumbers.size() == 5 && wrongNumbers.contains(bonusNumber)) {
+                if (!ranking.containsKey(SECOND_PLACE)) {
                     ranking.put(SECOND_PLACE, 1);
                     return;
                 }
-                ranking.put(SECOND_PLACE,ranking.get(SECOND_PLACE)+1);
+                ranking.put(SECOND_PLACE, ranking.get(SECOND_PLACE) + 1);
             }
             //checkOtherPlace
             int rank = rightNumbers.size();
 
-            if(!ranking.containsKey(rank)){
+            if (!ranking.containsKey(rank)) {
                 ranking.put(rank, 1);
                 return;
             }
-            ranking.put(rank, ranking.get(rank)+1);
+            ranking.put(rank, ranking.get(rank) + 1);
         });
         return new Rank(ranking);
+    }
+
+    public static String calculateProfit(Rank rank, int inputMoney) {
+        int totalProfit = 0;
+        LinkedHashMap<Integer, Integer> ranking = rank.getRank();
+        Set<Integer> places = ranking.keySet();
+        for (Integer place : places) {
+            if (place == FIRST_PLACE) {
+                totalProfit += FIRST_PLACE_PRIZE;
+            } else if (place == SECOND_PLACE) {
+                totalProfit += SECOND_PLACE_PRIZE;
+            } else if (place == THIRD_PLACE) {
+                totalProfit += THIRD_PLACE_PRIZE;
+            } else if (place == FOURTH_PLACE) {
+                totalProfit += FOURTH_PLACE_PRIZE;
+            } else if (place == FIFTH_PLACE) {
+                totalProfit += FIFTH_PLACE_PRIZE;
+            }
+        }
+        double profitPercent = totalProfit / inputMoney;
+        String roundedPercent = String.format("%.1f", profitPercent);
+        return roundedPercent;
     }
 }

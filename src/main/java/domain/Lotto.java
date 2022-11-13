@@ -1,13 +1,13 @@
 package domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import ui.LottoUi;
+import util.LottoUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static ui.LottoUi.*;
+import static util.LottoUtils.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -34,12 +34,12 @@ public class Lotto {
     }
 
     public static Lotto generateWinningLotto() {
-        List<Integer> winningNumbers = LottoUi.getWinningNumbers();
+        List<Integer> winningNumbers = LottoUtils.getWinningNumbers();
         return new Lotto(winningNumbers);
     }
 
     public static int generateBonusNumber(){
-        int bonusNumber = LottoUi.getBonusNumber();
+        int bonusNumber = LottoUtils.getBonusNumber();
         validate(bonusNumber);
 
         return bonusNumber;
@@ -55,3 +55,4 @@ public class Lotto {
         return rank;
     }
 }
+
