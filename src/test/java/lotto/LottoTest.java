@@ -57,15 +57,14 @@ class LottoTest {
         // when
         Game game = new Game();
         game.compareAll(lotteries, winningNumber, bonusNumber);
-        game.calculateWinPrize(game.compareAll(lotteries, winningNumber, bonusNumber));
 
 
         // then
-//        assertThat(game.compareAll(lotteries, winningNumber, bonusNumber).get(Ranking.FIRST)).isEqualTo(1);
-//        assertThat(game.compareAll(lotteries, winningNumber, bonusNumber).get(Ranking.SECOND)).isEqualTo(1);
-//        assertThat(game.compareAll(lotteries, winningNumber, bonusNumber).get(Ranking.THIRD)).isEqualTo(2);
-//        assertThat(game.compareAll(lotteries, winningNumber, bonusNumber).get(Ranking.FORTH)).isEqualTo(0);
-//        assertThat(game.compareAll(lotteries, winningNumber, bonusNumber).get(Ranking.FIFTH)).isEqualTo(0);
+        assertThat(game.compareAll(lotteries, winningNumber, bonusNumber).get(Ranking.FIRST)).isEqualTo(1);
+        assertThat(game.compareAll(lotteries, winningNumber, bonusNumber).get(Ranking.SECOND)).isEqualTo(1);
+        assertThat(game.compareAll(lotteries, winningNumber, bonusNumber).get(Ranking.THIRD)).isEqualTo(2);
+        assertThat(game.compareAll(lotteries, winningNumber, bonusNumber).get(Ranking.FORTH)).isEqualTo(0);
+        assertThat(game.compareAll(lotteries, winningNumber, bonusNumber).get(Ranking.FIFTH)).isEqualTo(0);
     }
 
     @DisplayName("로또 구입 금액을 잘못 입력한 경우 예외가 발생한다.")
@@ -171,4 +170,6 @@ class LottoTest {
         // then
         assertThat(game.earningsPercent(winPrize)).isEqualTo(62.5);
     }
+
+
 }

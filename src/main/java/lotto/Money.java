@@ -24,7 +24,7 @@ public class Money {
     numOfLotto = money / 1000;
   }
 
-  public int getNumOfLotto(){
+  public int getNumOfLotto() {
     return numOfLotto;
   }
 
@@ -39,5 +39,5 @@ public class Money {
       throw new IllegalArgumentException("[ERROR] 로또 구입 금액은 1000원으로 나누어 떨어져야 합니다.");
     }
   }
-
 }
+
