@@ -13,8 +13,14 @@ public class Validator {
 			throw new IllegalArgumentException("[ERROR] 1부터 45사이의 숫자만 가능합니다.");
 		}
 	}
-	public static void validateNoDuplication(List<Integer> numbers) {
+
+	public static void validateSizeOfNumbers(List<Integer> numbers) {
 		if (numbers.size() != 6) {
+			throw new IllegalArgumentException("[ERROR] 숫자는 총 여섯개여야 합니다.");
+		}
+	}
+	public static void validateNoDuplication(List<Integer> numbers) {
+		if (numbers.stream().distinct().count() != 6) {
 			throw new IllegalArgumentException("[ERROR] 숫자 간에 중복이 있으면 안 됩니다.");
 		}
 	}
