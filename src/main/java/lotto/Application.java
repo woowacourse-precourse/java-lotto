@@ -12,23 +12,35 @@ import java.util.stream.Collectors;
 public class Application {
 
     public static void main(String[] args) {
-        int money = getMoneyInput();
-        int lottoTicketNumber = calculateHowManyTicketUserCanBuy(money);
-        System.out.printf("%d개를 구매했습니다.\n", lottoTicketNumber);
-        List<Lotto> lottoList = buyManyLotto(lottoTicketNumber);
-        printLottoList(lottoList);
-        LottoWinNumber lottoWinNumber = new LottoWinNumber(getLottoWinNumbersInput(),
-            getBonusNumberInput());
-        Map<LottoResult, Integer> statistics = compileStatistics(lottoList, lottoWinNumber);
-        double rateOfReturn = calculateRateOfReturn(statistics, lottoTicketNumber);
-        printStatistics(statistics, rateOfReturn);
+        try {
+            int money = getMoneyInput();
+            int lottoTicketPrice = 1000;
+            int lottoTicketNumber = calculateHowManyTicketUserCanBuy(money, lottoTicketPrice);
+            System.out.printf("%d개를 구매했습니다.\n", lottoTicketNumber);
+            List<Lotto> lottoList = buyManyLotto(lottoTicketNumber);
+            printLottoList(lottoList);
+            LottoWinNumber lottoWinNumber = new LottoWinNumber(getLottoWinNumbersInput(),
+                getBonusNumberInput());
+            Map<LottoResult, Integer> statistics = compileStatistics(lottoList, lottoWinNumber);
+            double rateOfReturn = calculateRateOfReturn(statistics, lottoTicketNumber,
+                lottoTicketPrice);
+            printStatistics(statistics, rateOfReturn);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+//            throw e;
+        }
     }
 
     private static int getMoneyInput() {
         System.out.println("구입금액을 입력해 주세요.");
-        int moneyInput = getIntegerInput();
+        int moneyInput = 0;
+        try {
+            moneyInput = getIntegerInput();
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("[ERROR] 구입 금액 입력값은 정수값이어야 합니다.");
+        }
         if (moneyInput < 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 구입 금액 입력값은 0 이상의 정수값이어야 합니다.");
         }
         return moneyInput;
     }
@@ -41,8 +53,8 @@ public class Application {
         }
     }
 
-    private static int calculateHowManyTicketUserCanBuy(int money) {
-        return money / LottoWinNumber.price;
+    private static int calculateHowManyTicketUserCanBuy(int money, int lottoTicketPrice) {
+        return money / lottoTicketPrice;
     }
 
     private static List<Lotto> buyManyLotto(int lottoTicketNumber) {
@@ -82,7 +94,7 @@ public class Application {
             return Arrays.stream(oneLine.split(",")).map(Integer::parseInt)
                 .collect(Collectors.toList());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 올바른 당첨 번호를 입력해야 합니다.");
         }
     }
 
@@ -102,12 +114,14 @@ public class Application {
     }
 
     private static double calculateRateOfReturn(Map<LottoResult, Integer> statistics,
-        int lottoTicketNumber) {
+        int lottoTicketNumber, int lottoTicketPrice) {
         int cashPrizeSum = 0;
         for (Map.Entry<LottoResult, Integer> entry : statistics.entrySet()) {
             cashPrizeSum += entry.getKey().getCashPrize() * entry.getValue();
         }
-        return Math.round(cashPrizeSum * 10 / (double) lottoTicketNumber) / 10.0;
+        return
+            Math.round((cashPrizeSum * 10 / (double) (lottoTicketNumber * lottoTicketPrice)) * 100)
+                / 10.0;
     }
 
     private static Map<LottoResult, Integer> prepareStatistics() {
