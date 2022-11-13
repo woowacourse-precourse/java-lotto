@@ -7,20 +7,24 @@ import java.util.List;
 
 public class LottoEstimator {
     private final static int MIN_MATCH_NUMBERS = 3;
+    private final static int PURCHASE_PRICE_UNIT = 1000;
     private final WinningLotto winningLotto;
+    private final List<Lotto> purchasedLotteries;
     private final HashMap<LottoRank, Integer> rankStatics = new HashMap<>();
 
-    public LottoEstimator(Lotto winningLotto, int bonusNumber) {
+    public LottoEstimator(List<Lotto> purchasedLotteries, Lotto winningLotto, int bonusNumber) {
+        this.purchasedLotteries = purchasedLotteries;
         this.winningLotto = new WinningLotto(winningLotto, bonusNumber);
+
         for (LottoRank lottoRank : LottoRank.values()) {
             rankStatics.put(lottoRank, 0);
         }
     }
 
-    public void estimateLotteries(List<Lotto> lotteries) {
-        lotteries.forEach(this::rankLotto);
+    public HashMap<LottoRank, Integer> estimate() {
+        purchasedLotteries.forEach(this::rankLotto);
+        return rankStatics;
     }
-
 
     private void rankLotto(Lotto lotto) {
         int matchCount = lotto.getMatchCountWith(winningLotto.numbers());
@@ -39,7 +43,8 @@ public class LottoEstimator {
         }
     }
 
-    public float estimateRateOfProfit(int purchasePrice) {
+    public float getRateOfProfit() {
+        int purchasePrice = purchasedLotteries.size() * PURCHASE_PRICE_UNIT;
         float profit = 0;
 
         for (LottoRank lottoRank : LottoRank.values()) {
