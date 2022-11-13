@@ -18,6 +18,13 @@ class LottoGeneratorTest {
 	@DisplayName("번호가 중복이 아니다.")
 	void getNumbers() {
 		LottoGenerator lottoGenerator = new LottoGenerator();
-		assertThat(lottoGenerator.getNumbers().stream().distinct()).hasSize(6);
+		assertThat(lottoGenerator.getNumbers()).doesNotHaveDuplicates();
+	}
+
+	@Test
+	@DisplayName("오름차순으로 정렬되어 있다.")
+	void getNumbers2() {
+		LottoGenerator lottoGenerator = new LottoGenerator();
+		assertThat(lottoGenerator.getNumbers()).isSorted();
 	}
 }
