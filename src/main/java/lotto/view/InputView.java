@@ -30,7 +30,10 @@ public class InputView {
     }
 
     public int inputBonusNumber() {
-        return 1;
+        String inputBonusNumber = Console.readLine();
+        int bonusNumber = Validator.changeNumber(inputBonusNumber);
+        validator.checkValidNumber(bonusNumber);
+        return bonusNumber;
     }
 
 }
