@@ -42,7 +42,7 @@ public class Validator {
     }
 
     private void validateConsistOfNumber(String string) {
-        if (!Pattern.matches("[0-9]*]", string)) {
+        if (!Pattern.matches("[0-9]+", string)) {
             throw new IllegalArgumentException(ERROR_INPUT_IS_NOT_NUMBER);
         }
     }
