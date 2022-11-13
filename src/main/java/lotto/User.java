@@ -7,14 +7,14 @@ public class User {
     private int money;
     private List<Lotto> lottoBag;
 
-    public int getMoneyForLotto(){
+    public void getMoneyForLotto(){
         Scanner scanner = new Scanner(System.in);
         money = scanner.nextInt();
-        return money;
     }
 
-//    public List<Lotto> buyLotto(){
-//        Seller seller = new Seller();
-//
-//    }
+    public List<Lotto> buyLotto(){
+        Seller seller = new Seller();
+        seller.validateMoneyUnit(money);
+        lottoBag = seller.sellLotto(money);
+    }
 }
