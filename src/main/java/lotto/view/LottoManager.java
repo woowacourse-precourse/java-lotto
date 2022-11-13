@@ -12,15 +12,19 @@ public class LottoManager {
         String money = Console.readLine();
         checkNumber(money);
         purchaseMoney = Integer.parseInt(money);
-        if (purchaseMoney % 1000 > 0) {
-            throw new IllegalArgumentException();
-        }
+        checkAdequateMoney(purchaseMoney);
         return purchaseMoney / 1000;
     }
 
     public void checkNumber(String number) {
         if (!number.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException("숫자가 아닌 문자 입력");
+        }
+    }
+
+    public void checkAdequateMoney(int purchaseMoney) {
+        if (purchaseMoney % 1000 > 0) {
+            throw new IllegalArgumentException("1000원 단위로 입력하세요");
         }
     }
 
