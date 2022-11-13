@@ -15,11 +15,10 @@ public class StoreTest {
     @DisplayName("정상적인 로또 번호를 발행")
     @Test
     void issue() {
-        // 6 글자인지
-        // 또 중복된 숫자는 없는지
         // given
-        Store = new Store();
-        List<Integer> lotto = Store.issue();
+        Store store = new Store();
+        List<Integer> lotto = store.issue();
+        System.out.println(lotto);
 
         // when
         Set<Integer> duplicateCheck = new HashSet<>();
