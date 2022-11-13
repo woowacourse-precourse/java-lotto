@@ -42,7 +42,7 @@ public class ExceptionTest extends NsTest {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
 
-                    assertThatThrownBy(()->run("1500","1,1,3,4,5,6")).isInstanceOf(IllegalArgumentException.class);
+                    assertThatThrownBy(()->run("1000","1,1,3,4,5,6")).isInstanceOf(IllegalArgumentException.class);
                 },
                 List.of(1, 2, 3, 4, 5, 6)
         );

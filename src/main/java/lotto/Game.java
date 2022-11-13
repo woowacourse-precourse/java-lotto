@@ -7,8 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static lotto.WinningLogic.calculateRate;
-import static lotto.exception.Exception.catchInputException;
-import static lotto.exception.Exception.catchOutOfRangeException;
+import static lotto.exception.Exception.*;
 import static lotto.view.InputView.*;
 import static lotto.view.OutputView.*;
 
@@ -58,5 +57,6 @@ public class Game {
             catchOutOfRangeException(num);
             winning.add(num);
         });
+        catchDuplicatedException(winning);
     }
 }
