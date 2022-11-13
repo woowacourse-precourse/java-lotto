@@ -17,28 +17,21 @@ public class WinningLotto extends Lotto{
     }
 
     private void validate(List<Integer> numbers, String inputBonus) {
-        if (!validateDigit(inputBonus)) {
-            throw new IllegalArgumentException(INVALID_NUMBER_INPUT_FORMAT_MESSAGE);
-        }
+        validateDigit(inputBonus);
+        validateDuplicate(numbers, inputBonus);
+    }
 
-        if (!validateDuplicate(numbers, inputBonus)) {
+    private void validateDuplicate(List<Integer> numbers, String inputBonus) {
+        int bonus = Integer.parseInt(inputBonus);
+
+        if (numbers.contains(bonus)) {
             throw new IllegalArgumentException(DUPLICATE_LOTTO_NUMBER_MESSAGE);
         }
     }
 
-    private boolean validateDuplicate(List<Integer> numbers, String inputBonus) {
-        int bonus = Integer.parseInt(inputBonus);
-
-        if (numbers.contains(bonus)) {
-            return false;
-        }
-        return true;
-    }
-
-    private boolean validateDigit(String inputBonus) {
+    private void validateDigit(String inputBonus) {
         if (Pattern.matches(DIGIT_REGEX, inputBonus)) {
-            return false;
+            throw new IllegalArgumentException(INVALID_NUMBER_INPUT_FORMAT_MESSAGE);
         }
-        return true;
     }
 }
