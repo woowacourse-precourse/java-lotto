@@ -34,11 +34,9 @@ public class LottoGame {
         LottoRank rank;
         double purchasePrice = purchaseLottoCount * LOTTO_PRICE;
         System.out.println(Message.WINNING_STATS.getMessage());
-        for (int i = 0; i < winningCount; i++) {
-            rank = LottoRank.getRankResult(winningCount, bonus);
-            result.put(rank, result.get(rank) + 1);
-            winMoney = rank.getMoney();
-        }
+        rank = LottoRank.getRankResult(winningCount, bonus);
+        result.put(rank, result.get(rank) + 1);
+        winMoney = rank.getMoney();
         printWinningList(result);
         System.out.printf("총 수익률은 " + String.format("%.1f", getWinningRate(purchasePrice)) + "%%입니다.");
     }
