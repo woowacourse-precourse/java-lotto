@@ -9,8 +9,8 @@ public class Cashier {
     private WinningCalculator winningCalculator;
 
     public Cashier() {
-        this.account = new Account();
         this.winningCalculator = new WinningCalculator();
+        this.account = new Account(winningCalculator);
     }
 
     public void buyLottos() {
@@ -20,7 +20,7 @@ public class Cashier {
     }
 
     public void saveResultInAccount() {
-//        this.account.saveResult(lottos);
+        this.account.saveResult(lottos);
     }
 
     public void getResultInAccount() {

@@ -47,7 +47,7 @@
 - [x] 번호 반환
 
 ### Account
-- [ ] 당첨 결과 저장
+- [x] 당첨 결과 저장
 - [ ] 당첨 결과 반환
 
 ### WinningCalculator
