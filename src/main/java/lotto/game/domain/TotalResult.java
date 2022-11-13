@@ -6,11 +6,9 @@ import java.util.Map;
 
 public class TotalResult {
     private final Map<LottoGrade, Integer> totalWinnings;
-    private final Money totalProfit;
 
-    private TotalResult(Map<LottoGrade, Integer> totalWinnings, Money totalProfit) {
+    private TotalResult(Map<LottoGrade, Integer> totalWinnings) {
         this.totalWinnings = totalWinnings;
-        this.totalProfit = totalProfit;
     }
 
     public static TotalResult of(List<LottoGrade> grades) {
@@ -18,8 +16,7 @@ public class TotalResult {
         for (LottoGrade grade : grades) {
             addWinning(totalWinnings, grade);
         }
-        Money totalProfit = calculateTotalProfit(grades);
-        return new TotalResult(totalWinnings, totalProfit);
+        return new TotalResult(totalWinnings);
     }
 
     private static void addWinning(Map<LottoGrade, Integer> totalWinnings, LottoGrade grade) {
@@ -28,17 +25,6 @@ public class TotalResult {
             return;
         }
         totalWinnings.put(grade, 1);
-    }
-
-    private static Money calculateTotalProfit(List<LottoGrade> grades) {
-        return grades.stream()
-                .map(LottoGrade::getPrize)
-                .reduce(Money::add)
-                .orElse(Money.ZERO);
-    }
-
-    public Money getTotalProfit() {
-        return totalProfit;
     }
 
     public Integer getCount(LottoGrade grade) {

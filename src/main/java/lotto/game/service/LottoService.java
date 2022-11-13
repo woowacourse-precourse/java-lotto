@@ -45,4 +45,11 @@ public class LottoService {
     public String calculateProfitPercent(Money spentMoney, Money profit) {
         return String.format("%,.1f%%", (double) profit.getValue() / spentMoney.getValue() * 100);
     }
+
+    public Money calculateTotalProfit(List<LottoGrade> grades) {
+        return grades.stream()
+                .map(LottoGrade::getPrize)
+                .reduce(Money::add)
+                .orElse(Money.ZERO);
+    }
 }

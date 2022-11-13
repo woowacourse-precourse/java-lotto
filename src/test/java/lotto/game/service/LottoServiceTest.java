@@ -2,6 +2,7 @@ package lotto.game.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Collections;
 import java.util.List;
 import lotto.game.domain.Lotto;
 import lotto.game.domain.LottoGrade;
@@ -176,5 +177,50 @@ class LottoServiceTest {
         // expect
         assertThat(lottoService.calculateProfitPercent(spentMoney, totalProfit))
                 .isEqualTo("22,222,277.8%");
+    }
+
+    @Test
+    @DisplayName("5등이 3개, 4등이 1개, 3등이 1개면 총 수익금이 1,565,000원 이어야한다")
+    void calculateTotalProfitByThirdGrade3AndFourGrade1AndThirdGrade1Exact_1_565_000Won() {
+        // given
+        List<LottoGrade> lottoGrades = List.of(
+                LottoGrade.FIFTH,
+                LottoGrade.FIFTH,
+                LottoGrade.FIFTH,
+                LottoGrade.FOURTH,
+                LottoGrade.THIRD
+        );
+
+        // expect
+        assertThat(lottoService.calculateTotalProfit(lottoGrades))
+                .isEqualTo(Money.of(1_565_000L));
+    }
+
+    @Test
+    @DisplayName("당첨된 로또가 각각 하나씩 있을 시 총 수익금이 2,031,555,000원 이어야한다")
+    void calculateTotalProfitByAllEachWinningExact_2_031_555_000Won() {
+        // given
+        List<LottoGrade> lottoGrades = List.of(
+                LottoGrade.FIRST,
+                LottoGrade.SECOND,
+                LottoGrade.THIRD,
+                LottoGrade.FOURTH,
+                LottoGrade.FIFTH
+        );
+
+        // expect
+        assertThat(lottoService.calculateTotalProfit(lottoGrades))
+                .isEqualTo(Money.of(2_031_555_000L));
+    }
+
+    @Test
+    @DisplayName("당첨된 로또가 없으면 총 수익금이 0원 이어야한다")
+    void calculateTotalProfitByNoGradesExact_0Won() {
+        // given
+        List<LottoGrade> lottoGrades = Collections.emptyList();
+
+        // expect
+        assertThat(lottoService.calculateTotalProfit(lottoGrades))
+                .isEqualTo(Money.ZERO);
     }
 }
