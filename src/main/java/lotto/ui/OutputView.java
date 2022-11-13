@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class OutputView {
-    private static final String BUYING_N_AMOUNT = "개를 구매헸습니다.";
+    private static final String BUYING_N_AMOUNT = "개를 구매했습니다.";
     private static final String WINNING_STAT = "당첨통계\n---\n";
     private static final String EARNING_RATE_START = "총 수익률은 ";
     private static final String EARNING_RATE_END = "%입니다.";
