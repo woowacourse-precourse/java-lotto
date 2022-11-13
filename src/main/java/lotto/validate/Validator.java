@@ -33,7 +33,7 @@ public class Validator {
 
     public static void validateOutOfBoundList(List<Integer> prizeNumbers) {
         for (Integer prizeNumber : prizeNumbers) {
-            if(prizeNumber < DEFAULT_MINIMUM_NUMBER && prizeNumber > DEFAULT_MAXIMUM_NUMBER){
+            if(prizeNumber < DEFAULT_MINIMUM_NUMBER || prizeNumber > DEFAULT_MAXIMUM_NUMBER){
                 throw new IllegalArgumentException(generateErrorMessage(OUT_OF_BOUND));
             }
         }

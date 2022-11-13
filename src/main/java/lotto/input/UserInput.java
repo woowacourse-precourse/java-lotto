@@ -1,6 +1,7 @@
 package lotto.input;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.Lotto;
 import lotto.validate.Validator;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class UserInput {
         return bounusNumber;
     }
 
-    public List<Integer> getPrizeNumber() {
+    public Lotto getPrizeNumber() {
         //    당첨 번호 입력
         System.out.println("당첨 번호를 입력해 주세요.");
         String prizeInput = Console.readLine();
@@ -26,11 +27,7 @@ public class UserInput {
             Integer value = Integer.parseInt(str);
             prizeNumbers.add(value);
         }
-        Validator.validateOutOfSize(prizeNumbers);
-        Validator.validateOutOfBoundList(prizeNumbers);
-        Validator.validateDuplicateData(prizeNumbers);
-
-        return prizeNumbers;
+        return  new Lotto(prizeNumbers);
     }
 
     public Integer getPurchasePrice() {

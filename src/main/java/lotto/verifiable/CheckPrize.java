@@ -66,5 +66,4 @@ public class CheckPrize implements Verifiable<Prize>{
             gradeCount.put(ranking, 0);
         }
     }
-
 }

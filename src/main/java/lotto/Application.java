@@ -3,7 +3,6 @@ package lotto;
 import lotto.input.UserInput;
 import lotto.verifiable.CheckPrize;
 import lotto.verifiable.CheckProfit;
-import lotto.verifiable.Grade;
 import lotto.verifiable.PrizeMoney;
 
 import java.util.ArrayList;
@@ -24,7 +23,9 @@ public class Application {
             System.out.println(integers);
             purchaseNumbers.add(integers);
         }
-        List<Integer> prizeNumber = userInput.getPrizeNumber();
+//        List<Integer> prizeNumber = userInput.getPrizeNumber();
+        Lotto lotto = userInput.getPrizeNumber();
+        List<Integer> prizeNumber = lotto.getNumbers();
         Integer bounsNumber = userInput.getBounsNumber(prizeNumber);
 
         Map<PrizeMoney, Integer> gradeIntegerMap = prize.checkPrizes(purchaseNumbers, prizeNumber, bounsNumber);
