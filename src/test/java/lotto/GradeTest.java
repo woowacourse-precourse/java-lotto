@@ -47,4 +47,17 @@ public class GradeTest {
         // then
         assertThat(result).isEqualTo("FIRST");
     }
+
+    @DisplayName("발행한 로또의 등수를 반환한다.")
+    @Test
+    void returnLottoGrade() {
+        // given
+        Grade grade = new Grade();
+
+        // when
+        String result = grade.returnLottoGrade(List.of(1, 2, 3, 4, 5, 6), List.of(1, 2, 3, 4, 5, 7), 7);
+
+        // then
+        assertThat(result).isEqualTo("SECOND");
+    }
 }
