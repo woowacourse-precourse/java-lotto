@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import lotto.constant.enumtype.LottoNumberInclusive;
 import lotto.constant.enumtype.LottoRule;
+import lotto.constant.enumtype.UserInterfaceMessage;
 import lotto.domain.lotto.repository.Lotto;
 
 public class LottoPublishService {
     private List<Lotto> publishedLottoNumbers = new ArrayList<>();
+    private Integer lottoPrice;
+    private Integer boughtLottoCount;
 
     private LottoPublishService() {
     }
@@ -21,7 +24,7 @@ public class LottoPublishService {
         return InnerLottoPublishService.instance;
     }
 
-    public void createLottoNumber () {
+    private void createLottoNumber() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LottoNumberInclusive.START.getValue(),
                 LottoNumberInclusive.END.getValue(),
                 LottoRule.LOTTO_MAX_COUNT.getValue());
@@ -30,5 +33,29 @@ public class LottoPublishService {
 
     public List<Lotto> getPublishedLottoNumbers() {
         return publishedLottoNumbers;
+    }
+
+    public void lottoPublish(String price) {
+        lottoPrice = String2Integer(price);
+        boughtLottoCount(lottoPrice);
+        for (int i = 1; i <= boughtLottoCount; i++) {
+            createLottoNumber();
+        }
+    }
+
+    private Integer String2Integer(String numberformat) {
+        Integer price = 0;
+        try {
+            price = Integer.parseInt(numberformat);
+        } catch (NumberFormatException exception) {
+            throw new IllegalArgumentException(UserInterfaceMessage.ERROR_PREFIX.getValue()
+                    + String.format(UserInterfaceMessage.ERROR_INPUT_BONUS_NUMBER_INCLUSIVE.getValue(),
+                    LottoNumberInclusive.START.getValue(), LottoNumberInclusive.END.getValue()));
+        }
+        return price;
+    }
+
+    private void boughtLottoCount(Integer lottoPrice) {
+        boughtLottoCount = lottoPrice / LottoRule.LOTTO_PRICE.getValue();
     }
 }
