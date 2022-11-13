@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+
+
+
 import static constant.LottoNumber.MAX_LOTTO_NUMBER;
 import static constant.LottoNumber.MIN_LOTTO_NUMBER;
 import static constant.LottoNumber.REQUIRE_LOTTO_NUMBER_COUNT;
@@ -34,35 +37,15 @@ public class LottoServiceMachine {
     }
     public List<Integer> splitLottoInput(String lottoNumbers, int requireCount){
         String[] splitInput = lottoNumbers.split(",");
-        isValidLength(splitInput, requireCount);
-        isAllDigit(splitInput);
-        List<Integer> splitNumber = convertSplitInput(splitInput);
+        StringConverter.isValidLength(splitInput, requireCount);
+        StringConverter.isAllDigit(splitInput);
+        List<Integer> splitNumber = StringConverter.convertToIntegerL(splitInput);
         isValidRange(splitNumber);
         isNoDuplicate(splitNumber);
         return splitNumber;
     }
-    private void isValidLength(String[] splitInput, int testLength){
-           if(splitInput.length!=testLength){
-               throw new IllegalArgumentException("ERROR : ,로 분리되는 인자의 수가 잘못됐습니다");
-           }
-    }
-    private void isDigit(String input){
-        if(!input.chars().allMatch(Character::isDigit)){
-            throw new IllegalArgumentException("ERROR : 분리된 문자열이 숫자가 아닙니다.");
-        }
-    }
-    private void isAllDigit(String[] splitInput){
-        for(String number : splitInput){
-            isDigit(number);
-        }
-    }
-    private List<Integer> convertSplitInput(String[] splitInput){
-        List<Integer> splitNumber = new ArrayList<>();
-        for(String number : splitInput){
-            splitNumber.add(Integer.parseInt(number));
-        }
-        return splitNumber;
-    }
+
+
     private void isValidRange(List<Integer> splitNumber){
         for(Integer number : splitNumber){
             if(number<MIN_LOTTO_NUMBER.getValue() || number>MAX_LOTTO_NUMBER.getValue())
