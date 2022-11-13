@@ -2,8 +2,8 @@ package lotto.domain;
 
 import java.util.List;
 
-import static lotto.constant.Message.DUPLICATE_LOTTO_NUMBER_MESSAGE;
-import static lotto.constant.Message.INVALID_LOTTO_NUMBER_SIZE_MESSAGE;
+import static lotto.constant.ConstValue.*;
+import static lotto.constant.Message.*;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -11,6 +11,8 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         validateDuplicate(numbers);
+        validateRange(numbers);
+
         this.numbers = numbers;
     }
 
@@ -28,4 +30,14 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    private void validateRange(List<Integer> numbers) {
+        int count = (int) numbers.stream()
+                .filter(number -> number > LOTTO_NUMBER_MINIMUM)
+                .filter(number -> number < LOTTO_NUMBER_MAXIMUM)
+                .count();
+
+        if (count != LOTTO_SIZE) {
+            throw new IllegalArgumentException(INVALID_NUMBER_INPUT_FORMAT_MESSAGE);
+        }
+    }
 }
