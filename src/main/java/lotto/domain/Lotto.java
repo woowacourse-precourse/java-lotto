@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 
+import static java.util.Collections.sort;
 import static java.util.stream.Collectors.toList;
 
 public class Lotto {
@@ -14,6 +15,7 @@ public class Lotto {
         validateLottoSize(numbers);
         validateEachNumberInRange(numbers);
         validateHasDuplicate(numbers);
+        ascendingSort(numbers);
         this.numbers = numbers;
     }
 
@@ -38,5 +40,9 @@ public class Lotto {
         if (removedDuplicates.size() < LOTTO_SIZE) {
             throw new IllegalArgumentException();
         }
+    }
+
+    private void ascendingSort(List<Integer> numbers) {
+        sort(numbers);
     }
 }
