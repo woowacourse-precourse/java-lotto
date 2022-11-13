@@ -77,7 +77,7 @@ public class Game {
         System.out.println();
         System.out.println(LOTTO_GAME_WINNING_STATS);
         System.out.println(LOTTO_GAME_DIVISION);
-        for (int i = MIN_COINCIDE; i < WINNINGS.length; ++i) {
+        for (int i = MIN_COINCIDE; i < WINNINGS.length-1; ++i) {
             String coincideMessage;
             if (i == 6 && printBonus > 0) {
                 i -= 1;
