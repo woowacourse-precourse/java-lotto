@@ -14,7 +14,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException(Message.ERROR_INPUT_SIX.printError());
+            throw new IllegalArgumentException(ErrorMessage.INPUT_SIX.printError());
         }
         validateLottoRange(numbers);
         validateLottoDuplicate(numbers);
@@ -23,14 +23,14 @@ public class Lotto {
     private void validateLottoRange(List<Integer> numbers) {
         long count = numbers.stream().filter(s -> s > 45 || s < 1).count();
         if (count != 0) {
-            throw new IllegalArgumentException(Message.ERROR_INPUT_RANGE.printError());
+            throw new IllegalArgumentException(ErrorMessage.INPUT_RANGE.printError());
         }
     }
 
     private void validateLottoDuplicate(List<Integer> result) {
         long count = result.stream().distinct().count();
         if (count != result.size()) {
-            throw new IllegalArgumentException(Message.ERROR_INPUT_DUPLICATE.printError());
+            throw new IllegalArgumentException(ErrorMessage.INPUT_DUPLICATE.printError());
         }
     }
 
@@ -57,13 +57,13 @@ public class Lotto {
         try {
             intBonus = Integer.parseInt(bonus.trim());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Message.ERROR_INPUT_NUMBER.printError());
+            throw new IllegalArgumentException(ErrorMessage.INPUT_NUMBER.printError());
         }
         if (intBonus > 45 || intBonus < 1) {
-            throw new IllegalArgumentException(Message.ERROR_INPUT_RANGE.printError());
+            throw new IllegalArgumentException(ErrorMessage.INPUT_RANGE.printError());
         }
         if (numbers.contains(intBonus)) {
-            throw new IllegalArgumentException(Message.ERROR_INPUT_DUPLICATE.printError());
+            throw new IllegalArgumentException(ErrorMessage.INPUT_DUPLICATE.printError());
         }
         return intBonus;
     }
