@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class LottoMarker {
-    public static WinningStatistic produceWinningStatistic(LottoWinNo answer, Lotto ticket){
+    public static LottoResult produceWinningStatistic(LottoWinNumber answer, Lotto ticket){
         Set<Integer> answerNumSet=new HashSet<>(answer.getNumbers());
         int numOfCorrectLottoNum=0;
         boolean bonusNumCorrect=false;
@@ -17,6 +17,6 @@ public class LottoMarker {
                 answerNumSet.remove(number);
             }
         }
-        return WinningStatistic.getInstance(numOfCorrectLottoNum,bonusNumCorrect);
+        return LottoResult.getInstance(numOfCorrectLottoNum,bonusNumCorrect);
     }
 }
