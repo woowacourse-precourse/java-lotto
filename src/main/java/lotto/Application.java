@@ -9,7 +9,7 @@ public class Application {
         Lotto lotto = InputView.inputWinningNumber();
         int bonus = lotto.inputBonus();
 
-        for (List randomLotto : calc.lotteries) {
+        for (List<Integer> randomLotto : calc.lotteries) {
             lotto.compareLotto(randomLotto, bonus);
         }
         calc.printResult();
