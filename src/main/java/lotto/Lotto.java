@@ -74,6 +74,32 @@ public class Lotto {
 }
 
 
+
+
+class LottoSystem {
+
+    private static List<Lotto> lottos;
+
+    public static void purchaseLotto(int paymentMoney) {
+        if (paymentMoney % 1000 != 0) {
+            throw new IllegalArgumentException("[ERROR] 로또는 천원단위로 구매가 가능합니다." +
+                    "지불 금액을 다시확인해 주세요.");
+        }
+
+        lottos = new ArrayList<>();
+        int purchasedLottoCount = paymentMoney/1000;
+        for (int i = 0; i < purchasedLottoCount; i++) {
+            lottos.add(makeLotto());
+        }
+    }
+
+    private static Lotto makeLotto() {
+        return new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+    }
+
+
+}
+
 class UserInput {
 
     static public int requestPayment() {
