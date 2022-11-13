@@ -1,11 +1,19 @@
 package lotto;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class Application {
     public static void main(String[] args) {
        int lottoCount = lottoPurchase(20000);
+
+        for (int i = 0; i < lottoCount; i++) {
+            issueLottoNumber();
+        }
     }
 
     public static int lottoPurchase(int money){
@@ -19,4 +27,11 @@ public class Application {
         return value;
     }
 
+    public static List<Integer> issueLottoNumber(){
+        List<Integer> issueLottoList = Randoms.pickUniqueNumbersInRange(1,25,6);
+
+        Collections.sort(issueLottoList);
+
+        return issueLottoList;
+    }
 }
