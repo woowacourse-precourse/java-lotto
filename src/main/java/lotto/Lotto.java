@@ -31,6 +31,19 @@ public class Lotto {
         }
     }
 
+    public void countMatchingNumber(List<Integer> winNumbers, int bonusNumber) {
+        int matchingCount = 0;
+        boolean isBonusMatched = winNumbers.contains(bonusNumber);
+
+        for (int number : numbers) {
+            if (winNumbers.contains(number)) {
+                matchingCount++;
+            }
+        }
+
+        Wins.countWinningLotto(matchingCount, isBonusMatched);
+    }
+
     @Override
     public String toString() {
         return numbers.stream().sorted().collect(Collectors.toList()).toString();

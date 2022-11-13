@@ -3,6 +3,7 @@ package controller;
 import camp.nextstep.edu.missionutils.Randoms;
 import constants.LottoConstants;
 import lotto.Lotto;
+import lotto.Wins;
 import utils.InputUtils;
 import user.PurchaseAmount;
 import utils.OutputUtils;
@@ -63,6 +64,14 @@ public class LottoController {
         bonusNumber = Integer.parseInt(userInput);
     }
 
+    private void calculateWinningRate() {
+        OutputUtils.printCalculateWins();
+        for (Lotto lotto : lottos) {
+            lotto.countMatchingNumber(winNumbers, bonusNumber);
+        }
+        OutputUtils.printWinningStats(Wins.getWinningStats());
+    }
+
     public void start() {
         getLottoPurchaseAmountFromUser();
 
@@ -76,5 +85,7 @@ public class LottoController {
 
         getWinNumbersFromUser();
         getBonusNumberFromUser();
+
+        calculateWinningRate();
     }
 }
