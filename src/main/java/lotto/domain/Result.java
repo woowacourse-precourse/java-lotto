@@ -32,11 +32,12 @@ public class Result {
         return Grade.valueOf(sameNumCount, isBonusSame);
     }
 
-    public int getTotalPrize() {
-        return this.totalPrize;
-    }
-
     public Map<String, Integer> getWinResult() {
         return this.winResult;
+    }
+
+    public String getBenefitRatio(int money) {
+        double ratio = ((double) this.totalPrize / (double) money) * 100;
+        return String.format("%.1f", ratio);
     }
 }

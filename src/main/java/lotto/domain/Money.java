@@ -26,6 +26,10 @@ public class Money {
     }
 
     public int getLottoCount() {
-        return money / 1000;
+        return this.money / 1000;
+    }
+
+    public int getMoney() {
+        return this.money;
     }
 }
