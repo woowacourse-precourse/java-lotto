@@ -8,6 +8,7 @@ import java.util.List;
 
 public class LottoProgramManager {
     private Lotto answer;
+    private int bonus;
     private List<Lotto> lottoBought;
 
     public void runProgram() {
@@ -15,7 +16,7 @@ public class LottoProgramManager {
 
         generateLotto(lottoNum);
 
-        makeAnswer();
+        getAnswerAndBonus();
     }
 
     private int buyLotto() {
@@ -40,7 +41,8 @@ public class LottoProgramManager {
         IOManager.printLottoList(lottoBought);
     }
 
-    private void makeAnswer() {
+    private void getAnswerAndBonus() {
         answer = new Lotto(IOManager.scanAnswer());
+        bonus = IOManager.scanBonus();
     }
 }

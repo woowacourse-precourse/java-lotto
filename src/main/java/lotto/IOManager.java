@@ -28,9 +28,15 @@ public class IOManager {
     }
 
     public static List<Integer> scanAnswer() {
+        System.out.println(IOMessage.ASK_ANSWER.getMessage());
         return Arrays.stream(Console.readLine().split(","))
                 .map(s -> Integer.parseInt(s))
                 .collect(Collectors.toList());
+    }
+
+    public static int scanBonus() {
+        System.out.println(IOMessage.ASK_BONUS);
+        return Integer.parseInt(Console.readLine());
     }
 
     public static void printLottoBought(int num) {
