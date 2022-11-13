@@ -1,6 +1,5 @@
 package lotto;
 
-
 import static lotto.StartLotto.startLotto;
 
 public class Application {

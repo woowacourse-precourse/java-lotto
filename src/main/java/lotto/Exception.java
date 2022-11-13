@@ -1,36 +1,35 @@
 package lotto;
 
-import java.util.List;
-
 import static lotto.BonusInputException.*;
-import static lotto.MoneyInputException.moneyChangeError;
-import static lotto.MoneyInputException.moneyTypeError;
+import static lotto.PaymentInputException.paymentChangeError;
+import static lotto.PaymentInputException.paymentTypeError;
 import static lotto.WinNumInputException.*;
 
 public class Exception {
 
-    public static void moneyInputCheck(String input) {
-        moneyTypeError(input);
-        int money = Integer.parseInt(input);
-        moneyChangeError(money);
+    public static void paymentInputCheck(String inputPayment) {
+        paymentTypeError(inputPayment);
+        StartLotto.payment = Integer.parseInt(inputPayment);
+        paymentChangeError();
     }
 
-    public static void bonusErrorCheck(List<Integer> winNums, String input) {
-        bonusTypeError(input);
-        int bonus = Integer.parseInt(input);
-        bonusRangeError(bonus);
-        bonusDuplicate(winNums, bonus);
-    }
-
-    public static void winNumInputErrorCheck(String input) {
-        winNumFormatError(input);
-        String[] tmpNums = input.split(",");
-        winNumDuplicate(tmpNums);
-        winNumSizeError(tmpNums);
-        for (String e : tmpNums) {
+    public static void winNumInputErrorCheck(String inputWinNums) {
+        winNumFormatError(inputWinNums);
+        String[] tmpWinNums = inputWinNums.split(",");
+        winNumDuplicate(tmpWinNums);
+        winNumSizeError(tmpWinNums);
+        for (String e : tmpWinNums) {
             winNumTypeError(e);
             int num = Integer.parseInt(e);
             winNumRangeError(num);
         }
     }
+
+    public static void bonusErrorCheck(String inputBonusNum) {
+        bonusTypeError(inputBonusNum);
+        StartLotto.bonusNum = Integer.parseInt(inputBonusNum);
+        bonusRangeError();
+        bonusDuplicate();
+    }
+
 }

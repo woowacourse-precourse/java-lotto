@@ -8,22 +8,28 @@ import static lotto.Output.*;
 import static lotto.UserInput.*;
 
 public class StartLotto {
+    public static int payment;
+    public static int bonusNum;
+    public static List<Lotto> lotto;
+    public static List<Integer> winNums;
+    public static List<WinCheck> winChecks;
+    public static Result result;
+
     public static void startLotto() throws IllegalArgumentException {
-        int money = moneyInput();
-        List<Lotto> lotto = new ArrayList<>();
-        buyLotto(money, lotto);
-        printLotto(lotto);
-        List<Integer> winNums = winNumInput();
-        int bonusNum = bonusNumInput(winNums);
-        List<Check> checks = new ArrayList<>();
-        checkSave(checks, winNums, lotto, bonusNum);
-        //check 에 lotto 넣고 저장해야함
-        Result result = new Result(checks);
-        printEnd(result, money);
+        paymentInput();
+        lotto = new ArrayList<>();
+        buyLotto();
+        printLotto();
+        winNumInput();
+        bonusNumInput();
+        winChecks = new ArrayList<>();
+        checkSave();
+        result = new Result();
+        printEnd();
     }
 
-    public static void checkSave(List<Check> checks, List<Integer> winNums, List<Lotto> lotto, int bonusNum) {
+    public static void checkSave() {
         for (Lotto e : lotto)
-            checks.add(new Check(e, winNums, bonusNum));
+            winChecks.add(new WinCheck(e, winNums, bonusNum));
     }
 }

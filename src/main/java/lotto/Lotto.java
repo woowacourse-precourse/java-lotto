@@ -4,32 +4,30 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 
+
 public class Lotto {
+    public static int lottoQuantity;
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) throws IllegalArgumentException{
+    public Lotto(List<Integer> numbers) throws IllegalArgumentException {
         validate(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.RANDOM_SIZE_ERROR.getErrorLog());
         }
         if (numbers.size() != numbers.stream().distinct().count())
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.RANDOM_DUPLICATE_ERROR.getErrorLog());
     }
 
-    public static void buyLotto(int money, List<Lotto> lotto) {
-        int lottoQTY = money / 1000;
-        for (int i = 0; i < lottoQTY; i++) {
+    public static void buyLotto() {
+        lottoQuantity = StartLotto.payment / 1000;
+        for (int i = 0; i < lottoQuantity; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            lotto.add(new Lotto(numbers));
+            StartLotto.lotto.add(new Lotto(numbers));
         }
-    }
-
-    public int getNum(int index) {
-        return numbers.get(index);
     }
 
     public List<Integer> getNums() {
