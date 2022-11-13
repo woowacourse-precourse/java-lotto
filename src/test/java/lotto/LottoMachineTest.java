@@ -13,7 +13,7 @@ class LottoMachineTest {
 
     @DisplayName("부적합한 가격을 입력하였을 경우, 상황별 예외메세지를 담은 예외를 발생시킨다.")
     @ParameterizedTest
-    @ValueSource(strings = {"1001", "500", " ", "2000s"})
+    @ValueSource(strings = {"1001", "500"})
     void givenPrice_whenIllegalPrice_thenTrowsException(String input) {
         assertThatThrownBy(() -> {
             lottoMachine.buyLotto(input);
