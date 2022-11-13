@@ -22,7 +22,7 @@ public class ProgramManager {
 
     public static List<List<Integer>> lotto;
     private static int[] lottoRankResult;
-    private static int lottoRevenueRate;
+    private static float lottoRevenueRate;
 
     public static void playLottoGame() {
         buyLotto();
@@ -63,7 +63,7 @@ public class ProgramManager {
 
     private static void getLottoStatistics() {
         lottoRankResult = LottoManager.getLottoRankResult(userPredictLottoNumbers, userPredictBonusNumber);
-        lottoRevenueRate = LottoManager.getRevenueRate(price);
+        lottoRevenueRate = LottoManager.getRevenueRate(price, lottoRankResult);
     }
 
     private static void printLottoStatistics() {

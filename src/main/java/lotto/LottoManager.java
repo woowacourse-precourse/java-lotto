@@ -41,6 +41,10 @@ public class LottoManager {
             this.numberOfSameLottoNumber = numberOfSameLottoNumber;
             this.indexInRankResult = indexInRankResult;
         }
+
+        public int getNumberOfSameLottoNumber() {
+            return numberOfSameLottoNumber;
+        }
     }
 
 
@@ -115,12 +119,16 @@ public class LottoManager {
     /**
      * TODO: 수익률 계산
      *
-     * @param price 구입 금액
+     * @param price           구입 금액
+     * @param lottoRankResult 당첨 내역
      * @return 수익률
      */
-    public static int getRevenueRate(int price) {
-        int revenueRate = 0;
-        return revenueRate;
+    public static float getRevenueRate(int price, int[] lottoRankResult) {
+        float revenue = 0;
+        for (Rank rank : Rank.values()) {
+            revenue += lottoRankResult[rank.indexInRankResult] * Reward.valueOf(rank.toString()).rewardPrice;
+        }
+        return (float) Math.round(revenue / price);
     }
 
 }
