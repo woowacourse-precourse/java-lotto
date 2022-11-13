@@ -27,6 +27,8 @@ public class LottoController {
         }
 
         final Result result = makeResult(winningLotto, purchasedLottos);
+
+        outputView.printResult(result, purchasedAmount.getPrice());
     }
 
     private Result makeResult(WinningLotto winningLotto, PurchasedLottos purchasedLottos) {
