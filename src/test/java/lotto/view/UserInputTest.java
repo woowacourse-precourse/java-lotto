@@ -12,10 +12,7 @@ public class UserInputTest {
     @DisplayName("빈 문자열이 들어가면 에러가 발생한다.")
     @Test
     void validateInputMoneyTest1() {
-        assertThatThrownBy(() -> {
-            UserInput userInput = new UserInput();
-            userInput.inputMoney();
-        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(UserInput::inputMoney).isInstanceOf(IllegalArgumentException.class);
     }
 
     @DisplayName("숫자가 아닌 문자가 들어가면 에러가 발생한다.")
