@@ -53,4 +53,14 @@ class LottoTest {
         assertThat(winLotto.matchWihListIncludeBonus(boughtLottos, 1)).isEqualTo(1);
         assertThat(winLotto.matchWihListIncludeBonus(boughtLottos, 2)).isEqualTo(1);
     }
+
+    @DisplayName("두 로또의 일치하는 숫자를 반환한다.")
+    @Test
+    void LottoMatch() {
+        Lotto lotto1 = new Lotto(List.of(1, 7, 11, 10, 8, 9));
+        Lotto lotto2 = new Lotto(List.of(1, 2, 8, 9, 15, 7));
+        List<Lotto> boughtLottos = List.of(lotto1, lotto2);
+
+        assertThat(lotto1.match(lotto2)).isEqualTo(4);
+    }
 }
