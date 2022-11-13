@@ -8,6 +8,7 @@ import java.util.List;
 import lotto.domain.model.Lotto;
 
 public class LottoIssuer {
+
     public static final int PRICE_OF_LOTTO = 1000;
 
     public static List<Lotto> issueLottos(int purchaseAmount) {
@@ -24,7 +25,8 @@ public class LottoIssuer {
     }
 
     private static Lotto issueOneLotto() {
-        List<Integer> oneLottoNumbers = pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> oneLottoNumbers = new ArrayList<>(pickUniqueNumbersInRange(1, 45, 6));
+
         oneLottoNumbers.sort(Comparator.naturalOrder());
 
         return new Lotto(oneLottoNumbers);
