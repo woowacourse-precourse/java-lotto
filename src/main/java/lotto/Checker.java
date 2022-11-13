@@ -7,7 +7,8 @@ public class Checker {
         int amount = checkNumeric(input);
         checkNegative(amount);
         checkAmount(amount);
-        checkRemain(amount);
+
+        amount = checkRemain(amount);
         return amount;
     }
 
@@ -33,12 +34,14 @@ public class Checker {
         }
     }
 
-    public void checkRemain(int input) {
+    public int checkRemain(int input) {
         int remain;
         if (input % 1000 > 0) {
             remain = input % 1000;
             System.out.println(String.format(Texts.LOTTO_CHECKER_EXCEPTION_AMOUNT_REMAIN, remain));
+            input %= 1000;
         }
+        return input;
     }
 
     public void checkDuplicated(String input) {
