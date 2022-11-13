@@ -7,14 +7,12 @@ import lotto.domain.UserInputScanner;
 import java.util.List;
 
 public class Application {
+    static UserInputScanner userScanner = new UserInputScanner();
+    static Output output = new Output();
+    static final Object ERROR = null;
     public static void main(String[] args) {
-        UserInputScanner userScanner = new UserInputScanner();
-        Output output = new Output();
-        final int PURCHASE_MONEY = userScanner.askPurchaseMoney();
-
-        if (PURCHASE_MONEY == -1) {
-            return;
-        }
+        final Integer PURCHASE_MONEY = userScanner.askPurchaseMoney();
+        if (PURCHASE_MONEY == ERROR) return;
 
         List<Lotto> lottos = Lotto.buyLottosByPurchaseMoney( PURCHASE_MONEY );
         output.printLottos(lottos);

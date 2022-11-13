@@ -10,7 +10,7 @@ public class Validator {
         Set<Integer> distinctNumbers = new HashSet<>(lottoNumbers);
 
         if (distinctNumbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 번호는 중복되지 않게 6자리가 필요합니다.");
         }
     }
 
