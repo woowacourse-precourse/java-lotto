@@ -10,14 +10,14 @@ public class Application {
         LottoStore lottoStore = new LottoStore();
         CreateUerNumber createWinningNumber = new CreateUerNumber();
         CreateBonusNumber bonusNumber = new CreateBonusNumber();
-        lottoStore.insert();
+        lottoStore.insertMoney();
         lottoStore.getLottoPaper();
         PrintMessenger.askWinningNumber();
         List<Integer> winningNumber= createWinningNumber.makeWinningNumber(Console.readLine());
+        Lotto lotto = new Lotto(winningNumber);
         PrintMessenger.askBonusNumber();
         bonusNumber.getBonusNumber(winningNumber, Console.readLine());
         System.out.println(bonusNumber.bonus);
-        Lotto lotto = new Lotto(winningNumber);
         lotto.getResult(lottoStore.lottoPapers, lottoStore.validMoney, bonusNumber.bonus);
     }
 }

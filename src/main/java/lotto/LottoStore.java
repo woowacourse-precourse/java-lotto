@@ -9,14 +9,14 @@ public class LottoStore {
     public long validMoney;
     public List<LottoPaper> lottoPapers;
 
-    public void insert() {
+    public void insertMoney() {
         PrintMessenger.askPriceToBuy();
         lottoTries(Console.readLine());
     }
     public void lottoTries(String money) {
-        Validate checkMoney = new Validate();
-        checkMoney.containOthers(money);
-        validMoney = checkMoney.validMoney(Long.parseLong(money));
+        Validate validate = new Validate();
+        validate.containOthers(money);
+        validMoney = validate.validMoney(Long.parseLong(money));
         PrintMessenger.volumeBuying(validMoney / lottoPrice);
     }
     public void getLottoPaper(){
