@@ -5,21 +5,24 @@ import java.util.Objects;
 import java.util.function.Predicate;
 
 public enum Rank {
-    NONE(0, 0),
-    FIRST_PLACE(6, 2000000000),
-    SECOND_PLACE(5, 30000000),
-    THIRD_PLACE(5, 1500000),
-    FOURTH_PLACE(4, 50000),
-    FIFTH_PLACE(3, 5000);
+    NONE(0, 0, ""),
+    FIRST_PLACE(6, 2000000000, "6개 일치 (2,000,000,000원)"),
+    SECOND_PLACE(5, 30000000, "5개 일치, 보너스 볼 일치 (30,000,000원)"),
+    THIRD_PLACE(5, 1500000, "5개 일치 (1,500,000원)"),
+    FOURTH_PLACE(4, 50000, "4개 일치 (50,000원)"),
+    FIFTH_PLACE(3, 5000, "3개 일치 (5,000원)");
 
-    private int count;
-    private int reward;
+    private final int count;
+    private final int reward;
+    private final String introMessage;
 
     Rank(int count,
-         int reward
+         int reward,
+         String introMessage
     ) {
         this.count = count;
         this.reward = reward;
+        this.introMessage = introMessage;
     }
 
 
@@ -40,5 +43,9 @@ public enum Rank {
 
     public static int findRewardWithRank(Rank rank) {
         return rank.reward;
+    }
+
+    public static String findIntroMessageWithRank(Rank rank) {
+        return rank.introMessage;
     }
 }
