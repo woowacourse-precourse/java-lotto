@@ -31,7 +31,7 @@ public enum RankType {
         return result;
     }
 
-    public RankType setRankType(int count, boolean isBonusBallContain) {
+    public static RankType setRankType(int count, boolean isBonusBallContain) {
         if(count == 6) {
             return RankType.FIRST;
         }
