@@ -179,14 +179,15 @@ BUILD SUCCESSFUL in 0s
 
 ### 라이브러리
 
-- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
+- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console`
+  API를 사용하여 구현해야 한다.
     - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
     - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 #### 사용 예시
 
 ```java
-List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+List<Integer> numbers=Randoms.pickUniqueNumbersInRange(1,45,6);
 ```
 
 ### Lotto 클래스
@@ -227,14 +228,15 @@ public class Lotto {
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
 
 ## 기능 목록 정리
+
 -[ ] 구입 가격을 입력 받는 메서드 - `getPerchasePrice`
-  -[ ]구입 가격을 기준으로 발행한 로또의 수량 및 번호를 출력한다. `publishPerchasedLottoNumbers`
-  -[ ] 1000으로 나눠떨어지지 않는 경우 예외 처리 - `notIllegalPriceException`
+ -[ ] 구입 가격을 기준으로 발행한 로또의 수량 및 번호를 출력한다. `publishPerchasedLottoNumbers`
+    -[ ] 1000으로 나눠떨어지지 않는 경우 예외 처리 - `notIllegalPriceException`
 -[ ] 당첨 번호를 입력을 쉼표를 기준으로 입력받는 메서드 - `getLottoNumbers`
--[ ] 보너스 번호를 입력 받는다. `getLottoBonusNumber`
-  -[ ] 입력을 받을 때 범위를 벗어나거나 중복된 숫자가 들어오면 발생하는 예외 -[ ] `IllegalArgumentException`
+-[x] 보너스 번호를 입력 받는다. `setLottoBonusNumber`
+    -[ ] 입력을 받을 때 범위를 벗어나거나 중복된 숫자가 들어오면 발생하는 예외 - `IllegalArgumentException`
 -[ ] 각 일치하는 갯수에 대한 결과를 찾는 메서드 `findMatchCount`
-  -[ ] 구입한 로또 번호에 대해서 당첨 번호와 비교해서 몇개가 맞는지 확인하는 메서드 -[ ] `getMatchCountForLottos`
+    -[ ] 구입한 로또 번호에 대해서 당첨 번호와 비교해서 몇개가 맞는지 확인하는 메서드 - `getMatchCountForLottos`
 -[ ] 수익율 계산 메서드 - `getRateOfReturn`
 
 -[ ] 출력 메서드를 하나로 통합하고 메세지를 `Enum`으로 관리 - `getMessage`
