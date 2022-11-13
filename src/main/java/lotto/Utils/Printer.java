@@ -6,8 +6,7 @@ import lotto.Domain.Statistic;
 import java.util.List;
 
 import static lotto.Enum.InformationMessage.*;
-import static lotto.Enum.LottoProperty.HIGHEST_WINNING_RANK;
-import static lotto.Enum.LottoProperty.LOWEST_WINNING_RANK;
+import static lotto.Enum.LottoProperty.*;
 import static lotto.Enum.StatisticMessage.STATISTIC;
 import static lotto.Enum.StatisticMessage.*;
 
@@ -28,6 +27,12 @@ public class Printer {
         System.out.println(count + COUNT_OF_LOTTO.getMessage());
     }
 
+    public void everySoldLottoList(List<List<Integer>> soldLottoList) {
+        for (List<Integer> lottoNumberList : soldLottoList) {
+            System.out.println(lottoNumberList);
+        }
+    }
+
     public void statistic() {
         Statistic statistic = new Statistic();
 
@@ -35,7 +40,6 @@ public class Printer {
         statistic.analyze();
 
         List<String> rankMessageList = List.of(
-                null,
                 WINNING_1RANK.getMessage(),
                 WINNING_2RANK.getMessage(),
                 WINNING_3RANK.getMessage(),
@@ -44,8 +48,8 @@ public class Printer {
         );
         String suffix = SUFFIX.getMessage();
 
-        for (int rank = LOWEST_WINNING_RANK.getValue(); rank > HIGHEST_WINNING_RANK.getValue(); rank--) {
-            String message = rankMessageList.get(rank);
+        for (int rank = LOWEST_WINNING_RANK.getValue(); rank >= HIGHEST_WINNING_RANK.getValue(); rank--) {
+            String message = rankMessageList.get(rank - 1);
             int count = statistic.getRankCount(rank);
 
             System.out.println(message + count + suffix);
@@ -54,10 +58,11 @@ public class Printer {
         totalYield(statistic.accumulatedWinningMoney);
     }
 
-    public void totalYield(long winningMoney) {
-        int money = LottoShop.money;
+    public void totalYield(long accumulatedWinningMoney) {
+        double purchaseMoney = LottoShop.money;
+        double winningMoney = accumulatedWinningMoney;
 
-        double yield = money / winningMoney * 100;
+        double yield = winningMoney / purchaseMoney * 100;
 
         String message = TOTAL_YIELD.getMessage();
         System.out.printf(message, yield);
