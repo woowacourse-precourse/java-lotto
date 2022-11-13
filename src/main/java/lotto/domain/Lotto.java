@@ -4,13 +4,6 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
-
-    public static final String RANK_FIRST = "1ST";
-    public static final String RANK_SECOND = "2ND";
-    public static final String RANK_THIRD = "3RD";
-    public static final String RANK_FOURTH = "4TH";
-    public static final String RANK_FIFTH = "5TH";
-    public static final String LOSE = "LOSE";
     private static List<Integer> winningNumbers;
     private static int bonusNumber;
     public static final int PRICE = 1000;
