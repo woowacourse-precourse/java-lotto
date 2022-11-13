@@ -20,6 +20,9 @@ public final class Lotto {
 
     private void validate(List<Integer> numbers) {
         //Todo: 메시지 추가
+        if (numbers == null) {
+            throw new IllegalArgumentException();
+        }
         if (!isRightLength(numbers)) {
             throw new IllegalArgumentException();
         }

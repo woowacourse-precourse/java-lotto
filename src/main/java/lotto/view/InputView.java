@@ -8,7 +8,14 @@ public final class InputView {
     private final InputHandler inputHandler;
 
     public InputView(InputHandler inputHandler) {
+        validateInputHandler(inputHandler);
         this.inputHandler = inputHandler;
+    }
+
+    private void validateInputHandler(InputHandler inputHandler) {
+        if (inputHandler == null) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public int getAmount() {

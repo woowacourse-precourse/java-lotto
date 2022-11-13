@@ -22,7 +22,14 @@ public final class OutputView {
     private final OutputHandler outputHandler;
 
     public OutputView(OutputHandler outputHandler) {
+        validateOutputHandler(outputHandler);
         this.outputHandler = outputHandler;
+    }
+
+    private void validateOutputHandler(OutputHandler outputHandler) {
+        if (outputHandler == null) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public void printInputAmount() {

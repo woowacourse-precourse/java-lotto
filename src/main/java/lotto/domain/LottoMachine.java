@@ -9,9 +9,30 @@ public final class LottoMachine {
     private final PickNumbers pickNumbers;
 
     public LottoMachine(InputView inputView, OutputView outputView, PickNumbers pickNumbers) {
+        validateInput(inputView);
+        validateOutput(outputView);
+        validatePickNumbers(pickNumbers);
         this.inputView = inputView;
         this.outputView = outputView;
         this.pickNumbers = pickNumbers;
+    }
+
+    private void validateInput(InputView inputView) {
+        if (inputView == null) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validateOutput(OutputView outputView) {
+        if (outputView == null) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void validatePickNumbers(PickNumbers pickNumbers) {
+        if (pickNumbers == null) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public void run() {
