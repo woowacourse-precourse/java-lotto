@@ -56,4 +56,12 @@ public class Input {
     public void sortWinningNumber(List<Integer> numbers) {
         Collections.sort(numbers);
     }
+
+    public int getBonusNumber() {
+        System.out.print('\n' + GameMessage.INPUT_BONUS_NUMBER + '\n');
+
+        String answer = Console.readLine();
+
+        return Integer.parseInt(answer);
+    }
 }
