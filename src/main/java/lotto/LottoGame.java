@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoGame {
+    List<Lotto> userLotto;
+    Lotto winningNumber;
+    int bonusNumber;
 
     private final Map<Reward, Integer> result = new LinkedHashMap<>() {{
         put(Reward.FIFTH, 0);
@@ -15,6 +18,22 @@ public class LottoGame {
         put(Reward.SECOND, 0);
         put(Reward.FIRST, 0);
     }};
+
+    public void startGame() {
+        int amount = InputView.getAmount();
+        OutputView.printAmount(amount);
+
+        userLotto = publishLotto(amount);
+        OutputView.printUserLotto(userLotto);
+
+        winningNumber = InputView.getWinningNumber();
+        OutputView.printWinningNumber();
+
+        bonusNumber = InputView.getBonusNumber(winningNumber);
+        calculateResult(userLotto, winningNumber, bonusNumber);
+
+        OutputView.printStatistics(amount, result);
+    }
 
     public List<Lotto> publishLotto(int count) {
         List<Lotto> lotto = new ArrayList<>();
