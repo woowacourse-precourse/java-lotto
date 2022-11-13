@@ -12,7 +12,7 @@ public class Application {
         }
         List<Integer> winning = Input.getWinningNumbers();
         int bonus = Input.getBonusNumber();
-        HashMap<Integer, Integer> result = Operation.calculateMatches(lottos, winning, bonus);
-        System.out.println(result);
+        Match match= new Match(lottos, winning, bonus);
+        System.out.println(match);
     }
 }
