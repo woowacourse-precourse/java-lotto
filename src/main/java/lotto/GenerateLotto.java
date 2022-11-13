@@ -8,24 +8,34 @@ import org.assertj.core.util.Sets;
 public class GenerateLotto {
     private List<List<Integer>> lottoNumberGroup = new ArrayList<>();
     private int lottoQuantity;
+    private List<Integer> lottoNumbers;
 
-    public GenerateLotto(){}
-/*
     public GenerateLotto(int lottoQuantity){
         this.lottoQuantity = lottoQuantity;
+        generateLottoGroup();
     }
-*/
-    public List<Integer> generateLottoNumber(){
-        List<Integer> lottoNumbers;
+
+    private void generateLottoNumber(){
+        List<Integer> numbers;
         Set<Integer> checkDuplication;
-
         do {
-            lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            checkDuplication = Sets.newHashSet(lottoNumbers);
-        } while (lottoNumbers.size() != checkDuplication.size());
+            numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            checkDuplication = Sets.newHashSet(numbers);
+        } while (numbers.size() != checkDuplication.size());
 
-        Collections.sort(lottoNumbers);
+        Collections.sort(numbers);
 
-        return lottoNumbers;
+        this.lottoNumbers = numbers;
+    }
+
+    private void generateLottoGroup(){
+        for (int i=0; i < lottoQuantity; i++){
+            generateLottoNumber();
+            this.lottoNumberGroup.add(this.lottoNumbers);
+        }
+    }
+
+    public List<List<Integer>> getLottoNumbers() {
+        return this.lottoNumberGroup;
     }
 }
