@@ -189,7 +189,7 @@ public class Application {
             }
         }
 
-        System.out.println(Result.THREE.getName() + Integer.toString(three) + "개");
+        System.out.println("3개 일치 (5,000원) - " + Integer.toString(three) + "개");
 
         return three;
     }
@@ -203,7 +203,7 @@ public class Application {
             }
         }
 
-        System.out.println(Result.FOUR.getName() + Integer.toString(four) + "개");
+        System.out.println("4개 일치 (50,000원) - " + Integer.toString(four) + "개");
 
         return four;
     }
@@ -217,7 +217,7 @@ public class Application {
             }
         }
 
-        System.out.println(Result.FIVE.getName() + Integer.toString(five) + "개");
+        System.out.println("5개 일치 (1,500,000원) - " + Integer.toString(five) + "개");
 
         return five;
     }
@@ -231,7 +231,7 @@ public class Application {
             }
         }
 
-        System.out.println(Result.FIVE_BONUS.getName() + Integer.toString(five_bonus) + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + Integer.toString(five_bonus) + "개");
 
         return five_bonus;
     }
@@ -245,7 +245,7 @@ public class Application {
             }
         }
 
-        System.out.println(Result.SIX.getName() + Integer.toString(six) + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + Integer.toString(six) + "개");
 
         return six;
     }
