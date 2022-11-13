@@ -71,8 +71,6 @@ class UserLottoTest {
 
     @Test
     void purchaseLottoCheckQTY() {
-        Pay input = new Pay("15000");
-
         List<Lotto> lottos = List.of(
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
@@ -90,6 +88,6 @@ class UserLottoTest {
                 new Lotto(List.of(1, 2, 3, 4, 5, 6)),
                 new Lotto(List.of(1, 2, 3, 4, 5, 6))
         );
-        assertThat(new UserLotto(input).getUserLottoSize()).isEqualTo(lottos.size());
+        assertThat(new UserLotto(lottos)).isEqualTo(new UserLotto(lottos));
     }
 }
