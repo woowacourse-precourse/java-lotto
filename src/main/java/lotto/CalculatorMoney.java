@@ -1,12 +1,15 @@
 package lotto;
 
 public class CalculatorMoney {
+    private static final String ERROR_LOTTO_THOUSAND = "[ERROR] 1000원 단위로 입력해주세요.";
+    private static final String ERROR_LOTTO_ISDIGIT = "[ERROR] 구입 금액은 실수여야합니다.";
     private int winningMoney;
     private String getAmountInput;
     public CalculatorMoney(String getAmountInput){
         this.winningMoney=0;
         this.getAmountInput=getAmountInput;
         checkMoney(getAmountInput);
+        isThousand(getAmountInput);
     }
     private void checkMoney(String money){
         for(int i=0;i<money.length();i++){
@@ -15,13 +18,13 @@ public class CalculatorMoney {
     }
     private void isThousand(String money){
         if(Integer.parseInt(money)%1000!=0){
-            throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해주세요.");
+            throw new IllegalArgumentException(ERROR_LOTTO_THOUSAND);
         }
     }
     private void checkDigit(char ch){
         if(Character.isDigit(ch)!=true){
 
-            throw new IllegalArgumentException("[ERROR] 구입 금액은 실수여야합니다.");
+            throw new IllegalArgumentException(ERROR_LOTTO_ISDIGIT);
         }
     }
     public void sumWinningMoney(int[] result){

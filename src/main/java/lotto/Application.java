@@ -4,6 +4,7 @@ import java.util.Set;
 
 public class Application {
     public static void main(String[] args) {
+        try{
         String money=makeNumber.getAmountInput();
         CalculatorMoney calculatorMoney=new CalculatorMoney(money);
         int lottoCount=makeNumber.buyLotto(money);
@@ -18,6 +19,10 @@ public class Application {
         judgement.checkWin(winner,alllotto,bonusNumber);
         calculatorMoney.sumWinningMoney(judgement.getResult());
         calculatorMoney.printProfitRate();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
 
 
     }
