@@ -26,6 +26,13 @@ public class Game {
         this.budget = budget;
     }
 
+    public void buyLotto(){
+        lottos.add(new Lotto(generateLottoNumbers()));
+    }
+
+    public List<Lotto> getLottos(){
+        return lottos;
+    }
 
     private void validateBudget(Integer budget){
         if (budget % price != 0) throw new IllegalArgumentException();
