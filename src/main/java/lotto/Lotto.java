@@ -53,18 +53,18 @@ public class Lotto {
     }
 
     private int validateBonus(String bonus) {
-        int result;
+        int intBonus;
         try {
-            result = Integer.parseInt(bonus.trim());
+            intBonus = Integer.parseInt(bonus.trim());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(Message.ERROR_INPUT_NUMBER.printError());
         }
-        if (result > 45 || result < 1) {
+        if (intBonus > 45 || intBonus < 1) {
             throw new IllegalArgumentException(Message.ERROR_INPUT_RANGE.printError());
         }
-        if (numbers.contains(bonus)) {
+        if (numbers.contains(intBonus)) {
             throw new IllegalArgumentException(Message.ERROR_INPUT_DUPLICATE.printError());
         }
-        return result;
+        return intBonus;
     }
 }
