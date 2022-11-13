@@ -17,13 +17,14 @@ public class LottoSellerTest {
     private LottoSeller lottoSeller = new LottoSeller();
 
     @ParameterizedTest
-    @CsvSource(value = {"1000", "2000", "3000", "4000"})
+    @CsvSource(value = {"1000", "2000", "3000", "4000", "15000", "60000"})
     void sell_메서드는_금액을_받고_로또_티켓을_반환한다(int amount) {
-        assertThat(lottoSeller.sell(amount)).isInstanceOf(LottoTicket.class);
+        LottoTicket lottoTicket = lottoSeller.sell(amount);
+        assertThat(lottoTicket.value().size()).isEqualTo(amount / 1000);
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {999, 1001, 2345})
+    @ValueSource(ints = {999, 1001, 2345, 142918})
     void sell_메서드는_입력받은_금액이_부족하거나_구매하고_남은_금액이_존재하는_경우_IllegalArgumentException을_던진다(int amount) {
         Assertions.assertThatThrownBy(() -> lottoSeller.sell(amount))
                 .isInstanceOf(IllegalArgumentException.class);

@@ -7,8 +7,8 @@ import static lotto.domain.LottoNumber.LOTTO_NUMBER_LOWER_BOUND;
 import static lotto.domain.LottoNumber.LOTTO_NUMBER_UPPER_BOUND;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class LottoSeller {
     public static final int LOTTO_PRICE = 1000;
@@ -25,12 +25,10 @@ public class LottoSeller {
         }
     }
 
-    private LottoTicket generateQuickPickNumbers(Integer count) {
-        List<List<Integer>> quickPickNumbers = new ArrayList<>();
-        while (quickPickNumbers.size() < count) {
-            quickPickNumbers.add(quickPick());
-        }
-        return toLottoTicket(quickPickNumbers);
+    private LottoTicket generateQuickPickNumbers(Integer pickCount) {
+        return Stream.generate(this::quickPick)
+                .limit(pickCount)
+                .collect(collectingAndThen(toList(), this::toLottoTicket));
     }
 
     private List<Integer> quickPick() {
