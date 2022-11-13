@@ -18,4 +18,8 @@ public class Player {
             throw new IllegalArgumentException(PURCHASE_AMOUNT_WITH_LEADING_ZERO.toString());
         }
     }
+
+    private int parse(String purchaseAmount) {
+        return Integer.parseInt(purchaseAmount);
+    }
 }
