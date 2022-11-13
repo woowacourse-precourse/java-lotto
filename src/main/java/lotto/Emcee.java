@@ -1,8 +1,18 @@
 package lotto;
 
 import java.util.List;
+import java.util.Map;
+
+import static lotto.Rank.*;
 
 public class Emcee {
+
+    private final Map<Rank, Integer> prize = Map.of(
+            FIRST_SIX_MATCHED, 2_000_000_000,
+            SECOND_FIVE_WITH_BONUS, 30_000_000,
+            THIRD_FIVE_MATCHED, 1_500_000,
+            FOURTH_FOUR_MATCHED, 50_000,
+            FIFTH_THREE_MATCHED, 5_000);
 
     public void guideGame() {
         String startingGuide = "Lotto game 에 오신 것을 환영합니다.\n" +

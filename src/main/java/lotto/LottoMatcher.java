@@ -8,13 +8,6 @@ import static lotto.Rank.*;
 
 public class LottoMatcher {
 
-    private final Map<Rank, Integer> prize = Map.of(
-            FIRST_SIX_MATCHED, 2_000_000_000,
-            SECOND_FIVE_WITH_BONUS, 30_000_000,
-            THIRD_FIVE_MATCHED, 1_500_000,
-            FOURTH_FOUR_MATCHED, 50_000,
-            FIFTH_THREE_MATCHED, 5_000);
-
     private List<Rank> results;
 
     public List<Rank> matchAllLottos(List<Lotto> publishedLottos, WinningLotto winningLotto) {
