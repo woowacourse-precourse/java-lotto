@@ -12,9 +12,9 @@ public enum IOMessage {
     OUTPUT_YIELD_MESSAGE("총 수익률은 %.1f%%입니다.");
 
 
-    private String message;
+    private final String message;
 
-    IOMessage(String message) {
+    IOMessage(final String message) {
         this.message = message;
     }
 

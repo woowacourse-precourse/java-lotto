@@ -12,7 +12,7 @@ import lotto.domain.model.UserLotto;
 
 public abstract class OutputData {
 
-    public static void printUserLotto(UserLotto userLotto, Pay pay) {
+    public static void printUserLotto(final UserLotto userLotto, final Pay pay) {
         System.out.println();
         System.out.println(pay.calculateQuantity() + OUTPUT_PURCHASE_LOTTO.getMessage());
         for (String lotto : userLotto.getUserLotto()) {
@@ -21,7 +21,7 @@ public abstract class OutputData {
         System.out.println();
     }
 
-    public static void printLottoResult(LottoResult lottoResult, Pay pay) {
+    public static void printLottoResult(final LottoResult lottoResult, final Pay pay) {
         System.out.println();
         System.out.println(OUTPUT_LOTTO_RESULT_HEAD.getMessage());
         printStatistics(lottoResult);
@@ -29,14 +29,14 @@ public abstract class OutputData {
         System.out.println();
     }
 
-    private static void printStatistics(LottoResult lottoResult) {
+    private static void printStatistics(final LottoResult lottoResult) {
         Map<LottoRank, Long> result = lottoResult.getLottoResult();
         for (LottoRank lottoRank : result.keySet()) {
             System.out.println(LottoRank.createStatisticsForm(lottoRank, result.get(lottoRank)));
         }
     }
 
-    private static void printYield(LottoResult lottoResult, Pay pay) {
+    private static void printYield(final LottoResult lottoResult, final Pay pay) {
         System.out.printf((OUTPUT_YIELD_MESSAGE.getMessage()) + "%n",
                 Math.round(lottoResult.calculateYield(pay) * 10) / 10.0);
 

@@ -10,13 +10,13 @@ public abstract class PurchaseValidator {
     private static final int STANDARD_REMINDER = 0;
     private static final String NUMBER_REG_EXP = "[0-9]+";
 
-    public static void checkConsistNumber(String pay) {
+    public static void checkConsistNumber(final String pay) {
         if (!pay.matches(NUMBER_REG_EXP)) {
             throw new IllegalArgumentException(getErrorMessage(PURCHASE_PAY_CONSISTENCE) + pay);
         }
     }
 
-    public static void checkReminder(String pay) {
+    public static void checkReminder(final String pay) {
         if (STANDARD_REMINDER != Integer.parseInt(pay) % MINIMUM_ORDER) {
             throw new IllegalArgumentException(getErrorMessage(PURCHASE_PAY_REMINDER) + pay);
         }

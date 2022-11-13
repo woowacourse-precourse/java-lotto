@@ -28,19 +28,19 @@ public enum LottoRank {
         return reward;
     }
 
-    public static LottoRank find(String matchCount) {
+    public static LottoRank find(final String matchCount) {
         return Arrays.stream(values()).filter(lottoRank -> lottoRank.matchCount.equals(matchCount)).findFirst()
                 .orElse(NO_MATCH);
     }
 
-    public static LottoRank of(LottoRank lottoRank, Boolean isBonusMatch) {
+    public static LottoRank of(final LottoRank lottoRank, final Boolean isBonusMatch) {
         if (lottoRank == FIVE_MATCHES && isBonusMatch) {
             return FIVE_BONUS_MATCHES;
         }
         return lottoRank;
     }
 
-    public static String createStatisticsForm(LottoRank lottoRank, Long count) {
+    public static String createStatisticsForm(final LottoRank lottoRank, final Long count) {
         DecimalFormat decFormat = new DecimalFormat("###,###");
         if (lottoRank == FIVE_BONUS_MATCHES) {
             return String.format(OUTPUT_BONUS_STATISTICS.getMessage(), lottoRank.matchCount,

@@ -15,17 +15,17 @@ public class LottoController {
     private Bonus bonus;
 
 
-    public void purchaseLotto(String pay) {
+    public void purchaseLotto(final String pay) {
         this.pay = new Pay(pay);
         this.userLotto = new UserLotto(this.pay);
         OutputData.printUserLotto(this.userLotto, this.pay);
     }
 
-    public void designateFirstPlace(String firstPlace) {
+    public void designateFirstPlace(final String firstPlace) {
         this.firstPlace = new Lotto(firstPlace);
     }
 
-    public void designateBonus(String bonus) {
+    public void designateBonus(final String bonus) {
         this.bonus = new Bonus(this.firstPlace, bonus);
     }
 

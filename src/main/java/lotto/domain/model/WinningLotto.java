@@ -11,7 +11,7 @@ public class WinningLotto {
         this.bonus = new Bonus(Integer.parseInt(bonus));
     }
 
-    public WinningLotto(Lotto firstPlace, Bonus bonus) {
+    public WinningLotto(final Lotto firstPlace, Bonus bonus) {
         this.firstPlace = firstPlace;
         this.bonus = bonus;
     }

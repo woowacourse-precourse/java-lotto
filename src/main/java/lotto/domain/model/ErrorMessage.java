@@ -31,17 +31,17 @@ public enum ErrorMessage {
         return message;
     }
 
-    public static String getErrorMessage(ErrorMessage errorMessage) {
+    public static String getErrorMessage(final ErrorMessage errorMessage) {
         return COMMON_MESSAGE.getMessage() + errorMessage.getMessage();
     }
-    public static String getErrorMessage(ErrorMessage errorMessage, Set<Integer> errorNumbers) {
+    public static String getErrorMessage(final ErrorMessage errorMessage, final Set<Integer> errorNumbers) {
         List<Integer> errorNumber = new ArrayList<>(errorNumbers);
         Collections.sort(errorNumber);
         return COMMON_MESSAGE.getMessage() + errorMessage.getMessage()
                 + errorNumber.stream().map(String::valueOf).collect(Collectors.joining(", "));
     }
 
-    public static void printErrorMessage(Exception e) {
+    public static void printErrorMessage(final Exception e) {
         System.out.println(e.getMessage());
     }
 }

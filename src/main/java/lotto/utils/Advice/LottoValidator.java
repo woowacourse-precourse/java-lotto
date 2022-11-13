@@ -24,13 +24,13 @@ public abstract class LottoValidator{
             "([0-9]{1,2})\\,([0-9]{1,2})\\,([0-9]{1,2})\\,([0-9]{1,2})\\,([0-9]{1,2})\\,([0-9]{1,2})";
 
 
-    public static void checkSize(List<Integer> numbers){
+    public static void checkSize(final List<Integer> numbers){
         if (COUNT != numbers.size()) {
             throw new IllegalArgumentException(getErrorMessage(LOTTE_SIZE_INVALID) + numbers.size());
         }
     }
 
-    public static void checkDuplication(List<Integer> numbers) {
+    public static void checkDuplication(final List<Integer> numbers) {
         Set<Integer> check = new HashSet<>();
         Set<Integer> duplications = numbers.stream()
                 .filter(number -> !check.add(number))
@@ -40,7 +40,7 @@ public abstract class LottoValidator{
         }
     }
 
-    public static void checkRange(List<Integer> numbers) {
+    public static void checkRange(final List<Integer> numbers) {
         Set<Integer> outBound = numbers.stream()
                 .filter(number -> !STANDARD_LOTTO_NUMBER.contains(number))
                 .collect(Collectors.toSet());
@@ -50,7 +50,7 @@ public abstract class LottoValidator{
     }
 
 
-    public static void checkConsistOfOnlyCommas(String firstPlace) {
+    public static void checkConsistOfOnlyCommas(final String firstPlace) {
         if (!firstPlace.matches(FIRST_PLACE_REG_EXP))
             throw new IllegalArgumentException(getErrorMessage(NOT_DIVIDE_COMMAS));
     }

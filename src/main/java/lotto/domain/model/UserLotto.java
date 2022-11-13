@@ -10,11 +10,11 @@ public class UserLotto {
 
     private final List<Lotto> userLotto;
 
-    public UserLotto(List<Lotto> userLotto) {
+    public UserLotto(final List<Lotto> userLotto) {
         this.userLotto = userLotto;
     }
 
-    public UserLotto(Pay pay) {
+    public UserLotto(final Pay pay) {
         this.userLotto = IntStream.rangeClosed(1, pay.calculateQuantity())
                 .mapToObj(count -> new Lotto(LottoGenerator.makeLotto())).collect(Collectors.toList());
     }
@@ -25,7 +25,7 @@ public class UserLotto {
                 .collect(Collectors.toList());
     }
 
-    public List<LottoRank> compareLottoNumber(WinningLotto winningLotto) {
+    public List<LottoRank> compareLottoNumber(final WinningLotto winningLotto) {
         List<LottoRank> rankCollection = userLotto.stream()
                 .map(lotto -> lotto.compareLottoNumber(winningLotto))
                 .filter(lottoRank -> lottoRank != LottoRank.NO_MATCH)
@@ -34,7 +34,7 @@ public class UserLotto {
         return rankCollection;
     }
 
-    private void validateLottoRankSize(List<LottoRank> rankCollection) {
+    private void validateLottoRankSize(final List<LottoRank> rankCollection) {
         if (this.userLotto.size() < rankCollection.size()) {
             throw new IllegalArgumentException();
         }

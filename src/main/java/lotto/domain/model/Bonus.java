@@ -15,18 +15,18 @@ public class Bonus {
         this.bonus = bonus;
     }
 
-    public Bonus(Lotto firstPlace, String bonus) {
+    public Bonus(final Lotto firstPlace, final String bonus) {
         validate(bonus);
         firstPlace.duplicateCheckBonusNumber(bonus);
         this.bonus = Integer.parseInt(bonus);
     }
 
-    private static void validate(String bonus) {
+    private static void validate(final String bonus) {
         checkSizeAndNumber(bonus);
         checkRange(bonus);
     }
 
-    public Boolean calculateMatch(List<Integer> numbers) {
+    public Boolean calculateMatch(final List<Integer> numbers) {
         return numbers.contains(this.bonus);
     }
 

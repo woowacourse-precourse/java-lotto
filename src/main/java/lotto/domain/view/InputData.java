@@ -31,7 +31,7 @@ public abstract class InputData {
         return inputData;
     }
 
-    private static void validate(String inputData) {
+    private static void validate(final String inputData) {
         if (inputData == null) {
             throw new IllegalArgumentException(getErrorMessage(INPUT_NULL));
         }

@@ -8,12 +8,12 @@ public class Pay {
 
     private final Long pay;
 
-    public Pay(String pay) {
+    public Pay(final String pay) {
         validate(pay);
         this.pay = Long.valueOf(pay);
     }
 
-    private void validate(String pay) {
+    private void validate(final String pay) {
         checkConsistNumber(pay);
         checkReminder(pay);
     }
