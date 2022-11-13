@@ -1,6 +1,10 @@
-package lotto.domain;
+package lotto.controller;
 
+import lotto.service.Calculator;
+import lotto.domain.*;
 import lotto.exception.LottoException;
+import lotto.service.CompareLotto;
+import lotto.service.Convertor;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
