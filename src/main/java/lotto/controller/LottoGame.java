@@ -11,11 +11,10 @@ public class LottoGame {
     }
 
     public void startLotto(){
-        System.out.println("구입 금액을 입력해주세요.");
+        printPurchaseAmount();
 
-        int input = Integer.parseInt(Console.readLine());
-
-        validateUnit(input);
+        int input = user.setPurchaseAmount();
+        user.validateUnit(input);
 
         input /= 1000;
 
@@ -26,9 +25,11 @@ public class LottoGame {
 
     }
 
-    public void validateUnit(int input){
-        if(input % 1000 != 0){
-            throw new IllegalArgumentException("[ERROR] 구입 금액이 1000원 단위가 아닙니다.");
-        }
+
+
+    public void printPurchaseAmount(){
+        System.out.println("구입 금액을 입력해주세요.");
     }
+
+
 }

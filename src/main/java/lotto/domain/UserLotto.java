@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 
@@ -14,6 +15,17 @@ public class UserLotto {
     private List<List> userLotto = new ArrayList<>();
 
     public UserLotto() {}
+
+    public int setPurchaseAmount(){
+        int input = Integer.parseInt(Console.readLine());
+        return input;
+    }
+
+    public void validateUnit(int input){
+        if(input % 1000 != 0){
+            throw new IllegalArgumentException("[ERROR] 구입 금액이 1000원 단위가 아닙니다.");
+        }
+    }
 
     public void setRandomNumber(){
         List<Integer> lottoNumbers = new ArrayList<>();
