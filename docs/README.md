@@ -15,7 +15,7 @@
 - [x] 발행된 로또 오름차순 출력 User#printUserLotto
 
 **3. 로또 당첨 , 수익률 확인** Controller#resultLotto
-- [ ] 당첨 내역 출력 User#printWinningResult
+- [x] 당첨 내역 출력 User#printWinningResult
 - [ ] 수익률 출력 User#printWinningRatio
 
 ---
