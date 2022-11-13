@@ -78,7 +78,7 @@ public class Lotto {
         }
         return "5";
     }
-    public void calcuate(List<String> winNum){
+    public void calculate(List<String> winNum){
         System.out.println("당첨 통계");
         System.out.println("---");
         System.out.println("3개 일치 (5,000원) - " + Collections.frequency(winNum,"3")+"개");
@@ -86,5 +86,14 @@ public class Lotto {
         System.out.println("5개 일치 (1,500,000원) - " + Collections.frequency(winNum,"5")+"개");
         System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + Collections.frequency(winNum,"5b")+"개");
         System.out.println("6개 일치 (2,000,000,000원) - " + Collections.frequency(winNum,"6")+"개");
+    }
+    public void calculateEarn(List<String> winNum){
+        double earn = 5000* Collections.frequency(winNum,"3");
+        earn += 50000*Collections.frequency(winNum,"4");
+        earn += 1500000*Collections.frequency(winNum,"5");
+        earn += 30000000*Collections.frequency(winNum,"5b");
+        earn += 2000000000*Collections.frequency(winNum,"6");
+        earn /= 1000*winNum.size();
+        System.out.println("총 수익률은 "+String.format("%.1f",earn)+ "%입니다.");
     }
 }
