@@ -9,8 +9,8 @@ import java.util.stream.Stream;
 public class LottoGenerator {
 
     public static final int LOTTO_NUMBER_COUNT = 6;
-    private static final int MAX_LOTTO_NUMBER = 45;
-    private static final int MINIMUM_LOTTO_NUMBER = 1;
+    public static final int MAX_LOTTO_NUMBER = 45;
+    public static final int MINIMUM_LOTTO_NUMBER = 1;
 
 
     public static LottoTickets generateTickets(Money money) {

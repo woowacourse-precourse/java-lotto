@@ -14,7 +14,7 @@ public class WinningLotto extends Lotto {
 
     private void validateBonusNumberDuplicated(List<Integer> numbers, int bonusNumber) {
         if (numbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException(DUPLICATED_NUMBER);
+            throw new IllegalArgumentException(DUPLICATED_NUMBER_ERROR);
         }
     }
 
