@@ -6,9 +6,9 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.exception.UserBuyingException;
 
 public class InputView {
+    private final UserBuyingException userBuyingException = new UserBuyingException();
 
     public int inputBuyingPriceView() {
-        UserBuyingException userBuyingException = new UserBuyingException();
         String buyingPrice = Console.readLine();
         userBuyingException.validateBuyingException(buyingPrice);
         return toIntStringNumberParser(buyingPrice);
