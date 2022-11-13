@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 import static lotto.exception.InputException.*;

@@ -23,7 +23,8 @@ public class Machine {
         private int money;
         private int count;
 
-        Stats() {}
+        Stats() {
+        }
 
         Stats(String accord, int money, int count) {
             this.accord = accord;
