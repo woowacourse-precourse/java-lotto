@@ -19,6 +19,14 @@ public class Compare {
         this.lottoWithBonus = lottoWithBonus;
     }
 
+
+    public float calculateYield(Map<LottoResult, Integer> result) {
+        long totalPrize = getTotalPrize(result);
+        int price = lottoVendingMachine.getPrice();
+
+        return (float) totalPrize / price * 100;
+    }
+
     public long getTotalPrize(Map<LottoResult, Integer> result) {
         long totalPrize = 0L;
         for (LottoResult lo : LottoResult.values()) {
