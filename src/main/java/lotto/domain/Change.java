@@ -65,4 +65,8 @@ public class Change {
             throw new IllegalArgumentException("[ERROR] 구입금액을 다시 입력해주세요. - 문자 포함");
         }
     }
+
+    public static int bonusNumber(String bonusNumber){
+        return Integer.parseInt(bonusNumber);
+    }
 }

@@ -12,13 +12,14 @@ public class Application {
         // TODO: 프로그램 구현
         int purchaseAmount = askPurchaseAmount();
         int lottoCount = Purchase.getLottoCount(purchaseAmount);
+
         Generator generator = new Generator(lottoCount);
         List<List<Integer>> playerLotto = generator.createLotto();
+
         Lotto lotto = new Lotto(askWinningNumber());
-
         int bonusNumber = askBonusNumber();
-
         int prizeMoney = lotto.getPrizeMoney(playerLotto, bonusNumber);
+
         lotto.showWinningStatistics();
         Profit.showRate(purchaseAmount, prizeMoney);
     }
@@ -39,7 +40,7 @@ public class Application {
 
     private static int askBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
-        int bonusNumber = Integer.parseInt(Console.readLine());
+        int bonusNumber = Change.bonusNumber(Console.readLine());
         System.out.println();
         return bonusNumber;
     }
