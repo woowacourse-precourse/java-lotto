@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LotteryMachine {
+    private User user;
     private List<Integer> winningNumbers;
     private ArrayList<List<Integer>> userNumbers;
     private List<Integer> winningCase;
     public static List<Integer> winningPriceByCase;
 
     public LotteryMachine(User user, Lotto lotto){
+        this.user = user;
         this.winningNumbers = user.getUserNumbers();
         this.userNumbers = lotto.getLotteryOfUser();
     }
@@ -40,5 +42,15 @@ public class LotteryMachine {
                             .map(count -> count * status.getWinningPrice())
                             .collect(Collectors.toList());
         }
+    }
+
+    public void calculateRate(){
+        double sum = 0;
+        for(int a: winningPriceByCase){
+            sum += a;
+        }
+        sum/=user.getLottoPrice();
+        String rate = String.format("%.2f", sum);
+        System.out.println("총 수익률은 " + rate + "입니다.");
     }
 }
