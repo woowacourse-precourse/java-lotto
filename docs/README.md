@@ -26,7 +26,7 @@
 - [x] "당첨 통계{\n}---"를 출력한다. - ShowMessage#showLottoStatistics()
 
 - [x] "[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다." - ShowErrorMessage#showOutRangeLottoNumber()
-- [x] "[ERROR] 금액은 1,000으로 나누어 떨어져야 합니다."를 출력한다. - ShowErrorMessage#showNotDivide()
+  - [x] "[ERROR] 금액은 1,000으로 나누어 떨어져야 합니다."를 출력한다. - ShowErrorMessage#showNotDivide()
 
 - [x] 구입할 수 있는 로또의 개수를 반환 - int lottoCount = Lotto#lottoCount(int number)
 - [x] 1 ~ 45까지의 숫자 중 6개의 중복되지 않는 숫자를 뽑는다. - Lotto#createLottoNumbers()
@@ -37,7 +37,7 @@
 - [ ] 로또를 구매하기 - Long amount = Lotto#buyLotto()
 - [ ] 당첨 확인 - Lotto#lottoCheckWin()
 
-- [ ] 구매한 로또 번호들과 당첨 번호를 비교한다. - Lotto#lottoCompare()
+- [x] 구매한 로또 번호들과 당첨 번호를 비교한다. - Lotto#lottoCompare()
 
 - [x] 사용자에게 입력 받고 long으로 반환 int lottoCount = InputLotto#inputValueToLongs()
   - [x] 사용자에게 값을 입력 받는다. String userValue = InputLotto#inputValueOfUser()
@@ -46,7 +46,6 @@
 - [ ] String형식의 번호를 입력 받고 List로 변환 List<Integer> winNumbers = InputLotto#InputStringsToLst()
   - [x] 사용자에게 값을 입력 받는다. String userValue = InputLotto#inputValueOfUser()
   - [x] 문자열을 ,(쉼표)를 기준으로 나누기 - List<Integer> numbers = InputLotto#splitCommas(String numbers)
-  - [ ] 당첨 번호 모두를 int로 변환 - List<Integer> winNumbers = InputLotto#allToInts(String[] numbers)
     - [x] 문자열을 long으로 변환 - int number = InputLotto#toLongs(String number)
 
 - [x] 당첨 번호를 입력받고 List<Integer> 형으로 반환 List<Integer> = InputValueSplitCommas()
