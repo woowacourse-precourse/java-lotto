@@ -8,6 +8,7 @@ import java.util.List;
 
 import static lotto.WinningLogic.calculateRate;
 import static lotto.exception.Exception.catchInputException;
+import static lotto.exception.Exception.catchOutOfRangeException;
 import static lotto.view.InputView.*;
 import static lotto.view.OutputView.*;
 
@@ -53,7 +54,9 @@ public class Game {
 
     public static void makeWinning(String numbers){
         Arrays.asList(numbers.split(",")).stream().forEach(number->{
-            winning.add(Integer.parseInt(number));
+            int num = Integer.parseInt(number);
+            catchOutOfRangeException(num);
+            winning.add(num);
         });
     }
 }
