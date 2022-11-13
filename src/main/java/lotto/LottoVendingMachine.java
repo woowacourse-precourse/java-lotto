@@ -7,9 +7,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 public class LottoVendingMachine {
     private final int PRICE_OF_LOTTO = 1000;
 
-    public List<Lotto> publishLotto(int moneyInput) {
+    public ArrayList<Lotto> publishLotto(int moneyInput) {
         checkMoneyInput(moneyInput);
         int numberOfLotto = moneyInput / PRICE_OF_LOTTO;
+        System.out.println(numberOfLotto + "개를 구매했습니다.");
         ArrayList<Lotto> publishedLotto = new ArrayList<>();
 
         // 액수만큼 로또 발행

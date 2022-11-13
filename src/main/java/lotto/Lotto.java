@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -22,9 +23,10 @@ public class Lotto {
 
     @Override
     public String toString() {
+        Collections.sort(numbers);
         String value = "";
         for (Integer n : numbers)
-            value += Integer.toString(n) + " ";
+            value += n + ", ";
         return value;
     }
 }
