@@ -2,6 +2,7 @@ package lotto.controller;
 
 import java.util.List;
 import lotto.Lotto;
+import lotto.LottoAnalyzer;
 import lotto.service.LottoGameService;
 
 public class LottoGameController {
@@ -26,5 +27,9 @@ public class LottoGameController {
 
     public int pickBonusNumber(final String bonusNumber) {
         return lottoGameService.pickBonusNumber(bonusNumber);
+    }
+
+    public LottoAnalyzer lookUpLotto() {
+        return lottoGameService.lookUpLotto();
     }
 }

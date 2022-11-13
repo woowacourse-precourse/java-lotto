@@ -3,6 +3,7 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
 import lotto.Lotto;
+import lotto.LottoAnalyzer;
 import lotto.controller.LottoGameController;
 import lotto.message.GameMessage;
 
@@ -14,6 +15,7 @@ public class LottoGame {
     private Lotto winningNumbers;
     private int bonusNumber;
     private List<Lotto> userLottoTickets;
+    private LottoAnalyzer lottoAnalyzer;
 
     public LottoGame() {
         this.lottoGameController = new LottoGameController();
@@ -35,6 +37,10 @@ public class LottoGame {
         System.out.println(GameMessage.BONNUS_NUMBER.getMessage());
         userInput = Console.readLine();
         bonusNumber = lottoGameController.pickBonusNumber(userInput);
+
+        System.out.println(GameMessage.WINNIG_STATISTICS.getMessage());
+        System.out.println(GameMessage.LINE.getMessage());
+        lottoAnalyzer = lottoGameController.lookUpLotto();
     }
 
     private void printLottoTickets() {

@@ -4,9 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import lotto.message.ErrorMessage;
-import org.assertj.core.util.Sets;
 
 public class Lotto {
 

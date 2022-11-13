@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 import lotto.Lotto;
+import lotto.LottoAnalyzer;
 import lotto.message.Const;
 import lotto.message.ErrorMessage;
 import lotto.util.Util;
@@ -75,5 +76,10 @@ public class LottoGameService {
         if (winningNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_OVERLAP.getErrorMessage());
         }
+    }
+
+    public LottoAnalyzer lookUpLotto() {
+        LottoAnalyzer lottoAnalyzer = new LottoAnalyzer(lottoTickets, winningNumbers, bonusNumber);
+        return lottoAnalyzer;
     }
 }
