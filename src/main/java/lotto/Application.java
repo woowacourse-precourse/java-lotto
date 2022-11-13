@@ -9,20 +9,22 @@ import lotto.template.Output;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) {
-        int money = Input.insertMoney();
+    public static void main(String[] args) throws IllegalArgumentException{
+        try {
+            int money = Input.insertMoney();
+            Ticket ticket = new Ticket(money);
+            Output.showTicket(ticket);
 
-        Ticket ticket = new Ticket(money);
-        Output.showTicket(ticket);
+            Answer answer = new Answer();
+            List<Integer> winningNumbers = Input.insertWinningNumbers();
+            answer.setWinningNumbers(winningNumbers);
+            int bonusNumber = Input.insertBonusNumber();
+            answer.setBonusNumber(bonusNumber);
 
-        Answer answer = new Answer();
-        List<Integer> winningNumbers = Input.insertWinningNumbers();
-        answer.setWinningNumbers(winningNumbers);
-
-        int bonusNumber = Input.insertBonusNumber();
-        answer.setBonusNumber(bonusNumber);
-
-        Statistics statistics = new Statistics(ticket, answer);
-        Output.showWinningStatistics(statistics);
+            Statistics statistics = new Statistics(ticket, answer);
+            Output.showWinningStatistics(statistics);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

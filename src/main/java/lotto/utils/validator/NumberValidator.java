@@ -1,12 +1,11 @@
 package lotto.utils.validator;
 
-import lotto.utils.Error;
+import static lotto.utils.Exceptions.NOT_NATURAL_NUMBER;
 
 public class NumberValidator {
     public static void checkNaturalNumber(String string) {
         if (!string.matches("[1-9][0-9]*")) {
-            System.out.println(Error.NOT_NATURAL_NUMBER);
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NOT_NATURAL_NUMBER.toString());
         }
     }
 }

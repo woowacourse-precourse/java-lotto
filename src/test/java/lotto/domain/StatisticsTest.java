@@ -44,7 +44,7 @@ class StatisticsTest {
     @Test
     void getReturnRate() {
         assertThat(statistics.getReturnRate())
-                .isEqualTo(1500000 / 1000.0);
+                .isEqualTo(1500000 / 1000.0 * 100);
     }
 
     private List<Integer> anyTwoLottoNumberNotInNumbers(List<Integer> sixNumbers) {

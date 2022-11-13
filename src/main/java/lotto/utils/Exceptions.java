@@ -1,6 +1,6 @@
 package lotto.utils;
 
-public enum Error {
+public enum Exceptions {
     NOT_NATURAL_NUMBER("입력은 자연수여야 합니다."),
     NOT_UNIT_OF_1000_WON("로또는 1000원 단위로 구매할 수 있습니다."),
     EXIST_DUPLICATE_NUMBER("중복된 번호가 포함되어 있습니다."),
@@ -10,7 +10,7 @@ public enum Error {
 
     private final String description;
 
-    Error(String description) {
+    Exceptions(String description) {
         this.description = description;
     }
 
