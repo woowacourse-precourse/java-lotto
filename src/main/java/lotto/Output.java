@@ -8,7 +8,6 @@ public class Output {
 	public static void output(int numberOfGame, ArrayList<List<Integer>> userNumber, ArrayList<Integer> winningNumber, int bonusNumber) {
 		quantityAndNumberOutput(numberOfGame, userNumber);
 		winningResultOutput(userNumber,winningNumber,bonusNumber);
-
 	}
 	public static void quantityAndNumberOutput(int numberOfGame, ArrayList<List<Integer>> userNumber) {
 		System.out.println(numberOfGame+"개를 구매했습니다.");
@@ -23,7 +22,7 @@ public class Output {
 		System.out.println("5개 일치 (1,500,000원) - "+result.get("five")+"개");
 		System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - "+result.get("bonus")+"개");
 		System.out.println("6개 일치 (2,000,000,000원) - "+result.get("six")+"개");
-
+		System.out.println("총 수익률은 "+profitabilityOutput(result,userNumber)+"%입니다.");
 	}
 
 
@@ -63,7 +62,13 @@ public class Output {
 				result.put("six",result.get("six")+1);
 			}
 		}
-		System.out.println(result);
 		return result;
+	}
+
+	public static double profitabilityOutput(HashMap<String, Integer>result,ArrayList<List<Integer>> userNumber){
+		double purchasePrice = userNumber.size() * 1000;
+		double prize = (result.get("three")*5000) + (result.get("four")*50000) + (result.get("five")*1500000) +
+			(result.get("bonus")*30000000) + (result.get("six")*2000000000);
+		return (double)Math.round((prize*10/purchasePrice)*10);
 	}
 }
