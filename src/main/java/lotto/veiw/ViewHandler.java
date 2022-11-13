@@ -52,7 +52,8 @@ public class ViewHandler {
     }
 
     private void inputCompare() {
-        compare = new Compare(lottoVendingMachine.getHaveLottoList(), lottoWithBonus);
+        compare = new Compare(lottoVendingMachine, lottoWithBonus);
+        compare.printResult(compare.getResult());
     }
 
     private List<Integer> stringToList(String readLine) {
