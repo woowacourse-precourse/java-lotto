@@ -31,7 +31,6 @@ public class InputView {
 
 	public static List<Integer> inputWinningNumber() {
 		List<Integer> winNumbers = new ArrayList<>();
-		System.out.println();
 		System.out.println(INPUT_WINNING_NUMBER_MESSAGE);
 		try {
 			winNumbers = Arrays.stream(Console.readLine().split(INPUT_WIN_NUMBER_DIVIDE_STRING))
@@ -44,7 +43,6 @@ public class InputView {
 
 	public static int inputBonusNumber() {
 		int bonusNumber = ZERO_NUMBER;
-		System.out.println();
 		System.out.println(INPUT_BONUS_NUMBER_MESSAGE);
 		try {
 			bonusNumber = Integer.parseInt(Console.readLine());

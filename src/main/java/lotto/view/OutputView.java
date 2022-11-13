@@ -12,7 +12,7 @@ import lotto.domain.LottoResult;
 import lotto.domain.LottoTicket;
 
 public class OutputView {
-	private static final String PRINT_LOTTO_NUMBER = "개를 구매했습니다.";
+	private static final String PRINT_LOTTO_NUMBER = "\n%d개를 구매했습니다.";
 	private static final String PRINT_PRIZE_RESULT_INTRO = "\n당첨 통계";
 	private static final String PRINT_PRIZE_RESULT_BORDER_LINE = "---";
 	private static final String PRINT_PRIZE_RESULT_FRONT = "%d개 일치";
@@ -21,7 +21,7 @@ public class OutputView {
 	private static final String PRINT_RATE_RETURN = "총 수익률은 %.1f%%입니다.%n";
 
 	public static void printLottoNumber(int lottoNumber) {
-		System.out.println("\n" + lottoNumber + PRINT_LOTTO_NUMBER);
+		System.out.printf((PRINT_LOTTO_NUMBER) + "%n", lottoNumber);
 	}
 
 	public static void printLottoTickets(LottoTicket lottoTicket) {
