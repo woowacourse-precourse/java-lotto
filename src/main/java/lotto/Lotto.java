@@ -20,16 +20,24 @@ public class Lotto {
     }
     private void checkOverLap(List<Integer> numbers){
         Iterator itrForNumbers = numbers.iterator();
-        int[] arrayForCheckOverLap = new int[46];
+        boolean[] arrayForCheckOverLap = initializeBooleanArray(46);
         while (itrForNumbers.hasNext()){
             int checkIndex = (int)itrForNumbers.next();
-            if (arrayForCheckOverLap[checkIndex] == 1){
+            if (arrayForCheckOverLap[checkIndex] == true){
                 System.out.println("[ERROR] 당첨 번호는 중복이 없어야 합니다.");
                 throw new IllegalArgumentException();
             }
-            arrayForCheckOverLap[checkIndex] = 1;
+            arrayForCheckOverLap[checkIndex] = true;
         }
     }
+    private boolean[] initializeBooleanArray(int limitOfArray) {
+        boolean[] tempArray = new boolean[limitOfArray];
+        for (int index = 0; index < limitOfArray; index++){
+            tempArray[index] = false;
+        }
+        return tempArray;
+    }
+
     public ArrayList<BigInteger> checkLottoWinnings(ArrayList<ArrayList<Integer>> lotteryBundleArray, int bonusWinningNumber){
         return countLotteryWinningNumber(lotteryBundleArray, bonusWinningNumber);
     }
