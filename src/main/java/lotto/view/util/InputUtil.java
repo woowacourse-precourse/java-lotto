@@ -11,6 +11,7 @@ public class InputUtil {
 
     public static List<String> stringToList(String string) {
         return Stream.of(string.split(","))
+                .map(String::trim)
                 .collect(Collectors.toList());
     }
 
