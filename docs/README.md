@@ -8,9 +8,9 @@
         - [x] 1 ~ 45 사이의 숫자인지 확인
         - [x] 중복된 숫자가 있는지 확인
     - [x] `Lotto` 를 상속받은 `LotteryTicket` 클래스 구현
-    - [ ] `User` 클래스 구현
-        - [ ] `money` 1000원 단위 검증
-        - [ ] 로또 구매 메서드 구현
+    - [x] `User` 클래스 구현
+        - [x] `money` 1000원 단위 검증
+        - [x] 로또 구매 메서드 구현
     - [ ] `UserService` 의 `createUser` 메서드 구현
 - [ ] `LotterySellService`를 통해 로또 구매
     - [ ] `LotteryTicketRepository` 싱글톤 구현
