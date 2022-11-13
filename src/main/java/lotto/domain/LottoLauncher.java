@@ -3,7 +3,7 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Console;
 
 public class LottoLauncher {
-    public void startLotto(){
+    public void startLotto() {
         LottoMachine lottoMachine = inputMoney();
 
         System.out.println(lottoMachine);
@@ -16,7 +16,7 @@ public class LottoLauncher {
         System.out.println(compareLotto);
     }
 
-    private LottoMachine inputMoney(){
+    private LottoMachine inputMoney() {
         System.out.println("구입금액을 입력해 주세요.");
 
         int money = castInt(Console.readLine());
@@ -24,7 +24,7 @@ public class LottoLauncher {
         return new LottoMachine(money);
     }
 
-    private Lotto create1stLotto(){
+    private Lotto create1stLotto() {
         System.out.println("당첨 번호를 입력해 주세요.");
 
         String numbers = Console.readLine();
@@ -32,7 +32,7 @@ public class LottoLauncher {
         return new Lotto(numbers);
     }
 
-    private int createBonusNumber(){
+    private int createBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
 
         return castInt(Console.readLine());
@@ -41,8 +41,8 @@ public class LottoLauncher {
     private int castInt(String readLine) {
         try {
             return Integer.parseInt(readLine);
-        }catch (NumberFormatException e){
-            throw new IllegalArgumentException("[ERROR]");
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ExceptionMessage.notNumber.message);
         }
     }
 }

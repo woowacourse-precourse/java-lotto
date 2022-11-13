@@ -12,15 +12,15 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(ExceptionMessage.notFitSize.message);
         }
 
         if (numbers.stream().distinct().count() != 6) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(ExceptionMessage.duplicateNumber.message);
         }
 
         if (numbers.stream().filter(number -> 0 < number && number < 46).count() != 6) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(ExceptionMessage.outOfRangeNumber.message);
         }
     }
 
@@ -43,8 +43,8 @@ public class Lotto {
     private int castInt(String readLine) {
         try {
             return Integer.parseInt(readLine);
-        }catch (NumberFormatException e){
-            throw new IllegalArgumentException("[ERROR]");
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ExceptionMessage.notNumber.message);
         }
     }
 }

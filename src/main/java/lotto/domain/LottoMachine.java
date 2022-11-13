@@ -29,11 +29,11 @@ public class LottoMachine {
 
     private void validate(int money) {
         if (money % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(ExceptionMessage.moneyBy1000.message);
         }
 
         if (money < 0) {
-            throw new IllegalArgumentException("[ERROR]");
+            throw new IllegalArgumentException(ExceptionMessage.underMoney.message);
         }
     }
 

@@ -26,7 +26,7 @@ public class CompareLotto {
                 + "\n" + Rank.first.getComment() + " - " + rankByCount.get(Rank.first) + "개"
                 + "\n" + calculateYield();
     }
-    
+
     private Map<Rank, Integer> createRankMap() {
         HashMap<Rank, Integer> rankByCount = new HashMap<>();
 
