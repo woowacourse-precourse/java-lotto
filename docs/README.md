@@ -9,7 +9,7 @@
 ### model
 
 1. Lotto
-    - [ ]  로또 번호 출력하는 기능 → getNumbers
+    - [x]  로또 번호 출력하는 기능 → getNumbers
     - [ ]  로또 번호가 중복된 값은 아닌지 검증 기능 → validateDuplicateNumber
     - [ ]  로또 번호가 1~45 사이의 값으로 입력됐는지 검증 기능 → validateBetween1And45
     - [ ]  로또와 당첨 번호 비교 기능 → compareLotto_WinningNumber
