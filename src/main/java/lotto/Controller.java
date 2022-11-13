@@ -2,6 +2,8 @@ package lotto;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import java.util.ArrayList;
+import java.util.List;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -15,6 +17,7 @@ public class Controller {
     public void start() {
         String amount;
         int lottoTicketNumber;
+        List<Lotto> lottoNumbers = new ArrayList<>();
 
         amount = InputView.purchaseMessage();
 
