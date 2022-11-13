@@ -34,7 +34,7 @@
 
 - Referee
 
-- [ ] 사용자가 구매한 로또 번호와 당첨 번호를 비교 Referee#compare()
+- [x] 사용자가 구매한 로또 번호와 당첨 번호를 비교 Referee#compare()
 
   - Judgment
   
@@ -45,7 +45,7 @@
   
   - [x] 로또 결과를 기록 Statistics#record()
   - [x] 로또 결과가 기록된 map 반환 Statistics#getMap()
-  - [ ] 수익률 계산 Statistics#getYield()
+  - [x] 수익률 계산 Statistics#getYield()
 
   - Result
 

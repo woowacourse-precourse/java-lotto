@@ -17,6 +17,6 @@ public class Application {
         LottoView.print(lottoList);
         WinNumber winNumber = new WinNumber(NumberView.getWinNumbers(), NumberView.getBonusNumber());
         Referee referee = new Referee(lottoList, winNumber.getWinNumbers(), winNumber.getBonusNumber());
-        System.out.println(referee.compare().result);
+        System.out.println(referee.compare().yield);
     }
 }

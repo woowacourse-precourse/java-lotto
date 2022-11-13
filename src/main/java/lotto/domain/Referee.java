@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 public class Referee {
     private List<Lotto> lottoList;
     private List<Integer> winNumbers;
@@ -21,9 +22,9 @@ public class Referee {
         Statistics statistics = new Statistics();
         Judgment judgment = new Judgment(winNumbers, bonusNumber);
         for (Lotto lotto : lottoList) {
-            statistics.record(judgment.countCorrect(lotto), judgment.checkBonus(lotto) );
+            statistics.record(judgment.countCorrect(lotto), judgment.checkBonus(lotto));
         }
-        return new Result(statistics.getMap(), statistics.getYield());
+        return new Result(statistics.getMap(), statistics.getYield(lottoList.size()));
     }
 }
 
@@ -79,8 +80,20 @@ class Statistics {
         return map;
     }
 
-    float getYield() {
-        return 0;
+    float getYield(int lottoNum) {
+        Map winnings = new HashMap<Double, Integer>();
+        int totalWinnings = 0;
+        double[] correctNums = {3, 4, 5, 5.5, 6};
+        int[] cash = {5000, 50000, 1500000, 30000000, 2000000000};
+        for (int i = 0; i < correctNums.length; i++) {
+            winnings.put(correctNums[i], cash[i]);
+        }
+        System.out.println(winnings);
+        for (double num : correctNums) {
+            totalWinnings += (int) map.get(num) * (int) winnings.get(num);
+        }
+        System.out.println(totalWinnings);
+        return (float) totalWinnings / (lottoNum * 1000) * 100;
     }
 
 }
