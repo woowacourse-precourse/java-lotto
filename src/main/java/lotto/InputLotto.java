@@ -53,4 +53,12 @@ public class InputLotto {
         return Integer.parseInt(value);
     }
 
+    public int inputBonusNumber(){
+        ExceptionHandling exceptionHandling = new ExceptionHandling();
+        String value = inputValueOfUser();
+        exceptionHandling.outRangeLottoNumber(value);
+        int bonusNumber = toInts(value);
+        return bonusNumber;
+    }
+
 }
