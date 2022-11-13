@@ -29,7 +29,6 @@ public class User {
             this.money=money;
         } catch (NumberFormatException e) {
             System.out.println("[ERROR]");
-            //throw new IllegalStateException();
         }
     }
 
@@ -63,14 +62,14 @@ public class User {
         int convertedWinningNumber;
         String inputtedWinningNumber;
         try {
-        inputtedWinningNumber = Console.readLine();
-        List<Integer> winningNumber = new ArrayList<>();
-        String[] unconvertedWinningNumber = inputtedWinningNumber.split(",");
-        for (String unconvertedWinningNumberContent : unconvertedWinningNumber) {
-            convertedWinningNumber = Integer.parseInt(unconvertedWinningNumberContent);
-            winningNumber.add(convertedWinningNumber);
-        }
-        this.winningNumber = winningNumber;
+            inputtedWinningNumber = Console.readLine();
+            List<Integer> winningNumber = new ArrayList<>();
+            String[] unconvertedWinningNumber = inputtedWinningNumber.split(",");
+            for (String unconvertedWinningNumberContent : unconvertedWinningNumber) {
+                convertedWinningNumber = Integer.parseInt(unconvertedWinningNumberContent);
+                winningNumber.add(convertedWinningNumber);
+            }
+            this.winningNumber = winningNumber;
         } catch(NumberFormatException e) {
             System.out.println("[ERROR]");
             throw new IllegalArgumentException();
