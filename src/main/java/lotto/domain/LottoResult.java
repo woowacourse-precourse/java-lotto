@@ -31,7 +31,7 @@ public enum LottoResult {
         return numberOfMatches;
     }
 
-    public static LottoResult of(long numberOfMatches,
+    public static LottoResult of(int numberOfMatches,
                                  boolean containBonusNumber) {
         if (numberOfMatches == 5 && containBonusNumber) {
             return FIVE_WITH_BONUS;
@@ -43,7 +43,7 @@ public enum LottoResult {
                 .orElseThrow(() -> new IllegalArgumentException(ERROR_MESSAGE_PREFIX + "당첨번호 일치 갯수는 0~6개 입니다"));
     }
 
-    private boolean hasSameNumberOfMatches(long numberOfMatches) {
+    private boolean hasSameNumberOfMatches(int numberOfMatches) {
         return this.numberOfMatches == numberOfMatches;
     }
 }

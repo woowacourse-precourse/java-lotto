@@ -19,8 +19,8 @@ public class Lotto {
         this.numbers = new ArrayList<>(numbers);
     }
 
-    public long getNumberOfMatchesByWinningNumbers(List<Integer> winningNumbers) {
-        return numbers.stream()
+    public int getNumberOfMatchesByWinningNumbers(List<Integer> winningNumbers) {
+        return (int) numbers.stream()
                 .filter(winningNumbers::contains)
                 .count();
     }
