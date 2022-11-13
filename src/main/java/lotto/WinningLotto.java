@@ -30,4 +30,8 @@ public class WinningLotto {
     public boolean contains(int bonusNumber) {
         return winningLotto.contains(bonusNumber);
     }
+
+    public int countSameNumber(Lotto lotto) {
+        return lotto.countSameNumber(winningLotto);
+    }
 }

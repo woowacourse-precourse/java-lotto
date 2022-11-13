@@ -59,4 +59,15 @@ public class Lotto {
     public boolean contains(int number) {
         return numbers.contains(number);
     }
+
+    public int countSameNumber(Lotto other) {
+        int count = 0;
+
+        for (Integer number : numbers) {
+            if (other.contains(number)) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
