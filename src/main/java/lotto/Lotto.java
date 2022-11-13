@@ -16,5 +16,11 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public Integer numberOfMatched(List<Integer> winningNumbers){
+        Integer number = 0;
+        for (Integer winningNumber : winningNumbers){
+               if (numbers.contains(winningNumber)) number += 1;
+        }
+        return number;
+    }
 }
