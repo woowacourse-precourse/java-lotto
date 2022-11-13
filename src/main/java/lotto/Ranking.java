@@ -12,11 +12,11 @@ public enum Ranking {
     FIFTH("5TH", 3, 0, 5_000L, "5,000"),
     LOSE("LOST", -1, -1, 0L, "0");
 
-    private String label;
-    private int winningCount;
-    private int bonusCount;
-    private long prize;
-    private String prizeLabel;
+    private final String label;
+    private final int winningCount;
+    private final int bonusCount;
+    private final long prize;
+    private final String prizeLabel;
 
     Ranking(String label, int winningCount, int bonusCount, long prize, String prizeLabel) {
         this.label = label;
@@ -27,7 +27,8 @@ public enum Ranking {
     }
 
     public static Ranking getRank(int winningCount, int bonusCount) {
-        if (winningCount == 5 && bonusCount == 1) {
+        if (winningCount == Ranking.SECOND.getWinningCount()
+                && bonusCount == Ranking.SECOND.getBonusCount()) {
             return Arrays.stream(Ranking.values())
                     .filter(rank -> rank.label.equals(SECOND.getLabel()))
                     .findAny()
@@ -65,6 +66,10 @@ public enum Ranking {
 
     public int getWinningCount() {
         return this.winningCount;
+    }
+
+    public int getBonusCount() {
+        return this.bonusCount;
     }
 
 }
