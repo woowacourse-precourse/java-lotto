@@ -15,7 +15,7 @@
 - [x] 당첨 번호를 입력 받는다. NumberInput#getWinningNumbers()
 - [x] 보너스 번호가 숫자인지 확인한다. NumberInput#validateNumber()
 - [x] 보너스 번호가 로또 상한과 하한의 사이인지 확인한다 NumberInput#validateNumberInRange()
-- [ ] 보너스 번호를 입력 받는다. NumberInput#getBonusNumber()
+- [x] 보너스 번호를 입력 받는다. NumberInput#getBonusNumber()
 - [ ] 발행 로또가 로또 당첨 번호를 몇 개 가지고 있는지 확인한다. WinLotto#numberOfSameNumbers()
 - [ ] 발행 로또가 보너스 번호를 포함하는지 확인한다. WinLotto#isContainBonusNumber()
 - [ ] 로또 결과를 가져온다. WinLotto#getAllResult();

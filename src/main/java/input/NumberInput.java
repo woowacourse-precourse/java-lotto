@@ -26,6 +26,13 @@ public class NumberInput {
                 .collect(Collectors.toList());
     }
 
+    public int getBonusNumber() {
+        String input = Console.readLine();
+        int number = validateConvertingMoney(input);
+        validateNumberInRange(number);
+        return number;
+    }
+
     private int validateConvertingMoney(String input) {
         int number = 0;
 

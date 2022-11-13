@@ -19,6 +19,7 @@ public class LottoController {
     private LottoMachine machine;
     private List<Lotto> lotteries;
     private Lotto winnerNumber;
+    private int bonusNumber;
 
     public void purchase() {
         requestView.displayEnterPurchaseAmount();
@@ -34,6 +35,7 @@ public class LottoController {
 
     public void bonusNumber() {
         requestView.displayEnterBonusNumber();
+        bonusNumber = numberInput.getBonusNumber();
     }
 
 }
