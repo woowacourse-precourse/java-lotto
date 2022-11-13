@@ -52,3 +52,5 @@
 - [ ]  당첨 결과를 출력한다. OutputUI#printWinnerCounts()
     - [ ]  당첨로또의 갯수를 출력한다. OutputUI#printWinnerResult()
     - [ ]  수익률을 출력한다. OutputUI#printReturnRate()
+
+- [ ] 로또의 Numbers를 받는다. Lotto#getNumbers()
