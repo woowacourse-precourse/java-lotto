@@ -20,18 +20,24 @@ public class Application {
         int myPrice = priceInput();
         int lottoCount=howManyLottos(myPrice);
         System.out.println(lottoCount+SHOP_RESULT);
+        List<List<Integer>> myLottos=getMyLottos(lottoCount);
+        for(List<Integer> myLotto:myLottos){
+            System.out.println(myLotto);
+        }
 
         List<Integer> lottoNumbers = lottoNumAnswerInput();
         Lotto myLotto = new Lotto(lottoNumbers);
         int luckyNumber = getLuckyNumber();
     }
-    public static List<List<Integer>> getMyLotto(int count){
+    public static List<List<Integer>> getMyLottos(int count){
         List<List<Integer>> totalLottos=new ArrayList<>();
         List<Integer> numbers;
         for (int loop=0;loop<count;loop++){
             numbers=Randoms.pickUniqueNumbersInRange(1, 45, 6);
             isValidateNumbers(numbers);
             isDuplicated(numbers);
+            Collections.sort(numbers);
+            totalLottos.add(numbers);
         }
         return totalLottos;
 
