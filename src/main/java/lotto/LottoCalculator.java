@@ -40,8 +40,8 @@ public class LottoCalculator {
         return sum;
     }
 
-//    public double getRateOfReturn() {
-//
-//    }
+    public double getRateOfReturn(int lottoCount) {
+        return sumOfPrizeMoney() / lottoCount;
+    }
 
 }
