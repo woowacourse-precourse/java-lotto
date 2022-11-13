@@ -5,14 +5,20 @@ import camp.nextstep.edu.missionutils.Console;
 public class LottoPurchase {
     public static final int LOTTO_PRICE = 1000;
 
-    private String getPurchaseAmountInput() {
-        return Console.readLine();
+    private int getPurchaseAmountInput() {
+        String userInput = Console.readLine();
+        int purchaseAmount = userInputIsNumber(userInput);
+        lottoPriceUnitsValidate(purchaseAmount);
+
+        return purchaseAmount;
     }
 
-    private void userInputIsNumber(String userInput) {
+    private int userInputIsNumber(String userInput) {
         if (!userInput.matches("[0-9]*")) {
             throw new IllegalArgumentException("[ERROR] 구매 금액은 숫자만 입력할수 있습니다.");
         }
+
+        return Integer.valueOf(userInput);
     }
 
     private void lottoPriceUnitsValidate(int purchaseAmount) {
