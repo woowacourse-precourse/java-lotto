@@ -16,4 +16,8 @@ public class Lotto {
         LottoValidator.validateSize(numbers);
         LottoValidator.validateRange(numbers);
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
