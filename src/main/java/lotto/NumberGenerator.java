@@ -16,15 +16,19 @@ public class NumberGenerator {
 
     public int createBonusNumbers(List<Integer> numbers, int inputNumber) {
         checkScope(inputNumber);
-        if (numbers.contains(inputNumber)) {
-            throw new IllegalArgumentException("당첨번호와 중복됩니다.");
-        }
+        checkOverlap(numbers, inputNumber);
         return inputNumber;
     }
 
     public void checkScope(int number) {
         if (number < 1 || number > 45) {
             throw new IllegalArgumentException("1부터 45 사이 숫자를 입력하세요.");
+        }
+    }
+
+    public void checkOverlap(List<Integer> numbers, int inputNumber) {
+        if (numbers.contains(inputNumber)) {
+            throw new IllegalArgumentException("당첨번호와 중복됩니다.");
         }
     }
 
