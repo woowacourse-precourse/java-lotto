@@ -10,6 +10,7 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class ConsoleManager {
     private static final LottoService lottoService = Context.getLottoService();
+    private static final Validator validator = Context.getValidator();
 
     public static void runUI() {
         Integer purchaseAmount = readPurchaseAmount();
@@ -42,6 +43,8 @@ public class ConsoleManager {
     private static Integer readBonusNumber(){
         System.out.println("보너스 번호를 입력해 주세요.");
         Integer ret = readNextInteger();
+        if(!validator.isBetween1And45(ret))
+            throw new IllegalArgumentException("[ERROR] 보너스 번호는 1과 45 사이어야 합니다.");
         System.out.println();
         return ret;
     }
@@ -49,6 +52,10 @@ public class ConsoleManager {
     private static List<Integer> readWinningNumbers(){
         System.out.println("당첨 번호를 입력해 주세요.");
         List<Integer> ret = readNextIntegers(",");
+        boolean valid = ret.stream()
+                .allMatch(validator::isBetween1And45);
+        if(!valid)
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 1과 45 사이어야 합니다.");
         System.out.println();
         return ret;
     }
