@@ -75,7 +75,7 @@ public class ConsoleUserInputTest {
         System.setIn(in);
         scanner = new Scanner(System.in);
 
-        assertThatThrownBy(()-> consoleUserInput.inputWinningNumbers())
+        assertThatThrownBy(()-> consoleUserInput.inputBonusNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -86,7 +86,7 @@ public class ConsoleUserInputTest {
         System.setIn(in);
         scanner = new Scanner(System.in);
 
-        assertThatThrownBy(()-> consoleUserInput.inputWinningNumbers())
+        assertThatThrownBy(()-> consoleUserInput.inputBonusNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -97,7 +97,7 @@ public class ConsoleUserInputTest {
         System.setIn(in);
         scanner = new Scanner(System.in);
 
-        assertThatThrownBy(()-> consoleUserInput.inputWinningNumbers())
+        assertThatThrownBy(()-> consoleUserInput.inputBonusNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -108,7 +108,7 @@ public class ConsoleUserInputTest {
         System.setIn(in);
         scanner = new Scanner(System.in);
 
-        assertThatThrownBy(()-> consoleUserInput.inputWinningNumbers())
+        assertThatThrownBy(()-> consoleUserInput.inputBonusNumber())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
