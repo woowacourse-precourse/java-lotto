@@ -6,20 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LuckySix {
-    //public static List<Integer> luckySix;
     public static Lotto luckySix;
 
     public LuckySix(String inputLuckySix) {
         validateInteger(inputLuckySix);
         List<Integer> tempLuckySix = convertSixType(inputLuckySix);
-        //validateAsLotto(tempLuckySix);
-        //luckySix = tempLuckySix;
         luckySix = new Lotto(tempLuckySix);
     }
-
-    /*private void validateAsLotto(List<Integer> tempLuckySix) {
-        Lotto luckySixAsLotto = new Lotto(tempLuckySix);
-    }*/
 
     private void validateInteger(String inputLuckySix) {
         for (int index = 0; index < inputLuckySix.length(); index++) {
@@ -34,13 +27,10 @@ public class LuckySix {
     }
 
     private List<Integer> convertSixType(String inputLuckySix) {
+        String[] tempInputLuckySix = inputLuckySix.split(",");
         List<Integer> tempLuckySix = new ArrayList<>();
-        for (int index = 0; index < inputLuckySix.length(); index++) {
-            char oneNumber = inputLuckySix.charAt(index);
-            if (oneNumber == ',') {
-                continue;
-            }
-            tempLuckySix.add(Character.getNumericValue(oneNumber));
+        for (int i = 0; i < tempInputLuckySix.length; i++) {
+            tempLuckySix.add(Integer.parseInt(tempInputLuckySix[i]));
         }
         return tempLuckySix;
     }
