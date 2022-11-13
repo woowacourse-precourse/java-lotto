@@ -25,7 +25,9 @@ public class Application {
     }
 
     public static int ticketCal(int pay){
-
+        int ticketNumber = 0;
+        ticketNumber = pay/1000;
+        System.out.println(ticketNumber+"개를 구매했습니다.");
         return pay/1000;
     }
 
