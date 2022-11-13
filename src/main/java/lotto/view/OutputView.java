@@ -42,7 +42,7 @@ public class OutputView {
 		System.out.println("6개 일치 (2,000,000,000원) - " + prizeResult.get(LottoRanking.FIRST) + "개");
 	}
 
-	public void yield(double yield) {
-		System.out.println("총 수익률은 " + (Math.round(yield*100)/100.0) + "%입니다.");
+	public static void yield(double yield) {
+		System.out.println("총 수익률은 " + (Math.round(yield*10)/10.0) + "%입니다.");
 	}
 }
