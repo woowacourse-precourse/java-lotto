@@ -1,6 +1,5 @@
 package controller;
 
-
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 
@@ -9,6 +8,7 @@ import java.util.List;
 
 public class RandomNumberCreator {
     public Lotto lotto;
+
     public static final int ONE_THOUSAND = 1000;
 
     public static int DivideMoneyBy1000(int purchasingMoney) {

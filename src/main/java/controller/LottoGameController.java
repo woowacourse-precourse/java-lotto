@@ -8,5 +8,6 @@ public class LottoGameController {
         int purchasingMoney = inputController.inputMoney();
         int chanceNumber = RandomNumberCreator.DivideMoneyBy1000(purchasingMoney);
         List<List<Integer>> randomNumbersContainer = RandomNumberCreator.MakeRandomNumber(chanceNumber);
+        List<Integer> winningNumber = inputController.inputWinningNumber();
     }
 }
