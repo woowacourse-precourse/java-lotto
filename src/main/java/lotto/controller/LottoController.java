@@ -20,40 +20,45 @@ public class LottoController {
     private static int bonusNumber;
 
     public static void run() {
-        // 로또 구입
-        Purchase purchase = new Purchase(InputView.inputCash());
-        ticketNumber = purchase.getTicketNumber();
+        try {
+            // 로또 구입
+            Purchase purchase = new Purchase(InputView.inputCash());
+            ticketNumber = purchase.getTicketNumber();
 
-        // 로또 발행
-        Player player = new Player(ticketNumber);
-        allPlayerNumbers = player.get();
+            // 로또 발행
+            Player player = new Player(ticketNumber);
+            allPlayerNumbers = player.get();
 
-        // 당첨 번호 생성
-        Lotto lotto = new Lotto(InputView.inputWinningNumbers());
-        Bonus bonus = new Bonus(InputView.inputBonusNumber());
-        winningNumbers = lotto.get();
-        bonusNumber = bonus.get();
-        validateDuplicates();
+            // 당첨 번호 생성
+            Lotto lotto = new Lotto(InputView.inputWinningNumbers());
+            Bonus bonus = new Bonus(InputView.inputBonusNumber());
+            winningNumbers = lotto.get();
+            bonusNumber = bonus.get();
+            validateDuplicates();
 
-        // 로또 결과 계산
-        LottoResult result = new LottoResult(winningNumbers, allPlayerNumbers, bonusNumber);
-        List<Integer> matches = result.getMatches(); // [3, 1, 5, 5, 3]
-        List<Boolean> bonusMatches = result.getBonusMatches(); // [true, false, true, false, false]
+            // 로또 결과 계산
+            LottoResult result = new LottoResult(winningNumbers, allPlayerNumbers, bonusNumber);
+            List<Integer> matches = result.getMatches(); // [3, 1, 5, 5, 3]
+            List<Boolean> bonusMatches = result.getBonusMatches(); // [true, false, true, false, false]
 
-        // 로또 순위 계산
-        Ranking ranking = new Ranking(matches, bonusMatches); // [FIFTH, NONE, SECOND, THIRD, FIFTH]
-        Statistics statistics = new Statistics(ranking.getRankings());
+            // 로또 순위 계산
+            Ranking ranking = new Ranking(matches, bonusMatches); // [FIFTH, NONE, SECOND, THIRD, FIFTH]
+            Statistics statistics = new Statistics(ranking.getRankings());
 
-        OutputView.printStatistics();
+            OutputView.printStatistics();
 
-        Yield yield = new Yield(purchase.getTotalPurchase());
-        OutputView.printYield(yield.getYield());
+            Yield yield = new Yield(purchase.getTotalPurchase());
+            OutputView.printYield(yield.getYield());
+
+        } catch (Exception error) {
+            OutputView.printErrorMessage(error);
+        }
 
     }
 
     private static void validateDuplicates() {
         if (winningNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨 번호와 중복됩니다.");
+            throw new IllegalArgumentException("보너스 번호가 당첨 번호와 중복됩니다.");
         }
     }
 }
