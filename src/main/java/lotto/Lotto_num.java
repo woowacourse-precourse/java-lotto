@@ -15,6 +15,16 @@ public class Lotto_num {
         this.money = money;
     }
 
+    public int LottoCount() {
+        return money / MIN_COST;
+    }
+
+    public void Profit(double total_sum) {
+        double percent = (total_sum/money)*100;
+
+        System.out.println("총 수익률은" +percent+"%입니다.");
+    }
+
     public void Game() {
 //        String lotto_num = getUserInput();
 //        int lotto_nums = Integer.parseInt(lotto_num);
