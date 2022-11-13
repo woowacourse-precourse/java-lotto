@@ -21,6 +21,10 @@ public class UserIO {
     public int moneySpent() {
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
+        if (checkInvalidMoney(input)) {
+            System.out.println("[ERROR] 로또 구입 금액은 숫자로 입력해 주세요.");
+            throw new IllegalArgumentException();
+        }
 
         int money = Integer.valueOf(input);
         System.out.println(money + "\n");
@@ -30,6 +34,13 @@ public class UserIO {
             throw new IllegalArgumentException();
         }
         return money;
+    }
+
+    private boolean checkInvalidMoney(String input) {
+        if (input.matches("\\d+")) {
+            return false;
+        }
+        return true;
     }
 
     // 로또 구입내역
