@@ -2,12 +2,18 @@ package lotto.domain;
 
 import static org.assertj.core.api.Assertions.*;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import lotto.util.RankConst;
 
 class RankTest {
+
+	@AfterEach
+	void tearDown() {
+		Rank.clearCount();
+	}
 
 	@DisplayName("수익률 계산 확인 테스트")
 	@Test

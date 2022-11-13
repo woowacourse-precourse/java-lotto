@@ -22,4 +22,7 @@ public class UserLottoRepository {
 		return new UserLottoDto(userLotto);
 	}
 
+	public void clear() {
+		userLotto.clear();
+	}
 }

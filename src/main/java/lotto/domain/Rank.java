@@ -36,4 +36,7 @@ public enum Rank {
 		return this.rankCountDescription + this.count + RankConst.COUNT;
 	}
 
+	public static void clearCount() {
+		Arrays.stream(Rank.values()).forEach(rank -> rank.count = 0);
+	}
 }
