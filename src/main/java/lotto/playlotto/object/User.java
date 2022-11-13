@@ -29,13 +29,26 @@ public class User extends Input {
         return Randoms.pickUniqueNumbersInRange(1,45,6);
     }
 
-    public List<List<Integer>> return_lottery_nums(){
-        return this.lottery_nums;
-    }
+
+    public Integer getLottery_count(){ return this.lottery_count; }
 
     public Integer getMoney(){ return this.money; }
 
-    public Integer getLottery_count(){ return this.lottery_count; }
+    public List<List<Integer>> getLottery_nums() {
+        return lottery_nums;
+    }
+
+    public void setLottery_nums(List<List<Integer>> lottery_nums) {
+        this.lottery_nums = lottery_nums;
+    }
+
+    public void setLottery_count(Integer lottery_count) {
+        this.lottery_count = lottery_count;
+    }
+
+    public void setMoney(Integer money) {
+        this.money = money;
+    }
 
     public int TestReturnSize(){
         this.lottery_count = 6;

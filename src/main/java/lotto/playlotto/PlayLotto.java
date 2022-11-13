@@ -96,7 +96,7 @@ public class PlayLotto extends Input {
     }
 
     public void compare_lottery(User user){
-        for(List<Integer> user_lottery : user.return_lottery_nums()){ //사용자 번호와 당첨 번호 비교
+        for(List<Integer> user_lottery : user.getLottery_nums()){ //사용자 번호와 당첨 번호 비교
             equal_count(lotto.returnNumbers(), user_lottery);
         }
     }
