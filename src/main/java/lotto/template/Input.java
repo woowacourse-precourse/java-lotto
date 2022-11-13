@@ -20,8 +20,9 @@ public class Input {
         return parseWinningNumbers(input);
     }
 
-    public static void insertBonusNumber() {
+    public static int insertBonusNumber(List<Integer> winningNumbers) {
         String input = readAfterPrint("보너스 번호를 입력해 주세요.");
+        return parseBonusNumber(input, winningNumbers);
     }
 
     private static String readAfterPrint(String out) {
@@ -35,18 +36,24 @@ public class Input {
     }
 
     private static List<Integer> parseWinningNumbers(String input) {
-        int number;
         List<Integer> winningNumbers = new ArrayList<>();
         String[] inputs = input.split(",");
 
         StringValidator.checkSplitSixArgs(inputs);
         for (String string : inputs) {
             NumberValidator.checkNaturalNumber(string);
-            number = Integer.parseInt(string);
-            LottoValidator.checkLottoNumber(number);
-            winningNumbers.add(number);
+            winningNumbers.add(Integer.parseInt(string));
         }
+        LottoValidator.checkLottoNumbers(winningNumbers);
         LottoValidator.checkDuplicateNumber(winningNumbers);
         return winningNumbers;
+    }
+
+    private static int parseBonusNumber(String input, List<Integer> winningNumbers) {
+        NumberValidator.checkNaturalNumber(input);
+        int number = Integer.parseInt(input);
+        LottoValidator.checkLottoNumber(number);
+        LottoValidator.checkContainNumber(winningNumbers, number);
+        return number;
     }
 }
