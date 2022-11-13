@@ -72,4 +72,8 @@ public class Model {
         Collections.sort(arraylist);
         return arraylist;
     }
+
+    public static String[] SplitInput(String string) {
+        return string.split(",");
+    }
 }
