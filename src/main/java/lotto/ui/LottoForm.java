@@ -37,4 +37,16 @@ public class LottoForm {
 
         return winningNumbers;
     }
+    
+    public int inputBonus() throws IllegalArgumentException {
+        InputForm.INPUT_BONUS.printMessage();
+
+        String bonusInput = Console.readLine();
+        ExceptionHandler.checkNumeric(bonusInput);
+
+        int bonus = Integer.parseInt(bonusInput);
+        ExceptionHandler.checkOutOfRange(bonus);
+
+        return bonus;
+    }
 }
