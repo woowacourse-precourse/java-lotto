@@ -17,7 +17,11 @@
     - Integer lotteryCount
     - Integer winnings
 - ~~Checker 클래스 정의~~
-    - public void checkAmountInput
+    - ~~public void checkAmountInput~~
+        - ~~public int checkNumeric~~
+        - ~~public void checkNegative~~
+        - ~~public void checkAmount~~
+        - ~~public void checkRemain~~
     - public boolean checkIllegalArgument
     - public int checkCoincide
     - public float checkLotteryReturn
