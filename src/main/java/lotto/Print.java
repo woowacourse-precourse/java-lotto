@@ -34,7 +34,7 @@ public class Print {
                 .sorted()
                 .collect(Collectors.toList())) {
             WinningNumber.printNumberOfMatch(getAmountMessage(winningNumber), winningNumber);
-            WinningNumber.printNumberOfLotto(GuideMessage.MATCH_NUMBER, winningNumber, matchCount.get(winningNumber));
+            WinningNumber.printNumberOfLotto(GuideMessage.MATCH_NUMBER, matchCount.get(winningNumber));
         }
         System.out.printf(GuideMessage.FINAL_REVENUE, calculateYield(numberOfLotto, getRevenue(matchCount)));
     }

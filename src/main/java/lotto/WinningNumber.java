@@ -62,7 +62,7 @@ public enum WinningNumber {
         return decimalFormat.format(money);
     }
 
-    public static void printNumberOfLotto(String guideMessage, WinningNumber winningNumber, int matchCount) {
+    public static void printNumberOfLotto(String guideMessage, int matchCount) {
         System.out.printf(guideMessage, matchCount);
     }
 
