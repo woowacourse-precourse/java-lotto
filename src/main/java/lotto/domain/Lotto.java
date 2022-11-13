@@ -32,12 +32,16 @@ public class Lotto {
     // TODO: 추가 기능 구현
     private void validateRange(List<Integer> numbers) {
         int count = (int) numbers.stream()
-                .filter(number -> number > LOTTO_NUMBER_MINIMUM)
-                .filter(number -> number < LOTTO_NUMBER_MAXIMUM)
+                .filter(number -> number >= LOTTO_NUMBER_MINIMUM)
+                .filter(number -> number <= LOTTO_NUMBER_MAXIMUM)
                 .count();
 
         if (count != LOTTO_SIZE) {
             throw new IllegalArgumentException(INVALID_NUMBER_INPUT_FORMAT_MESSAGE);
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
