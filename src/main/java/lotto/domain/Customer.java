@@ -11,33 +11,22 @@ import java.util.List;
  * 수익률 반영
  */
 public class Customer {
-    private List<Lotto> lottos;
-    private int willingToPay;
-    private int earning;
+    private Bag bag;
 
-    public Customer() {
-        willingToPay = 0;
-        earning = 0;
+    public Customer(Bag bag) {
+        this.bag = bag;
     }
 
-    public void buyLotto(LottoStore lottoStore) {
-        getWillingToPay();
-        this.lottos = lottoStore.sellLotto(this.willingToPay);
-        checkNumbersOfLottos(this.lottos);
-    }
-
-    private void getWillingToPay() {
+    public int pay() {
         System.out.print("구입금액을 입력해 주세요: ");
         String willingToPay = readLine();
         validate(willingToPay);
-        this.willingToPay = Integer.parseInt(willingToPay);
+        return Integer.parseInt(willingToPay);
     }
 
-    private void checkNumbersOfLottos(List<Lotto> lottos) {
-        System.out.println(lottos.size() + "개를 구매했습니다.");
-        for (Lotto lotto : lottos) {
-            System.out.println(lotto.getNumbers().toString());
-        }
+    public void buy(List<Lotto> lottos, Receipt receipt) {
+        bag.setLottos(lottos);
+        bag.setReceipt(receipt);
     }
 
     private void validate(String number) {
