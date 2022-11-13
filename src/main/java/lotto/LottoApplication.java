@@ -3,9 +3,11 @@ package lotto;
 public class LottoApplication {
 
     private LottoBuyer lottoBuyer;
+    private PrintController printController;
 
     public LottoApplication() {
         this.lottoBuyer = new LottoBuyer();
+        this.printController = new PrintController();
     }
 
     public void run() {
@@ -15,8 +17,8 @@ public class LottoApplication {
             lottoBuyer.inputNumber();
             lottoBuyer.checkWinStatics();
             lottoBuyer.checkRate();
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+        } catch (IllegalArgumentException illegalArgumentException) {
+            printController.print(illegalArgumentException.getMessage());
         }
     }
 

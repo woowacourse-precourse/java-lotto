@@ -44,5 +44,7 @@ public class PrintController {
         System.out.println(InputMessage.BONUS_NUMBER_MESSAGE.message);
     }
 
-
+    public void print(String message) {
+        System.out.println(message);
+    }
 }

@@ -16,7 +16,7 @@ public class WinNumberInputController extends InputController {
         long winNumberSize = winNumber.stream().filter(number -> isCorrectLottoNumber(number)).count();
 
         if(winNumberSize != 6)
-            throw new IllegalArgumentException("[ERROR] 정확히 6개의 당첨 번호를 입력해주세요.");
+            throw new IllegalArgumentException(ErrorMessage.SIX_NUMBER_MESSAGE.message);
     }
 
     public boolean isCorrectLottoNumber(String number) {

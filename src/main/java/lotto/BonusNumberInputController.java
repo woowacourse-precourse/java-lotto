@@ -23,7 +23,7 @@ public class BonusNumberInputController extends InputController {
             Integer.parseInt(input);
 
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 1에서 45 사이의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_RANGE_MESSAGE.message);
         }
     }
 
@@ -32,7 +32,7 @@ public class BonusNumberInputController extends InputController {
         int bonusNumber = Integer.parseInt(input);
 
         if (bonusNumber < 1 || bonusNumber > 45) {
-            throw new IllegalArgumentException("[ERROR] 1에서 45 사이의 숫자를 입력해주세요.");
+            throw new IllegalArgumentException(ErrorMessage.NUMBER_RANGE_MESSAGE.message);
         }
     }
 
@@ -43,6 +43,6 @@ public class BonusNumberInputController extends InputController {
         List<Integer> winNumber = new LottoMachine().getWinNumber().getLotto();
 
         if (winNumber.contains(bonusNumber))
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호에 포함되어 있지 않아야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_BONUS_NUMBER_MESSAGE.message);
     }
 }

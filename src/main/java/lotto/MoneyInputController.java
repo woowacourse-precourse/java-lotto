@@ -14,11 +14,11 @@ public class MoneyInputController extends InputController {
         try {
             price = Long.parseLong((String) input);
         } catch (Exception e) {
-            throw new IllegalArgumentException("[ERROR] 올바른 숫자 입력이 아니거나, 너무 큰 수입니다.");
+            throw new IllegalArgumentException(ErrorMessage.NOT_CORRECT_NUMBER_MESSAGE.message);
         }
 
         if (price == 0 || price % 1000 != 0) {
-            throw new IllegalArgumentException("[ERROR] 1000원 단위만 입력 가능합니다.");
+            throw new IllegalArgumentException(ErrorMessage.ONE_THOUSAND_UNIT_MONEY_MESSAGE.message);
         }
     }
 }
