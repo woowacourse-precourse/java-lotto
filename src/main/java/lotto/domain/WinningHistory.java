@@ -31,13 +31,13 @@ public class WinningHistory {
     private void countWinning(WinningRule winningRule) {
         if (winningRule == WinningRule.FIRST)
             firstCount++;
-        if (winningRule == WinningRule.SECOND)
+        else if (winningRule == WinningRule.SECOND)
             secondCount++;
-        if (winningRule == WinningRule.THIRD)
+        else if (winningRule == WinningRule.THIRD)
             thirdCount++;
-        if (winningRule == WinningRule.FOURTH)
+        else if (winningRule == WinningRule.FOURTH)
             fourthCount++;
-        if (winningRule == WinningRule.FIFTH)
+        else if (winningRule == WinningRule.FIFTH)
             fifthCount++;
     }
 

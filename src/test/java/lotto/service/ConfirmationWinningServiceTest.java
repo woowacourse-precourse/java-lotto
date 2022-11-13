@@ -23,12 +23,12 @@ class ConfirmationWinningServiceTest extends NsTest {
     void giveLottosBePrint() {
         // given
         List<Lotto> lottos = new ArrayList<>();
-        lottos.add(new Lotto(List.of(1,2,3,4,5,6)));
-        lottos.add(new Lotto(List.of(1,2,3,4,5,7)));
-        lottos.add(new Lotto(List.of(1,2,3,4,5,8)));
-        lottos.add(new Lotto(List.of(1,2,3,4,8,9)));
-        lottos.add(new Lotto(List.of(1,2,3,8,9,10)));
-        lottos.add(new Lotto(List.of(8,9,10,11,12,13)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 7)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 5, 8)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 4, 8, 9)));
+        lottos.add(new Lotto(List.of(1, 2, 3, 8, 9, 10)));
+        lottos.add(new Lotto(List.of(8, 9, 10, 11, 12, 13)));
         WinningLotto winningLotto = new WinningLotto("1,2,3,4,5,6", "7");
 
         // when

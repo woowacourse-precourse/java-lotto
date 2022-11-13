@@ -36,6 +36,6 @@ class LottoTest {
         // then
         assertThat(lotto)
                 .usingRecursiveComparison()
-                .isEqualTo(new Lotto(List.of(1,2,3,4,5,6)));
+                .isEqualTo(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
     }
 }
