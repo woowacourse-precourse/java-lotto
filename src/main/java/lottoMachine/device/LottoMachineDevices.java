@@ -5,11 +5,13 @@ import static lottoMachine.enums.Messages.BONUS_NUMBER_DUPLICATE_ERROR_MESSAGE;
 import static lottoMachine.enums.Messages.ERROR_MESSAGE_PREFIX;
 import static lottoMachine.enums.Messages.LOTTO_NUMBER_COUNT_ERROR_MESSAGE;
 import static lottoMachine.enums.Messages.NUMBER_RANGE_ERROR_MESSAGE;
+import static lottoMachine.enums.Messages.RATE_OF_RETURN_MESSAGE;
 import static lottoMachine.enums.Messages.RECEIVE_BONUS_NUMBER_MESSAGE;
 import static lottoMachine.enums.Messages.RECEIVE_PRICE_MESSAGE;
 import static lottoMachine.enums.Messages.RECEIVE_WINNING_NUMBER_MESSAGE;
 import static lottoMachine.enums.Messages.RESULT_OF_PURCHASE_MESSAGE;
 import static lottoMachine.enums.Messages.WINNING_NUMBER_FORMAT_ERROR_MESSAGE;
+import static lottoMachine.enums.Messages.WINNING_STATISTICS_MESSAGE;
 import static lottoMachine.enums.Numbers.LOTTO_NUMBER_END;
 import static lottoMachine.enums.Numbers.LOTTO_NUMBER_START;
 import static lottoMachine.enums.Numbers.WINNING_NUMBER_SIZE;
@@ -18,9 +20,11 @@ import static lottoMachine.enums.Regex.WINNING_NUMBER_REGEX;
 import static lottoMachine.enums.Separator.WINNING_NUMBER_SEPARATOR;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.text.DecimalFormat;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,11 +34,21 @@ import lotto.Lotto;
 public class LottoMachineDevices implements LottoMachineOutputDevice, LottoMachineInputDevice {
 
     private List<Lotto> lottoTickets;
+
     private final List<Integer> winningNumbers;
+
     private int bonusNumber;
 
     public LottoMachineDevices() {
         winningNumbers = new ArrayList<>();
+    }
+
+    public List<Integer> getWinningNumbers() {
+        return winningNumbers;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 
     public void setLottoTickets(List<Lotto> lottoTickets) {
@@ -56,7 +70,9 @@ public class LottoMachineDevices implements LottoMachineOutputDevice, LottoMachi
     @Override
     public void printLottoTickets() {
         for (Lotto lotto : lottoTickets) {
-            System.out.println(lotto);
+            List<Integer> numbers = new ArrayList<>(lotto.getNumbers());
+            Collections.sort(numbers);
+            System.out.println(numbers);
         }
     }
 
@@ -68,6 +84,24 @@ public class LottoMachineDevices implements LottoMachineOutputDevice, LottoMachi
     @Override
     public void printReceiveBonusNumberMessage() {
         System.out.println(RECEIVE_BONUS_NUMBER_MESSAGE);
+    }
+
+    @Override
+    public void printWinningStatistics(List<Integer> winningHistory) {
+        String winningStatistics = MessageFormat.format(WINNING_STATISTICS_MESSAGE.toString(),
+                winningHistory.toArray());
+        System.out.println(winningStatistics);
+    }
+
+    @Override
+    public void printReturnOfRate(long totalWinningMoney, int purchaseMoney) {
+        double number = (double) totalWinningMoney / purchaseMoney;
+        String format = String.format("%.1f", number * 100);
+
+        DecimalFormat decimalFormat = new DecimalFormat("#,###.0");
+        String rate = decimalFormat.format(Double.valueOf(format));
+        String rateOfReturnMessage = MessageFormat.format(RATE_OF_RETURN_MESSAGE.toString(), rate);
+        System.out.println(rateOfReturnMessage);
     }
 
     @Override

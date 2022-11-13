@@ -5,6 +5,10 @@ import lottoMachine.LottoMachine;
 public class Application {
     public static void main(String[] args) {
         LottoMachine lottoMachine = new LottoMachine();
-        lottoMachine.startLottoGame();
+        try {
+            lottoMachine.startLottoGame();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
