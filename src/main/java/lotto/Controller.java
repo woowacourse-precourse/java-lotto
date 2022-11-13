@@ -50,7 +50,7 @@ public class Controller {
      */
     public void printStatistics() {
         this.model.compare();
-        this.view.printStatistic();
+        this.view.printStatistic(this.model.getSameNumbers());
     }
 
     /**

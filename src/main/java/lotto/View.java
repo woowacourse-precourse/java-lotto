@@ -51,12 +51,12 @@ public class View {
     /**
      * print statistic
      */
-    public void printStatistic() {
+    public void printStatistic(List<Integer> sameNumbers) {
         System.out.print("당첨 통계\n---\n");
         for(PrizeNumber prizeNumber : PrizeNumber.values()) {
             System.out.print(
                     prizeNumber.prizeString() + " - "
-                    + prizeNumber.numbers() + "개\n"
+                    + sameNumbers.get(prizeNumber.ordinal()) + "개\n"
             );
         }
     }

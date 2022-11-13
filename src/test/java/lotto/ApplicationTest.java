@@ -74,14 +74,12 @@ class ApplicationTest extends NsTest {
     }
 
 
-    @ParameterizedTest
-    @ValueSource(strings = {"8000"})
+    @Test
     @DisplayName("Lotto 구매 테스트")
-    void 컴퓨터_로또_구입_테스트(String money) {
-        run(money);
+    void 컴퓨터_로또_구입_테스트() {
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
-                    run(money);
+                    run("8000","1,2,3,4,5,6", "7");
                     assertThat(output()).contains(
                             "8개를 구매했습니다.",
                             "[8, 21, 23, 41, 42, 43]",

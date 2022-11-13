@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Model {
@@ -13,6 +14,7 @@ public class Model {
     private int bonus;
     private double returnRate; // rate of return by Model.userMoney
     private int userMoney; // user input value
+    private List<Integer> sameNumbers = Arrays.asList(0, 0, 0, 0, 0);
 
     public Model() {
         this.lottoList = new ArrayList<>();
@@ -40,7 +42,6 @@ public class Model {
      * repeat money / 1000 times.
      */
     public void generateLotto() {
-        System.out.println(this.userMoney/1000);
         for(int i = 0; i < this.userMoney/1000; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
             this.lottoList.add(new Lotto(numbers));
@@ -96,10 +97,22 @@ public class Model {
         for(int i = 0; i < this.lottoList.size(); i++) {
             PrizeNumber prizeNumber = PrizeNumber.getSameNumber(this.compareWithIndex(i)-3);
             if(prizeNumber != null) {
-                prizeNumber.setNum(prizeNumber.numbers()+1);
+                this.sameNumbers.set(
+                        prizeNumber.ordinal(),
+                        this.sameNumbers.get(prizeNumber.ordinal()) + 1
+                );
             }
         }
     }
+
+    /**
+     * getter same numbers
+     * @return sameNumbers
+     */
+    public List<Integer> getSameNumbers() {
+        return this.sameNumbers;
+    }
+
 
     /**
      * calculate rate of return
@@ -107,7 +120,7 @@ public class Model {
     public void calculateReturn() {
         long returnPrize = 0;
         for(PrizeNumber prizeNumber : PrizeNumber.values()) {
-            returnPrize += prizeNumber.numbers() * prizeNumber.prize();
+            returnPrize += this.sameNumbers.get(prizeNumber.ordinal()) * prizeNumber.prize();
         }
 
         this.returnRate = (returnPrize/(double)this.userMoney)*100;

@@ -6,28 +6,19 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public enum PrizeNumber {
-    THREE      ("3개 일치 (5,000원)", 0, 5000),
-    FOUR       ("4개 일치 (50,000원)", 0, 50000),
-    FIVE       ("5개 일치 (1,500,000원)", 0, 1500000),
-    FIVE_BONUS ("5개 일치, 보너스 볼 일치 (30,000,000원)", 0, 30000000),
-    SIX        ("6개 일치 (2,000,000,000원)", 0, 2000000000);
+    THREE      ("3개 일치 (5,000원)", 5000),
+    FOUR       ("4개 일치 (50,000원)",  50000),
+    FIVE       ("5개 일치 (1,500,000원)", 1500000),
+    FIVE_BONUS ("5개 일치, 보너스 볼 일치 (30,000,000원)", 30000000),
+    SIX        ("6개 일치 (2,000,000,000원)", 2000000000);
 
     private final String prizeString;
-    private int numbers;
     private final int prize;
-    PrizeNumber(String prizeString, int num, int prize) {
+    PrizeNumber(String prizeString, int prize) {
         this.prizeString = prizeString;
-        this.numbers = num;
         this.prize = prize;
     }
 
-    /**
-     * set numbers
-     * @param num set how many this state
-     */
-    public void setNum(int num) {
-        this.numbers = num;
-    }
 
     /**
      * get prizeString
@@ -35,14 +26,6 @@ public enum PrizeNumber {
      */
     public String prizeString() {
         return this.prizeString;
-    }
-
-    /**
-     * get numbers
-     * @return int
-     */
-    public int numbers() {
-        return this.numbers;
     }
 
     /**
