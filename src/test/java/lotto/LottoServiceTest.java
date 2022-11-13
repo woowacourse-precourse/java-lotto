@@ -1,6 +1,5 @@
 package lotto;
 
-import lotto.numbers_generator.Context;
 import lotto.numbers_generator.LottoNumberGeneratorSequenceImpl;
 import org.junit.jupiter.api.Test;
 

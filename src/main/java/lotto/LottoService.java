@@ -1,13 +1,11 @@
 package lotto;
 
-import lotto.numbers_generator.Context;
 import lotto.numbers_generator.LottoNumbersGenerator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class LottoService {
     private final LottoNumbersGenerator lottoNumbersGenerator = Context.getLottoNumbersGenerator();
