@@ -11,6 +11,7 @@ public class Manager {
     static final int MIN_NUM = 1;
     static final int MAX_NUM = 45;
     static final int TOTAL_NUM = 6;
+    static final int COST = 1000;
 
     public Manager() {
         purchasedLottos = new ArrayList<>();
@@ -25,7 +26,7 @@ public class Manager {
         System.out.println("구입 금액을 입력해주세요.");
         String amountInput = Console.readLine().trim();
         validateAmountInput(amountInput);
-        return Integer.parseInt(amountInput) / 1000;
+        return Integer.parseInt(amountInput) / COST;
     }
 
     /**
@@ -40,11 +41,11 @@ public class Manager {
         try {
             amount = Integer.parseInt(amountInput);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[Error] 금액은 숫자여야 합니다.");
+            throw new IllegalArgumentException("[ERROR] 금액은 숫자여야 합니다.");
         }
 
-        if (amount % 1000 != 0) {
-            throw new IllegalArgumentException("[Error] 로또 한 장은 1000원 입니다. 1000원 단위의 숫자를 입력해주세요.");
+        if (amount % COST != 0) {
+            throw new IllegalArgumentException("[ERROR] 로또 한 장은 " + COST + "원 입니다. " + COST + "리원 단위의 숫자를 입력해주세요.");
         }
     }
 
@@ -56,7 +57,8 @@ public class Manager {
      * @return Sorted list containing 6 number
      */
     private List<Integer> generateLottoNumber(int min, int max, int numCount) {
-        List<Integer> lotto = Randoms.pickUniqueNumbersInRange(min, max, numCount);
+        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(min, max, numCount);
+        List<Integer> lotto = new ArrayList<>(randomNumbers);
         lotto.sort(Comparator.naturalOrder());
         return lotto;
     }
@@ -83,7 +85,7 @@ public class Manager {
      * Print all purchased lottos
      */
     private void showPurchasedLottos() {
-        System.out.println(purchasedLottos.size() + "개를 구매했습니다.");
+        System.out.println("\n" + purchasedLottos.size() + "개를 구매했습니다.");
         for (List<Integer> lotto : purchasedLottos) {
             System.out.println(lotto);
         }
@@ -102,5 +104,7 @@ public class Manager {
         }
         setPurchasedLottos(lottoCount);
         showPurchasedLottos();
+        Lotto lotto = new Lotto(Lotto.inputWinningNumber());
+        lotto.result(purchasedLottos);
     }
 }
