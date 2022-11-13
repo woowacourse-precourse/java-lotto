@@ -26,4 +26,16 @@ public class WinningLotto {
     public int getBonusNumber() {
         return bonusNumber;
     }
+
+    public Rank getRankof(Lotto lotto) {
+        int matchCount = lotto.calculateMatchCount(winningNumbers);
+        boolean hasBonusNumber = lotto.hasBonusNumber(bonusNumber);
+
+        for(Rank rank : Rank.values()) {
+            if(rank.hasSameRankBy(matchCount, hasBonusNumber)){
+                return rank;
+            }
+        }
+        return null;
+    }
 }
