@@ -1,4 +1,4 @@
-package lotto;
+package Character;
 
 import java.util.ArrayList;
 import java.util.List;

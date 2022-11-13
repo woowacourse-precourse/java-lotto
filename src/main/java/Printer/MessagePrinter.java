@@ -1,6 +1,8 @@
-package lotto;
+package Printer;
 
 import java.util.List;
+import Character.LotteryTicketingMachine;
+import Character.Lotto;
 
 public class MessagePrinter {
 

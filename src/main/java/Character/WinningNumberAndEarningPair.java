@@ -1,4 +1,4 @@
-package lotto;
+package Character;
 
 public enum WinningNumberAndEarningPair {
     CORRECT_3_UNDER(0),

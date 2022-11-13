@@ -1,4 +1,4 @@
-package lotto;
+package Printer;
 
 public enum Message {
 

@@ -1,5 +1,10 @@
 package lotto;
 
+import Printer.MessagePrinter;
+import Character.Lotto;
+import Character.LotteryTicketingMachine;
+import Character.User;
+
 public class DoLotto {
 
     public void play() throws IllegalArgumentException {
@@ -43,15 +48,6 @@ public class DoLotto {
 
         messagePrinter.printEarningsRate(user.calculateEarningRate());
 
-
-
-
-
-
-
-
-
     }
-
 
 }
