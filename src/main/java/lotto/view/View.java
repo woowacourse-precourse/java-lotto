@@ -2,7 +2,13 @@ package lotto.view;
 
 import lotto.constant.LottoMoney;
 import lotto.constant.LottoPhrases;
+import lotto.view.converter.ConvertMoney;
+import lotto.view.converter.ConvertPlayerNumbers;
+import lotto.view.validation.LottoValidation;
+import lotto.view.validation.MoneyValidation;
+import lotto.view.validation.Validation;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +17,27 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 import static lotto.constant.LottoPhrases.*;
 
 public class View {
+    private final ConvertPlayerNumbers convertPlayerNumbers;
+    private final ConvertMoney convertMoney;
+
+    public View() {
+        convertPlayerNumbers = new ConvertPlayerNumbers();
+        convertMoney = new ConvertMoney();
+    }
+
+    public String input() {
+        return readLine();
+    }
+
+    public int inputMoney() {
+        return convertMoney.toNumbers(input());
+    }
+    public List<Integer> inputLottoNumber() {
+        return convertPlayerNumbers.toNumbers(input());
+    }
+    public int bonusNumber() {
+        return convertPlayerNumbers.toBonusNumber(input());
+    }
 
     public void inputMoneyMessage() {
         System.out.println(LottoPhrases.INPUT_MONEY_PHRASES.getMessage());
@@ -42,11 +69,6 @@ public class View {
 
     public void showProfitRate(String profitRate) {
         System.out.println("총 수익률은 "+profitRate+"입니다.");
-    }
-
-    public String input() {
-        String value = readLine();
-        return value;
     }
 }
 

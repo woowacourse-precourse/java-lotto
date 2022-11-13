@@ -1,8 +1,8 @@
 package lotto;
 
-import lotto.validation.MoneyValidation;
-import lotto.validation.PlayerNumberValidation;
-import lotto.validation.Validation;
+import lotto.view.validation.MoneyValidation;
+import lotto.view.validation.LottoValidation;
+import lotto.view.validation.Validation;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ValidationTest {
 
     Validation validation1 = new MoneyValidation();
-    Validation validation2 = new PlayerNumberValidation();
+    Validation validation2 = new LottoValidation();
 
     @DisplayName("int인지 아닌지 확인1")
     @Test

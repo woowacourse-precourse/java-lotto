@@ -1,4 +1,4 @@
-package lotto.validation;
+package lotto.view.validation;
 
 public class MoneyValidation implements Validation{
 

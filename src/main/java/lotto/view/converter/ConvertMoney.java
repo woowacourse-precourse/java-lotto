@@ -1,7 +1,7 @@
-package lotto.converter;
+package lotto.view.converter;
 
 import lotto.exception.ExceptionPhrase;
-import lotto.validation.MoneyValidation;
+import lotto.view.validation.MoneyValidation;
 
 public class ConvertMoney implements Converter<String, Integer>{
 

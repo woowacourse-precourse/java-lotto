@@ -1,11 +1,7 @@
 package lotto.domain;
 
-import lotto.constant.LottoNumbers;
-import lotto.exception.ExceptionPhrase;
-
 import java.util.List;
 
-import static lotto.constant.LottoNumbers.LOTTO_LENGTH;
 import static lotto.exception.ExceptionPhrase.EXCEPTION_DUPLICATE_NUMBER;
 import static lotto.exception.ExceptionPhrase.EXCEPTION_OUT_OF_RANGE;
 

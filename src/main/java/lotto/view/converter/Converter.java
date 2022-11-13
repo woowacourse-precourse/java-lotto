@@ -1,4 +1,4 @@
-package lotto.converter;
+package lotto.view.converter;
 
 public interface Converter<String, T> {
 

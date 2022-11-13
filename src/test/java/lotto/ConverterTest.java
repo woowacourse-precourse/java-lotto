@@ -1,9 +1,8 @@
 package lotto;
 
-import lotto.converter.ConvertMoney;
-import lotto.converter.ConvertPlayerNumbers;
-import lotto.converter.Converter;
-import lotto.validation.MoneyValidation;
+import lotto.view.converter.ConvertMoney;
+import lotto.view.converter.ConvertPlayerNumbers;
+import lotto.view.converter.Converter;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

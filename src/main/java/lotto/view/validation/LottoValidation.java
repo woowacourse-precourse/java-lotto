@@ -1,6 +1,6 @@
-package lotto.validation;
+package lotto.view.validation;
 
-public class PlayerNumberValidation implements Validation{
+public class LottoValidation implements Validation{
     @Override
     public boolean validateInputIsInteger(String input) {
         String[] numbers = input.split(",");

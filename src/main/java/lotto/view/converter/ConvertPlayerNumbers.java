@@ -1,20 +1,20 @@
-package lotto.converter;
+package lotto.view.converter;
 
 import lotto.exception.ExceptionPhrase;
-import lotto.validation.PlayerNumberValidation;
+import lotto.view.validation.LottoValidation;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ConvertPlayerNumbers implements Converter<String, List<Integer>> {
 
-    private final PlayerNumberValidation playerNumberValidation;
+    private final LottoValidation lottoValidation;
 
     public ConvertPlayerNumbers() {
-        playerNumberValidation = new PlayerNumberValidation();
+        lottoValidation = new LottoValidation();
     }
     public int toBonusNumber(String inputBonus) {
-        if(!playerNumberValidation.validateBonusNumber(inputBonus)) {
+        if(!lottoValidation.validateBonusNumber(inputBonus)) {
             throw new IllegalArgumentException(ExceptionPhrase.EXCEPTION_INVALID_RESULT.getMessage());
 
         }
@@ -25,7 +25,7 @@ public class ConvertPlayerNumbers implements Converter<String, List<Integer>> {
     public List<Integer> toNumbers(String input) {
         List<Integer> playerNumbers = new ArrayList<>();
 
-        if(!playerNumberValidation.validateInputIsInteger(input)) {
+        if(!lottoValidation.validateInputIsInteger(input)) {
             throw new IllegalArgumentException(ExceptionPhrase.EXCEPTION_INVALID_INPUT.getMessage());
         }
 
