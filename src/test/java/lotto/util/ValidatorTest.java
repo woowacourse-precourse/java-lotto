@@ -60,4 +60,10 @@ class ValidatorTest {
 		assertThatThrownBy(() -> Validator.validateSizeOfNumbers(List.of(1, 5, 16, 25, 32))).isInstanceOf(
 			IllegalArgumentException.class);
 	}
+
+	@DisplayName("숫자가 리스트에 들어있지 않은지 검증한다.")
+	@Test
+	void validateExclusion() {
+		assertThatThrownBy(() -> Validator.validateExclusion(2, List.of(1,2,15,16))).isInstanceOf(IllegalArgumentException.class);
+	}
 }
