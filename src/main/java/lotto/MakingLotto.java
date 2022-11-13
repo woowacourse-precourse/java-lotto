@@ -1,6 +1,7 @@
 package lotto;
 
 import java.util.List;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class MakingLotto {
 
@@ -10,7 +11,8 @@ public class MakingLotto {
     }
 
     public List<Integer> makeLotto(){
-        return null;
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return numbers;
     }
 
     public List<List<Integer>> getAllLotto(int LottoCount){
