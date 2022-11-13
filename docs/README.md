@@ -24,7 +24,9 @@
 ## 기능 목록
 ### Lotto
 - 랜덤 생성된 개별 로또 번호를 관리한다.
-IOManager
+### IOManager
 - UI를 통한 사용자 입출력 처리를 담당한다.
-config/LottoConfig
+### ErrorCode
+- 에러 메세지를 저장하는 enum 타입.
+### config/LottoConfig
 - 설정 상수값들을 저장한다.
