@@ -16,7 +16,7 @@ public class Maker {
             lottoWinList.add(Integer.parseInt(lottoWinArray[i]));
         }
 
-        Collections.sort(lottoWinList);
+
 
         return lottoWinList;
     }
