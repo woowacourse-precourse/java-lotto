@@ -1,6 +1,9 @@
 package lotto;
 
 
+import camp.nextstep.edu.missionutils.Randoms;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import static lotto.ErrorMessage.*;
@@ -36,5 +39,9 @@ public class Lotto {
         for (int num : numbers) {
             if (num > 45 || num < 1) throw new IllegalArgumentException(ABOVE_ELEMENT.getStatus());
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
