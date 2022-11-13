@@ -40,7 +40,7 @@ class LottosTest {
         ));
 
         int bonus = 13;
-        BonusLotto bonusLotto = new BonusLotto(user1, bonus);
+        WinningLotto bonusLotto = new WinningLotto(List.of(1, 2, 3, 4, 5, 6), bonus);
 
         List<LottoOperator> ranks = List.of(SIX, FIVE, FOUR, THREE, NO_LUCK, NO_LUCK, NO_LUCK, FIVE_BONUS);
 

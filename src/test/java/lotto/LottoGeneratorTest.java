@@ -44,8 +44,8 @@ class LottoGeneratorTest {
     @Test
     @DisplayName("당첨 번호 로또 생성 확인")
     void makeWinningLotto() {
-        Lotto lotto = generator.makeLotto(List.of(1, 2, 3, 4, 5, 6));
+        WinningLotto lotto = generator.makeLotto(List.of(1, 2, 3, 4, 5, 6), 7);
 
-        assertThat(lotto).isEqualTo(new Lotto(List.of(1, 2, 3, 4, 5, 6)));
+        assertThat(lotto).isEqualTo(new WinningLotto(List.of(1, 2, 3, 4, 5, 6), 7));
     }
 }
