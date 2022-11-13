@@ -104,7 +104,7 @@ public class InputValidatorImpl implements InputValidator {
     }
 
     @Override
-    public void validateInputLottoNumber(List<Integer> numbers) {
+    public void validateInputLottoNumbers(List<Integer> numbers) {
         validateWinningNumbersLengthIsSix(numbers);
         validateWinningNumbersAreOverlapped(numbers);
         for (Integer number : numbers) {

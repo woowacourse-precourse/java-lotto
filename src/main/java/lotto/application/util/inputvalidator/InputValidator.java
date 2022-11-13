@@ -26,7 +26,7 @@ public interface InputValidator {
 
     void validateLottoPurchaseMoney(String lottoPurchaseMoney);
 
-    void validateInputLottoNumber(List<Integer> numbers);
+    void validateInputLottoNumbers(List<Integer> numbers);
 
     void validateInputBonusLottoNumber(String bonusNumber, List<Integer> numbers);
 }

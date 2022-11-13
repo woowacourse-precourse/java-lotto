@@ -34,7 +34,7 @@ public class InputAgentImpl implements InputAgent {
             convertedLottoNumbers.add(Integer.parseInt(value));
         }
 
-        inputValidator.validateInputLottoNumber(convertedLottoNumbers);
+        inputValidator.validateInputLottoNumbers(convertedLottoNumbers);
 
         return convertedLottoNumbers;
     }

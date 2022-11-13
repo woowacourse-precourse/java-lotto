@@ -16,6 +16,6 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        inputValidator.validateInputLottoNumber(numbers);
+        inputValidator.validateInputLottoNumbers(numbers);
     }
 }
