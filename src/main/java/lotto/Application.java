@@ -1,12 +1,41 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        String command;
+        int lottoCount, bonusNumber;
+        List<Lotto> lottos;
+
+        System.out.println("구입금액을 입력해 주세요.");
+        command = Console.readLine();
+
+        lottoCount = getLottoCount(command);
+        System.out.println(lottoCount + "개를 구매했습니다.");
+
+        lottos = buyLotto(lottoCount);
+        for (Lotto lotto : lottos) {
+            lotto.print();
+        }
+
+        System.out.println("당첨 번호를 입력해 주세요.");
+        command = Console.readLine();
+
+        // TODO : 숫자 검증 메서드 만들기
+        // TODO : 파싱 및 리스트 반환 메서드 만들기
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+        command = Console.readLine();
+        // TODO : 검증 넣기
+        bonusNumber = Integer.parseInt(command);
+
+        System.out.println("당첨 통계\n---");
+        // TODO : 통계 출력 함수 만들기
+
     }
 
     public static int getLottoCount(String input) {
