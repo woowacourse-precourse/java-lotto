@@ -11,27 +11,30 @@ import lotto.view.validation.UserMoneyValidation;
 
 public class LottoMachine {
 
-    private static final int EXCEPTION_NUMBER = -1;
-    private static final int INIT_MONEY = 0;
+    private static final int INIT_NUMBER = 0;
     private int lottoPrice;
+    private List<Integer> userNumbers;
+    private Integer userBonus;
     private boolean machineStatus;
 
     public LottoMachine() {
-        lottoPrice = INIT_MONEY;
+        lottoPrice = INIT_NUMBER;
+        userNumbers = Collections.emptyList();
+        userBonus = INIT_NUMBER;
         machineStatus = true;
     }
 
     public void start() {
         buyLotto();
         LottoPaper lottoPaper = GeneratorLottoPaper.generateLottoPaper(lottoPrice);
-        List<Integer> userNumbers = inputLottoNumbers();
-        Integer bonus = inputBonus();
-        showStats(lottoPaper, userNumbers, bonus);
+        inputLottoNumbers();
+        inputBonus();
+        showStats(lottoPaper);
     }
 
-    public void showStats(LottoPaper lottoPaper, List<Integer> userNumbers, Integer bonus) {
+    public void showStats(LottoPaper lottoPaper) {
         if (machineStatus) {
-            List<Integer> ranks = lottoPaper.checkLottos(userNumbers, bonus);
+            List<Integer> ranks = lottoPaper.checkLottos(userNumbers, userBonus);
             OutputView.showResult(ranks, lottoPrice);
         }
     }
@@ -43,45 +46,43 @@ public class LottoMachine {
             lottoPrice = Integer.parseInt(userLottoPrice);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            lottoPrice = EXCEPTION_NUMBER;
             machineStatus = false;
         }
     }
 
-    public List<Integer> inputLottoNumbers() {
+    public void inputLottoNumbers() {
         if (!machineStatus) {
-            return Collections.emptyList();
+            return;
         }
-        return inputUserNumbers();
+        inputUserNumbers();
     }
 
-    public List<Integer> inputUserNumbers() {
+    public void inputUserNumbers() {
         try {
-            List<Integer> userLottoNumbers = InputView.inputLottoNumbers();
-            LottoNumbersValidation.validateLottoNumbers(userLottoNumbers);
-            return userLottoNumbers;
+            List<Integer> inputLottoNumbers = InputView.inputLottoNumbers();
+            LottoNumbersValidation.validateLottoNumbers(inputLottoNumbers);
+            userNumbers =  inputLottoNumbers;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             machineStatus = false;
         }
-        return Collections.emptyList();
     }
 
-    public Integer inputBonus() {
+    public void inputBonus() {
         if (!machineStatus) {
-            return EXCEPTION_NUMBER;
+            return;
         }
-        return inputUserBonus();
+        inputUserBonus();
     }
 
-    public Integer inputUserBonus() {
+    public void inputUserBonus() {
         String bonus = InputView.inputBonusNumber();
         try {
             LottoBonusValidation.validate(bonus);
-            return Integer.valueOf(bonus);
+            userBonus =  Integer.valueOf(bonus);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
+            machineStatus = false;
         }
-        return EXCEPTION_NUMBER;
     }
 }
