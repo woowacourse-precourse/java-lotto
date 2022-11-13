@@ -1,5 +1,7 @@
 package lotto;
+
 import static camp.nextstep.edu.missionutils.Console.readLine;
+
 public class Console {
 
     public int inputMoney() {
