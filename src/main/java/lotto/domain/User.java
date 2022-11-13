@@ -39,7 +39,7 @@ public class User {
     public void showNumbers() { // 리팩토링 대상. Lotto 번호를 왜 직접 처리? (getNumbers())
         for (Lotto lotto : lottos) {
             List<Integer> sortNumbers = lotto.getSortNumbers();
-            List<String> numbers = convertIntegerToString(lotto);
+            List<String> numbers = convertIntegerToString(sortNumbers);
 
             String param = String.join(", ", numbers);
             String message = LOTTO_NUMBERS.getMessage();
@@ -47,8 +47,8 @@ public class User {
         }
     }
 
-    private List<String> convertIntegerToString(Lotto lotto) {
-        return lotto.getNumbers().stream()
+    private List<String> convertIntegerToString(List<Integer> numbers) {
+        return numbers.stream()
                 .map(String::valueOf)
                 .collect(Collectors.toList());
     }
