@@ -1,21 +1,58 @@
 package lotto;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class WinningLotto {
+    private static final Pattern lottoPattern = Pattern.compile("^([1-9]\\d?,){5}[1-9]\\d?$");
+    private static final Pattern bonusNumberPattern = Pattern.compile("^[1-9]\\d?$");
+
     private final Lotto lotto;
     private final Integer bonusNumber;
 
-    public WinningLotto(Lotto lotto, Integer bonusNumber) {
-        validate(lotto, bonusNumber);
-        this.lotto = lotto;
+    private WinningLotto(List<Integer> numbers, Integer bonusNumber) {
+        validateDuplicate(numbers, bonusNumber);
+        for (Integer number : numbers) {
+            validateLottoNumber(number);
+        }
+        validateLottoNumber(bonusNumber);
+        this.lotto = new Lotto(numbers);
         this.bonusNumber = bonusNumber;
     }
 
-    public void validate(Lotto lotto, Integer bonusNumber) {
-        if (lotto.getNumbers().contains(bonusNumber)) {
+    public static WinningLotto of(String numbersInput, String bonusNumberInput) {
+        if (!lottoPattern.matcher(numbersInput).matches()) {
+            throw new IllegalArgumentException("[ERROR] 올바른 로또 번호가 아닙니다.");
+        }
+        List<Integer> numbers = Arrays.stream(numbersInput.split(","))
+                .sequential()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+        Integer bonusNumber = convertInputToBonusNumber(bonusNumberInput);
+        return new WinningLotto(numbers, bonusNumber);
+    }
+
+    public void validateDuplicate(List<Integer> numbers, Integer bonusNumber) {
+        if (numbers.contains(bonusNumber)) {
             throw new IllegalArgumentException("[ERROR] 보너스 번호와 중복이 있습니다.");
         }
+    }
+
+    private static void validateLottoNumber(Integer number) {
+        if (number >= 1 && number <= 45) {
+            return;
+        }
+        throw new IllegalArgumentException("[ERROR] 올바른 로또 번호가 아닙니다.");
+    }
+
+    private static Integer convertInputToBonusNumber(String bonusNumber) {
+        if (!bonusNumberPattern.matcher(bonusNumber).matches()) {
+            throw new IllegalArgumentException("[ERROR] 올바른 로또 번호가 아닙니다.");
+        }
+        return Integer.parseInt(bonusNumber);
     }
 
     public Lotto getLotto() {
