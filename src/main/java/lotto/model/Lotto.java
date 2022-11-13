@@ -17,7 +17,6 @@ public class Lotto {
     }
 
     public Integer countIssueingLotto(int PurchaseAmount) {
-        // TODO: 로또 구입 금액 검증
         return PurchaseAmount / 1000;
     }
 }
