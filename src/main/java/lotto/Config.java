@@ -55,6 +55,11 @@ public class Config {
     }
 
     private static boolean isRankAmount() {
+        for(int index = 0; index < WINNING_RANK_AMOUNT.length - 1; index++){
+            if(WINNING_RANK_AMOUNT[index] <= WINNING_RANK_AMOUNT[index + 1]){
+                return false;
+            }
+        }
         return true;
     }
 }

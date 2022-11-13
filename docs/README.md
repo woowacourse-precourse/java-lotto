@@ -19,7 +19,7 @@
     - [ ] 논리적 오류 확인 - checkIllegalLotto
       - [x] 로또 길이보다 보너스 번호 길이가 긴지 확인 - isLongerLottoThanBonus
       - [x] 로또 길이 + 보너스 번호 길이가 숫자 범위 길이보다 큰지 확인 - isLongerTotalThenNumber
-      - [ ] 상위 등수가 하위 등수 금액보다 같거나 적은지 확인 - isRankAmount
+      - [x] 상위 등수가 하위 등수 금액보다 같거나 적은지 확인 - isRankAmount
 
 ## 로거(`Logger`)
 
