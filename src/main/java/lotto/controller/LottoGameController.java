@@ -20,6 +20,7 @@ public class LottoGameController {
         WinLotto winLotto = createWinLotto();
         Result result = Result.of(lottos, winLotto);
         OutputView.printResult(result);
+        OutputView.printProfit(result.getPrize(),money.get());
     }
 
     private Lottos createLottos(int lottoCnt) {

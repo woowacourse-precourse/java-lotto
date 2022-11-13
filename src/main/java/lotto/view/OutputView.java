@@ -6,6 +6,7 @@ import lotto.domain.Rank;
 import lotto.domain.Result;
 
 public class OutputView {
+    private static final String PROFIT_MESSAGE = "총 수익률은 %.1f%%입니다.";
 
     public static void printLottos(Lottos lottos, int lottoCnt) {
         System.out.printf(lottoCnt + "개를 구매했습니다.\n");
@@ -31,6 +32,10 @@ public class OutputView {
         System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n",
             result.getRankCount(Rank.SECOND));
         System.out.printf("6개 일치 (2,000,000,000원) - %d개\n", result.getRankCount(Rank.FIRST));
+    }
+
+    public static void printProfit(float prize, float money) {
+        System.out.printf(PROFIT_MESSAGE, (prize/money) * 100);
     }
 
 }
