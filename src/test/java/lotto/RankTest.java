@@ -69,5 +69,17 @@ class RankTest {
 
             assertThat(actual).isEqualTo(result);
         }
+
+        @DisplayName("꽝")
+        @Test
+        void case6() {
+            Match match = new Match(2);
+            boolean bonus = true;
+
+            Rank actual = Rank.getMyRank(match, bonus);
+            Rank result = Rank.LAST;
+
+            assertThat(actual).isEqualTo(result);
+        }
     }
 }
