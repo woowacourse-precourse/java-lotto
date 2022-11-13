@@ -88,4 +88,23 @@ class LottoSummaryTest {
         //then
         assertThat(summary).isEqualTo(expect);
     }
+
+    @Test
+    void 구매_금액이_0원인_경우_수익률은_0으로_계산한다() {
+        //given
+        List<Rank> ranks = List.of();
+        Money money = new Money(0);
+        String expect = "3개 일치 (5,000원) - 0개\n" +
+                "4개 일치 (50,000원) - 0개\n" +
+                "5개 일치 (1,500,000원) - 0개\n" +
+                "5개 일치, 보너스 볼 일치 (30,000,000원) - 0개\n" +
+                "6개 일치 (2,000,000,000원) - 0개\n" +
+                "총 수익률은 0.0%입니다.";
+
+        //when
+        String summary = new LottoSummary(ranks, money).summaryLottoResult();
+
+        //then
+        assertThat(summary).isEqualTo(expect);
+    }
 }
