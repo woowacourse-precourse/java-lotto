@@ -21,6 +21,7 @@ public class CustomerTest {
     @BeforeEach
     void setUp() {
         int paidMoney = 3000;
+        this.paidMoney = paidMoney;
         customer = new Customer(paidMoney);
     }
 
@@ -40,6 +41,20 @@ public class CustomerTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INVALID_PAID_MONEY_ERROR_MESSAGE);
 
+    }
+
+    @Test
+    @DisplayName("로또 번호들에 따라 로또의 개수만큼 알맞은 순위를 반환한다.")
+    void checkJudgeLottoRanks() {
+        //given
+        List<Integer> winningNumber = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+        int bonusNumber = 7;
+
+        //when
+        List<Rank> ranks = customer.judgeLottoRanks(winningNumber, bonusNumber);
+
+        //then
+        assertEquals(ranks.size(), paidMoney / LOTTO_PRICE);
     }
 
     @Test
