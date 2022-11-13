@@ -8,7 +8,7 @@ import java.util.List;
 public class InputNumber {
 
     public int insertMoney() {
-        PrintInstruction.BUY.getMessage();
+        PrintInstruction.BUY.printMessage();
         String userMoney = Console.readLine();
 
         if(Integer.parseInt(userMoney)%1000 != 0) {
@@ -18,8 +18,9 @@ public class InputNumber {
     }
 
     public List<Integer> insertSixNum() {
-        String[] userInputs = Console.readLine().split(",");
         List<Integer> lottoSixNum = new ArrayList<>();
+        PrintInstruction.ENTER_NUM.printMessage();
+        String[] userInputs = Console.readLine().split(",");
 
         for (String userInput : userInputs) {
             try {
@@ -33,6 +34,8 @@ public class InputNumber {
     }
 
     public int insertOneNum() {
+        PrintInstruction.ENTER_BONUS.printMessage();
+
         int userInput;
         try {
             userInput = Integer.parseInt(Console.readLine());
