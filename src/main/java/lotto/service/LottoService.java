@@ -32,6 +32,12 @@ public class LottoService {
         buyer.buyLottos(publishLotto(input));
     }
 
+    public void publishWinningNumbersWithBonusNumber(View view) throws IllegalArgumentException {
+        this.winningTicket = new WinningTicket(inputWinningNumbers(view), inputBonusNumber(view));
+        System.out.println(this.winningTicket.getWinnings());
+        System.out.println(this.winningTicket.getBonusNumber());
+    }
+
     public List<Integer> inputWinningNumbers(View view) throws IllegalArgumentException {
         try {
             view.printInputWinningMessage();
