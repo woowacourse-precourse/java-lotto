@@ -19,7 +19,7 @@ class InputConsoleTest extends NsTest{
 
     @Test
     @DisplayName("view가 출력되고, 구입금액을 입력하면 입력값이 return되어야 한다.")
-    void test1() {
+    void inputAmount() {
         // given
         run("8000");
 
@@ -33,7 +33,7 @@ class InputConsoleTest extends NsTest{
 
     @Test
     @DisplayName("구입금액을 null 입력시 IllegalArgumentException 에러메세지가 출력되어야 한다.")
-    void test2() {
+    void inputAmountNull() {
         // given
         run("");
 
@@ -44,7 +44,7 @@ class InputConsoleTest extends NsTest{
 
     @Test
     @DisplayName("구입금액을 whiteSpace 입력시 IllegalArgumentException과 에러메세지가 출력되어야 한다.")
-    void test3() {
+    void inputAmountWhiteSpace() {
         // given
         run(" ");
 
@@ -55,7 +55,7 @@ class InputConsoleTest extends NsTest{
 
     @Test
     @DisplayName("구입금액을 숫자 이외의 값 입력시 IllegalArgumentException과 에러메세지가 출력되어야 한다.")
-    void test4() {
+    void inputAmountNotNumber() {
         // given
         run("숫자아님");
 
@@ -66,7 +66,7 @@ class InputConsoleTest extends NsTest{
 
     @Test
     @DisplayName("구입금액을 1000원 단위로 입력 하지 않을 시 IllegalArgumentException과 에러메세지가 출력되어야 한다.")
-    void test5() {
+    void inputAmountNot1000Units() {
         // given
         run("12345");
 
@@ -77,7 +77,7 @@ class InputConsoleTest extends NsTest{
 
     @Test
     @DisplayName("당첨번호를 null 입력시 IllegalArgumentException과 에러메세지가 출력되어야 한다.")
-    void test6() {
+    void inputWinningNumberNull() {
         // given
         run("");
 
@@ -88,7 +88,7 @@ class InputConsoleTest extends NsTest{
 
     @Test
     @DisplayName("당첨번호를 whiteSpace 입력시 IllegalArgumentException과 에러메세지가 출력되어야 한다.")
-    void test7() {
+    void inputWinningWhiteSpace() {
         // given
         run(" ");
 
@@ -99,7 +99,7 @@ class InputConsoleTest extends NsTest{
 
     @Test
     @DisplayName("당첨번호를 숫자나 쉼표 이외의 값 입력시 IllegalArgumentException과 에러메세지가 출력되어야 한다.")
-    void test8() {
+    void inputWinningNotNumberOrComma() {
         // given
         run("1,2,3,사,five,6");
 
@@ -110,7 +110,7 @@ class InputConsoleTest extends NsTest{
 
     @Test
     @DisplayName("당첨번호를 숫자 6개미만 입력시 IllegalArgumentException과 에러메세지가 출력되어야 한다.")
-    void test9() {
+    void inputWinningUnderSixNumbers() {
         // given
         run("1,2,3,4,5");
 
@@ -121,7 +121,7 @@ class InputConsoleTest extends NsTest{
 
     @Test
     @DisplayName("당첨번호를 숫자 6개초과 입력시 IllegalArgumentException과 에러메세지가 출력되어야 한다.")
-    void test10() {
+    void inputWinningUpSixNumbers() {
         // given
         run("1,2,3,4,5,6,7");
 
@@ -132,7 +132,7 @@ class InputConsoleTest extends NsTest{
 
     @Test
     @DisplayName("당첨번호를 1~45이외의 숫자 입력시 IllegalArgumentException과 에러메세지가 출력되어야 한다.")
-    void test11() {
+    void inputWinningNot1To45() {
         // given
         run("1,2,3,4,5,50");
 
@@ -143,7 +143,7 @@ class InputConsoleTest extends NsTest{
 
     @Test
     @DisplayName("보너스번호를 null 입력시 IllegalArgumentException과 에러메세지가 출력되어야 한다.")
-    void test12() {
+    void inputBonusNull() {
         // given
         run("");
 
@@ -154,7 +154,7 @@ class InputConsoleTest extends NsTest{
 
     @Test
     @DisplayName("보너스번호를 whiteSpace 입력시 IllegalArgumentException과 에러메세지가 출력되어야 한다.")
-    void test13() {
+    void inputBonusWhiteSpace() {
         // given
         run(" ");
 
@@ -165,7 +165,7 @@ class InputConsoleTest extends NsTest{
 
     @Test
     @DisplayName("보너스번호를 숫자 이외의 값 입력시 IllegalArgumentException과 에러메세지가 출력되어야 한다.")
-    void test14() {
+    void inputBonusNotNull() {
         // given
         run("한글");
 
@@ -176,7 +176,7 @@ class InputConsoleTest extends NsTest{
 
     @Test
     @DisplayName("보너스번호를 1~45이외의 값 입력시 IllegalArgumentException과 에러메세지가 출력되어야 한다.")
-    void test15() {
+    void inputBonusNot1To45() {
         // given
         run("50");
 
@@ -187,7 +187,7 @@ class InputConsoleTest extends NsTest{
 
     @Test
     @DisplayName("view가 출력되고, 당첨번호를 입력하면 입력값이 return되어야 한다.")
-    void test16() {
+    void inputWinningNumbers() {
         // given
         run("1,2,3,4,5,6");
 
@@ -201,7 +201,7 @@ class InputConsoleTest extends NsTest{
 
     @Test
     @DisplayName("view가 출력되고, 보너스번호를 입력하면 입력값이 return되어야 한다.")
-    void test17() {
+    void inputBonus() {
         // given
         run("1");
 
@@ -215,7 +215,7 @@ class InputConsoleTest extends NsTest{
 
     @Test
     @DisplayName("당첨번호를 중복 숫자 입력시 IllegalArgumentException과 에러메세지가 출력되어야 한다.")
-    void test18() {
+    void inputWinningNumberDuplicated() {
         // given
         run("1,2,3,4,5,5");
 
