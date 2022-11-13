@@ -3,11 +3,11 @@ package lotto;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 import static lotto.view.InputView.inputMoneyView;
+import static lotto.view.InputView.inputWinningView;
 import static lotto.view.OutputView.countView;
 import static lotto.view.OutputView.lottoView;
 
@@ -16,8 +16,9 @@ public class Game {
     private static String input;
 
     public static Integer count;
-    public Game(){
 
+    public static List<Integer> winning = new ArrayList<>();
+    public Game(){
     }
 
     public static void start(){
@@ -26,6 +27,7 @@ public class Game {
         makeLottos();
         countView();
         lottoView();
+        makeWinning(inputWinningView());
     }
     private static Lotto getRandoms(){
         Lotto lotto = new Lotto(Randoms.pickUniqueNumbersInRange(1,45,6));
@@ -41,5 +43,11 @@ public class Game {
         for(int i=0;i<count;i++){
             lottos.add(getRandoms());
         }
+    }
+
+    public static void makeWinning(String numbers){
+        Arrays.asList(numbers.split(",")).stream().forEach(number->{
+            winning.add(Integer.parseInt(number));
+        });
     }
 }

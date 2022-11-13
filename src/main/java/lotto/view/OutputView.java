@@ -5,7 +5,7 @@ import java.util.List;
 import static lotto.Game.count;
 import static lotto.Game.lottos;
 
-public class OutputView {
+public class OutputView{
     private static void changeLine(){
         System.out.println();
     }

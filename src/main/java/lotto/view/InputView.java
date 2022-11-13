@@ -8,11 +8,13 @@ public class InputView {
         return Console.readLine();
     }
 
-    public static void inputWinningView(){
+    public static String inputWinningView(){
         System.out.println("당첨 번호를 입력해 주세요.");
+        return Console.readLine();
     }
 
-    public static void inputBonusView(){
+    public static String inputBonusView(){
         System.out.println("보너스 번호를 입력해 주세요.");
+        return Console.readLine();
     }
 }
