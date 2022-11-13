@@ -2,7 +2,9 @@ package lotto;
 
 
 import lotto.Controller.InputController;
+import lotto.Controller.LottoController;
 import lotto.Model.Buyer;
+import lotto.Model.Calculator;
 import lotto.Model.WinningLotto;
 import lotto.View.OutputView;
 
@@ -14,5 +16,11 @@ public class Application {
         buyer.addLotto();
         OutputView.printBuyerLotto(buyer);
         WinningLotto winninglotto = InputController.inputWinningLotto();
+
+        Calculator calculator = LottoController.makeCalculator(buyer, winninglotto);
+
+
+
+
     }
 }

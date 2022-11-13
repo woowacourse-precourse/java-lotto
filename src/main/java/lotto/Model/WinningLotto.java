@@ -33,11 +33,13 @@ public class WinningLotto {
 
     public List<WinningRank> makeRankResult(Buyer buyer){
         List<WinningRank> rankResult = new ArrayList<>();
-        List<Lotto> Lottowallet = buyer.getLottoWallet();
-        for(int i = ZERO; i < Lottowallet.size(); i++){
-            rankResult.add(WinningRank.valueOf(this.matchNumberCount(Lottowallet.get(i))
-                    , this.isMatchBonusNumber(Lottowallet.get(i))));
+        List<Lotto> LottoWallet = buyer.getLottoWallet();
+
+        for(int i = ZERO; i < LottoWallet.size(); i++){
+            rankResult.add(WinningRank.valueOf(this.matchNumberCount(LottoWallet.get(i))
+                    , this.isMatchBonusNumber(LottoWallet.get(i))));
         }
+
         return rankResult;
     }
 
