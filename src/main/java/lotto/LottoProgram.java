@@ -22,46 +22,32 @@ public class LottoProgram {
     private static Buyer buyer = new Buyer();
     public static void init() throws IllegalArgumentException {
         System.out.println(PRINT.INPUT_PAYMENT);
-        String purchaseAmout = Console.readLine();
-        String purchaseRegex = REGEX.PAYMENT;
-        if (!Pattern.matches(purchaseRegex, purchaseAmout)) {
-            throw new IllegalArgumentException(ERROR.PURCHASE_FORMAT);
-        }
-        int purchaseAmoutCash = Integer.parseInt(purchaseAmout);
+        String paymentInput = Console.readLine();
+        Validator.payment(paymentInput);
 
-        buyer.setTotalPurchaseAmout(purchaseAmoutCash);
+        int payment = Integer.parseInt(paymentInput);
 
-        int numbersOfLotto = purchaseAmoutCash / 1000;
+        buyer.setTotalPurchaseAmout(payment);
+
+        int numbersOfLotto = payment / 1000;
         buyer.setLottoPurchasedCount(numbersOfLotto);
         System.out.println(buyer.getLottoPurchasedCount() + PRINT.BUYED_LOTTO);
 
         purchasedLottoSave();
         System.out.println(PRINT.INPUT_WINNING_NUMBERS);
         String winningNumbers = Console.readLine();
-
-        String winningNumberRegex = REGEX.WINNING_NUMBERS;
-        if (!Pattern.matches(winningNumberRegex, winningNumbers)) {
-            throw new IllegalArgumentException(ERROR.WINNING_NUMBER_FORMAT);
-        }
+        Validator.winningNumberFormat(winningNumbers);
 
 
         Integer[] numberArray = convertToInteger(winningNumbers);
-        HashSet<Integer> removeDuplicatedNumbers = new HashSet<Integer>(List.of(numberArray));
-        if (removeDuplicatedNumbers.size() != 6) {
-            throw new IllegalArgumentException(ERROR.WINNING_NUMBER_DUPLICATE);
-        }
+        Validator.winningNumberDuplicate(numberArray);
 
         Lotto.setWinningNumbers(Arrays.asList(numberArray));
 
         System.out.println(PRINT.INPUT_BONUS_NUMBER);
         String bonusNumber = Console.readLine();
-        String bonusNumberRegex = REGEX.BONUS_NUMBER;
-        if (!Pattern.matches(bonusNumberRegex, bonusNumber)) {
-            throw new IllegalArgumentException(ERROR.BONUS_NUMBER_RANGE);
-        }
-        if (Lotto.getWinningNumbers().contains(Integer.parseInt(bonusNumber))) {
-            throw new IllegalArgumentException(ERROR.BONUS_NUMBER_IN_WINNING_NUMBER);
-        }
+        Validator.bonusNumberRange(bonusNumber);
+        Validator.bonusNumberInWinningNumbers(bonusNumber);
 
         Lotto.setBonusNumber(Integer.parseInt(bonusNumber));
 
