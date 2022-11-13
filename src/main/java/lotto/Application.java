@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.List;
+
 public class Application {
     private final int moneyUnit = 1000;
 
@@ -7,8 +9,8 @@ public class Application {
         // TODO: 프로그램 구현
     }
 
-    public void getLotto(int money) {
-
+    public List<Integer> createLotto(int money) {
+        return null;
     }
 
     private void validMoney(int money) {
