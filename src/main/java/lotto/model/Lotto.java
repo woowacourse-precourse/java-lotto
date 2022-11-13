@@ -2,6 +2,7 @@ package lotto.model;
 
 import lotto.validation.Validator;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -17,5 +18,11 @@ public class Lotto {
         Validator.validateNonDuplicatedList(numbers);
         Validator.validateNumbersRange(numbers, 1,45);
     }
+
+    public String getNumbersString(){
+        Collections.sort(numbers);
+        return numbers.toString();
+    }
+
 
 }
