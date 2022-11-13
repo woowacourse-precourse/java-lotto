@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.domain.Lotto;
+import lotto.domain.LottoBonus;
 import lotto.domain.LottoMoney;
 import lotto.domain.LottoTicket;
 import lotto.view.InputView;
@@ -11,6 +12,7 @@ public class LottoController {
         LottoMoney money = input();
         LottoTicket tickets = buyTickets(money);
         Lotto winningLottoNumbers = getWinningNumbers();
+        LottoBonus bonus = getBonus(winningLottoNumbers);
     }
 
     private LottoMoney input(){
@@ -26,5 +28,9 @@ public class LottoController {
 
     private Lotto getWinningNumbers(){
         return new Lotto(InputView.lottoNumbers());
+    }
+
+    private LottoBonus getBonus(Lotto lotto){
+        return new LottoBonus(lotto.getNumbers(), InputView.bonusNumber());
     }
 }
