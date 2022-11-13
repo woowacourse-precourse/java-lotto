@@ -21,7 +21,7 @@
 3. Seller
     - [x]  발행할 로또 개수 계산 기능 → countIssueingLotto
     - [ ]  로또와 당첨 번호 비교 기능 → compareLotto_WinningNumber
-4. Validator
+4. InputValidator
     - [x]  로또 구입 금액이 1,000원으로 나누어 떨어지는지 검증 기능 → validatePurchaseAmount
     - [ ]  당첨 번호를 쉼표 기준으로 입력했는지 검증 기능 → validateWinningNumber_Diveded_Comma
     - [ ]  당첨 번호 6개를 입력했는지 검증 기능 → validateNumberOfWinningNumbers

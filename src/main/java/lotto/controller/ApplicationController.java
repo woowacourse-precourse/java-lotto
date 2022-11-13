@@ -3,21 +3,21 @@ package lotto.controller;
 import lotto.model.Lotto;
 import lotto.model.Player;
 import lotto.model.Seller;
-import lotto.model.Validator;
+import lotto.model.InputValidator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class ApplicationController {
     Seller seller = new Seller();
     Player player = new Player();
-    Validator validator = new Validator();
+    InputValidator inputValidator = new InputValidator();
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
 
     public void startApplication() {
-        int purchaseAmount = validator.convertStringIntoInt(inputView.inputPurchaseAmount());
+        int purchaseAmount = inputValidator.convertStringIntoInt(inputView.inputPurchaseAmount());
         player.setPurchaseAmount(purchaseAmount);
-        if (validator.isPurchaseAmountValidate(player.getPurchaseAmount())) {
+        if (inputValidator.isPurchaseAmountValidate(player.getPurchaseAmount())) {
             controlIssueingLotto();
         }
     }
