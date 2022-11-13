@@ -7,9 +7,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import lotto.domain.LottoMachine;
 import lotto.domain.Lotto;
-import lotto.service.LottoService;
 
 class LottoTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -27,20 +25,12 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
-    @DisplayName("로또 번호가 범위 안에 있지 않을 경우 예외가 발생한다. ")
+    @DisplayName("로또 번호가 1 ~ 45 범위를 벗어나면 예외가 발생한다.")
     @Test
-    void createLottoOutOfLange() {
-        assertThatThrownBy(() -> new Lotto(List.of(1,13,67,34,2,7)))
+    void createLottoByOverLange() {
+        assertThatThrownBy(() -> new Lotto(List.of(1,2,3,4,5,46)))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR]");
+                .hasMessageContaining(Notice.ERROR.getNoticeMessage());
     }
 
-    @DisplayName("로또 번호와 보너스 번호가 일치할 경우 예외가 발생한다.")
-    @Test
-    void createLottoByDuplicatedBonusNumber() {
-        assertThatThrownBy(() -> new LottoMachine(List.of(1,2,3,4,5,6), 4))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR]");
-    }
 }
