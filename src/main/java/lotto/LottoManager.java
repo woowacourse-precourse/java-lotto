@@ -18,20 +18,26 @@ public class LottoManager {
         }
     }
 
-    private int calculateMatchCount(Lotto winningLotto, Lotto lotto){
+    private int calculateMatchCount(Lotto winningLotto, Lotto lotto) {
         List<Integer> numbers = lotto.getNumbers();
         List<Integer> winningNumbers = winningLotto.getNumbers();
         int matchCount = 0;
 
-        for (int number: numbers) {
-            if (winningNumbers.contains(number)){
+        for (int number : numbers) {
+            if (winningNumbers.contains(number)) {
                 matchCount += 1;
             }
         }
         return matchCount;
     }
 
-    private Lotto generateRandomLotto(){
+    private boolean calculateMatchBonus(int winningBonus, Lotto lotto) {
+        List<Integer> numbers = lotto.getNumbers();
+        int matchCount = 0;
+        return numbers.contains(winningBonus);
+    }
+
+    private Lotto generateRandomLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return new Lotto(numbers);
     }
