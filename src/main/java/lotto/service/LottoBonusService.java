@@ -17,11 +17,11 @@ public class LottoBonusService {
         private static final LottoBonusService instance = new LottoBonusService();
     }
 
-    public static LottoBonusService getInstance() {
+    public static LottoBonusService getInstance(){
         return InnerLottoBonusService.instance;
     }
 
-    public void setLottoBonusNumber (Integer bonusNumber, List<Integer> LottoNumber) throws IllegalArgumentException {
+    public void setLottoBonusNumber(Integer bonusNumber, List<Integer> LottoNumber) throws IllegalArgumentException {
         lottoBonus = new LottoBonus(bonusNumber, LottoNumber);
     }
 
