@@ -15,6 +15,8 @@ public class LottoLogic {
     private List<Lotto> buyLottoList;
     private List<Integer> prizeNumbers;
     private int bonusNumber;
+    private double earning;
+    private double earningRate;
     private int threeHit = 0;
     private int fourHit = 0;
     private int fiveHit = 0;
@@ -74,6 +76,9 @@ public class LottoLogic {
         return this.sixHit;
     }
 
+    public double getEarningRate() {
+        return this.earningRate;
+    }
     public void setPrizeNumbers(List<Integer> prizeNumbers) {
         this.prizeNumbers = prizeNumbers;
     }
@@ -123,7 +128,22 @@ public class LottoLogic {
             this.sixHit++;
         }
     }
+
+    private void calculateEarning() {
+        this.earning = 5000 * this.threeHit
+                + 50000 * this.fourHit
+                + 1500000 * this.fiveHit
+                + 30000000 * this.fiveHitAndBonus
+                + 2000000000 * this.sixHit;
+    }
+
+    private void calculateEarningRate() {
+        this.earningRate = this.earning / this.money * 100;
+    }
+
     public void calculateResult() {
         calculateCountHit();
+        calculateEarning();
+        calculateEarningRate();
     }
 }
