@@ -8,11 +8,11 @@ import java.util.List;
 
 public class IOManager {
     public static int buyLotto() throws IllegalArgumentException {
-        System.out.println(IOMessage.ASK_PRICE);
+        System.out.println(IOMessage.ASK_PRICE.getMessage());
 
         try {
             int price = Integer.parseInt(Console.readLine());
-            System.out.println(IOMessage.EMPTY_LINE);
+            System.out.println(IOMessage.EMPTY_LINE.getMessage());
 
             return price;
         } catch(Exception e) {
@@ -21,7 +21,7 @@ public class IOManager {
     }
 
     public static void printLottoBought(int num) {
-        System.out.println(String.valueOf(num) + IOMessage.LOTTO_BUY_NUM);
+        System.out.println(String.valueOf(num) + IOMessage.LOTTO_BUY_NUM.getMessage());
     }
 
     public static void printLottoList(List<Lotto> lottoList) {
