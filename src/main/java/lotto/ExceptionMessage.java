@@ -21,4 +21,9 @@ public enum ExceptionMessage {
     public String getMessage() {
         return message;
     }
+
+    public void throwException() {
+        System.out.println(message);
+        throw new IllegalArgumentException(message);
+    }
 }
