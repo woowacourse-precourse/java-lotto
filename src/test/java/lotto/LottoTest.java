@@ -85,6 +85,19 @@ class LottoTest extends NsTest {
                 List.of(1, 3, 5, 14, 22, 45)
         );
     }
+    @DisplayName("플레이어가 입력한 6개의 숫자가 1~45범위밖이라면 에러메시지 프린트.")
+    @Test
+    void printErrorMessageIfNotInRange(){
+        assertSimpleTest(() -> {
+            try{
+                run("3000", "1,2,3,4,5,50", "10");
+            } catch(IllegalArgumentException e){
+                assertThat(output().contains(ERROR_MESSAGE));
+            }
+        });
+    }
+
+
 
     @Override
     protected void runMain() {Lotto.main(new String[]{});}
