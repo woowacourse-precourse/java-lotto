@@ -21,7 +21,7 @@ public class LottoGenerator {
     }
 
     private Boolean checkMoneyUnit(int money) throws IllegalArgumentException {
-        if ((money % 1000) != 0) {
+        if ((money % 1000) != 0 || money <= 0) {
             throw new IllegalArgumentException();
         }
         return true;
