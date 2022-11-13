@@ -1,5 +1,6 @@
 package lotto.UI;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class Validator {
@@ -11,7 +12,7 @@ public class Validator {
 
     public void isValidatedMoney(String money) {
         // 숫자만으로 이루어졌는지 검증
-        if (!Pattern.matches("[0-9]*]", money)) {
+        if (!isConsistOfNumber(money)) {
             throw new IllegalArgumentException(ERROR_MONEY_NOT_NUMBER);
         }
         // 1000원 이상이 아니며,, 1000으로 나누어 떨어지지 않는 경우 검증
@@ -25,8 +26,15 @@ public class Validator {
     }
 
     public void isValidatedNormalNumbers(String normalNumbers) {
+        List<String> numbers = List.of(normalNumbers.split(","));
+        // 각 요소 숫자 검증
+
     }
 
     public void isValidatedBonusNumber(String bonusNumber) {
+    }
+
+    private boolean isConsistOfNumber(String string) {
+        return Pattern.matches("[0-9]*]", string);
     }
 }
