@@ -29,7 +29,7 @@ public class WinningNumbers {
 	}
 
 	private List<Integer> stringToList(String userInput) {
-		String[] splitUserInput = userInput.split(",");
+		String[] splitUserInput = userInput.split(Regex.COMMA.getExpression());
 		List<Integer> list = new ArrayList<>();
 
 		for (String splitString : splitUserInput) {

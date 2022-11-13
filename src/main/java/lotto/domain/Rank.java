@@ -37,7 +37,7 @@ public enum Rank {
 
 	public String getPrizeMoneyWithComma() {
 		String money = Integer.toString(prizeMoney);
-		return money.replaceAll(Regex.CURRENCY.getExpression(), ",");
+		return money.replaceAll(Regex.CURRENCY.getExpression(), Regex.COMMA.getExpression());
 	}
 
 	private static boolean isSecond(int hitNumberCount, boolean isContainsBonusNumber) {
