@@ -4,6 +4,7 @@ import lotto.controller.LottoController;
 import lotto.domain.Lotto;
 import lotto.ui.Display;
 import lotto.ui.LottoScanners;
+import lotto.ui.LottoValidator;
 
 import java.util.List;
 
@@ -55,6 +56,8 @@ public class LottoGameSimulator {
         display.printRequestBonusNumber();
         String bonusNumber = scanners.inputBonusNumber();
         display.printNewLine();
+
+        LottoValidator.validateBonusNumberDuplication(bonusNumber, winingNumber);
     }
 
     public void checkLottoResult() {
