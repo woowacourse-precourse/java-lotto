@@ -33,7 +33,7 @@ public class LottoPrizeRecordingManager {
     public double getPrizeRate(long purchaseMoney) {
         setTotalPrizeMoney();
 
-        return totalPrizeMoney / purchaseMoney;
+        return (double)totalPrizeMoney / purchaseMoney;
     }
 
 
