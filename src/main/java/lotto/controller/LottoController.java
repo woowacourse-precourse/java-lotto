@@ -2,7 +2,7 @@ package lotto.controller;
 
 import lotto.domain.LottoMachine;
 import lotto.domain.Lottos;
-import lotto.domain.PrizeNumebers;
+import lotto.domain.TotalPrizeNumbers;
 import lotto.domain.PurchaseMoney;
 
 import java.util.List;
@@ -17,7 +17,7 @@ public class LottoController {
             PurchaseMoney purchaseMoney = createPurchaseMoney();
             Lottos lottos = createLottos(purchaseMoney);
             printLottos(lottos);
-            PrizeNumebers prizeNumebers = createPrizeNumbers();
+            TotalPrizeNumbers totalPrizeNumbers = createPrizeNumbers();
 
         } catch (IllegalArgumentException error) {
             printErrorMessage(error.getMessage());
@@ -40,8 +40,10 @@ public class LottoController {
         printLottosInfo(lottos);
     }
 
-    private PrizeNumebers createPrizeNumbers() {
+    private TotalPrizeNumbers createPrizeNumbers() {
         List<Integer> prizeNumbers = insertPrizeNumbers();
         Integer bonusNumber = insertBonusNumber();
+
+        return new TotalPrizeNumbers(prizeNumbers, bonusNumber);
     }
 }
