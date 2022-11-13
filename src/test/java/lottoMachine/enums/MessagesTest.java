@@ -7,6 +7,7 @@ import static lottoMachine.enums.Messages.RESULT_OF_PURCHASE_MESSAGE;
 import static lottoMachine.enums.Messages.WINNING_STATISTICS_MESSAGE;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.text.DecimalFormat;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,17 +33,19 @@ public class MessagesTest {
 
         assertThat(format).isEqualTo("당첨 통계\n"
                 + "---\n"
-                + "3개 일치 (5,000원) - 0개\n"
-                + "4개 일치 (50,000원) - 1개\n"
+                + "3개 일치 (5,000원) - 4개\n"
+                + "4개 일치 (50,000원) - 3개\n"
                 + "5개 일치 (1,500,000원) - 2개\n"
-                + "5개 일치, 보너스 볼 일치 (30,000,000원) - 3개\n"
-                + "6개 일치 (2,000,000,000원) - 4개");
+                + "5개 일치, 보너스 볼 일치 (30,000,000원) - 1개\n"
+                + "6개 일치 (2,000,000,000원) - 0개");
     }
 
     @Test
     void 수익률_메세지_Enum이_잘_적용되는지_확인합니다() {
         double number = 0.6255;
-        String rate = String.format("%.1f", number * 100);
+        String format = String.format("%.1f", number * 100);
+        DecimalFormat decimalFormat = new DecimalFormat("#,###.0");
+        String rate = decimalFormat.format(Double.valueOf(format));
         String result = MessageFormat.format(RATE_OF_RETURN_MESSAGE.toString(), rate);
 
         assertThat(result).isEqualTo("총 수익률은 62.6%입니다.");
