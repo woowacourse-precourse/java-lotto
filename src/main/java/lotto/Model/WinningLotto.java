@@ -17,4 +17,15 @@ public class WinningLotto {
         this.winningNumbers = WinningLotto;
         this.bonus = Util.getInt(bonus);
     }
+
+    public int matchNumberCount(Lotto lotto){
+        return Math.toIntExact(lotto.getNumbers().stream()
+                .filter(this.winningNumbers::contains)
+                .count());
+    }
+
+    public boolean isMatchBonusNumber(Lotto lotto){
+        return lotto.getNumbers().contains(bonus);
+    }
+
 }

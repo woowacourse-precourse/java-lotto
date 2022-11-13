@@ -1,5 +1,7 @@
 package lotto.Model;
 
+import java.util.Arrays;
+
 public enum WinningRank {
     FIRST(6, 2_000_000_000),
     SECOND(5, 30_000_000),
@@ -10,9 +12,12 @@ public enum WinningRank {
     ;
 
     private static final int MIN_MATCH_COUNT = 3;
-    private static final String INVALID_VALUE = "는 유효하지 않은 값입니다.";
+    public static final String ERROR = "[ERROR] ";
+    public static final String NOT_COUNT_STATE = "유효한 개수가 아닙니다.";
+
     private final int matchCount;
     private final int WinningAmount;
+
     WinningRank(int matchCount, int WinningAmount) {
         this.matchCount = matchCount;
         this.WinningAmount = WinningAmount;
@@ -25,4 +30,21 @@ public enum WinningRank {
     public int WinningAmount(){
         return WinningAmount;
     }
+
+    private boolean Count(int matchCount) {
+        return this.matchCount == matchCount;
+    }
+    public static WinningRank valueOf(int matchCount, boolean matchBonus){
+        if (matchCount < MIN_MATCH_COUNT){
+            return SIXTH;
+        }
+        if (SECOND.Count(matchCount) && matchBonus){
+            return SECOND;
+        }
+        return Arrays.stream(WinningRank.values())
+                .filter(rank -> rank.Count(matchCount) && rank != SECOND)
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException(ERROR + NOT_COUNT_STATE));
+    }
+
 }

@@ -49,11 +49,11 @@
 
 ### ✔ 이번주 당첨 번호 입력
 
-- ✅ 이번주 당첨 로또 생성 : <Lotto> Constructor
-  - ✅ (e) 번호 6개 , 구분자 = "," : <LottoValidator> isValidLottoSize()
-  - ✅ (e) 문자 입력 불가 : <LottoValidator> isInteger()
-  - ✅ (e) 1~45 사이 정수 : <LottoValidator> isValidRange()
-  - ✅ (e) 중복 불가 : <LottoValidator> isOverlap()
+- ✅ 이번주 당첨 로또 생성 : <WinningLotto> Constructor
+  - ✅ (e) 번호 6개 , 구분자 = "," : <WinningLottoValidator> isValidLottoSize()
+  - ✅ (e) 문자 입력 불가 : <WinningLottoValidator> isInteger()
+  - ✅ (e) 1~45 사이 정수 : <WinningLottoValidator> isValidRange()
+  - ✅ (e) 중복 불가 : <WinningLottoValidator> isOverlap()
   - ✅ readLine() 사용
 
 - ✅ 보너스 번호 생성
@@ -64,9 +64,9 @@
 
 ### ✔ 당첨 내역 출력
 
-- 숫자 일치 개수
-  - 번호 1개씩 당첨로또에 포함되어있는지 확인
-  - 보너스는 따로 확인
+- ✅ 숫자 일치 개수 <WinningLotto> matchNumberCount()
+  - ✅ 번호 1개씩 당첨로또에 포함되어있는지 확인
+  - ✅ 보너스는 따로 확인 <WinningLotto> isMatchBonusNumber()
 - 당첨 금액
   - 경우 별 당첨금액 저장
 - 당첨 로또 개수
