@@ -2,12 +2,12 @@ package lotto;
 
 import java.util.function.Predicate;
 
-public class LottoStatus {
+public class LottoMachine {
     private Lotto lotto;
     private Lotto winningLotto;
     private int bonusNum;
 
-    public LottoStatus(Lotto lotto, Lotto winningLotto, int bonusNum) {
+    public LottoMachine(Lotto lotto, Lotto winningLotto, int bonusNum) {
         this.lotto = lotto;
         this.winningLotto = winningLotto;
         this.bonusNum = bonusNum;

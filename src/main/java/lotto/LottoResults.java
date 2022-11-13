@@ -11,10 +11,10 @@ public class LottoResults {
     private int fourthPlace;
     private int fifthPlace;
 
-    public LottoResults(List<LottoStatus> lottosStatus) {
-        this.lottoResults = lottosStatus
+    public LottoResults(List<LottoMachine> lottoMachines) {
+        this.lottoResults = lottoMachines
                 .stream()
-                .map(status -> status.getResult())
+                .map(machine -> machine.getResult())
                 .collect(Collectors.toList());
         calcResult();
     }

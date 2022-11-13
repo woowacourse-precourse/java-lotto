@@ -11,7 +11,7 @@ public class Lottos {
     private static final int COUNT = 6;
 
     // Results
-    private List<LottoStatus> lottosStatus;
+    private List<LottoMachine> lottoMachines;
     private LottoResults lottoResults;
     private float totalWinningAmount;
 
@@ -46,14 +46,14 @@ public class Lottos {
     }
 
     private void createLottosStatus() {
-        this.lottosStatus = new ArrayList<>();
+        this.lottoMachines = new ArrayList<>();
         for(int i = 0; i < lottoCount; i++) {
-            this.lottosStatus.add(createLottoStatus(lottosNumbers.get(i)));
+            this.lottoMachines.add(createLottoMachine(lottosNumbers.get(i)));
         }
     }
 
-    private LottoStatus createLottoStatus(Lotto lotto) {
-        return new LottoStatus(lotto, winningLotto, bonusNum);
+    private LottoMachine createLottoMachine(Lotto lotto) {
+        return new LottoMachine(lotto, winningLotto, bonusNum);
     }
 
     public float getTotalWinningAmount() {
@@ -61,13 +61,13 @@ public class Lottos {
     }
 
     private void calcTotalAmount() {
-        for(int i = 0; i < lottosStatus.size(); i++) {
-            this.totalWinningAmount += lottosStatus.get(i).calcAmount();
+        for(int i = 0; i < lottoMachines.size(); i++) {
+            this.totalWinningAmount += lottoMachines.get(i).calcAmount();
         }
     }
 
     private void createLottoResults() {
-        this.lottoResults = new LottoResults(this.lottosStatus);
+        this.lottoResults = new LottoResults(this.lottoMachines);
     }
 
     public LottoResults getLottoResults() {
