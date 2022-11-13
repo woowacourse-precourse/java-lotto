@@ -2,7 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 
-import static lotto.domain.WinningRule.checkWinning;
+import static lotto.domain.WinningRule.*;
 import static lotto.utils.Constant.ONE_LOTTO_AMOUNT;
 
 public class WinningHistory {
@@ -29,15 +29,15 @@ public class WinningHistory {
     }
 
     private void countWinning(WinningRule winningRule) {
-        if (winningRule == WinningRule.FIRST)
+        if (winningRule == FIRST)
             firstCount++;
-        else if (winningRule == WinningRule.SECOND)
+        else if (winningRule == SECOND)
             secondCount++;
-        else if (winningRule == WinningRule.THIRD)
+        else if (winningRule == THIRD)
             thirdCount++;
-        else if (winningRule == WinningRule.FOURTH)
+        else if (winningRule == FOURTH)
             fourthCount++;
-        else if (winningRule == WinningRule.FIFTH)
+        else if (winningRule == FIFTH)
             fifthCount++;
     }
 
