@@ -31,4 +31,12 @@ public class WinningLotto {
 
         bonusNumber = Integer.parseInt(inputBonusNumber);
     }
+
+    public List<Integer> getWinningLotto() {
+        return winningLotto.getNumbers();
+    }
+
+    public Integer getBonusNumber(){
+        return bonusNumber;
+    }
 }
