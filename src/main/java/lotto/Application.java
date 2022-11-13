@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.Model.Lotto;
 import lotto.Service.LottoNumberService;
+import lotto.Service.WinningNumberService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ import static lotto.View.PrintView.printLottoNumber;
 public class Application {
     public static String errorContent = "";
     public static final String ERROR_MESSAGE = "[ERROR]";
+    public static final String separator = ",";
 
 
     public static void main(String[] args) {
@@ -28,6 +30,11 @@ public class Application {
             for(Lotto lotto : lottoList){
                 printLottoNumber(lotto.getNumbers());
             }
+
+            printWinningNumberMessage();
+            WinningNumberService winningNumberService = new WinningNumberService();
+            Lotto winningNumberList = winningNumberService.generateWinningNumber();
+
         } catch (IllegalArgumentException illegalArgumentException) {
             System.out.println(illegalArgumentException.getMessage());
             errorContent = "";
