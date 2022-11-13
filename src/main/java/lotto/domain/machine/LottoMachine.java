@@ -16,7 +16,7 @@ public class LottoMachine {
         List<Lotto> result = new ArrayList<>();
         
         for (int i = 0; i < count; i++) {
-            Lotto lotto = new Lotto(LottoNumberGenerator.randomLottoNumberList());
+            Lotto lotto = new Lotto(new ArrayList<>(LottoNumberGenerator.randomLottoNumberList()));
             result.add(lotto);
         }
         
