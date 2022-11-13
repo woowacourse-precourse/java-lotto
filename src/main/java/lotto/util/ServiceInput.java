@@ -47,11 +47,13 @@ public class ServiceInput {
     private static List<String> getSplitInputWinningNumbers(){
 
         String inputWinningNumbers = getInputWinningNumbers();
-
         List<String> splitInputWinningNumbers = Arrays.asList(inputWinningNumbers.split("\\s*,\\s*"));
 
-        // TODO: 예외처리
-        
+        if (Validator.isListhasCharacter(splitInputWinningNumbers)){
+            Message.printInputErrorHasCharacter();
+            throw new IllegalArgumentException();
+        }
+
         return splitInputWinningNumbers;
     }
 }
