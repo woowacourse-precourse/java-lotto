@@ -57,7 +57,6 @@ public class Lotto {
             System.out.println(countWinningNumbersCaseArray.get(settedIndex));
         }
     }
-
     private ArrayList<BigInteger> initializeArray(){
         ArrayList<BigInteger> countWinningNumbersCaseArray = new ArrayList<>();
         for (int index = 0; index < 5; index++){
