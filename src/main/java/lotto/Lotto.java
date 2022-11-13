@@ -16,6 +16,10 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public List<Integer> getLotto() {
+        return this.numbers;
+    }
+
     public void validateNumberLength(List<Integer> numbers) {
         if (numbers.size() != 6) {
             System.out.println("[ERROR] 로또 당첨 번호는 6개여야 합니다.");
