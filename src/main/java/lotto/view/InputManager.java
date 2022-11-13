@@ -59,7 +59,7 @@ public class InputManager {
 
     private int makeBounsNumber(String inputBonus) {
         int result = 0;
-        if(checkNum(inputBonus)) {
+        if(checkNum(inputBonus) && checkBonusDuplicate(inputBonus)) { //숫자 체크와 중복체크 동시에 진행
             result = Integer.parseInt(inputBonus);
         }
         return result;
@@ -80,6 +80,12 @@ public class InputManager {
         }
         if (checkNumber < 1 || checkNumber > 45) {
             throw new IllegalArgumentException("[ERROR] 1부터 45까지의 값만 들어올 수 있습니다");
+        }
+        return true;
+    }
+    private boolean checkBonusDuplicate(String target) {
+        if (this.inputData.contains(target)) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호와 중복된 값을 넣을 수 없습니다.");
         }
         return true;
     }
