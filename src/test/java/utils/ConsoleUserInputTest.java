@@ -111,4 +111,15 @@ public class ConsoleUserInputTest {
         assertThatThrownBy(()-> consoleUserInput.inputWinningNumbers())
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("로또 구입을 위해 입력된 돈의 단위가 1000원 이상인지 확인한다.")
+    @Test
+    void checkPaymentInUnitsOfAThousand(){
+        InputStream in = testUserInput("17820");
+        System.setIn(in);
+        scanner = new Scanner(System.in);
+
+        assertThatThrownBy(()-> consoleUserInput.inputMoneyForLottos())
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
