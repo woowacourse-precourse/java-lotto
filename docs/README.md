@@ -11,7 +11,7 @@
   - [x] 발행한 로또 수량을 출력한다.
   - [x] 로또 번호를 출력한다. - Lotto.java -> Lotto.printNumbers()
 - [x] 당첨 번호를 입력 한다. (쉼표 기준) - winNumInput()
-  - [ ] 예외 시 처리 - WinNumInputException.java
+  - [x] 예외 시 처리 - WinNumInputException.java
     - [x] 쉼표로 구분되지 않는 입력 시 예외 처리 - winNumFormatException()
     - [x] 중복 수 입력 시 예외 처리 - winNumDuplicate()
     - [x] 숫자가 아닌 수 입력 시 예외 처리 - winNumTypeError()

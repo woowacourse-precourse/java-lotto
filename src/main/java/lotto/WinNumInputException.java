@@ -1,7 +1,6 @@
 package lotto;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class WinNumInputException {
     public static void winNumFormatError(String input) {

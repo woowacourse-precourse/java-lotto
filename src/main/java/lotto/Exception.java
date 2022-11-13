@@ -22,7 +22,6 @@ public class Exception {
         bonusDuplicate(winNums, bonus);
     }
 
-
     public static void winNumInputErrorCheck(String input) {
         winNumFormatError(input);
         String[] tmpNums = input.split(",");
