@@ -51,7 +51,7 @@ public class Statistics {
         Set<Rank> ranks = winningLottoCounter.keySet();
         int totalPrice = 0;
 
-        for (Rank rank: ranks) {
+        for (Rank rank : ranks) {
             int price = rank.computePrice(winningLottoCounter.get(rank));
             totalPrice += price;
         }
@@ -63,10 +63,11 @@ public class Statistics {
     public String toString() {
         StringBuilder statistics = new StringBuilder();
         Set<Rank> ranks = winningLottoCounter.keySet();
-        for (Rank rank: ranks) {
+        for (Rank rank : ranks) {
             statistics.append(rank.toString() + getCountString(winningLottoCounter.get(rank)));
             statistics.append("\n");
         }
+        statistics.delete(statistics.lastIndexOf("\n"), statistics.length());
         return statistics.toString();
     }
 

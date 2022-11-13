@@ -8,7 +8,7 @@ public class EarningRate {
     }
 
     public double computeEarningRate(int winnings) {
-        double earningRate = (winnings / (double)money) * 100.0;
+        double earningRate = (winnings / (double) money) * 100.0;
         return earningRate;
     }
 }
