@@ -8,6 +8,8 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import java.lang.reflect.Method;
+import java.lang.reflect.InvocationTargetException;
 
 class LottoTest extends NsTest {
     @DisplayName("로또 번호의 개수가 6개가 넘어가면 예외가 발생한다.")
@@ -74,6 +76,36 @@ class LottoTest extends NsTest {
         assertThat(lotto.contains(7)).isEqualTo(false);
         assertThat(lotto.contains(40)).isEqualTo(false);
     }
+
+    Integer getMatchCount(Lotto lotto, Lotto winning) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Class app = Lotto.class;
+        Class args[] = new Class[1];
+        args[0] = Lotto.class;
+
+        Object[] params = new Object[1];
+        params[0] = winning;
+
+        Method method = app.getDeclaredMethod("getMatchCount", args);
+        method.setAccessible(true);
+        return (Integer) method.invoke(lotto, params);
+    }
+
+    @Test
+    void 맞은_숫자_수_테스트1() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto winning = new Lotto(List.of(1, 2, 3, 7, 8, 9));
+
+        assertThat(getMatchCount(lotto, winning)).isEqualTo(3);
+    }
+
+    @Test
+    void 맞은_숫자_수_테스트2() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto winning = new Lotto(List.of(10, 12, 13, 17, 18, 19));
+
+        assertThat(getMatchCount(lotto, winning)).isEqualTo(0);
+    }
+
     @Override
     public void runMain() { }
 }
