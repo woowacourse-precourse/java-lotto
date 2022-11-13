@@ -1,12 +1,13 @@
 package lotto.ui;
 
 import java.util.List;
+import lotto.model.Lotto;
 
 public class LotteryView implements View {
     private int lottoNumber;
-    private List<List<Integer>> lotteries;
+    private List<Lotto> lotteries;
 
-    public LotteryView(int lottoNumber, List<List<Integer>> lotteries){
+    public LotteryView(int lottoNumber, List<Lotto> lotteries){
         this.lottoNumber = lottoNumber;
         this.lotteries = lotteries;
     }
@@ -25,8 +26,8 @@ public class LotteryView implements View {
     }
 
     private void printAllLotteries(){
-        for(List<Integer> lottoNumbers: lotteries){
-            System.out.println(lottoNumbers);
+        for(Lotto lottoNumbers: lotteries){
+            System.out.println(lottoNumbers.getNumbers());
         }
     }
 
