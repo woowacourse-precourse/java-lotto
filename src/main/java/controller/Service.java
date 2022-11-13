@@ -11,12 +11,13 @@ import java.util.stream.Collectors;
 
 public class Service {
 
-    public List<Integer> createLottoNumber(){
+    public List<Integer> createLottoNumber() {
         return Randoms.pickUniqueNumbersInRange(1, 45, 6);
     }
-    public List<Lotto> createTotalLottoNumber(int lottoCount){
+
+    public List<Lotto> createTotalLottoNumber(int lottoCount) {
         List<Lotto> totalLottoNumbers = new ArrayList<>();
-        for(int i = 0; i < lottoCount; i++){
+        for (int i = 0; i < lottoCount; i++) {
             totalLottoNumbers.add(new Lotto(createLottoNumber()));
         }
         return totalLottoNumbers;
@@ -29,7 +30,7 @@ public class Service {
         return inputWinningNumbers;
     }
 
-    public int inputBonusNumber(){
+    public int inputBonusNumber() {
         System.out.println("보너스 번호를 입력해 주세요.");
         String inputUser = Console.readLine();
         return Integer.parseInt(inputUser);
@@ -39,5 +40,12 @@ public class Service {
         System.out.println("구입금액을 입력해 주세요.");
         String inputUser = Console.readLine();
         return Integer.parseInt(inputUser);
+    }
+
+    public int compareWinningNumber(List<Integer> lottoNumbers, List<Integer> winningNumbers) {
+        List<Integer> sameNumbers = new ArrayList<>();
+        sameNumbers.addAll(lottoNumbers);
+        sameNumbers.retainAll(winningNumbers);
+        return sameNumbers.size();
     }
 }
