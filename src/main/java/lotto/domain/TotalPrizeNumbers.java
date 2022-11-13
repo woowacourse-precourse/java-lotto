@@ -1,5 +1,8 @@
 package lotto.domain;
 
+import lotto.enumeration.NumberType;
+
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,13 +17,11 @@ public class TotalPrizeNumbers {
     private final int MAXIMUM_PRIZENUMBER = 45;
     private final int LOTTO_TOTAL_COUNT = 6;
 
-    private final List<Integer> totalPrizeNumbers;
-
     public TotalPrizeNumbers(List<Integer> prizeNumbers, Integer bonusNumber) {
         validatePrizeNumbers(prizeNumbers);
         validateBonusNumber(bonusNumber, prizeNumbers);
 
-        this.totalPrizeNumbers = createTotalPrizeNumbers(prizeNumbers, bonusNumber);
+        List<PrizeNumber> totalPrizeNumbers = createTotalPrizeNumbers(prizeNumbers, bonusNumber);
     }
 
     public void validatePrizeNumbers(List<Integer> prizeNumbers) {
@@ -42,11 +43,20 @@ public class TotalPrizeNumbers {
         if (bonusNumber < MINIMUM_PRIZENUMBER || bonusNumber > MAXIMUM_PRIZENUMBER) {
             throw new IllegalArgumentException(PRIZENUMEBR_IS_NOT_IN_RANGE);
         }
-        if (prizeNumbers.contains(bonusNumber)){
+        if (prizeNumbers.contains(bonusNumber)) {
             throw new IllegalArgumentException(BONUSNUMBER_OVERLAPS);
         }
     }
 
-    private List<Integer> createTotalPrizeNumbers(List<Integer> prizeNumbers, Integer bonusNumber) {
+    private List<PrizeNumber> createTotalPrizeNumbers(List<Integer> prizeNumbers, Integer bonusNumber) {
+        List<PrizeNumber> totalPrizeNumbers = new ArrayList<>();
+
+        for (Integer number : prizeNumbers) {
+            PrizeNumber prizeNumber = new PrizeNumber(number, NumberType.NORMAL);
+            totalPrizeNumbers.add(prizeNumber);
+        }
+        totalPrizeNumbers.add(new PrizeNumber(bonusNumber, NumberType.BOUNS));
+
+        return totalPrizeNumbers;
     }
 }
