@@ -18,6 +18,14 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         validateInputSize(numbers);
         validateRangeOfNumbers(numbers);
+        validateUniqueness(numbers);
+    }
+
+    private void validateUniqueness(List<Integer> numbers) {
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+        if (uniqueNumbers.size() != LOTTO_SIZE) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private void validateRangeOfNumbers(List<Integer> numbers) {
