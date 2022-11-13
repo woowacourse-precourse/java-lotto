@@ -23,4 +23,8 @@ public class RankCounter {
             rankCounter.put(rank, count + 1);
         }
     }
+
+    public HashMap<Rank, Integer> getRankCounter() {
+        return this.rankCounter;
+    }
 }
