@@ -24,4 +24,10 @@ class BuyerTest {
         assertThatThrownBy(() -> new Buyer().validateBuyLottoMoney("2001"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("구입 금액으로 로또 티켓 수 계산")
+    @Test
+    void calculateLotteryNum() {
+        assertThat(new Buyer().calculateLotteryNum(8000)).isEqualTo(8);
+    }
 }
