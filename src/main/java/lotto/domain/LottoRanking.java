@@ -10,30 +10,30 @@ public enum LottoRanking {
     FIFTH(3, 5_000),
     MISS(0, 0);
 
-    private double sameNumber;
+    private double lottoScore;
     private int reward;
 
-    LottoRanking(double sameNumber, int reward) {
-        this.sameNumber = sameNumber;
+    LottoRanking(double lottoScore, int reward) {
+        this.lottoScore = lottoScore;
         this.reward = reward;
     }
 
-    public double getSameNumber() {
-        return sameNumber;
+    public double getLottoScore() {
+        return lottoScore;
     }
 
     public int getReward() {
         return reward;
     }
 
-    public static LottoRanking getResult(double sameNumberCount) {
+    public static LottoRanking getRanking(double sameNumberCount) {
         return Arrays.stream(LottoRanking.values())
-                .filter(result -> result.sameNumber == sameNumberCount)
+                .filter(result -> result.lottoScore == sameNumberCount)
                 .findAny()
                 .orElse(LottoRanking.MISS);
     }
 
-    public static double getNumberScore(LottoRanking lottoRanking){
-        return lottoRanking.getSameNumber();
+    public static double getLottoScoreBy(LottoRanking lottoRanking){
+        return lottoRanking.getLottoScore();
     }
 }

@@ -80,7 +80,7 @@ public class OutputView {
 
     private static List<LottoRanking> getOrderedLottoRanking() {
         return Arrays.stream(LottoRanking.values())
-                .sorted(Comparator.comparing(LottoRanking::getNumberScore))
+                .sorted(Comparator.comparing(LottoRanking::getLottoScoreBy))
                 .collect(Collectors.toList());
     }
 
@@ -94,7 +94,7 @@ public class OutputView {
         }
         String Reward = makeMoneyString(lottoRanking.getReward());
         System.out.println(String.format(messageFrame,
-                (int) lottoRanking.getSameNumber(),
+                (int) lottoRanking.getLottoScore(),
                 Reward,
                 count));
     }

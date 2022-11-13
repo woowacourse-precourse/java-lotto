@@ -18,10 +18,10 @@ public class LottoReader {
 
     public static LottoRanking getLottoResult(Lotto lotto, WinningLotto winningLotto) {
         double matchingNumber = countMatchingNumber(lotto, winningLotto.getWinningLotto());
-        if (matchingNumber == LottoRanking.THIRD.getSameNumber() && isIncludedNumber(lotto, winningLotto.getBonusNumber())) {
+        if (matchingNumber == LottoRanking.THIRD.getLottoScore() && isIncludedNumber(lotto, winningLotto.getBonusNumber())) {
             matchingNumber += 0.5;
         }
-        return LottoRanking.getResult(matchingNumber);
+        return LottoRanking.getRanking(matchingNumber);
     }
 
     public static double countMatchingNumber(Lotto lotto, Lotto compareLotto) {
