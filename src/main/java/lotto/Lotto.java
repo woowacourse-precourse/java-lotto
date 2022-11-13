@@ -1,7 +1,9 @@
 package lotto;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -12,15 +14,16 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        Set<Integer> numbersSet = new HashSet<>(numbers);
+        if (numbersSet.size() != 6) {
             throw new IllegalArgumentException();
         }
     }
 
     public List<Integer> asSortedList(){
-        List<Integer> dup = this.numbers;
-        Collections.sort(dup);
-        return dup;
+        List<Integer> sorted = this.numbers;
+        Collections.sort(sorted);
+        return sorted;
     }
 
     // TODO: 추가 기능 구현
