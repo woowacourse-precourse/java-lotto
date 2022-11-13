@@ -16,4 +16,8 @@ public class Result {
             result.put(rank, 0);
         }
     }
+
+    public void add(Rank rank) {
+        result.put(rank, result.getOrDefault(rank, 0) + 1);
+    }
 }
