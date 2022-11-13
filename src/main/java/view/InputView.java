@@ -18,7 +18,7 @@ public class InputView {
         System.out.println(WINNING_NUMBER_INPUT_MESSAGE);
         String lottoNumbers = Console.readLine();
 
-        validatePatter(lottoNumbers);
+        validatePattern(lottoNumbers);
         List<Integer> lotto = StringToList(lottoNumbers);
         String bonusNumber = Console.readLine();
 
@@ -31,7 +31,7 @@ public class InputView {
                 .collect(Collectors.toList());
     }
 
-    private void validatePatter(String lottoNumbers) {
+    private void validatePattern(String lottoNumbers) {
         if (!Pattern.matches(WINNING_NUMBER_INPUT_PATTERN, lottoNumbers)) {
             throw new IllegalArgumentException(INVALID_WINNING_LOTTO_INPUT_FORMAT_MESSAGE);
         }
