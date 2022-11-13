@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class Lottos {
-
     private final List<Lotto> lottos;
 
     public Lottos(List<Lotto> lottos) {
