@@ -24,7 +24,7 @@ public enum WinningPlace {
         return this.message;
     }
 
-    public static WinningPlace getPlace(int correspondingNumber, int correspondingBonusNumber) throws Exception {
+    public static WinningPlace getPlace(int correspondingNumber, int correspondingBonusNumber) {
         Optional<WinningPlace> getWinningPlace = Arrays.stream(values())
                 .filter(winningPlace -> winningPlace.correspondingNumber == correspondingNumber)
                 .filter(winningPlace -> winningPlace.correspondingBonusNumber == correspondingBonusNumber)
