@@ -3,6 +3,7 @@ package lotto.controller;
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 import lotto.domain.Money;
+import lotto.domain.Result;
 import lotto.domain.WinLotto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -17,7 +18,7 @@ public class MainController {
         OutputView.printLottoList(lottoList);
         WinLotto winLotto = makeWinLotto();
         int bonusNum = winLotto.validateBonus(InputView.inputBonusNum());
-
+        Result result = new Result(winLotto, bonusNum, lottoList);
     }
 
     private static List<Lotto> makeLotto(int count) {

@@ -8,7 +8,7 @@ public class Result {
     private int totalPrize = 0;
     private Map<String, Integer> winResult = new HashMap<>();
 
-    public Result(Lotto winLotto, int bonusNum, List<Lotto> lottoList) {
+    public Result(WinLotto winLotto, int bonusNum, List<Lotto> lottoList) {
         for (Lotto lotto : lottoList) {
             Grade grade = checkLotto(winLotto, bonusNum, lotto);
 
@@ -18,8 +18,8 @@ public class Result {
         }
     }
 
-    private Grade checkLotto(Lotto winLotto, int bonusNum, Lotto lotto) {
-        int sameNumCount = winLotto.getSameNumCount(lotto.getNumbers());
+    private Grade checkLotto(WinLotto winLotto, int bonusNum, Lotto lotto) {
+        int sameNumCount = winLotto.get().getSameNumCount(lotto.getNumbers());
         boolean isBonusSame = lotto.checkBonus(bonusNum);
         return Grade.valueOf(sameNumCount, isBonusSame);
     }
