@@ -1,7 +1,12 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Checker {
 
@@ -16,18 +21,24 @@ public class Checker {
     private static final String SHOW_RETURN_RATE_FRONT = "총 수익률은 ";
     private static final String SHOW_RETURN_RATE_BACK = "입니다.";
 
-    private List<Integer> winningNumbers = new ArrayList<>();
-    private List<Integer> winningStats = new ArrayList<>();
+    private List<Integer> winningNumbers;
+    private List<Integer> winningStats;
     private int bonusNumber;
     private int count;
     private float returnRate;
 
     public void insertWinningNumbers() {
+        System.out.println(INSERT_WINNING_NUMBER);
+        String numbers = Console.readLine();
 
+        for (int i = 0;i < numbers.length();i+=2) {
+            winningNumbers.add(numbers.charAt(i) - '0');
+        }
     }
 
     public void insertBonusNumber() {
-
+        System.out.println(INSERT_BONUS_NUMBER);
+        int bonusNumber = Integer.parseInt(Console.readLine());
     }
 
     public List<Integer> getWinningNumbers() {
