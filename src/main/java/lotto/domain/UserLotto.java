@@ -24,7 +24,19 @@ public class UserLotto {
     public void getPurchaseLottoNumbers(){
         for(int i=0;i<userLotto.size();i++){
             List<Integer> numbers = new ArrayList<>(userLotto.get(i));
+            printPurchaseLottoNumbers(numbers);
         }
+    }
+
+    public void printPurchaseLottoNumbers(List<Integer> numbers){
+        System.out.print("[");
+        for(int i=0;i<numbers.size();i++){
+            System.out.print(numbers.get(i));
+            if(i!=numbers.size()-1){
+                System.out.print(", ");
+            }
+        }
+        System.out.println("]");
     }
 
     public void validateUnit(int input){
