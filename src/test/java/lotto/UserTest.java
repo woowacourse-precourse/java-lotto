@@ -6,6 +6,17 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class UserTest {
+    @DisplayName("구입금액에 숫자가 아니면 예외가 발생한다.")
+    @Test
+    void createMoneyByNotInteger() {
+        // given
+        User user = new User();
+
+        // expect
+        assertThatThrownBy(()->user.toInteger("1000j"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 숫자만 입력해 주세요.");
+    }
     @DisplayName("구입금액이 1,000원 미만이면 예외가 발생한다.")
     @Test
     void createMoneyByLessThan1000() {
