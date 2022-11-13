@@ -43,7 +43,7 @@ public class UserLotto {
             boolean bonusMatching = Judgment.checkBonusNumberCorrect(bonusNumber, lotto.getLotto());
             Prize prize = Prize.getPrize(matchingCount, bonusMatching);
             int resultIndex = prize.ordinal();
-            if (resultIndex == 5) { // 꽝은 결과에 필요없음
+            if (prize.equals(Prize.NONE)) { // 꽝은 결과에 필요없음
                 continue;
             }
             lottoResult.set(resultIndex, lottoResult.get(resultIndex) + 1);

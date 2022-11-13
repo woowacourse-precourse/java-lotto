@@ -34,19 +34,18 @@ public class Guide {
     public static List<String> createLottoStatisticsMessage(List<Integer> lottoResult) {
         List<String> messages = new ArrayList<String>();
         for (Prize prize : Prize.values()) {
-            int index = prize.ordinal();
-            if (index == 5) {
+            if (prize == Prize.NONE) {
                 break;
             }
             messages.add(convertIntToString(prize.getMatchingCount()) + "개 일치 (" +
                     addNumberPunctuation(prize.getPrizeMoney()) +
-                    "원) - " + convertIntToString(lottoResult.get(index)) + "개");
+                    "원) - " + convertIntToString(lottoResult.get(prize.ordinal())) + "개");
         }
         return messages;
     }
 
     public static void printLottoStatistics(List<String> messages) {
-        System.out.println("\n당첨 통계\n---\n");
+        System.out.println("\n당첨 통계\n---");
         for (int messageIndex = messages.size() - 1; messageIndex >= 0; messageIndex--) {
             System.out.println(messages.get(messageIndex));
         }
