@@ -6,5 +6,11 @@ public class Application {
         player.purchaseLotto();
         player.getLottoNumbers();
         player.checkGetLottoNumbers();
+
+        player.manager.generateLotto();
+        player.calculateResult();
+        player.
+        player.manager.
+
     }
 }

@@ -25,8 +25,9 @@ public class Lotto {
         if (isUnique.size() != 6) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_UNIQUE);
         }
-
     }
 
-
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
