@@ -38,6 +38,7 @@ public class Application {
     static Rank rankName;
     static boolean bonusCheck = false;
     static Map<Rank,Integer> rankMap = new EnumMap<>(Rank.class);
+    static Stack<String> printResult = new Stack<>();
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         buyLotto();
@@ -47,6 +48,9 @@ public class Application {
         inputWinningNumber();
         inputBonus();
         compareNumber(allLottoNumbers);
+
+        printWinMessage();
+        resultLotto();
     }
     public static void buyLotto() {
         System.out.println("구입금액을 입력해 주세요.");
@@ -95,6 +99,7 @@ public class Application {
 
     public static void compareNumber(List<List<Integer>> allLottoNumbers){
         int count = 0;
+        initRankMap();
         for(int i=0;i<allLottoNumbers.size();i++){
             count = 0;
             bonusCheck = false;
@@ -106,6 +111,25 @@ public class Application {
             rankName = rank.getRank(count,bonusCheck);
             rankMap.put(rankName, rankMap.getOrDefault(rankName,0)+1);
         }
+    }
+
+    public static void initRankMap(){
+        for(Rank r : Rank.values()){
+            rankMap.put(r,0);
+        }
+    }
+
+    public static void printWinMessage(){
+        System.out.println("당첨 통계");
+        System.out.println("---");
+    }
+
+    public static void resultLotto(){
+        System.out.println("3개 일치 (5,000원) - " + rankMap.get(Rank.FIFTH));
+        System.out.println("4개 일치 (50,000원) - " + rankMap.get(Rank.FOURTH));
+        System.out.println("5개 일치 (1,500,000원) - " + rankMap.get(Rank.THIRD));
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000원) - " + rankMap.get(Rank.SECOND));
+        System.out.println("6개 일치 (2,000,000,000원) - " + rankMap.get(Rank.FIRST));
     }
 
 
