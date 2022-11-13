@@ -7,12 +7,13 @@ import java.util.List;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Lotto {
+
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
-        System.out.println(this.numbers);
+        System.out.println("여기가디스"+this.numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -32,5 +33,4 @@ public class Lotto {
         }while (i != numberOfGame);
         return userNumber;
     }
-    // TODO: 추가 기능 구현
 }

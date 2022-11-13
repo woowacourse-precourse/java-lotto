@@ -35,7 +35,6 @@ public class Input {
 		return userInput;
 
 	}
-
 	private static void validateBudget(int budget) {
 		if (budget < 1000) {
 			throw new IllegalArgumentException();

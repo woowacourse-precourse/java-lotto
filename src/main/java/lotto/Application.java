@@ -13,8 +13,5 @@ public class Application {
         ArrayList<Integer> winningNumber=Input.winningNumberInput();
         int bonusNumber = Input.bonusNumberInput(winningNumber);
         Output.output(numberOfGame, userNumber, winningNumber, bonusNumber);
-
-
-
     }
 }
