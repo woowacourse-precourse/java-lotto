@@ -50,4 +50,16 @@ public class CountNumberOfWins {
             fifthPlace++;
         }
     }
+
+    public void ranking() {
+        List<List<Integer>> allLottoNumbers = setBuyLotto();
+        List<Integer> winningNumber = setWinningNumbers();
+        int bonusNumber = setBonusNumber();
+
+        for (List<Integer> lottoNumbers : allLottoNumbers) {
+            CountMatchNumber countMatchNumber = new CountMatchNumber();
+            numberOfWins(Grade.findingRank(countMatchNumber.setWinningNumberMatchCount(lottoNumbers, winningNumber)
+                    , countMatchNumber.setBonusNumberMatchCount(lottoNumbers, bonusNumber)).getRanking());
+        }
+    }
 }
