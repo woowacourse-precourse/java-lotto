@@ -42,13 +42,8 @@ public class Lotto {
     }
 
     private int compareNumber(Lotto target) {
-        int sameNumber = 0;
-        for (Integer number : target.numbers) {
-            if (this.numbers.contains(number)) {
-                sameNumber += 1;
-            }
-        }
-        return sameNumber;
+        target.numbers.retainAll(this.numbers);
+        return target.numbers.size();
     }
 
     public int getRanking(Lotto target, int bonus) {
