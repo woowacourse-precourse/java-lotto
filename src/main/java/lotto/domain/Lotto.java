@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -34,12 +35,16 @@ public class Lotto {
             throw new IllegalArgumentException();
         }
     }
+    private List<Integer> getNumbers(){
+        return this.numbers;
+    }
     public void addBonusNum(int bonusNum){
         this.bonusNum = bonusNum;
     }
-    public int compare(List<Integer> numbers){
-        int matchNum = (int)this.numbers.stream()
-                .filter(num -> numbers.contains(num))
+    public int compare(Lotto numbers){
+        List<Integer> target = numbers.getNumbers();
+        int matchNum = (int)target.stream()
+                .filter(num -> this.numbers.contains(num))
                 .count();
         return matchNum;
     }
