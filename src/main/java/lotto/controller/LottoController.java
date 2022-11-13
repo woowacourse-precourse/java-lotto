@@ -33,6 +33,7 @@ public class LottoController {
 
 	private LottoResult makeLottoResult(LottoTicket lottoTickets, WinningNumber winningNumbers, BonusNumber bonusNumber) {
 		LottoResult lottoResult = lottoTickets.calculateRank(winningNumbers, bonusNumber);
+		OutputView.printPrize(lottoResult);
 		return lottoResult;
 	}
 

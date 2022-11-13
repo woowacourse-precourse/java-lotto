@@ -27,7 +27,6 @@ public class LottoTicket {
 	public LottoResult calculateRank(WinningNumber winningNumber, BonusNumber bonusNumber) {
 		List<LottoRanking> rank =  lottoTickets.stream()
 			.map(lotto -> winningNumber.calculateMatchCount(lotto, bonusNumber.getBonusNumber()))
-			.filter(Objects::nonNull)
 			.collect(Collectors.toUnmodifiableList());
 		return new LottoResult(rank);
 	}
