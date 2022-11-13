@@ -119,4 +119,12 @@ class LottoTest {
         assertThatThrownBy(() -> LogicException.verifyJackpotNum(jackpotNumArr))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("보너스 번호는 1부터 45까지여야 한다")
+    @Test
+    void checkBonusNum() {
+        int bonusNum = 0;
+        assertThatThrownBy(() -> LogicException.verifyBonusNum(bonusNum))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

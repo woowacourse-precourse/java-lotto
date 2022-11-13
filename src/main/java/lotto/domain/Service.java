@@ -63,7 +63,8 @@ public class Service {
     public static int getBonusNumber() {
         Output.outputBonusNumber();
         int bonusNum = Input.inputBonusNumber();
-
+        LogicException.verifyBonusNum(bonusNum);
+        
         return bonusNum;
     }
 

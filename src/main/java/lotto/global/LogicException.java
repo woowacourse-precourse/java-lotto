@@ -32,4 +32,10 @@ public class LogicException {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void verifyBonusNum(int bonusNum) {
+        if(bonusNum < 1 || bonusNum > 45) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
