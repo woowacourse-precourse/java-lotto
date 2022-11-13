@@ -1,6 +1,7 @@
 package lotto.controller;
 
 import lotto.domain.PurchasedAmount;
+import lotto.domain.PurchasedLottos;
 import view.InputView;
 import view.OutputView;
 
@@ -13,6 +14,10 @@ public class LottoController {
         if (purchasedAmount == null) {
             return;
         }
+
+        final PurchasedLottos purchasedLottos = new PurchasedLottos(purchasedAmount.getCount());
+
+        outputView.printPurchasedLottos(purchasedAmount.getCount(), purchasedLottos);
     }
 
     private PurchasedAmount getPurchasedAmount() {
