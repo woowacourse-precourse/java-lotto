@@ -6,15 +6,20 @@ import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 import lotto.domain.Money;
+import lotto.domain.Result;
 import lotto.domain.WinLotto;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoGameController {
 
     public void run() {
         Money money = Money.from(InputView.getMoneyInput());
         Lottos lottos = createLottos(money.getLottoCnt());
+        OutputView.printLottos(lottos, money.getLottoCnt());
         WinLotto winLotto = createWinLotto();
+        Result result = Result.of(lottos, winLotto);
+        OutputView.printResult(result);
     }
 
     private Lottos createLottos(int lottoCnt) {
