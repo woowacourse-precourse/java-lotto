@@ -2,6 +2,9 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
@@ -34,6 +37,33 @@ public class Application {
     static void validateChangeIsZero(int purchaseAmount) {
         if (purchaseAmount % 1000 != 0) {
             throw new IllegalArgumentException("[ERROR] 남는 금액이 존재합니다.");
+        }
+    }
+
+    static List<Integer> inputLottoNumbers(String numbers) {
+        numbers = Console.readLine();
+        return replaceSeparator(numbers);
+    }
+
+    static List<Integer> replaceSeparator(String numbers) {
+        String[] eachNumbers = numbers.split(",");
+        return collectLottoNumbers(eachNumbers);
+    }
+
+    static List<Integer> collectLottoNumbers(String[] eachNumbers) {
+        List<Integer> lottoNumbers = new ArrayList<>();
+        for (int ordinalNumber = 0; ordinalNumber < eachNumbers.length; ordinalNumber++) {
+            String eachNumber = eachNumbers[ordinalNumber];
+            lottoNumbers.add(convertEachNumbers(eachNumber));
+        }
+        return lottoNumbers;
+    }
+
+    static int convertEachNumbers(String eachNumber) {
+        try {
+            return Integer.parseInt(eachNumber);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 정수여야 합니다.");
         }
     }
 }
