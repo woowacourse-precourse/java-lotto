@@ -32,4 +32,15 @@ public class WinningCalculator {
                 .collect(Collectors.toList());
         return numbersConverted;
     }
+
+    private int calculateCountContainNumbers(Lotto lotto) {
+        List<Integer> numbersOfLotto = lotto.getNumbers();
+        int count = 0;
+        for (int number: numbersOfLotto) {
+            if (this.numbers.contains(number)) {
+                count += 1;
+            }
+        }
+        return count;
+    }
 }
