@@ -10,6 +10,10 @@ import lotto.util.Util;
 
 public class LottoGameService {
 
+    private List<Lotto> lottoTickets;
+    private List<Integer> winningNumbers;
+    private int bonusNumber;
+
     public int buyLottoTickets(final String purchaseAmount) {
         validPurchaseAmount(purchaseAmount);
         int lottoTickets = Integer.parseInt(purchaseAmount) / Const.LOTTO_TICKET_PRICE.getValue();
@@ -31,7 +35,7 @@ public class LottoGameService {
 
     public Lotto pickWinningNumbers(final String numbers) {
         validWinningNumbers(numbers);
-        List<Integer> winningNumbers = Util.stringToIntegerList(numbers);
+        winningNumbers = Util.stringToIntegerList(numbers);
         return Lotto.drawLotto(winningNumbers);
     }
 
@@ -46,7 +50,7 @@ public class LottoGameService {
     }
 
     public List<Lotto> saveLottoTickets(final int lottoTicketCount) {
-        List<Lotto> lottoTickets = new ArrayList<>();
+        lottoTickets = new ArrayList<>();
         for (int i = 0; i < lottoTicketCount; i++) {
             lottoTickets.add(Lotto.issueLottoTicket());
         }
@@ -64,9 +68,12 @@ public class LottoGameService {
                 ErrorMessage.LOTTO_NUMBER_NOT_NUMBER.getErrorMessage());
         }
 
-        int value = Integer.parseInt(number);
-        if (value < 1 || value > 45) {
+        int bonusNumber = Integer.parseInt(number);
+        if (bonusNumber < 1 || bonusNumber > 45) {
             throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_RANGE.getErrorMessage());
+        }
+        if (winningNumbers.contains(bonusNumber)) {
+            throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_OVERLAP.getErrorMessage());
         }
     }
 }
