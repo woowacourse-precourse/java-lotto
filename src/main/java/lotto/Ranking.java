@@ -1,14 +1,14 @@
-package lotto.domain;
+package lotto;
 
 import java.util.Arrays;
 
 public enum Ranking {
-    FIRST(Lotto.RANK_FIRST, 6, 0, 2_000_000_000L, "2,000,000,000"),
-    SECOND(Lotto.RANK_SECOND, 5, 1, 30_000_000L, "30,000,000"),
-    THIRD(Lotto.RANK_THIRD, 5, 0, 1_500_000L, "1,500,000"),
-    FOURTH(Lotto.RANK_FOURTH, 4, 0, 50_000L, "50,000"),
-    FIFTH(Lotto.RANK_FIFTH, 3, 0, 5_000L, "5,000"),
-    LOSE(Lotto.LOSE, -1, -1, 0L, "0");
+    FIRST("1ST", 6, 0, 2_000_000_000L, "2,000,000,000"),
+    SECOND("2ND", 5, 1, 30_000_000L, "30,000,000"),
+    THIRD("3RD", 5, 0, 1_500_000L, "1,500,000"),
+    FOURTH("4TH", 4, 0, 50_000L, "50,000"),
+    FIFTH("5TH", 3, 0, 5_000L, "5,000"),
+    LOSE("LOST", -1, -1, 0L, "0");
 
     private String label;
     private int winningCount;
@@ -27,7 +27,7 @@ public enum Ranking {
     public static Ranking getRank(int winningCount, int bonusCount) {
         if (winningCount == 5 && bonusCount == 1) {
             return Arrays.stream(Ranking.values())
-                    .filter(rank -> rank.label.equals(Lotto.RANK_SECOND))
+                    .filter(rank -> rank.label.equals(SECOND.getLabel()))
                     .findAny()
                     .orElse(LOSE);
         }
