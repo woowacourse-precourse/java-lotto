@@ -3,7 +3,7 @@ package lotto;
 import java.util.List;
 
 public class Application {
-    public static final String _error = "[ERROR]";
+    private static final String _error = "[ERROR]";
 
     public static void main(String[] args) {
         int money = LottoInStream.readAmount();
