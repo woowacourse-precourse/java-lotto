@@ -10,6 +10,7 @@ public class Change {
     public static List<Integer> lottoNumber(String winningNumber) {
         checkAnyWord(winningNumber);
         checkManyDot(winningNumber);
+        checkFirstWord(winningNumber);
         List<String> newWinningNumber = Arrays.asList(winningNumber.split(","));
         List<Integer> result = new ArrayList<>();
         for (String number : newWinningNumber) {
@@ -37,7 +38,14 @@ public class Change {
 
     private static void checkAnyWord(String winningNumber) {
         if (!(winningNumber.matches(REGEX) || winningNumber.contains(","))) {
-            System.out.println("[ERROR] 당첨번호를 다시 입력해주세요. - 다른 문자 입력");
+            System.out.println("[ERROR] 당첨번호를 다시 입력해주세요. - 유효하지 않은 문자 입력");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void checkFirstWord(String winningNumber) {
+        if (!String.valueOf(winningNumber.charAt(0)).matches(REGEX)){
+            System.out.println("[ERROR] 당첨번호를 다시 입력해주세요. - 첫번째에 문자 입력");
             throw new IllegalArgumentException();
         }
     }
