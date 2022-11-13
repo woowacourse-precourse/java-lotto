@@ -107,16 +107,25 @@ public class LottoAnalyst {
     }
 
     public double calculateRateOfReturn() {
-        int amountOfReturn = 0;
-
-        for (Map.Entry<RankingInformation, Integer> oneRank : statistics.entrySet()) {
-            amountOfReturn += oneRank.getKey().getAmountOfReturn() * oneRank.getValue();
-        }
+        int amountOfReturn = calculateAmountOfReturn();
 
         double rateOfReturn = (double) amountOfReturn / (double) purchaseAmount;
         rateOfReturn = rateOfReturn * 100;
         rateOfReturn = Math.round(rateOfReturn * 10) / 10.0;
 
         return rateOfReturn;
+    }
+
+    private int calculateAmountOfReturn() {
+        int amountOfReturn = 0;
+
+        for (Map.Entry<RankingInformation, Integer> oneRank : statistics.entrySet()) {
+            int returnOfRank = oneRank.getKey().getAmountOfReturn();
+            int numberOfRank = oneRank.getValue();
+
+            amountOfReturn += returnOfRank * numberOfRank;
+        }
+
+        return amountOfReturn;
     }
 }
