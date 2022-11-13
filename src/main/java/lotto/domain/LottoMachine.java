@@ -31,7 +31,7 @@ public class LottoMachine {
     public static List<String> getBonusNumber(String readLine) {
         List<String> bonusNumber = new ArrayList<>();
 
-        Exceptions.getOutExcludingNumbers(readLine);
+        Exceptions.excludeNoBonusNumber(readLine);
         bonusNumber.add(readLine);
         return bonusNumber;
     }
