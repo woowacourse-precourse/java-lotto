@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
@@ -83,5 +84,16 @@ class LotteryMachineTest {
                 .isEqualTo(6);
     }
 
+    @DisplayName("총 수익률 계산 테스트")
+    @Test
+    void rateOfReturnIsCorrect() {
+        int[] lottoResult = {1, 0, 0, 0, 0};
+        int buyMoney = 8000;
+        LotteryMachine lotteryMachine = new LotteryMachine();
+
+        Assertions.assertThat(lotteryMachine.calculateRateOfReturn(lottoResult,buyMoney))
+                .isEqualTo(62.5);
+
+    }
 
 }
