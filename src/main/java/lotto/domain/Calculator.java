@@ -25,10 +25,7 @@ public class Calculator {
 
     public static Rank calculateRank(WinningNumbers winningNumbers, Lotto lotto) {
         int count = getWinningNumberCounts(winningNumbers, lotto);
-        if (count == 5 && hasBonus(winningNumbers, lotto)) {
-            return Rank.SECOND;
-        }
-        return getRankByMatch(count);
+        return getRankByMatch(count, winningNumbers, lotto);
     }
 
     private static int getWinningNumberCounts(WinningNumbers winningNumbers, Lotto lotto) {
@@ -41,8 +38,11 @@ public class Calculator {
         return count;
     }
 
-    public static Rank getRankByMatch(int match) {
+    public static Rank getRankByMatch(int match, WinningNumbers winningNumbers, Lotto lotto) {
         for (Rank rank : Rank.values()) {
+            if (rank.getMatch() == 2 && hasBonus(winningNumbers, lotto)) {
+                return Rank.SECOND;
+            }
             if (rank.getMatch() == match) {
                 return rank;
             }
