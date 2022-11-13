@@ -7,20 +7,25 @@ import java.util.List;
 import java.util.Collections;
 
 public class DrawNumber {
-    public static List<List<Integer>> lottos = new ArrayList<>();
+    public static List<Lotto> lottos = new ArrayList<Lotto>();
 
-    public static void generateNumber(int ticketAmount) {
-        System.out.println(ticketAmount + GameMessage.PURCHASE_MESSAGE.getMessage());
-        for (int count = 0; count < ticketAmount; count++) {
-            List<Integer> oneTicketNumber = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
-            Collections.sort(oneTicketNumber);
-            lottos.add(oneTicketNumber);
+    public DrawNumber(int ticketAmount) {
+        generateNumber(ticketAmount);
+        printNumber();
+    }
+
+    private void generateNumber(int ticketAmount) {
+        for (int times = 0; times < ticketAmount; times++) {
+            List<Integer> oneDrawNumber = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+            Collections.sort(oneDrawNumber);
+            Lotto oneLotto = new Lotto(oneDrawNumber);
+            lottos.add(oneLotto);
         }
     }
 
-    public static void printNumber(int ticketAmount) {
-        for (int count = 0; count < ticketAmount; count++) {
-            System.out.println(lottos.get(count));
+    public void printNumber() {
+        for (int oneLotto = 0; oneLotto < lottos.size(); oneLotto++) {
+            System.out.println(lottos.get(oneLotto));
         }
     }
 }

@@ -40,9 +40,9 @@ public class Lotto {
         return numbers.contains(luckyBonus);
     }
 
-    public int hasSameElement(List<Integer> drawNumber) {
+    public int hasSameElement(Lotto drawNumber) {
         List<Integer> sameNumber = numbers.stream()
-                .filter(numbers -> drawNumber.stream().anyMatch(Predicate.isEqual(numbers)))
+                .filter(numbers -> drawNumber.numbers.stream().anyMatch(Predicate.isEqual(numbers)))
                 .collect(Collectors.toList());
         return sameNumber.size();
     }

@@ -23,15 +23,12 @@ public class LuckyBonus {
     }
 
     private void validateBonusInclude(int tempLuckyBonus) {
-        if (LuckySix.luckySix.contains(tempLuckyBonus)) {
+        if (LuckySix.luckySix.isIncludeBonus(tempLuckyBonus)) {
             throw new IllegalArgumentException(GameMessage.LUCKY_DUPLICATE_ERROR_MESSAGE.getMessage());
         }
     }
 
     private int convertBonusType(String luckyBonusInput) {
-        if (!Character.isDigit(luckyBonusInput.charAt(0))) {
-            throw new IllegalArgumentException(GameMessage.INTEGER_ERROR_MESSAGE.getMessage());
-        }
         return Integer.parseInt(luckyBonusInput);
     }
 }
