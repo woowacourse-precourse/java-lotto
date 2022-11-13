@@ -59,7 +59,7 @@ public class Lotto {
         for (int singleLotto = 0; singleLotto < normalNumbers.size(); singleLotto++){
             int match = normalNumbers.get(singleLotto);
             boolean bonus = bonusNumbers.get(singleLotto);
-            sum += WinningNumbers.getReward(match, bonus);
+            sum += WinningNumbers.getMatchedReward(match, bonus);
         }
 
         return sum/totalMoney;

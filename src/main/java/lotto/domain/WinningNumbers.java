@@ -15,7 +15,7 @@ public enum WinningNumbers {
         this.matches = matches;
         this.reward = reward;
     }
-    public static long getReward(int matches, boolean bonusCheck) {
+    public static long getMatchedReward(int matches, boolean bonusCheck) {
         if (matches == 5 && bonusCheck) {
             return FIVE_BONUS.reward;
         }
