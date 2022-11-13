@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static lotto.constant.ExceptionConstants.*;
-import static lotto.constant.LottoConstants.*;
+import static lotto.constant.GameConstants.*;
 
 public class Lotto {
     private final List<Integer> numbers;

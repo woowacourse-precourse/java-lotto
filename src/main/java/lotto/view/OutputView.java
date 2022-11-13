@@ -2,7 +2,7 @@ package lotto.view;
 
 import lotto.domain.Lotto;
 
-import static lotto.constant.LottoConstants.*;
+import static lotto.constant.GameConstants.*;
 import static lotto.constant.OutputConstants.*;
 
 public class OutputView {

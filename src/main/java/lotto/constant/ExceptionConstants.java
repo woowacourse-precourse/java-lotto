@@ -1,6 +1,6 @@
 package lotto.constant;
 
-import static lotto.constant.LottoConstants.*;
+import static lotto.constant.GameConstants.*;
 
 public enum ExceptionConstants {
 

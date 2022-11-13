@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
 
-import static lotto.constant.LottoConstants.*;
+import static lotto.constant.GameConstants.*;
 
 public class Computer {
 
