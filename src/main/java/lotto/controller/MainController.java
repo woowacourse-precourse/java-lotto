@@ -43,9 +43,7 @@ public class MainController {
 
         while (lottoNumList.size() < count) {
             List<Integer> lottoNum = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            if (!lottoNumList.contains(lottoNum)) {
-                lottoNumList.add(lottoNum);
-            }
+            lottoNumList.add(lottoNum);
         }
 
         return lottoNumList;
