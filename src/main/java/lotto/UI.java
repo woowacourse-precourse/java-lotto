@@ -20,6 +20,15 @@ public class UI {
         return Integer.parseInt(Console.readLine());
     }
 
+    public static void printBuyingLotto(int count, List<Lotto> lotteries) {
+        System.out.println();
+        System.out.println(count + "개를 구매했습니다.");
+        for (Lotto lotto : lotteries) {
+            List<Integer> lottoNumbers = lotto.getNumbers();
+            System.out.println(lottoNumbers);
+        }
+    }
+
     public static Integer enterBonusNumber() {
         return Integer.parseInt(Console.readLine());
     }
@@ -31,6 +40,5 @@ public class UI {
     public static void setCost() {
         cost = Integer.parseInt(Console.readLine());
     }
-
 
 }
