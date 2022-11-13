@@ -8,12 +8,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-class LottosGeneratorTest {
-
+public class GeneratorTest {
     @Nested
     @DisplayName("로또 그룹 생성 검증")
     class GenerateLottosTest{
-        LottosGenerator generator = new LottosGenerator();
+        Generator generator = new Generator();
 
         @Test
         @DisplayName("지정 개수의 lotto 그룹을 만들어내는지 검증")
@@ -27,5 +26,4 @@ class LottosGeneratorTest {
         }
 
     }
-
 }
