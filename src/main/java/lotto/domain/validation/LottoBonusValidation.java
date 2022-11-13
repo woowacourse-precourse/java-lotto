@@ -1,5 +1,6 @@
 package lotto.domain.validation;
 
+import java.util.List;
 import lotto.domain.LottoEnum;
 import lotto.view.validation.ExceptionMessage;
 
@@ -9,6 +10,12 @@ public class LottoBonusValidation {
         validateOnlyNumber(userInput);
         int bonus = Integer.parseInt(userInput);
         validateNumberRange(bonus);
+    }
+
+    public static void validateDuplicateNumber(List<Integer> numbers, String bonus) {
+        if (numbers.contains(Integer.valueOf(bonus))) {
+            throw new IllegalArgumentException();
+        }
     }
 
     private static void validateOnlyNumber(String userInput) {

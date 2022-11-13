@@ -79,6 +79,7 @@ public class LottoMachine {
         String bonus = InputView.inputBonusNumber();
         try {
             LottoBonusValidation.validate(bonus);
+            LottoBonusValidation.validateDuplicateNumber(userNumbers, bonus);
             userBonus =  Integer.valueOf(bonus);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
