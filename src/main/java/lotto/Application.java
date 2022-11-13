@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Application {
-    enum NumberType { WINNING, BONUS, NORMAL };
+    enum NumberType { WINNING, BONUS, NONE };
+
+    static NumberType[] numberTypeCheck = new NumberType[46];
 
     public static void guideWinningNumberFormat() { System.out.print("당첨 번호 6개를 쉼표로 구분해 입력해주세요: "); }
 
@@ -57,16 +59,14 @@ public class Application {
         }
     }
 
-    public static NumberType[] checkNumberTypeByIndex(List<Integer> winningNumbers) {
-        NumberType[] numberTypeCheck = new NumberType[46];
+    public static void checkNumberTypeByIndex(List<Integer> winningNumbers) {
         for (int number = 1; number <= 45; number++)
-            numberTypeCheck[number] = NumberType.NORMAL;
+            numberTypeCheck[number] = NumberType.NONE;
         for (int number : winningNumbers)
             numberTypeCheck[number] = NumberType.WINNING;
-        return numberTypeCheck;
     }
 
-    public static NumberType[] getWinningNumbers() {
+    public static void getWinningNumbers() {
         guideWinningNumberFormat();
         String winningNumberInput = Console.readLine();
 
@@ -79,7 +79,7 @@ public class Application {
         List<Integer> winningNumbers = parseNumbers(splitNumbers);
         checkRange(winningNumbers);
         isDuplicated(winningNumbers);
-        return checkNumberTypeByIndex(winningNumbers);
+        checkNumberTypeByIndex(winningNumbers);
     }
 
     public static void guideBonusNumberFormat() {
@@ -101,7 +101,7 @@ public class Application {
             throw new IllegalArgumentException("당첨번호가 아닌 다른 보너스 번호를 입력하십시오.");
     }
 
-    public static NumberType[] getBonusNumber(NumberType[] numberTypeCheck) {
+    public static void getBonusNumber() {
         guideBonusNumberFormat();
         String bonusNumberInput = Console.readLine();
 
@@ -113,7 +113,6 @@ public class Application {
         checkRange(bonusNumber);
         isDuplicatedWithWinningNumbers(numberTypeCheck, bonusNumber);
         numberTypeCheck[bonusNumber.get(0)] = NumberType.BONUS;
-        return numberTypeCheck;
     }
 
     public static void guidePurchasePriceFormat() {
@@ -145,8 +144,15 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        NumberType[] numberTypeCheck = getWinningNumbers();
-        numberTypeCheck = getBonusNumber(numberTypeCheck);
-        int noOfLotto = getNoOfLotto();
+        getWinningNumbers();
+        getBonusNumber();
+
+        // TODO: implement following methods
+        /*
+        generateLottoNumbers(getNoOfLotto());
+        printLottos();
+        printLottoResults();
+        printEarningsRate();
+        */
     }
 }
