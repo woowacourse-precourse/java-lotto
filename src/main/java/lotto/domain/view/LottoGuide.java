@@ -16,6 +16,8 @@ public class LottoGuide {
 
         int purchaseAmount = Integer.parseInt(Console.readLine());
 
+        System.out.print("\n");
+
         return purchaseAmount;
     }
 
@@ -23,6 +25,7 @@ public class LottoGuide {
         System.out.println(lottos.size() + GuideSentences.OUTPUT_NUMBER_OF_PURCHASES.getSentence());
 
         lottos.forEach(oneLotto -> System.out.println(oneLotto.getNumbers()));
+        System.out.print("\n");
     }
 
     public List<Integer> getWinningNumbers() {
@@ -30,12 +33,14 @@ public class LottoGuide {
 
         String inputNumbers = Console.readLine();
 
-        List<Integer> winningNumbers = convertToWinningNumbers(inputNumbers);
+        List<Integer> winningNumbers = convertInputToWinningNumbers(inputNumbers);
+
+        System.out.print("\n");
 
         return winningNumbers;
     }
 
-    private List<Integer> convertToWinningNumbers(String inputNumbers) {
+    private List<Integer> convertInputToWinningNumbers(String inputNumbers) {
         return Arrays.stream(inputNumbers.split(","))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
@@ -45,6 +50,8 @@ public class LottoGuide {
         System.out.println(GuideSentences.INPUT_BONUS_NUMBER.getSentence());
 
         int bonusNumber = Integer.parseInt(Console.readLine());
+
+        System.out.print("\n");
 
         return bonusNumber;
     }
