@@ -16,13 +16,15 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorMessage.ERROR_SIZE_IS_NOT_SIX);
         }
-        for(Integer number: numbers) {
-            if(!(1<= number && number <= 45)) {
+        for (Integer number : numbers) {
+            if (!(1 <= number && number <= 45)) {
                 throw new IllegalArgumentException(ErrorMessage.ERROR_RANGE_OUT);
             }
         }
         Set<Integer> isUnique = new HashSet<>(numbers);
-        if(isUnique.size()!=6) throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_UNIQUE);
+        if (isUnique.size() != 6) {
+            throw new IllegalArgumentException(ErrorMessage.ERROR_NOT_UNIQUE);
+        }
 
     }
 
