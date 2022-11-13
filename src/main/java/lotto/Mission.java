@@ -50,7 +50,7 @@ public class Mission {
 
         output.printLottoResultTitle();
         EnumMap<Rank, Integer> result = repository.getResult();
-        result.forEach((rank, count) -> callOutputAboutRank(rank, count));
+        result.forEach(this::callOutputAboutRank);
 
         double rate = getRate(money.getMoney(), priceMoney);
 
