@@ -28,6 +28,7 @@ public class Lottocontroller {
         Rating_start(score, paper, lottos, lucky, bonusnumber);
 
         Earning earning = new_earning(score);
+        earning.Set_percent(money.Get_money());
     }
 
     private Money inputMoney(){

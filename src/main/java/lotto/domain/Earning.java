@@ -4,12 +4,16 @@ import javax.swing.*;
 
 public class Earning {
     private int earning;
+    private String earning_percent;
 
     public Earning(Score score){
         for (int i = 0; i < score.Get_size(); i++) {
             Plus_score(score.Get_val(i), Select_price(i));
         }
-        System.out.println(earning);
+    }
+
+    public void Set_percent(int money){
+        earning_percent = String.format("%.1f", (double) earning / money * 100);
     }
 
     private void Plus_score(int score, int won){
