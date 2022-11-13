@@ -1,8 +1,6 @@
 package lotto;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -15,7 +13,11 @@ public class Lotto {
     }
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("번호가 6개가 아닙니다");
+        }
+        Set<Integer> duplication = new HashSet<>(numbers);
+        if (numbers.size() != duplication.size()) {
+            throw new IllegalArgumentException("중복된 번호가 있습니다.");
         }
     }
     public static List<Integer> create() {
@@ -24,6 +26,9 @@ public class Lotto {
         Collections.sort(lottoNumbers);
 
         return lottoNumbers;
+    }
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     // TODO: 추가 기능 구현
