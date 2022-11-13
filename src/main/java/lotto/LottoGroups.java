@@ -12,4 +12,12 @@ public class LottoGroups {
     public int getLottosSize() {
         return lottos.size();
     }
+
+    public void printAmountOfLottosComment() {
+        System.out.println(lottos.size() + "개를 구매했습니다.");
+    }
+
+    public void printAllLottos() {
+        this.lottos.stream().forEach(lotto -> System.out.println(lotto.getLotto()));
+    }
 }

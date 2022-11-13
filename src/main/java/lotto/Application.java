@@ -11,6 +11,8 @@ public class Application {
         printInputMoneyComment();
         Money money = new Money(toInt(Console.readLine()));
         LottoGroups lottos = new LottoGroups(createLottos(money.getNumberToPublishLottos()));
+        lottos.printAmountOfLottosComment();
+        lottos.printAllLottos();
 
     }
 
