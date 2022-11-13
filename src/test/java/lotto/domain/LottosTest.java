@@ -37,4 +37,26 @@ class LottosTest {
         assertThat(lottos.result(new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), LottoNumber.of(7))))
                 .isEqualTo(lottoResult);
     }
+
+    @DisplayName("로또들을 반환한다.")
+    @Test
+    void lottos() {
+        Lottos lottos = new Lottos(List.of(
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                new Lotto(List.of(1, 2, 3, 4, 5, 7)),
+                new Lotto(List.of(1, 2, 3, 4, 5, 8)),
+                new Lotto(List.of(1, 2, 3, 4, 9, 10)),
+                new Lotto(List.of(1, 2, 3, 9, 10, 11)),
+                new Lotto(List.of(1, 2, 9, 10, 11, 12))
+        ));
+
+        assertThat(lottos.lottos()).containsExactly(
+                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
+                new Lotto(List.of(1, 2, 3, 4, 5, 7)),
+                new Lotto(List.of(1, 2, 3, 4, 5, 8)),
+                new Lotto(List.of(1, 2, 3, 4, 9, 10)),
+                new Lotto(List.of(1, 2, 3, 9, 10, 11)),
+                new Lotto(List.of(1, 2, 9, 10, 11, 12))
+        );
+    }
 }
