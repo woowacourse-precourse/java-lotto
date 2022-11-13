@@ -18,7 +18,6 @@ public class Lotto {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되면 안 됩니다.");
     }
 
-    // TODO: 추가 기능 구현
     public List<Integer> getNumbers() {
         return numbers;
     }
