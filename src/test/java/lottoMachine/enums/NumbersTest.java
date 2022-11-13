@@ -2,7 +2,6 @@ package lottoMachine.enums;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import lottoMachine.enums.Numbers;
 import org.junit.jupiter.api.Test;
 
 public class NumbersTest {
@@ -36,7 +35,7 @@ public class NumbersTest {
     }
 
     @Test
-    void ENum_보너스번호_사이즈는_1입니다() {
+    void Enum_보너스번호_사이즈는_1입니다() {
         int bonusNumberSize = Numbers.BONUS_NUMBER_SIZE.getValue();
 
         assertThat(bonusNumberSize).isEqualTo(1);

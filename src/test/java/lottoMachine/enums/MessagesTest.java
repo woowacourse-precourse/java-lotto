@@ -1,7 +1,7 @@
 package lottoMachine.enums;
 
 import static lottoMachine.enums.Messages.ERROR_MESSAGE_PREFIX;
-import static lottoMachine.enums.Messages.PRICE_ERROR_MESSAGE;
+import static lottoMachine.enums.Messages.PRICE_UNIT_ERROR_MESSAGE;
 import static lottoMachine.enums.Messages.RATE_OF_RETURN_MESSAGE;
 import static lottoMachine.enums.Messages.RESULT_OF_PURCHASE_MESSAGE;
 import static lottoMachine.enums.Messages.WINNING_STATISTICS_MESSAGE;
@@ -50,7 +50,7 @@ public class MessagesTest {
 
     @Test
     void 에러메세지_Enum이_잘_적용되는지_확인합니다() {
-        String errorMessage = ERROR_MESSAGE_PREFIX.toString() + PRICE_ERROR_MESSAGE;
+        String errorMessage = ERROR_MESSAGE_PREFIX.toString() + PRICE_UNIT_ERROR_MESSAGE;
 
         assertThat(errorMessage).isEqualTo("[ERROR] 금액은 1000원 단위 숫자여야 합니다.");
     }
