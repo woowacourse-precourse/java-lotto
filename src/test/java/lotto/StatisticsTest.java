@@ -37,4 +37,17 @@ public class StatisticsTest {
         // then
         assertThat(grade).isEqualTo("SECOND");
     }
+
+    @DisplayName("발행한 로또의 등수를 확인한다.")
+    @Test
+    void checkLottoGrade() {
+        // given
+        Statistics statistics = new Statistics();
+
+        // when
+        String grade = statistics.checkLottoGrade(6);
+
+        // then
+        assertThat(grade).isEqualTo("FIRST");
+    }
 }
