@@ -1,7 +1,6 @@
 package domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import util.Constant;
 
 import java.util.*;
 import java.util.stream.Collectors;

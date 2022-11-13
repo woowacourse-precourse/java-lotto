@@ -1,10 +1,8 @@
 package domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import lotto.Lotto;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static util.Constant.*;
 
