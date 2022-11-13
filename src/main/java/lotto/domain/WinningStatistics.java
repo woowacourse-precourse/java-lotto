@@ -25,17 +25,19 @@ public class WinningStatistics {
     }
 
     private static boolean compareNumbersWithBonusNumber(Lotto lotto, WinningLotto winningLotto, int matchingCount) {
-        if (matchingCount != 5) return false;
+        if (matchingCount != 5) {
+            return false;
+        }
         List<Integer> numbers = lotto.getNumbers();
         int bonusNumber = winningLotto.getBonusNumber();
         return numbers.contains(bonusNumber);
     }
-    
+
     public static double getLottoYield(Map<WinningRank, Integer> winningDetails, int money) {
         long winningAmount = winningDetails.entrySet().stream()
                 .filter(entry -> entry.getValue() != 0)
                 .mapToLong(entry -> (long) entry.getKey().getWinningPrice() * entry.getValue())
                 .sum();
-        return 100 + (double)(winningAmount - money) / money * 100;
+        return 100 + (double) (winningAmount - money) / money * 100;
     }
 }
