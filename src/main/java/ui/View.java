@@ -1,9 +1,8 @@
 package ui;
 
-import ui.PrizeMessage;
+import lotto.Lotto;
 import user.User;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class View {
@@ -27,8 +26,8 @@ public class View {
         System.out.println(PROMPT_BONUS_NUMBER);
     }
 
-    public static void printPurchaseResult(int mount) {
-        System.out.println(mount + RESULT_PURCHASE_MOUNT);
+    public static void printPurchaseMount(User user) {
+        System.out.println(user.getLottoMount() + RESULT_PURCHASE_MOUNT);
     }
 
     public static void printWinnigSummary(List<Integer> correctList) {
@@ -39,7 +38,11 @@ public class View {
             System.out.println(message + correctList.get(value.ordinal()) + "개");
         }
     }
-
+    public static void printLottoList(User user){
+        for(Lotto lotto : user.getLottos()){
+            View.printLottoNumber(lotto.toNumberForm());
+        }
+    }
     public static void printLottoNumber(String numberForm) {
         System.out.println(numberForm);
     }
