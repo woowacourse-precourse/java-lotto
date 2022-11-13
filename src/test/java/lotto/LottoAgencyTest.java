@@ -11,7 +11,7 @@ public class LottoAgencyTest {
     @DisplayName("5000원을 전달받아서 로또를 5회 발행한다")
     @Test
     void issueLottoBy5000() {
-        Assertions.assertThat(new LottoAgency(5000, new numberGenerator().generate()).issue()).hasSize(5);
+        Assertions.assertThat(new LottoAgency(5000, new NumberGenerator().generate()).issue()).hasSize(5);
     }
 
     @DisplayName("발행된 로또 번호에 중복된 번호가 있다면 재발행한다")
