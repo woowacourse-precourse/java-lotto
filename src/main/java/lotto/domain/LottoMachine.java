@@ -19,21 +19,17 @@ public class LottoMachine {
     public void draw(List<Integer> wins, List<Integer> bonuses) {
         List<Integer> numbers = new ArrayList<>();
 
-        List<String> winInputs = inputNumber(LOTTO_LENGTH);
-        List<Integer> winNumbers = formatStringToNumber(winInputs);
-        winNumbers.stream().forEach(number -> {
-            checkAlreadyExistedNumber(numbers, number);
-            numbers.add(number);
-            wins.add(number);
-        });
+        draw(wins, numbers, LOTTO_LENGTH);
+        draw(bonuses, numbers, BONUS_LOTTO_LENGTH);
+    }
 
-        if(BONUS_LOTTO_LENGTH > 0) {
-            List<String> bonusInputs = inputNumber(BONUS_LOTTO_LENGTH);
-            List<Integer> bonusNumbers = formatStringToNumber(bonusInputs);
-            bonusNumbers.stream().forEach(number -> {
-                checkAlreadyExistedNumber(numbers, number);
+    private void draw(List<Integer> numbers, List<Integer> totalNumbers, int length) {
+        if(length > 0) {
+            List<String> inputs = inputNumber(length);
+            formatStringToNumber(inputs).stream().forEach(number -> {
+                checkAlreadyExistedNumber(totalNumbers, number);
+                totalNumbers.add(number);
                 numbers.add(number);
-                bonuses.add(number);
             });
         }
     }
