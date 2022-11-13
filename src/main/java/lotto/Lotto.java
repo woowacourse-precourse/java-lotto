@@ -43,4 +43,10 @@ public class Lotto {
         Collections.sort(Lotto);
         return Lotto;
     }
+    public static List<Integer> winner(){
+        String winNum = readLine();
+        List<String> winner = Arrays.asList(winNum.split(","));
+        List<Integer> winNumber = winner.stream().map(s-> Integer.parseInt(s)).collect(Collectors.toList());
+        return winNumber;
+    }
 }
