@@ -3,7 +3,6 @@ package lotto;
 import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
-import java.util.Collections;
 
 public class Lotto {
     private final List<Integer> numbers;
