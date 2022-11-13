@@ -10,11 +10,16 @@ import java.util.EnumMap;
 
 public class Application {
     enum NumberType { WINNING, BONUS, NONE };
-    enum Places { FIRST, SECOND, THIRD, FOURTH, FIFTH };
+    enum Places { FIRST, SECOND, THIRD, FOURTH, FIFTH, NONE };
 
     static NumberType[] numberTypeCheck = new NumberType[46];
-    static Map<Places, Integer> noOfLottoIn = new EnumMap<>(Places.class);
+    static public Map<Places, Integer> noOfLottoWinAt = new EnumMap<>(Places.class);
     static int noOfLottos;
+
+    public static void initializeNoOfLottoWinAt() {
+        for (Places place: Places.values())
+            noOfLottoWinAt.put(place, 0);
+    }
 
     public static void guideWinningNumberFormat() { System.out.print("당첨 번호 6개를 쉼표로 구분해 입력해주세요: "); }
 
@@ -123,7 +128,7 @@ public class Application {
     }
 
     public static void guidePurchasePriceFormat() {
-        System.out.println("구매 금액(원 단위)을 1000의 배수로 입력해 주세요(최대 20억원)");
+        System.out.println("\n구매 금액(원 단위)을 1000의 배수로 입력해 주세요(최대 20억원)");
     }
 
     public static void isDividedBy1000(Long purchasePrice) {
@@ -150,9 +155,7 @@ public class Application {
         noOfLottos = (int)(purchasePrice / 1000);
     }
 
-    public static void printNoOfPurchasedLottos() {
-        System.out.printf("%d개를 구매했습니다.\n", noOfLottos);
-    }
+    public static void printNoOfPurchasedLottos() { System.out.printf("\n%d개를 구매했습니다.\n", noOfLottos); }
 
     public static void generateLottoNumbers() {
         for (int no = 0; no < noOfLottos; no++) {
@@ -161,12 +164,19 @@ public class Application {
         }
     }
 
-    public static void getComparisonResults() {
-        // TODO: implement method to compare purchased Lottos and winning & bonus numbers
-    }
-
     public static void printLottoResults() {
-        // TODO: implement method to print result of comparison between winning numbers and purchased Lottos
+        System.out.println("\n당첨 내역");
+        System.out.println("--------");
+        System.out.printf("3개 일치 (5,000원) - %d개\n",
+                noOfLottoWinAt.get(Places.FIFTH));
+        System.out.printf("4개 일치 (50,000원) - %d개\n",
+                noOfLottoWinAt.get(Places.FOURTH));
+        System.out.printf("5개 일치 (1,500,000원) - %d개\n",
+                noOfLottoWinAt.get(Places.THIRD));
+        System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개\n",
+                noOfLottoWinAt.get(Places.SECOND));
+        System.out.printf("6개 일치 (2,000,000,000원) - %d개\n",
+                noOfLottoWinAt.get(Places.FIRST));
     }
 
     public static void printEarningsRate() {
@@ -174,6 +184,8 @@ public class Application {
     }
 
     public static void main(String[] args) {
+        initializeNoOfLottoWinAt();
+
         getWinningNumbers();
         getBonusNumber();
 
@@ -181,7 +193,6 @@ public class Application {
         printNoOfPurchasedLottos();
         generateLottoNumbers();
 
-        getComparisonResults();
         printLottoResults();
         printEarningsRate();
     }
