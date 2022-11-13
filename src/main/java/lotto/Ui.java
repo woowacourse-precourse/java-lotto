@@ -3,9 +3,7 @@ package lotto;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
-import static java.util.regex.Pattern.*;
 import static lotto.Result.*;
 
 public class Ui {
@@ -33,21 +31,18 @@ public class Ui {
         System.out.println("---");
 
         Result[] results = values();
-        for (int idx = results.length - 1; idx >= 0; idx--) {
-            Result result = results[idx];
+        for (Result result : results) {
             System.out.println(getStatisticsFormat(result, winningData.get(result)));
         }
-
         System.out.print("총 수익률은 " + ratio +"%입니다.");
     }
 
-    private static final String getStatisticsFormat(Result result, int numOfResult) {
+    private static String getStatisticsFormat(Result result, int numOfResult) {
         DecimalFormat decFormat = new DecimalFormat("###,###");
         String prize = decFormat.format(result.getPrize());
         String standard = result.getStandard();
 
         return String.format("%s (%s원) - %d개", standard, prize, numOfResult);
     }
-
 
 }
