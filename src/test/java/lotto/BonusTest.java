@@ -10,19 +10,19 @@ class BonusTest {
     @Test
     void checkBonusException1() {
         Assertions.assertThatThrownBy(() -> {
-            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6, 7));
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             String inputBonus = "  a  ";
             Bonus.inputValidity(inputBonus, lotto);
         }).isInstanceOf(IllegalArgumentException.class);
 
         Assertions.assertThatThrownBy(() -> {
-            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6, 7));
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             String inputBonus = "";
             Bonus.inputValidity(inputBonus, lotto);
         }).isInstanceOf(IllegalArgumentException.class);
 
         Assertions.assertThatThrownBy(() -> {
-            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6, 7));
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             String inputBonus = " ";
             Bonus.inputValidity(inputBonus, lotto);
         }).isInstanceOf(IllegalArgumentException.class);
@@ -32,13 +32,13 @@ class BonusTest {
     @Test
     void checkBonusException2() {
         Assertions.assertThatThrownBy(() -> {
-            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6, 7));
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             String inputBonus = "1";
             Bonus.inputValidity(inputBonus, lotto);
         }).isInstanceOf(IllegalArgumentException.class);
 
         Assertions.assertThatThrownBy(() -> {
-            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6, 7));
+            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
             String inputBonus = "3";
             Bonus.inputValidity(inputBonus, lotto);
         }).isInstanceOf(IllegalArgumentException.class);
@@ -48,13 +48,13 @@ class BonusTest {
     @Test
     void checkBonusException3() {
         Assertions.assertThatThrownBy(() -> {
-            Lotto lotto = new Lotto(List.of(1, 47, 3, 4, 5, 6, 7));
+            Lotto lotto = new Lotto(List.of(1, 47, 4, 5, 6, 7));
             String inputBonus = "48";
             Bonus.inputValidity(inputBonus, lotto);
         }).isInstanceOf(IllegalArgumentException.class);
 
         Assertions.assertThatThrownBy(() -> {
-            Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6, 7));
+            Lotto lotto = new Lotto(List.of(1, 2, 4, 5, 6, 7));
             String inputBonus = "0";
             Bonus.inputValidity(inputBonus, lotto);
         }).isInstanceOf(IllegalArgumentException.class);
