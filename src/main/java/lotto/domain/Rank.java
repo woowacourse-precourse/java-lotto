@@ -4,11 +4,11 @@ import java.util.Optional;
 
 public enum Rank {
 
-    FIRST(6, 0, 2_000_000_000L),
-    SECOND(5, 1, 30_000_000L),
-    THIRD(5, 0, 1_500_000L),
+    FIFTH(3, 0, 5_000L),
     FOURTH(4, 0, 50_000L),
-    FIFTH(  3, 0, 5_000L);
+    THIRD(5, 0, 1_500_000L),
+    SECOND(5, 1, 30_000_000L),
+    FIRST(6, 0, 2_000_000_000L);
 
     private final int sameCount;
     private final int bonusCount;
