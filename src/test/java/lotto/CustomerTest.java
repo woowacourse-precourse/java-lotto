@@ -45,7 +45,7 @@ public class CustomerTest {
         Customer customer = new Customer();
 
         // when
-        customer.inputWinningNumber("1,2,3,4,5,6");
+        customer.inputWinningNumber("1 ,2,3,4,5,6");
         boolean wellEntered = true;
         for (int i = 1; i <= 6; i++) {
             if (customer.getWinningNumber().get(i - 1) != i) {

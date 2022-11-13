@@ -20,8 +20,6 @@ public class Customer {
     private int bonusNumber;
 
     public Customer() {
-        winningNumber = new ArrayList<>();
-        bonusNumber = -1;
     }
 
     public int buy(String input) {
@@ -31,14 +29,15 @@ public class Customer {
 
     public void inputWinningNumber(String input) {
         winningNumberValidate(input);
-
-        StringTokenizer delimitedInput = commaDelimited(input);
-        convertInputToLotto(delimitedInput);
+        convertInputToLotto(input);
     }
 
-    private void convertInputToLotto(StringTokenizer delimitedInput) {
+    private void convertInputToLotto(String input) {
+        StringTokenizer delimitedInput = commaDelimited(input);
+        winningNumber = new ArrayList<>();
+
         while (delimitedInput.hasMoreTokens()) {
-            winningNumber.add(Integer.parseInt(delimitedInput.nextToken()));
+            winningNumber.add(Integer.parseInt(removeLeadingAndTrailingSpaces(delimitedInput.nextToken())));
         }
     }
 
@@ -59,9 +58,9 @@ public class Customer {
 
         while (delimitedInput.hasMoreTokens()) {
             String input = delimitedInput.nextToken();
-            input = input.trim();
-
+            input = removeLeadingAndTrailingSpaces(input);
             isNotWrongRange(input);
+
             numbers.add(Integer.parseInt(input));
         }
 
@@ -78,18 +77,18 @@ public class Customer {
         }
     }
 
-    private void isNotWrongLength(StringTokenizer delimitedInput) {
-        if (!SIZE.equals(delimitedInput.countTokens())) {
-            throw new IllegalArgumentException(WRONG_LENGTH.toString());
-        }
-    }
-
     private void isNotWrongRange(String input) {
         isContainNumber(input);
         int stringToInt = Integer.parseInt(input);
 
         if (!(1 <= stringToInt && stringToInt <= 45)) {
             throw new IllegalArgumentException(WRONG_RANGE.toString());
+        }
+    }
+
+    private void isNotWrongLength(StringTokenizer delimitedInput) {
+        if (!SIZE.equals(delimitedInput.countTokens())) {
+            throw new IllegalArgumentException(WRONG_LENGTH.toString());
         }
     }
 
@@ -118,6 +117,10 @@ public class Customer {
     }
     private StringTokenizer commaDelimited(String input) {
         return new StringTokenizer(input, ",");
+    }
+
+    private String removeLeadingAndTrailingSpaces(String input) {
+        return input.trim();
     }
 
     public List<Integer> getWinningNumber() {
