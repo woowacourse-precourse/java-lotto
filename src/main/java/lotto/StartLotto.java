@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static lotto.Lotto.buyLotto;
-import static lotto.Output.printLotto;
+import static lotto.Output.*;
 import static lotto.UserInput.*;
 
 public class StartLotto {
@@ -16,22 +16,9 @@ public class StartLotto {
         List<Integer> winNums = winNumInput();
         int bonusNum = bonusNumInput(winNums);
         List<Check> checks = new ArrayList<>();
-/*
-        int first = 0, second = 0, third = 0, fourth = 0, fifth = 0;
-        for (Result e : results) {
-            if (e.getMatchCnt() == 6)
-                first++;
-            if (e.getMatchCnt() == 5)
-                if (e.isBonusMatch())
-                    second++;
-                else third++;
-            if (e.getMatchCnt() == 4)
-                fourth++;
-            if (e.getMatchCnt() == 3)
-                fifth++;
-            PrintEnd(first, second, third, fourth, fifth, money);
-        }
-        */
+        //check 에 lotto 넣고 저장해야함
+        Result result = new Result(checks);
+        printEnd(result, money);
 
     }
 }

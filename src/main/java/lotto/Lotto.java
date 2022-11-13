@@ -20,7 +20,7 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException();
         }
-        if(numbers.size()!=numbers.stream().distinct().count())
+        if (numbers.size() != numbers.stream().distinct().count())
             throw new IllegalArgumentException();
     }
 
@@ -31,6 +31,7 @@ public class Lotto {
             lotto.add(new Lotto(numbers));
         }
     }
+
     private void numSort(List<Integer> numbers) {
         Collections.sort(numbers);
     }

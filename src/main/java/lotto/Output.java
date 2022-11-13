@@ -2,6 +2,8 @@ package lotto;
 
 import java.util.List;
 
+import static lotto.Result.third;
+
 public class Output {
 
     public static void printLotto(List<Lotto> lotto) {
@@ -17,18 +19,17 @@ public class Output {
     public static void requestBonusInput() {
         System.out.println("보너스 번호를 입력해 주세요.");
     }
-/*
-    public static void PrintEnd(int first, int second, int third, int fourth, int fifth, int money) {
+
+    public static void printEnd(Result result, int money) {
         System.out.println("당첨 통계");
         System.out.println("---");
-        System.out.println("3개 일치 (5,000)원 - " + fifth + "개");
-        System.out.println("4개 일치 (50,000)원 - " + fourth + "개");
-        System.out.println("5개 일치 (1,500,000)원 - " + third + "개");
-        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000)원 - " + second + "개");
-        System.out.println("6개 일치 (2,000,000,000원) - " + first + "개");
-        int total = fifth * 5000 + fourth * 50000 + third * 1500000 + second * 30000000 + first * 2000000000;
+        System.out.println("3개 일치 (5,000)원 - " + result.getFifth() + "개");
+        System.out.println("4개 일치 (50,000)원 - " + result.getFourth() + "개");
+        System.out.println("5개 일치 (1,500,000)원 - " + result.getThird() + "개");
+        System.out.println("5개 일치, 보너스 볼 일치 (30,000,000)원 - " + result.getSecond() + "개");
+        System.out.println("6개 일치 (2,000,000,000원) - " + result.getFirst() + "개");
+        int total = result.getFifth() * 5000 + result.getFourth() * 50000 + result.getThird() * 1500000 + result.getSecond() * 30000000 + result.getFirst() * 2000000000;
         float rev = total / money;
         System.out.println("총 수익률은 " + Math.round(rev * 10) / 10.0 + "입니다.");
     }
-*/
 }
