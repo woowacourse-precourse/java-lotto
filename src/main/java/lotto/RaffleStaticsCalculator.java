@@ -17,9 +17,9 @@ public class RaffleStaticsCalculator {
                 Rank.FIFTH.getRewardInt());
 
         for (int i = 1; i <= 5; i++) {
-            totalWinningMoney += winningMoney.get(i) * lottoResult.get(i);
+            totalWinningMoney += (winningMoney.get(i) * lottoResult.get(i));
         }
 
-        return (Math.round((double) totalWinningMoney / (double) totalLottoBuyMoney)) * 100.0;
+        return Math.round(((double) totalWinningMoney / (double) totalLottoBuyMoney)  * 100.0);
     }
 }

@@ -13,7 +13,7 @@ class RaffleStaticsCalculatorTest {
 
     @Test
     void 로또_상금_수익률_계산() {
-        List<Integer> lottoResult = List.of(0, 0, 0, 0, 1);
+        List<Integer> lottoResult = List.of(0, 0, 0, 0, 0, 1);
         Integer lottosSize = 5;
 
         Assertions.assertThat(raffleStaticsCalculator.calculateStatics(lottoResult, lottosSize)).isEqualTo((double) 100);
