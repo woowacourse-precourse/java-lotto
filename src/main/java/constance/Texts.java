@@ -2,7 +2,7 @@ package constance;
 
 public class Texts {
     public static final String LOTTO_USER_INPUT_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
-    public static final String LOTTO_USER_PURCHASE_RESULT = "%n개를 구매했습니다.";
+    public static final String LOTTO_USER_PURCHASE_RESULT = "%n개를 구매했습니다.\n%s";
     public static final String LOTTO_USER_INPUT_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
     public static final String LOTTO_USER_INPUT_BONUS_NUMBERS = "보너스 번호를 입력해 주세요.";
     public static final String LOTTO_GAME_WINNING_STATS = "당첨 통계";
