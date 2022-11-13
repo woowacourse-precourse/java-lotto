@@ -25,7 +25,7 @@ public class LottoController {
         Compare compare = new Compare(lottoMachine, lottoWithBonus);
 
         Map<LottoReference, Integer> result = compare.getResult();
-        float yield = compare.calculateYield(result);
+        float yield = compare.getYield(result);
 
         outputHandler.winningStatistics(result, yield);
     }
