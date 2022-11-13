@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static lotto.Application.*;
@@ -32,11 +33,13 @@ public class Lotto {
     }
 
     private void validateNumbersAreDuplicate() {
-        for (int i = 0; i < numbers.size() - 1; i++) {
-            if (!checkNumbersAreDuplicate(numbers.get(i), i)) {
+        List<Integer> validateNumbers = new ArrayList<>();
+        for (Integer number : numbers) {
+            if (validateNumbers.contains(number)) {
                 setError(ErrorMessage.DUPLICATE);
                 throw new IllegalArgumentException();
             }
+            validateNumbers.add(number);
         }
     }
 
