@@ -2,8 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
@@ -64,6 +63,27 @@ public class Application {
             return Integer.parseInt(eachNumber);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 정수여야 합니다.");
+        }
+    }
+
+    static void validateLottoNumbers(List<Integer> lottoNumbers) {
+        validateNumber1To45(lottoNumbers);
+        exceptDuplicatedNumber(lottoNumbers);
+    }
+
+    static void validateNumber1To45(List<Integer> lottoNumbers) {
+        for (int eachNumber : lottoNumbers) {
+            if (eachNumber < 1 || eachNumber > 45)
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1부터 45까지의 숫자입니다.");
+        }
+    }
+
+    static void exceptDuplicatedNumber(List<Integer> lottoNumbers) {
+        Set<Integer> existentNumber = new HashSet<>();
+        for (int eachNumber : lottoNumbers) {
+            if (existentNumber.contains(eachNumber))
+                throw new IllegalArgumentException("[ERROR] 중복된 로또 번호가 존재합니다.");
+            existentNumber.add(eachNumber);
         }
     }
 }
