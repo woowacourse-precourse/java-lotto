@@ -1,9 +1,24 @@
 package lotto.controller;
 
+import lotto.service.LottoGame;
+import lotto.view.input.AmountInput;
+import lotto.view.print.PrintGuideMessage;
+
 public class LottoGameController {
+    private final LottoGame game;
+
+    public LottoGameController(LottoGame game) {
+        this.game = game;
+    }
+
+    public void startGame() {
+        getAmount();
+    }
 
     public void getAmount() {
-        // 구입 금액 입력받기
+        PrintGuideMessage.printStartGuide();
+        AmountInput input = new AmountInput();
+        String amount = input.getInput();
     }
 
     public void printTickets() {
