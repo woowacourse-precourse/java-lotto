@@ -4,6 +4,7 @@ public class Constants {
     // 입력요청 메시지 관련 상수
     public static final String PRINT_INPUT_MONEY = "구입금액을 입력해 주세요.";
     public static final String PRINT_INPUT_WINNING_NUMBERS = "당첨 번호를 입력해 주세요.";
+    public static final String PRINT_INPUT_WINNING_BONUS = "보너스 번호를 입력해 주세요.";
 
     // 출력 메시지 관련 상수
     public static final String PRINT_OUTPUT_MONEY = "개를 구매했습니다.";
@@ -15,7 +16,11 @@ public class Constants {
     public static final String ERROR_MONEY_THOUSAND = ERROR + "구입금액은 1000단위 양수여야 합니다.";
     public static final String ERROR_MONEY_POSITIVE = ERROR + "구입금액은 양수여야 합니다.";
 
-    public static final String ERROR_LOTTO_LENGTH = ERROR + "발급 로또 번호는 6개 입니다.";
-    public static final String ERROR_LOTTO_DUPLICATED = ERROR + "발급 로또 번호는 중복되지 않아야 합니다.";
-    public static final String ERROR_LOTTO_RANGE = ERROR + "발급 로또 번호의 범위는 1에서 45까지 입니다.";
+    public static final String ERROR_LOTTO_LENGTH = ERROR + "로또 번호는 6개 입니다.";
+    public static final String ERROR_LOTTO_DUPLICATED = ERROR + "로또 번호는 중복되지 않아야 합니다.";
+    public static final String ERROR_LOTTO_RANGE = ERROR + "로또 번호는 1부터 45 사이의 숫자여야 합니다.";
+
+    public static final String ERROR_WINNING_NUMBER_STRING = ERROR + "당첨 입력 번호에 ','과 숫자 제외는 올 수 없습니다.";
+    public static final String ERROR_WINNING_NUMBER_COMMA = ERROR + "당첨 입력 번호 문자열 처음과 끝에 ',는 올 수 없습니다.";
+    public static final String ERROR_WINNING_NUMBER_LEGNTH_ZERO = ERROR + "당첨 입력 번호 문자열의 길이는 0이 될 수 없습니다.";
 }

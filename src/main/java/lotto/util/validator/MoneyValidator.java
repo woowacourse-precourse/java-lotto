@@ -15,20 +15,20 @@ public class MoneyValidator {
 
     private void isInt() {
         try {
-            Utils.stringToIntMoney(money);
+            Utils.convertToInt(money);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(Constants.ERROR_MONEY_NUMBER);
         }
     }
 
     private void isThousand() {
-        if ((Utils.stringToIntMoney(money) % 1000) != 0) {
+        if ((Utils.convertToInt(money) % 1000) != 0) {
             throw new IllegalArgumentException(Constants.ERROR_MONEY_THOUSAND);
         }
     }
 
     private void isPositive() {
-        if (!(Utils.stringToIntMoney(money) > 0)) {
+        if (!(Utils.convertToInt(money) > 0)) {
             throw new IllegalArgumentException(Constants.ERROR_MONEY_POSITIVE);
         }
     }

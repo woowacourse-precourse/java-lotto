@@ -12,6 +12,6 @@ public class MoneyService {
     }
 
     public int getLottoCount() {
-        return (Utils.stringToIntMoney(money) / 1000);
+        return (Utils.convertToInt(money) / 1000);
     }
 }
