@@ -1,19 +1,41 @@
 package lotto.model;
 
+import static lotto.model.Rank.FIFTH_PLACE;
+import static lotto.model.Rank.FIRST_PLACE;
+import static lotto.model.Rank.FOURTH_PLACE;
+import static lotto.model.Rank.SECOND_PLACE;
+import static lotto.model.Rank.THIRD_PLACE;
+import static lotto.utils.NumberAdapter.getPaidMoney;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatNoException;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import java.util.Map;
+import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class StoreTest {
     private Store testStore;
+    private String paidMoney;
 
     @BeforeEach
     void setUp() {
         testStore = new Store();
+    }
+
+    void setCustomerForStore() {
+        String beforePaidMoney = "3000";
+        paidMoney = beforePaidMoney;
+
+        testStore.sellLottoToCustomer(paidMoney);
+    }
+
+    void setWinningNumberWithBonusNumber() {
+        String winningNumber = "1,2,3,4,5,6";
+        String bonusNumber = "7";
+
+        testStore.pickWinningNumberWithBonusNumber(winningNumber, bonusNumber);
     }
 
     @Test
@@ -21,8 +43,6 @@ public class StoreTest {
     void checkSellLottoToCustomerCreateNewCustomer() {
         //given
         String paidMoney = "3000";
-        InputStream in = new ByteArrayInputStream(paidMoney.getBytes());
-        System.setIn(in);
 
         //when, then
         assertThatNoException().isThrownBy(() -> testStore.sellLottoToCustomer(paidMoney));
@@ -38,5 +58,23 @@ public class StoreTest {
         //when, then
         assertThatNoException().isThrownBy(
                 () -> testStore.pickWinningNumberWithBonusNumber(beforeWinningNumber, beforeBonusNumber));
+    }
+
+    @Test
+    @DisplayName("당첨 번호와 보너스 번호를 통해 고객의 당첨 현황을 반환한다.")
+    void checkJudgeCustomerRanks() {
+        //given
+        setCustomerForStore();
+        setWinningNumberWithBonusNumber();
+        int paidMoneyToInteger = getPaidMoney(paidMoney);
+
+        //when
+        Map<Rank, Integer> ranks = testStore.judgeCustomerRanks();
+        Set<Rank> rankKeys = ranks.keySet();
+        Set<Rank> compareRankKeys = Set.of(
+                FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE, FIFTH_PLACE);
+
+        //then
+        assertThat(rankKeys).isEqualTo(compareRankKeys);
     }
 }
