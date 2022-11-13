@@ -21,7 +21,7 @@ public class User {
         for (int i=0; i<countLottos;i++){
             lottos.add(new Lotto(createNumbers()));
         }
-
+        System.out.printf("%d개를 구매했습니다.\n", countLottos);
     }
 
     private void validatePrice(int price) {
