@@ -37,7 +37,8 @@ public class LottoMachine {
         if (price < 1000) throw new IllegalArgumentException("입력하신 금액으로는 복권을 구매할 수 없습니다.");
         List<Lotto> lottos = new ArrayList<>();
         while (price >= 1000) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> randoms = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            List<Integer> numbers = new ArrayList<>(randoms);
             numbers.sort(Comparator.naturalOrder());
             lottos.add(new Lotto(numbers));
             price -= 1000;
