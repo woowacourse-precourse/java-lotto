@@ -58,11 +58,11 @@ public class LottoService {
         LottoRepository.saveBonusNumber(bonusNumber);
     }
 
-    public Map<Integer, Integer> compareLotto() {
+    public List<Integer> compareLotto() {
         List<Lotto> userLottoGroup = LottoRepository.getLastUserLottoGroup();
         Lotto winningLotto = LottoRepository.getLastWinningLotto();
         Integer bonusNumber = LottoRepository.getBonusNumber();
-        Map<Integer, Integer> resultCount = new HashMap<>();
+        List<Integer> resultCount = asList(0,0,0,0,0);
 
         for (Lotto userLotto : userLottoGroup) {
             initCount();
@@ -92,9 +92,13 @@ public class LottoService {
         return luckyCount;
     }
 
-    private void createWinningResult(Map<Integer, Integer> resultCount, Integer luckyCount) {
+    private void createWinningResult(List<Integer> resultCount, Integer luckyCount) {
         if (luckyCount >= 3) {
-            resultCount.put(luckyCount, resultCount.getOrDefault(luckyCount, 0) + 1);
+            resultCount.set(luckyCount-3,resultCount.get(luckyCount-3)+1);
         }
+    }
+
+    public List<String> getWinningAmount() {
+        return LottoRepository.getWinningAmount();
     }
 }

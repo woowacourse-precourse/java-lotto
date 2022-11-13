@@ -3,8 +3,8 @@ package lotto.view;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.Lotto;
 
+import javax.swing.plaf.IconUIResource;
 import java.util.List;
-import java.util.Map;
 
 public class View {
     public static String printUserInputMoney() {
@@ -28,7 +28,16 @@ public class View {
         return Console.readLine();
     }
 
-    public static void printWinningResult(Map<Integer, Integer> result) {
-
+    public static void printWinningResult(List<Integer> result, List<String> winningMoney) {
+        for (int i = 0; i < 4; i++) {
+            if (i == 3) {
+                System.out.printf("%d개 일치,보너스볼 일치 (%s원) - %d개", 5, winningMoney.get(i+1), result.get(i+1));
+                System.out.println();
+                System.out.printf("%d개 일치 (%s원) - %d개", i + 3, winningMoney.get(i), result.get(i));
+                continue;
+            }
+            System.out.printf("%d개 일치 (%s원) - %d개", i + 3, winningMoney.get(i), result.get(i));
+            System.out.println();
+        }
     }
 }

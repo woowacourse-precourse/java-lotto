@@ -5,7 +5,8 @@ import lotto.service.LottoService;
 import lotto.view.View;
 
 import java.util.List;
-import java.util.Map;
+
+import static java.util.Arrays.asList;
 
 public class LottoController {
     private LottoService lottoService;
@@ -45,8 +46,13 @@ public class LottoController {
     }
 
     private void compareLotto() {
-        Map<Integer,Integer> result = lottoService.compareLotto();
-        View.printWinningResult(result);
+        List<Integer> result = lottoService.compareLotto();
+        showWinningResult(result);
+    }
+
+    private void showWinningResult(List<Integer> result) {
+        List<String> winningAmount = lottoService.getWinningAmount();
+        View.printWinningResult(result, winningAmount);
     }
 
 
