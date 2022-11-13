@@ -28,6 +28,4 @@ public class Lotto {
         yield = getRateOfReturn.calculateRate(result, money);
         PrintMessenger.yieldOfLotto(yield);
     }
-
-    // TODO: 추가 기능 구현
 }

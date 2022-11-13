@@ -9,9 +9,10 @@ public class CreateRandomLotto {
         List<LottoPaper> lottoPaper = new ArrayList<>();
         for(int i = 0; i < counts; i++){
             List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(lotto);
+            List<Integer> copyOfLotto = new ArrayList<>(lotto);
+            Collections.sort(copyOfLotto);
             LottoPaper eachNumber = new LottoPaper();
-            eachNumber.setNumber(lotto);
+            eachNumber.setNumber(copyOfLotto);
             lottoPaper.add(eachNumber);
         }
         return lottoPaper;
