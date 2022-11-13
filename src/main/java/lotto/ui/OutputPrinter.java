@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class OutputPrinter {
-    OutputPrinter() {}
+    public OutputPrinter() {}
 
     public void printPurchasedNumbers(long bundleSize, List<List<Integer>> lottoBundle) {
         System.out.println(bundleSize + "개를 구매했습니다.");

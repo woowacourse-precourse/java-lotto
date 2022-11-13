@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumbersReceiver {
-    NumbersReceiver() {}
+    public NumbersReceiver() {}
 
     public int insertMoney() {
         System.out.println("구입금액을 입력해 주세요.");
