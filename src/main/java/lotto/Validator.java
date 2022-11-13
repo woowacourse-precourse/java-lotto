@@ -84,4 +84,23 @@ public class Validator {
             duplicateCheckSet.add(number);
         }
     }
+
+    public static void validateBonusNumber(List<Integer> lotto, String bonusNumber) {
+        validateBonusType(bonusNumber);
+        validateBonusDuplicate(lotto, bonusNumber);
+    }
+
+    private static void validateBonusDuplicate(List<Integer> lotto, String bonusNumber) {
+        if (lotto.contains(Integer.parseInt(bonusNumber))) {
+            throw new IllegalArgumentException(ExceptionType.BONUS_DUPLICATE_EXCEPTION.getMessage());
+        }
+    }
+
+    public static void validateBonusType(String number) {
+        try {
+            Integer.parseInt(number);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(ExceptionType.BONUS_INPUT_TYPE_EXCEPTION.getMessage());
+        }
+    }
 }
