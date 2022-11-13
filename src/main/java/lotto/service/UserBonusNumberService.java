@@ -7,7 +7,7 @@ import java.util.List;
 
 public class UserBonusNumberService {
 
-    private final String bonusNumber = User.getUserInputBonusNumber();
+    private static final String bonusNumber = User.getUserInputBonusNumber();
     UserLottoNumberService userLottoNumber = new UserLottoNumberService();
 
     // 생성자에서 검증
@@ -19,6 +19,13 @@ public class UserBonusNumberService {
 
     public int getBonusNumber(){
         return Integer.parseInt(bonusNumber);
+    }
+
+    public boolean isBonusNumberSameLottoNumber(){
+        if(userLottoNumber.getLottoNumber().contains(getBonusNumber())){
+            return false;
+        }
+        return true;
     }
 
     //보너스 볼이 로또 입력한 로또 번호 리스트와 같은지 검증
