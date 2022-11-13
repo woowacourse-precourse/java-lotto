@@ -111,4 +111,24 @@ public class ResultTest {
         // then
         assertThat(result.getWinBoard().get(6f)).isEqualTo(1);
     }
+
+    @DisplayName("6개가 2개 일치하는 경우 개수와 당첨금 반환")
+    @Test
+    void prizeIfBothCardsMatchAllNumbers() {
+        // given
+        Result result = new Result();
+        Lotto firstLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto secondLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Customer customer = new Customer();
+
+        // when
+        customer.inputWinningNumber("1,2,3,4,5,6");
+        customer.inputBonusNumber("10");
+        result.compare(customer, firstLotto);
+        result.compare(customer, secondLotto);
+
+        // then
+        assertThat(result.getWinBoard().get(6f)).isEqualTo(2);
+        assertThat(result.getReward(6)).isEqualTo(4_000_000_000);
+    }
 }
