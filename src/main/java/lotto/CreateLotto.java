@@ -1,6 +1,7 @@
 package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +19,24 @@ public class CreateLotto {
         return winningNumber;
     }
 
+    public String inputWinningNumber() {
+        return Console.readLine();
+    }
+
     public Integer bonusNumber(String bonusNumber) {
         return Integer.parseInt(bonusNumber);
     }
 
-    public Integer inputMoney(String inputMoney) {
-        return Integer.parseInt(inputMoney);
+    public String inputBonusNumber() {
+        return Console.readLine();
+    }
+
+    public Integer Money(String Money) {
+        return Integer.parseInt(Money);
+    }
+
+    public String inputMoney() {
+        return Console.readLine();
     }
 
     public void textWinningNumber() {
