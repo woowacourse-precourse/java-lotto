@@ -12,9 +12,9 @@ public class Application {
         System.out.println("구입금액을 입력해 주세요");
         input_money = Console.readLine();
         if (input_money.isBlank()) throw new IllegalArgumentException("[ERROR] 구입금액을 입력해야 합니다.");
-        if(money == 0) throw new IllegalArgumentException("[ERROR] 구입금액이 0원일 수 없습니다.");
         try {
             money = Integer.parseInt(input_money);
+            if(money == 0) throw new IllegalArgumentException("[ERROR] 구입금액이 0원일 수 없습니다.");
         } catch (NumberFormatException ex) {
             throw new IllegalArgumentException("[ERROR] 구입금액은 숫자여야 합니다.");
         }
