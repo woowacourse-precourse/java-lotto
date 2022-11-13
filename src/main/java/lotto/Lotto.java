@@ -1,6 +1,7 @@
 package lotto;
 
-import java.util.Arrays;
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class Lotto {
@@ -42,5 +43,28 @@ public class Lotto {
             }
         }
         Calculator.calculateLottos(count, isBonus);
+    }
+
+    public int inputBonus() {
+        Message.INPUT_BONUS_NUMBER.print();
+        String bonus = Console.readLine();
+        int result = validateBonus(bonus);
+        return result;
+    }
+
+    private int validateBonus(String bonus) {
+        int result;
+        try {
+            result = Integer.parseInt(bonus.trim());
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(Message.ERROR_INPUT_NUMBER.printError());
+        }
+        if (result > 45 || result < 1) {
+            throw new IllegalArgumentException(Message.ERROR_INPUT_RANGE.printError());
+        }
+        if (numbers.contains(bonus)) {
+            throw new IllegalArgumentException(Message.ERROR_INPUT_DUPLICATE.printError());
+        }
+        return result;
     }
 }

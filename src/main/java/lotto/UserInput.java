@@ -70,23 +70,4 @@ public class UserInput {
             throw new IllegalArgumentException(Message.ERROR_INPUT_NUMBER.printError());
         }
     }
-    public int inputBonus() {
-        Message.INPUT_BONUS_NUMBER.print();
-        String bonus = Console.readLine();
-        int result = validateBonus(bonus);
-        return result;
-    }
-
-    private int validateBonus(String bonus) {
-        int result;
-        try {
-            result = Integer.parseInt(bonus.trim());
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(Message.ERROR_INPUT_NUMBER.printError());
-        }
-        if (result > 45 || result < 1) {
-            throw new IllegalArgumentException(Message.ERROR_INPUT_RANGE.printError());
-        }
-        return result;
-    }
 }
