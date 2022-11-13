@@ -1,5 +1,6 @@
 package lotto.controller;
 
+import lotto.LottoService;
 import lotto.view.LottoView;
 
 public class LottoController {
@@ -12,7 +13,6 @@ public class LottoController {
     public static int gameStartAndGetInput() {
         LottoView.printStartMessage();
         String input = LottoView.getLottoPurchaseAmount();
-
-        return 0;
+        return LottoService.amountInputToInteger(input);
     }
 }
