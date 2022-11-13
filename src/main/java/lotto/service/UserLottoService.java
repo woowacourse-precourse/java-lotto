@@ -7,14 +7,10 @@ import lotto.domain.Lotto;
 
 public class UserLottoService {
 
-    private final int lottoCount;
+    public UserLottoService() {}
 
 
-    public UserLottoService(int lottoCount) {
-        this.lottoCount = lottoCount;
-    }
-
-    public List<Lotto> createLottoNumber() {
+    public static List<Lotto> createLottoNumber(int lottoCount) {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
             lottos.add(new Lotto());

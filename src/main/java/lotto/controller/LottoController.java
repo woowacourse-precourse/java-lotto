@@ -68,8 +68,7 @@ public class LottoController {
     }
 
     private static List<Lotto> createUserLotto(int lottoCount) {
-        UserLottoService userLottoService = new UserLottoService(lottoCount);
-        return userLottoService.createLottoNumber();
+        return UserLottoService.createLottoNumber(lottoCount);
     }
 
     private void printUserLottoResult(List<Lotto> userLotto) {
