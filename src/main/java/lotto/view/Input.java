@@ -8,11 +8,12 @@ import java.util.stream.Collectors;
 import lotto.domain.Money;
 
 public class Input {
+    private static final String ERROR_MESSAGE = "[ERROR]";
 
     public Money getMoney() {
-        Output.printMoneyInputMessage();
-        String money = Console.readLine();
-        return new Money(Integer.valueOf(money));
+        String money = Console.readLine().trim();
+        isNumber(money);
+        return new Money(Integer.parseInt(money));
     }
 
     public List<Integer> getWinningNumber() {
@@ -22,40 +23,42 @@ public class Input {
         String[] splitNumber = winningNumber.split(comma);
         validateWinningNumber(splitNumber);
 
-        return Arrays.asList(splitNumber).stream().mapToInt(Integer::valueOf).boxed().collect(Collectors.toList());
+        return Arrays.asList(splitNumber).stream().map(String::trim).mapToInt(Integer::valueOf).boxed()
+                .collect(Collectors.toList());
     }
 
     public Integer getBonusNumber() {
+        // TODO: 중복 제거
         Output.printBonusNumberInputMessage();
-        String bonusNumber = Console.readLine();
-        if (!isNumber(bonusNumber)) {
-            throw new IllegalArgumentException();
-        }
-        return Integer.valueOf(Console.readLine());
+        String bonusNumber = Console.readLine().trim();
+        isNumber(bonusNumber);
+        return Integer.valueOf(bonusNumber);
     }
 
-    public void validateWinningNumber(String[] winningNumber) {
+    private void validateWinningNumber(String[] winningNumber) {
+        if (Arrays.stream(winningNumber).distinct().count() != winningNumber.length) {
+            throw new IllegalArgumentException("[error]");
+        }
         if (winningNumber.length != 6) {
             throw new IllegalArgumentException("[error]");
         }
         for (String number : winningNumber) {
-            if (!isNumber(number)) {
-                throw new IllegalArgumentException("[error]");
-            }
+            number = number.trim();
+            isNumber(number);
             if (!isRangeNumber(Integer.valueOf(number))) {
                 throw new IllegalArgumentException("[error]");
             }
         }
     }
 
-    public boolean isNumber(String number) {
+    private void isNumber(String number) {
         Pattern pattern = Pattern.compile("^[0-9]*$");
-        return pattern.matcher(number.trim()).find();
+        if (!pattern.matcher(number).find()) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    public boolean isRangeNumber(int number) {
+    private boolean isRangeNumber(int number) {
         return number >= 1 && number <= 45;
     }
-
-
 }
