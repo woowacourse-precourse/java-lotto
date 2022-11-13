@@ -15,7 +15,7 @@ public class LottoInStream {
         String line = readlineWithoutException();
 
         if (isNullOrEmptyString(line)) {
-            throw new IllegalArgumentException(Application._err_msg + " 빈 문자열은 입력할 수 없습니다.");
+            Application.lottoError("빈 문자열은 입력할 수 없습니다.");
         }
         return convStrToInt(line);
     }
@@ -25,7 +25,7 @@ public class LottoInStream {
         String line = readlineWithoutException();
 
         if (isNullOrEmptyString(line)) {
-            throw new IllegalArgumentException(Application._err_msg + " 빈 문자열은 입력할 수 없습니다.");
+            Application.lottoError("빈 문자열은 입력할 수 없습니다.");
         }
         return convStrArrayToIntList(line.split(","));
     }
@@ -35,14 +35,14 @@ public class LottoInStream {
         String line = readlineWithoutException();
 
         if (isNullOrEmptyString(line)) {
-            throw new IllegalArgumentException(Application._err_msg + " 빈 문자열은 입력할 수 없습니다.");
+            Application.lottoError("빈 문자열은 입력할 수 없습니다.");
         }
         int number = convStrToInt(line);
         if (lotto.hasNumber(number)) {
-            throw new IllegalArgumentException(Application._err_msg + " 보너스 번호는 당첨 번호와 중복되는 번호를 가질 수 없습니다.");
+            Application.lottoError("보너스 번호는 당첨 번호와 중복되는 번호를 가질 수 없습니다.");
         }
         if (!Lotto.isNumberInRangeForLotto(number)) {
-            throw new IllegalArgumentException(Application._err_msg + " 범위를 벗어난 보너스 번호는 허용하지 않습니다.");
+            Application.lottoError("범위를 벗어난 보너스 번호는 허용하지 않습니다.");
         }
         return (number);
     }
@@ -75,7 +75,8 @@ public class LottoInStream {
         try {
             return Integer.parseInt(number);
         } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException(Application._err_msg + " 숫자가 아닌 문자는 처리할 수 없습니다.");
+            Application.lottoError("숫자가 아닌 문자는 처리할 수 없습니다.");
+            return -1;
         }
     }
 }
