@@ -17,6 +17,7 @@ public class DataInput {
     private static final int MINIMUM_NUMBER_OF_LOTTO = 1;
     private static final String MESSAGE_TO_INPUT_PURCHASE_AMOUNT = "구입금액을 입력해 주세요.";
     private static final String MESSAGE_TO_INPUT_BONUS_NUMBER = "보너스 번호를 입력해 주세요.";
+    private static final String MESSAGE_TO_INPUT_WINNING_NUMBER = "당첨 번호를 입력해 주세요.";
 
     public static int PurchaseAmount() {
         String input = UserInput(MESSAGE_TO_INPUT_PURCHASE_AMOUNT);
@@ -32,6 +33,14 @@ public class DataInput {
 
         return ValidateRange(input);
     }
+
+    public static List<Integer> WinningNumber() {
+        String input = UserInput(MESSAGE_TO_INPUT_WINNING_NUMBER);
+        ValidateFormat(input);
+
+        return StringToList(input);
+    }
+
 
     public static String UserInput(String Message) {
         System.out.println(Message);
