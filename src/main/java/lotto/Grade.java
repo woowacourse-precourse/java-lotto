@@ -7,7 +7,8 @@ public enum Grade {
     FOURTH(4, 50_000, 4),
     THIRD(5, 1_500_000, 3),
     SECOND(5, 30_000_000, 2),
-    FIRST(6, 2_000_000_000, 1);
+    FIRST(6, 2_000_000_000, 1),
+    NONE(0,0,0);
 
     private final int matchCount;
     private final int prizeMoney;
@@ -28,7 +29,7 @@ public enum Grade {
         }
 
         return Arrays.stream(values()).filter(grade -> grade.matchCount == matchCount)
-                .findAny().orElseThrow(() -> new IllegalArgumentException("[ERROR] 미당첨입니다."));
+                .findFirst().orElse(NONE);
     }
 
     public int getRanking() {
