@@ -1,6 +1,7 @@
 package input;
 
 import camp.nextstep.edu.missionutils.Console;
+import util.ExceptionMessage;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,6 +23,18 @@ public class NumberInput {
         return Stream.of(input.split(SEPARATOR))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    private int validateConvertingMoney(String input) {
+        int number = 0;
+
+        try {
+            number = Integer.parseInt(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(ExceptionMessage.NOT_NUMBER_FORMAT);
+        }
+
+        return number;
     }
 
 }
