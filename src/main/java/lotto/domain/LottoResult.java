@@ -1,7 +1,6 @@
 package lotto.domain;
 
 import java.util.Arrays;
-import java.util.List;
 
 public enum LottoResult {
 
@@ -30,12 +29,9 @@ public enum LottoResult {
         return numberOfMatches;
     }
 
-    public static LottoResult of(Lotto lotto,
-                                 List<Integer> winningNumbers,
-                                 int bonusNumber) {
-        long numberOfMatches = lotto.getNumberOfMatchesByWinningNumbers(winningNumbers);
-
-        if (numberOfMatches == 5 && lotto.containBonusNumber(bonusNumber)) {
+    public static LottoResult of(long numberOfMatches,
+                                 boolean containBonusNumber) {
+        if (numberOfMatches == 5 && containBonusNumber) {
             return FIVE_WITH_BONUS;
         }
 

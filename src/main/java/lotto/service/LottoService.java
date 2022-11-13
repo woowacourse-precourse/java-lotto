@@ -21,7 +21,8 @@ public class LottoService {
                                                  List<Integer> winningNumbers,
                                                  int bonusNumber) {
         return lottoBundle.stream()
-                .map(lotto -> LottoResult.of(lotto,winningNumbers,bonusNumber))
+                .map(lotto -> LottoResult.of(lotto.getNumberOfMatchesByWinningNumbers(winningNumbers),
+                        lotto.containBonusNumber(bonusNumber)))
                 .collect(Collectors.toList());
     }
 

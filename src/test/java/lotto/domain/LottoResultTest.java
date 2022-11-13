@@ -15,15 +15,16 @@ class LottoResultTest {
     @Test
     void test1() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
-        LottoResult result = LottoResult.of(lotto, WINNING_NUMBERS, BONUS_NUMBER);
+        LottoResult result = getLottoResult(lotto);
         assertThat(result).isEqualTo(LottoResult.SIX);
     }
+
 
     @DisplayName("로또 번호가 5개 일치 및 보너스 번호 일치")
     @Test
     void test2() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
-        LottoResult result = LottoResult.of(lotto, WINNING_NUMBERS, BONUS_NUMBER);
+        LottoResult result = getLottoResult(lotto);
         assertThat(result).isEqualTo(LottoResult.FIVE_WITH_BONUS);
     }
 
@@ -31,7 +32,7 @@ class LottoResultTest {
     @Test
     void test3() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 45));
-        LottoResult result = LottoResult.of(lotto, WINNING_NUMBERS, BONUS_NUMBER);
+        LottoResult result = getLottoResult(lotto);
         assertThat(result).isEqualTo(LottoResult.FIVE);
     }
 
@@ -39,7 +40,7 @@ class LottoResultTest {
     @Test
     void test4() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 44, 45));
-        LottoResult result = LottoResult.of(lotto, WINNING_NUMBERS, BONUS_NUMBER);
+        LottoResult result = getLottoResult(lotto);
         assertThat(result).isEqualTo(LottoResult.FOUR);
     }
 
@@ -47,7 +48,7 @@ class LottoResultTest {
     @Test
     void test5() {
         Lotto lotto = new Lotto(List.of(1, 2, 3, 43, 44, 45));
-        LottoResult result = LottoResult.of(lotto, WINNING_NUMBERS, BONUS_NUMBER);
+        LottoResult result = getLottoResult(lotto);
         assertThat(result).isEqualTo(LottoResult.THREE);
     }
 
@@ -55,7 +56,7 @@ class LottoResultTest {
     @Test
     void test6() {
         Lotto lotto = new Lotto(List.of(1, 2, 42, 43, 44, 45));
-        LottoResult result = LottoResult.of(lotto, WINNING_NUMBERS, BONUS_NUMBER);
+        LottoResult result = getLottoResult(lotto);
         assertThat(result).isEqualTo(LottoResult.TWO);
     }
 
@@ -64,7 +65,7 @@ class LottoResultTest {
     @Test
     void test7() {
         Lotto lotto = new Lotto(List.of(1, 41, 42, 43, 44, 45));
-        LottoResult result = LottoResult.of(lotto, WINNING_NUMBERS, BONUS_NUMBER);
+        LottoResult result = getLottoResult(lotto);
         assertThat(result).isEqualTo(LottoResult.ONE);
     }
 
@@ -73,7 +74,12 @@ class LottoResultTest {
     @Test
     void test8() {
         Lotto lotto = new Lotto(List.of(40, 41, 42, 43, 44, 45));
-        LottoResult result = LottoResult.of(lotto, WINNING_NUMBERS, BONUS_NUMBER);
+        LottoResult result = getLottoResult(lotto);
         assertThat(result).isEqualTo(LottoResult.ZERO);
+    }
+
+    private LottoResult getLottoResult(Lotto lotto) {
+        return LottoResult.of(lotto.getNumberOfMatchesByWinningNumbers(WINNING_NUMBERS),
+                lotto.containBonusNumber(BONUS_NUMBER));
     }
 }
