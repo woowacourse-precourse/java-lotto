@@ -135,14 +135,14 @@ class InputUtilsTest {
     }
 
     @Nested
-    @DisplayName("stringToIntegerList 메소드 테스트")
+    @DisplayName("stringToList 메소드 테스트")
     class TestStringToIntegerList {
         @Test
         @DisplayName("쉼표가 포함된 문자열을 정수 리스트로 변환합니다.")
         void case1() {
             String input = "1,2,3,4,5,6";
-            List<Integer> expected = List.of(1, 2, 3, 4, 5, 6);
-            List<Integer> result = InputUtils.stringToIntegerList(input);
+            List<String> expected = List.of("1", "2", "3", "4", "5", "6");
+            List<String> result = InputUtils.stringToList(input);
             assertThat(result).isEqualTo(expected);
         }
     }
