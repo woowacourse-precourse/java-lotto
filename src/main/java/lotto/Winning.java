@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public enum Winning {
-    NOTHING("", x -> x<3, 0, 0),
+    NOTHING("", x -> x < 3, 0, 0),
     THREE("3개 일치 (5,000원) - ", x -> x == 3, 0, 5_000),
     FOUR("4개 일치 (50,000원) - ", x -> x == 4, 0, 50_000),
     FIVE("5개 일치 (1,500,000원) - ", x -> x == 5, 0, 1_500_000),
@@ -29,19 +29,19 @@ public enum Winning {
         return predicate.test(count);
     }
 
-    public static void findWinningValue(int count, List<Integer> winningNumbers, int bonus){
+    public static void findWinningValue(int count, Lotto winningNumbers, int bonus) {
 
         Winning win = Arrays.stream(Winning.values())
-                            .filter(winning -> winning.test(count))
-                            .findAny()
-                            .orElseThrow(IllegalArgumentException::new);
+                .filter(winning -> winning.test(count))
+                .findAny()
+                .orElseThrow(IllegalArgumentException::new);
 
         win = isContainBonusNumber(win, winningNumbers, bonus);
         win.count += 1;
     }
 
-    private static Winning isContainBonusNumber(Winning win, List<Integer> winningNumbers, int bonus){
-        if(win == FIVE && winningNumbers.contains(bonus)){
+    private static Winning isContainBonusNumber(Winning win, Lotto winningNumbers, int bonus) {
+        if (win == FIVE && winningNumbers.getNumbers().contains(bonus)) {
             return FIVE_AND_BONUS;
         }
         return win;

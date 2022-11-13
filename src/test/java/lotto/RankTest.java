@@ -13,10 +13,10 @@ public class RankTest {
     @Test
     void is5th(){
         // given
-        List<List<Integer>> winningNumbers = List.of(
-                List.of(1, 3, 5, 14, 22, 45)
+        List<Lotto> winningNumbers = List.of(
+                new Lotto(List.of(1, 3, 5, 14, 22, 45))
         );
-        List<Integer> userNumber = List.of(1,2,3,4,5,6);
+        Lotto userNumber = new Lotto(List.of(1,2,3,4,5,6));
         int bonusNumber = 7;
         int expect = 1;
 
@@ -31,10 +31,10 @@ public class RankTest {
     @Test
     void is4th(){
         // given
-        List<List<Integer>> winningNumbers = List.of(
-                List.of(1, 3, 5, 14, 22, 45)
+        List<Lotto> winningNumbers = List.of(
+                new Lotto(List.of(1, 3, 5, 14, 22, 45))
         );
-        List<Integer> userNumber = List.of(1,2,3,4,5,22);
+        Lotto userNumber = new Lotto(List.of(1,2,3,4,5,22));
         int bonusNumber = 7;
         int expect = 1;
 
@@ -49,10 +49,10 @@ public class RankTest {
     @Test
     void is3th(){
         // given
-        List<List<Integer>> winningNumbers = List.of(
-                List.of(1, 3, 5, 14, 22, 45)
+        List<Lotto> winningNumbers = List.of(
+                new Lotto(List.of(1, 3, 5, 14, 22, 45))
         );
-        List<Integer> userNumber = List.of(1,45,3,4,5,22);
+        Lotto userNumber = new Lotto(List.of(1,45,3,4,5,22));
         int bonusNumber = 7;
         int expect = 1;
 
@@ -67,10 +67,10 @@ public class RankTest {
     @Test
     void is2th(){
         // given
-        List<List<Integer>> winningNumbers = List.of(
-                List.of(1, 3, 5, 14, 22, 45)
+        List<Lotto> winningNumbers = List.of(
+                new Lotto(List.of(1, 3, 5, 14, 22, 45))
         );
-        List<Integer> userNumber = List.of(1,45,3,4,5,22);
+        Lotto userNumber = new Lotto(List.of(1,45,3,4,5,22));
         int bonusNumber = 45;
         int expect = 1;
 
@@ -85,10 +85,10 @@ public class RankTest {
     @Test
     void is1thAndBonus(){
         // given
-        List<List<Integer>> winningNumbers = List.of(
-                List.of(1, 3, 5, 14, 22, 45)
+        List<Lotto> winningNumbers = List.of(
+                new Lotto(List.of(1, 3, 5, 14, 22, 45))
         );
-        List<Integer> userNumber = List.of(1,45,3,45,5,22);
+        Lotto userNumber = new Lotto(List.of(1,45,3,14,5,22));
         int bonusNumber = 2;
         int expect = 1;
 
@@ -96,6 +96,6 @@ public class RankTest {
         new LottoGame().confirmWinningCount(winningNumbers, userNumber, bonusNumber);
 
         // then
-        assertThat(Winning.FIVE_AND_BONUS.getCount()).isEqualTo(expect);
+        assertThat(Winning.SIX.getCount()).isEqualTo(expect);
     }
 }

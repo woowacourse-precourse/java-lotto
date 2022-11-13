@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 class UserInputTest {
@@ -16,9 +14,11 @@ class UserInputTest {
         // given
         String userInput = "2000";
         int expectAmount = 2;
-        int result = new User().lottoPurchaseAmount(() -> userInput);
 
-        // when, then
+        // when
+        int result = new User().lottoPurchaseAmount(userInput);
+
+        // then
         assertThat(result).isEqualTo(expectAmount);
     }
 
@@ -30,7 +30,7 @@ class UserInputTest {
 
         // when, then
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new User().lottoPurchaseAmount(() -> userInput);
+            new User().lottoPurchaseAmount(userInput);
         });
     }
 
@@ -40,10 +40,12 @@ class UserInputTest {
         // given
         String userInput = "34,12,43,32,3,22";
         int expectSize = 6;
-        List<Integer> result = new User().userLottoNumbers(() -> userInput);
 
-        // when, then
-        assertThat(result.size()).isEqualTo(expectSize);
+        // when
+        Lotto result = new Lotto(userInput);
+
+        // then
+        assertThat(result.getNumbers().size()).isEqualTo(expectSize);
     }
 
     @DisplayName("사용자 로또 번호는 여섯 자리의 숫자보다 적으면 예외가 발생한다.")
@@ -54,7 +56,7 @@ class UserInputTest {
 
         // when, then
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new User().userLottoNumbers(() -> userInput);
+            new Lotto(userInput);
         });
     }
 
@@ -66,7 +68,7 @@ class UserInputTest {
 
         // when, then
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new User().userLottoNumbers(() -> userInput);
+            new  Lotto(userInput);
         });
     }
 
@@ -78,7 +80,7 @@ class UserInputTest {
 
         // when, then
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new User().userLottoNumbers(() -> userInput);
+            new  Lotto(userInput);
         });
     }
 
@@ -90,7 +92,7 @@ class UserInputTest {
 
         // when, then
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new User().userLottoNumbers(() -> userInput);
+            new  Lotto(userInput);
         });
     }
 
