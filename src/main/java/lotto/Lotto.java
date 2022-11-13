@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -20,7 +21,8 @@ public class Lotto {
     }
 
     public static List<Integer> createRandomLottoNumber() {
-        List<Integer> createdRandomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        List<Integer> tempList = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        ArrayList<Integer> createdRandomNumbers = new ArrayList<>(tempList);
         Collections.sort(createdRandomNumbers);
 
         return createdRandomNumbers;
