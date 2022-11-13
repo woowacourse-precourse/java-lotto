@@ -96,3 +96,4 @@
 - [x]  구입 금액에 대한 값을 가진 PurchaseAmountDto 추가
 - [x]  구입한 로또에 대한 값을 가진 LottoInformationDto 추가
 - [x]  당첨 로또 번호에 대한 값을 가진 LottoDto 추가
+- [x]  로또 결과에 대한 값을 가진 LottoResultDto 추가
