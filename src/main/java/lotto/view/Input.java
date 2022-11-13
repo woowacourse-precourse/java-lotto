@@ -10,7 +10,7 @@ public class Input {
 
     private static final String REQUEST_PURCHASE_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
     private static final String WINNER_NUMBERS_SPLIT_REGEX = ",";
-    private static final String REQUST_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
+    private static final String REQUEST_BONUS_NUMBER_MESSAGE = "보너스 번호를 입력해 주세요.";
     private static final String REQUEST_WINNER_NUMBERS_MESSAGE = "당첨 번호를 입력해 주세요.";
 
     public static LottoMoney inputMoney() {
@@ -26,7 +26,7 @@ public class Input {
     }
 
     public static int inputBonusNumber() {
-        System.out.println(REQUST_BONUS_NUMBER_MESSAGE);
+        System.out.println(REQUEST_BONUS_NUMBER_MESSAGE);
         return Integer.parseInt(Console.readLine());
     }
 
