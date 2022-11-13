@@ -12,10 +12,8 @@ public class LottoService {
     public List<Lotto> buyLotto(Money money) {
         List<Lotto> lottos = new ArrayList<>();
         long lottoCount = money.getValue() / 1000;
-
         for (int i = 0; i < lottoCount; i++) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            numbers.sort(Integer::compareTo);
             lottos.add(new Lotto(numbers));
         }
         return lottos;

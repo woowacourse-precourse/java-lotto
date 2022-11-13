@@ -1,6 +1,7 @@
 package lotto.game;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import lotto.Lotto;
@@ -19,9 +20,10 @@ public class UI {
 
     public static void printPurchasedLottos(List<Lotto> lottos) {
         System.out.printf("%d개를 구매했습니다.%n", lottos.size());
-        for (Lotto lotto : lottos) {
-            System.out.println(lotto);
-        }
+        lottos.stream()
+                .map(Lotto::getNumbers)
+                .map(ArrayList::new)
+                .forEach(System.out::println);
         System.out.println();
     }
 
