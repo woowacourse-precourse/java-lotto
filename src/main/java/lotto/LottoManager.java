@@ -11,6 +11,21 @@ import java.util.Map;
 public class LottoManager {
     private static final int LOTTO_PRICE = 1000;
 
+    public enum Error {
+        TYPE("[ERROR] 금액은 숫자로만 입력해 주세요."),
+        REMAINDER("[ERROR] 금액은 1000으로 나누어 떨어져야 합니다.");
+
+        private final String message;
+
+        Error(String message) {
+            this.message = message;
+        }
+
+        public void print() {
+            System.out.println(this.message);
+        }
+    }
+
     public enum Information {
         INPUT_WINNING_NUM_MESSAGE("당첨 번호를 입력해 주세요."),
         INPUT_BONUS_NUM_MESSAGE("보너스 번호를 입력해 주세요."),
@@ -78,7 +93,6 @@ public class LottoManager {
     }
 
     public int getMoney() throws IllegalArgumentException {
-        System.out.println("구매금액을 입력해 주세요.");
         Information.INPUT_BUY_MESSAGE.printMessage();
         String inputMoney = Console.readLine();
 
@@ -88,7 +102,7 @@ public class LottoManager {
             // 숫자가 아닐 경우 예외
             int ascii = (int) charNum;
             if (ascii < 48 || ascii > 57) {
-                System.out.println("[ERROR] 금액은 숫자로만 입력해 주세요.");
+                Error.TYPE.print();
                 throw new IllegalArgumentException();
             }
         }
@@ -96,7 +110,7 @@ public class LottoManager {
         int money = Integer.parseInt(inputMoney);
 
         if (money%1000 != 0) {
-            System.out.println("[ERROR] 금액은 1000으로 나누어 떨어져야 합니다.");
+            Error.REMAINDER.print();
             throw new IllegalArgumentException();
         }
 
