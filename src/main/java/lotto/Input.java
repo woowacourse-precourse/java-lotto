@@ -4,9 +4,12 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
 
-    public static String userInput() {
+    public static int userInput() {
+        Output.startPrint();
         String input = Console.readLine();
-        return input;
+        InputException.isValidNumber(input);
+        InputException.isValidDivide(Integer.valueOf(input));
+        return Integer.valueOf(input);
     }
 
 
