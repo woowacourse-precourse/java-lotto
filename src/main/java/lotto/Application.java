@@ -3,6 +3,8 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Application {
@@ -24,10 +26,24 @@ public class Application {
         for(int i=0; i<amount; i++){
             // 로또 번호 생성
             numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+            Collections.sort(numbers);     // 오름차순 정렬
 
             Lotto purchasedLotto = new Lotto(numbers);
             System.out.println(purchasedLotto.getNumbers());
         }
+
+        // 당첨 번호 입력(콤마로 구분)
+        System.out.println("당첨 번호를 입력해 주세요.");
+        String winningNumber = Console.readLine();
+
+        List<String> winnings = List.of(winningNumber.split(","));
+
+        numbers = new ArrayList<>();
+        for(int i=0; i<winnings.size(); i++){
+            numbers.add(Integer.parseInt(winnings.get(i)));
+        }
+        Lotto win = new Lotto(numbers);
+        System.out.println(win.getNumbers());
     }
 
     // 구매 금액이 유효한지 확인하고 리턴
