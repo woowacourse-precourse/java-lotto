@@ -3,7 +3,6 @@ package lotto;
 import static lotto.ui.ConsoleMessage.INPUT_PRICE;
 import static lotto.ui.ConsoleMessage.USERS_LOTTO_OUTPUT;
 import static lotto.util.LottoNumberGenerator.*;
-import static lotto.util.Validator.validateLottoPrice;
 
 import java.util.Collections;
 import java.util.List;
