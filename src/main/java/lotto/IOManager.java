@@ -11,6 +11,7 @@ public class IOManager {
     private static void printEmptyLine() {
         System.out.println(IOMessage.EMPTY_LINE.getMessage());
     }
+
     public static int scanMoney() throws IllegalArgumentException {
         try {
             System.out.println(IOMessage.ASK_PRICE.getMessage());
@@ -26,6 +27,7 @@ public class IOManager {
     public static List<Integer> scanAnswer() {
         try {
             System.out.println(IOMessage.ASK_ANSWER.getMessage());
+
             return Arrays.stream(Console.readLine().split(","))
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
@@ -39,6 +41,7 @@ public class IOManager {
     public static int scanBonus() {
         try {
             System.out.println(IOMessage.ASK_BONUS.getMessage());
+
             return Integer.parseInt(Console.readLine());
         } catch (Exception e) {
             throw new IllegalArgumentException();
