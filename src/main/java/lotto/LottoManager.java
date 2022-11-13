@@ -11,8 +11,8 @@ public class LottoManager {
     private final int THIRD_PRIZE = 1500000;
     private final int FOURTH_PRIZE = 50000;
     private final int FIFTH_PRIZE = 5000;
-    private int[] prize = new int[]{0, 0, 0, 0, 0, 0};
-    private int[] rewards = new int[]{FIRST_PRIZE, SECOND_PRIZE, THIRD_PRIZE, FOURTH_PRIZE, FIFTH_PRIZE};
+    private int[] prize = new int[]{ 0, 0, 0, 0, 0, 0 };
+    private int[] rewards = new int[]{ FIRST_PRIZE, SECOND_PRIZE, THIRD_PRIZE, FOURTH_PRIZE, FIFTH_PRIZE };
     private final Judge judge;
     private final LottoGenerator lottoGenerator;
     private int amount;
@@ -34,6 +34,7 @@ public class LottoManager {
     }
 
     public void inputAmount() {
+        System.out.println(Notice.INPUT_AMOUNT.getNotice());
         String a = Console.readLine();
         lottoGenerator.createLottoNumbers(a);
     }

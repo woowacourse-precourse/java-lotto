@@ -7,7 +7,7 @@ public class Judge {
 
     public boolean correctAmount(String amount) {
         if(!isNumber(amount)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Errors.NOT_CORRECT_INPUT.getName());
         }
         return Integer.parseInt(amount) % 1000 == 0;
     }
