@@ -2,7 +2,11 @@ package lotto;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+설명 -  사용자가 입력한 번호 객체
+getNumbers() - 사용자 번호 return
+addBonusNumber() -  보너스 번호 추가
+ */
 public class userNumbers {
     ArrayList<Integer> numbers;
 

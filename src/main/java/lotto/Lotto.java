@@ -4,7 +4,11 @@ import org.assertj.core.util.Sets;
 
 import java.util.List;
 import java.util.Set;
+/*
+설명 - 로또 객체
+getNumbers() - 로또 번호 List return
 
+ */
 public class Lotto {
     private final List<Integer> numbers;
 
