@@ -18,13 +18,13 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != LOTTO_SIZE) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 숫자가 6개여야 합니다.");
+            throw new IllegalArgumentException(Error.LOTTO_NUMBER_IS_NOT_CORRECT_SIZE.getMessage());
         }
         if (checkDuplicateInNumbers(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호에는 중복이 있어선 안 됩니다.");
+            throw new IllegalArgumentException(Error.LOTTO_NUMBERS_IS_CONTAIN_DUPLICATE.getMessage());
         }
         if (!isNumbersInRange(numbers)) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호의 숫자 범위는 1부터 45까지 입니다.");
+            throw new IllegalArgumentException(Error.LOTTO_NUMBER_IS_NOT_IN_RANGE.getMessage());
         }
     }
 

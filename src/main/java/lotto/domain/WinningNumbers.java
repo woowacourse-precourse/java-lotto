@@ -15,11 +15,15 @@ public class WinningNumbers {
 
     private void validateBonusNumber(List<Integer> winningLottoNumbers, Integer bonusNumber) {
         if (winningLottoNumbers.contains(bonusNumber)) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호가 당첨번호와 중복입니다.");
+            throw new IllegalArgumentException(Error.BONUS_NUMBER_IS_DUPLICATE_WITH_WINNING_NUMBERS.getMessage());
         }
-        if (Lotto.MIN_LOTTO_NUMBER > bonusNumber || bonusNumber > Lotto.MAX_LOTTO_NUMBER) {
-            throw new IllegalArgumentException("[ERROR] 보너스 번호의 범위가 1~45를 벗어났습니다.");
+        if (bonusNumberIsNotInCorrectRange(bonusNumber)) {
+            throw new IllegalArgumentException(Error.LOTTO_NUMBER_IS_NOT_IN_RANGE.getMessage());
         }
+    }
+
+    private boolean bonusNumberIsNotInCorrectRange(Integer bonusNumber) {
+        return Lotto.MIN_LOTTO_NUMBER > bonusNumber || bonusNumber > Lotto.MAX_LOTTO_NUMBER;
     }
 
     public void checkLottoWinning(Lotto ticket) {

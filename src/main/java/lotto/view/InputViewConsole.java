@@ -4,29 +4,26 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import lotto.domain.Error;
 import lotto.domain.Lottery;
 
 public class InputViewConsole implements InputView {
-    //TODO : ERROR 메세지 ENUM 으로 분리하기
-    private static final String ERROR_MESSAGE = "[ERROR] ";
-    private static final String ILLEGAL_PURCHASE_AMOUNT = "로또 구입 금액은 1,000원 단위여야 합니다.";
-    private static final String WINNING_NUMBER_IS_NOT_NUMERIC = "당첨번호는 숫자여야 합니다.";
-    private static final String BONUS_NUMBER_IS_NOT_NUMERIC = "보너스 번호는 숫자여야 합니다.";
     private static final String NUMERIC_PATTERN = "^[0-9]+$";
+    private static final String WINNING_NUMBERS_SEPARATOR = ",";
 
     @Override
     public int askPurchaseAmount() {
         String userInput = Console.readLine();
         if (!userInput.matches(NUMERIC_PATTERN)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + "구입금액은 숫자형식이어야 합니다.");
+            throw new IllegalArgumentException(Error.PURCHASE_AMOUNT_IS_NOT_NUMERIC.getMessage());
         }
         int purchaseAmount = Integer.parseInt(userInput);
 
         if (purchaseAmount == 0) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + "로또 구입 금액은 0원보다 커야합니다.");
+            throw new IllegalArgumentException(Error.PURCHASE_AMOUNT_IS_ZERO.getMessage());
         }
         if (purchaseAmount % Lottery.LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + ILLEGAL_PURCHASE_AMOUNT);
+            throw new IllegalArgumentException(Error.PURCHASE_AMOUNT_IS_NOT_DIVIDE_LOTTERY_PRICE.getMessage());
         }
         return purchaseAmount;
     }
@@ -34,7 +31,7 @@ public class InputViewConsole implements InputView {
     @Override
     public List<Integer> askWinningNumbers() {
         String userInput = Console.readLine();
-        String[] splitInputs = userInput.split(",");
+        String[] splitInputs = userInput.split(WINNING_NUMBERS_SEPARATOR);
         containOnlyNumber(splitInputs);
         return mapToIntegerList(splitInputs);
     }
@@ -43,7 +40,7 @@ public class InputViewConsole implements InputView {
     public Integer askBonusNumber() {
         String userInput = Console.readLine();
         if (!userInput.matches(NUMERIC_PATTERN)) {
-            throw new IllegalArgumentException(ERROR_MESSAGE + BONUS_NUMBER_IS_NOT_NUMERIC);
+            throw new IllegalArgumentException(Error.LOTTO_NUMBER_IS_NOT_NUMERIC.getMessage());
         }
         return Integer.valueOf(userInput);
     }
@@ -51,7 +48,7 @@ public class InputViewConsole implements InputView {
     private void containOnlyNumber(String[] splitInputs) {
         for (String numString : splitInputs) {
             if (!numString.matches(NUMERIC_PATTERN)) {
-                throw new IllegalArgumentException(ERROR_MESSAGE + WINNING_NUMBER_IS_NOT_NUMERIC);
+                throw new IllegalArgumentException(Error.LOTTO_NUMBER_IS_NOT_NUMERIC.getMessage());
             }
         }
     }
