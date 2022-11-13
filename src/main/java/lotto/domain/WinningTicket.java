@@ -56,4 +56,12 @@ public class WinningTicket {
             throw new IllegalArgumentException(e.getMessage());
         }
     }
+
+    public List<Integer> getWinnings() {
+        return this.winnings;
+    }
+
+    public int getBonusNumber() {
+        return this.bonusNumber;
+    }
 }
