@@ -61,7 +61,7 @@ public class LottoService {
 	private static int getMatchCount(Lotto lotto, WinningInfo winningInfo) {
 		return (int) lotto.getNumbers()
 				.stream()
-				.filter(number -> winningInfo.contains(number))
+				.filter(number -> winningInfo.isWinningNumbersContaining(number))
 				.count();
 	}
 

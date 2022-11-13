@@ -7,7 +7,6 @@ public class Profit {
         this.profit = profit;
     }
 
-
     public Profit convertToPercentage() {
         return new Profit(profit * 100);
     }

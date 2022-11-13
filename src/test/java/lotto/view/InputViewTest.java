@@ -54,7 +54,7 @@ class InputViewTest {
 	}
 
 	@Test
-	@DisplayName("당첨 번호 입력을 유도하는 메시지가 출력된다.")
+	@DisplayName("사용자로부터 당첨 번호를 입력받을 수 있다.")
 	void givenNothing_whenRunningInputView_thenReturnsWinning() {
 	    //when & then
 		assertThat(inputView.getWinningNumbers()).isEqualTo(MockInputView.MOCK_VALUE);

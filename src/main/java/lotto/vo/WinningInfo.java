@@ -3,11 +3,11 @@ package lotto.vo;
 import java.util.List;
 
 public class WinningInfo {
-    private final List<Integer> winnings;
+    private final List<Integer> winningNumbers;
     private final Integer bonus;
 
-    public WinningInfo(List<Integer> winnings, Integer bonus) {
-        this.winnings = winnings;
+    public WinningInfo(List<Integer> winningNumbers, Integer bonus) {
+        this.winningNumbers = winningNumbers;
         this.bonus = bonus;
     }
 
@@ -15,7 +15,7 @@ public class WinningInfo {
         return bonus;
     }
 
-    public boolean contains(Integer target) {
-        return winnings.contains(target);
+    public boolean isWinningNumbersContaining(Integer target) {
+        return winningNumbers.contains(target);
     }
 }
