@@ -3,6 +3,7 @@ package lotto.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -34,5 +35,17 @@ class LottoTest {
         // then
         assertThatThrownBy(() -> new Lotto(lst))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("생성된 로또 번호 오름차순 정렬 검증")
+    @Test
+    void 로또_정렬_검증() {
+        // given
+        List<Integer> lst = Arrays.asList(4, 11,9, 2, 5, 10);
+        // when
+        Lotto lotto = new Lotto(lst);
+        // then
+        assertThat(lotto.getNumbersString())
+                .isEqualTo(List.of(2, 4, 5, 9, 10, 11).toString());
     }
 }
