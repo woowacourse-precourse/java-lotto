@@ -140,6 +140,6 @@ class TotalResultTest {
 
         // expect
         assertThat(totalResult.getTotalProfit())
-                .isEqualTo(Money.NO_MONEY);
+                .isEqualTo(Money.ZERO);
     }
 }

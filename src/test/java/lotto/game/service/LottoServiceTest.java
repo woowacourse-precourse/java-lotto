@@ -147,7 +147,7 @@ class LottoServiceTest {
     void buyLotto10_000WonAnd0ProfitThenProfitRateMust_0Percent() {
         // given
         Money spentMoney = Money.of(10_000L);
-        Money totalProfit = Money.NO_MONEY;
+        Money totalProfit = Money.ZERO;
 
         // expect
         assertThat(lottoService.calculateProfitPercent(spentMoney, totalProfit))

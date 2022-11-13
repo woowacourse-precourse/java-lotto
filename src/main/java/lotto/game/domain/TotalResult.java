@@ -34,7 +34,7 @@ public class TotalResult {
         return grades.stream()
                 .map(Money::of)
                 .reduce(Money::add)
-                .orElse(Money.NO_MONEY);
+                .orElse(Money.ZERO);
     }
 
     public Money getTotalProfit() {

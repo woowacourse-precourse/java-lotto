@@ -6,7 +6,7 @@ public enum LottoGrade {
     THIRD(Money.of(1_500_000L)),
     FOURTH(Money.of(50_000L)),
     FIFTH(Money.of(5_000L)),
-    NOTHING(Money.NO_MONEY);
+    NOTHING(Money.ZERO);
 
     private final Money prize;
 

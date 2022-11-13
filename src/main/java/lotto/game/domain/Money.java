@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class Money {
     private static final Pattern moneyPattern = Pattern.compile("^[1-9]\\d*$");
-    public static final Money NO_MONEY = new Money(0);
+    public static final Money ZERO = new Money(0);
 
     private final long value;
 
