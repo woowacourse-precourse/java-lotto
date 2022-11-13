@@ -33,4 +33,14 @@ class LotteryMachineTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("당첨 번호가 중복 숫자가 있을 때 에러 발생")
+    @Test
+    void createWinningLottoNumByDuplicatedNum() {
+        String inputWinningNum = "1,2,3,4,5,5";
+        LotteryMachine lotteryMachine = new LotteryMachine();
+        String[] splitWinningNum = inputWinningNum.split(",");
+        assertThatThrownBy(() -> lotteryMachine.makeWinningLottoNum(splitWinningNum))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
