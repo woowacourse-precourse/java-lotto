@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Model {
     /**
@@ -22,4 +23,19 @@ public class Model {
         return lottoNumber;
     }
 
+    /**
+     * 집합에 사용자가가 입력한 숫자를 넣는다.
+     * @param playerNumbers 사용자가가 입력한 숫자
+     * @return 입력한 숫자를 HashSet로 return 한다.
+     */
+    public static HashSet<Integer> MakeNumberToSet(ArrayList<Integer> playerNumbers) {
+        HashSet<Integer> playerNumber = new HashSet<>();
+
+        // 집합에 사용자가가 입력한 숫자를 넣는다.
+        for (Integer I : playerNumbers) {
+            playerNumber.add(I);
+        }
+
+        return playerNumber;
+    }
 }

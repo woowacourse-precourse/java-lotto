@@ -12,7 +12,7 @@ public class Lotto {
         validate(numbers);
         this.numbers = numbers;
     }
-    
+
     /**
      * 사용자가 입력한 로또 숫자의 유효성을 검증한다.
      * 1에서 45까지 서로 다른 임의의 수 7개인지 검증
@@ -20,7 +20,7 @@ public class Lotto {
      */
     private static void ValidatePlayerNumber(ArrayList<Integer> playerNumbers) {
         // 집합에 게임 플레이어가 입력한 숫자를 넣는다.
-        HashSet<Integer> playerNumber = Model.MakeNumberToSet(playerNumbers))
+        HashSet<Integer> playerNumber = Model.MakeNumberToSet(playerNumbers);
 
         // 집합의 크기가 7이 아니거나 1에서 45까지의 숫자가 아닌 숫자를 포함하면 예외를 발생한다.
         if (playerNumber.size() != 7 || Collections.min(playerNumber) < 1 || Collections.max(playerNumber) > 45) {
