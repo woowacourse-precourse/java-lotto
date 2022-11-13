@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Lotto {
     private final List<Integer> numbers;
-    private static int[] rank = {0, 0, 0, 0, 0};
+    private static int[] rank = {0, 0, 0, 0, 0, 0, 0, 0};
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
@@ -29,9 +29,9 @@ public class Lotto {
             }
         }
         if (matchCount == 5 && !matchBonus) {
-            return 4;
+            return matchCount + 1;
         }
-        return 6 - matchCount;
+        return matchCount;
     }
 
     public int getPrizeMoney(List<List<Integer>> playerLotto, int bonusNumber) {
@@ -47,9 +47,6 @@ public class Lotto {
         int rankIndex;
         for (List<Integer> lotto : playerLotto) {
             rankIndex = compareLotto(lotto, bonusNumber);
-            if (rankIndex > 4) {
-                continue;
-            }
             rank[rankIndex]++;
         }
     }
