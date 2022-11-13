@@ -67,4 +67,9 @@ public class LottoController {
         }
         return matchedNumber;
     }
+
+    private boolean isContainsBonusNumber(Lotto userNumberLotto, int bonusNumber){
+        List<Integer> userNumber = userNumberLotto.getLottoNumber();
+        return userNumber.contains(bonusNumber);
+    }
 }
