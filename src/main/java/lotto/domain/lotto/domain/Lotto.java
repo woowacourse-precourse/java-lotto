@@ -1,12 +1,17 @@
 package lotto.domain.lotto.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lotto {
-    private final List<Integer> numbers;
+    private List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        this.numbers = new ArrayList<>(numbers);
+    }
+
+    private void saveNumbers(List<Integer> numbers) {
         this.numbers = numbers;
     }
 

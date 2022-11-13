@@ -102,8 +102,7 @@ public class OutputView {
     }
 
     public static void printGrossEarnings(double grossEarnings) {
-        System.out.println("grossEarnings = " + grossEarnings);
-        DecimalFormat decimalFormat = new DecimalFormat("###,###.0");
+        DecimalFormat decimalFormat = new DecimalFormat("###,##0.0");
         System.out.println("총 수익률은 " + decimalFormat.format(grossEarnings) + "% 입니다.");
     }
 }
