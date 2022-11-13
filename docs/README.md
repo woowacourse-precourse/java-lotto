@@ -29,6 +29,8 @@
 - [ ] 당첨 조건별 일치 갯수와 보너스 볼 일치별 갯수를 출력한다. ResultView#displayWinners()
 
 ## 클래스별 각 역할과 책임
+- LottoController: 전체 프로그램 흐름(입력, 출력 등)
+- LottoService: 프로그램 흐름 중, 로또와 관련된 흐름의 상세
 - Lotto: 로또 검증
 - LottoMachine: 로또 발행
 - WinLotto: 당첨 관련
