@@ -1,4 +1,7 @@
-package lotto;
+package lotto.money;
+
+import lotto.message.ErrorMessage;
+import lotto.Ranking;
 
 import java.util.Map;
 

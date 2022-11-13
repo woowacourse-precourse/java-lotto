@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.money.Money;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -34,10 +35,12 @@ class MoneyTest {
             .isInstanceOf(IllegalArgumentException.class);
   }
 
-  @DisplayName("카운트 된 로또의 개수")
+  @DisplayName("카운트 된 로또의 개수 검사")
   @Test
   void lottoCount() {
     assertThat(Money.countLotto("4000")).isEqualTo(4);
+    assertThat(Money.countLotto("14000")).isEqualTo(14);
+    assertThat(Money.countLotto("120000")).isEqualTo(120);
   }
 
   @Test

@@ -1,5 +1,12 @@
 package lotto;
 
+import lotto.message.Message;
+import lotto.money.Money;
+import lotto.numbers.BonusNumber;
+import lotto.numbers.MatchNumbers;
+import lotto.numbers.RandomNumberCreater;
+import lotto.numbers.WinningNumber;
+
 import java.util.List;
 
 public class Application { // 패키지 분리
