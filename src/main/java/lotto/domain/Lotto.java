@@ -18,6 +18,12 @@ public class Lotto {
         if (numbers.size() != LOTTO_NUMBER_LENGTH) {
             throw new IllegalArgumentException(LOTTO_NUMBER_LENGTH_EXCEPTION.toString());
         }
+        if (LOTTO_NUMBER_LENGTH != numbers.stream()
+                .filter(number -> MIN_NUMBER <= number)
+                .filter(number -> number <= MAX_NUMBER)
+                .count()) {
+            throw new IllegalArgumentException(LOTTO_NUMBER_RANGE_EXCEPTION.toString());
+        }
     }
 
     @Override
