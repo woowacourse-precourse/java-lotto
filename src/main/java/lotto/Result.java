@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static lotto.Const.SIZE;
+import static lotto.GuidePhrase.*;
 
 public class Result {
     private Map<Float, Integer> winBoard;
@@ -36,6 +37,15 @@ public class Result {
         return totalReward;
     }
 
+    public void printStatistic() {
+        for (int i = 0; i < ranks.length; i++) {
+            int winSheetCount = winBoard.get(ranks[i].getMatching());
+            long reward = getReward(ranks[i].getMatching());
+
+            System.out.println(getOutOfMatching(ranks[i].getMatching()) + " (" + getOutOfPrize(ranks[i].getPrize()) + "원) - " + winSheetCount + COUNT);
+        }
+    }
+
     public long getReward(float matchingNumber) {
         long winSheetCount = winBoard.get(matchingNumber);
         long reward = 0;
@@ -49,9 +59,41 @@ public class Result {
         return reward;
     }
 
+    private String getOutOfMatching(float matchingNumber) {
+        String outOfMatching = "";
+
+        if (matchingNumber == 5.5f) {
+            outOfMatching = "5개 일치, 보너스 볼 일치";
+        }
+
+        if (matchingNumber != 5.5f) {
+            outOfMatching = (int) matchingNumber + "개 일치";
+        }
+
+        return outOfMatching;
+    }
+
+    private String getOutOfPrize(long prize) { // 3 자리씩 끊어서 출력, Decimal.formater
+        String longToString = Long.toString(prize);
+        String outOfPrize = "";
+        int index = 0;
+
+        for (int i = longToString.length() - 1; i != -1; i--) {
+            if (index != 0 && index % 3 == 0) {
+                outOfPrize = "," + outOfPrize;
+            }
+
+            outOfPrize = longToString.charAt(i) + outOfPrize;
+            index++;
+        }
+
+        return outOfPrize;
+    }
 
     private void updateWinBoard(float matchingNumber) {
-        winBoard.put(matchingNumber, winBoard.get(matchingNumber) + 1);
+        if (winBoard.containsKey(matchingNumber)) {
+            winBoard.put(matchingNumber, winBoard.get(matchingNumber) + 1);
+        }
     }
 
     private int numberOfMatchingNumbers(Lotto winningNumber, Lotto lotto) {

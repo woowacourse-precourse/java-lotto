@@ -6,7 +6,6 @@ public enum GuidePhrase {
     INPUT_WINNING_NUMBER("당첨 번호를 입력해 주세요."),
     INPUT_BONUS_NUMBER("보너스 번호를 입력해 주세요."),
     STATISTIC("당첨 통계\n---"),
-    EQUALS("개 일치"),
     UNIT("원"),
     COUNT("개"),
     LEADING_PRICE("총 수익률은 "),
