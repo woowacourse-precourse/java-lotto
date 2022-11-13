@@ -12,6 +12,10 @@ public class Money {
         this.money = money;
     }
 
+    public int getMoney() {
+        return money;
+    }
+
     private void validateAbleToBuyAtLeastOne(int money) {
         if (money < MIN_AMOUNT) {
             throw new IllegalArgumentException(Error.MIN_MONEY_LIMIT.getCode()); //최소 금액 error code
