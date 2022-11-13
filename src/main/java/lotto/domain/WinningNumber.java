@@ -1,6 +1,9 @@
 package lotto.domain;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class WinningNumber {
@@ -30,12 +33,16 @@ public class WinningNumber {
         return winningNumber.stream().allMatch(a -> a >= 1 && a <= 45);
     }
 
-    private String[] separateCommas(String input) {
-        String[] inputs = input.split(",");
-        if (inputs.length != 6) {
+    private List<String> separateCommas(String input) {
+        List<String> inputs = new ArrayList<>(Arrays.asList(input.split(",")));
+        validateStrings(inputs);
+        return inputs;
+    }
+
+    private void validateStrings(List<String> inputs) {
+        if (inputs.size() != 6) {
             throw new IllegalArgumentException(Error.IS_NOT_SIX.getMessage());
         }
-        return inputs;
     }
 
     private boolean isNumber(String[] inputs) { //인덴트 초과
