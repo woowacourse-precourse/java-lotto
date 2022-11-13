@@ -24,20 +24,22 @@ public class Client {
     public List<Integer> mark() {
         String markedNumberString = clientInput.get();
 
-        for (int i = 0; i < markedNumberString.length(); i++) {
-            if (i % 2 == 0) {
-                try {
-                    markedNumberString.charAt(i);
-                } catch (Exception e) {
-                    throw new IllegalArgumentException(e);
-                }
-            } else {
-                if (markedNumberString.charAt(i) != ',') {
-                    throw new IllegalArgumentException();
-                }
+        validateIsSplittedByComma(markedNumberString);
+
+        List<Integer> numbers = parseStringToIntegerListOrElseThrow(markedNumberString);
+
+        return numbers;
+    }
+
+    private void validateIsSplittedByComma(String target) {
+        for (int i = 1; i < target.length(); i += 2) {
+            if (target.charAt(i) != ',') {
+                throw new IllegalArgumentException();
             }
         }
+    }
 
+    private List<Integer> parseStringToIntegerListOrElseThrow(String markedNumberString) {
         List<Integer> numbers;
         try {
             numbers = List.of(
@@ -47,7 +49,6 @@ public class Client {
         } catch (Exception e) {
             throw new IllegalArgumentException(e);
         }
-
         return numbers;
     }
 
