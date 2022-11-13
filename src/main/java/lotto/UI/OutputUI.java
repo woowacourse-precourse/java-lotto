@@ -14,6 +14,7 @@ public class OutputUI {
     }
 
     public void printLottos(List<Lotto> lottoPack) {
+        // TODO: Lotto 번호를 형식에 맞게 출력해야함.
         for (Lotto lotto : lottoPack) {
             List<Integer> lottoNumbers = lotto.getNumbers();
             System.out.println(lottoNumbers);

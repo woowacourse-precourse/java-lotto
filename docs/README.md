@@ -34,17 +34,19 @@
 
 최종 결과가 나올 때 까지 어떤 기능을 거쳐가야할지 순서대로 기능을 생각해본다.
 
-- [ ]  로또 구입 금액 입력 메시지를 출력한다. OutputUI#printMessage()
-- [ ]  로또 구입 금액을 입력받는다. InputUI#getMoney()
-    - [ ]  1000원 단위인지 검증한다. Validator#validateMoney()
+- [x]  로또 구입 금액 입력 메시지를 출력한다. OutputUI#printMessage()
+- [x]  로또 구입 금액을 입력받는다. InputUI#getMoney()
+    - [x]  1000원 단위인지 검증한다. Validator#validateMoney()
 - [ ]  발행할 로또 갯수만큼 로또 용지를 발급한다. LottoMachine#createLottoWithMoney()
     - [ ]  로또 용지를 발급한다. LottoMachine#createLotto()
 - [ ]  발행 받은 로또 용지를 출력한다. OutputUI#printLottos()
-- [ ]  당첨 일반 번호 입력 메시지를 출력한다. OutputUI#printMessage()
-- [ ]  당첨 보너스 번호 입력 메시지를 출력한다. OutputUI#printMessage()
-- [ ]  당첨 번호를 입력받는다. InputUI#getWinningNumbers()
-    - [ ]  당첨 일반 번호를 입력받는다. InputUI#getNormalNumbers()
-    - [ ]  당첨 보너스번호를 입력받는다. InputUI#getBonusNumber()
+- [x]  당첨 일반 번호 입력 메시지를 출력한다. OutputUI#printMessage()
+- [x]  당첨 보너스 번호 입력 메시지를 출력한다. OutputUI#printMessage()
+- [x]  당첨 번호를 입력받는다. InputUI#getWinningNumbers()
+    - [x]  당첨 일반 번호를 입력받는다. InputUI#getNormalNumbers()
+        - [x]  당첨 일반 번호를 검증한다. Validator#validateNormalNumbers()
+    - [x]  당첨 보너스번호를 입력받는다. InputUI#getBonusNumber()
+        - [x]  당첨 보너스 번호를 검증한다. Validator#validateBonusNumber()
 - [ ]  구입한 로또의 당첨 결과를 계산한다. RaffleCounter#countWinner()
     - [ ]  당첨 일반 번호가 몇개 있는지 확인한다. RaffleCounter#countNormalNumbers()
     - [ ]  당첨 보너스 번호가 포함되어 있는지 확인한다. RaffleCounter#countBonusNumber()
@@ -52,5 +54,3 @@
 - [ ]  당첨 결과를 출력한다. OutputUI#printWinnerCounts()
     - [ ]  당첨로또의 갯수를 출력한다. OutputUI#printWinnerResult()
     - [ ]  수익률을 출력한다. OutputUI#printReturnRate()
-
-- [ ] 로또의 Numbers를 받는다. Lotto#getNumbers()
