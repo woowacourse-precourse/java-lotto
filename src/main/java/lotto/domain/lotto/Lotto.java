@@ -24,13 +24,14 @@ public class Lotto {
     }
 
     public Lotto(final String input) {
-        validateNumbersSizeIsFixSize(input);
-
         var generatedLotto = generateLotto(input);
 
         validateLottoNumbersDuplicated(generatedLotto);
 
-        this.numbers = convertListLottoNumberToListInteger(generatedLotto);
+        var numbers = convertListLottoNumberToListInteger(generatedLotto);
+        validateNumbersSizeIsFixSize(numbers);
+
+        this.numbers = numbers;
     }
 
     private List<LottoNumber> generateLotto(String input) {
@@ -60,12 +61,6 @@ public class Lotto {
             throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_DUPLICATED);
         }
 
-    }
-
-    private void validateNumbersSizeIsFixSize(final String input) {
-        if (input.length() != FIX_SIZE) {
-            throw new IllegalArgumentException(ERROR_LOTTO_NUMBER_SIZE);
-        }
     }
 
     private void validateNumbersSizeIsFixSize(List<Integer> numbers) {
