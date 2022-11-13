@@ -67,7 +67,7 @@ public class Input {
     }
 
     private static boolean isValidWinningNumbers(String numbers) {
-        return isSeparatedByComma(numbers) && isNumerics(numbers) && isValidCount(numbers);
+        return isSeparatedByComma(numbers) && isNumerics(numbers) && isValidCount(numbers) && isValidRanges(numbers);
     }
 
     /**
@@ -88,10 +88,18 @@ public class Input {
     }
 
     /**
-     * 분리한 숫자들의 개수가 6개인지 확인하는 메서드
+     * 분리한 숫자들의 개수가 6개인지 확인하는 메소드
      */
     private static boolean isValidCount(String numbers) {
         return numbers.split(",").length == LOTTO_COUNT;
+    }
+
+    /**
+     * 분리한 숫자들의 범위가 1~45 인지 확인하는 메소드
+     */
+    private static boolean isValidRanges(String numbers) {
+        return Arrays.stream(numbers.split(","))
+                .allMatch(Input::isValidRange);
     }
 
     public static int inputBonusNumber(List<Integer> winningNumbers) {
