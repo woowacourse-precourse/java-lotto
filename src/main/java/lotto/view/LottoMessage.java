@@ -1,7 +1,8 @@
 package lotto.view;
 
 public enum LottoMessage {
-    INPUT_AMOUNT("구입금액을 입력해 주세요.");
+    INPUT_AMOUNT("구입금액을 입력해 주세요."),
+    PURCHASE_DONE("개를 구매했습니다.");
 
     private final String message;
 

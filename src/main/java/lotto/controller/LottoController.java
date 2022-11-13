@@ -15,6 +15,8 @@ public class LottoController {
 
     private void sell() {
         int amount = user.buy();
+        int lottoNum = amount / 1000;
+        printer.print(lottoNum + LottoMessage.PURCHASE_DONE.getMessage());
     }
 
 }
