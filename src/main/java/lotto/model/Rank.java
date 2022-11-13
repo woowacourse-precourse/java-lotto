@@ -10,7 +10,7 @@ public enum Rank {
     FIFTH(5000, 3, (matchCount, matchBonus) -> matchCount == 3),
     FOURTH(50000, 4, (matchCount, matchBonus) -> matchCount == 4),
     THIRD(1500000, 5, (matchCount, matchBonus) -> matchCount == 5 && !matchBonus),
-    SECOND(30000000, 5, (matchCount, matchBonus) -> matchCount == 5 && !matchBonus),
+    SECOND(30000000, 5, (matchCount, matchBonus) -> matchCount == 5 && matchBonus),
     FIRST(2000000000, 6, (matchCount, matchBonus) -> matchCount == 6);
 
     private final int price;

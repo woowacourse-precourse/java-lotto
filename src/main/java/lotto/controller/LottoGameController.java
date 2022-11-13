@@ -17,17 +17,18 @@ public class LottoGameController {
         BuyAmount buyAmount = new BuyAmount(InputView.buyAmountInput());
         LottoList lottoList = new LottoList(buyAmount.getMONEY());
         initMessage(lottoList);
-        UserNumbers userNumbers = new UserNumbers(
-            InputView.answerNumberInput(),
-            InputView.bonusNumberInput());
+        UserNumbers userNumbers = new UserNumbers(InputView.answerNumberInput(),InputView.bonusNumberInput());
         Result result = new Result(lottoList, userNumbers);
-        OutputView.ResultPrint(result);
-        OutputView.YieldPrint(result.getSumPrice(), buyAmount.getMONEY());
+        finishMessage(result,buyAmount);
     }
 
     private void initMessage(LottoList lottoList) {
         OutputView.LottoCountPrint(lottoList.getLOTTO_COUNT());
         OutputView.LottoListPrint(lottoList);
+    }
+    private void finishMessage(Result result,BuyAmount buyAmount){
+        OutputView.ResultPrint(result);
+        OutputView.YieldPrint(result.getSumPrice(), buyAmount.getMONEY());
     }
 
 
