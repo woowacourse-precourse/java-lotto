@@ -20,7 +20,8 @@ public class OutputView {
 
     public void outputLottos(Lottos lottos) {
         System.out.println(String.format(OUTPUT_LOTTOS_GUIDE, lottos.count()));
-        System.out.println(lottoOutputTexts(lottos).stream().collect(Collectors.joining(NEW_LINE)));
+
+        System.out.println(String.join(NEW_LINE, lottoOutputTexts(lottos)));
     }
 
     private List<String> lottoOutputTexts(Lottos lottos) {
@@ -30,6 +31,8 @@ public class OutputView {
     }
 
     public void outputLottoResult(LottoResult lottoResult) {
+        System.out.println("당첨 통계\n---");
+
         String result = Arrays.stream(sortRankByReward())
                 .filter(rank -> rank != Rank.MISS)
                 .map(rank -> outputViewFormatter.outputRankFormat(rank, lottoResult.rankCount(rank)))

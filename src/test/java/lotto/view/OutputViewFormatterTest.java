@@ -54,7 +54,10 @@ public class OutputViewFormatterTest {
     }
 
     @ParameterizedTest(name = "수익률은 소수점 둘째 자리에서 반올림한다")
-    @CsvSource(value = {"100.02:100.0%", "51.54:51.5%", "51.56:51.6%", "1000000.02:1,000,000.0%"}, delimiter = ':')
+    @CsvSource(value = {"100.02:총 수익률은 100.0%입니다.",
+            "51.54:총 수익률은 51.5%입니다.",
+            "51.56:총 수익률은 51.6%입니다.",
+            "1000000.02:총 수익률은 1,000,000.0%입니다."}, delimiter = ':')
     void outputYield(Double value, String expected) {
         assertThat(outputViewFormatter.outputYieldFormat(value)).isEqualTo(expected);
     }
