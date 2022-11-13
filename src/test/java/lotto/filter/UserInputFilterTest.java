@@ -2,6 +2,8 @@ package lotto.filter;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.List;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,6 +32,26 @@ class UserInputFilterTest {
 		assertThatThrownBy(() -> filter.changeStringToLong("-123"))
 			.isInstanceOf(IllegalArgumentException.class);
 		assertThatThrownBy(() -> filter.changeStringToLong("-123"))
+			.isInstanceOf(IllegalArgumentException.class);
+	}
+
+	@Test
+	@DisplayName("구분자를 이용한 문자열 분할 실패시 예외 발생")
+	void splitStringToDelimiterTest() {
+		List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
+
+		List<Integer> splitNumbers = filter.splitStringToDelimiter("1,2,3,4,5,6", 6);
+		Assertions.assertThat(splitNumbers).isEqualTo(numbers);
+
+		assertThatThrownBy(() -> filter.splitStringToDelimiter("1.2.3.4.5.6", 6))
+			.isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> filter.splitStringToDelimiter("1,2,3,4,5,6,7", 6))
+			.isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> filter.splitStringToDelimiter("1,2,3,4,5,6", 7))
+			.isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> filter.splitStringToDelimiter("1,2,3,4,5,6", 5))
+			.isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> filter.splitStringToDelimiter("1, 2, 3, 4, 5, 6", 6))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
 }
