@@ -23,6 +23,6 @@ public class Application {
         }
 
         //결과 출력
-        lottoWinning.printResult(result);
+        lottoWinning.printResult(lottoVM.issuedLottoCount, result);
     }
 }
