@@ -11,8 +11,8 @@ class LottoCalculatorTest {
     @Test
     void compare() {
         LottoCalculator lottoCalculator = new LottoCalculator();
-        int input = lottoCalculator.compare(Arrays.asList(1, 2, 3, 4, 5, 6), Arrays.asList(1, 2, 3, 15, 25, 30), 45);
-        int result = 0;
+        int input = lottoCalculator.compare(Arrays.asList(1, 2, 3, 4, 5, 10), Arrays.asList(1, 2, 3, 4, 5, 30), 6);
+        int result = 2;
 
         assertThat(input).isEqualTo(result);
     }
@@ -20,8 +20,12 @@ class LottoCalculatorTest {
     @Test
     void addRankCount() {
         LottoCalculator lottoCalculator = new LottoCalculator();
-        int count = lottoCalculator.compare(Arrays.asList(1, 2, 3, 4, 5, 6), Arrays.asList(1, 2, 3, 4, 5, 6), 10);
-        lottoCalculator.addRankCount(count);
-        assertThat(lottoCalculator.getRankCount()).isEqualTo(Arrays.asList(0, 0, 0, 0, 1));
+        int input = 1;
+        int input2 = 4;
+        lottoCalculator.addRankCount(input);
+        lottoCalculator.addRankCount(input2);
+        lottoCalculator.addRankCount(input2);
+
+        assertThat(lottoCalculator.getRankCount()).isEqualTo(Arrays.asList(0, 1, 0, 0, 2));
     }
 }

@@ -23,5 +23,7 @@ public class Application {
         // 보너스 번호 입력
         final int bonusNumber = numberGenerator.createBonusNumbers(winningNumbers, lottoManager.inputBonusNumber());
 
+
+
     }
 }
