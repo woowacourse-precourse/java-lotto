@@ -14,7 +14,7 @@ public class OutputView {
     private static final String RANK_MESSAGE = "%d개 일치%s(%d원) - %d개" + System.lineSeparator();
     private static final String BONUS_MESSAGE = ", 보너스 볼 일치";
     private static final String PROFIT_MESSAGE = "총 수익률은 %s입니다."+System.lineSeparator();
-    private static final String ERROR_MESSAGE = "[ERROR]+%s" + System.lineSeparator();
+    private static final String ERROR_MESSAGE = "[ERROR] %s" + System.lineSeparator();
 
     public static void showLotto(List<Lotto> userLotto) {
 

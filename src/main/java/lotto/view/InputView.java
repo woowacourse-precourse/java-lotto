@@ -26,6 +26,7 @@ public class InputView {
             validate(input);
         } catch (Exception exception) {
             OutputView.showError(exception);
+            throw new IllegalArgumentException();
         }
 
         return Integer.parseInt(input);
@@ -40,6 +41,7 @@ public class InputView {
             validateLuckyNumbers(input);
         } catch (Exception exception) {
             OutputView.showError(exception);
+            throw new IllegalArgumentException();
         }
 
         return separate(input);
@@ -54,6 +56,7 @@ public class InputView {
             validate(input);
         } catch (Exception exception) {
             OutputView.showError(exception);
+            throw new IllegalArgumentException();
         }
 
         return Integer.parseInt(input);
@@ -61,7 +64,7 @@ public class InputView {
 
 
     private static void validate(String input) {
-        if (!input.matches("[0-9]+]")) {
+        if (!input.matches("^[0-9]+$")) {
             throw new NotNumberInputException();
         }
     }
