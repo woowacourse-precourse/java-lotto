@@ -20,11 +20,15 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        validateNumberCount(numbers);
+        validateDuplicateNumber(numbers);
+        validateNumberRange(numbers);
+    }
+
+    private void validateNumberCount(List<Integer> numbers) {
         if (numbers.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException(ERROR_NUMBERS_COUNT);
         }
-        validateDuplicateNumber(numbers);
-        validateNumberRange(numbers);
     }
 
     private void validateNumberRange(List<Integer> numbers) {
