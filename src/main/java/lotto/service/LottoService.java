@@ -4,15 +4,13 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
 import lotto.domain.LuckyNumber;
 import lotto.message.ErrorMessage;
+import lotto.message.NumberType;
 import lotto.repository.LottoRepository;
 import lotto.validation.Validator;
 import lotto.view.input.Input;
 import lotto.view.output.Output;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class LottoService {
@@ -53,7 +51,6 @@ public class LottoService {
     public void pickAndSaveLotto(int buyCount) {
         while (buyCount-- > 0) {
             List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-            Collections.sort(numbers);
             Lotto lotto = new Lotto(numbers);
             lottoRepository.add(lotto);
         }
@@ -111,5 +108,83 @@ public class LottoService {
         if (!validator.isUniqueNumber(bonusNumberInput, winningNumbers)) {
             throw new IllegalArgumentException(ErrorMessage.BONUS_NUMBER_DUPLICATED_ERROR.getErrorMessage());
         }
+    }
+    public void printResult(LuckyNumber luckyNumber, int money) {
+        output.printResultGuideMessage();
+        int[] prizeResult = getPrizeResult(luckyNumber);
+        output.printPrizeResult(prizeResult);
+        double profitRate = calculateProfitRate(money, prizeResult);
+        output.printProfitRate(profitRate);
+    }
+
+    public double calculateProfitRate(int moneyInput, int[] prizeResult) {
+        int totalPrize = calculateTotalPrize(prizeResult);
+        int money = moneyInput / NumberType.IN_THOUSANDS.getNumberType();
+        double profitRate = ((double)totalPrize / money) * NumberType.HUNDRED.getNumberType();
+        profitRate = Math.round(profitRate * NumberType.TEN.getNumberType());
+        profitRate = profitRate / NumberType.TEN.getNumberType();
+        return profitRate;
+    }
+
+    public int calculateTotalPrize(int[] prizeResult) {
+        int totalPrize = 0;
+        totalPrize += prizeResult[NumberType.FIRST_PRIZE.getNumberType()] * NumberType.FIRST_PRIZE_REWARD.getNumberType();
+        totalPrize += prizeResult[NumberType.SECOND_PRIZE.getNumberType()] * NumberType.SECOND_PRIZE_REWARD.getNumberType();
+        totalPrize += prizeResult[NumberType.THIRD_PRIZE.getNumberType()] * NumberType.THIRD_PRIZE_REWARD.getNumberType();
+        totalPrize += prizeResult[NumberType.FOURTH_PRIZE.getNumberType()] * NumberType.FOURTH_PRIZE_REWARD.getNumberType();
+        totalPrize += prizeResult[NumberType.FIFTH_PRIZE.getNumberType()] * NumberType.FIFTH_PRIZE_REWARD.getNumberType();
+        return totalPrize;
+    }
+
+    public int[] getPrizeResult(LuckyNumber luckyNumber) {
+        int[] prizeResult = new int[5];
+        List<Lotto> lottos = lottoRepository.findAll();
+        for (Lotto lotto : lottos) {
+            countPrizeResultForEachLotto(lotto, luckyNumber, prizeResult);
+        }
+        return prizeResult;
+    }
+
+    public void countPrizeResultForEachLotto(Lotto lotto, LuckyNumber luckyNumber, int[] prizeResultCount) {
+        List<Integer> lottoNumbers = lotto.getLottoNumbers();
+        int winningCount = calculateWinningCount(lottoNumbers, luckyNumber);
+        int bonusCount = calculateBonusCount(lottoNumbers, luckyNumber);
+
+        if (winningCount == NumberType.THREE.getNumberType()) {
+            prizeResultCount[NumberType.FIFTH_PRIZE.getNumberType()]++;
+        }
+        if (winningCount == NumberType.FOUR.getNumberType()) {
+            prizeResultCount[NumberType.FOURTH_PRIZE.getNumberType()]++;
+        }
+        if (winningCount == NumberType.FIVE.getNumberType() && bonusCount == NumberType.ZERO.getNumberType()) {
+            prizeResultCount[NumberType.THIRD_PRIZE.getNumberType()]++;
+        }
+        if (winningCount == NumberType.FIVE.getNumberType() && bonusCount == NumberType.ONE.getNumberType()) {
+            prizeResultCount[NumberType.SECOND_PRIZE.getNumberType()]++;
+        }
+        if (winningCount == NumberType.SIX.getNumberType()) {
+            prizeResultCount[NumberType.FIRST_PRIZE.getNumberType()]++;
+        }
+    }
+
+    public int calculateBonusCount(List<Integer> lottoNumbers, LuckyNumber luckyNumber) {
+        int bonusNumber = luckyNumber.getBonusNumber();
+        if (lottoNumbers.contains(bonusNumber)) {
+            return NumberType.ONE.getNumberType();
+        }
+        return NumberType.ZERO.getNumberType();
+    }
+
+    public int calculateWinningCount(List<Integer> lottoNumbers, LuckyNumber luckyNumber) {
+        int count = 0;
+        HashSet<Integer> winningNumbers = luckyNumber.getWinningNumbers();
+
+        for (Iterator<Integer> iterator = lottoNumbers.iterator(); iterator.hasNext();) {
+            if (winningNumbers.contains(iterator.next())) {
+                count++;
+                iterator.remove();
+            }
+        }
+        return count;
     }
 }

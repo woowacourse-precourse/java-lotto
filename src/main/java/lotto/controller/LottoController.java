@@ -1,11 +1,7 @@
 package lotto.controller;
 
-import com.sun.security.jgss.GSSUtil;
 import lotto.domain.LuckyNumber;
 import lotto.service.LottoService;
-
-import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public class LottoController {
 
@@ -20,6 +16,7 @@ public class LottoController {
             int money = lottoService.getMoney();
             lottoService.buyLotto(money);
             LuckyNumber luckyNumber = lottoService.pickLuckyNumber();
+            lottoService.printResult(luckyNumber, money);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
