@@ -12,7 +12,8 @@ class ValidatorTest {
 	@Test
 	@DisplayName("당첨 번호 입력의 형식이 올바른지 검증한다.")
 	void v1alidateIntegerInput() {
-		assertThatThrownBy(() -> Validator.validateFormOfWinningNumbers("12,3,4,5,5")).isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> Validator.validateFormOfWinningNumbers("12,3,4,5,5")).isInstanceOf(
+			IllegalArgumentException.class);
 	}
 
 	@Test
@@ -42,12 +43,21 @@ class ValidatorTest {
 	@Test
 	@DisplayName("1부터 45까지의 숫자인지 검증한다.")
 	void validateNumberRange() {
-		assertThatThrownBy(() -> Validator.validateNumberRange(List.of(2, 5, 3, 15, 32, 54))).isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> Validator.validateNumberRange(List.of(2, 5, 3, 15, 32, 54))).isInstanceOf(
+			IllegalArgumentException.class);
 	}
 
 	@Test
 	@DisplayName("숫자 간에 중복이 있는지 검증한다.")
 	void validateNoDuplication() {
-		assertThatThrownBy(() -> Validator.validateNoDuplication(List.of(2, 4, 16, 23, 23, 42))).isInstanceOf(IllegalArgumentException.class);
+		assertThatThrownBy(() -> Validator.validateNoDuplication(List.of(2, 4, 16, 23, 23, 42))).isInstanceOf(
+			IllegalArgumentException.class);
+	}
+
+	@Test
+	@DisplayName("숫자들의 개수가 6개인지 검증한다.")
+	void validateSizeOfNumbers() {
+		assertThatThrownBy(() -> Validator.validateSizeOfNumbers(List.of(1, 5, 16, 25, 32))).isInstanceOf(
+			IllegalArgumentException.class);
 	}
 }
