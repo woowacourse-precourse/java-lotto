@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,6 +14,14 @@ public class DataProcessing {
     public List<Integer> sortLottoNumbers(List<Integer> sortNumbers) {
         Collections.sort(sortNumbers);
         return sortNumbers;
+    }
+
+    public List<List<Integer>> countCreateRandomNumbers(int count) {
+        List<List<Integer>> boxNumbers = new ArrayList<>();
+        for (int i=0;i<count;++i) {
+            boxNumbers.add(sortLottoNumbers(lottoRandomNumbers()));
+        }
+        return boxNumbers;
     }
 
     public int conversionMoney(String money) {
