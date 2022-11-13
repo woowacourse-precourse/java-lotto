@@ -20,6 +20,17 @@ public class LottoNumbers {
             LottoNumberInInteger.add(Integer.parseInt(stringIndex));
         }
 
+        System.out.println(LottoNumberListInString);
+        System.out.println(LottoNumberInInteger);
         return LottoNumberInInteger;
     }
+
+    public static int getLotteryBonusNumber(){
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+        int bonusNumber = Integer.parseInt(Console.readLine());
+
+        return bonusNumber;
+    }
+
 }
