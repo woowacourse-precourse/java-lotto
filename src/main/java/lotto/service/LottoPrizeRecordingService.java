@@ -7,8 +7,12 @@ import java.util.stream.Collectors;
 
 public class LottoPrizeRecordingService {
 
-    private EnumMap<WinPrize, Long> prizeRecording = new EnumMap<>(WinPrize.class);
+    private EnumMap<WinPrize, Long> prizeRecording;
     private long totalPrizeMoney;
+
+    public LottoPrizeRecordingService() {
+        this.prizeRecording = new EnumMap<>(WinPrize.class);
+    }
 
     public void setPrizeRecording(WinPrize winPrize) {
         if (!winPrize.equals(WinPrize.NOTHING)) {
@@ -37,6 +41,4 @@ public class LottoPrizeRecordingService {
 
         return (double) totalPrizeMoney / purchaseMoney;
     }
-
-
 }

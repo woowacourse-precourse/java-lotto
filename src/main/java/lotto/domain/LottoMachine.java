@@ -16,12 +16,14 @@ public class LottoMachine {
 
     public static Lotto winNumber;
     public static int bonusNumber;
-    public InputController winNumberInputController = new WinNumberInputController();
-    public BonusNumberInputController bonusNumberInputController = new BonusNumberInputController();
+    public InputController winNumberInputController;
+    public BonusNumberInputController bonusNumberInputController;
     public HashMap<Long, WinPrize> winPrizeRecording;
 
     public LottoMachine() {
         winPrizeRecording = new HashMap<>();
+        winNumberInputController = new WinNumberInputController();
+        bonusNumberInputController = new BonusNumberInputController();
 
         winPrizeRecording.put(WinPrize.ONE_GRADE.matchCount, WinPrize.ONE_GRADE);
         winPrizeRecording.put(WinPrize.THREE_GRADE.matchCount, WinPrize.THREE_GRADE);
