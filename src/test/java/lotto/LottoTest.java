@@ -40,4 +40,12 @@ class LottoTest {
         assertEquals(List.of(1, 2, 3, 4, 5, 6), lotto.sortLottoNumberAscending(List.of(5, 6, 2, 1, 3, 4)));
     }
 
+    @DisplayName("로또 번호 비교")
+    @Test
+    void lottoCompare() {
+        Lotto lotto = new Lotto(List.of(0, 0, 0, 0, 0, 0));
+        List<Lotto> lottoList = List.of(new Lotto(List.of(1, 45, 2, 4, 5, 12)));
+        assertEquals(List.of(1, 45, 5, 12), lotto.lottoCompare(lottoList, List.of(12, 13, 5, 34, 45, 1)));
+    }
+
 }
