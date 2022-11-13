@@ -50,11 +50,19 @@ public class Lotto {
         String winNum = readLine();
         List<String> winner = Arrays.asList(winNum.split(","));
         List<Integer> winNumber = winner.stream().map(s-> Integer.parseInt(s)).collect(Collectors.toList());
+        new Lotto(winNumber);
         return winNumber;
     }
     public static int bonusNum(){
         System.out.println("보너스 번호를 입력해 주세요.");
         int bonus = Integer.parseInt(readLine());
         return bonus;
+    }
+    public int getWin(List<Integer> LottoNum){
+        int checkWin = 0;
+        for(int i : this.numbers){
+            if(LottoNum.contains(i)) checkWin++;
+        }
+        return checkWin;
     }
 }
