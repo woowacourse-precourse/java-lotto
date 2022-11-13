@@ -12,12 +12,11 @@ public enum Rank {
     NOTHING(0, 0);
 
     private final int count;
-    private final int prize;
+    private final Money prize;
 
     Rank(int count, int prize) {
         this.count = count;
-        this.prize = prize;
-
+        this.prize = Money.from(prize);
     }
 
     public static Rank of(int count, boolean hasBonus) {
@@ -27,7 +26,11 @@ public enum Rank {
             .findFirst().orElse(NOTHING);
     }
 
-    public long getPrize() {
+    public Money getPrize() {
         return this.prize;
+    }
+
+    public int getCount() {
+        return this.count;
     }
 }
