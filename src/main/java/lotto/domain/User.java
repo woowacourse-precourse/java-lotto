@@ -11,4 +11,5 @@ public class User {
         String amount = Console.readLine();
         return Integer.parseInt(amount);
     }
+
 }
