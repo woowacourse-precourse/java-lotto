@@ -7,20 +7,16 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class WinningLotto {
+public class WinningLotto extends Lotto {
     private static final Pattern lottoPattern = Pattern.compile("^([1-9]\\d?,){5}[1-9]\\d?$");
     private static final Pattern bonusNumberPattern = Pattern.compile("^[1-9]\\d?$");
 
-    private final Lotto lotto;
     private final Integer bonusNumber;
 
     private WinningLotto(List<Integer> numbers, Integer bonusNumber) {
+        super(numbers);
         validateDuplicate(numbers, bonusNumber);
-        for (Integer number : numbers) {
-            validateLottoNumber(number);
-        }
         validateLottoNumber(bonusNumber);
-        this.lotto = new Lotto(numbers);
         this.bonusNumber = bonusNumber;
     }
 
@@ -30,34 +26,27 @@ public class WinningLotto {
         }
     }
 
-    private void validateLottoNumber(Integer number) {
-        if (number >= 1 && number <= 45) {
-            return;
-        }
-        throw new IllegalArgumentException(ILLEGAL_LOTTO_NUMBER_MESSAGE);
-    }
-
     public static WinningLotto of(String numbersInput, String bonusNumberInput) {
         if (!lottoPattern.matcher(numbersInput).matches()) {
             throw new IllegalArgumentException(ILLEGAL_LOTTO_NUMBER_MESSAGE);
         }
-        List<Integer> numbers = Arrays.stream(numbersInput.split(","))
-                .sequential()
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
-        Integer bonusNumber = convertInputToBonusNumber(bonusNumberInput);
+        List<Integer> numbers = parseStringNumbers(numbersInput);
+        Integer bonusNumber = parseStringBonusNumber(bonusNumberInput);
         return new WinningLotto(numbers, bonusNumber);
     }
 
-    private static Integer convertInputToBonusNumber(String bonusNumber) {
+    private static List<Integer> parseStringNumbers(String numbersInput) {
+        return Arrays.stream(numbersInput.split(","))
+                .sequential()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
+
+    private static Integer parseStringBonusNumber(String bonusNumber) {
         if (!bonusNumberPattern.matcher(bonusNumber).matches()) {
             throw new IllegalArgumentException(ILLEGAL_LOTTO_NUMBER_MESSAGE);
         }
         return Integer.parseInt(bonusNumber);
-    }
-
-    public List<Integer> getNumbers() {
-        return lotto.getNumbers();
     }
 
     public Integer getBonusNumber() {

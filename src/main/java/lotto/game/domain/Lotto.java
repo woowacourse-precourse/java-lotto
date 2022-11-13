@@ -10,6 +10,9 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validateSize(numbers);
         validateDuplicate(numbers);
+        for (Integer number : numbers) {
+            validateLottoNumber(number);
+        }
         this.numbers = numbers;
     }
 
@@ -26,6 +29,13 @@ public class Lotto {
         if (noDuplicateCount != 6) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER_MESSAGE);
         }
+    }
+
+    protected void validateLottoNumber(Integer number) {
+        if (number >= 1 && number <= 45) {
+            return;
+        }
+        throw new IllegalArgumentException(ILLEGAL_LOTTO_NUMBER_MESSAGE);
     }
 
     public List<Integer> getNumbers() {
