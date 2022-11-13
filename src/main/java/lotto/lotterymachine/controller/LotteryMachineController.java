@@ -19,19 +19,24 @@ public class LotteryMachineController {
         this.user = new User();
     }
 
-    public void startGame() {
-        User user = initUser();
-        System.out.println(user.getLottos()); //  need view
+    public boolean startGame() {
+        System.out.println("구입금액을 입력해 주세요.");
+        if(initUser() == 0) return false;
         LotteryMachine lotteryMachine = initLotteryMachine();
         lotteryMachineService.matchNumber(user,lotteryMachine);
+        return true;
     }
 
-    public User initUser() {
-        System.out.println("구입금액을 입력해 주세요.");
-        user.setInputMoney(UserRepository.inputMoney());
+    public int initUser() {
+        int userInput = UserRepository.inputMoney();
+        if(userInput == 0 ) {
+            return 0;
+        }
+        user.setInputMoney(userInput);
         UserRepository.buyLotteryTickets(user);
         UserRepository.setUserTicketsToLottery(user, user.getTicketAmount());
-        return user;
+        System.out.println(user.getLottos());
+        return userInput;
     }
 
     public LotteryMachine initLotteryMachine() {
