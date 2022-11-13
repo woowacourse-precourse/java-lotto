@@ -27,7 +27,7 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 번호에 중복된 숫자가 있으면 예외가 발생한다.")
+    @DisplayName("숫자 범위가 1~45자리가 아닐 경우 예외가 발생한다.")
     @Test
     void createLottoByWrongRange() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 88)))

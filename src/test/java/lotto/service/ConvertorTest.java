@@ -1,7 +1,11 @@
 package lotto.service;
 
+import lotto.exception.LottoException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class ConvertorTest {
@@ -43,6 +47,30 @@ public class ConvertorTest {
     void getNumbersByDuplication() {
         //then
         assertThatThrownBy(() -> Convertor.getNumbers("1,2,3,4,4,4"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("숫자 범위가 1~45자리가 아닐 경우")
+    @Test
+    void getNumberByNotNumber() {
+        //then
+        assertThatThrownBy(() -> Convertor.getNumber("a"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("숫자 범위가 1~45자리가 아닐 경우")
+    @Test
+    void getNumberByWrongRange() {
+        //then
+        assertThatThrownBy(() -> Convertor.getNumber("50"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("당첨 번호와 중복일 경우")
+    @Test
+    void getNumberByDuplication() {
+        //then
+        assertThatThrownBy(() -> LottoException.validDuplication(List.of(1,2,3,4,5,6), 6))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
