@@ -1,6 +1,7 @@
 package utils;
 
 import lotto.Lotto;
+import lotto.Lottos;
 
 import java.util.List;
 
@@ -14,8 +15,8 @@ public class OutputUtils {
         System.out.println(String.format(PURCHASE_COUNT_MESSAGE, purchaseCount));
     }
 
-    public static void printPurchasedLottoNumbers(List<Lotto> lottos) {
-        for (Lotto lotto : lottos) {
+    public static void printPurchasedLottoNumbers(Lottos lottos) {
+        for (Lotto lotto : lottos.getLottos()) {
             System.out.println(lotto);
         }
     }

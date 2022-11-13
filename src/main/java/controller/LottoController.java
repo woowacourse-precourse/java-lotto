@@ -1,8 +1,7 @@
 package controller;
 
-import camp.nextstep.edu.missionutils.Randoms;
-import constants.LottoConstants;
 import lotto.Lotto;
+import lotto.Lottos;
 import lotto.Wins;
 import user.BonusNumber;
 import user.WinNumber;
@@ -10,16 +9,9 @@ import utils.InputUtils;
 import user.PurchaseAmount;
 import utils.OutputUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class LottoController {
-
-    private List<Lotto> lottos;
-
-    public LottoController() {
-        lottos = new ArrayList<>();
-    }
 
     private PurchaseAmount getLottoPurchaseAmountFromUser() {
         try {
@@ -32,20 +24,16 @@ public class LottoController {
         }
     }
 
-    private void generateLotteryNumbers(PurchaseAmount purchaseAmount) {
+    private Lottos createLottos(PurchaseAmount purchaseAmount) {
         int purchaseCount = purchaseAmount.getPurchaseCount();
+
         OutputUtils.printLottoPurchaseCount(purchaseCount);
 
-        while (purchaseCount > 0) {
-            List<Integer> lotteryNumbers = Randoms.pickUniqueNumbersInRange(
-                    LottoConstants.MIN_LOTTO_VALUE,
-                    LottoConstants.MAX_LOTTO_VALUE,
-                    LottoConstants.LOTTO_NUM);
+        Lottos lottos = new Lottos(purchaseCount);
 
-            lottos.add(new Lotto(lotteryNumbers));
-            purchaseCount--;
-        }
         OutputUtils.printPurchasedLottoNumbers(lottos);
+
+        return lottos;
     }
 
     private WinNumber getWinNumbersFromUser() {
@@ -58,9 +46,9 @@ public class LottoController {
         return new BonusNumber(userInput, winNumber);
     }
 
-    private String calculateWinningRate(WinNumber winNumbers, BonusNumber bonusNumber) {
-        for (Lotto lotto : lottos) {
-            lotto.countMatchingNumber(winNumbers.getWinNumber(), bonusNumber.getBonusNumber());
+    private String calculateWinningRate(Lottos lottos, WinNumber winNumber, BonusNumber bonusNumber) {
+        for (Lotto lotto : lottos.getLottos()) {
+            lotto.countMatchingNumber(winNumber.getWinNumber(), bonusNumber.getBonusNumber());
         }
         return Wins.getWinningStats();
     }
@@ -77,13 +65,13 @@ public class LottoController {
     public void start() {
         PurchaseAmount purchaseAmount = getLottoPurchaseAmountFromUser();
 
-        generateLotteryNumbers(purchaseAmount);
+        Lottos lottos = createLottos(purchaseAmount);
 
         try {
             WinNumber winNumber = getWinNumbersFromUser();
             BonusNumber bonusNumber = getBonusNumberFromUser(winNumber.getWinNumber());
 
-            String winningStats = calculateWinningRate(winNumber, bonusNumber);
+            String winningStats = calculateWinningRate(lottos, winNumber, bonusNumber);
             double profitRate = calculateProfitRate(purchaseAmount);
 
             printResult(winningStats, profitRate);
