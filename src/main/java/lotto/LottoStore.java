@@ -23,6 +23,12 @@ public class LottoStore {
 
         Lotto winningNumbers = enterWinningNumbers();
         BonusNumber bonusNumber = enterBonusNumbers(winningNumbers);
+
+        WinningStatisticsCalculator winningStatisticsCalculator = new WinningStatisticsCalculator();
+        winningStatisticsCalculator.calculateNumberOfWins(lottos, winningNumbers, bonusNumber.getBonusNumber());
+
+        printWinningStatics(winningStatisticsCalculator.getWinningHistory());
+        printRateOfReturn(winningStatisticsCalculator.getRateOfReturn());
     }
 
     private PurchaseAmount setPurchaseAmount() {
@@ -44,5 +50,16 @@ public class LottoStore {
 
     private BonusNumber enterBonusNumbers(Lotto winningNumbers) {
         return new BonusNumber(inputView.enterBonusNumber(), winningNumbers);
+    }
+
+    private void printWinningStatics(HashMap<WinningHistory, Integer> winningHistories) {
+        outputView.printStartStatics();
+        for (WinningHistory winningHistory : winningHistories.keySet()) {
+            outputView.printStatics(winningHistory.getStaticsMessage(winningHistories.get(winningHistory)));
+        }
+    }
+
+    private void printRateOfReturn(double rateOfReturn) {
+        outputView.printRateOfReturn(rateOfReturn);
     }
 }
