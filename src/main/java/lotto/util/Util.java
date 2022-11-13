@@ -13,4 +13,12 @@ public class Util {
         return result;
     }
 
+    public static List<Integer> joinIntegerList(List<Integer> userNumbers,
+        List<Integer> winningNumbers) {
+        List<Integer> joinedNumbers = new ArrayList<>();
+        joinedNumbers.addAll(userNumbers);
+        joinedNumbers.addAll(winningNumbers);
+        return joinedNumbers;
+    }
+
 }
