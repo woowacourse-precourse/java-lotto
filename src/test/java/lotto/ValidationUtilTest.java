@@ -3,9 +3,12 @@ package lotto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
+
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import lotto.util.ValidationUtil;
+import org.assertj.core.internal.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -24,8 +27,19 @@ class ValidationUtilTest {
         assertThat(isPositiveNum).isFalse();
         assertThat(isRemainder).isFalse();
     }
-
     @Test
+    @DisplayName("당첨 번호 입력값이 숫자 또는 콤마인지 여부 검증")
+    void isDigitAndComma() {
+        String winningNum1 = "1,2,3,4,5,6";
+        String winningNum2 = "a,2,3,4,5,6";
+        String winningNum3 = "1, 2, 3, 4, 5, 6";
+
+        assertThat(ValidationUtil.isDigitAndComma(winningNum1)).isTrue();
+        assertThat(ValidationUtil.isDigitAndComma(winningNum2)).isFalse();
+        assertThat(ValidationUtil.isDigitAndComma(winningNum3)).isFalse();
+    }
+
+    /* @Test
     @DisplayName("당첨번호 입력값 길이 및 콤마 검증")
 
     void validateLengthAndComma() {
@@ -36,9 +50,9 @@ class ValidationUtilTest {
 
         assertThat(valInputLength).isTrue();
         assertThat(valInputComma).isTrue();
-    }
+    } */
 
-    @Test
+    /* @Test
     @DisplayName("당첨번호 입력값 숫자 여부 검증")
 
     void IsDigit() {
@@ -66,9 +80,9 @@ class ValidationUtilTest {
         assertThat(isDigit1).isTrue();
         assertThat(isDigit2).isFalse();
         assertThat(isDigit3).isFalse();
-    }
+    } */
 
-    @Test
+    /* @Test
     @DisplayName("당첨 번호 입력값 중복 여부 검증")
     void IsDuplicate() {
 
@@ -82,5 +96,5 @@ class ValidationUtilTest {
 
         assertThat(isDigit1).isTrue();
         assertThat(isDigit2).isFalse();
-    }
+    } */
 }

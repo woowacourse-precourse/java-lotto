@@ -22,39 +22,10 @@ public class ParserUtil {
         return purchaseAmount;
     }
 
-    public static List<Integer> parseWinningNumbersInput(String winningNumsInput) {
-        if (!ValidationUtil.isLengthIncludingComma(winningNumsInput)) {
+    public static void parseWinningNumbersInput(String winningNumsInput) {
+        if (!ValidationUtil.isDigitAndComma(winningNumsInput)) {
             throw new IllegalArgumentException();
         }
-
-        if (!ValidationUtil.isComma(winningNumsInput)) {
-            throw new IllegalArgumentException();
-        }
-        return parseSplittedInput(winningNumsInput);
-    }
-
-    private static List<Integer> parseSplittedInput(String winningNumsInput) {
-        List<Integer> winningNumList = new ArrayList<>();
-        List<String> splittedWinningNumsList = InputView.revertInputToList(winningNumsInput);
-
-        for (String winningNumStr : splittedWinningNumsList) {
-            if (!ValidationUtil.isDigit(winningNumStr)) {
-                throw new IllegalArgumentException();
-            }
-
-            Integer winningNum = Integer.parseInt(winningNumStr);
-
-            if (!ValidationUtil.isInRange(winningNum)) {
-                throw new IllegalArgumentException();
-            }
-
-            if (ValidationUtil.isDuplicate(winningNumList, winningNum)) {
-                throw new IllegalArgumentException();
-            }
-
-            winningNumList.add(winningNum);
-        }
-        return winningNumList;
     }
 
 }
