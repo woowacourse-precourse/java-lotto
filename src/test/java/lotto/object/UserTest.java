@@ -37,10 +37,14 @@ class UserTest extends NsTest {
             );
     }
 
+
+    @DisplayName("유저가 금액을 지불했을 때 복권의 갯수가 몇개인지 확인")
     @Test
     void create_Lottery_nums() {
         User user = new User();
-        assertThat(user.TestReturnSize()).isEqualTo(6);
+        user.setLottery_count(6);
+        user.create_Lottery_nums();
+        assertThat(user.getLottery_nums().size()).isEqualTo(6);
     }
 
     @Override
