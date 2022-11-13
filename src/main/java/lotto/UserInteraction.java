@@ -15,5 +15,15 @@ public class UserInteraction {
         input = Console.readLine();
         return input;
     }
+    public int tryParseInt(String input){
+        int changedInput=0;
+        input = input.trim();
+        try {
+            changedInput=Integer.parseInt(input);
+        }catch (Exception e){
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력해야만 합니다.");
+        }
+        return changedInput;
+    }
 
 }
