@@ -2,10 +2,11 @@ package lotto.controller;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.UserLotto;
+import lotto.domain.WinLotto;
 
 public class LottoGame {
     private UserLotto user = new UserLotto();
-
+    private WinLotto winLotto = new WinLotto();
 
     public LottoGame() {
         printPurchaseAmount();
@@ -19,6 +20,10 @@ public class LottoGame {
         setPurchaseAmountLotto(input);
 
         user.getPurchaseLottoNumbers();
+        printNewLine();
+
+        printWinningNumbers();
+        winLotto.setWinningNumbers();
     }
 
     public void setPurchaseAmountLotto(int input){
@@ -35,6 +40,10 @@ public class LottoGame {
 
     public void printPurchaseAmount(){
         System.out.println("구입 금액을 입력해주세요.");
+    }
+
+    public void printWinningNumbers(){
+        System.out.println("당첨 번호를 입력해주세요.");
     }
 
     public void printNewLine(){
