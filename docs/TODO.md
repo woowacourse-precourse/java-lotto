@@ -27,7 +27,7 @@
     - public float checkLotteryReturn
 - ~~Result 클래스 정의~~
     - Lotto lottery
-    - Integer winningCount
+    - Integer coincideCount
 - ~~WinningLotto 클래스 정의~~
     - extends Lotto
 - ~~Application 클래스~~
