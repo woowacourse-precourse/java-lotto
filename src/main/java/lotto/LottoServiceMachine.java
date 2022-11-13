@@ -1,7 +1,6 @@
 package lotto;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -37,16 +36,14 @@ public class LottoServiceMachine {
     }
     public List<Integer> splitLottoInput(String lottoNumbers, int requireCount){
         String[] splitInput = lottoNumbers.split(",");
-        StringConverter.isValidLength(splitInput, requireCount);
-        StringConverter.isAllDigit(splitInput);
-        List<Integer> splitNumber = StringConverter.convertToIntegerL(splitInput);
-        isValidRange(splitNumber);
-        isNoDuplicate(splitNumber);
+        InputUtility.isValidLength(splitInput, requireCount);
+        InputUtility.isAllDigit(splitInput);
+        List<Integer> splitNumber = InputUtility.convertToIntegerList(splitInput);
+        isValidLottoRange(splitNumber);
+        InputUtility.testNoDuplicate(splitNumber);
         return splitNumber;
     }
-
-
-    private void isValidRange(List<Integer> splitNumber){
+    private void isValidLottoRange(List<Integer> splitNumber){
         for(Integer number : splitNumber){
             if(number<MIN_LOTTO_NUMBER.getValue() || number>MAX_LOTTO_NUMBER.getValue())
                 throw new IllegalArgumentException("ERROR : 로또 번호의 범위가 "
@@ -54,10 +51,5 @@ public class LottoServiceMachine {
                         +MAX_LOTTO_NUMBER.getValue()+"를 벗어났습니다.");
         }
     }
-    private void isNoDuplicate(List<Integer> splitNumber){
-        HashSet<Integer> hashsetNumber = new HashSet<>(splitNumber);
-        if(hashsetNumber.size() != splitNumber.size()){
-            throw new IllegalArgumentException("Error : 중복되는 숫자가 있습니다.");
-        }
-    }
+
 }
