@@ -26,4 +26,14 @@ class MatchCountTest {
         assertFalse(matchCount5.isSameResult(matchCount6));
     }
 
+    @DisplayName("결과 생성 오류 테스트")
+    @Test
+    void 결과_생성_오류_테스트() {
+        assertThatThrownBy(() -> new MatchCount(2, 2))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new MatchCount(6, 1))
+                .isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new MatchCount(5, 2))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
