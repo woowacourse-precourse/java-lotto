@@ -6,6 +6,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import static lotto.constant.Rank.*;
+
 public class Win {
     private Map<Rank, Integer> ranking;
 
@@ -14,23 +16,20 @@ public class Win {
     }
 
     public static Win compare(Ticket ticket, List<Integer> winningNumbers, int bonusNumber) {
-        int win;
-        int bonus;
+        int count = ticket.size();
         Map<Rank, Integer> ranking = new LinkedHashMap<>();
         Comparison comparison = new Comparison();
 
         init(ranking);
 
-        int count = ticket.size();
         for (int i = 0; i < count; i++) {
             Lotto lotto = ticket.get(i);
-            win = comparison.countWinningNumbers(lotto, winningNumbers);
-            bonus = comparison.countBonusNumber(lotto, bonusNumber);
+            int win = comparison.countWinningNumbers(lotto, winningNumbers);
+            int bonus = comparison.countBonusNumber(lotto, bonusNumber);
 
+            Rank rank = findByWinAndBonus(win, bonus);
 
-            Rank rank = Rank.findByWinAndBonus(win, bonus);
-
-            if (rank == Rank.ETC) {
+            if (rank == ETC) {
                 continue;
             }
 
@@ -41,7 +40,7 @@ public class Win {
     }
 
     private static void init(Map<Rank, Integer> ranking) {
-        for (Rank rank : Rank.values()) {
+        for (Rank rank : values()) {
             ranking.put(rank, 0);
         }
     }
