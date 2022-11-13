@@ -33,6 +33,7 @@ public class Input {
         inputValidation.checkNumber(answer, Constant.REGEX_WINNING_NUMBER_INPUT);
         List<Integer> result = convertToList(answer);
         inputValidation.checkNumberSize(result);
+        inputValidation.checkDuplicate(result);
 
         return result;
     }

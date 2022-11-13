@@ -27,4 +27,11 @@ public class InputValidation {
         if (numbers.size() != 6)
             throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_SIX);
     }
+
+    public void checkDuplicate(List<Integer> numbers) {
+        long eraseDuplicateNumberSize = numbers.stream().distinct().count();
+
+        if(eraseDuplicateNumberSize != numbers.size())
+            throw new IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_IS_DISTINCT);
+    }
 }
