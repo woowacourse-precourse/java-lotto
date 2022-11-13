@@ -29,7 +29,6 @@ public class Application {
     }
     static List<Integer> make_lotto_num(){
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1,45,6);
-//        Collections.sort(numbers);
         return numbers;
     }
     static List<List<Integer>> buy_lotto(int chance){
@@ -110,7 +109,6 @@ public class Application {
             count_rank = count_result(count_rank,result);
             price = sum_price(price,result);
         }
-//        return count_rank;
         write_result(count_rank);
         calculate_price(price,money);
     }
@@ -152,7 +150,6 @@ public class Application {
     static void calculate_price(int price,int money){
         float result = ((float)price /(float)money) * 100;
         System.out.println("총 수익률은 " + String.format("%.1f",result) + "%입니다.\n");
-
     }
 
 
