@@ -8,8 +8,7 @@ class Statistics {
 
     Statistics() {
         map = new HashMap<Double, Integer>();
-        double[] correctNums = {3, 4, 5, 5.5, 6};
-        for (double num : correctNums) {
+        for (double num : Winnings.getCorrectNums()) {
             map.put(num, 0);
         }
     }
@@ -31,15 +30,9 @@ class Statistics {
     }
 
     float getYield(int lottoNum) {
-        Map winnings = new HashMap<Double, Integer>();
         int totalWinnings = 0;
-        double[] correctNums = {3, 4, 5, 5.5, 6};
-        int[] cash = {5000, 50000, 1500000, 30000000, 2000000000};
-        for (int i = 0; i < correctNums.length; i++) {
-            winnings.put(correctNums[i], cash[i]);
-        }
-        for (double num : correctNums) {
-            totalWinnings += (int) map.get(num) * (int) winnings.get(num);
+        for (double num : Winnings.getCorrectNums()) {
+            totalWinnings += (int) map.get(num) * Winnings.getWinnings(num);
         }
         return (float) totalWinnings / (lottoNum * 1000) * 100;
     }

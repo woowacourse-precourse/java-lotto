@@ -17,7 +17,6 @@ public class Referee {
     }
 
     public Result compare() {
-        Map map = new HashMap<>();
         Statistics statistics = new Statistics();
         Judgment judgment = new Judgment(winNumbers, bonusNumber);
         for (Lotto lotto : lottoList) {

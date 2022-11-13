@@ -30,8 +30,6 @@
 - [x] 중복되지 않는 6개의 숫자 생성 LottoGenerator#generateNumbers()
 - [x] 금액에 해당하는 개수 만큼 로또 발행 Lotto#generate()
 
-- WinNumber
-
 - Referee
 
 - [x] 사용자가 구매한 로또 번호와 당첨 번호를 비교 Referee#compare()

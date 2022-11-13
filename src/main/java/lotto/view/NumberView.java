@@ -10,8 +10,7 @@ public class NumberView {
 
     public static List<Integer> getWinNumbers() {
         List<Integer> winNumbers;
-        System.out.println();
-        System.out.println("당첨 번호를 입력해 주세요. ex) 1,2,3,4,5,6");
+        System.out.println("\n당첨 번호를 입력해 주세요. ex) 1,2,3,4,5,6");
         winNumbers = getWinNumbersFormat(readLine());
         checkWinNumbers(winNumbers);
         NumberView.winNumbers = winNumbers;
@@ -25,8 +24,7 @@ public class NumberView {
                 result.add(Integer.valueOf(num));
             }
         } catch (Exception e) {
-            System.out.println("[ERROR] 당첨 번호는 숫자로만 입력 가능하며, 쉽표(,)로 구분해주세요.");
-            throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자로만 입력 가능하며, 쉽표(,)로 구분해주세요.");
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 숫자로만 입력 가능하며, 쉽표(,)로 구분해야합니다.");
         }
 
         return result;

@@ -7,8 +7,8 @@ import java.util.List;
 
 public class LottoGenerator {
     private List<Integer> generateNumbers() {
-        List<Integer> lotto = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return lotto;
+        List<Integer> Numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return Numbers;
     }
 
     public List<Lotto> generate(int money) {
