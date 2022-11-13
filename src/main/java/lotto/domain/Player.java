@@ -8,20 +8,20 @@ import lotto.view.OutputView;
 
 public class Player {
 
-    private static final List<List<Integer>> playerNumbers = new ArrayList<>();
+    private static final List<List<Integer>> allPlayerNumbers = new ArrayList<>();
 
     public Player(int ticketNumber) {
         createAllPlayerNumbers(ticketNumber);
     }
 
     public List<List<Integer>> get() {
-        return playerNumbers;
+        return allPlayerNumbers;
     }
 
     private static void createAllPlayerNumbers(int ticketNumber) {
         for (int i = 0; i < ticketNumber; i++) {
             List<Integer> playerNumber = createPlayerNumbers();
-            playerNumbers.add(playerNumber);
+            allPlayerNumbers.add(playerNumber);
             OutputView.printPlayerNumbers(playerNumber);
         }
     }
@@ -31,7 +31,7 @@ public class Player {
     }
 
     private static List<Integer> createSixRandomUniqueNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
     }
 
     private static List<Integer> sortInAscendingOrders(List<Integer> playerNumbers) {

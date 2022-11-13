@@ -13,8 +13,6 @@ public class LottoResult {
             matches.add(calculateMatch(winningNumbers, playerNumbers));
             bonusMatches.add(hasBonusNumber(playerNumbers, bonusNumber));
         }
-        System.out.println("Match: " + matches);
-        System.out.println("Bonus: " + bonusMatches);
     }
 
     private int calculateMatch(List<Integer> winningNumbers, List<Integer> playerNumbers) {

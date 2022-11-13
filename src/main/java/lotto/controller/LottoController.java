@@ -10,6 +10,7 @@ import lotto.domain.Purchase;
 import lotto.domain.Ranking;
 import lotto.domain.Statistics;
 import lotto.view.InputView;
+import lotto.view.OutputView;
 
 public class LottoController {
     private static int ticketNumber;
@@ -40,6 +41,9 @@ public class LottoController {
 
         // 로또 순위 계산
         Ranking ranking = new Ranking(matches, bonusMatches); // [FIFTH, NONE, SECOND, THIRD, FIFTH]
+        Statistics statistics = new Statistics(ranking.getRankings());
+
+        OutputView.printStatistics();
     }
 
     private static void validateDuplicates() {
