@@ -27,7 +27,7 @@ public class WinningLotto {
 
     public static WinningLotto of(String numbersInput, String bonusNumberInput) {
         if (!lottoPattern.matcher(numbersInput).matches()) {
-            throw new IllegalArgumentException("[ERROR] 올바른 로또 번호가 아닙니다.");
+            throwException(ILLEGAL_LOTTO_NUMBER_MESSAGE);
         }
         List<Integer> numbers = Arrays.stream(numbersInput.split(","))
                 .sequential()
@@ -39,7 +39,7 @@ public class WinningLotto {
 
     public void validateDuplicate(List<Integer> numbers, Integer bonusNumber) {
         if (numbers.contains(bonusNumber)) {
-            throwException("보너스 번호와 중복이 있습니다.");
+            throwException(BONUS_NUMBER_DUPLICATE_MESSAGE);
         }
     }
 
@@ -47,12 +47,12 @@ public class WinningLotto {
         if (number >= 1 && number <= 45) {
             return;
         }
-        throwException("올바른 로또 번호가 아닙니다.");
+        throwException(ILLEGAL_LOTTO_NUMBER_MESSAGE);
     }
 
     private static Integer convertInputToBonusNumber(String bonusNumber) {
         if (!bonusNumberPattern.matcher(bonusNumber).matches()) {
-            throwException("올바른 로또 번호가 아닙니다.");
+            throwException(ILLEGAL_LOTTO_NUMBER_MESSAGE);
         }
         return Integer.parseInt(bonusNumber);
     }

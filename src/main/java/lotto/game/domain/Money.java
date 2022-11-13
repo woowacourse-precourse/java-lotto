@@ -21,7 +21,7 @@ public class Money {
 
     public static Money of(String input) {
         if (!moneyPattern.matcher(input).matches()) {
-            throwException("숫자만 입력해주세요.");
+            throwException(NUMBER_ONLY_MESSAGE);
         }
         return Money.of(Long.parseLong(input));
     }
@@ -34,7 +34,7 @@ public class Money {
         if (value % 1000 == 0) {
             return;
         }
-        throwException("1000으로 나눠 떨어지는 금액만 입력해주세요.");
+        throwException(DIVISIBLE_1000_ONLY_MESSAGE);
     }
 
     public long getValue() {
