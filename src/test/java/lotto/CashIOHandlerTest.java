@@ -1,25 +1,17 @@
 package lotto;
 
-import camp.nextstep.edu.missionutils.Console;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.Scanner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class CashierTest extends IOTest {
-    private  static Cashier cashier;
-    public static Scanner scanner;
+public class CashIOHandlerTest extends IOTest {
+    private  static CashIOHandler cashier;
     @BeforeAll
     static void initAll(){
-        cashier = new Cashier();
+        cashier = new CashIOHandler();
     }
     @Test
     @DisplayName("사용자의 입력이 제대로 입력되는지")
@@ -54,11 +46,19 @@ public class CashierTest extends IOTest {
     }
 
     @Test
-    @DisplayName(",000 입력에 대한 예외 처리가 되는지")
+    @DisplayName("000 단위에 대한 예외 처리가 되는지")
     void validateCommaTest_thousand_IllegalArgumentException(){
         String input = "168219125";
         assertThatThrownBy(()->cashier.validateInput(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 천원 단위로 입력해주세요");
+    }
+
+    @Test
+    @DisplayName("금액 입력에 대한 로또 갯수가 제대로 나오는지")
+    void getLotteryAmountTest(){
+        systemIn("125000");
+        cashier.setUserCash();
+        assertThat(cashier.getLotteryAmount()).isEqualTo(125);
     }
 }
