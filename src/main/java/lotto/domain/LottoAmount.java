@@ -2,6 +2,8 @@ package lotto.domain;
 
 public class LottoAmount {
 	private static final String INPUT_MONEY_ERROR_MESSAGE = "[ERROR] 구입 금액은 1000원 단위로 입력하셔야 합니다.";
+	private static int MIN_UNIT = 1000;
+	private static int ZERO_NUMBER = 0;
 	private final int purchaseMoney;
 
 	public LottoAmount(int money) {
@@ -16,11 +18,11 @@ public class LottoAmount {
 	}
 
 	private static boolean isNotDividedInto1000Units(int money) {
-		return money % 1000 != 0;
+		return money % MIN_UNIT != ZERO_NUMBER;
 	}
 
 	public int calculateLottoCount() {
-		return purchaseMoney / 1000;
+		return purchaseMoney / MIN_UNIT;
 	}
 
 	public double calculatePrizeResult(LottoResult lottoResult) {
