@@ -1,12 +1,14 @@
 package lotto.validator;
 
+import static lotto.validator.ExceptionStatus.*;
+
 public class PurchaseAmountValidator {
     public static void validate(String money) {
         if (!isDigit(money)) {
-            throw new IllegalArgumentException("[ERROR] 올바른 입력이 아닙니다.");
+            throw new IllegalArgumentException(NO_DIGIT.getMessage());
         }
-        if (!isCorrectUnit(money)) {
-            throw new IllegalArgumentException("[ERROR] 1000원 단위로 입력해야합니다.");
+        if (!isThousandUnit(money)) {
+            throw new IllegalArgumentException(NO_THOUSAND_UNIT.getMessage());
         }
     }
 
@@ -14,7 +16,7 @@ public class PurchaseAmountValidator {
         return money.chars().allMatch(Character::isDigit);
     }
 
-    private static boolean isCorrectUnit(String money) {
+    private static boolean isThousandUnit(String money) {
         return Integer.parseInt(money) % 1000 == 0;
     }
 }
