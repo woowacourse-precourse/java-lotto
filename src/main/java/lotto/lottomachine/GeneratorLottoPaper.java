@@ -2,6 +2,7 @@ package lotto.lottomachine;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.GameMessage;
 import lotto.domain.Lotto;
 import lotto.domain.LottoEnum;
@@ -28,15 +29,16 @@ public class GeneratorLottoPaper {
 
     private static Lotto generateLotto() {
         List<Integer> lottoNumbers = generateLottoNumbers();
-        Lotto lotto = new Lotto(lottoNumbers);
+        Lotto lotto = new Lotto(generateLottoNumbers());
         System.out.println(lottoNumbers);
         return lotto;
     }
 
     private static List<Integer> generateLottoNumbers() {
-        return Randoms.pickUniqueNumbersInRange(
+        List<Integer> lottoNumber = Randoms.pickUniqueNumbersInRange(
             LottoEnum.MIN_NUMBER.getValue(),
             LottoEnum.MAX_NUMBER.getValue(),
             LottoEnum.LENGTH.getValue());
+        return lottoNumber.stream().sorted().collect(Collectors.toList());
     }
 }
