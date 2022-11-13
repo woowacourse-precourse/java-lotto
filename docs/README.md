@@ -61,7 +61,7 @@
       - [x] 문자열 번호를 숫자 형식으로 변환 - formatStringToNumber
           - [x] 숫자 문자열인지 확인 - checkNumericString
       - [x] 이미 추첨한 번호인지 확인 - checkAlreadyExistedNumber
-- [ ] 로또 발행 - publish
+- [x] 로또 발행 - publish
 
 ## 우아한은행(`uahanBank`)
 

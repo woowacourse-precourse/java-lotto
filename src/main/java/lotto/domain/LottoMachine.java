@@ -1,9 +1,9 @@
 package lotto.domain;
 
-import static lotto.Config.BONUS_LOTTO_LENGTH;
-import static lotto.Config.LOTTO_LENGTH;
+import static lotto.Config.*;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -68,6 +68,6 @@ public class LottoMachine {
     }
 
     public List<Integer> publish() {
-        return null;
+        return Randoms.pickUniqueNumbersInRange(LOTTO_RANGE_START_NUMBER, LOTTO_RANGE_END_NUMBER, LOTTO_LENGTH);
     }
 }
