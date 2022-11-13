@@ -1,4 +1,4 @@
-package lotto;
+package lotto.util;
 
 public enum WinningResultMessage {
     FIFTH_PLACE(LottoRank.FIFTH_PLACE, "3개 일치 (5,000원) - %d개"),

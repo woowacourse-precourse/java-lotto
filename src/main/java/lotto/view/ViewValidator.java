@@ -1,6 +1,6 @@
 package lotto.view;
 
-import lotto.ErrorMessage;
+import lotto.util.ErrorMessage;
 
 import java.util.Arrays;
 import java.util.regex.Pattern;

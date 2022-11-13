@@ -1,4 +1,4 @@
-package lotto;
+package lotto.util;
 
 public enum ErrorMessage {
     INVALID_NUMBER_TYPE("0 이상의 숫자만 입력 가능합니다"),

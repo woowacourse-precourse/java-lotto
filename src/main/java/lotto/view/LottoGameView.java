@@ -1,14 +1,13 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.InformationMessage;
+import lotto.util.InformationMessage;
 import lotto.domain.Lotto;
-import lotto.LottoRank;
-import lotto.WinningResultMessage;
+import lotto.util.LottoRank;
+import lotto.util.WinningResultMessage;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
 import java.util.stream.Collectors;
 
 public class LottoGameView {

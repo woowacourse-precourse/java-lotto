@@ -1,7 +1,7 @@
 package lotto.domain;
 
-import lotto.ErrorMessage;
-import lotto.LottoRank;
+import lotto.util.ErrorMessage;
+import lotto.util.LottoRank;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;

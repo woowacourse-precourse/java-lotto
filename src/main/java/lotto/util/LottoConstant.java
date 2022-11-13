@@ -1,4 +1,4 @@
-package lotto;
+package lotto.util;
 
 public enum LottoConstant {
     NUMBER_COUNT(6),
