@@ -32,10 +32,27 @@ class LottoTest {
     }
     @DisplayName("로또 번호가 1보다 작거나 45보다 큰 경우 예외가 발생한다.")
     @Test
-    void createLottoBy() {
+    void createLottoByRange() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 55)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
-
+    @DisplayName("구매한 금액이 1000원 단위가 아닌 경우 예외가 발생한다.")
+    @Test
+    void createPurchaseByDivided() {
+        assertThatThrownBy(() -> new LottoPurchase("1230"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("구매한 금액이 1000원보다 작을 경우 예외가 발생한다.")
+    @Test
+    void createPurchaseByMinimum() {
+        assertThatThrownBy(() -> new LottoPurchase("100"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+    @DisplayName("구매한 금액이 숫자가 아닐 경우 예외가 발생한다.")
+    @Test
+    void createPurchaseByNumber() {
+        assertThatThrownBy(() -> new LottoPurchase("abc"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 }
