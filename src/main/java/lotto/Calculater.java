@@ -21,9 +21,6 @@ public class Calculater {
         return revenue;
     }
 
-    public int caculateRevenue(int inputMoney, int revenue) {
 
-        return 0;
-    }
 
 }

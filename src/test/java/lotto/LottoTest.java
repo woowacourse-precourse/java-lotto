@@ -62,23 +62,25 @@ class LottoTest {
 
         List<List<Integer>> user = new ArrayList<>();
 
-        List<Integer> lottoUsers1 = new ArrayList<>(Arrays.asList(4,6,10,41,42,45));
-        List<Integer> lottoUsers2 = new ArrayList<>(Arrays.asList(5,6,21,36,42,45));
+        List<Integer> lottoUsers1 = new ArrayList<>(Arrays.asList(3,6,10,36,42,45));
+        List<Integer> lottoUsers2 = new ArrayList<>(Arrays.asList(3,6,21,36,42,45));
         List<Integer> lottoUsers3 = new ArrayList<>(Arrays.asList(1,2,10,29,30,44));
         List<Integer> lottoUsers4 = new ArrayList<>(Arrays.asList(4,7,10,15,32,45));
+        List<Integer> lottoUsers5 = new ArrayList<>(Arrays.asList(3,6,10,30,42,45));
 
         user.add(lottoUsers1);
         user.add(lottoUsers2);
         user.add(lottoUsers3);
         user.add(lottoUsers4);
+        user.add(lottoUsers5);
 
         List<Integer> lottoWinNumber = new ArrayList<>(Arrays.asList(3,6,10,36,42,45));
 
-        List<Integer> correctNumber = new ArrayList<>(Arrays.asList(4,4,1,2));
+        List<Integer> correctNumber = new ArrayList<>(Arrays.asList(7,5,1,2,6));
 
         CompareHowManyCorrect compareHowManyCorrect = new CompareHowManyCorrect();
 
-        assertEquals(compareHowManyCorrect.correctNumberList(user,lottoWinNumber,0),correctNumber);
+        assertEquals(compareHowManyCorrect.correctNumberList(user,lottoWinNumber,30),correctNumber);
 
     }
 
@@ -122,7 +124,23 @@ class LottoTest {
                 ()-> assertTrue(compareHowManyCorrect.checkBonus(userNumber1,bonusNumber)),
                 ()-> assertTrue(!compareHowManyCorrect.checkBonus(userNumber2,bonusNumber))
         );
+    }
+
+    @DisplayName("맞춘 로또에 따른 상금을 구하고, 더한다.")
+    @Test
+    void calculateRevenue() {
+        Calculater calculater = new Calculater();
+
+        List<Integer> correctAmountList1 = new ArrayList<>(Arrays.asList(7,6,4,3,2));
+        List<Integer> correctAmountList2 = new ArrayList<>(Arrays.asList(5,6,3,3,2));
+        assertAll(
+                ()->assertEquals(calculater.caculateRevenue(correctAmountList1),2030055000),
+                ()->assertEquals(calculater.caculateRevenue(correctAmountList2),31510000)
+        );
 
 
     }
+
+
+
 }

@@ -26,4 +26,15 @@ public class Printer {
 
     }
 
+    public void printRevenuePercent(int inputMoney, int revenue) {
+
+        double doubleInputMoney = inputMoney;
+        double doubleRevenue = revenue;
+
+        double revenuePercent = doubleRevenue/doubleInputMoney;
+
+        System.out.println("총 수익률은 " + String.format("%.2f", revenuePercent) + "%입니다.");
+
+    }
+
 }
