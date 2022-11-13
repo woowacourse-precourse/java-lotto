@@ -1,5 +1,7 @@
 package lotto.view;
 
+import lotto.Lotto;
+
 import static lotto.constant.OutputConstants.*;
 
 public class OutputView {
@@ -12,5 +14,9 @@ public class OutputView {
         System.out.println();
         System.out.printf(PURCHASE_QUANTITY.toString(), purchaseQuantity);
         System.out.println();
+    }
+
+    public static void printLottoNumber(Lotto lotto) {
+        System.out.println(lotto);
     }
 }
