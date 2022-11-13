@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Lottery {
     public static final int LOTTO_PRICE = 1_000;
+    private static final char LINE_BREAK = '\n';
     private final List<Lotto> tickets;
 
     private Lottery(List<Lotto> tickets) {
@@ -31,5 +32,14 @@ public class Lottery {
         for (Lotto lotto : tickets) {
             winningNumbers.checkLottoWinning(lotto);
         }
+    }
+
+    public String toStringLotteryInfo() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Lotto lotto : tickets) {
+            stringBuilder.append(lotto.toStringNumbers());
+            stringBuilder.append(LINE_BREAK);
+        }
+        return stringBuilder.toString();
     }
 }
