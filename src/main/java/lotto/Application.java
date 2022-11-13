@@ -37,11 +37,15 @@ public class Application {
     private static void allocateInitial(){ //입력받아서 bonusnum,truenum 만듬
         String lottolist = Console.readLine();
         bonusnum = (Integer.parseInt(Console.readLine()));
+        if(bonusnum < 0 || bonusnum > 45) throw new IllegalArgumentException();
         truenum = convertTrueNum(lottolist);
     }
     private static List<Integer> calcFinal(){ //로또 보고 몇등인지 계산하고 저장
         List<Integer> tmpres = List.of(new Integer[6]);
-
+        for(int i = 0; i < lottos.size(); i++){
+            LottoRank rr = lottos.get(i).getRtn(truenum,bonusnum);
+            tmpres.set(rr.getValue(),tmpres.get(rr.getValue())+1);
+        }
         return tmpres;
     }
     private static void printFinal(){ //마지막 결과 출력
@@ -54,7 +58,10 @@ public class Application {
         printAllLottos();
         //당첨 번호
         //보너스 번호
+        allocateInitial();
         //계산
+        res = calcFinal();
         //당첨 통계 출력
+        printFinal();
     }
 }
