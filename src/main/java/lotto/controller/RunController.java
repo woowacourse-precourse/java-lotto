@@ -8,7 +8,6 @@ import lotto.Notice;
 import lotto.domain.Lotto;
 import lotto.domain.LottoMachine;
 import lotto.domain.LottoStore;
-import lotto.domain.PrizeMoney;
 import lotto.domain.User;
 import lotto.view.Input;
 import lotto.view.Output;
@@ -16,71 +15,80 @@ import lotto.view.Output;
 public class RunController {
 	public static void start() {
 		Output.printNotice(Notice.START.getNoticeMessage());
+		int money = getCurrentMoney();
 
-		int money = checkMoney();
-
-		if (money != 0) {
-			User user = new User(money);
-
-			List<Integer> prizeMoney = getMoney(user.getMoney());
-
-			user.setRateOfReturn(getRateOfReturn(prizeMoney,money));
-
-			Output.printNotice(Notice.STATISTICS.getNoticeMessage());
-			Output.printRateOfReturn(user.getRateOfReturn());
+		if (isNotNull(money)) {
+			drawLottery(money);
 		}
 	}
 
-	private static double getRateOfReturn(List<Integer> prizeMoney, int money) {
-		return calculateProfit(prizeMoney, money);
+	private static void drawLottery(int money) {
+		User user = new User(money);
+		LottoStore seller = buyLottoByMoney(user.getMoney());
+
+		LottoMachine machine = pickThisRoundLotto();
+
+		user.setPrizeMoney(getMoneyByLotto(seller , machine));
+		Output.printCount(user.getPrizeMoney());
+
+		user.setRateOfReturn(calculateRateOfReturn(user.getPrizeMoney(), user.getMoney()));
+		Output.printRateOfReturn(user.getRateOfReturn());
 	}
 
-	private static List<Integer> getMoney(int money) {
-		LottoStore seller = publishLottoByQuantity(money);
-
-		LottoMachine machine = getThisRoundLotto();
-
-		List<Integer> prizeMoney = getPrizeMoney(seller.getLotto(), machine.getWinningNumbers(), machine.getBonusNumber());
-
-		return prizeMoney;
+	private static boolean isNotNull(int money) {
+		return money != 0;
 	}
 
-	private static LottoStore publishLottoByQuantity(int money) {
-		LottoStore seller = new LottoStore(money);
+	private static String calculateRateOfReturn(List<Integer> prizeMoney, int money) {
+		return calculate(prizeMoney, money);
+	}
 
-		seller.setLotto(publishLotteries(seller.getQuantity()));
-		Output.printResult(seller.getQuantity(), Notice.PURCHASE.getNoticeMessage());
+	private static LottoStore buyLottoByMoney(int quantity) {
+		LottoStore seller = new LottoStore(quantity);
+
+		seller.setLotto(publishLottoByQuantity(seller.getQuantity()));
 
 		return seller;
 	}
-	private static LottoMachine getThisRoundLotto() {
+
+	private static List<Integer> getMoneyByLotto(LottoStore seller, LottoMachine machine) {
+		return getWinningRanking(seller.getLotto(), machine.getWinningNumbers(), machine.getBonusNumber());
+	}
+
+	private static List<List<Integer>> publishLottoByQuantity(int quantity) {
+		Output.printResult(quantity, Notice.PURCHASE.getNoticeMessage());
+
+		List<List<Integer>> lotto = publishLotteries(quantity);
+
+		for (List<Integer> integers : lotto) {
+			Output.printPublishLotteries(integers);
+		}
+
+		return lotto;
+	}
+
+	private static LottoMachine pickThisRoundLotto() {
 		Output.printNotice(Notice.WINNING_NUMBERS.getNoticeMessage());
-		Lotto lotto = new Lotto(pickWinningNumbers());
+		String winningNumbers = Input.numbers();
+
+		Lotto lotto = new Lotto(pickWinningNumbers(winningNumbers));
 
 		Output.printNotice(Notice.BONUS_NUMBER.getNoticeMessage());
+		String bonusNumber = Input.numbers();
 
-		return new LottoMachine(lotto.getNumbers(), pickBonusNumbers());
+		return new LottoMachine(lotto.getNumbers(), pickBonusNumbers(bonusNumber));
 	}
 
-	private static List<Integer> getPrizeMoney(List<List<Integer>> candidate, List<Integer> lotto, int bonus) {
-		PrizeMoney money = new PrizeMoney();
-
-		money.setCount(getWinningRanking(candidate, lotto, bonus));
-		Output.printCount(money.getCount());
-
-		return money.getCount();
-	}
-
-	private static int checkMoney() {
-		int checkMoney = 0;
-		String money = Input.numbers();
+	private static int getCurrentMoney() {
+		int money = 0;
+		String numbers = Input.numbers();
 
 		try {
-			checkMoney = Integer.parseInt(money);
+			money = Integer.parseInt(numbers);
 		} catch (IllegalArgumentException e) {
 			Output.printNotice(Notice.ERROR.getNoticeMessage());
 		}
 
-		return checkMoney;
+		return money;
 	}
 }

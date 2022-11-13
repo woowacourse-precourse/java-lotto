@@ -22,7 +22,7 @@ public class Output {
 			System.out.println(msg.get(i) + " - " + numbers.get(i) + "개");
 		}
 	}
-	public static void printRateOfReturn(double rateOfReturn) {
+	public static void printRateOfReturn(String rateOfReturn) {
 		System.out.println(Notice.RATE_OF_RETURN.getNoticeMessage() + rateOfReturn + "%입니다.");
 	}
 

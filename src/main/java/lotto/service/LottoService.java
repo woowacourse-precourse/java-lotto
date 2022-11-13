@@ -10,10 +10,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.ExceptionHandler;
 import lotto.Ranking;
 import lotto.domain.Lotto;
-import lotto.view.Input;
-import lotto.view.Output;
 
 public class LottoService {
+	static final int PERCENT = 100;
+
 	public static List<List<Integer>> publishLotteries(int quantity) {
 		List<List<Integer>> candidate = new ArrayList<>();
 
@@ -21,22 +21,16 @@ public class LottoService {
 			Lotto lotto = new Lotto(pickLottoNumbers());
 
 			publishLotto(candidate, lotto.getNumbers());
-
-			Output.printPublishLotteries(candidate.get(i));
 		}
 
 		return candidate;
 	}
 
-	public static List<Integer> pickWinningNumbers() {
-		String winningNumbers = Input.numbers();
-
+	public static List<Integer> pickWinningNumbers(String winningNumbers) {
 		return convertStringToList(winningNumbers);
 	}
 
-	public static int pickBonusNumbers() {
-		String bonusNumber = Input.numbers();
-
+	public static int pickBonusNumbers(String bonusNumber) {
 		ExceptionHandler.checkBonus(bonusNumber);
 
 		return Integer.parseInt(bonusNumber);
@@ -48,7 +42,7 @@ public class LottoService {
 		return countWinningNumber(candidate, winningNumbers, bonusNumber);
 	}
 
-	public static double calculateProfit(List<Integer> winningCount, double money) {
+	public static String calculate(List<Integer> winningCount, double money) {
 		return LottoService.getRateOfReturn(winningCount, money);
 	}
 
@@ -130,12 +124,10 @@ public class LottoService {
 		return count;
 	}
 
-	private static double getRateOfReturn(List<Integer> winningCount, double money) {
+	private static String getRateOfReturn(List<Integer> winningCount, double money) {
 		int revenue = sumRevenue(winningCount);
 
-		//반올림
-		//rateOfReturn = Math.round(profit*100)/100.0;
-		return (revenue / money) * 100;
+		return String.format("%.1f", (revenue / money) * PERCENT);
 	}
 
 	private static int sumRevenue(List<Integer> winningCount) {

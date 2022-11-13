@@ -5,7 +5,6 @@ import java.util.List;
 import lotto.Notice;
 
 public class LottoMachine {
-
 	private final List<Integer> winningNumbers;
 	private final int bonusNumber;
 
