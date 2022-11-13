@@ -1,6 +1,5 @@
 package view;
 
-import camp.nextstep.edu.missionutils.Console;
 import controller.BonusController;
 import controller.LottoController;
 import controller.MoneyController;
@@ -8,54 +7,28 @@ import controller.UserLottoController;
 import domain.*;
 
 public class GameView {
-    private static final String INPUT_PURCHASE_AMOUNT = "구매 금액 입력해 주세요.";
-    private static final String NUMBER_OF_PURCHASE = "개를 구매했습니다.";
-    private static final String INPUT_WINNING_NUMBER = "당첨 번호를 입력해 주세요";
-    private static final String INPUT_BOUNUS_NUMBER = "보너스 번호를 입력해 주세요.";
-    private static final String STATISTICS = "당첨 통계";
-    private static final String DIVIDING_LINE = "---";
-    private static final String MATCH_COUNT = "개 일치 (";
-    private static final String MATCH_COUNT_WITH_BOUNUS = "개 일치 , 보너스 볼 일치 (";
-    private static final String REWARD = "원) - ";
-    private static final String NUMBER_OF_MATCHES = "개";
+
     MoneyController moneyController = new MoneyController();
     UserLottoController userLottoController = new UserLottoController();
     LottoController lottoController = new LottoController();
     BonusController bonusController = new BonusController();
+    InputMessage inputMessage = new InputMessage();
+    OutputMessage outputMessage = new OutputMessage();
+
 
     public void start() {
-        Money money = moneyController.getPurchaseAmount(inputPurchaseAmount());
+        Money money = moneyController.getPurchaseAmount(inputMessage.inputPurchaseAmount());
 
         // 몇 장의 로또를 발행할 것인지 계산
         int purchaseNumber = moneyController.getAvailablePurchaseNumber(money);
-        System.out.println("\n" + purchaseNumber + NUMBER_OF_PURCHASE);
+        outputMessage.printNumberOfPurchase(purchaseNumber);
 
-        // 사용자에게 랜덤으로 로또 번호를 발행한다
+        // 사용자에게 랜덤으로 로또 번호를 발행하고 출력한다
         UserLotto userLotto = userLottoController.createUserLotto(purchaseNumber);
+        outputMessage.printPurchaseLotto(userLottoController.getUserLottoHistory(userLotto));
 
-        // 구매한 로또 번호를 출력한다
-        System.out.println(userLottoController.getUserLottoHistory(userLotto));
-
-        // 당첨 번호를 입력 한다
-        Lotto lotto = lottoController.createWinningNumber(inputWinningNumber());
-
-        // 보너스 번호를 입력한다
-        Bonus bonus = bonusController.createBonusNumber(inputBonusNumber(), lotto);
-    }
-
-    public String inputPurchaseAmount() {
-        System.out.println(INPUT_PURCHASE_AMOUNT);
-        return Console.readLine();
-    }
-
-    public String inputWinningNumber() {
-        System.out.println(INPUT_WINNING_NUMBER);
-        return Console.readLine();
-    }
-
-    public String inputBonusNumber() {
-        System.out.println("\n" + INPUT_BOUNUS_NUMBER);
-        return Console.readLine();
+        // 당첨 번호와 보너스 번호를 입력 한다
+        Lotto lotto = lottoController.createWinningNumber(inputMessage.inputWinningNumber());
+        Bonus bonus = bonusController.createBonusNumber(inputMessage.inputBonusNumber(), lotto);
     }
 }
-
