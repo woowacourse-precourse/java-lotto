@@ -17,8 +17,8 @@ public class Store {
     public Store() {
     }
 
-    public void sellLottoToCustomer() {
-        int paidMoney = getPaidMoney(readUserPaidMoney());
+    public void sellLottoToCustomer(String beforePaidMoney) {
+        int paidMoney = getPaidMoney(beforePaidMoney);
         this.customer = new Customer(paidMoney);
     }
 

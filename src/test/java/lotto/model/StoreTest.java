@@ -25,7 +25,7 @@ public class StoreTest {
         System.setIn(in);
 
         //when, then
-        assertThatNoException().isThrownBy(testStore::sellLottoToCustomer);
+        assertThatNoException().isThrownBy(() -> testStore.sellLottoToCustomer(paidMoney));
     }
 
     @Test
