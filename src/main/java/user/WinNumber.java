@@ -18,6 +18,10 @@ public class WinNumber {
                 .collect(Collectors.toList());
     }
 
+    public List<Integer> getWinNumber() {
+        return winNumber;
+    }
+
     private void validate(String userInput) {
         String[] tokens = userInput.split(LottoConstants.SEPARATOR);
 

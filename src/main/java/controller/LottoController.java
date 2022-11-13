@@ -4,11 +4,11 @@ import camp.nextstep.edu.missionutils.Randoms;
 import constants.LottoConstants;
 import lotto.Lotto;
 import lotto.Wins;
+import user.BonusNumber;
 import user.WinNumber;
 import utils.InputUtils;
 import user.PurchaseAmount;
 import utils.OutputUtils;
-import utils.Validator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +16,9 @@ import java.util.List;
 public class LottoController {
 
     private List<Lotto> lottos;
-    private List<Integer> winNumbers;
-    private int bonusNumber;
 
     public LottoController() {
         lottos = new ArrayList<>();
-        winNumbers = new ArrayList<>();
     }
 
     private PurchaseAmount getLottoPurchaseAmountFromUser() {
@@ -48,10 +45,6 @@ public class LottoController {
             lottos.add(new Lotto(lotteryNumbers));
             purchaseCount--;
         }
-        printPurchasedLottoNumbers();
-    }
-
-    private void printPurchasedLottoNumbers() {
         OutputUtils.printPurchasedLottoNumbers(lottos);
     }
 
@@ -60,16 +53,14 @@ public class LottoController {
         return new WinNumber(userInput);
     }
 
-    private void getBonusNumberFromUser() {
+    private BonusNumber getBonusNumberFromUser(List<Integer> winNumber) {
         String userInput = InputUtils.getBonusNumberFromUser();
-        Validator.checkBonusNumberIsValid(userInput, winNumbers);
-
-        bonusNumber = Integer.parseInt(userInput);
+        return new BonusNumber(userInput, winNumber);
     }
 
-    private String calculateWinningRate() {
+    private String calculateWinningRate(WinNumber winNumbers, BonusNumber bonusNumber) {
         for (Lotto lotto : lottos) {
-            lotto.countMatchingNumber(winNumbers, bonusNumber);
+            lotto.countMatchingNumber(winNumbers.getWinNumber(), bonusNumber.getBonusNumber());
         }
         return Wins.getWinningStats();
     }
@@ -90,15 +81,14 @@ public class LottoController {
 
         try {
             WinNumber winNumber = getWinNumbersFromUser();
-            getBonusNumberFromUser();
+            BonusNumber bonusNumber = getBonusNumberFromUser(winNumber.getWinNumber());
+
+            String winningStats = calculateWinningRate(winNumber, bonusNumber);
+            double profitRate = calculateProfitRate(purchaseAmount);
+
+            printResult(winningStats, profitRate);
         } catch (IllegalArgumentException e) {
             OutputUtils.printException(e);
-            return;
         }
-
-        String winningStats = calculateWinningRate();
-        double profitRate = calculateProfitRate(purchaseAmount);
-
-        printResult(winningStats, profitRate);
     }
 }
