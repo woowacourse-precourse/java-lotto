@@ -1,35 +1,37 @@
 package lotto;
 
-import static lotto.FinalString.REQUIRE_INPUT_MONEY;
 import static lotto.Validator.validateInputMoney;
 import static lotto.Validator.validateInteger;
 import static lotto.Validator.validateMaxInputMoney;
 import static lotto.Validator.validateNegativePrice;
 
 import camp.nextstep.edu.missionutils.Console;
+import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
-// 랜덤한 로또 생성
 public class LottoGenerator {
     private static final int MIN_LOTTO_NUM = 1;
     private static final int MAX_LOTTO_NUM = 45;
     private static final int LOTTO_NUM_LENGTH = 6;
+    public static List<Integer> oneLottoNum = new ArrayList<>();
+    public static List<List> myLottoNumbers = new ArrayList<>(); // 로또 번호들 List
 
-    //금액 검사
-    private void validateMoney(int price) {
-        validateNegativePrice(price);        // 음수 확인
-        validateInputMoney(price);           // 1000원 단위인지 확인
-        validateMaxInputMoney(price);        // 10만원 한도 넘겼는지 확인
+    // 구입한 개수만큼 로또 생성
+    public static List<List> myLottoNumber() {
+        for (int i = 0; i < LottoInput.numberOfLotto; i++) {
+            oneLottoNum = Randoms.pickUniqueNumbersInRange(MIN_LOTTO_NUM, MAX_LOTTO_NUM, LOTTO_NUM_LENGTH);
+            Collections.sort(oneLottoNum);
+            myLottoNumbers.add(oneLottoNum);
+        }
+        for (int i = 0; i < myLottoNumbers.size(); i++) {
+            System.out.println(myLottoNumbers.get(i));
+        }
+        return myLottoNumbers;
     }
 
-    private int inputMoney() {
-        System.out.println(REQUIRE_INPUT_MONEY);
-        String input = Console.readLine();
-        validateInteger(input);
-        int inputMoney = Integer.parseInt(input);
-        validateMoney(inputMoney);
-
-        return inputMoney;
-    }
 
 }
 
