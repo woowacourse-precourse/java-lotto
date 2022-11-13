@@ -8,22 +8,20 @@ import java.util.List;
 public class Application {
     enum NumberType { WINNING, BONUS, NORMAL };
 
-    public static void guideWinningNumberFormat() {
-        System.out.print("당첨 번호 6개를 쉼표로 구분해 입력해주세요: ");
-    }
+    public static void guideWinningNumberFormat() { System.out.print("당첨 번호 6개를 쉼표로 구분해 입력해주세요: "); }
 
-    public static void isVoidInput(String winningNumberInput) {
-        if (winningNumberInput.length() == 0)
+    public static void isVoidInput(String numberInput) {
+        if (numberInput.length() == 0)
             throw new IllegalArgumentException("문자를 입력하십시오.");
     }
 
     public static boolean isComma(char charAtIndex) { return charAtIndex == ','; }
     public static boolean isNumber(char charAtIndex) { return (charAtIndex >= '0' && charAtIndex <= '9'); }
 
-    public static void isCommaAndNumber(String winningNumberInput) {
-        int inputLength = winningNumberInput.length();
+    public static void isInputCommaAndNumber(String numberInput) {
+        int inputLength = numberInput.length();
         for (int index = 0; index < inputLength; index++) {
-            char charAtIndex = winningNumberInput.charAt(index);
+            char charAtIndex = numberInput.charAt(index);
             if (isComma(charAtIndex)) continue;
             if (isNumber(charAtIndex)) continue;
             throw new IllegalArgumentException("쉼표와 숫자 외 다른 문자는 입력이 불가합니다.");
@@ -44,8 +42,8 @@ public class Application {
         return winningNumbers;
     }
 
-    public static void checkRange(List<Integer> winningNumbers) {
-        for (int number : winningNumbers)
+    public static void checkRange(List<Integer> numbers) {
+        for (int number : numbers)
             if (number > 45 || number < 1)
                 throw new IllegalArgumentException("당첨 번호는 1이상 45이하의 자연수로 구성해야 합니다.");
     }
@@ -73,7 +71,7 @@ public class Application {
         String winningNumberInput = Console.readLine();
 
         isVoidInput(winningNumberInput);
-        isCommaAndNumber(winningNumberInput);
+        isInputCommaAndNumber(winningNumberInput);
 
         String[] splitNumbers = winningNumberInput.split(",");
         hasSixNumbers(splitNumbers);
@@ -84,7 +82,42 @@ public class Application {
         return checkNumberTypeByIndex(winningNumbers);
     }
 
-    public static void main(String[] args) {
+    public static void guideBonusNumberFormat() {
+        System.out.print("당첨 번호가 아닌 1이상 45이하의 숫자를 보너스 번호로 입력해주세요: ");
+    }
+
+    public static void isInputNumber(String numberInput) {
+        int inputLength = numberInput.length();
+        for (int index = 0; index < inputLength; index++) {
+            char charAtIndex = numberInput.charAt(index);
+            if (isNumber(charAtIndex)) continue;
+            throw new IllegalArgumentException("숫자 외 다른 문자는 입력이 불가합니다.");
+        }
+    }
+
+    public static void isDuplicatedWithWinningNumbers(NumberType[] numberTypeCheck, List<Integer> bonusNumber) {
+        int bonus = bonusNumber.get(0);
+        if(numberTypeCheck[bonus] == NumberType.WINNING)
+            throw new IllegalArgumentException("당첨번호가 아닌 다른 보너스 번호를 입력하십시오.");
+    }
+
+    public static NumberType[] getBonusNumber(NumberType[] numberTypeCheck) {
+        guideBonusNumberFormat();
+        String bonusNumberInput = Console.readLine();
+
+        isVoidInput(bonusNumberInput);
+        isInputNumber(bonusNumberInput);
+
+        List<Integer> bonusNumber = new ArrayList<>();
+        bonusNumber.add(Integer.parseInt(bonusNumberInput));
+        checkRange(bonusNumber);
+        isDuplicatedWithWinningNumbers(numberTypeCheck, bonusNumber);
+        numberTypeCheck[bonusNumber.get(0)] = NumberType.BONUS;
+        return numberTypeCheck;
+    }
+
+        public static void main(String[] args) {
         NumberType[] numberTypeCheck = getWinningNumbers();
+        numberTypeCheck = getBonusNumber(numberTypeCheck);
     }
 }
