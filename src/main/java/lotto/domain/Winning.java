@@ -50,7 +50,14 @@ public class Winning {
     }
 
     public double rate(List<Integer> score, int amount) {
-        return 0;
+        double sum = 0;
+
+        sum = (score.get(0) * 5000) + (score.get(1) * 50000) + (score.get(2) * 1500000) + (score.get(3) * 30000000)
+                + (score.get(4) * 2000000000);
+
+        double rate = (sum / amount) * 100;
+
+        return Math.round(rate * 100) / 100.0;
     }
 
     public List winning(String win) {
