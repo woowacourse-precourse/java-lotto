@@ -20,8 +20,8 @@ public class OutputView {
 
     public void outputLottos(Lottos lottos) {
         System.out.println(String.format(OUTPUT_LOTTOS_GUIDE, lottos.count()));
-
         System.out.println(String.join(NEW_LINE, lottoOutputTexts(lottos)));
+        printEnter();
     }
 
     private List<String> lottoOutputTexts(Lottos lottos) {
@@ -32,12 +32,10 @@ public class OutputView {
 
     public void outputLottoResult(LottoResult lottoResult) {
         System.out.println("당첨 통계\n---");
-
         String result = Arrays.stream(sortRankByReward())
                 .filter(rank -> rank != Rank.MISS)
                 .map(rank -> outputViewFormatter.outputRankFormat(rank, lottoResult.rankCount(rank)))
                 .collect(Collectors.joining(NEW_LINE));
-
         System.out.println(result);
     }
 
@@ -49,5 +47,9 @@ public class OutputView {
 
     public void outputYield(Money investmentPrincipal, Money revenue) {
         System.out.println(outputViewFormatter.outputYieldFormat(Money.yield(investmentPrincipal, revenue)));
+    }
+
+    private static void printEnter() {
+        System.out.println();
     }
 }
