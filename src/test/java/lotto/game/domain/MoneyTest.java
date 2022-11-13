@@ -40,4 +40,15 @@ class MoneyTest {
         assertThat(Money.of(input))
                 .isEqualTo(money);
     }
+
+    @Test
+    @DisplayName("10,000원과 35,000원을 더하면 45,000원이 돼야한다")
+    void add10_000WonAnd35_000WonShouldBe45_000Won() {
+        // given
+        Money money1 = Money.of(10_000L);
+        Money money2 = Money.of(35_000L);
+        // expect
+        assertThat(money1.add(money2))
+                .isEqualTo(Money.of(45_000L));
+    }
 }
