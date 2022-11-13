@@ -32,4 +32,14 @@ public class Lotto {
         }
         return 6 - matchCount;
     }
+    private void makeRank(List<List<Integer>> playerLotto, int bonusNumber) {
+        int rankIndex;
+        for (List<Integer> lotto : playerLotto) {
+            rankIndex = compareLotto(lotto, bonusNumber);
+            if (rankIndex > 4) {
+                continue;
+            }
+            rank[rankIndex]++;
+        }
+    }
 }
