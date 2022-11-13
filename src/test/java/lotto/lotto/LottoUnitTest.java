@@ -45,4 +45,28 @@ public class LottoUnitTest {
 
         assertThat(result).isEqualTo(excepted);
     }
+
+    @Test
+    void isInNumberTest_expectedTrue() {
+        LottoSetting lottoSetting = mock(LottoSetting.class);
+        when(lottoSetting.isValidNumbers(anyList())).thenReturn(true);
+        Lotto lotto = new Lotto(List.of(6,5,4,3,2,1), lottoSetting);
+        boolean excepted = true;
+
+        boolean result = lotto.isInNumbers(4);
+
+        assertThat(result).isEqualTo(excepted);
+    }
+
+    @Test
+    void isInNumberTest_expectedFalse() {
+        LottoSetting lottoSetting = mock(LottoSetting.class);
+        when(lottoSetting.isValidNumbers(anyList())).thenReturn(true);
+        Lotto lotto = new Lotto(List.of(6,5,4,3,2,1), lottoSetting);
+        boolean excepted = false;
+
+        boolean result = lotto.isInNumbers(7);
+
+        assertThat(result).isEqualTo(excepted);
+    }
 }

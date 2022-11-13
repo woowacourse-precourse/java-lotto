@@ -29,5 +29,9 @@ public class Lotto {
                 .collect(Collectors.joining(", ","[","]"));
     }
 
-    // TODO: 추가 기능 구현
+    public boolean isInNumbers(int number) {
+        return numbers.stream()
+                .map(lottoNumber -> lottoNumber == number)
+                .reduce(false, Boolean::logicalOr);
+    }
 }
