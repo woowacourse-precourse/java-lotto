@@ -36,4 +36,29 @@ public class WinningLotto {
         }
     }
 
+    public boolean containsBonusNumber(Lotto lotto) {
+        if (lotto.getNumbers().contains(bonusNumber)) {
+            return true;
+        }
+        return false;
+    }
+
+    public int countMatchingWinningNumbers(Lotto lotto) {
+        int count = 0;
+        Set<Integer> numberSet = new HashSet<>(lotto.getNumbers());
+        for (Integer number : winningNumber.getNumbers()) {
+            if (numberSet.contains(number)) {
+                count++;
+            }
+        }
+        return count;
+    }
+    public int countMatchingNumbers(Lotto lotto) {
+        int count = countMatchingWinningNumbers(lotto);
+        if (containsBonusNumber(lotto)) {
+            count++;
+        }
+        return count;
+    }
+
 }
