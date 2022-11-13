@@ -3,6 +3,7 @@ package lotto.view;
 import lotto.domain.ScoreInfo;
 import lotto.vo.Lotto;
 import lotto.vo.LottoBuyingInfo;
+import lotto.vo.Profit;
 
 import java.util.List;
 
@@ -15,5 +16,5 @@ public interface OutputView {
 
 	void printScoreMessage(ScoreInfo scoreInfo);
 
-    void printProfitPercentageMessage(double profit);
+    void printProfitPercentageMessage(Profit profit);
 }

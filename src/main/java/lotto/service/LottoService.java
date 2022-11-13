@@ -6,10 +6,7 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.ScoreInfo;
-import lotto.vo.Lotto;
-import lotto.vo.LottoBuyingInfo;
-import lotto.vo.Score;
-import lotto.vo.WinningInfo;
+import lotto.vo.*;
 
 public class LottoService {
 	public List<Lotto> createLottos(LottoBuyingInfo lottoBuyingInfo) {
@@ -30,12 +27,10 @@ public class LottoService {
 		return scoreInfo;
 	}
 
-	public Double calculateProfitBy(LottoBuyingInfo lottoBuyingInfo, ScoreInfo scoreInfo) {
-
-		double profit = countSumOfPrice(scoreInfo) / lottoBuyingInfo.getMoney();
-		profit = convertToPercentage(profit);
-		profit = roundToFirstDigit(profit);
-		return profit;
+	public Profit calculateProfitBy(LottoBuyingInfo lottoBuyingInfo, ScoreInfo scoreInfo) {
+		return new Profit(countSumOfPrice(scoreInfo) / lottoBuyingInfo.getMoney())
+				.convertToPercentage()
+				.roundToFirstDigit();
 	}
 
 	private double countSumOfPrice(ScoreInfo scoreInfo) {
@@ -72,13 +67,5 @@ public class LottoService {
 
 	private boolean isBonusMatching(Lotto lotto, WinningInfo winningInfo) {
 		return lotto.contains(winningInfo.getBonus());
-	}
-
-	private double convertToPercentage(double profit) {
-		return profit * 100;
-	}
-
-	private double roundToFirstDigit(double profit) {
-		return Math.round(profit * 10) / 10.0;
 	}
 }

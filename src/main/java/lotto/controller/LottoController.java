@@ -10,6 +10,7 @@ import lotto.system.holder.ConverterHolder;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 import lotto.vo.LottoBuyingInfo;
+import lotto.vo.Profit;
 import lotto.vo.WinningInfo;
 
 public class LottoController {
@@ -62,7 +63,7 @@ public class LottoController {
 	}
 
 	private void calculateProfit(LottoBuyingInfo lottoBuyingInfo, ScoreInfo scoreInfo) {
-		Double profit = lottoService.calculateProfitBy(lottoBuyingInfo, scoreInfo);
+		Profit profit = lottoService.calculateProfitBy(lottoBuyingInfo, scoreInfo);
 		outputView.printProfitPercentageMessage(profit);
 	}
 }

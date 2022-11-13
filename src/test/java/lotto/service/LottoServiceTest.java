@@ -3,10 +3,7 @@ package lotto.service;
 import lotto.domain.ScoreInfo;
 import lotto.mock.MockScoreInfo;
 import lotto.system.LottoApplication;
-import lotto.vo.Lotto;
-import lotto.vo.LottoBuyingInfo;
-import lotto.vo.Score;
-import lotto.vo.WinningInfo;
+import lotto.vo.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -104,10 +101,10 @@ class LottoServiceTest {
 		mockScoreInfo.setMockScore(Score.FIFTH, 1);
 
 		//when
-		Double profit = lottoService.calculateProfitBy(lottoBuyingInfo, mockScoreInfo);
+		Profit profit = lottoService.calculateProfitBy(lottoBuyingInfo, mockScoreInfo);
 
 	    //then
-		assertThat(profit).isEqualTo(62.5);
+		assertThat(profit.getValue()).isEqualTo(62.5);
 	}
 
 	@Test
@@ -119,9 +116,9 @@ class LottoServiceTest {
 		mockScoreInfo.setMockScore(Score.FIFTH, 1);
 		mockScoreInfo.setMockScore(Score.THIRD, 1);
 	    //when
-		Double profit = lottoService.calculateProfitBy(lottoBuyingInfo, mockScoreInfo);
+		Profit profit = lottoService.calculateProfitBy(lottoBuyingInfo, mockScoreInfo);
 
 	    //then
-		assertThat(profit).isEqualTo(50166.7);
+		assertThat(profit.getValue()).isEqualTo(50166.7);
 	}
 }

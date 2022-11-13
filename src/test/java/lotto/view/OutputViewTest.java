@@ -4,6 +4,7 @@ import lotto.domain.ScoreInfo;
 import lotto.system.LottoApplication;
 import lotto.vo.Lotto;
 import lotto.vo.LottoBuyingInfo;
+import lotto.vo.Profit;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -102,7 +103,9 @@ class OutputViewTest {
         //given
         OutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
-        double profit = 62.5f;
+        Profit profit = new Profit(0.625)
+                .convertToPercentage()
+                .roundToFirstDigit();
 
         //when
         outputView.printProfitPercentageMessage(profit);
