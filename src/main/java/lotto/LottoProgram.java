@@ -33,12 +33,16 @@ public class LottoProgram {
         Display.inputPayment();
         String paymentInput = Console.readLine();
         Validator.payment(paymentInput);
+
         int payment = Integer.parseInt(paymentInput);
         buyer.setTotalPurchaseAmout(payment);
+
         Display.lineChange();
+
         int numbersOfLotto = payment / 1000;
         buyer.setLottoPurchasedCount(numbersOfLotto);
         Display.paidAmout(numbersOfLotto);
+
         purchasedLottoSave();
     }
 
@@ -47,27 +51,29 @@ public class LottoProgram {
         String winningNumbers = Console.readLine();
         Validator.winningNumberFormat(winningNumbers);
 
-
         Integer[] numberArray = convertToInteger(winningNumbers);
         Validator.winningNumberDuplicate(numberArray);
 
         Lotto.setWinningNumbers(Arrays.asList(numberArray));
 
     }
+
     private static void inputBonusNumber() {
         Display.inputBonusNumber();
         String bonusNumber = Console.readLine();
         Validator.bonusNumber(bonusNumber);
+
         Lotto.setBonusNumber(Integer.parseInt(bonusNumber));
     }
 
     private static void purchasedLottoSave() {
         int count = buyer.getLottoPurchasedCount();
+
         for (int lottoCount = 0; lottoCount < count; lottoCount++) {
             List<Integer> purchasedLottoNumber = new ArrayList<Integer>(
                     Randoms.pickUniqueNumbersInRange(1, 45, 6));
             purchasedLottoNumber.sort(Comparator.naturalOrder());
-            System.out.println(purchasedLottoNumber);
+            Display.lottoNumbers(purchasedLottoNumber);
             buyer.setLottoPurchased(new Lotto(purchasedLottoNumber));
         }
     }
