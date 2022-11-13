@@ -17,4 +17,15 @@ public class User {
         seller.validateMoneyUnit(money);
         lottoBag = seller.sellLotto(money);
     }
+
+    public void printLotto(){
+        System.out.println(lottoBag.size() + "개를 구매했습니다.");
+        for(Lotto lotto: lottoBag){
+            System.out.println(lotto);
+        }
+    }
+
+    public void compareLotto(){
+
+    }
 }
