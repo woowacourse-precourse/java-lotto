@@ -23,14 +23,14 @@ public class LottoResult {
 
     public Money reward() {
         Money reward = new Money(DEFAULT_REWARD);
-        for (Entry<Rank, Integer> entry : rewardCalculateEntrySet()) {
+        for (Entry<Rank, Integer> entry : rewardCalculateLottoResult()) {
             Money rankReward = entry.getKey().reward();
             reward = reward.add(rankReward.multiply(entry.getValue()));
         }
         return reward;
     }
 
-    private List<Entry<Rank, Integer>> rewardCalculateEntrySet() {
+    private List<Entry<Rank, Integer>> rewardCalculateLottoResult() {
         return lottoResult.entrySet().stream()
                 .filter(rankIntegerEntry -> rankIntegerEntry.getKey().reward().notZero())
                 .collect(Collectors.toList());
