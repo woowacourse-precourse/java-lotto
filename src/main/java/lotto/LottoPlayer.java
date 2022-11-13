@@ -21,7 +21,7 @@ public class LottoPlayer {
 
     private void printLottoResult() {
         List<LottoGrade> lottoResults = lottoMatcher.matchAll(lottos);
-        Map<LottoGrade, Integer> analyze = lottoAnalyst.analyze(lottoResults);
+        LottoGradeCounter analyze = lottoAnalyst.analyze(lottoResults);
         double yield = lottoAnalyst.getYield(analyze);
         printManager.printWinningStatus(analyze, yield);
     }
