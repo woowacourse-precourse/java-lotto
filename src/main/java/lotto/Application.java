@@ -75,10 +75,6 @@ public class Application {
 
         return bonusNumber;
     }
-    public static void checkBonusNumberIncludedWinningNumber(List<Integer> winningNumber, Integer bonusNumber){
-        if ( winningNumber.contains(bonusNumber))
-            throw new IllegalArgumentException("[ERROR] 보너스 번호는 당첨 번호와 달라야 합니다.");
-    }
     public static List<Integer> resultWinningLottery(List<Lotto> lotto, List<Integer> winningNumber, Integer bonusNumber){
         List<Integer> lottoResult = Arrays.asList(0,0,0,0,0);
 
