@@ -18,7 +18,7 @@ public final class Lotto {
     }
 
     public int findLottoWinCount(List<Integer> userLotto) {
-        return (int) IntStream.of(0, 6)
+        return (int) IntStream.range(0, 5)
                 .filter(i -> userLotto.contains(numbers.get(i)))
                 .count();
     }
