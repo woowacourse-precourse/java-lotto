@@ -19,7 +19,8 @@ public class LottoController {
 
     private void setLottoCount(){
         output.askPurchasePrice();
-        lottoData.setCountOfLotto(Integer.parseInt(readLine()));
+        int lottoPurchasePrice = Integer.parseInt(readLine());
+        lottoData.setCountOfLotto(lottoPurchasePrice);
     }
 
     private void makeLottoNumber(){
