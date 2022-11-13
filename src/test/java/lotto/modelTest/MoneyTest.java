@@ -13,18 +13,18 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class MoneyTest {
     @Test
     void 나머지가_있는_금액() {
-        assertThatThrownBy(() -> new Money("1002"))
+        assertThatThrownBy(() -> new Money(1002))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 천원_이하_금액() {
-        assertThatThrownBy(() -> new Money("-982"))
+        assertThatThrownBy(() -> new Money(-982))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 알맞은_금액() {
-        assertThatNoException().isThrownBy(() -> new Money("1000"));
+        assertThatNoException().isThrownBy(() -> new Money(1000));
     }
 }
