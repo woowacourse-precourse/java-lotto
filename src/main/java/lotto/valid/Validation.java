@@ -31,4 +31,16 @@ public class Validation {
             }
         }
     }
+
+    public static void bonusNumberValid(String bonus) {
+        if (Integer.parseInt(bonus) < NumberBoundaryType.MINIMUM_INDEX.getBoundary()
+                || Integer.parseInt(bonus) > NumberBoundaryType.MAXIMUM_INDEX.getBoundary()) {
+            throw new IllegalArgumentException(String.valueOf(ErrorType.INVALID_NUMBER_RANGE));
+        }
+
+        if (bonus.equals("[^a-zA-Z]")){
+            throw new IllegalArgumentException(String.valueOf(ErrorType.INVALID_INPUT_TYPE));
+        }
+
+    }
 }
