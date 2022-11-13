@@ -34,7 +34,7 @@ public class Application {
                 bonus
         );
 
-        double rateOfReturn = getRateOfReturn(rankCount, payment);
+        String rateOfReturn = getRateOfReturn(rankCount, payment);
     }
 
     public static int inputPrice() {
@@ -135,7 +135,7 @@ public class Application {
         return rankCountList;
     }
 
-    public static double getRateOfReturn(
+    public static String getRateOfReturn(
             List<Integer> rankCount,
             int payment
     ) {
@@ -144,6 +144,7 @@ public class Application {
                 + rankCount.get(3) * WinningReward.THIRD.getPrice()
                 + rankCount.get(4) * WinningReward.FOURTH.getPrice()
                 + rankCount.get(5) * WinningReward.FIFTH.getPrice();
-        return Math.round((double) priceSum / payment);
+        double rateOfReturn = (double) priceSum / payment;
+        return String.format("%.1f", rateOfReturn);
     }
 }
