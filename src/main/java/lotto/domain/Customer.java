@@ -12,20 +12,28 @@ import java.util.List;
  */
 public class Customer {
     private List<Lotto> lottos;
+    private int willingToPay;
+    private int earning;
+
+    public Customer() {
+        willingToPay = 0;
+        earning = 0;
+    }
 
     public void buyLotto(LottoStore lottoStore) {
-        int fee = pay();
-        this.lottos = lottoStore.sellLotto(fee);
+        getWillingToPay();
+        this.lottos = lottoStore.sellLotto(this.willingToPay);
         checkNumbersOfLottos(this.lottos);
     }
 
-    public int pay() {
+    private void getWillingToPay() {
         System.out.print("구입금액을 입력해 주세요: ");
-        String fee = readLine();
-        validateNumeric(fee);
-        validateMultiplesOf1000(fee);
-        return Integer.parseInt(fee);
+        String willingToPay = readLine();
+        validateNumeric(willingToPay);
+        validateMultiplesOf1000(willingToPay);
+        this.willingToPay = Integer.parseInt(willingToPay);
     }
+
 
     private void checkNumbersOfLottos(List<Lotto> lottos) {
         System.out.println(lottos.size() + "개를 구매했습니다.");
