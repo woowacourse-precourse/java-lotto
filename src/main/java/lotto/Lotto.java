@@ -17,17 +17,17 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    public int confirmNumbers(List<Integer> numbers) {
+    public int confirmNumbers(List<Integer> winningNumbers) {
         int sameNumberCount = 0;
         int bonusNumber = 0;
 
         for (Integer number : this.numbers) {
-            if (numbers.contains(number)) {
+            if (winningNumbers.contains(number)) {
                 sameNumberCount++;
             }
         }
 
-        if (this.numbers.contains(numbers.get(6))) {
+        if (numbers.contains(winningNumbers.get(6))) {
             bonusNumber = 1;
         }
 
@@ -38,6 +38,6 @@ public class Lotto {
         if (sameNumberCount == 6) {
             return 7 - sameNumberCount + bonusNumber;
         }
-        return 7 - sameNumberCount;
+        return 8 - sameNumberCount;
     }
 }
