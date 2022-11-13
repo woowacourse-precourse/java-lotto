@@ -20,6 +20,10 @@ public class IOManager {
         }
     }
 
+    public static void printLottoBought(int num) {
+        System.out.println(String.valueOf(num) + IOMessage.LOTTO_BUY_NUM);
+    }
+
     public static void printLottoList(List<Lotto> lottoList) {
         System.out.println(String.valueOf(lottoList.size()) + IOMessage.LOTTO_BUY_NUM);
         for(Lotto lotto : lottoList) {
