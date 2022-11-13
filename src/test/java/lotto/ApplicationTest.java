@@ -8,6 +8,7 @@ import java.util.List;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomUniqueNumbersInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
 import java.io.ByteArrayInputStream;
@@ -116,6 +117,63 @@ class ApplicationTest extends NsTest {
         Lotto lotto = getWinningNumbers();
         lotto.printNumbers();
         assertThat(output()).contains("[1, 2, 3, 4, 5, 6]");
+    }
+
+    Integer getBonusNumber() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        Object ret;
+        Class app = Application.class;
+        Method method = app.getDeclaredMethod("getBonusNumber");
+
+        method.setAccessible(true);
+        ret = method.invoke(null);
+        return (Integer) ret;
+    }
+
+
+    @Test
+    void 보너스_번호_입력_테스트1() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        stdInput("3");
+        Integer number = getBonusNumber();
+        assertThat(number).isEqualTo(3);
+    }
+
+    @Test
+    void 보너스_번호_입력_테스트2() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        stdInput("49");
+        assertThatThrownBy(
+            () -> {
+                try {
+                    getBonusNumber();
+                } catch (InvocationTargetException e) {
+                    throw e.getTargetException();
+                }
+            }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 보너스_번호_입력_테스트3() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        stdInput("0");
+        assertThatThrownBy(
+            () -> {
+                try {
+                    getBonusNumber();
+                } catch (InvocationTargetException e) {
+                    throw e.getTargetException();
+                }
+            }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 보너스_번호_입력_테스트4() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        stdInput("sssss");
+        assertThatThrownBy(
+            () -> {
+                try {
+                    getBonusNumber();
+                } catch (InvocationTargetException e) {
+                    throw e.getTargetException();
+                }
+            }).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Override
