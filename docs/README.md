@@ -13,3 +13,4 @@
 
 - Result Class
 1. Lotto 2개를 비교하는 기능
+2. 당청금 계산
