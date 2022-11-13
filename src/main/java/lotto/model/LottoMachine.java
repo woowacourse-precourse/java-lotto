@@ -6,10 +6,10 @@ import lotto.util.RandomUtil;
 import lotto.util.constants.LottoConstants;
 
 public class LottoMachine {
-    private WinningLotto winningLotto;
+    private Winning winning;
 
     public void createWinningLotto(Lotto lotto, int bonusNumber) {
-        winningLotto = new WinningLotto(lotto, bonusNumber);
+        winning = new Winning(lotto, bonusNumber);
     }
 
     public int computeLottoTicketsCount(int purchaseAmount) {
@@ -30,5 +30,9 @@ public class LottoMachine {
     public Lotto createLottoTicket() {
         RandomUtil lottoRandom = new RandomUtil();
         return new Lotto(lottoRandom.pickNumbers());
+    }
+
+    public int compareLottoNumber(List<Integer> userLotto, List<Integer> winningLotto) {
+        return (int) userLotto.stream().filter(num -> winningLotto.contains(num)).count();
     }
 }
