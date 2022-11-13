@@ -5,7 +5,6 @@ import java.util.List;
 import lotto.domain.validation.LottoNumbersValidation;
 import lotto.lottopaper.LottoPaper;
 import lotto.user.User;
-import lotto.user.UserUtil;
 import lotto.user.validation.UserMoneyValidation;
 
 public class LottoMachine {
@@ -43,10 +42,9 @@ public class LottoMachine {
             return Collections.emptyList();
         }
         try {
-            String userLottoNumbers = User.inputLottoNumbers();
-            List<Integer> lottoNumbers = UserUtil.convertUserInputToNumbers(userLottoNumbers);
-            LottoNumbersValidation.validateLottoNumbers(lottoNumbers);
-            return lottoNumbers;
+            List<Integer> userLottoNumbers = User.inputLottoNumbers();
+            LottoNumbersValidation.validateLottoNumbers(userLottoNumbers);
+            return userLottoNumbers;
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             machineStatus = false;

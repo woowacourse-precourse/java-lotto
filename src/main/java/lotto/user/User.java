@@ -5,17 +5,15 @@ import java.util.List;
 import lotto.domain.validation.LottoNumbersValidation;
 
 public class User {
-    private static final String COMMA = ",";
-
     public static String buyLotto() {
         String userAmount = Console.readLine();
         return userAmount;
     }
 
-    public static String inputLottoNumbers() {
+    public static List<Integer> inputLottoNumbers() {
         String userNumbers = Console.readLine();
         LottoNumbersValidation.validateInputLottoNumbers(userNumbers);
-        return userNumbers;
+        return UserUtil.convertUserInputToNumbers(userNumbers);
     }
 
     public static String inputBonusNumber() {
