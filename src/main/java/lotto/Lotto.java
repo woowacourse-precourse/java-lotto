@@ -13,7 +13,6 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         this.numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         validate(numbers);
-
     }
 
     private void validate(List<Integer> numbers) {
@@ -23,7 +22,7 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    public static String UserInput() {
+    public static String inputAmount() {
         System.out.print(INPUT_NUMBER_MESSAGE);
         return Console.readLine();
     }
