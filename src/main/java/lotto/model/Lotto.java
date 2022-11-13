@@ -14,6 +14,8 @@ public class Lotto {
 //        this.numbers = numbers;
 //    }
 
+
+
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             inputError(outputView.validateMsg());
@@ -39,7 +41,7 @@ public class Lotto {
     public void isEqual(int i,List<Integer> num) {
         for(int j=0;j<i;j++) {
             if(num.get(i) == num.get(j)) {
-                inputError(outputView.EqualMsg());
+                inputError(outputView.equalMsg());
             }
         }
     }
@@ -48,7 +50,7 @@ public class Lotto {
         for(int i=0;i<num.size();i++) {
             int number = num.get(i);
             if(!(number >= 1 && number <=45)) {
-                inputError(outputView.RangeMsg());
+                inputError(outputView.rangeMsg());
             }
         }
         return true;

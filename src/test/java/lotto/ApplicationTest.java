@@ -160,7 +160,7 @@ class ApplicationTest extends NsTest {
     void 유효하지않은_보너스번호_범위_입력(){
         BonusNumber bonusNumber = new BonusNumber();
         assertThatThrownBy(() -> {
-            bonusNumber.RangeNumber("65");
+            bonusNumber.rangeNumber("65");
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
     }
