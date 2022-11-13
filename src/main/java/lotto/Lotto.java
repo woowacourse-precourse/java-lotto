@@ -23,9 +23,15 @@ public class Lotto {
     }
     private void validateLotto(List<Integer> numbers) {
         for (Integer number : numbers) {
+            validateNumberRange(number);
             if (countSameNumber(numbers,number) > 1) {
                 throw new IllegalArgumentException("[ERROR] 로또 번호는 중복되지 않아야 합니다.");
             }
+        }
+    }
+    private static void validateNumberRange(int number) {
+        if (number < 1 || number > 45) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호는 1~45 사이의 숫자입니다.");
         }
     }
 
@@ -48,29 +54,35 @@ class UserInput {
         isNumeric(userInput);
     }
 
-    static public void requestWinningLottoNumber() {
+    static public List<Integer> requestWinningLottoNumber() {
+        String userInput = Console.readLine();
+        String[] splitUserInput = userInput.split(",");
+        List<Integer> numbers = new ArrayList<Integer>();
+
+        for (String number : splitUserInput) {
+            isNumeric(number);
+            numbers.add(Integer.parseInt(number));
+        }
+        return numbers;
 
     }
 
-    static public void requestBonusNumber() {
-
+    static public int requestBonusNumber() {
+        String userInput = Console.readLine();
+        isNumeric(userInput);
+        return Integer.parseInt(userInput);
     }
-
-
 
     private static void isNumeric(String input) {
         try {
             Integer.parseInt(input);
         }
         catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 숫자로 이루어져 있습니다.");
+            throw new IllegalArgumentException("[ERROR] 입력된 내용이 숫자가 아닙니다.");
         }
     }
-    private static void isInRange(int number) {
-        if (number < 1 || number > 45) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 1~45 사이의 숫자입니다.");
-        }
-    }
+
+
 }
 
 
