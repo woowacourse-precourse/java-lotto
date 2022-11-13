@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -9,8 +10,9 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        sort(numbers);
-        this.numbers = numbers;
+        List<Integer> copyNumbers = new ArrayList<>(numbers);
+        sort(copyNumbers);
+        this.numbers = copyNumbers;
     }
 
     public boolean isExistNumber(int number) {
