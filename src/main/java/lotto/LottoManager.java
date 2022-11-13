@@ -22,6 +22,7 @@ public class LottoManager {
         printLottoCount(count);
         printLottos(lottos);
         List<Integer> winningNumbers = inputManager.drawWinningNumbers();
+        int bonusNumber = inputManager.drawBonusNumber();
     }
 
     public int countBuyableLotto(int amount) {
