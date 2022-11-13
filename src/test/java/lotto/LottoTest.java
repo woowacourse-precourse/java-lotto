@@ -102,4 +102,13 @@ class LottoTest {
         List<Lotto> purchasedLottos = Lotto.purchase(3000);
         assertThat(purchasedLottos.size()).isEqualTo(3000 / LottoEnum.PURCHASE_UNIT.getValue());
     }
+
+    @DisplayName("로또 구매의 단위가 맞지 않는 경우 에러가 발생한다.")
+    @Test
+    void lottoPurchaseWithWrongMoney() {
+        Integer money = LottoEnum.PURCHASE_UNIT.getValue() + 1;
+
+        assertThatThrownBy(() -> Lotto.purchase(money))
+                .isInstanceOf(IllegalArgumentException.class);;
+    }
 }
