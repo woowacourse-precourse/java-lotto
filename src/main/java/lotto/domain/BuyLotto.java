@@ -48,7 +48,7 @@ public class BuyLotto {
 
     private void validatePrice(int price) {
         if (price % LOTTO_PRICE != 0) {
-            throw new IllegalArgumentException(ErrorText.price);
+            throw new IllegalArgumentException(ErrorText.PRICE);
         }
     }
 }
