@@ -104,8 +104,8 @@ public class Application {
         System.out.println("당첨 번호를 입력해 주세요.");
 
         inputNumber = Console.readLine();
-        inputNumberException();
         processNumber = inputNumber.split(",");
+        inputNumberException(processNumber);
 
         for(int i=0;i<processNumber.length;i++){
             winningNumber.add(Integer.parseInt(processNumber[i]));
@@ -126,7 +126,14 @@ public class Application {
         }
     }
 
-    public static void inputNumberException(){}
+    public static void inputNumberException(String[] processNumber){
+        for(int i=0;i<processNumber.length;i++){
+            for(int j=0;j<processNumber[i].length();j++){
+                if(!Character.isDigit(processNumber[i].charAt(j)))
+                    throw new IllegalArgumentException("[ERROR] 로또 번호는 정수형 이어야 합니다.");
+            }
+        }
+    }
 
 
     public static void inputBonus(){
