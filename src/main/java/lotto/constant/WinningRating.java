@@ -5,7 +5,7 @@ public enum WinningRating {
 	FOURTH(4, "50,000원"),
 	THIRD(5, "1,500,000원"),
 	SECOND(5, "30,000,000원"),
-	FIRST(6, "2,000,000,000원")
+	FIRST(6, "2,000,000,000원");
 
 	private final int countOfMatchedNumber;
 	private final String prizeMoney;

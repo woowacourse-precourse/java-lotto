@@ -5,20 +5,27 @@ import java.util.List;
 import lotto.util.Converter;
 import lotto.util.Validator;
 
-public class WinningNumbers {
+public class WinningAndBonusNumbers {
 	private static List<Integer> winningNumbers;
 	private static int bonusNumber;
-	public WinningNumbers(String winningNumbers) {
+	public WinningAndBonusNumbers(String winningNumbers) {
 		List<Integer> notYetValidatedWinningNumbers = Converter.convertStringWithCommaToIntegerList(winningNumbers);
 		validateWinningNumbers(notYetValidatedWinningNumbers);
-		WinningNumbers.winningNumbers = notYetValidatedWinningNumbers;
+		WinningAndBonusNumbers.winningNumbers = notYetValidatedWinningNumbers;
 	}
 
-	public WinningNumbers(int bonusNumber) {
+	public WinningAndBonusNumbers(int bonusNumber) {
 		validateBonusNumber(bonusNumber);
-		WinningNumbers.bonusNumber = bonusNumber;
+		WinningAndBonusNumbers.bonusNumber = bonusNumber;
 	}
 
+	public List<Integer> getWinningNumbers() {
+		return winningNumbers;
+	}
+
+	public int getBonusNumber() {
+		return bonusNumber;
+	}
 	void validateWinningNumbers(List<Integer> winningNumbers) {
 		Validator.validateSizeOfNumbers(winningNumbers);
 		Validator.validateNoDuplication(winningNumbers);
