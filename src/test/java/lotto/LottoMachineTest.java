@@ -19,4 +19,12 @@ class LottoMachineTest {
             assertThat(lottoNumber).isLessThanOrEqualTo(45);
         });
     }
+
+    @DisplayName("구입 금액으로 구매 가능한 로또 발행 수를 반환한다.")
+    @Test
+    void getNumberOfLotto() {
+        Integer purchaseAmount = 8000;
+        Integer numberOfLotto = LottoMachine.getNumberOfLotto(purchaseAmount);
+        assertThat(numberOfLotto).isEqualTo(8);
+    }
 }
