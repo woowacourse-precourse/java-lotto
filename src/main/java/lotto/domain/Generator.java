@@ -2,6 +2,8 @@ package lotto.domain;
 
 import java.util.HashMap;
 import java.util.List;
+import lotto.Constants.NUMBER;
+import lotto.Ranking;
 
 public class Generator {
     private static final String WINNINGCOUNT = "winningCount";
@@ -44,7 +46,7 @@ public class Generator {
     }
 
     public static double profitCalculate(int purchased, long totalPrize) {
-        double result = ((double) totalPrize / (long) purchased) * 100;
+        double result = ((double) totalPrize / (long) purchased) * NUMBER.HUNDRED;
         return result;
     }
 }
