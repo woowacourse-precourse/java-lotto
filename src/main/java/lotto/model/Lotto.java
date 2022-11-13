@@ -8,6 +8,9 @@ public class Lotto {
     private static final String NUMBER_IS_NOT_SIX = "로또가 6개보다 많거나 적은 수의 번호를 가진 채 발행됐습니다.";
     private static final String NUMBER_IS_DUPLICATED = "로또가 중복된 번호로 발행됐습니다.";
     private static final String NUMBER_IS_NOT_BETWEEN_1_AND_45 = "로또가 1에서 45의 범위를 벗어난 번호를 가진 채 발행됐습니다.";
+    private static final int START_NUMBER = 1;
+    private static final int END_NUMBER = 45;
+    private static final int CORRECT_NUMBERS_SIZE = 6;
 
     private final List<Integer> numbers;
 
@@ -27,7 +30,7 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != CORRECT_NUMBERS_SIZE) {
             throw new IllegalArgumentException(ERROR_PREFIX + NUMBER_IS_NOT_SIX);
         }
     }
@@ -43,7 +46,7 @@ public class Lotto {
 
     private void validateBetween1And45(List<Integer> numbers) {
         List<Integer> filter_numbers = numbers.stream()
-                .filter(number -> number < 1 || number > 45)
+                .filter(number -> number < START_NUMBER || number > END_NUMBER)
                 .collect(Collectors.toList());
         if (!filter_numbers.isEmpty()) {
             throw new IllegalArgumentException(ERROR_PREFIX + NUMBER_IS_NOT_BETWEEN_1_AND_45);
