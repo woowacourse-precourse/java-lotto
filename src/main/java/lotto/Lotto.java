@@ -26,6 +26,11 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
+
     public static List<Integer> generateRandomLottoNumbers() {
         List<Integer> lottoNum = Randoms.pickUniqueNumbersInRange(1, 45, 6);
         return lottoNum;
