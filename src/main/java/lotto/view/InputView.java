@@ -18,8 +18,7 @@ public class InputView {
 
     private static int inputOneNumber() {
         try {
-            String stringNumber = Console.readLine();
-            return Integer.parseInt(stringNumber);
+            return Integer.parseInt(Console.readLine());
         } catch (RuntimeException e) {
             throw new IllegalArgumentException(ERROR_INVALID_INPUT_NUMBER);
         }
