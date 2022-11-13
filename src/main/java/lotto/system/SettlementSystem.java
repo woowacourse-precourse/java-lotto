@@ -8,9 +8,23 @@ import lotto.domain.score.Ranking;
 
 public class SettlementSystem {
     private final Map<Ranking, Integer> settlement;
+    private final IoSystem io;
 
-    public SettlementSystem() {
+    public SettlementSystem(IoSystem ioSystem) {
         this.settlement = Ranking.generateList();
+        this.io = ioSystem;
+    }
+
+    public void calculateProfits(Money money) {
+        var profits = Money.generateMoney(0L);
+
+        for (var rankAdnCount : settlement.entrySet()) {
+            profits = profits.plus(rankAdnCount.getKey()
+                    .calculateProfits(rankAdnCount.getValue())
+            );
+        }
+
+        io.printBeforeNextLine(String.format("총 수익률은 %.1f%%입니다.", money.calculateROI(profits)));
     }
 
     private void startRaffle(LottoBundle lottoBundle, AnswerLotto answerLotto) {
@@ -23,30 +37,20 @@ public class SettlementSystem {
         }
     }
 
-    public String result(LottoBundle lottoBundle, AnswerLotto answerLotto) {
+    public void result(LottoBundle lottoBundle, AnswerLotto answerLotto) {
         this.startRaffle(lottoBundle, answerLotto);
 
         StringBuilder stringBuilder = new StringBuilder();
 
         for (var rankAndCount : settlement.entrySet()) {
             stringBuilder.append(rankAndCount.getKey().result())
-                    .append("- ")
-                    .append(rankAndCount.getValue())
-                    .append("개")
-                    .append("\n");
-
+                    .append(String.format(" - %d개\n", rankAndCount.getValue()));
         }
-        return stringBuilder.toString().trim();
-    }
 
-    public Money calculateProfits() {
-        var profits = Money.generateMoney(0L);
+        var result = stringBuilder.toString().trim();
 
-        for (var rankAdnCount : settlement.entrySet()) {
-            profits = profits.plus(rankAdnCount.getKey()
-                    .calculateProfits(rankAdnCount.getValue())
-            );
-        }
-        return profits;
+        io.printBeforeNextLine("당첨 통계");
+        io.printBeforeNextLine("---");
+        io.printBeforeNextLine(result);
     }
 }
