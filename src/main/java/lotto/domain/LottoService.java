@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoService {
+    private Lotto lotto;
+    private UserLotto userLotto;
 
     public List<LottoRank> createLottoResult(List<Integer> lotto, List<List<Integer>> userLotto) {
         List<LottoRank> lottoResult = new ArrayList<>();
@@ -68,5 +70,9 @@ public class LottoService {
         int amount = money/1000;
 
         return amount;
+    }
+
+    public void initLotto(List<Integer> winningNumber) {
+        lotto = new Lotto(winningNumber);
     }
 }
