@@ -22,7 +22,7 @@ public class WinningNumber {
         }
 
         for (int num: winningNum) {
-            if (bonusNum < 1 || bonusNum >45) {
+            if (num < 1 || num >45) {
                 throw new IllegalArgumentException();
             }
         }
