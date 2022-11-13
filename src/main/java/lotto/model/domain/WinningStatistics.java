@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class WinningStatistics {
 
-    private static final int STATISTICS_INIT_NUM = 0;
+    private static final int INIT_NUMBER = 0;
     private static final int LOTTO_PRICE = 1000;
     private static final int PERCENT_UNIT = 100;
 
@@ -20,7 +20,10 @@ public class WinningStatistics {
     }
 
     public double computeTotalYield() {
-        return (sumOfReward() / sumOfLottoPrice()) * PERCENT_UNIT;
+        double rewardSum = sumOfReward();
+        int lottoPriceSum = sumOfLottoPrice();
+
+        return (rewardSum / lottoPriceSum) * PERCENT_UNIT;
     }
 
     private int sumOfLottoPrice() {
@@ -28,7 +31,7 @@ public class WinningStatistics {
                 .stream()
                 .map(rankAndRankCount::get)
                 .reduce(Integer::sum)
-                .orElse(STATISTICS_INIT_NUM);
+                .orElse(INIT_NUMBER);
 
         return sumOfLottoCount * LOTTO_PRICE;
     }
@@ -38,7 +41,7 @@ public class WinningStatistics {
                 .stream()
                 .map(this::sumOfOneRankReward)
                 .reduce(Integer::sum)
-                .orElse(STATISTICS_INIT_NUM);
+                .orElse(INIT_NUMBER);
     }
 
     private int sumOfOneRankReward(Rank rank) {
@@ -46,12 +49,12 @@ public class WinningStatistics {
     }
 
     private void initRankAndRankCount() {
-        rankAndRankCount.put(Rank.NOTHING, STATISTICS_INIT_NUM);
-        rankAndRankCount.put(Rank.FIFTH, STATISTICS_INIT_NUM);
-        rankAndRankCount.put(Rank.FOURTH, STATISTICS_INIT_NUM);
-        rankAndRankCount.put(Rank.THIRD, STATISTICS_INIT_NUM);
-        rankAndRankCount.put(Rank.SECOND, STATISTICS_INIT_NUM);
-        rankAndRankCount.put(Rank.FIRST, STATISTICS_INIT_NUM);
+        rankAndRankCount.put(Rank.NOTHING, INIT_NUMBER);
+        rankAndRankCount.put(Rank.FIFTH, INIT_NUMBER);
+        rankAndRankCount.put(Rank.FOURTH, INIT_NUMBER);
+        rankAndRankCount.put(Rank.THIRD, INIT_NUMBER);
+        rankAndRankCount.put(Rank.SECOND, INIT_NUMBER);
+        rankAndRankCount.put(Rank.FIRST, INIT_NUMBER);
     }
 
     private void countRanks(List<Rank> ranks) {
