@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -27,5 +28,21 @@ public class Lotto {
         sb.append("]");
 
         System.out.println(sb);
+    }
+
+    public int countMatches(List<Integer> winNumbers) {
+        int count = 0;
+
+        for (int i = 0; i < 6; i++) {
+            if (numbers.contains(winNumbers.get(i))) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public boolean matchesBonus(int bonusNumber) {
+        return numbers.contains(bonusNumber);
     }
 }
