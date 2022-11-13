@@ -69,4 +69,32 @@ public class LottoManager {
         }
         return false;
     }
+
+    public void makeLottoResult(HashMap<Integer, Integer> lottoResult, Lotto lotto, LottoMachine lottoMachine) {
+        List<Integer> winningNumbers = lottoMachine.getWinningNumbers();
+        int bonusNumber = lottoMachine.getBonusNumbers();
+        int countEqual = 0;
+        boolean isBonusNumberEqual = false;
+
+        countEqual = compareWinningNumbers(lotto, winningNumbers);
+        isBonusNumberEqual = compareBonusNumbers(lotto, bonusNumber);
+
+        List<Integer> prizeMoney = List.of(5000, 50000, 1500000, 30000000, 2000000000);
+
+        for (Integer money : prizeMoney) {
+            lottoResult.putIfAbsent(money, 0);
+        }
+
+        if (countEqual == 3) {
+            lottoResult.merge(5000, 1, Integer::sum);
+        } else if (countEqual == 4) {
+            lottoResult.merge(50000, 1, Integer::sum);
+        } else if (countEqual == 5 && !isBonusNumberEqual) {
+            lottoResult.merge(1500000, 1, Integer::sum);
+        } else if (countEqual == 5 && isBonusNumberEqual) {
+            lottoResult.merge(30000000, 1, Integer::sum);
+        } else if (countEqual == 6) {
+            lottoResult.merge(2000000000, 1, Integer::sum);
+        }
+    }
 }
