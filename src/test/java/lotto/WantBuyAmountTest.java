@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class UserTest {
+public class WantBuyAmountTest {
 
     @DisplayName("희망 구매 금액이 1000 단위의 숫자가 아니면 예외가 발생한다.")
     @Test
