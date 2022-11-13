@@ -14,20 +14,31 @@ public class LottoController {
 
     public void startLottoApplication() {
         String inputPrice = inputView.inputPrice();
-        if (!inputValidator.validateInputPrice(inputPrice)) {
+        boolean isRestart;
+        try {
+            isRestart = inputValidator.validateInputPrice(inputPrice);
+        } catch (IllegalArgumentException exception) {
+            System.out.println(exception.getMessage());
+            return;
+        }
+        determineNextMove(isRestart, Integer.parseInt(inputPrice));
+    }
+
+    private void determineNextMove(boolean isRestart, int inputPrice) {
+        if (isRestart) {
             restartLottoApplication();
             return;
         }
-        printBroughtLottoMessage(Integer.parseInt(inputPrice));
-    }
-
-    private void printBroughtLottoMessage(int inputPrice) {
-        outputView.outputLottoBuyingResult(lottoService.buyLottos(inputPrice));
+        printBroughtLottoMessage(inputPrice);
     }
 
     private void restartLottoApplication() {
         inputView.printInputPriceAgain();
         startLottoApplication();
+    }
+
+    private void printBroughtLottoMessage(int inputPrice) {
+        outputView.outputLottoBuyingResult(lottoService.buyLottos(inputPrice));
     }
 
 

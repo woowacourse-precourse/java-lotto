@@ -19,7 +19,7 @@ public class InputValidator {
         if (isStartWithZero(inputPrice.charAt(FIRST_INDEX))) {
             throw new IllegalArgumentException(ExceptionMessage.ERROR + ExceptionMessage.START_WItH_ZERO);
         }
-        return isValidPrice(Integer.parseInt(inputPrice));
+        return isNotValidPrice(Integer.parseInt(inputPrice));
     }
 
     private boolean isStartWithZero(char firstNumber) {
@@ -30,7 +30,7 @@ public class InputValidator {
         return inputPrice == ZERO;
     }
 
-    private boolean isValidPrice(int inputPrice) {
+    private boolean isNotValidPrice(int inputPrice) {
         return inputPrice % LOTTO_PRICE == NOTHING;
     }
 }
