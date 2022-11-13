@@ -3,6 +3,7 @@ package lotto;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import lotto.model.BonusNumber;
 import lotto.model.Lotto;
+import lotto.model.LottoNumber;
 import lotto.model.User;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -173,6 +174,13 @@ class ApplicationTest extends NsTest {
             bonusNumber.isEqualNumber("1",num);
         }).isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(ERROR_MESSAGE);
+    }
+
+    @Test
+    void 유효한_로또번호_출력(){
+        LottoNumber lottoNumber = new LottoNumber();
+        List<List<Integer>> lotto = lottoNumber.userLotto(2);
+        assertThat(lotto.size()).isEqualTo(2);
     }
 
     @Override
