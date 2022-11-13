@@ -21,6 +21,9 @@ public class InputValidator {
     }
 
     private boolean includeNotNumericCharacter(String userInput) {
+        if (userInput.charAt(0) == '0') {
+            return true;
+        }
         for (int i = 0; i < userInput.length(); ++i) {
             if (userInput.charAt(i) < '0' || userInput.charAt(i) > '9') {
                 return true;
