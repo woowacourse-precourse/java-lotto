@@ -56,13 +56,13 @@ class ApplicationTest extends NsTest {
         });
     }
 
-    @DisplayName("로또 번호 발급 금액이 1000단위가 아니면 예외가 발생한다.")
+    @DisplayName("로또 번호 발급 금액으로 1000원이 아니면 예외가 발생한다.")
     @Test
-    void getLottoByWrongMoneyUnit() {
+    void CreateLottoByWrongMoney() {
         Application application = new Application();
         int money = 12345;
 
-        assertThatThrownBy(() -> application.getLotto(money))
+        assertThatThrownBy(() -> application.createLotto(money))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
