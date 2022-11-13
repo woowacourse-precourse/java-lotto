@@ -1,12 +1,12 @@
 package lotto.controller;
 
-import java.util.List;
 import java.util.Map;
 import lotto.domain.Lotto;
 import lotto.domain.LottoList;
 import lotto.domain.Money;
 import lotto.domain.User;
 import lotto.domain.WinningLotto;
+import lotto.domain.WinningLottoNumber;
 import lotto.domain.WinningLottoTicket;
 import lotto.service.LottoService;
 import lotto.view.Input;
@@ -40,7 +40,7 @@ public class LottoController {
 
     private Money suggestMoney() {
         Output.printMoneyInputMessage();
-        Money money = input.getMoney();
+        Money money = new Money(input.getMoney());
         Output.printPurchaseLottoMessage(money.lottoCount());
         return money;
     }
@@ -59,14 +59,16 @@ public class LottoController {
     private void printResult(User user, WinningLottoTicket winningLottoTicket) {
         Map<WinningLotto, Integer> winningLottoCount = winningLottoTicket.getWinningLottoCount();
         Output.printStatistic();
+        winningLottoCount.remove(WinningLotto.NOTHING);
         Output.printWinningLotto(winningLottoCount);
         Output.printProfit(lottoService.calculateProfit(user, lottoService.getSum(winningLottoCount)));
     }
 
-    private User lottoUser(Money money) {
-        List<Integer> winningNumber = input.getWinningNumber();
-        Integer bonusNumber = input.getBonusNumber();
-        User user = new User(money, winningNumber, bonusNumber);
+    public User lottoUser(Money money) {
+        String winningNumber = input.getWinningNumber();
+        String bonusNumber = input.getBonusNumber();
+        WinningLottoNumber winningLottoNumber = new WinningLottoNumber(winningNumber, bonusNumber);
+        User user = new User(money, winningLottoNumber.getWinningNumber(), winningLottoNumber.getBonusNumber());
         return user;
     }
 }

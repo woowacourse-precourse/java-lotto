@@ -24,13 +24,4 @@ public class User {
     public Money getMoney() {
         return money;
     }
-
-    public WinningLottoTicket getWinningLottoTicket() {
-        LottoGenerator lottoGenerator = new LottoGenerator();
-        LottoList lottoList = lottoGenerator.createLotto(money);
-        WinningLottoNumber winningLottoNumber = new WinningLottoNumber(winningNumber, bonusNumber);
-        LottoMachine lottoMachine = new LottoMachine(winningLottoNumber);
-        WinningLottoTicket winningLottoTicket = lottoMachine.createLottoTicket(lottoList);
-        return winningLottoTicket;
-    }
 }

@@ -12,6 +12,8 @@ public class Output {
     private static final String STASTISTICS_MESSAGE = "당첨 통계\n---";
     private static final String HYPEN = " - ";
     private static final String COUNT = "개";
+    private static final String PROFIT_FORMAT = "총 수익률은 %.1f";;
+    private static final String PERCENT_FORMAT = "%입니다.";
 
 
     public static void printMoneyInputMessage() {
@@ -42,17 +44,12 @@ public class Output {
     }
 
     public static void printWinningLotto(Map<WinningLotto, Integer> winningLottoCount) {
-        for (WinningLotto winningLotto : winningLottoCount.keySet()) {
-            if (winningLotto.equals(WinningLotto.NOTHING)) {
-                continue;
-            }
-            printWinningLottoCount(winningLottoCount, winningLotto);
-        }
+        winningLottoCount.keySet().stream().forEach(key -> printWinningLottoCount(winningLottoCount, key));
     }
 
     public static void printProfit(float profit) {
-        System.out.printf("총 수익률은 %.1f", profit);
-        System.out.print("%입니다.");
+        System.out.printf(PROFIT_FORMAT, profit);
+        System.out.print(PERCENT_FORMAT);
     }
 
 

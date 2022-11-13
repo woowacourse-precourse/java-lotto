@@ -38,6 +38,7 @@ public class LottoService {
     }
 
     public static float calculateProfit(User user, float sum) {
-        return sum * 100 / user.getMoney().getPrice();
+        Money money = user.getMoney();
+        return sum * 100 / money.getPrice();
     }
 }
