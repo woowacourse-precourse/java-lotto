@@ -11,8 +11,15 @@ import lotto.utils.ConsoleUtil;
 import lotto.validate.NumberValidator;
 
 public class Winning {
-    private List<Integer> numbers = new ArrayList<>();
-    private NumberValidator validator = new NumberValidator();
+    private List<Integer> numbers;
+    private int bonusNumber;
+    private NumberValidator validator;
+
+    public Winning() {
+        this.numbers = new ArrayList<>();
+        this.bonusNumber = 0;
+        this.validator = new NumberValidator();
+    }
 
     public void inputNumber() {
         ConsoleUtil.showMessage(INPUT_WINNING_NUMBERS.getMessage());
@@ -30,7 +37,7 @@ public class Winning {
 
         validateBonusNumber(input);
 
-        numbers.add(Integer.parseInt(input));
+        this.bonusNumber = Integer.parseInt(input);
     }
 
     private void validateInputNumber(String[] splitNumbers) {
@@ -50,13 +57,11 @@ public class Winning {
     }
 
     public List<Integer> getWinningNumbers() {
-        return numbers.stream()
-                .filter(i -> i <= 6)
-                .collect(Collectors.toList());
+        return numbers;
     }
 
     public int getBonusNumber() {
-        return numbers.get(6);
+        return bonusNumber;
     }
 
 }
