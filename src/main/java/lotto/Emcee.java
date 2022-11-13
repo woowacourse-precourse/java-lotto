@@ -55,7 +55,7 @@ public class Emcee {
         System.out.println("=========================");
     }
 
-    public void rateOfReturn(double rateOfReturn) {
+    public void showRateOfReturn(double rateOfReturn) {
         System.out.println("총 수익률은 " + rateOfReturn + "%입니다.");
     }
 }

@@ -65,7 +65,7 @@ public class LottoGameConsole {
     private void handlePrizeOfLottoGame(Map<Rank, Integer> tallyOfRanks, int payment) {
         emcee.showStatistics(tallyOfRanks);
         double rateOfReturn = calculateRateOfReturn(tallyOfRanks, payment);
-        emcee.rateOfReturn(rateOfReturn);
+        emcee.showRateOfReturn(rateOfReturn);
     }
 
     private double calculateRateOfReturn(Map<Rank, Integer> tallyOfRanks, int payment) {
