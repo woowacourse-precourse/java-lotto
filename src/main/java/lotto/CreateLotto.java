@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class CreateLotto {
     final List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
     public List<Integer> createRandomBall() {
@@ -17,6 +16,14 @@ public class CreateLotto {
             winningNumber.add(Integer.parseInt(a));
         }
         return winningNumber;
+    }
+
+    public Integer bonusNumber(String bonusNumber) {
+        return Integer.parseInt(bonusNumber);
+    }
+
+    public Integer inputMoney(String inputMoney) {
+        return Integer.parseInt(inputMoney);
     }
 
     public void textWinningNumber() {
