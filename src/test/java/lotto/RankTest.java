@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class RankTest {
-    @DisplayName("findRank 메소드 테스트")
+    @DisplayName("getMyRank 메소드 테스트")
     @Nested
-    class findRankTest {
+    class getMyRankTest {
         @DisplayName("1등")
         @Test
         void case1() {
