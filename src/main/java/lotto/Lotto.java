@@ -37,6 +37,7 @@ public class Lotto {
     private static int bonus_number = 0;
     private static List<statistics> win_lotto;
     private static ArrayList<Integer> status_of_win = new ArrayList<>(5);
+    private static double rate_of_earning;
 
     private final List<Integer> numbers;
 
@@ -132,9 +133,16 @@ public class Lotto {
         }
     }
 
+    private void calculateRateOfEarning(){
+        double total_money = 0.0;
+       for (int i = 0; i<6;i++){
+           if (status_of_win.get(i)!=0){
+               total_money += Double.parseDouble(win_lotto.get(i).money.replaceAll(",",""));
+           }
+       }
 
-
-
+       rate_of_earning = (total_money / (number_of_lotto * 1000.0))*100;
+    }
 
 
 }
