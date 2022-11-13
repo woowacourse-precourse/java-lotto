@@ -12,6 +12,7 @@ public class User {
 
     public void validateUserMoney(String userInput) {
         validateNotNull(userInput);
+        validateNoSpace(userInput);
         validateNumber(userInput);
         validateNoChange(Integer.parseInt(userInput));
     }
@@ -19,6 +20,12 @@ public class User {
     private void validateNotNull(String userInput) {
         if (userInput == null || userInput == "" || "0".equals(userInput)) {
             throw new IllegalArgumentException(changeWord + "은 0이상의 값을 입력하세요.");
+        }
+    }
+
+    private void validateNoSpace(String userInput) {
+        if(userInput!=userInput.trim()){
+            throw new IllegalArgumentException(changeWord + "은 띄어쓰기 없이 입력하세요.");
         }
     }
 
