@@ -15,7 +15,7 @@ public class NumberGenerator {
         computerLotto = new ArrayList<>();
     }
 
-    public int calculatorLottoNumber(int purchasePrice) {
+    public int calculatorLottoQuantity(int purchasePrice) {
         return purchasePrice / Constant.PRICE_UNIT;
     }
 
@@ -35,7 +35,7 @@ public class NumberGenerator {
         return convertedLottoNumbers(computerLottoString);
     }
 
-    private List<Integer> convertedLottoNumbers(List<String> computerLottoString) {
+    public List<Integer> convertedLottoNumbers(List<String> computerLottoString) {
         return computerLottoString.stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
