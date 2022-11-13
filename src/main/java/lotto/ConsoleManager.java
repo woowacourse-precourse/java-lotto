@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -51,7 +52,7 @@ public class ConsoleManager {
     }
 
     private static void printLottosInformation(List<Lotto> lottos) {
-        System.out.println(String.format("%d개를 구입했습니다.", lottos.size()));
+        System.out.println(String.format("%d개를 구매했습니다.", lottos.size()));
         for(var lotto : lottos)
             System.out.println(lotto);
         System.out.println();
@@ -71,6 +72,12 @@ public class ConsoleManager {
     }
 
     public static Integer readNextInteger() {
-        return Integer.parseInt(readLine());
+        String line = readLine();
+        boolean valid = line.chars()
+                .mapToObj(e -> (char) e)
+                .allMatch(Character::isDigit);
+        if(!valid)
+            throw new IllegalArgumentException("[ERROR] 숫자만 입력할 수 있습니다.");
+        return Integer.parseInt(line);
     }
 }

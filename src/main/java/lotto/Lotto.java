@@ -20,7 +20,10 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 로또번호가 총 6개이어야만 합니다.");
+        }
+        if (new HashSet(numbers).size() != 6) {
+            throw new IllegalArgumentException("[ERROR] 로또번호에 중복이 없어야만 합니다.");
         }
     }
 

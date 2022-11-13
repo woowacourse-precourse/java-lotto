@@ -14,7 +14,7 @@ public class LottoService {
     public List<Lotto> purchase(Integer amount) {
         List<Lotto> ret = new ArrayList<>();
         if (amount % lottoPrice != 0)
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 구입 금액은 1000원 단위 입니다.");
         int lottoQuantity = amount / lottoPrice;
         while (lottoQuantity-- != 0)
             ret.add(new Lotto(lottoNumbersGenerator.generate()));
@@ -70,6 +70,6 @@ public class LottoService {
         long prizeMoneySum = calculatedResult.entrySet().stream()
                 .mapToLong(e -> Long.valueOf(prizeMoney(e.getKey())) * e.getValue())
                 .sum();
-        return Double.valueOf(prizeMoneySum) / Double.valueOf(purchaseAmount);
+        return Double.valueOf(prizeMoneySum) / Double.valueOf(purchaseAmount) * 100.0;
     }
 }
