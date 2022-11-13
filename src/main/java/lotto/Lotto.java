@@ -43,15 +43,6 @@ public class Lotto {
         }
     }
 
-    private boolean checkNumbersAreDuplicate(int number1, int index) {
-        for (int i = index + 1; i < numbers.size(); i++) {
-            if (number1 == numbers.get(i)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     public boolean checkWinningNumberIsInLottoNumbers(int winningNumber) {
 
         return numbers.contains(winningNumber);
