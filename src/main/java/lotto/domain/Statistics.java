@@ -12,15 +12,17 @@ public class Statistics {
     public Statistics(List<Integer> matches, List<Boolean> bonusMatches) {
         this.matches = matches;
         this.bonusMatches = bonusMatches;
+        setStatistics(matches, bonusMatches);
     }
 
-    public static void setStatistics(List<Integer> matches, List<Boolean> bonusMatches) {
+    private static void setStatistics(List<Integer> matches, List<Boolean> bonusMatches) {
         for (int i = 0; i < matches.size(); i++) {
             statistics.add(findRank(matches.get(i), bonusMatches.get(i)));
         }
+        System.out.println(statistics);
     }
 
-    public static Rank findRank(int match, boolean hasBonus) {
+    private static Rank findRank(int match, boolean hasBonus) {
         if (match == 5) {
             if (hasBonus) {
                 return Rank.SECOND;
@@ -29,4 +31,9 @@ public class Statistics {
         }
         return Arrays.stream(Rank.values()).filter(rank -> rank.getMatch() == match).findAny().orElse(Rank.NONE);
     }
+
+    public List<Rank> getStatistics() {
+        return statistics;
+    }
+
 }
