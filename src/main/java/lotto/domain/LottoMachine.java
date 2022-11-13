@@ -29,8 +29,11 @@ public class LottoMachine {
         return inputs;
     }
 
-    private List<Integer> formatStringToNumber(List<String> numbers) {
-        return null;
+    private List<Integer> formatStringToNumber(List<String> inputs) {
+        return inputs.stream().map(input -> {
+            checkNumericString(input);
+            return Integer.parseInt(input);
+        }).collect(Collectors.toList());
     }
 
     private void checkNumericString(String number) {

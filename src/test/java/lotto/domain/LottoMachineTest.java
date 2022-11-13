@@ -1,10 +1,11 @@
 package lotto.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 
 import java.lang.reflect.Method;
-import lotto.Config;
+import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,16 +22,25 @@ public class LottoMachineTest {
     @DisplayName("숫자 형식의 문자열이 아닐 때 예외기 발생한다.")
     @Test
     void testNotNumericString() throws NoSuchMethodException {
-        Method checkNumericStringMethod = LottoMachine.class
-                .getDeclaredMethod("checkNumericString", String.class);
+        Method checkNumericStringMethod = LottoMachine.class.getDeclaredMethod("checkNumericString", String.class);
         checkNumericStringMethod.setAccessible(true);
 
         String noNumericString = "1000j";
 
-        assertThatThrownBy(() ->
-                checkNumericStringMethod.invoke(lottoMachine, noNumericString)
-        )
-                .getCause()
+        assertThatThrownBy(() -> checkNumericStringMethod.invoke(lottoMachine, noNumericString)).getCause()
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("문자열 번호를 숫자 형식으로 변환")
+    @Test
+    void testFormatStringToNumber() throws Exception {
+        Method formatStringToNumberMethod = LottoMachine.class.getDeclaredMethod("formatStringToNumber", List.class);
+        formatStringToNumberMethod.setAccessible(true);
+
+        List<String> numericStrings = List.of("1", "2", "3");
+
+        assertThat(
+                formatStringToNumberMethod.invoke(lottoMachine, numericStrings))
+                .isEqualTo(List.of(1, 2, 3));
     }
 }
