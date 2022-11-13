@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoSeller {
-    private static final int LOTTO_PRICE = 1000;
+    public static final int LOTTO_PRICE = 1000;
     private static final String INVALID_AMOUNT_MESSAGE = "[ERROR] 로또를 구매할 수 없습니다.";
 
     public LottoTicket sell(Integer amount) {
