@@ -3,8 +3,11 @@ package lotto;
 import camp.nextstep.edu.missionutils.Console;
 import lotto.model.Lotto;
 import lotto.model.LottoMachine;
+import lotto.model.Reward;
+import lotto.model.WinningRecord;
 import lotto.view.CommonView;
 import lotto.view.PublishView;
+import lotto.view.RecordView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -49,14 +52,16 @@ public class LottoController {
         lottoMachine.setLuckyNumber(makeAnswerIntoList(answerInput), bonus);
     }
 
+    private void getResult() {
+        WinningRecord winningRecord = lottoMachine.drawAll(lottos);
+        RecordView.printWinningRecord(winningRecord, Reward.values());
+        RecordView.printYield(winningRecord);
+    }
+
     private List<Integer> makeAnswerIntoList(String answer) {
         List<Integer> ilist = new ArrayList<>();
         Arrays.stream(answer.split(",")).mapToInt(Integer::parseInt).forEach(ilist::add);
         return ilist;
-    }
-
-    private void getResult() {
-
     }
 
     private void validateAnswerInput(String input) {
