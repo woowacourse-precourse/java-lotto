@@ -10,6 +10,7 @@ import lotto.domain.Rank;
 
 public class OutputView {
     private static final String NEW_LINE = "\n";
+    private static final String OUTPUT_LOTTOS_GUIDE = "%s개를 구매했습니다.";
 
     private final OutputViewFormatter outputViewFormatter;
 
@@ -18,9 +19,8 @@ public class OutputView {
     }
 
     public void outputLottos(Lottos lottos) {
-        for (String lottoOutput : lottoOutputTexts(lottos)) {
-            System.out.println(lottoOutput);
-        }
+        System.out.println(String.format(OUTPUT_LOTTOS_GUIDE, lottos.count()));
+        System.out.println(lottoOutputTexts(lottos).stream().collect(Collectors.joining(NEW_LINE)));
     }
 
     private List<String> lottoOutputTexts(Lottos lottos) {
