@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -29,5 +30,15 @@ class LottoTest {
     void createLottoByNumberOutOfRange() {
         assertThatThrownBy(() -> new Lotto(List.of(1, 2, 3, 4, 5, 46)))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호와 당첨 번호가 일치하는 개수 구하기")
+    @Test
+    void getMatchCountWithWinningLotto() {
+        Lotto winningLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 5, 7, 9));
+        int result = lotto.getMatchCountWith(winningLotto);
+
+        assertThat(result).isEqualTo(4);
     }
 }
