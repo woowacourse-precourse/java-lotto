@@ -27,6 +27,15 @@ public class LottoProgram {
         System.out.println(buyer.getLottoPurchasedCount() + "개를 구매했습니다.");
 
         purchasedLottoSave();
+        System.out.println("당첨 번호를 입력해주세요.");
+        String winningNumbers = Console.readLine();
+
+        String winningNumberRegex = "^([1-9]{1},{1}|[1-3]{1}[0-9]{1},{1}|4{1}[0-5]{1},{1}){5}"
+                + "([1-9]{1}|[1-3]{1}[0-9]{1}|4{1}[0-5]{1})$";
+        if (!Pattern.matches(winningNumberRegex, winningNumbers)) {
+            throw new IllegalArgumentException("[ERROR] 당첨 번호는 1-45사이의 숫자를 콤마로 구분하여 입력해주세요.");
+        }
+
 
 
     }
