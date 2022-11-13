@@ -57,6 +57,6 @@ public class InputValidatorTest {
     @NullAndEmptySource
     @ValueSource(strings = {"234 ", "a234", "1,2,,3", "1,2,3,a"})
     void case4(String input) {
-        assertThrows(IllegalArgumentException.class, () -> InputValidator.toInt(input));
+        assertThrows(IllegalArgumentException.class, () -> InputValidator.splitToIntegers(input));
     }
 }
