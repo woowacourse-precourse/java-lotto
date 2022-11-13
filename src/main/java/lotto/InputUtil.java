@@ -5,12 +5,25 @@ import camp.nextstep.edu.missionutils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.CheckUtil.*;
+import static lotto.model.GameMessage.*;
+
 public class InputUtil {
     public int inputPurchasePrice(){
+        System.out.println(INPUT_PURCHASE_PRICE.getMessage());
         String input = Console.readLine();
-        int price = Integer.valueOf(input);
-        checkIsCorrectInputPrice(price);
-        return price;
+        try {
+            int inputPrice = checkIsString(input);
+            checkIsDivedByTHOUSAND(inputPrice);
+            return inputPrice;
+        } catch (IllegalArgumentException e) {
+            printErrorMessage(e);
+            return inputPurchasePrice();
+        }
+    }
+
+    private static void printErrorMessage(IllegalArgumentException e) {
+        System.out.println(e.getMessage());
     }
 
     public List<Integer> inputWinningNumber(){
@@ -23,12 +36,6 @@ public class InputUtil {
         return Integer.valueOf(input);
     }
 
-    private void checkIsCorrectInputPrice(int price){
-        int divided = Math.floorMod(price,Constant.THOUSAND);
-        if(divided!=0){
-            throw new IllegalArgumentException(Constant.INPUT_ERROR_MESSAGE);
-        }
-    }
     private String[] commaSeparation(String str){
         String[] arr = str.split(",");
         return arr;
