@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.constants.ErrorMessages;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -49,7 +50,8 @@ public class Lotto {
     }
 
     public int compareNumbers(List<Integer> numbers) {
-        numbers.retainAll(this.numbers);
-        return numbers.size();
+        List<Integer> retainedNumbers = new ArrayList<>(numbers);
+        retainedNumbers.retainAll(this.numbers);
+        return retainedNumbers.size();
     }
 }
