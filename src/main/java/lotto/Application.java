@@ -19,12 +19,18 @@ public class Application {
     public static int QUANTITY = 0;
 
     public static final int[] PAY = {5000, 50000, 1500000, 30000000, 2000000000};
+    public static int inputMoney;
 
     public static void main(String[] args) {
         // TODO: 프로그램 구현
 
         System.out.println("구입금액을 입력해 주세요");
-        int inputMoney = input(Integer.parseInt(Console.readLine()));
+
+        try {
+            input(Console.readLine());
+        } catch (IllegalArgumentException e) {
+            System.err.println(ERROR_MESSAGE);
+        }
 
         QUANTITY = inputMoney / 1000;
 
@@ -52,22 +58,25 @@ public class Application {
     }
 
     // 사용자의 구매 금액 입력 (에러 판별)
-    public static int input(int inputMoney) {
+    public static void input(String inputMoneyStr) throws IllegalArgumentException {
 
-//        for(int i = 0; i < inputMoneyStr.length(); i++) {
-//            if(!(inputMoneyStr.charAt(i) >= '0' && inputMoneyStr.charAt(i) <= '9')) {
-//                throw new IllegalArgumentException("[ERROR]");
-//            }
-//        }
+        try {
+            for(int i = 0; i < inputMoneyStr.length(); i++) {
+                if(!(inputMoneyStr.charAt(i) >= '0' && inputMoneyStr.charAt(i) <= '9')) {
+                    throw new IllegalArgumentException(ERROR_MESSAGE);
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(ERROR_MESSAGE);
+        }
 
-        //int inputMoney = Integer.parseInt(inputMoneyStr);
+        inputMoney = Integer.parseInt(inputMoneyStr);
 
         if(inputMoney % 1000 != 0) {
             System.out.println(ERROR_MESSAGE);
             throw new IllegalArgumentException(ERROR_MESSAGE);
         }
 
-        return inputMoney;
     }
 
     // 사용자의 당첨 번호 & 보너스 번호 입력
