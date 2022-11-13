@@ -3,8 +3,8 @@ package lotto.domain;
 public class WinningNumbers {
     private static final String BONUS_DUPLICATE_LOTTO = "[ERROR] 보너스 숫자는 입력한 로또 번호들과 중복되지 않아야 합니다.";
 
-    private Lotto lotto;
-    private int bonusNumber;
+    private final Lotto lotto;
+    private final int bonusNumber;
 
     public WinningNumbers(Lotto lotto, int bonusNumber) {
         checkDuplicateNumber(lotto, bonusNumber);
@@ -16,5 +16,13 @@ public class WinningNumbers {
         if (lotto.containNumber(bonusNumber)) {
             throw new IllegalArgumentException(BONUS_DUPLICATE_LOTTO);
         }
+    }
+
+    public Lotto getLotto() {
+        return lotto;
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 }
