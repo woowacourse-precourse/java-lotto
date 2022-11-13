@@ -66,7 +66,8 @@ public class LottoProgram {
 
         for (int lottoCount = 0; lottoCount < count; lottoCount++) {
             List<Integer> purchasedLottoNumber = new ArrayList<Integer>(
-                    Randoms.pickUniqueNumbersInRange(LOTTO.START, LOTTO.END, LOTTO.SIZE));
+                    Randoms.pickUniqueNumbersInRange(LOTTO.START, LOTTO.END, LOTTO.SIZE)
+            );
             purchasedLottoNumber.sort(Comparator.naturalOrder());
             Display.lottoNumbers(purchasedLottoNumber);
             buyer.setLottoPurchased(new Lotto(purchasedLottoNumber));
