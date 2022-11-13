@@ -6,36 +6,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BuyLotto {
-    private final int INPUT_UNIT = 1000;
-    private int price;
+    private static final String INPUT_MONEY_MESSAGE = "구입금액을 입력해 주세요.";
+    private static final String BUY_LOTTO_MESSAGE = "개를 구매했습니다.";
+    public static final String INVALIDATE_PRICE_UNIT_MESSAGE = "[ERROR] 구매금액은 1000원 단위여야 합니다.";
+    private static final String INVALIDATE_NUMERIC_MESSAGE = "[ERROR] 구매금액은 숫자여야 합니다.";
+    private static final int INPUT_UNIT = 1000;
+    private String price;
 
     public BuyLotto() {
-        this.price = 0;
+        this.price = "";
     }
 
     private void inputMessage() {
-        System.out.println("구입금액을 입력해 주세요.");
+        System.out.println(INPUT_MONEY_MESSAGE);
     }
 
     private void buyNumberMessage() {
-        System.out.println("\n" + numberOfLottoCount() + "개를 구매했습니다.");
+        System.out.println("\n" + numberOfLottoCount() + BUY_LOTTO_MESSAGE);
     }
     
     public void inputPrice() {
         inputMessage();
-        price = Integer.parseInt(Console.readLine());
-        inputPriceException();
+        price = Console.readLine();
+        validateNumeric();
+        validatePriceUnit();
         buyNumberMessage();
     }
 
-    private void inputPriceException() {
-        if((price % INPUT_UNIT) != 0) {
-            throw new IllegalArgumentException("[ERROR] 구매금액은 1000원 단위여야 합니다.");
+    public int getPrice() {
+        return Integer.parseInt(price);
+    }
+
+    private void validatePriceUnit() {
+        if((Integer.parseInt(price) % INPUT_UNIT) != 0) {
+            throw new IllegalArgumentException(INVALIDATE_PRICE_UNIT_MESSAGE);
         }
     }
 
-    private int numberOfLottoCount() {
-        return price / INPUT_UNIT;
+    private void validateNumeric() {
+        try {
+            Integer.parseInt(price);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(INVALIDATE_NUMERIC_MESSAGE);
+        }
+    }
+
+    public int numberOfLottoCount() {
+        return Integer.parseInt(price) / INPUT_UNIT;
     }
 
     public List<List<Integer>> issue () {
@@ -46,9 +63,8 @@ public class BuyLotto {
 
         for (int issueNumberIndex = 0; issueNumberIndex < numberOfLottoCount(); issueNumberIndex++) {
             Lotto lotto = new Lotto(lottoNumbers.generator());
-            allLottoNumbers.add(lotto.setLotto());
-            lotto.ascendingOrderSort();
             lotto.printLotto();
+            allLottoNumbers.add(lotto.setLotto());
         }
 
         return allLottoNumbers;
