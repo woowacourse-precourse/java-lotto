@@ -17,7 +17,7 @@ public class LottoCreator {
         int count = money.ableToBuy();
         List<Lotto> lottos = new ArrayList<>();
         IntStream.range(0, count)
-                .forEach(ignored -> addLotto(lottos));
+                .forEach(__ -> addLotto(lottos));
         return new Lottos(lottos);
     }
 
