@@ -16,7 +16,7 @@ public class LottoProgramManager {
     }
 
     private int buyLotto() {
-        int price = IOManager.buyLotto();
+        int price = IOManager.scanMoney();
 
         if(LottoConfig.LOTTO_PRICE == 0)
             throw new IllegalArgumentException();

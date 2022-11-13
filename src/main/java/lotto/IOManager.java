@@ -14,7 +14,7 @@ public class IOManager {
     private static void printEmptyLine() {
         System.out.println(IOMessage.EMPTY_LINE.getMessage());
     }
-    public static int buyLotto() throws IllegalArgumentException {
+    public static int scanMoney() throws IllegalArgumentException {
         System.out.println(IOMessage.ASK_PRICE.getMessage());
 
         try {
@@ -25,6 +25,12 @@ public class IOManager {
         } catch(Exception e) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public static List<Integer> scanAnswer() {
+        return Arrays.stream(Console.readLine().split(","))
+                .map(s -> Integer.parseInt(s))
+                .collect(Collectors.toList());
     }
 
     public static void printLottoBought(int num) {
@@ -41,11 +47,5 @@ public class IOManager {
 
     private static void printLotto(Lotto lotto) {
         System.out.println(lotto.toString());
-    }
-
-    public static List<Integer> scanAnswer() {
-        return Arrays.stream(Console.readLine().split(","))
-                .map(s -> Integer.parseInt(s))
-                .collect(Collectors.toList());
     }
 }
