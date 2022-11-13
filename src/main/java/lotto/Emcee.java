@@ -66,8 +66,9 @@ public class Emcee {
         System.out.println("=========================");
     }
 
-    private void showYield() {
-
+    private void showYield(Map<Rank, Integer> tallyOfRanks, int payment) {
+        double yield = calculateYield(tallyOfRanks, payment);
+        System.out.println("총 수익률은 " + yield + "%입니다.");
     }
 
     private double calculateYield(Map<Rank, Integer> tallyOfRanks, int payment) {
