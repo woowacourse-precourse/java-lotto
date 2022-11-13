@@ -28,7 +28,6 @@ public class calculateLotto {
         return Integer.valueOf(bonusLotto);
     }
     List<Integer> winLotto(List<Lotto> lottos){
-
         int[] correctNumber = {0,0,0,0,0};
         for (Lotto lotto : lottos){
             int count =0;
@@ -42,7 +41,6 @@ public class calculateLotto {
             if(lotto.getNumbers().contains(bonusLotto) && count== 5) {
                 count = 3;
             }
-            System.out.println(count);
             if(count>=0) correctNumber[count] +=1;
         }
 
@@ -64,8 +62,7 @@ public class calculateLotto {
         for(int i =0; i<winLottos.size();i++){
             getPrizeMoney+=prizeMoney[i]*winLottos.get(i);
         }
-        System.out.println(getPrizeMoney);
-        return (getPrizeMoney / (numberOflottos*1000))*100;
+        return (double)(getPrizeMoney / (numberOflottos*1000.0))*100.0;
     }
 
 }
