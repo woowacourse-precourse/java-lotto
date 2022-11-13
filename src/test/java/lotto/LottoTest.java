@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.model.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,5 +24,9 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // 아래에 추가 테스트 작성 가능
+    @Test
+    void sortedLottoNumbers(){
+        assertThatThrownBy(() -> new Lotto(List.of(3,4,1,6,2,5))
+                .createLotto((List<Integer>) new Lotto(List.of(1,2,3,4,5,6))));
+    }
 }
