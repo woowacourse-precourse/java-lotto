@@ -34,4 +34,8 @@ public class UI {
         System.out.printf("5개 일치, 보너스 볼 일치 (30,000,000원) - %d개%n", totalWinnings.getOrDefault(LottoGrade.SECOND, 0));
         System.out.printf("6개 일치 (2,000,000,000원) - %d개%n", totalWinnings.getOrDefault(LottoGrade.FIRST, 0));
     }
+
+    public static void printProfitRate(double profitRate) {
+        System.out.printf("총 수익률은 %.1f%% 입니다.", profitRate);
+    }
 }
