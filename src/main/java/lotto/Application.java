@@ -27,6 +27,5 @@ public class Application {
         } catch (IllegalArgumentException e) {
             outputHandler.println(ERROR_PREFIX + e.getMessage());
         }
-        // TODO: 프로그램 구현
     }
 }

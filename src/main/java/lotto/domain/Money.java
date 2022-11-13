@@ -10,20 +10,21 @@ public class Money {
     }
 
     private void validate(int amount) {
-        isPositive(amount);
-        isMultipleOfUnit(amount);
-    }
-
-    private void isPositive(int amount) {
-        if (amount <= 0) {
+        //Todo: 메시지 추가
+        if (!isPositive(amount)) {
+            throw new IllegalArgumentException();
+        }
+        if (!isMultipleOfUnit(amount)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void isMultipleOfUnit(int amount) {
-        if (amount % unit != 0) {
-            throw new IllegalArgumentException();
-        }
+    private boolean isPositive(int amount) {
+        return amount > 0;
+    }
+
+    private boolean isMultipleOfUnit(int amount) {
+        return amount % unit == 0;
     }
 
     public int ableToBuy() {

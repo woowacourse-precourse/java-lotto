@@ -11,16 +11,20 @@ public class BonusNumber {
     }
 
     private void validate(int number) {
-        isInRange(number);
+        if (isOverRange(number)) {
+            throw new IllegalArgumentException();
+        }
+        if (isUnderRange(number)) {
+            throw new IllegalArgumentException();
+        }
     }
 
-    private void isInRange(int number) {
-        if (number < LottoConstants.LOTTO_START_INCLUSIVE.value()) {
-            throw new IllegalArgumentException();
-        }
-        if (number > LottoConstants.LOTTO_END_INCLUSIVE.value()) {
-            throw new IllegalArgumentException();
-        }
+    private boolean isOverRange(int number) {
+        return number <= LottoConstants.LOTTO_END_INCLUSIVE.value();
+    }
+
+    private boolean isUnderRange(int number) {
+        return number >= LottoConstants.LOTTO_START_INCLUSIVE.value();
     }
 
     public boolean isBonusNumber(int other) {

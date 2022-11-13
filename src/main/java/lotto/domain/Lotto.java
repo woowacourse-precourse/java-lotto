@@ -19,34 +19,35 @@ public final class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        isRightLength(numbers);
-        isUnique(numbers);
-        isInRange(numbers);
-    }
-
-    private void isRightLength(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        //Todo: 메시지 추가
+        if (!isRightLength(numbers)) {
+            throw new IllegalArgumentException();
+        }
+        if (!isUnique(numbers)) {
+            throw new IllegalArgumentException();
+        }
+        if (isOverRange(numbers)) {
+            throw new IllegalArgumentException();
+        }
+        if (isUnderRange(numbers)) {
             throw new IllegalArgumentException();
         }
     }
 
-    private void isUnique(List<Integer> numbers) {
-        if (numbers.stream().distinct().count() != 6) {
-            throw new IllegalArgumentException();
-        }
+    private boolean isRightLength(List<Integer> numbers) {
+        return numbers.size() == 6;
     }
 
-    private void isInRange(List<Integer> numbers) {
-        numbers.forEach(this::isInLottoSize);
+    private boolean isUnique(List<Integer> numbers) {
+        return numbers.stream().distinct().count() != 6;
     }
 
-    private void isInLottoSize(int number) {
-        if (LottoConstants.LOTTO_START_INCLUSIVE.value() > number) {
-            throw new IllegalArgumentException();
-        }
-        if (LottoConstants.LOTTO_END_INCLUSIVE.value() < number) {
-            throw new IllegalArgumentException();
-        }
+    private boolean isOverRange(List<Integer> numbers) {
+        return numbers.stream().anyMatch(it -> it > LottoConstants.LOTTO_END_INCLUSIVE.value());
+    }
+
+    private boolean isUnderRange(List<Integer> numbers) {
+        return numbers.stream().anyMatch(it -> it < LottoConstants.LOTTO_START_INCLUSIVE.value());
     }
 
     public String getLottoPrinting() {
