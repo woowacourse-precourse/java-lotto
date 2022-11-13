@@ -23,7 +23,7 @@ public class Lotto {
 
     private static List<Integer> duplicateValidate(List<Integer> numbers) {
         Set<Integer> lotto = new HashSet<>(numbers);
-        if (lotto.size() == lotto.size()) {
+        if (lotto.size() == numbers.size()) {
             return numbers;
         }
         throw new IllegalArgumentException(DUPLICATION_NUMBER_EXCEPTION_MESSAGE);
