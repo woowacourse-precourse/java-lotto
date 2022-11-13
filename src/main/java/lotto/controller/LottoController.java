@@ -9,6 +9,7 @@ import lotto.domain.Player;
 import lotto.domain.Purchase;
 import lotto.domain.Ranking;
 import lotto.domain.Statistics;
+import lotto.domain.Yield;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -21,7 +22,7 @@ public class LottoController {
     public static void run() {
         // 로또 구입
         Purchase purchase = new Purchase(InputView.inputCash());
-        ticketNumber = purchase.get();
+        ticketNumber = purchase.getTicketNumber();
 
         // 로또 발행
         Player player = new Player(ticketNumber);
@@ -45,6 +46,8 @@ public class LottoController {
 
         OutputView.printStatistics();
 
+        Yield yield = new Yield(purchase.getTotalPurchase());
+        OutputView.printYield(yield.getYield());
 
     }
 
