@@ -11,6 +11,16 @@
 - Generate lotto cases
 - return type: List<List<Integer>>
 
+#### Number match
+
+- confirm if two number match
+- return type: int
+
+#### Get individual lotto score
+
+- Count the matching numbers and return
+- return type: int
+
 #### Calculate lotto result
 
 - Calculate each lotto case and turn it into score
