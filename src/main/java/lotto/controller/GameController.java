@@ -15,11 +15,13 @@ public class GameController {
     private final OutputView outputView = new OutputView();
 
     public void run() {
+
         final Payment payment = makePayment();
         final List<Lotto> userLotto = issueLotto(Payment.getTicket());
+        outputView.showLotto(userLotto);
+
         final LuckyNumbers luckyNumbers = makeLuckyNumbers();
         final Statistic statistic = makeStatistic(userLotto,luckyNumbers);
-        outputView.showLotto(userLotto);
         outputView.showStatistic(statistic);
     }
 
@@ -29,7 +31,7 @@ public class GameController {
     }
 
     private LuckyNumbers makeLuckyNumbers() {
-        return LottoFactory.createLuckyNumbers(inputView.inputLuckyNumbers());
+        return LottoFactory.createLuckyNumbers(inputView.inputLuckyNumbers(), inputView.inputBonus());
     }
 
     private List<Lotto> issueLotto(int tickets) {
