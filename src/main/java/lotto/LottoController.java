@@ -87,4 +87,13 @@ public class LottoController {
         return lottoService.getLottoRankResultsByLottos(lottos);
     }
 
+    /**
+     * Lotto 게임의 수익률을 반환한다.
+     * @return 백분율로 계산된 로또 수익률
+     */
+    public double getLottoYield(){
+        List<Integer> lottoRankResults = getLottoRankResults();
+        double lottoYield = lottoStore.calculateLottoYield(lottoRankResults);
+        return lottoYield * 100;
+    }
 }
