@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import lotto.constant.Constant;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ServiceInput {
@@ -14,6 +15,12 @@ public class ServiceInput {
                 Randoms.pickUniqueNumbersInRange(Constant.LOTTO_START_NUMBER, Constant.LOTTO_END_NUMBER, Constant.LOTTO_SIZE)
         );
 
+        List<Integer> sortedLottoNumbers = sortLottoNumbers(numbers);
+        return sortedLottoNumbers;
+    }
+
+    private static List<Integer> sortLottoNumbers(List<Integer> numbers){
+        Collections.sort(numbers);
         return numbers;
     }
 }
