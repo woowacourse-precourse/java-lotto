@@ -27,5 +27,6 @@ public class calculateLotto {
     int convertBonus(String bonusLotto){
         return Integer.valueOf(bonusLotto);
     }
+    
 
 }
