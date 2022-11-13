@@ -19,6 +19,7 @@ public class InputOutput {
         int money;
 
         try {
+            System.out.println("구입금액을 입력해 주세요.");
             money = Integer.parseInt(Console.readLine());
         } catch (NumberFormatException e) {
             System.out.println("[ERROR] 구입 금액은 숫자이어야 합니다.");
@@ -43,6 +44,7 @@ public class InputOutput {
     }
 
     public void printLottos(List<Lotto> lottos) {
+        System.out.println(lottos.size() + "개를 구매했습니다.");
         lottos.forEach(lotto -> System.out.println(lotto.getNumbers()));
     }
 
@@ -64,6 +66,7 @@ public class InputOutput {
     }
 
     private String[] getSplittedStr() {
+        System.out.println("당첨 번호를 입력해 주세요.");
         String[] splittedStr = Console.readLine().split(",");
 
         if (splittedStr.length != 6) {
