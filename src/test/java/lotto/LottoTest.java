@@ -2,6 +2,7 @@ package lotto;
 
 import Dto.Lotto;
 import Dto.Money;
+import Services.CalculatedService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -30,6 +31,13 @@ class LottoTest {
     @Test
     void createLottoBuyMoney() {
         assertThatThrownBy(() -> new Money("하이"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("돈이 1000원 단위로 들어오는지 확인한다.")
+    @Test
+    void createLottoSize() {
+        assertThatThrownBy(() -> new CalculatedService().lottoSize(new Money("4050")))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
