@@ -1,5 +1,7 @@
 package lotto.view;
 
+import lotto.domain.Lotto;
+
 import java.util.List;
 
 public class InputView {
@@ -9,13 +11,6 @@ public class InputView {
 
     public void printRequest() {
         System.out.println(PURCHASE_AMOUNT);
-    }
-
-    public void printLottos(List<List<Integer>> lottos) {
-        System.out.println();
-        for (List<Integer> lotto : lottos) {
-            System.out.println(lotto);
-        }
     }
 
     public void printWinningNumber() {
