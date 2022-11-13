@@ -39,5 +39,10 @@ public class WinningLotto {
             System.out.println(DUPLICATE_NUM_ERROR_MSG);
             throw new IllegalArgumentException();
         }
+
+        if (bonusNumber < MIN_LOTTO_NUM || bonusNumber > MAX_LOTTO_NUM) {
+            System.out.println(LOTTO_RANGE_ERROR_MSG);
+            throw new IllegalArgumentException();
+        }
     }
 }

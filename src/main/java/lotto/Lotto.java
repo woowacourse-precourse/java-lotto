@@ -31,6 +31,15 @@ public class Lotto {
             System.out.println(DUPLICATE_NUM_ERROR_MSG);
             throw new IllegalArgumentException();
         }
+
+        for (int i = 0; i < LOTTO_SIZE; i++) {
+            int number = numbers.get(i);
+
+            if (number < MIN_LOTTO_NUM || number > MAX_LOTTO_NUM) {
+                System.out.println(LOTTO_RANGE_ERROR_MSG);
+                throw new IllegalArgumentException();
+            }
+        }
     }
 
     private boolean hasDuplicateNumber(List<Integer> numbers) {

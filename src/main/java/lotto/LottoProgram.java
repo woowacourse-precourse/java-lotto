@@ -22,9 +22,15 @@ public class LottoProgram {
 
     public void run() {
         LottoSeller lottoSeller = new LottoSeller();
+        List<Integer> numbers;
+        int bonusNumber;
 
         buyLotto(lottoSeller.receivePurchasePrice());
-        initializeWinningLotto();
+        numbers = lottoSeller.receiveWinningNumbers();
+        bonusNumber = lottoSeller.receiveBonusNumber();
+
+        initializeWinningLotto(numbers, bonusNumber);
+        initializeWinningResult();
 
         LottoWinningAnalyzer analyzer = new LottoWinningAnalyzer(winningResult);
 
@@ -36,10 +42,14 @@ public class LottoProgram {
         lottoStore.buyLottoNumber(price);
     }
 
-    private void initializeWinningLotto() {
-        LottoSeller lottoSeller = new LottoSeller();
-        this.winningLotto = lottoSeller.createWinningLotto();
-        initializeWinningResult();
+    private void initializeWinningLotto(List<Integer> numbers, int bonusNumber) {
+        this.winningLotto = new WinningLotto(new Lotto(numbers), bonusNumber);
+    }
+
+    public void createWinningLotto(List<Integer> numbers, int bonusNumber) {
+        Lotto winningNumber = new Lotto(numbers);
+
+        this.winningLotto = new WinningLotto(winningNumber, bonusNumber);
     }
 
     private void initializeWinningResult() {
