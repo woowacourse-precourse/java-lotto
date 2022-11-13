@@ -41,10 +41,23 @@ public class User {
     }
 
     private void validWinningNumbersInput(String winningNumbersInput) {
+        validWinningNumbersInputIsNumber(winningNumbersInput);
         List<Integer> winningNumbersToList = winningNumbersToList(winningNumbersInput);
         validWinningNumbersSize(winningNumbersToList);
         validDuplicateWinningNumbers(winningNumbersToList);
         validWinningNumbersRange(winningNumbersToList);
+    }
+
+    private void validWinningNumbersInputIsNumber(String winningNumbersInput) {
+        for (int i = 0; i < winningNumbersInput.length(); i++) {
+            if (winningNumbersInput.charAt(i) == ',') {
+                continue;
+            }
+            if (!NUMBER_PATTERN.matcher(String.valueOf(winningNumbersInput.charAt(i))).matches()) {
+                System.out.println(Error.IS_NOT_NUMBER.getErrorMessage());
+                throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
+            }
+        }
     }
 
     public List<Integer> winningNumbersToList(String winningNumbersInput) {
