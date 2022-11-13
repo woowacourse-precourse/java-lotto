@@ -13,7 +13,9 @@ public class BuyingLotto {
         for (int i = 0; i < count; i++) {
             List<Integer> numbers = new LottoGenerator().numbers;
             lottos.add(numbers);
-            System.out.println(numbers);
+        }
+        for (int i = 0; i < count; i++) {
+            System.out.println(lottos.get(i));
         }
     }
 
