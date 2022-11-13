@@ -22,8 +22,6 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-
-
-
+    // TODO: 번호 유효성 검사
 
 }
