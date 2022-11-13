@@ -15,7 +15,7 @@ import lotto.util.ViewConst;
 class InputViewTest {
 
 	private InputView inputView = new InputView();
-	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+	private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
 	@BeforeEach
 	public void setUpStreams() {
