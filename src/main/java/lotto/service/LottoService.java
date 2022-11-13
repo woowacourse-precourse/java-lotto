@@ -1,13 +1,20 @@
 package lotto.service;
 
+import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.*;
+import lotto.view.View;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class LottoService {
+
+    private static final String WINNING_INPUT_MESSAGE = "정확히 숫자를 입력하고 `,`로 구분 지을 수 있습니다.";
+    private static final String BONUS_INPUT_MESSAGE = "보너스 번호는 숫자만 입력할 수 있습니다.";
     public NumberGenerator numberGenerator;
+    private WinningTicket winningTicket;
     
     public LottoService() {
         this.numberGenerator = new NumberGenerator();
@@ -23,5 +30,16 @@ public class LottoService {
 
     public void getLottosByMoney(Buyer buyer, String input) {
         buyer.buyLottos(publishLotto(input));
+    }
+
+    public List<Integer> inputWinningNumbers(View view) throws IllegalArgumentException {
+        try {
+            view.printInputWinningMessage();
+            return Arrays.stream(Console.readLine().split(","))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            throw new IllegalArgumentException(WINNING_INPUT_MESSAGE);
+        }
     }
 }
