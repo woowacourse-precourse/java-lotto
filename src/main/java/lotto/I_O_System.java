@@ -23,7 +23,7 @@ public class I_O_System {
 
     private String Enter_Number = "0";
     private int Money_Enter = 0;
-    private int Ticket =0;
+    private int Ticket = 0;
 
     public boolean Enter_Price() {
         Enter_Number = Console.readLine();
@@ -34,8 +34,18 @@ public class I_O_System {
         if (!left_money()) {
             return false;
         }
-        Ticket =Money_Enter / lottey_price;
+        Ticket = Money_Enter / lottey_price;
         return true;
+    }
+
+    public void Lottey_System() {
+        int Bonus_Number = 0;
+        List<Integer> Winning_Number = new ArrayList<>();
+        List<List<Integer>> mylist = new ArrayList<>();
+
+        User_Lottery_Number(mylist);
+        Enter_WinningNumber(Winning_Number);
+        Bonus_Number = Bonus_Number_Enter(Bonus_Number);
     }
 
     private boolean Differnet_Error() {
@@ -66,32 +76,27 @@ public class I_O_System {
         return true;
     }
 
-
-    public void Enter_WinningNumber() {
-        int Bonus_Number =0;
+    public void Enter_WinningNumber(List<Integer> Winning_Number) {
         System.out.println(User_Number_Answer);
         Enter_Number = Console.readLine();
 
         String[] arrayIn = Enter_Number.split(",");
-        List<Integer> Winning_Number = new ArrayList<>();
         for (int i = 0; i < arrayIn.length; i++) {
             Winning_Number.add(Integer.parseInt(arrayIn[i]));
         }
         Lotto lotto = new Lotto(Winning_Number);
-
-        Bonus_Number = Bonus_Number_Enter(Bonus_Number);
     }
-    public void User_Lottery_Number(){
-        System.out.println(Ticket + Sell_Messge);
 
-        for(int i=0;i<Ticket;i++)
-        {
-            List<Integer> number = Randoms.pickUniqueNumbersInRange(Lottey_min,Lottey_number_max,Lottey_max);
+    public void User_Lottery_Number(List<List<Integer>> mylist) {
+        System.out.println(Ticket + Sell_Messge);
+        for (int i = 0; i < Ticket; i++) {
+            List<Integer> number = Randoms.pickUniqueNumbersInRange(Lottey_min, Lottey_number_max, Lottey_max);
+            Lotto lotto = new Lotto(number);
             Ticket_Print(number);
-            List<List<Integer>> mylist = new ArrayList<>();
             mylist.add(number);
         }
     }
+
     private int Bonus_Number_Enter(int Bonus_Number) {
         System.out.println(Bonus_Number_Answer);
         Enter_Number = Console.readLine();
