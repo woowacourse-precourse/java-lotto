@@ -46,7 +46,7 @@ class LottoTest {
     void compareLotto() {
         Lotto lotto = new Lotto(List.of(0, 0, 0, 0, 0, 0));
         List<Lotto> lottoList = List.of(new Lotto(List.of(1, 11, 3, 5, 34, 43)));
-        assertEquals(List.of(1, 3, 5), lotto.compareLotto(lottoList, List.of(13, 1, 41, 5, 27, 3), 0).getWinLottoNumber());
+        assertEquals(List.of(1, 3, 5), lotto.compareLotto(lottoList.get(0), List.of(13, 1, 41, 5, 27, 3)).getWinLottoNumber());
     }
 
 }
